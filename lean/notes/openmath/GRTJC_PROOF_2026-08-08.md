@@ -2813,3 +2813,247 @@ record: three byte-frozen batteries + instrument, all green.
 > 3. **Thm 4.8 (+ Cor 4.9) — printed p. 22 — VERIFIED as the pair-cite.** Print, Thm 4.8: *"The mapping R̄_{r,0}: Δ ⟶ 𝔽_r[y] is an isomorphism of 𝔽_r-algebras and (R̄_{r,0})^{-1}: 𝔽_r[y] ⟶ Δ is the 𝔽_r-map determined by y ↦ y_r. In particular, the element y_r ∈ Δ is transcendental over 𝔽_r and Δ = 𝔽_r[y_r]."* — which matches the corpus §S6a quotation *"Thm 4.8 (evaluation at ȳ is an isomorphism F_r[y] → Δ)"* exactly. Print, Cor 4.9: *"For all 0 ≤ i < r, 𝔽_{i+1} = 𝔽_i[z_i] = 𝔽_0[z_0,…,z_i] and deg ψ_i = f_i."* This note's (IN-3)(d) *"evaluation y ↦ z̄ is an isomorphism K_m[y]/(ψ_m) ≅ K_{m+1} [Thm 4.8 / Cor 4.9]"* is the composite, and it is faithful: the §3.3 definitions (printed p. 17, now read at the PDF and not only at the extraction) give *"z_i ∈ 𝔽_{i+1}, the image of y_i under Δ_i ⟶ Δ_{i+1}"* and *"ψ_i ∈ 𝔽_i[y], minimal polynomial of z_i over 𝔽_i"*, whence 𝔽_m[y]/(ψ_m) ≅ 𝔽_m[z_m] = 𝔽_{m+1} by Cor 4.9. No extra hypotheses; annex #2's extraction-based reading is confirmed at the print. Scope note: Cor 4.9 is stated for 0 ≤ i < r, so the cite is in range exactly when K_{m+1} exists (m < r), which is the note's standing usage.
 >
 > **Net.** Numbering correct on all three; hypotheses and conclusions match; the only rendering differences are the two disclosed ones under item 2 (both already fenced by JC-BOX-3/W-1) and the display-precision remark under item 1. No consumption changes: (DMULT-w) on B, Δ/(ψ_m) ≅ K_{m+1}, and JC-SPAN's abscissa additivity all stand as cited. JC-BOX-3 [r1] item 2 ("CITATION PRECISION — STANDING CODEX LEG, owed") is hereby DISCHARGED against the printed source; the transport legs it also names (W-1 ATTEMPT) are untouched and remain open. No text of this note is edited.
+
+---
+
+### Dated adjudication + corrections (2026-08-12 — sol certification C4/E4: the as-built challenge adjudicated at HEAD)
+
+The sol-5.6 as-built read of this note (gpt-5.6-sol high,
+runs/cert/C4_grtjc_output.log, 2026-08-12) returned CHALLENGE with a
+CRITICAL (the W-8 quotient-lifting error on the TC-3 load set). The
+E4 certification run (gpt-5.6-sol high,
+runs/cert2/E4_grtjc_output.log) adjudicated all five findings REAL
+and derived the repairs below (Annexes #4–#8): the W-8 route redone
+as a quotient computation with conclusion unchanged; the load-set
+qualifier for outer-factor obtainability; LEMMA JC-RANKMULT deriving
+(DMULT-w) from the PDF-verified FGMN rank-one theorem; the status
+supersession; and the nonzero-scalar re-display of Λ_N/JC-SCAL.
+Everything above this heading is byte-untouched by this append. The
+E4 adjudication, transcribed unaltered:
+
+All five findings are REAL at HEAD. None is cured by Annexes #1–#3 or by the acceptance record alone. Each defect is repairable from the note’s existing inputs; no experiment or new unproved mathematics is needed.
+
+### 1. REAL — W-8 improperly lifts a quotient equality
+
+The acceptance record mentions PE8’s correct congruence route but does not amend §4.1. Transcribe:
+
+> **[ANNEX 2026-08-12 #4, post-acceptance correction — W-8 is a quotient computation, not a polynomial lifting.]** This annex supersedes §4.1 from “Apply \(\rho_{\lambda+N}\)” through “The two agree.” Put
+> \[
+> q:\Delta=K_m[y]\longrightarrow \Delta/(\psi_m)=K.
+> \]
+> The fence-clean defining equation for \(c=c_{m+1}(\gamma,\gamma')\) holds in the **TC-transported ring**, hence after TC-3. Therefore applying the coordinate calculus gives the congruence
+> \[
+> q\!\left(A(\gamma,\gamma')A(\lambda,N)\rho_N(\operatorname{in}X_N)\right)
+> =
+> q\!\left(A(\lambda,N)\rho_N(\operatorname{in}\Lambda_N(c))\right),
+> \qquad \lambda:=\gamma+\gamma',
+> \]
+> not the corresponding equality in \(\Delta\). By the offset-transport lemma, \(A(\lambda,N)\in K_m^*\), so its image in \(K\) is nonzero and cancels. JC-SCAL and R3 give
+> \[
+> \rho_N(\operatorname{in}X_N)=1/a_N,\qquad
+> \rho_N(\operatorname{in}\Lambda_N(c))=\widetilde c(y)/a_N,
+> \qquad q(\widetilde c)=c.
+> \]
+> Cancelling \(a_N\in K_m^*\) yields exactly
+> \[
+> c=q\!\left(A(\gamma,\gamma')\right). \tag{W8-q}
+> \]
+> Independently, the same-line read identity \((\dagger)\), applied to
+> \(f=\phi_\gamma\phi_{\gamma'}\), gives
+> \[
+> c_{\mathrm{val}}(\gamma,\gamma')
+> =q\!\left(\rho_\lambda(\operatorname{in}\phi_\gamma\operatorname{in}\phi_{\gamma'})\right)
+> =q\!\left(A(\gamma,\gamma')\right).
+> \]
+> Thus
+> \[
+> c_{m+1}(\gamma,\gamma')=c_{\mathrm{val}}(\gamma,\gamma')
+> \]
+> exactly. In the sharp JC-CARRY-m scope,
+> \(A(\gamma,\gamma')=(u/a_\lambda)y^\delta\), so both sides equal
+> \[
+> (u/a_\lambda)\bar z^\delta.
+> \]
+> The former display
+> \(\widetilde c(y)=A(\gamma,\gamma')\) is valid only when both polynomials have degree \(<g_m\), in particular when \(\delta<g_m\). On the load set \(\delta\ge g_m\), only the congruence
+> \[
+> \widetilde c(y)\equiv A(\gamma,\gamma')\pmod{\psi_m}
+> \]
+> holds; this is exactly compatible with JC-LOAD’s proof that RAW polynomial equality fails there.
+>
+> **Consumer sweep.** W-8 survives with conclusion unchanged by (W8-q). JC-INNER and W-7 OB-3 VALUE consume only \(c_{m+1}=c_{\mathrm{val}}\), so both survive unchanged. W-9’s cocycle semantics and the residue-chain statement survive. JC-LOAD is not weakened; its load-set obstruction is now explicitly respected rather than contradicted.
+
+### 2. REAL — “not obtainable before TC-3” needs the load-set qualifier
+
+JC-LOAD itself proves the counterexample supplied by the finding. Transcribe:
+
+> **[ANNEX 2026-08-12 #5, post-acceptance correction — exact scope of outer-factor non-obtainability.]** This annex supersedes W-6(iv), JC-LOAD(a), and every unqualified occurrence of “\(\bar z^\delta\) is not obtainable from TC-1/TC-2 alone” by the following display:
+>
+> \[
+> \boxed{\text{The outer factor is always }q(y^\delta)=\bar z^\delta,\quad
+> \text{and it is unavailable as a pre-TC-3 scalar exactly when }\delta\ge g_m.}
+> \]
+>
+> Equivalently:
+>
+> * if \(\delta<g_m\), then \(y^\delta\) is already the canonical degree-\(<g_m\) representative of \(\bar z^\delta\), so the outer factor—and, after multiplication by the inner \(K_m^*\)-unit, the complete scalar—is obtainable before TC-3;
+> * if \(\delta\ge g_m\), no nonzero polynomial of degree \(<g_m\) equals \(u\,y^\delta\) with \(u\in K_m^*\), so TC-3 is indispensable.
+>
+> *Derivation.* JC-SCAL identifies the pre-TC-3 scalar image with the nonzero polynomials of degree \(<g_m\), up to a common nonzero constant. JC-SPAN gives the anchor-product coordinate \(u\,y^\delta\). Equality in \(K_m[y]\) is therefore possible exactly when \(\delta<g_m\), which is JC-LOAD’s proved equivalence
+> \[
+> \mathrm{RAW}\iff\delta<g_m.
+> \]
+>
+> Accordingly W-6(iv) is re-displayed as:
+>
+> > **(iv)** TC-3 is load-bearing exactly on pairs with \(\delta\ge g_m\). The outer factor \(\bar z^\delta\) is always TC-3’s image of the slot shift \(y^\delta\); that quotient is **indispensable** exactly on the load set and is representable by an ordinary pre-TC-3 scalar when \(\delta<g_m\).
+>
+> **Consumer sweep.** JC-LOAD’s iff and its sealed set identity survive unchanged. §3.2’s structural outer/inner split survives: “outer” continues to mean the \(y^\delta\) slot shift and “inner” the \(K_m^*\)-unit, without asserting universal indispensability. §7 genres 1–2 remain RAW-solvable and genres 3–4 retain the stated \(g_m=1\) split. W-7, W-8, and W-9 consume the factor’s value or shape, not the refuted universal interpretation, and survive.
+
+### 3. REAL — the multiplicativity bridge was absent, but is derivable
+
+Annex #3 verifies rank-one freeness, not the quoted product formula. The needed bridge can instead be proved from that freeness plus the note’s anchor calculation:
+
+> **[ANNEX 2026-08-12 #6, post-acceptance correction — JC-RANKMULT supplies the missing literature bridge.]** The statement that (DMULT-w) is itself a quoted FGMN residual-product identity is withdrawn. The load-bearing coordinate calculus is instead derived from the PDF-verified rank-one theorem as follows.
+>
+> **LEMMA JC-RANKMULT.** After JC-LOC and W-1 transport, for every \(n\in\mathbb Z\), \(B_n\) is a free rank-one module over
+> \[
+> B_0\simeq\Delta=K_m[y]
+> \]
+> on the virtual anchor \(\operatorname{in}\phi_n\), and \(\rho_n^B\) is its coefficient map. Consequently, for all \(\lambda,\mu\in\mathbb Z\),
+> \[
+> \rho_{\lambda+\mu}^B(\alpha\beta)
+> =A(\lambda,\mu)\rho_\lambda^B(\alpha)\rho_\mu^B(\beta),
+> \qquad
+> A(\lambda,\mu)
+> =\rho_{\lambda+\mu}^B(\operatorname{in}\phi_\lambda\operatorname{in}\phi_\mu).
+> \tag{RM}
+> \]
+>
+> *Proof.* PDF-verified FGMN Thm 4.2 states that the attained graded piece is a free rank-one \(\Delta\)-module on its printed anchor and writes its element as the anchor times its residual polynomial. JC-LOC identifies its graded ring with \(B\). W-1 identifies the printed residual operator with the harness operator by
+> \[
+> \mathcal R_n=c_nR_n^{\mathrm{GMN}},\qquad c_n\in K_m^*,
+> \]
+> and identifies the printed anchor with this note’s anchor up to the already-priced line unit. Since
+> \[
+> a_n=\mathcal R_n(\phi_n),
+> \]
+> normalizing gives
+> \[
+> \rho_n^B=\mathcal R_n/a_n;
+> \]
+> the line unit \(c_n\) and the anchor-associate unit cancel. Thus \(\rho_n^B\) is precisely the module coefficient relative to \(\operatorname{in}\phi_n\). For
+> \(\alpha=p\,\operatorname{in}\phi_\lambda\) and
+> \(\beta=q\,\operatorname{in}\phi_\mu\), with \(p,q\in\Delta\),
+> \[
+> \alpha\beta
+> =pq\,\operatorname{in}\phi_\lambda\operatorname{in}\phi_\mu
+> =pq\,A(\lambda,\mu)\operatorname{in}\phi_{\lambda+\mu},
+> \]
+> which proves (RM). Virtual anchors and off-window coordinates are legitimate by (G5-i)/(G5-ii), JC-PER, and JC-PIINV. ∎
+>
+> **COROLLARY (DMULT-w, derived where consumed).** Assume \(e_m\ge2\). For integral \(f,g\) of weights \(\lambda,\mu\), JC-SPAN gives
+> \[
+> \mathcal R_{\lambda+\mu}(\phi_\lambda\phi_\mu)
+> =u_{\lambda,\mu}y^{\delta(\lambda,\mu)},
+> \qquad u_{\lambda,\mu}\in K_m^*.
+> \]
+> Hence
+> \[
+> A(\lambda,\mu)
+> =\frac{u_{\lambda,\mu}}{a_{\lambda+\mu}}y^{\delta(\lambda,\mu)}.
+> \]
+> Substituting \(\rho_\nu=\mathcal R_\nu/a_\nu\) into (RM) gives
+> \[
+> \frac{\mathcal R_{\lambda+\mu}(fg)}{a_{\lambda+\mu}}
+> =
+> \frac{u_{\lambda,\mu}}{a_{\lambda+\mu}}y^\delta
+> \frac{\mathcal R_\lambda(f)}{a_\lambda}
+> \frac{\mathcal R_\mu(g)}{a_\mu},
+> \]
+> and therefore
+> \[
+> \mathcal R_{\lambda+\mu}(fg)
+> =
+> \underbrace{\frac{u_{\lambda,\mu}}{a_\lambda a_\mu}}_{\displaystyle
+> \omega(\lambda,\mu)\in K_m^*}
+> y^{\delta(\lambda,\mu)}
+> \mathcal R_\lambda(f)\mathcal R_\mu(g).
+> \]
+> This is (DMULT-w), derived from the note’s cited rank-one theorem and its proved anchor-slot lemma. The multiplier depends only on the two lines because \(u_{\lambda,\mu}\) and the \(a_\nu\) are anchor constants. Clearing powers of \(\pi\), followed by JC-PIINV, gives the same formula on all transported lines.
+>
+> For \(e_m=1\), JC-RANKMULT and (RM) remain proved at general \(m\), but the last monomial-shape deduction stops at JC-SPAN’s existing top-flat bound. Thus JC-BOX-4 retains its honest FGMN-independent open/measured branch; no claim that the PDF itself supplies a multiplier formula is made.
+>
+> **Consumer sweep.**
+>
+> * (COORD-B)(2) survives at every \(m\), now directly from JC-RANKMULT rather than from an unquoted product law.
+> * (MULT-B), JC-IND, W-7’s bijectivity, and W-9 survive at every \(m\) by (RM).
+> * JC-CARRY-m and JC-LOAD survive on their displayed \(e_m\ge2\) scope by the derived (DMULT-w).
+> * W-8 survives at general \(m\): it needs (RM), offset multiplication by the \(\pi\)-periodic anchor, and the quotient calculation in Annex #4—not a separately quoted residual-product theorem.
+> * JC-COB’s exact multiplier-one refinement remains on (DMULT-s), with the conditional proof and perimeter stated in Annex #1.
+>
+> The current FGMN stack entry is therefore:
+>
+> \[
+> \boxed{\text{FGMN (a)(b) + Thm 4.2 rank-one freeness on \(B\) via JC-LOC
+> + Thm 4.8/Cor 4.9 + Cor 2.7; (DMULT-w) derived above; (DMULT-s) as in Annex #1.}}
+> \]
+
+### 4. REAL — the live status records conflict
+
+The later acceptance record states the intended result but never expressly supersedes the body’s still-“CURRENT” r6 status and proof-grade prohibition. Transcribe:
+
+> **[ANNEX 2026-08-12 #7, orchestrator status correction.]** The ★ ACCEPTANCE RECORD (orchestrator, 2026-08-06) ★ expressly **supersedes** `[r6] S-STATUS (CURRENT)`, §10.1’s “acceptance counter 0/2,” every body-local “JC-PE7 next” phrase, and every body-local prohibition on proof-grade consumption that is based solely on this note’s former \(0/2\) counter. Those passages are ROUND-RECORDS describing the state after r6 and before PE7/PE8; their word “CURRENT” is no longer live.
+>
+> **Current status at HEAD:** this note is **ACCEPTED at 2/2**, conditionally on exactly the input stack and fences named by the Acceptance Record together with the post-acceptance corrections in Annexes #4–#8. PE7 and PE8 are completed clean passes, not future attempts. Acceptance of this note does not upgrade any upstream ATTEMPT-grade input or remove any displayed scope fence.
+
+### 5. REAL — \(\Lambda_N(0)\) and the zero-target quantifiers are false
+
+Restricting the lift to the nonzero scalars actually consumed is the simplest correct display. The same repair should close JC-BSURJ’s related zero-target wording.
+
+> **[ANNEX 2026-08-12 #8, post-acceptance correction — nonzero scalar lifts and zero coordinates.]** The scalar-lift definition and every JC-SCAL quantifier are re-displayed at their true proved-and-consumed scope:
+>
+> \[
+> \Lambda_N(c):=\operatorname{realize}(NR,c,N),
+> \qquad c\in K^*,\quad N\equiv0\pmod E,\quad N\ge w\Phi_{NR}.
+> \]
+>
+> For these and only these targets, REALIZE R2/R3 give
+> \[
+> w(\Lambda_N(c))=N,\qquad
+> \operatorname{read}(N,\Lambda_N(c))=c.
+> \]
+> No value \(\Lambda_N(0)\) is supplied by REALIZE. The zero polynomial represents the zero class and has zero read, but it does not have weight \(N\).
+>
+> Accordingly JC-SCAL is re-displayed with \(c\in K^*\). Its scalar-image conclusion is
+> \[
+> \mathcal R_N(X_N)\cdot
+> \{\,p\in K_m[y]:p\ne0,\ \deg p<g_m\,\}.
+> \]
+>
+> The same zero convention repairs JC-BSURJ: for every **nonzero**
+> \(p=\sum_{j\le d}c_jy^j\), its displayed REALIZE construction produces an integral \(f\) with \(w(f)=n+kE\) and \(\mathcal R_{n+kE}(f)=p\). For \(p=0\), surjectivity uses the zero element of \(B_n\); no exact finite-weight representative is asserted. Thus \(\rho_n^B:B_n\to\Delta\) remains surjective.
+>
+> **Consumer sweep.** JC-LOAD already quantifies \(c\in K^*\) and survives. W-8’s \(c_{m+1}\) is a unit by JC-CARRY-m, so its lift remains defined. \(X_N=\Lambda_N(1)\) is unchanged. JC-SCAL, JC-BSURJ, COORD-B, and all downstream carrier-dimension arguments survive. Historical JC4/R1-SURJ machine rows retain their numerical counts but evidence only defined nonzero lifts and nonzero polynomial targets; their phrases “every \(c\in K\)” are superseded by this annex.
+
+*(The adjudication above was produced by the E4 certification run
+(gpt-5.6-sol high, runs/cert2/E4_grtjc_output.log, 2026-08-12);
+orchestrator verification before transcription — Annex #4's quotient
+route re-checked (the defining equation holds after TC-3, so only
+the congruence descends; A(λ,N) and a_N in K_m^* cancel in K, giving
+c = q(A(γ,γ′)) = c_val exactly, with the polynomial-equality display
+scoped to δ < g_m — now consistent with JC-LOAD's RAW ⟺ δ < g_m
+rather than contradicting it, and the C4 counter-configuration
+(g_m = 1, δ = 1: deg A = 1 vs deg c̃ < 1) is resolved as a
+congruence, not an equality); Annex #5's boxed criterion checked
+against JC-SCAL/JC-SPAN (degree-< g_m representatives vs u·y^δ);
+Annex #6's (RM) re-derived (free rank-one coefficient maps multiply
+through the anchor product) and the (DMULT-w) substitution algebra
+re-checked (a_{λ+μ} cancels, multiplier u/(a_λa_μ) ∈ K_m^* depends
+on the two lines only), with the e_m = 1 branch honestly left at
+JC-SPAN's top-flat bound; Annex #7 is a status-record supersession
+(record-grade); Annex #8's scoping checked (REALIZE supplies
+weight-N reads for c ∈ K^* only; the zero polynomial has no
+weight N). Transcribed unaltered per the standing division of labor.
+Ledger: row 22 → all five repairs folded, awaiting sol discharge
+(cert3).)*
