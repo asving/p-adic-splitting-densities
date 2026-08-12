@@ -1,0 +1,487 @@
+# S-5 design probe — σ-ladder master instance
+
+## Verdict first
+
+**S-6 GO**, with one mandatory redline:
+
+> The master carrier must be a **DVR-backed ladder carrier over the original complete DVR \(O\)**, not a quotient “stage ring” required to be a complete DVR.
+
+Requiring the stage quotient to be a DVR would silently require the current key to be irreducible. That would exclude HE7’s central case, where \(\Psi\) is explicitly *not* assumed irreducible. With the corrected carrier below, none of the five hazards blocks composition.
+
+This is a GO for composing the theorem and its instance records, not an acceptance-grade upgrade.
+
+---
+
+## 1. General-carrier signature draft
+
+### 1.1 Ground and stage data
+
+A carrier \(\mathcal C\) contains:
+
+\[
+\mathcal C=
+(O,K_0,\overline K_0,v,\pi,k_0,\overline k;
+ K,D,\Phi,d,T,n,\operatorname{Pt},\iota).
+\]
+
+The required clauses are:
+
+1. \(O\) is a complete DVR with fraction field \(K_0\), uniformizer \(\pi\), residue field \(k_0=\mathbf F_Q\), and uniquely extended valuation on \(\overline K_0\).
+
+2. \(K/k_0\) is the current finite residue field. It is a field because it is constructed from the preceding irreducible residual labels.
+
+3. \(\Phi\in O[x]\) is monic of degree \(D\).
+
+   **No irreducibility hypothesis on \(\Phi\).**
+
+4. \(d\) is the current integer-normalized value, \(T\in\mathbf Z\) is the inherited disk threshold, and
+   \[
+   n:\mathbf Z\to K_0(x)^\times
+   \]
+   is an exact-height normalizer system satisfying
+   \[
+   d(n(k))=k,\qquad n(0)=1.
+   \]
+
+5. \(\operatorname{Pt}\subseteq\overline K_0\) is the current point class, and every \(\xi\in\operatorname{Pt}\) carries a residue embedding
+   \[
+   \iota_\xi:K\hookrightarrow\overline k.
+   \]
+
+Thus the complete DVR is always the original coefficient ring. A stage quotient may be supplied by an instance when it exists, but is not part of the master hypotheses.
+
+### 1.2 Slot grammar
+
+For every nonzero \(A\in O[x]\) with \(\deg A<D\), the carrier supplies:
+
+\[
+h(A)\in\mathbf Z,\qquad
+\operatorname{dig}(A)\in K^\times,
+\]
+
+with, for every \(\xi\in\operatorname{Pt}\),
+
+\[
+d(A(\xi))=h(A),
+\qquad
+\operatorname{res}\!\left(
+\frac{A(\xi)}{n(h(A))(\xi)}
+\right)
+=
+\iota_\xi(\operatorname{dig}(A)).
+\tag{SLOT}
+\]
+
+It also supplies the ordinary ultrametric lower bound at arbitrary \(\xi\), without claiming exactness outside \(\operatorname{Pt}\).
+
+The important specialization is:
+
+\[
+\boxed{\operatorname{dig}(A)=\gamma_k(A)}
+\]
+
+in the HE6 carrier, where \(k=h(A)\) and \(\gamma_k(A)\) is the normalized coefficient sum from T1(C5), not the sum of bare coefficient residues. If HE6 reads against \(\varpi^k\), the instance must use
+
+\[
+\operatorname{res}\!\left(\frac{A(\xi)}{\varpi(\xi)^k}\right)
+=
+\iota_\xi(\gamma_k(A))\,\eta_\xi^{-q(k)}.
+\tag{HE6-frame}
+\]
+
+### 1.3 Occupied-height and lift domain
+
+The carrier has a predicate
+
+\[
+\operatorname{Full}(k)
+\]
+
+and, only when \(\operatorname{Full}(k)\), an integral lift
+
+\[
+L_k:K\to O[x]_{<D}
+\]
+
+such that, for \(c\ne0\),
+
+\[
+h(L_k(c))=k,\qquad
+\operatorname{dig}(L_k(c))=c,
+\qquad L_k(0)=0.
+\tag{LIFT}
+\]
+
+A block \(B\) declares finite sets
+
+\[
+H_{\mathrm{occ}}(B),\qquad H_{\mathrm{lift}}(B),
+\]
+
+where the first contains all coefficient heights actually read and the second contains all heights at which a digit must be constructed. The decisive domain clause is
+
+\[
+\boxed{H_{\mathrm{lift}}(B)\subseteq
+       \{k:\operatorname{Full}(k)\}.}
+\tag{OCC}
+\]
+
+There is no universal full-slot assertion.
+
+The certified instances discharge `(OCC)` as follows:
+
+- HE6 level 1:
+  \[
+  \operatorname{Full}(k)
+  \iff
+  k\ge(i(k)+e_1(f_1-1))h.
+  \]
+  T1 consumers may use the simpler sufficient domain \(k>D'h\).
+
+- HE7 level 2:
+  \[
+  \operatorname{Full}(k)
+  \quad\Leftarrow\quad
+  m(k)\ge(d_r-1)u+(D'-1)h,
+  \]
+  with the uniform sufficient bound
+  \[
+  k\ge(\ell d_r-1)u+\ell(D'-1)h.
+  \]
+
+At higher stages, `Full` remains a carrier predicate proved by the preceding slot grammar; it must not be replaced by “all integral heights.”
+
+### 1.4 Normalizer cocycle and frame
+
+Define
+
+\[
+\tau(a,b)=\frac{n(a)n(b)}{n(a+b)}.
+\]
+
+The carrier requires
+
+\[
+\tau(0,a)=\tau(a,0)=1,\qquad
+\tau(a,b)\tau(a+b,c)=\tau(b,c)\tau(a,b+c).
+\tag{COC}
+\]
+
+For the current step numerator \(u\), define
+
+\[
+\vartheta_s=
+\operatorname{res}\!\left(\frac{n(u)^s}{n(su)}\right),
+\qquad
+\Theta_s=\vartheta_s^{-1}.
+\]
+
+The master theorem is stated in the **coherent normalizer frame**, using digits against \(n(su)\). A consumer in the multiplicative or canonical frame must provide:
+
+\[
+\Gamma_s=c_s^{\mathrm{mult}}\vartheta_s,
+\qquad
+R_{\mathrm{can}}(Y)=w^mR_{\mathrm{mult}}(Y/w).
+\tag{TWIST}
+\]
+
+Only factor degrees and multiplicities are transported. Literal residual coefficients are not claimed invariant.
+
+For HE7’s mixed normalizers,
+\[
+n_2(k)=\varpi^{m(k)}{\Phi'}^{s(k)},
+\]
+the cocycle residue is the real \(\beta^c\) twist. It is not set to \(1\).
+
+### 1.5 Window, cap, and origin clauses
+
+A block contains a monic polynomial \(F\), an integer \(\mu\ge1\), and a \(\Phi\)-development
+
+\[
+F=\Phi^\mu+\sum_{j<\mu}A_j\Phi^j,
+\qquad \deg A_j<D.
+\]
+
+It must satisfy:
+
+1. \(\deg F=\mu D\) and \(\operatorname{disc}(F)\ne0\).
+
+2. Its roots are exactly the designated block class and lie in `Pt`.
+
+3. The proper-block condition
+   \[
+   \boxed{\Phi\nmid F.}
+   \tag{PROPER}
+   \]
+   If \(\Phi\mid F\), the generic peel is applied first; the master theorem itself retains HE7.A’s proper-block signature.
+
+4. Every block root has finite current label strictly above the inherited threshold:
+   \[
+   T<d(\Phi(\rho))<\infty.
+   \tag{WINDOW}
+   \]
+
+5. For a proxy, truncated, or tower-print polynomial, the instance supplies a `WindowSafe` certificate: inside the declared index window its lower hull and normalized residuals equal those of \(F\).
+
+6. It supplies a `CapSafe` certificate: all omitted or outside-window terms lie strictly above every consumed face, and collection or key carry cannot create a term below such a face.
+
+For actual HE3/HE6/HE7 block factors, the full window makes the last two clauses essentially tautological. They are substantive carrier checks for HETOW and GENTOW4.
+
+If a raw harness residual starts at attained abscissa
+
+\[
+s_{\rm act}=s_{\min}+\nu e,
+\]
+
+the frame record must state
+
+\[
+R_{\rm raw}(Y)=Y^\nu\,a\,R_{\rm norm}(bY),
+\qquad a,b\in K^\times.
+\tag{ORIGIN}
+\]
+
+The master factors \(R_{\rm norm}\), not \(R_{\rm raw}\). It records \(\nu\) separately. Raw and minimal-grid factors agree only when \(z^\nu=1\), not merely by silently taking \(\nu=0\).
+
+### 1.6 Base-change-free test family
+
+For every side of slope \(u'/e'\) and every monic irreducible factor
+\(r'\mid R_{u'/e'}\), the carrier supplies a test polynomial
+
+\[
+\Psi_{u'/e',r'}\in O[x]
+\]
+
+with:
+
+- degree \(D\,e'\deg r'\);
+- disk/label equivalence;
+- local forcing;
+- nonemptiness;
+- disjointness and exhaustion of the side class;
+- Galois equivariance;
+- the corresponding ramification and residue-degree multiplication laws.
+
+All lifts and test polynomials remain in \(O[x]\). Passing from \(K\) to
+\(K[Z]/(r')\) changes only the residue label carrier; it is not a base change
+of \(O\).
+
+### 1.7 Refinement and termination
+
+For a repeated factor \(r'\) of multiplicity at least two:
+
+- if
+  \[
+  e'\deg r'=1,
+  \]
+  then \(e'=1\) and \(r'=Z-s\) with \(s\in K\); `(OCC)` must include the
+  refinement height, and \(L_k(s)\) produces the \(\alpha\)-refined key;
+
+- if
+  \[
+  e'\deg r'\ge2,
+  \]
+  the carrier produces the child ladder carrier, with
+  \[
+  \mu_{\rm child}\le
+  \frac{\mu}{e'\deg r'}\le\frac{\mu}{2}.
+  \]
+
+The state family carries a well-founded measure. Child jumps decrease the
+mass coordinate; \(\alpha\)-refines decrease a secondary finite
+discriminant/slope budget. This is the abstract form of HE7-8 and HE7.C, and
+prevents termination from being assumed merely as prose.
+
+---
+
+## 2. Five-hazard adjudication
+
+| Hazard | Result | Deciding clause |
+|---|---|---|
+| Hypothesis migration | **Survives** | `PROPER`, `WINDOW`, `OCC`, the base-change-free test-family record, and the explicit well-founded step record replace the hidden phrase “arising as a label.” No hypothesis may remain implicit in an instance map. |
+| Instance-strength collapse | **Survives** | The key is only monic, never assumed irreducible; lifts exist only on `Full`; and the repeated branch splits on \(e'\deg r'\), not \(e'\). Requiring a DVR stage quotient, all-height lifting, or splitting on \(e'\) alone would fail this hazard. |
+| Hidden perimeter enlargement | **Survives** | `WindowSafe` and `CapSafe` are explicit instance obligations, while residual multiplicativity is required only on the ladder monomials actually consumed. The master does not assume multiplicativity on every homogeneous initial form or import a higher-order stage-ring theorem. |
+| Convention seam | **Survives** | The master lives in the coherent \(n(k)\)-frame. HE6 enters through \(\gamma_k(A)\eta^{-q(k)}\); HETOW/GENTOW4 enter through \(\vartheta/\Theta\), \(w^mR(Y/w)\), and the separate \(Y^\nu\)/\(z^\nu\) origin bridge. Factor patterns are compared only after normalization. |
+| Grade laundering | **Survives as composition, not acceptance** | Each consumption grade is the meet of the master theorem, carrier constructor, frame bridge, and local instance grades: \(\operatorname{grade}(I)=\min(g_{\rm master},g_{\rm carrier},g_{\rm frame},g_{\rm local})\). Lean theorem application cannot upgrade the documentary arc grade of a supplier. |
+
+### Frames actually used
+
+- **HE7 and HE6R1:** mixed coherent normalizers \(n_2(k)\), with the genuine \(\beta^c\) cocycle.
+- **HE6:** level-one coherent digit \(\gamma_k(A)\); conversion to the \(\varpi^k\)-read includes \(\eta^{-q(k)}\).
+- **HE3.A:** coherent base-stage frame; an available DVR stage quotient is an instance convenience, not a master requirement.
+- **HETOW:** tower print/multiplicative frame, converted to the coherent frame by the T1 cocycle dictionary and then normalized by the \(z^\nu\) origin clause.
+- **GENTOW4:** per-block canonical \(w\)-twisted frame; its four bridges become the slot, window, cap, and frame fields of the instance record.
+
+---
+
+## 3. Lean signature sketch
+
+```lean
+universe uO uK uκ uΩ
+
+open Polynomial
+
+/-- The complete DVR remains the original coefficient ring. -/
+class CompleteDVRData
+    (O : Type uO) (K₀ : Type uK) (k₀ : Type uκ) : Type _ where
+  valuation       : K₀ → WithTop ℤ
+  uniformizer     : O
+  residue         : O →+* k₀
+  complete        : Prop
+  isComplete      : complete
+  -- fraction-field, DVR, and residue-field laws omitted from the sketch
+
+structure SigmaLadderCarrier
+    (O : Type uO) (K₀ : Type uK)
+    (k₀ Kres : Type uκ) (Ω : Type uΩ)
+    [CommRing O] [Field K₀] [Field k₀] [Field Kres] where
+  dvr             : CompleteDVRData O K₀ k₀
+
+  key             : Polynomial O
+  keyMonic        : key.Monic
+  keyDegree       : ℕ
+  keyDegree_pos   : 0 < keyDegree
+  key_degree_eq   : key.natDegree = keyDegree
+  -- Deliberately no `Irreducible key`.
+
+  threshold       : ℤ
+  point           : Ω → Prop
+  residueEmbed    : ∀ ξ, point ξ → Kres →+* Ω
+
+  normalizer      : ℤ → RationalFunction K₀
+  normalizer_zero : normalizer 0 = 1
+  normalizerValue : ∀ k, /* value (normalizer k) = k */
+
+  slotValue       : Polynomial O → ℤ
+  slotDigit       : Polynomial O → Kres
+  slotExact       :
+    ∀ A ξ (hA : A.natDegree < keyDegree) (hξ : point ξ),
+      /* value (A.eval ξ) = slotValue A */
+  slotResidue     :
+    ∀ A ξ (hA : A.natDegree < keyDegree) (hξ : point ξ),
+      /* res (A ξ / normalizer (slotValue A) ξ)
+           = residueEmbed ξ hξ (slotDigit A) */
+
+  fullHeight      : ℤ → Prop
+  lift            : ∀ k, fullHeight k → Kres → Polynomial O
+  lift_degree     :
+    ∀ k hk c, (lift k hk c).natDegree < keyDegree
+  lift_value      :
+    ∀ k hk c, c ≠ 0 → slotValue (lift k hk c) = k
+  lift_digit      :
+    ∀ k hk c, slotDigit (lift k hk c) = c
+  lift_zero       :
+    ∀ k hk, lift k hk 0 = 0
+
+  cocycle         : ℤ → ℤ → Kresˣ
+  cocycle_normal  : ∀ a, cocycle 0 a = 1 ∧ cocycle a 0 = 1
+  cocycle_law     :
+    ∀ a b c,
+      cocycle a b * cocycle (a + b) c =
+      cocycle b c * cocycle a (b + c)
+
+structure SigmaBlock
+    {O K₀ k₀ Kres Ω}
+    [CommRing O] [Field K₀] [Field k₀] [Field Kres]
+    (C : SigmaLadderCarrier O K₀ k₀ Kres Ω) where
+  poly            : Polynomial O
+  monic           : poly.Monic
+  separable       : Discriminant poly ≠ 0
+
+  multiplicity    : ℕ
+  multiplicity_pos : 0 < multiplicity
+  degree_eq       :
+    poly.natDegree = multiplicity * C.keyDegree
+
+  coeff           : Fin multiplicity → Polynomial O
+  development     :
+    poly =
+      C.key ^ multiplicity +
+        ∑ j, coeff j * C.key ^ (j : ℕ)
+  coeff_degree    :
+    ∀ j, (coeff j).natDegree < C.keyDegree
+
+  proper          : ¬ C.key ∣ poly
+  rootsArePoints  : ∀ ρ, /* ρ root of poly */ → C.point ρ
+  aboveThreshold  :
+    ∀ ρ, /* ρ root of poly */ →
+      C.threshold < /* value (C.key.eval ρ) */
+
+  occupiedHeights : Finset ℤ
+  liftHeights     : Finset ℤ
+  occupied_spec   : Prop
+  lift_domain     :
+    ∀ k, k ∈ liftHeights → C.fullHeight k
+
+  windowSafe      : Prop
+  capSafe         : Prop
+  window_ok       : windowSafe
+  cap_ok          : capSafe
+
+  /-- Includes `Γ = c * ϑ`, `Θ = ϑ⁻¹`, the `w`-scaling,
+      and `raw = Y^ν * a * normalized (bY)`. -/
+  frameBridge     : Prop
+  frameBridge_ok  : frameBridge
+
+  testFamily      : BaseChangeFreeTestFamily C poly
+  stepData        : SigmaStepData C poly
+  step_wf         : WellFounded stepData.next
+
+structure HE7AResult
+    {O K₀ k₀ Kres Ω}
+    [CommRing O] [Field K₀] [Field k₀] [Field Kres]
+    (C : SigmaLadderCarrier O K₀ k₀ Kres Ω)
+    (B : SigmaBlock C) : Prop where
+  slopes_gt_threshold : Prop
+  side_lengths_sum    : Prop
+
+  separable_factor_classes :
+    Prop
+    -- |S_{λ,r}| = D * denominator(λ) * degree(r),
+    -- one irreducible O-factor, with multiplied e and f.
+
+  repeated_linear_refines :
+    Prop
+    -- multiplicity ≥ 2 and denominator * degree = 1.
+
+  repeated_non_linear_jumps :
+    Prop
+    -- multiplicity ≥ 2 and denominator * degree ≥ 2.
+
+  recursion_terminates :
+    Prop
+
+theorem HE7_A_master
+    {O K₀ k₀ Kres Ω}
+    [CommRing O] [Field K₀] [Field k₀] [Field Kres]
+    (C : SigmaLadderCarrier O K₀ k₀ Kres Ω)
+    (B : SigmaBlock C) :
+    HE7AResult C B
+```
+
+The important design point is that `proper`, `lift_domain`, `windowSafe`,
+`capSafe`, `frameBridge`, the test family, and termination are visible
+hypotheses. They must not be hidden inside a broad assertion such as
+“`B` is a valid tower block.”
+
+The peel should remain a separate generic lemma:
+
+```lean
+theorem sigma_peel
+    (hdiv : C.key ∣ B.poly) :
+    PeelResult C B
+```
+
+After peeling, `HE7_A_master` applies to the proper remainder.
+
+---
+
+## 4. Final S-6 gate
+
+**S-6 GO. No blocking hazard under this signature.**
+
+The redline is structural: if S-6 implements the blueprint literally as “a complete DVR stage quotient,” the verdict flips to **NO-GO**, blocked by **instance-strength collapse plus hidden perimeter enlargement**, because it imports key irreducibility and recreates the stage-ring obstruction that HE7’s original-\(O\) slot argument was designed to avoid.
+
+The first S-6 consumption check should therefore be: construct the original HE7 level-2 carrier while keeping `keyIrreducible` absent from the generated obligations. If Lean asks for it anywhere, the carrier abstraction is already wrong.
+
+The workspace shell was unavailable during this probe because its sandbox launcher could not start, so the verdict is a statement-design adjudication against the supplied certified sections; the five file-level consumption checks remain part of S-6.
