@@ -1,0 +1,25 @@
+m-1 — Exact `(IDX-TWIST)` equality lacks a lift-choice qualifier.
+
+HE6 says only:
+
+> “Choose, by (LIFT), \(B_t\) …”
+
+with prescribed height and print residue ([HE6 lines 201–207](/data/users/asvin/math-and-lean/p-adic-splitting-densities/lean/notes/openmath/HE6_PROOF_2026-08-08.md:201)). The seam correctly implies that \(\Lambda=-B_0\) has coherent digit \(\sigma\eta^{q(\kappa)}\), but not literally that \(\Lambda\) equals the carrier’s designated \(L_\kappa(\sigma\eta^{q(\kappa)})\). Thus
+
+> \(\Psi_{\kappa,Z-\sigma}=\Phi'-L_\kappa(\sigma\eta^{q(\kappa)})\)
+
+is exact only after a compatible choice \(B_0=-L_\kappa(\sigma\eta^{q(\kappa)})\). For an arbitrary permitted HE6 choice, the two increments differ by height \(>\kappa\).
+
+Classification: minor. The subsequent \(\Lambda\)-based argument explicitly handles this lift freedom and transfers `(RISE)` to the designated lift, so the instance discharge remains sound.
+
+All requested substantive checks otherwise pass:
+
+- HE6’s twist direction and exponent sign are correct.
+- The fixed-unit reindexing is bijective over \(K^\times\).
+- HE3 lines 1114–1135 support the coherent-frame reading ([HE3 line 1114](/data/users/asvin/math-and-lean/p-adic-splitting-densities/lean/notes/openmath/HE3_PROOF_2026-08-08.md:1114)).
+- The rebuilt digit discharge never consumes the print label.
+- The lift-freedom closure is sound.
+- All four superseded r8 strings occur uniquely and all r9 replacements assemble uniquely.
+- The independent `(REF-HT)`/S1.8C route is noncircular; `(LB1)` and `(MP1)` do not leak.
+
+VERDICT: CLEAN | FINDINGS: 0C + 0G + 1m
