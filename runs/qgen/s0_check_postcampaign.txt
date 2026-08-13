@@ -1,0 +1,4 @@
+ADDED (allowed): HETOW_RECON_2026-08-09.md :: LEMMA HETOW-4 #2
+ADDED (allowed): GENTOW2_PROOF_2026-08-09.md :: LEMMA GENTOW2-B″ #2
+CHECK: 178 baseline statements; 0 changed, 0 deleted, 2 added.
+GREEN: every baseline statement byte-stable (normalized).

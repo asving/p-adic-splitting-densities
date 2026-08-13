@@ -4481,3 +4481,20 @@ the 9 changes; the **EFF-T3 revision run is in flight** under it.
 (4) Deferred action item from the cross-read: the GENTOW5-W
 consumption check + dated append (corpus maintenance, next cycle).
 Codex ~63%.
+
+**2026-08-13 APPEND #45a (micro) — S-0 TRIPWIRE GREEN POST-CAMPAIGN;
+LEDGER DELTAS.** The statement-ledger instrument
+(verification/openmath/statement_ledger.py --check), flagged stale
+by the 0b completeness sweep, RUN against the working tree at HEAD:
+**GREEN — 178/178 baseline statements byte-stable (normalized), 0
+changed, 0 deleted, 2 allowed additions** (the S-2 absorption
+re-displays). The compression campaign provably never weakened a
+statement. The 0b completeness sub-sweep returned 15 further delta
+obligations (TIER-1 headliners: HEX3-BOX-1 open AND consumed by
+GENIND's W-12.B clause; the W-1 transport ATTEMPT row; GENTOW5_WI
+grade contradiction (0/2 at HEAD vs the ledger's NODE disposition);
+the n=2 exact unit NEVER adversarially passed; EFF-shard
+source-designation refutations of ledger rows) — all queue into the
+HYPLEDGER v3 fold after the v2 recompile lands. Corpus-maintenance
+batch queued: GENTOW5-W consumption check + ABS-G5W append + T4
+consumption checks + the n=2 codex pass.
