@@ -315,8 +315,12 @@ window* `N` — that is exactly what makes them class properties (`CertSplit_con
 what "decided" can be read off. `CertSplit` is Newton's condition `v(F) > 2v(F')` at a centre
 with `2v(F') < N`; `CertRam` is "the value has exact ODD valuation `< N` and the derivative is
 at least half of it"; `CertInert` is "the value has valuation `2k < N`, the derivative at least
-`k`, and the residual binary form `y² + b₁y + b₀` is anisotropic mod `𝔪`" (`Anisotropic` is the
-QuadCert predicate). Anisotropy forces `b₀` to be a unit, so the valuation `2k` in `CertInert`
+`k`, and the residual data `(b₀, b₁)` is anisotropic mod `𝔪`". Here `Anisotropic ![b₀,b₁]` is
+the QuadCert predicate on the *binary form* `Q(u,v) = u² − b₁uv + b₀v²` ("its only zero mod `𝔪`
+is `(0,0)`"), which is equivalent to the *residual quadratic* `y² + b₁y + b₀` having no root mod
+`𝔪` — the two are related by `z = −u/v` (`exists_residual_root` proves the direction used).
+`y² + b₁y + b₀` is the shape that appears in the recentring identity
+`F(γ + π^k z) = π^{2k}(z² + b₁z + b₀)`; the sign flip between it and `Q` is not a typo. Anisotropy forces `b₀` to be a unit, so the valuation `2k` in `CertInert`
 is automatically exact. **What is NOT claimed:** the certificates are not asserted to be
 exhaustive of decidedness — only that *if no centre is deeply tangent* one of them fires
 (`cert_of_not_tang`). The numeric check `verification/drainage_check.py` shows the criterion is
@@ -465,11 +469,18 @@ Exactly four shapes are possible, and the fourth is self-defeating:
 | `v(F)` odd, `≤ 2v(F')` | `CertRam` — norms of valuation `2` and of odd valuation, `gcd = 1` | ram |
 | `v(F) = 2k ≤ 2v(F')`, residual irreducible | `CertInert` — all norm valuations even | inert |
 | `v(F) = 2k`, residual with a SIMPLE root | recentre at `γ + π^k z` ⟹ `CertSplit` | split |
-| `v(F) = 2k`, residual with a DOUBLE root | **impossible**: recentring reaches depth `2k+1 > T`| — |
+| `v(F) = 2k`, residual with a DOUBLE root | **impossible**: recentring reaches depth `2k+1` | — |
 
 The last line is the whole trick — the classical Montes/Okutsu refinement loop is replaced by
 the observation that a refinement step *increases* `min(v(F), 2v(F'))`, so at the maximiser
-there is nothing left to refine. Each certificate mentions only data with exponent `< N`
+there is nothing left to refine. *(Two bookkeeping points a verifier will ask about, both
+handled in the Lean and worth stating explicitly. **The endpoint.** "Contradicts maximality of
+`t`" is the right reason only when `t + 1 < N`; at `t + 1 = N` what it contradicts is the
+hypothesis that no centre reaches depth `N`. The Lean does not case-split: `exists_max_step`
+returns `t` **together with** `¬ ∃γ, Tang π a (t+1) γ`, which at the endpoint *is* the
+hypothesis. **The choice.** In §3B's counting step, "the map class ↦ (γ mod π^M, a₁ mod π^{2M})"
+is not literally a map until one witness pair `(a, γ)` is selected per undecided class; the Lean
+selects with `choose`, and the pinning lemma then shows any such selection is injective.)* Each certificate mentions only data with exponent `< N`
 (`2w+1 ≤ N`, `2j+2 ≤ N`, `2k+1 ≤ N`), so it survives verbatim on every other lift of the class
 (`CertSplit_congr`, `CertRam_congr`, `CertInert_congr`) — and a certificate determines the
 type, which is what "decided" means.
@@ -512,6 +523,24 @@ two further ingredients, neither of which this unit attempted (both are recorded
   (uniqueness of the centre mod `π^{(u+1)/2}` plus disjointness across `u`).
 
 Given drainage, either one of these plus the other's value pins all three: `2·split + ram = 1`.
+
+### 3B.4 What "the bracket closes" does and does not say
+
+*(Adversarial-verifier finding, Codex, 2026-08-13 — logged because it is exactly the kind of
+over-reading this repo's honesty invariant exists to prevent.)*
+`upperDensity O 2 σ = genuineDensity O 2 σ` says that the **inner** approximation of the type-σ
+locus (unions of decided cylinders) and the **outer** one (intersections of possible cylinders)
+have the same limit. It does **not**, as a Lean theorem, say that this common value is the
+**Haar measure** of the type-σ locus. That bridge would additionally need: level-`N` cylinders
+have measure `q^(−nN)`; the inner union and outer intersection are measurable; the locus itself
+is measurable (or the measure is completed so that subsets of the null boundary are); and the
+locus is sandwiched between the two. Mathematically the vanishing bracket is precisely the
+null-boundary input such a bridge needs and every remaining step is standard — but none of it is
+formalized here. Formally, `genuineDensity` is the limit of decided proportions, full stop; and
+since that is also what the capstone `UniformityStatement` quantifies over, **nothing downstream
+depends on the bridge**. It is recorded as an optional, not a blocking, item. Where this note
+(§1) speaks of "Haar-measure boxes" and "the true measure", read those as motivation, not as
+formalized content.
 
 ---
 

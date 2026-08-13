@@ -14,8 +14,12 @@ splitting type `σ` and degree `n = 2`, the undecided mass drains:
     UndecidedVanishes O 2 σ                    (`drainage_two`)
 
 hence, by the tie already in `GenuineDensity.lean`, `upperDensity O 2 σ = genuineDensity O 2 σ`
-(`upperDensity_eq_two`) — the bracket closes and the level-`N` decided proportion converges to
-*the* density. The exact-value payoff that follows is
+(`upperDensity_eq_two`) — the inner approximation of the type-σ locus (decided cylinders) and
+the outer one (possible cylinders) have the same limit. *(Read that as stated: it identifies two
+limits of cylinder counts. It is NOT a formal statement that the common value is the Haar
+measure of the type-σ locus — that bridge needs measurability of the locus and of the
+approximations, and is not formalized here. Nothing downstream needs it: `genuineDensity` is
+what the capstone quantifies over.)* The exact-value payoff that follows is
 
     genuineDensity O 2 split + genuineDensity O 2 inert + genuineDensity O 2 ram = 1
                                                (`sum_three_densities_eq_one`)
