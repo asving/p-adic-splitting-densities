@@ -25,3 +25,5 @@
 [22:47:05] HYPLEDGER exit 0 (40790 B; HYPLEDGER: 80 rows / 20 carry-proposed / 15 math / 16 open calls)
 [22:50:55] EFFT3R start
 [23:00:13] EFFT3R exit 0 (55489 B; EFF-T3 v2 COMPILED: 36 statements / 37 xrefs verified / 1 open calls)
+[23:18:38] HYPLEDGER2 start
+[23:37:58] HYPLEDGER2 exit 0 (170 B; HYPLEDGER v2: 135 rows / 43 carry / 17 math / 8 needs-Asvin)
