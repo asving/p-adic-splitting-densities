@@ -3507,3 +3507,161 @@ The five minors are bookkeeping and citation hygiene: `HE6-FAMILY` becomes the f
 **Landmark census for this round.** Sixteen master-internal landmark strings, on fifteen lines, each returning **1** under `sed -n '1,3293p' … | grep -cF` on 2026-08-13: lines 1444, 2728, 2756, 2860, 2861, 2862, 2942, 2945, 2949, 2965, 3035, 3049 (two strings — the superseded configuration clause and the sub-block clause left standing), 3087, 3109 and 3123. Eleven source lines, each returning **1** under `grep -cFx`: `HE3_PROOF_2026-08-08.md` 1151, 1152, 1156, 1167; `HE6_PROOF_2026-08-08.md` 201; `HE7_PROOF_2026-08-08.md` 918, 919, 924, 926, 928, 1090. Six span delimiters re-verified at **1**: HE3 1092 and 1205; HE7 812 and 951; HE7 1087 and 1128.
 
 Gap-or-worse repairs reset the clean count (S7: "A gap-or-worse repair resets the clean count"). **The clean-pass counter is RESET to 0 of 2.** The acceptance gate still owes **TWO consecutive clean hostile passes** over the r7 effective text before this note may leave attempt grade \(0/2\); the status line therefore stays "mathematical composition draft, attempt grade \(0/2\)", and by `(GRADE)` every composed instance stays \(0/2\) regardless of supplier grade.
+
+---
+
+## r8 (2026-08-13): the level-one (RISE) discharge made joint at one step, and S1.8C's `(REF-HT)` entry points brought into agreement
+
+*(Opus/Claude repair arm, against the r7 hostile pass of record `runs/comp13/T2P7_output.log` — 0 CRITICAL + 1 GAP + 2 minor, plus 2 recorded nits; counter resets.)*
+
+**Verification protocol for this round.** Every source line quoted below was checked on 2026-08-13 by exact-full-line search (`grep -cFx`) in the named accepted source file, with the count and the source line number recorded at the point of use. No source file is edited by this round; the expected source edit count remains zero, and no pin is added or removed, so the expected pin count remains 32. No Source-pin line is amended either: the three pins this round cites — `HE3-A-PROOF`, `HE6-FAMILY`, `HE6-PROOF` — already stand on both level-one records' lines (S3.1, line 2858; S3.2, line 2859) and, since r7 repair 5, on the three level-two lines as well. Landmarks internal to this master are quoted from the **r7 effective text**, and their uniqueness is recorded in the form `sed -n '1,3509p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<string>'` → **1**; the line bound 3509 is the last line of the r7 round and excludes this round's own re-quotations, which would otherwise inflate every count.
+
+**What the GAP is, and what it is not.** The pass certified the whole of r7's architecture except its order of assembly at one instance. It certified that (RISE) \(\Rightarrow\) (HT) is the exact contrapositive of the min-rule display and is sound one way; that HE3's stage-α lines 1151/1152/1156 give (RISE) at level one and LEMMA HE7-13's 926/928 derive it at level two; that all four r7 withdrawals are orphan-free; that the statement change is hypothesis-only with all five instances pin-covered; and the whole of the strict assembly. What it refuted is the level-one discharge's assembly order. The master's product-\(1\) new key is \(\Phi_{\mathrm{new}}=\Phi-L_k(s)\) at an index \(k\) the display leaves free (S1.8, line 578, unamended by any round), while the passage's conclusion is about HE3's \(\Phi''\); r7's discharge read the second as the first without ever exhibiting the step that both are about, so the only visible route from the passage to the master's (RISE) ran through (HT) — the clause r7 derives from (RISE). Repair 1 rebuilds the discharge in the only order that is not a circle: the instance's step is exhibited FIRST, as a recentering of this master's form at an index its own construction fixes and this master does not choose; (RISE) is then the passage's conclusion about that step, read with no height in the reading; and (HT) at that step follows, on two independent grounds neither of which is the theorem's (HT) clause. Nothing downstream changes in content: the two clauses, their honest status, and everything S1.8B Step 1 and r6 repair 6's scope clause consume are as r7 left them.
+
+---
+
+## r8 repair 1 — G-1P7 (GAP): the level-one discharge exhibits its step first and supplies both clauses of `(REF-HT)` at it, and S1.8C's entry-point claim is corrected
+
+**The finding repaired.**
+
+> the level-one (RISE) discharge supplies no non-circular route from the master's unbound lift height k to the passage's refine slope λ, and r7's own non-circularity paragraph is false of the effective text at four installed sites. … For the passage's conclusion (the D′m-root sub-block sits strictly above λ in P(F″)) to BE the master's (RISE) for Φ_new, one needs k = λ. That is exactly (HT), which r7 derives from (RISE). … "(REF-HT) enters S1.8C only at reading directive 2" is false at four installed sites of S1.8C, three of which are upstream of the match … and, decisively, the honest-status sentence of the same subsection — installed text, NOT superseded by r7 — which credits the configuration match itself to (REF-HT).
+
+**Accepted on both halves.** The substantive half is accepted as stated: r7's bullet asserts the passage's conclusion IS this master's (RISE) without ever exhibiting the object both statements are about, and with the height identification left to (HT). The textual half is accepted as stated: the entry-point claim is false at 3033, 3081, 3085 and 3098, and 3098 is an orphaned dependent of r7 repair 4's withdrawal. One correction to the report, recorded because the repair turns on it: the report's one-sentence cure ("HE3's stage-α recenters at its own λ by construction") is **not** available as a quoted formula. The pinned span states the node's refine datum and names the key formed there; the increment's height is displayed only by LEMMA HE3-2, whose unit is HE3 §S5 and which r7 repair 4 fenced out of every consumption. What IS available inside the pins is stronger in one respect and weaker in another, and the repair installs both legs with their status marked.
+
+**(a) The level-one discharge, restated so that the step comes first.** In the honest-status list installed by r7 repair 1(c), replace
+
+> **Level one** (S3.1/S3.2): supplied inside the existing pin `HE3-A-PROOF`, whose §S6.3 stage-α step is the passage S1.8C quotes and whose configuration contains this master's product-\(1\) branch.
+
+by
+
+> **Level one** (S3.1/S3.2): supplied at the instance's own refine step, inside the existing pins `HE3-A-PROOF` and — for S3.2's enlarged classes — `HE6-FAMILY` and `HE6-PROOF`. Both clauses are properties of that one step, and the step is exhibited before either clause is read. `HE3-A-PROOF`'s §S6.3 stage-α step is the passage S1.8C quotes, and its configuration contains this master's product-\(1\) branch. That step is a recentering of this master's own form at an index its construction fixes and this master does not choose: at \(\ell=1\) DEFINITION HE6-1's family IS the family of these recenterings — `> monic of degree D″ := D′ℓd (each B_tΦ′^{ℓt} has degree < D′ℓd). For ℓ = 1` (`HE6_PROOF_2026-08-08.md`:209), `> this is HE3's recentered-key family enlarged in DEGREE; for ℓ ≥ 2 it is a` (210) — and that family's recipe puts the increment of the member indexed by \((\kappa,r)\) at the index's own height: `> **DEFINITION HE6-1 (THE ENLARGED TEST FAMILY).** Let κ = u/ℓ ∈ ℚ in lowest` (201), `> terms with κ > D′h, and let r = Z^{d} + Σ_{t<d}c_tZ^t ∈ K[Z] be monic` (202), `> deg B_t < D′, dv(B_t) = (d−t)u and res(B_t(θ)/ϖ(θ)^{(d−t)u}) = c_t (and` (204). At \((\ell,d)=(1,1)\) and \(r=Z-s\) that reads \(\Psi_{\kappa,Z-s}=\Phi'+B_0\) with \(u=\ell\kappa=\kappa\), \(\deg B_0<D'\), \(d(B_0)=\kappa\) and residue \(c_0=-s\): this master's \(\Phi-L_\kappa(s)\), at the family's own index \(\kappa\), with the recipe's standing \(\kappa>D'h=T\) placing it inside `(WINDOW)` before any clause of `(REF-HT)` is read. **No height is asserted of \(\kappa\) here, and none is needed to read the clause that follows.** (RISE) at that step is the passage's own conclusion, stated of \(\Phi''\) with no height in the reading.
+
+**(b) The alternative-height sentence, restated as the two height legs it has to be.** In the same bullet, replace
+
+> A recentering at \(k\ne\lambda\) is excluded there by the display above rather than by fiat: it leaves every root of the class at \(d=\min(\lambda,k)\le\lambda\), so the class contributes nothing strictly above \(\lambda\), the sub-block does not travel, and the floor does not increase.
+
+by
+
+> **(HT) at that same step**, on two grounds, neither of them the theorem's own (HT) clause. FIRST, reading no index at all. The display above is a statement about every \(k\) alike, and its inputs hold of this step: \(\deg B_0<D'=D\) and the class's roots lie in \(\operatorname{Pt}\) (S1.5), so `(SLOT-V)` and `(LIFT)` give \(d(B_0(\rho))=\kappa\) at them, while \(d(\Phi(\rho))=\lambda\) on the class by `(SIDE-COUNT)` as S1.8 derives it. At any index \(\kappa\ne\lambda\) the display leaves every root of the class at \(d=\min(\lambda,\kappa)\le\lambda\), so the class contributes nothing strictly above \(\lambda\), the sub-block does not travel, and the floor does not increase — which is not what the passage states of \(\Phi''\). Hence \(\kappa=\lambda\), and the step is \(\Phi-L_\lambda(s)\). This is this master's (RISE) \(\Rightarrow\) (HT) implication run AT the instance, on an instance-supplied premise whose reading used no height; it is not the theorem's (HT) clause imported to license that reading, and the direction of use is the safe one — the master's generality in \(k\) is INSTANTIATED here, not transferred. SECOND, and independently of the display: the passage forms its key at its own refine datum — `*Stage-α step.* If the read refines at (λ, s) (a residual root of` (`HE3_PROOF_2026-08-08.md`:1149) and then `LEMMA HE3-2(b) the recentered key Φ″ has a polygon whose portion above` (1151) — so the member of DEFINITION HE6-1's family that the read uses at that node is the one indexed by \((\lambda,Z-s)\), whose increment sits at \(d=\lambda\) by the recipe above. This second ground is a **reading of the passage's index, not a quoted formula**: the pinned span states the node's datum and names the key formed there, and does not display the increment's height, that display belonging to LEMMA HE3-2, which r7 repair 4 fenced out of every consumption and which nothing here revives. It is recorded as corroboration; the first ground carries the leg. Both clauses are therefore properties of one and the same instance step, and neither is obtained from the other through the theorem's hypothesis suite: (RISE) is the passage's conclusion about \(\Phi''\), read with no height, and (HT) is a property of that step established at the instance.
+
+**(c) S1.8C's honest-status sentence, the orphaned dependent.** In S1.8C, replace
+
+> Derived master-side: the configuration match (through `(REF-HT)`), the key-freeness of (i)–(vi) read off the pinned displays, and the composition of the passage with the S3.1/S3.2 substitutions.
+
+by
+
+> Derived master-side: the configuration match — which invokes no clause of `(REF-HT)`, resting instead on S1.8's own case split \(e'\deg r'=1\) and on \(e'=1\Rightarrow\lambda=u'/e'=u'\in\mathbf Z\) in lowest terms, as r7 repair 4 rebuilt it — the key-freeness of (i)–(vi) read off the pinned displays, and the composition of the passage with the S3.1/S3.2 substitutions.
+
+**(d) The non-circularity paragraph, made true of the effective text.** Replace r7 repair 1's
+
+> **Non-circularity.** The level-one discharge above uses S1.8C's configuration match, which after repair 4 below invokes no clause of `(REF-HT)`; `(REF-HT)` enters S1.8C only at reading directive 2, downstream of the match.
+
+by
+
+> **Non-circularity, stated of the effective text.** The level-one discharge above establishes both clauses at the instance's own step and neither from the other: (RISE) is the passage's conclusion about \(\Phi''\), whose reading uses no height, and (HT) at that step follows at the instance from that conclusion through this master's own display, corroborated by the passage's index. S1.8C's configuration match invokes no clause of `(REF-HT)`, as r7 repair 4 rebuilt it and as the honest-status sentence now records. The claim that "`(REF-HT)` enters S1.8C only at reading directive 2" is **withdrawn** as false: three sites of S1.8C carry the \(\lambda\)-index upstream of the match — the subsection's setup sentence (r6 effective text line 3033), the degree bookkeeping at (vi) (3081), and the family-member identification (3085). What is true, and is all the discharge needs, is that no claim made at those three sites depends on the index being \(\lambda\): 3081's is \(\deg L_k(s)<D'\), which S1.4 gives at every \(k\); 3085's is that a recentered level-one key is the \((\ell,d)=(1,1)\) member of DEFINITION HE6-1's family at the index it carries, which is that family's recipe at every index; and 3033's is the setup, naming the configuration under discharge. The \(\lambda\) written at those sites is the name of the step's own height, fixed at the instance by the discharge above and by no clause of `(REF-HT)`. Reading directive 2 no longer cites `(REF-HT)` either (repair 4(b) below), so after this round no clause of `(REF-HT)` is a premise anywhere in S1.8C.
+
+**Verification remark (source).** On 2026-08-13, `grep -cFx` returned **1** for each source line quoted in this repair, in the file and at the line shown. In `lean/notes/openmath/HE6_PROOF_2026-08-08.md`, lines 202, 204, 209 and 210, all strictly inside the `HE6-FAMILY` unit whose quoted first delimiter is line 201 (itself returning **1**) and whose last line is fixed by S0.2's boundary rule at 213, immediately before the next `>`-unit LEMMA HE6-0″ (215). In `lean/notes/openmath/HE3_PROOF_2026-08-08.md`, lines 1149 and 1151, both strictly inside the `HE3-A-PROOF` span whose delimiters `### S6.3 PROOF OF THEOREM HE3.A` (1092) and `leaf's history, so THEOREM HE3.A is proved. ∎` (1205) each returned **1**; line 1149 is already inside r6 repair 2's verified list for this span, and 1151 is already quoted by r7 repair 1. Every consumption of this repair lies inside a span of `(PINS)`, as the standing S7 consumption check demands, and nothing of LEMMA HE3-2's own statement is consumed.
+
+**Verification remark (landmarks).** Under `sed -n '1,3509p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<the quoted string>'` on 2026-08-13, each of the four superseded strings returned **1**: the level-one discharge's opening sentence (line 3353), the alternative-height sentence (3353, the same line's later sentence), S1.8C's honest-status clause (3098) and r7's non-circularity sentence (3361).
+
+---
+
+## r8 repair 2 — m-1P7 (minor): the three surviving "derived from three S1 data" sentences booked, with the elided clause inside the sentence r7 already booked
+
+**The finding repaired.**
+
+> r6's counter and r6 repair 1's lead prose still describe the height binding as derived from three S1 data alone; r7 booked only the adjacent sentence of the same counter paragraph. … Booking one clause of a paragraph and leaving its three siblings — one of them inside the booked sentence — is inconsistent supersession bookkeeping.
+
+Accepted. Four live sentences, all r6 round prose, make the same now-incomplete claim; r7 booked one of them. They are booked here together and on one uniform footing — each is r6's own record of r6, is left standing as such, and is superseded in substance by the (RISE)+(HT) architecture:
+
+> Repair 1 binds the height from the master's own `(SIDE-COUNT)`, `(SLOT-V)` and `(LIFT)`, as `(REF-HT)`.
+
+(line 2922, r6's lead-in);
+
+> The binding is derivable at the master's own generality from three data already displayed in S1: `(SIDE-COUNT)`, `(SLOT-V)`, and `(LIFT)`.
+
+(2934, r6 repair 1);
+
+> the refinement height of the product-\(1\) recentering is bound to the side's own slope, derived from `(SIDE-COUNT)`, `(SLOT-V)` and `(LIFT)` rather than named
+
+(3287, r6's counter); and, inside the very sentence r7 elides with "…" at 3359,
+
+> `(REF-HT)` binds a parameter that clause 3 and S1.8 already quantified over without naming a value
+
+(3289, the same counter).
+
+**What the correction is, once for all four.** The three S1 data derive the min-rule DISPLAY — \(d(\Phi(\rho))=\lambda\) on the class by `(SIDE-COUNT)`, \(d(L_k(s)(\rho))=k\) by `(SLOT-V)` + `(LIFT)`, hence \(d(\Phi_{\mathrm{new}}(\rho))=\min(\lambda,k)\le\lambda\) at \(k\ne\lambda\) — and that display is an IMPLICATION, converting (RISE) into (HT). It binds nothing on its own, because it is silent on whether any value rises: the three data are as true at \(k\ne\lambda\), where the class does not rise, as at \(k=\lambda\). The binding needs a fourth datum, the stipulated (RISE), which r7 displays and discharges per instance. The last of the four sentences is superseded on a second count as well: in the r7 form `(REF-HT)` does not only bind a parameter already quantified over — it adds the hypothesis clause (RISE) to the root-preserving continuation suite, which is exactly why r7's counter books a theorem-statement change and r6's counter, correctly for r6, did not.
+
+**Verification remark (landmarks).** Under `sed -n '1,3509p' … | grep -cF` on 2026-08-13, each of the four sentences returned **1**, at lines 2922, 2934, 3287 and 3289 respectively.
+
+---
+
+## r8 repair 3 — m-2P7 (minor): the HE6 leg invoked inside the level-one discharge, with its caveat addressed
+
+**The finding repaired.**
+
+> the level-one (RISE) discharge is scoped to "(S3.1/S3.2)" but cites only `HE3-A-PROOF`; the HE6 leg that licenses running HE3's stage-α with HE6's classes is not invoked. … The licence exists and `HE6-PROOF` is already on S3.2's Source-pin line (2859), so this is a citation completeness defect, not a missing pin; but by the note's own r6 standard the S3.2 half of the (RISE) discharge is uncited, and the licence carries a caveat the discharge does not address.
+
+Accepted. Repair 1(a) above puts `HE6-FAMILY` and `HE6-PROOF` on the discharge's own citation line; the licence itself and its caveat are installed here, in the same bullet. Replace
+
+> That sub-block is this master's refined class, as S1.8C says in the same breath:
+
+by
+
+> **The S3.2 half of the scope.** S3.1 is HE3 and S3.2 is HE6, whose family is enlarged beyond HE3's, so the stage-α reading above has to be licensed for HE6's classes before the discharge may be scoped to both. It is, in the closing paragraph of the pinned proof unit of THEOREM HE6.A: `**This is HE3's LEMMA HE3-4 in full generality**, so HE3's THEOREM HE3.A` (`HE6_PROOF_2026-08-08.md`:663), `assembly (§S6.3 there: base read + stage-α + stage-CS + embedded genres) may` (664), `be run with HE3-4 replaced by THEOREM HE6.A — with the one caveat of §S7 for` (665), `histories containing an ℓ ≥ 2 side with a repeated residual factor.` (666) — the same quoted pair S1.8C already leans on, naming **stage-α** explicitly. The caveat is not consumed by this discharge: an \(\ell\ge2\) side with a repeated residual factor is \(e'\deg r'\ge2\), the product-\(\ge2\) child jump of clause 3, whereas the step under discharge is the product-\(1\) refine step, \(e'\deg r'=1\); S1.8C records the same routing for the frame discharge, and S3.2's own text sends that configuration to the level-two construction. That sub-block is this master's refined class, as S1.8C says in the same breath:
+
+**Verification remark (source).** On 2026-08-13, `grep -cFx` returned **1** for each of `HE6_PROOF_2026-08-08.md` lines 663, 664, 665 and 666, all inside the `HE6-PROOF` span 639–666 whose delimiters `### S6.2 PROOF OF THEOREM HE6.A` (639) and `histories containing an ℓ ≥ 2 side with a repeated residual factor.` (666) r6 repair 2 declared and each of which returned **1** again here.
+
+**Verification remark (landmark).** The superseded sentence returned **1** under `sed -n '1,3509p' … | grep -cF` on 2026-08-13 (line 3353); it is quoted rather than inlined into the command because it contains an apostrophe.
+
+---
+
+## r8 repair 4 — the two recorded nits
+
+**(a) n-1: the r7 lead-in lists (HT) among the stipulations.** The report:
+
+> The r7 lead-in installed at 3321 … lists (HT) among the stipulations before the trailing clause demotes it. … Self-correcting within the sentence, but the two readings are not the same theorem.
+
+Accepted; the sentence is the one place a reader meets `(REF-HT)` for the first time, so it must not misdescribe which clause is stipulated. In r7 repair 1(a)'s replacement text, replace
+
+> The recentering at this branch is a REFINE step, and this master stipulates of a refine step both that it raise the key's value on the class it refines and that its increment sit at the side's own slope — the second a consequence of the first, derived below:
+
+by
+
+> The recentering at this branch is a REFINE step, and this master stipulates of a refine step ONE thing: that it raise the key's value on the class it refines. That its increment then sits at the side's own slope is not a second stipulation but a consequence of the first, derived below. Both are displayed, because both are consumed downstream:
+
+**(b) n-2: reading directive 2 cites `(REF-HT)` for a proposition neither clause contains.** The report:
+
+> Reading directive 2 (3105) cites `(REF-HT)` for a proposition neither of its two clauses contains … The support is the lowest-terms convention (λ = u'/e' integer ⟺ e' = 1) plus the "Two consequences" sentence at 2967, not (RISE) or (HT).
+
+Accepted, and cured rather than retained: with repair 1(d) above the directive is the last `(REF-HT)` citation left in S1.8C, and it is a mis-citation. In S1.8C's reading directive 2, replace
+
+> The passage's configuration is a repeated \(K\)-rational residual root at an integer slope; by `(REF-HT)` that is clause 3's product-\(1\) branch, the only transition of `(RANK)` that recenters a key.
+
+by
+
+> The passage's configuration is a repeated \(K\)-rational residual root at an integer slope; that is clause 3's product-\(1\) branch by S1.8's own case split, since a \(K\)-rational residual root has \(\deg r'=1\) and an integer \(\lambda=u'/e'\) in lowest terms forces \(e'=1\), so \(e'\deg r'=1\) — the only transition of `(RANK)` that recenters a key. Neither clause of `(REF-HT)` is used here: (RISE) and (HT) are about the step this branch performs, not about which branch is taken.
+
+**Consequential booking.** r7 repair 4's closing clause
+
+> `(REF-HT)` still governs reading directive 2, downstream of the match.
+
+is superseded on that clause alone: after (b) above, `(REF-HT)` governs neither the match nor the directive, and the rest of r7 repair 4's paragraph — the withdrawal of the "only at an integer slope" claim and the re-based configuration sentence — stands unchanged.
+
+**Verification remark (landmarks).** Under `sed -n '1,3509p' … | grep -cF` on 2026-08-13, each of the three superseded strings returned **1**: the r7 lead-in (line 3321), reading directive 2's proposition (3105) and r7 repair 4's closing clause (3431).
+
+---
+
+## r8 counter
+
+r8 folds repairs for the single GAP (G-1P7), both minors (m-1P7, m-2P7) and both recorded nits of the r7 hostile pass of record. Its substantive content is one object, and it is an assembly order rather than a new claim: the level-one discharge of (RISE) now exhibits the instance's refine step BEFORE reading either clause off it. The step is a recentering of this master's form at an index its own construction fixes — DEFINITION HE6-1's family at \(\ell=1\) IS the family of HE3's recenterings, and its recipe puts the \((\ell,d)=(1,1)\) member's increment at the member's own index, above \(D'h=T\) — so (RISE) is the passage's conclusion about that step, read with no height, and (HT) at that step follows at the instance from (RISE) through this master's own display, corroborated by the passage's own refine index. Neither clause is obtained from the other through the theorem's hypothesis suite, and the master's generality in \(k\) is instantiated at the instance rather than transferred to it. Two textual consequences: S1.8C's honest-status sentence no longer credits the configuration match to `(REF-HT)`, and the false claim that `(REF-HT)` "enters S1.8C only at reading directive 2" is withdrawn and replaced by a true one — three upstream sites carry the \(\lambda\)-index, every claim made at them holds at every index, and after repair 4(b) no clause of `(REF-HT)` is a premise anywhere in S1.8C.
+
+**No theorem-statement change is made by this round**, in the exact sense S7 counts: no display is amended, no hypothesis is added to or removed from HE7.A's suite, no case is added or dropped, and no conclusion is touched. (RISE) and (HT) read exactly as r7 set them; (RISE) remains STIPULATED, on r4 repair 3's `(SEC-RANK)` footing, and (HT) remains DERIVED from it by the min-rule display. r7's own statement change — (RISE) joining the root-preserving continuation assertions — stands as r7 booked it. What this round changes is the discharge of (RISE) at level one, one citation in a reading directive, and four items of supersession bookkeeping.
+
+The minors and nits: the level-one discharge is now cited for both halves of its "(S3.1/S3.2)" scope, `HE6-PROOF`'s closing paragraph supplying the licence to run HE3's stage-α with HE6's classes and its \(\ell\ge2\)-with-repeated-residual caveat being routed to the product-\(\ge2\) branch that this step is not; the four r6 sentences describing the binding as derived from `(SIDE-COUNT)`, `(SLOT-V)` and `(LIFT)` alone are booked together, with the correction stated once — those three data derive the implication, not the binding, which needs (RISE) as a fourth datum; the `(REF-HT)` lead-in no longer lists (HT) among the stipulations; and reading directive 2 is re-cited to S1.8's own case split and the lowest-terms integrality that actually support it.
+
+**Two named obligations remain open**, both at level one: `(LB1)` for clause-4 block construction, and `(MP1)` for the clause-5 peel at a recentered key. (RISE) is a carrier hypothesis, not a ledger obligation: it fences no instance read, and both instance families discharge it from pins already on their lines. No pin is added or removed, no Source-pin line is amended, and no source file is edited, so the expected pin count stays 32, the expected synthetic-marker count stays zero, and the expected source edit count stays zero.
+
+**Landmark census for this round.** Twelve master-internal landmark strings, on eleven lines, each returning **1** under `sed -n '1,3509p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<string>'` on 2026-08-13: lines 2922, 2934, 3098, 3105, 3287, 3289, 3321, 3353 (three strings — the discharge's opening sentence, the sub-block sentence, and the alternative-height sentence), 3361 and 3431. Nine source lines, each returning **1** under `grep -cFx`: `HE3_PROOF_2026-08-08.md` 1149 and 1151; `HE6_PROOF_2026-08-08.md` 201, 202, 204, 209, 210, and 663–666 counted as four. Four span delimiters re-verified at **1**: HE3 1092 and 1205; HE6 639 and 666; plus `HE6-FAMILY`'s quoted first delimiter, HE6 201, whose unit ends at 213 by S0.2's boundary rule.
+
+Gap-or-worse repairs reset the clean count (S7: "A gap-or-worse repair resets the clean count"). **The clean-pass counter is RESET to 0 of 2.** The acceptance gate still owes **TWO consecutive clean hostile passes** over the r8 effective text before this note may leave attempt grade \(0/2\); the status line therefore stays "mathematical composition draft, attempt grade \(0/2\)", and by `(GRADE)` every composed instance stays \(0/2\) regardless of supplier grade.
