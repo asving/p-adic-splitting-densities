@@ -4098,3 +4098,32 @@ both Claude and codex — codex window 42% used (resets Tue Aug 18),
 reserved highest-priority for hostile math verification; Opus
 subagents for scoped math/Lean work; the 2026-08-12 unlimited-API
 parallel regime is superseded.
+
+**2026-08-13 DATED APPEND #33 — STAGE-2 SIGN-OFF RECEIVED; THE
+GENUINE-DENSITY SCAFFOLDING UNIT LAUNCHES.** Asvin reviewed
+`docs/in-progress/LEAN_MAIN_THEOREM_SIGNOFF_2026-08-12.md` and
+"agree[s] essentially with your recommendation" — i.e. Q1 shape (b):
+the capstone = the CONSTRUCTION of the canonical real family + the
+uniformity law over it, rev-2 anchors retained byte-identical as
+corollaries (the F1 vacuity finding is thereby made structurally
+impossible). His build directive, verbatim intent: "launch an opus
+agent right away to get the scaffolding right where we define the
+density correctly in lean (taking as inputs the prime, the local
+ring (Z_p or an extension), the splitting type) and outputting the
+density as a limit. This will be the input to the main theorem, the
+thing we prove is evaluated by a rational function with the size of
+the local field as an input" — with an end-of-unit verification
+target: compute/check the n=2 (or 3) densities from the definitions
+against expected values. UNIT LAUNCHED: STAGE2-GENUINE-DENSITY
+(Opus arm) — new files under `lean/LeanUrat/Stage2/Real/` only;
+engine-free density-as-limit definition (the D7 fix: no ℚ-valued
+limit-as-data), decided/upper sandwich + drainage tie (D9 made
+real), the `GenuineZpCounting` predicate (Unit 1's bridge), gates
+(n=1 exact; n=2 numeric vs the W11 menu), zero landed sorries,
+AxChk-clean. The §4 three mandatory small fixes (F2 miscite, F1
+fence sentence, OmLeafFaithful quarantine entry) + the shape-(b)
+anchor re-designation are now UNBLOCKED and queued as a follow-up
+statement-level unit. Meanwhile the compression campaign continues:
+T1P11/T2P3 Opus passes returned 0C+3G+5m / 0C+4G+8m (all
+assembly/pin-layer; both runs of record committed), r13/r4 repair
+folds running.
