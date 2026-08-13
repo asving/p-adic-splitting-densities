@@ -41,11 +41,11 @@ is given here from scratch. Full audit: `leanfinal/notes/HENSEL_FACT_2026-08-13.
 ## Method
 
 `coeffIdeal J = Ideal.map C J` is the ideal of `R[X]` of polynomials with all coefficients in `J`.
-The proof is a Newton iteration on the `𝔪`-adic filtration whose correction step (`exists_solve_step`)
-is obtained from the residue-field Bézout identity (`exists_solve_field`) by *linearity in the
-coefficients of the error*: solve for each monomial `X ^ i`, `i < n`, then take the `R`-linear
-combination. That replaces the textbook step "write the error as `π ^ j · (something)`", which
-needs `𝔪` principal, and so the argument works for a non-discrete `𝔪`.
+The proof is a Newton iteration on the `𝔪`-adic filtration whose correction step
+(`exists_solve_step`) comes from the residue-field Bézout identity (`exists_solve_field`) by
+*linearity in the coefficients of the error*: solve for each monomial `X ^ i` with `i < n`, then
+take the `R`-linear combination. That replaces the textbook step "write the error as `π ^ j`
+times something", which needs `𝔪` principal; the argument here works for a non-discrete `𝔪`.
 
 ## Status
 
@@ -567,7 +567,214 @@ theorem exists_monic_factorization {f : Polynomial R} (hf : f.Monic)
     exact (mem_coeffIdeal.mp (hall n)) i
   exact ⟨G, H, hGmon, hHmon, sub_eq_zero.mp hzero, hGmap, hHmap, hGdeg, hHdeg⟩
 
+/-! ## 7. The exact interpolation solve, Bézout coprimality, and uniqueness
+
+`exists_eq_add_mul_of_degree_lt` is the *exact* form of the interpolation problem: the Newton step
+`exists_solve_step` only solves it modulo one more power of `𝔪`, but iterating and passing to the
+limit solves it on the nose. Its `w = 1` case says that two monic lifts of a coprime residual pair
+are Bézout-coprime in `R[X]` — a genuinely stronger statement than residual coprimality, and the
+engine of the uniqueness theorem. -/
+
+/-- **Exact interpolation.** With `g, h` monic lifts of a coprime monic residual pair, every
+polynomial of degree `< deg g + deg h` is `h * u + g * v` with `deg u < deg g`, `deg v < deg h`. -/
+theorem exists_eq_add_mul_of_degree_lt {g h : Polynomial R} {g₀ h₀ : Polynomial (ResidueField R)}
+    (hg : g.Monic) (hh : h.Monic) (hg₀ : g₀.Monic) (hh₀ : h₀.Monic) (hcop : IsCoprime g₀ h₀)
+    (hgr : g.map (residue R) = g₀) (hhr : h.map (residue R) = h₀)
+    {w : Polynomial R} (hw : w.degree < ((g₀.natDegree + h₀.natDegree : ℕ) : WithBot ℕ)) :
+    ∃ u v : Polynomial R, u.degree < (g₀.natDegree : WithBot ℕ) ∧
+      v.degree < (h₀.natDegree : WithBot ℕ) ∧ w = h * u + g * v := by
+  classical
+  have hgdeg : g.degree = (g₀.natDegree : WithBot ℕ) := by
+    rw [degree_eq_natDegree hg.ne_zero, natDegree_eq_of_map_eq hg hgr]
+  have hhdeg : h.degree = (h₀.natDegree : WithBot ℕ) := by
+    rw [degree_eq_natDegree hh.ne_zero, natDegree_eq_of_map_eq hh hhr]
+  -- the residual error of a degree-bounded pair is degree-bounded
+  have herrdeg : ∀ x : Polynomial R × Polynomial R,
+      x.1.degree < (g₀.natDegree : WithBot ℕ) → x.2.degree < (h₀.natDegree : WithBot ℕ) →
+      (w - (h * x.1 + g * x.2)).degree < ((g₀.natDegree + h₀.natDegree : ℕ) : WithBot ℕ) := by
+    intro x h1 h2
+    have e1 : (h * x.1).degree < ((g₀.natDegree + h₀.natDegree : ℕ) : WithBot ℕ) := by
+      refine lt_of_le_of_lt (degree_mul_le _ _) ?_
+      rw [hhdeg, Nat.cast_add, add_comm ((g₀.natDegree : WithBot ℕ))]
+      exact WithBot.add_lt_add_left (by simp) h1
+    have e2 : (g * x.2).degree < ((g₀.natDegree + h₀.natDegree : ℕ) : WithBot ℕ) := by
+      refine lt_of_le_of_lt (degree_mul_le _ _) ?_
+      rw [hgdeg, Nat.cast_add]
+      exact WithBot.add_lt_add_left (by simp) h2
+    refine lt_of_le_of_lt (degree_sub_le _ _) (max_lt hw ?_)
+    exact lt_of_le_of_lt (degree_add_le _ _) (max_lt e1 e2)
+  have step : ∀ (k : ℕ) (x : Polynomial R × Polynomial R),
+      ∃ y : Polynomial R × Polynomial R,
+        (x.1.degree < (g₀.natDegree : WithBot ℕ) ∧ x.2.degree < (h₀.natDegree : WithBot ℕ) ∧
+            w - (h * x.1 + g * x.2) ∈ coeffIdeal (maximalIdeal R ^ k)) →
+          (y.1.degree < (g₀.natDegree : WithBot ℕ) ∧ y.2.degree < (h₀.natDegree : WithBot ℕ) ∧
+            w - (h * y.1 + g * y.2) ∈ coeffIdeal (maximalIdeal R ^ (k + 1))) ∧
+          y.1 - x.1 ∈ coeffIdeal (maximalIdeal R ^ k) ∧
+          y.2 - x.2 ∈ coeffIdeal (maximalIdeal R ^ k) := by
+    intro k x
+    by_cases hx : x.1.degree < (g₀.natDegree : WithBot ℕ) ∧
+        x.2.degree < (h₀.natDegree : WithBot ℕ) ∧
+        w - (h * x.1 + g * x.2) ∈ coeffIdeal (maximalIdeal R ^ k)
+    · obtain ⟨hx1, hx2, hx3⟩ := hx
+      obtain ⟨δu, δv, hδu, hδv, hδum, hδvm, herr⟩ :=
+        exists_solve_step hg₀ hh₀ hcop hgr hhr k hx3 (herrdeg x hx1 hx2)
+      refine ⟨(x.1 + δu, x.2 + δv), fun _ => ⟨⟨?_, ?_, ?_⟩, ?_, ?_⟩⟩
+      · exact lt_of_le_of_lt (degree_add_le _ _) (max_lt hx1 hδu)
+      · exact lt_of_le_of_lt (degree_add_le _ _) (max_lt hx2 hδv)
+      · have hid : w - (h * (x.1 + δu) + g * (x.2 + δv))
+            = (w - (h * x.1 + g * x.2)) - (h * δu + g * δv) := by ring
+        rw [hid]; exact herr
+      · simpa using hδum
+      · simpa using hδvm
+    · exact ⟨x, fun hc => absurd hc hx⟩
+  choose next hnext using step
+  obtain ⟨A, hA0, hAsucc⟩ : ∃ A : ℕ → Polynomial R × Polynomial R,
+      A 0 = (0, 0) ∧ ∀ k, A (k + 1) = next k (A k) :=
+    ⟨fun k => Nat.rec (0, 0) (fun j acc => next j acc) k, rfl, fun _ => rfl⟩
+  have hInvA : ∀ k, (A k).1.degree < (g₀.natDegree : WithBot ℕ) ∧
+      (A k).2.degree < (h₀.natDegree : WithBot ℕ) ∧
+      w - (h * (A k).1 + g * (A k).2) ∈ coeffIdeal (maximalIdeal R ^ k) := by
+    intro k
+    induction k with
+    | zero =>
+      rw [hA0]
+      refine ⟨by simp, by simp, ?_⟩
+      rw [pow_zero, Ideal.one_eq_top]
+      exact mem_coeffIdeal.mpr fun i => Submodule.mem_top
+    | succ k ih => rw [hAsucc k]; exact (hnext k (A k) ih).1
+  have hstep1 : ∀ k, (A (k + 1)).1 - (A k).1 ∈ coeffIdeal (maximalIdeal R ^ k) := by
+    intro k; have := (hnext k (A k) (hInvA k)).2.1; rwa [← hAsucc k] at this
+  have hstep2 : ∀ k, (A (k + 1)).2 - (A k).2 ∈ coeffIdeal (maximalIdeal R ^ k) := by
+    intro k; have := (hnext k (A k) (hInvA k)).2.2; rwa [← hAsucc k] at this
+  obtain ⟨u, hudeg, hulim⟩ := exists_adicLimit_of_degree_lt g₀.natDegree (fun k => (A k).1)
+    (fun k => (hInvA k).1) hstep1
+  obtain ⟨v, hvdeg, hvlim⟩ := exists_adicLimit_of_degree_lt h₀.natDegree (fun k => (A k).2)
+    (fun k => (hInvA k).2.1) hstep2
+  refine ⟨u, v, hudeg, hvdeg, ?_⟩
+  have hall : ∀ k, w - (h * u + g * v) ∈ coeffIdeal (maximalIdeal R ^ k) := by
+    intro k
+    have hid : w - (h * u + g * v)
+        = (w - (h * (A k).1 + g * (A k).2)) - h * (u - (A k).1) - g * (v - (A k).2) := by ring
+    rw [hid]
+    exact Ideal.sub_mem _ (Ideal.sub_mem _ (hInvA k).2.2
+      (Ideal.mul_mem_left _ _ (hulim k))) (Ideal.mul_mem_left _ _ (hvlim k))
+  have hzero : w - (h * u + g * v) = 0 := by
+    ext i
+    rw [coeff_zero]
+    refine IsHausdorff.haus' (I := maximalIdeal R) ((w - (h * u + g * v)).coeff i) ?_
+    intro n
+    rw [SModEq.zero, ← Ideal.one_eq_top, Ideal.smul_eq_mul, mul_one]
+    exact (mem_coeffIdeal.mp (hall n)) i
+  exact sub_eq_zero.mp hzero
+
+/-- **Bézout coprimality of the lifted factors.**  Two monic lifts of a coprime monic residual
+pair satisfy an honest Bézout identity `a * g + b * h = 1` in `R[X]`. -/
+theorem isCoprime_of_map_eq {g h : Polynomial R} {g₀ h₀ : Polynomial (ResidueField R)}
+    (hg : g.Monic) (hh : h.Monic) (hg₀ : g₀.Monic) (hh₀ : h₀.Monic) (hcop : IsCoprime g₀ h₀)
+    (hgr : g.map (residue R) = g₀) (hhr : h.map (residue R) = h₀) : IsCoprime g h := by
+  rcases Nat.eq_zero_or_pos (g₀.natDegree + h₀.natDegree) with hn | hn
+  · have hg1 : g = 1 :=
+      eq_one_of_monic_natDegree_zero hg (by rw [natDegree_eq_of_map_eq hg hgr]; omega)
+    rw [hg1]
+    exact isCoprime_one_left
+  · obtain ⟨u, v, _, _, heq⟩ :=
+      exists_eq_add_mul_of_degree_lt hg hh hg₀ hh₀ hcop hgr hhr (w := 1)
+        (by rw [degree_one]; exact_mod_cast hn)
+    exact ⟨v, u, by linear_combination -heq⟩
+
+set_option linter.unusedVariables false in
+/-- **Uniqueness of the Hensel factorization.**  Among monic pairs reducing to the *same* coprime
+monic residual pair, the factorization of a given polynomial is unique.
+
+(`hh` and `hhr` are kept for symmetry of the statement — the proof does not need them, since `h`
+is pinned by cancelling the monic `g`.) -/
+theorem monic_factorization_unique {g h g' h' : Polynomial R}
+    {g₀ h₀ : Polynomial (ResidueField R)}
+    (hg : g.Monic) (hh : h.Monic) (hg' : g'.Monic) (hh' : h'.Monic)
+    (hg₀ : g₀.Monic) (hh₀ : h₀.Monic) (hcop : IsCoprime g₀ h₀)
+    (hgr : g.map (residue R) = g₀) (hhr : h.map (residue R) = h₀)
+    (hgr' : g'.map (residue R) = g₀) (hhr' : h'.map (residue R) = h₀)
+    (heq : g * h = g' * h') : g = g' ∧ h = h' := by
+  have hcop' : IsCoprime g h' := isCoprime_of_map_eq hg hh' hg₀ hh₀ hcop hgr hhr'
+  have hdvd : g ∣ (g' - g) * h' := ⟨h - h', by linear_combination -heq⟩
+  have hgU : g ∣ g' - g := hcop'.dvd_of_dvd_mul_right hdvd
+  have hdeg : (g' - g).degree < g.degree := by
+    have h1 := degree_sub_lt_of_monic_of_natDegree_eq hg' hg
+      (by rw [natDegree_eq_of_map_eq hg' hgr', natDegree_eq_of_map_eq hg hgr])
+    rwa [degree_eq_natDegree hg.ne_zero, natDegree_eq_of_map_eq hg hgr,
+      ← natDegree_eq_of_map_eq hg' hgr']
+  have hU0 : g' - g = 0 := by
+    have e1 : (g' - g) %ₘ g = 0 := (modByMonic_eq_zero_iff_dvd hg).mpr hgU
+    have e2 : (g' - g) %ₘ g = g' - g := (modByMonic_eq_self_iff hg).mpr hdeg
+    rw [← e2, e1]
+  have hgg' : g = g' := by linear_combination -hU0
+  refine ⟨hgg', ?_⟩
+  have : g * h = g * h' := by rw [heq, hgg']
+  exact hg.isRegular.left this
+
+/-- **Peeling a simple residual root.**  If the reduction of a monic `f` has `ρ₀` as a root at
+which the derivative does not vanish, then `f = (X - ρ) * q` over `R` with `q` monic and `ρ`
+lifting `ρ₀`.
+
+The point, for the `n = 3` consumer, is what is *not* assumed: the cofactor `q` may reduce to
+anything at all — in particular to a repeated quadratic, which is exactly the case that the root
+form of Hensel's lemma cannot reach. Simplicity is required only at `ρ₀`. -/
+theorem exists_linear_factorization {f : Polynomial R} (hf : f.Monic) {ρ₀ : ResidueField R}
+    (hroot : (f.map (residue R)).IsRoot ρ₀)
+    (hsimple : (f.map (residue R)).derivative.eval ρ₀ ≠ 0) :
+    ∃ (ρ : R) (q : Polynomial R), q.Monic ∧ f = (X - Polynomial.C ρ) * q ∧ residue R ρ = ρ₀ ∧
+      q.map (residue R) = (f.map (residue R)) /ₘ (X - Polynomial.C ρ₀) := by
+  have hf₀ : (f.map (residue R)).Monic := hf.map _
+  have hmul : f.map (residue R)
+      = (X - Polynomial.C ρ₀) * ((f.map (residue R)) /ₘ (X - Polynomial.C ρ₀)) :=
+    (mul_divByMonic_eq_iff_isRoot.mpr hroot).symm
+  have hq₀ : ((f.map (residue R)) /ₘ (X - Polynomial.C ρ₀)).Monic :=
+    (monic_X_sub_C ρ₀).of_mul_monic_left (by rw [← hmul]; exact hf₀)
+  have hcop : IsCoprime (X - Polynomial.C ρ₀) ((f.map (residue R)) /ₘ (X - Polynomial.C ρ₀)) :=
+    isCoprime_of_is_root_of_eval_derivative_ne_zero _ ρ₀ hsimple
+  obtain ⟨g, q, hgm, hqm, hfgq, hgr, hqr, hgd, _⟩ :=
+    exists_monic_factorization hf (monic_X_sub_C ρ₀) hq₀ hcop hmul
+  have hgd1 : g.natDegree = 1 := by rw [hgd, natDegree_X_sub_C]
+  have hgform : g = X + Polynomial.C (g.coeff 0) := hgm.eq_X_add_C hgd1
+  refine ⟨-g.coeff 0, q, hqm, ?_, ?_, hqr⟩
+  · rw [hfgq]
+    congr 1
+    rw [hgform]
+    simp
+  · -- read the constant term off the reduction `g ↦ X - C ρ₀`
+    have : (g.map (residue R)).coeff 0 = (X - Polynomial.C ρ₀ : Polynomial (ResidueField R)).coeff 0 := by
+      rw [hgr]
+    rw [coeff_map] at this
+    simp only [coeff_sub, coeff_X_zero, coeff_C_zero, zero_sub] at this
+    rw [map_neg, this, neg_neg]
+
 end Main
+
+/-! ## 8. Instances — the theorem is non-vacuous on the bases this repo uses -/
+
+section Instances
+
+example (p : ℕ) [Fact (Nat.Prime p)] {f : Polynomial ℤ_[p]} (hf : f.Monic)
+    {g₀ h₀ : Polynomial (ResidueField ℤ_[p])} (hg₀ : g₀.Monic) (hh₀ : h₀.Monic)
+    (hcop : IsCoprime g₀ h₀) (hfgh : f.map (residue ℤ_[p]) = g₀ * h₀) :
+    ∃ g h : Polynomial ℤ_[p], g.Monic ∧ h.Monic ∧ f = g * h ∧
+      g.map (residue ℤ_[p]) = g₀ ∧ h.map (residue ℤ_[p]) = h₀ ∧
+      g.natDegree = g₀.natDegree ∧ h.natDegree = h₀.natDegree :=
+  exists_monic_factorization hf hg₀ hh₀ hcop hfgh
+
+/-- The complete-DVR bundle used throughout `Uniformity.Density` (`LocalData.lean`) is an instance:
+`IsDiscreteValuationRing` supplies `IsLocalRing`, so the general theorem applies verbatim, with no
+finiteness of the residue field required. -/
+theorem exists_monic_factorization_dvr (O : Type*) [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O] {f : Polynomial O}
+    (hf : f.Monic) {g₀ h₀ : Polynomial (ResidueField O)} (hg₀ : g₀.Monic) (hh₀ : h₀.Monic)
+    (hcop : IsCoprime g₀ h₀) (hfgh : f.map (residue O) = g₀ * h₀) :
+    ∃ g h : Polynomial O, g.Monic ∧ h.Monic ∧ f = g * h ∧
+      g.map (residue O) = g₀ ∧ h.map (residue O) = h₀ ∧
+      g.natDegree = g₀.natDegree ∧ h.natDegree = h₀.natDegree :=
+  exists_monic_factorization hf hg₀ hh₀ hcop hfgh
+
+end Instances
 
 end Hensel
 

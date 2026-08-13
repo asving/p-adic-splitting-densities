@@ -1,4 +1,5 @@
 import Uniformity.Basic
+import Uniformity.HenselFactorization
 import Uniformity.Density.LocalData
 import Uniformity.Density.TypeOf
 import Uniformity.Density.GenuineDensity

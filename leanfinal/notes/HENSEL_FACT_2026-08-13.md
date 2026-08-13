@@ -199,13 +199,26 @@ follows from monic-of-degree-0 ⟹ `= 1`).
 
 ## 3. WHAT LANDED
 
-See §5 for the audited statement list with axiom footprints. Headline:
+All in namespace `Uniformity.Hensel`, file `leanfinal/Uniformity/HenselFactorization.lean`
+(789 lines), imported from `leanfinal/Uniformity.lean`. `lake build` green (8568 jobs), zero
+`sorry`, zero new axioms, zero linter warnings from this file.
 
-* `Uniformity.Hensel.exists_monic_factorization` — existence, at adic-complete local generality.
-* `Uniformity.Hensel.monic_factorization_unique` — uniqueness of the lifted pair.
-* `Uniformity.Hensel.isCoprime_of_map_eq` — `IsCoprime G H` in `R[X]` for monic lifts of a
-  coprime residual pair (the reusable by-product).
-* `Uniformity.Hensel.exists_eq_add_mul_of_degree_lt` — the exact Bézout/interpolation solve (S3).
+| name | what |
+|---|---|
+| `exists_monic_factorization` | **the theorem** — existence, adic-complete local generality |
+| `monic_factorization_unique` | uniqueness of the lifted pair (LANDED, not deferred) |
+| `isCoprime_of_map_eq` | `IsCoprime g h` in `R[X]` for monic lifts of a coprime residual pair |
+| `exists_eq_add_mul_of_degree_lt` | the exact interpolation solve (S3) |
+| `exists_linear_factorization` | consumer corollary: peel a SIMPLE residual root, cofactor arbitrary |
+| `exists_monic_factorization_dvr` | the same at `leanfinal`'s complete-DVR bundle `O` |
+
+Supporting (all proved, all part of the trust surface): `coeffIdeal`, `mem_coeffIdeal`,
+`coeffIdeal_mono`, `C_mem_coeffIdeal`, `mul_mem_coeffIdeal_mul`, `map_mk_eq_zero_iff`,
+`map_residue_eq_zero_iff`, `sub_mem_coeffIdeal_maximalIdeal_iff`, `exists_solve_field`,
+`coeff_sum_range_C_mul_X_pow`, `eq_sum_range_of_degree_lt`, `degree_sum_range_C_mul_X_pow_lt`,
+`degree_C_mul_le_degree`, `sum_C_mul_solve_expand`, `exists_solve_mod`, `exists_solve_step`,
+`exists_adicLimit_of_degree_lt`, `exists_monic_lift`, `natDegree_eq_of_map_eq`,
+`degree_sub_lt_of_monic_of_natDegree_eq`.
 
 ---
 
@@ -218,11 +231,12 @@ zero `sorry` and adds zero axioms.
 ### 4.1 `exists_monic_factorization`
 
 ```lean
-theorem exists_monic_factorization {R : Type*} [CommRing R] [IsLocalRing R]
-    [IsAdicComplete (IsLocalRing.maximalIdeal R) R] {f : R[X]} (hf : f.Monic)
-    {g₀ h₀ : ResidueField R[X]} (hg₀ : g₀.Monic) (hh₀ : h₀.Monic)
+-- section context: variable {R : Type*} [CommRing R] [IsLocalRing R]
+--                          [IsAdicComplete (maximalIdeal R) R]
+theorem exists_monic_factorization {f : Polynomial R} (hf : f.Monic)
+    {g₀ h₀ : Polynomial (ResidueField R)} (hg₀ : g₀.Monic) (hh₀ : h₀.Monic)
     (hcop : IsCoprime g₀ h₀) (hfgh : f.map (residue R) = g₀ * h₀) :
-    ∃ g h : R[X], g.Monic ∧ h.Monic ∧ f = g * h ∧
+    ∃ g h : Polynomial R, g.Monic ∧ h.Monic ∧ f = g * h ∧
       g.map (residue R) = g₀ ∧ h.map (residue R) = h₀ ∧
       g.natDegree = g₀.natDegree ∧ h.natDegree = h₀.natDegree
 ```
@@ -239,16 +253,19 @@ intended meaning;
 factorization useful downstream (they pin which factor is which);
 (d) no finiteness, no discreteness, no residue characteristic, and no `IsDomain` is assumed;
 `IsAdicComplete (maximalIdeal R) R` is mathlib's Hausdorff + precomplete bundle;
-(e) the theorem is *non-vacuous*: the file's `example`s instantiate it at `ℤ_[p]` and at
-`leanfinal`'s own complete-DVR bundle `O`, and the `n = 2` sanity instance factors a concrete
-`X² − 1` over `ℤ_[p]`, `p` odd.
+(e) the hypotheses are satisfiable: §8 of the file instantiates the theorem at `ℤ_[p]` (an
+`example`, so the instance search is machine-checked) and at `leanfinal`'s own complete-DVR bundle
+`O` (`exists_monic_factorization_dvr`), and `exists_linear_factorization` derives a form whose
+coprimality hypothesis is discharged internally from a non-vanishing derivative — so the coprimality
+premise is demonstrably reachable, not a hypothesis that can never be met. **A worked numeric
+instance (a named concrete `f`, `g₀`, `h₀` over a named `ℤ_[p]`) was NOT formalized**; a reviewer
+who wants that belt-and-braces check should ask for it explicitly.
 
 ### 4.2 `monic_factorization_unique`
 
 ```lean
-theorem monic_factorization_unique {R : Type*} [CommRing R] [IsLocalRing R]
-    [IsAdicComplete (IsLocalRing.maximalIdeal R) R]
-    {g h g' h' : R[X]} {g₀ h₀ : ResidueField R[X]}
+theorem monic_factorization_unique {g h g' h' : Polynomial R}
+    {g₀ h₀ : Polynomial (ResidueField R)}
     (hg : g.Monic) (hh : h.Monic) (hg' : g'.Monic) (hh' : h'.Monic)
     (hg₀ : g₀.Monic) (hh₀ : h₀.Monic) (hcop : IsCoprime g₀ h₀)
     (hgr : g.map (residue R) = g₀) (hhr : h.map (residue R) = h₀)
@@ -265,11 +282,9 @@ hypothesis (hence the theorem is stronger) and strictly more convenient. Note th
 ### 4.3 `isCoprime_of_map_eq`
 
 ```lean
-theorem isCoprime_of_map_eq {R : Type*} [CommRing R] [IsLocalRing R]
-    [IsAdicComplete (IsLocalRing.maximalIdeal R) R] {g h : R[X]} {g₀ h₀ : ResidueField R[X]}
-    (hg : g.Monic) (hh : h.Monic) (hg₀ : g₀.Monic) (hh₀ : h₀.Monic)
-    (hcop : IsCoprime g₀ h₀) (hgr : g.map (residue R) = g₀) (hhr : h.map (residue R) = h₀) :
-    IsCoprime g h
+theorem isCoprime_of_map_eq {g h : Polynomial R} {g₀ h₀ : Polynomial (ResidueField R)}
+    (hg : g.Monic) (hh : h.Monic) (hg₀ : g₀.Monic) (hh₀ : h₀.Monic) (hcop : IsCoprime g₀ h₀)
+    (hgr : g.map (residue R) = g₀) (hhr : h.map (residue R) = h₀) : IsCoprime g h
 ```
 **Faithfulness.** `IsCoprime g h` in `R[X]` means `∃ a b, a*g + b*h = 1` — a genuine Bézout
 identity over `R[X]`, not a residual or "up to units" statement. This is the strongest reading and
@@ -281,43 +296,99 @@ not decorative. Degenerate case: if both `g₀` and `h₀` are constants then `g
 ### 4.4 `exists_eq_add_mul_of_degree_lt`
 
 ```lean
-theorem exists_eq_add_mul_of_degree_lt {R : Type*} [CommRing R] [IsLocalRing R]
-    [IsAdicComplete (IsLocalRing.maximalIdeal R) R] {g h : R[X]} {g₀ h₀ : ResidueField R[X]}
-    (hg : g.Monic) (hh : h.Monic) (hg₀ : g₀.Monic) (hh₀ : h₀.Monic)
-    (hcop : IsCoprime g₀ h₀) (hgr : g.map (residue R) = g₀) (hhr : h.map (residue R) = h₀)
-    {w : R[X]} (hw : w.degree < (g.natDegree + h.natDegree : ℕ)) :
-    ∃ u v : R[X], u.degree < (g.natDegree : WithBot ℕ) ∧ v.degree < (h.natDegree : WithBot ℕ) ∧
-      w = h * u + g * v
+theorem exists_eq_add_mul_of_degree_lt {g h : Polynomial R} {g₀ h₀ : Polynomial (ResidueField R)}
+    (hg : g.Monic) (hh : h.Monic) (hg₀ : g₀.Monic) (hh₀ : h₀.Monic) (hcop : IsCoprime g₀ h₀)
+    (hgr : g.map (residue R) = g₀) (hhr : h.map (residue R) = h₀)
+    {w : Polynomial R} (hw : w.degree < ((g₀.natDegree + h₀.natDegree : ℕ) : WithBot ℕ)) :
+    ∃ u v : Polynomial R, u.degree < (g₀.natDegree : WithBot ℕ) ∧
+      v.degree < (h₀.natDegree : WithBot ℕ) ∧ w = h * u + g * v
 ```
 **Faithfulness.** This is "the Chinese remainder isomorphism `R[X]/(gh) ≅ R[X]/(g) × R[X]/(h)` is
 surjective on degree-bounded representatives", stated concretely. The pairing is
 `u` (degree `< deg g`) against `h`, and `v` (degree `< deg h`) against `g` — deliberately, since
 that is the pairing the Newton correction uses. Existence only is claimed; uniqueness of `(u,v)`
-is TRUE (the map is bijective) but is NOT proved here — see §6.
+is TRUE (the map is bijective) but is NOT proved here — see §6. Note that the degree bounds are
+phrased against `g₀.natDegree`/`h₀.natDegree`, which equal `g.natDegree`/`h.natDegree` by monicity
+(`natDegree_eq_of_map_eq`); the residual form is the one the callers already have.
 
-### 4.5 Supporting statements
+### 4.5 `exists_linear_factorization` (the consumer corollary)
+
+```lean
+theorem exists_linear_factorization {f : Polynomial R} (hf : f.Monic) {ρ₀ : ResidueField R}
+    (hroot : (f.map (residue R)).IsRoot ρ₀)
+    (hsimple : (f.map (residue R)).derivative.eval ρ₀ ≠ 0) :
+    ∃ (ρ : R) (q : Polynomial R), q.Monic ∧ f = (X - Polynomial.C ρ) * q ∧ residue R ρ = ρ₀ ∧
+      q.map (residue R) = (f.map (residue R)) /ₘ (X - Polynomial.C ρ₀)
+```
+**Faithfulness.** This packages the coprimality obligation away for the intended `n = 3` use.
+`hsimple` says the residual root `ρ₀` is simple *in `f̄`*, which over a field is equivalent to
+"`ρ₀` is not a root of the cofactor `f̄ /ₘ (X − ρ₀)`" — coprimality of the two blocks. What must be
+read carefully is what is **not** assumed: nothing whatsoever about the cofactor `q`, which may
+reduce to a repeated quadratic. That is precisely the case that the root form of Hensel's lemma
+(mathlib's `HenselianLocalRing.is_henselian`) cannot reach, and it is the case `N3_CHECK` §7 branch
+(ii) needs. The last conjunct pins the cofactor's reduction, so the caller knows *which* cubic
+cofactor it got. Mathlib's `isCoprime_of_is_root_of_eval_derivative_ne_zero` supplies the
+coprimality; the rest is this file's theorem. Degenerate reading: `hroot` is not redundant —
+without it `f̄ ≠ (X − ρ₀) · (f̄ /ₘ (X − ρ₀))` and the conclusion would be false.
+
+### 4.6 Supporting statements
 
 `Uniformity.Hensel.coeffIdeal` is *notation*, not new mathematics: `coeffIdeal J = Ideal.map C J`,
 and `mem_coeffIdeal` is mathlib's `Ideal.mem_map_C_iff` restated. `exists_solve_mod_maximalIdeal`
 (S1), `exists_solve_step` (S2) and `exists_adicLimit_of_degree_lt` (L) are the intermediate lemmas
 of §2 with the statements written there; each is a faithful transcription of its displayed
 informal statement. `exists_monic_lift` is the degree-preserving monic lift, a one-line wrapper
-around mathlib's `Polynomial.lifts_and_degree_eq_and_monic`.
+around mathlib's `Polynomial.lifts_and_degree_eq_and_monic`. `natDegree_eq_of_map_eq`,
+`degree_sub_lt_of_monic_of_natDegree_eq`, `degree_C_mul_le_degree`, `coeff_sum_range_C_mul_X_pow`,
+`eq_sum_range_of_degree_lt`, `degree_sum_range_C_mul_X_pow_lt` and `sum_C_mul_solve_expand` are
+generic polynomial facts with no `Hensel` content; `exists_monic_factorization_dvr` is a
+re-instantiation of `exists_monic_factorization` with the `Uniformity.Density` instance bundle and
+is proved by `exact`.
 
 ---
 
 ## 5. AUDIT — axioms and `sorry` count
 
-`sorry` count in `leanfinal/Uniformity/HenselFactorization.lean`: **0**. New axioms: **0**.
-`#print axioms` output for every landed theorem, pasted verbatim from the build:
+`sorry` count in `leanfinal/Uniformity/HenselFactorization.lean`: **0** (`grep -c sorry` = 0).
+New axioms: **0**. `lake build` from `leanfinal/`: **green, 8568 jobs**, no warning from this file.
+`#print axioms` for every declaration the file introduces, pasted verbatim from
+`lake env lean` on a throwaway checker module (deleted afterwards; the pre-existing capstone
+footprints elsewhere in `Uniformity` are unchanged, as the build log confirms):
 
 ```
-AXIOMCHECK_PLACEHOLDER
+'Uniformity.Hensel.exists_monic_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.monic_factorization_unique' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.isCoprime_of_map_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.exists_eq_add_mul_of_degree_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.exists_linear_factorization' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.exists_monic_factorization_dvr' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.exists_solve_field' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.exists_solve_mod' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.exists_solve_step' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.exists_adicLimit_of_degree_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.exists_monic_lift' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.mem_coeffIdeal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.mul_mem_coeffIdeal_mul' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.map_mk_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.sub_mem_coeffIdeal_maximalIdeal_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.coeffIdeal_mono' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.C_mem_coeffIdeal' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.map_residue_eq_zero_iff' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.eq_sum_range_of_degree_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.coeff_sum_range_C_mul_X_pow' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.degree_sum_range_C_mul_X_pow_lt' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.degree_C_mul_le_degree' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.sum_C_mul_solve_expand' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.natDegree_eq_of_map_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
+'Uniformity.Hensel.degree_sub_lt_of_monic_of_natDegree_eq' depends on axioms: [propext, Classical.choice, Quot.sound]
 ```
 
 ---
 
 ## 6. OPEN / NOT DONE (recorded honestly, not sorried)
+
+0. **(NOT open — recorded here because the charge asked.)** Uniqueness of the *factorization*
+   LANDED as `monic_factorization_unique`; it did not stall.
 
 1. **Uniqueness of the exact solve (S3).** The map `(u,v) ↦ hu + gv` on
    `R[X]_{<deg g} × R[X]_{<deg h} → R[X]_{<deg g + deg h}` is bijective, not merely surjective.
