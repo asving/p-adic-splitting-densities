@@ -316,9 +316,7 @@ theorem typeOf_ram_of_eisenstein {a : Fin 2 → O} (h0 : a 0 ∈ maximalIdeal O)
     refine ⟨one_pos, AdjoinRoot.root (monicPoly a), hne, ?_⟩
     rw [norm_root_quad, hval]
     rfl
-  have hinf : inertiaDegOf (monicPoly a) = 1 := by
-    have hpos : 0 < sInf (normValues (monicPoly a)) := (Nat.sInf_mem ⟨1, hmem⟩).1
-    exact le_antisymm (Nat.sInf_le hmem) hpos
+  have hinf : inertiaDegOf (monicPoly a) = 1 := inertiaDegOf_eq_of hmem (fun m _ => one_dvd m)
   -- assemble
   have hF : IsMonicFactorization (monicPoly a) {monicPoly a} :=
     ⟨by intro g hg; rw [Multiset.mem_singleton.1 hg]; exact ⟨monicPoly_monic a, hirr⟩, by simp⟩
@@ -351,48 +349,67 @@ theorem irreducible_of_anisotropic {a : Fin 2 → O} (h : Anisotropic a) :
   have := (h (-r) 1 (by rw [hzero]; exact Ideal.zero_mem _)).2
   exact (maximalIdeal.isMaximal O).ne_top ((Ideal.eq_top_iff_one _).2 this)
 
-/-- **INERT certificate.** An anisotropic monic quadratic has splitting type `{(1,2)}`: every
-norm valuation is even, because a norm in `𝔪` forces both coordinates into `𝔪`, and then the
-form picks up a factor `π²`. -/
-theorem typeOf_inert_of_anisotropic {a : Fin 2 → O} (h : Anisotropic a) :
-    typeOf (monicPoly a) = inertType := by
-  obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
-  have hm : maximalIdeal O = Ideal.span {π} := hπ.maximalIdeal_eq
-  have hirr := irreducible_of_anisotropic h
-  -- 1 ∉ normValues
-  have hnot1 : (1 : ℕ) ∉ normValues (monicPoly a) := by
-    rintro ⟨-, x, -, hx⟩
-    obtain ⟨u, v, rfl⟩ := exists_quad_repr a x
-    rw [norm_quad] at hx
-    have hQ : quadForm a u v ∈ maximalIdeal O := by
-      rw [mem_maximalIdeal, mem_nonunits_iff]
-      intro hu
-      have hz : IsDiscreteValuationRing.addVal O (quadForm a u v) = 0 := by
-        rw [← hu.unit_spec]; exact IsDiscreteValuationRing.addVal_eq_zero_of_unit _
-      rw [show quadForm a u v = u ^ 2 - a 1 * u * v + a 0 * v ^ 2 from rfl] at hz
-      rw [hz] at hx
-      simp at hx
-    obtain ⟨hu, hv⟩ := h u v hQ
+/-- **Anisotropy forces EVERY norm valuation to be even.** A value of the form in `𝔪` forces
+both arguments into `𝔪`, which extracts a factor `π²` and drops the valuation by exactly `2`;
+strong induction on the valuation finishes. (This is the shape the *deep* inert certificate of
+`Drainage.lean` needs as well, so it is stated for the form, not for `normValues`.) -/
+theorem two_dvd_of_val_quadForm {c : Fin 2 → O} (h : Anisotropic c) {π : O} (hπ : Irreducible π) :
+    ∀ k : ℕ, ∀ u v : O,
+      IsDiscreteValuationRing.addVal O (quadForm c u v) = (k : ℕ∞) → 2 ∣ k := by
+  intro k
+  induction k using Nat.strong_induction_on with
+  | _ k ih =>
+    intro u v hk
+    rcases Nat.eq_zero_or_pos k with rfl | hkpos
+    · exact dvd_zero 2
+    have hmem : quadForm c u v ∈ maximalIdeal O := by
+      by_contra hnot
+      have hunit : IsUnit (quadForm c u v) := by
+        by_contra hnu
+        exact hnot ((mem_maximalIdeal _).2 (mem_nonunits_iff.2 hnu))
+      have hz : IsDiscreteValuationRing.addVal O (quadForm c u v) = 0 := by
+        rw [← hunit.unit_spec]; exact IsDiscreteValuationRing.addVal_eq_zero_of_unit _
+      rw [hk] at hz
+      have : k = 0 := by exact_mod_cast hz
+      omega
+    obtain ⟨hu, hv⟩ := h u v hmem
+    have hm : maximalIdeal O = Ideal.span {π} := hπ.maximalIdeal_eq
     rw [hm, Ideal.mem_span_singleton] at hu hv
     obtain ⟨u', rfl⟩ := hu
     obtain ⟨v', rfl⟩ := hv
-    have hsplit : (π * u') ^ 2 - a 1 * (π * u') * (π * v') + a 0 * (π * v') ^ 2
-        = π ^ 2 * (u' ^ 2 - a 1 * u' * v' + a 0 * v' ^ 2) := by ring
-    rw [hsplit, AddValuation.map_mul, hπ.addVal_pow] at hx
-    have hle : ((2 : ℕ) : ℕ∞) ≤ ((1 : ℕ) : ℕ∞) := by rw [← hx]; exact le_self_add
-    simp at hle
-  -- the residue degree is therefore 2
+    have hfac : quadForm c (π * u') (π * v') = π ^ 2 * quadForm c u' v' := by
+      simp only [quadForm]; ring
+    rw [hfac, AddValuation.map_mul, hπ.addVal_pow] at hk
+    have htne : IsDiscreteValuationRing.addVal O (quadForm c u' v') ≠ ⊤ := by
+      intro htop
+      rw [htop] at hk
+      simp at hk
+    obtain ⟨k', hk'⟩ := WithTop.ne_top_iff_exists.1 htne
+    rw [← hk'] at hk
+    have hsum : 2 + k' = k := by
+      have hcast : ((2 + k' : ℕ) : ℕ∞) = ((k : ℕ) : ℕ∞) := by push_cast; exact hk
+      exact_mod_cast hcast
+    rcases Nat.eq_zero_or_pos k' with rfl | hk'pos
+    · omega
+    · have hdvd := ih k' (by omega) u' v' hk'.symm
+      omega
+
+/-- **INERT certificate.** An anisotropic monic quadratic has splitting type `{(1,2)}`: every
+norm valuation is even (`two_dvd_of_val_quadForm`) and `2 = deg` is attained, so the gcd of the
+norm valuations — the residue degree — is `2`. -/
+theorem typeOf_inert_of_anisotropic {a : Fin 2 → O} (h : Anisotropic a) :
+    typeOf (monicPoly a) = inertType := by
+  obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
+  have hirr := irreducible_of_anisotropic h
   have h2 : (2 : ℕ) ∈ normValues (monicPoly a) := by
     have := natDegree_mem_normValues (monicPoly_monic a) (by rw [monicPoly_natDegree]; omega) hπ
     rwa [monicPoly_natDegree] at this
-  have hinf : inertiaDegOf (monicPoly a) = 2 := by
-    unfold inertiaDegOf
-    have hmemInf := Nat.sInf_mem (⟨2, h2⟩ : (normValues (monicPoly a)).Nonempty)
-    have hpos : 0 < sInf (normValues (monicPoly a)) := hmemInf.1
-    have hle : sInf (normValues (monicPoly a)) ≤ 2 := Nat.sInf_le h2
-    have hne1 : sInf (normValues (monicPoly a)) ≠ 1 := by
-      intro he; exact hnot1 (he ▸ hmemInf)
-    omega
+  have hdvd : ∀ m ∈ normValues (monicPoly a), 2 ∣ m := by
+    rintro m ⟨-, x, -, hx⟩
+    obtain ⟨u, v, rfl⟩ := exists_quad_repr a x
+    rw [norm_quad] at hx
+    exact two_dvd_of_val_quadForm h hπ m u v hx
+  have hinf : inertiaDegOf (monicPoly a) = 2 := inertiaDegOf_eq_of h2 hdvd
   have hF : IsMonicFactorization (monicPoly a) {monicPoly a} :=
     ⟨by intro g hg; rw [Multiset.mem_singleton.1 hg]; exact ⟨monicPoly_monic a, hirr⟩, by simp⟩
   ext

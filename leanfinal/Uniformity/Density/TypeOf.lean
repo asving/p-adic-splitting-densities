@@ -26,22 +26,32 @@ theorem its content (the classifier must be proved to compute *this*, it does no
 
 2. **`inertiaDegOf g` / `ramIndexOf g`** — for a monic irreducible `g` of degree `d`, put
    `L = K[x]/(g)` (`K = Frac O`) and `A = O[x]/(g) = AdjoinRoot g`, a free `O`-module of rank
-   `d`. Since `O` is **complete**, the valuation `v` of `O` has a *unique* extension `w` to `L`,
-   and it is given by the norm form `w(x) = v(N_{L/K}(x)) / d`. Writing `e`, `f` for the
-   ramification index and residue degree of `L/K` (so `e * f = d`), the value group of `w` is
-   `(1/e)·ℤ`, hence
+   `d`. Since `O` is **complete**, the valuation `v` of `O` has a *unique* extension `w` to `L`;
+   normalise `w` so that `w(L^×) = ℤ`. Writing `e`, `f` for the ramification index and residue
+   degree of `L/K` (so `e * f = d`), one has `v(N_{L/K}(x)) = f · w(x)`, hence
 
-       { v(N_{L/K}(x)) : x ∈ L^×} = d · w(L^×) = (d/e) · ℤ = f · ℤ,
+       { v(N(x)) : x ∈ A \ {0} } ⊆ f · ℕ,   and this set GENERATES f · ℤ as a group,
 
-   and the values coming from the *integral* elements `x ∈ A \ {0}` are exactly `f · ℕ`.
-   Therefore
+   because `A` has finite index in the maximal order `O_L`, so `π^m O_L ⊆ A` for some `m ≥ 1`,
+   and for `y ∈ O_L` with `w(y) = 1` the two members `π^m, π^m y ∈ A \ {0}` have
+   `v(N(π^m y)) - v(N(π^m)) = f`.  Therefore
 
-       f  =  the least strictly positive `v(N(x))`, `x ∈ A \ {0}`,        (`inertiaDegOf`)
+       f  =  gcd { v(N(x)) : x ∈ A \ {0} },                               (`inertiaDegOf`)
        e  =  d / f.                                                        (`ramIndexOf`)
 
    This is the definition below. It is manifestly intrinsic (no choice of uniformizer, no
-   Newton polygon, no classifier), and it is *total*: `Algebra.norm` and `sInf` are total, so
+   Newton polygon, no classifier), and it is *total*: `Algebra.norm` and `sSup` are total, so
    no instance obligations leak into the definition.
+
+   **Why the gcd and not the least positive value** (defect found and fixed 2026-08-13,
+   `UNIFORMITY-P2`): the *semigroup* `{v(N x) : x ∈ A \ {0}}` is `f · ℕ` only when `A` is the
+   MAXIMAL order. For `g = X² - π³` over `ℤ_[3]` (`L = ℚ_3(√3)`, ramified, `e = 2`, `f = 1`)
+   the norm form is `s² - π³t²`, whose values have valuation `min(2 v(s), 3 + 2 v(t))`: the
+   value `1` is never attained and `2` is, so the *least positive value* is `2` and the old
+   `sInf` definition returned the INERT pair `(1,2)` for a RAMIFIED polynomial. The gcd of
+   `{2, 3, 4, …}` is `1`, the correct `f`. The gcd form is correct for every order, maximal or
+   not, and has the further benefit that `inertiaDegOf g ∣ deg g` holds *by construction*
+   (`inertiaDegOf_dvd_natDegree`), which is what makes `typeOf_degree` provable.
 
 ## Trust boundary (read before accepting)
 
@@ -49,9 +59,11 @@ theorem its content (the classifier must be proved to compute *this*, it does no
 `notes/GENUINE_DENSITY_2026-08-13.md` argues, in mathematics, that it is the classical
 factorization type. The **argument uses completeness of `O`** (uniqueness of the extension of
 `v`); over a non-complete DVR `inertiaDegOf` would still be defined, but would not be the
-residue degree. Nothing below *proves* `∑ eᵢ fᵢ = deg f` in general — that identity needs the
-uniqueness-of-extension theorem, which mathlib v4.31.0 does not carry; it is recorded as an
-open statement in the note and is **proved here in degree 1** (`typeOf_degree_one`).
+residue degree. The identity `∑ eᵢ fᵢ = deg f` **is** proved here (`typeOf_degree`), because
+the gcd definition makes `inertiaDegOf g ∣ deg g` a theorem rather than a wish; what is *not*
+proved (and cannot be, inside Lean, without the uniqueness-of-extension theorem) is that the
+pair `(e, f)` computed here is the classical one — that is the faithfulness argument above,
+flagged for human review.
 
 ## Status
 
@@ -171,15 +183,64 @@ def normValues (g : Polynomial O) : Set ℕ :=
   {k : ℕ | 0 < k ∧ ∃ x : AdjoinRoot g, x ≠ 0 ∧
     IsDiscreteValuationRing.addVal O (Algebra.norm O x) = (k : ℕ∞)}
 
+/-- The positive common divisors of all the norm-valuations of `g`. -/
+def normDivisors (g : Polynomial O) : Set ℕ :=
+  {k : ℕ | 0 < k ∧ ∀ m ∈ normValues g, k ∣ m}
+
 /-- **`f(g)` — the residue degree** of the extension `K[x]/(g)` of `K = Frac O`, read as the
-least strictly positive valuation of a norm from `O[x]/(g)`. -/
-noncomputable def inertiaDegOf (g : Polynomial O) : ℕ := sInf (normValues g)
+**gcd** of the valuations of the norms from `O[x]/(g)` (the positive generator of the group
+they generate — see the module docstring for why the gcd and not the least positive value). -/
+noncomputable def inertiaDegOf (g : Polynomial O) : ℕ := sSup (normDivisors g)
 
 /-- **`e(g)` — the ramification index** of `K[x]/(g)`: `deg g / f(g)`. -/
 noncomputable def ramIndexOf (g : Polynomial O) : ℕ := g.natDegree / inertiaDegOf g
 
 /-- The `(e, f)` pair of a monic irreducible factor. -/
 noncomputable def efPair (g : Polynomial O) : ℕ × ℕ := (ramIndexOf g, inertiaDegOf g)
+
+theorem one_mem_normDivisors (g : Polynomial O) : 1 ∈ normDivisors g :=
+  ⟨one_pos, fun m _ => one_dvd m⟩
+
+theorem normDivisors_bddAbove {g : Polynomial O} (h : (normValues g).Nonempty) :
+    BddAbove (normDivisors g) := by
+  obtain ⟨m, hm⟩ := h
+  exact ⟨m, fun k hk => Nat.le_of_dvd hm.1 (hk.2 m hm)⟩
+
+theorem inertiaDegOf_mem_normDivisors {g : Polynomial O} (h : (normValues g).Nonempty) :
+    inertiaDegOf g ∈ normDivisors g :=
+  Nat.sSup_mem ⟨1, one_mem_normDivisors g⟩ (normDivisors_bddAbove h)
+
+theorem inertiaDegOf_pos {g : Polynomial O} (h : (normValues g).Nonempty) :
+    0 < inertiaDegOf g := (inertiaDegOf_mem_normDivisors h).1
+
+/-- **The defining property of the gcd, half 1**: `inertiaDegOf g` divides every
+norm-valuation. -/
+theorem inertiaDegOf_dvd {g : Polynomial O} (h : (normValues g).Nonempty) {m : ℕ}
+    (hm : m ∈ normValues g) : inertiaDegOf g ∣ m :=
+  (inertiaDegOf_mem_normDivisors h).2 m hm
+
+/-- **The defining property of the gcd, half 2**: it is the largest common divisor. -/
+theorem le_inertiaDegOf {g : Polynomial O} (h : (normValues g).Nonempty) {k : ℕ}
+    (hk : k ∈ normDivisors g) : k ≤ inertiaDegOf g :=
+  le_csSup (normDivisors_bddAbove h) hk
+
+/-- **The recognition principle.** If `k` is itself a norm-valuation and divides all of them,
+it *is* `inertiaDegOf g`. (Used by the RAM/INERT certificates.) -/
+theorem inertiaDegOf_eq_of {g : Polynomial O} {k : ℕ} (hk : k ∈ normValues g)
+    (hdvd : ∀ m ∈ normValues g, k ∣ m) : inertiaDegOf g = k := by
+  have hne : (normValues g).Nonempty := ⟨k, hk⟩
+  exact le_antisymm (Nat.le_of_dvd hk.1 (inertiaDegOf_dvd hne hk))
+    (le_inertiaDegOf hne ⟨hk.1, hdvd⟩)
+
+/-- The other recognition principle: two coprime norm-valuations force `f = 1`. (Used by the
+deep RAM certificate, where `1` is *not* a norm-valuation but `2` and an odd `u` are.) -/
+theorem inertiaDegOf_eq_one_of_coprime {g : Polynomial O} {m₁ m₂ : ℕ} (h₁ : m₁ ∈ normValues g)
+    (h₂ : m₂ ∈ normValues g) (hcop : Nat.gcd m₁ m₂ = 1) : inertiaDegOf g = 1 := by
+  have hne : (normValues g).Nonempty := ⟨m₁, h₁⟩
+  have hd : inertiaDegOf g ∣ Nat.gcd m₁ m₂ :=
+    Nat.dvd_gcd (inertiaDegOf_dvd hne h₁) (inertiaDegOf_dvd hne h₂)
+  rw [hcop] at hd
+  exact Nat.dvd_one.1 hd
 
 /-- `deg g` always belongs to `normValues g` when `g` is monic of positive degree: the image of
 a uniformizer `π` has norm `π ^ deg g`. -/
@@ -197,6 +258,23 @@ theorem natDegree_mem_normValues {g : Polynomial O} (hg : g.Monic) (hd : 0 < g.n
     exact hπ.ne_zero (AdjoinRoot.of.injective_of_degree_ne_zero hdeg (by simpa using h))
   refine ⟨hd, _, hne, ?_⟩
   rw [hnorm, hπ.addVal_pow]
+
+theorem normValues_nonempty {g : Polynomial O} (hg : g.Monic) (hd : 0 < g.natDegree) :
+    (normValues g).Nonempty := by
+  obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
+  exact ⟨g.natDegree, natDegree_mem_normValues hg hd hπ⟩
+
+/-- **`f(g) ∣ deg g`** — free from the gcd definition, because `deg g` is itself a
+norm-valuation. This is what the old `sInf` definition could not deliver. -/
+theorem inertiaDegOf_dvd_natDegree {g : Polynomial O} (hg : g.Monic) (hd : 0 < g.natDegree) :
+    inertiaDegOf g ∣ g.natDegree := by
+  obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
+  exact inertiaDegOf_dvd (normValues_nonempty hg hd) (natDegree_mem_normValues hg hd hπ)
+
+/-- **`e · f = deg g`**, exactly (no truncated division). -/
+theorem ramIndexOf_mul_inertiaDegOf {g : Polynomial O} (hg : g.Monic) (hd : 0 < g.natDegree) :
+    ramIndexOf g * inertiaDegOf g = g.natDegree :=
+  Nat.div_mul_cancel (inertiaDegOf_dvd_natDegree hg hd)
 
 end EF
 
@@ -265,10 +343,8 @@ theorem efPair_of_natDegree_one {g : Polynomial O} (hg : g.Monic) (hd : g.natDeg
   have hmem : (1 : ℕ) ∈ normValues g := by
     have := natDegree_mem_normValues hg (by omega) hπ
     rwa [hd] at this
-  have hne : (normValues g).Nonempty := ⟨1, hmem⟩
-  have hpos : 0 < sInf (normValues g) := (Nat.sInf_mem hne).1
-  have h1 : sInf (normValues g) = 1 := le_antisymm (Nat.sInf_le hmem) hpos
-  simp [efPair, ramIndexOf, inertiaDegOf, h1, hd]
+  have h1 : inertiaDegOf g = 1 := inertiaDegOf_eq_of hmem (fun m _ => one_dvd m)
+  simp [efPair, ramIndexOf, h1, hd]
 
 /-- **The type of a monic linear polynomial is `⟨{(1,1)}⟩`.** -/
 theorem typeOf_of_natDegree_one {g : Polynomial O} (hg : g.Monic) (hd : g.natDegree = 1) :
@@ -288,6 +364,26 @@ theorem typeOf_degree_one {g : Polynomial O} (hg : g.Monic) (hd : g.natDegree = 
     (typeOf g).degree = 1 := by
   rw [typeOf_of_natDegree_one hg hd]
   simp [FactorizationType.degree]
+
+/-- **`∑ᵢ eᵢ fᵢ = deg f` for every monic `f`.** Open until 2026-08-13 (it was blocked on
+`inertiaDegOf g ∣ deg g`, which the old `sInf` definition could not supply); a free consequence
+of the gcd form (`inertiaDegOf_dvd_natDegree`). This is what makes the capstone's hypothesis
+`σ.degree = n` do work. -/
+theorem typeOf_degree {f : Polynomial O} (hf : f.Monic) : (typeOf f).degree = f.natDegree := by
+  have hspec := monicFactors_spec hf
+  have hpos : ∀ g ∈ monicFactors f, 0 < g.natDegree := by
+    intro g hg
+    obtain ⟨hgm, hgi⟩ := hspec.1 g hg
+    rcases Nat.eq_zero_or_pos g.natDegree with h0 | h0
+    · exact absurd ((Polynomial.Monic.natDegree_eq_zero hgm).1 h0 ▸ isUnit_one) hgi.not_isUnit
+    · exact h0
+  have hstep : ((monicFactors f).map efPair).map (fun p => p.1 * p.2)
+      = (monicFactors f).map Polynomial.natDegree := by
+    rw [Multiset.map_map]
+    refine Multiset.map_congr rfl (fun g hg => ?_)
+    exact ramIndexOf_mul_inertiaDegOf (hspec.1 g hg).1 (hpos g hg)
+  rw [FactorizationType.degree, typeOf_data, hstep,
+    ← Polynomial.natDegree_multiset_prod_of_monic _ (fun g hg => (hspec.1 g hg).1), hspec.2]
 
 end TypeOf
 

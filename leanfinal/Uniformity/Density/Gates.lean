@@ -219,17 +219,12 @@ theorem typeOf_monicPoly_two_ne_linType (a : Fin 2 → O) : typeOf (monicPoly a)
   have hgf : g = monicPoly a := by simpa using hspec.2
   have hgd : g.natDegree = 2 := by rw [hgf, hdeg]
   have hef : efPair g = (1, 1) := by simpa using hdata
-  -- `inertiaDegOf g ≤ 2` since `2 = deg g ∈ normValues g`
-  obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
-  have hmem : g.natDegree ∈ normValues g :=
-    natDegree_mem_normValues (hgf ▸ hmonic) (by omega) hπ
-  have hle : inertiaDegOf g ≤ 2 := by
-    rw [inertiaDegOf, ← hgd]; exact Nat.sInf_le hmem
-  have hne : (normValues g).Nonempty := ⟨g.natDegree, hmem⟩
-  have hpos : 0 < inertiaDegOf g := (Nat.sInf_mem hne).1
+  -- `e * f = deg g = 2`, but the type says `e = f = 1`
+  have hmul : ramIndexOf g * inertiaDegOf g = g.natDegree :=
+    ramIndexOf_mul_inertiaDegOf (hgf ▸ hmonic) (by omega)
   have h2 : inertiaDegOf g = 1 := (Prod.mk.injEq _ _ _ _ ▸ hef).2
   have h1 : ramIndexOf g = 1 := (Prod.mk.injEq _ _ _ _ ▸ hef).1
-  rw [ramIndexOf, hgd, h2] at h1
+  rw [h1, h2, hgd] at hmul
   omega
 
 /-- The degree-1 type has density exactly `0` among monic quadratics. -/
