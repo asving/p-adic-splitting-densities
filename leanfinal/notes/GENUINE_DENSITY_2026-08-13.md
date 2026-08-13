@@ -765,3 +765,6 @@ capstone statement quantifies over `genuineDensity` itself.
   hypothesis in the capstone statement.
 * **The remaining `n = 2` work is the two statements in STATUS item 5a** (split = inert; the
   exact ram value). Everything else at `n = 2` is closed.
+
+
+**STATUS 5a doc update (2026-08-13, orchestrator, doc-only):** both named statements (`split_eq_inert_two`, `ram_density_two`) are now PROVED at general O — in `leancheck/UniformityCheck/` (N2Exact + Counting), kept out of this repo per the check/final separation directive; exact values ram = 1/(q+1), split = inert = q/(2(q+1)), cross-checked inside this repo's G8 brackets. The two n=2 rows of STATUS above are therefore CLOSED (externally).
