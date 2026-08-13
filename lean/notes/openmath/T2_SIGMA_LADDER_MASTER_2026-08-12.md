@@ -4029,3 +4029,134 @@ Its substantive content is one object. Both level-one instance records credit th
 **Landmark census for this round.** Twelve master-internal landmark strings, on eleven lines, each returning **1** under `sed -n '1,3843p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<string>'` on 2026-08-13: lines 2791, 2799, 2858, 2859, 2900 (two strings — the pin-count sentence and the gate's expected-count sentence), 3123, 3391, 3449, 3455, 3461 and 3831. Twenty-two source lines, each returning **1** under `grep -cFx` in `HE6_PROOF_2026-08-08.md`: 202, 244, 250, 255, 266, 271, 280, 284, 287, 517, 521, 525, 529, 533, 540, 545, 546, 547, 551, 604, 1036 and 1115. Six of those twenty-two are the three new spans' delimiter pairs: 244/287, 517/521 and 525/604.
 
 Gap-or-worse repairs reset the clean count (S7: "A gap-or-worse repair resets the clean count"). The rider's counter statement — "the clean-pass counter is NOT reset and STANDS AT 1 OF 2" — recorded the state after a minors-only pass, pending the Opus-arm confirmation pass it named as still owed; that pass returned a GAP, so the state is superseded here rather than amended. **The clean-pass counter is RESET to 0 of 2.** The acceptance gate still owes **TWO consecutive clean hostile passes** over the r10 effective text before this note may leave attempt grade \(0/2\); the status line therefore stays "mathematical composition draft, attempt grade \(0/2\)", and by `(GRADE)` every composed instance stays \(0/2\) regardless of supplier grade.
+
+---
+
+## r11 (2026-08-13): the post-PE4 β-definedness correction pinned as `HE6-BETA-GUARD`
+
+*(Opus/Claude repair arm, against the model-diverse sol pass of record `runs/comp13/T2SOL3_output.log`, taken over the r10 effective text and returning 0 CRITICAL + 1 GAP + 0 minors; counter resets.)*
+
+**Verification protocol for this round.** Every source line quoted below was checked on 2026-08-13 by exact-full-line search (`grep -cFx`) in `lean/notes/openmath/HE6_PROOF_2026-08-08.md`, with the count and the source line number recorded at the point of use. No source file is edited by this round; the expected source edit count remains zero. Landmarks internal to this master are quoted from the **r10 effective text**, and their uniqueness is recorded in the form `sed -n '1,4031p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<string>'` → **1**; the bound 4031 is the last line of the r10 counter and excludes this round's own re-quotations, which would otherwise inflate every count.
+
+**What the pass verified, and what this round does not touch.** The pass re-derived r10's three new spans at byte level and upheld all three — `HE6-TEST-PACKAGE` [244,287], `HE6-ROOT-LABEL` [517,521], `HE6-ACCOUNT` [525,604], each delimiter line occurring exactly once, each first delimiter preceding its last. It checked the mathematics of the sharpest one independently: this master's `(ACCOUNT)` is HE6's identity (†) after the root-slope regrouping displayed at HE6:545–547, and HE6 proves (†) for every rational \(\kappa>D'h\), wider than the master's range. It confirmed that the 2026-08-12 F-2 correction at HE6:1115 reaches only LEMMA HE6-3(a), which this master rederives, hence no consumed material. It re-ran the pin inventory (\(18+4+13=35\); all eighteen pairs' delimiters and the four first-only delimiters unique; all thirteen description-only rows resolving uniquely; no `T2V2PIN` line in any of the six sources; source worktree clean) and the cured-consumption census (Four → Eight), and found both correct. Its independent theorem, rank and fence audit returned nothing. None of that is touched below. The GAP is again in the pin table and not in the master core, the r9 coherent-frame rebuild, or the r10 mathematics: one source unit that r10's own pin note directs the reader to obey lies outside every span.
+
+---
+
+## r11 repair 1 — G-1 (GAP): the post-PE4 β-definedness correction pinned as `HE6-BETA-GUARD`, and cited at both sites that lean on it
+
+**The finding repaired.**
+
+> That correction is HE6:1036–1047, outside every one of the 35 spans. It changes the guard from "when \(\delta\) has denominator dividing \(\ell\)" to "when \(\delta=\kappa\)". This does touch the consumed S1.7 clause-2 assertion. "Generic away from the label class" includes \(\delta\ne\kappa\); without the corrected guarded reading, the displayed predicate still contains \(\iota_\xi(r)(\beta)\) where \(\beta\) may be undefined. Calling the conclusion byte-unchanged does not make the correction nonconsumed: the correction is what makes that conclusion well-defined on the advertised domain.
+
+**Accepted in full, and cured by pinning rather than by amending any sentence.** r10 drew the right consequence for the mathematics and the wrong one for the table: it recorded the correction as a reading directive and cited it by opening line and line number without pinning it. Under this master's own standing S7 check — "A consumption outside every span fails the gate" — a directive the reader is told to obey is consumed material. One existing-text span is added; no source file is edited; no sentence of S1.7, S3.1, S3.2 or the r10 crediting text is amended. This is the repair shape S0.2's no-unpinned-material clause prescribes and that r4 repair 13 and r5 repairs 1/4 and r10 repair 1 have already performed eight times.
+
+**(a) What is consumed here, and why the correction is part of it.** S1.7 clause 2 reads "for roots of \(F\), its generic evaluation value is attained away from that label class and rises strictly on that class" (line 526; unamended by this round). Its supplier, by r10 repair 1(a) item 2, is the statement display of **LEMMA HE6-2** (HE6:255–264, inside `HE6-TEST-PACKAGE`) with **LEMMA HE6-2′** (266–269). What this master reads off that display is one dichotomy, \(\varepsilon(\xi)>0\iff\delta=\kappa\) and \(\iota_\xi(r)(\beta)=0\), whose two halves are the clause's two halves. The display's own guard as written, "when \(\delta\) has denominator dividing \(\ell\)", admits \(\delta\ne\kappa\) with \(\ell\delta\in\mathbb Z\); at such a \(\delta\) the element whose residue \(\beta\) is has valuation \(\ell\delta-u\ne0\) — the source's own instance is \(\delta=2\), \(\kappa=5/2\), \(\ell=2\), \(u=5\), giving \(dv=-1\) — so \(\beta\) is undefined there, on part of the very domain over which "away from that label class" ranges. Reading the guard as "when \(\delta=\kappa\)" removes that: \(\beta\) is confined to the case in which the element is a unit and \(\beta\) a unit residue.
+
+The narrowing costs this master nothing, and that is why no fence is added and no consumption is re-routed. The half of clause 2 that consults \(\beta\) is the \(\Leftarrow\) direction, invoked only at \(\delta=\kappa\), which is inside the corrected guard; the half read away from the class is the contrapositive \(\delta\ne\kappa\Rightarrow\varepsilon(\xi)=0\), which names no \(\beta\) at all. So the conclusion this master takes is byte-unchanged under the correction — exactly as r10's note says — while the correction is nevertheless consumed, as the hypothesis under which that conclusion is well posed on the advertised domain. Both statements are true at once, and the second is the one the pin table has to answer for.
+
+**(b) The new pin.** An existing-text span with both delimiters quoted, declared with its four S0.2 conditions.
+
+**`HE6-BETA-GUARD`** — HE6's post-PE4 **Correction 2**, the bolded unit closing the `### Dated acceptance record + corrections (2026-08-09, post-PE4)` section (1036–1047). New `(PINS)` row, in the HE6 block:
+
+> `&\texttt{HE6-BETA-GUARD}&\text{HE6's post-PE4 Correction 2 (LEMMA HE6-2's }\beta\text{-definedness guard, re-scoped to }\delta=\kappa\text{)}\\`
+
+- first: `**Correction 2 (PE4 F-2 — LEMMA HE6-2's β-definedness guard).** The`
+- last: `lemma's conclusion and its consumers are unaffected by this re-scoping.`
+
+Verification remark: in `lean/notes/openmath/HE6_PROOF_2026-08-08.md`, on 2026-08-13, `grep -cFx` returned **1** for each of the two delimiter lines (1036 and 1047); the first precedes the last. Condition 1: the designation is borne by exactly one unit in the file — `grep -cF -- 'Correction 2'` → **1** (line 1036), and `grep -cF -- 'β-definedness guard'` → **1** at the same line — so no outermost-unit adjudication is needed. Condition 4: the unit runs from its bolded opening line to the last nonblank content line before the section-separating horizontal rule at 1049, which is a boundary marker and not unit content by the clause r3 repair 2 appended to S0.2; the next unit of equal or higher rank is `### Dated corrections (2026-08-12 — sol certification A3: the R6 chain challenge adjudicated at HEAD)` at 1051 (`grep -cFx` → **1**), and the preceding sibling unit is Correction 1, `**Correction 1 (PE4 F-1 — the §S9 headline "1,385 members over six` (1022, `grep -cFx` → **1**), whose content ends before 1036. The span therefore contains the correction complete: the diagnosis of the guard, the counterexample instance, the operative directive `the guard as **"when δ = κ"** — the defining case, where the element is a` (1041, `grep -cFx` → **1**), the dichotomy remark, and the closing statement that the lemma's conclusion and its consumers are unaffected. The unit is bolded and outside a blockquote, the configuration r4 repair 5 adjudicated at HE3's `[r2]` CONSTRUCTION PIN and r10 repair 1(b) used for `HE6-ROOT-LABEL`.
+
+Add at pin `HE6-BETA-GUARD`:
+
+> This pin is a reading directive for `HE6-TEST-PACKAGE`, not an independent assertion: it fixes the guard under which LEMMA HE6-2's statement display, inside that span, is read. This master consumes from it exactly one thing — that the \(\beta\) named in the display's dichotomy is confined to \(\delta=\kappa\), where it is a unit residue. The unit's remaining content, the source's own site check over HE6-3, HE6-4 and THEOREM HE6.A, is the source's business and is not consumed here.
+
+**(c) The two citation sites, amended; and the sweep that shows there are only two.** In r10 repair 1(b)'s note at pin `HE6-TEST-PACKAGE`, replace
+
+> **The 2026-08-09 post-PE4 correction governs.**
+
+by
+
+> **The 2026-08-09 post-PE4 correction governs, and is itself pinned, as `HE6-BETA-GUARD` (r11).**
+
+and in r10 repair 1(a) item 2, replace
+
+> (266). → `HE6-TEST-PACKAGE`.
+
+by
+
+> (266). → `HE6-TEST-PACKAGE`, read under `HE6-BETA-GUARD`: the corrected guard is what confines the \(\beta\) of LEMMA HE6-2's dichotomy to \(\delta=\kappa\), where it is defined, while this master's "away from that label class" half of clause 2 is the contrapositive \(\delta\ne\kappa\Rightarrow\varepsilon(\xi)=0\), which names no \(\beta\).
+
+Those are the only two sites. On 2026-08-13, under `sed -n '1,4031p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF`, each of `denominator dividing`, `β-definedness` and `post-PE4` returned **1**, all three on line 3892, the r10 note amended above; the itemised clause-2 consumption is line 3870, amended above. The master's other occurrences of `\beta` are a different symbol or a case the guard does not reach: lines 339, 960, 1022, 1210, 1238, 1310, 2141 and 2152 are HE7's cocycle twist \(\beta^c\) and HETOW's transported letter \(\beta=\eta^{-Q(u_2)}\eta_2\); line 914 is the residue field generator of \(K[Y]/(r)\); lines 3719, 3869, 3872 and 3896 are the label residue \(\beta_\rho=\operatorname{res}(\Phi(\rho)/n(\lambda)(\rho))\) of LEMMA HE6-1, COROLLARY HE6-2″ and LEMMA HE6-5, taken at points where \(dv(\Phi'(\cdot))\) equals the index — the unit case, in which \(\beta\) is defined without appeal to LEMMA HE6-2's guard at all.
+
+**(d) Bookkeeping.** In the effective S0.2 (r2 repair 1 as amended by r3 repair 1, r4 repair 13, r5 repair 8 and r10 repair 1) replace "The 35 pins are the following existing-text pairs" by "The 36 pins are the following existing-text pairs". In the effective S7 pin gate replace "The expected pin count is 35" by "The expected pin count is 36"; the expected synthetic-marker count stays zero, and the expected source edit count stays zero. In r10 repair 1(e), replace the arithmetic string
+
+> → 32 (r5 adds three) → **35** (r10 adds three).
+
+by
+
+> → 32 (r5 adds three) → 35 (r10 adds three) → **36** (r11 adds one).
+
+Inventory taxonomy. The new pin carries a quoted delimiter **pair**, so the pair count rises by one and the first-only and description-only counts are unchanged. In r10 repair 1(e)'s replacement text, replace
+
+> `HE6-PROOF` (r6); and `HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL`, `HE6-ACCOUNT` (r10) — **18 of 35**.
+
+by
+
+> `HE6-PROOF` (r6); `HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL`, `HE6-ACCOUNT` (r10); and `HE6-BETA-GUARD` (r11) — **19 of 36**.
+
+and replace
+
+> The other 13 pins are description-only at both ends. Totals: 18 pairs + 4 first-only + 13 description-only = 35.
+
+by
+
+> The other 13 pins are description-only at both ends. Totals: 19 pairs + 4 first-only + 13 description-only = 36.
+
+\(19+4+13=36\). The four first-only pins (`HE3-R8-2`, `HE3-R8-3`, `HE3-R8-4`, `HE6-FAMILY`) and the thirteen description-only pins are exactly as r7 repair 2 left them and r10 repair 1(e) reaffirmed them.
+
+The S0.2 cured-consumption census. This round's cure is of that clause's class — a source unit this master consumes that no pin covered, cured by adding a pin rather than by fencing or by citing it anyway — so the census advances by one. In the clause as r10 repair 1(e) last replaced it, replace
+
+> Eight consumptions have been cured this way.
+
+by
+
+> Nine consumptions have been cured this way.
+
+and append to the same clause, immediately after its final sentence
+
+> and HE6 §S5, the sole source of `(ACCOUNT)`, became `HE6-ACCOUNT`.
+
+the sentence
+
+> At r11, after the r10 sol pass found the r10 sweep incomplete at one point in turn: HE6's post-PE4 Correction 2, the dated append that re-scopes LEMMA HE6-2's β-definedness guard and so makes S1.7 clause 2's supplier well defined on the domain this master reads it over, became `HE6-BETA-GUARD`.
+
+And replace, in r4 repair 13's opening sentence as r5 repair 4 and then r10 repair 1(e) replaced it,
+
+> so the count now reads two of eight.
+
+by
+
+> so the count now reads two of nine.
+
+**(e) The five Source-pin lines.** `HE6-BETA-GUARD` is consumed wherever `HE6-TEST-PACKAGE` is: it is that pin's reading directive at LEMMA HE6-2, and it travels with it under exactly the scoping r7 repair 5 and r10 repair 1(f) installed — at both level-one records, and at a level-two chain whose level-one key is itself recentered, where it is simply unconsumed over the original key \(\Phi'\). In r10 repair 1(f)'s replacement text: in the **S3.1** line, replace `` `HE6-ROOT-LABEL`, and `HE6-ACCOUNT`. `` by `` `HE6-ROOT-LABEL`, `HE6-ACCOUNT`, and `HE6-BETA-GUARD`. ``; in the **S3.2** line, replace `` `HE6-ACCOUNT`, and `HE3-A-PROOF`. `` by `` `HE6-ACCOUNT`, `HE6-BETA-GUARD`, and `HE3-A-PROOF`. ``; and in each of the three level-two lines **S3.3**, **S3.4** and **S3.5**, replace `` `HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL` and `HE6-ACCOUNT`. `` by `` `HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL`, `HE6-ACCOUNT` and `HE6-BETA-GUARD`. ``. The first two search strings occur once each (lines 3981 and 3983); the third occurs exactly **three** times (3985, 3987, 3989), once in each of the three level-two lines, and all three are amended identically.
+
+**(f) The sweep, re-run and recorded.** The pass's own mechanical sweep is adopted: HE6:1036 was the sole load-bearing exact source quotation lying outside all spans, and it is pinned here. r10 repair 1(g)'s enumeration otherwise stands; the six HE6 dated appends now resolve as follows. PE4 Correction 2 is `HE6-BETA-GUARD` and remains noted at `HE6-TEST-PACKAGE`. The 2026-08-12 F-2 append at HE6:1115 stays a reading directive at `HE6-ACCOUNT` and is deliberately **not** pinned, on the ground the pass itself supplies and this round adopts: it replaces an inference inside LEMMA HE6-3(a)'s proof, and this master consumes no part of that proof — it derives its own clause 1, that no side has slope \(\le T\), from `(ACCOUNT)` in S2's proof — so obeying that directive changes nothing this master reads, whereas obeying Correction 2 is what makes something it reads well defined. That is the whole of the asymmetry between the two notes, and it is the consumption test, not the directive's form, that separates them. PE4 Correction 1 (the §S9 headline) and the 2026-08-12 F-1 (LEMMA HE6-0″, inside `HE6-SLOT-SEAM`), F-3 (§S3.1, LEMMA HE6-0's proof) and F-4 (§S6.1, the coefficient ring of \(\varpi\)) touch nothing this master consumes; and the remaining out-of-span quotations the pass itemised — HE6:668 at master 3118 and HE6:1115 at master 3914, both boundary-fixing or declining, and the two GENTOW4 annex headings quoted at master 2564, whose verification remark at 2566 records both, supersession notices — remain declinations. This enumeration is recorded, not asserted complete; the gate re-runs it.
+
+**Verification remark (source).** On 2026-08-13, `grep -cFx` returned **1** in `lean/notes/openmath/HE6_PROOF_2026-08-08.md` for each of the five source lines quoted in this repair, at the lines shown: 1022 (Correction 1's opening, quoted only to fix the preceding sibling boundary), 1036 and 1047 (the new span's two delimiters), 1041 (the operative directive inside it), and 1051 (the next unit of equal rank, quoted to fix the following boundary). Line 1041 lies strictly inside the span 1036–1047; lines 1022 and 1051 lie strictly outside it, one before and one after. Lines 255–264, 266–269, 545–547 and 1115, and the three r10 spans 244–287, 517–521 and 525–604, are cited by number and not quoted. No source file is edited, and no `T2V2PIN` line is created.
+
+**Verification remark (landmarks).** Under `sed -n '1,4031p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<the quoted string>'` on 2026-08-13, each of the ten superseded landmark strings of (c) and (d) returned **1**: the r10 reading directive "**The 2026-08-09 post-PE4 correction governs.**" (3892); item 2's tail "(266). → `HE6-TEST-PACKAGE`." (3870); "The 35 pins are the following existing-text pairs" and "The expected pin count is 35" (both 3929) with the arithmetic string "→ 32 (r5 adds three) → **35** (r10 adds three)." (also 3929); the pairs-inventory string ending "**18 of 35**." (3937); the totals string "18 pairs + 4 first-only + 13 description-only = 35" (3945); "Eight consumptions have been cured this way." (3955) with its final sentence "and HE6 §S5, the sole source of `(ACCOUNT)`, became `HE6-ACCOUNT`." (also 3955), the append target; and "so the count now reads two of eight." (3965). The two Source-pin search strings of (e) returned **1** each (3981, 3983) and the third returned **3** (3985, 3987, 3989), as recorded there. The sentence of S1.7 that carries clause 2 (line 526) and the two r10 crediting sentences (889 and 1454) were located and are not amended.
+
+---
+
+## r11 counter
+
+r11 folds a repair for the single GAP (G-1) and no minors of the model-diverse sol pass `runs/comp13/T2SOL3_output.log`, taken over the r10 effective text. The finding is credited to that pass in full: it verified r10's three new spans byte-level and mathematically, re-ran the inventory and census arithmetic, then found that r10's own reading directive commands obedience to a source unit no span covers.
+
+Its content is one object and one pin. HE6's post-PE4 Correction 2 (HE6:1036–1047) re-scopes LEMMA HE6-2's guard from "when \(\delta\) has denominator dividing \(\ell\)" to "when \(\delta=\kappa\)", and that re-scoping is what makes the \(\beta\) in the lemma's dichotomy defined across the domain over which S1.7 clause 2 reads it. r10 told the reader to obey the correction and left it outside every span; r11 pins it as `HE6-BETA-GUARD`, with both delimiters quoted and `grep -cFx`-verified, and cites it at the two sites that lean on it — r10 repair 1(b)'s note at `HE6-TEST-PACKAGE` and r10 repair 1(a) item 2, the itemised clause-2 consumption. No sentence of S1.7 is amended; neither r10 crediting sentence is amended.
+
+**No theorem-statement change is made by this round.** No display of the statement suite S1.2–S1.8 is amended, no hypothesis is added to or removed from HE7.A's suite, no case is added or dropped, no conclusion is touched, and no mathematical claim of this master changes truth value: the correction narrows a supplier's guard to the case in which the master already reads it, so the consumed dichotomy is byte-unchanged and nothing had to be re-routed or fenced.
+
+**Two named obligations remain open**, both at level one and both unchanged: `(LB1)` for clause-4 block construction, and `(MP1)` for the clause-5 peel at a recentered key. (RISE) remains a stipulated carrier hypothesis discharged per instance. One pin is added and none removed, no source file is edited, and no `T2V2PIN` line is created: the expected pin count is now **36**, the expected synthetic-marker count stays zero, and the expected source edit count stays zero.
+
+**Landmark census for this round.** Ten master-internal landmark strings, on seven lines, each returning **1** under `sed -n '1,4031p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<string>'` on 2026-08-13: lines 3870, 3892, 3929 (three strings — the pin-count sentence, the gate's expected-count sentence and the arithmetic chain), 3937, 3945, 3955 (two strings — the census opening and its final sentence) and 3965; plus two Source-pin strings at 3981 and 3983. One further Source-pin string returns **3**, at 3985, 3987 and 3989, and all three occurrences are amended. Five source lines, each returning **1** under `grep -cFx` in `HE6_PROOF_2026-08-08.md`: 1022, 1036, 1041, 1047 and 1051. Two of those five are the new span's delimiter pair: 1036/1047.
+
+Gap-or-worse repairs reset the clean count (S7: "A gap-or-worse repair resets the clean count"). **The clean-pass counter is RESET to 0 of 2.** The acceptance gate owes **TWO consecutive clean hostile passes** over the r11 effective text before this note may leave attempt grade \(0/2\); the status line therefore stays "mathematical composition draft, attempt grade \(0/2\)", and by `(GRADE)` every composed instance stays \(0/2\) regardless of supplier grade.
