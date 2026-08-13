@@ -1,0 +1,81 @@
+No defects found. I constructed the effective r12 text first and made no edits.
+
+### 1. r12 mathematics — CLEAN
+
+The five carrier degrees reconcile as follows:
+
+| Instance | Current degree |
+|---|---|
+| HE3 | \(D'=e_1f_1\) |
+| HE6 | \(D'=e_1f_1\) |
+| HE7 | \(D''=D'\ell d_r=(e_1\ell)(f_1d_r)\) |
+| HETOW | \(D_2=D'e_2f_2=(e_1e_2)(f_1f_2)\) |
+| GENTOW4 | same \(D_2\) carrier as HETOW |
+
+Strictly, the first two boxes do not independently assert \(D''=D_2\); that equality is forced at the HE7-to-tower bridge. HETOW identifies the datum by \((\ell,d_r)=(e_2,f_2)\), so
+
+\[
+D''=D'\ell d_r=D'e_2f_2=D_2.
+\]
+
+Both \(\Psi_{\kappa_2,\widetilde r}\) and \(\Phi_2\) are monic of that degree. Therefore
+
+\[
+w=\Psi_{\kappa_2,\widetilde r}-\Phi_2
+\]
+
+is zero or has \(\deg w<D''\) by leading-coefficient cancellation. The argument in the [effective r12 scope clause](/data/users/asvin/math-and-lean/p-adic-splitting-densities/lean/notes/openmath/T2_SIGMA_LADDER_MASTER_2026-08-12.md:4242) is sound.
+
+For accumulated perturbations, every refinement increment has degree \(<D''\) by the lift bound. Hence
+
+\[
+\deg(w+w_1+\cdots+w_j)<D''
+\]
+
+whenever the sum is nonzero. This agrees byte-for-byte with HE7-12(d): “\(W:=w_1+\cdots+w_j\) has deg \(W<D''\)” at [HE7:842](/data/users/asvin/math-and-lean/p-adic-splitting-densities/lean/notes/openmath/HE7_PROOF_2026-08-08.md:842). The valuation condition is also stable: a nonzero sum of terms of value \(>T_2\) still has value \(>T_2\); if the total is zero, the unperturbed-key branch applies.
+
+The C-A corner directive is honest. The source expressly says the literal reduced `(LIFT)` construction has “NO x-degree-\(\ge D'\) overflow” and \(w=0\) at [HETOW:213](/data/users/asvin/math-and-lean/p-adic-splitting-densities/lean/notes/openmath/HETOW_RECON_2026-08-09.md:213). C-A instead concerns a junk-augmented presentation whose moved term reaches the leading slot and makes \(w\) acquire degree at least \(D''\), at [HETOW:558](/data/users/asvin/math-and-lean/p-adic-splitting-densities/lean/notes/openmath/HETOW_RECON_2026-08-09.md:558). Such an object cannot simultaneously be the difference of the two monic degree-\(D''\) keys substituted by the instance boxes. r12 therefore correctly obeys C-A while deriving the legal \(w\ne0\) case independently.
+
+Classification: no finding.
+
+### 2. New pin — CLEAN
+
+`HETOW-KEY-BRIDGE-C-A` resolves to:
+
+- first delimiter: HETOW line 548, occurrence count 1;
+- last delimiter: HETOW line 569, occurrence count 1;
+- enclosing dated heading: line 539, occurrence count 1;
+- next sibling `C-B`: line 571, occurrence count 1.
+
+The delimiters are ordered and contain all of C-A, including both halves, the preserved accounting core, and the consumer trace. Beginning at 557 or 558 would start inside the named unit and fail completeness; the chosen 548–569 span is minimal under S0.2.
+
+The full inventory resolves as \(20\) quoted pairs \(+\ 4\) first-only pins \(+\ 13\) description-only pins \(=37\). The corrected `HE7-SLOT-TRANSFER` pair is uniquely HE7:158–191. All six sources contain zero `T2V2PIN` lines.
+
+Classification: no finding.
+
+### 3. Six-source dated-append sweep — CLEAN
+
+- **HE3:** post-PE3 and R8 umbrella checked; R8-2 through R8-5 are pinned and governing. R8-1 and the starved-corner material are unconsumed.
+- **HE6:** all PE4 and 2026-08-12 corrections checked. The load-bearing β guard is pinned as `HE6-BETA-GUARD`; normalized slots are reflected in the effective formula. F-2/F-3/F-4 touch proof material or claims the master independently derives or does not consume.
+- **HE7:** post-annex riders and the HE7-L1 correction checked. The cocycle chain is pinned; the unpinned HE7-L1 material remains corroboration only.
+- **HE6R1:** acceptance corrections, obstruction records, challenge corrections, and the governing HE6R1-1 re-display checked. The consumed mass descent is unchanged; count-side material remains expressly excluded.
+- **HETOW:** C-A is now pinned. C-B, C-C, the acceptance correction, and the absorption append do not alter consumed claims; HETOW-4 remains authoritative and pinned.
+- **GENTOW4:** acceptance record is pinned. The TOWERRAT2-C supersession remains a disclosed, unconsumed reading notice; the master does not import the superseded top-coefficient parenthetical.
+
+No further load-bearing dated directive lies outside the 37-pin inventory.
+
+Classification: no finding.
+
+### 4. Free hostile route — CLEAN
+
+I attacked the new \(d=c_{\mathcal C}v\) datum and the lift-difference step. The five constants are respectively
+
+\[
+e_1,\ e_1,\ \ell e_1,\ e_1e_2,\ e_1e_2,
+\]
+
+exactly as their boxes state. For \(E=\Lambda-L_\lambda(s)\), both summands have value \(\lambda\), so ultrametricity gives \(d(E(\rho))\ge\lambda\). `(SLOT-V)` excludes \(h(E)<\lambda\), while the zero digit excludes \(h(E)=\lambda\). Thus \(E=0\) or \(h(E)>\lambda\), as r12 claims.
+
+Classification: no finding.
+
+VERDICT: CLEAN | FINDINGS: 0C + 0G + 0m
