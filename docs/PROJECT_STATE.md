@@ -4259,3 +4259,14 @@ split_eq_inert_two (no uniform coefficient formula at residue char
 2 — real unit), ram_density_two (per-centre census). 42/42
 declarations Lean-core; 0 sorries; build green; 8 commits. Codex
 window 44%.
+
+**2026-08-13 APPEND #38a (micro) — CHECK/FINAL SEPARATION + HAAR
+DROPPED.** Asvin: the Haar-measure identification is NOT a work item
+(the cylinder-count limit IS the density of record); and the
+definition-check program (n=2 completion, then n=3) continues in a
+NEW project `leancheck/` (lake path-dependency on leanfinal,
+read-only import; builds green) — `leanfinal/` stays the clean final
+artifact, existing Part-1/P2 files unmoved (prospective rule, no
+churn). N=2-completion unit launching in leancheck: the two named
+statements split_eq_inert_two + ram_density_two (exact per-type
+values vs W-11), then the n=3 check vs HMENU3.
