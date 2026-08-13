@@ -34,9 +34,11 @@ block records the factorization form as an open goal. The closest existing resul
 (`Mathlib/RingTheory/Polynomial/UniversalFactorizationRing.lean`, `@[stacks 00UH]`), which lifts
 only to an étale algebra, and `HenselianLocalRing.exists_lift_of_to_ResidueField` in the FLT
 project (`FLT/HenselianLocalRing/Finite.lean`), which supplies the missing section but is written
-against mathlib master and depends on FLT-internal étale-decomposition files. Neither was
-backportable to v4.31 at reasonable cost, so the classical Newton/successive-approximation proof
-is given here from scratch. Full audit: `leanfinal/notes/HENSEL_FACT_2026-08-13.md`.
+against mathlib master and depends on FLT-internal étale-decomposition files. Backporting either
+was *judged* (a development-time judgement call, not a checked fact) to cost more than proving the
+result directly, so the classical Newton/successive-approximation proof is given here. Full audit,
+including the evidence behind the absence check:
+`leanfinal/notes/HENSEL_FACT_2026-08-13.md`.
 
 ## Method
 
@@ -49,8 +51,9 @@ times something", which needs `𝔪` principal; the argument here works for a no
 
 ## Status
 
-Sorry-free, axiom-free (Lean core only). Every statement is new and is flagged for human review
-in §4 of the unit note.
+Zero `sorry`; no axiom is declared here and every theorem's `#print axioms` footprint is the Lean
+core triple `propext, Classical.choice, Quot.sound`.  Every statement in this file is new and is
+flagged for human review in §4 of the unit note.
 -/
 
 set_option linter.style.longLine false
@@ -713,12 +716,18 @@ theorem monic_factorization_unique {g h g' h' : Polynomial R}
   exact hg.isRegular.left this
 
 /-- **Peeling a simple residual root.**  If the reduction of a monic `f` has `ρ₀` as a root at
-which the derivative does not vanish, then `f = (X - ρ) * q` over `R` with `q` monic and `ρ`
-lifting `ρ₀`.
+which the derivative does not vanish, then `f = (X - ρ) * q` over `R` with `q` monic, `ρ` lifting
+`ρ₀`, and the reduction of `q` pinned to `f̄ /ₘ (X - ρ₀)`.  Nothing at all is assumed about the
+cofactor: it may reduce to a repeated quadratic.
 
-The point, for the `n = 3` consumer, is what is *not* assumed: the cofactor `q` may reduce to
-anything at all — in particular to a repeated quadratic, which is exactly the case that the root
-form of Hensel's lemma cannot reach. Simplicity is required only at `ρ₀`. -/
+**This corollary is a convenience, not new strength.** It is also reachable from the ROOT form
+(`HenselianLocalRing.is_henselian` lifts `ρ₀` to a root `ρ`, and monic division by `X - C ρ`
+supplies `q`); what it saves the caller is discharging the coprimality hypothesis, which is done
+here from `hsimple` via `isCoprime_of_is_root_of_eval_derivative_ne_zero`.  The results in this
+file that the root form genuinely does *not* give are `exists_monic_factorization` when no residual
+factor is a simple linear one — e.g. a degree-4 reduction `(X - a) ^ 2 * (X - b) ^ 2` with
+`a ≠ b`, or a product of two distinct irreducible quadratics — together with
+`isCoprime_of_map_eq` and `monic_factorization_unique`. -/
 theorem exists_linear_factorization {f : Polynomial R} (hf : f.Monic) {ρ₀ : ResidueField R}
     (hroot : (f.map (residue R)).IsRoot ρ₀)
     (hsimple : (f.map (residue R)).derivative.eval ρ₀ ≠ 0) :

@@ -190,17 +190,17 @@ Writing `U = G c`, monicity gives `deg U = deg G + deg c`; `deg U < deg G` force
 i.e. `c = 0`, i.e. `G = G'`. Then `G H = G H'` and `G` monic (hence regular,
 `Polynomial.Monic.isRegular`) gives `H = H'`. ∎
 
-The degenerate case `n = 0`: then `m = l = 0`, `f = G = H = 1`, and every clause holds trivially;
-(C) is `IsCoprime 1 1`. The Lean proof handles `n = 0` inside the general argument
-(`deg w < 0` is vacuous, so (S3) is vacuous, and (C) is stated for `0 < n`; uniqueness at `n = 0`
-follows from monic-of-degree-0 ⟹ `= 1`).
+The degenerate case `n = 0`: then `m = l = 0`, `f = G = H = 1`, and every clause holds trivially.
+No landed statement carries a `0 < n` side condition. (S3) is vacuously true there (`deg w < 0`
+forces `w = 0`, solved by `u = v = 0`); the Lean proof of (C) case-splits on `0 < m + l` and, in
+the degenerate branch, uses `g = 1` (monic of `natDegree 0`) and `IsCoprime 1 h`.
 
 ---
 
 ## 3. WHAT LANDED
 
 All in namespace `Uniformity.Hensel`, file `leanfinal/Uniformity/HenselFactorization.lean`
-(789 lines), imported from `leanfinal/Uniformity.lean`. `lake build` green (8568 jobs), zero
+(781 lines), imported from `leanfinal/Uniformity.lean`. `lake build` green (8568 jobs), zero
 `sorry`, zero new axioms, zero linter warnings from this file.
 
 | name | what |
@@ -240,9 +240,12 @@ theorem exists_monic_factorization {f : Polynomial R} (hf : f.Monic)
       g.map (residue R) = g₀ ∧ h.map (residue R) = h₀ ∧
       g.natDegree = g₀.natDegree ∧ h.natDegree = h₀.natDegree
 ```
-**Faithfulness.** This is the classical statement (Bourbaki, *Algèbre commutative* III §4.3;
-Stacks 04GG/0BSF; Neukirch II.4.6 in the DVR case), transcribed with no hidden strengthening of
-hypotheses or weakening of conclusions. Points a reviewer should check:
+**Faithfulness.** This is the classical statement — Hensel's lemma in factorization form, the
+form stated (for a general henselian pair) in Bourbaki's *Algèbre commutative* and, for a complete
+DVR, as Neukirch II.4.6. ⚠ **Attribution flagged for lookup**: the exact Bourbaki chapter/section
+and the exact Stacks Project tag were NOT verified by this unit; do not quote a tag from this note.
+The statement itself is transcribed with no hidden strengthening of hypotheses or weakening of
+conclusions. Points a reviewer should check:
 (a) `residue R : R →+* ResidueField R` is mathlib's canonical quotient map by `maximalIdeal R`,
 and `Polynomial.map (residue R)` is coefficientwise reduction — so `hfgh` says exactly
 "`f` reduces to `g₀h₀` mod `𝔪`";
@@ -320,16 +323,22 @@ theorem exists_linear_factorization {f : Polynomial R} (hf : f.Monic) {ρ₀ : R
     ∃ (ρ : R) (q : Polynomial R), q.Monic ∧ f = (X - Polynomial.C ρ) * q ∧ residue R ρ = ρ₀ ∧
       q.map (residue R) = (f.map (residue R)) /ₘ (X - Polynomial.C ρ₀)
 ```
-**Faithfulness.** This packages the coprimality obligation away for the intended `n = 3` use.
-`hsimple` says the residual root `ρ₀` is simple *in `f̄`*, which over a field is equivalent to
-"`ρ₀` is not a root of the cofactor `f̄ /ₘ (X − ρ₀)`" — coprimality of the two blocks. What must be
-read carefully is what is **not** assumed: nothing whatsoever about the cofactor `q`, which may
-reduce to a repeated quadratic. That is precisely the case that the root form of Hensel's lemma
-(mathlib's `HenselianLocalRing.is_henselian`) cannot reach, and it is the case `N3_CHECK` §7 branch
-(ii) needs. The last conjunct pins the cofactor's reduction, so the caller knows *which* cubic
-cofactor it got. Mathlib's `isCoprime_of_is_root_of_eval_derivative_ne_zero` supplies the
-coprimality; the rest is this file's theorem. Degenerate reading: `hroot` is not redundant —
-without it `f̄ ≠ (X − ρ₀) · (f̄ /ₘ (X − ρ₀))` and the conclusion would be false.
+**Faithfulness.** This packages the coprimality obligation away. `hsimple` says the residual root
+`ρ₀` is simple *in `f̄`*, which over a field is equivalent to "`ρ₀` is not a root of the cofactor
+`f̄ /ₘ (X − ρ₀)`" (differentiate `f̄ = (X − ρ₀) q̄` at `ρ₀`: `f̄'(ρ₀) = q̄(ρ₀)`) — i.e. coprimality of
+the two blocks. Nothing is assumed about the cofactor `q`, which may reduce to a repeated
+quadratic. The last conjunct pins the cofactor's reduction, so the caller knows *which* cofactor it
+got. `hroot` is not redundant: without it `f̄ ≠ (X − ρ₀) · (f̄ /ₘ (X − ρ₀))` and the conclusion
+would be false.
+
+⚠ **CORRECTION, found by the Codex adversarial pass (finding 7) and applied to the Lean
+docstring.** An earlier draft of this note and of the docstring claimed that this corollary reaches
+a case "the root form of Hensel's lemma cannot reach". **That claim was false.** Mathlib's root
+form (`HenselianLocalRing.is_henselian`) assumes a simple residual root and imposes *no* condition
+on the rest of the reduction, so it lifts `ρ₀` to a root `ρ` and monic division by `X − C ρ`
+recovers exactly this corollary. `exists_linear_factorization` is a convenience wrapper, not new
+strength. See §7 for what this correction implies for the `n = 3` consumer — it is a substantive
+revision of `N3_CHECK` §7's diagnosis, not a wording fix.
 
 ### 4.6 Supporting statements
 
@@ -350,7 +359,10 @@ is proved by `exact`.
 ## 5. AUDIT — axioms and `sorry` count
 
 `sorry` count in `leanfinal/Uniformity/HenselFactorization.lean`: **0** (`grep -c sorry` = 0).
-New axioms: **0**. `lake build` from `leanfinal/`: **green, 8568 jobs**, no warning from this file.
+New axioms: **0** — no `axiom` command appears in the file; "axiom-free" in the file header means
+the Lean-core triple only, not literally no axioms (Codex finding 8; the header has been reworded).
+`lake build` from `leanfinal/`: **green, 8568 jobs**, no warning from this file. `leancheck` (the
+downstream path-dependency package) also rebuilds green, 8587 jobs.
 `#print axioms` for every declaration the file introduces, pasted verbatim from
 `lake env lean` on a throwaway checker module (deleted afterwards; the pre-existing capstone
 footprints elsewhere in `Uniformity` are unchanged, as the build log confirms):
@@ -385,6 +397,22 @@ footprints elsewhere in `Uniformity` are unchanged, as the build log confirms):
 
 ---
 
+### 5.1 Independent adversarial pass (Codex, fresh context, 2026-08-13)
+
+The full file plus a quote-and-classify verifier charge (hunt vacuity, silent weakening,
+mis-binding, definitional traps, prose/statement mismatch; fix nothing) was handed to Codex, which
+had not seen the design. **Verdict: no critical statement defect.** Findings 1–6 CLEAN
+(generality of `exists_monic_factorization` and a nontrivial witness `R = ℤ_5`, `f = X² − 6`,
+`g₀ = X − 1`, `h₀ = X + 1`; the degree-zero boundary cases in every statement; uniqueness really
+being uniqueness of the *ordered* pair; `IsCoprime` being honest Bézout in `R[X]`; exactness and
+the `u`-against-`h` pairing; `coeffIdeal` having no definitional trap). Three findings were acted
+on:
+* **(G) finding 7 — prose overreach, ACTED ON, and it was a real error.** See the ⚠ block in §4.5
+  and the correction opening §7.
+* **(G) finding 8 — "axiom-free" imprecise.** File header and §5 reworded.
+* **(G) finding 9 — "backportable at reasonable cost" is a development-history judgement, not a
+  kernel-checkable fact.** File header reworded to say so explicitly.
+
 ## 6. OPEN / NOT DONE (recorded honestly, not sorried)
 
 0. **(NOT open — recorded here because the charge asked.)** Uniqueness of the *factorization*
@@ -409,22 +437,48 @@ footprints elsewhere in `Uniformity` are unchanged, as the build log confirms):
 
 ---
 
-## 7. WHAT THE `n = 3` CONSUMER STILL NEEDS
+## 7. WHAT THE `n = 3` CONSUMER STILL NEEDS — AND A CORRECTION TO `N3_CHECK` §7
 
-With this unit in hand, branch (ii) of `N3_CHECK` §7 ("undecided at level `N`, not triply
-tangent ⟹ `f` = (decided linear) × (quadratic), factorization determined by the class") is
-reachable, but three things are still missing and none is supplied here:
+**First, the correction (this is the most important paragraph in the note).**
+`N3_CHECK_2026-08-13.md` §7 diagnosed branch (ii) of the `n = 3` pinning argument as *"blocked on a
+Hensel coprime-factorisation lemma"*, on the grounds that "the residual repeated factor may be the
+quadratic one" so the simple-root dodge is unavailable. **At `n = 3` that diagnosis appears to be
+wrong, and this unit's own adversarial pass is what exposed it.** Enumerate the residual shapes of
+a cubic that is undecided but NOT triply tangent: the only one is `f̄ = (X − ρ̄)(X − c̄) ^ 2` with
+`ρ̄ ≠ c̄` (the shapes `(X − c̄) ^ 3` is branch (i); every other cubic shape — three distinct roots,
+linear × irreducible quadratic, irreducible cubic — is decided at level 1 by this repo's own
+certificates). In that shape `ρ̄` **is** a simple residual root of `f̄`, so mathlib's ROOT form
+already peels it, and the factorization form is not needed for the peel itself.
 
-1. **The residual trigger.** A lemma turning "not triply tangent at any centre" into the
-   hypothesis of this unit, i.e. producing a coprime residual splitting `f̄ = (X − ρ̄)·q̄` with
-   `ρ̄` not a root of `q̄`. That is a statement about the `n = 3` undecided locus, not about Hensel.
-2. **Class-determinacy of the lift.** "The factorization is determined by the level-`N` class"
-   needs a *quantitative* version: if `f ≡ f'` mod `𝔪^N` then the lifted factors agree mod `𝔪^N`
-   (or mod `𝔪^{N−c}` for an explicit `c`). §4.2's uniqueness is the `N = ∞` shadow of this; the
-   finite-level version is a separate induction on the same Newton iteration and is NOT landed.
-3. **The counting step.** Composing the branch-(ii) injection
-   `(root mod 𝔪^N, quadratic class) ↪ q^{5N/2}` with the `n = 2` `class_pinned` bound, and the
-   branch-(i) triple-tangency Taylor argument, into a single `undecidedCount_le` at `n = 3`.
+Where the factorization form becomes *indispensable* is `n ≥ 4`: e.g. a reduction
+`(X − a) ^ 2 (X − b) ^ 2` with `a ≠ b`, or a product of two distinct irreducible quadratics, has no
+simple residual root at all, and no amount of root-lifting splits it. So this unit is correctly
+described as **infrastructure for the general theorem**, and only optionally as an `n = 3` unblocker.
+
+**What this unit gives the `n = 3` consumer that the root form does NOT.** Three things, and they
+are the ones a *pinning* argument actually consumes:
+* `isCoprime_of_map_eq` — a Bézout identity `a g + b h = 1` in `O[X]` for the peeled blocks. This is
+  what turns "`g` divides a product" into "`g` divides a factor", and it does not follow from
+  lifting a root.
+* `monic_factorization_unique` — the peeled pair is the ONLY monic pair with those reductions.
+  Branch (ii)'s injection ("the factorization is determined by the class") needs a uniqueness
+  statement; this is its `N = ∞` shadow.
+* `exists_eq_add_mul_of_degree_lt` — exact degree-bounded interpolation, i.e. a concrete CRT
+  splitting `O[X]/(gh) ≅ O[X]/(g) × O[X]/(h)` on representatives, which is the natural home for a
+  coordinatewise counting argument.
+
+**Still missing for branch (ii), and NOT supplied here.**
+1. **The residual trigger.** A lemma turning "undecided at level `N` and not triply tangent at any
+   centre" into the residual shape `f̄ = (X − ρ̄)(X − c̄) ^ 2` with `ρ̄ ≠ c̄`. This is a statement
+   about the `n = 3` undecided locus, not about Hensel, and it is where the enumeration in the
+   correction above would have to be made into Lean.
+2. **Class-determinacy at FINITE level.** "The factorization is determined by the level-`N` class"
+   needs the quantitative form: if `f ≡ f'` mod `𝔪 ^ N` then the lifted factors agree mod
+   `𝔪 ^ (N − c)` for an explicit `c`. §4.2's uniqueness is only the `N = ∞` shadow of this. The
+   finite-level version is a second induction over the *same* Newton iteration
+   (`exists_solve_step` + `exists_adicLimit_of_degree_lt` are reusable verbatim) and is NOT landed.
+3. **The counting step.** Composing the branch-(ii) injection with the `n = 2` `class_pinned` bound
+   and branch (i)'s triple-tangency Taylor argument into an `undecidedCount_le` at `n = 3`.
 
 ---
 
