@@ -2,5 +2,6 @@ import Uniformity.Basic
 import Uniformity.Density.LocalData
 import Uniformity.Density.TypeOf
 import Uniformity.Density.GenuineDensity
+import Uniformity.Density.QuadCert
 import Uniformity.Density.Statement
 import Uniformity.Density.Gates

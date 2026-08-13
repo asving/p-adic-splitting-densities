@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import Uniformity.Density.Statement
+import Uniformity.Density.QuadCert
 
 /-!
 # Uniformity.Density.Gates — machine-checked gates on the genuine density
@@ -39,32 +40,6 @@ set_option linter.style.longLine false
 namespace Uniformity.Density
 
 open IsLocalRing Polynomial Filter Topology
-
-/-! ## 0. The named types -/
-
-/-- The degree-1 type `{(1,1)}`: one unramified linear factor. -/
-def linType : FactorizationType := ⟨{(1, 1)}⟩
-
-/-- The degree-2 SPLIT type `{(1,1),(1,1)}`: two unramified linear factors. -/
-def splitType : FactorizationType := ⟨{(1, 1), (1, 1)}⟩
-
-/-- The degree-2 INERT type `{(1,2)}`: one unramified quadratic factor. -/
-def inertType : FactorizationType := ⟨{(1, 2)}⟩
-
-/-- The degree-2 RAMIFIED type `{(2,1)}`: one totally ramified quadratic factor. -/
-def ramType : FactorizationType := ⟨{(2, 1)}⟩
-
-theorem linType_degree : linType.degree = 1 := by simp [linType, FactorizationType.degree]
-theorem splitType_degree : splitType.degree = 2 := by
-  simp [splitType, FactorizationType.degree]
-theorem inertType_degree : inertType.degree = 2 := by
-  simp [inertType, FactorizationType.degree]
-theorem ramType_degree : ramType.degree = 2 := by simp [ramType, FactorizationType.degree]
-
-theorem splitType_ne_linType : splitType ≠ linType := by
-  intro h
-  have := congrArg (fun σ => Multiset.card σ.data) h
-  simp [splitType, linType] at this
 
 /-! ## 1. G1 — degree 1, exact -/
 
@@ -155,24 +130,6 @@ section SplitLower
 
 variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
-
-theorem monicPoly_two_expand (a : Fin 2 → O) :
-    monicPoly a = X ^ 2 + C (a 1) * X + C (a 0) := by
-  simp only [monicPoly, Fin.sum_univ_two, Fin.val_zero, Fin.val_one, pow_zero, pow_one, mul_one]
-  ring
-
-theorem monicPoly_two_eval (a : Fin 2 → O) (x : O) :
-    (monicPoly a).eval x = x ^ 2 + a 0 + a 1 * x := by
-  rw [monicPoly_two_expand]
-  simp only [eval_add, eval_pow, eval_X, eval_mul, eval_C]
-  ring
-
-theorem monicPoly_two_deriv_eval (a : Fin 2 → O) (x : O) :
-    ((monicPoly a).derivative).eval x = 2 * x + a 1 := by
-  rw [monicPoly_two_expand]
-  simp only [derivative_add, derivative_pow, derivative_X, derivative_C, derivative_mul,
-    eval_add, eval_mul, eval_pow, eval_X, eval_C, eval_zero, eval_one]
-  ring
 
 /-- **Hensel's split certificate.** If `a₀ ∈ 𝔪` and `a₁` is a unit, the monic quadratic
 `X² + a₁X + a₀` has a root `r ≡ 0 (mod 𝔪)`, hence factors into two monic linear factors, hence
@@ -300,6 +257,278 @@ theorem gate_sigma_separation_two :
 
 end SepTwo
 
+/-! ## 5. Sharpened lower bounds and the certified brackets (follow-up unit, 2026-08-13) -/
+
+section Lowers
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
+
+/-- **One decided class is a density lower bound.** -/
+theorem genuineDensity_ge_of_decided {n N : ℕ} {σ : FactorizationType} {c : Coeff O n N}
+    (h : DecidedAt O n σ N c) :
+    1 / (residueCard O : ℝ) ^ (n * N) ≤ genuineDensity O n σ := by
+  have hpos : 0 < decidedCount O n σ N := by
+    rw [decidedCount]
+    have : Nonempty (decidedSet O n σ N) := ⟨⟨c, h⟩⟩
+    exact Nat.card_pos
+  have hA : (1 : ℝ) ≤ (decidedCount O n σ N : ℝ) := by exact_mod_cast hpos
+  have hc : (0 : ℝ) < (residueCard O : ℝ) ^ (n * N) := qpow_pos (O := O) _
+  refine le_trans ?_ (decidedSeq_le_genuineDensity n σ N)
+  rw [decidedSeq, div_le_div_iff₀ hc hc]
+  nlinarith [hA, hc]
+
+/-! ### Split, sharpened: all `q - 1` level-1 classes `(0, unit)` -/
+
+/-- Every level-1 class with `a₀ ≡ 0` and `a₁` a unit is SPLIT-decided. -/
+theorem split_decided_of_level_one {c : Coeff O 2 1} (h0 : c 0 = 0) (h1 : c 1 ≠ 0) :
+    DecidedAt O 2 splitType 1 c := by
+  intro b hb
+  have hb0 : b 0 ∈ maximalIdeal O := by
+    have h := congrFun hb 0
+    rw [h0] at h
+    have : b 0 ∈ (maximalIdeal O) ^ 1 := (Ideal.Quotient.eq_zero_iff_mem).1 h
+    rwa [pow_one] at this
+  have hb1 : IsUnit (b 1) := by
+    by_contra hu
+    refine h1 ?_
+    have hmem : b 1 ∈ (maximalIdeal O) ^ 1 := by
+      rw [pow_one]; exact (mem_maximalIdeal _).2 (mem_nonunits_iff.2 hu)
+    have h := congrFun hb 1
+    rw [← h]
+    exact (Ideal.Quotient.eq_zero_iff_mem).2 hmem
+  exact typeOf_split_of_unit b hb0 hb1
+
+theorem card_ne_zero_res_one : Nat.card {y : Res O 1 // y ≠ (0 : Res O 1)} = residueCard O - 1 := by
+  classical
+  haveI : Fintype (Res O 1) := Fintype.ofFinite _
+  rw [Nat.card_eq_fintype_card, Fintype.card_subtype_compl, Fintype.card_subtype_eq (0 : Res O 1),
+    ← Nat.card_eq_fintype_card, card_res, pow_one]
+
+theorem decidedCount_split_ge : residueCard O - 1 ≤ decidedCount O 2 splitType 1 := by
+  rw [← card_ne_zero_res_one (O := O), decidedCount]
+  refine Nat.card_le_card_of_injective
+    (fun y => (⟨![0, y.1], split_decided_of_level_one (by simp) (by simpa using y.2)⟩ :
+      decidedSet O 2 splitType 1)) ?_
+  intro y z hyz
+  have h : (![0, y.1] : Coeff O 2 1) = ![0, z.1] := Subtype.ext_iff.1 hyz
+  exact Subtype.ext (by simpa using congrFun h 1)
+
+/-- **G3-sharp.** `(q-1)/q² ≤ genuineDensity O 2 splitType` — the whole order-0 SEP-SPLIT
+stratum at level 1 (W-11's SEP-SPLIT row in per-centre form). -/
+theorem gate_split_lower_sharp :
+    ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ 2 ≤ genuineDensity O 2 splitType := by
+  have hq1 : (1 : ℕ) ≤ residueCard O := le_trans one_le_two (two_le_residueCard O)
+  have hcast : ((residueCard O - 1 : ℕ) : ℝ) = (residueCard O : ℝ) - 1 := by
+    push_cast [Nat.cast_sub hq1]; ring
+  have hA : ((residueCard O : ℝ) - 1) ≤ (decidedCount O 2 splitType 1 : ℝ) := by
+    rw [← hcast]; exact_mod_cast decidedCount_split_ge (O := O)
+  have hc : (0 : ℝ) < (residueCard O : ℝ) ^ 2 := qpow_pos (O := O) 2
+  refine le_trans ?_ (decidedSeq_le_genuineDensity 2 splitType 1)
+  rw [decidedSeq, show (2 : ℕ) * 1 = 2 from rfl, div_le_div_iff₀ hc hc]
+  nlinarith [hA, hc]
+
+/-! ### Ramified: the Eisenstein class at level 2 -/
+
+/-- The level-2 class `(a₀, a₁) ≡ (π, 0)` is RAM-decided: every lift is Eisenstein. -/
+theorem ram_decided_class {π : O} (hπ : Irreducible π) :
+    DecidedAt O 2 ramType 2 (proj O 2 2 ![π, 0]) := by
+  have hm : maximalIdeal O = Ideal.span {π} := hπ.maximalIdeal_eq
+  have hπm : π ∈ maximalIdeal O := by rw [hm]; exact Ideal.mem_span_singleton_self π
+  have hπm2 : π ∉ (maximalIdeal O) ^ 2 := by
+    rw [hm, Ideal.span_singleton_pow, Ideal.mem_span_singleton]
+    rintro ⟨c, hc⟩
+    have h1 : π * 1 = π * (π * c) := by linear_combination hc
+    have h2 : (1 : O) = π * c := mul_left_cancel₀ hπ.ne_zero h1
+    exact hπ.not_isUnit ⟨⟨π, c, h2.symm, by rw [mul_comm]; exact h2.symm⟩, rfl⟩
+  intro b hb
+  have hb0 : b 0 - π ∈ (maximalIdeal O) ^ 2 := by
+    have h := congrFun hb 0
+    rw [proj, proj] at h
+    have := (Ideal.Quotient.eq).1 h
+    simpa using this
+  have hb1 : b 1 - 0 ∈ (maximalIdeal O) ^ 2 := by
+    have h := congrFun hb 1
+    rw [proj, proj] at h
+    have := (Ideal.Quotient.eq).1 h
+    simpa using this
+  have hsq : (maximalIdeal O) ^ 2 ≤ maximalIdeal O := Ideal.pow_le_self (by norm_num)
+  refine typeOf_ram_of_eisenstein ?_ ?_ ?_
+  · have : b 0 = (b 0 - π) + π := by ring
+    rw [this]; exact Ideal.add_mem _ (hsq hb0) hπm
+  · intro hmem
+    refine hπm2 ?_
+    have : π = b 0 - (b 0 - π) := by ring
+    rw [this]; exact Ideal.sub_mem _ hmem hb0
+  · simpa using hsq hb1
+
+/-- **G5 (RAM lower bound, every `O`).** `1/q⁴ ≤ genuineDensity O 2 ramType`. -/
+theorem gate_ram_lower : 1 / (residueCard O : ℝ) ^ 4 ≤ genuineDensity O 2 ramType := by
+  obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
+  have h := genuineDensity_ge_of_decided (ram_decided_class hπ)
+  simpa using h
+
+end Lowers
+
+/-! ### Inert: anisotropy over `ℤ_[p]`, checked by `decide` on the residue field -/
+
+section Inert
+
+variable {p : ℕ} [Fact (Nat.Prime p)]
+
+theorem mem_maximalIdeal_padic_iff (x : ℤ_[p]) :
+    x ∈ maximalIdeal ℤ_[p] ↔ PadicInt.toZMod x = 0 := by
+  rw [← PadicInt.ker_toZMod, RingHom.mem_ker]
+
+/-- Anisotropy over `ℤ_[p]` is a finite check on the residue field `ZMod p`. -/
+theorem anisotropic_padic (a : Fin 2 → ℤ_[p])
+    (h : ∀ x y : ZMod p,
+      x ^ 2 - PadicInt.toZMod (a 1) * x * y + PadicInt.toZMod (a 0) * y ^ 2 = 0 →
+        x = 0 ∧ y = 0) :
+    Anisotropic a := by
+  intro u v huv
+  rw [mem_maximalIdeal_padic_iff, show quadForm a u v = u ^ 2 - a 1 * u * v + a 0 * v ^ 2 from rfl,
+    map_add, map_sub, map_mul, map_mul, map_pow, map_mul, map_pow] at huv
+  obtain ⟨h1, h2⟩ := h _ _ huv
+  exact ⟨(mem_maximalIdeal_padic_iff _).2 h1, (mem_maximalIdeal_padic_iff _).2 h2⟩
+
+/-- The level-1 class of `a` over `ℤ_[p]` is INERT-decided as soon as the reduced norm form is
+anisotropic (a finite check on `ZMod p`). -/
+theorem inert_decided_class_padic (a : Fin 2 → ℤ_[p])
+    (h : ∀ x y : ZMod p,
+      x ^ 2 - PadicInt.toZMod (a 1) * x * y + PadicInt.toZMod (a 0) * y ^ 2 = 0 →
+        x = 0 ∧ y = 0) :
+    DecidedAt ℤ_[p] 2 inertType 1 (proj ℤ_[p] 2 1 a) := by
+  intro b hb
+  refine typeOf_inert_of_anisotropic (anisotropic_padic b ?_)
+  have hbi : ∀ i, PadicInt.toZMod (b i) = PadicInt.toZMod (a i) := by
+    intro i
+    have hh := congrFun hb i
+    rw [proj, proj, Ideal.Quotient.eq, pow_one] at hh
+    have h0 := (mem_maximalIdeal_padic_iff _).1 hh
+    rw [map_sub, sub_eq_zero] at h0
+    exact h0
+  rw [hbi 1, hbi 0]
+  exact h
+
+end Inert
+
+/-! ### The certified two-sided brackets -/
+
+section Bracket
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
+
+/-- **The bracket engine.** Lower bounds on the three degree-2 types turn, via
+`sum_genuineDensity_le_one`, into upper bounds on each one. -/
+theorem bracket_two {ls li lr : ℝ}
+    (hs : ls ≤ genuineDensity O 2 splitType)
+    (hi : li ≤ genuineDensity O 2 inertType)
+    (hr : lr ≤ genuineDensity O 2 ramType) :
+    (ls ≤ genuineDensity O 2 splitType ∧ genuineDensity O 2 splitType ≤ 1 - li - lr)
+    ∧ (li ≤ genuineDensity O 2 inertType ∧ genuineDensity O 2 inertType ≤ 1 - ls - lr)
+    ∧ (lr ≤ genuineDensity O 2 ramType ∧ genuineDensity O 2 ramType ≤ 1 - ls - li) := by
+  classical
+  have hsum : ∑ τ ∈ ({splitType, inertType, ramType} : Finset FactorizationType),
+      genuineDensity O 2 τ ≤ 1 := sum_genuineDensity_le_one 2 _
+  rw [Finset.sum_insert (by simp [splitType_ne_inertType, splitType_ne_ramType]),
+    Finset.sum_insert (by simp [inertType_ne_ramType]), Finset.sum_singleton] at hsum
+  exact ⟨⟨hs, by linarith⟩, ⟨hi, by linarith⟩, ⟨hr, by linarith⟩⟩
+
+end Bracket
+
+section BracketPadic
+
+/-- The three level-certified lower bounds at `q = 2`. -/
+theorem lowers_padic_two :
+    (1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 2 splitType
+    ∧ (1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 2 inertType
+    ∧ (1 : ℝ) / 16 ≤ genuineDensity ℤ_[2] 2 ramType := by
+  refine ⟨?_, ?_, ?_⟩
+  · have h := gate_split_lower_sharp (O := ℤ_[2])
+    rw [residueCard_padicInt 2] at h
+    norm_num at h ⊢
+    linarith
+  · have h := genuineDensity_ge_of_decided
+      (inert_decided_class_padic (p := 2) ![1, 1] (by
+        simp only [Matrix.cons_val_one, Matrix.head_cons, Matrix.cons_val_zero, map_one]
+        decide))
+    rw [residueCard_padicInt 2] at h
+    norm_num at h ⊢
+    linarith
+  · have h := gate_ram_lower (O := ℤ_[2])
+    rw [residueCard_padicInt 2] at h
+    norm_num at h ⊢
+    linarith
+
+/-- The three level-certified lower bounds at `q = 3`. -/
+theorem lowers_padic_three :
+    (2 : ℝ) / 9 ≤ genuineDensity ℤ_[3] 2 splitType
+    ∧ (1 : ℝ) / 9 ≤ genuineDensity ℤ_[3] 2 inertType
+    ∧ (1 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 2 ramType := by
+  refine ⟨?_, ?_, ?_⟩
+  · have h := gate_split_lower_sharp (O := ℤ_[3])
+    rw [residueCard_padicInt 3] at h
+    norm_num at h ⊢
+    linarith
+  · have h := genuineDensity_ge_of_decided
+      (inert_decided_class_padic (p := 3) ![1, 0] (by
+        simp only [Matrix.cons_val_one, Matrix.head_cons, Matrix.cons_val_zero, map_one, map_zero]
+        decide))
+    rw [residueCard_padicInt 3] at h
+    norm_num at h ⊢
+    linarith
+  · have h := gate_ram_lower (O := ℤ_[3])
+    rw [residueCard_padicInt 3] at h
+    norm_num at h ⊢
+    linarith
+
+/-- **GATE BRACKET, q = 2.** Two-sided brackets for all three degree-2 types over `ℤ_[2]`.
+W-11's exact values are `split = inert = ram = 1/3`, all inside these brackets
+(`gate_bracket_w11_two`). -/
+theorem gate_bracket_padic_two :
+    ((1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 2 splitType
+        ∧ genuineDensity ℤ_[2] 2 splitType ≤ 11 / 16)
+    ∧ ((1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 2 inertType
+        ∧ genuineDensity ℤ_[2] 2 inertType ≤ 11 / 16)
+    ∧ ((1 : ℝ) / 16 ≤ genuineDensity ℤ_[2] 2 ramType
+        ∧ genuineDensity ℤ_[2] 2 ramType ≤ 1 / 2) := by
+  obtain ⟨hs, hi, hr⟩ := lowers_padic_two
+  obtain ⟨⟨-, hs'⟩, ⟨-, hi'⟩, ⟨-, hr'⟩⟩ := bracket_two hs hi hr
+  refine ⟨⟨hs, ?_⟩, ⟨hi, ?_⟩, ⟨hr, ?_⟩⟩ <;> linarith
+
+/-- **GATE BRACKET, q = 3.** Two-sided brackets over `ℤ_[3]`. W-11's exact values are
+`split = inert = 3/8`, `ram = 1/4` (`gate_bracket_w11_three`). -/
+theorem gate_bracket_padic_three :
+    ((2 : ℝ) / 9 ≤ genuineDensity ℤ_[3] 2 splitType
+        ∧ genuineDensity ℤ_[3] 2 splitType ≤ 71 / 81)
+    ∧ ((1 : ℝ) / 9 ≤ genuineDensity ℤ_[3] 2 inertType
+        ∧ genuineDensity ℤ_[3] 2 inertType ≤ 62 / 81)
+    ∧ ((1 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 2 ramType
+        ∧ genuineDensity ℤ_[3] 2 ramType ≤ 2 / 3) := by
+  obtain ⟨hs, hi, hr⟩ := lowers_padic_three
+  obtain ⟨⟨-, hs'⟩, ⟨-, hi'⟩, ⟨-, hr'⟩⟩ := bracket_two hs hi hr
+  refine ⟨⟨hs, ?_⟩, ⟨hi, ?_⟩, ⟨hr, ?_⟩⟩ <;> linarith
+
+/-- **W-11 containment, q = 2**: `q/(2(q+1)) = 1/3` (split, inert) and `1/(q+1) = 1/3` (ram)
+all lie strictly inside the certified brackets. -/
+theorem gate_bracket_w11_two :
+    ((1 : ℝ) / 4 ≤ 1 / 3 ∧ (1 : ℝ) / 3 ≤ 11 / 16)
+    ∧ ((1 : ℝ) / 4 ≤ 1 / 3 ∧ (1 : ℝ) / 3 ≤ 11 / 16)
+    ∧ ((1 : ℝ) / 16 ≤ 1 / 3 ∧ (1 : ℝ) / 3 ≤ 1 / 2) := by
+  norm_num
+
+/-- **W-11 containment, q = 3**: `q/(2(q+1)) = 3/8` (split, inert) and `1/(q+1) = 1/4` (ram)
+all lie strictly inside the certified brackets. -/
+theorem gate_bracket_w11_three :
+    ((2 : ℝ) / 9 ≤ 3 / 8 ∧ (3 : ℝ) / 8 ≤ 71 / 81)
+    ∧ ((1 : ℝ) / 9 ≤ 3 / 8 ∧ (3 : ℝ) / 8 ≤ 62 / 81)
+    ∧ ((1 : ℝ) / 81 ≤ 1 / 4 ∧ (1 : ℝ) / 4 ≤ 2 / 3) := by
+  norm_num
+
+end BracketPadic
+
 section AxCheck
 
 -- Every gate must be Lean core ONLY (`propext`, `Classical.choice`, `Quot.sound`).
@@ -319,6 +548,19 @@ section AxCheck
 #print axioms Uniformity.Density.sum_genuineDensity_le_one
 #print axioms Uniformity.Density.card_res
 #print axioms Uniformity.Density.UniformityStatement.toPadic
+-- follow-up unit (2026-08-13): the certificates and the brackets
+#print axioms Uniformity.Density.norm_quad
+#print axioms Uniformity.Density.typeOf_ram_of_eisenstein
+#print axioms Uniformity.Density.typeOf_inert_of_anisotropic
+#print axioms Uniformity.Density.gate_split_lower_sharp
+#print axioms Uniformity.Density.gate_ram_lower
+#print axioms Uniformity.Density.lowers_padic_two
+#print axioms Uniformity.Density.lowers_padic_three
+#print axioms Uniformity.Density.bracket_two
+#print axioms Uniformity.Density.gate_bracket_padic_two
+#print axioms Uniformity.Density.gate_bracket_padic_three
+#print axioms Uniformity.Density.gate_bracket_w11_two
+#print axioms Uniformity.Density.gate_bracket_w11_three
 
 end AxCheck
 
