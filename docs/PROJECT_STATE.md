@@ -4354,3 +4354,34 @@ formalizing the proof as a whole" — the whole-proof formalization
 program (leanfinal, against the compressed T-unit corpus + the
 certified notes) is the next phase after T2's arc closes. T2SOL2
 (sol on r9) still in flight.
+
+**2026-08-13 DATED APPEND #41 — CITE-SCOPE RESOLVED BY LITERATURE:
+13/15 ROWS COVER ALL O; TWO REAL WORK ITEMS REMAIN.** The lit-search
+unit landed docs/CITE_SCOPE_RESOLUTION_2026-08-13.md (agent-drafted,
+scope quotes machine-read from fetched PDFs, surrogates flagged).
+HEADLINE: **[AGNPRW]** Alberich-Carramiñana–Guàrdia–Nart–Poteaux–
+Roé–Weimann, *Polynomial factorization over henselian fields*,
+Found. Comput. Math. 2024 (arXiv:2207.02139) — standing setting an
+ARBITRARY VALUED FIELD — and **[GN15]** Guàrdia–Nart, *Genetics of
+polynomials over local fields*, Contemp. Math. 637 (2015) —
+arbitrary discrete valued field — carry the Ore/order-r polygon +
+residual + leaf-dichotomy + (e,f) + key-polynomial package at scope
+strictly containing ours; [FGMN] was ALREADY general ("a field
+equipped with a discrete valuation") — two audit rows were pasting
+artefacts. Stage-1 fix: ONE bibliography swap retargeting the
+Ore/GMN cites (~13/15 rows, no new math). REAL WORK ITEMS: NS-6
+(descent-trigger biconditional: assemble a ½-page corollary from
+[GN15] 2.3 + [AGNPRW] 2.10); NS-7 (termination [AGNPRW] Thm 5.2 is
+general but ONE index step in its published proof is itself
+ℚ_p-cited — accept-with-note or 2–4pp internal re-proof on the L4
+lattice machinery); **NS-15 the depth envelope B(n,p) =
+max[(d−1)+d·v_p(d)] is genuinely mixed-char — weaken L5fix(b) to
+"depth ≤ ½·v(disc f)", the ONE theorem-level cost of all-O**. Bonus:
+[Kuhlmann] Thm 3.3 corrects the AX-DEFECT bookkeeping (discrete
+value group ⇒ finite separable extensions defectless, ALL
+characteristics; our typeOf_degree is machine-proved anyway).
+UNVERIFIED flags: publisher numbering for [AGNPRW]/[GN15]/[Kuhl]
+(arXiv/author-PDF surrogates named). NEXT: the bibliography-swap +
+statement-edits batch rides after the compression campaign closes
+(T2 final confirmation pass in flight); Hensel-factorization unit
+still building.
