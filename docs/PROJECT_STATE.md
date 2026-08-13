@@ -4336,3 +4336,21 @@ at p=2,N=7 — consistent with HEX3.B's U^σ ≤ U^conv; different sets;
 note §6d). Asvin's n=2-then-n=3 definition-check directive is now
 DISCHARGED at: n=2 exact (general O), n=3 bracketed (general O,
 exact behind the named blocker).
+
+**2026-08-13 APPEND #40a (micro) — THE CITE-SCOPE RESOLUTION + THE
+HENSEL LEMMA LAUNCH; THE ROADMAP DECREE.** Asvin: (1) lit-search for
+general-O statements of the consumed citations — UNIT LAUNCHED (Opus
++ web; deliverable docs/CITE_SCOPE_RESOLUTION_2026-08-13.md, verbatim
+scope quotes only from fetched sources; MacLane/Vaquié/Nart line the
+prime candidates); (2) coprime-factorization Hensel: modern-mathlib
+check re-verified NEGATIVE at the orchestrator (root form only;
+Weierstrass preparation the nearest relative) — PROVING UNIT LAUNCHED
+(Opus), target adic-complete local generality, INTO leanfinal
+(Asvin: "should be part of leanfinal almost certainly" — the check/
+final separation applies to checks, not infrastructure); backport-
+if-exists-anywhere clause included. (3) ROADMAP (Asvin, verbatim):
+"Then once the simplification/compression is done, we can work on
+formalizing the proof as a whole" — the whole-proof formalization
+program (leanfinal, against the compressed T-unit corpus + the
+certified notes) is the next phase after T2's arc closes. T2SOL2
+(sol on r9) still in flight.
