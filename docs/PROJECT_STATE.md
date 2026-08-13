@@ -4270,3 +4270,40 @@ artifact, existing Part-1/P2 files unmoved (prospective rule, no
 churn). N=2-completion unit launching in leancheck: the two named
 statements split_eq_inert_two + ram_density_two (exact per-type
 values vs W-11), then the n=3 check vs HMENU3.
+
+**2026-08-13 DATED APPEND #39 — n=2 CHECK COMPLETE (EXACT, GENERAL O);
+THE 8-SLICE GENERALITY AUDIT ANSWERS ASVIN'S QUESTION; SOL CATCHES A
+FRAME CONFLATION IN T2 r8; CODEX SANDBOX FIXED.** (1) **UNIFORMITY-
+CHECK-N2 COMPLETE at the top rung**: in leancheck (never touching
+leanfinal), ram_density_two = 1/(q+1) and inert = split = q/(2(q+1))
+at GENERAL O — split via computing inert exactly + subtraction from
+sum=1 (no involution exists at residue char 2, as W-11 warned); the
+reusable census lemma card_certSet; instances (1/3,1/3,1/3) at q=2,
+(3/8,3/8,1/4) at q=3, inside leanfinal's independent G8 brackets;
+0 sorries, Lean-core, Python census exact at p=2,3,5. leanfinal's
+note STATUS 5a doc-updated. n=3 unit LAUNCHED (HMENU3/HEX3 targets;
+the N2 note §8 advice folded into the charge). (2) **QGEN AUDIT
+(8/8 slices, runs/qgen/)**: NO intrinsic mixed-char dependency in
+the live openmath corpus — every slice found the counting/transport/
+gauge mechanisms characteristic-blind, with the dangerous seams
+(disc=0 inseparability, char-2 binomials) already explicitly handled
+by past corrections. TWO boundary gap classes: (a) CITE-SCOPE ×~15,
+ALL tracing to one root — the GMN/Ore/FGMN citations' PUBLISHED
+scope is finite extensions of ℚ_p (the repo's own 2026-08-01
+GMN_citations correction is the controlling record); remedy = find
+general-henselian published statements (MacLane–Vaquié line) or
+re-prove the order-1 leaf internally (prove-boxes); (b)
+docs/HUMAN_PROOF.md is MIXED-CHAR-ONLY (v(p)=1 normalization
+throughout + the substantive HUMAN-6 termination bound d·v_p(d) via
+Serre III.6 — genuinely char-0); it is the LEGACY overview — the
+live corpus's polygon-based termination passed as characteristic-
+free (Q5) — but anything still consuming HUMAN-6 must be re-routed.
+Plus ~5 trivial edits (W11/W12 parentheticals, HE3 "full conjugate
+set" → norm/resultant form, 3 T-unit terminology). (3) **T2**: the
+first sol pass on the current architecture returned 0C+1G+1m — the
+r8 joint discharge conflates print/coherent frames (γ_κ(B₀) =
+−s·η^{q(κ)}, not −s); master core CONFIRMED end to end by sol; r9
+fold launched (bijective reindexing by the fixed unit twist).
+(4) **codex sandbox FIXED**: bwrap installed user-level
+(~/.local/bin; userns enabled, no root needed); codex reads files
+again; memory updated. Codex ~46%.
