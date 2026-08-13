@@ -2,3 +2,7 @@
 [22:53:34] T1_s1of3 start (window 72%)
 [23:10:40] T1_s1of3 exit 0 (479 B; `EFF-T1-s1of3 COMPILED: 48 statements / 17 xrefs verified / 5 open cal)
 [23:10:41] T1_s2of3 start (window 78%)
+[23:19:35] T1_s2of3 exit 0 (402 B; EFF-T1-s2of3 COMPILED: 2 statements / 14 xrefs verified / 0 open calls)
+[23:19:36] T1_s3of3 start (window 82%)
+[23:31:02] T1_s3of3 exit 0 (490 B; EFF-T1-s3of3 COMPILED: 5 statements / 10 xrefs verified / 0 open calls)
+[23:31:03] T2_s1of6 start (window 87%)

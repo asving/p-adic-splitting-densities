@@ -1,0 +1,13 @@
+Compiled [EFF-T1-s3of3.md](/data/users/asvin/math-and-lean/p-adic-splitting-densities/spec/EFF-T1-s3of3.md).
+
+Validated:
+
+- All mandatory fields present.
+- 10 XREF pairs grep-verified.
+- All quoted passages source-verified.
+- TEETH inverse table has zero orphans.
+- Protocol/absorption scopes remain separate.
+- The stale general-depth algorithm gloss was resolved against governing R2-1.
+- `git diff --check` passes.
+
+EFF-T1-s3of3 COMPILED: 5 statements / 10 xrefs verified / 0 open calls
