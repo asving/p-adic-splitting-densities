@@ -6,3 +6,5 @@
 [23:19:36] T1_s3of3 start (window 82%)
 [23:31:02] T1_s3of3 exit 0 (490 B; EFF-T1-s3of3 COMPILED: 5 statements / 10 xrefs verified / 0 open calls)
 [23:31:03] T2_s1of6 start (window 87%)
+[23:53:52] T2_s1of6 exit 0 (249 B; EFF-T2-s1of6 COMPILED: 44 statements / 37 xrefs verified / 0 open call)
+[23:53:53] PAUSED at 98% before T2_s2of6 (resume after reset: rerun this script)
