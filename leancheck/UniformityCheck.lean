@@ -10,3 +10,6 @@ import UniformityCheck.N2Base
 import UniformityCheck.N2Exact
 import UniformityCheck.N3Base
 import UniformityCheck.N3Certs
+import UniformityCheck.N3Norm
+import UniformityCheck.CubicCount
+import UniformityCheck.N3Density

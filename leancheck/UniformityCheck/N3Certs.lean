@@ -156,7 +156,76 @@ theorem typeOf_linRam_of_residue {a : Fin 3 → O}
     typeOf_ram_of_eisenstein hg0 hg0' hg1]
   rfl
 
-/-! ## 3. Three linear factors — the deep certificate -/
+/-! ## 3. Three linear factors — the level-1 certificate (needs `q ≥ 3`) -/
+
+/-- Hensel for a monic quadratic at a simple residue root (`leanfinal`'s
+`exists_root_of_unit_deriv` is the special case `σ = 0`). -/
+theorem exists_quad_root (g : Fin 2 → O) (σ : O)
+    (h0 : σ ^ 2 + g 1 * σ + g 0 ∈ maximalIdeal O) (h1 : IsUnit (2 * σ + g 1)) :
+    ∃ s : O, qval g s = 0 := by
+  obtain ⟨s, hs, -⟩ :=
+    HenselianLocalRing.is_henselian (monicPoly g) (monicPoly_monic g) σ
+      (by rw [monicPoly_two_eval]; convert h0 using 1; ring)
+      (by rw [monicPoly_two_deriv_eval]; exact h1)
+  exact ⟨s, by rw [qval_eq_eval]; exact hs⟩
+
+/-- **`{(1,1)}³`, level 1.** If the reduced cubic has three DISTINCT roots `ρ̄₁, ρ̄₂, ρ̄₃`, the cubic
+splits into three linear factors. Vacuous at `q = 2` (no cubic over `𝔽₂` has three distinct
+roots) — `typeOf_split3_of_deep` is the general-`O` fallback. -/
+theorem typeOf_split3_of_residue {a : Fin 3 → O} (ρ₁ ρ₂ ρ₃ : O)
+    (h12 : IsUnit (ρ₁ - ρ₂)) (h13 : IsUnit (ρ₁ - ρ₃)) (h23 : IsUnit (ρ₂ - ρ₃))
+    (h2 : a 2 + (ρ₁ + ρ₂ + ρ₃) ∈ maximalIdeal O)
+    (h1 : a 1 - (ρ₁ * ρ₂ + ρ₁ * ρ₃ + ρ₂ * ρ₃) ∈ maximalIdeal O)
+    (h0 : a 0 + ρ₁ * ρ₂ * ρ₃ ∈ maximalIdeal O) :
+    typeOf (monicPoly a) = c3split := by
+  have hvalρ : ρ₁ ^ 3 + a 2 * ρ₁ ^ 2 + a 1 * ρ₁ + a 0 ∈ maximalIdeal O := by
+    have hid : ρ₁ ^ 3 + a 2 * ρ₁ ^ 2 + a 1 * ρ₁ + a 0
+        = (a 2 + (ρ₁ + ρ₂ + ρ₃)) * ρ₁ ^ 2
+          + (a 1 - (ρ₁ * ρ₂ + ρ₁ * ρ₃ + ρ₂ * ρ₃)) * ρ₁ + (a 0 + ρ₁ * ρ₂ * ρ₃) := by ring
+    rw [hid]
+    exact Ideal.add_mem _ (Ideal.add_mem _ (Ideal.mul_mem_right _ _ h2)
+      (Ideal.mul_mem_right _ _ h1)) h0
+  have hderρ : IsUnit (3 * ρ₁ ^ 2 + 2 * a 2 * ρ₁ + a 1) := by
+    refine notMem_maximalIdeal.1 (fun hmem => ?_)
+    have hid : (ρ₁ - ρ₂) * (ρ₁ - ρ₃)
+        = (3 * ρ₁ ^ 2 + 2 * a 2 * ρ₁ + a 1) - 2 * (a 2 + (ρ₁ + ρ₂ + ρ₃)) * ρ₁
+          - (a 1 - (ρ₁ * ρ₂ + ρ₁ * ρ₃ + ρ₂ * ρ₃)) := by ring
+    have : (ρ₁ - ρ₂) * (ρ₁ - ρ₃) ∈ maximalIdeal O := by
+      rw [hid]
+      exact Ideal.sub_mem _ (Ideal.sub_mem _ hmem
+        (Ideal.mul_mem_right _ _ (Ideal.mul_mem_left _ _ h2))) h1
+    exact absurd this (notMem_maximalIdeal.2 (h12.mul h13))
+  obtain ⟨r, hr, hrρ⟩ := exists_cubic_root a ρ₁ hvalρ hderρ
+  have hg1 : peel a r 1 + (ρ₂ + ρ₃) ∈ maximalIdeal O := by
+    have hid : peel a r 1 + (ρ₂ + ρ₃) = (a 2 + (ρ₁ + ρ₂ + ρ₃)) + (r - ρ₁) := by
+      simp only [peel_one]; ring
+    rw [hid]; exact Ideal.add_mem _ h2 hrρ
+  have hg0 : peel a r 0 - ρ₂ * ρ₃ ∈ maximalIdeal O := by
+    have hid : peel a r 0 - ρ₂ * ρ₃
+        = (a 1 - (ρ₁ * ρ₂ + ρ₁ * ρ₃ + ρ₂ * ρ₃)) + (a 2 + (ρ₁ + ρ₂ + ρ₃)) * r
+          + (r - ρ₁) * (ρ₁ - ρ₂ - ρ₃ + (r - ρ₁)) := by
+      simp only [peel_zero]; ring
+    rw [hid]
+    exact Ideal.add_mem _ (Ideal.add_mem _ h1 (Ideal.mul_mem_right _ _ h2))
+      (Ideal.mul_mem_right _ _ hrρ)
+  -- the cofactor still has a simple residue root, at `ρ₂`
+  have hq0 : ρ₂ ^ 2 + peel a r 1 * ρ₂ + peel a r 0 ∈ maximalIdeal O := by
+    have hid : ρ₂ ^ 2 + peel a r 1 * ρ₂ + peel a r 0
+        = (peel a r 1 + (ρ₂ + ρ₃)) * ρ₂ + (peel a r 0 - ρ₂ * ρ₃) := by ring
+    rw [hid]
+    exact Ideal.add_mem _ (Ideal.mul_mem_right _ _ hg1) hg0
+  have hq1 : IsUnit (2 * ρ₂ + peel a r 1) := by
+    refine notMem_maximalIdeal.1 (fun hmem => ?_)
+    have hid : ρ₂ - ρ₃ = (2 * ρ₂ + peel a r 1) - (peel a r 1 + (ρ₂ + ρ₃)) := by ring
+    have : ρ₂ - ρ₃ ∈ maximalIdeal O := by rw [hid]; exact Ideal.sub_mem _ hmem hg1
+    exact absurd this (notMem_maximalIdeal.2 h23)
+  obtain ⟨s, hs⟩ := exists_quad_root (peel a r) ρ₂ hq0 hq1
+  apply FactorizationType.ext
+  rw [cubic_peel a r hr, typeOf_linear_mul (monicPoly_monic (peel a r)) r,
+    typeOf_split_of_root hs]
+  rfl
+
+/-! ## 4. Three linear factors — the deep certificate -/
 
 /-- **`{(1,1)}³`.** Every monic cubic congruent to `X(X − 1)(X − π)` modulo `𝔪³` splits into three
 linear factors.
