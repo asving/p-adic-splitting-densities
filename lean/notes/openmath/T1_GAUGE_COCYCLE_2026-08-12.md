@@ -3,7 +3,7 @@
 ## The wrap/\(\vartheta\) recursion, exact lifts, and normalization bridges, stated once
 
 **RCT unit:** S-1-T1-gauge-cocycle, revision pass S-1, 2026-08-12  
-**Status:** revised candidate of record, under hostile arc — repair rounds appended below; THE HIGHEST-NUMBERED r-SECTION GOVERNS; the clean-pass counter and owed passes are recorded in that section.  
+**Status:** ACCEPTED note of record — the hostile arc is closed at 2/2 and the accepted text is byte-frozen; THE ACCEPTANCE RECORD AT THE END OF THIS NOTE GOVERNS (before acceptance the governing section was the highest-numbered r-section, per R11-3); the pass record, the folded riders, the battery result, the counter state and the standing conditionalities are recorded in that block.  
 **Supersedes:** the composed 2026-08-10 T1 draft and its inline repair riders
 
 This revision folds the certified 2026-08-12 gauge-seam corrections into the statement rather than leaving them as riders. In particular:
@@ -4328,3 +4328,89 @@ Landmark: the directive line that appends the check, `**(iii) Battery tooth.** A
 ### Counter state (NOT reset by this block)
 
 These riders repair the five MINOR findings of a hostile pass that returned **0 CRITICAL + 0 GAP + 5 minor**. A minors-only pass is a clean pass whose minors fold as post-pass riders (T4, T5), and folding riders is not a repair round: **the clean-pass counter is NOT reset and STANDS AT 1 OF 2.** Pass of record: the Opus/Claude-arm hostile pass on r13, `runs/comp13/T1P12_output.log`. Still owed at the §7 acceptance gate: the sol confirmation pass — the second of the two consecutive clean passes, on the model-diverse arm, against the effective text as of r13 plus these riders — and the §4.2 battery re-run of checks 1–10 (checks 7, 8, 9 and 10 have never been scored, and the 2026-08-10 sealed run remains inherited evidence only).
+
+
+---
+
+## Final riders (2026-08-13, post-pass-2 — the sol minor and the battery's check-10 scope ambiguity)
+
+**Dated riders (2026-08-13, after PASS 2 — the gpt-5.6-sol confirmation, `runs/comp13/T1SOL_output.log`, 0C + 0G + 1m — and the §4.2 machine battery re-run, `runs/comp13/T1_battery_r13.log`, 10/10 PASS. Folded under the same minors-only precedent that governs the post-pass rider block above: a minors-only pass is a clean pass whose minors fold as riders. No grade event, NO r-section, NO counter reset.)** The two riders are convergent. Rider 6 cures PASS 2's single minor; Rider 7 cures the one AMBIGUITY row the battery reported (an alternate-reading row, not a failing row, not scored into any verdict). Two independent instruments — a hostile reader and a literal scorer — reached the same defect family from opposite directions: the r13 integrality claim and its battery tooth were each written wider than the fact they carry. Both cures are scoping and exclusion wording. No formula, no display, no value, no class, no span boundary in effect, no pin, no fence, no hypothesis, no honesty-ledger item and no consumption check is changed, and no absorption status moves. Both riders POSTDATE both hostile passes; the acceptance block below records that explicitly.
+
+**Landmark convention (final riders).** Counts are taken over the note AS IT STOOD BEFORE THIS BLOCK — lines 1–4330, i.e. through the last line of the post-pass rider block — because each rider necessarily quotes its landmark a second time. Whole-line landmarks (marked "**1**, whole line") are reproducible verbatim with
+
+```
+sed -n '1,4330p' T1_GAUGE_COCYCLE_2026-08-12.md | grep -cFx '<landmark line>'
+```
+
+and the in-sentence landmarks (marked "**1**, fixed string") with the same pipeline and `grep -cF`. The earlier rider block's counts, declared over lines 1–4261, are unaffected: this block only appends.
+
+### Rider 6 (sol m-1) — the integrality claim is scoped to nonzero arguments; check 10 gets the matching zero-argument exclusion
+
+Finding (PASS 2, "the integrality enumeration mishandles the zero valuation"): the headline of the R13-8(ii) enumeration,
+
+> "Every \(dv_i\)-value consumed in the effective text is nevertheless an integer, in one of four classes."
+
+is contradicted by its own class (iii),
+
+> "the zero convention \(dv_i(0)=+\infty\)",
+
+because \(+\infty\notin\mathbb Z\) and that convention is LIVE — consumed through (C3-zero-lift) and the A3/A6 zero branches (R6-1, R7-1). The pass classifies it minor because "all finite valuation calculations and the four-class mathematical analysis remain correct; no C1–C7 conclusion is invalidated." The defect is a claim stated wider than the fact it carries, and the cure narrows the claim; nothing is added to the note's content.
+
+**(a) Scope the claim, at BOTH sites that state it.** The claim occurs twice in the same **Grade data (definitions)** paragraph — once as the R13-8(i) height clause and once as the R13-8(ii) enumeration headline — and curing only the headline would leave the falsification live at its sibling, so both are scoped by the one insertion.
+
+(a1) In R13-8(i), the replacement height clause reads, with the scope inserted:
+
+> Heights at level \(i\) — the arguments \(m\) of \(\widehat n_i(m)\), and the values of \(dv_i\) at every NONZERO-ARGUMENT site consumed in this note —
+
+The clause that follows (R12-1's terminal binding, "are integers in the normalization … only the terminal reading satisfies (C1-stage-key-height).") remains unchanged and is now true as scoped.
+
+(a2) In the R13-8(ii) insertion, the enumeration headline reads:
+
+> Every \(dv_i\)-value consumed AT A NONZERO ARGUMENT in the effective text is nevertheless an integer, in one of four classes; the one consumed non-finite value is the zero convention \(dv_i(0)=+\infty\) of class (iii) below, disclosed there and excluded from this integrality claim by the present scoping.
+
+Classes (i)–(iv) that follow are byte-unchanged, class (iii) included: its value-zero factors \(dv_i(g)=0\) are taken at NONZERO \(g\) and stay inside the integrality claim; only the zero ARGUMENT leaves it. The claim as scoped is exhaustive over the classes as they stand — class (i) consumes \(\pi_{i+1}\), \(\widehat n_i(m)\), \(\operatorname{lift}_i(d;m)\) and \(\widehat k_t\); class (ii) the powers \(\Phi_i^{e_{i+1}t}\); class (iv) nonzero elements of degree \(<D'\) — so the paragraph's closing sentence, "The re-scoped clause therefore costs no consumer", is unchanged and still holds.
+
+**(b) Give §4.2 check 10 the matching exclusion.** Check 10's first fail clause, "fail on any site that consumes a \(dv_i\)-value outside \(\mathbb Z\)", fires as written on the zero-lift sites that class (iii) passes. Append to the Rider 5 scoring-scope paragraph — the paragraph the scorer actually reads, immediately after its closing "… scores as passing under those classes." — as its next sentences:
+
+> Zero-argument sites lie outside the integrality claim and outside this check's first fail clause. The zero convention \(dv_i(0)=+\infty\) of class (iii), consumed at (C3-zero-lift) and at the A3/A6 zero branches, is a disclosed non-finite value: a site consuming it scores as PASSING under class (iii), not as a site that "consumes a \(dv_i\)-value outside \(\mathbb Z\)". Read with the scoping of the grade-data paragraph, the first fail clause is: fail on any site that consumes, AT A NONZERO ARGUMENT, a \(dv_i\)-value outside \(\mathbb Z\).
+
+This changes no class, no value and no claim of the R13-8 declaration; like Rider 5 it fixes the scorer's target so the tooth matches the scope of the integrality claim it confirms. It also records what the battery re-run already did: its check-10 tally scores eleven "CLASS(iii) value-zero / zero convention" sites as passing.
+
+Landmarks: (a1) the replaced clause line `> Heights at level \(i\) — the arguments \(m\) of \(\widehat n_i(m)\), and the values of \(dv_i\) at every site consumed in this note —` — **1**, whole line; (a2) the replaced headline `Every \(dv_i\)-value consumed in the effective text is nevertheless an integer, in one of four classes.` — **1**, fixed string (it opens the class-enumeration line); the governing section heading `## R13-8 (C-1) — Re-scope the grade-data integrality clause to the value group` — **1**, whole line; (b) the append anchor `scores as passing under those classes.` — **1**, fixed string (it ends the Rider 5 blockquote); the Rider 5 heading `### Rider 5 (m-5) — §4.2 check 10 excludes its own specification (the R4-3 mechanism)` — **1**, whole line; the check's own directive line `**(iii) Battery tooth.** Append to §4.2:` — **1**, whole line.
+
+### Rider 7 (battery ambiguity) — widen the Rider 5 exclusion so check 10's Reading A and Reading B score the same set
+
+Finding (the battery re-run's single AMBIGUITY row, reported and not scored into the verdict): "RESIDUE FOR THE GATE: the rider's exclusion list does not name R13-8's finding prose or the §6 record row, so a literal scorer fails them; a one-clause widening would remove the ambiguity." Under Reading A (Rider 5's exclusion list read as exhaustive and restricted to the **Grade data (definitions)** paragraph) five sites fall outside every class and every named exclusion; under Reading B (Rider 5's own governing sentence, "A site is scored only where the note CONSUMES the value") none of the five is scored. Reading B was scored as primary and check 10 passed; the ambiguity is that the two readings differ at all.
+
+Cure, appended to the same Rider 5 scoring-scope paragraph, IMMEDIATELY AFTER the sentences Rider 6(b) appends (the order of the two appends is declared here explicitly, on the R13-8(ii) precedent for pinning one insertion relative to another):
+
+> The exclusion additionally covers every QUOTATION or RECORD of the non-integral witness lying OUTSIDE the **Grade data (definitions)** paragraph, namely: R13-8's own Finding C-1 prose — the quoted \(dv_2(\Phi_2)=\tfrac{21}{2}\) falsification witness and the quoted bare-\(dv_i(\Phi_i)\) grep, four sites in that finding paragraph — and the §6 record row's phrase "with the \(dv_2(\Phi_2)=\tfrac{21}{2}\) instance". None of these CONSUMES the value; each quotes or records it as the diagnosis that motivated the declaration. With this widening the exclusion list is exhaustive for the effective text, so scoring by the literal list and scoring by the consumption criterion return the same set.
+
+The five sites named are exactly the five the battery reported as diverging (four at the Finding C-1 paragraph, one at the §6 record row); the count is reproducible as two occurrences of `dv_2(\Phi_2)` plus two of `dv_i(\Phi_i)` on the finding line. No class, value, fail clause or claim changes; the check's verdict is unchanged (it passed under Reading B) and is now reading-independent.
+
+Landmarks: the append anchor is Rider 6(b)'s, i.e. the Rider 5 blockquote ending `scores as passing under those classes.` — **1**, fixed string; the §6 record-row phrase `with the \(dv_2(\Phi_2)=\tfrac{21}{2}\) instance and a new §4.2 check 10.` — **1**, fixed string; the finding paragraph is the one opened by the section heading `## R13-8 (C-1) — Re-scope the grade-data integrality clause to the value group` — **1**, whole line.
+
+### Counter state (SET BY THIS BLOCK)
+
+These riders fold the one MINOR of PASS 2 and the one alternate-reading AMBIGUITY of the battery. Folding riders is not a repair round: the clean-pass counter is NOT reset, and with PASS 2 it **STANDS AT 2 OF 2**. The §4.2 battery has been re-run at 10/10 with checks 7–10 scored for the first time. The §7 acceptance gate — two clean hostile passes plus the revised machine battery — is therefore MET; the acceptance block below is the operative record.
+
+
+---
+
+## ACCEPTANCE RECORD (2026-08-13): T1 ACCEPTED 2/2 (model-diverse pair)
+
+Arc: composed (2026-08-10) → r1–r12 (2026-08-12 hostile-arc repair rounds: the T1A and T1P findings, the A2–A7 consumption re-scope, the typing and span repairs, r11's read codomain, r12's terminal binding of \(v\)) → r13 (2026-08-13: the base §3 absorption table retired, five span re-declarations, the grade-data value-group re-scope) → PASS 1: Opus/Claude-arm hostile pass on r13, 0C + 0G + 5m (`runs/comp13/T1P12_output.log`), its five minors folded as the post-pass rider block above → PASS 2: sol confirmation (gpt-5.6-sol high, `runs/comp13/T1SOL_output.log`), 0C + 0G + 1m, its single minor folded as Rider 6 above. Both passes are minors-only, and by the campaign's minors-only precedent — T4's post-pass \(\mathfrak M\)-gloss-direction rider and T5's two post-pass-1 locator riders, each folded on a 0C + 0G pass and each subsequently confirmed to 2/2 — each counts as a clean pass. Two consecutive clean fresh-context passes on model-diverse arms: **THE GAUGE-COCYCLE NOTE IS ACCEPTED at 2/2.**
+
+**The battery leg of the gate is discharged.** §7 requires "two clean hostile passes plus the revised machine battery". The revised battery was re-run against the effective text of 2026-08-13 (r13 plus the post-pass riders): **10/10 PASS, 923 scored rows, 0 failing** (`runs/comp13/T1_battery_r13.log`), with checks 7, 8, 9 and 10 scored for the FIRST time (they had never been run), check 6 in its R4-3 self-excluding form, and all four planted teeth — naive gauge, wrong sign, misindexed telescope, inverse orientation — firing as required. The 2026-08-10 sealed run's status is unchanged: inherited evidence only, and no part of this acceptance rests on it.
+
+**Recorded honestly — three qualifications on this acceptance.**
+
+1. **The two final riders postdate both passes and are unreviewed by a further hostile arm.** Rider 6 cures PASS 2's minor; Rider 7 cures the battery's single alternate-reading ambiguity. Both are wording-grade: one scope insertion at the two sites that state the integrality claim, and two exclusion sentences appended to a battery instruction. The non-change guarantee at the head of that block governs. They were identified CONVERGENTLY by two independent instruments — a hostile reader and a literal scorer, from opposite directions — which is why they fold as riders rather than opening an r14; but the folded text itself has not been read by a third fresh context.
+2. **PASS 2's pin audit was note-internal.** The sol arm's repository shell launcher failed before command execution, so it could not reopen the HEAD supplier files at byte level; its pin audit used the closed source spans disclosed in the note, on which it reports the A2–A7 pin algebra closing (the A2 binary carry, the A6 normalized coefficient signs, A7's \(\Theta=\vartheta^{-1}\)), together with the \(w_i\) codomain and nonvanishing obligations, the depth-\(\ge3\) \((\mathrm{H\!-\!VARTHETA\!-\!RES})_i\) fence into (C3) and (C7) \(M2\)/\(M3\), and the JA/GENHN/HETOW supplier fences. The byte-level leg of the pins is supplied by the earlier passes that did reopen the sources and by the battery — not by PASS 2.
+3. **The battery's AMBIGUITY row is not a failing row.** Check 10 reported five sites falling outside every class under the literal exclusion-list reading (Reading A) that pass under the consumption-scoped reading (Reading B, scored as primary): four in R13-8's own Finding C-1 prose, one in the §6 record row. Rider 7 widens the exclusion so the two readings score the same set; the verdict it qualifies was already PASS.
+
+**The accepted text is BYTE-FROZEN from this fold forward.** The accepted T1 of record is the effective text as of r13, plus the post-pass rider block, plus Riders 6 and 7, and consumers cite it as exactly that. Later work appends dated consumption records or a further dated append BELOW this block; it does not rewrite the accepted text. Any change that would rewrite it opens a new hostile arc rather than an edit.
+
+**One in-place edit accompanies this fold, and it is the only one.** The front-matter status line is refreshed IN PLACE — on the R11-3 precedent, which likewise applied its cure in place while every other repair appends — to record that the acceptance block, not the highest-numbered r-section, is now the governing section. The replacement stays DATELESS, so R11-3's self-maintaining property survives unbroken: the governing block carries every round-dependent fact, and acceptance only moves which block that is. Apart from that one line, nothing above the start of the final-rider block is touched by this fold; everything else here appends.
+
+**Standing conditionalities, unchanged and displayed.** The lemma is accepted WITH its honesty ledger, not cleared of it: the closed canonical-letter exponent vector is proved only at level 2 (general depth has a terminating reduction algorithm); the B-law is conditional on the stated sitewise residual-read facts and on its GENTOW2-B\(''\)/GENTOW5-W(i) supplier perimeter; the full integral \(K_1\)-lift is proved on the live domain \(M>D'h\) only; WELD-M-PKG remains five heterogeneously typed fields with no cross-face coherence, no single map and no gauge uniqueness; raw print/canonical equality is iff \(z^\nu=1\), not iff \(\nu=0\); the \((\mathrm{H\!-\!VARTHETA\!-\!RES})_i\) fence at depth \(i\ge3\) reaches (C3) and (C7)'s \(M2\)/\(M3\) rows; and \(dv_i\) is NOT integer-valued in general — integrality holds exactly at the consumed nonzero-argument sites enumerated in the grade-data paragraph, the codomain being \(dv_i\in e(\mu_i)\Lambda_r=\frac{e(\mu_i)}{e(\mu_r)}\mathbb Z\supseteq\mathbb Z\). Consumption checks of the seven annexes against the accepted text, and the absorbed notes' dated appends, ride the next queue (the T3/T4/T5 pattern).
