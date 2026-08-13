@@ -1,0 +1,13 @@
+One minor finding.
+
+- **m-1 — the “exactly two consuming sites” claim is too narrow.** r11 says HE6-3/HE6-4’s use of the correction “is the source’s business and is not consumed here.” But `HE6-ACCOUNT` is explicitly consumed as the pinned proof of HE6-3 and HE6-4. Its proof invokes HE6-2 for arbitrary roots at [HE6_PROOF_2026-08-08.md:545](/data/users/asvin/math-and-lean/p-adic-splitting-densities/lean/notes/openmath/HE6_PROOF_2026-08-08.md:545) and again in HE6-4 at line 589. Those invocations require the corrected piecewise reading when \(\delta\ne\kappa\). Thus there is at least one additional transitive consumption route. This is minor because `HE6-BETA-GUARD` is pinned and present on all five effective Source-pin lines; no source coverage or mathematical conclusion is missing.
+
+Everything else checks:
+
+- Span 1036–1047 is minimal, complete, uniquely delimited, and contains the operative line 1041.
+- The corrected split suffices: for \(\delta\ne\kappa\), the unique-minimum argument gives \(\varepsilon=0\) without \(\beta\); at \(\delta=\kappa\), \(\beta\) is a unit residue and distinguishes the target from companion labels.
+- The 36-pin inventory resolves as \(19\) paired, \(4\) first-only, \(13\) description-only; uniqueness, ordering, containment, zero synthetic markers, and source cleanliness pass.
+- The full quotation/semantic sweep found no uncovered load-bearing source unit. The remaining out-of-span quotations are documented boundaries, supersession notices, or declinations.
+- Free hostile route—r11 supersession, arithmetic, census, and five-line propagation—found no further defect.
+
+VERDICT: CLEAN | FINDINGS: 0C + 0G + 1m
