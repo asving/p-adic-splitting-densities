@@ -1,0 +1,18 @@
+PHASE-0b — THE HYPOTHESIS-CLOSURE LEDGER (you are gpt-5.6-sol high; you are an AUDITOR-ENUMERATOR: find and classify, never resolve). Repo readable with working shell at /data/users/asvin/math-and-lean/p-adic-splitting-densities. Purpose (docs/BLUEPRINT_PHASE_DESIGN_2026-08-13.md REVISION 2, stage 0b): before the formalization blueprints freeze, ONE document must enumerate EVERY surviving hypothesis, honest box, named obligation, and open work item on the path from the capstone statement down to the leaves — so that each is deliberately dispositioned (closed by a blueprint node / carried as an explicit hypothesis into the capstone with Asvin's sign-off / blocked-needs-math) instead of being discovered at assembly.
+
+READ (all in the repo): the five T-unit ACCEPTANCE RECORDS and their standing-conditionality blocks (lean/notes/openmath/T{1,2,3,4,5}_*_2026-08-12.md — T1 and T2 records are at the file ends; T2's names (LB1), (MP1), (SEC-RANK), (RISE) and the (GRADE) cap); docs/TIGHTNESS_CENSUS_2026-08-11.md; docs/STATEMENT_LEDGER_2026-08-10.md; docs/CITE_SCOPE_RESOLUTION_2026-08-13.md (NS-6, NS-7, NS-15 and the verdict table); docs/PROJECT_STATE.md appends #32–#44 (the tail); leanfinal/notes/GENUINE_DENSITY_2026-08-13.md STATUS + leanfinal/notes/HENSEL_FACT_2026-08-13.md §6 open statements; leancheck/notes/N2_EXACT_2026-08-13.md STATUS + leancheck/notes/N3_CHECK_2026-08-13.md STATUS/§9-12 (strong Hensel, typeOf shift/scale invariance, the §9.4 recursion); docs/MATH_COMPLETION_TREE_2026-08-01.md and the W12 note's own hypothesis boxes ([W12-H], (H-e), menu/exhaustiveness boxes — grep W12_PROOF for "box" and "hypothesis" headers); GENIND's (CS-1Q) per-genre ledger row; GENTOW5's [GENTOW5-W(i)] i≥3 conditional (see the qgen audit Q4 summary, runs/qgen/Q4_output.log).
+
+OUTPUT (stdout; the orchestrator lands it as spec/HYPOTHESIS_LEDGER.md): one row per item:
+```
+HYP.<nn>  <name/designation as the corpus writes it>
+WHERE: <note/file + unit that carries it>
+STATEMENT: what is assumed/open, one precise sentence (quote where short).
+CONSUMED BY: which parts of the capstone path need it (name the notes/theorems).
+CLASS: [named-obligation | hypothesis-box | cite-scope-residue | lean-open-statement |
+        conditional-theorem-leg | grade-cap | audit-work-item]
+PROPOSED DISPOSITION: [NODE (provable from the corpus as-is — say from where) |
+  CARRY (goes into the capstone's honest conditionality — needs Asvin sign-off) |
+  MATH (genuinely open mathematics — no corpus proof exists; size guess)]
+  — one sentence of justification. Flag LOW-CONFIDENCE where unsure.
+```
+Then: (a) a DEDUPLICATION section (items that are the same fact under different names — e.g. exhaustiveness appears as hExhaust, drainage boxes, HEX3 laws, U-conventions; map them); (b) a COVERAGE STATEMENT (what you swept and HOW — greps + reads — so silence is evidence); (c) the CAPSTONE-CONDITIONALITY PREVIEW: if every CARRY row is carried, write out what the main theorem's honest hypothesis list would be, in one display — this is the single most important deliverable for Asvin's 0d decision. FIX NOTHING; decide nothing marked CARRY-vs-NODE-ambiguous — flag as OPEN-CALL. End with: HYPLEDGER: <n> rows / <n> carry-proposed / <n> math / <n> open calls
