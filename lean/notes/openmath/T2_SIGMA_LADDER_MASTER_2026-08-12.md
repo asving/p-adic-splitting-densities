@@ -3841,3 +3841,191 @@ with `grep -cFx` used for the one landmark marked "whole line". Source lines are
 ### Counter state (NOT reset by this rider)
 
 This rider folds the single MINOR of a hostile pass that returned **0 CRITICAL + 0 GAP + 1 minor**. S7's reset rule is stated of gap-or-worse repairs only ("A gap-or-worse repair resets the clean count"), and a minors-only pass is a clean pass whose minors fold as post-pass riders (T4, T5, T1). Folding riders is not a repair round: **the clean-pass counter is NOT reset and STANDS AT 1 OF 2.** Pass of record: the gpt-5.6-sol high hostile pass on the r9 effective text, `runs/comp13/T2SOL2_output.log`, 2026-08-13 — this note's second model-diverse pass and its first clean one. Still owed at the S7 acceptance gate: the Opus/Claude-arm confirmation pass, the second of the two consecutive clean passes, taken over the r9 effective text PLUS this rider. Until it lands the status line stays "mathematical composition draft, attempt grade \(0/2\)", and by `(GRADE)` every composed instance stays \(0/2\) regardless of supplier grade.
+
+---
+
+## r10 (2026-08-13): the level-one test package and `(ACCOUNT)` given pinned suppliers — three new HE6 existing-text spans — and the rider's covering height qualified
+
+*(Opus/Claude repair arm, against the Opus-arm confirmation pass of record `runs/comp13/T2P8_output.log`, taken over the r9 effective text PLUS the post-pass rider and returning 0 CRITICAL + 1 GAP + 1 minor; counter resets.)*
+
+**Verification protocol for this round.** Every source line quoted below was checked on 2026-08-13 by exact-full-line search (`grep -cFx`) in the named accepted source file, with the count and the source line number recorded at the point of use. No source file is edited by this round; the expected source edit count remains zero. Landmarks internal to this master are quoted from the **r9 + rider effective text**, and their uniqueness is recorded in the form `sed -n '1,3843p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<string>'` → **1**; the bound 3843 is the last line of the post-pass rider block and excludes this round's own re-quotations, which would otherwise inflate every count.
+
+**What the pass verified, and what this round does not touch.** The pass re-derived the rider's three claims from the byte-level source and upheld all three: the compatible choice \(B_0=-L_\kappa(\sigma\eta^{q(\kappa)})\) is `(LIFT)`-permitted, read against `HE6_PROOF_2026-08-08.md`:201–205; two permitted choices differ by height \(>\kappa\); and every downstream consumer of (IDX-TWIST) is choice-independent, the consumer census being complete at six sites (3709, 3739, 3747, 3755, 3759, 3797) across the rider's two classifying paragraphs. It then ran the full 32-pin gate end to end on the final text for the first time — 15 quoted pairs with all 30 delimiter lines at `grep -cFx` = 1, 4 first-only, 13 description-only, zero `T2V2PIN` lines in the six sources, zero source edits — and fourteen supersession landmarks across r1–r9 and the rider, including the `(MP1′)` retirement chain, with no orphan, no double-render and no ambiguous insertion point. None of that is touched below. The GAP is not in the master core, the r9 coherent-frame rebuild, or the rider's mathematics; it is in the pin table, at the two level-one instance records.
+
+---
+
+## r10 repair 1 — G-1 (GAP): the level-one test package and `(ACCOUNT)` given pinned suppliers — three new HE6 existing-text spans
+
+**The finding repaired.**
+
+> the level-one records route `(ACCOUNT)` and the S1.7 test assertions to HE6 units that lie inside NO span of `(PINS)`, and both records assert that the HE6 pins contain them.
+
+with the diagnosis that "The five HE6 pins, as this pass resolved them, are `HE6-PEEL-CONVENTION` [83,97], `HE6-LIFT-1L` [130,199], `HE6-FAMILY` [201,213], `HE6-SLOT-SEAM` [215,238], `HE6-PROOF` [639,666]. The named suppliers are HE6's §S3.3 … §S4 … §S5 … and §S6.1 … Every one of those four ranges is disjoint from every one of the five pin spans", and with the sharpest instance named exactly: "`(ACCOUNT)` is S1.7's boxed identity … Its HE6 proof is the resultant-symmetry identity … and the ξ-side / ρ-side evaluation of it inside LEMMA HE6-3's proof at §S5 — 110 lines before the `HE6-PROOF` span begins. … So: the only side-accounting identity the master proof uses has, at both level-one instance records, no pinned supplier at all."
+
+**Accepted in full, and cured by pinning rather than by amending either crediting sentence.** The two effective-text sentences the report quotes — S3.2's "HE6's ξ-side, evaluation formulas, slope count, resultant argument, and equivariance supply the test assertions and `(ACCOUNT)`" (line 889) and r1 repair 2's "the HE6 pins supply the monic test polynomial … and the quantitative identity `(ACCOUNT)`" (line 1454) — are TRUE of the pin table this repair installs and false of the one it replaces. The defect is the table's, not the claim's, so no sentence of S1.7, S3.1 or S3.2 is amended. Three existing-text spans are added; no source file is edited. This is the repair shape S0.2's restored no-unpinned-material clause prescribes and that r4 repair 13 and r5 repairs 1/4 have already performed five times.
+
+**(a) What the two level-one records actually consume from HE6, itemised, with the supplier of each.** Every source line quoted here returned **1** under `grep -cFx` in `lean/notes/openmath/HE6_PROOF_2026-08-08.md` on 2026-08-13, at the line shown.
+
+1. **S1.7 clause 1** — "its roots lie in the intended disk and carry the label defined by \(r'\)"; S3.2's "ξ-side". Supplier: the statement display of **LEMMA HE6-1**, `> **LEMMA HE6-1 (the ξ-side: EVERY root of a test polynomial carries the` (250), asserting of every root \(\xi\) of \(\Psi_{\kappa,r}\) that (T1)/(T2) hold, that \(dv(\Phi'(\xi))=\kappa\), and that \(\iota_\xi(r)(\beta_\xi)=0\). The disk membership this master reads is that conclusion, not a separate disk criterion. → new pin `HE6-TEST-PACKAGE`.
+2. **S1.7 clause 2** — "its generic evaluation value is attained away from that label class and rises strictly on that class"; S3.2's "evaluation formulas"; 1454's "generic and raised evaluation values". Suppliers: the statement displays of **LEMMA HE6-2**, `> **LEMMA HE6-2 (the ρ-side evaluation: the family SEPARATES labels).** Let ξ` (255), and **LEMMA HE6-2′**, `> **LEMMA HE6-2′ (the f-side evaluation at a test point).** For any` (266). → `HE6-TEST-PACKAGE`.
+3. **S1.7 clause 3** — "resultant symmetry makes the target class nonempty"; 1454's "resultant nonemptiness"; S3.2's "resultant argument". Suppliers: the statement display of **LEMMA HE6-4**, `> **LEMMA HE6-4 (NONEMPTINESS — the engine).** For every slope λ of P(F) and` (280), for the assertion; and, for the argument the two sentences name, the resultant-symmetry display `    (RES)   Σ_{ρ : f(ρ)=0} dv(g(ρ)) = e₁·v(±Res(f,g)) = Σ_{ξ : g(ξ)=0} dv(f(ξ)),` (529) with the proof of LEMMA HE6-4 that runs on it. → `HE6-TEST-PACKAGE` and the new pin `HE6-ACCOUNT`.
+4. **S1.7 clause 4** — "the classes associated with the distinct \(r'\) are disjoint and exhaust the roots belonging to the side"; 1454's "disjointness and exhaustion". Supplier: item 1 of THEOREM HE6.A's proof, HE6:644–648, already inside the existing `HE6-PROOF` span [639,666]. Its stated premise — that every root's \(dv(\Phi'(\rho))\) is a slope and its \(\beta\) a root of that side's residual — is **COROLLARY HE6-2″**, `**Corollary HE6-2″ (HE3-0(iii), re-proved in this convention).** Taking` (517), the one unit of §S4 that is a statement rather than a proof. → `HE6-PROOF` and the new pin `HE6-ROOT-LABEL`. The side total \(n_\lambda=D'L_\lambda\), S3.2's "slope count", is the statement display of **LEMMA HE6-3**, `> **LEMMA HE6-3 (slope counts, (SEP)-FREE).** With` (271). → `HE6-TEST-PACKAGE`.
+5. **S1.7 clause 5** — "the label construction is Galois equivariant"; S3.2's "equivariance"; 1454's "Galois equivariance". Supplier: the statement display of **LEMMA HE6-5**, `> **LEMMA HE6-5 (Galois equivariance of labels — HE3's PE1 finding 6,` (284). → `HE6-TEST-PACKAGE`.
+6. **S1.7 clause 6** — "every point in the \(r'\)-class has local invariants divisible by \(e_{\mathcal C}e'\), \(f_{\mathcal C}\deg r'\)"; 1454's "local divisibility". Supplier: the statement display of **LEMMA HE6-0′**, `> **LEMMA HE6-0′ (the local forcing — HE3-0′ REPAIRED at ℓ ≥ 2).** If a root` (244), giving \(e_1\ell\mid e(L_\rho)\) and \(f_1d_r\mid f(L_\rho)\). This is the clause the master's own proof of clause 2 calls "local forcing". → `HE6-TEST-PACKAGE`.
+7. **S1.7 clause 7 and the degree display** — "all tests and coefficient lifts remain in \(O[x]\)", \(\deg\Psi_{\lambda,r'}=De'\deg r'\); 1454's "integrality". Supplier: DEFINITION HE6-1 inside `HE6-FAMILY` [201,213], with the legality of the lifts from `HE6-LIFT-1L` [130,199]. Already pinned; unchanged by this round.
+8. **`(ACCOUNT)`** — S1.7's boxed identity \(\sum_{\rho}\min(w_\rho,\kappa)=D\sum_\lambda L_\lambda\min(\lambda,\kappa)\), "the only side-accounting identity used by the master proof". Supplier: the identity (†), `    (†)   Σ_λ n_λ·min(λ, κ) = D′·h_F(κ) = D′·Σ_λ L_λ·min(λ, κ),` (551), asserted there for EVERY rational \(\kappa>D'h\) — wider than the master's "\(\kappa>T\) outside the finite set of critical values". The master's left side sums over roots and (†)'s over slopes; the passage between them is displayed in the same proof, at `* ρ-side: by LEMMA HE6-2 (with r₀ never a label's factor)` (545), `  dv(Ψ_κ(ρ)) = ℓd₀·min(λ_ρ, κ) for every root ρ of f, so the ρ-side is` (546), `  ℓd₀·Σ_λ n_λ min(λ, κ).` (547) — that is \(\sum_\rho\min(\lambda_\rho,\kappa)=\sum_\lambda n_\lambda\min(\lambda,\kappa)\) after dividing by \(\ell d_0\). With \(d=dv\), \(D=D'\), \(T=D'h\) and \(w_\rho=dv(\Phi'(\rho))\) by `(HE3-INSTANCE)`/`(HE6-INSTANCE)`, the two displays together are this master's `(ACCOUNT)` verbatim. → `HE6-ACCOUNT`.
+9. **S1.7's closing sentence** — "An instance may prove it using generic tests, the \(\xi\)- and \(\rho\)-side evaluations, and resultant symmetry, but those arguments remain inside that instance's pinned proof." All three named arguments lie inside `HE6-ACCOUNT`: the generic test at `*Proof of LEMMA HE6-3.* Fix once an irreducible r₀ ∈ K[Z] of degree` (533); the two evaluations at the bullets `* ξ-side: by LEMMA HE6-1 every root ξ of Ψ_κ has dv(Φ′(ξ)) = κ and` (540) and line 545 above; and resultant symmetry at line 529. HE6 uses the words "ξ-side" and "ρ-side" in two senses — as the title of LEMMA HE6-1, which is S3.2's sense at item 1, and as the two sides of the resultant identity (RES), which is this sentence's sense, the two being paired here as "the \(\xi\)- and \(\rho\)-side evaluations" of a single proof. Both senses now resolve into pins, the first into `HE6-TEST-PACKAGE` and the second into `HE6-ACCOUNT`. The phrase "that instance's pinned proof" denotes the instance's pinned proof material, after this round `HE6-ACCOUNT` together with `HE6-PROOF`; that reading is recorded at the new pin below and no sentence of S1.7 is amended.
+
+**(b) The three new pins.** Each is an existing-text span with both delimiters quoted; each is declared with its four S0.2 conditions.
+
+**`HE6-TEST-PACKAGE`** — the run of seven consecutive complete statement-display units in HE6 §S1: LEMMA HE6-0′ (244–248), LEMMA HE6-1 (250–253), LEMMA HE6-2 (255–264), LEMMA HE6-2′ (266–269), LEMMA HE6-3 (271–278), LEMMA HE6-4 (280–282), LEMMA HE6-5 (284–287). New `(PINS)` row, in the HE6 block:
+
+> `&\texttt{HE6-TEST-PACKAGE}&\text{the seven consecutive statement-display units LEMMA HE6-0′ through LEMMA HE6-5, HE6 §S1}\\`
+
+- first: `> **LEMMA HE6-0′ (the local forcing — HE3-0′ REPAIRED at ℓ ≥ 2).** If a root`
+- last: `> Galois-stable, at every f₁ (no f₁ = 1 restriction).`
+
+Verification remark: in `lean/notes/openmath/HE6_PROOF_2026-08-08.md`, on 2026-08-13, `grep -cFx` returned **1** for each of the two delimiter lines (244 and 287); the first precedes the last. Condition 1: each of the seven is a "named statement display" — the unit type r3 repair 2 added to S0.2's list — and each occurs exactly once in that type; the same lemmas' proof units (§S3.2, §S3.3, §S4, §S5, §S6.1) are units of a different type, exactly as `HE3-A-STMT` and `HE3-A-PROOF` are two pins over one theorem. Condition 4: the span begins with the first line of LEMMA HE6-0′'s display, the preceding unit LEMMA HE6-0 ending at 242, and ends with the last line of LEMMA HE6-5's display, the next unit THEOREM HE6.A's statement display beginning at 289; it therefore contains all seven complete. The multi-unit contiguous form is the one r3 repair 1(b) declared for `HE7-COCYCLE-2P-THROUGH-R1D` and r4 repair 5 for `HE3-DEF1`: the pin is the run of consecutive complete units from the first delimiter to the last, and both endpoint units are complete.
+
+Add at pin `HE6-TEST-PACKAGE`:
+
+> The span contains LEMMA HE6-2's statement guard "when δ has denominator dividing ℓ", which the source's own dated append re-scopes: `**Correction 2 (PE4 F-2 — LEMMA HE6-2's β-definedness guard).** The` (`HE6_PROOF_2026-08-08.md`:1036) directs that the guard be read as "when δ = κ". **The 2026-08-09 post-PE4 correction governs.** This master consumes from LEMMA HE6-2 only the dichotomy \(\varepsilon(\xi)>0\iff\delta=\kappa\) and \(\iota_\xi(r)(\beta)=0\) — S1.7 clause 2's "attained away from that label class and rises strictly on that class" — which the correction leaves byte-unchanged and which consults \(\beta\) only under its first conjunct. The pin is unchanged; the note is a reading directive, in the form r3 repair 3 and r4 repair 12 set.
+
+**`HE6-ROOT-LABEL`** — COROLLARY HE6-2″, the bolded unit closing HE6 §S4 (517–521). New `(PINS)` row, in the HE6 block:
+
+> `&\texttt{HE6-ROOT-LABEL}&\text{COROLLARY HE6-2″ (every root's }dv(\Phi'(\rho))\text{ is a slope, and its }\beta\text{ a root of that side's residual)}\\`
+
+- first: `**Corollary HE6-2″ (HE3-0(iii), re-proved in this convention).** Taking`
+- last: `of ρ; it is well defined because R_λ is a fixed element of K[Z].`
+
+Verification remark: in `lean/notes/openmath/HE6_PROOF_2026-08-08.md`, on 2026-08-13, `grep -cFx` returned **1** for each of the two delimiter lines (517 and 521); the first precedes the last. Condition 1: the designation "HE6-2″" is borne by exactly one unit, this one; its only other occurrence in the file, HE6:645, is a citation inside the `HE6-PROOF` span. S0.2's outermost-unit rule resolves the pin to the outermost unit bearing that designation, which is the bolded unit itself — §S4's heading bears the designations HE6-2 and HE6-2′, not HE6-2″. Condition 4: the unit runs from its bolded opening to the end of its statement and ends immediately before the next unit of equal or higher rank, `## S5.` at 525; the horizontal rule at 523 is a boundary marker and not unit content, by the clause r3 repair 2 appended to S0.2 ("A section-separating horizontal-rule line is a boundary marker, not unit content: a unit's last delimiter is the last nonblank content line before such a boundary"), so the last delimiter is 521. This unit is a bolded unit outside a blockquote, the same configuration r4 repair 5 adjudicated at HE3's `[r2]` CONSTRUCTION PIN.
+
+**`HE6-ACCOUNT`** — HE6 §S5, the proof unit of LEMMA HE6-3 and LEMMA HE6-4, carrying the resultant-symmetry display (RES) and the accounting identity (†). New `(PINS)` row, in the HE6 block:
+
+> `&\texttt{HE6-ACCOUNT}&\text{HE6 §S5, the proof unit of LEMMA HE6-3 and LEMMA HE6-4 (the (RES) display and the accounting identity (}\dagger\text{))}\\`
+
+- first: `## S5. LEMMA HE6-3 (slope counts, (SEP)-free) AND LEMMA HE6-4 (nonemptiness)`
+- last: `what replaces HE3-BOX-6's base change.`
+
+Verification remark: in `lean/notes/openmath/HE6_PROOF_2026-08-08.md`, on 2026-08-13, `grep -cFx` returned **1** for each of the two delimiter lines (525 and 604); the first precedes the last. Condition 1: the `##` unit `## S5.` occurs exactly once in the file. Condition 4: the span contains (RES) at 529, the generic-letter construction at 533–538, the ξ-side and ρ-side bullets at 540–547, the identity (†) at 551, parts (a) and (b) of LEMMA HE6-3's proof, the (SEP)-counterexample remark, the complete proof of LEMMA HE6-4 with its ∎, and the closing "why this is not the tautology it looks like" remark; it ends immediately before the next unit of equal or higher rank, `## S6. LEMMA HE6-5 AND THEOREM HE6.A` at 608, the horizontal rule at 606 being a boundary marker by the same S0.2 clause.
+
+Add at pin `HE6-ACCOUNT`:
+
+> The span contains the inference inside LEMMA HE6-3(a)'s proof that the source's own dated append replaces: `**Dated correction (2026-08-12, post-acceptance challenge F-2 — completion of LEMMA HE6-3(a)).** In the proof of LEMMA HE6-3(a), replace the inference` (`HE6_PROOF_2026-08-08.md`:1115), which substitutes a length argument for the appeal to positivity of the polygon slopes. **The 2026-08-12 correction governs.** Nothing this master consumes from the span is touched by it: the correction operates strictly below (†) at HE6:551, and this master derives its own clause 1 — that no side has slope \(\le T\) — from `(ACCOUNT)` in S2's proof rather than consuming LEMMA HE6-3(a). Recorded at the same pin: the phrase "that instance's pinned proof" in S1.7's closing sentence denotes this span together with `HE6-PROOF`. The pin is unchanged; the note is a reading directive.
+
+**(c) What this repair declines to pin, with the ground for each declination, so that nothing is left unadjudicated.**
+
+- **LEMMA HE6-0** (the disk criterion, HE6:240–242), the unit immediately preceding the new span. This master names it only to fix a boundary — the confirmation pass's own semantic sweep classes it so — and consumes no disk criterion: what S1.7 clause 1 reads as "its roots lie in the intended disk" is LEMMA HE6-1's own conclusion that every root of \(\Psi_{\kappa,r}\) satisfies (T1)/(T2), inside the new span. Where HE6-0 is used, it is used inside HE6's own arguments (its §S3.3 Step 1 and its §S5 part (a), line 558, cited here by number and not quoted), which is the source's business and not a master-side consumption.
+- **THEOREM HE6.A's statement display** (HE6:289–301). The pass records the asymmetry with `HE3-A-STMT`, whose statement display is pinned. This master names THEOREM HE6.A at two sites only: the `(PINS)` row description "the complete proof unit of THEOREM HE6.A", which names it to fix a boundary, and S4.1's grade line "HE6 is accepted \(2/2\)". S3.2's conclusion display \(|S_{\lambda,r}|=D'\ell\deg r\), \((e,f)=(e_1\ell,f_1\deg r)\) is this master's OWN clause-2 output at the instance, derived in S2's proof from `(SIDE-COUNT)`, `(RES-DEG)` and the test package — not consumed from HE6.A. Pinning it would cover no consumption. The asymmetry with HE3 is real and is adjudicated here rather than cured: `HE3-A-STMT` is pinned because S3.1's instance substitution reads THEOREM HE3.A's stated data, whereas S3.2's corresponding display is derived by this master and is not read from HE6.A.
+- **§S3.3** (the proof of LEMMA HE6-1), **§S4's two evaluation proofs**, and **§S6.1** (the proof of LEMMA HE6-5). What S3.2's line 889 credits to "HE6's ξ-side, evaluation formulas … and equivariance" are those lemmas' ASSERTIONS, now inside `HE6-TEST-PACKAGE`; this master consumes none of their proofs and reproves none of them. The single unit of §S4 that is a statement and not a proof, COROLLARY HE6-2″, is pinned above. The one place where an ARGUMENT and not an assertion is credited is S1.7's closing sentence, and its three named arguments are all inside `HE6-ACCOUNT`, as item 9 records.
+
+**(d) The four grounds of the finding, each answered.**
+
+- S0.2 as restored by r4 repair 8, "No unpinned source material is used to manufacture a theorem hypothesis": `(ACCOUNT)` and the seven S1.7 test properties are carrier hypotheses of HE7.A, as S4.1 line 1167 says in terms, and after this repair each has a named pinned supplier, itemised in (a).
+- S5 ledger item 3, "Every cited source unit has a named paired begin/end pin": true of the four HE6 sections the pass names, once they are resolved into the units this master actually cites — seven statement displays, COROLLARY HE6-2″ and §S5 — each of which now has a pin with both delimiters quoted.
+- S1.7's closing sentence, "those arguments remain inside that instance's pinned proof": true after this repair; item 9 and the `HE6-ACCOUNT` pin note.
+- The standing S7 consumption check, "A consumption outside every span fails the gate": the sweep is re-run and recorded in (g).
+
+**(e) Bookkeeping.** In the effective S0.2 (r2 repair 1 as amended by r3 repair 1, r4 repair 13 and r5 repair 8) replace "The 32 pins are the following existing-text pairs" by "The 35 pins are the following existing-text pairs". In the effective S7 pin gate replace "The expected pin count is 32" by "The expected pin count is 35"; the expected synthetic-marker count stays zero, and the expected source edit count stays zero. Pin arithmetic for the gate: 26 (r2) → 27 (r3 repair 1 splits `HETOW-LABELS`) → 29 (r4 repair 13 adds two) → 32 (r5 adds three) → **35** (r10 adds three).
+
+Inventory taxonomy. All three new pins carry quoted delimiter **pairs**, so the pair count rises by three and the first-only and description-only counts are unchanged. In r6 repair 2's replacement text, replace
+
+> `HETOW-KEY-BRIDGE`, `HE7-PERT-TRANSPORT`, `HE6-LIFT-1L` (r5); and `HE6-PROOF` (r6) — **15 of 32**.
+
+by
+
+> `HETOW-KEY-BRIDGE`, `HE7-PERT-TRANSPORT`, `HE6-LIFT-1L` (r5); `HE6-PROOF` (r6); and `HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL`, `HE6-ACCOUNT` (r10) — **18 of 35**.
+
+and in r7 repair 2(b)'s replacement text, replace
+
+> The other 13 pins are description-only at both ends. Totals: 15 pairs + 4 first-only + 13 description-only = 32.
+
+by
+
+> The other 13 pins are description-only at both ends. Totals: 18 pairs + 4 first-only + 13 description-only = 35.
+
+\(18+4+13=35\). The four first-only pins (`HE3-R8-2`, `HE3-R8-3`, `HE3-R8-4`, `HE6-FAMILY`) and the thirteen description-only pins are exactly as r7 repair 2 left them.
+
+The S0.2 cured-consumption clause. Replace, in the clause r4 repair 8 appended to S0.2 as r5 repair 4 replaced it,
+
+> Four consumptions have been cured this way. At r4: HE6's standing peel convention became `HE6-PEEL-CONVENTION`, and LEMMA HE7-8 became `HE7-REF-TERM`. At r5, after the r4 pass found the r4 sweep incomplete: LEMMA HETOW-2, named in S3.4, became `HETOW-KEY-BRIDGE`; LEMMA HE6-1L, the sole source of \(q(k)\)'s definition for `(Q-DEF)`, became `HE6-LIFT-1L`; and LEMMA HE7-12, consumed by S1.8B, entered with LEMMA HE7-13 as `HE7-PERT-TRANSPORT`.
+
+by
+
+> Eight consumptions have been cured this way. At r4: HE6's standing peel convention became `HE6-PEEL-CONVENTION`, and LEMMA HE7-8 became `HE7-REF-TERM`. At r5, after the r4 pass found the r4 sweep incomplete: LEMMA HETOW-2, named in S3.4, became `HETOW-KEY-BRIDGE`; LEMMA HE6-1L, the sole source of \(q(k)\)'s definition for `(Q-DEF)`, became `HE6-LIFT-1L`; and LEMMA HE7-12, consumed by S1.8B, entered with LEMMA HE7-13 as `HE7-PERT-TRANSPORT`. At r10, after the r9 + rider pass found the r5 sweep incomplete in turn: the seven level-one test-assertion statement displays LEMMA HE6-0′ through LEMMA HE6-5 became `HE6-TEST-PACKAGE`; COROLLARY HE6-2″ became `HE6-ROOT-LABEL`; and HE6 §S5, the sole source of `(ACCOUNT)`, became `HE6-ACCOUNT`.
+
+(The superseded sentence also miscounted its own list, reading "Four" against the five cures it then names. The list is the authority; the corrected total counts those five together with this round's three.)
+
+And replace, in r4 repair 13's opening sentence as r5 repair 4 replaced it,
+
+> so the count of cured consumptions reads two of five.
+
+by
+
+> so the count of cured consumptions reads two of five; the r9 + rider pass then found the r5 sweep incomplete in turn, and three further consumptions were cured at r10, so the count now reads two of eight.
+
+**(f) The five Source-pin lines.** The three new pins are consumed by both level-one records, and — by exactly the scoping r7 repair 5 installed — by a level-two chain whose level-one key is itself recentered, since r7 repair 6(a) records that S1.7's seven proved test properties with `(ACCOUNT)` "are demands on the RECORDS, and they reach \(\Phi''\) only as (vii) transports the records themselves", and r7 repair 6(b) that "the universal test package and `(ACCOUNT)`, which are those records' HE6 leg, reach \(\Phi''\) through (vi) and through the HE6 paragraph below". Where a level-two chain sits over the ORIGINAL level-one key \(\Phi'\) they are simply unconsumed there, exactly as r7 repair 5 says of its own four. Replace the five lines as r5 repair 6 and r7 repair 5 set them —
+
+> - **S3.1** (in the r1 repair 2 replacement paragraph) — **Source pins:** `HE3-A-STMT`, `HE3-A-PROOF`, `HE3-DEF1`, `HE3-HE3-1L`, `HE3-HE3-6`, `HE3-R8-2` through `HE3-R8-5`, `HE6-FAMILY`, `HE6-PROOF`, `HE6-SLOT-SEAM`, `HE6-PEEL-CONVENTION`, and `HE6-LIFT-1L`.
+
+> - **S3.2** — **Source pins:** `HE6-FAMILY`, `HE6-PROOF`, `HE6-SLOT-SEAM`, `HE6-PEEL-CONVENTION`, `HE6-LIFT-1L`, and `HE3-A-PROOF`.
+
+> - **S3.3** — **Source pins:** `HE7-A-STMT`, `HE7-SLOT-TRANSFER`, `HE7-MIXED-13P`, `HE7-COCYCLE-2P-THROUGH-R1D`, `HE7-REF-TERM`, `HE7-PERT-TRANSPORT`, `HE6R1-1`, `HE6R1-2`, `HE6R1-3`, and — for a chain whose level-one key is itself recentered, by S1.8C — `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY` and `HE6-PROOF`.
+
+> - **S3.4** — **Source pins:** `HETOW-LABELS`, `HETOW-LABELS-1`, `HETOW-KEY-BRIDGE`, `HETOW-A`, `HETOW-NORMALIZER-4`, `HE7-REF-TERM`, `HE7-PERT-TRANSPORT`, `HE7-MIXED-13P`, `HE6R1-3`, and — for a chain whose level-one key is itself recentered, by S1.8C — `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY` and `HE6-PROOF`.
+
+> - **S3.5** — **Source pins:** `GENTOW-4-1`, `GENTOW-4-A`, `GENTOW-4-2`, `GENTOW-ACCEPTANCE-FOLD`, `HE7-REF-TERM`, `HE7-PERT-TRANSPORT`, `HE7-MIXED-13P`, `HE6R1-2`, `HE6R1-3`, and — for a chain whose level-one key is itself recentered, by S1.8C — `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY` and `HE6-PROOF`.
+
+by
+
+> - **S3.1** (in the r1 repair 2 replacement paragraph) — **Source pins:** `HE3-A-STMT`, `HE3-A-PROOF`, `HE3-DEF1`, `HE3-HE3-1L`, `HE3-HE3-6`, `HE3-R8-2` through `HE3-R8-5`, `HE6-FAMILY`, `HE6-PROOF`, `HE6-SLOT-SEAM`, `HE6-PEEL-CONVENTION`, `HE6-LIFT-1L`, `HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL`, and `HE6-ACCOUNT`.
+
+> - **S3.2** — **Source pins:** `HE6-FAMILY`, `HE6-PROOF`, `HE6-SLOT-SEAM`, `HE6-PEEL-CONVENTION`, `HE6-LIFT-1L`, `HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL`, `HE6-ACCOUNT`, and `HE3-A-PROOF`.
+
+> - **S3.3** — **Source pins:** `HE7-A-STMT`, `HE7-SLOT-TRANSFER`, `HE7-MIXED-13P`, `HE7-COCYCLE-2P-THROUGH-R1D`, `HE7-REF-TERM`, `HE7-PERT-TRANSPORT`, `HE6R1-1`, `HE6R1-2`, `HE6R1-3`, and — for a chain whose level-one key is itself recentered, by S1.8C — `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY`, `HE6-PROOF`, `HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL` and `HE6-ACCOUNT`.
+
+> - **S3.4** — **Source pins:** `HETOW-LABELS`, `HETOW-LABELS-1`, `HETOW-KEY-BRIDGE`, `HETOW-A`, `HETOW-NORMALIZER-4`, `HE7-REF-TERM`, `HE7-PERT-TRANSPORT`, `HE7-MIXED-13P`, `HE6R1-3`, and — for a chain whose level-one key is itself recentered, by S1.8C — `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY`, `HE6-PROOF`, `HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL` and `HE6-ACCOUNT`.
+
+> - **S3.5** — **Source pins:** `GENTOW-4-1`, `GENTOW-4-A`, `GENTOW-4-2`, `GENTOW-ACCEPTANCE-FOLD`, `HE7-REF-TERM`, `HE7-PERT-TRANSPORT`, `HE7-MIXED-13P`, `HE6R1-2`, `HE6R1-3`, and — for a chain whose level-one key is itself recentered, by S1.8C — `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY`, `HE6-PROOF`, `HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL` and `HE6-ACCOUNT`.
+
+**(g) The sweep, re-run and recorded.** r5 repair 4 recorded its own enumeration and declared it "recorded, not asserted complete; the gate re-runs it"; this is what re-running it returned at the two level-one records. The four HE6 sections the pass names resolve as follows. §S5 is pinned entire, as `HE6-ACCOUNT`. Of §S4, COROLLARY HE6-2″ is pinned as `HE6-ROOT-LABEL` and the two evaluation proofs are not consumed. §S3.3 and §S6.1 are not consumed: what is consumed is the statement display of the lemma each proves, and all seven such displays are pinned as `HE6-TEST-PACKAGE`. The residues r5 repair 4 enumerated (LEMMA HETOW-3, LEMMA GENTOW-4.1, LEMMA HE7-13, DEFINITION HE6-1, GENHN-3(a), HE3's `[r1-N1]`) are unchanged. Two classes were checked afresh in this round. First, HE6's six dated appends: PE4 Correction 2 and the 2026-08-12 F-2 touch material now inside a new span and are noted at their pins in (b); PE4 Correction 1 (the §S9 headline), 2026-08-12 F-1 (LEMMA HE6-0″, inside `HE6-SLOT-SEAM`, whose only consumption r4 repair 9 already reconciled from inside `HE3-HE3-1L`), F-3 (§S3.1, LEMMA HE6-0's proof) and F-4 (§S6.1, the coefficient ring of \(\varpi\) in LEMMA HE6-5's proof) touch nothing this master consumes. Second, the boundary-fixing and declining quotations the pass itemised — HE6:668 quoted at master 3118 to name the unit before which `HE6-PROOF` ends, and the GENTOW4 TOWERRAT2-C annex heading quoted at master 2564 to record a supersession — remain declinations, not consumptions, and are unaffected. This enumeration is recorded, not asserted complete; the gate re-runs it.
+
+**Verification remark (source).** On 2026-08-13, `grep -cFx` returned **1** in `lean/notes/openmath/HE6_PROOF_2026-08-08.md` for each of the twenty-two source lines quoted in this repair, at the lines shown: 244, 250, 255, 266, 271, 280 and 284 (the opening line of each of the seven statement displays, 244 being also the span's first delimiter) and 287 (LEMMA HE6-5's last line, the span's last delimiter); 517 and 521 (COROLLARY HE6-2″'s two delimiters); 525, 529, 533, 540, 545, 546, 547, 551 and 604 (§S5's two delimiters and the six displays quoted from inside it); 1036 and 1115 (the two dated-append opening lines quoted in the pin notes); and 202, quoted in repair 2 below. Each of 250, 255, 266, 271, 280 and 284 lies strictly inside the `HE6-TEST-PACKAGE` span 244–287; each of 529, 533, 540, 545, 546, 547 and 551 lies strictly inside the `HE6-ACCOUNT` span 525–604; 202 lies strictly inside the `HE6-FAMILY` unit whose quoted first delimiter is 201. Lines 558, 644–648 and 240–242 are cited by number and not quoted. No source file is edited.
+
+**Verification remark (landmarks).** Under `sed -n '1,3843p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<the quoted string>'` on 2026-08-13, each of the eleven superseded strings of this repair returned **1**: "The 32 pins are the following existing-text pairs" and "The expected pin count is 32" (both on line 2900); r6 repair 2's quoted-pairs string (3123); r7 repair 2(b)'s totals string (3391); the S0.2 cured-consumption sentence, "Four consumptions have been cured this way." (2791); r4 repair 13's count clause, "so the count of cured consumptions reads two of five." (2799); and the five Source-pin lines, S3.1 (2858), S3.2 (2859), S3.3 (3449), S3.4 (3455) and S3.5 (3461). The two crediting sentences this repair leaves standing were located and not amended: line 889 (S3.2, base text) and line 1454 (r1 repair 2's S3.1 replacement).
+
+---
+
+## r10 repair 2 — m-1 (minor): the rider's COVERING direction qualified to DEFINITION HE6-1's \(\kappa>D'h\)
+
+**The finding repaired.**
+
+> the rider's COVERING direction is stated at "a full height", where DEFINITION HE6-1 requires κ > D′h; the two differ on a band the note itself distinguishes. … At such a κ the recentering is NOT a family member, so the covering claim is false there. The permittedness computation the sentence leans on ("by the permittedness just checked") verifies the three conditions of HE6:204 and does not verify HE6:202's κ > D′h.
+
+Accepted. "Full" is S1.4's predicate, \(k\ge(i(k)+e_1(f_1-1))h\) with \(k\ge(D'-1)h\) uniformly sufficient; DEFINITION HE6-1's standing hypothesis is `> terms with κ > D′h, and let r = Z^{d} + Σ_{t<d}c_tZ^t ∈ K[Z] be monic` (`HE6_PROOF_2026-08-08.md`:202, inside the `HE6-FAMILY` span). The second is strictly the stronger: \(\kappa>D'h>(D'-1)h\) makes \(\kappa\) full, while a full \(\kappa\) in the band \((D'-1)h\le\kappa\le D'h\) indexes no member of the family at all. In Rider 1's cure text, replace
+
+> at a full height \(\kappa\) is a member of the family
+
+by
+
+> at a height \(\kappa>D'h\) — DEFINITION HE6-1's own standing hypothesis (`HE6_PROOF_2026-08-08.md`:202), strictly stronger than fullness, since \(\kappa>D'h>(D'-1)h\) makes \(\kappa\) full by S1.4's uniform sufficient bound while a full \(\kappa\) in the band \((D'-1)h\le\kappa\le D'h\) indexes no member of the family — is a member of the family
+
+with the rest of the sentence unchanged. Nothing downstream is narrowed by the qualifier. `(WINDOW)` (S1.5) puts every side slope strictly above \(T=D'h\), and r9 repair 1(a) already carries "the recipe's standing \(\kappa>D'h=T\)" at the same site, so every recentering this master actually forms is at an index the qualified sentence covers; and S1.8C, the sentence's only consumer, reads it at \(\lambda>T=D'h\). The three nits the pass recorded are left as recorded: \(d(B_0)\) for \(dv(B_0)\) is r9's inherited usage under S1.2's \(h=dv\); the existence of \(L_\kappa(\cdot)\) at a full height is supplied by the same \(\kappa>D'h>(D'-1)h\) the qualifier now displays; and `HE7-PERT-TRANSPORT`'s blockquote-prefix asymmetry between its two delimiters is a transcription hazard for the gate-runner, both delimiters being quoted correctly in the note.
+
+**Verification remark (landmark).** `sed -n '1,3843p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- 'at a full height \(\kappa\) is a member of the family'` → **1** (line 3831). Source: `HE6_PROOF_2026-08-08.md`:202 re-verified at **1** under `grep -cFx`.
+
+---
+
+## r10 counter
+
+r10 folds repairs for the single GAP (G-1) and the single minor (m-1) of the Opus-arm confirmation pass `runs/comp13/T2P8_output.log`, taken over the r9 effective text plus the post-pass rider. The finding is credited to that pass in full: it is the first end-to-end run of the S7 pin gate's standing consumption check on the final text, and running it is what produced the finding.
+
+Its substantive content is one object. Both level-one instance records credit the HE6 pins with the master's universal test package and with `(ACCOUNT)` — "the only side-accounting identity used by the master proof" — and until this round the HE6 pin set contained neither: the test assertions live in HE6 §S1's statement displays and in COROLLARY HE6-2″, and `(ACCOUNT)` lives as the identity (†) inside §S5's proof of LEMMA HE6-3, 110 lines above where the `HE6-PROOF` span begins. Three existing-text spans are added — `HE6-TEST-PACKAGE` (the seven statement displays LEMMA HE6-0′ … LEMMA HE6-5), `HE6-ROOT-LABEL` (COROLLARY HE6-2″) and `HE6-ACCOUNT` (§S5) — each with both delimiters quoted and `grep -cFx`-verified, each cited at the consuming records, and two of them carrying a reading directive for the source's own dated corrections to material inside the span. Neither crediting sentence is amended, because both are true of the table this round installs.
+
+**No theorem-statement change is made by this round.** No display of the statement suite S1.2–S1.8 is amended, no hypothesis is added to or removed from HE7.A's suite, no case is added or dropped, and no conclusion is touched. S1.7 — the section whose closing sentence the finding quotes — is not amended: what changes is the pin table that sentence refers to. The minor narrows one qualifier inside the post-pass rider by one condition, and every consumer of the qualified sentence already reads it above that condition.
+
+**Two named obligations remain open**, both at level one and both unchanged: `(LB1)` for clause-4 block construction, and `(MP1)` for the clause-5 peel at a recentered key. (RISE) remains a stipulated carrier hypothesis discharged per instance, and no new fence is added: HE6 supplies `(ACCOUNT)` and every test assertion at the configuration the records read them in, so no consumption had to be re-routed or fenced. Three pins are added and none removed, no source file is edited, and no `T2V2PIN` line is created: the expected pin count is now **35**, the expected synthetic-marker count stays zero, and the expected source edit count stays zero.
+
+**Landmark census for this round.** Twelve master-internal landmark strings, on eleven lines, each returning **1** under `sed -n '1,3843p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<string>'` on 2026-08-13: lines 2791, 2799, 2858, 2859, 2900 (two strings — the pin-count sentence and the gate's expected-count sentence), 3123, 3391, 3449, 3455, 3461 and 3831. Twenty-two source lines, each returning **1** under `grep -cFx` in `HE6_PROOF_2026-08-08.md`: 202, 244, 250, 255, 266, 271, 280, 284, 287, 517, 521, 525, 529, 533, 540, 545, 546, 547, 551, 604, 1036 and 1115. Six of those twenty-two are the three new spans' delimiter pairs: 244/287, 517/521 and 525/604.
+
+Gap-or-worse repairs reset the clean count (S7: "A gap-or-worse repair resets the clean count"). The rider's counter statement — "the clean-pass counter is NOT reset and STANDS AT 1 OF 2" — recorded the state after a minors-only pass, pending the Opus-arm confirmation pass it named as still owed; that pass returned a GAP, so the state is superseded here rather than amended. **The clean-pass counter is RESET to 0 of 2.** The acceptance gate still owes **TWO consecutive clean hostile passes** over the r10 effective text before this note may leave attempt grade \(0/2\); the status line therefore stays "mathematical composition draft, attempt grade \(0/2\)", and by `(GRADE)` every composed instance stays \(0/2\) regardless of supplier grade.
