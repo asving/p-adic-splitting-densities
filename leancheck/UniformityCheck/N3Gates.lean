@@ -8,6 +8,7 @@ import UniformityCheck.N3Base
 import UniformityCheck.N3Certs
 import UniformityCheck.N3Norm
 import UniformityCheck.CubicCount
+import UniformityCheck.SplitCount
 import UniformityCheck.N3Density
 
 /-!
@@ -138,6 +139,48 @@ theorem linInert_decided_res {v : Fin 3 → ResidueField O} (hv : LinAni v) :
     refine sub_mem_of_residue_eq ?_
     rw [hr 0, map_neg, map_mul, hb₀, hρ, linAniCoeff_zero]
 
+/-! ### `{(1,1)}³`, level 1 -/
+
+theorem split3Coeff_zero {K : Type*} [Field K] (r s t : K) :
+    split3Coeff r s t 0 = -(r * s * t) := by simp [split3Coeff]
+
+theorem split3Coeff_one {K : Type*} [Field K] (r s t : K) :
+    split3Coeff r s t 1 = r * s + r * t + s * t := by simp [split3Coeff]
+
+theorem split3Coeff_two {K : Type*} [Field K] (r s t : K) :
+    split3Coeff r s t 2 = -(r + s + t) := by simp [split3Coeff]
+
+theorem isUnit_sub_of_residue_ne {x y : O} (h : residue O x ≠ residue O y) : IsUnit (x - y) := by
+  refine notMem_maximalIdeal.1 (fun hmem => h ?_)
+  have hz := (IsLocalRing.residue_eq_zero_iff (x - y)).2 hmem
+  rw [map_sub, sub_eq_zero] at hz
+  exact hz
+
+/-- **THREE DISTINCT RESIDUE ROOTS, level 1.** -/
+theorem split3_decided_res {v : Fin 3 → ResidueField O} (hv : Split3 v) :
+    DecidedAt O 3 c3split 1 (liftRes1 v) := by
+  obtain ⟨r, s, t, hrs, hrt, hst, rfl⟩ := hv
+  obtain ⟨ρ₁, hρ₁⟩ := IsLocalRing.residue_surjective (R := O) r
+  obtain ⟨ρ₂, hρ₂⟩ := IsLocalRing.residue_surjective (R := O) s
+  obtain ⟨ρ₃, hρ₃⟩ := IsLocalRing.residue_surjective (R := O) t
+  intro b hb
+  have hres : resVec b = split3Coeff r s t := resVec_of_proj hb
+  have hr : ∀ i, residue O (b i) = split3Coeff r s t i := fun i => congrFun hres i
+  refine typeOf_split3_of_residue ρ₁ ρ₂ ρ₃
+    (isUnit_sub_of_residue_ne (by rw [hρ₁, hρ₂]; exact hrs))
+    (isUnit_sub_of_residue_ne (by rw [hρ₁, hρ₃]; exact hrt))
+    (isUnit_sub_of_residue_ne (by rw [hρ₂, hρ₃]; exact hst)) ?_ ?_ ?_
+  · have hid : b 2 + (ρ₁ + ρ₂ + ρ₃) = b 2 - -(ρ₁ + ρ₂ + ρ₃) := by ring
+    rw [hid]
+    refine sub_mem_of_residue_eq ?_
+    rw [hr 2, map_neg, map_add, map_add, hρ₁, hρ₂, hρ₃, split3Coeff_two]
+  · refine sub_mem_of_residue_eq ?_
+    rw [hr 1, map_add, map_add, map_mul, map_mul, map_mul, hρ₁, hρ₂, hρ₃, split3Coeff_one]
+  · have hid : b 0 + ρ₁ * ρ₂ * ρ₃ = b 0 - -(ρ₁ * ρ₂ * ρ₃) := by ring
+    rw [hid]
+    refine sub_mem_of_residue_eq ?_
+    rw [hr 0, map_neg, map_mul, map_mul, hρ₁, hρ₂, hρ₃, split3Coeff_zero]
+
 /-! ### `{(3,1)}` -/
 
 /-- **EISENSTEIN CUBIC, level 2.** -/
@@ -257,6 +300,29 @@ theorem gate_ram3_lower :
   rw [show (3 : ℕ) * 2 = 6 from rfl]
   field_simp
 
+/-- **G-SPLIT3, level 1.** `(q-1)(q-2) / (6q²) ≤ genuineDensity O 3 c3split`. Vacuous (`= 0`) at
+`q = 2`, where `gate_split3_lower`'s deep class is the only source. -/
+theorem gate_split3_res_lower :
+    ((residueCard O : ℝ) - 1) * ((residueCard O : ℝ) - 2) / (6 * (residueCard O : ℝ) ^ 2)
+      ≤ genuineDensity O 3 c3split := by
+  classical
+  have hbound := genuineDensity_ge_of_inj (O := O) (n := 3) (N := 1) (σ := c3split)
+    (A := {v : Fin 3 → ResidueField O // Split3 v})
+    (fun v => liftRes1 v.1)
+    (fun v w h => Subtype.ext (liftRes1_injective h))
+    (fun v => split3_decided_res v.2)
+  have hcount := six_mul_card_split3 (ResidueField O)
+  have hcast : (6 : ℝ) * (Nat.card {v : Fin 3 → ResidueField O // Split3 v} : ℝ)
+      + 3 * (residueCard O : ℝ) ^ 2 = (residueCard O : ℝ) ^ 3 + 2 * (residueCard O : ℝ) := by
+    have := congrArg (fun n : ℕ => (n : ℝ)) hcount
+    push_cast at this
+    simpa [residueCard] using this
+  have hq : (0 : ℝ) < (residueCard O : ℝ) := qR_pos
+  refine le_trans (le_of_eq ?_) hbound
+  rw [show (3 : ℕ) * 1 = 3 from rfl]
+  field_simp
+  linarith [hcast]
+
 /-- **THE FIVE `n = 3` LOWER BOUNDS**, general `O`. -/
 theorem lowers_three :
     1 / (residueCard O : ℝ) ^ 9 ≤ genuineDensity O 3 c3split
@@ -287,14 +353,16 @@ theorem lowers3_padic_two :
   norm_num at hs hi hc hr ht ⊢
   exact ⟨by linarith, by linarith, by linarith, by linarith, by linarith⟩
 
-/-- The five certified lower bounds over `ℤ_[3]`. -/
+/-- The five certified lower bounds over `ℤ_[3]`. At `q = 3` the split type uses the level-1
+family (`C(3,3) = 1` class out of `27`), which beats the deep class `1/3⁹` by a factor `729`. -/
 theorem lowers3_padic_three :
-    (1 : ℝ) / 19683 ≤ genuineDensity ℤ_[3] 3 c3split
+    (1 : ℝ) / 27 ≤ genuineDensity ℤ_[3] 3 c3split
     ∧ (1 : ℝ) / 3 ≤ genuineDensity ℤ_[3] 3 c3linInert
     ∧ (8 : ℝ) / 27 ≤ genuineDensity ℤ_[3] 3 c3inert
     ∧ (4 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 3 c3linRam
     ∧ (2 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 3 c3ram := by
-  obtain ⟨hs, hi, hc, hr, ht⟩ := lowers_three (O := ℤ_[3])
+  obtain ⟨-, hi, hc, hr, ht⟩ := lowers_three (O := ℤ_[3])
+  have hs := gate_split3_res_lower (O := ℤ_[3])
   rw [residueCard_padicInt 3] at hs hi hc hr ht
   norm_num at hs hi hc hr ht ⊢
   exact ⟨by linarith, by linarith, by linarith, by linarith, by linarith⟩
@@ -318,16 +386,16 @@ theorem gate_bracket3_padic_two :
 
 /-- **GATE BRACKET (n = 3), q = 3.** -/
 theorem gate_bracket3_padic_three :
-    ((1 : ℝ) / 19683 ≤ genuineDensity ℤ_[3] 3 c3split
-        ∧ genuineDensity ℤ_[3] 3 c3split ≤ 5832 / 19683)
+    ((1 : ℝ) / 27 ≤ genuineDensity ℤ_[3] 3 c3split
+        ∧ genuineDensity ℤ_[3] 3 c3split ≤ 8 / 27)
     ∧ ((1 : ℝ) / 3 ≤ genuineDensity ℤ_[3] 3 c3linInert
-        ∧ genuineDensity ℤ_[3] 3 c3linInert ≤ 12392 / 19683)
+        ∧ genuineDensity ℤ_[3] 3 c3linInert ≤ 16 / 27)
     ∧ ((8 : ℝ) / 27 ≤ genuineDensity ℤ_[3] 3 c3inert
-        ∧ genuineDensity ℤ_[3] 3 c3inert ≤ 11663 / 19683)
+        ∧ genuineDensity ℤ_[3] 3 c3inert ≤ 5 / 9)
     ∧ ((4 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 3 c3linRam
-        ∧ genuineDensity ℤ_[3] 3 c3linRam ≤ 6803 / 19683)
+        ∧ genuineDensity ℤ_[3] 3 c3linRam ≤ 25 / 81)
     ∧ ((2 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 3 c3ram
-        ∧ genuineDensity ℤ_[3] 3 c3ram ≤ 6317 / 19683) := by
+        ∧ genuineDensity ℤ_[3] 3 c3ram ≤ 23 / 81) := by
   obtain ⟨hs, hi, hc, hr, ht⟩ := lowers3_padic_three
   obtain ⟨us, ui, uc, ur, ut⟩ := bracket_five hs hi hc hr ht
   exact ⟨⟨hs, by linarith⟩, ⟨hi, by linarith⟩, ⟨hc, by linarith⟩, ⟨hr, by linarith⟩,
@@ -346,11 +414,11 @@ theorem gate_bracket3_hmenu3_two :
 /-- **HMENU3 containment, q = 3.** The corpus's predicted cubic densities
 `(63/968, 351/968, 36/121, 93/484, 10/121)` all lie inside the certified brackets. -/
 theorem gate_bracket3_hmenu3_three :
-    ((1 : ℝ) / 19683 ≤ 63 / 968 ∧ (63 : ℝ) / 968 ≤ 5832 / 19683)
-    ∧ ((1 : ℝ) / 3 ≤ 351 / 968 ∧ (351 : ℝ) / 968 ≤ 12392 / 19683)
-    ∧ ((8 : ℝ) / 27 ≤ 36 / 121 ∧ (36 : ℝ) / 121 ≤ 11663 / 19683)
-    ∧ ((4 : ℝ) / 81 ≤ 93 / 484 ∧ (93 : ℝ) / 484 ≤ 6803 / 19683)
-    ∧ ((2 : ℝ) / 81 ≤ 10 / 121 ∧ (10 : ℝ) / 121 ≤ 6317 / 19683) := by
+    ((1 : ℝ) / 27 ≤ 63 / 968 ∧ (63 : ℝ) / 968 ≤ 8 / 27)
+    ∧ ((1 : ℝ) / 3 ≤ 351 / 968 ∧ (351 : ℝ) / 968 ≤ 16 / 27)
+    ∧ ((8 : ℝ) / 27 ≤ 36 / 121 ∧ (36 : ℝ) / 121 ≤ 5 / 9)
+    ∧ ((4 : ℝ) / 81 ≤ 93 / 484 ∧ (93 : ℝ) / 484 ≤ 25 / 81)
+    ∧ ((2 : ℝ) / 81 ≤ 10 / 121 ∧ (10 : ℝ) / 121 ≤ 23 / 81) := by
   norm_num
 
 /-- The five HMENU3 values sum to exactly `1` at `q = 2` and at `q = 3` — an arithmetic check on
@@ -365,6 +433,8 @@ end BracketPadic
 section AxCheck
 
 #print axioms UniformityCheck.gate_split3_lower
+#print axioms UniformityCheck.gate_split3_res_lower
+#print axioms UniformityCheck.six_mul_card_split3
 #print axioms UniformityCheck.gate_linInert3_lower
 #print axioms UniformityCheck.gate_inert3_lower
 #print axioms UniformityCheck.gate_linRam_lower

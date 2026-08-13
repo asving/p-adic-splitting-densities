@@ -14,3 +14,4 @@ import UniformityCheck.N3Norm
 import UniformityCheck.CubicCount
 import UniformityCheck.N3Density
 import UniformityCheck.N3Gates
+import UniformityCheck.SplitCount
