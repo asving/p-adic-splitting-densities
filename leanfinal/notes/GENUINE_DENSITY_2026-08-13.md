@@ -7,22 +7,26 @@ theorem, the thing we prove is evaluated by a rational function with the size of
 field as an input"* — plus the verification target *"check if using the definitions to compute
 the densities for n=2 or 3 works out as expected."*
 
-**What landed.** Six Lean files under `Uniformity/Density/` (2 085 lines, **zero `sorry`s,
-zero axioms beyond Lean core**), one Python cross-check, this note. *(Updated 2026-08-13,
-follow-up unit: STATUS items 2–4 discharged — see §3 and §6.)* The old `lean/` tree
-(LeanUrat) was **not touched**: nothing was created or modified there. Two declarations
-(`FactorizationType`, `FactorizationType.degree`) are verbatim quarry copies, marked as such
-at the declaration site.
+**What landed.** Seven Lean files under `Uniformity/Density/` (3 184 lines, **zero `sorry`s,
+zero axioms beyond Lean core**), two Python cross-checks, this note. *(Updated 2026-08-13,
+follow-up unit: STATUS items 2–4 discharged — see §3 and §6. Updated again 2026-08-13, unit
+**UNIFORMITY-P2**: the `n = 2` DRAINAGE THEOREM for arbitrary `O` — §3B, gates G9–G14 — plus a
+**faithfulness defect found and fixed in `typeOf`**, see the correction box in §2.2, and STATUS
+items 1 and 5 discharged.)* The old `lean/` tree (LeanUrat) was **not touched**: nothing was
+created or modified there. Two declarations (`FactorizationType`, `FactorizationType.degree`)
+are verbatim quarry copies, marked as such at the declaration site.
 
 | file | lines | content |
 |---|---|---|
 | `Uniformity/Density/LocalData.lean` | 351 | the local base bundle, `residueCard`, level-`N` boxes, `#(O/𝔪^N) = q^N`, `ℤ_[p]` instance |
-| `Uniformity/Density/TypeOf.lean` | 294 | monic factorization in `O[X]`; `(e,f)` by the norm form of the valuation; `typeOf` |
+| `Uniformity/Density/TypeOf.lean` | 390 | monic factorization in `O[X]`; `(e,f)` by the norm form of the valuation; `typeOf` |
 | `Uniformity/Density/GenuineDensity.lean` | 396 | `decidedSeq`/`possibleSeq`, monotone/antitone, **the density as a proved limit**, sandwich, drainage tie, total mass ≤ 1 |
-| `Uniformity/Density/QuadCert.lean` | 404 | *(follow-up unit)* the binary norm form `N(u+vα)`; the RAM (Eisenstein) and INERT (anisotropic) `typeOf` certificates |
+| `Uniformity/Density/QuadCert.lean` | 421 | *(follow-up unit)* the binary norm form `N(u+vα)`; the RAM (Eisenstein) and INERT (anisotropic) `typeOf` certificates |
 | `Uniformity/Density/Statement.lean` | 73 | `UniformityStatement`, `UniformityStatementPadic` (capstone targets, ⚠ pending sign-off) |
-| `Uniformity/Density/Gates.lean` | 567 | G1–G8 (incl. the `gate_bracket_*` payoff) + the `#print axioms` block |
+| `Uniformity/Density/Gates.lean` | 562 | G1–G8 (incl. the `gate_bracket_*` payoff) + the `#print axioms` block |
+| `Uniformity/Density/Drainage.lean` | 991 | *(unit UNIFORMITY-P2)* the valuation API, the three certificates, the dichotomy, **`drainage_two`**, **`sum_three_densities_eq_one`** (G9–G14) |
 | `verification/genuine_density_check.py` | 163 | exact `n = 2` enumeration over `ℤ_p`, `p ∈ {2,3,5}`, vs the W-11 closed forms |
+| `verification/drainage_check.py` | 161 | *(unit UNIFORMITY-P2)* the tangency criterion and the certificate trichotomy vs the exact type map |
 
 ---
 
@@ -97,6 +101,30 @@ and multiplication by `π^N` identifies it with the residue field.)
 
 ### 2.2 `typeOf` — the splitting type, engine-free
 
+> ⚠ **CORRECTION, 2026-08-13 (unit UNIFORMITY-P2) — the `inertiaDegOf` definition below was
+> UNFAITHFUL and has been changed.** The original read `inertiaDegOf g := sInf (normValues g)`
+> ("the least strictly positive valuation of a norm"), justified by "the values realised by the
+> integral `x ∈ A \ {0}` are exactly `f·ℕ`". That last step is **false whenever `A = O[α]` is
+> not the maximal order.** Counterexample (verified independently by Codex): `g = X² − 27` over
+> `ℤ_[3]`. Here `L = ℚ_3(√3)` is RAMIFIED, `(e,f) = (2,1)`; the norm form is
+> `N(s + tα) = s² − 27t²`, whose valuation is `min(2v(s), 3 + 2v(t))` — the value `1` is never
+> attained and `2` is, so the old definition returned `(e,f) = (1,2)`, i.e. **INERT for a
+> RAMIFIED polynomial**. In the `n = 2` census this misreads the entire deep-ram family
+> `RAM(h)`, `h ≥ 3` odd — W-11 mass `1/(q+1) − (q−1)/q²`, which is `1/12` at `q = 2`, not a
+> rounding error.
+>
+> **The repair** (in force below): `inertiaDegOf g := sSup {k > 0 | k ∣ every element of
+> normValues g}` — the **gcd** of the norm-valuation semigroup, i.e. the positive generator of
+> the subgroup it spans. Faithfulness of the gcd form: all values lie in `f·ℤ`; and `A` has
+> finite index in the maximal order `O_L`, so `π^m O_L ⊆ A` for some `m ≥ 1`, whence for
+> `y ∈ O_L` with `w(y) = 1` the two members `π^m, π^m y ∈ A \ {0}` have norm valuations
+> differing by exactly `f`. So the gcd is `f` for **every** order, maximal or not, in every
+> characteristic and without separability hypotheses. **Two consequences:** (i) the deep-ram
+> family is now read correctly (`typeOf_of_certRam` covers all odd `v(F)`, not just Eisenstein);
+> (ii) `inertiaDegOf g ∣ deg g` holds *by construction*, which is what unblocked
+> `typeOf_degree` (STATUS item 1, now closed). ⚠ **This is a trust-boundary change: the new
+> definition is flagged for human review, like the old one.**
+
 ```lean
 noncomputable def monicize (g : Polynomial O) : Polynomial O :=
   C (Ring.inverse g.leadingCoeff) * g
@@ -112,7 +140,8 @@ def normValues (g : Polynomial O) : Set ℕ :=
   {k : ℕ | 0 < k ∧ ∃ x : AdjoinRoot g, x ≠ 0 ∧
     IsDiscreteValuationRing.addVal O (Algebra.norm O x) = (k : ℕ∞)}
 
-noncomputable def inertiaDegOf (g : Polynomial O) : ℕ := sInf (normValues g)
+def normDivisors (g : Polynomial O) : Set ℕ := {k : ℕ | 0 < k ∧ ∀ m ∈ normValues g, k ∣ m}
+noncomputable def inertiaDegOf (g : Polynomial O) : ℕ := sSup (normDivisors g)   -- the gcd
 noncomputable def ramIndexOf  (g : Polynomial O) : ℕ := g.natDegree / inertiaDegOf g
 noncomputable def efPair      (g : Polynomial O) : ℕ × ℕ := (ramIndexOf g, inertiaDegOf g)
 
@@ -135,12 +164,15 @@ residue degree (`e·f = d`), the value group of `w` is `(1/e)·ℤ`, hence
 
   `{ v(N_{L/K}(x)) : x ∈ L^× } = d·w(L^×) = (d/e)·ℤ = f·ℤ`,
 
-and the values realised by the *integral* `x ∈ A \ {0}` are exactly `f·ℕ`. So `f` is the least
-strictly positive `v(N(x))` — which is `inertiaDegOf g` — and `e = d/f`. Three checks against
-familiar cases: `g = X − a` gives `A ≅ O`, `N(π) = π`, least value `1`, so `(e,f) = (1,1)`
-(this one is **proved in Lean**, `efPair_of_natDegree_one`); `g = X² − π` (Eisenstein) gives
-`N(√π) = −π`, value `1`, so `(e,f) = (2,1)`; `g` with `ḡ` irreducible gives all norms of even
-valuation, least value `2`, so `(e,f) = (1,2)`.
+and the values realised by the *integral* `x ∈ A \ {0}` lie in `f·ℕ` and **generate `f·ℤ` as a
+group** (the `π^m O_L ⊆ A` argument in the correction box above). So `f` is the **gcd** of
+`{ v(N(x)) : x ∈ A \ {0} }` — which is `inertiaDegOf g` — and `e = d/f`. Four checks against
+familiar cases: `g = X − a` gives `A ≅ O`, `N(π) = π`, gcd `1`, so `(e,f) = (1,1)` (this one is
+**proved in Lean**, `efPair_of_natDegree_one`); `g = X² − π` (Eisenstein) gives `N(√π) = −π`,
+value `1`, gcd `1`, so `(e,f) = (2,1)`; `g` with `ḡ` irreducible gives all norms of even
+valuation with `2` attained, gcd `2`, so `(e,f) = (1,2)`; **and the case that broke the old
+definition** — `g = X² − π³`, values `{2, 3, 4, …}`, least positive value `2` (wrong) but gcd
+`1` (right), so `(e,f) = (2,1)`, ramified.
 
 *Why not the `Ideal.ramificationIdx`/`inertiaDeg` route:* it needs the integral closure `S` of
 `O` in `L` together with a proof that `S` is local, and the composite `Algebra O L` instance;
@@ -155,11 +187,15 @@ twice); (c) no separability hypothesis — inseparable/degenerate `f` still get 
 are never σ-decided at any finite level, so they cannot pollute a density; (d) the definition is
 *total* (`Algebra.norm` and `sInf` are total), so no instance obligation leaks into it.
 
-*Known gap (see STATUS):* `(typeOf f).degree = f.natDegree` is **not proved in general** — it
-needs `inertiaDegOf g ∣ g.natDegree`, i.e. the uniqueness-of-extension theorem. It is proved at
-degree 1 (`typeOf_degree_one`), and at degree 2 the weaker fact actually used is proved
-(`inertiaDegOf g ≤ 2`, hence `efPair g ∈ {(2,1),(1,2)}`, inside
-`typeOf_monicPoly_two_ne_linType`).
+*~~Known gap~~ CLOSED 2026-08-13 (UNIFORMITY-P2):* `theorem typeOf_degree (hf : f.Monic) :
+(typeOf f).degree = f.natDegree` is now **proved in general**. It reduces to
+`inertiaDegOf g ∣ g.natDegree` for each monic irreducible factor, and under the gcd definition
+that is immediate — `deg g = v(N(π))` is itself a member of `normValues g`, so the gcd divides
+it (`inertiaDegOf_dvd_natDegree`), and `ramIndexOf g * inertiaDegOf g = deg g` exactly
+(`ramIndexOf_mul_inertiaDegOf`); summing over the factors and using
+`natDegree_multiset_prod_of_monic` gives the identity. **Consequence for the capstone:** the
+hypothesis `σ.degree = n` in `UniformityStatement` now does work (off-degree σ are forced to
+density 0), which was design point (iv) of the sign-off list.
 
 ### 2.3 The density
 
@@ -226,7 +262,75 @@ which is downstream content. The global inequality that gates need is proved sep
 `sum_genuineDensity_le_one : ∑ σ ∈ S, genuineDensity O n σ ≤ 1` for any finite `S`, and its
 consequence `genuineDensity_le_of_others`.
 
-### 2.4 The capstone targets (⚠ PENDING ASVIN'S SIGN-OFF)
+### 2.4 The drainage-unit definitions (UNIFORMITY-P2, 2026-08-13)
+
+All of these live in `Uniformity/Density/Drainage.lean`. They are *auxiliary* — none of them
+appears in the statement of a headline theorem — but they are new definitions, so they are
+flagged for review anyway.
+
+```lean
+def qval (a : Fin 2 → O) (γ : O) : O := γ ^ 2 + a 1 * γ + a 0        -- F(γ)
+def qder (a : Fin 2 → O) (γ : O) : O := 2 * γ + a 1                  -- F'(γ)
+
+def Tang (π : O) (a : Fin 2 → O) (t : ℕ) (γ : O) : Prop :=
+  π ^ t ∣ qval a γ ∧ π ^ ((t + 1) / 2) ∣ qder a γ
+
+def CertSplit (π : O) (a : Fin 2 → O) (N : ℕ) : Prop :=
+  ∃ (γ : O) (w : ℕ), 2 * w + 1 ≤ N ∧ π ^ w ∣ qder a γ ∧ ¬ π ^ (w + 1) ∣ qder a γ ∧
+    π ^ (2 * w + 1) ∣ qval a γ
+def CertRam (π : O) (a : Fin 2 → O) (N : ℕ) : Prop :=
+  ∃ (γ : O) (j : ℕ), 2 * j + 2 ≤ N ∧ π ^ (2 * j + 1) ∣ qval a γ ∧
+    ¬ π ^ (2 * j + 2) ∣ qval a γ ∧ π ^ (j + 1) ∣ qder a γ
+def CertInert (π : O) (a : Fin 2 → O) (N : ℕ) : Prop :=
+  ∃ (γ : O) (k : ℕ) (b₀ b₁ : O), 2 * k + 1 ≤ N ∧ qval a γ = π ^ (2 * k) * b₀ ∧
+    qder a γ = π ^ k * b₁ ∧ Anisotropic ![b₀, b₁]
+
+def CongAt (π : O) (N : ℕ) (a b : Fin 2 → O) : Prop := ∀ i, π ^ N ∣ (b i - a i)
+
+def UndecidedAt (n N : ℕ) (c : Coeff O n N) : Prop := ∀ σ, ¬ DecidedAt O n σ N c
+def undecidedSet   (n N : ℕ) : Set (Coeff O n N) := {c | UndecidedAt O n N c}
+noncomputable def undecidedCount (n N : ℕ) : ℕ := Nat.card (undecidedSet O n N)
+noncomputable def undecidedSeq   (n N : ℕ) : ℝ :=
+  (undecidedCount O n N : ℝ) / (residueCard O : ℝ) ^ (n * N)
+```
+
+**Faithfulness — `qval`/`qder`.** `qval a γ = (monicPoly a).eval γ` is proved
+(`qval_eq_eval`); `qder a γ` is the linear coefficient of the recentred polynomial
+(`qval_shift : qval a (γ + δ) = qval a γ + qder a γ * δ + δ ^ 2` is the recentring identity, and
+it is *the* computation the whole file runs on). Note `qder` is the formal derivative, so in
+residue characteristic 2 it is just `a 1` up to `2γ ∈ 𝔪` — nothing in the file assumes `2` is a
+unit, and the wild case is not special-cased anywhere.
+
+**Faithfulness — `Tang`.** `Tang π a t γ` says `min(v(F(γ)), 2·v(F'(γ))) ≥ t`, written with
+divisibility instead of valuations (`π ^ ⌈t/2⌉ ∣ F'(γ)` is `2 v(F') ≥ t`; `(t+1)/2` is ℕ
+division, i.e. `⌈t/2⌉`). The **tangency depth** `T(a) = max_γ min(v(F(γ)), 2 v(F'(γ)))` is the
+single invariant governing decidedness. It is *not* defined as a function in Lean (a max over
+`O` would need a compactness argument); instead the file works with "no centre reaches depth
+`N`", and manufactures the maximiser by descent (`exists_max_step`). `Tang` depends on the
+choice of uniformizer `π` only through `π ^ k ∣ ·`, which is `π`-independent.
+
+**Faithfulness — the three `Cert*`.** These are the three readable Newton-polygon shapes of the
+recentred quadratic, written so that *every numeric datum they mention sits strictly inside the
+window* `N` — that is exactly what makes them class properties (`CertSplit_congr` &c.) and hence
+what "decided" can be read off. `CertSplit` is Newton's condition `v(F) > 2v(F')` at a centre
+with `2v(F') < N`; `CertRam` is "the value has exact ODD valuation `< N` and the derivative is
+at least half of it"; `CertInert` is "the value has valuation `2k < N`, the derivative at least
+`k`, and the residual binary form `y² + b₁y + b₀` is anisotropic mod `𝔪`" (`Anisotropic` is the
+QuadCert predicate). Anisotropy forces `b₀` to be a unit, so the valuation `2k` in `CertInert`
+is automatically exact. **What is NOT claimed:** the certificates are not asserted to be
+exhaustive of decidedness — only that *if no centre is deeply tangent* one of them fires
+(`cert_of_not_tang`). The numeric check `verification/drainage_check.py` shows the criterion is
+in fact sharp (`T < N ⟺ decided`) at `p = 2, 3, 5` up to level 4, but sharpness is not proved
+and is not needed.
+
+**Faithfulness — `UndecidedAt`.** "No type is decided on `c`". It is the honest complement:
+`decidedSet σ` for the finitely many `σ`, together with `undecidedSet`, cover everything
+(`coeff_subset_union` at `n = 2`), and the general bound `gapSeq σ N ≤ undecidedSeq N`
+(`gapSeq_le_undecidedSeq`, any `n`) holds because a `σ`-possible class that is not
+`σ`-decided has a lift of type `σ` and therefore cannot be decided for any type at all.
+`undecidedSeq` is normalised by the same `q^(n·N)` box count as `decidedSeq`.
+
+### 2.5 The capstone targets (⚠ PENDING ASVIN'S SIGN-OFF)
 
 ```lean
 def UniformityStatement : Prop :=
@@ -287,6 +391,12 @@ All gates hold for an **arbitrary** complete DVR with finite residue field, not 
 | **G7** `bracket_two` | three lower bounds ⟹ three two-sided brackets | **proved** (via `sum_genuineDensity_le_one`) | — |
 | **G8** `gate_bracket_padic_two` / `_three` | **THE PAYOFF** — see the numeric table below | **proved** | all three W-11 values inside ✓ |
 | **G8′** `gate_bracket_w11_two` / `_three` | the W-11 values lie in the brackets | **proved** (`norm_num`) | — |
+| **G9** `drainage_two` | `UndecidedVanishes O 2 σ` — the `n = 2` gap drains, every `O`, every `σ` | **PROVED** (UNIFORMITY-P2) | W-11 (iii): undecided mass `= q^(−N)`; we prove `≤ q^(−M)` at level `2M` ✓ |
+| **G10** `upperDensity_eq_two` | `upperDensity O 2 σ = genuineDensity O 2 σ` — **the bracket closes** | **PROVED** | — |
+| **G11** `sum_three_densities_eq_one` | `genuineDensity O 2 split + inert + ram = 1` | **EXACT EQUALITY, proved, every `O`** | W-11 (iii) `Σ = 1`: `q/(2(q+1)) + q/(2(q+1)) + 1/(q+1) = 1` ✓ |
+| **G12** `typeOf_two_cases` | every monic quadratic has type `split`, `inert` or `ram` | **proved** | the three-row `n = 2` menu ✓ |
+| **G13** `typeOf_degree` | `f.Monic → (typeOf f).degree = f.natDegree`, all degrees | **proved** (was STATUS item 1) | — |
+| **G14** `undecidedCount_le` | `undecidedCount O 2 (2M) ≤ q^(3M)` | **proved** | W-11's exact law is `q^(2M)`; ours is lossy but sufficient ✓ |
 
 ### The certified two-sided brackets (`gate_bracket_*`)
 
@@ -318,12 +428,90 @@ proportion climbs `1/4, 1/4, 5/16, 5/16 → 1/3`, so the certified lower bound `
 the level-1 (and level-2) truth, while the upper bound is what the *other two* types'
 certificates can currently force.
 
-**Exact-vs-bounded, stated plainly.** At `n = 1` the gates are **exact equalities**. At `n = 2`
-every gate is a **two-sided bound**; no exact `n = 2` value is proved. The mechanism of each
-lower bound: split — one Hensel lift at a simple residue root (`typeOf_split_of_unit`), counted
-over all `q−1` level-1 classes `(0, unit)`; ram — Eisenstein irreducibility plus `N(α) = a₀` of
-valuation 1; inert — anisotropy of the reduced binary norm form, which forces every norm
-valuation to be even.
+**Exact-vs-bounded, stated plainly** *(revised 2026-08-13, UNIFORMITY-P2)*. At `n = 1` the gates
+are **exact equalities**. At `n = 2`: the **aggregate** is now an exact equality
+(`sum_three_densities_eq_one`, G11) and the bracket **closes**
+(`upperDensity_eq_two`, G10 — the decided limit is genuinely *the* density, not merely a lower
+bound for it); but **no individual `n = 2` value is proved exact** — split, inert and ram are
+still only two-sided bounds. The mechanism of each lower bound: split — one Hensel lift at a
+simple residue root (`typeOf_split_of_unit`), counted over all `q−1` level-1 classes
+`(0, unit)`; ram — Eisenstein irreducibility plus `N(α) = a₀` of valuation 1; inert —
+anisotropy of the reduced binary norm form, which forces every norm valuation to be even.
+
+---
+
+## 3B. THE `n = 2` DRAINAGE THEOREM (unit UNIFORMITY-P2, 2026-08-13)
+
+**Rung landed: (a), general `O`** — every complete DVR with finite residue field, no
+restriction on the residue characteristic (the wild prime `2` is not special-cased anywhere),
+no `ℤ_[p]`-specific step. The fallback rungs (b) `ℤ_[p]` and (c) concrete `p` were not needed.
+
+### 3B.1 The invariant
+
+For `f = X² + a₁X + a₀` write `F(γ) = γ² + a₁γ + a₀` and `F'(γ) = 2γ + a₁`, and define the
+**tangency depth**
+
+    T(a) = max_γ min ( v(F(γ)), 2·v(F'(γ)) )   ∈ ℕ ∪ {∞}.
+
+Two facts, each proved in Lean, sandwich the drainage:
+
+**(D1) `T(a) < N` ⟹ the level-`N` class of `a` is decided** (`decidedAt_of_not_tang`). Take a
+centre `γ` attaining the max and read the Newton polygon of the recentred `X² + F'(γ)X + F(γ)`.
+Exactly four shapes are possible, and the fourth is self-defeating:
+
+| shape at the maximising centre | certificate | type |
+|---|---|---|
+| `v(F) > 2v(F')` | `CertSplit` — Newton root, Hensel lifts it | split |
+| `v(F)` odd, `≤ 2v(F')` | `CertRam` — norms of valuation `2` and of odd valuation, `gcd = 1` | ram |
+| `v(F) = 2k ≤ 2v(F')`, residual irreducible | `CertInert` — all norm valuations even | inert |
+| `v(F) = 2k`, residual with a SIMPLE root | recentre at `γ + π^k z` ⟹ `CertSplit` | split |
+| `v(F) = 2k`, residual with a DOUBLE root | **impossible**: recentring reaches depth `2k+1 > T`| — |
+
+The last line is the whole trick — the classical Montes/Okutsu refinement loop is replaced by
+the observation that a refinement step *increases* `min(v(F), 2v(F'))`, so at the maximiser
+there is nothing left to refine. Each certificate mentions only data with exponent `< N`
+(`2w+1 ≤ N`, `2j+2 ≤ N`, `2k+1 ≤ N`), so it survives verbatim on every other lift of the class
+(`CertSplit_congr`, `CertRam_congr`, `CertInert_congr`) — and a certificate determines the
+type, which is what "decided" means.
+
+**(D2) `T(a) ≥ N` is rare** (`undecidedCount_le`). At level `N = 2M`, deep tangency means
+`π^{2M} ∣ F(γ)` and `π^M ∣ F'(γ)` for some `γ`. Then the centre only matters mod `π^M`
+(shifting `γ` by `π^M s` moves `F(γ)` by `π^M s F'(γ) + π^{2M}s²`, both in `π^{2M}`), and
+`a₀ ≡ −γ² − a₁γ (mod π^{2M})` is then forced (`class_pinned`). So the undecided classes inject
+into `(γ mod π^M, a₁ mod π^{2M})` — at most `q^M · q^{2M} = q^{3M}` of the `q^{4M}` classes.
+
+Hence `undecidedSeq(2M) ≤ q^{−M} → 0`, and since `gapSeq σ` is antitone and `≥ 0` and
+`gapSeq σ N ≤ undecidedSeq N` for every `σ`, its infimum is `0`: **`drainage_two`**.
+
+### 3B.2 Honest slack
+
+The bound `q^{3M}` is **lossy by a factor `q^M`**: W-11's exact law is `q^N` undecided classes
+at level `N`, i.e. `q^{2M}` here (confirmed numerically, §4B). Drainage needs only *some* bound
+beating `q^{2N}`, so the exact per-centre census was not attempted. Also note that (D1) is a
+*sufficient* condition for decidedness in the Lean proof; the numeric check shows it is
+actually an equivalence (`T < N ⟺ decided`) on every row computed, but that is not proved and
+nothing depends on it.
+
+### 3B.3 The payoff, and what it is not
+
+`sum_three_densities_eq_one` (G11) is the first EXACT `n = 2` statement about the genuine
+density in this repo: split + inert + ram `= 1`, for arbitrary `O`. Its `≤` half is the old
+total-mass bound; its `≥` half is drainage — without drainage the decided proportions could in
+principle leave mass permanently unaccounted for, and the identity would fail.
+
+**It is not the individual values.** W-11's `split = inert = q/(2(q+1))`, `ram = 1/(q+1)` need
+two further ingredients, neither of which this unit attempted (both are recorded as open in
+§6):
+
+* the **split = inert symmetry** at every window — over `2`-invertible `O` this is the twist
+  `disc ↦ ε·disc` for a non-square unit `ε`, i.e. `(a₀,a₁) ↦ (εa₀ + a₁²(1−ε)/4, a₁)`, a
+  measure-preserving involution of every level-`N` box; in residue characteristic 2 the twist is
+  Artin–Schreier (`a₀ ↦ a₀ + a₁²u`) and there is no uniform coefficient formula, which is why
+  W-11 proves the symmetry by a finite telescoping identity instead;
+* the **exact ram count** `Σ_{u odd < N} (q−1)q^{2N−u−1}`, which needs the per-centre census
+  (uniqueness of the centre mod `π^{(u+1)/2}` plus disjointness across `u`).
+
+Given drainage, either one of these plus the other's value pins all three: `2·split + ram = 1`.
 
 ---
 
@@ -361,9 +549,36 @@ undecided classes visibly carrying ≥ 2 distinct types (W-11 clause F6). Run ti
 ALL CHECKS PASSED
 ```
 
-**Reading.** Every cell matches W-11 exactly, at three primes including the wild one, at every
-level computed — an independent confirmation that the *Lean definition* of `decidedSeq` (all
-lifts of a class share a type) is the same object as the corpus's "σ-decided at window `N`".
+### 4B. The drainage cross-check (`verification/drainage_check.py`, unit UNIFORMITY-P2)
+
+Same exact enumeration, now used to test the three claims of `Drainage.lean` against an
+*independent* decision procedure (the discriminant-based `classify`, which knows nothing about
+tangency depths or Newton polygons). For each class it computes
+`T = max_γ min(v(F(γ)), 2v(F'(γ)))` by brute force over centres and asks: (C1) does `T < N`
+imply decided? (C2) does the certificate trichotomy predict the right type? (C3) is
+`#{T ≥ 2M} ≤ q^{3M}`?
+
+```
+--- p = q = 2 ---                          --- p = q = 3 ---            --- p = q = 5 ---
+ N     box |  T<N decided  C1  C2 | T>=N undec  bound  C3
+ 1       4 |    2       2 YES YES |    2     2      -   -      1    9 |   6   6 YES YES | 3  3
+ 2      16 |   12      12 YES YES |    4     4      8 YES      2   81 |  72  72 YES YES | 9  9 (bound 27) YES
+ 3      64 |   56      56 YES YES |    8     8      -   -      3  729 | 702 702 YES YES | 27 27
+ 4     256 |  240     240 YES YES |   16    16     64 YES      p=5: N=1 20/20 YES; N=2 600/600 YES (25 <= 125)
+```
+
+**Reading.** (C1) and (C2) hold on every row at all three primes — and note the first two
+numeric columns are *equal* on every row: `T < N ⟺ decided`, so the Lean criterion is not just
+sound but sharp (sharpness is not proved and nothing depends on it). (C3) holds with the
+expected slack: the true deeply-tangent count is `q^N` (= W-11's exact drainage law), against
+the proved bound `q^{3M} = q^{1.5N}`. Two things this rules out: a certificate that fires on
+the wrong type (it would break C2 immediately at `p = 2`, where ram and inert both occur at
+even disc valuation), and a decidedness criterion that is too generous.
+
+**Reading (the older check).** Every cell matches W-11 exactly, at three primes including the
+wild one, at every level computed — an independent confirmation that the *Lean definition* of
+`decidedSeq` (all lifts of a class share a type) is the same object as the corpus's "σ-decided
+at window `N`".
 Note `decidedSeq(split)` climbing `1/4, 1/4, 5/16, 5/16 → 1/3` at `p = 2`: monotone, as
 `decidedSeq_mono` requires, and converging to the W-11 limit. `n = 3` was **not** run — there
 is no discriminant-only criterion at degree 3, so an exact enumeration needs a genuine
@@ -390,6 +605,19 @@ depends on axioms: [propext, Classical.choice, Quot.sound]
 `lowers_padic_three`, `bracket_two`, `gate_bracket_padic_two`, `gate_bracket_padic_three`,
 `gate_bracket_w11_two`, `gate_bracket_w11_three` (28 declarations in all).
 
+**Unit UNIFORMITY-P2 (2026-08-13)** adds a second `#print axioms` block, at the end of
+`Drainage.lean`; every line reports `[propext, Classical.choice, Quot.sound]`:
+
+```
+typeOf_of_certSplit   typeOf_of_certRam    typeOf_of_certInert   cert_of_not_tang
+decidedAt_of_not_tang gapSeq_le_undecidedSeq  class_pinned       undecidedCount_le
+drainage_two          upperDensity_eq_two  typeOf_two_cases      sum_three_densities_eq_one
+```
+
+`lake build` green (8 567 jobs) after the change; `grep -rn sorry Uniformity/` still returns
+only the word inside docstrings. The `typeOf` definition change (§2.2) left every previously
+reported footprint unchanged.
+
 Lean core only; **no `sorryAx`, no declared axioms**. `grep -rn sorry Uniformity/` returns only
 the word inside a docstring.
 
@@ -415,21 +643,24 @@ the word inside a docstring.
   (`irreducible_of_eisenstein`, `typeOf_ram_of_eisenstein`); the INERT certificate
   (`irreducible_of_anisotropic`, `typeOf_inert_of_anisotropic`); the sharpened split count
   (`decidedCount_split_ge : q − 1 ≤ decidedCount O 2 splitType 1`); the bracket engine
-  (`bracket_two`) and the numeric brackets at `q = 2, 3` (G5–G8 in §3).
+  (`bracket_two`) and the numeric brackets at `q = 2, 3` (G5–G8 in §3);
+* **(unit UNIFORMITY-P2, 2026-08-13)** the `typeOf` repair (§2.2) and with it `typeOf_degree`
+  in full generality; the ℕ-valued valuation API (`pow_dvd_iff_le`, `pow_dvd_right_of_mul`,
+  `no_odd_exact_of_split`, `pow_dvd_both_of_even`); the three window certificates and their
+  types (`typeOf_of_certSplit/Ram/Inert`) — the RAM one now covers **all** odd `v(F(γ))`, not
+  just Eisenstein, and the INERT one covers all even `v(F(γ))`, not just `v = 0`; their
+  class-invariance (`Cert*_congr`); **the dichotomy** (`cert_of_not_tang`); **the decidedness
+  theorem** (`decidedAt_of_not_tang`); the undecided objects and the universal gap bound
+  (`gapSeq_le_undecidedSeq`, any `n`); the pinning and counting lemmas (`class_pinned`,
+  `undecidedCount_le`); **`drainage_two`**, **`upperDensity_eq_two`**, `typeOf_two_cases` and
+  **`sum_three_densities_eq_one`** (G9–G14 in §3 and §3B).
 
 ### STATED IN THIS NOTE, NOT PROVED (open targets, statements preserved)
 
-1. **`typeOf_degree`** — `theorem typeOf_degree {f : Polynomial O} (hf : f.Monic) :
-   (typeOf f).degree = f.natDegree`. *Blocked because*: it reduces to `inertiaDegOf g ∣
-   g.natDegree` for monic irreducible `g`, which is the statement that the set of norm
-   valuations is `f·ℕ` — i.e. uniqueness of the extension of `v` to `L`. mathlib v4.31.0 has no
-   usable form of that theorem (the `IsNonarchimedeanLocalField` file is field-side and needs
-   `ValuativeRel`; `Valuation.Extension` only defines `HasExtension`). Two routes: (a) prove
-   `A = AdjoinRoot g` is local with `𝔪A`-adic completeness and read `f` off `A/𝔪A` for the
-   *maximal order* — needs the integral closure; (b) prove `w(x) = v(N x)/d` is a valuation
-   directly (the classical Hensel/Newton-polygon argument). **Recommend (b)**, and it is worth a
-   dedicated unit — it also unlocks `typeOf` of an irreducible = a singleton `{(e,f)}` with
-   `e·f = deg`.
+1. ~~**`typeOf_degree`**~~ — **DONE** (UNIFORMITY-P2): proved in full generality, as a free
+   consequence of the gcd repair of `inertiaDegOf` (§2.2). The route the old note recommended
+   (prove `w(x) = v(N x)/d` is a valuation) turned out to be unnecessary: only the *divisibility*
+   `f ∣ d` was needed, and the gcd definition delivers it because `d = v(N(π)) ∈ normValues`.
 2. ~~**`gate_split_exact`** (all `q−1` level-1 split classes)~~ — **DONE** (follow-up unit):
    `decidedCount_split_ge` + `gate_split_lower_sharp`, giving `(q−1)/q²`.
 3. ~~**`gate_inert_lower`**~~ — **DONE in the form that was needed** (follow-up unit):
@@ -449,11 +680,29 @@ the word inside a docstring.
    `(q−1)/q²`. Sharpening needs counting the image of `𝔪` inside `O/𝔪²`;
    statement: `theorem decidedCount_ram_ge : (residueCard O − 1) * residueCard O ≤
    decidedCount O 2 ramType 2`.
-5. **`drainage_two`** — `theorem drainage_at_two : UndecidedVanishes O 2 σ`, the Lean form of
-   W-11 clause (iii) (`undecided = q^{−N}` exactly). Needs the full `n = 2` census. This is now
-   the single item standing between the brackets above and **exact** `n = 2` values: with
-   drainage plus a matching `possibleSeq` upper certificate the bracket collapses
-   (`upperDensity_eq_of_drainage`).
+5. ~~**`drainage_two`**~~ — **DONE** (UNIFORMITY-P2), for arbitrary `O`: see §3B. The
+   `possibleSeq` side needed no separate certificate — `gapSeq σ N ≤ undecidedSeq N` routes
+   every type through one bound. The *exact rate* `q^{−N}` of W-11 clause (iii) is **not**
+   proved; the proved rate is `q^{−M}` at level `2M`, which is all drainage needs.
+
+5a. **The individual exact `n = 2` values** (the remaining half of the payoff). With drainage
+   in hand these reduce to two independent statements, either of which suffices given the other:
+
+   ```lean
+   theorem split_eq_inert_two : genuineDensity O 2 splitType = genuineDensity O 2 inertType
+   theorem ram_density_two :
+       genuineDensity O 2 ramType = 1 / ((residueCard O : ℝ) + 1)
+   ```
+   and then `sum_three_densities_eq_one` gives
+   `split = inert = q / (2(q+1))` (W-11's values). *Why they were not attempted here*: the
+   symmetry has no uniform coefficient formula across residue characteristics (the char-`≠2`
+   twist `disc ↦ ε·disc` becomes Artin–Schreier at `q` even — see §3B.3), and the ram value
+   needs the exact per-centre census (`(q−1)q^{2N−u−1}` classes per odd `u`, plus uniqueness of
+   the centre mod `π^{(u+1)/2}` and disjointness across `u`). Both are genuine units of work,
+   not one-liners. **A cheaper intermediate**, if a concrete number is wanted first: the
+   `2`-invertible case of the symmetry (`ℤ_[p]`, `p` odd) via the involution
+   `(a₀,a₁) ↦ (εa₀ + a₁²(1−ε)/4, a₁)`, which is measure preserving on every level-`N` box and
+   swaps split-decided with inert-decided once the disc classification is available in Lean.
 6. **`n = 3` Python check** — needs a `ℚ_p`-factorization oracle (the quarry's
    `verification/quartic_oracle.py` uses PARI `factorpadic`; cypari2 was not available in this
    session's environment and was not installed).
@@ -475,8 +724,15 @@ capstone statement quantifies over `genuineDensity` itself.
 * **The rationality unit** consumes `genuineDensity` and `residueCard` and must produce
   `num, den : Polynomial ℚ` with the Statement's ∃-before-∀ shape. Note `card_res` is what
   licenses writing the denominator as `q^(nN)`.
-* **The drainage unit** should target `UndecidedVanishes O n σ` as defined here; the tie
-  theorem is already available in both directions, so drainage buys exactly
-  `upperDensity = genuineDensity` and nothing has to be re-stated.
-* **`typeOf_degree` (open item 1) is on the critical path** for making `σ.degree = n` do work in
-  the capstone; recommend it as the next standalone unit, before any menu authoring.
+* ~~**The drainage unit**~~ — **DONE at `n = 2`** (UNIFORMITY-P2). What a *general-`n`* drainage
+  unit should copy: the shape `T(a) < N ⟹ decided` + `#{T ≥ N}` small is not specific to
+  degree 2. The general invariant is the Okutsu–Montes depth (how far the recursive read gets
+  before the window runs out); the two things that made `n = 2` cheap are (i) the polygon has at
+  most two sides, so the trichotomy is finite and explicit, and (ii) a refinement step provably
+  *increases* `min(v(F), 2v(F'))`, which is what kills the fourth case without a termination
+  argument. At `n ≥ 3` the analogue of (ii) is the statement that a refinement raises the
+  Okutsu depth — that is the thing to isolate first.
+* ~~**`typeOf_degree` (open item 1)**~~ — **DONE** (UNIFORMITY-P2). `σ.degree = n` is now a live
+  hypothesis in the capstone statement.
+* **The remaining `n = 2` work is the two statements in STATUS item 5a** (split = inert; the
+  exact ram value). Everything else at `n = 2` is closed.
