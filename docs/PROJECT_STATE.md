@@ -4455,3 +4455,29 @@ capstone signatures), 0e leanspec interface environment, then
 chapter blueprints + the lower-tier fleet. Consumption checks for
 T1/T2 (the T3/T4/T5 pattern) fold into Phase 0a's effective-spec
 work rather than running as a separate queue.
+
+**2026-08-13 DATED APPEND #45 — PHASE 0 GRINDS: LEDGER LANDED,
+PILOT CROSS-READ, TEMPLATE v2, T3 REVISION IN FLIGHT.** (1)
+**spec/HYPOTHESIS_LEDGER.md landed** (80 rows / 20 carry / 15 MATH /
+16 open calls): the capstone-conditionality preview is the first
+one-display assembly of the honest conditional theorem (NS7†, LB1 ∧
+MP1, (H-VARTHETA-RES)_{i≥3}†, W12's A0–A2 interface, JB-membership†,
+the [H-c] value-package residue†, per-genre CS1/CS2/CSExact/CS1Q ⟹
+one R_σ(q) at all O); the 15 MATH rows = strong-Hensel/typeOf-
+invariance infrastructure + the n=3 drainage legs + the corpus's own
+deep-tower boxes (GENTOW6 BOX-1..4, GENTOW3-BOX-1, P-BINOM,
+COMPOUND-6.5′). Pending its own adjudication pass; needs-Asvin
+items route to 0d. (2) **EFF-T3 pilot cross-read (Opus):
+GO-WITH-TEMPLATE-CHANGES(9)** — caught 6 INVENTED T1 XREF
+designations, the dropped ABS-G5W fourth absorption (whose 7 battery
+rows would have guarded nothing under the wrong scope reading), 8
+missed units incl. the note's own (T3-A0) box and the whole §2.4
+proof, and the missing DERIVATION field (without which chapter
+blueprints would re-read the notes, defeating the gate). Sweep
+recosted: ~55–65 runs (not 25), sharding >80KB, tag-sparse prose
+notes get boundary self-audits; sequence T1/T2/GENTOW5/W12 first
+around the Tue codex reset. (3) **spec/EFF_TEMPLATE_v2.md** codifies
+the 9 changes; the **EFF-T3 revision run is in flight** under it.
+(4) Deferred action item from the cross-read: the GENTOW5-W
+consumption check + dated append (corpus maintenance, next cycle).
+Codex ~63%.
