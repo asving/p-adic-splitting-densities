@@ -2910,3 +2910,384 @@ The standing S7 consumption check added by r4 repair 13 ("Also enumerate every s
 r5 folds repairs for both GAPs (G-1, G-2) and all five minors (m-1 … m-5) of the r4 hostile pass of record, plus the pin-inventory consequences. Its substantive content is one object: the perturbation transport LEMMA HE7-12, previously consumed at two theorem-statement changes and named nowhere, is now pinned as `HE7-PERT-TRANSPORT` and cited at the two places that need it. `(SEC-RANK)` at the composed key is re-routed to `HETOW-A`(ii) and `GENTOW-4-A`(iii), which state the conclusion at \(\Phi_2\), so the master performs no key transfer of its own; the level-two mid-chain peel at a recentered key is derived in the new S1.8B from LEMMA HE7-12(c) and item (11) of its proof, replacing r4's insufficient appeal to LEMMA HE7-8's `[r3]` clause. One theorem-adjacent addition is a new named obligation, not a new conclusion: `(MP1′)`, the assertion that a recentered level-one key carries a level-one frame at all, which the corpus does not supply and which every state with a level-one recentering in its history now carries. Three named obligations are therefore open: `(LB1)` for clause-4 block construction at level one, `(MP1)` for the clause-5 peel at a recentered level-one key, and `(MP1′)` for reading over a recentered level-one key at any level.
 
 Gap-or-worse repairs reset the clean count (S7: "A gap-or-worse repair resets the clean count"). **The clean-pass counter is RESET to 0 of 2.** The acceptance gate still owes **TWO consecutive clean hostile passes** over the r5 effective text before this note may leave attempt grade \(0/2\); the status line therefore stays "mathematical composition draft, attempt grade \(0/2\)", and by `(GRADE)` every composed instance stays \(0/2\) regardless of supplier grade.
+
+---
+
+## r6 (2026-08-13): the refinement height bound to the side slope, and `(MP1′)` adjudicated and DISCHARGED
+
+*(Opus/Claude repair arm, against the r5 hostile pass of record `runs/comp13/T2P5_output.log` — 0 CRITICAL + 2 GAP + 4 minor; counter resets.)*
+
+**Verification protocol for this round.** Every source line quoted below was checked on 2026-08-13 by exact-full-line search (`grep -cFx`) in the named accepted source file, with the count and the source line number recorded at the point of use. No source file is edited by this round; the expected source edit count remains zero. Landmarks internal to this master are quoted from the **r5 effective text**, and their uniqueness is recorded in the form `sed -n '1,2912p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<string>'` → **1**; the line bound 2912 is the last line of the r5 round and excludes this round's own re-quotations, which would otherwise inflate every count.
+
+**What the two GAPs share.** Both are about something the note named instead of settling. G-1: S1.8B's hypothesis needs "refinement height = side slope", and the index \(k\) of \(L_k(s)\) is unbound at every site of the effective text, so the height was asserted rather than derived, and the offered corroboration cited a line that does not carry it. G-2: `(MP1′)`'s load-bearing negative — that no pinned unit certifies a recentered level-one key as carrying a level-one frame — was asserted without adjudicating the obvious pinned candidate. Repair 1 binds the height from the master's own `(SIDE-COUNT)`, `(SLOT-V)` and `(LIFT)`, as `(REF-HT)`. Repair 2 performs the adjudication; the candidate wins, the fence is **discharged**, and one of the three open obligations is retired.
+
+---
+
+## r6 repair 1 — G-1P5 (GAP): the refinement height BOUND to the side slope as `(REF-HT)`, and the source leg re-cited to the line that carries it
+
+**The finding repaired.**
+
+> S1.8B Step 1 establishes HE7-12's hypothesis dv₂(w) = λ₂ only through an identification the master never makes, and the "two independent legs" that are offered as corroboration do not corroborate it: leg 1 cites a height S1.8 does not bind, and leg 2 quotes a source line that does not carry the height.
+
+with the diagnosis that "`k` is UNBOUND at both sites: neither says k = λ, and no other site of the effective text binds it", that "(LIFT) gives h(L_k(c)) = k, so leg 1 yields dv₂(w) = k, and clause 1 yields λ₂ > T₂; without k = λ₂ these do not compose into HE7-12's hypothesis ν > T₂", and that "the line that carries the height is the UNQUOTED preceding line, HE7_PROOF:924".
+
+**The diagnosis is accepted in full, and the cure is the one the report names — bind the height, do not fence it.** The binding is derivable at the master's own generality from three data already displayed in S1: `(SIDE-COUNT)`, `(SLOT-V)`, and `(LIFT)`. It is installed as `(REF-HT)` at the transition that needs it, and the source leg is re-cited to the line that states the height.
+
+**(a) The binding, in S1.8.** Replace the product-\(1\) sentence
+
+> then \(e'=1\) and \(r'=Y-s\) for some \(s\in K\). The required refinement height lies in \(H_{\mathrm{lift}}\), so `(OCC)` supplies a legal lift. The new key is
+
+by
+
+> then \(e'=1\) and \(r'=Y-s\) for some \(s\in K\), and the slope \(\lambda=u'/e'=u'\) is an INTEGER. The refinement height is that slope:
+>
+> \[
+> \boxed{k=\lambda .}
+> \tag{REF-HT}
+> \]
+>
+> `(REF-HT)` is forced, not chosen, and the forcing uses master data only. Every root \(\rho\) of the class being refined satisfies \(d(\Phi(\rho))=\lambda\): by S1.7 clause 4 "the classes associated with the distinct \(r'\) are disjoint and exhaust the roots belonging to the side", and the roots belonging to side \(\lambda\) are exactly the \(DL_\lambda\) roots with \(w_\rho=\lambda\), by `(SIDE-COUNT)` as derived in the proof of clause 1. The increment satisfies \(\deg L_k(s)<D\) (S1.4) and the block's roots lie in \(\operatorname{Pt}\) (S1.5, "Its roots form a designated Galois-stable class contained in \(\operatorname{Pt}\)"), so `(SLOT-V)` applies to the increment at those roots and `(LIFT)` gives
+>
+> \[
+> d\bigl(L_k(s)(\rho)\bigr)=h\bigl(L_k(s)\bigr)=k .
+> \]
+>
+> If \(k\ne\lambda\), the two values \(d(\Phi(\rho))=\lambda\) and \(d(L_k(s)(\rho))=k\) differ, so the ultrametric inequality is an equality and
+>
+> \[
+> d\bigl(\Phi_{\mathrm{new}}(\rho)\bigr)
+> =
+> d\bigl(\Phi(\rho)-L_k(s)(\rho)\bigr)
+> =
+> \min(\lambda,k)\le\lambda
+> \]
+>
+> at every root of the class: at \(k>\lambda\) the value does not move at all, at \(k<\lambda\) it falls, and at \(k\le T\) it leaves the window. Only \(k=\lambda\) can raise it, and raising it on the class is what the recentering is for — it is what the next sentence's "new valid development" asserts, and it is what makes `(SEC-RANK)` strictly decrease at this transition. So \(k=\lambda\) is the only admissible height, and the index of \(L_k\) is hereby bound to the side datum. **This binds the height; it does not derive the rise.** That \(d(\Phi_{\mathrm{new}}(\rho))>\lambda\) actually holds at \(k=\lambda\) with the digit \(s\) of the repeated residual factor remains a root-preserving continuation assertion of the carrier, hypothesised by HE7.A and unchanged by this repair.
+>
+> Two consequences are recorded because later sections read them. First, `(OCC)` is now read at a determined height: the visible domain obligation for this transition is \(\lambda\in H_{\mathrm{lift}}(B)\), a legible integer-height demand precisely because \(e'=1\). Second, at \(e'\ge2\) the slope \(u'/e'\) is not an integer and no \(L_k\) sits at it; that is why the recentering branch is the product-\(1\) branch and the product-\(\ge2\) branch builds a child key instead. `(OCC)` therefore supplies a legal lift at height \(\lambda\), and the new key is
+
+**(b) The same binding in the S2 proof of clause 3.** Replace
+
+> For a repeated \(r'\), if \(e'\deg r'=1\), then \(e'=1\) and \(r'=Y-s\). The required height is in \(H_{\mathrm{lift}}\); `(OCC)` supplies \(L_k(s)\); and the linear recentering of S1.8 gives the next block while preserving its root set and inherited invariants.
+
+by
+
+> For a repeated \(r'\), if \(e'\deg r'=1\), then \(e'=1\), \(r'=Y-s\) and \(\lambda\) is an integer. The required height is the side's own slope, \(k=\lambda\) by `(REF-HT)`; that height is in \(H_{\mathrm{lift}}\); `(OCC)` supplies \(L_\lambda(s)\); and the linear recentering of S1.8 gives the next block while preserving its root set and inherited invariants.
+
+**(c) S1.8B Step 1, rebuilt on the binding.** In the S1.8B paragraph installed by r5 repair 2, replace the opening derivation
+
+> Each refine increment is \(L_{k}(s)\) at the exact height \(k=\lambda_2\) of the side being refined (S1.8's recentering, `(OCC)` supplying the legal lift at that height), and every side slope of a state satisfies \(\lambda_2>T\) by clause 1 of HE7.A.
+
+by
+
+> Each refine increment is \(L_\lambda(s)\) at the side's own slope, by `(REF-HT)`: the lift index is bound to the side datum, so `(LIFT)` returns \(h(L_\lambda(s))=\lambda\) with no further identification, and `(OCC)` is read at \(\lambda\in H_{\mathrm{lift}}\). At level two the slot function is \(dv_2\) and the refined side's slope is \(\lambda_2\), so the increment \(w\) has \(dv_2(w)=\lambda_2\) — the conjunct the r5 text asserted without deriving — and every side slope of a state satisfies \(\lambda_2>T\) by clause 1 of HE7.A.
+
+and replace the corroboration sentences
+
+> The source states the same height independently, inside the same pin: `> (it exists: λ₂ > T₂ satisfies (‡₂) by §S4.3) and Ψ̃^{(1)} := Ψ̃ − w.` The two legs — this master's clause 1 plus S1.8's lift height, and LEMMA HE7-13's own display — agree, so the hypothesis is not carried by a single textual reading.
+
+by
+
+> The source displays the same configuration, inside the same pin, at the line that carries the height —
+>
+> > `> s₂ ≠ 0). Let w be a (LIFT₂) polynomial at height λ₂ with residue s₂`
+>
+> (`HE7_PROOF_2026-08-08.md`:924) — continued by the existence parenthetical
+>
+> > `> (it exists: λ₂ > T₂ satisfies (‡₂) by §S4.3) and Ψ̃^{(1)} := Ψ̃ − w.`
+>
+> (:925), which supplies not the height but the fact that a lift AT that height exists — the source's own `(OCC)`. The r5 text quoted only the second line and called the two readings independent legs. That claim is **withdrawn**: both lines belong to LEMMA HE7-13's hypothesis-side description of the α-refine configuration, not to a derivation of it, and \(\lambda_2>T_2\) inside them is HE7-13's own hypothesis. They are recorded here as a **corroboration** of `(REF-HT)` — confirmation that the configuration this master derives is the configuration LEMMA HE7-12/13 are written about — and the height itself is carried by `(REF-HT)`, a master-side derivation, and by nothing textual.
+
+**Verification remark (source).** In `lean/notes/openmath/HE7_PROOF_2026-08-08.md`, on 2026-08-13, `grep -cFx` returned **1** for `> s₂ ≠ 0). Let w be a (LIFT₂) polynomial at height λ₂ with residue s₂` (line 924) and **1** for `> (it exists: λ₂ > T₂ satisfies (‡₂) by §S4.3) and Ψ̃^{(1)} := Ψ̃ − w.` (line 925); both lie strictly inside the `HE7-PERT-TRANSPORT` span (812–951), and 924 precedes 925 inside LEMMA HE7-13's statement.
+
+**Verification remark (landmarks).** Under `sed -n '1,2912p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<the quoted string>'` on 2026-08-13, each of the four superseded master strings returned **1**: the S1.8 product-\(1\) sentence (line 575), the S2 clause-3 sentence (775), and S1.8B Step 1's opening derivation and corroboration sentences (both on line 2698). The three master-internal citations the new text leans on are also unique: S1.7 clause 4 (530), the `(SIDE-COUNT)` grouping sentence "Group the roots according to the value \(w_\rho\), and let \(n_\lambda\) denote the number for which \(w_\rho=\lambda\)." (720), and S1.5's "Its roots form a designated Galois-stable class contained in \(\operatorname{Pt}\)." (423).
+
+---
+
+## r6 repair 2 — G-2P5 (GAP): `(MP1′)` adjudicated against `HE3-A-PROOF`'s stage-α passage — DISCHARGED, and the obligation retired
+
+**The finding repaired.**
+
+> `(MP1′)`'s load-bearing negative — that no pinned unit certifies a recentered level-one key as carrying a level-one frame — is asserted without adjudicating `HE3-A-PROOF`'s stage-α passage, which states the opposite fifteen lines above the passage r4 repair 3 already mines from the same pin.
+
+with the two aggravating specifics that "`(MP1′)` carries no list and no reason" where r4's `(MP1)` carries a per-pin declination list, and that "The master's own level-one data are largely key-free by construction … so at least part of what `(MP1′)` names is either master-side or already pinned. The note argues neither way."
+
+**The adjudication is performed here, and the pinned candidate wins.** The negative is withdrawn and the obligation is discharged, not narrowed to a declination list. The discharge rests on four pinned units, all four of which are already on both level-one records' Source-pin lines as r5 repair 6 set them: `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY`, `HE6-PROOF`.
+
+**Span supersession.** Replace the entire r5 subsection running from its heading
+
+> ### The one configuration the transport does not reach: `(MP1′)`
+
+through its final sentence
+
+> The two are independent of the level-two derivation above, which reads over an unrecentered level-one frame and recenters only the level-two key.
+
+by:
+
+> ### S1.8C The level-one frame over a recentered key, adjudicated and supplied
+>
+> Repair 4(b)'s sentence
+>
+> > If the dividing key is the level-one **child** key \(\Psi_{\lambda,r'}\), the state is a level-two state and the discharge is LEMMA HE6R1-3, as above.
+>
+> is exact when the level-one key beneath that child key is the **original** \(\Phi'\). When the level-one key beneath is itself a recentered \(\Phi''=\Phi'-L_\lambda(s)\), a prior question arises, and this subsection settles it: does a state read over \(\Phi''\) have a level-one frame at all?
+>
+> **What has to be supplied.** For a state whose level-one key is \(\Phi''\), S1.2–S1.7 demand (i) the same \((T1)/(T2)\) point set \(\operatorname{Pt}\); (ii) the same \(dv\); (iii) the same \(\varpi\); (iv) the same \(K\); (v) the same \(T=D'h\); (vi) DEFINITION HE6-1's test family over \(\Phi''\); and (vii) a \(\Phi''\)-development with its lower hull and its label read — so that a state built over \(\Phi''\) instantiates HE7.A at all, at level one or above.
+>
+> **The supplying text.** `HE3-A-PROOF` is the §S6.3 proof unit of THEOREM HE3.A. Strictly inside it stands the stage-α step, HE3's own inductive treatment of exactly this transition:
+>
+> > *Stage-α step.* If the read refines at (λ, s) (a residual root of
+> > multiplicity m ≥ 2 — so the leaf is not decided at this node), then by
+> > LEMMA HE3-2(b) the recentered key Φ″ has a polygon whose portion above
+> > λ has length exactly m, the corresponding block of D′m roots is
+> > S_{λ, Z−s} … and this block's
+> > own labels are read at Φ″ …
+> > Apply the inductive hypothesis to the sub-block: it is the
+> > label-class of a multiplicity-m system over the SAME stage ring, with
+> > the same (e₁, f₁), so its pieces compose into the dictionary as claimed.
+>
+> The configuration is this master's, exactly. "Refines at (λ, s)" with "a residual root of multiplicity m ≥ 2" is clause 3's repeated \(r'=Y-s\) with \(s\in K\); LEMMA HE3-2(b)'s recentered key exists only at an integer slope, which by `(REF-HT)` and \(e'=1\) is the product-\(1\) branch and no other; and the sub-block the passage carries to \(\Phi''\) is the root block this master's recentering "keeps".
+>
+> **Component by component.**
+>
+> **(i)–(v) The stage does not move, and the level-one frame is stage data.** The passage places the refined system "over the SAME stage ring, with the same (e₁, f₁)". Each of (i)–(v) is a function of that datum and of nothing else. `HE6-SLOT-SEAM` — the pinned unit this master consumes for `(SLOT-V)` and `(HE6-SEAM)` — states its slot law at
+>
+> > `> ξ be ANY point of K̄₀ satisfying (T1) and (T2). Then`
+> > `> dv(A(ξ)) = min_i(e₁v(a_i) + ih) EXACTLY, and the residue of the attaining`
+> > `> class, read after division by ϖ(ξ)^{dv(A)}, is ι_ξ(γ)·η_ξ^{−q} **[r2 sign`
+>
+> — a law about an \(A\) with \(\deg A<D'\) and about a point \(\xi\), whose parameters are \(e_1\), \(h\), \(\varpi\), \(\eta\), \(\iota\) and \(\psi\), and in which no key occurs. The same pinned unit says so twice in its own words. Its proof records
+>
+> > `> irreducible ψ of degree f₁); it never uses Φ′(ξ) = 0. ∎* **Codex PE1`
+>
+> and its correction record states that the restatement exists precisely so that the law may be applied off the key:
+>
+> > `> finding 6 is the observation that GENHN-2 as PASTED is stated at roots θ of`
+> > `> Φ′ only, while this note applies it at roots of f and at roots of the`
+> > `> (generally reducible) test polynomials — an overconsumption cured by this`
+>
+> Hence (i) the point set — (T1)/(T2) are conditions on \(\xi\) alone — (ii) \(dv\), (iii) \(\varpi\), (iv) \(K\), fixed by the \(\psi\) of degree \(f_1\) named in the same span, and (v) \(T=D'h\) with \(D'=e_1f_1\), are determined by the stage ring and \((e_1,f_1)\), which the passage holds fixed. They are not "carried by" \(\Phi''\): nothing about them moves when the key does. That is why no pin was ever going to state them in the form `(MP1′)` demanded, and why the absence of such a pin was not evidence of a gap.
+>
+> **(vi) DEFINITION HE6-1's family over \(\Phi''\).** `HE6-FAMILY` is that definition, and its recipe splits cleanly. The test data are chosen key-free —
+>
+> > `> irreducible with r(0) ≠ 0. Choose, by (LIFT), B_t ∈ O[x] with`
+> > `> deg B_t < D′, dv(B_t) = (d−t)u and res(B_t(θ)/ϖ(θ)^{(d−t)u}) = c_t (and`
+>
+> three conditions naming \(D'\), \(dv\), \(\varpi\), \(\theta\) and the coefficients of \(r\), and no key. The assembly is then a formula in whatever monic degree-\(D'\) key is current —
+>
+> > `>     Ψ_{κ,r} := Φ′^{ℓd} + Σ_{t<d} B_t·Φ′^{ℓt}  ∈ O[x],`
+> > `> monic of degree D″ := D′ℓd (each B_tΦ′^{ℓt} has degree < D′ℓd). For ℓ = 1`
+>
+> and \(\Phi''\) is monic of degree \(D'\), since \(\deg L_\lambda(s)<D'\) by S1.4. Substituting \(\Phi''\) for \(\Phi'\) therefore reproduces the construction verbatim, with the same \(D''=D'\ell d\) and the same degree bookkeeping. The same pinned display goes further and identifies \(\Phi''\) as a member of the family:
+>
+> > `> this is HE3's recentered-key family enlarged in DEGREE; for ℓ ≥ 2 it is a`
+>
+> At \((\ell,d)=(1,1)\) the member \(\Psi_{\lambda,Z-s}=\Phi'+B_0\) IS the recentered key, \(B_0\) being the \(\varpi\)-frame form of \(-L_\lambda(s)\) under `(HE6-SEAM)`. A recentered level-one key is not a foreign object to HE6; it is one of HE6's own test polynomials.
+>
+> **(vii) The \(\Phi''\)-development, the label read, and the instantiation.** The passage supplies all three directly. "the recentered key Φ″ has a polygon whose portion above λ has length exactly m" is the \(\Phi''\)-development with its lower hull. "this block's own labels are read at Φ″" is the label read performed at the new key. And the closing sentence does the decisive thing: it APPLIES THEOREM HE3.A to the sub-block at \(\Phi''\). That is not an enumeration of frame data; it is the assertion that every hypothesis of HE3.A holds for the refined system at \(\Phi''\). Since the S3.1 record is exactly the claim that HE3.A's data instantiate this master's S1.2–S1.7, the passage transports that record to \(\Phi''\).
+>
+> **The HE6 record's leg.** S3.1 is HE3; S3.2 is HE6, whose family is enlarged beyond HE3's, so the transport has to be licensed for HE6's classes too. It is, inside `HE6-PROOF`, in the closing paragraph of the pinned proof unit of THEOREM HE6.A:
+>
+> > `**This is HE3's LEMMA HE3-4 in full generality**, so HE3's THEOREM HE3.A`
+> > `assembly (§S6.3 there: base read + stage-α + stage-CS + embedded genres) may`
+> > `be run with HE3-4 replaced by THEOREM HE6.A — with the one caveat of §S7 for`
+> > `histories containing an ℓ ≥ 2 side with a repeated residual factor.`
+>
+> The "§S6.3 there" of that paragraph is HE3's §S6.3, i.e. the `HE3-A-PROOF` span quoted above — not HE6's own §S6.3, which is the sibling unit immediately after this span. The paragraph names **stage-α** and licenses running it with HE6's classes. Its caveat names a configuration this master routes elsewhere: an \(\ell\ge2\) side with a repeated residual factor is \(e'\deg r'\ge2\), the product-\(\ge2\) child jump of clause 3, of which S3.2's own text already says "When repeated factors occur, HE6 supplies the test step and the continuation is the level-two construction recorded in the next instance". Nothing behind that caveat is consumed here.
+>
+> **Honest status of the discharge.** Derived master-side: the configuration match (through `(REF-HT)`), the key-freeness of (i)–(vi) read off the pinned displays, and the composition of the passage with the S3.1/S3.2 substitutions. Consumed, not reproved: HE3's own inductive step, at HE3's own rigour, which S4.1 already grades ("HE3 is consumed at the grade stated by its supplied HEAD") and which `(GRADE)` already minimises over. The adjudication does not claim the passage is beyond challenge. It claims something narrower and sufficient: the passage is the step without which THEOREM HE3.A is not proved at all, so a master that pins `HE3-A-PROOF` and consumes THEOREM HE3.A cannot simultaneously declare the frame that step reads over to be supplied by no pin.
+>
+> **What the discharge does NOT give.** It does not touch `(MP1)`. Peeling a recentered level-one key still needs item 5 of the `(MID-PEEL)` input suite — the peeled key's certified orbit/\((e,f)\) decomposition — which requires \(\Phi''\) irreducible, asserted nowhere and the stated reason r4 declined `HE6-PEEL-CONVENTION` for that case. It does not touch `(LB1)`. And it is **relative**: it transports the S3.1/S3.2 records to \(\Phi''\) carrying whatever conditionality they carry at \(\Phi'\), so a state over \(\Phi''\) is `(LB1)`-conditional and `(MP1)`-conditional on exactly the same triggers as a state over \(\Phi'\). What is removed is the extra frame-level obligation, not the level-one fences.
+>
+> **Two reading directives that come with the discharge.**
+>
+> 1. **Only the refined sub-block travels to \(\Phi''\).** The passage's own `[r1, F5]` bracket is explicit — "the above-λ blocks' labels are NOT readable at Φ″ — they are read at Φ′ (or at their own recenterings), where the induction reads them". Master-side this is automatic, since S1.8's recentering "keeps … the same root block"; it is recorded so that no instance reads a sibling side or label class at the recentered key.
+> 2. **The discharge is invoked at the product-\(1\) branch and nowhere else.** The passage's configuration is a repeated \(K\)-rational residual root at an integer slope; by `(REF-HT)` that is clause 3's product-\(1\) branch, the only transition of `(RANK)` that recenters a key.
+>
+> **The name `(MP1′)` is retired.** r5 named the assertion (i)–(vii) as an obligation on the ground that "no pinned unit certifies" it. That ground is withdrawn: `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY` and `HE6-PROOF` certify it between them, and all four are already on both level-one records' Source-pin lines. The name is kept here only so that r5's text resolves — `(MP1′)` denotes (i)–(vii) — and it now denotes a consequence of the pins, not an obligation. No instance record carries it and no ledger item fences it.
+>
+> This subsection and S1.8B are independent: S1.8B recenters the level-two key over an unrecentered level-one frame, while S1.8C is about the level-one key itself being recentered. A state may be in both configurations at once, and then it carries S1.8B's level-two discharge over S1.8C's level-one frame.
+
+**Propagation, replacing r5 repair 2's four amendments.** Each landmark is unique in the r5 effective text (counts at the end of this repair).
+
+1. In the S3.1/S3.2 "Level-one fence" append, replace "This record likewise discharges neither `(MP1)` nor `(MP1′)`." by "This record likewise does not discharge `(MP1)`. It does supply the level-one frame over a recentered key: the obligation `(MP1′)` named at r5 is discharged in S1.8C from this record's own pins, so no read is fenced merely for having a level-one recentering in its history."
+2. Replace S5 item 17, "17. Level-one clause-5 reads at a **recentered** key remain conditional on the named obligation `(MP1)`, and any read whose history contains a level-one recentering remains conditional on `(MP1′)`. The original-key level-one peel is discharged by `HE6-PEEL-CONVENTION`; the level-two peel at a DEFINITION HE6-1 key by `HE6R1-3`, and at a recentered level-two key by `HE7-PERT-TRANSPORT` clause (c) carrying `HE6R1-3` to that key (S1.8B).", by "17. Level-one clause-5 reads at a **recentered** key remain conditional on the named obligation `(MP1)`. Reading OVER a recentered level-one key is not an obligation: the frame is supplied in S1.8C from `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY` and `HE6-PROOF`, and the `(MP1′)` named at r5 is retired. The original-key level-one peel is discharged by `HE6-PEEL-CONVENTION`; the level-two peel at a DEFINITION HE6-1 key by `HE6R1-3`, and at a recentered level-two key by `HE7-PERT-TRANSPORT` clause (c) carrying `HE6R1-3` to that key (S1.8B)."
+3. In S4.2's exclusion list, replace the item "- an unconditional read at any level over a recentered level-one key;" by "- a read over a recentered level-one key that is free of this master's other level-one conditions: the frame is supplied (S1.8C), but `(LB1)` and `(MP1)` apply at a recentered key on exactly the triggers on which they apply at the original key;".
+4. In S4.1, replace "subject to the explicitly named level-one obligations `(LB1)`, `(MP1)` and `(MP1′)`" by "subject to the explicitly named level-one obligations `(LB1)` and `(MP1)`".
+
+**`HE6-PROOF`'s delimiters, quoted rather than left to the gate.** The discharge leans on the closing paragraph of that span, so the span's boundary is fixed here instead of being the gate's work. The row description "the complete proof unit of THEOREM HE6.A" resolves to the `###` unit `### S6.2 PROOF OF THEOREM HE6.A`, which by S0.2's boundary rule ends immediately before the next `###` unit of equal rank, `### S6.3 Multiplicity ≥ 2 on an ℓ = 1 side (the stage-α node) is unaffected`. This is the practice r4 repair 6 set for `###`-headed units. Delimiters:
+
+- first: `### S6.2 PROOF OF THEOREM HE6.A`
+- last: `histories containing an ℓ ≥ 2 side with a repeated residual factor.`
+
+Verification remark: in `lean/notes/openmath/HE6_PROOF_2026-08-08.md`, on 2026-08-13, `grep -cFx` returned **1** for each of the two lines; the first (line 639) precedes the last (line 666); the span contains the four numbered steps of the proof, its ∎, and the closing transfer paragraph, ending immediately before the next sibling unit §S6.3. Conditions 1–4 of S0.2 hold. Accordingly, in r5 repair 3's replacement text, replace "and `HETOW-KEY-BRIDGE`, `HE7-PERT-TRANSPORT`, `HE6-LIFT-1L` (r5) — **14 of 32**." by "`HETOW-KEY-BRIDGE`, `HE7-PERT-TRANSPORT`, `HE6-LIFT-1L` (r5); and `HE6-PROOF` (r6) — **15 of 32**." and replace "The other 15 pins are description-only at both ends. Totals: 14 pairs + 3 first-only + 15 description-only = 32." by "The other 14 pins are description-only at both ends. Totals: 15 pairs + 3 first-only + 14 description-only = 32." The pin count itself is unchanged at 32; no pin is added or removed by this round.
+
+**Verification remark (source).** On 2026-08-13, `grep -cFx` returned **1** for each of the following, in the file and at the line shown.
+
+In `lean/notes/openmath/HE3_PROOF_2026-08-08.md`, all strictly inside the `HE3-A-PROOF` span, whose delimiters `### S6.3 PROOF OF THEOREM HE3.A` (1092) and `leaf's history, so THEOREM HE3.A is proved. ∎` (1205) each returned **1**:
+
+> `*Stage-α step.* If the read refines at (λ, s) (a residual root of` — 1149
+> `multiplicity m ≥ 2 — so the leaf is not decided at this node), then by` — 1150
+> `LEMMA HE3-2(b) the recentered key Φ″ has a polygon whose portion above` — 1151
+> `λ has length exactly m, the corresponding block of D′m roots is` — 1152
+> `own labels are read at Φ″ — **[r1, F5: specifically, at the part of` — 1155
+> `above-λ blocks' labels are NOT readable at Φ″ — they are read at Φ′` — 1162
+> `Apply the inductive hypothesis to the sub-block: it is the` — 1164
+> `label-class of a multiplicity-m system over the SAME stage ring, with` — 1165
+> `the same (e₁, f₁), so its pieces compose into the dictionary as claimed.` — 1166
+
+In `lean/notes/openmath/HE6_PROOF_2026-08-08.md`: lines 217, 218, 219, 234, 235, 236 and 237 all lie strictly inside the `HE6-SLOT-SEAM` span, whose delimiters `> **LEMMA HE6-0″ [r1, R5/F6] (THE SLOT LEMMA at (T1)/(T2) POINTS — the form` (215) and `> restatement.**` (238) each returned **1**; lines 203, 204, 207, 209 and 210 all lie strictly inside the `HE6-FAMILY` unit, whose first line `> **DEFINITION HE6-1 (THE ENLARGED TEST FAMILY).** Let κ = u/ℓ ∈ ℚ in lowest` (201) returned **1**; and lines 663, 664, 665 and 666 lie inside the `HE6-PROOF` span 639–666 declared above.
+
+**Verification remark (landmarks).** Under `sed -n '1,2912p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<the quoted string>'` on 2026-08-13, each returned **1**: the superseded subsection's heading (2704) and its final sentence (2719), which bound the replaced span; the S3.1/S3.2 fence sentence (2723); S5 item 17 as r5 set it (2724); the S4.2 exclusion item (2725); the S4.1 obligation phrase (2726); r5 repair 3's two inventory strings (both 2756); and the S3.2 sentence cited for the HE6 caveat, "On a block whose residuals are all separable, this is a terminal instance of the full theorem." (901).
+
+---
+
+## r6 repair 3 — m-1P5 (minor): S1.7B's unconditionality assertion scoped to carry both surviving level-one fences
+
+**The finding repaired.**
+
+> The one effective-text sentence that asserts unconditionality at every level-one state now contradicts `(MP1′)`, and r5's propagation list does not touch it. … the sentence's closing "What is conditional is the clause-4 route, and only where it is taken" is false after r4 already (clause 5 at a recentered key is `(MP1)`-conditional) and doubly so after r5.
+
+Repair 2 removes the `(MP1′)` half of the contradiction; the `(MP1)` half is older than r5 and survives it, so the sentence is scoped here rather than merely narrowed. Replace, in S1.7B as rewritten by r4 repair 10,
+
+> Clauses 1 and 2 are not: their proofs run on the unsplit hull of \(F\) itself, so the HE3.A and HE6 instance records' clause-1 and clause-2 conclusions are unconditional at every level-one state, multi-side states included. What is conditional is the clause-4 route, and only where it is taken.
+
+by
+
+> Clauses 1 and 2 are not: their proofs run on the unsplit hull of \(F\) itself, so the HE3.A and HE6 instance records' clause-1 and clause-2 conclusions carry no `(LB1)` conditionality at any level-one state, multi-side states included. "Unconditional" is said here of `(LB1)` alone and of clauses 1–2 alone. Two level-one routes remain conditional, each where it is taken: the clause-4 route on `(LB1)`, and the clause-5 peel at a recentered key on `(MP1)` (S1.8A). No level-one route is asserted unconditional simpliciter. Reading over a recentered level-one key is not among the conditions — that frame is supplied in S1.8C — so no clause of these records is fenced for that reason.
+
+**Verification remark (landmark).** The superseded S1.7B sentence-pair quoted above returned **1** under `sed -n '1,2912p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<the quoted string>'` on 2026-08-13 (line 2542). It is quoted here rather than inlined into the command because it contains an apostrophe.
+
+---
+
+## r6 repair 4 — m-2P5 (minor): the count word in r5 repair 2's verification remark
+
+**The finding repaired.**
+
+> r5 repair 2's verification remark announces "the six master-internal landmarks this repair supersedes or anchors on" and then lists SEVEN … All seven verify (above); the count word does not. This is the same inventory defect r5 repair 3 was written to cure one repair later.
+
+Replace, in r5 repair 2's closing verification remark, the phrase
+
+> Each of the six master-internal landmarks this repair supersedes or anchors on
+
+by
+
+> Each of the seven master-internal landmarks this repair supersedes or anchors on
+
+The list itself is unchanged; the r5 pass re-ran all seven and all seven returned **1**.
+
+**Verification remark (landmark).** `sed -n '1,2912p' … | grep -cF -- 'Each of the six master-internal landmarks this repair supersedes or anchors on'` → **1** (line 2738).
+
+---
+
+## r6 repair 5 — m-3P5 (minor): the effective-text orphan repaired, and the third `###` unit numbered
+
+**The finding repaired.**
+
+> Effective-text orphan: the last two paragraphs of r2 repair 3's "Mid-chain boundary produced by recentering" now render under the (MP1′) heading, and the (MP1′) subsection is given the same `###` rank as S1.8B, so by S0.2's own boundary rule the S1.8B unit ends before it. … The second of these is load-bearing for `(RANK)` transition 6 … and now reads as part of a fenced level-one obligation subsection.
+
+Two moves; no mathematics changes.
+
+**(a) The two paragraphs are relocated ahead of the three `###` units.** In S1.8's "Mid-chain boundary produced by recentering", move the two closing paragraphs
+
+> This is the HE6R1-3/HE7-8 `[r3]` mid-chain peel. The value
+>
+> \[
+> d(\widetilde\Phi(\rho))=+\infty
+> \]
+>
+> is never fed into `(WINDOW)`: the boundary branch is taken first.
+
+and
+
+> If a proper nontrivial gcd with \(\widetilde\Phi\), rather than the whole key, occurs, use the general key-boundary decomposition of S1.9 before any window assertion.
+
+so that they sit immediately after the paragraph ending "the monic key itself is not declared irreducible merely because it is a key" and immediately BEFORE the `(MID-PEEL)` input suite paragraph installed by r3 repair 4. This supersedes r3 repair 4's "immediately after" as to ordering only — the suite paragraph now follows these two paragraphs, which follow that anchor — and nothing else about r3 repair 4's insertion changes. The effective order in the subsection is then: r2's prose body, contiguous and in r2's own order; the `(MID-PEEL)` input suite paragraph; and the three `###` units S1.8A, S1.8B, S1.8C. In particular the proper-gcd routing that `(RANK)` transition 6 depends on ("entered from `(MID-PEEL)`'s proper-nontrivial-gcd branch") again reads in the subsection body rather than after a numbered subsection.
+
+**(b) The third `###` unit is numbered.** Repair 2 above renames the unnumbered heading "### The one configuration the transport does not reach: `(MP1′)`" to "### S1.8C The level-one frame over a recentered key, adjudicated and supplied". The three units S1.8A, S1.8B and S1.8C are then deliberate siblings of equal rank: each is a complete numbered unit, each ends immediately before the next by S0.2's boundary rule, each is citable by number, and none continues into the next — which is what the finding asked for, the defect having been that the third unit was both unnumbered and a continuation of the second.
+
+**Verification remark (landmarks).** `sed -n '1,2912p' … | grep -cF` returned **1** for `> This is the HE6R1-3/HE7-8 `[r3]` mid-chain peel. The value` (line 1874) and **1** for `> If a proper nontrivial gcd with \(\widetilde\Phi\), rather than the whole key, occurs, use the general key-boundary decomposition of S1.9 before any window assertion.` (line 1882). The insertion anchor "the monic key itself is not declared irreducible merely because it is a key" is the anchor r3 repair 4 already used and verified.
+
+---
+
+## r6 repair 6 — m-4P5 (minor): the composition into S1.8B's scope at the composed key, displayed
+
+**The finding repaired.**
+
+> r5 repair 6's pin-line justification asserts that S1.8B applies at the composed-key records, but S1.8B's own scope sentence excludes them and the composition is nowhere displayed. … Both bridge units ARE pinned … and the same paragraph names them one sentence later … so the ingredients are present and the claim is true. What is missing is the one-clause composition, at exactly the seam this round exists to close.
+
+The composition is displayed, in S1.8B itself, and the justification sentence is re-pointed at it.
+
+**(a) A scope clause in S1.8B.** Append to S1.8B, immediately after the sentence ending "because LEMMA HE7-12 is a level-TWO statement and this master asserts no level-one analogue of it.":
+
+> **Scope: entry at a composed key.** S1.8B is stated for a chain based at a DEFINITION HE6-1 key \(\Psi=\Psi_{\lambda,r}\). At S3.4/S3.5 the chain is based at the composed key \(\Phi_2\), which is not such a key, and entry costs one composition — performed by the records' own already-listed pins, not by this master. `HETOW-KEY-BRIDGE` gives \(\Phi_2=\Psi_{\kappa_2,\widetilde r}-w\) with \(\deg w<D''\) and "either w = 0 … or dv₂(w) > T₂", and `GENTOW-4-1` clause (c) gives the same at the partial tower. If \(w=0\), the base key IS a DEFINITION HE6-1 key and S1.8B applies literally. If \(w\ne0\), then \(w\) already satisfies LEMMA HE7-12's hypothesis at \(\Psi_{\kappa_2,\widetilde r}\), and Step 1 gives the same for each refine increment \(w_1,\dots,w_j\) by `(REF-HT)`; LEMMA HE7-12(d) folds the whole sum, so
+>
+> \[
+> \Phi_2-W
+> =
+> \Psi_{\kappa_2,\widetilde r}-\bigl(w+w_1+\dots+w_j\bigr)
+> \]
+>
+> is covered by ONE instance of clauses (a)–(c) at \(\Psi_{\kappa_2,\widetilde r}\). That is the composition `GENTOW-4-A`(iii) already displays as "available by LEMMA HE7-12 with W + w". Step 2 then runs unchanged, at \(\Psi_{\kappa_2,\widetilde r}\) and not at \(\Phi_2\).
+
+**(b) The justification sentence re-pointed.** In r5 repair 6, replace
+
+> **S3.4/S3.5 `HE7-PERT-TRANSPORT`:** the same two clauses name LEMMA HE7-12, and S1.8B applies at these records too.
+
+by
+
+> **S3.4/S3.5 `HE7-PERT-TRANSPORT`:** the same two clauses name LEMMA HE7-12, and S1.8B applies at these records after the single composition its scope clause displays — \(W\leftarrow w+W\), with \(w\) the wrap perturbation supplied by `HETOW-KEY-BRIDGE` resp. `GENTOW-4-1`(c) and the fold by LEMMA HE7-12(d) — so that the chain is read at \(\Psi_{\kappa_2,\widetilde r}\), a DEFINITION HE6-1 key, and not at \(\Phi_2\).
+
+**Verification remark (landmarks).** `sed -n '1,2912p' … | grep -cF` returned **1** for the S1.8B anchor sentence ending "…this master asserts no level-one analogue of it." (line 2702) and **1** for r5 repair 6's justification sentence (line 2864).
+
+---
+
+## r6 repair 7 — the four recorded nits, three cured and one adjudicated
+
+The r5 pass recorded four non-counted nits. They are dealt with here so that a later pass does not have to re-raise them.
+
+**(a) Cured — the item (11) characterisation.** In S1.8B Step 2, replace the phrase
+
+> the one hypothesis of HE6R1-3 that mentions the key at all
+
+by
+
+> every hypothesis of HE6R1-3 that mentions the key
+
+The nit is right that item (11) covers the disk-criterion leg, \(\deg\Psi^{(w)}=D''\) and the \((e,f)\) sandwich, which are three key-mentioning hypotheses and not one; the full quote that follows was already correct.
+
+**(b) Cured — the dangling comma at `(MID-MASS)`.** In r2 repair 3's inserted subsection, replace the line
+
+> Then \(G'\in O[x]\) is monic,
+
+by
+
+> Then \(G'\in O[x]\) is monic, with
+
+so that the sentence r5 repair 7 rebuilt reads "Then \(G'\in O[x]\) is monic, with [the `(MID-MASS)` display]." — the sentence now closing on its own display. The r3 repair 5 degenerate guard, inserted immediately after that display, and then "Separability of \(G\) also gives [the gcd display]" follow unchanged; the comma is the only edit.
+
+**(c) Cured — `HE6R1-3`'s row description.** S1.8B consumes not only LEMMA HE6R1-3's conclusion but its PROOF, through item (11) of LEMMA HE7-12's proof, which is checked against the six facts that proof consumes. Replace the r2 `(PINS)` row
+
+> `&\texttt{HE6R1-3}&\text{LEMMA HE6R1-3}\\`
+
+by
+
+> `&\texttt{HE6R1-3}&\text{LEMMA HE6R1-3, statement and proof}\\`
+
+bringing it into the form the r4/r5-era rows use. The unit is unchanged; the r5 pass confirmed that "LEMMA HE6R1-3 occurs as a unit exactly once" in `HE6R1_RECON_2026-08-08.md` (statement 469–477, proof 479–486), so condition 1 is unaffected.
+
+**(d) Adjudicated, no change — the asymmetric record-level note.** The nit observes that S3.1/S3.2 carried a record-level `(MP1′)` note while S3.3–S3.5 did not. Repair 2 retires `(MP1′)`, so the asymmetry is moot: no record carries a frame note, and the S4.1/S4.2/S5.17 amendments of repair 2 are global.
+
+**Verification remark (landmarks).** `sed -n '1,2912p' … | grep -cF` returned **1** for each of `the one hypothesis of HE6R1-3 that mentions the key at all` (line 2700), `> Then \(G'\in O[x]\) is monic,` (line 1857) and `> &\texttt{HE6R1-3}&\text{LEMMA HE6R1-3}\\` (line 1624).
+
+---
+
+## r6 counter
+
+r6 folds repairs for both GAPs (G-1P5, G-2P5) and all four minors (m-1P5 … m-4P5) of the r5 hostile pass of record, plus the four recorded nits. Its substantive content is two objects. First, `(REF-HT)`: the refinement height of the product-\(1\) recentering is bound to the side's own slope, derived from `(SIDE-COUNT)`, `(SLOT-V)` and `(LIFT)` rather than named, so that S1.8B's use of LEMMA HE7-12 no longer rests on an identification the master never made; the r5 claim that two independent textual legs carried it is withdrawn, and the source display is re-cited to `HE7_PROOF_2026-08-08.md`:924, the line that states the height, and demoted from a leg to a corroboration. Second, the `(MP1′)` adjudication: the r5 negative is withdrawn, and the assertion that a recentered level-one key reads over a level-one frame is DISCHARGED in the new S1.8C from four pins already on both level-one records' lines — `HE3-A-PROOF`'s stage-α step for the \(\Phi''\)-polygon, the \(\Phi''\)-label read and the inductive application of THEOREM HE3.A to the sub-block "over the SAME stage ring, with the same (e₁, f₁)"; `HE6-SLOT-SEAM` for the key-freeness of the level-one slot package ("it never uses Φ′(ξ) = 0"); `HE6-FAMILY` for the family's key-free recipe and for the identification of \(\Phi''\) as its own \((\ell,d)=(1,1)\) member; and `HE6-PROOF` for the licence to run HE3's stage-α with HE6's classes. The discharge is relative and is stated as such: it transports the level-one records to \(\Phi''\) with their existing conditionality, and removes only the frame-level obligation.
+
+No theorem-statement change is made by this round. `(REF-HT)` binds a parameter that clause 3 and S1.8 already quantified over without naming a value; it adds no case and no conclusion. One pin gains a quoted delimiter pair (`HE6-PROOF`), and the pin count stays 32.
+
+**Two named obligations are open**, both at level one: `(LB1)` for clause-4 block construction, and `(MP1)` for the clause-5 peel at a recentered key. r5's counter recorded three; that sentence is r5's own record of r5 and is left standing as such. The third, `(MP1′)`, is retired by repair 2 above.
+
+Gap-or-worse repairs reset the clean count (S7: "A gap-or-worse repair resets the clean count"). **The clean-pass counter is RESET to 0 of 2.** The acceptance gate still owes **TWO consecutive clean hostile passes** over the r6 effective text before this note may leave attempt grade \(0/2\); the status line therefore stays "mathematical composition draft, attempt grade \(0/2\)", and by `(GRADE)` every composed instance stays \(0/2\) regardless of supplier grade.
