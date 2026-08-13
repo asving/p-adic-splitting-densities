@@ -7,8 +7,9 @@ theorem, the thing we prove is evaluated by a rational function with the size of
 field as an input"* — plus the verification target *"check if using the definitions to compute
 the densities for n=2 or 3 works out as expected."*
 
-**What landed.** Five Lean files under `Uniformity/Density/` (1 439 lines, **zero `sorry`s,
-zero axioms beyond Lean core**), one Python cross-check, this note. The old `lean/` tree
+**What landed.** Six Lean files under `Uniformity/Density/` (2 085 lines, **zero `sorry`s,
+zero axioms beyond Lean core**), one Python cross-check, this note. *(Updated 2026-08-13,
+follow-up unit: STATUS items 2–4 discharged — see §3 and §6.)* The old `lean/` tree
 (LeanUrat) was **not touched**: nothing was created or modified there. Two declarations
 (`FactorizationType`, `FactorizationType.degree`) are verbatim quarry copies, marked as such
 at the declaration site.
@@ -18,8 +19,9 @@ at the declaration site.
 | `Uniformity/Density/LocalData.lean` | 351 | the local base bundle, `residueCard`, level-`N` boxes, `#(O/𝔪^N) = q^N`, `ℤ_[p]` instance |
 | `Uniformity/Density/TypeOf.lean` | 294 | monic factorization in `O[X]`; `(e,f)` by the norm form of the valuation; `typeOf` |
 | `Uniformity/Density/GenuineDensity.lean` | 396 | `decidedSeq`/`possibleSeq`, monotone/antitone, **the density as a proved limit**, sandwich, drainage tie, total mass ≤ 1 |
+| `Uniformity/Density/QuadCert.lean` | 404 | *(follow-up unit)* the binary norm form `N(u+vα)`; the RAM (Eisenstein) and INERT (anisotropic) `typeOf` certificates |
 | `Uniformity/Density/Statement.lean` | 73 | `UniformityStatement`, `UniformityStatementPadic` (capstone targets, ⚠ pending sign-off) |
-| `Uniformity/Density/Gates.lean` | 325 | G1–G4 + the `#print axioms` block |
+| `Uniformity/Density/Gates.lean` | 567 | G1–G8 (incl. the `gate_bracket_*` payoff) + the `#print axioms` block |
 | `verification/genuine_density_check.py` | 163 | exact `n = 2` enumeration over `ℤ_p`, `p ∈ {2,3,5}`, vs the W-11 closed forms |
 
 ---
@@ -273,19 +275,55 @@ All gates hold for an **arbitrary** complete DVR with finite residue field, not 
 | **G1′** `genuineDensity_one_of_ne` | `σ ≠ ⟨{(1,1)}⟩ → genuineDensity O 1 σ = 0` | **EXACT, proved** | 0 ✓ |
 | **G1″** `gate_sigma_separation_one` | `genuineDensity O 1 linType ≠ genuineDensity O 1 splitType` | **EXACT, proved** | `1 ≠ 0` ✓ |
 | **G2** `typeOf_mul_linear` | `typeOf ((X−C r)(X−C s)) = ⟨{(1,1),(1,1)}⟩` | proved | the split type ✓ |
-| **G3** `gate_split_lower` | `1/q² ≤ genuineDensity O 2 splitType` | **BOUND (one-sided), proved** | `q/(2(q+1))`; at `q=2`: `1/4 ≤ 1/3` ✓; `q=3`: `1/9 ≤ 3/8` ✓; `q=5`: `1/25 ≤ 5/12` ✓ |
+| **G3** `gate_split_lower` | `1/q² ≤ genuineDensity O 2 splitType` | **BOUND, proved** | `q/(2(q+1))` ✓ |
+| **G3-sharp** `gate_split_lower_sharp` | `(q−1)/q² ≤ genuineDensity O 2 splitType` | **BOUND, proved** (all `q−1` level-1 classes `(0, unit)`) | W-11's SEP-SPLIT row `(q−1)/(2q)` in per-centre form ✓ |
 | **G3′** `gate_padic_two` | `1/4 ≤ genuineDensity ℤ_[2] 2 splitType` | **BOUND, proved** | `1/3` ✓ |
-| **G4** `genuineDensity_two_linType_eq_zero` | `genuineDensity O 2 ⟨{(1,1)}⟩ = 0` | **EXACT, proved** | 0 (no quadratic has a degree-1 type) ✓ |
+| **G4** `genuineDensity_two_linType_eq_zero` | `genuineDensity O 2 ⟨{(1,1)}⟩ = 0` | **EXACT, proved** | 0 ✓ |
 | **G4′** `gate_sigma_separation_two` | `genuineDensity O 2 linType < genuineDensity O 2 splitType` | **proved** | `0 < 1/3` ✓ |
+| **G5** `typeOf_ram_of_eisenstein` | `a₀ ∈ 𝔪∖𝔪², a₁ ∈ 𝔪 → typeOf = ⟨{(2,1)}⟩` | **proved** | the RAM(1) family ✓ |
+| **G5′** `gate_ram_lower` | `1/q⁴ ≤ genuineDensity O 2 ramType` | **BOUND, proved** (one level-2 Eisenstein class) | `1/(q+1)` ✓ |
+| **G6** `typeOf_inert_of_anisotropic` | reduced norm form anisotropic → `typeOf = ⟨{(1,2)}⟩` | **proved** | the SEP-INERT family ✓ |
+| **G6′** `lowers_padic_two/three` (inert leg) | `1/q² ≤ genuineDensity ℤ_[q] 2 inertType`, `q = 2, 3` | **BOUND, proved** (`decide` on `ZMod q`) | `q/(2(q+1))` ✓ |
+| **G7** `bracket_two` | three lower bounds ⟹ three two-sided brackets | **proved** (via `sum_genuineDensity_le_one`) | — |
+| **G8** `gate_bracket_padic_two` / `_three` | **THE PAYOFF** — see the numeric table below | **proved** | all three W-11 values inside ✓ |
+| **G8′** `gate_bracket_w11_two` / `_three` | the W-11 values lie in the brackets | **proved** (`norm_num`) | — |
+
+### The certified two-sided brackets (`gate_bracket_*`)
+
+The lower bounds come from decided classes; each upper bound is `1 − (the other two lowers)`,
+via the proved `sum_genuineDensity_le_one` (densities of distinct types sum to `≤ 1`).
+
+**q = 2 (`O = ℤ_[2]`, the wild prime) — `gate_bracket_padic_two`**
+
+| type | lower (proved) | upper (proved) | W-11 exact | inside? |
+|---|---|---|---|---|
+| split `{(1,1),(1,1)}` | `1/4 = 0.2500` | `11/16 = 0.6875` | `q/(2(q+1)) = 1/3 ≈ 0.3333` | **YES** |
+| inert `{(1,2)}` | `1/4 = 0.2500` | `11/16 = 0.6875` | `q/(2(q+1)) = 1/3 ≈ 0.3333` | **YES** |
+| ram `{(2,1)}` | `1/16 = 0.0625` | `1/2 = 0.5000` | `1/(q+1) = 1/3 ≈ 0.3333` | **YES** |
+
+**q = 3 (`O = ℤ_[3]`, tame) — `gate_bracket_padic_three`**
+
+| type | lower (proved) | upper (proved) | W-11 exact | inside? |
+|---|---|---|---|---|
+| split | `2/9 ≈ 0.2222` | `71/81 ≈ 0.8765` | `3/8 = 0.375` | **YES** |
+| inert | `1/9 ≈ 0.1111` | `62/81 ≈ 0.7654` | `3/8 = 0.375` | **YES** |
+| ram | `1/81 ≈ 0.0123` | `2/3 ≈ 0.6667` | `1/4 = 0.25` | **YES** |
+
+**Reading.** These are the first *two-sided* certified brackets on a genuine `p`-adic splitting
+density in this repo. They are loose (the ram lower bound uses a single level-2 class and the
+inert lower bound a single level-1 class), but they are honest: every bound is a theorem about
+`genuineDensity`, and each of the six intervals contains the corresponding W-11 value. The
+Python trajectories in §4 show where the true values sit — e.g. at `q = 2` the split decided
+proportion climbs `1/4, 1/4, 5/16, 5/16 → 1/3`, so the certified lower bound `1/4` is exactly
+the level-1 (and level-2) truth, while the upper bound is what the *other two* types'
+certificates can currently force.
 
 **Exact-vs-bounded, stated plainly.** At `n = 1` the gates are **exact equalities**. At `n = 2`
-the split gate is a **one-sided lower bound** (`1/q²`, from a single Hensel-certified level-1
-class), and the σ-separation is between a positive density and an exact `0`. There is **no**
-two-sided `n = 2` bracket in the landed state, and no exact `n = 2` value — those need the
-order-0 census and the inert/ram certificates listed in STATUS. G3's mechanism: Hensel's lemma
-applied once at the simple residue root `0` of `X² + a₁X + a₀` with `a₀ ∈ 𝔪`, `a₁` a unit; the
-second root is then `−a₁ − r` by an algebraic identity, so the polynomial factors into two
-monic linears and G2 applies.
+every gate is a **two-sided bound**; no exact `n = 2` value is proved. The mechanism of each
+lower bound: split — one Hensel lift at a simple residue root (`typeOf_split_of_unit`), counted
+over all `q−1` level-1 classes `(0, unit)`; ram — Eisenstein irreducibility plus `N(α) = a₀` of
+valuation 1; inert — anisotropy of the reduced binary norm form, which forces every norm
+valuation to be even.
 
 ---
 
@@ -335,7 +373,7 @@ is no discriminant-only criterion at degree 3, so an exact enumeration needs a g
 
 ## 5. AXIOM FOOTPRINTS
 
-`lake build` from `leanfinal/` is green (8 565 jobs). The `#print axioms` block at the end of
+`lake build` from `leanfinal/` is green (8 566 jobs). The `#print axioms` block at the end of
 `Gates.lean` reports, for every one of the following:
 
 ```
@@ -346,7 +384,11 @@ depends on axioms: [propext, Classical.choice, Quot.sound]
 `typeOf_mul_linear`, `typeOf_split_of_unit`, `gate_split_lower`, `gate_padic_two`,
 `genuineDensity_two_linType_eq_zero`, `gate_sigma_separation_two`, `decidedSeq_tendsto`,
 `possibleSeq_tendsto`, `upperDensity_eq_of_drainage`, `genuineDensity_le_upperDensity`,
-`sum_genuineDensity_le_one`, `card_res`, `UniformityStatement.toPadic`.
+`sum_genuineDensity_le_one`, `card_res`, `UniformityStatement.toPadic`
+— and, from the follow-up unit — `norm_quad`, `typeOf_ram_of_eisenstein`,
+`typeOf_inert_of_anisotropic`, `gate_split_lower_sharp`, `gate_ram_lower`, `lowers_padic_two`,
+`lowers_padic_three`, `bracket_two`, `gate_bracket_padic_two`, `gate_bracket_padic_three`,
+`gate_bracket_w11_two`, `gate_bracket_w11_three` (28 declarations in all).
 
 Lean core only; **no `sorryAx`, no declared axioms**. `grep -rn sorry Uniformity/` returns only
 the word inside a docstring.
@@ -366,7 +408,14 @@ the word inside a docstring.
   tie **in both directions**;
 * `∑_{σ ∈ S} genuineDensity ≤ 1` and the complement upper bound;
 * gates G1–G4 (§3);
-* `UniformityStatement → UniformityStatementPadic`.
+* `UniformityStatement → UniformityStatementPadic`;
+* **(follow-up unit, 2026-08-13)** the binary norm form `N(u+vα) = u² − a₁uv + a₀v²`
+  (`norm_quad`, via the power basis `(1,α)` and `Matrix.det_fin_two`); "a reducible monic
+  quadratic is `(X−r)(X−s)`" (`exists_roots_of_not_irreducible`); the RAM certificate
+  (`irreducible_of_eisenstein`, `typeOf_ram_of_eisenstein`); the INERT certificate
+  (`irreducible_of_anisotropic`, `typeOf_inert_of_anisotropic`); the sharpened split count
+  (`decidedCount_split_ge : q − 1 ≤ decidedCount O 2 splitType 1`); the bracket engine
+  (`bracket_two`) and the numeric brackets at `q = 2, 3` (G5–G8 in §3).
 
 ### STATED IN THIS NOTE, NOT PROVED (open targets, statements preserved)
 
@@ -381,26 +430,30 @@ the word inside a docstring.
    directly (the classical Hensel/Newton-polygon argument). **Recommend (b)**, and it is worth a
    dedicated unit — it also unlocks `typeOf` of an irreducible = a singleton `{(e,f)}` with
    `e·f = deg`.
-2. **`gate_split_exact`** — `theorem gate_split_level_one : decidedCount O 2 splitType 1 =
-   residueCard O - 1`, i.e. *all* `q−1` level-1 classes `(0, unit)` are split-decided, giving
-   `(q−1)/q² ≤ genuineDensity O 2 splitType` (W-11's SEP-SPLIT row is exactly `(q−1)/(2q)`,
-   and `(q−1)/q²` is its per-centre form). *Blocked only by*: counting `{c : Coeff O 2 1 |
-   c 0 = 0 ∧ c 1 ≠ 0}` — needs `Res O 1 ≃ ResidueField O` (from `pow_one`) plus a
-   `Fintype`-level count. Purely mechanical; ~40 lines.
-3. **`gate_inert_lower`** — `theorem typeOf_inert_of_irreducible_reduction {a : Fin 2 → O}
-   (h : Irreducible ((monicPoly a).map (residue O))) : typeOf (monicPoly a) = inertType`.
-   *Blocked because*: needs `inertiaDegOf = 2`, i.e. every nonzero `x ∈ A` has even
-   `v(N x)` — provable from `A` local with residue field `k[X]/(ḡ)` and the `π`-adic
-   decomposition `x = π^k·unit`, ~80 lines.
-4. **`gate_ram_lower`** — `theorem typeOf_ram_of_eisenstein {a : Fin 2 → O}
-   (h0 : addVal O (a 0) = 1) (h1 : a 1 ∈ maximalIdeal O) : typeOf (monicPoly a) = ramType`.
-   *Blocked because*: needs Eisenstein ⇒ irreducible (mathlib has
-   `Polynomial.IsEisensteinAt.irreducible`, needs plumbing) and `N(root) = ±a₀` (candidate:
-   `PowerBasis.norm_gen_eq_coeff_zero_minpoly`). This is the **cheapest** of the three and the
-   one that would give a genuine two-sided `n = 2` bracket when combined with 2 and 3 via
-   `genuineDensity_le_of_others`.
+2. ~~**`gate_split_exact`** (all `q−1` level-1 split classes)~~ — **DONE** (follow-up unit):
+   `decidedCount_split_ge` + `gate_split_lower_sharp`, giving `(q−1)/q²`.
+3. ~~**`gate_inert_lower`**~~ — **DONE in the form that was needed** (follow-up unit):
+   `typeOf_inert_of_anisotropic` proves the certificate for *any* complete DVR from anisotropy
+   of the reduced binary norm form. What is **fenced out**: the *general-`O`* inert lower bound,
+   because exhibiting an anisotropic quadratic over an abstract finite residue field needs
+   "every finite field has an irreducible monic quadratic", which mathlib v4.31.0 does not
+   expose in a directly usable form. Consequence: the inert lower bound is instantiated only at
+   `ℤ_[2]` and `ℤ_[3]`, where anisotropy is a `decide` on `ZMod p`
+   (`inert_decided_class_padic`), and the `gate_bracket_*` payoff is therefore stated at
+   `q = 2, 3` rather than for all `O`. Statement of the missing piece:
+   `theorem exists_anisotropic (O) [bundle] : ∃ a : Fin 2 → O, Anisotropic a`.
+4. ~~**`gate_ram_lower`**~~ — **DONE** (follow-up unit): `typeOf_ram_of_eisenstein` +
+   `gate_ram_lower : 1/q⁴ ≤ genuineDensity O 2 ramType`, for **every** complete DVR. Not
+   sharpened: the bound uses one level-2 class, where the full centre-0 Eisenstein stratum has
+   `(q−1)q` classes (density `(q−1)/q³`) and W-11's whole RAM(1) row, over all `q` centres, is
+   `(q−1)/q²`. Sharpening needs counting the image of `𝔪` inside `O/𝔪²`;
+   statement: `theorem decidedCount_ram_ge : (residueCard O − 1) * residueCard O ≤
+   decidedCount O 2 ramType 2`.
 5. **`drainage_two`** — `theorem drainage_at_two : UndecidedVanishes O 2 σ`, the Lean form of
-   W-11 clause (iii) (`undecided = q^{−N}` exactly). Needs the full `n = 2` census.
+   W-11 clause (iii) (`undecided = q^{−N}` exactly). Needs the full `n = 2` census. This is now
+   the single item standing between the brackets above and **exact** `n = 2` values: with
+   drainage plus a matching `possibleSeq` upper certificate the bracket collapses
+   (`upperDensity_eq_of_drainage`).
 6. **`n = 3` Python check** — needs a `ℚ_p`-factorization oracle (the quarry's
    `verification/quartic_oracle.py` uses PARI `factorpadic`; cypari2 was not available in this
    session's environment and was not installed).
