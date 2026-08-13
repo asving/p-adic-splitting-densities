@@ -240,6 +240,27 @@ theorem card_ramSet (hπ : Irreducible π) (j r : ℕ) :
   congr 1
   omega
 
+/-- A nonempty RAM family has its parameter inside the window. -/
+theorem ramSet_param_le (hπ : Irreducible π) {j N : ℕ} {c : Coeff O 2 N}
+    (hc : c ∈ ramSet π j N) : 2 * j + 2 ≤ N := by
+  by_contra h
+  rw [ramSet_eq_empty hπ (by omega)] at hc
+  exact hc
+
+/-- **The parameter is determined by the class**: the RAM families are pairwise disjoint. -/
+theorem ramSet_param_unique (hπ : Irreducible π) {j j' N : ℕ} {c : Coeff O 2 N}
+    (hc : c ∈ ramSet π j N) (hc' : c ∈ ramSet π j' N) : j = j' := by
+  have hj := ramSet_param_le hπ hc
+  have hj' := ramSet_param_le hπ hc'
+  obtain ⟨γ, hγ⟩ := hc
+  obtain ⟨γ', hγ'⟩ := hc'
+  obtain ⟨a, rfl⟩ := proj_surjective O 2 N c
+  obtain ⟨g, rfl⟩ := Ideal.Quotient.mk_surjective (I := (maximalIdeal O) ^ N) γ
+  obtain ⟨g', rfl⟩ := Ideal.Quotient.mk_surjective (I := (maximalIdeal O) ^ N) γ'
+  rw [ramCert_iff hπ hj] at hγ
+  rw [ramCert_iff hπ hj'] at hγ'
+  exact (RamAt_uniq hπ hγ hγ').1
+
 end Census
 
 end UniformityCheck
