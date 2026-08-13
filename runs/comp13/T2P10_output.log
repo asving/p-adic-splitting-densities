@@ -1,0 +1,583 @@
+# T2P10 — HOSTILE CONFIRMATION PASS (pass 2 of 2) on T2 v2, r12 effective text
+
+**Target:** `lean/notes/openmath/T2_SIGMA_LADDER_MASTER_2026-08-12.md`, base + r1–r12 + two
+post-pass rider blocks (4439 lines, effective text constructed first).
+**Arm:** Opus/Claude confirmation. **Companion pass of record:** `runs/comp13/T2SOL5_output.log`
+(gpt-5.6-sol high, r12 effective text, 0C + 0G + 0m — the arc's first zero-findings verdict).
+**Charge:** quote and classify, fix nothing. Read-only; no git operation; no edit to the note.
+**Date:** 2026-08-13.
+
+---
+
+## §0. METHOD, AND WHAT THIS PASS DELIBERATELY DID NOT REPEAT
+
+The effective text was constructed first: every r-round instruction applied in declared order,
+including the two composition orderings r12 declares (§A.3 below). The pass then ran four
+routes chosen to be disjoint from the eleven prior passes:
+
+- **(a)** r12's ASSEMBLY against the r1–r11 body — supersession spans, orphan/double-render,
+  and the 17-landmark set re-run at r12's own bound.
+- **(b)** the THEOREM STATEMENT as effectively amended, read for acceptance, with r12's scope
+  clause and its new `d = c_𝒞 v` carrier datum folded.
+- **(c)** the FULL S7 consumption sweep at **37** pins (last full run was at 35; the sol r12
+  pass ran the dated-append instrument, not the whole quotation/lean sweep).
+- **(d)** three new instruments (§D): an exhaustive re-enumeration of every dated append in the
+  six sources against r12's eleven-unit record; a **pin-note directive coherence audit**; and a
+  master-side closure of the `(OCC)` demand that `(REF-HT)` creates at both levels.
+
+Not repeated (verified by the sol r12 pass, and spot-confirmed only): the byte-minimality of
+`HETOW-KEY-BRIDGE-C-A`'s span, the five instance boxes' degree reconciliation, and the
+`d = c_𝒞 v` per-instance constants.
+
+---
+
+## §A. ROUTE (a) — r12's ASSEMBLY AGAINST THE r1–r11 BODY
+
+### A.1 The 17-landmark set, re-run
+
+r12 declares seventeen master-internal landmark strings on sixteen lines, each returning **1**
+under `sed -n '1,4202p' … | grep -cF`. Re-run independently (Python exact-substring count over
+lines 1–4202, the declared bound):
+
+| declared line | string (head) | count @4202 | on declared line |
+|---|---|---|---|
+| 157 | `Every \(\xi\in\operatorname{Pt}\) has a \(k_0\)-embedding` | 1 | yes |
+| 384 | `There is no all-height lift hypothesis.` | 1 | yes |
+| 832 | `The source proves more than the master requests…` | 1 | yes |
+| 1194 | `3. Every cited source unit has a named paired begin/end pin.` | 1 | yes |
+| 2522 | `(LEMMA HE6-0″, inside `HE6-SLOT-SEAM`; likewise HE7-L1's proof)` | 1 | yes |
+| 3223 | the S1.8B scope-clause passage (r6 repair 6(a)) | 1 | yes |
+| 3739 | r9 repair 1(b)'s \(E\)-step clause | 1 | yes |
+| 3987 | the S3.4 Source-pin line | 1 | yes |
+| 3989 | the S3.5 Source-pin line | 1 | yes |
+| 4090 | `The 36 pins are the following existing-text pairs` | 1 | yes |
+| 4090 | `The expected pin count is 36` | 1 | yes |
+| 4096 | the pin-arithmetic chain string | 1 | yes |
+| 4104 | the pairs-inventory string ending `**19 of 36**.` | 1 | yes |
+| 4112 | `…Totals: 19 pairs + 4 first-only + 13 description-only = 36.` | 1 | yes |
+| 4122 | `Nine consumptions have been cured this way.` | 1 | yes |
+| 4130 | r11's appended census sentence ending `became `HE6-BETA-GUARD`.` | 1 | yes |
+| 4138 | `so the count now reads two of nine.` | 1 | yes |
+
+**17/17 verify at the declared line and at count 1.** No landmark is ambiguous, and none was
+already superseded by an intervening round (each target is the text the round it belongs to
+installed, and no later round before r12 edits the same substring — checked pairwise).
+
+r12 also re-counts the r11 Source-pin tail string ``…`HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL` and
+`HE6-ACCOUNT`.`` as **4** at bound 4202 (3985, 3987, 3989, 4140) against r11's **3** at bound
+4031. Verified exactly: 4 occurrences at 4202 at those four lines; 3 at bound 4031. r12's
+explanation (the fourth is r11 repair 1(e)'s own quotation, which r11's bound excluded) is
+correct.
+
+### A.2 The supersession chains r12 touches, walked end to end
+
+**Chain 1 — the S1.8B composed-key scope clause.** r5 repair 2 installs S1.8B → r6 repair 6(a)
+appends the scope clause → r12 repair 1(c) replaces its first half. The r12-quoted superseded
+string is byte-identical to line 3223's content and occurs once. The replacement re-uses the
+tail of the original sentence (`If \(w=0\), the base key IS a DEFINITION HE6-1 key…`) verbatim,
+so the paragraph closes on r6's own continuation with no orphan. r6 repair 6(b)'s justification
+sentence (line 3239) is untouched and still true of the amended clause. **Well-defined.**
+
+**Chain 2 — S3.1's export sentence.** Base text (832), never amended by r1–r11, replaced whole
+by r12 repair 2. The replacement is a superset: it retains base's first clause verbatim and adds
+the `HE6-PEEL-CONVENTION` export. No downstream sentence quotes the deleted half (grep: the
+string occurs only at 832 and in r12's own quotation). **Well-defined, no orphan.**
+
+**Chain 3 — S5 ledger item 3.** Base text (1194), never amended, replaced whole by r12 repair 3.
+r10 repair 1(d) engaged item 3 by paraphrase, not by quotation, so no earlier instruction is
+invalidated. Items 1–2 and 4–17 are untouched; the restated item preserves the item number and
+the ledger's numbering (1–17) is unbroken. **Well-defined.**
+
+**Chain 4 — the pin-inventory taxonomy** (r5 rep 3 → r6 rep 2 → r7 rep 2 → r10 rep 1(e) → r11
+rep 1(d) → r12 rep 1(e)). Every link quotes the immediately preceding link's own replacement
+text and each target occurs once at the round's bound. Terminal arithmetic checked by
+enumeration, not by reading the totals: pairs = 5 (r3) + 6 (r4) + 3 (r5) + 1 (r6) + 3 (r10) +
+1 (r11) + 1 (r12) = **20**; first-only = 4; description-only = 13; **20 + 4 + 13 = 37**, and the
+per-file inventory independently gives 9 + 9 + 6 + 3 + 6 + 4 = **37**. Pin arithmetic chain
+26 → 27 → 29 → 32 → 35 → 36 → 37 ✓.
+
+**Chain 5 — the S0.2 cured-consumption census** (r4 rep 8 → r5 rep 4 → r10 rep 1(e) → r11 rep
+1(d) → r12 rep 1(e)). Cures enumerated: r4 two (`HE6-PEEL-CONVENTION`, `HE7-REF-TERM`); r5 three
+(`HETOW-KEY-BRIDGE`, `HE6-LIFT-1L`, `HE7-PERT-TRANSPORT`); r10 three (`HE6-TEST-PACKAGE`,
+`HE6-ROOT-LABEL`, `HE6-ACCOUNT`); r11 one (`HE6-BETA-GUARD`); r12 one
+(`HETOW-KEY-BRIDGE-C-A`). Total **10**, matching r12's "Ten consumptions have been cured this
+way"; and r4 repair 13's derived clause "two of ten" is right.
+
+**Chain 6 — r12 repair 4's four insertions/replacements.** Anchors 384 (S1.4), 157 (S1.1), 2522
+(r4 repair 9's parenthetical) and 3739 (r9 repair 1(b)'s \(E\)-step) each occur once. Insertion
+sites checked for orphaning: 4(a)'s Notation paragraph lands between a closed sentence and the
+next paragraph ("For HE6, \(k\) is full ⟺ …"); 4(b)'s carrier-datum paragraph lands between the
+`\operatorname{Pt}` declaration and the `(RES-COMP)` display, and its backward reference ("the
+unique extension fixed above") resolves to S1.1's own \(v\), fixed 38 lines earlier. **No orphan,
+no double-render.**
+
+### A.3 The one genuine composition hazard, declared and resolved
+
+r11 repair 1(e) edits the **tail** of r10 repair 1(f)'s S3.4/S3.5 lines; r12 repair 1(f)
+replaces those **whole** lines, quoting them in their r10 form — i.e. without r11's tail already
+applied. Taken naively against the post-r11 effective text, r12's quoted string would not match.
+
+r12 declares the resolution explicitly: its replacements preserve the r11 search tail
+byte-unchanged, "so it still occurs three times among the Source-pin lines and is still amended
+identically at all three". **Verified at the bytes:** both r12 replacement lines end
+``…`HE6-PROOF`, `HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL` and `HE6-ACCOUNT`.`` exactly, so r11's
+instruction applies to them unchanged, and the three Source-pin lines (S3.3 untouched, S3.4 and
+S3.5 as r12 rewrites them) each receive `HE6-BETA-GUARD`. The two edits are at disjoint sites
+(r12 inserts `HETOW-KEY-BRIDGE-C-A` after `HETOW-KEY-BRIDGE`; r11 appends at the tail), so the
+composition is order-independent in content and the effective S3.4 line is unique:
+
+> `HETOW-LABELS`, `HETOW-LABELS-1`, `HETOW-KEY-BRIDGE`, `HETOW-KEY-BRIDGE-C-A`, `HETOW-A`,
+> `HETOW-NORMALIZER-4`, `HE7-REF-TERM`, `HE7-PERT-TRANSPORT`, `HE7-MIXED-13P`, `HE6R1-3`, and —
+> for a chain whose level-one key is itself recentered, by S1.8C — `HE3-A-PROOF`,
+> `HE6-SLOT-SEAM`, `HE6-FAMILY`, `HE6-PROOF`, `HE6-TEST-PACKAGE`, `HE6-ROOT-LABEL`,
+> `HE6-ACCOUNT` and `HE6-BETA-GUARD`.
+
+**Classification: no finding.** The hazard is real, it is the only one of its kind in the twelve
+rounds (checked: no other pair of rounds edits overlapping substrings of one line), and r12
+declares and closes it at the point of use.
+
+---
+
+## §B. ROUTE (b) — THE THEOREM STATEMENT, ACCEPTANCE READ ON r12
+
+### B.1 The effective statement assembled
+
+Hypotheses: σ-ladder carrier over the fixed original complete DVR \(O\) satisfying `(NO-IRR)`,
+`(DEG-EF)`, `(FINITE-RES)`, `(RES-COMP)`, the exact slot and lift formulas, the
+normalizer-defined cocycle law, and S1's base-change-free test assertions; \(F\) a key-free
+σ-block with its development; its window, cap, frame, origin, residual-degree, accounting and
+root-preserving continuation assertions. The last named class now carries three named members
+added by later rounds — S1.7A's block theorem (via S1.9's "the applicable S1.7A block theorem is
+also part of the residual block's data"), `(SEC-RANK)` (r4 repair 3) and `(RISE)` (r7 repair 1).
+Clauses: 1 (base), 2 (base, as re-proved by r2 repair 6 through `(FUND)`), 3 (base, narrowed by
+`(REF-HT)`), 4 (r2 repair 2's block-owned form), 5 (r4 repair 2's two-trigger form as amended by
+r5 repair 5), 6 (base clause 5, renumbered by r2 repair 3).
+
+**Every clause has a named supplier and every symbol is bound before use.** The one new symbol
+r12 introduces, \(c_{\mathcal C}\), is bound at its display ("a positive integer \(c_{\mathcal C}\)
+the carrier fixes") and carries the same carrier subscript as \(e_{\mathcal C}, f_{\mathcal C}\);
+it collides with no other live symbol (checked against \(c\) the digit, \(c\) the cocycle exponent
+of `(BETA)`, \(c_g\), \(c_{\lambda,r'}\), \(c_s^{\mathrm{mult}}\), \(c_t\) — all either subscripted
+differently or locally bound).
+
+### B.2 The `d = c_𝒞 v` datum against the `(REF-HT)`/`(RISE)` architecture — coherent, and it
+retro-supplies three steps
+
+r12 repair 4(b) writes S1.1's "integer-normalized value \(d\)" out as \(d = c_{\mathcal C}v\) on
+\(\overline K_0\), with \(d(AB)=d(A)+d(B)\), \(d(A+B)\ge\min\) with equality on unequal values, and
+\(d(0)=+\infty\). I checked every step of the effective text that uses a valuation property of
+\(d\), and there are exactly three, all now displayed rather than assumed:
+
+1. **r6 repair 1(a)'s min-rule display** — \(d(\Phi(\rho)-L_k(s)(\rho))=\min(\lambda,k)\) at
+   \(k\ne\lambda\). Needs the ultrametric **equality on unequal values**. Supplied.
+2. **r9 repair 1(b)'s residue subtraction** — \((\Phi-\Lambda)(\rho)/n(\lambda)(\rho)\) has value
+   \(d((\Phi-\Lambda)(\rho))-\lambda\). Needs \(d\) additive on quotients. Supplied.
+3. **r12 repair 4(d)'s new \(h(E)<\lambda\) exclusion** — \(d(E(\rho))\ge\lambda\) from
+   \(d(\Lambda(\rho))=d(L_\lambda(s)(\rho))=\lambda\). Needs the ultrametric inequality. Supplied,
+   and the step itself is sound: \(E=\Lambda-L_\lambda(s)\in O[x]\) with \(\deg E<D\), so a nonzero
+   \(E\) has \(d(E(\rho))=h(E)\) by `(SLOT-V)`; \(h(E)=\lambda\) is excluded because `(GAMMA)` is
+   additive at a fixed height and gives digit \(s-s=0\) while S1.2 gives a nonzero slot a digit in
+   \(K^\times\); hence \(E=0\) or \(h(E)>\lambda\).
+
+**Per-instance constants re-derived independently** against the five boxes: \(e_1\)
+(`HE3-INSTANCE`, "\(d=dv=e_1v\)"), \(e_1\) (`HE6-INSTANCE`, ground data HE3's), \(\ell e_1\)
+(`HE7-INSTANCE`, "\(d=dv_2=\ell\,dv\)"), \(e_1e_2\) (`HETOW-INSTANCE`, "\(d=dv_2=e_1e_2v\)"),
+\(e_1e_2\) (`GENTOW4-INSTANCE`, takes HETOW's \(dv_2\)). All five match r12's list.
+
+**A strengthening the datum makes available** (recorded, not a finding): r12's derivation of
+\(D''=D_2\) in the scope clause runs "the boxes' invariant entries force \(\ell=e_2\) and
+\(d_{\widetilde r}=f_2\)". With `d = c_𝒞 v` displayed, \(\ell=e_2\) also follows directly by
+comparing the two boxes' own \(d\)-entries (\(c_{\mathcal C}=\ell e_1\) against \(e_1e_2\)), and
+\(d_{\widetilde r}=f_2\) follows from the shared symbol \(K_2\) (S3.3's \(K_2=K[Y]/(r)=K(\beta)\)
+against S3.4's \(K_2\cong\mathbf F_{Q^{f_1f_2}}\)). Both legs are master-side. The conclusion is
+additionally stated by the pinned source: `HETOW-LABELS`'s instantiation map carries the rows
+"λ = κ₂ = u₂/e₂, gcd(u₂,e₂) = 1", "K[Z]/(r̃) ≅ K(η₂) = F_{Q^{f₁f₂}}" and, in terms,
+"Ψ = Ψ_{λ,r} (DEF HE6-1), deg D″ = D′ℓd_r | Φ₂, deg D₂ = D′e₂f₂ = D″". So the identification has
+three independent legs and the master-side one r12 asserts is available in two forms.
+
+### B.3 The r12 scope clause, attacked
+
+- **Degree bound.** \(\Phi_2\) monic of degree \(D_2\) (S1.1 carrier requirement at the two tower
+  boxes), \(\Psi_{\kappa_2,\widetilde r}\) monic of degree \(D''\) (same requirement at
+  `HE7-INSTANCE` read at \((\kappa_2,\widetilde r)\), which `HETOW-KEY-BRIDGE`'s Ψ-membership
+  clause and `GENTOW-4-1`(b) certify as a level-two datum), \(D''=D_2\) by §B.2 — so
+  \(w=\Psi-\Phi_2\) is \(0\) or of degree \(<D''\) by cancellation of leading terms. **Sound.**
+- **The corner cannot bite.** C-A(ii)'s corner (HETOW 560–563) is a *junk-augmented presentation*
+  whose moved piece reaches the leading slot \(e_2t+1=e_2f_2\); such an object carries an
+  \(x\)-degree-\(\ge D''\) term and therefore is neither a monic degree-\(D_2\) \(\Phi_2\) nor a
+  DEFINITION HE6-1 member (whose recipe demands \(\deg B_t<D'\), HE6:204). Verified against the
+  source unit read in full. **Sound.**
+- **Accumulated \(W\).** \(\deg w<D''\) (above) and \(\deg w_i<D''\) by S1.4's \(\deg L_k(c)<D\) at
+  \(D=D''\); a finite sum of polynomials of degree \(<D''\) has degree \(<D''\) as a maximum, no
+  cancellation needed. Agrees byte-for-byte with HE7-12(d) at HE7:842–843. **Sound.**
+- **The over-read correction.** `GENTOW-4-1`(c) at GENTOW4:184–185 reads "Phi2 =
+  Psi_{kappa2,rtilde} − w with w = 0 or dv2(w) > T2" — read in full: it states **no** degree
+  conjunct, so r6's "gives the same" was indeed one conjunct too wide. r12's correction is exact.
+  (LEMMA HETOW-2's *statement*, by contrast, does carry `deg w < D″` at HETOW:206–207; r12 does
+  not deny this — it declines to read it, which is what C-A(ii) makes prudent.)
+
+### B.4 Hypothesis consistency
+
+The one apparent collision — clause 5 fires at \(d(\widetilde\Phi(\rho))=+\infty\), which
+`(WINDOW)` excludes — is resolved in the right order by installed text ("The value
+\(d(\widetilde\Phi(\rho))=+\infty\) is never fed into `(WINDOW)`: the boundary branch is taken
+first"), and r6 repair 5(a) moved that paragraph back into the subsection body so it reads before
+S1.8A–C. `(RISE)` (value rises strictly above \(\lambda\) on the class) is consistent with
+`(WINDOW)` because \(\lambda>T\) by clause 1. `(SEC-RANK)` is asserted only at the product-1
+transition, which is the only `(RANK)` transition with equal first and second components — so no
+transition is left without a strict decrease. **No collision.**
+
+---
+
+## §C. ROUTE (c) — THE FULL S7 CONSUMPTION SWEEP AT 37 PINS
+
+### C.1 The pin gate, re-run whole
+
+**20 quoted-delimiter pairs**, all 40 delimiter lines resolved by exact-full-line search, each
+occurring exactly once, each first preceding its last:
+
+| pin | file | span |
+|---|---|---|
+| `HE7-SLOT-TRANSFER` | HE7 | 158–191 |
+| `HE7-COCYCLE-2P-THROUGH-R1D` | HE7 | 2013–2253 |
+| `HETOW-LABELS` | HETOW | 56–98 |
+| `HETOW-LABELS-1` | HETOW | 152–196 |
+| `GENTOW-ACCEPTANCE-FOLD` | GENTOW4 | 991–1037 |
+| `HE6-SLOT-SEAM` | HE6 | 215–238 |
+| `HE3-DEF1` | HE3 | 242–286 |
+| `HE3-A-PROOF` | HE3 | 1092–1205 |
+| `HE3-R8-5` | HE3 | 1795–1819 |
+| `HE6-PEEL-CONVENTION` | HE6 | 83–97 |
+| `HE7-REF-TERM` | HE7 | 1087–1128 |
+| `HETOW-KEY-BRIDGE` | HETOW | 198–262 |
+| `HE7-PERT-TRANSPORT` | HE7 | 812–951 |
+| `HE6-LIFT-1L` | HE6 | 130–199 |
+| `HE6-PROOF` | HE6 | 639–666 |
+| `HE6-TEST-PACKAGE` | HE6 | 244–287 |
+| `HE6-ROOT-LABEL` | HE6 | 517–521 |
+| `HE6-ACCOUNT` | HE6 | 525–604 |
+| `HE6-BETA-GUARD` | HE6 | 1036–1047 |
+| `HETOW-KEY-BRIDGE-C-A` | HETOW | 548–569 |
+
+**4 first-only pins** resolved at their quoted first delimiter, each unique: `HE3-R8-2` (1691),
+`HE3-R8-3` (1736), `HE3-R8-4` (1774), `HE6-FAMILY` (201).
+
+**13 description-only pins** resolved to a unique unit head: `HE3-A-STMT` (HE3:312),
+`HE3-HE3-1L` (498), `HE3-HE3-6` (1118), `HE7-A-STMT` (HE7:197 — the two other hits are
+THEOREM HE7.A′, a distinct designation, and a citation), `HE7-MIXED-13P` (HE7:1664 — the other
+hits are citations or the annex heading naming it), `HE6R1-1` (270), `HE6R1-2` (316), `HE6R1-3`
+(469), `HETOW-A` (286), `HETOW-NORMALIZER-4` (689), `GENTOW-4-1` (§S2 145, containing the lemma
+at 170 — S0.2's outermost-unit rule), `GENTOW-4-A` (253), `GENTOW-4-2` (§S4 376, containing 378).
+
+Spans within a file are pairwise disjoint (checked). **`grep -c T2V2PIN` = 0 in all six
+sources.** `git status --porcelain lean/notes/openmath/` is empty — zero source edits, worktree
+clean. **Expected pin count 37, expected synthetic-marker count 0, expected source edit count 0:
+all three met.**
+
+### C.2 The quotation/lean sweep
+
+Every `LEMMA/THEOREM/DEFINITION/COROLLARY/ANNEX-*/CONVENTION` designation occurring anywhere in
+the master (61 distinct designations, enumerated mechanically) was resolved against the pin table:
+
+- **Inside a span:** HE7-12, HE7-13 (`HE7-PERT-TRANSPORT`); DEFINITION HE6-1 (`HE6-FAMILY`);
+  HE6-0′, HE6-1, HE6-2, HE6-2′, HE6-3, HE6-4, HE6-5 (`HE6-TEST-PACKAGE`); COROLLARY HE6-2″
+  (`HE6-ROOT-LABEL`); HE6-0″ (`HE6-SLOT-SEAM`); HE6-1L (`HE6-LIFT-1L`); HETOW-2
+  (`HETOW-KEY-BRIDGE`); HE7-8 (`HE7-REF-TERM`); THEOREM HE3.A (`HE3-A-STMT`/`HE3-A-PROOF`);
+  DEFINITION 1 (`HE3-DEF1`); HE3-1L, HE3-6; HE6R1-1/2/3; ANNEX-DEF HE7-2′, ANNEX-LEMMA R1-a,
+  ANNEX-THEOREM R1-b/R1-c, ANNEX-COROLLARY R1-d (`HE7-COCYCLE-2P-THROUGH-R1D`);
+  ANNEX-LEMMA HE7-13′ (`HE7-MIXED-13P`); THEOREM HETOW.A; LEMMA HETOW-1 (`HETOW-LABELS-1`);
+  LEMMA HETOW-4 (`HETOW-NORMALIZER-4`); GENTOW-4.1, THEOREM GENTOW-4.A, GENTOW-4.2;
+  HETOW's post-PE2 C-A (`HETOW-KEY-BRIDGE-C-A`); HE6's post-PE4 Correction 2
+  (`HE6-BETA-GUARD`); the HE6 §S1 CONVENTION (`HE6-PEEL-CONVENTION`).
+- **Defended out-of-span, class by class:** LEMMA HE3-2 (declination, r7 repair 4 — "nothing
+  further is asserted of LEMMA HE3-2, whose own unit is HE3 §S5 and lies inside no span");
+  LEMMA HE6-0 (declination, r10 repair 1(c)); THEOREM HE6.A's statement display (declination,
+  same); LEMMA HE7-L1 (declination, and r12 repair 4(c) is the cure that made it one);
+  LEMMA HETOW-3 (covered inside `HETOW-A`(i), r5 repair 4); LEMMA HE3-4 and GENHN-3(a) (named
+  only inside quotations of pinned text); LEMMA COCYCLE-TELESCOPE (named only in r12's own sweep
+  disposition of the HETOW absorption append, not consumed); DEFINITION 2 and HE6:668 and
+  HE6:1022/1051 and HETOW:539/571/608 (boundary-fixing); GENTOW4's TOWERRAT2-C annex headings
+  (supersession notice); HE6:1115's F-2 append (reading directive failing the asymmetry test).
+
+**One class-membership observation, recorded not counted:** THEOREM HE7.D and COROLLARY HE7.B(ii)
+are **named** by the master at line 2136, as the parenthetical identifying `ANNEX-COROLLARY R1-d`'s
+content. Their own units lie outside every span. They belong to the unit-identification /
+boundary-fixing class and are consumed for nothing (§E.1 records the one sentence of r12 that
+misstates this).
+
+**No consumption lies outside every span and outside the four defended classes.**
+
+---
+
+## §D. ROUTE (d) — THREE NEW INSTRUMENTS
+
+### D.1 Instrument 1 — exhaustive dated-append re-enumeration of all six sources
+
+r12 repair 1(g) records the first sweep of the five non-HE6 sources, "eleven units", and
+disclaims completeness ("recorded, not asserted complete; the gate re-runs it"). I re-enumerated
+mechanically (`^#{2,4} .*(Dated|append|correction|erratum|acceptance|annex|challenge|rider)`)
+and got **28** dated/annex heading units across the six files. r12's eleven are a proper subset.
+Every unit not in r12's list was tested against r11 repair 1(f)'s asymmetry test — *does obeying
+it change something this master reads?*
+
+| source | unenumerated unit | disposition |
+|---|---|---|
+| HE3 | 1634 R8-1 | declined at r4 repair 6 ("R8-1, which this master does not consume"); not consumed |
+| HE3 | 1691/1736/1774/1795 R8-2…R8-5 | **pinned** (covered by r12 entry 2's umbrella) |
+| HE7 | 1603 ANNEX F-1 | contains `HE7-MIXED-13P`; the master consumes only HE7-13′, which is pinned |
+| HE7 | 1973 ANNEX R / 1990 R1 heading | contain `HE7-COCYCLE-2P-THROUGH-R1D` [2013,2253]; the R1 heading is the source of the master's 2136 identification parenthetical — identification, not consumption |
+| HE6R1 | 710 DATED MICRO-ANNEX (PE2 F-1…F-4) | **F-2 is the live one**: it adds the cocycle unit β^{c₁} to LEMMA HE6R1-2(c)'s scalar. The master reads only "a fixed nonzero scalar and cocycle unit" (S3.5), which the correction itself declares unchanged ("The clause's consumed content — a fixed K₂^× scalar per side, nonzero, consumers scale-invariant — survives the correction unchanged"). F-1/F-3/F-4 are HE7-side echo, stale cross-grades, tag convention. Not consumed |
+| HE6R1 | 864 A4 adjudication heading | routing heading; no directive on consumed material |
+| HE6R1 | 877 obstruction record (HE6R1-1 global bound) | same subject as 1031, already noted at pin `HE6R1-1` by r3 repair 3; the consumed clauses (widened jump condition, μ-descent feeding `(MASS)`) are untouched |
+| HE6R1 | 910 obstruction record (R7 finding 2) | count-side; excluded by S4.1 ("Its separate count-side unit is not used here") |
+| HE6R1 | 928 challenge correction (Φ′ line zero coefficients) | corrects an R4 row description and the ψ-cancellation inference; the master reads no ψ-cancellation and no R4 row. Not consumed |
+| HE6R1 | 972 challenge correction (scope of the LIFT₂ machine result) | **checked hard**: it withdraws any claim that the closed-form `(LIFT₂)` threshold is *sharp*. The master states `(FULL2)` and `(FULL2-U)` as **sufficient** conditions only ("a sufficient condition is…", "with uniform sufficient bound"), and S3.3 repeats "with `(FULL2-U)` as a uniform sufficient bound". Not consumed |
+| HE6 | 997 post-PE4 acceptance record | Correction 1 (§S9 headline) not consumed; Correction 2 is **pinned** as `HE6-BETA-GUARD` |
+| HE6 | 1051 A3 corrections F-1…F-4 | **F-1 checked hardest — see D.1a**; F-2 is r10's directive at `HE6-ACCOUNT`; F-3 corrects LEMMA HE6-0's §S3.1 proof (HE6-0 declined); F-4 corrects LEMMA HE6-5's §S6.1 proof to read ϖ ∈ K₀[x], which is exactly what the master already declares (S1.3: "Integrality is required of the constructed lifts and test polynomials, not of the auxiliary functions used to read residues"; r2 repair 7: "ϖ ∈ K₀(x)^×"). Not consumed |
+| GENTOW4 | 714/728 S8 + dated gauge annex | corrects the gauge-naive ĉ_t and audits 4.1(b)/(c); **the corrections are carried inline inside the pinned unit** — GENTOW-4.1(c) itself reads "[GT4-r1: = the [r1 2026-08-09]-RESTATED HETOW-2, stated at the WRAP-CORRECTED key …]". Not an out-of-span directive |
+| GENTOW4 | 914 §S9 post-PE2 fold | r12's entry 11 already dispositions m-A as corroboration only |
+| HETOW | 539/608/656/837 | all four are r12 entries 7–10 |
+
+**Verdict of instrument 1: r12's enumeration is incomplete as it warns, and every unit it omits
+disposes as not-consumed on grounds the effective text already supplies. No hit.**
+
+**D.1a — the hardest case, recorded in full because it is the one that could have been a GAP.**
+HE6's 2026-08-12 **F-1** (HE6:1061 ff., outside every span) rewrites the γ display *inside*
+`HE6-SLOT-SEAM` — the pin the master consumes for `(SLOT-V)` and `(HE6-SEAM)`. It says the
+displayed γ "omitted the coefficient normalizers" and directs: read it as
+\(\gamma_k(A)=\sum\operatorname{res}(a_{i+e_1t}\pi^{-(k-(i+e_1t)h)/e_1})\eta_\theta^t\) — which is
+letter-for-letter the master's `(GAMMA)`, with the corrected conclusion
+\(\operatorname{res}(A(\xi)/\varpi(\xi)^k)=\iota_\xi(\gamma_k(A))\eta_\xi^{-q(k)}\) — letter-for-letter
+`(HE6-SEAM)`. By r11's own doctrine ("a directive the reader is told to obey is consumed
+material") this looks like the r11/r12 shape exactly, and it is dispositioned "touches nothing
+this master consumes" at r10 repair 1(g) and again at r11 repair 1(f).
+
+**The disposition holds, and the distinguishing fact is r4 repair 9.** That repair does not read
+the corrected formula off HE6-0″'s display; it derives the normalized reading from *another*
+pinned span, quoting three grep-verified lines of LEMMA HE3-1L's proof inside `HE3-HE3-1L` that
+compute \(c_i\pi^{-(\kappa-(i_0+e_1t)h)/e_1}\) explicitly, and argues that the sources'
+"res(c_i)" abbreviates the height-normalized coefficient — an argument the source's own A3
+verification independently reproduces ("the tying coefficients have positive valuation
+\((k-jh)/e_1\), so the bare res(a_j) reading is vacuous"). So the master's consumption has a
+pinned supplier that does not route through the dated correction, and obeying the correction
+changes nothing it reads. Contrast the β-guard, which r11 *did* pin: there no alternative pinned
+leg supplied well-posedness. **The two dispositions are consistent; no finding.** (One residue is
+recorded as a nit at §F.3.)
+
+### D.2 Instrument 2 — the pin-note directive coherence audit
+
+New instrument: enumerate every pin that carries a **reading directive** ("X governs"), and check
+(i) the governing unit is named, (ii) it is pinned or falls in a defended class under the
+asymmetry test, and (iii) the directive does not contradict what the master reads at the
+consuming site. Seven directives exist after r12:
+
+| directive at pin | governing unit | status |
+|---|---|---|
+| `HE6R1-1` ← the 2026-08-12 R7 statement re-display (HE6R1:1031) | unpinned | class 3 (fails the asymmetry test): the consumed clauses are the widened jump condition and the μ-descent, not the global \(\log_2 n-2\) form, which the master "never cites" |
+| `HETOW-LABELS` ← the superseded J-D0 normalizer row | inside the span | declination: normalizer comparison enters only via `HETOW-NORMALIZER-4` |
+| `GENTOW-4-A` ← the TOWERRAT2-C annex (GENTOW4:1039) | unpinned | class 1 (supersession notice); the master consumes only \(\mu_2^*\) and \(\deg f_S=D_2\mu_2^*\), never the top-coefficient parenthetical |
+| `HE6-TEST-PACKAGE` ← PE4 Correction 2 | **pinned** as `HE6-BETA-GUARD` (r11) | closed |
+| `HE6-ACCOUNT` ← the 2026-08-12 F-2 append (HE6:1115) | unpinned | class 3, adjudicated at r11 repair 1(f) — it replaces an inference inside LEMMA HE6-3(a)'s proof, and the master derives its own clause 1 from `(ACCOUNT)` |
+| `HE6-LIFT-1L` ← the `(Q-DEF)` reciprocal-direction reconciliation | master-side | no source directive |
+| `HETOW-KEY-BRIDGE` ← post-PE2 C-A | **pinned** as `HETOW-KEY-BRIDGE-C-A` (r12) | closed |
+
+**All seven cohere; two are pinned, four fall in named defended classes, one is master-side. No
+directive commands obedience to material the gate cannot reach.**
+
+### D.3 Instrument 3 — closing the `(OCC)` demand that `(REF-HT)` creates, master-side
+
+r6 repair 1(a) records that after `(REF-HT)`, "`(OCC)` is now read at a determined height: the
+visible domain obligation for this transition is \(\lambda\in H_{\mathrm{lift}}(B)\)". The note
+leaves the fullness of \(\lambda\) to the carrier and cites HE7:925's parenthetical
+("it exists: λ₂ > T₂ satisfies (‡₂) by §S4.3") as corroboration. No pass has checked that the
+master's own displayed sufficient bounds actually cover the refinement height. They do, at both
+levels:
+
+- **Level one.** Full ⟸ \(k\ge(D'-1)h\) (S1.4's uniform sufficient bound). Every side slope has
+  \(\lambda>T=D'h>(D'-1)h\). ✓
+- **Level two.** `(FULL2-U)`: \(k\ge(\ell d_r-1)u+\ell(D'-1)h\). With \(T_2=\ell d_r u\),
+  \[
+  T_2-\bigl[(\ell d_r-1)u+\ell(D'-1)h\bigr]=u-\ell(D'-1)h>0
+  \]
+  because \(u=\ell\lambda>\ell D'h\). Hence \(T_2\) already exceeds the bound, so every level-two
+  side slope \(\lambda_2>T_2\) (clause 1) satisfies `(FULL2-U)` and is full. ✓
+
+So the `(OCC)` demand at the product-1 transition is discharged from the master's own displays at
+both levels, and HE7:925's parenthetical is genuinely corroboration rather than the only leg.
+**Recorded as a strengthening available to the note; no finding.**
+
+---
+
+## §E. FINDINGS
+
+### E.1 m-1 (MINOR, on r12's own text) — r12 repair 1(g)'s ground for the HE7:2478 disposition is false as written
+
+**The text.** r12 repair 1(g), the dated-append sweep over the five non-HE6 sources, master
+line 4333:
+
+> - HE7:2478 (post-annex-acceptance, riders M-1, M-A, M-B): M-1 is a run-record counter and M-A
+>   an oracle name, neither consumed; M-B is a provenance rider on THEOREM HE7.D's §S2 clause and
+>   COROLLARY HE7.B(ii), **and this master names neither.**
+
+**Why it is false.** The master names both, verbatim, at line 2136 (r3 repair 1(b)):
+
+> The chain's actual endpoint units, named verbatim: **ANNEX-DEF HE7-2′** (the corrected level
+> recursion) and **ANNEX-COROLLARY R1-d** (THEOREM HE7.D and COROLLARY HE7.B(ii), re-proved).
+
+`grep -n 'HE7\.D\|HE7\.B'` over the master returns exactly two lines: 2136 and 4333 itself.
+The sentence is wrong in the note's **own vocabulary**: the standing S7 check r4 repair 13
+installed is worded "every source display the master text **quotes, names, or leans on**", so
+"names" is a relation the gate tracks, and the master bears it to both units at 2136.
+
+**Why the disposition nevertheless stands** (so this is a minor and not a gap): the operative
+test is consumption, as r12's own restated S5 item 3 says in terms ("Consumption, not citation,
+is the gated relation"). The 2136 naming is a unit-identification parenthetical describing what
+the pinned endpoint `ANNEX-COROLLARY R1-d` re-proves — it is drawn from HE7's own R1 heading
+(HE7:1990) and leans on neither THEOREM HE7.D's §S2 clause nor COROLLARY HE7.B(ii)'s
+inductive-step clause. Obeying M-B (read those two clauses with (SLOT) := ANNEX-THEOREM R1-b,
+(LIFT) := ANNEX-THEOREM R1-c, §S5 transfer audited per R1.2) changes nothing the master reads:
+the master reads the cocycle chain for `(COC-DEF)`/`(BETA)`, and R1-b, R1-c and R1-d all lie
+inside `HE7-COCYCLE-2P-THROUGH-R1D` [2013, 2253]. So M-B is not consumed — on the consumption
+ground, not on the naming ground.
+
+**Classification: MINOR**, of the bookkeeping-on-r12's-own-text kind. It is one sentence in this
+round's own new sweep record; nothing depends on it; the cure is to replace the false ground with
+the true one and to classify the 2136 naming under the unit-identification/boundary-fixing class
+that r12 repair 3 has just created. No display, hypothesis, pin, fence or obligation moves.
+
+---
+
+## §F. NON-COUNTED NITS (recorded so a later pass need not re-raise them)
+
+**F.1 — the boundary-fixing exemplar list in the new S5 item 3.** r12 repair 3's item 3 names
+three boundary-fixing quotations (HE6:1022, HE6:1051, HE6:668) while r12 repair 1 creates three
+more in the same round (HETOW:539, 571, 608, each quoted only to locate the C-A span's edges and
+each strictly outside it). The parentheticals are plainly exemplary — the declinations entry
+names one exemplar out of at least six — so the item is not wrong; the list is simply not
+refreshed with the round's own additions.
+
+**F.2 — the two objects named \(dv\).** r12 repair 4(a) cures the \(L_k(c)\)/\(L_\lambda\)
+collision with a Notation paragraph. The same round's repair 4(b) writes \(d=c_{\mathcal C}v\) and
+glosses it "\(c_{\mathcal C}=e_1\) at `(HE3-INSTANCE)`, which writes \(d=dv=e_1v\)" — which sharpens
+a second overloading: \(dv\) is defined on **polynomials** by r2 repair 7
+(\(dv(\sum a_jx^j)=\min_j\{e_1v(a_j)+jh\}\)) and used as a **value function on \(\overline K_0\)**
+(\(=e_1v\)) in the same instance box. The two are tied by `(SLOT-V)` at points of
+\(\operatorname{Pt}\), and the sources overload the same way, so nothing is unsound; the note now
+displays one of the two collisions and not the other. The natural successor to nits n-1/n-2 of
+the r11-effective-text pass.
+
+**F.3 — "No pinned display is asserted to be wrong" (r4 repair 9).** The source's own 2026-08-12
+A3 correction F-1 characterises the same display as having "omitted the coefficient normalizers"
+and lists it among four findings "REAL with derived repairs". The master's sentence is a
+statement about the master's own stance and remains true as such, and §D.1a shows the consumption
+is pin-covered without the correction; but a reader who meets the source's dated append will find
+the master's characterisation ("one abbreviation is expanded") gentler than the source's own.
+
+**F.4 — the route attribution for the clause-5 peel at \(\Phi_2\).** r5 repair 1(a) describes
+`HETOW-KEY-BRIDGE` as "the unit that licenses HE6R1-3's peel at \(\Phi_2\)", and r5 repair 6's
+justification lists HE6R1-3 at S3.4/S3.5 as "available there by `HETOW-KEY-BRIDGE` and
+`GENTOW-4-1`(c) respectively". After r12 the master's operative route in the \(w\ne0\) branch is
+S1.8B (master-side degree bound → LEMMA HE7-12 at \(\Psi_{\kappa_2,\widetilde r}\) → HE7-12(c)
+item (11) → HE6R1-3 verbatim), and r12's pin note says the master "takes nothing from that
+closing sentence in the \(w\ne0\) branch". The two r5 descriptions are pin-line justifications,
+not inferences, and the listing they justify is correct either way; they are simply pointed at
+the licence rather than at the derivation that replaced it.
+
+---
+
+## §G. DRAFT ACCEPTANCE RECORD (NOT applied to the note — for the orchestrator to fold)
+
+> ### Dated acceptance record (2026-08-13) — T2 v2 ACCEPTED 2/2
+>
+> **The arc.** Twelve hostile passes of record across two arms carried this note from a
+> composition draft to acceptance: seven Opus/Claude-arm passes (`runs/comp13/T2P3`–`T2P9`) and
+> five gpt-5.6-sol-high passes (`runs/comp13/T2SOL`–`T2SOL5`), every gap-or-worse pass answered by
+> a repair round r1–r12 and every minors-only pass by a post-pass rider block.
+> **Zero CRITICAL findings in the whole arc.** The GAP history,
+> compressed: pins that named units the sources do not contain (r3); the clause-5 trigger, the
+> displayed well-founded rank, and the level-one `(MID-PEEL)` suite (r4); the perturbation
+> transport LEMMA HE7-12, consumed at two statement changes and pinned nowhere (r5); the
+> refinement height, asserted rather than bound, and `(MP1′)` (r6 — bound as `(REF-HT)`, and
+> `(MP1′)` adjudicated and DISCHARGED); the rise that `(REF-HT)`'s necessity rested on, which no
+> displayed assertion carried (r7 — split into stipulated (RISE) and derived (HT)); the
+> level-one discharge's assembly order (r8); the print/coherent frame conflation at the HE6 family
+> index, caught by the first model-diverse pass (r9 — (IDX-TWIST)); the level-one test package and
+> `(ACCOUNT)` without pinned suppliers (r10 — three new HE6 spans); LEMMA HE6-2's β-definedness
+> guard (r11 — `HE6-BETA-GUARD`); and HETOW's post-PE2 correction C-A with S1.8B's imported degree
+> conjunct (r12 — `HETOW-KEY-BRIDGE-C-A`, and the conjunct re-derived master-side).
+>
+> **The two passes of record.**
+> - Pass 1 of 2 — `runs/comp13/T2SOL5_output.log` (gpt-5.6-sol high, r12 effective text,
+>   2026-08-13): **0 CRITICAL + 0 GAP + 0 minor**, the arc's first zero-findings verdict. It
+>   re-derived the r12 degree mathematics at all five instance boxes, verified
+>   `HETOW-KEY-BRIDGE-C-A` byte-minimal under S0.2, re-ran the six-source dated-append sweep at
+>   37 pins, and attacked the `d = c_𝒞 v` datum and the lift-difference step.
+> - Pass 2 of 2 — `runs/comp13/T2P10_output.log` (Opus/Claude confirmation, r12 effective text,
+>   2026-08-13): **0 CRITICAL + 0 GAP + 1 minor**, the minor being bookkeeping on this round's own
+>   sweep record (r12 repair 1(g)'s ground for the HE7:2478 disposition; the disposition itself is
+>   upheld on the consumption ground). It ran the r12 assembly audit and the 17-landmark set, the
+>   theorem statement as effectively amended with the `d = c_𝒞 v` datum folded, the full S7
+>   consumption sweep at 37 pins, an exhaustive 28-unit dated-append re-enumeration of all six
+>   sources, a pin-note directive coherence audit, and a master-side closure of `(OCC)` at the
+>   refinement height at both levels.
+>
+> Per the campaign's minors-only precedent (T4's gloss-direction rider, T5's two locator riders,
+> T1's five, and this note's own two rider blocks), a 0C + 0G pass is a clean pass and its minor
+> folds as a post-pass rider without a grade event or a counter reset. **The clean-pass counter
+> reaches 2 OF 2.**
+>
+> **Standing conditionalities, displayed rather than discharged.**
+> - `(LB1)` — OPEN at level one. Every level-one state whose clause-4 processing constructs a
+>   block (any state with at least two sides, and any side whose residual is mixed) is
+>   `(LB1)`-conditional. Fenced at S1.7B, at the S3.1/S3.2 level-one fences, and at S5 item 16.
+>   Clauses 1–2 carry no `(LB1)` conditionality at any level-one state.
+> - `(MP1)` — OPEN at level one. A level-one clause-5 mid-chain peel at a **recentered** key is
+>   `(MP1)`-conditional: item 5 of the `(MID-PEEL)` input suite needs \(\Phi''\) irreducible, which
+>   `HE6-PEEL-CONVENTION` supplies only for the ORIGINAL key \(\Phi'\). Fenced at S1.8A, S4.2's
+>   exclusion list, and S5 item 17. The original-key level-one peel is discharged by
+>   `HE6-PEEL-CONVENTION`; the level-two peel at a DEFINITION HE6-1 key by `HE6R1-3`, and at a
+>   recentered level-two key by `HE7-PERT-TRANSPORT`(c) carrying `HE6R1-3` (S1.8B).
+> - `(SEC-RANK)` — a CARRIER HYPOTHESIS, not an obligation; it fences no read. Discharged per
+>   instance: level one inside `HE3-A-PROOF` (the stage-α termination clause); level two at a
+>   DEFINITION HE6-1 key by `HE7-REF-TERM` (LEMMA HE7-8); at the composed key by `HETOW-A`(ii)
+>   and `GENTOW-4-A`(iii), which state finiteness of the α-refine chain **at \(\Phi_2\)**, so the
+>   master performs no key transfer of its own.
+> - `(RISE)` — STIPULATED, on `(SEC-RANK)`'s footing, as the first clause of `(REF-HT)`; (HT),
+>   \(k=\lambda\), is DERIVED from it by the min-rule display. Discharged per instance: level one
+>   at the instance's own refine step inside `HE3-A-PROOF`, with `HE6-FAMILY` and `HE6-PROOF`
+>   supplying the HE6 leg and its \(\ell\ge2\) caveat routed to the product-\(\ge2\) branch; level
+>   two and deeper inside `HE7-PERT-TRANSPORT` (LEMMA HE7-13's rise is that lemma's derived
+>   conclusion), with `HE7-REF-TERM` recording the same chain convention.
+> - `(MP1′)` — RETIRED at r6 repair 2, discharged in S1.8C from `HE3-A-PROOF`, `HE6-SLOT-SEAM`,
+>   `HE6-FAMILY` and `HE6-PROOF`. It denotes a consequence of the pins, not an obligation.
+>
+> **Machine evidence.** No battery obligation exists for T2: S4.1 states in terms that this note
+> "does not rerun supplier batteries", and S7's gate is the **pin sweep**, not a machine leg. The
+> sweep was run whole at 37 pins by both passes of record: 20 quoted delimiter pairs (40 delimiter
+> lines, each `grep -cFx` = 1, each first preceding its last), 4 first-only pins, 13
+> description-only pins resolving uniquely; **zero `T2V2PIN` lines in the six accepted sources**;
+> **zero source edits** (`git status --porcelain lean/notes/openmath/` empty at both passes). The
+> cured-consumption census stands at **ten**.
+>
+> **Grade.** The master's own attempt grade moves \(0/2 \to 2/2\); the status line may leave
+> "mathematical composition draft, attempt grade \(0/2\)". `(GRADE)` is unchanged and still
+> binds: \(\operatorname{grade}(I)=\min(g_{\mathrm{master}},g_{\mathrm{carrier}},
+> g_{\mathrm{frame}},g_{\mathrm{local}})\). At the supplied source HEAD, HE6, HE7, HE6R1, HETOW
+> and GENTOW4 are 2/2, while **HE3 is consumed at the grade stated by its supplied HEAD, which is
+> attempt grade 0/2 (clean count 1/2)** — so the two level-one records S3.1/S3.2, and any
+> level-two chain that consumes an HE3 pin through S1.8C, remain capped at HE3's grade. Acceptance
+> of this note is acceptance of the composition, not an upgrade of the level-one supplier.
+>
+> **Byte-freeze.** With this record the note is **BYTE-FROZEN**: base + r1–r12 + both post-pass
+> rider blocks are not edited; dated appends only, each superseding its quoted sentence of record,
+> in the register r5–r12 used. The pin table, the two open obligations, the two stipulated carrier
+> hypotheses and the `(GRADE)` machinery move only by a dated append carrying its own landmark
+> census.
+>
+> **Next.** Consumption checks: re-price every downstream note that consumes T2 v2 under
+> `(GRADE)` with \(g_{\mathrm{master}}=2/2\), and re-run the standing S7 consumption check at the
+> consuming sites.
+
+---
+
+VERDICT: CLEAN | FINDINGS: 0C + 0G + 1m
