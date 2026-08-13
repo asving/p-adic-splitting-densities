@@ -9,3 +9,4 @@ import UniformityCheck.InertCensus
 import UniformityCheck.N2Base
 import UniformityCheck.N2Exact
 import UniformityCheck.N3Base
+import UniformityCheck.N3Certs
