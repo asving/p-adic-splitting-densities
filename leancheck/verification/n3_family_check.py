@@ -658,6 +658,97 @@ def run_part2_validation(fails):
         print(f"  part1-families    p={p} N=3: "
               f"{'OK (all six families certified with the claimed type)' if not bad_fam else bad_fam}")
 
+
+# --------------------------------------------------------------------------------------
+# PART 3 -- the n = 3 STRUCTURE THEOREM (unit N3B), brute-forced over prime residue fields
+#
+# THEOREM (cubic_trichotomy, Lean: UniformityCheck.cubic_trichotomy).  Over ANY field K a monic
+# cubic satisfies exactly one of
+#     (T1) it has a SIMPLE root (F(rho) = 0 and F'(rho) != 0);
+#     (T2) it has NO root in K;
+#     (T3) it is (X - gamma)^3 for a unique gamma.
+# This is the enumeration that gates the whole drainage argument: it says the only residual
+# shapes WITHOUT a simple root are "irreducible" (already decided at level 1) and the perfect
+# cube.  Checked here at the wild primes 2 and 3 and beyond.
+# --------------------------------------------------------------------------------------
+
+def cube_coeff(g, p):
+    """Coefficient vector (c0,c1,c2) of (X - g)^3 over F_p."""
+    return ((-g ** 3) % p, (3 * g ** 2) % p, (-3 * g) % p)
+
+def run_part3(fails):
+    print()
+    print("=" * 94)
+    print("PART 3 -- the structure theorem: simple root | no root | perfect cube")
+    print("=" * 94)
+    for p in (2, 3, 5, 7, 11, 13):
+        bad = []
+        n_t1 = n_t2 = n_t3 = 0
+        for c2 in range(p):
+            for c1 in range(p):
+                for c0 in range(p):
+                    coe = [c0, c1, c2, 1]
+                    roots = [x for x in range(p) if fp_eval(coe, x, p) == 0]
+                    simple = [x for x in roots
+                              if (3 * x * x + 2 * c2 * x + c1) % p != 0]
+                    cubes = [g for g in range(p) if cube_coeff(g, p) == (c0, c1, c2)]
+                    t1, t2, t3 = bool(simple), not roots, bool(cubes)
+                    if sum((t1, t2, t3)) != 1:
+                        bad.append(((c0, c1, c2), t1, t2, t3))
+                    n_t1 += t1; n_t2 += t2; n_t3 += t3
+                    if len(cubes) > 1:
+                        bad.append(("cubeCoeff not injective", (c0, c1, c2), cubes))
+        # the shape breakdown predicted by the theorem
+        n_irred = (p ** 3 - p) // 3
+        ok = (not bad) and n_t2 == n_irred and n_t3 == p and n_t1 == p ** 3 - n_irred - p
+        print(f"  trichotomy        p={p:2d}: T1(simple root)={n_t1:5d}  T2(no root)={n_t2:4d}"
+              f"  T3(perfect cube)={n_t3:3d}   sum={n_t1+n_t2+n_t3:5d} = p^3={p**3:5d}   "
+              f"{'OK' if ok else 'FAIL ' + str(bad[:3])}")
+        if not ok:
+            fails.append(f"part3-trichotomy p={p}")
+
+    # the reducible lift that makes the level-1 {(1,3)} certificate EXHAUSTIVE
+    # (Lean: UniformityCheck.inert3_decided_iff).  For every residue cubic WITH a root rho,
+    # the vector  linQuadCoeff = (-rho*B0, B0 - rho*B1, B1 - rho)  with
+    # (B0,B1) = (c1 + c2*rho + rho^2, c2 + rho)  reduces to the SAME class and is reducible.
+    for p in (2, 3, 5, 7, 11):
+        bad = 0
+        n = 0
+        for c2 in range(p):
+            for c1 in range(p):
+                for c0 in range(p):
+                    coe = [c0, c1, c2, 1]
+                    for rho in range(p):
+                        if fp_eval(coe, rho, p) != 0:
+                            continue
+                        n += 1
+                        B0 = (c1 + c2 * rho + rho * rho) % p
+                        B1 = (c2 + rho) % p
+                        got = ((-rho * B0) % p, (B0 - rho * B1) % p, (B1 - rho) % p)
+                        if got != (c0, c1, c2):
+                            bad += 1
+        print(f"  reducible-lift    p={p:2d}: {n:5d} (class, root) pairs, "
+              f"{'OK (the peeled lift reduces to the same class)' if not bad else f'FAIL {bad}'}")
+        if bad:
+            fails.append(f"part3-reducible-lift p={p}")
+
+    # the triple-root stratum has exactly p^(3N-2) classes at level N
+    for p in (2, 3, 5):
+        for N in (1, 2, 3):
+            mod = p ** N
+            cnt = 0
+            for a2 in range(mod):
+                for a1 in range(mod):
+                    for a0 in range(mod):
+                        if any(cube_coeff(g, p) == (a0 % p, a1 % p, a2 % p) for g in range(p)):
+                            cnt += 1
+            pred = p ** (3 * N - 2)
+            ok = cnt == pred
+            print(f"  triple-stratum    p={p} N={N}: {cnt:7d} classes, predicted p^(3N-2)"
+                  f"={pred:7d}  {'OK' if ok else 'FAIL'}")
+            if not ok:
+                fails.append(f"part3-triple-stratum p={p} N={N}")
+
 # --------------------------------------------------------------------------------------
 
 def main():
@@ -667,6 +758,7 @@ def main():
     plan = [(2, [1, 2, 3, 4, 5, 6, 7, 8]), (3, [1, 2, 3, 4, 5])]
     run_part2(fails, plan)
     run_part2_validation(fails)
+    run_part3(fails)
     print()
     print("=" * 94)
     if fails:
