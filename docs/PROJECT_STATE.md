@@ -4232,3 +4232,30 @@ a strictly finer invariant than the density limit, and potentially
 the right strengthened induction hypothesis for the general proof.
 Caveats: empirical; n=2 only; q prime (no prime-power residue
 tested); N ≤ 4. One disclosed instrument bug (fixed in instrument).
+
+**2026-08-13 DATED APPEND #38 — UNIFORMITY-P2 LANDED: n=2 DRAINAGE
+AT GENERAL O; A TRUST-BOUNDARY DEFECT CAUGHT AND FIXED.**
+`leanfinal` now proves **drainage_two: UndecidedVanishes O 2 σ for
+EVERY complete DVR with finite residue field** — no characteristic
+restriction, wild q even included. Mechanism: tangency depth
+T(a) = max_γ min(vF(γ), 2vF′(γ)); T < N ⟹ decided via a
+three-certificate dichotomy (the residual-double-root polygon branch
+is self-defeating — recentring raises the depth); #{T ≥ 2M} ≤ q^3M
+of q^4M. Exact identities landed at all q, all O: split+inert+ram
+= 1; every other degree-2 σ = 0; upperDensity = genuineDensity at
+n=2 (the bracket CLOSES); bonus: typeOf_degree (STATUS item 1)
+lands. **DEFECT (flag for Asvin): Part-1's `inertiaDegOf :=
+sInf(normValues)` was UNFAITHFUL** — X²−27/ℤ_3 (ramified, order
+non-maximal so the minimal norm valuation overshoots f) read as
+inert, misclassifying the deep-ram family (mass 1/12 at q=2).
+REPAIRED to gcd of norm valuations (commit 912d0f84); Codex
+confirmed defect+repair 3/3 per the definition-change protocol; all
+gates re-proved, Python + new drainage_check.py exact (T < N ⟺
+decided on all 9 rows, p=2,3,5). Honest scope note folded from the
+Codex pass: upper=lower identifies two CYLINDER-COUNT limits; the
+Haar-measure bridge is unformalized (nothing downstream consumes
+it). REMAINING n=2 (named Lean statements in the note): 5a
+split_eq_inert_two (no uniform coefficient formula at residue char
+2 — real unit), ram_density_two (per-centre census). 42/42
+declarations Lean-core; 0 sorries; build green; 8 commits. Codex
+window 44%.
