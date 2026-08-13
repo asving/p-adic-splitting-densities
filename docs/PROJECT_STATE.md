@@ -4413,3 +4413,19 @@ form). CONSEQUENCE: the n=3 exact-value/drainage unit is UNBLOCKED
 with existing tools (root-form Hensel + the new Bézout/uniqueness/
 interpolation) — LAUNCHED in leancheck. Mathlib upstream
 contribution potential noted.
+
+**2026-08-13 DATED APPEND #43 — THE FORMALIZATION-PHASE GOAL
+(Asvin, /goal, verbatim):** "once the math simplification is done,
+get codex to write out EXTREMELY clear and precise mathematical
+blueprints, optimized for parallelizability of formalization by
+breaking up the entire project into tiny pieces with a clear
+dependancy graph uniting all of them. Once the blueprint is written,
+launch lower tier agents to formalize in lean to the blueprint. The
+blueprint should be detailed enough that the formalization is
+essentially trivial." GATE: T2's acceptance (the campaign's last
+unit; sol pass on r12 in flight). PREP UNDERWAY: the blueprint-phase
+design doc (node format, DAG spec, codex charge template, staging
+mechanics, lower-tier fleet protocol) being drafted now for a codex
+plan-level adversarial review BEFORE the phase fires (standing
+memory: review the architecture plan with Codex before drafting
+hard sections).
