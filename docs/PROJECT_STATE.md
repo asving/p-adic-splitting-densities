@@ -4210,3 +4210,25 @@ record in-session: extension uniqueness true in full generality
 blind but the corpus is UNAUDITED for char-0 usage — F_q[[t]] vs
 ℤ_p n=2 probe running (leanfinal/verification/equalchar_probe.py).
 Codex ~42%.
+
+**2026-08-13 DATED APPEND #37 — SCOPE DECISION + THE EQUAL-CHAR
+PROBE: F_q[[t]] MATCHES ℤ_p CELL-FOR-CELL.** Asvin (verbatim): "I
+agree with keeping the theorem to the O we have specified currently,
+and we can later add a mixed char hypothesis if needed, but I think
+not." — the capstone Prop stays ∀ complete DVR with finite residue
+field; mixed-char hypothesis held in reserve only. The probe
+(leanfinal/verification/equalchar_probe.py + note): exact
+enumeration of monic quadratics over F_q[t]/(t^N), q ∈ {2,3},
+N ≤ 4, equal-char-valid certificates (q=2 forced a genuinely
+different decider — Artin–Schreier/Newton-polygon, disc test
+vacuous in char 2 — vs ℤ_2's mod-8 Kummer test). RESULT: the
+decided split/inert/ram/undecided counts agree with ℤ_p
+**CELL-FOR-CELL at every level**, both q, and match W-11's R_σ(q)
+exactly. Since the q=2 agreement crosses two different decision
+procedures, it is non-definitional. OBSERVATION (conjecture-grade,
+examples-first): the uniformity may hold LEVEL-BY-LEVEL — decided
+counts at every finite N identical across local rings of equal q —
+a strictly finer invariant than the density limit, and potentially
+the right strengthened induction hypothesis for the general proof.
+Caveats: empirical; n=2 only; q prime (no prime-power residue
+tested); N ≤ 4. One disclosed instrument bug (fixed in instrument).
