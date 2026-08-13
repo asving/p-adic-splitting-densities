@@ -4259,3 +4259,72 @@ Add to §6:
 The clean-pass counter is RESET by this round, as by every repair round. The §7 acceptance gate still owes TWO CONSECUTIVE CLEAN HOSTILE PASSES on the effective text as of r13, plus the revised machine battery; the 2026-08-10 sealed run remains inherited evidence only, green at its r-early state and pending re-run, and §4.2's checks 7, 8, 9 and 10 have never been scored.
 
 Standing note for the next pass: r12 opened the strict-assembly surface with R12-4 and repaired one instance; the pass of record found three more of the same family (A-2, A-3, A-4) plus two adjacent orphan defects (A-5, A-6), all now declared. Every "replace"/"insert" directive in r1–r12 was read for a declared end by that pass (its S1 method statement), and every defect it returned is declared above; the four span ambiguities the same pass recorded as NOTED, NOT COUNTED (R2-5's opening-of-(C4) replacement, R7-1c's grammatically bound display, the mutual order of R4-1 and R8-1, and R7-2's §2.6 opening) are left as they stand, both branches being benign, and are named here so a later round does not mistake silence for an unexamined surface.
+
+
+---
+
+## Post-pass riders (2026-08-13, after the r13 clean-w-minors pass)
+
+**Dated riders (2026-08-13, post-pass-1 — the five minors of the Opus/Claude-arm hostile pass on r13, folded per the campaign's minors-only precedent: T4's post-pass \(\mathfrak M\)-gloss-direction rider and T5's two post-pass-1 locator riders, each folded as riders on a 0C + 0G pass and each subsequently confirmed to 2/2. No grade event, NO r-section, NO counter reset.)** Every rider below is referential, enumerative or scoping: it repairs r13's own directive prose, or a battery instruction, or restores a definition the r13 retirement dropped at a site that still uses it. No formula, no display, no span boundary in effect, no pin, no fence, no hypothesis, no honesty-ledger item and no consumption check is changed, and no absorption status moves. The pass's own verdict slot reads NOT CLEAN on its template's strict reading (any finding of any grade); the campaign precedent above governs the fold, and the counter statement at the end of this block is the operative one.
+
+**Landmark convention (riders).** Counts are taken over the note AS IT STOOD BEFORE THIS RIDER BLOCK — lines 1–4261, i.e. through the last line of r13 — because each rider necessarily quotes its landmark a second time. Each count is a whole-line fixed-string match, reproducible verbatim with
+
+```
+sed -n '1,4261p' T1_GAUGE_COCYCLE_2026-08-12.md | grep -cFx '<landmark line>'
+```
+
+### Rider 1 (m-1) — reading rule for "The B-law rows" in the preserved supporting-context paragraph
+
+Finding: "R13-1 retires the B-law ROW but preserves verbatim a §3 paragraph whose grammatical subject is that row; no reading rule is supplied."
+
+Cure, referential only, on the R13-1(e) precedent for §7 attack 8's "the corresponding T1 row": in the supporting-context paragraph that R13-1(a) preserves verbatim — the R8-2 replacement as amended by R11-1, opening "The B-law rows consume (C3-ladder-multiplicativity), the grade identity \(\beta_t=(f_{i+1}-t)\bar\kappa_i\), and (C3-graded-scalar-covariance) …" — the subject phrase "The B-law rows" reads as the effective A7 **B-law classification** block, which after the retirement is the note's sole B-law site. The paragraph is byte-unchanged and the obligations it names are unchanged; only its referent is stated.
+
+Landmark: the R8-2 directive line that introduces the paragraph, `Replace the supporting-context paragraph following the absorption map with:` — **1**.
+
+### Rider 2 (m-2) — restore the "Verbatim" definition at the A1 block that still carries the label
+
+Finding: "the relocated A1 rows keep the bolded status label **Verbatim** while the same span retires the only definition of 'Verbatim' in the note."
+
+Cure: in the relocated **A1 — GENHN** block (R13-1(b)), at the end of the **RETAINED ROW FORM** preamble paragraph — i.e. immediately before that block's table header line — add as the preamble's closing sentence:
+
+> The label **Verbatim** in these two rows carries the definition retired with the base table, restored here unchanged for the rows that use it: “Verbatim” means that, after replacing local names by the displayed T1 names, the certified local mathematical display is an immediate specialization with no added hypothesis or conclusion.
+
+This restores a definition rather than supplying a new one, at the one site that still uses the label: it re-pins the two A1 rows to exactly the strength they carried before the retirement and cannot enlarge them. The companion "Adapted" definition is NOT restored, because no surviving row or block carries the bolded **Adapted** mode label — the only such label outside the retired base table is R1-3's replacement A5 row, which lies inside the retired span and is declared HISTORICAL by R13-1(c).
+
+Landmarks: the block heading `> ## A1 — GENHN` — **1**; the block's table header line `> | Annex | Local site | T1 conclusion | Mode and specialization |` — **1**; the restored sentence's base source line `“Verbatim” means that, after replacing local names by the displayed T1 names, the certified local mathematical display is an immediate specialization with no added hypothesis or conclusion.` — **1**.
+
+### Rider 3 (m-3) — R13-3's span enumeration names all five blocks
+
+Finding: "R13-3's explicit span enumeration omits precisely the sentence whose orphaning was finding A-3; read as authoritative it reinstates the defect."
+
+Cure: R13-3's enumeration sentence reads, with the omitted block named:
+
+> INCLUSIVE — that is, the span is, in order, five blocks: the conditional lead-in sentence; the display \(u_2>e_2D'h\); the monomial-clearance sentence "every monomial in this lift, after multiplication by a monomial of \(\Phi'^{e_2t}\), clears the outer side by at least"; the boxed (C6-clearance) display; and the collection sentence.
+
+The span's declared boundaries are unchanged — R13-3's start and end landmarks are untouched, and its landmark paragraph already declared the correct branch (of the two occurrences of `clears the outer side by at least`, the second "now lying inside the retired span"). This rider only makes the enumeration agree with the boundaries R13-3 already declared.
+
+Landmark: the enumeration sentence `INCLUSIVE — that is, the span is: the lead-in sentence, the display \(u_2>e_2D'h\), the boxed (C6-clearance) display, and the collection sentence.` — **1**.
+
+### Rider 4 (m-4) — two block-count slips
+
+(a) In R13-2's span enumeration, the phrase "all four base blocks of the (C4) tail" reads "all five base blocks of the (C4) tail". The five-item list that follows it is complete, unchanged and governs (lead-in sentence; the \(H(y)=y^\nu Q(y),\ P(y)=aQ(by)\) display; the connective "Thus, for nonzero residuals,"; the boxed (C4-support) display; the closing sentence pair), as do R13-2's landmarks; only the numeral was wrong.
+
+(b) R13-6's "reads, in order" list is prefixed with the block's unchanged r2 opening sentence, which R13-6 itself declares as a landmark (count **1**) and does not replace, so that the list reads: the r2 opener "T1 only **supplies the gauge algebra to** the preceding B-law display."; then R8-2's residual-obligation text as amended by R11-1 (codomain plus nonvanishing clauses); this connective lead-in; the retained display \(u(\beta_t)=\Theta(t)w^{f_3-t}\); then the r2 slotwise-cancellation paragraph, unchanged, ending as R13-6 quotes it. Nothing is inserted, replaced or re-anchored by this rider.
+
+Landmarks: (a) the section heading `## R13-2 (A-2) — Declare R2-2's span end; (C4-support) renders exactly once` — **1**; (b) the amended sentence `The effective A7 **B-law classification** therefore reads, in order: R8-2's residual-obligation text as amended by R11-1 (codomain plus nonvanishing clauses); this connective lead-in; the retained display \(u(\beta_t)=\Theta(t)w^{f_3-t}\); then the r2 slotwise-cancellation paragraph, unchanged, ending "but it does not prove the supplier identity itself. Thus the B-law is no longer labeled 'absorbed verbatim.'"` — **1**.
+
+### Rider 5 (m-5) — §4.2 check 10 excludes its own specification (the R4-3 mechanism)
+
+Finding: "the new §4.2 check 10 self-matches: as written it must fail the very paragraph that introduces it. Exact recurrence of the defect R4-3 repaired for check 6."
+
+Cure, in R4-3's own idiom ("Occurrences inside this lint specification, quotations of rejected language, and explicit scope-fence negations are nonmatches"): append to check 10, immediately after its closing "… or that applies \(dv_i\) to \(\Phi_i^{k}\) with \(e_{i+1}\nmid k\).", the self-exclusion and scoring scope:
+
+> Scored sites exclude this numbered check's own instruction text and the value-group declaration's own witness displays and prose in the **Grade data (definitions)** paragraph — the boxed codomain display, the \(dv_i(\Phi_i)=u_{i+1}/e_{i+1}\) sentence, and the \(dv_2(\Phi_2)=\tfrac{21}{2}\) witness display — which exhibit a non-integral \(dv_i(\Phi_i)\) deliberately, as the specification of what this check confirms; occurrences inside that specification are nonmatches. A site is scored only where the note CONSUMES the value: a display standing inside an explicit non-implication ("In particular, T1 does not imply …") is not a consumed site. A consumed value that is integral by additivity of the listed classes — the composed-key product \(dv_i(\widehat k_t\Phi_i^{e_{i+1}t})=(s+t)u_{i+1}\), class (i) plus class (ii) — scores as passing under those classes.
+
+This changes no class, no value and no claim of the R13-8 declaration; it fixes the scorer's target so that the tooth does not fail the note on the tooth's own text, and so that its "score every \(dv\)-site … against the four consumed classes" instruction matches the scope of the integrality claim (consumed values), which the pass of record independently re-derived and confirmed.
+
+Landmark: the directive line that appends the check, `**(iii) Battery tooth.** Append to §4.2:` — **1**.
+
+### Counter state (NOT reset by this block)
+
+These riders repair the five MINOR findings of a hostile pass that returned **0 CRITICAL + 0 GAP + 5 minor**. A minors-only pass is a clean pass whose minors fold as post-pass riders (T4, T5), and folding riders is not a repair round: **the clean-pass counter is NOT reset and STANDS AT 1 OF 2.** Pass of record: the Opus/Claude-arm hostile pass on r13, `runs/comp13/T1P12_output.log`. Still owed at the §7 acceptance gate: the sol confirmation pass — the second of the two consecutive clean passes, on the model-diverse arm, against the effective text as of r13 plus these riders — and the §4.2 battery re-run of checks 1–10 (checks 7, 8, 9 and 10 have never been scored, and the 2026-08-10 sealed run remains inherited evidence only).
