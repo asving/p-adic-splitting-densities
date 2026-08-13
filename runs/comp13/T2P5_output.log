@@ -1,0 +1,641 @@
+# T2 v2 — HOSTILE PASS, pass 1 of 2 on revision r5 (Opus/Claude arm)
+# Target: lean/notes/openmath/T2_SIGMA_LADDER_MASTER_2026-08-12.md (base + r1..r5, effective text)
+# Charge: quote and classify, fix nothing. Read-only on the corpus; this log is the only file written.
+# Date: 2026-08-13.  Sources read in full where load-bearing:
+#   HE7_PROOF_2026-08-08.md (LEMMA HE7-12 812-916, HE7-13 918-951, HE7-8 1087-1128)
+#   HE6R1_RECON_2026-08-08.md (LEMMA HE6R1-3 469-486)
+#   HETOW_RECON_2026-08-09.md (LEMMA HETOW-2 198-262, THEOREM HETOW.A 286-334)
+#   GENTOW4_PROOF_2026-08-09.md (LEMMA GENTOW-4.1 170-232, THEOREM GENTOW-4.A 253-374)
+#   HE6_PROOF_2026-08-08.md (LEMMA HE6-1L 130-199, DEFINITION HE6-1 201-)
+#   HE3_PROOF_2026-08-08.md (S6.3 PROOF OF THEOREM HE3.A 1092-1205)
+#
+# VERDICT: NOT CLEAN | FINDINGS: 0C + 2G + 4m   (detail below; summary repeated at the end)
+#
+# ROUTE MAP
+#  (a) S1.8B re-derived ................ 1 GAP (G-1P5), plus 1 minor (m-4P5); trace lands
+#  (b) the (SEC-RANK) re-route ......... verified sound at both records; no finding
+#  (c) (MP1') fence completeness ....... 1 GAP (G-2P5) + 1 minor (m-1P5)
+#  (d) pins ............................ 3 new pins byte-exact; 5 further pins resolved; no finding
+#  (e) strict assembly r1-r5 ........... 2 minors (m-2P5, m-3P5); all 22 landmarks unique
+
+================================================================================
+(a) S1.8B RE-DERIVED — LEMMA HE7-12 / HE7-13 read in full at the new pin
+================================================================================
+
+WHAT THE SOURCE ACTUALLY SAYS (HE7_PROOF_2026-08-08.md, span 812-951, both
+delimiters verified below in section (d)).
+
+HE7-12's hypothesis, verbatim (813-816):
+  > Let (λ, r) be a level-2 datum
+  > with key Ψ (DEFINITION HE7-1), and let w ∈ O[x], w ≠ 0, with deg w < D″
+  > and level-2 slot value ν := dv₂(w) = min_{s<ℓd_r}(ℓ·dv(c_s) + s·u) > T₂
+
+so the threshold is the DEFINITION HE6-1 slot line T₂ = ℓd_r·u, which the
+source fixes in the paragraph immediately above the span (806-808: "every
+occupied Φ′-slot of Ψ sits at slot value exactly T₂ … the monic top slot ℓd_r
+has value ℓd_r·u = T₂"), and which the master's own (HE7-INSTANCE) writes as
+T = T₂ = ℓd_ru.  The two agree; the composed-key records' T₂ = e₂f₂u₂ is the
+same quantity under (ℓ, d_r, u) ↦ (e₂, f₂, u₂), which HETOW.A's proof states
+("the dictionary display is HE7.A(2)'s with (ℓ, d_r) = (e₂, f₂)").  No finding
+on the threshold identification.
+
+(i) DOES HE7-12(d) FOLD THE CHAIN UNDER dv₂(w) = λ₂ > T₂ ?
+
+Yes — (d) is verbatim (842-846) "if w₁, …, w_j each have degree < D″ and slot
+value > T₂ then W := w₁ + ⋯ + w_j has deg W < D″ and dv₂(W) ≥ min_i dv₂(w_i) >
+T₂ … so every iterate Ψ − W of a refine chain is covered by ONE instance of
+(a)–(c)", and (d)'s [r3] clause supplies the W ≠ 0 that (a)-(c) additionally
+need, with the W = 0 case explicitly routed to §S5 directly.  The master cites
+(d) for the folding and does not need to re-supply W ≠ 0: both branches of
+(d)'s own split deliver the conclusion.  NO FINDING on the fold itself.
+
+The fold's hypothesis, however, is where the master's derivation is short.
+
+>>> FINDING G-1P5 (GAP).  S1.8B Step 1 establishes HE7-12's hypothesis
+>>> dv₂(w) = λ₂ only through an identification the master never makes, and the
+>>> "two independent legs" that are offered as corroboration do not corroborate
+>>> it: leg 1 cites a height S1.8 does not bind, and leg 2 quotes a source line
+>>> that does not carry the height.
+
+The passage (master, S1.8B Step 1, effective text at r5 repair 2):
+
+  > **Step 1 — the recentered key is an above-the-line perturbation, by the
+  > master's own data.** Each refine increment is \(L_{k}(s)\) at the exact
+  > height \(k=\lambda_2\) of the side being refined (S1.8's recentering,
+  > `(OCC)` supplying the legal lift at that height), and every side slope of a
+  > state satisfies \(\lambda_2>T\) by clause 1 of HE7.A. … The source states
+  > the same height independently, inside the same pin: `> (it exists: λ₂ > T₂
+  > satisfies (‡₂) by §S4.3) and Ψ̃^{(1)} := Ψ̃ − w.` The two legs — this
+  > master's clause 1 plus S1.8's lift height, and LEMMA HE7-13's own display —
+  > agree, so the hypothesis is not carried by a single textual reading.
+
+Leg 1.  S1.8 (base text, the product-1 branch) reads in full:
+
+  > then \(e'=1\) and \(r'=Y-s\) for some \(s\in K\). The required refinement
+  > height lies in \(H_{\mathrm{lift}}\), so `(OCC)` supplies a legal lift. The
+  > new key is
+  > \[ \Phi_{\mathrm{new}}=\Phi-L_k(s). \]
+
+and the HE7.A proof's copy (S2) reads
+
+  > The required height is in \(H_{\mathrm{lift}}\); `(OCC)` supplies
+  > \(L_k(s)\); and the linear recentering of S1.8 gives the next block …
+
+`k` is UNBOUND at both sites: neither says k = λ, and no other site of the
+effective text binds it (`grep -n "L_k(s)\|L_k(c)\|refinement height"` returns
+S1.4's (LIFT) display, S1.8, the S2 proof, and the r4 repair 2/3 quotations of
+S1.8 — none of them an identification).  (LIFT) gives h(L_k(c)) = k, so leg 1
+yields dv₂(w) = k, and clause 1 yields λ₂ > T₂; without k = λ₂ these do not
+compose into HE7-12's hypothesis ν > T₂.  So "S1.8's lift height" names a fact
+S1.8 does not state, and leg 1 alone establishes nothing about ν.
+
+Leg 2.  The quoted line is HE7_PROOF:925 and it is byte-exact
+(`grep -cFx` → 1), but it is the existence parenthetical of HE7-13's
+hypothesis.  The line that carries the height is the UNQUOTED preceding line,
+HE7_PROOF:924:
+
+  > (the α-refine configuration: ℓ₂ = 1, the endpoint j = 0 attains, so
+  > s₂ ≠ 0). Let w be a (LIFT₂) polynomial at height λ₂ with residue s₂
+
+Moreover the quoted line's "λ₂ > T₂" is itself part of HE7-13's HYPOTHESIS
+("suppose the polygon of f_S with respect to Ψ̃ is the single side of integer
+slope λ₂ > T₂ with residual R₂ = (Z − s₂)^{μ₂}", 920-922), not a derivation.
+So leg 2 is not independent of leg 1 in the sense claimed: it is the only leg
+that supplies the missing conjunct (height = λ₂), and the master does not
+quote the line that supplies it.
+
+Status of the conclusion: TRUE and available.  HE7_PROOF:924 does state the
+height, clause 1 does give λ₂ > T₂, and S1.4's `deg L_k(c) < D` with D = D″
+gives deg w < D″.  This is a justification gap in the round's central
+derivation, not a break: assume dv₂(w) = λ₂ > T₂ and everything downstream
+verifies (below).  Cure shape: bind the refinement height in S1.8
+("the required refinement height is the side's integer slope λ"), and re-quote
+HE7_PROOF:924 as the source leg.
+
+(ii) DOES HE7-12(c) CARRY THE §S1 CONVENTION WITH HE6R1-3'S PEEL VERBATIM, AND
+     DOES ITEM (11) DISCHARGE AT THE KEY THE MASTER READS?
+
+YES on both.  (c) verbatim (834-840) lists "… the class-size sandwich, the §S1
+CONVENTION with LEMMA HE6R1-3's peel, and LEMMA HE6R1-2's read — holds VERBATIM
+with Ψ^{(w)} in place of Ψ (same λ, r, dv₂, n₂, K₂, T₂, ι^{(2)}; labels and
+residues now read on Ψ^{(w)}), by the SAME proofs" — the master's quotation is
+byte-faithful (the two constituent lines 838 and 839 each `grep -cFx` → 1 and
+lie inside the span).
+
+Item (11) (905-911) was checked against HE6R1-3's PROOF line by line
+(HE6R1_RECON:479-486).  That proof consumes exactly six things:
+  1. "Every root ξ of g₀ is a root of Ψ = Ψ_{λ,r}, hence a level-2 point with
+     level-1 label (λ, r) (LEMMA HE6-1)"    → item (11)'s disk-criterion leg;
+  2. LEMMA HE6-0′'s bound [L_ξ:K₀] ≥ (e₁ℓ)(f₁d_r)  → key-free;
+  3. Galois stability of g₀                → item (11) "Galois stability … key-free";
+  4. g₀ | Ψ with deg Ψ = D″                → item (11) "deg Ψ^{(w)} = D″";
+  5. the ef = D″ sandwich                  → item (11) "…forces (e, f) = (e₁ℓ, f₁d_r) by the same sandwich";
+  6. disc f_S ≠ 0                          → item (11) "…disc ≠ 0 are key-free".
+Every key-dependent step is covered, AT Ψ^{(w)} itself — not at a conjugate or
+normalized variant: item (11) argues on roots of Ψ^{(w)} through (b)'s disk
+criterion, which is stated for Ψ^{(w)}.  The master's mapping of HE6R1-3's
+conclusion onto suite items 5 and 2/3/4 is correct: item 5 from "Ψ is
+IRREDUCIBLE over O of degree D″, and it is a simple factor of f_S with
+e(Ψ) = e₁ℓ, f(Ψ) = f₁d_r" (470-473); items 2-4 from "every root of f_S′ is
+still a level-2 point, and THEOREM HE7.A applies to f_S′ with μ₂ − 1 in place
+of μ₂" (475-477), which is the source's own certification of the input suite
+for the quotient, exactly as r3 repair 4 characterised it.
+NO FINDING.  (Non-counted nit: the master calls item (11)'s target "the one
+hypothesis of HE6R1-3 that mentions the key at all", while item (11) as quoted
+also carries deg Ψ^{(w)} = D″ and the (e,f) sandwich, which mention the key
+too.  Harmless — the full quote follows immediately.)
+
+(iii) IS THE WITHDRAWAL OF THE [r3]-CLAUSE APPEAL COMPLETE?
+
+YES for every load-bearing site.  The two sentences that carried it are both
+superseded span-precisely: r4 repair 2's "Instance consequence" paragraph
+(landmark unique, r4-effective line 2331) and r4 repair 3's "Level two and
+deeper" bullet (unique, line 2399).  I searched the whole effective text for
+survivors:
+  - S3.3's r2 repair 4 replacement, "HE6R1-3 together with HE7-8 `[r3]`
+    supplies the mid-chain peel `(MID-PEEL)`", and the r2 subsection's "This is
+    the HE6R1-3/HE7-8 `[r3]` mid-chain peel", both survive — but both are about
+    the peel IDENTITY (that it fires, mass drops by one), which is precisely the
+    role r5 leaves the [r3] clause ("that clause keeps exactly the role r3
+    repair 5 gave it").  Not a leak; not counted.
+  - r3 repair 4's "At level two the instance discharge is LEMMA HE6R1-3"
+    survives and remains true at a DEFINITION HE6-1 key; S1.8B extends it.
+  - dropping "its `[r3]` clause handles peels interleaving a chain" from the
+    (SEC-RANK) bullet loses nothing: interleaved peels drop the FIRST component
+    of `(RANK)` (transition 3, degree strictly down), and `(SEC-RANK)` is
+    demanded only at recenterings.
+NO FINDING.
+
+(iv) CONCRETE TRACE (the simplest level-two recentered configuration the
+     sources instantiate: HE7_PROOF §S11's machine configuration, 966-968).
+
+Data: O = ℤ₃, λ = 5/2 (so u = 5, ℓ = 2), T₂ = 10 = ℓd_r u with d_r = 1,
+D″ = 4, deg f_S = 8, μ₂ = 2; level-2 polygon a single side of integer slope
+λ₂ = 11 with residual (Z − s₂)², s₂ = 1; Ψ's occupied slots {(0,10),(2,10)},
+w's single slot (1,11).
+  1. Master clause 3, product-1 branch: e' = ℓ₂ = 1, r' = Z − 1 repeated, so a
+     linear recentering fires.  s₂ = 1 ≠ 0 is forced by (ORIGIN)'s removal of
+     Y^ν and by A₀ ≠ 0 (S1.5), matching HE7-13's "s₂ ∈ K₂^×".
+  2. Increment w = L_{11}(1): deg w < D″ = 4 (S1.4), slot value 11 (the machine
+     leg's "w's single slot (s=1, 11)"), 11 > 10 = T₂ (clause 1).  HE7-12's
+     hypothesis holds — modulo G-1P5's missing k = λ₂.
+  3. HE7-12(d): W = w, W ≠ 0, one instance of (a)-(c) at Ψ^{(1)} = Ψ − w.
+  4. HE7-12(c) + item (11): HE6R1-3 holds at Ψ^{(1)}.  If Ψ^{(1)} | f_S then
+     gcd = Ψ^{(1)}, irreducible of degree 4, simple, (e,f) = (2e₁, f₁), and
+     f_S′ = f_S/Ψ^{(1)} carries μ₂ − 1 = 1.
+  5. Suite: item 5 from the peeled factor's certificate; items 2-4 from
+     "THEOREM HE7.A applies to f_S′ with μ₂ − 1".  ν = μ₂ = 2 ≥ 2, so
+     `(MID-MASS)` applies and the degenerate guard does not fire.
+  6. `(RANK)`: transition 5 (recentering) drops σ_C; transition 3 (peel) drops
+     deg 8 → 4.  Both components behave as the r4 table says.
+EVERY STEP LANDS.  The trace is the reason G-1P5 is a GAP and not worse.
+
+================================================================================
+(b) THE RE-ROUTE — (SEC-RANK) at the composed key
+================================================================================
+
+HETOW-A(ii).  Read at HETOW_RECON:299-311, inside the `HETOW-A` unit
+(THEOREM HETOW.A, 286-334).  The clause states, verbatim at 307-309:
+  > — the composed stage dictionary (e₁e₂·e_s, f₁f₂·f_s), i.e. exactly the
+  > content of [GENHN-HE(μ₂)] at the tower stage; a repeated K₂-rational
+  > linear factor at integer λ₂ is a finite α-refine chain (LEMMA
+  > HE7-12/13, HE7-8); …
+under the theorem's own preamble at 291,
+  > η ≠ 1 wrap frames; every clause below reads at the corrected key):
+Both quoted lines `grep -cFx` → 1 and both lie strictly inside the span.
+The preamble binds every clause to Φ₂, and clause (i) independently states
+"Φ₂ is its key up to a LEMMA HE7-12 perturbation (HETOW-2)".  So the finiteness
+IS asserted at Φ₂.  ✓ as the master claims.
+
+GENTOW-4-A(iii).  Read at GENTOW4_PROOF:280-296, inside `GENTOW-4-A` (THEOREM
+GENTOW-4.A, 253-374).  Key declaration at 282,
+  > f_S at the datum (kappa2, rtilde) with key Phi2: every side of
+and the finiteness at 289-292,
+  > a repeated K2-rational linear factor at integer lambda2 is a
+  > finite alpha-refine chain (HE7-12/13, HE7-8; the chain re-reads
+  > f itself through (ii) at each refined key, available by LEMMA
+  > HE7-12 with W + w);
+Both quoted lines `grep -cFx` → 1.  ✓  Note the parenthetical "available by
+LEMMA HE7-12 with W + w" — the source itself performs the wrap-perturbation
+composition, so no master-side transfer is needed.  (The master cites the
+first quote as ":289-292" and the key declaration separately; the declaration
+is at 282, inside clause (iii) which opens at 280.  The citation is not
+claimed to be inside 289-292, so this is not an error.)
+
+CONFIGURATION MATCH.  `(SEC-RANK)` is demanded at the product-1 linear
+recentering, i.e. S1.8's e' = 1 with r' = Y − s, s ∈ K.  e' = 1 ⟺ integer
+slope; r' = Y − s with s ∈ K₂ ⟺ K₂-rational linear; clause 3 fires only when
+r' is repeated.  That is exactly the "repeated K₂-rational linear factor at
+integer λ₂" both clauses quantify over.  ✓  The finiteness-to-rank step
+("finiteness of every chain … is well-foundedness … carries an ordinal rank
+function") is sound and is licensed by the latitude r4 wrote into `(SEC-RANK)`
+(W_C merely well-founded).
+
+S3.3'S RETENTION OF HE7-REF-TERM.  Correct.  LEMMA HE7-8 (HE7_PROOF:1087-1128)
+opens "Let 𝔇 be a level datum with key Ψ, μ₂ ≥ 2, and suppose the read performs
+an infinite chain of α-refines, i.e. keys Ψ^{(0)} = Ψ, Ψ^{(j+1)} = Ψ^{(j)} −
+w_j …" — it is stated at the chain's BASE key and quantifies over the whole
+chain, which is exactly the r5 bullet's claim, and S3.3's key Ψ_{λ,r} is a
+literal DEFINITION HE6-1 member (HE6_PROOF:201), so no transfer is performed.
+✓ NO FINDING on (b) proper.
+
+>>> FINDING m-4P5 (minor).  r5 repair 6's pin-line justification asserts that
+>>> S1.8B applies at the composed-key records, but S1.8B's own scope sentence
+>>> excludes them and the composition is nowhere displayed.
+
+The justification:
+  > **S3.4/S3.5 `HE7-PERT-TRANSPORT`:** the same two clauses name LEMMA HE7-12,
+  > and S1.8B applies at these records too.
+S1.8B opens:
+  > Let a level-two state have as current key a recentered key
+  > \(\Psi^{(j)}=\Psi-W\) dividing its represented block, \(\Psi=\Psi_{\lambda,r}\)
+  > being the DEFINITION HE6-1 key at which the α-refine chain began.
+At S3.4/S3.5 the chain begins at Φ₂, which is NOT a DEFINITION HE6-1 key; it is
+Ψ_{κ₂,r̃} − w.  Entering S1.8B's scope requires HETOW-2's "Φ₂ = Ψ − w with
+deg w < D″ and either w = 0 … or dv₂(w) > T₂" (HETOW_RECON:206-208) resp.
+GENTOW-4.1(c), i.e. W ← w + W, and Step 1's derivation covers only refine
+increments, not the wrap perturbation w.  Both bridge units ARE pinned
+(`HETOW-KEY-BRIDGE`, `GENTOW-4-1`) and both ARE on the respective records'
+pin lines, and the same paragraph names them one sentence later for the
+`HE6R1-3` listing — so the ingredients are present and the claim is true.  What
+is missing is the one-clause composition, at exactly the seam this round exists
+to close.  Minor, not GAP, because nothing unpinned is consumed.
+
+================================================================================
+(c) (MP1′) FENCE COMPLETENESS
+================================================================================
+
+ENUMERATION of effective-text sites that read over a key with a level-one
+recentering in its history, and their status after r5:
+
+ 1. S1.8 product-1 branch, "The above-line perturbation, window, and cap
+    calculations provide a new valid development."  — master-level CARRIER
+    hypothesis (HE7.A hypothesises "root-preserving continuation assertions"),
+    so it needs no fence; what needs one is an instance's claim to discharge it.
+ 2. HE7.A clause 3 "Product \(1\) gives the certified linear recentering" and
+    the S2 proof's copy — same status, hypothesis-side.  OK.
+ 3. S1.8A `(MP1)` — different assertion (peeling, not reading), correctly kept
+    separate; `(MP1′)` does not swallow it (a level-one frame at Φ″ would still
+    not give Φ″ irreducible, which is what `HE6-PEEL-CONVENTION`'s argument
+    runs on).  NO double-fencing here.
+ 4. S1.8B's level-two derivation — explicitly excluded by r5's own sentence
+    "The two are independent of the level-two derivation above, which reads over
+    an unrecentered level-one frame and recenters only the level-two key."  ✓
+ 5. S3.1/S3.2 "Level-one fence" — amended (landmark unique).  ✓
+ 6. S5 item 17, S4.2 exclusion list, S4.1 grade sentence — all three amended,
+    all three landmarks unique.  These are global, so S3.3/S3.4/S3.5 (which
+    carry no record-level (MP1′) note although a level-two record can sit over a
+    recentered level-one frame) are covered by disclosure even though the
+    record-level marking is asymmetric with S3.1/S3.2.  Observation, not
+    counted: the asymmetry is a presentation choice, and the global fences are
+    unambiguous.
+ 7. S1.7B as rewritten by r4 repair 10 — LEAKS.  See m-1P5.
+
+>>> FINDING m-1P5 (minor).  The one effective-text sentence that asserts
+>>> unconditionality at every level-one state now contradicts `(MP1′)`, and
+>>> r5's propagation list does not touch it.
+
+r4 repair 10 installed, in S1.7B:
+  > Clauses 1 and 2 are not: their proofs run on the unsplit hull of \(F\)
+  > itself, so the HE3.A and HE6 instance records' clause-1 and clause-2
+  > conclusions are unconditional at every level-one state, multi-side states
+  > included. What is conditional is the clause-4 route, and only where it is
+  > taken.
+`(MP1′)` says:
+  > A state is `(MP1′)`-conditional exactly when a level-one recentering lies
+  > anywhere in its history.
+and its content is "so that a state built over \(\Phi''\) instantiates HE7.A at
+all, at level one or above".  A level-one state whose key is a recentered Φ″
+therefore cannot carry an unconditional clause-1/clause-2 conclusion, and the
+sentence's closing "What is conditional is the clause-4 route, and only where it
+is taken" is false after r4 already (clause 5 at a recentered key is `(MP1)`-
+conditional) and doubly so after r5.  r5's four-item propagation list covers
+S3.1/S3.2, S5.17, S4.2 and S4.1, and its catch-all ("The other consumers … 
+consume the suite as a clause hypothesis rather than as a discharged fact")
+does not reach this sentence, which is an unconditionality ASSERTION, not a
+suite consumer.  Same defect class as r4's own D-2, hence minor.
+
+>>> FINDING G-2P5 (GAP).  `(MP1′)`'s load-bearing negative — that no pinned unit
+>>> certifies a recentered level-one key as carrying a level-one frame — is
+>>> asserted without adjudicating `HE3-A-PROOF`'s stage-α passage, which states
+>>> the opposite fifteen lines above the passage r4 repair 3 already mines from
+>>> the same pin.
+
+The claims:
+  > When the level-one key beneath is itself a recentered \(\Phi''=\Phi'-L_k(s)\),
+  > the child key is a DEFINITION HE6-1 construction over a level-one frame
+  > whose key no pinned unit certifies as such a frame.
+  > … `(MP1′)` is a companion of `(MP1)` with the same status: named, not
+  > proved, and supplied by no pin of `(PINS)`.
+
+The pinned counter-candidate.  `HE3-A-PROOF` resolves to HE3_PROOF:1092-1205
+(both delimiters `grep -cFx` → 1: `### S6.3 PROOF OF THEOREM HE3.A` at 1092 and
+`leaf's history, so THEOREM HE3.A is proved. ∎` at 1205).  Strictly inside it,
+at 1149-1166:
+
+  *Stage-α step.* If the read refines at (λ, s) (a residual root of
+  multiplicity m ≥ 2 …), then by
+  LEMMA HE3-2(b) the recentered key Φ″ has a polygon whose portion above
+  λ has length exactly m, the corresponding block of D′m roots is
+  S_{λ, Z−s} …, and this block's
+  own labels are read at Φ″ …
+  Apply the inductive hypothesis to the sub-block: it is the
+  label-class of a multiplicity-m system over the SAME stage ring, with
+  the same (e₁, f₁), so its pieces compose into the dictionary as claimed.
+
+That is a pinned assertion that the recentered level-one key carries a polygon,
+that the block's labels are READ AT Φ″, and that THEOREM HE3.A's own hypotheses
+hold for the refined system over the same stage ring with the same (e₁, f₁) —
+i.e. the substance of `(MP1′)` at HE3's level of rigour.  The very next
+sentence, 1167-1168, is the one r4 repair 3 quotes and grep-verifies for the
+level-one `(SEC-RANK)` discharge ("Termination: each refine strictly increases
+the floor λ and dv-heights are bounded by the leaf's window (GENHN-3(a)), so
+the chain is finite").  The note therefore mines this paragraph for one carrier
+hypothesis while declaring, of the same paragraph's neighbouring sentences,
+that no pin supplies the frame they read over.
+
+Two aggravating specifics:
+  (α) r4 set the practice for exactly this: `(MP1)` carries an explicit
+      declination list ("None of `HE3-A-STMT`, `HE3-A-PROOF`, … is claimed to
+      prove `(MP1)`") plus a stated reason per declined pin.  `(MP1′)` carries
+      no list and no reason.
+  (β) The master's own level-one data are largely key-free by construction —
+      S1.2's slot data are indexed by A and Pt, `(GAMMA)`/`(Q-DEF)`/(LIFT)'s
+      full-height criterion k ≥ (D′−1)h and DEFINITION HE6-1's B_t conditions
+      (deg < D′, prescribed dv and ϖ-residue) mention no key — so at least part
+      of what `(MP1′)` names is either master-side or already pinned.  The note
+      argues neither way.
+
+Consequence, and why this is a GAP rather than a minor: with `(LB1)` fencing
+every state that needs a side or label split, `(MP1)` the recentered peel, and
+`(MP1′)` every read whose history contains a recentering, the level-one records'
+unconditional stratum collapses to single-side, pure-residual, never-refined
+states — i.e. to the first read at Φ′.  A fence that broad either needs the
+declination argument r4's practice demands, or it vacates the S3.1/S3.2 records
+without the ledger saying so.  I do NOT claim `(MP1′)` is discharged; I claim
+the negative existence statement is unsupported and the obvious pinned candidate
+is unexamined.
+
+================================================================================
+(d) THE THREE NEW PINS, AND FIVE FURTHER PINS RESOLVED
+================================================================================
+
+All greps run 2026-08-13 in lean/notes/openmath.
+
+`HETOW-KEY-BRIDGE` (LEMMA HETOW-2, statement and proof)
+  first `> **LEMMA HETOW-2 (the composed key is a key-family member up to an`
+        grep -cFx → 1, line 198
+  last  `covers w = 0). ∎`
+        grep -cFx → 1, line 262        first < last ✓
+  Span content checked line by line: statement 198-211 (Ψ-membership at the
+  datum (κ₂, r̃); "Φ₂ = Ψ − w with deg w < D″ and **either w = 0 … or
+  dv₂(w) > T₂**"; the conclusion clause "hence by LEMMA HE7-12(a)–(d) the entire
+  §S5 package, THEOREM HE7.A(1)(2), the refine package (LEMMA HE7-12/13, LEMMA
+  HE7-8) and the §S1 CONVENTION with LEMMA HE6R1-3's peel hold VERBATIM with key
+  Φ₂"), proof 213-262 with the complete [F-4]/[F-2] carry accounting; the next
+  sibling unit, LEMMA HETOW-3, opens at 264.  The master's description of the
+  span is accurate in every particular.  Conditions 1-4 hold.  ✓
+
+`HE7-PERT-TRANSPORT` (LEMMA HE7-12 with LEMMA HE7-13, statements and proofs)
+  first `> **LEMMA HE7-12 [r2] (SLOT-DOMINATION — the §S5 package survives every`
+        grep -cFx → 1, line 812
+  last  `by one block (§S5.5), leaving the same conclusion for f_S′. ∎`
+        grep -cFx → 1, line 951        first < last ✓
+  TWO-UNIT SPAN CHECK: 812-857 HE7-12 statement (clauses (a),(b),(c),(d) with
+  (d)'s [r3] W ≠ 0 supply), 859-916 its proof (audit items (1)-(11); item (11)
+  at 905-911), 918-934 HE7-13 statement, 936-951 its proof.  Both endpoint units
+  complete; the next unit (the [r2] machine-confirmation record) opens at 953
+  and is correctly excluded.  Nothing load-bearing is missing: HE7-12's
+  hypothesis is self-contained (ν defined in the statement), and the only
+  outside material is the 801-810 motivation paragraph, which the master does
+  not consume.  Conditions 1-4 hold.  ✓
+
+`HE6-LIFT-1L` (LEMMA HE6-1L with [r2] record, RIDER, both non-propagation boxes)
+  first `> **LEMMA HE6-1L [r1; display corrected [r2], PE2 F-1] ((LIFT), corrected =`
+        grep -cFx → 1, line 130
+  last  `> q(0) = q(1) = 0; (3,1,2): T(1) = ∅), per PE2 F-1.`
+        grep -cFx → 1, line 199        first < last ✓
+  Contents as described: corrected reachable-set display 133-151, the defining
+  line 139 `> where η_θ^{q(k)} := res(ϖ(θ)^k/n(k)(θ)) is the RIDER's fixed
+  normalizer` (grep -cFx → 1), the [r2] correction record 153-168, the RIDER
+  170-175, both non-propagation boxes 177-199; DEFINITION HE6-1 opens at 201.  ✓
+  (Q-DEF) RECONCILIATION CHECKED INDEPENDENTLY: the source's own proof line 148
+  reads "the ϖ-read residue is the n(k)-read residue times res(n(k)(θ)/ϖ(θ)^k)
+  = η_θ^{−q(k)}", which is literally the master's `(Q-DEF)`; the reciprocal
+  relation the master states is exact, and `(HE6-SEAM)`'s minus sign follows
+  from (SLOT-R) times (Q-DEF).  The r5 note at the pin is correct.  ✓
+
+FIVE FURTHER PINS RESOLVED (description-only; not grep-verified by any prior
+pass).  For these the exposed condition is 1 (unique named unit); I attacked it:
+  `HE6R1-3`  — LEMMA HE6R1-3 occurs as a unit exactly once
+               (HE6R1_RECON:469-477 statement, 479-486 proof); the file's later
+               dated annexes (928, 972, 1031) re-display HE6R1-1, not HE6R1-3,
+               so the HE6R1-1-style competing-display hazard does NOT recur
+               here.  ✓  (Non-counted nit: the row description is bare "LEMMA
+               HE6R1-3" while the r5-era pins say "statement and proof"; since
+               the master consumes only the conclusion, the boundary is moot.)
+  `HETOW-A`  — THEOREM HETOW.A occurs once as a unit (286; 43 and 426 are
+               references), statement+proof 286-334, ending before "**MINIMAL
+               LIVE DEGREE (derived).**".  Clause (ii) and the preamble both
+               inside.  ✓
+  `GENTOW-4-A` — THEOREM GENTOW-4.A occurs once as a unit (253-374, last line
+               `> refine leg re-enters (ii) at the refined key. ∎`); clause (i)
+               (the bouquet, as the row requires) and clause (iii) both inside;
+               the superseded 4.A(ii) parenthetical is the one r4 repair 12
+               already noted.  ✓
+  `HE7-A-STMT` — THEOREM HE7.A's statement display occurs once (197); THEOREM
+               HE7.A′ (1224) is a distinct designation, so condition 1 holds.  ✓
+  `HE6-FAMILY` — "the complete HE6 test-family display" resolves uniquely to
+               DEFINITION HE6-1 (201); the other seven occurrences of the name
+               are references.  ✓
+NO FINDING in (d).
+
+================================================================================
+(e) STRICT ASSEMBLY r1 → r5
+================================================================================
+
+LANDMARK AUDIT.  I re-ran every uniqueness claim r5 makes about the r4
+effective text, with `sed -n '1,2608p' … | grep -cF -- '<string>'`.  All 22
+returned exactly 1, at the lines shown:
+
+  r5-1  '- **Level two and deeper** (S3.3, and S3.4/S3.5 which read at the composed key'  → 1 @2399
+  r5-2  '**Instance consequence.** The child-jump branch of the trigger is precisely'      → 1 @2331
+        S1.8A closing sentence (insertion point, quoted in full)                           → 1 @2438
+        'This record likewise does not discharge `(MP1)`.'                                 → 1 @2442
+        S5 item 17 (quoted in full)                                                        → 1 @2446
+        '- an unconditional level-one mid-chain peel at a recentered key;'                 → 1 @2450
+        'subject to the explicitly named level-one obligations `(LB1)` and `(MP1)`'        → 1 @2452
+        repair 4(b)'s child-key sentence (quoted in full)                                  → 1 @2419
+  r5-3  '13 of 29. The other 16 remain description-only.'                                  → 1 @2508
+  r5-4  'Two consumptions were cured this way at r4: …'                                    → 1 @2516
+        'Two source units this master consumes were covered by no pin. …'                  → 1 @2572
+  r5-5  'Both are tested.'                                                                 → 1 @2317
+        clause-5 phrase 'and is not needed after any other, …'                             → 1 @2325
+        S5 item 15 'Side and label splits and `(MID-PEEL)` itself preserve …'              → 1 @2329
+  r5-6  the five superseded Source-pin settings                    → 1 @2594, 2595, 2596, 2157, 1062
+  r5-7  '> and separability of \(G\) gives'                                                → 1 @1866
+  r5-8  'The 29 pins are the following existing-text pairs'                                → 1 @2592
+        'The expected pin count is 29'                                                     → 1 @2592
+No landmark is ambiguous; no supersession can land twice; nothing r5 replaces
+was already replaced by r4 without r5 quoting r4's version (checked for the two
+places where r5 rewrites r4's own rewrite: S0.2's cured-consumption sentence,
+where r5 quotes r4 repair 8's text verbatim, and the `(PINS)` count, where r5
+quotes r4 repair 13's "The 29 pins …" instruction rather than r2's "The 26
+pins …").  ✓
+
+ARITHMETIC.  Pin ladder 26 → 27 (r3, HETOW-LABELS splits) → 29 (r4, two adds)
+→ 32 (r5, three adds) is correct, and the 32-row table enumerates as
+HE3 9 + HE6 5 + HE7 6 + HE6R1 3 + HETOW 5 + GENTOW4 4 = 32.  r5 repair 3's
+recount is right in both directions: 14 quoted pairs (I re-derived the list),
+3 first-only (HE3-R8-2/3/4, since r4 repair 6 quotes only their headings), 15
+description-only; 14 + 3 + 15 = 32.  ✓  The m-1 diagnosis of r4's over-count
+(R8-2/3/4) and under-count (HE3-A-PROOF, whose pair r4 repair 3 does quote and
+grep) is correct.  ✓
+
+TRANSITION-6 FOLD (r5 repair 5).  S1.9 does read "A key-boundary decomposition
+consists of monic polynomials \(P_i\in O[x]\) and key-free residual blocks
+\(B_j\)", so the definitional argument is exactly right, and the six
+transitions of `(RANK)` are now exhaustively accounted (1,2,3,6 preserve
+key-freeness; 4,5 replace the key and are tested).  ✓
+
+>>> FINDING m-2P5 (minor).  r5 repair 2's verification remark announces "the six
+>>> master-internal landmarks this repair supersedes or anchors on" and then
+>>> lists SEVEN:
+  > Each of the six master-internal landmarks this repair supersedes or anchors
+  > on — the S1.8A closing sentence quoted as the insertion point, the
+  > "Instance consequence" paragraph, the S3.1/S3.2 fence sentence, S5 item 17,
+  > the S4.2 exclusion item, the S4.1 obligation phrase, and repair 4(b)'s
+  > child-key sentence — is quoted byte-exactly …
+All seven verify (above); the count word does not.  This is the same inventory
+defect r5 repair 3 was written to cure one repair later.
+
+>>> FINDING m-3P5 (minor).  Effective-text orphan: the last two paragraphs of
+>>> r2 repair 3's "Mid-chain boundary produced by recentering" now render under
+>>> the (MP1′) heading, and the (MP1′) subsection is given the same `###` rank
+>>> as S1.8B, so by S0.2's own boundary rule the S1.8B unit ends before it.
+
+Insertion order in that subsection is: [r2 paragraphs 1-6] → [r3 repair 4's
+(MID-PEEL) input suite, inserted "immediately after the paragraph ending 'the
+monic key itself is not declared irreducible merely because it is a key'"] →
+[r4 repair 4(c)'s `### S1.8A`] → [r5's `### S1.8B`] → [r5's
+`### The one configuration the transport does not reach: `(MP1′)``].  The two
+r2 paragraphs that follow paragraph 6 are therefore pushed to the very end:
+  > This is the HE6R1-3/HE7-8 `[r3]` mid-chain peel. The value
+  > \[ d(\widetilde\Phi(\rho))=+\infty \]
+  > is never fed into `(WINDOW)`: the boundary branch is taken first.
+  > If a proper nontrivial gcd with \(\widetilde\Phi\), rather than the whole
+  > key, occurs, use the general key-boundary decomposition of S1.9 before any
+  > window assertion.
+The second of these is load-bearing for `(RANK)` transition 6 ("entered from
+`(MID-PEEL)`'s proper-nontrivial-gcd branch") and now reads as part of a fenced
+level-one obligation subsection.  Also, because the (MP1′) heading is `###`
+like its siblings, it is not a subsection of S1.8B and carries no section
+number, so nothing can cite it except by tag.  No mathematics changes; the
+effective text is misassembled.  (r5 repair 7 repaired the analogous seam one
+level down — this is the same class, one level up, and r5 created part of it.)
+
+CONSUMPTION SWEEP (r5 repair 4's enumeration, re-run independently).  I
+extracted every named source unit the master text cites and checked coverage:
+LEMMA HE7-12/13 → `HE7-PERT-TRANSPORT` (new); LEMMA HETOW-2 → `HETOW-KEY-BRIDGE`
+(new); LEMMA HE6-1L / q(k) → `HE6-LIFT-1L` (new); LEMMA HE6-0″ (all 9 mentions)
+→ `HE6-SLOT-SEAM`; DEFINITION HE6-1 → `HE6-FAMILY`; LEMMA HETOW-3 → inside
+`HETOW-A`(i); GENHN-3(a) → inside `HE3-A-PROOF`; LEMMA HETOW-1 →
+`HETOW-LABELS-1`; ANNEX-DEF HE7-2′/R1-a/R1-b/R1-c/R1-d, THEOREM HE7.D,
+COROLLARY HE7.B → `HE7-COCYCLE-2P-THROUGH-R1D`; ANNEX-LEMMA HE7-13′ →
+`HE7-MIXED-13P`; LEMMA GENTOW-4.1/4.2 → `GENTOW-4-1`/`GENTOW-4-2`; DEFINITION 1
+and 2 → `HE3-DEF1` and its boundary note.  I found NO consumption outside every
+span.  The r5 sweep is complete as far as this pass can check it.  ✓
+
+================================================================================
+WHAT I CHECKED AND FOUND CLEAN (so the next pass does not re-walk it)
+================================================================================
+- HE7-12's threshold T₂ = ℓd_r·u identified in the source and reconciled with
+  the master's (HE7-INSTANCE) and with the composed-key T₂ = e₂f₂u₂.
+- HE7-12(d)'s fold, including its [r3] supply of W ≠ 0 and the W = 0 split, so
+  the master's silence on W ≠ 0 is harmless.
+- HE7-12(c)'s carrying clause, quoted byte-faithfully; item (11) checked
+  line-by-line against HE6R1-3's actual proof (six consumed facts, all covered,
+  all at Ψ^{(w)} itself).
+- The suite-item mapping (5 ← irreducibility/simplicity/(e,f); 2,3,4 ← "every
+  root still a level-2 point" + "THEOREM HE7.A applies to f_S′ with μ₂ − 1").
+- The withdrawal of the [r3]-clause appeal: complete at both superseded sites;
+  the surviving [r3] mentions are peel-identity attributions, which is the role
+  r5 explicitly preserves.
+- A full concrete trace (ℤ₃, λ = 5/2, T₂ = 10, λ₂ = 11, D″ = 4, μ₂ = 2) through
+  S1.8B, the peel, the suite and `(RANK)`: every step lands.
+- HETOW-A(ii) and GENTOW-4-A(iii): both assert α-refine-chain finiteness AT Φ₂
+  under their own key declarations; the configuration they quantify over is
+  exactly the master's product-1 recentering; the finiteness → ordinal-rank step
+  is sound under r4's "W_C merely well-founded" latitude.
+- HE7-8 read in full: stated at the chain's base key, quantifying over the whole
+  chain — so S3.3's retention at a literal DEFINITION HE6-1 key is right.
+- All three new pins byte-exact, ordered, complete, correctly described; five
+  further description-only pins resolved uniquely.
+- (Q-DEF) ↔ HE6-1L reconciliation verified against the source's own line 148.
+- All 22 r5 landmark-uniqueness claims re-run; pin arithmetic and the 14/3/15
+  quoted-pair recount re-derived; transition-6 fold verified against S1.9.
+
+================================================================================
+FINDINGS
+================================================================================
+CRITICAL: none.
+
+GAP  G-1P5  S1.8B Step 1: HE7-12's hypothesis dv₂(w) = λ₂ rests on the
+            identification "refinement height = side slope", which the master
+            never makes (S1.8 and the S2 proof leave k unbound in L_k(s)); and
+            the "two independent legs" corroboration fails — leg 1 cites
+            "S1.8's lift height", which S1.8 does not state, and leg 2 quotes
+            HE7_PROOF:925 (an existence parenthetical) instead of :924, the line
+            that carries the height, whose λ₂ > T₂ is in any case HE7-13's own
+            hypothesis.  Conclusion true and available; displayed justification
+            incomplete.                                             [section (a)]
+
+GAP  G-2P5  `(MP1′)`'s negative ("no pinned unit certifies", "supplied by no pin
+            of `(PINS)`") is asserted without adjudicating `HE3-A-PROOF`'s
+            stage-α passage (HE3_PROOF:1149-1166, inside the pin), which reads
+            the refined block's labels AT Φ″ and applies HE3.A's induction to it
+            "over the SAME stage ring, with the same (e₁, f₁)" — fifteen lines
+            above the sentence r4 repair 3 mines from the same pin for the
+            level-one `(SEC-RANK)` discharge.  No declination list of the r4
+            `(MP1)` kind; no argument against the master's own key-freeness of
+            the S1.2-S1.4 data.  The fence as written collapses the level-one
+            records' unconditional stratum to unsplit, unrefined, single-side
+            states.                                                 [section (c)]
+
+min  m-1P5  r4 repair 10's S1.7B sentence ("… clause-1 and clause-2 conclusions
+            are unconditional at every level-one state, multi-side states
+            included. What is conditional is the clause-4 route, and only where
+            it is taken.") is contradicted by `(MP1′)`; r5's four-item
+            propagation list does not reach it and its catch-all does not cover
+            an unconditionality assertion.                          [section (c)]
+
+min  m-2P5  r5 repair 2's verification remark says "the six master-internal
+            landmarks" and then lists seven (all seven verify; the count word
+            does not).                                              [section (e)]
+
+min  m-3P5  Effective-text orphan: the closing two paragraphs of r2 repair 3's
+            "Mid-chain boundary produced by recentering" — including the
+            proper-gcd routing that `(RANK)` transition 6 depends on — now
+            render after `### S1.8A` / `### S1.8B` / `### The one configuration
+            … (MP1′)`; and the (MP1′) heading is `###`, i.e. a sibling of S1.8B,
+            so by S0.2's own boundary rule the S1.8B unit ends before it.
+                                                                    [section (e)]
+
+min  m-4P5  r5 repair 6's justification "S1.8B applies at these records too"
+            (S3.4/S3.5) reads S1.8B outside its own stated scope: S1.8B is
+            declared for a chain based at a DEFINITION HE6-1 key, while at Φ₂
+            the entry needs HETOW-2 / GENTOW-4.1(c) (both pinned, both on the
+            records' pin lines, and GENTOW-4.A(iii) even displays "available by
+            LEMMA HE7-12 with W + w").  Nothing unpinned is consumed; the
+            one-clause composition is simply not displayed.         [section (b)]
+
+Non-counted nits (recorded, not findings): "the one hypothesis of HE6R1-3 that
+mentions the key at all" understates what item (11) covers (the full quote
+follows, so nothing is lost); `HE6R1-3`'s row description is bare while the
+r5-era rows say "statement and proof"; S3.3-S3.5 carry no record-level (MP1′)
+note although S3.1/S3.2 do (the global fences in S4.1/S4.2/S5.17 cover them);
+r5 repair 7 leaves "Then \(G'\in O[x]\) is monic," with a trailing comma before
+the (MID-MASS) display.
+
+================================================================================
+VERDICT: NOT CLEAN | FINDINGS: 0C + 2G + 4m
