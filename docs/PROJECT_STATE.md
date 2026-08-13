@@ -4127,3 +4127,26 @@ statement-level unit. Meanwhile the compression campaign continues:
 T1P11/T2P3 Opus passes returned 0C+3G+5m / 0C+4G+8m (all
 assembly/pin-layer; both runs of record committed), r13/r4 repair
 folds running.
+
+**2026-08-13 DATED APPEND #34 — NEW-REPO DIRECTIVE: THE FINAL PROOF
+GETS A FRESH LEAN REPO; LeanUrat BECOMES A QUARRY.** Asvin
+(2026-08-13, verbatim): "Let us use the current lean code purely as
+a repository, to be copied from after verification if needed. We are
+going to build a new lean repo which has the final proof in the
+simplified form. The first part of that repo will be what we are
+building right now." EXECUTED: `leanfinal/` bootstrapped (package
+`Uniformity`, Lean 4.31.0 + mathlib v4.31.0 — pinned to MATCH the
+quarry so verified copies compile verbatim; skeleton builds green;
+charter in `leanfinal/README.md`). Standing rules for the new repo:
+NOTHING imports `lean/`; copies only after verification, each with a
+provenance comment; zero landed sorries; Lean-core axioms only; new
+definitions ship faithfulness notes for review. The
+STAGE2-GENUINE-DENSITY unit (append #33) is REDIRECTED into
+`leanfinal/Uniformity/Density/` as Part 1; its CountingModel bridge
+clause is dropped (no CountingModel in the new repo) in favor of
+stating the main-theorem target as a Prop over `genuineDensity`
+directly. The old repo's Stage2/UniformityTarget.lean anchors and
+the LEANSIMP 18-step plan are SUPERSEDED as build plans (the
+sign-off's shape-(b) content survives — the new repo's target IS the
+canonical-construction form); LeanUrat remains the trusted single-
+prime capstone record (montes_unconditional untouched).
