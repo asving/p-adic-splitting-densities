@@ -28,9 +28,10 @@ Consequences:
 * `upperDensity_three_le` : `upperDensity O 3 σ ≤ genuineDensity O 3 σ + 1/q²` — **the `n = 3`
   bracket between the certified density and the possible density closes to within `1/q²`**
   (`1/4` at `q = 2`, `1/9` at `q = 3`);
-* `drainage_three_of_triple` : **full drainage at `n = 3` is EXACTLY drainage on the triple-root
-  stratum.** Branch (b) is finished; the remaining obligation is a statement about residually
-  perfect cubes only.
+* `drainage_three_of_triple` : **full drainage at `n = 3` FOLLOWS FROM drainage on the
+  triple-root stratum.** Branch (b) is finished; the remaining obligation is a statement about
+  residually perfect cubes only. (Sufficient direction only — the converse is not claimed; see
+  the theorem's docstring and `tripleUndecidedSeq_le_undecidedSeq`.)
 
 What the triple-root branch needs is diagnosed in `notes/N3_CHECK_2026-08-13.md` §9.4: a STRONG
 Hensel lemma (`v(F(x₀)) > 2v(F′(x₀))` with `v(F′(x₀)) > 0`), which mathlib has only for `ℤ_[p]`
@@ -62,7 +63,10 @@ def peelSet (π : O) (N : ℕ) : Set (Coeff O 3 N) :=
   {c | ∃ (a : Fin 3 → O) (r γ : O), proj O 3 N a = c ∧ (monicPoly a).eval r = 0 ∧
     Tang π (peel a r) N γ}
 
-/-- **The triple-root stratum.** A level-`N` class whose residue cubic is `(X − γ̄)³`. -/
+/-- **The triple-root stratum.** For `N ≥ 1`: a level-`N` class whose residue cubic is
+`(X − γ̄)³` (at `N ≥ 1` the residue cubic is a property of the class, so the existential over
+lifts is harmless). ⚠ At `N = 0` the coefficient box is a single class with lifts of every
+residue, so `tripleSet 0` is everything; every quantitative statement below assumes `N ≥ 1`. -/
 def tripleSet (N : ℕ) : Set (Coeff O 3 N) :=
   {c | ∃ (a : Fin 3 → O) (γ : O), proj O 3 N a = c ∧ resVec a = cubeCoeff (residue O γ)}
 
@@ -224,6 +228,20 @@ noncomputable def tripleUndecidedSeq (N : ℕ) : ℝ :=
   (Nat.card (undecidedSet O 3 N ∩ tripleSet (O := O) N : Set (Coeff O 3 N)) : ℝ)
     / (residueCard O : ℝ) ^ (3 * N)
 
+/-- The triple-root obligation is **no stronger than** undecided drainage itself: it measures a
+subset of the undecided classes. (So `drainage_three_of_triple` is a genuine reduction — its
+hypothesis is implied by, not merely equivalent to, "all undecided mass drains".) -/
+theorem tripleUndecidedSeq_le_undecidedSeq (N : ℕ) :
+    tripleUndecidedSeq (O := O) N ≤ undecidedSeq O 3 N := by
+  have hle : Nat.card (undecidedSet O 3 N ∩ tripleSet (O := O) N : Set (Coeff O 3 N))
+      ≤ undecidedCount O 3 N :=
+    Nat.card_le_card_of_injective (Set.inclusion Set.inter_subset_left)
+      (Set.inclusion_injective _)
+  have hcast : (Nat.card (undecidedSet O 3 N ∩ tripleSet (O := O) N : Set (Coeff O 3 N)) : ℝ)
+      ≤ (undecidedCount O 3 N : ℝ) := by exact_mod_cast hle
+  rw [tripleUndecidedSeq, undecidedSeq]
+  gcongr
+
 theorem undecidedCount_three_le {π : O} (hπ : Irreducible π) {N : ℕ} (hN : 1 ≤ N) :
     undecidedCount O 3 N
       ≤ Nat.card (peelSet π N)
@@ -324,7 +342,11 @@ theorem upperDensity_three_le (σ : FactorizationType) :
 
 /-- **DRAINAGE AT `n = 3` REDUCES TO THE TRIPLE-ROOT STRATUM.** If the undecided classes that
 are residually perfect cubes drain, then the whole `n = 3` ambiguity gap drains, for every
-splitting type. Branch (b) is fully discharged. -/
+splitting type. Branch (b) is fully discharged. *(Only this direction is proved. The converse —
+`UndecidedVanishes O 3 σ` for all `σ` implies the triple-root undecided mass drains — is NOT
+claimed here; it would need the `n = 3` analogue of `typeOf_two_cases`. What IS proved, in
+`tripleUndecidedSeq_le_undecidedSeq`, is that the hypothesis measures a subset of the undecided
+classes, so it is not a disguised restatement of the conclusion.)* -/
 theorem drainage_three_of_triple
     (h : Tendsto (fun M : ℕ => tripleUndecidedSeq (O := O) (2 * M)) atTop (𝓝 0))
     (σ : FactorizationType) : UndecidedVanishes O 3 σ := by
@@ -364,6 +386,7 @@ end Drain
 #print axioms UniformityCheck.card_tripleSet_le
 #print axioms UniformityCheck.undecidedSet_subset
 #print axioms UniformityCheck.undecidedSeq_three_le
+#print axioms UniformityCheck.tripleUndecidedSeq_le_undecidedSeq
 #print axioms UniformityCheck.upperDensity_three_le
 #print axioms UniformityCheck.drainage_three_of_triple
 

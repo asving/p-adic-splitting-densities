@@ -12,7 +12,9 @@ Two things, both prerequisites for drainage at `n = 3` (`N3Drain`).
 
 ## 1. The residue trichotomy (`cubic_trichotomy`, `cubic_structure`)
 
-Over a field `K`, a monic cubic `F = X³ + c₂X² + c₁X + c₀` satisfies exactly one of
+Over a field `K`, a monic cubic `F = X³ + c₂X² + c₁X + c₀` satisfies exactly one of the
+following (the covering is `cubic_trichotomy`, the pairwise exclusivity is
+`cubic_trichotomy_disjoint`; only the covering is used downstream):
 
 * **(T1)** `F` has a SIMPLE root: `F(ρ) = 0` and `F′(ρ) ≠ 0` for some `ρ ∈ K`;
 * **(T2)** `F` has NO root in `K` (`NoRootCubic`, equivalent to irreducibility in degree 3);
@@ -73,6 +75,12 @@ def cDer (c : Fin 3 → K) (x : K) : K := 3 * x ^ 2 + 2 * c 2 * x + c 1
 
 theorem noRootCubic_iff (c : Fin 3 → K) : NoRootCubic c ↔ ∀ y : K, cVal c y ≠ 0 := Iff.rfl
 
+@[simp] theorem cVal_cubeCoeff (γ x : K) : cVal (cubeCoeff γ) x = (x - γ) ^ 3 := by
+  simp only [cVal, cubeCoeff_zero, cubeCoeff_one, cubeCoeff_two]; ring
+
+@[simp] theorem cDer_cubeCoeff (γ x : K) : cDer (cubeCoeff γ) x = 3 * (x - γ) ^ 2 := by
+  simp only [cDer, cubeCoeff_one, cubeCoeff_two]; ring
+
 /-- `(X − γ)³ = (X − γ′)³` forces `γ = γ′`, in every characteristic (in characteristic `3` the
 first two coefficients carry no information and the cube root is used instead). -/
 theorem cubeCoeff_injective : Function.Injective (cubeCoeff (K := K)) := by
@@ -117,6 +125,25 @@ theorem cubic_trichotomy (c : Fin 3 → K) :
         rw [hval]
         exact pow_ne_zero 2 (sub_ne_zero.2 hsρ)
   · exact Or.inl ⟨ρ, hρ, hd⟩
+
+/-- **The three branches are pairwise EXCLUSIVE**, so `cubic_trichotomy` really is a
+trichotomy and not merely a covering. (A perfect cube `(X − γ)³` has value `(x − γ)³` and
+derivative `3(x − γ)²`, so its only root is `γ` and there the derivative vanishes.) -/
+theorem cubic_trichotomy_disjoint (c : Fin 3 → K) :
+    ¬ ((∃ ρ : K, cVal c ρ = 0 ∧ cDer c ρ ≠ 0) ∧ NoRootCubic c)
+    ∧ ¬ ((∃ ρ : K, cVal c ρ = 0 ∧ cDer c ρ ≠ 0) ∧ (∃ γ : K, c = cubeCoeff γ))
+    ∧ ¬ (NoRootCubic c ∧ (∃ γ : K, c = cubeCoeff γ)) := by
+  refine ⟨?_, ?_, ?_⟩
+  · rintro ⟨⟨ρ, hv, -⟩, hno⟩
+    exact hno ρ hv
+  · rintro ⟨⟨ρ, hv, hd⟩, γ, rfl⟩
+    rw [cVal_cubeCoeff] at hv
+    have hz : ρ - γ = 0 := pow_eq_zero_iff (n := 3) (by norm_num) |>.1 hv
+    rw [cDer_cubeCoeff, hz] at hd
+    simp at hd
+  · rintro ⟨hno, γ, rfl⟩
+    have h : cVal (cubeCoeff γ) γ = 0 := by rw [cVal_cubeCoeff]; ring
+    exact hno γ h
 
 end Trich
 
@@ -278,6 +305,7 @@ theorem decidedAt_of_peel {π : O} (hπ : Irreducible π) {a : Fin 3 → O} {N :
 end Peel
 
 #print axioms UniformityCheck.cubic_trichotomy
+#print axioms UniformityCheck.cubic_trichotomy_disjoint
 #print axioms UniformityCheck.cubeCoeff_injective
 #print axioms UniformityCheck.cubic_structure
 #print axioms UniformityCheck.exists_root_congr

@@ -23,13 +23,16 @@ residue peel — whose type contains the part `(1,1)` and so is not `{(1,3)}`. H
 
 — an EXACT level-1 count, in the `three_mul_card_noRootCubic` form.
 
-**This is NOT the density.** `genuineDensity O 3 c3inert` is a supremum over ALL levels and
-strictly exceeds the level-1 value: the corpus predicts `q³(q+1)/(3Φ)` with
-`Φ = q⁴+q³+q²+q+1`, which is `8/31 ≈ 0.2581` at `q = 2` against the level-1 `1/4`, and
-`36/121 ≈ 0.29752` at `q = 3` against `8/27 ≈ 0.29630`. Deeper strata (cubics that are inert
-but residually a perfect cube, e.g. `X³ + 4X + 8` over `ℤ_[2]`) carry the difference. So this
-theorem says exactly that the level-1 bracket cannot be improved AT LEVEL 1 — the residual gap
-to `HMENU3` is entirely deep mass, as `verification/n3_family_check.py` §6c independently shows.
+**This is NOT the density, and nothing here claims it is.** `genuineDensity O 3 c3inert` is a
+supremum over ALL levels, so the level-1 value is only a lower bound for it; the theorems below
+say nothing more. ⚠ The following comparison is NOT proved here and is recorded only as
+orientation: the informal corpus predicts the density `q³(q+1)/(3Φ)` with `Φ = q⁴+q³+q²+q+1`,
+i.e. `8/31 ≈ 0.2581` at `q = 2` against the level-1 `1/4` and `36/121 ≈ 0.29752` at `q = 3`
+against `8/27 ≈ 0.29630`; deeper strata (cubics that are inert but residually a perfect cube —
+`X³ + 4X + 8` over `ℤ_[2]` is the standard example) would carry the difference, and
+`verification/n3_family_check.py` §6c sees exactly that numerically. Neither the predicted
+formula nor the strictness of the gap is a theorem of this file. What IS a theorem is that the
+level-1 count cannot be improved AT LEVEL 1.
 
 ## 2. The `1/q²` bracket at the two wild primes
 
