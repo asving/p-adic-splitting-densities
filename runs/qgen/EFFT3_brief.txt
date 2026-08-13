@@ -1,0 +1,24 @@
+PHASE-0a PILOT — EFFECTIVE-SPEC COMPILATION of T3 (you are gpt-5.6-sol high; you are a COMPILER, not an author: resolve, never invent, never improve). Repo readable with working shell at /data/users/asvin/math-and-lean/p-adic-splitting-densities. TARGET: lean/notes/openmath/T3_COCYCLE_TELESCOPE_2026-08-12.md — an ACCEPTED, byte-frozen note (base text + repair rounds + riders + acceptance record; THE ACCEPTANCE RECORD GOVERNS what the effective text is). Read it in full. Context for format only: docs/BLUEPRINT_PHASE_DESIGN_2026-08-13.md REVISION 2, stage 0a.
+
+YOUR TASK: mechanically resolve the note into CANONICAL EFFECTIVE STATEMENTS — the input the formalization blueprints will consume. Write to stdout (the orchestrator lands the file) a complete spec/EFF-T3.md with:
+
+(1) HEADER: note path; git blob hash of the note at HEAD (git hash-object the file); the acceptance record's own effective-text definition quoted verbatim; the resolution rules you applied (which sections/rounds supersede which).
+(2) THE STATEMENT INVENTORY: every load-bearing mathematical unit of the effective text — one block each:
+```
+EFF.T3.<nn>  [lemma|definition|convention|instance-record|hypothesis]
+CANONICAL STATEMENT: the fully resolved text — all supersessions applied, all rider
+  qualifiers folded in, every symbol either defined in an earlier EFF.T3 block or
+  explicitly imported from another note (name the note + the unit — these become
+  cross-spec references, mark them XREF: <note>:<unit-designation>).
+CONDITIONALITY: the surviving hypotheses/fences/named obligations this unit carries
+  (verbatim from the effective text; NONE if unconditional).
+RESOLUTION TRACE: base §X; rounds that touched it (rN: what changed, one line each).
+TEETH: the battery/mutant/lint rows of the note that guard THIS unit (by the note's
+  own designations), each with its guard-target in one line — these carry into the
+  formalization contract as regression obligations.
+```
+(3) THE CONSUMPTION TABLE: everything T3 imports from other notes (the XREF list consolidated) and everything the acceptance record says T3 SUPPLIES to consumers (the absorption/consumption records — note the acceptance paragraph vs any later narrowing record: resolve which governs and say why).
+(4) FIDELITY RULES you obeyed: no paraphrase where the effective text is displayable verbatim (quote); paraphrase permitted ONLY for assembling split-across-rounds sentences, and each paraphrase is flagged [ASSEMBLED] with the source lines listed.
+(5) SELF-AUDIT: list every judgment call you had to make (ambiguous supersession, unclear scope, contradictory summaries) as numbered OPEN-CALL items for the Opus cross-read — do NOT silently decide anything genuinely ambiguous.
+
+This is a PILOT: the format above will be applied to 25 more notes; if a section of the format fights T3's actual structure, obey T3 and flag the format defect in the self-audit. End with the line: EFF-T3 COMPILED: <n> statements / <n> xrefs / <n> open calls
