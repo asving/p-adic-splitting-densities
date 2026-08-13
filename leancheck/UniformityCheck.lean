@@ -16,3 +16,4 @@ import UniformityCheck.N3Density
 import UniformityCheck.N3Gates
 import UniformityCheck.SplitCount
 import UniformityCheck.N3Struct
+import UniformityCheck.N3Drain
