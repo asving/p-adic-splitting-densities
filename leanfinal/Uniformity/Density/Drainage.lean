@@ -794,4 +794,198 @@ theorem undecidedSeq_le (hπ : Irreducible π) (M : ℕ) :
 
 end Counting
 
+/-! ## 9. THE DRAINAGE THEOREM, and the exact `n = 2` identity it unlocks -/
+
+section Drainage
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)] [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+
+theorem tendsto_two_mul_atTop : Tendsto (fun M : ℕ => 2 * M) atTop atTop :=
+  Filter.tendsto_atTop_atTop.2 (fun b => ⟨b, fun a ha => by omega⟩)
+
+theorem undecidedSeq_tendsto_zero :
+    Tendsto (fun M : ℕ => undecidedSeq O 2 (2 * M)) atTop (𝓝 0) := by
+  obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
+  refine squeeze_zero (fun M => ?_) (fun M => undecidedSeq_le hπ M) ?_
+  · exact div_nonneg (Nat.cast_nonneg _) (le_of_lt (qpow_pos _))
+  · refine tendsto_pow_atTop_nhds_zero_of_lt_one (by positivity) ?_
+    rw [div_lt_one qR_pos]
+    exact_mod_cast one_lt_residueCard O
+
+theorem gapSeq_antitone (σ : FactorizationType) : Antitone (gapSeq O 2 σ) := by
+  intro N M h
+  simp only [gapSeq]
+  have h1 := possibleSeq_antitone (O := O) 2 σ h
+  have h2 := decidedSeq_mono (O := O) 2 σ h
+  linarith
+
+/-- **THE `n = 2` DRAINAGE THEOREM.** For every complete DVR `O` with finite residue field and
+every splitting type `σ`, the level-`N` ambiguity gap of monic quadratics drains to `0`. -/
+theorem drainage_two (σ : FactorizationType) : UndecidedVanishes O 2 σ := by
+  have hbdd : BddBelow (Set.range (gapSeq O 2 σ)) := by
+    refine ⟨0, ?_⟩
+    rintro x ⟨N, rfl⟩
+    exact gapSeq_nonneg 2 σ N
+  have hlim : Tendsto (gapSeq O 2 σ) atTop (𝓝 (⨅ N, gapSeq O 2 σ N)) :=
+    tendsto_atTop_ciInf (gapSeq_antitone σ) hbdd
+  have hsub : Tendsto (fun M : ℕ => gapSeq O 2 σ (2 * M)) atTop (𝓝 (⨅ N, gapSeq O 2 σ N)) :=
+    hlim.comp tendsto_two_mul_atTop
+  have hzero : Tendsto (fun M : ℕ => gapSeq O 2 σ (2 * M)) atTop (𝓝 0) :=
+    squeeze_zero (fun M => gapSeq_nonneg 2 σ (2 * M))
+      (fun M => gapSeq_le_undecidedSeq 2 (2 * M) σ) undecidedSeq_tendsto_zero
+  have hL : (⨅ N, gapSeq O 2 σ N) = 0 := tendsto_nhds_unique hsub hzero
+  rw [UndecidedVanishes, ← hL]
+  exact hlim
+
+/-- **The bracket closes at `n = 2`.** The certified (decided) density *is* the density: the
+upper (possible) density collapses onto it. -/
+theorem upperDensity_eq_two (σ : FactorizationType) :
+    upperDensity O 2 σ = genuineDensity O 2 σ :=
+  upperDensity_eq_of_drainage (drainage_two σ)
+
+/-! ### The exact identity: the three degree-2 types carry ALL the mass -/
+
+/-- A monic quadratic has one of exactly three types: `e·f = 2` leaves only `(1,1)+(1,1)`,
+`(1,2)` and `(2,1)`. -/
+theorem typeOf_two_cases (a : Fin 2 → O) :
+    typeOf (monicPoly a) = splitType ∨ typeOf (monicPoly a) = inertType
+      ∨ typeOf (monicPoly a) = ramType := by
+  by_cases hirr : Irreducible (monicPoly a)
+  · right
+    have hF : IsMonicFactorization (monicPoly a) {monicPoly a} :=
+      ⟨by intro g hg; rw [Multiset.mem_singleton.1 hg]; exact ⟨monicPoly_monic a, hirr⟩, by simp⟩
+    have hd2 : (monicPoly a).natDegree = 2 := monicPoly_natDegree a
+    have hdvd : inertiaDegOf (monicPoly a) ∣ 2 := by
+      have := inertiaDegOf_dvd_natDegree (monicPoly_monic a) (by rw [hd2]; omega)
+      rwa [hd2] at this
+    have hpos : 0 < inertiaDegOf (monicPoly a) :=
+      inertiaDegOf_pos (normValues_nonempty (monicPoly_monic a) (by rw [hd2]; omega))
+    have hmul : ramIndexOf (monicPoly a) * inertiaDegOf (monicPoly a) = 2 := by
+      have := ramIndexOf_mul_inertiaDegOf (monicPoly_monic a) (by rw [hd2]; omega)
+      rwa [hd2] at this
+    rcases (Nat.dvd_prime Nat.prime_two).1 hdvd with h1 | h1
+    · right
+      have he : ramIndexOf (monicPoly a) = 2 := by rw [h1, mul_one] at hmul; exact hmul
+      ext
+      rw [typeOf_data, monicFactors_eq hF]
+      simp [ramType, efPair, he, h1]
+    · left
+      have he : ramIndexOf (monicPoly a) = 1 := by rw [h1] at hmul; omega
+      ext
+      rw [typeOf_data, monicFactors_eq hF]
+      simp [inertType, efPair, he, h1]
+  · left
+    obtain ⟨r, s, h1, h0⟩ := exists_roots_of_not_irreducible hirr
+    refine typeOf_split_of_root (R := r) ?_
+    simp only [qval, h1, h0]; ring
+
+/-- The four sets — decided split, decided inert, decided ram, undecided — cover everything. -/
+theorem coeff_subset_union (N : ℕ) :
+    (Set.univ : Set (Coeff O 2 N)) ⊆
+      decidedSet O 2 splitType N ∪ decidedSet O 2 inertType N ∪ decidedSet O 2 ramType N
+        ∪ undecidedSet O 2 N := by
+  intro c _
+  by_cases hu : UndecidedAt O 2 N c
+  · exact Or.inr hu
+  · rw [UndecidedAt] at hu
+    push_neg at hu
+    obtain ⟨σ, hσ⟩ := hu
+    obtain ⟨a, ha⟩ := proj_surjective O 2 N c
+    have hty : typeOf (monicPoly a) = σ := hσ a ha
+    rcases typeOf_two_cases a with h | h | h <;> rw [h] at hty
+    · exact Or.inl (Or.inl (Or.inl (hty ▸ hσ)))
+    · exact Or.inl (Or.inl (Or.inr (hty ▸ hσ)))
+    · exact Or.inl (Or.inr (hty ▸ hσ))
+
+theorem card_le_sum_counts (N : ℕ) :
+    residueCard O ^ (2 * N) ≤ decidedCount O 2 splitType N + decidedCount O 2 inertType N
+      + decidedCount O 2 ramType N + undecidedCount O 2 N := by
+  classical
+  have hcov := coeff_subset_union (O := O) N
+  have h1 : residueCard O ^ (2 * N) = (Set.univ : Set (Coeff O 2 N)).ncard := by
+    rw [Set.ncard_univ, ← card_coeff (O := O) 2 N]
+  rw [h1]
+  calc (Set.univ : Set (Coeff O 2 N)).ncard
+      ≤ (decidedSet O 2 splitType N ∪ decidedSet O 2 inertType N ∪ decidedSet O 2 ramType N
+          ∪ undecidedSet O 2 N).ncard := Set.ncard_le_ncard hcov (Set.toFinite _)
+    _ ≤ (decidedSet O 2 splitType N ∪ decidedSet O 2 inertType N
+          ∪ decidedSet O 2 ramType N).ncard + (undecidedSet O 2 N).ncard :=
+        Set.ncard_union_le _ _
+    _ ≤ ((decidedSet O 2 splitType N ∪ decidedSet O 2 inertType N).ncard
+          + (decidedSet O 2 ramType N).ncard) + (undecidedSet O 2 N).ncard := by
+        gcongr; exact Set.ncard_union_le _ _
+    _ ≤ (((decidedSet O 2 splitType N).ncard + (decidedSet O 2 inertType N).ncard)
+          + (decidedSet O 2 ramType N).ncard) + (undecidedSet O 2 N).ncard := by
+        gcongr; exact Set.ncard_union_le _ _
+    _ = decidedCount O 2 splitType N + decidedCount O 2 inertType N
+          + decidedCount O 2 ramType N + undecidedCount O 2 N := by
+        rw [decidedCount, decidedCount, decidedCount, undecidedCount, Nat.card_coe_set_eq,
+          Nat.card_coe_set_eq, Nat.card_coe_set_eq, Nat.card_coe_set_eq]
+
+theorem one_le_sum_seqs (N : ℕ) :
+    1 ≤ decidedSeq O 2 splitType N + decidedSeq O 2 inertType N + decidedSeq O 2 ramType N
+      + undecidedSeq O 2 N := by
+  have h := card_le_sum_counts (O := O) N
+  have hq : (0 : ℝ) < (residueCard O : ℝ) ^ (2 * N) := qpow_pos _
+  have hcast : ((residueCard O : ℝ)) ^ (2 * N)
+      ≤ (decidedCount O 2 splitType N : ℝ) + (decidedCount O 2 inertType N : ℝ)
+        + (decidedCount O 2 ramType N : ℝ) + (undecidedCount O 2 N : ℝ) := by
+    exact_mod_cast h
+  rw [decidedSeq, decidedSeq, decidedSeq, undecidedSeq, ← add_div, ← add_div, ← add_div,
+    le_div_iff₀ hq, one_mul]
+  exact hcast
+
+/-- **THE EXACT `n = 2` IDENTITY.** The three degree-2 splitting types carry all the mass:
+
+    genuineDensity O 2 split + genuineDensity O 2 inert + genuineDensity O 2 ram = 1
+
+for EVERY complete DVR `O` with finite residue field (wild residue characteristic included).
+This is W-11 clause (iii)'s exhaustiveness `Σ = 1`, proved here about the Part-1 density
+itself. `≤` is the general total-mass bound; `≥` is drainage — without it the decided
+proportions could leave mass behind forever. -/
+theorem sum_three_densities_eq_one :
+    genuineDensity O 2 splitType + genuineDensity O 2 inertType + genuineDensity O 2 ramType
+      = 1 := by
+  classical
+  refine le_antisymm ?_ ?_
+  · have hsum : ∑ τ ∈ ({splitType, inertType, ramType} : Finset FactorizationType),
+        genuineDensity O 2 τ ≤ 1 := sum_genuineDensity_le_one 2 _
+    rw [Finset.sum_insert (by simp [splitType_ne_inertType, splitType_ne_ramType]),
+      Finset.sum_insert (by simp [inertType_ne_ramType]), Finset.sum_singleton] at hsum
+    linarith
+  · -- pass to the limit along the even levels, where the undecided mass is bounded by `q^{-M}`
+    have hlim : Tendsto (fun M : ℕ =>
+        decidedSeq O 2 splitType (2 * M) + decidedSeq O 2 inertType (2 * M)
+          + decidedSeq O 2 ramType (2 * M) + undecidedSeq O 2 (2 * M)) atTop
+        (𝓝 (genuineDensity O 2 splitType + genuineDensity O 2 inertType
+          + genuineDensity O 2 ramType + 0)) := by
+      refine Tendsto.add (Tendsto.add (Tendsto.add ?_ ?_) ?_) undecidedSeq_tendsto_zero
+      · exact (decidedSeq_tendsto 2 splitType).comp tendsto_two_mul_atTop
+      · exact (decidedSeq_tendsto 2 inertType).comp tendsto_two_mul_atTop
+      · exact (decidedSeq_tendsto 2 ramType).comp tendsto_two_mul_atTop
+    rw [add_zero] at hlim
+    exact ge_of_tendsto hlim (Eventually.of_forall (fun M => one_le_sum_seqs (2 * M)))
+
+end Drainage
+
+/-! ## 10. Axiom footprints -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.typeOf_of_certSplit
+#print axioms Uniformity.Density.typeOf_of_certRam
+#print axioms Uniformity.Density.typeOf_of_certInert
+#print axioms Uniformity.Density.cert_of_not_tang
+#print axioms Uniformity.Density.decidedAt_of_not_tang
+#print axioms Uniformity.Density.gapSeq_le_undecidedSeq
+#print axioms Uniformity.Density.class_pinned
+#print axioms Uniformity.Density.undecidedCount_le
+#print axioms Uniformity.Density.drainage_two
+#print axioms Uniformity.Density.upperDensity_eq_two
+#print axioms Uniformity.Density.typeOf_two_cases
+#print axioms Uniformity.Density.sum_three_densities_eq_one
+
+end AxCheck
+
 end Uniformity.Density
