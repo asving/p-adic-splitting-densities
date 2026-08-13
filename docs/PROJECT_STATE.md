@@ -4150,3 +4150,31 @@ the LEANSIMP 18-step plan are SUPERSEDED as build plans (the
 sign-off's shape-(b) content survives — the new repo's target IS the
 canonical-construction form); LeanUrat remains the trusted single-
 prime capstone record (montes_unconditional untouched).
+
+**2026-08-13 DATED APPEND #35 — UNIFORMITY-P1 LANDED: THE GENUINE
+DENSITY EXISTS IN LEAN, IN THE NEW REPO.** The STAGE2-GENUINE-DENSITY
+unit (appends #33/#34) is landed in `leanfinal/`: five Density
+modules + capstone-target Props + gates + unit note + Python
+cross-check; **full lake build green (8565 jobs), 0 sorries, all 16
+checked declarations Lean-core-only** (orchestrator re-verified:
+sorry-grep clean, build green, footprints). The load-bearing object:
+`genuineDensity O n σ : ℝ` — for ANY complete DVR O with finite
+residue field (ℤ_[p] a proved instance), the LIMIT (proved Tendsto,
+never carried data) of level-N decided proportions, with the
+decided/possible sandwich, the drainage tie AND ITS CONVERSE
+(drainage ⟺ bracket-closure), and Σ_σ density ≤ 1. `typeOf` is
+engine-free (UFD factorization + norm-valuation (e,f)). GATES: n=1
+EXACT for every O (density{(1,1)} = 1, others 0, σ-separation);
+n=2 one-sided (Hensel lower bound 1/q² ≤ split, linType = 0 exact,
+σ-separation proved); Python exact enumeration at p ∈ {2,3,5}, N ≤ 4
+reproduces W-11's split/inert/ram/undecided counts CELL FOR CELL.
+PENDING ASVIN: the capstone-target Props `UniformityStatement` /
+`UniformityStatementPadic` (∃(num,den) OUTSIDE ∀O — vacuity-proof by
+construction since genuineDensity is the Part-1 limit) — four
+sign-off points in `leanfinal/notes/GENUINE_DENSITY_2026-08-13.md`
+§2.4. OPEN (statements in the note): typeOf_degree (needs valuation-
+extension uniqueness, ABSENT from mathlib v4.31.0 — the next
+standalone unit; until it lands σ.degree = n does no work), the
+inert + Eisenstein/ram n=2 certificates (the two-sided bracket),
+n=3 Python oracle (cypari2 unavailable). FOLLOW-UP LAUNCHED: the
+n=2 certificate unit (same agent resumed).
