@@ -1,0 +1,360 @@
+# T2 v2 — HOSTILE PASS 8 (Opus/Claude confirmation arm; pass 2 of 2 of the model-diverse pair)
+# Target: lean/notes/openmath/T2_SIGMA_LADDER_MASTER_2026-08-12.md (3843 lines; base + r1–r9 + post-pass rider 3809–3843)
+# Charge: QUOTE AND CLASSIFY, FIX NOTHING. Read-only. No git operations.
+# Date of all greps below: 2026-08-13, on this checkout.
+# Route: (a) the rider's three claims · (b) the S7 32-pin gate END TO END + the standing consumption check
+#        (c) final strict assembly, 12 landmarks across ALL rounds · (d) one free hostile route
+
+EFFECTIVE-TEXT CONSTRUCTION USED
+  Base S0.2 (lines 46–107, 26-name (PINS) table) is DELETED wholesale by r2 repair 1 (1575) and
+  replaced; r3 repair 1 splits HETOW-LABELS (26→27); r4 repair 13 adds HE6-PEEL-CONVENTION and
+  HE7-REF-TERM (27→29); r5 repair 8 adds HE6-LIFT-1L, HE7-PERT-TRANSPORT, HETOW-KEY-BRIDGE (29→32).
+  Row adjudications: HE6-SLOT-SEAM (r4 repair 1), HE3-DEF1 (r4 repair 5), HE3-R8-2..5 (r4 repair 6),
+  HE6-PROOF delimiters (r6 repair 2). Taxonomy final at r7 repair 2: 15 quoted pairs + 4 first-only
+  + 13 description-only = 32. I reconstructed that partition independently and it is exactly right.
+
+================================================================================
+## SECTION (a) — THE RIDER (lines 3809–3843): its three claims, verified independently
+================================================================================
+
+CLAIM A1 — the compatible choice B0 = −L_κ(ση^{q(κ)}) is (LIFT)-permitted.
+
+  Byte-read of the recipe. HE6_PROOF_2026-08-08.md, DEFINITION HE6-1, lines 201–205
+  (span HE6-FAMILY = 201–213; each line verified `grep -cFx` = 1):
+
+    201 `> **DEFINITION HE6-1 (THE ENLARGED TEST FAMILY).** Let κ = u/ℓ ∈ ℚ in lowest`
+    202 `> terms with κ > D′h, and let r = Z^{d} + Σ_{t<d}c_tZ^t ∈ K[Z] be monic`
+    203 `> irreducible with r(0) ≠ 0. Choose, by (LIFT), B_t ∈ O[x] with`
+    204 `> deg B_t < D′, dv(B_t) = (d−t)u and res(B_t(θ)/ϖ(θ)^{(d−t)u}) = c_t (and`
+    205 `> B_t := 0 if c_t = 0), and set`
+
+  At (ℓ,d) = (1,1): u = ℓκ = κ, t = 0, so (d−t)u = κ; r = Z + c_0, and r = Z − σ gives c_0 = −σ.
+  The rider's reading of 204 — "a height and a print residue, and nothing more" — is exact
+  (line 205's `B_t := 0 if c_t = 0` clause is vacuous here since r(0) ≠ 0 forces σ ≠ 0).
+
+  Carrier side. S1.4 (LIFT), lines 350–366: deg L_k(c) < D; for c ≠ 0, h(L_k(c)) = k and
+  dig(L_k(c)) = c. So deg(−L_κ(ση^{q(κ)})) < D = D′ and h = κ, i.e. dv(B_0) = κ. ✓
+  Print residue. (HE6-SEAM), S1.2 line 245: res(A(ξ)/ϖ(ξ)^k) = ι_ξ(γ_k(A))·η_ξ^{−q(k)}. At ξ = θ,
+  ι_θ = id (r9(a)'s derivation, unchanged by the rider), and (GAMMA) (S1.2, 222–228) is additive in
+  the coefficient array, so γ_κ(−L_κ(ση^{q(κ)})) = −ση^{q(κ)} and the print residue is
+  −ση^{q(κ)}·η^{−q(κ)} = −σ = c_0. ✓  All three conditions of line 204 are met. CLAIM A1 HOLDS.
+  (One scope wrinkle in the same paragraph is booked as minor m-1 below.)
+
+CLAIM A2 — two (LIFT)-permitted choices differ by height > κ.
+
+  Both permitted B_0, B_0′ have dv = κ so dv(E) ≥ κ for E = B_0 − B_0′, deg E < D′.
+  Equal print residues + one and the same conversion factor η^{−q(κ)} (an element of K^×, so
+  cancellable) give γ_κ(B_0) = γ_κ(B_0′); (GAMMA) additive at fixed height gives γ_κ(E) = 0.
+  If h(E) = κ then dig(E) = γ_κ(E) = 0, contradicting S1.2's "dig(A) ∈ K^×" for A ≠ 0 (line 175).
+  Hence E = 0 or h(E) > κ. CLAIM A2 HOLDS, exactly as the rider states it.
+  Cross-check: this is the same argument the r9(b) SECOND rider runs at Λ vs L_λ(s) (line 3739,
+  `grep -cF` over 1..3805 → 1); the two are consistent, and the rider's "restates that closure at
+  the display rather than adding to it" is accurate.
+
+CLAIM A3 — all four downstream (IDX-TWIST) consumers are choice-independent. CENSUS RE-DERIVED.
+
+  `grep -nF 'IDX-TWIST'` over the whole file returns 3706 (the \tag line), 3709, 3739, 3747, 3755,
+  3759, 3797, 3799, then rider-internal 3811, 3821, 3829, 3831, 3837, 3839.
+  Pre-rider (1..3805) consumption sites downstream of the display: 3709, 3739, 3747, 3755, 3759,
+  3797 — six, not four. The rider's "four sites" paragraph names 3739/3747/3755/3759; the other two
+  are covered by the *next* paragraph ("The other three `member for member` sites, classified"),
+  which classifies 3709 and 3797 as the two set-identity sentences the qualifier scopes and 3677 /
+  3755 as covering-direction sentences. 3799 is a meta-mention ("(IDX-TWIST) is a derived identity
+  … not a clause of the theorem"), not a consumption. So the census is COMPLETE, though split across
+  two paragraphs. No finding.
+
+  Verified counts (all over `sed -n '1,3805p' | grep -cF`, matching the rider's own claims):
+    `member for member`                 → 4, at 3677, 3709, 3755, 3797   ✓ (whole file: 6, incl. rider)
+    `\Psi_{\kappa,Z-\sigma}`            → 3, at 3695, 3699, 3797         ✓ (whole file: 5, incl. rider)
+    `> \tag{IDX-TWIST}` (grep -cFx)     → 1, at 3706                     ✓
+    `SECOND, the lift freedom is immaterial.` → 1, at 3739               ✓
+    the two set-identity strings        → 1 each, at 3709 and 3797       ✓
+    S1.8C's lift-naming clause          → 1, at 3755                     ✓
+
+  Choice-independence, checked per site:
+    3739 / 3747 — consume only the label↔digit correspondence σ ↔ ση^{q(κ)}, which is a consequence
+      of (HE6-SEAM) alone and names no polynomial. Choice-independent. ✓
+    3759 — "the index a member carries is exactly what (IDX-TWIST) computes": same correspondence. ✓
+    3755 (S1.8C) — the only site consuming a polynomial equality. It is written AT the compatible
+      choice ("the member it is, is Ψ_{λ, Z−sη^{−q(λ)}} = Φ′+B_0 with B_0 = −L_λ(s)"), and with
+      σ = sη^{−q(λ)}, ση^{q(λ)} = s, (IDX-TWIST) returns Φ′ − L_λ(s) exactly. The permittedness of
+      that choice is A1 with c_0 = −sη^{−q(λ)}. What S1.8C then USES of it is the covering direction
+      only — that Φ″ = Φ′ − L_λ(s) is a family member, so DEFINITION HE6-1's recipe reproduces
+      verbatim over Φ″ (S1.8C (vi), lines 3071–3085). The rider's "S1.8C is exact as it stands" is
+      correct and the ground it gives is the right ground.
+  CLAIM A3 HOLDS.
+
+RIDER VERDICT: 0 CRITICAL, 0 GAP, 1 minor (m-1, below, on the covering-direction height qualifier).
+
+================================================================================
+## SECTION (b) — THE S7 PIN GATE, RUN END TO END ON THE FINAL TEXT (32 pins)
+================================================================================
+
+Gate obligations (r2 repair 1's S7 replacement as amended by r4/r5/r6/r7): resolve every pin to its
+first/last delimiter pair; check uniqueness (S0.2 cond. 2), ordering (cond. 3), unit-uniqueness
+(cond. 1) and containment (cond. 4); confirm no `T2V2PIN` line in the six sources; expected pin
+count 32, expected synthetic-marker count 0, expected source edit count 0; plus r4 repair 13's
+standing consumption check.
+
+--- TABLE: all 32 pins. "kind" = pair / first-only / desc-only. All counts by `grep -cFx`. ---
+
+ #  pin                          file       kind        first  last   c1 c2 c3 c4
+ 1  HE3-A-STMT                   HE3        desc-only    312    ~332   ✓  –  ✓  ✓
+ 2  HE3-A-PROOF                  HE3        pair        1092   1205   ✓  1/1 ✓  ✓
+ 3  HE3-DEF1                     HE3        pair         242    286   ✓  1/1 ✓  ✓
+ 4  HE3-HE3-1L                   HE3        desc-only    498   ~534   ✓  –  ✓  ✓
+ 5  HE3-HE3-6                    HE3        desc-only   1118   ~1146  ✓  –  ✓  ✓ (nested in #2; over-capture licensed by r3 repair 2)
+ 6  HE3-R8-2                     HE3        first-only  1691  (1735)  ✓  1  ✓  ✓
+ 7  HE3-R8-3                     HE3        first-only  1736  (1773)  ✓  1  ✓  ✓
+ 8  HE3-R8-4                     HE3        first-only  1774  (1794)  ✓  1  ✓  ✓
+ 9  HE3-R8-5                     HE3        pair        1795   1819   ✓  1/1 ✓  ✓
+10  HE6-FAMILY                   HE6        first-only   201   (213)  ✓  1  ✓  ✓  (214 blank, 215 = LEMMA HE6-0″: boundary rule confirmed)
+11  HE6-PROOF                    HE6        pair         639    666   ✓  1/1 ✓  ✓
+12  HE6-SLOT-SEAM                HE6        pair         215    238   ✓  1/1 ✓  ✓
+13  HE6-PEEL-CONVENTION          HE6        pair          83     97   ✓  1/1 ✓  ✓
+14  HE6-LIFT-1L                  HE6        pair         130    199   ✓  1/1 ✓  ✓
+15  HE7-A-STMT                   HE7        desc-only    197   ~1223  ✓  –  ✓  ✓  (HE7.A′ at 1224 is a distinct designation)
+16  HE7-SLOT-TRANSFER            HE7        pair         158    191   ✓  1/1 ✓  ✓
+17  HE7-MIXED-13P                HE7        desc-only   1603/1664      ✓  –  ✓  ✓  (outermost-unit rule → the §ANNEX F-1 unit at 1603)
+18  HE7-COCYCLE-2P-THROUGH-R1D   HE7        pair        2013   2253   ✓  1/1 ✓  ✓
+19  HE7-REF-TERM                 HE7        pair        1087   1128   ✓  1/1 ✓  ✓
+20  HE7-PERT-TRANSPORT           HE7        pair         812    951   ✓  1/1 ✓  ✓
+21  HE6R1-1                      HE6R1      desc-only    270    ...   ✓  –  ✓  ✓
+22  HE6R1-2                      HE6R1      desc-only    316    ...   ✓  –  ✓  ✓
+23  HE6R1-3                      HE6R1      desc-only    469    ...   ✓  –  ✓  ✓
+24  HETOW-LABELS                 HETOW      pair          56     98   ✓  1/1 ✓  ✓
+25  HETOW-LABELS-1               HETOW      pair         152    196   ✓  1/1 ✓  ✓
+26  HETOW-KEY-BRIDGE             HETOW      pair         198    262   ✓  1/1 ✓  ✓
+27  HETOW-A                      HETOW      desc-only    286   ~351   ✓  –  ✓  ✓  (contains 291 and 308, the two lines r5 repair 1 consumes)
+28  HETOW-NORMALIZER-4           HETOW      desc-only    657    ...   ✓  –  ✓  ✓  (outermost-unit rule → `### HETOW-4 …` at 657, not LEMMA HETOW-4 at 689)
+29  GENTOW-4-1                   GENTOW4    desc-only    145    230   ✓  –  ✓  ✓
+30  GENTOW-4-A                   GENTOW4    desc-only    231    375   ✓  –  ✓  ✓  (contains clause (i); contains 282 and 290)
+31  GENTOW-4-2                   GENTOW4    desc-only    376    ...   ✓  –  ✓  ✓
+32  GENTOW-ACCEPTANCE-FOLD       GENTOW4    pair         991   1037   ✓  1/1 ✓  ✓
+
+ Legend: c1 = unit unique in file; c2 = delimiter count (1 each where quoted); c3 = first < last;
+ c4 = span contains the complete named unit. Bracketed last-lines are fixed by S0.2's boundary rule.
+
+RESULT: 15 quoted pairs, all 30 delimiter lines `grep -cFx` = 1 with first < last (one caveat: the
+last delimiter of HE7-PERT-TRANSPORT, HE7:951, carries NO `> ` blockquote prefix while its first
+does — the note quotes it correctly without the prefix; verified `grep -cFx 'by one block (§S5.5),
+leaving the same conclusion for f_S′. ∎'` → 1 at 951. Not a defect, but a reader adding the prefix
+gets 0, which is how I first mis-scored it).
+4 first-only pins, all first delimiters `grep -cFx` = 1, last fixed by the boundary rule.
+13 description-only pins, all resolving to a unique unit under S0.2 conditions 1 and 4, two of them
+(HETOW-NORMALIZER-4, GENTOW-4-1/A/2) only via r3 repair 2's outermost-unit rule — which is exactly
+what that rule is for.
+Pin count = 32 (expected 32). ✓
+`grep -c T2V2PIN` = 0 in all six source files (expected 0). ✓
+`git status --porcelain lean/notes/openmath/` = empty; the six sources' last commits are all
+2026-08-09/08-10/08-12, all predating the T2 v2 arc. Source edit count = 0. ✓
+
+--- STANDING CONSUMPTION CHECK (r4 repair 13; the r5 repair 4 sweep "recorded, not asserted
+    complete; the gate re-runs it") — RE-RUN FROM SCRATCH, TWO WAYS ---
+
+(i) Mechanical: every backtick-delimited chunk of the master of length ≥ 15 that is an exact full
+    line of one of the six sources. 87 distinct such quotes. All lie inside a span of (PINS) EXCEPT
+    three, all three of which are boundary-marking or declining quotations, not consumptions:
+      HE6:668  `### S6.3 Multiplicity ≥ 2 on an ℓ = 1 side (the stage-α node) is unaffected`
+               — quoted at master 3118 solely to NAME the unit before which HE6-PROOF ends.
+      GENTOW4:1039–1040 (the TOWERRAT2-C annex heading) — quoted at master 2564 solely to record
+               that it SUPERSEDES a parenthetical the master explicitly does not consume.
+    These are covered by the check's own scoping ("… for a hypothesis or an obligation discharge …
+    A consumption outside every span fails the gate") and by the note's standing practice at r9
+    ("… sits outside the span and is not consumed") and r4 repair 1 (declinations). No finding.
+
+(ii) Semantic: every named source object in the master (regex over LEMMA/THEOREM/DEFINITION/
+    COROLLARY/ANNEX-*/CONVENTION). Resolutions: HE6-1→#10, HE7-12/13→#20, HE3.A→#1/#2, HE6R1-3→#23,
+    HE7-8→#19, HETOW-2→#26, HE6-0″→#12, DEFINITION 1→#3, HE6.A→#11, HE6-1L→#14, HE7.A→#15,
+    GENTOW-4.A→#30, HE7-2′/R1-a/b/c/d/HE7.B/HE7.D→#18, HE3-6→#5, HE6R1-1/2→#21/#22, HETOW.A→#27,
+    HE3-1L→#4, HE7-13′→#17, HETOW-1→#25, GENTOW-4.1→#29, HE3-4→inside #11's span, HETOW-3→inside
+    #27's clause (i), HE6-0 / DEFINITION 2 → named only to fix a boundary, HE3-2 → the lean was
+    WITHDRAWN at r7 repair 4 ("nothing further is asserted of LEMMA HE3-2, whose own unit is HE3 §S5
+    and lies inside no span of `(PINS)`").
+    ONE class of consumption survives this sweep uncovered. It is finding G-1 below.
+
+================================================================================
+## SECTION (c) — FINAL STRICT ASSEMBLY: r1 → r9 → rider, 12 landmarks
+================================================================================
+
+Round bounds used: base ≤1320, r1 1322–1567, r2 1569–2119, r3 2121–2260, r4 2262–2610,
+r5 2612–2914, r6 2916–3295, r7 3297–3511, r8 3513–3669, r9 3671–3807, rider 3809–3843.
+Each superseded string counted with `sed -n '1,Bp' | grep -cF` at the bound B of the round BEFORE
+the superseding round. All must be 1; a 0 is an orphan, a ≥2 is a double-render.
+
+  L1  (r1 r2 → base S3.1)   'A key-free HE3 block enters HE7.A directly.'                 B=1320 → 1 @836
+  L2  (r1 r2 → base S3.1)   'Every height used by the test family lies above …(OCC) holds.' B=1320 → 1 @834
+  L3  (r2 r1 deletes r1 r3) '## r1 repair 3 — install and audit all advertised source markers' B=1567 → 1 @1474
+        and its only later mention is r2 repair 1's own deletion instruction (1663). No orphan.
+  L4  (r2 r2 → r1's S1.7A)  duplicate `\tag{LABEL-ACCOUNT}` at 1392 AND 1774 — NOT a double-render:
+        r2 repair 2 opens "Delete r1's S1.7A and replace it with:". Supersession is explicit. ✓
+  L5  (r3 r6 → r2 r4)       'It is the assertion that every mixed nonseparable level-one side has…' B=2119 → 1 @1931
+  L6  (r4 r10 → r3 r6)      'Consequently the HE3.A and HE6 instance records are unconditional only for
+                             single-side level-one states'                                  B=2260 → 1 @2220
+  L7  (r5 r3 → r4 r7)       '13 of 29. The other 16 remain description-only.'               B=2608 → 1 @2508
+  L8  (r6 r2 → r5 r3)       '…`HE6-LIFT-1L` (r5) — **14 of 32**.'                           B=2912 → 1 @2756
+                            'The other 15 pins are description-only … 14 pairs + 3 first-only + 15 …' B=2912 → 1 @2756
+  L9  (r6 r2 → r5 r2)       heading '### The one configuration the transport does not reach: `(MP1′)`' B=2912 → 1 @2704
+                            and its closing sentence                                        B=2912 → 1 @2719 (span endpoints both unique)
+  L10 (r7 r2 → r5 r3 / r6 r2) the r5 taxonomy sentence B=3293 → 1 @2756; the r6 totals sentence B=3293 → 1 @3123
+  L11 (r5 r4 → r4 r13 / S0.2) 'Two source units this master consumes were covered by no pin. …' B=2608 → 1 @2572
+                            'Two consumptions were cured this way at r4: …'                 B=2608 → 1 @2516
+  L12 (r5 r6 → five pin-line settings) S3.1 bullet @2594, S3.3 bullet @2596, S3.4 amendment @2157,
+                            S3.5 base line @1062 — each 1 at its round's bound. ✓
+  L13 (r9 r1 → r8)          r8's step sentence B=3667 → 1 @3537; S1.8C's family-member sentence B=3667 → 1 @3085
+  L14 (rider → r9)          `> \tag{IDX-TWIST}` grep -cFx over 1..3805 → 1 @3706; the insertion's
+                            following-paragraph delimiter → 1 @3709. Insertion point is unambiguous.
+
+  Fourteen checked (twelve demanded), spanning r1/r2 territory (L1–L5, L11-b, L12's S3.5 base line)
+  through the rider. No orphan, no double-render, no ambiguous insertion point.
+  Retirement chains verified end to end: (MP1′) introduced r5 repair 2 → subsection superseded and
+  name retired r6 repair 2 → stale disjunct removed r7 repair 3; all 30 later occurrences of the
+  string are historical or retirement text, none live. (MP1) and (LB1) remain live and fenced.
+  ASSEMBLY: CLEAN.
+
+================================================================================
+## SECTION (d) — FREE HOSTILE ROUTE: what the pin apparatus actually covers at LEVEL ONE
+================================================================================
+
+The surface I chose is the one six passes have audited from the inside — the pin gate's
+*containment* claims — but from the opposite direction: not "does every pin resolve?" (it does) but
+"does every hypothesis the level-one records claim to discharge have a pinned supplier that actually
+contains it?" That is r4 repair 13's standing check, and the answer is no.
+
+-------------------------------------------------------------------------------
+G-1 (GAP) — the level-one records route `(ACCOUNT)` and the S1.7 test assertions to HE6 units that
+lie inside NO span of `(PINS)`, and both records assert that the HE6 pins contain them.
+-------------------------------------------------------------------------------
+
+The two effective-text sentences, quoted verbatim.
+
+  S3.2, line 889 (base text; not amended by any of r1–r9 or the rider — `grep -nF 'ξ-side'` over the
+  whole file returns only 563 and 889):
+
+  > It is monic and is not assumed irreducible. HE6’s ξ-side, evaluation formulas, slope count,
+  > resultant argument, and equivariance supply the test assertions and `(ACCOUNT)`.
+
+  S3.1 as r1 repair 2 replaced it, line 1454 (effective; r5 repair 6 amends only the pin LIST on
+  that paragraph's first line, not this sentence):
+
+  > For every side denominator \(e'\) and every monic irreducible residual factor \(r'\), the HE6
+  > pins supply the monic test polynomial … together with its intended-disk and label properties,
+  > generic and raised evaluation values, resultant nonemptiness, disjointness and exhaustion,
+  > Galois equivariance, local divisibility, integrality, and the quantitative identity `(ACCOUNT)`.
+
+  And line 1444, which makes the routing exclusive:
+
+  > The HE3 pins supply the base carrier, exact slots, legal full-height lifts, full development,
+  > hull/window/cap data, and label equivariance. They are not credited with the master’s universal
+  > test package or with `(ACCOUNT)`.
+
+The five HE6 pins, as this pass resolved them, are HE6-PEEL-CONVENTION [83,97], HE6-LIFT-1L
+[130,199], HE6-FAMILY [201,213], HE6-SLOT-SEAM [215,238], HE6-PROOF [639,666]. The named suppliers
+are HE6's §S3.3 LEMMA HE6-1 "(the ξ-side)" [426,486], §S4 "LEMMA HE6-2 AND HE6-2′ (the two
+evaluation displays)" [487,524], §S5 "LEMMA HE6-3 (slope counts, (SEP)-free) AND LEMMA HE6-4
+(nonemptiness)" [525,607], and §S6.1 "LEMMA HE6-5 (Galois equivariance …)" [610,638]. Every one of
+those four ranges is disjoint from every one of the five pin spans.
+
+Sharpest instance: `(ACCOUNT)`.
+
+  (ACCOUNT) is S1.7's boxed identity Σ_ρ min(w_ρ,κ) = D Σ_λ L_λ min(λ,κ) (line 560), and S1.7 says
+  of it: "This is the only side-accounting identity used by the master proof." Its HE6 proof is the
+  resultant-symmetry identity
+
+    HE6_PROOF_2026-08-08.md:529  `    (RES)   Σ_{ρ : f(ρ)=0} dv(g(ρ)) = e₁·v(±Res(f,g)) = Σ_{ξ : g(ξ)=0} dv(f(ξ)),`
+
+  and the ξ-side / ρ-side evaluation of it inside LEMMA HE6-3's proof at §S5 — 110 lines before the
+  HE6-PROOF span begins. The HE6-PROOF span [639,666] I read in full: it derives |S_{λ,r}| = D′ℓd_r
+  and e(g_r) = e₁ℓ, f(g_r) = f₁d_r, and says nothing whatever about Σ_ρ min(w_ρ,κ). Nor does
+  THEOREM HE6.A's statement display (HE6:289–300), which in any case is itself pinned by nothing —
+  note the asymmetry with HE3, whose statement display IS pinned, as HE3-A-STMT.
+
+  So: the only side-accounting identity the master proof uses has, at both level-one instance
+  records, no pinned supplier at all.
+
+Why this is a GAP by the note's own rules, not a matter of taste.
+  • S0.2 as restored by r4 repair 8: "No unpinned source material is used to manufacture a theorem
+    hypothesis." (ACCOUNT) and the S1.7 test assertions are carrier hypotheses of HE7.A — S4.1 line
+    1167 says so in terms: "The theorem assumes the explicit quantitative consequences `(ACCOUNT)`,
+    `(RES-DEG)`, nonemptiness, exhaustion … These are source obligations, not conclusions obtained
+    merely by naming a carrier."
+  • S5 ledger item 3 (line 1194): "Every cited source unit has a named paired begin/end pin." False
+    of HE6 §S3.3, §S4, §S5, §S6.1, each cited by description at 889 and at 1454.
+  • S1.7's own closing sentence (line 563): "An instance may prove it using generic tests, the ξ- and
+    ρ-side evaluations, and resultant symmetry, but those arguments remain inside that instance’s
+    pinned proof." At the HE6 instance they demonstrably do not: the instance's pinned proof is
+    [639,666] and the ξ-/ρ-side evaluations and resultant symmetry are at [487,607].
+  • The standing S7 check (r4 repair 13): "A consumption outside every span fails the gate."
+  • The repair shape is one the note has already performed twice, for exactly this reason: r4 repair
+    5 re-derived HE3-DEF1 because "the master consumes the construction … [which] is a separate
+    bolded unit immediately following DEFINITION 1 and outside the blockquote"; r5 repair 1 pinned
+    HETOW-KEY-BRIDGE because "S3.4's own text names LEMMA HETOW-2 by name". Line 889 names five HE6
+    units by description and credits them with master hypotheses; line 1454 names them again as
+    "the HE6 pins".
+
+Why it is a GAP and not a CRITICAL. Nothing mathematically false is asserted about HE6: §S5 does
+prove the accounting identity, and the master's argument from (ACCOUNT) onward is untouched. What
+fails is the coverage apparatus and one containment claim about it — precisely the r5 G-1 shape,
+which that round's own diagnosis phrased as "The conclusion survives; the stated route does not",
+and which was graded GAP. Same grade here.
+
+Scope note (not itself a finding): the r5 repair 4 sweep at line 2802 enumerates six residues
+(HETOW-3, GENTOW-4.1, HE7-13, DEFINITION HE6-1, GENHN-3(a), HE3's [r1-N1]) and none of the four HE6
+units above. The sweep is the thing the gate re-runs; re-running it is what produced this.
+
+-------------------------------------------------------------------------------
+m-1 (minor) — the rider's COVERING direction is stated at "a full height", where DEFINITION HE6-1
+requires κ > D′h; the two differ on a band the note itself distinguishes.
+-------------------------------------------------------------------------------
+
+  Rider 1, line 3831, verbatim:
+
+  > The COVERING direction — every nonempty recentering \(\Phi'-L_\kappa(c)\) of this master at a
+  > full height \(\kappa\) is a member of the family, at the label \(r=Z-c\eta^{-q(\kappa)}\) and the
+  > permitted choice \(B_0=-L_\kappa(c)\) — is EXACT, by the permittedness just checked, and it is
+  > the direction S1.8C consumes.
+
+  "Full" is S1.4's predicate: "k is full ⟺ k ≥ (i(k)+e₁(f₁−1))h, and k ≥ (D′−1)h is uniformly
+  sufficient" (lines 389–394). DEFINITION HE6-1's standing hypothesis is HE6:202, "terms with
+  κ > D′h". Those differ on (D′−1)h ≤ κ ≤ D′h — a band this note and its source both single out
+  (S1.4's two thresholds; HE6-LIFT-1L's sub-threshold set T(k), pinned at r5 repair 4 precisely for
+  that). At such a κ the recentering is NOT a family member, so the covering claim is false there.
+  The permittedness computation the sentence leans on ("by the permittedness just checked") verifies
+  the three conditions of HE6:204 and does not verify HE6:202's κ > D′h.
+
+  Nothing downstream breaks: (WINDOW) (S1.5 line 449) puts every side slope strictly above T = D′h,
+  and r9 repair 1(a) already carries "the recipe's standing \(\kappa>D'h=T\)" at the same site, so
+  every recentering the master actually forms is at κ > D′h and the covering direction is exact
+  there. The defect is one qualifier too wide in a sentence introduced by this rider — hence minor,
+  and hence reportable rather than ignorable, since the rider's whole content is one qualifier.
+
+-------------------------------------------------------------------------------
+Nits (recorded, not counted)
+-------------------------------------------------------------------------------
+  n1. The rider writes "hence \(d(B_0)=\kappa\)" for what HE6:204 calls dv(B_0) and S1.2 calls h;
+      the identification h = dv is S1.2's (line 209) and the usage is inherited verbatim from r9
+      repair 1(a), so it is consistent, but d(·) elsewhere in the note means a value at a point.
+  n2. The permittedness check does not restate that L_κ(·) exists only at a full height; supplied
+      by κ > D′h > (D′−1)h, and already in hand at r9 repair 1(a).
+  n3. HE7-PERT-TRANSPORT's two delimiters differ in blockquote prefix (first has `> `, last at
+      HE7:951 does not). Both are quoted correctly; the asymmetry is a transcription hazard for the
+      next gate-runner, not a defect.
+
+================================================================================
+## VERDICT
+================================================================================
+Coverage this pass: the rider's three claims re-derived from the byte-level source (a); the full
+32-pin gate run end to end for the first time on the final text, plus the marker/edit-count checks
+and both directions of the standing consumption sweep (b); fourteen supersession landmarks across
+r1–r9+rider with the (MP1′) retirement chain (c); and one free route (d).
+
+The master core, the r9 coherent-frame rebuild, and the rider's mathematics all survive this pass
+intact. The finding is not in them: it is that the level-one instance records' pinned suppliers do
+not contain `(ACCOUNT)` or the S1.7 test package, while two effective-text sentences assert that
+they do.
+
+A GAP-strength finding stands, so the confirmation pass does not land clean; by S7 ("A gap-or-worse
+repair resets the clean count") the counter that the rider left at 1 of 2 cannot advance on this
+pass, and the acceptance at 5/5 does not close here.
+
+VERDICT: NOT CLEAN | FINDINGS: 0C + 1G + 1m
