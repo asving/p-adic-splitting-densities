@@ -967,6 +967,42 @@ theorem sum_three_densities_eq_one :
     rw [add_zero] at hlim
     exact ge_of_tendsto hlim (Eventually.of_forall (fun M => one_le_sum_seqs (2 * M)))
 
+/-- **Every other type has density exactly `0` at `n = 2`.** Together with G11 this pins the
+whole degree-2 density function except for the split between the three surviving types: the
+menu is `{split, inert, ram}` and nothing else carries mass. (Generalises
+`genuineDensity_two_linType_eq_zero`, which is the case `σ = {(1,1)}`.) -/
+theorem genuineDensity_two_eq_zero {σ : FactorizationType} (hs : σ ≠ splitType)
+    (hi : σ ≠ inertType) (hr : σ ≠ ramType) : genuineDensity O 2 σ = 0 := by
+  have hempty : ∀ N, decidedSet O 2 σ N = ∅ := by
+    intro N
+    ext c
+    simp only [Set.mem_empty_iff_false, iff_false]
+    intro hc
+    obtain ⟨a, ha⟩ := proj_surjective O 2 N c
+    have hty : typeOf (monicPoly a) = σ := hc a ha
+    rcases typeOf_two_cases a with h | h | h <;> rw [h] at hty
+    · exact hs hty.symm
+    · exact hi hty.symm
+    · exact hr hty.symm
+  have hzero : ∀ N, decidedSeq O 2 σ N = 0 := by
+    intro N
+    rw [decidedSeq, decidedCount, hempty N]
+    simp
+  rw [genuineDensity]
+  simp [hzero]
+
+/-- **The `n = 2` picture, packaged.** The three types carry mass summing to exactly `1`, every
+other type has density exactly `0`, and for each type the decided limit is the density (the
+bracket is closed). What is *not* here is the individual values — see the unit note, STATUS 5a. -/
+theorem density_two_summary :
+    (genuineDensity O 2 splitType + genuineDensity O 2 inertType + genuineDensity O 2 ramType
+      = 1)
+    ∧ (∀ σ : FactorizationType, σ ≠ splitType → σ ≠ inertType → σ ≠ ramType →
+        genuineDensity O 2 σ = 0)
+    ∧ (∀ σ : FactorizationType, upperDensity O 2 σ = genuineDensity O 2 σ) :=
+  ⟨sum_three_densities_eq_one, fun _ hs hi hr => genuineDensity_two_eq_zero hs hi hr,
+    upperDensity_eq_two⟩
+
 end Drainage
 
 /-! ## 10. Axiom footprints -/
@@ -985,6 +1021,8 @@ section AxCheck
 #print axioms Uniformity.Density.upperDensity_eq_two
 #print axioms Uniformity.Density.typeOf_two_cases
 #print axioms Uniformity.Density.sum_three_densities_eq_one
+#print axioms Uniformity.Density.genuineDensity_two_eq_zero
+#print axioms Uniformity.Density.density_two_summary
 
 end AxCheck
 
