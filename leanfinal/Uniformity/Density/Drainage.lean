@@ -409,4 +409,389 @@ theorem typeOf_of_certSplit {π : O} (hπ : Irreducible π) {a : Fin 2 → O} {N
 
 end CertSplitComplete
 
+/-! ## 4. The certificates are properties of the CLASS, not of the lift -/
+
+section Invariance
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-- `a` and `b` agree modulo `π ^ N` coefficientwise. -/
+def CongAt (π : O) (N : ℕ) (a b : Fin 2 → O) : Prop := ∀ i, π ^ N ∣ (b i - a i)
+
+theorem CongAt_symm {N : ℕ} {a b : Fin 2 → O} (h : CongAt π N a b) : CongAt π N b a :=
+  fun i => (dvd_sub_comm).1 (h i)
+
+theorem qval_congr {N : ℕ} {a b : Fin 2 → O} (h : CongAt π N a b) (γ : O) :
+    π ^ N ∣ (qval b γ - qval a γ) := by
+  have hexp : qval b γ - qval a γ = (b 0 - a 0) + (b 1 - a 1) * γ := by simp only [qval]; ring
+  rw [hexp]
+  exact dvd_add (h 0) ((h 1).mul_right γ)
+
+theorem qder_congr {N : ℕ} {a b : Fin 2 → O} (h : CongAt π N a b) (γ : O) :
+    π ^ N ∣ (qder b γ - qder a γ) := by
+  have hexp : qder b γ - qder a γ = b 1 - a 1 := by simp only [qder]; ring
+  rw [hexp]; exact h 1
+
+/-- Transfer a divisibility across a congruence, provided the exponent is inside the window. -/
+theorem dvd_transfer {N j : ℕ} {x y : O} (hj : j ≤ N) (hd : π ^ N ∣ (y - x)) (h : π ^ j ∣ x) :
+    π ^ j ∣ y := by
+  have hy : y = x + (y - x) := by ring
+  rw [hy]
+  exact dvd_add h (dvd_trans (pow_dvd_pow π hj) hd)
+
+theorem CertSplit_congr {N : ℕ} {a b : Fin 2 → O} (hab : CongAt π N a b) (h : CertSplit π a N) :
+    CertSplit π b N := by
+  obtain ⟨γ, w, hw, hd1, hd2, hv⟩ := h
+  refine ⟨γ, w, hw, dvd_transfer (by omega) (qder_congr hab γ) hd1, ?_,
+    dvd_transfer (by omega) (qval_congr hab γ) hv⟩
+  intro hcon
+  exact hd2 (dvd_transfer (N := N) (by omega) (qder_congr (CongAt_symm hab) γ) hcon)
+
+theorem CertRam_congr {N : ℕ} {a b : Fin 2 → O} (hab : CongAt π N a b) (h : CertRam π a N) :
+    CertRam π b N := by
+  obtain ⟨γ, j, hj, hv1, hv2, hd⟩ := h
+  refine ⟨γ, j, hj, dvd_transfer (by omega) (qval_congr hab γ) hv1, ?_,
+    dvd_transfer (N := N) (by omega) (qder_congr hab γ) hd⟩
+  intro hcon
+  exact hv2 (dvd_transfer (N := N) (by omega) (qval_congr (CongAt_symm hab) γ) hcon)
+
+/-- Anisotropy only reads the residual form mod `π`. -/
+theorem Anisotropic_congr (hπ : Irreducible π) {c c' : Fin 2 → O} (h : Anisotropic c)
+    (h0 : π ∣ (c' 0 - c 0)) (h1 : π ∣ (c' 1 - c 1)) : Anisotropic c' := by
+  intro u v huv
+  refine h u v ?_
+  have hexp : quadForm c u v
+      = quadForm c' u v + ((c' 1 - c 1) * u * v - (c' 0 - c 0) * v ^ 2) := by
+    simp only [quadForm]; ring
+  rw [hexp]
+  refine Ideal.add_mem _ huv (Ideal.sub_mem _ ?_ ?_)
+  · exact (mem_maximalIdeal_iff_dvd hπ _).2 (((h1.mul_right u).mul_right v))
+  · exact (mem_maximalIdeal_iff_dvd hπ _).2 (h0.mul_right (v ^ 2))
+
+theorem CertInert_congr (hπ : Irreducible π) {N : ℕ} {a b : Fin 2 → O} (hab : CongAt π N a b)
+    (h : CertInert π a N) : CertInert π b N := by
+  obtain ⟨γ, k, b₀, b₁, hk, hval, hder, haniso⟩ := h
+  obtain ⟨t₀, ht₀⟩ : π ^ (2 * k + 1) ∣ (qval b γ - qval a γ) :=
+    dvd_trans (pow_dvd_pow π hk) (qval_congr hab γ)
+  obtain ⟨t₁, ht₁⟩ : π ^ (k + 1) ∣ (qder b γ - qder a γ) :=
+    dvd_trans (pow_dvd_pow π (by omega)) (qder_congr hab γ)
+  refine ⟨γ, k, b₀ + π * t₀, b₁ + π * t₁, hk, ?_, ?_, ?_⟩
+  · have hb : qval b γ = qval a γ + π ^ (2 * k + 1) * t₀ := by linear_combination ht₀
+    rw [hb, hval]; ring
+  · have hb : qder b γ = qder a γ + π ^ (k + 1) * t₁ := by linear_combination ht₁
+    rw [hb, hder]; ring
+  · refine Anisotropic_congr hπ haniso ?_ ?_ <;> simp
+
+end Invariance
+
+/-! ## 5. The tangency depth and the DICHOTOMY
+
+`Tang π a t γ` says `min ( v(F(γ)), 2 v(F'(γ)) ) ≥ t`. If no centre reaches depth `N`, then the
+deepest centre carries one of the three certificates: the fourth polygon shape (residual double
+root) is excluded *because it would reach depth `t + 1`*. -/
+
+section Dichotomy
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-- **Tangency of depth `t` at the centre `γ`**: `π ^ t ∣ F(γ)` and `π ^ ⌈t/2⌉ ∣ F'(γ)`. -/
+def Tang (π : O) (a : Fin 2 → O) (t : ℕ) (γ : O) : Prop :=
+  π ^ t ∣ qval a γ ∧ π ^ ((t + 1) / 2) ∣ qder a γ
+
+theorem Tang_zero (π : O) (a : Fin 2 → O) (γ : O) : Tang π a 0 γ := by
+  constructor <;> simp
+
+theorem Tang_mono {a : Fin 2 → O} {t t' : ℕ} {γ : O} (h : t ≤ t') (ht : Tang π a t' γ) :
+    Tang π a t γ :=
+  ⟨dvd_trans (pow_dvd_pow π h) ht.1, dvd_trans (pow_dvd_pow π (by omega)) ht.2⟩
+
+/-- If the residual binary form is not anisotropic, the residual quadratic has a root mod `π`
+(the coordinate `v` of a nontrivial zero must be a unit, and `z = -u/v` is the root). -/
+theorem exists_residual_root (hπ : Irreducible π) {b₀ b₁ : O} (h : ¬ Anisotropic ![b₀, b₁]) :
+    ∃ z : O, π ∣ (z ^ 2 + b₁ * z + b₀) := by
+  have h' : ∃ u v : O, quadForm ![b₀, b₁] u v ∈ IsLocalRing.maximalIdeal O ∧
+      ¬(u ∈ IsLocalRing.maximalIdeal O ∧ v ∈ IsLocalRing.maximalIdeal O) := by
+    by_contra hcon
+    refine h (fun u v huv => ?_)
+    by_contra hnb
+    exact hcon ⟨u, v, huv, hnb⟩
+  obtain ⟨u, v, huv, hnot⟩ := h'
+  simp only [quadForm, Matrix.cons_val_zero, Matrix.cons_val_one] at huv
+  have huv' : π ∣ (u ^ 2 - b₁ * u * v + b₀ * v ^ 2) := (mem_maximalIdeal_iff_dvd hπ _).1 huv
+  have hvunit : IsUnit v := by
+    by_contra hvn
+    have hvd : π ∣ v :=
+      (mem_maximalIdeal_iff_dvd hπ v).1 ((IsLocalRing.mem_maximalIdeal _).2 (mem_nonunits_iff.2 hvn))
+    have hu2 : π ∣ u ^ 2 := by
+      have hsplit : u ^ 2 = (u ^ 2 - b₁ * u * v + b₀ * v ^ 2) + (b₁ * u * v - b₀ * v ^ 2) := by ring
+      rw [hsplit]
+      refine dvd_add huv' (dvd_sub (hvd.mul_left (b₁ * u)) ?_)
+      rw [pow_two]
+      exact (hvd.mul_left v).mul_left b₀
+    exact hnot ⟨(mem_maximalIdeal_iff_dvd hπ u).2 (hπ.prime.dvd_of_dvd_pow hu2),
+      (mem_maximalIdeal_iff_dvd hπ v).2 hvd⟩
+  obtain ⟨V, hV⟩ := hvunit
+  refine ⟨-(u * (↑V⁻¹ : O)), ?_⟩
+  have hw : (↑V⁻¹ : O) * v = 1 := by rw [← hV]; exact V.inv_mul
+  have hkey : (-(u * (↑V⁻¹ : O))) ^ 2 + b₁ * (-(u * (↑V⁻¹ : O))) + b₀
+      = (↑V⁻¹ : O) ^ 2 * (u ^ 2 - b₁ * u * v + b₀ * v ^ 2) := by
+    linear_combination (b₁ * u * (↑V⁻¹ : O) - b₀ * (v * (↑V⁻¹ : O) + 1)) * hw
+  rw [hkey]
+  exact huv'.mul_left _
+
+/-- The last step before a predicate first fails (no monotonicity needed). -/
+theorem exists_max_step {Q : ℕ → Prop} (hQ0 : Q 0) : ∀ N : ℕ, ¬ Q N →
+    ∃ t, t < N ∧ Q t ∧ ¬ Q (t + 1) := by
+  intro N
+  induction N with
+  | zero => exact fun hN => absurd hQ0 hN
+  | succ n ih =>
+    intro hN
+    by_cases hn : Q n
+    · exact ⟨n, by omega, hn, hN⟩
+    · obtain ⟨t, ht1, ht2, ht3⟩ := ih hn
+      exact ⟨t, by omega, ht2, ht3⟩
+
+/-- **THE DICHOTOMY.** If no centre has tangency depth `N`, one of the three window-`N`
+certificates holds. -/
+theorem cert_of_not_tang (hπ : Irreducible π) (a : Fin 2 → O) (N : ℕ)
+    (hN : ¬ ∃ γ, Tang π a N γ) :
+    CertSplit π a N ∨ CertRam π a N ∨ CertInert π a N := by
+  obtain ⟨t, htlt, hPt, hmax⟩ :=
+    exists_max_step (Q := fun t => ∃ γ, Tang π a t γ) ⟨0, Tang_zero π a 0⟩ N hN
+  obtain ⟨γ, hval, hder⟩ := hPt
+  by_cases hnext : π ^ (t + 1) ∣ qval a γ
+  · -- the value goes deeper, so the DERIVATIVE must be what blocks depth `t + 1`
+    have hderfail : ¬ π ^ ((t + 1 + 1) / 2) ∣ qder a γ := fun hcon => hmax ⟨γ, hnext, hcon⟩
+    rcases Nat.even_or_odd t with ⟨k, hk⟩ | ⟨j, hj⟩
+    · -- `t = 2k`, derivative valuation exactly `k`: a Newton root, SPLIT
+      left
+      refine ⟨γ, k, by omega, ?_, ?_, ?_⟩
+      · rw [show k = (t + 1) / 2 by omega]; exact hder
+      · rw [show k + 1 = (t + 1 + 1) / 2 by omega]; exact hderfail
+      · rw [show 2 * k + 1 = t + 1 by omega]; exact hnext
+    · -- `t` odd: `⌈(t+1)/2⌉ = ⌈t/2⌉`, so the derivative cannot be what blocks — impossible
+      exact absurd (by rw [show (t + 1 + 1) / 2 = (t + 1) / 2 by omega]; exact hder) hderfail
+  · -- the value has EXACT valuation `t`
+    rcases Nat.even_or_odd t with ⟨k, hk⟩ | ⟨j, hj⟩
+    · -- `t = 2k` even: read the residual quadratic
+      have hderk : π ^ k ∣ qder a γ := by rw [show k = (t + 1) / 2 by omega]; exact hder
+      have hvalk : π ^ (2 * k) ∣ qval a γ := by rw [show 2 * k = t by omega]; exact hval
+      have hvalk' : ¬ π ^ (2 * k + 1) ∣ qval a γ := by
+        rw [show 2 * k + 1 = t + 1 by omega]; exact hnext
+      obtain ⟨b₀, hb₀⟩ := hvalk
+      obtain ⟨b₁, hb₁⟩ := hderk
+      by_cases haniso : Anisotropic ![b₀, b₁]
+      · exact Or.inr (Or.inr ⟨γ, k, b₀, b₁, by omega, hb₀, hb₁, haniso⟩)
+      · -- a residual root: recentre at `γ + π^k z`
+        obtain ⟨z, hz⟩ := exists_residual_root hπ haniso
+        have hval' : π ^ (2 * k + 1) ∣ qval a (γ + π ^ k * z) := by
+          rw [qval_shift, hb₀, hb₁]
+          obtain ⟨c, hc⟩ := hz
+          exact ⟨c, by linear_combination (π ^ (2 * k)) * hc⟩
+        have hder' : qder a (γ + π ^ k * z) = π ^ k * (b₁ + 2 * z) := by
+          rw [qder_shift, hb₁]; ring
+        by_cases hdd : π ∣ (b₁ + 2 * z)
+        · -- residual DOUBLE root: depth `t + 1` is reached, contradicting maximality
+          refine absurd ⟨γ + π ^ k * z, ?_, ?_⟩ hmax
+          · rw [show t + 1 = 2 * k + 1 by omega]; exact hval'
+          · rw [show (t + 1 + 1) / 2 = k + 1 by omega, hder']
+            obtain ⟨c, hc⟩ := hdd
+            exact ⟨c, by rw [hc]; ring⟩
+        · -- residual SIMPLE root: a Newton root at the new centre, SPLIT
+          refine Or.inl ⟨γ + π ^ k * z, k, by omega, ⟨b₁ + 2 * z, hder'⟩, ?_, hval'⟩
+          rintro ⟨c, hc⟩
+          refine hdd ⟨c, ?_⟩
+          refine mul_left_cancel₀ (pow_ne_zero k hπ.ne_zero) ?_
+          rw [← hder', hc]; ring
+    · -- `t = 2j+1` odd and exact: RAM
+      refine Or.inr (Or.inl ⟨γ, j, by omega, ?_, ?_, ?_⟩)
+      · rw [show 2 * j + 1 = t by omega]; exact hval
+      · rw [show 2 * j + 2 = t + 1 by omega]; exact hnext
+      · rw [show j + 1 = (t + 1) / 2 by omega]; exact hder
+
+end Dichotomy
+
+/-! ## 6. Decidedness below the tangency depth -/
+
+section Decided
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)] {π : O}
+
+theorem mem_maximalIdeal_pow_iff_dvd (hπ : Irreducible π) (N : ℕ) (x : O) :
+    x ∈ (IsLocalRing.maximalIdeal O) ^ N ↔ π ^ N ∣ x := by
+  rw [hπ.maximalIdeal_eq, Ideal.span_singleton_pow, Ideal.mem_span_singleton]
+
+theorem congAt_of_proj_eq (hπ : Irreducible π) {N : ℕ} {a b : Fin 2 → O}
+    (h : proj O 2 N a = proj O 2 N b) : CongAt π N a b := by
+  intro i
+  have hi := congrFun h i
+  rw [proj, proj, Ideal.Quotient.eq] at hi
+  exact dvd_sub_comm.1 ((mem_maximalIdeal_pow_iff_dvd hπ N _).1 hi)
+
+variable [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+
+/-- **THE DECIDEDNESS THEOREM.** If no centre reaches tangency depth `N`, the level-`N` class of
+`a` is `σ`-decided for `σ = typeOf (monicPoly a)`: the certificate produced by the dichotomy
+reads only data strictly inside the window, so every other lift of the class carries the same
+certificate and therefore the same type. -/
+theorem decidedAt_of_not_tang (hπ : Irreducible π) {a : Fin 2 → O} {N : ℕ}
+    (hN : ¬ ∃ γ, Tang π a N γ) :
+    DecidedAt O 2 (typeOf (monicPoly a)) N (proj O 2 N a) := by
+  intro b hb
+  have hab : CongAt π N a b := congAt_of_proj_eq hπ hb.symm
+  rcases cert_of_not_tang hπ a N hN with h | h | h
+  · rw [typeOf_of_certSplit hπ (CertSplit_congr hab h), typeOf_of_certSplit hπ h]
+  · rw [typeOf_of_certRam hπ (CertRam_congr hab h), typeOf_of_certRam hπ h]
+  · rw [typeOf_of_certInert hπ (CertInert_congr hπ hab h), typeOf_of_certInert hπ h]
+
+end Decided
+
+/-! ## 7. The undecided set, and the general gap bound
+
+`gapSeq σ N ≤ undecidedSeq N` for EVERY `n` and `σ`: a class that is `σ`-possible but not
+`σ`-decided cannot be decided for any other type either (it has a lift of type `σ`). So one
+bound on the undecided mass drains every type at once. -/
+
+section Undecided
+
+variable (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)]
+
+/-- A class is **UNDECIDED** at level `N` when no type at all is decided on it. -/
+def UndecidedAt (n N : ℕ) (c : Coeff O n N) : Prop :=
+  ∀ σ : FactorizationType, ¬ DecidedAt O n σ N c
+
+/-- The set of undecided level-`N` classes. -/
+def undecidedSet (n N : ℕ) : Set (Coeff O n N) := {c | UndecidedAt O n N c}
+
+/-- `#{undecided level-N classes}`. -/
+noncomputable def undecidedCount (n N : ℕ) : ℕ := Nat.card (undecidedSet O n N)
+
+/-- The undecided proportion at level `N`. -/
+noncomputable def undecidedSeq (n N : ℕ) : ℝ :=
+  (undecidedCount O n N : ℝ) / (residueCard O : ℝ) ^ (n * N)
+
+variable {O}
+
+theorem possibleSet_subset_union (n N : ℕ) (σ : FactorizationType) :
+    possibleSet O n σ N ⊆ decidedSet O n σ N ∪ undecidedSet O n N := by
+  intro c hc
+  by_cases hd : DecidedAt O n σ N c
+  · exact Or.inl hd
+  · refine Or.inr (fun τ hτ => hd ?_)
+    obtain ⟨a, ha, hta⟩ := hc
+    have hστ : τ = σ := by rw [← hτ a ha, hta]
+    exact hστ ▸ hτ
+
+theorem possibleCount_le_add (n N : ℕ) (σ : FactorizationType) :
+    possibleCount O n σ N ≤ decidedCount O n σ N + undecidedCount O n N := by
+  classical
+  have h1 : possibleCount O n σ N
+      ≤ Nat.card ((decidedSet O n σ N ∪ undecidedSet O n N : Set (Coeff O n N))) :=
+    Nat.card_le_card_of_injective (Set.inclusion (possibleSet_subset_union n N σ))
+      (Set.inclusion_injective _)
+  have h2 : Nat.card ((decidedSet O n σ N ∪ undecidedSet O n N : Set (Coeff O n N)))
+      ≤ decidedCount O n σ N + undecidedCount O n N := by
+    rw [Nat.card_coe_set_eq, decidedCount, undecidedCount, Nat.card_coe_set_eq,
+      Nat.card_coe_set_eq]
+    exact Set.ncard_union_le _ _
+  exact h1.trans h2
+
+/-- **One bound drains every type.** -/
+theorem gapSeq_le_undecidedSeq (n N : ℕ) (σ : FactorizationType) :
+    gapSeq O n σ N ≤ undecidedSeq O n N := by
+  have h := possibleCount_le_add (O := O) n N σ
+  have hq : (0 : ℝ) < (residueCard O : ℝ) ^ (n * N) := qpow_pos _
+  have hcast : (possibleCount O n σ N : ℝ) ≤ (decidedCount O n σ N : ℝ) + undecidedCount O n N := by
+    exact_mod_cast h
+  rw [gapSeq, possibleSeq, decidedSeq, undecidedSeq, div_sub_div_same, div_le_div_iff₀ hq hq]
+  nlinarith [hcast, hq]
+
+end Undecided
+
+/-! ## 8. Counting the undecided classes: `q ^ (3M)` out of `q ^ (4M)` at level `2M` -/
+
+section Counting
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)] [IsAdicComplete (IsLocalRing.maximalIdeal O) O] {π : O}
+
+/-- **The class is pinned by `(γ mod π^M, a₁ mod π^{2M})`.** Two deeply-tangent data with the
+same centre mod `π ^ M` and the same `a₁` mod `π ^ {2M}` have the same `a₀` mod `π ^ {2M}` —
+because moving the centre by `π ^ M s` moves the value by `π ^ M s F'(γ) + π^{2M}s² ∈ π^{2M}`. -/
+theorem class_pinned {M : ℕ} {a a' : Fin 2 → O} {γ γ' : O}
+    (hT : Tang π a (2 * M) γ) (hT' : Tang π a' (2 * M) γ')
+    (hγ : π ^ M ∣ (γ' - γ)) (h1 : π ^ (2 * M) ∣ (a' 1 - a 1)) :
+    π ^ (2 * M) ∣ (a' 0 - a 0) := by
+  obtain ⟨s, hs⟩ := hγ
+  obtain ⟨d, hd⟩ := h1
+  obtain ⟨e, he⟩ := hT.1
+  obtain ⟨e', he'⟩ := hT'.1
+  obtain ⟨g, hg⟩ := (show π ^ M ∣ qder a γ by
+    have := hT.2; rwa [show (2 * M + 1) / 2 = M by omega] at this)
+  simp only [qval] at he he'
+  simp only [qder] at hg
+  have hs' : γ' = γ + π ^ M * s := by linear_combination hs
+  have hd' : a' 1 = a 1 + π ^ (2 * M) * d := by linear_combination hd
+  rw [hs', hd'] at he'
+  exact ⟨e' - e - s * g - s ^ 2 - d * γ - π ^ M * d * s,
+    by linear_combination he' - he - (π ^ M * s) * hg⟩
+
+/-- **THE UNDECIDED BOUND.** At level `2M` at most `q ^ (3M)` of the `q ^ (4M)` classes are
+undecided. -/
+theorem undecidedCount_le (hπ : Irreducible π) (M : ℕ) :
+    undecidedCount O 2 (2 * M) ≤ residueCard O ^ (3 * M) := by
+  classical
+  have key : ∀ c : undecidedSet O 2 (2 * M), ∃ p : (Fin 2 → O) × O,
+      proj O 2 (2 * M) p.1 = (c : Coeff O 2 (2 * M)) ∧ Tang π p.1 (2 * M) p.2 := by
+    rintro ⟨c, hc⟩
+    obtain ⟨a, ha⟩ := proj_surjective O 2 (2 * M) c
+    by_cases hT : ∃ γ, Tang π a (2 * M) γ
+    · obtain ⟨γ, hγ⟩ := hT
+      exact ⟨(a, γ), ha, hγ⟩
+    · exact absurd (ha ▸ decidedAt_of_not_tang hπ hT) (hc _)
+  choose f hf1 hf2 using key
+  have hinj : Function.Injective (fun c : undecidedSet O 2 (2 * M) =>
+      ((Ideal.Quotient.mk ((IsLocalRing.maximalIdeal O) ^ M) (f c).2,
+        (c : Coeff O 2 (2 * M)) 1) : Res O M × Res O (2 * M))) := by
+    intro c c' hcc
+    have h1 : Ideal.Quotient.mk ((IsLocalRing.maximalIdeal O) ^ M) (f c).2
+        = Ideal.Quotient.mk _ (f c').2 := congrArg Prod.fst hcc
+    have h2 : (c : Coeff O 2 (2 * M)) 1 = (c' : Coeff O 2 (2 * M)) 1 := congrArg Prod.snd hcc
+    have hγ : π ^ M ∣ ((f c').2 - (f c).2) :=
+      (mem_maximalIdeal_pow_iff_dvd hπ M _).1 (Ideal.Quotient.eq.1 h1.symm)
+    have e1 : (c : Coeff O 2 (2 * M)) 1 = Ideal.Quotient.mk _ ((f c).1 1) := by rw [← hf1 c]; rfl
+    have e2 : (c' : Coeff O 2 (2 * M)) 1 = Ideal.Quotient.mk _ ((f c').1 1) := by rw [← hf1 c']; rfl
+    have ha1 : π ^ (2 * M) ∣ ((f c').1 1 - (f c).1 1) :=
+      (mem_maximalIdeal_pow_iff_dvd hπ (2 * M) _).1 (Ideal.Quotient.eq.1 (by rw [← e1, ← e2, h2]))
+    have ha0 : π ^ (2 * M) ∣ ((f c').1 0 - (f c).1 0) := class_pinned (hf2 c) (hf2 c') hγ ha1
+    refine Subtype.ext (funext fun i => ?_)
+    fin_cases i
+    · show (c : Coeff O 2 (2 * M)) 0 = (c' : Coeff O 2 (2 * M)) 0
+      rw [← hf1 c, ← hf1 c']
+      exact Ideal.Quotient.eq.2
+        ((mem_maximalIdeal_pow_iff_dvd hπ (2 * M) _).2 (dvd_sub_comm.1 ha0))
+    · exact h2
+  have hle := Nat.card_le_card_of_injective _ hinj
+  rw [Nat.card_prod, card_res, card_res] at hle
+  calc undecidedCount O 2 (2 * M) ≤ residueCard O ^ M * residueCard O ^ (2 * M) := hle
+    _ = residueCard O ^ (3 * M) := by rw [← pow_add]; ring_nf
+
+/-- The undecided proportion at level `2M` is at most `q ^ (-M)`. -/
+theorem undecidedSeq_le (hπ : Irreducible π) (M : ℕ) :
+    undecidedSeq O 2 (2 * M) ≤ (1 / (residueCard O : ℝ)) ^ M := by
+  have hcount : (undecidedCount O 2 (2 * M) : ℝ) ≤ (residueCard O : ℝ) ^ (3 * M) := by
+    exact_mod_cast undecidedCount_le hπ M
+  have hq : (0 : ℝ) < (residueCard O : ℝ) := qR_pos
+  rw [undecidedSeq, div_pow, one_pow, show 2 * (2 * M) = 4 * M from by ring,
+    div_le_div_iff₀ (by positivity) (by positivity)]
+  calc (undecidedCount O 2 (2 * M) : ℝ) * (residueCard O : ℝ) ^ M
+      ≤ (residueCard O : ℝ) ^ (3 * M) * (residueCard O : ℝ) ^ M := by
+        exact mul_le_mul_of_nonneg_right hcount (by positivity)
+    _ = 1 * (residueCard O : ℝ) ^ (4 * M) := by rw [one_mul, ← pow_add]; ring_nf
+
+end Counting
+
 end Uniformity.Density
