@@ -4429,3 +4429,29 @@ mechanics, lower-tier fleet protocol) being drafted now for a codex
 plan-level adversarial review BEFORE the phase fires (standing
 memory: review the architecture plan with Codex before drafting
 hard sections).
+
+**2026-08-13 DATED APPEND #44 — THE COMPRESSION CAMPAIGN CLOSES:
+FIVE OF FIVE UNITS ACCEPTED; THE SIMPLIFICATION IS DONE; PHASE 0 OF
+THE FORMALIZATION PROGRAM IS LIVE.** **T2 v2 ACCEPTED 2/2** (sol
+r12 pass FULLY CLEAN 0C+0G+0m + Opus confirmation 0C+0G+1m
+bookkeeping-on-own-text; thirteen comp13 hostile passes across two
+arms; the record corrected its own draft's pass count). The note is
+byte-frozen at r12 + three riders + the ACCEPTANCE RECORD (line
+4479), which displays the four standing conditionalities — (LB1),
+(MP1) open at level one; (SEC-RANK) carrier + discharges; (RISE)
+stipulated + discharges — and the (GRADE) cap (S3.1/S3.2 composed
+instances stay at HE3's HEAD grade). CAMPAIGN TOTALS: T1 (13 rounds
++ battery 10/10), T2 (12 rounds, 13 passes), T3, T4, T5 — all
+model-diverse 2/2; the corpus's gauge/σ-ladder/telescope/certificate/
+w-frame layers now each stated ONCE. The arc's real catches: sol's
+frame conflation + unpinned β-guard; Opus's S7 end-to-end and
+dated-append instruments (one gap each); the (MP1′) retirement
+earned; dv's true value group. **NEXT PHASE (the /goal): the
+blueprint program per BLUEPRINT_PHASE_DESIGN REVISION 2** —
+Phase 0a pilot (EFF-T3 effective-spec compilation) ALREADY RUNNING
+on codex; then the 25-note 0a sweep, the 0b hypothesis-closure
+ledger, 0c global DAG, 0d Asvin sign-off checkpoint (definitions +
+capstone signatures), 0e leanspec interface environment, then
+chapter blueprints + the lower-tier fleet. Consumption checks for
+T1/T2 (the T3/T4/T5 pattern) fold into Phase 0a's effective-spec
+work rather than running as a separate queue.
