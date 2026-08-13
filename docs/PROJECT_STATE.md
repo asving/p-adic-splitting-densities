@@ -4071,3 +4071,30 @@ dated supersessions first; (2) the disclosed residuals: per-genre
 (CS-1Q) ledgers, ITERLAWN's (RM-m ≥ 2) conditional ledger; (3) the
 parked queue (LEANSIMP steps 2–18 behind Asvin's sign-off, the Lean
 unit trial, exposition E-units). Codex window ~11% used.
+
+**2026-08-13 DATED APPEND #32 — COMPRESSION: THREE OF FIVE UNITS
+ACCEPTED (T3, T4, T5); T1 r12 + T2 r3 ARCS OWED.** The comp11/comp12
+sol queues + the interleaved Fable-arm passes drained overnight.
+ACCEPTED 2/2 at the hostile bar, all model-diverse (Fable/Claude arm
++ gpt-5.6-sol arm): **T3** the cocycle-telescope lemma, **T4** the
+certificate-witness note (Fable clean-w-1-minor folded + sol clean;
+runs/comp12/T4P7_*), **T5** the w-frame note (Fable clean + sol
+clean — the campaign's first fully model-diverse acceptance pair;
+runs/comp12/T5P7_*). STILL IN ARC: **T1** the gauge-cocycle lemma at
+r12 (the latest Fable pass returned 0C+1G+4m — the unbound grade
+valuation v, now bound to the base-normalized terminal tower
+valuation with the GENTOW2 witness, + 4 typing minors; counter
+RESET, owes 2 consecutive clean; machine battery re-run against the
+effective text still owed at acceptance); **T2** the σ-ladder master
+at r3 (the sol-derived 8-repair fold: all 26 pins re-derived as
+existing-text delimiter spans over the six sources, the (MID-PEEL)
+key-divides induction case added, (LB1) widened, multi-side
+(SIDE-PROD) case made explicit; owes 2 consecutive clean). NEXT:
+fresh hostile passes on T1-r12 and T2-r3 (Opus arm pass 1 to
+conserve the codex window, sol confirmation on clean — runs/comp13),
+then the S-0 statement-ledger update + consumption checks for the
+three accepted units. BUDGET REGIME (Asvin 2026-08-13): LIMITED on
+both Claude and codex — codex window 42% used (resets Tue Aug 18),
+reserved highest-priority for hostile math verification; Opus
+subagents for scoped math/Lean work; the 2026-08-12 unlimited-API
+parallel regime is superseded.
