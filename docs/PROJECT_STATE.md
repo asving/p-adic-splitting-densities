@@ -4522,3 +4522,18 @@ T2_s1of6 in flight at the throttle edge; remaining ~45 runs resume
 post-reset (Tue) under the same runner. NEXT: 0d (Asvin) ∥ sweep
 completion ∥ merges (Claude-side) → 0c DAG → 0e leanspec →
 chapters → fleet.
+
+**2026-08-14 APPEND #46a (micro) — SWEEP PAUSED AT THE BUDGET WALL;
+RESUME PROTOCOL.** The 0a queue self-paused at 98% of the codex
+window before T2_s2of6 (7 of 52 runs done: T3 full+revision, T1
+s1-s3, T2 s1 — all landed and committed). **RESUME (after the Tue
+2026-08-18 10:23 reset): `bash runs/qgen/sweep_runner.sh` from the
+repo root** — resume-safe, skips completed runs, re-throttles at
+88%. Also codex-gated and waiting: MQ-1 (the n=2 exact-values codex
+pass), MQ-3 (the [GMN12] §4 characteristic audit). Purchasable
+credits exist (codex-limits: has=True) — spending past the window
+is ASVIN'S CALL, not the orchestrator's. Claude-side work available
+meanwhile: the T1 shard merge (batched with others post-reset), and
+0d whenever Asvin answers the nine questions. The phase is at a
+clean checkpoint: everything committed, monitors armed, resumption
+one command.
