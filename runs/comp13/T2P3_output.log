@@ -1,0 +1,882 @@
+# T2 v2 — HOSTILE PASS (pass 1 of 2 on revision r3), Opus/Claude arm
+
+TARGET: lean/notes/openmath/T2_SIGMA_LADDER_MASTER_2026-08-12.md
+ROLE:   hostile verifier, fresh context. QUOTE AND CLASSIFY, FIX NOTHING. Read-only on the corpus.
+DATE:   2026-08-13
+
+EFFECTIVE-TEXT CONSTRUCTION (later rounds supersede what they name):
+  base S0-S8
+  + r1 repair 1 (S1.7A label-block thm)      -- SUPERSEDED by r2 repair 2 (S1.7A deleted+replaced)
+  + r1 repair 2 (HE3 consumes HE6)           -- LIVE
+  + r1 repair 3 (synthetic T2V2PIN markers)  -- DELETED by r2 repair 1
+  + r2 repairs 1-8                            -- LIVE (r2r1 replaces S0.2; r2r2 replaces S1.7A;
+                                                 r2r3 adds MID-PEEL + new rank para + new clause 5;
+                                                 r2r4 adds S1.7B/(LB1); r2r5 KEY-BOUNDARY suite;
+                                                 r2r6 (FUND) in orbit count; r2r7 level-one vocab
+                                                 + (THETA-EVAL); r2r8 (SIDE-PROD) induction case)
+  + r3 repairs 1-9                            -- LIVE (r3r1 re-derives 4 pins -> 5, inventory 26->27;
+                                                 r3r2 unit types + nesting rule; r3r3 HE6R1-1 note;
+                                                 r3r4 (MID-PEEL) input suite; r3r5 nu=1 guard;
+                                                 r3r6 (LB1) widened; r3r7 clause-1/2 vs split-first;
+                                                 r3r8 clause-3 own-residual reading; r3r9 file paths)
+
+NOTE ON PIN COUNT: the task brief says 26 pins; the EFFECTIVE text (r3 repair 1) says
+"the inventory grows from 26 to 27" and instructs the S7 gate to expect 27. This report
+verifies all 27 effective pins.
+
+SECTIONS
+  A.  Mechanical pin verification (27 pins), PASS/FAIL table + per-pin evidence
+  B.  (MID-PEEL) re-derivation and (WINDOW)-finiteness / well-foundedness audit
+  C.  Clause 4 re-route audit + the R_lambda = (Z-a)^2(Z-b) counter-config replay
+  D.  (LB1) coverage enumeration
+  E.  Master-core re-derivation: single-side terminal case and (SIDE-PROD) multi-side split
+  F.  Other findings
+  G.  Verdict
+
+=====================================================================
+
+## SECTION A — MECHANICAL PIN VERIFICATION (27 effective pins)
+
+Convention audited (effective S0.2 = r2 repair 1 + r3 repair 2):
+  pin = <first(U), last(U)>, U a unique complete EXISTING source unit;
+  valid iff (1) U occurs exactly once in the file, (2) first and last delimiter
+  lines each occur exactly once, (3) first precedes last, (4) span contains the
+  complete named unit. Failure => that route fails closed.
+  r3 repair 2 adds: OUTERMOST-unit resolution on nesting; over-capture licensed;
+  a horizontal rule is a boundary, not content; unit types extended with
+  "named statement display" and "dated record".
+
+A.1  THE FIVE r3-QUOTED DELIMITER PAIRS (byte-exact `grep -Fx` on the source)
+
+  All five verified. Every quoted delimiter line occurs EXACTLY ONCE in its
+  file, begin precedes end, and the span contains what r3 claims.
+
+  pin                          file    first  last  #first #last  span contents verified
+  ---------------------------------------------------------------------------------
+  HE7-SLOT-TRANSFER            HE7     158    191     1      1    (SLOT2) display L158-176
+                                                              +   (LIFT2) display L177-191;
+      (LIFT2)'s (dagger-2) reads `m0 >= (d_r - 1)*u + (D' - 1)*h`  == master (FULL2)   OK
+      (LIFT2)'s (ddagger-2) reads `k >= (l d_r - 1)*u + l*(D' - 1)*h` == (FULL2-U)     OK
+      r3's claim "in HE7 sec-S1, not sec-S2" CONFIRMED (S1 = L82-194, S2 opens L195).
+  HE7-COCYCLE-2P-THROUGH-R1D   HE7     2013   2253    1      1    contains, in source order,
+      ANNEX-DEF HE7-2' (L2013), ANNEX-LEMMA R1-a (L2039), ANNEX-THEOREM R1-b (L2101),
+      ANNEX-THEOREM R1-c (L2165), the R1.2 twist-blindness audit (L2184),
+      ANNEX-COROLLARY R1-d (L2237-2253). L2253 IS R1-d's last blockquote line
+      (L2255 opens "**Honest grade.**", a sibling unit).                              OK
+  HETOW-LABELS                 HETOW   56     98      1      1    sec-S1 instantiation map:
+      the tower setting (L58-70) + the row-by-row table (L74-91) + closing (L93-98).
+      Supplies every (HETOW-INSTANCE) entry: D2 = D'e2f2 (L69), dv2 = e1e2v (L70),
+      K2 ~= F_{Q^{f1f2}} (row L81), T2 = e2f2u2 (row L82), key Phi2 (L65).            OK
+      r3's "the span contains the superseded J-D0 normalizer row" CONFIRMED (row L84),
+      and the master does route its normalizer comparison through HETOW-4 only.
+  HETOW-LABELS-1               HETOW   152    196     1      1    LEMMA HETOW-1 statement
+      (L152-169) + proof (L171-196). Supplies beta = eta^{-Q(u2)}*eta2 and r-tilde as
+      its minimal polynomial, exactly as master sec-S3.4 consumes.                     OK
+  GENTOW-ACCEPTANCE-FOLD       GENTOW4 991    1037    1      1    "### Dated acceptance
+      record (2026-08-10, post-PE3)"; carries "**GENTOW4 IS ACCEPTED 2/2**" (L993),
+      the master's only consumption (sec-S4.1 grade line). Ends before the next ###
+      (TOWERRAT2-C annex, L1039).                                                      OK
+
+  Synthetic-marker check (S7 pin gate): `grep -c T2V2PIN` = 0 in all six files.        OK
+  Expected synthetic-marker count zero: SATISFIED.
+
+A.2  THE 22 DESCRIPTION-ONLY PINS (no delimiter lines quoted anywhere in the note;
+     the auditor must re-derive first(U)/last(U) from the description)
+
+  pin              named unit resolves to (file:lines)                          verdict
+  ------------------------------------------------------------------------------------
+  HE3-A-STMT       HE3:312-331  "> **THEOREM HE3.A (THE STAGE-sigma RECURSION
+                   - the mechanism).** Let" ... "> multiplicity mu' <= mu/2."    PASS
+                   both delimiter lines unique (grep -cFx = 1 each).
+  HE3-A-PROOF      HE3:1092-1205 "### S6.3 PROOF OF THEOREM HE3.A" ...
+                   "leaf's history, so THEOREM HE3.A is proved. []"             PASS
+                   first line unique (L818 "## residue peel), and the PROOF OF
+                   THEOREM HE3.A" is a different full line).
+  HE3-DEF1         HE3:242-251 DEFINITION 1                                     CONDITIONAL
+                   -> see FINDING A-1 (boundary ambiguity at the [r2] CONSTRUCTION PIN).
+  HE3-HE3-1L       HE3:498-546 LEMMA HE3-1L (statement + proof + [r1] note)     PASS
+  HE3-HE3-6        HE3:1118-1141 LEMMA HE3-6 (nested inside HE3-A-PROOF's span;
+                   licensed by r3r2's over-capture/OUTERMOST rule)              PASS
+  HE3-R8-2         HE3:1691-1735 "### Dated correction (2026-08-12, post-R8)
+                   - R8-2: ..."                                                 PASS*
+  HE3-R8-3         HE3:1736-1773  same shape                                    PASS*
+  HE3-R8-4         HE3:1774-1794  same shape                                    PASS*
+  HE3-R8-5         HE3:1795-1820  same shape                                    PASS*
+                   *see FINDING A-2 (designation mismatch "R8.N redline unit").
+  HE6-FAMILY       HE6:201-213 DEFINITION HE6-1 (THE ENLARGED TEST FAMILY);
+                   Psi_{kappa,r} = Phi'^{l d} + sum_{t<d} B_t Phi'^{l t},
+                   monic of degree D'' := D' l d  == master (TEST) at D e' deg r'  PASS
+  HE6-PROOF        HE6:639-661 "### S6.2 PROOF OF THEOREM HE6.A" ... "[]"       PASS
+  HE6-SLOT-SEAM    ambiguous                                                    FAIL
+                   -> see FINDING A-3.
+  HE7-A-STMT       HE7:197-... THEOREM HE7.A statement blockquote in sec-S2     PASS
+  HE7-MIXED-13P    HE7:1603+ ANNEX-LEMMA HE7-13' (inside ANNEX F-1)             PASS
+                   (content audited in Section C.)
+  HE6R1-1          HE6R1:270-282 LEMMA HE6R1-1 (statement) + 284-294 proof      PASS
+                   r3 repair 3's note verified: the 2026-08-12 "Dated statement
+                   re-display" (HE6R1:1031-1071) re-displays ONLY the global J
+                   bound as clauses (a)/(b)/(c); the two clauses this master
+                   consumes -- the widened jump predicate "l_i * deg r_i >= 2"
+                   and "mu_{i+1} <= mu_i/2" (HE6R1 L273, L277) -- are indeed
+                   byte-unchanged, and the master never cites log2 n - 2.       OK
+  HE6R1-2          HE6R1:316-... LEMMA HE6R1-2 [r1'] (block projection)         PASS
+  HE6R1-3          HE6R1:469-... LEMMA HE6R1-3 (the level-2 peel)               PASS
+  HETOW-A          HETOW:286-334 THEOREM HETOW.A statement (286-328) + proof
+                   (329-334, ends "[]")                                          PASS
+  HETOW-NORMALIZER-4 HETOW:689-~768 LEMMA HETOW-4 (the normalizer bridge),
+                   clauses (a)-(d). Master sec-S3.4's bridge display
+                   "R_{lambda2}(Z) = tau(H0) * Rhat_{lambda2}(Z/delta),
+                   delta = tau(u3)" is HETOW-4(c) VERBATIM (HETOW L729);
+                   "tau(k) = eta^{-Q(m(k))}" is (a) (L706); "not declared equal"
+                   is (b) (L714-717); the preservation list is (d) (L734-739).  PASS
+  GENTOW-4-1       GENTOW4:145/170-230 LEMMA GENTOW-4.1                         PASS
+  GENTOW-4-A       GENTOW4:253-... THEOREM GENTOW-4.A; clause (i) [BOUQUET AT
+                   THE ENTRY] present at L257-262 and does supply
+                   "f = Prod_{(kappa,r)} f_{kappa,r} with f_{kappa,r} in O[x]
+                   monic ... the factorization is disjoint over labels"         PASS
+  GENTOW-4-2       GENTOW4:378-... LEMMA GENTOW-4.2 (tie, PURE-POWER sides)     PASS
+                   (the master explicitly declines to import its tie.)
+
+A.3  PIN-TABLE FINDINGS
+
+FINDING A-1 (GAP) -- `HE3-DEF1`'s span boundary falls exactly on the load-bearing
+coherent-R_lambda construction, and the note never says which side.
+
+  Effective pin row (r2 repair 1, unchanged by r3):
+      "> \text{HE3}&\texttt{HE3-DEF1}&\text{DEFINITION 1}\\"
+  Source, HE3_PROOF_2026-08-08.md: DEFINITION 1 is the blockquote L242-251. It
+  defines P(F), sides, "a residual polynomial R_lambda in K[Z] of degree d_lambda
+  with R_lambda(0) != 0", and the label set. It contains NO construction of
+  R_lambda. The construction lives in the IMMEDIATELY FOLLOWING, separately
+  bolded unit, L253-286, which opens:
+
+      "**[r2, F1 2026-08-09 - THE CONSTRUCTION PIN (PE2's twist seam):
+      R_lambda is the COHERENT (twisted) assembly, and the pin is load-bearing at
+      e1 >= 2.** DEFINITION 1 above (byte-frozen: HE6/HE7 pin it) names R_lambda
+      without displaying a construction, and PE2 exhibited a member where two
+      natural constructions differ in factorization type."
+
+  and closes with the seam itself:
+
+      "What is NOT in the class is the naive per-slot read
+      a_k := res(A_{j0+lk}(theta)/n(kappa0-ku)(theta)): it differs from the
+      coherent coefficient by the diagonal eta^{W(k)} ... and W need not be affine
+      in k, so the naive assembly can have a DIFFERENT factorization type."
+
+  The master consumes exactly this content in three places: sec-S1.5 "After removal
+  of any raw-origin factor, its COHERENT normalized residual polynomial satisfies
+  (RES-FACT)"; sec-S1.6 (FRAME) "R_can(Y) = w^m R_mult(Y/w)"; sec-S1.6 "Frame changes
+  preserve factor degrees, multiplicities, separability, and transported root
+  classes." The last sentence is the HE3 [r2] pin's geometric-system theorem
+  ("replacing them by another geometric system of the right heights ... changes
+  R_lambda by one global nonzero scalar and Z -> cZ, so root sets rescale and
+  factorization TYPE is unchanged", HE3 L269-274) and is stated nowhere in
+  DEFINITION 1 itself.
+  Under r3 repair 2's OUTERMOST rule a defender can argue the span runs L242-286
+  because the source's own HEAD line calls it "PINNED at DEFINITION 1 [r2] with
+  the coboundary Remark". Under the plain reading of "DEFINITION 1" (the
+  blockquote), the span is L242-251 and the coherent construction plus its
+  factorization-type-invariance theorem are UNPINNED. The note does not adjudicate,
+  and it is precisely the boundary that r3's own standard ("re-derived from its
+  actual consumption site", "delimiter lines quoted byte-exactly") exists to fix.
+  Classification: GAP. Assume the favourable reading (span = L242-286) downstream.
+
+FINDING A-2 (minor) -- the four R8 pins name a unit type and a numbering that do
+not occur in the source.
+
+  Effective pin rows: "the complete R8.2 redline unit" ... "the complete R8.5
+  redline unit".
+  In HE3_PROOF_2026-08-08.md: `grep -ic redline` = 0 -- the word "redline" never
+  occurs. `grep -n 'R8\.[1-5]'` = no match -- the source writes "R8-2".."R8-5"
+  with a HYPHEN. The actual units are four "### Dated correction (2026-08-12,
+  post-R8) - R8-N: ..." headings (L1691/1736/1774/1795).
+  Resolution is unambiguous (only one candidate per index), so this is not
+  fail-closed-fatal, but it is the same defect class r3 repair 1 fixed for four
+  other pins and left unapplied here. r3 repair 2 extended the type list with
+  "named statement display, or dated record"; it did not reconcile "redline unit"
+  with "Dated correction".
+  Classification: minor.
+
+FINDING A-3 (GAP) -- `HE6-SLOT-SEAM` = "the corrected normalized-slot/seam display"
+names no unit and has (at least) three candidate resolutions that pin DIFFERENT
+mathematics.
+
+  Effective pin row: "&\texttt{HE6-SLOT-SEAM}&\text{the corrected normalized-slot/
+  seam display}\\".
+  Candidates in HE6_PROOF_2026-08-08.md, all "corrected", all slot/seam displays:
+   (i)  L104-120 "> **CONVENTION (ϖ-normalizers: twist-free).**" -- the ONLY place
+        in HE6 that constructs R_lambda:
+          "R_lambda(Z) := Sum_{t=0}^{d} res( A_{j1+tl}(theta)/varpi(theta)^{m1-tu} ) Z^t"
+   (ii) L122-199 the struck-(LIFT) / "LEMMA HE6-1L [r1; display corrected [r2],
+        PE2 F-1]" blockquote, whose RIDER (L170-175) is the eta^{-q} seam:
+          "the two differ by varpi(theta)^k/n(k)(theta) = ... = eta_theta^{q}"
+   (iii) L215-238 "> **LEMMA HE6-0'' [r1, R5/F6] (THE SLOT LEMMA at (T1)/(T2)
+        POINTS - the form this note actually consumes).**", which carries the
+        master's (HE6-SEAM) literally:
+          "the residue of the attaining class, read after division by
+          varpi(xi)^{dv(A)}, is iota_xi(gamma)*eta_xi^{-q} **[r2 sign corrected,
+          PE2 F-3 ...]**"
+  Condition 1 of the convention ("its named source unit occurs exactly once in the
+  named file") cannot be discharged against a description that matches three units,
+  and the choice is load-bearing: only (i) pins R_lambda's construction, only
+  (ii)/(iii) pin the eta^{-q(k)} coset seam, and only (iii) pins the per-A digit.
+  Classification: GAP.
+
+FINDING A-4 (minor) -- r3 repair 1's universal delimiter claim is false as written.
+
+  Quote (r3 repair 1, paragraph 1):
+      "Both delimiter lines of every pin are quoted byte-exactly from the accepted
+      source and were verified by exact-full-line search on 2026-08-12: each occurs
+      exactly once in its file, and each begin precedes its end."
+  Only 5 of the 27 pins (the ones r3 re-derived) carry quoted delimiter lines.
+  For the other 22 the note quotes nothing; the delimiters must be re-derived by
+  the auditor from a prose description. Read with its intended scope ("every pin
+  [re-derived below]") the sentence is true; read as written it is false for 22/27
+  and would let a reader believe the pin gate is already discharged.
+  Classification: minor.
+
+FINDING A-5 (minor) -- r2 repair 1's deletion of S0.2 collaterally removed the
+"no unpinned source material" clause, and r3 repair 9 restored only the file list.
+
+  Base S0.2 ran from the "### S0.2 Marker-delimited span convention" heading to,
+  and including, its closing sentence:
+      "No unpinned source material is used to manufacture a theorem hypothesis."
+  r2 repair 1: "Delete S0.2 and replace it with: > ### S0.2 Existing-text span
+  convention ...". The replacement contains no such clause. r3 repair 9 diagnosed
+  the collateral loss of the six file paths from the SAME deletion --
+      "The r2 S0.2 replacement closes with 'These pins lie in the six files listed
+      below (PINS)' but deleted the list itself with the old S0.2."
+  -- and restored the list only. The prohibition on unpinned material, which is
+  what makes the whole pin apparatus load-bearing (and what FINDINGs A-1/A-3 would
+  otherwise violate), is absent from the effective text.
+  Classification: minor.
+
+FINDING A-6 (minor) -- (GAMMA)'s coefficient normalizers are a master-side
+correction of what the pinned HE6/HE7 displays actually show, and this is not
+disclosed as such.
+
+  Master sec-S1.2:
+      "gamma_k(A) = Sum_{t>=0, i+e1 t < D'} res( a_{i+e1 t} pi^{-(k-(i+e1 t)h)/e1} ) eta^t"
+  followed by "The coefficient normalizers inside gamma_k(A) and the negative sign
+  on q(k) are mandatory." and, in sec-S3.2, "The bare sum of coefficient residues is
+  not an admissible substitute."
+  But the pinned sources display exactly the bare sum:
+    HE6 L222 (LEMMA HE6-0''): "where gamma = Sum_t res(a_{i0+e1 t}) eta_theta^{t} in K"
+    HE7 L407-409 (LEMMA HE7-L1's proof): "by GENHN-2 the residue at height k is
+      Sum_{t} res(a_{i0+e1 t}) eta_theta^{t}"
+  and HE7 L405 fixes v(a_{i0+e1 t}) = (k - (i0+e1 t)h)/e1, which is > 0 at every
+  slot above the vertex -- so the bare residues are literally 0 there and the
+  displays are only correct if "res" silently means the unit-part residue. The
+  master's own warning sentence therefore reads as an unattributed repair of its
+  suppliers. Either reading is defensible mathematically; what is missing is the
+  disclosure that the pinned display is the bare form.
+  Classification: minor.
+
+## SECTION B — (MID-PEEL): INDEPENDENT RE-DERIVATION AND THE WELL-FOUNDEDNESS AUDIT
+
+B.1  What I re-derived (all four steps check out)
+
+  State: current monic key Phi~ of degree D, monic separable represented
+  G = Phi~^nu + sum_{j<nu} C_j Phi~^j, deg C_j < D, deg G = nu*D.
+
+  (1) TRIGGER IS DECIDABLE AND EXACT.  G mod Phi~ = C_0 (deg C_0 < D), so
+      Phi~ | G  <=>  C_0 = 0. This is the exact level-one/level-two "A_0 = 0"
+      criterion (HE6 sec-S1 CONVENTION L84-85: "Phi' does not divide f,
+      equivalently A_0 != 0"; HE7 R2 L2340-2341). The note's phrasing "test
+      whether Phi~ | G" is therefore effective, not oracular.
+  (2) THE QUOTIENT'S DEVELOPMENT AND (MID-MASS).  With C_0 = 0,
+      G = Phi~*(Phi~^{nu-1} + sum_{i<nu-1} C_{i+1} Phi~^i), so G' := G/Phi~ is
+      monic in O[x] (Phi~ monic), deg G' = D(nu-1), and its Phi~-development is
+      the shift C_j -> C_{j+1} with every deg C_{i+1} < D. So mu(G') = nu - 1
+      EXACTLY, not merely <=. (MID-MASS) CONFIRMED.
+  (3) KEY-FREENESS OF THE QUOTIENT.  If an irreducible p in K_0[x] divided both
+      G' and Phi~, then p^2 | Phi~*G' = G, contradicting G separable. So
+      gcd_{K_0[x]}(G', Phi~) = 1. CONFIRMED, and note this is genuinely the full
+      gcd condition, not just Phi~ ∤ G' -- so the quotient satisfies (KEY-FREE)
+      even at a reducible key, which is what the master needs.
+      Corollary the note does not state but which is used implicitly:
+      roots(G) = roots(Phi~) DISJOINT-UNION roots(G'), so the peel neither loses
+      nor duplicates roots.
+  (4) (WINDOW) IS NOT AUTOMATICALLY RESTORED, AND THE NOTE KNOWS IT.  The peel
+      removes the d(Phi~(rho)) = +infinity roots, but "T < d(Phi~(rho))" for the
+      surviving roots is an extra fact. r3 repair 4 item 2 demands exactly it as
+      a certified input:
+          "2. `(WINDOW)` for \(G'\): every root \(\rho\) of \(G'\) satisfies
+          \(T<d(\widetilde\Phi(\rho))<\infty\);"
+      CORRECT AND CORRECTLY FENCED. The r3r4 suite (items 1-5) is the right
+      closure of the F5 gap: without item 5 in particular (the peeled key's
+      certified orbit/(e,f) decomposition) the peel would silently assume the
+      monic key irreducible, which the note elsewhere forbids.
+  (5) nu = 1 GUARD (r3 repair 5). At nu = 1, C_0 = 0 gives G = Phi~ and G' = 1;
+      there is no successor and (MID-MASS)'s "next key-free state" would be
+      vacuous. The guard is necessary and correctly placed immediately after
+      (MID-MASS). CONFIRMED.
+  (6) NO IMMEDIATE LOOP. Since gcd(G', Phi~) = 1, the peel cannot fire twice in
+      a row at the same key. CONFIRMED.
+
+B.2  FINDING B-1 (GAP) -- clause 5's trigger is narrower than the algorithm it
+     is supposed to state, and excludes the only case its own cited instance
+     discharge is about.
+
+  Effective clause 5 of HE7.A (r2 repair 3):
+      "> 5. if a RECENTERED current key divides its represented block, the
+      algorithm performs `(MID-PEEL)` before asserting `(WINDOW)`. ..."
+  Effective ledger item 15 (r2 repair 8 / S5):
+      "> 15. A RECENTERED key-divides state invokes `(MID-PEEL)` before
+      `(WINDOW)`; its mass decreases by one."
+  (emphasis mine; the word is "recentered" in both.)
+
+  But the section body it is meant to state is NOT restricted to recentered keys:
+      "> Let a recursive state have current monic key \(\widetilde\Phi\) of
+      degree \(D\) and monic separable represented polynomial G = ... Before
+      invoking the window, test whether \(\widetilde\Phi\mid G\)."
+  and the cited level-two discharge is a CHILD-KEY case, not a recentering:
+      r3 repair 4: "At level two the instance discharge is **LEMMA HE6R1-3**:
+      \(\Psi\mid f_S\) forces \(\gcd(f_S,\Psi)=\Psi\) ..."
+  Psi = Psi_{lambda,r} is the TEST POLYNOMIAL promoted to child key by S1.8's
+  product->=2 branch. It is not a recentering of anything; S1.8's recentering is
+  the separate product-1 branch "Phi_new = Phi - L_k(s)".
+
+  Why it matters. Key-freeness is preserved by side and label splits (F_lambda,
+  F_{lambda,r'} divide F, so gcd with Phi divides gcd(F,Phi) = 1), and is
+  hypothesised at the top level by (KEY-FREE). The ONLY two transitions that can
+  destroy it are (a) the product-1 recentering and (b) the product->=2 child
+  jump. Clause 5 names (a) only. On the clause as written, a child state with
+  Psi | f_child asserts (WINDOW) at roots with d(Psi(rho)) = +infinity, which is
+  precisely the failure (WINDOW) exists to exclude -- and the source records that
+  stratum as machine-real ("HE7's own sealed battery isolates the stratum as
+  status `DEGENERATE-key-divides` (8 of 1,587 members)", HE7 L152-153).
+  The general body and the induction paragraph ("In the mid-chain key-divides
+  case, `(MID-PEEL)` emits ...", no "recentered") cover the case, so the
+  mathematics is available; the THEOREM does not state it, and S7's stage-2 gate
+  makes the theorem statement the formalization target.
+  Classification: GAP.
+
+B.3  FINDING B-2 (GAP) -- the rank is called "well-founded lexicographic" but the
+     tuple is never displayed and the cross-component monotonicity is never
+     checked; with three different quantities decreasing under four different
+     transitions, that check is the whole content of the claim.
+
+  Effective rank paragraph (r2 repair 3):
+      "> The states carry a well-founded lexicographic rank. The permitted
+      nonterminal transitions are:
+      > 1. a nontrivial side split, which strictly decreases represented degree;
+      > 2. a nontrivial label split, which strictly decreases represented degree;
+      > 3. a mid-chain key-boundary peel `(MID-PEEL)`, which changes
+      >    \[ \nu\longmapsto\nu-1; \]
+      > 4. a product-\(\ge2\) child jump, which strictly decreases mass, or a
+      >    product-\(1\) linear recentering, which strictly decreases the finite
+      >    secondary discriminant/slope rank."
+
+  A lexicographic order needs an ORDERED tuple, and each transition must decrease
+  it lexicographically -- i.e. must not INCREASE any earlier component. Three
+  distinct quantities appear (represented degree; mass; secondary rank) and no
+  order among them is given, nor is any transition checked against the components
+  it does not decrease. The gap is not academic: transition 4a decreases mass but
+  is stated to say nothing about degree, and transition 4b preserves both degree
+  and mass -- so on the text as written, nothing rules out a cycle
+  (recentering -> child jump -> recentering -> ...) in which each step decreases
+  "its own" quantity while an earlier one grows back.
+
+  The claim IS repairable, and I verified the repair, which is what makes this a
+  GAP rather than a CRITICAL. Take rank = (represented degree, mass, secondary),
+  lexicographic. Then:
+    - side split / label split: degree strictly down (each block has positive
+      length and there are >= 2 of them).
+    - (MID-PEEL): deg G' = D(nu-1) < D*nu, degree strictly down.
+    - child jump: the child's degree is D_child * mu_child
+      = (D e' deg r') * mu_child <= (D e' deg r') * mu/(e' deg r') = D*mu by
+      (MASS), so degree does NOT increase, and mass strictly drops
+      (mu_child <= mu/2 < mu at every nonterminal child).
+    - linear recentering: root set preserved and D unchanged, so degree and mass
+      are EQUAL, and the secondary rank strictly drops.
+  Every transition is then a strict lex decrease and the order is well-founded on
+  N^3. Two of the four facts I had to supply (the child jump's degree
+  non-increase, via (MASS) composed with deg Psi = D e' deg r'; the recentering's
+  degree/mass preservation) appear nowhere in the note.
+
+  Note also that the repair is what makes the secondary rank's RESET across a
+  peel harmless -- a point worth stating explicitly, since a peel plainly may
+  reset the slope rank of the refine chain and the note offers no reason why
+  that is safe.
+  Classification: GAP.
+
+B.4  (WINDOW) FINITENESS: VERDICT
+
+  Given B.1 (1)-(6), r3r4's input suite, r3r5's nu = 1 guard, and B.3's supplied
+  tuple, no state can loop and no infinite branch exists: peels are bounded by
+  nu - 1 (each drops degree by D >= 1), splits are bounded by degree, child jumps
+  by mass, recentering chains by the declared finite secondary rank, and the lex
+  order sequences them. The (WINDOW) violation F3 identified (recentering makes
+  the key DIVIDE the block; machine-real at 8/1587 states) IS closed at the level
+  of the algorithm. It is not closed at the level of clause 5 (FINDING B-1) and
+  the well-foundedness is asserted rather than shown (FINDING B-2).
+
+=====================================================================
+## SECTION C — CLAUSE 4 RE-ROUTE: DOES THE PARENT-MULTIPLICITY TIE COME BACK?
+
+C.1  The effective clause 4 (r2 repair 2 supersedes r1 repair 1's version)
+
+      "> 4. a state with more than one side is first replaced by its side blocks
+      >    \(F_\lambda\) using `(SIDE-PROD)`. A mixed side is then replaced by the
+      >    monic blocks \(F_{\lambda,r'}\) using `(LABEL-PROD)`. Each label block
+      >    has its own pure residual
+      >    \[ c_{\lambda,r'}r'^{\,k_{\lambda,r'}},\qquad
+      >       k_{\lambda,r'} = \frac{\deg F_{\lambda,r'}}{De'\deg r'}. \]
+      >    The block is terminal when \(k_{\lambda,r'}=1\), and is continued by
+      >    clause 3 when \(k_{\lambda,r'}\ge2\). No equality with the parent
+      >    residual multiplicity is used;"
+
+C.2  Source check: (LABEL-OWN) is HE7-13'(a) verbatim, and HE7-13'(a) does NOT
+     carry the tie.
+
+  HE7_PROOF ANNEX-LEMMA HE7-13'(a), L1683-1686:
+      "> the polygon of f_{λ,r} with respect to Ψ̃ is the SINGLE side of slope λ,
+      > of length L_{λ,r} := deg f_{λ,r}/D″, with Σ_{r | R_λ} L_{λ,r} = L_λ; and
+      > the residual of f_{λ,r} is c·r^{k} with c ∈ K₂^× and
+      > k = L_{λ,r}/(ℓ₂·deg r) ∈ ℤ_{≥1} — a single irreducible power."
+  Substituting L_{λ,r} = deg f_{λ,r}/D'' gives k = deg f_{λ,r}/(D'' ℓ₂ deg r),
+  which is the master's (LABEL-OWN) with (D, e') = (D'', ℓ₂). EXACT MATCH.
+  The only tie HE7-13'(a) asserts is the AGGREGATE Σ_r L_{λ,r} = L_λ, never
+  L_{λ,r} = e' m_{λ,r} deg r. The master's refusal
+      "> No equality between \(k_{\lambda,r'}\) and \(m_{\lambda,r'}\) from the
+      > parent residual factorization is assumed. In particular, neither
+      > \(\nu_{\lambda,r'}=e'm_{\lambda,r'}\deg r'\) nor the former
+      > `(LABEL-DEG)` is a carrier hypothesis or a conclusion of this master."
+  is therefore faithful to the source, not merely defensive.
+
+C.3  Silent re-import sweep. Every surviving occurrence of the parent multiplicity
+     m_{lambda,r'} in the EFFECTIVE text was checked:
+       - S1.5 (RES-FACT) R_lambda = prod r'^{m}: a definition of parent data. OK.
+       - S1.5 (RES-DEG) e' sum m deg r' = L_lambda: a DEGREE bridge on the parent
+         hull. Used in the proof only in the SEPARABLE case, where every m = 1
+         ("Now suppose \(R_\lambda\) is separable. Then \(R_\lambda=\prod r'\)
+         with distinct irreducible factors, and `(RES-DEG)` gives (DEG-SUM)").
+         Never used for terminality. OK.
+       - r1's S1.7A occurrences (L1335-1430, including the m-keyed clause 4 and
+         the m-keyed proof passage) are ALL inside text that r2 repair 2 deletes
+         and replaces ("Delete r1's S1.7A and replace it with", "Replace clause 4
+         of HE7.A by", "In the proof, replace the r1 mixed-residual passage
+         with"). DEAD TEXT. OK.
+       - S1.8's opening "Suppose \(r'\) occurs in \(R_\lambda\) with multiplicity
+         at least two" and clause 3's "if \(r'\) is repeated": both explicitly
+         re-bound to the state's own residual by r3 repair 8. OK.
+     One residue, reported below as an observation rather than a finding: the
+     master PROOF's own sentence "For a repeated \(r'\), if \(e'\deg r'=1\), then
+     \(e'=1\) and \(r'=Y-s\)." is not among the sites r3 repair 8 names ("attached
+     to clause 3 of HE7.A and to S1.8's opening sentence"). It is nevertheless
+     safe, because the effective proof reaches it only at a state whose residual
+     is already pure (r2 repair 2's replacement puts "If a residual is mixed,
+     invoke `(LABEL-PROD)` before performing any refinement" ahead of it), and for
+     a pure state the own-residual reading and the R_lambda reading coincide.
+     No finding.
+
+C.4  THE COUNTER-CONFIG REPLAY:  R_lambda = (Z-a)^2 (Z-b),  (k_a, k_b) = (1, 2)
+
+  Parent data: e' = 1 (integer slope), deg r' = 1 for both factors,
+  m_a = 2, m_b = 1; (RES-DEG) gives L_lambda = e' * (2*1 + 1*1) = 3.
+  Block data (the configuration F2 exhibited, and which HE7-13'(a) permits since
+  it constrains only the aggregate): nu_a = k_a e' deg r_a = 1,
+  nu_b = k_b e' deg r_b = 2; sum = 3 = L_lambda, consistent. So the parent
+  multiplicities (2,1) and the block exponents (1,2) are SWAPPED.
+
+  Under r1's superseded clause 4 (the defect): block a has m_a = 2 -> sent to
+  clause 3 for a refine, although its own residual c_a(Y-a) is separable and it
+  is terminal; block b has m_b = 1 -> declared TERMINAL by clause 2, although its
+  own residual is c_b(Y-b)^2 and it needs a refine. Clause 4 was falsely terminal
+  on block b and falsely nonterminal on block a. Confirmed as a real defect.
+
+  Under the EFFECTIVE clause 4:
+    block a: deg F_a = D * nu_a = D,  k_a = D/(D * 1 * 1) = 1
+             -> TERMINAL by clause 2. Its own residual c_a(Y-a) is separable, so
+                the separable-side argument applies and returns one orbit of size
+                D e' deg r' = D, with (e,f) = (e_C, f_C).  CORRECT.
+    block b: deg F_b = 2D,  k_b = 2D/(D * 1 * 1) = 2 >= 2
+             -> clause 3, product e' deg r' = 1 -> the certified linear
+                recentering at Y - b (Phi_new = Phi - L_k(b)), root set preserved,
+                secondary rank down.  CORRECT.
+  Both blocks are handled correctly and neither decision reads a parent
+  multiplicity. THE RE-ROUTE CLOSES F2. No re-import found.
+
+  Consistency cross-check I ran on the configuration: the aggregate identity
+  sum_r k_r deg r = sum_r m_r deg r reads 1 + 2 = 2 + 1 = 3, so the counter-config
+  is NOT excluded by any identity the master retains -- i.e. the swap is genuinely
+  possible and the block-owned reading is genuinely necessary, not belt-and-braces.
+
+=====================================================================
+## SECTION D — (LB1) COVERAGE
+
+D.1  The effective obligation (r2 repair 4's S1.7B as widened by r3 repair 6)
+
+      "> It is the assertion that every level-one state whose clause-4 processing
+      > demands blocks — every state with at least two sides, and every side whose
+      > residual is mixed — has the monic side and label blocks of S1.7A, with
+      > their own full developments, single-side hulls, pure residuals, product
+      > identities, disjoint exhaustive root partitions, and inherited
+      > continuation data."
+
+D.2  Enumeration of level-one states by what clause 4 demands of them
+
+  (i)   single side, residual separable                -> clauses 1-2 only, no block
+                                                          demanded.  Unfenced, and
+                                                          correctly so: HE6 sec-S6.2
+                                                          (pin HE6-PROOF) is exactly
+                                                          this read.                OK
+  (ii)  single side, residual pure repeated c r'^k,
+        k >= 2, e' deg r' = 1                          -> clause 3 linear recentering,
+                                                          root set PRESERVED, no block
+                                                          demanded.  Unfenced.
+                                                          Discharged by HE3's stage-alpha
+                                                          (HE3-A-PROOF / HE3-HE3-1L
+                                                          letter carriers).          OK
+  (iii) single side, residual pure repeated,
+        e' deg r' >= 2                                 -> clause 3 child jump. The child
+                                                          block is the class polynomial
+                                                          f_S, supplied at the CHILD
+                                                          carrier by HE7 (LEMMA HE7-6,
+                                                          inside the S3.3 record), not by
+                                                          a level-one pin.  Unfenced, and
+                                                          defensible: the object belongs
+                                                          to the level-two record.    OK
+  (iv)  single side, residual MIXED                    -> clause 4 label split.
+                                                          (LB1)-fenced.               OK
+  (v)   >= 2 sides, any residuals                      -> clause 4 side split.
+                                                          (LB1)-fenced by r3 repair 6.
+                                                          This is exactly the hole r3r6
+                                                          was opened to close, and it
+                                                          closes it.                  OK
+  (vi)  recentered level-one state, any of the above   -> still a level-one state;
+                                                          covered by "every level-one
+                                                          state whose clause-4 processing
+                                                          demands blocks".            OK
+  (vii) level-one state with Phi~ | G (the (MID-PEEL) trigger)
+                                                       -> clause 5. NOT fenced, NOT
+                                                          discharged.  See FINDING D-1.
+
+  So on the clause-4 axis the fence is EXACT: it covers (iv) and (v) and nothing
+  else, and no clause-4-demanding level-one state is left unfenced. The widening
+  from r2's "mixed nonseparable" to r3's "at least two sides, or a mixed side" is
+  the right scope given r2 repair 8's split-first discipline, and r3r6's worked
+  example ("A two-side level-one state whose sides carry, respectively, a separable
+  residual and an already-pure repeated residual ... That state is `(LB1)`-
+  conditional") names precisely the state the narrower fence had missed.
+
+D.3  Is the fence too wide -- does it vacate an instance record's claim?
+
+  The S3.1/S3.2 appends are correctly CLAUSE-4-SCOPED after r3 repair 6:
+      "Therefore no level-one state requiring a side split or a label split is
+      advertised as an unconditional instance of clause 4."
+  so S3.1's dictionary (e,f) = (e_1 e_s, f_1 f_s) and S3.2's
+  |S_{lambda,r}| = D' l deg r, (e,f) = (e_1 l, f_1 deg r) -- both clause-1/2
+  conclusions -- survive unconditionally. NOT vacated.  See however FINDING D-2 for
+  the S1.7B sentence, which is not clause-4-scoped and does over-declare.
+
+D.4  FINDING D-1 (GAP) -- the (MID-PEEL) input suite has a level-two discharge and
+     NO level-one discharge and NO level-one fence, although clause 5 applies at
+     every level.
+
+  r3 repair 4 closes the suite and names its discharge:
+      "> None of this is inferred from the peel identity `(MID-PEEL)` alone. At
+      > level two the instance discharge is **LEMMA HE6R1-3** ... That lemma is
+      > cited as the instance discharge of this suite."
+  Nothing is said about level one, and the S3.1/S3.2 "Level-one fence" appends
+  mention only `(LB1)`. Yet the trigger is live at level one: the recentered
+  level-one key Phi'' = Phi' - C can divide its block, and HE3 records that case:
+      HE3_PROOF L953-955: "CASE A₀′ = 0: then Φ″ | f exactly (disc f ≠ 0 gives
+      Φ″ ∤ f/Φ″), the top class contains Φ″'s D′ roots, and the development of
+      g := f/Φ″ at Φ″ is P(F″) shifted left by one abscissa"
+  -- but that passage sits inside HE3's [r1-N1] three-consecutive-slope
+  supplement, is not a general lemma, and supplies NO orbit/(e,f) decomposition
+  for Phi'''s D' roots, which is exactly item 5 of r3r4's suite:
+      "> 5. the peeled key's certified orbit/(e,f) decomposition: the emitted
+      > boundary factor's irreducibility, simplicity, and local invariants."
+  The one general level-one peel in the corpus is HE6's standing convention, and
+  it peels the ORIGINAL key and leans on its irreducibility:
+      HE6_PROOF L86-88: "if A₀ = 0 then Φ′ | f, and disc f ≠ 0 forces f = Φ′·f̃
+      with Φ′ ∤ f̃; the peeled factor Φ′ is IRREDUCIBLE of degree D′ and
+      contributes the KNOWN σ-block (e₁, f₁)"
+  A RECENTERED Phi'' = Phi' - C is not asserted irreducible anywhere, and the
+  master's own MID-PEEL text forbids assuming it:
+      "> the monic key itself is not declared irreducible merely because it is a
+      > key."
+  So at level one, item 5 of the suite is undischarged and unfenced. Compare the
+  treatment (LB1) gets: named, boxed, appended to S3.1/S3.2, and carried into the
+  honesty ledger as S5 item 16. The peel suite gets none of that at level one.
+  Classification: GAP.
+
+D.5  FINDING D-2 (minor) -- S1.7B's post-r3r6 conditionality sentence is not
+     clause-4-scoped and contradicts r3 repair 7, which was written in the same
+     round.
+
+  r3 repair 6 installs into S1.7B:
+      "> Consequently the HE3.A and HE6 instance records are unconditional only
+      > for single-side level-one states whose residual is separable or already
+      > pure repeated. Every level-one state requiring a side split or a label
+      > split — multi-side states included — is conditional on the separately
+      > supplied obligation `(LB1)`."
+  r3 repair 7 installs, three repairs later:
+      "> Clauses 1 and 2 remain direct statements about the unsplit hull of \(F\):
+      > their proofs run on \(F\) itself through `(ACCOUNT)`, `(SIDE-COUNT)`,
+      > `(RES-DEG)`, and the test assertions, with no appeal to `(SIDE-PROD)`."
+  Take a multi-side level-one state all of whose side residuals are separable.
+  By r3r7 it is decided outright by clauses 1-2 with no block ever constructed,
+  so it consumes nothing from (LB1); by r3r6's sentence the records are
+  "conditional" there. The S3.1/S3.2 appends get this right by scoping to clause 4;
+  S1.7B's sentence does not, and as the definitional home of the obligation it is
+  the sentence a reader will quote. Over-declaration only (the safe direction), so
+  not a GAP.
+  Classification: minor.
+
+=====================================================================
+## SECTION E — MASTER CORE RE-DERIVED FROM THE EFFECTIVE TEXT ALONE
+
+Decorrelation note: I derived both arguments before comparing with the note's own
+proof text, and only then diffed. Both go through. The two defects I found are at
+the joints (E.3, E.4), not in the core.
+
+E.1  SINGLE-SIDE TERMINAL CASE (clauses 1 and 2)
+
+  Data: F key-free sigma-block, F = Phi^mu + sum_{j<mu} A_j Phi^j, deg A_j < D,
+  deg F = mu*D, roots Galois-stable in Pt, (WINDOW) T < d(Phi(rho)) < infinity,
+  and the declared (ACCOUNT), (RES-DEG), (DEG-EF) D = e_C f_C, test assertions.
+
+  Step 1 (hull spans [0,mu]).  gcd_{K_0[x]}(F,Phi) = 1 and deg Phi = D > 0 force
+  A_0 != 0: F mod Phi = A_0 (deg A_0 < D), so A_0 = 0 would give Phi | F and
+  gcd = Phi != 1. With A_mu = 1 the hull runs from abscissa 0 to abscissa mu, so
+  sum_lambda L_lambda = mu.  [= (HULL-LENGTH), master's step 1.]
+
+  Step 2 (no side of slope <= T).  Both sides of (ACCOUNT),
+      sum_rho min(w_rho, kappa) = D sum_lambda L_lambda min(lambda, kappa),
+  are continuous piecewise-linear in kappa, so equality off a finite set extends
+  to every kappa > T. On (T, min_rho w_rho) -- nonempty by (WINDOW)'s STRICT
+  T < w_rho and finiteness of the root set -- the left derivative is
+  #{rho : w_rho > kappa} = mu*D and the right derivative is D sum_{lambda>kappa}
+  L_lambda. Hence sum_{lambda>kappa} L_lambda = mu there; with all L_lambda > 0
+  and sum over ALL sides equal to mu, no side has slope <= kappa, and letting
+  kappa decrease to T, none has slope <= T.  CLAUSE 1 CONFIRMED.
+  (The step consumes (WINDOW) twice -- finiteness for "piecewise linear with
+  finitely many breaks", strictness for "the interval immediately above T is
+  nonempty". Both are in (WINDOW) as stated.)
+
+  Step 3 (SIDE-COUNT).  The derivative of the left side drops by exactly
+  n_lambda := #{rho : w_rho = lambda} at kappa = lambda, and of the right side by
+  D L_lambda. Equality of the two functions gives n_lambda = D L_lambda for every
+  lambda (with L_lambda := 0 for a non-slope).  CONFIRMED.
+
+  Step 4 (clause 2).  R_lambda separable => all parent multiplicities are 1, so
+  (RES-DEG) reads e' sum_{r'} deg r' = L_lambda.  (DEG-SUM).
+  Fix r' and an orbit Omega inside the class S_{lambda,r'}. F separable => rho is
+  separable over K_0 => |Omega| = [K_0(rho):K_0]; K_0 complete discretely valued
+  => the fundamental identity gives [K_0(rho):K_0] = e(rho/K_0) f(rho/K_0).
+  Test assertion 6 (local forcing) gives e_C e' | e(rho/K_0) and
+  f_C deg r' | f(rho/K_0), so with (DEG-EF)
+      |Omega| >= (e_C e')(f_C deg r') = D e' deg r'.
+  Hence |S_{lambda,r'}| >= D e' deg r' for each r' (classes nonempty), and summing
+  with (DEG-SUM) gives sum_{r'} |S_{lambda,r'}| >= D L_lambda. The classes are
+  disjoint and exhaust the side, whose cardinality is n_lambda = D L_lambda by
+  Step 3; so the inequality is an equality termwise:
+      |S_{lambda,r'}| = D e' deg r'.
+  Every orbit in the class already has at least that many elements, so the class
+  is a single orbit; its orbit polynomial is monic with Galois-fixed coefficients,
+  integral over O, hence in O[x], divides the separable F, and is irreducible over
+  K_0. Finally e f = D e' deg r' together with the two divisibilities forces
+  e = e_C e' and f = f_C deg r'.  CLAUSE 2 CONFIRMED.
+
+  Source cross-check (decorrelation): this is HE6 sec-S6.2's four-step sandwich
+  (pin HE6-PROOF) generalized, and the divisibility form of local forcing that
+  r2 repair 6 asserts really is what the sources prove --
+      HE6_PROOF L416-424 (LEMMA HE6-0'): "e₁ | e(L_ρ) ... hence e₁ℓ | e(L_ρ) ...
+      a subfield degree of the finite field k_{L_ρ} divides f(L_ρ)"
+      HE7_PROOF L552-554 (LEMMA HE7-5): "then e₁ℓℓ₂ | e(L_ρ) and f₁d_rd_{r₂} |
+      f(L_ρ); hence [L_ρ : K₀] ≥ D″ℓ₂d_{r₂}"
+  so r2 repair 6's "Local forcing says e_C e' | e, f_C deg r' | f" is faithful and
+  not an over-read. (I note the proof only needs ">=" at every step, including the
+  final equality extraction; the divisibility is stronger than required but is
+  genuinely available.)
+
+E.2  (SIDE-PROD) MULTI-SIDE SPLIT
+
+  The identity itself is DECLARED, not derived ("Let \(F\) be a state to which the
+  carrier's block theorem applies. Its roots first decompose by their actual
+  \(\Phi\)-value: F = prod_lambda F_lambda"), and this is honest: at level one it
+  is (LB1) (Section D), at level two it is HE7-13'(a), whose product is over PAIRS
+  (lambda, r) and therefore delivers the side grouping as well as the label
+  grouping (HE7 L1680-1681: "f_S = Π_{(λ,r)} f_{λ,r}").
+  What the master DOES have to derive, and what I checked, is that each F_lambda
+  is a legitimate HE7.A state:
+    - key-free: F_lambda | F, so gcd(F_lambda, Phi) | gcd(F, Phi) = 1.  OK
+    - degree: its root set is the side-lambda roots of F, of cardinality
+      n_lambda = D L_lambda by (SIDE-COUNT), so mu(F_lambda) = L_lambda.  OK
+    - single side of slope lambda: apply Steps 1-3 to F_lambda (its own (ACCOUNT)
+      is declared inherited). All of its roots have w_rho = lambda, so
+      n_lambda(F_lambda) = deg F_lambda = D L_lambda and every other n is 0;
+      by (SIDE-COUNT) at F_lambda, L_lambda(F_lambda) = L_lambda and all other
+      lengths vanish.  OK -- so S1.7A's "whose lower hull is its single side of
+      slope lambda" is a CONSEQUENCE, not an extra hypothesis, which is worth
+      recording since the note presents it as part of the declared package.
+    - strict degree decrease when there are >= 2 sides: each L_lambda > 0 and they
+      sum to mu, so D L_lambda < D mu.  OK
+    - reassembly: prod_lambda F_lambda = F with disjoint exhaustive root sets, so
+      the children's terminal factorizations multiply to F's.  OK
+  MULTI-SIDE SPLIT CONFIRMED as an induction case.
+
+E.3  FINDING E-1 (minor) -- r3 repair 7's reconciliation of the direct clause-1/2
+     read with the split-first algorithm cites the wrong clause.
+
+      "> ... and labels attach to roots pointwise (S1.7, clause 1), so the label
+      > classes read on the block \(F_\lambda\) are the same root sets as the
+      > classes read directly at side \(\lambda\) of \(F\);"
+  S1.7 clause 1 reads:
+      "1. its roots lie in the intended disk and carry the label defined by
+      \(r'\);"
+  -- a statement about the roots of the TEST POLYNOMIAL Psi_{lambda,r'}, not about
+  the roots of F. The clause that makes the label of a root of F pointwise is
+  clause 2:
+      "2. for roots of \(F\), its generic evaluation value is attained away from
+      that label class and rises strictly on that class;"
+  which characterises the class as {rho : d(Psi_{lambda,r'}(rho)) > generic} --
+  determined by rho and (lambda, r') alone, since Psi_{lambda,r'} is supplied by
+  the carrier from (lambda, r') and not from F ("For every side ... and every
+  monic irreducible factor \(r'\) of \(R_\lambda\), the carrier supplies a monic
+  polynomial \(\Psi_{\lambda,r'}\)"). With clause 2 substituted the argument does
+  close: the direct partition and the block partition are restrictions of the same
+  pointwise partition to the same root set, and since each is exhaustive their
+  index sets coincide. The claim "The two routes agree" is therefore TRUE; the
+  cited justification is not the one that supports it.
+  Classification: minor.
+
+E.4  Two smaller core observations, reported without classification
+
+  (a) The orbit polynomial's integrality ("integral over O, hence in O[x]") is used
+      in clause 2's last step but is nowhere stated in S1.7's test assertions
+      (clause 7 covers "all tests and coefficient lifts", not orbit polynomials).
+      It is immediate (roots are integral over the complete DVR O and the
+      coefficients are Galois-fixed), and the sources supply it explicitly
+      (HE7 L1750-1751, "f_C := Π_{ρ∈C}(x − ρ) has K₀-coefficients, integral over
+      O, hence lies in O[x]"), so I do not raise it.
+  (b) S1.7A's (LABEL-OWN) is exactly (RES-DEG) applied to the emitted block:
+      deg R(F_{lambda,r'}) = nu/e' and the residual is c r'^k, so
+      k deg r' = nu/e', i.e. k = nu/(e' deg r'). The two displays are the same
+      identity at two scopes, which is a good sign for the re-route's coherence
+      and I record it as a positive.
+
+=====================================================================
+## SECTION F — OTHER FINDINGS AND SWEEP RESULTS
+
+F.1  FINDING F-1 (minor) -- r3 repair 3's own practice (note a competing/superseding
+     display at the pin) is applied to HE6R1-1 and to HETOW-LABELS but not to
+     GENTOW-4-A, whose span likewise contains a display the source later superseded.
+
+  The GENTOW-4-A span is THEOREM GENTOW-4.A in GENTOW4 sec-S3, and the master
+  consumes its clause (ii) (S3.5's mu_2^* and deg f_S = D_2 mu_2^*). Clause (ii)'s
+  display carries a parenthetical that a dated correction at GENTOW4 L1039-1076
+  declares superseded:
+      "### [TOWERRAT2-C annex, 2026-08-10] Dated correction: the 4.A(ii)
+      ### "top coefficient NOT monic" parenthetical SUPERSEDED"
+      "The "top coefficient NOT monic" clause is false as written"
+  The correction lies outside the pin span (the span ends in sec-S3; the annex is at
+  L1039+), exactly the configuration r3 repair 3 flagged for HE6R1-1 ("**The
+  2026-08-12 statement re-display governs.**") and that the HETOW-LABELS note
+  flagged for the J-D0 row ("the span contains the superseded J-D0 normalizer row.
+  This master does not consume that row"). The master does not consume the
+  superseded parenthetical either -- S3.5 makes no claim about f's top Phi_2
+  coefficient, and says "No whole-polynomial monicity or length hypothesis is
+  transferred to \(f_S\) without proof" -- so this is inconsistency of practice,
+  not a mathematical error.
+  Classification: minor.
+
+F.2  Sweep results that came back CLEAN (recorded so a later round does not
+     re-spend the budget)
+
+  - HETOW frame bridge. Master S3.4's "tau(k) = eta^{-Q(m(k))} but are not
+    declared equal" and "R_{lambda_2}(Z) = tau(H_0) Rhat_{lambda_2}(Z/delta),
+    delta = tau(u_3)" are HETOW-4(a), (b) and (c) verbatim (HETOW L706, L714-717,
+    L727-729), and the preservation list ("separability, residual factor degrees,
+    multiplicities, product branches, and refined root classes") is HETOW-4(d)
+    (L734-745). Nothing added, nothing dropped.
+  - (MASS). Master's "mu_child <= mu/(e' deg r') <= mu/2" is LEMMA HE6R1-1's second
+    display verbatim (HE6R1 L277: "μ_{i+1} ≤ deg R_{λ_i}/deg r_i ≤ μ_i/(ℓ_i·deg r_i)
+    ≤ μ_i/2"), and r3 repair 3's "byte-unchanged by the re-display" claim about
+    those clauses is TRUE -- the 2026-08-12 re-display touches only the global J
+    bound, which the master never cites.
+  - (TEST) degree. Master's deg Psi_{lambda,r'} = D e' deg r' is DEFINITION HE6-1's
+    "monic of degree D″ := D′ℓd" (HE6 L209).
+  - (FULL2)/(FULL2-U). Verbatim (dagger-2)/(ddagger-2) of the (LIFT_2) display
+    inside the HE7-SLOT-TRANSFER span.
+  - (DEG-EF) in each instance box: D' = e_1 f_1; D'' = (e_1 l)(f_1 d_r);
+    D_2 = (e_1 e_2)(f_1 f_2). All three arithmetic identities check.
+  - GENTOW4 projection. Master S3.5's mu_2^* = sum_{lambda_2 > T_2} L_{lambda_2},
+    deg f_S = D_2 mu_2^* is GENTOW-4.A(ii) verbatim (GENTOW4 L271-272).
+  - Reducible-key discipline. No live text asserts Phi irreducible, and S1.9's
+    "Nothing asserts that \(G=\Phi\), that \(\Phi\) is irreducible, that one factor
+    \(\Phi\) is peeled, or that a peel lowers \(\mu\) by exactly one" is consistent
+    with (MID-PEEL), which lowers nu by exactly one only in the WHOLE-key branch and
+    routes the proper-nontrivial-gcd branch to S1.9. (HE7's unpinned ANNEX-LEMMA
+    R2-a, L2348-2354, in fact proves gcd(F, Psi) in {1, Psi} at level two, so the
+    proper branch is empty there -- the master does not claim this, which is
+    correct restraint, not a gap.)
+  - Synthetic pins. Zero T2V2PIN lines in all six sources; r1 repair 3 is deleted by
+    r2 repair 1; the r2/r3 convention is genuinely edit-free on the corpus.
+  - Honesty ledger. S4.1's grade line is intact and the (GRADE) minimum still
+    includes HE3 "at the grade stated by its supplied HEAD" (0/2), so no laundering.
+
+=====================================================================
+
+## SECTION G — VERDICT
+
+  CRITICAL: 0.  The logical chain of HE7.A holds. I re-derived clauses 1, 2, the
+  (SIDE-PROD) multi-side split, and the (MID-PEEL) peel from the effective text
+  alone and all four go through; the clause-4 re-route genuinely kills the
+  parent-multiplicity tie and handles the old counter-config correctly; the pin
+  system is now installed as existing-text spans with zero source edits, and the
+  five pins r3 re-derived are byte-exact and unique.
+
+  GAP: 4.
+    A-3  `HE6-SLOT-SEAM` = "the corrected normalized-slot/seam display" names no
+         source unit and matches three distinct ones (HE6 sec-S1 CONVENTION;
+         LEMMA HE6-1L + RIDER; LEMMA HE6-0''), which pin different mathematics.
+         Fail-closed condition 1 cannot be discharged. Same defect class r3
+         repair 1 fixed for four other pins, not applied here.
+    B-1  Clause 5's trigger says "if a RECENTERED current key divides its
+         represented block", but the only two transitions that can destroy
+         key-freeness are recentering and the CHILD JUMP, and the instance
+         discharge r3 repair 4 cites (LEMMA HE6R1-3, Psi | f_S) is the child-jump
+         case. The theorem statement does not cover the case its own discharge is
+         about; the section body and induction paragraph do.
+    B-2  "The states carry a well-founded lexicographic rank" is asserted with
+         three different decreasing quantities across four transitions, no tuple
+         displayed, and no check that a transition never increases an earlier
+         component. Repairable -- (represented degree, mass, secondary) works, and
+         I verified it -- but two of the needed facts (the child jump's degree
+         non-increase via (MASS); the recentering's degree/mass preservation) are
+         nowhere in the note, and without the tuple nothing rules out a
+         recentering/child-jump cycle or the secondary rank's reset across a peel.
+    D-1  The (MID-PEEL) input suite (r3 repair 4) is discharged at level two by
+         LEMMA HE6R1-3 and has NO level-one discharge and NO level-one fence,
+         although clause 5 applies at every level. HE6's general level-one peel
+         leans on Phi' being irreducible; a RECENTERED level-one key is not, and
+         item 5 of the suite (the peeled key's certified orbit/(e,f)
+         decomposition) is unsupplied. Compare (LB1), which is named, boxed,
+         appended to S3.1/S3.2 and carried into the ledger.
+
+  minor: 8.  A-1 (HE3-DEF1 boundary ambiguous exactly at the coherent-R_lambda
+  CONSTRUCTION PIN), A-2 ("R8.N redline unit" -- source has no "redline" and writes
+  R8-N), A-4 (r3's "both delimiter lines of every pin are quoted byte-exactly" is
+  false for 22 of 27), A-5 (r2 repair 1 collaterally deleted "No unpinned source
+  material is used to manufacture a theorem hypothesis" and r3 repair 9 restored
+  only the file list), A-6 ((GAMMA)'s coefficient normalizers are a master-side
+  correction of the pinned displays, undisclosed as such), D-2 (S1.7B's
+  conditionality sentence is not clause-4-scoped and contradicts r3 repair 7),
+  E-1 (r3 repair 7 cites S1.7 clause 1 where clause 2 is what supports the claim),
+  F-1 (r3 repair 3's superseded-display-noted-at-the-pin practice not applied to
+  GENTOW-4-A).
+
+  The four r3 repairs I was asked to attack head-on all do what they claim:
+  the pin re-derivation is byte-exact where it quotes, the (MID-PEEL) suite closes
+  F5 at the right place, the clause-4 re-route closes F2 and survives the
+  counter-config, and the (LB1) widening is exactly co-extensive with the
+  clause-4-demanding level-one states. The four GAPs are new surfaces: one pin the
+  re-derivation did not reach, one trigger-scope mismatch, one unshown
+  well-foundedness, one unfenced level-one obligation.
+
+VERDICT: NOT CLEAN | FINDINGS: 0C + 4G + 8m
