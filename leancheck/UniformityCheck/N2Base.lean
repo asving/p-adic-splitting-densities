@@ -79,15 +79,15 @@ variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [Finite (ResidueField O)]
 
 /-- The geometric sum of a census family, in closed form. -/
-theorem census_sum (c : ℕ) (M : ℕ) :
-    (∑ i ∈ Finset.range M, (c : ℝ) * (residueCard O : ℝ) ^ (2 * M + 2 * i))
-      = ((c : ℝ) / ((residueCard O : ℝ) ^ 2 - 1))
+theorem census_sum (c : ℝ) (M : ℕ) :
+    (∑ i ∈ Finset.range M, c * (residueCard O : ℝ) ^ (2 * M + 2 * i))
+      = (c / ((residueCard O : ℝ) ^ 2 - 1))
           * ((residueCard O : ℝ) ^ (4 * M) - (residueCard O : ℝ) ^ (2 * M)) := by
   have hq : (1 : ℝ) < (residueCard O : ℝ) := by exact_mod_cast one_lt_residueCard O
   have hq0 : (0 : ℝ) < (residueCard O : ℝ) := by linarith
   have hne : ((residueCard O : ℝ) ^ 2 - 1) ≠ 0 := by nlinarith
-  have h1 : ∑ i ∈ Finset.range M, (c : ℝ) * (residueCard O : ℝ) ^ (2 * M + 2 * i)
-      = (c : ℝ) * (residueCard O : ℝ) ^ (2 * M)
+  have h1 : ∑ i ∈ Finset.range M, c * (residueCard O : ℝ) ^ (2 * M + 2 * i)
+      = c * (residueCard O : ℝ) ^ (2 * M)
           * ∑ i ∈ Finset.range M, ((residueCard O : ℝ) ^ 2) ^ i := by
     rw [Finset.mul_sum]
     refine Finset.sum_congr rfl (fun i _ => ?_)
@@ -111,17 +111,17 @@ theorem count_bounds_of_subsets {σ : FactorizationType} {N : ℕ} (B D : Set (C
   exact h1.trans h2
 
 /-- **THE CENSUS ⟹ DENSITY BRIDGE.** -/
-theorem genuineDensity_of_census {σ : FactorizationType} {c : ℕ}
-    (hlow : ∀ M : ℕ, (∑ i ∈ Finset.range M, (c : ℝ) * (residueCard O : ℝ) ^ (2 * M + 2 * i))
+theorem genuineDensity_of_census {σ : FactorizationType} (c : ℝ)
+    (hlow : ∀ M : ℕ, (∑ i ∈ Finset.range M, c * (residueCard O : ℝ) ^ (2 * M + 2 * i))
       ≤ (decidedCount O 2 σ (2 * M) : ℝ))
     (hhigh : ∀ M : ℕ, (decidedCount O 2 σ (2 * M) : ℝ)
-      ≤ (∑ i ∈ Finset.range M, (c : ℝ) * (residueCard O : ℝ) ^ (2 * M + 2 * i))
+      ≤ (∑ i ∈ Finset.range M, c * (residueCard O : ℝ) ^ (2 * M + 2 * i))
           + (residueCard O : ℝ) ^ (3 * M)) :
-    genuineDensity O 2 σ = (c : ℝ) / ((residueCard O : ℝ) ^ 2 - 1) := by
+    genuineDensity O 2 σ = c / ((residueCard O : ℝ) ^ 2 - 1) := by
   have hq : (1 : ℝ) < (residueCard O : ℝ) := by exact_mod_cast one_lt_residueCard O
   have hq0 : (0 : ℝ) < (residueCard O : ℝ) := by linarith
   set q : ℝ := (residueCard O : ℝ) with hqdef
-  set L : ℝ := (c : ℝ) / (q ^ 2 - 1) with hL
+  set L : ℝ := c / (q ^ 2 - 1) with hL
   -- the normalised sandwich
   have hseq : ∀ M : ℕ, decidedSeq O 2 σ (2 * M) = (decidedCount O 2 σ (2 * M) : ℝ) / q ^ (4 * M) := by
     intro M
