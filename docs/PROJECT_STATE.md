@@ -4385,3 +4385,31 @@ UNVERIFIED flags: publisher numbering for [AGNPRW]/[GN15]/[Kuhl]
 statement-edits batch rides after the compression campaign closes
 (T2 final confirmation pass in flight); Hensel-factorization unit
 still building.
+
+**2026-08-13 DATED APPEND #42 — UNIFORMITY-P3 LANDED: COPRIME-
+FACTORIZATION HENSEL AT ADIC-COMPLETE LOCAL GENERALITY, WITH
+UNIQUENESS; THE n=3 BLOCKER DISSOLVES.** leanfinal gains
+`Uniformity/HenselFactorization.lean` (790 lines, 25 declarations,
+all Lean-core, 0 sorries, both repos build green): PROVED from
+scratch — mathlib v4.31 AND master lack it (master's own Henselian
+TODO names it open; FLT's variant is master-pinned and not sanely
+backportable) — at `[CommRing R] [IsLocalRing R] [IsAdicComplete
+(maximalIdeal R) R]`: `exists_monic_factorization` (degree clauses
+as conclusions), `monic_factorization_unique` (UNIQUENESS landed),
+`isCoprime_of_map_eq` (Bézout in R[X]), exact degree-bounded
+interpolation, the simple-root peel corollary, and the LocalData-
+bundle specialization. Method: Newton iteration with the correction
+solved COEFFICIENT-WISE (replaces the textbook uniformizer-powers
+step; survives non-principal 𝔪). Codex adversarial pass: findings
+1–6 clean, ONE overreach caught and retracted — the simple-root
+corollary IS reachable from the root form, hence **N3_CHECK §7's
+"branch (ii) blocked on coprime Hensel" diagnosis is likely WRONG
+at n=3** (the only undecided-not-triply-tangent cubic residual
+shape is (X−ρ̄)(X−c̄)² with ρ̄ a SIMPLE root; true indispensability
+starts at n≥4, e.g. (X−a)²(X−b)²). Six headline statements carry
+faithfulness paragraphs (note §4) FLAGGED FOR ASVIN. Two named open
+statements recorded (interpolation-map injectivity; multi-block
+form). CONSEQUENCE: the n=3 exact-value/drainage unit is UNBLOCKED
+with existing tools (root-form Hensel + the new Bézout/uniqueness/
+interpolation) — LAUNCHED in leancheck. Mathlib upstream
+contribution potential noted.
