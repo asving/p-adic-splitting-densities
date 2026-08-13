@@ -4498,3 +4498,27 @@ source-designation refutations of ledger rows) — all queue into the
 HYPLEDGER v3 fold after the v2 recompile lands. Corpus-maintenance
 batch queued: GENTOW5-W consumption check + ABS-G5W append + T4
 consumption checks + the n=2 codex pass.
+
+**2026-08-14 DATED APPEND #46 — PHASE 0b CLOSED: LEDGER v3 FINAL
+(147 rows / 43 carry / 22 math / 9 owner questions); THE 0d PACKAGE
+IS READY FOR ASVIN.** The ledger survived its full arc: codex draft
+→ Opus adjudication (NEEDS-RECOMPILE, 4 hard refutations) → codex
+recompile (v2, 135 rows) → completeness-sub-sweep deltas (15 items)
+→ Opus v3 fold (which corrected two of the DELTAS against sources:
+HEX3-BOX-1's "contradiction" = different consumers; GENTOW5_WI's
+0/2 box = stale vs its SOL CERTIFIED-2/2 row). S-0 tripwire GREEN
+recorded as a CLOSED row. Maintenance queue MQ-1..3 (n=2 codex
+pass; consumption-check appends; the [GMN12] §4 characteristic
+audit). **THE NINE 0d QUESTIONS** (ledger §"THE 0d PACKAGE",
+verbatim there): 1 NS-7 cite-vs-prove (couples to the depth bound);
+2 WELD-FACE-AUDIT scheduling + charter width; 3 UniformityStatement
+signature points; 4 the definitions package ((e,f) convention,
+W12-BOX-7 σ-convention, HENSEL_FACT faithfulness paragraphs);
+5 Haar-vs-decided-limit + Σ_σ = 1 in the frozen claim; 6 JD0's bar
+(hostile arc vs machine grade); 7 AX-CELLREC/AX-LEAF + L-4 on the
+leanfinal path or not; 8 Display A vs B; 9 [v3] HEX3-BOX-1
+carry-vs-node. SWEEP STATE: T1 + T3 fully spec'd (3+1 files);
+T2_s1of6 in flight at the throttle edge; remaining ~45 runs resume
+post-reset (Tue) under the same runner. NEXT: 0d (Asvin) ∥ sweep
+completion ∥ merges (Claude-side) → 0c DAG → 0e leanspec →
+chapters → fleet.
