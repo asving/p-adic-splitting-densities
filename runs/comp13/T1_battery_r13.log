@@ -1,0 +1,1122 @@
+T1 §4.2 MACHINE BATTERY RE-RUN — checks 1..10, effective text of 2026-08-13 (r13 + post-pass riders)
+note   : /data/users/asvin/math-and-lean/p-adic-splitting-densities/lean/notes/openmath/T1_GAUGE_COCYCLE_2026-08-12.md  (4331 lines)
+reuse  : /data/users/asvin/math-and-lean/p-adic-splitting-densities/verification/openmath/t1_gauge_battery.py
+
+
+==============================================================================
+CHECK 1 — GENHN-LIFT boundary (integrality / degree / height / residue; f1>=2; low-height counterexample)
+==============================================================================
+  live cases: 50 (frames F4[f1=2], P3, P5, LP)
+  ok   C1  F4_M5_10.live_domain                                 got=True  want=True
+  ok   C1  F4_M5_10.integral                                    got=True  want=True
+  ok   C1  F4_M5_10.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M5_10.exact_height                                got=True  want=True
+  ok   C1  F4_M5_10.residue                                     got=1  want=1
+  ok   C1  F4_M5_10.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M5_01.live_domain                                 got=True  want=True
+  ok   C1  F4_M5_01.integral                                    got=True  want=True
+  ok   C1  F4_M5_01.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M5_01.exact_height                                got=True  want=True
+  ok   C1  F4_M5_01.residue                                     got=w  want=w
+  ok   C1  F4_M5_01.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M5_11.live_domain                                 got=True  want=True
+  ok   C1  F4_M5_11.integral                                    got=True  want=True
+  ok   C1  F4_M5_11.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M5_11.exact_height                                got=True  want=True
+  ok   C1  F4_M5_11.residue                                     got=w2  want=w2
+  ok   C1  F4_M5_11.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M6_10.live_domain                                 got=True  want=True
+  ok   C1  F4_M6_10.integral                                    got=True  want=True
+  ok   C1  F4_M6_10.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M6_10.exact_height                                got=True  want=True
+  ok   C1  F4_M6_10.residue                                     got=1  want=1
+  ok   C1  F4_M6_10.xfree_criterion                             got=True  want=True
+  ok   C1  F4_M6_01.live_domain                                 got=True  want=True
+  ok   C1  F4_M6_01.integral                                    got=True  want=True
+  ok   C1  F4_M6_01.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M6_01.exact_height                                got=True  want=True
+  ok   C1  F4_M6_01.residue                                     got=w  want=w
+  ok   C1  F4_M6_01.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M6_11.live_domain                                 got=True  want=True
+  ok   C1  F4_M6_11.integral                                    got=True  want=True
+  ok   C1  F4_M6_11.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M6_11.exact_height                                got=True  want=True
+  ok   C1  F4_M6_11.residue                                     got=w2  want=w2
+  ok   C1  F4_M6_11.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M7_10.live_domain                                 got=True  want=True
+  ok   C1  F4_M7_10.integral                                    got=True  want=True
+  ok   C1  F4_M7_10.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M7_10.exact_height                                got=True  want=True
+  ok   C1  F4_M7_10.residue                                     got=1  want=1
+  ok   C1  F4_M7_10.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M7_01.live_domain                                 got=True  want=True
+  ok   C1  F4_M7_01.integral                                    got=True  want=True
+  ok   C1  F4_M7_01.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M7_01.exact_height                                got=True  want=True
+  ok   C1  F4_M7_01.residue                                     got=w  want=w
+  ok   C1  F4_M7_01.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M7_11.live_domain                                 got=True  want=True
+  ok   C1  F4_M7_11.integral                                    got=True  want=True
+  ok   C1  F4_M7_11.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M7_11.exact_height                                got=True  want=True
+  ok   C1  F4_M7_11.residue                                     got=w2  want=w2
+  ok   C1  F4_M7_11.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M8_10.live_domain                                 got=True  want=True
+  ok   C1  F4_M8_10.integral                                    got=True  want=True
+  ok   C1  F4_M8_10.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M8_10.exact_height                                got=True  want=True
+  ok   C1  F4_M8_10.residue                                     got=1  want=1
+  ok   C1  F4_M8_10.xfree_criterion                             got=True  want=True
+  ok   C1  F4_M8_01.live_domain                                 got=True  want=True
+  ok   C1  F4_M8_01.integral                                    got=True  want=True
+  ok   C1  F4_M8_01.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M8_01.exact_height                                got=True  want=True
+  ok   C1  F4_M8_01.residue                                     got=w  want=w
+  ok   C1  F4_M8_01.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M8_11.live_domain                                 got=True  want=True
+  ok   C1  F4_M8_11.integral                                    got=True  want=True
+  ok   C1  F4_M8_11.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M8_11.exact_height                                got=True  want=True
+  ok   C1  F4_M8_11.residue                                     got=w2  want=w2
+  ok   C1  F4_M8_11.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M9_10.live_domain                                 got=True  want=True
+  ok   C1  F4_M9_10.integral                                    got=True  want=True
+  ok   C1  F4_M9_10.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M9_10.exact_height                                got=True  want=True
+  ok   C1  F4_M9_10.residue                                     got=1  want=1
+  ok   C1  F4_M9_10.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M9_01.live_domain                                 got=True  want=True
+  ok   C1  F4_M9_01.integral                                    got=True  want=True
+  ok   C1  F4_M9_01.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M9_01.exact_height                                got=True  want=True
+  ok   C1  F4_M9_01.residue                                     got=w  want=w
+  ok   C1  F4_M9_01.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M9_11.live_domain                                 got=True  want=True
+  ok   C1  F4_M9_11.integral                                    got=True  want=True
+  ok   C1  F4_M9_11.degree_lt_Dprime                            got=True  want=True
+  ok   C1  F4_M9_11.exact_height                                got=True  want=True
+  ok   C1  F4_M9_11.residue                                     got=w2  want=w2
+  ok   C1  F4_M9_11.xfree_criterion                             got=False  want=False
+  ok   C1  F4_M10_10.live_domain                                got=True  want=True
+  ok   C1  F4_M10_10.integral                                   got=True  want=True
+  ok   C1  F4_M10_10.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M10_10.exact_height                               got=True  want=True
+  ok   C1  F4_M10_10.residue                                    got=1  want=1
+  ok   C1  F4_M10_10.xfree_criterion                            got=True  want=True
+  ok   C1  F4_M10_01.live_domain                                got=True  want=True
+  ok   C1  F4_M10_01.integral                                   got=True  want=True
+  ok   C1  F4_M10_01.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M10_01.exact_height                               got=True  want=True
+  ok   C1  F4_M10_01.residue                                    got=w  want=w
+  ok   C1  F4_M10_01.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M10_11.live_domain                                got=True  want=True
+  ok   C1  F4_M10_11.integral                                   got=True  want=True
+  ok   C1  F4_M10_11.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M10_11.exact_height                               got=True  want=True
+  ok   C1  F4_M10_11.residue                                    got=w2  want=w2
+  ok   C1  F4_M10_11.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M11_10.live_domain                                got=True  want=True
+  ok   C1  F4_M11_10.integral                                   got=True  want=True
+  ok   C1  F4_M11_10.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M11_10.exact_height                               got=True  want=True
+  ok   C1  F4_M11_10.residue                                    got=1  want=1
+  ok   C1  F4_M11_10.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M11_01.live_domain                                got=True  want=True
+  ok   C1  F4_M11_01.integral                                   got=True  want=True
+  ok   C1  F4_M11_01.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M11_01.exact_height                               got=True  want=True
+  ok   C1  F4_M11_01.residue                                    got=w  want=w
+  ok   C1  F4_M11_01.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M11_11.live_domain                                got=True  want=True
+  ok   C1  F4_M11_11.integral                                   got=True  want=True
+  ok   C1  F4_M11_11.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M11_11.exact_height                               got=True  want=True
+  ok   C1  F4_M11_11.residue                                    got=w2  want=w2
+  ok   C1  F4_M11_11.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M12_10.live_domain                                got=True  want=True
+  ok   C1  F4_M12_10.integral                                   got=True  want=True
+  ok   C1  F4_M12_10.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M12_10.exact_height                               got=True  want=True
+  ok   C1  F4_M12_10.residue                                    got=1  want=1
+  ok   C1  F4_M12_10.xfree_criterion                            got=True  want=True
+  ok   C1  F4_M12_01.live_domain                                got=True  want=True
+  ok   C1  F4_M12_01.integral                                   got=True  want=True
+  ok   C1  F4_M12_01.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M12_01.exact_height                               got=True  want=True
+  ok   C1  F4_M12_01.residue                                    got=w  want=w
+  ok   C1  F4_M12_01.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M12_11.live_domain                                got=True  want=True
+  ok   C1  F4_M12_11.integral                                   got=True  want=True
+  ok   C1  F4_M12_11.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M12_11.exact_height                               got=True  want=True
+  ok   C1  F4_M12_11.residue                                    got=w2  want=w2
+  ok   C1  F4_M12_11.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M13_10.live_domain                                got=True  want=True
+  ok   C1  F4_M13_10.integral                                   got=True  want=True
+  ok   C1  F4_M13_10.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M13_10.exact_height                               got=True  want=True
+  ok   C1  F4_M13_10.residue                                    got=1  want=1
+  ok   C1  F4_M13_10.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M13_01.live_domain                                got=True  want=True
+  ok   C1  F4_M13_01.integral                                   got=True  want=True
+  ok   C1  F4_M13_01.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M13_01.exact_height                               got=True  want=True
+  ok   C1  F4_M13_01.residue                                    got=w  want=w
+  ok   C1  F4_M13_01.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M13_11.live_domain                                got=True  want=True
+  ok   C1  F4_M13_11.integral                                   got=True  want=True
+  ok   C1  F4_M13_11.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M13_11.exact_height                               got=True  want=True
+  ok   C1  F4_M13_11.residue                                    got=w2  want=w2
+  ok   C1  F4_M13_11.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M14_10.live_domain                                got=True  want=True
+  ok   C1  F4_M14_10.integral                                   got=True  want=True
+  ok   C1  F4_M14_10.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M14_10.exact_height                               got=True  want=True
+  ok   C1  F4_M14_10.residue                                    got=1  want=1
+  ok   C1  F4_M14_10.xfree_criterion                            got=True  want=True
+  ok   C1  F4_M14_01.live_domain                                got=True  want=True
+  ok   C1  F4_M14_01.integral                                   got=True  want=True
+  ok   C1  F4_M14_01.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M14_01.exact_height                               got=True  want=True
+  ok   C1  F4_M14_01.residue                                    got=w  want=w
+  ok   C1  F4_M14_01.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M14_11.live_domain                                got=True  want=True
+  ok   C1  F4_M14_11.integral                                   got=True  want=True
+  ok   C1  F4_M14_11.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M14_11.exact_height                               got=True  want=True
+  ok   C1  F4_M14_11.residue                                    got=w2  want=w2
+  ok   C1  F4_M14_11.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M15_10.live_domain                                got=True  want=True
+  ok   C1  F4_M15_10.integral                                   got=True  want=True
+  ok   C1  F4_M15_10.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M15_10.exact_height                               got=True  want=True
+  ok   C1  F4_M15_10.residue                                    got=1  want=1
+  ok   C1  F4_M15_10.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M15_01.live_domain                                got=True  want=True
+  ok   C1  F4_M15_01.integral                                   got=True  want=True
+  ok   C1  F4_M15_01.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M15_01.exact_height                               got=True  want=True
+  ok   C1  F4_M15_01.residue                                    got=w  want=w
+  ok   C1  F4_M15_01.xfree_criterion                            got=False  want=False
+  ok   C1  F4_M15_11.live_domain                                got=True  want=True
+  ok   C1  F4_M15_11.integral                                   got=True  want=True
+  ok   C1  F4_M15_11.degree_lt_Dprime                           got=True  want=True
+  ok   C1  F4_M15_11.exact_height                               got=True  want=True
+  ok   C1  F4_M15_11.residue                                    got=w2  want=w2
+  ok   C1  F4_M15_11.xfree_criterion                            got=False  want=False
+  ok   C1  P3_M3.live_domain                                    got=True  want=True
+  ok   C1  P3_M3.integral                                       got=True  want=True
+  ok   C1  P3_M3.degree_lt_Dprime                               got=True  want=True
+  ok   C1  P3_M3.exact_height                                   got=True  want=True
+  ok   C1  P3_M3.residue                                        got=2  want=2
+  ok   C1  P3_M3.xfree_criterion                                got=False  want=False
+  ok   C1  P3_M4.live_domain                                    got=True  want=True
+  ok   C1  P3_M4.integral                                       got=True  want=True
+  ok   C1  P3_M4.degree_lt_Dprime                               got=True  want=True
+  ok   C1  P3_M4.exact_height                                   got=True  want=True
+  ok   C1  P3_M4.residue                                        got=2  want=2
+  ok   C1  P3_M4.xfree_criterion                                got=True  want=True
+  ok   C1  P3_M5.live_domain                                    got=True  want=True
+  ok   C1  P3_M5.integral                                       got=True  want=True
+  ok   C1  P3_M5.degree_lt_Dprime                               got=True  want=True
+  ok   C1  P3_M5.exact_height                                   got=True  want=True
+  ok   C1  P3_M5.residue                                        got=2  want=2
+  ok   C1  P3_M5.xfree_criterion                                got=False  want=False
+  ok   C1  P3_M6.live_domain                                    got=True  want=True
+  ok   C1  P3_M6.integral                                       got=True  want=True
+  ok   C1  P3_M6.degree_lt_Dprime                               got=True  want=True
+  ok   C1  P3_M6.exact_height                                   got=True  want=True
+  ok   C1  P3_M6.residue                                        got=2  want=2
+  ok   C1  P3_M6.xfree_criterion                                got=True  want=True
+  ok   C1  P3_M7.live_domain                                    got=True  want=True
+  ok   C1  P3_M7.integral                                       got=True  want=True
+  ok   C1  P3_M7.degree_lt_Dprime                               got=True  want=True
+  ok   C1  P3_M7.exact_height                                   got=True  want=True
+  ok   C1  P3_M7.residue                                        got=2  want=2
+  ok   C1  P3_M7.xfree_criterion                                got=False  want=False
+  ok   C1  P3_M8.live_domain                                    got=True  want=True
+  ok   C1  P3_M8.integral                                       got=True  want=True
+  ok   C1  P3_M8.degree_lt_Dprime                               got=True  want=True
+  ok   C1  P3_M8.exact_height                                   got=True  want=True
+  ok   C1  P3_M8.residue                                        got=2  want=2
+  ok   C1  P3_M8.xfree_criterion                                got=True  want=True
+  ok   C1  P5_M7.live_domain                                    got=True  want=True
+  ok   C1  P5_M7.integral                                       got=True  want=True
+  ok   C1  P5_M7.degree_lt_Dprime                               got=True  want=True
+  ok   C1  P5_M7.exact_height                                   got=True  want=True
+  ok   C1  P5_M7.residue                                        got=3  want=3
+  ok   C1  P5_M7.xfree_criterion                                got=False  want=False
+  ok   C1  P5_M8.live_domain                                    got=True  want=True
+  ok   C1  P5_M8.integral                                       got=True  want=True
+  ok   C1  P5_M8.degree_lt_Dprime                               got=True  want=True
+  ok   C1  P5_M8.exact_height                                   got=True  want=True
+  ok   C1  P5_M8.residue                                        got=3  want=3
+  ok   C1  P5_M8.xfree_criterion                                got=False  want=False
+  ok   C1  P5_M9.live_domain                                    got=True  want=True
+  ok   C1  P5_M9.integral                                       got=True  want=True
+  ok   C1  P5_M9.degree_lt_Dprime                               got=True  want=True
+  ok   C1  P5_M9.exact_height                                   got=True  want=True
+  ok   C1  P5_M9.residue                                        got=3  want=3
+  ok   C1  P5_M9.xfree_criterion                                got=True  want=True
+  ok   C1  P5_M10.live_domain                                   got=True  want=True
+  ok   C1  P5_M10.integral                                      got=True  want=True
+  ok   C1  P5_M10.degree_lt_Dprime                              got=True  want=True
+  ok   C1  P5_M10.exact_height                                  got=True  want=True
+  ok   C1  P5_M10.residue                                       got=3  want=3
+  ok   C1  P5_M10.xfree_criterion                               got=False  want=False
+  ok   C1  P5_M11.live_domain                                   got=True  want=True
+  ok   C1  P5_M11.integral                                      got=True  want=True
+  ok   C1  P5_M11.degree_lt_Dprime                              got=True  want=True
+  ok   C1  P5_M11.exact_height                                  got=True  want=True
+  ok   C1  P5_M11.residue                                       got=3  want=3
+  ok   C1  P5_M11.xfree_criterion                               got=False  want=False
+  ok   C1  P5_M12.live_domain                                   got=True  want=True
+  ok   C1  P5_M12.integral                                      got=True  want=True
+  ok   C1  P5_M12.degree_lt_Dprime                              got=True  want=True
+  ok   C1  P5_M12.exact_height                                  got=True  want=True
+  ok   C1  P5_M12.residue                                       got=3  want=3
+  ok   C1  P5_M12.xfree_criterion                               got=True  want=True
+  ok   C1  LP_M11.live_domain                                   got=True  want=True
+  ok   C1  LP_M11.integral                                      got=True  want=True
+  ok   C1  LP_M11.degree_lt_Dprime                              got=True  want=True
+  ok   C1  LP_M11.exact_height                                  got=True  want=True
+  ok   C1  LP_M11.residue                                       got=3  want=3
+  ok   C1  LP_M11.xfree_criterion                               got=False  want=False
+  ok   C1  LP_M12.live_domain                                   got=True  want=True
+  ok   C1  LP_M12.integral                                      got=True  want=True
+  ok   C1  LP_M12.degree_lt_Dprime                              got=True  want=True
+  ok   C1  LP_M12.exact_height                                  got=True  want=True
+  ok   C1  LP_M12.residue                                       got=3  want=3
+  ok   C1  LP_M12.xfree_criterion                               got=False  want=False
+  ok   C1  LP_M13.live_domain                                   got=True  want=True
+  ok   C1  LP_M13.integral                                      got=True  want=True
+  ok   C1  LP_M13.degree_lt_Dprime                              got=True  want=True
+  ok   C1  LP_M13.exact_height                                  got=True  want=True
+  ok   C1  LP_M13.residue                                       got=3  want=3
+  ok   C1  LP_M13.xfree_criterion                               got=False  want=False
+  ok   C1  LP_M14.live_domain                                   got=True  want=True
+  ok   C1  LP_M14.integral                                      got=True  want=True
+  ok   C1  LP_M14.degree_lt_Dprime                              got=True  want=True
+  ok   C1  LP_M14.exact_height                                  got=True  want=True
+  ok   C1  LP_M14.residue                                       got=3  want=3
+  ok   C1  LP_M14.xfree_criterion                               got=False  want=False
+  ok   C1  LP_M15.live_domain                                   got=True  want=True
+  ok   C1  LP_M15.integral                                      got=True  want=True
+  ok   C1  LP_M15.degree_lt_Dprime                              got=True  want=True
+  ok   C1  LP_M15.exact_height                                  got=True  want=True
+  ok   C1  LP_M15.residue                                       got=3  want=3
+  ok   C1  LP_M15.xfree_criterion                               got=True  want=True
+  ok   C1  coverage.f1_ge_2_cases_present                       got=True  want=True   [33 cases with f1>=2]
+  low counterexample frame: e1=1 f1=2 h=1 D'=2 D'h=2, M=0
+  ok   C1  low.M_not_in_live_domain                             got=False  want=False
+  ok   C1  low.n_of_M_is_integral                               got=[0,0]  want=[0,0]   [n(0)=x^0 pi^0 = 1, integral]
+  ok   C1  low.full_slot_refused_nonintegral                    got=True  want=True   [eta-slot (x^e,pi^e)=[(1, -1)]]
+  ok   C1  low.no_full_K1_slot_inferred_from_n_integrality      got=True  want=True
+  ok   C1  F4.boundary_eq.refused                               got=False  want=False
+  ok   C1  F4.boundary_below.refused                            got=False  want=False
+
+==============================================================================
+CHECK 2 — Positive-wrap sign (corrected/naive + wrong-sign teeth; EXACT coefficient equality)
+==============================================================================
+  ok   C2  P3_WRAP.wrap_monomial_s0                             got=[0,0]  want=[0,0]
+  ok   C2  P3_WRAP.theta_positive_exponent_s0                   got=1  want=1
+  ok   C2  P3_WRAP.wrap_exponent_nonneg_s0                      got=True  want=True
+  ok   C2  P3_WRAP.wrap_monomial_s1                             got=[0,0]  want=[0,0]
+  ok   C2  P3_WRAP.theta_positive_exponent_s1                   got=1  want=1
+  ok   C2  P3_WRAP.wrap_exponent_nonneg_s1                      got=True  want=True
+  ok   C2  P3_WRAP.wrap_monomial_s2                             got=[2,-1]  want=[2,-1]
+  ok   C2  P3_WRAP.theta_positive_exponent_s2                   got=2  want=2
+  ok   C2  P3_WRAP.wrap_exponent_nonneg_s2                      got=True  want=True
+  ok   C2  P3_WRAP.wrap_monomial_s3                             got=[2,-1]  want=[2,-1]
+  ok   C2  P3_WRAP.theta_positive_exponent_s3                   got=2  want=2
+  ok   C2  P3_WRAP.wrap_exponent_nonneg_s3                      got=True  want=True
+  ok   C2  P3_WRAP.wrap_monomial_s4                             got=[4,-2]  want=[4,-2]
+  ok   C2  P3_WRAP.theta_positive_exponent_s4                   got=1  want=1
+  ok   C2  P3_WRAP.wrap_exponent_nonneg_s4                      got=True  want=True
+  ok   C2  P3_WRAP.wrap_monomial_s5                             got=[4,-2]  want=[4,-2]
+  ok   C2  P3_WRAP.theta_positive_exponent_s5                   got=1  want=1
+  ok   C2  P3_WRAP.wrap_exponent_nonneg_s5                      got=True  want=True
+  ok   C2  P3_WRAP.wrap_monomial_s6                             got=[6,-3]  want=[6,-3]
+  ok   C2  P3_WRAP.theta_positive_exponent_s6                   got=2  want=2
+  ok   C2  P3_WRAP.wrap_exponent_nonneg_s6                      got=True  want=True
+  ok   C2  P3_ETA1.wrap_monomial_s0                             got=[0,0]  want=[0,0]
+  ok   C2  P3_ETA1.theta_positive_exponent_s0                   got=1  want=1
+  ok   C2  P3_ETA1.wrap_exponent_nonneg_s0                      got=True  want=True
+  ok   C2  P3_ETA1.wrap_monomial_s1                             got=[0,0]  want=[0,0]
+  ok   C2  P3_ETA1.theta_positive_exponent_s1                   got=1  want=1
+  ok   C2  P3_ETA1.wrap_exponent_nonneg_s1                      got=True  want=True
+  ok   C2  P3_ETA1.wrap_monomial_s2                             got=[2,-1]  want=[2,-1]
+  ok   C2  P3_ETA1.theta_positive_exponent_s2                   got=1  want=1
+  ok   C2  P3_ETA1.wrap_exponent_nonneg_s2                      got=True  want=True
+  ok   C2  P3_ETA1.wrap_monomial_s3                             got=[2,-1]  want=[2,-1]
+  ok   C2  P3_ETA1.theta_positive_exponent_s3                   got=1  want=1
+  ok   C2  P3_ETA1.wrap_exponent_nonneg_s3                      got=True  want=True
+  ok   C2  P3_ETA1.wrap_monomial_s4                             got=[4,-2]  want=[4,-2]
+  ok   C2  P3_ETA1.theta_positive_exponent_s4                   got=1  want=1
+  ok   C2  P3_ETA1.wrap_exponent_nonneg_s4                      got=True  want=True
+  ok   C2  P3_ETA1.wrap_monomial_s5                             got=[4,-2]  want=[4,-2]
+  ok   C2  P3_ETA1.theta_positive_exponent_s5                   got=1  want=1
+  ok   C2  P3_ETA1.wrap_exponent_nonneg_s5                      got=True  want=True
+  ok   C2  P3_ETA1.wrap_monomial_s6                             got=[6,-3]  want=[6,-3]
+  ok   C2  P3_ETA1.theta_positive_exponent_s6                   got=1  want=1
+  ok   C2  P3_ETA1.wrap_exponent_nonneg_s6                      got=True  want=True
+  ok   C2  P5.wrap_monomial_s0                                  got=[0,0]  want=[0,0]
+  ok   C2  P5.theta_positive_exponent_s0                        got=1  want=1
+  ok   C2  P5.wrap_exponent_nonneg_s0                           got=True  want=True
+  ok   C2  P5.wrap_monomial_s1                                  got=[0,0]  want=[0,0]
+  ok   C2  P5.theta_positive_exponent_s1                        got=1  want=1
+  ok   C2  P5.wrap_exponent_nonneg_s1                           got=True  want=True
+  ok   C2  P5.wrap_monomial_s2                                  got=[3,-2]  want=[3,-2]
+  ok   C2  P5.theta_positive_exponent_s2                        got=2  want=2
+  ok   C2  P5.wrap_exponent_nonneg_s2                           got=True  want=True
+  ok   C2  P5.wrap_monomial_s3                                  got=[6,-4]  want=[6,-4]
+  ok   C2  P5.theta_positive_exponent_s3                        got=4  want=4
+  ok   C2  P5.wrap_exponent_nonneg_s3                           got=True  want=True
+  ok   C2  P5.wrap_monomial_s4                                  got=[6,-4]  want=[6,-4]
+  ok   C2  P5.theta_positive_exponent_s4                        got=4  want=4
+  ok   C2  P5.wrap_exponent_nonneg_s4                           got=True  want=True
+  ok   C2  P5.wrap_monomial_s5                                  got=[9,-6]  want=[9,-6]
+  ok   C2  P5.theta_positive_exponent_s5                        got=3  want=3
+  ok   C2  P5.wrap_exponent_nonneg_s5                           got=True  want=True
+  ok   C2  P5.wrap_monomial_s6                                  got=[12,-8]  want=[12,-8]
+  ok   C2  P5.theta_positive_exponent_s6                        got=1  want=1
+  ok   C2  P5.wrap_exponent_nonneg_s6                           got=True  want=True
+  ok   C2  P5_ROOT.wrap_monomial_s0                             got=[0,0]  want=[0,0]
+  ok   C2  P5_ROOT.theta_positive_exponent_s0                   got=1  want=1
+  ok   C2  P5_ROOT.wrap_exponent_nonneg_s0                      got=True  want=True
+  ok   C2  P5_ROOT.wrap_monomial_s1                             got=[0,0]  want=[0,0]
+  ok   C2  P5_ROOT.theta_positive_exponent_s1                   got=1  want=1
+  ok   C2  P5_ROOT.wrap_exponent_nonneg_s1                      got=True  want=True
+  ok   C2  P5_ROOT.wrap_monomial_s2                             got=[2,-1]  want=[2,-1]
+  ok   C2  P5_ROOT.theta_positive_exponent_s2                   got=4  want=4
+  ok   C2  P5_ROOT.wrap_exponent_nonneg_s2                      got=True  want=True
+  ok   C2  P5_ROOT.wrap_monomial_s3                             got=[2,-1]  want=[2,-1]
+  ok   C2  P5_ROOT.theta_positive_exponent_s3                   got=4  want=4
+  ok   C2  P5_ROOT.wrap_exponent_nonneg_s3                      got=True  want=True
+  ok   C2  P5_ROOT.wrap_monomial_s4                             got=[4,-2]  want=[4,-2]
+  ok   C2  P5_ROOT.theta_positive_exponent_s4                   got=1  want=1
+  ok   C2  P5_ROOT.wrap_exponent_nonneg_s4                      got=True  want=True
+  ok   C2  P5_ROOT.wrap_monomial_s5                             got=[4,-2]  want=[4,-2]
+  ok   C2  P5_ROOT.theta_positive_exponent_s5                   got=1  want=1
+  ok   C2  P5_ROOT.wrap_exponent_nonneg_s5                      got=True  want=True
+  ok   C2  P5_ROOT.wrap_monomial_s6                             got=[6,-3]  want=[6,-3]
+  ok   C2  P5_ROOT.theta_positive_exponent_s6                   got=4  want=4
+  ok   C2  P5_ROOT.wrap_exponent_nonneg_s6                      got=True  want=True
+  ok   C2  F4.wrap_monomial_s0                                  got=[0,0]  want=[0,0]
+  ok   C2  F4.theta_positive_exponent_s0                        got=1  want=1
+  ok   C2  F4.wrap_exponent_nonneg_s0                           got=True  want=True
+  ok   C2  F4.wrap_monomial_s1                                  got=[0,0]  want=[0,0]
+  ok   C2  F4.theta_positive_exponent_s1                        got=1  want=1
+  ok   C2  F4.wrap_exponent_nonneg_s1                           got=True  want=True
+  ok   C2  F4.wrap_monomial_s2                                  got=[2,-1]  want=[2,-1]
+  ok   C2  F4.theta_positive_exponent_s2                        got=w  want=w
+  ok   C2  F4.wrap_exponent_nonneg_s2                           got=True  want=True
+  ok   C2  F4.wrap_monomial_s3                                  got=[2,-1]  want=[2,-1]
+  ok   C2  F4.theta_positive_exponent_s3                        got=w  want=w
+  ok   C2  F4.wrap_exponent_nonneg_s3                           got=True  want=True
+  ok   C2  F4.wrap_monomial_s4                                  got=[4,-2]  want=[4,-2]
+  ok   C2  F4.theta_positive_exponent_s4                        got=w2  want=w2
+  ok   C2  F4.wrap_exponent_nonneg_s4                           got=True  want=True
+  ok   C2  F4.wrap_monomial_s5                                  got=[4,-2]  want=[4,-2]
+  ok   C2  F4.theta_positive_exponent_s5                        got=w2  want=w2
+  ok   C2  F4.wrap_exponent_nonneg_s5                           got=True  want=True
+  ok   C2  F4.wrap_monomial_s6                                  got=[6,-3]  want=[6,-3]
+  ok   C2  F4.theta_positive_exponent_s6                        got=1  want=1
+  ok   C2  F4.wrap_exponent_nonneg_s6                           got=True  want=True
+  ok   C2  LP.wrap_monomial_s0                                  got=[0,0]  want=[0,0]
+  ok   C2  LP.theta_positive_exponent_s0                        got=1  want=1
+  ok   C2  LP.wrap_exponent_nonneg_s0                           got=True  want=True
+  ok   C2  LP.wrap_monomial_s1                                  got=[0,0]  want=[0,0]
+  ok   C2  LP.theta_positive_exponent_s1                        got=1  want=1
+  ok   C2  LP.wrap_exponent_nonneg_s1                           got=True  want=True
+  ok   C2  LP.wrap_monomial_s2                                  got=[0,0]  want=[0,0]
+  ok   C2  LP.theta_positive_exponent_s2                        got=1  want=1
+  ok   C2  LP.wrap_exponent_nonneg_s2                           got=True  want=True
+  ok   C2  LP.wrap_monomial_s3                                  got=[5,-2]  want=[5,-2]
+  ok   C2  LP.theta_positive_exponent_s3                        got=3  want=3
+  ok   C2  LP.wrap_exponent_nonneg_s3                           got=True  want=True
+  ok   C2  LP.wrap_monomial_s4                                  got=[5,-2]  want=[5,-2]
+  ok   C2  LP.theta_positive_exponent_s4                        got=3  want=3
+  ok   C2  LP.wrap_exponent_nonneg_s4                           got=True  want=True
+  ok   C2  LP.wrap_monomial_s5                                  got=[10,-4]  want=[10,-4]
+  ok   C2  LP.theta_positive_exponent_s5                        got=2  want=2
+  ok   C2  LP.wrap_exponent_nonneg_s5                           got=True  want=True
+  ok   C2  LP.wrap_monomial_s6                                  got=[10,-4]  want=[10,-4]
+  ok   C2  LP.theta_positive_exponent_s6                        got=2  want=2
+  ok   C2  LP.wrap_exponent_nonneg_s6                           got=True  want=True
+  stage X: eta=2 ord(eta)=2 theta=['1', '1', '2']
+      corr=[1, 0, 1]  naive=[2, 0, 1]  wrong-sign=[1, 0, 1]
+  ok   C2  X.corrected_mult_equals_c_exactly                    got=[2,0]  want=[2,0]
+  ok   C2  X.corr_ne_naive_coefficientwise                      got=True  want=True
+  ok   C2  X.wrongsign_invisible_ord_eta_2                      got=True  want=True   [eta^2=1 makes the sign flip a no-op on this frame]
+  stage F4Q: eta=w ord(eta)=3 theta=['1', '1', 'w']
+      corr=[w, 1, 1]  naive=[1, 1, 1]  wrong-sign=[w2, 1, 1]
+  ok   C2  F4Q.corrected_mult_equals_c_exactly                  got=[w,1]  want=[w,1]
+  ok   C2  F4Q.corr_ne_naive_coefficientwise                    got=True  want=True
+  ok   C2  F4Q.corr_ne_wrongsign_coefficientwise                got=True  want=True
+  stage F4MU3: eta=w ord(eta)=3 theta=['1', '1', 'w', 'w']
+      corr=[1, 1, 1, 1]  naive=[w2, w2, 1, 1]  wrong-sign=[w, w, 1, 1]
+  ok   C2  F4MU3.corrected_mult_equals_c_exactly                got=[1,1,1]  want=[1,1,1]
+  ok   C2  F4MU3.corr_ne_naive_coefficientwise                  got=True  want=True
+  ok   C2  F4MU3.corr_ne_wrongsign_coefficientwise              got=True  want=True
+  stage P5: eta=2 ord(eta)=4 theta=['1', '1', '2']
+      corr=[2, 3, 1]  naive=[1, 3, 1]  wrong-sign=[3, 3, 1]
+  ok   C2  P5.corrected_mult_equals_c_exactly                   got=[3,2]  want=[3,2]
+  ok   C2  P5.corr_ne_naive_coefficientwise                     got=True  want=True
+  ok   C2  P5.corr_ne_wrongsign_coefficientwise                 got=True  want=True
+  F4Q factor degrees: corr=[2] wrong-sign=[2] naive=[1, 1]
+  ok   C2  F4Q.wrongsign_same_factor_pattern                    got=[2]  want=[2]
+  ok   C2  F4Q.wrongsign_caught_only_by_exact_coeffs            got=True  want=True
+  ok   C2  F4Q.naive_splits_corr_irreducible                    got=[[1,1],[2]]  want=[[1,1],[2]]
+  ok   C2  F4Q.corrected_is_y2_y_omega                          got=[w,1,1]  want=[w,1,1]
+  ok   C2  F4Q.naive_is_y2_y_1                                  got=[1,1,1]  want=[1,1,1]
+  ok   C2  F4Q.wrongsign_is_y2_y_omega2                         got=[w2,1,1]  want=[w2,1,1]
+  ok   C2  F4Q.corrected_digits_1_w2                            got=[1,w2]  want=[1,w2]
+  ok   C2  F4Q.naive_digits_1_w                                 got=[1,w]  want=[1,w]
+  ok   C2  F4Q.wrongsign_digit_becomes_1                        got=1  want=1
+  F4-JOINT psi^(w), w=omega:  w^f psi(y/w) = [1, w, 1]
+  ok   C2  F4JOINT.psi_w_is_y2_omega_y_1                        got=[1,w,1]  want=[1,w,1]   [note §4.1 corrected value y^2 + omega y + 1]
+  ok   C2  F4JOINT.psi_w_preserves_factor_pattern               got=[2]  want=[2]
+
+==============================================================================
+CHECK 3 — JA origin (nu=0; nu>0 with z^nu != 1; ROOT-OF-UNITY nu>0 with z^nu = 1; support/degree translation)
+==============================================================================
+  nu0: z=2 ell=2 e=3 nu=0 z^nu=1 raw=2 eps=2 supp(P)=[0, 2, 4] supp(H)=[0, 2, 4]
+  ok   C3  nu0.b5.origin_identity                               got=2  want=2
+  ok   C3  nu0.b5.raw_equality_iff_znu_1                        got=True  want=True
+  ok   C3  nu0.b5.tDef_formula                                  got=-3  want=-3
+  ok   C3  nu0.b5.nu0_raw_equals_canonical                      got=2  want=2
+  ok   C3  nu0.b5.support_translation                           got=[0,2,4]  want=[0,2,4]
+  ok   C3  nu0.b5.degree_translation                            got=4  want=4
+  ok   C3  nu0.b1.origin_identity                               got=1  want=1
+  ok   C3  nu0.b1.raw_equality_iff_znu_1                        got=True  want=True
+  ok   C3  nu0.b1.tDef_formula                                  got=0  want=0
+  ok   C3  nu0.b1.nu0_raw_equals_canonical                      got=1  want=1
+  ok   C3  nu0.b1.support_translation                           got=[0,2,4]  want=[0,2,4]
+  ok   C3  nu0.b1.degree_translation                            got=4  want=4
+  ok   C3  nu0.b2.origin_identity                               got=3  want=3
+  ok   C3  nu0.b2.raw_equality_iff_znu_1                        got=True  want=True
+  ok   C3  nu0.b2.tDef_formula                                  got=-1  want=-1
+  ok   C3  nu0.b2.nu0_raw_equals_canonical                      got=3  want=3
+  ok   C3  nu0.b2.support_translation                           got=[0,2,4]  want=[0,2,4]
+  ok   C3  nu0.b2.degree_translation                            got=4  want=4
+  ok   C3  nu0.b3.origin_identity                               got=4  want=4
+  ok   C3  nu0.b3.raw_equality_iff_znu_1                        got=True  want=True
+  ok   C3  nu0.b3.tDef_formula                                  got=-2  want=-2
+  ok   C3  nu0.b3.nu0_raw_equals_canonical                      got=4  want=4
+  ok   C3  nu0.b3.support_translation                           got=[0,2,4]  want=[0,2,4]
+  ok   C3  nu0.b3.degree_translation                            got=4  want=4
+  ok   C3  nu0.b4.origin_identity                               got=4  want=4
+  ok   C3  nu0.b4.raw_equality_iff_znu_1                        got=True  want=True
+  ok   C3  nu0.b4.tDef_formula                                  got=-2  want=-2
+  ok   C3  nu0.b4.nu0_raw_equals_canonical                      got=4  want=4
+  ok   C3  nu0.b4.support_translation                           got=[0,2,4]  want=[0,2,4]
+  ok   C3  nu0.b4.degree_translation                            got=4  want=4
+  ok   C3  nu0.b7.origin_identity                               got=1  want=1
+  ok   C3  nu0.b7.raw_equality_iff_znu_1                        got=True  want=True
+  ok   C3  nu0.b7.tDef_formula                                  got=-4  want=-4
+  ok   C3  nu0.b7.nu0_raw_equals_canonical                      got=1  want=1
+  ok   C3  nu0.b7.support_translation                           got=[0,2,4]  want=[0,2,4]
+  ok   C3  nu0.b7.degree_translation                            got=4  want=4
+  ok   C3  nu0.b11.origin_identity                              got=2  want=2
+  ok   C3  nu0.b11.raw_equality_iff_znu_1                       got=True  want=True
+  ok   C3  nu0.b11.tDef_formula                                 got=-7  want=-7
+  ok   C3  nu0.b11.nu0_raw_equals_canonical                     got=2  want=2
+  ok   C3  nu0.b11.support_translation                          got=[0,2,4]  want=[0,2,4]
+  ok   C3  nu0.b11.degree_translation                           got=4  want=4
+  nu2_nonroot: z=2 ell=2 e=3 nu=2 z^nu=4 raw=3 eps=2 supp(P)=[0, 1, 4] supp(H)=[2, 3, 6]
+  ok   C3  nu2_nonroot.b5.origin_identity                       got=3  want=3
+  ok   C3  nu2_nonroot.b5.raw_equality_iff_znu_1                got=False  want=False
+  ok   C3  nu2_nonroot.b5.tDef_formula                          got=-1  want=-1
+  ok   C3  nu2_nonroot.b5.nonroot_fails_by_exactly_znu          got=4  want=4
+  ok   C3  nu2_nonroot.b5.nonroot_raw_ne_eps                    got=True  want=True
+  ok   C3  nu2_nonroot.b5.support_translation                   got=[2,3,6]  want=[2,3,6]
+  ok   C3  nu2_nonroot.b5.degree_translation                    got=6  want=6
+  ok   C3  nu2_nonroot.b1.origin_identity                       got=4  want=4
+  ok   C3  nu2_nonroot.b1.raw_equality_iff_znu_1                got=False  want=False
+  ok   C3  nu2_nonroot.b1.tDef_formula                          got=2  want=2
+  ok   C3  nu2_nonroot.b1.nonroot_fails_by_exactly_znu          got=4  want=4
+  ok   C3  nu2_nonroot.b1.nonroot_raw_ne_eps                    got=True  want=True
+  ok   C3  nu2_nonroot.b1.support_translation                   got=[2,3,6]  want=[2,3,6]
+  ok   C3  nu2_nonroot.b1.degree_translation                    got=6  want=6
+  ok   C3  nu2_nonroot.b2.origin_identity                       got=2  want=2
+  ok   C3  nu2_nonroot.b2.raw_equality_iff_znu_1                got=False  want=False
+  ok   C3  nu2_nonroot.b2.tDef_formula                          got=1  want=1
+  ok   C3  nu2_nonroot.b2.nonroot_fails_by_exactly_znu          got=4  want=4
+  ok   C3  nu2_nonroot.b2.nonroot_raw_ne_eps                    got=True  want=True
+  ok   C3  nu2_nonroot.b2.support_translation                   got=[2,3,6]  want=[2,3,6]
+  ok   C3  nu2_nonroot.b2.degree_translation                    got=6  want=6
+  ok   C3  nu2_nonroot.b3.origin_identity                       got=1  want=1
+  ok   C3  nu2_nonroot.b3.raw_equality_iff_znu_1                got=False  want=False
+  ok   C3  nu2_nonroot.b3.tDef_formula                          got=0  want=0
+  ok   C3  nu2_nonroot.b3.nonroot_fails_by_exactly_znu          got=4  want=4
+  ok   C3  nu2_nonroot.b3.nonroot_raw_ne_eps                    got=True  want=True
+  ok   C3  nu2_nonroot.b3.support_translation                   got=[2,3,6]  want=[2,3,6]
+  ok   C3  nu2_nonroot.b3.degree_translation                    got=6  want=6
+  ok   C3  nu2_nonroot.b4.origin_identity                       got=1  want=1
+  ok   C3  nu2_nonroot.b4.raw_equality_iff_znu_1                got=False  want=False
+  ok   C3  nu2_nonroot.b4.tDef_formula                          got=0  want=0
+  ok   C3  nu2_nonroot.b4.nonroot_fails_by_exactly_znu          got=4  want=4
+  ok   C3  nu2_nonroot.b4.nonroot_raw_ne_eps                    got=True  want=True
+  ok   C3  nu2_nonroot.b4.support_translation                   got=[2,3,6]  want=[2,3,6]
+  ok   C3  nu2_nonroot.b4.degree_translation                    got=6  want=6
+  ok   C3  nu2_nonroot.b7.origin_identity                       got=4  want=4
+  ok   C3  nu2_nonroot.b7.raw_equality_iff_znu_1                got=False  want=False
+  ok   C3  nu2_nonroot.b7.tDef_formula                          got=-2  want=-2
+  ok   C3  nu2_nonroot.b7.nonroot_fails_by_exactly_znu          got=4  want=4
+  ok   C3  nu2_nonroot.b7.nonroot_raw_ne_eps                    got=True  want=True
+  ok   C3  nu2_nonroot.b7.support_translation                   got=[2,3,6]  want=[2,3,6]
+  ok   C3  nu2_nonroot.b7.degree_translation                    got=6  want=6
+  ok   C3  nu2_nonroot.b11.origin_identity                      got=3  want=3
+  ok   C3  nu2_nonroot.b11.raw_equality_iff_znu_1               got=False  want=False
+  ok   C3  nu2_nonroot.b11.tDef_formula                         got=-5  want=-5
+  ok   C3  nu2_nonroot.b11.nonroot_fails_by_exactly_znu         got=4  want=4
+  ok   C3  nu2_nonroot.b11.nonroot_raw_ne_eps                   got=True  want=True
+  ok   C3  nu2_nonroot.b11.support_translation                  got=[2,3,6]  want=[2,3,6]
+  ok   C3  nu2_nonroot.b11.degree_translation                   got=6  want=6
+  nu2_root: z=4 ell=1 e=2 nu=2 z^nu=1 raw=1 eps=1 supp(P)=[0, 3] supp(H)=[2, 5]
+  ok   C3  nu2_root.b5.origin_identity                          got=1  want=1
+  ok   C3  nu2_root.b5.raw_equality_iff_znu_1                   got=True  want=True
+  ok   C3  nu2_root.b5.tDef_formula                             got=0  want=0
+  ok   C3  nu2_root.b5.rootofunity_nu_pos_raw_still_equal       got=1  want=1   [refutes 'iff nu=0']
+  ok   C3  nu2_root.b5.support_translation                      got=[2,5]  want=[2,5]
+  ok   C3  nu2_root.b5.degree_translation                       got=5  want=5
+  ok   C3  nu2_root.b1.origin_identity                          got=1  want=1
+  ok   C3  nu2_root.b1.raw_equality_iff_znu_1                   got=True  want=True
+  ok   C3  nu2_root.b1.tDef_formula                             got=2  want=2
+  ok   C3  nu2_root.b1.rootofunity_nu_pos_raw_still_equal       got=1  want=1   [refutes 'iff nu=0']
+  ok   C3  nu2_root.b1.support_translation                      got=[2,5]  want=[2,5]
+  ok   C3  nu2_root.b1.degree_translation                       got=5  want=5
+  ok   C3  nu2_root.b2.origin_identity                          got=4  want=4
+  ok   C3  nu2_root.b2.raw_equality_iff_znu_1                   got=True  want=True
+  ok   C3  nu2_root.b2.tDef_formula                             got=1  want=1
+  ok   C3  nu2_root.b2.rootofunity_nu_pos_raw_still_equal       got=4  want=4   [refutes 'iff nu=0']
+  ok   C3  nu2_root.b2.support_translation                      got=[2,5]  want=[2,5]
+  ok   C3  nu2_root.b2.degree_translation                       got=5  want=5
+  ok   C3  nu2_root.b3.origin_identity                          got=4  want=4
+  ok   C3  nu2_root.b3.raw_equality_iff_znu_1                   got=True  want=True
+  ok   C3  nu2_root.b3.tDef_formula                             got=1  want=1
+  ok   C3  nu2_root.b3.rootofunity_nu_pos_raw_still_equal       got=4  want=4   [refutes 'iff nu=0']
+  ok   C3  nu2_root.b3.support_translation                      got=[2,5]  want=[2,5]
+  ok   C3  nu2_root.b3.degree_translation                       got=5  want=5
+  ok   C3  nu2_root.b4.origin_identity                          got=1  want=1
+  ok   C3  nu2_root.b4.raw_equality_iff_znu_1                   got=True  want=True
+  ok   C3  nu2_root.b4.tDef_formula                             got=0  want=0
+  ok   C3  nu2_root.b4.rootofunity_nu_pos_raw_still_equal       got=1  want=1   [refutes 'iff nu=0']
+  ok   C3  nu2_root.b4.support_translation                      got=[2,5]  want=[2,5]
+  ok   C3  nu2_root.b4.degree_translation                       got=5  want=5
+  ok   C3  nu2_root.b7.origin_identity                          got=4  want=4
+  ok   C3  nu2_root.b7.raw_equality_iff_znu_1                   got=True  want=True
+  ok   C3  nu2_root.b7.tDef_formula                             got=-1  want=-1
+  ok   C3  nu2_root.b7.rootofunity_nu_pos_raw_still_equal       got=4  want=4   [refutes 'iff nu=0']
+  ok   C3  nu2_root.b7.support_translation                      got=[2,5]  want=[2,5]
+  ok   C3  nu2_root.b7.degree_translation                       got=5  want=5
+  ok   C3  nu2_root.b11.origin_identity                         got=4  want=4
+  ok   C3  nu2_root.b11.raw_equality_iff_znu_1                  got=True  want=True
+  ok   C3  nu2_root.b11.tDef_formula                            got=-3  want=-3
+  ok   C3  nu2_root.b11.rootofunity_nu_pos_raw_still_equal      got=4  want=4   [refutes 'iff nu=0']
+  ok   C3  nu2_root.b11.support_translation                     got=[2,5]  want=[2,5]
+  ok   C3  nu2_root.b11.degree_translation                      got=5  want=5
+  nu3_root: z=w ell=1 e=2 nu=3 z^nu=1 raw=w eps=w supp(P)=[0, 1, 3] supp(H)=[3, 4, 6]
+  ok   C3  nu3_root.b5.origin_identity                          got=w  want=w
+  ok   C3  nu3_root.b5.raw_equality_iff_znu_1                   got=True  want=True
+  ok   C3  nu3_root.b5.tDef_formula                             got=1  want=1
+  ok   C3  nu3_root.b5.rootofunity_nu_pos_raw_still_equal       got=w  want=w   [refutes 'iff nu=0']
+  ok   C3  nu3_root.b5.support_translation                      got=[3,4,6]  want=[3,4,6]
+  ok   C3  nu3_root.b5.degree_translation                       got=6  want=6
+  ok   C3  nu3_root.b1.origin_identity                          got=1  want=1
+  ok   C3  nu3_root.b1.raw_equality_iff_znu_1                   got=True  want=True
+  ok   C3  nu3_root.b1.tDef_formula                             got=3  want=3
+  ok   C3  nu3_root.b1.rootofunity_nu_pos_raw_still_equal       got=1  want=1   [refutes 'iff nu=0']
+  ok   C3  nu3_root.b1.support_translation                      got=[3,4,6]  want=[3,4,6]
+  ok   C3  nu3_root.b1.degree_translation                       got=6  want=6
+  ok   C3  nu3_root.b2.origin_identity                          got=w2  want=w2
+  ok   C3  nu3_root.b2.raw_equality_iff_znu_1                   got=True  want=True
+  ok   C3  nu3_root.b2.tDef_formula                             got=2  want=2
+  ok   C3  nu3_root.b2.rootofunity_nu_pos_raw_still_equal       got=w2  want=w2   [refutes 'iff nu=0']
+  ok   C3  nu3_root.b2.support_translation                      got=[3,4,6]  want=[3,4,6]
+  ok   C3  nu3_root.b2.degree_translation                       got=6  want=6
+  ok   C3  nu3_root.b3.origin_identity                          got=w2  want=w2
+  ok   C3  nu3_root.b3.raw_equality_iff_znu_1                   got=True  want=True
+  ok   C3  nu3_root.b3.tDef_formula                             got=2  want=2
+  ok   C3  nu3_root.b3.rootofunity_nu_pos_raw_still_equal       got=w2  want=w2   [refutes 'iff nu=0']
+  ok   C3  nu3_root.b3.support_translation                      got=[3,4,6]  want=[3,4,6]
+  ok   C3  nu3_root.b3.degree_translation                       got=6  want=6
+  ok   C3  nu3_root.b4.origin_identity                          got=w  want=w
+  ok   C3  nu3_root.b4.raw_equality_iff_znu_1                   got=True  want=True
+  ok   C3  nu3_root.b4.tDef_formula                             got=1  want=1
+  ok   C3  nu3_root.b4.rootofunity_nu_pos_raw_still_equal       got=w  want=w   [refutes 'iff nu=0']
+  ok   C3  nu3_root.b4.support_translation                      got=[3,4,6]  want=[3,4,6]
+  ok   C3  nu3_root.b4.degree_translation                       got=6  want=6
+  ok   C3  nu3_root.b7.origin_identity                          got=1  want=1
+  ok   C3  nu3_root.b7.raw_equality_iff_znu_1                   got=True  want=True
+  ok   C3  nu3_root.b7.tDef_formula                             got=0  want=0
+  ok   C3  nu3_root.b7.rootofunity_nu_pos_raw_still_equal       got=1  want=1   [refutes 'iff nu=0']
+  ok   C3  nu3_root.b7.support_translation                      got=[3,4,6]  want=[3,4,6]
+  ok   C3  nu3_root.b7.degree_translation                       got=6  want=6
+  ok   C3  nu3_root.b11.origin_identity                         got=w  want=w
+  ok   C3  nu3_root.b11.raw_equality_iff_znu_1                  got=True  want=True
+  ok   C3  nu3_root.b11.tDef_formula                            got=-2  want=-2
+  ok   C3  nu3_root.b11.rootofunity_nu_pos_raw_still_equal      got=w  want=w   [refutes 'iff nu=0']
+  ok   C3  nu3_root.b11.support_translation                     got=[3,4,6]  want=[3,4,6]
+  ok   C3  nu3_root.b11.degree_translation                      got=6  want=6
+  ok   C3  coverage.root_of_unity_nu_pos_case_present           got=True  want=True   [2 such frames]
+  ok   C3  tooth.origin_drop_nu_fires                           got=False  want=False   [dropping z^nu would identify them]
+  ok   C3  tooth.origin_iff_nu0_fires                           got=[True,False]  want=[True,False]   [raw equality holds although nu>0]
+
+==============================================================================
+CHECK 4 — HE6 coefficient normalization ((C5-normalizer-read), (C5-varpi-read), the -q(k) sign)
+==============================================================================
+  C5 case A: k=5 i(k)=1 terms=[(1, 2, '1'), (3, 1, 'w')]
+      bare res(a_j) = [(1, '0'), (3, '0')] -> gamma_bare=0;  normalized gamma_k=w
+  ok   C4  A.all_bare_residues_zero                             got=True  want=True
+  ok   C4  A.normalized_residues_nonzero                        got=True  want=True
+  ok   C4  A.bare_read_is_wrong                                 got=True  want=True
+  ok   C4  A.gamma_value                                        got=w  want=w
+  ok   C4  A.C5_normalizer_read                                 got=w  want=w
+  C5 case B: k=5 i(k)=1 terms=[(1, 2, 'w'), (3, 2, 'w2')]
+      bare res(a_j) = [(1, '0'), (3, '0')] -> gamma_bare=0;  normalized gamma_k=w
+  ok   C4  B.C5_normalizer_read                                 got=w  want=w
+  ok   C4  varpi.exponents_k1                                   got=[0,0]  want=[0,0]
+  ok   C4  varpi.monomial_is_power_of_grid_k1                   got=[True,True]  want=[True,True]
+  ok   C4  varpi.residue_from_exponents_k1                      got=1  want=1
+  ok   C4  varpi.exponents_k2                                   got=[-2,1]  want=[-2,1]
+  ok   C4  varpi.monomial_is_power_of_grid_k2                   got=[True,True]  want=[True,True]
+  ok   C4  varpi.residue_from_exponents_k2                      got=w2  want=w2
+  ok   C4  varpi.sign_tooth_k2                                  got=True  want=True
+  ok   C4  varpi.exponents_k3                                   got=[-2,1]  want=[-2,1]
+  ok   C4  varpi.monomial_is_power_of_grid_k3                   got=[True,True]  want=[True,True]
+  ok   C4  varpi.residue_from_exponents_k3                      got=w2  want=w2
+  ok   C4  varpi.sign_tooth_k3                                  got=True  want=True
+  ok   C4  varpi.exponents_k4                                   got=[-4,2]  want=[-4,2]
+  ok   C4  varpi.monomial_is_power_of_grid_k4                   got=[True,True]  want=[True,True]
+  ok   C4  varpi.residue_from_exponents_k4                      got=w  want=w
+  ok   C4  varpi.sign_tooth_k4                                  got=True  want=True
+  ok   C4  varpi.exponents_k5                                   got=[-4,2]  want=[-4,2]
+  ok   C4  varpi.monomial_is_power_of_grid_k5                   got=[True,True]  want=[True,True]
+  ok   C4  varpi.residue_from_exponents_k5                      got=w  want=w
+  ok   C4  varpi.sign_tooth_k5                                  got=True  want=True
+  ok   C4  varpi.exponents_k6                                   got=[-6,3]  want=[-6,3]
+  ok   C4  varpi.monomial_is_power_of_grid_k6                   got=[True,True]  want=[True,True]
+  ok   C4  varpi.residue_from_exponents_k6                      got=1  want=1
+  ok   C4  varpi.exponents_k7                                   got=[-6,3]  want=[-6,3]
+  ok   C4  varpi.monomial_is_power_of_grid_k7                   got=[True,True]  want=[True,True]
+  ok   C4  varpi.residue_from_exponents_k7                      got=1  want=1
+  ok   C4  varpi.exponents_k8                                   got=[-8,4]  want=[-8,4]
+  ok   C4  varpi.monomial_is_power_of_grid_k8                   got=[True,True]  want=[True,True]
+  ok   C4  varpi.residue_from_exponents_k8                      got=w2  want=w2
+  ok   C4  varpi.sign_tooth_k8                                  got=True  want=True
+  ok   C4  varpi.exponents_k9                                   got=[-8,4]  want=[-8,4]
+  ok   C4  varpi.monomial_is_power_of_grid_k9                   got=[True,True]  want=[True,True]
+  ok   C4  varpi.residue_from_exponents_k9                      got=w2  want=w2
+  ok   C4  varpi.sign_tooth_k9                                  got=True  want=True
+  ok   C4  varpi.exponents_k10                                  got=[-10,5]  want=[-10,5]
+  ok   C4  varpi.monomial_is_power_of_grid_k10                  got=[True,True]  want=[True,True]
+  ok   C4  varpi.residue_from_exponents_k10                     got=w  want=w
+  ok   C4  varpi.sign_tooth_k10                                 got=True  want=True
+  ok   C4  varpi.exponents_k11                                  got=[-10,5]  want=[-10,5]
+  ok   C4  varpi.monomial_is_power_of_grid_k11                  got=[True,True]  want=[True,True]
+  ok   C4  varpi.residue_from_exponents_k11                     got=w  want=w
+  ok   C4  varpi.sign_tooth_k11                                 got=True  want=True
+  ok   C4  varpi.exponents_k12                                  got=[-12,6]  want=[-12,6]
+  ok   C4  varpi.monomial_is_power_of_grid_k12                  got=[True,True]  want=[True,True]
+  ok   C4  varpi.residue_from_exponents_k12                     got=1  want=1
+  ok   C4  A.q_of_k_is_2                                        got=2  want=2   [q(5) = (1*5 - 1)/2 = 2]
+  ok   C4  A.eta_to_minus_q                                     got=w  want=w
+  ok   C4  A.varpi_read_composite                               got=w2  want=w2   [gamma_5 * eta^-2 = w * w = w2]
+  ok   C4  A.varpi_read_wrong_sign_value                        got=1  want=1   [gamma_5 * eta^+2 = w * w2 = 1 -- differs]
+  ok   C4  A.varpi_read_sign_matters                            got=True  want=True
+  ok   C4  C5_carry_identity_0_13                               got=[]  want=[]
+
+==============================================================================
+CHECK 5 — Full orientation tooth (Theta := vartheta) — ALL THREE entries of the canonical mu=3 vector
+==============================================================================
+  vartheta_(0..3) = ['1', '1', 'w', 'w']   (note: (1,1,w,w))
+  coherent digits (Gamma_2,Gamma_1,Gamma_0) = ['1', 'w', 'w']   (note: (1,w,w))
+  ok   C5  vartheta_vector                                      got=[1,1,w,w]  want=[1,1,w,w]
+  ok   C5  coherent_digits                                      got=[1,w,w]  want=[1,w,w]
+  B-units (u(b2),u(b1),u(b0))  correct = ['w', 'w', 'w2']   (note: (w,w,w2))
+  B-units (u(b2),u(b1),u(b0))  Theta=vartheta = ['w', '1', 'w']
+  canonical vector (t=2,1,0)   correct = ['w', 'w2', '1']   (note: (w,w2,1))
+  canonical vector (t=2,1,0)   Theta=vartheta = ['w', 'w', 'w2']
+  ok   C5  Bunits_all_three_correct                             got=[w,w,w2]  want=[w,w,w2]
+  ok   C5  canonical_vector_all_three_correct                   got=[w,w2,1]  want=[w,w2,1]
+  ok   C5  canonical_polynomial                                 got=[1, w2, w, 1]  want=[1, w2, w, 1]
+  ok   C5  canonical_is_y_plus_omega_cubed                      got=[1,w2,w,1]  want=[1,w2,w,1]
+  ok   C5  canonical_equals_w3_psi_y_over_w                     got=[1,w2,w,1]  want=[1,w2,w,1]
+  ok   C5  tooth.slot_t2_scored                                 got=True  want=True
+  ok   C5  tooth.slot_t2_control_survives                       got=False  want=False   [vartheta_1 = 1]
+  ok   C5  tooth.slot_t1_scored                                 got=True  want=True
+  ok   C5  tooth.slot_t1_breaks                                 got=True  want=True
+  ok   C5  tooth.slot_t0_scored                                 got=True  want=True
+  ok   C5  tooth.slot_t0_breaks                                 got=True  want=True
+  ok   C5  tooth.all_three_slots_scored                         got=3  want=3
+  ok   C5  tooth.fires_on_full_vector                           got=True  want=True
+
+==============================================================================
+CHECK 6 — Weld scope lint (R4-3 effective form: self-excluding, quotation-excluding, negation-excluding)
+==============================================================================
+    match one_transport_map @L1182: EXCLUDED(spec)  | 6. **Weld scope lint.** Fail the document check if T1 contains “one transport map,” “unique gauge,” or an unqu
+    match unique_gauge @L1182: EXCLUDED(spec)  | 6. **Weld scope lint.** Fail the document check if T1 contains “one transport map,” “unique gauge,” or an unqu
+  unexcluded literal-pattern hits: 0; M-field compatibility hits: 0
+  ok   C6  lint.no_live_one_transport_map                       got=[]  want=[]
+  ok   C6  lint.no_live_unique_gauge                            got=[]  want=[]
+  ok   C6  lint.no_affirmative_M_field_compatibility            got=[]  want=[]
+  ok   C6  tooth.weld_single_map_fires                          got=[one_transport_map,unique_gauge]  want=[one_transport_map,unique_gauge]
+  ok   C6  tooth.weld_affirmative_compatibility_fires           got=True  want=True
+  ok   C6  tooth.negated_and_quoted_forms_stay_nonmatches       got=[]  want=[]
+  effective M3 row (L3636): | \(M3\) | The cocycle/telescope (C2) and canonical twist in (C3), only on the scored stratum. At depth \(i\ge3\), the \(K_i^\times\)-valued telescope
+  effective M4 row (L1999): | \(M4\) | The exact-height formulas (C5)–(C6), at W2-C3’s accepted fence; polygon clearance only under \(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\). |
+  ok   C6  lint.M3_effective_row_is_M3                          got=True  want=True
+  ok   C6  lint.M3_scored_stratum_fence                         got=True  want=True
+  ok   C6  lint.M4_effective_row_is_M4                          got=True  want=True
+  ok   C6  lint.M4_W2C3_accepted_fence                          got=True  want=True
+  ok   C6  lint.M4_base_row_also_fenced                         got=True  want=True
+  other M3/M4 mentions at lines: [744, 1182, 1232, 1249, 2376, 3627, 3629, 3631, 3638, 3642, 3757]
+  ok   C6  lint.M3_M4_uses_enumerated                           got=True  want=True
+  ok   C6  lint.no_cross_face_fence_present                     got=True  want=True
+  ok   C6  lint.gauge_uniqueness_withdrawn                      got=True  want=True
+
+==============================================================================
+CHECK 7 — General coefficient-space bound (deg k_t < deg Phi_i); mock high-degree higher-value perturbation
+==============================================================================
+  ok   C7  P3_WRAP.M3.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_WRAP.M4.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_WRAP.M5.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_WRAP.M6.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_WRAP.M7.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_WRAP.M8.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_WRAP.M9.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_WRAP.M10.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P3_WRAP.M11.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P3_WRAP.M12.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P3_WRAP.M13.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P3_WRAP.M14.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P3_ETA1.M3.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_ETA1.M4.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_ETA1.M5.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_ETA1.M6.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_ETA1.M7.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_ETA1.M8.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_ETA1.M9.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P3_ETA1.M10.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P3_ETA1.M11.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P3_ETA1.M12.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P3_ETA1.M13.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P3_ETA1.M14.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P5.M7.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  P5.M8.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  P5.M9.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  P5.M10.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  P5.M11.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  P5.M12.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  P5.M13.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  P5.M14.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  P5.M15.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  P5.M16.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  P5.M17.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  P5.M18.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  P5_ROOT.M3.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P5_ROOT.M4.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P5_ROOT.M5.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P5_ROOT.M6.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P5_ROOT.M7.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P5_ROOT.M8.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P5_ROOT.M9.deg_lt_degPhi1                            got=True  want=True
+  ok   C7  P5_ROOT.M10.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P5_ROOT.M11.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P5_ROOT.M12.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P5_ROOT.M13.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  P5_ROOT.M14.deg_lt_degPhi1                           got=True  want=True
+  ok   C7  F4.M5.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M5.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M5.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M6.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M6.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M6.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M7.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M7.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M7.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M8.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M8.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M8.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M9.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M9.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M9.deg_lt_degPhi1                                 got=True  want=True
+  ok   C7  F4.M10.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M10.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M10.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M11.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M11.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M11.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M12.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M12.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M12.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M13.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M13.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M13.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M14.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M14.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M14.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M15.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M15.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M15.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M16.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M16.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  F4.M16.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  LP.M11.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  LP.M12.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  LP.M13.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  LP.M14.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  LP.M15.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  LP.M16.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  LP.M17.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  LP.M18.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  LP.M19.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  LP.M20.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  LP.M21.deg_lt_degPhi1                                got=True  want=True
+  ok   C7  LP.M22.deg_lt_degPhi1                                got=True  want=True
+  valid-lift degree rows: 96
+  valid lift  M=7: [(1, 3), (3, 2)]  heights=[7, 7]
+  perturbation term: x^6 pi^3, height=12 > M=7
+  ok   C7  mock.perturbation_strictly_higher_value              got=True  want=True
+  ok   C7  mock.perturbation_integral                           got=True  want=True
+  ok   C7  mock.passes_height_check                             got=7  want=7
+  ok   C7  mock.passes_residue_check                            got=w2  want=w2
+  ok   C7  mock.rejected_by_coefficient_space                   got=False  want=False   [deg=6 >= D'=4]
+  ok   C7  mock.valid_accepted_by_coefficient_space             got=True  want=True
+  ok   C7  mock.rejection_is_degree_only                        got=[True,True,False]  want=[True,True,False]
+  ok   C7  lower_terms_strictly_below_leading                   got=[]  want=[]
+  ok   C7  boundary_e1_t_f_minus_1_strict                       got=[]  want=[]   [d_i=3, deg k=2, e=1, t=f-1]
+  ok   C7  common_height.u3.f2.t0                               got=6  want=6
+  ok   C7  common_height.u3.f2.t1                               got=6  want=6
+  ok   C7  common_height.u3.f3.t0                               got=9  want=9
+  ok   C7  common_height.u3.f3.t1                               got=9  want=9
+  ok   C7  common_height.u3.f3.t2                               got=9  want=9
+  ok   C7  common_height.u3.f4.t0                               got=12  want=12
+  ok   C7  common_height.u3.f4.t1                               got=12  want=12
+  ok   C7  common_height.u3.f4.t2                               got=12  want=12
+  ok   C7  common_height.u3.f4.t3                               got=12  want=12
+  ok   C7  common_height.u5.f2.t0                               got=10  want=10
+  ok   C7  common_height.u5.f2.t1                               got=10  want=10
+  ok   C7  common_height.u5.f3.t0                               got=15  want=15
+  ok   C7  common_height.u5.f3.t1                               got=15  want=15
+  ok   C7  common_height.u5.f3.t2                               got=15  want=15
+  ok   C7  common_height.u5.f4.t0                               got=20  want=20
+  ok   C7  common_height.u5.f4.t1                               got=20  want=20
+  ok   C7  common_height.u5.f4.t2                               got=20  want=20
+  ok   C7  common_height.u5.f4.t3                               got=20  want=20
+  ok   C7  common_height.u7.f2.t0                               got=14  want=14
+  ok   C7  common_height.u7.f2.t1                               got=14  want=14
+  ok   C7  common_height.u7.f3.t0                               got=21  want=21
+  ok   C7  common_height.u7.f3.t1                               got=21  want=21
+  ok   C7  common_height.u7.f3.t2                               got=21  want=21
+  ok   C7  common_height.u7.f4.t0                               got=28  want=28
+  ok   C7  common_height.u7.f4.t1                               got=28  want=28
+  ok   C7  common_height.u7.f4.t2                               got=28  want=28
+  ok   C7  common_height.u7.f4.t3                               got=28  want=28
+  ok   C7  common_height.u21.f2.t0                              got=42  want=42
+  ok   C7  common_height.u21.f2.t1                              got=42  want=42
+  ok   C7  common_height.u21.f3.t0                              got=63  want=63
+  ok   C7  common_height.u21.f3.t1                              got=63  want=63
+  ok   C7  common_height.u21.f3.t2                              got=63  want=63
+  ok   C7  common_height.u21.f4.t0                              got=84  want=84
+  ok   C7  common_height.u21.f4.t1                              got=84  want=84
+  ok   C7  common_height.u21.f4.t2                              got=84  want=84
+  ok   C7  common_height.u21.f4.t3                              got=84  want=84
+
+==============================================================================
+CHECK 8 — Ladder nonvanishing — mock read vanishing on every positive grade
+==============================================================================
+  graded model: K_i = F4, kappa_i = 21/4, N = (21/4, w)
+    -- true (scalar) read --
+      R_true: ladder_multiplicativity      PASS
+      R_true: graded_scalar_covariance     PASS
+      R_true: grade_zero_rule              PASS
+      R_true: zero_read                    PASS
+      R_true: ladder_nonvanishing          PASS
+      R_true: read_codomain                PASS
+    -- mock read: zero on every positive grade --
+      R_zero: ladder_multiplicativity      PASS
+      R_zero: graded_scalar_covariance     PASS
+      R_zero: grade_zero_rule              PASS
+      R_zero: zero_read                    PASS
+      R_zero: ladder_nonvanishing          FAIL
+      R_zero: read_codomain                PASS
+  ok   C8  mock_zero.satisfies_ladder_multiplicativity          got=True  want=True
+  ok   C8  mock_zero.satisfies_graded_scalar_covariance         got=True  want=True
+  ok   C8  mock_zero.satisfies_grade_zero_rule                  got=True  want=True
+  ok   C8  mock_zero.satisfies_zero_read                        got=True  want=True
+  ok   C8  mock_zero.satisfies_read_codomain                    got=True  want=True
+  ok   C8  mock_zero.violates_ladder_nonvanishing               got=False  want=False
+  ok   C8  mock_zero.rejected_PRECISELY_by_nonvanishing         got=[ladder_nonvanishing]  want=[ladder_nonvanishing]
+  ok   C8  true_read.satisfies_everything                       got=[]  want=[]
+  ok   C8  mock_zero.w_i_is_zero                                got=True  want=True
+  ok   C8  mock_zero.y_over_w_undefined                         got=False  want=False
+  ok   C8  mock_zero.transport_destroys_degree                  got=[0,0,0]  want=[0,0,0]
+  ok   C8  true_read.w_i_is_unit                                got=True  want=True
+  ok   C8  true_read.transport_preserves_factor_pattern         got=[2]  want=[2]
+
+==============================================================================
+CHECK 9 — Read codomain — initial-form mock read into gr(mu_i)
+==============================================================================
+  graded model: K_i = F4, kappa_i = 21/4, N = (21/4, w)
+    -- mock read: g |-> in(g) in gr(mu_i) --
+      R_in: ladder_multiplicativity      PASS
+      R_in: graded_scalar_covariance     PASS
+      R_in: grade_zero_rule              PASS
+      R_in: zero_read                    PASS
+      R_in: ladder_nonvanishing          PASS
+      R_in: read_codomain                FAIL
+  ok   C9  mock_in.satisfies_ladder_multiplicativity            got=True  want=True
+  ok   C9  mock_in.satisfies_graded_scalar_covariance           got=True  want=True
+  ok   C9  mock_in.satisfies_grade_zero_rule                    got=True  want=True
+  ok   C9  mock_in.satisfies_zero_read                          got=True  want=True
+  ok   C9  mock_in.satisfies_ladder_nonvanishing                got=True  want=True
+  ok   C9  mock_in.PASSES_check8_nonvanishing                   got=True  want=True   [base ladder read is nonzero]
+  ok   C9  mock_in.violates_read_codomain                       got=False  want=False
+  ok   C9  mock_in.rejected_PRECISELY_by_codomain               got=[read_codomain]  want=[read_codomain]
+  ok   C9  mock_in.w_i_has_positive_grade                       got=True  want=True   [grade 21/4]
+  ok   C9  mock_in.w_i_not_a_K_scalar                           got=True  want=True
+  ok   C9  mock_in.y_over_w_not_typeable_in_K_y                 got=False  want=False
+  ok   C9  mock_in.psi_w_not_typeable                           got=False  want=False
+  ok   C9  mock_in.w_pow_degP_not_a_scalar                      got=True  want=True
+  ok   C9  true_read.output_is_K_scalar                         got=True  want=True
+  text leg — sites of y/w_i, psi_(i+1)^{(w_i)}, w_i^{\deg P}:
+      L420: \psi_{i+1}^{(w_i)}(y)
+      L422: w_i^{f_{i+1}}\psi_{i+1}(y/w_i).
+      L431: P(y)\longmapsto w_i^{\deg P}P(y/w_i)
+      L923: w_i^f\psi(y/w_i).
+      L3086: > w_i^f\psi(y/w_i).
+      L3377: > y\longmapsto y/w_i
+      L3380: > \(w_i^{\deg P}\) is multiplication by a nonzero scalar. Consequently
+      L3383: > w_i^{\deg P}P(y/w_i)
+      L3399: > \psi_{i+1}^{(w_i)}(y)
+      L3401: > w_i^{f_{i+1}}\psi_{i+1}(y/w_i),
+      L3446: >    \(y/w_i\) or unit-substitution factor transport is accepted without that clause.
+      L3657: **Finding F-1 (GAP).** The canonical residual read \(R_{i+1,\beta}\) has no declared codomain anywhere in the carrier, and r8 infers \(w_i\in K_i^\tim
+      L3715: > Without (C3-read-codomain), \(y/w_i\) is not defined in \(K_i[y]\); without (C3-ladder-nonvanishing), division by \(w_i\) fails. Neither the automor
+      L3745: > 9. **Read codomain.** Instantiate the initial-form mock read \(g\mapsto\operatorname{in}(g)\in\operatorname{gr}(\mu_i)\). Confirm that it passes che
+      L3839: > | Declared the read codomain ((C3-read-codomain)) and threaded it through the \(w_i\) unit inference, the \(y/w_i\) automorphism, \(\psi_{i+1}^{(w_i
+      L4180: **Finding B-1 (minor).** "Ledger item 4 still asserts the factor-pattern conclusion unconditionally, after r8/r11 made it two-clause-conditional and r
+      L4188: > This preserves factor patterns, not literal coefficients. Both the displayed identity and its factor-pattern conclusion are asserted only at sites c
+  ok   C9  text.sites_found                                     got=True  want=True   [17 sites]
+  ok   C9  text.C3_read_codomain_declared                       got=True  want=True
+  ok   C9  text.unit_gate_is_two_clause                         got=True  want=True
+  ok   C9  text.y_over_w_guarded_by_codomain                    got=True  want=True
+  ok   C9  text.codomain_named_before_psi_w                     got=True  want=True
+  ok   C9  text.ledger_item_22_two_clause                       got=True  want=True
+  ok   C9  text.r8_one_clause_gate_superseded                   got=True  want=True
+  ok   C9  text.C7_M2_row_names_codomain                        got=True  want=True
+
+==============================================================================
+CHECK 10 — Grade-data value group (GENTOW2 S2 witness) + dv-site scoring against the four consumed classes
+==============================================================================
+  GENTOW2 S2 tower @ i=2: u_3=21, e_3=2, e(mu_2)=4, e(mu_3)=8; nu(Phi_2)=21/8
+  ok   C10 witness.e3_does_not_divide_u3                        got=True  want=True   [21 mod 2 = 1]
+  ok   C10 witness.dv2_Phi2_equals_u3_over_e3                   got=21/2  want=21/2
+  ok   C10 witness.dv2_Phi2_nonintegral                         got=True  want=True   [dv_2(Phi_2) = 21/2]
+  ok   C10 witness.dv2_Phi2_pow_e3_integral                     got=[True,21]  want=[True,21]
+  ok   C10 witness.u3_equals_emu3_times_nu                      got=21  want=21
+  ok   C10 witness.codomain_group                               got=1/2  want=1/2   [dv_2 takes values in (1/2)Z, not Z]
+  ok   C10 witness.equality_iff_no_further_ramification         got=1  want=1
+  PARI: Phi'=x^2-2, Phi_2=Phi'^2-4x, Phi_3=Phi_2^2-16Phi'; deg Phi_3=8, Q_2-factors=1
+        v_2(Res(Phi_3,Phi_2))=21  -> nu(Phi_2)=21/8
+  ok   C10 pari.Phi3_irreducible_over_Q2                        got=1  want=1
+  ok   C10 pari.nu_Phi2_is_21_over_8                            got=21/8  want=21/8
+  ok   C10 pari.u3_equals_21                                    got=21  want=21
+  ok   C10 pari.nu_Phip_is_5_over_4                             got=5/4  want=5/4   [u_2 = e(mu_2)*nu(Phi') = 5]
+  ok   C10 pari.emu3_is_denominator_of_nu_Phi2                  got=8  want=8
+  ok   C10 source.GENTOW2_S2_nu_Phi2                            got=True  want=True
+  ok   C10 source.GENTOW2_S2_kappa3                             got=True  want=True
+  ok   C10 source.GENTOW2_S2_e3_is_2                            got=True  want=True
+  dv occurrences: 117 (82 with an argument)
+  class tally:
+      CLASS(i) typed stage / lift height 26
+      CLASS(i)+(ii) composed-key product (rider R5 additivity) 1
+      CLASS(ii) stage-key power e_{i+1}*k 16
+      CLASS(iii) value-zero / zero convention 11
+      CLASS(iv) level-one grid           14
+      EXCLUDED: check-10 own spec (rider R5) 6
+      EXCLUDED: value-group declaration display (rider R5) 2
+      MENTION (no argument)              35
+      NONCONSUMED: inside explicit non-implication (rider R5) 1
+      SPEC-PROSE(reading-B only)         5
+  sites NOT covered by a class under the STRICT (enumeration-only) reading A:
+      L4196  dv2(\Phi_2) = =21/2\)." Under exactly r12's term
+      L4196  dv2(\Phi_2) = =e(\mu_2)\cdot\nu(\Phi_2)=4\cdot\t
+      L4196  dvi(\Phi_i) = \) and found none — every occurren
+      L4196  dvi(\Phi_i) = \) consumer, so no consumer of the
+      L4255  dv2(\Phi_2) = =\tfrac{21}{2}\) instance and a ne
+  sites NOT covered under the CONSUMPTION-scoped reading B (the rider's stated principle):
+      (none)
+  ok   C10 sites.reading_B_all_classified                       got=[]  want=[]
+  ok   C10 fail_cond.no_scored_site_consumes_nonintegral_dv     got=[]  want=[]
+  ok   C10 fail_cond.no_scored_site_applies_dv_to_Phi_k_with_e_nmid_k got=[]  want=[]
+  AMBG C10 sites.reading_A_all_classified                       got=[L4196,L4196,L4196,L4196,L4255]  want=[]   [alternate reading; not scored into the verdict]
+
+  *** AMBIGUITY (check 10 scoring scope) ***
+  Rider 5 excludes 'this numbered check's own instruction text and
+  the value-group declaration's own witness displays and prose IN
+  THE Grade data (definitions) paragraph', then states the general
+  principle 'A site is scored only where the note CONSUMES the
+  value'.
+  READING A (exclusion list exhaustive, restricted to the Grade-data
+    paragraph): 5 sites fall outside every class and outside every
+    named exclusion -> check 10 FAILS. The sites are R13-8's own
+    Finding C-1 prose (L4196, four occurrences: the quoted
+    dv_2(Phi_2)=21/2 falsification and the quoted grep for a bare
+    dv_i(Phi_i)) and the §6 CHANGES record row (L4255, the
+    'dv_2(Phi_2)=21/2 instance' phrase).
+  READING B (consumption-scoped, the rider's own governing
+    sentence): none of those five sites CONSUMES a dv value -- each
+    exhibits or records it as the diagnosis that motivated the
+    declaration -> check 10 PASSES.
+  Reading B is scored as primary because the rider states the
+  consumption criterion as a general principle (the non-implication
+  is given as one example, after a colon), and because check 10's
+  own first fail clause is itself consumption-scoped ('fail on any
+  site that CONSUMES a dv_i-value outside Z').
+  RESIDUE FOR THE GATE: the rider's exclusion list does not name
+  R13-8's finding prose or the §6 record row, so a literal scorer
+  fails them; a one-clause widening would remove the ambiguity.
+
+  ok   C10 additivity.composed_key_product_passes               got=True  want=True
+  ok   C10 classes.note_enumerates_(i) T                        got=True  want=True
+  ok   C10 classes.note_enumerates_(ii)                         got=True  want=True
+  ok   C10 classes.note_enumerates_(iii)                        got=True  want=True
+  ok   C10 classes.note_enumerates_(iv)                         got=True  want=True
+  ok   C10 rider.self_exclusion_present                         got=True  want=True
+
+==============================================================================
+CHECK T — The four mandatory planted teeth (each must FIRE)
+==============================================================================
+  ok   CT  tooth.gauge_naive.fires                              got=True  want=True
+  ok   CT  tooth.wrong_sign.fires                               got=True  want=True
+  ok   CT  tooth.misindexed_telescope.fires                     got=True  want=True
+  ok   CT  tooth.inverse_orientation.fires                      got=True  want=True
+
+==============================================================================
+PER-CHECK TABLE
+==============================================================================
+#   what it verifies                                            rows  fail  verdict
+------------------------------------------------------------------------------
+1   GENHN-LIFT boundary: integrality/degree/height/residue, f    307     0  PASS
+2   positive wrap sign; corrected vs naive vs wrong-sign, EXA    149     0  PASS
+3   JA origin: nu=0, z^nu!=1, ROOT-OF-UNITY nu>0, support/deg    178     0  PASS
+4   HE6 normalization: normalizer-read, varpi-read, the -q(k)     56     0  PASS
+5   orientation tooth on ALL THREE canonical mu=3 slots + B-u     15     0  PASS
+6   weld scope lint (R4-3 self-excluding) + M3/M4 fences          14     0  PASS
+7   coefficient space deg k_t < deg Phi_i; mock perturbation     141     0  PASS
+8   ladder nonvanishing: zero-on-positive-grades mock read re     13     0  PASS
+9   read codomain: initial-form mock read rejected (passes ch     22     0  PASS
+10  grade-data value group: GENTOW2 S2 witness + dv-site scor     24     0  PASS
+T   the four planted teeth each fire                               4     0  PASS
+------------------------------------------------------------------------------
+TOTAL SCORED ROWS: 923   FAILING: 0
+
+AMBIGUITY ROWS (alternate reading, reported, not in verdicts):
+  C10  sites.reading_A_all_classified  got=[L4196,L4196,L4196,L4196,L4255] want=[]  -> DIVERGES
+
+BATTERY: 10/10 PASS
