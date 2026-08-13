@@ -4307,3 +4307,32 @@ fold launched (bijective reindexing by the fixed unit twist).
 (4) **codex sandbox FIXED**: bwrap installed user-level
 (~/.local/bin; userns enabled, no root needed); codex reads files
 again; memory updated. Codex ~46%.
+
+**2026-08-13 DATED APPEND #40 — n=3 CHECK LANDED (BRACKETS AT
+GENERAL O); THE DRAINAGE BLOCKER NAMED.** UNIFORMITY-CHECK-N3
+(leancheck, leanfinal untouched): decidedness certificates + census
+counts + machine-checked brackets for ALL FIVE cubic types at
+general O — gate_bracket3_hmenu3_two/three verify HMENU3's exact
+values inside every bracket at q=2,3 (tightest: inert at q=3,
+lower 8/27 ≈ 0.29630 vs exact 36/121 ≈ 0.29752). General-O lower
+bounds: 1/q⁹ (split), (q−1)/(2q) (lin·inert), (q³−q)/3q³ (inert),
+(q−1)²/q⁴ (lin·ram), (q−1)/q⁴ (ram); uppers via the general-n
+sum_genuineDensity_le_one. Subtraction-free characteristic-uniform
+census identities (3·#irredCubics + q = q³ etc.). Python 54/54
+family rows exact at p=2,3,5; an independent Ore/recentring decider
+converges to all five HMENU3 values from below (undecided ↓ 0.26%
+at p=2,N=8). Adversarial Codex pass: certificates/counts/brackets
+all clean, 1 prose gap amended. 0 sorries, 19/19 Lean-core, build
+green, 8 commits. **RECONNAISSANCE (the §7 deliverable): a single
+n=3 class_pinned analogue is FALSE** — the undecided locus splits
+into triple-tangency classes (Taylor pinning generalizes, saves
+q^{2N/3}) PLUS "linear × n=2-undecided-quadratic" classes; branch
+(ii) is gated on a **Hensel coprime-FACTORISATION lemma absent from
+mathlib v4.31 and leanfinal** (only the root form exists) — the one
+reusable object between here and n=3 drainage/exact values, and
+core infrastructure for the general theorem. Flagged unresolved:
+the decider's undecided count ≠ HEX3's U₃^conv (11,264 vs 11,328
+at p=2,N=7 — consistent with HEX3.B's U^σ ≤ U^conv; different sets;
+note §6d). Asvin's n=2-then-n=3 definition-check directive is now
+DISCHARGED at: n=2 exact (general O), n=3 bracketed (general O,
+exact behind the named blocker).
