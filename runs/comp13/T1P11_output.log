@@ -1,0 +1,829 @@
+================================================================================
+T1 HOSTILE PASS — pass 1 of 2 on revision r12 (Opus/Claude arm)
+TARGET: lean/notes/openmath/T1_GAUGE_COCYCLE_2026-08-12.md
+DATE:   2026-08-13
+ROLE:   hostile verifier, fresh context. QUOTE AND CLASSIFY, FIX NOTHING.
+READ-ONLY on the corpus; only this report is written.
+================================================================================
+
+ROUTE (four surfaces, deliberately disjoint from prior passes):
+  (a) STRICT-ASSEMBLY COHERENCE of the effective text across r1-r12
+  (b) THE HONESTY LEDGER against the effective text (post r10-r12)
+  (c) r10-r12 NEW MATHEMATICS re-derived from scratch
+  (d) SPOT-CHECK of 3 A-row consumption sites vs pinned source displays (byte-level)
+
+SECTIONS (appended as completed):
+  S0. Inventory of the r-rounds and their declared spans
+  S1. Surface (a) — strict-assembly coherence
+  S2. Surface (b) — honesty ledger
+  S3. Surface (c) — independent re-derivations
+  S4. Surface (d) — A-row byte-level spot checks
+  S5. Findings table + verdict
+
+================================================================================
+
+================================================================================
+S0. INVENTORY OF THE r-ROUNDS AND THEIR DECLARED SPANS
+================================================================================
+
+Target: 3951 lines. Base text = lines 1-1262 (§§1-7). Repair rounds appended:
+
+  r1  L1266-1370   R1-1..R1-3            (3 items)
+  r2  L1374-2004   R2-1..R2-5, "Pin-enabling C5 corollary",
+                   "# Replacement §3", A2..A7 blocks, "# Consequential scope edits"
+  r3  L2008-2166   R3-1..R3-4
+  r4  L2170-2393   R4-1..R4-3 + record edits
+  r5  L2397-2715   R5-1..R5-3 + record edit
+  r6  L2719-2979   R6-1, R6-2 + record edits
+  r7  L2983-3202   R7-1, R7-2 + record edit
+  r8  L3206-3457   R8-1, R8-2 + scope/verification edits
+  r9  L3461-3616   R9-1..R9-6 + record edits
+  r10 L3619-3643   R10-1
+  r11 L3647-3840   R11-1..R11-5 + record edits
+  r12 L3843-3951   R12-1..R12-5 + record edits
+
+Ledger arithmetic (checked): base items 1-14; r1 replaces 8; r2 replaces 1,5,10;
+r3 replaces 12; r4 appends 15; r5 replaces 2; r6 appends 16,17; r7 replaces 2;
+r8 replaces 2, appends 18,19; r9 appends 20,21; r11 supersedes 17, appends 22;
+r12 supersedes 2 and 19.  Effective ledger = 22 items, no gaps, no collisions.
+
+§4.2 check numbering: base 1-6 (6 replaced by R4-3); r8 appends 7,8; r11
+appends 9.  Effective = 9 checks, no collisions.
+
+(C7) table supersession chain (checked): M0 = base; M1 = r2; M2 = base -> r2 ->
+r8 addendum -> r10 -> r11; M3 = base -> r10; M4 = r2.  Each supersession names
+its predecessor.  CLEAN.
+
+Front matter: R9-6's directive form was superseded by R11-3, which applied its
+replacement IN PLACE.  File line 6 matches R11-3's text byte-for-byte.  CLEAN.
+
+================================================================================
+S1. SURFACE (a) — STRICT-ASSEMBLY COHERENCE.  6 defects (3 GAP, 3 minor)
+================================================================================
+
+Method.  For every "replace"/"insert" directive in r1-r12 I located the quoted
+FROM-text in the round it claims to modify, fixed the span end, assembled, and
+applied two tests: (i) DUPLICATION — does the replacement text re-supply
+material that lies OUTSIDE the declared span? (ii) ORPHAN — does the assembly
+leave a sentence, display, or table row without its governing context, or a
+stale assertion that the replacement was written to retire?
+
+The note's own span conventions, established by its own directives, fix the
+narrow reading and are used throughout below:
+  * A tag name denotes the BOXED DISPLAY ONLY.  Precedent: R2-3, "Replace
+    (C6-residue) by: \[boxed display\]" — (C6-residue) there is exactly the box,
+    not its lead-in sentence.
+  * When a directive means to take a display with a sentence, it QUOTES the
+    display.  Precedent: R7-1, R5-1b, R1-2b all quote the display inside the
+    from-text.
+  * When a directive means to take an adjacent non-quoted item it NAMES it.
+    Precedent: R2-4, "(C6-clearance) AND ITS FOLLOWING COLLECTION SENTENCE".
+  * r12 itself (R12-4) ruled that a span must be declared through its actual
+    end, and that a replacement re-supplying text past its declared end is a
+    defect to be repaired by re-declaring the span.
+
+--------------------------------------------------------------------------------
+A-1  [GAP]  r2's "Replacement §3" never retires the base §3 TABLE.  The stale
+            A2-A7 rows survive alongside the r2 prose blocks and still label the
+            absorptions "Verbatim" — including the B-law row that four later
+            rounds fenced.
+--------------------------------------------------------------------------------
+
+r2's only directive over §3 is (L1646):
+
+    Replace the introductory paragraphs of §3 with:
+
+followed by the new intro blockquote and then the A2-A7 prose blocks.  NO
+directive in r1-r12 removes, supersedes, or rewrites the base §3 TABLE
+(L1050-1068).  I grepped every r-section for a §3/table/absorption-map
+directive; the complete list is R1-3 (replaces ONE table row), R2's intro
+replacement, R6-1 (edits the A3 BLOCK), R9-5 (inserts after the intro
+blockquote), and the supporting-context-paragraph edits (R5-1e, R7-1d, R8-2).
+
+Two independent later directives PROVE the table survives, so it cannot be
+argued away as a wholesale §3 replacement:
+
+  (i) R2-4 (L1583): "The second A1 absorption row must consequently end: ..."
+      — there is no A1 prose block anywhere; the only "second A1 absorption row"
+      is base table row L1053.
+  (ii) R5-1e / R7-1d / R8-2 all edit "the supporting-context paragraph following
+      the absorption map" (base L1077), which lies AFTER the table.
+
+Therefore the effective §3 = new intro + pin convention + THE FULL BASE TABLE +
+the A2-A7 prose blocks.  Consequences, quoted verbatim from the effective text:
+
+  Surviving base row (L1067):
+
+    | A7 GENTOW2 | S5.2 B-law | C3 | **Verbatim** after the explicit inverse
+    orientation \(\Theta=\vartheta^{-1}\), at sites where ladder
+    multiplicativity is discharged. |
+
+  Effective A7 prose block (L1981), same section:
+
+    Thus the B-law is no longer labeled "absorbed verbatim."
+
+  A direct self-contradiction inside §3.  The surviving row also states the
+  discharge condition as "ladder multiplicativity" alone — the pre-r5 form,
+  retired by R5-1 (slot-grade + graded scalar covariance), R7-1 (zero-read),
+  R8-2 (ladder-nonvanishing) and R11-1 (read-codomain).
+
+  Surviving base rows (L1054-1055):
+
+    | A2 HETOW | Wrap/carry preamble | C2, C5 | **Verbatim**: the wrap identity
+    and \(q(a+b)=q(a)+q(b)+\operatorname{wrap}(a,b)\). |
+    | A2 HETOW | Telescope and corrected key | C2, C3 | **Verbatim** after
+    \(s=f_2-t\); T1 makes the positive \(\eta^{W(t)}\) sign explicit. |
+
+  vs. the effective A2 block, whose consumption check is
+  "(H-HETOW-LOCAL) + T1 (C5-monomial-ratio) + (C5-carry) => the three pinned
+  HETOW displays" and which closes "the bridge from level 2, the function m,
+  the canonical range 0<=s(a)<e_2, the resulting binary second-level carry
+  ..., and the identification of tau remain explicitly imported HETOW facts."
+  The surviving rows claim VERBATIM absorption of exactly the displays the
+  block says need an imported supplier.
+
+  Also surviving and non-conforming: the four A5 rows, the two A4 rows, the two
+  A6 rows (including "| A6 GENTOW6 | 6.3 scalar read | C5, C6 | **Materially
+  adapted** ... |", whose provenance R9-1 re-attributed to HE6 F-1 in the BLOCK
+  only), and the two A3 rows.
+
+Further, r2's own new intro makes the survivors non-conforming on their face:
+
+    Each row must have the form
+    \[ \text{specified T1 clause} \Longrightarrow \text{quoted pinned subclaim}. \]
+
+  None of the surviving base rows has that form.
+
+Classification GAP, not minor: the effective text asserts verbatim absorptions
+(A2 wrap/telescope, A7 B-law) whose justification the same section explicitly
+denies, and the A7 survivor is the exact over-claim that r5/r7/r8/r9/r11 spent
+five rounds retiring.
+
+--------------------------------------------------------------------------------
+A-2  [GAP]  R2-2's span has no declared end; strict assembly double-renders the
+            (C4-support) box and leaves the UNFENCED summary sentence standing,
+            contradicting effective honesty-ledger item 5.
+--------------------------------------------------------------------------------
+
+Directive (L1440-1442):
+
+    In (C4), replace the paragraph beginning
+
+    > If \(H(y)\) is the harness residual and \(P(y)\) the normalized print
+    > residual, the corresponding support statement is …
+
+The base (C4) tail is FOUR blocks, not one paragraph:
+
+    L493  If \(H(y)\) is the harness residual ... the corresponding support
+          statement is
+    L495-501  \[ H(y)=y^\nu Q(y), \qquad P(y)=aQ(by), \qquad a,b\in K^\times. \]
+    L503  Thus, for nonzero residuals,
+    L505-514  \[ \boxed{ \operatorname{Supp}_y(H) = \nu+\operatorname{Supp}_y(P),
+          \qquad \deg H=\deg P+\nu. } \tag{C4-support} \]
+    L516  Attained abscissas and normalized support widths agree. Ordinary
+          exponent supports and ordinary degrees agree only after translating
+          the harness origin by \(\nu\).
+
+The declared span reaches at most through the L495-501 display (grammatically
+bound to "the support statement is").  L503-L516 are outside it.  R2-2's
+replacement text re-supplies BOTH: the (C4-support) box (L1469-1477 of the r2
+section, tag verified: `\tag{C4-support}` occurs at file lines 513 and 1476 —
+TWO occurrences) and a rewritten closing sentence.
+
+Effective (C4) therefore reads (assembled):
+
+    ... Hence \[ \boxed{...} \tag{C4-support} \]  Thus attained abscissas and
+    normalized support widths agree AT SITES CARRYING THE SUPPLIER COMPARISON.
+    Neither the polynomial identities nor their support consequences follow
+    from (C4-origin) alone.
+    Thus, for nonzero residuals,
+    \[ \boxed{...} \tag{C4-support} \]
+    Attained abscissas and normalized support widths agree. Ordinary exponent
+    supports and ordinary degrees agree only after translating the harness
+    origin by \(\nu\).
+
+The second rendering carries NO supplier fence.  This contradicts the effective
+honesty-ledger item 5 (r2 form), quoted:
+
+    5. ... The support and degree formulas require
+    \(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\).
+
+and it defeats the entire purpose of R2-2.  Same defect family as R12-4, worse
+consequence: a duplicated TAGGED display plus a surviving unconditional claim.
+
+--------------------------------------------------------------------------------
+A-3  [GAP]  R2-4's span starts at the (C6-clearance) BOX, orphaning its lead-in
+            sentence — which asserts the clearance unfenced, contradicting the
+            replacement text placed immediately after it and ledger item 10.
+--------------------------------------------------------------------------------
+
+Directive (L1550): "Replace (C6-clearance) and its following collection sentence
+with: ...".  By the note's own tag convention (R2-3 precedent), "(C6-clearance)"
+is the box at L717-722 and "its following collection sentence" is L724.  The
+lead-in at L709-715 is NOT in the span:
+
+    L709  If the tower additionally has
+    L711-713  \[ u_2>e_2D'h, \]
+    L715  every monomial in this lift, after multiplication by a monomial of
+          \(\Phi'^{e_2t}\), clears the outer side by at least
+
+Assembled, the effective (C6) reads:
+
+    ... every monomial in this lift, after multiplication by a monomial of
+    \(\Phi'^{e_2t}\), clears the outer side by at least
+    The exact-lift theorem above contains no definition of \(\Phi'\), its
+    monomial valuations, or the outer polygon side. Consequently it proves no
+    clearance estimate by itself.
+
+A sentence truncated at "by at least" (its object deleted), immediately followed
+by a flat denial of the assertion it just made.  Effective honesty-ledger item
+10 (r2 form) says:
+
+    10. ... In particular, outer-side clearance is available only through the
+    named supplier input \(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\).
+
+The surviving orphan asserts it as a T1 consequence.  GAP.
+
+--------------------------------------------------------------------------------
+A-4  [minor]  R4-2 mis-quotes the base paragraph boundary; strict assembly
+              renders "At level 1, conclusion (C6) supplies this ... when
+              m>D'h" TWICE.  Exact R12-4 sibling.
+--------------------------------------------------------------------------------
+
+Base L77 is ONE paragraph, two sentences:
+
+    Zero is lifted as zero. At level \(1\), conclusion (C6) supplies this lift
+    uniformly when \(m>D'h\).
+
+R4-2's from-text (L2317-2326) quotes it as a standalone paragraph ending at the
+first sentence:
+
+    > Zero is lifted as zero.
+
+so the span ends there and the second sentence survives.  R4-2's replacement
+text ends (L2362):
+
+    > Thus the residue identity remains valid at \(d=0\), but no finite
+    > exact-height assertion is made for the zero lift. At level \(1\),
+    > conclusion (C6) supplies this contract uniformly when \(m>D'h\).
+
+Effective §1.1 therefore carries the sentence twice, once as "...supplies this
+contract..." and once as "...supplies this lift...".  Grep confirms two live
+occurrences of "conclusion (C6) supplies this" (file lines 77 and 2362) with
+only one of them inside a declared span.  Minor (no false claim; verbatim
+duplication), and exactly the defect R12-4 repaired for R6-2 — a sibling r12
+did not hunt.
+
+--------------------------------------------------------------------------------
+A-5  [minor]  R3-1's insertion point splits the general-stage-data sentence,
+              orphaning "and \[\psi_{i+1}(y)=...\]".  Exact R5-3 sibling,
+              unrepaired.
+--------------------------------------------------------------------------------
+
+Base §1.1 L51-65 is one sentence spanning two displays:
+
+    At a general level \(i\), fix exact-height normalizers ... stage data
+    \[ e_{i+1},\qquad f_{i+1},\qquad u_{i+1}, \]
+    and
+    \[ \psi_{i+1}(y) = y^{f_{i+1}}-\sum_{t<f_{i+1}}c_ty^t \in K_i[y],\ c_0\ne0. \]
+
+(with the opening rewritten by R1-2 to "... Fix also stage data").  R3-1 (L2018)
+directs:
+
+    In §1.1, immediately after the general-level stage data
+    \[ e_{i+1},\qquad f_{i+1},\qquad u_{i+1}, \]
+    insert:
+
+i.e. between the two displays.  R4-1 and R8-1 then stack two further paragraphs
+at the same point.  Assembled, the connective "and" and the \(\psi_{i+1}\)
+display are stranded after three inserted blockquotes, exactly the defect R5-3
+repaired for R1-1's "and chosen basis \(1,\eta,\ldots,\eta^{f_1-1}\)":
+
+    R5-3 — Reattach the level-one basis sentence.  In the integrated
+    application of R1-1, replace the detached text
+    > and chosen basis \(1,\eta,\ldots,\eta^{f_1-1}\).
+
+R5-3 repaired only the R1-1 instance; the R3-1 instance (created two rounds
+earlier) is still detached.  Minor.
+
+--------------------------------------------------------------------------------
+A-6  [minor]  R8-2's A7 "residual-obligation sentence" replacement leaves the
+              pinned B-law display \(u(\beta_t)=\Theta(t)w^{f_3-t}\) with no
+              lead-in (or, on the wide reading, deletes it and strands the
+              phrase "the supplier identity itself").
+--------------------------------------------------------------------------------
+
+The r2 A7 text is a sentence ending in a colon plus its display (L1965-1971):
+
+    The residual obligation is the accepted GENTOW2-B\(''\) per-grade-unit
+    theorem discharging ... :
+    \[ u(\beta_t) = \Theta(t)w^{f_3-t}. \]
+
+R8-2 (L3388) directs "In the A7 **B-law classification**, replace the
+residual-obligation SENTENCE with:" and supplies a replacement ending
+"...and invoke unit-substitution invariance." — it does not re-supply the
+display.  Both branches are defective:
+
+  narrow (sentence only): the display is orphaned, now sitting between
+    "...invoke unit-substitution invariance." and "T1 may then perform the
+    slotwise cancellation", introduced by nothing;
+  wide (colon-bound display travels): the pinned B-law identity disappears from
+    the A7 row, and the surviving clause "but it does not prove the supplier
+    identity itself" loses its displayed referent.
+
+Minor (content recoverable either way).
+
+--------------------------------------------------------------------------------
+NOTED, NOT COUNTED (span ambiguities whose worst branch is benign)
+--------------------------------------------------------------------------------
+ * R2-5 "Replace the opening of (C4) by:" — no declared end.  Worst branch
+   duplicates the \(s_{\min}/t_{\min}/\varepsilon\) definition display verbatim.
+   No false claim either way.
+ * R7-1c "the following paragraph beginning > At the corrected key, the inverse
+   telescope factors cancel slotwise" — the display
+   \(y^f-\sum c_tw_i^{f-t}y^t=w_i^f\psi(y/w_i)\) is grammatically bound to
+   "and summing gives", so it travels with the sentence.  Clean under the
+   binding convention.
+ * R4-1 and R8-1 both anchor "immediately after (C3-corrected-lift)"; their
+   mutual order is undetermined.  Order-immaterial (independent content), and
+   R9-2 pins itself after the R8-1 insertion explicitly.
+ * R7-2 "the opening proof through the proof of (C6-residue)" — either branch
+   leaves a coherent §2.6.  Clean.
+
+================================================================================
+S2. SURFACE (b) — THE HONESTY LEDGER AGAINST THE EFFECTIVE TEXT.  1 minor
+================================================================================
+
+Effective ledger (22 items) reconstructed and each item checked against the
+clause it prices.  Coverage of the five named supplier hypotheses:
+
+  (H-JA-CONJ)_i        -> item 1  (r2 form)      consistent with (C1)/§2.1
+  (H-JA-RES-CONJ)      -> item 5  (r2 form)      consistent with (C4) AS WRITTEN
+                                                 in R2-2, but see finding A-2
+  (H-GENHN-CLEAR)      -> item 10 (r2 form)      see finding A-3
+  (H-VARTHETA-RES)_i   -> item 21 (r9)           consistent with (C2)/(C3)/(C7)
+  (H-HETOW-LOCAL)      -> not ledger-priced      NOT a defect: it is the only
+     named hypothesis that lives entirely inside an A-row consumption check and
+     never inside a C-clause; the A2 block prices it inline ("These identities
+     are HETOW structure, not consequences of T1"), and item 17 carries its one
+     clause that a C-clause touches (the s-range / binary carry).  The ledger's
+     de-facto rule — price what gates a C-clause — is respected.
+
+Two-clause w_i gate after r10-r12: items 2, 19, 22 all now say
+(C3-read-codomain) places w_i in K_i and (C3-ladder-nonvanishing) makes it
+nonzero, and the effective carrier text agrees ((C3-ladder-unit) as replaced by
+R11-1; §2.3 as replaced by R11-1; A7 B-law classification as amended by R11-1).
+I found no surviving one-clause inference anywhere: the carrier's original
+"w_i ... \in K_i^\times" definition (base L115-123) was replaced by R8-2, and
+the (C7) M1 row that offered "the carrier unit w_i" was replaced by r2.
+
+Weld-scope lint (§4.2 check 6, R4-3 form) run independently on the effective
+text: zero matches for \bone\s+transport\s+map\b and \bunique\s+gauge\b outside
+the lint specification itself (the only file hits, L1182, are inside the
+RETIRED base check 6, which R4-3 replaced).  PASSES.
+
+Counter/status coherence: front matter (R11-3, dateless, applied in place) ->
+governing r-section (r12 header) -> §7 gate.  All three agree: counter RESET,
+two consecutive clean passes owed, battery inherited-only.  §4.2 now carries
+nine checks of which 7, 8 (r8) and 9 (r11) have never been run, and the r12
+header says exactly that.  CLEAN.
+
+--------------------------------------------------------------------------------
+B-1  [minor]  Ledger item 4 still asserts the factor-pattern conclusion
+              unconditionally, after r8/r11 made it two-clause-conditional and
+              r12 repaired precisely this defect in items 2 and 19.
+--------------------------------------------------------------------------------
+
+Effective item 4 (base form, never amended):
+
+    4. The canonical residual is
+       \[ \psi^{(w)}=w^f\psi(y/w). \]
+       This preserves factor patterns, not literal coefficients.
+
+But the effective §2.3 (R8-2 as amended by R11-1) says:
+
+    Without (C3-read-codomain), \(y/w_i\) is not defined in \(K_i[y]\); without
+    (C3-ladder-nonvanishing), division by \(w_i\) fails. Neither the
+    automorphism nor the unit-substitution argument is asserted without both.
+
+and R9-4 established that factor-degree/multiplicity preservation is NOT in the
+pinned GENTOW2-B span but is "T1's factor-pattern conclusion (§2.3), asserted
+only at sites where the accepted GENTOW2-B'/B'' supplier discharges
+(C3-ladder-nonvanishing)".  Item 2 (r12 form) carries the fence; item 4 does
+not, and item 4 is the ledger's own statement of the conclusion.
+
+This is the same defect R12-3 (m-2) repaired in items 2 and 19 — r12 audited
+those two items for the one-clause gate and did not audit item 4, which states
+the gated conclusion outright.  Minor (item 2 fences the same claim two items
+earlier; no consumer reads item 4 alone).
+
+================================================================================
+S3. SURFACE (c) — INDEPENDENT RE-DERIVATION OF THE r10-r12 MATHEMATICS
+================================================================================
+
+--------------------------------------------------------------------------------
+C.1  R12-1's GENTOW2 witness computation — RE-DERIVED FROM THE SOURCE, CORRECT
+--------------------------------------------------------------------------------
+
+I did not take R12-1's numbers on trust; I pulled the S2 dictionary out of the
+accepted `GENTOW2_PROOF_2026-08-09.md` and recomputed.  Source rows (L67-84 of
+that file, genre (2,1,4)->(2,1,2), 3rd stage), quoted:
+
+    µ₀ −(φ₁,λ₁)→ µ₁ −(φ₂,λ₂)→ µ₂ −(φ₃,λ₃)→ µ₃ = ν,   r = 3
+    | base key x, slope h/e₁ | φ₁ = x, λ₁ = h/e₁ | λ₁ = 1/2 (e₁ = 2, h = 1) |
+    | level-1 key Φ′ | φ₂ | Φ′ = x² − 2 |
+    | composed key Φ₂ | φ₃ | Φ₂ = Φ′² − 4x |
+    | repo e₃, f₃ | ... ν(Φ₂) = 21/8, denom 8 = e(µ₃) over e(µ₂) = 4 gives
+      e₃ = 2 | 2, 1 |
+    | u₂ = dv₂(Φ′) | e(µ₂)(w₂ + λ₂), w₂ = µ₁(φ₂) | 5 |
+    | v(Φ′(ξ)) = u₂/(e₁e₂) | µ(φ₂) = w₂ + λ₂ (Cor 6.4) | 5/4 |
+    | κ₃ (repo Φ₂-side slope) | e(µ₂)(w₃ + λ₃), w₃ = µ₂(φ₃) | 21/2 |
+    | dv₁, dv₂ ladders | e(µ₁)·v, e(µ₂)·v | 2v, 4v |
+
+Independent derivation:
+  e(µ₁) = e₁ = 2, e(µ₂) = 4, e(µ₃) = 8   (cumulative; e₃ = e(µ₃)/e(µ₂) = 2)
+  κ₃ = e(µ₂)·ν(Φ₂) = 4·(21/8) = 21/2       matches the source row
+  u₃ = e₃·κ₃ = 2·(21/2) = 21               (same shape as u₂ = e₂κ₂ = 2·(5/2) = 5,
+                                            which reproduces the source's u₂ = 5)
+  TERMINAL reading, v = ν = µ₃:
+      dv₂(Φ₂^{e₃}) = e(µ₂)·e₃·ν(Φ₂) = 4·2·(21/8) = 84/8 = 21 = u₃   ✓
+  = (C1-stage-key-height) at i = 2.  R12-1's display is EXACT.
+
+  µ₂ reading, falsification leg, recomputed independently:
+      µ₂(Φ′) = w₂+λ₂ = 5/4  (augmentation value), so µ₂(Φ′²) = 5/2.
+      p = 2 (source: f₁ = 1, q = 2), v(2) = 1, v(x) = λ₁ = 1/2, so
+      µ₁(−4x) = v(4) + v(x) = 2 + 1/2 = 5/2.
+      Both Φ′-expansion terms of Φ₂ = Φ′² − 4x sit at 5/2, and Φ₂ is the next
+      key, so µ₂(Φ₂) = w₃ = 5/2.
+      Consistency: λ₃ = ν(Φ₂) − w₃ = 21/8 − 5/2 = 1/8 > 0, and
+      e₃ = denom(e(µ₂)λ₃) = denom(4·1/8) = denom(1/2) = 2, matching the source
+      row e₃ = 2 (and matching the same-shaped e₂ = denom(e(µ₁)λ₂) =
+      denom(2·1/4) = 2 with λ₂ = 1/4 from the source's shear check
+      "κ₂ = 5/2 ↔ λ₂ = 1/4").
+      dv₂(Φ₂^{e₃})|_{v=µ₂} = 4·2·(5/2) = 20 < 21 = u₃.   ✓ FALSIFIED.
+
+  VERDICT: R12-1's witness computation, both legs, is correct, and the source
+  rows it cites exist verbatim at the declared locations.  The parenthetical
+  "equivalently \(\mu_{i+1}\) on the consumed elements" also checks: T1's
+  \(\Phi_i\) is FGMN's \(\varphi_{i+1}\) (S2 dictionary: Φ′ = φ₂, Φ₂ = φ₃), so
+  \(\mu_{i+1}\) is the augmentation AT \(\Phi_i\) and every later augmentation
+  fixes values on polynomials of degree < deg \(\Phi_{i+1}\); hence
+  \(\nu = \mu_{i+1}\) on \(\Phi_i\) and on everything of lower degree.  And the
+  "level-i-free" clause checks against the source's own Prop 1.9 usage
+  ("Φ₂-free ⟹ ν = µ₂", GENTOW2 L349/L765/L879).
+
+--------------------------------------------------------------------------------
+C.2  Consistency of the terminal binding with EVERY grade-data consumer
+--------------------------------------------------------------------------------
+
+I enumerated every consumer of \(dv_i\), of a height, or of a grade in the
+effective text and asked whether the terminal reading changes its value.
+
+  1. dv₁(x) = h, dv₁(π) = e₁ (§1.1).  v(x) = h/e₁, v(π) = 1; on the witness
+     v(x) = 1/2 = λ₁ and v(2) = 1 (base-normalized).  Reading-independent
+     (deg x = 1 < deg Φ₁).                                          CONSISTENT
+  2. n̂₁(k) = x^{i(k)}π^{a(k)}, i(k) < e₁ ≤ D′ = deg Φ₁.             CONSISTENT
+  3. General n̂_i(m): bounded-exponent tower normal form is a monomial in
+     x, π, Φ₁,…,Φ_{i−1} with the Φ_j-adic digit bounds, hence of degree
+     < deg Φ_i, hence LEVEL-i-FREE.  Witness check at i = 2:
+     n̂₂ = x^iπ^aΦ′^b with i < e₁ = 2, b < e₂ = 2, max degree 1 + 2 = 3 <
+     4 = deg Φ₂; and dv₂(Φ′) = 4·(5/4) = 5 = u₂, reproducing the source's own
+     "u₂ = dv₂(Φ′)" row.  So EVERY normalizer height is reading-independent.
+                                                                    CONSISTENT
+  4. lift_i(d;m): (C3-lift-coefficient-space) forces deg < deg Φ_i, so the
+     lift contract dv_i(lift) = m is reading-independent.  This is the load-
+     bearing one: r12's binding cannot silently move a lift height. CONSISTENT
+  5. (C1-stage-uniformizer) dv_i(π_{i+1}) = 1: a typed assumption, not a
+     computed value; at level 1 it is discharged by ℓ₁h + ℓ′₁e₁ = 1 on a
+     level-1-free monomial.  Value-group check at i = 2: dv₂ = 4ν takes values
+     in (1/2)ℤ (ν in (1/8)ℤ), so 1 is attainable.                   CONSISTENT
+  6. (C1-stage-key-height): the sole consumer that DISTINGUISHES the readings,
+     and the one R12-1 pins.                                        CONSISTENT
+  7. (C3-common-height) dv_i(k̂_tΦ_i^{e_{i+1}t}) = (s+t)u_{i+1}: only
+     e_{i+1}-multiples of Φ_i occur, so integral and terminal-correct.
+                                                                    CONSISTENT
+  8. (C5)/(C6) dv₁ on polynomials of degree < D′.                   CONSISTENT
+  9. Grades: κ̄_i = u_{i+1}/e(µ_i); at i = 2, 21/4 ∈ (1/4)ℤ = Λ₂ with
+     e(µ₂) = 4.  β_t = (f_{i+1}−t)κ̄_i matches the source verbatim
+     (GENTOW2 L710: "grades β_t := u₃(f₃−t)/e(µ₂) ∈ Γ₂"), and the height-to-
+     grade conversion β̂ = e(µ_i)β matches L520 ("u(β) := R_{3,β}(n̂₂(β̂))").
+                                                                    CONSISTENT
+
+  NET: the binding is minimally invasive.  Exactly one class of element —
+  powers of the stage key Φ_i itself — separates the two readings, and exactly
+  one clause consumes it.  Nothing else in the effective text moves.
+
+--------------------------------------------------------------------------------
+C-1  [minor]  The r11/r12 grade-data clause "the values of \(dv_i\) ... are
+              integers" is FALSIFIED by r12's own witness: dv₂(Φ₂) = 21/2.
+--------------------------------------------------------------------------------
+
+Effective §1.1 grade-data paragraph (R11-5 as amended by R12-1, R12-2):
+
+    Heights at level \(i\) — the arguments \(m\) of \(\widehat n_i(m)\) and the
+    values of \(dv_i\) — are integers in the normalization
+    \(dv_i=e(\mu_i)\cdot v\), where \(v\) is the base-normalized TERMINAL
+    valuation of the tower …
+
+Under exactly that binding, on exactly the witness R12-1 displays two
+paragraphs later:
+
+    dv₂(Φ₂) = e(µ₂)·ν(Φ₂) = 4·(21/8) = 21/2  ∉ ℤ.
+
+(Equivalently: u₃ = 21 is odd and e₃ = 2, so dv₂(Φ_2) = u₃/e₃ = 21/2 whenever
+e_{i+1} does not divide u_{i+1}.)  Before r12 the clause was vacuous-ish because
+\(v\) was unbound; binding \(v\) terminally is what makes it checkable, and
+checkable it fails.
+
+Not load-bearing: I grepped the effective text for a bare \(dv_i(\Phi_i)\) and
+found none — every occurrence is \(dv_i(\Phi_i^{e_{i+1}})\) or
+\(dv_i(\Phi_i^{e_{i+1}t})\), both integral, and the exact-height arguments \(m\)
+of \(\widehat n_i(m)\) are integers by item C.2.3 above.  So the clause is an
+over-broad appositive, not a used-false-lemma.  Minor.
+
+--------------------------------------------------------------------------------
+C.3  Completeness of the r10 (H-VARTHETA-RES)_i propagation — VERIFIED CLEAN
+--------------------------------------------------------------------------------
+
+C7 rows, checked against their EFFECTIVE texts (not the base table):
+  M0 (base):  "Common tower and canonical division-chain anchor; no new
+              identity is proved here."                     consumes no ϑ  ✓
+  M1 (r2):    "The unconditional value-zero ratio and level-two letter formula
+              in (C1); arbitrary-depth letter monomiality only under
+              (H-JA-CONJ)_i."   — ρ_i, not ϑ_{i,s}          consumes no ϑ  ✓
+              (note: r2's replacement also DROPPED the base row's offer of
+              "the carrier unit w_i", so M1 does not consume the graded-read
+              bundle either — r11's "M0, M1, M4 unchanged" is right.)
+  M2 (r11):   full graded-read bundle + (C3-lift-coefficient-space) +
+              (H-VARTHETA-RES)_i at depth ≥3                              ✓
+  M3 (r10):   scored stratum + (H-VARTHETA-RES)_i at depth ≥3             ✓
+  M4 (r2):    "(C5)–(C6) at W2-C3's accepted fence; polygon clearance only
+              under (H-GENHN-CLEAR)" — (C5)/(C6) are level-1 only          ✓
+
+Non-C7 ϑ/Θ consumers at depth i ≥ 3, each traced:
+  (C2-vartheta) box            fenced by the r9 paragraph immediately after it
+  (C2-recursion)               asserts no membership; r9 §2.2 rider covers
+  (C3-dictionary)              an identity among residues of value-zero
+                               quotients; it holds in whatever residue field
+                               they inhabit and asserts no K_i-membership.
+                               No fence needed — and none is claimed.
+  (C3-corrected-lift)/(C3-key) fenced by the r9 (C3) insertion
+  R4-1's common-height step    fenced (r9's fourth directive)
+  (C3-Theta)/(C3-B-law)/
+  (C3-canonical-read)          Θ_i(t) ∈ K_i is DERIVED, not assumed, at any
+                               site carrying the bundle: w_i^s =
+                               R(M_s)·ϑ_{i,s} with w_i ∈ K_i^× and
+                               R(M_s) ∈ K_i by (C3-read-codomain) forces
+                               ϑ_{i,s} = w_i^s/R(M_s) ∈ K_i^×.
+  (C3-three-reads) coherent-
+  digit row (c_tϑ_{i,f−t})_t   downstream of the corrected key, which the r9
+                               (C3) insertion refuses to assert at depth ≥3
+                               without the hypothesis ("No corrected composed
+                               key is asserted at depth i≥3 without that
+                               hypothesis")
+  supporting-context para
+  (r8 form)                    lists the bundle, not (H-VARTHETA-RES)_i — but
+                               by the derivation above the bundle IMPLIES it,
+                               so the omission is not a hole.
+  A2/A3/A4/A5/A6/A7 rows       all at level 1 or 2; no depth-≥3 consumption.
+
+  I found NO unfenced depth-≥3 consumer.  r10's propagation is complete, and
+  r11's "M3 is defensible as it stands" is correct.
+
+  OBSERVATION (not a finding): the derivation in the (C3-B-law) row above means
+  (H-VARTHETA-RES)_i is a CONSEQUENCE of the graded-read bundle at any site
+  carrying it, so the r9/r10 fences are conservative rather than necessary
+  there.  Over-pricing is not dishonest; recorded only so a later round does
+  not mistake redundancy for an error.
+
+================================================================================
+S4. SURFACE (d) — A-ROW CONSUMPTION SITES, BYTE-LEVEL, AGAINST THE SOURCES
+================================================================================
+
+First, a mechanical check nobody has run: I implemented the R9-5 pin
+normalization convention as a script and recomputed EVERY md5 in the map from
+`git show <commit>:<path>` at the ledger's declared commits and line ranges
+(strip leading blockquote markers; join to one line; collapse whitespace; trim;
+md5).  Result:
+
+  LEMMA HETOW-4      7fb88236 HETOW_RECON  L689-746   2500c2f4…09a0   MATCH
+  LEMMA GENTOW-1     4caf0fb8 GENTOW1      L150-172   4b4d9f21…b559   MATCH
+  THEOREM GENTOW-3   3ee83992 GENTOW3      L186-216   a6d97dfe…c31e   MATCH
+  LEMMA GENTOW-4.1   73b93fd0 GENTOW4      L170-195   d7d1bf2b…7507   MATCH
+  THEOREM GENTOW-6.3 3d7fc37b GENTOW6      L378-434   05fc3881…898f   MATCH
+  LEMMA GENTOW2-B    33f86204 GENTOW2      L303-340   8a00bf44…3b61   MATCH
+  HE6 F-1 span       a5d8eb01 HE6_PROOF    L1061-1113 2c80192d…4dad   MATCH
+
+7/7.  The R9-5 convention is mechanically reproducible exactly as stated, and
+the r9-computed HE6 F-1 md5 (not in the ledger, computed by r9 itself) also
+reproduces.
+
+--------------------------------------------------------------------------------
+D.1  A2 — HETOW.  Source: HETOW_RECON @ 7fb88236 L689-746, LEMMA HETOW-4(a),(b)
+--------------------------------------------------------------------------------
+Source, quoted:
+    (a) … b = s(k) and x^{i}π^{a} = n̂(m(k)), so, as Laurent monomials,
+        n̂₂(k)/n₂(k) = n̂(m(k))/ϖ^{m(k)} = (x^{e₁}/π^{h})^{−Q(m(k))},
+        and at every point ξ of the tower-node locus
+        res(n̂₂(k)(ξ)/n₂(k)(ξ)) = η_ξ^{−Q(m(k))} = ι_ξ(τ(k)), where
+        τ(k) := η^{−Q(m(k))} ∈ K^×.
+    (b) … with w₂ := ⌊(s(k)+s(k′))/e₂⌋ ∈ {0,1},
+        τ(k)·τ(k′)/τ(k+k′)
+          = η^{ wrap₁(m(k), m(k′)) + w₂·( Q(u₂) + wrap₁(m(k)+m(k′), u₂) ) },
+    preamble: Q(k) = (i₀k − i(k))/e₁ = ⌊i₀k/e₁⌋, wrap₁(a,b) := ⌊(i(a)+i(b))/e₁⌋,
+              ϖ = x^{i₀}π^{a₀}, n̂(k) = x^{i(k)}π^{a(k)}.
+
+T1's three boxed A2 displays are these three, character for character modulo
+the declared name map.  Checks I ran:
+  * Q(k) = (i₀k − i(k))/e₁ is T1's q(k) = (i_0k − i(k))/e_1 — IDENTICAL formula,
+    so (H-HETOW-LOCAL)'s "Q(m) = q(m)" is a naming identity, not a lemma.  ✓
+  * wrap₁(a,b) = ⌊(i(a)+i(b))/e₁⌋ is T1's wrap(a,b) VERBATIM.                ✓
+  * n̂(k) = x^{i(k)}π^{a(k)} with a(k) the exact-height exponent is T1's n(k)
+    = x^iπ^{(k−ih)/e₁}; ϖ = x^{i₀}π^{a₀} with a₀ = (1−i₀h)/e₁ is T1's ϖ.     ✓
+  * "∈ {0,1}" is IN THE SOURCE SPAN — R6-2's import of the binary carry as a
+    supplier fact is correctly attributed and correctly needed (the τ-ratio
+    formula is linear in w₂ only because w₂ ∈ {0,1}).                        ✓
+  * The source restricts the residue display to "every point ξ of the
+    tower-node locus"; T1's (C5-xi) quantifies over every level-one tower
+    point, i.e. T1 supplies MORE than the pin needs.  Consumption direction is
+    T1 ⟹ pin, so this is safe, not an over-absorption.                       ✓
+  * R11-4's read-as note is correct: the pinned display does write w₂ and is
+    left byte-unchanged, while T1's own derivation uses c_2^{HET}.           ✓
+CLEAN.
+
+--------------------------------------------------------------------------------
+D.2  A7 — GENTOW2.  Source: GENTOW2_PROOF @ 33f86204 L303-340, LEMMA GENTOW2-B
+--------------------------------------------------------------------------------
+Source, quoted:
+    (B-law)  R_ν(Φ₃) = y^{f₃} − Σ_{t<f₃} u(β_t)·c_t·y^t,
+             u(β_t) = ϑ(t)·w^{f₃−t},
+    where u(β_t) := R_{3,β_t}(n̂₂(u₃(f₃−t))) …, ϑ(t) :=
+    res((n̂₂(u₃(f₃−t))/n̂₂(u₃)^{f₃−t})(x₀)) …, and w := R_{3,κ̄}(n̂₂(u₃)) ∈ K₂^×
+    is a single slot-independent unit (κ̄ := u₃/e(µ₂), the top slot's grade).
+    … R_ν(Φ₃) = w^{f₃}·ψ₃(y/w) =: ψ₃^{(w)}, monic irreducible of degree f₃ with
+    ψ₃^{(w)}(0) = w^{f₃}ψ₃(0) ≠ 0 (the substitution y ↦ wy preserves monicity
+    after the renormalization displayed, irreducibility, degree, and the
+    nonzero constant) …
+    Let the recipe data be … k̂_t ∈ K[x] with deg k̂_t < deg Φ₂, dv₂-height
+    u₃(f₃ − t), and K₂-digit residual class c_t ∈ K₂ = F₃ …; k̂_t = 0 when
+    c_t = 0, c₀ ≠ 0 …
+
+ORIENTATION CHECK (the note's own planted "inverse-orientation" tooth), run by
+hand: the source's ϑ(t) is res(n̂₂(su₃)/n̂₂(u₃)^s) with s = f₃−t, which is the
+RECIPROCAL of T1's ϑ_{i,s} = res(n̂_i(u_{i+1})^s/n̂_i(su_{i+1})).  T1's
+Θ_i(t) := ϑ_{i,f−t}^{−1} therefore EQUALS the source's ϑ(t), and
+(C3-B-law) "u(β_t) = Θ_i(t)w_i^{f_{i+1}−t}" is the source's
+"u(β_t) = ϑ(t)·w^{f₃−t}" on the nose.  The source's "ϑ(f₃−1) = 1" corresponds
+to T1's ϑ_{i,1} = 1.  ORIENTATION CORRECT.
+
+Further byte checks:
+  * κ̄ := u₃/e(µ₂) is T1's κ̄_i = u_{i+1}/e(µ_i) VERBATIM, and it independently
+    confirms the r11/r12 CUMULATIVE reading of e(µ_i).                       ✓
+  * "c_t ∈ K₂ = F₃" independently confirms R11-1's citation "R_{3,β}(g) ∈
+    F₃ = K₂"; that citation is itself byte-verbatim in the source at L497:
+      (R-FGMN)  R_{3,β}(g) ∈ F₃ = K₂ — Def 3.16 at i = 3, single
+                j = 0 term: R_{3,β}(g) = ε₂(β)·R_{2,β}(g)(z₂)                ✓
+  * "deg k̂_t < deg Φ₂" is R8-1's COEFFICIENT-SPACE PIN VERBATIM.             ✓
+  * "k̂_t = 0 when c_t = 0" is the r4/r6/r7 zero-lift branch, in the source.  ✓
+  * R9-4's m-2 repair verified: the pinned parenthetical is exactly
+    "preserves monicity after the renormalization displayed, irreducibility,
+    degree, and the nonzero constant" — it does NOT contain "irreducible-factor
+    degrees and multiplicities".  The r2 consequence list over-claimed; the
+    r9 replacement quotes the span correctly.                                ✓
+  * Nonvanishing supplier exists at i = 2 as items 19/22 claim: GENTOW2 L541
+    "… so R_{3,β}(n̂₂) ≠ 0".                                                 ✓
+CLEAN.
+
+--------------------------------------------------------------------------------
+D.3  A6 — scalar read.  Source: HE6_PROOF @ a5d8eb01 L1061-1113, correction F-1
+--------------------------------------------------------------------------------
+Source, quoted (the three displays r9 re-attributed):
+    \gamma_k(A):= \sum_{\substack{t\ge0\\i+e_1t<D'}}
+      \operatorname{res}\!\left(a_{i+e_1t}\pi^{-(k-(i+e_1t)h)/e_1}\right)
+      \eta_\theta^t\in K,
+    \operatorname{res}\!\left(\frac{A(\xi)}{n(k)(\xi)}\right)=\iota_\xi(\gamma_k(A)),
+    \operatorname{res}\!\left(\frac{A(\xi)}{\varpi(\xi)^k}\right)
+      =\iota_\xi(\gamma_k(A))\,\eta_\xi^{-q(k)}.
+    with "let \(k:=dv(A)\), let \(i=i(k)\) be the unique integer \(0\le i<e_1\)
+    satisfying \(ih\equiv k\pmod{e_1}\), and put \(n(k):=x^i\pi^{(k-ih)/e_1}\)".
+
+T1's (C5-gamma), (C5-normalizer-read), (C5-varpi-read) are these three with
+\(i\) written \(i(k)\) and \(\eta_\theta\) written \(\eta\) — the exact
+translation R9-1 declares.  I also verified the intermediate display T1 reuses
+in §2.5: the source's
+    \frac{a_j\xi^j}{n(k)(\xi)} =
+      \left(a_j\pi^{-(k-jh)/e_1}\right)\left(\xi^{e_1}\pi^{-h}\right)^t
+is T1 §2.5's display character-for-character.                                ✓
+
+R9-1's two provenance greps re-run independently at the declared commits:
+  GENTOW6 @ 3d7fc37b, count of γ_k / ϖ occurrences: 0   (r9 claim: zero)     ✓
+  GENTOW1 @ 4caf0fb8, count of γ_t occurrences:     0   (r9 claim: zero)     ✓
+  GENTOW1's actual pin symbol, grepped: "chat_t := lift(c_t·eta^{W(t)})" at
+  L10/L50/L192/L574/L614/L741 — exactly the \(\widehat c_t\) that R9-3 names.  ✓
+CLEAN.
+
+================================================================================
+S5. FINDINGS TABLE AND VERDICT
+================================================================================
+
+  ID    CLASS  SURFACE  ONE-LINE                                    REPAIR SCOPE
+  ----  -----  -------  ------------------------------------------  ------------
+  A-1   GAP    (a)      r2's "Replacement §3" never retires the      declare the
+                        base §3 TABLE; its stale A2-A7 rows survive  removal of
+                        and still read "**Verbatim**", contradicting the A2-A7
+                        the very blocks that replaced them (A7:      table rows
+                        "no longer labeled 'absorbed verbatim'").    (keep A1's)
+                        Proved live by R2-4 (needs "the second A1
+                        absorption row") and R5-1e/R7-1d/R8-2
+                        (edit the paragraph after the table).
+
+  A-2   GAP    (a)      R2-2's span has no declared end; the base    re-declare
+                        (C4) blocks "Thus, for nonzero residuals,"   the span
+                        + the (C4-support) box + "Attained abscissas through
+                        …agree." survive, so (C4-support) is         L516
+                        double-rendered and its second rendering
+                        carries NO (H-JA-RES-CONJ) fence — flatly
+                        contradicting ledger item 5.
+                        (\tag{C4-support} occurs at file L513 AND
+                        L1476, only one inside a declared span.)
+
+  A-3   GAP    (a)      R2-4 replaces "(C6-clearance) and its        extend the
+                        following collection sentence" but not the   span back
+                        lead-in, leaving "…every monomial in this    to "If the
+                        lift…clears the outer side by at least"      tower
+                        dangling and unfenced, immediately followed  additionally
+                        by its own denial and contradicting ledger   has"
+                        item 10.
+
+  A-4   minor  (a)      R4-2 mis-quotes the base paragraph boundary  re-declare
+                        ("Zero is lifted as zero." is the FIRST of   through the
+                        two sentences at L77), so "At level 1,       trailing
+                        conclusion (C6) supplies this … m>D'h" is    sentence
+                        rendered twice.  Exact R12-4 sibling.
+
+  A-5   minor  (a)      R3-1 inserts between the two displays of     reattach, as
+                        the general stage-data sentence, orphaning   R5-3 did for
+                        "and \[\psi_{i+1}(y)=…\]".  Exact R5-3       R1-1
+                        sibling, never repaired.
+
+  A-6   minor  (a)      R8-2 replaces the A7 "residual-obligation    name the
+                        sentence" without re-supplying its           display in
+                        colon-bound display u(β_t)=Θ(t)w^{f_3−t}:    the span, or
+                        orphan on the narrow reading, lost referent  re-supply it
+                        for "the supplier identity itself" on the
+                        wide one.
+
+  B-1   minor  (b)      Ledger item 4 asserts ψ^{(w)}=w^fψ(y/w) and  add the
+                        "preserves factor patterns" unconditionally, two-clause
+                        after r8/r11 gated exactly that behind       gate, as
+                        (C3-read-codomain)+(C3-ladder-nonvanishing)  R12-3 did
+                        and R12-3 repaired the same defect in items  for 2 and 19
+                        2 and 19 without auditing item 4.
+
+  C-1   minor  (c)      The grade-data clause "the values of dv_i …  restrict the
+                        are integers" is falsified by r12's own      clause to
+                        witness under r12's own binding:             the heights m
+                        dv₂(Φ₂)=4·(21/8)=21/2 ∉ ℤ.  Not load-        and to
+                        bearing (no bare dv_i(Φ_i) in the text).     e_{i+1}-
+                                                                     multiples
+
+WHAT WAS CHECKED AND FOUND CLEAN (earning the non-findings):
+  * All 22 effective honesty-ledger items reconstructed; numbering, supersession
+    and supplier-hypothesis coverage consistent (S2).
+  * The (C7) supersession chain M0/M1/M2/M3/M4 across base->r2->r8->r10->r11:
+    every supersession names its predecessor; no orphan, no double row.
+  * r10's (H-VARTHETA-RES)_i propagation is COMPLETE — I traced every ϑ/Θ
+    consumer in the effective text, C7 and non-C7, and found no unfenced
+    depth-≥3 site (S3, C.3).  M0/M1/M4 genuinely consume no ϑ datum.
+  * R12-1's GENTOW2 witness re-derived independently from the accepted source's
+    S2 dictionary: 4·2·(21/8)=21=u₃ verified; the v=µ₂ leg re-derived from
+    Φ₂=Φ′²−4x (µ₂(Φ₂)=5/2, λ₃=1/8, e₃=denom(1/2)=2) giving 20<21, falsification
+    confirmed; "equivalently µ_{i+1}" verified via Φ_i = φ_{i+1} (S3, C.1).
+  * The terminal binding checked against all nine classes of grade-data
+    consumer; only powers of Φ_i separate the readings, and only
+    (C1-stage-key-height) consumes them.  Normalizers and lifts are
+    reading-independent because both are degree-<deg Φ_i (S3, C.2).
+  * All 7 md5 pins recomputed from git at the declared commits under the R9-5
+    normalization: 7/7 MATCH, including r9's own HE6 F-1 span md5 (S4).
+  * A2, A6, A7 spot-checked byte-level against the source spans, including the
+    Θ = ϑ^{-1} orientation (correct), the (R-FGMN) codomain cite (verbatim),
+    the coefficient-space pin (verbatim), and R9-1/R9-3's provenance greps
+    (independently re-run: 0 occurrences as claimed).
+  * §4.2 check-6 weld lint run independently on the effective text: no hits.
+  * F4-JOINT µ=3 orientation vector recomputed: u(β_2),u(β_1),u(β_0) =
+    (ω,ω,ω²), canonical vector (ω,ω²,1), and y³+ωy²+ω²y+1 = (y+ω)³ in F_4.
+
+CHARACTER OF THE ROUND: no CRITICAL, and no defect in the r10-r12 NEW
+mathematics — R12-1's binding and witness are correct and its consumers are
+consistent.  Every GAP found is a STRICT-ASSEMBLY defect of the r2 round that
+has been carried silently through ten subsequent rounds, and in each case the
+honesty ledger already states the correct, fenced position — the effective TEXT
+is what disagrees with it.  r12 opened this surface (R12-4) and repaired one
+instance; three more of the same family, two of them substantive, remain.
+
+NOTE ON THE VERDICT TOKEN: the brief's template line reads "VERDICT: CLEAN |
+FINDINGS: <n>C + <n>G + <n>m".  With 3 GAP and 5 minor findings this pass is NOT
+a clean pass and must NOT advance the §7 two-clean-pass counter, so the verdict
+slot is filled accordingly rather than emitted literally as CLEAN.
+
+VERDICT: NOT CLEAN | FINDINGS: 0C + 3G + 5m
