@@ -1,0 +1,235 @@
+The slice’s arguments are characteristic-neutral: I found no use of \(v(p)<\infty\), factorial denominators, \(2^{-1}\), Teichmüller/Witt structure, or “irreducible implies separable.” Replacing \(\pi\) by \(t\) in \(\mathbf F_q[[t]]\) leaves the displayed valuation, residual-polynomial, slot, carry, and completion arguments intact.
+
+The one unresolved generality item is citation scope in GENHN: “Ore order-1” is listed among its classical suppliers without a precise theorem or published scope. The pasted text does not establish whether that citation is genuinely used or merely background. I therefore record one H6 CITE-SCOPE finding, not a mixed-characteristic obstruction.
+
+## 1. Per-note verdicts
+
+| Note | Coverage | Verdict | Reason |
+|---|---|---|---|
+| `GENHN_PROOF_2026-08-08.md` | Deep read of S0–S10, all dated mathematical corrections and the count rerun; machine/provenance ledgers scanned | **CITE-SCOPE** | The internal proofs are general over complete DVRs in both characteristics. The bare load-bearing-looking “Ore order-1” entry has no identifiable published scope. All H1–H5/H7 hazards are otherwise cleared. |
+| `GENTOW1_PROOF_2026-08-09.md` | Deep read of S0–S4 and all governing corrections; machine ledger scanned | **GENERAL** | Uses integral monic division, valuation weights, abstract finite-field residues, and corrected gauge/lift algebra. Characteristic-sensitive binomial behavior is handled explicitly. |
+| `GENTOW3_PROOF_2026-08-09.md` | Deep read of theorem, proof, gauge annex, and S8 corrections; machine ledger scanned | **GENERAL** | The proof is weight/carry algebra over a DVR. The potentially non-general lift and \(x\)-free formulations are explicitly corrected to exact-height \(K\)-lifts. Separability is used only under `disc ≠ 0`. |
+| `GENTOW6_PROOF_2026-08-09.md` | Deep read of S1–S3, S6, and box-closing append; machine/provenance scanned | **GENERAL** | The FGMN statements quoted in the note are for arbitrary valuations/key polynomials, not \(\mathbf Q_p\)-extensions. Residue-characteristic binomial cancellations and \(f_1>1\) gauge lifts are treated honestly. |
+
+“GENERAL” here concerns base-DVR generality only. It does not upgrade the notes’ stated proof grades or close their unrelated open boxes.
+
+## 2. Flagged sites, quoted and classified
+
+### GENHN
+
+1. **H1 cleared — no factorial or characteristic-zero expansion**
+
+> “Both characteristics: the identity R(T+s) = T^μ is binomial-free as stated (it is a substitution identity, not an expansion).”
+
+Classification: **GENERAL**. The argument is a polynomial identity over any characteristic. It does not divide by \(k!\), invert binomial coefficients, or use exponential/logarithmic coordinates.
+
+2. **H5 cleared — global separability is explicitly fenced**
+
+> “At every decided leaf of every μ = 2 stage genre … EVERY lift with disc ≠ 0 has the σ claimed by the leaf dictionary”
+
+and:
+
+> “Fix any μ = 2 genre … any lift F ∈ O[x] of a leaf member with disc ≠ 0”
+
+Classification: **GENERAL**. In equal characteristic, `disc ≠ 0` is exactly the needed squarefreeness/separability fence. The proof never promotes mere irreducibility of a key such as \(x^p-t\) to separability.
+
+3. **H5 cleared in characteristic two**
+
+> “stage-SPLITEQ ('11', roots s₁ ≠ s₂ ∈ K). … dv(A₁′) = κ exactly with residue s₁ − s₂ ≠ 0 (char 2: = S₁ ≠ 0 by separability)”
+
+Classification: **GENERAL**. Characteristic two is handled explicitly; no discriminant-square or \(2^{-1}\) test is used.
+
+4. **H2/H4 cleared — the carrier was correctly moved to the valuation ring of the field**
+
+> “Let θ be a root of Φ′, L := Frac(Ô)(θ), O_L its valuation ring — a complete DVR — with v := v_L normalized on the base and every residue read in O_L/m_L.”
+
+Classification: **GENERAL**. This formulation works for both mixed- and equal-characteristic complete DVRs. It does not require \(v(p)\), Witt vectors, or an unramified \(\mathbf Z_p\)-subring.
+
+5. **H7 cleared — exact-height lifts use only integral valuation arithmetic**
+
+> “Let \(M>D'h=e_1f_1h\)… define
+> \[
+> L_M(\lambda):=
+> \sum_{s=0}^{f_1-1}
+> \widetilde{\lambda_s}\,
+> x^{\,i+e_1s}\pi^{\,a-sh}.
+> \]
+> Then \(L_M(\lambda)\in\widehat O[x]\)….”
+
+and:
+
+> “Since \(i+e_1s\le D'-1\) and \(M>D'h\),
+> \[
+> a-sh=\frac{M-(i+e_1s)h}{e_1}\ge0.
+> \]”
+
+Classification: **GENERAL**. The quotient is integral because of the congruence defining \(i\); this is not division by a nonunit in \(O\). No root extraction in \(K^\times\) is assumed.
+
+6. **H3 cleared — the divisions by two are integer census formulas**
+
+> “The finite-field censuses are
+> \[
+> \#\mathrm{SPLITEQ}
+>  =\frac{(q_K-1)(q_K-2)}2,
+> \qquad
+> \#\mathrm{INERT}
+>  =\frac{q_K(q_K-1)}2,
+> \qquad
+> \#\mathrm{ALPHA}
+>  =q_K-1.
+> \]”
+
+Classification: **GENERAL**. These are cardinalities in \(\mathbf Z\), not divisions inside \(K\). They remain valid when \(q_K\) is even.
+
+7. **H6 unresolved — unidentified classical citation**
+
+> “Classical: Hensel, Ore order-1, ultrametric quadratic analysis over complete fields, finite-field censuses.”
+
+Classification: **CITE-SCOPE**. No bibliographic identifier or theorem statement is supplied for “Ore order-1,” so its published scope cannot be checked from the pasted material. If it is consumed load-bearingly, a general henselian/complete-DVR source is required. If all order-1 content is already supplied solely by W-12.A, this line should instead be marked background/non-consumed.
+
+8. **Not an H6 gap in a proved result — the Montes citation is only an open target**
+
+> “the classical Montes/GMN order-≥2 index theorem is the literature target for a faithful cite.”
+
+Classification: **OPEN/NOT CONSUMED**. This sits inside `[GENHN-HE(μ ≥ 3)]`, which the note itself declares open. It does not falsely certify a proved equal-characteristic step.
+
+### GENTOW-1
+
+9. **H4/H7 cleared — gauge-naive lifts were replaced by abstract residue-field lifts**
+
+> “chat_t := lift(c_t·eta^{W(t)}),
+> W(t)   := floor((f2−t)·i(u2)/e1)”
+
+and, for \(f_1\ge2\):
+
+> “the exact-height (LIFT) output \(L_{(f2−t)u2}(c_t·eta^{W(t)})\)”
+
+Classification: **GENERAL**. This is formulated using \(K=\mathbf F_{Q^{f_1}}\), a uniformizer, and an additive digit lift. It does not require Teichmüller multiplicativity or Witt coordinates.
+
+10. **H1/H3 cleared — residue characteristic is handled, not excluded**
+
+> “at mu2 = 2, q = 2 the j = 1 pin vanishes (2s = 0) and the event is carried by p_0 = 2*lam alone; at q = 3 both pins show.”
+
+Classification: **GENERAL**. Small residue characteristic changes which binomial pins survive, and the theorem records that change instead of assuming \(2\) invertible.
+
+11. **H7 cleared — the later lift correction re-solves each flavor**
+
+> “THE CORRECTED DISPLAY (the base RE-SOLVES per flavor).
+>
+> \[
+> \begin{aligned}
+> \operatorname{lift}(s;m)&:=\sum_{r,t}d_{r,t}M_{r,t}(m),\\
+> M_{r,t}(m)&:=\widehat n_2(m-\Delta(r,t))x^{e_1r}\Phi'^{e_2t},\\
+> \Delta(r,t)&:=e_1e_2h\,r+e_2u_2\,t.
+> \end{aligned}
+> \]”
+
+Classification: **GENERAL**. This removes the only illegal-looking half-integral exponent seam. The remaining exponents are obtained from the discrete value lattice, not from roots in the coefficient field.
+
+12. **Finite-window correction is characteristic-neutral**
+
+> “BAND 2 (m = e₁e₂N): … the VALUE m is exact for every lift … while the full K₂-residue is NOT determined”
+
+Classification: **GENERAL**. This uses independence of residue-field basis components and completion invariance; it has no mixed-characteristic input.
+
+### GENTOW-3
+
+13. **H4/H7 cleared — corrected \(x\)-free criterion**
+
+> “chat_t := lift(c_t·eta^{W(t)}),
+> W(t)   := floor((f2−t)·i(u2)/e1)”
+
+and:
+
+> “chat_t·nhat(m_t) is an x-free monomial π^a
+> \[
+> \Longleftrightarrow\quad i(m_t)=0\ \text{AND}\ c_t\eta^{W(t)}\in F_Q.
+> \]”
+
+Classification: **GENERAL**. The note explicitly withdraws the \(f_1>1\) version of the naïve exponent-only test. The operative definition is expressed over the abstract finite residue extension.
+
+14. **H5 cleared — perturbative leaf claims are fenced**
+
+> “Deep perturbation \(f=\Phi2^{mu2}+g\) … \((\mathrm{disc}\ne0)\)”
+
+Classification: **GENERAL**. The factorization claims are not extended silently to inseparable equal-characteristic members.
+
+15. **No hidden char-zero algebra in the faithfulness threshold**
+
+> “the x-carry \(x^{D'}=\Phi'+\mathrm{tail}\) splits weight-monotonically”
+
+and:
+
+> “every disagreeing HEIGHT is ≥ THETA_j.”
+
+Classification: **GENERAL**. This is monic division plus valuation comparison. There is no \(v(p)\), factorial, square-class, or unit-root hypothesis.
+
+### GENTOW-6
+
+16. **H6 cleared for the direct FGMN citation**
+
+> “Theorem 2.8 … ‘Let mu be a valuation and phi a key polynomial for mu. Then, \(N^-_{\mu,\phi}(gh)=N^-_{\mu,\phi}(g)+N^-_{\mu,\phi}(h)\) for any non-zero \(g,h\in K[x]\).’”
+
+and:
+
+> “Corollary 4.7(3) … ‘\(R_i(gh)=R_i(g)R_i(h)\) for all \(g,h\in K[x]\).’”
+
+Classification: **GENERAL**. The theorem statements quoted here are about valuations and key polynomials over \(K[x]\), with no \(\mathbf Q_p\)-extension or characteristic-zero hypothesis. The cited scope is sufficient for equal-characteristic complete DVR fraction fields.
+
+17. **H5 cleared in the block argument**
+
+> “disc \(f_C\ne0\) as a divisor of \(f\)”
+
+and:
+
+> “divisor of a squarefree \(O[x]\)-polynomial”
+
+Classification: **GENERAL**. Separability is inherited from the explicit discriminant/squarefree hypothesis, not inferred from irreducibility.
+
+18. **H1/H3 cleared at higher multiplicity**
+
+> “attainment on the floor IF \(p\) does not divide \(\binom{\mu_2}{2}\)”
+
+and:
+
+> “when \(p\mid\binom{\mu_2}{2}\) … the converse is genre-dependent both ways.”
+
+Classification: **GENERAL**. Here \(p\) is the residue characteristic. The proof tracks reduction of an integer binomial coefficient modulo \(p\); it does not divide by that coefficient or exclude wild/small characteristic.
+
+19. **H4/H7 cleared for \(f_1>1\)**
+
+> “\(L_{m_t}(c_t\eta^{W(t)})
+> =\sum_{r<f_1}\operatorname{lift}(\lambda_{t,r})\pi^{a_t-rh}x^{i_t+e_1r}\)”
+
+and:
+
+> “integral \((a_t-rh\ge0:\ u2>e2D'h\ge e1f1\cdot h\ldots)\)”
+
+Classification: **GENERAL**. This is the abstract residue-basis construction needed over any complete DVR. It neither chooses Teichmüller representatives nor uses \(v(p)\).
+
+20. **No mixed-characteristic dependence in the multiplicity tie**
+
+> “\(K[T]\) is a UFD and the \(r\) are pairwise distinct monic irreducibles: \(m_r=k_r\) for every \(r\).”
+
+Classification: **GENERAL**. This depends only on the residue field being a field. Since it is finite, its irreducible polynomials are separable as an abstract finite-field fact, but the displayed UFD multiplicity comparison does not itself require separability.
+
+## 3. Interface rows
+
+These suppliers leave the pasted slice. Their generality must be audited in their own files; I have not inferred their contents.
+
+| Consuming note(s) | Out-of-slice interface | What is consumed here | Generality status in Q3 |
+|---|---|---|---|
+| GENHN | GENIND, GENH4, W-12.A/W-12.D, W-11, QSCOUT22 | Cell laws, cluster grammar, induction/firing reduction, \(\mu=2\) laws | **INTERFACE — not audited** |
+| GENHN, GENTOW-1 | GRTJC W-6…W-9, JC-LOAD/W-8 | Twisted graded algebra and no-cancellation frame | **INTERFACE — not audited** |
+| GENHN | J-D0, SIGMALAW, DULEMMA, WELDMASTER/[W12-H] | Twist blindness, cocycle coherence, optional valuation lemma, pricing grammar | **INTERFACE — not audited** |
+| GENHN/GENTOW-1/GENTOW-3 | HETOW, GENTOW5 and named hostile-pass reports | Corrected gauge lifts, later lift displays, verification evidence | **INTERFACE — not audited** |
+| GENTOW-6 | GENTOW-2, GENTOW-4 | MacLane dictionary/shear, partial-side bouquet and projection | **INTERFACE — not audited** |
+| GENTOW-6 | HE6, HE7, HE6R1 | Root-class decomposition, polygon/root counts, block projection | **INTERFACE — not audited** |
+| GENTOW-6 | GENTOW6_BOXES | The later \(\mu_2\ge3\) attainment theorem | **INTERFACE — not audited** |
+| All notes | Lean capstone and downstream density assembly | Translation of these informal results into the all-complete-DVR Lean statement | **INTERFACE — not audited** |
+
+## 4. Slice conclusion
+
+Within the pasted proofs, the by-finite-level laws are genuinely formulated over an arbitrary complete DVR with finite residue field. Their load-bearing calculations use only finite-field linear independence and censuses, discrete valuation/Newton-polygon and residual-polynomial algebra, monic division/carry bookkeeping, and completeness/Hensel-type lifting. The notes explicitly repair the dangerous gauge, nonmaximal-order, partial-slot, window-boundary, and characteristic-two seams. I found no mathematical step that breaks for \(\mathbf F_q[[t]]\), and no use of \(v(p)\), characteristic zero, Witt/Teichmüller structure, or unlicensed separability. Full certification of the slice nevertheless stops at one H6 item: GENHN’s bare “Ore order-1” supplier has no checkable published scope in the pasted material. All other unresolved dependencies are named interfaces, not evidence of a mixed-characteristic obstruction.
+
+QGEN-Q3 VERDICT: CITE-SCOPE(1)

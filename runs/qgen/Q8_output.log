@@ -1,0 +1,166 @@
+The in-slice mathematics is characteristic-neutral. I found no use of \(v(p)<\infty\), characteristic-zero Taylor algebra, \(1/k!\), Teichmüller/Witt structure, odd-prime assumptions, or silent irreducible-implies-separable reasoning.
+
+Three occurrences use “p-adic splitting type” where the intended capstone scope is all complete DVRs. Those are terminology edits only. End-to-end uniformity still depends on the out-of-slice supplier interfaces listed below; their scope cannot be certified from this slice.
+
+## 1. Per-note verdicts
+
+| Note | Coverage | Verdict | Reason |
+|---|---|---|---|
+| T1 — Gauge cocycle | Deep read of C1–C7, proofs, effective r1–r13 corrections and final riders; historical batteries scanned for generality hazards | **GENERAL-WITH-EDIT (2 sites)** | Core algebra is valuation-, residue-field-, and unit-based. Two “p-adic splitting type” phrases should say “DVR/local-field splitting type.” |
+| T3 — Cocycle telescope | Deep read of theorem, three ports/absorptions, non-instance, proof and effective r1 | **GENERAL** | Cocycle, section-ratio, residual scaling and separability transport work over arbitrary fields. Mixed-character frames are explicitly non-theorem test frames. |
+| T4 — Certificate witness | Deep read of definition, attainment lemma, instances, effective r1–r5 and acceptance rider; validation bookkeeping scanned | **GENERAL** | The argument is graded-valuation and coefficient combinatorics. Discriminant-zero cases and residue-characteristic divisibility are handled explicitly. |
+| T5 — \(w\)-frame | Deep read of definitions, law, instances, effective r1–r5 and riders; census details scanned | **GENERAL-WITH-EDIT (1 site)** | Unit scaling works over every residue field. One “\(p\)-adic splitting type” phrase needs the same terminology edit. |
+
+## 2. Flagged sites
+
+### T1
+
+> “Conversion of a residual factor pattern to a p-adic splitting type still uses the surrounding tower correctness theorem.”
+
+**Classification:** H1 terminology only; **GENERAL-WITH-EDIT**. Replace “p-adic” with “DVR/local-field” or “valued-field.” The surrounding correctness theorem remains an interface.
+
+The same issue recurs in the honesty ledger:
+
+> “Gauge-invariant residual factor patterns become splitting types only through the surrounding tower correctness theorem.”
+
+This second occurrence does not literally say “p-adic”; however, the earlier ledger wording and surrounding context use the narrower terminology. Counted as the second editorial normalization site in T1.
+
+> “Fix once and for all a set-theoretic section of the coefficient residue map  
+> \(\sigma:\mathbf F_Q\longrightarrow\widehat O\)...  
+> No additive or multiplicative compatibility of \(\sigma\) is assumed.”
+
+**Classification:** H4 checked, **NO HIT**. This deliberately avoids Teichmüller or Witt representatives and works equally in \(\mathbf F_q[[t]]\).
+
+> “The map  
+> \(P(y)\longmapsto w_i^{\deg P}P(y/w_i)\)  
+> preserves irreducible-factor degrees and multiplicities.”
+
+**Classification:** H5 checked, **GENERAL**. This is induced by a polynomial-ring automorphism and does not use irreducible \(\Rightarrow\) separable.
+
+> “For every integer height \(k\), let  
+> \(\widehat n_1(k)=x^{i(k)}\pi^{a(k)}\),  
+> \(0\le i(k)<e_1,\quad i(k)h+a(k)e_1=k.\)”
+
+and
+
+> “\(a-rh=\frac{M-(i+e_1r)h}{e_1}\ge0\).”
+
+**Classification:** H7 checked, **GENERAL**. These are divisions in \(\mathbf Z\), justified by congruences; there is no division by \(e_1\) inside the residue field and no extraction of \(e_1\)-th roots.
+
+> “A coefficient whose pin lies strictly above height \(k\) contributes zero.”
+
+together with the normalized coefficient formula in C5 uses only powers of the chosen uniformizer and valuation normalization.
+
+**Classification:** H1/H2 checked, **GENERAL**. No \(v(p)\) occurs.
+
+> “At \(i\ge3\), T1 does not prove that the residue lies in \(K_i\). Every consumer at depth \(i\ge3\) must carry the named supplier hypothesis \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\).”
+
+**Classification:** INTERFACE, not a mixed-character obstruction. The note honestly fences its higher-level residue-field membership.
+
+> “Frame X | \(p=3\)... corrected versus naive p-adic split.”
+
+and
+
+> “The explicit joint p-adic realization remains open...”
+
+**Classification:** TEST/WORDING ONLY. These are historical verification disclosures, not hypotheses of C1–C7. They do not restrict the theorem to mixed characteristic.
+
+### T3
+
+> “Multiplication by the nonzero scalar \(\chi(H_0)\) and substitution \(Z\mapsto Z/\delta\) preserve separability and the multiset of irreducible-factor degrees and multiplicities.”
+
+**Classification:** H5 checked, **GENERAL**. Scaling by a nonzero field element is an automorphism in every characteristic; separability is preserved without asserting that every irreducible polynomial is separable.
+
+> “For the boundary-read port, retain the original FRAME-C arithmetic:  
+> \(p=5,\quad N(k)=x^{k\bmod2}5^{(k-(k\bmod2))/2}\).”
+
+followed by:
+
+> “FRAME-C consists of two direct graded-carrier port instances... it is not a realized p-adic tower.”
+
+**Classification:** H2/H3 checked, **TEST-ONLY MIXED-CHAR FRAME**. It is explicitly not theorem carrier data.
+
+> “After removing the prescribed power, the graded digit is nonzero exactly when \(p\nmid\binom m2\).”
+
+**Classification:** H1/H3 checked, **GENERAL** when \(p\) denotes the residue characteristic. The argument explicitly handles vanishing of the integer coefficient in positive characteristic; it does not divide by \(2\) in the field.
+
+> “Because \(\delta\in K^\times\), substitution by \(Z/\delta\) is a \(K\)-algebra automorphism.”
+
+**Classification:** H7 checked, **GENERAL**. No root extraction or divisibility assumption on \(q-1\) is used.
+
+### T4
+
+> “Membership in \(\mathfrak M\) is a pure coefficient condition on the development digits. It carries NO discriminant hypothesis and no decidedness hypothesis.”
+
+and
+
+> “Note \(\operatorname{disc}(f_{\mathrm{key}})=0\)...”
+
+**Classification:** H5 checked, **GENERAL**. The certificate lemma intentionally includes the inseparable/discriminant-zero key power. Discriminant nonvanishing is quarantined to later \(\sigma\)-read consumers.
+
+> “When the residue characteristic does not divide \(\binom{\mu_2}{2}\), this component is nonzero...”
+
+as superseded by:
+
+> “The source facts consumed by this record do not prove that the canonical slot ... receives exactly one ... contribution... no touchedness statement [is inferred].”
+
+**Classification:** H1/H3/H5 checked, **GENERAL**. Characteristic divisibility is explicit, and the later repairs prevent a nonzero unassembled term from being mistaken for a nonzero assembled digit.
+
+> “Its normalized digit is  
+> \((\widehat c_{t^*})^2\pi^{2a_{t^*}}\cdot(\text{wrap unit}),  
+> which is nonzero.”
+
+**Classification:** H2 checked, **GENERAL at the stated source-owned exposure scope**. This uses a uniformizer \(\pi\), not the integer prime \(p\), and so works over \(\mathbf F_q[[t]]\).
+
+> “\(\operatorname{disc}(f_{\mathrm{key}})=0\): ... no disc hypothesis can be part of membership.”
+
+**Classification:** H5 positive safeguard. This is exactly the bookkeeping needed to avoid silently applying separable/decided-leaf results to drainage or key-power legs.
+
+### T5
+
+> “Unit substitution preserves monicity, degree, irreducibility, nonzero constant term, and irreducible-factor degrees and multiplicities. Turning factor data into a \(p\)-adic splitting type still requires the surrounding tower theorem.”
+
+**Classification:** First sentence **GENERAL**; second sentence **GENERAL-WITH-EDIT**. Replace “\(p\)-adic splitting type” with “DVR/local-field splitting type.”
+
+> “At \(i\ge3\), \(\Theta_i(t)\) additionally carries \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) (T1 r9).”
+
+**Classification:** H7/typing checked, **GENERAL conditional interface**. The note does not infer the required residue-field unit from integer exponent algebra.
+
+> “No \(i=1\) version is asserted. S11.3 supplies a fixed letter-power unit there, but its identification with the displayed \(w_1\) remains open.”
+
+**Classification:** H7 checked, **GENERAL**. This avoids an unjustified root or normalization identification.
+
+> “There is no universal \(w=1\) claim.”
+
+and
+
+> “The avatars ... are measured instances. LW3 shows that an avatar can differ from intrinsic \(w_i\).”
+
+**Classification:** H4/H7 checked, **GENERAL**. No Teichmüller-like canonical-unit identification is assumed.
+
+## 3. INTERFACE rows
+
+These leave the pasted slice. Their actual characteristic scope must be checked in the named source; I do not infer it here.
+
+| Interface | Consuming quote | Scope question for the next slice |
+|---|---|---|
+| T1 → surrounding tower correctness | “Conversion of a residual factor pattern ... still uses the surrounding tower correctness theorem.” | Must cover arbitrary complete/henselian DVRs, including inseparable-polynomial bookkeeping where discriminant vanishes. |
+| T1 → JA conjugation | “\(\mathrm{(H\!-\!JA\!-\!CONJ)}_i\)” and “\(\mathrm{(H\!-\!JA\!-\!RES\!-\!CONJ)}\)” | Verify the JA supplier is stated for general valued fields, not only finite extensions of \(\mathbf Q_p\). |
+| T1 → higher-level residual specialization | “\(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\)” | Verify general MacLane residual specialization over both mixed and equal characteristic. |
+| T1 → GENHN/HETOW/WELD | “\(\mathrm{(H\!-\!GENHN\!-\!CLEAR)}\),” “\(\mathrm{(H\!-\!HETOW\!-\!LOCAL)}\),” and WELD-M-PKG | Verify polygon clearance, local carry data and package fields use uniformizers/valuations, not \(v(p)\). |
+| T3 → GENTOW2 | “GENTOW2’s expansion, peel, positive-degree elimination, exact-grade digit law, and root-evaluation calculation are precisely (BR1)–(BR5).” | Supplier scope is not reproduced in T3. |
+| T3/T5 → GENTOW5-W | “The certified level-\(i\) expansion, peel ... instantiate (BR1)–(BR5)” and the conditional \(\mathcal W_{\le i}\) law | Verify the boundary-read supplier and its induction over general complete DVRs. |
+| T3 → HETOW-4 | “Substitution of HETOW-4’s independently computed formula ... and its two wrap identities...” | Verify those source-specific floor computations are characteristic-neutral. |
+| T4 → GENTOW-3/GENHN | “GENTOW-3(i) ... supplies (FLOOR)” and “exact-height separation supplied by GENHN-2′” | Verify the source floor and separation theorem over equal-characteristic towers. |
+| T4 → GENTOW-6 | “THEOREM GENTOW-6.3(a)+(b) supply the source-owned full-exposure calculation...” | Verify the complete layer classification uses only uniformizer and residue-characteristic arithmetic. |
+| T5 → GENTOW2/GENTOW5 evidence | “The suppliers are ... GENTOW2-B″ ... [GENTOW5-W(i)].” | The pasted T5 verifies locators and algebra, but the base-DVR scope of those source theorems remains external. |
+
+No pasted external citation states a theorem only for finite extensions of \(\mathbf Q_p\). Consequently there is no demonstrated H6 `CITE-SCOPE` failure in this slice; the rows above are unresolved interfaces, not evidence of a mixed-character restriction.
+
+## 4. Slice conclusion
+
+Every load-bearing argument actually displayed here is built from finite residue fields, exact valuation heights, uniformizers, Newton/MacLane-style residual reads, unit substitutions, and assembled graded digits. The notes explicitly handle the two places where positive characteristic matters: discriminant-zero/inseparable legs and vanishing binomial coefficients. I found no mathematical obstruction at \(\mathbf F_q[[t]]\).
+
+Thus these four notes need no new mathematics for equal characteristic. They need three terminology edits and an external scope audit of the named supplier interfaces before they alone can certify the entire capstone’s all-DVR quantifier.
+
+QGEN-Q8 VERDICT: GENERAL-WITH-EDITS(3)

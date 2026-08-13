@@ -1,0 +1,9 @@
+I cannot produce an honest generality audit because the workspace command runner is broken. Every read-only command fails before execution with:
+
+> `bubblewrap is unavailable: no system bwrap was found on PATH`
+
+Consequently, I could not read, grep, quote, or classify any requested note. No files were changed. Any per-note table or mathematical verdict would be fabricated.
+
+Please rerun this request in an environment with a functioning filesystem command sandbox (`bwrap` installed/configured).
+
+QGEN VERDICT: OBSTRUCTED(1)

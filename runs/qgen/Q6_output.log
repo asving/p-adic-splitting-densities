@@ -1,0 +1,326 @@
+## 1. Per-note verdicts
+
+| Note | Coverage | Verdict | Reason |
+|---|---|---|---|
+| `GRTW2_PROOF_2026-08-08.md` | Deep read of operative statements, proofs, corrections, and annexes; historical pass chronology scanned | **CITE-SCOPE** | The displayed algebra is DVR/finite-field combinatorics, but W2-C1/C2 and the print-side recursion consume GMN results whose pasted characterization is mixed-characteristic. Equal-characteristic rows are machine evidence, explicitly lacking the PARI/literature leg. |
+| `GRTJA_PROOF_2026-08-08.md` | Deep read of §§1–6 and controlling 2026-08-12 corrections; arc history scanned | **CITE-SCOPE** | JA-PIN is expressly restricted to `O ∈ {ℤ_p, F_p[[t]]}`—much smaller than all complete DVRs—and says the print is mixed-characteristic and the equal-characteristic case is deferred. |
+| `WELDMASTER_2026-08-08.md` | Deep read of S0–S4, S6, and controlling corrections; evidence/arc bookkeeping scanned | **CITE-SCOPE** | WM-COB’s new arithmetic is general, but WELD-M-PKG is assembled from W2/JA/GMN-backed faces and explicitly requires realization through JA-PIN. It therefore inherits their scope gap. |
+| `SIGMALAW_PROOF_2026-08-08.md` | Deep read of SL-L1/SL-1/EC/SC, consequences, and annex corrections; machine counts scanned | **CITE-SCOPE** | Its field and integer algebra is characteristic-free, but the proof load-bearingly uses the GMN print evaluator and `Thm-phir`; that inherited theorem has only the mixed-characteristic scope documented in this slice. |
+| `JD0_PROOF_2026-08-08.md` | Deep read of S0–S4 and controlling S10 correction; evidence ledger scanned | **CITE-SCOPE** | The corrected formal \(L3\times L4\) coefficient theorem is general in \(q\). Its identification with the actual classifier and its documented gauge action, however, consume JA-RES/JA-GRID and L2core at explicitly limited scope. |
+
+Bottom line: I found no mixed-characteristic mathematical obstruction in the displayed combinatorics, but these notes do **not already certify** the all-complete-DVR claim. The defect is theorem/citation/domain scope, not a counterexample over \(\mathbf F_q[[t]]\).
+
+## 2. Flagged sites
+
+### A. `GRTW2_PROOF_2026-08-08.md`
+
+1. **H6 — CITE-SCOPE, load-bearing**
+
+> “The classifier side is consumed as LITERATURE from the GMN print `docs/references/HigherNewton.tex` (‘Newton polygons of higher order in algebraic number theory’)”
+
+This consumption includes `construct`, `phir`, the representative definition, residual operators, and `propertiesv`. They support W2-L0–L3, HR-REC, W2-C1, and W2-C2; they are not cosmetic citations.
+
+The pasted slice’s characterization of the same print is explicit in GRTJA:
+
+> “The print is mixed-characteristic”
+
+Therefore the cited published scope, as documented by the pasted notes themselves, does not certify equal-characteristic complete DVRs.
+
+2. **Equal-characteristic evidence is expressly not a proof leg**
+
+> “Roster: the probe's 16 towers (ℤ₂/ℤ₃/F₂[[t]]/F₃[[t]] …)”
+
+Classification: **EVIDENCE-ONLY**. This shows that the implementation was exercised in equal characteristic, but only at the listed prime-residue rings and finite levels.
+
+> “F_p[[t]] rows have no PARI leg (displayed deferral, inherited)”
+
+Classification: **CITE-SCOPE confirmation**. The note itself records that an external irreducibility/\((e,f)\) leg is missing in equal characteristic.
+
+The evidence also does not cover arbitrary base rings \(\mathbf F_q[[t]]\): extension residue fields occurring internally in a tower are not the same as taking the coefficient DVR itself to be \(\mathbf F_q[[t]]\).
+
+3. **H1/H5 — locally safe finite-field irreducibility**
+
+> “ψ_m^{(ξ)}(y) := ξ^{−g_m}ψ_m(ξy), a monic irreducible with the same (e, h, g) data”
+
+Classification: **H1/H5 CLEAR locally**. Here \(\psi_m\) is over a finite residue field, hence over a perfect field. Variable rescaling by a unit preserves irreducibility. This does not invoke the false equal-characteristic assertion that every irreducible polynomial over \(K=\mathbf F_q((t))\) is separable.
+
+4. **H7 — integer division is justified, not field division**
+
+> “s = ℓV mod e, u = (V − sh)/e”
+
+> “An abscissa x … has integer ordinate iff xh ≡ V (mod e)”
+
+Classification: **H7 CLEAR**. Division by \(e\) is in \(\mathbb Z\), following a congruence guaranteed by \(\gcd(e,h)=1\). No \(1/e\) or \(1/k!\) is used inside the coefficient field.
+
+Likewise:
+
+> “T + (ℓ′𝔰 − ℓu′) = ℓ(u − V)/e”
+
+is explicitly derived as an integer Bézout identity.
+
+5. **H7 — root/reachability issue honestly fenced**
+
+> “The harness lift's character ξ … is REACHABLE by an ℓ-shift iff \(z_m^{k·h_m}=\xi^{-1}\) is solvable in \(k\), i.e. iff \(\gcd(h_m,\operatorname{ord}z_m)\) divides the ξ-exponent”
+
+Classification: **H7 CLEAR**. The note does not silently assume a root exists; it states the exact divisibility condition and says it is not a theorem of the class pin.
+
+6. **H2 — no \(v(p)\) dependence found**
+
+> “wild p | e_j rows”
+
+Classification: **H2 CLEAR**. Here wildness is expressed by residue characteristic dividing a numerical ramification index, which remains meaningful in equal characteristic. I found no use of \(v(p)<\infty\), absolute ramification \(v(p)\), or an Eisenstein-in-\(p\) normalization.
+
+7. **H3/H4**
+
+No load-bearing use of \(p\) odd, \(2^{-1}\), discriminant-square tests, Teichmüller representatives, Witt vectors, exp/log, or mod-\(4/8\) arithmetic was found.
+
+---
+
+### B. `GRTJA_PROOF_2026-08-08.md`
+
+1. **Direct domain restriction — CITE-SCOPE**
+
+> “For a realized principal-read OM type t of order r on a separable monic f ∈ O[x], O ∈ {ℤ_p, F_p[[t]]}”
+
+This is not the capstone’s domain. It omits, among others:
+
+- \(\mathbf F_{p^f}[[t]]\) for \(f>1\);
+- ramified and unramified mixed-characteristic extensions of \(\mathbb Z_p\);
+- arbitrary complete DVRs with residue field of size \(q\).
+
+Changing this quantifier would require extending the cited print-side theorem package, not merely editing notation.
+
+2. **H6 — explicit mixed-characteristic print scope**
+
+> “O = ℤ_p is the print's own base (𝒪 the valuation ring of a local field); the F_p[[t]] instance is the displayed equal-characteristic deferral (JA-BOX-4)”
+
+> “JA-BOX-4 (equal characteristic). The print is mixed-characteristic; the F_p[[t]] rows ride construction-identity + the machine leg only (no PARI entry point) — displayed deferral”
+
+Classification: **CITE-SCOPE**, decisive. The note openly distinguishes theorem-backed mixed characteristic from equal-characteristic construction identity plus tests.
+
+3. **H5 — separability is honestly fenced**
+
+> “on a separable monic f ∈ O[x]”
+
+Classification: **H1/H5 CLEAR**, but scope-limiting. The dangerous inference “irreducible implies separable” over \(\mathbf F_q((t))\) is not made here. Inseparable examples such as \(x^p-t\) lie outside JA-PIN’s stated input.
+
+Any drainage/exhaustiveness theorem that later claims to cover all polynomials must show how the inseparable/discriminant-zero locus is handled; that is an out-of-slice interface.
+
+4. **Residual irreducibility is safe**
+
+> “ψ_j monic irreducible”
+
+These \(\psi_j\) live in finite residue fields. Classification: **H5 CLEAR** because finite fields are perfect.
+
+5. **H7 — canonical integer normalization**
+
+> “normalized Bézout ℓ_j h_j + ℓ′_j e_j = 1 with 0 ≤ ℓ_j < e_j”
+
+> “u := (V − s·h)/e”
+
+Classification: **H7 CLEAR**. The corrected JA-GRID theorem explicitly separates the divisibility assertion from the extra nonnegative-coordinate condition \(u\ge0\). There is no field division by \(e\).
+
+6. **JA-EPS attained-origin correction**
+
+> “\(z_m^{t_{\mathrm{Def}}}=z_m^\nu\,\varepsilon_m(\beta)\)”
+
+Classification: **GENERAL correction, not a characteristic hazard**. The controlling annex fixes the earlier raw twist equality by retaining the attained-origin shift. It uses only integer lattice data.
+
+7. **JA-RES scalar criterion correction**
+
+> “\(\exists c\in F^\times\ \forall i\in S_A,\ c_i=cC_i \iff |\chi(S_A)|\le1\)”
+
+Classification: **H7 CLEAR**. No root existence or division assumption is hidden; the criterion is an equality of explicitly computed finite-field characters. The empty-support corrigendum is already included.
+
+8. **H2/H3/H4**
+
+No \(v(p)\), \(p\)-adic logarithm, odd-prime hypothesis, discriminant-square rule, Teichmüller lift, or Witt-vector construction is used in the proof kernels. The \(p=2,3,5\) rows are evidence coverage only.
+
+---
+
+### C. `WELDMASTER_2026-08-08.md`
+
+1. **Inherited domain restriction — CITE-SCOPE**
+
+> “For every tower T of the [ILN]† S0.1 class realized as a principal-read OM type via the dictionary map T(t) (JA-PIN — the DOMAIN identification…)”
+
+Classification: **CITE-SCOPE**. Realization “via JA-PIN” imports JA-PIN’s restricted domain and its explicit equal-characteristic deferral.
+
+The controlling correction changes a single transport into a five-field package but does not change this domain:
+
+> “THEOREM WELD-M-PKG … For every tower \(T\) on the frozen S1 perimeter”
+
+The “frozen S1 perimeter” still contains the JA-PIN/W2 supplier scope.
+
+2. **Load-bearing inherited print faces**
+
+> “(M0) … [JA]† JA-PIN … + [W2]† W2-C1”
+
+> “(M2) … [JA]† JA-EPS … JA-RES … + [W2]† W2-C2/(HR-REC)”
+
+> “(M4) … [W2]† W2-C2 + §3.4 … + W2-C3”
+
+Classification: **H6/CITE-SCOPE**. These fields do not independently generalize the GMN/JA/W2 results.
+
+3. **New WM-COB core is genuinely general**
+
+> “γ, γ′ ∈ ℤ are arbitrary”
+
+> “Every step is integer arithmetic”
+
+Classification: **GENERAL kernel**. The proof of
+
+\[
+D_j=t_j(\beta_j'')-t_j(\beta_j)-t_j(\beta_j')
+\]
+
+uses only eq-12 splitting, Bézout congruences, and units in residue fields. It has no characteristic-zero dependency.
+
+4. **H7 — period and coboundary algebra**
+
+> “For every γ ∈ ℤ: E(γ + E)/E(γ) = ρ_T”
+
+Classification: **H7 CLEAR**. The exponents are integers, and all divisions arise from established divisibility in the split recursion.
+
+5. **Previously false \(H^1=0\) claim is corrected**
+
+> “gauges with a fixed coboundary form a torsor under \(\operatorname{Hom}(\mathbb Z/E,K^\ast)\), rather than being unique”
+
+Classification: **GENERAL correction**. The controlling annex removes the uniqueness assertion. No equal-characteristic issue remains at this site.
+
+6. **Equal-characteristic testing is evidence only**
+
+> “eq-char rows”
+
+in the 29-tower roster is **EVIDENCE-ONLY**, not a replacement for the mixed-characteristic supplier citations.
+
+7. **H2/H3/H4/H5**
+
+No \(v(p)\), characteristic-zero expansion, odd-prime split, Teichmüller/Witt construction, or irreducible-implies-separable step appears in WM-COB/WM-RHO/WM-FENCE.
+
+---
+
+### D. `SIGMALAW_PROOF_2026-08-08.md`
+
+1. **Characteristic-free displayed setting**
+
+> “slot field K_m, modulus ψ = ψ_m”
+
+> “Σ_q : K_q → K_q, K₀-linear, coordinate bijection fixing 1”
+
+Classification: **GENERAL algebraic form**. All \(K_q\) are finite residue-field extensions, so no imperfect-residue-field problem occurs.
+
+2. **H6 — GMN print evaluator is load-bearing**
+
+> “The print slot evaluator (Def-`t(i)` + Def-`rescoeff`, exactly the sealed `GmnLeg.rres` semantics)”
+
+> “Thm-`phir`”
+
+The EC-q derivation uses:
+
+> “\(c·\psi_{q-1,j}=\operatorname{Prnt}_j(P_j)\) [Thm-`phir`]”
+
+Classification: **CITE-SCOPE**. The theorem is not derived solely from the finite-field recursion; it consumes the print theorem and its normalization constant. The pasted slice documents that print as mixed-characteristic.
+
+3. **“No new literature consumption” does not close inherited scope**
+
+> “No new literature consumption.”
+
+Classification: **not a generality warrant**. It means the note inherits W2’s existing print consumption; it does not extend that consumption to equal characteristic.
+
+4. **H7 — divisions are integer congruence calculations**
+
+> “\(t_j(A)=(s_m(A)-\ell_{m-1}u_j)/e_{m-1}\)”
+
+> “\(t_j(A)=\tau_m(A)-k_j·A_m\)”
+
+Classification: **H7 CLEAR**. Integrality follows from the same Bézout/grid congruences. No inversion of \(e_{m-1}\) in \(K_m\) occurs.
+
+5. **H5 — relation preservation is finite-field algebra**
+
+> “(EC-q) … making Σ_q a ring AUTOMORPHISM of K_q”
+
+Classification: **H5 CLEAR locally**. The quotient fields are constructed from finite-field irreducible residual polynomials. Finite fields are perfect, and the proof uses explicit preservation of the modulus relation, not characteristic-zero separability.
+
+6. **Examples are not scope proofs**
+
+> “Chamber ℤ₃”
+
+in SEP-A/SEP-B and the doubly twisted examples is **EVIDENCE-ONLY**. The formulas are general, but the examples do not test \(\mathbf F_q[[t]]\) bases.
+
+7. **H1–H4**
+
+No factorials, exp/log, \(v(p)\), \(p\)-odd assumption, discriminant-square test, Teichmüller system, or Witt-vector construction appears.
+
+---
+
+### E. `JD0_PROOF_2026-08-08.md`
+
+1. **Corrected formal coefficient is characteristic-free**
+
+> “\(\mu_{\hat T}(q)=q^{\pm B(\mathcal G)}\cdot\prod_j N_{\Lambda_j}(r_j)\)”
+
+> “\(r_j=|K_j|=q^{d_0g_0\cdots g_{j-1}}\)”
+
+Classification: **GENERAL formal kernel**. This depends only on finite-field cardinalities, factorization predicates, and integer lattice data.
+
+2. **H5 — corrected residual action is valid in every characteristic**
+
+> “For each fixed degree D define  
+> \(\sigma_{\xi,D}(R)(y)=\xi^{-D}R(\xi y)\)”
+
+> “if \(R=AB\) … \(\sigma_{\xi,D}(R)=\sigma_{\xi,a}(A)\cdot\sigma_{\xi,b}(B)\)”
+
+Classification: **H5 CLEAR**. The controlling S10 correction no longer calls this an algebra automorphism across mixed degrees. The degreewise bijection directly preserves factor degrees and irreducibility over every finite field.
+
+3. **H6 — actual gauge dictionary imports JA**
+
+> “JA-RES slot-character form; JA-GRID grid = T-side abscissas. J-D0 consumes both AT THAT GRADE”
+
+Classification: **CITE-SCOPE** for the actual classifier application. The formal theorem assumes the documented unit-character action, but showing that the classifier over every complete DVR has precisely that action uses JA, whose equal-characteristic/general-DVR scope is not certified.
+
+4. **Actual classifier identification is explicitly conditional**
+
+> “Its identification with L2core’s actual per-cell classifier coefficient may be consumed only on the perimeter on which the L2core supplier has established that identification.”
+
+> “The cited exact instances through OM order 4 do not, by themselves, prove an all-orders identification.”
+
+Classification: **INTERFACE/CITE-SCOPE**, not an equal-characteristic obstruction. Even after solving the DVR-scope issue, a separate all-orders assembly interface is still required.
+
+5. **Cross-cohomology blindness is correctly separated from gauge invariance**
+
+> “the displayed formula for \(\mu_{\hat T}(q)\) contains neither \(z_j\) nor \(c(\gamma,\gamma')\)”
+
+Classification: **GENERAL**. This proves value blindness across distinct classes without assuming they are gauge-related.
+
+6. **“Eisenstein shape” is not Eisenstein-in-\(p\)**
+
+> “one read (2,1,1); stratum count \((q−1)/q^3\)”
+
+Classification: **H2 CLEAR**. The calculation uses valuation/grid data and residual unit choices, not \(v(p)<\infty\). It remains meaningful with a uniformizer \(t\) in equal characteristic.
+
+7. **H3/H4**
+
+No odd-prime hypothesis or Teichmüller/Witt construction is used. The \(p=7\) and wild rows are evidence only.
+
+## 3. Out-of-slice interfaces
+
+| Interface | Consumed by this slice | Generality status auditable from the pasted material |
+|---|---|---|
+| `[ILN]†` S0.1/S0.2, REALIZE, SHIFT, EXP-KIT | All five notes | Claimed as the arbitrary-DVR engine, but its proof is not pasted. Its genuine all-complete-DVR scope cannot be independently audited here. |
+| GMN `HigherNewton.tex` | W2, JA, WELDMASTER, SIGMALAW | The pasted notes characterize it as mixed-characteristic and explicitly defer \(F_p[[t]]\). This is the central H6 gap. |
+| FGMN print / N-1 | GRTJA base cases | Out of slice. The note describes it as a second print but provides no equal-characteristic scope theorem. |
+| GRTJB | WELDMASTER, JD0 | Polygon/development claims are out of slice. No judgment here about their complete-DVR scope. |
+| GRTJC | WELDMASTER, JD0 | Carry algebra, decidedness, and classifier transport are out of slice. |
+| OPEN2ATTACK OA-L1–L4 | SIGMALAW | Required for OPEN-2a-Σ. Their statements and DVR scope are not pasted. |
+| L2core all-orders assembly identification | JD0 | Explicitly unresolved beyond its established/verified perimeter; exact instances through order 4 are not an all-orders theorem. |
+| Phase-B `omMenu`, `hExhaust`, drainage | JD0 and capstone route | Out of slice. In particular, handling inseparable/discriminant-zero equal-characteristic inputs cannot be inferred from the present notes. |
+| PARI `factorpadic` / `idealprimedec` | W2 and JA evidence legs | The notes explicitly say there is no \(F_p[[t]]\) PARI leg. This cannot certify equal characteristic. |
+| Lean `RealInstanceV2` order-0 count | JD0 | Only an order-0 anchor; it does not certify the higher-order/general-DVR identification. |
+| LIFTCORNER and DULEMMA | W2/JD0/WELDMASTER consumers | Out-of-slice supplier status only; their equal-characteristic scope was not audited. |
+
+## 4. Slice summary
+
+The substantive formulas in Q6 pass the requested algebraic hazard test: they use finite residue fields, integer Bézout/grid arithmetic, Newton-polygon data, unit characters, and henselian-style residual constructions. I found no use of characteristic-zero Taylor expansions, \(v(p)<\infty\), odd-prime tests, Teichmüller/Witt machinery, or unjustified roots/division; separability is either explicitly assumed for the input polynomial or used only for residual polynomials over perfect finite fields. Nevertheless, the notes do **not already prove** uniformity across every complete DVR with residue size \(q\). The decisive failure is H6 plus domain restriction: the load-bearing GMN print is documented here as mixed-characteristic, JA-PIN only treats \(\mathbb Z_p\) and \(\mathbf F_p[[t]]\), and equal-characteristic rows are explicitly machine-only/“no PARI leg.” Thus the evidence strongly suggests the extension needs no new combinatorial idea, but a published-scope replacement or a fresh general henselian-DVR proof is still required.
+
+QGEN-Q6 VERDICT: CITE-SCOPE(5)

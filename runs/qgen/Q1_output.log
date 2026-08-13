@@ -1,0 +1,292 @@
+## 1. Per-note verdicts
+
+| Note | Coverage | Verdict | Reason |
+|---|---|---|---|
+| `W12_PROOF_2026-08-08.md` | Deep read of statements, S2–S5, all later corrections, and W12-HT; scan of battery numerics/provenance | **CITE-SCOPE** | Its elementary finite-window arguments are DVR-general, including equal characteristic. But the load-bearing Ore/GMN leaf theorem is cited through a source whose pasted citation audit says its published scope is finite extensions of \(\mathbb Q_p\). The final W12-HT proof also consumes out-of-slice `GENIND-1`. |
+| `docs/HUMAN_PROOF.md` | Deep read of the proof architecture and all load-bearing lemmas; scan of verification inventory | **MIXED-CHAR-ONLY** | The proof explicitly fixes an unramified \(K/\mathbb Q_p\), uses \(p\) as uniformizer, \(v(p)=1\), and later invokes a mixed-characteristic-zero different/depth argument. It does not establish the theorem for \(\mathbb F_q((t))\). |
+| `docs/GMN_citations.md` | Deep read of scope, imported facts, theorem pins, and the 2026-08-01 correction | **CITE-SCOPE** | The note itself corrects its earlier claim: the cited GMN paper fixes a finite extension of \(\mathbb Q_p\), not an arbitrary complete discretely valued field. |
+| `W11_PROOF_2026-08-08.md` | Deep read of S1–S6 and the four final annex corrections; scan of battery enumerations | **GENERAL-WITH-EDIT** | The \(n=2\) count, refinement, drainage, and separability bookkeeping use only DVR arithmetic, the finite residue field, and completeness. The formal S1 parenthetical initially restricts mixed characteristic to \(v(p)=1\), although the note itself establishes that this restriction is needed only for optional discriminant-spectrum displays. Widening the theorem’s parenthetical is a statement-only edit. |
+
+## 2. Flagged sites
+
+### `W12_PROOF_2026-08-08.md`
+
+**W12-1 — formal base-field scope, H2; trivial edit but not the main gap**
+
+> “O a complete DVR with residue field F_q (either characteristic: mixed absolutely-unramified Z_p-type, v(p) = 1, or equal F_q[[t]]-type — the W-11 r2 pin inherited; as there, the pin is load-bearing only for p = 2 disc-spectrum displays, never for counts)”
+
+Classification: **GENERAL-WITH-EDIT locally**. The count theorems do not use \(v(p)=1\), but the displayed convention does not literally quantify over ramified mixed-characteristic DVRs. Replace it by “an arbitrary complete DVR with finite residue field”; retain \(v(2)=1\) only in the optional mixed-\(2\) discriminant-spectrum remarks.
+
+This is not an equal-characteristic obstruction: the note explicitly includes \(\mathbb F_q[[t]]\).
+
+**W12-2 — order-one leaf certification, H6**
+
+> “If every residual is separable, Ore's theorem (the order-1/regular case of the Montes read; Ore 1928, via GMN ‘Newton polygons of higher order’, order-1 layer — classical, cited not re-proved) factors any O-lift F…”
+
+Classification: **CITE-SCOPE**. This is load-bearing for W-12.A’s assignment of splitting types and its window-level \(\sigma\)-certification. The pasted GMN citation note later says the GMN paper’s actual standing scope is finite extensions of \(\mathbb Q_p\). No arbitrary-complete-DVF published replacement is pinned in this slice.
+
+The factorization statement is very plausibly general, but H6 expressly treats a \(\mathbb Q_p\)-only citation as a real gap even when generalization is routine.
+
+**W12-3 — higher-order version of the same gap, H6**
+
+> “**(H-e)** … the order-≥ 2 GMN LEAF/σ-DECISION theorem — the higher-order analogue of the Ore step…”
+
+Classification: **CITE-SCOPE**. This is only a hypothesis for the composite-stage program, not part of the proved order-one count law, but any claim that `[W12-H]` already has a published all-DVR supplier inherits the same scope problem.
+
+**W12-4 — all-degree history-transfer supplier, INTERFACE**
+
+> “It consumes W-12 S2.1 … W12-L1, and GENIND-1 (fracture permanence, at its stated PROVED grade).”
+
+and:
+
+> “At general degree, GENIND-1’s proved fracture permanence says that later translations internal to one cluster do not change or re-couple its coprime siblings.”
+
+Classification: **INTERFACE — unresolved in this slice**. `GENIND-1` is essential in W12-HT Step 3 and termination/compatibility, but its statement and proof were not pasted. Its generality cannot be certified here.
+
+**W12-5 — separability fence, H5 cleared**
+
+> “the shape is σ-DECIDED … every disc ≠ 0 lift has this σ ~~— in fact every lift~~”
+
+followed by:
+
+> “the struck parenthetical is FALSE in equal characteristic at wild decided shapes…”
+
+Classification: **GENERAL / H5 correctly handled**. The note explicitly rejects the false “every lift” claim and restricts splitting-type certification to disc-nonzero lifts. It even supplies the equal-characteristic counterexamples \(y^3+b_0\) in characteristic \(3\) and analogous characteristic-\(2\) examples.
+
+**W12-6 — characteristic-zero reflex removed, H1/H5 cleared**
+
+> “both lifts have disc ≠ 0 **[r4: proved below in EVERY characteristic; the sealed warrant ‘distinct irreducible factors, étale’ is a characteristic-0 reflex…]**”
+
+Classification: **GENERAL**. The repaired proof replaces the characteristic-zero shortcut by explicit derivative, discriminant, and Hensel computations in characteristics \(2\), \(3\), and \(\ge5\).
+
+**W12-7 — the remaining characteristic-zero sentence is properly branched, H1 cleared**
+
+> “Separability: in MIXED characteristic the fraction field has characteristic 0, so distinct irreducible factors are automatically étale; in EQUAL characteristic p, …”
+
+Classification: **GENERAL**. Characteristic zero is used only in the mixed-characteristic branch; the equal-characteristic branch is proved separately.
+
+**W12-8 — no factorial or integer-division dependency, H1/H7 cleared**
+
+> “Translation is unitriangular on the finite coefficient module, with inverse translation by \(-\widetilde z\pi^k\).”
+
+and:
+
+> “Hence the map is bijective in every characteristic and at every finite window…”
+
+Classification: **GENERAL**. W12-HT does not divide by binomial coefficients or use \(1/k!\). Its translations and monic redivision are integral and block-unitriangular.
+
+**W12-9 — rational exponent normalization, H7 cleared**
+
+> “\(\ell_F\) integer-valued on \(P_F\) gives \(m_ib_i\in\mathbb Z_{>0}\)… and \(m_0+\sum m_ia_i=\ell_F(\text{base point})\in\mathbb Z\)”
+
+Classification: **GENERAL**. The rationality proof only divides exponents along arithmetic progressions after proving the resulting exponents integral. It uses no roots in \(K^\times\) and no residue-characteristic assumption.
+
+**W12-10 — small primes, H3 cleared**
+
+The note explicitly treats:
+
+> “p = 3 / char 3”
+
+> “p = 2 / char 2”
+
+and proves the residual census over abstract finite fields.
+
+Classification: **GENERAL**. No “\(p\) odd” restriction remains in the count laws; the characteristic-\(2\) and characteristic-\(3\) loci differ, but their counts are separately computed.
+
+### `docs/HUMAN_PROOF.md`
+
+**HUMAN-1 — governing convention, H2/H4**
+
+> “`K/Q_p` is a finite **unramified** extension … uniformizer `p`, normalized valuation `v` with `v(p) = 1`…”
+
+and:
+
+> “**Unramifiedness is essential:** `v(p) = 1` is the single normalization constant…”
+
+Classification: **MIXED-CHAR-ONLY**. In \(\mathbb F_q((t))\), \(p=0\), \(v(p)=+\infty\), and \(t\), not \(p\), is the uniformizer. This convention cannot be instantiated by the equal-characteristic field.
+
+**HUMAN-2 — L1’s theorem is expressly restricted**
+
+> “**Hypotheses:** `K/Q_p` unramified…”
+
+Classification: **MIXED-CHAR-ONLY as stated**. The Hensel/product-Jacobian proof itself appears DVR-general, but the stated lemma and cited `K_\delta/K` supplier do not claim that scope.
+
+**HUMAN-3 — L4 uses \(p\) as the uniformizer, H2**
+
+> “using only `[O_δ : p^m O_δ] = Q^m` (`v(p)=1`)”
+
+Classification: **MIXED-CHAR-ONLY as written**. Replacing \(p\) by an arbitrary uniformizer \(\pi\) would make the elementary box-volume proof general, but the present statement and notation do not do so.
+
+This is likely a trivial edit for L4 itself, not for the whole proof.
+
+**HUMAN-4 — M6 relies on the unramified index identity**
+
+> “The unramified index identity makes each leading `F_r`-digit Haar-uniform…”
+
+Classification: **MIXED-CHAR-ONLY / CITE-SCOPE**. The abstract equal-measure-fibre conclusion may be general, but the stated proof is tied to the unramified \(K/\mathbb Q_p\) setup and to GMN coordinates whose cited scope is also \(\mathbb Q_p\)-adic.
+
+**HUMAN-5 — L2core overstates its scope relative to its hypothesis**
+
+> “For every prime power `q` and every residue characteristic `p`…”
+
+but:
+
+> “**Hypotheses:** `K/Q_p` unramified…”
+
+Classification: **MIXED-CHAR-ONLY**. “Every \(p\)” here means every residue characteristic among unramified \(p\)-adic fields, not both mixed and equal characteristic.
+
+**HUMAN-6 — load-bearing characteristic-zero termination argument, H1/H2**
+
+> “Over `K/Q_p` finite unramified (mixed char 0)…”
+
+and:
+
+> “ramifying-level depth `≤ B(n,p) := … d·v_p(d)`”
+
+and:
+
+> “Serre LF III.6 Prop 13 … wild excess `v_L(e) = e v_p(e)`”
+
+Classification: **MIXED-CHAR-ONLY, substantive**. In equal characteristic \(p\), \(v_p(d)\) is not a substitute for the behavior of different exponents in separable Artin–Schreier or more general wild extensions. This is not cured merely by replacing the uniformizer symbol. A suitable equal-characteristic termination/finite-menu argument must be supplied.
+
+**HUMAN-7 — defectlessness citation scope**
+
+> “complete discrete valuation ⇒ defectless (Ostrowski; Serre LF II.3; Neukirch ANT II.8.5)”
+
+Classification: **CITE-SCOPE / overbroad as presented**. The surrounding lemma is explicitly about finite unramified \(K/\mathbb Q_p\). The note does not pin an equal-characteristic theorem with the exact hypotheses required. No conclusion about arbitrary complete DVRs should be inferred from this sentence alone.
+
+**HUMAN-8 — GMN scope claim contradicted inside the pasted slice, H6**
+
+Appendix A says:
+
+> “`p`-independent (holds over arbitrary complete DVFs…)”
+
+but `docs/GMN_citations.md` later corrects:
+
+> “GMN's scope is a fixed finite extension K/ℚ_p … NOT ‘an arbitrary complete DVF’…”
+
+Classification: **CITE-SCOPE**. The human proof’s principal external supplier is cited beyond its verified published scope.
+
+**HUMAN-9 — residual irreducibility/separability, H1/H5 cleared**
+
+> “Every irreducible polynomial over `F_Q` is separable…”
+
+Classification: **GENERAL and correct in context**. This concerns polynomials over a finite field, which is perfect. It does not assert the false statement that every irreducible polynomial over \(\mathbb F_q((t))\) is separable. The example \(x^p-t\) is therefore not a counterexample to L3.
+
+**HUMAN-10 — overall claim**
+
+> “the Goal Theorem is unconditional and verified for `n ≤ 4`…”
+
+Classification: **MIXED-CHAR-ONLY under this document’s conventions**. It does not establish the corresponding claim for equal-characteristic complete DVRs.
+
+### `docs/GMN_citations.md`
+
+**GMN-1 — original overclaim, H6**
+
+> “GMN works over an arbitrary complete discretely valued field…”
+
+Classification: **superseded and false as a citation-scope statement**.
+
+**GMN-2 — controlling correction, H6**
+
+> “**GMN's scope is a fixed finite extension K/ℚ_p** … NOT ‘an arbitrary complete DVF’…”
+
+Classification: **CITE-SCOPE**. This is the decisive published-scope audit result for all W12/HUMAN uses of GMN in this slice.
+
+**GMN-3 — the source’s actual standing setup**
+
+> “scope ‘We fix a finite extension K of Qp’…”
+
+Classification: **CITE-SCOPE**. The cited theorem cannot, from this source alone, be invoked for \(K=\mathbb F_q((t))\).
+
+**GMN-4 — termination only for separable input, H5**
+
+> “for a monic separable `f` there exists `r ≥ 0` with every type … `f`-complete”
+
+Classification: **GENERALITY CONDITION, honestly stated**. Consumers must restrict this termination theorem to disc-nonzero/separable polynomials. W12 does that after its corrections; broader “every lift” language would be invalid.
+
+**GMN-5 — residual separability is safe**
+
+> “descent stops at order `r` iff every order-`r` residual is separable”
+
+Classification: **GENERAL at the residue-field level**. Each \(F_r\) is finite and hence perfect; “nonseparable residual” here means a repeated/non-squarefree residual polynomial, not an inseparable irreducible polynomial.
+
+### `W11_PROOF_2026-08-08.md`
+
+**W11-1 — formal mixed-characteristic restriction, H2**
+
+> “either characteristic: mixed Z_p-type … = ABSOLUTELY UNRAMIFIED, v(p) = 1 … or equal F_q[[t]]-type”
+
+followed immediately by:
+
+> “clauses (i)–(iii) and every count/σ law hold over any ramified mixed base too — the proof never uses v(p)”
+
+Classification: **GENERAL-WITH-EDIT**. The theorem’s parenthetical should say “arbitrary complete DVR with finite residue field.” The \(v(2)=1\) restriction should remain only on the two discriminant-spectrum displays.
+
+**W11-2 — no unlawful use of \(2^{-1}\), H1/H3 cleared**
+
+> “Char ≠ 2: …”
+
+and separately:
+
+> “Char 2: write \(c_0=c_1^2d\)… Artin–Schreier splits by \(\operatorname{Tr}(d)\)…”
+
+Classification: **GENERAL**. Division by \(2\) and the discriminant-square test are confined to characteristic not \(2\); characteristic \(2\) has a separate trace computation.
+
+**W11-3 — refinement in characteristic \(2\), H1 cleared**
+
+> “Char 2 (equal or mixed)… `+2s` has `v ≥ k+1` in mixed char 2, `= 0` in equal char”
+
+Classification: **GENERAL**. The proof explicitly distinguishes \(2=0\) from \(v(2)>0\); it never assumes \(2\) invertible.
+
+**W11-4 — inseparable equal-characteristic members, H5 cleared**
+
+> “EQUAL characteristic 2: disc = a₁², so disc = 0 ⇎ perfect square, and disc = 0 members CAN be decided. Witness: \(f=x^2+t\)… irreducible … inseparable”
+
+Classification: **GENERAL / honest separability bookkeeping**. This directly catches the checklist’s \(x^p-t\) hazard.
+
+**W11-5 — final tame/wild correction, H5 cleared**
+
+> “If `A₁ = 0` … defines a degree-two purely inseparable extension with `e = 2`. It is ramified and is not tame, but it is not called ‘wildly ramified’ here…”
+
+Classification: **GENERAL**. The final annex correctly separates equal-characteristic inseparability from the tame/wild terminology for finite separable extensions.
+
+**W11-6 — mixed-\(2\) discriminant spectrum, H2 properly fenced**
+
+> “the `{h+1,h+2}` spectrum below assumes … `v(2)=1`”
+
+and:
+
+> “over a ramified mixed-2 base `v(disc)=min(2w,2e₀+h)`…”
+
+Classification: **GENERAL-WITH-EDIT**, not an obstruction. The note supplies the general formula and explicitly says the count and \(\sigma\) laws are unaffected.
+
+**W11-7 — external inputs**
+
+> “Classical inputs: Hensel's lemma … Eisenstein irreducibility, Artin–Schreier square/trace censuses…”
+
+Classification: **GENERAL** for the uses actually made. These standard inputs hold for complete/henselian DVRs and finite residue fields. No \(\mathbb Q_p\)-specific analytic or Witt-vector construction is used in the \(n=2\) proof.
+
+## 3. INTERFACE rows
+
+These consumptions leave the pasted slice. Their generality is not inferred.
+
+| Consumer | Out-of-slice supplier | Role | Audit status |
+|---|---|---|---|
+| W12-HT | `GENIND-1` | Fracture permanence at general degree | **INTERFACE — load-bearing, unaudited** |
+| W12 | W-10 | Recentring/count template | **INTERFACE** |
+| W12/W11 | J-D0 | Letter/gauge blindness framing | **INTERFACE** |
+| W12 composite stages | GRTJA, GRTJB, GRTJC, GRTW2, LIFTCORNER, WELDMASTER, Σ-LAW | `[W12-H]` higher-order count and membership package | **INTERFACE; conditional in W12 itself** |
+| W12 annexes | HEX3, HMENU3 | Cubic drainage and complete cubic menu | **INTERFACE** |
+| W12 firing checks | GENH4, GENHN | Degree \(4+\) menu/leaf certification | **INTERFACE** |
+| W11 | L2core assembly identification | Connects the \(n=2\) menu to the larger density chain | **INTERFACE** |
+| HUMAN_PROOF | `L1_proof.md`, `M6_lemma.md`, `BB3_infinity.md`, `L5fix_complete.md`, etc. | Claimed detailed proofs of the summarized lemmas | **INTERFACE** |
+| HUMAN_PROOF | paper’s `lemma: local integrals` | Degree-\(\delta\) descent | **INTERFACE; stated only for unramified \(p\)-adic fields here** |
+| HUMAN_PROOF | paper’s `(CONV)=α^{-1}` identity | Monic/projective bridge | **INTERFACE** |
+| HUMAN_PROOF | tame functional-equation sources | Interpolation supplier | **INTERFACE; only tame mixed-characteristic values are required for interpolation** |
+
+## 4. Slice summary
+
+The exact \(n=2\) mathematics in W11 is genuinely characteristic-uniform: its count cells, residual censuses, recursive translations, and \(q^N\) drainage law use only finite-field counting, DVR valuations, and completeness. Extending its formal statement from the displayed unramified/equal-characteristic parenthetical to all complete DVRs is a trivial edit, with \(v(2)=1\) retained only for an optional discriminant-spectrum remark. W12’s elementary order-one digit calculus and its repaired separability arguments are likewise characteristic-free, and the new history-transfer formula contains no factorial, logarithmic, Witt-vector, or \(v(p)\) dependency. Nevertheless, this slice does not certify W12 at the requested generality: its Ore/GMN leaf certification is cited through a source whose verified published scope is \(K/\mathbb Q_p\), and W12-HT additionally consumes the unpasted `GENIND-1`. The standalone HUMAN_PROOF is more decisively mixed-characteristic-only: it fixes unramified \(K/\mathbb Q_p\), uses \(p\) as uniformizer, and relies on a characteristic-zero different/depth argument. Thus the exact finite-level evidence supports Asvin’s expectation, but these pasted notes as a whole do not yet prove “all complete DVRs, no new mathematics needed.”
+
+QGEN-Q1 VERDICT: OBSTRUCTED(1)

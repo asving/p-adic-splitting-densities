@@ -1,0 +1,96 @@
+The local mathematics in all three notes is characteristic-neutral: I found no use of characteristic zero, finite \(v(p)\), \(2^{-1}\), Witt vectors, factorial denominators, separability of arbitrary irreducible polynomials, or extraction of roots in \(K_i^\times\). The two unresolved issues are citation-scope certifications: the pasted text does not state the base-field hypotheses of the GMN `HigherNewton` results used by J-B, or the ambient hypotheses of the FGMN results used by J-C. Those sources may well be general, but that cannot be certified from this slice alone.
+
+## 1. Per-note verdicts
+
+| Note | Coverage | Verdict | Reason |
+|---|---|---|---|
+| `GRTJB_PROOF_2026-08-08.md` | Deep read of live §0M and §§1–7 plus final annexes; historical repair narratives scanned for generality hazards | **CITE-SCOPE** | All displayed algebra is DVR/finite-field/valuation combinatorics and works in equal characteristic. The published scope of the GMN `HigherNewton` lemmas is not stated in the pasted note. |
+| `GRTJC_PROOF_2026-08-08.md` | Deep read of live theorem chain, acceptance record, and corrective annexes #4–#8; historical machine/repair record scanned | **CITE-SCOPE** | The carrier, localization, gauge, residue, and cocycle arguments are characteristic-neutral. The FGMN theorem statements are PDF-verified, but the pasted quotations omit the published hypotheses on the base valued field, so Q\(_p\)-only versus arbitrary discretely valued \(K\) is not certified here. |
+| `LIFTCORNER_2026-08-08.md` | Deep read of S1–S5 and annexes AC-1–AC-5; historical evidence prose scanned | **GENERAL** | The proof uses only integral monic division, valuation/content inequalities, residue-field arithmetic, and discrete combinatorics. Its initially open higher-rung interface is eventually proved in AC-5 without mixed-characteristic input. |
+
+## 2. Flagged sites, quoted and classified
+
+### GRTJB
+
+| Hazard | Verbatim site | Classification |
+|---|---|---|
+| H6 | “Classifier side = the GMN print `docs/references/HigherNewton.tex` … Print anchors used here … Lemma `shape` items 1–2 … Proposition `propertiesv` item 3” | **CITE-SCOPE.** These are load-bearing in JB-VTX(a), (c), and (d1). The pasted note gives locations and conclusions but not the publication’s hypotheses on the base field. Generality to \(F_q((t))\) therefore cannot be certified from this slice. |
+| H1/H7 | “divide by \(e_{m-1}\) (legitimate: \(t_m(\beta)\in\mathbb Z\) since \(s_m^{wt}(\beta)\equiv\ell_{m-1}\beta\pmod{e_{m-1}}\))” | **BENIGN — integer divisibility.** This is division in \(\mathbb Z\), not multiplication by \(e_{m-1}^{-1}\) in \(O\) or a residue field. It remains valid when the residue characteristic divides \(e_{m-1}\). |
+| H7 | “\(t_m(\beta)=(\ell_{m-1}\beta-s_m^{wt}(\beta))/e_{m-1}\)” | **BENIGN — integer normalization.** No \(e\)-th root or field division is used. |
+| H1/H5 | “\(\psi_j\) monic irreducible with \(\psi_j(0)\ne0\)” | **BENIGN.** The proof uses irreducibility to obtain a field and \(\psi_j(0)\ne0\) to make the residual letter a unit. It never invokes “irreducible implies separable” for polynomials over the fraction field. In particular, no step excludes inseparable polynomials such as \(x^p-t\) by a false characteristic-zero argument. |
+| H3 | “\(c_m=\psi_{m,0}=-z_{m+1}\)” | **BENIGN.** Negation makes sense in every characteristic; in characteristic \(2\), \(-z=z\). No use of \(2^{-1}\), discriminant square classes, or mod-\(4/8\) arguments occurs. |
+| H5 | “The degenerate branch (\(v=0\)), displayed … the \(\rho\)-form identity is NOT claimed at \(v=0\)” | **GOOD SEPARABILITY/DEGENERACY BOOKKEEPING.** The drainage branch is explicitly fenced rather than silently cancelled through a possibly zero residual. |
+| H2/H4 | “Fix … a complete DVR \(O\) with uniformizer \(\pi\) and finite residue field” is inherited through the cited construction, while all formulas use \(\pi\), \(w_j\), \(K_j\), \(z_j\), and \(\psi_j\). | **NO HIT.** No occurrence of \(v(p)\), an Eisenstein polynomial in \(p\), Teichmüller/Witt arithmetic, or an unramified-\(\mathbb Z_p\) decomposition is load-bearing. |
+| H2/H3 evidence | “evidence caveat: \(F_p[[t]]\) rows have NO external (PARI) oracle leg” | **EVIDENCE-ONLY, NOT A THEOREM RESTRICTION.** Equal-characteristic rows lack one oracle but the symbolic proof does not use that oracle. |
+| H7 | “\(u := (V-s_m^{wt}(V)h_{m-1})/e_{m-1}\ge0\)” and the four-line lattice proof | **BENIGN — discrete lattice arithmetic.** Integrality comes from the congruence defining \(s_m^{wt}\); positivity comes from the nonnegative weight lattice. There is no division inside \(O\). |
+
+The corrective annex E-3 also removes the only suspicious lattice claim:
+
+> “The shear … is not unimodular when \(e_q>1\).”
+
+That correction is general and important: only slope and abscissa run are preserved. No prime-specific conclusion remains.
+
+### GRTJC
+
+| Hazard | Verbatim site | Classification |
+|---|---|---|
+| General base | “Fix a complete DVR \(O\) with uniformizer \(\pi\) and finite residue field” | **GENERAL FORMULATION.** The base object is not restricted to a finite extension of \(\mathbb Q_p\). |
+| H6 | “FGMN state these for types of ARBITRARY order, so the composite-stage instance is a citation, not an extrapolation by this note” | **CITE-SCOPE.** “Arbitrary order” certifies the length of the MacLane chain, not the characteristic or class of the base valued field. |
+| H6 | “Print: ‘Let \(g\in K[x]\) be a non-zero polynomial … \( \mathcal P_\alpha(\mu)/\mathcal P_\alpha^+(\mu)\) is a free \(\Delta\)-module of rank one.’” | **CITE-SCOPE.** The annex verifies the printed conclusion and numbering, but the pasted quotation does not include the paper’s standing assumptions on \(K\) and \(\mu\). That missing published scope is the only potentially mixed-characteristic-sensitive citation gap I found. |
+| H6 | “Print: ‘For non-zero \(g,h\in K[x]\), we have \(S_\lambda(gh)=S_\lambda(g)+S_\lambda(h)\).’” | **CITE-SCOPE, same source-scope issue.** The formula itself is characteristic-free. |
+| H2 | “\(w_0(\pi)=1\) … \(w(\pi)=e_0e_1\cdots e_m=E\)” | **BENIGN.** This uses the chosen uniformizer \(\pi\), not the integer prime \(p\), and nowhere assumes \(v(p)<\infty\). In \(F_q[[t]]\), take \(\pi=t\). |
+| H4 | “TC-1 localize \(\operatorname{gr}(w)\) at \(\operatorname{in}(\pi)\); TC-2 gauge \(\pi\mapsto1\)” | **BENIGN.** This is localization and quotient by a homogeneous unit associated to an arbitrary uniformizer. It is not Witt-vector or unramified-\(\mathbb Z_p\) structure. |
+| H7 | “the grading collapses \(\mathbb Z\to\mathbb Z/E\)” | **BENIGN.** This is quotient grading by the degree of a homogeneous unit. There is no division by \(E\) in the coefficient field and no extraction of an \(E\)-th root. |
+| H7 | “\(s_{NR}(\gamma+E)=s_{NR}(\gamma)\)” and “\(u_1(\gamma+E)=u_1(\gamma)+1\)” | **BENIGN — integer congruence arithmetic.** It uses only divisibility among products of the integer ramification indices. |
+| H1/H5 | “\(\psi_j\) monic irreducible with \(\psi_j(0)\ne0\)” | **BENIGN.** Again, only the field quotient and unit status are used. No derivative or separability assertion occurs. |
+| H3 | “\(c_m=\psi_{m,0}=-z_{m+1}\)” | **BENIGN.** Valid in characteristic \(2\); no odd-prime assumption. |
+| H7 | “\(A:=B/(\vartheta-1)B\)” | **BENIGN.** This is a ring quotient, not logarithm/exponential or division by an integer. |
+| H1 | “\(K[x]=O[x][\pi^{-1}]\)” and \(w(\pi^{-k}g)=w(g)-kE\) | **BENIGN.** Localization at the uniformizer works in either characteristic. |
+| H2/H3 evidence | “base rings \(\mathbb Z_p\) and \(F_p[[t]]\)” and “\(p\in\{2,3,5\}\)” | **MACHINE-SCOPE ONLY.** The theorem proofs are explicitly at general \(m\); the finite prime roster is not used to infer the universal statement. |
+| H7 | Annex #4: “Put \(q:\Delta=K_m[y]\to\Delta/(\psi_m)=K\)” | **BENIGN.** This quotient map is characteristic-neutral. The annex correctly replaces an invalid polynomial lifting by equality after quotient. |
+| H7 | Annex #8: “\(\Lambda_N(c):=\operatorname{realize}(NR,c,N),\ c\in K^*\)” | **GOOD ZERO BOOKKEEPING.** The repaired scope avoids assigning a finite weight to the zero polynomial; no characteristic assumption is introduced. |
+
+Annex #6 is especially relevant to generality. Its replacement bridge is module-theoretic:
+
+> “\(B_n\) is a free rank-one module over \(B_0\simeq\Delta=K_m[y]\) on the virtual anchor.”
+
+The subsequent derivation of `(DMULT-w)` uses only rank-one module multiplication and units in \(K_m\). It does not use ramification measured through \(v(p)\), characteristic-zero separability, or roots in \(K_m^\times\).
+
+### LIFTCORNER
+
+| Hazard | Verbatim site | Classification |
+|---|---|---|
+| H1/H3 | “At \(g_0=1:\ \psi_0=y+c_0\ (c_0\ne0),\ K_1=K_0,\ z_1=-c_0\) a SCALAR.” | **BENIGN.** Quotienting by a linear polynomial gives \(K_1\simeq K_0\) in every characteristic. In characteristic \(2\), the minus sign collapses harmlessly. |
+| H2 | All theorem formulas use \(\pi\), for example “\(b_0=\hat c'\pi^{h_0}+t_0\)” | **BENIGN.** No identification \(\pi=p\), no finite \(v(p)\), and no absolute ramification index occurs. |
+| H7 | “\(\operatorname{amin}(k):=\lceil(e_0-k)h_0/e_0\rceil\)” | **BENIGN — integer ceiling.** This is integer combinatorics, not division in \(O\) or its residue field. |
+| H7 | “Since \(\gcd(e_0,h_0)=1\), \(e_0\operatorname{amin}(k)+kh_0\ge e_0h_0+1\)” | **BENIGN.** The argument is pure divisibility in \(\mathbb Z\), valid even when the residue characteristic divides \(e_0\). |
+| H1/H2 | Annex AC-2: “Let \(\Phi\in\mathcal O[x]\) be monic and \(F\in\mathcal O[x]\). Every coefficient … has valuation at least \(w_0\)-content\((F)\).” | **GENERAL.** The repaired content lemma correctly requires an integral monic key; long division and the ultrametric inequality work in every DVR. |
+| H3 | Concrete counterexample: “\(O=\mathbb Z_2\), \(d_0=2,\ e_0=2,\ h_0=1\)” | **EXAMPLE-ONLY.** It refutes a bad induction step and is not used to restrict the repaired universal proof. |
+| H3/machine scope | “rings \(\{\mathbb Z_2,\mathbb Z_3,F_2[[t]],F_3[[t]]\}\)” | **EVIDENCE-ONLY.** It positively includes small residue characteristic and equal-characteristic rows. The theorem is carried by the symbolic lexicographic proof. |
+| H4 | “the degree-1 extension arithmetic of \(K_1\) is modulus-independent” | **GENERAL FINITE-FIELD ARITHMETIC.** The final account correctly locates this in the \(g=1\) polynomial quotient calculation, not in Teichmüller or Witt coordinates. |
+| H5 | No separability assertion appears in TAIL-STAB, READ-EQ, or AC-5. | **NO HIT.** The proof uses residue equality, weights, monic division, and strict-excess read-killing. |
+| H7 | AC-5: “\(\nu(\Delta)\ge W+1\)” followed by \(Q''\Delta=A+B\Phi'_1\) | **GENERAL.** This is valuation additivity plus monic division. The correction terms are shown strictly above the consumed read line; no root extraction or characteristic-zero normalization occurs. |
+| Generality | AC-5: “Thus every \((RM\text{-}1)\) input class … retains exactly the interface consumed by ITERLAWN S4.6.” | **GENERAL.** This closes the earlier opacity obstruction uniformly in the DVR. It explicitly avoids the false stronger demand that the complete quotients and remainders be byte-equal. |
+
+## 3. INTERFACE rows
+
+These are out-of-slice and therefore not audited here. Each must itself be characteristic-general before the capstone can inherit an all-complete-DVR theorem.
+
+| Consuming note | Out-of-slice interface | Verbatim consumption | Required generality fact |
+|---|---|---|---|
+| GRTJB | `[RMG]` | “`[RMG] = RMENGINE_2026-08-08.md ACCEPTED`” | RM-m, L-CELL, L-LINE, L-EXACT, and L-CANON must hold over arbitrary complete/henselian DVRs, not only \(\mathbb Q_p\)-extensions. |
+| GRTJB | `[ILN]†` | “`[ILN]† S0.1/S0.2 (accepted; class pin, canonical lifts, REALIZE/WELL-DEF…)`” | The standard-lift and realization machinery must exist and satisfy its laws equally over \(F_q[[t]]\). |
+| GRTJB | W-2 / J-A / LED-\(\Lambda\) | “`W-2 … J-A … LED-Λ … Every consumption is at the source's own grade`” | Their representative transport, valuation dictionary, residual-polynomial laws, and ledger laws must be base-characteristic-neutral. |
+| GRTJC | `[ILN]†` | “`(IN-1) [ILN]† … ACCEPTED`” | The closed cocycle law and standard-lift construction must be general in the base DVR. |
+| GRTJC | GRB | “`GRB Lemma D-REAL + CARRY-1 + (W-MULT), ACCEPTED-WITH-CONDITIONS`” | Its ladder hypotheses and last-read carry algebra must not rely on \(v(p)<\infty\), \(p\) odd, or characteristic zero. |
+| GRTJC | W-1/W-2/J-A/J-B | “`W-1 / W-2 / J-A / J-B`” | The transported MacLane valuation and residual operator must be available over equal-characteristic complete DVRs. J-B’s external GMN cite-scope issue above remains inherited. |
+| GRTJC | DU lemma | “`(DMULT-s) … PROVED-conditional … by DULEMMA_PROOF_2026-08-08.md`” | Only the sharp multiplier-one tier depends on this interface; its all-characteristic scope is not audited here. |
+| LIFTCORNER | accepted ITER-LAW | “`where the ACCEPTED ITER-LAW gives the display with its letter z₁′`” | The source ITER-LAW must itself be valid over every complete DVR with finite residue field. |
+| LIFTCORNER | GRTW2 | “`COR 2 and the S1 orbit frame consume GRTW2 clause 3`” | Shift-descent and \(\psi\)-transport must be characteristic-neutral. The fold annex says GRTW2 is accepted, but its proof content is outside this slice. |
+| LIFTCORNER | ITERLAWN / RM interfaces | “`Consequently S4.4–S4.6 construct ITER-PKG-2 … From rung 3 onward ITERLAWN calls only (RM-m)`” | Higher RM-m interfaces retain their existing conditional ledger; their base-characteristic scope is external. |
+
+## 4. Slice summary
+
+Within the pasted proofs, the answer to Asvin’s mathematical question is favorable: every load-bearing local derivation is expressed through an abstract finite residue-field tower, monic division, discrete valuation/Newton/residual-polynomial arithmetic, and completeness/realization interfaces. None uses characteristic zero, finite \(v(p)\), oddness, Witt coordinates, separability of arbitrary fraction-field irreducibles, or field division by ramification indices. The \(F_q[[t]]\) cells are therefore not exceptional for any argument visible in this slice. However, the slice alone does not fully certify the global all-\(O\) conclusion: J-B’s GMN `HigherNewton` citations and J-C’s FGMN citations do not reproduce the publications’ base-valued-field hypotheses, and numerous construction/dictionary results leave the slice as explicit interfaces. No new local mathematics is indicated; what remains is source-scope and interface verification.
+
+QGEN-Q7 VERDICT: CITE-SCOPE(2)

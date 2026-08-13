@@ -1,0 +1,275 @@
+## 1. Per-note verdicts
+
+| Note | Coverage | Verdict | Generality finding |
+|---|---|---|---|
+| `GENTOW2_PROOF_2026-08-09.md` | Deep read of theorem, bridge lemmas, faithfulness section, and governing corrigenda; machine-history sections scanned for scope | **CITE-SCOPE**, with one **GENERAL-WITH-EDIT** setting restriction | The local MacLane/residual-polynomial algebra is characteristic-free, but the theorem is formally instantiated only over \(\mathbb Q\)/number fields with a \(p\)-adic valuation. The pasted citation inventory does not quote FGMN’s global field hypotheses, so it does not establish that Theorem 6.3/Corollary 6.4 are published for arbitrary complete DVR fraction fields or inseparable prime polynomials. |
+| `GENTOW5_PROOF_2026-08-09.md` | Deep read of the abstract ladder/refinement arguments and S11–S12 governing corrections; machine records scanned | **CITE-SCOPE** for the FGMN-dependent chain; otherwise characteristic-general but conditional | Its direct algebra uses only finite residue fields, valuations, normalizers, and polynomial substitution. However it inherits the unresolved FGMN scope, and—independently of characteristic—its general-depth theorem remains conditional on the open \([{\rm GENTOW5-W}(i)]\) for \(i\ge3\). Thus this note does not already prove the unconditional arbitrary-depth result. |
+| `GENTOW4_PROOF_2026-08-09.md` | Deep read of the partial-side theorem, separability fences, corrections, and open boxes; machine history scanned | **GENERAL**, relative to named interfaces | The local argument is valid in equal characteristic: separability is explicitly fenced by `disc f != 0`, finite-residue-field factor tests are abstract, and no \(2^{-1}\), \(v(p)\), Witt vectors, or characteristic-zero identities are used. Its mixed-side multiplicity tie and count layer remain open, but those are characteristic-neutral incompletenesses. |
+
+No site was found where a proved local argument genuinely breaks because \(v(p)=+\infty\) in \(\mathbb F_q[[t]]\). The obstruction is certification/scope and an explicit open depth lemma, not mixed-characteristic mathematics.
+
+## 2. Flagged sites
+
+### A. `GENTOW2_PROOF_2026-08-09.md`
+
+#### A1. Formal mixed-characteristic restriction
+
+> “Base field K = ℚ (or a number field), v = the p-adic valuation, K_v complete discrete — FGMN's standing setting”
+
+Classification: **GENERAL-WITH-EDIT; H1/H2 setting restriction**.
+
+As written, GENTOW2-A is not quantified over \(\operatorname{Frac}(O)\) for arbitrary complete DVRs. Nothing in its displayed proof subsequently uses characteristic zero or finite \(v(p)\); the trivial edit would be to replace this sentence by an arbitrary complete discretely valued field and its valuation. That edit is justified only after the FGMN scope issue below is cleared.
+
+The same restriction is repeated in the hypothesis audit:
+
+> “(H-a) v discrete, K_v complete: v = v_p on ℚ.”
+
+Classification: **GENERAL-WITH-EDIT; H1/H2 setting restriction**.
+
+#### A2. FGMN’s ambient scope is not quoted
+
+> “Theorem 6.3 (L1458–1464). ‘Let F ∈ P be a prime polynomial and θ ∈ K̄v a root of F . Let µ be an inductive valuation and φ a key polynomial for µ. Then…’”
+
+> “Corollary 6.4 (L1523–1527) — THE theorem. ‘With the above notation, suppose that φ |µ F and µ admits a MacLane chain…’”
+
+> “Base field K = ℚ (or a number field), v = the p-adic valuation, K_v complete discrete — FGMN's standing setting”
+
+Classification: **CITE-SCOPE; H6**, with an **H5 component**.
+
+The quoted theorem statements do not reproduce the paper’s standing assumptions or Definition 6.1’s complete meaning of \(P\). Consequently the pasted record cannot establish whether the published results allow:
+
+- arbitrary complete discretely valued fields;
+- equal-characteristic fraction fields such as \(\mathbb F_q((t))\);
+- inseparable monic irreducibles such as \(x^p-t\).
+
+This is not evidence that FGMN is \( \mathbb Q_p\)-only; it is a failure of the pasted faithfulness record to prove otherwise. The PDF table verifies numbering and statement text, not the global scope needed by QGEN.
+
+#### A3. Irreducibility is not silently converted into separability
+
+> “Every φ ∈ KP(µ) is irreducible in Kv [x].”
+
+> “These hold for each root θ = ξ of F = Φ₃ separately: Theorem 6.3/Cor 6.4 are stated for a fixed root θ, and every root of the irreducible F is such a θ.”
+
+Classification: **SAFE locally; H5**, conditional on A2.
+
+The proof uses irreducibility to obtain a prime polynomial and applies the theorem to a chosen root. It does not infer that the roots are distinct, divide by \(F'\), or count roots via separability. Thus there is no local invocation of the false equal-characteristic principle “irreducible implies separable.” Whether FGMN itself restricts \(P\) to separable primes is part of the missing cite scope.
+
+#### A4. Unit rescaling is characteristic-free
+
+> “R_ν(Φ₃) = w^{f₃}·ψ₃(y/w) =: ψ₃^{(w)}”
+
+> “the substitution y ↦ wy preserves monicity after the renormalization displayed, irreducibility, degree, and the nonzero constant”
+
+Classification: **SAFE; H7**.
+
+This uses multiplication by \(w\in K_2^\times\), not extraction of a root of \(w\). It is an automorphism in every characteristic and requires no condition involving \(\gcd(f_3,q-1)\).
+
+#### A5. Integer normalization uses Bézout/gcd, not division in the field
+
+> “i ≡ ℓ₁u₂ mod e₁ (gcd(h₁, e₁) = 1); with 0 ≤ i < e₁ this pins  
+> k = (i − ℓ₁u₂)/e₁ = −⌊ℓ₁u₂/e₁⌋.”
+
+Classification: **SAFE; H7**.
+
+The quotient is an integer exponent established by congruence. No division by \(e_1\) occurs inside \(K\) or its residue field.
+
+#### A6. \(p=2\), literal integers, and PARI are witness-only
+
+Examples such as
+
+> “Φ′ = x² − 2”
+
+and the hypothesis audit’s \(v_p\) specialization are mixed-characteristic, but the literal \(2,4,16,\ldots\) computations occur in witness and machine-evidence sections. They do not enter the abstract proof except through the formally restricted setting already flagged in A1.
+
+Classification: **NON-LOAD-BEARING H2/H3 evidence**.
+
+#### A7. Depth scope is explicitly limited
+
+> “Depth ≥ 4: GENTOW2-A is stated at the third stage but its proof pattern is level-uniform … PROVIDED the level-r analogues of (B-1)/(B-2) … are proved”
+
+Classification: **OPEN/INTERFACE, characteristic-neutral**.
+
+GENTOW2 itself does not claim an arbitrary-depth theorem. This is not an equal-characteristic obstruction, but it prevents treating this note alone as the full general result.
+
+---
+
+### B. `GENTOW5_PROOF_2026-08-09.md`
+
+#### B1. Polynomial substitution uses no factorials
+
+> “Substitute Phi2 = Phi2+ - what into the development and expand IN THE POLYNOMIAL RING”
+
+> “the Taylor/substitution identity in k(L2)[T]”
+
+> “an identity of polynomials, valid over any commutative ring, both characteristics”
+
+> “the binomials appear transiently but the conclusion … is binomial-free; char q divides some binom(mu2, k) harmlessly”
+
+Classification: **SAFE; H1/H3**.
+
+This is the correct equal-characteristic treatment. There is no \(1/k!\), exponential/logarithmic series, or inversion of binomial coefficients.
+
+#### B2. Abstract finite-field use is genuinely abstract
+
+> “K_0 := F_Q, K_i := F_{Q^{f_1...f_i}}.”
+
+Classification: **SAFE; criterion (a)**.
+
+Only the finite residue fields and their finite extensions are used. There is no Teichmüller or Witt-vector construction in the displayed ladder grammar.
+
+#### B3. Normalizer recursion is integral combinatorics
+
+> “e_{i+1} m_i(k) + b_i(k) u_{i+1} = k, 0 <= b_i(k) < e_{i+1}  
+> (unique since gcd(u_{i+1}, e_{i+1}) = 1).”
+
+Classification: **SAFE; H7**.
+
+This is modular arithmetic in \(\mathbb Z\), not division by \(e_{i+1}\) in \(O\) or a residue field.
+
+#### B4. Digit lifts are generic DVR lifts, not Witt lifts
+
+> “O-digit coefficients d_{r,t} realizing c in the coherent normalization”
+
+Classification: **SAFE locally; H4 interface**.
+
+The displayed construction does not select Teichmüller representatives or invoke Witt vectors. Its existence is delegated to `LEMMA GENTOW5-C` and ultimately to out-of-slice lift/slot lemmas, whose all-DVR scope must be checked at their interfaces.
+
+#### B5. The only square-root remark is explicitly characteristic-2 and non-load-bearing
+
+> “At mu2 = 2 only vartheta_2 can differ from 1 … and in char 2 every element of K2 is a square, so ‘R is a perfect square’ is convention-independent there”
+
+Classification: **SAFE/non-load-bearing; H3/H7**.
+
+This explains why certain characteristic-2 battery rows were blind to a gauge convention. The general theorem keeps the \(\vartheta_t\)-twists and does not assume every unit has a square root.
+
+#### B6. FGMN dependence inherits GENTOW2’s cite-scope gap
+
+> “Cited at verified numbering: FGMN [Q1]-[Q10] via GENTOW2_PROOF S3”
+
+> “Cor 6.4's level quantifier ‘for any 1 <= i <= r’ carries the one-sidedness at every depth; faithfulness audit GENTOW2 S6”
+
+Classification: **CITE-SCOPE; H6/H5**.
+
+The arbitrary-depth theorem relies on the same Theorem 6.3/Corollary 6.4 application. Because the pasted GENTOW2 material does not establish their global field and inseparability scope, GENTOW5 cannot independently certify equal-characteristic use.
+
+#### B7. A real open lemma remains at depth \(i\ge3\)
+
+> “NOT PROVED at i >= 3: the single-w geometric form  
+> \([GENTOW5-W(i)]\) … is hereby an OPEN transported lemma, the honest-sorry analogue.”
+
+The governing S12 correction then says:
+
+> “at index \(n\ge3\), ALL of clause (b) is conditional on \(\mathcal W_{\le n}\)”
+
+and:
+
+> “Thus clause (c) at index \(n\ge3\) … is conditional on \(\mathcal W_{\le n}\).”
+
+> “Clause (e) at index \(n\ge3\) … is conditional on \(\mathcal W_{\le n}\) as well.”
+
+Classification: **SUBSTANTIVE OPEN GAP, but not mixed-characteristic-specific**.
+
+This directly refutes the strongest “already works with no new mathematics” reading. For general depth, the pinned-key certificate, Corollary 6.4 application, exact intermediate values, entry budgets, and automatic next floor are conditional. The same missing cocycle law exists over mixed and equal characteristic.
+
+#### B8. No hidden \(v(p)\) dependence in the abstract theorem
+
+The theorem uses \(\pi\), `nhat_i`, `dv_i`, slopes, and residue letters. Literal powers \(2^a\), \(3^a\), PARI, and \(p^N\)-lift windows occur in witness/machine sections.
+
+Classification: **SAFE theorem / non-load-bearing H2 evidence**.
+
+---
+
+### C. `GENTOW4_PROOF_2026-08-09.md`
+
+#### C1. Separability is explicitly fenced
+
+> “f monic of degree n = D'·mu1 on the genre-G opening locus, disc f != 0”
+
+Classification: **SAFE; H5**.
+
+Over any field, including \(\mathbb F_q((t))\), a nonzero discriminant is precisely the needed squarefreeness/separability fence.
+
+#### C2. Drainage peels use that fence honestly
+
+> “if Phi' | f then Phi' EXACTLY divides f (disc != 0)”
+
+> “Phi' | f gives the irreducible factor Phi' itself … exactly once by disc f != 0”
+
+Classification: **SAFE; H5 drainage leg**.
+
+No claim is made that an arbitrary irreducible polynomial is separable. Exact multiplicity one comes from the explicit discriminant hypothesis.
+
+#### C3. Galois block construction remains under the squarefree hypothesis
+
+> “Galois-stability by LEMMA HE7-11, integrality, division of the squarefree f”
+
+Classification: **SAFE locally; H5 interface**.
+
+The local use is properly fenced. The generality of the imported Galois-stability lemma is an out-of-slice interface.
+
+#### C4. Residual separability is stated where consumed
+
+> “each irreducible factor r2 of a separable level-2 residual gives ONE irreducible factor”
+
+> “whenever r is a SIMPLE factor of a separable R_kappa”
+
+Classification: **SAFE; H5**.
+
+Moreover, the actual residue fields here are finite and hence perfect. The note does not silently transfer separability from an irreducible polynomial over the fraction field.
+
+#### C5. Small-prime classification avoids discriminant-square formulas
+
+> “ONE side, integer slope, residual  
+> (gamma_g-scaled) irreducible quadratic -> …  
+> split (two K2-roots) -> …  
+> double root -> alpha-refine, repeat”
+
+Classification: **SAFE; H3**.
+
+This is factorization in the abstract finite residue field. It does not use \(2^{-1}\), a quadratic discriminant-square criterion, or mod-\(4/8\) arithmetic.
+
+#### C6. The parity discussion explicitly rejects a characteristic-specific shortcut
+
+> “decide RAM by the SLOPE's denominator, which is translation-invariant. A reader using f-level pin parity is wrong”
+
+Classification: **SAFE; H3/H7**.
+
+Parity occurs only as a machine tooth in an \(e_2=2\) example. The theorem uses the Newton-slope denominator, which is valuation combinatorics valid at residue characteristic \(2\).
+
+#### C7. Open multiplicity transport is characteristic-neutral
+
+> “At a MIXED side … the TIE mu2* = mu2 is NOT derived here”
+
+> “matching each mu2*(r) to the multiplicity m_r requires the residual-multiplicity transport this corpus has not proved”
+
+Classification: **OPEN, not MIXED-CHAR-ONLY**.
+
+The block read and \(\sigma\)-decision are claimed to remain available because \(\mu_2^*\) is computed from the composed polygon. What remains unavailable is predicting the block length from the level-1 residual multiplicity.
+
+#### C8. Count laws remain open
+
+> “the partial-side locus … has no budget/count display here — the item-(4) COUNT layer stays open”
+
+Classification: **OPEN, characteristic-neutral**.
+
+Thus GENTOW4 does not itself finish uniform density/counting on partial sides, even though the local decision mechanism is all-DVR compatible.
+
+## 3. Interfaces leaving this slice
+
+| Consumer | Out-of-slice interface | Generality obligation that must be checked there |
+|---|---|---|
+| GENTOW2 | `GENHN_PROOF`, especially `GENHN-2′`, `T(b)′(ii)/(iii)`, B-1, slot separation, ladder lifts | Must be formulated for arbitrary complete DVRs; digit lifts and evaluation residues must not use \(p\)-adic digits, Teichmüller/Witt representatives, or finite \(v(p)\). |
+| GENTOW2 | `GENTOW1_PROOF`, especially `COR GENTOW-1.1` and the depth-3 floor | Must derive floors from valuation/Newton data rather than \(v(p)\) or mixed-characteristic ramification. |
+| GENTOW2 | `T3_COCYCLE_TELESCOPE_2026-08-12.md` | Absorbed cocycle conclusion must retain arbitrary-valued-field scope. No content guessed here. |
+| GENTOW5 | `GENHN_PROOF`, `GENTOW1_PROOF`, and their slot/lift/carry packages | Same generic-DVR and no-\(v(p)\) obligations; especially the base lift supplying `lift_i`. |
+| GENTOW5 | `HE7_PROOF` Annex R | The transported `SLOT/LIFT` recursion and residue-letter basis must be over abstract finite residue fields and arbitrary henselian DVRs. |
+| GENTOW5 | The still-open \([{\rm GENTOW5-W}(i)]\) | Not an external theorem yet: a new all-level cocycle proof is required before clauses (a),(b),(c),(e) become unconditional for \(i\ge3\). |
+| GENTOW4 | `HETOW_RECON`, `HE6R1_RECON`, `HE7_PROOF`, `HE6_PROOF` | Block projection, Galois stability, peel, refine, and decision theorems must have general henselian-DVR scope. The present note’s `disc f != 0` fence must be preserved by those suppliers. |
+| GENTOW4 | `GENHN_PROOF` and `GENTOW1_PROOF` | Corrected key, slot exactness, normalizer cocycles, node floors, and composed pin budgets must be all-DVR statements. |
+| GENTOW4 | “Ore's second theorem / FGMN Lemma 2.17 content” | Mentioned only as a possible future discharge of the mixed-side tie; it is not consumed by the proved theorem, so its scope is not adjudicated here. |
+
+## 4. Slice summary
+
+The local valuation, Newton-polygon, residual-polynomial, cocycle, and finite-field arguments show no genuine mixed-characteristic dependency. In particular, no load-bearing site uses \(1/k!\), \(v(p)<\infty\), \(2^{-1}\), Teichmüller/Witt structure, or silent separability. GENTOW4 is locally equal-characteristic-safe under its explicit discriminant fence. GENTOW2, however, is formally stated only for number-field \(p\)-adic completions, and its quoted FGMN inventory omits the published ambient hypotheses needed to certify replacement by \(\operatorname{Frac}(O)\). GENTOW5 inherits that cite-scope issue and, more decisively, openly leaves \([{\rm GENTOW5-W}(i)]\) unproved for \(i\ge3\), with the governing correction making the general-depth carrier, exact-value, budget, and floor chain conditional. Therefore this slice supports “no new mixed-characteristic mathematics appears necessary,” but it does not establish “the notes already prove the full all-\(O\), all-depth uniformity with no new mathematics.”
+
+QGEN-Q4 VERDICT: CITE-SCOPE(2)

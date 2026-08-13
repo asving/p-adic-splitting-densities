@@ -1,0 +1,60 @@
+The abstract HE7.A theorem is sound under its enlarged hypotheses, but the five-instance package is not clean.
+
+## GAP — coherent/print-frame conflation in the level-one `(RISE)` discharge
+
+r8 claims:
+
+> “At \((\ell,d)=(1,1)\) and \(r=Z-s\) that reads \(\Psi_{\kappa,Z-s}=\Phi'+B_0\) … residue \(c_0=-s\): this master’s \(\Phi-L_\kappa(s)\).”
+
+But the effective seam is
+
+\[
+\operatorname{res}(B_0/\varpi^\kappa)
+=
+\iota(\gamma_\kappa(B_0))\eta^{-q(\kappa)}.
+\]
+
+Thus the source choice \(\operatorname{res}(B_0/\varpi^\kappa)=-s\) implies
+
+\[
+\gamma_\kappa(B_0)=-s\,\eta^{q(\kappa)},
+\]
+
+not \(-s\), unless \(\eta^{q(\kappa)}=1\). No such hypothesis exists; indeed the note pins \(q\) precisely because the twist can be nontrivial. Equivalently, the print factor \(Z-s\) transports to a coherent linear factor with a rescaled root.
+
+Therefore the quoted HE6-family member is not shown to be the master’s exact recentering \(\Phi-L_\kappa(s)\). This breaks r8’s joint same-step identification used to discharge level-one `(RISE)`—especially S3.2—and also affects S1.8C’s claimed family-member identification. The abstract theorem remains true because `(RISE)` is an explicit carrier hypothesis; the instance discharge is the gap.
+
+Classification: **GAP**.
+
+## Master-core result
+
+Apart from that instance seam:
+
+- `(ACCOUNT)` correctly yields clause 1 and `(SIDE-COUNT)`.
+- `(RES-DEG)` plus the defect-free fundamental identity gives the termwise orbit count and exact \((e,f)\).
+- `(SIDE-PROD)`, `(LABEL-PROD)`, `(MID-PEEL)`, terminal reads, child jumps, and linear refinements form a complete recursive analysis under the stated block/continuation hypotheses.
+- The clause-5 trigger analysis covers both key-changing transitions, while transition 6 returns key-free residual blocks by definition.
+- `(RANK)=(\deg F,\mu,\sigma_{\mathcal C})` decreases correctly in every transition, with `(SEC-RANK)` honestly explicit.
+- `(LB1)` and `(MP1)` remain fenced; I found no fence leakage.
+
+S1.8B’s level-two transport and composed-key \(W+w\) routing are coherent. The HE6-PROOF \(\ell\ge2\) caveat is correctly routed to the product-\(\ge2\) child branch.
+
+## Minor — r8 census arithmetic
+
+r8 says:
+
+> “Nine source lines…”
+
+but lists two HE3 lines, five HE6-family lines, and HE6 lines 663–666 as four lines: \(2+5+4=11\), not nine.
+
+It also says:
+
+> “Twelve master-internal landmark strings, on eleven lines…”
+
+but the listed line numbers contain ten distinct lines; line 3353 carries three strings.
+
+Classification: **minor**, one bookkeeping unit.
+
+I could not independently byte-check the repository pins because the workspace runner failed before every command with `bubblewrap is unavailable`. I have not counted that infrastructure failure as a manuscript finding, and I do not represent the pin audit as completed.
+
+VERDICT: FINDINGS | FINDINGS: 0C + 1G + 1m

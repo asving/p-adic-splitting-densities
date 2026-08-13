@@ -1,0 +1,318 @@
+No shell or external sources were used. I audited only the four pasted files.
+
+## 1. Per-note verdicts
+
+| Note | Coverage | Primary verdict | Internal generality assessment |
+|---|---|---|---|
+| `HMENU3_PROOF_2026-08-08.md` | Deep read, including Annexes A–C | **CITE-SCOPE** | **GENERAL-WITH-EDIT(1):** the unrestricted “every lift” assertion is false in equal characteristic; Annexes A/C already supply the required `disc ≠ 0` restriction. Counts and transports otherwise use only finite-field, valuation, and completeness data. |
+| `HEX3_PROOF_2026-08-08.md` | Deep read, including all dated corrections | **CITE-SCOPE** | **GENERAL:** the equal-characteristic inseparability issue is correctly fenced to `disc ≠ 0`; expansions use no factorial division, and characteristic-2/3 degeneracies are treated explicitly. |
+| `GENIND_PROOF_2026-08-08.md` | Deep read, including Annex R and both GENIND-C2 repair rounds | **CITE-SCOPE** | **GENERAL-WITH-EDIT(1), conditional:** the displayed general induction must be read with the later strengthened per-genre `(CS-1Q)` hypothesis. The all-degree result is therefore not already proved; this is an open conditionality/ledger obligation, not a mixed-characteristic obstruction. |
+| `GENH4_PROOF_2026-08-08.md` | Deep read, including Annexes PE5, R, R2, and later corrections | **CITE-SCOPE** | **GENERAL-WITH-EDIT(2):** replace the false stage-order-as-DVR frame by the valuation ring `O_L`, as Annex R3 already does, and replace the stray “Q_p-analogue” wording by `Frac(O)(θ)`. The quartic mechanisms themselves remain characteristic-general. |
+
+“CITE-SCOPE” is primary because every note load-bearingly invokes Ore/GMN or an upstream version of it, but the pasted material supplies neither a bibliographic theorem nor its published scope. I therefore cannot certify H6 from this slice.
+
+## 2. Flagged sites
+
+### HMENU3
+
+**HM-1 — H1/H5, real equal-characteristic overclaim, already corrected.**
+
+Frozen theorem statement:
+
+> “so Ore certifies **EVERY lift**”
+
+Frozen proof:
+
+> “Ore (W-12 S2.3) then assigns the SAME σ to every O-lift **(not only disc ≠ 0 ones)**”
+
+The note’s own Annex A gives the counterexample:
+
+> “Over F_q[[t]] with p = 3, the lift F = y³ + b₀ has F′ = 3y² ≡ 0, hence gcd(F, F′) = F and disc F = 0”
+
+Classification: **GENERAL-WITH-EDIT**. The necessary edit is exactly the annexed restriction to “every lift with `disc ≠ 0`.” This is a strict weakening, correctly acknowledged by Annex C. No count law changes.
+
+**HM-2 — H3/H7, apparent division by 2 is only a finite-field census.**
+
+> `A_SPLITEQ(k′) = ((q−1)(q−2)/2)q^{...}`  
+> `A_INERTDEEP(k′) = (q(q−1)/2)q^{...}`
+
+Annex B explains these as unordered-pair/Frobenius-orbit counts:
+
+> “The first formula chooses an unordered pair of distinct nonzero residue roots. For the second, the q²−q elements of F_{q²} \ F_q form Frobenius orbits of size two”
+
+Classification: **CLEAR-GENERAL**. No inversion of `2` in `O` or `F_q` occurs; these are integer cardinalities valid in characteristic 2.
+
+**HM-3 — H7, half-integral raw exponents are normalized by parity progressions.**
+
+> “the odd RAM-type parameters … carry 3/2 in RAW coordinates … which becomes integer carry 3 at the AP index u = 2i−1”
+
+Classification: **CLEAR-GENERAL**. This is arithmetic on integer parameter sets, not division inside the DVR or extraction of roots.
+
+**HM-4 — H6, unresolved citation scope.**
+
+> “**Classical:** Hensel (via W12-L1), Ore/GMN order-1 (via W-12 S2.3)”
+
+Classification: **CITE-SCOPE**. Standard Hensel lifting is available for complete DVRs in either characteristic, but no precise Ore/GMN citation or published scope is supplied here. The claim cannot receive an H6-general stamp from the pasted text alone.
+
+**HM-5 — mixed-characteristic-only oracle explicitly non-load-bearing.**
+
+> “Oracle: mixed-characteristic only”
+
+and later:
+
+> “the equal-characteristic disc = 0 lift never enters the scored set: no oracle verdict was wrong, and none was evidence about the unrestricted quantifier either”
+
+Classification: **NOT LOAD-BEARING / HONEST COVERAGE LIMIT**. This does not restrict the theorem because the proof is the transport/count argument, not the PARI sample.
+
+---
+
+### HEX3
+
+**HEX-1 — H1/H5, corrected `disc ≠ 0` fence.**
+
+> “Every conservative-DECIDED member is σ-decided (its read terminates with all consulted data in-window and separable residuals: Ore applies to every **disc ≠ 0 lift**)”
+
+The correction records the rejected form:
+
+> “the sealed clause read ‘every lift’ — the over-claim W-12’s own r4 struck from S2.3”
+
+Classification: **CLEAR-GENERAL in the current reading**. The inseparable equal-characteristic lifts are excluded exactly where splitting type is used.
+
+**HEX-2 — H1/H3, cubic expansion uses multiplication only and treats characteristic 3 explicitly.**
+
+> “the pins are (−3z, 3z², −z³) — in char 3 they degenerate to (0, 0, −z³), still ONE pinned triple per letter”
+
+Classification: **CLEAR-GENERAL**. There is no `1/3!`, division by `3`, exponential, or logarithm.
+
+**HEX-3 — H1/H3, quadratic expansion treats characteristic 2 explicitly.**
+
+> “pins digit_k(B₂) = −2z, digit_{2k}(B₁) = z² — injective in z in every characteristic: −2z in odd char, z² Frobenius in char 2”
+
+Classification: **CLEAR-GENERAL**. Frobenius is bijective on every finite field, so the degeneration does not merge letter fibers.
+
+**HEX-4 — H4, recentering requires only representatives, not Witt or Teichmüller theory.**
+
+> “recentering by ẑπ^k”
+
+and:
+
+> “the three pinned digits cancel … universal identities from (y−z)³ valid in every characteristic”
+
+Classification: **CLEAR-GENERAL**. Any chosen lift of the residue letter suffices; no multiplicative Teichmüller system or Witt-vector structure is used.
+
+**HEX-5 — H2, explicit rejection of mixed-characteristic carries as a counting input.**
+
+> “every transport is a digit bijection available in both ring types; carries (mixed characteristic) never enter counts”
+
+Classification: **CLEAR-GENERAL**. No `v(p)`, absolute ramification index, or Eisenstein-in-`p` normalization appears in the proof.
+
+**HEX-6 — H6, unresolved citation scope.**
+
+> “**Classical:** Hensel (via W12-L1), Ore (via W-12 S2.3, only for the DEC families’ decidedness)”
+
+Classification: **CITE-SCOPE**. The mathematical use is compatible with arbitrary henselian DVRs, but the published scope of the cited Ore result is not stated.
+
+---
+
+### GENIND
+
+**GI-1 — H1, no irreducible-implies-separable error at the residue level.**
+
+> “fix a monic irreducible P̄ of degree d over F_q”
+
+Classification: **CLEAR-GENERAL**. Finite fields are perfect, so irreducible residue polynomials are separable in both equal and mixed characteristic. This does not assert that arbitrary irreducibles over `Frac(O)` are separable.
+
+**GI-2 — H1/H3, binomial expansions use no factorial division.**
+
+> “the pins are universal polynomial identities in z, degenerating but never merging in small characteristic”
+
+and:
+
+> “the binomial identities … from (y−z)^m expanded at y = z + ·, valid in every characteristic”
+
+Classification: **CLEAR-GENERAL**. Only integral binomial coefficients and polynomial substitution are used.
+
+**GI-3 — H5, composite-stage σ theorem is honestly fenced.**
+
+> “separable stage residuals ⟹ σ-decided … for ALL disc ≠ 0 lifts”
+
+Classification: **CLEAR-GENERAL**, but conditional on `(CS-3)`. The note does not silently claim separability of arbitrary equal-characteristic irreducibles.
+
+**GI-4 — H7, half-integral stage quantities are guarded by parity.**
+
+Representative sites:
+
+> “slope h/2, h odd”
+
+and:
+
+> “π^{dμ/2} (dμ even) or x·π^{(dμ−h)/2} (dμ odd)”
+
+Classification: **CLEAR-GENERAL**. Every displayed exponent of `π` is integral in its stated branch. No square root in `K×` is assumed.
+
+**GI-5 — real logical/conditionality seam, not mixed-characteristic.**
+
+Original hypothesis:
+
+> `[GENIND-H(n)] … (CS-1) … (CS-2) … (CS-3) … (CS-EXACT)`
+
+Later correction:
+
+> “The quantitative stage-transport clause required here is: (CS-1Q.a) … and (CS-1Q.b)”
+
+and:
+
+> “ ‘conditional on (CS-1) only’ must be replaced by ‘conditional on (CS-1Q), verified per genre.’ A universal discharge for embedded and mixed genres remains obstructed until those affine ledgers are displayed and checked.”
+
+Classification: **GENERAL-WITH-EDIT / OPEN CONDITIONALITY**. The formal induction hypothesis must include `(CS-1Q)`. This is additional per-genre mathematics for the all-degree result, although nothing about it is specific to mixed characteristic.
+
+**GI-6 — the note itself denies that the full theorem is presently unconditional.**
+
+> “No count law at order ≥ 2 is claimed proved.”
+
+and:
+
+> “The general [GENIND-H] … is a hypothesis on the box — not claimed discharged.”
+
+Classification: **INTERFACE / OPEN BOX**, not a characteristic obstruction. Consequently these notes do not, by themselves, establish uniformity in every degree.
+
+**GI-7 — H2, criterion uses valuation geometry rather than `v(p)`.**
+
+> “A CS event is a repeated residual factor (ψ, μ) with μ ≥ 2 and e·deg ψ ≥ 2”
+
+Classification: **CLEAR-GENERAL**. Here `e` is a polygon denominator/stage ramification index, not the absolute ramification `v(p)`. No finiteness of `v(p)` is used.
+
+**GI-8 — mixed-characteristic oracle is disclosed as corroboration only.**
+
+> “oracle mixed-characteristic only”
+
+Classification: **NOT LOAD-BEARING**.
+
+**GI-9 — H6, unresolved citation scope.**
+
+> “**Classical:** Hensel (coprime + monic-factor lifting), Ore/GMN order-1, lower-hull geometry, generating functions.”
+
+Classification: **CITE-SCOPE**. The pasted note gives no precise published theorem establishing the Ore/GMN order-1 decision statement over all complete DVRs, including equal characteristic.
+
+---
+
+### GENH4
+
+**GH-1 — H1, the stage key may be inseparable in equal characteristic, but the proof does not require it to be separable.**
+
+Body:
+
+> “φ’s own polygon is the single side … so φ is irreducible”
+
+For example, in characteristic 2 an `E`-key can have the form `x²−t^h`, which is irreducible but inseparable. The note’s actual splitting-type theorem begins:
+
+> “Fix any disc ≠ 0 lift F”
+
+Classification: **CLEAR-GENERAL after the frame correction**. The key field may be purely inseparable; the quartic polynomial whose splitting type is asserted is explicitly separable via `disc ≠ 0`.
+
+**GH-2 — false stage-ring DVR assertion, already repaired.**
+
+Frozen body:
+
+> “R is a complete DVR”
+
+and:
+
+> “R is an unramified-over-the-ladder DVR”
+
+Annex R3:
+
+> “R = Ô[x]/(φ) = Ô[θ] is the NON-MAXIMAL order O[θ]”
+
+followed by:
+
+> “Let L := Frac(R) … and O_L its valuation ring, which IS a complete DVR.”
+
+Classification: **GENERAL-WITH-EDIT**. All valuation and residue computations must be read in `L/O_L`, not in the order `R`. The annex correctly observes that downstream arguments use evaluated valuations and residues, so this is a carrier correction rather than mixed-characteristic mathematics.
+
+**GH-3 — H1 wording.**
+
+> “L := Q_p-analogue(θ) (the fraction field of O extended; both characteristics)”
+
+Classification: **GENERAL-WITH-EDIT**. “Q_p-analogue” is mixed-characteristic language; the parenthetical already supplies the intended general object. The trivial edit is `L := Frac(O)(θ)`.
+
+**GH-4 — H5, separability is used only after the discriminant fence.**
+
+> “If F were irreducible its four roots would be conjugate”
+
+This occurs under:
+
+> “Fix any disc ≠ 0 lift F”
+
+Classification: **CLEAR-GENERAL**. With `disc(F) ≠ 0`, `F` is separable in either characteristic, so irreducible factors have the required conjugate-root behavior.
+
+**GH-5 — H3, characteristic 2 is treated by a separate polynomial identity rather than division by 2.**
+
+> “In char 2 the same total reads S₀ + zs² = 2zs² = 0.”
+
+Classification: **CLEAR-GENERAL**.
+
+**GH-6 — H3/H7, division by 4 is confined to odd characteristic.**
+
+> “**char odd:** inert ⟺ S₁²/4 − S₀ a non-square of F_{q²}”
+
+Classification: **CLEAR-GENERAL**. The characteristic-2 branch immediately preceding it uses trace instead, so `1/4` is never invoked where `2` is noninvertible.
+
+**GH-7 — H2, a mixed-characteristic `v(2)` argument was explicitly corrected for equal characteristic.**
+
+The later correction says:
+
+> “fails in EQUAL characteristic 2 (`4A₀ = 0`, so `v(4A₀) = ∞`, not odd); the conclusion holds by … `disc = A₁²`”
+
+Classification: **GENERAL-WITH-EDIT already supplied**. The current equal-characteristic proof does not assume `v(2)<∞`.
+
+**GH-8 — H4, canonical lifts are convention-level rather than a Witt-vector input.**
+
+> “canonical digit-lift letters in φ₂ (the W-2/LIFTCORNER seam NOT consumed; histories convention-keyed)”
+
+Classification: **CLEAR-GENERAL for the proved count laws**, with the named convention seam remaining an interface. The proof uses cancellation identities and residue-letter bijections, not Witt or Teichmüller multiplicativity.
+
+**GH-9 — H6, unresolved citation scope.**
+
+> “**Classical:** Hensel, Ore order-1, ultrametric quadratic analysis, Artin–Schreier/square-class censuses over F_q and F_{q²}.”
+
+Classification: **CITE-SCOPE**. The Artin–Schreier and finite-field census portions are visibly general. The precise published scope of the load-bearing Ore order-1 theorem is not supplied.
+
+## 3. Hazard summary
+
+| Hazard | Result in this slice |
+|---|---|
+| H1: characteristic zero, factorials, inseparability | No surviving mixed-characteristic dependence. One real unrestricted-lift error in HMENU3 was corrected to `disc ≠ 0`; GENH4 permits inseparable stage keys but fences the polynomial splitting theorem by `disc ≠ 0`. |
+| H2: `v(p)`, absolute ramification | No load-bearing use found. No argument requires `v(p)<∞`. |
+| H3: odd-prime or invertibility assumptions | Apparent `/2` factors are integer censuses; `/4` is confined to odd characteristic; characteristic 2 and 3 degenerations are handled explicitly. |
+| H4: Witt/Teichmüller specificity | No load-bearing Witt construction found. Chosen residue representatives and canonical-lift conventions affect labels/carries, while counts are proved letter-blind. |
+| H5: separability bookkeeping | Correct after the HMENU3/HEX3 `disc ≠ 0` repairs. GENIND’s `(CS-3)` is explicitly fenced. |
+| H6: citation scope | Unresolved in all four notes because no exact Ore/GMN bibliographic theorem or published scope is stated. |
+| H7: integer division/gauge normalization | Parity and arithmetic-progression guards make all `h/2`, `(u−3t)/2`, and similar exponents integral. No extraction of a `k`-th root in `K×` is used. |
+
+## 4. Out-of-slice INTERFACE rows
+
+| Consumer note | Out-of-slice supplier | Consumed content | Audit disposition |
+|---|---|---|---|
+| HMENU3 | W-12.A/D, W12-L0/L1 | Order-1 laws, block history laws, DBL transport, reduction theorem, Ore decision interface | **INTERFACE** — contents and citation scope cannot be inferred here. |
+| HMENU3 | W-11 | Degree-2 menu, brackets, `(A0)` | **INTERFACE** |
+| HMENU3 | HEX3 | H-1–H-4 transports and exact residue law | Partly represented by the pasted HEX3 note; detailed pin correspondence remains **INTERFACE**. |
+| HMENU3 | J-D0 | Letter/gauge blindness | **INTERFACE** |
+| HEX3 | W-11, W12-L0/L1/S2.4/C/S3.2 | Block drain law, Hensel product/read equivalence, depth-0 completeness, σ-residue bounds | **INTERFACE** |
+| HEX3 | J-D0 | Characteristic-blind gauge principle | **INTERFACE**, corroborative for counts as the note says. |
+| GENIND | W-11, W-12, HEX3, HMENU3 | Base packages and order-1 classification | **INTERFACE** except for the two pasted n=3 notes. |
+| GENIND | GENHN, `[W12-H]`, GMN/Ore | Higher-stage transport and σ-decision | **INTERFACE / OPEN HYPOTHESIS** |
+| GENIND | GENH4 | De facto degree-4 `(CS-EXACT)` and `(CS-1)` discharge | Partly represented by the pasted GENH4 note; exact pin consumption remains **INTERFACE**. |
+| GENIND | GRTJC/W-6…W-9, JC-LOAD, WELDMASTER, DULEMMA | Stage slot geometry, carry/no-cancellation framework | **INTERFACE** |
+| GENIND | `(CS-1Q)` per genre | Quantitative loss-vs-entry ledger needed by corrected drainage induction | **OPEN INTERFACE**; new per-genre work remains, but it is not mixed-characteristic-specific. |
+| GENH4 | GENIND | Induction scaffold and E-stage fibration | Partly pasted, but the cited historical pin is **INTERFACE**. |
+| GENH4 | QSCOUT22 | Entry classification and committed empirical tables | **INTERFACE / corroboration** |
+| GENH4 | W-12/W-11 | Entry laws, order-1 stage model, final density reduction | **INTERFACE** |
+| GENH4 | HEX3/HMENU3 | `P(3)` and cubic block vector | Partly pasted; exact supplier-pin content remains **INTERFACE**. |
+| All four | Ore/GMN published theorem | Order-1 residual-polynomial decision and lift-stable splitting labels | **CITE-SCOPE** — no precise publication or general-henselian scope supplied. |
+
+## 5. Slice conclusion
+
+No surviving argument in this slice is intrinsically mixed-characteristic-only: the actual counting and transport mechanisms use finite residue-field censuses, Newton-polygon/residual-polynomial combinatorics, quotient-ring digit bijections, and completeness/Hensel lifting. Equal-characteristic inseparability is a real issue, but the notes ultimately handle it correctly by restricting splitting-type assertions to `disc ≠ 0`; the one false unrestricted formulation is explicitly withdrawn. Thus the cubic and quartic mechanisms appear to need no new equal-characteristic mathematics. Two qualifications prevent an unconditional “GENERAL” certification: the published scope of the load-bearing Ore/GMN citation is not documented, and GENIND’s all-degree result remains conditional on open composite-stage work, now including the per-genre `(CS-1Q)` ledger. The latter is an incompleteness of the general induction, not a `F_q[[t]]` obstruction.
+
+QGEN-Q2 VERDICT: CITE-SCOPE(4)

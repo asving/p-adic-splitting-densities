@@ -1,0 +1,253 @@
+## 1. Per-note verdicts
+
+| Note | Coverage | Verdict | Reason |
+|---|---|---|---|
+| `HE3_PROOF_2026-08-08.md` | Deep read of statements, proofs, boxes, and dated corrections; machine census scanned | **GENERAL-WITH-EDIT** | The mathematics is formulated for both characteristics and later repairs explicitly handle vanishing binomial coefficients and inseparable residual phenomena. One proof sentence falsely says irreducibility gives a “full conjugate set”; equal-characteristic keys such as \(x^p-t\) refute that wording. The resultant–determinant-norm identity still supplies the argument after a trivial edit. |
+| `HE6_PROOF_2026-08-08.md` | Deep read of the proof chain and corrections; machine sections scanned | **GENERAL** | Uses only finite-field residual algebra, valuation/resultant identities, and completeness. Test polynomials are explicitly not assumed irreducible. The defective ramified-base-change route is removed. |
+| `HE7_PROOF_2026-08-08.md` | Deep read of the level-2 proof, induction, termination, annexes, and corrections; machine sections scanned | **GENERAL** | The ladder is built over an arbitrary complete DVR. Laurent normalizers and all divisions are justified by Bézout/congruence identities. Separability is fenced by `disc f ≠ 0`; test keys need not be separable or irreducible. Termination is explicitly characteristic-free. |
+| `HE6R1_RECON_2026-08-08.md` | Deep read of reconciliation lemmas and dated adjudications; machine sections scanned | **GENERAL** within this slice | No mixed-characteristic input appears. It does expose an unresolved **out-of-slice GENHN count interface**, but that issue is stated to affect both characteristics and is not an equal-characteristic obstruction in these proofs. |
+| `HETOW_RECON_2026-08-09.md` | Deep read of the instantiation map, bridge lemmas, normalizer bridge, and boxes; machine sections scanned | **GENERAL** for its stated full-inner-side scope | All carrier changes are expressed by integer valuation equations and finite-field unit twists. Machine coverage is mainly characteristic zero, but the proof does not consume that restriction. Partial sides and deeper GENHN tower inputs are out-of-slice interfaces. |
+
+No note is `MIXED-CHAR-ONLY`, and no load-bearing Q\(_p\)-only literature citation was found.
+
+## 2. Flagged sites
+
+### HE3
+
+**H5 — GENERAL-WITH-EDIT: false irreducible-implies-separable wording**
+
+> “the norm is through the FIELD L″ — Φ″ irreducible makes the θ″ a full conjugate set — so no DVR-ness of O[x]/(Φ″) is consulted”
+
+This is false in equal characteristic: an irreducible polynomial such as \(x^p-t\) has only one geometric root, with multiplicity \(p\). The needed identity remains valid as
+
+\[
+\operatorname{Res}(\Phi'',B_0)
+=\operatorname{Nm}_{K_0[x]/(\Phi'')\,/\,K_0}(B_0\bmod \Phi''),
+\]
+
+where norm means the determinant norm and geometric roots are counted with algebraic multiplicity. Thus this is a proof-wording edit, not new mathematics and not an obstruction.
+
+**H1 — GENERAL: binomial coefficients are treated correctly in equal characteristic**
+
+> “That is false: the summand carries binom(i, j), whose valuation can be positive in mixed characteristic (e.g. i = p, j = 1) and which can vanish in equal characteristic p, so a purported unique minimiser can rise or disappear with no cancellation among residues.”
+
+> “the residue attached to A_j′ on the height-λ supporting line is exactly the coefficient of Z^{j} in R_λ(Z + s) computed in K[Z] (binomial coefficients reduced into K — that is what ‘computed in K’ means)”
+
+This is the right repair. No \(1/j!\), integer division, exponential, or characteristic-zero Taylor argument remains.
+
+**H5 — GENERAL: the actual factors being classified are separable**
+
+> “let f be any lift on ℓ with disc(f) ≠ 0.”
+
+> “A leaf ℓ is decided iff (a) the read TERMINATES with every TERMINAL residual polynomial separable — repeated residual roots are allowed at intermediate nodes”
+
+The note does not silently infer separability of irreducible factors of \(f\); it assumes `disc(f) ≠ 0`. Intermediate inseparable residuals are explicitly part of the recursive read.
+
+**H2/H5 — FENCED, then superseded: ramified base change**
+
+> “when char K | ℓ the new residual can turn inseparable.”
+
+> “Both branches below are therefore to be read as BOXED (HE3-BOX-6), not proved.”
+
+> “Only the ramified branch (ii) remains in HE3-BOX-6.”
+
+This is an honest equal-characteristic hazard, but not a claimed theorem step. HE6 later replaces the entire ramified-base-change argument by original-base resultant tests.
+
+**H4 — GENERAL: the repaired unramified argument is abstract-DVR**
+
+> “Let O₁/O be the unramified extension of degree c. Since f₁ | c, its residue field F_{Q^c} contains K = F_{Q^{f₁}}”
+
+No Witt-vector or unramified-\(\mathbb Z_p\) coordinates are used. This is the ordinary unramified extension theory of a complete DVR with finite residue field.
+
+**H7 — GENERAL: divisions in letter carriers are exact congruence divisions**
+
+> “i₀ = i₀(κ) be the unique 0 ≤ i₀ < e₁ with i₀h ≡ κ (mod e₁), and n(κ) := x^{i₀}π^{(κ−i₀h)/e₁}”
+
+The exponent is integral by the displayed congruence. No extraction of an \(e_1\)-th root in \(K^\times\) occurs.
+
+**H6 — GENERAL classical scope; no Q\(_p\)-only citation**
+
+> “Classical: Hensel; the ultrametric Newton-polygon read of a polynomial over a complete DVR … Galois theory of local fields … resultants/norms.”
+
+These standard results apply to complete discretely valued fields with finite residue field in either characteristic. No specific Q\(_p\)-extension-only reference is invoked.
+
+> “The Montes/GMN order-≥2 index theorem … is not cited”
+
+Thus no Montes citation-scope issue is load-bearing in HE3.
+
+---
+
+### HE6
+
+**H5 — GENERAL: separability and the \(\Phi'\mid f\) drainage leg are explicit**
+
+> “Throughout, disc f ≠ 0 (f separable) and Φ′ ∤ f, equivalently A₀ ≠ 0.”
+
+> “if A₀ = 0 then Φ′ | f, and disc f ≠ 0 forces f = Φ′·f̃ … the peeled factor Φ′ … contributes the KNOWN σ-block”
+
+This is honest drainage bookkeeping. It avoids assigning a finite side label to a root with \(\Phi'(\rho)=0\).
+
+**H5 — GENERAL: inseparable test polynomials are allowed**
+
+> “No irreducibility of Ψ_{κ,r} is claimed or used.”
+
+> “sums over roots with multiplicity in K̄₀ (disc f ≠ 0 makes f’s roots simple).”
+
+The first clause prevents irreducible-implies-separable leakage. The second makes the resultant computation valid even when a test polynomial has repeated or inseparable roots.
+
+**H2/H4 — GENERAL: the bad base-change route is removed**
+
+> “No base change, unramified or ramified — that is the whole point”
+
+> “All four are avoided: LEMMA HE6-1’s roots ξ live in K̄₀ over the ORIGINAL O”
+
+Consequently there is no \(v(p)\), Eisenstein-in-\(p\), or ramified-\(\mathbb Z_p\) dependency.
+
+**H7 — GENERAL: negative normalizer exponents are field coefficients, not hidden integrality**
+
+> “a₀ may be NEGATIVE … so ϖ ∈ K₀[x], not O[x] — its coefficients are Galois-fixed, which is all that is ever used”
+
+This is valid over \(F_q((t))\) as well: \(\pi^{-1}\) belongs to the fraction field. The polynomials required to lie in \(O[x]\) are separately built using the proved lift thresholds.
+
+**H1/H3 — GENERAL**
+
+> “the only algebraic inputs are the SLOT LEMMA and the ultrametric inequality, both characteristic-free.”
+
+No use of \(2^{-1}\), discriminant-square tests, congruences modulo \(4\) or \(8\), or odd-residue-characteristic splitting appears.
+
+**H6 — no consumed citation-scope issue**
+
+> “No Ore theorem, no Montes/GMN index theorem, no higher-order residual-polynomial operator”
+
+> “Those citations reappear only as the cite target of HE6-BOX-1”
+
+The FGMN citation is expressly a possible alternative route, not a premise of HE6.A.
+
+---
+
+### HE7
+
+**Generality frame**
+
+> “O a complete DVR, π a uniformizer … residue field F_Q, both characteristics”
+
+This is the theorem’s actual quantified frame, not merely a concluding assertion.
+
+**H7 — GENERAL: all normalizer divisions are integer Bézout bookkeeping**
+
+> “n₂(k) := ϖ^{m(k)}Φ′^{s(k)} where ℓ·m(k) + s(k)·u = k with 0 ≤ s(k) < ℓ — possible and unique because gcd(u, ℓ) = 1.”
+
+No \(\ell\)-th root is selected in the ground field. The construction uses integer powers of already available elements.
+
+**H7 — GENERAL: the accepted recursion repair keeps the same property**
+
+> “BASE (level 1): n₁(k) := ϖ^k”
+
+> “RECURSION (i ≥ 1): n_{i+1}(k) := n_i(m_i(k))·Φ_i^{s_i(k)}, ℓ_i·m_i(k) + s_i(k)·u_i = k”
+
+Again, this is Euclidean/congruence arithmetic. The annex explicitly tracks the resulting finite-field unit cocycle instead of assuming it is trivial.
+
+**H5 — GENERAL: factors of \(f\) are separable before orbit arguments**
+
+> “f is monic on the genre-G opening locus with disc f ≠ 0.”
+
+> “f_S | f because f is separable (disc f ≠ 0) and its roots are simple.”
+
+Thus statements equating a root’s orbit size with \([K_0(\rho):K_0]\) apply only to separable roots of \(f\), not to arbitrary roots of a possibly inseparable test key.
+
+**H5 — GENERAL: reducible test keys are handled without separability assumptions**
+
+> “the order-2 key Ψ … never assumed irreducible”
+
+> “No irreducibility of Ψ or Ψ₂ is used.”
+
+The later gcd dichotomy obtains irreducibility only when a key actually divides the separable polynomial \(f_S\); it does not infer it merely from the key’s construction.
+
+**H1/H3 — GENERAL: termination deliberately avoids characteristic-zero formulas**
+
+> “The argument needs no ‘binomial kill’”
+
+> “the argument is uniform in the characteristic — it does not use 2 ∈ O^×, so it covers the equal-characteristic-2 Artin–Schreier corner”
+
+The proof instead uses completeness and coefficientwise convergence to a perfect power, which forces discriminant zero in every characteristic.
+
+**H6 — no consumed higher-order citation**
+
+> “No Ore theorem, no Montes/GMN index theorem, no higher-order residual-polynomial operator, no theorem of the product”
+
+The all-level machinery is proved internally. No Q\(_p\)-only literature scope is imported.
+
+---
+
+### HE6R1 reconciliation
+
+**H5 — GENERAL: the earlier equality-slot overstatement is corrected**
+
+> “equality can occur only at an index i=e₁t … it need not occur at every such index.”
+
+> “the attaining-term residue sum … = ψ(η_ξ)=0.”
+
+This correction uses only the residual polynomial over the abstract finite field. It is valid when coefficients vanish and in equal characteristic.
+
+**H2/H3/H4 — no mixed-characteristic ingredient**
+
+The reconciliation’s live algebra is the same slot/residue construction as HE6/HE7. Its machine frame includes \(\mathbb Z_p\) and \(F_p[[t]]\), while the proof itself never invokes \(v(p)\), Teichmüller representatives, oddness of \(p\), or a characteristic-zero expansion.
+
+**Non-generality obstruction, but out-of-slice interface**
+
+> “GENHN-ERR-1 … Whether GENHN’s f₁ ≥ 2 count-side displays that substitute S = e₁h for the node height need re-reading with D′h = f₁S is NOT settled here”
+
+> “R7 finding 2 is NOT closed by re-display … the GENHN f₁ ≥ 2 count re-run … is hereby a scheduled proof unit”
+
+This prevents the pasted slice alone from certifying the entire uniformity program as complete. It is not an equal-characteristic obstruction: the corrected node and the unsettled count comparison apply uniformly in both characteristics. Per the request, GENHN’s missing proof is an `INTERFACE`, not something to reconstruct here.
+
+---
+
+### HETOW
+
+**H7 — GENERAL: the wrap correction is finite-field unit algebra**
+
+> “W(t) := ⌊(f₂−t)·i(u₂)/e₁⌋”
+
+> “n̂(u₂)^{f₂−t} = n̂((f₂−t)u₂)·(x^{e₁}/π^{h})^{W(t)}”
+
+All exponents are integers obtained from Euclidean division. The correction does not take roots or divide exponents inside \(K^\times\).
+
+**H7 — GENERAL: the normalizer comparison is explicitly a cocycle**
+
+> “n̂₂(k)/n₂(k) = … = (x^{e₁}/π^{h})^{−Q(m(k))}”
+
+> “R_{λ₂}(Z) = τ(H₀) · R̂_{λ₂}(Z/δ)”
+
+The transformation is by nonzero elements of the abstract finite residue field. It preserves factor degrees, multiplicities, separability, and the \(K_2\)-rationality of refine letters in any characteristic.
+
+**H5 — GENERAL: separability belongs to the inherited frame**
+
+> “f monic, disc f ≠ 0 … are the consumed T(b)′ setting’s INHERITED frame data”
+
+Thus the tower theorem is not silently applied to inseparable \(f\).
+
+**H3/H4 — machine limitation only**
+
+> “char 0 only (PARI oracle asymmetry, inherited HE6-BOX-4).”
+
+The note correctly labels this as machine coverage. The proofs use generic \(\pi\), finite-field letters, and valuation identities, so the oracle limitation is not a theorem hypothesis.
+
+## 3. INTERFACE rows
+
+| Out-of-slice supplier or consumer | Pasted consumption | Audit disposition |
+|---|---|---|
+| `GENHN_PROOF_2026-08-08.md` | Stage genres, slot lemma, node/count laws, tower theorem | **INTERFACE.** Do not infer its contents. The pasted HE6R1 note itself records `GENHN-ERR-1` as an unsettled \(f_1\ge2\) count-side proof unit. |
+| `GENIND_PROOF_2026-08-08.md` / `GENIND.A` | Species partition and strict descent | **INTERFACE.** Its general-DVR scope cannot be checked from this slice. |
+| `GENIND-3` | Scale-then-Hensel sibling splitting | **INTERFACE.** Standard-looking, but its actual statement and proof are not pasted. |
+| `HE6R1-1/2/3` as consumed by HE7 | Jump bound, block projection, key peel | In-slice: audited here. The later statement re-display correctly separates \(D'=1\) ambient roots from \(D'\ge2\) composite-stage roots. |
+| `W-12.D`, `GENIND.B`, capstone composition | Final uniformity chain | **INTERFACE.** No conclusion about their generality is inferred. |
+| `GENTOW1`, `GENHN-T(b)′`, `[GENHN-TOW-1]`, `GENTOW-2(iv)` | Tower all-roots transport, partial sides, deeper towers, coherent tower residuals | **INTERFACE.** HETOW proves the full-inner-side translation assuming these inputs; partial sides and deeper GENHN tower layers remain outside this slice. |
+| FGMN/Montes literature | Named only as a possible alternative route | Not load-bearing here, so no `CITE-SCOPE` verdict arises. |
+| Classical Hensel/Newton polygon/resultant/norm/defectless \(ef=[L:K]\) facts | Used throughout | Their standard scope is complete discretely valued fields with finite, hence perfect, residue field; not Q\(_p\)-only. |
+
+## 4. Slice summary
+
+The load-bearing HE3→HE6→HE7 and reconciliation mechanisms are genuinely characteristic-free: residue calculations occur over abstract finite fields; value calculations use discrete valuation, Newton polygons, resultants, and integer normalizer arithmetic; recursive termination uses completeness. The notes explicitly remove the bad ramified-base-change argument, fence every factor-orbit argument by `disc f ≠ 0`, and handle vanishing binomial coefficients in equal characteristic. I found one equal-characteristic-sensitive textual defect: HE3’s assertion that an irreducible key has a “full conjugate set.” Replacing that phrase with the determinant-norm/resultant formulation and counting geometric roots with multiplicity repairs it without new mathematics. The slice therefore supports by-finite-level generality across complete DVRs, including \(F_q[[t]]\), subject to the named out-of-slice interfaces—most notably the explicitly unsettled GENHN \(f_1\ge2\) count rerun.
+
+QGEN-Q5 VERDICT: GENERAL-WITH-EDITS(1)
