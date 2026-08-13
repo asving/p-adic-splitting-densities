@@ -3665,3 +3665,141 @@ The minors and nits: the level-one discharge is now cited for both halves of its
 **Landmark census for this round.** Twelve master-internal landmark strings, on eleven lines, each returning **1** under `sed -n '1,3509p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<string>'` on 2026-08-13: lines 2922, 2934, 3098, 3105, 3287, 3289, 3321, 3353 (three strings — the discharge's opening sentence, the sub-block sentence, and the alternative-height sentence), 3361 and 3431. Nine source lines, each returning **1** under `grep -cFx`: `HE3_PROOF_2026-08-08.md` 1149 and 1151; `HE6_PROOF_2026-08-08.md` 201, 202, 204, 209, 210, and 663–666 counted as four. Four span delimiters re-verified at **1**: HE3 1092 and 1205; HE6 639 and 666; plus `HE6-FAMILY`'s quoted first delimiter, HE6 201, whose unit ends at 213 by S0.2's boundary rule.
 
 Gap-or-worse repairs reset the clean count (S7: "A gap-or-worse repair resets the clean count"). **The clean-pass counter is RESET to 0 of 2.** The acceptance gate still owes **TWO consecutive clean hostile passes** over the r8 effective text before this note may leave attempt grade \(0/2\); the status line therefore stays "mathematical composition draft, attempt grade \(0/2\)", and by `(GRADE)` every composed instance stays \(0/2\) regardless of supplier grade.
+
+---
+
+## r9 (2026-08-13): the level-one identification re-derived in the coherent frame — the print twist displayed, the HE6 family reindexed, and the step's digit forced by (RISE)
+
+*(Opus/Claude repair arm, against the r8 hostile pass of record `runs/comp13/T2SOL_output.log` — this note's FIRST model-diverse pass (gpt-5.6-sol high) on the current architecture, returning 0 CRITICAL + 1 GAP + 1 minor; counter resets.)*
+
+**Verification protocol for this round.** Every source line quoted below was checked on 2026-08-13 by exact-full-line search (`grep -cFx`) in the named accepted source file, with the count and the source line number recorded at the point of use. No source file is edited by this round; the expected source edit count remains zero, and no pin is added or removed, so the expected pin count remains 32. No Source-pin line is amended: the three pins this round consumes — `HE3-A-PROOF`, `HE6-FAMILY`, and `HE6-SLOT-SEAM` (the pin r4 repair 1 adjudicated as the supplier of `(SLOT-V)` and `(HE6-SEAM)`) — already stand on both level-one records' lines (S3.1, line 2858; S3.2, line 2859) and, since r7 repair 5, on the three level-two lines as well. Landmarks internal to this master are quoted from the **r8 effective text**, and their uniqueness is recorded in the form `sed -n '1,3667p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<string>'` → **1**; the bound 3667 is the last line of the r8 round and excludes this round's own re-quotations, which would otherwise inflate every count.
+
+**What the GAP is, and what it is not.** The pass certified the master core end to end and said so clause by clause: "`(ACCOUNT)` correctly yields clause 1 and `(SIDE-COUNT)`"; "`(RES-DEG)` plus the defect-free fundamental identity gives the termwise orbit count and exact \((e,f)\)"; "`(SIDE-PROD)`, `(LABEL-PROD)`, `(MID-PEEL)`, terminal reads, child jumps, and linear refinements form a complete recursive analysis under the stated block/continuation hypotheses"; "The clause-5 trigger analysis covers both key-changing transitions, while transition 6 returns key-free residual blocks by definition"; "`(RANK)=(\deg F,\mu,\sigma_{\mathcal C})` decreases correctly in every transition, with `(SEC-RANK)` honestly explicit"; "`(LB1)` and `(MP1)` remain fenced; I found no fence leakage"; and "S1.8B's level-two transport and composed-key \(W+w\) routing are coherent. The HE6-PROOF \(\ell\ge2\) caveat is correctly routed to the product-\(\ge2\) child branch." No sentence of that list is touched by this round. What the pass refuted is one identification inside the level-one INSTANCE discharge, and the refutation is exact: r8 read DEFINITION HE6-1's family index as if it were this master's digit, when the family indexes its members by a \(\varpi\)-PRINT residue and this master indexes its recenterings by the COHERENT digit — the two differing by exactly the twist `(Q-DEF)` exists to name. In the report's own words, "the abstract theorem remains true because `(RISE)` is an explicit carrier hypothesis; the instance discharge is the gap." Repair 1 displays the seam at the point of use; shows that the relabelling it forces is a BIJECTION, so the family still covers every recentering of this master, member for member; and then rebuilds the discharge so that it never reads the print label at all — the step's height AND its digit are both forced by the passage's own rise, read against the coherent label display that `HE3-A-PROOF` carries in its own text. What r8 asserted at the print index is thereby derived, in the frame in which it is true.
+
+---
+
+## r9 repair 1 — G-1SOL (GAP): the print/coherent seam displayed at the family identification, the family reindexed by the twist, and the level-one step identified in the coherent frame
+
+**The finding repaired.**
+
+> But the effective seam is \(\operatorname{res}(B_0/\varpi^{\kappa})=\iota(\gamma_\kappa(B_0))\eta^{-q(\kappa)}\). Thus the source choice \(\operatorname{res}(B_0/\varpi^\kappa)=-s\) implies \(\gamma_\kappa(B_0)=-s\,\eta^{q(\kappa)}\), not \(-s\), unless \(\eta^{q(\kappa)}=1\). No such hypothesis exists; indeed the note pins \(q\) precisely because the twist can be nontrivial. Equivalently, the print factor \(Z-s\) transports to a coherent linear factor with a rescaled root. Therefore the quoted HE6-family member is not shown to be the master's exact recentering \(\Phi-L_\kappa(s)\). This breaks r8's joint same-step identification used to discharge level-one `(RISE)` — especially S3.2 — and also affects S1.8C's claimed family-member identification.
+
+**Accepted without reservation, and the scope is one site wider than the report names.** The conflation is r8's, it sits at the print/coherent seam, and the arithmetic is the report's: the family's defining residue is a \(\varpi\)-read and this master's digit is an \(n(\kappa)\)-read, so a family label \(-s\) is a coherent digit \(-s\eta^{q(\kappa)}\). THREE sentences of the effective text carry the conflated identification: r8 repair 1(a)'s step sentence, r8 repair 1(b)'s SECOND (corroboration) ground — which names the member "indexed by \((\lambda,Z-s)\)" — and S1.8C's family-member sentence. All three are replaced below. The report's own suggestion, that the identification might survive reindexed, is settled here in that direction and then made unnecessary: the relabelling is a bijection, so nothing is lost by it; and the rebuilt discharge does not consult the label at all.
+
+**(a) The step sentence, with the seam displayed and the family reindexed.** In r8 repair 1(a)'s replacement text for the "Level one" bullet, replace
+
+> At \((\ell,d)=(1,1)\) and \(r=Z-s\) that reads \(\Psi_{\kappa,Z-s}=\Phi'+B_0\) with \(u=\ell\kappa=\kappa\), \(\deg B_0<D'\), \(d(B_0)=\kappa\) and residue \(c_0=-s\): this master's \(\Phi-L_\kappa(s)\), at the family's own index \(\kappa\), with the recipe's standing \(\kappa>D'h=T\) placing it inside `(WINDOW)` before any clause of `(REF-HT)` is read. **No height is asserted of \(\kappa\) here, and none is needed to read the clause that follows.** (RISE) at that step is the passage's own conclusion, stated of \(\Phi''\) with no height in the reading.
+
+by
+
+> At \((\ell,d)=(1,1)\) and \(r=Z-\sigma\) that reads \(\Psi_{\kappa,Z-\sigma}=\Phi'+B_0\) with \(u=\ell\kappa=\kappa\), \(\deg B_0<D'\), \(d(B_0)=\kappa\) and residue \(c_0=-\sigma\) — a residue in the RECIPE'S OWN frame, which is the print frame: line 204, quoted above, fixes \(B_0\) by \(\operatorname{res}(B_0(\theta)/\varpi(\theta)^{\kappa})\), the \(\varpi\)-read, and not by the coherent \(n(\kappa)\)-read of `(SLOT-R)`. This master's `(HE6-SEAM)` is the conversion between the two, \(\operatorname{res}(A(\xi)/\varpi(\xi)^{k})=\iota_\xi(\gamma_k(A))\eta_\xi^{-q(k)}\), and at \(\xi=\theta\) — a \((T1)/(T2)\) point, being the point at which the recipe states its own condition and at which `(GAMMA)` is written — the embedding \(\iota_\theta\) is the identity inclusion of \(K=\mathbf F_Q(\eta)\): it is a \(k_0\)-embedding by `(RES-COMP)`, \(k_0=\mathbf F_Q\) by S1.1, and \(\eta_\theta\mapsto\eta_\theta\) by S3.1's \(\iota_\xi(\eta_\theta)=\eta_\xi\) read at \(\xi=\theta\), so it is the identity on \(K=k_0(\eta)\). Hence \(-\sigma=\gamma_\kappa(B_0)\eta^{-q(\kappa)}\), so \(\operatorname{dig}(B_0)=\gamma_\kappa(B_0)=-\sigma\eta^{q(\kappa)}\), and the family member's master form is
+>
+> \[
+> \boxed{
+> \Psi_{\kappa,Z-\sigma}
+> =
+> \Phi'-L_\kappa\bigl(\sigma\eta^{q(\kappa)}\bigr),
+> \qquad\text{equivalently}\qquad
+> \Phi'-L_\kappa(s)
+> =
+> \Psi_{\kappa,\,Z-s\eta^{-q(\kappa)}} .}
+> \tag{IDX-TWIST}
+> \]
+>
+> The print label and the coherent digit are the same element of \(K\) only when \(\eta^{q(\kappa)}=1\), and no hypothesis of this master or of its sources supplies that: `(Q-DEF)` posits \(q\) precisely because the twist can be nontrivial, and the minus sign of `(HE6-SEAM)` is declared mandatory at S1.2. **Nothing is lost by the mismatch, because the relabelling is a bijection.** \(\eta\in K^\times\) and \(q(\kappa)\in\mathbf Z\), so \(\eta^{q(\kappa)}\) is ONE fixed element of \(K^\times\), depending on \(\kappa\) alone and on neither the polynomial read nor the label — that is the universality of the RIDER's twist, the clause `HE6-LIFT-1L` is pinned for. Multiplication by it is a bijection of \(K\) fixing \(0\), and of \(K^\times\) onto itself. The family's labels at \((\ell,d)=(1,1)\) run over exactly \(K^\times\), because the recipe quantifies over EVERY monic irreducible \(r\in K[Z]\) with \(r(0)\ne0\) — `> irreducible with r(0) ≠ 0. Choose, by (LIFT), B_t ∈ O[x] with` (`HE6_PROOF_2026-08-08.md`:203), with line 202 quoted above — and \(r=Z-\sigma\) is such an \(r\) exactly for \(\sigma\in K^\times\); this master's digits at a full height run over all of \(K\) (S1.4, "every digit \(c\in K\) has an integral lift"), with \(L_\kappa(0)=0\) the empty recentering, which is no transition. So at each index \(\kappa\) the family IS the set of this master's nonempty recenterings at height \(\kappa\), member for member, under (IDX-TWIST) — enlarged in degree at \(d\ge2\) and in height at \(\ell\ge2\), which is what lines 209–210 say. What r8 asserted member-by-member at equal index NAMES is true after the relabelling and false before it.
+>
+> That is the sense, and the only sense, in which the step is a recentering of this master's own form at an index its construction fixes and this master does not choose: whichever member of the family the read forms, it is \(\Phi'-\Lambda\) with \(\Lambda:=-B_0\) integral, \(\deg\Lambda<D'=D\), \(h(\Lambda)=\kappa\) and \(\operatorname{dig}(\Lambda)\in K^\times\), and the recipe's standing \(\kappa>D'h=T\) places it inside `(WINDOW)` before any clause of `(REF-HT)` is read. **No height and no digit is asserted of that member here, and neither is needed to read the clause that follows.** (RISE) at that step is the passage's own conclusion, stated of \(\Phi''\) with no height and no index in the reading.
+
+**(b) The height ground, extended to the digit — the reading that makes the print label unnecessary.** In r8 repair 1(b)'s replacement text, replace
+
+> At any index \(\kappa\ne\lambda\) the display leaves every root of the class at \(d=\min(\lambda,\kappa)\le\lambda\), so the class contributes nothing strictly above \(\lambda\), the sub-block does not travel, and the floor does not increase — which is not what the passage states of \(\Phi''\). Hence \(\kappa=\lambda\), and the step is \(\Phi-L_\lambda(s)\). This is this master's (RISE) \(\Rightarrow\) (HT) implication run AT the instance, on an instance-supplied premise whose reading used no height; it is not the theorem's (HT) clause imported to license that reading, and the direction of use is the safe one — the master's generality in \(k\) is INSTANTIATED here, not transferred.
+
+by
+
+> At any index \(\kappa\ne\lambda\) the display leaves every root of the class at \(d=\min(\lambda,\kappa)\le\lambda\), so the class contributes nothing strictly above \(\lambda\), the sub-block does not travel, and the floor does not increase — which is not what the passage states of \(\Phi''\). Hence \(\kappa=\lambda\). At \(\kappa=\lambda\) the display is silent, the two values being equal; there the same reading continues one notch finer, at the residues, and fixes the step's DIGIT as well — without consulting the family's print label. The class being refined is the class of the label \((\lambda,Z-s)\), and `HE3-A-PROOF` states the level-one label read in the COHERENT frame, dividing by the same \(n(\lambda)\) that `(SLOT-R)` divides by: `note's frame, where the label of ρ is (λ, r) with r ∈ K[Z] read via the` (`HE3_PROOF_2026-08-08.md`:1114), `F_Q-embedding ι_ρ : K → k̄, η_θ ↦ η_ρ, and β_ρ := res(y_ρ/n(λ)(ρ)) at` (1115); the argument \(y_\rho\) is the key's own value, as the equivariance display inside the same span shows at \(g=\operatorname{id}\), `    β_{gρ} = res(Φ′(gρ)^{ℓ}/n(u)(gρ)) = ḡ(β_ρ)   (ℓ = 1: n(λ) read).` (1131, quoted with its four leading spaces), giving \(\beta_\rho=\operatorname{res}(\Phi(\rho)/n(\lambda)(\rho))\) at \(\ell=1\) with \(\Phi=\Phi'\) by `(HE3-INSTANCE)`; and the label condition itself is \(\iota_\rho(r)(\beta_\rho)=0\), `ι_{gρ}(r)(β_{gρ}) = ḡ(ι_ρ(r)(β_ρ)) = ḡ(0) = 0, and gρ carries the same` (1135) — that line's middle term \(\bar g(\iota_\rho(r)(\beta_\rho))=\bar g(0)\) is exactly the assertion \(\iota_\rho(r)(\beta_\rho)=0\) at a root carrying the label \((\lambda,r)\), which is how LEMMA HE3-6's statement inside this span uses the word "label". At \(r=Z-s\) that condition reads \(\beta_\rho=\iota_\rho(s)\), i.e.
+>
+> \[
+> \operatorname{res}\!\left(\frac{\Phi(\rho)}{n(\lambda)(\rho)}\right)
+> =
+> \iota_\rho(s)
+> \qquad\text{at every root }\rho\text{ of the class.}
+> \]
+>
+> `(SLOT-R)` reads the increment in that same frame, \(\operatorname{res}(\Lambda(\rho)/n(\lambda)(\rho))=\iota_\rho(\operatorname{dig}(\Lambda))\), legitimately: \(\deg\Lambda<D\) and \(\rho\in\operatorname{Pt}\) (S1.5). Since \(d(n(\lambda)(\rho))=\lambda\) (S1.3), the quotient \((\Phi-\Lambda)(\rho)/n(\lambda)(\rho)\) has value \(d((\Phi-\Lambda)(\rho))-\lambda\ge0\) and its residue vanishes exactly when that value is positive, so subtracting the two reads gives
+>
+> \[
+> \boxed{
+> d\bigl((\Phi-\Lambda)(\rho)\bigr)>\lambda
+> \iff
+> \iota_\rho\bigl(s-\operatorname{dig}(\Lambda)\bigr)=0
+> \iff
+> \operatorname{dig}(\Lambda)=s ,}
+> \]
+>
+> \(\iota_\rho\) being an injection of fields. The passage's rise therefore forces both readings at once: \(h(\Lambda)=\lambda\) and \(\operatorname{dig}(\Lambda)=s\), with \(s\) this master's own coherent residual root of `(RES-FACT)` — the digit at which S1.8 forms \(\Phi-L_\lambda(s)\) — while the family's print label at that same member is \(s\eta^{-q(\lambda)}\) by (IDX-TWIST) and plays no part in the derivation. Two riders complete it. FIRST, the derived digit is automatically in \(K^\times\): a zero increment cannot raise \(d(\Phi(\rho))=\lambda\), and S1.2 gives \(\operatorname{dig}(A)\in K^\times\) at every nonzero slot. SECOND, the lift freedom is immaterial. \(\Lambda\) is the increment the instance's construction actually formed; \(L_\lambda(s)\) is the carrier's designated lift at the same height and digit (S1.4). Their difference \(E=\Lambda-L_\lambda(s)\) has \(\deg E<D\) and, read at the fixed height \(\lambda\), digit \(s-s=0\) — `(GAMMA)`'s formula is additive in the coefficient array at a fixed height, and "Terms strictly above height \(k\) contribute zero", as the sentence below `(GAMMA)` records — so \(E\) cannot have \(h(E)=\lambda\), since S1.2 gives a nonzero slot a digit in \(K^\times\); hence \(E=0\) or \(h(E)>\lambda\), and then \(d(E(\rho))>\lambda\) by `(SLOT-V)`. From \((\Phi-L_\lambda(s))(\rho)=(\Phi-\Lambda)(\rho)+E(\rho)\), both clauses hold at this master's own displayed step and not merely at a companion of it. This is this master's (RISE) \(\Rightarrow\) (HT) implication run AT the instance, together with its residue-level refinement, on an instance-supplied premise whose reading used no height and no index; it is not the theorem's (HT) clause imported to license that reading, and the direction of use is the safe one — the master's generality in \(k\), and in the digit, is INSTANTIATED here, not transferred.
+
+**(c) The corroboration ground, restated in the frame it holds in.** In the same replacement text, replace
+
+> so the member of DEFINITION HE6-1's family that the read uses at that node is the one indexed by \((\lambda,Z-s)\), whose increment sits at \(d=\lambda\) by the recipe above.
+
+by
+
+> so the member of DEFINITION HE6-1's family that the read uses at that node is the one whose COHERENT digit is the node's own \(s\) — its print label being \(s\eta^{-q(\lambda)}\) and not \(s\), by (IDX-TWIST) — and its increment sits at \(d=\lambda\) by the recipe above.
+
+**(d) S1.8C's family-member identification.** In S1.8C, replace
+
+> At \((\ell,d)=(1,1)\) the member \(\Psi_{\lambda,Z-s}=\Phi'+B_0\) IS the recentered key, \(B_0\) being the \(\varpi\)-frame form of \(-L_\lambda(s)\) under `(HE6-SEAM)`.
+
+by
+
+> At \((\ell,d)=(1,1)\) the recentered key IS a member of the family, and the member it is, is \(\Psi_{\lambda,\,Z-s\eta^{-q(\lambda)}}=\Phi'+B_0\) with \(B_0=-L_\lambda(s)\): the family indexes its members by the PRINT residue of \(B_0\) (`HE6_PROOF_2026-08-08.md`:204, a \(\varpi\)-read), this master indexes its recenterings by the COHERENT digit of the increment (`(SLOT-R)`), and the two differ by the fixed unit \(\eta^{q(\lambda)}\in K^\times\) of `(HE6-SEAM)`, as (IDX-TWIST) in r9 repair 1 displays. The relabelling is a bijection of \(K^\times\), so the family covers every recentering of this master at that height, member for member; what it does not do is match them at equal index names.
+
+**(e) The frame authority, and what is NOT cited.** The transport law consumed above is this master's own `(HE6-SEAM)`, whose supplier pin is `HE6-SLOT-SEAM` (LEMMA HE6-0″, adjudicated at r4 repair 1 for exactly the two clauses `(SLOT-V)` and the \(\varpi\)-read conversion, with the `[r2]` sign correction this master reproduces). No new pin and no new source is needed for it. The gauge-cocycle note T1 (`T1_GAUGE_COCYCLE_2026-08-12.md`, ACCEPTED 2/2 on 2026-08-13) books the same SHAPE of error at its own seam — its honesty ledger records that "raw print/canonical equality is iff \(z^\nu=1\), not iff \(\nu=0\)" — and that sentence is recorded here as methodological precedent ONLY: T1 is not among this master's six source files, no pin covers it, and nothing above consumes it. S0.2's no-unpinned-material clause is therefore respected in the strict sense it states.
+
+**Non-circularity, restated for the rebuilt discharge.** The order of assembly is unchanged and the added leg does not disturb it. The step is exhibited first, as a family member in master form, with NO height and NO digit asserted of it — (a). (RISE) is then the passage's conclusion about that step, read with no height and no index — unchanged from r8. Both the height and the digit are then derived FROM that conclusion, through this master's own `(SLOT-V)`/`(SLOT-R)`/`(GAMMA)`/S1.3 displays and the coherent label read that `HE3-A-PROOF` carries — (b). Neither derivation is a clause of `(REF-HT)`, and no clause of `(REF-HT)` is a premise anywhere in S1.8C, as r8 repair 1(d) records and (d) above leaves standing. The description of site 3085 in that same paragraph — a recentered level-one key is the \((\ell,d)=(1,1)\) member of the family "at the index it carries" — remains true after (d), and is left standing rather than booked, because the index a member carries is exactly what (IDX-TWIST) computes.
+
+**Verification remark (source).** On 2026-08-13, `grep -cFx` returned **1** for each source line quoted in this repair, in the file and at the line shown. In `lean/notes/openmath/HE3_PROOF_2026-08-08.md`, lines 1114, 1115, 1131 and 1135, all strictly inside the `HE3-A-PROOF` span whose delimiters `### S6.3 PROOF OF THEOREM HE3.A` (1092) and `leaf's history, so THEOREM HE3.A is proved. ∎` (1205) each returned **1** again here; lines 1114–1116 are the `[r1, F3]` bracket that fixes this note's label read, and 1131/1135 lie in the proof of LEMMA HE3-6, quoted inside that span. In `lean/notes/openmath/HE6_PROOF_2026-08-08.md`, line 203, strictly inside the `HE6-FAMILY` unit whose quoted first delimiter is line 201 and whose last line is 213 by S0.2's boundary rule. Lines 202, 204, 209 and 210, cited by number above, are quoted verbatim in the surviving part of the same bullet and were verified at r8. Every consumption of this repair lies inside a span of `(PINS)`, as the standing S7 consumption check demands; HE3's own definition \(y_\rho:=\Phi'(\rho)\) at HE3 §S2/§S4 is consistent with the reading of 1115 taken here but sits outside the span and is not consumed.
+
+**Verification remark (landmarks).** Under `sed -n '1,3667p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<the quoted string>'` on 2026-08-13, each of the four superseded strings returned **1**: r8's step sentence (line 3537), r8's height-ground passage (3545), r8's corroboration clause (3545, the same line's later sentence) and S1.8C's family-member sentence (3085). All four are quoted rather than inlined into the command because they contain apostrophes.
+
+---
+
+## r9 repair 2 — m-1SOL (minor): r8's census arithmetic, in both of its counts
+
+**The finding repaired.**
+
+> r8 says "Nine source lines…" but lists two HE3 lines, five HE6-family lines, and HE6 lines 663–666 as four lines: \(2+5+4=11\), not nine. It also says "Twelve master-internal landmark strings, on eleven lines…" but the listed line numbers contain ten distinct lines; line 3353 carries three strings.
+
+Accepted; both counts are wrong and both are re-counted here. The source list is HE3 1149 and 1151 (two), HE6 201, 202, 204, 209 and 210 (five), and HE6 663, 664, 665 and 666 (four): eleven. The landmark list is 2922, 2934, 3098, 3105, 3287, 3289, 3321, 3353, 3361 and 3431: ten distinct lines carrying twelve strings, three of them on 3353. In r8's landmark-census paragraph, replace
+
+> Twelve master-internal landmark strings, on eleven lines
+
+by
+
+> Twelve master-internal landmark strings, on ten lines
+
+and replace
+
+> Nine source lines
+
+by
+
+> Eleven source lines
+
+Neither count is load-bearing for any claim: both are bookkeeping over lists that are themselves correct and unchanged. **Verification remark (landmarks).** Under `sed -n '1,3667p' … | grep -cF` on 2026-08-13, each of the two superseded strings returned **1** (both on line 3665).
+
+---
+
+## r9 counter
+
+r9 folds repairs for the single GAP (G-1SOL) and the single minor (m-1SOL) of this note's first model-diverse hostile pass, `runs/comp13/T2SOL_output.log` (gpt-5.6-sol high). The finding is credited to that pass in full: it caught a print/coherent frame conflation that five same-arm passes did not.
+
+Its substantive content is one object. The HE6 family indexes its members by a \(\varpi\)-PRINT residue and this master indexes its recenterings by the COHERENT digit; the two differ by the fixed unit \(\eta^{q(\kappa)}\in K^\times\) that `(HE6-SEAM)` carries, so the member \(\Psi_{\kappa,Z-\sigma}\) is \(\Phi'-L_\kappa(\sigma\eta^{q(\kappa)})\) and not \(\Phi'-L_\kappa(\sigma)\) — (IDX-TWIST). Two consequences are installed. First, the relabelling loses nothing: multiplication by a fixed unit is a bijection of \(K^\times\), the family's labels at \((\ell,d)=(1,1)\) run over all of \(K^\times\) by the recipe's own quantifier over monic irreducible \(r\) with \(r(0)\ne0\), and this master's digits run over all of \(K\), so at each height the family IS the set of this master's nonempty recenterings, member for member, and only the index NAMES differ. Second, and this is what makes the discharge independent of the seam: the level-one discharge no longer identifies the member by its label at all. It exhibits the step as a master-form recentering with no height and no digit asserted; reads (RISE) off the passage; and then derives BOTH the height \(h(\Lambda)=\lambda\) and the digit \(\operatorname{dig}(\Lambda)=s\) from that rise — the height by the min-rule display r8 already ran, the digit by the same reading one notch finer, at the residues, using the coherent label read `HE3-A-PROOF` carries in its own text (\(\beta_\rho=\operatorname{res}(\Phi(\rho)/n(\lambda)(\rho))\), \(\iota_\rho(r)(\beta_\rho)=0\)) against `(SLOT-R)` on the increment. The lift freedom between the instance's increment and the carrier's designated \(L_\lambda(s)\) is closed: their difference has zero digit at height \(\lambda\), hence height \(>\lambda\), and the rise transfers.
+
+**No theorem-statement change is made by this round.** No display of the statement suite S1.2–S1.8 is amended, no hypothesis is added to or removed from HE7.A's suite, no case is added or dropped, and no conclusion is touched. (RISE) and (HT) read exactly as r7 set them and r8 left them; (RISE) remains STIPULATED on r4 repair 3's `(SEC-RANK)` footing, and (HT) remains DERIVED from it. The one new display, (IDX-TWIST), is a derived identity of the level-one instance, not a clause of the theorem. Two sentences of the r8 counter survive verbatim and are not booked: "DEFINITION HE6-1's family at \(\ell=1\) IS the family of HE3's recenterings" is a statement about the family as a SET, which (IDX-TWIST) confirms, and "its recipe puts the \((\ell,d)=(1,1)\) member's increment at the member's own index" is a statement about HEIGHTS, which the twist does not touch. What was false was only the matching of index names, and that lived in the three sentences replaced by repair 1.
+
+**Two named obligations remain open**, both at level one and both unchanged: `(LB1)` for clause-4 block construction, and `(MP1)` for the clause-5 peel at a recentered key. (RISE) is a carrier hypothesis, not a ledger obligation. No pin is added or removed, no Source-pin line is amended, and no source file is edited, so the expected pin count stays 32, the expected synthetic-marker count stays zero, and the expected source edit count stays zero.
+
+**Landmark census for this round.** Six master-internal landmark strings, on four lines, each returning **1** under `sed -n '1,3667p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<string>'` on 2026-08-13: lines 3085, 3537, 3545 (two strings — the height ground and the corroboration clause) and 3665 (two strings — the two census counts). Five source lines, each returning **1** under `grep -cFx`: `HE3_PROOF_2026-08-08.md` 1114, 1115, 1131 and 1135; `HE6_PROOF_2026-08-08.md` 203. Two span delimiters re-verified at **1**: HE3 1092 and 1205.
+
+Gap-or-worse repairs reset the clean count (S7: "A gap-or-worse repair resets the clean count"). **The clean-pass counter is RESET to 0 of 2.** The acceptance gate still owes **TWO consecutive clean hostile passes** over the r9 effective text before this note may leave attempt grade \(0/2\); the status line therefore stays "mathematical composition draft, attempt grade \(0/2\)", and by `(GRADE)` every composed instance stays \(0/2\) regardless of supplier grade.
