@@ -331,4 +331,66 @@ theorem drainage_of_upperDensity_eq {n : ℕ} {σ : FactorizationType}
   rw [h, sub_self] at this
   exact this
 
+/-! ## 6. Total mass: densities of distinct types sum to at most `1`
+
+This is what turns *lower* bounds on the other types into an *upper* bound on `σ` — the
+mechanism the `n = 2` gates use. -/
+
+section Total
+
+theorem sum_decidedCount_le (n : ℕ) (S : Finset FactorizationType) (N : ℕ) :
+    ∑ σ ∈ S, decidedCount O n σ N ≤ residueCard O ^ (n * N) := by
+  classical
+  have hinj : Function.Injective
+      (fun x : (Σ σ : {σ // σ ∈ S}, decidedSet O n σ.1 N) => (x.2 : Coeff O n N)) := by
+    rintro ⟨σ, c⟩ ⟨τ, c'⟩ hcc
+    simp only at hcc
+    have hστ : (σ : FactorizationType) = (τ : FactorizationType) := by
+      by_contra hne
+      exact (Set.disjoint_left.1 (decidedSet_disjoint (O := O) (n := n) hne N)) c.2
+        (by rw [hcc]; exact c'.2)
+    obtain rfl : σ = τ := Subtype.ext hστ
+    simpa using Subtype.ext hcc
+  have hle := Nat.card_le_card_of_injective _ hinj
+  rw [card_coeff] at hle
+  rw [Nat.card_sigma] at hle
+  rw [← Finset.sum_attach S (fun σ => decidedCount O n σ N)]
+  exact hle
+
+theorem sum_decidedSeq_le_one (n : ℕ) (S : Finset FactorizationType) (N : ℕ) :
+    ∑ σ ∈ S, decidedSeq O n σ N ≤ 1 := by
+  have h := sum_decidedCount_le (O := O) n S N
+  have hq : (0 : ℝ) < (residueCard O : ℝ) ^ (n * N) := qpow_pos _
+  rw [show (∑ σ ∈ S, decidedSeq O n σ N)
+      = (∑ σ ∈ S, (decidedCount O n σ N : ℝ)) / (residueCard O : ℝ) ^ (n * N) by
+    rw [Finset.sum_div]; rfl, div_le_one hq]
+  calc (∑ σ ∈ S, (decidedCount O n σ N : ℝ)) = ((∑ σ ∈ S, decidedCount O n σ N : ℕ) : ℝ) := by
+        push_cast; rfl
+    _ ≤ ((residueCard O ^ (n * N) : ℕ) : ℝ) := Nat.cast_le.2 h
+    _ = (residueCard O : ℝ) ^ (n * N) := by push_cast; rfl
+
+/-- **Total mass ≤ 1.** The genuine densities of finitely many distinct types sum to at
+most `1`. -/
+theorem sum_genuineDensity_le_one (n : ℕ) (S : Finset FactorizationType) :
+    ∑ σ ∈ S, genuineDensity O n σ ≤ 1 := by
+  have hlim : Tendsto (fun N => ∑ σ ∈ S, decidedSeq O n σ N) atTop
+      (𝓝 (∑ σ ∈ S, genuineDensity O n σ)) :=
+    tendsto_finsetSum S (fun σ _ => decidedSeq_tendsto n σ)
+  exact le_of_tendsto hlim (Eventually.of_forall (fun N => sum_decidedSeq_le_one n S N))
+
+/-- **The complement upper bound.** Any level-`N` decided mass certified for *other* types
+bounds `σ`'s density from above. With a matching lower bound `decidedSeq σ N ≤ genuineDensity σ`
+this brackets the density from both sides at a finite level. -/
+theorem genuineDensity_le_of_others (n : ℕ) (σ : FactorizationType) (S : Finset FactorizationType)
+    (hσ : σ ∉ S) (N : ℕ) :
+    genuineDensity O n σ ≤ 1 - ∑ τ ∈ S, decidedSeq O n τ N := by
+  have h1 : ∑ τ ∈ insert σ S, genuineDensity O n τ ≤ 1 :=
+    sum_genuineDensity_le_one n (insert σ S)
+  rw [Finset.sum_insert hσ] at h1
+  have h2 : ∑ τ ∈ S, decidedSeq O n τ N ≤ ∑ τ ∈ S, genuineDensity O n τ :=
+    Finset.sum_le_sum (fun τ _ => decidedSeq_le_genuineDensity n τ N)
+  linarith
+
+end Total
+
 end Uniformity.Density

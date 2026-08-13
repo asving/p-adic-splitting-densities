@@ -108,6 +108,14 @@ variable (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
 one-line entry point. -/
 theorem henselian_of_complete : HenselianRing O (maximalIdeal O) := inferInstance
 
+/-- **Completeness ⇒ Henselian local ring.** The `HenselianRing` instance mathlib derives from
+`IsAdicComplete` asks for the derivative to be a unit *in the residue field*; over a local ring
+that is implied by (indeed equivalent to) being a unit in `O`. This is the form the gate proofs
+use: a simple root mod `𝔪` lifts to a root in `O`. -/
+instance henselianLocalRing_of_adicComplete : HenselianLocalRing O where
+  is_henselian f hf a₀ h₁ h₂ :=
+    HenselianRing.is_henselian f hf a₀ h₁ (h₂.map (Ideal.Quotient.mk (maximalIdeal O)))
+
 end Complete
 
 /-! ## 3. The level-`N` coefficient box -/
