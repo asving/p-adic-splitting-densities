@@ -4178,3 +4178,35 @@ standalone unit; until it lands σ.degree = n does no work), the
 inert + Eisenstein/ram n=2 certificates (the two-sided bracket),
 n=3 Python oracle (cypari2 unavailable). FOLLOW-UP LAUNCHED: the
 n=2 certificate unit (same agent resumed).
+
+**2026-08-13 DATED APPEND #36 — T1 ACCEPTED 2/2: FOUR OF FIVE
+COMPRESSION UNITS THROUGH THE BAR; THE n=2 LEAN BRACKETS LAND.**
+**T1 (the gauge-cocycle lemma, the campaign's largest unit) is
+ACCEPTED**: Opus arm 0C+0G+5m on r13 (riders folded,
+runs/comp13/T1P12_output.log) + sol arm 0C+0G+1m
+(runs/comp13/T1SOL_output.log; its shell launcher failed so its pin
+audit was note-internal — byte leg supplied by prior passes + the
+battery) + machine battery 10/10 (923 rows, checks 7–10 first-ever
+scoring, independent PARI leg re-deriving ν(Φ₂)=21/8 non-textually;
+runs/comp13/T1_battery_r13.{py,log}). Final riders 6/7 (the sol
+integrality-wording minor + the battery's check-10 exclusion-scope
+ambiguity — convergent, wording-grade, postdating both passes,
+recorded as such) folded; ACCEPTANCE RECORD block appended;
+**byte-frozen**. Standing conditionalities displayed in the block
+(honesty ledger intact; dv_i NOT integer-valued in general —
+codomain e(μ_i)Λ_r). Consumption checks of the seven annexes ride
+the next queue. **T2 remains the sole unit in arc**: r5 pass
+0C+2G+4m (S1.8B held under re-derivation with a concrete ℤ₃ trace;
+gaps: the height=slope binding unbound, and (MP1′)'s negative
+unadjudicated against HE3-A-PROOF's stage-α passage — possibly
+DISCHARGEABLE); r6 fold running. **leanfinal: the n=2 two-sided
+brackets landed** (Eisenstein/ram + anisotropic/inert certificates +
+sharpened split count; gate_bracket_w11_two/three machine-check
+W-11's exact values inside every bracket at q=2,3; 0 sorries,
+Lean-core, build green). Asvin signed off the UniformityStatement
+wording; his generality question (equal-char O) raised — answer on
+record in-session: extension uniqueness true in full generality
+(henselian ⟺ unique), Montes machinery expected characteristic-
+blind but the corpus is UNAUDITED for char-0 usage — F_q[[t]] vs
+ℤ_p n=2 probe running (leanfinal/verification/equalchar_probe.py).
+Codex ~42%.
