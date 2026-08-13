@@ -1,0 +1,30 @@
+One live minor remains.
+
+**m-1 — the integrality enumeration mishandles the zero valuation.**
+
+The effective grade-data paragraph claims:
+
+> “Every \(dv_i\)-value consumed in the effective text is nevertheless an integer, in one of four classes.”
+
+But class (iii) includes:
+
+> “the zero convention \(dv_i(0)=+\infty\).”
+
+Here \(+\infty\notin\mathbb Z\), and this is a live consumed case through (C3-zero-lift) and the A3/A6 zero branches. Check 10 also says to:
+
+> “fail on any site that consumes a \(dv_i\)-value outside \(\mathbb Z\)”
+
+while Rider 5 excludes only the check’s specification and the deliberate bare-\(\Phi_i\) witnesses—not the consumed zero-lift sites. Thus the battery tooth still rejects the effective note. This is minor because all finite valuation calculations and the four-class mathematical analysis remain correct; no C1–C7 conclusion is invalidated.
+
+Everything else audited clean:
+
+- A2–A7 pin algebra, including the A2 binary carry, A6 normalized coefficient signs, and A7 \(\Theta=\vartheta^{-1}\), closes.
+- Every substantive \(w_i\) use carries both codomain and nonvanishing obligations.
+- The depth-\(\ge3\) \((H\!-\!VARTHETA\!-\!RES)_i\) fence reaches C3 and C7 \(M2/M3\).
+- The JA, GENHN, and HETOW supplier fences do not leak.
+- Ledger items 1–22 otherwise agree with the amended clauses.
+- No non-integral bare \(\Phi_i^k\) valuation is consumed outside the deliberately exhibited, rider-excluded witnesses.
+
+Direct byte-level reopening of the HEAD supplier files was unavailable because the repository shell launcher failed before command execution; the mathematical pin audit above uses the closed source spans disclosed in the note.
+
+VERDICT: NOT CLEAN | FINDINGS: 0C + 0G + 1m
