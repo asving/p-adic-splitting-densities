@@ -129,3 +129,91 @@ TEST: builds green; #print axioms = Lean core; signature matches blueprint
 4. The level-exact count-law formulation (probe's suggestion) as chapter C's primary
    object vs the density-limit formulation only.
 5. Chapter sequencing vs the codex window reset (how much blueprint mass before Tue).
+
+---
+
+# REVISION 2 (2026-08-13, after the codex plan review — runs/qgen/BPDESIGN_output.log, 11 BLOCKERS / 14 RISKS / 2 NITS)
+
+The v1 sections above stand as history; THIS REVISION GOVERNS. The keystone repair
+(review's closing paragraph, adopted verbatim in substance): a mandatory **PHASE 0 —
+the effective-spec and interface-compilation gate** — before any chapter blueprinting.
+
+## Phase 0 (the gate) — five stages, in order
+
+**0a. EFFECTIVE-SPEC COMPILATION** [fixes B1]. Per source note (all 26), a codex run
+mechanically resolves base + r-rounds + riders + dated corrections + narrowing records
+into CANONICAL EFFECTIVE STATEMENTS — each with a stable ID, the source hash (git blob
+of the note at HEAD), and the resolution trace (which rounds touched it). Output:
+spec/EFF-<note>.md. The T-unit acceptance records' own effective-text rules govern.
+PILOT: T3 (smallest) first; format validated by an Opus cross-read against the note
+before the remaining 25 fire. These runs are the next codex spend.
+
+**0b. HYPOTHESIS-CLOSURE LEDGER** [fixes B2, R12, R13]. One document enumerating every
+surviving hypothesis, honest box, and named obligation on the path capstone → leaves:
+(LB1), (MP1), (SEC-RANK)/(RISE) discharges, [W12-H], menu/exhaustiveness boxes, NS-7
+termination, NS-15 L5fix(b) weakening, NS-6 corollary, strong-Hensel (exact statement
++ proof route REQUIRED here, not geography), typeOf shift/scale invariance. Each row:
+closed-by-node <ID> / carried-as-hypothesis-into-capstone (Asvin sign-off required) /
+BLOCKED-needs-math. The capstone's honest conditionality is decided HERE, not
+discovered at assembly.
+
+**0c. GLOBAL DAG + CHAPTER CUT** [fixes B3, R14, R16]. The whole-project DAG designed
+ONCE, from the effective specs — machine-readable spec/DAG.tsv (columns: from-ID,
+to-ID, edge-kind ∈ {stmt-dep, proof-dep}, chapter, status), with a checker script
+(cycle detection, dangling IDs, import generation). Chapters are then read OFF the
+DAG (the v1 B–J cut is known non-topological: W12 ← JD0/weld; T3/T5 ← GENTOW/HETOW).
+Scale assumption revised: plan for ~10³ nodes; codex blueprint runs are sized by
+token budget with checkpoint artifacts and a retry policy, several runs per chapter
+where needed [R19].
+
+**0d. DEFINITIONS + CAPSTONE-FACING SIGNATURES, SIGNED** [fixes B8, B9, B11]. All
+trust-boundary definitions and capstone-adjacent interfaces get: FAITHFULNESS note +
+representation-invariant section + counterexample audit (the inertiaDegOf lesson) +
+ASVIN SIGN-OFF, before any dependent blueprint freezes. The open v1 §7 decisions
+((LB1)/(MP1) placement, quarry-vs-fresh for the leaf layer, level-exact vs limit
+formulation) are RESOLVED at this stage as interface decisions. An independent
+SPEC-VERIFICATION role (an arm that did NOT author the blueprint — Opus vs codex,
+alternating) signs source-to-statement equivalence per capstone-facing node.
+
+**0e. ISOLATED INTERFACE ENVIRONMENT** [fixes B4, B5]. A separate lake project
+(leanspec/, never imported by leanfinal): definition/structure BODIES land first
+(real code, signed per 0d); theorem interfaces then land as exact `axiom` stubs in
+topological order with the real namespaces/universes/attributes/instances. This is
+the elaboration check that actually checks. After a real node lands in leanfinal,
+its normalized environment type is diffed against the signed stub [fixes NIT-27:
+comparison = normalized declaration expressions, not bytes].
+
+## Fleet-protocol repairs (apply when chapters fire)
+
+- **Node schema additions** [B6, B7, B9, R20, R25, NIT-26]: ENVIRONMENT block
+  (imports/namespaces/universe+section variables/notation/attributes); FAITHFULNESS
+  (defs) or SPEC-SIGNED (capstone-facing) field; HELPERS clause — a node MAY land
+  private helper lemmas in its own file below the contract declaration (the
+  one-PUBLIC-declaration invariant replaces one-declaration) and MUST return a
+  RE-PLAN request when a helper is reusable (orchestrator books it as a new node —
+  the re-planning protocol v1 lacked); TEETH disposition per source battery row
+  (Lean theorem / executable regression / signed non-applicability); sizing by
+  post-spike validated line count, not predicted tactic count.
+- **Concurrency mechanics** [B10, R22]: every fleet agent works in an ISOLATED git
+  worktree on its own branch; a serialized merge queue (orchestrator) rebases,
+  builds the node target (`lake build <module>`, not full builds), and fast-forwards;
+  STATUS gains leases (claim expiry 90 min, stale-claim recovery, retry counter).
+- **Verification cadence** [R23, R24]: per-node target build at merge; periodic full
+  build + a maintained leanfinal analogue of AxChk_baseline (spec/AXCHK.lean listing
+  every exported interface, diffable output committed) at milestones, not per layer.
+- **Escalation** [R21]: BLOCKED returns must ship a minimized reproducer + proof
+  state + attempted-lemma inventory; the next tier INHERITS the scratch file.
+- **Quarry rules** [R17]: a quarry copy names its transitive-closure manifest; the
+  verification includes generality equality, axiom-freedom, and gcd-typeOf
+  compatibility; closures > ~10 declarations need an orchestrator decision.
+- **Throughput honesty** [R15]: DAG width is an upper bound; the plan's reporting
+  tracks the critical path (serial definition prefixes, the (RANK) induction chain),
+  and stragglers never block ready descendants whose own deps landed.
+
+## Revised sequencing
+
+Phase 0a pilot (T3) → 0a full sweep → 0b ledger (codex draft, Asvin decisions) →
+0c DAG → 0d sign-offs (ASVIN CHECKPOINT) → 0e leanspec build-out → then chapter
+blueprint runs in DAG order → per-chapter: stub landing → fleet. The codex window
+(61% used, resets Tue) is spent on 0a/0b first — they are pure-text resolution work,
+cheap per run, and everything downstream depends on them.
