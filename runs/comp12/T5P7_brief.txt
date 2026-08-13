@@ -1,0 +1,1830 @@
+HOSTILE PASS (pass 2 of 2 — the Fable arm returned CLEAN; you are the sol confirmation arm of the model-diverse pair) (gpt-5.6-sol high — hostile verifier, fresh context; quote-and-classify, fix nothing). Target: the T5 w-frame note below, rounds r1–r5 + the post-pass riders (later sections supersede; construct the effective text first). Take a DIFFERENT route from a conventions/census pass: attack the mathematical content — the (WF-law) derivation chain at i=2 from GENTOW2-B″, the 𝒲_{≤i} conditionality's exact propagation, the (WF-index) against GENTOW5's corrigendum, the OPEN-2 fence at i=1, and any instance record's mathematical substance. End with: VERDICT: CLEAN | FINDINGS: <n>C + <n>G + <n>m
+
+=== T5 AT HEAD ===
+# T5 — THE \(w\)-FRAME NOTE
+
+## The cross-frame unit and twisted realized residual, stated once
+
+**RCT unit:** S-4-T5-w-frame  
+**Composition pass:** attempt 0/2, 2026-08-12  
+**Status:** composed candidate; two clean hostile passes owed  
+**Frame of record:** T1, LEMMA GAUGE-COCYCLE, with r1–r3  
+**Tower supplier:** certified `[GENTOW5-W(i)]`, read with GENTOW5 S12.1 and the dated \(\psi_j^{(\omega_{j-1})}\) corrigendum
+
+This note gives the cross-frame unit one canonical definition and gives \(\psi^{(w)}\) one home. The former per-note riders become instance records below; they are neither independent definitions nor general laws inferred from measurements.
+
+No absorbed statement changes. GENTOW2 and GENTOW5 remain frozen.
+
+## 1. The \(w\)-inclusive canonical frame
+
+At tower level \(i\), fix the T1 data
+
+\[
+K_i,\qquad
+N_i:=\widehat n_i(u_{i+1}),\qquad
+R_{i+1,\beta},
+\]
+
+and
+
+\[
+\psi_{i+1}(y)
+=
+y^{f_{i+1}}-\sum_{t<f_{i+1}}c_ty^t
+\in K_i[y].
+\]
+
+Put
+
+\[
+\bar\kappa_i:=\frac{u_{i+1}}{e(\mu_i)}.
+\]
+
+### DEFINITION W-FRAME
+
+The cross-frame unit is
+
+\[
+\boxed{
+w_i:=
+R_{i+1,\bar\kappa_i}
+\bigl(\widehat n_i(u_{i+1})\bigr)
+\in K_i^\times.
+}
+\tag{WF-w}
+\]
+
+For a monic \(P\in K_i[y]\) of degree \(f\), define
+
+\[
+\boxed{
+P^{(w_i)}(y):=w_i^fP(y/w_i).
+}
+\tag{WF-twist}
+\]
+
+Thus
+
+\[
+\boxed{
+\psi_{i+1}^{(w_i)}(y)
+=
+w_i^{f_{i+1}}\psi_{i+1}(y/w_i)
+=
+y^{f_{i+1}}
+-\sum_{t<f_{i+1}}c_tw_i^{f_{i+1}-t}y^t.
+}
+\tag{WF-psi}
+\]
+
+These are T1’s \(w\)-inclusive canonical definitions. “Cross-frame” means that \(w_i\) converts the multiplicative residual frame to the canonical residual frame. It does not identify \(w_i\) with a separately normalized uniformizer avatar.
+
+Unit substitution preserves monicity, degree, irreducibility, nonzero constant term, and irreducible-factor degrees and multiplicities. Turning factor data into a \(p\)-adic splitting type still requires the surrounding tower theorem.
+
+## 2. The single \(w\)-law
+
+For \(t<f_{i+1}\), put
+
+\[
+s_t:=f_{i+1}-t,
+\qquad
+\beta_t:=s_t\bar\kappa_i,
+\]
+
+and use T1’s two telescope orientations
+
+\[
+\vartheta_{i,s}
+=
+\operatorname{res}\!\left(
+\frac{\widehat n_i(u_{i+1})^s}
+     {\widehat n_i(su_{i+1})}
+\right),
+\qquad
+\Theta_i(t):=\vartheta_{i,s_t}^{-1}.
+\]
+
+Define
+
+\[
+u_i(\beta_t)
+:=
+R_{i+1,\beta_t}
+\bigl(\widehat n_i(s_tu_{i+1})\bigr).
+\]
+
+### LEMMA W-FRAME-LAW
+
+At every certified recipe rung \(2\le i<r\),
+
+\[
+\boxed{
+u_i(\beta_t)
+=
+\Theta_i(t)w_i^{s_t}
+=
+\vartheta_{i,s_t}^{-1}w_i^{s_t}
+\qquad(t<f_{i+1}).
+}
+\tag{WF-law}
+\]
+
+The suppliers are:
+
+- \(i=2\): LEMMA GENTOW2-B\(^{\prime\prime}\);
+- \(3\le i<r\): the certified companion lemma `[GENTOW5-W(i)]`.
+
+At \(i\ge3\), this is read in the cumulative tower context. Locally, the new assertion at rung \(i\) is `[GENTOW5-W(i)]`; the earlier assertions form the ambient induction history. The certified companion closes that induction from the unconditional \(i=2\) rung.
+
+Per-grade fixedness alone does not prove (WF-law). In particular, this note does not revive S11.2’s withdrawn “\(w\)-blind” argument.
+
+No \(i=1\) version is asserted. S11.3 supplies a fixed letter-power unit there, but its identification with the displayed \(w_1\) remains open.
+
+### Realized-residual corollary
+
+The coherent recipe coefficient is
+
+\[
+\Gamma_t=c_t\vartheta_{i,s_t}.
+\]
+
+Therefore
+
+\[
+\Gamma_tu_i(\beta_t)
+=
+c_t\vartheta_{i,s_t}
+\vartheta_{i,s_t}^{-1}w_i^{s_t}
+=
+c_tw_i^{s_t},
+\]
+
+and hence
+
+\[
+\boxed{
+R_{\nu_i}(\Phi_{i+1})
+=
+\psi_{i+1}^{(w_i)}
+}
+\tag{WF-realized}
+\]
+
+at every certified rung \(i\ge2\).
+
+T1 supplies the dictionary and cancellation. GENTOW2-B\(^{\prime\prime}\) or `[GENTOW5-W(i)]` supplies the sitewise B-law.
+
+## 3. Instance records and span pins
+
+An instance imports only its pinned display. It does not enlarge the containing theorem or turn a measurement into a symbolic formula.
+
+### I1 — T1 canonical frame
+
+**Span pin:** T1, (C3-B-law), (C3-canonical-read), and (C3-three-reads), read with T1 r2’s A7 re-scope.
+
+T1 supplies
+
+\[
+\Gamma_t=c_t\vartheta_{i,s_t},
+\qquad
+\Theta_i(t)=\vartheta_{i,s_t}^{-1},
+\]
+
+and the cancellation leading to (WF-realized). Its supplier fence leaves (WF-law) to GENTOW2 or WI.
+
+### I2 — GENTOW2 symbolic rung
+
+**Span pin:** accepted GENTOW2, LEMMA GENTOW2-B\(^{\prime\prime}\),
+
+\[
+u_2(\beta_t)
+=
+\Theta_2(t)w_2^{f_3-t},
+\qquad
+w_2
+=
+R_{3,\bar\kappa_2}
+\bigl(\widehat n_2(u_3)\bigr),
+\]
+
+together with the terminal rescaling
+
+\[
+\psi_3^{(w_2)}(y)=w_2^{f_3}\psi_3(y/w_2).
+\]
+
+This is the unconditional base rung.
+
+### I3 — GENTOW2-PE6
+
+**Span pin:** GENTOW2-PE6, the six-prime/four-frame record.
+
+It gives six measured instances with
+
+\[
+\boxed{w_2\ne1}
+\]
+
+and recorded avatars
+
+\[
+z_1,\qquad z_1^2,\qquad z_2^2,\qquad z_2.
+\]
+
+These refute a universal \(w=1\) assertion. The avatar expressions remain frame-local measurements; no general avatar formula is inferred.
+
+### I4 — GENTOW5-PE3
+
+**Span pin:** GENTOW5-PE3, the seventh-prime row
+
+\[
+\boxed{\psi_3^{(w_2)}(Y)=0.}
+\]
+
+This is an evaluation instance of (WF-psi), not another definition of the twist.
+
+### I5 — certified `[GENTOW5-W(i)]`
+
+**Statement pin:** companion note §S1, matching GENTOW5_PROOF S11.2 at `b0e5c648`, lines 1912–1913:
+
+\[
+u_i(\beta_t)
+=
+\theta_i(t)w_i^{f_{i+1}-t},
+\qquad
+w_i
+=
+R_{i+1,\bar k_i}
+\bigl(\widehat n_i(u_{i+1})\bigr),
+\]
+
+where
+
+\[
+\theta_i(t)
+=
+\Theta_i(t)
+=
+\vartheta_{i,f_{i+1}-t}^{-1}.
+\]
+
+The companion certifies this for every permitted \(i\ge3\).
+
+Its LW3 instance records
+
+\[
+w_3=1,\qquad
+u_3(\beta_1)=1,\qquad
+u_3(\beta_0)=2=\theta_3(0)w_3^2,
+\qquad
+\psi_4^{(w_3)}(Y)=0.
+\]
+
+The same frame has
+
+\[
+w_{\mathrm{av}}=2\ne w_3.
+\]
+
+Thus the avatar is not substituted for (WF-w). LW3 also kills the theta-free formula \(u_i(\beta_t)=w_i^{f_{i+1}-t}\).
+
+## 4. GENTOW5 conditionality and corrected indices
+
+For \(n\ge3\), retain S12.1’s cumulative condition
+
+\[
+\mathcal W_{\le n}
+:=
+\bigwedge_{3\le q\le n}
+[\mathrm{GENTOW5-W}(q)].
+\]
+
+The certified WI note discharges these conjuncts in its tower range. The proof dependency in frozen GENTOW5 nevertheless remains
+
+\[
+\boxed{
+\mathcal W_{\le n}
+\Longrightarrow (a)@n
+\Longrightarrow \mathrm{Corollary\ 6.4}
+\Longrightarrow (b)@n
+\Longrightarrow \mathrm{S11.1.1/S11.1.3}
+\Longrightarrow (c)@n
+\Longrightarrow (e)@n
+\Longrightarrow\text{the next automatic floor}.
+}
+\tag{WF-chain}
+\]
+
+Consequently:
+
+1. Clause (a)’s realized residual, admissibility, key-polynomial membership, prime/irreducibility certificate, and non-equivalence consume \(\mathcal W_{\le n}\).
+
+2. Clause (b)’s one-sidedness, corrected residual powers, exact values, repo-side residue classes, and \(P\)-membership consume \(\mathcal W_{\le n}\).
+
+3. Clause (c), including sufficiency, deeper-read ascent, fibration, node pins, and the field-floor conclusion, consumes \(\mathcal W_{\le n}\). S11.1.2’s numerical \(\rho\)-ladder remains unconditional floor arithmetic.
+
+4. Clause (e)’s automatic next-floor conclusion consumes \(\mathcal W_{\le n}\). A floor inequality explicitly included in the fixed datum remains independently available.
+
+The clause-(b) residual powers use the corrected index
+
+\[
+\boxed{
+R_{j-1}(\Phi_{n+1})
+=
+\bigl(\psi_j^{(\omega_{j-1})}\bigr)^{
+l_{j+1}\cdots l_{n+1}}
+\qquad(2\le j\le n+1),
+}
+\tag{WF-index}
+\]
+
+where
+
+\[
+\omega_1
+=
+\text{S11.3's fixed letter-power unit for }\psi_2,
+\qquad
+\omega_2=w_2,
+\qquad
+\omega_q=w_q\quad(q\ge3).
+\]
+
+Thus:
+
+- \(\psi_2\) carries \(\omega_1\);
+- \(\psi_3\) carries \(w_2\);
+- \(\psi_j\) carries \(w_{j-1}\) for \(j\ge4\).
+
+The top term consumes \(w_n\), never \(w_{n+1}\). The outer \(\psi_1\) leg remains separately accepted.
+
+The \(i=2\) rung is unconditional. The \(i=1\) residual remains S11.3’s fixed-letter-power statement. The unaffected scope listed in S12.1 remains unaffected.
+
+## 5. Honesty ledger
+
+1. Every \(w_i\) and \(\psi_{i+1}^{(w_i)}\) here means (WF-w) and (WF-psi). Riders do not redefine them.
+
+2. (WF-law) is certified for \(i=2\) and every permitted \(i\ge3\). It is not asserted at \(i=1\).
+
+3. Downstream GENTOW5 clauses at \(n\ge3\) retain the dependency \(\mathcal W_{\le n}\). Certification discharges those hypotheses; it does not erase the dependency arrows.
+
+4. Exact values, residue classes, \(P\)-membership, clauses (c) and (e) are not made unconditional by per-grade fixedness. S12.1’s withdrawal governs.
+
+5. Clause (b) uses \(\psi_j^{(\omega_{j-1})}\), not the superseded \(\psi_j^{(\omega_j)}\).
+
+6. The recipe uses \(\vartheta_{i,s}\); the B-law uses its inverse \(\Theta_i(t)\).
+
+7. There is no universal \(w=1\) claim. PE6 already records \(w_2\ne1\) at six primes. What remains open is a structural or closed-form criterion for \(w_i\), including when it equals \(1\).
+
+8. The avatars \(z_1,z_1^2,z_2^2,z_2\) are measured instances. LW3 shows that an avatar can differ from intrinsic \(w_i\).
+
+9. There is no theta-free law. LW3’s \(\theta_3(0)=2\) is a live counterexample.
+
+10. The six PE6 primes, seventh-prime PE3 check, and LW3 are regression records, not exhaustive coverage.
+
+11. Unit twisting preserves factor patterns, not literal coefficients or roots. Splitting conclusions require the tower theorem.
+
+12. No accepted or byte-frozen source is rewritten.
+
+## 6. Open items
+
+**WFRAME OPEN-1 — structural value law.** Find a closed formula or intrinsic criterion for \(w_i\), including a criterion for \(w_i=1\).
+
+**WFRAME OPEN-2 — outer tie.** Identify S11.3’s fixed letter-power unit with the displayed \(w_1\), or retain them as distinct normalizations.
+
+**WFRAME OPEN-3 — avatar bookkeeping.** Determine the exact gap between a uniformizer avatar and the intrinsic read (WF-w). LW3 proves the gap can be nontrivial.
+
+## 7. Hostile arc plan
+
+A repair resets the counter.
+
+### Pass 1 — statement and scope
+
+1. Check (WF-w) and (WF-psi) literally against T1 C3.
+2. Check \(i=2\) against GENTOW2-B\(^{\prime\prime}\) and \(i\ge3\) against certified WI; reject any \(i=1\) promotion.
+3. Walk every arrow of (WF-chain) against S12.1.
+4. Instantiate (WF-index) at \(j=2,3,4,n+1\); the top must use \(w_n\).
+5. Reject any universal inference from the avatar or seven-prime records.
+6. Lint all \(w=1\), avatar-\(w\), and theta-free claims against PE6 and LW3.
+
+### Pass 2 — independent consumption check
+
+1. Recheck every span pin and record the exact hash or ledger identifier.
+2. Verify that T1 supplies only the dictionary/cancellation and that each B-law names its supplier.
+3. Check the three boundary regimes: \(i=1\) open tie, \(i=2\) unconditional, \(i\ge3\) certified with cumulative history.
+4. Reproduce the measurement census: six PE6 primes/four frames, the PE3 seventh-prime check, and WI run 2’s 60/60 result with run 1 retained.
+5. Ensure no conclusion behind S12.1’s chain is labeled unconditional merely because its hypothesis is now certified.
+6. Lint for unquoted positive occurrences of the superseded \(\psi_j^{(\omega_j)}\), theta-free power laws, universal \(w=1\), or a general avatar identity.
+
+The acceptance gate is
+
+\[
+\boxed{
+\text{two consecutive clean hostile passes}
++
+\text{all instance span pins verified}.
+}
+\]
+
+No new arithmetic theorem is required. The new verification surface is the definition, supplier range, cumulative dependency chain, corrected twist index, and instance typing.
+
+
+---
+
+## r1 (2026-08-12): arc repairs
+
+*(gpt-5.6-sol high, runs/comp6/T5R1_output.log; transcribed unaltered; counter resets.)*
+
+# T5 r1 — Scope repair
+
+Apply the following replacements. All unlisted text remains unchanged.
+
+## 1. Replace the composition metadata
+
+```markdown
+**Composition pass:** r1, attempt 0/2, 2026-08-12  
+**Status:** repaired candidate; two clean hostile passes owed  
+**Frame of record:** T1, LEMMA GAUGE-COCYCLE, with r1–r3  
+**Tower supplier:** GENTOW2 unconditionally at \(i=2\); for \(i\ge3\), the explicit cumulative hypothesis \(\mathcal W_{\le i}\), whose newest conjunct is `[GENTOW5-W(i)]`, read with GENTOW5 S12.1 and the dated \(\psi_j^{(\omega_{j-1})}\) corrigendum
+```
+
+## 2. Replace all of §2 beginning at `### LEMMA W-FRAME-LAW`
+
+```markdown
+### LEMMA W-FRAME-LAW
+
+At the base rung \(i=2\), unconditionally,
+
+\[
+\boxed{
+u_2(\beta_t)
+=
+\Theta_2(t)w_2^{f_3-t}
+=
+\vartheta_{2,f_3-t}^{-1}w_2^{f_3-t}
+\qquad(t<f_3).
+}
+\tag{WF-law\(_2\)}
+\]
+
+For every permitted rung \(3\le i<r\), put
+
+\[
+\mathcal W_{\le i}
+:=
+\bigwedge_{3\le q\le i}
+[\mathrm{GENTOW5-W}(q)].
+\]
+
+The higher-rung statement retains this explicit hypothesis:
+
+\[
+\boxed{
+\mathcal W_{\le i}
+\Longrightarrow
+\left[
+u_i(\beta_t)
+=
+\Theta_i(t)w_i^{s_t}
+=
+\vartheta_{i,s_t}^{-1}w_i^{s_t}
+\qquad(t<f_{i+1})
+\right].
+}
+\tag{WF-law\(_i\)}
+\]
+
+The suppliers are:
+
+- \(i=2\): LEMMA GENTOW2-B\(^{\prime\prime}\), unconditionally;
+- \(3\le i<r\): the final conjunct `[GENTOW5-W(i)]` of the cumulative hypothesis \(\mathcal W_{\le i}\).
+
+At \(i\ge3\), the new rung hypothesis is `[GENTOW5-W(i)]`; the earlier conjuncts remain the ambient induction history. The existence or certification of the companion note does not remove these hypotheses from the statement.
+
+Per-grade fixedness alone does not prove (WF-law). In particular, this note does not revive S11.2’s withdrawn “\(w\)-blind” argument.
+
+No \(i=1\) version is asserted. S11.3 supplies a fixed letter-power unit there, but its identification with the displayed \(w_1\) remains open.
+
+### Realized-residual corollary
+
+Whenever the relevant (WF-law) equality is available, the coherent recipe coefficient is
+
+\[
+\Gamma_t=c_t\vartheta_{i,s_t},
+\]
+
+and therefore
+
+\[
+\Gamma_tu_i(\beta_t)
+=
+c_t\vartheta_{i,s_t}
+\vartheta_{i,s_t}^{-1}w_i^{s_t}
+=
+c_tw_i^{s_t}.
+\]
+
+Thus the base rung is unconditional:
+
+\[
+\boxed{
+R_{\nu_2}(\Phi_3)
+=
+\psi_3^{(w_2)}.
+}
+\tag{WF-realized\(_2\)}
+\]
+
+For every permitted \(i\ge3\), the realized residual retains the cumulative scope
+
+\[
+\boxed{
+\mathcal W_{\le i}
+\Longrightarrow
+\text{\rm(WF-law)}_i
+\Longrightarrow
+R_{\nu_i}(\Phi_{i+1})
+=
+\psi_{i+1}^{(w_i)}.
+}
+\tag{WF-realized\(_i\)}
+\]
+
+T1 supplies the dictionary and the final cancellation. GENTOW2-B\(^{\prime\prime}\) supplies the unconditional \(i=2\) B-law. At \(i\ge3\), `[GENTOW5-W(i)]` supplies the sitewise B-law only within the displayed cumulative hypothesis.
+```
+
+## 3. Replace the final sentence of I1
+
+```markdown
+Its supplier fence leaves the unconditional base law to GENTOW2 and every higher-rung law to the explicit cumulative hypothesis \(\mathcal W_{\le i}\).
+```
+
+## 4. Replace I5 through the paragraph immediately before its LW3 record
+
+```markdown
+### I5 — conditional `[GENTOW5-W(i)]` supplier
+
+**Statement pin:** companion note §S1, matching GENTOW5_PROOF S11.2 at `b0e5c648`, lines 1912–1913.
+
+For every permitted \(i\ge3\), the pinned equality is consumed here only with its cumulative hypothesis:
+
+\[
+\boxed{
+\mathcal W_{\le i}
+\Longrightarrow
+\left[
+u_i(\beta_t)
+=
+\theta_i(t)w_i^{f_{i+1}-t}
+\right],
+}
+\]
+
+where
+
+\[
+w_i
+=
+R_{i+1,\bar k_i}
+\bigl(\widehat n_i(u_{i+1})\bigr)
+\]
+
+and
+
+\[
+\theta_i(t)
+=
+\Theta_i(t)
+=
+\vartheta_{i,f_{i+1}-t}^{-1}.
+\]
+
+The companion records the required sitewise conjunct for each permitted \(i\ge3\); it does not promote the displayed implication to a hypothesis-free law.
+```
+
+Retain the existing LW3 paragraph and the remainder of I5 unchanged.
+
+## 5. Replace the opening of §4 through the sentence before `(WF-chain)`
+
+```markdown
+For \(n\ge3\), retain S12.1’s cumulative hypothesis
+
+\[
+\mathcal W_{\le n}
+:=
+\bigwedge_{3\le q\le n}
+[\mathrm{GENTOW5-W}(q)].
+\]
+
+Certification of the WI companion does not discharge these conjuncts from the frozen GENTOW5 statements. Both the higher-rung supplier law and every downstream conclusion retain their explicit cumulative hypothesis. The proof dependency in frozen GENTOW5 remains
+
+\[
+\boxed{
+\mathcal W_{\le n}
+\Longrightarrow (a)@n
+\Longrightarrow \mathrm{Corollary\ 6.4}
+\Longrightarrow (b)@n
+\Longrightarrow \mathrm{S11.1.1/S11.1.3}
+\Longrightarrow (c)@n
+\Longrightarrow (e)@n
+\Longrightarrow\text{the next automatic floor}.
+}
+\tag{WF-chain}
+\]
+```
+
+## 6. Replace honesty-ledger items 2 and 3
+
+```markdown
+2. (WF-law\(_2\)) and (WF-realized\(_2\)) are unconditional. For every permitted \(i\ge3\), the asserted scope is
+
+   \[
+   \mathcal W_{\le i}
+   \Longrightarrow
+   \text{\rm(WF-law)}_i
+   \Longrightarrow
+   \text{\rm(WF-realized)}_i.
+   \]
+
+   No \(i=1\) version is asserted.
+
+3. Downstream GENTOW5 clauses at \(n\ge3\) retain the dependency \(\mathcal W_{\le n}\). Certification of a companion does not discharge or erase that hypothesis or any dependency arrow.
+```
+
+## 7. Replace the affected hostile-pass checklist items
+
+Pass 1, item 2:
+
+```markdown
+2. Check the unconditional \(i=2\) law against GENTOW2-B\(^{\prime\prime}\); check that every permitted \(i\ge3\) occurrence retains \(\mathcal W_{\le i}\) and uses `[GENTOW5-W(i)]` only as its newest conjunct; reject any \(i=1\) promotion.
+```
+
+Pass 2, item 3:
+
+```markdown
+3. Check the three boundary regimes: \(i=1\) open tie, \(i=2\) unconditional, and \(i\ge3\) conditional under the cumulative history \(\mathcal W_{\le i}\).
+```
+
+Pass 2, item 5:
+
+```markdown
+5. Ensure that neither (WF-law), (WF-realized), nor any conclusion behind S12.1’s chain is labeled unconditional merely because a companion note reports successful verification of the required conjuncts.
+```
+
+This repair leaves (WF-index), including the top twist \(w_n\), unchanged. It also leaves the \(i=1\) fence, theta factor, non-universal \(w\), and avatar separation unchanged.
+
+
+---
+
+## r2 (2026-08-12): arc repairs
+
+*(gpt-5.6-sol high, runs/comp8/T5R2_output.log; transcribed unaltered; counter resets.)*
+
+# T5 r2 — Notation/supplier repair
+
+Apply after r1. All unlisted text remains unchanged.
+
+## 1. Replace the composition-pass and status lines
+
+```markdown
+**Composition pass:** r2, attempt 0/2, 2026-08-12  
+**Status:** repaired candidate; two clean hostile passes owed  
+```
+
+## 2. In I5, replace the block beginning with `where` before the definition of \(w_i\) through the definition of \(\theta_i(t)\)
+
+```markdown
+The companion’s symbol \(\bar k_i\) and this note’s canonical symbol
+\(\bar\kappa_i\) denote the same normalized slope. Explicitly, throughout
+this instance pin,
+
+\[
+\boxed{
+\bar k_i=\bar\kappa_i
+:=
+\frac{u_{i+1}}{e(\mu_i)}.
+}
+\]
+
+Accordingly, the supplier’s displayed definition is read as
+
+\[
+w_i
+=
+R_{i+1,\bar k_i}
+\bigl(\widehat n_i(u_{i+1})\bigr)
+=
+R_{i+1,\bar\kappa_i}
+\bigl(\widehat n_i(u_{i+1})\bigr),
+\]
+
+which is exactly (WF-w), and
+
+\[
+\theta_i(t)
+=
+\Theta_i(t)
+=
+\vartheta_{i,f_{i+1}-t}^{-1}.
+\]
+
+The first expression for \(w_i\) preserves the supplier’s notation; the
+second is the same expression in the canonical notation of this note.
+No second definition of \(w_i\) is introduced.
+```
+
+## 3. Replace honesty-ledger item 1
+
+```markdown
+1. Every \(w_i\) and \(\psi_{i+1}^{(w_i)}\) here means (WF-w) and
+   (WF-psi). In I5 the supplier notation is explicitly bridged by
+
+   \[
+   \bar k_i=\bar\kappa_i:=\frac{u_{i+1}}{e(\mu_i)}.
+   \]
+
+   Thus the pinned supplier expression is literally the canonical
+   definition after notation identification; riders do not redefine it.
+```
+
+## 4. Replace Pass 1, item 1
+
+```markdown
+1. Check (WF-w) and (WF-psi) literally against T1 C3, and check that I5
+   retains the explicit bridge
+   \(\bar k_i=\bar\kappa_i=u_{i+1}/e(\mu_i)\), so its supplier pin is
+   exactly (WF-w) in the canonical notation.
+```
+
+This repair changes notation only. It leaves all r1 scope restrictions, cumulative hypotheses, supplier ranges, corrected twist indices, and instance records unchanged. Repository span-pin verification was again unavailable because the workspace executor could not launch without `bwrap`; no files were changed.
+
+
+---
+
+## r3 (2026-08-12): arc repairs
+
+*(gpt-5.6-sol high, runs/comp10/T5R3_output.log; transcribed unaltered; counter resets.)*
+
+# T5 r3 — Verification-state repair
+
+Apply after r2. All unlisted text remains unchanged. This repair records the unresolved evidence state; it does not claim repository verification or acceptance.
+
+## 1. Replace the composition-pass and status lines
+
+```markdown
+**Composition pass:** r3, attempt 0/2, 2026-08-12  
+**Status:** verification-blocked repaired candidate; zero clean hostile passes credited; all repository span pins remain to be independently verified
+```
+
+## 2. Replace the opening paragraph of §3
+
+```markdown
+## 3. Instance records and span pins
+
+An instance imports only its pinned display. It does not enlarge the
+containing theorem or turn a measurement into a symbolic formula.
+
+The locators below are claimed span pins, not completed verification
+records. A locator becomes verified only when a hostile pass checks it
+against the repository object at an exact commit hash or immutable
+ledger identifier and records the result in the verification ledger of
+§7. Failure of the workspace launcher does not count as verification,
+and agreement among the supplied excerpts does not substitute for an
+independent repository check.
+```
+
+## 3. In §7, replace Pass 2, item 1
+
+```markdown
+1. Recheck every claimed span pin against the repository object and
+   record, for each pin, the exact commit hash or immutable ledger
+   identifier, the file or ledger entry, the checked span, and a
+   pass/fail result. A hash or locator merely copied from this note is
+   not an independent verification.
+```
+
+## 4. In §7, replace Pass 2, item 4
+
+```markdown
+4. Reproduce and record the measurement census from its repository
+   artifacts: the six PE6 primes/four frames, the PE3 seventh-prime
+   check, WI run 2's 60/60 result, and the retained run 1 record. Record
+   the exact hash or immutable ledger identifier for every artifact
+   consumed; do not infer the census from this note's summary.
+```
+
+## 5. Replace the acceptance-gate paragraph and the final paragraph of §7
+
+```markdown
+The acceptance gate is
+
+\[
+\boxed{
+\text{two consecutive clean hostile passes}
++
+\text{a complete independently verified span-pin ledger}.
+}
+\]
+
+A complete ledger must contain successful repository checks for:
+
+1. T1 C3, including (C3-B-law), (C3-canonical-read), and
+   (C3-three-reads), with T1 r2's A7 re-scope;
+2. LEMMA GENTOW2-B\(^{\prime\prime}\);
+3. GENTOW2-PE6;
+4. GENTOW5-PE3;
+5. GENTOW5 S12.1;
+6. the dated \(\psi_j^{(\omega_{j-1})}\) corrigendum;
+7. companion note §S1 and GENTOW5_PROOF S11.2, whose claimed locator is
+   commit `b0e5c648`, lines 1912–1913;
+8. WI run 1 and WI run 2, including an independently reproduced 60/60
+   census.
+
+For each entry the ledger must record the exact commit hash or immutable
+ledger identifier, the repository path or ledger entry, the checked
+span, and the result. An unverified, missing, or inaccessible entry
+leaves the gate unmet.
+
+### Current verification disposition
+
+In the r3 repair pass the workspace executor again failed before any
+repository command could run because no `bwrap` launcher was available.
+Accordingly:
+
+- no repository span pin was independently checked;
+- the claimed `b0e5c648`, lines 1912–1913 locator was not independently
+  confirmed;
+- the PE6, PE3, and WI measurement records were not independently
+  reproduced;
+- the WI 60/60 census was not independently confirmed;
+- no hostile-pass credit is awarded.
+
+The supplied r2-effective text passes the available internal
+statement, scope, notation, index, and forbidden-form checks, but those
+checks do not satisfy the repository-evidence requirement. The
+acceptance gate therefore remains unmet. This is an evidence gap, not a
+demonstrated mathematical error.
+
+No new arithmetic theorem is required. The remaining work is an
+independent repository verification of the definition, supplier range,
+cumulative dependency chain, corrected twist index, and instance
+records, followed by two consecutive clean hostile passes.
+```
+
+This repair preserves every r1 scope restriction and every r2 notation bridge. It makes no unsupported hash, census, or acceptance claim.
+
+
+---
+
+## r4 (2026-08-12): arc repairs + evidence-census verification
+
+*(Fable-arm under the 2026-08-12 parallel regime; findings runs/comp11/T5P4_output.log; counter resets.)*
+
+# T5 r4 — Companion-scoping repair (G1) + independent census verification (G2)
+
+Apply after r3. All unlisted text remains unchanged.
+
+## 1. Replace the composition-pass and status lines
+
+```markdown
+**Composition pass:** r4, attempt 0/2, 2026-08-12  
+**Status:** repaired candidate; two clean hostile passes owed; the §7 span-pin ledger is independently verified as of r4 (census record appended below)
+```
+
+## 2. (G1) In r1's item 4 (the I5 rewrite), replace the final paragraph — "The companion records the required sitewise conjunct for each permitted \(i\ge3\); it does not promote the displayed implication to a hypothesis-free law." — with
+
+```markdown
+The companion note itself DOES claim the promotion: its title and
+verdict read "[GENTOW5-W(i)] is PROVED at every level i >= 3", and
+its S4 asserts that the S3(a) algebra "runs UNCONDITIONALLY at
+i >= 3" with the fence's conditional list "DISCHARGED: those clauses
+now rest on this note's lemma instead of an open hypothesis." Those
+claims consume THEOREM GENTOW5-B clause (b) as an unconditional
+w-blind fact — at index \(i-1\) in the companion's proof step (iv)
+("a w-blind clause, unconditional per the S11.2 scope walk") and at
+index \(i\) in its r1 nonemptiness derivation ("S11.2 expressly
+places the repo-side P-membership clause outside the
+[GENTOW5-W(i)] fence and classifies it as w-blind") — citing the
+S11.2 scope walk at `b0e5c648` L1925–1928. GENTOW5's later S12.1
+append expressly WITHDRAWS that scope walk ("its subsequent
+assertion that exact values, repo-side residue classes,
+P-membership, clause (c), and clause (e) remain unconditional is
+WITHDRAWN") and places ALL of clause (b) at index \(n\ge3\),
+P-membership included, behind \(\mathcal W_{\le n}\).
+
+Read under S12.1, the companion's written computation can be
+consumed as at most the conditional step
+
+\[
+\mathcal W_{\le i-1}
+\Longrightarrow
+[\mathrm{GENTOW5\text{-}W}(i)]
+\qquad(i\ge3;\ \mathcal W_{\le2}\ \text{the empty conjunction}),
+\]
+
+since its step-(iv) clause-(b) leg sits at index \(i-1\); its r1
+nonemptiness derivation does not survive as written (its
+clause-(b)-at-index-\(i\) leg now sits behind \(\mathcal W_{\le i}\),
+which would be circular there), so S1's "with \(P_{i+1}\) nonempty"
+reverts to a recorded setting assumption. Whether that conditional
+step, and the induction closing the conjuncts from the empty base,
+survives on the companion's full footprint is the companion's own
+re-verification obligation; it is NOT performed by the companion as
+written and NOT assumed here. Timeline of record: the companion was
+CERTIFIED 2/2 at 09:49 (runs/cert/R10_wi_pass3_output.log) — a pass
+whose own no-circularity walk reads clause (b) as "unconditional,
+w-blind" — while the S12.1 append was derived 11:31–11:34
+(runs/cert2/progress.txt, E12) and folded at 11:40 (commit
+`fa05591f`); the certification is a fact of the record, but its
+scope reading is superseded by S12.1. Accordingly this note consumes
+the companion's pinned display only within the explicit cumulative
+hypothesis \(\mathcal W_{\le i}\) displayed above — a consumption
+every reading supports — and does not adopt the companion's
+unconditional self-description.
+```
+
+## 3. Replace the body of r3's "### Current verification disposition" section (retaining the heading) with
+
+```markdown
+As of r4, every entry of the eight-item ledger above carries an
+independent repository check, recorded with exact quotes, computed
+hashes, and an isolated instrument re-run in the r4
+census-verification record appended to this note. The acceptance
+gate's evidence component is met; the two consecutive clean hostile
+passes remain owed (the r4-precipitating pass found 0C + 2G, and the
+counter resets with these repairs).
+```
+
+## 4. Census-verification record (G2)
+
+Each entry: the note's claim → the independently checked source
+quote/value → verdict. Checks performed in-repo on 2026-08-12
+(working tree at `runs/comp11` state; git objects addressed by hash).
+
+**(1) T1 C3 rows + r2 A7 re-scope** (ledger item 1; instance I1).
+Claim: T1 supplies \(\Gamma_t=c_t\vartheta_{i,s_t}\),
+\(\Theta_i(t)=\vartheta_{i,s_t}^{-1}\), the cancellation to
+(WF-realized), and a supplier fence leaving (WF-law) to
+GENTOW2/\(\mathcal W_{\le i}\). Source
+`T1_GAUGE_COCYCLE_2026-08-12.md`: (C3-Theta) boxes
+\(\Theta_i(t)=\vartheta_{i,f_{i+1}-t}^{-1}
+=\operatorname{res}(\widehat n_i((f_{i+1}-t)u_{i+1})
+/\widehat n_i(u_{i+1})^{f_{i+1}-t})\); (C3-B-law) boxes
+\(u(\beta_t)=\Theta_i(t)w_i^{f_{i+1}-t}\) gated by "At every site
+where the stated ladder-multiplicativity obligation is discharged";
+the body has \(\Gamma_t=c_t\vartheta_{i,f_{i+1}-t}\) and "so the
+\(\vartheta/\Theta\) factors cancel"; (C3-three-reads) boxes the
+canonical residual
+\(\psi_{i+1}^{(w_i)}(y):=w_i^{f_{i+1}}\psi_{i+1}(y/w_i)\) = (WF-psi).
+The r2 A7 re-scope (section "A7 — GENTOW2") states verbatim: "T1
+only **supplies the gauge algebra to** the preceding B-law display.
+The residual obligation is the accepted GENTOW2-B″ per-grade-unit
+theorem … but it does not prove the supplier identity itself. Thus
+the B-law is no longer labeled 'absorbed verbatim.'" **VERIFIED.**
+
+**(2) LEMMA GENTOW2-B″** (ledger item 2; instance I2). Claim:
+\(u_2(\beta_t)=\Theta_2(t)w_2^{f_3-t}\),
+\(w_2=R_{3,\bar\kappa_2}(\widehat n_2(u_3))\), terminal rescaling
+\(\psi_3^{(w_2)}=w_2^{f_3}\psi_3(y/w_2)\); ledger row GENTOW2 #4,
+md5-8 `d4c8b885`, L729–738 @ `33f86204`. Source: `git show
+33f86204:lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md` lines
+729–738 read: "**LEMMA GENTOW2-B″.** For each slot t < f₃, with
+w := u(κ̄) = R_{3,κ̄}(n̂₂(u₃)): (6) u(β_t) = ϑ(t) · w^{f₃−t}.
+Consequently … R_{3,α}(Φ₃) = … = w^{f₃}·P(y/w) …" (B″'s single-
+argument \(\vartheta(t)\) is this note's \(\Theta_2(t)\), the
+inverse-telescope orientation). Ledger:
+`statement_ledger_baseline.json` entry
+`GENTOW2_PROOF_2026-08-09.md/statements/3` (= row #4) has kw LEMMA,
+tok GENTOW2-B″, start 729, end 738, md5
+`d4c8b8854e7b00e517eee10c7d7a042d` — md5-8 `d4c8b885` MATCHES.
+(Mechanism note: the ledger hashes the NORMALIZED statement text;
+a raw `sed -n '729,738p' | md5sum` of the byte span gives
+`8978f8ba…` — not a mismatch.) `statement_ledger.py --check` run
+today: "CHECK: 178 baseline statements; 0 changed, 0 deleted, 2
+added." / "GREEN: every baseline statement byte-stable
+(normalized)." **VERIFIED.**
+
+**(3) GENTOW2-PE6, the six-prime/four-frame record** (ledger item 3;
+instance I3). Claim: six measured instances with \(w_2\ne1\) and
+recorded avatars \(z_1,z_1^2,z_2^2,z_2\). Source
+`GENTOW2_passPE6_report.md`: "w-avatar = z₁ (LD1), z₁² (LD3), z₂²
+(GA1), z₂ (GA3) — ≠ 1 at all 6 primes of the 4 frames"; "Results
+(run-2 GREEN 68 checks / 0 violations)"; verdict "CLEAN — 0
+CRITICAL, 0 GAP, 1 MINOR". Retained disclosure: the directly
+measured object is the avatar res((n̂₂(u₃)/π₃^{u₃})(ξ)); "the
+postregistered identification: avatar = R_{3,κ̄}(n̂₂(u₃)) — riding
+Thm 4.2/eq (16) (row 23," DESCRIPTIVE"); PE6 also measured u(β₀)
+"DIRECTLY as its own canonical-frame ratio" (B″(6) closed in the
+w-inclusive frame). I3's framing ("the avatar expressions remain
+frame-local measurements") matches. **VERIFIED** (avatar-mediated,
+exactly as I3 states).
+
+**(4) GENTOW5-PE3, the seventh-prime row** (ledger item 4; instance
+I4). Claim: \(\psi_3^{(w_2)}(Y)=0\) at a seventh prime. Source
+`GENTOW5_passPE3_report.md`: "**w MEASURED at a 7th prime, first
+carrier-(8,4) geometry: w = z2 != 1**; **PSIW: psi_3^{(w)}(Y) = 0 —
+THEOREM GENTOW5-B(a) AS** [re-scoped]"; and the tooth "**NOSE TOOTH
+FIRED: psi_3(Y) != 0**". **VERIFIED.**
+
+**(5) GENTOW5 S12.1** (ledger item 5). Claim: cumulative
+\(\mathcal W_{\le n}\), the (WF-chain) arrows, the withdrawal, i = 2
+unconditional, i = 1 = S11.3. Source `GENTOW5_PROOF_2026-08-09.md`
+S12.1 (working tree L2035–2133): "\(\mathcal W_{\le n}:=
+\bigwedge_{3\le q\le n}[{\rm GENTOW5\!-\!W}(q)]\)"; "its subsequent
+assertion that exact values, repo-side residue classes,
+P-membership, clause (c), and clause (e) remain unconditional is
+WITHDRAWN"; the chain "[GENTOW5-W(n)] ⟹ (a)@n ⟹ Corollary 6.4 ⟹
+(b)@n ⟹ S11.1.1/S11.1.3 ⟹ (c)@n ⟹ (e)@n ⟹ the next automatic
+floor" (read, per the corrigendum, "under the ambient hypothesis
+𝒲_{≤n} as a whole" — the form (WF-chain) displays); "The i = 2 rung
+remains unconditional by the landed GENTOW2 law; the i = 1 residual
+remains exactly S11.3's fixed-letter-power statement". **VERIFIED.**
+
+**(6) The dated \(\psi_j^{(\omega_{j-1})}\) corrigendum** (ledger
+item 6). Claim: (WF-index)'s assignment \(\omega_1=\) S11.3 unit,
+\(\omega_2=w_2\), \(\omega_q=w_q\), top term consumes \(w_n\).
+Source `GENTOW5_PROOF_2026-08-09.md` dated corrigendum (working
+tree L2299–2312): "read every ψ_j^{(ω_j)} in S12.1's clause (b) as
+ψ_j^{(ω_{j−1})} with ω₁ = the S11.3 unit"; "ψ₂ carries S11.3's
+fixed letter-power unit, ψ₃ carries w₂, and ψ_j carries w_{j−1} for
+j ≥ 4"; "The display as first written demanded w_{n+1} at the top
+term, exceeding the assumed 𝒲_{≤n}". **VERIFIED.**
+
+**(7) Companion §S1 ↔ GENTOW5_PROOF S11.2 @ `b0e5c648`
+L1912–1913** (ledger item 7; instance I5's statement pin). Commits
+exist: `b0e5c648` ("GENTOW5 Codex repairs (2/2) — A-F2 GAP …"),
+`33f86204` ("GENTOW2 R3 hygiene …"). `git show
+b0e5c648:lean/notes/openmath/GENTOW5_PROOF_2026-08-09.md` lines
+1912–1913 read exactly:
+"`[GENTOW5-W(i)]   u_i(beta_t) = theta_i(t) * w_i^{f_{i+1}-t},`" /
+"`w_i = R_{i+1,kbar_i}(nhat_i(u_{i+1})),`" — byte-matching the
+companion's S1 display (kbar_i = \(\bar\kappa_i\); the r2 bridge).
+Also confirmed at that commit: L1904–1908 = the S11.2 proved list
+("per-grade FIXEDNESS of u_i(beta) … x0-freeness and g-freeness …
+reciprocity theta_i(t) = vartheta_{i,f_{i+1}-t}^{-1}") and
+L1925–1928 = the scope walk ("… the repo-side residue classes and
+P-membership clauses, (c)'s budgets, (d), (e) — w-blind there") —
+the sentence S12.1 has since withdrawn (item 5 above), which is
+G1's mechanism. **VERIFIED.**
+
+**(8) WI run 1 + run 2, the 60/60 census** (ledger item 8; instance
+I5's LW3 record). Claims: runner md5-8 `c8c5d129`; run-1 RED
+`598d6704`, 58 checks/5 violations; run-2 `b0a8c3c4`, 60 checks/0
+violations, isolated re-run bit-identical, exit 0; seal commit
+`07fa3676`. Computed today (`md5sum`, full digests):
+`gentow5_wi_checks.py` = `c8c5d129a91837d5f6b2a5902601a4aa`;
+`gentow5_wi_checks_output.txt` =
+`b0a8c3c4b5857e90929fff9c340ae870`;
+`gentow5_wi_checks_output_run1_RED.txt` =
+`598d6704fc4348767a0a6f5f57705f73` — all three md5-8 pins MATCH.
+Run-1 artifact ends "== SUMMARY: 58 checks, 5 violations ==";
+run-2 artifact ends "== SUMMARY: 60 checks, 0 violations ==".
+Commit `07fa3676` exists ("RCT-W(i) commit 2 — SEAL (1 of 2) …
+instrument gentow5_wi_checks.py sealed UNRUN"). **INDEPENDENT
+REPRODUCTION (r4):** a fresh isolated run of
+`verification/openmath/gentow5_wi_checks.py` today exited 0 with
+"== SUMMARY: 60 checks, 0 violations ==" and output BIT-IDENTICAL
+to the committed artifact (md5 `b0a8c3c4b5857e90929fff9c340ae870`;
+wall time 0.8 s) — the census is reproduced, not inferred from any
+note's summary. LW3 rows re-read from the artifact: "MEASURED
+w* = 1"; "ok: P-D3' LAW-I1 norm(Y) = 2 tr(Y)^2"; "ok: P-D3' LAW-I2
+psi_4^{(w*)}(Y) = 0 (single-w display)"; "ok: P-D4' TOOTH
+psi_4^{(w')}(Y) != 0"; "MEASURED w_av = 2 (avatar; row-23 record)";
+"ok: P-D7' TOOTH naive twin VERDICT KILL: (e,f) != (8,2) (measured
+N-EF: 1 16 1)" — matching I5's LW3 record (\(w_3=1\),
+\(u_3(\beta_1)=1\), \(u_3(\beta_0)=2=\theta_3(0)w_3^2\),
+\(\psi_4^{(w_3)}(Y)=0\), \(w_{\rm av}=2\ne w_3\)). **VERIFIED +
+REPRODUCED.**
+
+No MISMATCH was found at any ledger entry. This r4 preserves every
+r1 scope restriction, the r2 notation bridge, and r3's evidence
+gate; it changes the note's description of the companion (item 2)
+and records the completed evidence census (items 3–4).
+
+
+---
+
+## r5 (2026-08-12): frame refresh + avatar/intrinsic scoping + census locators
+
+*(Fable-arm; counter resets.)*
+
+# T5 r5 — T1-r9 frame refresh (F1) + avatar/intrinsic re-scope (F2/F3) + locator-compliant census (F4/F5)
+
+Apply after r4. All unlisted text remains unchanged. Finding key
+(the r5-precipitating pass, 0C + 4G + 1m): F1 = stale frame pin and
+missing (C3-ladder-nonvanishing) carry; F2 = I3's boxed intrinsic
+upgrade of an avatar measurement; F3 = I4's box keyed intrinsic
+where PE3's closure is avatar-keyed; F4 = census locators
+non-compliant with r3's per-entry rule; F5 = the "artifact ends"
+phrasing.
+
+## 1. (F1) Replace the composition-pass, status, and frame-of-record lines
+
+```markdown
+**Composition pass:** r5, attempt 0/2, 2026-08-12  
+**Status:** repaired candidate; two clean hostile passes owed; the §7 span-pin ledger is locator-compliant as of r5 (exact per-entry commits; entry 1 re-verified at the current T1 commit)  
+**Frame of record:** T1, LEMMA GAUGE-COCYCLE, with r1–r9  
+```
+
+The T1 frame has advanced from r3 to r9 since this note's base was
+composed. The two rounds that bind this note are r8 — the
+independent site obligation (C3-ladder-nonvanishing), without which
+neither division by \(w_i\) nor the unit-substitution argument is
+asserted — and r9 — the depth-\(\ge3\) residue-membership fence
+\(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) under (C2-vartheta), and the
+A7 SPAN PIN 2 re-scope. Item 2 carries both.
+
+## 2. (F1) Carry (C3-ladder-nonvanishing) at every site that divides by \(w_i\) or substitutes it
+
+Insert into §1, immediately after the paragraph ending "Turning
+factor data into a \(p\)-adic splitting type still requires the
+surrounding tower theorem.":
+
+```markdown
+### The (C3-ladder-nonvanishing) carry (T1 r8, R8-2)
+
+T1 r8 makes nonvanishing of the base ladder read an independent
+site obligation:
+
+\[
+\boxed{
+R_{i+1,\bar\kappa_i}
+\bigl(\widehat n_i(u_{i+1})\bigr)
+\ne0.
+}
+\tag{C3-ladder-nonvanishing}
+\]
+
+It does not follow from ladder multiplicativity, graded scalar
+covariance, the grade-zero residue rule, or (C3-zero-read); without
+it, neither division by \(w_i\) nor the unit-substitution argument
+is asserted. Accordingly, EVERY site of this note that divides by
+\(w_i\) or substitutes it carries (C3-ladder-nonvanishing)
+explicitly: the membership \(w_i\in K_i^\times\) displayed in
+(WF-w); the twists (WF-twist) and (WF-psi); the unit-substitution
+paragraph above; (WF-realized\(_2\)) and (WF-realized\(_i\)); the
+instance displays of I2, I4, and I5; and every
+\(\psi_j^{(\omega_{j-1})}\) leg of (WF-index). The named suppliers,
+by level:
+
+- **\(i=2\): LEMMA GENTOW2-B\('\)(3)/B\(''\).** B\('\)(3) is the
+  accepted per-grade-unit clause (each
+  \(u(\beta_t)=R_{3,\beta_t}(\widehat n_2(u_3(f_3-t)))\) a unit),
+  and B\(''\) pins \(w=R_{3,\bar\kappa}(\widehat n_2(u_3))\in
+  K_2^\times\) as a single slot-independent unit. This is the
+  discharge T1 r8 itself names at the accepted GENTOW2 site.
+- **\(i\ge3\): S11.2's proved fixed-unit list.** GENTOW5_PROOF
+  S11.2 (at `b0e5c648`, the proved list at L1904–1908) proves,
+  independently of \(\mathcal W_{\le i}\), per-grade FIXEDNESS of
+  \(u_i(\beta)\) — "each grade's unit is a fixed
+  \(K_i^\times\)-value". The \(s=1\) grade of that family is
+  exactly the base ladder read: at \(t=f_{i+1}-1\),
+  \(u_i(\beta_t)=R_{i+1,\bar\kappa_i}(\widehat n_i(u_{i+1}))\), the
+  defining read of (WF-w). A fixed \(K_i^\times\)-value is in
+  particular nonzero, so (C3-ladder-nonvanishing) is discharged at
+  every permitted \(i\ge3\) site — on S11.2's PROVED side of the
+  fence, while the single-\(w\) geometric law itself stays behind
+  \(\mathcal W_{\le i}\).
+- **\(i=1\): NONE.** No supplier discharges
+  (C3-ladder-nonvanishing) at \(i=1\), and no \(i=1\) instance of
+  (WF-w), (WF-twist), or (WF-psi) is asserted. The \(j=2\) leg of
+  (WF-index) is scoped accordingly: \(\psi_2\) carries
+  \(\omega_1=\) S11.3's fixed letter-power unit, which is a unit by
+  its own displayed letter-power form — NOT via
+  (C3-ladder-nonvanishing) applied to a displayed \(w_1\). Its
+  identification with \(w_1\) is exactly WFRAME OPEN-2; the
+  \(i=1\) display stays open with it.
+
+Separately, the T1 r9 fence is carried at the telescope: this
+note's \(\Theta_i(t)=\vartheta_{i,s_t}^{-1}\) displays invert
+\(\vartheta\), and per T1 r9 the membership
+\(\vartheta_{i,s}\in K_i^\times\) is proved at \(i\in\{1,2\}\)
+only. Every \(i\ge3\) use of \(\Theta_i(t)\) in this note carries
+the named hypothesis \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\)
+alongside \(\mathcal W_{\le i}\). Whether S11.2's S2.1
+monomial-quotient computation discharges that hypothesis is not
+adjudicated here.
+```
+
+In I2, append after "This is the unconditional base rung.":
+
+```markdown
+Site obligation: the terminal rescaling divides by \(w_2\);
+(C3-ladder-nonvanishing) is discharged here by
+GENTOW2-B\('\)(3)/B\(''\) (\(w\in K_2^\times\)).
+```
+
+In I5, append after the LW3 paragraph ending "LW3 also kills the
+theta-free formula \(u_i(\beta_t)=w_i^{f_{i+1}-t}\).":
+
+```markdown
+Site obligation: \(\psi_4^{(w_3)}\) divides by \(w_3\);
+(C3-ladder-nonvanishing) at \(i=3\) is supplied by S11.2's proved
+fixed-unit list, and the measured \(w_3=1\ne0\) confirms it live at
+LW3.
+```
+
+Append to the honesty ledger:
+
+```markdown
+13. \(w_i\in K_i^\times\), division by \(w_i\), and
+    unit-substitution transport are asserted only at sites carrying
+    (C3-ladder-nonvanishing) (T1 r8): supplied at \(i=2\) by
+    GENTOW2-B\('\)(3)/B\(''\), at \(i\ge3\) by S11.2's proved
+    fixed-unit list, and at \(i=1\) by NOTHING — the \(i=1\)
+    display is scoped to WFRAME OPEN-2. At \(i\ge3\),
+    \(\Theta_i(t)\) additionally carries
+    \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) (T1 r9).
+
+14. I3's intrinsic \(w_2\ne1\) is PROVED at the IDY-closed frames
+    LD1/GA1/GA3 only; at LD3 and in I4 the records are
+    avatar-keyed, with the avatar–intrinsic identification riding
+    the descriptive row 23.
+```
+
+## 3. (F2) Re-scope I3: intrinsic where IDY-closed, avatar elsewhere
+
+Replace all of I3 (heading and body) with:
+
+```markdown
+### I3 — GENTOW2-PE6
+
+**Span pin:** GENTOW2-PE6, the six-prime/four-frame record
+(`GENTOW2_passPE6_report.md` @ `deba21bd`, census entry 3).
+
+The record carries two different strengths, scoped separately.
+
+**Intrinsic \(w_2\ne1\) — PROVED at the three IDY-closed frames:**
+
+\[
+\boxed{
+w_2\ne1
+\quad\text{(intrinsic, in the sense of (WF-w)) at LD1, GA1, GA3.}
+}
+\]
+
+At those frames PE6 measured \(u(\beta_0)\) DIRECTLY as its own
+canonical-frame ratio (LD1: \(1\); GA1: \(1\); GA3: \(z_2\)) and
+\(\vartheta(0)\) independently (re-meeting the decode pin \(z_1\)
+and the PE5 pin \(z_2^2\)). The unconditional \(i=2\) law — B\(''\)
+display (6) at \(t=0\), with \(f_3=2\) at these frames:
+\(u(\beta_0)=\vartheta(0)\,w_2^2\) — then pins the intrinsic value:
+\(w_2^2=u(\beta_0)/\vartheta(0)\ne1\) at each of the three frames
+(the measured pairs \(1\ne z_1\), \(1\ne z_2^2\), \(z_2\ne z_2^2\),
+each an instance of the recorded letter values \(\ne1\)), whence
+\(w_2\ne1\). The IDY closure rows additionally tie
+\(w_{\rm av}^2=w_2^2\) there — a consistency closure, as the PE6
+report itself labels them.
+
+**Avatar \(\ne1\) — MEASURED at all six primes of the four
+frames,** with recorded avatars \(z_1\) (LD1), \(z_1^2\) (LD3),
+\(z_2^2\) (GA1), \(z_2\) (GA3). The directly measured object is the
+avatar
+\(\operatorname{res}((\widehat n_2(u_3)/\pi_3^{u_3})(\xi))\); its
+identification with the intrinsic read (WF-w) rides Thm 4.2/eq (16)
+— row 23, DESCRIPTIVE — not a proved leg. LD3 has NO direct
+canonical row: only the avatar measurement exists there, so
+intrinsic \(w_2\ne1\) is NOT asserted at LD3.
+
+**LW3 caveat (displayed because it prices the avatar leg):** LW3 is
+the first measured geography where the avatar differs from the
+intrinsic unit (\(w_{\rm av}=2\ne w_3=1\)); an avatar measurement
+alone never upgrades to an intrinsic (WF-w) value without a closed
+identification.
+
+These records refute a universal \(w=1\) assertion — intrinsically
+at LD1/GA1/GA3, avatar-wise at all six primes. The avatar
+expressions remain frame-local measurements; no general avatar
+formula is inferred.
+```
+
+## 4. (F3) Re-key I4 as the avatar-coherent closure
+
+Replace all of I4 (heading and body) with:
+
+```markdown
+### I4 — GENTOW5-PE3
+
+**Span pin:** GENTOW5-PE3, the seventh-prime row
+(`GENTOW5_passPE3_report.md` @ `39c36aa2`, census entry 4).
+
+The pinned closure is avatar-coherent, not intrinsic:
+
+\[
+\boxed{\psi_3^{(w_{\rm av})}(Y_{\rm av})=0,}
+\]
+
+where \(w_{\rm av}=z_2\ne1\) is the avatar measured at the seventh
+prime (the first carrier-(8,4) geometry) and \(Y_{\rm av}\) is the
+FGMN class avatar — the report's own keying ("Y = the FGMN class
+avatar"). Both keys are measured nonzero letters, so the displayed
+twist is well-formed at the avatar key; the
+(C3-ladder-nonvanishing) question attaches to the intrinsic read,
+which this row does not evaluate. The avatar-mediation caveat is
+census entry 3's, verbatim: the identification of \(w_{\rm av}\)
+with the intrinsic (WF-w) value rides Thm 4.2/eq (16) (row 23,
+DESCRIPTIVE), and LW3 shows that leg can gap.
+
+An INTRINSIC evaluation \(\psi_3^{(w_2)}(Y)=0\) at this frame would
+additionally need either (a) a direct canonical-frame measurement
+of \(w_2\) — an IDY-style closure as at PE6's LD1/GA1/GA3 —
+together with a canonical-frame read of the class, or (b) a proved
+(non-descriptive) avatar–intrinsic identification at this frame.
+Neither is in the PE3 record.
+
+As re-keyed, this remains an evaluation instance of the
+avatar-coherent form of (WF-psi), not another definition of the
+twist; the untwisted tooth \(\psi_3(Y_{\rm av})\ne0\) fired at the
+same frame, pricing the re-scope on the nose.
+```
+
+## 5. (F4) Locator-compliant census: per-entry exact commits + entry-1 re-verification
+
+Replace the r4-installed body of "### Current verification
+disposition" (the paragraph beginning "As of r4, every entry of the
+eight-item ledger") with:
+
+```markdown
+As of r5, every entry of the eight-item ledger above carries an
+independent repository check AND a locator-compliant record: the r5
+locator table below gives, per entry, the repository path, the
+exact commit hash (computed by `git log -1 --format=%H -- <path>`,
+or the immutable git object where the pin is object-addressed), and
+the checked span. Entry 1 (T1) is re-verified against T1 AT ITS
+CURRENT commit, with the r8/r9 deltas recorded. The acceptance
+gate's evidence component is met in the per-entry form r3 demanded;
+the two consecutive clean hostile passes remain owed (the
+r5-precipitating pass found 0C + 4G + 1m, and the counter resets
+with these repairs).
+```
+
+Append to the census-verification record:
+
+```markdown
+#### r5 locator table (per-entry exact commits) and entry-1 re-verification
+
+Computed 2026-08-12 at repo HEAD
+`c2c77b546647ae6de2693a0961d245e1b0b978fd`.
+
+1. **T1 C3 + A7 re-scope** —
+   `lean/notes/openmath/T1_GAUGE_COCYCLE_2026-08-12.md`
+   @ `c2c77b546647ae6de2693a0961d245e1b0b978fd` (the r9 fold; =
+   HEAD). Span: the §1.1 (C2)/(C3) displays, §2.3, and the A7 row,
+   in the r1–r9 effective text. Re-verified at THIS commit; deltas
+   below.
+2. **LEMMA GENTOW2-B″** —
+   `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md`, current
+   commit `9f29a28b9904df17c286c0c89246a6540159b010`; the pin
+   itself is object-addressed at
+   `33f86204d4b502edf55d2f5246eaa4175fd7abda` L729–738 (immutable).
+   r5 diff check: the pinned span is byte-identical at the current
+   commit.
+3. **GENTOW2-PE6** —
+   `lean/notes/openmath/GENTOW2_passPE6_report.md`
+   @ `deba21bd87f7d047761c4eb218070d67fc26da2d`.
+4. **GENTOW5-PE3** —
+   `lean/notes/openmath/GENTOW5_passPE3_report.md`
+   @ `39c36aa2e0387e7820701f41eb3a2fca6ef1a7eb`.
+5. **GENTOW5 S12.1** —
+   `lean/notes/openmath/GENTOW5_PROOF_2026-08-09.md`
+   @ `cb010522aff06defbf0f4f9b69bb5da4ce61f0e8`, L2035–2133 at this
+   commit (header at L2035; the "Unaffected scope" close at L2133
+   — re-verified today, replacing r4's working-tree line cite).
+6. **The dated \(\psi_j^{(\omega_{j-1})}\) corrigendum** — same
+   file @ the same commit, L2299–2312 (dated-corrigendum header
+   through "Awaiting sol re-confirmation in the next queue." —
+   re-verified today, replacing r4's working-tree line cite).
+7. **Companion §S1 ↔ S11.2** — companion
+   `lean/notes/openmath/GENTOW5_WI_2026-08-10.md`
+   @ `72eadc1d9cd3fab3126bdfc2735dad26fd75f0fd`; source
+   `GENTOW5_PROOF_2026-08-09.md` object-addressed at
+   `b0e5c648b2287d940ee404d0042168d5542c4a0f` L1912–1913
+   (immutable; the full hash of r4's short `b0e5c648`).
+8. **WI instrument + runs** —
+   `verification/openmath/gentow5_wi_checks.py`
+   @ `4c95940959b501ac70655d45a5424a2b19f31c08`; run-2 artifact
+   `verification/openmath/gentow5_wi_checks_output.txt`
+   @ `ec30256cafe301b5087c81eb465a4e3e0e391800`; run-1 RED artifact
+   `verification/openmath/gentow5_wi_checks_output_run1_RED.txt`
+   @ `4c95940959b501ac70655d45a5424a2b19f31c08`; seal commit
+   `07fa3676d5e1964d1ff11aa033149cc245457e77`.
+
+**Entry-1 re-verification at `c2c77b54` (current), with the r8/r9
+deltas.** Timeline of the mutation r5 repairs: T1 r7 folded 21:29
+(`0013cd60`), r8 folded 21:54 (`1950f588`), this note's r4 census
+folded 22:21 (`e765aa9c`), T1 r9 folded 22:38 (`c2c77b54`) — so
+entry 1's source mutated between check and fold, and again after.
+Re-checked at `c2c77b54`: the (C3-Theta) box, the (C3-B-law) box
+with its site-gate sentence ("At every site where the stated
+ladder-multiplicativity obligation is discharged"), the
+\(\Gamma_t=c_t\vartheta_{i,f_{i+1}-t}\) display with "so the
+\(\vartheta/\Theta\) factors cancel", and the (C3-three-reads) box
+(= (WF-psi)) all stand as quoted at r4. Deltas: (r8) the census's
+quoted A7 sentence "The residual obligation is the accepted
+GENTOW2-B″ per-grade-unit theorem …" is SUPERSEDED in the effective
+text by r8's expanded replacement, which names GENTOW2-B′/B″, the
+slot-grade identity, graded scalar covariance, and the nonvanishing
+clause \(R_{i+1,\bar\kappa_i}(\widehat n_i(u_{i+1}))\ne0\); the
+flanking sentences ("T1 only supplies the gauge algebra to the
+preceding B-law display"; "… the B-law is no longer labeled
+'absorbed verbatim'") survive. The three-reads and factor-pattern
+conclusions now sit behind the explicit site obligation
+(C3-ladder-nonvanishing) (R8-2) — carried into this note by r5
+item 2. (r9) (C2-vartheta)'s \(K_i^\times\) membership is fenced
+behind \(\mathrm{(H\!-\!VARTHETA\!-\!RES)}_i\) at \(i\ge3\) (R9-2)
+— carried at this note's \(\Theta_i(t)\) displays by r5 item 2; the
+A7 SPAN PIN 2 consequence list is re-scoped (preservation of
+irreducible-factor degrees/multiplicities is T1's §2.3
+factor-pattern conclusion, fenced by (C3-ladder-nonvanishing), NOT
+an assertion of the pinned B span) (R9-4); and the md5
+pin-normalization convention is now documented in T1's §3 (R9-5),
+retro-grounding this census's entry-2 mechanism note. Verdict:
+entry 1 re-VERIFIED at the current commit, conditional on the r5
+item-1/2 carries now displayed in this note.
+```
+
+## 6. (F5) Fix the run-1 "artifact ends" phrasing
+
+In census entry (8), replace
+
+> Run-1 artifact ends "== SUMMARY: 58 checks, 5 violations ==";
+> run-2 artifact ends "== SUMMARY: 60 checks, 0 violations ==".
+
+with:
+
+```markdown
+Run-1's SUMMARY line reads "== SUMMARY: 58 checks, 5 violations =="
+and is FOLLOWED by the five VIOLATION detail lines (P-D1 nfeltval
+ladder; P-D3 LAW-1; P-D3 LAW-3; P-D4 TOOTH; P-D6 TOOTH nose) — the
+artifact ends with that detail block, not with the summary line.
+Run-2's artifact does end at its summary line
+"== SUMMARY: 60 checks, 0 violations ==". Both re-confirmed by
+direct tail today.
+```
+
+This r5 preserves every r1 scope restriction, the r2 notation
+bridge, r3's evidence gate, and r4's companion scoping. It
+refreshes the frame pin to T1 r1–r9, carries the r8/r9 fences at
+every consuming site, re-scopes I3/I4 to their measured strength,
+and makes the census locator-compliant.
+
+
+---
+
+**Dated riders (2026-08-12, post-pass-1 — the two minors of the clean
+Fable pass, folded per the minors-only precedent, no grade event).**
+(m-1) The r5 locator table's entry 6 span is L2299–2313 (the named
+closing sentence "Awaiting sol re-confirmation in the next queue."
+sits at L2313 at commit cb010522; the r5 line excluded its own
+endpoint by one). (m-2) The frame of record is T1 with r1–r10
+(fb991138 — a 27-line pure append to C7's M2/M3 rows, immaterial to
+every T5 pin per the pass's own audit); the census entry-1 "= HEAD"
+gloss is dated to its check window (22:38–22:49). Pass of record:
+the Fable-arm hostile pass returned VERDICT: CLEAN | 0C + 0G + 2m —
+clean pass 1 of 2.
+
+=== GENTOW2-B'' SOURCE REGION ===
+literally coincides with GENTOW5-A1's ϑ_t (that note's arc is in
+flight) is left to that arc — nothing here consumes the
+correspondence. u ≡ 1 (= B-2 on the nose) is REFUTED letter-live
+(honesty box) and is consumed NOWHERE in the repaired note.
+
+### S5.2 [r3] LEMMA GENTOW2-B″ — the u ↔ ϑ adjudication (PE4 F1):
+### B′'s unit family IS the repo n̂₂-cocycle, up to ONE
+### slot-independent unit
+
+Setting: the recipe geometry of GENTOW2-B (slots t < f₃; slot
+grades β_t := u₃(f₃−t)/e(µ₂) ∈ Γ₂, s₃(β_t) = 0 as in S5.1's
+opening; κ̄ := β_{f₃−1} = u₃/e(µ₂) the top slot's grade). Define
+
+  ϑ(t) := res((n̂₂(u₃(f₃−t)) / n̂₂(u₃)^{f₃−t})(x₀)) ∈ K₂^×.
+
+*γ-calculus (ϑ is x₀-free and letter-valued).* The ratio is a
+value-0 Laurent monomial in π, x, Φ′, and the value-0 Laurent
+monomials x^i π^a Φ′^b form exactly the group ⟨γ₁, γ₂⟩: value 0
+reads ih₁e₂ + ae₁e₂ + bu₂ = 0 after clearing e₁e₂; mod e₂ this
+forces bu₂ ≡ bh₂ ≡ 0 (u₂ = e₂V₂ + h₂, gcd(h₂, e₂) = 1), so e₂ | b;
+dividing by γ₂^{b/e₂} (γ₂ = Φ′^{e₂}π₂^{−u₂}, an x,π,Φ′-monomial by
+§3.3) leaves a value-0 x^{i′}π^{a′}, which is γ₁^{i′/e₁} (e₁ | i′
+from gcd(h₁, e₁) = 1). Residues under the evaluation
+identification: res(γ₁(x₀)) = z₁ and res(γ₂(x₀)) = z₂ — Def 3.12 +
+Prop 1.15 through the rider C-m1 denominator-clearing line, exact
+stable denominators, no new input. Hence ϑ(t) = z₁^j z₂^k for
+grade-determined integers j, k: x₀-free, letter-valued, equal to 1
+wherever that letter monomial is trivial; and ϑ(f₃−1) = 1.
+
+**LEMMA GENTOW2-B″.** For each slot t < f₃, with w := u(κ̄) =
+R_{3,κ̄}(n̂₂(u₃)):
+
+  (6)  u(β_t) = ϑ(t) · w^{f₃−t}.
+
+Consequently in the (B-law) sum (B′(5)): R_{3,α}(Φ₃) = y^{f₃} −
+Σ ϑ(t)w^{f₃−t}c_t y^t = w^{f₃}·P(y/w) with P(y) := y^{f₃} −
+Σ ϑ(t)c_t y^t — the realized residual is the w-substitution
+conjugate of the MULTIPLICATIVE-convention polynomial P, with P's
+irreducible-factor pattern for every value of w.
+
+*Proof.* Fix t, write d := f₃ − t ≥ 1, N := n̂₂(u₃),
+M := n̂₂(u₃d): ladder monomials, deg < m₃, single-point N₃-polygon,
+exact grades κ̄ resp. β_t (B-1). Let ẑ be a grade-0 ladder lift of
+ϑ(t) (T(b)′(iii) supply, deg < m₃) and set G := ẑ·N^d, exact grade
+β_t.
+
+(i) R_{3,β_t}(G) = ϑ(t)·w^d, a y-degree-0 scalar: iterate Cor
+4.7(2) [Q8] (no degree hypothesis — the B′ proof's own precedent;
+at each peel the split-off factor's grade, κ̄ resp. 0, lies in Γ₂)
+to get R_{3,β_t}(G) = R_{3,0}(ẑ)·R_{3,κ̄}(N)^d; R_{3,0}(ẑ) = ϑ(t)
+by Thm 4.8 + Prop 1.15 (the B′ proof's grade-0 step verbatim), and
+R_{3,κ̄}(N) = u(κ̄) = w by S5.1's definition of u; each factor is a
+y-degree-0 scalar (deg < m₃, single-point polygon — Cor 4.4(3)),
+hence so is the product.
+
+(ii) Φ₂-adic expansion G = Σ_{j≥0} Q_j Φ₂^j, deg Q_j < m₃. By Def
+1.8 (ν = µ₃ = [µ₂; (Φ₂, λ₃)] is DEFINED by the expansion minimum
+µ′(g) = min_s µ′(g_sφ^s); PDF p.5, layout L250–255, [r3]-added
+cite, S6.1 row 21): ν(G) = min_j ν(Q_jΦ₂^j) = β_t, so every term
+has ν ≥ β_t and Cor 4.7(1) [Q8] gives R_{3,β_t}(G) =
+Σ_j R_{3,β_t}(Q_jΦ₂^j).
+
+=== GENTOW5 S12 APPENDS ===
+## S12. [GT5-r5] RESIDUAL DISCHARGE REPAIRS (2026-08-12 — dated append; acceptance 2/2 remains ANNOTATED)
+
+### S12.1 [R-i2] `[GENTOW5-W(i)]` CONDITIONALITY PROPAGATED THROUGH THE COMPLETE CONSUMER CHAIN
+
+**Superseded scope in S11.2.** S11.2 correctly leaves open, for every \(i\ge 3\),
+
+\[
+[{\rm GENTOW5\!-\!W}(i)]\qquad
+u_i(\beta_t)=\theta_i(t)\,w_i^{\,f_{i+1}-t},
+\qquad
+w_i=R_{i+1,\bar k_i}(\widehat n_i(u_{i+1})),
+\]
+
+but its subsequent assertion that exact values, repo-side residue classes, \(P\)-membership, clause (c), and clause (e) remain unconditional is WITHDRAWN. A fixed per-grade unit family is not enough: “\(w\)-blind” means invariance AFTER the family has been proved to have the single-\(w_i\) geometric form. It does not construct that form.
+
+For \(n\ge3\), write
+
+\[
+\mathcal W_{\le n}:=
+\bigwedge_{3\le q\le n}[{\rm GENTOW5\!-\!W}(q)].
+\]
+
+The cumulative condition records the induction history; locally, the new input at rung \(n\) is \([{\rm GENTOW5\!-\!W}(n)]\).
+
+**Correct conditional scope.**
+
+1. **Clause (a).** At index \(n\ge3\), conditional on \(\mathcal W_{\le n}\), the pinned recipe has
+
+   \[
+   R_{\nu_n}(\Phi_{n+1})
+   =\psi_{n+1}^{(w_n)}
+   :=w_n^{f_{n+1}}\psi_{n+1}(y/w_n),
+   \]
+
+   and the admissibility, key-polynomial membership, prime/irreducibility certificate, and non-equivalence conclusions follow as written. Without \([{\rm GENTOW5\!-\!W}(n)]\), per-grade fixedness supplies no single substitution \(y\mapsto w_ny\), so none of those certificate legs is established for the pinned key.
+
+2. **Clause (b), including exact values and \(P\)-membership.** Corollary 6.4 fires only after clause (a) has supplied the key-polynomial/prime certificate for \(\Phi_{n+1}\). Consequently, at index \(n\ge3\), ALL of clause (b) is conditional on \(\mathcal W_{\le n}\): one-sidedness at every lower level, the corrected residual powers
+
+   \[
+   R_{j-1}(\Phi_{n+1})
+   =\bigl(\psi_j^{(\omega_j)}\bigr)^{\,l_{j+1}\cdots l_{n+1}}
+   \qquad(1\le j\le n+1),
+   \]
+
+   the exact intermediate values
+
+   \[
+   v(\Phi_{j-1}(\xi))=\frac{u_j}{\widehat e_j},
+   \]
+
+   the repo-side residue-class identifications, and therefore
+   \(\xi\in P_{n+1}\). Here \(\omega_1\) is S11.3’s proved fixed
+   \(z_1\)-letter-power unit, \(\omega_2=w_2\) from the landed
+   GENTOW2 law, and \(\omega_j=w_j\) for \(j\ge3\). The B'' root
+   correspondence is usable only after the corresponding common
+   \(\omega_j\) exists; it cannot turn an arbitrary per-grade unit
+   family into a geometric twist.
+
+3. **S11.1 and clause (c).** The numerical \(\rho\)-ladder of
+   S11.1.2 is unconditional floor arithmetic, but S11.1.1 and
+   S11.1.3 consume clause (b): S11.1.1 obtains the one-sided
+   polygons and
+
+   \[
+   \operatorname{descmin}(\Phi_k)=L_k\lambda
+   \]
+
+   from \((b)@(k-1)\), while S11.1.3 compares \(g\) against those
+   sides and their exact pins. Thus clause (c) at index \(n\ge3\),
+   including its sufficiency direction, deeper-read ascent,
+   fibration, node pins, and field-floor conclusion, is conditional
+   on \(\mathcal W_{\le n}\). Step 1 already consumes \((b)@n\);
+   the repaired Step 2 additionally consumes the earlier
+   \((b)@q\) instances occurring in its descent.
+
+4. **Clause (e) and the induction feed.** Clause (e) at index
+   \(n\ge3\) consumes clause (c)’s pins, so its automatic next-floor
+   conclusion
+
+   \[
+   u_{n+2}>e_{n+2}E_{n+1}
+   \]
+
+   is conditional on \(\mathcal W_{\le n}\) as well. Later arguments
+   may still use that inequality unconditionally when it is included
+   explicitly in the fixed tower datum; only its claimed automatic
+   derivation from the recipe is conditional.
+
+The complete dependency chain is therefore
+
+\[
+[{\rm GENTOW5\!-\!W}(n)]
+\Longrightarrow (a)@n
+\Longrightarrow {\rm Corollary\ 6.4}\Longrightarrow (b)@n
+\Longrightarrow {\rm S11.1.1/S11.1.3}
+\Longrightarrow (c)@n
+\Longrightarrow (e)@n
+\Longrightarrow\text{the next automatic floor}.
+\]
+
+**Unaffected scope.** The \(i=2\) rung remains unconditional by the landed GENTOW2 law; the \(i=1\) residual remains exactly S11.3’s fixed-letter-power statement with only its identification with the displayed \(w_1\) open. LEMMAS GENTOW5-A0/A1, the refine-transfer clause (d) at its stated event hypotheses, LEMMA GENTOW5-D under an explicitly supplied floor-chain datum, formal monicity/degrees and recipe-height arithmetic, and the S4 witness remain unaffected. At S4 every \(K_i^\times=\{1\}\), so each required geometric law is tautological there.
+
+### S12.2 [R-i4] THE LIFT RUNG, RECIPE RANGE, AND ALL LIFT CONSUMERS CORRECTED
+
+**Superseded S11.4 bracket.** The sentence placing the displayed
+\(\operatorname{lift}_i(c;m)\) above \(\operatorname{bound}_{i+1}\)
+is WITHDRAWN. That display realizes \(c\in K_i\) by a polynomial of
+degree \(<D_i\); hence it consumes the PRECEDING lift instance and
+has threshold \(\operatorname{bound}_i\), not
+\(\operatorname{bound}_{i+1}\).
+
+Precisely,
+
+\[
+\operatorname{lift}_i(c;m)\in\mathcal O[x],\qquad
+\deg\operatorname{lift}_i(c;m)<D_i,\qquad
+\operatorname{res}\!\left(
+ \frac{\operatorname{lift}_i(c;m)}{\widehat n_i(m)}
+\right)=\iota^{(i)}(c)
+\]
+
+is valid for
+
+\[
+m>\operatorname{bound}_i.
+\]
+
+For \(i\ge2\) this is supplied by \(({\rm LIFT}_{i-1})\); for \(i=1\)
+it is the accepted base lift. By contrast, the clause labelled
+\(({\rm LIFT}_i)\) in LEMMA GENTOW5-C constructs \(K_{i+1}\)-digits
+of degree \(<D_{i+1}\) and therefore correctly has threshold
+
+\[
+\operatorname{bound}_{i+1}
+=(l_{i+1}-1)u_{i+1}
+ +e_{i+1}\operatorname{bound}_i.
+\]
+
+**The bound needed by every recipe lift is automatically met.**
+At the base,
+
+\[
+\operatorname{bound}_1=(l_1-1)u_1<E_1=l_1u_1.
+\]
+
+Inductively, if
+\(\operatorname{bound}_{i-1}<E_{i-1}\), the floor rung
+\(u_i>e_iE_{i-1}\) gives
+
+\[
+e_i\operatorname{bound}_{i-1}<u_i
+\]
+
+and hence
+
+\[
+\operatorname{bound}_i
+=(l_i-1)u_i+e_i\operatorname{bound}_{i-1}
+<l_i u_i=E_i.
+\]
+
+Thus
+
+\[
+\boxed{\operatorname{bound}_i<E_i\quad\text{for every }i\ge1.}
+\]
+
+For a nonzero recipe coefficient \(c_t\), put
+\(s=f_{i+1}-t\). Since \(t<f_{i+1}\), one has \(s\ge1\), and the
+recipe height is
+
+\[
+m_t=s\,u_{i+1}\ge u_{i+1}
+>e_{i+1}E_i\ge E_i>\operatorname{bound}_i.
+\]
+
+Therefore the required preceding-rung lift exists and gives
+
+\[
+\widehat k_t
+=\operatorname{lift}_i
+ \bigl(c_t\vartheta_{i,s};\,s u_{i+1}\bigr)
+\in\mathcal O[x],\qquad
+\deg\widehat k_t<D_i,
+\]
+
+with exact \(dv_i\)-height \(s u_{i+1}\) and the prescribed coherent
+\(K_i\)-digit. When \(c_t=0\), \(\widehat k_t=0\) and no lift is
+required. Consequently every nonzero recipe side term has exact
+\(dv_{i+1}\)-height
+
+\[
+e_{i+1}s u_{i+1}+e_{i+1}t u_{i+1}
+=e_{i+1}f_{i+1}u_{i+1}=E_{i+1},
+\]
+
+and its degree is \(<D_{i+1}\).
+
+No recipe consumer needs
+\(m_t>\operatorname{bound}_{i+1}\). The corrected consumer sweep is:
+
+* DEF GENTOW5-1 and clause (a) need the preceding-rung
+  \(K_i\)-digit lift above \(\operatorname{bound}_i\), proved above.
+* LEMMA GENTOW5-D’s \(({\rm INV}\!-\!j)\) carry display needs only
+  \(\deg\widehat k_t<D_i\) and the exact height
+  \(s u_{i+1}\), both now proved in the correct range.
+* Clause (c), including Step 1 and Step 5, consumes those same exact
+  side heights and coherent digits; it does not consume
+  \(\operatorname{bound}_{i+1}\) for a recipe coefficient.
+* The S4 recipe keys consume respectively
+  \(\operatorname{bound}_1,\operatorname{bound}_2,
+  \operatorname{bound}_3,\operatorname{bound}_4\), never the next
+  bounds.
+
+The depth-4 witness makes the rung distinction explicit:
+
+\[
+(\operatorname{bound}_1,\operatorname{bound}_2,
+  \operatorname{bound}_3,\operatorname{bound}_4)
+=(1,7,35,155),
+\]
+
+while its successive recipe heights are
+
+\[
+5,\ 21,\ 85,\ 341.
+\]
+
+Thus \(5>1\), \(21>7\), \(85>35\), and \(341>155\), exactly as
+required. The rejected next-rung demands would be \(5>7\),
+\(21>35\), \(85>155\), and \(341>651\), explaining why S11.4’s
+range assertion was false while every actual recipe lift remains
+valid.
+
+Finally, genuine refine consumers use the other rung correctly:
+\(\operatorname{lift}_{i+1}(s;\lambda)\) realizes \(K_{i+1}\) with
+degree \(<D_{i+1}\), so it needs
+\(\lambda>\operatorname{bound}_{i+1}\). Their event hypothesis gives
+
+\[
+\lambda>E_{i+1}>\operatorname{bound}_{i+1},
+\]
+
+by the boxed inequality. Hence THEOREM GENTOW5-A and clause (d)’s
+refine lifts also land in their required ranges. This proves every
+actual lift consumption; no qualification of the recipe or refine
+statements is needed.
+
+*(The S12 append above was derived by the E12 certification run
+(gpt-5.6-sol high, runs/cert2/E12_gentow5_output.log, 2026-08-12),
+repairing the two D1a residuals (INSUFFICIENT finding 2 and
+NEW-ISSUE finding 4); orchestrator verification before
+transcription — R-i2's dependency chain checked against the D1a
+finding ((a)@n needs [W(n)]; Corollary 6.4 fires only after (a);
+(b) ⟹ S11.1.1/S11.1.3 ⟹ (c) ⟹ (e)), with the unaffected scope
+(i = 2 by the landed GENTOW2 law; S4's trivial K_i^×) named;
+R-i4's rung logic checked (lift_i realizes K_i with deg < D_i, so
+its threshold is bound_i — the level-i instance) and the depth-4
+witness re-computed (bounds (1,7,35,155) vs recipe heights
+(5,21,85,341): each exceeds its level-i bound, none the next-rung
+bound — 5>1, 21>7, 85>35, 341>155 vs the failing 5>7 etc.); refine
+consumers correctly use lift_{i+1} at λ > E_{i+1} > bound_{i+1}.
+Transcribed unaltered per the standing division of labor. Ledger:
+row 10 → both residuals repaired, awaiting sol discharge (cert3).)*
+
+
+**Dated corrigendum (2026-08-12, post-D3i — S12.1's residual-twist
+index).** The D3i discharge pass (gpt-5.6-sol high,
+runs/cert3/D3i_gentow5_output.log) adjudicated S12.1 NEW-ISSUE at one
+index: clause (a) at index r supplies the twist w_r for ψ_{r+1}, so
+in clause (b)'s corrected residual display the twist attached to ψ_j
+is INDEXED j−1: ψ₂ carries S11.3's fixed letter-power unit, ψ₃
+carries w₂, and ψ_j carries w_{j−1} for j ≥ 4 — read every
+ψ_j^{(ω_j)} in S12.1's clause (b) as ψ_j^{(ω_{j−1})} with ω₁ = the
+S11.3 unit (the outer ψ₁ leg handled separately as accepted). The
+display as first written demanded w_{n+1} at the top term,
+exceeding the assumed 𝒲_{≤n}. Correspondingly, the dependency chain
+diagram is read under the ambient hypothesis 𝒲_{≤n} as a whole (its
+first arrow consumes [GENTOW5-W(n)] with the earlier instances
+ambient). R-i4 (the lift rung) is unaffected and was DISCHARGED.
+Awaiting sol re-confirmation in the next queue.
