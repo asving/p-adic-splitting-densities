@@ -1,0 +1,2450 @@
+id	node-kind	note	unit-type	class	chapter	status	source
+EFF.GENH4.01	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:227
+EFF.GENH4.02	eff-unit	GENH4	instrument-record	record	H	OPEN	EFF-GENH4.md:251
+EFF.GENH4.03	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:275
+EFF.GENH4.04	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:315
+EFF.GENH4.05	eff-unit	GENH4	fence	record	H	OPEN	EFF-GENH4.md:350
+EFF.GENH4.06	eff-unit	GENH4	convention	math	H	OPEN	EFF-GENH4.md:381
+EFF.GENH4.07	eff-unit	GENH4	theorem	math	H	OPEN	EFF-GENH4.md:420
+EFF.GENH4.08	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:473
+EFF.GENH4.09	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:515
+EFF.GENH4.10	eff-unit	GENH4	theorem	math	H	OPEN	EFF-GENH4.md:544
+EFF.GENH4.11	eff-unit	GENH4	theorem	math	H	OPEN	EFF-GENH4.md:589
+EFF.GENH4.12	eff-unit	GENH4	theorem	math	H	OPEN	EFF-GENH4.md:621
+EFF.GENH4.13	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:663
+EFF.GENH4.14	eff-unit	GENH4	definition	math	H	OPEN	EFF-GENH4.md:680
+EFF.GENH4.15	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:736
+EFF.GENH4.16	eff-unit	GENH4	instance-record	math	H	OPEN	EFF-GENH4.md:792
+EFF.GENH4.17	eff-unit	GENH4	table	math	H	OPEN	EFF-GENH4.md:817
+EFF.GENH4.18	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:872
+EFF.GENH4.19	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:936
+EFF.GENH4.20	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:980
+EFF.GENH4.21	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:1012
+EFF.GENH4.22	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:1071
+EFF.GENH4.23	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:1090
+EFF.GENH4.24	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:1154
+EFF.GENH4.25	eff-unit	GENH4	table	math	H	OPEN	EFF-GENH4.md:1176
+EFF.GENH4.26	eff-unit	GENH4	theorem	math	H	OPEN	EFF-GENH4.md:1242
+EFF.GENH4.27	eff-unit	GENH4	theorem	math	H	OPEN	EFF-GENH4.md:1271
+EFF.GENH4.28	eff-unit	GENH4	theorem	math	H	OPEN	EFF-GENH4.md:1304
+EFF.GENH4.29	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:1376
+EFF.GENH4.30	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:1400
+EFF.GENH4.31	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:1421
+EFF.GENH4.32	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:1445
+EFF.GENH4.33	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:1469
+EFF.GENH4.34	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:1489
+EFF.GENH4.35	eff-unit	GENH4	instrument-record	record	H	OPEN	EFF-GENH4.md:1531
+EFF.GENH4.36	eff-unit	GENH4	theorem	math	H	OPEN	EFF-GENH4.md:1566
+EFF.GENH4.37	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:1594
+EFF.GENH4.38	eff-unit	GENH4	run-record	record	H	OPEN	EFF-GENH4.md:1621
+EFF.GENH4.39	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:1657
+EFF.GENH4.40	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:1686
+EFF.GENH4.41	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:1708
+EFF.GENH4.42	eff-unit	GENH4	table	math	H	OPEN	EFF-GENH4.md:1755
+EFF.GENH4.43	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:1818
+EFF.GENH4.44	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:1856
+EFF.GENH4.45	eff-unit	GENH4	fence	record	H	OPEN	EFF-GENH4.md:1902
+EFF.GENH4.46	eff-unit	GENH4	fence	record	H	OPEN	EFF-GENH4.md:1927
+EFF.GENH4.47	eff-unit	GENH4	fence	record	H	OPEN	EFF-GENH4.md:1952
+EFF.GENH4.48	eff-unit	GENH4	convention	math	H	OPEN	EFF-GENH4.md:1971
+EFF.GENH4.49	eff-unit	GENH4	fence	record	H	OPEN	EFF-GENH4.md:1994
+EFF.GENH4.50	eff-unit	GENH4	supplier-finding	record	H	OPEN	EFF-GENH4.md:2015
+EFF.GENH4.51	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:2039
+EFF.GENH4.52	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:2057
+EFF.GENH4.53	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:2076
+EFF.GENH4.54	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:2117
+EFF.GENH4.55	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:2132
+EFF.GENH4.56	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:2160
+EFF.GENH4.57	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:2183
+EFF.GENH4.58	eff-unit	GENH4	instrument-record	record	H	OPEN	EFF-GENH4.md:2200
+EFF.GENH4.59	eff-unit	GENH4	instrument-record	record	H	OPEN	EFF-GENH4.md:2219
+EFF.GENH4.60	eff-unit	GENH4	preregistration	record	H	OPEN	EFF-GENH4.md:2248
+EFF.GENH4.61	eff-unit	GENH4	run-record	record	H	OPEN	EFF-GENH4.md:2272
+EFF.GENH4.62	eff-unit	GENH4	preregistration	record	H	OPEN	EFF-GENH4.md:2298
+EFF.GENH4.63	eff-unit	GENH4	preregistration	record	H	OPEN	EFF-GENH4.md:2354
+EFF.GENH4.64	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:2375
+EFF.GENH4.65	eff-unit	GENH4	run-record	record	H	OPEN	EFF-GENH4.md:2392
+EFF.GENH4.66	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:2446
+EFF.GENH4.67	eff-unit	GENH4	run-record	record	H	OPEN	EFF-GENH4.md:2463
+EFF.GENH4.68	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:2493
+EFF.GENH4.69	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:2543
+EFF.GENH4.70	eff-unit	GENH4	supplier-finding	record	H	OPEN	EFF-GENH4.md:2579
+EFF.GENH4.71	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:2607
+EFF.GENH4.72	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:2650
+EFF.GENH4.73	eff-unit	GENH4	run-record	record	H	OPEN	EFF-GENH4.md:2720
+EFF.GENH4.74	eff-unit	GENH4	run-record	record	H	OPEN	EFF-GENH4.md:2753
+EFF.GENH4.75	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:2782
+EFF.GENH4.76	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:2816
+EFF.GENH4.77	eff-unit	GENH4	run-record	record	H	OPEN	EFF-GENH4.md:2842
+EFF.GENH4.78	eff-unit	GENH4	table	math	H	OPEN	EFF-GENH4.md:2865
+EFF.GENH4.79	eff-unit	GENH4	run-record	record	H	OPEN	EFF-GENH4.md:2925
+EFF.GENH4.80	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:2964
+EFF.GENH4.81	eff-unit	GENH4	fence	record	H	OPEN	EFF-GENH4.md:2994
+EFF.GENH4.82	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:3017
+EFF.GENH4.83	eff-unit	GENH4	supplier-finding	record	H	OPEN	EFF-GENH4.md:3055
+EFF.GENH4.84	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:3106
+EFF.GENH4.85	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:3168
+EFF.GENH4.86	eff-unit	GENH4	run-record	record	H	OPEN	EFF-GENH4.md:3194
+EFF.GENH4.87	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:3242
+EFF.GENH4.88	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:3279
+EFF.GENH4.89	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:3306
+EFF.GENH4.90	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:3367
+EFF.GENH4.91	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:3387
+EFF.GENH4.92	eff-unit	GENH4	table	math	H	OPEN	EFF-GENH4.md:3439
+EFF.GENH4.93	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:3504
+EFF.GENH4.94	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:3526
+EFF.GENH4.95	eff-unit	GENH4	fence	record	H	OPEN	EFF-GENH4.md:3559
+EFF.GENH4.96	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:3585
+EFF.GENH4.97	eff-unit	GENH4	supplier-finding	record	H	OPEN	EFF-GENH4.md:3622
+EFF.GENH4.98	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:3665
+EFF.GENH4.99	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:3696
+EFF.GENH4.100	eff-unit	GENH4	scope-record	record	H	OPEN	EFF-GENH4.md:3738
+EFF.GENH4.101	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:3762
+EFF.GENH4.102	eff-unit	GENH4	lemma	math	H	OPEN	EFF-GENH4.md:3796
+EFF.GENH4.103	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:3837
+EFF.GENH4.104	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:3868
+EFF.GENH4.105	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:3893
+EFF.GENH4.106	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:3920
+EFF.GENH4.107	eff-unit	GENH4	fence	record	H	OPEN	EFF-GENH4.md:3957
+EFF.GENH4.108	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:3982
+EFF.GENH4.109	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:4007
+EFF.GENH4.110	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:4029
+EFF.GENH4.111	eff-unit	GENH4	changes-record	record	H	OPEN	EFF-GENH4.md:4053
+EFF.GENHN.01	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:152
+EFF.GENHN.02	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:173
+EFF.GENHN.03	eff-unit	GENHN	instrument-record	record	H	OPEN	EFF-GENHN.md:226
+EFF.GENHN.04	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:258
+EFF.GENHN.05	eff-unit	GENHN	fence	record	H	OPEN	EFF-GENHN.md:317
+EFF.GENHN.06	eff-unit	GENHN	convention	math	H	OPEN	EFF-GENHN.md:401
+EFF.GENHN.07	eff-unit	GENHN	theorem	math	H	OPEN	EFF-GENHN.md:427
+EFF.GENHN.08	eff-unit	GENHN	theorem	math	H	OPEN	EFF-GENHN.md:502
+EFF.GENHN.09	eff-unit	GENHN	theorem	math	H	OPEN	EFF-GENHN.md:544
+EFF.GENHN.10	eff-unit	GENHN	theorem	math	H	OPEN	EFF-GENHN.md:578
+EFF.GENHN.11	eff-unit	GENHN	theorem	math	H	OPEN	EFF-GENHN.md:605
+EFF.GENHN.12	eff-unit	GENHN	theorem	math	H	OPEN	EFF-GENHN.md:649
+EFF.GENHN.13	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:693
+EFF.GENHN.14	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:715
+EFF.GENHN.15	eff-unit	GENHN	theorem	math	H	OPEN	EFF-GENHN.md:777
+EFF.GENHN.16	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:821
+EFF.GENHN.17	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:862
+EFF.GENHN.18	eff-unit	GENHN	theorem	math	H	OPEN	EFF-GENHN.md:924
+EFF.GENHN.19	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:1025
+EFF.GENHN.20	eff-unit	GENHN	table	math	H	OPEN	EFF-GENHN.md:1050
+EFF.GENHN.21	eff-unit	GENHN	definition	math	H	OPEN	EFF-GENHN.md:1107
+EFF.GENHN.22	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:1145
+EFF.GENHN.23	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:1228
+EFF.GENHN.24	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:1299
+EFF.GENHN.25	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:1372
+EFF.GENHN.26	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:1477
+EFF.GENHN.27	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:1503
+EFF.GENHN.28	eff-unit	GENHN	convention	math	H	OPEN	EFF-GENHN.md:1557
+EFF.GENHN.29	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:1618
+EFF.GENHN.30	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:1663
+EFF.GENHN.31	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:1686
+EFF.GENHN.32	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:1753
+EFF.GENHN.33	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:1835
+EFF.GENHN.34	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:1900
+EFF.GENHN.35	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:1928
+EFF.GENHN.36	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:1949
+EFF.GENHN.37	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:1993
+EFF.GENHN.38	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:2021
+EFF.GENHN.39	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:2094
+EFF.GENHN.40	eff-unit	GENHN	open-box	math	H	OPEN	EFF-GENHN.md:2120
+EFF.GENHN.41	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:2157
+EFF.GENHN.42	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:2215
+EFF.GENHN.43	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:2315
+EFF.GENHN.44	eff-unit	GENHN	theorem	math	H	OPEN	EFF-GENHN.md:2365
+EFF.GENHN.45	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:2421
+EFF.GENHN.46	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:2470
+EFF.GENHN.47	eff-unit	GENHN	table	math	H	OPEN	EFF-GENHN.md:2503
+EFF.GENHN.48	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:2551
+EFF.GENHN.49	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:2580
+EFF.GENHN.50	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:2617
+EFF.GENHN.51	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:2653
+EFF.GENHN.52	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:2698
+EFF.GENHN.53	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:2743
+EFF.GENHN.54	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:2767
+EFF.GENHN.55	eff-unit	GENHN	table	math	H	OPEN	EFF-GENHN.md:2863
+EFF.GENHN.56	eff-unit	GENHN	fence	record	H	OPEN	EFF-GENHN.md:2954
+EFF.GENHN.57	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:3017
+EFF.GENHN.58	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:3044
+EFF.GENHN.59	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:3107
+EFF.GENHN.60	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:3145
+EFF.GENHN.61	eff-unit	GENHN	instrument-record	record	H	OPEN	EFF-GENHN.md:3206
+EFF.GENHN.62	eff-unit	GENHN	instrument-record	record	H	OPEN	EFF-GENHN.md:3245
+EFF.GENHN.63	eff-unit	GENHN	instrument-record	record	H	OPEN	EFF-GENHN.md:3303
+EFF.GENHN.64	eff-unit	GENHN	preregistration	record	H	OPEN	EFF-GENHN.md:3343
+EFF.GENHN.65	eff-unit	GENHN	run-record	record	H	OPEN	EFF-GENHN.md:3429
+EFF.GENHN.66	eff-unit	GENHN	run-record	record	H	OPEN	EFF-GENHN.md:3461
+EFF.GENHN.67	eff-unit	GENHN	run-record	record	H	OPEN	EFF-GENHN.md:3492
+EFF.GENHN.68	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:3537
+EFF.GENHN.69	eff-unit	GENHN	run-record	record	H	OPEN	EFF-GENHN.md:3581
+EFF.GENHN.70	eff-unit	GENHN	run-record	record	H	OPEN	EFF-GENHN.md:3616
+EFF.GENHN.71	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:3691
+EFF.GENHN.72	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:3717
+EFF.GENHN.73	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:3754
+EFF.GENHN.74	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:3818
+EFF.GENHN.75	eff-unit	GENHN	acceptance-box	record	H	OPEN	EFF-GENHN.md:3861
+EFF.GENHN.76	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:3909
+EFF.GENHN.77	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:3954
+EFF.GENHN.78	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:4050
+EFF.GENHN.79	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:4084
+EFF.GENHN.80	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:4139
+EFF.GENHN.81	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:4169
+EFF.GENHN.82	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:4287
+EFF.GENHN.83	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:4311
+EFF.GENHN.84	eff-unit	GENHN	instrument-record	record	H	OPEN	EFF-GENHN.md:4349
+EFF.GENHN.85	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:4425
+EFF.GENHN.86	eff-unit	GENHN	theorem	math	H	OPEN	EFF-GENHN.md:4452
+EFF.GENHN.87	eff-unit	GENHN	theorem	math	H	OPEN	EFF-GENHN.md:4496
+EFF.GENHN.88	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:4531
+EFF.GENHN.89	eff-unit	GENHN	run-record	record	H	OPEN	EFF-GENHN.md:4572
+EFF.GENHN.90	eff-unit	GENHN	lemma	math	H	OPEN	EFF-GENHN.md:4621
+EFF.GENHN.91	eff-unit	GENHN	scope-record	record	H	OPEN	EFF-GENHN.md:4733
+EFF.GENHN.92	eff-unit	GENHN	changes-record	record	H	OPEN	EFF-GENHN.md:4765
+EFF.GENHN.93	eff-unit	GENHN	instrument-record	record	H	OPEN	EFF-GENHN.md:4807
+EFF.GENIND.01	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:302
+EFF.GENIND.02	eff-unit	GENIND	instrument-record	record	H	OPEN	EFF-GENIND.md:379
+EFF.GENIND.03	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:406
+EFF.GENIND.04	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:431
+EFF.GENIND.05	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:469
+EFF.GENIND.06	eff-unit	GENIND	fence	record	H	OPEN	EFF-GENIND.md:514
+EFF.GENIND.07	eff-unit	GENIND	definition	math	H	OPEN	EFF-GENIND.md:529
+EFF.GENIND.08	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:581
+EFF.GENIND.09	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:617
+EFF.GENIND.10	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:650
+EFF.GENIND.11	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:671
+EFF.GENIND.12	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:765
+EFF.GENIND.13	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:785
+EFF.GENIND.14	eff-unit	GENIND	hypothesis	math	H	OPEN	EFF-GENIND.md:832
+EFF.GENIND.15	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:879
+EFF.GENIND.16	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:928
+EFF.GENIND.17	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:945
+EFF.GENIND.18	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:992
+EFF.GENIND.19	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:1021
+EFF.GENIND.20	eff-unit	GENIND	instance-record	math	H	OPEN	EFF-GENIND.md:1062
+EFF.GENIND.21	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:1082
+EFF.GENIND.22	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:1135
+EFF.GENIND.23	eff-unit	GENIND	instance-record	math	H	OPEN	EFF-GENIND.md:1169
+EFF.GENIND.24	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:1195
+EFF.GENIND.25	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:1318
+EFF.GENIND.26	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:1352
+EFF.GENIND.27	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:1380
+EFF.GENIND.28	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:1431
+EFF.GENIND.29	eff-unit	GENIND	fence	record	H	OPEN	EFF-GENIND.md:1487
+EFF.GENIND.30	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:1506
+EFF.GENIND.31	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:1550
+EFF.GENIND.32	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:1590
+EFF.GENIND.33	eff-unit	GENIND	instance-record	math	H	OPEN	EFF-GENIND.md:1638
+EFF.GENIND.34	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:1660
+EFF.GENIND.35	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:1729
+EFF.GENIND.36	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:1773
+EFF.GENIND.37	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:1842
+EFF.GENIND.38	eff-unit	GENIND	instance-record	math	H	OPEN	EFF-GENIND.md:1885
+EFF.GENIND.39	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:1943
+EFF.GENIND.40	eff-unit	GENIND	run-record	record	H	OPEN	EFF-GENIND.md:1981
+EFF.GENIND.41	eff-unit	GENIND	instrument-record	record	H	OPEN	EFF-GENIND.md:2048
+EFF.GENIND.42	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:2076
+EFF.GENIND.43	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:2124
+EFF.GENIND.44	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:2149
+EFF.GENIND.45	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:2180
+EFF.GENIND.46	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:2227
+EFF.GENIND.47	eff-unit	GENIND	convention	math	H	OPEN	EFF-GENIND.md:2266
+EFF.GENIND.48	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:2288
+EFF.GENIND.49	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:2316
+EFF.GENIND.50	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:2352
+EFF.GENIND.51	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:2378
+EFF.GENIND.52	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:2404
+EFF.GENIND.53	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:2428
+EFF.GENIND.54	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:2446
+EFF.GENIND.55	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:2474
+EFF.GENIND.56	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:2512
+EFF.GENIND.57	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:2536
+EFF.GENIND.58	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:2583
+EFF.GENIND.59	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:2617
+EFF.GENIND.60	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:2680
+EFF.GENIND.61	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:2703
+EFF.GENIND.62	eff-unit	GENIND	definition	math	H	OPEN	EFF-GENIND.md:2728
+EFF.GENIND.63	eff-unit	GENIND	hypothesis	math	H	OPEN	EFF-GENIND.md:2748
+EFF.GENIND.64	eff-unit	GENIND	hypothesis	math	H	OPEN	EFF-GENIND.md:2804
+EFF.GENIND.65	eff-unit	GENIND	hypothesis	math	H	OPEN	EFF-GENIND.md:2853
+EFF.GENIND.66	eff-unit	GENIND	hypothesis	math	H	OPEN	EFF-GENIND.md:2872
+EFF.GENIND.67	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:2911
+EFF.GENIND.68	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:2944
+EFF.GENIND.69	eff-unit	GENIND	instance-record	math	H	OPEN	EFF-GENIND.md:3018
+EFF.GENIND.70	eff-unit	GENIND	hypothesis	math	H	OPEN	EFF-GENIND.md:3037
+EFF.GENIND.71	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:3076
+EFF.GENIND.72	eff-unit	GENIND	fence	record	H	OPEN	EFF-GENIND.md:3107
+EFF.GENIND.73	eff-unit	GENIND	preregistration	record	H	OPEN	EFF-GENIND.md:3151
+EFF.GENIND.74	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3180
+EFF.GENIND.75	eff-unit	GENIND	fence	record	H	OPEN	EFF-GENIND.md:3216
+EFF.GENIND.76	eff-unit	GENIND	fence	record	H	OPEN	EFF-GENIND.md:3238
+EFF.GENIND.77	eff-unit	GENIND	fence	record	H	OPEN	EFF-GENIND.md:3258
+EFF.GENIND.78	eff-unit	GENIND	fence	record	H	OPEN	EFF-GENIND.md:3278
+EFF.GENIND.79	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:3310
+EFF.GENIND.80	eff-unit	GENIND	convention	math	H	OPEN	EFF-GENIND.md:3380
+EFF.GENIND.81	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3402
+EFF.GENIND.82	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3433
+EFF.GENIND.83	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3468
+EFF.GENIND.84	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3506
+EFF.GENIND.85	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3534
+EFF.GENIND.86	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3591
+EFF.GENIND.87	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3625
+EFF.GENIND.88	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3644
+EFF.GENIND.89	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3666
+EFF.GENIND.90	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3685
+EFF.GENIND.91	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3717
+EFF.GENIND.92	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3756
+EFF.GENIND.93	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3833
+EFF.GENIND.94	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:3849
+EFF.GENIND.95	eff-unit	GENIND	instrument-record	record	H	OPEN	EFF-GENIND.md:3874
+EFF.GENIND.96	eff-unit	GENIND	instrument-record	record	H	OPEN	EFF-GENIND.md:3896
+EFF.GENIND.97	eff-unit	GENIND	instrument-record	record	H	OPEN	EFF-GENIND.md:3926
+EFF.GENIND.98	eff-unit	GENIND	run-record	record	H	OPEN	EFF-GENIND.md:3958
+EFF.GENIND.99	eff-unit	GENIND	preregistration	record	H	OPEN	EFF-GENIND.md:3985
+EFF.GENIND.100	eff-unit	GENIND	preregistration	record	H	OPEN	EFF-GENIND.md:4040
+EFF.GENIND.101	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4067
+EFF.GENIND.102	eff-unit	GENIND	run-record	record	H	OPEN	EFF-GENIND.md:4088
+EFF.GENIND.103	eff-unit	GENIND	run-record	record	H	OPEN	EFF-GENIND.md:4112
+EFF.GENIND.104	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:4178
+EFF.GENIND.105	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4213
+EFF.GENIND.106	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4238
+EFF.GENIND.107	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4271
+EFF.GENIND.108	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4305
+EFF.GENIND.109	eff-unit	GENIND	run-record	record	H	OPEN	EFF-GENIND.md:4332
+EFF.GENIND.110	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4361
+EFF.GENIND.111	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4389
+EFF.GENIND.112	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4431
+EFF.GENIND.113	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4473
+EFF.GENIND.114	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4494
+EFF.GENIND.115	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4516
+EFF.GENIND.116	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4539
+EFF.GENIND.117	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4559
+EFF.GENIND.118	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4593
+EFF.GENIND.119	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4654
+EFF.GENIND.120	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4699
+EFF.GENIND.121	eff-unit	GENIND	table	math	H	OPEN	EFF-GENIND.md:4735
+EFF.GENIND.122	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4785
+EFF.GENIND.123	eff-unit	GENIND	table	math	H	OPEN	EFF-GENIND.md:4810
+EFF.GENIND.124	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4850
+EFF.GENIND.125	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4892
+EFF.GENIND.126	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4910
+EFF.GENIND.127	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4948
+EFF.GENIND.128	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:4983
+EFF.GENIND.129	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5019
+EFF.GENIND.130	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5074
+EFF.GENIND.131	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5092
+EFF.GENIND.132	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5121
+EFF.GENIND.133	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5155
+EFF.GENIND.134	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5199
+EFF.GENIND.135	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5228
+EFF.GENIND.136	eff-unit	GENIND	table	math	H	OPEN	EFF-GENIND.md:5279
+EFF.GENIND.137	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5319
+EFF.GENIND.138	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5344
+EFF.GENIND.139	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5393
+EFF.GENIND.140	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5432
+EFF.GENIND.141	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5456
+EFF.GENIND.142	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5479
+EFF.GENIND.143	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5521
+EFF.GENIND.144	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5565
+EFF.GENIND.145	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5596
+EFF.GENIND.146	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5624
+EFF.GENIND.147	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5666
+EFF.GENIND.148	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:5702
+EFF.GENIND.149	eff-unit	GENIND	supplier-finding	record	H	OPEN	EFF-GENIND.md:5749
+EFF.GENIND.150	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:5791
+EFF.GENIND.151	eff-unit	GENIND	hypothesis	math	H	OPEN	EFF-GENIND.md:5850
+EFF.GENIND.152	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:5909
+EFF.GENIND.153	eff-unit	GENIND	theorem	math	H	OPEN	EFF-GENIND.md:5985
+EFF.GENIND.154	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:6036
+EFF.GENIND.155	eff-unit	GENIND	supplier-finding	record	H	OPEN	EFF-GENIND.md:6082
+EFF.GENIND.156	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:6116
+EFF.GENIND.157	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:6151
+EFF.GENIND.158	eff-unit	GENIND	run-record	record	H	OPEN	EFF-GENIND.md:6204
+EFF.GENIND.159	eff-unit	GENIND	supplier-finding	record	H	OPEN	EFF-GENIND.md:6233
+EFF.GENIND.160	eff-unit	GENIND	convention	math	H	OPEN	EFF-GENIND.md:6259
+EFF.GENIND.161	eff-unit	GENIND	run-record	record	H	OPEN	EFF-GENIND.md:6304
+EFF.GENIND.162	eff-unit	GENIND	supplier-finding	record	H	OPEN	EFF-GENIND.md:6325
+EFF.GENIND.163	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:6349
+EFF.GENIND.164	eff-unit	GENIND	run-record	record	H	OPEN	EFF-GENIND.md:6379
+EFF.GENIND.165	eff-unit	GENIND	supplier-finding	record	H	OPEN	EFF-GENIND.md:6404
+EFF.GENIND.166	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:6428
+EFF.GENIND.167	eff-unit	GENIND	run-record	record	H	OPEN	EFF-GENIND.md:6470
+EFF.GENIND.168	eff-unit	GENIND	supplier-finding	record	H	OPEN	EFF-GENIND.md:6489
+EFF.GENIND.169	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:6513
+EFF.GENIND.170	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:6544
+EFF.GENIND.171	eff-unit	GENIND	run-record	record	H	OPEN	EFF-GENIND.md:6574
+EFF.GENIND.172	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:6596
+EFF.GENIND.173	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:6637
+EFF.GENIND.174	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:6667
+EFF.GENIND.175	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:6698
+EFF.GENIND.176	eff-unit	GENIND	hypothesis	math	H	OPEN	EFF-GENIND.md:6736
+EFF.GENIND.177	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:6770
+EFF.GENIND.178	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:6791
+EFF.GENIND.179	eff-unit	GENIND	supplier-finding	record	H	OPEN	EFF-GENIND.md:6827
+EFF.GENIND.180	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:6854
+EFF.GENIND.181	eff-unit	GENIND	instance-record	math	H	OPEN	EFF-GENIND.md:6934
+EFF.GENIND.182	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:6966
+EFF.GENIND.183	eff-unit	GENIND	preregistration	record	H	OPEN	EFF-GENIND.md:7000
+EFF.GENIND.184	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:7037
+EFF.GENIND.185	eff-unit	GENIND	run-record	record	H	OPEN	EFF-GENIND.md:7061
+EFF.GENIND.186	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:7134
+EFF.GENIND.187	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:7160
+EFF.GENIND.188	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:7183
+EFF.GENIND.189	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:7213
+EFF.GENIND.190	eff-unit	GENIND	instance-record	math	H	OPEN	EFF-GENIND.md:7355
+EFF.GENIND.191	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:7392
+EFF.GENIND.192	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:7419
+EFF.GENIND.193	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:7440
+EFF.GENIND.194	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:7461
+EFF.GENIND.195	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:7482
+EFF.GENIND.196	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:7524
+EFF.GENIND.197	eff-unit	GENIND	hypothesis	math	H	OPEN	EFF-GENIND.md:7547
+EFF.GENIND.198	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:7611
+EFF.GENIND.199	eff-unit	GENIND	fence	record	H	OPEN	EFF-GENIND.md:7677
+EFF.GENIND.200	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:7698
+EFF.GENIND.201	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:7726
+EFF.GENIND.202	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:7756
+EFF.GENIND.203	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:7811
+EFF.GENIND.204	eff-unit	GENIND	lemma	math	H	OPEN	EFF-GENIND.md:7839
+EFF.GENIND.205	eff-unit	GENIND	scope-record	record	H	OPEN	EFF-GENIND.md:7897
+EFF.GENIND.206	eff-unit	GENIND	changes-record	record	H	OPEN	EFF-GENIND.md:7925
+EFF.GRTJB.01	eff-unit	GRTJB	scope record	record	F	OPEN	EFF-GRTJB.md:282
+EFF.GRTJB.02	eff-unit	GRTJB	scope record	record	F	OPEN	EFF-GRTJB.md:302
+EFF.GRTJB.03	eff-unit	GRTJB	?	record	F	OPEN	EFF-GRTJB.md:327
+EFF.GRTJB.11	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:383
+EFF.GRTJB.12	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:415
+EFF.GRTJB.13	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:439
+EFF.GRTJB.14	eff-unit	GRTJB	hypothesis	math	F	OPEN	EFF-GRTJB.md:482
+EFF.GRTJB.15	eff-unit	GRTJB	hypothesis	math	F	OPEN	EFF-GRTJB.md:545
+EFF.GRTJB.16	eff-unit	GRTJB	hypothesis	math	F	OPEN	EFF-GRTJB.md:585
+EFF.GRTJB.17	eff-unit	GRTJB	hypothesis	math	F	OPEN	EFF-GRTJB.md:623
+EFF.GRTJB.18	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:648
+EFF.GRTJB.19	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:689
+EFF.GRTJB.20	eff-unit	GRTJB	TABLE	record	F	OPEN	EFF-GRTJB.md:709
+EFF.GRTJB.21	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:773
+EFF.GRTJB.22	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:802
+EFF.GRTJB.23	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:826
+EFF.GRTJB.24	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:873
+EFF.GRTJB.25	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:912
+EFF.GRTJB.26	eff-unit	GRTJB	scope record	record	F	OPEN	EFF-GRTJB.md:933
+EFF.GRTJB.27	eff-unit	GRTJB	scope record	record	F	OPEN	EFF-GRTJB.md:980
+EFF.GRTJB.28	eff-unit	GRTJB	scope record	record	F	OPEN	EFF-GRTJB.md:1006
+EFF.GRTJB.29	eff-unit	GRTJB	scope record	record	F	OPEN	EFF-GRTJB.md:1027
+EFF.GRTJB.30	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:1057
+EFF.GRTJB.31	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:1082
+EFF.GRTJB.32	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:1127
+EFF.GRTJB.33	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:1162
+EFF.GRTJB.34	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:1194
+EFF.GRTJB.35	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:1218
+EFF.GRTJB.36	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:1240
+EFF.GRTJB.37	eff-unit	GRTJB	fence	record	F	OPEN	EFF-GRTJB.md:1264
+EFF.GRTJB.38	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:1282
+EFF.GRTJB.39	eff-unit	GRTJB	fence	record	F	OPEN	EFF-GRTJB.md:1305
+EFF.GRTJB.40	eff-unit	GRTJB	fence	record	F	OPEN	EFF-GRTJB.md:1343
+EFF.GRTJB.41	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:1386
+EFF.GRTJB.42	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:1408
+EFF.GRTJB.43	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:1445
+EFF.GRTJB.44	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:1476
+EFF.GRTJB.45	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:1522
+EFF.GRTJB.46	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:1546
+EFF.GRTJB.47	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:1567
+EFF.GRTJB.48	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:1596
+EFF.GRTJB.49	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:1626
+EFF.GRTJB.50	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:1695
+EFF.GRTJB.51	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:1734
+EFF.GRTJB.52	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:1764
+EFF.GRTJB.53	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:1799
+EFF.GRTJB.54	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:1825
+EFF.GRTJB.55	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:1850
+EFF.GRTJB.56	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:1891
+EFF.GRTJB.57	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:1918
+EFF.GRTJB.58	eff-unit	GRTJB	?	record	F	OPEN	EFF-GRTJB.md:1953
+EFF.GRTJB.66	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:1978
+EFF.GRTJB.67	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:2006
+EFF.GRTJB.68	eff-unit	GRTJB	?	record	F	OPEN	EFF-GRTJB.md:2053
+EFF.GRTJB.72	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:2064
+EFF.GRTJB.73	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:2096
+EFF.GRTJB.74	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:2143
+EFF.GRTJB.75	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:2177
+EFF.GRTJB.76	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:2208
+EFF.GRTJB.77	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:2238
+EFF.GRTJB.78	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:2285
+EFF.GRTJB.79	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:2311
+EFF.GRTJB.80	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:2347
+EFF.GRTJB.81	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:2381
+EFF.GRTJB.82	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:2405
+EFF.GRTJB.83	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:2457
+EFF.GRTJB.84	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:2505
+EFF.GRTJB.85	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:2532
+EFF.GRTJB.86	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:2548
+EFF.GRTJB.87	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:2587
+EFF.GRTJB.88	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:2618
+EFF.GRTJB.89	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:2646
+EFF.GRTJB.90	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:2674
+EFF.GRTJB.91	eff-unit	GRTJB	scope record	record	F	OPEN	EFF-GRTJB.md:2699
+EFF.GRTJB.92	eff-unit	GRTJB	TABLE	record	F	OPEN	EFF-GRTJB.md:2748
+EFF.GRTJB.93	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:2786
+EFF.GRTJB.94	eff-unit	GRTJB	hypothesis	math	F	OPEN	EFF-GRTJB.md:2830
+EFF.GRTJB.95	eff-unit	GRTJB	fence	record	F	OPEN	EFF-GRTJB.md:2893
+EFF.GRTJB.96	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:2919
+EFF.GRTJB.97	eff-unit	GRTJB	TABLE	record	F	OPEN	EFF-GRTJB.md:2942
+EFF.GRTJB.98	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:2994
+EFF.GRTJB.99	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:3034
+EFF.GRTJB.100	eff-unit	GRTJB	scope record	record	F	OPEN	EFF-GRTJB.md:3056
+EFF.GRTJB.101	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:3094
+EFF.GRTJB.102	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:3131
+EFF.GRTJB.103	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:3155
+EFF.GRTJB.104	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:3225
+EFF.GRTJB.105	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:3270
+EFF.GRTJB.106	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:3302
+EFF.GRTJB.107	eff-unit	GRTJB	TABLE	record	F	OPEN	EFF-GRTJB.md:3327
+EFF.GRTJB.108	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:3390
+EFF.GRTJB.109	eff-unit	GRTJB	hypothesis	math	F	OPEN	EFF-GRTJB.md:3437
+EFF.GRTJB.110	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:3460
+EFF.GRTJB.111	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:3479
+EFF.GRTJB.112	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:3505
+EFF.GRTJB.113	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:3541
+EFF.GRTJB.114	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:3594
+EFF.GRTJB.115	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:3663
+EFF.GRTJB.116	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:3685
+EFF.GRTJB.117	eff-unit	GRTJB	TABLE	record	F	OPEN	EFF-GRTJB.md:3707
+EFF.GRTJB.118	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:3776
+EFF.GRTJB.119	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:3811
+EFF.GRTJB.120	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:3877
+EFF.GRTJB.121	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:3916
+EFF.GRTJB.122	eff-unit	GRTJB	scope record	record	F	OPEN	EFF-GRTJB.md:3982
+EFF.GRTJB.123	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:4032
+EFF.GRTJB.124	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:4083
+EFF.GRTJB.125	eff-unit	GRTJB	definition	math	F	OPEN	EFF-GRTJB.md:4107
+EFF.GRTJB.126	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:4152
+EFF.GRTJB.127	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:4185
+EFF.GRTJB.128	eff-unit	GRTJB	scope record	record	F	OPEN	EFF-GRTJB.md:4234
+EFF.GRTJB.129	eff-unit	GRTJB	lemma	math	F	OPEN	EFF-GRTJB.md:4259
+EFF.GRTJB.130	eff-unit	GRTJB	scope record	record	F	OPEN	EFF-GRTJB.md:4298
+EFF.GRTJB.131	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:4323
+EFF.GRTJB.132	eff-unit	GRTJB	TABLE	record	F	OPEN	EFF-GRTJB.md:4346
+EFF.GRTJB.133	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:4404
+EFF.GRTJB.134	eff-unit	GRTJB	fence	record	F	OPEN	EFF-GRTJB.md:4436
+EFF.GRTJB.135	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:4461
+EFF.GRTJB.136	eff-unit	GRTJB	fence	record	F	OPEN	EFF-GRTJB.md:4486
+EFF.GRTJB.137	eff-unit	GRTJB	fence	record	F	OPEN	EFF-GRTJB.md:4625
+EFF.GRTJB.138	eff-unit	GRTJB	fence	record	F	OPEN	EFF-GRTJB.md:4646
+EFF.GRTJB.139	eff-unit	GRTJB	fence	record	F	OPEN	EFF-GRTJB.md:4670
+EFF.GRTJB.140	eff-unit	GRTJB	fence	record	F	OPEN	EFF-GRTJB.md:4694
+EFF.GRTJB.141	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:4727
+EFF.GRTJB.142	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:4747
+EFF.GRTJB.143	eff-unit	GRTJB	TABLE	record	F	OPEN	EFF-GRTJB.md:4780
+EFF.GRTJB.144	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:4821
+EFF.GRTJB.145	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:4856
+EFF.GRTJB.146	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:4937
+EFF.GRTJB.147	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:4973
+EFF.GRTJB.148	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:5008
+EFF.GRTJB.149	eff-unit	GRTJB	TABLE	record	F	OPEN	EFF-GRTJB.md:5034
+EFF.GRTJB.150	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:5067
+EFF.GRTJB.151	eff-unit	GRTJB	TABLE	record	F	OPEN	EFF-GRTJB.md:5085
+EFF.GRTJB.152	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:5185
+EFF.GRTJB.153	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:5204
+EFF.GRTJB.154	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:5230
+EFF.GRTJB.155	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:5256
+EFF.GRTJB.156	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:5278
+EFF.GRTJB.157	eff-unit	GRTJB	preregistration	record	F	OPEN	EFF-GRTJB.md:5321
+EFF.GRTJB.158	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:5358
+EFF.GRTJB.159	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:5400
+EFF.GRTJB.160	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:5467
+EFF.GRTJB.161	eff-unit	GRTJB	instrument-record	record	F	OPEN	EFF-GRTJB.md:5496
+EFF.GRTJB.162	eff-unit	GRTJB	preregistration	record	F	OPEN	EFF-GRTJB.md:5544
+EFF.GRTJB.163	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:5579
+EFF.GRTJB.164	eff-unit	GRTJB	run-record	record	F	OPEN	EFF-GRTJB.md:5659
+EFF.GRTJB.165	eff-unit	GRTJB	acceptance-box	record	F	OPEN	EFF-GRTJB.md:5697
+EFF.GRTJB.166	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:5738
+EFF.GRTJB.167	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:5774
+EFF.GRTJB.168	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:5809
+EFF.GRTJB.169	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:5851
+EFF.GRTJB.170	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:5889
+EFF.GRTJB.171	eff-unit	GRTJB	changes-record	record	F	OPEN	EFF-GRTJB.md:5926
+EFF.GRTJB.172	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:5959
+EFF.GRTJB.173	eff-unit	GRTJB	supplier-finding	record	F	OPEN	EFF-GRTJB.md:6033
+EFF.GRTJC.01	eff-unit	GRTJC	scope record	record	F	OPEN	EFF-GRTJC.md:252
+EFF.GRTJC.02	eff-unit	GRTJC	scope record	record	F	OPEN	EFF-GRTJC.md:270
+EFF.GRTJC.03	eff-unit	GRTJC	instrument-record	record	F	OPEN	EFF-GRTJC.md:307
+EFF.GRTJC.04	eff-unit	GRTJC	instrument-record	record	F	OPEN	EFF-GRTJC.md:340
+EFF.GRTJC.05	eff-unit	GRTJC	?	record	F	OPEN	EFF-GRTJC.md:369
+EFF.GRTJC.11	eff-unit	GRTJC	run-record	record	F	OPEN	EFF-GRTJC.md:440
+EFF.GRTJC.12	eff-unit	GRTJC	run-record	record	F	OPEN	EFF-GRTJC.md:489
+EFF.GRTJC.13	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:520
+EFF.GRTJC.14	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:555
+EFF.GRTJC.15	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:585
+EFF.GRTJC.16	eff-unit	GRTJC	run-record	record	F	OPEN	EFF-GRTJC.md:606
+EFF.GRTJC.17	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:634
+EFF.GRTJC.18	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:672
+EFF.GRTJC.19	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:695
+EFF.GRTJC.20	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:720
+EFF.GRTJC.21	eff-unit	GRTJC	run-record	record	F	OPEN	EFF-GRTJC.md:753
+EFF.GRTJC.22	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:779
+EFF.GRTJC.23	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:804
+EFF.GRTJC.24	eff-unit	GRTJC	instrument-record	record	F	OPEN	EFF-GRTJC.md:832
+EFF.GRTJC.25	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:857
+EFF.GRTJC.26	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:881
+EFF.GRTJC.27	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:900
+EFF.GRTJC.28	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:935
+EFF.GRTJC.29	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:954
+EFF.GRTJC.30	eff-unit	GRTJC	run-record	record	F	OPEN	EFF-GRTJC.md:977
+EFF.GRTJC.31	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:1011
+EFF.GRTJC.32	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:1060
+EFF.GRTJC.33	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:1086
+EFF.GRTJC.34	eff-unit	GRTJC	instrument-record	record	F	OPEN	EFF-GRTJC.md:1119
+EFF.GRTJC.35	eff-unit	GRTJC	run-record	record	F	OPEN	EFF-GRTJC.md:1153
+EFF.GRTJC.36	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:1182
+EFF.GRTJC.37	eff-unit	GRTJC	instrument-record	record	F	OPEN	EFF-GRTJC.md:1224
+EFF.GRTJC.38	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:1260
+EFF.GRTJC.39	eff-unit	GRTJC	instrument-record	record	F	OPEN	EFF-GRTJC.md:1289
+EFF.GRTJC.40	eff-unit	GRTJC	fence	record	F	OPEN	EFF-GRTJC.md:1322
+EFF.GRTJC.41	eff-unit	GRTJC	hypothesis	math	F	OPEN	EFF-GRTJC.md:1341
+EFF.GRTJC.42	eff-unit	GRTJC	hypothesis	math	F	OPEN	EFF-GRTJC.md:1373
+EFF.GRTJC.43	eff-unit	GRTJC	hypothesis	math	F	OPEN	EFF-GRTJC.md:1402
+EFF.GRTJC.44	eff-unit	GRTJC	hypothesis	math	F	OPEN	EFF-GRTJC.md:1498
+EFF.GRTJC.45	eff-unit	GRTJC	hypothesis	math	F	OPEN	EFF-GRTJC.md:1530
+EFF.GRTJC.46	eff-unit	GRTJC	scope record	record	F	OPEN	EFF-GRTJC.md:1556
+EFF.GRTJC.47	eff-unit	GRTJC	definition	math	F	OPEN	EFF-GRTJC.md:1607
+EFF.GRTJC.48	eff-unit	GRTJC	definition	math	F	OPEN	EFF-GRTJC.md:1627
+EFF.GRTJC.49	eff-unit	GRTJC	definition	math	F	OPEN	EFF-GRTJC.md:1654
+EFF.GRTJC.50	eff-unit	GRTJC	definition	math	F	OPEN	EFF-GRTJC.md:1680
+EFF.GRTJC.51	eff-unit	GRTJC	definition	math	F	OPEN	EFF-GRTJC.md:1708
+EFF.GRTJC.52	eff-unit	GRTJC	definition	math	F	OPEN	EFF-GRTJC.md:1736
+EFF.GRTJC.53	eff-unit	GRTJC	definition	math	F	OPEN	EFF-GRTJC.md:1770
+EFF.GRTJC.54	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:1793
+EFF.GRTJC.55	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:1867
+EFF.GRTJC.56	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:1902
+EFF.GRTJC.57	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:1940
+EFF.GRTJC.58	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:1964
+EFF.GRTJC.59	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:1985
+EFF.GRTJC.60	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2006
+EFF.GRTJC.61	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2037
+EFF.GRTJC.62	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2073
+EFF.GRTJC.63	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2127
+EFF.GRTJC.64	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:2182
+EFF.GRTJC.65	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2248
+EFF.GRTJC.66	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2300
+EFF.GRTJC.67	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2327
+EFF.GRTJC.68	eff-unit	GRTJC	definition	math	F	OPEN	EFF-GRTJC.md:2355
+EFF.GRTJC.69	eff-unit	GRTJC	hypothesis	math	F	OPEN	EFF-GRTJC.md:2387
+EFF.GRTJC.70	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2470
+EFF.GRTJC.71	eff-unit	GRTJC	definition	math	F	OPEN	EFF-GRTJC.md:2504
+EFF.GRTJC.72	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2545
+EFF.GRTJC.73	eff-unit	GRTJC	definition	math	F	OPEN	EFF-GRTJC.md:2573
+EFF.GRTJC.74	eff-unit	GRTJC	TABLE	record	F	OPEN	EFF-GRTJC.md:2616
+EFF.GRTJC.75	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2650
+EFF.GRTJC.76	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2707
+EFF.GRTJC.77	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2736
+EFF.GRTJC.78	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2781
+EFF.GRTJC.79	eff-unit	GRTJC	scope record	record	F	OPEN	EFF-GRTJC.md:2810
+EFF.GRTJC.80	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:2862
+EFF.GRTJC.81	eff-unit	GRTJC	TABLE	record	F	OPEN	EFF-GRTJC.md:2900
+EFF.GRTJC.82	eff-unit	GRTJC	scope record	record	F	OPEN	EFF-GRTJC.md:2929
+EFF.GRTJC.83	eff-unit	GRTJC	fence	record	F	OPEN	EFF-GRTJC.md:2964
+EFF.GRTJC.84	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:3014
+EFF.GRTJC.85	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:3045
+EFF.GRTJC.86	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:3111
+EFF.GRTJC.87	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:3150
+EFF.GRTJC.88	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:3175
+EFF.GRTJC.89	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:3202
+EFF.GRTJC.90	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:3248
+EFF.GRTJC.91	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:3275
+EFF.GRTJC.92	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:3305
+EFF.GRTJC.93	eff-unit	GRTJC	definition	math	F	OPEN	EFF-GRTJC.md:3343
+EFF.GRTJC.94	eff-unit	GRTJC	lemma	math	F	OPEN	EFF-GRTJC.md:3382
+EFF.GRTJC.95	eff-unit	GRTJC	scope record	record	F	OPEN	EFF-GRTJC.md:3410
+EFF.GRTJC.96	eff-unit	GRTJC	TABLE	record	F	OPEN	EFF-GRTJC.md:3430
+EFF.GRTJC.97	eff-unit	GRTJC	?	record	F	OPEN	EFF-GRTJC.md:3473
+EFF.GRTJC.105	eff-unit	GRTJC	preregistration	record	F	OPEN	EFF-GRTJC.md:3522
+EFF.GRTJC.106	eff-unit	GRTJC	instrument-record	record	F	OPEN	EFF-GRTJC.md:3570
+EFF.GRTJC.107	eff-unit	GRTJC	run-record	record	F	OPEN	EFF-GRTJC.md:3607
+EFF.GRTJC.108	eff-unit	GRTJC	run-record	record	F	OPEN	EFF-GRTJC.md:3655
+EFF.GRTJC.109	eff-unit	GRTJC	run-record	record	F	OPEN	EFF-GRTJC.md:3683
+EFF.GRTJC.110	eff-unit	GRTJC	preregistration	record	F	OPEN	EFF-GRTJC.md:3717
+EFF.GRTJC.111	eff-unit	GRTJC	instrument-record	record	F	OPEN	EFF-GRTJC.md:3764
+EFF.GRTJC.112	eff-unit	GRTJC	run-record	record	F	OPEN	EFF-GRTJC.md:3795
+EFF.GRTJC.113	eff-unit	GRTJC	instrument-record	record	F	OPEN	EFF-GRTJC.md:3852
+EFF.GRTJC.114	eff-unit	GRTJC	preregistration	record	F	OPEN	EFF-GRTJC.md:3885
+EFF.GRTJC.115	eff-unit	GRTJC	run-record	record	F	OPEN	EFF-GRTJC.md:3923
+EFF.GRTJC.116	eff-unit	GRTJC	instrument-record	record	F	OPEN	EFF-GRTJC.md:3956
+EFF.GRTJC.117	eff-unit	GRTJC	instrument-record	record	F	OPEN	EFF-GRTJC.md:4000
+EFF.GRTJC.118	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:4067
+EFF.GRTJC.119	eff-unit	GRTJC	TABLE	record	F	OPEN	EFF-GRTJC.md:4105
+EFF.GRTJC.120	eff-unit	GRTJC	scope record	record	F	OPEN	EFF-GRTJC.md:4143
+EFF.GRTJC.121	eff-unit	GRTJC	fence	record	F	OPEN	EFF-GRTJC.md:4187
+EFF.GRTJC.122	eff-unit	GRTJC	acceptance-box	record	F	OPEN	EFF-GRTJC.md:4256
+EFF.GRTJC.123	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:4295
+EFF.GRTJC.124	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:4317
+EFF.GRTJC.125	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:4350
+EFF.GRTJC.126	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:4377
+EFF.GRTJC.127	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:4414
+EFF.GRTJC.128	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:4451
+EFF.GRTJC.129	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:4481
+EFF.GRTJC.130	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:4524
+EFF.GRTJC.131	eff-unit	GRTJC	supplier-finding	record	F	OPEN	EFF-GRTJC.md:4556
+EFF.GRTJC.132	eff-unit	GRTJC	changes-record	record	F	OPEN	EFF-GRTJC.md:4588
+EFF.GRTW2.01	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:318
+EFF.GRTW2.02	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:336
+EFF.GRTW2.03	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:362
+EFF.GRTW2.04	eff-unit	GRTW2	theorem	math	F	OPEN	EFF-GRTW2.md:450
+EFF.GRTW2.05	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:495
+EFF.GRTW2.06	eff-unit	GRTW2	fence	record	F	OPEN	EFF-GRTW2.md:571
+EFF.GRTW2.07	eff-unit	GRTW2	instrument-record	record	F	OPEN	EFF-GRTW2.md:612
+EFF.GRTW2.08	eff-unit	GRTW2	hypothesis	math	F	OPEN	EFF-GRTW2.md:640
+EFF.GRTW2.09	eff-unit	GRTW2	definition	math	F	OPEN	EFF-GRTW2.md:679
+EFF.GRTW2.10	eff-unit	GRTW2	definition	math	F	OPEN	EFF-GRTW2.md:708
+EFF.GRTW2.11	eff-unit	GRTW2	lemma	math	F	OPEN	EFF-GRTW2.md:746
+EFF.GRTW2.12	eff-unit	GRTW2	lemma	math	F	OPEN	EFF-GRTW2.md:774
+EFF.GRTW2.13	eff-unit	GRTW2	lemma	math	F	OPEN	EFF-GRTW2.md:812
+EFF.GRTW2.14	eff-unit	GRTW2	lemma	math	F	OPEN	EFF-GRTW2.md:867
+EFF.GRTW2.15	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:904
+EFF.GRTW2.16	eff-unit	GRTW2	lemma	math	F	OPEN	EFF-GRTW2.md:931
+EFF.GRTW2.17	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:967
+EFF.GRTW2.18	eff-unit	GRTW2	theorem	math	F	OPEN	EFF-GRTW2.md:1006
+EFF.GRTW2.19	eff-unit	GRTW2	definition	math	F	OPEN	EFF-GRTW2.md:1059
+EFF.GRTW2.20	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:1095
+EFF.GRTW2.21	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:1122
+EFF.GRTW2.22	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:1153
+EFF.GRTW2.23	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:1186
+EFF.GRTW2.24	eff-unit	GRTW2	lemma	math	F	OPEN	EFF-GRTW2.md:1229
+EFF.GRTW2.25	eff-unit	GRTW2	theorem	math	F	OPEN	EFF-GRTW2.md:1283
+EFF.GRTW2.26	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:1332
+EFF.GRTW2.27	eff-unit	GRTW2	definition	math	F	OPEN	EFF-GRTW2.md:1395
+EFF.GRTW2.28	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:1441
+EFF.GRTW2.29	eff-unit	GRTW2	theorem	math	F	OPEN	EFF-GRTW2.md:1469
+EFF.GRTW2.30	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:1531
+EFF.GRTW2.31	eff-unit	GRTW2	lemma	math	F	OPEN	EFF-GRTW2.md:1609
+EFF.GRTW2.32	eff-unit	GRTW2	run-record	record	F	OPEN	EFF-GRTW2.md:1662
+EFF.GRTW2.33	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:1734
+EFF.GRTW2.34	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:1827
+EFF.GRTW2.35	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:1883
+EFF.GRTW2.36	eff-unit	GRTW2	lemma	math	F	OPEN	EFF-GRTW2.md:1923
+EFF.GRTW2.37	eff-unit	GRTW2	table	math	F	OPEN	EFF-GRTW2.md:1971
+EFF.GRTW2.38	eff-unit	GRTW2	table	math	F	OPEN	EFF-GRTW2.md:2024
+EFF.GRTW2.39	eff-unit	GRTW2	scope-record	record	F	OPEN	EFF-GRTW2.md:2060
+EFF.GRTW2.40	eff-unit	GRTW2	fence	record	F	OPEN	EFF-GRTW2.md:2127
+EFF.GRTW2.41	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2175
+EFF.GRTW2.42	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2223
+EFF.GRTW2.43	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2261
+EFF.GRTW2.44	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2305
+EFF.GRTW2.45	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2396
+EFF.GRTW2.46	eff-unit	GRTW2	acceptance-box	record	F	OPEN	EFF-GRTW2.md:2417
+EFF.GRTW2.47	eff-unit	GRTW2	fence	record	F	OPEN	EFF-GRTW2.md:2463
+EFF.GRTW2.48	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2481
+EFF.GRTW2.49	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2519
+EFF.GRTW2.50	eff-unit	GRTW2	lemma	math	F	OPEN	EFF-GRTW2.md:2573
+EFF.GRTW2.51	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2631
+EFF.GRTW2.52	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2655
+EFF.GRTW2.53	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2680
+EFF.GRTW2.54	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2703
+EFF.GRTW2.55	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2742
+EFF.GRTW2.56	eff-unit	GRTW2	theorem	math	F	OPEN	EFF-GRTW2.md:2789
+EFF.GRTW2.57	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2868
+EFF.GRTW2.58	eff-unit	GRTW2	theorem	math	F	OPEN	EFF-GRTW2.md:2917
+EFF.GRTW2.59	eff-unit	GRTW2	changes-record	record	F	OPEN	EFF-GRTW2.md:2972
+EFF.GRTW2.60	eff-unit	GRTW2	instrument-record	record	F	OPEN	EFF-GRTW2.md:3011
+EFF.HE3.01	eff-unit	HE3	changes-record	record	B	OPEN	EFF-HE3.md:259
+EFF.HE3.02	eff-unit	HE3	changes-record	record	B	OPEN	EFF-HE3.md:285
+EFF.HE3.03	eff-unit	HE3	fence	record	B	OPEN	EFF-HE3.md:335
+EFF.HE3.04	eff-unit	HE3	fence	record	B	OPEN	EFF-HE3.md:424
+EFF.HE3.05	eff-unit	HE3	table	math	B	OPEN	EFF-HE3.md:462
+EFF.HE3.06	eff-unit	HE3	table	math	B	OPEN	EFF-HE3.md:508
+EFF.HE3.07	eff-unit	HE3	table	math	B	OPEN	EFF-HE3.md:546
+EFF.HE3.08	eff-unit	HE3	hypothesis	math	B	OPEN	EFF-HE3.md:595
+EFF.HE3.09	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:617
+EFF.HE3.10	eff-unit	HE3	definition	math	B	OPEN	EFF-HE3.md:643
+EFF.HE3.11	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:683
+EFF.HE3.12	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:791
+EFF.HE3.13	eff-unit	HE3	definition	math	B	OPEN	EFF-HE3.md:845
+EFF.HE3.14	eff-unit	HE3	definition	math	B	OPEN	EFF-HE3.md:878
+EFF.HE3.15	eff-unit	HE3	definition	math	B	OPEN	EFF-HE3.md:947
+EFF.HE3.16	eff-unit	HE3	theorem	math	B	OPEN	EFF-HE3.md:996
+EFF.HE3.17	eff-unit	HE3	theorem	math	B	OPEN	EFF-HE3.md:1042
+EFF.HE3.18	eff-unit	HE3	theorem	math	B	OPEN	EFF-HE3.md:1110
+EFF.HE3.19	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:1145
+EFF.HE3.20	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:1233
+EFF.HE3.21	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:1307
+EFF.HE3.22	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:1386
+EFF.HE3.23	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:1449
+EFF.HE3.24	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:1505
+EFF.HE3.25	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:1564
+EFF.HE3.26	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:1625
+EFF.HE3.27	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:1657
+EFF.HE3.28	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:1759
+EFF.HE3.29	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:1783
+EFF.HE3.30	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:1864
+EFF.HE3.31	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:1916
+EFF.HE3.32	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:1972
+EFF.HE3.33	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:2056
+EFF.HE3.34	eff-unit	HE3	theorem	math	B	OPEN	EFF-HE3.md:2134
+EFF.HE3.35	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:2242
+EFF.HE3.36	eff-unit	HE3	theorem	math	B	OPEN	EFF-HE3.md:2292
+EFF.HE3.37	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:2340
+EFF.HE3.38	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:2415
+EFF.HE3.39	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:2443
+EFF.HE3.40	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:2488
+EFF.HE3.41	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:2515
+EFF.HE3.42	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:2556
+EFF.HE3.43	eff-unit	HE3	instrument-record	record	B	OPEN	EFF-HE3.md:2582
+EFF.HE3.44	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:2624
+EFF.HE3.45	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:2708
+EFF.HE3.46	eff-unit	HE3	instrument-record	record	B	OPEN	EFF-HE3.md:2741
+EFF.HE3.47	eff-unit	HE3	instrument-record	record	B	OPEN	EFF-HE3.md:2770
+EFF.HE3.48	eff-unit	HE3	instrument-record	record	B	OPEN	EFF-HE3.md:2803
+EFF.HE3.49	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:2828
+EFF.HE3.50	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:2859
+EFF.HE3.51	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:2879
+EFF.HE3.52	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:2899
+EFF.HE3.53	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:2950
+EFF.HE3.54	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:2998
+EFF.HE3.55	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:3039
+EFF.HE3.56	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:3097
+EFF.HE3.57	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:3127
+EFF.HE3.58	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:3161
+EFF.HE3.59	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:3197
+EFF.HE3.60	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:3225
+EFF.HE3.61	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:3268
+EFF.HE3.62	eff-unit	HE3	run-record	record	B	OPEN	EFF-HE3.md:3300
+EFF.HE3.63	eff-unit	HE3	scope-record	record	B	OPEN	EFF-HE3.md:3347
+EFF.HE3.64	eff-unit	HE3	acceptance-box	record	B	OPEN	EFF-HE3.md:3380
+EFF.HE3.65	eff-unit	HE3	changes-record	record	B	OPEN	EFF-HE3.md:3419
+EFF.HE3.66	eff-unit	HE3	changes-record	record	B	OPEN	EFF-HE3.md:3474
+EFF.HE3.67	eff-unit	HE3	changes-record	record	B	OPEN	EFF-HE3.md:3511
+EFF.HE3.68	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:3602
+EFF.HE3.69	eff-unit	HE3	lemma	math	B	OPEN	EFF-HE3.md:3679
+EFF.HE3.70	eff-unit	HE3	changes-record	record	B	OPEN	EFF-HE3.md:3748
+EFF.HE3.71	eff-unit	HE3	changes-record	record	B	OPEN	EFF-HE3.md:3798
+EFF.HE3.72	eff-unit	HE3	instrument-record	record	B	OPEN	EFF-HE3.md:3848
+EFF.HE7.01	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:284
+EFF.HE7.02	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:314
+EFF.HE7.03	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:361
+EFF.HE7.04	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:425
+EFF.HE7.05	eff-unit	HE7	hypothesis	math	B	OPEN	EFF-HE7.md:451
+EFF.HE7.06	eff-unit	HE7	definition	math	B	OPEN	EFF-HE7.md:476
+EFF.HE7.07	eff-unit	HE7	definition	math	B	OPEN	EFF-HE7.md:510
+EFF.HE7.08	eff-unit	HE7	convention	math	B	OPEN	EFF-HE7.md:531
+EFF.HE7.09	eff-unit	HE7	convention	math	B	OPEN	EFF-HE7.md:565
+EFF.HE7.10	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:603
+EFF.HE7.11	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:621
+EFF.HE7.12	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:701
+EFF.HE7.13	eff-unit	HE7	theorem	math	B	OPEN	EFF-HE7.md:745
+EFF.HE7.14	eff-unit	HE7	theorem	math	B	OPEN	EFF-HE7.md:800
+EFF.HE7.15	eff-unit	HE7	theorem	math	B	OPEN	EFF-HE7.md:854
+EFF.HE7.16	eff-unit	HE7	corollary	math	B	OPEN	EFF-HE7.md:943
+EFF.HE7.17	eff-unit	HE7	theorem	math	B	OPEN	EFF-HE7.md:997
+EFF.HE7.18	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:1027
+EFF.HE7.19	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:1054
+EFF.HE7.20	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:1103
+EFF.HE7.21	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:1148
+EFF.HE7.22	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:1184
+EFF.HE7.23	eff-unit	HE7	definition	math	B	OPEN	EFF-HE7.md:1226
+EFF.HE7.24	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:1248
+EFF.HE7.25	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:1278
+EFF.HE7.26	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:1324
+EFF.HE7.27	eff-unit	HE7	definition	math	B	OPEN	EFF-HE7.md:1342
+EFF.HE7.28	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:1374
+EFF.HE7.29	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:1406
+EFF.HE7.30	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:1437
+EFF.HE7.31	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:1511
+EFF.HE7.32	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:1547
+EFF.HE7.33	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:1572
+EFF.HE7.34	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:1592
+EFF.HE7.35	eff-unit	HE7	corollary	math	B	OPEN	EFF-HE7.md:1622
+EFF.HE7.36	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:1651
+EFF.HE7.37	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:1684
+EFF.HE7.38	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:1711
+EFF.HE7.39	eff-unit	HE7	instance-record	math	B	OPEN	EFF-HE7.md:1738
+EFF.HE7.40	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:1783
+EFF.HE7.41	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:1801
+EFF.HE7.42	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:1859
+EFF.HE7.43	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:1888
+EFF.HE7.44	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:1916
+EFF.HE7.45	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:2061
+EFF.HE7.46	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:2123
+EFF.HE7.47	eff-unit	HE7	definition	math	B	OPEN	EFF-HE7.md:2156
+EFF.HE7.48	eff-unit	HE7	theorem	math	B	OPEN	EFF-HE7.md:2216
+EFF.HE7.49	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2290
+EFF.HE7.50	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2316
+EFF.HE7.51	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2346
+EFF.HE7.52	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:2384
+EFF.HE7.53	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:2401
+EFF.HE7.54	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2446
+EFF.HE7.55	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2470
+EFF.HE7.56	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:2498
+EFF.HE7.57	eff-unit	HE7	instance-record	math	B	OPEN	EFF-HE7.md:2520
+EFF.HE7.58	eff-unit	HE7	table	math	B	OPEN	EFF-HE7.md:2543
+EFF.HE7.59	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2579
+EFF.HE7.60	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2604
+EFF.HE7.61	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:2640
+EFF.HE7.62	eff-unit	HE7	theorem	math	B	OPEN	EFF-HE7.md:2663
+EFF.HE7.63	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:2689
+EFF.HE7.64	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:2718
+EFF.HE7.65	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2740
+EFF.HE7.66	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2767
+EFF.HE7.67	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:2794
+EFF.HE7.68	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2823
+EFF.HE7.69	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2852
+EFF.HE7.70	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:2884
+EFF.HE7.71	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2908
+EFF.HE7.72	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:2936
+EFF.HE7.73	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:2956
+EFF.HE7.74	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:2979
+EFF.HE7.75	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:3003
+EFF.HE7.76	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:3025
+EFF.HE7.77	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:3051
+EFF.HE7.78	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:3071
+EFF.HE7.79	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:3093
+EFF.HE7.80	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:3112
+EFF.HE7.81	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:3135
+EFF.HE7.82	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:3158
+EFF.HE7.83	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:3186
+EFF.HE7.84	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:3219
+EFF.HE7.85	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:3254
+EFF.HE7.86	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:3292
+EFF.HE7.87	eff-unit	HE7	table	math	B	OPEN	EFF-HE7.md:3333
+EFF.HE7.88	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:3400
+EFF.HE7.89	eff-unit	HE7	table	math	B	OPEN	EFF-HE7.md:3420
+EFF.HE7.90	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:3481
+EFF.HE7.91	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:3503
+EFF.HE7.92	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:3536
+EFF.HE7.93	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:3567
+EFF.HE7.94	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:3599
+EFF.HE7.95	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:3633
+EFF.HE7.96	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:3679
+EFF.HE7.97	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:3851
+EFF.HE7.98	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:3904
+EFF.HE7.99	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:3930
+EFF.HE7.100	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:3960
+EFF.HE7.101	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:3987
+EFF.HE7.102	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:4031
+EFF.HE7.103	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:4068
+EFF.HE7.104	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:4098
+EFF.HE7.105	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:4122
+EFF.HE7.106	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:4160
+EFF.HE7.107	eff-unit	HE7	definition	math	B	OPEN	EFF-HE7.md:4197
+EFF.HE7.108	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:4237
+EFF.HE7.109	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:4309
+EFF.HE7.110	eff-unit	HE7	theorem	math	B	OPEN	EFF-HE7.md:4331
+EFF.HE7.111	eff-unit	HE7	theorem	math	B	OPEN	EFF-HE7.md:4414
+EFF.HE7.112	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:4449
+EFF.HE7.113	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:4473
+EFF.HE7.114	eff-unit	HE7	corollary	math	B	OPEN	EFF-HE7.md:4534
+EFF.HE7.115	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:4566
+EFF.HE7.116	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:4590
+EFF.HE7.117	eff-unit	HE7	regression-record	record	B	OPEN	EFF-HE7.md:4635
+EFF.HE7.118	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:4693
+EFF.HE7.119	eff-unit	HE7	lemma	math	B	OPEN	EFF-HE7.md:4722
+EFF.HE7.120	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:4771
+EFF.HE7.121	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:4799
+EFF.HE7.122	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:4824
+EFF.HE7.123	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:4857
+EFF.HE7.124	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:4890
+EFF.HE7.125	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:4920
+EFF.HE7.126	eff-unit	HE7	scope-record	record	B	OPEN	EFF-HE7.md:4959
+EFF.HE7.127	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:4985
+EFF.HE7.128	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:5014
+EFF.HE7.129	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:5033
+EFF.HE7.130	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:5052
+EFF.HE7.131	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:5070
+EFF.HE7.132	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:5090
+EFF.HE7.133	eff-unit	HE7	fence	record	B	OPEN	EFF-HE7.md:5137
+EFF.HE7.134	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:5178
+EFF.HE7.135	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:5210
+EFF.HE7.136	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:5249
+EFF.HE7.137	eff-unit	HE7	changes-record	record	B	OPEN	EFF-HE7.md:5298
+EFF.LIFTCORNER.01	eff-unit	LIFTCORNER	convention	math	F	OPEN	EFF-LIFTCORNER.md:358
+EFF.LIFTCORNER.02	eff-unit	LIFTCORNER	scope record	record	F	OPEN	EFF-LIFTCORNER.md:380
+EFF.LIFTCORNER.03	eff-unit	LIFTCORNER	instrument-record	record	F	OPEN	EFF-LIFTCORNER.md:409
+EFF.LIFTCORNER.04	eff-unit	LIFTCORNER	instrument-record	record	F	OPEN	EFF-LIFTCORNER.md:429
+EFF.LIFTCORNER.05	eff-unit	LIFTCORNER	instrument-record	record	F	OPEN	EFF-LIFTCORNER.md:452
+EFF.LIFTCORNER.06	eff-unit	LIFTCORNER	instrument-record	record	F	OPEN	EFF-LIFTCORNER.md:474
+EFF.LIFTCORNER.07	eff-unit	LIFTCORNER	repair-round record	record	F	OPEN	EFF-LIFTCORNER.md:508
+EFF.LIFTCORNER.08	eff-unit	LIFTCORNER	supersession rider	record	F	OPEN	EFF-LIFTCORNER.md:540
+EFF.LIFTCORNER.09	eff-unit	LIFTCORNER	repair-round record	record	F	OPEN	EFF-LIFTCORNER.md:570
+EFF.LIFTCORNER.10	eff-unit	LIFTCORNER	supplier-finding / provenance-rider	record	F	OPEN	EFF-LIFTCORNER.md:609
+EFF.LIFTCORNER.11	eff-unit	LIFTCORNER	repair-round record	record	F	OPEN	EFF-LIFTCORNER.md:643
+EFF.LIFTCORNER.12	eff-unit	LIFTCORNER	repair-round record	record	F	OPEN	EFF-LIFTCORNER.md:675
+EFF.LIFTCORNER.13	eff-unit	LIFTCORNER	repair-round record	record	F	OPEN	EFF-LIFTCORNER.md:715
+EFF.LIFTCORNER.14	eff-unit	LIFTCORNER	repair-round record	record	F	OPEN	EFF-LIFTCORNER.md:751
+EFF.LIFTCORNER.15	eff-unit	LIFTCORNER	repair-round record	record	F	OPEN	EFF-LIFTCORNER.md:777
+EFF.LIFTCORNER.16	eff-unit	LIFTCORNER	fence	record	F	OPEN	EFF-LIFTCORNER.md:809
+EFF.LIFTCORNER.17	eff-unit	LIFTCORNER	fence	record	F	OPEN	EFF-LIFTCORNER.md:831
+EFF.LIFTCORNER.18	eff-unit	LIFTCORNER	definition	math	F	OPEN	EFF-LIFTCORNER.md:853
+EFF.LIFTCORNER.19	eff-unit	LIFTCORNER	definition	math	F	OPEN	EFF-LIFTCORNER.md:875
+EFF.LIFTCORNER.20	eff-unit	LIFTCORNER	preregistration	record	F	OPEN	EFF-LIFTCORNER.md:902
+EFF.LIFTCORNER.21	eff-unit	LIFTCORNER	preregistration	record	F	OPEN	EFF-LIFTCORNER.md:930
+EFF.LIFTCORNER.22	eff-unit	LIFTCORNER	preregistration	record	F	OPEN	EFF-LIFTCORNER.md:954
+EFF.LIFTCORNER.23	eff-unit	LIFTCORNER	instrument-record	record	F	OPEN	EFF-LIFTCORNER.md:986
+EFF.LIFTCORNER.24	eff-unit	LIFTCORNER	instrument-record	record	F	OPEN	EFF-LIFTCORNER.md:1020
+EFF.LIFTCORNER.25	eff-unit	LIFTCORNER	instrument-record	record	F	OPEN	EFF-LIFTCORNER.md:1052
+EFF.LIFTCORNER.26	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:1090
+EFF.LIFTCORNER.27	eff-unit	LIFTCORNER	supersession rider	record	F	OPEN	EFF-LIFTCORNER.md:1129
+EFF.LIFTCORNER.28	eff-unit	LIFTCORNER	run-record	record	F	OPEN	EFF-LIFTCORNER.md:1157
+EFF.LIFTCORNER.29	eff-unit	LIFTCORNER	run-record	record	F	OPEN	EFF-LIFTCORNER.md:1178
+EFF.LIFTCORNER.30	eff-unit	LIFTCORNER	run-record / disclosure	record	F	OPEN	EFF-LIFTCORNER.md:1232
+EFF.LIFTCORNER.31	eff-unit	LIFTCORNER	scope record	record	F	OPEN	EFF-LIFTCORNER.md:1263
+EFF.LIFTCORNER.32	eff-unit	LIFTCORNER	convention	math	F	OPEN	EFF-LIFTCORNER.md:1283
+EFF.LIFTCORNER.33	eff-unit	LIFTCORNER	definition	math	F	OPEN	EFF-LIFTCORNER.md:1305
+EFF.LIFTCORNER.34	eff-unit	LIFTCORNER	lemma	math	F	OPEN	EFF-LIFTCORNER.md:1336
+EFF.LIFTCORNER.35	eff-unit	LIFTCORNER	lemma	math	F	OPEN	EFF-LIFTCORNER.md:1366
+EFF.LIFTCORNER.36	eff-unit	LIFTCORNER	lemma	math	F	OPEN	EFF-LIFTCORNER.md:1388
+EFF.LIFTCORNER.37	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:1408
+EFF.LIFTCORNER.38	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:1434
+EFF.LIFTCORNER.39	eff-unit	LIFTCORNER	table	math	F	OPEN	EFF-LIFTCORNER.md:1458
+EFF.LIFTCORNER.40	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:1492
+EFF.LIFTCORNER.41	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:1514
+EFF.LIFTCORNER.42	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:1538
+EFF.LIFTCORNER.43	eff-unit	LIFTCORNER	run-record	record	F	OPEN	EFF-LIFTCORNER.md:1586
+EFF.LIFTCORNER.44	eff-unit	LIFTCORNER	instrument-record + run-record	record	F	OPEN	EFF-LIFTCORNER.md:1620
+EFF.LIFTCORNER.45	eff-unit	LIFTCORNER	fence	record	F	OPEN	EFF-LIFTCORNER.md:1667
+EFF.LIFTCORNER.46	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:1690
+EFF.LIFTCORNER.47	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:1731
+EFF.LIFTCORNER.48	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:1754
+EFF.LIFTCORNER.49	eff-unit	LIFTCORNER	scope record	record	F	OPEN	EFF-LIFTCORNER.md:1798
+EFF.LIFTCORNER.50	eff-unit	LIFTCORNER	changes-record	record	F	OPEN	EFF-LIFTCORNER.md:1819
+EFF.LIFTCORNER.51	eff-unit	LIFTCORNER	changes-record	record	F	OPEN	EFF-LIFTCORNER.md:1852
+EFF.LIFTCORNER.52	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:1900
+EFF.LIFTCORNER.53	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:1942
+EFF.LIFTCORNER.54	eff-unit	LIFTCORNER	lemma	math	F	OPEN	EFF-LIFTCORNER.md:1966
+EFF.LIFTCORNER.55	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:1986
+EFF.LIFTCORNER.56	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:2016
+EFF.LIFTCORNER.57	eff-unit	LIFTCORNER	theorem	math	F	OPEN	EFF-LIFTCORNER.md:2045
+EFF.LIFTCORNER.58	eff-unit	LIFTCORNER	changes-record	record	F	OPEN	EFF-LIFTCORNER.md:2069
+EFF.LIFTCORNER.59	eff-unit	LIFTCORNER	changes-record	record	F	OPEN	EFF-LIFTCORNER.md:2095
+EFF.LIFTCORNER.60	eff-unit	LIFTCORNER	corollary	math	F	OPEN	EFF-LIFTCORNER.md:2123
+EFF.LIFTCORNER.61	eff-unit	LIFTCORNER	corollary	math	F	OPEN	EFF-LIFTCORNER.md:2145
+EFF.LIFTCORNER.62	eff-unit	LIFTCORNER	changes-record	record	F	OPEN	EFF-LIFTCORNER.md:2174
+EFF.LIFTCORNER.63	eff-unit	LIFTCORNER	proposition	math	F	OPEN	EFF-LIFTCORNER.md:2209
+EFF.LIFTCORNER.64	eff-unit	LIFTCORNER	changes-record	record	F	OPEN	EFF-LIFTCORNER.md:2243
+EFF.LIFTCORNER.65	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2286
+EFF.LIFTCORNER.66	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2306
+EFF.LIFTCORNER.67	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2331
+EFF.LIFTCORNER.68	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2357
+EFF.LIFTCORNER.69	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2384
+EFF.LIFTCORNER.70	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2411
+EFF.LIFTCORNER.71	eff-unit	LIFTCORNER	fence	record	F	OPEN	EFF-LIFTCORNER.md:2441
+EFF.LIFTCORNER.72	eff-unit	LIFTCORNER	scope record	record	F	OPEN	EFF-LIFTCORNER.md:2486
+EFF.LIFTCORNER.73	eff-unit	LIFTCORNER	scope record	record	F	OPEN	EFF-LIFTCORNER.md:2510
+EFF.LIFTCORNER.74	eff-unit	LIFTCORNER	changes-record	record	F	OPEN	EFF-LIFTCORNER.md:2538
+EFF.LIFTCORNER.75	eff-unit	LIFTCORNER	scope record	record	F	OPEN	EFF-LIFTCORNER.md:2562
+EFF.LIFTCORNER.76	eff-unit	LIFTCORNER	scope record	record	F	OPEN	EFF-LIFTCORNER.md:2595
+EFF.LIFTCORNER.77	eff-unit	LIFTCORNER	scope record	record	F	OPEN	EFF-LIFTCORNER.md:2620
+EFF.LIFTCORNER.78	eff-unit	LIFTCORNER	instrument-record	record	F	OPEN	EFF-LIFTCORNER.md:2652
+EFF.LIFTCORNER.79	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2676
+EFF.LIFTCORNER.80	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2701
+EFF.LIFTCORNER.81	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2722
+EFF.LIFTCORNER.82	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2745
+EFF.LIFTCORNER.83	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2769
+EFF.LIFTCORNER.84	eff-unit	LIFTCORNER	changes-record	record	F	OPEN	EFF-LIFTCORNER.md:2795
+EFF.LIFTCORNER.85	eff-unit	LIFTCORNER	changes-record — DEAD	record	F	OPEN	EFF-LIFTCORNER.md:2820
+EFF.LIFTCORNER.86	eff-unit	LIFTCORNER	changes-record — DEAD	record	F	OPEN	EFF-LIFTCORNER.md:2849
+EFF.LIFTCORNER.87	eff-unit	LIFTCORNER	changes-record — DEAD	record	F	OPEN	EFF-LIFTCORNER.md:2875
+EFF.LIFTCORNER.88	eff-unit	LIFTCORNER	record	record	F	OPEN	EFF-LIFTCORNER.md:2905
+EFF.LIFTCORNER.89	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2930
+EFF.LIFTCORNER.90	eff-unit	LIFTCORNER	acceptance-box	record	F	OPEN	EFF-LIFTCORNER.md:2956
+EFF.LIFTCORNER.91	eff-unit	LIFTCORNER	changes-record	record	F	OPEN	EFF-LIFTCORNER.md:2984
+EFF.LIFTCORNER.92	eff-unit	LIFTCORNER	changes-record	record	F	OPEN	EFF-LIFTCORNER.md:3014
+EFF.LIFTCORNER.93	eff-unit	LIFTCORNER	record	record	F	OPEN	EFF-LIFTCORNER.md:3040
+EFF.LIFTCORNER.94	eff-unit	LIFTCORNER	supplier-finding	record	F	OPEN	EFF-LIFTCORNER.md:3068
+EFF.LIFTCORNER.95	eff-unit	LIFTCORNER	lemma-statement + scope-pin	record	F	OPEN	EFF-LIFTCORNER.md:3092
+EFF.LIFTCORNER.96	eff-unit	LIFTCORNER	preregistration	record	F	OPEN	EFF-LIFTCORNER.md:3116
+EFF.LIFTCORNER.97	eff-unit	LIFTCORNER	supplier-finding — rebuttal	record	F	OPEN	EFF-LIFTCORNER.md:3134
+EFF.LIFTCORNER.98	eff-unit	LIFTCORNER	lemma	math	F	OPEN	EFF-LIFTCORNER.md:3158
+EFF.LIFTCORNER.99	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:3188
+EFF.LIFTCORNER.100	eff-unit	LIFTCORNER	supplier-finding — rebuttal	record	F	OPEN	EFF-LIFTCORNER.md:3223
+EFF.LIFTCORNER.101	eff-unit	LIFTCORNER	instrument-record	record	F	OPEN	EFF-LIFTCORNER.md:3251
+EFF.LIFTCORNER.102	eff-unit	LIFTCORNER	record	record	F	OPEN	EFF-LIFTCORNER.md:3283
+EFF.LIFTCORNER.103	eff-unit	LIFTCORNER	table + scope record	record	F	OPEN	EFF-LIFTCORNER.md:3310
+EFF.LIFTCORNER.104	eff-unit	LIFTCORNER	lemma	math	F	OPEN	EFF-LIFTCORNER.md:3357
+EFF.LIFTCORNER.105	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:3389
+EFF.LIFTCORNER.106	eff-unit	LIFTCORNER	supplier-finding	record	F	OPEN	EFF-LIFTCORNER.md:3410
+EFF.LIFTCORNER.107	eff-unit	LIFTCORNER	lemma-statement	math	F	OPEN	EFF-LIFTCORNER.md:3459
+EFF.LIFTCORNER.108	eff-unit	LIFTCORNER	scope record	record	F	OPEN	EFF-LIFTCORNER.md:3496
+EFF.LIFTCORNER.109	eff-unit	LIFTCORNER	instrument-record	record	F	OPEN	EFF-LIFTCORNER.md:3532
+EFF.LIFTCORNER.110	eff-unit	LIFTCORNER	record	record	F	OPEN	EFF-LIFTCORNER.md:3556
+EFF.LIFTCORNER.111	eff-unit	LIFTCORNER	lemma	math	F	OPEN	EFF-LIFTCORNER.md:3576
+EFF.LIFTCORNER.112	eff-unit	LIFTCORNER	lemma	math	F	OPEN	EFF-LIFTCORNER.md:3628
+EFF.LIFTCORNER.113	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:3683
+EFF.LIFTCORNER.114	eff-unit	LIFTCORNER	derivation	math	F	OPEN	EFF-LIFTCORNER.md:3724
+EFF.LIFTCORNER.115	eff-unit	LIFTCORNER	lemma	math	F	OPEN	EFF-LIFTCORNER.md:3792
+EFF.LIFTCORNER.116	eff-unit	LIFTCORNER	fence	record	F	OPEN	EFF-LIFTCORNER.md:3840
+EFF.LIFTCORNER.117	eff-unit	LIFTCORNER	scope record	record	F	OPEN	EFF-LIFTCORNER.md:3865
+EFF.LIFTCORNER.118	eff-unit	LIFTCORNER	instrument-record	record	F	OPEN	EFF-LIFTCORNER.md:3925
+EFF.T1.01	eff-unit	T1	hypothesis	math	D	OPEN	EFF-T1.md:175
+EFF.T1.02	eff-unit	T1	hypothesis	math	D	OPEN	EFF-T1.md:216
+EFF.T1.03	eff-unit	T1	hypothesis	math	D	OPEN	EFF-T1.md:290
+EFF.T1.04	eff-unit	T1	definition	math	D	OPEN	EFF-T1.md:354
+EFF.T1.05	eff-unit	T1	lemma	math	D	OPEN	EFF-T1.md:379
+EFF.T1.06	eff-unit	T1	lemma	math	D	OPEN	EFF-T1.md:408
+EFF.T1.07	eff-unit	T1	definition	math	D	OPEN	EFF-T1.md:429
+EFF.T1.08	eff-unit	T1	lemma	math	D	OPEN	EFF-T1.md:452
+EFF.T1.09	eff-unit	T1	definition	math	D	OPEN	EFF-T1.md:476
+EFF.T1.10	eff-unit	T1	lemma	math	D	OPEN	EFF-T1.md:509
+EFF.T1.11	eff-unit	T1	definition	math	D	OPEN	EFF-T1.md:543
+EFF.T1.12	eff-unit	T1	definition	math	D	OPEN	EFF-T1.md:565
+EFF.T1.13	eff-unit	T1	lemma	math	D	OPEN	EFF-T1.md:601
+EFF.T1.14	eff-unit	T1	lemma	math	D	OPEN	EFF-T1.md:629
+EFF.T1.15	eff-unit	T1	lemma	math	D	OPEN	EFF-T1.md:663
+EFF.T1.16	eff-unit	T1	lemma	math	D	OPEN	EFF-T1.md:698
+EFF.T1.17	eff-unit	T1	lemma	math	D	OPEN	EFF-T1.md:730
+EFF.T1.18	eff-unit	T1	lemma	math	D	OPEN	EFF-T1.md:761
+EFF.T1.19	eff-unit	T1	lemma	math	D	OPEN	EFF-T1.md:800
+EFF.T1.20	eff-unit	T1	lemma	math	D	OPEN	EFF-T1.md:825
+EFF.T1.21	eff-unit	T1	hypothesis	math	D	OPEN	EFF-T1.md:865
+EFF.T1.22	eff-unit	T1	table	math	D	OPEN	EFF-T1.md:897
+EFF.T1.23	eff-unit	T1	fence	record	D	OPEN	EFF-T1.md:923
+EFF.T1.24	eff-unit	T1	absorption-record	math	D	OPEN	EFF-T1.md:947
+EFF.T1.25	eff-unit	T1	table	math	D	OPEN	EFF-T1.md:974
+EFF.T1.26	eff-unit	T1	absorption-record	math	D	OPEN	EFF-T1.md:995
+EFF.T1.27	eff-unit	T1	absorption-record	math	D	OPEN	EFF-T1.md:1073
+EFF.T1.28	eff-unit	T1	absorption-record	math	D	OPEN	EFF-T1.md:1110
+EFF.T1.29	eff-unit	T1	absorption-record	math	D	OPEN	EFF-T1.md:1141
+EFF.T1.30	eff-unit	T1	absorption-record	math	D	OPEN	EFF-T1.md:1172
+EFF.T1.31	eff-unit	T1	absorption-record	math	D	OPEN	EFF-T1.md:1211
+EFF.T1.32	eff-unit	T1	fence	record	D	OPEN	EFF-T1.md:1255
+EFF.T1.33	eff-unit	T1	table	math	D	OPEN	EFF-T1.md:1287
+EFF.T1.34	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1308
+EFF.T1.35	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1340
+EFF.T1.36	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1354
+EFF.T1.37	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1368
+EFF.T1.38	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1382
+EFF.T1.39	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1396
+EFF.T1.40	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1410
+EFF.T1.41	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1428
+EFF.T1.42	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1442
+EFF.T1.43	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1456
+EFF.T1.44	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1470
+EFF.T1.45	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1488
+EFF.T1.46	eff-unit	T1	fence	record	D	OPEN	EFF-T1.md:1510
+EFF.T1.47	eff-unit	T1	changes-record	record	D	OPEN	EFF-T1.md:1592
+EFF.T1.48	eff-unit	T1	acceptance-box	record	D	OPEN	EFF-T1.md:1634
+EFF.T1.49	eff-unit	T1	table	math	D	OPEN	EFF-T1.md:1652
+EFF.T1.50	eff-unit	T1	scope-record	record	D	OPEN	EFF-T1.md:1686
+EFF.T1.51	eff-unit	T1	acceptance-box	record	D	OPEN	EFF-T1.md:1705
+EFF.T1.52	eff-unit	T1	battery-row	record	D	OPEN	EFF-T1.md:1723
+EFF.T1.53	eff-unit	T1	fence	record	D	OPEN	EFF-T1.md:1739
+EFF.T1.54	eff-unit	T1	scope-record	record	D	OPEN	EFF-T1.md:1761
+EFF.T1.55	eff-unit	T1	fence	record	D	OPEN	EFF-T1.md:1781
+EFF.T2.01	eff-unit	T2	scope-record	record	E	OPEN	EFF-T2.md:314
+EFF.T2.02	eff-unit	T2	hypothesis	math	E	OPEN	EFF-T2.md:332
+EFF.T2.03	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:366
+EFF.T2.04	eff-unit	T2	hypothesis	math	E	OPEN	EFF-T2.md:399
+EFF.T2.05	eff-unit	T2	hypothesis	math	E	OPEN	EFF-T2.md:437
+EFF.T2.06	eff-unit	T2	definition	math	E	OPEN	EFF-T2.md:477
+EFF.T2.07	eff-unit	T2	definition	math	E	OPEN	EFF-T2.md:523
+EFF.T2.08	eff-unit	T2	definition	math	E	OPEN	EFF-T2.md:562
+EFF.T2.09	eff-unit	T2	hypothesis	math	E	OPEN	EFF-T2.md:598
+EFF.T2.10	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:634
+EFF.T2.11	eff-unit	T2	hypothesis	math	E	OPEN	EFF-T2.md:667
+EFF.T2.12	eff-unit	T2	hypothesis	math	E	OPEN	EFF-T2.md:708
+EFF.T2.13	eff-unit	T2	definition	math	E	OPEN	EFF-T2.md:737
+EFF.T2.14	eff-unit	T2	definition	math	E	OPEN	EFF-T2.md:760
+EFF.T2.15	eff-unit	T2	hypothesis	math	E	OPEN	EFF-T2.md:786
+EFF.T2.16	eff-unit	T2	hypothesis	math	E	OPEN	EFF-T2.md:825
+EFF.T2.17	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:850
+EFF.T2.18	eff-unit	T2	open-obligation	math	E	OPEN	EFF-T2.md:909
+EFF.T2.19	eff-unit	T2	hypothesis	math	E	OPEN	EFF-T2.md:932
+EFF.T2.20	eff-unit	T2	regression-record	record	E	OPEN	EFF-T2.md:969
+EFF.T2.21	eff-unit	T2	hypothesis	math	E	OPEN	EFF-T2.md:999
+EFF.T2.22	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:1032
+EFF.T2.23	eff-unit	T2	open-obligation	math	E	OPEN	EFF-T2.md:1058
+EFF.T2.24	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:1096
+EFF.T2.25	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:1114
+EFF.T2.26	eff-unit	T2	hypothesis	math	E	OPEN	EFF-T2.md:1134
+EFF.T2.27	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:1160
+EFF.T2.28	eff-unit	T2	hypothesis	math	E	OPEN	EFF-T2.md:1184
+EFF.T2.29	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:1211
+EFF.T2.30	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:1235
+EFF.T2.31	eff-unit	T2	theorem	math	E	OPEN	EFF-T2.md:1266
+EFF.T2.32	eff-unit	T2	theorem	math	E	OPEN	EFF-T2.md:1332
+EFF.T2.33	eff-unit	T2	instance-record	math	E	OPEN	EFF-T2.md:1354
+EFF.T2.34	eff-unit	T2	instance-record	math	E	OPEN	EFF-T2.md:1390
+EFF.T2.35	eff-unit	T2	instance-record	math	E	OPEN	EFF-T2.md:1435
+EFF.T2.36	eff-unit	T2	instance-record	math	E	OPEN	EFF-T2.md:1472
+EFF.T2.37	eff-unit	T2	instance-record	math	E	OPEN	EFF-T2.md:1513
+EFF.T2.38	eff-unit	T2	definition	math	E	OPEN	EFF-T2.md:1548
+EFF.T2.39	eff-unit	T2	fence	record	E	OPEN	EFF-T2.md:1574
+EFF.T2.40	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:1602
+EFF.T2.41	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:1632
+EFF.T2.42	eff-unit	T2	acceptance-box	record	E	OPEN	EFF-T2.md:1654
+EFF.T2.43	eff-unit	T2	fence	record	E	OPEN	EFF-T2.md:1674
+EFF.T2.44	eff-unit	T2	acceptance-box	record	E	OPEN	EFF-T2.md:1694
+EFF.T2.45	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:1718
+EFF.T2.46	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:1740
+EFF.T2.47	eff-unit	T2	fence	record	E	OPEN	EFF-T2.md:1764
+EFF.T2.48	eff-unit	T2	convention	math	E	OPEN	EFF-T2.md:1789
+EFF.T2.49	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:1809
+EFF.T2.50	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:1839
+EFF.T2.51	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:1863
+EFF.T2.52	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:1881
+EFF.T2.53	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:1912
+EFF.T2.54	eff-unit	T2	fence	record	E	OPEN	EFF-T2.md:1932
+EFF.T2.55	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:1948
+EFF.T2.56	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:1975
+EFF.T2.57	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:1997
+EFF.T2.58	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2016
+EFF.T2.59	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:2036
+EFF.T2.60	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2074
+EFF.T2.61	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:2106
+EFF.T2.62	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:2183
+EFF.T2.63	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:2207
+EFF.T2.64	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2229
+EFF.T2.65	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2255
+EFF.T2.66	eff-unit	T2	fence	record	E	OPEN	EFF-T2.md:2279
+EFF.T2.67	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2301
+EFF.T2.68	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2323
+EFF.T2.69	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2353
+EFF.T2.70	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:2369
+EFF.T2.71	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:2403
+EFF.T2.72	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2444
+EFF.T2.73	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2474
+EFF.T2.74	eff-unit	T2	fence	record	E	OPEN	EFF-T2.md:2500
+EFF.T2.75	eff-unit	T2	acceptance-box	record	E	OPEN	EFF-T2.md:2516
+EFF.T2.76	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2536
+EFF.T2.77	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:2554
+EFF.T2.78	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:2588
+EFF.T2.79	eff-unit	T2	fence	record	E	OPEN	EFF-T2.md:2622
+EFF.T2.80	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:2640
+EFF.T2.81	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:2667
+EFF.T2.82	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2691
+EFF.T2.83	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2713
+EFF.T2.84	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:2735
+EFF.T2.85	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:2769
+EFF.T2.86	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:2787
+EFF.T2.87	eff-unit	T2	acceptance-box	record	E	OPEN	EFF-T2.md:2816
+EFF.T2.88	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2838
+EFF.T2.89	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:2862
+EFF.T2.90	eff-unit	T2	lemma	math	E	OPEN	EFF-T2.md:2894
+EFF.T2.91	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:2922
+EFF.T2.92	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2954
+EFF.T2.93	eff-unit	T2	fence	record	E	OPEN	EFF-T2.md:2970
+EFF.T2.94	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:2986
+EFF.T2.95	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:3016
+EFF.T2.96	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:3039
+EFF.T2.97	eff-unit	T2	acceptance-box	record	E	OPEN	EFF-T2.md:3066
+EFF.T2.98	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:3088
+EFF.T2.99	eff-unit	T2	acceptance-box	record	E	OPEN	EFF-T2.md:3114
+EFF.T2.100	eff-unit	T2	acceptance-box	record	E	OPEN	EFF-T2.md:3130
+EFF.T2.101	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:3151
+EFF.T2.102	eff-unit	T2	acceptance-box	record	E	OPEN	EFF-T2.md:3176
+EFF.T2.103	eff-unit	T2	table	math	E	OPEN	EFF-T2.md:3192
+EFF.T2.104	eff-unit	T2	fence	record	E	OPEN	EFF-T2.md:3215
+EFF.T2.105	eff-unit	T2	changes-record	record	E	OPEN	EFF-T2.md:3231
+EFF.GENTOW1.01	eff-unit	GENTOW1	convention	math	C	OPEN	EFF-GENTOW1.md:120
+EFF.GENTOW1.02	eff-unit	GENTOW1	repair-round record	record	C	OPEN	EFF-GENTOW1.md:139
+EFF.GENTOW1.03	eff-unit	GENTOW1	fence	record	C	OPEN	EFF-GENTOW1.md:169
+EFF.GENTOW1.04	eff-unit	GENTOW1	table	math	C	OPEN	EFF-GENTOW1.md:199
+EFF.GENTOW1.05	eff-unit	GENTOW1	convention	math	C	OPEN	EFF-GENTOW1.md:223
+EFF.GENTOW1.06	eff-unit	GENTOW1	definition	math	C	OPEN	EFF-GENTOW1.md:250
+EFF.GENTOW1.07	eff-unit	GENTOW1	definition	math	C	OPEN	EFF-GENTOW1.md:274
+EFF.GENTOW1.08	eff-unit	GENTOW1	definition	math	C	OPEN	EFF-GENTOW1.md:297
+EFF.GENTOW1.09	eff-unit	GENTOW1	table	math	C	OPEN	EFF-GENTOW1.md:319
+EFF.GENTOW1.10	eff-unit	GENTOW1	run-record	record	C	OPEN	EFF-GENTOW1.md:349
+EFF.GENTOW1.11	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:387
+EFF.GENTOW1.12	eff-unit	GENTOW1	run-record	record	C	OPEN	EFF-GENTOW1.md:421
+EFF.GENTOW1.13	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:463
+EFF.GENTOW1.14	eff-unit	GENTOW1	definition	math	C	OPEN	EFF-GENTOW1.md:486
+EFF.GENTOW1.15	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:510
+EFF.GENTOW1.16	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:539
+EFF.GENTOW1.17	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:564
+EFF.GENTOW1.18	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:584
+EFF.GENTOW1.19	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:605
+EFF.GENTOW1.20	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:635
+EFF.GENTOW1.21	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:666
+EFF.GENTOW1.22	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:691
+EFF.GENTOW1.23	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:718
+EFF.GENTOW1.24	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:747
+EFF.GENTOW1.25	eff-unit	GENTOW1	corollary	math	C	OPEN	EFF-GENTOW1.md:779
+EFF.GENTOW1.26	eff-unit	GENTOW1	fence	record	C	OPEN	EFF-GENTOW1.md:813
+EFF.GENTOW1.27	eff-unit	GENTOW1	definition	math	C	OPEN	EFF-GENTOW1.md:836
+EFF.GENTOW1.28	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:879
+EFF.GENTOW1.29	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:906
+EFF.GENTOW1.30	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:925
+EFF.GENTOW1.31	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:946
+EFF.GENTOW1.32	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:974
+EFF.GENTOW1.33	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:1001
+EFF.GENTOW1.34	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:1049
+EFF.GENTOW1.35	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:1077
+EFF.GENTOW1.36	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:1108
+EFF.GENTOW1.37	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:1132
+EFF.GENTOW1.38	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:1153
+EFF.GENTOW1.39	eff-unit	GENTOW1	lemma	math	C	OPEN	EFF-GENTOW1.md:1175
+EFF.GENTOW1.40	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:1201
+EFF.GENTOW1.41	eff-unit	GENTOW1	fence	record	C	OPEN	EFF-GENTOW1.md:1232
+EFF.GENTOW1.42	eff-unit	GENTOW1	instrument-record	record	C	OPEN	EFF-GENTOW1.md:1260
+EFF.GENTOW1.43	eff-unit	GENTOW1	run-record	record	C	OPEN	EFF-GENTOW1.md:1290
+EFF.GENTOW1.44	eff-unit	GENTOW1	run-record	record	C	OPEN	EFF-GENTOW1.md:1320
+EFF.GENTOW1.45	eff-unit	GENTOW1	run-record	record	C	OPEN	EFF-GENTOW1.md:1346
+EFF.GENTOW1.46	eff-unit	GENTOW1	fence	record	C	OPEN	EFF-GENTOW1.md:1372
+EFF.GENTOW1.47	eff-unit	GENTOW1	fence	record	C	OPEN	EFF-GENTOW1.md:1396
+EFF.GENTOW1.48	eff-unit	GENTOW1	fence	record	C	OPEN	EFF-GENTOW1.md:1431
+EFF.GENTOW1.49	eff-unit	GENTOW1	acceptance-box	record	C	OPEN	EFF-GENTOW1.md:1455
+EFF.GENTOW1.50	eff-unit	GENTOW1	fence	record	C	OPEN	EFF-GENTOW1.md:1482
+EFF.GENTOW1.51	eff-unit	GENTOW1	changes-record	record	C	OPEN	EFF-GENTOW1.md:1503
+EFF.GENTOW1.52	eff-unit	GENTOW1	changes-record	record	C	OPEN	EFF-GENTOW1.md:1527
+EFF.GENTOW1.53	eff-unit	GENTOW1	derivation	math	C	OPEN	EFF-GENTOW1.md:1569
+EFF.GENTOW1.54	eff-unit	GENTOW1	fence	record	C	OPEN	EFF-GENTOW1.md:1609
+EFF.GENTOW1.55	eff-unit	GENTOW1	run-record	record	C	OPEN	EFF-GENTOW1.md:1633
+EFF.GENTOW1.56	eff-unit	GENTOW1	changes-record	record	C	OPEN	EFF-GENTOW1.md:1663
+EFF.GENTOW1.57	eff-unit	GENTOW1	instrument-record	record	C	OPEN	EFF-GENTOW1.md:1682
+EFF.GENTOW1.58	eff-unit	GENTOW1	changes-record	record	C	OPEN	EFF-GENTOW1.md:1712
+EFF.GENTOW1.59	eff-unit	GENTOW1	acceptance-box	record	C	OPEN	EFF-GENTOW1.md:1748
+EFF.GENTOW1.60	eff-unit	GENTOW1	changes-record	record	C	OPEN	EFF-GENTOW1.md:1777
+EFF.GENTOW1.61	eff-unit	GENTOW1	changes-record	record	C	OPEN	EFF-GENTOW1.md:1809
+EFF.GENTOW1.62	eff-unit	GENTOW1	record	record	C	OPEN	EFF-GENTOW1.md:1853
+EFF.GENTOW1.63	eff-unit	GENTOW1	changes-record	record	C	OPEN	EFF-GENTOW1.md:1879
+EFF.GENTOW1.64	eff-unit	GENTOW1	changes-record	record	C	OPEN	EFF-GENTOW1.md:1921
+EFF.GENTOW1.65	eff-unit	GENTOW1	changes-record	record	C	OPEN	EFF-GENTOW1.md:1964
+EFF.GENTOW1.66	eff-unit	GENTOW1	changes-record	record	C	OPEN	EFF-GENTOW1.md:2007
+EFF.GENTOW1.67	eff-unit	GENTOW1	instrument-record	record	C	OPEN	EFF-GENTOW1.md:2036
+EFF.GENTOW3.01	eff-unit	GENTOW3	convention	math	C	OPEN	EFF-GENTOW3.md:107
+EFF.GENTOW3.02	eff-unit	GENTOW3	repair-round record	record	C	OPEN	EFF-GENTOW3.md:132
+EFF.GENTOW3.03	eff-unit	GENTOW3	repair-round record	record	C	OPEN	EFF-GENTOW3.md:159
+EFF.GENTOW3.04	eff-unit	GENTOW3	repair-round record	record	C	OPEN	EFF-GENTOW3.md:185
+EFF.GENTOW3.05	eff-unit	GENTOW3	acceptance-box	record	C	OPEN	EFF-GENTOW3.md:214
+EFF.GENTOW3.06	eff-unit	GENTOW3	fence	record	C	OPEN	EFF-GENTOW3.md:241
+EFF.GENTOW3.07	eff-unit	GENTOW3	fence	record	C	OPEN	EFF-GENTOW3.md:257
+EFF.GENTOW3.08	eff-unit	GENTOW3	table	math	C	OPEN	EFF-GENTOW3.md:283
+EFF.GENTOW3.09	eff-unit	GENTOW3	definition	math	C	OPEN	EFF-GENTOW3.md:306
+EFF.GENTOW3.10	eff-unit	GENTOW3	scope record	record	C	OPEN	EFF-GENTOW3.md:325
+EFF.GENTOW3.11	eff-unit	GENTOW3	scope record	record	C	OPEN	EFF-GENTOW3.md:374
+EFF.GENTOW3.12	eff-unit	GENTOW3	table	math	C	OPEN	EFF-GENTOW3.md:396
+EFF.GENTOW3.13	eff-unit	GENTOW3	derivation	math	C	OPEN	EFF-GENTOW3.md:420
+EFF.GENTOW3.14	eff-unit	GENTOW3	run-record	record	C	OPEN	EFF-GENTOW3.md:445
+EFF.GENTOW3.15	eff-unit	GENTOW3	convention	math	C	OPEN	EFF-GENTOW3.md:485
+EFF.GENTOW3.16	eff-unit	GENTOW3	definition	math	C	OPEN	EFF-GENTOW3.md:511
+EFF.GENTOW3.17	eff-unit	GENTOW3	definition	math	C	OPEN	EFF-GENTOW3.md:539
+EFF.GENTOW3.18	eff-unit	GENTOW3	theorem	math	C	OPEN	EFF-GENTOW3.md:566
+EFF.GENTOW3.19	eff-unit	GENTOW3	theorem	math	C	OPEN	EFF-GENTOW3.md:589
+EFF.GENTOW3.20	eff-unit	GENTOW3	theorem	math	C	OPEN	EFF-GENTOW3.md:612
+EFF.GENTOW3.21	eff-unit	GENTOW3	theorem	math	C	OPEN	EFF-GENTOW3.md:632
+EFF.GENTOW3.22	eff-unit	GENTOW3	derivation	math	C	OPEN	EFF-GENTOW3.md:669
+EFF.GENTOW3.23	eff-unit	GENTOW3	derivation	math	C	OPEN	EFF-GENTOW3.md:694
+EFF.GENTOW3.24	eff-unit	GENTOW3	derivation	math	C	OPEN	EFF-GENTOW3.md:721
+EFF.GENTOW3.25	eff-unit	GENTOW3	derivation	math	C	OPEN	EFF-GENTOW3.md:761
+EFF.GENTOW3.26	eff-unit	GENTOW3	derivation	math	C	OPEN	EFF-GENTOW3.md:781
+EFF.GENTOW3.27	eff-unit	GENTOW3	derivation	math	C	OPEN	EFF-GENTOW3.md:804
+EFF.GENTOW3.28	eff-unit	GENTOW3	fence	record	C	OPEN	EFF-GENTOW3.md:846
+EFF.GENTOW3.29	eff-unit	GENTOW3	corollary	math	C	OPEN	EFF-GENTOW3.md:875
+EFF.GENTOW3.30	eff-unit	GENTOW3	scope record	record	C	OPEN	EFF-GENTOW3.md:909
+EFF.GENTOW3.31	eff-unit	GENTOW3	scope record	record	C	OPEN	EFF-GENTOW3.md:941
+EFF.GENTOW3.32	eff-unit	GENTOW3	scope record	record	C	OPEN	EFF-GENTOW3.md:965
+EFF.GENTOW3.33	eff-unit	GENTOW3	scope record	record	C	OPEN	EFF-GENTOW3.md:985
+EFF.GENTOW3.34	eff-unit	GENTOW3	instrument-record	record	C	OPEN	EFF-GENTOW3.md:1017
+EFF.GENTOW3.35	eff-unit	GENTOW3	run-record	record	C	OPEN	EFF-GENTOW3.md:1044
+EFF.GENTOW3.36	eff-unit	GENTOW3	run-record	record	C	OPEN	EFF-GENTOW3.md:1072
+EFF.GENTOW3.37	eff-unit	GENTOW3	run-record	record	C	OPEN	EFF-GENTOW3.md:1110
+EFF.GENTOW3.38	eff-unit	GENTOW3	fence	record	C	OPEN	EFF-GENTOW3.md:1145
+EFF.GENTOW3.39	eff-unit	GENTOW3	fence	record	C	OPEN	EFF-GENTOW3.md:1167
+EFF.GENTOW3.40	eff-unit	GENTOW3	fence	record	C	OPEN	EFF-GENTOW3.md:1192
+EFF.GENTOW3.41	eff-unit	GENTOW3	acceptance-box	record	C	OPEN	EFF-GENTOW3.md:1222
+EFF.GENTOW3.42	eff-unit	GENTOW3	fence	record	C	OPEN	EFF-GENTOW3.md:1247
+EFF.GENTOW3.43	eff-unit	GENTOW3	changes-record	record	C	OPEN	EFF-GENTOW3.md:1263
+EFF.GENTOW3.44	eff-unit	GENTOW3	changes-record	record	C	OPEN	EFF-GENTOW3.md:1289
+EFF.GENTOW3.45	eff-unit	GENTOW3	derivation	math	C	OPEN	EFF-GENTOW3.md:1326
+EFF.GENTOW3.46	eff-unit	GENTOW3	changes-record	record	C	OPEN	EFF-GENTOW3.md:1368
+EFF.GENTOW3.47	eff-unit	GENTOW3	run-record	record	C	OPEN	EFF-GENTOW3.md:1396
+EFF.GENTOW3.48	eff-unit	GENTOW3	changes-record	record	C	OPEN	EFF-GENTOW3.md:1431
+EFF.GENTOW3.49	eff-unit	GENTOW3	changes-record	record	C	OPEN	EFF-GENTOW3.md:1461
+EFF.GENTOW3.50	eff-unit	GENTOW3	changes-record	record	C	OPEN	EFF-GENTOW3.md:1487
+EFF.GENTOW3.51	eff-unit	GENTOW3	instrument-record	record	C	OPEN	EFF-GENTOW3.md:1516
+EFF.GENTOW3.52	eff-unit	GENTOW3	changes-record	record	C	OPEN	EFF-GENTOW3.md:1551
+EFF.GENTOW3.53	eff-unit	GENTOW3	changes-record	record	C	OPEN	EFF-GENTOW3.md:1597
+EFF.GENTOW3.54	eff-unit	GENTOW3	acceptance-box	record	C	OPEN	EFF-GENTOW3.md:1644
+EFF.GENTOW3.55	eff-unit	GENTOW3	run-record	record	C	OPEN	EFF-GENTOW3.md:1680
+EFF.GENTOW3.56	eff-unit	GENTOW3	instrument-record	record	C	OPEN	EFF-GENTOW3.md:1716
+EFF.GENTOW3.57	eff-unit	GENTOW3	record	record	C	OPEN	EFF-GENTOW3.md:1740
+EFF.GENTOW3.58	eff-unit	GENTOW3	changes-record	record	C	OPEN	EFF-GENTOW3.md:1769
+EFF.GENTOW3.59	eff-unit	GENTOW3	changes-record	record	C	OPEN	EFF-GENTOW3.md:1817
+EFF.GENTOW3.60	eff-unit	GENTOW3	instrument-record	record	C	OPEN	EFF-GENTOW3.md:1850
+EFF.GENTOW3.61	eff-unit	GENTOW3	record	record	C	OPEN	EFF-GENTOW3.md:1879
+EFF.GENTOW3.62	eff-unit	GENTOW3	changes-record	record	C	OPEN	EFF-GENTOW3.md:1912
+EFF.GENTOW4.01	eff-unit	GENTOW4	convention	math	C	OPEN	EFF-GENTOW4.md:103
+EFF.GENTOW4.02	eff-unit	GENTOW4	repair-round record	record	C	OPEN	EFF-GENTOW4.md:130
+EFF.GENTOW4.03	eff-unit	GENTOW4	acceptance-box	record	C	OPEN	EFF-GENTOW4.md:159
+EFF.GENTOW4.04	eff-unit	GENTOW4	fence	record	C	OPEN	EFF-GENTOW4.md:185
+EFF.GENTOW4.05	eff-unit	GENTOW4	convention	math	C	OPEN	EFF-GENTOW4.md:212
+EFF.GENTOW4.06	eff-unit	GENTOW4	scope record	record	C	OPEN	EFF-GENTOW4.md:244
+EFF.GENTOW4.07	eff-unit	GENTOW4	scope record	record	C	OPEN	EFF-GENTOW4.md:270
+EFF.GENTOW4.08	eff-unit	GENTOW4	run-record	record	C	OPEN	EFF-GENTOW4.md:309
+EFF.GENTOW4.09	eff-unit	GENTOW4	derivation	math	C	OPEN	EFF-GENTOW4.md:353
+EFF.GENTOW4.10	eff-unit	GENTOW4	changes-record	record	C	OPEN	EFF-GENTOW4.md:378
+EFF.GENTOW4.11	eff-unit	GENTOW4	lemma	math	C	OPEN	EFF-GENTOW4.md:418
+EFF.GENTOW4.12	eff-unit	GENTOW4	lemma	math	C	OPEN	EFF-GENTOW4.md:439
+EFF.GENTOW4.13	eff-unit	GENTOW4	lemma	math	C	OPEN	EFF-GENTOW4.md:461
+EFF.GENTOW4.14	eff-unit	GENTOW4	lemma	math	C	OPEN	EFF-GENTOW4.md:489
+EFF.GENTOW4.15	eff-unit	GENTOW4	derivation	math	C	OPEN	EFF-GENTOW4.md:512
+EFF.GENTOW4.16	eff-unit	GENTOW4	fence	record	C	OPEN	EFF-GENTOW4.md:542
+EFF.GENTOW4.17	eff-unit	GENTOW4	definition	math	C	OPEN	EFF-GENTOW4.md:564
+EFF.GENTOW4.18	eff-unit	GENTOW4	theorem	math	C	OPEN	EFF-GENTOW4.md:599
+EFF.GENTOW4.19	eff-unit	GENTOW4	theorem	math	C	OPEN	EFF-GENTOW4.md:622
+EFF.GENTOW4.20	eff-unit	GENTOW4	theorem	math	C	OPEN	EFF-GENTOW4.md:654
+EFF.GENTOW4.21	eff-unit	GENTOW4	theorem	math	C	OPEN	EFF-GENTOW4.md:684
+EFF.GENTOW4.22	eff-unit	GENTOW4	theorem	math	C	OPEN	EFF-GENTOW4.md:711
+EFF.GENTOW4.23	eff-unit	GENTOW4	derivation	math	C	OPEN	EFF-GENTOW4.md:741
+EFF.GENTOW4.24	eff-unit	GENTOW4	lemma	math	C	OPEN	EFF-GENTOW4.md:766
+EFF.GENTOW4.25	eff-unit	GENTOW4	fence	record	C	OPEN	EFF-GENTOW4.md:796
+EFF.GENTOW4.26	eff-unit	GENTOW4	corollary	math	C	OPEN	EFF-GENTOW4.md:825
+EFF.GENTOW4.27	eff-unit	GENTOW4	derivation	math	C	OPEN	EFF-GENTOW4.md:851
+EFF.GENTOW4.28	eff-unit	GENTOW4	fence	record	C	OPEN	EFF-GENTOW4.md:874
+EFF.GENTOW4.29	eff-unit	GENTOW4	derivation	math	C	OPEN	EFF-GENTOW4.md:896
+EFF.GENTOW4.30	eff-unit	GENTOW4	fence	record	C	OPEN	EFF-GENTOW4.md:940
+EFF.GENTOW4.31	eff-unit	GENTOW4	run-record	record	C	OPEN	EFF-GENTOW4.md:969
+EFF.GENTOW4.32	eff-unit	GENTOW4	preregistration	record	C	OPEN	EFF-GENTOW4.md:995
+EFF.GENTOW4.33	eff-unit	GENTOW4	changes-record	record	C	OPEN	EFF-GENTOW4.md:1019
+EFF.GENTOW4.34	eff-unit	GENTOW4	preregistration	record	C	OPEN	EFF-GENTOW4.md:1058
+EFF.GENTOW4.35	eff-unit	GENTOW4	fence	record	C	OPEN	EFF-GENTOW4.md:1085
+EFF.GENTOW4.36	eff-unit	GENTOW4	fence	record	C	OPEN	EFF-GENTOW4.md:1103
+EFF.GENTOW4.37	eff-unit	GENTOW4	fence	record	C	OPEN	EFF-GENTOW4.md:1132
+EFF.GENTOW4.38	eff-unit	GENTOW4	fence	record	C	OPEN	EFF-GENTOW4.md:1159
+EFF.GENTOW4.39	eff-unit	GENTOW4	acceptance-box	record	C	OPEN	EFF-GENTOW4.md:1192
+EFF.GENTOW4.40	eff-unit	GENTOW4	fence	record	C	OPEN	EFF-GENTOW4.md:1229
+EFF.GENTOW4.41	eff-unit	GENTOW4	run-record	record	C	OPEN	EFF-GENTOW4.md:1254
+EFF.GENTOW4.42	eff-unit	GENTOW4	run-record	record	C	OPEN	EFF-GENTOW4.md:1276
+EFF.GENTOW4.43	eff-unit	GENTOW4	run-record	record	C	OPEN	EFF-GENTOW4.md:1299
+EFF.GENTOW4.44	eff-unit	GENTOW4	run-record	record	C	OPEN	EFF-GENTOW4.md:1328
+EFF.GENTOW4.45	eff-unit	GENTOW4	run-record	record	C	OPEN	EFF-GENTOW4.md:1356
+EFF.GENTOW4.46	eff-unit	GENTOW4	changes-record	record	C	OPEN	EFF-GENTOW4.md:1388
+EFF.GENTOW4.47	eff-unit	GENTOW4	derivation	math	C	OPEN	EFF-GENTOW4.md:1415
+EFF.GENTOW4.48	eff-unit	GENTOW4	run-record	record	C	OPEN	EFF-GENTOW4.md:1452
+EFF.GENTOW4.49	eff-unit	GENTOW4	fence	record	C	OPEN	EFF-GENTOW4.md:1487
+EFF.GENTOW4.50	eff-unit	GENTOW4	instrument-record	record	C	OPEN	EFF-GENTOW4.md:1514
+EFF.GENTOW4.51	eff-unit	GENTOW4	changes-record	record	C	OPEN	EFF-GENTOW4.md:1547
+EFF.GENTOW4.52	eff-unit	GENTOW4	changes-record	record	C	OPEN	EFF-GENTOW4.md:1592
+EFF.GENTOW4.53	eff-unit	GENTOW4	changes-record	record	C	OPEN	EFF-GENTOW4.md:1622
+EFF.GENTOW4.54	eff-unit	GENTOW4	changes-record	record	C	OPEN	EFF-GENTOW4.md:1655
+EFF.GENTOW4.55	eff-unit	GENTOW4	changes-record	record	C	OPEN	EFF-GENTOW4.md:1687
+EFF.GENTOW4.56	eff-unit	GENTOW4	acceptance-box	record	C	OPEN	EFF-GENTOW4.md:1718
+EFF.GENTOW4.57	eff-unit	GENTOW4	changes-record	record	C	OPEN	EFF-GENTOW4.md:1763
+EFF.GENTOW6.01	eff-unit	GENTOW6	convention	math	C	OPEN	EFF-GENTOW6.md:91
+EFF.GENTOW6.02	eff-unit	GENTOW6	repair-round record	record	C	OPEN	EFF-GENTOW6.md:114
+EFF.GENTOW6.03	eff-unit	GENTOW6	acceptance-box	record	C	OPEN	EFF-GENTOW6.md:141
+EFF.GENTOW6.04	eff-unit	GENTOW6	fence	record	C	OPEN	EFF-GENTOW6.md:170
+EFF.GENTOW6.05	eff-unit	GENTOW6	table	math	C	OPEN	EFF-GENTOW6.md:192
+EFF.GENTOW6.06	eff-unit	GENTOW6	convention	math	C	OPEN	EFF-GENTOW6.md:215
+EFF.GENTOW6.07	eff-unit	GENTOW6	lemma	math	C	OPEN	EFF-GENTOW6.md:246
+EFF.GENTOW6.08	eff-unit	GENTOW6	derivation	math	C	OPEN	EFF-GENTOW6.md:278
+EFF.GENTOW6.09	eff-unit	GENTOW6	derivation	math	C	OPEN	EFF-GENTOW6.md:306
+EFF.GENTOW6.10	eff-unit	GENTOW6	derivation	math	C	OPEN	EFF-GENTOW6.md:328
+EFF.GENTOW6.11	eff-unit	GENTOW6	lemma	math	C	OPEN	EFF-GENTOW6.md:344
+EFF.GENTOW6.12	eff-unit	GENTOW6	theorem	math	C	OPEN	EFF-GENTOW6.md:360
+EFF.GENTOW6.13	eff-unit	GENTOW6	scope record	record	C	OPEN	EFF-GENTOW6.md:383
+EFF.GENTOW6.14	eff-unit	GENTOW6	run-record	record	C	OPEN	EFF-GENTOW6.md:401
+EFF.GENTOW6.15	eff-unit	GENTOW6	fence	record	C	OPEN	EFF-GENTOW6.md:417
+EFF.GENTOW6.16	eff-unit	GENTOW6	fence	record	C	OPEN	EFF-GENTOW6.md:439
+EFF.GENTOW6.17	eff-unit	GENTOW6	record	record	C	OPEN	EFF-GENTOW6.md:468
+EFF.GENTOW6.18	eff-unit	GENTOW6	acceptance-box	record	C	OPEN	EFF-GENTOW6.md:492
+EFF.GENTOW6.19	eff-unit	GENTOW6	changes-record	record	C	OPEN	EFF-GENTOW6.md:515
+EFF.GENTOW6.20	eff-unit	GENTOW6	theorem	math	C	OPEN	EFF-GENTOW6.md:534
+EFF.GENTOW6.21	eff-unit	GENTOW6	lemma	math	C	OPEN	EFF-GENTOW6.md:550
+EFF.GENTOW6.22	eff-unit	GENTOW6	instrument-record	record	C	OPEN	EFF-GENTOW6.md:566
+EFF.GENTOW6.23	eff-unit	GENTOW6	fence	record	C	OPEN	EFF-GENTOW6.md:596
+EFF.GENTOW6.24	eff-unit	GENTOW6	fence	record	C	OPEN	EFF-GENTOW6.md:628
+EFF.GENTOW6.25	eff-unit	GENTOW6	fence	record	C	OPEN	EFF-GENTOW6.md:658
+EFF.GENTOW6.26	eff-unit	GENTOW6	fence	record	C	OPEN	EFF-GENTOW6.md:688
+EFF.GENTOW6.27	eff-unit	GENTOW6	fence	record	C	OPEN	EFF-GENTOW6.md:710
+EFF.GENTOW6.28	eff-unit	GENTOW6	changes-record	record	C	OPEN	EFF-GENTOW6.md:763
+EFF.GENTOW6.29	eff-unit	GENTOW6	acceptance-box	record	C	OPEN	EFF-GENTOW6.md:779
+EFF.GENTOW6.30	eff-unit	GENTOW6	changes-record	record	C	OPEN	EFF-GENTOW6.md:795
+EFF.GENTOW6.31	eff-unit	GENTOW6	changes-record	record	C	OPEN	EFF-GENTOW6.md:816
+EFF.GENTOW6.32	eff-unit	GENTOW6	acceptance-box	record	C	OPEN	EFF-GENTOW6.md:842
+EFF.GENTOW6.33	eff-unit	GENTOW6	record	record	C	OPEN	EFF-GENTOW6.md:879
+EFF.GENTOW6.34	eff-unit	GENTOW6	changes-record	record	C	OPEN	EFF-GENTOW6.md:900
+EFF.GENTOW6.35	eff-unit	GENTOW6	changes-record	record	C	OPEN	EFF-GENTOW6.md:964
+EFF.GRTJA.01	eff-unit	GRTJA	record	record	F	OPEN	EFF-GRTJA.md:113
+EFF.GRTJA.02	eff-unit	GRTJA	scope-record	record	F	OPEN	EFF-GRTJA.md:150
+EFF.GRTJA.03	eff-unit	GRTJA	definition	math	F	OPEN	EFF-GRTJA.md:170
+EFF.GRTJA.04	eff-unit	GRTJA	theorem	math	F	OPEN	EFF-GRTJA.md:190
+EFF.GRTJA.05	eff-unit	GRTJA	theorem	math	F	OPEN	EFF-GRTJA.md:225
+EFF.GRTJA.06	eff-unit	GRTJA	theorem	math	F	OPEN	EFF-GRTJA.md:260
+EFF.GRTJA.07	eff-unit	GRTJA	theorem	math	F	OPEN	EFF-GRTJA.md:283
+EFF.GRTJA.08	eff-unit	GRTJA	theorem	math	F	OPEN	EFF-GRTJA.md:299
+EFF.GRTJA.09	eff-unit	GRTJA	corollary	math	F	OPEN	EFF-GRTJA.md:334
+EFF.GRTJA.10	eff-unit	GRTJA	corollary	math	F	OPEN	EFF-GRTJA.md:354
+EFF.GRTJA.11	eff-unit	GRTJA	lemma	math	F	OPEN	EFF-GRTJA.md:384
+EFF.GRTJA.12	eff-unit	GRTJA	imported	math	F	OPEN	EFF-GRTJA.md:396
+EFF.GRTJA.13	eff-unit	GRTJA	imported	math	F	OPEN	EFF-GRTJA.md:424
+EFF.GRTJA.14	eff-unit	GRTJA	imported	math	F	OPEN	EFF-GRTJA.md:448
+EFF.GRTJA.15	eff-unit	GRTJA	fence	record	F	OPEN	EFF-GRTJA.md:465
+EFF.GRTJA.16	eff-unit	GRTJA	fence	record	F	OPEN	EFF-GRTJA.md:490
+EFF.GRTJA.17	eff-unit	GRTJA	fence	record	F	OPEN	EFF-GRTJA.md:518
+EFF.GRTJA.18	eff-unit	GRTJA	fence	record	F	OPEN	EFF-GRTJA.md:538
+EFF.GRTJA.19	eff-unit	GRTJA	table	math	F	OPEN	EFF-GRTJA.md:556
+EFF.GRTJA.20	eff-unit	GRTJA	run-record	record	F	OPEN	EFF-GRTJA.md:592
+EFF.GRTJA.21	eff-unit	GRTJA	table	math	F	OPEN	EFF-GRTJA.md:619
+EFF.GRTJA.22	eff-unit	GRTJA	scope-record	record	F	OPEN	EFF-GRTJA.md:646
+EFF.GRTJA.23	eff-unit	GRTJA	record	record	F	OPEN	EFF-GRTJA.md:674
+EFF.GRTJA.24	eff-unit	GRTJA	acceptance-box	record	F	OPEN	EFF-GRTJA.md:688
+EFF.GRTJA.25	eff-unit	GRTJA	record	record	F	OPEN	EFF-GRTJA.md:719
+EFF.GRTJA.26	eff-unit	GRTJA	changes-record	record	F	OPEN	EFF-GRTJA.md:751
+EFF.GRTJA.27	eff-unit	GRTJA	changes-record	record	F	OPEN	EFF-GRTJA.md:774
+EFF.GRTJA.28	eff-unit	GRTJA	changes-record	record	F	OPEN	EFF-GRTJA.md:804
+EFF.GRTJA.29	eff-unit	GRTJA	changes-record	record	F	OPEN	EFF-GRTJA.md:827
+EFF.GRTJA.30	eff-unit	GRTJA	changes-record	record	F	OPEN	EFF-GRTJA.md:856
+EFF.GRTJA.31	eff-unit	GRTJA	changes-record	record	F	OPEN	EFF-GRTJA.md:886
+EFF.GRTJA.32	eff-unit	GRTJA	changes-record	record	F	OPEN	EFF-GRTJA.md:918
+EFF.GRTJA.33	eff-unit	GRTJA	changes-record	record	F	OPEN	EFF-GRTJA.md:945
+EFF.GRTJA.34	eff-unit	GRTJA	changes-record	record	F	OPEN	EFF-GRTJA.md:969
+EFF.GRTJA.35	eff-unit	GRTJA	changes-record	record	F	OPEN	EFF-GRTJA.md:996
+EFF.GRTJA.36	eff-unit	GRTJA	record	record	F	OPEN	EFF-GRTJA.md:1029
+EFF.HE6.01	eff-unit	HE6	record	record	B	OPEN	EFF-HE6.md:159
+EFF.HE6.02	eff-unit	HE6	changes-record	record	B	OPEN	EFF-HE6.md:182
+EFF.HE6.03	eff-unit	HE6	changes-record	record	B	OPEN	EFF-HE6.md:212
+EFF.HE6.04	eff-unit	HE6	imported	math	B	OPEN	EFF-HE6.md:240
+EFF.HE6.05	eff-unit	HE6	imported	math	B	OPEN	EFF-HE6.md:266
+EFF.HE6.06	eff-unit	HE6	imported	math	B	OPEN	EFF-HE6.md:284
+EFF.HE6.07	eff-unit	HE6	fence	record	B	OPEN	EFF-HE6.md:301
+EFF.HE6.08	eff-unit	HE6	convention	math	B	OPEN	EFF-HE6.md:313
+EFF.HE6.09	eff-unit	HE6	convention	math	B	OPEN	EFF-HE6.md:333
+EFF.HE6.10	eff-unit	HE6	definition	math	B	OPEN	EFF-HE6.md:367
+EFF.HE6.11	eff-unit	HE6	convention	math	B	OPEN	EFF-HE6.md:384
+EFF.HE6.12	eff-unit	HE6	changes-record	record	B	OPEN	EFF-HE6.md:416
+EFF.HE6.13	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:438
+EFF.HE6.14	eff-unit	HE6	definition	math	B	OPEN	EFF-HE6.md:537
+EFF.HE6.15	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:569
+EFF.HE6.16	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:616
+EFF.HE6.17	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:634
+EFF.HE6.18	eff-unit	HE6	theorem	math	B	OPEN	EFF-HE6.md:707
+EFF.HE6.19	eff-unit	HE6	corollary	math	B	OPEN	EFF-HE6.md:735
+EFF.HE6.20	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:783
+EFF.HE6.21	eff-unit	HE6	record	record	B	OPEN	EFF-HE6.md:817
+EFF.HE6.22	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:843
+EFF.HE6.23	eff-unit	HE6	scope-record	record	B	OPEN	EFF-HE6.md:895
+EFF.HE6.24	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:916
+EFF.HE6.25	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:940
+EFF.HE6.26	eff-unit	HE6	scope-record	record	B	OPEN	EFF-HE6.md:987
+EFF.HE6.27	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:1006
+EFF.HE6.28	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:1035
+EFF.HE6.29	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:1062
+EFF.HE6.30	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:1084
+EFF.HE6.31	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:1156
+EFF.HE6.32	eff-unit	HE6	lemma	math	B	OPEN	EFF-HE6.md:1197
+EFF.HE6.33	eff-unit	HE6	scope-record	record	B	OPEN	EFF-HE6.md:1244
+EFF.HE6.34	eff-unit	HE6	scope-record	record	B	OPEN	EFF-HE6.md:1264
+EFF.HE6.35	eff-unit	HE6	changes-record	record	B	OPEN	EFF-HE6.md:1285
+EFF.HE6.36	eff-unit	HE6	hypothesis-box	math	B	OPEN	EFF-HE6.md:1324
+EFF.HE6.37	eff-unit	HE6	run-record	record	B	OPEN	EFF-HE6.md:1362
+EFF.HE6.38	eff-unit	HE6	scope-record	record	B	OPEN	EFF-HE6.md:1385
+EFF.HE6.39	eff-unit	HE6	scope-record	record	B	OPEN	EFF-HE6.md:1420
+EFF.HE6.40	eff-unit	HE6	scope-record	record	B	OPEN	EFF-HE6.md:1445
+EFF.HE6.41	eff-unit	HE6	record	record	B	OPEN	EFF-HE6.md:1475
+EFF.HE6.42	eff-unit	HE6	fence	record	B	OPEN	EFF-HE6.md:1504
+EFF.HE6.43	eff-unit	HE6	fence	record	B	OPEN	EFF-HE6.md:1522
+EFF.HE6.44	eff-unit	HE6	instrument-record	record	B	OPEN	EFF-HE6.md:1540
+EFF.HE6.45	eff-unit	HE6	table	math	B	OPEN	EFF-HE6.md:1561
+EFF.HE6.46	eff-unit	HE6	preregistration	record	B	OPEN	EFF-HE6.md:1590
+EFF.HE6.47	eff-unit	HE6	run-record	record	B	OPEN	EFF-HE6.md:1613
+EFF.HE6.48	eff-unit	HE6	changes-record	record	B	OPEN	EFF-HE6.md:1640
+EFF.HE6.49	eff-unit	HE6	run-record	record	B	OPEN	EFF-HE6.md:1680
+EFF.HE6.50	eff-unit	HE6	table	math	B	OPEN	EFF-HE6.md:1704
+EFF.HE6.51	eff-unit	HE6	run-record	record	B	OPEN	EFF-HE6.md:1760
+EFF.HE6.52	eff-unit	HE6	run-record	record	B	OPEN	EFF-HE6.md:1782
+EFF.HE6.53	eff-unit	HE6	scope-record	record	B	OPEN	EFF-HE6.md:1812
+EFF.HE6.54	eff-unit	HE6	acceptance-box	record	B	OPEN	EFF-HE6.md:1836
+EFF.HE6.55	eff-unit	HE6	changes-record	record	B	OPEN	EFF-HE6.md:1872
+EFF.HE6.56	eff-unit	HE6	changes-record	record	B	OPEN	EFF-HE6.md:1902
+EFF.HE6.57	eff-unit	HE6	changes-record	record	B	OPEN	EFF-HE6.md:1933
+EFF.HE6.58	eff-unit	HE6	changes-record	record	B	OPEN	EFF-HE6.md:1957
+EFF.HE6.59	eff-unit	HE6	changes-record	record	B	OPEN	EFF-HE6.md:2038
+EFF.HE6.60	eff-unit	HE6	changes-record	record	B	OPEN	EFF-HE6.md:2099
+EFF.HE6.61	eff-unit	HE6	changes-record	record	B	OPEN	EFF-HE6.md:2149
+EFF.HE6.62	eff-unit	HE6	record	record	B	OPEN	EFF-HE6.md:2183
+EFF.HE6R1.01	eff-unit	HE6R1	record	record	B	OPEN	EFF-HE6R1.md:120
+EFF.HE6R1.02	eff-unit	HE6R1	scope-record	record	B	OPEN	EFF-HE6R1.md:136
+EFF.HE6R1.03	eff-unit	HE6R1	table	math	B	OPEN	EFF-HE6R1.md:164
+EFF.HE6R1.04	eff-unit	HE6R1	supplier-finding	record	B	OPEN	EFF-HE6R1.md:178
+EFF.HE6R1.05	eff-unit	HE6R1	corollary	math	B	OPEN	EFF-HE6R1.md:196
+EFF.HE6R1.06	eff-unit	HE6R1	lemma	math	B	OPEN	EFF-HE6R1.md:208
+EFF.HE6R1.07	eff-unit	HE6R1	lemma	math	B	OPEN	EFF-HE6R1.md:220
+EFF.HE6R1.08	eff-unit	HE6R1	supplier-finding	record	B	OPEN	EFF-HE6R1.md:232
+EFF.HE6R1.09	eff-unit	HE6R1	lemma	math	B	OPEN	EFF-HE6R1.md:257
+EFF.HE6R1.10	eff-unit	HE6R1	lemma	math	B	OPEN	EFF-HE6R1.md:285
+EFF.HE6R1.11	eff-unit	HE6R1	record	record	B	OPEN	EFF-HE6R1.md:311
+EFF.HE6R1.12	eff-unit	HE6R1	scope-record	record	B	OPEN	EFF-HE6R1.md:329
+EFF.HE6R1.13	eff-unit	HE6R1	lemma	math	B	OPEN	EFF-HE6R1.md:355
+EFF.HE6R1.14	eff-unit	HE6R1	supplier-finding	record	B	OPEN	EFF-HE6R1.md:398
+EFF.HE6R1.15	eff-unit	HE6R1	lemma	math	B	OPEN	EFF-HE6R1.md:428
+EFF.HE6R1.16	eff-unit	HE6R1	lemma	math	B	OPEN	EFF-HE6R1.md:450
+EFF.HE6R1.17	eff-unit	HE6R1	acceptance-box	record	B	OPEN	EFF-HE6R1.md:479
+EFF.HE6R1.18	eff-unit	HE6R1	instrument-record	record	B	OPEN	EFF-HE6R1.md:506
+EFF.HE6R1.19	eff-unit	HE6R1	preregistration	record	B	OPEN	EFF-HE6R1.md:537
+EFF.HE6R1.20	eff-unit	HE6R1	hypothesis-box	math	B	OPEN	EFF-HE6R1.md:562
+EFF.HE6R1.21	eff-unit	HE6R1	scope-record	record	B	OPEN	EFF-HE6R1.md:590
+EFF.HE6R1.22	eff-unit	HE6R1	instrument-record	record	B	OPEN	EFF-HE6R1.md:607
+EFF.HE6R1.23	eff-unit	HE6R1	run-record	record	B	OPEN	EFF-HE6R1.md:628
+EFF.HE6R1.24	eff-unit	HE6R1	run-record	record	B	OPEN	EFF-HE6R1.md:652
+EFF.HE6R1.25	eff-unit	HE6R1	table	math	B	OPEN	EFF-HE6R1.md:683
+EFF.HE6R1.26	eff-unit	HE6R1	run-record	record	B	OPEN	EFF-HE6R1.md:721
+EFF.HE6R1.27	eff-unit	HE6R1	run-record	record	B	OPEN	EFF-HE6R1.md:739
+EFF.HE6R1.28	eff-unit	HE6R1	run-record	record	B	OPEN	EFF-HE6R1.md:778
+EFF.HE6R1.29	eff-unit	HE6R1	run-record	record	B	OPEN	EFF-HE6R1.md:803
+EFF.HE6R1.30	eff-unit	HE6R1	scope-record	record	B	OPEN	EFF-HE6R1.md:838
+EFF.HE6R1.31	eff-unit	HE6R1	record	record	B	OPEN	EFF-HE6R1.md:864
+EFF.HE6R1.32	eff-unit	HE6R1	scope-record	record	B	OPEN	EFF-HE6R1.md:887
+EFF.HE6R1.33	eff-unit	HE6R1	changes-record	record	B	OPEN	EFF-HE6R1.md:913
+EFF.HE6R1.34	eff-unit	HE6R1	supplier-finding	record	B	OPEN	EFF-HE6R1.md:937
+EFF.HE6R1.35	eff-unit	HE6R1	changes-record	record	B	OPEN	EFF-HE6R1.md:957
+EFF.HE6R1.36	eff-unit	HE6R1	changes-record	record	B	OPEN	EFF-HE6R1.md:995
+EFF.HE6R1.37	eff-unit	HE6R1	convention	math	B	OPEN	EFF-HE6R1.md:1032
+EFF.HE6R1.38	eff-unit	HE6R1	acceptance-box	record	B	OPEN	EFF-HE6R1.md:1059
+EFF.HE6R1.39	eff-unit	HE6R1	changes-record	record	B	OPEN	EFF-HE6R1.md:1087
+EFF.HE6R1.40	eff-unit	HE6R1	changes-record	record	B	OPEN	EFF-HE6R1.md:1136
+EFF.HE6R1.41	eff-unit	HE6R1	changes-record	record	B	OPEN	EFF-HE6R1.md:1162
+EFF.HE6R1.42	eff-unit	HE6R1	changes-record	record	B	OPEN	EFF-HE6R1.md:1187
+EFF.HE6R1.43	eff-unit	HE6R1	changes-record	record	B	OPEN	EFF-HE6R1.md:1216
+EFF.HE6R1.44	eff-unit	HE6R1	changes-record	record	B	OPEN	EFF-HE6R1.md:1246
+EFF.HE6R1.45	eff-unit	HE6R1	changes-record	record	B	OPEN	EFF-HE6R1.md:1278
+EFF.HE6R1.46	eff-unit	HE6R1	changes-record	record	B	OPEN	EFF-HE6R1.md:1330
+EFF.HE6R1.47	eff-unit	HE6R1	changes-record	record	B	OPEN	EFF-HE6R1.md:1368
+EFF.HE6R1.48	eff-unit	HE6R1	scope-record	record	B	OPEN	EFF-HE6R1.md:1421
+EFF.HETOW.01	eff-unit	HETOW	convention	math	C	OPEN	EFF-HETOW.md:109
+EFF.HETOW.02	eff-unit	HETOW	fence	record	C	OPEN	EFF-HETOW.md:127
+EFF.HETOW.03	eff-unit	HETOW	scope record	record	C	OPEN	EFF-HETOW.md:149
+EFF.HETOW.04	eff-unit	HETOW	repair-round record	record	C	OPEN	EFF-HETOW.md:170
+EFF.HETOW.05	eff-unit	HETOW	fence	record	C	OPEN	EFF-HETOW.md:197
+EFF.HETOW.06	eff-unit	HETOW	convention	math	C	OPEN	EFF-HETOW.md:216
+EFF.HETOW.07	eff-unit	HETOW	scope record	record	C	OPEN	EFF-HETOW.md:238
+EFF.HETOW.08	eff-unit	HETOW	convention	math	C	OPEN	EFF-HETOW.md:266
+EFF.HETOW.09	eff-unit	HETOW	table	math	C	OPEN	EFF-HETOW.md:296
+EFF.HETOW.10	eff-unit	HETOW	scope record	record	C	OPEN	EFF-HETOW.md:335
+EFF.HETOW.11	eff-unit	HETOW	definition	math	C	OPEN	EFF-HETOW.md:358
+EFF.HETOW.12	eff-unit	HETOW	lemma	math	C	OPEN	EFF-HETOW.md:380
+EFF.HETOW.13	eff-unit	HETOW	definition	math	C	OPEN	EFF-HETOW.md:412
+EFF.HETOW.14	eff-unit	HETOW	supplier-finding	record	C	OPEN	EFF-HETOW.md:440
+EFF.HETOW.15	eff-unit	HETOW	lemma	math	C	OPEN	EFF-HETOW.md:470
+EFF.HETOW.16	eff-unit	HETOW	derivation	math	C	OPEN	EFF-HETOW.md:505
+EFF.HETOW.17	eff-unit	HETOW	lemma	math	C	OPEN	EFF-HETOW.md:540
+EFF.HETOW.18	eff-unit	HETOW	derivation	math	C	OPEN	EFF-HETOW.md:571
+EFF.HETOW.19	eff-unit	HETOW	derivation	math	C	OPEN	EFF-HETOW.md:602
+EFF.HETOW.20	eff-unit	HETOW	lemma	math	C	OPEN	EFF-HETOW.md:658
+EFF.HETOW.21	eff-unit	HETOW	derivation	math	C	OPEN	EFF-HETOW.md:682
+EFF.HETOW.22	eff-unit	HETOW	theorem	math	C	OPEN	EFF-HETOW.md:707
+EFF.HETOW.23	eff-unit	HETOW	theorem	math	C	OPEN	EFF-HETOW.md:747
+EFF.HETOW.24	eff-unit	HETOW	theorem	math	C	OPEN	EFF-HETOW.md:777
+EFF.HETOW.25	eff-unit	HETOW	theorem	math	C	OPEN	EFF-HETOW.md:803
+EFF.HETOW.26	eff-unit	HETOW	derivation	math	C	OPEN	EFF-HETOW.md:825
+EFF.HETOW.27	eff-unit	HETOW	derivation	math	C	OPEN	EFF-HETOW.md:848
+EFF.HETOW.28	eff-unit	HETOW	fence	record	C	OPEN	EFF-HETOW.md:878
+EFF.HETOW.29	eff-unit	HETOW	fence	record	C	OPEN	EFF-HETOW.md:899
+EFF.HETOW.30	eff-unit	HETOW	fence	record	C	OPEN	EFF-HETOW.md:921
+EFF.HETOW.31	eff-unit	HETOW	fence	record	C	OPEN	EFF-HETOW.md:964
+EFF.HETOW.32	eff-unit	HETOW	preregistration	record	C	OPEN	EFF-HETOW.md:984
+EFF.HETOW.33	eff-unit	HETOW	run-record	record	C	OPEN	EFF-HETOW.md:1011
+EFF.HETOW.34	eff-unit	HETOW	run-record	record	C	OPEN	EFF-HETOW.md:1031
+EFF.HETOW.35	eff-unit	HETOW	run-record	record	C	OPEN	EFF-HETOW.md:1055
+EFF.HETOW.36	eff-unit	HETOW	run-record / disclosure	record	C	OPEN	EFF-HETOW.md:1118
+EFF.HETOW.37	eff-unit	HETOW	run-record	record	C	OPEN	EFF-HETOW.md:1139
+EFF.HETOW.38	eff-unit	HETOW	scope record	record	C	OPEN	EFF-HETOW.md:1170
+EFF.HETOW.39	eff-unit	HETOW	changes-record	record	C	OPEN	EFF-HETOW.md:1193
+EFF.HETOW.40	eff-unit	HETOW	run-record	record	C	OPEN	EFF-HETOW.md:1228
+EFF.HETOW.41	eff-unit	HETOW	acceptance-box	record	C	OPEN	EFF-HETOW.md:1277
+EFF.HETOW.42	eff-unit	HETOW	acceptance-box	record	C	OPEN	EFF-HETOW.md:1296
+EFF.HETOW.43	eff-unit	HETOW	changes-record	record	C	OPEN	EFF-HETOW.md:1319
+EFF.HETOW.44	eff-unit	HETOW	changes-record	record	C	OPEN	EFF-HETOW.md:1384
+EFF.HETOW.45	eff-unit	HETOW	changes-record	record	C	OPEN	EFF-HETOW.md:1425
+EFF.HETOW.46	eff-unit	HETOW	acceptance-box	record	C	OPEN	EFF-HETOW.md:1455
+EFF.HETOW.47	eff-unit	HETOW	changes-record	record	C	OPEN	EFF-HETOW.md:1495
+EFF.HETOW.48	eff-unit	HETOW	record	record	C	OPEN	EFF-HETOW.md:1531
+EFF.HETOW.49	eff-unit	HETOW	supplier-finding	record	C	OPEN	EFF-HETOW.md:1558
+EFF.HETOW.50	eff-unit	HETOW	lemma	math	C	OPEN	EFF-HETOW.md:1591
+EFF.HETOW.51	eff-unit	HETOW	derivation	math	C	OPEN	EFF-HETOW.md:1672
+EFF.HETOW.52	eff-unit	HETOW	run-record	record	C	OPEN	EFF-HETOW.md:1716
+EFF.HETOW.53	eff-unit	HETOW	changes-record	record	C	OPEN	EFF-HETOW.md:1755
+EFF.HETOW.54	eff-unit	HETOW	changes-record	record	C	OPEN	EFF-HETOW.md:1789
+EFF.HETOW.55	eff-unit	HETOW	changes-record	record	C	OPEN	EFF-HETOW.md:1823
+EFF.HETOW.56	eff-unit	HETOW	instrument-record	record	C	OPEN	EFF-HETOW.md:1848
+EFF.HETOW.57	eff-unit	HETOW	absorption-record	math	C	OPEN	EFF-HETOW.md:1870
+EFF.HETOW.58	eff-unit	HETOW	instrument-record	record	C	OPEN	EFF-HETOW.md:1911
+EFF.HEX3.01	eff-unit	HEX3	convention	math	G	OPEN	EFF-HEX3.md:182
+EFF.HEX3.02	eff-unit	HEX3	definition	math	G	OPEN	EFF-HEX3.md:199
+EFF.HEX3.03	eff-unit	HEX3	definition	math	G	OPEN	EFF-HEX3.md:218
+EFF.HEX3.04	eff-unit	HEX3	definition	math	G	OPEN	EFF-HEX3.md:238
+EFF.HEX3.05	eff-unit	HEX3	definition	math	G	OPEN	EFF-HEX3.md:263
+EFF.HEX3.06	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:281
+EFF.HEX3.07	eff-unit	HEX3	imported	math	G	OPEN	EFF-HEX3.md:321
+EFF.HEX3.08	eff-unit	HEX3	theorem	math	G	OPEN	EFF-HEX3.md:338
+EFF.HEX3.09	eff-unit	HEX3	theorem	math	G	OPEN	EFF-HEX3.md:379
+EFF.HEX3.10	eff-unit	HEX3	corollary	math	G	OPEN	EFF-HEX3.md:405
+EFF.HEX3.11	eff-unit	HEX3	record	record	G	OPEN	EFF-HEX3.md:426
+EFF.HEX3.12	eff-unit	HEX3	record	record	G	OPEN	EFF-HEX3.md:442
+EFF.HEX3.13	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:475
+EFF.HEX3.14	eff-unit	HEX3	convention	math	G	OPEN	EFF-HEX3.md:532
+EFF.HEX3.15	eff-unit	HEX3	definition	math	G	OPEN	EFF-HEX3.md:550
+EFF.HEX3.16	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:566
+EFF.HEX3.17	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:613
+EFF.HEX3.18	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:639
+EFF.HEX3.19	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:667
+EFF.HEX3.20	eff-unit	HEX3	definition	math	G	OPEN	EFF-HEX3.md:698
+EFF.HEX3.21	eff-unit	HEX3	convention	math	G	OPEN	EFF-HEX3.md:715
+EFF.HEX3.22	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:732
+EFF.HEX3.23	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:756
+EFF.HEX3.24	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:779
+EFF.HEX3.25	eff-unit	HEX3	scope-record	record	G	OPEN	EFF-HEX3.md:804
+EFF.HEX3.26	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:819
+EFF.HEX3.27	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:851
+EFF.HEX3.28	eff-unit	HEX3	table	math	G	OPEN	EFF-HEX3.md:874
+EFF.HEX3.29	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:902
+EFF.HEX3.30	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:923
+EFF.HEX3.31	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:954
+EFF.HEX3.32	eff-unit	HEX3	lemma	math	G	OPEN	EFF-HEX3.md:979
+EFF.HEX3.33	eff-unit	HEX3	record	record	G	OPEN	EFF-HEX3.md:1009
+EFF.HEX3.34	eff-unit	HEX3	scope-record	record	G	OPEN	EFF-HEX3.md:1050
+EFF.HEX3.35	eff-unit	HEX3	imported	math	G	OPEN	EFF-HEX3.md:1081
+EFF.HEX3.36	eff-unit	HEX3	absorption-record	math	G	OPEN	EFF-HEX3.md:1107
+EFF.HEX3.37	eff-unit	HEX3	hypothesis-box	math	G	OPEN	EFF-HEX3.md:1123
+EFF.HEX3.38	eff-unit	HEX3	record	record	G	OPEN	EFF-HEX3.md:1190
+EFF.HEX3.39	eff-unit	HEX3	fence	record	G	OPEN	EFF-HEX3.md:1240
+EFF.HEX3.40	eff-unit	HEX3	fence	record	G	OPEN	EFF-HEX3.md:1260
+EFF.HEX3.41	eff-unit	HEX3	convention	math	G	OPEN	EFF-HEX3.md:1283
+EFF.HEX3.42	eff-unit	HEX3	instrument-record	record	G	OPEN	EFF-HEX3.md:1299
+EFF.HEX3.43	eff-unit	HEX3	table	math	G	OPEN	EFF-HEX3.md:1324
+EFF.HEX3.44	eff-unit	HEX3	run-record	record	G	OPEN	EFF-HEX3.md:1362
+EFF.HEX3.45	eff-unit	HEX3	preregistration	record	G	OPEN	EFF-HEX3.md:1383
+EFF.HEX3.46	eff-unit	HEX3	preregistration	record	G	OPEN	EFF-HEX3.md:1435
+EFF.HEX3.47	eff-unit	HEX3	preregistration	record	G	OPEN	EFF-HEX3.md:1460
+EFF.HEX3.48	eff-unit	HEX3	preregistration	record	G	OPEN	EFF-HEX3.md:1476
+EFF.HEX3.49	eff-unit	HEX3	preregistration	record	G	OPEN	EFF-HEX3.md:1493
+EFF.HEX3.50	eff-unit	HEX3	preregistration	record	G	OPEN	EFF-HEX3.md:1510
+EFF.HEX3.51	eff-unit	HEX3	preregistration	record	G	OPEN	EFF-HEX3.md:1529
+EFF.HEX3.52	eff-unit	HEX3	record	record	G	OPEN	EFF-HEX3.md:1553
+EFF.HEX3.53	eff-unit	HEX3	supplier-finding	record	G	OPEN	EFF-HEX3.md:1569
+EFF.HEX3.54	eff-unit	HEX3	scope-record	record	G	OPEN	EFF-HEX3.md:1607
+EFF.HEX3.55	eff-unit	HEX3	scope-record	record	G	OPEN	EFF-HEX3.md:1627
+EFF.HEX3.56	eff-unit	HEX3	scope-record	record	G	OPEN	EFF-HEX3.md:1702
+EFF.HEX3.57	eff-unit	HEX3	table	math	G	OPEN	EFF-HEX3.md:1719
+EFF.HEX3.58	eff-unit	HEX3	record	record	G	OPEN	EFF-HEX3.md:1765
+EFF.HEX3.59	eff-unit	HEX3	run-record	record	G	OPEN	EFF-HEX3.md:1782
+EFF.HEX3.60	eff-unit	HEX3	table	math	G	OPEN	EFF-HEX3.md:1806
+EFF.HEX3.61	eff-unit	HEX3	record	record	G	OPEN	EFF-HEX3.md:1836
+EFF.HEX3.62	eff-unit	HEX3	changes-record	record	G	OPEN	EFF-HEX3.md:1871
+EFF.HEX3.63	eff-unit	HEX3	changes-record	record	G	OPEN	EFF-HEX3.md:1919
+EFF.HEX3.64	eff-unit	HEX3	acceptance-box	record	G	OPEN	EFF-HEX3.md:1965
+EFF.HEX3.65	eff-unit	HEX3	changes-record	record	G	OPEN	EFF-HEX3.md:1994
+EFF.HEX3.66	eff-unit	HEX3	changes-record	record	G	OPEN	EFF-HEX3.md:2033
+EFF.HEX3.67	eff-unit	HEX3	changes-record	record	G	OPEN	EFF-HEX3.md:2075
+EFF.HEX3.68	eff-unit	HEX3	changes-record	record	G	OPEN	EFF-HEX3.md:2107
+EFF.HEX3.69	eff-unit	HEX3	changes-record	record	G	OPEN	EFF-HEX3.md:2125
+EFF.HEX3.70	eff-unit	HEX3	changes-record	record	G	OPEN	EFF-HEX3.md:2180
+EFF.HEX3.71	eff-unit	HEX3	record	record	G	OPEN	EFF-HEX3.md:2204
+EFF.HMENU3.01	eff-unit	HMENU3	record	record	G	OPEN	EFF-HMENU3.md:162
+EFF.HMENU3.02	eff-unit	HMENU3	scope-record	record	G	OPEN	EFF-HMENU3.md:204
+EFF.HMENU3.03	eff-unit	HMENU3	imported	math	G	OPEN	EFF-HMENU3.md:238
+EFF.HMENU3.04	eff-unit	HMENU3	imported	math	G	OPEN	EFF-HMENU3.md:260
+EFF.HMENU3.05	eff-unit	HMENU3	absorption-record	math	G	OPEN	EFF-HMENU3.md:290
+EFF.HMENU3.06	eff-unit	HMENU3	convention	math	G	OPEN	EFF-HMENU3.md:304
+EFF.HMENU3.07	eff-unit	HMENU3	definition	math	G	OPEN	EFF-HMENU3.md:322
+EFF.HMENU3.08	eff-unit	HMENU3	theorem	math	G	OPEN	EFF-HMENU3.md:367
+EFF.HMENU3.09	eff-unit	HMENU3	table	math	G	OPEN	EFF-HMENU3.md:403
+EFF.HMENU3.10	eff-unit	HMENU3	definition	math	G	OPEN	EFF-HMENU3.md:435
+EFF.HMENU3.11	eff-unit	HMENU3	theorem	math	G	OPEN	EFF-HMENU3.md:452
+EFF.HMENU3.12	eff-unit	HMENU3	table	math	G	OPEN	EFF-HMENU3.md:485
+EFF.HMENU3.13	eff-unit	HMENU3	scope-record	record	G	OPEN	EFF-HMENU3.md:520
+EFF.HMENU3.14	eff-unit	HMENU3	theorem	math	G	OPEN	EFF-HMENU3.md:574
+EFF.HMENU3.15	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:635
+EFF.HMENU3.16	eff-unit	HMENU3	record	record	G	OPEN	EFF-HMENU3.md:653
+EFF.HMENU3.17	eff-unit	HMENU3	corollary	math	G	OPEN	EFF-HMENU3.md:670
+EFF.HMENU3.18	eff-unit	HMENU3	record	record	G	OPEN	EFF-HMENU3.md:724
+EFF.HMENU3.19	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:749
+EFF.HMENU3.20	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:770
+EFF.HMENU3.21	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:786
+EFF.HMENU3.22	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:831
+EFF.HMENU3.23	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:866
+EFF.HMENU3.24	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:907
+EFF.HMENU3.25	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:931
+EFF.HMENU3.26	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:956
+EFF.HMENU3.27	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:985
+EFF.HMENU3.28	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:1015
+EFF.HMENU3.29	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:1054
+EFF.HMENU3.30	eff-unit	HMENU3	scope-record	record	G	OPEN	EFF-HMENU3.md:1079
+EFF.HMENU3.31	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:1105
+EFF.HMENU3.32	eff-unit	HMENU3	scope-record	record	G	OPEN	EFF-HMENU3.md:1137
+EFF.HMENU3.33	eff-unit	HMENU3	hypothesis-box	math	G	OPEN	EFF-HMENU3.md:1155
+EFF.HMENU3.34	eff-unit	HMENU3	record	record	G	OPEN	EFF-HMENU3.md:1171
+EFF.HMENU3.35	eff-unit	HMENU3	fence	record	G	OPEN	EFF-HMENU3.md:1220
+EFF.HMENU3.36	eff-unit	HMENU3	fence	record	G	OPEN	EFF-HMENU3.md:1243
+EFF.HMENU3.37	eff-unit	HMENU3	fence	record	G	OPEN	EFF-HMENU3.md:1262
+EFF.HMENU3.38	eff-unit	HMENU3	instrument-record	record	G	OPEN	EFF-HMENU3.md:1293
+EFF.HMENU3.39	eff-unit	HMENU3	table	math	G	OPEN	EFF-HMENU3.md:1315
+EFF.HMENU3.40	eff-unit	HMENU3	run-record	record	G	OPEN	EFF-HMENU3.md:1355
+EFF.HMENU3.41	eff-unit	HMENU3	preregistration	record	G	OPEN	EFF-HMENU3.md:1384
+EFF.HMENU3.42	eff-unit	HMENU3	preregistration	record	G	OPEN	EFF-HMENU3.md:1394
+EFF.HMENU3.43	eff-unit	HMENU3	preregistration	record	G	OPEN	EFF-HMENU3.md:1422
+EFF.HMENU3.44	eff-unit	HMENU3	preregistration	record	G	OPEN	EFF-HMENU3.md:1441
+EFF.HMENU3.45	eff-unit	HMENU3	preregistration	record	G	OPEN	EFF-HMENU3.md:1458
+EFF.HMENU3.46	eff-unit	HMENU3	preregistration	record	G	OPEN	EFF-HMENU3.md:1474
+EFF.HMENU3.47	eff-unit	HMENU3	preregistration	record	G	OPEN	EFF-HMENU3.md:1495
+EFF.HMENU3.48	eff-unit	HMENU3	preregistration	record	G	OPEN	EFF-HMENU3.md:1514
+EFF.HMENU3.49	eff-unit	HMENU3	preregistration	record	G	OPEN	EFF-HMENU3.md:1534
+EFF.HMENU3.50	eff-unit	HMENU3	preregistration	record	G	OPEN	EFF-HMENU3.md:1552
+EFF.HMENU3.51	eff-unit	HMENU3	record	record	G	OPEN	EFF-HMENU3.md:1574
+EFF.HMENU3.52	eff-unit	HMENU3	supplier-finding	record	G	OPEN	EFF-HMENU3.md:1590
+EFF.HMENU3.53	eff-unit	HMENU3	supplier-finding	record	G	OPEN	EFF-HMENU3.md:1634
+EFF.HMENU3.54	eff-unit	HMENU3	scope-record	record	G	OPEN	EFF-HMENU3.md:1653
+EFF.HMENU3.55	eff-unit	HMENU3	table	math	G	OPEN	EFF-HMENU3.md:1680
+EFF.HMENU3.56	eff-unit	HMENU3	record	record	G	OPEN	EFF-HMENU3.md:1730
+EFF.HMENU3.57	eff-unit	HMENU3	run-record	record	G	OPEN	EFF-HMENU3.md:1748
+EFF.HMENU3.58	eff-unit	HMENU3	table	math	G	OPEN	EFF-HMENU3.md:1773
+EFF.HMENU3.59	eff-unit	HMENU3	record	record	G	OPEN	EFF-HMENU3.md:1805
+EFF.HMENU3.60	eff-unit	HMENU3	acceptance-box	record	G	OPEN	EFF-HMENU3.md:1847
+EFF.HMENU3.61	eff-unit	HMENU3	record	record	G	OPEN	EFF-HMENU3.md:1882
+EFF.HMENU3.62	eff-unit	HMENU3	acceptance-box	record	G	OPEN	EFF-HMENU3.md:1898
+EFF.HMENU3.63	eff-unit	HMENU3	changes-record	record	G	OPEN	EFF-HMENU3.md:1930
+EFF.HMENU3.64	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:1959
+EFF.HMENU3.65	eff-unit	HMENU3	instrument-record	record	G	OPEN	EFF-HMENU3.md:1986
+EFF.HMENU3.66	eff-unit	HMENU3	changes-record	record	G	OPEN	EFF-HMENU3.md:2014
+EFF.HMENU3.67	eff-unit	HMENU3	changes-record	record	G	OPEN	EFF-HMENU3.md:2048
+EFF.HMENU3.68	eff-unit	HMENU3	lemma	math	G	OPEN	EFF-HMENU3.md:2080
+EFF.HMENU3.69	eff-unit	HMENU3	table	math	G	OPEN	EFF-HMENU3.md:2114
+EFF.HMENU3.70	eff-unit	HMENU3	scope-record	record	G	OPEN	EFF-HMENU3.md:2199
+EFF.HMENU3.71	eff-unit	HMENU3	changes-record	record	G	OPEN	EFF-HMENU3.md:2245
+EFF.HMENU3.72	eff-unit	HMENU3	record	record	G	OPEN	EFF-HMENU3.md:2292
+EFF.JD0.01	eff-unit	JD0	scope-record	record	G	OPEN	EFF-JD0.md:209
+EFF.JD0.02	eff-unit	JD0	record	record	G	OPEN	EFF-JD0.md:232
+EFF.JD0.03	eff-unit	JD0	definition	math	G	OPEN	EFF-JD0.md:253
+EFF.JD0.04	eff-unit	JD0	definition	math	G	OPEN	EFF-JD0.md:276
+EFF.JD0.05	eff-unit	JD0	definition	math	G	OPEN	EFF-JD0.md:300
+EFF.JD0.06	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:327
+EFF.JD0.07	eff-unit	JD0	acceptance-box	record	G	OPEN	EFF-JD0.md:352
+EFF.JD0.08	eff-unit	JD0	scope-record	record	G	OPEN	EFF-JD0.md:370
+EFF.JD0.09	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:393
+EFF.JD0.10	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:415
+EFF.JD0.11	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:441
+EFF.JD0.12	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:473
+EFF.JD0.13	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:496
+EFF.JD0.14	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:517
+EFF.JD0.15	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:555
+EFF.JD0.16	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:592
+EFF.JD0.17	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:616
+EFF.JD0.18	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:633
+EFF.JD0.19	eff-unit	JD0	record	record	G	OPEN	EFF-JD0.md:658
+EFF.JD0.20	eff-unit	JD0	scope-record	record	G	OPEN	EFF-JD0.md:688
+EFF.JD0.21	eff-unit	JD0	scope-record	record	G	OPEN	EFF-JD0.md:722
+EFF.JD0.22	eff-unit	JD0	fence	record	G	OPEN	EFF-JD0.md:748
+EFF.JD0.23	eff-unit	JD0	record	record	G	OPEN	EFF-JD0.md:799
+EFF.JD0.24	eff-unit	JD0	record	record	G	OPEN	EFF-JD0.md:830
+EFF.JD0.25	eff-unit	JD0	table	math	G	OPEN	EFF-JD0.md:866
+EFF.JD0.26	eff-unit	JD0	battery-frame	math	G	OPEN	EFF-JD0.md:901
+EFF.JD0.27	eff-unit	JD0	battery-frame	math	G	OPEN	EFF-JD0.md:933
+EFF.JD0.28	eff-unit	JD0	table	math	G	OPEN	EFF-JD0.md:966
+EFF.JD0.29	eff-unit	JD0	record	record	G	OPEN	EFF-JD0.md:1002
+EFF.JD0.30	eff-unit	JD0	changes-record	record	G	OPEN	EFF-JD0.md:1021
+EFF.JD0.31	eff-unit	JD0	table	math	G	OPEN	EFF-JD0.md:1055
+EFF.JD0.32	eff-unit	JD0	definition	math	G	OPEN	EFF-JD0.md:1084
+EFF.JD0.33	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:1137
+EFF.JD0.34	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:1181
+EFF.JD0.35	eff-unit	JD0	scope-record	record	G	OPEN	EFF-JD0.md:1215
+EFF.JD0.36	eff-unit	JD0	lemma	math	G	OPEN	EFF-JD0.md:1244
+EFF.JD0.37	eff-unit	JD0	scope-record	record	G	OPEN	EFF-JD0.md:1281
+EFF.JD0.38	eff-unit	JD0	record	record	G	OPEN	EFF-JD0.md:1322
+EFF.SIGMALAW.01	eff-unit	SIGMALAW	record	record	F	OPEN	EFF-SIGMALAW.md:92
+EFF.SIGMALAW.02	eff-unit	SIGMALAW	record	record	F	OPEN	EFF-SIGMALAW.md:102
+EFF.SIGMALAW.03	eff-unit	SIGMALAW	definition	math	F	OPEN	EFF-SIGMALAW.md:133
+EFF.SIGMALAW.04	eff-unit	SIGMALAW	lemma	math	F	OPEN	EFF-SIGMALAW.md:145
+EFF.SIGMALAW.05	eff-unit	SIGMALAW	theorem	math	F	OPEN	EFF-SIGMALAW.md:172
+EFF.SIGMALAW.06	eff-unit	SIGMALAW	lemma	math	F	OPEN	EFF-SIGMALAW.md:199
+EFF.SIGMALAW.07	eff-unit	SIGMALAW	lemma	math	F	OPEN	EFF-SIGMALAW.md:218
+EFF.SIGMALAW.08	eff-unit	SIGMALAW	corollary	math	F	OPEN	EFF-SIGMALAW.md:232
+EFF.SIGMALAW.09	eff-unit	SIGMALAW	corollary	math	F	OPEN	EFF-SIGMALAW.md:260
+EFF.SIGMALAW.10	eff-unit	SIGMALAW	run-record	record	F	OPEN	EFF-SIGMALAW.md:283
+EFF.SIGMALAW.11	eff-unit	SIGMALAW	acceptance-box	record	F	OPEN	EFF-SIGMALAW.md:312
+EFF.SIGMALAW.12	eff-unit	SIGMALAW	acceptance-box	record	F	OPEN	EFF-SIGMALAW.md:339
+EFF.SIGMALAW.13	eff-unit	SIGMALAW	changes-record	record	F	OPEN	EFF-SIGMALAW.md:360
+EFF.SIGMALAW.14	eff-unit	SIGMALAW	changes-record	record	F	OPEN	EFF-SIGMALAW.md:388
+EFF.SIGMALAW.15	eff-unit	SIGMALAW	changes-record	record	F	OPEN	EFF-SIGMALAW.md:410
+EFF.SIGMALAW.16	eff-unit	SIGMALAW	changes-record	record	F	OPEN	EFF-SIGMALAW.md:454
+EFF.SIGMALAW.17	eff-unit	SIGMALAW	supplier-finding	record	F	OPEN	EFF-SIGMALAW.md:472
+EFF.SIGMALAW.18	eff-unit	SIGMALAW	record	record	F	OPEN	EFF-SIGMALAW.md:486
+EFF.T3.01	eff-unit	T3	convention	math	D	OPEN	EFF-T3.md:112
+EFF.T3.02	eff-unit	T3	definition	math	D	OPEN	EFF-T3.md:133
+EFF.T3.03	eff-unit	T3	definition	math	D	OPEN	EFF-T3.md:163
+EFF.T3.04	eff-unit	T3	definition	math	D	OPEN	EFF-T3.md:196
+EFF.T3.05	eff-unit	T3	convention	math	D	OPEN	EFF-T3.md:229
+EFF.T3.06	eff-unit	T3	hypothesis	math	D	OPEN	EFF-T3.md:257
+EFF.T3.07	eff-unit	T3	hypothesis	math	D	OPEN	EFF-T3.md:281
+EFF.T3.08	eff-unit	T3	hypothesis	math	D	OPEN	EFF-T3.md:306
+EFF.T3.09	eff-unit	T3	hypothesis	math	D	OPEN	EFF-T3.md:328
+EFF.T3.10	eff-unit	T3	hypothesis	math	D	OPEN	EFF-T3.md:348
+EFF.T3.11	eff-unit	T3	hypothesis	math	D	OPEN	EFF-T3.md:370
+EFF.T3.12	eff-unit	T3	definition	math	D	OPEN	EFF-T3.md:398
+EFF.T3.13	eff-unit	T3	definition	math	D	OPEN	EFF-T3.md:432
+EFF.T3.14	eff-unit	T3	lemma	math	D	OPEN	EFF-T3.md:476
+EFF.T3.15	eff-unit	T3	lemma	math	D	OPEN	EFF-T3.md:532
+EFF.T3.16	eff-unit	T3	lemma	math	D	OPEN	EFF-T3.md:563
+EFF.T3.17	eff-unit	T3	lemma	math	D	OPEN	EFF-T3.md:607
+EFF.T3.18	eff-unit	T3	lemma	math	D	OPEN	EFF-T3.md:651
+EFF.T3.19	eff-unit	T3	absorption-record	math	D	OPEN	EFF-T3.md:678
+EFF.T3.20	eff-unit	T3	absorption-record	math	D	OPEN	EFF-T3.md:751
+EFF.T3.21	eff-unit	T3	absorption-record	math	D	OPEN	EFF-T3.md:841
+EFF.T3.22	eff-unit	T3	definition	math	D	OPEN	EFF-T3.md:899
+EFF.T3.23	eff-unit	T3	hypothesis	math	D	OPEN	EFF-T3.md:921
+EFF.T3.24	eff-unit	T3	convention	math	D	OPEN	EFF-T3.md:970
+EFF.T3.25	eff-unit	T3	hypothesis	math	D	OPEN	EFF-T3.md:1018
+EFF.T3.26	eff-unit	T3	non-instance	math	D	OPEN	EFF-T3.md:1067
+EFF.T3.27	eff-unit	T3	regression-record	record	D	OPEN	EFF-T3.md:1119
+EFF.T3.28	eff-unit	T3	scope-record	record	D	OPEN	EFF-T3.md:1162
+EFF.T3.29	eff-unit	T3	battery-frame	math	D	OPEN	EFF-T3.md:1191
+EFF.T3.30	eff-unit	T3	open-obligation	math	D	OPEN	EFF-T3.md:1281
+EFF.T3.31	eff-unit	T3	fence	record	D	OPEN	EFF-T3.md:1306
+EFF.T3.32	eff-unit	T3	absorption-record	math	D	OPEN	EFF-T3.md:1338
+EFF.T3.33	eff-unit	T3	table	math	D	OPEN	EFF-T3.md:1362
+EFF.T3.34	eff-unit	T3	fence	record	D	OPEN	EFF-T3.md:1385
+EFF.T3.35	eff-unit	T3	changes-record	record	D	OPEN	EFF-T3.md:1401
+EFF.T3.36	eff-unit	T3	acceptance-box	record	D	OPEN	EFF-T3.md:1439
+EFF.T4.01	eff-unit	T4	convention	math	D	OPEN	EFF-T4.md:215
+EFF.T4.02	eff-unit	T4	convention	math	D	OPEN	EFF-T4.md:242
+EFF.T4.03	eff-unit	T4	definition	math	D	OPEN	EFF-T4.md:266
+EFF.T4.04	eff-unit	T4	definition	math	D	OPEN	EFF-T4.md:297
+EFF.T4.05	eff-unit	T4	definition	math	D	OPEN	EFF-T4.md:330
+EFF.T4.06	eff-unit	T4	definition	math	D	OPEN	EFF-T4.md:401
+EFF.T4.07	eff-unit	T4	definition	math	D	OPEN	EFF-T4.md:439
+EFF.T4.08	eff-unit	T4	definition	math	D	OPEN	EFF-T4.md:467
+EFF.T4.09	eff-unit	T4	definition	math	D	OPEN	EFF-T4.md:490
+EFF.T4.10	eff-unit	T4	definition	math	D	OPEN	EFF-T4.md:520
+EFF.T4.11	eff-unit	T4	fence	record	D	OPEN	EFF-T4.md:567
+EFF.T4.12	eff-unit	T4	definition	math	D	OPEN	EFF-T4.md:588
+EFF.T4.13	eff-unit	T4	hypothesis	math	D	OPEN	EFF-T4.md:620
+EFF.T4.14	eff-unit	T4	lemma	math	D	OPEN	EFF-T4.md:649
+EFF.T4.15	eff-unit	T4	lemma	math	D	OPEN	EFF-T4.md:710
+EFF.T4.16	eff-unit	T4	lemma	math	D	OPEN	EFF-T4.md:779
+EFF.T4.17	eff-unit	T4	lemma	math	D	OPEN	EFF-T4.md:821
+EFF.T4.18	eff-unit	T4	instance-record	math	D	OPEN	EFF-T4.md:863
+EFF.T4.19	eff-unit	T4	scope-record	record	D	OPEN	EFF-T4.md:909
+EFF.T4.20	eff-unit	T4	regression-record	record	D	OPEN	EFF-T4.md:929
+EFF.T4.21	eff-unit	T4	table	math	D	OPEN	EFF-T4.md:956
+EFF.T4.22	eff-unit	T4	instance-record	math	D	OPEN	EFF-T4.md:994
+EFF.T4.23	eff-unit	T4	instance-record	math	D	OPEN	EFF-T4.md:1053
+EFF.T4.24	eff-unit	T4	scope-record	record	D	OPEN	EFF-T4.md:1100
+EFF.T4.25	eff-unit	T4	instance-record	math	D	OPEN	EFF-T4.md:1127
+EFF.T4.26	eff-unit	T4	regression-record	record	D	OPEN	EFF-T4.md:1202
+EFF.T4.27	eff-unit	T4	non-instance	math	D	OPEN	EFF-T4.md:1222
+EFF.T4.28	eff-unit	T4	table	math	D	OPEN	EFF-T4.md:1278
+EFF.T4.29	eff-unit	T4	fence	record	D	OPEN	EFF-T4.md:1313
+EFF.T4.30	eff-unit	T4	table	math	D	OPEN	EFF-T4.md:1351
+EFF.T4.31	eff-unit	T4	table	math	D	OPEN	EFF-T4.md:1421
+EFF.T4.32	eff-unit	T4	scope-record	record	D	OPEN	EFF-T4.md:1500
+EFF.T4.33	eff-unit	T4	fence	record	D	OPEN	EFF-T4.md:1529
+EFF.T4.34	eff-unit	T4	record	record	D	OPEN	EFF-T4.md:1559
+EFF.T4.35	eff-unit	T4	fence	record	D	OPEN	EFF-T4.md:1583
+EFF.T4.36	eff-unit	T4	record	record	D	OPEN	EFF-T4.md:1612
+EFF.T4.37	eff-unit	T4	record	record	D	OPEN	EFF-T4.md:1643
+EFF.T4.38	eff-unit	T4	battery-frame	math	D	OPEN	EFF-T4.md:1669
+EFF.T4.39	eff-unit	T4	battery-frame	math	D	OPEN	EFF-T4.md:1703
+EFF.T4.40	eff-unit	T4	acceptance-box	record	D	OPEN	EFF-T4.md:1743
+EFF.T4.41	eff-unit	T4	lemma	math	D	OPEN	EFF-T4.md:1780
+EFF.T4.42	eff-unit	T4	fence	record	D	OPEN	EFF-T4.md:1833
+EFF.T4.43	eff-unit	T4	changes-record	record	D	OPEN	EFF-T4.md:1866
+EFF.T4.44	eff-unit	T4	changes-record	record	D	OPEN	EFF-T4.md:1895
+EFF.T4.45	eff-unit	T4	acceptance-box	record	D	OPEN	EFF-T4.md:1923
+EFF.T5.01	eff-unit	T5	scope-record	record	D	OPEN	EFF-T5.md:199
+EFF.T5.02	eff-unit	T5	scope-record	record	D	OPEN	EFF-T5.md:229
+EFF.T5.03	eff-unit	T5	convention	math	D	OPEN	EFF-T5.md:247
+EFF.T5.04	eff-unit	T5	definition	math	D	OPEN	EFF-T5.md:284
+EFF.T5.05	eff-unit	T5	definition	math	D	OPEN	EFF-T5.md:312
+EFF.T5.06	eff-unit	T5	definition	math	D	OPEN	EFF-T5.md:335
+EFF.T5.07	eff-unit	T5	fence	record	D	OPEN	EFF-T5.md:365
+EFF.T5.08	eff-unit	T5	lemma	math	D	OPEN	EFF-T5.md:381
+EFF.T5.09	eff-unit	T5	hypothesis	math	D	OPEN	EFF-T5.md:397
+EFF.T5.10	eff-unit	T5	hypothesis	math	D	OPEN	EFF-T5.md:473
+EFF.T5.11	eff-unit	T5	convention	math	D	OPEN	EFF-T5.md:497
+EFF.T5.12	eff-unit	T5	lemma	math	D	OPEN	EFF-T5.md:541
+EFF.T5.13	eff-unit	T5	definition	math	D	OPEN	EFF-T5.md:573
+EFF.T5.14	eff-unit	T5	lemma	math	D	OPEN	EFF-T5.md:596
+EFF.T5.15	eff-unit	T5	record	record	D	OPEN	EFF-T5.md:628
+EFF.T5.16	eff-unit	T5	fence	record	D	OPEN	EFF-T5.md:649
+EFF.T5.17	eff-unit	T5	fence	record	D	OPEN	EFF-T5.md:665
+EFF.T5.18	eff-unit	T5	lemma	math	D	OPEN	EFF-T5.md:681
+EFF.T5.19	eff-unit	T5	lemma	math	D	OPEN	EFF-T5.md:725
+EFF.T5.20	eff-unit	T5	record	record	D	OPEN	EFF-T5.md:754
+EFF.T5.21	eff-unit	T5	fence	record	D	OPEN	EFF-T5.md:770
+EFF.T5.22	eff-unit	T5	instance-record	math	D	OPEN	EFF-T5.md:797
+EFF.T5.23	eff-unit	T5	instance-record	math	D	OPEN	EFF-T5.md:829
+EFF.T5.24	eff-unit	T5	instance-record	math	D	OPEN	EFF-T5.md:872
+EFF.T5.25	eff-unit	T5	instance-record	math	D	OPEN	EFF-T5.md:938
+EFF.T5.26	eff-unit	T5	instance-record	math	D	OPEN	EFF-T5.md:988
+EFF.T5.27	eff-unit	T5	scope-record	record	D	OPEN	EFF-T5.md:1069
+EFF.T5.28	eff-unit	T5	regression-record	record	D	OPEN	EFF-T5.md:1143
+EFF.T5.29	eff-unit	T5	hypothesis	math	D	OPEN	EFF-T5.md:1183
+EFF.T5.30	eff-unit	T5	record	record	D	OPEN	EFF-T5.md:1214
+EFF.T5.31	eff-unit	T5	scope-record	record	D	OPEN	EFF-T5.md:1244
+EFF.T5.32	eff-unit	T5	definition	math	D	OPEN	EFF-T5.md:1268
+EFF.T5.33	eff-unit	T5	fence	record	D	OPEN	EFF-T5.md:1307
+EFF.T5.34	eff-unit	T5	fence	record	D	OPEN	EFF-T5.md:1331
+EFF.T5.35	eff-unit	T5	fence	record	D	OPEN	EFF-T5.md:1379
+EFF.T5.36	eff-unit	T5	open-obligation	math	D	OPEN	EFF-T5.md:1417
+EFF.T5.37	eff-unit	T5	battery-frame	math	D	OPEN	EFF-T5.md:1437
+EFF.T5.38	eff-unit	T5	battery-frame	math	D	OPEN	EFF-T5.md:1465
+EFF.T5.39	eff-unit	T5	acceptance-box	record	D	OPEN	EFF-T5.md:1499
+EFF.T5.40	eff-unit	T5	record	record	D	OPEN	EFF-T5.md:1552
+EFF.T5.41	eff-unit	T5	table	math	D	OPEN	EFF-T5.md:1588
+EFF.T5.42	eff-unit	T5	table	math	D	OPEN	EFF-T5.md:1636
+EFF.T5.43	eff-unit	T5	record	record	D	OPEN	EFF-T5.md:1675
+EFF.T5.44	eff-unit	T5	changes-record	record	D	OPEN	EFF-T5.md:1724
+EFF.T5.45	eff-unit	T5	acceptance-box	record	D	OPEN	EFF-T5.md:1750
+EFF.W11.01	eff-unit	W11	scope-record	record	G	OPEN	EFF-W11.md:172
+EFF.W11.02	eff-unit	W11	scope-record	record	G	OPEN	EFF-W11.md:198
+EFF.W11.03	eff-unit	W11	table	math	G	OPEN	EFF-W11.md:235
+EFF.W11.04	eff-unit	W11	scope-record	record	G	OPEN	EFF-W11.md:254
+EFF.W11.05	eff-unit	W11	fence	record	G	OPEN	EFF-W11.md:282
+EFF.W11.06	eff-unit	W11	convention	math	G	OPEN	EFF-W11.md:309
+EFF.W11.07	eff-unit	W11	table	math	G	OPEN	EFF-W11.md:339
+EFF.W11.08	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:370
+EFF.W11.09	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:435
+EFF.W11.10	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:468
+EFF.W11.11	eff-unit	W11	scope-record	record	G	OPEN	EFF-W11.md:492
+EFF.W11.12	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:517
+EFF.W11.13	eff-unit	W11	acceptance-box	record	G	OPEN	EFF-W11.md:600
+EFF.W11.14	eff-unit	W11	convention	math	G	OPEN	EFF-W11.md:619
+EFF.W11.15	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:639
+EFF.W11.16	eff-unit	W11	table	math	G	OPEN	EFF-W11.md:682
+EFF.W11.17	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:719
+EFF.W11.18	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:756
+EFF.W11.19	eff-unit	W11	record	record	G	OPEN	EFF-W11.md:821
+EFF.W11.20	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:868
+EFF.W11.21	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:902
+EFF.W11.22	eff-unit	W11	scope-record	record	G	OPEN	EFF-W11.md:944
+EFF.W11.23	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:971
+EFF.W11.24	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:994
+EFF.W11.25	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:1017
+EFF.W11.26	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:1069
+EFF.W11.27	eff-unit	W11	lemma	math	G	OPEN	EFF-W11.md:1091
+EFF.W11.28	eff-unit	W11	fence	record	G	OPEN	EFF-W11.md:1134
+EFF.W11.29	eff-unit	W11	scope-record	record	G	OPEN	EFF-W11.md:1148
+EFF.W11.30	eff-unit	W11	record	record	G	OPEN	EFF-W11.md:1177
+EFF.W11.31	eff-unit	W11	open-obligation	math	G	OPEN	EFF-W11.md:1224
+EFF.W11.32	eff-unit	W11	scope-record	record	G	OPEN	EFF-W11.md:1253
+EFF.W11.33	eff-unit	W11	fence	record	G	OPEN	EFF-W11.md:1289
+EFF.W11.34	eff-unit	W11	battery-frame	math	G	OPEN	EFF-W11.md:1334
+EFF.W11.35	eff-unit	W11	battery-frame	math	G	OPEN	EFF-W11.md:1393
+EFF.W11.36	eff-unit	W11	record	record	G	OPEN	EFF-W11.md:1443
+EFF.W11.37	eff-unit	W11	table	math	G	OPEN	EFF-W11.md:1468
+EFF.W11.38	eff-unit	W11	table	math	G	OPEN	EFF-W11.md:1501
+EFF.W11.39	eff-unit	W11	record	record	G	OPEN	EFF-W11.md:1538
+EFF.W11.40	eff-unit	W11	acceptance-box	record	G	OPEN	EFF-W11.md:1565
+EFF.W11.41	eff-unit	W11	changes-record	record	G	OPEN	EFF-W11.md:1609
+EFF.W11.42	eff-unit	W11	record	record	G	OPEN	EFF-W11.md:1637
+EFF.WELDMASTER.01	eff-unit	WELDMASTER	record	record	F	OPEN	EFF-WELDMASTER.md:122
+EFF.WELDMASTER.02	eff-unit	WELDMASTER	convention	math	F	OPEN	EFF-WELDMASTER.md:134
+EFF.WELDMASTER.03	eff-unit	WELDMASTER	theorem	math	F	OPEN	EFF-WELDMASTER.md:148
+EFF.WELDMASTER.04	eff-unit	WELDMASTER	definition	math	F	OPEN	EFF-WELDMASTER.md:170
+EFF.WELDMASTER.05	eff-unit	WELDMASTER	table	math	F	OPEN	EFF-WELDMASTER.md:205
+EFF.WELDMASTER.06	eff-unit	WELDMASTER	scope-record	record	F	OPEN	EFF-WELDMASTER.md:229
+EFF.WELDMASTER.07	eff-unit	WELDMASTER	theorem	math	F	OPEN	EFF-WELDMASTER.md:254
+EFF.WELDMASTER.08	eff-unit	WELDMASTER	theorem	math	F	OPEN	EFF-WELDMASTER.md:288
+EFF.WELDMASTER.09	eff-unit	WELDMASTER	lemma	math	F	OPEN	EFF-WELDMASTER.md:300
+EFF.WELDMASTER.10	eff-unit	WELDMASTER	corollary	math	F	OPEN	EFF-WELDMASTER.md:324
+EFF.WELDMASTER.11	eff-unit	WELDMASTER	fence	record	F	OPEN	EFF-WELDMASTER.md:358
+EFF.WELDMASTER.12	eff-unit	WELDMASTER	definition	math	F	OPEN	EFF-WELDMASTER.md:381
+EFF.WELDMASTER.13	eff-unit	WELDMASTER	theorem	math	F	OPEN	EFF-WELDMASTER.md:410
+EFF.WELDMASTER.14	eff-unit	WELDMASTER	theorem	math	F	OPEN	EFF-WELDMASTER.md:440
+EFF.WELDMASTER.15	eff-unit	WELDMASTER	theorem	math	F	OPEN	EFF-WELDMASTER.md:463
+EFF.WELDMASTER.16	eff-unit	WELDMASTER	fence	record	F	OPEN	EFF-WELDMASTER.md:490
+EFF.WELDMASTER.17	eff-unit	WELDMASTER	scope-record	record	F	OPEN	EFF-WELDMASTER.md:514
+EFF.WELDMASTER.18	eff-unit	WELDMASTER	scope-record	record	F	OPEN	EFF-WELDMASTER.md:526
+EFF.WELDMASTER.19	eff-unit	WELDMASTER	instrument-record	record	F	OPEN	EFF-WELDMASTER.md:549
+EFF.WELDMASTER.20	eff-unit	WELDMASTER	table	math	F	OPEN	EFF-WELDMASTER.md:576
+EFF.WELDMASTER.21	eff-unit	WELDMASTER	acceptance-box	record	F	OPEN	EFF-WELDMASTER.md:604
+EFF.WELDMASTER.22	eff-unit	WELDMASTER	changes-record	record	F	OPEN	EFF-WELDMASTER.md:636
+EFF.WELDMASTER.23	eff-unit	WELDMASTER	changes-record	record	F	OPEN	EFF-WELDMASTER.md:688
+EFF.WELDMASTER.24	eff-unit	WELDMASTER	record	record	F	OPEN	EFF-WELDMASTER.md:728
+EFF.WELDMASTER.25	eff-unit	WELDMASTER	changes-record	record	F	OPEN	EFF-WELDMASTER.md:751
+EFF.WELDMASTER.26	eff-unit	WELDMASTER	changes-record	record	F	OPEN	EFF-WELDMASTER.md:801
+EFF.WELDMASTER.27	eff-unit	WELDMASTER	changes-record	record	F	OPEN	EFF-WELDMASTER.md:830
+EFF.WELDMASTER.28	eff-unit	WELDMASTER	record	record	F	OPEN	EFF-WELDMASTER.md:862
+EFF.WELDMASTER.29	eff-unit	WELDMASTER	scope-record	record	F	OPEN	EFF-WELDMASTER.md:896
+EFF.WELDMASTER.30	eff-unit	WELDMASTER	record	record	F	OPEN	EFF-WELDMASTER.md:910
+EFF.GENTOW5.s1of2.01	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:64
+EFF.GENTOW5.s1of2.02	eff-unit	GENTOW5	scope-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:88
+EFF.GENTOW5.s1of2.03	eff-unit	GENTOW5	fence	record	C	OPEN	EFF-GENTOW5-s1of2.md:110
+EFF.GENTOW5.s1of2.04	eff-unit	GENTOW5	TABLE	record	C	OPEN	EFF-GENTOW5-s1of2.md:144
+EFF.GENTOW5.s1of2.05	eff-unit	GENTOW5	hypothesis	math	C	OPEN	EFF-GENTOW5-s1of2.md:171
+EFF.GENTOW5.s1of2.06	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s1of2.md:193
+EFF.GENTOW5.s1of2.07	eff-unit	GENTOW5	definition	math	C	OPEN	EFF-GENTOW5-s1of2.md:220
+EFF.GENTOW5.s1of2.08	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s1of2.md:250
+EFF.GENTOW5.s1of2.09	eff-unit	GENTOW5	fence	record	C	OPEN	EFF-GENTOW5-s1of2.md:279
+EFF.GENTOW5.s1of2.10	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s1of2.md:295
+EFF.GENTOW5.s1of2.11	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s1of2.md:344
+EFF.GENTOW5.s1of2.12	eff-unit	GENTOW5	instance-record	math	C	OPEN	EFF-GENTOW5-s1of2.md:362
+EFF.GENTOW5.s1of2.13	eff-unit	GENTOW5	scope-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:380
+EFF.GENTOW5.s1of2.14	eff-unit	GENTOW5	definition	math	C	OPEN	EFF-GENTOW5-s1of2.md:398
+EFF.GENTOW5.s1of2.15	eff-unit	GENTOW5	definition	math	C	OPEN	EFF-GENTOW5-s1of2.md:424
+EFF.GENTOW5.s1of2.16	eff-unit	GENTOW5	definition	math	C	OPEN	EFF-GENTOW5-s1of2.md:449
+EFF.GENTOW5.s1of2.17	eff-unit	GENTOW5	definition	math	C	OPEN	EFF-GENTOW5-s1of2.md:467
+EFF.GENTOW5.s1of2.18	eff-unit	GENTOW5	definition	math	C	OPEN	EFF-GENTOW5-s1of2.md:513
+EFF.GENTOW5.s1of2.19	eff-unit	GENTOW5	definition	math	C	OPEN	EFF-GENTOW5-s1of2.md:556
+EFF.GENTOW5.s1of2.20	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s1of2.md:574
+EFF.GENTOW5.s1of2.21	eff-unit	GENTOW5	regression-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:590
+EFF.GENTOW5.s1of2.22	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s1of2.md:606
+EFF.GENTOW5.s1of2.23	eff-unit	GENTOW5	fence	record	C	OPEN	EFF-GENTOW5-s1of2.md:642
+EFF.GENTOW5.s1of2.24	eff-unit	GENTOW5	definition	math	C	OPEN	EFF-GENTOW5-s1of2.md:662
+EFF.GENTOW5.s1of2.25	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s1of2.md:686
+EFF.GENTOW5.s1of2.26	eff-unit	GENTOW5	scope-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:731
+EFF.GENTOW5.s1of2.27	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s1of2.md:757
+EFF.GENTOW5.s1of2.28	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s1of2.md:856
+EFF.GENTOW5.s1of2.29	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s1of2.md:903
+EFF.GENTOW5.s1of2.30	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s1of2.md:946
+EFF.GENTOW5.s1of2.31	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s1of2.md:964
+EFF.GENTOW5.s1of2.32	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:984
+EFF.GENTOW5.s1of2.33	eff-unit	GENTOW5	scope-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:1012
+EFF.GENTOW5.s1of2.34	eff-unit	GENTOW5	instance-record	math	C	OPEN	EFF-GENTOW5-s1of2.md:1034
+EFF.GENTOW5.s1of2.35	eff-unit	GENTOW5	battery-frame	math	C	OPEN	EFF-GENTOW5-s1of2.md:1076
+EFF.GENTOW5.s1of2.36	eff-unit	GENTOW5	regression-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:1098
+EFF.GENTOW5.s1of2.37	eff-unit	GENTOW5	regression-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:1114
+EFF.GENTOW5.s1of2.38	eff-unit	GENTOW5	scope-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:1159
+EFF.GENTOW5.s1of2.39	eff-unit	GENTOW5	scope-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:1183
+EFF.GENTOW5.s1of2.40	eff-unit	GENTOW5	open-obligation	math	C	OPEN	EFF-GENTOW5-s1of2.md:1209
+EFF.GENTOW5.s1of2.41	eff-unit	GENTOW5	open-obligation	math	C	OPEN	EFF-GENTOW5-s1of2.md:1229
+EFF.GENTOW5.s1of2.42	eff-unit	GENTOW5	scope-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:1249
+EFF.GENTOW5.s1of2.43	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s1of2.md:1271
+EFF.GENTOW5.s2of2.01	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:67
+EFF.GENTOW5.s2of2.02	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:83
+EFF.GENTOW5.s2of2.03	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:105
+EFF.GENTOW5.s2of2.04	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:121
+EFF.GENTOW5.s2of2.05	eff-unit	GENTOW5	open-obligation	math	C	OPEN	EFF-GENTOW5-s2of2.md:137
+EFF.GENTOW5.s2of2.06	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:153
+EFF.GENTOW5.s2of2.07	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:169
+EFF.GENTOW5.s2of2.08	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:195
+EFF.GENTOW5.s2of2.09	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:213
+EFF.GENTOW5.s2of2.10	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:231
+EFF.GENTOW5.s2of2.11	eff-unit	GENTOW5	regression-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:249
+EFF.GENTOW5.s2of2.12	eff-unit	GENTOW5	fence	record	C	OPEN	EFF-GENTOW5-s2of2.md:265
+EFF.GENTOW5.s2of2.13	eff-unit	GENTOW5	acceptance-box	record	C	OPEN	EFF-GENTOW5-s2of2.md:281
+EFF.GENTOW5.s2of2.14	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:300
+EFF.GENTOW5.s2of2.15	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:316
+EFF.GENTOW5.s2of2.16	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:343
+EFF.GENTOW5.s2of2.17	eff-unit	GENTOW5	scope-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:359
+EFF.GENTOW5.s2of2.18	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:381
+EFF.GENTOW5.s2of2.19	eff-unit	GENTOW5	fence	record	C	OPEN	EFF-GENTOW5-s2of2.md:407
+EFF.GENTOW5.s2of2.20	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:425
+EFF.GENTOW5.s2of2.21	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:444
+EFF.GENTOW5.s2of2.22	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:464
+EFF.GENTOW5.s2of2.23	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:488
+EFF.GENTOW5.s2of2.24	eff-unit	GENTOW5	fence	record	C	OPEN	EFF-GENTOW5-s2of2.md:510
+EFF.GENTOW5.s2of2.25	eff-unit	GENTOW5	open-obligation	math	C	OPEN	EFF-GENTOW5-s2of2.md:526
+EFF.GENTOW5.s2of2.26	eff-unit	GENTOW5	scope-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:559
+EFF.GENTOW5.s2of2.27	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:579
+EFF.GENTOW5.s2of2.28	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:607
+EFF.GENTOW5.s2of2.29	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:625
+EFF.GENTOW5.s2of2.30	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:648
+EFF.GENTOW5.s2of2.31	eff-unit	GENTOW5	scope-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:664
+EFF.GENTOW5.s2of2.32	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:700
+EFF.GENTOW5.s2of2.33	eff-unit	GENTOW5	scope-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:758
+EFF.GENTOW5.s2of2.34	eff-unit	GENTOW5	fence	record	C	OPEN	EFF-GENTOW5-s2of2.md:786
+EFF.GENTOW5.s2of2.35	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:802
+EFF.GENTOW5.s2of2.36	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:844
+EFF.GENTOW5.s2of2.37	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:884
+EFF.GENTOW5.s2of2.38	eff-unit	GENTOW5	instance-record	math	C	OPEN	EFF-GENTOW5-s2of2.md:931
+EFF.GENTOW5.s2of2.39	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:961
+EFF.GENTOW5.s2of2.40	eff-unit	GENTOW5	changes-record	record	C	OPEN	EFF-GENTOW5-s2of2.md:983
+EFF.GENTOW5.s2of2.41	eff-unit	GENTOW5	lemma	math	C	OPEN	EFF-GENTOW5-s2of2.md:1001
+EFF.W12.s1of2.01	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s1of2.md:71
+EFF.W12.s1of2.02	eff-unit	W12	fence	record	H	OPEN	EFF-W12-s1of2.md:95
+EFF.W12.s1of2.03	eff-unit	W12	battery-frame	math	H	OPEN	EFF-W12-s1of2.md:113
+EFF.W12.s1of2.04	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s1of2.md:129
+EFF.W12.s1of2.05	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s1of2.md:149
+EFF.W12.s1of2.06	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s1of2.md:171
+EFF.W12.s1of2.07	eff-unit	W12	fence	record	H	OPEN	EFF-W12-s1of2.md:191
+EFF.W12.s1of2.08	eff-unit	W12	hypothesis	math	H	OPEN	EFF-W12-s1of2.md:219
+EFF.W12.s1of2.09	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:247
+EFF.W12.s1of2.10	eff-unit	W12	open-obligation	math	H	OPEN	EFF-W12-s1of2.md:294
+EFF.W12.s1of2.11	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:312
+EFF.W12.s1of2.12	eff-unit	W12	hypothesis	math	H	OPEN	EFF-W12-s1of2.md:332
+EFF.W12.s1of2.13	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:363
+EFF.W12.s1of2.14	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s1of2.md:388
+EFF.W12.s1of2.15	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s1of2.md:404
+EFF.W12.s1of2.16	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s1of2.md:424
+EFF.W12.s1of2.17	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s1of2.md:446
+EFF.W12.s1of2.18	eff-unit	W12	TABLE	record	H	OPEN	EFF-W12-s1of2.md:464
+EFF.W12.s1of2.19	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s1of2.md:496
+EFF.W12.s1of2.20	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s1of2.md:512
+EFF.W12.s1of2.21	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:532
+EFF.W12.s1of2.22	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:550
+EFF.W12.s1of2.23	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:566
+EFF.W12.s1of2.24	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:593
+EFF.W12.s1of2.25	eff-unit	W12	TABLE	record	H	OPEN	EFF-W12-s1of2.md:621
+EFF.W12.s1of2.26	eff-unit	W12	fence	record	H	OPEN	EFF-W12-s1of2.md:649
+EFF.W12.s1of2.27	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:667
+EFF.W12.s1of2.28	eff-unit	W12	TABLE	record	H	OPEN	EFF-W12-s1of2.md:685
+EFF.W12.s1of2.29	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:711
+EFF.W12.s1of2.30	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:736
+EFF.W12.s1of2.31	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:754
+EFF.W12.s1of2.32	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:779
+EFF.W12.s1of2.33	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:806
+EFF.W12.s1of2.34	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:822
+EFF.W12.s1of2.35	eff-unit	W12	fence	record	H	OPEN	EFF-W12-s1of2.md:854
+EFF.W12.s1of2.36	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:870
+EFF.W12.s1of2.37	eff-unit	W12	open-obligation	math	H	OPEN	EFF-W12-s1of2.md:886
+EFF.W12.s1of2.38	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:906
+EFF.W12.s1of2.39	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:927
+EFF.W12.s1of2.40	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s1of2.md:946
+EFF.W12.s1of2.41	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:970
+EFF.W12.s1of2.42	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:990
+EFF.W12.s1of2.43	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s1of2.md:1016
+EFF.W12.s1of2.44	eff-unit	W12	instance-record	math	H	OPEN	EFF-W12-s1of2.md:1036
+EFF.W12.s1of2.45	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s1of2.md:1063
+EFF.W12.s1of2.46	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s1of2.md:1079
+EFF.W12.s1of2.47	eff-unit	W12	hypothesis	math	H	OPEN	EFF-W12-s1of2.md:1106
+EFF.W12.s1of2.48	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s1of2.md:1137
+EFF.W12.s1of2.49	eff-unit	W12	open-obligation	math	H	OPEN	EFF-W12-s1of2.md:1167
+EFF.W12.s1of2.50	eff-unit	W12	open-obligation	math	H	OPEN	EFF-W12-s1of2.md:1197
+EFF.W12.s1of2.51	eff-unit	W12	definition	math	H	OPEN	EFF-W12-s1of2.md:1219
+EFF.W12.s1of2.52	eff-unit	W12	fence	record	H	OPEN	EFF-W12-s1of2.md:1235
+EFF.W12.s2of2.01	eff-unit	W12	battery-frame	math	H	OPEN	EFF-W12-s2of2.md:60
+EFF.W12.s2of2.02	eff-unit	W12	regression-record	record	H	OPEN	EFF-W12-s2of2.md:80
+EFF.W12.s2of2.03	eff-unit	W12	regression-record	record	H	OPEN	EFF-W12-s2of2.md:100
+EFF.W12.s2of2.04	eff-unit	W12	regression-record	record	H	OPEN	EFF-W12-s2of2.md:118
+EFF.W12.s2of2.05	eff-unit	W12	battery-frame	math	H	OPEN	EFF-W12-s2of2.md:138
+EFF.W12.s2of2.06	eff-unit	W12	TABLE	record	H	OPEN	EFF-W12-s2of2.md:158
+EFF.W12.s2of2.07	eff-unit	W12	fence	record	H	OPEN	EFF-W12-s2of2.md:182
+EFF.W12.s2of2.08	eff-unit	W12	battery-frame	math	H	OPEN	EFF-W12-s2of2.md:198
+EFF.W12.s2of2.09	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s2of2.md:224
+EFF.W12.s2of2.10	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s2of2.md:240
+EFF.W12.s2of2.11	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s2of2.md:263
+EFF.W12.s2of2.12	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s2of2.md:297
+EFF.W12.s2of2.13	eff-unit	W12	regression-record	record	H	OPEN	EFF-W12-s2of2.md:315
+EFF.W12.s2of2.14	eff-unit	W12	regression-record	record	H	OPEN	EFF-W12-s2of2.md:331
+EFF.W12.s2of2.15	eff-unit	W12	regression-record	record	H	OPEN	EFF-W12-s2of2.md:351
+EFF.W12.s2of2.16	eff-unit	W12	regression-record	record	H	OPEN	EFF-W12-s2of2.md:373
+EFF.W12.s2of2.17	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s2of2.md:391
+EFF.W12.s2of2.18	eff-unit	W12	absorption-record	math	H	OPEN	EFF-W12-s2of2.md:407
+EFF.W12.s2of2.19	eff-unit	W12	absorption-record	math	H	OPEN	EFF-W12-s2of2.md:427
+EFF.W12.s2of2.20	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s2of2.md:447
+EFF.W12.s2of2.21	eff-unit	W12	TABLE	record	H	OPEN	EFF-W12-s2of2.md:471
+EFF.W12.s2of2.22	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s2of2.md:497
+EFF.W12.s2of2.23	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s2of2.md:521
+EFF.W12.s2of2.24	eff-unit	W12	acceptance-box	record	H	OPEN	EFF-W12-s2of2.md:543
+EFF.W12.s2of2.25	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s2of2.md:565
+EFF.W12.s2of2.26	eff-unit	W12	open-obligation	math	H	OPEN	EFF-W12-s2of2.md:583
+EFF.W12.s2of2.27	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s2of2.md:611
+EFF.W12.s2of2.28	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s2of2.md:637
+EFF.W12.s2of2.29	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s2of2.md:661
+EFF.W12.s2of2.30	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s2of2.md:685
+EFF.W12.s2of2.31	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s2of2.md:703
+EFF.W12.s2of2.32	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s2of2.md:748
+EFF.W12.s2of2.33	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s2of2.md:769
+EFF.W12.s2of2.34	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s2of2.md:791
+EFF.W12.s2of2.35	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s2of2.md:810
+EFF.W12.s2of2.36	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s2of2.md:840
+HYP.01	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:42
+HYP.02	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:49
+HYP.03	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:56
+HYP.04	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:64
+HYP.05	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:77
+HYP.06	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:89
+HYP.07	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:103
+HYP.08	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:110
+HYP.09	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:117
+HYP.10	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:124
+HYP.11	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:131
+HYP.12	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:138
+HYP.13	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:147
+HYP.14	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:154
+HYP.15	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:161
+HYP.16	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:168
+HYP.17	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:175
+HYP.18	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:182
+HYP.19	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:191
+HYP.20	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:198
+HYP.21	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:205
+HYP.22	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:212
+HYP.23	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:219
+HYP.24	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:226
+HYP.25	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:233
+HYP.26	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:240
+HYP.27	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:247
+HYP.28	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:254
+HYP.29	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:261
+HYP.30	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:268
+HYP.31	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:275
+HYP.32	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:282
+HYP.33	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:289
+HYP.34	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:296
+HYP.35	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:303
+HYP.36	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:310
+HYP.37	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:317
+HYP.38	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:324
+HYP.39	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:331
+HYP.40	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:338
+HYP.41	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:347
+HYP.42	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:354
+HYP.43	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:361
+HYP.44	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:368
+HYP.45	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:375
+HYP.46	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:384
+HYP.47	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:391
+HYP.48	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:398
+HYP.49	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:405
+HYP.50	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:412
+HYP.51	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:419
+HYP.52	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:426
+HYP.53	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:433
+HYP.54	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:440
+HYP.55	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:447
+HYP.56	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:454
+HYP.57	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:461
+HYP.58	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:468
+HYP.59	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:475
+HYP.60	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:482
+HYP.61	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:489
+HYP.62	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:496
+HYP.63	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:503
+HYP.64	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:510
+HYP.65	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:517
+HYP.66	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:524
+HYP.67	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:533
+HYP.68	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:540
+HYP.69	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:547
+HYP.70	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:554
+HYP.71	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:561
+HYP.72	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:568
+HYP.73	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:575
+HYP.74	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:582
+HYP.75	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:589
+HYP.76	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:596
+HYP.77	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:603
+HYP.78	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:610
+HYP.79	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:617
+HYP.80	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:624
+HYP.81	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:633
+HYP.82	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:640
+HYP.83	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:647
+HYP.84	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:711
+HYP.85	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:718
+HYP.86	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:725
+HYP.87	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:732
+HYP.88	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:739
+HYP.89	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:746
+HYP.90	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:753
+HYP.91	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:760
+HYP.92	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:767
+HYP.93	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:774
+HYP.94	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:781
+HYP.95	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:788
+HYP.96	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:795
+HYP.97	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:802
+HYP.98	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:809
+HYP.99	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:816
+HYP.100	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:823
+HYP.101	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:830
+HYP.102	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:837
+HYP.103	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:844
+HYP.104	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:851
+HYP.105	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:858
+HYP.106	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:865
+HYP.107	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:872
+HYP.108	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:879
+HYP.109	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:886
+HYP.110	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:893
+HYP.111	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:900
+HYP.112	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:907
+HYP.113	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:914
+HYP.114	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:921
+HYP.115	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:928
+HYP.116	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:935
+HYP.117	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:942
+HYP.118	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:949
+HYP.119	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:956
+HYP.120	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:963
+HYP.121	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:970
+HYP.122	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:977
+HYP.123	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:984
+HYP.124	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:991
+HYP.125	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:998
+HYP.126	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1005
+HYP.127	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1012
+HYP.128	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1019
+HYP.129	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1026
+HYP.130	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1033
+HYP.131	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1040
+HYP.132	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1047
+HYP.133	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1054
+HYP.134	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1061
+HYP.135	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1068
+HYP.136	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:1079
+HYP.137	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1086
+HYP.138	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1093
+HYP.139	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1100
+HYP.140	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1108
+HYP.141	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1115
+HYP.142	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1122
+HYP.143	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1129
+HYP.144	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1136
+HYP.145	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1143
+HYP.146	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1150
+HYP.147	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:1157
+HYP.148	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1169
+HYP.149	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:1177
+lean:Anisotropic	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:FactorizationType.degree_mk_add	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:UniformityStatement	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:UniformityStatementDecided	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:card_certSet_gen	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:decidedAt_of_congr	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:decidedDensity_ge_of_subset	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:drainage_of_undecided_comp	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:dvd_sub_coeff_of_scaleRoots	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:efPair_pos_of_mem	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:exists_anisotropic	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:exists_coveringMenu	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:exists_monicPoly_eq	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:exists_monic_factorization_finset	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:exists_monic_scaleRoots	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:gate_fires	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:genuineDensity	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:genuineDensity_eq_zero_of_degree_ne	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:genuineDensity_eq_zero_of_forall_ne	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:genuineDensity_le_of_superset	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:monicFactors_mul	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:norm_adjoinRoot_root	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:proj_eq_iff_dvd	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:strongHensel	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:strongHensel_addVal	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:typeOf_eisenstein	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:typeOf_inert_of_irreducible_map	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:typeOf_mul	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:typeOf_of_residual_coprime	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:typeOf_prod_X_sub_C	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:typeOf_scale	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:typeOf_scaleRoots	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:typeOf_scale_gate	lean-decl			lean	A	DONE	leanfinal/Uniformity
+lean:typeOf_shift	lean-decl			lean	A	DONE	leanfinal/Uniformity
+CAP:UniformityStatement	capstone			capstone	I	OPEN	leanfinal/Uniformity/Density/Statement.lean
+CAP:UniformityStatementDecided	capstone			capstone	I	OPEN	leanfinal/Uniformity/Density/Statement.lean
+COND:A1_n	cond-unmatched			cond-unmatched	I	OPEN	
+COND:A2_n	cond-unmatched			cond-unmatched	I	OPEN	
+COND:H-e)-window-pinning	cond-unmatched			cond-unmatched	I	OPEN	
+EXT:DULEMMA_PROOF_2026-08-08.md	ext			ext		OPEN	
+EXT:QSCOUT22_2026-08-08.md	ext			ext		OPEN	
+EXT:CODEX_HE6PE1_2026-08-08.md	ext			ext		OPEN	
+EXT:WELDZERO_2026-08-14.md	ext			ext		OPEN	
+EXT:W10_PROOF_2026-08-08.md	ext			ext		OPEN	
+EXT:CODEX_TOWERRAT2_2026-08-10.md	ext			ext		OPEN	
+EXT:GENTOW2_PROOF_2026-08-09.md	ext			ext		OPEN	
+EXT:GENTOW2_passPE5_report.md	ext			ext		OPEN	
+EXT:GENTOW2_passPE6_report.md	ext			ext		OPEN	
+EXT:GRB_ORDER2_2026-08-05.md	ext			ext		OPEN	
+EXT:RMENGINE_2026-08-08.md	ext			ext		OPEN	
+EXT:GD23_phaseB_attempt.md	ext			ext		OPEN	
+EXT:ITERLAWN_PROOF_2026-08-08.md	ext			ext		OPEN	
+EXT:LEDGERLAMBDA_2026-08-08.md	ext			ext		OPEN	
+EXT:O1thr_phaseB_verifybrief_rev3.md	ext			ext		OPEN	
+EXT:GRW2_TIE_DESIGN_2026-08-08.md	ext			ext		OPEN	
+EXT:GRT_WELD_BLUEPRINT_2026-08-08.md	ext			ext		OPEN	
+EXT:CODEX_HE3PE1_2026-08-08.md	ext			ext		OPEN	
+EXT:HYPOTHESIS_LEDGER.md	ext			ext		OPEN	
+EXT:SOL_CERTIFICATION_LEDGER_2026-08-12.md	ext			ext		OPEN	
+EXT:CODEX_HE7RAT_2026-08-09.md	ext			ext		OPEN	
+EXT:N3_CHECK_2026-08-13.md	ext			ext		OPEN	
+EXT:PROJECT_STATE.md	ext			ext		OPEN	
+EXT:TIGHTNESS_CENSUS_2026-08-11.md	ext			ext		OPEN	
+EXT:ITERLAWLIFT_CORNER_2026-08-08.md	ext			ext		OPEN	
+EXT:ILNRES_2026-08-08.md	ext			ext		OPEN	
+EXT:LEAN_SCOPING_consumption_map_2026-08-12.md	ext			ext		OPEN	
+EXT:SIMPLIFICATION_BLUEPRINT_2026-08-10.md	ext			ext		OPEN	
+EXT:BRIDGE_ADJUDICATIONS_2026-07-30.md	ext			ext		OPEN	
+EXT:WELD_SYNTHESIS_2026-08-05.md	ext			ext		OPEN	
+EXT:EFF-T1*.md	ext			ext		OPEN	
+EXT:WELD_FACE_AUDIT.md	ext			ext		OPEN	
+EXT:CODEX_GENINDRAT_2026-08-09.md	ext			ext		OPEN	
+EXT:DITERSUP_STMT_2026-08-08.md	ext			ext		OPEN	

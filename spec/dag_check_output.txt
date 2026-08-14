@@ -1,0 +1,177 @@
+PHASE-0c DAG CHECK  (spec/DAG.tsv)
+==============================================================================
+nodes 2449   edges 1700   dependency edges 1692   non-dependency (provenance) 8
+node kinds: capstone=2  cond-unmatched=3  eff-unit=2227  ext=34  hyp=149  lean-decl=34
+edge classes: cn-discharge=14  ledger-cond=36  ledger-discharge=15  ledger-index=8  ledger-loc=68  ledger-path=214  reverse-xref=165  supersession=8  xref=1172
+edge kinds: proof-dep=8  stmt-dep=1692
+
+[1] DANGLING-ID CHECK
+    PASS: every edge endpoint is a declared node.
+
+[2] CYCLE DETECTION
+    EXACT-resolved subgraph (1050 edges): 4 non-trivial SCCs
+      [ADJUDICATED] size 3: EFF.GENIND.136, EFF.HEX3.37, EFF.HMENU3.33
+            HEX3-BOX-1 (the tail-sigma certification lemma, ledger HYP.137) is supplied by HEX3 and consumed by GENIND and HMENU3; HEX3 s own 4.3 table mixes supplier and consumer rows under one heading, so the harvester reads one consumer edge backwards.
+      [ADJUDICATED] size 3: EFF.HE7.128, EFF.HE7.129, EFF.HE7.130
+            INTRA-NOTE SELF-SUPPLY: HE7's "HE7 itself (inbound)" ledger rows are read as both forward and reverse edges by the harvester.  Not a mathematical cycle; a direction ambiguity in the source table.
+      [ADJUDICATED] size 2: EFF.GRTW2.20, EFF.LIFTCORNER.72
+            MUTUAL-RECON (recorded both ways): LIFTCORNER cites GRTW2 W2-OPEN-2 in its own XREF ledger and GRTW2 is listed as a consumer of LIFTCORNER .72 in the shard-1 reverse-XREF table.  Not resolved here: the chapter blueprint must decide which direction is the statement dependency.
+      [ADJUDICATED] size 2: EFF.GRTW2.35, EFF.LIFTCORNER.62
+            MUTUAL-RECON (recorded both ways), same shape as GRTW2.20 / LIFTCORNER.72, on the W2-OPEN-1 designation.
+    FULL graph incl. COARSE-GOV edges: 7 non-trivial SCCs, largest 78
+      COARSE-ARTEFACT: a COARSE-GOV edge lands on the target note's single governing
+      unit, so any two notes citing each other collapse to a 2-cycle.  Cycles present
+      only in the full graph are therefore NOT evidence of mutual mathematics.
+    PASS: every exact-subgraph cycle is adjudicated.
+    NOTE on the flagged HE6 <-> HE6R1 pair: the two notes DO cite each other, but no
+    unit-level cycle between them survives in the exact subgraph — HE6 -> HE6R1 and
+    HE6R1 -> HE6 land on disjoint units.  The mutual-recon flag is a note-level, not a
+    statement-level, phenomenon.
+
+[3] REACHABILITY FROM THE CAPSTONE
+    roots: CAP:UniformityStatement, CAP:UniformityStatementDecided
+    reachable 540 / 2449 nodes (22.0%)
+    unreachable 1909, of which ISOLATED (no recorded edge at all) 1599 and
+    CONNECTED-BUT-UNREACHABLE 310  <- the real candidate out-of-cone list
+    connected-but-unreachable by note/kind:
+      GENIND           73
+      HMENU3           22
+      HETOW            19
+      HE7              18
+      HE3              17
+      GRTW2            15
+      HE6              15
+      WELDMASTER       15
+      hyp              15
+      LIFTCORNER       12
+      GRTJC            10
+      GRTJA            10
+      HE6R1            10
+      HEX3             10
+      lean-decl        10
+      GENH4             6
+      GENTOW1           6
+      T2                5
+      ext               5
+      GENHN             3
+      GENTOW4           3
+      GRTJB             2
+      GENTOW3           2
+      JD0               2
+      W12               2
+      T1                1
+      T4                1
+      W11               1
+    LEDGER CONSISTENCY — rows the 0b ledger signs NOT-REACHED / out-of-cone must NOT
+    be reachable here:
+      HYP.21   CONSISTENT (unreachable)
+      HYP.75   CONSISTENT (unreachable)
+      HYP.83   CONSISTENT (unreachable)
+      HYP.84   CONSISTENT (unreachable)
+      HYP.85   CONSISTENT (unreachable)
+      HYP.86   CONSISTENT (unreachable)
+      HYP.76   CONSISTENT (unreachable)
+    total isolated nodes: 1599
+    The 0a specs record inter-note supply edges and supersession chains, but they do
+    NOT record intra-note statement->statement dependencies.  Unreachability here is
+    therefore mostly MISSING EDGE DATA, not an out-of-cone verdict.  Compare against
+    the ledger NOT-REACHED rows (HYP.21/75, HYP.83-86) before treating any of it as
+    out-of-cone.
+
+[4] TOPOLOGICAL LAYERING (SCCs collapsed)
+    layers: 10   (layer 0 = terminal supply)
+    layer       nodes  connected
+    0            1980        381
+    1             174        174
+    2              29         29
+    3              43         43
+    4              82         82
+    5             125        125
+    6              11         11
+    7               2          2
+    8               1          1
+    9               2          2
+    MAX LAYER WIDTH (all nodes)       = 1980   <- nominal parallelism ceiling
+    MAX LAYER WIDTH (connected nodes) = 381   <- ceiling on the edge-bearing subgraph
+    Layer 0 is dominated by the 1599 isolated nodes; the connected column is the honest
+    reading.  DAG width is an upper bound on parallelism, never a throughput promise
+    (BLUEPRINT_PHASE_DESIGN REVISION 2, R15).
+
+[5] CHAPTER-CUT CHECK
+    chapter order (consumer-first): I > E > D > C > B > H > F > G > A
+      I  CAPSTONE AND CONDITIONALITY        154 nodes
+      E  SIGMA-LADDER MASTER  [HARD]        105 nodes
+      D  GAUGE + CERTIFICATE T-CHAIN        181 nodes
+      C  TOWER GRAMMAR  [HARD]              363 nodes
+      B  HENSEL-SLOT CORE                   319 nodes
+      H  GENERAL INDUCTION                  498 nodes
+      F  GRT WELD LAYER                     538 nodes
+      G  BASE CASES AND MENUS               223 nodes
+      A  LANDED LEAN KERNEL (DONE)           34 nodes
+    cross-chapter dependency edges: 603   backward (against the order): 57 (9.5%)
+    edges with an unassigned endpoint (EXT / unmatched): 114
+    BACKWARD ARCS — the residue that makes the cut non-strict; each is a split the
+    chapter blueprints must make at unit granularity:
+      G -> H   13
+      H -> B   12
+      C -> E   11
+      B -> E   8
+      H -> D   4
+      C -> D   4
+      H -> C   3
+      F -> B   1
+      F -> D   1
+
+[6] NON-IMPORT FENCE CHECK
+    fences recorded: 121 rows over 90 fenced units
+    edges crossing a recorded note-level fence: 82
+      EFF.GENIND.11 -> EFF.W12.s1of2.31  [xref]  EFF-GENIND.md | 4. XREF verification ledger (consolidated, deduplicated) | 55 | `W12_PROOF
+      EFF.GENIND.136 -> EFF.GENH4.07  [xref]  EFF-GENIND.md | 4. XREF verification ledger (consolidated, deduplicated) | 10 | `GENH4_PRO
+      EFF.GENIND.136 -> EFF.GENH4.10  [xref]  EFF-GENIND.md | 4. XREF verification ledger (consolidated, deduplicated) | 11 | `GENH4_PRO
+      EFF.GENIND.136 -> EFF.GENH4.11  [xref]  EFF-GENIND.md | 4. XREF verification ledger (consolidated, deduplicated) | 6 | `GENH4_PROO
+      EFF.GENIND.136 -> EFF.GENH4.15  [xref]  EFF-GENIND.md | 4. XREF verification ledger (consolidated, deduplicated) | 2 | `GENH4_PROO
+      EFF.GENIND.136 -> EFF.GENH4.84  [xref]  EFF-GENIND.md | 4. XREF verification ledger (consolidated, deduplicated) | 1 | `GENH4_PROO
+      EFF.GENIND.92 -> EFF.GENH4.07  [xref]  EFF-GENIND.md | 4. XREF verification ledger (consolidated, deduplicated) | 8 | `GENH4_PROO
+      EFF.GENIND.92 -> EFF.GENH4.10  [xref]  EFF-GENIND.md | 4. XREF verification ledger (consolidated, deduplicated) | 9 | `GENH4_PROO
+      EFF.GENIND.92 -> EFF.GENH4.11  [xref]  EFF-GENIND.md | 4. XREF verification ledger (consolidated, deduplicated) | 6 | `GENH4_PROO
+      EFF.GENIND.92 -> EFF.GENH4.15  [xref]  EFF-GENIND.md | 4. XREF verification ledger (consolidated, deduplicated) | 2 | `GENH4_PROO
+      EFF.GENIND.92 -> EFF.GENH4.84  [xref]  EFF-GENIND.md | 4. XREF verification ledger (consolidated, deduplicated) | 1 | `GENH4_PROO
+      EFF.GENTOW5.s1of2.06 -> EFF.GENHN.11  [xref]  EFF-GENTOW5-s1of2.md | 3.1 Verified import/XREF designations | 38 | `GENHN_PROOF_2026-08-0
+      EFF.GENTOW5.s1of2.06 -> EFF.GENHN.23  [xref]  EFF-GENTOW5-s1of2.md | 3.1 Verified import/XREF designations | 46 | `GENHN_PROOF_2026-08-0
+      EFF.GENTOW5.s1of2.06 -> EFF.GENHN.27  [xref]  EFF-GENTOW5-s1of2.md | 3.1 Verified import/XREF designations | 37 | `GENHN_PROOF_2026-08-0
+      EFF.GENTOW5.s1of2.06 -> EFF.GENHN.33  [xref]  EFF-GENTOW5-s1of2.md | 3.1 Verified import/XREF designations | 43 | `GENHN_PROOF_2026-08-0
+    A hit here is NOT automatically a defect: a fence names material the note does not
+    IMPORT, while a recorded edge may be a citation of record.  Each hit is a
+    cross-read question.
+
+[7] RESOLUTION CENSUS (how provisional is this graph?)
+      from:exact,to:stmt             655
+      from:gov,to:stmt               338
+      from:exact,to:exact            281
+      from:exact,to:gov              137
+      from:gov,to:ext                 42
+      from:gov,to:gov                 36
+      from:stmt,to:gov                34
+      from:exact,to:ext               34
+      from:stmt,to:exact              34
+      from:gov,to:exact               22
+      from:ext,to:exact               22
+      from:ext,to:gov                 16
+      from:ledger,to:exact            14
+      from:exact,to:unmatched          6
+      from:exact,to:body               6
+      from:gov,to:body                 6
+      from:gov,to:ledger               5
+      from:body,to:exact               4
+      from:exact,to:ledger             3
+      from:ledger,to:gov               3
+      from:body,to:gov                 2
+    COARSE (an endpoint fell back to a note governing unit, or a conjunct matched no
+    ledger row): 647 of 1700 edges = 38.1%.  Every one of these is a cross-read item.
+    edge-kind basis: default=1261  derivation-hit=8  statement-hit=431
+    stmt-dep/proof-dep is decided by rule 3 only for the 439 edges whose designation was
+    found in the source unit's own text; the remaining 1261 default to stmt-dep and are
+    NOT a classification.
+
+==============================================================================
+RESULT: PASS  (see DAG_README.md for what this artifact does and does not claim)
