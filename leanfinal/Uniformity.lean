@@ -6,6 +6,8 @@ import Uniformity.Density.Transport
 import Uniformity.Density.TypeOf
 import Uniformity.Density.TypeOfAlgebra
 import Uniformity.Density.TypeOfInvariance
+import Uniformity.Density.ScaleExtraction
+import Uniformity.Density.NormLeaves
 import Uniformity.Density.GenuineDensity
 import Uniformity.Density.QuadCert
 import Uniformity.Density.Statement
