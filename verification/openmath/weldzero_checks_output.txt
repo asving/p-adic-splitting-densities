@@ -1,0 +1,34 @@
+=== A. the substitution theorem, both conventions, by actual re-division ===
+  [F1 live-wrap    / mult ] eta=2  vartheta=[1, 1, 2, 2]  rho=[0, 0, 0]  -> 27 checks, 0 violations   ALL PINS DIE
+  [F1 live-wrap    / digit] eta=2  vartheta=[1, 1, 2, 2]  rho=[4, 1, 0]  -> 26 checks, 0 violations   PINS SURVIVE
+  [F2 eta=1 ctrl   / mult ] eta=1  vartheta=[1, 1, 1, 1]  rho=[0, 0, 0]  -> 27 checks, 0 violations   ALL PINS DIE
+  [F2 eta=1 ctrl   / digit] eta=1  vartheta=[1, 1, 1, 1]  rho=[0, 0, 0]  -> 26 checks, 0 violations   ALL PINS DIE
+  [F3 i(kappa)=0   / mult ] eta=2  vartheta=[1, 1, 1, 1]  rho=[0, 0, 0]  -> 27 checks, 0 violations   ALL PINS DIE
+  [F3 i(kappa)=0   / digit] eta=2  vartheta=[1, 1, 1, 1]  rho=[0, 0, 0]  -> 26 checks, 0 violations   ALL PINS DIE
+  [F4 char|binom   / mult ] eta=2  vartheta=[1, 1, 2, 2]  rho=[0, 0, 0]  -> 21 checks, 0 violations   ALL PINS DIE
+  [F4 char|binom   / digit] eta=2  vartheta=[1, 1, 2, 2]  rho=[2, 0, 0]  -> 20 checks, 0 violations   PINS SURVIVE
+  [F5 e1=3         / mult ] eta=3  vartheta=[1, 1, 1, 3]  rho=[0, 0, 0]  -> 27 checks, 0 violations   ALL PINS DIE
+  [F5 e1=3         / digit] eta=3  vartheta=[1, 1, 1, 3]  rho=[3, 0, 0]  -> 26 checks, 0 violations   PINS SURVIVE
+  [F6 mu=4         / mult ] eta=2  vartheta=[1, 1, 2, 2, 4]  rho=[0, 0, 0, 0]  -> 33 checks, 0 violations   ALL PINS DIE
+  [F6 mu=4         / digit] eta=2  vartheta=[1, 1, 2, 2, 4]  rho=[2, 1, 2, 0]  -> 32 checks, 0 violations   PINS SURVIVE
+  [F7 h=3          / mult ] eta=2  vartheta=[1, 1, 2, 2]  rho=[0, 0, 0]  -> 27 checks, 0 violations   ALL PINS DIE
+  [F7 h=3          / digit] eta=2  vartheta=[1, 1, 2, 2]  rho=[3, 4, 0]  -> 26 checks, 0 violations   PINS SURVIVE
+  [F8 wild p=2     / mult ] eta=1  vartheta=[1, 1, 1, 1, 1]  rho=[0, 0, 0, 0]  -> 24 checks, 0 violations   ALL PINS DIE
+  [F8 wild p=2     / digit] eta=1  vartheta=[1, 1, 1, 1, 1]  rho=[0, 0, 0, 0]  -> 23 checks, 0 violations   ALL PINS DIE
+  [F9 e1=2 p=7     / mult ] eta=3  vartheta=[1, 1, 3, 3]  rho=[0, 0, 0]  -> 27 checks, 0 violations   ALL PINS DIE
+  [F9 e1=2 p=7     / digit] eta=3  vartheta=[1, 1, 3, 3]  rho=[1, 3, 0]  -> 26 checks, 0 violations   PINS SURVIVE
+  [F10 mu=2 odd    / mult ] eta=2  vartheta=[1, 1, 2]  rho=[0, 0]  -> 21 checks, 0 violations   ALL PINS DIE
+  [F10 mu=2 odd    / digit] eta=2  vartheta=[1, 1, 2]  rho=[2, 0]  -> 20 checks, 0 violations   PINS SURVIVE
+  [F11 mu=2 char2  / mult ] eta=1  vartheta=[1, 1, 1]  rho=[0, 0]  -> 18 checks, 0 violations   ALL PINS DIE
+  [F11 mu=2 char2  / digit] eta=1  vartheta=[1, 1, 1]  rho=[0, 0]  -> 17 checks, 0 violations   ALL PINS DIE
+
+  conventions SEPARATE at: F1 live-wrap, F4 char|binom, F5 e1=3, F6 mu=4, F7 h=3, F9 e1=2 p=7, F10 mu=2 odd
+  conventions AGREE at:    F2 eta=1 ctrl, F3 i(kappa)=0, F8 wild p=2, F11 mu=2 char2
+
+=== B. negative control: residual (T-1)^2 (T-2), mu = 3, must NOT kill ===
+  [N1 not-a-power  / mult ] eta=2  vartheta=[1, 1, 2, 2]  rho=[0, 0, 4]  -> 23 checks, 0 violations   PINS SURVIVE
+
+=== C. vartheta_t = eta^{floor(t*i(kappa)/e1)} over a sweep ===
+  9295 sweep checks
+
+TOTAL: 9877 checks, 0 violations
