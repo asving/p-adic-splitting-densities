@@ -1513,3 +1513,644 @@ with the scope, verbatim:
 **TEETH:** **the dead code is verified verbatim at L398–399** (`.37`) ✓. The ENTRY-entailment is verified by inspection: FLOOR ≥ Θ_j and the entry band ends at `Θ_j − δ ≤ Θ_j − 1`, so zero entry discrepancy follows from the floor whenever `δ ≥ 1` ✓ — the entailment is real, and the disclosure is correct.
 
 ---
+### EFF.GENTOW3.51  [instrument-record]
+
+**CANONICAL STATEMENT:** the r1 edit manifest and md5 ledger, verbatim:
+
+> “Body state before this round: md5 8664269e723c7779538f25329490c06d
+> = the PE1 target (verdict commit d90db6d). [GT3-r1] edit sites:
+> (1) header ARC line; (2) S2 Setting gauge pin at the Phi2 display;
+> (3) S2 x-free-definition scope pin; (4) S2 (iv) attribution pin;
+> (5) S5 P-1 census correction; (6) S5 T-SHADOW-REG disclosure;
+> (7) S6 GENTOW3-BOX-2 honest-status rider; (8) S6
+> conditionality-stack corrected-key pin; (9) this S7. Edit shape:
+> [GT3-r1]-bracketed INSERTIONS plus this S7 … the statement displays of
+> THEOREM GENTOW-3 (i)–(iv), COR GENTOW-3.C, and the S0/S1/S3/S4
+> texts sit outside the inserted brackets … Sealed
+> machine artifacts BYTE-FROZEN, md5s verified before and after this
+> round: gentow3_checks.py 7cf3a7b8a580d6b9893d8e62f94464e2,
+> gentow3_checks_output.txt 926cd05f4be21a24e66b84c325ce679e,
+> gentow3_pe1_fresh.py 35ad32aab60f5c4fbb09cd6b69ae6c18,
+> gentow3_pe1_fresh_output.txt 94160b22ca919276d61a2ed4f5d374d5,
+> gentow3_pe1_fresh_output_run1_RED.txt
+> 485946fc773f7d57289f3731d2e51de2, import base gentow1_checks.py
+> 6df4b213ed0aab6afa37ac7b418540aa. Grade stays 0/2; PE2 next.”
+
+**FORM:** section body (§S7.5) — a nine-site manifest with a six-md5 ledger.
+
+**DERIVATION:** `[RECORD]` — written for the next pass's diff.
+
+**CONDITIONALITY:** none.
+
+**RESOLUTION TRACE:** lines 656–678.
+
+**TEETH:** **ALL SIX md5s RE-COMPUTED AND MATCHED at compile time** ✓ — including `gentow1_checks.py 6df4b213…`, which is the SAME hash GENTOW1's own S5 pins (`EFF.GENTOW1.42`). **A cross-note artifact identity, verified from both sides.** F-1's whole-body pin also verified (`git cat-file -p d90db6d:<file> | md5sum` = `8664269e…`) ✓.
+
+---
+
+### EFF.GENTOW3.52  [changes-record]  *(SERIES REPAIR-SECTIONS, r2)*
+
+**CANONICAL STATEMENT:** §S7.6, `[ASSEMBLED]` from lines 683–761. The verdict and the re-derivation, verbatim:
+
+> “PE2 verdict (GENTOW3_passPE2_report.md @ c048154): NOT CLEAN — 1
+> GAP (F-1: three record sentences — the S0 geography clause, the
+> S4 δ = 1 bullet, the S4 count-law — asserted per-coordinate
+> attainment/mislabeling CERTIFICATE-FREE, plus "touched
+> coordinate(s)" undefined in the (iv) statement); counter stays
+> 0/2.”
+
+> “**The re-derivation (from this note's own S2 (iv) proof and
+> GENTOW3-BOX-1, per the repair rule — not from the report's
+> wording).** Step 2 proves the FLOOR unconditionally. The (iv)
+> proof then exhibits the MINIMAL candidate branch … and proves its digit "NONZERO
+> whenever the assembled K2-digit does not cancel": BOX-1's
+> per-genre, per-coordinate non-cancellation certificate. So what
+> the theorem PROVES is attainment AT THETA_j at exactly the
+> certificate-carrying coordinates; where the assembled digit
+> cancels, (i) still floors the discrepancy but its first height
+> sits strictly ABOVE THETA_j.”
+
+The two refuting instances, verbatim in brief: **FR-M3** (`p = 2, Phi' = x²−2, Phi2 = Phi'−2x` per the r3 m-A label fix, `e2 = f2 = 1, u2 = 3, mu2 = 3, delta = 1, E2 = 3, THETA = [10,7,4]`): self-shadow `ShC = [[64], [0, 40], [12]]`, pins `[12, 7, 4]` — the height-10 digit at j = 0 CANCELS; and **the count-law counter-member** `f = Phi2³ + 32` at FR-M3, honest pins `[10, ∞, ∞]` decided, shadow pins `[10, 7, 4]` with fake pins strictly above the deciding edge, “hulls IDENTICAL, vertex digit IDENTICAL, PARI σ {(6,1)} on both routes”.
+
+The non-vacuity check and the consumer walk, verbatim in brief: FAM-A5 still attains at 21 (“Nothing became vacuous”); and
+
+> “**Consumer walk (the three sentences).** GENTOW6_PROOF S3 — the
+> one downstream consumer of (iv)-adjacent content — consumes
+> THEOREM GENTOW-3(i) and BOX-1's certificate FRAMING …: already
+> certificate-conditional; none of the three sentences is cited.
+> docs/PROJECT_STATE.md append #12 records this unit through
+> floor/band/x-free + "the PE1 refutations = the criterion's first
+> violations exactly" — no overclaim carried … No consumer edit owed.”
+
+**FORM:** numbered repair section with re-derivation, verification, non-vacuity check, consumer walk and manifest.
+
+**DERIVATION:** re-derived from the note's own (iv) proof, explicitly “not from the report's wording” — the standing repair rule.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **scope-pin** on three record sentences + **scope-pin inside the (iv) statement** (the “touched” definition pin). **The r2 S0 rewrite is itself over-corrected at r3** (CHAIN-GEOG).
+
+**RESOLUTION TRACE:** lines 680–761; the over-correction at 763–789.
+
+**TEETH:** **the FOUR-PART repair structure — re-derivation, refuting instances, non-vacuity check, consumer walk — is the most complete repair protocol in this queue.** The non-vacuity check in particular (“Nothing became vacuous”) is a discipline no other entry performs. **ARITHMETIC AUDIT of FR-M3's constants:** `E2 = e2f2u2 = 1·1·3 = 3` ✓, `δ = u2 − e2D'h = 3 − 1·2·1 = 1` ✓, `Θ = [3·3+1, 2·3+1, 1·3+1] = [10, 7, 4]` ✓ — all three reproduce. `git cat-file -t c048154` = commit ✓; the three adopted PE2-fresh artifacts all exist with matching md5s (`55208baf…`, `06b4bddf…`, and the run-1 RED) ✓.
+
+---
+
+### EFF.GENTOW3.53  [changes-record]  *(SERIES REPAIR-SECTIONS, r3)*
+
+**CANONICAL STATEMENT:** §S7.7, `[ASSEMBLED]` from lines 767–815. The verdict and the fold's scope, verbatim:
+
+> “PE3 verdict (GENTOW3_passPE3_report.md @ a1c181d): NOT CLEAN — 1
+> GAP (F-1: the r2 S0 clause's "fails AT THETA_j exactly at the
+> coordinates carrying (iv)'s certificate" claimed an only-if S2's
+> key-power-scoped attainment analysis never proves, refuted by the
+> measured W witness member) + 1 MINOR (m-A: the S7.6 FR-M3 record
+> handed Phi2's polynomial to Phi'); counter stays 0/2. The r3
+> round (landed at 8165208) shipped its record in the header ARC
+> paragraph plus two inline brackets but no numbered section and no
+> in-note artifact pins for the adopted W measurement; passPE4
+> (CLEAN, 0 GAP + 1 MINOR, counter 0/2 -> 1/2; report @ b6a43963)
+> flagged the traceability hole as its m-1. This S7.7 is that fold
+> — record-discipline only; no S0/S2/S4/S7.6 claim re-adjudicated.”
+
+The adopted W measurement, verbatim:
+
+> “**THE ADOPTED W MEASUREMENT (artifact pins).** Instrument:
+> gentow3_pe3_fresh.py, md5 bde312470601ede13338691573cfb96f;
+> output gentow3_pe3_fresh_output.txt, md5
+> 3ce4128ad44b360ecc8cea762b12af69 (sealed pre-run @ 16a729bd,
+> verdict @ a1c181d; output verdict line: GREEN — 451 checks, 0
+> violations, teeth 3/3). Both md5s re-computed against the
+> committed files at this fold. Re-derived from the pinned runner
+> itself (not from any report sentence): at FR-M3 … the runner
+> builds gW = 2x·Phi2² + 8·Phi2 and checks W-A = Phi2³ + gW and
+> W-B = W-A + 64 (runner L410–417, fkM = Phi2³ at L378); the
+> machine-checked want-lists (L418–431, GREEN in the pinned
+> output): W-B honest pins [12,6,3], shadow pins [10,6,3], ShC_0 =
+> 96 vs C_0 = 64, mindiff [10,9,4] — first disagreeing height at
+> j = 0 EXACTLY 10 = THETA_0 … W-A likewise
+> mindiff_0 = 10 …; witness census 32 gated members with mindiff_0 = 10 …”
+
+**FORM:** numbered repair section (a post-hoc record fold).
+
+**DERIVATION:** the W measurement is **re-derived from the pinned runner itself**, explicitly “not from any report sentence” — the strongest provenance discipline available.
+
+**CONDITIONALITY:** **this fold is record-discipline only**: “no S0/S2/S4/S7.6 claim re-adjudicated”. The mathematical content (the one-siding) landed at r3; this section supplies its traceability.
+
+**RESOLUTION TRACE:** lines 763–815.
+
+**TEETH:** **both md5s verified** (`bde31247…`, `3ce4128a…`) ✓; the output's verdict line re-read: `=== VERDICT: GREEN -- 451 checks, 0 violations, teeth 3/3 ===` ✓ with teeth `{'T3-UP': 8, 'T3-DOWN': 5, 'T3-BICOND': 2}`. **Note the third tooth's name — `T3-BICOND`** — the fresh route carried a tooth specifically against the biconditional reading, which is what refuted r2's “exactly”. `git cat-file -t 16a729bd` = commit ✓. **The r3 diff figures are also stated and checkable**: “3 hunks, 39 insertions / 12 deletions” between `a1c181d..8165208`, both commits resolving ✓.
+
+---
+
+### EFF.GENTOW3.54  [acceptance-box]  *(SERIES ARC, link 5; CHAIN-GRADE)*
+
+**CANONICAL STATEMENT:**
+
+> “**GENTOW3 IS ACCEPTED 2/2** — passPE4 CLEAN (0 CRITICAL + 0 GAP +
+> 1 MINOR, GENTOW3_passPE4_report.md @ b6a43963; counter 0/2 -> 1/2)
+> followed by passPE5 CLEAN (0 CRITICAL + 0 GAP + 0 MINOR — ZERO
+> findings, GENTOW3_passPE5_report.md @ 0633c6a3; counter 1/2 ->
+> 2/2): two consecutive clean hostile passes, the standing
+> acceptance bar. **THE NOTE IS FROZEN AT THIS RECORD: dated appends
+> and dated brackets only; statement displays and sealed artifacts
+> stay byte-untouched.**”
+
+with the arc, verbatim:
+
+> “The arc in one breath: seal (2026-08-09; S5 machine leg GREEN
+> 582/0) -> PE1 NOT CLEAN 1G+3m @ 3101cf5 (the GAUGE …) -> r1 @ e1a8dfe … -> PE2 NOT CLEAN 1G @
+> c048154 (the CERTIFICATE SEAM …) -> r2 @ 0d09d65 … -> PE3 NOT CLEAN 1G+1m @
+> a1c181d (r2's OVER-CORRECTION: the inserted "exactly" only-if,
+> refuted by the measured W member at FR-M3) -> r3 @ 8165208 (the
+> ONE-SIDING …) -> PE4 CLEAN 0G+1m @
+> b6a43963, the arc's first clean pass -> rider @ d6b409ce … -> PE5 CLEAN 0 GAP +
+> 0 MINOR @ 0633c6a3.”
+
+**FORM:** bold-headed acceptance record with a one-breath arc.
+
+**DERIVATION:** `[RECORD]` of two consecutive CLEAN passes, the second with ZERO findings.
+
+**CONDITIONALITY:** superseded only in status by S8's “ACCEPTED 2/2 stands ANNOTATED” (`.57`).
+
+**RESOLUTION TRACE:** lines 817–843.
+
+**TEETH:** **all eight commits in the arc resolve**: `3101cf5`, `e1a8dfe`, `c048154`, `0d09d65`, `a1c181d`, `8165208`, `b6a43963`, `d6b409ce`, `0633c6a3` ✓ (nine, counting the rider). **The arc names its own over-correction** — “r2's OVER-CORRECTION” — which is the honesty marker that makes this note's history reusable as a methodology datum.
+
+---
+
+### EFF.GENTOW3.55  [run-record]  *(SERIES CERTIFICATE-CONFIG)*
+
+**CANONICAL STATEMENT:**
+
+> “**PE5 obs-1 recorded as data (the THIRD certificate
+> configuration; named for the GENTOW3-BOX-1 residue).** At PE5's
+> fresh frame FR5X (p = 2, Phi' = x²−2, e2 = 2, f2 = 1, delta = 9 —
+> the largest delta in any leg of this arc — run at mu2 = 2 AND
+> mu2 = 3; instrument gentow3_pe5_fresh.py md5 9acab757, output
+> fc4f8d55, GREEN 287/0, verdict @ 2c8bb507), the key power's
+> self-shadow rows read off the committed output (lines 2 and 4):
+> mu2 = 2: G = [4096·Y, 0], pins [61, None] — ATTAINED at
+> 61 = THETA_0, j = 1 IDENTICALLY ZERO; mu2 = 3: G = [2^19·xY,
+> 12288·Y, 0], pins [91, 61, None] vs THETA [87, 61, 35] — SLACK at
+> j = 0 (the height-87 digit cancels, the first divergence sits
+> strictly above THETA_0), ATTAINED at j = 1, IDENTICALLY ZERO at
+> j = 2. The identically-zero shadow coordinate is a stronger
+> failure form than FR-M3's cancelled-digit-with-slack …: the coordinate is untouched vacuously, which is
+> exactly how the (iv) certificate pin classifies it … Data point
+> for GENTOW3-BOX-1: this arc has now MEASURED three certificate
+> configurations — attained, slack, identically zero — and a
+> genre-general certificate law (BOX-1's open ask) has these three
+> measured cases to decide among … BOX-1 stays OPEN.”
+
+**FORM:** bold-headed observation record.
+
+**DERIVATION:** `[RUN]` at a new fresh frame, read off the committed output by line number.
+
+**CONDITIONALITY:** **this is DATA for an open box, not a repair** — the note is explicit that BOX-1 stays open. Its value is that it enumerates the three configurations a general law must cover.
+
+**RESOLUTION TRACE:** lines 845–867.
+
+**TEETH:** **both md5s verified** (`9acab757…`, `fc4f8d55…`) ✓; output verdict re-read: `=== VERDICT: GREEN -- 287 checks, 0 violations ===` ✓ with tally `[('BAND', 4), ('DIV', 3), ('ENTRY', 120), ('FLOOR', 120), ('GP', 6), ('REP', 11), ('SELF', 11), ('SWEEP', 2), ('TEETH', 3), ('WIT', 7)]`. **ARITHMETIC AUDIT: 4+3+120+120+6+11+11+2+3+7 = 287** ✓ — the ten-category tally sums exactly to the headline. **The FR5X constants recompute:** `D' = e1f1 = 2`, `E2 = e2f2u2` with `e2 = 2, f2 = 1` and `δ = u2 − e2D'h = 9` gives `u2 = 9 + 2·2·1 = 13`, so `E2 = 2·1·13 = 26`; then `Θ` at μ₂ = 3 is `[3·26+9, 2·26+9, 1·26+9] = [87, 61, 35]` ✓ **exactly as displayed**, and at μ₂ = 2 `Θ_0 = 2·26+9 = 61` ✓ **exactly the attained pin**. Every constant in the observation reproduces from δ = 9 alone. `git cat-file -t 2c8bb507` = commit ✓.
+
+---
+
+### EFF.GENTOW3.56  [instrument-record]
+
+**CANONICAL STATEMENT:**
+
+> “BYTE-FREEZE LEDGER (this round): pre-append body md5
+> 1e753d199950bc591a95962686f25ed3 (815 lines) = the rider state @
+> d6b409ce; this record is a PURE APPEND on that body, verified by
+> prefix md5 after the append. Sealed artifacts byte-frozen: the
+> eleven S7.5/S7.6/S7.7 pinned md5s re-verified at PE5 (report S
+> machine leg, four isolated re-runs bit-identical + the known gp
+> stderr line); no runner edited, no re-run this round.”
+
+**FORM:** bold-headed freeze ledger.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** none.
+
+**RESOLUTION TRACE:** lines 869–875.
+
+**TEETH:** **VERIFIED: lines 1–815 hash to `1e753d199950bc591a95962686f25ed3`** ✓ — both the md5 and the stated 815-line count reproduce. All eleven pinned artifact md5s re-verified (§3.2) ✓.
+
+---
+
+### EFF.GENTOW3.57  [record]  *(SERIES ARC, link 6)*
+
+**CANONICAL STATEMENT:**
+
+> “Provenance: decorrelated-model adversarial RUN B (record
+> CODEX_TOWERRAT2_2026-08-10.md S3; raw log
+> verification/openmath/towerrat2_runB_gentow3_output.txt, md5
+> 32751d5d, 6,297 B; outcome CHALLENGE — 2 JUSTIFICATION GAPs, 16
+> CHECKED-CLEAN lines), adjudicated 2/2 REAL at their stated severity.
+> Both corrections are RE-DERIVED from this note's own Steps 0-2 and
+> the committed FR-M3 artifacts, not transcribed from the verifier;
+> the note is frozen, so both land as dated corrections BY SUPERSESSION
+> (the superseded sentences stay byte-intact above and read as
+> corrected here).”
+
+with the section heading's grade clause: “**acceptance 2/2 stands ANNOTATED, per the batch charter**”.
+
+**FORM:** provenance paragraph under the §S8 heading.
+
+**DERIVATION:** `[RECORD]` of a decorrelated post-acceptance ratification.
+
+**CONDITIONALITY:** **“16 CHECKED-CLEAN lines” is a positive result worth carrying**: the same run checked and passed the floor/band/x-free core, the certificate scoping and the count-law (`.60` says so explicitly). The two GAPs are both on (iv)-adjacent sentences, not on the criterion.
+
+**RESOLUTION TRACE:** lines 883–892.
+
+**TEETH:** **the raw log is verified present with md5 `32751d5d…` AND its stated byte count: `wc -c` = 6,297 B exactly** ✓ — a size pin, rare in the corpus and here exact. `CODEX_TOWERRAT2_2026-08-10.md` exists ✓.
+
+---
+
+### EFF.GENTOW3.58  [changes-record]  *(CHAIN-PERSIST — TERMINAL)*
+
+**CANONICAL STATEMENT:** §S8.1, `[ASSEMBLED]` from lines 898–939. The withdrawal, verbatim:
+
+> “**Superseded inference (quoted).** "both reads shift by the SAME
+> g-digits (linearity of both divisions in f), so the divergence at
+> THETA_j persists" — WITHDRAWN as an inference: linearity gives
+> (Sh - C)(f0 + g) = (Sh - C)(f0) + (Sh - C)(g), not Sh(g) = C(g),
+> and honest depth of g does not make the two shifts identical (the
+> committed FR-M3 W member: honest C_0 = 0 while ShC_0 = 32 with first
+> discrepancy exactly THETA_0 = 10 …).”
+
+The corrected three-step derivation, verbatim:
+
+> “(1) the level-1 development of g carries the same floor …;
+> (2) Step 1's ledger is LINEAR in F and weight-monotone (its own
+>     sentences): from g-terms at wt >= mu2*E2 + 1, every term of
+>     Ghat_j(g) sits at wt >= (mu2 - j)E2 + 1;
+> (3) Step 2's branch pricing adds k*delta with k >= 1 on every
+>     discrepancy branch …: the difference Sh(g) - C(g) at
+>     coordinate j is supported at wt >= (mu2 - j)E2 + 1 + delta =
+>     THETA_j + 1; … every disagreeing height of g's two reads is >= THETA_j + 1,
+>     STRICTLY above the floor.”
+
+and the boundary confirmation, verbatim:
+
+> “Boundary confirmation from the committed instruments: the
+> FR-M3 W member's g_W = 2x*Phi2^2 + 8*Phi2 has slot weights 9, 9 <
+> 10 = mu2*E2 + 1 — OUTSIDE the box — and its discrepancy lands at
+> exactly THETA_0 = 10; the corrected law puts in-budget
+> g-discrepancies at >= 11 at j = 0, so the measured row sits exactly
+> on the repaired hypothesis boundary, refuting nothing. The
+> parenthetical hypothesis "(slots at heights > THETA_j)" is NOT
+> consumed by the corrected derivation; the box hypothesis is the
+> operative one.”
+
+**FORM:** numbered correction section with a quoted withdrawal and a three-step re-derivation.
+
+**DERIVATION:** the note's own Steps 0–2 re-run on `g` under the GENTOW-1(a) box hypothesis, giving a STRICT `+1` above the floor; linearity then isolates the key power's certificate digit at `Θ_j`.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement of a justification** — the conclusion (persistence) survives; the inference is replaced and the operative hypothesis CHANGES from “slots at heights > Θ_j” to the GENTOW-1(a) box.
+
+**RESOLUTION TRACE:** lines 894–939; the superseded sentence at 295–298.
+
+**TEETH:** **ARITHMETIC AUDIT of the three-step chain, recomputed:** step (2) `wt ≥ mu2E2 + 1` ⟹ `Ĝ_j(g)` at `wt ≥ (mu2−j)E2 + 1` (Step 1's ledger shifts by `(mu2−j)E2` relative to `mu2E2`) ✓; step (3) adds `k·δ ≥ δ` giving `(mu2−j)E2 + 1 + δ = Θ_j + 1` ✓ — **strictly above the floor, exactly as claimed.** **The boundary confirmation also recomputes:** `mu2E2 + 1 = 3·3 + 1 = 10` at FR-M3, and `g_W`'s slot weights are stated as 9, 9 `< 10` ✓ — so the measured member is genuinely outside the box and refutes nothing. **This is the sharpest repair in the entry: a withdrawn inference, a stronger conclusion (`≥ Θ_j + 1`), and a measured boundary case that sits exactly on the new hypothesis edge.**
+
+---
+
+### EFF.GENTOW3.59  [changes-record]  *(CHAIN-NONFUNC, link 2 — SUPERSEDED)*
+
+**CANONICAL STATEMENT:** §S8.2, verbatim:
+
+> “**Superseded sentence (quoted).** "The shadow read at heights >=
+> THETA_j is NOT a function of the honest data." Literally read, this
+> is FALSE: the full honest composed data — the key together with the
+> digit strings C_j of f = Phi2^{mu2} + Sum_j C_j Phi2^j (the Phi2-adic
+> development is unique) — determine f, and the stage-shadow division
+> is a deterministic function of f; so the shadow IS a function of the
+> FULL honest data.”
+
+> “**Corrected sentence (the scope the note's instances prove).** The
+> shadow read's content at heights >= THETA_j is not a function of the
+> honest read's OUTPUT — the verdict-level data (pins, deciding
+> residues, sigma, labels) that the sub-THETA faithful band (ii)
+> determines: the committed PE1 triple varies the shadow read at fixed
+> honest sigma, and conversely the S8.1 pair construction gives
+> members with identical shadow data and different honest reads …
+> No committed pair witnesses a stronger truncation scope …, and none is claimed.”
+
+**FORM:** numbered correction section.
+
+**DERIVATION:** a determinacy observation (the Φ₂-adic development is unique) refuting the literal reading, then a re-scoping to the verdict-level output.
+
+**CONDITIONALITY:** **THIS CORRECTION IS ITSELF SUPERSEDED by S8.4** (`.62`), which withdraws the verdict-level tuple scope entirely. SUPERSESSION KIND: **replacement**, then **replacement**. **A consumer citing S8.2's corrected sentence is citing a withdrawn claim** — the TERMINAL is S8.4's σ-only statement.
+
+**RESOLUTION TRACE:** lines 941–961; the superseded original at 215–216; the withdrawal at 1012–1019.
+
+**TEETH:** the two directions it claims are the PE1 triple (`.14`, verified) and the S8.1 pair construction (`.58`) — both committed; but the *scope* they support is exactly what S8.4 re-measures and reduces.
+
+---
+
+### EFF.GENTOW3.60  [instrument-record]
+
+**CANONICAL STATEMENT:**
+
+> “Pre-append state: post-acceptance body md5 203f7c04
+> (203f7c04fa8499853509e33524bab77f; 878 lines, 48,738 bytes); this
+> section is a PURE APPEND on it … Sealed machine artifacts
+> BYTE-FROZEN and untouched this round (the eleven pinned md5s of
+> S7.5/S7.6/S7.7 stand; the S8.1 boundary confirmation re-reads the
+> committed gentow3_pe3_fresh artifacts, no re-run). Statement
+> displays above stay byte-intact; both corrections are dated
+> supersessions of two (iv)-adjacent sentences. Grade: ACCEPTED 2/2
+> stands, ANNOTATED by RUN B; S8.1/S8.2 discharge the adjudication's
+> repair charges in full — the floor/band/x-free core, the
+> certificate scoping, and the count-law were CHECKED CLEAN by the
+> same run (16 lines) and are untouched.”
+
+**FORM:** bold-headed freeze + append ledger (§S8.3).
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** none.
+
+**RESOLUTION TRACE:** lines 963–977.
+
+**TEETH:** **VERIFIED, all three quantities: lines 1–878 hash to `203f7c04fa8499853509e33524bab77f` and measure exactly 48,738 bytes** ✓. The “16 CHECKED-CLEAN lines” positive result is recorded here and at `.57`.
+
+---
+
+### EFF.GENTOW3.61  [record]
+
+**CANONICAL STATEMENT:**
+
+> “**Activation note (orchestrator, 2026-08-12).** The E13 search spec
+> was implemented twice against the committed readers (tracing, then
+> direct call-surface extraction: gentow3_shadow_search.py / _v2.py;
+> outputs runs/cert2/E13_search_output.txt +
+> runs/cert4/X1_search_output.txt). Both runs returned INCOMPLETE with
+> the same diagnosis: NO committed call surface computes the
+> verdict-level tuple (pins, deciding residues, σ, labels) or the
+> canonical high-shadow slot map — the stronger claim's own terms are
+> not committed objects, so the full-output-matched search is not
+> implementable against committed semantics (a stronger ground for
+> scope reduction than an EMPTY sweep). Under the owner's 2026-08-12
+> delegated authority (end-to-end-proof criterion: S8.2 is a side
+> observation, not load-bearing for the uniformity theorem), the
+> fallback below is activated with "returns EMPTY" read as "is not
+> supported by the committed evidence". The correction text is sol's
+> E13 delivery, transcribed unaltered:”
+
+**FORM:** bold-headed orchestrator activation note.
+
+**DERIVATION:** `[RECORD]` of a **conditional activation whose trigger condition was not met literally** — the search returned INCOMPLETE, not EMPTY, and the orchestrator reads INCOMPLETE as a *stronger* ground and activates anyway, under a named delegated authority.
+
+**CONDITIONALITY:** **this is the most delicate protocol move in the entry and it is fully disclosed.** S8.4's own heading says it is “activated only after the committed full-output collision search returns EMPTY on its complete roster”; the note then records that the search never returned EMPTY, explains why INCOMPLETE is stronger (the claim's own terms are not committed objects), and cites the authority and the criterion (S8.2 is a side observation, not load-bearing). **A consumer must read S8.4 with this note attached** — the heading alone misstates the activation basis. OPEN-CALL 2.
+
+**RESOLUTION TRACE:** lines 981–996.
+
+**TEETH:** **both search outputs verified present**: `runs/cert2/E13_search_output.txt` ✓ and `runs/cert4/X1_search_output.txt` ✓, as is `runs/cert2/E13_gentow3_output.log` ✓. The two search instruments named (`gentow3_shadow_search.py` / `_v2.py`) are cited without a directory; recorded as a soft pin (OPEN-CALL 3).
+
+---
+
+### EFF.GENTOW3.62  [changes-record]  *(CHAIN-NONFUNC — TERMINAL)*
+
+**CANONICAL STATEMENT:** §S8.4, verbatim:
+
+> “The residual search compared members only within an identical
+> committed reader frame and required equality of the ENTIRE
+> verdict-level honest output: pins, deciding residues, sigma, and
+> labels. It found no pair on the committed roster having that full
+> honest-output tuple identical and shadow content different at
+> heights >= THETA_j. An EMPTY finite-roster search does not prove
+> that no such pair exists on the full tower locus; it shows that
+> the committed evidence does not establish the stronger
+> full-verdict-output scope.”
+
+> “**S8.2 supersession.** The S8.2 corrected sentence beginning
+> "The shadow read's content at heights >= THETA_j is not a
+> function of the honest read's OUTPUT" is WITHDRAWN. Its reference
+> to the full verdict-level tuple "(pins, deciding residues, sigma,
+> labels)" is likewise WITHDRAWN.”
+
+> “**Final corrected claim.** The shadow read's content at heights
+> >= THETA_j is not a function of the honest read's sigma.”
+
+> “**Proof from the committed instances.** PE1-0 and PE1-1 have the
+> same honest sigma, namely {(8,1)}, while their shadow reads differ:
+> PE1-0 has shadow pins (21,14) and label tRAM, whereas PE1-1 has
+> shadow pins (28,14) and label tINERT. In particular their shadow
+> content differs at coordinate 0 at heights >= THETA_0 = 21.
+> Hence equal honest sigma can have different shadow content, so no
+> function of honest sigma alone determines that content …”
+
+with the scope fence:
+
+> “This correction changes only S8.2's non-functionality scope.
+> S8.1's repaired margin proof, THEOREM GENTOW-3(i)-(iii), the
+> certificate-scoped persistence statement, and the accepted
+> machine records are untouched.”
+
+**FORM:** numbered correction section (transcribed sol delivery).
+
+**DERIVATION:** a two-instance witness proof from the committed PE1 rows.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement** (a scope reduction). **TERMINAL of CHAIN-NONFUNC.** The final claim is the weakest of the three and the only one with a committed two-instance proof.
+
+**RESOLUTION TRACE:** lines 998–1035; the closing provenance parenthetical at 1037–1041.
+
+**TEETH:** **THE WITNESS PAIR IS VERIFIED AGAINST `.14`'s RECOMPUTED TABLE.** PE1-0: honest tRAM(25,14), shadow tRAM(21,14), σ {(8,1)}. PE1-1: honest tRAM(21,14), shadow tINERT(28,14), σ (PARI) {(8,1)}. **Same honest σ = {(8,1)} ✓; different shadow pins (21,14) vs (28,14) ✓; different shadow labels tRAM vs tINERT ✓; and both shadow divergences at coordinate 0 sit at heights ≥ Θ_0 = 21 ✓** (21 and 28 respectively). The proof reproduces exactly from the note's own S1 divergence table. The provenance parenthetical records the same re-check: “the PE1-0/PE1-1 witness pair re-checked against the committed records” — and “Ledger: row 9 → folded, awaiting discharge-confirm (cert5)”, an outstanding item (OPEN-CALL 5).
+
+---
+
+## 3. XREF verification ledger
+
+### 3.1 Designation XREFs
+
+`[TABLE — compiler ledger]`
+
+| ID | Target | Check | count | Role |
+|---|---|---|---:|---|
+| X01 | `GENHN_PROOF_2026-08-08.md` | `GENHN-TOW-1` | **19** | the box; item (3) is this note's charge |
+| X02 | `GENTOW6_PROOF_2026-08-09.md` | exists; named by the r2 consumer walk as “the one downstream consumer of (iv)-adjacent content” | — | consumer-walk target (`.52`) |
+| X03 | `docs/PROJECT_STATE.md` | append #12 / #13, named by the consumer walk | — | consumer-walk target |
+| X04 | `CODEX_TOWERRAT2_2026-08-10.md` | exists | — | RUN B's record (`.57`) |
+| X05 | `GENTOW1_PROOF_2026-08-09.md` | exists; supplies LEMMA GENTOW-1/5 and the imported families | — | the note's principal proof-side import |
+
+### 3.2 Commit and artifact pins (v3 rule 23) — **thirteen artifact md5s, all matched**
+
+`[TABLE — compiler ledger]`
+
+| ID | Pin | Verified |
+|---|---|---|
+| P-01 | commits `3101cf5`, `c048154`, `a1c181d`, `b6a43963`, `0633c6a3`, `d90db6d`, `5ac0d80`, `e1a8dfe`, `0d09d65`, `8165208`, `d6b409ce`, `16a729bd`, `2c8bb507`, `59c1966` | **ALL FOURTEEN resolve** |
+| P-02 | `gentow3_checks.py` `7cf3a7b8…` | MATCHES |
+| P-03 | `gentow3_checks_output.txt` `926cd05f…` | MATCHES; `GREEN -- 582 checks, 0 violations` |
+| P-04 | `gentow3_pe1_fresh.py` `35ad32aa…` | MATCHES |
+| P-05 | `gentow3_pe1_fresh_output.txt` `94160b22…` | MATCHES |
+| P-06 | `gentow3_pe1_fresh_output_run1_RED.txt` `485946fc…` | MATCHES (the RED run is KEPT, not deleted) |
+| P-07 | `gentow1_checks.py` `6df4b213…` | MATCHES — **and is the same hash GENTOW1's own S5 pins** |
+| P-08 | `gentow3_pe2_fresh.py` `55208baf…`, output `06b4bddf…`, run-1 RED `3ca64bd4…` | ALL THREE MATCH |
+| P-09 | `gentow3_pe3_fresh.py` `bde31247…`, output `3ce4128a…` | BOTH MATCH; `GREEN -- 451 checks, 0 violations, teeth 3/3` |
+| P-10 | `gentow3_pe5_fresh.py` `9acab757…`, output `fc4f8d55…` | BOTH MATCH; `GREEN -- 287 checks, 0 violations` |
+| P-11 | `towerrat2_runB_gentow3_output.txt` `32751d5d…`, **6,297 B** | MATCHES md5 **and byte count** |
+| P-12 | the three text freezes | **ALL VERIFIED** (§1) |
+| P-13 | `gentow3_checks.py` L398–399 dead code | **VERBATIM MATCH at the stated lines** |
+| P-14 | `runs/cert2/E13_search_output.txt`, `runs/cert4/X1_search_output.txt`, `runs/cert2/E13_gentow3_output.log` | ALL THREE EXIST |
+| P-15 | `gentow3_shadow_search.py` / `_v2.py` | cited without a directory; **not located** — soft pin, OPEN-CALL 3 |
+
+### 3.3 Verified NEGATIVE edges
+
+| ID | Check | count | Meaning |
+|---|---|---:|---|
+| N1 | `grep -cF 'GENTOW' GENHN_PROOF_2026-08-08.md` | **0** | the item-(3) discharge AND the (iv)-sentence upgrade are both UNLANDED (`.42`) |
+
+---
+
+## 4. Effective supply / consumption ledger
+
+| Obligation | Effective supply | Surviving fence | Protocol status |
+|---|---|---|---|
+| [GENHN-TOW-1] item (3): the faithfulness geography | `.18`–`.21` (THEOREM, four clauses) | (i)–(iii) general; **(iv) certificate-conditional** (`.39`); geography one-sided (`.10`) | **DELIVERED, ACCEPTED 2/2, ANNOTATED**; discharge UNLANDED (N1) |
+| item (3)'s parenthetical: T(a) event-band survival as a theorem | `.29` (COR GENTOW-3.C) | unconditional at every genre | **DISCHARGED**; the supplier-sentence upgrade UNLANDED (N1) |
+| the leaf-depth failure quantified | `.30`–`.33` (three regimes) | δ = 1 band empty; count-law one-sided | **DONE**, with measured instances AND non-instances |
+| the corrected `chat_t` | `.15`, `.44` | value-live only at the x-free classification here | **IMPORTED** from GENHN's erratum |
+| items (4), (6)(α) | not supplied | `.38` | **OPEN**; item (4) = GENTOW-4's territory |
+
+---
+
+## 5. NON-IMPORTS
+
+**NI-1 — no supplier file is edited.** `.07`, `.42`; verified (N1).
+**NI-2 — the certificate is NOT proved genre-generally.** `.39`: “a genre-general non-vanishing proof … [is] NOT delivered”.
+**NI-3 — no witness battery for entry-digit-driven overflows.** `.28`(2), `.39`.
+**NI-4 — the geography is ONE-SIDED.** `.10`: no only-if is claimed; “other members can still fail at exactly THETA_j”.
+**NI-5 — reaching Θ_j is NECESSARY, not sufficient.** `.33`.
+**NI-6 — the σ-comparison is NOT executed in code.** `.37`, `.50`: dead code; the difference is entailed, not compared.
+**NI-7 — the ENTRY tally is NOT independent evidence.** `.50`.
+**NI-8 — the deep-perturbation parenthetical is NOT the operative hypothesis.** `.58`: “The parenthetical hypothesis "(slots at heights > THETA_j)" is NOT consumed by the corrected derivation”.
+**NI-9 — no stronger non-functionality scope is claimed.** `.59`, `.62`: the final claim is σ-only; “No non-functionality claim for the larger tuple … is retained.”
+
+Accordingly **no edge is created** from this note to a genre-general certificate law, to a biconditional mislabeling law, to an in-code σ comparison, or to any non-functionality claim beyond honest σ.
+
+---
+
+## 6. TEETH inverse inventory
+
+### 6.1 Obligation → guarded units
+
+| # | Row | Guarded units | Disposition |
+|---:|---|---|---|
+| 1 | P-1 FLOOR 274 (137 member_checks) | `.18` | executable regression; census corrected conservatively (`.49`) |
+| 2 | P-2 SHARP 11 (self-shadow pins at Θ) | `.21`, `.27`, `.12` | executable regression — **the (iv) certificate's sealed leg** |
+| 3 | P-3 XFREE 3 + 12-member sweep | `.20`, `.17` | executable regression |
+| 4 | P-4 ENTRY 274 | `.29` | **disclosed non-independent** (entailed by FLOOR given δ ≥ 1) |
+| 5 | P-5 BAND 2 | `.19`, `.31` | executable regression — the faithful-leaf-band witnesses |
+| 6 | P-6 LABEL 6 | `.19` | executable regression |
+| 7 | P-7 PE1 3 + GP-SIG 6 | `.14`, `.33`, `.62` | executable regression — **and the witness pair for the terminal σ-claim** |
+| 8 | T-THRESH-UP ×4 | `.18`, `.21` | **anti-vacuity: pins Θ from above** |
+| 9 | T-BAND-EDGE ×1 | `.19`, `.31` | **anti-vacuity: pins Θ from below** |
+| 10 | T-SHADOW-REG ×1 | `.37`, `.50` | **disclosed non-repair** — σ-leg is dead code |
+| 11 | the PE1 fresh route (FR-GL, 485/0, η ≠ 1) | `.47` | **AUDIT / decorrelated frame** — the note's only η ≠ 1 contact |
+| 12 | the PE2 fresh route (149/0, the count-law counter-member) | `.52` | **AUDIT / decorrelated frame** — refutes a composed biconditional |
+| 13 | the PE3 fresh route (451/0, teeth incl. `T3-BICOND`) | `.53`, `.10` | **AUDIT / decorrelated frame** — refutes r2's over-correction |
+| 14 | the PE5 fresh route (287/0, FR5X at δ = 9) | `.55` | **AUDIT / decorrelated frame** — the third certificate configuration |
+| 15 | RUN B (2 GAPs, 16 CHECKED-CLEAN) | `.57`–`.60` | **AUDIT / decorrelated-model audit** |
+| 16 | the E13 search (twice implemented, INCOMPLETE) | `.61`, `.62` | **instrument-record: NOT IMPLEMENTABLE against committed semantics** |
+| 17 | GENTOW3-BOX-1 | `.39`, `.55` | **PROOF-ONLY, OPEN** — three configurations measured |
+| 18 | GENTOW3-BOX-2 | `.40` | **signed coverage disclosure**, two-axis |
+
+**Zero-orphan check: 18 obligations, all mapped, 0 orphans.**
+
+### 6.2 Arithmetic audit summary (v3 rule 22)
+
+- **582** = 274+274+11+6+3+2+3+6+3 ✓, all nine categories matching the artifact ✓
+- **287** = 4+3+120+120+6+11+11+2+3+7 ✓ (FR5X)
+- **all five δ** and **all ten Θ** of the S1 table, recomputed from `.09`'s formulas ✓
+- **all five entry tops** `mu2·E2` ✓; the faithful-band width `δ−1` at FAM-A7 = [29,30] ✓
+- **the census**: `5×27+2 = 137`, `×2 = 274` ✓; the erroneous `50+60 = 110` ✓; the gap `27` = 20+5+2 ✓
+- **FR-M3**: `E2 = 3`, `δ = 1`, `Θ = [10,7,4]` ✓
+- **FR-GL**: `E2 = 6`, `δ = 1`, `Θ = (13,7)`, both slot-height routes ✓, the gauge factor 54→108 ✓
+- **FR5X**: from `δ = 9` alone, `u2 = 13`, `E2 = 26`, `Θ(μ₂=3) = [87,61,35]`, `Θ_0(μ₂=2) = 61` ✓
+- **the four digit replications** `[−32,0,16]`, `[−128,0,64]`, `[−128,64,64]`, `[−8,8,4]` ✓
+- **Step 2's recarry bound** and **Step 1's `mu1u2 = mu2E2`** ✓
+- **S8.1's `Θ_j + 1`** and the `g_W` boundary `9 < 10` ✓
+- **S8.4's witness pair** (same honest σ, different shadow pins/labels, both ≥ Θ_0) ✓
+- **three text freezes**: 815 lines; 878 lines/48,738 bytes; the `d90db6d` blob md5 ✓
+- **thirteen artifact md5s** + one byte count (6,297 B) ✓
+
+**Zero arithmetic discrepancies found.**
+
+---
+
+## 7. BOUNDARY SELF-AUDIT
+
+### 7.1 The rule applied
+
+Zero `\tag{`; smallest cuttable span. Theorem CLAUSES are units (clause (iv) alone carries three separate supersessions); numbered repair SECTIONS are units; the three S4 regimes are units (each is cited separately downstream).
+
+### 7.2 Boundaries drawn, arguable ones both ways
+
+1. **THEOREM GENTOW-3 → four clause units + six proof units.** *Chosen* because (i)/(ii) are unconditional and gauge-immune, (iii) is definition-scoped, and (iv) carries three supersessions. No single unit could state that.
+2. **The four ARC records → four units (`.02`–`.05`).** *Chosen* because the arc's value is its shape — GAP → over-correction → one-siding → clean — and per-entry emission is the only way a merge run sees it.
+3. **S8.2 emitted despite being superseded (`.59`).** *Arguable*: one could emit only S8.4. *Chosen* because S8.4 supersedes S8.2 by NAME and quotes it; without `.59` the terminal correction has no antecedent, and a reader could not tell that the verdict-level tuple was ever in play.
+4. **`.61` (the activation note) split from `.62` (S8.4).** *Chosen* because the activation note is the ORCHESTRATOR's and S8.4 is sol's transcribed delivery — different authors, and the activation's disclosure that the trigger condition was not literally met is the load-bearing part.
+5. **The three certificate configurations → one unit (`.55`) with a declared SERIES.** *Arguable*: three units. *Chosen* because the note assembles them as one data point for one open box, and their value is comparative.
+6. **`.47` (FR-GL) kept separate from `.44`/`.45`.** *Chosen* because it is a run-record adopted from another instrument, not part of the annex's derivation.
+7. **`.50` kept separate from `.37`** though both concern the dead σ-leg: `.37` is the tooth's own row (a run-record), `.50` is the numbered disclosure section (a changes-record) and carries the second, unrelated non-independence disclosure.
+
+### 7.3 Merges deliberately NOT made
+
+- `.30`/`.31`/`.32` (the three regimes) kept apart: each is cited separately, and only `.30` carries a dated correction.
+- `.10` (geography) not merged into `.09` (the constants): the geography carries a two-layer supersession the constants do not.
+- `.58`/`.59` kept apart: two different GAPs from one run, with different fates.
+
+### 7.4 Rules that fought this genre
+
+- **Rule 25 (CHAIN) is indispensable here and CHAIN-NONFUNC is the queue's only THREE-layer chain where the middle layer is itself a correction.** A flat “superseded by” field would leave a consumer citing a withdrawn scope.
+- **Rule 22 paid heavily**: every constant in five families and four fresh frames recomputes from two formulas, which independently validates the S1 tables and all four fresh-route records.
+- **Rule 23**: thirteen artifact md5s, one byte count, three text freezes, fourteen commits — the densest pin set in the queue after GENTOW1, and complete.
+- **Rule 19's split** mattered at `.61`: an *instrument* that is **not implementable** is neither a preregistration nor a run-record, and only the three-way split makes that statable.
+
+---
+
+## 8. Deferred reconciliation obligations
+
+1. **The item-(3) discharge and the (iv)-sentence upgrade are both unlanded on GENHN — FOR-0c.** Precondition (2/2) met; N1 verified. Two distinct obligations in one sentence.
+2. **The conditionality stack cites GENTOW-1 at 0/2 — FOR-0b.** Stale in the favorable direction; GENTOW1 is ACCEPTED 2/2 at HEAD.
+3. **Ledger row 9 awaits discharge-confirm (cert5) — FOR-0c.** S8.4's closing parenthetical: “Ledger: row 9 → folded, awaiting discharge-confirm (cert5).”
+4. **The two E13 search instruments are cited without a path — FOR-0b.** `gentow3_shadow_search.py` / `_v2.py` were not located; their outputs exist.
+
+---
+
+## 9. Self-audit and OPEN-CALLS
+
+### 9.1 Resolved compilation calls
+
+- The effective-text rule distinguishes r1–r3's in-body insertions from the three post-freeze supersessions, and identifies the ONE statement-internal edit (r2's “touched” pin) that the note itself flags.
+- **Seven CHAINs reconstructed with TERMINALs**, including the queue's only documented over-correction (CHAIN-GEOG) and its only doubly-superseded sentence (CHAIN-NONFUNC).
+- **All thirteen artifact md5s, one byte count, three text freezes and fourteen commits verified; the dead-code lines verified verbatim at their stated line numbers.**
+- **Every constant in five families and four fresh frames recomputed from the note's own two formulas; zero discrepancies.**
+- The note's own disclosures of non-independence (ENTRY entailed by FLOOR; the dead σ-leg) are carried as dispositions rather than absorbed into the evidence count.
+- The r2 repair's four-part structure (re-derivation / refuting instances / non-vacuity check / consumer walk) is recorded as the queue's most complete repair protocol.
+
+### 9.2 OPEN-CALLS
+
+**OPEN-CALL 1 — the S0 geography is one-sided; is that the charge's “EXACTLY”? FOR-0b.**
+The CHARGE asks to “characterize EXACTLY when the stage-shadow read … agrees”. What is delivered after r3 is a one-sided law: below Θ_j faithful (proved, general); at Θ_j, failure at certificate-carrying coordinates (proved) and possible failure elsewhere (measured, not characterized). **Whether item (3)'s box counts as discharged by a one-sided law is a note-owner/ledger judgment** — the note claims delivery, and the r2 consumer walk found no consumer relying on more, but the charge's own word is “EXACTLY”.
+
+**OPEN-CALL 2 — S8.4's activation condition was not literally met. FOR-0c/0d — NEEDS ASVIN.**
+The section heading reads “activated only after the committed full-output collision search returns EMPTY on its complete roster”. The search returned **INCOMPLETE**, twice, because the claim's own terms are not committed objects. The orchestrator's activation note (`.61`) discloses this fully, argues INCOMPLETE is a *stronger* ground, and cites delegated authority plus the end-to-end-proof criterion. **The disclosure is exemplary; the protocol question — may a conditional append be activated on a stronger-but-different condition, with the heading left stating the original one? — is not a compiler decision.** A one-line heading amendment would remove the mismatch.
+
+**OPEN-CALL 3 — two search instruments are unlocated. FOR-0b.**
+`gentow3_shadow_search.py` and `_v2.py` are named without a directory and were not found. Their outputs exist and are pinned. Committing the instruments (or citing their path) would close it.
+
+**OPEN-CALL 4 — the conditionality stack's GENTOW-1 grade is stale. FOR-0b.** See §8 item 2. Favorable direction; no consumer is wrong.
+
+**OPEN-CALL 5 — ledger row 9 awaits discharge-confirm. FOR-0c.** S8.4 is folded but its discharge-confirm (cert5) is outstanding per the note's own closing line.
+
+### 9.3 Fidelity audit
+
+- Every CANONICAL STATEMENT is verbatim, or `[ASSEMBLED]` (eight units: `.24`, `.27`, `.36`, `.47`, `.52`, `.53`, `.58`, and the S8 provenance), with `…` at every truncation.
+- ASCII/Unicode mixing preserved as the source has it (`THETA_j` in S0/S2, `Θ_j` in the S1 table and S8) — both quoted as written.
+- Four source tables emitted as tables; the two fixed-width ASCII blocks (divergence table, verdict block) double-emitted per v3 rule 14.
+- No quantifier, threshold, pin, label or σ tuple altered. Compiler-computed values appear only in TEETH fields, marked recomputed.
+- 5 designation XREFs, 15 pin classes, 1 negative edge verified; **no designation invented**.
+
+EFF-GENTOW3 COMPILED: 62 statements / 5 xrefs verified / 5 open calls
