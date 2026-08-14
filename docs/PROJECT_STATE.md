@@ -4673,3 +4673,20 @@ memory index for any fresh session. The goal's remaining stages
 (blueprints written; fleet launched) are gated ONLY on the codex
 reset clock per Asvin's standing no-codex order — nothing else
 blocks them.
+
+**2026-08-14 DATED APPEND #51 — ASVIN AUTHORIZES THE OPUS
+SUBSTITUTION: "lets keep going with Opus so it finishes the routine
+70%".** Division revised: OPUS now executes the routine 70% — the
+remaining 45 spec-compilation runs, merges, the 0c DAG draft, 0e
+leanspec, and the TRANSCRIPTION-GRADE chapter blueprints — hard
+chapters (σ-ladder master, tower grammar, representation decisions)
+sequenced LAST; CODEX (post-reset Tue 10:23) becomes the
+decorrelated CROSS-READ arm for everything opus compiles/authors
+(no fleet consumes an un-cross-read spec/blueprint) plus author-or-
+reviewer of the two hard chapters + the owed sol confirmations.
+Every opus-compiled spec carries the header flag "CODEX CROSS-READ
+OWED". Evidence basis for the substitution (recorded in-session):
+codex pilot first-attempt = 9 template changes incl. invented
+XREFs; opus week record = 23/23 certain-nodes landed as stated,
+zero invented pins, zero-drift merge. WAVE 1 LAUNCHED: agent-1 =
+T2 shards s2–s6; agent-2 = GENTOW5 s1–s2 + W12 s1–s2.
