@@ -9,7 +9,12 @@ cardinality q, degree n and splitting type sigma,
 
     decidedSeq sigma N = #{ classes c in (O/m^N)^n : EVERY monic degree-n lift of c
                             has splitting type sigma } / q^(n*N)
-    genuineDensity     = lim_{N -> infinity} decidedSeq   (a proved monotone limit)
+    decidedDensity     = lim_{N -> infinity} decidedSeq   (a proved monotone limit)
+
+(Post-rewire naming, unit UNIFORMITY-P4, 2026-08-13: the name `genuineDensity` now denotes
+the OTHER proved limit, lim_N possibleSeq -- the proportion of classes CONSISTENT with sigma.
+At n = 2 the two are equal by theorem (`genuineDensity_eq_decidedDensity_two`, via
+`drainage_two`), so every number this script checks is a number about both.)
 
 This script computes `decidedSeq` EXACTLY for O = Z_p, n = 2, small p and N, by brute
 force, and compares the numbers with the W-11 corpus
