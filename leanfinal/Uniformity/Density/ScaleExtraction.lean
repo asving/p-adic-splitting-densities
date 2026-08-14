@@ -73,9 +73,11 @@ end Level
 /-! ## CN-12 — the forward extraction, and its integrality side condition
 
 The substitution `X = π^m Y` sends a monic `f` of degree `n` to `f(π^m Y)`, which is
-`π^(m n) · G(Y)` for an *integral* monic `G` exactly when the Newton polygon of `f` lies above
-the line of slope `m` through `(n, 0)`. Written without any polygon representation, that
-condition is the coefficient divisibility `π^(m(n-i)) ∣ f.coeff i` for `i < n`, and the
+`π^(m n) · G(Y)` for an *integral* monic `G` exactly when the Newton polygon of `f` — the lower
+hull of the points `(i, v(f.coeff i))` — lies on or above the line through `(n, 0)` and
+`(0, m n)`, the "slope `m`" line of the source docstring. Written without any polygon
+representation, that condition is the coefficient divisibility `π^(m(n-i)) ∣ f.coeff i`
+(equivalently `v(f.coeff i) ≥ m(n-i)`) for `i < n`, and the
 conclusion is `f = G.scaleRoots (π^m)` — the backward (always integral) form in which the
 landed `typeOf_scaleRoots` is stated. -/
 
