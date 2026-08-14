@@ -13,19 +13,28 @@ splitting type `σ` and degree `n = 2`, the undecided mass drains:
 
     UndecidedVanishes O 2 σ                    (`drainage_two`)
 
-hence, by the tie already in `GenuineDensity.lean`, `upperDensity O 2 σ = genuineDensity O 2 σ`
-(`upperDensity_eq_two`) — the inner approximation of the type-σ locus (decided cylinders) and
-the outer one (possible cylinders) have the same limit. *(Read that as stated: it identifies two
-limits of cylinder counts. It is NOT a formal statement that the common value is the Haar
-measure of the type-σ locus — that bridge needs measurability of the locus and of the
-approximations, and is not formalized here. Nothing downstream needs it: `genuineDensity` is
-what the capstone quantifies over.)* The exact-value payoff that follows is
+hence, by the tie already in `GenuineDensity.lean`,
+
+    genuineDensity O 2 σ = decidedDensity O 2 σ    (`genuineDensity_eq_decidedDensity_two`)
+
+— the outer approximation of the type-σ locus (possible cylinders) and the inner one (decided
+cylinders) have the same limit. *(Read that as stated: it identifies two limits of cylinder
+counts. It is NOT a formal statement that the common value is the Haar measure of the type-σ
+locus — that bridge needs measurability of the locus and of the approximations, and is not
+formalized here. Nothing downstream needs it: `genuineDensity`, the outer limit, is what the
+capstone quantifies over, and it is a first-class object either way.)*
+
+**This tie is what licenses the whole `n = 2` re-key.** `Gates.lean` sits below this file and
+can therefore only state its `n = 2` gates over `decidedDensity` (all suffixed `_decided`);
+§9 at the end of this file transfers every one of them to THE density `genuineDensity` under
+the unsuffixed name. The exact-value payoff is
 
     genuineDensity O 2 split + genuineDensity O 2 inert + genuineDensity O 2 ram = 1
                                                (`sum_three_densities_eq_one`)
 
 — an EXACT `n = 2` identity over an arbitrary `O`, which is W-11 clause (iii)'s exhaustiveness
-(`Σ = 1`) in the Part-1 language.
+(`Σ = 1`) in the Part-1 language, and the `n = 2` instance of the named general-`n` target
+`TotalMassOne` (`totalMass_two`).
 
 ## The mechanism (the mathematics, before the Lean)
 
@@ -842,11 +851,13 @@ theorem drainage_two (σ : FactorizationType) : UndecidedVanishes O 2 σ := by
   rw [UndecidedVanishes, ← hL]
   exact hlim
 
-/-- **The bracket closes at `n = 2`.** The certified (decided) density *is* the density: the
-upper (possible) density collapses onto it. -/
-theorem upperDensity_eq_two (σ : FactorizationType) :
-    upperDensity O 2 σ = genuineDensity O 2 σ :=
-  upperDensity_eq_of_drainage (drainage_two σ)
+/-- **THE `n = 2` TIE — the bracket closes.** THE density (the limit of the proportion of
+classes consistent with `σ`) equals the certified one (the limit of the proportion on which `σ`
+is forced), unconditionally, for every complete DVR with finite residue field and every type.
+Every `_decided` gate of `Gates.lean` transfers through this equation; §9 does exactly that. -/
+theorem genuineDensity_eq_decidedDensity_two (σ : FactorizationType) :
+    genuineDensity O 2 σ = decidedDensity O 2 σ :=
+  genuineDensity_eq_of_drainage (drainage_two σ)
 
 /-! ### The exact identity: the three degree-2 types carry ALL the mass -/
 
@@ -942,19 +953,19 @@ theorem one_le_sum_seqs (N : ℕ) :
 
 /-- **THE EXACT `n = 2` IDENTITY.** The three degree-2 splitting types carry all the mass:
 
-    genuineDensity O 2 split + genuineDensity O 2 inert + genuineDensity O 2 ram = 1
+    decidedDensity O 2 split + decidedDensity O 2 inert + decidedDensity O 2 ram = 1
 
 for EVERY complete DVR `O` with finite residue field (wild residue characteristic included).
 This is W-11 clause (iii)'s exhaustiveness `Σ = 1`, proved here about the Part-1 density
 itself. `≤` is the general total-mass bound; `≥` is drainage — without it the decided
 proportions could leave mass behind forever. -/
-theorem sum_three_densities_eq_one :
-    genuineDensity O 2 splitType + genuineDensity O 2 inertType + genuineDensity O 2 ramType
+theorem sum_three_decidedDensities_eq_one :
+    decidedDensity O 2 splitType + decidedDensity O 2 inertType + decidedDensity O 2 ramType
       = 1 := by
   classical
   refine le_antisymm ?_ ?_
   · have hsum : ∑ τ ∈ ({splitType, inertType, ramType} : Finset FactorizationType),
-        genuineDensity O 2 τ ≤ 1 := sum_genuineDensity_le_one 2 _
+        decidedDensity O 2 τ ≤ 1 := sum_decidedDensity_le_one 2 _
     rw [Finset.sum_insert (by simp [splitType_ne_inertType, splitType_ne_ramType]),
       Finset.sum_insert (by simp [inertType_ne_ramType]), Finset.sum_singleton] at hsum
     linarith
@@ -962,8 +973,8 @@ theorem sum_three_densities_eq_one :
     have hlim : Tendsto (fun M : ℕ =>
         decidedSeq O 2 splitType (2 * M) + decidedSeq O 2 inertType (2 * M)
           + decidedSeq O 2 ramType (2 * M) + undecidedSeq O 2 (2 * M)) atTop
-        (𝓝 (genuineDensity O 2 splitType + genuineDensity O 2 inertType
-          + genuineDensity O 2 ramType + 0)) := by
+        (𝓝 (decidedDensity O 2 splitType + decidedDensity O 2 inertType
+          + decidedDensity O 2 ramType + 0)) := by
       refine Tendsto.add (Tendsto.add (Tendsto.add ?_ ?_) ?_) undecidedSeq_tendsto_zero
       · exact (decidedSeq_tendsto 2 splitType).comp tendsto_two_mul_atTop
       · exact (decidedSeq_tendsto 2 inertType).comp tendsto_two_mul_atTop
@@ -974,9 +985,9 @@ theorem sum_three_densities_eq_one :
 /-- **Every other type has density exactly `0` at `n = 2`.** Together with G11 this pins the
 whole degree-2 density function except for the split between the three surviving types: the
 menu is `{split, inert, ram}` and nothing else carries mass. (Generalises
-`genuineDensity_two_linType_eq_zero`, which is the case `σ = {(1,1)}`.) -/
-theorem genuineDensity_two_eq_zero {σ : FactorizationType} (hs : σ ≠ splitType)
-    (hi : σ ≠ inertType) (hr : σ ≠ ramType) : genuineDensity O 2 σ = 0 := by
+`decidedDensity_two_linType_eq_zero`, which is the case `σ = {(1,1)}`.) -/
+theorem decidedDensity_two_eq_zero {σ : FactorizationType} (hs : σ ≠ splitType)
+    (hi : σ ≠ inertType) (hr : σ ≠ ramType) : decidedDensity O 2 σ = 0 := by
   have hempty : ∀ N, decidedSet O 2 σ N = ∅ := by
     intro N
     ext c
@@ -992,22 +1003,157 @@ theorem genuineDensity_two_eq_zero {σ : FactorizationType} (hs : σ ≠ splitTy
     intro N
     rw [decidedSeq, decidedCount, hempty N]
     simp
-  rw [genuineDensity]
+  rw [decidedDensity]
   simp [hzero]
 
-/-- **The `n = 2` picture, packaged.** The three types carry mass summing to exactly `1`, every
-other type has density exactly `0`, and for each type the decided limit is the density (the
-bracket is closed). What is *not* here is the individual values — see the unit note, STATUS 5a. -/
+end Drainage
+
+/-! ## 9. THE HEADLINE `n = 2` STATEMENTS, over THE density `genuineDensity`
+
+Everything in `Gates.lean` and in §8 above is stated over the CERTIFIED density
+`decidedDensity` — `Gates.lean` has no access to `drainage_two`, and §8 builds towards it. This
+section re-keys the whole `n = 2` picture to THE density (the limit of the proportion of
+coefficient classes consistent with `σ`), which `genuineDensity_eq_decidedDensity_two` licenses
+**unconditionally**: at `n = 2` the two limits are equal, for every complete DVR with finite
+residue field, wild residue characteristic included.
+
+Naming convention established by the 2026-08-13 rewire: the unsuffixed name always carries the
+statement about THE density; the `_decided` suffix marks the certified-density version that the
+proof actually goes through. The *numbers* are identical — only the object they describe
+changes, from "mass certified at some finite level" to "mass of the locus".
+-/
+
+section HeadlineTwo
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)] [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+
+/-- **G4 re-keyed.** The degree-1 type has THE density exactly `0` among monic quadratics. -/
+theorem genuineDensity_two_linType_eq_zero : genuineDensity O 2 linType = 0 := by
+  rw [genuineDensity_eq_decidedDensity_two, decidedDensity_two_linType_eq_zero]
+
+/-- **Every other type has THE density exactly `0` at `n = 2`.** The menu is
+`{split, inert, ram}` and nothing else carries mass. -/
+theorem genuineDensity_two_eq_zero {σ : FactorizationType} (hs : σ ≠ splitType)
+    (hi : σ ≠ inertType) (hr : σ ≠ ramType) : genuineDensity O 2 σ = 0 := by
+  rw [genuineDensity_eq_decidedDensity_two, decidedDensity_two_eq_zero hs hi hr]
+
+/-- **G3 re-keyed.** `1 / q² ≤ genuineDensity O 2 splitType`, every `O`. -/
+theorem gate_split_lower : 1 / (residueCard O : ℝ) ^ 2 ≤ genuineDensity O 2 splitType := by
+  rw [genuineDensity_eq_decidedDensity_two]; exact gate_split_lower_decided
+
+/-- **G3-sharp re-keyed.** `(q-1) / q² ≤ genuineDensity O 2 splitType`, every `O`. -/
+theorem gate_split_lower_sharp :
+    ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ 2 ≤ genuineDensity O 2 splitType := by
+  rw [genuineDensity_eq_decidedDensity_two]; exact gate_split_lower_sharp_decided
+
+/-- **G5 re-keyed.** `1 / q⁴ ≤ genuineDensity O 2 ramType`, every `O`. -/
+theorem gate_ram_lower : 1 / (residueCard O : ℝ) ^ 4 ≤ genuineDensity O 2 ramType := by
+  rw [genuineDensity_eq_decidedDensity_two]; exact gate_ram_lower_decided
+
+/-- **G4 σ-separation re-keyed**, over THE density. -/
+theorem gate_sigma_separation_two :
+    genuineDensity O 2 linType < genuineDensity O 2 splitType := by
+  rw [genuineDensity_eq_decidedDensity_two, genuineDensity_eq_decidedDensity_two]
+  exact gate_sigma_separation_two_decided
+
+/-- **The bracket engine re-keyed.** Lower bounds on the three degree-2 types turn into upper
+bounds on each one, now for THE density. -/
+theorem bracket_two {ls li lr : ℝ}
+    (hs : ls ≤ genuineDensity O 2 splitType)
+    (hi : li ≤ genuineDensity O 2 inertType)
+    (hr : lr ≤ genuineDensity O 2 ramType) :
+    (ls ≤ genuineDensity O 2 splitType ∧ genuineDensity O 2 splitType ≤ 1 - li - lr)
+    ∧ (li ≤ genuineDensity O 2 inertType ∧ genuineDensity O 2 inertType ≤ 1 - ls - lr)
+    ∧ (lr ≤ genuineDensity O 2 ramType ∧ genuineDensity O 2 ramType ≤ 1 - ls - li) := by
+  simp only [genuineDensity_eq_decidedDensity_two] at hs hi hr ⊢
+  exact bracket_two_decided hs hi hr
+
+/-- **THE EXACT `n = 2` IDENTITY, over THE density.** The three degree-2 splitting types carry
+all the mass:
+
+    genuineDensity O 2 split + genuineDensity O 2 inert + genuineDensity O 2 ram = 1
+
+for EVERY complete DVR `O` with finite residue field. This is Asvin's `Σ_σ R_σ = 1` at `n = 2`,
+over the density defined as the limit of the consistent-class proportions. `≥` is free
+(`one_le_sum_genuineDensity`: the possible sets cover); `≤` is drainage. -/
+theorem sum_three_densities_eq_one :
+    genuineDensity O 2 splitType + genuineDensity O 2 inertType + genuineDensity O 2 ramType
+      = 1 := by
+  simp only [genuineDensity_eq_decidedDensity_two]
+  exact sum_three_decidedDensities_eq_one
+
+/-- `{split, inert, ram}` is a covering menu at degree 2 (`typeOf_two_cases`). -/
+theorem coveringMenu_two :
+    CoveringMenu O 2 ({splitType, inertType, ramType} : Finset FactorizationType) := by
+  intro a
+  rcases typeOf_two_cases a with h | h | h <;> simp [h]
+
+/-- **`Σ_σ R_σ = 1` at `n = 2` for ANY covering menu** — the `n = 2` instance of the named
+general-`n` target `TotalMassOne` (`Statement.lean`), proved unconditionally because
+`drainage_two` is a theorem. -/
+theorem totalMass_two (S : Finset FactorizationType) (hS : CoveringMenu O 2 S) :
+    ∑ σ ∈ S, genuineDensity O 2 σ = 1 :=
+  sum_genuineDensity_eq_one_of_drainage hS (fun σ _ => drainage_two σ)
+
+/-- **The `n = 2` picture, packaged, over THE density.** The three types carry mass summing to
+exactly `1`, every other type has density exactly `0`, and for each type THE density coincides
+with the certified one (the bracket is closed). The individual values are not here: they are
+proved in the companion `leancheck` repo (`N2Exact`). -/
 theorem density_two_summary :
     (genuineDensity O 2 splitType + genuineDensity O 2 inertType + genuineDensity O 2 ramType
       = 1)
     ∧ (∀ σ : FactorizationType, σ ≠ splitType → σ ≠ inertType → σ ≠ ramType →
         genuineDensity O 2 σ = 0)
-    ∧ (∀ σ : FactorizationType, upperDensity O 2 σ = genuineDensity O 2 σ) :=
+    ∧ (∀ σ : FactorizationType, genuineDensity O 2 σ = decidedDensity O 2 σ) :=
   ⟨sum_three_densities_eq_one, fun _ hs hi hr => genuineDensity_two_eq_zero hs hi hr,
-    upperDensity_eq_two⟩
+    genuineDensity_eq_decidedDensity_two⟩
 
-end Drainage
+end HeadlineTwo
+
+section HeadlinePadic
+
+/-- **G3 at `ℤ_[2]` re-keyed.** -/
+theorem gate_padic_two : 1 / (2 : ℝ) ^ 2 ≤ genuineDensity ℤ_[2] 2 splitType := by
+  rw [genuineDensity_eq_decidedDensity_two]; exact gate_padic_two_decided
+
+/-- The three certified lower bounds at `q = 2`, re-keyed to THE density. -/
+theorem lowers_padic_two :
+    (1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 2 splitType
+    ∧ (1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 2 inertType
+    ∧ (1 : ℝ) / 16 ≤ genuineDensity ℤ_[2] 2 ramType := by
+  simpa only [genuineDensity_eq_decidedDensity_two] using lowers_padic_two_decided
+
+/-- The three certified lower bounds at `q = 3`, re-keyed to THE density. -/
+theorem lowers_padic_three :
+    (2 : ℝ) / 9 ≤ genuineDensity ℤ_[3] 2 splitType
+    ∧ (1 : ℝ) / 9 ≤ genuineDensity ℤ_[3] 2 inertType
+    ∧ (1 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 2 ramType := by
+  simpa only [genuineDensity_eq_decidedDensity_two] using lowers_padic_three_decided
+
+/-- **GATE BRACKET, q = 2, over THE density.** W-11's exact values are
+`split = inert = ram = 1/3`, all inside these brackets (`gate_bracket_w11_two`). -/
+theorem gate_bracket_padic_two :
+    ((1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 2 splitType
+        ∧ genuineDensity ℤ_[2] 2 splitType ≤ 11 / 16)
+    ∧ ((1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 2 inertType
+        ∧ genuineDensity ℤ_[2] 2 inertType ≤ 11 / 16)
+    ∧ ((1 : ℝ) / 16 ≤ genuineDensity ℤ_[2] 2 ramType
+        ∧ genuineDensity ℤ_[2] 2 ramType ≤ 1 / 2) := by
+  simpa only [genuineDensity_eq_decidedDensity_two] using gate_bracket_padic_two_decided
+
+/-- **GATE BRACKET, q = 3, over THE density.** W-11's exact values are `split = inert = 3/8`,
+`ram = 1/4` (`gate_bracket_w11_three`). -/
+theorem gate_bracket_padic_three :
+    ((2 : ℝ) / 9 ≤ genuineDensity ℤ_[3] 2 splitType
+        ∧ genuineDensity ℤ_[3] 2 splitType ≤ 71 / 81)
+    ∧ ((1 : ℝ) / 9 ≤ genuineDensity ℤ_[3] 2 inertType
+        ∧ genuineDensity ℤ_[3] 2 inertType ≤ 62 / 81)
+    ∧ ((1 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 2 ramType
+        ∧ genuineDensity ℤ_[3] 2 ramType ≤ 2 / 3) := by
+  simpa only [genuineDensity_eq_decidedDensity_two] using gate_bracket_padic_three_decided
+
+end HeadlinePadic
 
 /-! ## 10. Axiom footprints -/
 
@@ -1022,11 +1168,27 @@ section AxCheck
 #print axioms Uniformity.Density.class_pinned
 #print axioms Uniformity.Density.undecidedCount_le
 #print axioms Uniformity.Density.drainage_two
-#print axioms Uniformity.Density.upperDensity_eq_two
+#print axioms Uniformity.Density.genuineDensity_eq_decidedDensity_two
 #print axioms Uniformity.Density.typeOf_two_cases
-#print axioms Uniformity.Density.sum_three_densities_eq_one
+#print axioms Uniformity.Density.sum_three_decidedDensities_eq_one
+#print axioms Uniformity.Density.decidedDensity_two_eq_zero
+-- unit UNIFORMITY-P4 (2026-08-13): the `n = 2` headlines, over THE density
+#print axioms Uniformity.Density.genuineDensity_two_linType_eq_zero
 #print axioms Uniformity.Density.genuineDensity_two_eq_zero
+#print axioms Uniformity.Density.gate_split_lower
+#print axioms Uniformity.Density.gate_split_lower_sharp
+#print axioms Uniformity.Density.gate_ram_lower
+#print axioms Uniformity.Density.gate_sigma_separation_two
+#print axioms Uniformity.Density.bracket_two
+#print axioms Uniformity.Density.sum_three_densities_eq_one
+#print axioms Uniformity.Density.coveringMenu_two
+#print axioms Uniformity.Density.totalMass_two
 #print axioms Uniformity.Density.density_two_summary
+#print axioms Uniformity.Density.gate_padic_two
+#print axioms Uniformity.Density.lowers_padic_two
+#print axioms Uniformity.Density.lowers_padic_three
+#print axioms Uniformity.Density.gate_bracket_padic_two
+#print axioms Uniformity.Density.gate_bracket_padic_three
 
 end AxCheck
 

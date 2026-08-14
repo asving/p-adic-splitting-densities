@@ -22,14 +22,20 @@ Then
 
 and
 
-    genuineDensity O n σ  :=  ⨆ N, decidedSeq  σ N     (`decidedSeq_tendsto`: it IS the limit)
-    upperDensity   O n σ  :=  ⨅ N, possibleSeq σ N     (`possibleSeq_tendsto`)
+    genuineDensity O n σ  :=  ⨅ N, possibleSeq σ N     (`possibleSeq_tendsto`: it IS the limit)
+    decidedDensity O n σ  :=  ⨆ N, decidedSeq  σ N     (`decidedSeq_tendsto`)
 
-**The density is an `ℝ`-valued theorem-backed limit, never a value carried as data.** The
-sandwich `decidedSeq ≤ genuineDensity ≤ upperDensity ≤ possibleSeq` is proved, and the
-**drainage tie** `gapSeq → 0 → upperDensity = genuineDensity` (`upperDensity_eq_of_drainage`)
-makes the drainage hypothesis do real work: without it the two densities are only known to
-bracket the true one.
+**`genuineDensity` is THE density** (Asvin, 2026-08-13, Q5): the limit of the proportion of
+level-`N` coefficient classes *consistent with* type `σ`. `decidedDensity` is the certified
+**inner** approximation — the proportion of classes on which `σ` is already forced.
+
+**Both are `ℝ`-valued theorem-backed limits, never values carried as data.** The sandwich
+`decidedSeq ≤ decidedDensity ≤ genuineDensity ≤ possibleSeq` is proved, and the **drainage
+tie** `gapSeq → 0 → genuineDensity = decidedDensity` (`genuineDensity_eq_of_drainage`, with
+converse `drainage_of_genuineDensity_eq`) makes the drainage hypothesis do real work: without
+it the two are only known to bracket each other. Drainage is *proved* unconditionally at
+`n = 1` (`Gates.lean`) and at `n = 2` (`Drainage.lean`), so at those degrees every statement
+about `decidedDensity` transfers verbatim to `genuineDensity`.
 
 Degenerate conventions, chosen deliberately:
 * `N = 0`: the level-0 box is a single class (`O ⧸ 𝔪^0` is trivial), so `decidedSeq σ 0` is
@@ -227,14 +233,37 @@ end Refine
 
 /-! ## 4. THE DENSITY -/
 
-/-- **THE GENUINE DENSITY** of monic degree-`n` polynomials over `O` of splitting type `σ`:
-the limit of the level-`N` *decided* proportions. It is a real number defined as a supremum,
-and `decidedSeq_tendsto` proves it is the honest `N → ∞` limit. -/
-noncomputable def genuineDensity (n : ℕ) (σ : FactorizationType) : ℝ :=
+/-- **THE CERTIFIED (DECIDED) DENSITY**: the limit of the level-`N` *decided* proportions —
+the proportion of level-`N` classes on which the type `σ` is already forced. It is a real
+number defined as a supremum, and `decidedSeq_tendsto` proves it is the honest `N → ∞` limit.
+It is an *inner* approximation: `decidedDensity ≤ genuineDensity` always
+(`decidedDensity_le_genuineDensity`), with equality exactly when the gap drains
+(`genuineDensity_eq_of_drainage` / `drainage_of_genuineDensity_eq`).
+
+This is the object that used to be called `genuineDensity` before the 2026-08-13 rewire; the
+name `genuineDensity` now belongs to the object below. -/
+noncomputable def decidedDensity (n : ℕ) (σ : FactorizationType) : ℝ :=
   ⨆ N, decidedSeq O n σ N
 
-/-- **The upper (possible) density**: the limit of the level-`N` *possible* proportions. -/
-noncomputable def upperDensity (n : ℕ) (σ : FactorizationType) : ℝ :=
+/-- **THE GENUINE DENSITY** of monic degree-`n` polynomials over `O` of splitting type `σ`:
+**the limit of the proportion of level-`N` coefficient classes that are consistent with type
+`σ`** (i.e. that have at least one monic degree-`n` lift of type `σ`). It is a real number
+defined as an infimum, and `possibleSeq_tendsto` proves it is the honest `N → ∞` limit of
+`possibleSeq`, which is antitone in `N`.
+
+*Why this is THE density* (Asvin, 2026-08-13, Q5). Reading the coefficient space `O ^ n` at
+level `N` cuts it into `q ^ (n·N)` equal boxes; the type-`σ` locus is covered by exactly the
+boxes it meets, i.e. the `σ`-possible ones, so `possibleSeq σ N` is the level-`N` proportion
+of the space that could still be type `σ`. Refining the level can only remove boxes, never
+add them, so the proportions decrease and their limit exists: that limit is the density of
+the type-`σ` locus read from *outside*. The inner reading is `decidedDensity`, and the two
+agree exactly under drainage — which is proved unconditionally at `n = 1` and `n = 2`
+(`genuineDensity_eq_decidedDensity_one`, `genuineDensity_eq_decidedDensity_two`).
+
+*What this is NOT.* It is not asserted here to be the Haar measure of the type-`σ` locus:
+that bridge needs measurability of the locus and is not formalized (see the unit note §3B.4).
+`genuineDensity` is, formally, the limit of the consistent-class proportions, full stop. -/
+noncomputable def genuineDensity (n : ℕ) (σ : FactorizationType) : ℝ :=
   ⨅ N, possibleSeq O n σ N
 
 section Limits
@@ -253,39 +282,40 @@ theorem possibleSeq_bddBelow (n : ℕ) (σ : FactorizationType) :
   rintro x ⟨N, rfl⟩
   exact possibleSeq_nonneg n σ N
 
-/-- **`genuineDensity` IS the limit of the decided proportions.** -/
+/-- **`decidedDensity` IS the limit of the decided proportions.** -/
 theorem decidedSeq_tendsto (n : ℕ) (σ : FactorizationType) :
-    Tendsto (decidedSeq O n σ) atTop (𝓝 (genuineDensity O n σ)) :=
+    Tendsto (decidedSeq O n σ) atTop (𝓝 (decidedDensity O n σ)) :=
   tendsto_atTop_ciSup (decidedSeq_mono n σ) (decidedSeq_bddAbove n σ)
 
-/-- **`upperDensity` IS the limit of the possible proportions.** -/
+/-- **`genuineDensity` IS the limit of the possible proportions.** -/
 theorem possibleSeq_tendsto (n : ℕ) (σ : FactorizationType) :
-    Tendsto (possibleSeq O n σ) atTop (𝓝 (upperDensity O n σ)) :=
+    Tendsto (possibleSeq O n σ) atTop (𝓝 (genuineDensity O n σ)) :=
   tendsto_atTop_ciInf (possibleSeq_antitone n σ) (possibleSeq_bddBelow n σ)
 
-theorem decidedSeq_le_genuineDensity (n : ℕ) (σ : FactorizationType) (N : ℕ) :
-    decidedSeq O n σ N ≤ genuineDensity O n σ :=
+theorem decidedSeq_le_decidedDensity (n : ℕ) (σ : FactorizationType) (N : ℕ) :
+    decidedSeq O n σ N ≤ decidedDensity O n σ :=
   le_ciSup (decidedSeq_bddAbove n σ) N
 
-theorem upperDensity_le_possibleSeq (n : ℕ) (σ : FactorizationType) (N : ℕ) :
-    upperDensity O n σ ≤ possibleSeq O n σ N :=
+theorem genuineDensity_le_possibleSeq (n : ℕ) (σ : FactorizationType) (N : ℕ) :
+    genuineDensity O n σ ≤ possibleSeq O n σ N :=
   ciInf_le (possibleSeq_bddBelow n σ) N
 
-theorem genuineDensity_nonneg (n : ℕ) (σ : FactorizationType) : 0 ≤ genuineDensity O n σ :=
-  le_trans (decidedSeq_nonneg n σ 0) (decidedSeq_le_genuineDensity n σ 0)
+theorem decidedDensity_nonneg (n : ℕ) (σ : FactorizationType) : 0 ≤ decidedDensity O n σ :=
+  le_trans (decidedSeq_nonneg n σ 0) (decidedSeq_le_decidedDensity n σ 0)
 
-theorem genuineDensity_le_one (n : ℕ) (σ : FactorizationType) : genuineDensity O n σ ≤ 1 :=
+theorem decidedDensity_le_one (n : ℕ) (σ : FactorizationType) : decidedDensity O n σ ≤ 1 :=
   ciSup_le (fun N => decidedSeq_le_one n σ N)
 
-theorem upperDensity_nonneg (n : ℕ) (σ : FactorizationType) : 0 ≤ upperDensity O n σ :=
+theorem genuineDensity_nonneg (n : ℕ) (σ : FactorizationType) : 0 ≤ genuineDensity O n σ :=
   le_ciInf (fun N => possibleSeq_nonneg n σ N)
 
-theorem upperDensity_le_one (n : ℕ) (σ : FactorizationType) : upperDensity O n σ ≤ 1 :=
-  le_trans (upperDensity_le_possibleSeq n σ 0) (possibleSeq_le_one n σ 0)
+theorem genuineDensity_le_one (n : ℕ) (σ : FactorizationType) : genuineDensity O n σ ≤ 1 :=
+  le_trans (genuineDensity_le_possibleSeq n σ 0) (possibleSeq_le_one n σ 0)
 
-/-- **The sandwich.** The genuine (decided) density never exceeds the upper (possible) one. -/
-theorem genuineDensity_le_upperDensity (n : ℕ) (σ : FactorizationType) :
-    genuineDensity O n σ ≤ upperDensity O n σ := by
+/-- **The sandwich.** The certified (decided, inner) density never exceeds the genuine
+(possible, outer) one. -/
+theorem decidedDensity_le_genuineDensity (n : ℕ) (σ : FactorizationType) :
+    decidedDensity O n σ ≤ genuineDensity O n σ := by
   refine ciSup_le (fun N => le_ciInf (fun M => ?_))
   calc decidedSeq O n σ N ≤ decidedSeq O n σ (max N M) := decidedSeq_mono n σ (le_max_left N M)
     _ ≤ possibleSeq O n σ (max N M) := decidedSeq_le_possibleSeq n σ _
@@ -310,14 +340,15 @@ variable {O}
 theorem gapSeq_nonneg (n : ℕ) (σ : FactorizationType) (N : ℕ) : 0 ≤ gapSeq O n σ N :=
   sub_nonneg.2 (decidedSeq_le_possibleSeq n σ N)
 
-/-- **THE DRAINAGE TIE.** If the ambiguity gap drains, the upper density collapses onto the
-genuine one, so the certified (decided) limit really is *the* density of type-`σ` polynomials
-— not merely a lower bound for it. This is the theorem that makes a drainage hypothesis load
-bearing rather than decorative. -/
-theorem upperDensity_eq_of_drainage {n : ℕ} {σ : FactorizationType}
-    (h : UndecidedVanishes O n σ) : upperDensity O n σ = genuineDensity O n σ := by
+/-- **THE DRAINAGE TIE.** If the ambiguity gap drains, the genuine (outer) density collapses
+onto the certified (decided, inner) one, so the certified limit really *is* the density of
+type-`σ` polynomials — not merely a lower bound for it. This is the theorem that makes a
+drainage hypothesis load bearing rather than decorative, and it is the licence for every
+`decidedDensity → genuineDensity` re-keying downstream. -/
+theorem genuineDensity_eq_of_drainage {n : ℕ} {σ : FactorizationType}
+    (h : UndecidedVanishes O n σ) : genuineDensity O n σ = decidedDensity O n σ := by
   have hlim : Tendsto (fun N => decidedSeq O n σ N + gapSeq O n σ N) atTop
-      (𝓝 (genuineDensity O n σ + 0)) := (decidedSeq_tendsto n σ).add h
+      (𝓝 (decidedDensity O n σ + 0)) := (decidedSeq_tendsto n σ).add h
   have heq : (fun N => decidedSeq O n σ N + gapSeq O n σ N) = possibleSeq O n σ := by
     funext N; simp [gapSeq]
   rw [heq, add_zero] at hlim
@@ -325,8 +356,8 @@ theorem upperDensity_eq_of_drainage {n : ℕ} {σ : FactorizationType}
 
 /-- Converse direction: if the two densities agree, the gap drains. So `UndecidedVanishes` is
 exactly the statement that the bracket closes. -/
-theorem drainage_of_upperDensity_eq {n : ℕ} {σ : FactorizationType}
-    (h : upperDensity O n σ = genuineDensity O n σ) : UndecidedVanishes O n σ := by
+theorem drainage_of_genuineDensity_eq {n : ℕ} {σ : FactorizationType}
+    (h : genuineDensity O n σ = decidedDensity O n σ) : UndecidedVanishes O n σ := by
   have := (possibleSeq_tendsto (O := O) n σ).sub (decidedSeq_tendsto (O := O) n σ)
   rw [h, sub_self] at this
   exact this
@@ -369,28 +400,133 @@ theorem sum_decidedSeq_le_one (n : ℕ) (S : Finset FactorizationType) (N : ℕ)
     _ ≤ ((residueCard O ^ (n * N) : ℕ) : ℝ) := Nat.cast_le.2 h
     _ = (residueCard O : ℝ) ^ (n * N) := by push_cast; rfl
 
-/-- **Total mass ≤ 1.** The genuine densities of finitely many distinct types sum to at
-most `1`. -/
-theorem sum_genuineDensity_le_one (n : ℕ) (S : Finset FactorizationType) :
-    ∑ σ ∈ S, genuineDensity O n σ ≤ 1 := by
+/-- **Total mass ≤ 1.** The *certified* (decided) densities of finitely many distinct types sum
+to at most `1`. (The analogous statement for `genuineDensity` is FALSE in general: possible
+sets overlap, so the outer proportions can sum to more than `1` at every finite level. What is
+true unconditionally for `genuineDensity` is the *reverse* inequality over a covering menu —
+`one_le_sum_genuineDensity` in §7.) -/
+theorem sum_decidedDensity_le_one (n : ℕ) (S : Finset FactorizationType) :
+    ∑ σ ∈ S, decidedDensity O n σ ≤ 1 := by
   have hlim : Tendsto (fun N => ∑ σ ∈ S, decidedSeq O n σ N) atTop
-      (𝓝 (∑ σ ∈ S, genuineDensity O n σ)) :=
+      (𝓝 (∑ σ ∈ S, decidedDensity O n σ)) :=
     tendsto_finsetSum S (fun σ _ => decidedSeq_tendsto n σ)
   exact le_of_tendsto hlim (Eventually.of_forall (fun N => sum_decidedSeq_le_one n S N))
 
 /-- **The complement upper bound.** Any level-`N` decided mass certified for *other* types
-bounds `σ`'s density from above. With a matching lower bound `decidedSeq σ N ≤ genuineDensity σ`
+bounds `σ`'s density from above. With a matching lower bound `decidedSeq σ N ≤ decidedDensity σ`
 this brackets the density from both sides at a finite level. -/
-theorem genuineDensity_le_of_others (n : ℕ) (σ : FactorizationType) (S : Finset FactorizationType)
+theorem decidedDensity_le_of_others (n : ℕ) (σ : FactorizationType) (S : Finset FactorizationType)
     (hσ : σ ∉ S) (N : ℕ) :
-    genuineDensity O n σ ≤ 1 - ∑ τ ∈ S, decidedSeq O n τ N := by
-  have h1 : ∑ τ ∈ insert σ S, genuineDensity O n τ ≤ 1 :=
-    sum_genuineDensity_le_one n (insert σ S)
+    decidedDensity O n σ ≤ 1 - ∑ τ ∈ S, decidedSeq O n τ N := by
+  have h1 : ∑ τ ∈ insert σ S, decidedDensity O n τ ≤ 1 :=
+    sum_decidedDensity_le_one n (insert σ S)
   rw [Finset.sum_insert hσ] at h1
-  have h2 : ∑ τ ∈ S, decidedSeq O n τ N ≤ ∑ τ ∈ S, genuineDensity O n τ :=
-    Finset.sum_le_sum (fun τ _ => decidedSeq_le_genuineDensity n τ N)
+  have h2 : ∑ τ ∈ S, decidedSeq O n τ N ≤ ∑ τ ∈ S, decidedDensity O n τ :=
+    Finset.sum_le_sum (fun τ _ => decidedSeq_le_decidedDensity n τ N)
   linarith
 
 end Total
+
+/-! ## 7. `Σ_σ R_σ = 1`: what holds unconditionally, and what needs drainage
+
+Asvin, 2026-08-13 (Q5): *"let us prove that `Σ_σ R_σ = 1` using this definition"*. Over the
+NEW `genuineDensity` the two halves have very different status, and this section states both
+honestly.
+
+* **`≥ 1` is UNCONDITIONAL** (`one_le_sum_genuineDensity`), given only that the finite menu
+  `S` covers: every monic degree-`n` polynomial over `O` has its type in `S`. Reason: every
+  class has a lift, that lift has *some* type, and the class is then possible for that type —
+  so the `σ`-possible sets over `σ ∈ S` cover the whole box at every level, whence
+  `Σ_σ possibleSeq σ N ≥ 1` for every `N`, and the inequality survives the limit.
+* **`≤ 1` needs drainage** (`sum_genuineDensity_eq_one_of_drainage`). It is *false* for the
+  raw level-`N` proportions — a class ambiguous between two types is counted twice — and only
+  the vanishing of the ambiguity gap removes the double counting in the limit.
+
+Consequently `Σ_σ genuineDensity O n σ = 1` is proved here **modulo drainage at every type of
+the menu**, for every `n`; the unconditional general-`n` statement is exactly the general-`n`
+drainage leg and is named (unproved) as `TotalMassOne` in `Statement.lean`. At `n = 1` and
+`n = 2` drainage IS proved, so there the identity is unconditional. -/
+
+section Cover
+
+variable (O)
+
+/-- **A covering menu at degree `n`**: a finite set `S` of splitting types containing the type
+of *every* monic degree-`n` polynomial over `O`. This is the finiteness input that makes
+`Σ_σ` meaningful — `FactorizationType` itself is infinite, and only finitely many types occur
+in degree `n`. (At `n = 2`, `{split, inert, ram}` is such a menu — `typeOf_two_cases`.) -/
+def CoveringMenu (n : ℕ) (S : Finset FactorizationType) : Prop :=
+  ∀ a : Fin n → O, typeOf (monicPoly a) ∈ S
+
+variable {O}
+
+/-- Over a covering menu the `σ`-POSSIBLE sets cover every level-`N` box: a class has a lift,
+the lift has a type, and that type is in the menu. -/
+theorem card_le_sum_possibleCount {n : ℕ} {S : Finset FactorizationType}
+    (h : CoveringMenu O n S) (N : ℕ) :
+    residueCard O ^ (n * N) ≤ ∑ σ ∈ S, possibleCount O n σ N := by
+  classical
+  have hex : ∀ c : Coeff O n N, ∃ σ : {σ // σ ∈ S}, PossibleAt O n σ.1 N c := by
+    intro c
+    obtain ⟨a, ha⟩ := proj_surjective O n N c
+    exact ⟨⟨typeOf (monicPoly a), h a⟩, a, ha, rfl⟩
+  choose f hf using hex
+  have hinj : Function.Injective (fun c : Coeff O n N =>
+      (⟨f c, ⟨c, hf c⟩⟩ : Σ σ : {σ // σ ∈ S}, possibleSet O n σ.1 N)) := by
+    intro c d hcd
+    have := congrArg (fun x : (Σ σ : {σ // σ ∈ S}, possibleSet O n σ.1 N) =>
+      (x.2 : Coeff O n N)) hcd
+    simpa using this
+  have hle := Nat.card_le_card_of_injective _ hinj
+  rw [card_coeff, Nat.card_sigma] at hle
+  rw [← Finset.sum_attach S (fun σ => possibleCount O n σ N)]
+  exact hle
+
+/-- The level-`N` form: over a covering menu the possible proportions sum to at least `1`. -/
+theorem one_le_sum_possibleSeq {n : ℕ} {S : Finset FactorizationType}
+    (h : CoveringMenu O n S) (N : ℕ) : 1 ≤ ∑ σ ∈ S, possibleSeq O n σ N := by
+  have hcount := card_le_sum_possibleCount h N
+  have hq : (0 : ℝ) < (residueCard O : ℝ) ^ (n * N) := qpow_pos _
+  rw [show (∑ σ ∈ S, possibleSeq O n σ N)
+      = (∑ σ ∈ S, (possibleCount O n σ N : ℝ)) / (residueCard O : ℝ) ^ (n * N) by
+    rw [Finset.sum_div]; rfl, le_div_iff₀ hq, one_mul]
+  calc (residueCard O : ℝ) ^ (n * N) = ((residueCard O ^ (n * N) : ℕ) : ℝ) := by push_cast; rfl
+    _ ≤ ((∑ σ ∈ S, possibleCount O n σ N : ℕ) : ℝ) := Nat.cast_le.2 hcount
+    _ = ∑ σ ∈ S, (possibleCount O n σ N : ℝ) := by push_cast; rfl
+
+/-- **`Σ_σ R_σ ≥ 1`, UNCONDITIONALLY** (given a covering menu). This is the half of
+`Σ_σ R_σ = 1` that the *outer* density gets for free — and it is the half that the certified
+inner density `decidedDensity` can never have, because a decided class is decided for exactly
+one type while the mass may sit forever in undecided classes. -/
+theorem one_le_sum_genuineDensity {n : ℕ} {S : Finset FactorizationType}
+    (h : CoveringMenu O n S) : 1 ≤ ∑ σ ∈ S, genuineDensity O n σ := by
+  have hlim : Tendsto (fun N => ∑ σ ∈ S, possibleSeq O n σ N) atTop
+      (𝓝 (∑ σ ∈ S, genuineDensity O n σ)) :=
+    tendsto_finsetSum S (fun σ _ => possibleSeq_tendsto n σ)
+  exact ge_of_tendsto hlim (Eventually.of_forall (fun N => one_le_sum_possibleSeq h N))
+
+/-- **`Σ_σ R_σ = 1`, GENERAL `n`, MODULO DRAINAGE.** For any covering menu whose every type
+drains, the genuine densities sum to exactly `1`. The `≥` half is unconditional
+(`one_le_sum_genuineDensity`); the `≤` half is where drainage is spent — it converts each
+`genuineDensity` into the corresponding `decidedDensity`, whose distinct types are disjoint
+and hence sum to at most `1` (`sum_decidedDensity_le_one`). -/
+theorem sum_genuineDensity_eq_one_of_drainage {n : ℕ} {S : Finset FactorizationType}
+    (h : CoveringMenu O n S) (hd : ∀ σ ∈ S, UndecidedVanishes O n σ) :
+    ∑ σ ∈ S, genuineDensity O n σ = 1 := by
+  refine le_antisymm ?_ (one_le_sum_genuineDensity h)
+  have hrw : ∑ σ ∈ S, genuineDensity O n σ = ∑ σ ∈ S, decidedDensity O n σ :=
+    Finset.sum_congr rfl (fun σ hσ => genuineDensity_eq_of_drainage (hd σ hσ))
+  rw [hrw]
+  exact sum_decidedDensity_le_one n S
+
+/-- The same, packaged as the drainage-free consequence people actually quote: under drainage
+the genuine and certified total masses agree and both equal `1`. -/
+theorem sum_decidedDensity_eq_one_of_drainage {n : ℕ} {S : Finset FactorizationType}
+    (h : CoveringMenu O n S) (hd : ∀ σ ∈ S, UndecidedVanishes O n σ) :
+    ∑ σ ∈ S, decidedDensity O n σ = 1 := by
+  rw [← sum_genuineDensity_eq_one_of_drainage h hd]
+  exact (Finset.sum_congr rfl (fun σ hσ => genuineDensity_eq_of_drainage (hd σ hσ))).symm
+
+end Cover
 
 end Uniformity.Density

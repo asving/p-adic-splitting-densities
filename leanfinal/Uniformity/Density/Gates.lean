@@ -7,27 +7,38 @@ import Uniformity.Density.Statement
 import Uniformity.Density.QuadCert
 
 /-!
-# Uniformity.Density.Gates — machine-checked gates on the genuine density
+# Uniformity.Density.Gates — machine-checked gates on the density
 
 The verification target of Part 1: **do the definitions compute the densities we expect?**
 
+**Which density each gate is about (read this first).** Since the 2026-08-13 rewire,
+`genuineDensity` is THE density (the limit of the proportion of coefficient classes consistent
+with `σ`) and `decidedDensity` is the certified inner one (the limit of the proportion on which
+`σ` is forced). This file sits *below* `Drainage.lean` in the import graph, so at `n = 2` it can
+only see the certified density: every `n = 2` gate here is stated over `decidedDensity` and
+carries a `_decided` suffix. The headline `n = 2` statements over THE density — the same
+numbers, since `drainage_two` closes the gap — live at the end of `Drainage.lean` under the
+unsuffixed names. At `n = 1` drainage is proved *here* (`drainage_one`), so the `n = 1` gates
+are stated over THE density directly.
+
 * **G1 (`n = 1`, EXACT).** Every monic linear polynomial has type `⟨{(1,1)}⟩`, so every class at
   every level is decided and `genuineDensity O 1 ⟨{(1,1)}⟩ = 1` — exactly, over every complete
-  DVR with finite residue field (`genuineDensity_linear_eq_one`). Every other type has density
-  exactly `0` (`genuineDensity_one_of_ne`), so `n = 1` also gives an **exact σ-separation**
-  (`gate_sigma_separation_one`).
+  DVR with finite residue field (`genuineDensity_linear_eq_one`, via
+  `decidedDensity_linear_eq_one` and the `n = 1` tie). Every other type has density exactly `0`
+  (`genuineDensity_one_of_ne`), so `n = 1` also gives an **exact σ-separation**
+  (`gate_sigma_separation_one`) and the `n = 1` total mass `Σ_σ R_σ = 1` (`totalMass_one`).
 * **G2 (`n = 2`, algebraic half).** A monic quadratic that splits into two monic linear factors
   has type `⟨{(1,1),(1,1)}⟩` (`typeOf_mul_linear`).
 * **G3 (`n = 2`, LOWER BOUND, every `O`).** Hensel's lemma at a simple residue root shows the
   level-1 class `(a₀, a₁) ≡ (0, 1)` is split-decided, so
-  `1 / q ^ 2 ≤ genuineDensity O 2 splitType` (`gate_split_lower`). At `q = 2` this reads
+  `1 / q ^ 2 ≤ decidedDensity O 2 splitType` (`gate_split_lower_decided`). At `q = 2` this reads
   `1/4 ≤ density(split)`; the W-11 corpus value is `q/(2(q+1)) = 1/3`. ✓ consistent.
 * **G4 (`n = 2`, σ-separation).** The degree-1 type has density `0` at degree `2`
-  (`genuineDensity_two_linType_eq_zero`), while split has density `≥ 1/q² > 0`; so the density
-  genuinely depends on σ at `n = 2` as well (`gate_sigma_separation_two`).
+  (`decidedDensity_two_linType_eq_zero`), while split has density `≥ 1/q² > 0`; so the density
+  genuinely depends on σ at `n = 2` as well (`gate_sigma_separation_two_decided`).
 
 Everything here is proved for an ARBITRARY complete DVR with finite residue field — the gates
-are not `ℤ_[2]`-only. `gate_padic_two` instantiates G3 at `ℤ_[2]` for the concrete number.
+are not `ℤ_[2]`-only. `gate_padic_two_decided` instantiates G3 at `ℤ_[2]` for the concrete number.
 
 **What is NOT here** (honest scope, see `notes/GENUINE_DENSITY_2026-08-13.md` §STATUS):
 exact `n = 2` values, the inert/ramified lower bounds, and the matching upper bounds. Those
@@ -68,13 +79,13 @@ theorem decidedSeq_one (N : ℕ) : decidedSeq O 1 linType N = 1 := by
 
 /-- **G1 (exact).** The density of monic *linear* polynomials of the (unique possible) type
 `{(1,1)}` is exactly `1`, over every complete DVR with finite residue field. -/
-theorem genuineDensity_linear_eq_one : genuineDensity O 1 linType = 1 := by
-  rw [genuineDensity]
+theorem decidedDensity_linear_eq_one : decidedDensity O 1 linType = 1 := by
+  rw [decidedDensity]
   simp [decidedSeq_one]
 
 /-- **G1 (exact, complement).** Every other type has density exactly `0` at degree 1. -/
-theorem genuineDensity_one_of_ne {σ : FactorizationType} (hσ : σ ≠ linType) :
-    genuineDensity O 1 σ = 0 := by
+theorem decidedDensity_one_of_ne {σ : FactorizationType} (hσ : σ ≠ linType) :
+    decidedDensity O 1 σ = 0 := by
   have hempty : ∀ N, decidedSet O 1 σ N = ∅ := by
     intro N
     ext c
@@ -86,15 +97,66 @@ theorem genuineDensity_one_of_ne {σ : FactorizationType} (hσ : σ ≠ linType)
     intro N
     rw [decidedSeq, decidedCount, hempty N]
     simp
-  rw [genuineDensity]
+  rw [decidedDensity]
   simp [hzero]
 
-/-- **G1 σ-separation (exact).** Two distinct degree-≤1 types get *different* densities: the
-definition is genuinely σ-dependent, not a σ-discarding constant. -/
+/-! ### `n = 1`: drainage is trivially true, so the two densities coincide
+
+At degree 1 there is nothing to be ambiguous about: *every* monic linear polynomial has type
+`linType`, so a class is `σ`-possible exactly when it is `σ`-decided, the ambiguity gap is
+identically `0`, and the outer density `genuineDensity` equals the inner `decidedDensity`
+level by level. Hence every `n = 1` gate re-keys to THE density with no loss. -/
+
+/-- At `n = 1` the possible and decided sets coincide, for every type and every level. -/
+theorem possibleSet_one (σ : FactorizationType) (N : ℕ) :
+    possibleSet O 1 σ N = decidedSet O 1 σ N := by
+  ext c
+  refine ⟨?_, fun hc => decided_imp_possible hc⟩
+  rintro ⟨a, -, hta⟩
+  have hσ : σ = linType := by rw [← hta, typeOf_monicPoly_one a]
+  intro b _
+  rw [typeOf_monicPoly_one b, hσ]
+
+theorem possibleSeq_eq_decidedSeq_one (σ : FactorizationType) (N : ℕ) :
+    possibleSeq O 1 σ N = decidedSeq O 1 σ N := by
+  rw [possibleSeq, decidedSeq, possibleCount, decidedCount, possibleSet_one]
+
+/-- **Drainage at `n = 1`**, unconditionally: the ambiguity gap is identically zero. -/
+theorem drainage_one (σ : FactorizationType) : UndecidedVanishes O 1 σ := by
+  have hz : gapSeq O 1 σ = fun _ => (0 : ℝ) := by
+    funext N
+    rw [gapSeq, possibleSeq_eq_decidedSeq_one, sub_self]
+  rw [UndecidedVanishes, hz]
+  exact tendsto_const_nhds
+
+/-- **The `n = 1` tie.** THE density equals the certified one at degree 1, unconditionally. -/
+theorem genuineDensity_eq_decidedDensity_one (σ : FactorizationType) :
+    genuineDensity O 1 σ = decidedDensity O 1 σ :=
+  genuineDensity_eq_of_drainage (drainage_one σ)
+
+/-- **G1 (exact), re-keyed to THE density.** The density of monic *linear* polynomials of the
+(unique possible) type `{(1,1)}` is exactly `1`, over every complete DVR with finite residue
+field. -/
+theorem genuineDensity_linear_eq_one : genuineDensity O 1 linType = 1 := by
+  rw [genuineDensity_eq_decidedDensity_one, decidedDensity_linear_eq_one]
+
+/-- **G1 (exact, complement), re-keyed to THE density.** -/
+theorem genuineDensity_one_of_ne {σ : FactorizationType} (hσ : σ ≠ linType) :
+    genuineDensity O 1 σ = 0 := by
+  rw [genuineDensity_eq_decidedDensity_one, decidedDensity_one_of_ne hσ]
+
+/-- **G1 σ-separation (exact), over THE density.** Two distinct degree-≤1 types get *different*
+densities: the definition is genuinely σ-dependent, not a σ-discarding constant. -/
 theorem gate_sigma_separation_one :
     genuineDensity O 1 linType ≠ genuineDensity O 1 splitType := by
   rw [genuineDensity_linear_eq_one, genuineDensity_one_of_ne splitType_ne_linType]
   norm_num
+
+/-- **`Σ_σ R_σ = 1` at `n = 1`**, unconditionally: `{linType}` is a covering menu and its single
+genuine density is `1`. This is the `n = 1` instance of the named target `TotalMassOne`. -/
+theorem totalMass_one (S : Finset FactorizationType) (hS : CoveringMenu O 1 S) :
+    ∑ σ ∈ S, genuineDensity O 1 σ = 1 :=
+  sum_genuineDensity_eq_one_of_drainage hS (fun σ _ => drainage_one σ)
 
 end DegreeOne
 
@@ -171,10 +233,10 @@ theorem split_decided_class :
     simpa using h
   exact (maximalIdeal.isMaximal O).ne_top ((Ideal.eq_top_iff_one _).2 hone)
 
-/-- **G3 (lower bound, every `O`).** `1 / q ^ 2 ≤ genuineDensity O 2 splitType`. At `q = 2` this
+/-- **G3 (lower bound, every `O`).** `1 / q ^ 2 ≤ decidedDensity O 2 splitType`. At `q = 2` this
 is `1/4`; the W-11 corpus value of the split density is `q / (2(q+1)) = 1/3`. -/
-theorem gate_split_lower :
-    1 / (residueCard O : ℝ) ^ 2 ≤ genuineDensity O 2 splitType := by
+theorem gate_split_lower_decided :
+    1 / (residueCard O : ℝ) ^ 2 ≤ decidedDensity O 2 splitType := by
   have hne : (decidedSet O 2 splitType 1).Nonempty := ⟨_, split_decided_class⟩
   have hpos : 0 < decidedCount O 2 splitType 1 := by
     rw [decidedCount]
@@ -185,12 +247,12 @@ theorem gate_split_lower :
   have h1 : 1 / (residueCard O : ℝ) ^ 2 ≤ decidedSeq O 2 splitType 1 := by
     rw [decidedSeq, show (2 : ℕ) * 1 = 2 from rfl, div_le_div_iff₀ hc hc]
     nlinarith [hA, hc]
-  exact h1.trans (decidedSeq_le_genuineDensity 2 splitType 1)
+  exact h1.trans (decidedSeq_le_decidedDensity 2 splitType 1)
 
 /-- The `ℤ_[2]` instance of G3: the split density at the wild prime is at least `1/4`
 (W-11's exact value there is `1/3`). -/
-theorem gate_padic_two : 1 / (2 : ℝ) ^ 2 ≤ genuineDensity ℤ_[2] 2 splitType := by
-  have := gate_split_lower (O := ℤ_[2])
+theorem gate_padic_two_decided : 1 / (2 : ℝ) ^ 2 ≤ decidedDensity ℤ_[2] 2 splitType := by
+  have := gate_split_lower_decided (O := ℤ_[2])
   rwa [residueCard_padicInt 2] at this
 
 end SplitLower
@@ -228,7 +290,7 @@ theorem typeOf_monicPoly_two_ne_linType (a : Fin 2 → O) : typeOf (monicPoly a)
   omega
 
 /-- The degree-1 type has density exactly `0` among monic quadratics. -/
-theorem genuineDensity_two_linType_eq_zero : genuineDensity O 2 linType = 0 := by
+theorem decidedDensity_two_linType_eq_zero : decidedDensity O 2 linType = 0 := by
   have hempty : ∀ N, decidedSet O 2 linType N = ∅ := by
     intro N
     ext c
@@ -240,15 +302,15 @@ theorem genuineDensity_two_linType_eq_zero : genuineDensity O 2 linType = 0 := b
     intro N
     rw [decidedSeq, decidedCount, hempty N]
     simp
-  rw [genuineDensity]
+  rw [decidedDensity]
   simp [hzero]
 
 /-- **G4 (σ-separation at `n = 2`).** At degree 2 the split type has strictly positive density
 while the degree-1 type has density `0`: the density is genuinely σ-keyed at `n = 2`. -/
-theorem gate_sigma_separation_two :
-    genuineDensity O 2 linType < genuineDensity O 2 splitType := by
-  rw [genuineDensity_two_linType_eq_zero]
-  exact lt_of_lt_of_le (one_div_pos.2 (qpow_pos (O := O) 2)) (gate_split_lower (O := O))
+theorem gate_sigma_separation_two_decided :
+    decidedDensity O 2 linType < decidedDensity O 2 splitType := by
+  rw [decidedDensity_two_linType_eq_zero]
+  exact lt_of_lt_of_le (one_div_pos.2 (qpow_pos (O := O) 2)) (gate_split_lower_decided (O := O))
 
 end SepTwo
 
@@ -260,16 +322,16 @@ variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
 
 /-- **One decided class is a density lower bound.** -/
-theorem genuineDensity_ge_of_decided {n N : ℕ} {σ : FactorizationType} {c : Coeff O n N}
+theorem decidedDensity_ge_of_decided {n N : ℕ} {σ : FactorizationType} {c : Coeff O n N}
     (h : DecidedAt O n σ N c) :
-    1 / (residueCard O : ℝ) ^ (n * N) ≤ genuineDensity O n σ := by
+    1 / (residueCard O : ℝ) ^ (n * N) ≤ decidedDensity O n σ := by
   have hpos : 0 < decidedCount O n σ N := by
     rw [decidedCount]
     have : Nonempty (decidedSet O n σ N) := ⟨⟨c, h⟩⟩
     exact Nat.card_pos
   have hA : (1 : ℝ) ≤ (decidedCount O n σ N : ℝ) := by exact_mod_cast hpos
   have hc : (0 : ℝ) < (residueCard O : ℝ) ^ (n * N) := qpow_pos (O := O) _
-  refine le_trans ?_ (decidedSeq_le_genuineDensity n σ N)
+  refine le_trans ?_ (decidedSeq_le_decidedDensity n σ N)
   rw [decidedSeq, div_le_div_iff₀ hc hc]
   nlinarith [hA, hc]
 
@@ -309,17 +371,17 @@ theorem decidedCount_split_ge : residueCard O - 1 ≤ decidedCount O 2 splitType
   have h : (![0, y.1] : Coeff O 2 1) = ![0, z.1] := Subtype.ext_iff.1 hyz
   exact Subtype.ext (by simpa using congrFun h 1)
 
-/-- **G3-sharp.** `(q-1)/q² ≤ genuineDensity O 2 splitType` — the whole order-0 SEP-SPLIT
+/-- **G3-sharp.** `(q-1)/q² ≤ decidedDensity O 2 splitType` — the whole order-0 SEP-SPLIT
 stratum at level 1 (W-11's SEP-SPLIT row in per-centre form). -/
-theorem gate_split_lower_sharp :
-    ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ 2 ≤ genuineDensity O 2 splitType := by
+theorem gate_split_lower_sharp_decided :
+    ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ 2 ≤ decidedDensity O 2 splitType := by
   have hq1 : (1 : ℕ) ≤ residueCard O := le_trans one_le_two (two_le_residueCard O)
   have hcast : ((residueCard O - 1 : ℕ) : ℝ) = (residueCard O : ℝ) - 1 := by
     push_cast [Nat.cast_sub hq1]; ring
   have hA : ((residueCard O : ℝ) - 1) ≤ (decidedCount O 2 splitType 1 : ℝ) := by
     rw [← hcast]; exact_mod_cast decidedCount_split_ge (O := O)
   have hc : (0 : ℝ) < (residueCard O : ℝ) ^ 2 := qpow_pos (O := O) 2
-  refine le_trans ?_ (decidedSeq_le_genuineDensity 2 splitType 1)
+  refine le_trans ?_ (decidedSeq_le_decidedDensity 2 splitType 1)
   rw [decidedSeq, show (2 : ℕ) * 1 = 2 from rfl, div_le_div_iff₀ hc hc]
   nlinarith [hA, hc]
 
@@ -357,10 +419,10 @@ theorem ram_decided_class {π : O} (hπ : Irreducible π) :
     rw [this]; exact Ideal.sub_mem _ hmem hb0
   · simpa using hsq hb1
 
-/-- **G5 (RAM lower bound, every `O`).** `1/q⁴ ≤ genuineDensity O 2 ramType`. -/
-theorem gate_ram_lower : 1 / (residueCard O : ℝ) ^ 4 ≤ genuineDensity O 2 ramType := by
+/-- **G5 (RAM lower bound, every `O`).** `1/q⁴ ≤ decidedDensity O 2 ramType`. -/
+theorem gate_ram_lower_decided : 1 / (residueCard O : ℝ) ^ 4 ≤ decidedDensity O 2 ramType := by
   obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
-  have h := genuineDensity_ge_of_decided (ram_decided_class hπ)
+  have h := decidedDensity_ge_of_decided (ram_decided_class hπ)
   simpa using h
 
 end Lowers
@@ -416,17 +478,17 @@ variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
 
 /-- **The bracket engine.** Lower bounds on the three degree-2 types turn, via
-`sum_genuineDensity_le_one`, into upper bounds on each one. -/
-theorem bracket_two {ls li lr : ℝ}
-    (hs : ls ≤ genuineDensity O 2 splitType)
-    (hi : li ≤ genuineDensity O 2 inertType)
-    (hr : lr ≤ genuineDensity O 2 ramType) :
-    (ls ≤ genuineDensity O 2 splitType ∧ genuineDensity O 2 splitType ≤ 1 - li - lr)
-    ∧ (li ≤ genuineDensity O 2 inertType ∧ genuineDensity O 2 inertType ≤ 1 - ls - lr)
-    ∧ (lr ≤ genuineDensity O 2 ramType ∧ genuineDensity O 2 ramType ≤ 1 - ls - li) := by
+`sum_decidedDensity_le_one`, into upper bounds on each one. -/
+theorem bracket_two_decided {ls li lr : ℝ}
+    (hs : ls ≤ decidedDensity O 2 splitType)
+    (hi : li ≤ decidedDensity O 2 inertType)
+    (hr : lr ≤ decidedDensity O 2 ramType) :
+    (ls ≤ decidedDensity O 2 splitType ∧ decidedDensity O 2 splitType ≤ 1 - li - lr)
+    ∧ (li ≤ decidedDensity O 2 inertType ∧ decidedDensity O 2 inertType ≤ 1 - ls - lr)
+    ∧ (lr ≤ decidedDensity O 2 ramType ∧ decidedDensity O 2 ramType ≤ 1 - ls - li) := by
   classical
   have hsum : ∑ τ ∈ ({splitType, inertType, ramType} : Finset FactorizationType),
-      genuineDensity O 2 τ ≤ 1 := sum_genuineDensity_le_one 2 _
+      decidedDensity O 2 τ ≤ 1 := sum_decidedDensity_le_one 2 _
   rw [Finset.sum_insert (by simp [splitType_ne_inertType, splitType_ne_ramType]),
     Finset.sum_insert (by simp [inertType_ne_ramType]), Finset.sum_singleton] at hsum
   exact ⟨⟨hs, by linarith⟩, ⟨hi, by linarith⟩, ⟨hr, by linarith⟩⟩
@@ -436,45 +498,45 @@ end Bracket
 section BracketPadic
 
 /-- The three level-certified lower bounds at `q = 2`. -/
-theorem lowers_padic_two :
-    (1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 2 splitType
-    ∧ (1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 2 inertType
-    ∧ (1 : ℝ) / 16 ≤ genuineDensity ℤ_[2] 2 ramType := by
+theorem lowers_padic_two_decided :
+    (1 : ℝ) / 4 ≤ decidedDensity ℤ_[2] 2 splitType
+    ∧ (1 : ℝ) / 4 ≤ decidedDensity ℤ_[2] 2 inertType
+    ∧ (1 : ℝ) / 16 ≤ decidedDensity ℤ_[2] 2 ramType := by
   refine ⟨?_, ?_, ?_⟩
-  · have h := gate_split_lower_sharp (O := ℤ_[2])
+  · have h := gate_split_lower_sharp_decided (O := ℤ_[2])
     rw [residueCard_padicInt 2] at h
     norm_num at h ⊢
     linarith
-  · have h := genuineDensity_ge_of_decided
+  · have h := decidedDensity_ge_of_decided
       (inert_decided_class_padic (p := 2) ![1, 1] (by
         simp only [Matrix.cons_val_one, Matrix.head_cons, Matrix.cons_val_zero, map_one]
         decide))
     rw [residueCard_padicInt 2] at h
     norm_num at h ⊢
     linarith
-  · have h := gate_ram_lower (O := ℤ_[2])
+  · have h := gate_ram_lower_decided (O := ℤ_[2])
     rw [residueCard_padicInt 2] at h
     norm_num at h ⊢
     linarith
 
 /-- The three level-certified lower bounds at `q = 3`. -/
-theorem lowers_padic_three :
-    (2 : ℝ) / 9 ≤ genuineDensity ℤ_[3] 2 splitType
-    ∧ (1 : ℝ) / 9 ≤ genuineDensity ℤ_[3] 2 inertType
-    ∧ (1 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 2 ramType := by
+theorem lowers_padic_three_decided :
+    (2 : ℝ) / 9 ≤ decidedDensity ℤ_[3] 2 splitType
+    ∧ (1 : ℝ) / 9 ≤ decidedDensity ℤ_[3] 2 inertType
+    ∧ (1 : ℝ) / 81 ≤ decidedDensity ℤ_[3] 2 ramType := by
   refine ⟨?_, ?_, ?_⟩
-  · have h := gate_split_lower_sharp (O := ℤ_[3])
+  · have h := gate_split_lower_sharp_decided (O := ℤ_[3])
     rw [residueCard_padicInt 3] at h
     norm_num at h ⊢
     linarith
-  · have h := genuineDensity_ge_of_decided
+  · have h := decidedDensity_ge_of_decided
       (inert_decided_class_padic (p := 3) ![1, 0] (by
         simp only [Matrix.cons_val_one, Matrix.head_cons, Matrix.cons_val_zero, map_one, map_zero]
         decide))
     rw [residueCard_padicInt 3] at h
     norm_num at h ⊢
     linarith
-  · have h := gate_ram_lower (O := ℤ_[3])
+  · have h := gate_ram_lower_decided (O := ℤ_[3])
     rw [residueCard_padicInt 3] at h
     norm_num at h ⊢
     linarith
@@ -482,28 +544,28 @@ theorem lowers_padic_three :
 /-- **GATE BRACKET, q = 2.** Two-sided brackets for all three degree-2 types over `ℤ_[2]`.
 W-11's exact values are `split = inert = ram = 1/3`, all inside these brackets
 (`gate_bracket_w11_two`). -/
-theorem gate_bracket_padic_two :
-    ((1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 2 splitType
-        ∧ genuineDensity ℤ_[2] 2 splitType ≤ 11 / 16)
-    ∧ ((1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 2 inertType
-        ∧ genuineDensity ℤ_[2] 2 inertType ≤ 11 / 16)
-    ∧ ((1 : ℝ) / 16 ≤ genuineDensity ℤ_[2] 2 ramType
-        ∧ genuineDensity ℤ_[2] 2 ramType ≤ 1 / 2) := by
-  obtain ⟨hs, hi, hr⟩ := lowers_padic_two
-  obtain ⟨⟨-, hs'⟩, ⟨-, hi'⟩, ⟨-, hr'⟩⟩ := bracket_two hs hi hr
+theorem gate_bracket_padic_two_decided :
+    ((1 : ℝ) / 4 ≤ decidedDensity ℤ_[2] 2 splitType
+        ∧ decidedDensity ℤ_[2] 2 splitType ≤ 11 / 16)
+    ∧ ((1 : ℝ) / 4 ≤ decidedDensity ℤ_[2] 2 inertType
+        ∧ decidedDensity ℤ_[2] 2 inertType ≤ 11 / 16)
+    ∧ ((1 : ℝ) / 16 ≤ decidedDensity ℤ_[2] 2 ramType
+        ∧ decidedDensity ℤ_[2] 2 ramType ≤ 1 / 2) := by
+  obtain ⟨hs, hi, hr⟩ := lowers_padic_two_decided
+  obtain ⟨⟨-, hs'⟩, ⟨-, hi'⟩, ⟨-, hr'⟩⟩ := bracket_two_decided hs hi hr
   refine ⟨⟨hs, ?_⟩, ⟨hi, ?_⟩, ⟨hr, ?_⟩⟩ <;> linarith
 
 /-- **GATE BRACKET, q = 3.** Two-sided brackets over `ℤ_[3]`. W-11's exact values are
 `split = inert = 3/8`, `ram = 1/4` (`gate_bracket_w11_three`). -/
-theorem gate_bracket_padic_three :
-    ((2 : ℝ) / 9 ≤ genuineDensity ℤ_[3] 2 splitType
-        ∧ genuineDensity ℤ_[3] 2 splitType ≤ 71 / 81)
-    ∧ ((1 : ℝ) / 9 ≤ genuineDensity ℤ_[3] 2 inertType
-        ∧ genuineDensity ℤ_[3] 2 inertType ≤ 62 / 81)
-    ∧ ((1 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 2 ramType
-        ∧ genuineDensity ℤ_[3] 2 ramType ≤ 2 / 3) := by
-  obtain ⟨hs, hi, hr⟩ := lowers_padic_three
-  obtain ⟨⟨-, hs'⟩, ⟨-, hi'⟩, ⟨-, hr'⟩⟩ := bracket_two hs hi hr
+theorem gate_bracket_padic_three_decided :
+    ((2 : ℝ) / 9 ≤ decidedDensity ℤ_[3] 2 splitType
+        ∧ decidedDensity ℤ_[3] 2 splitType ≤ 71 / 81)
+    ∧ ((1 : ℝ) / 9 ≤ decidedDensity ℤ_[3] 2 inertType
+        ∧ decidedDensity ℤ_[3] 2 inertType ≤ 62 / 81)
+    ∧ ((1 : ℝ) / 81 ≤ decidedDensity ℤ_[3] 2 ramType
+        ∧ decidedDensity ℤ_[3] 2 ramType ≤ 2 / 3) := by
+  obtain ⟨hs, hi, hr⟩ := lowers_padic_three_decided
+  obtain ⟨⟨-, hs'⟩, ⟨-, hi'⟩, ⟨-, hr'⟩⟩ := bracket_two_decided hs hi hr
   refine ⟨⟨hs, ?_⟩, ⟨hi, ?_⟩, ⟨hr, ?_⟩⟩ <;> linarith
 
 /-- **W-11 containment, q = 2**: `q/(2(q+1)) = 1/3` (split, inert) and `1/(q+1) = 1/3` (ram)
@@ -527,35 +589,49 @@ end BracketPadic
 section AxCheck
 
 -- Every gate must be Lean core ONLY (`propext`, `Classical.choice`, `Quot.sound`).
-#print axioms Uniformity.Density.genuineDensity_linear_eq_one
-#print axioms Uniformity.Density.genuineDensity_one_of_ne
+#print axioms Uniformity.Density.decidedDensity_linear_eq_one
+#print axioms Uniformity.Density.decidedDensity_one_of_ne
 #print axioms Uniformity.Density.gate_sigma_separation_one
 #print axioms Uniformity.Density.typeOf_mul_linear
 #print axioms Uniformity.Density.typeOf_split_of_unit
-#print axioms Uniformity.Density.gate_split_lower
-#print axioms Uniformity.Density.gate_padic_two
-#print axioms Uniformity.Density.genuineDensity_two_linType_eq_zero
-#print axioms Uniformity.Density.gate_sigma_separation_two
+#print axioms Uniformity.Density.gate_split_lower_decided
+#print axioms Uniformity.Density.gate_padic_two_decided
+#print axioms Uniformity.Density.decidedDensity_two_linType_eq_zero
+#print axioms Uniformity.Density.gate_sigma_separation_two_decided
 #print axioms Uniformity.Density.decidedSeq_tendsto
 #print axioms Uniformity.Density.possibleSeq_tendsto
-#print axioms Uniformity.Density.upperDensity_eq_of_drainage
-#print axioms Uniformity.Density.genuineDensity_le_upperDensity
-#print axioms Uniformity.Density.sum_genuineDensity_le_one
+#print axioms Uniformity.Density.genuineDensity_eq_of_drainage
+#print axioms Uniformity.Density.decidedDensity_le_genuineDensity
+#print axioms Uniformity.Density.sum_decidedDensity_le_one
 #print axioms Uniformity.Density.card_res
 #print axioms Uniformity.Density.UniformityStatement.toPadic
 -- follow-up unit (2026-08-13): the certificates and the brackets
 #print axioms Uniformity.Density.norm_quad
 #print axioms Uniformity.Density.typeOf_ram_of_eisenstein
 #print axioms Uniformity.Density.typeOf_inert_of_anisotropic
-#print axioms Uniformity.Density.gate_split_lower_sharp
-#print axioms Uniformity.Density.gate_ram_lower
-#print axioms Uniformity.Density.lowers_padic_two
-#print axioms Uniformity.Density.lowers_padic_three
-#print axioms Uniformity.Density.bracket_two
-#print axioms Uniformity.Density.gate_bracket_padic_two
-#print axioms Uniformity.Density.gate_bracket_padic_three
+#print axioms Uniformity.Density.gate_split_lower_sharp_decided
+#print axioms Uniformity.Density.gate_ram_lower_decided
+#print axioms Uniformity.Density.lowers_padic_two_decided
+#print axioms Uniformity.Density.lowers_padic_three_decided
+#print axioms Uniformity.Density.bracket_two_decided
+#print axioms Uniformity.Density.gate_bracket_padic_two_decided
+#print axioms Uniformity.Density.gate_bracket_padic_three_decided
 #print axioms Uniformity.Density.gate_bracket_w11_two
 #print axioms Uniformity.Density.gate_bracket_w11_three
+-- unit UNIFORMITY-P4 (2026-08-13): the genuineDensity rewire
+#print axioms Uniformity.Density.drainage_of_genuineDensity_eq
+#print axioms Uniformity.Density.one_le_sum_possibleSeq
+#print axioms Uniformity.Density.one_le_sum_genuineDensity
+#print axioms Uniformity.Density.sum_genuineDensity_eq_one_of_drainage
+#print axioms Uniformity.Density.sum_decidedDensity_eq_one_of_drainage
+#print axioms Uniformity.Density.totalMassOne_of_drainage
+#print axioms Uniformity.Density.UniformityStatement.ofDecided
+#print axioms Uniformity.Density.UniformityStatement.toDecided
+#print axioms Uniformity.Density.drainage_one
+#print axioms Uniformity.Density.genuineDensity_eq_decidedDensity_one
+#print axioms Uniformity.Density.genuineDensity_linear_eq_one
+#print axioms Uniformity.Density.genuineDensity_one_of_ne
+#print axioms Uniformity.Density.totalMass_one
 
 end AxCheck
 
