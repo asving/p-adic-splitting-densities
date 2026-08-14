@@ -115,7 +115,7 @@ CANONICAL STATEMENTs are verbatim or explicitly `[ASSEMBLED]`; `…` marks trunc
 
 ## 2. Statement inventory
 
-62 units, contiguous, in effective-text order. FORM on every unit (tag-sparse genre).
+67 units, contiguous, in effective-text order. FORM on every unit (tag-sparse genre).
 
 ### EFF.GENTOW1.01  [convention]
 
@@ -1806,3 +1806,474 @@ The caveat, verbatim:
 **TEETH:** **BOTH SOURCE CITATIONS RE-VERIFIED AT COMPILE TIME.** `verification/openmath/hetowr1_supp.py` line **102** reads `    def i(self, k):  return k % self.e1              # h = 1 at every frame` ✓ and line **155** reads `FW = Frame('W', 5, 3, [-10, 0, 0, 1], 2, 5, -1, -1, ((3, 2),))` ✓ — both exact, at the stated line numbers. **ARITHMETIC AUDIT:** from the constructor, `e1 = 3` and `u2 = 5`, so `i(u2) = 5 mod 3 = 2` ✓; `W(0) = ⌊(f₂−0)·i(u₂)/e₁⌋ = ⌊2·2/3⌋ = 1` ✓ and the rejected value `⌊2·1/3⌋ = 0` ✓; `W(1) = ⌊1·2/3⌋ = 0` ✓. **The entire cure reproduces from the cited source.** This is the highest-quality correction in the entry: a false claim, caught by a hostile pass, cured by reading the actual instrument source, with every number re-derivable.
 
 ---
+### EFF.GENTOW1.61  [changes-record]  *(SERIES ARC, link 5)*
+
+**CANONICAL STATEMENT:** the 2026-08-10 S3 lift correction, `[ASSEMBLED]` from lines 769–845. Provenance, verbatim:
+
+> “**Provenance.** GENTOW5's r2 (PE2 F-2) corrected ITS lift display
+> and flagged this note's S3 for the same defect ("GENTOW1 S3's
+> fixed-base READING of its lift display fails the same way at
+> seam-live heights — a display-level defect there, flagged for that
+> note's own arc"; GENTOW5_PROOF_2026-08-09.md S2, machine row
+> FA1-LIFT, gentow5_pe2_fresh.py @ 40f313a, 22/0). Adjudicated this
+> round; honest statement-repair under standing authority.”
+
+The defect and its counter-instance, verbatim:
+
+> “With (i, b) bound to n2hat(m)'s base exponents
+> (the sentence's only antecedent) this is the FIXED-BASE display:
+> base solved once at m, steps e1r, e2t added, pi-exponent left to
+> compensate. At seam-live heights the compensating pi-exponent goes
+> NON-INTEGER and the displayed flavor DOES NOT EXIST. Counter-
+> instance (GENTOW5 PE2's frame FR-A: p = 3, e1 = 2, h = 1, e2 = 1,
+> u2 = 3; m = 14, n2hat(14) = 3^7): the t = 1 flavor as displayed
+> demands pi-exponent (14 − 3)/2 = 11/2 — no such monomial; machine
+> row FA1-LIFT asserts the fixed-base flavor's non-existence AND
+> runs the green chain on the re-solved member 3^5·x·Phi_1 =
+> n2hat(11)·Phi_1 (the x-exponent re-solves 0 -> 1).”
+
+The corrected display, verbatim:
+
+>     “lift(s; m) := Sum_{r,t} d_{r,t} · M_{r,t}(m),
+>     M_{r,t}(m)  := n2hat(m − Delta(r,t)) · x^{e1·r} · Phi'^{e2·t},
+>     Delta(r,t)  := e1e2h·r + e2u2·t,”
+
+**FORM:** dated correction section with provenance, defect, display and a four-item adjudication.
+
+**DERIVATION:** the corrected display's soundness is verified in place: “Each M_{r,t}(m) sits at dv2-height m EXACTLY (n2hat contributes m − Delta(r,t); x^{e1r} adds e1e2h·r; Phi'^{e2t} adds e2u2·t), and the exponents stay in ladder range … so the frozen sentence "deg lift < D2 always" stands as written.”
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement** of a display. **TARGETS:** `.27`. **The four-item adjudication is the load-bearing part** and a consumer must carry it: “The correction changes the truth value of the DISPLAY SENTENCE ONLY … Truth values of LEMMA GENTOW-2's clauses (i)–(iv), their proof sentences, and S4's ledger sentences: UNCHANGED by this correction.” The four interface properties the consumers actually read — height-λ exactness; `deg lift < D2` with Φ′-exponents `< e2f2`; the coherent-normalization residue realization; O-digit freeness — are each checked to survive.
+
+**RESOLUTION TRACE:** lines 769–845.
+
+**TEETH:** **ARITHMETIC AUDIT of the counter-instance, recomputed:** at `e1 = 2, h = 1, e2 = 1, u2 = 3`, `n2hat(m) = π^{a0}x^iΦ′^b` with `e1e2·a0 + i·e2h + b·u2 = m`, i.e. `2a0 + i + 3b = m` with `i < 2, b < 1` so `b = 0`; at `m = 14`: `i = 0, a0 = 7`, giving `n2hat(14) = 3^7` ✓ exactly as displayed. The fixed-base `t = 1` flavor would need `Φ′^{e2·1} = Φ′`, contributing `u2 = 3`, leaving `11` for `2a0 + i` with the base's `i = 0` fixed — hence `a0 = 11/2`, **non-integer** ✓. The re-solve gives `Δ(0,1) = e2u2·1 = 3`, `n2hat(11)`: `2a0 + i = 11` with `i < 2` → `i = 1, a0 = 5`, so `n2hat(11)·Φ′ = 3^5·x·Φ′` ✓ — **the note's re-solved member reproduces exactly, x-exponent 0 → 1 as stated.** `git cat-file -t 40f313a` = commit; `gentow5_pe2_fresh.py` exists ✓. **FREEZE F-4 verified** (lines 1–767 → `06ee4edb…`, 42,255 bytes, blob 42255) ✓.
+
+---
+
+### EFF.GENTOW1.62  [record]  *(SERIES ARC, link 6; SERIES TOWERRAT preamble)*
+
+**CANONICAL STATEMENT:**
+
+> “*Provenance: the Codex ratification run on the frozen accepted note
+> (`CODEX_TOWERRAT_2026-08-10.md` §S3, session
+> 019fe98a-19ed-7400-8b02-46117f9dd15b, outcome CHALLENGE; the two
+> Codex-CRITICALs adjudicated GAP-with-repair — no CONCLUSION of
+> GENTOW-1/2/5 was refuted). The 2/2 acceptance stands; the body is
+> BYTE-FROZEN; each correction below GOVERNS the reading of its
+> quoted display. Each repair is re-derived from this note's own
+> Steps. Machine leg: `gentow1_r2_units.py` (md5 b625e5be, output
+> bcb27efd) — GREEN, 41 checks, 14 gp jobs, 0 violations.*”
+
+**FORM:** italic provenance preamble under the dated heading.
+
+**DERIVATION:** `[RECORD]` of a **decorrelated post-acceptance ratification** — the same instrument class that produced HETOW's LEMMA HETOW-4.
+
+**CONDITIONALITY:** **“no CONCLUSION of GENTOW-1/2/5 was refuted”** is the operative scope: three displays are corrected, no theorem falls. The two Codex-CRITICALs were adjudicated down to GAP-with-repair by this note's owner — a judgment recorded, not re-adjudicated here.
+
+**RESOLUTION TRACE:** lines 850–858.
+
+**TEETH:** **`md5sum gentow1_r2_units.py` = `b625e5be…` ✓ and `md5sum gentow1_r2_units_output.txt` = `bcb27efd…` ✓** — both stated hashes match. The output's final lines read `TOTAL violations 0 (0.1s)` / `VERDICT: GREEN` ✓. `CODEX_TOWERRAT_2026-08-10.md` exists ✓.
+
+---
+
+### EFF.GENTOW1.63  [changes-record]  *(SERIES TOWERRAT, link 1)*
+
+**CANONICAL STATEMENT:** R2a, verbatim:
+
+> “**R2a (LEMMA GENTOW-1(b): the free-count display gains its clip).**
+> Sealed display, quoted: "per window N the free-O-digit count is
+> Sum_{j,a,b} (N − floor(j,a,b))". **Display of record:**
+>
+>     free-O-digit count per window N = Σ_{j,a,b} max(0, N − floor(j,a,b)).
+>
+> Re-derivation from (b)'s own fibration: the slot (j,a,b) string's
+> in-window digits sit at v ∈ {0,…,N−1} and are free exactly at
+> v ≥ floor(j,a,b), so the count is #{v : floor ≤ v < N} =
+> max(0, N − floor) — never negative; the sealed form is false
+> whenever N < floor at some slot.”
+
+with the counter-instance and the inactivity check, verbatim:
+
+> “Counter-instance (re-derived, in
+> scope): μ₂ = 2, e₁ = f₁ = e₂ = 1, f₂ = 2, h = 1, u₂ = 2 (node
+> floor 2 > e₂D′h = 1 ✓, gcd ✓): (a)'s display gives floors
+> (9, 7, 5, 3); at N = 1 the sealed sum is −20 while the budget box
+> mod π is the single all-zero string — 0 free digits, the clipped
+> value (runner row UA-codex-N1). At the committed battery rows the
+> clip is INACTIVE and the values are unchanged: FAM-A5 (floors
+> [6,5,4,4 | 3,3,2,1]) and FAM-B ([7,6,5,5 | 4,3,2,2]) … satisfy
+> Σ(N − floor) = Σ max(0, N − floor) at N = maxfloor and
+> maxfloor + 2 (rows UA-A5/UA-B-clip-inactive), diverging at N = 3
+> (rows UA-*-clip-active-N3).”
+
+**FORM:** bold-headed correction with a display, a re-derivation, a counter-instance and an inactivity check.
+
+**DERIVATION:** re-derived from (b)'s own fibration — the note is explicit that no external input is used (“Each repair is re-derived from this note's own Steps”).
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement**. **TARGETS:** `.16` (the display) and `.39` (GENTOW-5(e)'s “exact per window” sentence, explicitly re-scoped: “reads AT the clipped display (equivalently: exact as sealed for N ≥ max floor)”). Not re-pointed: `.26`'s count-law remark (OPEN-CALL 2).
+
+**RESOLUTION TRACE:** lines 860–884.
+
+**TEETH:** **ARITHMETIC AUDIT — the counter-instance recomputed from scratch.** With `μ₂ = 2, e₁ = f₁ = e₂ = 1, f₂ = 2, h = 1, u₂ = 2`: `D′ = e₁f₁ = 1`, `E2 = e₂f₂u₂ = 4`, `e₁e₂ = 1`, `w(a,b) = a·e₂h + b·u₂ = a + 2b` with `a < 1` (so `a = 0`) and `b < e₂f₂ = 2`. Applying `.15`(a): **j = 0** (`(μ₂−j)E2 = 8`): `w(0,0) = 0 → ⌈8/1⌉ + 1 = 9` (pin: `1 | 8` ✓); `w(0,1) = 2 → ⌈6/1⌉ + 1 = 7` ✓. **j = 1** (`= 4`): `w(0,0) = 0 → 4 + 1 = 5` ✓; `w(0,1) = 2 → 2 + 1 = 3` ✓. **Floors = (9, 7, 5, 3) — exactly as the note displays.** At N = 1: `Σ(N − floor) = (1−9)+(1−7)+(1−5)+(1−3) = −8−6−4−2 = −20` ✓ **exactly the note's figure**. Node-floor and gcd side conditions check: `u₂ = 2 > e₂D′h = 1` ✓, `gcd(u₂,e₂) = gcd(2,1) = 1` ✓. The inactivity claim is corroborated by `.10`'s independent recomputation of the FAM-A5 and FAM-B floor lists, which match the ones quoted here entry-for-entry ✓.
+
+---
+
+### EFF.GENTOW1.64  [changes-record]  *(SERIES TOWERRAT, link 2)*
+
+**CANONICAL STATEMENT:** R2b, `[ASSEMBLED]` from lines 886–917. The diagnosis and the two definitions, verbatim:
+
+> “**R2b (LEMMA GENTOW-2(iii) layer 3: ONTO by cardinality — the two
+> finite sets, defined; the counting lemma, stated).** The sealed
+> layer-3 sentence asserted "onto by cardinality" with neither set
+> defined.”
+
+> “* **DOM_N** (the event slice at the OLD key Φ₂): per coordinate
+>   j < μ₂, in-window digits at heights ≤ H_j are ZERO except the
+>   height-H_j K₂-digit, which EQUALS the prescribed
+>   binom(μ₂,j)(−s̄)^{μ₂−j} in the coherent normalization (a ZERO
+>   prescription where p | binom(μ₂,j)); heights > H_j free. …
+> * **COD_N** (the λ-floored node box at the NEW key Φ₂⁺): per
+>   coordinate j, in-window digits at heights ≤ H_j ZERO; free above.”
+
+The counting lemma and the corrected ONTO argument, verbatim:
+
+> “**Counting lemma.** |DOM_N| = |COD_N| =
+> q^{Σ_{j,a,b} max(0, N − floor_λ(j,a,b))}, with floor_λ(j,a,b) :=
+> #{v ≥ 0 : e₁e₂v + w(a,b) ≤ H_j} — the SAME clipped exponent on
+> both sides, because the free positions are the same height set
+> (heights > H_j, in-window) in both frames, and DOM_N's prescribed
+> data are FIXED values, not free digits. ONTO, properly: the
+> triangular map is height-preserving …, hence well-defined on window
+> classes; injective (unit diagonal); maps DOM_N into COD_N (the
+> kills, (ii)); and an injection between finite sets of equal
+> cardinality is a bijection. The full-string bijection is the
+> inverse limit of the window bijections over N.”
+
+**FORM:** bold-headed correction with two set definitions, a counting lemma and a repaired argument.
+
+**DERIVATION:** two explicit finite sets + equal cardinality + injectivity, then an inverse limit.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **inventory completion**. **TARGETS:** `.30`, `.33` (layer 3). **Note the internal consistency with R2a**: the counting lemma uses the CLIPPED exponent — the two TOWERRAT corrections are coupled, and a consumer applying one without the other would get an inconsistent count.
+
+**RESOLUTION TRACE:** lines 886–917.
+
+**TEETH:** **the clause's first ENUMERATION contact**, verbatim: “the A5-R1 battery row (λ = 13, s = 1, Φ₂⁺ = Φ₂ − 4Φ′, N = 4) — 16 DOM members map to 16 DISTINCT window images covering the COD box EXACTLY (runner rows UB-count-16/UB-onto)”. Machine verdict re-read: `TOTAL violations 0` / `GREEN` ✓. Cross-check: A5-R1's `λ = 13, s = 1` matches `.12`'s refine table row exactly ✓.
+
+---
+
+### EFF.GENTOW1.65  [changes-record]  *(SERIES TOWERRAT, link 3)*
+
+**CANONICAL STATEMENT:** R2c, `[ASSEMBLED]` from lines 919–955. The diagnosis, verbatim:
+
+> “**R2c (LEMMA GENTOW-5(a): the cap clause restated THREE-BAND).**
+> Sealed clause, quoted: "a computed dv2-value is LIFT-STABLE iff
+> < e1e2*N" — its only-if direction contradicts the same clause's
+> first-band sentence (value exact AT the cap).”
+
+The three bands, verbatim:
+
+> “* **BAND 1 (m < e₁e₂N):** every computed dv₂-value m is
+>   LIFT-STABLE, value and deciding digits …
+> * **BAND 2 (m = e₁e₂N):** when the height-m readable residue has a
+>   nonzero component on a flavor complementary to the unread ones
+>   (available at f₁f₂ ≥ 2), the VALUE m is exact for every lift
+>   (GENHN-2′ tower-basis independence) while the full K₂-residue is
+>   NOT determined …; at f₁f₂ = 1 no
+>   stability is claimed. An at-cap value is thus stable WITHOUT
+>   being < e₁e₂N — the sealed iff fails exactly here, and the
+>   sealed proof phrase "undercutting every computed value ≥ e₁e₂N"
+>   is re-scoped to STRICT >: at equality the unread digit TIES.
+> * **BAND 3 (m > e₁e₂N):** value-unstable …”
+
+and the no-content-change certificate, verbatim:
+
+> “No proof content changes: the sealed first-band paragraph already
+> carried bands 1–2; consumers ((c)'s congruence, (d)'s carries, the
+> readable-event consultation) ride heights and band-1/2
+> residue-determinacy as before.”
+
+**FORM:** bold-headed correction with three bulleted bands.
+
+**DERIVATION:** each band derived from the clause's own mechanisms; the defect is an internal inconsistency, not a missing input.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement** (of the iff) + **scope-pin** (of the proof phrase to strict `>`). **TARGETS:** `.35`, `.40`(a). **The f₁f₂ = 1 carve-out is essential**: band 2's stability is only available at f₁f₂ ≥ 2, so at f₁f₂ = 1 the sealed iff was accidentally right.
+
+**RESOLUTION TRACE:** lines 919–955.
+
+**TEETH:** **per-band machine contact re-read from `gentow1_r2_units_output.txt`**: band 2's `UC-BAND2-LC0-pari  ok  dv2 = 8 at [(2, 8)]` (value 8 = cap, exact) ✓; band 3's `UC-BAND3-L0-pari  ok  dv2 = 14` and `UC-BAND3-LC1-x3-pari  ok  dv2 = 11` ✓ — **the note's “band 3 — values 14 vs 11 across two lifts” reproduces exactly**, and the divergence is the instability. ARITHMETIC AUDIT: at FAM-B, `e₁e₂ = 2` and `N = 4` give cap `= 8` ✓, matching the band-2 value. The note's own cross-cite is also verified: “the sealed WINDOW rows (P-7, below-cap) sit in band 1; T-UNDERCUT ×2 sit in band 3” — consistent with `.42`'s redisclosure that the sealed P-7 had compared above-cap values.
+
+---
+
+### EFF.GENTOW1.66  [changes-record]  *(SERIES TOWERRAT, link 4)*
+
+**CANONICAL STATEMENT:** F-4, verbatim:
+
+> “**F-4 (GENTOW-2(i) proof wording: "constant term untouched").**
+> Sealed sentence, quoted: "strictly above the x-side through
+> (D2, 0), constant term untouched". The constant COEFFICIENT can
+> change — the note's own B-R2 row has lift(s;λ) = 16 + 4xΦ′, so
+> Φ₂⁺ = Φ₂ − lift shifts the constant by −16. Reading of record:
+> what is untouched is the constant term's X-SIDE DIGIT (its
+> exact-side initial form): what's x-degree-0 contribution sits at
+> dv₂-height λ > E₂ ≥ (the x-side height at abscissa 0), strictly
+> above the side, so the side through (D₂, 0) and its side digits
+> are unchanged — which is all the (i)-invariance argument consumes
+> (at B-R2: constant −8 − 16 = −24; the exact-height-6 side digit is
+> untouched, the −16 sits at height 8).”
+
+**FORM:** bold-headed correction.
+
+**DERIVATION:** the note's own battery row furnishes the counter-instance to its own wording — a self-refutation from committed data.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **wording-rider**. **TARGETS:** `.32`. Nothing the invariance argument consumes changes.
+
+**RESOLUTION TRACE:** lines 957–968.
+
+**TEETH:** **ARITHMETIC AUDIT against the committed battery, recomputed.** FAM-B's key is `Phi'²−2xPhi'−8` (`.09`), constant `−8`; B-R2's lift is `16 + 4xΦ′` (`.12`, bracketed note “two-monomial K2-digit lift 16 + 4xPhi'”), so `Φ₂⁺ = Φ₂ − lift` shifts the constant to `−8 − 16 = −24` ✓ **exactly the note's figure**. Heights: FAM-B has `E2 = 6` and B-R2 has `lam = 8`, so the `−16` sits at height 8 `> 6` ✓ strictly above the side, and the exact-height-6 side digit is untouched ✓. Both numbers reproduce from `.09` and `.12` independently.
+
+---
+
+### EFF.GENTOW1.67  [instrument-record]  *(SERIES FREEZE — the five pins, folded)*
+
+**CANONICAL STATEMENT:** the note's five byte-freeze declarations. The two most recent, verbatim:
+
+> “BYTE-FREEZE: pre-append body md5 06ee4edb
+> (06ee4edb86527692f82902a497646e88) = commit 31388f4, 42,255 bytes,
+> re-verified by prefix after this append; edit shape append-only;
+> the S3 display sentence itself stays byte-frozen — this dated
+> correction GOVERNS its reading.”
+
+> “BYTE-FREEZE: pre-append body md5 29908cb4
+> (29908cb47cfc4e8a82ae8adad23889d3) = commit 4e81a57, 46,567 bytes,
+> re-verified by prefix after this append; edit shape append-only;
+> statement displays of LEMMA GENTOW-1/2/5 and COR GENTOW-1.1 and
+> all sealed artifacts byte-untouched — these corrections GOVERN
+> their quoted sentences' readings.”
+
+The other three are at lines 680–682 (F-1, whole-body at `5eca905`), 728–731 (F-2) and 765–767 (F-3), and are tabulated with their verifications in §1.
+
+**FORM:** four bold-headed freeze lines + one in-manifest md5. **SERIES FOLD:** emitted as one ledger unit; the fold is audited in §7.2.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** none. The last freeze's final clause is the note's own summary of its append discipline: the four post-acceptance corrections **GOVERN readings** and touch no display.
+
+**RESOLUTION TRACE:** lines 680–682, 728–731, 765–767, 841–845, 970–975.
+
+**TEETH:** **ALL FIVE VERIFIED, THIRTEEN QUANTITIES, ZERO DISCREPANCIES** — see the §1 table. The independent cross-check that makes this airtight: for each of F-2…F-5 the stated byte count equals BOTH the compiler's prefix length AND `git cat-file -s` on the named commit's blob.
+
+---
+
+## 3. XREF verification ledger
+
+All checks at compile time (2026-08-14): `grep -cF` for designations, `git cat-file -t` for commits, `md5sum`/`git cat-file -s` for artifacts and freezes.
+
+### 3.1 Designation XREFs
+
+`[TABLE — compiler ledger]`
+
+| ID | Target | Verified designation / check | count | line | Role |
+|---|---|---|---:|---:|---|
+| X01 | `GENHN_PROOF_2026-08-08.md` | `GENHN-TOW-1` | **19** | — | the box this note attacks (`.01`, `.46`) |
+| X02 | `GENTOW5_PROOF_2026-08-09.md` | `| (1) | GENTOW-BOX-1 disposition | RETIRED into GENTOW5-A's pin stack (S1.5) |` | 1 | 112 | the BOX-1 retirement target (`.47`) |
+| X02a | same | `# GENTOW-5: the composed graded frame at general mu2 (GENTOW-BOX-1)` | 1 | 1 | the retiring note's own title names the box |
+| X03 | `verification/openmath/hetowr1_supp.py` | `    def i(self, k):  return k % self.e1` | 1 | **102** | the PE3 cure's source citation (`.60`) |
+| X04 | same | `FW = Frame('W', 5, 3, [-10, 0, 0, 1], 2, 5, -1, -1, ((3, 2),))` | 1 | **155** | frame W's constructor (`.60`) |
+| X05 | `CODEX_TOWERRAT_2026-08-10.md` | file exists | — | — | the ratification behind `.62`–`.66` |
+| X06 | `GENTOW1_PROOF_2026-08-09.md` §S2 Step 4 | the all-roots transport quoted by HETOW | 1 | 246 | **the reverse edge**: `EFF.HETOW.54` cites this unit (`.23`) |
+
+### 3.2 Commit and artifact pins (v3 rule 23)
+
+`[TABLE — compiler ledger]`
+
+| ID | Pin | Verified |
+|---|---|---|
+| P-01 | commits `606e85c`, `59c1966`, `5eca905`, `982abe7`, `6993b7c`, `9e9d994`, `1e99926`, `4aff731`, `4ccc8c5`, `477b1b1`, `0bb7610`, `31388f4`, `4e81a57`, `40f313a`, `5f821dc` | **ALL FIFTEEN resolve** as commits |
+| P-02 | `gentow1_checks.py` md5 `6df4b213…` | **MATCHES** (`6df4b213ed0aab6afa37ac7b418540aa`) |
+| P-03 | `gentow1_checks_output.txt` md5 `25667bf6` | **MATCHES**; final line `=== VERDICT: GREEN -- 1128 checks, 0 violations (5.0s) ===` |
+| P-04 | `gentow1_r2_units.py` md5 `b625e5be`, output `bcb27efd` | **BOTH MATCH**; output `TOTAL violations 0 (0.1s)` / `GREEN` |
+| P-05 | `gentow1_pe1_fresh.py` + output | EXIST; output `=== VERDICT: GREEN -- 373 checks, 0 violations (1.0s) ===`, teeth `{'GAUGE-NODE': 20, 'GAUGE-SIGMA': 2, 'REFWRONG': 2}` |
+| P-06 | `gentow1_r1_p1.py` + output | EXIST; output `P-1 SCORED: 20 checks, 0 violations -- GREEN` |
+| P-07 | `gentow5_pe2_fresh.py` | EXISTS (the FA1-LIFT row's instrument, `.61`) |
+| P-08 | `genhnr2_supp.py`, `genhn_pe3_fresh.py` | EXIST (the recipe sources, `.03`) |
+| P-09 | `GENTOW1_passPE1/PE2/PE3_report.md` | ALL THREE EXIST |
+| P-10 | the five byte-freeze pins | **ALL FIVE VERIFIED, 13 quantities** — §1 table |
+
+### 3.3 Verified NEGATIVE edges
+
+`[TABLE — compiler ledger]`
+
+| ID | Check | count | Meaning |
+|---|---|---:|---|
+| N1 | `grep -cF 'GENTOW' GENHN_PROOF_2026-08-08.md` | **0** | the consumption path (`.50`) is verifiably NOT EXECUTED; GENHN carries no reference to this note |
+| N2 | `grep -cF '59c1966' GENHN_PROOF_2026-08-08.md` | **0** | GENHN's own erratum is not self-identified by that commit hash inside GENHN — the citation at `.06`/`.49` is a COMMIT pin, not an in-supplier designation |
+
+---
+
+## 4. Effective supply / consumption ledger
+
+`[TABLE — compiler ledger]`
+
+| Obligation | Effective supply | Surviving fence | Protocol status |
+|---|---|---|---|
+| [GENHN-TOW-1] item (1) + (6)(β) | `.15`–`.18` (GENTOW-1 a–d), `.25` (COR 1.1, sharper constant E2) | FULL side only (`.14`); (b)'s count display clipped (`.63`) | **PROVED, ACCEPTED 2/2**; discharge into GENHN **NOT LANDED** (N1) |
+| item (2) | `.28`–`.31` (GENTOW-2 i–iv) | μ₂ = 2 pointwise; **general μ₂ conditional on the graded frame at GENTOW5's 0/2** (`.47`); (iii)'s ONTO completed by R2b | **PROVED at the disclosed conditionality**; unlanded |
+| item (5) | `.35`–`.39` (GENTOW-5 a–e) | (a) restated three-band (`.65`); (e) re-scoped to the clipped display | **PROVED**; band adjudication NOT derived (`.41`) |
+| the composed key display | `.06` (corrected `chat_t`) | at η = 1 corrected = naive | **IMPORTED** from GENHN's erratum; the seam is HETOW's finding |
+| the S3 lift display | `.61` (per-flavor re-solve) | interface properties unchanged | **IMPORTED** from GENTOW5's r2 |
+| items (3), (4), (6)(α) | not supplied | `.46` | **OPEN**; item (4) is GENTOW-4's territory at HEAD |
+
+---
+
+## 5. NON-IMPORTS
+
+**NI-1 — no supplier file is edited.** `.03`: “Sources consumed (never edited — GENHN_PROOF's acceptance pass is live)”; `.50`: “GENHN_PROOF is byte-untouched by this unit.” Verified (N1).
+
+**NI-2 — the count LEDGERS are not executed.** `.26`: “the per-genre tower count LEDGERS (the GENH5-DENS-style displays) are a counting unit NOT executed here.”
+
+**NI-3 — the composed band trichotomy is NOT derived.** `.41`(i), with its reason: “it was not part of item (5)'s box text”.
+
+**NI-4 — BOX-4's extraction layer is vacuous here, not discharged.** `.41`(ii): at a full side “the tower block IS f”, so there is nothing to certify; the layer returns at item (4).
+
+**NI-5 — no formula is consulted at μ₂ = 2.** `.33`: the refine rows are “actual polynomial re-division, no formula”.
+
+**NI-6 — Step 0 is VALUE-BLIND.** `.19`: “it prices heights only” — so the gauge correction cannot reach the budget/window/floor content.
+
+**NI-7 — the r1 round changed no statement.** `.57`: the four statement displays “sit outside the inserted brackets”. (True of r1; the later appends do reach displays — see §1.)
+
+**NI-8 — no CONCLUSION was refuted by the ratification.** `.62`: “the two Codex-CRITICALs adjudicated GAP-with-repair — no CONCLUSION of GENTOW-1/2/5 was refuted.”
+
+Accordingly **no edge is created** from this note to partial inner sides, to depth ≥ 3 iterated carries, to genre-general faithfulness, to a composed band trichotomy, or to executed count ledgers.
+
+---
+
+## 6. TEETH inverse inventory
+
+### 6.1 Obligation → guarded units
+
+`[TABLE — compiler ledger]`
+
+| # | Row | Guarded units | Disposition |
+|---:|---|---|---|
+| 1 | P-1 base-key ef | `.28` | **preregistration with NO sealed row** → scored post-hoc by a decorrelated supplement (`.55`), 20/0 |
+| 2 | P-2/P-4 budgets both directions (NEC 350, REAL 180) | `.15`, `.16`, `.14` | executable regression |
+| 3 | P-3 node oracle (GP-NODE 171, STRICT) | `.18`, `.08` | executable regression |
+| 4 | P-5 node sharpness (NODE-EQ 5) | `.17`, `.11`(iii) | executable regression — **sharpness, not just consistency** |
+| 5 | P-6 refine rows (REFINE 40, GP-EF 8) | `.28`–`.31`, `.12` | executable regression |
+| 6 | P-7/P-8/P-9 windows/strings/roundtrips (35/22/150) | `.35`–`.39` | executable regression; **P-7 as sealed over-claimed and was redisclosed** (`.42`) |
+| 7 | T-MUTFLOOR ×5 | `.07`, `.15` | **anti-vacuity tooth** — the wrong-floor mutant is machine-dead |
+| 8 | T-BELOWNODE ×1 | `.17` | executable regression |
+| 9 | T-REFWRONG ×8 | `.29`, `.33` | three-way mutation tooth (height/residue/flavor) |
+| 10 | T-UNDERCUT ×2 | `.35`, `.40` | executable regression; sits in band 3 per R2c |
+| 11 | T-SHADOW ×1 (3 checks) | `.44` | regression against PE1's corrected reads |
+| 12 | the PE1 fresh route (373/0, F1 η ≠ 1) | `.24`, `.53` | **AUDIT / decorrelated frame** — the only η ≠ 1 contact of the note's own arc |
+| 13 | the PE3 fresh route (85/0, q = 4 and gauge-live × μ₂ = 3) | `.59` | **AUDIT / decorrelated frame** — two axes the sealed battery cannot reach |
+| 14 | the TOWERRAT unit runner (41 checks, 14 gp, 0 viol.) | `.63`–`.66` | **AUDIT / decorrelated-model audit** — three display corrections, each machine-contacted |
+| 15 | GENTOW-2 layer 1 at μ₂ ≥ 3 | `.33`, `.47` | **PROOF-ONLY, and conditional** — the note's own sentence: “at general mu2 layer 1 consumes the composed graded frame … GENHN-BOX-2's disclosure pattern one level up” |
+| 16 | the two coverage boxes | `.48`, `.54` | **signed coverage disclosure** |
+
+### 6.2 Reverse direction — units with no tooth
+
+`.01`–`.03`, `.05`, `.13`, `.19`–`.23`, `.26`, `.27`, `.32`, `.34`, `.37`, `.41`, `.46`, `.49`–`.52`, `.56`, `.57`, `.60`–`.62`, `.67` are convention / derivation-step / record / fence units; the derivation steps are guarded transitively by the lemma clauses they prove, and the record units by the pin ledger (§3.2), which verified every pin. **Zero-orphan check: 16 obligations, all mapped, 0 orphans.**
+
+### 6.3 Arithmetic audit summary (v3 rule 22)
+
+Every number in the note was recomputed:
+
+- **the 1,128 tally**: sixteen categories sum to 1,128 ✓, and all sixteen match the artifact's printed dict ✓
+- **sixteen budget-table entries** (FAM-A5 and FAM-B, both coordinates) recomputed from `.15`(a)'s formula, **pin markers included** ✓
+- **all ten node floors** `(mu2−j)E2 + 1` across five families ✓
+- **all five mutant bases** `D2·e2h` and their gaps below E2 ✓
+- **all five E2 values** and the derived `dv2`, `n` columns ✓
+- **FAM-C's worked floor** `⌈(42−7)/6⌉ = 6`, no pin since `35 ≢ 0 (mod 6)` ✓
+- **R2a's counter-instance**: floors `(9,7,5,3)`, sealed sum at N = 1 = **−20** ✓, side conditions ✓
+- **F-4's constant shift**: `−8 − 16 = −24`, the `−16` at height 8 > E2 = 6 ✓
+- **the S3 counter-instance**: `n2hat(14) = 3^7` ✓, the non-integer `11/2` ✓, the re-solve to `3^5·x·Φ′ = n2hat(11)·Φ′` ✓
+- **the frame-W cure**: `i(u2) = 5 mod 3 = 2` ✓, `W(0) = ⌊4/3⌋ = 1` ✓, rejected `⌊2/3⌋ = 0` ✓
+- **Step 2's outer-grammar chain** and **`.32`'s x-side chain**, both simplifications exact ✓
+- **`.34`'s height cancellation** `(mu2−i)λ + (i−j)λ = (mu2−j)λ` ✓
+- **`.27`'s `a0 ≥ 0` inequality** ✓
+- **all eight refine rows** satisfy `p₀(old) = 2λ`, with the q = 2 / q = 3 pin split as predicted ✓
+- **five byte-freeze pins, thirteen quantities** ✓
+
+**Zero arithmetic discrepancies found** across roughly sixty recomputed values.
+
+---
+
+## 7. BOUNDARY SELF-AUDIT
+
+### 7.1 The rule applied
+
+Zero `\tag{`. Same rule as the other entries: smallest cuttable span. Lemma CLAUSES are units (each has its own downstream fate — three of the twelve clauses here are governed from outside); proof STEPS are units (Step 0 is cited by four later units and is the wrap-immunity leg); dated corrections are units.
+
+### 7.2 Boundaries drawn, arguable ones both ways
+
+1. **LEMMA GENTOW-1 → four clause units + six step units.** *Chosen* because (b) is superseded by R2a and (d) is the gauge-live clause while (a) and (c) are untouched, and because Steps 0/3/4 are each cited by ≥ 2 other units. A single lemma unit could carry none of that.
+2. **The five byte-freeze records → ONE ledger unit (`.67`).** *This is the entry's one deliberate SERIES fold.* *Alternative:* five units. *Chosen* because they are five instances of one predicate with no independent content, and because the verification is a single table that is more legible whole (thirteen quantities in one place) than scattered across five units. **Mitigation:** the full table is also in §1, each pin is individually attributed to its append, and every append unit's TEETH field names its own freeze. So the per-append association is recoverable.
+3. **The four TOWERRAT corrections → four units (`.63`–`.66`) sharing one provenance unit (`.62`).** *Chosen* because R2a and R2b are COUPLED (R2b's counting lemma uses R2a's clip) and a merge run must be able to see that dependency between two IDs.
+4. **`.10` (budget tables) kept separate from `.11` (the reading).** *Arguable*: the reading is inseparable from the table in the source's rhetoric. *Chosen* because the table is machine output and the reading is a set of conjectures later proved — different truth conditions, and rule 4 makes the table a unit regardless.
+5. **`.23` (Step 4) emitted with its downstream HETOW citation flagged.** *Chosen* because the cross-entry edge is only visible from this side once the HETOW entry recorded the NEAR-MISS; compiling both entries in one queue made the pairing checkable, and the flag preserves it for a merge run that sees only one.
+6. **`.52` (the gauge annex) split from `.53` (wrap-immunity).** *Chosen* because they answer different questions — what the seam IS versus what it does NOT reach — and `.53` is the one with machine legs.
+7. **`.61` (the S3 correction) kept whole rather than split into defect/display/adjudication.** *Arguable.* *Chosen* because the adjudication's four interface items are what make the display replacement safe; split, a chapter could cut the new display without the certificate that GENTOW-2's clauses are unchanged.
+
+### 7.3 Merges deliberately NOT made
+
+- `.16` and `.39` kept apart though R2a re-scopes both: they are different lemmas, and R2a's TARGETS list distinguishes them.
+- `.19` (Step 0) not merged into `.15`: Step 0 is cited independently by `.21`, `.33`, `.38` and is the wrap-immunity ground.
+- `.58` (the frame recount) and `.60` (the frame-W cure) kept apart: consecutive corrections to the same sentence by different passes, with the second refuting a leg of the first.
+
+### 7.4 Rules that fought this genre
+
+- **Rule 23 dominated this entry.** Five freeze pins and four artifact md5s, all stated, all verified — and the verification is what licenses every span claim. No other rule produced as much confirmed signal here.
+- **Rule 22 was unusually productive** because the note's own displayed formulas let the compiler recompute the machine output: sixteen budget entries derived from `.15`(a) match the battery's printed table exactly. That is a *self-consistency* check the note does not perform.
+- **Rule 25 (CHAIN) was needed four times**, and CHAIN-FRAMES is the instructive one: a correction that itself contains a false leg, cured by the next pass.
+- **Rule 19's split mattered at `.44`/`.55`**: a sealed prediction with no scoring row is neither a clean preregistration nor a run-record, and only the split makes the gap statable.
+- **Rule 28 (SERIES) was folded once** (`.67`), audited above.
+
+---
+
+## 8. Deferred reconciliation obligations
+
+1. **The consumption path is live and unexecuted — FOR-0c.** `.50`'s precondition (the note's own hostile arc) is met at 2/2; the discharge of items (1)/(2)/(5) into GENHN's `[GENHN-TOW-1]` text is not done (N1). Action item.
+2. **`.26`'s count-law remark is not re-pointed at R2a — FOR-0b.** The remark displays the UNCLIPPED exponent `Sum(N − floor)`; R2a re-scoped GENTOW-5(e) but not this remark. A one-line pointer would close it. (No consumer is currently wrong: the remark's own scope is “NOT executed here”.)
+3. **The import inventory (`.03`) predates two consumed objects — FOR-0b.** GENHN's erratum `59c1966` and GENTOW5's `[GT5-r2]` display are both consumed at HEAD and neither is in the Sources line.
+4. **The HETOW ↔ GENTOW1 Step-4 citation — FOR-0b (paired).** `EFF.HETOW.54` quotes this note's `.23` with an unmarked elision and ASCII→Unicode transliteration. The fix belongs at HETOW; recorded here so the pairing is not lost.
+
+---
+
+## 9. Self-audit and OPEN-CALLS
+
+### 9.1 Resolved compilation calls
+
+- The effective-text rule is DERIVED and distinguishes the r1 IN-BODY insertions from the four post-acceptance APPENDS — a distinction that matters because only the latter reach lemma statements.
+- **All five freeze predicates verified (13 quantities), all four instrument md5s verified, all fifteen commits resolve, both source-line citations into another note's instrument verified verbatim.**
+- Four CHAINs reconstructed with TERMINALs; CHAIN-FRAMES terminates in a cure that refutes a leg of its own predecessor.
+- **Roughly sixty numeric values recomputed, zero discrepancies** — including sixteen battery entries re-derived from the note's own lemma formula, and R2a's counter-instance reproduced end to end.
+- The `[r1]` / `[GT1-r1]` tag ambiguity (`.51`) is respected throughout: bare `[r1]` = GENHN-1's node-floor erratum, never this note's round.
+- The three governed lemma statements each carry both readings with the KIND declared, and R2a/R2b's coupling is recorded.
+
+### 9.2 OPEN-CALLS
+
+**OPEN-CALL 1 — is LEMMA GENTOW-2(iii)'s bijection conditional at μ₂ ≥ 3? FOR-0b/0c.**
+The `[GT1-r1]` back-pointer says yes: “since GENTOW-2 layer 3's image clause consumes layer 1, at mu2 >= 3 the BIJECTION inherits the graded-frame conditionality too.” R2b then reconstructs the ONTO argument (`.64`) **without restating that conditionality** — its counting lemma and injection argument are stated unconditionally. Both can be true (R2b repairs the *cardinality* step; the *kills* it composes with still ride layer 1), but a consumer reading R2b alone would take the bijection as unconditional. **Whether R2b should carry the μ₂ ≥ 3 rider is a note-owner call.**
+
+**OPEN-CALL 2 — the count-law remark still displays the unclipped exponent. FOR-0b.** See §8 item 2. Compiler suggestion: a one-line pointer from `.26` to R2a. NOT source text.
+
+**OPEN-CALL 3 — PE3 and the codex ratification disagree about the same sentence. FOR-0d (methodology).**
+`.59` records that PE3 “re-derived the ONTO cardinality argument … on its own paper” and returned CLEAN; four days later the decorrelated codex run found that the same sentence “asserted "onto by cardinality" with neither set defined” — a GAP requiring R2b's completion. Both readers were hostile and fresh; they differ on whether re-deriving an argument oneself discharges an under-specified statement. **This is a live methodological question for the corpus** (does a verifier's private re-derivation cure a missing definition in the text?), not a defect in either pass. Recorded because the answer changes what “CLEAN” certifies.
+
+**OPEN-CALL 4 — GENHN's erratum is cited only by commit hash. FOR-0d.**
+`.06`/`.49` pin the corrected `chat_t` to commit `59c1966`, and `grep -cF '59c1966'` inside GENHN = 0 (N2). The commit resolves, so the pin is sound — but it is not resolvable by in-file search, unlike every span pin in the corpus. **Whether cross-note errata should carry an in-supplier designation as well as a commit is a protocol decision.**
+
+**OPEN-CALL 5 — the μ₂ ≥ 3 conditionality chain crosses a 0/2 boundary. FOR-0c.**
+This note is ACCEPTED 2/2, but its general-μ₂ leg is conditional on GENTOW5's retirement of GENTOW-BOX-1, which the note itself insists must be read “THERE with its stated 0/2 conditionality”. **A DAG consumer must therefore resolve GENTOW5's grade at HEAD before using GENTOW-2 at μ₂ ≥ 3**; this compilation does not grade other notes.
+
+### 9.3 Fidelity audit (compile-time, mechanical)
+
+- Every CANONICAL STATEMENT is verbatim from `GENTOW1_PROOF_2026-08-09.md`, or explicitly `[ASSEMBLED]` (nine units: `.19`, `.27`, `.33`, `.43`, `.44`, `.52`, `.58`, `.61`, `.64`), with `…` marking every truncation.
+- **ASCII notation preserved exactly**: the note writes `Phi'`, `mu2`, `eta`, `psi2` in the body and switches to Unicode in the last two appends; both are quoted as they stand, so a merge run can tell which span a quotation came from.
+- The four source tables are emitted as tables; the two fixed-width ASCII blocks (budget tables, refine table) and the verdict block are double-emitted per v3 rule 14 — verbatim, then transcribed with a compiler audit column.
+- No quantifier, floor, index, slope, pin marker or σ tuple was altered. Compiler-computed values appear only in TEETH fields, marked as recomputed.
+- 6 designation XREFs, 10 pin classes, 2 negative edges verified; **no designation invented**.
+
+EFF-GENTOW1 COMPILED: 67 statements / 6 xrefs verified / 5 open calls
