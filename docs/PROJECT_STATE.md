@@ -4589,3 +4589,31 @@ both builds green; Python re-run ALL PASSED. The changed definitions'
 faithfulness paragraphs (note §8) are IN THE HUMAN-REVIEWED CORE SET
 per the Q4 policy — Asvin should read them. Doc staleness: ledger/
 design-doc/earlier appends use pre-rewire names — next fold cures.
+
+**2026-08-14 DATED APPEND #49 — 0d CLOSED: ALL NINE QUESTIONS
+ANSWERED (Asvin).** **Q6** JD0: machine grade SIGNED (Asvin: gauge-
+blindness "MUST be true for the proof strategy/uniformity to work at
+all"; conviction of truth ⟹ proof defects would be fixable; the
+optional post-reset codex pass stays queued as belt-and-braces).
+**Q7** leanfinal stays LEAN-CORE-ONLY; the AX-CELLREC/AX-LEAF
+axioms stay QUARANTINED in the quarry's measure route (no file move
+needed — leanfinal never imports them; policy now explicit).
+**Q8** DISPLAY A frozen (readability; fewer error surfaces).
+**Q9** Asvin: "doesn't matter too much" — DISPOSED per the standing
+recommendation: HEX3-BOX-1 named parenthetically inside the n=3
+perimeter clause. PREMISE CORRECTION relayed to Asvin: the n≤3
+menus/drainage DO enter the final proof (they are the induction's
+base cases — GENIND consumes HMENU3/HEX3 as base data); what stays
+out of the load-bearing chain is HEX3-BOX-1 specifically (consumed
+only by the W-12.B corroboration cross-check). **NEW DIRECTIVES:**
+(1) "Lets also try the candidate route synthesized by the audit
+right now" — the HYP.149 WELD-ZERO composition unit LAUNCHED
+(Opus): compose GENHN's [r2] gr(O_L) re-aim + GENTOW5-A0/A1 into
+the fold retiring GENHN-BOX-2 + the W-1 transport (weld layer → 0
+contribution); corpus-grade note, 0/2, hostile arc owed post-reset.
+(2) STANDING (memory'd): keep one warning sign out on the main
+definitions/axiom-cites and PERIODICALLY PULL FRESH EYES onto the
+core set as the Lean build proceeds — folded into the blueprint
+protocol as a recurring fresh-context definitional audit at chapter
+milestones. Ledger v5 fold LAUNCHED (Q6-Q9 dispositions + the
+HYP.83-86 orphan verification + pre-rewire name staleness).
