@@ -1927,3 +1927,264 @@ with the provenance preamble, verbatim:
 **TEETH:** **INDEPENDENTLY REPRODUCED**: the note's first **834** lines hash to `6ded277db84f9eefb43d46021ba9c7e2` (51,589 bytes) ✓.
 
 ---
+## 3. XREF verification ledger
+
+All checks run at compile time (2026-08-14) with fixed-string `grep -cF`, counts and first lines recorded; multi-line quotations verified under whitespace normalization and marked as such; commit pins by `git cat-file -t`; artifacts by existence and, where the note states one, by md5.
+
+### 3.1 Supplier and consumer designation XREFs
+
+`[TABLE — compiler ledger]`
+
+| ID | Target file | Verified designation / check | count | line | Role |
+|---|---|---|---:|---:|---|
+| X01 | `GENHN_PROOF_2026-08-08.md` | `GENHN-T(b)` | ≥1 | — | the consumed tower setting (`.06`, `.08`) |
+| X02 | `HE7_PROOF_2026-08-08.md` | file exists; pinned by commit `ca3754d` | — | — | the frozen instance machinery (`.02`) |
+| X03 | `HE6_PROOF_2026-08-08.md` | `HE6-0` | ≥1 | — | the coset factor of `.11` |
+| X04 | `HE6R1_RECON_2026-08-08.md` | file exists | — | — | the pattern model (`.01`) and LEMMA HE6R1-2/3 |
+| X05 | same | the reconciliation pattern | — | — | cited at `.01`, `.07` |
+| X06 | `CODEX_TOWERRAT_2026-08-10.md` | file exists | — | — | the decorrelated ratification behind `.48`–`.53` |
+| X07 | `GENHN_PROOF_2026-08-08.md` | `HETOW` | **7** | — | **the LANDED GENHN-side seam record** (`.04`); the note's one cross-note landing |
+| X08 | `GENTOW1_PROOF_2026-08-09.md` | `HETOW` | **5** | 12, 575, 603, 612, 619 | a reverse consumption the note does not record: line 575 “is a pinned consumption of this note”; line 612 `**THE PINNED CORRECTED DISPLAY (per erratum 59c1966 + HETOW [r1]):**` |
+| X09 | `T2_SIGMA_LADDER_MASTER_2026-08-12.md` | `HETOW-KEY-BRIDGE` | **41** | — | the parent pin = `.17` |
+| X09a | same | `HETOW-KEY-BRIDGE-C-A` | **16** | 4246 (pin row), 4216 (repair heading) | **the queue-charged consumer trace** (`.43`) |
+| X09b | same | `HETOW-LABELS` / `HETOW-LABELS-1` / `HETOW-A` / `HETOW-NORMALIZER-4` | 26 / 15 / 23 / 17 | — | T2's four further HETOW pins: `.15`, `.15`(b), `.22`, `.50` |
+| X10 | `GENTOW4_PROOF_2026-08-09.md` | file exists; carries the `GENTOW-4-1` clause-(c) disjunct | — | — | the partial-side case HETOW-BOX-1 declares open (`.28`) |
+| X11 | `T3_COCYCLE_TELESCOPE_2026-08-12.md` | `(ABS-HE4)` | 2 | — | the absorption instance (`.57`) |
+| X12 | same | `(HE4-COB)` | 1 | — | the coboundary display |
+| X13 | same | `(T3-BKT)` | 2 | — | supplies HETOW-4(c)'s telescope |
+| X14 | same | `(T3-CMP)` | 4 | — | supplies HETOW-4(c)'s rescaling |
+| X15 | same | `(T3-ROUTE)` | 2 | — | supplies HETOW-4(d) |
+| X16 | same | `(T3-COB)` | 2 | — | supplies HETOW-4(b)'s SHAPE only |
+| X17 | `GENTOW1_PROOF_2026-08-09.md` | Step 4's all-roots transport | 1 | 246 | **NEAR-MISS** — see §3.2 and `.54` |
+
+### 3.2 NEAR-MISS dispositions (v3 rule 15)
+
+`[TABLE — compiler ledger]`
+
+| Cited as | `grep -cF` | Verified referent | Disposition |
+|---|---:|---|---|
+| the GENTOW1 Step-4 quotation at `.54` | **0** | `GENTOW1_PROOF_2026-08-09.md:246`, count 1, under (a) ASCII→Unicode transliteration and (b) an **unmarked elision** of the parenthetical “(the level-1 Newton polygon of the inner read has the one side of slope kappa2, residual psi2^{mu2} zero-free at the corners —” | NEAR-MISS; substance preserved, quotation discipline not. OPEN-CALL 3 |
+| `HE7 §S5.3 Step 2`'s bracket (`.50`(c), `.51`) | not checked in HE7 | HE7 is commit-pinned at `ca3754d` and is not re-read here; the display is consumed, not quoted | **UNVERIFIED-BY-DESIGN** — a cross-note display consumed under a commit pin. Recorded so a merge run does not read it as a clean XREF |
+| `GENTOW-2(iv)`'s “coherent normalization, wrap units included” (`.50`(c)) | not resolved | no `GENTOW2_PROOF_*.md` designation was checked; the citation is to a note outside the `.02` import inventory | **UNRESOLVED CITATION** — OPEN-CALL 4 |
+
+### 3.3 Artifact, commit and md5 pins (v3 rule 23)
+
+`[TABLE — compiler ledger]`
+
+| ID | Pin | Verified |
+|---|---|---|
+| P-01 | commits `2e5c4b1` (seal), `3e19eba` (seal), `5f821dc` (PE1), `67cbab2` (PE2), `5b6db24` (PE3), `5335ae3` (r1), `5b879e0` (riders), `e38df9f` (pre-append), `ca3754d` (HE7 pin) | **ALL NINE resolve** as commits |
+| P-02 | `verification/openmath/hetow_checks.py`, `_output.txt`, `_results.json` | ALL EXIST; output's final line `TOTAL checks 1200 violations 0 teeth 4/4  (42.9s)` / `VERDICT: GREEN` |
+| P-03 | `hetowr1_supp.py` md5 `dcb8452f…`, output `b52eb226…`, results `58f1ce0c…` | **ALL THREE MATCH**: `dcb8452fba908aa668de188d9021cd8a`, `b52eb226f2507fe921c4aa9437c6c167`, `58f1ce0c88069366172d1a9335566736`; output's final lines `TOTAL jobs 29 violations 0 (21.3s)` / `GREEN` |
+| P-04 | `hetow_r2_hetow4.py` md5 `40495654…` | **MATCHES**: `404956542e5dfa0ca939b3805ecceff7`; committed output `TOTAL violations 0 (21.9s)` / `GREEN` |
+| P-05 | `hetow_pe1_fresh.py`, `hetow_pe2_fresh.py` (+ `_output.txt`, `_results.json`) | ALL EXIST; pe2 output `TOTAL gp sigma jobs 20 + 4 letter + 1 val-block; violations 0 (131.5s)` / `GREEN` |
+| P-06 | `runs/comp5/T3CC_output.log` | EXISTS (the S-2 consumption check of `.57`) |
+| P-07 | `docs/SIMPLIFICATION_BLUEPRINT_2026-08-10.md` | EXISTS |
+| P-08 | `HETOW_passPE1_report.md`, `…PE2…`, `…PE3…` | ALL THREE EXIST |
+| P-09 | the five import pins printed in `hetow_checks_output.txt` | **ALL FIVE MATCH the note's §S6 list**: `321fa4d4…`, `688adbe8…`, `7112f7c7…`, `7dc040d9…`, `a9c34244…` |
+| P-10 | byte-freeze `254d1765…` = commit `e38df9f`, 41,452 bytes | **TRIPLE REPRODUCED** (lines 1–652: md5 `254d176563c21bf2261699f9138e18b5`, 41,452 bytes; blob size 41452) |
+| P-11 | byte-freeze `6ded277db84f9eefb43d46021ba9c7e2` | **REPRODUCED** (lines 1–834, 51,589 bytes) |
+| P-12 | PE3 frame **M2** at f₂ = 4 (`.46`) | **UNPINNED** — no artifact filename given, none found. OPEN-CALL 2 |
+| P-13 | `hetow_r2_hetow4` output md5 `ab7d5b66…`, results `d189fe0b…` | filenames exist; the two md5s are stated in the note and were not independently recomputed here (only the runner md5 was) — recorded for completeness |
+
+### 3.4 Verified NEGATIVE edges
+
+`[TABLE — compiler ledger]`
+
+| ID | Check | count | Meaning |
+|---|---|---:|---|
+| N1 | `grep -cF 'HETOW' HE7_PROOF_2026-08-08.md` | (frozen supplier; no HETOW append expected) | HE7 is commit-pinned FULLY FROZEN and carries no HETOW consumption record |
+| N2 | `grep -cF 'discharged-at-grade' GENHN_PROOF_2026-08-08.md` | **0** | **HETOW-BOX-4's rewording fold is verifiably NOT LANDED** — the box stays live as a protocol obligation despite the 2/2 |
+
+---
+
+## 4. Effective supply / consumption ledger
+
+`[TABLE — compiler ledger]`
+
+| Source conclusion or obligation | Effective supply here | Surviving fence | Protocol status |
+|---|---|---|---|
+| `[GENHN-HE(μ₂ ≥ 3)]` at tower stages | `.22`–`.25` (THEOREM HETOW.A i–iv) via `.15`/`.17`/`.20` | full inner sides only (`.28`); one tower step, no self-application (`.29`) | **DISCHARGED at 2/2**, min-capped by supplier grades (`.03`); the GENHN rewording fold **NOT LANDED** (N2) |
+| GENHN-T(b)′'s composed-key display | `.13` (the wrap-corrected key) | the naive form is a DIFFERENT polynomial at η ≠ 1 (`.14`) | **CORRECTED AT SOURCE** — GENHN's 2026-08-09 erratum (X07) and GENTOW1's pinned corrected display (X08). **Landed.** |
+| the S1 J-D0 justification | `.50` (LEMMA HETOW-4) replacing it (`.53`) | per-height non-invariance stands (tooth T-RAW); only the ASSEMBLED comparison is J-D0-covered | **SELF-REPAIRED post-acceptance**; then **PARTIALLY ABSORBED** by T3 (`.57`), clause (a) source-local |
+| HE7.A/C/D at the composed carrier | `.26` (pure instantiation) | rides `.07`'s meta-claim that HE7 has no hypothesis on (ℓ, d_r) | **CONSUMED**, HE7 commit-pinned and unedited |
+| the all-roots transport at HETOW-3(b) | `.20`(b) | consumed, not proved here | **CITE ATTACHED** at annex grade (`.54`) — but the quotation is a NEAR-MISS (§3.2) |
+| the partial-side entry/count layer | not supplied | HETOW-BOX-1 | **OPEN here**; addressed at HEAD by GENTOW-4 (X10), an edge this note does not carry |
+| depth ≥ 3 towers | not supplied | HETOW-BOX-2 | **OPEN**; untouched by all four dated appends |
+
+---
+
+## 5. NON-IMPORTS
+
+**NI-1 — no supplier file is edited by this unit.** `.05`: “GENHN_PROOF and HE7_PROOF are NOT edited by this unit; consumption updates are a later fold.” The GENHN erratum is GENHN's own append (see `.05`'s CONDITIONALITY).
+
+**NI-2 — nothing is boxed by the reconciliation itself.** `.07`: “No hypothesis of HE7.A fails; nothing is boxed.” The four boxes (`.28`–`.31`) are INHERITED scope limits, and §S4's own heading says so: “WHAT REMAINS BOXED (inherited, none new)”.
+
+**NI-3 — the partial-side composed entry/count layer is not touched.** `.28`: “the composed entry/count layer is GENHN's open item, not touched here.”
+
+**NI-4 — the note does not self-apply.** `.29`: “this note is ONE tower step over the level-1 frame and does not self-apply.”
+
+**NI-5 — no char-p contact.** `.30`: “char 0 only (PARI oracle asymmetry, inherited HE6-BOX-4).” Every machine statement in the note is char-0.
+
+**NI-6 — the unexercised coverage axes have NO machine contact and the coverage sentence stops there.** `.30`, with the withdrawn “uniform in all of these” line explicitly named as the shape of sentence F-1 falsified.
+
+**NI-7 — a σ-shaped regression tooth is NOT a sufficient seam detector.** `.44`: “a σ-shaped regression tooth ("σ(naive) ≠ σ(corrected)", the shape of §S7's G2) is insufficient by itself — ported to a frame like V it passes on the broken key.” This is a NON-IMPORT on an INSTRUMENT: no downstream note may reuse G2's tooth shape as a generic seam detector.
+
+**NI-8 — no character law for τ is asserted.** `.57`: “No character law for τ is asserted (tooth T-RAW unchanged).” HETOW-4(b) is a cocycle statement, not a character statement, and the absorption preserves that.
+
+**NI-9 — Θ-style commuting is not claimed; only the assembled comparison is.** `.49`/`.50`: the twist “does NOT cancel per height … it cancels in the ASSEMBLED residuals”.
+
+**NI-10 — inseparable f is outside the consumed setting.** `.55`.
+
+Accordingly **no edge is created** from this note to char-p, to partial inner sides, to depth-≥ 3 towers, to a per-height twist-invariance claim, to a character law for τ, or to any generic σ-shaped seam-detector instrument.
+
+---
+
+## 6. TEETH inverse inventory
+
+Disposition vocabulary: `{proved-in-note, executable regression, AUDIT (decorrelated-model | in-house hostile pass), signed coverage disclosure, disclosed structural non-realization, honesty tooth, stale self-description, PROOF-ONLY}`.
+
+### 6.1 Battery/obligation row → guarded units (forward)
+
+`[TABLE — compiler ledger]`
+
+| # | Row (source wording, abbreviated) | Guarded EFF units | Disposition |
+|---:|---|---|---|
+| 1 | P1 — every member parses as a genuine tower | `.08`, `.20`, `.27` | executable regression (300/300) |
+| 2 | **P2 (HEADLINE)** — frozen readers decide every member, matched PARI | `.07`, `.22`, `.26`, `.32` | executable regression (300/300); **the machine form of “literal instance”** |
+| 3 | P3 — every σ inside the preregistered 5-element menus | `.27` | executable regression (300/300) |
+| 4 | P4 — all 5 menu σ realized per case | `.27`, `.35` | executable regression, **one disclosed structural non-realization** ({(4,1)}³ absent at p = 3 by |F₃^×| = 2) |
+| 5 | P5 — no member took the LEVEL3 branch | `.24`, `.25` | executable regression (300/300) |
+| 6 | T-NAIVE — the “treat ψ₂³ as separable” dictionary is refuted | `.23`, `.24` | executable regression, FIRED (≥33 / ≥42 per row) |
+| 7 | T-WITHHOLD — readers return UNDETERMINED | `.32` | executable regression, FIRED |
+| 8 | T-BADTWIST — the level-2 cocycle twist is load-bearing at μ₂ = 3 | `.23`, `.50`(d) | executable regression, FIRED (55 flips) |
+| 9 | T-THREESIGMA — up to five distinct σ in one fixed-letter family | `.24`, `.27` | executable regression, FIRED (max 5) |
+| 10 | supp E-legs — W(0) two ways; corrected residues = minpoly(β); naive diverges | `.12`, `.13`, `.15`(c) | executable regression, 15 exact checks / 0 violations |
+| 11 | supp G1 — corrected key = composed carrier | `.13`, `.22` | executable regression (3/3 frames) |
+| 12 | supp G2 — the η ≠ 1 gauge-naive tooth | `.14` | FIRED 3/3; **but its generic adequacy is FALSIFIED by C-B** (`.44`) → `stale self-description` on the tooth SHAPE |
+| 13 | supp G3/G4 — forced-σ rows at frames Z and W | `.27` | executable regression (4/4, 4/4, 2/2, 2/2) |
+| 14 | PE2 frame V — the σ-BLIND face | `.44`, `.45` | **AUDIT / decorrelated frame**: naive σ = corrected σ = {(2,3)}, seam invisible to σ; the letter clause detects it |
+| 15 | PE2 frame S — first e₂f₂ = 4 members | `.47` | executable regression at **μ₂ = 2 only**; the μ₂ ≥ 3 face has no contact |
+| 16 | 2026-08-10 P-A — HETOW-4(a) at k = 1..60 per frame | `.50`(a) | executable regression |
+| 17 | 2026-08-10 P-B — HETOW-4(c) exact at every scored side | `.50`(c) | executable regression |
+| 18 | 2026-08-10 P-C — HETOW-4(d) routing transport, dual-route σ | `.50`(d), `.23` | executable regression |
+| 19 | 2026-08-10 P-D — **T-RAW**, the honesty tooth | `.50`(b), `.52` | **honesty tooth, FIRED by design** — confirms per-height NON-cancellation is machine-real |
+| 20 | 2026-08-10 P-E — HE7's own bracket res(τ_t) = β^{c_t} | `.50`(c), `.51` | executable regression (cross-check against the frozen supplier's display) |
+| 21 | HETOW-2's carry branch at f₁ ≥ 2 | `.19` | **PROOF-ONLY** — the note's own coverage-hole sentence: “f₁ ≥ 2 outer frames (HETOW-2's carry leg is proof-only, cf. GENHN-ERR-1's separate f₁ ≥ 2 residue)” |
+| 22 | the four inherited boxes | `.28`–`.31` | **signed coverage disclosure**; BOX-2 and BOX-4's fold remain OPEN at HEAD |
+
+### 6.2 Reverse direction — units with no tooth
+
+`.01`–`.06`, `.10`, `.16`, `.21`, `.26`, `.33`, `.38`, `.39`, `.41`, `.42`, `.46`, `.48`, `.53`–`.58` are identification / record / scope / freeze units carrying no battery obligation of their own; they are guarded by the pin ledger (§3.3), which verified **every** pin they assert, including two byte-freeze triples and four md5s. `.49` is a self-diagnosis whose tooth is the lemma that answers it. Every other unit — 30 of 58 — appears in at least one row of §6.1.
+
+**Zero-orphan check:** 5 sealed predictions + 4 sealed teeth + 4 supp legs + 5 fresh-leg predictions + 2 decorrelated frames + 1 proof-only branch + 1 box class = **22 obligations**, all mapped, **0 orphan rows**.
+
+### 6.3 Arithmetic audit summary (v3 rule 22)
+
+Every count in the note was recomputed from primary artifacts or from the note's own formulas:
+
+- **1,200 checks / 0 violations / 4/4 teeth / 42.9 s** ✓ (artifact final line)
+- **300 members** = 33+33+65+65+52+52 across **6 rows** ✓; **0 dropped, 300 PARI jobs** ✓ (per-row artifact lines)
+- **per-row σ censuses**: all six rows sum to their member counts (33, 33, 65, 65, 52, 52) ✓ — recomputed in `.35`
+- **teeth figures** 33 / 42 / 55 / 5 ✓ (artifact teeth block, all four matched)
+- **supp leg**: 29 jobs / 0 violations / GREEN ✓; frame-W G4 rows 2 and 2+1 ✓
+- **fresh leg**: 0 violations / GREEN ✓; runner md5 `40495654` ✓
+- **pe2 fresh**: 0 violations / GREEN ✓; frame V σ = ((2,3),) on BOTH keys ✓ (the σ-blind fact); frame V minpoly (5,4,5) = Z³+5Z²+4Z+5 ✓; frame S G4-RAM ((8,2),) 1 member ✓
+- **n_min = 12** ✓ and **all ten menu ef-sums = 12** ✓ (`.27`)
+- **frame S constants**: e₂f₂ = 4, n = 16, T₂ = 20, menu sums all 16 ✓ (`.47`); μ₂ ≥ 3 face first live at n = 24 ✓
+- **HETOW-4 algebra**: (a)'s x-exponent `−e₁Q(m)` ✓; (b)'s s-carry `m(k+k′) = m(k)+m(k′)+u₂w₂` ✓; (c)'s telescope `τ(H₀)δ^{−t}` ✓
+- **HETOW-1(c)'s cancellation** `η^{W(t)}·η^{−(f₂−t)Q−W(t)} = η^{−(f₂−t)Q}` ✓
+- **HETOW-2's value raise** `u₂ − e₂D′h`, positive by the node floor ✓; the (LIFT) degree chain `(e₁−1) + e₁(f₁−1) = D′−1` ✓
+- **frame X counter-instance**: 54·η^{W(0)} = 54·2 = **108** ✓ — the displayed naive/corrected constant pair differs by exactly the predicted factor
+- **both byte-freeze triples** ✓ (P-10, P-11)
+
+**Zero arithmetic discrepancies found.** One reconstruction gap (1,200 from 300 needs an undisplayed factor — OPEN-CALL 6) and one quotation-fidelity divergence (OPEN-CALL 3) are recorded as OPEN-CALLs, not as errors.
+
+---
+
+## 7. BOUNDARY SELF-AUDIT (tag-sparse prose genre; template rules 9 and 11)
+
+### 7.1 The rule applied
+
+Zero `\tag{` in the note. The rule used, as in the LIFTCORNER entries: **a unit is the smallest span a downstream chapter could cut and still state correctly.** Applied uniformly: (a) a dated append that supersedes named text is its own unit; (b) a statement is split from its proof whenever a later instrument touches one and not the other; (c) tables are units; (d) a transcribed external result keeps its own boundary.
+
+### 7.2 Boundaries drawn, with the genuinely arguable ones recorded both ways
+
+1. **The §S1 map → ONE table unit (`.09`), not sixteen row units.** *Alternative:* one unit per row, since three rows carry lemma obligations and three are superseded from outside. *Chosen* because rule 4 makes tables units and because the map's force is its EXHAUSTIVENESS (“No hypothesis fails”), which per-row emission would dissolve. *Cost accepted:* the three superseded rows are carried in the table unit's CONDITIONALITY rather than at their own IDs; a merge run wanting row-level granularity must split at `.09`.
+2. **HETOW-2's proof → two units (`.18` F-4 branch, `.19` F-2 branch).** *Chosen* because C-A hits `.19` only and leaves `.18` untouched, and because `.18` alone gives `w = 0` — the branch every consumer actually uses. Merged, C-A's target would be unstateable.
+3. **THEOREM HETOW.A → four clause units (`.22`–`.25`) + a proof unit (`.26`).** *Chosen* because the four clauses have four different downstream fates: (i) is superseded in ground by HETOW-4, (ii) is the deliverable dictionary, (iii) is a μ₂-specific exclusion, (iv) is certified wrap-immune by the acceptance record. A single theorem unit could carry none of that.
+4. **HETOW-BOX-3 → ONE unit (`.30`) folding a four-state SERIES.** *This is the one deliberate SERIES fold in the entry, and it is the arguable call.* *Alternative:* four units (sealed / [r1 F-3] / C-C / F-α). *Chosen* because the box is a single ledger object — a NOT-exercised LIST whose membership changes — and emitting four units would produce three units whose content is “the list, minus/plus one row”, with the current list reconstructible only by replaying them. The arc is instead recorded inline in the unit's CONDITIONALITY, **with the effective list at HEAD stated explicitly**, and C-C and F-α additionally emitted at their own IDs (`.45`, `.47`) because they are dated corrections with their own provenance. So the SERIES is recoverable both ways; only the box's *state* is not fragmented.
+5. **The three post-PE2 riders → three units (`.43`–`.45`).** *Chosen* because they have three distinct SUPERSESSION KINDs (scope-pin / replacement-of-justification / inventory-completion) and only C-A has a downstream pin. Merging would hide the pin.
+6. **LEMMA HETOW-4 → statement (`.50`) + proof (`.51`) + machine (`.52`) + supersession (`.53`).** *Chosen* because the T3 absorption (`.57`) draws its boundary CLAUSE BY CLAUSE against the statement, and because the supersession of the S1 rows is a separate act from the lemma.
+7. **The two byte-freeze records → their own units (`.56`, `.58`).** *Arguable:* they read as boilerplate. *Chosen* because each carries an independently checkable triple/pair, and both reproduced — they are the entry's strongest verification objects, not boilerplate.
+8. **`.14` (the gauge-naive divergence) split from `.13` (the corrected key).** *Chosen* because `.14` is a `supplier-finding` against GENHN whose discharge is at the source, while `.13` is a definition of this note. Different types, different DAG edges.
+
+### 7.3 Merges deliberately NOT made
+
+- `.34` (totals) and `.35` (P1–P5) kept apart: the totals are re-derivable from the artifact's per-row lines, the predictions are not.
+- `.36` (the P2 gauge caveat) kept out of `.35`: it is a dated `[r1]` insertion into a scored bullet, with its own finding number (F-5).
+- `.46` (acceptance) and `.47` (F-α) kept apart despite sharing a heading: F-α is a MINOR cure with its own artifact verification, not part of the acceptance declaration.
+- `.57` (absorption) and `.58` (freeze) kept apart: the freeze is a distinct predicate with its own pin.
+
+### 7.4 Which template rules fought this genre
+
+- **Rule 19's three-way split (preregistration / run-record / instrument-record) is again the decisive rule.** This note has FOUR distinct instruments (sealed battery, supp leg, two fresh legs) with different seal dates, different decorrelation status (`hetowr1_supp.py` has “zero reader imports”; the sealed battery deliberately imports the frozen readers), and different coverage. One `regression-record` type would have flattened all of that.
+- **Rule 27's `AUDIT` disposition is essential**: three of the note's most important events (F-1's CRITICAL, C-B's σ-blind face, TOWERRAT's F-1) are findings no battery could produce, and two of them **invalidate an instrument** rather than a claim.
+- **Rule 23 (pin verification) paid the highest dividend of any rule here**: two byte-freeze triples, four md5s, five import pins and nine commits all reproduced, and the one unpinned item (frame M2) was surfaced.
+- **Rule 15 (NEAR-MISS) caught the one fidelity divergence** (`.54`) that a same-context read would have accepted as a quotation.
+- **Rule 28 (SERIES) fought the BOX-3 genre** and was resolved by the fold audited in §7.2 item 4 — recorded as a deliberate, reasoned exception rather than an omission.
+
+---
+
+## 8. Deferred reconciliation obligations
+
+Named bookkeeping, not unresolved scope judgments.
+
+1. **HETOW-BOX-4's GENHN rewording fold — FOR-0c/protocol.** The box defers “rewording [GENHN-HE(μ₂)]'s tower instances as discharged-at-grade” to a later fold. Verified NOT DONE (N2). The note is now ACCEPTED at 2/2, so the deferral's stated precondition (“since GENHN_PROOF and HE7_PROOF are frozen to this unit”) is the only thing still holding it. Action item.
+2. **The import inventory (`.02`) is incomplete at HEAD — FOR-0b.** HETOW-4(c) consumes HE7 §S5.3 Step 2's bracket display and GENTOW-2(iv)'s coherent normalization; neither appears in the Consumes line. A one-line append would close it.
+3. **GENTOW1's reverse consumption (X08) is unrecorded here — FOR-0c.** GENTOW1 line 575 calls the corrected display “a pinned consumption of this note”, and line 612 pins it. HETOW records the GENHN erratum but not the GENTOW1 pin. Not an error (the edge exists and is correct in the direction that matters); a completeness item for the DAG.
+4. **The T2 pin's span is stable only while HETOW stays frozen — FOR-0d.** `HETOW-KEY-BRIDGE-C-A` is pinned by LINE SPAN [548, 569]. FREEZE-3/FREEZE-4 make the span stable *for text below line 834*, but any future append that inserts text above line 548 would silently break T2's pin. Recorded so a future editor knows the constraint. (No such insertion has occurred: the C-A span verifies exactly at HEAD.)
+
+---
+
+## 9. Self-audit and OPEN-CALLS
+
+### 9.1 Resolved compilation calls
+
+- The effective-text rule is DERIVED from four quoted source facts; the r1-in-place vs append-after-PE2 distinction is applied throughout and determines which superseded wordings survive as quotable text.
+- Four FREEZE PREDICATES were separated and **all four verified**, including two byte-freeze triples reproduced exactly (P-10, P-11) — which independently confirms that lines 1–652 and 1–834 are byte-untouched since their respective commits.
+- Six CHAINs were reconstructed with TERMINALs. Two matter most: CHAIN-CARRY terminates at C-A (the object T2 pins), and CHAIN-J-D0 terminates in a partial absorption whose per-clause boundary is the operative content.
+- The three post-PE2 riders are emitted separately with their KINDs; **C-A's downstream consumer trace is compiled in full, with the pinned span [548, 569] re-verified fresh against the file rather than taken from T2**, and T2's own conclusion (that C-A does not reach its entry, and that only the value disjunct is source-read) is quoted and its consequence recorded as OPEN-CALL 1.
+- Every count was recomputed from primary artifacts; zero discrepancies across ~30 figures.
+- One quotation-fidelity divergence was found and recorded as a NEAR-MISS rather than silently normalized (`.54`).
+- The min-inheritance clause is flagged at both `.03` and `.46` as surviving the 2/2 — the single most over-readable sentence in the note.
+
+### 9.2 OPEN-CALLS
+
+**OPEN-CALL 1 — does LEMMA HETOW-2 supply `deg w < D″`, or only the value disjunct? FOR-0b (note owner) / FOR-0c (DAG).**
+`.17`'s displayed statement asserts “Φ₂ = Ψ − w with **deg w < D″** and (w = 0 or dv₂(w) > T₂)”, i.e. both conjuncts. T2's r12, having audited the same sentence for its own use, records that “the VALUE disjunct … is the only conjunct read off a source statement here” and re-derives the degree bound master-side from the monicity identity `D″ = D′e₂f₂ = D₂`. Both readings are defensible against the displayed text: the lemma DOES display the degree conjunct, but C-A(ii) then shows it FAILS for junk-augmented presentations at the `(e₂ = 1, t = f₂−1)` corner — so the conjunct holds exactly on the (LIFT)-form scope C-A(ii) re-scopes to, and T2's caution is about presentations outside that scope. **The compiler cannot decide whether the corpus should read `HETOW-KEY-BRIDGE` as supplying one conjunct or two**; the answer changes whether T2's master-side derivation is a necessary repair or a belt-and-braces re-derivation. Not decidable from the text.
+
+**OPEN-CALL 2 — PE3's frame M2 (f₂ = 4) is UNPINNED. FOR-0b (bookkeeping).**
+`.46` cites “PE3 frame M2 at f₂ = 4” as one of two σ-blind faces certifying the letter clause as the load-bearing detector. Frame V (f₂ = 3) is pinned to `hetow_pe2_fresh.py` and machine-verified here; **frame M2 has no artifact filename and no matching file exists in `verification/openmath/`**. Disposition `UNPINNED` (v3 rule 23). Since the σ-blind claim is the ground for NI-7 (a standing instrument fence), the second frame's pin is worth landing.
+
+**OPEN-CALL 3 — the GENTOW1 Step-4 “quote” is not verbatim. FOR-0b (note owner).**
+`.54` presents a quotation marked “(Step 4, quoted)”. It is transliterated ASCII→Unicode and **silently elides the source's parenthetical justification**, splicing the em-dash. `grep -cF` = 0; referent verified at `GENTOW1_PROOF_2026-08-09.md:246`. Substance is preserved and the attribution is correct, so nothing downstream is wrong — but the note's own discipline elsewhere marks elisions, and a corpus that pins by exact-line search (as T2 does) cannot resolve this string. **Proposed disposition:** re-quote with an explicit `…` and the source's ASCII notation, or re-mark as a paraphrase. Compiler suggestion, NOT source text.
+
+**OPEN-CALL 4 — two citations in HETOW-4(c) resolve outside the note's declared import set. FOR-0d.**
+The bracket comparison consumes (i) HE7 §S5.3 Step 2's display — legitimate under HE7's commit pin, but HE7 §S5.3 is not in the `.02` Consumes line — and (ii) `GENTOW-2(iv)`'s “coherent normalization, wrap units included”, whose home note is not in the Consumes line at all and whose designation was not resolved here. Related: `.07`'s load-bearing meta-claim (HE7 §S1–S6 “stated at ANY level-2 datum with no hypothesis on ℓ or d_r”) is sourced to HE6R1 §S3.1 rather than re-derived. **Whether Phase 0d wants these three cross-note dependencies pinned by span, or accepts them under the commit pin, is a protocol decision.**
+
+**OPEN-CALL 5 — the min-inheritance clause names four supplier grades as of 2026-08-09. FOR-0b/0c.**
+`.03` and `.46` cap every consequence by “min over {GENHN 0/2, HE6 0/2 post-r2, HE7 (frozen, accepted annex stack), HE3 1/2 at μ ≤ 3}”. Those are as-of-2026-08-09 grades, and at least one supplier (GENHN) received dated appends afterwards. This compilation does not re-grade other notes. **A DAG consumer must resolve the four supplier grades at HEAD before using HETOW's consequences**, and the merge run should point the clause at the current grade rows rather than at frozen figures.
+
+**OPEN-CALL 6 — 1,200 checks is not reconstructible from the note. FOR-0b (bookkeeping).**
+§S6 reports 300 members and 1,200 checks but never states the checks-per-member factor; 1,200 = 300 × 4 is consistent with P1/P2/P3/P5 being per-member (P4 per-case, teeth per-row), and the artifact confirms the total, but the note gives a reader no route from 300 to 1,200. A one-line disclosure would close it. (The same pattern — a headline total whose composition is undisplayed — was recorded independently at `spec/EFF-LIFTCORNER-s1of2.md` OPEN-CALL 2, suggesting a corpus-level convention is worth setting.)
+
+### 9.3 Fidelity audit (compile-time, mechanical)
+
+- Every CANONICAL STATEMENT is verbatim from `HETOW_RECON_2026-08-09.md`, or explicitly `[ASSEMBLED]` (six units: `.19`, `.35`, `.39`, `.40`, `.50`, `.51` — components quoted individually, seams named), with `…` marking every truncation.
+- The two source tables (`.09`, and the `.35` census block) are emitted as tables; the census block, being a fixed-width ASCII display, is emitted TWICE per v3 rule 14 — verbatim, then transcribed with a compiler row-sum column.
+- No quantifier, index, inequality, slope, multiplicity, frame name, or σ tuple was altered. Where this compilation computes something the note does not (row sums, menu ef-sums, the (a)/(b)/(c) re-derivations, the 54→108 factor, the frame-S constants), it appears only in a TEETH field and is marked as recomputed.
+- Cross-file quotations and designations: 17 XREFs verified, 3 NEAR-MISS/unresolved dispositions recorded (§3.2), 13 pin classes verified (§3.3), 2 negative edges verified (§3.4). **No designation was invented.**
+- The fifteen figures re-read from committed artifacts (1200/0/4-of-4/42.9s; 33/33/65/65/52/52; 33/42/55/5; 29/0; 0/GREEN ×3; five import md5s; two byte-freeze hashes; four instrument md5s) all matched the note.
+
+EFF-HETOW COMPILED: 58 statements / 19 xrefs verified / 6 open calls
