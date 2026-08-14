@@ -161,6 +161,132 @@ theorem typeOf_shift {F : Polynomial O} (hF : F.Monic) (c : O) :
 
 end Shift
 
+
+/-! ## 2. HYP.06 — the `π`-power extraction (`scaleRoots`)
+
+Mathlib's `Polynomial.scaleRoots h s` has coefficients `hᵢ · s^(d-i)` (`d = deg h`), i.e. it *is*
+the "unscale" of §3 of the unit note: `scaleRoots h (π^m) = π^(m d) · h(X / π^m)`. It is always
+integral (no side condition) and monic when `h` is, and its roots are `π^m` times the roots of `h`.
+The forward substitution the recursion performs — `F(π^m Y) = π^(m n) G(Y)` with `G` monic — is the
+statement `F = scaleRoots G (π^m)`, which is `typeOf_scale` below. -/
+
+section Scale
+
+variable {O : Type*} [CommRing O] [IsDomain O]
+
+/-- **The comparison map** `O[X]/(scaleRoots h s) → O[X]/(h)`, sending the root to `s` times the
+root. It is injective (`scaleHom_injective`) but **not** surjective: its image is the smaller order
+`O[s·y] ⊆ O[y]`. -/
+noncomputable def scaleHom (h : Polynomial O) (s : O) :
+    AdjoinRoot (h.scaleRoots s) →ₐ[O] AdjoinRoot h :=
+  AdjoinRoot.liftAlgHom _ (Algebra.ofId O (AdjoinRoot h))
+    (algebraMap O (AdjoinRoot h) s * AdjoinRoot.root h)
+    (by
+      show aeval (algebraMap O (AdjoinRoot h) s * AdjoinRoot.root h) (h.scaleRoots s) = 0
+      exact scaleRoots_aeval_eq_zero (by simp))
+
+omit [IsDomain O] in
+@[simp] theorem scaleHom_root (h : Polynomial O) (s : O) :
+    scaleHom h s (AdjoinRoot.root (h.scaleRoots s))
+      = algebraMap O (AdjoinRoot h) s * AdjoinRoot.root h :=
+  AdjoinRoot.liftAlgHom_root _ _ _ _
+
+/-- The power basis `1, y, …, y^(d-1)` of `O[X]/(h)`. -/
+noncomputable def rootBasis {h : Polynomial O} (hh : h.Monic) :
+    Module.Basis (Fin h.natDegree) O (AdjoinRoot h) := (AdjoinRoot.powerBasis' hh).basis
+
+/-- The power basis of `O[X]/(scaleRoots h s)`, reindexed by `Fin (deg h)`. -/
+noncomputable def scaleRootBasis {h : Polynomial O} (hh : h.Monic) (s : O) :
+    Module.Basis (Fin h.natDegree) O (AdjoinRoot (h.scaleRoots s)) :=
+  ((AdjoinRoot.powerBasis' ((monic_scaleRoots_iff s).2 hh)).basis).reindex
+    (finCongr (natDegree_scaleRoots h s))
+
+omit [IsDomain O] in
+theorem rootBasis_apply {h : Polynomial O} (hh : h.Monic) (i : Fin h.natDegree) :
+    rootBasis hh i = AdjoinRoot.root h ^ (i : ℕ) :=
+  (AdjoinRoot.powerBasis' hh).basis_eq_pow i
+
+omit [IsDomain O] in
+theorem scaleRootBasis_apply {h : Polynomial O} (hh : h.Monic) (s : O) (i : Fin h.natDegree) :
+    scaleRootBasis hh s i = AdjoinRoot.root (h.scaleRoots s) ^ (i : ℕ) := by
+  show ((AdjoinRoot.powerBasis' ((monic_scaleRoots_iff s).2 hh)).basis).reindex
+      (finCongr (natDegree_scaleRoots h s)) i = _
+  rw [Module.Basis.reindex_apply, PowerBasis.basis_eq_pow]
+  rfl
+
+/-- **The comparison map is diagonal in the two power bases**: `x^i ↦ s^i · y^i`. -/
+omit [IsDomain O] in
+theorem scaleHom_basis {h : Polynomial O} (hh : h.Monic) (s : O) (i : Fin h.natDegree) :
+    scaleHom h s (scaleRootBasis hh s i) = (s ^ (i : ℕ)) • rootBasis hh i := by
+  rw [scaleRootBasis_apply hh, rootBasis_apply hh, map_pow, scaleHom_root, mul_pow,
+    Algebra.smul_def, map_pow]
+
+/-- **The master relation.** In the two power bases the comparison map is the diagonal matrix
+`diag(s^i)`. Everything about the scale relation follows from this one line. -/
+theorem repr_scaleHom {h : Polynomial O} (hh : h.Monic) (s : O)
+    (z : AdjoinRoot (h.scaleRoots s)) (i : Fin h.natDegree) :
+    (rootBasis hh).repr (scaleHom h s z) i
+      = s ^ (i : ℕ) * (scaleRootBasis hh s).repr z i := by
+  classical
+  conv_lhs => rw [← (scaleRootBasis hh s).sum_repr z]
+  rw [map_sum, map_sum]
+  simp only [map_smul, scaleHom_basis, smul_smul, Finsupp.coe_finsetSum, Finset.sum_apply,
+    Finsupp.smul_apply, Module.Basis.repr_self, Finsupp.single_apply, smul_eq_mul, mul_ite,
+    mul_one, mul_zero]
+  rw [Finset.sum_ite_eq' Finset.univ i]
+  simp [mul_comm]
+
+theorem scaleHom_injective {h : Polynomial O} (hh : h.Monic) {s : O} (hs : s ≠ 0) :
+    Function.Injective (scaleHom h s) := by
+  rw [injective_iff_map_eq_zero]
+  intro z hz
+  refine (scaleRootBasis hh s).ext_elem (fun i => ?_)
+  have h1 : s ^ (i : ℕ) * (scaleRootBasis hh s).repr z i = 0 := by
+    rw [← repr_scaleHom hh s z i, hz]
+    simp
+  have h2 := (mul_eq_zero.1 h1).resolve_left (pow_ne_zero _ hs)
+  simpa using h2
+
+/-- **FACT 1 of the unit note §3.2 — the norms agree along the comparison map**, even though the
+two orders are not isomorphic. The multiplication matrices in the two power bases satisfy
+`N · D = D · M` with `D = diag(s^i)`, so their determinants agree after cancelling `det D ≠ 0`. -/
+theorem norm_scaleHom {h : Polynomial O} (hh : h.Monic) {s : O} (hs : s ≠ 0)
+    (z : AdjoinRoot (h.scaleRoots s)) :
+    Algebra.norm O (scaleHom h s z) = Algebra.norm O z := by
+  classical
+  set bB := rootBasis hh with hbB
+  set bA := scaleRootBasis hh s with hbA
+  set M := Algebra.leftMulMatrix bA z with hM
+  set N := Algebra.leftMulMatrix bB (scaleHom h s z) with hN
+  set D : Matrix (Fin h.natDegree) (Fin h.natDegree) O :=
+    Matrix.diagonal (fun i => s ^ (i : ℕ)) with hD
+  have key : ∀ i j : Fin h.natDegree, N i j * s ^ (j : ℕ) = s ^ (i : ℕ) * M i j := by
+    intro i j
+    have e1 : scaleHom h s (z * bA j) = (s ^ (j : ℕ)) • (scaleHom h s z * bB j) := by
+      rw [map_mul, hbA, scaleHom_basis, hbB, Algebra.smul_def, Algebra.smul_def]
+      ring
+    have e2 : (rootBasis hh).repr (scaleHom h s (z * bA j)) i
+        = s ^ (j : ℕ) * ((rootBasis hh).repr (scaleHom h s z * bB j)) i := by
+      rw [e1, map_smul]
+      simp
+    rw [repr_scaleHom hh s (z * bA j) i] at e2
+    rw [← hbB, ← hbA] at e2
+    rw [hN, hM, Algebra.leftMulMatrix_eq_repr_mul, Algebra.leftMulMatrix_eq_repr_mul]
+    linear_combination -e2
+  have hmat : N * D = D * M := by
+    ext i j
+    rw [hD, Matrix.mul_diagonal, Matrix.diagonal_mul]
+    exact key i j
+  have hDdet : D.det ≠ 0 := by
+    rw [hD, Matrix.det_diagonal]
+    exact Finset.prod_ne_zero_iff.2 (fun i _ => pow_ne_zero _ hs)
+  have hdet : N.det * D.det = M.det * D.det := by
+    rw [← Matrix.det_mul, hmat, Matrix.det_mul, mul_comm]
+  rw [Algebra.norm_eq_matrix_det bB, Algebra.norm_eq_matrix_det bA, ← hN, ← hM]
+  exact mul_right_cancel₀ hDdet hdet
+
+end Scale
+
 /-! ## Axiom census -/
 
 section AxCheck
