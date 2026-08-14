@@ -1,0 +1,543 @@
+# WZP1 — HOSTILE PASS 1/2 on WELDZERO_2026-08-14.md (Opus/Claude arm)
+
+Target: `lean/notes/openmath/WELDZERO_2026-08-14.md` (788 lines, attempt 0/2)
+Charge: QUOTE AND CLASSIFY, FIX NOTHING. Read-only. No git operations. No file
+in the repo was modified by this pass except this report.
+
+Repo HEAD at verification time: `5c97f7bc32193a6e7efd40b7752d39cf80ccf163`
+(the note pins "HEAD `f5841548`"; HEAD has moved since composition, but every
+pinned md5 in §9 re-verifies byte-for-byte at the current worktree — see R0, so
+the pin table is sound and the HEAD delta is not a finding).
+
+FINAL TALLY: **1 CRITICAL + 1 GAP + 8 minor**.
+
+---
+
+## R0. PIN / MD5 RE-VERIFICATION
+
+All ten md5-pinned artifacts in §9 re-hashed at the current worktree:
+
+| pinned in §9 | recomputed | verdict |
+|---|---|---|
+| GENHN_PROOF_2026-08-08.md `98a0bb5bf470556eb3b1e1e51248ff8a` | same | OK |
+| GENTOW5_PROOF_2026-08-09.md `30f0f889df69908441ea9da04038d8ed` | same | OK |
+| T1_GAUGE_COCYCLE_2026-08-12.md `ebc2b21a274d12fa117959b093237405` | same | OK |
+| GRTJC_PROOF_2026-08-08.md `2669aeaeb5b2bd2654f23c1faa4f09bf` | same | OK |
+| SG2_PROBE_2026-08-10.md `59ce5b81f9635a5d71da08ed693b9029` | same | OK |
+| runs/qgen/WELD_FACE_AUDIT.md `8a43b27b25c10f53363d08592fd584d9` | same | OK |
+| spec/HYPOTHESIS_LEDGER.md `92827c7c81e264fa379950b94690d0d0` | same | OK |
+| weldzero_checks.py `220388206f70dda9a87456e52da3fe5d` | same | OK |
+| weldzero_checks_output.txt `271a784bb315afd557ebe902820738d5` | same | OK |
+
+Quotation spot-check: 30+ quoted strings machine-matched against their sources
+after normalising newlines, blockquote `>` markers and markdown emphasis. All
+matched **except** the T1 quotations, which are Unicode transcriptions of LaTeX
+source (see **m5**). Ledger §7 quotes (HYP.139 L1079–1084, HYP.148 L1146ff,
+HYP.149 L1153ff, the 148/81 fence L1216, frozen Display A L1322–1346) all
+verified verbatim at v5.
+
+---
+
+## R1. ROUTE (a) — WZ-B, the clause-by-clause replacement of W-9
+
+**Verdict: the replacement is COMPLETE. No under-replacement found.**
+
+I re-derived the consumption set independently of the note's §2 restatement, by
+reading GENHN's *own* division-of-consumption declarations rather than only its
+S6.1 prose:
+
+> "**GRTJC W-6..W-9 + JC-LOAD/W-8 (ACCEPTED 2/2 @ 83f47f4)**: COROLLARY W-9's
+> dim_K 𝒜(T) = E (the stage slot geometry: E graded K-lines per integer height,
+> the twisted algebra K^c[ℤ/E]) and JC-LOAD's graded no-cancellation.
+> **Division of consumption (GENH4 S0's discipline, kept):** the slot geometry
+> and no-cancellation are RE-PROVED elementarily below (GENHN-2 …), so no weld
+> face sits inside the count laws; W-9's cocycle IS the carry bookkeeping of
+> GENHN-4, where the graded-algebra frame is consumed as the organizing
+> computation (disclosed there, clause by clause)."
+> (`GENHN_PROOF` L92–101)
+
+and its dependency ledger:
+
+> "**GRTJC W-6..W-9 + JC-LOAD/W-8** @ 83f47f4 (ACCEPTED 2/2): consumed at LEMMA
+> GENHN-4 layer 1 (μ ≥ 3) — the ONE weld face inside a count law, disclosed
+> (GENHN-BOX-2); elsewhere frame-only (GENHN-2 re-proves the slot geometry
+> elementarily)." (`GENHN_PROOF` L1511–1514)
+
+So the consumed content is exactly {the cocycle = W-9(i)+(ii)} ∪ {the graded
+frame = W-9(iii)}, with (iv) never named. That is precisely the note's WZ-B
+table. WZ-1 + WZ-2(a) supply (i)/(ii) as a monomial identity; WZ-1(c) +
+GENHN-2 supply (iii); (iv) has no occurrence. **Clause coverage: complete.**
+
+I also hunted specifically for a clause consumed *implicitly* by the prose
+around the consumption site. Two candidates, both cleared:
+
+* S6.1's sentence *"The twist powers z^{fl} … enter both the residual assembly
+  and the carry products IDENTICALLY, so the graded identity holds coefficient
+  for coefficient over K"* (L881–884) is a claim about ϑ cancelling. WZ-A does
+  not need it — it never forms a "carry product" separately; the ϑ's are
+  absorbed into the definition of c_j (WZ-R) and the whole computation happens
+  in gr(L). The note's WZ-BOX-4 correctly frames this as bypass rather than
+  audit. Note, however, that WZ-A′ shows this GENHN sentence is *false* in
+  coherent coordinates at live ϑ — which the note discloses only obliquely.
+* S6.1's layer-3 clause *"slot strings are key-independent — GENHN-2"* (L901)
+  and layer 2's GENHN-3(c)(d) pricing carry no weld label. Confirmed by grep
+  over L890–904: zero occurrences of `W-9|W-1|W-6..W-12|WELD|JC-|GRTJ|J-D0`.
+  WZ-BOX-1's grep claim **reproduces**.
+
+Grep footprint claim itself: see **m2** (there are two W-9 occurrences inside
+S6.1, not one).
+
+---
+
+## R2. ROUTE (b) — WZ-1 (graded field) and WZ-2 (level-1 cocycle from T1)
+
+**WZ-1: clean.** The five-line re-proof is correct and is genuinely the
+[e2]-erratum frame. The erratum does re-aim GENHN there, verbatim:
+
+> "S6.1 layer 1's graded frame re-aims at **gr(O_L)** (one K-line per dv-height,
+> W-9's twisted algebra; R ⊆ O_L and every graded read of an evaluated element
+> happens in gr(O_L))." (`GENHN_PROOF` L515–517)
+
+and the forcing chain at L500–509 does establish e = e₁, f = f₁, [L:base] = D′,
+O_L/m_L = K, hence dv(L^×) = ℤ and gr(L)_m a K-line for every m ∈ ℤ. WZ-1(a)(b)(c)
+all check. The transposition from GENTOW5-A0 (stated for L2, rationals in
+general) down to L (values in ℤ) is a strengthening of the value group, not a
+weakening; nothing tower-specific is consumed.
+
+**WZ-2: clean, and T1's uniformity in the base height HOLDS.** I byte-read T1's
+proof rather than its statement. T1 §2.2:
+
+> "The reduced representative of \(i(a)+i(b)\) is \(i(a+b)\)." … "Height
+> additivity gives \(a(a)+a(b)=a(a+b)-h\operatorname{wrap}(a,b)\), which proves
+> (C2-wrap)." … "At level \(1\), reducing the \(x\)-exponent \(s\,i(u_2)\)
+> modulo \(e_1\) gives exactly \(\lfloor s\,i(u_2)/e_1\rfloor\) copies of
+> \(x^{e_1}/\pi^h\), proving (C2-level-1) and the positive \(\eta^{W(t)}\) sign."
+> (`T1_GAUGE_COCYCLE_2026-08-12.md` §2.2)
+
+The computation reads only `i(u₂)` — the x-exponent of the level-1 normalizer at
+the base height — and never any tower property of u₂. Instantiating u₂ ↦ κ is
+therefore inside T1's stated scope, not a stretch. Same for (C3-dictionary),
+whose §2.3 proof is *"division first by \(\widehat n_i(su)\) and then by
+\(\widehat n_i(u)^s\)"* — pure residue arithmetic.
+
+One T1 fence I checked and cleared: T1 §1.1 carries a **site obligation** —
+
+> "Assume at the consumed sites that the canonical residual read is
+> multiplicative on the relevant ladder monomials and agrees with residue on
+> value-zero factors. This is a site obligation, not an assertion about every
+> homogeneous initial form." (`T1` L110)
+
+This attaches to T1's **third** read (the canonical residual read
+\(R_{i+1,\beta}\)). WZ-R uses only reads 1 and 2, so the obligation is not
+inherited. The note does not say so; it does not need to, but a defender should
+be able to answer this if asked.
+
+Cross-corroboration the note did not use, and could have: GENHN's own HETOW
+erratum states the identical wrap identity at the composed key
+(`GENHN_PROOF` L1988–2001, quoted correctly by the note), and both are the same
+computation. Non-novelty claim stands.
+
+---
+
+## R3. ROUTE (c) — WZ-PIN, WZ-BOX-3, and the ϑ discrepancy
+
+**I re-derived the discrepancy independently and it is real.** With
+n(κ)^t = n(tκ)·(x^{e₁}/π^h)^{W(t)}, W(t) = ⌊t·i(κ)/e₁⌋, evaluation at θ and
+res(θ^{e₁}π^{−h}) = η give ϑ_t = η^{W(t)}, so Γ_j = c_j·ϑ_{μ−j}. Since W is a
+floor function of t, ϑ is *not* geometric in t, so
+D_κ = diag(ϑ_{μ−j}^{−1}) does **not** commute with the perfect-power condition:
+a twisted-residual perfect μ-th power is not a multiplicative-residual perfect
+μ-th power once any ϑ_t ≠ 1. Confirmed both by hand and by the battery.
+
+**The four corpus facts pinning the multiplicative reading — byte-read:**
+
+1. `GENHN_PROOF` L733–735: *"Side residuals assembled with coherent normalizers
+   are therefore z-power-twisted slot digits (the S6 computation and the
+   battery's readers implement exactly this)"* — present verbatim. But see
+   **m6**: read with GENHN-2's *own* definition of the slot digit, this sentence
+   says the opposite of what the note claims it says.
+2. `GENHN_PROOF` L1992–1995 (HETOW erratum): *"for the slot residues to equal
+   the residual's coefficients … the lifts need the correction absorbing that
+   wrap factor"* — verbatim, and it does choose the multiplicative side. Solid.
+3. `GENTOW5_PROOF` L200–207 / L254–258 — verbatim, and stronger than the note
+   claims. GENTOW5 does not merely fix the convention; it declares scope:
+   *"All event statements below are in the multiplicative convention; LEMMA
+   GENTOW5-A1 is the exact translation"* (L262–265, one level up). Solid.
+4. "Only under this reading is GENHN-4 layer 1's conclusion true" — true, and
+   proved by WZ-A + the battery, but it is an argument from charity, not from
+   the frozen text. The note is honest about this.
+
+**The finding the note missed, and it is in the note's favour.** The decisive,
+unambiguous evidence for WZ-PIN is not prose at all — it is the source of the
+corpus's two *pinned readers*, and both implement the multiplicative convention
+explicitly:
+
+* `verification/openmath/qscout22_checks.py` L318 (the PINNED QSCOUT22 μ=2
+  reader `read_E`, e₁ = 2):
+  `S0eff = K.mul(zinv, S0) if dmu % 2 == 1 else S0`
+  i.e. the coherent digit S0 at height 2κ is divided by η exactly when
+  i(κ) = 1 — that is c = Γ·ϑ_2^{−1}, WZ-R's dictionary, literal.
+* `verification/openmath/genhn_checks.py` L577 (the E31 reader, e₁ = 3):
+  `S0eff = K.mul(zinv, S0) if i1 == 2 else S0` — same, with ϑ_2 = η^{⌊2·2/3⌋}.
+* `verification/openmath/genhn_checks.py` L653–655 (the E3 μ=3 reader, the
+  GN-REFINE3 instrument):
+  ```
+  # wrap count: (i(m_t) + t*i(kk) - i(y0)) / 2
+  g_t = ((ht % 2) + t * (kk % 2) - (y0 % 2)) // 2
+  rc.append(K.mul(c, zpow(K, zK, g_t)))
+  ```
+  I evaluated g_t symbolically: with j0 = 0, y0 = μκ, e_s = 1, kk = κ this is
+  g_t = W(μ) − W(μ−t), so rc[t] = Γ_t·η^{W(μ)−W(μ−t)} = c_t·η^{W(μ)}; the
+  subsequent `lead_inv` monic normalisation kills the constant η^{W(μ)} and
+  leaves exactly c_t. **GENHN's own μ=3 refine instrument assembles the
+  multiplicative residual.**
+
+So WZ-PIN is not merely the best available reading — it is the reading the
+corpus's machine legs *implement*. I searched for a corpus site reading GENHN-4's
+residual in the twisted/coherent convention and **found none**; every reader
+carries the ϑ^{−1} correction. **No cross-note inconsistency. WZ-BOX-3's boxing
+is honest and, if anything, over-cautious.**
+
+---
+
+## R4. ROUTE (d) — LEAK-1's split treatment
+
+### (a) The additive half — WZ-A. CLEAN.
+
+I re-derived THEOREM WZ-A line by line. The expansion
+B_k = Σ_{j ≥ k} binom(j,k)·(−w)^{j−k}·A_j is correct; every term evaluated at θ
+has dv ≥ (j−k)κ + (μ−j)κ = (μ−k)κ; the class computation factors N^{μ−k} out
+legitimately because gr(L) is commutative with N invertible (WZ-1(b)); the
+integer binomials whose valuation is positive drop out of the class, which is
+exactly the reduction of binom(j,k) mod q, so the Taylor identity is applied
+over K and is characteristic-free. **The μ-pin death computation is correct.**
+The lift hypothesis is met by the pinned GENHN-LIFT, which I read:
+
+> "**LEMMA GENHN-LIFT.** Let \(M>D'h=e_1f_1h\) … Then \(L_M(\lambda)\in\widehat
+> O[x]\), \(\deg L_M(\lambda)<D'\), every nonzero summand has exact
+> \(dv\)-height \(M\), and \(\operatorname{res}(L_M(\lambda)(\theta)/n(M)(\theta))
+> =\lambda\)." (`GENHN_PROOF` L2102ff)
+
+exactly the three properties WZ-A quotes, on exactly the domain WZ-A uses.
+Rider (ii) (WZ-A is stronger than layer 1 at the seam, layer 2 keeps only the
+mod-Φ′₊ overflow) is accurate. Definitional slip at **m4**.
+
+### (b) The multiplicative half — WZ-3 vs J-D0. **CRITICAL — see C1.**
+
+### (c) WZ-A′ vs SG-2's X(ii) — the falsification VERIFIED.
+
+SG-2's X(ii), byte-read:
+
+> "(ii) the recentering Φ′ ↦ Φ′ + w induces, in coherent normalized graded
+> coordinates, res_{(μ−j)κ}(A_j^new) = [T^j] R(T+s) for 0 ≤ j ≤ μ"
+> (`SG2_PROBE_2026-08-10.md` L40–43)
+
+In coherent coordinates the truth is Γ_k^new = ϑ_{μ−k}·[T^k]R_N(T+s) with
+R_N = D_κ(R_Γ) ≠ R_Γ. X(ii) as literally stated therefore predicts all pins die
+when R_Γ = (T−s)^μ; the battery's `digit`-convention rows show pins **surviving**
+at F1/F4/F5/F6/F7/F9/F10. **X(ii) is falsified as literally stated, and WZ-A′ is
+its correct form.** This is a genuine content contribution, not transcription,
+and the note's claim that the audit's CARRY pricing is "one item short" is
+justified.
+
+---
+
+## R5. ROUTE (e) — THE BATTERY
+
+**Re-run reproduces exactly.** `python3 verification/openmath/weldzero_checks.py`
+from a clean shell: exit 0, **`TOTAL: 9877 checks, 0 violations`**, and every
+per-frame line in the note's §5 table matches the fresh run: ϑ vectors
+(F1 `[1,1,2,2]`, F5 `[1,1,1,3]`, F6 `[1,1,2,2,4]`, F9 `[1,1,3,3]`, …),
+ρ vectors (F1-digit `[4,1,0]`, F4-digit `[2,0,0]`, F6-digit `[2,1,2,0]`,
+N1 `[0,0,4]`), and the separation/agreement partition
+{F1,F4,F5,F6,F7,F9,F10} vs {F2,F3,F8,F11}. Check arithmetic also reconciles:
+570 frame checks + 11 biconditional assertions + 1 aggregate + 9,295 sweep-C
+points = 9,877.
+
+**Decorrelation claim: overstated in one direction and mis-disclosed in the
+other — see m3.** The genuinely independent legs that DO exist: (1) dv via the
+Sylvester resultant `norm_dv` (`e1*v_p(Res(Phi,A))/D'`), cross-checked at every
+pin, before and after recentering; (2) ϑ from raw monomials vs T1's closed form,
+per t per frame. Those are real and they fire.
+
+**Coverage finding: the note's claim is FALSE — see G1.**
+
+---
+
+## R6. ROUTE (f) — PINS + BOXES
+
+* **WZ-BOX-1** (layers 2/3 weld-free by grep): **re-run, reproduces.** No weld
+  label in `GENHN_PROOF` L890–904. SG-2's independent CHECKED-CLEAN quote
+  verified verbatim.
+* **WZ-BOX-2** (f₁ = 1 coverage): honest. I checked the uniformity claim: WZ-1
+  and WZ-2 never split by f₁, and GENHN-LIFT is stated for general f₁ with the
+  full K-slot at M > D′h. The box's own recommendation ("A live-wrap f₁ = 2
+  frame is the first fresh leg the hostile arc should demand") is correct and I
+  endorse it as the standing demand for pass 2.
+* **WZ-BOX-3**: honest, and over-cautious (R3).
+* **WZ-BOX-4** (the bypass): verdict stands; exhibited grep incomplete — **m7**.
+* **WZ-BOX-5** (not the σ box): the ledger fence quote at v5 L1216 verified
+  verbatim. Clean.
+* **WZ-BOX-6** (grade): verified. `SOL_CERTIFICATION_LEDGER_2026-08-12.md`
+  row 10 = GENTOW5 "**CERTIFIED 2026-08-12**", row 13 = GENHN "**CERTIFIED
+  2026-08-12**"; ledger v5 HYP.149 records the audit's caveat (b) as STALE. The
+  note's grade claim is correct.
+* **Non-circularity audit (S8)**: independently re-checked. No step of WZ-1,
+  WZ-2, WZ-R, WZ-A, WZ-A′, WZ-3, WZ-B names GRTJC, WELDMASTER, GRTJA, GRTJB,
+  GRTW2, SIGMALAW, LIFTCORNER, DULEMMA or any FGMN object. The only rings that
+  occur are L, O_L, gr(L), Ô[x]. **The HYP.139 retirement rationale holds.**
+  GENHN's derive-then-identify sentence (L731–733) verified verbatim.
+
+---
+
+## R7. FINDINGS LEDGER
+
+### CRITICAL
+
+**C1 — WZ-3(ii) is FALSE as stated, and the J-D0 routing it supports (§4b, §7)
+is a mis-citation of J-D0's perimeter.**
+
+The note, §3.6:
+
+> "(ii) D_κ is a bijection of digit vectors fixing the top coefficient; it is a
+> **type-preserving** bijection in J-D0's sense, being a slot-wise **unit
+> character** (the multiplicative mode, not the additive one);"
+
+and its proof:
+
+> "*(ii) D_κ is invertible with inverse diag(ϑ_{μ−j}); it acts within each
+> height's K-line, so it preserves which slots are occupied and each slot's
+> type; multiplication by a fixed unit is a character, which is exactly the mode
+> J-D0's blindness covers, and is exactly *not* the NONCHAR mode …*"
+
+and §4(b):
+
+> "**(b) The multiplicative half — INSIDE J-D0's perimeter, with the bijection
+> exhibited.** The residual-convention change is the diagonal unit rescaling
+> D_κ, i.e. a **slot-wise unit character** — the very mode `JD0-BOX-2` describes
+> … and the opposite of the NONCHAR mode."
+
+J-D0's type-preservation clause is not a slot-level statement; it is a
+**residual-level** statement with an explicit functional form:
+
+> "**(f) The induced action on residual polynomials preserves factorization type
+> POINTWISE.** The slot character acts on the level-j residual polynomial by the
+> variable rescaling σ_ξ : R(y) ↦ ξ^{−deg R}·R(ξ·y) (JA-RES's z^{−iA}·C_i slot
+> form …). σ_ξ extends the identity of K_j to a degree-preserving K_j-algebra
+> automorphism of K_j[y]; automorphisms carry factorizations to factorizations,
+> so deg, monicity, irreducibility, ψ(0) ≠ 0, and the full factorization-degree
+> multiset are preserved for EVERY R" (`JD0_PROOF_2026-08-08.md` L118–131)
+
+σ_ξ acts on the coefficient of T^j by ξ^{j−deg R} — **geometric in j**. D_κ acts
+by ϑ_{μ−j}^{−1} = η^{−⌊(μ−j)·i(κ)/e₁⌋}, whose exponent is a **floor function of
+(μ−j), not linear in it**. D_κ is therefore not of J-D0's form, and it does not
+preserve factorization type. That is not a subtlety — it is precisely the note's
+own §5 headline:
+
+> "2. **The conventions genuinely separate, and exactly when ϑ is live.**"
+
+A bijection under which "(T−s)^μ" and "not a perfect power" trade places is by
+definition not type-preserving. The note simultaneously asserts D_κ is
+type-preserving (WZ-3 ii) and proves it is not (§5, WZ-A′). J-D0's own dichotomy
+is also mis-applied: the NONCHAR tooth is *"an additive slot shift is a bijection
+that breaks type preservation, hence counts"* (`JD0_PROOF` L224–225) — D_κ breaks
+type preservation **without** breaking counts, so it is in neither of J-D0's two
+boxes.
+
+Independent evidence, from a leg I ran (see G1 for the instrument): in the
+sealed GENHN row `V1E2 Zp q=3 N=4 h=1`, **972 of 972** live-wrap refine events
+have their residual type *flipped* by D_κ (multiplicative read → `1sq`, i.e. the
+α/perfect-square type; coherent read → `2`, i.e. INERT). Pointwise type
+preservation fails at every single live-wrap event in the corpus's own sealed
+data.
+
+Knock-on to the note's proof of (iii):
+
+> "*(iii) both sets are the D_κ-images of {(T−s′)^μ : s′ ∈ K^×}, of cardinality
+> |K| − 1 …*"
+
+They are not: the first set **is** that set in Γ-coordinates and the second is
+its D_κ-**preimage**; they are different sets. And the closing generality —
+"every count stratified by **slot heights** transports along D_κ" — does not
+reach the counts GENHN-4 actually feeds, which are stratified by residual
+**type** (#RAM / #2SIDED / #SPLTAIL / #SPLITEQ / #INERT / #ALPHA, `GENHN_PROOF`
+L2525ff).
+
+Knock-on to §7 and to the proposed ledger edit: §7 asserts *"this note consumes
+J-D0 at FRAME grade with the bijection exhibited inline (§4b), so it neither
+inherits nor enlarges BOX-2's perimeter"*, and the proposed replacement Display-A
+line reads *"∧ JD0-BOX-2 -- FRAME-grade only; every consuming site exhibits its
+own bijection"*. Both rest on C1.
+
+**What survives.** The *conclusion* of §3.6 — that the count laws are
+convention-blind — is TRUE, and I confirmed it empirically: in the same sealed
+row the aggregate type census is identical at η = 1 and η = 2
+(`'11'`: 486/486, `'1sq'`: 972/972, `'2'`: 1458/1458). But it is true for a
+different reason than the note gives: D_κ is a bijection of the digit space
+carrying the Γ-stratification onto the c-stratification, so corresponding strata
+have equal cardinality — a pure relabelling argument that needs **no J-D0 at
+all**. The honest repair is therefore strictly favourable to the note's ledger
+claim (J-D0 not consumed here, rather than consumed inside its perimeter), but
+it is a repair, not a reading, and it invalidates WZ-3(ii) as displayed.
+
+The note also inherits this error from GENHN's frozen sentence *"counts are
+twist-blind (J-D0: (digits) ↦ (twisted digits) is a type-preserving bijection),
+LETTERS are twisted"* (L736–737) and from the audit's CLEAN-site list, which
+calls the same bijection type-preserving at GENH4 L370–371. That mitigates
+authorship but not correctness — and the note explicitly claims to be *"GENHN's
+own sentence … made exact at μ ≥ 3"* (§3.6), when what §5 actually shows is that
+half of GENHN's sentence is false at live ϑ.
+
+### GAP
+
+**G1 — the §5 coverage claim is FALSE: the accepted corpus already has sealed
+live-wrap refine events, 972 of them, all decision-flipping.**
+
+The note:
+
+> "**So no sealed row in the accepted corpus exercises a live level-1 wrap at a
+> refine event**, and F1/F4/F5/F6/F7/F9/F10 above are the corpus's first machine
+> contact with one. That is a fact about coverage, not a defect claim …"
+
+The note's supporting survey covers GENH4's GH-REFINE rows (correct: consE
+(Zp,2,6,h1)/(Fqt,2,6,h1) and consF (Zp,2,7,k1) — all q = 2 or e₁ = 1) and
+GENHN's *tower* rows (correct: q = 2, η = 1 forcibly, `GENHN_PROOF` L2027–2029).
+It **does not survey GENHN's own stage rows**, and that is where the claim dies.
+
+Instrument: I re-ran GENHN's sealed battery drivers with an instrumented copy of
+the pinned reader (`Q.read_E` from `qscout22_checks.py`, monkeypatched around
+`genhn_checks.run_v_row`; construction, generator and row parameters untouched;
+the original reader still supplies the returned key so the row's own count law
+is unaffected). Row `V1E2 Zp q=3 N=4 h=1` — a sealed GN-STAGE2 row, present in
+the committed artifact `verification/openmath/genhn_checks_output.txt` L12
+(`[V1E2 Zp q=3 N=4 h=1] 26244 members, 9 keys`) and preregistered at GENHN P3
+("totals 12,288 / 458,752 / **26,244** / 458,752"):
+
+```
+V1E2 Zp q=3 N=4 h=1 : 26244 members
+  refines                    1944
+  REFINES_LIVE_WRAP           972     (z = eta = 2 != 1, dmu odd => i(kappa)=1)
+  TWIST_FLIPS_DECISION        972     (mult read '1sq' vs coherent read '2')
+  post_refine_reads          1944
+  PIN_ALIVE                     0     (every pin died at every refine)
+  read-type census z=1 : '11' 486  '1sq' 972  '2' 1458
+  read-type census z=2 : '11' 486  '1sq' 972  '2' 1458
+```
+
+So (a) the corpus's first machine contact with a live level-1 wrap at a refine
+event was GENHN's own sealed V1E2 q = 3 row, not WELDZERO's F1/F10; (b) at every
+one of those 972 events the pins died under the multiplicative reading, i.e.
+GENHN's sealed data is already a WZ-A leg at live ϑ (μ = 2, e₁ = 2, q = 3 —
+exactly the note's F10 shape); and (c) the two conventions were already
+separating in sealed data, which strengthens WZ-PIN and WZ-3's conclusion rather
+than weakening either.
+
+Corroborating negative results from the same instrumentation, for the record:
+E31 (Zp,3,3,1) has 324 refines but i(κ) = 2 never occurs at one, so no live wrap;
+E31 (Zp,2,5,1) and (Zp,2,4,1) are q = 2 (η = 1); E3 (Zp,3,4,1) — the only q = 3
+μ = 3 row — produces **zero** α-events, so GN-REFINE3's 3,072 pin checks all come
+from the two q = 2 E3 rows, whose wrap exponents are structurally nonzero
+(g = (0,0,1,1)) but evaluate to 1. **The note's coverage claim is correct for
+GN-REFINE3 and for GENH4; it is wrong for GN-STAGE2.**
+
+Classification: GAP rather than CRITICAL — nothing in the WZ-A → WZ-B →
+HYP.148 chain depends on it, and the correction runs in the note's favour. But it
+is asserted as a positive finding about the corpus ("a fact about coverage"), it
+is wrong, and a note that retires a hypothesis from the main theorem's
+conditionality should not carry a false empirical claim about what the corpus has
+already tested.
+
+### minor
+
+**m1 — §1: the κ > D′h derivation uses an index at which its own equality is not
+forced.** The note: *"(take j = μ−1 in the node floor: (μ−j)κ ≥ (μ−j)D′h + 1
+gives κ > D′h)"*. The step substitutes dv(A_j) → (μ−j)κ, which requires equality
+on the side; but the note's own event definition gives only *"dv(A_j) ≥ (μ−j)κ
+for every j"*, and j = μ−1 is an interior lattice point where dv(A_{μ−1}) may
+exceed κ. The valid index is **j = 0**, where dv(A_0) = μκ is forced by
+(0, μκ) being an endpoint of the side: μκ ≥ μD′h + 1 ⟹ κ > D′h. Conclusion
+unaffected.
+
+**m2 — §2 "Grep footprint" undercounts.** The note: *"`W-9` occurs in GENHN S6.1
+at exactly one line (L874, quoted above)"*. There are two occurrences inside
+S6.1 (L865–921): L874, and L908 in the Grade note — *"At general μ, layer 1
+CONSUMES the W-9 graded frame (accepted 2/2) rather than re-deriving the carry
+digit-by-digit"*. Both are layer-1 statements, so the conclusion ("layer 1 and
+nothing else") is unaffected.
+
+**m3 — §5's decorrelation description is wrong in both directions.**
+(a) *"The *prediction* engine and the *measurement* engine share nothing"* is
+false: both paths run through the same `iofm`/`nhat` normalizer code, the same
+`dv_of` slot-min, and the same `coherent_digit` reader
+(`weldzero_checks.py` L179–239); the construction *places* the digit Γ_j with
+`nhat((mu-j)*kappa, ...)` and the measurement *reads* it back with
+`coherent_digit`, so the digit leg is self-consistent, not decorrelated. The
+genuinely independent legs are the resultant valuation leg and the ϑ closed-form
+leg — two legs, not "share nothing".
+(b) The correlation the note *does* disclose is misidentified: §9 target 6 says
+*"the current one shares `pdivmod_monic` between construction and measurement"*,
+but `pdivmod_monic` (L84) is called only from `development` (L105), which is
+called exactly once, at L371, on the **measurement** side. The construction uses
+only `padd`/`pmul`/`pscal`. The disclosed correlation does not exist; a
+different, real one does.
+
+**m4 — §3.4: B_k is introduced as an ill-defined object.** *"let B_k be the
+coefficients of the polynomial-ring expansion f = Σ_k B_k Φ′₊^k (no reduction)"*
+— without a degree constraint that expansion is not unique. The proof
+immediately supplies the intended definition
+(B_k = Σ_{j ≥ k} binom(j,k)(−w)^{j−k}A_j), which is what the theorem is about;
+the statement should carry it.
+
+**m5 — the Record rule overstates verbatimness for T1.** *"Every quotation above
+is verbatim at the pinned md5"*. T1 is a LaTeX source; the note's T1 quotations
+are Unicode transcriptions (`\widehat n_i(su_{i+1})` → `n̂_i(su_{i+1})`,
+`\lfloor s\,i(u_2)/e_1\rfloor` → `⌊s·i(u₂)/e₁⌋`, `\Gamma` → `Γ`). Faithful, but
+not verbatim. Every other quotation I machine-checked is byte-exact modulo
+blockquote and emphasis markers.
+
+**m6 — §3.3 fact 1 reads GENHN's S4 sentence against GENHN-2's own definition.**
+The note: *"Under DEFINITION WZ-R that sentence is exactly c_j = Γ_j·ϑ_{μ−j}^{−1}"*.
+The sentence's subject is *"Side residuals assembled with coherent normalizers"*
+— under WZ-R that is (Γ_j)_j — and its predicate is *"z-power-twisted slot
+digits"*. Since GENHN-2 defines the slot's K-digit as precisely the coherent read
+(*"the slot's K-digit assembling the f₁ within-class O-digits"*, L720–721), the
+sentence read literally says Γ is a twist of Γ. Fact 1 only supports WZ-PIN if
+"slot digit" is silently re-read as c_j. The reading is correct — R3 settles it
+from the readers' source — but fact 1 as displayed is not the clean pin the note
+presents it as.
+
+**m7 — WZ-BOX-4's grep evidence is incomplete.** It cites HE3, HE6/HE7 and
+GENTOW5. It omits the two notes that *do* name GENHN-4 layer 1 by name:
+`GENTOW1_PROOF` L371 (*"(GENHN-4 layer 1 verbatim)"*) and L376–378 (*"at general
+mu2 layer 1 consumes the composed graded frame exactly as GENHN-4 layer 1
+consumed W-9's"*), and `GENTOW4_PROOF` L305 (*"the level-1 alpha-refine family
+(GENHN-4 / stage read, accepted corpus)"*). I read both: neither reads content
+back out of layer 1's *frame* beyond its conclusion (GENTOW1's is an analogy,
+retired by GENTOW5-A; GENTOW4's is a dictionary cite of the refine family), so
+the box's verdict stands — but the exhibited evidence should name them.
+
+**m8 — §5 mis-states GENH4's GH-REFINE figure.** The note: *"the accepted μ = 2
+pointwise verification, **192,000 refine events**"*. `GENH4_PROOF` L1126 reads
+*"GH-REFINE 192,000/0 (21,504 + 768 refine events, the carry …)"* — 192,000 is
+the **check** count; the refine events number 22,272.
+
+---
+
+## R8. VERDICT
+
+The mathematics of the discharge holds. THEOREM WZ-A is correct, its lift and
+domain hypotheses are met by pinned suppliers, WZ-1 and WZ-2 are correctly
+transposed and T1 really is uniform in the base height, the W-9 clause table is
+complete against GENHN's own division-of-consumption declaration, the
+non-circularity audit survives an independent re-check, WZ-A′'s falsification of
+SG-2's X(ii) is real, and the battery reproduces at 9,877/0. WZ-PIN is not just
+defensible — the corpus's pinned readers implement it in source.
+
+What blocks a clean pass is one false displayed clause and one false empirical
+claim, both about the *same* object (the ϑ-dictionary D_κ) and both pointing the
+same way: D_κ separates types pointwise while preserving counts, which is a mode
+J-D0 does not describe and which the corpus has already, unknowingly, machine-
+tested 972 times in a sealed row. Neither repair weakens the discharge; both
+require the note to say something different from what it says.
+
+FINDINGS: 1C + 1G + 8m
