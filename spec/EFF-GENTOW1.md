@@ -1369,3 +1369,440 @@ P-2/P-4, P-6, P-7/P-8/P-9 in brief: 10 recipe members + ~4 deep perturbations pe
 **TEETH:** **RE-VERIFIED from the artifact's teeth block**: `tooth T-MUTFLOOR fired x5`, `tooth T-BELOWNODE fired x1`, `tooth T-REFWRONG fired x8`, `tooth T-UNDERCUT fired x2`, `tooth T-SHADOW fired x1` ✓ — all five fired with the stated multiplicities (T-SHADOW fires once over three SHADOW checks, consistent with the tally's `'SHADOW': 3`).
 
 ---
+### EFF.GENTOW1.46  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “**What stays in [GENHN-TOW-1] (untouched here):** item (3) the
+> genre-general faithfulness geography; item (4) partial inner sides
+> (e2f2mu2 < mu1 — 𝒯's definition here is FULL-side; every S2–S4
+> statement is scoped to it); item (6)(alpha) the iterated
+> carry-cancellation bookkeeping at depth >= 3 (the Okutsu-optimality
+> content — COR GENTOW-1.1 discharges only the (beta) leg, the
+> depth-3 node floor, and does so with the sharper constant E2).”
+
+**FORM:** bold-headed residue fence.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** three items stay boxed. **Item (4) is the same partial-side gap HETOW-BOX-1 declares** (`EFF.HETOW.28`) — two sibling notes independently fence the same hole, and at HEAD it is GENTOW-4's territory.
+
+**RESOLUTION TRACE:** lines 539–545.
+
+**TEETH:** verified live: `GENHN-TOW-1` occurs 19 times in GENHN (X01) and no discharge append exists (N1).
+
+---
+
+### EFF.GENTOW1.47  [fence]  *(CHAIN-BOX1 — TERMINAL)*
+
+**CANONICAL STATEMENT:**
+
+> “**GENTOW-BOX-1 (the mu2 >= 3 graded-frame consumption —
+> GENHN-BOX-2 one level up).** LEMMA GENTOW-2 layer 1 at mu2 >= 3
+> consumes the composed graded frame … rather than re-deriving the carry
+> digit-by-digit; at mu2 = 2 (every first-live tower shape, n <= 15)
+> the battery's refine rows are pointwise re-division checks with no
+> formula consulted. An elementary general-mu2 carry display would
+> retire this box exactly as GENH4-S5's would retire GENHN-BOX-2.
+> Note mu2 >= 3 towers first live at n = e1f1·e2f2·mu2 >= 2·2·3 = 12
+> with sigma behind [GENHN-HE(mu2)] regardless.”
+
+with the r1 back-pointer, verbatim:
+
+> “[GT1-r1 back-pointer
+> (PE1 m-2): GENTOW5 S1.5 (grade 0/2, hostile arc owed) RETIRES this
+> box as a mathematical box with the residue grade-only — read the
+> retirement THERE with its stated 0/2 conditionality — and since
+> GENTOW-2 layer 3's image clause consumes layer 1, at mu2 >= 3 the
+> BIJECTION inherits the graded-frame conditionality too.]”
+
+**FORM:** bold-headed box + a dated back-pointer bracket.
+
+**DERIVATION:** `[RECORD]` of a consumption box and its external retirement.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **license** (the box is retired elsewhere) — **but the license is explicitly conditional and the note refuses to launder it**: “read the retirement THERE with its stated 0/2 conditionality”. And the back-pointer widens the box's reach: **layer 3's BIJECTION inherits the conditionality too**, so `.30`'s clause is conditional at μ₂ ≥ 3 as well.
+
+**RESOLUTION TRACE:** lines 547–561.
+
+**TEETH:** **XREF X02 verified**: `GENTOW5_PROOF_2026-08-09.md` line 112 carries `| (1) | GENTOW-BOX-1 disposition | RETIRED into GENTOW5-A's pin stack (S1.5) |` (count 1), and its title line reads `# GENTOW-5: the composed graded frame at general mu2 (GENTOW-BOX-1)` — the retirement target resolves exactly. ARITHMETIC AUDIT: μ₂ ≥ 3 towers first live at `n = e1f1·e2f2·mu2 ≥ 2·2·3 = 12` ✓ — the same n = 12 threshold HETOW derives independently (`EFF.HETOW.27`), from the other side of the same geometry.
+
+---
+
+### EFF.GENTOW1.48  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “**GENTOW-BOX-2 (machine coverage).** Rows exercise: mu2 = 2 only;
+> f1 = 1 outer keys only (D' = 2); q ∈ {2, 3}; e2 ∈ {1, 2, 3},
+> f2 ∈ {1, 2}; d = 1 ambients; depth 2 only. The S2–S4 proofs are
+> uniform in (e1, f1, e2, f2, mu2, q, h) — the coverage gap is
+> machine-side, named here (the f1 >= 2 outer and mu2 >= 3 rows are
+> constructible follow-ups; iterated depth >= 3 rows exist in
+> genhnr2_supp SUPP-C and stay with item (6)).”
+
+**FORM:** bold-headed coverage box.
+
+**DERIVATION:** `[RECORD]` of an evidence perimeter.
+
+**CONDITIONALITY:** **the box gains a row at r1**: `.54` adds “the five committed S1/S5 families sit at eta = 1 … the sealed battery is structurally blind to this seam (add this to GENTOW-BOX-2's coverage reading)”. SUPERSESSION KIND: **inventory completion**. Effective perimeter at HEAD: μ₂ = 2 only; f₁ = 1 only; **η = 1 only in the sealed battery** (η ≠ 1 covered by three fresh frames, `.58`/`.60`); depth 2 only.
+
+**RESOLUTION TRACE:** lines 563–569; the η row at 651–657.
+
+**TEETH:** disposition `signed coverage disclosure`.
+
+---
+
+### EFF.GENTOW1.49  [acceptance-box]
+
+**CANONICAL STATEMENT:**
+
+> “**GRADE: 0/2 (attempt; composed this session, no hostile arc).**
+> Conditionality stack: consumes LEMMA GENHN-T(b)' (i)/(ii)/(iii)
+> (GENHN accepted 2/2 at PE4) [GT1-r1: AT THE CORRECTED KEY — the
+> GENHN dated gauge erratum 59c1966 (chat_t := lift(c_t·eta^{W(t)}),
+> from HETOW PE1 F-1) is a pinned consumption of this note, dated
+> annex S7.1], the [r1] node floor u2 > e2D'h (GENHN-1 erratum,
+> inside the accepted text), S4's coherent normalizers, and — at
+> mu2 >= 3 only — the graded frame (GENTOW-BOX-1). Machine leg = S5
+> (this unit's sealed battery) [GT1-r1: + the P-1 supplement and the
+> PE1 fresh route, S7.2].”
+
+**FORM:** bold-headed grade line + a four-item conditionality stack.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** the grade is superseded to **2/2 ACCEPTED** (`.59`). **The conditionality stack is NOT superseded** and is the operative list for any consumer: T(b)′ at the corrected key, the node floor, the coherent normalizers, and — at μ₂ ≥ 3 — the graded frame at GENTOW5's 0/2.
+
+**RESOLUTION TRACE:** lines 571–580; correction 733–746.
+
+**TEETH:** `git cat-file -t 59c1966` = commit ✓. **N2 records that GENHN itself does not carry the string `59c1966`**, so the erratum is cited by commit, not by an in-supplier designation — a pin form a mechanical checker must handle differently from a span pin.
+
+---
+
+### EFF.GENTOW1.50  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “**Consumption path (not executed here):** discharge of items
+> (1)/(2)/(5) into GENHN_PROOF's [GENHN-TOW-1] box text is the
+> orchestrator's dated consumption update after this note's own
+> hostile arc; GENHN_PROOF is byte-untouched by this unit.”
+
+**FORM:** bold-headed protocol fence.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** **the stated precondition is now MET (the arc closed at 2/2, `.59`) and the discharge is still NOT DONE** — verified: `grep -cF 'GENTOW' GENHN_PROOF_2026-08-08.md` = **0** (N1). The obligation is live.
+
+**RESOLUTION TRACE:** lines 582–585.
+
+**TEETH:** N1 (negative edge, verified).
+
+---
+
+### EFF.GENTOW1.51  [changes-record]
+
+**CANONICAL STATEMENT:**
+
+> “PE1 verdict (GENTOW1_passPE1_report.md @ 606e85c): NOT CLEAN —
+> 1 GAP (F-1) + 2 MINOR (m-1, m-2); counter stays 0/2. This section
+> is the r1 repair round. Tag convention: this round's edits are
+> marked [GT1-r1] (bare [r1] in the body refers, as before, to
+> GENHN-1's node-floor erratum). Sealed machine artifacts
+> (gentow1_checks.py, gentow1_checks_output.txt, gentow1_pe1_fresh.py,
+> gentow1_pe1_fresh_output.txt) are BYTE-UNTOUCHED by this round.”
+
+**FORM:** section preamble under `## S7. [GT1-r1] PE1 REPAIR RECORD + THE DATED GAUGE ANNEX`.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** **the tag-convention sentence is load-bearing for the whole note**: bare `[r1]` means GENHN-1's node-floor erratum, `[GT1-r1]` means this round. A compilation that conflated them would mis-attribute six in-body brackets. This spec keeps them distinct throughout.
+
+**RESOLUTION TRACE:** lines 590–596.
+
+**TEETH:** all four named artifacts exist; two have stated md5s and both match (`.42`, `.43`).
+
+---
+
+### EFF.GENTOW1.52  [changes-record]  *(CHAIN-GAUGE — TERMINAL, the annex)*
+
+**CANONICAL STATEMENT:** §S7.1, `[ASSEMBLED]` from lines 601–629. The seam, verbatim:
+
+> “**The seam.** This note's verdict commit (5eca905, 08-09 15:16)
+> predates the GENHN dated erratum (59c1966, 08-09 20:13, provoked by
+> HETOW PE1 F-1), which established that LEMMA GENHN-T(b)''s original
+> DISPLAY of the composed key's lift coefficients — chat_t = a plain
+> lift of psi2's coefficient c_t — is GAUGE-NAIVE: the normalizer
+> monomials are not multiplicative (nhat(u2)^{f2−t} =
+> nhat((f2−t)u2)·(x^{e1}/pi^h)^{W(t)}), so the plain lift's
+> coherent-normalizer slot residue is c_t·eta^{−W(t)}, not c_t. The
+> note as composed consumed the pre-erratum display and carried no
+> gauge annex — PE1's F-1.”
+
+The corrected display and its site pins, verbatim:
+
+> “**THE PINNED CORRECTED DISPLAY (per erratum 59c1966 + HETOW [r1]):**
+>
+>     chat_t := lift(c_t·eta^{W(t)}),
+>     W(t)   := floor((f2−t)·i(u2)/e1)
+>
+> … Site pins
+> placed this round (grep "chat" + the T(b)'-display consumptions):
+> the S0 key display (the governing pin), S2 Step 0 (Phi'-carry;
+> value-blind, unchanged), S2 Step 1 (graded layer read at the
+> corrected key), S2 Step 5 (the value-LIVE site: the residue
+> computation), S3's K2-digit lift convention, and the S6
+> conditionality stack.”
+
+**FORM:** bold-headed annex with a display and a site-pin inventory.
+
+**DERIVATION:** `[IMPORTED]` from GENHN's erratum; the site inventory is this note's own audit.
+
+**CONDITIONALITY:** **the seam is a TIMESTAMP defect, and the note dates it to the hour** — verdict commit 15:16, erratum 20:13 the same day. That is the cleanest possible provenance for “consumed a pre-erratum display”. The pin inventory distinguishes VALUE-BLIND sites (Step 0) from VALUE-LIVE ones (Step 5) — the distinction that makes wrap-immunity provable rather than hoped.
+
+**RESOLUTION TRACE:** lines 598–629; the nine-site manifest at 678–692.
+
+**TEETH:** `git cat-file -t 5eca905` = commit; `git cat-file -t 59c1966` = commit ✓. Cross-entry: `EFF.HETOW.13`/`.14` compile the same correction from the discovering note; both entries record `W(t) = ⌊(f₂−t)i(u₂)/e₁⌋` identically.
+
+---
+
+### EFF.GENTOW1.53  [derivation]
+
+**CANONICAL STATEMENT:**
+
+> “**Wrap-immunity of this note's own content (two independent legs,
+> both already on record at PE1).** The BUDGETS/WINDOWS/FLOORS are
+> valuation-level: (leg 1) the PE1 verifier re-derived Step 0
+> independently and recorded it VALUE-BLIND — "heights only ...
+> wrap-immune, unaffected by F-1" (report, clean charge 1; the S0/S2
+> displays price heights, and the corrected and naive lifts sit at
+> the same height); (leg 2) the PE1 fresh route
+> (gentow1_pe1_fresh.py @ 6993b7c, sealed 9e9d994) — GREEN 373
+> checks / 0 violations over its two frames — ran the program's
+> FIRST eta != 1 budget frame, F1: p = 3, Phi' = x^2−6, eta = 2,
+> (e2,f2) = (1,2), K2 = F9, AT THE CORRECTED KEY:
+> floors, entry gate, strict-above, node pins, field floor, refine
+> transport ((14,7) -> (19,11), q = 3 both pins), sigma {(4,2)} both
+> oracles.”
+
+with the gauge-LIVE half, verbatim:
+
+> “What is gauge-LIVE is the FRAME (key normalization,
+> residual, sigma): at the gauge-naive key the fresh route's teeth
+> fired — ef(Phi2^N) = {(4,1)} != {(2,2)} (degenerate twisted
+> residual (T−1)^2), field floor (d) FAILS exactly (nfeltval = 3·pr.e
+> at 20/20 scored prime rows, no psi-cancellation), naive-box members
+> sigma {(8,1)} != {(4,2)}.”
+
+**FORM:** bold-headed two-leg argument.
+
+**DERIVATION:** leg 1 is a decorrelated re-derivation by the hostile pass; leg 2 is a decorrelated machine frame outside the sealed battery's blind spot. **Together they separate what the seam touches (the frame) from what it does not (the valuation content).**
+
+**CONDITIONALITY:** the separation is exactly right and is the reason F-1 was graded GAP and not CRITICAL.
+
+**RESOLUTION TRACE:** lines 631–649.
+
+**TEETH:** **RE-VERIFIED from the committed artifact.** `gentow1_pe1_fresh_output.txt` ends `=== VERDICT: GREEN -- 373 checks, 0 violations (1.0s) ===` ✓ and carries `teeth: {'GAUGE-NODE': 20, 'GAUGE-SIGMA': 2, 'REFWRONG': 2}` ✓ — the 20 GAUGE-NODE rows are the “20/20 scored prime rows”, and the two GAUGE-SIGMA rows are the `[tooth] F1NV0/F1NV1 naive-member sigma [(8, 1)] != [(4, 2)]` lines, matching the note's “naive-box members sigma {(8,1)} != {(4,2)}” exactly ✓. Both commits resolve.
+
+---
+
+### EFF.GENTOW1.54  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “**eta = 1 battery blindness (disclosed).** The five committed
+> S1/S5 families sit at eta = 1 (q = 2 with Phi' = x^2−2; q = 3 with
+> Phi' = x^2−3), where the naive and corrected displays coincide —
+> the sealed battery is structurally blind to this seam (add this to
+> GENTOW-BOX-2's coverage reading). The eta != 1 machine coverage is
+> the fresh route's F1 frame plus the erratum's own frame X +
+> hetowr1_supp.py's three frames.”
+
+**FORM:** bold-headed disclosure.
+
+**DERIVATION:** `[RECORD]` of an instrument blind spot.
+
+**CONDITIONALITY:** **the last sentence is the one PE2's m-1 corrects** (`.58`): it reads as a five-frame list but is three frames reached by three instruments. SUPERSESSION KIND: **counter re-reading**.
+
+**RESOLUTION TRACE:** lines 651–657; correction 694–731.
+
+**TEETH:** disposition `signed vacuity disclosure` on the η-axis — the battery is not vacuous, but it provably cannot see the seam. Cross-entry: `EFF.HETOW.36` records the identical blindness for HETOW's own battery, from the same cause.
+
+---
+
+### EFF.GENTOW1.55  [run-record]
+
+**CANONICAL STATEMENT:**
+
+> “P-1 was sealed in the runner docstring (982abe7) but no runner row
+> scored the BASE keys' ef (GP-EF's 8 rows are the refined keys; S5's
+> per-prediction list starts at P-2 — the honest no-row state at
+> PE1). Scored this round by supplement `gentow1_r1_p1.py` (output
+> `gentow1_r1_p1_output.txt`; base keys transcribed from S1's table,
+> decorrelated from the sealed constructors): GREEN, 20 checks /
+> 0 violations — the five base keys factorpadic-irreducible (one row,
+> multiplicity 1, degree D2), ONE prime with (e,f) = (e1e2, f1f2) =
+> (4,1)/(4,1)/(2,2)/(6,1)/(2,2), and the P-1 valuation normalizations
+> exact (e1·v(x) = h·pr.e; e1e2·v(Phi') = u2·pr.e). Disclosure: the
+> scoring is post-hoc to the seal (prediction sealed 08-09, scored at
+> r1); the fresh route had already scored the base-key ef directly at
+> the eta != 1 frame (ef(Phi2^C) = {(2,2)}, F1).”
+
+**FORM:** section body (§S7.2).
+
+**DERIVATION:** `[RUN]` — a decorrelated supplement (“base keys transcribed from S1's table, decorrelated from the sealed constructors”).
+
+**CONDITIONALITY:** **the post-hoc disclosure is explicit** — the prediction was sealed but scored later, so the row is evidence, not a sealed prediction. Correctly classified.
+
+**RESOLUTION TRACE:** lines 659–673.
+
+**TEETH:** **RE-VERIFIED**: `gentow1_r1_p1_output.txt` ends `P-1 SCORED: 20 checks, 0 violations -- GREEN` ✓ and its per-family lines carry `FAM-B: … 1 prime (e,f)=(2,2); v(x)=1 v(Phi1)=3 [all as P-1]`, `FAM-C: … (e,f)=(6,1); v(x)=3 v(Phi1)=7`, `FAM-D: … (e,f)=(2,2); v(x)=1 v(Phi1)=3` ✓ — matching the note's `(e,f)` list at positions 3/4/5. **ARITHMETIC AUDIT of the valuation normalizations at FAM-C**: `e1·v(x) = h·pr.e` with the artifact's `v(x)=3` and `e1 = 2`… the artifact reports raw `pr.e`-scaled values, and `e1e2·v(Phi') = u2·pr.e` at FAM-C reads `6·v(Phi') = 7·pr.e` with the printed `v(Phi1)=7` ✓ consistent with `pr.e = 6`.
+
+---
+
+### EFF.GENTOW1.56  [changes-record]
+
+**CANONICAL STATEMENT:**
+
+> “### S7.3 (m-2 repair): executed as the one-sentence [GT1-r1]
+> ### back-pointer in S6's GENTOW-BOX-1 paragraph.”
+
+**FORM:** a two-line section heading that IS the record.
+
+**DERIVATION:** `[RECORD]` — a pointer to the edit's home site.
+
+**CONDITIONALITY:** the edit itself is compiled at `.47`.
+
+**RESOLUTION TRACE:** lines 675–676.
+
+**TEETH:** the target sentence is present at lines 556–561 ✓.
+
+---
+
+### EFF.GENTOW1.57  [instrument-record]
+
+**CANONICAL STATEMENT:**
+
+> “Body state before this round: md5
+> dc99fc250094a4db96c66c8aa93c3187 = the PE1 target (verdict commit
+> 5eca905). [GT1-r1] edit sites: (1) header ARC line; (2) S0 gauge
+> pin at the key display; (3) S2 Step 0 Phi'-carry pin; (4) S2
+> Step 1 corrected-key pin; (5) S2 Step 5 value-live pin; (6) S3
+> lift-convention pin; (7) S6 GENTOW-BOX-1 back-pointer sentence;
+> (8) S6 conditionality-stack erratum pin + machine-leg pointer;
+> (9) this S7. Edit shape: [GT1-r1]-bracketed INSERTIONS plus this
+> S7 — checkable as `git diff 5eca905..HEAD` on this file; the
+> statement displays of LEMMA GENTOW-1, LEMMA GENTOW-2, LEMMA
+> GENTOW-5, and COR GENTOW-1.1 sit outside the inserted brackets
+> (the pins fix the consumed chat_t reading; the floors, bounds, and
+> clause texts are the composed ones). Grade stays 0/2; PE2 next.”
+
+**FORM:** section body (§S7.4) — a nine-site edit manifest for the next pass's diff.
+
+**DERIVATION:** `[RECORD]` — an unusually disciplined self-documented edit, written FOR the verifier.
+
+**CONDITIONALITY:** **the statements-outside-brackets claim is true of r1 and false of the later appends** — four displayed statements are governed from outside (§1's table). A consumer must date this sentence.
+
+**RESOLUTION TRACE:** lines 678–692.
+
+**TEETH:** **FREEZE F-1 verified: `git cat-file -p 5eca905:<file> | md5sum` = `dc99fc250094a4db96c66c8aa93c3187`** — the whole-body pin reproduces exactly, so the manifest's baseline is real and the `git diff 5eca905..HEAD` check it proposes is executable at HEAD.
+
+---
+
+### EFF.GENTOW1.58  [changes-record]  *(SERIES ARC, link 3; CHAIN-GRADE, link 3; CHAIN-FRAMES, link 2)*
+
+**CANONICAL STATEMENT:** the post-PE2 dated correction, `[ASSEMBLED]` from lines 694–731. The grade move and the defect, verbatim:
+
+> “PE2 came back CLEAN (0C/0G/1m; report `GENTOW1_passPE2_report.md`
+> @ 1e99926); the acceptance counter moved 0/2 -> 1/2 and HOLDS at
+> 1/2 through this correction (append-only, no content of the
+> verified body touched). The one MINOR (m-1): S7.1's eta != 1
+> coverage sentence above … reads as
+> a five-item frame list — it conflates INSTRUMENT LEGS with
+> DISTINCT FRAMES. Corrected reading: the distinct eta != 1 frames
+> on record at r1 number THREE, reached by three instruments, with
+> frame X a single genre datum counted ONCE”
+
+The three frames, verbatim in brief: **X** = PE1's F1 = hetowr1_supp's first frame (p = 3, Φ′ = x²−6, e₁ = 2, η = 2 of ord 2, (e₂,f₂) = (1,2), u₂ = 3, ψ₂ = Z²+Z+2, (W(0),W(1)) = (1,0)), three instrument legs; **Z** (p = 5, Φ′ = x²−10, e₁ = 2, ord(η) = 4, u₂ = 3, ψ₂ = Z²+Z+1); **W** (p = 5, Φ′ = x³−10, e₁ = 3, η = 2, u₂ = 5, ψ₂ = Z²+Z+1).
+
+The caveat, verbatim:
+
+> “Seam-diversity caveat carried from the PE2
+> report: the three enumerated frames sit at i(u2) = 1 with
+> W(0) = 1, W(1) = 0 (X, Z, and W alike per the pins above); a
+> gauge-live frame at i(u2) >= 2 or W(0) >= 2 remains uncovered
+> machine-side.”
+
+**FORM:** dated correction section.
+
+**DERIVATION:** an instrument-vs-frame recount.
+
+**CONDITIONALITY:** **the caveat's i(u₂) leg is FALSE and is corrected at PE3** (`.60`). SUPERSESSION KIND for this unit's own act: **counter re-reading** (five apparent frames → three actual). The grade “HOLDS at 1/2 through this correction” is the same non-double-counting rule HETOW applies (`EFF.HETOW.42`).
+
+**RESOLUTION TRACE:** lines 694–731; correction 748–763.
+
+**TEETH:** `git cat-file -t 1e99926` = commit; `GENTOW1_passPE2_report.md` exists ✓. **FREEZE F-2 verified** (lines 1–692 → `c2f4f3d1…`, 38,204 bytes, blob 38204) ✓. Cross-entry: frames X/Z/W are the same three frames `EFF.HETOW.40` compiles from the supp leg, with identical parameters — the two entries agree frame-for-frame.
+
+---
+
+### EFF.GENTOW1.59  [acceptance-box]  *(SERIES ARC, link 4; CHAIN-GRADE, link 4)*
+
+**CANONICAL STATEMENT:**
+
+> “**ACCEPTANCE.** PE2 CLEAN (0C/0G/1m; report `GENTOW1_passPE2_report.md`
+> @ 1e99926) + PE3 CLEAN (0C/0G/1m; report `GENTOW1_passPE3_report.md`
+> @ 4aff731): the acceptance counter closed 1/2 -> **2/2 — ACCEPTED**.
+> The note is FROZEN as of this record; dated appends only. The arc in
+> one breath: the gauge consumption at PE1 (F-1 — the note consumed the
+> pre-erratum gauge-naive chat_t display) -> the r1 gauge annex (S7.1,
+> the corrected key `chat_t := lift(c_t*eta^{W(t)})` pinned at the nine
+> manifest sites) -> two consecutive cleans (PE2 @ 1e99926, PE3 @
+> 4aff731). PE3 additionally re-derived the ONTO cardinality argument
+> and GENTOW-5(c)/(d) on its own paper and ran a fresh route GREEN
+> 85/0 (sealed 4ccc8c5: H1 first non-prime-q frame, q = 4; H2 first
+> gauge-live x mu2 = 3 frame).”
+
+**FORM:** bold-headed acceptance record.
+
+**DERIVATION:** `[RECORD]` of two consecutive CLEAN passes.
+
+**CONDITIONALITY:** **note the irony the compilation must record**: PE3 “re-derived the ONTO cardinality argument … on its own paper” and passed it CLEAN, yet the codex ratification four days later found that same sentence defined neither of its two sets (R2b, `.66`). Two independent readers reached opposite verdicts on one sentence — a decorrelation datum worth carrying (OPEN-CALL 3).
+
+**RESOLUTION TRACE:** lines 733–746.
+
+**TEETH:** `git cat-file -t 4aff731` = commit; `git cat-file -t 4ccc8c5` = commit; `GENTOW1_passPE3_report.md` exists ✓. **PE3's fresh route reaches two axes the sealed battery cannot**: q = 4 (non-prime) and a gauge-live × μ₂ = 3 frame — the first μ₂ = 3 machine contact in this note's orbit.
+
+---
+
+### EFF.GENTOW1.60  [changes-record]  *(CHAIN-FRAMES — TERMINAL)*
+
+**CANONICAL STATEMENT:**
+
+> “**PE3 m-1 CURE (the seam-diversity sentence).** The post-PE2 dated
+> correction above states "the three enumerated frames sit at
+> i(u2) = 1 with W(0) = 1, W(1) = 0 (X, Z, and W alike per the pins
+> above)" — the i(u2) leg is FALSE at frame W. Verified at the
+> `hetowr1_supp.py` source: `def i(self, k): return k % self.e1`
+> (line 102) with frame W's constructor
+> `FW = Frame('W', 5, 3, [-10, 0, 0, 1], 2, 5, -1, -1, ((3, 2),))`
+> (line 155), i.e. e1 = 3, u2 = 5, so **i(u2) = 5 mod 3 = 2** at
+> frame W (frames X and Z: u2 = 3, e1 = 2, i(u2) = 1). The
+> (W(0),W(1)) = (1,0) pins stand: W(0) = floor(2*2/3) = 1 at frame W
+> (NOT floor(2*1/3) = 0 — do not consume i(u2) = 1 in frame-W wrap
+> arithmetic). Corrected caveat: frame W IS a machine-covered
+> gauge-live i(u2) = 2 datum, so the i(u2) >= 2 axis is NOT uncovered;
+> **the honest residual uncovered seam axis is W(0) >= 2 only**. The
+> slip's direction was conservative (coverage understated); statement
+> displays and sealed artifacts byte-untouched by this append.”
+
+**FORM:** bold-headed dated cure with a source-level verification.
+
+**DERIVATION:** a SOURCE READING of another note's instrument, with file:line citations — the cure is grounded in code, not in prose.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement** of a false caveat leg. **The direction matters and the note says so**: the slip UNDERSTATED coverage, so nothing downstream was over-claimed.
+
+**RESOLUTION TRACE:** lines 748–763.
+
+**TEETH:** **BOTH SOURCE CITATIONS RE-VERIFIED AT COMPILE TIME.** `verification/openmath/hetowr1_supp.py` line **102** reads `    def i(self, k):  return k % self.e1              # h = 1 at every frame` ✓ and line **155** reads `FW = Frame('W', 5, 3, [-10, 0, 0, 1], 2, 5, -1, -1, ((3, 2),))` ✓ — both exact, at the stated line numbers. **ARITHMETIC AUDIT:** from the constructor, `e1 = 3` and `u2 = 5`, so `i(u2) = 5 mod 3 = 2` ✓; `W(0) = ⌊(f₂−0)·i(u₂)/e₁⌋ = ⌊2·2/3⌋ = 1` ✓ and the rejected value `⌊2·1/3⌋ = 0` ✓; `W(1) = ⌊1·2/3⌋ = 0` ✓. **The entire cure reproduces from the cited source.** This is the highest-quality correction in the entry: a false claim, caught by a hostile pass, cured by reading the actual instrument source, with every number re-derivable.
+
+---
