@@ -99,3 +99,386 @@ Verified: `grep -cF 'GENTOW-3' GENHN_PROOF_2026-08-08.md` = **0** (N1), and `gre
 Verbatim or `[ASSEMBLED]`; `…` marks truncation. ASCII notation preserved (the note writes `Phi'`, `mu2`, `THETA_j`, `delta`; the S1 table uses Unicode `Θ`, `δ` — both quoted as they stand). Four source tables are `[TABLE]`-flagged; the two fixed-width ASCII blocks (divergence table, verdict block) are double-emitted per v3 rule 14.
 
 ---
+
+## 2. Statement inventory
+
+62 units, contiguous, in effective-text order. FORM on every unit.
+
+### EFF.GENTOW3.01  [convention]
+
+**CANONICAL STATEMENT:**
+
+> “# GENTOW-3: THE FAITHFULNESS GEOGRAPHY ([GENHN-TOW-1] item (3))
+> ## When the stage-shadow read agrees with the composed read”
+
+with the status line:
+
+> “**2026-08-09 — COMPLETE at attempt grade 0/2 (hostile arc owed).
+> Unit: GENTOW-3, BOX-CLOSURE campaign wave B1. Machine leg
+> sealed-then-verdict (S5): GREEN 582/0, 3/3 teeth.”
+
+**FORM:** title + subtitle + bold status line.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** the grade is superseded to **ACCEPTED 2/2** (`.54`) and then ANNOTATED (`.57`). SUPERSESSION KIND: **counter re-reading**.
+
+**RESOLUTION TRACE:** lines 1–6; corrections 819–826, 880–892.
+
+**TEETH:** the battery figure is re-read from the artifact: `=== VERDICT: GREEN -- 582 checks, 0 violations (0.1s) ===` ✓, `tooth T-SHADOW-REG fired x1` ✓.
+
+---
+
+### EFF.GENTOW3.02  [repair-round record]  *(SERIES ARC, link 1)*
+
+**CANONICAL STATEMENT:**
+
+> “[ARC — passPE1 2026-08-10: NOT CLEAN, 1 GAP + 3 MINOR
+> (GENTOW3_passPE1_report.md @ 3101cf5); counter stays 0/2.
+> GT3-r1 repair round 2026-08-10 (this commit): F-1 dated gauge
+> annex — chat_t := lift(c_t·eta^{W(t)}) pinned per GENHN erratum
+> 59c1966, the x-free "equivalently" clause re-scoped (f1 = 1 only),
+> GENTOW3-BOX-2 honest status, FR-GL adopted as the eta != 1 machine
+> row (S7.1); m-1 digit-value attribution (S7.2); m-2 P-1 census
+> 110 -> 137 (S7.3); m-3 T-SHADOW-REG sigma-leg disclosure (S7.4).
+> Sealed machine artifacts BYTE-UNTOUCHED (md5s, S7.5). Grade stays
+> 0/2; PE2 next.]”
+
+**FORM:** bracketed dated ARC record.
+
+**DERIVATION:** `[RECORD]`; the four dispositions are compiled at `.44`–`.50`.
+
+**CONDITIONALITY:** counter superseded (`.54`).
+
+**RESOLUTION TRACE:** lines 7–16.
+
+**TEETH:** `git cat-file -t 3101cf5` = commit; `git cat-file -t 59c1966` = commit ✓.
+
+---
+
+### EFF.GENTOW3.03  [repair-round record]  *(SERIES ARC, link 2)*
+
+**CANONICAL STATEMENT:**
+
+> “[ARC — passPE2 2026-08-10: NOT CLEAN, 1 GAP
+> (GENTOW3_passPE2_report.md @ c048154); counter stays 0/2.
+> GT3-r2 repair round 2026-08-10 (this commit): F-1 certificate
+> scoping — the S0 geography clause, the S4 delta = 1 bullet, and
+> the S4 count-law rewritten to carry (iv)'s per-coordinate
+> certificate hypothesis; "touched coordinate(s)" pinned to the
+> certificate reading in the (iv) statement (S7.6). Sealed machine
+> artifacts BYTE-UNTOUCHED (md5s re-verified, S7.6). Grade stays
+> 0/2; PE3 next.]”
+
+**FORM:** bracketed dated ARC record.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** **r2 is the only round that edits inside a THEOREM statement** (the “touched” pin), and it declares that explicitly. Its S0 rewrite is then over-corrected and partly withdrawn at r3 (CHAIN-GEOG).
+
+**RESOLUTION TRACE:** lines 17–25; the round at 680–761.
+
+**TEETH:** `git cat-file -t c048154` = commit ✓.
+
+---
+
+### EFF.GENTOW3.04  [repair-round record]  *(SERIES ARC, link 3; CHAIN-GEOG — TERMINAL)*
+
+**CANONICAL STATEMENT:**
+
+> “[ARC — passPE3 2026-08-10: NOT CLEAN, 1 GAP + 1 MINOR
+> (GENTOW3_passPE3_report.md @ a1c181d); counter stays 0/2.
+> GT3-r3 repair round 2026-08-10 (this commit): F-1 one-siding —
+> the S0 geography clause's r2 "exactly" (an only-if S2 never
+> proves, refuted by the measured W witness member at FR-M3
+> j = 0) dropped for the proved direction: certificate ->
+> failure AT THETA_j, attained by the key power's own shadow;
+> where the digit cancels only the KEY POWER's first divergence
+> provably sits strictly above THETA_j. m-A: S7.6 FR-M3 record
+> Phi'/Phi2 label fix (constants unaffected). Sealed machine
+> artifacts BYTE-UNTOUCHED (all nine md5s re-verified). Grade
+> stays 0/2; PE4 next.]”
+
+**FORM:** bracketed dated ARC record.
+
+**DERIVATION:** `[RECORD]` of an OVER-CORRECTION repair — r3 fixes r2, not the composition.
+
+**CONDITIONALITY:** **this is the arc's methodological centre.** The corrected geography is now one-sided: certificate ⟹ failure at Θ_j (proved); digit cancels ⟹ only the KEY POWER's first divergence is provably above Θ_j (other members may still fail at Θ_j, and one measured member does).
+
+**RESOLUTION TRACE:** lines 26–37; the round's manifest at 763–815.
+
+**TEETH:** `git cat-file -t a1c181d` = commit ✓. The refuting W member is machine-pinned at `.53`.
+
+---
+
+### EFF.GENTOW3.05  [acceptance-box]  *(SERIES ARC, link 4)*
+
+**CANONICAL STATEMENT:**
+
+> “[ARC — passPE4 2026-08-10: CLEAN, 0 GAP + 1 MINOR
+> (GENTOW3_passPE4_report.md @ b6a43963); counter 0/2 -> 1/2 — the
+> arc's first clean pass. Rider fold (post-PE4, this commit; minors
+> only, no repair round owed): m-1 traceability — the S0
+> W-measurement cite gains the PE3-fresh artifact md5 pins (runner
+> bde31247, output 3ce4128a; re-computed against the committed
+> artifacts at this fold) and the [GT3-r3] round gains its numbered
+> manifest + adoption record (S7.7), matching the r1/S7.5 and
+> r2/S7.6 format. Sealed artifacts BYTE-FROZEN (the eleven pinned
+> md5s re-verified this fold). Counter 1/2; PE5 next.]**”
+
+**FORM:** bracketed dated ARC record closing the header block.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** **the “minors only, no repair round owed” rule** is the same non-double-counting discipline HETOW and GENTOW1 apply: a CLEAN pass with minors scores, and its cures are a rider fold rather than a round.
+
+**RESOLUTION TRACE:** lines 38–47.
+
+**TEETH:** `git cat-file -t b6a43963` = commit ✓; **both cited md5s verified**: `gentow3_pe3_fresh.py` = `bde31247…`, `gentow3_pe3_fresh_output.txt` = `3ce4128a…` ✓.
+
+---
+
+### EFF.GENTOW3.06  [fence]
+
+**CANONICAL STATEMENT:** the CHARGE, quoted in §1 A.
+
+**FORM:** bold-headed charge paragraph.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** the word “EXACTLY” in the charge is what r2/r3 spend two rounds calibrating — the delivered characterization is **one-sided**, not an iff (`.10`).
+
+**RESOLUTION TRACE:** lines 49–53.
+
+**TEETH:** XREF X01 — `GENHN-TOW-1` verified in GENHN at count 19.
+
+---
+
+### EFF.GENTOW3.07  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “SOURCES CONSUMED (never edited): GENHN_PROOF_2026-08-08.md S8 [r2]
+> annex — LEMMA GENHN-T(b)' clauses (i)-(iv), especially (iv) [THE
+> STAGE SHADOW + FAITHFULNESS THRESHOLD] and its proof (functoriality
+> of monic division; discrepancy Phi'(x0)H_j at dv2 >= u2 +
+> dv2(H_j-class)); GENHN_passPE1_report.md (the three refuted n = 8
+> instances, the 16Phi'-at-21 mechanism); GENTOW1_PROOF_2026-08-09.md
+> (LEMMA GENTOW-1 budgets + Step 0 carry monotonicity, LEMMA GENTOW-5
+> ledger, the constant E2 = e2f2u2); machine: gentow1_checks.py
+> (families imported additively).”
+
+**FORM:** bold-headed import inventory.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** **the import of GENTOW-1 carries GENTOW-1's grade**, and the conditionality stack says so: “LEMMA GENTOW-1 … and LEMMA GENTOW-5 at GENTOW-1's 0/2 grade” (`.41`). At HEAD GENTOW1 is ACCEPTED 2/2 (`spec/EFF-GENTOW1.md` `.59`), so this clause is **stale in the favorable direction** — recorded, not repaired (OPEN-CALL 4).
+
+**RESOLUTION TRACE:** lines 55–63.
+
+**TEETH:** all four sources exist; `gentow1_checks.py` md5 `6df4b213…` matches the pin recorded in both notes ✓ — a cross-note artifact identity, independently confirmed.
+
+---
+
+### EFF.GENTOW3.08  [table]  `[TABLE]`
+
+**CANONICAL STATEMENT:** the status table, source lines 67–72:
+
+| deliverable | statement | status |
+|---|---|---|
+| (a) per-height criterion | THEOREM GENTOW-3 (S2) | PROVED |
+| (b) T(a) event-band survival | COR GENTOW-3.C (S3) | PROVED |
+| (c) leaf failure quantified | S4 (PE1 anchors = first violation) | DONE |
+| battery | gentow3_checks.py (S5) | GREEN 582/0, 3/3 teeth |
+
+**FORM:** table.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** “PROVED” for (a) is scoped by GENTOW3-BOX-1: clauses (i)–(iii) are general, (iv)'s ATTAINMENT rests on a per-genre certificate (`.39`).
+
+**RESOLUTION TRACE:** lines 65–72.
+
+**TEETH:** the battery row re-verified (`.01`).
+
+---
+
+### EFF.GENTOW3.09  [definition]
+
+**CANONICAL STATEMENT:**
+
+>     “delta := u2 − e2·D'h   (>= 1: the [r1] node floor, integers)
+>     THETA_j := (mu2 − j)·E2 + delta     (per composed coordinate j)”
+
+**FORM:** indented ASCII display opening §S0 (“THE ONE CONSTANT AND THE THRESHOLD (announced up front)”).
+
+**DERIVATION:** `[DEFINITIONAL]`; `delta ≥ 1` is the node floor imported from GENHN-1's erratum.
+
+**CONDITIONALITY:** everything in the note is indexed by `delta`; the three S4 regimes are `delta = 1`, `delta ≥ 2`, x-free.
+
+**RESOLUTION TRACE:** lines 76–77.
+
+**TEETH:** **ARITHMETIC AUDIT across the five families, recomputed from `delta = u2 − e2D'h` with `D' = e1f1 = 2, h = 1`:** FAM-A5 `5 − 2·2 = 1` ✓; FAM-A7 `7 − 2·2 = 3` ✓; FAM-B `3 − 1·2 = 1` ✓; FAM-C `7 − 3·2 = 1` ✓; FAM-D `3 − 1·2 = 1` ✓ — **all five δ values in the S1 table reproduce**. And `Θ_j = (mu2−j)E2 + delta` at μ₂ = 2: A5 `2·10+1 = 21`, `1·10+1 = 11` ✓; A7 `2·14+3 = 31`, `1·14+3 = 17` ✓; B `2·6+1 = 13`, `7` ✓; C `2·21+1 = 43`, `22` ✓; D `13`, `7` ✓ — **all ten Θ values reproduce.**
+
+---
+
+### EFF.GENTOW3.10  [scope record]  *(CHAIN-GEOG — TERMINAL)*
+
+**CANONICAL STATEMENT:** the geography clause at its r3 reading, verbatim:
+
+> “THE GEOGRAPHY (proved in S2): the stage-shadow read is
+> digit-faithful at every consulted dv2-height < THETA_j; at a
+> non-x-free genre it can first fail no earlier than THETA_j, and
+> at the coordinates carrying (iv)'s certificate (the key power's
+> assembled height-THETA_j K2-digit does not cancel —
+> GENTOW3-BOX-1) it DOES fail at THETA_j: there the floor is
+> attained by the key power's own shadow. Where the digit cancels,
+> what is proved is only that the KEY POWER's own first divergence
+> sits strictly above THETA_j (measured FR-M3 (mu2 = 3):
+> self-shadow pins [12, 7, 4] vs THETA [10, 7, 4], slack at j = 0,
+> attained at j = 1, 2 — S7.6); other members can still fail at
+> exactly THETA_j there, through scope remark (2)'s
+> entry-digit-driven overflows — priced by the same Step-2 ledger
+> at the same floor, and measured: the member
+> f = Phi2³ + 2x·Phi2² + 8·Phi2 + 64 at FR-M3 j = 0 has first
+> disagreeing height exactly 10 = THETA_0, the shadow undercutting
+> the honest deciding vertex (0,12) -> (0,10)
+> (gentow3_pe3_fresh.py, runner md5 bde31247, output md5 3ce4128a …)”
+
+with the two dated brackets it carries, verbatim:
+
+> “[GT3-r2: certificate-scoped — the composed clause asserted
+> attainment certificate-free at "overflow genres", a term defined
+> nowhere; S7.6. GT3-r3: one-sided — the r2 form's "fails AT
+> THETA_j exactly at the coordinates carrying (iv)'s certificate"
+> claimed an only-if that S2's attainment analysis (key-power-
+> scoped) never proves and the measured W member refutes]”
+
+and the closing x-free clause:
+
+> “at x-free genres (every lift coefficient of the composed key an
+> x-free monomial) it is faithful at EVERY height.”
+
+**FORM:** inline paragraph carrying two nested dated brackets.
+
+**DERIVATION:** the if-direction from S2(iv); the “only the key power” restriction from the scope of S2's attainment analysis; the existential counter-clause from a measured member.
+
+**CONDITIONALITY:** **THREE LAYERS, and the effective reading is the third.** Composed (certificate-free, undefined term) → r2 (certificate-scoped but with a false “exactly”) → r3 (one-sided, with an existential measured witness). SUPERSESSION KINDs: **replacement** then **replacement**. A consumer must not read the geography as a biconditional in any form.
+
+**RESOLUTION TRACE:** statement lines 79–105; the r2 round at 680–761; the r3 manifest at 763–815.
+
+**TEETH:** **the two md5 pins in the cite are verified** (`bde31247…`, `3ce4128a…`) ✓, and the FR-M3 constants are re-derived at `.53`. **ARITHMETIC AUDIT of the FR-M3 slack claim:** at FR-M3 (`μ₂ = 3, E2 = 3, δ = 1`), `Θ = [(3−0)·3+1, (3−1)·3+1, (3−2)·3+1] = [10, 7, 4]` ✓ exactly as displayed; the measured self-shadow pins `[12, 7, 4]` then give slack `12 > 10` at j = 0 and equality at j = 1, 2 ✓ — the “slack at j = 0, attained at j = 1, 2” reading is exactly right.
+
+---
+
+### EFF.GENTOW3.11  [scope record]
+
+**CANONICAL STATEMENT:**
+
+> “The entry band (heights <= (mu2−j)E2) sits below THETA_j with
+> margin delta at every genre — T(a)'s survival. At delta = 1 the
+> first leaf height IS the threshold (the PE1 geography, 21 = 20+1);
+> at delta >= 2 a faithful leaf band of width delta − 1 exists
+> (FAM-A7: pins 29, 30 faithful; first violation 31).”
+
+**FORM:** inline paragraph closing §S0.
+
+**DERIVATION:** immediate from `Θ_j = (mu2−j)E2 + δ` — the entry band top is exactly δ below the threshold.
+
+**CONDITIONALITY:** this is the seed of COR GENTOW-3.C (`.29`) and of S4's three regimes.
+
+**RESOLUTION TRACE:** lines 106–110.
+
+**TEETH:** **ARITHMETIC AUDIT:** at FAM-A5, entry top `mu2·E2 = 20` and `Θ_0 = 21 = 20 + 1` ✓ (the note's “21 = 20+1”). At FAM-A7 (`δ = 3`), the faithful leaf band is `[mu2E2+1, Θ_0−1] = [29, 30]`, width `δ − 1 = 2` ✓ — **exactly the two measured faithful rows A7-BAND29 and A7-BAND30**, and the first violation at `Θ_0 = 31` ✓. The band formula and the machine rows agree entry-for-entry.
+
+---
+
+### EFF.GENTOW3.12  [table]  `[TABLE]`
+
+**CANONICAL STATEMENT:** the five-family constants table, source lines 119–125:
+
+| family | genre | E2 | δ | Θ_0 | Θ_1 | entry top | Φ2² self-shadow pins |
+|---|---|---|---|---|---|---|---|
+| FAM-A5 | (2,1,4)→(2,1,2)/Q2 | 10 | 1 | 21 | 11 | 20 | (21, —) |
+| FAM-A7 | (2,1,4)→(2,1,2)/Q2 | 14 | 3 | 31 | 17 | 28 | (31, —) |
+| FAM-B | (2,1,4)→(1,2,2)/Q2 | 6 | 1 | 13 | 7 | 12 | (13, 7) |
+| FAM-C | (2,1,6)→(3,1,2)/Q2 | 21 | 1 | 43 | 22 | 42 | (43, —) |
+| FAM-D | (2,1,4)→(1,2,2)/Q3 | 6 | 1 | 13 | 7 | 12 | x-free: (—, —) |
+
+**FORM:** table.
+
+**DERIVATION:** constants derived from the imported GENTOW-1 genres; self-shadow pins are machine output.
+
+**CONDITIONALITY:** the families are **imported additively from `gentow1_checks.py`** — so this note's battery and GENTOW1's share a genre roster, and GENTOW3-BOX-2 is “GENTOW-BOX-2's geography verbatim” (`.40`). The shared roster means the two notes' coverage gaps are the SAME gaps.
+
+**RESOLUTION TRACE:** lines 115–125.
+
+**TEETH:** **every derived column recomputed at `.09` and `.11`: all five δ, all ten Θ, all five entry tops (`mu2·E2` = 20/28/12/42/12 ✓).** The self-shadow pin column matches the SHARP want-lists quoted at `.48` (`[21, None] / [31, None] / [13, 7] / [43, None]`) ✓ and the S1 “—” entries are the identically-zero configuration `.55` later names.
+
+---
+
+### EFF.GENTOW3.13  [derivation]
+
+**CANONICAL STATEMENT:**
+
+> “READ OFF (then proved): (i) the key power Phi2^{mu2} — honest read
+> DRAIN — casts a nonzero shadow whose pin lands at Θ_j EXACTLY at
+> every non-x-free family (the shadow's fake content = the key's own
+> Phi'-branch, invisible to the quotient); (ii) FAM-B touches BOTH
+> coordinates (its lift −2x·Phi' is x-ful at the Y^{e2t}-step);
+> (iii) FAM-D's lift −27 is x-free and its shadow is EXACT on a
+> 12-member sweep — the geography has identically-faithful genres;
+> (iv) the entry band top mu2·E2 sits δ below Θ_0 at every family.”
+
+**FORM:** bold-headed four-item reading.
+
+**DERIVATION:** examples-first: read off, then proved in S2.
+
+**CONDITIONALITY:** item (i)'s “at every non-x-free family” is a statement about **these five families**, not a genre-general law — GENTOW3-BOX-1 (`.39`) is exactly the gap, and `.55` later measures a family where it fails (FR5X at μ₂ = 3, j = 0).
+
+**RESOLUTION TRACE:** lines 127–134.
+
+**TEETH:** (iv) recomputed for all five ✓ (`.12`); (iii)'s 12-member sweep is P-3 (`.36`).
+
+---
+
+### EFF.GENTOW3.14  [run-record]  `[TABLE]`
+
+**CANONICAL STATEMENT:** the divergence table. **Source display, verbatim** (v3 rule 14 double emission):
+
+>     “PE1-0 G=Y⁴+16Y+96      honest tRAM(25,14) shadow tRAM(21,14)
+>           first divergence 21 = Θ_0; σ both {(8,1)} = parity luck
+>     PE1-1 G=Y⁴+16Y³+32Y²+96 honest tRAM(21,14) shadow tINERT(28,14)
+>           first divergence 21; shadow prices {(4,2)}, PARI {(8,1)}
+>     PE1-2 G=..+224          honest tRAM(21,14) shadow t2SIDED(30,14)
+>           first divergence 21; shadow prices {(4,1)²}, PARI {(8,1)}
+>     A5-DEEP Phi2²+2⁵⁰xPhi'  honest tRAM(207) shadow tRAM(21)
+>           divergence 21; σ both {(8,1)} — the parity-luck genre
+>     A7-BAND29 Phi2²+32xPhi' p_0 = 29 < Θ_0 = 31: shadow = honest
+>           tRAM(29), PARI {(8,1)} — a FAITHFUL LEAF (leaf depth is
+>           not automatically unfaithful; the criterion is the height)
+>     A7-BAND30 Phi2²+128x+4Phi'Phi2  pins (30,15), both < Θ: shadow
+>           = honest tINERT, PARI {(4,2)} — faithful at Θ_0 − 1”
+
+`[TABLE]` — transcription with the compiler's threshold check:
+
+| row | honest | shadow | first divergence | Θ_0 | at/below Θ? | σ verdict |
+|---|---|---|---:|---:|---|---|
+| PE1-0 | tRAM(25,14) | tRAM(21,14) | 21 | 21 | AT | σ both {(8,1)} — pin corrupted, σ intact |
+| PE1-1 | tRAM(21,14) | tINERT(28,14) | 21 | 21 | AT | shadow {(4,2)} vs PARI {(8,1)} — **σ corrupted** |
+| PE1-2 | tRAM(21,14) | t2SIDED(30,14) | 21 | 21 | AT | shadow {(4,1)²} vs PARI {(8,1)} — **σ corrupted** |
+| A5-DEEP | tRAM(207) | tRAM(21) | 21 | 21 | AT | σ both {(8,1)} |
+| A7-BAND29 | tRAM(29) | = honest | none | 31 | BELOW | PARI {(8,1)}, faithful |
+| A7-BAND30 | tINERT(30,15) | = honest | none | 31 | BELOW | PARI {(4,2)}, faithful |
+
+**FORM:** fixed-width ASCII display (source) → table (transcription).
+
+**DERIVATION:** `[RUN]`, PARI both-route adjudicated.
+
+**CONDITIONALITY:** **the table proves the criterion is a HEIGHT criterion, not a depth criterion** — A7-BAND29's `p_0 = 29` is a decided LEAF read that is faithful because `29 < 31`. The note draws exactly that conclusion inline.
+
+**RESOLUTION TRACE:** lines 136–151.
+
+**TEETH:** **ARITHMETIC AUDIT: every row's classification reproduces from `.09`'s formula.** A5 rows: `Θ_0 = 21`, and all four A5-family rows diverge at exactly 21 ✓. A7 rows: `Θ_0 = 31`, and pins 29, 30 are both `< 31` ✓ with 30 = `Θ_0 − 1` ✓ exactly as labelled. **The two σ-corrupted rows (PE1-1, PE1-2) are the note's non-vacuity evidence** and are re-used at `.33` and `.62`.
+
+---
