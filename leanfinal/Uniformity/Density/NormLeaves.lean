@@ -75,12 +75,86 @@ theorem norm_adjoinRoot_root {f : Polynomial O} (hf : f.Monic) (hd : 0 < f.natDe
 
 end Norm
 
+/-! ## CN-20 — the totally ramified (Eisenstein) leaf at every degree
+
+`f` Eisenstein at `𝔪` (all lower coefficients in `𝔪`, the constant one not in `𝔪²`) has
+`typeOf f = ⟨{(n,1)}⟩`: it is irreducible (mathlib's Eisenstein criterion), and its residue
+degree is `1` because CN-19 exhibits a norm of valuation exactly `1` — the norm of the root,
+`(−1)ⁿ a₀`, whose valuation is `v(a₀) = 1`. Then `e = n / f = n`. This generalizes the landed
+degree-2 `typeOf_ram_of_eisenstein`, whose irreducibility step was proved by hand. -/
+
+section Eisenstein
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+/-- **CN-20 — the Eisenstein leaf.** A monic `f` of degree `n > 0` whose coefficients below the
+leading one all lie in `𝔪`, with `f.coeff 0 ∉ 𝔪²`, is totally ramified: `typeOf f = ⟨{(n,1)}⟩`.
+Note that `(n,1)` is `(e,f)` in the frozen order — ramification index first. -/
+theorem typeOf_eisenstein {f : Polynomial O} (hf : f.Monic) (hd : 0 < f.natDegree)
+    (hlow : ∀ i < f.natDegree, f.coeff i ∈ maximalIdeal O)
+    (h0 : f.coeff 0 ∉ (maximalIdeal O) ^ 2) :
+    typeOf f = ⟨{(f.natDegree, 1)}⟩ := by
+  obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
+  -- (1) irreducibility, from mathlib's Eisenstein criterion
+  have hEis : f.IsEisensteinAt (maximalIdeal O) :=
+    hf.isEisensteinAt_of_mem_of_notMem (maximalIdeal.isMaximal O).ne_top
+      (fun {i} hi => hlow i hi) h0
+  have hirr : Irreducible f :=
+    hEis.irreducible (maximalIdeal.isMaximal O).isPrime hf.isPrimitive hd
+  -- (2) `v(a₀) = 1`: `a₀ = π b` with `b` a unit, else `a₀ ∈ 𝔪²`
+  have hm : maximalIdeal O = Ideal.span {π} := hπ.maximalIdeal_eq
+  obtain ⟨b, hb⟩ : π ∣ f.coeff 0 := by
+    have := hlow 0 hd
+    rwa [hm, Ideal.mem_span_singleton] at this
+  have hbu : IsUnit b := by
+    by_contra hbn
+    refine h0 ?_
+    obtain ⟨c, rfl⟩ : π ∣ b := by
+      rw [← Ideal.mem_span_singleton, ← hm]
+      exact (mem_maximalIdeal _).2 (mem_nonunits_iff.2 hbn)
+    rw [hm, Ideal.span_singleton_pow, Ideal.mem_span_singleton, hb]
+    exact ⟨c, by ring⟩
+  have hbv : IsDiscreteValuationRing.addVal O b = 0 := by
+    rw [← hbu.unit_spec]; exact IsDiscreteValuationRing.addVal_eq_zero_of_unit _
+  have hval : IsDiscreteValuationRing.addVal O (f.coeff 0) = 1 := by
+    rw [hb, AddValuation.map_mul, IsDiscreteValuationRing.addVal_uniformizer hπ, hbv, add_zero]
+  -- (3) the root is nonzero — from `a₀ ≠ 0`, NOT from irreducibility
+  haveI : Nontrivial (AdjoinRoot f) :=
+    AdjoinRoot.nontrivial f (ne_of_gt (natDegree_pos_iff_degree_pos.1 hd))
+  haveI : Module.Free O (AdjoinRoot f) := hf.free_adjoinRoot
+  haveI : Module.Finite O (AdjoinRoot f) := hf.finite_adjoinRoot
+  have hsign : ((-1 : O)) ^ f.natDegree ≠ 0 := pow_ne_zero _ (neg_ne_zero.2 one_ne_zero)
+  have ha0 : f.coeff 0 ≠ 0 := fun hz => h0 (hz ▸ Ideal.zero_mem _)
+  have hne : (AdjoinRoot.root f) ≠ 0 := by
+    intro hz
+    have hnorm := norm_adjoinRoot_root hf hd
+    rw [hz, Algebra.norm_zero] at hnorm
+    exact ha0 ((mul_eq_zero.1 hnorm.symm).resolve_left hsign)
+  -- (4) `1` is a norm-valuation, hence the residue degree is `1`
+  have hunit : IsUnit ((-1 : O) ^ f.natDegree) := (isUnit_one.neg).pow _
+  have hsignval : IsDiscreteValuationRing.addVal O ((-1 : O) ^ f.natDegree) = 0 := by
+    rw [← hunit.unit_spec]; exact IsDiscreteValuationRing.addVal_eq_zero_of_unit _
+  have hmem : (1 : ℕ) ∈ normValues f := by
+    refine ⟨one_pos, AdjoinRoot.root f, hne, ?_⟩
+    rw [norm_adjoinRoot_root hf hd, AddValuation.map_mul, hval, hsignval, zero_add]
+    rfl
+  have hinf : inertiaDegOf f = 1 := inertiaDegOf_eq_of hmem (fun m _ => one_dvd m)
+  -- (5) assemble: `f` is its own monic factorization, and `e = n / 1 = n`
+  have hF : IsMonicFactorization f {f} :=
+    ⟨by intro g hg; rw [Multiset.mem_singleton.1 hg]; exact ⟨hf, hirr⟩, by simp⟩
+  ext
+  rw [typeOf_data, monicFactors_eq hF]
+  simp [efPair, ramIndexOf, hinf]
+
+end Eisenstein
+
 /-! ## Axiom census -/
 
 section AxCheck
 
 #print axioms Uniformity.Density.minpoly_adjoinRoot_root
 #print axioms Uniformity.Density.norm_adjoinRoot_root
+#print axioms Uniformity.Density.typeOf_eisenstein
 
 end AxCheck
 
