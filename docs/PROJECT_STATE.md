@@ -4690,3 +4690,25 @@ codex pilot first-attempt = 9 template changes incl. invented
 XREFs; opus week record = 23/23 certain-nodes landed as stated,
 zero invented pins, zero-drift merge. WAVE 1 LAUNCHED: agent-1 =
 T2 shards s2–s6; agent-2 = GENTOW5 s1–s2 + W12 s1–s2.
+
+**2026-08-14 DATED APPEND #52 — THE FORK-THEN-FINISH PLAN (Asvin,
+verbatim): "If we finish off with the routine 70%, then we can fork
+the codebase/save to git and then try finishing off the
+formalization with opus."** EXECUTION PLAN: (1) complete the routine
+70% — the spec sweep (final singles queue in flight) → closure
+record → the 0c DAG draft → 0e leanspec → the transcription-grade
+chapter blueprints; (2) AT ROUTINE-70 COMPLETION: tag
+`phase0-routine-complete` on main + branch `opus-formalization` —
+main stays at the fork as the clean codex-review baseline, the
+branch carries the attempt; (3) ON THE BRANCH: the hard-30%
+(σ-ladder master + tower-grammar chapter blueprints, the
+representation decisions) authored by opus with fresh-context opus
+adversarial reads substituting for codex until the reset, then THE
+FLEET (blueprint-driven sonnet formalization, opus escalation) —
+the /goal's stages 3–5; (4) POST-RESET (Tue 10:23): codex
+cross-reads everything flagged OWED (specs, blueprints, hard
+chapters) + the two sol confirmations (WELD-ZERO, T2-era items) +
+MQ passes — fixes merge back to the branch; main advances only via
+reviewed merges. The fork is the insurance on "try": a failed hard-
+chapter attempt rolls back losslessly. Fresh-eyes core-set audits
+(standing rule) continue on the branch throughout.
