@@ -64,6 +64,12 @@ STATEMENT: If monic F has v(F(x₀))>2v(F′(x₀))=2w with w≥1, some root r h
 CONSUMED BY: repeated-root cubic recursion and `CertRam3`.
 CLASS: lean-open-statement
 PROPOSED DISPOSITION: MATH — medium formal proof absent from the corpus.
+**DISCHARGED 2026-08-14 (UNIFORMITY-P5)**: `Uniformity.Hensel.strongHensel` /
+`strongHensel_addVal` (`leanfinal/Uniformity/StrongHensel.lean`), general complete-DVR bundle,
+sorry-free, Lean-core axioms. Landed STRONGER than the row: no monicity, no `w ≥ 1`, sharp
+distance `k − w`, plus uniqueness in the disc `v(· − x₀) > w`. Non-vacuity gate `gate_fires`.
+Consumer: `leancheck/UniformityCheck/P5Consume.lean::exists_cubic_root_strong(_addVal)`.
+Note: `leanfinal/notes/P5_INFRA_2026-08-14.md` §1.
 
 HYP.05  `typeOf` shift invariance
 WHERE: `leancheck/notes/N3_CHECK_2026-08-13.md`, §§9–12.
@@ -71,6 +77,11 @@ STATEMENT: Integral translation X↦X+c preserves `typeOf`.
 CONSUMED BY: cubic recentering at c≠0.
 CLASS: lean-open-statement
 PROPOSED DISPOSITION: MATH — small formal lemma absent at the `typeOf` level.
+**DISCHARGED 2026-08-14 (UNIFORMITY-P5)**: `Uniformity.Density.typeOf_shift`
+(`leanfinal/Uniformity/Density/TypeOfInvariance.lean`), unconditional, general DVR, sorry-free,
+Lean-core axioms. Consumer:
+`leancheck/UniformityCheck/P5Consume.lean::typeOf_ram3_of_eisenstein_shift`.
+Note: `leanfinal/notes/P5_INFRA_2026-08-14.md` §2.
 
 HYP.06  `typeOf` scale invariance
 WHERE: `leancheck/notes/N3_CHECK_2026-08-13.md`, §§9–12.
@@ -78,6 +89,13 @@ STATEMENT: Under X=πᵐY, the normalized polynomial has the splitting-type rela
 CONSUMED BY: cubic depth reduction and recurrence.
 CLASS: lean-open-statement
 PROPOSED DISPOSITION: MATH — medium formal work.
+**DISCHARGED 2026-08-14 (UNIFORMITY-P5)**: `Uniformity.Density.typeOf_scaleRoots` (backward form,
+no side condition) and `Uniformity.Density.typeOf_scale` (the recursion's own
+`F(π^m Y) = π^(m n) G(Y)` phrasing), general DVR, sorry-free, Lean-core axioms; non-vacuity gate
+`typeOf_scale_gate`. Consumer: `leancheck/UniformityCheck/P5Consume.lean::typeOf_cubic_scale`.
+NOTE the residual gap this does NOT close: the LEVEL bookkeeping across the extraction
+(classes mod π^N ↦ classes mod π^(N−3m)) is a separate, still-open statement — see
+`leanfinal/notes/P5_INFRA_2026-08-14.md` §7 item 3, which is part of HYP.08.
 
 HYP.07  nonintegral-slope `CertRam3`
 WHERE: `leancheck/notes/N3_CHECK_2026-08-13.md`, §§9–12.

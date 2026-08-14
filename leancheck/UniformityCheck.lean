@@ -18,3 +18,4 @@ import UniformityCheck.SplitCount
 import UniformityCheck.N3Struct
 import UniformityCheck.N3Drain
 import UniformityCheck.N3Exact
+import UniformityCheck.P5Consume
