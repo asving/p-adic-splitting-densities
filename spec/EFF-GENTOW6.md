@@ -543,7 +543,7 @@ with the status line: “**STATUS: COMPLETE (sealed battery GREEN 401/0, 4/4 tee
 
 **RESOLUTION TRACE:** §S6.1; the box at 646–653; the discharge at 1249–1264.
 
-**TEETH:** PE2's LEG A measured 6.3′(b)'s certificate display exact at two f1 = 2 / η ≠ 1 frames (`.33`), and the box-4 row later ran it at battery grade on four x-ful rows (`.45`).
+**TEETH:** PE2's LEG A measured 6.3′(b)'s certificate display exact at two f1 = 2 / η ≠ 1 frames (`.33`), and the box-4 row later ran it at battery grade on four x-ful rows (`.35`).
 
 ---
 
@@ -555,7 +555,7 @@ with the status line: “**STATUS: COMPLETE (sealed battery GREEN 401/0, 4/4 tee
 
 **DERIVATION:** a fresh derivation of the cap behaviour without the 𝒯 hypothesis, so that COR 6.2C(d)'s consumption is legitimate at partial-side `f`.
 
-**CONDITIONALITY:** **prove-first, not fence-first** — the GAP was answered by proving the needed statement rather than by narrowing the consumer. **Clause (a)'s per-window bijection codomain is then CORRECTED by PE2-F-2** (`.42`).
+**CONDITIONALITY:** **prove-first, not fence-first** — the GAP was answered by proving the needed statement rather than by narrowing the consumer. **Clause (a)'s per-window bijection codomain is then CORRECTED by PE2-F-2** (`.31`).
 
 **RESOLUTION TRACE:** §S6.2, lines 851–1034; the codomain correction in the post-PE2 fold.
 
