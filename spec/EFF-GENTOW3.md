@@ -482,3 +482,535 @@ and the closing x-free clause:
 **TEETH:** **ARITHMETIC AUDIT: every row's classification reproduces from `.09`'s formula.** A5 rows: `Θ_0 = 21`, and all four A5-family rows diverge at exactly 21 ✓. A7 rows: `Θ_0 = 31`, and pins 29, 30 are both `< 31` ✓ with 30 = `Θ_0 − 1` ✓ exactly as labelled. **The two σ-corrupted rows (PE1-1, PE1-2) are the note's non-vacuity evidence** and are re-used at `.33` and `.62`.
 
 ---
+### EFF.GENTOW3.15  [convention]  *(CHAIN-GAUGE — TERMINAL, in-body site)*
+
+**CANONICAL STATEMENT:** the §S2 Setting, with its gauge pin, verbatim:
+
+> “**Setting (T(b)' + GENTOW-1 S0, restated for one pass).** Tower
+> locus 𝒯 (full inner side e2f2mu2 = mu1): outer genre
+> (Q; e1, f1, mu1; h), key Phi' (deg D' = e1f1), inner slope
+> kappa2 = u2/e2, composed key Phi2 (deg D2) [GT3-r1 GAUGE PIN
+> (dated annex S7.1): Phi2's lift coefficients read chat_t :=
+> lift(c_t·eta^{W(t)}), W(t) = floor((f2−t)·i(u2)/e1), per GENHN
+> erratum 59c1966 — NOT the gauge-naive plain lift of c_t; at
+> eta = 1 (all five S1 families) the two coincide], dv2 = e1e2·v, slot
+> offsets w(a,b) = a·e2h + b·u2, E2 = e2f2u2.”
+
+**FORM:** bold-headed setting with an in-line dated pin.
+
+**DERIVATION:** `[IMPORTED]` from T(b)′ and GENTOW-1 S0.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement** of the key's coefficient display. The parenthetical “at eta = 1 (all five S1 families) the two coincide” is the coverage fact BOX-2 later calls a structural blindness (`.40`).
+
+**RESOLUTION TRACE:** lines 155–163; annex 504–533.
+
+**TEETH:** the formula `W(t) = ⌊(f₂−t)i(u₂)/e₁⌋` is identical in three notes of this queue (`EFF.HETOW.13`, `EFF.GENTOW1.06`, here) — a three-way cross-entry agreement on a corrected display.
+
+---
+
+### EFF.GENTOW3.16  [definition]
+
+**CANONICAL STATEMENT:**
+
+> “THE TWO READS at
+> member f ∈ 𝒯, per composed coordinate j < mu2:
+> * COMPOSED (honest): C_j from f = Phi2^{mu2} + Σ C_j Phi2^j in
+>   Ô[x]; pins/residues by GENHN-2' slot-mins (accepted annex).
+> * STAGE SHADOW (the refuted T(b) object): the two-variable division
+>   F(x,Y) = Y^{mu1} + Σ A_J(x) Y^J = Σ_j Ĝ_j(x,Y)·K2(x,Y)^j carried
+>   out over R = Ô[x]/(Phi') — every coefficient reduced mod Phi';
+>   K2(x,Y) is the Y-form of the key (Phi2 = K2(x,Phi')). Shadow
+>   coordinate ShC_j := Σ_b ḡ_{j,b}(x)Phi'^b (deg ḡ < D'), read on
+>   the same slot grid. (Functoriality of monic division identifies
+>   this with T(b)'(iv)'s Ĝ_j(θ,Y) — the (iv) proof, consumed.)”
+
+**FORM:** bold-headed two-bullet definition.
+
+**DERIVATION:** `[DEFINITIONAL]` + the functoriality identification imported from T(b)′(iv)'s proof.
+
+**CONDITIONALITY:** **the shadow is “the refuted T(b) object”** — this note characterizes exactly when a KNOWN-WRONG read is nonetheless right. That framing is why the deliverable is a geography and not a correctness theorem.
+
+**RESOLUTION TRACE:** lines 163–173.
+
+**TEETH:** the identification with T(b)′(iv)'s object is consumed, not re-proved — an import recorded in the conditionality stack (`.41`).
+
+---
+
+### EFF.GENTOW3.17  [definition]  *(CHAIN-XFREE — TERMINAL, in-body site)*
+
+**CANONICAL STATEMENT:**
+
+> “X-FREE GENRES: call the genre x-free iff every lift coefficient
+> ĉ_t·n̂(u2(f2−t)) of Phi2 (t < f2, ĉ_t ≠ 0) is an x-free monomial
+> π^a — equivalently i(u2(f2−t)) = 0, i.e. e1 | u2(f2−t)·h⁻¹-class
+> [GT3-r1: the "equivalently" reduction holds at f1 = 1 ONLY (there
+> chat_t is a constant); at f1 >= 2 it is FALSE in general — the
+> exact scope is re-derived in S7.1 (i-test AND c_t·eta^{W(t)} ∈
+> F_Q). The PRIMARY clause — every lift coefficient an x-free
+> monomial, read at the corrected chat_t — is the operative
+> definition at every f1 and is what (iii)'s proof consumes];
+> witness FAM-D: Phi2 = (x²−3)² + 27, lift = −27 = π³-flavor.”
+
+**FORM:** bold-headed definition with an in-line dated scope bracket.
+
+**DERIVATION:** `[DEFINITIONAL]`, with the equivalence re-derived at `.45`.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **scope-pin**. **The PRIMARY clause is the operative definition; the displayed i-test is an f1 = 1 evaluation of it.** A consumer classifying genres at f1 ≥ 2 must use the primary clause, and the note is explicit that (iii) “so read needs no f1 restriction”.
+
+**RESOLUTION TRACE:** statement lines 175–184; re-derivation 535–565.
+
+**TEETH:** FAM-D is the witness and is machine-swept (P-3, 12 members, zero discrepancies, self-shadow DRAIN).
+
+---
+
+### EFF.GENTOW3.18  [theorem]
+
+**CANONICAL STATEMENT:**
+
+> “**THEOREM GENTOW-3 (the faithfulness geography).** Set
+> delta := u2 − e2D'h (≥ 1, the [r1] node floor) and
+> THETA_j := (mu2 − j)·E2 + delta. On 𝒯:
+> (i) [FLOOR] every dv2-height at which ShC_j and C_j carry
+> different slot digits is ≥ THETA_j; equivalently the first
+> disagreeing height pin(ShC_j − C_j) ≥ THETA_j.”
+
+**FORM:** bold-headed theorem, clause (i).
+
+**DERIVATION:** Steps 0–2 (`.22`–`.24`).
+
+**CONDITIONALITY:** **UNCONDITIONAL and gauge-immune** — S7.1's honest-status paragraph certifies it: “Step 0 and Steps 1–2 of the S2 proof are weight-level and value-blind … so clauses (i)/(ii) and their proofs are gauge-immune and uniform in f1 as claimed”. This is the note's strongest statement.
+
+**RESOLUTION TRACE:** statement lines 186–191; proof 218–269.
+
+**TEETH:** P-1 FLOOR 274 checks — every discrepancy height on 137 member_check calls clears Θ_j ✓ (census corrected at `.49`).
+
+---
+
+### EFF.GENTOW3.19  [theorem]
+
+**CANONICAL STATEMENT:**
+
+> “(ii) [FAITHFUL BAND] at every height m < THETA_j the two reads'
+> digits agree — values, classes, and K2-residues. Consequently any
+> read whose consulted heights at coordinate j are all < THETA_j
+> (pins, deciding residues, event data) returns identical output on
+> both reads; in particular if the composed pin p_j < THETA_j then
+> the shadow pin equals it with the same residue.”
+
+**FORM:** theorem clause.
+
+**DERIVATION:** “(ii) is (i) restated” (`.25`).
+
+**CONDITIONALITY:** unconditional and gauge-immune, as (i). **This is the clause every downstream protection rides**, and S4's count-law is explicitly “(ii)'s one-sided law” (`.33`).
+
+**RESOLUTION TRACE:** statement lines 192–197; proof 270–272.
+
+**TEETH:** P-6 LABEL 6 rows (members with pins below Θ have identical labels + σ) and the two A7-BAND rows ✓.
+
+---
+
+### EFF.GENTOW3.20  [theorem]
+
+**CANONICAL STATEMENT:**
+
+> “(iii) [X-FREE EXACTNESS] at an x-free genre the discrepancy is
+> ZERO at every height: ShC_j = C_j identically on 𝒯 — the shadow
+> IS the composed read.”
+
+**FORM:** theorem clause.
+
+**DERIVATION:** `.26` — no x-overflow ever occurs, so reduction mod Φ′ is the identity.
+
+**CONDITIONALITY:** reads at the PRIMARY x-free definition (`.17`), under which S7.1 certifies “(iii)'s proof is correct at every f1”.
+
+**RESOLUTION TRACE:** statement lines 198–200; proof 273–278.
+
+**TEETH:** P-3 XFREE 3 checks + a 12-member FAM-D sweep with zero discrepancies and a DRAIN self-shadow ✓.
+
+---
+
+### EFF.GENTOW3.21  [theorem]
+
+**CANONICAL STATEMENT:**
+
+> “(iv) [ATTAINMENT — the leaf-depth failure] at a non-x-free genre
+> whose key power's self-overflow is non-cancelling (certificate
+> below; machine-checked at FAM-A5/A7/B/C), the floor is ATTAINED:
+> f = Phi2^{mu2} has composed read DRAIN (C_j = 0) while its shadow
+> read carries a nonzero digit at exactly THETA_j at the touched
+> coordinate(s) [GT3-r2 PIN: "touched" is the CERTIFICATE sense —
+> coordinate j is touched iff the key power's assembled
+> height-THETA_j K2-digit (the proof's single-Phi'-extraction sum)
+> does not cancel, i.e. GENTOW3-BOX-1's certificate holds at
+> (genre, j); NOT the weaker "ShC_j ≠ 0" — a measured frame
+> separates the two readings (FR-M3 j = 0: ShC_0 = 64 ≠ 0 with pin
+> 12 while the height-THETA_0 = 10 digit cancels), and (iv) is true
+> under the certificate reading only — S7.6] — and deep
+> perturbations (disc ≠ 0) keep the
+> divergence. The shadow read at heights ≥ THETA_j is NOT a function
+> of the honest data.”
+
+**FORM:** theorem clause with an in-statement dated definition pin.
+
+**DERIVATION:** `.27`.
+
+**CONDITIONALITY — THREE separate supersessions land on this one clause:**
+1. **The “touched” pin ([GT3-r2])** is IN the statement — the only statement-internal edit of the arc (`.03`). SUPERSESSION KIND: **scope-pin**, and the note argues it is “the reading the (iv) proof supports, no weakening”.
+2. **“deep perturbations … keep the divergence”** — its INFERENCE is withdrawn by **S8.1** and the conclusion re-derived under the GENTOW-1(a) box hypothesis (`.58`). KIND: **replacement of a justification**.
+3. **The closing sentence** is superseded twice — by **S8.2** and then **S8.4** (CHAIN-NONFUNC, TERMINAL `.62`). KIND: **replacement**, then **replacement**.
+**A consumer reading (iv) as displayed would carry a withdrawn inference and a doubly-withdrawn scope.**
+
+**RESOLUTION TRACE:** statement lines 201–216; proof 279–302; corrections 894–939 (S8.1), 941–961 (S8.2), 998–1035 (S8.4).
+
+**TEETH:** the certificate is machine-checked at four families (SHARP 11 rows); the FR-M3 separation is machine-pinned at `.52`.
+
+---
+
+### EFF.GENTOW3.22  [derivation]
+
+**CANONICAL STATEMENT:**
+
+> “**Step 0 (weights, from GENTOW-1 Step 0 — consumed).** For a
+> two-variable monomial π^v x^{a'} Y^{b'} (a', b' unrestricted) set
+> wt := e1e2·v + a'·e2h + b'·u2. The x-carry x^{D'} = Phi' + tail
+> splits weight-monotonically: tail branches at weight ≥ parent
+> (equality on the key's side), the Phi'-branch at parent + delta
+> EXACTLY (x^{D'}-part carries D'e2h, the Phi'-part u2). The
+> Phi'-carry Phi'^{e2f2} = Phi2 + lifts is weight-preserving with
+> the Phi2-part at E2 (GENTOW-1 Step 0 verbatim).”
+
+**FORM:** bold-headed step.
+
+**DERIVATION:** `[IMPORTED]` from GENTOW-1 Step 0, with the δ-quantification made explicit.
+
+**CONDITIONALITY:** **the “+ delta EXACTLY” is the whole engine of the note** — every discrepancy branch pays δ per Φ′-extraction, which is why the floor is `(mu2−j)E2 + δ`.
+
+**RESOLUTION TRACE:** lines 220–227.
+
+**TEETH:** **ARITHMETIC AUDIT:** the Φ′-branch weight is `u2` against the `x^{D'}` weight `D'e2h`, a gain of `u2 − e2D'h = δ` ✓ — exactly the definition at `.09`. Cross-entry: this is the same Step 0 compiled at `EFF.GENTOW1.19`, and both entries record it as VALUE-BLIND.
+
+---
+
+### EFF.GENTOW3.23  [derivation]
+
+**CANONICAL STATEMENT:**
+
+> “**Step 1 (the division ledger: Ĝ_j sits at weight ≥ (mu2−j)E2).**
+> On 𝒯 the entry pins lie weakly above the inner side:
+> e2·dv(A_J) ≥ (mu1 − J)u2, so every term of A_J·Y^J has
+> wt ≥ (mu1−J)u2 + J·u2 = mu1·u2 = mu2·E2; Y^{mu1} likewise. Every
+> term of K2 has wt = E2 exactly (side terms of the key — T(b)'(i)).
+> Monic division in Y is weight-monotone against such a key … Iterating the K2-division mu2 times from
+> F (wt ≥ mu2E2): every term of Ĝ_j(x,Y) has wt ≥ (mu2−j)E2 — in
+> the UNREDUCED weight (x-degrees kept literal; the division is
+> LINEAR in F, so Ĝ_j-terms are A_J·(products of K2-coefficients),
+> x-degree ≤ (D'−1) + Σ i_t-parts).”
+
+**FORM:** bold-headed step.
+
+**DERIVATION:** a weight-monotone induction down the Y-degree.
+
+**CONDITIONALITY:** **the LINEARITY noted here is what S8.1 later exploits** to re-derive persistence — and also what S8.1 shows was mis-used in the composed (iv) proof.
+
+**RESOLUTION TRACE:** lines 229–243.
+
+**TEETH:** **ARITHMETIC AUDIT:** `(mu1−J)u2 + J·u2 = mu1·u2`, and `mu1·u2 = (e2f2mu2)·u2 = mu2·(e2f2u2) = mu2·E2` ✓ — the identity uses the full-side hypothesis exactly once, as it must.
+
+---
+
+### EFF.GENTOW3.24  [derivation]
+
+**CANONICAL STATEMENT:** Step 2, the proof of (i), `[ASSEMBLED]` from lines 245–269. The three branch classes, verbatim:
+
+> “* an x-overflow monomial of Ĝ_j (a' ≥ D', wt ≥ (mu2−j)E2 by
+>   Step 1) reduces along x^{D'} = Phi' + tail: the shadow keeps
+>   only the iterated tail route (weight ≥ parent); every branch
+>   retaining k ≥ 1 Phi'-factors sits at wt ≥ parent + k·delta ≥
+>   (mu2−j)E2 + delta = THETA_j (Step 0);
+> * branches whose Phi'-exponent reaches e2f2 recarry through
+>   Phi2 = Phi'^{e2f2} − lifts INTO coordinate j+1: arriving content
+>   came from Ĝ_{j'} (j' ≤ j) overflow branches with k ≥ e2f2 − b' ≥
+>   1 extractions per Phi2-step, each Phi2-absorption spending E2 of
+>   weight: slot weight at the receiving coordinate j ≥
+>   (mu2−j')E2 + k·delta − (j−j')E2 ≥ (mu2−j)E2 + delta = THETA_j.
+>   Recarry moves content only UPWARD in j (division uniqueness —
+>   T(b)'(iv)'s recarry remark, consumed);
+> * the reduction discrepancy at each division step feeds forward
+>   into later steps only through coefficients already ≥ THETA-
+>   floored …”
+
+and the conversion to heights, verbatim:
+
+> “By GENHN-2' each slot digit's dv2-value is the slot-min exactly and
+> heights separate classes (one K2-digit per height), so
+> "difference supported at weights ≥ THETA_j" reads off as: every
+> disagreeing HEIGHT is ≥ THETA_j. ∎(i)”
+
+**FORM:** three-bullet proof step.
+
+**DERIVATION:** a branch census with per-branch pricing, closed by GENHN-2′'s weight-to-height conversion.
+
+**CONDITIONALITY:** the conversion consumes GENHN-2′ (accepted annex).
+
+**RESOLUTION TRACE:** lines 245–269.
+
+**TEETH:** **ARITHMETIC AUDIT of the recarry bound, recomputed:** `(mu2−j')E2 + k·δ − (j−j')E2 = (mu2−j)E2 + k·δ ≥ (mu2−j)E2 + δ` for `k ≥ 1` ✓ — the displayed chain is exact, and the `(j−j')E2` subtraction is exactly the E2-per-Φ₂-absorption spend. **This is the step S8.1 re-runs on g** to get the strict `+1`.
+
+---
+
+### EFF.GENTOW3.25  [derivation]
+
+**CANONICAL STATEMENT:**
+
+> “(ii) is (i) restated: below THETA_j the digit strings coincide, and
+> every displayed read-output (pin values, residues, labels, σ,
+> event data) is a function of the consulted digits. ∎(ii)”
+
+**FORM:** one-line proof clause.
+
+**DERIVATION:** immediate from (i) plus the observation that read outputs are functions of consulted digits.
+
+**CONDITIONALITY:** none. **The parenthetical list (pins, residues, labels, σ, event data) is the same tuple S8.2 later tries to use as a non-functionality scope and S8.4 withdraws** — the tuple is well-defined as a *dependency* list here but not as a *committed object* there (`.61`).
+
+**RESOLUTION TRACE:** lines 270–272.
+
+**TEETH:** guarded by P-6 LABEL.
+
+---
+
+### EFF.GENTOW3.26  [derivation]
+
+**CANONICAL STATEMENT:**
+
+> “(iii): at an x-free genre every K2-coefficient is x-free, the
+> division's coefficient arithmetic never raises x-degree above
+> deg A_J ≤ D'−1 < D': no x-overflow ever occurs, reduction mod Phi'
+> is the identity on every coefficient, and Σ_b g_{j,b}Phi'^b (all
+> x-degrees < D2, Phi'-exponents < e2f2) is the unique composed
+> development: ShC_j = C_j. ∎(iii)”
+
+**FORM:** proof clause.
+
+**DERIVATION:** a degree argument: no overflow ⟹ the mod-Φ′ reduction is the identity ⟹ the two developments coincide by uniqueness.
+
+**CONDITIONALITY:** reads at the PRIMARY x-free definition; S7.1 certifies it needs no f1 restriction there.
+
+**RESOLUTION TRACE:** lines 273–278.
+
+**TEETH:** P-3 (FAM-D, 12-member sweep, zero discrepancies) ✓.
+
+---
+
+### EFF.GENTOW3.27  [derivation]
+
+**CANONICAL STATEMENT:** the proof of (iv), `[ASSEMBLED]` from lines 279–302. The mechanism and the certificate, verbatim:
+
+> “(iv): for f = Phi2^{mu2} the composed division is exact: C_j = 0,
+> all j < mu2 — the honest read is DRAIN. The shadow object is the
+> self-shadow of the key power: K2(x,Phi')^{mu2} = Phi2^{mu2}, but
+> the shadow division sees F = the level-1 development of Phi2^{mu2},
+> whose x-overflow content (the products of x-ful lift monomials
+> crossing D') re-enters as genuine level-1 data that the reduced
+> K2-powers can no longer cancel. All terms of K2^{mu2} sit at
+> wt = mu2E2 exactly; the minimal surviving branch is a single
+> Phi'-extraction: height THETA_j at the touched coordinate,
+> NONZERO whenever the assembled K2-digit does not cancel — the
+> per-genre CERTIFICATE, decided by one finite computation
+> (machine-checked: A5/A7/C touch j = 0 with digits 16Phi'/64Phi'/
+> 64Phi' at 21/31/43; B touches BOTH: ShC_1 = 4Phi' + 8x at 7,
+> ShC_0 = 64Phi' + 64x at 13) [GT3-r1 attribution: "machine-checked"
+> = the PINS (the sealed SHARP want-lists), which are the
+> certificate; the digit VALUES were hand-derived at composition and
+> gained machine legs at PE1 — S7.2].”
+
+and the deep-perturbation close, verbatim (the sentence S8.1 withdraws):
+
+> “Deep perturbation f = Phi2^{mu2} + g
+> (g in-budget with slots at heights > THETA_j, disc ≠ 0): both
+> reads shift by the SAME g-digits (linearity of both divisions in
+> f), so the divergence at THETA_j persists while the honest read
+> becomes a decided leaf … ∎(iv)”
+
+**FORM:** proof clause with an in-line dated attribution pin.
+
+**DERIVATION:** a minimal-branch identification (single Φ′-extraction at height Θ_j) plus a per-genre non-cancellation certificate.
+
+**CONDITIONALITY:** **the last sentence's INFERENCE is WITHDRAWN by S8.1** (`.58`) — “linearity gives (Sh - C)(f0 + g) = (Sh - C)(f0) + (Sh - C)(g), not Sh(g) = C(g)”. The CONCLUSION survives, re-derived under the box hypothesis. Also: the parenthetical hypothesis “(slots at heights > THETA_j)” is explicitly **NOT consumed** by the corrected derivation; the GENTOW-1(a) box hypothesis is.
+
+**RESOLUTION TRACE:** lines 279–302; correction 894–939.
+
+**TEETH:** the digit values gained two independent legs at PE1 (`.48`): the verifier's hand walks and the fresh instrument's FR-P5 exact polynomial replications.
+
+---
+
+### EFF.GENTOW3.28  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “**Scope remarks (honest).** (1) The certificate in (iv) is a
+> non-cancellation of one explicitly displayed K2-digit; it is
+> decided per genre by finite arithmetic, machine-checked at the
+> five battery families, NOT proved as a genre-general
+> non-vanishing (GENTOW3-BOX-1, S6) — the floor (i)/(ii)/(iii) is
+> general. (2) Attainment via entry-digit-driven overflows (genres
+> where the key self-power stays below D' in x but products with
+> full-degree entry digits overflow) is covered by the same Step-2
+> ledger but no witness battery row is shipped; named in
+> GENTOW3-BOX-1. (3) Everything is per-coordinate and in-window;
+> the window interaction is GENTOW-5(a)'s cap (consulted heights
+> also < e1e2·N) — orthogonal, composes by min.”
+
+**FORM:** bold-headed three-item scope remark.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** **remark (2) is what r3's existential clause later instantiates** — the “other members can still fail at exactly THETA_j … through scope remark (2)'s entry-digit-driven overflows” of `.10`. So the composed text already contained the mechanism that refuted r2's “exactly”; r3 connected them.
+
+**RESOLUTION TRACE:** lines 304–315.
+
+**TEETH:** remark (3)'s composition-by-min is the interface to `EFF.GENTOW1.35`'s cap clause — and that clause was itself restated three-band by GENTOW1's R2c, which does not disturb the min composition (heights only).
+
+---
+
+### EFF.GENTOW3.29  [corollary]
+
+**CANONICAL STATEMENT:**
+
+> “**COROLLARY GENTOW-3.C.** On 𝒯, the inner CS event's data — the
+> level-1 side (J, dv(A_J)) with residual psi2^{mu2}, i.e. the datum
+> T(a) detects and T(b)' consumes — is read identically by the stage
+> shadow and the composed frame, at EVERY genre, with margin δ:
+> (1) the level-1 coefficients A_J have degree < D', so the mod-Phi'
+> projection is the identity on them: the entry read is
+> discrepancy-free outright; (2) recast at the composed frame
+> (GENTOW-1(a)'s entry gate), the event data occupies dv2-heights
+> ≤ (mu2−j)E2 per coordinate — the inner side's height range — and
+> (mu2−j)E2 = Θ_j − δ < Θ_j: THEOREM GENTOW-3(ii) gives digit
+> agreement on the whole band, for every genre (δ ≥ 1 is the [r1]
+> node floor, unconditional on 𝒯). Hence the sentence in
+> GENHN-T(b)'(iv) — "this inequality HOLDS at the entry/event band"
+> — previously machine-verified at the PE1 instances and the P8
+> witness only, is now a THEOREM: [GENHN-TOW-1] item (3)'s
+> parenthetical ("T(a)'s event-band survival as a theorem") is
+> discharged. Machine face: the ENTRY tally (274 checks …). ∎”
+
+**FORM:** bold-headed corollary with a two-leg proof.
+
+**DERIVATION:** two independent legs — (1) is degree-level and needs no threshold at all; (2) rides (ii) with the δ margin.
+
+**CONDITIONALITY:** **UNCONDITIONAL at every genre** — this is the note's cleanest result, and it is the one that upgrades a supplier's machine-verified sentence to a theorem. **The upgrade is NOT landed on GENHN** (`.42`, N1).
+
+**RESOLUTION TRACE:** lines 320–338.
+
+**TEETH:** ENTRY 274 checks. **Honest caveat recorded by the note itself** at `.50`: “the ENTRY tally 274 is entailed by FLOOR 274 given delta >= 1 — honest as COR 3.C's machine face, not independent evidence.” Disposition `disclosed non-independence` — a rare and valuable self-assessment.
+
+---
+
+### EFF.GENTOW3.30  [scope record]
+
+**CANONICAL STATEMENT:** the δ = 1 regime, verbatim:
+
+> “* **δ = 1 (u2 = e2D'h + 1 — the PE1 geography).** Θ_j = the node
+>   floor: (ii)'s faithful leaf band is EMPTY (width δ − 1 = 0), no
+>   leaf height is criterion-protected, and at a coordinate carrying
+>   (iv)'s certificate the key power's own shadow diverges at the
+>   FIRST leaf height itself [GT3-r2: certificate-scoped; the
+>   composed "the FIRST leaf height is already unfaithful" is
+>   REFUTED as a per-member δ = 1 claim — S7.6]. FAM-A5 (certificate
+>   machine-checked at j = 0): Θ_0 = 21; the PE1 instances' first
+>   divergence is 21 on each of the three rows … "Fails generically at leaf
+>   depth" is sharp here in the BAND sense only: a Θ-reaching
+>   decided leaf can still read faithfully when the discrepancy
+>   digits it would consult vanish or sit off its hull (measured:
+>   FR-M3, δ = 1, certificate cancelled at j = 0 — f = Phi2³ + 32
+>   decides at pin 10 = Θ_0 with hulls and vertex digits identical
+>   on both reads, PARI σ {(6,1)} on both routes — S7.6).”
+
+**FORM:** bulleted regime with an in-line dated correction.
+
+**DERIVATION:** `Θ_j = (mu2−j)E2 + 1` coincides with GENTOW-1(c)'s node floor `(mu2−j)E2 + 1`.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement** — the composed per-member claim is REFUTED, and the surviving claim is band-level. **The refuting member is measured and committed.**
+
+**RESOLUTION TRACE:** lines 347–363; the r2 round 680–761.
+
+**TEETH:** **ARITHMETIC AUDIT: at δ = 1, `Θ_j = (mu2−j)E2 + 1` is exactly GENTOW-1(c)'s node floor** (`EFF.GENTOW1.17`) ✓ — the two notes' constants coincide precisely at δ = 1, which is why the faithful band is empty. The refuting member's pin `10 = Θ_0` at FR-M3 is verified at `.10`'s audit ✓.
+
+---
+
+### EFF.GENTOW3.31  [scope record]
+
+**CANONICAL STATEMENT:**
+
+> “* **δ ≥ 2.** A faithful leaf band of width δ − 1 exists:
+>   [(mu2−j)E2 + 1, Θ_j − 1]. FAM-A7 (δ = 3): pins 29 and 30 are
+>   decided LEAF reads on which shadow = honest with PARI-confirmed
+>   σ (A7-BAND rows) — leaf depth alone does not break the shadow;
+>   the first violation is Θ_0 = 31, where the supp sweep's
+>   stage-INERT(36)-vs-true-RAM(31) row (GENHN_PROOF S8 [r2] annex)
+>   sits exactly.”
+
+**FORM:** bulleted regime.
+
+**DERIVATION:** the band is `[node floor, Θ_j − 1]`, of width `δ − 1`.
+
+**CONDITIONALITY:** none.
+
+**RESOLUTION TRACE:** lines 364–370.
+
+**TEETH:** **ARITHMETIC AUDIT: at FAM-A7, `[mu2E2+1, Θ_0−1] = [29, 30]`, width 2 = δ − 1 ✓**, and both members of the band are measured faithful (`.14`) — the band is not merely non-empty but exhaustively exercised at this family.
+
+---
+
+### EFF.GENTOW3.32  [scope record]
+
+**CANONICAL STATEMENT:**
+
+> “* **x-free genres.** No violation at any height (FAM-D sweep) —
+>   T(b)'s stage algebra is retroactively EXACT there; its
+>   refutation was a statement about the x-ful genres.”
+
+**FORM:** bulleted regime.
+
+**DERIVATION:** (iii).
+
+**CONDITIONALITY:** **this is a positive scope result about a REFUTED object** — the refutation of T(b)'s stage algebra is localized to x-ful genres.
+
+**RESOLUTION TRACE:** lines 371–373.
+
+**TEETH:** P-3 ✓.
+
+---
+
+### EFF.GENTOW3.33  [scope record]
+
+**CANONICAL STATEMENT:** the count-law meaning at its r2 reading, verbatim:
+
+> “The count-law meaning [GT3-r2 rewrite: the composed biconditional
+> ("mislabeled exactly on … the entire leaf population") is REFUTED
+> by measurement in both directions — S7.6]: strata priced through
+> shadow pins can be corrupted ONLY on members with a consulted
+> height ≥ Θ_j — (ii)'s one-sided law. At δ = 1 the node floor
+> itself sits at Θ_j, so this protection excludes no leaf stratum;
+> at δ ≥ 2 it protects the width-(δ−1) leaf band; at x-free genres
+> the discrepancy is zero and nothing is corrupted. Reaching Θ_j is
+> NECESSARY, not sufficient: actual mislabeling further needs the
+> divergent digit PRESENT on the member and CONSULTED at the
+> pricing granularity. Measured instances: the PE1-1/PE1-2 σ-strata
+> corrections … Measured non-instances: FR-M3's
+> f = Phi2³ + 32 (decided AT Θ_0 = 10; hulls and vertex digits
+> identical on both reads — faithful) and the S1 table's own PE1-0
+> row (first divergence 21 = Θ_0, σ both {(8,1)} = parity luck —
+> pin-corrupted, σ-stratum intact).”
+
+**FORM:** paragraph with an in-line dated rewrite bracket.
+
+**DERIVATION:** (ii)'s one-sided law, plus a necessity-not-sufficiency analysis with measured instances AND non-instances on both sides.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement** of a biconditional by a one-sided law. **The note supplies measured witnesses in BOTH directions** — corrupted (PE1-1/2) and uncorrupted-at-Θ (FR-M3, PE1-0) — which is what makes the one-sidedness demonstrated rather than merely conceded.
+
+**RESOLUTION TRACE:** lines 375–391.
+
+**TEETH:** all four cited rows are in `.14`'s recomputed table or `.52`'s FR-M3 record ✓.
+
+---
