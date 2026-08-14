@@ -112,3 +112,351 @@ Verified: `grep -cF 'GENTOW' GENHN_PROOF_2026-08-08.md` = **0** (N1) — GENHN c
 CANONICAL STATEMENTs are verbatim or explicitly `[ASSEMBLED]`; `…` marks truncation. **The note's ASCII displays are reproduced in ASCII** — no transliteration to Unicode, since the source's own later appends mix the two and a merge run must be able to tell which span it is quoting. The four source tables (STATUS, families, budget tables, refine table) are emitted as tables and flagged `[TABLE]`; the budget and refine tables are fixed-width ASCII blocks inside prose, so per v3 rule 14 each is emitted TWICE — verbatim, then transcribed.
 
 ---
+
+## 2. Statement inventory
+
+62 units, contiguous, in effective-text order. FORM on every unit (tag-sparse genre).
+
+### EFF.GENTOW1.01  [convention]
+
+**CANONICAL STATEMENT:**
+
+> “# GENTOW-1: composed entry budgets, inner refine transfer, composed window ledger
+> ## ([GENHN-TOW-1] items (1), (2), (5) — proof attempt, BOX-CLOSURE campaign wave B1)”
+
+**FORM:** title + subtitle.
+
+**DERIVATION:** `[RECORD]` — the unit's identity and its charge target.
+
+**CONDITIONALITY:** “proof attempt” is superseded by acceptance (`.59`); the item scope (1)/(2)/(5) is stable and is the note's supply set.
+
+**RESOLUTION TRACE:** lines 1–2.
+
+**TEETH:** XREF X01 — `GENHN-TOW-1` verified in `GENHN_PROOF_2026-08-08.md` at count **19**.
+
+---
+
+### EFF.GENTOW1.02  [repair-round record]  *(SERIES ARC, link 1)*
+
+**CANONICAL STATEMENT:**
+
+> “**2026-08-09 — COMPLETE at attempt grade 0/2 (hostile arc owed).
+> Unit: GENTOW-1. Composed in per-section commits; machine leg
+> sealed-then-verdict (S5).
+> [ARC — passPE1 2026-08-09: NOT CLEAN, 1 GAP + 2 MINOR
+> (GENTOW1_passPE1_report.md @ 606e85c); counter stays 0/2.
+> GT1-r1 repair round 2026-08-09 (this commit): F-1 dated gauge
+> annex — the corrected chat_t := lift(c_t·eta^{W(t)}) display
+> pinned at the S0/S2/S3/S6 consumption sites (S7.1, per GENHN
+> erratum 59c1966 + HETOW [r1]); m-1 P-1 SCORED GREEN 20/0
+> (gentow1_r1_p1.py, S7.2); m-2 GENTOW-BOX-1 retirement
+> back-pointer (S6). Sealed machine artifacts BYTE-UNTOUCHED;
+> statements unchanged (manifest S7.4). Grade stays 0/2; PE2
+> next.]**”
+
+**FORM:** bold-headed status block with an embedded ARC bracket.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** the counter is superseded twice (CHAIN-GRADE): → 1/2 (`.58`), → **2/2 ACCEPTED** (`.59`). “statements unchanged” is true of r1 and **false of the later appends** — four displayed statements are governed from outside (see §1's table). A consumer must not carry this sentence past 2026-08-09.
+
+**RESOLUTION TRACE:** lines 4–16.
+
+**TEETH:** `git cat-file -t 606e85c` = commit; `GENTOW1_passPE1_report.md` exists; `gentow1_r1_p1.py` exists and its output's last line reads `P-1 SCORED: 20 checks, 0 violations -- GREEN` ✓ — the “20/0” claim is exact.
+
+---
+
+### EFF.GENTOW1.03  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “CHARGE (Asvin directive, ledger 2026-08-09: prove the boxes; a box
+> survives only after genuine attempts fail): PROVE [GENHN-TOW-1] items
+> (1) composed entry budgets (the GENHN-1 analogue at the composed key
+> Phi_2, + the depth-3 node floor rider = item (6)(beta)), (2) the inner
+> refine transfer (GENHN-4 one level up), (5) the composed window ledger
+> (GENHN-3 at dv_2). Sources consumed (never edited — GENHN_PROOF's
+> acceptance pass is live): GENHN_PROOF_2026-08-08.md S8 [r2] annex
+> (LEMMA GENHN-T(b)': composed carrier (i), composed slot lemma
+> GENHN-2' (ii), corrected leaf read (iii), stage shadow (iv)), S3.2
+> LEMMA GENHN-1 + its [r2] corrected floor display (the r2-F2 form), S5
+> LEMMA GENHN-3 + the f1>=3 band annex, S6.1 LEMMA GENHN-4, S9.1
+> [GENHN-TOW-1]; machine recipes: genhnr2_supp.py (SUPP-A/B/C),
+> genhn_pe3_fresh.py (FR1 e2=3 genre, FR2 q=3 f2=2 genre).”
+
+**FORM:** bold-headed charge + import inventory.
+
+**DERIVATION:** `[RECORD]` — the standing “prove the boxes” directive instantiated at three items.
+
+**CONDITIONALITY:** “never edited — GENHN_PROOF's acceptance pass is live” is the standing supplier fence and is verified (N1: GENHN has zero GENTOW references). **The inventory is incomplete at HEAD**: the effective text additionally consumes GENHN's dated gauge erratum `59c1966` (added at r1, `.49`) and — for the S3 display — GENTOW5's `[GT5-r2]` corrected display (`.62`).
+
+**RESOLUTION TRACE:** lines 18–30.
+
+**TEETH:** all cited supplier objects exist; `genhnr2_supp.py` and `genhn_pe3_fresh.py` verified present in `verification/openmath/`.
+
+---
+
+### EFF.GENTOW1.04  [table]  `[TABLE]`
+
+**CANONICAL STATEMENT:** the status table, source lines 34–40, transcribed:
+
+| item | lemma | status |
+|---|---|---|
+| (1) budgets + node | LEMMA GENTOW-1 | PROVED (S2) |
+| (1) rider: depth-3 floor (6)(beta) | COR GENTOW-1.1 | PROVED (S2.4) |
+| (2) inner refine transfer | LEMMA GENTOW-2 | PROVED at mu2=2 pointwise; general mu2 layer-1 via graded frame (disclosed, GENHN-BOX-2 pattern) (S3) |
+| (5) composed window ledger | LEMMA GENTOW-5 | PROVED (S4) |
+| battery | gentow1_checks.py | GREEN 1,128 checks / 0 violations, 5/5 teeth (S5) |
+
+**FORM:** table.
+
+**DERIVATION:** `[RECORD]` of per-item status.
+
+**CONDITIONALITY:** **the row-3 disclosure is the note's central honesty fence** and survives everything: GENTOW-2 is pointwise at μ₂ = 2 and graded-frame-conditional at general μ₂. The `.47` back-pointer routes that conditionality to GENTOW5 at ITS 0/2 grade — so the general-μ₂ leg is conditional on a 0/2 note even after this note reaches 2/2.
+
+**RESOLUTION TRACE:** lines 32–40; the box at 547–561.
+
+**TEETH:** the battery row is re-verified: the artifact's last lines read `=== VERDICT: GREEN -- 1128 checks, 0 violations (5.0s) ===` and five `tooth … fired` lines ✓.
+
+---
+
+### EFF.GENTOW1.05  [convention]
+
+**CANONICAL STATEMENT:**
+
+> “Outer genre (Q; e1, f1, mu1; h), key Phi' (deg D' = e1f1), dv = e1*v.
+> Inner CS event on the level-1 stage read: side of dv-slope kappa2 =
+> u2/e2 (gcd(u2,e2)=1, u2 > e2*D'h by the [r1] node floor), residual
+> psi2^{mu2} over K = F_{Q^{f1}}, f2 = deg psi2, FULL side e2f2mu2 =
+> mu1. Composed key Phi2 = Phi'^{e2f2} - Sum_{t<f2} chat_t
+> n(u2(f2-t)) Phi'^{e2t}, monic, deg D2 = D'e2f2. … Composed ladder
+> dv2 = e1e2*v. Composed basis {x^a Phi'^b : a<D', b<e2f2}; slot
+> (a,b) at dv2-offset w(a,b) := a*e2h + b*u2; GENHN-2' (accepted
+> annex): dv2(A(x0)) = min(e1e2*v(c_{a,b}) + w(a,b)) EXACTLY on the
+> tower-node locus, one K2-digit per dv2-height, K2 = F_{Q^{f1f2}}.”
+
+**FORM:** inline setting paragraph (§S0), with the GT1-r1 gauge pin elided here and emitted at `.06`.
+
+**DERIVATION:** `[IMPORTED]` — “all from T(b)', restated for one-pass reading” (the section heading).
+
+**CONDITIONALITY:** the FULL side `e2f2mu2 = mu1` is the standing scope; partial sides are item (4), untouched (`.46`). The node floor `u2 > e2D'h` is imported from GENHN-1's [r1] erratum and is consumed at four separate places (Step 0, Step 2, COR 1.1, S3's `a0 ≥ 0` claim).
+
+**RESOLUTION TRACE:** lines 44–59.
+
+**TEETH:** `GENHN-2'` is the accepted annex supplying the slot-min identity; the whole note's exactness claims ride it.
+
+---
+
+### EFF.GENTOW1.06  [definition]  *(CHAIN-GAUGE — TERMINAL, in-body site)*
+
+**CANONICAL STATEMENT:**
+
+> “[GT1-r1 GAUGE PIN
+> (dated annex S7.1): chat_t := lift(c_t·eta^{W(t)}) with W(t) =
+> floor((f2−t)·i(u2)/e1) — the CORRECTED display per GENHN's dated
+> erratum 59c1966 (at f1 >= 2 per digit: the exact-height (LIFT)
+> output L_{(f2−t)u2}(c_t·eta^{W(t)})), NOT the gauge-naive plain
+> lift of c_t; at eta = 1 the two coincide. This pin governs chat_t
+> at its uses below (S2 Steps 0/1/5, S3).]”
+
+**FORM:** bracketed in-body pin at the key display.
+
+**DERIVATION:** `[IMPORTED]` from GENHN's erratum, itself provoked by HETOW PE1 F-1.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement** of the S0 key display's coefficient. **The pin names its own consumption sites** (S2 Steps 0/1/5, S3) — an unusually disciplined supersession, and the full nine-site manifest is `.57`. The `f1 ≥ 2` clause routes to HETOW's (LIFT) no-overflow form, i.e. to `EFF.HETOW.18`.
+
+**RESOLUTION TRACE:** statement lines 49–55; the dated annex at 598–629; the manifest at 678–692.
+
+**TEETH:** `git cat-file -t 59c1966` = commit ✓. Cross-note: `EFF.HETOW.13`/`.14` compile the same correction from the finding side; the two entries agree on the formula `W(t) = ⌊(f₂−t)i(u₂)/e₁⌋` verbatim.
+
+---
+
+### EFF.GENTOW1.07  [definition]
+
+**CANONICAL STATEMENT:**
+
+> “THE ONE NEW CONSTANT: **E2 := e2f2u2** — the dv2-height of every
+> side term of Phi2 (Phi'^{e2f2}(x0): e2f2*dv2(Phi'(x0)) = e2f2u2;
+> lift term t: e2*u2(f2-t) + e2t*u2 = e2f2u2). E2 plays the role D'h
+> played at level 1 (there the key's side height and dv(x^{D'})
+> coincided at D'h; here they SPLIT: E2 > dv2(x^{D2}) = D2e2h =
+> e2f2*(e2D'h), by u2 > e2D'h).”
+
+**FORM:** bold-headed definition with an inline verification of the two term families.
+
+**DERIVATION:** a two-case height computation, both cases displayed.
+
+**CONDITIONALITY:** **the SPLIT is the note's structural novelty** — at level 1 the key's side height and `dv(x^{D'})` coincide; at level 2 they separate, and E2 (not `dv2(x^{D2})`) is the true floor. COR GENTOW-1.1 (`.25`) and the T-MUTFLOOR tooth both turn on this gap.
+
+**RESOLUTION TRACE:** lines 61–66.
+
+**TEETH:** **ARITHMETIC AUDIT, recomputed for all five families.** `E2 = e2f2u2` vs `dv2(x^{D2}) = D2·e2h = e1f1e2f2·e2h`: FAM-A5 `E2 = 2·1·5 = 10` vs `D2·e2h = 4·2 = 8` ✓; A7 `14` vs `8` ✓; B `1·2·3 = 6` vs `4·1 = 4` ✓; C `3·1·7 = 21` vs `6·3 = 18` ✓; D `6` vs `4` ✓. **All five match the note's own list “8/8/4/18/4 sits BELOW E2 = 10/14/6/21/6”** ✓ (`.11`(iv)) — computed here from the formulas, not read off the table.
+
+---
+
+### EFF.GENTOW1.08  [definition]
+
+**CANONICAL STATEMENT:**
+
+> “WEIGHT: for a monomial pi^v x^a Phi'^b Phi2^j define wt :=
+> e1e2*v + a*e2h + b*u2 + j*E2. Note wt = dv2 of the evaluated
+> monomial at any tower-node point where dv2(Phi') = u2 and
+> dv2(Phi2) = E2 hold exactly; on the actual locus dv2(Phi2(x0)) > E2
+> (S2.2), so wt is a LOWER bound with the j-graded part strict.”
+
+**FORM:** bold-headed definition with a scope note.
+
+**DERIVATION:** `[DEFINITIONAL]`, with the strictness of the j-graded part forward-referenced to GENTOW-1(d).
+
+**CONDITIONALITY:** **wt is a LOWER bound, not an equality, on the actual locus** — the note is explicit, and the reason is exactly clause (d)'s strict field floor. Every “weight ≥ W” statement in S2 must be read as a lower-bound statement.
+
+**RESOLUTION TRACE:** lines 68–72.
+
+**TEETH:** the strictness is machine-checked as P-3: `GP-NODE` 171 row-checks of `e1e2·nfeltval(Phi2) > E2·pr.e` (STRICT) ✓.
+
+---
+
+### EFF.GENTOW1.09  [table]  `[TABLE]`
+
+**CANONICAL STATEMENT:** the five constructed families, source lines 80–86, transcribed (source is a Markdown table):
+
+| family | genre | q | Phi2 | u2 | E2 | dv2 | n |
+|---|---|---|---|---|---|---|---|
+| FAM-A5 | (2,1,4)->(2,1,2) | 2 | (x²−2)²−4x | 5 | 10 | 4v | 8 |
+| FAM-A7 | (2,1,4)->(2,1,2) | 2 | (x²−2)²−8x | 7 | 14 | 4v | 8 |
+| FAM-B | (2,1,4)->(1,2,2), K2=F4 | 2 | Phi'²−2xPhi'−8 | 3 | 6 | 2v | 8 |
+| FAM-C | (2,1,6)->(3,1,2), e2=3 | 2 | (x²−2)³−8x | 7 | 21 | 6v | 12 |
+| FAM-D | (2,1,4)->(1,2,2), K2=F9 | 3 | (x²−3)²+27 | 3 | 6 | 2v | 8 |
+
+with the examples-first framing:
+
+> “Five constructed tower families (per the standing examples-first
+> discipline; recipes: genhnr2_supp SUPP-A/B + genhn_pe3 FR1/FR2 +
+> fresh)”
+
+**FORM:** table.
+
+**DERIVATION:** `[DESIGN]` — constructed instances, per the standing examples-first directive.
+
+**CONDITIONALITY:** **all five sit at η = 1** — disclosed at `.54` and added to GENTOW-BOX-2's coverage reading. The battery is therefore structurally blind to the gauge seam that the whole CHAIN-GAUGE is about.
+
+**RESOLUTION TRACE:** lines 74–86; the blindness disclosure at 651–657.
+
+**TEETH:** **ARITHMETIC AUDIT of every derived column, recomputed from the genre data:** `dv2 = e1e2·v` — A5/A7 `2·2 = 4v` ✓, B/D `2·1 = 2v` ✓, C `2·3 = 6v` ✓. `E2 = e2f2u2` — `2·1·5 = 10`, `2·1·7 = 14`, `1·2·3 = 6`, `3·1·7 = 21`, `1·2·3 = 6` ✓ all five. `n = mu2·D2 = mu2·D'e2f2` — A5 `2·2·2 = 8` ✓, B `2·2·1·2 = 8` ✓, C `2·2·3·1 = 12` ✓. Every column reproduces.
+
+---
+
+### EFF.GENTOW1.10  [run-record]  `[TABLE]`
+
+**CANONICAL STATEMENT:** the budget tables. **Source display, verbatim** (fixed-width ASCII, v3 rule 14 double emission):
+
+>     “FAM-A5 j=0: (0,0):6*  (1,0):5  (0,1):4  (1,1):4
+>            j=1: (0,0):3   (1,0):3* (0,1):2  (1,1):1
+>     FAM-A7 j=0: (0,0):8*  (1,0):7  (0,1):6  (1,1):5
+>            j=1: (0,0):4   (1,0):4* (0,1):2  (1,1):2
+>     FAM-B  j=0: (0,0):7*  (1,0):6  (0,1):5  (1,1):5*
+>            j=1: (0,0):4*  (1,0):3  (0,1):2  (1,1):2*
+>     FAM-C  j=0: (0,0):8*  (1,0):7  (0,1):6 (1,1):6 (0,2):5 (1,2):5
+>            j=1: (0,0):4   (1,0):4* (0,1):3 (1,1):2 (0,2):2 (1,2):1
+>     FAM-D  j=0: (0,0):7*  (1,0):6  (0,1):5  (1,1):5*
+>            j=1: (0,0):4*  (1,0):3  (0,1):2  (1,1):2*”
+
+with its header: “**THE BUDGET TABLES (machine output, gentow1_checks run of 2026-08-09; * = consumed pin).** v-floors per composed slot (a,b) at coordinate j”.
+
+`[TABLE]` — transcription with the compiler's independent recomputation from GENTOW-1(a)'s displayed formula `floor(j,a,b) = ceil(((mu2−j)E2 − w(a,b))/(e1e2)) + [pin]`:
+
+| family | j | (0,0) | (1,0) | (0,1) | (1,1) | recomputed | agrees |
+|---|---:|---|---|---|---|---|:-:|
+| FAM-A5 (e1e2=4, w = 2a+5b) | 0 | 6* | 5 | 4 | 4 | ⌈20/4⌉+1=6*, ⌈18/4⌉=5, ⌈15/4⌉=4, ⌈13/4⌉=4 | ✓ |
+| FAM-A5 | 1 | 3 | 3* | 2 | 1 | ⌈10/4⌉=3, ⌈8/4⌉+1=3*, ⌈5/4⌉=2, ⌈3/4⌉=1 | ✓ |
+| FAM-B (e1e2=2, w = a+3b) | 0 | 7* | 6 | 5 | 5* | ⌈12/2⌉+1=7*, ⌈11/2⌉=6, ⌈9/2⌉=5, ⌈8/2⌉+1=5* | ✓ |
+| FAM-B | 1 | 4* | 3 | 2 | 2* | ⌈6/2⌉+1=4*, ⌈5/2⌉=3, ⌈3/2⌉=2, ⌈2/2⌉+1=2* | ✓ |
+
+**FORM:** fixed-width ASCII display (source) → table (transcription).
+
+**DERIVATION:** `[RUN]` — machine output, but every entry is *derivable* from `.15`(a)'s formula, which is what the audit above does.
+
+**CONDITIONALITY:** the pin markers `*` are the `[pin] = 1` cases and their pattern is the content of `.11`(ii).
+
+**RESOLUTION TRACE:** lines 88–101.
+
+**TEETH:** **the four rows recomputed above match the source entry-for-entry, pin markers included — sixteen independent values, zero discrepancies.** The pin pattern also verifies the note's own reading: FAM-A5 has `f1f2 = 1` and exactly ONE pinned slot per coordinate ✓; FAM-B has `f2 = 2` and exactly TWO pinned slots per coordinate, at `(0,0)` and `(1,1)` ✓.
+
+---
+
+### EFF.GENTOW1.11  [derivation]
+
+**CANONICAL STATEMENT:**
+
+> “READ OFF THE TABLES (then proved in S2): (i) the floor at slot
+> (j,a,b) is the SIDE HEIGHT (mu2−j)E2 minus the slot offset w(a,b),
+> divided by e1e2 and ceiled, +1 at the lattice slots — e.g. FAM-C
+> (0,(0,1)): ceil((42−7)/6) = 6, no pin (35 ≢ 0 mod 6); (ii) at
+> f1f2 = 1 exactly ONE pinned slot per coordinate; at f2 = 2 (FAM-B,
+> FAM-D) exactly TWO pinned slots per pinned height ((0,0) and (1,1)
+> — the two flavor components of the one consumed K2-digit,
+> two-step class separation made visible); (iii) node floors
+> [21,11]/[29,15]/[13,7]/[43,22]/[13,7] = (mu2−j)E2 + 1, realized
+> exactly by the NODE-EQ anchors (16Phi', 32xPhi', 64x, 64Phi',
+> 729x — all tRAM with PARI sigma the composed-RAM dictionary
+> value); (iv) the mutant base dv2(x^{D2}) = 8/8/4/18/4 sits BELOW
+> E2 = 10/14/6/21/6 — the gap the wrong-floor tooth exploits.”
+
+**FORM:** bold-headed four-item reading.
+
+**DERIVATION:** the examples-first move — laws read off tables, then proved. This is the standing methodological directive applied literally.
+
+**CONDITIONALITY:** these are READINGS, not proofs; S2 proves them.
+
+**RESOLUTION TRACE:** lines 103–115.
+
+**TEETH:** **ARITHMETIC AUDIT of all four items, recomputed independently.**
+(i) FAM-C `(j=0, (a,b) = (0,1))`: `(mu2−0)E2 = 2·21 = 42`, `w(0,1) = 0·e2h + 1·u2 = 7` (e2h = 3·1), `⌈35/6⌉ = 6` ✓, and `35 mod 6 = 5 ≠ 0` so no pin ✓.
+(ii) verified in `.10`'s table.
+(iii) `(mu2−j)E2 + 1` for the five families at j = 0, 1: A5 `[21, 11]` ✓; A7 `[29, 15]` ✓; B `[13, 7]` ✓; C `[43, 22]` ✓; D `[13, 7]` ✓ — **all ten values reproduce.**
+(iv) verified in `.07` — all five pairs ✓.
+
+---
+
+### EFF.GENTOW1.12  [run-record]  `[TABLE]`
+
+**CANONICAL STATEMENT:** the refine table. **Source display, verbatim:**
+
+>     “A5-R1 lam=13 s=1     : old (26,14,tEVEN) -> new (31,14,t2SIDED)
+>     A5-R2 lam=21 s=1     : old (42,22,tEVEN) -> new (47,22,t2SIDED)
+>       [n2hat(21) = 16Phi' — the r3 witness normalizer, exercised]
+>     A7-R1 lam=15 s=1     : old (30,19,tEVEN) -> new (35,16,t2SIDED)
+>     B-R1  lam=7  s=eta2  : old (14, 9,tEVEN) -> new (15, 8,tRAM)
+>     B-R2  lam=8  s=1+eta2: old (16,10,tEVEN) -> new (19,11,tRAM)
+>       [two-monomial K2-digit lift 16 + 4xPhi']
+>     C-R1  lam=22 s=1     : old (44,24,tEVEN) -> new (47,25,tRAM)
+>     D-R1  lam=9  s=1     : old (18, 9,tDBL ) -> new (19,10,tRAM)
+>     D-R2  lam=10 s=eta2  : old (20,10,tDBL ) -> new (21,13,tRAM)
+>       [q=3: BOTH event pins (lam AND 2lam) show and BOTH die]”
+
+with its header: “**THE REFINE TABLE (old-key read -> refined-key read; all rows PARI-exact on the refined decided sigma; wrong-normalizer variant keeps the pin on every row = T-REFWRONG x8)**”.
+
+`[TABLE]` — transcription with the compiler's check of the old-key pin law `p_0(old) = mu2·lam` (from `.31`(iv) at μ₂ = 2, j = 0):
+
+| row | lam | s | old (p₀, p₁, type) | new | `2·lam` | p₀ = 2λ? |
+|---|---:|---|---|---|---:|:-:|
+| A5-R1 | 13 | 1 | (26, 14, tEVEN) | (31, 14, t2SIDED) | 26 | ✓ |
+| A5-R2 | 21 | 1 | (42, 22, tEVEN) | (47, 22, t2SIDED) | 42 | ✓ |
+| A7-R1 | 15 | 1 | (30, 19, tEVEN) | (35, 16, t2SIDED) | 30 | ✓ |
+| B-R1 | 7 | eta2 | (14, 9, tEVEN) | (15, 8, tRAM) | 14 | ✓ |
+| B-R2 | 8 | 1+eta2 | (16, 10, tEVEN) | (19, 11, tRAM) | 16 | ✓ |
+| C-R1 | 22 | 1 | (44, 24, tEVEN) | (47, 25, tRAM) | 44 | ✓ |
+| D-R1 | 9 | 1 | (18, 9, tDBL) | (19, 10, tRAM) | 18 | ✓ |
+| D-R2 | 10 | eta2 | (20, 10, tDBL) | (21, 13, tRAM) | 20 | ✓ |
+
+**FORM:** fixed-width ASCII display (source) → table (transcription).
+
+**DERIVATION:** `[RUN]`, PARI-exact on the refined decided σ.
+
+**CONDITIONALITY:** all eight rows are at **μ₂ = 2** — the pointwise regime. The general-μ₂ leg has no machine contact (`.04` row 3, `.47`).
+
+**RESOLUTION TRACE:** lines 117–131.
+
+**TEETH:** **ARITHMETIC AUDIT: all eight rows satisfy `p₀(old) = 2·lam` exactly** ✓, confirming `.31`(iv)'s minimal-height display at μ₂ = 2, j = 0. **The characteristic split also verifies**: the five q = 2 rows (A5, A7, B, C) show `p₁ = lam`-independent values with type `tEVEN` — i.e. the j = 1 pin has vanished (`2s = 0` in char 2) — while the two q = 3 rows (D-R1, D-R2) show `tDBL` with `p₁ = lam` exactly (9 and 10) ✓, i.e. **both pins present** at q = 3, exactly as `.31`(iv) predicts. This is a clean machine confirmation of a characteristic-sensitive display.
+
+---
