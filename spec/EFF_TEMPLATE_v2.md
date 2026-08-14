@@ -129,3 +129,116 @@ to itself before recommending it. Codified below as rules 11–28.
     record" unit and not independent units with no memory of each other: emit one unit per
     dated entry, but record the series membership and order explicitly, so a merge run
     spanning shards can reconstruct the order mechanically rather than by prose-reading.
+
+## v3.1 (2026-08-14, the wave-3/4 accumulated rules)
+
+Changes from v3, accumulated across the wave-3/4 compilations and merges — GENIND/GENH4
+(queue 5, self-audit at `spec/EFF-GENIND-s1of3.md` §6.3 and `spec/EFF-GENIND-s3of3.md`
+§6.3), GENHN/HE3/GRTW2 (queue 6), GRTJB/GRTJC (queue 7), and the HE7/GENIND/GENH4/
+LIFTCORNER merge runs. Each compiler applied its own recommendation in its own spec file
+before this codification, so where the one-line proposal is ambiguous, the cited file's
+practice is the rule. Codified below as rules 29–39.
+
+29. **SUPERSESSION KIND gains `withdrawal` (ninth kind) and a `deletion` marked sub-kind:**
+    `withdrawal` names a claim or input that becomes UNAVAILABLE with nothing put in its
+    place at that site — materially different from `replacement`, which substitutes one
+    display for another. `deletion` names an explicit instruction to remove a sentence or
+    clause that remains byte-intact at its frozen source line unless the edge is installed.
+    Both were filed as bare `replacement` faute de mieux before this rule: GENIND's `.49`
+    ("the scalar bound … is withdrawn") and `.56` ("Delete 'H>0, hence M★<N' from C2(ii)",
+    the deleted string verified still present at source line 3382); GENHN's `[r2]`
+    withdrawal of "No new mechanism" and "inheriting exactly GENHN.A's clause grades", with
+    nothing substituted; GRTW2's E5 finding 1, `SUPERSESSION KIND: replacement (a
+    withdrawal)`. A merge that reads any of these as an ordinary `replacement` will keep
+    consuming a withdrawn input, or leave a deleted sentence readable as live text.
+30. **Per-consumer TERMINAL markers (rule 25 extended):** a `CHAIN:` may carry MORE THAN
+    ONE `TERMINAL` when different consumer classes require different current readings of
+    the same chain — the v3 rule as written assumes exactly one. GENIND's (CS-1) hypothesis
+    chain is the confirmed instance: `[r2]`-corrected (CS-1) is TERMINAL for
+    menu/transport consumers, while `(CS-1Q), verified per genre` is TERMINAL for rate
+    consumers (ledger row HYP.36); its five-layer CS-drain-rate chain shows the same
+    two-terminal shape split by proof layer instead of by consumer class. Each TERMINAL is
+    labelled with the consumer class it governs, and a chapter cut must carry all of them —
+    a merge that installs only one edge misstates the other consumer class.
+31. **`hostile-pass certification` — a positive AUDIT disposition (rule 27 extended):** the
+    AUDIT class previously had only finding-shaped members (`decorrelated-model audit`,
+    `in-house hostile pass`, `transfer audit`, `arithmetic recount`) and no member for a
+    hostile pass whose result CERTIFIES rather than finds. GENH4's Remark 2 and its "the
+    consumed surface was independently RE-DERIVED CLEAN by the pass" are exactly this
+    shape; without the label, the strongest evidence in the note was unlabelled.
+32. **Consumer-sweep bullets are first-class supersession vehicles (ruling on the
+    GENIND/GENH4 OPEN-CALL):** an imperative consumer-sweep bullet ("In X, replace Y by
+    Z", "Delete W from V") is a supersession, not a downstream reading note, and every
+    named target MUST resolve to a unit ID. A target inside the home note gets the sweep's
+    reading installed as CONDITIONALITY on that unit; a target in ANOTHER note becomes an
+    XREF plus a protocol obligation, never an assumed landing — LIFTCORNER's settling
+    practice: "Where an annex's consumer sweep names a target inside this note, the target
+    unit carries the resulting reading in CONDITIONALITY; where it names a target in
+    ANOTHER note, it becomes an XREF and a protocol obligation, never an assumed landing."
+    A compilation that cannot resolve a sweep bullet's target by hand records the failure
+    as an OPEN-CALL; it must never emit the sweep as an unaddressed reading note.
+33. **`instrument-audit` — a new TYPE ENUM member:** for a unit whose content is the note
+    auditing its OWN instrument and disclosing what it finds — not `run-record` (no run
+    was executed), not `instrument-record` (the finding CONTRADICTS the instrument's own
+    description rather than describing it), and not `changes-record` (no mathematical
+    statement moves). HE3's four SELF-FOUND instrument audits (the sealed-vs-delivered
+    shortfall, HE-T-NODE's mis-specification, P4's quasi-tautology, the N1 demo's dead
+    geography) had no clean home in the existing enum; rule 27's `in-house hostile pass`
+    is extended to cover self-audit of instruments as well as of prose.
+34. **`AS-OF-PIN` — a pin-verification class distinct from PINNED/UNPINNED (rule 23
+    extended):** for a cited hash or artifact that was honest, checkable evidence AT ITS
+    OWN APPEND TIME but is un-recheckable now because the object it names has since
+    changed BY DESIGN (an append-only file that keeps growing). Labelling such a pin
+    UNPINNED misrepresents it as never having been checkable; labelling it verified
+    misrepresents its current state. GENHN's four prefix-md5 declarations are the
+    confirmed instance, excluded from the ordinary pinning ledger and recorded instead as
+    as-of freeze evidence.
+35. **`acceptance-scope enumeration` — a new FREEZE PREDICATE (rule 21 extended):** a
+    note's explicit statement of WHICH claims a grade covers — including accepting an open
+    box "as a box, not as a theorem" — is a freeze predicate distinct from a text-freeze or
+    an instrument-freeze, and any unit reporting a grade must quote it. GRTW2's (F3) is the
+    corpus's own proof of the rule's value: a certifier's CRITICAL against a later annex
+    was rejected precisely because the acceptance's own scope enumeration excluded it —
+    without (F3) the finding would have been arguable against the acceptance itself.
+36. **`partial-withdrawal` — tenth SUPERSESSION KIND, replacement display attached:** for a
+    supersession that re-issues a display with MOST of the clause surviving — distinct
+    from full `withdrawal` (nothing replaces the claim), `replacement` (the whole clause
+    moves), and `counter re-reading` (a gloss is re-read, no display is re-issued). The
+    field MUST carry the replacement display verbatim. Confirmed independently across both
+    notes before codification — GRTJB's E-3, and GRTJC's Annexes #4, #5, #6, and #8 (each
+    annex's own record and, where a downstream lemma restates the correction, that lemma's
+    unit too) — six occurrences by the compilers' own running tally ("five in GRTJC, one
+    in GRTJB"), every one of them carrying a replacement display the field is now required
+    to hold.
+37. **MERGE-STAGE — the foreign-note citation guard:** before a shard-offset ID rewrite
+    touches any bare `.NN` reference, it must first protect every citation of the form
+    "`<Note>`'s shard N `.NN`" / "`<Note>` shard N `.NN`" that names ANOTHER note's own
+    numbering scheme — such tokens must never receive this note's own offset. A bare
+    in-range check cannot catch the failure mode: GENH4's first-pass rewrite silently
+    shifted a foreign GENIND citation into a value that coincided with a genuine GENH4 unit
+    ID (`.94`, plausible and wrong) plus one that landed out of range (`.126`); the fix
+    recognizes and protects any `"<Capitalized-note-name>['s] shard N"` pattern before
+    shifting, and the result is verified byte-identical to the source text at every
+    protected site.
+38. **MERGE-STAGE — the definitive-mapping audit for explicit shard-local citations:** a
+    shard-offset rewrite must never apply a blind global substitution to bare `.NN` refs
+    inside a shard's own prose. It must instead build an explicit table of every citation
+    labelled as pointing into the OTHER (differently-offset) shard, by enumerating every
+    occurrence of the labelling pattern in the source text (LIFTCORNER: 18 lines, 22
+    protected tokens, built by reading all 35 "shard 1" occurrences in shard 2's text), and
+    exempt exactly those tokens from the shift; a label's scope persists across a
+    comma-separated list under one shared label and resets at the next unlabelled token.
+    Audit afterward by an exhaustive regex sweep for leftover shard-local substrings and
+    for out-of-range IDs.
+39. **MERGE-STAGE — source-self-count errors are booked as defects, never silently
+    reconciled:** when a shard's or note's own summary tally of its inventory (a stated
+    count of units, designations, or marked occurrences) disagrees with a literal recount,
+    the compilation records BOTH figures and flags the discrepancy as a defect; it never
+    silently substitutes the recount for the stated figure or vice versa. LIFTCORNER's
+    merge is the named instance: shard 2 twice asserts "fifteen" `[TRANSCRIBED —
+    certifier]` units, but its own cited ranges sum to, and a fresh grep of every header
+    line confirms, 20 — corrected in the merge rather than silently carried forward.
+    GENH4's merge found the same shape independently: a shard's "27 distinct designations"
+    claim reconciles against neither a literal recount by row (23) nor by
+    slash-separated pattern (33); flagged as a merge-level defect with no individual
+    designation's own grep count in doubt.
