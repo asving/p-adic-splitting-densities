@@ -214,13 +214,14 @@ theorem scaleRootBasis_apply {h : Polynomial O} (hh : h.Monic) (s : O) (i : Fin 
   rw [Module.Basis.reindex_apply, PowerBasis.basis_eq_pow]
   rfl
 
-/-- **The comparison map is diagonal in the two power bases**: `x^i ↦ s^i · y^i`. -/
 omit [IsDomain O] in
+/-- **The comparison map is diagonal in the two power bases**: `x^i ↦ s^i · y^i`. -/
 theorem scaleHom_basis {h : Polynomial O} (hh : h.Monic) (s : O) (i : Fin h.natDegree) :
     scaleHom h s (scaleRootBasis hh s i) = (s ^ (i : ℕ)) • rootBasis hh i := by
   rw [scaleRootBasis_apply hh, rootBasis_apply hh, map_pow, scaleHom_root, mul_pow,
     Algebra.smul_def, map_pow]
 
+omit [IsDomain O] in
 /-- **The master relation.** In the two power bases the comparison map is the diagonal matrix
 `diag(s^i)`. Everything about the scale relation follows from this one line. -/
 theorem repr_scaleHom {h : Polynomial O} (hh : h.Monic) (s : O)
@@ -287,11 +288,277 @@ theorem norm_scaleHom {h : Polynomial O} (hh : h.Monic) {s : O} (hs : s ≠ 0)
 
 end Scale
 
+
+/-! ### The gcd comparison (FACT 2 of the unit note §3.2) -/
+
+section ScaleGcd
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+open IsDiscreteValuationRing hiding maximalIdeal
+
+omit [IsDiscreteValuationRing O] in
+/-- Multiplying by a nonzero scalar does not kill a nonzero element of the (free) root algebra. -/
+theorem algebraMap_mul_ne_zero {h : Polynomial O} (hh : h.Monic) {c : O} (hc : c ≠ 0)
+    {v : AdjoinRoot h} (hv : v ≠ 0) : algebraMap O (AdjoinRoot h) c * v ≠ 0 := by
+  intro hzero
+  refine hv ((rootBasis hh).ext_elem (fun i => ?_))
+  have h1 : c * (rootBasis hh).repr v i = 0 := by
+    have h2 : (rootBasis hh).repr (algebraMap O (AdjoinRoot h) c * v) i = 0 := by
+      rw [hzero]; simp
+    rwa [← Algebra.smul_def, map_smul, Finsupp.smul_apply, smul_eq_mul] at h2
+  simpa using (mul_eq_zero.1 h1).resolve_left hc
+
+omit [IsDomain O] [IsDiscreteValuationRing O] in
+/-- **`π^(m(d-1))·O[y] ⊆ O[π^m y]`** — the index bound that makes the two gcds agree. -/
+theorem exists_scaleHom_eq {h : Polynomial O} (hh : h.Monic) (s : O) (v : AdjoinRoot h) :
+    ∃ z : AdjoinRoot (h.scaleRoots s),
+      scaleHom h s z = algebraMap O (AdjoinRoot h) (s ^ (h.natDegree - 1)) * v := by
+  classical
+  refine ⟨∑ i : Fin h.natDegree,
+    ((rootBasis hh).repr v i * s ^ (h.natDegree - 1 - (i : ℕ))) • scaleRootBasis hh s i, ?_⟩
+  rw [map_sum]
+  simp only [map_smul, scaleHom_basis, smul_smul]
+  have hpow : ∀ i : Fin h.natDegree,
+      (rootBasis hh).repr v i * s ^ (h.natDegree - 1 - (i : ℕ)) * s ^ (i : ℕ)
+        = s ^ (h.natDegree - 1) * (rootBasis hh).repr v i := by
+    intro i
+    have hi := i.isLt
+    have he : h.natDegree - 1 - (i : ℕ) + (i : ℕ) = h.natDegree - 1 := by omega
+    rw [mul_assoc, ← pow_add, he]; ring
+  calc ∑ i : Fin h.natDegree,
+        ((rootBasis hh).repr v i * s ^ (h.natDegree - 1 - (i : ℕ)) * s ^ (i : ℕ)) • rootBasis hh i
+      = ∑ i : Fin h.natDegree,
+          (s ^ (h.natDegree - 1) * (rootBasis hh).repr v i) • rootBasis hh i :=
+        Finset.sum_congr rfl (fun i _ => by rw [hpow i])
+    _ = s ^ (h.natDegree - 1) • ∑ i : Fin h.natDegree, ((rootBasis hh).repr v i) • rootBasis hh i := by
+        rw [Finset.smul_sum]
+        exact Finset.sum_congr rfl (fun i _ => by rw [smul_smul])
+    _ = s ^ (h.natDegree - 1) • v := by rw [(rootBasis hh).sum_repr v]
+    _ = algebraMap O (AdjoinRoot h) (s ^ (h.natDegree - 1)) * v := (Algebra.smul_def _ _)
+
+/-- The `normValues` of the rescaled polynomial are among those of the original (the comparison
+map is injective and norm-preserving). -/
+theorem normValues_scaleRoots_subset {h : Polynomial O} (hh : h.Monic) {s : O} (hs : s ≠ 0) :
+    normValues (h.scaleRoots s) ⊆ normValues h := by
+  rintro k ⟨hk, z, hz, hnorm⟩
+  refine ⟨hk, scaleHom h s z, ?_, ?_⟩
+  · intro hzero
+    exact hz (scaleHom_injective hh hs (by rw [hzero, map_zero]))
+  · rwa [norm_scaleHom hh hs]
+
+omit [IsDomain O] [IsDiscreteValuationRing O] in
+/-- The norm of a scalar in the root algebra of a monic polynomial of degree `d` is its `d`-th
+power. -/
+theorem norm_algebraMap_rootBasis {h : Polynomial O} (hh : h.Monic) (c : O) :
+    Algebra.norm O (algebraMap O (AdjoinRoot h) c) = c ^ h.natDegree := by
+  rw [Algebra.norm_algebraMap_of_basis (rootBasis hh) c]
+  simp
+
+/-- **The reverse gcd inclusion.** A common divisor of the rescaled polynomial's norm-valuations
+divides the original's, because `π^(m(d-1))·v` lies in the image of the comparison map and
+`v(N(π^(m(d-1)))) = m(d-1)d` is itself a norm-valuation (or zero). -/
+theorem normDivisors_scaleRoots_subset {π : O} (hπ : Irreducible π) {h : Polynomial O}
+    (hh : h.Monic) (hd : 0 < h.natDegree) (m : ℕ) :
+    normDivisors (h.scaleRoots (π ^ m)) ⊆ normDivisors h := by
+  classical
+  have hs : (π : O) ^ m ≠ 0 := pow_ne_zero _ hπ.ne_zero
+  have hA : (h.scaleRoots (π ^ m)).Monic := (monic_scaleRoots_iff _).2 hh
+  have hdegA : (h.scaleRoots (π ^ m)).natDegree = h.natDegree := natDegree_scaleRoots h _
+  rintro k ⟨hk, hdvd⟩
+  refine ⟨hk, ?_⟩
+  rintro n ⟨hn, v, hv, hnv⟩
+  set d := h.natDegree with hddef
+  set c : O := π ^ (m * (d - 1)) with hcdef
+  have hc : c ≠ 0 := pow_ne_zero _ hπ.ne_zero
+  have hcpow : ((π : O) ^ m) ^ (d - 1) = c := by rw [hcdef, ← pow_mul]
+  -- the lifted element
+  obtain ⟨z, hz⟩ := exists_scaleHom_eq hh ((π : O) ^ m) v
+  rw [hcpow] at hz
+  have hzne : z ≠ 0 := by
+    intro h0
+    rw [h0, map_zero] at hz
+    exact algebraMap_mul_ne_zero hh hc hv hz.symm
+  -- its norm-valuation
+  have hnz : Algebra.norm O z = c ^ d * Algebra.norm O v := by
+    rw [← norm_scaleHom hh hs z, hz, map_mul, norm_algebraMap_rootBasis hh]
+  have hvalz : addVal O (Algebra.norm O z) = ((m * (d - 1) * d + n : ℕ) : ℕ∞) := by
+    rw [hnz, addVal_mul, hcdef, ← pow_mul, hπ.addVal_pow, hnv, Nat.cast_add]
+  have hmem : (m * (d - 1) * d + n) ∈ normValues (h.scaleRoots (π ^ m)) :=
+    ⟨by omega, z, hzne, hvalz⟩
+  have hk1 : k ∣ m * (d - 1) * d + n := hdvd _ hmem
+  -- and the scalar's norm-valuation
+  have hk2 : k ∣ m * (d - 1) * d := by
+    rcases Nat.eq_zero_or_pos (m * (d - 1) * d) with h0 | h0
+    · rw [h0]; exact dvd_zero k
+    · refine hdvd _ ⟨h0, algebraMap O (AdjoinRoot (h.scaleRoots (π ^ m))) c, ?_, ?_⟩
+      · intro hzero
+        have hdeg : (h.scaleRoots (π ^ m)).degree ≠ 0 := by
+          refine ne_of_gt (natDegree_pos_iff_degree_pos.1 ?_)
+          omega
+        exact hc (AdjoinRoot.of.injective_of_degree_ne_zero hdeg (by simpa using hzero))
+      · rw [norm_algebraMap_rootBasis hA, hdegA, hcdef, ← pow_mul, hπ.addVal_pow]
+  exact (Nat.dvd_add_right hk2).1 hk1
+
+/-- **The residue degree is unchanged by the `π`-power extraction.** -/
+theorem inertiaDegOf_scaleRoots {π : O} (hπ : Irreducible π) {h : Polynomial O} (hh : h.Monic)
+    (hd : 0 < h.natDegree) (m : ℕ) :
+    inertiaDegOf (h.scaleRoots (π ^ m)) = inertiaDegOf h := by
+  have h1 : normDivisors h ⊆ normDivisors (h.scaleRoots (π ^ m)) := by
+    rintro j ⟨hj, hdvd⟩
+    exact ⟨hj, fun n hn =>
+      hdvd n (normValues_scaleRoots_subset hh (pow_ne_zero _ hπ.ne_zero) hn)⟩
+  rw [inertiaDegOf, inertiaDegOf,
+    Set.Subset.antisymm (normDivisors_scaleRoots_subset hπ hh hd m) h1]
+
+/-- **`(e, f)` is unchanged by the `π`-power extraction.** -/
+theorem efPair_scaleRoots {π : O} (hπ : Irreducible π) {h : Polynomial O} (hh : h.Monic)
+    (hd : 0 < h.natDegree) (m : ℕ) : efPair (h.scaleRoots (π ^ m)) = efPair h := by
+  rw [efPair, efPair, ramIndexOf, ramIndexOf, inertiaDegOf_scaleRoots hπ hh hd m,
+    natDegree_scaleRoots]
+
+end ScaleGcd
+
+/-! ### Irreducibility transfer (FACT 3 of the unit note §3.2) -/
+
+section ScaleIrred
+
+/-- Over a field, scaling the roots by a unit is a multiplicative automorphism of `K[X]` (it is
+NOT additive: degrees move). That is enough to transfer irreducibility. -/
+noncomputable def scaleRootsMulEquiv {K : Type*} [Field K] (r : Kˣ) :
+    Polynomial K ≃* Polynomial K where
+  toFun p := p.scaleRoots (r : K)
+  invFun p := p.scaleRoots ((r⁻¹ : Kˣ) : K)
+  left_inv p := by
+    show (p.scaleRoots (r : K)).scaleRoots ((r⁻¹ : Kˣ) : K) = p
+    rw [← scaleRoots_mul]; simp
+  right_inv p := by
+    show (p.scaleRoots ((r⁻¹ : Kˣ) : K)).scaleRoots (r : K) = p
+    rw [← scaleRoots_mul]; simp
+  map_mul' p q := mul_scaleRoots_of_noZeroDivisors p q _
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+/-- **Irreducibility is preserved by the `π`-power extraction**, in both directions. Gauss's lemma
+(a DVR is integrally closed) moves the question to the fraction field, where `π^m` is a unit. -/
+theorem irreducible_scaleRoots_iff {π : O} (hπ : Irreducible π) {g : Polynomial O} (hg : g.Monic)
+    (m : ℕ) : Irreducible (g.scaleRoots (π ^ m)) ↔ Irreducible g := by
+  classical
+  set K := FractionRing O
+  set φ : O →+* K := algebraMap O K with hφ
+  have hinj : Function.Injective φ := IsFractionRing.injective O K
+  have hπK : φ (π ^ m) ≠ 0 := by
+    simp only [ne_eq, map_eq_zero_iff φ hinj]
+    exact pow_ne_zero _ hπ.ne_zero
+  have hA : (g.scaleRoots (π ^ m)).Monic := (monic_scaleRoots_iff _).2 hg
+  rw [hA.irreducible_iff_irreducible_map_fraction_map (K := K),
+    hg.irreducible_iff_irreducible_map_fraction_map (K := K),
+    map_scaleRoots _ _ φ (by simp [hg.leadingCoeff])]
+  exact MulEquiv.irreducible_iff (f := scaleRootsMulEquiv (Units.mk0 _ hπK))
+    (x := g.map φ)
+
+end ScaleIrred
+
+/-! ### The scale relation -/
+
+section ScaleType
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+omit [IsDiscreteValuationRing O] in
+theorem prod_map_scaleRoots (s : O) (F : Multiset (Polynomial O)) :
+    (F.map (fun g => g.scaleRoots s)).prod = F.prod.scaleRoots s := by
+  refine Multiset.induction_on F (by simp) (fun a F ih => ?_)
+  simp [ih, mul_scaleRoots_of_noZeroDivisors]
+
+theorem monicFactors_scaleRoots {π : O} (hπ : Irreducible π) {F : Polynomial O} (hF : F.Monic)
+    (m : ℕ) : monicFactors (F.scaleRoots (π ^ m))
+      = (monicFactors F).map (fun g => g.scaleRoots (π ^ m)) := by
+  refine monicFactors_eq ⟨?_, ?_⟩
+  · intro g hg
+    obtain ⟨g₀, hg₀, rfl⟩ := Multiset.mem_map.1 hg
+    obtain ⟨hm, hi⟩ := (monicFactors_spec hF).1 g₀ hg₀
+    exact ⟨(monic_scaleRoots_iff _).2 hm, (irreducible_scaleRoots_iff hπ hm m).2 hi⟩
+  · rw [prod_map_scaleRoots, (monicFactors_spec hF).2]
+
+/-- **HYP.06 — the `π`-power extraction preserves `typeOf`** (backward form, no side condition).
+`scaleRoots F (π^m)` is the always-integral polynomial `π^(m·deg F)·F(X/π^m)`. -/
+theorem typeOf_scaleRoots {π : O} (hπ : Irreducible π) {F : Polynomial O} (hF : F.Monic) (m : ℕ) :
+    typeOf (F.scaleRoots (π ^ m)) = typeOf F := by
+  refine FactorizationType.ext ?_
+  rw [typeOf_data, typeOf_data, monicFactors_scaleRoots hπ hF m, Multiset.map_map]
+  refine Multiset.map_congr rfl (fun g hg => ?_)
+  obtain ⟨hm, hi⟩ := (monicFactors_spec hF).1 g hg
+  have hd : 0 < g.natDegree := by
+    rcases Nat.eq_zero_or_pos g.natDegree with h0 | h0
+    · exact absurd ((Polynomial.Monic.natDegree_eq_zero hm).1 h0 ▸ isUnit_one) hi.not_isUnit
+    · exact h0
+  exact efPair_scaleRoots hπ hm hd m
+
+omit [IsDiscreteValuationRing O] in
+/-- The substitution identity `F(π^m Y) = π^(m·n)·G(Y)` says exactly that `F = scaleRoots G (π^m)`
+(monicity is not needed for this coefficient computation, only the degree match). This is the bridge between the recursion's own phrasing
+and `typeOf_scaleRoots`. -/
+theorem eq_scaleRoots_of_comp {π : O} (hπ : Irreducible π) {F G : Polynomial O}
+    (hdeg : G.natDegree = F.natDegree) (m : ℕ)
+    (hFG : F.comp (C (π ^ m) * X) = C (π ^ (m * F.natDegree)) * G) :
+    F = G.scaleRoots (π ^ m) := by
+  ext i
+  have hco := congrArg (fun p => Polynomial.coeff p i) hFG
+  simp only [comp_C_mul_X_coeff, coeff_C_mul] at hco
+  rw [coeff_scaleRoots, hdeg]
+  rcases le_or_gt i F.natDegree with hi | hi
+  · have hsplit : π ^ (m * F.natDegree) = (π ^ m) ^ i * (π ^ m) ^ (F.natDegree - i) := by
+      rw [← pow_add, ← pow_mul, Nat.add_sub_cancel' hi]
+    rw [hsplit, mul_assoc] at hco
+    exact mul_right_cancel₀ (pow_ne_zero i (pow_ne_zero m hπ.ne_zero))
+      (by rw [hco]; ring)
+  · rw [coeff_eq_zero_of_natDegree_lt hi, Nat.sub_eq_zero_of_le hi.le, pow_zero, mul_one]
+    have hGi : G.coeff i = 0 := coeff_eq_zero_of_natDegree_lt (by omega)
+    rw [hGi]
+
+/-- **HYP.06 in the recursion's own phrasing.** -/
+theorem typeOf_scale {π : O} (hπ : Irreducible π) {F G : Polynomial O}
+    (hG : G.Monic) (hdeg : G.natDegree = F.natDegree) (m : ℕ)
+    (hFG : F.comp (C (π ^ m) * X) = C (π ^ (m * F.natDegree)) * G) :
+    typeOf F = typeOf G := by
+  rw [eq_scaleRoots_of_comp hπ hdeg m hFG]
+  exact typeOf_scaleRoots hπ hG m
+
+
+/-! ### Non-vacuity gate for the scale relation
+
+The extraction is not the identity map: it carries the Eisenstein `X² - π` to `X² - π³` —
+precisely the polynomial whose residue degree the *old* `sInf` form of `inertiaDegOf` got wrong
+(the defect recorded in `TypeOf.lean`'s module docstring, found 2026-08-13). `typeOf_scaleRoots`
+says the two have the same splitting type, as they must (both generate `K(π^(1/2))`). -/
+
+theorem scaleRoots_X_sq_sub_C {π : O} : (X ^ 2 - C π : Polynomial O).scaleRoots π
+    = X ^ 2 - C (π ^ 3) := by
+  have hd : (X ^ 2 - C π : Polynomial O).natDegree = 2 := natDegree_X_pow_sub_C
+  ext i
+  rw [coeff_scaleRoots, hd]
+  rcases i with _ | _ | _ | n <;> simp [coeff_X_pow, coeff_C, -map_pow]
+  ring
+
+/-- **The gate fires**: `X² - π³` and `X² - π` have the same `typeOf`, by the scale relation. -/
+theorem typeOf_scale_gate {π : O} (hπ : Irreducible π) :
+    typeOf (X ^ 2 - C (π ^ 3) : Polynomial O) = typeOf (X ^ 2 - C π : Polynomial O) := by
+  have hm : (X ^ 2 - C π : Polynomial O).Monic := monic_X_pow_sub_C π (by norm_num)
+  have h1 := typeOf_scaleRoots (π := π) hπ hm 1
+  rwa [pow_one, scaleRoots_X_sq_sub_C] at h1
+
+end ScaleType
+
 /-! ## Axiom census -/
 
 section AxCheck
 
 #print axioms Uniformity.Density.typeOf_shift
+#print axioms Uniformity.Density.norm_scaleHom
+#print axioms Uniformity.Density.typeOf_scaleRoots
+#print axioms Uniformity.Density.typeOf_scale
+#print axioms Uniformity.Density.typeOf_scale_gate
 
 end AxCheck
 
