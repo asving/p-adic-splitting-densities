@@ -1,0 +1,10 @@
+name = "leanspec"
+version = "0.1.0"
+defaultTargets = ["Leanspec"]
+
+[[require]]
+name = "uniformity"
+path = "../leanfinal"
+
+[[lean_lib]]
+name = "Leanspec"
