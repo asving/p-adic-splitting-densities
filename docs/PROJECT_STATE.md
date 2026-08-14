@@ -4632,3 +4632,31 @@ committed v4 (687ebc96) and re-launch the fold from the append-#49
 charge). Everything else is restart-proof: sweep self-paused
 (resume = rerun runs/qgen/sweep_runner.sh post-reset), specs/ledger/
 appends all committed, monitors re-armable.
+
+**2026-08-14 DATED APPEND #50 — THE CERTAIN-NODES PROGRAM CLOSES:
+23/23 LANDED, ZERO BLOCKED.** Asvin's directive (extract → orchestrator
+vets → formalize the certain-regardless pieces) executed end to end in
+one day: spec/CERTAIN_NODES_2026-08-14.md (23 nodes, 16 rejections,
+orchestrator-vetted: Newton-polygon deferral endorsed, CN-15 placed
+leanfinal) → four batches (A/B sonnet 13 nodes, C/D opus 10 nodes) —
+ALL LANDED AS STATED, 0 BLOCKED, ~1,100 Lean lines, all Lean-core,
+both repos green (leanfinal 8581 jobs, leancheck 8604). HEADLINERS:
+exists_monicPoly_eq (polynomial theorems now reach the coefficient
+boxes); typeOf_mul = HE7.A clause 6 in the kernel + both peel
+corollaries; the zero-density laws making σ.degree = n live;
+typeOf_eisenstein + typeOf_inert_of_irreducible_map (the ramified
+and unramified LEAF TYPES at every n — CN-21 ~100 lines under
+estimate via Nakayama-over-the-base, never touching DVR-on-AdjoinRoot);
+norm_adjoinRoot_root via a NEW reusable minpoly-over-domains lemma
+(mathlib's is field-only — second upstream-contributable of the
+week); n-fold Hensel; card_certSet_gen (the census lemma at general
+n, closing leancheck's n=2 version as an instance); exists_coveringMenu
+(unblocking the Σ_σ layer above n=2 — drainage is now the ONLY
+missing leg there). FOLLOW-UPS BOOKED (next maintenance fold, not
+urgent): CN-21 subsumes the landed degree-2 inert certificate (merge
+touches a landed file — orchestrator decision later); exists_aniForm
+duplicates leancheck's exists_aniK (accepted price of the import
+fence); ledger discharge bookkeeping for the closed rows rides the
+next fold. THE PRE-BLUEPRINT HEAD START IS BANKED: when the chapter
+blueprints fire post-reset, the leaf layer, the transport layer, the
+census engine, and the density API are already in the kernel.
