@@ -3,6 +3,7 @@ import Uniformity.HenselFactorization
 import Uniformity.StrongHensel
 import Uniformity.Density.LocalData
 import Uniformity.Density.TypeOf
+import Uniformity.Density.TypeOfInvariance
 import Uniformity.Density.GenuineDensity
 import Uniformity.Density.QuadCert
 import Uniformity.Density.Statement
