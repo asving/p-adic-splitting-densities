@@ -1,0 +1,497 @@
+# WZP2 — HOSTILE PASS on WELDZERO r1 (pass 1 of 2, Opus/Claude arm)
+
+Target: `lean/notes/openmath/WELDZERO_2026-08-14.md`, 1,869 lines, effective text =
+r0 (L1–788) + the r1 amendment block (L792–1869), r1's instructions governing.
+Read at worktree HEAD `8e4fd3ec`; the note is byte-unchanged since its r1 commit
+`684a6c5e` (`git diff 684a6c5e HEAD -- <note>` empty), and that commit touched
+**one file, 1,081 insertions, 0 deletions** — the "no file outside this note is
+edited by this round" claim is confirmed at the commit level.
+
+Charge honoured: QUOTE AND CLASSIFY, FIX NOTHING. Nothing was edited; the only
+file written is this log. No git operations beyond read-only inspection.
+
+Not re-tread (per the brief): WZ-A line by line, T1 scope, the W-9 clause table
+against GENHN's division-of-consumption, the §8 non-circularity audit, the
+9,877/0 battery.
+
+---
+
+## VERDICT
+
+**0 CRITICAL + 0 GAP + 6 minors.**
+
+The two r1 repairs hold on their own terms and on mine. The new load-bearing
+content — the D_κ relabelling bijection with its sharp dichotomy, and WZ-PIN's
+new fact 7 (the GN-REFINE3 wrap exponent) — was re-derived from scratch here and
+is correct. Both machine legs the note leans on were **independently reproduced
+by this pass from the pinned sources**, including the §5.1 leg the note itself
+discloses as not re-run (hostile-arc target 7 is now discharged, by this pass).
+The six minors are provenance/bookkeeping and one over-stated non-load-bearing
+clause; none touches the fold's logical chain.
+
+---
+
+## R0. MECHANICAL LAYER — pins, landmarks, spans (route f)
+
+### R0.1 md5 pins
+
+All **nine** r1-added pins recomputed at the worktree and matching:
+
+| pinned at r1 | recomputed | verdict |
+|---|---|---|
+| JD0_PROOF_2026-08-08.md `4d34f76937871deb5d2044e051af9604` | same | OK |
+| HE3_PROOF_2026-08-08.md `d40ad66e955d3eada3ae6f1b7bfd68d6` | same | OK |
+| GENH4_PROOF_2026-08-08.md `86e1c5522d214b7b5bfafa0c421f90ad` | same | OK |
+| GENTOW1_PROOF_2026-08-09.md `0dc421fab3f170fa92702268c5add011` | same | OK |
+| GENTOW4_PROOF_2026-08-09.md `6dba548c8dd83ccb9cfb236a39214bc7` | same | OK |
+| qscout22_checks.py `cb885663dd4ef6dfda9c28a67c1a076e` | same | OK |
+| genhn_checks.py `637427dc475d231e803a8219127a5b3e` | same | OK |
+| genhn_checks_output.txt `7d4a3e86113fb3dbe241788b6c81ab40` | same | OK |
+| runs/comp13/WZP1_output.log `bcd628a4df378043b3df2f2314e89ece` | same | OK |
+
+The nine md5s already in §9 also re-verify. The ledger row is pinned by commit,
+not by worktree state: `git show 1d787a7d:spec/HYPOTHESIS_LEDGER.md | md5sum` =
+`92827c7c81e264fa379950b94690d0d0`, 1,692 lines, and the same at `faa5a22b` —
+so the r1 re-hash claim is true at the worktree it names, even though the
+working-tree ledger has since moved to 1,710 lines. **HEAD delta is not a
+finding**, as r1 says. See **m3** for the count.
+
+### R0.2 landmarks — all 31, not a sample of 12
+
+`sed -n '1,788p' | grep -cF` re-run for **every** claimed landmark line
+(7, 57, 109, 146, 278, 281, 291, 298, 310, 385, 387, 414, 416, 474, 495, 501,
+515, 558, 559, 564, 597, 599, 611, 660, 683, 686, 721, 730, 771, 776, 783):
+**31/31 returned exactly 1**, and in every case the line at the claimed number
+IS the opener the repair names. Line 788 is confirmed as the last content line
+of r0 (789 blank, 790 `---`, 792 the r1 header), so the `1,788p` bound is right
+and does exclude the round's own re-quotations.
+
+Arithmetic: 10 (repair 1) + 10 (repair 2) + 8 (repair 3) = 28 superseded, + line
+57 standing = 29, + lines 7 and 730 = **31** ✓ consistent with the counter.
+
+### R0.3 source lines — all 36 by `grep -cFx`
+
+Every one of the 36 lines across the 12 named files returns exactly 1 and is
+byte-identical to the note's quotation of it (JD0 121/123/128; GENHN
+736/737/903/908/909/1690; GENTOW5 259/260; GENH4 370/1126; GENTOW1 371/377;
+GENTOW4 305; WELD_FACE_AUDIT 196; qscout22_checks.py 318; genhn_checks.py
+577/652/653/654/655/656; genhn_checks_output.txt 12; weldzero_checks.py
+84/105/202/212/371; WZP1 417/418/419/420/422/423). The §5.1 code block matches
+WZP1 **L417–424 verbatim, all eight lines**. See **m6** for the two quoted lines
+the enumeration omits.
+
+### R0.4 spans
+
+Every replacement instruction resolves to a unique, well-delimited span:
+repair 1(c) gives both endpoints (387 and 414) explicitly; 1(d), 2(b), 3(a)–(h)
+name paragraph or item openers that are unique and whose paragraphs terminate at
+a blank line; 2(c) appends after a named paragraph. Repair 2(h) replaces target 6
+"as amended by r1 repair 3(c)" — a forward reference, but explicitly flagged, so
+the application order is determined. Repair 2(d)'s superseded string is a
+*partial* line (r0 559 is truncated at "not a μ ≥ 3 novelty."); the resulting
+splice reads coherently ("…(§5.1). In char 2 at μ = 2 it is provably absent…").
+Display-A blocks byte-diffed: r0 672–676 == ledger v5 1332–1336 exactly, and the
+r1 reversion 1094–1095 == ledger v5 1332–1333 exactly. **The "v5 line carried
+over byte-unchanged" claim is literally true.**
+
+---
+
+## R1. THE BIJECTION D_κ (route a) — re-derived, correct
+
+### R1.1 Well-definedness on 𝒟
+
+𝒟 := {(Γ_j)_{0≤j≤μ} ∈ K^{μ+1} : Γ_μ = 1}; D_κ(Γ)_j = Γ_j·ϑ_{μ−j}^{−1}.
+Top coordinate: D_κ(Γ)_μ = Γ_μ·ϑ_0^{−1}. WZ-2(c) gives ϑ_0 = η^{W_κ(0)} = η^0 = 1,
+so D_κ(Γ)_μ = 1 and **D_κ maps 𝒟 into 𝒟** ✓. The displayed two-sided inverse
+(c_j) ↦ (c_j·ϑ_{μ−j}) is correct (ϑ_t ∈ K^×) ✓. Each ϑ_t^{−1}· is a bijection of
+K fixing 0 and preserving K^×, so the occupied-slot pattern is preserved ✓ — and
+this is exactly the property J-D0's NONCHAR mode (an *additive* slot shift)
+lacks, which is why the note's continued use of the NONCHAR quotation is
+coherent rather than self-undermining.
+
+`#D_κ^{−1}(S) = #S` for every S ⊆ 𝒟 is immediate from bijectivity of a map of a
+finite set ✓. #PP = |K| − 1 needs s′ ↦ (T − s′)^μ injective on K^×; true in every
+characteristic including p | μ (Frobenius is injective), as the note says ✓.
+
+### R1.2 Walking the consumption sites §4(b) rewires
+
+Two sites are named in the amended §3.6 consequence paragraph.
+
+* **Letters** — GENHN:903 `   GENHN-2), the same count as the node. Letters: |K| − 1 choices of`.
+  Read in context (GENHN L898–904, layer 3: *"The map on digit spaces is
+  triangular … onto by cardinality: the refine slice fixes the μ pinned digits
+  and frees exactly the slots above the node floors (slot strings are
+  key-independent — GENHN-2)"*), **the counted objects are digit strings, not raw
+  polynomials** — so the counted set is a subset of 𝒟 at a fixed (node, κ) and
+  the count factors through D_κ exactly. The set counted under WZ-PIN is
+  D_κ^{−1}(PP), under the twisted reading it is PP; both have |K| − 1 elements ✓.
+* **The bracket** b_{μ,K}(κ) = (|K|−1)|K|^{(c(μ)+1)κ−1} (GENHN L930). Only the
+  (|K|−1) factor is convention-sensitive; the |K|^{(c(μ)+1)κ−1} factor counts free
+  slots above the node floors, which are *height* conditions, convention-blind by
+  inspection. The free-slot factor is strictly outside 𝒟 = K^{μ+1}, so the cited
+  lemma does not literally cover it — but the extension is a trivial product of
+  bijections, and the note has already named the premise that makes (iii) reach
+  the count laws as the hostile arc's target 4 (*"that what GENHN-4 counts at a
+  fixed (node, κ) is in bijection with 𝒟, with the counted predicate a function
+  of the digit vector alone"*) and again at §5.1(3) (*"the census equality is
+  what (iii) predicts when the member set fibres uniformly over the digit space …
+  this note does not re-derive that fibration"*). **Disclosed premise, not a
+  hidden one — no finding.**
+
+### R1.3 The sharp dichotomy — checked at every (e₁, i(κ))
+
+The brief's worry (⌊i(κ)/e₁⌋ can be 0 with η ≠ 1) is the right question and the
+chain survives it, because ⌊i(κ)/e₁⌋ is **always** 0: the normalizer convention
+fixes 0 ≤ i(κ) < e₁, so ϑ_1 = η^0 = 1 *for every* (e₁, i(κ), η). The forcing runs
+in the sound direction — the hypothesis is ϑ_t^{−1} = ξ^{−t} for all t, t = 1
+*forces* ξ = ϑ_1 = 1, and then ϑ_t = ξ^t = 1 for every t ≤ μ. No case is lost.
+σ_ξ's slot action re-derived independently: [y^j](ξ^{−deg R}R(ξy)) = c_j ξ^{j−deg R},
+i.e. the height-tκ slot (t = μ−j) is multiplied by ξ^{−t} ✓. Equality of the two
+maps on 𝒟 is testable slot-by-slot because 𝒟 contains vectors with every slot
+nonzero ✓. Converse ϑ ≡ 1 ⟹ D_κ = σ_1 = id ✓. **The dichotomy is right.**
+
+---
+
+## R2. THE F₃ TOOTH (route b) — hand-checked, correct
+
+Frame realizability: K = F₃ ⟹ q = 3, f₁ = 1; η = 2 ∈ K^× is available; e₁ = 2,
+h odd ⟹ i(κ) = κ mod 2, so i(κ) = 1 at κ odd; κ > D′h = 2h is satisfiable. ✓
+
+ϑ_t = η^{⌊t·1/2⌋}: ϑ = (1, 1, 2) ✓ as displayed.
+R_N = (T−1)² = T² − 2T + 1 = T² + T + 1 over F₃ ⟹ c = (1,1,1) ✓.
+Γ_j = c_j·ϑ_{μ−j} ⟹ Γ = (2,1,1) ⟹ R_Γ = T² + T + 2 ✓.
+disc = 1 − 8 ≡ 2 (mod 3), a non-square; direct root test T = 0,1,2 gives 2,1,2 —
+no roots, **inert** ✓.
+
+The four-vector display also checks: multiplicative perfect squares
+{(1,1,1),(1,2,1)} (= (T−1)², (T−2)²); their D_κ-preimages {(2,1,1),(2,2,1)};
+coherent perfect squares {(1,1,1),(1,2,1)}; their D_κ-images {(2,1,1),(2,2,1)}
+(ϑ_2 = 2 is its own inverse in F₃, so image set = preimage set here). Both
+crossed vectors are inert: T²+T+2 (above) and T²+2T+2 (disc 4−8 ≡ 2; values
+2,2,1 at T = 0,1,2) ✓. So the two sets are disjoint, each of size |K| − 1 = 2 ✓
+— "counts blind, membership not" is exactly right. ("All four" counts the two
+distinct vectors twice, once in each role; loose wording, not an error.)
+
+**The tooth is real, and §5.1 shows it firing 972 times in sealed data (R3).**
+
+---
+
+## R3. §5.1 — PROVENANCE AND, BEYOND THE CHARGE, INDEPENDENT REPRODUCTION (route c)
+
+### R3.1 Provenance discipline: honest as stated
+
+§5.1 opens *"The figures below are the hostile pass's, not this note's"*, names
+the instrument (`Q.read_E` from `qscout22_checks.py`, monkeypatched around
+`genhn_checks.run_v_row`), names the report of record with its md5, discloses
+non-reproduction twice (*"The instrumented run is **not reproduced by this
+note**"*; WZ-BOX-2(β) *"the instrument is a monkeypatched copy of the pinned
+reader and is not committed"*), enumerates exactly what the note did verify
+independently, and adds arc target 7 demanding the re-run. Cross-read against
+WZP1 L406–431: the description is faithful and the quoted block is verbatim.
+**Attributed, not claimed re-derived — the fold is honest.**
+
+### R3.2 I ran the instrumentation myself — both rows
+
+Not required by the brief (one spot-check was), but cheap and decisive. I wrote
+my own instrumented readers from the pinned sources (not the pass's script, which
+is uncommitted) and ran them.
+
+**(a) The headline row, `V1E2 Zp q=3 N=4 h=1`** — my instrumented `read_E`
+monkeypatched into `Q.read_E`, loop replicating `run_v_row`:
+
+```
+V1E2 Zp q=3 N=4 h=1 : 26244 members, 9 keys      <- matches sealed artifact L12
+  stage reads               5832
+  refines                   1944
+  REFINES_LIVE_WRAP          972
+  TWIST_FLIPS_DECISION       972   detail {('1sq' mult, '2' coherent): 972}
+  post_refine_reads         1944
+  PIN_ALIVE                    0
+  read-type census z=1 : '1sq' 972  '2' 1458  '11' 486
+  read-type census z=2 : '1sq' 972  '2' 1458  '11' 486
+```
+
+**Every figure in §5.1 reproduces exactly**, including the census equality and the
+flip direction the note reports ('2' coherent ↔ '1sq' multiplicative). PIN_ALIVE
+measured as: after each refine, the next read has dv(A_0) > old dv(A_0) and
+dv(A_1) > κ — 0 failures in 1,944. **Hostile-arc target 7 is discharged by this
+pass**, and THEOREM WZ-A now has a sealed-data leg at live ϑ that is independent
+of both the note and the previous pass.
+
+**(b) Second sealed row, `E31 Zp q=3 N=3 h=1`** (the brief's spot-check), same
+method on `read_e31`:
+
+```
+E31 Zp q=3 N=3 h=1 : 4374 members, 6 keys        <- matches sealed artifact L21
+  stage reads      972      refines 324
+  refines with i(κ)=2:  0   (refine i1 histogram {1: 324}; all reads i1 = 1)
+  TWIST_FLIPS_DECISION: 0   censuses identical
+```
+
+Confirms the note's negative corroboration verbatim: *"E31 (Zp,3,3,1) has 324
+refines but i(κ) = 2 never occurs at one, so no live wrap"* ✓.
+
+**(c) The GN-REFINE3 arithmetic**, which the note asserts without attribution
+(*"all 3,072 GN-REFINE3 pin checks come from the two q = 2 E3 rows"*): I tallied
+`note('GN-REFINE3', 3)` per row —
+
+```
+E3 Zp  q=3 N=4 h=1 : 39366 members, 2 keys | alpha-refines 0   | pin checks    0
+E3 Zp  q=2 N=5 h=1 : 32768 members, 8 keys | alpha-refines 512 | pin checks 1536
+E3 Fqt q=2 N=5 h=1 : 32768 members, 8 keys | alpha-refines 512 | pin checks 1536
+```
+
+1536 + 1536 = **3,072** ✓, and the only q = 3 μ = 3 row produces **zero**
+α-events ✓. All member/key counts match the sealed artifact.
+
+### R3.3 Does the corrected coverage statement match the inventory?
+
+Full inventory of `genhn_checks_output.txt`: the only q = 3 refine-bearing rows
+in the whole sealed battery are V1E2 (Zp,3,4,1), E31 (Zp,3,3,1) and E3
+(Zp,3,4,1). Every other row is q = 2 (⟹ K = F₂ at f₁ = 1 ⟹ η = 1 forcibly). The
+r1 paragraph disposes of exactly those three, correctly, and GENH4's rows (genre
+E at q = 2, genre F at e₁ = 1) and GENHN's tower rows (q = 2) were already
+covered at r0. **The corrected coverage statement matches the inventory.**
+GENH4:1126 confirms the 192,000-vs-22,272 correction: `law), GH-REFINE 192,000/0
+(21,504 + 768 refine events, the carry` — 21,504 + 768 = 22,272 ✓.
+
+### R3.4 WZ-PIN facts 5–7, re-derived not taken on report
+
+* Fact 5 — `qscout22_checks.py:318` divides S0 by η iff `dmu % 2 == 1`; at e₁ = 2,
+  h odd, i(κ) = κ mod 2, so ϑ_2 = η^{⌊2·1/2⌋} = η exactly then ✓.
+* Fact 6 — `genhn_checks.py:577` divides iff `i1 == 2`; at e₁ = 3,
+  ϑ_2 = η^{⌊2·2/3⌋} = η exactly at i(κ) = 2, and = η^0 at i(κ) ∈ {0,1} ✓.
+* Fact 7 — re-derived independently. ht = y₀ − t·kk = (μ−t)κ; with h odd and
+  e₁ = 2 the code's `% 2` is i(·), so g_t = [i((μ−t)κ) + t·i(κ) − i(μκ)]/e₁.
+  Substituting WZ-2(c)'s e₁W_κ(s) = s·i(κ) − i(sκ) twice gives
+  e₁g_t = e₁(W_κ(μ) − W_κ(μ−t)), i.e. **g_t = W_κ(μ) − W_κ(μ−t)** ✓. Then
+  rc[t] = Γ_t·η^{g_t} = c_t·η^{W_κ(μ)}; the loop runs t = 0..g with rc[-1] the
+  j = 3 endpoint where the code sets `c = K.one()`, so lead_inv = η^{−W_κ(μ)}
+  and the monic normalisation leaves **rc[t] = c_t** ✓. The note's specimen
+  g = (0,0,1,1) at μ = 3, e₁ = 2, i(κ) = 1 also checks (W(3)=W(2)=1, W(1)=W(0)=0).
+  **Fact 7 is correct and is genuine new evidence for WZ-PIN.**
+
+---
+
+## R4. WZ-BOX-7 (route d) — adjudication correct, one consumption question answered
+
+Both frozen sites read at HEAD:
+
+> `counts are twist-blind (J-D0: (digits) ↦ (twisted digits) is a`
+> `type-preserving bijection), LETTERS are twisted.`  (GENHN:736–737)
+
+> `((S₁, S₀) ↦ (S₁, z̄S₀) is a type-preserving bijection — J-D0's`  (GENH4:370)
+
+The GENH4 map is the μ = 2, e₁ = 2 instance of D_κ (z̄ = η); the F₃ tooth of R2
+refutes "type-preserving" for it, and the sealed V1E2 q = 3 row refutes it 972
+times in committed data — which I reproduced (R3.2a), with the flip in exactly
+the direction WZ-BOX-7 states ('2' ↔ '1sq'). J-D0's clause (f) fixes the covered
+family as σ_ξ, which D_κ joins only when it is the identity (R1.3). So
+**"conclusion upheld, reason declined" is the right adjudication**: the
+conclusion (counts twist-blind, letters twisted) is true by relabelling, the
+parenthetical's reason is false wherever it has content.
+
+**Does any WELDZERO step consume the false reason?** I grepped the whole note for
+`J-D0 | JD0 | type-preserv | twist-blind | unit character | perimeter | NONCHAR`
+and walked every r0 hit against the repairs. Every r0 site that asserted or used
+type-preservation (385, 394, 406–410, 420–421, 474–483, 660–662, 683, 686–688,
+721) is inside a block r1 replaces; the survivors (58, 161, 446, 454, 459–472,
+485–491, 588, 672–676, 744) either quote a source, describe the additive half,
+or refer to GENHN's own layer 3, whose J-D0 consumption the amended §4(b)
+explicitly leaves with GENHN. **No surviving step consumes the reason.** The
+audit's CLEAN-list entry is quoted but its own misclassification is not itself
+flagged — see **m5**.
+
+---
+
+## R5. §7/§8 CONSUMPTION IMPACT (route e)
+
+Ledger v5 read at `1d787a7d` (1,692 lines, md5 as pinned).
+
+* **HYP.148 DISCHARGED** — target correct: the ledger row (L1146ff) and GENHN's
+  BOX-2 (L1331–1338) both scope the consumption to *layer 1*, which is what WZ-A
+  proves and WZ-B re-derives clause by clause; the box's own retirement condition
+  (*"An elementary general-μ carry display (the GENH4-S5 computation at general
+  (e₁, f₁, μ)) would retire this box"*) is quoted correctly and is met in kind.
+  Conditionality on WZ-PIN is carried by the section header (*"IF the arc
+  accepts"*) and by WZ-BOX-3 as amended. **Statement of the ledger row itself is
+  misquoted — m2.**
+* **HYP.139 retires from the cone** — the ledger's own prediction is quoted
+  verbatim at L1084 (*"the replacement frame is gr(O_L), not an FGMN object, so
+  the W-1 transport would no longer be consumed"*), and the note's supporting
+  check holds: `FGMN` occurs in the note only at lines 646/648/651, i.e. inside
+  the HYP.139 row itself, nowhere in WZ-1…WZ-B ✓. The scoping (*"The row stays
+  live inside GRTJC's own note — this fold retires its cone consumption, not the
+  obligation"*) matches the ledger's language and does not over-claim ✓.
+* **HYP.149 closes** ✓ — v5 has it IN-PROGRESS naming this unit (L1336).
+* **Display-A reversion** — byte-verified against v5 (R0.4). The withdrawal
+  reasoning (*"that wording rested on C-1's false type-preservation claim **and**
+  asserted something about consuming sites other than this one, which is outside
+  this unit's authority"*) is sound, and the weakened successor sentence
+  (*"leaving `JD0-BOX-2` exactly as v5 carries it"*) no longer over-reaches.
+* **J-D0 at no grade** — consistent across §4(b), §7 and §8 item 5 as amended;
+  §8's surviving items 1–4 are untouched by the withdrawal. One internal tension
+  with WZ-BOX-7 — **m5**.
+
+**Nothing in §7 over-claims relative to what the fold proves**, with the two
+bookkeeping exceptions m2 and m5.
+
+---
+
+## FINDINGS
+
+### m1 (minor) — repair 1's "left standing" claim is false for both quotations, and leaves a pin citing an uncited slice
+
+> `WZ-BOX-6` insertion point and the base's own quotations of `JD0_PROOF` L219–225
+> and L140–142 are left standing: the NONCHAR quotation is still accurate and is
+> now used to show D_κ is in **neither** J-D0 box.  (note L1181–1183)
+
+Both quotations occur exactly once in r0 and both are inside blocks this same
+repair deletes: the L140–142 quotation is at r0 L410, inside the
+statement-and-proof block "begins at [387] … ends at [414]" that repair 1(c)
+replaces wholesale; the L219–221 quotation is at r0 L478, inside the §4(b)
+paragraph (474–483) that repair 1(d) replaces. Nothing is "left standing". The
+NONCHAR text survives only because repair 1(a) re-quotes L224–225 fresh at
+L902 — a new quotation, not a surviving one. Consequence: the r1 pin row
+
+> | `lean/notes/openmath/JD0_PROOF_2026-08-08.md` | `4d34f76937871deb5d2044e051af9604` | S2.2 L140–142; **clause (f) L121–131** …  (note L1754)
+
+still lists `S2.2 L140–142` under "what is cited", while the effective r1 text
+cites nothing from L140–142. Harmless to content (the r1 argument needs no J-D0
+clause at all — that is the point of C-1), but the round's own provenance
+discipline is that the pin table records what the text cites.
+
+### m2 (minor) — §7 misquotes the ledger row it declares discharged
+
+> Its statement is "LEMMA GENHN-4's layer 1 at μ≥3 consumes COROLLARY W-9's twisted
+> algebra as the carry bookkeeping rather than re-deriving it".  (note L639–641)
+
+Ledger v5 L1148, verbatim:
+
+> STATEMENT: LEMMA GENHN-4’s layer 1 at μ≥3 consumes COROLLARY W-9’s twisted
+> **group** algebra as the carry bookkeeping rather than re-deriving it.
+
+The word "group" is dropped inside quotation marks (and the curly apostrophe is
+normalised to a straight one). The result is a hybrid: "twisted algebra" is
+GENHN's BOX-2 wording (L1332, correctly quoted at §2), "rather than re-deriving
+it" is the ledger's. The r1-amended Record rule declares exactly one class of
+exception —
+
+> Every other quotation is byte-exact modulo blockquote markers and markdown
+> emphasis.  (note L1663–1664)
+
+— which does not cover a dropped word. Meaning is unaffected; the discipline is.
+Note this is a **new catch**: the pass of record certified these very quotes
+(*"Ledger §7 quotes (HYP.139 L1079–1084, HYP.148 L1146ff, … ) all verified
+verbatim at v5"*, WZP1 L35–37).
+
+### m3 (minor) — the r1 block says §9 pins "ten" artifacts, three times; it pins nine
+
+> The ten md5-pinned artifacts of §9 were re-hashed at the worktree on 2026-08-14
+> (HEAD `faa5a22b`) and **all ten match the pins §9 records**  (L807–808)
+
+> The ten md5s already in §9 are unchanged and were re-verified at the same
+> worktree  (L1764–1765)
+
+> The ten md5 pins of §9 were re-hashed and all ten match.  (L1867–1868)
+
+§9's table has **12 rows, of which 3 carry "(read at HEAD)" and no md5**
+(JD0_PROOF L744, HE3_PROOF L745, GENH4_PROOF L746) — leaving **nine** md5-pinned
+artifacts. All nine do match (R0.1), so no pin is wrong; the census is. The
+miscount is inherited verbatim from the pass — WZP1 L18 reads "All ten
+md5-pinned artifacts in §9" above a table with **nine** rows — which is direct
+evidence that the sentence at L807–810 ("re-hashed at the worktree … the pass
+independently re-hashed the same ten") reports a copied count rather than a
+recomputed one, in a round whose stated protocol is independent re-verification.
+
+### m4 (minor) — WZ-3(iv)'s "both failures" biconditional is proved in only one of its two halves
+
+> (iv) **(what is NOT preserved).** D_κ does **not** preserve the factorization
+>     type of the residual pointwise, and it is **not** a gauge of the form J-D0
+>     covers. Both failures are co-extensive with ϑ being live:
+>     D_κ has J-D0's gauge form ⟺ ϑ_t = 1 for every t ⟺ D_κ = id.  (L983–986)
+
+The displayed biconditional, and the proof that follows it, establish
+co-extensiveness for the **gauge-form** failure only. For the **type** failure
+the proof says *"For the type clause, one frame suffices: K = F₃, e₁ = 2,
+i(κ) = 1, η = 2, μ = 2"* — one frame establishes the existential ("D_κ is not
+type-preserving as a family"), not the claimed biconditional, whose unproved
+direction is "ϑ live ⟹ some residual changes type at that frame". Symmetrically,
+the flat opening clause ("D_κ does **not** preserve the factorization type") is
+false where ϑ is dead, since D_κ = id there; only the "co-extensive" rider
+rescues it, and that rider is the unproved part. I believe the missing direction
+is true (I checked μ = 2 in both parities: odd q, scaling the constant slot by
+λ ≠ 1 breaks the discriminant character since a non-identity affine map cannot
+preserve the QR character; even q, it breaks Tr(a/b²) since u ↦ Tr((1+λ^{−1})u)
+is a nonzero functional) — but the note proves neither, and nothing in the fold
+consumes it. Flagged because the round's own CRITICAL was an over-stated
+displayed clause of exactly this shape.
+
+### m5 (minor) — §7(f) and WZ-BOX-7 contradict each other, and §7 records no ledger effect for the round's own corpus finding
+
+> So BOX-2's perimeter is neither inherited, enlarged, **nor invoked**, and
+> WELD-ZERO adds no consuming site to it. **This note says nothing about the
+> other sites that do consume it.**  (L1082–1083)
+
+WZ-BOX-7, added by the same round, says something quite specific about two of
+them: GENHN:736–737 and GENH4:370 are both on the weld-face audit's list of ten
+sites *"all routing correctly through J-D0 with the type-preserving bijection
+exhibited inline"* (`WELD_FACE_AUDIT.md`:193–202), and the box establishes that
+at both the exhibited bijection is neither type-preserving nor of J-D0's covered
+form. The box even quotes the audit's CLEAN-list entry —
+
+> which the weld-face audit's CLEAN-site list reproduces as a correctly routed
+> J-D0 site  (L1141–1144)
+
+— but flags only *"the two sites"* (the two frozen notes) for erratum, not the
+audit entry that misclassifies them, and §7, the section headed "CONSUMPTION
+IMPACT (exact ledger effect, IF the arc accepts)", carries **no row** for any of
+it. What r1 discovered is a live corpus-consistency item — two CERTIFIED notes
+and one audit inventory state a reason that is false at live ϑ, and the only
+correct replacement reason currently lives in this 0/2 note — and the "exact
+ledger effect" section does not record it. The fold's own conclusions are
+unaffected (WZ-BOX-7's *"Nothing downstream moves"* is right about the counts).
+
+### m6 (minor, lowest weight) — repair 2's source census omits two lines it quotes
+
+> On 2026-08-14, `grep -cFx` returned **1** for each source line quoted in this
+> repair, in the file and at the line shown. … In `runs/comp13/WZP1_output.log`:
+> 417, 418, 419, 420, 422, 423 (the instrumented block).  (L1513–1522)
+
+The §5.1 block quotes **eight** lines of that file, L417–424; the enumeration
+lists six, omitting 421 (`  post_refine_reads          1944`) and 424 (`  read-type
+census z=2 : '11' 486  '1sq' 972  '2' 1458`). Both are quoted verbatim in the
+note and both return `grep -cFx` → 1 (I checked), so the claim is true of the
+lines listed and the round-total *"Thirty-six source lines across twelve files"*
+merely undercounts what was quoted. One-line fix; recorded because an
+exhaustive-by-construction provenance census is the round's own instrument.
+
+---
+
+## WHAT I CHECKED AND FOUND SOUND (no finding)
+
+1. D_κ well-defined on 𝒟, bijective, inverse correct, occupied-pattern
+   preserving; #D_κ^{−1}(S) = #S for every S ⊆ 𝒟; #PP = |K| − 1 in every
+   characteristic. (R1.1)
+2. Both §4(b)-rewired consumption sites count digit-space objects, so the counts
+   factor through the relabelling; the residual premise is disclosed at arc
+   target 4 and at §5.1(3). (R1.2)
+3. The gauge-form dichotomy at every (e₁, i(κ), η, μ), including the case the
+   brief flags. (R1.3)
+4. The F₃ tooth by hand, both crossed vectors inert, frame realizable. (R2)
+5. §5.1's provenance discipline; and, beyond the charge, **independent
+   reproduction of every §5.1 figure** plus the E31 negative corroboration and
+   the 3,072 GN-REFINE3 split. (R3.2, R3.3)
+6. WZ-PIN facts 5, 6 and 7 re-derived from source, fact 7's
+   g_t = W_κ(μ) − W_κ(μ−t) and its monic normalisation to c_t confirmed. (R3.4)
+7. WZ-BOX-7's adjudication, and that no surviving step of the note consumes the
+   false parenthetical's reason. (R4)
+8. §7's HYP.148 / HYP.139 / HYP.149 dispositions, the FGMN-freedom check, the
+   Display-A byte-reversion, and J-D0-at-no-grade consistency across §4(b), §7,
+   §8. (R5)
+9. All 31 landmarks, all 36 source lines, all 18 md5s (9 old + 9 new), the r1
+   commit's single-file scope, and every replacement span. (R0)
+
+---
+
+VERDICT: CLEAN-W-MINOR | FINDINGS: 0C + 0G + 6m
