@@ -1,10 +1,37 @@
-# PHASE-0b — HYPOTHESIS-CLOSURE LEDGER (v4)
+# PHASE-0b — HYPOTHESIS-CLOSURE LEDGER (v5)
 
-Scope: surviving conditions on the path from `leanfinal`’s `UniformityStatement` through W12/GENIND, the T-unit chain, low-degree checks, tightness census, eight generality audits, and cited external mathematics. This is enumeration and classification only; it resolves none of the listed mathematics. CARRY means keep the condition visible until a named node closes it; MATH is missing proof work and must not be disguised as a field hypothesis; NODE is bounded audit, transcription, citation, interface, or proof-packaging work; MERGED remains indexed but is represented by another row and is not counted twice; CLOSED means a named instrument or run has discharged the row and the reference is recorded in the row itself; **PROPOSED-NODE** (new in v4) means a unit an audit has *synthesized* but no accepted note asserts — it is indexed so it is not lost, and it may re-disposition nothing until it has run as its own unit.
+Scope: surviving conditions on the path from `leanfinal`’s `UniformityStatement` through W12/GENIND, the T-unit chain, low-degree checks, tightness census, eight generality audits, and cited external mathematics. This is enumeration and classification only; it resolves none of the listed mathematics. CARRY means keep the condition visible until a named node closes it; MATH is missing proof work and must not be disguised as a field hypothesis; NODE is bounded audit, transcription, citation, interface, or proof-packaging work; MERGED remains indexed but is represented by another row and is not counted twice; CLOSED means a named instrument, run, or **owner answer** has discharged the row and the reference is recorded in the row itself; **PROPOSED-NODE** (new in v4) means a unit an audit has *synthesized* but no accepted note asserts — it is indexed so it is not lost, and it may re-disposition nothing until it has run as its own unit; **IN-PROGRESS** (new in v5) means a launched unit whose result is not yet in — it may still re-disposition nothing, but it is no longer merely proposed; **OUT-OF-PATH-BY-POLICY** (new in v5) means the row is a real obligation somewhere in the repo but an owner policy answer has put it off the `leanfinal` capstone path, so it no longer conditions the capstone.
 
 v3 folds the Phase-0b completeness sub-sweep’s fifteen delta items (`runs/qgen/HYPLEDGER_deltas.md`, TIER-1/2/3). Every delta quote was re-verified against its source file and line before transcription. Items that are actions rather than conditions are in `MAINTENANCE QUEUE`, not in the row list; TIER-3 off-path items are one line each in `OFF-PATH`.
 
 **v4 folds `runs/qgen/WELD_FACE_AUDIT.md` (census row S-4, executed 2026-08-13 at the WIDENED charter): thirteen corrections COR-WFA-01…13.** Every NOT-REACHED quote was re-verified at its cited file and line before folding; two audit statements did not survive that check and were folded CORRECTED, not verbatim (flagged at their rows and in `CHANGES-FROM-v3`). **Unlike v3, this fold CHANGES the capstone-conditionality preview** — four conjuncts leave and two enter; the BEFORE/AFTER is displayed at the head of the preview section.
+
+**v5 folds the 0d CLOSURE — all nine owner questions answered** (`docs/PROJECT_STATE.md` appends **#47** L4541 (Q1–Q5 + the review-boundary policy), **#48** L4566 (the Q5 rewire, landed as UNIFORMITY-P4), and **#49** L4593 (Q6–Q9 + the new directives)) — plus the ORPHAN-1 verification that v4 deferred and the P4 rename sweep. The needs-Asvin count goes to **0**. Two things this fold does *not* do: it proves no mathematics, and it closes no row on the strength of an answer that did not actually reach that row — every re-disposition below cites the append clause that authorizes it.
+
+> **THE REVIEW-BOUNDARY POLICY (Q4, append #47 — supersedes the per-node SPEC-SIGNED design).**
+> Human-checked = **the MAIN statement and definitions ONLY**: the types, the uniformity
+> theorem, `genuineDensity`/`decidedDensity`, and the cites. Append #47, verbatim: *“every
+> intermediate node is defined/proven as a consumer or discharger of these and is ‘forced right
+> if the entire project works out’; the Hensel statements take care of themselves.”* Append #48
+> adds the changed definitions’ faithfulness paragraphs (unit-note §8) to the core set.
+> **Consequence for this file:** a per-row FAITHFULNESS or “deserves a human read” burden on a
+> **non-core** row is **LIFTED** — such rows keep their NODE disposition as ordinary
+> proof-packaging work and are no longer owner-visible. Rows *inside* the core set are stamped
+> `[CORE-SET]` and stay human-review items. The policy changes the **review surface**, not any
+> row’s mathematical status, and it lifts nothing from a CARRY or MATH row.
+
+> **THE P4 RENAME (Q5, executed — append #48).** Old `genuineDensity` → **`decidedDensity`**
+> (the certified/inner route); old `upperDensity` → **`genuineDensity`** := `⨅N possibleSeq`
+> (the limit of the proportion of coefficient classes consistent with σ — **THE** density).
+> Convention: unsuffixed = the density; `_decided` = the certified route. Every pre-rewire
+> occurrence in this file has been swept and is stamped **[RENAMED per P4]** at the point of
+> use. Names re-verified in the tree at HEAD:
+> `leanfinal/Uniformity/Density/GenuineDensity.lean:245` (`def decidedDensity`), `:266`
+> (`def genuineDensity`), `:348` (`genuineDensity_eq_of_drainage`);
+> `leanfinal/Uniformity/Density/Statement.lean:71` (`UniformityStatement`), `:84`
+> (`UniformityStatementDecided`), `:166` (`TotalMassOne`), `:174`
+> (`totalMassOne_of_drainage`); `Gates.lean:125` (`drainage_one`), `:159`
+> (`sum_genuineDensity_eq_one_of_drainage`).
 
 ## Ledger
 
@@ -13,9 +40,9 @@ v3 folds the Phase-0b completeness sub-sweep’s fifteen delta items (`runs/qgen
 HYP.01  `typeOf` faithfulness
 WHERE: `leanfinal/notes/GENUINE_DENSITY_2026-08-13.md`, STATUS/trust-boundary discussion.
 STATEMENT: On the `disc ≠ 0` locus, the gcd-defined `typeOf` agrees with the classical ramification-degree/residue-degree multiset.
-CONSUMED BY: `genuineDensity`, `UniformityStatement`, and every classical-to-Lean splitting-type transfer.
+CONSUMED BY: **[RENAMED per P4]** `decidedDensity` AND `genuineDensity` (both post-rewire names — the type map keys both routes), `UniformityStatement`, and every classical-to-Lean splitting-type transfer.
 CLASS: lean-open-statement
-PROPOSED DISPOSITION: NODE — formal faithfulness review and packaging; `typeOf_degree` is landed.
+PROPOSED DISPOSITION: NODE **[CORE-SET]** — formal faithfulness review and packaging; `typeOf_degree` is landed. The Q4 policy does NOT lift this one: `typeOf` is the engine of the type definition, so its faithfulness to the classical (e,f)-multiset is inside the human-reviewed core set.
 
 HYP.02  `eq_of_add_mul_eq`
 WHERE: `leanfinal/notes/HENSEL_FACT_2026-08-13.md`, §6.1.
@@ -76,7 +103,7 @@ PROPOSED DISPOSITION: MATH — depends on HYP.04–HYP.08 and remains unproved.
 HYP.10  exactly five cubic splitting types
 WHERE: `leancheck/notes/N3_CHECK_2026-08-13.md`, §§8–12.
 STATEMENT: Every separable monic cubic has one of the five listed (e,f)-multisets.
-CONSUMED BY: converse drainage and cubic sum-to-one.
+CONSUMED BY: converse drainage and the cubic sum-to-one — **[RENAMED per P4]** that target is now the named Prop `TotalMassOne` at n=3, whose supplier is `sum_genuineDensity_eq_one_of_drainage` (`Statement.lean:166/174`); it is NOT a clause of `UniformityStatement`.
 CLASS: lean-open-statement
 PROPOSED DISPOSITION: NODE — finite multiset enumeration from landed `typeOf_degree`; LOW-CONFIDENCE until checked in Lean.
 
@@ -92,7 +119,7 @@ WHERE: `N3_CHECK_2026-08-13.md`, §§3,8; `GENUINE_DENSITY_2026-08-13.md`.
 STATEMENT: Implemented ordering and multiset normalization agrees with the classical convention.
 CONSUMED BY: exact-event equality with `typeOf`.
 CLASS: audit-work-item
-PROPOSED DISPOSITION: NODE — human definitional audit; needs-Asvin question 4.
+PROPOSED DISPOSITION: NODE **[CORE-SET]** — human definitional audit. **Question 4 ANSWERED [v5, append #47]:** not by discharging this row but by *placing* it — the `(e,f)` ordering/multiset convention is part of the type definition, so it stays inside the human-reviewed core set (“the types”) and remains a human read. What lifts is the *per-row* framing: it is reviewed as one clause of the core-set definitional audit (HYP.98), not as a standalone owner call. No owner question remains.
 
 ### Citation and theorem-scope residue
 
@@ -115,21 +142,21 @@ WHERE: `CITE_SCOPE_RESOLUTION_2026-08-13.md`, NS-7 and §5 Stage 3.
 STATEMENT: The project’s MacLane/Okutsu construction terminates over every complete DVR in scope.
 CONSUMED BY: finite certificates, GENIND termination, finite menu/drain descriptions.
 CLASS: cite-scope-residue
-PROPOSED DISPOSITION: CARRY — owner choice between recommended citation and internal F-2 proof; needs-Asvin question 1.
+PROPOSED DISPOSITION: **CARRY-as-CITE — question 1 ANSWERED [v5, append #47]** *(owner, verbatim: “cite thm 5.2 for now at least”)*. The choice is made: **[AGNPRW] Thm 5.2 is the termination resolution for the informal corpus**, and the internal F-2 index-descent proof is NOT taken. The row stays CARRY because the answer resolves the *branch*, not the *obligation* — append #47 continues: *“in Lean, NS7 stays a carried hypothesis until proved or declared-with-faithfulness.”* So `NS7(O)†` stands in preview Display A, now **undaggered** (no owner call left on it) and re-labelled as a cite rather than a choice. Three consequences recorded, none of them an owner question: **(a)** citing a theorem *by number* makes HYP.17’s publisher-number verification load-bearing on this row — it is elevated there; **(b)** MQ-3 ([GMN12] §4 characteristic audit, unperformed) qualified only the internal-F-2 branch, which is not taken, so MQ-3 **lapses as a question-1 rider** and survives only as general cite hygiene; **(c)** the owner’s “for now at least” is recorded as a revisit licence, not as an open question — re-opening would be a new decision, not an unanswered one.
 
 HYP.16  `NS-15` finite-depth bound
 WHERE: `CITE_SCOPE_RESOLUTION_2026-08-13.md`, NS-15/F-3.
 STATEMENT: If retained, replace B(n,p) by depth ≤ ½v(disc f).
 CONSUMED BY: `L5fix(b)` and finite certificates; capstone needs finiteness, not this constant.
 CLASS: cite-scope-residue
-PROPOSED DISPOSITION: NODE — available only with HYP.15’s internal F-2 branch; the citation gives no explicit constant.
+PROPOSED DISPOSITION: **CLOSED — LAPSED per question 1 [v5, append #47 / COR-13].** The coupling recorded at COR-13 fires: the `≤ ½ v(disc f)` depth bound was available **only** on HYP.15’s internal-F-2 branch, and the owner took the **cite** branch, which *“gives no explicit constant.”* So the replacement this row proposed is not available and is not retained — the row is disposed, not deferred. Nothing downstream breaks, because the row’s own CONSUMED-BY already records that **the capstone needs finiteness, not this constant**, and finiteness is exactly what the [AGNPRW] Thm 5.2 cite supplies (HYP.15). Re-opening condition, stated so it is not lost: any future consumer that needs an *explicit* depth constant must re-open the F-2 branch — and would then also inherit MQ-3, the unperformed [GMN12] §4 characteristic audit.
 
 HYP.17  publisher-number verification
 WHERE: `CITE_SCOPE_RESOLUTION_2026-08-13.md`, verdict table.
 STATEMENT: Check AGNPRW, GN15, and Kuhlmann theorem numbering against publisher versions.
-CONSUMED BY: bibliography and attribution.
+CONSUMED BY: bibliography and attribution — **and, since v5, HYP.15’s trusted base.**
 CLASS: audit-work-item
-PROPOSED DISPOSITION: NODE — bibliographic only.
+PROPOSED DISPOSITION: NODE **[CORE-SET]** — **ELEVATED at v5, no longer “bibliographic only.”** Question 1 answered by citing **[AGNPRW] Thm 5.2 by number**, so the AGNPRW half of this row is now load-bearing: if the publisher numbering differs, the project’s termination cite points at the wrong theorem. Cites are inside the Q4 core set, so this stays owner-visible as a review item — but it is a bounded lookup, not an owner decision, and it opens no question.
 
 HYP.18  `AX-DEFECT` correction
 WHERE: `CITE_SCOPE_RESOLUTION_2026-08-13.md`, NS-14.
@@ -285,7 +312,7 @@ WHERE: `TIGHTNESS_CENSUS_2026-08-11.md`, I-5.
 STATEMENT: J-D0 gauge-blindness is PROVED grade with 68,523/0 machine evidence but below process bar because the two-clean hostile arc has not run.
 CONSUMED BY: JD0 inside [H-c] — **LOCATOR CORRECTED (v4, COR-WFA-02 knock-on):** `[H-c]` is NOT J-D0’s home on the capstone path. J-D0 is consumed DIRECTLY at seven cone notes at FRAME grade; see HYP.74 for the verified site list. This grade cap therefore bears on those seven sites, not on the unreachable `[H-c]` package.
 CLASS: grade-cap
-PROPOSED DISPOSITION: NODE — owner chooses hostile arc or machine-grade sign-off; question 6.
+PROPOSED DISPOSITION: **CLOSED-SIGNED — question 6 ANSWERED [v5, append #49].** The owner **signed the 68,523/0 machine grade as the bar**; the two-clean hostile arc is not required for J-D0. Reasoning recorded at #49 in the owner’s frame: J-D0’s gauge-blindness *“MUST be true for the proof strategy/uniformity to work at all”*, and conviction of truth implies any proof defect would be fixable. The grade cap therefore no longer caps the seven direct cone sites (HYP.74) at which J-D0 is consumed. **The optional post-reset codex pass is NOT cancelled — it is demoted to belt-and-braces and moved to the maintenance queue as MQ-4**, so this row closes without swallowing a queued action.
 
 HYP.40  single-w B″ transport
 WHERE: `TIGHTNESS_CENSUS_2026-08-11.md`, I-2; `GENTOW5_WI_2026-08-10.md`; SOL certification row 18.
@@ -599,30 +626,87 @@ PROPOSED DISPOSITION: CARRY.
 HYP.83  `(VD-m)`
 WHERE: W12 L219–221; GRTJB value ledger.
 STATEMENT: Value-decomposition law holds for m≥2; unconditional only m≤1, while VD-2 is false on 10/13 roster boundaries.
-CONSUMED BY: JB-CREAD and [H-c]. **[WELD-FACE-AUDIT 2026-08-13: inherits NOT-REACHED from its `[H-c]` parent (HYP.22). Zero cone consumers found; W12 L218–220 displays this row among the value-layer hypotheses it records as ABSENT.]**
+CONSUMED BY: JB-CREAD and [H-c] — **both verified UNREACHABLE at v5 (see the ORPHAN-1 verification block below). No capstone-path consumer.**
 CLASS: named-obligation
-PROPOSED DISPOSITION: CARRY — **ORPHANED, flagged not resolved (ORPHAN-1).** The `[H-c]` conjunct that carried this row left preview Display A in v4, so a CARRY disposition (“keep the condition visible”) now has nowhere to be visible. No COR-WFA line authorizes re-dispositioning it, so v4 records the inconsistency instead of silently curing it; re-disposition is a named v5 item and is surfaced as such to the owner.
+PROPOSED DISPOSITION: **NODE** (re-dispositioned CARRY→NODE, **COR-ORPH-01**) — record OUT of the cone; retain as a GRTJB/weld-internal frontier row. ORPHAN-1 is CURED, and cured by fresh verification rather than by inheritance.
+
+> **ORPHAN-1 VERIFICATION [v5] — applies to HYP.83, HYP.84, HYP.85, HYP.86.**
+> v4 left these four CARRY because no COR-WFA line authorized moving them; the charge for
+> v5 was to verify their consumption sites independently rather than inherit the parent’s
+> verdict. Done, by the weld audit’s own per-row method, re-run from scratch at HEAD.
+>
+> **(1) Direct reach into the cone: one occurrence, and it is a disclaimer.** Fixed-string
+> grep for `VD-m`, `C-coll`, `R-coll`, `PERIM` across the audit’s twenty cone notes returns
+> **exactly one** hit for the four labels — `W12_PROOF_2026-08-08.md:219`, verbatim: *“with NO
+> value-layer hypothesis ((VD-m), (C-coll), (R-coll), (DMULT-s), PERIM-μ **all absent**, J-D0
+> frame)”*. That is a non-consumption: it is W-12.A’s census display recording their absence.
+> (The one further `PERIM` hit, `GENHN_PROOF:1353`, is the unrelated string
+> “CERTIFIED-PERIMETER FINDING”.) Nineteen of twenty cone notes contain none of the four.
+>
+> **(2) Reach through the two surviving weld faces — the question v4 could not have asked,
+> because one of those faces was only named in v4.** After the audit the spine consumes exactly
+> two weld faces: **J-D0** (HYP.74) and **W-9 inside GENHN-4 layer 1** (HYP.148). Both were
+> checked directly:
+> * **J-D0 does not carry them — it is the theorem that deletes them.**
+>   `JD0_PROOF_2026-08-08.md:277–278`, verbatim: *“**Fence bookkeeping** — count-layer consumers
+>   **need not carry** PERIM-μ / (C-coll)/(R-coll)/(VD-m); this deletes the fence-patching genre
+>   from the J-D block entirely.”* Re-affirmed post-certification at L653–656: *“**Fence
+>   bookkeeping survives.** PERIM-μ, (C-coll), (R-coll), and (VD-m) remain unnecessary for
+>   count-layer consumers whenever the consumer uses the L3 × L4 coefficient and the documented
+>   gauge dictionary.”* (That trailing clause is the one live proviso, and it is a property of
+>   the consumer, not of these four rows.)
+> * **W-9 does not carry them either.** `GRTJC_PROOF_2026-08-08.md:1777` states the corollary’s
+>   hypotheses in full — *“**COROLLARY W-9.** **Given W-6, W-7, W-8:** …”* — with no value-layer
+>   fence. GRTJC does inherit `(VD-m)`/`(R-coll)` from JB-BOX-2, but it **localizes** that
+>   inheritance: JC-BOX-6, L2045–2047, *“**§3.3’s germ display** additionally rides JB-BOX-2’s
+>   geography ((VD-m) free only at m ≤ 1; JA-VDIND at m ≥ 2; JA-BOX-2’s (R-coll) at m ≥ 3 …)”* —
+>   i.e. it attaches to the germ display inside **W-7’s OB-3 VALUE** sub-clause, at L1525. What
+>   GENHN consumes is the *structural* clause, not the value one — `GENHN_PROOF:92–94`,
+>   verbatim: *“COROLLARY W-9’s dim_K 𝒜(T) = E (the stage slot geometry: E graded K-lines per
+>   integer height, the twisted algebra K^c[ℤ/E]) and JC-LOAD’s graded no-cancellation”*, and
+>   L908–910: *“At general μ, layer 1 CONSUMES the W-9 graded frame (accepted 2/2) rather than
+>   re-deriving the carry digit-by-digit”*. GRTJC’s own failure analysis separates the tiers
+>   exactly this way (JC-BOX-3, L1987–1989, already re-verified in v4): if the value tier fails,
+>   *“**the structural clauses stand**.”* Confirming the severance mechanically: **`W-7`,
+>   `JB-CREAD`, and `JB-BOX-2` each occur ZERO times in all twenty cone notes** — the germ
+>   display is named nowhere on the path.
+>
+> **(3) Nothing else reaches them.** Zero occurrences of any of the four labels in `T1`–`T5`
+> (the whole T-unit chain), in `docs/HUMAN_PROOF.md`, and in **both Lean trees** (`leanfinal/`,
+> `leancheck/`). The tightness census names them once, at S-7, under `W2-VALUE` — which is
+> HYP.76, itself signed NOT-REACHED. Corpus-wide the remaining hits are the weld notes
+> themselves, their pass reports and certification briefs, three `docs/in-progress/` design
+> notes, `W10_PROOF` (out of cone, census O-11), and this ledger.
+>
+> **Verdict: NOT-REACHED, signed independently — not inherited.** All four move CARRY→NODE,
+> the same disposition the audit gave the other nine NOT-REACHED rows (HYP.21/22/75/76/77).
+> **What this does NOT mean:** none of the four is proved, none is refuted (`(VD-m)` is in fact
+> *false* on 10/13 roster boundaries at m ≥ 2, per HYP.83’s own statement), and each remains a
+> live obligation *inside the weld layer* for any future consumer that re-enters it. They leave
+> the capstone’s conditionality; they do not leave the corpus. The preview already omits them
+> (v4), so **this cure moves no conjunct** — it only makes the row dispositions consistent with
+> the display that was already correct.
 
 HYP.84  `(C-coll)`
 WHERE: W12 L219–221; GRTJB value ledger.
 STATEMENT: Claimed collection law holds at order≥2 value layer.
-CONSUMED BY: [H-c]. **[WELD-FACE-AUDIT 2026-08-13: inherits NOT-REACHED from HYP.22; zero cone consumers.]**
+CONSUMED BY: [H-c] — **verified UNREACHABLE at v5; no capstone-path consumer.** `(C-coll)` is the **W-2** side of the value layer (`WELD_SYNTHESIS_2026-08-05.md:229`: *“W-2 ((C-coll)), J-A ((R-coll)) and J-B ((VD-m))”*), and W-2/`W2-VALUE` is itself NOT-REACHED (HYP.76) — so this row has no live parent on either the `[H-c]` or the W-2 side. Census S-7 lists it under `W2-BOX-1/(C-coll)`, i.e. under HYP.76.
 CLASS: named-obligation
-PROPOSED DISPOSITION: CARRY — **ORPHANED, flagged not resolved (ORPHAN-1)**; see HYP.83.
+PROPOSED DISPOSITION: **NODE** (re-dispositioned CARRY→NODE, **COR-ORPH-02**) — record OUT of the cone; retain as a GRTW2/weld-internal frontier row. See the ORPHAN-1 VERIFICATION block at HYP.83, which covers this row.
 
 HYP.85  `(R-coll)`
 WHERE: W12 L219–221; GRTJB value ledger.
 STATEMENT: Claimed residual collection law holds at order≥2 value layer.
-CONSUMED BY: [H-c]. **[WELD-FACE-AUDIT 2026-08-13: inherits NOT-REACHED from HYP.22; zero cone consumers.]**
+CONSUMED BY: [H-c] — **verified UNREACHABLE at v5; no capstone-path consumer.** `(R-coll)` is the **J-A** side (`WELD_SYNTHESIS:229`) and enters GRTJC only as `JA-BOX-2`’s fence *“at m ≥ 3”* inside §3.3’s germ display (`GRTJC_PROOF:2046–2047`) — a display no cone note names (`W-7`, `JB-CREAD`, `JB-BOX-2`: zero hits across all twenty). J-D0 explicitly relieves count-layer consumers of it (`JD0_PROOF:277–278`).
 CLASS: named-obligation
-PROPOSED DISPOSITION: CARRY — **ORPHANED, flagged not resolved (ORPHAN-1)**; see HYP.83.
+PROPOSED DISPOSITION: **NODE** (re-dispositioned CARRY→NODE, **COR-ORPH-03**) — record OUT of the cone; retain as a GRTJA/weld-internal frontier row. See the ORPHAN-1 VERIFICATION block at HYP.83, which covers this row.
 
 HYP.86  `PERIM-μ`
 WHERE: W12 L219–221; weld value ledgers.
 STATEMENT: Multiplicity perimeter law holds on all claimed order≥2 faces.
-CONSUMED BY: [H-c]. **[WELD-FACE-AUDIT 2026-08-13: inherits NOT-REACHED from HYP.22; zero cone consumers — `PERIM-μ` appears in no cone note.]**
+CONSUMED BY: [H-c] — **verified UNREACHABLE at v5; no capstone-path consumer.** `PERIM-μ` is WELDMASTER §S3’s one-perimeter character-triviality condition (`JD0_PROOF:66–67`), and WELDMASTER is *“named in S7.1’s (CS-1..3) pricing only”* (GENIND L1523–1524) — pricing, not consumption. Independently re-confirmed here: the string `PERIM-μ` occurs in **zero** of the twenty cone notes. J-D0 names it first in the list of fences count-layer consumers need not carry (`JD0_PROOF:277–278`, L653).
 CLASS: named-obligation
-PROPOSED DISPOSITION: CARRY — **ORPHANED, flagged not resolved (ORPHAN-1)**; see HYP.83.
+PROPOSED DISPOSITION: **NODE** (re-dispositioned CARRY→NODE, **COR-ORPH-04**) — record OUT of the cone; retain as a WELDMASTER-internal frontier row. See the ORPHAN-1 VERIFICATION block at HYP.83, which covers this row.
 
 HYP.87  `GENIND-BOX-3`
 WHERE: GENIND §S8 L1361–1366.
@@ -678,35 +762,35 @@ WHERE: `GENUINE_DENSITY_2026-08-13.md`, §2.5.
 STATEMENT: Freeze universe of O, q-evaluation/coercion, and per-O denominator nonvanishing; old σ.degree point is superseded by `typeOf_degree`.
 CONSUMED BY: phase 0d.
 CLASS: owner-definition-decision
-PROPOSED DISPOSITION: NODE — question 3.
+PROPOSED DISPOSITION: **CLOSED-SIGNED — question 3 ANSWERED [v5, append #47]** (*“Q3 capstone signature’s three points SIGNED”*). The three signed points survive the P4 rewire **verbatim** (append #48: *“Asvin’s three signed points preserved verbatim”*) and are re-verified in the tree at HEAD, `leanfinal/Uniformity/Density/Statement.lean:55–58`: *“(i) The `∀ O` is over `Type` (universe 0)… (ii) The rational function is evaluated at `(q : ℚ)` and the equality is read in `ℝ` via the coercion. (iii) `den.eval q ≠ 0` is demanded per-`O`, not globally.”* The fourth point is likewise settled in the same docstring, in the opposite direction from the v1 reading: *“(iv) The hypothesis `σ.degree = n` **does real work** (`typeOf_degree`): off-degree `σ` are forced to density `0`”* — so it is not superseded-as-idle but superseded-as-*discharged*. Both `UniformityStatement` (`:71`) and `UniformityStatementDecided` (`:84`) carry the signed signature.
 
 HYP.95  Haar bridge
 WHERE: `GENUINE_DENSITY_2026-08-13.md` §3B.4; `N2_EXACT_2026-08-13.md` §7.
 STATEMENT: Limit of decided proportions equals Haar measure of the type locus.
-CONSUMED BY: informal W-12.D Haar conclusion, not weaker Lean definition.
+CONSUMED BY: informal W-12.D Haar conclusion — **and, as of v5, by nothing on the capstone path.**
 CLASS: optional-theorem-leg
-PROPOSED DISPOSITION: MATH — live optional bridge; question 5.
+PROPOSED DISPOSITION: **CLOSED — question 5 ANSWERED, NO HAAR [v5, append #47/#48].** The owner redefined the density rather than bridging to Haar: `genuineDensity` **IS** the limit of the proportion of σ-consistent classes, full stop — so the capstone asserts a proportion limit and never asserts a Haar measure, and this bridge is no longer a leg of anything frozen. The Lean tree says the same in its own words at HEAD, `leanfinal/Uniformity/Density/GenuineDensity.lean:263–265`: *“**What this is NOT.** It is not asserted here to be the Haar measure of the type-σ locus: that bridge needs measurability of the locus and is not formalized (see the unit note §3B.4). `genuineDensity` is, formally, the limit of the consistent-class proportions, full stop.”* **Honesty fence on this closure:** the row is closed as *off-path*, not as *proved* — the Haar identification remains an unproved (and unformalized) mathematical statement, and it stays true that the informal W-12.D text draws a Haar conclusion this ledger does not underwrite. Anyone re-introducing a Haar claim re-opens this row and owes the measurability leg. Also folded here: **MISS-05 / DEF-07’s Haar question is CLOSED by the same answer.**
 
 HYP.96  `AX-CELLREC` / `AX-LEAF`
 WHERE: census L-3.
 STATEMENT: Draft faithfulness entries gate the older Lean capstone path.
-CONSUMED BY: theorem-strength older realization.
+CONSUMED BY: theorem-strength older realization **— the quarry’s measure route only; `leanfinal` never imports them.**
 CLASS: owner-axiom-decision
-PROPOSED DISPOSITION: NODE — question 7.
+PROPOSED DISPOSITION: **OUT-OF-PATH-BY-POLICY — question 7 ANSWERED [v5, append #49].** *“leanfinal stays LEAN-CORE-ONLY; the AX-CELLREC/AX-LEAF axioms stay QUARANTINED in the quarry’s measure route (no file move needed — leanfinal never imports them; policy now explicit).”* So these axioms condition the **quarry**, not the capstone, and the census’s worry that they *“gate the LEAN capstone claim”* is answered: they do not gate `leanfinal`. **What the closure does NOT say:** the faithfulness entries in `docs/AXIOM_FAITHFULNESS.md` are still DRAFT, and they still gate any *quarry* measure-route claim — the policy moved the row off the capstone path, it did not complete the entries. Enforcement instrument already standing: `lake env lean LeanUrat/AxChk_baseline.lean`, the footprint census.
 
 HYP.97  `RealInstanceAt.faithful`
 WHERE: census L-4; `Stage2/UniformityTarget.lean`.
 STATEMENT: True-placeholder consumption at theorem strength is illegitimate before gates.
 CONSUMED BY: older Stage2 realization, not automatically new Lean-core projects.
 CLASS: owner-axiom-decision
-PROPOSED DISPOSITION: NODE — question 7.
+PROPOSED DISPOSITION: **OUT-OF-PATH-BY-POLICY — question 7 ANSWERED [v5, append #49]**, same clause as HYP.96 (question 7 explicitly covers *“census L-4, the `RealInstanceAt.faithful` placeholder”*). `leanfinal` is Lean-core-only and does not realize through `Stage2/UniformityTarget.lean`; the placeholder conditions the quarry. Consistent with the two disclosed `sorry`s in that same superseded file, already recorded under `OFF-PATH`. **Fence:** the placeholder is still illegitimate to consume at theorem strength *inside the quarry* — this row is off the capstone path, not repaired.
 
 HYP.98  `DEFINITION-AUDIT`
 WHERE: census L-5; GENUINE_DENSITY definition audit.
 STATEMENT: Frozen event, density, type, evaluation, and convention definitions match the mathematical capstone.
 CONSUMED BY: phase 0d.
 CLASS: audit-work-item
-PROPOSED DISPOSITION: NODE — includes HYP.12/94/111 interfaces.
+PROPOSED DISPOSITION: NODE **[CORE-SET]** — includes HYP.12/94/111 interfaces. **RETARGETED at v5 by the Q4 policy:** this row *is* the core-set definitional audit, so it is the one place the human-review surface lives. Its scope is now exactly the core set — the types, the uniformity theorem, `genuineDensity`/`decidedDensity`, the cites, and (per append #48) the changed definitions’ faithfulness paragraphs — and it no longer carries the whole ledger’s definitional debt. HYP.94 closed under it (signature signed); HYP.12 rides inside it; HYP.111’s definitional half rides inside it while its deep-tail reconciliation half lifts out. **Standing directive folded in (append #49, directive 2):** *“keep one warning sign out on the main definitions/axiom-cites and PERIODICALLY PULL FRESH EYES onto the core set as the Lean build proceeds”* — a recurring fresh-context definitional audit at chapter milestones, not a one-shot review.
 
 HYP.99  T3/T5 frame staleness
 WHERE: T5 rider m-2; T3 frame; T1 r12–r13.
@@ -755,7 +839,7 @@ WHERE: T1 §5 item 9.
 STATEMENT: Gauge-invariant residual factor patterns become splitting types only via surrounding tower correctness.
 CONSUMED BY: T1-to-capstone transfer.
 CLASS: interface-obligation
-PROPOSED DISPOSITION: NODE — but ROUTED TO 0d (v3, delta item 7): both Phase-0a shards escalate this row to an owner decision. `spec/EFF-T3.md:1610` heads it “**OPEN-CALL 1 — FOR-0d — NEEDS ASVIN**” and states “Neither T3 nor the identical T1 fence names that theorem… Phase 0d must decide the trust-boundary theorem connecting residual factor patterns to splitting types”; `spec/EFF-T1-s1of3.md` OPEN-CALL 4 records the same missing designation. It is not a new owner question — it is the naming half of the trust boundary already inside question 4’s definitions package. See HYP.141.
+PROPOSED DISPOSITION: NODE — but ROUTED TO 0d (v3, delta item 7): both Phase-0a shards escalate this row to an owner decision. `spec/EFF-T3.md:1610` heads it “**OPEN-CALL 1 — FOR-0d — NEEDS ASVIN**” and states “Neither T3 nor the identical T1 fence names that theorem… Phase 0d must decide the trust-boundary theorem connecting residual factor patterns to splitting types”; `spec/EFF-T1-s1of3.md` OPEN-CALL 4 records the same missing designation. It is not a new owner question — it is the naming half of the trust boundary already inside question 4’s definitions package. See HYP.141. **v5 update:** question 4 is ANSWERED by the review-boundary policy, and this row lands on the **core** side of it — the theorem connecting residual factor patterns to splitting types is the trust boundary of the *type* definition, so it rides inside HYP.98’s core-set audit next to HYP.01. The row keeps its NODE disposition; what changes is that it is no longer waiting on an owner decision, and the two shard OPEN-CALLs that escalated it (`EFF-T3` OPEN-CALL 1, `EFF-T1` OPEN-CALL 4) are answered by placement: name the theorem inside the core-set audit, do not open a tenth question.
 
 HYP.106  nonzero-digit lift contract
 WHERE: T1 §5 items 15–16.
@@ -795,9 +879,9 @@ PROPOSED DISPOSITION: NODE.
 HYP.111  `W12-BOX-7`
 WHERE: W12 boxes.
 STATEMENT: “Decided” means certified from window digits for all disc≠0 lifts; conventions can differ on deep-tail TRP.
-CONSUMED BY: leaf events/0d definitions.
+CONSUMED BY: leaf events/0d definitions — **[RENAMED per P4]** the Lean carrier of “decided” is now `decidedDensity` (old `genuineDensity`).
 CLASS: owner-definition-decision
-PROPOSED DISPOSITION: NODE — question 4.
+PROPOSED DISPOSITION: NODE — **question 4 ANSWERED [v5, append #47], and this row SPLITS under the answer.** (a) The **definitional half** — what the predicate “decided” means, since it is what `decidedDensity` counts — is CORE and rides inside HYP.98’s core-set audit. (b) The **deep-tail TRP reconciliation half** — that two conventions can disagree on deep-tail members — is a consumer-side convention question on an intermediate node, so its FAITHFULNESS burden is **LIFTED** by the review-boundary policy: it stays ordinary NODE proof-packaging and is no longer owner-visible. Note the P4 rewire *narrows* the exposure: the frozen capstone’s headline density is now `genuineDensity`, the **outer** proportion limit, which does not depend on where the decided/undecided line is drawn at all; the deep-tail convention can only move `decidedDensity`, and the two are tied under drainage.
 
 HYP.112  T4 μ₂≥3 candidate fence
 WHERE: T4 acceptance/candidate.
@@ -983,7 +1067,7 @@ WHERE: `lean/notes/openmath/HEX3_PROOF_2026-08-08.md` L437, L681–693; `GENIND_
 STATEMENT: The exact law for the σ-undecided mass is not derived — “q^N ≤ U₃^σ ≤ U₃^conv = q·u(q,N) and its exact law is NOT derived” (HEX3 L437) — because the TRP tail-σ transport loses ghost digits.
 CONSUMED BY: GENIND’s S8.2 W-12.B consistency clause, pinned open at HEAD: “r3 b6a1d69 (17:53: the S8.2 W-12.B consistency clause conditionalized on the open HEX3-BOX-1 tail-σ lemma)”. Failure price displayed at HEX3 L684–686: undecided(3,q,N)·q^(−2N) diverges linearly in N and “W-12.B would be FALSE at n = 3”. NOT consumed by drainage: HEX3 L692–693 — “the (hExhaust-3) discharge never needed the split; only this aside’s W-12.B corroboration is conditional on it.”
 CLASS: conditional-theorem-leg
-PROPOSED DISPOSITION: MATH — the tail-σ lemma is unproved and now has a named live consumer, so it is no longer index-only under HYP.29. **The delta’s framing is corrected here**: census O-10 (OUT-OF-CONE, “open (refinement)”, “Drainage consumes only the proved conservative upper bound U₃^conv”) and GENIND’s pin record are BOTH accurate and do not contradict — they name different consumers (drainage vs. the n=3 W-12.B corroboration aside). Carry-vs-node is owner question 9. (v3 delta item 2.)
+PROPOSED DISPOSITION: MATH — the tail-σ lemma is unproved and now has a named live consumer, so it is no longer index-only under HYP.29. **The delta’s framing is corrected here**: census O-10 (OUT-OF-CONE, “open (refinement)”, “Drainage consumes only the proved conservative upper bound U₃^conv”) and GENIND’s pin record are BOTH accurate and do not contradict — they name different consumers (drainage vs. the n=3 W-12.B corroboration aside). Carry-vs-node was owner question 9. **QUESTION 9 ANSWERED [v5, append #49]** — owner: *“doesn’t matter too much”*, disposed per the standing recommendation: **HEX3-BOX-1 is now NAMED PARENTHETICALLY inside the n=3 perimeter clause of the preview** (edit executed; see the sentence following the dagger note in `Capstone-conditionality preview`). This is deliberately the middle option: disclosure without promotion — it is *visible* in the preview but is **not** a conjunct of Display A’s hypothesis block, because `hExhaust3` provably never needed it (HEX3 L692–693) and its only live consumer is the W-12.B corroboration aside. The row’s disposition is unchanged: **MATH**, an unproved lemma. **PREMISE CORRECTION relayed with the answer (append #49), recorded here because it corrects a natural misreading of this row:** the n≤3 menus and drainage **DO** enter the final proof — they are the induction’s base cases, and GENIND consumes HMENU3/HEX3 as base data. What stays out of the load-bearing chain is **HEX3-BOX-1 specifically**, not the n=3 work around it. (v3 delta item 2; v5 question-9 fold.)
 
 HYP.138  N3_CHECK §6d HEX3 reconciliation
 WHERE: `leancheck/notes/N3_CHECK_2026-08-13.md` L359, L366, L372.
@@ -1069,9 +1153,9 @@ PROPOSED DISPOSITION: **CARRY** (COR-WFA-12) — and it is now an explicit previ
 HYP.149  `GENHN-BOX-2` discharge route — gr(O_L) re-aim + GENTOW5-A0/A1
 WHERE: **`runs/qgen/WELD_FACE_AUDIT.md` §4 — the audit’s own synthesis.** Supplying displays, all re-verified at HEAD: `GENHN_PROOF_2026-08-08.md` [r2] erratum L515–517 (“S6.1 layer 1’s graded frame re-aims at **gr(O_L)** … every graded read of an evaluated element happens in gr(O_L)”), with the forcing chain establishing L a complete DVR field at L500–512; `GENTOW5_PROOF_2026-08-09.md` LEMMA GENTOW5-A0 at L159–183 (“gr of a valued field is a graded division ring”; “pointwise, at a root, there is no carry problem”) and LEMMA GENTOW5-A1 at L209–248 (the coefficient-for-coefficient dictionary, `c_j = ι(γ_j)·θ_{μ₂−j}^{−1}`, x0-free); GENHN-2’s pointwise-faithful slot passage.
 STATEMENT: One fold unit rewrites GENHN-4 layer 1 in the A0/A1 idiom, replacing the imported W-9 twisted algebra with gr of the leaf field, and strikes GENHN-BOX-2. If it runs clean it would **retire BOTH HYP.148 and HYP.139** — taking the weld layer’s contribution to the capstone’s conditionality from one face to zero — and would remove two conjunct-bearing obligations from the preview. Non-circularity checked by the audit: at level 1 GENHN **derives** its own S4 cocycle from the normalizer arithmetic (L732–733, re-verified: “n(κ)^t = ẑ^{fl}·n(tκ) with the explicit integer fl = the wrap count — W-9’s cocycle, literal”) and only **identifies** it with W-9’s, so the route does not re-consume the face it replaces. Independent corroboration that the missing content is the right target: SG-2’s item X(ii) (the additive action T ↦ T+s) was DELIVERED at attempt grade (census O-1).
-CONSUMED BY: **nothing — and it may re-disposition nothing.** It is indexed so the synthesis is not lost, and so that any future claim to have discharged HYP.148 must point at a unit rather than at this row.
+CONSUMED BY: **nothing — and it STILL may re-disposition nothing.** It is indexed so the synthesis is not lost, and so that any future claim to have discharged HYP.148 must point at a unit rather than at this row.
 CLASS: audit-synthesized-unit
-PROPOSED DISPOSITION: **PROPOSED-NODE** — audit-synthesized, asserted by **no accepted note** (the audit states this itself: “the route is this audit’s synthesis, not a corpus display”). It needs its own unit before it can re-disposition anything, and it is deliberately NOT counted as a discharge of HYP.148 or HYP.139, both of which stand at full strength above. **One audit caveat is CORRECTED on fold:** the audit’s caveat (b), “GENTOW5 is itself at grade 0/2 (hostile arc owed), so the fold inherits that arc”, is STALE at HEAD. `GENTOW5_PROOF_2026-08-09.md` L2026 reads “Grade: **ACCEPTED 2/2** stands, ANNOTATED by RUN A”, and `docs/SOL_CERTIFICATION_LEDGER_2026-08-12.md` row 10 reads GENTOW5 “**CERTIFIED 2026-08-12**”; by this ledger’s own standing rule the 2026-08-12 SOL certification ledger is HEAD-of-record for unit grades and supersedes in-note grade boxes (the audit appears to have read one of the L1471/L1531/L1612 repair-round “0/2 UNCHANGED” lines, which predate the acceptance append). The proposed unit therefore does **not** inherit a 0/2 arc — this strengthens the route rather than weakening it, and it does not change the PROPOSED-NODE disposition, which rests on the absence of any asserting note, not on GENTOW5’s grade. Same correction pattern as HYP.140.
+PROPOSED DISPOSITION: **IN-PROGRESS** (re-dispositioned PROPOSED-NODE→IN-PROGRESS, **COR-WZ-01**) — **the WELD-ZERO composition unit was LAUNCHED 2026-08-14** under the owner’s directive at append #49: *“Lets also try the candidate route synthesized by the audit right now”* — compose GENHN’s [r2] `gr(O_L)` re-aim + GENTOW5-A0/A1 into the fold retiring GENHN-BOX-2 (HYP.148) and the W-1 transport (HYP.139), taking the weld layer’s contribution to the capstone’s conditionality **from one face to zero**. Launch terms recorded verbatim from #49: **corpus-grade note, 0/2, hostile arc owed post-reset.** **What IN-PROGRESS does and does not license.** It licenses nothing new: HYP.148 stays CARRY at full strength and HYP.139 stays MATH at full strength until this unit *lands and passes its arc*. A launched unit is not a result, and the preview is untouched by this re-disposition. The bucket exists only so a reader can tell “synthesized but unowned” (v4) from “running” (v5). The v4 reasoning for the old bucket is retained below and still governs what may be claimed: audit-synthesized, asserted by **no accepted note** (the audit states this itself: “the route is this audit’s synthesis, not a corpus display”). It needs its own unit before it can re-disposition anything, and it is deliberately NOT counted as a discharge of HYP.148 or HYP.139, both of which stand at full strength above. **One audit caveat is CORRECTED on fold:** the audit’s caveat (b), “GENTOW5 is itself at grade 0/2 (hostile arc owed), so the fold inherits that arc”, is STALE at HEAD. `GENTOW5_PROOF_2026-08-09.md` L2026 reads “Grade: **ACCEPTED 2/2** stands, ANNOTATED by RUN A”, and `docs/SOL_CERTIFICATION_LEDGER_2026-08-12.md` row 10 reads GENTOW5 “**CERTIFIED 2026-08-12**”; by this ledger’s own standing rule the 2026-08-12 SOL certification ledger is HEAD-of-record for unit grades and supersedes in-note grade boxes (the audit appears to have read one of the L1471/L1531/L1612 repair-round “0/2 UNCHANGED” lines, which predate the acceptance append). The proposed unit therefore does **not** inherit a 0/2 arc — this strengthens the route rather than weakening it, and it does not change the PROPOSED-NODE disposition, which rests on the absence of any asserting note, not on GENTOW5’s grade. Same correction pattern as HYP.140.
 
 ## MAINTENANCE QUEUE (owner: orchestrator)
 
@@ -1081,7 +1165,9 @@ MQ-1  **n=2 adversarial pass.** `leancheck/notes/N2_EXACT_2026-08-13.md:327` —
 
 MQ-2  **Consumption checks + dated appends.** `runs/qgen/EFFT3_crossread.md:149` — “GENTOW5-W consumption check was never run and its dated append never landed”; `spec/EFF-T3.md:1599` — ABS-G5W “marked ‘check + append outstanding.’”; `lean/notes/openmath/T4_CERTIFICATE_WITNESS_2026-08-12.md:2241` — “Consumption checks + the absorbed notes’ dated appends” ride the next queue. Already in PROJECT_STATE #45a’s queued batch. (v3 delta item 12.)
 
-MQ-3  **[GMN12] §4 characteristic audit — unperformed.** `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` §6 item 5 L481–482: “**[GMN12] §4 (theorem of the index) characteristic-audit.** I did **not** read GMN §4 line by line. §3 F-2’s claim that its argument is characteristic-free is *a plan, not a verified fact*.” This bears on owner question 1: it qualifies the internal-F-2 branch of HYP.15’s choice, which is offered as the alternative to citing. Not in the PROJECT_STATE #45a batch — new. (v3 delta item 13.)
+MQ-3  **[GMN12] §4 characteristic audit — unperformed.** `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` §6 item 5 L481–482: “**[GMN12] §4 (theorem of the index) characteristic-audit.** I did **not** read GMN §4 line by line. §3 F-2’s claim that its argument is characteristic-free is *a plan, not a verified fact*.” This bears on owner question 1: it qualifies the internal-F-2 branch of HYP.15’s choice, which is offered as the alternative to citing. Not in the PROJECT_STATE #45a batch — new. (v3 delta item 13.) **v5 status change:** question 1 took the **cite** branch, so this audit no longer qualifies a branch anyone is walking. It **lapses as a question-1 rider** and is retained only as general cite hygiene (and as the price of ever re-opening the F-2 branch — see HYP.16).
+
+MQ-4  **JD0 optional codex pass (belt-and-braces).** Queued, not owed. Append #49 signs the JD0 machine grade as the bar (question 6, HYP.39 CLOSED-SIGNED) while keeping the post-reset codex pass *“queued as belt-and-braces.”* Recorded here so that closing HYP.39 does not silently swallow a queued action: the pass is optional, it gates nothing, and its absence caps no claim. (v5.)
 
 ## OFF-PATH (v3 TIER-3, one line each)
 
@@ -1109,7 +1195,7 @@ Recorded for completeness; none is on the capstone path, and none is counted in 
 - T3-JOINT-OPEN and F4-JOINT are opposite objects—realized p-adic demand versus finite graded-carrier supply—and are not merged.
 - WFRAME OPEN-1 absorbs the older “can w=1?” question.
 - GENTOW6-BOX-1 overlaps COMPOUND-6.5′ on f₁≥2,μ₂≥3; P-BINOM and S8.1-MEMBER are adjacent proof units, not identical.
-- `RealInstanceAt.faithful` and the Haar bridge are live indexed items, not superseded plans; only the Denef route remains superseded.
+- `RealInstanceAt.faithful` and the Haar bridge are live indexed items, not superseded plans; only the Denef route remains superseded. **[v5 AMENDMENT — this line is now WRONG as written and is corrected, not deleted, so the change is traceable.]** Both rows moved off the capstone path at v5 by owner answers, and they moved for *different* reasons that must not be conflated: `RealInstanceAt.faithful` (HYP.97) is **OUT-OF-PATH-BY-POLICY** — `leanfinal` is Lean-core-only, so the placeholder conditions the quarry and remains a live obligation there (question 7); the Haar bridge (HYP.95) is **CLOSED** — the capstone no longer *asserts* Haar at all, because `genuineDensity` was redefined to be the proportion limit itself (question 5). One row was relocated; the other’s consumer was dissolved.
 - MP1′ removes only an extra frame-level obligation: it is retired relative to the same LB1/MP1 triggers, which remain.
 - GENIND-BOX-1 is coextensive with [GENIND-H]; GENIND-6 and ANNEX-LEMMA GENIND-C2Q are indexed under parent rows rather than counted as new public conjuncts.
 
@@ -1131,6 +1217,14 @@ v4 additions to this section:
 - **HYP.149 is not a discharge and is not a NODE.** PROPOSED-NODE is a distinct bucket precisely so that an audit-synthesized route cannot be mistaken for sanctioned bounded work. It is counted as a row so it is not lost, and excluded from the NODE tally so it cannot be read as scheduled.
 - **`WELD-M-PKG` (HYP.59) needs no widening.** The audit checked it independently: consumed on the spine as naming only (GENIND L1523 “named in S7.1’s (CS-1..3) pricing only”; GENH4 L938–941), and T1 C7 confirms from the other side that T1 “proves no cross-face coherence theorem”. The existing narrow-interface disposition is correct as written.
 
+v5 additions to this section:
+
+- **`genuineDensity` and `decidedDensity` are two objects, not one renamed twice.** The P4 rewire is easy to misread as a pure relabelling. It is not: `genuineDensity` (post-P4) is the **outer** limit — `⨅N possibleSeq`, the proportion of coefficient classes still *consistent* with σ — while `decidedDensity` is the **inner** limit, the proportion of classes on which the type is *forced*. Inner ≤ outer always; they coincide exactly under drainage. Any text that treats them as interchangeable without invoking `genuineDensity_eq_of_drainage` (or n ≤ 2) is wrong, and any pre-2026-08-14 document that says `genuineDensity` means the object now called `decidedDensity`.
+- **`TotalMassOne` is not a strengthening of the capstone — it is the drainage leg wearing a different hat.** Σ_σ = 1 at general n is *equivalent in strength* to drainage, which Display A already assumes as `A2_n`. Stating it as a separate Prop rather than a conjunct of `UniformityStatement` is what keeps the ledger from counting one obligation twice. It is not evidence of extra progress that both appear.
+- **Closing a question is not discharging a row, and this fold keeps the two apart.** Of the eight questions answered at v5, exactly four *closed* rows (HYP.16, 39, 94, 95) and two *relocated* rows (HYP.96, 97); the rest changed a review surface, a label, or a display. HYP.15 in particular is answered and still CARRY. A reader auditing progress should read the disposition column, not the question count.
+- **`OUT-OF-PATH-BY-POLICY` is not CLOSED and must not be summed with it.** A closed row is discharged; an out-of-path row is *still open where it lives* (the quarry) and merely stops conditioning the capstone. They are tallied separately for exactly this reason.
+- **`IN-PROGRESS` supersedes `PROPOSED-NODE` for HYP.149 only, and licenses nothing.** The v4 note above — “PROPOSED-NODE is a distinct bucket precisely so that an audit-synthesized route cannot be mistaken for sanctioned bounded work” — still governs. IN-PROGRESS records that the WELD-ZERO unit is *running*, not that it has produced anything: HYP.148 (CARRY) and HYP.139 (MATH) stand at full strength, and the preview is unchanged by the launch.
+
 ## Coverage statement
 
 The v2 sweep incorporates the full cross-read and quoted loci. The W12 locator is corrected to `W12_PROOF_2026-08-08.md`; T1 rows cite §1.1/§5 rather than a nonexistent “effective hypothesis list”; GENIND rows cite §S1/§S7.1/§S8/§C2-G1; census labels are hyphenated. Coverage includes all T-unit acceptance records, W12/GENIND, low-degree Lean notes, citation-scope resolution, tightness census, Project State through the ledger append, GENTOW5_WI, and all eight qgen audits’ INTERFACE rows.
@@ -1138,6 +1232,8 @@ The v2 sweep incorporates the full cross-read and quoted loci. The W12 locator i
 v3 extends coverage to the completeness sub-sweep’s sources: HEX3/HE3/W11/GENHN/GENTOW2/GENTOW4/GENTOW5_WI/HE6R1 proof notes at HEAD, census rows I-4 and O-10, N3_CHECK §6d, N2_EXACT §7 grade disclosure, CITE_SCOPE §6, the Phase-0a shards `spec/EFF-T3.md` and `spec/EFF-T1-s1of3.md`, the SOL certification ledger, and the S-0 instrument with its post-campaign green run. The 2026-08-12 SOL certification ledger is HEAD-of-record for unit grades and supersedes both in-note grade boxes and the 2026-08-11 census where they disagree.
 
 v4 extends coverage to `runs/qgen/WELD_FACE_AUDIT.md` and, through it, to the twenty cone notes it swept: W-12.D ∘ GENIND.B ∘ GENH4 ∘ GENHN ∘ HEX3 ∘ HE6 ∘ HE7 ∘ HE3 ∘ HE6R1 ∘ HETOW ∘ GENTOW1–6 plus W11/W12/HMENU3. New sources read at HEAD for this fold’s verification: `GRTW2_PROOF` §5.3, `GRTJC_PROOF` JC-BOX-3/JC-F1, `JD0_PROOF` §4/BOX-1, `GENTOW3_PROOF` S7, `GENTOW6_PROOF` S5 boxes and its BOX-1 f1=1 closure, `GENTOW5_PROOF` S1.1/S11 and its acceptance append, `SG2_PROBE_2026-08-10.md`, and the seven dependency-ledger J-D0 sites. The 2026-08-12 SOL certification ledger remains HEAD-of-record for unit grades and was applied against the audit’s own stale GENTOW5 grade caveat.
+
+v5 extends coverage to the 0d closure record — `docs/PROJECT_STATE.md` appends **#47** (L4541–4565), **#48** (L4566–4592), **#49** (L4593–4619) — and, for the P4 rename, to the post-rewire Lean tree read directly at HEAD: `leanfinal/Uniformity/Density/GenuineDensity.lean` (the two density definitions and the drainage tie), `Statement.lean` (both capstone targets, the signed signature docstring, `TotalMassOne` and its conditionality paragraph), and `Gates.lean` (`drainage_one`, the n=1 total-mass instance). For the ORPHAN-1 verification it extends coverage to a fresh sweep of the twenty cone notes plus `JD0_PROOF_2026-08-08.md` §S1/§S4/§S6/§S10, `GRTJC_PROOF_2026-08-08.md` §5 (COROLLARY W-9) and JC-BOX-6, `GENHN_PROOF_2026-08-08.md` §S6.1 and its dependency ledger, and negative sweeps of `T1`–`T5`, `docs/HUMAN_PROOF.md`, and both Lean trees.
 
 Deliberate exclusions: `htameFE`; closed quadratic STATUS items; stronger quadratic rate/sharpness questions; X-LEMMA; stronger out-of-cone W10-GEN; TAIL-CERT as a separate row because indexed under HYP.29; rider debt/pure coverage disclosures without a consumer; nonexistent GENTOW6-BOX-5; and retired MP1′. The 2026-08-11 census headline is chronologically superseded for ledger purposes by the 2026-08-12 CS-1Q correction and 2026-08-13 Lean notes.
 
@@ -1198,21 +1294,46 @@ Deliberate exclusions: `htameFE`; closed quadratic STATUS items; stronger quadra
 > it was load-bearing and undisclosed. The net effect on what the capstone
 > actually rests on is a *correction*, not a *weakening*.
 
-A dagger marks an owner decision, not every proof unit. Parent aggregates appear once. Displays A and B are alternatives and must never be conjoined. The n=2 W-12.D case is unconditional; n=3 is conditional only on the cubic HMENU3/HEX3 proof perimeter.
+> ## ✔ v5 — DISPLAY A IS FROZEN, AND NO DAGGERS REMAIN
+>
+> **Question 8 ANSWERED [append #49]: DISPLAY A is FROZEN** (*“readability; fewer error
+> surfaces”*). **Display B is HISTORICAL** as of v5 — retained below for the supplier map it
+> records, marked as not the frozen object, and it may not be cited as the capstone’s public
+> interface. The old fence “Displays A and B are alternatives and must never be conjoined”
+> still holds and is now moot in one direction: there is only one live display.
+>
+> **The dagger count reaches zero.** v4 cut the owner-decision surface from six daggers to
+> two (`NS7(O)†`, `JD0-BOX-2†`). v5 removes both — not by proving anything, but because the
+> 0d answers landed: `NS7(O)` is **decided as a cite** ([AGNPRW] Thm 5.2, question 1, HYP.15)
+> and `JD0-BOX-2`’s grade bar is **signed** (question 6, HYP.39). Both conjuncts **remain in
+> the display at full strength**; what left is the owner call attached to them. A conjunct
+> without a dagger is not a discharged conjunct — it is an undischarged one whose disposition
+> is no longer waiting on a person.
 
-### Display A — public interface
+A dagger marks an owner decision, not every proof unit — **as of v5 there are none left; the
+symbol is retained only in the v4 BEFORE/AFTER block above, as history.** Parent aggregates
+appear once. Display A is the frozen public interface (question 8); Display B is historical.
+The n=2 W-12.D case is unconditional; n=3 is conditional only on the cubic HMENU3/HEX3 proof
+perimeter (*and, disclosed inside that perimeter without being a conjunct of it:*
+`HEX3-BOX-1`, *the unproved tail-σ-certification lemma — HYP.137, question 9; it conditions
+the S8.2 W-12.B corroboration aside only, never `hExhaust3` or drainage*).
+
+### Display A — public interface — **FROZEN [v5, question 8]**
 
 For n≥4 and every complete DVR O with residue field size q, assume uniformly in O:
 
 [
-  NS7(O)†
+  NS7(O)                  -- decided as a CITE: [AGNPRW] Thm 5.2 (Q1, HYP.15);
+                          --   undaggered at v5, still a carried hypothesis
   ∧ LB1 ∧ MP1
   ∧ HE7A[ACCOUNT, RES-DEG, nonempty, exhaust, root-continuation]
   ∧ ∀ i≥3, ((H-VARTHETA-RES)_i ∧ 𝒲_(≤i))
   ∧ A0_n[disc≠0] ∧ A1_n ∧ A2_n
-  ∧ JD0-BOX-2†            -- unit-character gauge-form perimeter, inherited FRAME-grade
+  ∧ JD0-BOX-2             -- unit-character gauge-form perimeter, inherited FRAME-grade;
+                          --   undaggered at v5: machine grade SIGNED as the bar (Q6, HYP.39)
   ∧ (GENHN-BOX-2 if n≥6)  -- the W-9 graded face in GENHN-4 layer 1 at μ≥3;
-                          --   carries HYP.139 (W-1 transport, ATTEMPT)
+                          --   carries HYP.139 (W-1 transport, ATTEMPT).
+                          --   WELD-ZERO unit launched to retire both (HYP.149, IN-PROGRESS)
   ∧ (H-e)-window-pinning
   ∧ ([GENHN-HE(μ≥3)] if n≥6)
   ∧ ([GENHN-TOW-1] if n≥8)
@@ -1222,10 +1343,45 @@ For n≥4 and every complete DVR O with residue field size q, assume uniformly i
 ]
   ⇒ ∀ σ with deg σ=n,
        ∃ num, den ∈ ℤ[q], independent of O,
-         genuineDensity_O(σ)=num(q)/den(q)
-         [Haar and Σ_σ=1 are decided by needs-Asvin question 5].
+         genuineDensity_O(σ) = decidedDensity_O(σ) = num(q)/den(q).
 
-### Display B — expanded suppliers
+**[RENAMED per P4 — read this before reading the conclusion line.]** The pre-rewire text of
+this conclusion said `genuineDensity_O(σ)`, and under the pre-rewire naming that meant **the
+certified/decided route**, which is now called `decidedDensity`. Both names now appear, and
+they are not a hedge — they are two statements the display genuinely delivers:
+
+* `genuineDensity` (post-P4) is **THE** density: `⨅N possibleSeq`, the limit of the proportion
+  of coefficient classes consistent with σ (`GenuineDensity.lean:266`). This is what question 5
+  chose as the definition.
+* `decidedDensity` (post-P4, = the old `genuineDensity`) is the certified/inner route
+  (`GenuineDensity.lean:245`) — the object the informal count laws (W-12.D, GENIND) actually
+  produce.
+* The two are tied by `genuineDensity_eq_of_drainage` (`GenuineDensity.lean:348`), whose
+  hypothesis is drainage — **already assumed in this display as the `A2_n` conjunct**. So the
+  display carries both readings without a new assumption. Unconditionally at n=1 and n=2
+  (`drainage_one`, `drainage_two`) the tie needs nothing at all.
+
+**Σ_σ = 1: NOT a clause of the frozen statement [question 5 ANSWERED].** It is the separate
+named Prop **`TotalMassOne`** (`Statement.lean:166`), supplied by
+`sum_genuineDensity_eq_one_of_drainage` via `totalMassOne_of_drainage` (`:174`). Its exact
+conditionality, in the Lean file’s own words at `:163`: *“`TotalMassOne` is **the general-`n`
+drainage leg in disguise**: drainage implies it outright, and the frontier that blocks it is
+exactly the open one (order ≥ 2 of the Okutsu–Montes tower).”* Proved: `≥ 1` unconditionally
+for any covering menu at every n; equality unconditionally at n=1 and n=2; equality at general
+n given drainage. Keeping it out of `UniformityStatement` is what stops the capstone from
+quietly absorbing the drainage leg twice.
+
+**Haar: NOT asserted [question 5 ANSWERED].** The frozen capstone claims a proportion limit and
+nothing measure-theoretic; the Haar identification is off the path (HYP.95, CLOSED). The
+informal W-12.D text still draws a Haar conclusion — that conclusion is **not** underwritten by
+this display.
+
+### Display B — expanded suppliers — **HISTORICAL [v5, question 8]**
+
+> Display B is **not** the frozen public interface. Question 8 froze Display A; Display B is
+> retained because its expanded CS-* supplier list is the map from the public interface down to
+> the GENIND obligations, and deleting it would lose that map. It may be read as documentation
+> and must not be cited as the capstone’s statement.
 
 Display B is identical except that
 
@@ -1239,20 +1395,60 @@ is replaced, never supplemented, by
 
 CSExact means an exact finite q-power-sum menu and an exact stage drain, not asymptotic bounds; CS1 serves both menu and drainage. In both displays O,q are bound on the hypothesis side, A0–A2 are fixed-n, and σ is quantified only in the conclusion. The window law, GENHN thresholds, pinning half, HE7.A suite, and all-O supplier interfaces are visible. **v4:** the four JB rows and the four restored value hypotheses are **no longer visible in either display**, because the audit signed them NOT-REACHED — they are recorded OUT of the cone at HYP.21/75 and HYP.83–86 rather than displayed as conditions the theorem rests on; the weld layer's one genuine contribution, `GENHN-BOX-2`, is displayed in their place. MATH rows remain proof blockers; where a public aggregate is carried, they are not falsely declared absent from its supplier DAG.
 
-## THE 0d PACKAGE — nine owner questions, eight open
+## THE 0d PACKAGE — nine owner questions, **ALL NINE ANSWERED**
 
-All nine are carried **verbatim** from v3 (the heading’s v3 count of “eight” was stale — question 9 was appended without it). **Question 2 is ANSWERED at v4** and is stamped in place rather than deleted, so the 0d package still reads as one list; the other eight stand untouched and unanswered.
+> # ✅ 0d CLOSED — 2026-08-14
+>
+> **All nine owner questions are answered. The needs-Asvin count is 0.** The 0d package
+> opened at v1 as the list of decisions only the owner could make; it closes here. Every
+> question below is stamped **in place** with its answer and the append that carries it —
+> nothing is deleted, so the package still reads as one list and every answer is traceable to
+> a dated record in `docs/PROJECT_STATE.md`.
+>
+> | Q | Subject | Answer | Append | Rows moved |
+> |---|---|---|---|---|
+> | **1** | Trusted base, `NS-7` termination | **CITE** [AGNPRW] Thm 5.2 (*“for now at least”*); internal F-2 not taken | **#47** L4541 | HYP.15 → CARRY-as-CITE (undaggered) · HYP.16 → CLOSED (½·v(disc f) route **lapses**, COR-13) · HYP.17 **elevated** (the cite is by number) · MQ-3 lapses as a Q1 rider |
+> | **2** | Scheduling + charter width of the weld-face audit | **RUN, widened-by-default** — executed 2026-08-13 | #46/v4 | HYP.73 CLOSED · 5 rows CARRY→NODE at v4 · **ORPHAN-1 cured at v5** (HYP.83–86) |
+> | **3** | Capstone signature, three live points | **SIGNED** | **#47** L4541 | HYP.94 → CLOSED-SIGNED |
+> | **4** | Definitions / human-review surface | **THE REVIEW-BOUNDARY POLICY**: human-checked = the main statement and definitions only | **#47** L4541 | Header policy note added · HYP.01/12/17/98 stamped `[CORE-SET]` · HYP.111 **splits** (definitional half core, deep-tail half lifted) |
+> | **5** | What the theorem claims (Haar? Σ=1?) | **EXECUTED, not merely decided** — `genuineDensity` redefined as the proportion limit; **no Haar**; Σ=1 is a separate Prop | **#47** L4541 + **#48** L4566 | HYP.95 → CLOSED (no Haar) · P4 rename swept file-wide · Σ=1 rows re-keyed to `TotalMassOne` |
+> | **6** | JD0 grade bar | **MACHINE GRADE SIGNED** (68,523/0); codex pass optional | **#49** L4593 | HYP.39 → CLOSED-SIGNED · **MQ-4** added so the optional pass is not swallowed |
+> | **7** | Axioms on the Lean path | **`leanfinal` is LEAN-CORE-ONLY**; AX-CELLREC/AX-LEAF quarantined in the quarry’s measure route | **#49** L4593 | HYP.96, HYP.97 → OUT-OF-PATH-BY-POLICY |
+> | **8** | Display shape | **DISPLAY A FROZEN**; Display B historical | **#49** L4593 | Preview headnote + both display headings |
+> | **9** | `HEX3-BOX-1` carry-vs-node | *“doesn’t matter too much”* → **named parenthetically** in the n=3 perimeter clause | **#49** L4593 | HYP.137 stays MATH; preview edit executed; premise correction recorded |
+>
+> **What closing 0d does NOT mean.** Not one line of mathematics was proved by these answers.
+> Five of the nine were decisions about *what to claim and what to check* (1, 4, 5, 7, 8), two
+> were *grade bars* (3, 6), one was *scheduling* (2), and one was *presentation* (9). The
+> capstone’s conditionality after 0d is the same conditionality as before it, more accurately
+> displayed and no longer waiting on a person. The daggers are gone from Display A because the
+> owner calls are made — **the conjuncts they marked are all still there.**
+>
+> **Two consequences worth carrying forward, neither an open question.** (i) Citing [AGNPRW]
+> Thm 5.2 *by number* makes HYP.17’s publisher-number check load-bearing where it used to be
+> bibliographic hygiene. (ii) Question 7 moved the axiom rows off the capstone path without
+> completing their DRAFT faithfulness entries — those still gate the quarry.
+
+All nine are carried **verbatim** from v3 (the heading’s v3 count of “eight” was stale — question 9 was appended without it). Question 2 was ANSWERED at v4; **the remaining eight are ANSWERED at v5** and are likewise stamped in place rather than deleted.
 
 1. **Trusted base (HYP.15, `NS-7`).** Do we cite [AGNPRW] Thm 5.2 for OM termination over every complete DVR — accepting that its index step is itself discharged by citation to ℚ_p-scope sources, recorded honestly in `AXIOM_FAITHFULNESS.md` — or spend F-2's 2–4 pages proving index-descent internally on the `L4` lattice machinery? *(The source recommends citing. Coupling: the cite branch forfeits the `≤ ½ v(disc f)` depth bound that HYP.16 assumes — COR-13.)*
+   → **ANSWERED [v5, append #47]: CITE.** Owner, verbatim: *“cite thm 5.2 for now at least.”* [AGNPRW] Thm 5.2 is the termination resolution for the informal corpus; F-2’s internal index-descent is not spent. The coupling fires as COR-13 predicted: **HYP.16’s ½·v(disc f) depth bound LAPSES** (CLOSED), which costs nothing because the capstone needs finiteness, not a constant. In Lean, `NS7` **stays a carried hypothesis** *“until proved or declared-with-faithfulness”* — so HYP.15 remains CARRY, re-labelled CARRY-as-CITE and undaggered. Two riders: HYP.17’s AGNPRW numbering is now load-bearing, and MQ-3 (the unperformed [GMN12] §4 audit) lapses as a question-1 rider because it qualified only the branch not taken.
 2. **Scheduling + scope (collapses 10 open calls).** Run the `WELD-FACE-AUDIT` (census S-4, one session) before the 0d freeze, so the weld residues are carried only if reachable — and if so, do we widen its charter from the four rows the census assigns it (HYP.74–77) to also cover HYP.21, 22, 67, 68, 69, 71 (COR-41)?
-   → **ANSWERED [v4]: audit run, charter width widened-by-default.** The orchestrator took the widening as the default and the audit executed at the full ten rows before the 0d freeze (`runs/qgen/WELD_FACE_AUDIT.md`, 2026-08-13; HYP.73 CLOSED). **The reachability half is resolved by the outcome, not by a decision:** 1 REACHABLE-AND-CONSUMED / 0 CORROBORATIVE-ONLY / 9 NOT-REACHED, so the weld residues are now carried only where reachable and the preview was corrected accordingly. Nothing here awaits the owner; the question is retained verbatim for the record. Residual owner-visible consequence, *not* a re-opening of this question: rows HYP.83–86 are left CARRY though their parent conjunct has gone (ORPHAN-1), which is a v5 bookkeeping item.
+   → **ANSWERED [v4]: audit run, charter width widened-by-default.** The orchestrator took the widening as the default and the audit executed at the full ten rows before the 0d freeze (`runs/qgen/WELD_FACE_AUDIT.md`, 2026-08-13; HYP.73 CLOSED). **The reachability half is resolved by the outcome, not by a decision:** 1 REACHABLE-AND-CONSUMED / 0 CORROBORATIVE-ONLY / 9 NOT-REACHED, so the weld residues are now carried only where reachable and the preview was corrected accordingly. Nothing here awaits the owner; the question is retained verbatim for the record. Residual owner-visible consequence, *not* a re-opening of this question: rows HYP.83–86 are left CARRY though their parent conjunct has gone (ORPHAN-1), which is a v5 bookkeeping item. → **ORPHAN-1 CURED at v5**, and cured by independent re-verification rather than by inheriting the parent’s verdict: all four move CARRY→NODE (COR-ORPH-01…04; the verification block sits at HYP.83).
 3. **Capstone signature (MISS-04).** Sign off `UniformityStatement`'s three live points: `∀ 𝒪` over `Type` (universe 0); the rational function evaluated at `(q : ℚ)` with equality read in `ℝ` by coercion; `den.eval q ≠ 0` demanded per-`𝒪` rather than globally. *(The note's fourth point, `σ.degree = n` doing no work, is self-superseded — `typeOf_degree` landed as gate G13.)*
+   → **ANSWERED [v5, append #47]: SIGNED.** All three points stand and survive the P4 rewire **verbatim** (append #48). Re-verified in the tree at `leanfinal/Uniformity/Density/Statement.lean:55–58`, which also settles the fourth point in the stronger direction: *“(iv) The hypothesis `σ.degree = n` **does real work** (`typeOf_degree`): off-degree `σ` are forced to density `0`.”* HYP.94 → CLOSED-SIGNED.
 4. **Definitions (HYP.12, MISS-13, MISS-04).** The `(e,f)` ordering/multiset convention *"deserves a human read"*; `W12-BOX-7`'s σ-convention at the TRP tail (two conventions can disagree on deep-tail members); and `HENSEL_FACT` §4's faithfulness paragraphs, headed *"FLAGGED FOR ASVIN'S REVIEW"*.
+   → **ANSWERED [v5, append #47]: THE REVIEW-BOUNDARY POLICY**, which supersedes the per-node SPEC-SIGNED design. Human-checked = **the main statement and definitions only** — the types, the uniformity theorem, `genuineDensity`/`decidedDensity`, the cites (plus, per #48, the changed definitions’ faithfulness paragraphs). Everything else is *“a consumer or discharger of these”* and is *“forced right if the entire project works out”*; *“the Hensel statements take care of themselves.”* **Applied to the three items in the question:** the `(e,f)` convention is CORE (it is the type) and stays a human read, folded into HYP.98; `W12-BOX-7`’s TRP-tail convention SPLITS — its definitional half is core, its deep-tail reconciliation half is lifted; `HENSEL_FACT` §4’s faithfulness paragraphs are **lifted** by the policy’s own last clause. The full policy text is in the file header. **This answer changes the review surface, not any row’s mathematical status.**
 5. **What the theorem claims (MISS-05, DEF-07).** Does the frozen capstone assert the **Haar density** — as W-12.D and the census do — or only the limit of decided proportions, which is what Lean's `genuineDensity` is and which `GENUINE_DENSITY` §3B.4 records the bridge to as unformalized? And is `Σ_σ R_σ = 1` inside the frozen statement?
+   → **ANSWERED AND EXECUTED [v5, appends #47 + #48]** — this is the only 0d answer that changed the Lean tree rather than a disposition. **Neither horn of the question as posed:** the owner *redefined the object*. `genuineDensity` is now the limit of the proportion of σ-consistent classes (the outer limit) — **THE** density — and the old `genuineDensity` (the certified route) is renamed `decidedDensity`; the two are tied by `genuineDensity_eq_of_drainage`, unconditional at n=1 and n=2. **Haar: NOT asserted** — the proportion limit IS the definition, so the bridge is off the path (HYP.95 CLOSED; MISS-05/DEF-07’s Haar question closed with it). **Σ_σ R_σ = 1: NOT inside the frozen statement** — it is the separate named Prop `TotalMassOne`, proved `≥ 1` unconditionally, `= 1` given drainage, unconditional at n=1,2. Honesty note carried from #47: Σ=1 at general n *is* the drainage leg, already conjunct A2 — so keeping it outside `UniformityStatement` prevents assuming it twice. The rename is swept through this file and stamped **[RENAMED per P4]** at each site.
 6. **Grade (COR-08).** `JD0-BAR`: run JD0's 2-clean hostile arc, or sign off the 68,523/0 machine grade as the bar? *(The census offers both; the ledger silently chose the first.)*
+   → **ANSWERED [v5, append #49]: MACHINE GRADE SIGNED as the bar.** Owner’s reasoning: J-D0’s gauge-blindness *“MUST be true for the proof strategy/uniformity to work at all”*, and conviction of truth implies any proof defect would be fixable. HYP.39 → CLOSED-SIGNED; the cap lifts off J-D0’s seven direct cone sites (HYP.74). The optional post-reset codex pass stays queued as belt-and-braces — **MQ-4**, so closing the row does not swallow it.
 7. **Axioms (MISS-06).** `AX-CELLREC`/`AX-LEAF` faithfulness entries are **DRAFT, PENDING ASVIN REVIEW** and the census says they *"gate the LEAN capstone claim"*. Are they on the `leanfinal` path at all, or is `leanfinal` Lean-core-only? Same question for census **L-4**, the `RealInstanceAt.faithful` placeholder.
+   → **ANSWERED [v5, append #49]: `leanfinal` is LEAN-CORE-ONLY.** The axioms *“stay QUARANTINED in the quarry’s measure route (no file move needed — `leanfinal` never imports them; policy now explicit)”*. So the census’s worry is answered in the negative: they gate the quarry, not the capstone. HYP.96 and HYP.97 → **OUT-OF-PATH-BY-POLICY**. **Not closed, relocated:** the faithfulness entries are still DRAFT and still gate any quarry measure-route claim; `lake env lean LeanUrat/AxChk_baseline.lean` remains the enforcing instrument.
 8. **Display shape (DEF-01).** Freeze **Display A** (public interface A0–A2) or **Display B** (expanded CS-* supplier list) — not both.
+   → **ANSWERED [v5, append #49]: DISPLAY A FROZEN** (*“readability; fewer error surfaces”*). Display B is marked **HISTORICAL** — retained for its supplier map, not citable as the capstone’s interface. Both headings are stamped in the preview section.
 9. **[v3] `HEX3-BOX-1` carry-vs-node (HYP.137).** The tail-σ-certification lemma is unproved and `hExhaust3` provably never needed it (HEX3 L692–693), yet GENIND's r3 pin conditionalizes the S8.2 W-12.B consistency clause on it and HEX3 displays the price as "W-12.B would be FALSE at n = 3" — so do we CARRY it as a named n=3 conjunct in the preview, or keep it a NODE-grade refinement indexed under HYP.29 on the strength of the census's OUT-OF-CONE reading?
+   → **ANSWERED [v5, append #49]: neither extreme — NAMED PARENTHETICALLY.** Owner: *“doesn’t matter too much”*, disposed per the standing recommendation. The edit is executed: `HEX3-BOX-1` now appears inside the preview’s n=3 perimeter clause, disclosed but **not** promoted to a Display A conjunct. HYP.137 stays MATH. **Premise correction relayed with the answer and recorded at the row:** the n≤3 menus and drainage **do** enter the final proof as the induction’s base cases (GENIND consumes HMENU3/HEX3 as base data); it is `HEX3-BOX-1` *specifically* that stays out of the load-bearing chain, consumed only by the W-12.B corroboration cross-check.
 
 ## CHANGES-FROM-v1
 
@@ -1440,12 +1636,56 @@ Knock-on locator fixes (2, not counted as corrections): HYP.39 and HYP.129 both 
 1. **HYP.76.** The audit’s row block asserts “Zero occurrences of W2-OPEN-1/-2 or W2-BOX-1 in any of the 20 cone notes.” FALSE — W12 carries two, at L1190 and L1509. Both were read in context: §S5’s composition display and its dependency-ledger status annotation, neither a consumption. The NOT-REACHED verdict is unaffected; the wording is corrected to “zero in nineteen of twenty; two in W12, both non-consuming display bookkeeping”. The audit’s own §1 states the W12 carve-out correctly — only the §2 row block generalized past it.
 2. **HYP.149.** The audit’s caveat that “GENTOW5 is itself at grade 0/2 (hostile arc owed), so the fold inherits that arc” is STALE at HEAD: `GENTOW5_PROOF_2026-08-09.md` L2026 reads “Grade: ACCEPTED 2/2 stands, ANNOTATED by RUN A”, and SOL certification ledger row 10 reads “CERTIFIED 2026-08-12”. By this ledger’s standing rule the SOL ledger is HEAD-of-record for unit grades. The audit appears to have read one of the earlier repair-round “0/2 UNCHANGED” lines (L1471/L1531/L1612). Corrected on fold; the disposition is unchanged, since PROPOSED-NODE rests on the absence of an asserting note, not on GENTOW5’s grade. Same pattern as v3’s HYP.140 correction.
 
-**ORPHAN-1 (recorded, deliberately not resolved).** Rows HYP.83–86 (`VD-m`, `(C-coll)`, `(R-coll)`, `PERIM-μ`) inherit NOT-REACHED from HYP.22 and their only preview conjunct has been removed — so they are dispositioned CARRY with nothing to be visible in. No COR-WFA line authorizes re-dispositioning them, so v4 stamps the inconsistency on each row rather than curing it silently. This is a v5 bookkeeping item and is surfaced to the owner under question 2’s answer.
+**ORPHAN-1 (recorded, deliberately not resolved).** Rows HYP.83–86 (`VD-m`, `(C-coll)`, `(R-coll)`, `PERIM-μ`) inherit NOT-REACHED from HYP.22 and their only preview conjunct has been removed — so they are dispositioned CARRY with nothing to be visible in. No COR-WFA line authorizes re-dispositioning them, so v4 stamps the inconsistency on each row rather than curing it silently. This is a v5 bookkeeping item and is surfaced to the owner under question 2’s answer. → **CURED AT v5 (COR-ORPH-01…04):** all four move CARRY→NODE, on a *fresh* reachability verification rather than on the parent’s verdict — the block is at HYP.83, and it checks the two weld faces that survived the v4 audit, which v4 could not have done for the one it had only just discovered.
 
 - **Capstone-conditionality preview: CHANGED — the first change since v1.** Four conjuncts out (`JB-NOLEG†`, `[H-c]†` with its `VD-m/C-coll/R-coll/PERIM-μ` children, `DMULT-S†`, `W2-VALUE†`), two in (`JD0-BOX-2†` promoted out of the deleted package, `(GENHN-BOX-2 if n≥6)` newly disclosed). Owner-decision surface falls from six daggers to two. The BEFORE/AFTER is displayed in full at the head of the preview section with the audit citation. **This is a correction, not a weakening:** the four departing conjuncts were never load-bearing, and the entering one was load-bearing and undisclosed. v3 carried the weld layer exactly inverted — the unreachable value package in, the one consumed face out.
 - The nine v3 owner questions are carried verbatim; **question 2 is stamped ANSWERED** (audit run, charter widened-by-default; the reachability half resolved by the audit's outcome). Eight remain open.
 
-HYPLEDGER v4: 149 rows / 39 carry / 22 math / 8 needs-Asvin
+## CHANGES-FROM-v4 (v5 — the 0d-closure fold)
+
+Sources: `docs/PROJECT_STATE.md` appends **#47** (L4541), **#48** (L4566), **#49** (L4593). Every quoted decision was read at its append before folding, and every Lean name asserted by the P4 rewire was re-verified in the tree at HEAD before being written into a row. **No new rows; no mathematics proved; the row count is unchanged at 149.**
+
+**Re-dispositions (12).**
+
+Closed by an owner answer (4):
+- HYP.94 capstone signature → **CLOSED-SIGNED** (Q3, #47); three points signed, re-verified at `Statement.lean:55–58`.
+- HYP.39 `JD0-BAR` → **CLOSED-SIGNED** (Q6, #49); the 68,523/0 machine grade is the bar. Optional codex pass preserved as **MQ-4**.
+- HYP.95 Haar bridge → **CLOSED, off-path** (Q5, #47/#48); `genuineDensity` IS the proportion limit, so nothing frozen asserts Haar. Closed as off-path, **not** as proved — the measurability leg is still unproved and unformalized.
+- HYP.16 `NS-15` finite-depth bound → **CLOSED, LAPSED** (Q1 coupling, COR-13); the ½·v(disc f) route was available only on the internal-F-2 branch, which the cite branch forecloses. Costless: the capstone needs finiteness, not the constant.
+
+Moved off the capstone path by policy (2):
+- HYP.96 `AX-CELLREC`/`AX-LEAF` → **OUT-OF-PATH-BY-POLICY** (Q7, #49).
+- HYP.97 `RealInstanceAt.faithful` → **OUT-OF-PATH-BY-POLICY** (Q7, #49). Both remain live obligations *inside the quarry*; their faithfulness entries are still DRAFT.
+
+ORPHAN-1 cured, all four CARRY→NODE (COR-ORPH-01…04):
+- HYP.83 `(VD-m)`, HYP.84 `(C-coll)`, HYP.85 `(R-coll)`, HYP.86 `PERIM-μ` → **NODE**, recorded OUT of the cone. **Verified independently at v5, not inherited** — the full verification block is at HYP.83. Headline of that verification: one occurrence of the four labels across all twenty cone notes (`W12_PROOF:219`) and it is a *disclaimer* (*“all absent”*); and, crucially, the two weld faces that **did** survive the v4 audit were checked directly — J-D0 is the theorem that *deletes* these fences from count-layer conditionality (`JD0_PROOF:277–278`), and W-9’s hypotheses are *“Given W-6, W-7, W-8”* with no value-layer fence (`GRTJC:1777`), its `(VD-m)`/`(R-coll)` inheritance localized to a germ display that no cone note names (`W-7`, `JB-CREAD`, `JB-BOX-2`: zero cone hits).
+
+Status change on a launched unit (1):
+- HYP.149 WELD-ZERO route → **PROPOSED-NODE → IN-PROGRESS** (COR-WZ-01, directive 1 of #49). Launched 2026-08-14 at corpus grade, 0/2, hostile arc owed post-reset. **Re-dispositions nothing:** HYP.148 stays CARRY and HYP.139 stays MATH at full strength until the unit lands and passes its arc.
+
+Re-labelled without changing bucket (1):
+- HYP.15 `NS-7` → **CARRY-as-CITE** (Q1, #47). Still CARRY, now undaggered: the *branch* is decided (cite [AGNPRW] Thm 5.2), the *obligation* is not — in Lean `NS7` stays carried until proved or declared-with-faithfulness.
+
+**Corrections without re-disposition (5).**
+- **Header:** the Q4 review-boundary policy and the P4 rename map added as standing notes; the disposition glossary gains `IN-PROGRESS` and `OUT-OF-PATH-BY-POLICY`.
+- **HYP.17** publisher-number verification **ELEVATED** from “bibliographic only” to `[CORE-SET]` and load-bearing: Q1 cites [AGNPRW] Thm 5.2 *by number*.
+- **HYP.111** `W12-BOX-7` **SPLIT** under the Q4 policy — definitional half core (rides HYP.98), deep-tail TRP reconciliation half **lifted** to ordinary NODE work. Recorded alongside: the P4 rewire *narrows* this exposure, since the frozen headline density is now the outer limit, which does not depend on where the decided/undecided line falls.
+- **HYP.98** `DEFINITION-AUDIT` **RETARGETED** to the core set and made **recurring** (directive 2 of #49: periodically pull fresh eyes onto the main definitions/axiom-cites as the Lean build proceeds).
+- **HYP.137** carry-vs-node **DISPOSED** (Q9) by naming `HEX3-BOX-1` parenthetically in the preview; the append’s premise correction is recorded at the row — the n≤3 menus/drainage **do** enter the final proof as base cases; only `HEX3-BOX-1` stays out.
+
+**P4 rename sweep (Q5, executed).** Every pre-rewire name in this file was found and updated, each stamped **[RENAMED per P4]**: HYP.01’s CONSUMED-BY (now names both `decidedDensity` and `genuineDensity` — the type map keys both routes); HYP.10’s “cubic sum-to-one” (re-keyed to `TotalMassOne` / `sum_genuineDensity_eq_one_of_drainage`); HYP.111’s carrier; Display A’s conclusion line; the dedup section’s Haar/RealInstance line; and question 5’s own text. Fixed-string re-grep confirms **zero surviving *use-site* occurrences of `upperDensity`** — the only two mentions left in the file are the rename map in the header and this sentence, both of which name the old label deliberately so the map stays readable.
+
+**Preview changes (3, none of them a conjunct move).**
+- **Display A FROZEN, Display B HISTORICAL** (Q8) — headings and a headnote.
+- **The dagger count reaches 0.** `NS7(O)†` and `JD0-BOX-2†` lose their daggers to Q1 and Q6. Both conjuncts remain in the display at full strength; only the owner call attached to them is gone.
+- **`HEX3-BOX-1` named parenthetically** in the n=3 perimeter clause (Q9).
+- Display A’s conclusion now states `genuineDensity_O(σ) = decidedDensity_O(σ) = num(q)/den(q)`, with the tie (`genuineDensity_eq_of_drainage`) resting on the `A2_n` conjunct **already** assumed there, plus explicit notes that Σ_σ=1 is the separate Prop `TotalMassOne` and that Haar is not asserted. **No hypothesis conjunct was added, removed, or re-bound at v5.**
+
+**Anything still open?** Reviewed deliberately, since the instruction was to flag rather than silently zero: **no owner question remains open.** All nine are answered by a dated append, and none of the answers is partial in a way that hands a decision back. Three items are *consequences* of the answers and are recorded as work, not as questions: HYP.17’s numbering check (now load-bearing), the DRAFT quarry axiom-faithfulness entries (relocated, not completed), and MQ-4 (an optional pass that gates nothing). The owner’s *“for now at least”* on question 1 is logged at HYP.15 as a revisit licence — re-opening it would be a new decision, not an unanswered one.
+
+HYPLEDGER v5: 149 rows / 35 carry / 21 math / 0 needs-Asvin
+(dispositions: 35 CARRY · 21 MATH · 80 NODE · 4 MERGED · 6 CLOSED · 2 OUT-OF-PATH-BY-POLICY · 1 IN-PROGRESS; plus 4 MAINTENANCE-QUEUE actions and 6 OFF-PATH lines, neither counted as rows. Owner questions: 9 listed, **9 ANSWERED, 0 open — the 0d package is CLOSED**.)
+Superseded tally — HYPLEDGER v4: 149 rows / 39 carry / 22 math / 8 needs-Asvin
 (dispositions: 39 CARRY · 22 MATH · 81 NODE · 4 MERGED · 2 CLOSED · 1 PROPOSED-NODE; plus 3 MAINTENANCE-QUEUE actions and 6 OFF-PATH lines, neither counted as rows. Owner questions: 9 listed, 1 ANSWERED at v4, 8 open.)
 Superseded tally — HYPLEDGER v3: 147 rows / 43 carry / 22 math / 9 needs-Asvin
 (dispositions: 43 CARRY · 22 MATH · 77 NODE · 4 MERGED · 1 CLOSED; plus 3 MAINTENANCE-QUEUE actions and 6 OFF-PATH lines, neither counted as rows)
