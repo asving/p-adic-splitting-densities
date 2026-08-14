@@ -4617,3 +4617,18 @@ core set as the Lean build proceeds — folded into the blueprint
 protocol as a recurring fresh-context definitional audit at chapter
 milestones. Ledger v5 fold LAUNCHED (Q6-Q9 dispositions + the
 HYP.83-86 orphan verification + pre-rewire name staleness).
+
+**2026-08-14 APPEND #49a (micro) — RESTART HANDOFF.** Asvin is
+reloading the Claude Code instance (new unlimited API key — the
+Claude-side budget limit of append #32's regime is LIFTED again;
+codex weekly window unchanged, still exhausted until Tue 10:23).
+IN FLIGHT AT RESTART, both killed by it if not yet landed: (1) the
+WELD-ZERO composition unit (charge: append #49 + the audit's
+synthesis in runs/qgen/WELD_FACE_AUDIT.md; commits its own note —
+anything committed survives); (2) the LEDGER v5 fold (charge in
+append #49; does NOT commit — ON RESTART: `git status`; if
+spec/HYPOTHESIS_LEDGER.md is dirty, `git checkout` it back to the
+committed v4 (687ebc96) and re-launch the fold from the append-#49
+charge). Everything else is restart-proof: sweep self-paused
+(resume = rerun runs/qgen/sweep_runner.sh post-reset), specs/ledger/
+appends all committed, monitors re-armable.
