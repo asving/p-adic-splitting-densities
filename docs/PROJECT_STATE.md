@@ -4660,3 +4660,16 @@ fence); ledger discharge bookkeeping for the closed rows rides the
 next fold. THE PRE-BLUEPRINT HEAD START IS BANKED: when the chapter
 blueprints fire post-reset, the leaf layer, the transport layer, the
 census engine, and the density API are already in the kernel.
+
+**2026-08-14 APPEND #50a (micro) — THE PIPELINE IS SELF-RESUMING.**
+All Claude-side stages are drained (T1 spec merged; ledger v6; tree
+clean). A one-shot scheduled wake is armed for Tue 2026-08-18 10:41
+(post-reset) carrying the full resume choreography: sweep resume →
+WELD-ZERO sol confirmation + MQ passes → merges → 0c DAG → 0e
+leanspec → chapter blueprints (codex-authored per the /goal) →
+sonnet fleet. The schedule is session-scoped: if this session exits
+first, the SAME choreography lives in appends #46a/#49a/#50 + the
+memory index for any fresh session. The goal's remaining stages
+(blueprints written; fleet launched) are gated ONLY on the codex
+reset clock per Asvin's standing no-codex order — nothing else
+blocks them.
