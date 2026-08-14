@@ -28,7 +28,7 @@ split type gets the single deep class of `X(X-1)(X-π)`.
 | `c3ram` `{(3,1)}` | 2 | `q²(q-1)` | `(q-1)/q⁴` |
 
 `bracket_five` (N3Density) turns the five lower bounds into an upper bound on each type through
-`sum_genuineDensity_le_one`, and `gate_bracket3_padic_two` / `_three` instantiate at `q = 2, 3`.
+`sum_decidedDensity_le_one`, and `gate_bracket3_padic_two` / `_three` instantiate at `q = 2, 3`.
 `gate_bracket3_hmenu3_two` / `_three` check, by `norm_num`, that the informal corpus's predicted
 cubic densities (`lean/notes/openmath/HMENU3_PROOF_2026-08-08.md`, COROLLARY HM3.D) lie inside
 every certified bracket.
@@ -220,12 +220,12 @@ section Lowers
 variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O]
 
-/-- **G-INERT3.** `(q³ - q) / (3 q³) ≤ genuineDensity O 3 c3inert`. -/
+/-- **G-INERT3.** `(q³ - q) / (3 q³) ≤ decidedDensity O 3 c3inert`. -/
 theorem gate_inert3_lower :
     ((residueCard O : ℝ) ^ 3 - (residueCard O : ℝ)) / (3 * (residueCard O : ℝ) ^ 3)
-      ≤ genuineDensity O 3 c3inert := by
+      ≤ decidedDensity O 3 c3inert := by
   classical
-  have hbound := genuineDensity_ge_of_inj (O := O) (n := 3) (N := 1) (σ := c3inert)
+  have hbound := decidedDensity_ge_of_inj (O := O) (n := 3) (N := 1) (σ := c3inert)
     (A := {v : Fin 3 → ResidueField O // NoRootCubic v})
     (fun v => liftRes1 v.1)
     (fun v w h => Subtype.ext (liftRes1_injective h))
@@ -242,12 +242,12 @@ theorem gate_inert3_lower :
   field_simp
   linarith [hcast]
 
-/-- **G-LININERT3.** `(q³ - q²) / (2 q³) ≤ genuineDensity O 3 c3linInert`. -/
+/-- **G-LININERT3.** `(q³ - q²) / (2 q³) ≤ decidedDensity O 3 c3linInert`. -/
 theorem gate_linInert3_lower :
     ((residueCard O : ℝ) ^ 3 - (residueCard O : ℝ) ^ 2) / (2 * (residueCard O : ℝ) ^ 3)
-      ≤ genuineDensity O 3 c3linInert := by
+      ≤ decidedDensity O 3 c3linInert := by
   classical
-  have hbound := genuineDensity_ge_of_inj (O := O) (n := 3) (N := 1) (σ := c3linInert)
+  have hbound := decidedDensity_ge_of_inj (O := O) (n := 3) (N := 1) (σ := c3linInert)
     (A := {v : Fin 3 → ResidueField O // LinAni v})
     (fun v => liftRes1 v.1)
     (fun v w h => Subtype.ext (liftRes1_injective h))
@@ -264,12 +264,12 @@ theorem gate_linInert3_lower :
   field_simp
   linarith [hcast]
 
-/-- **G-RAM3.** `(q - 1) / q⁴ ≤ genuineDensity O 3 c3ram`. -/
+/-- **G-RAM3.** `(q - 1) / q⁴ ≤ decidedDensity O 3 c3ram`. -/
 theorem gate_ram3_lower :
-    ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ 4 ≤ genuineDensity O 3 c3ram := by
+    ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ 4 ≤ decidedDensity O 3 c3ram := by
   classical
   obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
-  have hbound := genuineDensity_ge_of_inj (O := O) (n := 3) (N := 2) (σ := c3ram)
+  have hbound := decidedDensity_ge_of_inj (O := O) (n := 3) (N := 2) (σ := c3ram)
     (A := (exactSet π 1 2) × (dvdSet π 1 2) × (dvdSet π 1 2))
     (fun p => ![p.1.1, p.2.1.1, p.2.2.1])
     (by
@@ -300,13 +300,13 @@ theorem gate_ram3_lower :
   rw [show (3 : ℕ) * 2 = 6 from rfl]
   field_simp
 
-/-- **G-SPLIT3, level 1.** `(q-1)(q-2) / (6q²) ≤ genuineDensity O 3 c3split`. Vacuous (`= 0`) at
+/-- **G-SPLIT3, level 1.** `(q-1)(q-2) / (6q²) ≤ decidedDensity O 3 c3split`. Vacuous (`= 0`) at
 `q = 2`, where `gate_split3_lower`'s deep class is the only source. -/
 theorem gate_split3_res_lower :
     ((residueCard O : ℝ) - 1) * ((residueCard O : ℝ) - 2) / (6 * (residueCard O : ℝ) ^ 2)
-      ≤ genuineDensity O 3 c3split := by
+      ≤ decidedDensity O 3 c3split := by
   classical
-  have hbound := genuineDensity_ge_of_inj (O := O) (n := 3) (N := 1) (σ := c3split)
+  have hbound := decidedDensity_ge_of_inj (O := O) (n := 3) (N := 1) (σ := c3split)
     (A := {v : Fin 3 → ResidueField O // Split3 v})
     (fun v => liftRes1 v.1)
     (fun v w h => Subtype.ext (liftRes1_injective h))
@@ -325,13 +325,13 @@ theorem gate_split3_res_lower :
 
 /-- **THE FIVE `n = 3` LOWER BOUNDS**, general `O`. -/
 theorem lowers_three :
-    1 / (residueCard O : ℝ) ^ 9 ≤ genuineDensity O 3 c3split
+    1 / (residueCard O : ℝ) ^ 9 ≤ decidedDensity O 3 c3split
     ∧ ((residueCard O : ℝ) ^ 3 - (residueCard O : ℝ) ^ 2) / (2 * (residueCard O : ℝ) ^ 3)
-        ≤ genuineDensity O 3 c3linInert
+        ≤ decidedDensity O 3 c3linInert
     ∧ ((residueCard O : ℝ) ^ 3 - (residueCard O : ℝ)) / (3 * (residueCard O : ℝ) ^ 3)
-        ≤ genuineDensity O 3 c3inert
-    ∧ ((residueCard O : ℝ) - 1) ^ 2 / (residueCard O : ℝ) ^ 4 ≤ genuineDensity O 3 c3linRam
-    ∧ ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ 4 ≤ genuineDensity O 3 c3ram :=
+        ≤ decidedDensity O 3 c3inert
+    ∧ ((residueCard O : ℝ) - 1) ^ 2 / (residueCard O : ℝ) ^ 4 ≤ decidedDensity O 3 c3linRam
+    ∧ ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ 4 ≤ decidedDensity O 3 c3ram :=
   ⟨gate_split3_lower, gate_linInert3_lower, gate_inert3_lower, gate_linRam_lower,
     gate_ram3_lower⟩
 
@@ -343,11 +343,11 @@ section BracketPadic
 
 /-- The five certified lower bounds over `ℤ_[2]`. -/
 theorem lowers3_padic_two :
-    (1 : ℝ) / 512 ≤ genuineDensity ℤ_[2] 3 c3split
-    ∧ (1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 3 c3linInert
-    ∧ (1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 3 c3inert
-    ∧ (1 : ℝ) / 16 ≤ genuineDensity ℤ_[2] 3 c3linRam
-    ∧ (1 : ℝ) / 16 ≤ genuineDensity ℤ_[2] 3 c3ram := by
+    (1 : ℝ) / 512 ≤ decidedDensity ℤ_[2] 3 c3split
+    ∧ (1 : ℝ) / 4 ≤ decidedDensity ℤ_[2] 3 c3linInert
+    ∧ (1 : ℝ) / 4 ≤ decidedDensity ℤ_[2] 3 c3inert
+    ∧ (1 : ℝ) / 16 ≤ decidedDensity ℤ_[2] 3 c3linRam
+    ∧ (1 : ℝ) / 16 ≤ decidedDensity ℤ_[2] 3 c3ram := by
   obtain ⟨hs, hi, hc, hr, ht⟩ := lowers_three (O := ℤ_[2])
   rw [residueCard_padicInt 2] at hs hi hc hr ht
   norm_num at hs hi hc hr ht ⊢
@@ -356,11 +356,11 @@ theorem lowers3_padic_two :
 /-- The five certified lower bounds over `ℤ_[3]`. At `q = 3` the split type uses the level-1
 family (`C(3,3) = 1` class out of `27`), which beats the deep class `1/3⁹` by a factor `729`. -/
 theorem lowers3_padic_three :
-    (1 : ℝ) / 27 ≤ genuineDensity ℤ_[3] 3 c3split
-    ∧ (1 : ℝ) / 3 ≤ genuineDensity ℤ_[3] 3 c3linInert
-    ∧ (8 : ℝ) / 27 ≤ genuineDensity ℤ_[3] 3 c3inert
-    ∧ (4 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 3 c3linRam
-    ∧ (2 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 3 c3ram := by
+    (1 : ℝ) / 27 ≤ decidedDensity ℤ_[3] 3 c3split
+    ∧ (1 : ℝ) / 3 ≤ decidedDensity ℤ_[3] 3 c3linInert
+    ∧ (8 : ℝ) / 27 ≤ decidedDensity ℤ_[3] 3 c3inert
+    ∧ (4 : ℝ) / 81 ≤ decidedDensity ℤ_[3] 3 c3linRam
+    ∧ (2 : ℝ) / 81 ≤ decidedDensity ℤ_[3] 3 c3ram := by
   obtain ⟨-, hi, hc, hr, ht⟩ := lowers_three (O := ℤ_[3])
   have hs := gate_split3_res_lower (O := ℤ_[3])
   rw [residueCard_padicInt 3] at hs hi hc hr ht
@@ -369,16 +369,16 @@ theorem lowers3_padic_three :
 
 /-- **GATE BRACKET (n = 3), q = 2.** -/
 theorem gate_bracket3_padic_two :
-    ((1 : ℝ) / 512 ≤ genuineDensity ℤ_[2] 3 c3split
-        ∧ genuineDensity ℤ_[2] 3 c3split ≤ 3 / 8)
-    ∧ ((1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 3 c3linInert
-        ∧ genuineDensity ℤ_[2] 3 c3linInert ≤ 319 / 512)
-    ∧ ((1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 3 c3inert
-        ∧ genuineDensity ℤ_[2] 3 c3inert ≤ 319 / 512)
-    ∧ ((1 : ℝ) / 16 ≤ genuineDensity ℤ_[2] 3 c3linRam
-        ∧ genuineDensity ℤ_[2] 3 c3linRam ≤ 223 / 512)
-    ∧ ((1 : ℝ) / 16 ≤ genuineDensity ℤ_[2] 3 c3ram
-        ∧ genuineDensity ℤ_[2] 3 c3ram ≤ 223 / 512) := by
+    ((1 : ℝ) / 512 ≤ decidedDensity ℤ_[2] 3 c3split
+        ∧ decidedDensity ℤ_[2] 3 c3split ≤ 3 / 8)
+    ∧ ((1 : ℝ) / 4 ≤ decidedDensity ℤ_[2] 3 c3linInert
+        ∧ decidedDensity ℤ_[2] 3 c3linInert ≤ 319 / 512)
+    ∧ ((1 : ℝ) / 4 ≤ decidedDensity ℤ_[2] 3 c3inert
+        ∧ decidedDensity ℤ_[2] 3 c3inert ≤ 319 / 512)
+    ∧ ((1 : ℝ) / 16 ≤ decidedDensity ℤ_[2] 3 c3linRam
+        ∧ decidedDensity ℤ_[2] 3 c3linRam ≤ 223 / 512)
+    ∧ ((1 : ℝ) / 16 ≤ decidedDensity ℤ_[2] 3 c3ram
+        ∧ decidedDensity ℤ_[2] 3 c3ram ≤ 223 / 512) := by
   obtain ⟨hs, hi, hc, hr, ht⟩ := lowers3_padic_two
   obtain ⟨us, ui, uc, ur, ut⟩ := bracket_five hs hi hc hr ht
   exact ⟨⟨hs, by linarith⟩, ⟨hi, by linarith⟩, ⟨hc, by linarith⟩, ⟨hr, by linarith⟩,
@@ -386,16 +386,16 @@ theorem gate_bracket3_padic_two :
 
 /-- **GATE BRACKET (n = 3), q = 3.** -/
 theorem gate_bracket3_padic_three :
-    ((1 : ℝ) / 27 ≤ genuineDensity ℤ_[3] 3 c3split
-        ∧ genuineDensity ℤ_[3] 3 c3split ≤ 8 / 27)
-    ∧ ((1 : ℝ) / 3 ≤ genuineDensity ℤ_[3] 3 c3linInert
-        ∧ genuineDensity ℤ_[3] 3 c3linInert ≤ 16 / 27)
-    ∧ ((8 : ℝ) / 27 ≤ genuineDensity ℤ_[3] 3 c3inert
-        ∧ genuineDensity ℤ_[3] 3 c3inert ≤ 5 / 9)
-    ∧ ((4 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 3 c3linRam
-        ∧ genuineDensity ℤ_[3] 3 c3linRam ≤ 25 / 81)
-    ∧ ((2 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 3 c3ram
-        ∧ genuineDensity ℤ_[3] 3 c3ram ≤ 23 / 81) := by
+    ((1 : ℝ) / 27 ≤ decidedDensity ℤ_[3] 3 c3split
+        ∧ decidedDensity ℤ_[3] 3 c3split ≤ 8 / 27)
+    ∧ ((1 : ℝ) / 3 ≤ decidedDensity ℤ_[3] 3 c3linInert
+        ∧ decidedDensity ℤ_[3] 3 c3linInert ≤ 16 / 27)
+    ∧ ((8 : ℝ) / 27 ≤ decidedDensity ℤ_[3] 3 c3inert
+        ∧ decidedDensity ℤ_[3] 3 c3inert ≤ 5 / 9)
+    ∧ ((4 : ℝ) / 81 ≤ decidedDensity ℤ_[3] 3 c3linRam
+        ∧ decidedDensity ℤ_[3] 3 c3linRam ≤ 25 / 81)
+    ∧ ((2 : ℝ) / 81 ≤ decidedDensity ℤ_[3] 3 c3ram
+        ∧ decidedDensity ℤ_[3] 3 c3ram ≤ 23 / 81) := by
   obtain ⟨hs, hi, hc, hr, ht⟩ := lowers3_padic_three
   obtain ⟨us, ui, uc, ur, ut⟩ := bracket_five hs hi hc hr ht
   exact ⟨⟨hs, by linarith⟩, ⟨hi, by linarith⟩, ⟨hc, by linarith⟩, ⟨hr, by linarith⟩,

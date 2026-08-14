@@ -14,7 +14,16 @@ The verification target: do the `leanfinal` definitions compute the values the c
 
     genuineDensity O 2 ramType = 1 / (q + 1)          (`ram_density_two`)
 
-for every complete DVR `O` with finite residue field, `q = residueCard O`. The two halves:
+for every complete DVR `O` with finite residue field, `q = residueCard O`.
+
+**Which density.** The census machinery below counts DECIDED classes, so it proves the value
+for `decidedDensity` first (`ram_decidedDensity_two` and friends). At `n = 2` the tie
+`genuineDensity_eq_decidedDensity_two` (unconditional, via `leanfinal`'s `drainage_two`) then
+carries every value verbatim to THE density `genuineDensity` — the limit of the proportion of
+coefficient classes consistent with the type. §4 does that transfer; the unsuffixed names are
+the headline statements over THE density, the `_decidedDensity_` ones are the census route.
+
+The two halves of the census:
 
 * the certified RAM classes at level `2M` number exactly `∑_{i<M} (q-1) q^(2M+2i)`
   (`RamCensus.card_ramSet` + `N2Base.card_iUnion_eq_sum`), and every one of them is RAM-decided
@@ -24,7 +33,7 @@ for every complete DVR `O` with finite residue field, `q = residueCard O`. The t
   `q^(3M)` (`DeepSet.card_deepSet_le`).
 
 So the decided count is pinned between the census and the census plus `q^(3M)`, and
-`N2Base.genuineDensity_of_census` turns that into `(q-1)/(q²-1) = 1/(q+1)`.
+`N2Base.decidedDensity_of_census` turns that into `(q-1)/(q²-1) = 1/(q+1)`.
 
 ## Status
 
@@ -103,9 +112,9 @@ theorem card_ramBig (hπ : Irreducible π) (M : ℕ) :
 /-- **TARGET 1 — THE EXACT RAMIFIED DENSITY.** For every complete discrete valuation ring `O`
 with finite residue field of cardinality `q` (residue characteristic 2 included), the genuine
 density of the monic quadratics with a totally ramified factorization is exactly `1/(q+1)`. -/
-theorem ram_density_two (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+theorem ram_decidedDensity_two (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)] :
-    genuineDensity O 2 ramType = 1 / ((residueCard O : ℝ) + 1) := by
+    decidedDensity O 2 ramType = 1 / ((residueCard O : ℝ) + 1) := by
   classical
   obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
   have hB : ∀ M : ℕ, {c : Coeff O 2 (2 * M) | ∃ j, c ∈ ramSet π j (2 * M)}
@@ -133,7 +142,7 @@ theorem ram_density_two (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuati
         ≤ (Nat.card {c : Coeff O 2 (2 * M) | ∃ j, c ∈ ramSet π j (2 * M)} : ℝ)
             + (Nat.card (deepSet π (2 * M)) : ℝ) := by exact_mod_cast h2
       _ ≤ _ := by linarith
-  have hres := genuineDensity_of_census (O := O) (σ := ramType) ((residueCard O : ℝ) - 1)
+  have hres := decidedDensity_of_census (O := O) (σ := ramType) ((residueCard O : ℝ) - 1)
     hlow hhigh
   rw [hres]
   have hq : (2 : ℝ) ≤ (residueCard O : ℝ) := by exact_mod_cast two_le_residueCard O
@@ -218,9 +227,9 @@ theorem card_inertBig (hπ : Irreducible π) (M : ℕ) :
 
 /-- **THE EXACT INERT DENSITY.** `q / (2(q+1))`, for every complete DVR with finite residue
 field — the anisotropic residual census is uniform in the residue characteristic. -/
-theorem inert_density_two (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+theorem inert_decidedDensity_two (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)] :
-    genuineDensity O 2 inertType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1)) := by
+    decidedDensity O 2 inertType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1)) := by
   classical
   obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
   have hB : ∀ M : ℕ, {c : Coeff O 2 (2 * M) | ∃ k, c ∈ inertSet π k (2 * M)}
@@ -250,7 +259,7 @@ theorem inert_density_two (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValua
         ≤ (Nat.card {c : Coeff O 2 (2 * M) | ∃ k, c ∈ inertSet π k (2 * M)} : ℝ)
             + (Nat.card (deepSet π (2 * M)) : ℝ) := by exact_mod_cast h2
       _ ≤ _ := by linarith
-  have hres := genuineDensity_of_census (O := O) (σ := inertType)
+  have hres := decidedDensity_of_census (O := O) (σ := inertType)
     (((residueCard O : ℝ) ^ 2 - (residueCard O : ℝ)) / 2) hlow hhigh
   rw [hres]
   have hq : (2 : ℝ) ≤ (residueCard O : ℝ) := by exact_mod_cast two_le_residueCard O
@@ -269,11 +278,11 @@ variable (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
 
 /-- **THE EXACT SPLIT DENSITY**, by subtraction from the landed
-`sum_three_densities_eq_one`. -/
-theorem split_density_two :
-    genuineDensity O 2 splitType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1)) := by
-  have hsum := sum_three_densities_eq_one (O := O)
-  rw [inert_density_two O, ram_density_two O] at hsum
+`sum_three_decidedDensities_eq_one`. -/
+theorem split_decidedDensity_two :
+    decidedDensity O 2 splitType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1)) := by
+  have hsum := sum_three_decidedDensities_eq_one (O := O)
+  rw [inert_decidedDensity_two O, ram_decidedDensity_two O] at hsum
   have hq : (2 : ℝ) ≤ (residueCard O : ℝ) := by exact_mod_cast two_le_residueCard O
   have h1 : (residueCard O : ℝ) + 1 ≠ 0 := by linarith
   field_simp at hsum ⊢
@@ -282,11 +291,84 @@ theorem split_density_two :
 /-- **TARGET 2 — THE SPLIT/INERT SYMMETRY.** Equal densities, for every complete DVR with finite
 residue field. Proved not by a coefficient involution (there is none uniform in the residue
 characteristic) but by evaluating both sides exactly. -/
-theorem split_eq_inert_two :
-    genuineDensity O 2 splitType = genuineDensity O 2 inertType := by
-  rw [split_density_two, inert_density_two]
+theorem split_eq_inert_decidedDensity_two :
+    decidedDensity O 2 splitType = decidedDensity O 2 inertType := by
+  rw [split_decidedDensity_two, inert_decidedDensity_two]
 
 /-- **The whole `n = 2` density function, exactly.** -/
+theorem decidedDensity_two_exact :
+    decidedDensity O 2 splitType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1))
+    ∧ decidedDensity O 2 inertType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1))
+    ∧ decidedDensity O 2 ramType = 1 / ((residueCard O : ℝ) + 1)
+    ∧ ∀ σ : FactorizationType, σ ≠ splitType → σ ≠ inertType → σ ≠ ramType →
+        decidedDensity O 2 σ = 0 :=
+  ⟨split_decidedDensity_two O, inert_decidedDensity_two O, ram_decidedDensity_two O,
+    fun _ hs hi hr => decidedDensity_two_eq_zero hs hi hr⟩
+
+end Payoff
+
+/-! ## 4. The concrete instances (the numbers the corpus predicts) -/
+
+section Padic
+
+/-- **`q = 2`, the wild prime.** All three degree-2 densities over `ℤ_[2]` are exactly `1/3` —
+the W-11 values, and inside `leanfinal`'s certified brackets `gate_bracket_padic_two_decided`
+(`[1/4, 11/16]` for split and inert, `[1/16, 1/2]` for ram). -/
+theorem decidedDensity_two_padic_two :
+    decidedDensity ℤ_[2] 2 splitType = 1 / 3
+    ∧ decidedDensity ℤ_[2] 2 inertType = 1 / 3
+    ∧ decidedDensity ℤ_[2] 2 ramType = 1 / 3 := by
+  refine ⟨?_, ?_, ?_⟩
+  · rw [split_decidedDensity_two, residueCard_padicInt 2]; norm_num
+  · rw [inert_decidedDensity_two, residueCard_padicInt 2]; norm_num
+  · rw [ram_decidedDensity_two, residueCard_padicInt 2]; norm_num
+
+/-- **`q = 3`, tame.** `split = inert = 3/8`, `ram = 1/4` — the W-11 values, inside
+`gate_bracket_padic_three_decided`. -/
+theorem decidedDensity_two_padic_three :
+    decidedDensity ℤ_[3] 2 splitType = 3 / 8
+    ∧ decidedDensity ℤ_[3] 2 inertType = 3 / 8
+    ∧ decidedDensity ℤ_[3] 2 ramType = 1 / 4 := by
+  refine ⟨?_, ?_, ?_⟩
+  · rw [split_decidedDensity_two, residueCard_padicInt 3]; norm_num
+  · rw [inert_decidedDensity_two, residueCard_padicInt 3]; norm_num
+  · rw [ram_decidedDensity_two, residueCard_padicInt 3]; norm_num
+
+end Padic
+
+/-! ## 5. THE HEADLINE VALUES, over THE density `genuineDensity`
+
+The census above certifies decided classes, so it lands on `decidedDensity`. `leanfinal`'s
+`genuineDensity_eq_decidedDensity_two` — unconditional at `n = 2`, since `drainage_two` is a
+theorem — transfers every value to THE density, the limit of the proportion of coefficient
+classes consistent with the type. The numbers do not move; the object they describe does. -/
+
+section Genuine
+
+variable (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
+
+/-- **THE EXACT RAMIFIED DENSITY.** `genuineDensity O 2 ramType = 1/(q+1)`, every `O`. -/
+theorem ram_density_two : genuineDensity O 2 ramType = 1 / ((residueCard O : ℝ) + 1) := by
+  rw [genuineDensity_eq_decidedDensity_two]; exact ram_decidedDensity_two O
+
+/-- **THE EXACT INERT DENSITY.** `genuineDensity O 2 inertType = q/(2(q+1))`, every `O`. -/
+theorem inert_density_two :
+    genuineDensity O 2 inertType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1)) := by
+  rw [genuineDensity_eq_decidedDensity_two]; exact inert_decidedDensity_two O
+
+/-- **THE EXACT SPLIT DENSITY.** `genuineDensity O 2 splitType = q/(2(q+1))`, every `O`. -/
+theorem split_density_two :
+    genuineDensity O 2 splitType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1)) := by
+  rw [genuineDensity_eq_decidedDensity_two]; exact split_decidedDensity_two O
+
+/-- **TARGET 2 — THE SPLIT/INERT SYMMETRY**, over THE density. -/
+theorem split_eq_inert_two : genuineDensity O 2 splitType = genuineDensity O 2 inertType := by
+  rw [split_density_two, inert_density_two]
+
+/-- **The whole `n = 2` density function, exactly, over THE density.** Together with
+`leanfinal`'s `sum_three_densities_eq_one` this is the complete degree-2 answer: three values
+summing to `1`, everything else `0`. -/
 theorem density_two_exact :
     genuineDensity O 2 splitType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1))
     ∧ genuineDensity O 2 inertType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1))
@@ -296,41 +378,37 @@ theorem density_two_exact :
   ⟨split_density_two O, inert_density_two O, ram_density_two O,
     fun _ hs hi hr => genuineDensity_two_eq_zero hs hi hr⟩
 
-end Payoff
+end Genuine
 
-/-! ## 4. The concrete instances (the numbers the corpus predicts) -/
-
-section Padic
-
-/-- **`q = 2`, the wild prime.** All three degree-2 densities over `ℤ_[2]` are exactly `1/3` —
-the W-11 values, and inside `leanfinal`'s certified brackets `gate_bracket_padic_two`
-(`[1/4, 11/16]` for split and inert, `[1/16, 1/2]` for ram). -/
+/-- **`q = 2`, the wild prime, over THE density.** All three degree-2 densities over `ℤ_[2]` are
+exactly `1/3` — the W-11 values, inside `leanfinal`'s certified brackets
+`gate_bracket_padic_two` (`[1/4, 11/16]` for split and inert, `[1/16, 1/2]` for ram). -/
 theorem density_two_padic_two :
     genuineDensity ℤ_[2] 2 splitType = 1 / 3
     ∧ genuineDensity ℤ_[2] 2 inertType = 1 / 3
     ∧ genuineDensity ℤ_[2] 2 ramType = 1 / 3 := by
-  refine ⟨?_, ?_, ?_⟩
-  · rw [split_density_two, residueCard_padicInt 2]; norm_num
-  · rw [inert_density_two, residueCard_padicInt 2]; norm_num
-  · rw [ram_density_two, residueCard_padicInt 2]; norm_num
+  simpa only [genuineDensity_eq_decidedDensity_two] using decidedDensity_two_padic_two
 
-/-- **`q = 3`, tame.** `split = inert = 3/8`, `ram = 1/4` — the W-11 values, inside
-`gate_bracket_padic_three`. -/
+/-- **`q = 3`, tame, over THE density.** `split = inert = 3/8`, `ram = 1/4` — the W-11 values,
+inside `gate_bracket_padic_three`. -/
 theorem density_two_padic_three :
     genuineDensity ℤ_[3] 2 splitType = 3 / 8
     ∧ genuineDensity ℤ_[3] 2 inertType = 3 / 8
     ∧ genuineDensity ℤ_[3] 2 ramType = 1 / 4 := by
-  refine ⟨?_, ?_, ?_⟩
-  · rw [split_density_two, residueCard_padicInt 3]; norm_num
-  · rw [inert_density_two, residueCard_padicInt 3]; norm_num
-  · rw [ram_density_two, residueCard_padicInt 3]; norm_num
-
-end Padic
+  simpa only [genuineDensity_eq_decidedDensity_two] using decidedDensity_two_padic_three
 
 end UniformityCheck
 
 section AxCheck
 
+#print axioms UniformityCheck.ram_decidedDensity_two
+#print axioms UniformityCheck.inert_decidedDensity_two
+#print axioms UniformityCheck.split_decidedDensity_two
+#print axioms UniformityCheck.split_eq_inert_decidedDensity_two
+#print axioms UniformityCheck.decidedDensity_two_exact
+#print axioms UniformityCheck.decidedDensity_two_padic_two
+#print axioms UniformityCheck.decidedDensity_two_padic_three
+-- unit UNIFORMITY-P4 (2026-08-13): the same values over THE density
 #print axioms UniformityCheck.ram_density_two
 #print axioms UniformityCheck.inert_density_two
 #print axioms UniformityCheck.split_density_two

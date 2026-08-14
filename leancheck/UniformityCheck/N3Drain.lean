@@ -25,7 +25,7 @@ left is:
 Consequences:
 
 * `undecidedSeq_three_le` : `undecidedSeq O 3 (2M) ≤ (1/q)^M + 1/q²`;
-* `upperDensity_three_le` : `upperDensity O 3 σ ≤ genuineDensity O 3 σ + 1/q²` — **the `n = 3`
+* `genuineDensity_three_le` : `genuineDensity O 3 σ ≤ decidedDensity O 3 σ + 1/q²` — **the `n = 3`
   bracket between the certified density and the possible density closes to within `1/q²`**
   (`1/4` at `q = 2`, `1/9` at `q = 3`);
 * `drainage_three_of_triple` : **full drainage at `n = 3` FOLLOWS FROM drainage on the
@@ -316,11 +316,11 @@ theorem tripleUndecidedSeq_le {N : ℕ} (hN : 1 ≤ N) :
 /-- **THE `n = 3` BRACKET CLOSES TO WITHIN `1/q²`.** For every splitting type, the possible
 (upper) density exceeds the certified (genuine) density by at most `1/q²` — `1/4` at `q = 2`,
 `1/9` at `q = 3`. Unconditional, general `O`. -/
-theorem upperDensity_three_le (σ : FactorizationType) :
-    upperDensity O 3 σ ≤ genuineDensity O 3 σ + 1 / (residueCard O : ℝ) ^ 2 := by
+theorem genuineDensity_three_le (σ : FactorizationType) :
+    genuineDensity O 3 σ ≤ decidedDensity O 3 σ + 1 / (residueCard O : ℝ) ^ 2 := by
   obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
   have hlim : Tendsto (fun M : ℕ => gapSeq O 3 σ (2 * M)) atTop
-      (𝓝 (upperDensity O 3 σ - genuineDensity O 3 σ)) :=
+      (𝓝 (genuineDensity O 3 σ - decidedDensity O 3 σ)) :=
     ((possibleSeq_tendsto (O := O) 3 σ).sub (decidedSeq_tendsto (O := O) 3 σ)).comp
       tendsto_two_mul_atTop
   have hrhs : Tendsto (fun M : ℕ =>
@@ -387,7 +387,7 @@ end Drain
 #print axioms UniformityCheck.undecidedSet_subset
 #print axioms UniformityCheck.undecidedSeq_three_le
 #print axioms UniformityCheck.tripleUndecidedSeq_le_undecidedSeq
-#print axioms UniformityCheck.upperDensity_three_le
+#print axioms UniformityCheck.genuineDensity_three_le
 #print axioms UniformityCheck.drainage_three_of_triple
 
 end UniformityCheck

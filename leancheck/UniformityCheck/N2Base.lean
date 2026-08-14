@@ -13,10 +13,10 @@ Two type-agnostic tools:
 
 * `card_iUnion_eq_sum` — a family of pairwise-disjoint sets, empty past `M`, has
   `#⋃ = ∑_{i < M} #Fᵢ`;
-* **`genuineDensity_of_census`** — if the level-`2M` decided count of `σ` is sandwiched between
+* **`decidedDensity_of_census`** — if the level-`2M` decided count of `σ` is sandwiched between
   `∑_{i < M} c·q^(2M+2i)` and that plus `q^(3M)` (the deep-class bound of `DeepSet.lean`), then
 
-      genuineDensity O 2 σ = c / (q² - 1).
+      decidedDensity O 2 σ = c / (q² - 1).
 
   The geometric sum contributes `c·q^(2M)(q^(2M)-1)/(q²-1)`, so the normalised count is
   `(c/(q²-1))·(1 - q^(-2M))`, and the slack `q^(3M)/q^(4M) = q^(-M)` drains.
@@ -111,13 +111,13 @@ theorem count_bounds_of_subsets {σ : FactorizationType} {N : ℕ} (B D : Set (C
   exact h1.trans h2
 
 /-- **THE CENSUS ⟹ DENSITY BRIDGE.** -/
-theorem genuineDensity_of_census {σ : FactorizationType} (c : ℝ)
+theorem decidedDensity_of_census {σ : FactorizationType} (c : ℝ)
     (hlow : ∀ M : ℕ, (∑ i ∈ Finset.range M, c * (residueCard O : ℝ) ^ (2 * M + 2 * i))
       ≤ (decidedCount O 2 σ (2 * M) : ℝ))
     (hhigh : ∀ M : ℕ, (decidedCount O 2 σ (2 * M) : ℝ)
       ≤ (∑ i ∈ Finset.range M, c * (residueCard O : ℝ) ^ (2 * M + 2 * i))
           + (residueCard O : ℝ) ^ (3 * M)) :
-    genuineDensity O 2 σ = c / ((residueCard O : ℝ) ^ 2 - 1) := by
+    decidedDensity O 2 σ = c / ((residueCard O : ℝ) ^ 2 - 1) := by
   have hq : (1 : ℝ) < (residueCard O : ℝ) := by exact_mod_cast one_lt_residueCard O
   have hq0 : (0 : ℝ) < (residueCard O : ℝ) := by linarith
   set q : ℝ := (residueCard O : ℝ) with hqdef
@@ -175,7 +175,7 @@ theorem genuineDensity_of_census {σ : FactorizationType} (c : ℝ)
     simpa using this
   have hsq : Tendsto (fun M : ℕ => decidedSeq O 2 σ (2 * M)) atTop (𝓝 L) :=
     tendsto_of_tendsto_of_tendsto_of_le_of_le hlolim hhilim hlo hhi
-  have hgen : Tendsto (fun M : ℕ => decidedSeq O 2 σ (2 * M)) atTop (𝓝 (genuineDensity O 2 σ)) :=
+  have hgen : Tendsto (fun M : ℕ => decidedSeq O 2 σ (2 * M)) atTop (𝓝 (decidedDensity O 2 σ)) :=
     (decidedSeq_tendsto 2 σ).comp tendsto_two_mul_atTop
   exact tendsto_nhds_unique hgen hsq
 

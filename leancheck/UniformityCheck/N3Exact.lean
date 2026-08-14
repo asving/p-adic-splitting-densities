@@ -23,7 +23,7 @@ residue peel — whose type contains the part `(1,1)` and so is not `{(1,3)}`. H
 
 — an EXACT level-1 count, in the `three_mul_card_noRootCubic` form.
 
-**This is NOT the density, and nothing here claims it is.** `genuineDensity O 3 c3inert` is a
+**This is NOT the density, and nothing here claims it is.** `decidedDensity O 3 c3inert` is a
 supremum over ALL levels, so the level-1 value is only a lower bound for it; the theorems below
 say nothing more. ⚠ The following comparison is NOT proved here and is recorded only as
 orientation: the informal corpus predicts the density `q³(q+1)/(3Φ)` with `Φ = q⁴+q³+q²+q+1`,
@@ -36,7 +36,7 @@ level-1 count cannot be improved AT LEVEL 1.
 
 ## 2. The `1/q²` bracket at the two wild primes
 
-`upperDensity_three_padic_two/_three`: at `q = 2` the possible density exceeds the certified
+`genuineDensity_three_padic_two/_three`: at `q = 2` the possible density exceeds the certified
 density by at most `1/4`; at `q = 3`, by at most `1/9`.
 
 ## Status
@@ -142,17 +142,17 @@ section Padic
 
 /-- **`q = 2`.** Over `ℤ_[2]` the `n = 3` possible density exceeds the certified density by at
 most `1/4`, for every splitting type. -/
-theorem upperDensity_three_padic_two (σ : FactorizationType) :
-    upperDensity ℤ_[2] 3 σ ≤ genuineDensity ℤ_[2] 3 σ + 1 / 4 := by
-  have h := upperDensity_three_le (O := ℤ_[2]) σ
+theorem genuineDensity_three_padic_two (σ : FactorizationType) :
+    genuineDensity ℤ_[2] 3 σ ≤ decidedDensity ℤ_[2] 3 σ + 1 / 4 := by
+  have h := genuineDensity_three_le (O := ℤ_[2]) σ
   rw [residueCard_padicInt 2] at h
   norm_num at h
   exact h
 
 /-- **`q = 3`.** Over `ℤ_[3]` the gap is at most `1/9`. -/
-theorem upperDensity_three_padic_three (σ : FactorizationType) :
-    upperDensity ℤ_[3] 3 σ ≤ genuineDensity ℤ_[3] 3 σ + 1 / 9 := by
-  have h := upperDensity_three_le (O := ℤ_[3]) σ
+theorem genuineDensity_three_padic_three (σ : FactorizationType) :
+    genuineDensity ℤ_[3] 3 σ ≤ decidedDensity ℤ_[3] 3 σ + 1 / 9 := by
+  have h := genuineDensity_three_le (O := ℤ_[3]) σ
   rw [residueCard_padicInt 3] at h
   norm_num at h
   exact h
@@ -171,11 +171,147 @@ theorem decidedSeq_inert3_one_padic_three : decidedSeq ℤ_[3] 3 c3inert 1 = 8 /
 
 end Padic
 
+/-! ## 3. `n = 3` over THE density: what transfers, and what does NOT
+
+At `n = 2` drainage is a theorem, so every certified statement transfers verbatim to THE
+density `genuineDensity`. **At `n = 3` drainage is OPEN**, and this section says exactly how
+much survives without it.
+
+* **Lower bounds transfer for free, unconditionally.** `decidedDensity ≤ genuineDensity` is a
+  theorem for every `n`, so every certified lower bound of `N3Gates.lean` is also a lower bound
+  on THE density (`lowers_three_genuine`). Nothing is lost.
+* **Upper bounds do NOT transfer.** They come from `sum_decidedDensity_le_one`, which is a
+  statement about the *inner* density only; over the outer density the analogous sum bound is
+  false in general. What IS available is the `n = 3` partial-drainage theorem
+  `genuineDensity_three_le` (`N3Drain.lean`): `genuineDensity O 3 σ ≤ decidedDensity O 3 σ + 1/q²`.
+  So a certified upper bound `u` on `decidedDensity` yields the honest upper bound `u + 1/q²`
+  on THE density — the brackets widen by `1/q²` and no more.
+
+The `n = 3` brackets over THE density are therefore stated with that explicit `1/q²` slack. The
+HMENU3 predicted values still sit inside all ten of them (`gate_bracket3_hmenu3_two_genuine`,
+`_three_genuine`) — a weaker but honest check. Closing the slack is exactly the open `n = 3`
+drainage problem; do not quietly drop the `+ 1/q²`. -/
+
+section GenuineThree
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O]
+
+/-- **The `n = 3` transfer, with its honest slack.** A certified two-sided bracket on
+`decidedDensity` becomes a bracket on THE density with the upper end raised by `1/q²`. -/
+theorem genuine3_bracket_of_decided {σ : FactorizationType} {l u : ℝ}
+    (hl : l ≤ decidedDensity O 3 σ) (hu : decidedDensity O 3 σ ≤ u) :
+    l ≤ genuineDensity O 3 σ ∧ genuineDensity O 3 σ ≤ u + 1 / (residueCard O : ℝ) ^ 2 := by
+  refine ⟨hl.trans (decidedDensity_le_genuineDensity 3 σ), ?_⟩
+  have h := genuineDensity_three_le (O := O) σ
+  linarith
+
+/-- **THE FIVE `n = 3` LOWER BOUNDS, over THE density**, general `O`, unconditional: a lower
+bound on the inner density is a lower bound on the outer one. -/
+theorem lowers_three_genuine :
+    1 / (residueCard O : ℝ) ^ 9 ≤ genuineDensity O 3 c3split
+    ∧ ((residueCard O : ℝ) ^ 3 - (residueCard O : ℝ) ^ 2) / (2 * (residueCard O : ℝ) ^ 3)
+        ≤ genuineDensity O 3 c3linInert
+    ∧ ((residueCard O : ℝ) ^ 3 - (residueCard O : ℝ)) / (3 * (residueCard O : ℝ) ^ 3)
+        ≤ genuineDensity O 3 c3inert
+    ∧ ((residueCard O : ℝ) - 1) ^ 2 / (residueCard O : ℝ) ^ 4 ≤ genuineDensity O 3 c3linRam
+    ∧ ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ 4 ≤ genuineDensity O 3 c3ram := by
+  obtain ⟨hs, hi, hc, hr, ht⟩ := lowers_three (O := O)
+  exact ⟨hs.trans (decidedDensity_le_genuineDensity 3 _),
+    hi.trans (decidedDensity_le_genuineDensity 3 _),
+    hc.trans (decidedDensity_le_genuineDensity 3 _),
+    hr.trans (decidedDensity_le_genuineDensity 3 _),
+    ht.trans (decidedDensity_le_genuineDensity 3 _)⟩
+
+end GenuineThree
+
+/-- **GATE BRACKET (n = 3), q = 2, over THE density.** Same lower bounds as
+`gate_bracket3_padic_two`; each upper bound is the certified one plus the `1/4` drainage slack
+of `genuineDensity_three_padic_two`. -/
+theorem gate_bracket3_padic_two_genuine :
+    ((1 : ℝ) / 512 ≤ genuineDensity ℤ_[2] 3 c3split
+        ∧ genuineDensity ℤ_[2] 3 c3split ≤ 5 / 8)
+    ∧ ((1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 3 c3linInert
+        ∧ genuineDensity ℤ_[2] 3 c3linInert ≤ 447 / 512)
+    ∧ ((1 : ℝ) / 4 ≤ genuineDensity ℤ_[2] 3 c3inert
+        ∧ genuineDensity ℤ_[2] 3 c3inert ≤ 447 / 512)
+    ∧ ((1 : ℝ) / 16 ≤ genuineDensity ℤ_[2] 3 c3linRam
+        ∧ genuineDensity ℤ_[2] 3 c3linRam ≤ 351 / 512)
+    ∧ ((1 : ℝ) / 16 ≤ genuineDensity ℤ_[2] 3 c3ram
+        ∧ genuineDensity ℤ_[2] 3 c3ram ≤ 351 / 512) := by
+  obtain ⟨⟨ls, us⟩, ⟨li, ui⟩, ⟨lc, uc⟩, ⟨lr, ur⟩, ⟨lt, ut⟩⟩ := gate_bracket3_padic_two
+  have hs := genuineDensity_three_padic_two c3split
+  have hi := genuineDensity_three_padic_two c3linInert
+  have hc := genuineDensity_three_padic_two c3inert
+  have hr := genuineDensity_three_padic_two c3linRam
+  have ht := genuineDensity_three_padic_two c3ram
+  refine ⟨⟨?_, ?_⟩, ⟨?_, ?_⟩, ⟨?_, ?_⟩, ⟨?_, ?_⟩, ⟨?_, ?_⟩⟩ <;>
+    first
+      | linarith [decidedDensity_le_genuineDensity (O := ℤ_[2]) 3 c3split]
+      | linarith [decidedDensity_le_genuineDensity (O := ℤ_[2]) 3 c3linInert]
+      | linarith [decidedDensity_le_genuineDensity (O := ℤ_[2]) 3 c3inert]
+      | linarith [decidedDensity_le_genuineDensity (O := ℤ_[2]) 3 c3linRam]
+      | linarith [decidedDensity_le_genuineDensity (O := ℤ_[2]) 3 c3ram]
+
+/-- **GATE BRACKET (n = 3), q = 3, over THE density.** Upper bounds raised by the `1/9` slack of
+`genuineDensity_three_padic_three`. -/
+theorem gate_bracket3_padic_three_genuine :
+    ((1 : ℝ) / 27 ≤ genuineDensity ℤ_[3] 3 c3split
+        ∧ genuineDensity ℤ_[3] 3 c3split ≤ 11 / 27)
+    ∧ ((1 : ℝ) / 3 ≤ genuineDensity ℤ_[3] 3 c3linInert
+        ∧ genuineDensity ℤ_[3] 3 c3linInert ≤ 19 / 27)
+    ∧ ((8 : ℝ) / 27 ≤ genuineDensity ℤ_[3] 3 c3inert
+        ∧ genuineDensity ℤ_[3] 3 c3inert ≤ 2 / 3)
+    ∧ ((4 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 3 c3linRam
+        ∧ genuineDensity ℤ_[3] 3 c3linRam ≤ 34 / 81)
+    ∧ ((2 : ℝ) / 81 ≤ genuineDensity ℤ_[3] 3 c3ram
+        ∧ genuineDensity ℤ_[3] 3 c3ram ≤ 32 / 81) := by
+  obtain ⟨⟨ls, us⟩, ⟨li, ui⟩, ⟨lc, uc⟩, ⟨lr, ur⟩, ⟨lt, ut⟩⟩ := gate_bracket3_padic_three
+  have hs := genuineDensity_three_padic_three c3split
+  have hi := genuineDensity_three_padic_three c3linInert
+  have hc := genuineDensity_three_padic_three c3inert
+  have hr := genuineDensity_three_padic_three c3linRam
+  have ht := genuineDensity_three_padic_three c3ram
+  refine ⟨⟨?_, ?_⟩, ⟨?_, ?_⟩, ⟨?_, ?_⟩, ⟨?_, ?_⟩, ⟨?_, ?_⟩⟩ <;>
+    first
+      | linarith [decidedDensity_le_genuineDensity (O := ℤ_[3]) 3 c3split]
+      | linarith [decidedDensity_le_genuineDensity (O := ℤ_[3]) 3 c3linInert]
+      | linarith [decidedDensity_le_genuineDensity (O := ℤ_[3]) 3 c3inert]
+      | linarith [decidedDensity_le_genuineDensity (O := ℤ_[3]) 3 c3linRam]
+      | linarith [decidedDensity_le_genuineDensity (O := ℤ_[3]) 3 c3ram]
+
+/-- **HMENU3 containment in the widened brackets, q = 2.** The corpus's predicted cubic
+densities `(4/93, 28/93, 8/31, 22/93, 5/31)` still lie inside the `n = 3` brackets over THE
+density. -/
+theorem gate_bracket3_hmenu3_two_genuine :
+    ((1 : ℝ) / 512 ≤ 4 / 93 ∧ (4 : ℝ) / 93 ≤ 5 / 8)
+    ∧ ((1 : ℝ) / 4 ≤ 28 / 93 ∧ (28 : ℝ) / 93 ≤ 447 / 512)
+    ∧ ((1 : ℝ) / 4 ≤ 8 / 31 ∧ (8 : ℝ) / 31 ≤ 447 / 512)
+    ∧ ((1 : ℝ) / 16 ≤ 22 / 93 ∧ (22 : ℝ) / 93 ≤ 351 / 512)
+    ∧ ((1 : ℝ) / 16 ≤ 5 / 31 ∧ (5 : ℝ) / 31 ≤ 351 / 512) := by
+  norm_num
+
+/-- **HMENU3 containment in the widened brackets, q = 3.** -/
+theorem gate_bracket3_hmenu3_three_genuine :
+    ((1 : ℝ) / 27 ≤ 63 / 968 ∧ (63 : ℝ) / 968 ≤ 11 / 27)
+    ∧ ((1 : ℝ) / 3 ≤ 351 / 968 ∧ (351 : ℝ) / 968 ≤ 19 / 27)
+    ∧ ((8 : ℝ) / 27 ≤ 36 / 121 ∧ (36 : ℝ) / 121 ≤ 2 / 3)
+    ∧ ((4 : ℝ) / 81 ≤ 93 / 484 ∧ (93 : ℝ) / 484 ≤ 34 / 81)
+    ∧ ((2 : ℝ) / 81 ≤ 10 / 121 ∧ (10 : ℝ) / 121 ≤ 32 / 81) := by
+  norm_num
+
 #print axioms UniformityCheck.inert3_decided_iff
 #print axioms UniformityCheck.decidedSet_inert3_one
 #print axioms UniformityCheck.decidedCount_inert3_one
 #print axioms UniformityCheck.decidedSeq_inert3_one
-#print axioms UniformityCheck.upperDensity_three_padic_two
-#print axioms UniformityCheck.upperDensity_three_padic_three
+#print axioms UniformityCheck.genuineDensity_three_padic_two
+#print axioms UniformityCheck.genuineDensity_three_padic_three
+-- unit UNIFORMITY-P4 (2026-08-13): the honest `n = 3` re-key over THE density
+#print axioms UniformityCheck.genuine3_bracket_of_decided
+#print axioms UniformityCheck.lowers_three_genuine
+#print axioms UniformityCheck.gate_bracket3_padic_two_genuine
+#print axioms UniformityCheck.gate_bracket3_padic_three_genuine
+#print axioms UniformityCheck.gate_bracket3_hmenu3_two_genuine
+#print axioms UniformityCheck.gate_bracket3_hmenu3_three_genuine
 
 end UniformityCheck
