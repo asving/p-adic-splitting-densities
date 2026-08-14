@@ -876,3 +876,496 @@ and the K2-DIGIT LIFT display, verbatim (the object later corrected):
 **TEETH:** **ARITHMETIC AUDIT of the `a0 ≥ 0` inequality, recomputed:** the claim is `E2 ≥ (e1−1)e2h + (e2−1)u2 + 1`, i.e. `e2f2u2 ≥ (e1−1)e2h + (e2−1)u2 + 1`. At `f2 ≥ 1` and `u2 > e2D'h = e2e1f1h ≥ e1h`: `e2f2u2 − (e2−1)u2 ≥ u2 > e1h·e2 ≥ (e1−1)e2h`, so the inequality holds with room ✓. The displayed derivation is sound.
 
 ---
+### EFF.GENTOW1.28  [lemma]
+
+**CANONICAL STATEMENT:**
+
+> “**LEMMA GENTOW-2 (refine transfer at the composed key).** Set
+> Phi2+ := Phi2 + what, what := −lift(s; lam). Then:
+> (i) [INVARIANTS] Phi2+ keeps every T(b)' key invariant: monic of
+> degree D2; level-1 development one-sided of slope kappa2 with
+> residual psi2 and side digits byte-unchanged (what's slots sit at
+> weight lam > E2, strictly above the key's side); x-polygon one
+> side of slope h/e1 (what's x-heights >= lam − (e2f2−1)(u2−e2D'h)
+> > dv2(x^{D2})); hence the (i)-forcing chain reruns verbatim:
+> Phi2+ irreducible with carrier (e1e2, f1f2), and GENTOW-1 +
+> GENHN-2' hold verbatim at Phi2+.”
+
+**FORM:** bold-headed lemma clause.
+
+**DERIVATION:** `.32`.
+
+**CONDITIONALITY:** the clause's proof sentence “constant term untouched” is corrected by **F-4** (`.68`) to mean the constant term's **x-side digit**; the clause itself is unchanged.
+
+**RESOLUTION TRACE:** statement lines 319–328; proof 348–357; correction 957–968.
+
+**TEETH:** P-6 / `GP-EF` 8: “the refined keys keep carrier (e1e2, f1f2) by PARI” — the invariance claim is machine-adjudicated on all eight refine rows. Re-read from the tally: `'GP-EF': 8` ✓.
+
+---
+
+### EFF.GENTOW1.29  [lemma]
+
+**CANONICAL STATEMENT:**
+
+> “(ii) [THE KILLS] in the Phi2+-development of f the mu2 event pins
+> die: p_j+ > (mu2−j)*lam for every j < mu2.”
+
+**FORM:** bold-headed lemma clause.
+
+**DERIVATION:** `.33`, layers 1–2.
+
+**CONDITIONALITY:** at general μ₂ the kills ride layer 1's graded frame — GENTOW-BOX-1 (`.47`).
+
+**RESOLUTION TRACE:** statement lines 329–330; proof 358–396.
+
+**TEETH:** REFINE 40 rows + T-REFWRONG ×8 (“wrong-height, wrong-residue at q=3, and wrong-flavor normalizers all leave the event pin alive”) — a three-way mutation tooth, fired 8/8. Re-read: `tooth T-REFWRONG fired x8` ✓.
+
+---
+
+### EFF.GENTOW1.30  [lemma]
+
+**CANONICAL STATEMENT (frozen):**
+
+> “(iii) [TRIANGULARITY + BIJECTION] (digits at Phi2) ↦ (digits at
+> Phi2+) is triangular (new digit = old digit + strictly-lower-height
+> data), bijecting the event slice onto the lam-floored node box;
+> |K2| − 1 letter choices of s per step.”
+
+**FORM:** bold-headed lemma clause.
+
+**DERIVATION:** `.33` layer 3 — **whose sealed “onto by cardinality” argument defined neither set**, a gap R2b (`.66`) fills.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **inventory completion**. R2b supplies `DOM_N`, `COD_N`, a counting lemma with the SAME clipped exponent on both sides, and the correct ONTO argument (injection between finite sets of equal cardinality), plus the inverse-limit passage to full strings. **A consumer must cite R2b's definitions, not the frozen sentence, when it needs the bijection.**
+
+**RESOLUTION TRACE:** statement lines 331–334; proof 392–396; completion 886–917.
+
+**TEETH:** R2b's first ENUMERATION contact: “the A5-R1 battery row (λ = 13, s = 1, Φ₂⁺ = Φ₂ − 4Φ′, N = 4) — 16 DOM members map to 16 DISTINCT window images covering the COD box EXACTLY (runner rows UB-count-16/UB-onto)”.
+
+---
+
+### EFF.GENTOW1.31  [lemma]
+
+**CANONICAL STATEMENT:**
+
+> “(iv) [TRANSPORTED EVENT DATA — the inner refine read back] for a
+> deeper member g in the Phi2+-frame (pins above the lam-node), the
+> OLD-key read of g exhibits exactly the alpha-event: pin
+> p_j(old) = (mu2−j)*lam with residue binom(mu2, j)(−s̄)^{mu2−j}
+> (coherent normalization, wrap units included) at every j with
+> p ∤ binom(mu2, j), the other coordinates strictly above — at
+> mu2 = 2, q = 2 the j = 1 pin vanishes (2s = 0) and the event is
+> carried by p_0 = 2*lam alone; at q = 3 both pins show. Heights
+> transport by dv2 = e2*dv and residues by the eta2-dictionary —
+> the inner-stage (LIFT)-move data is exactly recoverable from the
+> composed frame.”
+
+**FORM:** bold-headed lemma clause.
+
+**DERIVATION:** `.34` — a binomial expansion of `g = Σ C_i⁺(Φ₂+ŵ)^i` with the minimal-height term identified.
+
+**CONDITIONALITY:** the residue display is characteristic-sensitive by construction (`p ∤ binom(mu2,j)`), and the note displays both characteristics.
+
+**RESOLUTION TRACE:** statement lines 335–345; proof 397–407.
+
+**TEETH:** **`.12`'s recomputed table confirms `p_0(old) = 2·lam` on all eight rows, and the q = 2 / q = 3 pin split exactly as displayed** — the strongest single confirmation in this note of a characteristic-sensitive prediction.
+
+---
+
+### EFF.GENTOW1.32  [derivation]
+
+**CANONICAL STATEMENT:** proof of (i), verbatim:
+
+> “(i) what's slots sit at dv2-height lam > E2 while the key's
+> level-1 side and residual live at weight E2: strictly-above
+> additions change neither (GENTOW-1 Step 0/Step 1 grammar). The
+> x-side: a weight-lam grid monomial with Phi'-exponent b has
+> x-height lam − b(u2 − e2D'h) >= lam − (e2f2−1)(u2−e2D'h) >
+> E2 − (e2f2−1)(u2 − e2D'h) = u2 + (e2f2−1)e2D'h > e2f2*e2D'h =
+> dv2(x^{D2}): strictly above the x-side through (D2, 0), constant
+> term untouched. With the side data identical, (i)'s forcing chain
+> gives the same carrier; GENHN-2'/GENTOW-1 depend only on these
+> invariants. ∎(i)”
+
+**FORM:** proof clause.
+
+**DERIVATION:** a strictly-above argument plus an x-side degree chain.
+
+**CONDITIONALITY:** the final phrase “constant term untouched” is corrected by **F-4** (`.68`): the constant COEFFICIENT can change (B-R2 shifts it by −16); what is untouched is its x-side digit. SUPERSESSION KIND: **wording-rider**.
+
+**RESOLUTION TRACE:** proof lines 348–357; correction 957–968.
+
+**TEETH:** **ARITHMETIC AUDIT of the x-side chain, recomputed:** `E2 − (e2f2−1)(u2 − e2D'h) = e2f2u2 − (e2f2−1)u2 + (e2f2−1)e2D'h = u2 + (e2f2−1)e2D'h` ✓ (the displayed simplification is exact), and `u2 + (e2f2−1)e2D'h > e2f2·e2D'h` reduces to `u2 > e2D'h`, the node floor ✓.
+
+---
+
+### EFF.GENTOW1.33  [derivation]
+
+**CANONICAL STATEMENT:** the three-layer proof of (ii)+(iii), `[ASSEMBLED]` from lines 358–396. Layer 1's mechanism and its honesty note, verbatim:
+
+> “* LAYER 1 (graded kills). GENHN-2' makes the composed slot model
+>   pointwise faithful … so the graded computation happens in gr(O_{L2}) —
+>   one K2-line per height, with wrap units … and the
+>   normalizer cocycle n2hat(m)·n2hat(m') = (wrap unit in
+>   K2^×)·n2hat(m+m'): the units enter the residual assembly and
+>   the carry products IDENTICALLY … so the development transforms by the
+>   substitution T ↦ T + s̄ on the residual polynomial:
+>   (T − s)^{mu2} ↦ T^{mu2} — all mu2 pins die. The identity is a
+>   substitution identity, binomial-free, both characteristics
+>   (GENHN-4 layer 1 verbatim). GRADE NOTE (honesty): at mu2 = 2
+>   this is verified pointwise-elementarily by the battery's refine
+>   rows (actual polynomial re-division, no formula — the
+>   GN-REFINE3 pattern; 8 rows across all five families, q ∈ {2,3},
+>   monomial and Phi'-flavored and two-monomial K2-digit
+>   normalizers); at general mu2 layer 1 consumes the composed
+>   graded frame exactly as GENHN-4 layer 1 consumed W-9's —
+>   GENHN-BOX-2's disclosure pattern one level up, named in S6.”
+
+Layer 2's novelty statement, verbatim:
+
+> “THE LEVEL-2 NOVELTY sits exactly here:
+>   at level 1 one carry (x) priced by one side (Phi''s); here two
+>   carries priced by the two sides — both displays are Step 0.”
+
+Layer 3, verbatim:
+
+> “* LAYER 3 (bijectivity). Triangular by layers 1–2; image inside
+>   the lam-floored node {p_j+ > (mu2−j)lam} by (ii); onto by
+>   cardinality: slot strings are key-independent (GENHN-2' at
+>   Phi2+ via (i)), the mu2 pinned digits are the event data and
+>   the remaining slots biject. ∎(ii),(iii)”
+
+**FORM:** three bulleted layers.
+
+**DERIVATION:** layer 1 is a graded substitution identity; layer 2 is Step-0 carry monotonicity applied to two carries; layer 3 is triangularity + image + cardinality.
+
+**CONDITIONALITY:** **two live conditionalities.** (a) Layer 1 at μ₂ ≥ 3 consumes the composed graded frame — GENTOW-BOX-1 (`.47`), routed to GENTOW5 at 0/2. (b) Layer 3's “onto by cardinality” is the sentence R2b completes (`.66`); the note's own later verdict on it is blunt: “The sealed layer-3 sentence asserted "onto by cardinality" with neither set defined.”
+
+**RESOLUTION TRACE:** proof lines 358–396; corrections 886–917 (R2b), 547–561 (BOX-1).
+
+**TEETH:** layer 1 at μ₂ = 2 is *pointwise-elementary* (8 re-division rows, no formula) — the note's own strongest evidence class here, and it is exactly the regime the machine covers. Layer 2's two-carry pricing is Step 0 (`.19`), value-blind and wrap-immune.
+
+---
+
+### EFF.GENTOW1.34  [derivation]
+
+**CANONICAL STATEMENT:** proof of (iv), verbatim:
+
+> “(iv) Write the Phi2-development of g by substituting Phi2+ =
+> Phi2 + what into g = Sum C_i+ (Phi2+)^i: coordinate j receives
+> Sum_{i >= j} binom(i, j) what^{i−j} C_i+ plus weight-raised
+> carries; the minimal-height term is binom(mu2, j) what^{mu2−j}
+> from C_{mu2}+ = 1, at dv2 = (mu2−j)lam with residue
+> binom(mu2,j)(−s̄)^{mu2−j}·(wraps); every C_i+ (i < mu2)
+> contribution sits at dv2 > (mu2−i)lam + (i−j)lam = (mu2−j)lam
+> (pins above the lam-node). At p | binom(mu2, j) the pin datum
+> vanishes and the coordinate sits strictly above — the
+> characteristic-sensitive display of the level-1 refine, now at
+> the composed key. ∎”
+
+**FORM:** proof clause.
+
+**DERIVATION:** binomial expansion + a height comparison isolating the minimal term.
+
+**CONDITIONALITY:** none beyond the setting.
+
+**RESOLUTION TRACE:** proof lines 397–407.
+
+**TEETH:** **ARITHMETIC AUDIT: `(mu2−i)lam + (i−j)lam = (mu2−j)lam` ✓** — the displayed cancellation is exact, so the strict inequality is what makes the C_i⁺ terms non-minimal. Machine: the eight refine rows (`.12`) confirm `p_0 = 2·lam` and the char-sensitive vanishing.
+
+---
+
+### EFF.GENTOW1.35  [lemma]
+
+**CANONICAL STATEMENT (frozen):**
+
+> “(a) [CAP + FIRST-BAND] a computed dv2-value is LIFT-STABLE iff
+> < e1e2*N: an out-of-window O-digit at v = N in the (0,0)-class
+> gives dv2 = e1e2*N, undercutting every computed value >= e1e2*N
+> and tying none below it; all in-window slot digits agree across
+> lifts (by (e)'s triangularity mod pi^N). At f1f2 >= 2, at the
+> FIRST band height m = e1e2*N exactly: every unread digit lives at
+> height >= e1e2*N and joins the height-m residue only on
+> complementary K2-flavors, so by GENHN-2''s independence a nonzero
+> readable part cannot be cancelled: the VALUE is exact for every
+> lift while the full K2-residue is not determined … Deeper band heights are
+> value-unstable (the undercut); no trichotomy is claimed there
+> (conservative drain), exactly as the annex's (3).”
+
+**CANONICAL STATEMENT (EFFECTIVE):** the “iff” is REPLACED by **R2c**'s three-band statement of record (`.67`) — BAND 1 `m < e₁e₂N` stable; BAND 2 `m = e₁e₂N` value-exact, residue undetermined (at f₁f₂ ≥ 2); BAND 3 `m > e₁e₂N` unstable.
+
+**FORM:** bold-headed lemma clause.
+
+**DERIVATION:** `.40`(a) — an undercut instance plus GENHN-2′'s tower-basis independence.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement**. **The clause was internally inconsistent as sealed** — R2c's diagnosis: “its only-if direction contradicts the same clause's first-band sentence (value exact AT the cap)”. R2c also re-scopes the proof phrase “undercutting every computed value ≥ e₁e₂N” to STRICT `>`: “at equality the unread digit TIES.” No proof content changes.
+
+**RESOLUTION TRACE:** statement lines 414–427; correction 919–955.
+
+**TEETH:** **per-band machine contact at FAM-B (N = 4, cap = 8)**, re-read from `gentow1_r2_units_output.txt`: band 2 rows `UC-BAND2-LC0-pari  ok  dv2 = 8 at [(2, 8)]`; band 3 rows `UC-BAND3-L0-pari  ok  dv2 = 14 at [(4, 28)]` and `UC-BAND3-LC1-x3-pari  ok  dv2 = 11 at [(4, 22)]` ✓ — the note's “band 3 — values 14 vs 11 across two lifts” reproduces exactly. Run verdict `TOTAL violations 0` / `GREEN` ✓.
+
+---
+
+### EFF.GENTOW1.36  [lemma]
+
+**CANONICAL STATEMENT:**
+
+> “(b) [RAGGED STRINGS] the class-(a,b) slot string of C_j ends at
+> e1e2*(N−1) + w(a,b): ragged across the e1e2 height-classes (each
+> residue mod e1e2 realized exactly once in the (i < e1, b < e2)
+> range — two-step separation); WITHIN one dv2-height the K2-digit's
+> f1f2 component O-digits die at different lift-depths (the
+> within-digit band — new at level 2 for e2 >= 2, where it mixes the
+> eta- and eta2-flavors).”
+
+**FORM:** bold-headed lemma clause.
+
+**DERIVATION:** `.40`(b) — `v ≤ N−1 ⟺ height ≤ e1e2(N−1) + w(a,b)`, plus Step 4's CRT for class surjectivity.
+
+**CONDITIONALITY:** the within-digit band is flagged NEW at level 2 for e₂ ≥ 2.
+
+**RESOLUTION TRACE:** statement lines 428–434; proof 462–463.
+
+**TEETH:** STRINGS 22 rows; re-read from the tally: `'STRINGS': 22` ✓.
+
+---
+
+### EFF.GENTOW1.37  [lemma]
+
+**CANONICAL STATEMENT:**
+
+> “(c) [CONSULTATION] every digit consulted by a readable event sits
+> strictly inside its class string: a consulted height m satisfies
+> m < e1e2*N and m ≡ w(a,b) (mod e1e2), hence m <= e1e2*(N−1) +
+> w(a,b) — one congruence, GENHN-3(c) verbatim on the dv2-ladder.”
+
+**FORM:** bold-headed lemma clause.
+
+**DERIVATION:** one congruence (`.40`(c)).
+
+**CONDITIONALITY:** rides band 1 after R2c (`.67` says the consumers “ride heights and band-1/2 residue-determinacy as before”).
+
+**RESOLUTION TRACE:** statement lines 435–438.
+
+**TEETH:** ARITHMETIC AUDIT: `m < e1e2N` and `m ≡ w (mod e1e2)` give `m ≤ e1e2N − e1e2 + w = e1e2(N−1) + w` ✓ — exact.
+
+---
+
+### EFF.GENTOW1.38  [lemma]
+
+**CANONICAL STATEMENT:**
+
+> “(d) [UPWARD CARRIES] along composed chains (GENTOW-2 refines),
+> every update determines new digits at height d from old digits at
+> heights <= d (GENTOW-2 layer 2 = Step-0 carry monotonicity): deep
+> composed histories never consult the ragged band; per-node laws
+> uniform below the caps.”
+
+**FORM:** bold-headed lemma clause.
+
+**DERIVATION:** GENTOW-2 layer 2 = Step 0 (`.19`, `.33`).
+
+**CONDITIONALITY:** none; the consequence (“deep composed histories never consult the ragged band”) is what makes windowed computation sound along refine chains.
+
+**RESOLUTION TRACE:** statement lines 439–443; proof 464.
+
+**TEETH:** re-derived independently by PE3 (“PE3 additionally re-derived the ONTO cardinality argument and GENTOW-5(c)/(d) on its own paper”, `.59`).
+
+---
+
+### EFF.GENTOW1.39  [lemma]
+
+**CANONICAL STATEMENT:**
+
+> “(e) [CAPPED-WINDOW CONTENT IDENTITY] the composed digit map is
+> triangular-unimodular over Ô (GENTOW-1(b)), so it induces a
+> BIJECTION (f mod pi^N, monic deg n) ↔ (composed digits c_{j,a,b}
+> mod pi^N): the certified windows at Phi2 — every decided composed
+> read at heights < e1e2*N is a function of the window data, the
+> budget/count display of GENTOW-1(b) is exact per window, and
+> counts computed in composed digits equal counts computed on
+> ambient coefficients (the GENIND capped-window content identity at
+> the composed frame).”
+
+**FORM:** bold-headed lemma clause.
+
+**DERIVATION:** unipotence over Ô (`.22`), hence bijectivity mod π^N.
+
+**CONDITIONALITY:** **R2a re-scopes one clause of this sentence explicitly** (`.65`): “CONSUMER RE-SCOPE: LEMMA GENTOW-5(e)'s sentence "the budget/count display of GENTOW-1(b) is exact per window" reads AT the clipped display (equivalently: exact as sealed for N ≥ max floor).” SUPERSESSION KIND: **scope-pin**.
+
+**RESOLUTION TRACE:** statement lines 444–452; correction 881–884.
+
+**TEETH:** WINDOW 35 + ROUNDTRIP 150; re-read: `'WINDOW': 35, 'ROUNDTRIP': 150` ✓.
+
+---
+
+### EFF.GENTOW1.40  [derivation]
+
+**CANONICAL STATEMENT:** the §S4 proof, verbatim:
+
+> “*Proof.* (a) Undercut instance: the class-(0,0) digit at v = N has
+> height e1e2*N and every unread digit has v >= N, hence height
+> >= e1e2*N + w >= e1e2*N: values below the cap can neither move nor
+> tie; in-window stability is (e) mod pi^N. First-band: the unread
+> components at height exactly e1e2*N occupy the complementary
+> flavors {eta^r eta2^t : (r,t) out-of-window at m}; GENHN-2''s
+> tower-basis independence (the K-components along {eta2^t} each
+> force res = 0) says a nonzero readable combination survives any
+> assignment of the unread flavors. (b) v <= N−1 ⟺ height <=
+> e1e2*(N−1) + w(a,b); class surjectivity is GENTOW-1 Step 4's CRT
+> display. (c) the congruence line. (d) GENTOW-2 layer 2. (e)
+> c_{j,a,b} = (f's coefficient at x-degree jD2 + bD' + a) + an
+> Ô-combination of strictly higher-degree coefficients (GENTOW-1
+> Step 3): unipotent over Ô, hence bijective mod pi^N. ∎”
+
+**FORM:** italic-headed five-clause proof.
+
+**DERIVATION:** as quoted; each clause one or two lines.
+
+**CONDITIONALITY:** clause (a)'s proof is what R2c re-scopes (STRICT `>` at the cap).
+
+**RESOLUTION TRACE:** proof lines 453–467.
+
+**TEETH:** T-UNDERCUT ×2 (“a v = N' digit with e1e2·N' <= m* changes the read”), fired; re-read: `tooth T-UNDERCUT fired x2` ✓.
+
+---
+
+### EFF.GENTOW1.41  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “**Scope remark (honest).** (i) The BAND ADJUDICATION (which band
+> reads exit UND vs decide — the GENH4-CAP(F)/r3 trichotomy one
+> level up) is claimed here ONLY in the transported first-band form
+> (a); a composed band trichotomy display with census would be the
+> analogue of the [r2] f1 >= 3 annex's (2) and is NOT derived — it
+> was not part of item (5)'s box text (which asks for GENHN-3 +
+> BOX-4 at dv2). (ii) BOX-4's extraction seams concern EMBEDDED
+> genres; the tower's first-live shape is full-side (the tower block
+> IS f), so the extraction-certification layer is vacuous here;
+> partial inner sides — where extraction seams would return — are
+> [GENHN-TOW-1] item (4), untouched.”
+
+**FORM:** bold-headed two-item scope remark.
+
+**DERIVATION:** `[RECORD]` of two deliberate non-derivations, each with its reason.
+
+**CONDITIONALITY:** (ii)'s vacuity argument is a genuine scope result, not an omission: at a full side the extraction layer has nothing to certify. It becomes non-vacuous exactly at item (4).
+
+**RESOLUTION TRACE:** lines 469–479.
+
+**TEETH:** none (declared non-derivations); disposition `signed non-applicability` for (ii).
+
+---
+
+### EFF.GENTOW1.42  [instrument-record]
+
+**CANONICAL STATEMENT:**
+
+> “INSTRUMENT: `verification/openmath/gentow1_checks.py`, sealed at
+> commit 982abe7 (predictions P-1..P-9 + 5 teeth in the docstring,
+> BEFORE the first full run; wiring smoke disclosed there — two
+> pre-seal constant slips named). RUN 1 crashed on instrument
+> defects, repaired and REDISCLOSED in the docstring (commit before
+> re-run): the sealed P-7 check compared reads INCLUDING above-cap
+> values (over-claiming GENTOW-5(a), whose content is stability
+> below e1e2·N only — the 25 run-1 flags were all above-cap p1
+> appearances under lifts, below-cap data and sigma identical);
+> plus a +oo nfeltval parser guard and a DRAIN-member PARI skip
+> (members with Phi2 | f carry no scored mu2 = 2 read). No
+> prediction changed. Runner md5 at the verdict run:
+> 6df4b213ed0aab6afa37ac7b418540aa.”
+
+**FORM:** bold-headed instrument record with a redisclosure.
+
+**DERIVATION:** `[RECORD]` — a two-commit seal with an honest post-seal repair disclosure.
+
+**CONDITIONALITY:** **the redisclosure is itself a finding about the note's own claim**: the sealed P-7 over-claimed GENTOW-5(a). That is the same defect R2c later finds in the STATEMENT (`.67`) — the instrument and the statement drifted the same way, and the instrument was fixed first.
+
+**RESOLUTION TRACE:** lines 483–495.
+
+**TEETH:** **`md5sum gentow1_checks.py` = `6df4b213ed0aab6afa37ac7b418540aa`** — matches the stated hash exactly ✓. `git cat-file -t 982abe7` = commit ✓.
+
+---
+
+### EFF.GENTOW1.43  [run-record]  `[TABLE]`
+
+**CANONICAL STATEMENT:** the verdict. **Source display, verbatim:**
+
+>     “GREEN — 1,128 checks, 0 violations, 5/5 teeth.
+>     Tally: NEC 350, REAL 180, ROUNDTRIP 150, NODE-EQ 5, MUTANT 5,
+>     WINDOW 35, STRINGS 22, BELOWNODE 1, SHADOW 3, UNDERCUT 2,
+>     REFINE 40, GP-SIG 94, GP-DISC 57, GP-NODE 171, GP-EF 8,
+>     TEETH 5.”
+
+with its header: “VERDICT RUN (this repo, 2026-08-09, output `gentow1_checks_output.txt` md5 25667bf6, ~5s + PARI)”.
+
+`[TABLE]` — transcription with the compiler's independent sum:
+
+| family | NEC | REAL | ROUNDTRIP | NODE-EQ | MUTANT | WINDOW | STRINGS | BELOWNODE | SHADOW | UNDERCUT | REFINE | GP-SIG | GP-DISC | GP-NODE | GP-EF | TEETH |
+|---|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| count | 350 | 180 | 150 | 5 | 5 | 35 | 22 | 1 | 3 | 2 | 40 | 94 | 57 | 171 | 8 | 5 |
+
+**MANDATORY ARITHMETIC AUDIT (v3 rule 22), computed fresh:** 350 + 180 + 150 + 5 + 5 + 35 + 22 + 1 + 3 + 2 + 40 + 94 + 57 + 171 + 8 + 5 = **1,128** ✓ — the sixteen-category tally sums exactly to the headline. **Cross-verified against the committed artifact**, whose final lines read `=== VERDICT: GREEN -- 1128 checks, 0 violations (5.0s) ===` and `per-family check tally: {'NEC': 350, 'REAL': 180, 'ROUNDTRIP': 150, 'NODE-EQ': 5, 'MUTANT': 5, 'WINDOW': 35, 'STRINGS': 22, 'BELOWNODE': 1, 'SHADOW': 3, 'UNDERCUT': 2, 'REFINE': 40, 'GP-SIG': 94, 'GP-DISC': 57, 'GP-NODE': 171, 'GP-EF': 8, 'TEETH': 5}` — **every one of the sixteen categories matches the note's transcription** ✓.
+
+**FORM:** indented ASCII verdict block (source) → table (transcription).
+
+**DERIVATION:** `[RUN]`
+
+**CONDITIONALITY:** none; the note also discloses “Unscored diagnostics: 8 (sigma of undecided/off-locus probes, printed in the output)” — verified: the artifact's tail carries seven `[diag] … (unscored)` lines in view plus one more above ✓.
+
+**TEETH:** `md5sum gentow1_checks_output.txt` = `25667bf6…` — matches the stated prefix ✓.
+
+---
+
+### EFF.GENTOW1.44  [run-record]
+
+**CANONICAL STATEMENT:** the per-prediction scoring, `[ASSEMBLED]` from lines 506–523. P-3 and P-5, verbatim (the two sharpest):
+
+> “* P-3 (node oracle): 171 GP-NODE row-checks — per irreducible
+>   factor per prime of the scored members, e1e2·nfeltval(Phi2)
+>   > E2·pr.e (STRICT, the field floor GENTOW-1(d)), with
+>   e1·val(x) = h·pr.e and e1e2·val(Phi') = u2·pr.e exact (the
+>   (T1)/(T12) transport at leaves).
+> * P-5: the five NODE-EQ anchors hit p0 = mu2·E2 + 1 exactly, tRAM,
+>   PARI both routes (the node floor is SHARP).”
+
+P-2/P-4, P-6, P-7/P-8/P-9 in brief: 10 recipe members + ~4 deep perturbations per family satisfy the floors, node pins and strict-above (NEC 350); 12 random in-budget members per family pass the entry gate with PARI-exact decided reads (REAL 180); the 8 refine rows keep carrier `(e1e2, f1f2)` (REFINE 40 + GP-EF 8); window stability below the cap on 6 lifts/family (WINDOW 35), string ends (STRINGS 22), digit round-trips (ROUNDTRIP 150).
+
+**FORM:** bulleted per-prediction list.
+
+**DERIVATION:** `[RUN]`
+
+**CONDITIONALITY:** **P-1 was sealed but scored by NO row in this run** — the honest no-row state at PE1, cured at `.55` by a decorrelated supplement. That is a preregistration/run-record mismatch the note surfaces itself.
+
+**RESOLUTION TRACE:** lines 506–523; the P-1 cure at 659–673.
+
+**TEETH:** every cited category count matches the artifact tally (`.43`).
+
+---
+
+### EFF.GENTOW1.45  [run-record]
+
+**CANONICAL STATEMENT:** the five teeth, verbatim:
+
+> “* TEETH: T-MUTFLOOR x5 (per family, 8/8 members clearing the
+>   dv2(x^{D2})-based mutant floors but below the true E2-floors are
+>   REJECTED by the level-1 truth — the wrong-floor mutant is
+>   machine-dead); T-BELOWNODE (a digit AT weight mu2·E2 breaks the
+>   entry endpoint: dv(A0) = 12 ≠ 10); T-REFWRONG x8 (wrong-height,
+>   wrong-residue at q=3, and wrong-flavor normalizers all leave the
+>   event pin alive); T-UNDERCUT x2 (a v = N' digit with
+>   e1e2·N' <= m* changes the read); T-SHADOW (the three PE1
+>   corrected-read regressions: pins (25,14)/(21,14)/(21,14), sigma
+>   {(8,1)} PARI-exact).”
+
+**FORM:** bulleted teeth list.
+
+**DERIVATION:** `[RUN]` — five mutation/regression tests.
+
+**CONDITIONALITY:** **T-MUTFLOOR is the anti-vacuity tooth for the whole of item (1)**: it kills the plausible wrong floor (`dv2(x^{D2})`) that the E2-split makes available (`.07`). Without it, the budget tables would be consistent with the wrong constant.
+
+**RESOLUTION TRACE:** lines 524–533.
+
+**TEETH:** **RE-VERIFIED from the artifact's teeth block**: `tooth T-MUTFLOOR fired x5`, `tooth T-BELOWNODE fired x1`, `tooth T-REFWRONG fired x8`, `tooth T-UNDERCUT fired x2`, `tooth T-SHADOW fired x1` ✓ — all five fired with the stated multiplicities (T-SHADOW fires once over three SHADOW checks, consistent with the tally's `'SHADOW': 3`).
+
+---
