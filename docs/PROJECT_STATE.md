@@ -4738,3 +4738,22 @@ unnamed. Template at v3.1 (39 rules). NEXT: the 0c DAG draft
 (LAUNCHED — the whole-project graph from the 28 specs), then 0e
 leanspec + transcription chapters → THE FORK (append #52) → the
 opus hard-30% + fleet.
+
+**2026-08-15 DATED APPEND #54 — 0a TRULY CLOSED (29 SPECS, ALL
+MERGED); STAGE 3 OF THE /goal BEGINS: THE FIRST CHAPTER BLUEPRINT
+FIRES.** GENTOW2 recovered from the manifest gap (93 units, all
+four byte-freezes recomputed exact, zero source defects; **the
+ϑ-orientation trap** — GENTOW2's ϑ vs GENTOW5-A1's ϑ_t are
+INVERSES; OPEN-CALL 2 mandates the gauge chapter's blueprint carry
+the four-way orientation table as a node annotation, else a sign
+error no battery catches); GENTOW5 (84) + W12 (88) merged (each
+merge closing a stale open call as a bonus). Corrected tally: 29
+specs = 13 merged + 16 fulls, ~2,600 units. DAG at a956f90d
+(2,449 nodes / 1,700 edges; consumer-first cut; 57 backward edges
+= mandated splits; the two HARD chapters E/C marked per the fork
+plan). NOW: leanspec/ bootstrapped (the 0e isolated interface
+environment — grows chapter-by-chapter with the blueprints);
+**CHAPTER-G BLUEPRINT LAUNCHED** (base cases + menus: W11/HMENU3/
+HEX3 — supplier-first fleet order, richest landed-Lean support,
+transcription-grade). The chapter blueprints ARE stage 3 of the
+/goal; the fleet (stage 4) fires per chapter behind its stub gate.
