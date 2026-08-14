@@ -4537,3 +4537,28 @@ meanwhile: the T1 shard merge (batched with others post-reset), and
 0d whenever Asvin answers the nine questions. The phase is at a
 clean checkpoint: everything committed, monitors armed, resumption
 one command.
+
+**2026-08-14 DATED APPEND #47 — 0d PARTIAL SIGN-OFF (Asvin, morning):
+Q1–Q5 DECIDED; THE REVIEW-BOUNDARY POLICY.** Verbatim decisions:
+**Q1** "cite thm 5.2 for now at least" — [AGNPRW] Thm 5.2 is the
+termination resolution for the informal corpus; in Lean, NS7 stays
+a carried hypothesis until proved or declared-with-faithfulness
+(coupling per COR-13: the ½·v(disc f) depth-bound route lapses).
+**Q2** "lets run the audit" — WELD-FACE-AUDIT LAUNCHED (Claude-side,
+codex exhausted), with the WIDENED charter (HYP.74–77 + 21/22/67/
+68/69/71 per COR-41; width was undecided — orchestrator default,
+flagged). **Q3** capstone signature's three points SIGNED.
+**Q4 (THE REVIEW-BOUNDARY POLICY, supersedes the per-node
+SPEC-SIGNED design):** human-checked = the MAIN statement and
+definitions ONLY (the types, the uniformity theorem, genuineDensity,
+the cites); every intermediate node is defined/proven as a consumer
+or discharger of these and is "forced right if the entire project
+works out"; the Hensel statements take care of themselves.
+**Q5** genuineDensity is REDEFINED as the limit of the proportion
+(the σ-consistent-class/outer limit), with the equality to the
+decided-proportion limit PROVEN (under drainage; unconditional at
+n=2 via drainage_two); Σ_σ R_σ = 1 proved with this definition —
+REWIRE UNIT LAUNCHED (leanfinal statement changes Asvin-directed
+herein; honesty note: Σ_σ = 1 at GENERAL n is equivalent to the
+drainage leg — already conjunct A2 — proved TODAY only at n=2).
+Q6–Q9 pending Asvin (explanations delivered this session).
