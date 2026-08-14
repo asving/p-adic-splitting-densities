@@ -4562,3 +4562,30 @@ REWIRE UNIT LAUNCHED (leanfinal statement changes Asvin-directed
 herein; honesty note: Σ_σ = 1 at GENERAL n is equivalent to the
 drainage leg — already conjunct A2 — proved TODAY only at n=2).
 Q6–Q9 pending Asvin (explanations delivered this session).
+
+**2026-08-14 DATED APPEND #48 — UNIFORMITY-P4 LANDED: THE Q5 REWIRE
+(genuineDensity = THE proportion limit).** RENAME MAP (all docs
+before this append use the OLD names): old genuineDensity →
+**decidedDensity** (the certified/inner route); old upperDensity →
+**genuineDensity** := ⨅N possibleSeq (the limit of the proportion of
+classes consistent with σ — THE density, per Asvin's Q5). Convention:
+unsuffixed = the density; _decided = the certified route. Tie:
+genuineDensity_eq_of_drainage (+converse); UNCONDITIONAL at n=1
+(new drainage_one) and n=2. Σ_σ: ≥1 unconditional given a covering
+menu (menu-relative — FactorizationType is infinite, the agent
+checked before proving); =1 given drainage at all n
+(sum_genuineDensity_eq_one_of_drainage); UNCONDITIONAL n=1, n=2;
+general-n = named Prop TotalMassOne (implied-by drainage, stated
+not-overclaimed). STATEMENT.LEAN: UniformityStatement (over
+genuineDensity) + UniformityStatementDecided (over decidedDensity),
+Asvin's three signed points preserved verbatim, and NO drainage
+conjunct in either — both quantify over proved limits of counted
+proportions so neither is vacuous alone; drainage lives on the
+cross-implications (.ofDecided/.toDecided via DrainageAt n). n=3:
+lower bounds transfer free; genuine-density brackets carry the
+explicit +1/q² slack; all ten HMENU3 containments hold. 210
+#print-axioms lines across both repos, all Lean-core; 0 sorries;
+both builds green; Python re-run ALL PASSED. The changed definitions'
+faithfulness paragraphs (note §8) are IN THE HUMAN-REVIEWED CORE SET
+per the Q4 policy — Asvin should read them. Doc staleness: ledger/
+design-doc/earlier appends use pre-rewire names — next fold cures.
