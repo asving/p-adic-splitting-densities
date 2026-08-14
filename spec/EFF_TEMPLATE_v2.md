@@ -27,6 +27,11 @@ Changes from the pilot format, per runs/qgen/EFFT3_crossread.md (9 template chan
    IDs/xrefs. Sequencing: T1, T2, GENTOW5, W12 shards first (straddle the codex
    reset); tag-sparse prose-proof notes (GRTJB, HE7, GENTOW5) get a boundary-choice
    self-audit section (the pilot validated only the tagged genre).
+10. **CROSS-NOTE STATUS CLAIMS:** a claim that a correction/supersession in ANOTHER
+    note is unlanded must be verified against that note's FULL append chain (dated
+    annexes/appends at the note's tail), never by grepping the original pinned
+    sentence — frozen text never disappears; absence of change at the pinned line is
+    not evidence. Cite the landing commit where one exists.
 
 Unchanged from the pilot: header (blob hash, resolution rules), CANONICAL STATEMENT
 fidelity rules (verbatim-or-[ASSEMBLED]), RESOLUTION TRACE, CONDITIONALITY,
