@@ -28,6 +28,10 @@ CN-07/CN-08 (edge: CN-08 depends on CN-07).
 * **CN-09** `decidedDensity_ge_of_subset`: the inner census bound — any subset of a decided set
   is a density lower bound (generalizing the single-class `Gates.lean:325
   decidedDensity_ge_of_decided`).
+* **CN-10** `genuineDensity_le_of_superset`: the outer census bound — any superset of a possible
+  set is a density upper bound. Since the 2026-08-13 P4 rewire (`genuineDensity = ⨅ N,
+  possibleSeq`), this upper bound is a first-class census deliverable, not a drainage
+  by-product.
 
 ## Status
 
@@ -150,6 +154,22 @@ theorem decidedDensity_ge_of_subset {n N : ℕ} {σ : FactorizationType}
   refine le_trans ?_ (decidedSeq_le_decidedDensity n σ N)
   rw [decidedSeq, div_le_div_iff₀ hc hc]
   have hcast : (Nat.card T : ℝ) ≤ (decidedCount O n σ N : ℝ) := by exact_mod_cast hle
+  nlinarith [hcast, hc]
+
+/-- **CN-10.** Any superset of the `σ`-possible level-`N` classes gives a density upper bound.
+The outer twin of CN-09; no landed general form existed before this node (the `n = 2` upper
+bounds in `Drainage.lean` all go through the `n = 2`-specific `undecidedCount_le`). Since the
+2026-08-13 P4 rewire made `genuineDensity = ⨅ N, possibleSeq` the capstone's headline object,
+this bound is a first-class census deliverable at every degree. -/
+theorem genuineDensity_le_of_superset {n N : ℕ} {σ : FactorizationType}
+    {T : Set (Coeff O n N)} (hT : possibleSet O n σ N ⊆ T) :
+    genuineDensity O n σ ≤ (Nat.card T : ℝ) / (residueCard O : ℝ) ^ (n * N) := by
+  have hle : possibleCount O n σ N ≤ Nat.card T :=
+    Nat.card_le_card_of_injective (Set.inclusion hT) (Set.inclusion_injective hT)
+  have hc : (0 : ℝ) < (residueCard O : ℝ) ^ (n * N) := qpow_pos _
+  refine le_trans (genuineDensity_le_possibleSeq n σ N) ?_
+  rw [possibleSeq, div_le_div_iff₀ hc hc]
+  have hcast : (possibleCount O n σ N : ℝ) ≤ (Nat.card T : ℝ) := by exact_mod_cast hle
   nlinarith [hcast, hc]
 
 end Census
