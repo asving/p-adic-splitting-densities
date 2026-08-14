@@ -1293,3 +1293,298 @@ The frames and the four legs, verbatim:
 **TEETH:** the byte-untouched claim is corroborated by FREEZE-1 (the sealed runner pin resolves and no post-seal edit is recorded).
 
 ---
+### EFF.HETOW.42  [acceptance-box]  *(SERIES ARC, link 2; CHAIN-GRADE, link 2)*
+
+**CANONICAL STATEMENT:**
+
+> “*Source: `HETOW_passPE2_report.md` @ 67cbab2 — verdict CLEAN
+> (0C/0G/3m). Per the arc the tower σ-closure counter moved 0/2 →
+> **1/2 and HOLDS THERE**: these three cures are dated appends to
+> MINOR findings, not a scoring round; one further clean pass on a
+> fresh surface is still required. The [r1] body above is BYTE-FROZEN
+> — each correction below supersedes its quoted sentence of record.*”
+
+**FORM:** italic preamble under `### Dated corrections (2026-08-09, post-PE2)`.
+
+**DERIVATION:** `[RECORD]` — and note the arc rule it applies: a CLEAN pass scores even though it returned three minors, because minors are cured by dated append rather than by a scoring round. The counter “HOLDS THERE” is the note's own guard against double-counting the cure round.
+
+**CONDITIONALITY:** the counter is superseded to 2/2 at `.46`. The freeze declaration is FREEZE-3's predecessor and governs `.43`–`.45`.
+
+**RESOLUTION TRACE:** statement lines 541–546.
+
+**TEETH:** `git cat-file -t 67cbab2` = commit; `HETOW_passPE2_report.md` exists.
+
+---
+
+### EFF.HETOW.43  [changes-record]  *(SERIES CORRECTIONS-PE2, link 1; CHAIN-CARRY — TERMINAL)*
+
+**CANONICAL STATEMENT:** correction C-A in full (source lines 548–569 — **this exact span is the object T2 pins**; see the consumer trace below):
+
+> “**C-A (cures PE2 F-A — LEMMA HETOW-2's F-2 paragraph, §S2).** Two
+> sentences corrected. (i) The exemplar in "If a slot coefficient is
+> instead presented with x-degree ≥ D′ (e.g. a plain product ĉ_t·n̂ of
+> a degree-≤ D′−1 lift by the x-monomial …)" is WITHDRAWN: at f₁ ≥ 2 a
+> degree-< D′ lift times n̂(k) has exact-height-k part spanning one
+> η-digit (the other digits' heights differ by e₁h-multiples), so it
+> does not carry residue c_t and sits outside the paragraph's own
+> premise "the unreduced coefficient's [residue] = r̃'s t-coefficient";
+> the paragraph's scope is presentations of the CORRECTED key's (LIFT)
+> coefficient augmented by above-height junk of x-degree ≥ D′. (ii) The
+> closing "Either way LEMMA HE7-12 [r2, r3] applies" is RE-SCOPED to
+> the (LIFT)-slot form this note's consumers actually feed to HE7-12 —
+> the F-4 branch, **w = 0**: at the (e₂ = 1, t = f₂−1) corner a
+> junk-augmented coefficient's moved piece x^{r′}π^{·}Φ′ lands at slot
+> e₂t + 1 = e₂f₂, the LEADING slot, so w would acquire an
+> x-degree-≥ D″ term and HE7-12's hypothesis "deg w < D″" (HE7_PROOF
+> §S5.8) fails there. The accounting core stands: value monotone, raise
+> exactly u₂ − e₂D′h, residue unchanged via the Ô[x] identity —
+> machine-exact at frame R with r′ = e₁−2 maximal. PE2's consumer
+> trace found the two in-repo consumers (HETOW.A(i); the GENHN dated
+> erratum's display) both pinned to the (LIFT) form — neither reaches
+> the withdrawn exemplar or the corner.”
+
+**FORM:** bold-headed dated correction with two numbered sub-corrections.
+
+**DERIVATION:** (i) an η-digit height argument showing the withdrawn exemplar violates the paragraph's own premise; (ii) a degree computation at the `(e₂ = 1, t = f₂−1)` corner showing HE7-12's `deg w < D″` hypothesis fails for junk-augmented presentations.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **scope-pin** (both sub-corrections narrow scope; neither replaces a claim). **TARGETS:** `EFF.HETOW.19` (the F-2 paragraph) and, transitively, the licence clause of `EFF.HETOW.17` and the Ψ-row of `EFF.HETOW.09`.
+
+**CONSUMER TRACE (queue-charged; grep-verified at compile time).** C-A has a downstream pin, and it is the only one of the three post-PE2 riders that does.
+
+`[TABLE — compiler ledger]`
+
+| Consumer | Designation | count | site | What it does with C-A |
+|---|---|---:|---|---|
+| `T2_SIGMA_LADDER_MASTER_2026-08-12.md` | `HETOW-KEY-BRIDGE-C-A` | **16** | pin row introduced at line 4246; repair heading at 4216 | pins **this exact span [548, 569]** as a `(PINS)` row in T2's HETOW block, “immediately after the `HETOW-KEY-BRIDGE` row” |
+| same | `HETOW-KEY-BRIDGE` | 41 | throughout | the parent pin (= `EFF.HETOW.17`) whose closing licence C-A governs |
+| `spec/EFF-T2-s6of6.md` | `HETOW-KEY-BRIDGE-C-A` span [548, 569] | 1 | §'s pin-verification row U01 | records “both delimiter lines exact-match … 1 each, at 548 and 569” |
+
+**Span verification, executed fresh here rather than taken from T2:** line **548** of `HETOW_RECON_2026-08-09.md` is `**C-A (cures PE2 F-A — LEMMA HETOW-2's F-2 paragraph, §S2).** Two`, line **569** is `the withdrawn exemplar or the corner.`, and line 570 is blank. **The pinned span is exactly this unit, with no over- or under-reach.**
+
+**What T2's r12 concludes about C-A — the load-bearing half of the trace.** T2's repair heading (line 4216) reads:
+
+> “## r12 repair 1 — G-1 (GAP): HETOW's post-PE2 correction C-A pinned as `HETOW-KEY-BRIDGE-C-A`, and S1.8B's \(w\ne0\) branch re-based on a master-side degree bound”
+
+and its reasoning (line 4242) records that C-A **does not reach T2's own entry**, with the reason:
+
+> “This is why HETOW's dated correction C-A(ii) — pinned as `HETOW-KEY-BRIDGE-C-A`, whose reading directive governs the closing sentence of `HETOW-KEY-BRIDGE` — does not reach this entry although it re-scopes that closing "Either way LEMMA HE7-12 [r2, r3] applies" to \(w=0\): its ground is a junk-augmented presentation which at the \((e_2=1,\ t=f_2-1)\) corner acquires an \(x\)-degree-\(\ge D''\) term, and such an object is not the monic degree-\(D_2\) key the instance boxes substitute.”
+
+T2 additionally records that only the VALUE disjunct is source-read, and supplies the missing degree conjunct itself:
+
+> “`HETOW-KEY-BRIDGE` gives \(\Phi_2=\Psi_{\kappa_2,\widetilde r}-w\) with "either w = 0 … or dv₂(w) > T₂" — the VALUE disjunct, which is the only conjunct read off a source statement here … LEMMA HE7-12's remaining hypothesis \(\deg w<D''\) is supplied here by this master, from the monicity of the two keys”
+
+**Compilation consequence, recorded not adjudicated:** a downstream consumer reads `EFF.HETOW.17`'s displayed “deg w < D″ **and** (w = 0 or dv₂(w) > T₂)” as supplying BOTH conjuncts, while T2 — having audited the same sentence — treats only the disjunct as source-supplied and re-derives the degree bound master-side from `D″ = D′e₂f₂ = D₂` (the identity audited at `.09`). Both readings are defensible against the displayed text; they differ on whether the lemma's own `deg w < D″` clause counts as established for junk-augmented presentations. See OPEN-CALL 1.
+
+**RESOLUTION TRACE:** statement lines 548–569; consumer sites `T2_SIGMA_LADDER_MASTER_2026-08-12.md` 4216/4242/4246/4248/4257.
+
+**TEETH:** the “machine-exact at frame R with r′ = e₁−2 maximal” claim is verified against the committed artifact: `hetow_pe2_fresh_output.txt` carries frame **R** legs `E2-coh-eq-minpoly-R  ok  ((4, 4), (3, 0)) vs ((4, 4), (3, 0))` and `E3-naive-diverges-R  ok`, with the run's total line `TOTAL gp sigma jobs 20 + 4 letter + 1 val-block; violations 0 (131.5s)` / `VERDICT: GREEN` ✓. The consumer-trace claim (“the two in-repo consumers … both pinned to the (LIFT) form”) is corroborated: `.22` reads at the corrected key and the GENHN erratum display is the corrected one (X07/X08).
+
+---
+
+### EFF.HETOW.44  [changes-record]  *(SERIES CORRECTIONS-PE2, link 2; CHAIN-MECH — TERMINAL)*
+
+**CANONICAL STATEMENT:**
+
+> “**C-B (cures PE2 F-B — the §S2 preamble's mechanism sentence; the
+> σ-BLIND seam face recorded).** The sentence "W(t) is non-linear in t,
+> so no K₂^×-rescale absorbs it" is CORRECTED: at f₂ = 2 (t ∈ {0,1} —
+> frames X/Z/W, the r1 machine contacts) any W is affine and the quoted
+> reason is empty there; the operative pin at those frames is
+> **W(f₂−1) = ⌊i(u₂)/e₁⌋ = 0 against the monic normalization** — a
+> rescale λ^{−f₂}r̃(λZ) matching the naive residues needs η^{−W(t)} =
+> λ^{t−f₂}, and t = f₂−1 with c_{f₂−1} ≠ 0 forces λ = 1. When
+> c_{f₂−1} = 0 an affine wrap CAN be a rescale (e.g. ψ₂ = Z² − c₀ with
+> η a square), leaving the naive slot polynomial irreducible; at f₂ ≥ 3
+> the non-affinity mechanism is live (frame V: W = (1,1,0)). At frames
+> X/Z/W the sentence's conclusion follows from the W(f₂−1) = 0 pin, so
+> the [r1] records stand.”
+
+and the σ-BLIND record, verbatim:
+
+> “**σ-BLIND record (PE2 frame V: p = 7,
+> f₂ = 3, ord(η) = 6):** the gauge-naive key's PARI σ = {(2,3)} = the
+> carrier's σ on both oracle routes, while nfmodpr shows ψ₂(η₂(ξ)) ≠ 0
+> at the naive key's roots — a wrap seam with zero σ symptom at this
+> frame. The LETTER clause (ψ₂(η₂(ξ)) = 0, HETOW-1(b)/T(b)′(i)) is the
+> load-bearing detector; a σ-shaped regression tooth
+> ("σ(naive) ≠ σ(corrected)", the shape of §S7's G2) is insufficient
+> by itself — ported to a frame like V it passes on the broken key.”
+
+**FORM:** bold-headed dated correction + a bold-headed sub-record.
+
+**DERIVATION:** the corrected reason is an explicit rescale computation: matching the naive residues by `λ^{−f₂}r̃(λZ)` requires `η^{−W(t)} = λ^{t−f₂}` for all t, and `t = f₂−1` with `W(f₂−1) = 0` and `c_{f₂−1} ≠ 0` forces `λ = 1`.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement of a justification** — the CONCLUSION (no rescale absorbs the wrap) survives at frames X/Z/W; the stated REASON was empty there. The note also fences the corrected claim honestly: **when `c_{f₂−1} = 0` an affine wrap CAN be a rescale**, so the conclusion is not universal.
+
+**RESOLUTION TRACE:** statement lines 571–590.
+
+**TEETH:** **the σ-BLIND record is a TOOTH-INVALIDATION finding and it is machine-verified.** `hetow_pe2_fresh_output.txt` carries, at frame V: `G1-coh-V  ok  sigma = ((2, 3),)` and `G2-naive-V-SIGMABLIND-routes-agree  ok  ((2, 3),) vs ((2, 3),)` — **the naive key and the corrected key give the SAME σ = {(2,3)} at frame V, on both oracle routes** ✓, exactly as C-B states. The frame's minpoly(β) is printed as `(5, 4, 5)`, i.e. `Z³ + 5Z² + 4Z + 5` — matching C-C's independent citation of the same frame (`.45`) ✓. Disposition: **`stale self-description` on §S7's G2 tooth shape** — the tooth is not wrong at X/Z/W, but its GENERIC adequacy claim is falsified, and the note replaces it with the letter clause.
+
+---
+
+### EFF.HETOW.45  [changes-record]  *(SERIES CORRECTIONS-PE2, link 3; CHAIN-BOX3, link 3)*
+
+**CANONICAL STATEMENT:**
+
+> “**C-C (cures PE2 F-C — HETOW-BOX-3 [r1] gains the multi-wrap axis).**
+> Appended to BOX-3's NOT-exercised list: **f₂ ≥ 3 multi-wrap frames**
+> (two or more live η^{W(t)} units, W genuinely non-affine — the
+> t-dependence of the [r1] prescription itself), omitted at [r1] while
+> the three supp frames sit at f₂ = 2 with a single wrap unit. Mooted
+> in substance by the PE2 fresh route and cited as machine contact:
+> **frame V** (p = 7, f₂ = 3, W = (1,1,0), ord(η) = 6;
+> `hetow_pe2_fresh.py` artifacts @ 67cbab2) ran GREEN on dual PARI
+> routes — corrected key σ = {(2,3)}, slot residues = minpoly(β) =
+> Z³+5Z²+4Z+5 exactly, both W-telescoping identities (heights 6 and 9)
+> exact, μ₂ = 2 trichotomy 8/8, forced μ₂ = 3 {(6,3)} row. The axis is
+> now a disclosed row with first contact on record rather than an
+> omission.”
+
+**FORM:** bold-headed dated correction.
+
+**DERIVATION:** `[RECORD]` of a coverage-inventory completion plus its immediate discharge by a new machine contact.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **inventory completion**. Unusually, the added row is discharged in the same breath — the axis goes from “omitted” to “disclosed with first contact” without ever being an open coverage hole in the effective text.
+
+**RESOLUTION TRACE:** statement lines 592–604; the box it edits is `.30`.
+
+**TEETH:** **RE-VERIFIED against the committed artifact.** `hetow_pe2_fresh_output.txt` frame-V lines: `killed(naive) (4, 6, 5)  killed(coh) (5, 4, 5)  minpoly(beta) (5, 4, 5)`; `E2-coh-eq-minpoly-V  ok  (5, 4, 5) vs (5, 4, 5)`; `E2-twist-real-V  ok  minpoly (5, 4, 5) != psi2 (2, 1, 1)`; `E3-naive-diverges-V  ok  naive (4, 6, 5) vs minpoly (5, 4, 5)`; `G1-coh-V  ok  sigma = ((2, 3),)`. **The coefficient triple (5, 4, 5) is exactly `Z³ + 5Z² + 4Z + 5` read low→high with the monic leading term implicit** ✓ — the note's transcription is exact. Run verdict `GREEN`, 0 violations ✓. ARITHMETIC AUDIT of `W = (1,1,0)`: at f₂ = 3 the entries are `W(t) = ⌊(3−t)i(u₂)/e₁⌋` for t = 0,1,2, and `W(2) = W(f₂−1) = 0` ✓ — consistent with C-B's pin, and genuinely non-affine since (1,1,0) is not an arithmetic progression ✓.
+
+---
+
+### EFF.HETOW.46  [acceptance-box]  *(SERIES ARC, link 3; CHAIN-GRADE, link 3)*
+
+**CANONICAL STATEMENT:** the acceptance, verbatim:
+
+> “**ACCEPTANCE.** Per the arc rule the tower σ-closure counter moves
+> 1/2 → **2/2 — HETOW ACCEPTED** (the CLEAN bar: nothing at
+> GAP-or-worse survived the pass's own verification). The arc, one
+> breath: seal (3e19eba) → passPE1 NOT CLEAN, 1 CRITICAL — the
+> ϖ-wrap-cocycle seam in the sealed key (5f821dc) → r1's corrected key
+> ĉ_t ↦ L_{(f₂−t)u₂}(c_t·η^{W(t)}), W(t) = ⌊(f₂−t)i(u₂)/e₁⌋ (5335ae3)
+> → passPE2 CLEAN 0C/0G/3m, counter 0/2 → 1/2 (67cbab2) → rider
+> C-A/C-B/C-C (5b879e0) → passPE3 CLEAN 0C/0G/1m, counter 1/2 → 2/2
+> (5b6db24).”
+
+and — the compilation's most portable finding in this unit — **what the two clean passes actually certified**:
+
+> “What the two clean passes proved at the corrected key:
+> **wrap-immunity** of the §S1 termination row (the wrap correction
+> moves unit factors only — heights, degrees, and multiplicities,
+> hence HE6R1-1's descent factor ℓd_r = e₂f₂ and both displayed
+> bounds, are untouched by it) and **gauge-invariance** of the
+> tightness read, with the letter clause (ψ₂(η₂(ξ)) = 0,
+> HETOW-1(b)/T(b)′(i)) standing as the load-bearing seam detector at
+> the σ-blind faces (PE2 frame V at f₂ = 3; PE3 frame M2 at f₂ = 4).
+> Consequences inherit min over {GENHN 0/2, HE6 0/2 post-r2, HE7
+> (frozen, accepted annex stack), HE3 1/2 at μ ≤ 3} per the status
+> header.”
+
+**FORM:** bold-headed acceptance paragraph with an inline arc and a certification clause.
+
+**DERIVATION:** `[RECORD]` of two consecutive CLEAN passes under a stated bar (“nothing at GAP-or-worse survived the pass's own verification”).
+
+**CONDITIONALITY:** **the min-inheritance clause is restated here and is NOT lifted by the 2/2.** A consumer must carry it: HETOW ACCEPTED does not make its consequences accepted. The wrap-immunity and gauge-invariance certificates are POSITIVE scope findings attached to `.25` and to the tightness row of `.09`.
+
+**RESOLUTION TRACE:** statement lines 614–632.
+
+**TEETH:** **all six commit pins in the arc resolve**: `3e19eba`, `5f821dc`, `5335ae3`, `67cbab2`, `5b879e0`, `5b6db24` — `git cat-file -t` = commit on every one ✓. `HETOW_passPE3_report.md` exists. The frame-V σ-blind face is machine-verified at `.44`; **frame M2 at f₂ = 4 is cited but is UNPINNED** — no artifact filename is given and none matching an M2/f₂ = 4 run exists in `verification/openmath/`. Disposition `UNPINNED` (v3 rule 23); OPEN-CALL 2.
+
+---
+
+### EFF.HETOW.47  [changes-record]  *(CHAIN-BOX3 — TERMINAL)*
+
+**CANONICAL STATEMENT:**
+
+> “**F-α CURE (PE3's one MINOR — HETOW-BOX-3's e₂f₂ ≥ 4 row folded
+> against PE2's frame S).** The [r1] row reads "e₂f₂ ≥ 4 (both ℓ ≥ 2
+> AND d_r ≥ 2 — first live n = 24)"; its parenthetical pins the row's
+> reading to the μ₂ ≥ 3 box family, under which it stays literally
+> accurate — frame S's members sit at μ₂ = 2, and no μ₂ ≥ 3 member at
+> e₂ ≥ 2 is on record. Appended citation, scoped **μ₂ ≤ 2 trichotomy
+> grade**: PE2's **frame S** (p = 3, (e₂,f₂) = (2,2), u₂ = 5; η ≠ 1
+> twist-trivial but wrap-live) carries the first e₂f₂ = 4 machine
+> members, at μ₂ = 2, n = 16: RAM {(8,2)} FORCED (dv₂ = 41 via the
+> b-odd Φ′-monomial) and integer-λ₂ menu 2/2 ({(4,4)}) —
+> `hetow_pe2_fresh.py` artifacts @ 67cbab2. Verified against those
+> artifacts before this append: the runner's G4 design row pins
+> frame S at μ₂ = 2, n = 16, T₂ = 20; both G4 job constructors call
+> `member(cS, 2, ·)` (the 2 is μ₂); the committed output scores
+> G4-RAM {(8,2)} (1 member, dual routes agree) and G4-INT {(4,4)}
+> (2 members, dual routes agree) inside the sealed menu
+> {{(8,2)},{(4,4)},{(4,2),(4,2)}}, run total 0 violations. The row's
+> μ₂ ≥ 3 face (first live n = 24) has no machine contact and stays on
+> the NOT-exercised list.”
+
+**FORM:** bold-headed dated cure with an explicit pre-append verification record.
+
+**DERIVATION:** a scope reading of the row's own parenthetical, plus an artifact-level verification the note performed before appending.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **scope-pin**. **The row is NOT removed** — its μ₂ ≥ 3 face stays on the NOT-exercised list. This is the cleanest example in the note of a coverage claim being narrowed rather than discharged.
+
+**RESOLUTION TRACE:** statement lines 634–652; the box it edits is `.30`.
+
+**TEETH:** **RE-VERIFIED at compile time.** `hetow_pe2_fresh_output.txt` carries `G4-RAM:((8, 2),)   1` ✓ (one member) and frame-S legs `E2-coh-eq-minpoly-S  ok  (2, 1) vs (2, 1)`, `E3-naive-diverges-S  ok  naive (1, 1) vs minpoly (2, 1)` ✓; run total `violations 0` / `VERDICT: GREEN` ✓. ARITHMETIC AUDIT: at frame S, `e₂f₂ = 2·2 = 4` ✓; `n = D′·e₂f₂·μ₂ = 2·4·2 = 16` ✓; `T₂ = e₂f₂·u₂ = 4·5 = 20` ✓ — the note's three design constants reproduce exactly from its own formulas. The σ degree sums at n = 16: `{(8,2)}` → 16 ✓; `{(4,4)}` → 16 ✓; `{(4,2),(4,2)}` → 8+8 = 16 ✓ — the sealed menu is degree-consistent. **“first live n = 24” for the μ₂ ≥ 3 face**: `D′·e₂f₂·μ₂ ≥ 2·4·3 = 24` ✓.
+
+---
+
+### EFF.HETOW.48  [record]  *(SERIES ARC, link 4; CHAIN-GRADE — TERMINAL)*
+
+**CANONICAL STATEMENT:**
+
+> “*Provenance: the post-acceptance decorrelated ratification run
+> (`CODEX_TOWERRAT_2026-08-10.md` §S2, session
+> 019fe985-2c4b-7fc0-9885-5e558447502d, outcome CHALLENGE, 3 GAP):
+> F-1 adjudicated REAL (the confirmed gap) → repaired by LEMMA
+> HETOW-4 below; F-2 REAL as display → the cite annex; F-3 artifact
+> in substance → the row annotation. The 2/2 acceptance stands
+> ANNOTATED, now with the annotation DISCHARGED at this note's own
+> grade; the body above stays BYTE-FROZEN — this append GOVERNS the
+> S1 rows it names. Every derivation below is from this note's own
+> lemmas + the frozen HE7 §S1/§S5.3, not from the verifier's text.*”
+
+**FORM:** italic provenance preamble under the three-line heading `### Dated append (2026-08-10, TOWERRAT-R1 + two annexes): LEMMA HETOW-4 — the n̂₂/n₂ normalizer bridge, PROVED; the S1 J-D0 row superseded`.
+
+**DERIVATION:** `[RECORD]` of a **decorrelated-model audit** run AFTER acceptance — the strongest instrument class in the note, and the only one that produced new mathematics.
+
+**CONDITIONALITY:** **“The 2/2 acceptance stands ANNOTATED”** is the terminal grade reading: the note is accepted, the ratification's annotation is discharged, and the discharge is at THIS note's grade (which the min-inheritance clause of `.03`/`.46` still caps). The last sentence is a provenance fence worth carrying: the repair is derived from this note's own lemmas plus frozen HE7, **not** from the verifier's text — i.e. the verifier found the gap, the note closed it.
+
+**RESOLUTION TRACE:** statement lines 660–669.
+
+**TEETH:** `CODEX_TOWERRAT_2026-08-10.md` exists (XREF X06). Disposition `AUDIT / decorrelated-model audit` — and this is the audit class v3 rule 27 was added for: no battery could have produced F-1, because the defect was an underived equivalence in a justification cell (`.49`).
+
+---
+
+### EFF.HETOW.49  [supplier-finding]
+
+**CANONICAL STATEMENT:**
+
+> “**THE GAP, exactly.** The S1 normalizer row justified the n̂₂-vs-n₂
+> discrepancy by "unit-residue discrepancy in K₂^× only; σ-content
+> twist-invariant per HE7 §S1 CONVENTION (J-D0)". HE7's CONVENTION
+> covers changes of normalizer WITHIN its ϖ-Φ′-monomial family
+> (there the ratio at grade k is forced to be (Φ′^{ℓ}/ϖ^{u})^{c},
+> residue β^{c}); the tower ladder monomial n̂₂(k) = x^{i}π^{a}Φ′^{b}
+> is NOT in that family, and THEOREM HE7.A(2)/(3)'s routing
+> predicates (separability of R_{λ₂}; the repeated factor's
+> K₂-rational letter s₂, consumed by (LIFT₂)) are letter-sensitive —
+> an arbitrary per-height unit twist can change them. The missing
+> lemma computes the ratio's residue exactly and shows what it
+> contributes: the twist does NOT cancel per height (the raw
+> pin-residue strings of the two systems genuinely differ,
+> non-geometrically); it cancels in the ASSEMBLED residuals, whose
+> comparison is a single global unit times a K^×-rescale — the
+> species HE7's J-D0 display does cover — and both routing
+> predicates transport.”
+
+**FORM:** bold-headed diagnosis paragraph.
+
+**DERIVATION:** a family-membership argument (n̂₂ is not in HE7's ϖ-Φ′ family, so J-D0 does not apply) plus a sensitivity argument (the routing predicates are letter-sensitive).
+
+**CONDITIONALITY:** **this is a self-diagnosed defect in the note's OWN justification cell**, found by a decorrelated verifier after 2/2 acceptance and three clean/near-clean passes. The paragraph also announces the shape of the cure before proving it — per-height non-cancellation, assembled-level cancellation — which is exactly what `.50`(b) and (c) establish.
+
+**RESOLUTION TRACE:** statement lines 671–687; the cured row at `.53`.
+
+**TEETH:** disposition `AUDIT / decorrelated-model audit`. Note the honesty of the finding's shape: it does not claim the conclusion was wrong, only that the JUSTIFICATION did not reach it — and the lemma then proves the conclusion true.
+
+---
