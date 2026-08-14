@@ -2,10 +2,13 @@ import Uniformity.Basic
 import Uniformity.HenselFactorization
 import Uniformity.StrongHensel
 import Uniformity.Density.LocalData
+import Uniformity.Density.Transport
 import Uniformity.Density.TypeOf
+import Uniformity.Density.TypeOfAlgebra
 import Uniformity.Density.TypeOfInvariance
 import Uniformity.Density.GenuineDensity
 import Uniformity.Density.QuadCert
 import Uniformity.Density.Statement
 import Uniformity.Density.Gates
 import Uniformity.Density.Drainage
+import Uniformity.Density.DensityAPI
