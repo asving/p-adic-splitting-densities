@@ -103,7 +103,7 @@ with the status line: “**STATUS: COMPLETE (sealed battery GREEN 401/0, 4/4 tee
 
 **DERIVATION:** `[RECORD]`. **The title names three OTHER notes' boxes as this note's targets** — the unit is defined by what it closes.
 
-**CONDITIONALITY:** grade → **ACCEPTED 2/2** (`.43`).
+**CONDITIONALITY:** grade → **ACCEPTED 2/2** (`.32`).
 
 **RESOLUTION TRACE:** lines 1–8; correction 1148–1156.
 
@@ -161,7 +161,7 @@ with the status line: “**STATUS: COMPLETE (sealed battery GREEN 401/0, 4/4 tee
 
 **CONDITIONALITY:** **PE2-F-2's correction is SHARPER than the finding that prompted it** — the report framed the condition as `D2 ∤ n`; the note derives `n mod D2 != D2 − 1` and exhibits a `D2 | n` counter-member (FRAME-F) carrying three above-top slots. That is a repair that improves on its own charge.
 
-**RESOLUTION TRACE:** lines 22–43; the corrected display at `.42`.
+**RESOLUTION TRACE:** lines 22–43; the corrected display at `.31`.
 
 **TEETH:** `git cat-file -t 161e8ce1` = commit ✓; `gentow6_rider_codomain.py` exists ✓.
 
@@ -353,7 +353,7 @@ with the status line: “**STATUS: COMPLETE (sealed battery GREEN 401/0, 4/4 tee
 
 **RESOLUTION TRACE:** §S2, lines 238–343; the box at 615–619.
 
-**TEETH:** COR 6.2C(d)'s supplier chain was the PE1 GAP (F-2) and is repaired prove-first by LEMMA 6.4 (`.36`); PE2 walked it and found “nothing narrows”.
+**TEETH:** COR 6.2C(d)'s supplier chain was the PE1 GAP (F-2) and is repaired prove-first by LEMMA 6.4 (`.21`); PE2 walked it and found “nothing narrows”.
 
 ---
 
@@ -376,7 +376,7 @@ with the status line: “**STATUS: COMPLETE (sealed battery GREEN 401/0, 4/4 tee
 
 **RESOLUTION TRACE:** §S3, lines 344–528; the annex at 702–850.
 
-**TEETH:** the sealed battery's “seven certificate rows attained THETA exactly at the predicted slot and valuation” (`.28`); the f1 ≥ 2 face is BOX-4 (`.33`, then DISCHARGED at `.45`).
+**TEETH:** the sealed battery's “seven certificate rows attained THETA exactly at the predicted slot and valuation” (`.17`); the f1 ≥ 2 face is BOX-4 (`.27`, then DISCHARGED at `.35`).
 
 ---
 
@@ -504,7 +504,7 @@ with the status line: “**STATUS: COMPLETE (sealed battery GREEN 401/0, 4/4 tee
 
 **DERIVATION:** `[RECORD]`
 
-**CONDITIONALITY:** superseded to **ACCEPTED 2/2** (`.43`). **The line PREDICTS its own attack surface** — and PE1's CRITICAL landed adjacent to it (the S3 scope quantifier rather than the two named steps). Recorded because self-predicted attack surfaces are rare and this one was half-right.
+**CONDITIONALITY:** superseded to **ACCEPTED 2/2** (`.32`). **The line PREDICTS its own attack surface** — and PE1's CRITICAL landed adjacent to it (the S3 scope quantifier rather than the two named steps). Recorded because self-predicted attack surfaces are rare and this one was half-right.
 
 **RESOLUTION TRACE:** lines 675–681.
 
@@ -527,7 +527,7 @@ with the status line: “**STATUS: COMPLETE (sealed battery GREEN 401/0, 4/4 tee
 
 **RESOLUTION TRACE:** lines 702–850; the pin's targets at 70 (STATUS TABLE) and 344–349 (S3 header).
 
-**TEETH:** the pin is “verified at source” by PE2 (`.03`), which also measured the **sealed-(c) boundary break exactly where the pin predicts** (`.43`) — the strongest possible confirmation of a scope pin: the excluded region was measured and it does break.
+**TEETH:** the pin is “verified at source” by PE2 (`.03`), which also measured the **sealed-(c) boundary break exactly where the pin predicts** (`.32`) — the strongest possible confirmation of a scope pin: the excluded region was measured and it does break.
 
 ---
 
@@ -539,7 +539,7 @@ with the status line: “**STATUS: COMPLETE (sealed battery GREEN 401/0, 4/4 tee
 
 **DERIVATION:** re-derived at r1 for general f1 at the corrected key.
 
-**CONDITIONALITY:** **prose-only at r1** — “machine-unexercised = GENTOW6-BOX-4”, and the S5 box says “until it runs, 6.3' is prose-only.” **That fence is LIFTED at μ₂ = 2 by the SUB-BOX append** (`.45`): “ANNEX-THEOREM GENTOW-6.3' (S6.1) thereby loses its "machine-unexercised at f1 >= 2 / prose-only" fence at mu2 = 2; its derivation keeps the prose grade of this note's arc.” SUPERSESSION KIND: **license**, scoped to μ₂ = 2, with the derivation's grade unchanged.
+**CONDITIONALITY:** **prose-only at r1** — “machine-unexercised = GENTOW6-BOX-4”, and the S5 box says “until it runs, 6.3' is prose-only.” **That fence is LIFTED at μ₂ = 2 by the SUB-BOX append** (`.35`): “ANNEX-THEOREM GENTOW-6.3' (S6.1) thereby loses its "machine-unexercised at f1 >= 2 / prose-only" fence at mu2 = 2; its derivation keeps the prose grade of this note's arc.” SUPERSESSION KIND: **license**, scoped to μ₂ = 2, with the derivation's grade unchanged.
 
 **RESOLUTION TRACE:** §S6.1; the box at 646–653; the discharge at 1249–1264.
 
