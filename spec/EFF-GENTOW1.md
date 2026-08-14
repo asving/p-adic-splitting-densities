@@ -460,3 +460,419 @@ with its header: “**THE REFINE TABLE (old-key read -> refined-key read; all ro
 **TEETH:** **ARITHMETIC AUDIT: all eight rows satisfy `p₀(old) = 2·lam` exactly** ✓, confirming `.31`(iv)'s minimal-height display at μ₂ = 2, j = 0. **The characteristic split also verifies**: the five q = 2 rows (A5, A7, B, C) show `p₁ = lam`-independent values with type `tEVEN` — i.e. the j = 1 pin has vanished (`2s = 0` in char 2) — while the two q = 3 rows (D-R1, D-R2) show `tDBL` with `p₁ = lam` exactly (9 and 10) ✓, i.e. **both pins present** at q = 3, exactly as `.31`(iv) predicts. This is a clean machine confirmation of a characteristic-sensitive display.
 
 ---
+### EFF.GENTOW1.13  [derivation]
+
+**CANONICAL STATEMENT:**
+
+> “Read off: the old key sees the alpha-event at exactly (2lam, lam)
+> heights with the (T−s)²-residues (q=2: the lam-pin vanishes, 2s=0;
+> q=3: tDBL with both pins — the binomial char-sensitivity);
+> the refine kills the pins into the lam-floored node; heights
+> transport on the dv2-ladder; eta2-flavored and two-monomial lifts
+> behave identically to monomial ones. (Then proved in S3.)”
+
+**FORM:** inline reading paragraph.
+
+**DERIVATION:** examples-first reading of `.12`; proved at `.31`(iv).
+
+**CONDITIONALITY:** a reading, not a proof; μ₂ = 2 only.
+
+**RESOLUTION TRACE:** lines 133–138.
+
+**TEETH:** verified against `.12`'s recomputed table — the q = 2/q = 3 split reproduces on all eight rows.
+
+---
+
+### EFF.GENTOW1.14  [definition]
+
+**CANONICAL STATEMENT:**
+
+> “**Definition (the tower-entry locus 𝒯).** Fix the tower genre data
+> (Q; e1,f1,mu1; h; Phi'; u2, e2, psi2, mu2), full inner side
+> e2f2mu2 = mu1, and the composed key Phi2. 𝒯 := the monic f of
+> degree n = mu2*D2 on the genre-G opening locus whose level-1 stage
+> read exhibits the full inner side: the (J, dv(A_J))-polygon is ONE
+> side of slope kappa2 = u2/e2 from (0, mu1*kappa2) to (mu1, 0) with
+> twist-coherent residual psi2^{mu2} (S4 normalizers).”
+
+**FORM:** bold-headed definition.
+
+**DERIVATION:** `[DEFINITIONAL]`
+
+**CONDITIONALITY:** **FULL side only** — the note repeats this fence at `.46`: “item (4) partial inner sides (e2f2mu2 < mu1 — 𝒯's definition here is FULL-side; every S2–S4 statement is scoped to it)”.
+
+**RESOLUTION TRACE:** lines 142–148.
+
+**TEETH:** the level-1 entry gate is machine-checked on 12 random in-budget members per family (P-4, REAL 180).
+
+---
+
+### EFF.GENTOW1.15  [lemma]
+
+**CANONICAL STATEMENT:**
+
+> “**LEMMA GENTOW-1.**
+> (a) [WEIGHT CHARACTERIZATION] monic f of degree n lies on 𝒯 iff
+> every composed slot of g := f − Phi2^{mu2} has weight >= mu2*E2+1;
+> equivalently, in f = Phi2^{mu2} + Sum_{j<mu2} C_j Phi2^j,
+> C_j = Sum c_{j,a,b} x^a Phi'^b (a < D', b < e2f2):
+>
+>     v(c_{j,a,b}) >= ceil( ((mu2−j)E2 − w(a,b)) / (e1e2) ) + [pin],
+>     [pin] = 1  iff  e1e2 | (mu2−j)E2 − w(a,b) >= 0,
+>
+> the composed side height at the slot, ceiled to the digit grid,
+> plus one consumed digit at each lattice slot — the r2-F2 level-1
+> display verbatim with (D'h, ih, e1) ↦ (E2, w(a,b), e1e2).”
+
+**FORM:** bold-headed lemma clause with an ASCII display.
+
+**DERIVATION:** Steps 0/1/2/3 (`.19`–`.22`).
+
+**CONDITIONALITY:** the transport-of-display claim “the r2-F2 level-1 display verbatim with (D'h, ih, e1) ↦ (E2, w(a,b), e1e2)” is the note's structural thesis for item (1): the composed floors are the level-1 floors under one substitution.
+
+**RESOLUTION TRACE:** statement lines 150–161; proof 174–244.
+
+**TEETH:** **the display was used to recompute sixteen budget-table entries at `.10`, all matching.** Machine: NEC 350 (both directions), T-MUTFLOOR ×5 (the `dv2(x^{D2})`-based mutant floors are machine-dead).
+
+---
+
+### EFF.GENTOW1.16  [lemma]
+
+**CANONICAL STATEMENT (frozen):**
+
+> “(b) [FIBRATION] f ↦ (c_{j,a,b}) is a triangular-unimodular digit
+> bijection from 𝒯 onto the budget box (digits free above floors);
+> one K2-digit per dv2-height per coordinate (GENHN-2'); per window
+> N the free-O-digit count is Sum_{j,a,b} (N − floor(j,a,b)).”
+
+**CANONICAL STATEMENT (EFFECTIVE):** the free-count display is REPLACED by **R2a** (`.65`):
+
+>     “free-O-digit count per window N = Σ_{j,a,b} max(0, N − floor(j,a,b)).”
+
+**FORM:** bold-headed lemma clause.
+
+**DERIVATION:** Step 3's triangularity (`.22`); the clip is re-derived from (b)'s own fibration at `.65`.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement**. “the sealed form is false whenever N < floor at some slot”. **TARGETS:** this unit and, by R2a's own consumer re-scope, `.39` (GENTOW-5(e)'s “exact per window” sentence, which now reads at the clipped display).
+
+**RESOLUTION TRACE:** statement lines 162–165; correction 860–884.
+
+**TEETH:** ROUNDTRIP 150 digit round-trips; the clip's counter-instance and its inactivity on the committed rows are machine-scored (`.65`).
+
+---
+
+### EFF.GENTOW1.17  [lemma]
+
+**CANONICAL STATEMENT:**
+
+> “(c) [NODE] on 𝒯: p_j := dv2(C_j(x0)) >= (mu2−j)E2 + 1 for j < mu2
+> at every root x0, equality realizable at every j (two-step class
+> separation supplies a slot in every residue class mod e1e2).”
+
+**FORM:** bold-headed lemma clause.
+
+**DERIVATION:** Step 4 (`.23`), whose realizability half is a two-stage CRT solve.
+
+**CONDITIONALITY:** none beyond 𝒯.
+
+**RESOLUTION TRACE:** statement lines 166–168; proof 246–257.
+
+**TEETH:** **P-5, the sharpness test**: “the five NODE-EQ anchors hit p0 = mu2·E2 + 1 exactly, tRAM, PARI both routes (the node floor is SHARP)”. The five anchor values were recomputed at `.11`(iii) and all ten match. T-BELOWNODE fires: “a digit AT weight mu2·E2 breaks the entry endpoint: dv(A0) = 12 ≠ 10”.
+
+---
+
+### EFF.GENTOW1.18  [lemma]
+
+**CANONICAL STATEMENT:**
+
+> “(d) [NODE AT THE FIELD] every root x0 of every f in 𝒯 has
+> dv2(Phi2(x0)) > E2 — the psi-cancellation (HE6-0) argument one
+> level up. (dv2(Phi2(x0)) need not be an integer on 𝒯 — RAM leaves
+> have e(L) = 2e1e2; the strict inequality is the statement.)”
+
+**FORM:** bold-headed lemma clause with a parenthetical scope note.
+
+**DERIVATION:** Step 5 (`.24`) — a residue computation ending in `psi2(eta2(x0)) = 0`.
+
+**CONDITIONALITY:** **this clause is the one the gauge seam kills at η ≠ 1** — Step 5's `[GT1-r1]` bracket says so and gives the machine evidence (`.24`). The non-integrality parenthetical is a genuine scope guard: the statement is an inequality, not a value.
+
+**RESOLUTION TRACE:** statement lines 169–172; proof 259–271.
+
+**TEETH:** **P-3: 171 `GP-NODE` row-checks of `e1e2·nfeltval(Phi2) > E2·pr.e` (STRICT), with `e1·val(x) = h·pr.e` and `e1e2·val(Phi') = u2·pr.e` exact.** Re-read from the artifact tally: `'GP-NODE': 171` ✓.
+
+---
+
+### EFF.GENTOW1.19  [derivation]
+
+**CANONICAL STATEMENT:** Step 0, the weight-monotonicity hinge, `[ASSEMBLED]` from lines 176–202. Its two moves, verbatim:
+
+> “* x-carry (a' >= D'): x^{D'} = Phi' + (Phi'-tail); tail monomials
+>   x^c pi^g have g >= (D'−c)h/e1 (the key's one side), so
+>   e1e2*g + c*e2h >= D'e2h = wt(x^{D'}) — tail weight preserved or
+>   raised; the Phi'-part has weight u2 > e2D'h ([r1] node floor) —
+>   strictly raised.
+> * Phi'-carry (b' >= e2f2): Phi'^{e2f2} = Phi2 + Sum_t chat_t
+>   n(u2(f2−t)) Phi'^{e2t}; each lift term has weight
+>   e2*u2(f2−t) + e2t*u2 = E2 = wt(Phi'^{e2f2}) … — preserved; the Phi2-part at
+>   weight E2 exactly.”
+
+and its conclusion, verbatim:
+
+> “**"all slots of P at weight >= W" is the same condition on both grids.**”
+
+**FORM:** bold-headed step with a two-bullet display.
+
+**DERIVATION:** two carry computations, each priced by one side.
+
+**CONDITIONALITY:** the `[GT1-r1]` pin here is explicitly **VALUE-BLIND**: “this display is VALUE-BLIND — it prices heights only, and lift(c_t·eta^{W(t)}) and lift(c_t) sit at the same height, so Step 0 is unchanged under the gauge correction.” **This is wrap-immunity leg 1** and is corroborated independently by PE1's own re-derivation (`.53`).
+
+**RESOLUTION TRACE:** lines 176–202.
+
+**TEETH:** ARITHMETIC AUDIT: the lift term's weight `e2·u2(f2−t) + e2t·u2 = e2u2f2 = E2` ✓ for every t — the cancellation is exact and t-independent, which is precisely why Step 0 is value-blind.
+
+---
+
+### EFF.GENTOW1.20  [derivation]
+
+**CANONICAL STATEMENT:** Step 1, verbatim (abridged at the r1 bracket, quoted next):
+
+> “**Step 1 (Phi2^{mu2}'s own level-1 data — from T(b)'(i), consumed).**
+> Phi2's level-1 development is one-sided of slope kappa2 with
+> residual psi2: slots at weight >= E2, the weight-E2 graded layer =
+> psi2's coefficients at the side lattice … Multiplicativity
+> of side residuals (graded layer of a product = product of graded
+> layers, as in (i)'s proof): Phi2^{mu2} has slots at weight
+> >= mu2*E2 with weight-mu2*E2 layer psi2^{mu2}, and every
+> off-lattice slot strictly above.”
+
+**FORM:** bold-headed step.
+
+**DERIVATION:** `[IMPORTED]` from T(b)′(i) plus multiplicativity of graded layers.
+
+**CONDITIONALITY:** **the r1 pin makes this step GAUGE-LIVE and says exactly how it fails otherwise**:
+
+> “[GT1-r1: read AT
+> THE CORRECTED KEY (S0 pin, S7.1) — the erratum's scope clause:
+> T(b)'(i)'s carrier/slot/residual mechanism holds at the corrected
+> key; at the gauge-naive key the weight-E2 layer is c_t·eta^{−W(t)},
+> NOT psi2's coefficients, and this step fails at eta != 1.]”
+
+**RESOLUTION TRACE:** lines 204–217.
+
+**TEETH:** the failure mode is machine-scored at the fresh route's F1 frame: `ef(Phi2^N) = {(4,1)} != {(2,2)}` with a degenerate twisted residual `(T−1)^2` (`.53`).
+
+---
+
+### EFF.GENTOW1.21  [derivation]
+
+**CANONICAL STATEMENT:** Step 2 (⟸ realizability), verbatim:
+
+> “**Step 2 (⟸ realizability).** Digits >= floors give every slot of
+> g weight >= mu2*E2 + 1 (Step 0 arithmetic); by Step 0 all level-1
+> slots of g sit strictly above the inner side … Adding Phi2^{mu2} (Step 1): f's level-1 pins are
+> the full inner side with residual psi2^{mu2} exactly. Outer
+> grammar: a weight-wt grid monomial has x-height wt − B(u2 − e2D'h),
+> B := b + j*e2f2 <= mu1 − 1, so x-height >= mu2*E2 + 1 −
+> (mu1−1)(u2 − e2D'h) = u2 + (mu1−1)e2D'h + 1 > mu1*e2D'h = n*e2h:
+> strictly above the outer side … So f ∈ 𝒯.”
+
+**FORM:** bold-headed step.
+
+**DERIVATION:** Step 0 arithmetic + Step 1 + an outer-grammar degree count.
+
+**CONDITIONALITY:** consumes the node floor `u2 > e2D'h` twice (in Step 0 and in the outer-grammar chain).
+
+**RESOLUTION TRACE:** lines 219–229.
+
+**TEETH:** **ARITHMETIC AUDIT of the outer-grammar chain, recomputed:** with `mu2·E2 = mu1·u2` (since `E2 = e2f2u2` and `mu1 = e2f2mu2`), the bound reads `mu1u2 + 1 − (mu1−1)(u2 − e2D'h) = u2 + (mu1−1)e2D'h + 1` ✓ — the displayed simplification is exact. And `u2 + (mu1−1)e2D'h + 1 > mu1·e2D'h` reduces to `u2 + 1 > e2D'h`, true by the node floor ✓.
+
+---
+
+### EFF.GENTOW1.22  [derivation]
+
+**CANONICAL STATEMENT:** Step 3 (⟹ necessity + fibration), verbatim:
+
+> “**Step 3 (⟹ necessity + fibration).** f ∈ 𝒯: its level-1 side
+> digits at the lattice equal psi2^{mu2}'s coefficients — the same
+> K-digit data Phi2^{mu2} carries (Step 1, same coherent-normalizer
+> convention as the residual's definition). In g = f − Phi2^{mu2}
+> the lattice digits cancel to one digit higher … Step 0 converts to the composed floors. Triangularity: the
+> coordinate map is a composition of monic divisions (by Phi2, then
+> Phi'), unipotent in the x-degree filtration: c_{j,a,b} = the
+> coefficient of f at degree jD2 + bD' + a plus an Ô-combination of
+> strictly higher-degree coefficients — a digit bijection; Steps 2+3
+> identify image and budget box. Free-count display immediate. ∎(a,b)”
+
+**FORM:** bold-headed step closing (a) and (b).
+
+**DERIVATION:** cancellation of the shared lattice digits, then Step 0 conversion, then a unipotence argument on the x-degree filtration.
+
+**CONDITIONALITY:** **“Free-count display immediate” is the sentence R2a corrects** — the display it produces is unclipped and false at small N (`.65`). The triangularity claim itself is untouched and is re-used verbatim by GENTOW-5(e) (`.39`).
+
+**RESOLUTION TRACE:** lines 231–244; correction 860–884.
+
+**TEETH:** ROUNDTRIP 150; the unipotence is the ground of `.39`'s mod-π^N bijection.
+
+---
+
+### EFF.GENTOW1.23  [derivation]
+
+**CANONICAL STATEMENT:** Step 4, verbatim:
+
+> “**Step 4 (node (c)).** All roots x0 of f ∈ 𝒯 are tower-node points:
+> the full inner side forces v(Phi'(x0)) = u2/(e1e2) exactly with
+> eta2(x0) a psi2-root (the level-1 Newton polygon of the inner read
+> has the one side of slope kappa2, residual psi2^{mu2} zero-free at
+> the corners — T(b)'(iii)'s (T1')/(T2') transport, consumed). So
+> GENHN-2' reads p_j exactly as the slot-min; by (a)'s floors each
+> slot has e1e2*v + w >= (mu2−j)E2 + 1. Equality: pick the residue
+> class: solve b*u2 ≡ target (mod e2) (gcd(u2,e2) = 1), then
+> a*h ≡ (target − b*u2)/e2 (mod e1) (gcd(h,e1) = 1) — a slot with
+> w(a,b) ≡ (mu2−j)E2 + 1 (mod e1e2) inside a < e1 <= D',
+> b < e2 <= e2f2; set its digit at the floor, rest empty: on 𝒯 by
+> (b), pin at exactly (mu2−j)E2 + 1. ∎(c)”
+
+**FORM:** bold-headed step with a two-stage CRT solve.
+
+**DERIVATION:** the all-roots transport (imported), then GENHN-2′'s slot-min, then a constructive CRT realization.
+
+**CONDITIONALITY:** **this sentence is the one HETOW's F-2 annex quotes as its all-roots-transport cite** — `EFF.HETOW.54` cites exactly this Step 4, and that citation is a NEAR-MISS (transliterated and elided). **The cross-entry consequence:** the quotation HETOW relies on is THIS unit's first sentence, and the clause HETOW elided is this unit's parenthetical justification. Compiled from both sides, the referent is unambiguous.
+
+**RESOLUTION TRACE:** lines 246–257; the downstream cite at `HETOW_RECON_2026-08-09.md:811–819`.
+
+**TEETH:** the CRT solve's two-step class separation is re-used by `.36`(b) (“class surjectivity is GENTOW-1 Step 4's CRT display”) and by `.10`'s pin pattern (two pinned slots at f₂ = 2) ✓.
+
+---
+
+### EFF.GENTOW1.24  [derivation]
+
+**CANONICAL STATEMENT:** Step 5, verbatim:
+
+> “**Step 5 (field floor (d)).** Phi2(x0) = Phi'(x0)^{e2f2} − Sum_t
+> chat_t(x0) n(u2(f2−t))(x0) Phi'(x0)^{e2t}: every term at dv2 = E2
+> exactly ((T1),(T12)); the height-E2 residue under the coherent
+> height-E2 normalizer is (unit)·psi2(eta2(x0)) — the S4 cocycle
+> enters every term identically, exactly (i)'s side-residual
+> computation — and psi2(eta2(x0)) = 0 (T22). Ultrametric:
+> dv2(Phi2(x0)) > E2. ∎”
+
+**FORM:** bold-headed step.
+
+**DERIVATION:** an exact-height term census, then a residue computation, then the ultrametric.
+
+**CONDITIONALITY:** **this is the VALUE-LIVE gauge site, and the r1 bracket states the failure with machine evidence:**
+
+> “[GT1-r1: "the residue is
+> (unit)·psi2(eta2(x0))" holds at the CORRECTED chat_t (S0 pin,
+> S7.1); at the gauge-naive lifts the term-t residue carries the
+> extra factor eta^{−W(t)}-bar and the sum is NOT psi2(eta2(x0)) —
+> (d) then FAILS at eta != 1: machine-confirmed, nfeltval(Phi2^N) =
+> 3·pr.e EXACTLY at 20/20 scored prime rows of the fresh frame F1
+> (S7.1).]”
+
+**RESOLUTION TRACE:** lines 259–271.
+
+**TEETH:** **the failure is machine-scored 20/20** and re-verified here: `gentow1_pe1_fresh_output.txt`'s teeth line reads `teeth: {'GAUGE-NODE': 20, 'GAUGE-SIGMA': 2, 'REFWRONG': 2}` ✓ — the 20 GAUGE-NODE rows are exactly the “20/20 scored prime rows”. Disposition `AUDIT / decorrelated frame` (the F1 frame is η ≠ 1, outside the sealed battery's blind spot).
+
+---
+
+### EFF.GENTOW1.25  [corollary]
+
+**CANONICAL STATEMENT:**
+
+> “**COROLLARY GENTOW-1.1 (the depth->=3 node floor — [GENHN-TOW-1]
+> item (6)(beta)'s missing provenance).** Every side of the composed
+> polygon (j, p_j) of an f ∈ 𝒯 has dv2-slope
+>
+>     kappa3 > E2 = e2f2u2 > dv2(x^{D2}) = D2*e2h.
+>
+> *Proof.* Pins p_j >= (mu2−j)E2 + 1 (GENTOW-1(c)) with right
+> endpoint (mu2, 0): the rightmost (minimal) side slope is
+> >= min_j p_j/(mu2−j) >= E2 + 1/mu2 > E2; convexity gives every
+> side slope > E2; and E2 = e2f2*u2 > e2f2*(e2D'h) = D2*e2h by the
+> [r1] node floor u2 > e2D'h. ∎”
+
+with the discharge sentence:
+
+> “Item (6)(beta) is
+> hereby discharged INTO item (1); item (6)(alpha) (the iterated
+> carry-cancellation bookkeeping) is untouched and keeps the box.”
+
+**FORM:** bold-headed corollary with an inline display and proof.
+
+**DERIVATION:** the pin bound + convexity + the node floor.
+
+**CONDITIONALITY:** **item (6)(β) is discharged with a SHARPER constant than the box asked for** — the note is explicit: “at level 2 they split and the SHARPER constant E2 is the true floor”. (6)(α) keeps its box.
+
+**RESOLUTION TRACE:** lines 273–289.
+
+**TEETH:** **ARITHMETIC AUDIT of the witness, recomputed:** the note's witness is “kappa3 = 21/2 > E2 = 10 > dv2(x^{D2}) = 8” — at FAM-A5, `min_j p_j/(mu2−j) ≥ (mu2E2+1)/mu2 = 21/2 = 10.5 > 10 = E2` ✓ and `E2 = 10 > 8 = D2·e2h = 4·2` ✓. The general bound `E2 + 1/mu2` at μ₂ = 2, E2 = 10 gives 10.5 ✓ — the witness is the general bound instantiated.
+
+---
+
+### EFF.GENTOW1.26  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “**Remark (count-law unlock, honest scope).** With (b), tower count
+> laws take the W-12.A cell-law form on the composed keying with
+> entry exponent Sum(N − floor) — the battery's budget tables are
+> the first measured contact (S5); the per-genre tower count LEDGERS
+> (the GENH5-DENS-style displays) are a counting unit NOT executed
+> here.”
+
+**FORM:** bold-headed remark.
+
+**DERIVATION:** `[RECORD]` of a downstream unlock with its scope fence.
+
+**CONDITIONALITY:** **the exponent displayed here is the UNCLIPPED one** and inherits R2a's correction (`.65`): a consumer building count laws must use `Σ max(0, N − floor)`. The note does not re-point this remark at R2a — recorded as a completeness item (OPEN-CALL 2).
+
+**RESOLUTION TRACE:** lines 291–296; the governing clip at 860–884.
+
+**TEETH:** none; a declared non-executed unit.
+
+---
+
+### EFF.GENTOW1.27  [definition]
+
+**CANONICAL STATEMENT (frozen):** §S3's setting, `[ASSEMBLED]` from lines 300–317. The event and the ladder normalizers, verbatim:
+
+> “f ∈ 𝒯 whose composed polygon (j, p_j) is one side of integer
+> dv2-slope lam > E2 with residual (T − s)^{mu2} over K2, s ∈ K2^×
+> (the composed frame's stage-alpha event; by GENTOW-1(c) any
+> composed side has slope > E2, so lam >= E2 + 1 automatically — the
+> composed floor plays S6.1's "kappa > S′"). LADDER NORMALIZERS
+> (the r3 mechanism's n̂₂, now with provenance): n2hat(m) :=
+> pi^{a0} x^i Phi'^b, i < e1, b < e2, e1e2*a0 + i*e2h + b*u2 = m —
+> the (i,b)-pair is unique per residue class mod e1e2 (two-step
+> separation) and a0 >= 0 whenever m > E2 (since u2 > e2D'h forces
+> E2 >= (e1−1)e2h + (e2−1)u2 + 1).”
+
+and the K2-DIGIT LIFT display, verbatim (the object later corrected):
+
+> “K2-DIGIT LIFT: for s =
+> Sum_{t<f2} s_t eta2^t (s_t ∈ K), lift(s; m) := Sum over the f1f2
+> within-class monomials x^{i+e1r} Phi'^{b+e2t} at height m with
+> O-digit coefficients realizing the components in the coherent
+> normalization (the same S4-cocycle convention as the entry lifts
+> chat_t [GT1-r1: = the CORRECTED convention — the S0 pin's
+> eta^{W}-corrected lifts, S7.1]); deg lift < D2 always
+> (x-exponents < e1f1 = D', Phi'-exponents < e2f2).”
+
+**CANONICAL STATEMENT (EFFECTIVE):** the lift display is REPLACED by the 2026-08-10 S3 correction (`.62`):
+
+>     “lift(s; m) := Sum_{r,t} d_{r,t} · M_{r,t}(m),
+>     M_{r,t}(m)  := n2hat(m − Delta(r,t)) · x^{e1·r} · Phi'^{e2·t},
+>     Delta(r,t)  := e1e2h·r + e2u2·t,”
+
+**FORM:** bold-headed setting with two displays.
+
+**DERIVATION:** the normalizer uniqueness is two-step class separation; the `a0 ≥ 0` claim is an inequality consumed from the node floor.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement** of the lift display only. **The frozen sentence “deg lift < D2 always” STANDS as written** — the correction verifies it survives (`.62`). The fixed-base display is FALSE at seam-live heights, with a machine counter-instance.
+
+**RESOLUTION TRACE:** statement lines 300–317; correction 769–845.
+
+**TEETH:** **ARITHMETIC AUDIT of the `a0 ≥ 0` inequality, recomputed:** the claim is `E2 ≥ (e1−1)e2h + (e2−1)u2 + 1`, i.e. `e2f2u2 ≥ (e1−1)e2h + (e2−1)u2 + 1`. At `f2 ≥ 1` and `u2 > e2D'h = e2e1f1h ≥ e1h`: `e2f2u2 − (e2−1)u2 ≥ u2 > e1h·e2 ≥ (e1−1)e2h`, so the inequality holds with room ✓. The displayed derivation is sound.
+
+---
