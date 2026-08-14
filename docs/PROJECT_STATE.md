@@ -4712,3 +4712,29 @@ MQ passes — fixes merge back to the branch; main advances only via
 reviewed merges. The fork is the insurance on "try": a failed hard-
 chapter attempt rolls back losslessly. Fresh-eyes core-set audits
 (standing rule) continue on the branch throughout.
+
+**2026-08-15 DATED APPEND #53 — THE 0a SWEEP CLOSES: 28/28 NOTES
+COMPILED, TWELVE MERGED, THE ROUTINE-70 SPINE NEARLY DONE.** The
+opus substitution (append #51) executed the entire remaining sweep
+in ~one day: 45 codex-gated runs replaced by opus queues 1–8b + six
+merge units, surviving one API error wave (3 casualties, all
+resumed, zero work lost — survival discipline). INVENTORY: 28
+consumption-ready specs (12 merged multi-shard + 16 full singles),
+~2,500 statement units, every XREF grep-verified, ~200+115 numeric/
+hash verifications recomputed with zero unexplained failures; all
+flagged CODEX CROSS-READ OWED. THE SWEEP'S CATCHES (supplier-
+findings for the MQ + cross-read): GENTOW6's non-resolving commit
+hash; HETOW F-2's transliterated-elided quote; GRTJB §7.1's 6,575-
+vs-6,700; GRTW2 §6.1's 6,396-vs-6,403; HE7 Q1's two battery-table
+defects; LIFTCORNER's 15-vs-20 self-count; the GENIND/GENH4
+uncited sibling reports; **EFF-HE6 OPEN-CALL 2 (most actionable):
+three A3 corrections outside every T2 pin span, F-1 rendering
+HE6-SLOT-SEAM's frozen slot residue vacuous while T2 cites it 48×
+— ADJUDICATION UNIT LAUNCHED before the DAG consumes T2's spec.**
+Protocol residue worth a convention: the FAVORABLE/OVERSTATING
+stale-grade rule stated identically in three notes but written
+nowhere; the WHAT-IS-ACCEPTED pre-emption mechanism used twice,
+unnamed. Template at v3.1 (39 rules). NEXT: the 0c DAG draft
+(LAUNCHED — the whole-project graph from the 28 specs), then 0e
+leanspec + transcription chapters → THE FORK (append #52) → the
+opus hard-30% + fleet.
