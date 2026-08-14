@@ -1588,3 +1588,342 @@ and — the compilation's most portable finding in this unit — **what the two 
 **TEETH:** disposition `AUDIT / decorrelated-model audit`. Note the honesty of the finding's shape: it does not claim the conclusion was wrong, only that the JUSTIFICATION did not reach it — and the lemma then proves the conclusion true.
 
 ---
+### EFF.HETOW.50  [lemma]  *(CHAIN-J-D0, link 2)*
+
+**CANONICAL STATEMENT:** LEMMA HETOW-4, source lines 689–746. The notation and clause (a), verbatim:
+
+> “> **LEMMA HETOW-4 (the normalizer bridge).** Notation of §S1/§S2
+> > ([r1] preamble: ϖ = x^{i₀}π^{a₀}, n̂(k) = x^{i(k)}π^{a(k)},
+> > Q(k) = (i₀k − i(k))/e₁ = ⌊i₀k/e₁⌋, wrap₁(a,b) :=
+> > ⌊(i(a)+i(b))/e₁⌋; letter η; datum (κ₂ = u₂/e₂, r̃),
+> > K₂ = K(η₂) = K(β), β = η^{−Q(u₂)}η₂ per HETOW-1). For k ∈ ℤ put
+> > s(k) := k·u₂^{−1} mod e₂ ∈ [0, e₂), m(k) := (k − s(k)u₂)/e₂;
+> > n₂(k) := ϖ^{m(k)}Φ′^{s(k)} (HE7 §S1) and n̂₂(k) :=
+> > x^{i}π^{a}Φ′^{b} the tower ladder monomial (i < e₁, b < e₂,
+> > e₁e₂a + ie₂h + bu₂ = k; a ∈ ℤ, Laurent). Then:
+> >
+> > (a) [THE RATIO IS A GRADE-DETERMINED WRAP-LETTER MONOMIAL]
+> > b = s(k) and x^{i}π^{a} = n̂(m(k)), so, as Laurent monomials,
+> >
+> >     n̂₂(k)/n₂(k) = n̂(m(k))/ϖ^{m(k)} = (x^{e₁}/π^{h})^{−Q(m(k))},
+> >
+> > and at every point ξ of the tower-node locus
+> > res(n̂₂(k)(ξ)/n₂(k)(ξ)) = η_ξ^{−Q(m(k))} = ι_ξ(τ(k)), where
+> > τ(k) := η^{−Q(m(k))} ∈ K^×.”
+
+Clause (b), verbatim:
+
+> “> (b) [τ IS A COCYCLE, NOT A CHARACTER] with w₂ :=
+> > ⌊(s(k)+s(k′))/e₂⌋ ∈ {0,1},
+> >
+> >     τ(k)·τ(k′)/τ(k+k′)
+> >       = η^{ wrap₁(m(k), m(k′)) + w₂·( Q(u₂) + wrap₁(m(k)+m(k′), u₂) ) },
+> >
+> > the two-floor wrap-cocycle. In particular the per-height twist is
+> > neither constant nor geometric in general, and the RAW (bracket-
+> > free) pin-residue strings of the two systems differ wherever some
+> > τ(H) ≠ 1.”
+
+Clause (c), verbatim:
+
+> “> (c) [ASSEMBLED RESIDUALS: THE BRACKETS TELESCOPE THE TWIST INTO
+> > THE COVERED SPECIES] Let a side of P₂ have slope λ₂ = u₃/ℓ₂
+> > (lowest terms), lattice heights H_t = H₀ − t·u₃, t = 0..d. Each
+> > system assembles its side residual WITH ITS OWN cocycle bracket
+> > (HE7: §S5.3 Step 2's τ_t with res(τ_t) = β^{c_t}; tower: the S4
+> > coherent-normalizer wrap units, GENTOW-2(iv)'s "coherent
+> > normalization, wrap units included"), so the t-coefficient is
+> > res(A_{j(t)}·N(u₃)^{t}/N(H₀)) with N = n₂ resp. n̂₂. Hence, with
+> > δ := τ(u₃) ∈ K^×,
+> >
+> >     ρ_t = ρ̂_t · τ(H₀) · δ^{−t} ,   i.e.   R_{λ₂}(Z) = τ(H₀) · R̂_{λ₂}(Z/δ) ,
+> >
+> > and the side letters match the rescale: β₂,ξ =
+> > res(Φ₂(ξ)^{ℓ₂}/n₂(u₃)(ξ)) = ι_ξ(δ)·ẑ_ξ.”
+
+Clause (d), verbatim:
+
+> “> (d) [ROUTING TRANSPORT] Under (c): R_{λ₂} separable ⟺ R̂_{λ₂}
+> > separable; the multisets of (degree, multiplicity) over
+> > irreducible factors are equal, via the degree-preserving
+> > bijection r̂₂(Z) ↦ r₂(Z) := δ^{deg r̂₂}·r̂₂(Z/δ) (monic); hence
+> > HE7.A(2)'s dictionary (e, f) = (e₁e₂ℓ₂, f₁f₂·deg r₂) and
+> > HE7.A(3)'s branch predicate ℓ₂·deg r₂ ∈ {1, ≥2} read identically
+> > in the two systems; at the α-refine branch the repeated roots
+> > satisfy s₂ = δ·ŝ₂ (δ ∈ K^× ⊂ K₂, so K₂-rational together), and
+> > ONE w ∈ O[x] realizes both prescriptions — its residues in the
+> > two systems differ by exactly ι(δ) at grade λ₂, which is (a) at
+> > k = λ₂ — so the refined key Φ₂ − w and every iterate of the
+> > finite chain (LEMMA HE7-8/12/13) are system-independent
+> > polynomials.”
+
+**FORM:** blockquoted bold-headed lemma with four bracket-labelled clauses and four displays.
+
+**DERIVATION:** `.51`.
+
+**CONDITIONALITY:** **the four clauses have DIFFERENT downstream fates under the T3 absorption** (`.57`) and a consumer must know which is which: (c) and (d) are “fully supplied” by T3's `(T3-BKT)`+`(T3-CMP)` and `(T3-ROUTE)`; (b)'s comparison SHAPE by `(T3-COB)` but its explicit two-floor exponent only after substituting this note's floor arithmetic; **(a) remains source-local — this note's own supply.** The lemma statement stays byte-frozen and authoritative either way.
+
+**RESOLUTION TRACE:** statement lines 689–746; proof 748–768; absorption boundary 845–860.
+
+**TEETH:** clause (a) is machine-checked as leg P-A (“identity leg (a) at k = 1..60 per frame”); (c) as P-B; (d) as P-C; **(b)'s non-cancellation is the honesty tooth T-RAW** — see `.52`. That is a complete per-clause tooth map, unusually tight.
+
+---
+
+### EFF.HETOW.51  [derivation]
+
+**CANONICAL STATEMENT:** HETOW-4's proof, source lines 748–768, `[ASSEMBLED]` from its four clause-proofs. (a), verbatim:
+
+> “*Proof.* (a) From e₁e₂a + ie₂h + bu₂ = k: mod e₂, bu₂ ≡ k with
+> 0 ≤ b < e₂ and gcd(u₂, e₂) = 1 forces b = s(k); then
+> e₁a + ih = (k − s(k)u₂)/e₂ = m(k) with 0 ≤ i < e₁ is the level-1
+> ladder equation at height m(k), so i = i(m(k)), a = a(m(k))
+> (gcd(h, e₁) = 1). The ratio n̂(m)/ϖ^{m} = x^{i(m)−i₀m}π^{a(m)−a₀m}
+> has x-exponent −e₁Q(m) (definition of Q) and dv = 0, forcing
+> π-exponent +hQ(m)·(1/1): the display.”
+
+(b), (c), (d), verbatim:
+
+> “(b) m(k+k′) = m(k) + m(k′) + u₂w₂ (the s-carry), then apply the
+> preamble's Q(a+b) = Q(a) + Q(b) + wrap₁(a,b) twice. (c) The bracket
+> in each system is τ_t^{N} := N(H_t)·N(u₃)^{t}/N(H₀) (HE7 §S5.3
+> Step 2's display, and the same collection pattern at the tower
+> carrier), so the assembled coefficient telescopes to
+> res(A·N(u₃)^{t}/N(H₀)); the two systems' coefficients then differ
+> by res((n₂(u₃)/n̂₂(u₃))^{t}·(n̂₂(H₀)/n₂(H₀))) = τ(H₀)·δ^{−t} by (a);
+> the letter display is (a) at k = u₃. (d) Z ↦ Z/δ with δ ∈ K^× is a
+> K₂-algebra automorphism of K₂[Z] up to the global unit: it
+> preserves irreducibility, degrees, multiplicities, and maps the
+> root ŝ to δŝ; the branch predicates and the dictionary consume
+> only these invariants plus K₂-membership of repeated roots, all
+> preserved (δ ∈ K^×). The refine clause is (a) at grade λ₂. ∎”
+
+**FORM:** italic-headed four-clause proof.
+
+**DERIVATION:** (a) is a uniqueness argument on the ladder equation (two coprimality conditions pin b and then (i, a)); (b) is `.12`'s one-floor identity applied twice through an s-carry; (c) is a telescoping bracket computation reduced to (a); (d) is invariance of the routing predicates under a K^×-rescale of the variable.
+
+**CONDITIONALITY:** (c) CONSUMES two external displays — HE7 §S5.3 Step 2's bracket and GENTOW-2(iv)'s coherent normalization — neither of which is in the `.02` import inventory. That is the inventory incompleteness noted at `.02`.
+
+**RESOLUTION TRACE:** proof lines 748–768.
+
+**TEETH:** **ARITHMETIC AUDIT of the two identities that carry the proof, recomputed:**
+- (a)'s x-exponent: `i(m) − i₀m = −(i₀m − i(m)) = −e₁·Q(m)` by the definition `Q(m) = (i₀m − i(m))/e₁` ✓, and `dv = 0` then forces the π-exponent, since `dv(x^{e₁}/π^h) = 0` makes `(x^{e₁}/π^h)^{−Q(m)}` the unique dv-0 monomial with that x-exponent ✓.
+- (b)'s s-carry: `m(k) + m(k′) = (k − s(k)u₂)/e₂ + (k′ − s(k′)u₂)/e₂` and `m(k+k′) = (k+k′ − s(k+k′)u₂)/e₂` with `s(k)+s(k′) = s(k+k′) + e₂w₂`, so `m(k+k′) = m(k)+m(k′) + u₂w₂` ✓ — exactly the displayed carry, with the sign as stated.
+- (c)'s telescope: the two systems' ratio is `(n₂(u₃)/n̂₂(u₃))^{t}·(n̂₂(H₀)/n₂(H₀)) = δ^{−t}·τ(H₀)` by (a) at `k = u₃` and `k = H₀` ✓.
+The proof reproduces at every displayed step.
+
+---
+
+### EFF.HETOW.52  [run-record]
+
+**CANONICAL STATEMENT:**
+
+> “**What the machine adds (all committed).** (i) The sealed supp
+> instrument `hetowr1_supp.py` re-ran in isolation 2026-08-10:
+> 29 gp jobs, 0 violations, GREEN, output content-identical to the
+> committed artifact except the runtime stamp (21.4s vs 21.3s);
+> `hetowr1_supp_results.json` md5 58f1ce0c unchanged. (ii) Fresh
+> sealed leg `hetow_r2_hetow4.py` (seal commit with preregistered
+> predictions + derived constants; runner md5 40495654, output
+> ab7d5b66, results d189fe0b): **GREEN — 203 checks, 37 gp jobs
+> dual-route, 0 violations** at the committed frames X, Z
+> (η-letter-live, e₂ = 1) and S (e₂ = 2, bracket-live): P-A identity
+> leg (a) at k = 1..60 per frame; P-B bridge (c) exact at every
+> scored side (X/Z INT7: τ(H₀) = 2, δ = 2; X/Z HALF15: δ = 2; μ₂ = 3
+> sides included); P-C routing transport (d) with realized coverage
+> SEP-IRRED + SEP-SPLIT + REFINE at each of X, Z, S and every
+> SEP member's dictionary σ = PARI on dual routes; P-D the honesty
+> tooth T-RAW FIRED at X and Z (raw τ-strings (2,2,1) at the λ₂ = 7
+> sides and (1,2,2,1) at μ₂ = 3, non-geometric — the per-height
+> non-cancellation is machine-real), with frame S's INT21 side
+> letter-dead (τ ≡ 1, Q even) and HALF43 side letter-LIVE
+> (τ(43) = 2, Q(19) = 9 odd) exactly as derived; P-E HE7's own
+> bracket res(τ_t) = β^{c_t} cross-checked, including live c_1 = 1
+> rows at S.”
+
+**FORM:** bold-headed record with two numbered legs and five preregistered predictions P-A…P-E.
+
+**DERIVATION:** `[RUN]` — a freshly sealed leg whose predictions are keyed one-to-one to HETOW-4's clauses.
+
+**CONDITIONALITY:** the timing-only difference on the re-run (21.4 s vs 21.3 s) is disclosed and is exactly the class of difference that the LIFTCORNER arc's “bit-identically” correction taught the corpus to disclose; here it is disclosed correctly on first statement.
+
+**RESOLUTION TRACE:** statement lines 770–791.
+
+**TEETH:** **RE-VERIFIED at compile time.** `hetow_r2_hetow4.py` exists with **md5 `404956542e5dfa0ca939b3805ecceff7`** — matching the note's `40495654` prefix ✓. Its committed output's final lines read `TOTAL violations 0 (21.9s)` / `VERDICT: GREEN` ✓. The supp re-run's `58f1ce0c` claim is corroborated by FREEZE-2's independent md5 (`58f1ce0c88069366172d1a9335566736`) ✓. **T-RAW is an honesty tooth in the v3 rule 20 sense — a tooth designed to FIRE, confirming that the twist genuinely does not cancel per height**; its firing is what keeps clause (b) from being read as a cancellation result. ARITHMETIC AUDIT of the frame-S letter-parity claim: `τ(43) = η^{−Q(m(43))}` with the note's `Q(19) = 9` odd and η of order 2 gives `τ ≠ 1` ✓ letter-LIVE; an even Q gives `τ = 1` ✓ letter-dead — the two frame-S sides split exactly as the parity predicts.
+
+---
+
+### EFF.HETOW.53  [changes-record]  *(CHAIN-J-D0, link 2 — the supersession itself)*
+
+**CANONICAL STATEMENT:**
+
+> “**Supersession (the S1 rows, re-read).** The S1 normalizer row's
+> justification cell now reads: "discrepancy = the wrap-letter
+> monomial with residue η^{−Q(m(k))} (HETOW-4(a)); σ-content
+> transported by HETOW-4(c)(d) — a global unit × K^×-rescale at the
+> ASSEMBLED residuals, the J-D0-covered species; NOT per-height
+> invariant (HETOW-4(b), tooth T-RAW)". The (SLOT₂) row's
+> parenthetical "(residues: same content, letters related by
+> HETOW-1's unit)" is re-read the same way: same content AFTER the
+> brackets, with the per-height comparison given by τ. THEOREM
+> HETOW.A(i)'s final clause ("GENHN-T(b)′'s composed
+> pins/polygon/residuals ARE THEOREM HE7.A's P₂ data") now carries
+> its exact content: pins and polygon are shared verbatim
+> (valuation-only rows, untouched by the challenge), and the
+> composed residuals are the δ-rescale of HE7.A's with every
+> HE7.A(2)/(3) routing decision and every α-refine chain identical
+> (HETOW-4(d)). The CODEX_TOWERRAT §S6 gap annotation on
+> HETOW.A(i)'s final clause is DISCHARGED at this note's grade.”
+
+**FORM:** bold-headed supersession record naming three targets.
+
+**DERIVATION:** `[RECORD]` of the effect of `.50` on three frozen spans.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement** (the normalizer row's justification cell is replaced with quoted new text), **wording-rider** (the (SLOT₂) parenthetical is re-read, not replaced), and **replacement of a justification** (HETOW.A(i)'s final clause keeps its truth and gains exact content). **TARGETS:** `EFF.HETOW.09` (two rows) and `EFF.HETOW.22`.
+
+**RESOLUTION TRACE:** statement lines 793–809.
+
+**TEETH:** the discharge claim (“the CODEX_TOWERRAT §S6 gap annotation … is DISCHARGED”) is a claim about an external record; `CODEX_TOWERRAT_2026-08-10.md` exists (X06), but this compilation does not re-adjudicate the verifier's own §S6 — the discharge is asserted “at this note's grade”, which the note is entitled to do. Disposition `accepted-with-decorrelation-supplied` (the machine legs P-A…P-E supply the independent check).
+
+---
+
+### EFF.HETOW.54  [changes-record]
+
+**CANONICAL STATEMENT:**
+
+> “**F-2 annex (the all-roots transport cite, at HETOW-3(b)).**
+> HETOW-3(b)'s "every root of f on the opening locus is a level-2
+> point" consumes the T(b)′ setting's all-roots transport, displayed
+> in the ACCEPTED GENTOW1 note (Step 4, quoted): "All roots x₀ of
+> f ∈ 𝒯 are tower-node points: the full inner side forces
+> v(Φ′(x₀)) = u₂/(e₁e₂) exactly with η₂(x₀) a ψ₂-root — T(b)′(iii)'s
+> (T1′)/(T2′) transport, consumed." This cite is hereby attached at
+> HETOW-3(b)'s use site (annex-grade; the lemma statement is
+> unchanged).”
+
+**FORM:** bold-headed dated annex carrying an embedded cross-note quotation.
+
+**DERIVATION:** `[RECORD]` — a provenance attachment, explicitly annex-grade and statement-preserving.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **provenance-rider** (“the lemma statement is unchanged”). **TARGETS:** `EFF.HETOW.20` clause (b).
+
+**RESOLUTION TRACE:** statement lines 811–819.
+
+**TEETH — A FIDELITY FINDING, recorded not repaired.** The embedded quotation is presented as a verbatim quote (“Step 4, quoted”), and **it is not verbatim**. `grep -cF` on the quoted string against `GENTOW1_PROOF_2026-08-09.md` = **0**; the referent is verified at **line 246**, whose actual text is:
+
+> “**Step 4 (node (c)).** All roots x0 of f ∈ 𝒯 are tower-node points:
+> the full inner side forces v(Phi'(x0)) = u2/(e1e2) exactly with
+> eta2(x0) a psi2-root (the level-1 Newton polygon of the inner read
+> has the one side of slope kappa2, residual psi2^{mu2} zero-free at
+> the corners — T(b)'(iii)'s (T1')/(T2') transport, consumed).”
+
+Two divergences: (1) **notation transliteration** — the source is ASCII (`x0`, `Phi'`, `u2/(e1e2)`, `eta2`, `psi2`), the quote is Unicode (`x₀`, `Φ′`, `u₂/(e₁e₂)`, `η₂`, `ψ₂`); (2) **an UNMARKED elision** — the source's parenthetical justification (“the level-1 Newton polygon of the inner read has the one side of slope kappa2, residual psi2^{mu2} zero-free at the corners —”) is dropped and the em-dash spliced, with no ellipsis. **Substance survives**: the conclusion and the `T(b)′(iii) (T1′)/(T2′)` attribution are reproduced faithfully, and the elided clause is the reason, not the claim. Disposition **NEAR-MISS** (v3 rule 15) — designation absent as written; referent verified at `GENTOW1_PROOF_2026-08-09.md:246`, count 1 under transliteration-plus-elision. See OPEN-CALL 3.
+
+---
+
+### EFF.HETOW.55  [changes-record]
+
+**CANONICAL STATEMENT:**
+
+> “**F-3 annex (the S1 level-1 frame row, annotated).** The row
+> "f monic, disc f ≠ 0, Φ′ ∤ f | Φ′ ∤ f automatic at a full side |
+> HETOW-3(a) ✓" discharges only Φ′ ∤ f; "f monic" and "disc f ≠ 0"
+> are the consumed T(b)′ setting's INHERITED frame data (the σ
+> program is posed over separable f; S1's header imports the setting
+> "verbatim GENHN-T(b)′"), not new obligations — the ✓ column is
+> scoped to the Φ′ ∤ f entry. An inseparable f sits outside the
+> consumed setting.”
+
+**FORM:** bold-headed dated annex.
+
+**DERIVATION:** `[RECORD]` of a scope reading of one table cell.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **scope-pin**. **TARGETS:** the level-1 frame row of `EFF.HETOW.09`. The final sentence is the operative fence for any generality question: **an inseparable f is outside the consumed setting**, so `disc f ≠ 0` is a standing hypothesis inherited from T(b)′, never discharged here.
+
+**RESOLUTION TRACE:** statement lines 821–828.
+
+**TEETH:** the “verbatim GENHN-T(b)′” import claim is the §S1 header (`.08`), verified present at line 58.
+
+---
+
+### EFF.HETOW.56  [instrument-record]
+
+**CANONICAL STATEMENT:**
+
+> “BYTE-FREEZE: pre-append body md5 254d1765
+> (254d176563c21bf2261699f9138e18b5) = commit e38df9f, 41,452 bytes,
+> re-verified by prefix after this append; edit shape append-only;
+> statement displays of HETOW-1/2/3/A and all sealed artifacts
+> byte-untouched.”
+
+**FORM:** bold-headed freeze record closing the 2026-08-10 append.
+
+**DERIVATION:** `[RECORD]` of a byte-level freeze with three independent quantities (md5, commit, byte count).
+
+**CONDITIONALITY:** none.
+
+**RESOLUTION TRACE:** statement lines 830–834.
+
+**TEETH:** **INDEPENDENTLY REPRODUCED AT COMPILE TIME — all three quantities.** The note's first **652** lines hash to `254d176563c21bf2261699f9138e18b5` and measure **41,452 bytes**; `git cat-file -s` on the `e38df9f` blob of this path returns **41452**. This is the strongest freeze verification in the entry: the note stated a triple, and the triple reproduces exactly, which also independently confirms that lines 1–652 are byte-untouched since `e38df9f`.
+
+---
+
+### EFF.HETOW.57  [absorption-record]  *(SERIES ARC, link 5; CHAIN-J-D0 — TERMINAL)*
+
+**CANONICAL STATEMENT:**
+
+> “**LEMMA HETOW-4 (the normalizer bridge, TOWERRAT-R1 append above) is
+> ABSORBED by S-2's LEMMA COCYCLE-TELESCOPE as the instance (ABS-HE4)
+> with coboundary display (HE4-COB)** — T3's two-section comparison port
+> at N = n₂, N̂ = n̂₂, q = u₃, δ = τ(u₃), T3's abstract χ renamed to this
+> note's τ — per the S-2 consumption check (runs/comp5/T3CC_output.log,
+> HETOW-4 leg: PASS). Exact absorption boundary (T3 §4's table): clause
+> (c)'s coefficient telescope and polynomial rescaling are fully
+> supplied by (T3-BKT) + (T3-CMP); clause (d)'s separability/factor/
+> root routing by (T3-ROUTE); clause (b)'s coboundary-comparison shape
+> by (T3-COB), its explicit two-floor exponent obtained only after
+> substituting this note's floor arithmetic; clause (a)'s ladder
+> arithmetic τ(k) = η^{−Q(m(k))}, the common polynomial lift, and
+> iterate independence remain source-local — this note's supply. No
+> character law for τ is asserted (tooth T-RAW unchanged). The lemma
+> statement above stays byte-frozen and authoritative; consumers may
+> cite either LEMMA HETOW-4 or T3's (ABS-HE4)/(HE4-COB).”
+
+with the provenance preamble, verbatim:
+
+> “*Provenance: simplification pass S-2, blueprint protocol
+> (`docs/SIMPLIFICATION_BLUEPRINT_2026-08-10.md` §5.3 item 4);
+> T3 = `T3_COCYCLE_TELESCOPE_2026-08-12.md`, ACCEPTED 2/2 (T3P2 + T3P3
+> clean; runs of record in that note). Edit shape append-only; the body
+> and the 2026-08-10 append above stay BYTE-FROZEN.*”
+
+**FORM:** italic provenance preamble + a bold-headed absorption record with a clause-by-clause boundary.
+
+**DERIVATION:** `[RECORD]` of an absorption, with the boundary drawn per clause against a named table in the absorbing note.
+
+**CONDITIONALITY:** **the absorption is PARTIAL and the boundary is the load-bearing content**: (c) and (d) fully absorbed; (b) absorbed only in SHAPE; **(a) not absorbed at all — source-local.** SUPERSESSION KIND: **inventory completion** on the citation route (“consumers may cite either”), NOT a replacement — the lemma statement “stays byte-frozen and authoritative”. A consumer that cites only T3's `(ABS-HE4)` loses clause (a).
+
+**RESOLUTION TRACE:** statement lines 839–860.
+
+**TEETH:** **every designation verified at compile time** in `T3_COCYCLE_TELESCOPE_2026-08-12.md`: `(ABS-HE4)` count 2, `(HE4-COB)` count 1, `(T3-BKT)` count 2, `(T3-CMP)` count 4, `(T3-ROUTE)` count 2, `(T3-COB)` count 2 — **all six present, none invented** (XREFs X11–X16). `runs/comp5/T3CC_output.log` exists (P-06); `docs/SIMPLIFICATION_BLUEPRINT_2026-08-10.md` exists (P-07). The “no character law for τ is asserted (tooth T-RAW unchanged)” clause preserves `.52`'s honesty tooth across the absorption — a correctly-carried fence.
+
+---
+
+### EFF.HETOW.58  [instrument-record]
+
+**CANONICAL STATEMENT:**
+
+> “BYTE-FREEZE: pre-append body md5 6ded277db84f9eefb43d46021ba9c7e2, re-verified
+> by prefix after this append; edit shape append-only; statement
+> displays of HETOW-1/2/3/4/A and all sealed artifacts byte-untouched.”
+
+**FORM:** bold-headed freeze record — the note's final line.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** none. Note the widened protected list: HETOW-**4** is now inside the frozen display set, so the absorption did not touch it (consistent with `.57`'s “stays byte-frozen and authoritative”).
+
+**RESOLUTION TRACE:** statement lines 862–864 (the note's last lines).
+
+**TEETH:** **INDEPENDENTLY REPRODUCED**: the note's first **834** lines hash to `6ded277db84f9eefb43d46021ba9c7e2` (51,589 bytes) ✓.
+
+---
