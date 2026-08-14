@@ -1014,3 +1014,502 @@ and the deep-perturbation close, verbatim (the sentence S8.1 withdraws):
 **TEETH:** all four cited rows are in `.14`'s recomputed table or `.52`'s FR-M3 record ✓.
 
 ---
+### EFF.GENTOW3.34  [instrument-record]
+
+**CANONICAL STATEMENT:**
+
+> “INSTRUMENT: `verification/openmath/gentow3_checks.py`, sealed at
+> commit 5ac0d80 (predictions P-1..P-7 + 3 teeth in the docstring
+> BEFORE the first full run; design smoke disclosed there: the A5
+> self-shadow row and PE1 row-2 shadow pin, both matching the hand
+> derivation; two pre-seal instrument fixes made before sealing —
+> the A5-DEEP construction had double-added Phi2^{mu2}, and the PE1
+> shadow-label wants were tightened to tINERT/t2SIDED from the hand
+> computation). Runner md5 at the verdict run:
+> 7cf3a7b8a580d6b9893d8e62f94464e2 — BIT-IDENTICAL to seal; no
+> post-seal edit of any kind.”
+
+**FORM:** bold-headed instrument record.
+
+**DERIVATION:** `[RECORD]` — a two-commit seal with pre-seal fixes disclosed.
+
+**CONDITIONALITY:** **“BIT-IDENTICAL to seal; no post-seal edit of any kind”** — note the contrast with GENTOW1, whose sealed runner needed a disclosed post-seal repair (`EFF.GENTOW1.42`). This instrument's seal is clean.
+
+**RESOLUTION TRACE:** lines 395–404.
+
+**TEETH:** **`md5sum gentow3_checks.py` = `7cf3a7b8a580d6b9893d8e62f94464e2`** — matches exactly ✓. `git cat-file -t 5ac0d80` = commit ✓.
+
+---
+
+### EFF.GENTOW3.35  [run-record]  `[TABLE]`
+
+**CANONICAL STATEMENT:** the verdict. **Source display, verbatim:**
+
+>     “GREEN — 582 checks, 0 violations, 3/3 teeth.
+>     Tally: FLOOR 274, ENTRY 274, SHARP 11, LABEL 6, XFREE 3,
+>     BAND 2, PE1 3, GP-SIG 6, TEETH 3.”
+
+with its header: “VERDICT RUN (this repo, 2026-08-09, output `gentow3_checks_output.txt` md5 926cd05f)”.
+
+`[TABLE]` — transcription:
+
+| FLOOR | ENTRY | SHARP | LABEL | XFREE | BAND | PE1 | GP-SIG | TEETH |
+|---:|---:|---:|---:|---:|---:|---:|---:|---:|
+| 274 | 274 | 11 | 6 | 3 | 2 | 3 | 6 | 3 |
+
+**MANDATORY ARITHMETIC AUDIT (v3 rule 22):** 274 + 274 + 11 + 6 + 3 + 2 + 3 + 6 + 3 = **582** ✓ — the nine-category tally sums exactly to the headline. **Cross-verified against the committed artifact**, whose last two lines read `=== VERDICT: GREEN -- 582 checks, 0 violations (0.1s) ===` and `tally: {'FLOOR': 274, 'ENTRY': 274, 'SHARP': 11, 'LABEL': 6, 'XFREE': 3, 'BAND': 2, 'PE1': 3, 'GP-SIG': 6, 'TEETH': 3}` — **all nine categories match** ✓.
+
+**FORM:** indented ASCII verdict block (source) → table.
+
+**DERIVATION:** `[RUN]`
+
+**CONDITIONALITY:** ENTRY 274 is **entailed by** FLOOR 274 given δ ≥ 1 and is disclosed as non-independent (`.50`) — so the effective independent check count is lower than 582.
+
+**TEETH:** `md5sum gentow3_checks_output.txt` = `926cd05f…` ✓.
+
+---
+
+### EFF.GENTOW3.36  [run-record]
+
+**CANONICAL STATEMENT:** the per-prediction scoring, `[ASSEMBLED]` from lines 413–429. P-1 with its census correction, verbatim:
+
+> “P-1 (FLOOR, 274): every discrepancy height on 110
+> members (nec + real + anchors, five families) clears Θ_j [GT3-r1
+> census correction: the true count is 137 member_check calls =
+> 274/2 — 5 × (14 nec + 12 real + 1 anchor) + 2 A7-BAND rows; "110"
+> undercounted (omitted the 20 perturbation variants, 5 anchors, 2
+> band rows) — S7.3].”
+
+P-2 through P-7 in brief, verbatim where sharpest:
+
+> “P-2
+> (SHARP): self-shadow pins landed at the preregistered Θ values
+> (A5/A7/C: 21/31/43 at j = 0 only; B: 13 AND 7 — both
+> coordinates); A5-DEEP honest tRAM(207) vs shadow tRAM(21), PARI
+> {(8,1)}. P-3 (XFREE): FAM-D lift coefficients x-free, 12-member
+> sweep zero discrepancies, self-shadow DRAIN. P-4 (ENTRY, 274):
+> zero discrepancy inside the entry band on every member. P-5
+> (BAND): A7 rows at 29 (tRAM) and (30,15) (tINERT) shadow = honest,
+> PARI {(8,1)}/{(4,2)}. P-6 (LABEL, 6): members with pins below Θ
+> have identical labels+σ. P-7 (PE1): honest (25,14)/(21,14)/(21,14)
+> tRAM vs shadow (21,14) tRAM/(28,14) tINERT/(30,14) t2SIDED, first
+> divergence 21 = Θ_0 on each, PARI {(8,1)} ×3.”
+
+**FORM:** bulleted per-prediction list with an in-line census correction.
+
+**DERIVATION:** `[RUN]`
+
+**CONDITIONALITY:** SUPERSESSION KIND on the census: **counter re-reading**, in the CONSERVATIVE direction (“more was checked than the sentence claimed”, `.49`).
+
+**RESOLUTION TRACE:** lines 413–429.
+
+**TEETH:** **ARITHMETIC AUDIT of the corrected census, recomputed:** `5 × (14 + 12 + 1) + 2 = 5 × 27 + 2 = 137` ✓, and `137 × 2 coordinates = 274` = the FLOOR tally ✓. **The sealed tally and the corrected census reconcile exactly**, which is what proves “110” was the error and 274 was always right.
+
+---
+
+### EFF.GENTOW3.37  [run-record]
+
+**CANONICAL STATEMENT:** the three teeth, verbatim:
+
+> “TEETH: T-THRESH-UP
+> x4 (the Θ+1 mutant is killed by each self-shadow row —
+> disagreement AT Θ); T-BAND-EDGE x1 (the Θ−1 mutant calls height
+> 30 unfaithful; agreement + PARI refute it); T-SHADOW-REG x1 (the
+> shadow reproduces the refuted stage pins and its priced σ differs
+> from PARI on rows 1–2) [GT3-r1 disclosure: the σ-comparison branch
+> in the sealed runner is DEAD CODE (gentow3_checks.py L398–399, a
+> literal `pass`); the tooth fires on pins + labels matching the
+> preregistered wants alone; the σ-difference is ENTAILED by the
+> machine-checked labels through the accepted (iii) dictionary, not
+> compared in-code — S7.4].”
+
+**FORM:** teeth list with an in-line dated disclosure.
+
+**DERIVATION:** `[RUN]` — two threshold mutants (Θ+1 and Θ−1) and one regression tooth.
+
+**CONDITIONALITY:** **T-SHADOW-REG's σ-leg is DEAD CODE and the note says so** — the tooth fires on pins + labels only; the σ-difference is *entailed*, not *compared*. SUPERSESSION KIND: **disclosed non-repair**.
+
+**RESOLUTION TRACE:** lines 429–439; the disclosure section 640–654.
+
+**TEETH:** **THE DEAD-CODE CLAIM IS VERIFIED VERBATIM AT COMPILE TIME.** `verification/openmath/gentow3_checks.py` lines **398–399** read exactly:
+
+```
+        if i > 0 and rs[3] is not None and rs[3] != [(8, 1)]:
+            pass  # shadow-priced sigma wrong vs PARI: tooth part
+```
+
+— a literal `pass`, at the stated line numbers ✓. **The two threshold mutants are the note's anti-vacuity pair**: T-THRESH-UP kills “the floor is higher than Θ” and T-BAND-EDGE kills “the floor is lower than Θ”, so Θ is pinned from both sides by machine.
+
+---
+
+### EFF.GENTOW3.38  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “**What stays open in [GENHN-TOW-1] (untouched here):** items (4)
+> (partial inner sides — 𝒯 here is FULL-side; every S2–S4 statement
+> is scoped to it) and (6)(alpha) at its GENTOW-2 grade; item (3)'s
+> box text asked for the faithfulness geography — delivered above —
+> with the two named residues below.”
+
+**FORM:** bold-headed residue fence.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** **item (4) is the third independent fencing of the partial-side gap in this queue** (`EFF.HETOW.28`, `EFF.GENTOW1.46`, here) — at HEAD it is GENTOW-4's territory.
+
+**RESOLUTION TRACE:** lines 443–447.
+
+**TEETH:** N1 (the box is live and undischarged).
+
+---
+
+### EFF.GENTOW3.39  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “**GENTOW3-BOX-1 (attainment certificate).** THEOREM GENTOW-3(iv)'s
+> sharpness rests on a per-genre non-cancellation certificate (the
+> key power's height-Θ K2-digit ≠ 0), decided by finite arithmetic
+> and machine-checked at the five families; a genre-general
+> non-vanishing proof, and battery witnesses for entry-digit-driven
+> overflows at genres where the key self-power stays below D' in x,
+> are NOT delivered. The floor/faithful-band/x-free clauses
+> (i)–(iii) — the criterion itself — are general.”
+
+**FORM:** bold-headed box.
+
+**DERIVATION:** `[RECORD]` of the note's one mathematical residue.
+
+**CONDITIONALITY:** **OPEN at HEAD**, and the note's last word on it is `.55`'s three-configuration data point: “BOX-1 stays OPEN.” **The box's separation of general (i)–(iii) from certificate-conditional (iv) is the note's central honesty structure** and is what every downstream consumer must carry.
+
+**RESOLUTION TRACE:** lines 449–456; the data point at 845–867.
+
+**TEETH:** disposition `signed non-delivery`, with three measured configurations now on record (`.55`).
+
+---
+
+### EFF.GENTOW3.40  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “**GENTOW3-BOX-2 (machine coverage).** Rows exercise mu2 = 2, f1 =
+> 1 outer keys, q ∈ {2,3}, e2 ∈ {1,2,3}, f2 ∈ {1,2}, depth 2, d = 1
+> ambients — GENTOW-BOX-2's geography verbatim (the same imported
+> families). The S2 proof is uniform in (e1, f1, e2, f2, mu2, q, h);
+> the gap is machine-side. [GT3-r1 HONEST STATUS (S7.1): the
+> uniformity claim holds for the S2 PROOF under the PRIMARY x-free
+> definition read at the corrected key; the displayed i-test
+> reduction is f1 = 1-scoped, so as composed the gap was NOT
+> machine-side only. The machine gap is two-axis: the five committed
+> families sit at f1 = 1 AND eta = 1 …, so the sealed battery is
+> structurally blind to the gauge seam; the eta != 1 coverage is the
+> adopted FR-GL row (S7.1); f1 >= 2 classification rows exist
+> nowhere yet.]”
+
+**FORM:** bold-headed box with an in-line dated honest-status rider.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement** of a false self-assessment. **“the gap is machine-side” was WRONG as composed** — the displayed classification test was f1 = 1-scoped, i.e. a PROOF-side gap. The rider is the note's own refutation of its own coverage claim, and it is unusually blunt.
+
+**RESOLUTION TRACE:** lines 458–471; the derivation 566–584.
+
+**TEETH:** `signed coverage disclosure`, two-axis. The η ≠ 1 coverage is the single adopted FR-GL row (`.47`); f1 ≥ 2 has **zero** rows in any leg.
+
+---
+
+### EFF.GENTOW3.41  [acceptance-box]
+
+**CANONICAL STATEMENT:**
+
+> “**GRADE: 0/2 (attempt; composed this session, no hostile arc).**
+> Conditionality stack: consumes LEMMA GENHN-T(b)' (i)–(iv) — (iii)
+> enters through the σ-dictionary the battery's labels price —
+> (GENHN accepted 2/2 at PE4) [GT3-r1: AT THE CORRECTED KEY …], LEMMA GENTOW-1 (Step 0 carry
+> monotonicity, budgets, node floors) and LEMMA GENTOW-5 at
+> GENTOW-1's 0/2 grade, the [r1] node floor u2 > e2D'h, and S4's
+> coherent normalizers. Machine leg = S5 (this unit's sealed
+> battery; PARI cross-checks on 6 σ rows).”
+
+**FORM:** bold-headed grade + conditionality stack.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** the grade → **ACCEPTED 2/2** (`.54`). **The stack's “at GENTOW-1's 0/2 grade” is stale in the FAVORABLE direction**: GENTOW1 is ACCEPTED 2/2 at HEAD (verified in this queue). Recorded as OPEN-CALL 4, not repaired.
+
+**RESOLUTION TRACE:** lines 473–482.
+
+**TEETH:** the GENTOW1 grade is independently established at `spec/EFF-GENTOW1.md` `.59`.
+
+---
+
+### EFF.GENTOW3.42  [fence]
+
+**CANONICAL STATEMENT:** the consumption path, quoted in §1 B.
+
+**FORM:** bold-headed protocol fence.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** **precondition met (2/2), discharge NOT done.** Two obligations are named: the item-(3) discharge AND the (iv)-sentence upgrade from “machine-verified” to “theorem (GENTOW-3.C)”.
+
+**RESOLUTION TRACE:** lines 484–489.
+
+**TEETH:** N1 — `grep -cF 'GENTOW' GENHN_PROOF_2026-08-08.md` = **0** ✓.
+
+---
+
+### EFF.GENTOW3.43  [changes-record]
+
+**CANONICAL STATEMENT:**
+
+> “PE1 verdict (GENTOW3_passPE1_report.md @ 3101cf5): NOT CLEAN —
+> 1 GAP (F-1, the gauge seam at the x-free definition) + 3 MINOR
+> (m-1 digit-value attribution, m-2 P-1 census, m-3 T-SHADOW-REG's
+> dead σ-leg); counter stays 0/2. This section is the r1 repair
+> round; this round's edits are marked [GT3-r1] ([r1] bare in the
+> body refers, as before, to GENHN-1's node-floor erratum). Sealed
+> machine artifacts (gentow3_checks.py + output; the PE1 fresh
+> instrument gentow3_pe1_fresh.py + both outputs; the import base
+> gentow1_checks.py) are BYTE-UNTOUCHED by this round (md5s S7.5).”
+
+**FORM:** section preamble.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** **the same `[r1]` / `[GT3-r1]` tag-disambiguation as GENTOW1** — bare `[r1]` is GENHN-1's node-floor erratum. Respected throughout this compilation.
+
+**RESOLUTION TRACE:** lines 494–502.
+
+**TEETH:** all five named artifacts exist with matching md5s (§3.2) ✓.
+
+---
+
+### EFF.GENTOW3.44  [changes-record]  *(CHAIN-GAUGE — the annex)*
+
+**CANONICAL STATEMENT:** §S7.1's seam and corrected display, verbatim:
+
+> “**The seam.** This note's verdict commit (d90db6d, 08-09 15:53)
+> predates the GENHN dated gauge erratum (59c1966, 08-09 20:13):
+> LEMMA GENHN-T(b)''s original display of the composed key's lift
+> coefficients … is GAUGE-NAIVE … The note as composed consumed the pre-erratum display and
+> carried no gauge pin; its one VALUE-LIVE chat_t site is the S2
+> x-free genre definition, whose displayed "equivalently" clause is
+> moreover false at f1 >= 2 on its own terms (below).”
+
+> “**THE PINNED CORRECTED DISPLAY (per erratum 59c1966; = GENTOW1's
+> S7.1 pin):**
+>
+>     chat_t := lift(c_t·eta^{W(t)}),
+>     W(t)   := floor((f2−t)·i(u2)/e1)”
+
+with the site inventory:
+
+> “This pin governs chat_t at its S2 uses: the Setting's Phi2/K2
+> displays, Step 0's Phi'-carry lifts (value-blind — heights
+> unchanged), the (iii)/(iv) coefficient values, and the x-free
+> classification.”
+
+**FORM:** bold-headed annex with a display.
+
+**DERIVATION:** `[IMPORTED]` from GENHN's erratum.
+
+**CONDITIONALITY:** **this note's VALUE-LIVE site is DIFFERENT from GENTOW1's.** GENTOW1's value-live site was Step 5's residue computation (`EFF.GENTOW1.24`); here it is the **x-free classification**. Two sibling notes consumed the same defective display and it bit in two different places — a cross-entry fact worth carrying.
+
+**RESOLUTION TRACE:** lines 504–533.
+
+**TEETH:** `git cat-file -t d90db6d` = commit; `git cat-file -t 59c1966` = commit ✓. The timestamp gap (15:53 vs 20:13, same day) is the same provenance form GENTOW1 uses (15:16 vs 20:13) — **both notes' verdict commits predate the erratum by hours**, which is exactly why both consumed it naively.
+
+---
+
+### EFF.GENTOW3.45  [derivation]  *(CHAIN-XFREE — TERMINAL)*
+
+**CANONICAL STATEMENT:** the re-derived equivalence, verbatim:
+
+> “**The x-free equivalence RE-DERIVED (the correct scope).** Write
+> m_t := u2(f2−t) and nhat(m) = π^{(m−i(m)h)/e1}·x^{i(m)}. Since
+> {1, eta, ..., eta^{f1−1}} is an F_Q-basis of K and eta's lift is
+> (x^{e1}/π^h)-shaped, the height-m_t lift of c = Σ_{r<f1}
+> lambda_r·eta^r ∈ K is L_{m_t}(c) = nhat(m_t)·Σ_r
+> lift(lambda_r)·(x^{e1}/π^h)^r: its x-support is
+> {i(m_t) + e1·r : lambda_r ≠ 0} — pairwise-distinct exponents, all
+> < D' = e1f1 (no overflow, no cancellation). Hence, per t with
+> c_t ≠ 0, at the corrected key:
+>
+>     chat_t·nhat(m_t) is an x-free monomial π^a
+>         <=>  i(m_t) = 0  AND  c_t·eta^{W(t)} ∈ F_Q.”
+
+with the scope, verbatim:
+
+> “SCOPE. At f1 = 1 (K = F_Q) the second clause is automatic and the
+> displayed "equivalently i(u2(f2−t)) = 0" is CORRECT … At f1 >= 2 the display is FALSE in general: the i-test is
+> necessary, not sufficient … eta = 1 does NOT
+> restore the equivalence at f1 >= 2 (the second clause then reads
+> c_t ∈ F_Q, i.e. psi2 ∈ F_Q[Z] — not automatic when K ⊋ F_Q); what
+> eta = 1 buys is only corrected = naive. THE PRIMARY CLAUSE …
+> is the operative definition at
+> every f1 … and (iii) so read needs no f1 restriction. The
+> displayed i-test survives as the f1 = 1 evaluation of the primary
+> clause, nothing more.”
+
+**FORM:** bold-headed re-derivation with a displayed biconditional.
+
+**DERIVATION:** an explicit computation of the height-m_t lift's x-support, giving a two-clause criterion.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **scope-pin**. **The η = 1 caveat is the sharpest observation here**: η = 1 buys corrected = naive but does NOT restore the equivalence at f1 ≥ 2 — so the battery's blindness is genuinely two-axis, not one.
+
+**RESOLUTION TRACE:** lines 535–565.
+
+**TEETH:** **ARITHMETIC AUDIT of the x-support claim, recomputed:** the exponents `i(m_t) + e1·r` for `0 ≤ r < f1` are pairwise distinct (they differ by multiples of `e1` with `0 ≤ i(m_t) < e1`) ✓ and bounded by `(e1−1) + e1(f1−1) = e1f1 − 1 = D' − 1` ✓ — **the same degree chain GENTOW1's `.18` verifies for its (LIFT) form**, reached independently here.
+
+---
+
+### EFF.GENTOW3.46  [changes-record]
+
+**CANONICAL STATEMENT:**
+
+> “**BOX-2's f1-uniformity claim walked under the primary definition
+> (the honest status).** Step 0 and Steps 1–2 of the S2 proof are
+> weight-level and value-blind — corrected and naive lifts sit at
+> the same heights ((f2−t)u2 per digit) — so clauses (i)/(ii) and
+> their proofs are gauge-immune and uniform in f1 as claimed;
+> (iii)'s proof is correct at every f1 under the primary definition
+> (above); (iv)'s certificate framework is general with certificates
+> machine-checked at the five f1 = 1 families only (GENTOW3-BOX-1,
+> unchanged). What sat FALSE inside the claimed uniform scope was
+> the classification TEST … HONEST STATUS: BOX-2's sentence "the gap is
+> machine-side" was wrong as composed …”
+
+**FORM:** bold-headed clause-by-clause walk.
+
+**DERIVATION:** a per-clause audit of the note's own uniformity claim.
+
+**CONDITIONALITY:** **the walk's verdict is clause-differentiated and should be carried as such**: (i)/(ii) gauge-immune and f1-uniform; (iii) correct at every f1 under the primary definition; (iv) general framework, certificates at f1 = 1 only; the TEST was f1 = 1-scoped.
+
+**RESOLUTION TRACE:** lines 566–584.
+
+**TEETH:** `AUDIT / in-house hostile pass` (PE1 found F-1); the walk itself is the note's response and is unusually granular.
+
+---
+
+### EFF.GENTOW3.47  [run-record]
+
+**CANONICAL STATEMENT:** the FR-GL row, `[ASSEMBLED]` from lines 586–608. The frame and the attainment, verbatim:
+
+> “**THE MACHINE ROW (adopted from the PE1 fresh route): FR-GL — this
+> note's first eta != 1 contact, at the corrected key, attainment at
+> BOTH coordinates.** Source: gentow3_pe1_fresh.py + outputs @
+> 3101cf5 (run 2 GREEN 485/0, runner md5 35ad32aa, output md5
+> 94160b22; run 1 RED 485/1 KEPT, md5 485946fc — the one miss a
+> disclosed instrument literal, no prediction changed). Frame …:
+> p = 3, Phi' = x²−6 (e1 = 2, f1 = 1, h = 1, eta = 2),
+> (e2, f2) = (1, 2), u2 = 3, K2 = F9, CORRECTED key Phi2 =
+> Phi'² + 3x·Phi' + 108 (the HETOW frame-X key; note W(0) = 1 with
+> i(6) = 0 — a lift coefficient whose normalizer is x-free and whose
+> VALUE is gauge-live: naive 54 vs corrected 108), delta = 1,
+> E2 = 6, THETA = (13, 7). Rows: self-shadow ShC_0 = −486·Phi' +
+> 2916x (both slots at dv2 = 2·5+3 = 2·6+1 = 13 = THETA_0), ShC_1 =
+> 9·Phi' − 27x (both slots at 2·2+3 = 2·3+1 = 7 = THETA_1) — the
+> floor ATTAINED at both coordinates …
+> At the gauge-NAIVE key this frame is not even a carrier (σ
+> {(4,1)}, erratum 59c1966) — the row is meaningful only at the
+> corrected key.”
+
+**FORM:** bold-headed adopted-row record.
+
+**DERIVATION:** `[RUN]` — a decorrelated fresh route, with run 1 RED **kept** and its single miss disclosed.
+
+**CONDITIONALITY:** **this frame IS HETOW's frame X** — the note says so (“the HETOW frame-X key”), and the key `Φ′² + 3xΦ′ + 108` is byte-identical to `EFF.HETOW.14`'s corrected key. **Three notes in this queue exercise the same frame** (HETOW, GENTOW1 as F1, GENTOW3 as FR-GL), each from a different instrument.
+
+**RESOLUTION TRACE:** lines 586–608.
+
+**TEETH:** **all three md5s verified**: `gentow3_pe1_fresh.py` = `35ad32aa…`, output = `94160b22…`, run-1 RED = `485946fc…` ✓. **ARITHMETIC AUDIT of the frame constants, recomputed:** `D' = e1f1 = 2`, `E2 = e2f2u2 = 1·2·3 = 6` ✓, `δ = u2 − e2D'h = 3 − 1·2·1 = 1` ✓, `Θ = (2·6+1, 1·6+1) = (13, 7)` ✓. **The slot heights recompute both ways as displayed**: `2·5+3 = 13` and `2·6+1 = 13` ✓; `2·2+3 = 7` and `2·3+1 = 7` ✓ — the two-flavor slots land at the same height, which is the f2 = 2 two-flavor structure. **The gauge factor**: naive 54 vs corrected 108 = `54·η^{W(0)} = 54·2` ✓ — identical to HETOW's frame-X pair (`EFF.HETOW.14`), independently confirmed from a second note.
+
+---
+
+### EFF.GENTOW3.48  [changes-record]
+
+**CANONICAL STATEMENT:**
+
+> “The sealed instrument machine-checks the PINS — the SHARP
+> want-lists [21, None] / [31, None] / [13, 7] / [43, None] at
+> A5/A7/B/C, i.e. self-shadow nonzeroness AT THETA, which IS the
+> (iv) certificate. The digit VALUES displayed in S2's (iv)
+> parenthetical … were HAND-DERIVED at
+> composition — they appear in no sealed machine output. At PE1 the
+> values gained two legs: (leg 1) the verifier's independent
+> division walks (report m-1: each value confirmed by hand); (leg 2)
+> the fresh instrument's FR-P5 battery-digit replication rows, exact
+> polynomial equality (output: A5 [−32, 0, 16] = 16Phi'; A7 and C
+> [−128, 0, 64] = 64Phi'; B [−128, 64, 64] = 64Phi' + 64x and
+> [−8, 8, 4] = 4Phi' + 8x; D DRAIN). Attribution now: pins = the
+> sealed leg; digit values = the PE1 walk + the FR-P5 replication.”
+
+**FORM:** section body (§S7.2).
+
+**DERIVATION:** an attribution audit separating what the SEAL checked (pins) from what was hand-derived (values).
+
+**CONDITIONALITY:** SUPERSESSION KIND: **provenance-rider**. **The pins ARE the certificate** — so the certificate has a sealed leg even though the displayed digit values did not.
+
+**RESOLUTION TRACE:** lines 610–626.
+
+**TEETH:** **ARITHMETIC AUDIT of the replication rows, recomputed:** with `Φ′ = x²−2` at the A5/A7/C families, `16Φ′ = 16x² − 32` → coefficient list low→high `[−32, 0, 16]` ✓; `64Φ′ = 64x² − 128` → `[−128, 0, 64]` ✓; `64Φ′ + 64x` → `[−128, 64, 64]` ✓; `4Φ′ + 8x = 4x² + 8x − 8` → `[−8, 8, 4]` ✓. **All four displayed polynomial identities reproduce exactly.**
+
+---
+
+### EFF.GENTOW3.49  [changes-record]  *(CHAIN-CENSUS — TERMINAL)*
+
+**CANONICAL STATEMENT:**
+
+> “Re-counted from the FLOOR battery's code paths at this round:
+> member_check calls = 5 families × (14 nec [10 bases + 4
+> deep-perturbation variants at i ≡ 0 mod 3, per nec_members] + 12
+> real + 1 anchor) + 2 A7-BAND rows = 137; × 2 coordinates = 274
+> FLOOR checks = the sealed tally. "110" counted nec-bases + real
+> only (50 + 60), omitting the 20 perturbation variants, the 5
+> anchors, and the 2 band rows despite naming anchors. Conservative
+> direction — more was checked than the sentence claimed. The S5
+> sentence carries the in-place [GT3-r1] correction.”
+
+**FORM:** section body (§S7.3).
+
+**DERIVATION:** a re-count from code paths, reconciled against the sealed tally.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **counter re-reading**, conservative direction.
+
+**RESOLUTION TRACE:** lines 628–638.
+
+**TEETH:** **ARITHMETIC AUDIT, both the wrong figure and the right one:** `5×27 + 2 = 137` ✓, `137×2 = 274` = the sealed FLOOR tally ✓; and the erroneous decomposition `50 + 60 = 110` ✓ (5×10 bases + 5×12 real). **Both arithmetics reproduce, which pins the error precisely: 137 − 110 = 27 = 20 perturbation variants + 5 anchors + 2 band rows** ✓ — exactly the note's three omitted classes.
+
+---
+
+### EFF.GENTOW3.50  [changes-record]
+
+**CANONICAL STATEMENT:**
+
+> “In the sealed runner the σ-comparison branch is a literal `pass`
+> (gentow3_checks.py L398–399: `if i > 0 and rs[3] is not None and
+> rs[3] != [(8, 1)]: pass`); the tooth fires on honest/shadow labels
+> + pins matching the preregistered wants alone. The σ-difference in
+> the S5 tooth description is ENTAILED by machine-checked facts —
+> the shadow labels tINERT/t2SIDED force priced σ {(4,2)}/{(4,1)²}
+> through the accepted (iii) dictionary, against PARI-checked
+> {(8,1)} on PE1 rows 1–2 — but the comparison itself is not
+> executed in-code. The sealed runner stays byte-frozen; the
+> disclosure lives at the S5 tooth row and here. (Related report
+> observation, no finding: the ENTRY tally 274 is entailed by FLOOR
+> 274 given delta >= 1 — honest as COR 3.C's machine face, not
+> independent evidence.)”
+
+**FORM:** section body (§S7.4).
+
+**DERIVATION:** a source reading of the sealed runner.
+
+**CONDITIONALITY:** **TWO disclosures of non-independence in one paragraph** — the dead σ-leg and the entailed ENTRY tally. Both reduce the note's effective evidence and both are volunteered.
+
+**RESOLUTION TRACE:** lines 640–654.
+
+**TEETH:** **the dead code is verified verbatim at L398–399** (`.37`) ✓. The ENTRY-entailment is verified by inspection: FLOOR ≥ Θ_j and the entry band ends at `Θ_j − δ ≤ Θ_j − 1`, so zero entry discrepancy follows from the floor whenever `δ ≥ 1` ✓ — the entailment is real, and the disclosure is correct.
+
+---
