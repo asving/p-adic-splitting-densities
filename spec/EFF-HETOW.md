@@ -704,3 +704,592 @@ and the bound, verbatim:
 **TEETH:** ARITHMETIC AUDIT: `deg f = D′μ₁` and `D″ = D′e₂f₂` give `deg f/D″ = μ₁/(e₂f₂) = μ₂` under the full-side identity `e₂f₂μ₂ = μ₁` ✓ — clause (b)'s integrality is exactly the full-side hypothesis, not an extra assumption.
 
 ---
+### EFF.HETOW.22  [theorem]
+
+**CANONICAL STATEMENT:**
+
+> “> **THEOREM HETOW.A ([GENHN-HE(μ₂)] at tower stages = THEOREM HE7.A at
+> > the composed carrier — literal instance).** In GENHN-T(b)′'s setting
+> > (full inner side, any μ₂ ≥ 2, any (e₁, f₁, h), any e₂f₂ ≥ 2), with
+> > **Φ₂ the [r1 2026-08-09] WRAP-CORRECTED composed key** (§S1/§S2 —
+> > passPE1 F-1 refuted the key clause at the gauge-naive display on
+> > η ≠ 1 wrap frames; every clause below reads at the corrected key):
+> >
+> > (i) (κ₂, r̃) is a level-2 datum of DEFINITION HE7-1 over the level-1
+> > frame (HETOW-1), Φ₂ is its key up to a LEMMA HE7-12 perturbation
+> > (HETOW-2), f_S = f with μ₂ = μ₁/(e₂f₂) (HETOW-3), and GENHN-T(b)′'s
+> > composed pins/polygon/residuals ARE THEOREM HE7.A's P₂ data at that
+> > datum ((SLOT₂) = GENHN-2′, §S1 table).”
+
+**FORM:** blockquoted bold-headed theorem, clause (i).
+
+**DERIVATION:** §S1's table with HETOW-1/2/3 discharging the three non-verbatim rows (`.26`).
+
+**CONDITIONALITY:** **the final clause is SUPERSEDED by the 2026-08-10 append and now carries an exact content** (`.53`):
+
+> “THEOREM
+> HETOW.A(i)'s final clause ("GENHN-T(b)′'s composed
+> pins/polygon/residuals ARE THEOREM HE7.A's P₂ data") now carries
+> its exact content: pins and polygon are shared verbatim
+> (valuation-only rows, untouched by the challenge), and the
+> composed residuals are the δ-rescale of HE7.A's with every
+> HE7.A(2)/(3) routing decision and every α-refine chain identical
+> (HETOW-4(d)).”
+
+SUPERSESSION KIND: **replacement of a justification** (the clause's truth is preserved; its GROUND changes from the J-D0 appeal to HETOW-4). The codex ratification's gap annotation on this clause is “DISCHARGED at this note's grade”. Also: the “up to a LEMMA HE7-12 perturbation” clause inherits C-A(ii)'s re-scoping (`.43`).
+
+**RESOLUTION TRACE:** statement lines 286–297; correction sites 793–809 (HETOW-4 supersession), 548–569 (C-A).
+
+**TEETH:** T2 pins this clause as `HETOW-A` (XREF X09) and consumes it at two units of `spec/EFF-T2-s1of6.md`.
+
+---
+
+### EFF.HETOW.23  [theorem]
+
+**CANONICAL STATEMENT:**
+
+> “> (ii) Consequently the σ-decision at inner multiplicity μ₂ is
+> > THEOREM HE7.A(1)–(3) + THEOREM HE7.C/D: every side of P₂ has slope
+> > λ₂ > T₂ with Σ L_{λ₂} = μ₂; each irreducible factor r₂ of a separable
+> > level-2 residual contributes ONE irreducible factor of f with
+> >
+> >     e = e₁e₂·ℓ₂ ,   f = f₁f₂·deg r₂
+> >
+> > — the composed stage dictionary (e₁e₂·e_s, f₁f₂·f_s), i.e. exactly the
+> > content of [GENHN-HE(μ₂)] at the tower stage; a repeated K₂-rational
+> > linear factor at integer λ₂ is a finite α-refine chain (LEMMA
+> > HE7-12/13, HE7-8); a repeated factor with ℓ₂·deg r₂ ≥ 2 passes to
+> > level 3 (THEOREM HE7.D with ANNEX R's HE7-2′ normalizer tower) and
+> > requires μ₂ ≥ 4.”
+
+**FORM:** theorem clause with an inline display (the composed stage dictionary).
+
+**DERIVATION:** HE7.A/C/D applied through (i) (`.26`).
+
+**CONDITIONALITY:** **this dictionary is the note's deliverable** — it IS “the content of [GENHN-HE(μ₂)] at the tower stage”. Its transport across the two normalizer systems is what HETOW-4(d) later certifies: “HE7.A(2)'s dictionary (e, f) = (e₁e₂ℓ₂, f₁f₂·deg r₂) and HE7.A(3)'s branch predicate ℓ₂·deg r₂ ∈ {1, ≥2} read identically in the two systems”.
+
+**RESOLUTION TRACE:** statement lines 299–311; the transport certificate at 734–746.
+
+**TEETH:** machine-verified 300/300 against PARI at μ₂ = 3 on both inner branches (§S6 P2, `.35`), plus the P-C routing-transport leg of the 2026-08-10 run (`.52`).
+
+---
+
+### EFF.HETOW.24  [theorem]
+
+**CANONICAL STATEMENT:**
+
+> “> (iii) In particular at **μ₂ = 3** — the box family's first live tower
+> > case — the level-3 branch is DEAD (a repeated r₂ with ℓ₂d_{r₂} ≥ 2
+> > forces L_{λ₂} ≥ 4 > 3 ≥ Σ L_{λ₂}, HE7.A(3)'s own display), so the
+> > whole decision runs inside HE7's frozen level-2 machinery: separable
+> > residuals via HE7.A(2), repeated linear via finite α-refines. At
+> > μ₂ = 2 the same instance reproduces GENHN-T(b)′(iii)'s trichotomy
+> > (RAM: ℓ₂ = 2 side ⟹ (2e₁e₂, f₁f₂); INERT: quadratic r₂ ⟹
+> > (e₁e₂, 2f₁f₂); SPLITEQ/SPLTAIL/2SIDED: two linear blocks) — a
+> > consistency check, two proofs of one statement.”
+
+**FORM:** theorem clause.
+
+**DERIVATION:** a counting exclusion at μ₂ = 3 from HE7.A(3)'s own display.
+
+**CONDITIONALITY:** the μ₂ = 2 half is a CONSISTENCY CHECK, not a new result — the note labels it “two proofs of one statement”. A consumer must not count it as independent supply.
+
+**RESOLUTION TRACE:** statement lines 313–321.
+
+**TEETH:** the level-3 exclusion is machine-checked as P5 (“no member ever took the LEVEL3 branch”, 300/300, `.35`); the μ₂ = 2 trichotomy is re-run at frame V (8/8) and frame S in the PE2 fresh leg (`.45`, `.47`). ARITHMETIC AUDIT: `ℓ₂d_{r₂} ≥ 2` with a repeated factor forces `L_{λ₂} ≥ 2·2 = 4 > 3` ✓.
+
+---
+
+### EFF.HETOW.25  [theorem]
+
+**CANONICAL STATEMENT:**
+
+> “> (iv) TERMINATION at the composed degree: the tower node is itself a
+> > widened-box jump with descent factor ℓd_r = e₂f₂ ≥ 2 (LEMMA HE6R1-1 =
+> > THEOREM HE7.C [r1]); μ₁ ≥ μ₂·e₂f₂ with equality at the full side, and
+> > J ≤ log₂ μ₁ − 1 ≤ log₂ n − 2 counts the tower entry as one jump. At
+> > n = 12 (μ₁ = 6): exactly one jump, μ₂ = 3, no second jump possible.”
+
+**FORM:** theorem clause.
+
+**DERIVATION:** HE7.C's two displays with `ℓd_r = e₂f₂`, the first tight at a full side by HETOW-3(b).
+
+**CONDITIONALITY:** **the acceptance record certifies this clause WRAP-IMMUNE** (`.46`): “the wrap correction moves unit factors only — heights, degrees, and multiplicities, hence HE6R1-1's descent factor ℓd_r = e₂f₂ and both displayed bounds, are untouched by it”. That is a positive scope finding, not a supersession: the r1 correction, which invalidated the key clause, provably does not reach the termination clause.
+
+**RESOLUTION TRACE:** statement lines 323–327; the wrap-immunity certificate at 622–627.
+
+**TEETH:** ARITHMETIC AUDIT at n = 12, recomputed: `n = D′μ₁ = 2·6 = 12` ✓; `J ≤ log₂ 6 − 1 = 1.58… − 1`, so `J ≤ 1` with the floor, i.e. exactly one jump ✓; `μ₂ = μ₁/(e₂f₂) = 6/2 = 3` ✓; a second jump would need `μ₂ ≥ μ₃·e₃f₃ ≥ 2·2 = 4 > 3` ✓.
+
+---
+
+### EFF.HETOW.26  [derivation]
+
+**CANONICAL STATEMENT:**
+
+> “*Proof.* (i) is §S1's table with HETOW-1/2/3 discharging the three
+> non-verbatim rows. (ii)–(iv): THEOREM HE7.A/C/D apply because every
+> hypothesis holds by (i); the dictionary display is HE7.A(2)'s with
+> (ℓ, d_r) = (e₂, f₂); the μ₂ = 3 exclusion is HE7.A(3)'s non-propagation
+> display at μ₂ = 3; (iv) is THEOREM HE7.C's two displays with
+> ℓd_r = e₂f₂, the first tight at a full side by HETOW-3(b). ∎”
+
+**FORM:** italic-headed proof.
+
+**DERIVATION:** pure instantiation — the proof does no work beyond checking that (i) discharges every hypothesis. **This is the whole content of “literal instance”**, and it is why the note's supply is a translation rather than a theorem of σ.
+
+**CONDITIONALITY:** the proof's force depends entirely on `.07`'s meta-claim that HE7 §S1–S6 has no hypothesis on (ℓ, d_r) — see OPEN-CALL 4.
+
+**RESOLUTION TRACE:** proof lines 329–334.
+
+**TEETH:** the machine form is P2: the frozen readers decide every member unmodified (`.35`).
+
+---
+
+### EFF.HETOW.27  [derivation]
+
+**CANONICAL STATEMENT:**
+
+> “**MINIMAL LIVE DEGREE (derived).** An inner-μ₂ ≥ 3 tower stage needs
+> μ₁ = e₂f₂μ₂ ≥ 2·3 = 6 and n = D′μ₁ ≥ 2·6 = 12 (D′ ≥ 2 at a composite
+> outer stage, e₂f₂ ≥ 2 at a composite inner stage). **n_min = 12**,
+> attained exactly by (D′, e₂f₂, μ₂) = (2, 2, 3), i.e.
+> (e₁,f₁) ∈ {(2,1),(1,2)} × (e₂,f₂) ∈ {(2,1),(1,2)}, μ₁ = 6. No tower
+> [GENHN-HE(≥3)] instance exists at n ≤ 11.”
+
+with the derived σ menus:
+
+>     “case A (e₂,f₂) = (2,1), composed (e₁e₂,f₁f₂) = (4,1), K₂ = F_Q:
+>       {(12,1)} · {(4,3)} · {(4,1)}³ · {(4,2),(4,1)} · {(8,1),(4,1)}
+>     case B (e₂,f₂) = (1,2), composed (2,2), K₂ = F_{Q²}:
+>       {(6,2)} · {(2,6)} · {(2,2)}³ · {(2,4),(2,2)} · {(4,2),(2,2)}”
+
+**FORM:** bold-headed derived fact + an indented ASCII display of two five-element menus.
+
+**DERIVATION:** an integer minimization over the full-side identity, plus the two composite-stage floors. The menus are derived from clauses (ii)+(iii) — the note says so (“the σ menus at μ₂ = 3 (from (ii)+(iii))”).
+
+**CONDITIONALITY:** the menus are the sealed battery's PREREGISTERED prediction set (P3: “every σ inside the preregistered 5-element menus”), so this unit is simultaneously a derived fact and a preregistration.
+
+**RESOLUTION TRACE:** statement lines 336–348.
+
+**TEETH:** ARITHMETIC AUDIT, recomputed: `μ₁ = e₂f₂μ₂ ≥ 2·3 = 6` ✓, `n = D′μ₁ ≥ 2·6 = 12` ✓, attained at `(2,2,3)` ✓. Menu degree sums, recomputed against `n = 12`: case A `{(12,1)}` → 12 ✓; `{(4,3)}` → 12 ✓; `{(4,1)}³` → 12 ✓; `{(4,2),(4,1)}` → 8+4 = 12 ✓; `{(8,1),(4,1)}` → 8+4 = 12 ✓. Case B `{(6,2)}` → 12 ✓; `{(2,6)}` → 12 ✓; `{(2,2)}³` → 12 ✓; `{(2,4),(2,2)}` → 8+4 = 12 ✓; `{(4,2),(2,2)}` → 8+4 = 12 ✓. **All ten menu entries have ef-sum exactly 12** — the menus are degree-consistent, checked independently of the note. P4 confirms all five realized in each case.
+
+---
+
+### EFF.HETOW.28  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “> **HETOW-BOX-1 (scope = T(b)′'s scope).** Full inner sides only; PARTIAL
+> > inner sides (e₂f₂μ₂ < μ₁) are [GENHN-TOW-1](4) — there LEMMA HE6R1-2
+> > supplies the level-2 starting data read off f, but the composed
+> > entry/count layer is GENHN's open item, not touched here.”
+
+**FORM:** blockquoted bold-headed box.
+
+**DERIVATION:** `[RECORD]` of an inherited scope limit.
+
+**CONDITIONALITY:** the partial-side case is GENHN's open item. **It is separately addressed by GENTOW-4** (`GENTOW4_PROOF_2026-08-09.md`), whose clause (c) T2's r12 quotes alongside `HETOW-KEY-BRIDGE` — “`GENTOW-4-1` clause (c) gives that same disjunct at the partial tower”. So the partial-side gap this box declares open is, at HEAD, addressed by a sibling note this note does not cite. Recorded as a DAG edge the note does not carry.
+
+**RESOLUTION TRACE:** statement lines 354–358.
+
+**TEETH:** XREF X10 verifies `GENTOW4_PROOF_2026-08-09.md` exists and carries a `GENTOW-4-1` clause-(c) statement of the same disjunct (verified via T2's quotation of it).
+
+---
+
+### EFF.HETOW.29  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “> **HETOW-BOX-2 (depth ≥ 3).** A tower inside a tower (first live n = 16)
+> > rides THEOREM HE7.D + ANNEX R HE7-2′ on the HE7 side and
+> > [GENHN-TOW-1](6) (T(b)″'s (α) carry cancellation, (β) iterated node
+> > floor) on the GENHN side; this note is ONE tower step over the level-1
+> > frame and does not self-apply.”
+
+**FORM:** blockquoted bold-headed box.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** OPEN at HEAD; nothing in the four dated appends touches it. “does not self-apply” is the sharpest form of the fence: the note's own theorem is not iterable by itself.
+
+**RESOLUTION TRACE:** statement lines 359–362.
+
+**TEETH:** none; a declared open box. ARITHMETIC AUDIT of “first live n = 16”: a tower inside a tower needs a second composite inner stage, so `n ≥ D′·e₂f₂·e₃f₃·μ₃ ≥ 2·2·2·2 = 16` ✓.
+
+---
+
+### EFF.HETOW.30  [fence]  *(SERIES BOX3 folded — four dated states)*
+
+**CANONICAL STATEMENT:** the box at its post-`[r1 F-3]` reading, verbatim:
+
+> “> **HETOW-BOX-3 (machine coverage) [r1 2026-08-09 (passPE1 F-3): the
+> > η-gauge axis added — the sealed list omitted the axis on which the
+> > pass's CRITICAL bit].** The battery exercises μ₂ = 3,
+> > (e₁,f₁,h) = (2,1,1), (e₂,f₂) ∈ {(2,1),(1,2)}, u₂ ∈ {5, 3}, p ∈ {3,5},
+> > char 0 only (PARI oracle asymmetry, inherited HE6-BOX-4).
+> > **η = 1 GAUGE:** both battery frames are Φ′ = x² − p with
+> > η = res(θ²/π) = 1, where the wrap factor η^{−W(t)} acts trivially —
+> > the sealed battery cannot see the F-1 seam (the runner disclosed the
+> > gauge; this box did not, until [r1]). η ≠ 1 coverage now on record:
+> > `hetow_pe1_fresh.py` (frame X, dual oracle routes) +
+> > `hetowr1_supp.py` (frames X/Z/W, incl. an e₁ = 3 frame, gauge-naive
+> > tooth fired per frame — §S7); corrected-key contact only, three
+> > frames, f₂ = 2 with f₁ = 1. NOT exercised: μ₂ ≥ 4 (level-3-capable
+> > towers), e₂f₂ ≥ 4 (both ℓ ≥ 2 AND d_r ≥ 2 — first live n = 24),
+> > f₁ ≥ 2 outer frames (HETOW-2's carry leg is proof-only, cf.
+> > GENHN-ERR-1's separate f₁ ≥ 2 residue), η ≠ 1 combined with f₁ ≥ 2
+> > or with e₂ ≥ 2, organic (non-planted) refine chains. The §S2–S3
+> > proofs are displayed at these hypotheses; the unexercised axes have
+> > no machine contact, and the coverage sentence stops there ([r1]
+> > withdraws the sealed "uniform in all of these" line — that shape of
+> > sentence is what F-1 falsified on the η-axis).”
+
+**FORM:** blockquoted bold-headed box with a NOT-exercised list.
+
+**DERIVATION:** `[RECORD]` of an evidence perimeter.
+
+**CONDITIONALITY — the box has FOUR dated states and a consumer must read the last:**
+1. **sealed** — no η axis; carried the line “uniform in all of these”.
+2. **[r1 F-3]** — η-gauge axis added; the uniformity line WITHDRAWN. KIND: **inventory completion** + **replacement**.
+3. **C-C** (`.45`) — the **f₂ ≥ 3 multi-wrap axis** appended to the NOT-exercised list, then immediately “mooted in substance” and converted to a disclosed row by frame V's first contact. KIND: **inventory completion**.
+4. **F-α** (`.47`) — the `e₂f₂ ≥ 4` row FOLDED against frame S: its parenthetical pins the row to the μ₂ ≥ 3 box family, under which it stays literally accurate; a μ₂ ≤ 2 citation is appended. KIND: **scope-pin**.
+**Effective NOT-exercised list at HEAD:** μ₂ ≥ 4; e₂f₂ ≥ 4 **at μ₂ ≥ 3** (first live n = 24; μ₂ = 2 now has frame S); f₁ ≥ 2 outer frames (the carry leg stays proof-only); η ≠ 1 combined with f₁ ≥ 2 or with e₂ ≥ 2; organic refine chains. **The f₂ ≥ 3 multi-wrap axis is NO LONGER on the list** (frame V).
+
+**RESOLUTION TRACE:** statement lines 363–383; correction sites 592–604 (C-C), 634–652 (F-α).
+
+**TEETH:** all four cited artifacts verified present: `hetow_pe1_fresh.py`, `hetowr1_supp.py`, `hetow_pe2_fresh.py` (frames V and S), `hetow_r2_hetow4.py`. Disposition `signed coverage disclosure`; the box is the note's honest perimeter and the one object every pass attacked.
+
+---
+
+### EFF.HETOW.31  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “> **HETOW-BOX-4 (grade).** Attempt 0/2; consumption by GENHN (rewording
+> > [GENHN-HE(μ₂)]'s tower instances as discharged-at-grade) is a LATER
+> > fold, since GENHN_PROOF and HE7_PROOF are frozen to this unit.”
+
+**FORM:** blockquoted bold-headed box.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** the grade half is superseded to **2/2** (`.46`). **The fold half is NOT superseded and is verified still owed**: `grep -cF 'discharged-at-grade' GENHN_PROOF_2026-08-08.md` = **0** (N2). The box remains live as a protocol obligation even though its grade clause is spent. KIND: **counter re-reading** on the first half only.
+
+**RESOLUTION TRACE:** statement lines 384–386.
+
+**TEETH:** N2 (negative edge, verified).
+
+---
+
+### EFF.HETOW.32  [preregistration]
+
+**CANONICAL STATEMENT:**
+
+> “*Design, preregistered predictions and teeth: see the runner's docstring
+> (sealed before the full run; smoke record disclosed there).* Summary:
+> degree-12 members f = Φ₂³ + A₂Φ₂² + A₁Φ₂ + A₀ built by (LIFT₂) at
+> preregistered pin menus over both cases; the readers are the FROZEN
+> `he7_checks.level2_read` (case A) and `he6r1_checks.level2_read`
+> (case B), imported UNMODIFIED with md5 pins printed — the machine form
+> of "literal instance": zero new read logic at μ₂ = 3. Oracle: PARI
+> factorpadic via the sealed `gp_sig_batch` bridge. Parse gate: level-1
+> x-polygon + Φ′-development side/residual = the tower entry. Predictions
+> P1–P5 + teeth T-NAIVE / T-WITHHOLD / T-BADTWIST / T-THREESIGMA.”
+
+**FORM:** italic pointer + summary paragraph under `## S5. THE MACHINE LEG …— sealed at commit 1`.
+
+**DERIVATION:** `[PREREGISTERED]` — sealed at commit 1, scored at commit 2.
+
+**CONDITIONALITY:** **the design's central feature is the frozen-reader import**: the instrument is constructed so that a green run IS evidence for “literal instance”, because zero read logic is new. That is an unusually tight instrument/claim match and is worth carrying downstream.
+
+**RESOLUTION TRACE:** statement lines 392–401.
+
+**TEETH:** the import pins are printed in the artifact and were re-read at compile time: `he6_checks.py 321fa4d4990eef67ff6a20f375c32366`, `he7_checks.py 688adbe88447b570104e379b1fa11cd5`, `he6r1_checks.py 7112f7c738ed13fb352f96849da1d309`, `w12_checks.py 7dc040d94fbbb1e8d20ac817b665d418`, `w10_checks.py a9c34244a3af19f5fa864375b494380b` — **all five prefixes match the note's §S6 list exactly** (`.33`).
+
+---
+
+### EFF.HETOW.33  [run-record]
+
+**CANONICAL STATEMENT:**
+
+> “**Artifacts.** `hetow_checks_output.txt`, `hetow_checks_results.json`
+> (sealed runner `hetow_checks.py` @ commit 1 = 2e5c4b1; no post-seal edit).
+> Import pins printed in the artifacts: he6_checks 321fa4d4…, he7_checks
+> 688adbe8…, he6r1_checks 7112f7c7…, w12_checks 7dc040d9…, w10_checks
+> a9c34244…. Runtime 42.9 s.”
+
+**FORM:** bold-headed artifact record.
+
+**DERIVATION:** `[RUN]`
+
+**CONDITIONALITY:** none.
+
+**TEETH:** **RE-VERIFIED AT COMPILE TIME**: all five import pins match the artifact's own printed lines byte-for-byte (see `.32`); the artifact's final line reads `TOTAL checks 1200 violations 0 teeth 4/4  (42.9s)` — the 42.9 s runtime matches. `git cat-file -t 2e5c4b1` = commit; all three files exist.
+
+---
+
+### EFF.HETOW.34  [run-record]
+
+**CANONICAL STATEMENT:**
+
+> “**Totals.** 6 rows (4 × case A, 2 × case B), **300 members, 0 dropped,
+> 300 reader-decided (status OK on every member), 300 PARI jobs** — the
+> first machine contact anywhere with inner-μ₂ ≥ 3 tower stages.”
+
+with the headline, verbatim from the §S6 heading:
+
+> “**GREEN — 1,200 checks, 0 violations, 4/4 teeth, 300/300 PARI agreements**”
+
+**FORM:** bold-headed totals paragraph; the headline is the section heading.
+
+**DERIVATION:** `[RUN]`
+
+**CONDITIONALITY:** “the first machine contact anywhere with inner-μ₂ ≥ 3 tower stages” is a corpus-novelty claim, not re-verified here (a corpus sweep is out of scope for a single-note compilation).
+
+**RESOLUTION TRACE:** statement lines 407, 415–417.
+
+**TEETH:** **MANDATORY ARITHMETIC AUDIT (v3 rule 22), recomputed from the committed artifact's per-row lines:** 33 + 33 + 65 + 65 + 52 + 52 = **300 members** ✓ across exactly **6 rows** (4 case-A rows at p ∈ {3,5} × letter ∈ {1,2}, 2 case-B rows) ✓. The artifact's per-row lines read `members 33 dropped 0 ok 33 nonok 0 pari 33` etc., so **0 dropped and 300 PARI jobs** ✓. `TOTAL checks 1200 violations 0 teeth 4/4` ✓ — and 1,200 = 300 members × 4 checks/member, consistent with P1/P2/P3/P5 being per-member predicates (P4 is per-case, teeth are per-row). **Compiler note:** the note nowhere states the checks-per-member factor, so a reader cannot reconstruct 1,200 from 300 without it; recorded as OPEN-CALL 6.
+
+---
+
+### EFF.HETOW.35  [run-record]  `[TABLE]`
+
+**CANONICAL STATEMENT:** the five predictions, source lines 419–447. P1, P3, P5 verbatim:
+
+> “* **P1 ✓ 300/300** — every member parses as a genuine tower: level-1
+>   Φ′-development = ONE full side of slope κ₂ with residual r^3
+>   (r = Z−s / the irreducible quadratic), i.e. the widened-box node with
+>   multiplicity 3.”
+
+> “* **P3 ✓ 300/300** — every σ inside the preregistered 5-element menus.”
+
+> “* **P5 ✓ 300/300** — no member ever took the LEVEL3 branch: THEOREM
+>   HE7.C's μ₂ ≥ 4 floor for a level-3 jump held on every read (refine
+>   chains occurred and terminated; all adjudicated by PARI).”
+
+P2, the headline, verbatim:
+
+> “* **P2 ✓ (HEADLINE) 300/300, zero mis-decisions** — the FROZEN readers
+>   (he7_checks / he6r1_checks `level2_read`, byte-unmodified) decided
+>   every member and matched PARI factorpadic exactly. This is the machine
+>   form of THEOREM HETOW.A: the code written for the ordinary-leaf box
+>   decides the tower box with no change.”
+
+P4 and its per-row census — the census is a fixed-width ASCII display inside the source, so per v3 rule 14 it is emitted TWICE. **Source display, verbatim:**
+
+>     “caseA p=3 s=1   33: {(12,1)} 7 · {(4,3)} 8 · {(4,2),(4,1)} 6 · {(8,1),(4,1)} 12
+>     caseA p=3 s=2   33: same distribution
+>     caseA p=5 s=1   65: {(12,1)} 10 · {(4,3)} 14 · {(4,1)³} 1 · {(4,2),(4,1)} 17 · {(8,1),(4,1)} 23
+>     caseA p=5 s=2   65: 10 · 14 · 1 · 18 · 22
+>     caseB p=3 r=Z²+1  52: {(6,2)} 10 · {(2,6)} 17 · {(2,2)³} 7 · {(2,4),(2,2)} 8 · {(4,2),(2,2)} 10
+>     caseB p=5 r=Z²+2  52: 6 · 12 · 10 · 11 · 13”
+
+`[TABLE]` — transcription with the compiler's row-sum audit in the last column:
+
+| row | members | σ counts | row sum |
+|---|---:|---|---:|
+| caseA p=3 s=1 | 33 | {(12,1)} 7 · {(4,3)} 8 · {(4,2),(4,1)} 6 · {(8,1),(4,1)} 12 | 7+8+6+12 = **33** ✓ |
+| caseA p=3 s=2 | 33 | same distribution | **33** ✓ |
+| caseA p=5 s=1 | 65 | 10 · 14 · 1 · 17 · 23 | 10+14+1+17+23 = **65** ✓ |
+| caseA p=5 s=2 | 65 | 10 · 14 · 1 · 18 · 22 | 10+14+1+18+22 = **65** ✓ |
+| caseB p=3 (r = Z²+1) | 52 | 10 · 17 · 7 · 8 · 10 | 10+17+7+8+10 = **52** ✓ |
+| caseB p=5 (r = Z²+2) | 52 | 6 · 12 · 10 · 11 · 13 | 6+12+10+11+13 = **52** ✓ |
+| **total** | **300** | | 33+33+65+65+52+52 = **300** ✓ |
+
+**FORM:** bulleted display + an indented ASCII census block.
+
+**DERIVATION:** `[RUN]`
+
+**CONDITIONALITY:** **P4's case-A p = 3 rows realize only FOUR of the five menu σ, and the note discloses why rather than scoring a violation:**
+
+> “(case A:
+>   {(4,1)}³ only at p = 5, structurally: F₃^× has just 2 elements, so a
+>   cubic residual with nonzero constant term cannot have 3 distinct roots
+>   at p = 3 — disclosed, not a violation)”
+
+Disposition `disclosed structural non-realization`. **This is correct and the compiler verifies the reason independently**: a split-into-three-distinct-linear residual needs three distinct nonzero roots in `K₂^× = F_3^×`, which has order 2 — impossible ✓.
+
+**RESOLUTION TRACE:** statement lines 419–447; the artifact's per-row distinct-σ counts (`distinct-pari 4` at both p = 3 case-A rows, `distinct-pari 5` at p = 5) independently confirm the 4-vs-5 split ✓.
+
+**TEETH:** the row sums and the grand total are compiler-recomputed above; the artifact's own `distinct-pari` column corroborates the menu-realization claim row by row.
+
+---
+
+### EFF.HETOW.36  [run-record / disclosure]
+
+**CANONICAL STATEMENT:**
+
+> “**[r1 2026-08-09 (passPE1
+>   F-5)] Gauge caveat:** both battery frames sit at η = 1 (Φ′ = x² − p),
+>   where the wrap layer η^{−W(t)} is invisible — the 300/300 does not
+>   exercise passPE1 F-1's η-axis; corrected-key η ≠ 1 contact is §S7.”
+
+**FORM:** bold-headed dated caveat inside the P2 bullet.
+
+**DERIVATION:** `[RECORD]` of an evidence limit.
+
+**CONDITIONALITY:** **this caveat is what keeps P2's 300/300 from being over-read.** SUPERSESSION KIND: **inventory completion** (it adds a missing disclosure to a scored result without changing the score).
+
+**RESOLUTION TRACE:** statement lines 427–430.
+
+**TEETH:** disposition `signed vacuity disclosure` on the η-axis specifically: the battery is not vacuous, but it is provably blind to the axis on which the CRITICAL fell. The η ≠ 1 evidence is the supp leg (`.40`).
+
+---
+
+### EFF.HETOW.37  [run-record]
+
+**CANONICAL STATEMENT:** the four teeth, verbatim:
+
+> “**Teeth 4/4 FIRED.**
+> * **T-NAIVE ✓** the "treat ψ₂³ as separable" dictionary is refuted by
+>   PARI on ≥ 33 members of every case-A row and ≥ 42 of every case-B row.
+> * **T-WITHHOLD ✓** both readers return UNDETERMINED when a level-2
+>   residual is withheld.
+> * **T-BADTWIST ✓** at s = 2 the level-2 cocycle twist is load-bearing at
+>   μ₂ = 3: 55 members flip σ when the twist is dropped; on the
+>   adjudicated flip the twisted read {(4,2),(4,1)} = PARI while the
+>   untwisted read says {(4,3)} — the first μ₂ = 3 exercise of the
+>   β-cocycle anywhere.
+> * **T-THREESIGMA ✓** up to FIVE distinct PARI σ inside one family of
+>   identical level-1 outer+entry data (fixed p, case, letter) — the tower
+>   μ₂ = 3 σ-decision is genuinely deeper than the outer data, and the
+>   composed level-2 read decides it.”
+
+**FORM:** bold-headed bulleted teeth list.
+
+**DERIVATION:** `[RUN]` — four mutation/withholding tests, each with a preregistered firing condition.
+
+**CONDITIONALITY:** **T-BADTWIST is the load-bearing tooth for the note's central claim** (that the level-2 cocycle twist is not decorative at μ₂ = 3), and **T-NAIVE is the anti-vacuity tooth** (a wrong dictionary is refuted, so the right one is not trivially satisfiable). Note what NO tooth here covers: the η-gauge axis (`.36`) — that tooth exists only in the supp leg (`.40` G2), and C-B later shows even that σ-shaped tooth is insufficient in general (`.44`).
+
+**RESOLUTION TRACE:** statement lines 449–462.
+
+**TEETH:** **RE-VERIFIED AT COMPILE TIME against the committed artifact**, whose teeth block reads: `TOOTH T-NAIVE      FIRED  min per-row naive refutations: caseA 33, caseB 42`; `TOOTH T-WITHHOLD   FIRED  caseA UNDETERMINED / caseB UNDETERMINED`; `TOOTH T-BADTWIST   FIRED  twisted ((4, 1), (4, 2)) == PARI, untwisted ((4, 3),) (of 55 flips)`; `TOOTH T-THREESIGMA FIRED  max distinct PARI sigma within one fixed-letter family: 5`. **All four figures (33, 42, 55, 5) and all four fired states match the note exactly.**
+
+---
+
+### EFF.HETOW.38  [scope record]
+
+**CANONICAL STATEMENT:**
+
+> “**What the leg establishes** (instrument grade, not acceptance): the
+> first-ever machine contact with [GENHN-HE(μ₂ ≥ 3)]'s tower instances is
+> GREEN against an independent oracle at the minimal live degree n = 12,
+> on both inner branches ((e₂,f₂) = (2,1) and (1,2)), with the σ-decision
+> executed by HE7's frozen instruments unmodified — exactly what THEOREM
+> HETOW.A's "literal instance" predicts and preregisters.”
+
+**FORM:** bold-headed closing paragraph.
+
+**DERIVATION:** `[RECORD]` of what a green run does and does not buy.
+
+**CONDITIONALITY:** “instrument grade, not acceptance” — the note is explicit that a green battery is not a pass. Acceptance came later and from hostile passes (`.46`), not from this leg.
+
+**RESOLUTION TRACE:** statement lines 464–469.
+
+**TEETH:** the honest-limit sentence IS the tooth; disposition `signed evidence-grade disclosure`.
+
+---
+
+### EFF.HETOW.39  [changes-record]
+
+**CANONICAL STATEMENT:** the r1 repair record, source lines 475–501, `[ASSEMBLED]` from its pass summary and five findings. The pass summary, verbatim:
+
+> “**The pass:** `HETOW_passPE1_report.md` — 1 CRITICAL + 2 GAP + 2 MINOR;
+> locus/termination/peel/n_min/menu rows and the seal all HELD; the
+> sealed battery re-ran isolated content-identical (1,200/0, 4/4 teeth).”
+
+F-1, the CRITICAL, verbatim:
+
+> “**F-1 (CRITICAL, repaired at §S2 [r1]):** the sealed HETOW-1 gave r̃
+> two definitions (slot residues of the displayed key; minpoly(β)) and
+> called them equivalent; they differ by η^{−W(t)}, W(t) =
+> ⌊(f₂−t)·i(u₂)/e₁⌋, the wrap-cocycle defect of the normalizer
+> monomials. Repair: ONE definition (r̃ := minpoly(β)); the key
+> WRAP-CORRECTED (slot-e₂t coefficient L_{(f₂−t)u₂}(c_t·η^{W(t)}));
+> HETOW-1(c) re-proved AT it; HETOW.A(i) reads at the corrected key.
+> The seam's owner display (GENHN-T(b)′'s plain lifts) is recorded at
+> GENHN_PROOF's dated erratum (2026-08-09; T(b)′'s proof mechanism —
+> polygon, forcing chain, S4 coherent normalizers — is untouched by it).”
+
+F-2 through F-5, verbatim in brief: F-2 “the sealed carry estimate priced only the moved piece … the stationary tail piece sits AT value T₂ and lands in B_t”; F-3 “HETOW-BOX-3 [r1] now names the η = 1 gauge of the battery and the η ≠ 1 coverage on record”; F-4 “the coefficient object pinned — the (LIFT)-slot form, under which no x-overflow occurs at any f₁ (w = 0); the carry algebra retained for representation independence”; F-5 “§S6 P2 gauge caveat added”.
+
+**FORM:** bold-headed record with five numbered findings.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** **the “what HELD” list is a positive scope finding worth carrying**: locus, termination, peel, n_min and the menu rows survived the CRITICAL untouched, and the seal held. This is the r1 analogue of the acceptance record's wrap-immunity certificate (`.46`) and bounds the blast radius of F-1.
+
+**RESOLUTION TRACE:** statement lines 475–501.
+
+**TEETH:** `HETOW_passPE1_report.md` exists; `git cat-file -t 5f821dc` = commit. The “re-ran isolated content-identical (1,200/0, 4/4 teeth)” claim is corroborated by the committed artifact's own totals (`.34`).
+
+---
+
+### EFF.HETOW.40  [run-record]
+
+**CANONICAL STATEMENT:** the supp leg, source lines 503–531. The seal and verdict, verbatim:
+
+> “**THE SUPP LEG — `hetowr1_supp.py` (sealed with preregistered
+> predictions at r1 commit 1; artifacts `hetowr1_supp_output.txt` /
+> `hetowr1_supp_results.json`, BYTE-FROZEN; runner md5 dcb8452f…,
+> output b52eb226…, results 58f1ce0c…).** Re-derives from scratch
+> (zero reader imports); dual PARI oracle routes agree on 29/29 jobs.
+> **VERDICT: GREEN — 29 gp jobs + 15 exact-residue checks, 0
+> violations.**”
+
+The frames and the four legs, verbatim:
+
+> “* **Frames** (η ≠ 1, f₁ = 1, f₂ = 2, W = (1,0)): X (PE1 regression:
+>   p = 3, Φ′ = x² − 6, η = 2, u₂ = 3, n = 12) · Z (NEW: p = 5,
+>   Φ′ = x² − 10, η = 2 of ORDER 4, u₂ = 3, n = 12) · W (NEW, e₁ = 3:
+>   p = 5, Φ′ = x³ − 10, η = 2, u₂ = 5, n = 18 — the first e₁ = 3 wrap
+>   contact anywhere).
+> * **E-legs (exact):** W(0) two-ways = 1 at each frame; corrected-key
+>   slot residues = minpoly(β) at each frame (X: Z²+2Z+2; Z/W: Z²+3Z+4,
+>   each ≠ ψ₂ — the twist layer real); naive slot polynomial diverges
+>   and is degenerate at each frame (X: (Z+1)²; Z/W: (Z+1)(Z+2)).
+> * **G1 (corrected key = composed carrier):** PARI σ = {(2,2)} at X and
+>   Z, {(3,2)} at W — 3/3.
+> * **G2 (the η ≠ 1 TOOTH — the gauge-naive mutant fails):** naive-key
+>   σ = {(4,1)} at X (≠ {(2,2)}; = PE1's measured seam), {(2,1),(2,1)}
+>   at Z and {(3,1),(3,1)} at W — the DERIVED failure shapes, scored
+>   exactly. 3/3 teeth fired.
+> * **G3 (frame Z, μ₂ = 3, n = 12):** forced 3RAM {(6,2)} 4/4; forced
+>   2+1 {(2,2),(4,2)} 4/4; 8 ONE21 (λ₂ = 7) members inside the case-B
+>   menu ({(2,2)}³ ×3, {(2,2),(2,4)} ×3, {(2,6)} ×2).
+> * **G4 (frame W, μ₂ = 3, n = 18 — first σ menu at composed (3,2)):**
+>   forced 3RAM {(9,2)} 2/2; forced 2+1 {(3,2),(6,2)} 2/2; 3
+>   integer-slope (λ₂ = 11) members inside the (3,2)-menu ({(3,2)}³ ×2,
+>   {(3,2),(6,2)} ×1).”
+
+**FORM:** bold-headed record with a frames bullet and four leg bullets.
+
+**DERIVATION:** `[RUN]`, decorrelated by construction: “Re-derives from scratch (zero reader imports)” — the supp leg shares no code with the sealed battery, so its agreement is independent evidence, not a re-run.
+
+**CONDITIONALITY:** three frames only, all at f₂ = 2 with f₁ = 1 (BOX-3, `.30`). **G2 is the η ≠ 1 tooth; C-B later shows a σ-shaped tooth of this exact shape is insufficient in general** (`.44`) — so this tooth's force is frame-specific, not generic.
+
+**RESOLUTION TRACE:** statement lines 503–531.
+
+**TEETH:** **ALL THREE MD5 PINS RE-COMPUTED AND MATCHED** (see FREEZE-2 in §1). **The verdict is re-read from the committed artifact**: `TOTAL jobs 29 violations 0 (21.3s)` / `VERDICT: GREEN` ✓ — 29 jobs and 0 violations exactly as stated. The artifact's G4 lines read `G4-3RAM:((9, 2),)  2`, `G4-int-slope:((3, 2), (3, 2), (3, 2))  2`, `G4-int-slope:((3, 2), (6, 2))  1` — **matching the note's “{(9,2)} 2/2” and “{(3,2)}³ ×2, {(3,2),(6,2)} ×1” exactly** ✓. ARITHMETIC AUDIT of the frame-W menu: 2 + 1 = 3 integer-slope members ✓, and the σ degree sums at n = 18 are 9·2 = 18 ✓ and 3·2 + 6·2 = 18 ✓.
+
+---
+
+### EFF.HETOW.41  [acceptance-box]
+
+**CANONICAL STATEMENT:**
+
+> “**GRADE: attempt stays 0/2** (the [r1] repair round does not score);
+> passPE2 next. The PE1 sealed artifacts and the S5/S6 battery record
+> are byte-untouched by this round.”
+
+**FORM:** bold-headed grade line closing §S7.
+
+**DERIVATION:** `[RECORD]`
+
+**CONDITIONALITY:** superseded twice (CHAIN-GRADE): → 1/2 at `.42`, → 2/2 at `.46`.
+
+**RESOLUTION TRACE:** statement lines 533–535.
+
+**TEETH:** the byte-untouched claim is corroborated by FREEZE-1 (the sealed runner pin resolves and no post-seal edit is recorded).
+
+---
