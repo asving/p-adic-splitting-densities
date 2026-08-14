@@ -36,3 +36,96 @@ Changes from the pilot format, per runs/qgen/EFFT3_crossread.md (9 template chan
 Unchanged from the pilot: header (blob hash, resolution rules), CANONICAL STATEMENT
 fidelity rules (verbatim-or-[ASSEMBLED]), RESOLUTION TRACE, CONDITIONALITY,
 consumption table, self-audit with OPEN-CALLs, the compiler-not-author charge.
+
+## v3 (2026-08-14, the prose-genre rules — GOVERN all remaining runs, prose notes especially)
+
+Changes from v2, per the HE7 prose-genre pilot's three-shard BOUNDARY SELF-AUDIT (§6.3
+of `spec/EFF-HE7-s1of3.md`, `-s2of3.md`, `-s3of3.md`, plus the SERIES finding at
+`-s2of3.md` §6.1 item 2): an 18-item format verdict, each item a rule the pilot applied
+to itself before recommending it. Codified below as rules 11–28.
+
+11. **FORM sub-field (statement units):** every statement unit's CANONICAL STATEMENT
+    carries a `FORM: display | bold-headed paragraph | bracketed rider | inline sentence`
+    sub-field. Mandatory whenever the note is tag-sparse prose (no `\tag{}` display), so a
+    downstream chapter cut can tell a theorem from a remark without re-reading the note.
+12. **RESOLUTION TRACE, three slots:** when a unit's derivation is not attributable to one
+    contiguous span — the proof lies hundreds of lines from its statement, as is routine in
+    prose proofs — RESOLUTION TRACE records `statement lines` + `proof lines` +
+    `correction sites` as three distinct ranges, never one range standing for all three.
+13. **`supplier-finding` (new TYPE ENUM member):** use `supplier-finding`, not
+    `changes-record`, for a unit whose content is a defect report against ANOTHER note,
+    discharged at the source rather than a lemma, instance record, or scope record of the
+    home note.
+14. **Double-emission for ASCII displays (table rule extended):** a table rendered as a
+    fixed-width ASCII block inside a source code fence is emitted TWICE — verbatim as the
+    source display, then again as a `[TABLE]` Markdown transcription — never transcribed
+    alone (loses the source bytes) and never quoted alone (violates the tables-are-units
+    rule).
+15. **NEAR-MISS XREF disposition:** when a cited designation fails fixed-string grep only
+    on case, punctuation, or a period inside bold/markup, do not emit a clean XREF and do
+    not suppress the citation; record a `NEAR-MISS` disposition instead — "designation
+    absent as written; verified referent at `<file>:<line>` under `<actual string>`, count
+    N" — distinct from both a clean XREF and an OPEN-CALL.
+16. **PROOF-ONLY teeth row class:** the teeth inverse table (v2 rule 6) carries an explicit
+    `PROOF-ONLY` row class for a guarded unit whose interesting content is its proof, not a
+    battery; quote the note's own coverage-hole sentence for that row rather than leaving
+    it blank.
+17. **Scope split predicate C (inbound corrections):** header predicate B ("what has been
+    landed on other notes", v2 rule 7) may be answered by an explicit NO-APPENDS
+    declaration with its quotation; add predicate C — inbound corrections RECEIVED from
+    supplier notes — since a note that discharges a box while receiving corrections has
+    DAG edges neither predicate A nor B can record.
+18. **SUPERSESSION KIND (mandatory field, 8 kinds):** every unit that supersedes prior text
+    declares `SUPERSESSION KIND: replacement | license | wording-rider | provenance-rider |
+    scope-pin | as-of scoping | counter re-reading | inventory completion`. Source riders
+    phrased near-identically ("Read X as Y") are NOT interchangeable — conflating two kinds
+    corrupts the DAG in a different way each time, so the kind is decided by function, never
+    by matching the source's phrasing.
+19. **`regression-record` retired; three replacement TYPE ENUM members:**
+    `preregistration` (a stated-in-advance falsifier or threshold), `run-record` (an
+    executed instrument's result), and `instrument-record` (a description of the testing
+    apparatus itself), since the three carry different truth conditions and different
+    failure modes under one name. Emit `preregistration` and `run-record` as two units
+    whenever the source itself writes the prediction before the sealed run.
+20. **Disclosure disposition vocabulary (4 labels):** the TEETH disposition enum, for a unit
+    reporting an instrument's disclosure rather than a clean pass/fail, adds `signed
+    vacuity disclosure` (tested on a vanishing or trivial fraction of cases), `disclosed
+    non-repair` (a guard that never fired), `accepted-with-decorrelation-supplied`
+    (answered only by an independent instrument), and `stale self-description` (a frozen
+    self-description the instrument's own result falsifies).
+21. **FREEZE PREDICATES (header list):** when a note carries more than one independent
+    freeze — e.g. a text-freeze (acceptance) and an instrument-freeze (an artifact seal) —
+    the header lists each as its own `FREEZE PREDICATES:` entry with its own quote and its
+    own pin; one freeze predicate must never stand for both.
+22. **Mandatory arithmetic audit on `[TABLE]` count tables:** every `[TABLE]` of counts
+    gets a compiler-computed arithmetic-audit line — row sums, column totals, and
+    cross-checks against every other number in the note that should match it — computed
+    fresh, never assumed from the source's own labels.
+23. **PIN VERIFICATION (rule 2 extended to commit hashes and artifacts):** a cited commit
+    hash is verified with `git cat-file -t`; a cited artifact filename is verified to
+    exist. A reported run backed by no filename at all gets an explicit `UNPINNED`
+    disposition rather than a silent pass.
+24. **TARGETS field (bivalent units):** a unit that is simultaneously a new statement and an
+    instruction to re-read frozen text elsewhere carries a `TARGETS:` field listing
+    `<shard>.<id>` for every span it supersedes, so a merge run can build the edge list
+    mechanically instead of by re-reading prose.
+25. **CHAIN representation with TERMINAL marker:** when a supersession has more than two
+    layers (frozen text → rider → rider …), record the full `CHAIN:` in source order and
+    mark which member is TERMINAL — the reading a chapter cut must actually use — since a
+    flat "this supersedes that" field cannot say which of several links is current.
+26. **STALE-SELF-DESCRIPTION conditionality tag:** when a note contains a frozen sentence
+    describing its OWN status (e.g. "has not been through a hostile pass") that a later,
+    unedited event falsifies, tag it `STALE-SELF-DESCRIPTION` in CONDITIONALITY rather than
+    `superseded` — the sentence is not corrected under the freeze, but the reader must be
+    told it is no longer true.
+27. **Decorrelated-finding AUDIT disposition class:** the teeth vocabulary adds an `AUDIT`
+    disposition — `decorrelated-model audit | in-house hostile pass | transfer audit |
+    arithmetic recount` — for a finding no battery or tooth could have produced (an
+    incoherent definition, an underived equivalence), quoting the note's own "no tooth
+    applies" sentence where one exists. Flagged by the pilot as the single most important
+    addition for prose-proof notes, since prose proofs fail in ways batteries cannot see.
+28. **Dated-arc SERIES type:** a chronological sequence of dated entries continuing one box
+    or record across sections, annexes, or shards is a `SERIES`, not one merged "arc
+    record" unit and not independent units with no memory of each other: emit one unit per
+    dated entry, but record the series membership and order explicitly, so a merge run
+    spanning shards can reconstruct the order mechanically rather than by prose-reading.
