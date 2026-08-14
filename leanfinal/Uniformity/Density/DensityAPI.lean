@@ -25,6 +25,9 @@ CN-07/CN-08 (edge: CN-08 depends on CN-07).
   congAt_of_proj_eq`, which is `n = 2` only, to an iff at general `n`).
 * **CN-08** `decidedAt_of_congr`: a congruence-invariant certificate on the coefficients decides
   the class — the single interface between certificates and `decidedSet` membership.
+* **CN-09** `decidedDensity_ge_of_subset`: the inner census bound — any subset of a decided set
+  is a density lower bound (generalizing the single-class `Gates.lean:325
+  decidedDensity_ge_of_decided`).
 
 ## Status
 
@@ -126,5 +129,29 @@ theorem decidedAt_of_congr (hπ : Irreducible π) {n N : ℕ} {σ : Factorizatio
   exact h b ((proj_eq_iff_dvd hπ a b).1 hb.symm)
 
 end CertInterface
+
+/-! ## CN-09 : the census inner bound, general `n` -/
+
+section Census
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)]
+
+/-- **CN-09.** Any subset of the `σ`-decided level-`N` classes gives a density lower bound.
+Generalizes the single-class `Gates.lean:325 decidedDensity_ge_of_decided` (`T = {c}`) to an
+arbitrary subset, matching the shape in which `card_certSet`-style counting lemmas produce their
+output. -/
+theorem decidedDensity_ge_of_subset {n N : ℕ} {σ : FactorizationType}
+    {T : Set (Coeff O n N)} (hT : T ⊆ decidedSet O n σ N) :
+    (Nat.card T : ℝ) / (residueCard O : ℝ) ^ (n * N) ≤ decidedDensity O n σ := by
+  have hle : Nat.card T ≤ decidedCount O n σ N :=
+    Nat.card_le_card_of_injective (Set.inclusion hT) (Set.inclusion_injective hT)
+  have hc : (0 : ℝ) < (residueCard O : ℝ) ^ (n * N) := qpow_pos _
+  refine le_trans ?_ (decidedSeq_le_decidedDensity n σ N)
+  rw [decidedSeq, div_le_div_iff₀ hc hc]
+  have hcast : (Nat.card T : ℝ) ≤ (decidedCount O n σ N : ℝ) := by exact_mod_cast hle
+  nlinarith [hcast, hc]
+
+end Census
 
 end Uniformity.Density
