@@ -12,6 +12,13 @@ Outputs (all committed):
   spec/DAG.tsv            edges: from-ID, to-ID, edge-kind, chapter, status, + provenance
   spec/DAG_NODES.tsv      nodes: id, kind, note, unit-type, class, chapter, status
   spec/DAG_NONIMPORTS.tsv recorded negative-import fences (checked by dag_check.py)
+
+BLUEPRINT MERGE (added 2026-08-15, CHAP-G §11 orchestrator item).  The outputs are opened in
+'w' mode, so a rebuild used to DISCARD the edge rows a chapter blueprint had appended by hand.
+Every `spec/DAG_BLUEPRINT_*.tsv` is now the DURABLE copy of one chapter's edges and is merged
+back on EVERY rebuild: harvested rows first, then the blueprint files in filename order and
+in-file order, de-duplicated on (from-ID, to-ID).  Their `BP.<CH>.<nn>` endpoints get node rows
+whose unit-type is read off the chapter blueprint's own `### NODE <CH>.<nn> [kind]` headings.
 """
 import re, os, sys, json, collections
 
@@ -560,13 +567,89 @@ for d in sorted(LEAN_NODES):
 for cap in CAPSTONES:
     node('CAP:' + cap, 'capstone', '', '', 'capstone', 'OPEN',
          'leanfinal/Uniformity/Density/Statement.lean')
+def fallback_node(nid):
+    k = ('ext' if nid.startswith('EXT:') else
+         'cond-unmatched' if nid.startswith('COND:') else
+         'lean-decl' if nid.startswith('lean:') else 'unknown')
+    node(nid, k, '', '', k, 'DONE' if k == 'lean-decl' else 'OPEN')
 for e in EDGELIST:
     for nid in (e['frm'], e['to']):
         if nid not in NODES:
-            k = ('ext' if nid.startswith('EXT:') else
-                 'cond-unmatched' if nid.startswith('COND:') else
-                 'lean-decl' if nid.startswith('lean:') else 'unknown')
-            node(nid, k, '', '', k, 'DONE' if k == 'lean-decl' else 'OPEN')
+            fallback_node(nid)
+
+# -------------------------------------------------- BLUEPRINT EDGE FILES (durable merge)
+# A chapter blueprint writes its own edges into spec/DAG_BLUEPRINT_<CH>.tsv under the same
+# 9-column contract.  That file is the durable copy; this merge is what makes it survive a
+# rebuild (CHAP-G §11 orchestrator item).  Deterministic by construction: files in sorted
+# filename order, rows in file order, first occurrence of an (from,to) pair wins, and the
+# harvested rows always come first.
+BLUEPRINT_GLOB = 'spec/DAG_BLUEPRINT_*.tsv'
+BLUEPRINT_DIR = 'blueprint'
+BP_ID = re.compile(r'^BP\.([A-Za-z0-9]+)\.(\d+)$')
+EDGE_HEADER = ['from-ID', 'to-ID', 'edge-kind', 'chapter', 'status',
+               'edge-class', 'resolution', 'kind-basis', 'evidence']
+
+def merge_blueprints():
+    """Rows of every spec/DAG_BLUEPRINT_*.tsv, verbatim, minus any (from,to) pair already
+    recorded by the harvest or by an earlier blueprint file."""
+    rows, seen = [], {(e['frm'], e['to']) for e in EDGELIST}
+    for path in sorted(_glob.glob(BLUEPRINT_GLOB)):
+        for ln in open(path, encoding='utf-8').read().split('\n'):
+            if not ln.strip():
+                continue
+            cells = ln.split('\t')
+            if cells[0] == EDGE_HEADER[0]:            # tolerate an optional header line
+                continue
+            if len(cells) != len(EDGE_HEADER):
+                sys.stderr.write('WARN %s: skipping %d-column row (contract is %d): %s\n'
+                                 % (path, len(cells), len(EDGE_HEADER), ln[:90]))
+                continue
+            key = (cells[0], cells[1])
+            if key in seen:
+                continue
+            seen.add(key)
+            rows.append(cells)
+    return rows
+BLUEPRINT_EDGES = merge_blueprints()
+
+def blueprint_meta(ch):
+    """(unit-type by node ID, source file) for chapter <ch>'s BP nodes, read off the chapter
+    blueprint's own '### NODE <CH>.<nn> [kind]' headings.  ('', {}) if the chapter file is
+    absent — the row shape stays identical, only the unit-type cell goes empty."""
+    hits = sorted(_glob.glob(os.path.join(BLUEPRINT_DIR, 'CHAP-%s_*.md' % ch)))
+    if not hits:
+        return {}, ''
+    txt = open(hits[0], encoding='utf-8').read()
+    kinds = {}
+    for m in re.finditer(r'^#+\s*NODE\s+%s\.(\d+)\s*\[([A-Za-z][A-Za-z\-]*)\]'
+                         % re.escape(ch), txt, re.M):
+        kinds['BP.%s.%s' % (ch, m.group(1))] = m.group(2)
+    return kinds, hits[0]
+
+# chapters in play: one per spec/DAG_BLUEPRINT_<CH>.tsv, plus any BP.<CH>.* an edge names.
+_BPMETA, _BPNODES = {}, set()
+for _p in sorted(_glob.glob(BLUEPRINT_GLOB)):
+    _m = re.match(r'DAG_BLUEPRINT_([A-Za-z0-9]+)\.tsv$', os.path.basename(_p))
+    if _m:
+        _BPMETA.setdefault(_m.group(1), blueprint_meta(_m.group(1)))
+for _cells in BLUEPRINT_EDGES:
+    for _nid in (_cells[0], _cells[1]):
+        _m = BP_ID.match(_nid)
+        if _m:
+            _BPNODES.add(_nid)
+            _BPMETA.setdefault(_m.group(1), blueprint_meta(_m.group(1)))
+# a chapter may declare a node that carries no edge at all (chapter G's G.78 gate is one);
+# the blueprint's own NODE headings are the node list, the edge file only the edge list.
+for _ch, (_kinds, _src) in _BPMETA.items():
+    _BPNODES.update(_kinds)
+for _nid in sorted(_BPNODES, key=lambda x: (BP_ID.match(x).group(1), int(BP_ID.match(x).group(2)))):
+    _ch = BP_ID.match(_nid).group(1)
+    _kinds, _src = _BPMETA[_ch]
+    node(_nid, 'blueprint-node', 'CHAP-%s' % _ch, _kinds.get(_nid, ''), 'blueprint', 'OPEN', _src)
+for _cells in BLUEPRINT_EDGES:                 # blueprint endpoints outside the harvest
+    for _nid in (_cells[0], _cells[1]):
+        if _nid not in NODES:
+            fallback_node(_nid)
 
 # ------------------------------------------------------------------ THE CHAPTER CUT
 # Read off the computed condensation, not off the v1 B-J design cut (which the 0c charge
@@ -585,6 +668,9 @@ CHAPTER_OF_NOTE = {
 def chapter_of(n):
     if n['kind'] == 'eff-unit':
         return CHAPTER_OF_NOTE.get(n['note'], '')
+    if n['kind'] == 'blueprint-node':
+        m = BP_ID.match(n['id'])          # BP.<CH>.<nn> carries its chapter in its ID
+        return m.group(1) if m else ''
     if n['kind'] == 'lean-decl':
         return 'A'
     if n['kind'] in ('capstone', 'hyp', 'cond-unmatched'):
@@ -595,12 +681,14 @@ for _n in NODES.values():
 
 if __name__ == '__main__':
     with open('spec/DAG.tsv', 'w', encoding='utf-8') as fh:
-        fh.write('from-ID\tto-ID\tedge-kind\tchapter\tstatus\tedge-class\tresolution\tkind-basis\tevidence\n')
+        fh.write('\t'.join(EDGE_HEADER) + '\n')
         for e in EDGELIST:
             ch = NODES[e['frm']]['chapter']
             st = 'DONE' if NODES[e['to']]['status'] == 'DONE' and NODES[e['frm']]['status'] == 'DONE' else 'OPEN'
             fh.write('\t'.join([e['frm'], e['to'], e['kind'], ch, st, e['src'],
                                 e['res'], e['kflag'], e['ev']]) + '\n')
+        for cells in BLUEPRINT_EDGES:      # durable blueprint rows, verbatim, after the harvest
+            fh.write('\t'.join(cells) + '\n')
     with open('spec/DAG_NODES.tsv', 'w', encoding='utf-8') as fh:
         fh.write('id\tnode-kind\tnote\tunit-type\tclass\tchapter\tstatus\tsource\n')
         for n in NODES.values():
@@ -610,4 +698,7 @@ if __name__ == '__main__':
         fh.write('note\tspec-file\tfenced-units\tbanned-designations-or-notes\trecorded-row\n')
         for r in NONIMPORTS:
             fh.write('\t'.join([r['note'], r['file'], r['units'], r['banned'], r['row']]) + '\n')
-    print('nodes %d  edges %d  non-import fences %d' % (len(NODES), len(EDGELIST), len(NONIMPORTS)))
+    print('nodes %d  edges %d (harvested %d + blueprint %d from %d file(s))  '
+          'non-import fences %d'
+          % (len(NODES), len(EDGELIST) + len(BLUEPRINT_EDGES), len(EDGELIST),
+             len(BLUEPRINT_EDGES), len(sorted(_glob.glob(BLUEPRINT_GLOB))), len(NONIMPORTS)))

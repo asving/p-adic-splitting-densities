@@ -2465,7 +2465,7 @@ BP.G.14	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases
 BP.G.15	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
 BP.G.16	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
 BP.G.17	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.18	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
+BP.G.18	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
 BP.G.19	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
 BP.G.20	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
 BP.G.21	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md

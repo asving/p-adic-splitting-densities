@@ -16,11 +16,24 @@ Charge: `docs/BLUEPRINT_PHASE_DESIGN_2026-08-13.md` REVISION 2, stage **0c**
 | `spec/DAG.tsv` | the edge list. Contract columns `from-ID, to-ID, edge-kind, chapter, status`, then four provenance columns this draft adds: `edge-class, resolution, kind-basis, evidence` |
 | `spec/DAG_NODES.tsv` | the node table: `id, node-kind, note, unit-type, class, chapter, status, source` |
 | `spec/DAG_NONIMPORTS.tsv` | the recorded negative-import fences (template v2 rule 3), so they are *checkable* rather than decorative |
+| `spec/DAG_BLUEPRINT_<CH>.tsv` | one per chapter blueprint: the **durable** copy of that chapter's own edges, same 9 columns. `dag_build.py` merges every one of these on every rebuild (below), so they are not lost when the harvested outputs are rewritten |
 | `spec/dag_build.py` | the assembler that produced all three (run from the repo root) |
 | `spec/dag_check.py` | the checker: dangling IDs, cycles, capstone reachability, layering, chapter cut, fences, resolution census |
 | `spec/dag_check_output.txt` | the committed checker output at HEAD |
 
 Reproduce: `python3 spec/dag_build.py && python3 spec/dag_check.py`.
+
+**Blueprint merge (added 2026-08-15, CHAP-G §11 orchestrator item).** `dag_build.py` writes
+`DAG.tsv` / `DAG_NODES.tsv` in `'w'` mode, so a rebuild used to discard the rows a chapter
+blueprint had appended by hand. It now re-merges them itself: every `spec/DAG_BLUEPRINT_*.tsv`
+is read in sorted filename order, rows in file order, appended **after** the harvested rows and
+de-duplicated on `(from-ID, to-ID)` — deterministic and idempotent (a second run is
+byte-identical). Each chapter's `BP.<CH>.<nn>` endpoints get a node row
+(`node-kind = blueprint-node`, `note = CHAP-<CH>`, `class = blueprint`, `chapter = <CH>`,
+`status = OPEN`, `source =` the chapter file), with `unit-type` read off the chapter
+blueprint's own `### NODE <CH>.<nn> [kind]` headings. The **node list is the headings, not the
+edge file** — a chapter may declare a node that carries no edge (chapter G's `G.78` gate does).
+Adding a chapter therefore means dropping in one `DAG_BLUEPRINT_<CH>.tsv`; no builder edit.
 
 ## Edge direction (read this before reading the TSV)
 
