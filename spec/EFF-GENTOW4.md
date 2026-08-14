@@ -1353,3 +1353,652 @@ the other five, verbatim in brief: T-1 FULLREAD 117/117 refused; T-3 SIBDROP 117
 **TEETH:** **the cited runner lines are verified**: `gentow4_checks.py` L871 reads `            elif p0 % 2 == 0 and (p0 - cg) % 2 == 1:` ✓ — the even-p0 branch, at exactly the stated line, followed by the hand-assembly (`base = list(rd['sigma'])`, `base.remove(...)`) ✓. **The disclosure is accurate to the source.**
 
 ---
+### EFF.GENTOW4.45  [run-record]
+
+**CANONICAL STATEMENT:**
+
+> “**Diagnostic census (non-sealed one-off, labeled):** every family
+> realized its FULL preregistered menu — P1: {(2,1)}∪{(8,1)} x12 /
+> {(4,2)} x6 / {(4,1)}² x7; P2: {(2,1)}∪{(4,2)} x20 / {(2,4)} x2 /
+> {(2,2)}² x2; P3: 13/2/7; P5: {(4,1)}∪ 10/6/6; P6: {(6,1)}∪ 11/8/5.”
+
+with the leg's honest close, verbatim:
+
+> “**What the leg establishes** (instrument grade, not acceptance):
+> the first machine contact anywhere with [GENHN-TOW-1] item (4) …
+> is GREEN against
+> an independent oracle, with the block decomposition, the HE6R1-2
+> projection (c_g), and the per-block HE7.A trichotomy executed
+> exactly as THEOREM GENTOW-4.A displays, and with three
+> load-bearing seams (c_g-translation, label-keying, eta2-cocycle)
+> each guarded by a fired tooth.”
+
+**FORM:** bold-headed census + closing scope paragraph.
+
+**DERIVATION:** `[RUN]`, with the census labelled non-sealed.
+
+**CONDITIONALITY:** “instrument grade, not acceptance” — the standing disclaimer.
+
+**RESOLUTION TRACE:** lines 697–710.
+
+**TEETH:** **ARITHMETIC AUDIT of the census against the member counts:** P1 `12+6+7 = 25` ✓; P2 `20+2+2 = 24` ✓; P3 `13+2+7 = 22` ✓; P5 `10+6+6 = 22` ✓; P6 `11+8+5 = 24` ✓. **All five family censuses sum exactly to their member counts, and the total 25+24+22+22+24 = 117** ✓ — the census is complete and exhaustive.
+
+---
+
+### EFF.GENTOW4.46  [changes-record]  *(CHAIN-GAUGE — the annex)*
+
+**CANONICAL STATEMENT:** §S8.1's seam and its four-site count, verbatim:
+
+> “**The seam.** This note was composed, sealed, and verdicted
+> 2026-08-09 15:39–16:06 (c8da214 -> 2aa5b16 -> c21b59e/c43505d) —
+> BEFORE the GENHN dated gauge erratum (59c1966, 08-09 20:13,
+> provoked by HETOW PE1 F-1) and HETOW's [r1] wrap-correction
+> (5335ae3) … The note as composed transcribed the naive display at S0, consumed
+> the pre-[r1] HETOW-1/2 at 4.1(c)/S3, claimed BOX-3 uniformity with
+> no eta axis, and mis-attributed the S4 remark's residue-1
+> x-relation to f1 = 1. All four sites carry [GT4-r1] pins this
+> round; the corrected display itself is S0's (re-derived there from
+> the wrap cocycle, not transcribed).”
+
+**FORM:** bold-headed seam record.
+
+**DERIVATION:** `[RECORD]` with a **minute-level timestamp chain**: composed/sealed/verdicted 15:39–16:06, erratum at 20:13 the same day.
+
+**CONDITIONALITY:** **the four sites are enumerated and each is pinned** — S0's display, 4.1(c)/S3's consumption, BOX-3's uniformity, the S4 remark's f1 = 1 attribution.
+
+**RESOLUTION TRACE:** lines 731–747.
+
+**TEETH:** **all four commits in the timestamp chain resolve** (`c8da214`, `2aa5b16`, `c21b59e`, `c43505d`) ✓, as do `59c1966` and `5335ae3` ✓. **Cross-entry: three notes (GENTOW1 15:16, GENTOW3 15:53, GENTOW4 15:39–16:06) all verdicted within an hour of each other and all before the 20:13 erratum** — one erratum, three simultaneous naive consumptions, each caught by its own PE1.
+
+---
+
+### EFF.GENTOW4.47  [derivation]
+
+**CANONICAL STATEMENT:** the restated-bridge supply audit, `[ASSEMBLED]` from lines 749–792. Item (1)'s conclusion, verbatim (pre-m-A):
+
+> “(1) 4.1(c) consumes "Phi2 = Psi_{kappa2,rtilde} − w with
+> w = 0 or dv2(w) > T2" plus the transported package. The RESTATED
+> LEMMA HETOW-2 supplies exactly this at the wrap-corrected key —
+> and more strongly: under the (LIFT)-slot coefficient form the
+> membership is LITERAL (w = 0, at any f1); its "hence" clause hands
+> over the §S5 package, THEOREM HE7.A(1)(2), the refine package
+> (HE7-12/13, HE7-8), and the §S1 CONVENTION with HE6R1-3's peel —
+> every item on 4.1(c)'s list except LEMMA HE6R1-2 + RIDER and ANNEX
+> HE7-13', which 4.1(c)'s own proof supplies through HE7-12(c)'s
+> transport …”
+
+and the net verdict, verbatim:
+
+> “Net: with the S0
+> pin in force, LEMMA GENTOW-4.1, THEOREM GENTOW-4.A, LEMMA
+> GENTOW-4.2, and COR GENTOW-4.C read at the wrap-corrected key with
+> no other change; at the naive key FR-G (below) refutes 4.1(c)'s
+> key clause (naive sigma {(4,1)} != carrier {(2,2)}), (ii)'s
+> deg f_S = D2·mu2* display (naive mu2* = 0 against deg f_S = 8),
+> and GENTOW-1(d)'s floor transport (nfeltval = E2 exactly).”
+
+**FORM:** three-item supply audit.
+
+**DERIVATION:** a per-item routing check against the restated source.
+
+**CONDITIONALITY:** **item (1)'s two-item routing sentence is MISATTRIBUTED for its SECOND item and is corrected by m-A** (`.51`). Items (2) and (3) stand.
+
+**RESOLUTION TRACE:** lines 749–792; m-A 762–777 and 946–954.
+
+**TEETH:** the naive-key refutation is measured three ways at FR-G (σ, μ₂*, nfeltval) — `.48`.
+
+---
+
+### EFF.GENTOW4.48  [run-record]
+
+**CANONICAL STATEMENT:** the two adopted machine rows, `[ASSEMBLED]` from lines 794–864. FR-G, verbatim (abridged):
+
+> “* **FR-G — the first gauge-live partial side in any leg of this
+>   unit (eta != 1, f2 = 2; no battery family has eta != 1).**
+>   p = 3, Phi' = x^2−6 (genre (2,1,5), h = 1, eta = 2), inner
+>   (e2,f2) = (1,2), u2 = 3, psi2 = Z^2+Z+2, mu2 = 2 on side [1,5]
+>   of slope 3 — PARTIAL (4 < mu1 = 5), sibling g = x^2−15 at slope
+>   4. Hand re-derivation of the keys this round: i(3) = 1, so
+>   (W(0), W(1)) = (1, 0); c_0 = −2 ≡ 1, c_0·eta^{W(0)} = 2,
+>   −2·nhat(6) = −2·27 = −54; the t = 1 term is gauge-blind
+>   (−2·3x·Phi'). CORRECTED key Phi'^2 − 6x·Phi' − 54; NAIVE (the
+>   composed S0 display) = same − 27. Committed numbers: sigma(naive
+>   key) = {(4,1)} != {(2,2)} = sigma(corrected key) … at the NAIVE key both members' hulls
+>   ((0,15)–(2,3)) have slope EXACTLY T2 = 6 — empty >T2 initial
+>   segment, mu2* = 0, the tower class invisible; field floor:
+>   corrected class rows 2·8 = 16, 2·7 = 14 > 12 = E2·e and
+>   2·13 = 26 > 24, naive rows 2·6 = 12 and 2·12 = 24 exactly = E2·e
+>   — GENTOW-1(d)'s separator collapses at the naive key.”
+
+FR-M, verbatim in brief: “the first TWO-BLOCK partial member in any tower battery (q = 2, eta = eta2 = 1: gauge-clean …)”, `mu1 = 9, n = 18`, two inner sides A and B each carrying `(T+1)^2`, “both classes read through THEIR OWN keys with mu2* = 2 (LEMMA GENTOW-4.2's tie at TWO pure-power sides simultaneously — first exercise), c_g^A = 27 and c_g^B = 25 … (each class's c_g absorbs the other block's mass plus the sibling's: 20 + 7 and 20 + 5)”.
+
+**FORM:** two bulleted adopted rows.
+
+**DERIVATION:** `[RUN]` from a decorrelated fresh route, with the keys hand-re-derived at the round.
+
+**CONDITIONALITY:** FR-G decides **on slopes alone by design** — no `coh()` contact at η ≠ 1 (`.30`). FR-M is gauge-clean and stresses geometry only.
+
+**RESOLUTION TRACE:** lines 794–864.
+
+**TEETH:** **ARITHMETIC AUDIT — FR-G, recomputed from the genre data:** `i(3) = 3 mod 2 = 1` ✓; `W(0) = ⌊2·1/2⌋ = 1`, `W(1) = ⌊1·1/2⌋ = 0` ✓; `nhat(6)` at `e1 = 2, h = 1` is `π^3 = 27` ✓; corrected constant `−(c_0·η^{W(0)})·nhat(6) = −2·27 = −54` vs naive `−1·27 = −27` ✓ — **the corrected/naive pair differs by exactly the factor η^{W(0)} = 2, matching the mechanism.** `E2 = e2f2u2 = 1·2·3 = 6` ✓, so the naive hull's slope `(15−3)/2 = 6 = T2` exactly ✓ — **an empty >T2 segment, hence μ₂* = 0, hence the class invisible: the failure mode is fully derivable from the displayed numbers.** Field floor: `E2·e = 6·2 = 12` and the naive rows sit at `12` and `24 = 6·4` exactly ✓ — the separator collapses to equality, as claimed. **FR-M:** `c_g^A = 20 + 7 = 27` ✓ and `c_g^B = 20 + 5 = 25` ✓ — both decompositions reproduce. Artifacts `gentow4_pe1_fresh.py` `5dc455dd…` and output `dac5110c…` both match ✓.
+
+---
+
+### EFF.GENTOW4.49  [fence]
+
+**CANONICAL STATEMENT:**
+
+> “**Battery blindness (disclosed).** All five sealed families sit at
+> eta = 1 (P1/P2/P6: q = 2, Phi' = x^2−2, where eta = 1 forcibly —
+> P2 the only f2 = 2 family; P3/P5: Phi' = x^2−3 over Q3, eta =
+> res(x^2/3) = 1, and f2 = 1 anyway — verified at the sealed
+> runner's PA/PB constants this round): the seal is structurally
+> blind to the gauge seam. eta != 1 coverage on record: FR-G above
+> plus the erratum lineage (frame X @ 59c1966/5f821dc;
+> hetowr1_supp.py frames X/Z/W). No eta != 1 coh() row (the S4
+> residual-digit read) exists in any leg yet — FR-G's members decide
+> on slopes alone by design.”
+
+**FORM:** bold-headed disclosure.
+
+**DERIVATION:** `[RECORD]`, verified at the runner's own constants.
+
+**CONDITIONALITY:** **the blindness is DOUBLE at three families**: P3/P5 are η = 1 *and* f2 = 1 (where corrected = naive automatically per `.05`). So even a hypothetical η ≠ 1 variant of those two would be gauge-blind.
+
+**RESOLUTION TRACE:** lines 855–864.
+
+**TEETH:** `hetowr1_supp.py` exists with md5 `dcb8452f…` — **the same instrument this queue verified for HETOW and GENTOW1**, a three-way shared η ≠ 1 leg ✓.
+
+---
+
+### EFF.GENTOW4.50  [instrument-record]  *(CHAIN-CLASSMASS — TERMINAL)*
+
+**CANONICAL STATEMENT:** the m-ii acceptance-fold bracket, verbatim:
+
+> “[acceptance fold (post-PE3) 2026-08-10, m-ii — INSTRUMENT-STRENGTH
+> DISCLOSURE on the adopted PE2 machine rows above: the adopted
+> instrument's class-degree-sum check is ONE-SIDED. Verified at the
+> committed artifact itself (gentow4_pe2_fresh.py, keyval_checks,
+> L281–300): the strict branch accumulates ncls = Sum e_·f_ over
+> rows with 2v > E2·e and tests `chk(tag, ncls >= want_sum, …)` — a
+> companion row misclassified ABOVE E2 would inflate ncls and still
+> pass strict mode. The check is non-vacuous (its collapse branch
+> emits a real violation — the m-D genre at one grade milder), and
+> the committed output's parsed rows carry exact class masses, so
+> the adopted FR-T/FR-C numbers stand; but those "GREEN" rows
+> certify class degree-sum >= at strict separators, not ==. The
+> sealed instrument's six degree-sum checks (8 = D2·mu2*, the m-D
+> bullet below) and PE3's fresh instrument (gentow4_pe3_fresh.py
+> L337: `ncls == want_sum`) test the sums TWO-SIDED; the == form is
+> the standing shape for future frames.]”
+
+**FORM:** dated acceptance-fold bracket at the §S9 head.
+
+**DERIVATION:** a source reading of the adopted instrument, with the two-sided alternatives named.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **disclosed non-repair** — the adopted rows stand, but at a weaker predicate than a reader would assume. **The bracket also sets a standing shape: “the == form is the standing shape for future frames.”**
+
+**RESOLUTION TRACE:** lines 929–944.
+
+**TEETH:** **BOTH SOURCE CITATIONS VERIFIED at compile time.** `gentow4_pe2_fresh.py` line **281** reads `def keyval_checks(tag, lab, rows, E2, strict, want_sum):` — the function the bracket cites, at the stated line ✓, with its docstring confirming the strict/collapse structure. `gentow4_pe3_fresh.py` line **337** reads `        chk(tag, ncls == want_sum,` — **the two-sided `==` form, verbatim at the stated line** ✓. The bracket is accurate to both sources.
+
+---
+
+### EFF.GENTOW4.51  [changes-record]  *(SERIES MINORS-PE2, link 1; CHAIN-SUPPLY — TERMINAL) — QUEUE-CHARGED*
+
+**CANONICAL STATEMENT:** the m-A rider. Its in-place form at S8.1, verbatim:
+
+> “[rider (post-PE2, 2026-08-10; m-A): the two-item routing
+> above is MISATTRIBUTED for the second item; re-derived at source
+> this fold. LEMMA HE6R1-2 + RIDER: correctly routed — "LEMMA
+> HE6R1-2's read" is ON LEMMA HE7-12(c)'s displayed transport list
+> (HE7_PROOF §S5.8, verified verbatim this fold), and 4.1(c)'s
+> proof walks exactly that consumption. ANNEX HE7-13': NOT on
+> HE7-12(c)'s displayed list (the annex postdates it: ANNEX F-1 is
+> 2026-08-09), and 4.1(c)'s proof body never mentions it. Its
+> supply is by ITS OWN STATEMENT FORM: HE7-13' is stated at
+> "Psi-tilde = Psi − W with W = 0 or as in LEMMA HE7-12(d)"
+> (HE7_PROOF ANNEX F-1), and the restated LEMMA HETOW-2 gives
+> Phi2 = Psi with w = 0 under the (LIFT)-slot form at any f1 — Phi2
+> is literally in HE7-13''s hypothesis class at W = 0. This is the
+> route the preceding "reads only the conclusion Phi2 = Psi − w"
+> clause already half-states; the conclusion (4.1(c)'s full
+> consumption supplied at the corrected key) is unchanged.]”
+
+and its §S9 summary, verbatim:
+
+> “* **m-A -> CORRECTED at the S8.1 supply audit.** The two-item
+>   routing sentence misattributed HE7-13''s supply to HE7-12(c)'s
+>   transport. Verified at source: HE7-12(c)'s displayed list
+>   (HE7_PROOF §S5.8) carries "LEMMA HE6R1-2's read" — that leg is
+>   right — but not HE7-13' (ANNEX F-1 postdates it). The bracket
+>   states the true route: HE7-13' is stated at "Psi-tilde = Psi − W
+>   with W = 0 or as in LEMMA HE7-12(d)", and the restated HETOW-2's
+>   w = 0 (LIFT)-slot conclusion puts Phi2 in its hypothesis class
+>   at W = 0 directly. Conclusion unchanged.”
+
+**FORM:** an in-place dated rider at the audit site + a summary bullet in the fold record. **Both are emitted here as one unit** because the rider and its summary are the same act at two sites; the fold's own list names the site (`S8.1 x2`).
+
+**DERIVATION:** a **source-level routing check**: HE7-12(c)'s displayed transport list was read verbatim, and HE7-13′ was found absent from it — with a DATING argument for why (ANNEX F-1 postdates HE7-12(c)).
+
+**CONDITIONALITY:** SUPERSESSION KIND: **provenance-rider** — “Conclusion unchanged.” **What changes is the DAG edge**: 4.1(c)'s supply of ANNEX HE7-13′ does NOT run through HE7-12(c)'s transport; it runs directly through HE7-13′'s own hypothesis class at `W = 0`, which the restated HETOW-2 satisfies literally. **A consumer building the dependency graph from the r1 sentence would draw one wrong edge and miss one right one.**
+
+**RESOLUTION TRACE:** the rider at lines 762–777; the summary at 946–954; the corrected target sentence at 757–761.
+
+**TEETH:** disposition `AUDIT / in-house hostile pass` (PE2 found it) with a **source-verified re-derivation** (“HE7_PROOF §S5.8, verified verbatim this fold”). **The dating argument is independently checkable**: HE7's ANNEX F-1 is dated 2026-08-09 and HE7-12(c) predates it — consistent with `spec/EFF-HE7-s2of3.md`'s homing of ANNEX F-1 as a post-acceptance annex. **This is the queue's cleanest example of a correction that changes a DAG edge without changing a conclusion**, and it is exactly the class of defect a compilation must not smooth over.
+
+---
+
+### EFF.GENTOW4.52  [changes-record]  *(SERIES MINORS-PE2, link 2; CHAIN-COUNT — TERMINAL)*
+
+**CANONICAL STATEMENT:** the m-B rider, in-place at S3(iii), verbatim:
+
+> “[rider (post-PE2, 2026-08-10; m-B): "the three fullness
+> rows" reconciled with the S2 [GT4-r1] FIVE-row recount, both
+> re-verified against HETOW_RECON's S1 table this fold. The five
+> fullness-consuming rows are HETOW-1's r-row plus HETOW-3's four
+> (the §S1-CONVENTION Psi ∤ f_S peel row, the label row, the
+> f_S/mu2 row, the level-1 Phi' ∤ f frame row). THREE are replaced
+> as named here: the r-row and the label row by 4.1(a)(b), the
+> f_S/mu2 row by (ii). The remaining TWO — the Psi ∤ f_S peel row
+> and the Phi' ∤ f frame row — are discharged by 4.1(d)'s peels,
+> in force at this theorem by its preamble ("after the S2 peels":
+> Phi' ∤ f and Phi2 ∤ f assumed, and Phi2 ∤ f_S <=> Phi2 ∤ f per
+> the (ii) proof's peel equivalence). No row is undischarged; the
+> counts describe different partitions of the same five rows]”
+
+**FORM:** in-place dated rider (+ a §S9 summary bullet).
+
+**DERIVATION:** a row-by-row reconciliation of two counts against a third note's table.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **inventory completion** — neither count was wrong; they partition the same five rows differently. **The load-bearing addition is that the remaining two rows ARE discharged** (by 4.1(d)'s peels), which the composed text left implicit.
+
+**RESOLUTION TRACE:** lines 353–365; summary 955–961.
+
+**TEETH:** **ARITHMETIC AUDIT: 3 replaced + 2 discharged = 5 rows** ✓, and the five are named individually ✓. Cross-entry: the five rows are identifiable in `EFF.HETOW.09`'s transcribed S1 table — HETOW-1's r-row, and the four HETOW-3 rows (the §S1 CONVENTION row, the label row, the f_S/μ₂ row, the level-1 frame row) ✓ — **the reconciliation checks out against this queue's own compilation of the target table.**
+
+---
+
+### EFF.GENTOW4.53  [changes-record]  *(SERIES MINORS-PE2, link 3; CHAIN-MANIFEST — TERMINAL)*
+
+**CANONICAL STATEMENT:** the m-C rider, verbatim:
+
+> “[rider (post-PE2,
+> 2026-08-10; m-C): the shape sentence is imprecise — re-checked
+> `git diff d7ddf2e..eb526a0d` on this file this fold (265
+> insertions, 14 deletions). At TWO disclosed sites the composed
+> text did NOT stand and was corrected IN PLACE: (1) the S2 count
+> word ("exactly THREE places" -> "exactly TWO places", the
+> composed "THREE" preserved inside the [GT4-r1 (m-1)] bracket);
+> (2) the S4 remark's parenthetical (the composed "(Δb is forced
+> even; the x- and pi-relations have residue 1 at f1 = 1)" ->
+> the corrected two-clause form, the bracket recording that the
+> composed text said "at f1 = 1"). All 14 deletion lines sit at
+> the manifest's disclosed sites (line re-wraps at bracket
+> insertions plus these two rewrites); both original wordings are
+> preserved inside their brackets, so the edits are auditable; at
+> 4.1(c) and every other site the composed text stands. Statement
+> displays untouched, re-verified.]”
+
+**FORM:** in-place dated rider at the manifest (+ a §S9 summary bullet).
+
+**DERIVATION:** a re-run of the manifest's own diff command, with the deletion lines accounted for site by site.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement** of an imprecise edit-shape claim. **The correction preserves auditability**: both original wordings survive inside their brackets, so the in-place rewrites are still reconstructible.
+
+**RESOLUTION TRACE:** lines 891–905; summary 962–967.
+
+**TEETH:** `git cat-file -t d7ddf2e` and `git cat-file -t eb526a0d` both = commit ✓, so the cited diff is executable. **The two rewrites are visible in the effective text as claimed**: `.10` carries “exactly TWO places [GT4-r1 (m-1): "THREE" recounted …]” ✓ and `.29` carries the corrected parenthetical with “[GT4-r1: the composed parenthetical said "at f1 = 1", which is FALSE …]” ✓ — **both originals are preserved inside their brackets, exactly as the rider says.**
+
+---
+
+### EFF.GENTOW4.54  [changes-record]  *(SERIES MINORS-PE2, link 4; CHAIN-93 — TERMINAL)*
+
+**CANONICAL STATEMENT:** the m-D rider, verbatim:
+
+> “[rider (post-PE2, 2026-08-10; m-D): the raw
+> "93 checks" count is PADDED — in the instrument's FR-M nfeltval
+> loop the else-branch check `chk(tag, 4*v_ <= E2*e_, 'sep')` tests
+> the very inequality that selected the branch, so it can never
+> fire. Recounted this fold by an instrumented isolated /tmp copy
+> (sealed file untouched; run reproduced GREEN 93/0): EXACTLY 14 of
+> the 93 are such vacuous 'sep' confirmations (the non-class rows
+> across FR-M's 3 members x 2 keys), so the falsifiable count is
+> 79. The separator's substance is unaffected: the class side is
+> tested strictly (ncls accumulates only at 4*v_ > E2*e_), and a
+> misclassified non-class row moves the class degree sum off 8 =
+> D2·mu2*, which the 6 degree-sum checks (3 members x 2 keys) test
+> bidirectionally. The numbers this annex quotes from those rows
+> (sigma, pins, c_g, keyvals, degree sums) are measured quantities,
+> not products of the padded checks.]”
+
+**FORM:** in-place dated rider at the adopted machine rows (+ a §S9 summary bullet).
+
+**DERIVATION:** a **re-count by instrumented isolated copy**, with the sealed file untouched and the original verdict reproduced.
+
+**CONDITIONALITY:** SUPERSESSION KIND: **counter re-reading** — 93 → **79 falsifiable**. **The substance argument is the important half**: the class side is tested strictly, and the 6 bidirectional degree-sum checks catch what the vacuous rows cannot.
+
+**RESOLUTION TRACE:** lines 798–813; summary 968–974.
+
+**TEETH:** **ARITHMETIC AUDIT: 14 vacuous = 3 members × 2 keys × ~2.33 rows** — the note attributes them to “the non-class rows across FR-M's 3 members x 2 keys”, and `93 − 14 = 79` ✓. The 6 degree-sum checks = 3 members × 2 keys ✓. **Disposition `disclosed vacuity` with the falsifiable remainder quantified — the strongest form of this disclosure in the queue** (compare `EFF.GENTOW3.50`, which discloses a dead branch but does not re-count).
+
+---
+
+### EFF.GENTOW4.55  [changes-record]  *(SERIES MINORS-PE2, link 5; CHAIN-GRADES)*
+
+**CANONICAL STATEMENT:** the m-E summary, verbatim:
+
+> “* **m-E -> REFRESHED at S7 BOX-4.** The supplier stack's stale
+>   0/2s re-dated from the arc records: HETOW ACCEPTED 2/2,
+>   GENTOW-1 ACCEPTED 2/2 (standing through R2a/b/c), HE6R1
+>   ACCEPTED 2/2 — the staleness was conservative (understated
+>   grades). The refresh PE1's sibling-lesson (6) had assigned to
+>   the r1 annex lands here.”
+
+with the fold's closing fence, verbatim:
+
+> “Sealed artifacts BYTE-FROZEN: the four S8.4 md5s … re-verified before and
+> after this fold; no runner edited, no committed artifact re-run
+> in place. The statement fence: no theorem statement touched —
+> every bracket sits in proof prose, audit records, or boxes.
+> Counter HOLDS at 1/2 (a rider is not a pass). PE3 next.”
+
+**FORM:** §S9 summary bullet + the fold's closing fence.
+
+**DERIVATION:** `[RECORD]` of a grade refresh from arc records.
+
+**CONDITIONALITY:** **“The statement fence: no theorem statement touched”** is the fold's own discipline claim, and it holds: all five minors land in prose, audits or boxes. The counter is superseded to 2/2 at `.56`.
+
+**RESOLUTION TRACE:** lines 975–989.
+
+**TEETH:** **all four S8.4 md5s re-verified at compile time** ✓. The three refreshed supplier grades are independently confirmed by this queue (HETOW `.46`, GENTOW1 `.59` at the same commit `4aff731`) ✓.
+
+---
+
+### EFF.GENTOW4.56  [acceptance-box]  *(SERIES ARC; CHAIN-GRADES)*
+
+**CANONICAL STATEMENT:**
+
+> “**GENTOW4 IS ACCEPTED 2/2** — passPE2 CLEAN (0 CRITICAL + 0 GAP +
+> 5 MINOR, GENTOW4_passPE2_report.md @ 80280b66; counter 0/2 -> 1/2)
+> followed by passPE3 CLEAN (0 CRITICAL + 0 GAP + 2 MINOR,
+> GENTOW4_passPE3_report.md @ f0874ff9; counter 1/2 -> 2/2): two
+> consecutive clean hostile passes, the standing acceptance bar.
+> **THE NOTE IS FROZEN AT THIS RECORD …**”
+
+with the arc's PE3 frames, verbatim:
+
+> “-> PE3 CLEAN 2m @
+> f0874ff9 (FR-3B the first THREE-BLOCK partial member anywhere,
+> gauge-live, c_g = 39/37/27 with three simultaneous 4.2 ties +
+> FR-Q the first f2 = 4 frame, W = (2,1,1,0), where the naive and
+> carrier-but-wrong-datum teeth MERGE and mu2* = 0 still kills the
+> naive read; the 4.C pin display tested as an EQUATION against
+> explicit f_S at 11 members; the single run RED = the verifier's
+> own disclosed KBN side-bet, a third carrier-but-wrong-datum
+> instance).”
+
+and the byte-freeze ledger, verbatim:
+
+> “BYTE-FREEZE LEDGER (this round): pre-fold body md5
+> eeb505576d990b1409f826acf54159ca (945 lines) = the rider state @
+> 6e1a0f8c, the exact text passPE3 verified; the two fold brackets
+> landed insertions-only (+44/-0; prefix through the first
+> insertion, L423, byte-identical, md5 57fbeb69; commit bee0b56a),
+> giving post-fold body md5 f96e23d01b194c49a04e513eda3cf3e0 (989
+> lines) …”
+
+**FORM:** bold-headed acceptance record with an arc and a freeze ledger.
+
+**DERIVATION:** `[RECORD]` of two consecutive CLEAN passes.
+
+**CONDITIONALITY:** none on the counter. **PE3's fresh frames reach three firsts**: the first three-block partial member anywhere, the first f2 = 4 frame, and the first `W = (2,1,1,0)` wrap profile.
+
+**RESOLUTION TRACE:** lines 991–1037.
+
+**TEETH:** **the freeze ledger is FULLY RECONCILED at compile time** (§1, F-2/F-3/F-4): `945 + 44 = 989` ✓; lines 1–423 hash to `57fbeb69…` ✓; lines 1–989 hash to `f96e23d0…` ✓. `git cat-file -t 6e1a0f8c`, `bee0b56a`, `f0874ff9` all = commit ✓. **ARITHMETIC AUDIT of FR-3B's three c_g values (39/37/27):** three simultaneous ties at three blocks — the note's own FR-M pattern (`.48`) shows each c_g absorbs the other blocks' mass plus the sibling's, and three distinct values are consistent with three distinct block masses. Not further checkable without the artifact; recorded as reported.
+
+---
+
+### EFF.GENTOW4.57  [changes-record]  *(CHAIN-MONIC — TERMINAL)*
+
+**CANONICAL STATEMENT:** the TOWERRAT2-C annex. Provenance, verbatim:
+
+> “*Provenance: post-acceptance decorrelated ratification run C
+> (CODEX_TOWERRAT2_2026-08-10.md S4; session
+> 019feb4c-3781-7ac2-96bc-40639ca426eb, model gpt-5.6-sol, outcome
+> RATIFIED-WITH-ANNEX, 2 MINOR). Annex finding C-1 adjudicated REAL
+> (display defect, MINOR) -> this correction, re-derived from this
+> note's own displays; annex finding C-2 adjudicated ARTIFACT (the
+> header grade lines are the frozen historical layer; the dated
+> acceptance record above governs …). The
+> acceptance (2/2) is untouched. This is a PURE dated append on the
+> frozen body: pre-append full-file md5
+> bf7e60d640f36365dac83979d1b6ea63 (1037 lines) …*”
+
+The defect, verbatim:
+
+> “**The defect, exactly.** THEOREM GENTOW-4.A(ii)'s display carries
+> the parenthetical "(length M = floor(n/D2) >= mu2, top coefficient
+> NOT monic — the partial-side signature)". The "top coefficient NOT
+> monic" clause is false as written: f monic (S0 frame) and Phi2
+> monic of degree D2 force, through the division algorithm that
+> defines the Phi2-development, C_M monic of degree n − M·D2 — the
+> 4.A proof itself carries the correct form … The note's own headline witness
+> refutes the parenthetical in place: at PE2-P, C_2 = Phi' + 4 =
+> x^2 + 2 (S1 battery table) — monic. Nor does the weaker reading
+> "C_M is not the constant 1" serve as a partial-side signature: a
+> partial datum with e2f2 | mu1 — e.g. (e2f2, mu2, mu1) = (2, 2, 6),
+> so that e2f2·mu2 = 4 < 6 = mu1 and n = D'mu1 = 3·D2 — has exact
+> division and C_M = 1.”
+
+The display of record, verbatim:
+
+>     “(length M = floor(n/D2) >= mu2; C_M monic of degree
+>      n − M·D2 < D2, the constant 1 exactly when D2 | n; the
+>      partial-side signature is n > mu2·D2 — the development is
+>      not monic-of-length-mu2, S0's refusal criterion)”
+
+**FORM:** dated append with provenance, defect, and a display of record.
+
+**DERIVATION:** re-derived from the note's own frame: “PARTIAL means e2f2·mu2 < mu1, i.e. n = D'mu1 > D'e2f2·mu2 = D2·mu2, and M = floor(mu1/e2f2) >= mu2 follows.”
+
+**CONDITIONALITY:** SUPERSESSION KIND: **replacement**, scoped to the parenthetical: “supersedes the parenthetical only; the surrounding (ii) clause is unchanged”. **TARGETS:** `.19`. The two adjacent consumers are checked to key on the corrected content, not the superseded clause.
+
+**RESOLUTION TRACE:** lines 1039–1088.
+
+**TEETH:** **THE REFUTATION IS DOUBLE AND BOTH HALVES RECOMPUTE.** (1) The note's own witness: `C_2 = Φ′ + 4 = x²−2+4 = x²+2`, **monic** ✓ (recomputed at `.08`) — **the S1 battery table contained the counterexample to the S3 parenthetical all along.** (2) The second-reading counterexample: at `(e2f2, mu2, mu1) = (2, 2, 6)`, `e2f2·mu2 = 4 < 6 = mu1` ✓ (partial), and `n = D'·6` with `D2 = D'·2` gives `n = 3·D2` ✓, so `D2 | n` and `C_M = 1` ✓ — **exact division at a genuinely partial datum, so “C_M ≠ 1” is not a signature either.** The corrected signature `n > mu2·D2` reproduces from `e2f2·mu2 < mu1` ✓. **FREEZE F-5 verified**: lines 1–1037 hash to `bf7e60d6…` ✓. Disposition `AUDIT / decorrelated-model audit`.
+
+---
+
+## 3. XREF verification ledger
+
+### 3.1 Designation XREFs
+
+| ID | Target | Check | count | Role |
+|---|---|---|---:|---|
+| X01 | `GENHN_PROOF_2026-08-08.md` | `GENHN-TOW-1` | **19** | the box; item (4) is this note's charge |
+| X02 | `spec/HYPOTHESIS_LEDGER.md` | `HYP.144  \`GENTOW4-BOX-1/-2/-4\`` | 1 (L1136) | the ledger home of BOX-1/-2/-4; WHERE line pins L577–584, L585–590, L614–618 — **all three verified against this note's line numbers** |
+| X03 | same | `HYP.68  \`GENTOW6-BOX-2\`` | 1 | links BOX-2 into the four-row μ≥3 count-layer family (HYP.139/142/144/68) |
+| X04 | `CODEX_TOWERRAT2_2026-08-10.md` | exists | — | run C's record (`.57`) |
+| X05 | `HETOW_RECON_2026-08-09.md`, `HE6R1_RECON_2026-08-08.md`, `HE7_PROOF_2026-08-08.md`, `HE6_PROOF_2026-08-08.md`, `GENTOW1_PROOF_2026-08-09.md` | all exist | — | the five consumed proof notes (`.04`) |
+
+### 3.2 Commit and artifact pins (v3 rule 23)
+
+| ID | Pin | Verified |
+|---|---|---|
+| P-01 | commits `8ae71864`, `80280b66`, `f0874ff9`, `2aa5b16`, `c8da214`, `c21b59e`, `c43505d`, `d7ddf2e`, `eb526a0d`, `aa92a9d4`, `abd25133`, `a6587325`, `6e1a0f8c`, `bee0b56a`, `59c1966`, `5335ae3` | **ALL SIXTEEN resolve** |
+| P-02 | `gentow4_checks.py` `98cdd4a4…` | MATCHES; **also printed at artifact line 2, verified** |
+| P-03 | `gentow4_checks_output.txt` `58f35305…` | MATCHES; `TOTAL: 1740 checks, 0 violations, 4.9 s` / `GREEN` |
+| P-04 | `gentow4_pe1_fresh.py` `5dc455dd…`, output `dac5110c…` | BOTH MATCH |
+| P-05 | `gentow4_pe2_fresh.py` `b4d795cb…`, output `8e404c4c…` | BOTH MATCH |
+| P-06 | `gentow4_pe3_fresh.py` | EXISTS (md5 `74787ac0…`, compiler-supplied — the note pins no hash for it) |
+| P-07 | `gentow4_pe2_fresh.py` L281–300 (`keyval_checks`) | **VERBATIM at L281** ✓ |
+| P-08 | `gentow4_pe3_fresh.py` L337 (`ncls == want_sum`) | **VERBATIM at L337** ✓ |
+| P-09 | `gentow4_checks.py` L871–878 (the even-p0 branch) | **VERBATIM at L871** ✓ |
+| P-10 | the five text freezes | **ALL RECONCILED** (§1), including the deliberately-non-prefix F-2 |
+| P-11 | `hetowr1_supp.py` (the shared η ≠ 1 leg) | EXISTS, md5 `dcb8452f…` — same instrument as HETOW/GENTOW1 |
+
+### 3.3 Verified NEGATIVE edges
+
+| ID | Check | count | Meaning |
+|---|---|---:|---|
+| N1 | `grep -cF 'GENTOW' GENHN_PROOF_2026-08-08.md` | **0** | item (4)'s box discharge AND the GENHN.B (CS-3) cite are both UNLANDED (`.40`) |
+
+---
+
+## 4. Effective supply / consumption ledger
+
+| Obligation | Effective supply | Surviving fence | Protocol status |
+|---|---|---|---|
+| [GENHN-TOW-1] item (4): partial inner sides | `.18`–`.22` (4.A i–v) via `.11`–`.14` (4.1) and `.19` (the projection) | μ₂ = 2 only (BOX-3); σ-decision only (BOX-2); mixed-side tie boxed (BOX-1) | **DELIVERED, ACCEPTED 2/2, RATIFIED-WITH-ANNEX**; discharge UNLANDED (N1) |
+| the PE2-P protected instance | `.06`, `.08`, `.31`, and P-2's machine row | — | **PRICED AND MACHINE-CHECKED** — “the box's protected instance now has a proved, machine-checked read” |
+| the multiplicity tie | `.24` (pure-power sides, proved) | **mixed sides UNPROVED — BOX-1** (`.36`) | **PARTIAL**; retirable by a faithful-cite unit (ledger disposition) |
+| the partial-side COUNT layer | not supplied | **BOX-2** (`.37`) | **OPEN — the binding residue** per HYP.144, in a four-row family |
+| the corrected `chat_t` | `.05` | f2 = 1 ⟹ corrected = naive | **IMPORTED** |
+
+---
+
+## 5. NON-IMPORTS
+
+**NI-1 — no consumed note is edited.** `.04`, `.40`; verified (N1).
+**NI-2 — nothing about the DECISION is new.** `.07`: only two new obligations, both named.
+**NI-3 — f_S is never exhibited.** `.20`: every decision input is computed from f's own development.
+**NI-4 — the mixed-side tie is NOT derived.** `.25`, `.36`.
+**NI-5 — no budget/count display at partial sides.** `.37`: “sigma-decision only in this unit.”
+**NI-6 — “uniform in all of these” is WITHDRAWN.** `.38`.
+**NI-7 — the coherent-digit display is η = 1-scoped.** `.30`: “no machine row in any leg yet exercises coh() at eta != 1.”
+**NI-8 — (b) alone does NOT give the pin equality.** `.33`: it gives an inequality; equality needs vertices or (c).
+**NI-9 — the adopted PE2 class-mass rows certify `>=`, not `==`.** `.50`.
+**NI-10 — 14 of the adopted 93 checks are vacuous.** `.54`.
+
+Accordingly **no edge is created** from this note to a mixed-side tie, to partial-side count laws, to μ₂ ≥ 3 partial towers, to η ≠ 1 residual-digit reads, or to any `==` class-mass certification from the adopted PE2 rows.
+
+---
+
+## 6. TEETH inverse inventory
+
+### 6.1 Obligation → guarded units
+
+| # | Row | Guarded units | Disposition |
+|---:|---|---|---|
+| 1 | P-1 parse gate | `.18`, `.32` | executable regression (117/117) |
+| 2 | P-2 HEADLINE (σ = PARI, both routes) | `.20`, `.22`, `.06` | executable regression (117/117) — **prices the protected instance** |
+| 3 | P-3 tie | `.24`, `.25` | **EMPIRICAL only at mixed sides, by preregistration design** |
+| 4 | P-4 c_g + floors | `.19`, `.26`, `.28` | executable regression; **71 odd / 46 even = 117, both parities live** |
+| 5 | P-5 field-floor separator | `.31` | executable regression, per factor per prime |
+| 6 | P-6 windows | `.19` | executable regression (15 members × 2 lifts) |
+| 7 | P-7 refine rows | `.22` | executable regression |
+| 8 | T-1 FULLREAD | `.06` | **loud-failure tooth**, 117/117 |
+| 9 | T-2 NOCG | `.28`, `.09` | executable regression, 49 kills — **with a disclosed hand-assembled direction** (`.44`) |
+| 10 | T-3 SIBDROP | `.21`, `.18` | executable regression, 117/117 |
+| 11 | T-4 WITHHOLD | `.34` | executable regression, 0 guesses |
+| 12 | T-5 WRONGKEY | `.14`, `.21` | executable regression, 22/22 incl. the peel corner |
+| 13 | T-6 NOTWIST | `.29` | executable regression, 8 kills — **the HETOW T-BADTWIST phenomenon here** |
+| 14 | FR-G (η ≠ 1, first gauge-live partial side) | `.47`, `.48`, `.13` | **AUDIT / decorrelated frame** — slope layer only |
+| 15 | FR-M (first two-block partial member) | `.48`, `.21` | **AUDIT / decorrelated frame** — first simultaneous double tie |
+| 16 | FR-T / FR-C (PE2) | `.50` | **AUDIT / decorrelated frame**, with a one-sided class-mass disclosure |
+| 17 | FR-3B / FR-Q (PE3) | `.33`, `.56` | **AUDIT / decorrelated frame** — three-block and f2 = 4 firsts |
+| 18 | GENTOW4-BOX-1 | `.25`, `.36` | **OPEN, MATH** (HYP.144) |
+| 19 | GENTOW4-BOX-2 | `.37` | **OPEN, the binding residue** (HYP.144) |
+| 20 | GENTOW4-BOX-3 | `.38`, `.49` | **signed coverage disclosure** |
+| 21 | GENTOW4-BOX-4 | `.39` | grade cap; supplier grades refreshed |
+| 22 | TOWERRAT2 run C | `.57` | **AUDIT / decorrelated-model audit**, 1 REAL + 1 ARTIFACT |
+
+**Zero-orphan check: 22 obligations, all mapped, 0 orphans.**
+
+### 6.2 Arithmetic audit summary (v3 rule 22)
+
+- **117 members** = 25+24+22+22+24 ✓; **1,740 checks / 0 violations** ✓ (artifact)
+- **the diagnostic census** sums per family to 25/24/22/22/24 ✓ — all five exact
+- **71 + 46 = 117** parity split ✓
+- **PE2-P**: ten quantities incl. both polynomial identities ✓ (`.08`)
+- **all five family menus** degree-consistent ✓ (`.32`)
+- **FR-G**: `i(3) = 1`, `W = (1,0)`, `nhat(6) = 27`, corrected `−54` vs naive `−27`, `E2 = 6`, naive slope `= 6 = T2` ⟹ `mu2* = 0`, field floor `12`/`24` exactly at `E2·e` ✓ — **the entire failure mode re-derived**
+- **FR-M**: `c_g^A = 20+7 = 27`, `c_g^B = 20+5 = 25` ✓
+- **the tie**: `|S| = D'e2f2·mu2 = D2·mu2*` ⟹ `mu2* = mu2` ✓
+- **the monic refutation**: `C_2 = x²+2` monic ✓; the `(2,2,6)` datum has `D2 | n` and `C_M = 1` ✓
+- **m-B**: 3 replaced + 2 discharged = 5 rows ✓
+- **m-D**: `93 − 14 = 79` ✓
+- **the freezes**: `945 + 44 = 989` ✓, L423 prefix ✓, 989 ✓, 1037 ✓, and F-1's md5 + 31,014 bytes ✓
+
+**Zero arithmetic discrepancies found.**
+
+---
+
+## 7. BOUNDARY SELF-AUDIT
+
+### 7.1 The rule applied
+
+Zero `\tag{`; smallest cuttable span. Lemma/theorem CLAUSES are units; the four boxes are units (the queue charge requires their exact wording); each folded minor is a unit (five distinct KINDs).
+
+### 7.2 Boundaries drawn, arguable ones both ways
+
+1. **The four boxes → four units (`.36`–`.39`).** *Required by the queue charge* (“compile exactly as left”) and independently right: HYP.144 homes three of them together but the ledger's WHERE line gives three distinct line ranges, so per-box emission is what makes the ledger cross-check possible.
+2. **m-A emitted as ONE unit combining its in-place rider and its §S9 summary (`.51`).** *Arguable*: two sites, two units. *Chosen* because they are the same act — the fold's own list names the site (“S8.1 x2”) — and because splitting would put the DAG-edge correction in one unit and its statement in another.
+3. **`.29` (the coherent-digit remark) kept whole with its in-place rewrite, and `.30` (the scope pin) split off.** *Chosen* because the rewrite is a correction INSIDE the derivation while the scope pin is a separate dated act with its own consequence for BOX-3.
+4. **`.33` (m-i) and `.50` (m-ii) emitted at their bracket sites, not with the acceptance record.** *Chosen* because both are instrument/citation disclosures whose targets are elsewhere in the note (4.C's proof line; the adopted PE2 rows).
+5. **`.08` (the worked PE2-P instance) kept separate from `.31` (§S5's full verification).** *Arguable*: they are the same instance. *Chosen* because `.08` is the S1 examples-first reading (laws read off) and `.31` is the S5 oracle-checked verification (laws confirmed) — different epistemic roles, and `.08` is where the monic counterexample lives.
+6. **`.46`–`.49` (the S8.1 annex) split into seam / supply audit / machine rows / blindness.** *Chosen* because the supply audit is where m-A lands and the machine rows are where m-D lands — two different minors at two different sub-parts.
+
+### 7.3 Merges deliberately NOT made
+
+- `.36`/`.37` kept apart despite sharing HYP.144: the ledger marks BOX-2 alone as “the binding residue”.
+- `.19`/`.23` kept apart: the parenthetical superseded by TOWERRAT2-C is in the statement, and the CORRECT form is in the proof — the annex turns on exactly that contrast.
+- `.51`–`.55` kept as five units: five distinct SUPERSESSION KINDs (provenance-rider, inventory completion, replacement, counter re-reading, counter re-reading).
+
+### 7.4 Rules that fought this genre
+
+- **Rule 23 was decisive**: five text freezes including one that is *correctly* not a prefix. Without the `+44/−0` disclosure the F-2 pin would look like a failure; with it, the arithmetic closes. **This is the clearest case in the queue for pin verification being a reconciliation exercise, not a match test.**
+- **Rule 18 (SUPERSESSION KIND) earned its place at `.51`**: m-A is a `provenance-rider` that changes a DAG edge while leaving the conclusion fixed — a kind that would be invisible under a flat “superseded by”.
+- **Rule 22** surfaced that the note's own S1 table refutes its own S3 parenthetical (`.57`) — recomputing `C_2` was enough.
+- **Rule 27 (`AUDIT`)** applies four times (FR-G/FR-M adoption, the two PE3 folds, run C), and three of those produce disclosures rather than repairs.
+
+---
+
+## 8. Deferred reconciliation obligations
+
+1. **Two unlanded consumptions on GENHN — FOR-0c.** The item-(4) box discharge, and the GENHN.B (CS-3) partial-side rider's cite of 4.A(v), whose precondition (acceptance) is now met (N1).
+2. **HYP.144 quotes the pre-m-E grades and the pre-acceptance self-grade — FOR-0d/ledger.** The ledger row states BOX-4 as “0/2 attempt … HETOW-1/2 (HETOW 0/2) and the HE6R1 0/2-grade annex stack”, which the m-E rider refreshed and which the acceptance record superseded.
+3. **`gentow4_pe3_fresh.py` carries no md5 pin in the note — FOR-0b.** It is cited by line number (L337) but not hashed; the other four instruments are hashed. Compiler-supplied: `74787ac0…`.
+4. **No η ≠ 1 `coh()` row exists in any leg — FOR-0d.** BOX-3's named gap; the residual-digit layer of S3(v) is unexercised at η ≠ 1.
+
+---
+
+## 9. Self-audit and OPEN-CALLS
+
+### 9.1 Resolved compilation calls
+
+- The effective-text rule separates r1's bracketed insertions from its **two disclosed in-place rewrites**, and both original wordings are located inside their brackets as m-C claims.
+- **All five text freezes reconciled** — including the one that is deliberately not a prefix, whose `945 + 44 = 989` arithmetic closes exactly — and **six artifact md5s plus three source-line citations verified verbatim**.
+- **The queue-charged m-A rider is compiled in full** (`.51`) with both its sites, its dating argument, and the DAG-edge consequence stated explicitly.
+- **GENTOW4-BOX-1/-2/-3/-4 are reproduced exactly as left**, each with its HYP.144 (or HYP.68) ledger cross-reference quoted, and the ledger's three WHERE line-ranges verified against the note.
+- Nine CHAINs with TERMINALs; five folded minors with five distinct KINDs.
+- **Every number recomputed**, including the two independent halves of the TOWERRAT2-C refutation and FR-G's complete failure mode.
+
+### 9.2 OPEN-CALLS
+
+**OPEN-CALL 1 — two consumptions are unlocked and unlanded. FOR-0c.**
+`.40` names both: the item-(4) box discharge in GENHN, and the GENHN.B (CS-3) rider's conditional cite of THEOREM GENTOW-4.A(v), which was gated on “after acceptance” and is now unblocked (`.56`). Verified unlanded (N1). The cite's own scope condition is already written: “for inner-mu2 = 2 partial leaves at pure-power sides — with GENTOW4-BOX-1 named at mixed sides.”
+
+**OPEN-CALL 2 — is BOX-1 retirable as the ledger says? FOR-0d.**
+`HYP.144`'s disposition reads “BOX-1 is retirable by a faithful-cite unit”, echoing the box's own “a faithful-cite unit in GENTOW2's pattern would retire it”. **Whether the corpus wants to spend a faithful-cite unit on Ore-II / FGMN Lemma 2.17 is a scheduling decision**, not a compiler call. Recorded because BOX-1 is the only box here with a named, concrete retirement path.
+
+**OPEN-CALL 3 — the ledger row carries stale grades. FOR-0d/ledger.**
+`HYP.144` quotes BOX-4's composed wording (0/2 self-grade; HETOW 0/2; HE6R1 0/2-grade annex stack). The m-E rider refreshed all three supplier grades to ACCEPTED 2/2 and the acceptance record moved the self-grade to 2/2. **A ledger consumer reading HYP.144 alone would carry four stale grades.** Direction is conservative in every case, so nothing downstream is over-claimed.
+
+**OPEN-CALL 4 — the T-2 tooth is asymmetric by construction. FOR-0b.**
+`.44`'s m-2 disclosure: in one of the two directions the wrong σ is a **hand-assembled representative INERT**, not a mutant-reader run through the trichotomy. The kills are PARI-adjudicated both ways, so the tooth fires honestly — but half of it does not exercise the reader. **Whether a future frame should run the mutant reader in both directions is an instrument-design question.**
+
+**OPEN-CALL 5 — no η ≠ 1 `coh()` row exists. FOR-0d.**
+The residual-digit layer of S3(v) is derived at η = 1 (`.30`) and no leg exercises it otherwise; FR-G's members decide on slopes alone by design. Since T-6 NOTWIST shows the cocycle correction IS load-bearing at η₂ ≠ 1, the untested combination (η ≠ 1 × residual-digit read) is the note's sharpest remaining machine gap.
+
+### 9.3 Fidelity audit
+
+- Every CANONICAL STATEMENT is verbatim, or `[ASSEMBLED]` (nine units: `.10`, `.15`, `.23`, `.29`, `.31`, `.34`, `.43`, `.44`, `.46`–`.48`), with `…` at every truncation.
+- **The four boxes are reproduced without any abridgement**, per the queue charge.
+- ASCII preserved. Three source tables emitted as tables; the two fixed-width ASCII blocks double-emitted per v3 rule 14.
+- No quantifier, dictionary entry, pin, slope or σ tuple altered. Compiler-computed values appear only in TEETH fields, marked recomputed.
+- 5 designation XREFs, 11 pin classes, 1 negative edge verified; **no designation invented**.
+
+EFF-GENTOW4 COMPILED: 57 statements / 5 xrefs verified / 5 open calls
