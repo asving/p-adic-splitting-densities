@@ -12,8 +12,9 @@ import Uniformity.Density.Drainage
 density/census lemmas that are certain on the capstone path regardless of the open design
 decisions, generalizing landed `n = 2` instances (`Gates.lean`, `Drainage.lean`) to every
 degree `n`, over the `decidedSeq`/`possibleSeq`/`decidedDensity`/`genuineDensity` machinery of
-`GenuineDensity.lean`. This unit lands CN-05/CN-06 (edge: CN-06 depends on CN-05) and
-CN-07/CN-08 (edge: CN-08 depends on CN-07).
+`GenuineDensity.lean`. This file lands all seven nodes of the batch: CN-05/CN-06 (edge:
+CN-06 depends on CN-05), CN-07/CN-08 (edge: CN-08 depends on CN-07), and CN-09, CN-10, CN-11
+(each independently, depending only on landed API).
 
 * **CN-05** `genuineDensity_eq_zero_of_forall_ne` (+ helper `decidedDensity_eq_zero_of_forall_ne`):
   a type that no monic degree-`n` polynomial ever has gets density `0`. This is the `num = 0`
@@ -32,6 +33,17 @@ CN-07/CN-08 (edge: CN-08 depends on CN-07).
   set is a density upper bound. Since the 2026-08-13 P4 rewire (`genuineDensity = ⨅ N,
   possibleSeq`), this upper bound is a first-class census deliverable, not a drainage
   by-product.
+* **CN-11** `drainage_of_undecided_comp` (+ helper `gapSeq_antitone_general`): the general-`n`
+  extraction of the `n = 2` drainage mechanism (`Drainage.lean:838 drainage_two`) — any
+  subsequence bound on the undecided proportion forces the ambiguity gap of *every* type to
+  drain. `gapSeq_antitone_general` is named to avoid colliding with the landed `n = 2`-only
+  `gapSeq_antitone` (`Drainage.lean:829`); the orchestrator may merge them later, as a strict
+  generalization.
+
+Every ingredient consumed below (`possibleSeq_antitone`, `decidedSeq_mono`, `gapSeq`,
+`gapSeq_nonneg`, `gapSeq_le_undecidedSeq`, `undecidedSeq`, `UndecidedVanishes`,
+`mem_maximalIdeal_pow_iff_dvd`, `typeOf_degree`, `monicPoly_natDegree`, `monicPoly_monic`) is
+**already general in `n`** in the landed files; only the seven theorems above were missing.
 
 ## Status
 
@@ -173,5 +185,50 @@ theorem genuineDensity_le_of_superset {n N : ℕ} {σ : FactorizationType}
   nlinarith [hcast, hc]
 
 end Census
+
+/-! ## CN-11 : drainage from a subsequence bound, general `n` -/
+
+section DrainageGen
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)]
+
+/-- **CN-11, helper.** The ambiguity gap is antitone at every `n`: both ingredients
+(`possibleSeq_antitone`, `decidedSeq_mono`) are already general in `n` in `GenuineDensity.lean`,
+so this is a verbatim replay of the landed `n = 2`-only `gapSeq_antitone`
+(`Drainage.lean:829`). Named `_general` to avoid clobbering that landed statement; the merge
+(this one strictly generalizes it) is left to the orchestrator. -/
+theorem gapSeq_antitone_general (n : ℕ) (σ : FactorizationType) : Antitone (gapSeq O n σ) := by
+  intro N M h
+  simp only [gapSeq]
+  have h1 := possibleSeq_antitone (O := O) n σ h
+  have h2 := decidedSeq_mono (O := O) n σ h
+  linarith
+
+/-- **CN-11.** The general-`n` extraction of the `n = 2` drainage mechanism
+(`Drainage.lean:838 drainage_two`): if the undecided proportion vanishes along *some*
+subsequence `φ M → ∞`, the ambiguity gap of *every* type `σ` drains. At `n = 2`,
+`φ = (2 * ·)` and the bound is `undecidedSeq_tendsto_zero`; at other degrees the fixed
+plumbing here is what a degree-specific undecided bound needs to produce `UndecidedVanishes`. -/
+theorem drainage_of_undecided_comp {n : ℕ} {φ : ℕ → ℕ}
+    (hφ : Tendsto φ atTop atTop)
+    (h : Tendsto (fun M => undecidedSeq O n (φ M)) atTop (𝓝 0))
+    (σ : FactorizationType) : UndecidedVanishes O n σ := by
+  have hbdd : BddBelow (Set.range (gapSeq O n σ)) := by
+    refine ⟨0, ?_⟩
+    rintro x ⟨N, rfl⟩
+    exact gapSeq_nonneg n σ N
+  have hlim : Tendsto (gapSeq O n σ) atTop (𝓝 (⨅ N, gapSeq O n σ N)) :=
+    tendsto_atTop_ciInf (gapSeq_antitone_general n σ) hbdd
+  have hsub : Tendsto (fun M => gapSeq O n σ (φ M)) atTop (𝓝 (⨅ N, gapSeq O n σ N)) :=
+    hlim.comp hφ
+  have hzero : Tendsto (fun M => gapSeq O n σ (φ M)) atTop (𝓝 0) :=
+    squeeze_zero (fun M => gapSeq_nonneg n σ (φ M))
+      (fun M => gapSeq_le_undecidedSeq n (φ M) σ) h
+  have hL : (⨅ N, gapSeq O n σ N) = 0 := tendsto_nhds_unique hsub hzero
+  rw [UndecidedVanishes, ← hL]
+  exact hlim
+
+end DrainageGen
 
 end Uniformity.Density
