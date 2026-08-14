@@ -1589,7 +1589,8 @@ with scope: “it agrees with the pin-height form exactly when j₁ = 0 (a singl
 **RESOLUTION TRACE:** Base lines 721–732 (r1 landed). Scalar corrected at 2593–2622; exponent argument corrected at 2624–2652. Also declared a supersession of HE7-BOX-4 “in read form” (§S0 line 59 and §S9 line 1335–1341, shard 2).
 
 XREF: `lean/notes/openmath/HE6R1_RECON_2026-08-08.md:LEMMA HE6R1-2` — count **8**.
-XREF: `lean/notes/openmath/HE6R1_passPE2_report.md:F-1` — grep-verified count **3**.
+XREF: `lean/notes/openmath/HE6R1_passPE2_report.md:F-1` — grep-verified count **3** (the first correction's source pass).
+XREF: `lean/notes/openmath/HE6R1_passPE3_report.md:F-1` — grep-verified count **12** (the second correction's source pass — the pin-height argument).
 XREF: `lean/notes/openmath/HE6_PROOF_2026-08-08.md:THEOREM HE6.A` — count **19** (the sandwich whose slack is named).
 
 **TEETH:** **NONE — proof-only.** §S9's HE7-BOX-2 `[r1]` states it explicitly: “what stays unexercised anywhere is d_r ≥ 3, f₁ ≥ 2 stage genres, μ ≥ 5 (hence proper blocks — LEMMA HE6R1-2's own configuration is proof-only) and level 3.” (Level 3 was subsequently exercised by `he7rannex_supp.py`; proper blocks were not.)
