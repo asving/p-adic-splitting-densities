@@ -35,12 +35,13 @@ own `(K : Type*) [Field K] [Finite K]` inline.
 **Blueprint defects found at stub-landing** (stage-0e gate, 2026-08-14; recorded here and in the
 0e report, NOT repaired in the blueprint — rule 3):
 
-* **D1 — G.18 `tangCert`, ELABORATION FAILURE (verbatim form).** The two occurrences of
-  `resFactor _ g` leave an unsynthesizable proof placeholder:
-  `error: don't know how to synthesize placeholder for argument 'h'` with goal
+* **D1 — G.18 `tangCert`, ELABORATION FAILURE (verbatim form). ✅ CURED 2026-08-15 (wave-3,
+  `leanfinal` G.18).** The two occurrences of `resFactor _ g` leave an unsynthesizable proof
+  placeholder: `error: don't know how to synthesize placeholder for argument 'h'` with goal
   `(t + 1) / 2 ≤ t + r`. Landed below with the minimal repair — the same `(by omega : …)` proof
   the blueprint already writes on the left-hand side of each equation — which is type-identical by
-  proof irrelevance. The blueprint entry needs the placeholder filled in.
+  proof irrelevance; `Uniformity.ChapG.G18` lands the identical repair, confirmed byte-identical by
+  the retirement-form 0e-diff. The blueprint entry still needs the placeholder filled in.
 * **D2 — G.62b `CubicFamilyIndex.schema`, DEF WITH NO BODY. ✅ CURED 2026-08-15 (blueprint
   AMENDMENT §A-5).** The SIGNATURE block declared a `def … : CubicFamilyIndex → Fin 33` and
   supplied no body, and the body was underdetermined by the prose (which of the 53 formal families
@@ -89,8 +90,15 @@ files). Every stub below is now in EXACTLY one of the two lifecycle states docum
 retirement form that cures the collision and machine-checks the type match). Landed as of this
 unit (re-verified against `leanfinal/Uniformity/ChapG.lean`'s import list immediately before
 finalizing): **G.01–G.07, G.09, G.10, G.12–G.15, G.19, G.21, G.26–G.29, G.32, G.33, G.38, G.39,
-G.45, G.50, G.52, G.53, G.55–G.57, G.62, G.64, G.73** (33 node-files, 48 declarations retired; see
-the individual doc comments below for the retiring `example`). Everything else remains an
+G.45, G.50, G.52, G.53, G.55–G.57, G.62, G.64, G.73** (wave-1/2, 33 node-files, 48 declarations),
+**plus G.08, G.11, G.16, G.17, G.18, G.20, G.22, G.24, G.25, G.30, G.34, G.40, G.54, G.63** (wave-3,
+2026-08-15, 14 node-files, 20 declarations — G.40 and G.63 split into three and two declarations
+respectively) — **47 node-files, 68 declarations retired** in total; see the individual doc
+comments below for the retiring `example`. G.23 and G.31 were investigated in wave-3 and found
+BLOCKED (see the standing G.23a withdrawal above for the former; G.31 needs `Finset.range N` in
+`decidedSet_ram_eq` justified by showing `depthSet π N t = ∅` for `t ≥ N`, which is not among its
+DEPENDS and was not established — booked as an open obstruction, not attempted here). Everything
+else remains an
 UNLANDED `axiom` or (for defs not yet landed) a real local body. The `leancheck`-shadowing
 direction was checked separately (`leancheck` imports `leanfinal` and opens `Uniformity.Density`
 while re-declaring `c3split`, `readEquiv`, `dvdSet`, … in `UniformityCheck`): current-namespace
@@ -160,10 +168,12 @@ example {n N : ℕ} (F : CertFamily O n N) :
     Nat.card F.set = residueCard O ^ F.m * Nat.card F.S :=
   CertFamily.card (n := n) (N := N) (F := F)
 
-/-- **G.08** -/
-axiom CertFamily.decidedDensity_ge {n N : ℕ} (F : CertFamily O n N) :
+/-- **G.08** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G08`). -/
+example {n N : ℕ} (F : CertFamily O n N) :
     ((residueCard O : ℝ) ^ F.m * (Nat.card F.S : ℝ)) / (residueCard O : ℝ) ^ (n * N)
-      ≤ decidedDensity O n F.σ
+      ≤ decidedDensity O n F.σ :=
+  CertFamily.decidedDensity_ge (n := n) (N := N) (F := F)
 
 /-! ## §4 — `n = 2`: the tangency filtration and its exact level census (G.09–G.23) -/
 
@@ -176,9 +186,11 @@ example {a : Fin 2 → O} {t : ℕ} {γ γ' : O} (h : Tang π a t γ)
     (hδ : π ^ ((t + 1) / 2) ∣ (γ' - γ)) : Tang π a t γ' :=
   tang_shift (a := a) (t := t) (γ := γ) (γ' := γ') (h := h) (hδ := hδ)
 
-/-- **G.11** -/
-axiom tang_centre_unique (hπ : Irreducible π) {a : Fin 2 → O} {t : ℕ} {γ γ' : O}
-    (h : Tang π a t γ) (h' : Tang π a t γ') : π ^ ((t + 1) / 2) ∣ (γ' - γ)
+/-- **G.11** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G11`). -/
+example (hπ : Irreducible π) {a : Fin 2 → O} {t : ℕ} {γ γ' : O}
+    (h : Tang π a t γ) (h' : Tang π a t γ') : π ^ ((t + 1) / 2) ∣ (γ' - γ) :=
+  tang_centre_unique (hπ := hπ) (a := a) (t := t) (γ := γ) (γ' := γ') (h := h) (h' := h')
 
 /-- **G.12** LANDED — retirement form (0e-diff against `Uniformity.ChapG.G12`). -/
 example (hπ : Irreducible π) {N t : ℕ} (ht : t ≤ N) {a b : Fin 2 → O}
@@ -223,16 +235,20 @@ example (hπ : Irreducible π) {k r : ℕ} :
 LANDED (wave-2, 2026-08-15) — retirement form (0e-diff against `Uniformity.ChapG.G15`). -/
 example (π : O) (t N : ℕ) : Set (Res O N × Res O N) := tangAdm (π := π) (t := t) (N := N)
 
-/-- **G.16** -/
-axiom card_tangAdm (hπ : Irreducible π) (t r : ℕ) :
+/-- **G.16** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G16`). -/
+example (hπ : Irreducible π) (t r : ℕ) :
     Nat.card (tangAdm π t (t + r)) * residueCard O ^ ((t + 1) / 2)
-      = residueCard O ^ (t + 2 * r)
+      = residueCard O ^ (t + 2 * r) :=
+  card_tangAdm (hπ := hπ) (t := t) (r := r)
 
 /-- **G.17 — The tangency-filtration count.** At level `N = t + r`, exactly `q^(t+2r) = q^(2N−t)`
 classes admit a centre of tangency depth `≥ t`. This is the level-exact form of W-11's per-node
-drainage census, and its `r = 0` case is W-11 clause (iii)'s exact drainage law. -/
-axiom card_tangSet (hπ : Irreducible π) (t r : ℕ) :
-    Nat.card (tangSet π (t + r) t) = residueCard O ^ (t + 2 * r)
+drainage census, and its `r = 0` case is W-11 clause (iii)'s exact drainage law. LANDED
+(wave-3, 2026-08-15) — retirement form (0e-diff against `Uniformity.ChapG.G17`). -/
+example (hπ : Irreducible π) (t r : ℕ) :
+    Nat.card (tangSet π (t + r) t) = residueCard O ^ (t + 2 * r) :=
+  card_tangSet (hπ := hπ) (t := t) (r := r)
 
 /-- **G.18** The depth-`t` census datum: the three `card_certSet_gen` hypotheses, discharged,
 together with the identification of the certified set with `tangSet`.
@@ -241,24 +257,29 @@ together with the identification of the certified set with `tangSet`.
 equation; that placeholder is unsynthesizable (`don't know how to synthesize placeholder for
 argument 'h'`, goal `(t + 1) / 2 ≤ t + r`) and the verbatim signature does not elaborate. Both
 occurrences are filled with the `(by omega : …)` proof the blueprint already writes on the left;
-the resulting type is the intended one (proof irrelevance). -/
-axiom tangCert (hπ : Irreducible π) (t r : ℕ) :
+the resulting type is the intended one (proof irrelevance). LANDED (wave-3, 2026-08-15) —
+retirement form (0e-diff against `Uniformity.ChapG.G18`); the D1 fill above is confirmed
+byte-identical to the landed one by this very type-check. -/
+example (hπ : Irreducible π) (t r : ℕ) :
     ∃ cert : Res O (t + r) → Coeff O 2 (t + r) → Prop,
       (∀ g c, cert g c ↔ readEquiv g c ∈ tangAdm π t (t + r))
       ∧ (∀ g g' c, cert g c → resFactor (O := O) (by omega : (t+1)/2 ≤ t + r) g'
             = resFactor (by omega : (t+1)/2 ≤ t + r) g → cert g' c)
       ∧ (∀ g g' c, cert g c → cert g' c → resFactor (O := O) (by omega : (t+1)/2 ≤ t + r) g'
             = resFactor (by omega : (t+1)/2 ≤ t + r) g)
-      ∧ (∀ c, (∃ g, cert g c) ↔ c ∈ tangSet π (t + r) t)
+      ∧ (∀ c, (∃ g, cert g c) ↔ c ∈ tangSet π (t + r) t) :=
+  tangCert (hπ := hπ) (t := t) (r := r)
 
 /-- **G.19** Level-`N` classes whose maximal centre depth is exactly `t`. LANDED (wave-2,
 2026-08-15) — retirement form (0e-diff against `Uniformity.ChapG.G19`). -/
 example (π : O) (N t : ℕ) : Set (Coeff O 2 N) := depthSet (π := π) (N := N) (t := t)
 
-/-- **G.20** -/
-axiom card_depthSet (hπ : Irreducible π) (t r : ℕ) :
+/-- **G.20** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G20`). -/
+example (hπ : Irreducible π) (t r : ℕ) :
     Nat.card (depthSet π (t + 1 + r) t) + residueCard O ^ (t + 2 * r + 1)
-      = residueCard O ^ (t + 2 * r + 2)
+      = residueCard O ^ (t + 2 * r + 2) :=
+  card_depthSet (hπ := hπ) (t := t) (r := r)
 
 /-- **G.21** The residual pair `(b₀, b₁)` read at a centre of even depth `2k`, in the residue
 field. Landed in the **two-hypothesis form** mandated by blueprint §12 rule 2 (the displayed
@@ -269,12 +290,11 @@ noncomputable example {k : ℕ} {a : Fin 2 → O} {γ : O}
     IsLocalRing.ResidueField O × IsLocalRing.ResidueField O :=
   residualPair (k := k) (a := a) (γ := γ) (h0 := h0) (h1 := h1)
 
-/-- **G.22** Classes of depth exactly `2k` carrying the residual pair `p`. -/
-def resStratum (π : O) (N k : ℕ) (p : IsLocalRing.ResidueField O × IsLocalRing.ResidueField O) :
+/-- **G.22** Classes of depth exactly `2k` carrying the residual pair `p`. LANDED (wave-3,
+2026-08-15) — retirement form (0e-diff against `Uniformity.ChapG.G22`). -/
+example (π : O) (N k : ℕ) (p : IsLocalRing.ResidueField O × IsLocalRing.ResidueField O) :
     Set (Coeff O 2 N) :=
-  {c | c ∈ depthSet π N (2 * k) ∧
-    ∃ (a : Fin 2 → O) (γ : O), proj O 2 N a = c ∧ Tang π a (2 * k) γ ∧
-      ∃ (h0 : π ^ (2 * k) ∣ qval a γ) (h1 : π ^ k ∣ qder a γ), residualPair h0 h1 = p}
+  resStratum (π := π) (N := N) (k := k) (p := p)
 
 /- **G.23a — ⚠ WITHDRAWN: STATEMENT REFUTED** (blueprint AMENDMENT 2026-08-15 §A-1). The stub is
 commented out rather than signed, because a refuted statement must not stand as a fleet contract.
@@ -300,15 +320,19 @@ axiom depthSet_eq_iUnion_resStratum (hπ : Irreducible π) {N k : ℕ} (hk : 2 *
 
 /-! ## §5 — `n = 2`: type classification by depth (G.24–G.31) -/
 
-/-- **G.24** -/
-axiom certRam_of_depth_odd (hπ : Irreducible π) {N j : ℕ} {a : Fin 2 → O}
+/-- **G.24** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G24`). -/
+example (hπ : Irreducible π) {N j : ℕ} {a : Fin 2 → O}
     (hmem : proj O 2 N a ∈ depthSet π N (2 * j + 1)) (hN : 2 * j + 2 ≤ N) :
-    CertRam π a (2 * j + 2)
+    CertRam π a (2 * j + 2) :=
+  certRam_of_depth_odd (hπ := hπ) (N := N) (j := j) (a := a) (hmem := hmem) (hN := hN)
 
-/-- **G.25** -/
-axiom decidedAt_ram_of_depth_odd (hπ : Irreducible π) {N j : ℕ} {c : Coeff O 2 N}
+/-- **G.25** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G25`). -/
+example (hπ : Irreducible π) {N j : ℕ} {c : Coeff O 2 N}
     (hmem : c ∈ depthSet π N (2 * j + 1)) (hN : 2 * j + 2 ≤ N) :
-    DecidedAt O 2 ramType N c
+    DecidedAt O 2 ramType N c :=
+  decidedAt_ram_of_depth_odd (hπ := hπ) (N := N) (j := j) (c := c) (hmem := hmem) (hN := hN)
 
 /-- **G.26** LANDED — retirement form (0e-diff against `Uniformity.ChapG.G26`). Named-argument
 application throughout this file's conversions (not just here) is load-bearing, not stylistic:
@@ -357,11 +381,14 @@ example (hπ : Irreducible π)
     DecidedAt O 2 (typeOf (monicPoly a)) N c :=
   decidedAt_of_depth_lt (hπ := hπ) (N := N) (c := c) (hc := hc) (a := a) (ha := ha)
 
-/-- **G.30** -/
-axiom depth_type (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+/-- **G.30** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G30`); confirms the withdrawn `⚠ BOUNDARY CONDITION` block (blueprint AMENDMENT
+§A-2) is moot — the even branch needs only `t < N`, matching G.28's amended window. -/
+example (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {N t : ℕ} (ht : t < N) {c : Coeff O 2 N} (hc : c ∈ depthSet π N t) :
     (∃ j, t = 2 * j + 1 ∧ DecidedAt O 2 ramType N c)
-      ∨ (∃ k, t = 2 * k ∧ (DecidedAt O 2 inertType N c ∨ DecidedAt O 2 splitType N c))
+      ∨ (∃ k, t = 2 * k ∧ (DecidedAt O 2 inertType N c ∨ DecidedAt O 2 splitType N c)) :=
+  depth_type (hπ := hπ) (N := N) (t := t) (ht := ht) (c := c) (hc := hc)
 
 /-- **G.31a** The inert half of an even stratum. -/
 def inertStratum (π : O) (N k : ℕ) : Set (Coeff O 2 N) :=
@@ -389,10 +416,13 @@ example (hπ : Irreducible π) {N : ℕ} {a : Fin 2 → O} {γ : O}
     ∃ b : Fin 2 → O, proj O 2 N b = proj O 2 N a ∧ typeOf (monicPoly b) = splitType :=
   exists_split_lift (hπ := hπ) (N := N) (a := a) (γ := γ) (hT := hT)
 
-/-- **G.34** -/
-axiom exists_inert_lift (hπ : Irreducible π) {N : ℕ} {a : Fin 2 → O} {γ : O}
+/-- **G.34** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G34`). The private Case-A helper `exists_inert_lift_of_ne_zero` is not part of
+the blueprint's contract surface and is not re-signed here. -/
+example (hπ : Irreducible π) {N : ℕ} {a : Fin 2 → O} {γ : O}
     (hT : Tang π a N γ) :
-    ∃ b : Fin 2 → O, proj O 2 N b = proj O 2 N a ∧ typeOf (monicPoly b) = inertType
+    ∃ b : Fin 2 → O, proj O 2 N b = proj O 2 N a ∧ typeOf (monicPoly b) = inertType :=
+  exists_inert_lift (hπ := hπ) (N := N) (a := a) (γ := γ) (hT := hT)
 
 /-- **G.35** -/
 axiom undecidedSet_eq_tangSet (hπ : Irreducible π)
@@ -436,16 +466,21 @@ example (K : Type*) [Field K] [Finite K] :
     2 * Nat.card {p : K × K // SepPair p} + Nat.card K = Nat.card K * Nat.card K :=
   two_mul_card_sepPair (K := K)
 
-/-- **G.40a** -/
-def DblPair {K : Type*} [Field K] (p : K × K) : Prop := ∃ y : K, p = (y * y, y + y)
+/-- **G.40a** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G40`). -/
+example {K : Type*} [Field K] (p : K × K) : Prop := DblPair (K := K) p
 
-/-- **G.40b** -/
-axiom card_dblPair (K : Type*) [Field K] [Finite K] :
-    Nat.card {p : K × K // DblPair p} = Nat.card K
+/-- **G.40b** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G40`). -/
+example (K : Type*) [Field K] [Finite K] :
+    Nat.card {p : K × K // DblPair p} = Nat.card K :=
+  card_dblPair (K := K)
 
-/-- **G.40c** -/
-axiom pair_trichotomy {K : Type*} [Field K] (p : K × K) :
-    AniForm p ∨ SepPair p ∨ DblPair p
+/-- **G.40c** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G40`). -/
+example {K : Type*} [Field K] (p : K × K) :
+    AniForm p ∨ SepPair p ∨ DblPair p :=
+  pair_trichotomy (K := K) (p := p)
 
 /-- **G.41** -/
 axiom card_inertStratum (hπ : Irreducible π)
@@ -586,14 +621,18 @@ example (a : Fin 3 → O) :
       ∨ typeOf (monicPoly a) = c3ram :=
   typeOf_three_cases (a := a)
 
-/-- **G.54a** -/
-axiom coveringMenu_three :
-    CoveringMenu O 3 ({c3split, c3linInert, c3inert, c3linRam, c3ram} : Finset FactorizationType)
+/-- **G.54a** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G54`). -/
+example :
+    CoveringMenu O 3 ({c3split, c3linInert, c3inert, c3linRam, c3ram} : Finset FactorizationType) :=
+  coveringMenu_three
 
-/-- **G.54b** -/
-axiom genuineDensity_three_eq_zero {σ : FactorizationType} (hs : σ ≠ c3split)
+/-- **G.54b** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G54`). -/
+example {σ : FactorizationType} (hs : σ ≠ c3split)
     (hi : σ ≠ c3linInert) (hc : σ ≠ c3inert) (hr : σ ≠ c3linRam) (ht : σ ≠ c3ram) :
-    genuineDensity O 3 σ = 0
+    genuineDensity O 3 σ = 0 :=
+  genuineDensity_three_eq_zero (hs := hs) (hi := hi) (hc := hc) (hr := hr) (ht := ht)
 
 /-- **G.55** LANDED (wave-2, 2026-08-15) — retirement form (0e-diff against
 `Uniformity.ChapG.G55`). -/
@@ -700,11 +739,13 @@ no proof obligation), so its retirement is the ordinary definitional-stub case, 
 structure/inductive case above. -/
 example : CubicFamilyIndex → Fin 33 := CubicFamilyIndex.schema
 
-/-- **G.63a** -/
-axiom card_cubicFamilyIndex : Nat.card CubicFamilyIndex = 53
+/-- **G.63a** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G63`). -/
+example : Nat.card CubicFamilyIndex = 53 := card_cubicFamilyIndex
 
-/-- **G.63b** -/
-axiom schema_surjective : Function.Surjective CubicFamilyIndex.schema
+/-- **G.63b** LANDED (wave-3, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G63`). -/
+example : Function.Surjective CubicFamilyIndex.schema := schema_surjective
 
 /-- **G.64** HEX3's `R(M)`: the `n = 2` conservative-drain count per centre at window `M`
 (`EFF.HEX3.26`, LEMMA H-4). Pure arithmetic — this definition mentions no ring. LANDED —
