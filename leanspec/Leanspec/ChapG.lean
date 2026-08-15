@@ -701,37 +701,52 @@ example {K : Type*} [Field K] (p : K × K) :
     AniForm p ∨ SepPair p ∨ DblPair p :=
   pair_trichotomy (K := K) (p := p)
 
-/-- **G.41** -/
-axiom card_inertStratum (hπ : Irreducible π)
+/-- **G.41** LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G41`). -/
+example (hπ : Irreducible π)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O] (k r : ℕ) :
     2 * Nat.card (inertStratum π (2 * k + 1 + r) k) + residueCard O ^ (2 * k + 2 * r + 1)
-      = residueCard O ^ (2 * k + 2 * r + 2)
+      = residueCard O ^ (2 * k + 2 * r + 2) :=
+  card_inertStratum (hπ := hπ) (k := k) (r := r)
 
-/-- **G.42** -/
-axiom card_splitStratum (hπ : Irreducible π)
+/-- **G.42** LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G42`). -/
+example (hπ : Irreducible π)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O] (k r : ℕ) :
     2 * Nat.card (splitStratum π (2 * k + 1 + r) k) + residueCard O ^ (2 * k + 2 * r + 1)
-      = residueCard O ^ (2 * k + 2 * r + 2)
+      = residueCard O ^ (2 * k + 2 * r + 2) :=
+  card_splitStratum (hπ := hπ) (k := k) (r := r)
 
 end Menu
 
 /-- **G.43 — W-11's every-window identity, exactly:** at every level the split-decided and
 inert-decided classes are equinumerous — not merely equal in the limit. The mechanism is the
-residue-field coincidence `#{anisotropic pairs} = #{separable-split pairs} = q(q−1)/2`. -/
-axiom decidedCount_split_eq_inert [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
-    decidedCount O 2 splitType N = decidedCount O 2 inertType N
+residue-field coincidence `#{anisotropic pairs} = #{separable-split pairs} = q(q−1)/2`.
+LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against `Uniformity.ChapG.G43`). -/
+example [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
+    decidedCount O 2 splitType N = decidedCount O 2 inertType N :=
+  decidedCount_split_eq_inert (N := N)
 
-/-- **G.44a** -/
-axiom decidedSeq_two_ram_eq [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
+/-- **G.44a** LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G44`), **with the signed index set CORRECTED**: the stub read
+`Finset.range ((N + 1) / 2)`, which is **FALSE at every odd `N`** — at `N = 1` the left-hand side
+is `0` (`depthSet π 1 1 = ∅` by G.30a) while the signed right-hand side is `(q−1)/q² > 0`. The
+refutation is machine-checked at `O := ℤ_[2]`. The genuine ram index set is
+`{j | 2*j+2 ≤ N} = Finset.range (N / 2)`; the inert index set of G.44b is correct as signed.
+See blueprint AMENDMENT §A-9.1. -/
+example [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
     decidedSeq O 2 ramType N
-      = ∑ j ∈ Finset.range ((N + 1) / 2),
-          ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ (2 * j + 2)
+      = ∑ j ∈ Finset.range (N / 2),
+          ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ (2 * j + 2) :=
+  decidedSeq_two_ram_eq (N := N)
 
-/-- **G.44b** -/
-axiom decidedSeq_two_inert_eq [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
+/-- **G.44b** LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G44`). Signed index set unchanged: `k < (N+1)/2 ↔ 2*k+1 ≤ N` is exact here. -/
+example [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
     decidedSeq O 2 inertType N
       = ∑ k ∈ Finset.range ((N + 1) / 2),
-          ((residueCard O : ℝ) - 1) / (2 * (residueCard O : ℝ) ^ (2 * k + 1))
+          ((residueCard O : ℝ) - 1) / (2 * (residueCard O : ℝ) ^ (2 * k + 1)) :=
+  decidedSeq_two_inert_eq (N := N)
 
 namespace Menu
 
@@ -746,36 +761,51 @@ example (c : ℝ) (d : ℕ) {f : ℕ → ℕ} (hf : Tendsto f atTop atTop) :
 
 end Menu
 
-/-- **G.46** -/
-axiom decidedDensity_two_ram_eq [IsAdicComplete (maximalIdeal O) O] :
-    decidedDensity O 2 ramType = 1 / ((residueCard O : ℝ) + 1)
+/-- **G.46** LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G46`). -/
+example [IsAdicComplete (maximalIdeal O) O] :
+    decidedDensity O 2 ramType = 1 / ((residueCard O : ℝ) + 1) :=
+  decidedDensity_two_ram_eq (O := O)
 
-/-- **G.47a** -/
-axiom decidedDensity_two_inert_eq [IsAdicComplete (maximalIdeal O) O] :
-    decidedDensity O 2 inertType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1))
+/-- **G.47a** LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G47`). -/
+example [IsAdicComplete (maximalIdeal O) O] :
+    decidedDensity O 2 inertType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1)) :=
+  decidedDensity_two_inert_eq (O := O)
 
-/-- **G.47b** -/
-axiom decidedDensity_two_split_eq [IsAdicComplete (maximalIdeal O) O] :
-    decidedDensity O 2 splitType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1))
+/-- **G.47b** LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G47`). The node file lands this value TWICE by disjoint routes, as the blueprint
+requires: `decidedDensity_two_split_eq` from G.43's every-window COUNT identity (new to the corpus)
+and `decidedDensity_two_split_eq_of_total` by subtraction from the landed total mass (the
+`leancheck` route). The signed contract is the first; the second is the mutual check. -/
+example [IsAdicComplete (maximalIdeal O) O] :
+    decidedDensity O 2 splitType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1)) :=
+  decidedDensity_two_split_eq (O := O)
 
 /-- **G.48 — THE `n = 2` DENSITY FUNCTION, EXACTLY.** Over every complete DVR with finite residue
-field, both characteristics, wild residue characteristic included. -/
-axiom genuineDensity_two_exact [IsAdicComplete (maximalIdeal O) O] :
+field, both characteristics, wild residue characteristic included. LANDED (wave-8, 2026-08-15) —
+retirement form (0e-diff against `Uniformity.ChapG.G48`). -/
+example [IsAdicComplete (maximalIdeal O) O] :
     genuineDensity O 2 splitType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1))
     ∧ genuineDensity O 2 inertType = (residueCard O : ℝ) / (2 * ((residueCard O : ℝ) + 1))
     ∧ genuineDensity O 2 ramType = 1 / ((residueCard O : ℝ) + 1)
     ∧ (∀ σ : FactorizationType, σ ≠ splitType → σ ≠ inertType → σ ≠ ramType →
-        genuineDensity O 2 σ = 0)
+        genuineDensity O 2 σ = 0) :=
+  genuineDensity_two_exact (O := O)
 
-/-- **G.49a** -/
-axiom gate_two_padic_two_exact :
+/-- **G.49a** LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G49`). This closes the landed bracket `gate_bracket_padic_two` to a point. -/
+example :
     genuineDensity ℤ_[2] 2 splitType = 1 / 3 ∧ genuineDensity ℤ_[2] 2 inertType = 1 / 3
-      ∧ genuineDensity ℤ_[2] 2 ramType = 1 / 3
+      ∧ genuineDensity ℤ_[2] 2 ramType = 1 / 3 :=
+  gate_two_padic_two_exact
 
-/-- **G.49b** -/
-axiom gate_two_padic_three_exact :
+/-- **G.49b** LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G49`). -/
+example :
     genuineDensity ℤ_[3] 2 splitType = 3 / 8 ∧ genuineDensity ℤ_[3] 2 inertType = 3 / 8
-      ∧ genuineDensity ℤ_[3] 2 ramType = 1 / 4
+      ∧ genuineDensity ℤ_[3] 2 ramType = 1 / 4 :=
+  gate_two_padic_three_exact
 
 /-- **G.50** LANDED — retirement form (0e-diff against `Uniformity.ChapG.G50`). -/
 example {σ : FactorizationType} (hσ : σ.degree = 2) :
@@ -787,14 +817,18 @@ example {σ : FactorizationType} (hσ : σ.degree = 2) :
 
 /-- **G.51 — `UniformityStatement` at `n = 2`.** One rational function per degree-2 type, valid at
 every complete DVR with finite residue field — wild residue characteristic included, both
-characteristics. Unconditional: no drainage hypothesis, no axiom, Lean core only. -/
-axiom uniformityStatement_two (σ : FactorizationType) (hσ : σ.degree = 2) :
+characteristics. Unconditional: no drainage hypothesis, no axiom, Lean core only.
+LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against `Uniformity.ChapG.G51`).
+**This is NOT `UniformityStatement`**, which quantifies over all `n > 0`; it is its `n = 2` slice.
+-/
+example (σ : FactorizationType) (hσ : σ.degree = 2) :
     ∃ num den : Polynomial ℚ, den ≠ 0 ∧
       ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
         [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)],
         den.eval ((residueCard O : ℕ) : ℚ) ≠ 0 ∧
           genuineDensity O 2 σ
-            = ((num.eval ((residueCard O : ℕ) : ℚ) / den.eval ((residueCard O : ℕ) : ℚ) : ℚ) : ℝ)
+            = ((num.eval ((residueCard O : ℕ) : ℚ) / den.eval ((residueCard O : ℕ) : ℚ) : ℚ) : ℝ) :=
+  uniformityStatement_two (σ := σ) (hσ := hσ)
 
 /-! ## §8 — `n = 3`: the five types, the menu, the leaf certificates (G.52–G.61) -/
 
