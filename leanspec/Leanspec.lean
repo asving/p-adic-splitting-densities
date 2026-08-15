@@ -1,6 +1,12 @@
 import Uniformity
 import Leanspec.ChapG
 import Leanspec.ChapB
+-- Wired at chapter H's 0e RETIREMENT (2026-08-15): now that every ChapH stub is an `example`
+-- against a landed declaration, the roll-up import turns those 253 type diffs into a STANDING gate
+-- on `lake build Leanspec` — a later `leanfinal` edit that drifts from a signed chapter-H type
+-- breaks this build. (It was deliberately unwired while the H stub gate was open, per ChapH's
+-- FILE LAYOUT note, so concurrent stub-gate agents could not collide on this file.)
+import Leanspec.ChapH
 /-!
 # leanspec — the isolated interface environment (design stage 0e)
 

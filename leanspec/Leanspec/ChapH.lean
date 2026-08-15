@@ -7,6 +7,12 @@ Every SIGNATURE of `blueprint/CHAP-H_general_induction.md` (99 nodes, **192 writ
 declarations), landed in the isolated `leanspec` environment **before** the chapter-H fleet fires,
 in the blueprint's node order `H.01 … H.99` (`H.99` is a gate/census block, not a declaration).
 
+**STATE (read this first): RETIRED, 2026-08-15.** Chapter H is complete in `leanfinal`, so every
+stub here has been diffed against its landed declaration and replaced by an `example` — no `axiom`
+remains. **190 declarations retired / 253 retirement `example`s / 5 findings (R1–R5) / 1 deliberate
+residue (`stageIfaceE`) / 0 substantive divergences.** Full accounting in the RETIREMENT CENSUS
+below; everything above it in this header is the pre-retirement gate record.
+
 ## FILE LAYOUT AND NAMESPACE (the two governing deviations, both recorded)
 
 * **ONE file**, `leanspec/Leanspec/ChapH.lean`, per CHAP-H §15 ("one file", chapter G's convention).
@@ -34,8 +40,11 @@ Per stage-0e rule 1 (CHAP-H §15 rule 1): the definitional layer lands as REAL B
 `inductive`s (`StageLeaf`, `CapBranch`, `LeafE`) and the `def`s (incl. the three witness data
 `genreE2`, `genreA2witness`, `genreD2bwitness`, whose proof fields must elaborate — §15's "sharpest
 test of §3"). Theorem-shaped nodes land as `axiom` stubs at the exact signed type. **No `sorry`.**
-This file is never imported by `leanfinal` or `leancheck`; it carries `axiom`s by design and
-proves nothing.
+This file is never imported by `leanfinal` or `leancheck`; it carried `axiom`s by design and proves
+nothing. **As of the 0e closing pass (2026-08-15) it carries none:** every stub is retired to an
+`example` against its landed declaration — see the RETIREMENT CENSUS below. The paragraphs of this
+header that describe the pre-retirement state are kept as the gate's record and read in the past
+tense; the census is the current state.
 
 ## Withdrawn / not signed (CHAP-H §15 rules 2–4)
 
@@ -58,6 +67,81 @@ mechanically, **146 `axiom` + 5 `structure` + 3 `inductive` + 33 `def` + 1 `nonc
 where 146 is §15's `theorem` column (148) minus the two refutations. The file carries exactly ONE
 declaration that is not a signed blueprint declaration: `stageIfaceE`, the `StageInterface` witness
 that F2 records as missing and that D4's refutation needs (34 `def`s appear in a grep).
+
+## RETIREMENT CENSUS (stage-0e CLOSING pass, 2026-08-15 — chapter H is COMPLETE in `leanfinal`)
+
+Chapter H landed in full: 99 node files `leanfinal/Uniformity/ChapH/H01.lean … H99.lean`, build
+green. **Every signed stub in this file has been retired**, i.e. moved to the LANDED state of the
+`Leanspec.lean` stub lifecycle — the local declaration is deleted and replaced by a bodyless
+`example` at the EXACT signed type, applied to the landed constant with every binder reapplied BY
+NAME. `grep -c '^axiom' Leanspec/ChapH.lean` is now **0**, and `open Uniformity.Density.Induction`
+was added to the header block so the flat `LeanspecH` names below resolve to the landed
+declarations — that resolution IS the diff.
+
+**RETIRED: 190 declarations / 253 retirement `example`s / 5 findings (R1–R5) / 1 deliberate
+residue.**
+
+* **146** theorem-shaped (was `axiom`) → 146 `example`s, one each. Every one applies the landed
+  constant with all binders named, so a divergence in binder NAME, binder COUNT, implicit/explicit
+  status, universe, or instance telescope is a hard error here. **All 146 typechecked on the first
+  pass with zero repairs**: no binder-name, binder-order, universe or instance divergence anywhere
+  in the chapter (the chapter-G `D4` class of ENV under-binding cannot arise here — every CHAP-H
+  signature binds inline).
+* **42** definitional (5 `structure`, 3 `inductive`, 33 `def`, 1 `noncomputable def`) → 105
+  `example`s. `def`s are retired at BOTH available strengths (the §A-5 / G.66 precedent): the
+  type-level `example`, plus a `rfl` (or `Iff.rfl`) diff of the BODY, per equation for the
+  `match`-defined ones. The two well-founded recursions (`alphaBracket`, `uTwo`) do not reduce by
+  `rfl`, so their bodies are diffed through the landed equation lemmas (`by rw [alphaBracket]`,
+  `by rw [uTwo]`) — three equations for `uTwo` including D1's cured DEPENDENT guard — and again
+  numerically: the `#eval` gates at the bottom of this file now execute on the **landed** bodies.
+  `structure`s get two checks each, an anonymous-constructor `example` pinning FIELD ORDER and every
+  field type, and a `have` block pinning every field NAME with its projected type; `inductive`s get
+  one `example` per constructor plus `inferInstance` for each `deriving` class.
+* **2** declarations the gate had REFUTED and WITHDRAWN, `rate_lossPriced` (H.72, D4) and
+  `band_not_consulted` (H.89, D8), which the blueprint repaired IN PLACE (AMENDMENT A-H.1/D4 and
+  A-H.1/D8) and the fleet landed at the repaired types. Retired at the **amended** types — see
+  findings R1 and R2 at the nodes themselves. 188 signed + 2 amended = **190** = §15's signable
+  count.
+* **Deliberate residue: `stageIfaceE`** stays a real local `def` (the G-precedent's one deliberate
+  survivor). It is not a blueprint node and has NO landed counterpart, so there is nothing to
+  retire it against; it is also load-bearing here, as the only `StageInterface` inhabitant in the
+  repo (finding R3) and the witness that makes D4's refutation machine-checked.
+
+### FINDINGS (the product of this pass)
+
+* **R1 / R2 — two nodes' signed types CHANGED between the stub gate and the landing.** H.72
+  `rate_lossPriced` landed at the gate's CANDIDATE A, H.89 `band_not_consulted` landed with the
+  `1 ≤ N` guard. Both changes are sanctioned blueprint amendments (A-H.1/D4, /D8) triggered by this
+  file's own refutations, and the landed types are byte-identical to the amended SIGNATURE blocks —
+  **not** silent drift. Recorded at the nodes, where the refuted displays are also retained verbatim
+  as provenance. *The reader must not treat those commented displays as what is proved.*
+* **R3 — F2 IS STILL OPEN, and it moved into `leanfinal`.** The landed corpus contains **no**
+  inhabitant of `StageInterface` (`grep -rn ': StageInterface' leanfinal/` finds only binders and
+  docstrings, 2026-08-15), so `leanfinal`'s H.72 is a theorem about a possibly-empty type. The
+  repo's only witness is `stageIfaceE` here, and `leanspec` is never imported by `leanfinal`. The
+  genre-F instance §3's design note claims is still absent everywhere.
+* **R4 — D5 IS CLOSED: `A1Cell.deltaSubst`'s stub-side determination was landed unchanged.** The
+  blueprint's PROOF field pinned only `expCoeff`; the three `rfl` diffs at H.94 confirm the fleet
+  landed this file's choice for all seven unpinned fields (`offset`, `stride`, `expConst`,
+  `visCoeff`, `visConst`, `coeff`, `σ`). `A1Cell.prod` matches likewise, field by field.
+* **R5 — D7 IS CLOSED, and D1/D2/D3/D6 are confirmed cured on the landed side.** `RecursionLegs`
+  landed with `hdesc`'s `1 ≤ N` guard and `halpha`'s `m * (k + 1) < N` window (A-H.1/D7, A-H.2), one
+  name per field (D6); `rate_close` landed with `hmc : m < c`. The stub had already been RE-SIGNED to
+  those repaired forms, and the structure retirement's constructor + field-name diff certifies the
+  two sides agree exactly. D1 (`uTwo`'s dependent guard), D2 (`alphaBracket`'s `decreasing_by`) and
+  D3 (H.06's `Nat.coprime_two_right`) are cured identically in `leanfinal`; D3 is unobservable from
+  outside (`hcop` is a proof field), so it is certified only by `leanfinal` building.
+* **Bookkeeping slip in this file's own header, pre-existing (not a `leanfinal` finding):** the D8
+  bullet below says "Signed count is therefore **189**, not 190", while the count-reconciliation
+  paragraph above says **188**. 188 is correct — TWO declarations were withdrawn (D4 and D8), not
+  one. The retirement census above supersedes both numbers.
+
+**No substantive divergence between any signed stub type and its landed declaration was found.**
+Zero repairs were needed to make the 253 diffs typecheck. The diff was negative-controlled
+(2026-08-15): perturbing a theorem's conclusion, a `def` body's `rfl`, a `structure` field name, a
+well-founded equation, and one `deltaSubst` field each produced a hard error on this file, and the
+field-name control's message named `Uniformity.Density.Induction.GenreDatum`, confirming that
+resolution really goes to the LANDED declarations and not to a surviving local stub.
 
 ## DEFECT LIST (stage-0e gate, 2026-08-15; recorded here, NOT repaired in the blueprint)
 
@@ -188,7 +272,9 @@ shapes, plus H.99's own `#eval` column against the blueprint's expected values. 
 
 namespace LeanspecH
 
-open Uniformity Uniformity.Density
+-- 0e RETIREMENT (2026-08-15): every local stub body is gone, so `Induction` must be opened for
+-- the flat names below to resolve to the LANDED declarations (that resolution IS the diff).
+open Uniformity Uniformity.Density Uniformity.Density.Induction
 
 -- `autoImplicit` is ON by default at this pin (the leanspec lakefile sets no `leanOptions`), and it
 -- is what turned CHAP-H's D6 field defect into a confusing `HPow` error instead of a name error.
@@ -206,63 +292,77 @@ set_option linter.unusedVariables false
 /-- A **genre datum** `G = (Q; e₁, f₁, μ; h)`: the local invariants of a composite-stage opening
 (`GENHN.CLASS`(i)). The residual factor `ψ` has degree `f₁` and multiplicity `μ`; the side carrying
 it has slope `h / e₁` in lowest terms. -/
-structure GenreDatum where
-  /-- The ambient cluster's residue cardinality `Q = q ^ d`. -/
-  Q : ℕ
-  /-- The slope denominator; the stage's value-group index `E = e₁`. -/
-  e₁ : ℕ
-  /-- The residual factor's degree; the stage residue field is `F_(Q ^ f₁)`. -/
-  f₁ : ℕ
-  /-- The residual factor's multiplicity, `= the stage multiplicity`. -/
-  μ : ℕ
-  /-- The slope numerator. -/
-  h : ℕ
-  hQ : 2 ≤ Q
-  he₁ : 1 ≤ e₁
-  hh : 1 ≤ h
-  hkey : 2 ≤ e₁ * f₁
-  hmul : 2 ≤ μ
-  hcop : Nat.Coprime h e₁
+-- 0e RETIREMENT (structure). Two checks, per the `Leanspec.lean` lifecycle rule: (i) the
+-- anonymous-constructor `example` pins the FIELD ORDER and every field's type; (ii) the `have`
+-- block pins every field NAME together with its projected type.
+example (Q e₁ f₁ μ h : ℕ) (hQ : 2 ≤ Q) (he₁ : 1 ≤ e₁) (hh : 1 ≤ h) (hkey : 2 ≤ e₁ * f₁)
+    (hmul : 2 ≤ μ) (hcop : Nat.Coprime h e₁) : GenreDatum :=
+  ⟨Q, e₁, f₁, μ, h, hQ, he₁, hh, hkey, hmul, hcop⟩
+
+example (G : GenreDatum) : True := by
+  have _ : ℕ := G.Q
+  have _ : ℕ := G.e₁
+  have _ : ℕ := G.f₁
+  have _ : ℕ := G.μ
+  have _ : ℕ := G.h
+  have _ : 2 ≤ G.Q := G.hQ
+  have _ : 1 ≤ G.e₁ := G.he₁
+  have _ : 1 ≤ G.h := G.hh
+  have _ : 2 ≤ G.e₁ * G.f₁ := G.hkey
+  have _ : 2 ≤ G.μ := G.hmul
+  have _ : Nat.Coprime G.h G.e₁ := G.hcop
+  trivial
 
 /-! ### NODE H.02 [def] — the derived stage data (real bodies) -/
 
 /-- `D′ = e₁ f₁`, the entry key's degree. -/
-def GenreDatum.keyDeg (G : GenreDatum) : ℕ := G.e₁ * G.f₁
+example (G : GenreDatum) : ℕ := GenreDatum.keyDeg (G := G)
+example (G : GenreDatum) : G.keyDeg = G.e₁ * G.f₁ := rfl
 
 /-- `|K| = Q ^ f₁`, the stage residue cardinality. -/
-def GenreDatum.stageCard (G : GenreDatum) : ℕ := G.Q ^ G.f₁
+example (G : GenreDatum) : ℕ := GenreDatum.stageCard (G := G)
+example (G : GenreDatum) : G.stageCard = G.Q ^ G.f₁ := rfl
 
 /-- `L = e₁ μ f₁`, the abscissa length the composite block occupies. -/
-def GenreDatum.sideLen (G : GenreDatum) : ℕ := G.e₁ * G.μ * G.f₁
+example (G : GenreDatum) : ℕ := GenreDatum.sideLen (G := G)
+example (G : GenreDatum) : G.sideLen = G.e₁ * G.μ * G.f₁ := rfl
 
 /-- The stage-initial node floor at coordinate `j`, in `dv`-units:
 `dv(A_j) ≥ (μ − j) · D′ h + 1`.  This is the `[r1]`-CORRECTED floor of `GENHN.A`(i); the sealed
 `(μ − j) · e₁ h + 1` is the `f₁ = 1` specialization (H.08). -/
-def GenreDatum.nodeHeight (G : GenreDatum) (j : ℕ) : ℕ := (G.μ - j) * G.keyDeg * G.h + 1
+example (G : GenreDatum) (j : ℕ) : ℕ := GenreDatum.nodeHeight (G := G) (j := j)
+example (G : GenreDatum) (j : ℕ) : G.nodeHeight j = (G.μ - j) * G.keyDeg * G.h + 1 := rfl
 
 /-! ### NODE H.03 [lemma] -/
 
-axiom GenreDatum.four_le_sideLen (G : GenreDatum) : 4 ≤ G.sideLen
+example (G : GenreDatum) : 4 ≤ G.sideLen :=
+  GenreDatum.four_le_sideLen (G := G)
 
 /-! ### NODE H.04 [lemma] -/
 
-axiom keyDeg_two_cases {e f : ℕ} (h : e * f = 2) : (e = 2 ∧ f = 1) ∨ (e = 1 ∧ f = 2)
+example {e f : ℕ} (h : e * f = 2) : (e = 2 ∧ f = 1) ∨ (e = 1 ∧ f = 2) :=
+  keyDeg_two_cases (e := e) (f := f) (h := h)
 
-axiom sideLen_four_cases {e f m : ℕ} (hm : 2 ≤ m) (hk : 2 ≤ e * f) (h : e * m * f = 4) :
-    (e = 2 ∧ f = 1 ∧ m = 2) ∨ (e = 1 ∧ f = 2 ∧ m = 2)
+example {e f m : ℕ} (hm : 2 ≤ m) (hk : 2 ≤ e * f) (h : e * m * f = 4) :
+    (e = 2 ∧ f = 1 ∧ m = 2) ∨ (e = 1 ∧ f = 2 ∧ m = 2) :=
+  sideLen_four_cases (e := e) (f := f) (m := m) (hm := hm) (hk := hk) (h := h)
 
-axiom four_le_of_sideLen_le {G : GenreDatum} {m D n : ℕ} (hD : 1 ≤ D)
-    (hLm : G.sideLen ≤ m) (hmn : m * D ≤ n) : 4 ≤ m ∧ 4 ≤ n
+example {G : GenreDatum} {m D n : ℕ} (hD : 1 ≤ D)
+    (hLm : G.sideLen ≤ m) (hmn : m * D ≤ n) : 4 ≤ m ∧ 4 ≤ n :=
+  four_le_of_sideLen_le (G := G) (m := m) (D := D) (n := n) (hD := hD) (hLm := hLm) (hmn := hmn)
 
 /-! ### NODE H.05 [theorem] — the schema set is finite -/
 
 /-- The schema set at degree `n`: the triples `(e₁, f₁, μ)` a degree-`n` read can realize. -/
-def schemaSet (n : ℕ) : Set (ℕ × ℕ × ℕ) :=
-  {p | 2 ≤ p.1 * p.2.1 ∧ 2 ≤ p.2.2 ∧ p.1 * p.2.2 * p.2.1 ≤ n}
+example (n : ℕ) : Set (ℕ × ℕ × ℕ) := schemaSet (n := n)
+example (n : ℕ) :
+    schemaSet n = {p | 2 ≤ p.1 * p.2.1 ∧ 2 ≤ p.2.2 ∧ p.1 * p.2.2 * p.2.1 ≤ n} := rfl
 
-axiom finite_schemaSet (n : ℕ) : (schemaSet n).Finite
+example (n : ℕ) : (schemaSet n).Finite :=
+  finite_schemaSet (n := n)
 
-axiom card_schemaSet_le (n : ℕ) : Nat.card (schemaSet n) ≤ n ^ 3
+example (n : ℕ) : Nat.card (schemaSet n) ≤ n ^ 3 :=
+  card_schemaSet_le (n := n)
 
 /-! ### NODE H.06 [theorem] — the DATUM set is infinite (the A2 refutation)
 
@@ -270,35 +370,38 @@ axiom card_schemaSet_le (n : ℕ) : Nat.card (schemaSet n) ≤ n ^ 3
 `Nat.coprime_two_right` does. -/
 
 /-- The genre-E datum at `Q = 2` with slope numerator `2t+1`. -/
-def genreE2 (t : ℕ) : GenreDatum where
-  Q := 2; e₁ := 2; f₁ := 1; μ := 2; h := 2 * t + 1
-  hQ := le_refl 2
-  he₁ := by omega
-  hh := by omega
-  hkey := by omega
-  hmul := le_refl 2
-  hcop := Nat.coprime_two_right.2 ⟨t, rfl⟩
+example (t : ℕ) : GenreDatum := genreE2 (t := t)
+-- The DATA fields, `rfl`-diffed (the six proof fields are proof-irrelevant, so nothing to diff;
+-- D3's cured `hcop` cite is not observable from outside — it is checked by `leanfinal` building).
+example (t : ℕ) :
+    ((genreE2 t).Q, (genreE2 t).e₁, (genreE2 t).f₁, (genreE2 t).μ, (genreE2 t).h)
+      = (2, 2, 1, 2, 2 * t + 1) := rfl
 
-axiom genreE2_injective : Function.Injective genreE2
+example : Function.Injective genreE2 :=
+  genreE2_injective
 
-axiom infinite_genreDatum_of_schema :
-    {G : GenreDatum | G.Q = 2 ∧ G.e₁ = 2 ∧ G.f₁ = 1 ∧ G.μ = 2}.Infinite
+example :
+    {G : GenreDatum | G.Q = 2 ∧ G.e₁ = 2 ∧ G.f₁ = 1 ∧ G.μ = 2}.Infinite :=
+  infinite_genreDatum_of_schema
 
 /-! ### NODE H.07 [def] — the occupied-height predicate (real body) -/
 
 /-- `G.Occupied m`: the `dv`-height `m` admits an INTEGRAL normalizer monomial
 `n(m) = x^{i} π^{a}` with `0 ≤ i < e₁` and `a ≥ 0`.  This is the TERMINAL scope word of
 `GENHN.A`(ii) after the post-D2b corrigendum. -/
-def GenreDatum.Occupied (G : GenreDatum) (m : ℕ) : Prop :=
-  ∃ i a : ℕ, i < G.e₁ ∧ i * G.h + G.e₁ * a = m
+example (G : GenreDatum) (m : ℕ) : Prop := GenreDatum.Occupied (G := G) (m := m)
+example (G : GenreDatum) (m : ℕ) :
+    G.Occupied m ↔ ∃ i a : ℕ, i < G.e₁ ∧ i * G.h + G.e₁ * a = m := Iff.rfl
 
 /-! ### NODE H.08 [lemma] -/
 
-axiom GenreDatum.keyDeg_mul_h_lt_nodeHeight (G : GenreDatum) {j : ℕ} (hj : j < G.μ) :
-    G.keyDeg * G.h < G.nodeHeight j
+example (G : GenreDatum) {j : ℕ} (hj : j < G.μ) :
+    G.keyDeg * G.h < G.nodeHeight j :=
+  GenreDatum.keyDeg_mul_h_lt_nodeHeight (G := G) (j := j) (hj := hj)
 
-axiom GenreDatum.nodeHeight_of_f_one (G : GenreDatum) (hf : G.f₁ = 1) (j : ℕ) :
-    G.nodeHeight j = (G.μ - j) * G.e₁ * G.h + 1
+example (G : GenreDatum) (hf : G.f₁ = 1) (j : ℕ) :
+    G.nodeHeight j = (G.μ - j) * G.e₁ * G.h + 1 :=
+  GenreDatum.nodeHeight_of_f_one (G := G) (hf := hf) (j := j)
 
 /-! ### NODE H.13 [def] — `clusterC`, **HOISTED** out of §4
 
@@ -307,7 +410,8 @@ section order cannot be the landing order. H.09's DEPENDS field already lists H.
 
 /-- `c(m) = m(m−1)/2`, the α-bracket's exponent coefficient offset (`GENIND` §S1). Defined as
 `m.choose 2` so that `2 * clusterC m = m * (m − 1)` is exact in `ℕ` with no floor. -/
-def clusterC (m : ℕ) : ℕ := m.choose 2
+example (m : ℕ) : ℕ := clusterC (m := m)
+example (m : ℕ) : clusterC m = m.choose 2 := rfl
 
 /-! ### NODE H.09 [def] — `StageInterface` (real body; §15's fragile signature #1) -/
 
@@ -316,74 +420,73 @@ def clusterC (m : ℕ) : ℕ := m.choose 2
 MASS normalization), `(CS-EXACT)`, and the degree-consistency half of `(CS-3)`.  **Nothing in this
 structure is proved by chapter H**; the chapter proves the count and rate theorems of §10 FROM these
 fields. -/
-structure StageInterface (G : GenreDatum) (N H S : ℕ) where
-  /-- The common uniform stage window `M_G`. -/
-  stageWindow : ℕ
-  /-- `Δ_G = λ_G + r_G`: the sibling-Hensel loss plus the ragged truncation loss. -/
-  stageLoss : ℕ
-  /-- `C_G^{extra}`: the entry codimension beyond the supporting-line price. -/
-  entryCodim : ℕ
-  /-- `O_G(1)`: the genre-local slack. -/
-  slack : ℕ
-  /-- The stage's own α-aggregation bracket, per stage-slope-sum `κ`. -/
-  bracket : ℕ → ℕ
-  /-- The stage's conservative-drain fraction at stage window `M`. -/
-  drainFrac : ℕ → ℝ
-  /-- The σ-multiset the stage's decided leaves carry. -/
-  stageSigma : FactorizationType
-  /-- The actual side length dominates the block's own length. -/
-  hS : G.sideLen ≤ S
-  /-- **(CS-1Q.a)** — the ragged/loss-corrected stage-window supply. -/
-  hwin : G.e₁ * (N - 1 - H) ≤ stageWindow + stageLoss
-  /-- **(CS-1Q.b)** — every lost `K`-digit is paid by entry codimension or supporting-line slack. -/
-  hprice : 2 * (G.f₁ * stageLoss) ≤ 2 * entryCodim + (S - 2 * G.keyDeg) * H + 2 * slack
-  /-- **(CS-2)** — the stage bracket is `GENIND-2(b)` inside the stage, MASS-normalized. -/
-  hbracket : ∀ κ, 1 ≤ κ →
-    bracket κ * G.stageCard = (G.stageCard - 1) * G.stageCard ^ ((clusterC G.μ + 1) * κ)
-  /-- The drain fraction is a genuine fraction. -/
-  hdrain_nonneg : ∀ M, 0 ≤ drainFrac M
-  hdrain_le_one : ∀ M, drainFrac M ≤ 1
-  /-- **(CS-3)**, degree half — at `μ = 2` the leaf dictionary exhausts the block degree. -/
-  hsigma : G.μ = 2 → stageSigma.degree = 2 * G.keyDeg
+-- 0e RETIREMENT (structure): constructor order + every field type, then every field name.
+example (G : GenreDatum) (N H S : ℕ) (stageWindow stageLoss entryCodim slack : ℕ)
+    (bracket : ℕ → ℕ) (drainFrac : ℕ → ℝ) (stageSigma : FactorizationType)
+    (hS : G.sideLen ≤ S)
+    (hwin : G.e₁ * (N - 1 - H) ≤ stageWindow + stageLoss)
+    (hprice : 2 * (G.f₁ * stageLoss) ≤ 2 * entryCodim + (S - 2 * G.keyDeg) * H + 2 * slack)
+    (hbracket : ∀ κ, 1 ≤ κ →
+      bracket κ * G.stageCard = (G.stageCard - 1) * G.stageCard ^ ((clusterC G.μ + 1) * κ))
+    (hdrain_nonneg : ∀ M, 0 ≤ drainFrac M) (hdrain_le_one : ∀ M, drainFrac M ≤ 1)
+    (hsigma : G.μ = 2 → stageSigma.degree = 2 * G.keyDeg) :
+    StageInterface G N H S :=
+  ⟨stageWindow, stageLoss, entryCodim, slack, bracket, drainFrac, stageSigma, hS, hwin, hprice,
+    hbracket, hdrain_nonneg, hdrain_le_one, hsigma⟩
+
+example {G : GenreDatum} {N H S : ℕ} (I : StageInterface G N H S) : True := by
+  have _ : ℕ := I.stageWindow
+  have _ : ℕ := I.stageLoss
+  have _ : ℕ := I.entryCodim
+  have _ : ℕ := I.slack
+  have _ : ℕ → ℕ := I.bracket
+  have _ : ℕ → ℝ := I.drainFrac
+  have _ : FactorizationType := I.stageSigma
+  have _ : G.sideLen ≤ S := I.hS
+  have _ : G.e₁ * (N - 1 - H) ≤ I.stageWindow + I.stageLoss := I.hwin
+  have _ : 2 * (G.f₁ * I.stageLoss)
+      ≤ 2 * I.entryCodim + (S - 2 * G.keyDeg) * H + 2 * I.slack := I.hprice
+  have _ : ∀ κ, 1 ≤ κ →
+      I.bracket κ * G.stageCard
+        = (G.stageCard - 1) * G.stageCard ^ ((clusterC G.μ + 1) * κ) := I.hbracket
+  have _ : ∀ M, 0 ≤ I.drainFrac M := I.hdrain_nonneg
+  have _ : ∀ M, I.drainFrac M ≤ 1 := I.hdrain_le_one
+  have _ : G.μ = 2 → I.stageSigma.degree = 2 * G.keyDeg := I.hsigma
+  trivial
 
 /-! ### NODE H.10 [lemma] -/
 
-axiom GenreDatum.occupied_of_keyDeg_mul_h_lt (G : GenreDatum) {m : ℕ}
-    (hm : G.keyDeg * G.h < m) : G.Occupied m
+example (G : GenreDatum) {m : ℕ}
+    (hm : G.keyDeg * G.h < m) : G.Occupied m :=
+  GenreDatum.occupied_of_keyDeg_mul_h_lt (G := G) (m := m) (hm := hm)
 
-axiom GenreDatum.occupied_nodeHeight (G : GenreDatum) {j : ℕ} (hj : j < G.μ) :
-    G.Occupied (G.nodeHeight j)
+example (G : GenreDatum) {j : ℕ} (hj : j < G.μ) :
+    G.Occupied (G.nodeHeight j) :=
+  GenreDatum.occupied_nodeHeight (G := G) (j := j) (hj := hj)
 
 /-! ### NODE H.11 [lemma] — the A2/R4 unoccupied-height witness -/
 
 /-- The A2/R4 witness datum `(Q; e₁, f₁, μ; h) = (2; 3, 1, 2; 2)`. -/
-def genreA2witness : GenreDatum where
-  Q := 2; e₁ := 3; f₁ := 1; μ := 2; h := 2
-  hQ := le_refl 2
-  he₁ := by omega
-  hh := by omega
-  hkey := by omega
-  hmul := le_refl 2
-  hcop := by decide
+example : GenreDatum := genreA2witness
+example : (genreA2witness.Q, genreA2witness.e₁, genreA2witness.f₁, genreA2witness.μ,
+    genreA2witness.h) = (2, 3, 1, 2, 2) := rfl
 
-axiom not_occupied_genreA2witness : ¬ genreA2witness.Occupied 1
+example : ¬ genreA2witness.Occupied 1 :=
+  not_occupied_genreA2witness
 
 /-! ### NODE H.12 [lemma] — the post-D2b witness -/
 
 /-- The post-D2b witness datum `(Q; e₁, f₁, μ; h) = (2; 1, 2, 2; 1)`. -/
-def genreD2bwitness : GenreDatum where
-  Q := 2; e₁ := 1; f₁ := 2; μ := 2; h := 1
-  hQ := le_refl 2
-  he₁ := le_refl 1
-  hh := le_refl 1
-  hkey := by omega
-  hmul := le_refl 2
-  hcop := by decide
+example : GenreDatum := genreD2bwitness
+example : (genreD2bwitness.Q, genreD2bwitness.e₁, genreD2bwitness.f₁, genreD2bwitness.μ,
+    genreD2bwitness.h) = (2, 1, 2, 2, 1) := rfl
 
-axiom occupied_zero_genreD2bwitness : genreD2bwitness.Occupied 0
+example : genreD2bwitness.Occupied 0 :=
+  occupied_zero_genreD2bwitness
 
-axiom not_keyDeg_mul_h_lt_zero_genreD2bwitness :
-    ¬ (genreD2bwitness.keyDeg * genreD2bwitness.h < 0)
+example :
+    ¬ (genreD2bwitness.keyDeg * genreD2bwitness.h < 0) :=
+  not_keyDeg_mul_h_lt_zero_genreD2bwitness
 
 /-! ## §4 — ARITHMETIC I: THE α SPECIES (H.13–H.22)
 
@@ -391,34 +494,42 @@ axiom not_keyDeg_mul_h_lt_zero_genreD2bwitness :
 
 /-! ### NODE H.14 [lemma] -/
 
-axiom two_mul_clusterC (m : ℕ) : 2 * clusterC m = m * (m - 1)
+example (m : ℕ) : 2 * clusterC m = m * (m - 1) :=
+  two_mul_clusterC (m := m)
 
-axiom clusterC_eq_sum (m : ℕ) : clusterC m = ∑ j ∈ Finset.range m, j
+example (m : ℕ) : clusterC m = ∑ j ∈ Finset.range m, j :=
+  clusterC_eq_sum (m := m)
 
-axiom clusterC_succ_values :
-    clusterC 2 + 1 = 2 ∧ clusterC 3 + 1 = 4 ∧ clusterC 4 + 1 = 7 ∧ clusterC 5 + 1 = 11
+example :
+    clusterC 2 + 1 = 2 ∧ clusterC 3 + 1 = 4 ∧ clusterC 4 + 1 = 7 ∧ clusterC 5 + 1 = 11 :=
+  clusterC_succ_values
 
 /-! ### NODE H.15 [def] -/
 
 /-- The α(k)-locus's free-digit exponent, written in the TRANSPORTED coordinate `W = N − 1 − mk`:
 `alphaExp m W k = m·W + k·c(m)` — the reduced-window exponent plus the ghost exponent.  H.16
 identifies it with `GENIND`'s displayed `m(N−1) − k·m(m+1)/2`. -/
-def alphaExp (m W k : ℕ) : ℕ := m * W + k * clusterC m
+example (m W k : ℕ) : ℕ := alphaExp (m := m) (W := W) (k := k)
+example (m W k : ℕ) : alphaExp m W k = m * W + k * clusterC m := rfl
 
 /-! ### NODE H.16 [lemma] -/
 
-axiom sum_alphaSlots (m W k : ℕ) :
-    ∑ j ∈ Finset.range m, (W + j * k) = alphaExp m W k
+example (m W k : ℕ) :
+    ∑ j ∈ Finset.range m, (W + j * k) = alphaExp m W k :=
+  sum_alphaSlots (m := m) (W := W) (k := k)
 
-axiom two_mul_alphaExp_add (m W k : ℕ) :
-    2 * alphaExp m W k + k * (m * (m + 1)) = 2 * (m * (W + m * k))
+example (m W k : ℕ) :
+    2 * alphaExp m W k + k * (m * (m + 1)) = 2 * (m * (W + m * k)) :=
+  two_mul_alphaExp_add (m := m) (W := W) (k := k)
 
 /-! ### NODE H.17 [lemma] -/
 
-axiom ghostSlots_eq (m k : ℕ) : ∑ j ∈ Finset.range m, j * k = k * clusterC m
+example (m k : ℕ) : ∑ j ∈ Finset.range m, j * k = k * clusterC m :=
+  ghostSlots_eq (m := m) (k := k)
 
-axiom ghost_add_child_eq_alphaExp (m W k : ℕ) :
-    k * clusterC m + m * W = alphaExp m W k
+example (m W k : ℕ) :
+    k * clusterC m + m * W = alphaExp m W k :=
+  ghost_add_child_eq_alphaExp (m := m) (W := W) (k := k)
 
 /-! ### NODE H.18 [def] — `alphaBracket` (real body)
 
@@ -428,41 +539,51 @@ unconditionally true, so the tactic below is the whole repair. -/
 /-- The α-prefix aggregate `b_{m,d}(μ)`, defined by the composition recursion (peel the first
 step).  `alphaBracket Q c μ = Σ over compositions (k₁,…,k_r) of μ with kᵢ ≥ 1 of
 Π (Q−1)Q^{c kᵢ}`, and `alphaBracket Q c 0 = 1`. -/
-def alphaBracket (Q c : ℕ) : ℕ → ℕ
-  | 0 => 1
-  | (μ + 1) => ∑ k ∈ Finset.range (μ + 1),
-      (Q - 1) * Q ^ (c * (k + 1)) * alphaBracket Q c (μ - k)
-  decreasing_by omega
+example (Q c : ℕ) : ℕ → ℕ := alphaBracket (Q := Q) (c := c)
+-- Well-founded recursion: `rfl` does not reduce it, so the BODY is diffed by its two equations
+-- (`rw` through the landed equation lemmas) and, numerically, by the `#eval` gate at the bottom of
+-- this file, which now runs on the LANDED body.
+example (Q c : ℕ) : alphaBracket Q c 0 = 1 := by rw [alphaBracket]
+example (Q c μ : ℕ) : alphaBracket Q c (μ + 1)
+    = ∑ k ∈ Finset.range (μ + 1), (Q - 1) * Q ^ (c * (k + 1)) * alphaBracket Q c (μ - k) := by
+  rw [alphaBracket]
 
 /-! ### NODE H.19 [lemma] -/
 
-axiom alphaBracket_succ (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 1 ≤ c) {μ : ℕ} (hμ : 1 ≤ μ) :
-    alphaBracket Q c (μ + 1) = Q ^ (c + 1) * alphaBracket Q c μ
+example (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 1 ≤ c) {μ : ℕ} (hμ : 1 ≤ μ) :
+    alphaBracket Q c (μ + 1) = Q ^ (c + 1) * alphaBracket Q c μ :=
+  alphaBracket_succ (Q := Q) (c := c) (hQ := hQ) (hc := hc) (μ := μ) (hμ := hμ)
 
 /-! ### NODE H.20 [theorem] — the general bracket (SPLIT-MANDATED into 2) -/
 
-axiom alphaBracket_closed (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 1 ≤ c) {μ : ℕ} (hμ : 1 ≤ μ) :
-    Q * alphaBracket Q c μ = (Q - 1) * Q ^ ((c + 1) * μ)
+example (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 1 ≤ c) {μ : ℕ} (hμ : 1 ≤ μ) :
+    Q * alphaBracket Q c μ = (Q - 1) * Q ^ ((c + 1) * μ) :=
+  alphaBracket_closed (Q := Q) (c := c) (hQ := hQ) (hc := hc) (μ := μ) (hμ := hμ)
 
 /-- The corpus's displayed form, for consumers that prefer it. -/
-axiom alphaBracket_eq (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 1 ≤ c) {μ : ℕ} (hμ : 1 ≤ μ) :
-    alphaBracket Q c μ = (Q - 1) * Q ^ ((c + 1) * μ - 1)
+example (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 1 ≤ c) {μ : ℕ} (hμ : 1 ≤ μ) :
+    alphaBracket Q c μ = (Q - 1) * Q ^ ((c + 1) * μ - 1) :=
+  alphaBracket_eq (Q := Q) (c := c) (hQ := hQ) (hc := hc) (μ := μ) (hμ := hμ)
 
 /-! ### NODE H.21 [lemma] — the `(CS-2)` numeric certificate (EXECUTED at the gate below) -/
 
-axiom alphaBracket_audit :
-    alphaBracket 4 1 2 = 192 ∧ alphaBracket 3 1 2 = 54 ∧ alphaBracket 2 1 3 = 32
+example :
+    alphaBracket 4 1 2 = 192 ∧ alphaBracket 3 1 2 = 54 ∧ alphaBracket 2 1 3 = 32 :=
+  alphaBracket_audit
 
-axiom massNorm_eq_ghost_mul_letters :
-    (4 : ℕ) ^ 2 * ((4 - 1) * 4 ^ 1) = alphaBracket 4 1 2
+example :
+    (4 : ℕ) ^ 2 * ((4 - 1) * 4 ^ 1) = alphaBracket 4 1 2 :=
+  massNorm_eq_ghost_mul_letters
 
 /-! ### NODE H.22 [lemma] -/
 
-axiom drain_codim (d m N : ℕ) (hm : 1 ≤ m) :
-    d * (m - 1) * (N - 1) + d * (N - 1) = d * m * (N - 1)
+example (d m N : ℕ) (hm : 1 ≤ m) :
+    d * (m - 1) * (N - 1) + d * (N - 1) = d * m * (N - 1) :=
+  drain_codim (d := d) (m := m) (N := N) (hm := hm)
 
-axiom window_one_exponents (d m : ℕ) (hm : 1 ≤ m) :
-    d * m * (1 - 1) = 0 ∧ d * (m - 1) * (1 - 1) = 0 ∧ ¬ ∃ k, 1 ≤ k ∧ m * k ≤ 0
+example (d m : ℕ) (hm : 1 ≤ m) :
+    d * m * (1 - 1) = 0 ∧ d * (m - 1) * (1 - 1) = 0 ∧ ¬ ∃ k, 1 ≤ k ∧ m * k ≤ 0 :=
+  window_one_exponents (d := d) (m := m) (hm := hm)
 
 /-! ## §5 — ARITHMETIC II: THE `m = 2` DRAINAGE SPECIES (H.23–H.29) -/
 
@@ -479,102 +600,125 @@ values are unchanged; they are certified at the gate (`#guard`, twelve values). 
 units, by `GENIND` §S5.2's first-step recursion specialized to `m = 2` (where the recursion has no
 β-terms: `m = 2 < 4` excludes CS, and a repeated linear `e = 1` factor at `m = 2` spans the whole
 polygon, i.e. is α). -/
-def uTwo (Q : ℕ) : ℕ → ℕ
-  | 0 => 1
-  | 1 => 1
-  | (N + 2) => Q ^ (N + 1) +
-      ∑ k ∈ Finset.range (N + 2),
-        if h : 1 ≤ k ∧ 2 * k ≤ N + 1 then (Q - 1) * Q ^ k * uTwo Q (N + 2 - 2 * k) else 0
-  decreasing_by omega
+example (Q : ℕ) : ℕ → ℕ := uTwo (Q := Q)
+-- Well-founded recursion (D1's cured DEPENDENT guard): body diffed by its three equations plus the
+-- `#eval` gate at the bottom, which now runs on the LANDED body (twelve values, q = 2 and q = 3).
+example (Q : ℕ) : uTwo Q 0 = 1 := by rw [uTwo]
+example (Q : ℕ) : uTwo Q 1 = 1 := by rw [uTwo]
+example (Q N : ℕ) : uTwo Q (N + 2) = Q ^ (N + 1) +
+    ∑ k ∈ Finset.range (N + 2),
+      if h : 1 ≤ k ∧ 2 * k ≤ N + 1 then (Q - 1) * Q ^ k * uTwo Q (N + 2 - 2 * k) else 0 := by
+  rw [uTwo]
 
 /-! ### NODE H.24 [lemma] -/
 
-axiom uTwo_one (Q : ℕ) : uTwo Q 1 = 1
+example (Q : ℕ) : uTwo Q 1 = 1 :=
+  uTwo_one (Q := Q)
 
-axiom uTwo_two (Q : ℕ) : uTwo Q 2 = Q
+example (Q : ℕ) : uTwo Q 2 = Q :=
+  uTwo_two (Q := Q)
 
 /-! ### NODE H.25 [theorem] -/
 
-axiom uTwo_rec (Q : ℕ) (hQ : 2 ≤ Q) {N : ℕ} (hN : 3 ≤ N) :
-    uTwo Q N + Q ^ (N - 2) = Q ^ (N - 1) + Q ^ 2 * uTwo Q (N - 2)
+example (Q : ℕ) (hQ : 2 ≤ Q) {N : ℕ} (hN : 3 ≤ N) :
+    uTwo Q N + Q ^ (N - 2) = Q ^ (N - 1) + Q ^ 2 * uTwo Q (N - 2) :=
+  uTwo_rec (Q := Q) (hQ := hQ) (N := N) (hN := hN)
 
 /-! ### NODE H.26 [theorem] — the `m = 2` closed form (SPLIT-MANDATED into 2) -/
 
-axiom uTwo_closed (Q : ℕ) (hQ : 2 ≤ Q) {M : ℕ} (hM : 2 ≤ M) :
-    uTwo Q M = Q ^ (M - 1) + ((M - 1) / 2) * ((Q - 1) * Q ^ (M - 2))
+example (Q : ℕ) (hQ : 2 ≤ Q) {M : ℕ} (hM : 2 ≤ M) :
+    uTwo Q M = Q ^ (M - 1) + ((M - 1) / 2) * ((Q - 1) * Q ^ (M - 2)) :=
+  uTwo_closed (Q := Q) (hQ := hQ) (M := M) (hM := hM)
 
-axiom uTwo_even (Q : ℕ) (hQ : 2 ≤ Q) {l : ℕ} (hl : 1 ≤ l) :
-    uTwo Q (2 * l) + (l - 1) * Q ^ (2 * l - 2) = l * Q ^ (2 * l - 1)
+example (Q : ℕ) (hQ : 2 ≤ Q) {l : ℕ} (hl : 1 ≤ l) :
+    uTwo Q (2 * l) + (l - 1) * Q ^ (2 * l - 2) = l * Q ^ (2 * l - 1) :=
+  uTwo_even (Q := Q) (hQ := hQ) (l := l) (hl := hl)
 
-axiom uTwo_odd (Q : ℕ) (hQ : 2 ≤ Q) (l : ℕ) :
-    uTwo Q (2 * l + 1) + l * Q ^ (2 * l - 1) = (l + 1) * Q ^ (2 * l)
+example (Q : ℕ) (hQ : 2 ≤ Q) (l : ℕ) :
+    uTwo Q (2 * l + 1) + l * Q ^ (2 * l - 1) = (l + 1) * Q ^ (2 * l) :=
+  uTwo_odd (Q := Q) (hQ := hQ) (l := l)
 
 /-! ### NODE H.27 [lemma] -/
 
-axiom uTwo_le (Q : ℕ) (hQ : 2 ≤ Q) {N : ℕ} (hN : 1 ≤ N) : uTwo Q N ≤ N * Q ^ (N - 1)
+example (Q : ℕ) (hQ : 2 ≤ Q) {N : ℕ} (hN : 1 ≤ N) : uTwo Q N ≤ N * Q ^ (N - 1) :=
+  uTwo_le (Q := Q) (hQ := hQ) (N := N) (hN := hN)
 
 /-! ### NODE H.28 [theorem] — the `(A2-RATE)` ground instance -/
 
-axiom uTwo_ratio_le (Q : ℕ) (hQ : 2 ≤ Q) {N : ℕ} (hN : 1 ≤ N) :
-    (uTwo Q N : ℝ) / (Q : ℝ) ^ (2 * (N - 1)) ≤ (N : ℝ) / (Q : ℝ) ^ (N - 1)
+example (Q : ℕ) (hQ : 2 ≤ Q) {N : ℕ} (hN : 1 ≤ N) :
+    (uTwo Q N : ℝ) / (Q : ℝ) ^ (2 * (N - 1)) ≤ (N : ℝ) / (Q : ℝ) ^ (N - 1) :=
+  uTwo_ratio_le (Q := Q) (hQ := hQ) (N := N) (hN := hN)
 
 /-! ### NODE H.29 [lemma] — the two-prime numeric audit (EXECUTED at the gate below) -/
 
-axiom uTwo_audit_two :
-    uTwo 2 1 = 1 ∧ uTwo 2 2 = 2 ∧ uTwo 2 3 = 6 ∧ uTwo 2 4 = 12 ∧ uTwo 2 5 = 32 ∧ uTwo 2 6 = 64
+example :
+    uTwo 2 1 = 1 ∧ uTwo 2 2 = 2 ∧ uTwo 2 3 = 6 ∧ uTwo 2 4 = 12 ∧ uTwo 2 5 = 32 ∧ uTwo 2 6 = 64 :=
+  uTwo_audit_two
 
-axiom uTwo_audit_three :
-    uTwo 3 1 = 1 ∧ uTwo 3 2 = 3 ∧ uTwo 3 3 = 15 ∧ uTwo 3 4 = 45 ∧ uTwo 3 5 = 189 ∧ uTwo 3 6 = 567
+example :
+    uTwo 3 1 = 1 ∧ uTwo 3 2 = 3 ∧ uTwo 3 3 = 15 ∧ uTwo 3 4 = 45 ∧ uTwo 3 5 = 189 ∧ uTwo 3 6 = 567 :=
+  uTwo_audit_three
 
 /-! ## §6 — ARITHMETIC III: THE PRICING INEQUALITIES (H.30–H.37) -/
 
 /-! ### NODE H.30 [lemma] -/
 
-axiom alpha_geom_partial_le_one (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 1 ≤ c) (n : ℕ) :
-    ∑ k ∈ Finset.range n, ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ ≤ 1
+example (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 1 ≤ c) (n : ℕ) :
+    ∑ k ∈ Finset.range n, ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ ≤ 1 :=
+  alpha_geom_partial_le_one (Q := Q) (c := c) (hQ := hQ) (hc := hc) (n := n)
 
 /-! ### NODE H.31 [lemma] (SPLIT CANDIDATE) -/
 
-axiom height_geom_partial_le (Q : ℕ) (hQ : 2 ≤ Q) (n : ℕ) :
+example (Q : ℕ) (hQ : 2 ≤ Q) (n : ℕ) :
     ∑ H ∈ Finset.range n, ((Q : ℝ) ^ (H : ℝ))⁻¹ ^ ((1:ℝ)/2)
-      ≤ (1 - ((2:ℝ) ^ ((1:ℝ)/2))⁻¹)⁻¹
+      ≤ (1 - ((2:ℝ) ^ ((1:ℝ)/2))⁻¹)⁻¹ :=
+  height_geom_partial_le (Q := Q) (hQ := hQ) (n := n)
 
 /-! ### NODE H.32 [lemma] -/
 
-axiom two_mul_supportLine_sum (S H : ℕ) :
-    2 * (∑ r ∈ Finset.range S, (r + 1) * H) = S * (S + 1) * H
+example (S H : ℕ) :
+    2 * (∑ r ∈ Finset.range S, (r + 1) * H) = S * (S + 1) * H :=
+  two_mul_supportLine_sum (S := S) (H := H)
 
 /-! ### NODE H.33 [lemma] -/
 
-axiom two_mul_a_le_sideLen {e f m : ℕ} (hm : 2 ≤ m) : 2 * (e * f) ≤ e * m * f
+example {e f m : ℕ} (hm : 2 ≤ m) : 2 * (e * f) ≤ e * m * f :=
+  two_mul_a_le_sideLen (e := e) (f := f) (m := m) (hm := hm)
 
-axiom two_mul_a_le_S {e f m S : ℕ} (hm : 2 ≤ m) (hS : e * m * f ≤ S) :
-    2 * (e * f) ≤ S
+example {e f m S : ℕ} (hm : 2 ≤ m) (hS : e * m * f ≤ S) :
+    2 * (e * f) ≤ S :=
+  two_mul_a_le_S (e := e) (f := f) (m := m) (S := S) (hm := hm) (hS := hS)
 
 /-! ### NODE H.34 [lemma] -/
 
-axiom exp_compose {D M N c : ℕ} (hD : 1 ≤ D) (hc : c ≤ M) (h : D + M = N) :
-    (D - 1) + (M - c) = N - 1 - c
+example {D M N c : ℕ} (hD : 1 ≤ D) (hc : c ≤ M) (h : D + M = N) :
+    (D - 1) + (M - c) = N - 1 - c :=
+  exp_compose (D := D) (M := M) (N := N) (c := c) (hD := hD) (hc := hc) (h := h)
 
-axiom mul_le_of_exp_compose {Q : ℕ} (hQ : 2 ≤ Q) {D M N c : ℕ} (hD : 1 ≤ D) (hc : c ≤ M)
+example {Q : ℕ} (hQ : 2 ≤ Q) {D M N c : ℕ} (hD : 1 ≤ D) (hc : c ≤ M)
     (h : D + M = N) {ρ δ : ℝ} (hρ0 : 0 ≤ ρ) (hδ0 : 0 ≤ δ)
     (hρ : ρ ≤ ((Q : ℝ) ^ (D - 1))⁻¹) (hδ : δ ≤ ((Q : ℝ) ^ (M - c))⁻¹) :
-    ρ * δ ≤ ((Q : ℝ) ^ (N - 1 - c))⁻¹
+    ρ * δ ≤ ((Q : ℝ) ^ (N - 1 - c))⁻¹ :=
+  mul_le_of_exp_compose (Q := Q) (hQ := hQ) (D := D) (M := M) (N := N) (c := c) (hD := hD)
+    (hc := hc) (h := h) (ρ := ρ) (δ := δ) (hρ0 := hρ0) (hδ0 := hδ0) (hρ := hρ) (hδ := hδ)
 
 /-! ### NODE H.35 [lemma] -/
 
-axiom pow_sub_dominance {N m B : ℕ} (hm : 1 ≤ m) (hmN : m ≤ N) (hB : 1 ≤ B) :
-    (N - m) ^ B + m * (N - m) ^ (B - 1) ≤ N ^ B
+example {N m B : ℕ} (hm : 1 ≤ m) (hmN : m ≤ N) (hB : 1 ≤ B) :
+    (N - m) ^ B + m * (N - m) ^ (B - 1) ≤ N ^ B :=
+  pow_sub_dominance (N := N) (m := m) (B := B) (hm := hm) (hmN := hmN) (hB := hB)
 
 /-! ### NODE H.36 [lemma] -/
 
-axiom entry_codim (d D N : ℕ) (hD : 1 ≤ D) (hDN : D ≤ N) :
-    d * (D - 1) + d * (N - D) = d * (N - 1)
+example (d D N : ℕ) (hD : 1 ≤ D) (hDN : D ≤ N) :
+    d * (D - 1) + d * (N - D) = d * (N - 1) :=
+  entry_codim (d := d) (D := D) (N := N) (hD := hD) (hDN := hDN)
 
 /-! ### NODE H.37 [lemma] -/
 
-axiom card_slopeTuples_le (m N : ℕ) :
-    Nat.card {s : Fin m → ℕ // ∀ i, 1 ≤ s i ∧ s i ≤ N - 1} ≤ N ^ m
+example (m N : ℕ) :
+    Nat.card {s : Fin m → ℕ // ∀ i, 1 ≤ s i ∧ s i ≤ N - 1} ≤ N ^ m :=
+  card_slopeTuples_le (m := m) (N := N)
 
 /-! ## §7 — ARITHMETIC IV: THE GENRE LAWS, FLOORS, TOWER THRESHOLDS (H.38–H.50) -/
 
@@ -583,138 +727,176 @@ axiom card_slopeTuples_le (m N : ℕ) :
 /-- `CS4-E(h)` — the quartic e-first genre's per-centre opening locus, `(q−1)q^{4N−5h−3}`
 (`GENIND` §S5.3 = `W-12` §S2.5's `QRT-G2(h;(1²))`).  Total by construction; the visibility floor
 `2h ≤ N−1` is a hypothesis of `lawE_floor_*`, not of the definition. -/
-def lawE (q N h : ℕ) : ℕ := (q - 1) * q ^ (4 * N - 5 * h - 3)
+example (q N h : ℕ) : ℕ := lawE (q := q) (N := N) (h := h)
+example (q N h : ℕ) : lawE q N h = (q - 1) * q ^ (4 * N - 5 * h - 3) := rfl
 
-axiom lawE_exp_honest {N h : ℕ} (hfl : 2 * h + 1 ≤ N) : 5 * h + 3 ≤ 4 * N
+example {N h : ℕ} (hfl : 2 * h + 1 ≤ N) : 5 * h + 3 ≤ 4 * N :=
+  lawE_exp_honest (N := N) (h := h) (hfl := hfl)
 
-axiom lawE_floor_fails_at_two_one {q : ℕ} (hq : 2 ≤ q) :
-    ¬ (2 * 1 + 1 ≤ 2) ∧ lawE q 2 1 ≠ 0
+example {q : ℕ} (hq : 2 ≤ q) :
+    ¬ (2 * 1 + 1 ≤ 2) ∧ lawE q 2 1 ≠ 0 :=
+  lawE_floor_fails_at_two_one (q := q) (hq := hq)
 
 /-! ### NODE H.39 [lemma] -/
 
-axiom lawE_exp_four_summands {N t : ℕ} (hN : 4 * t + 3 ≤ N) :
+example {N t : ℕ} (hN : 4 * t + 3 ≤ N) :
     (N - (t + 1)) + (N - 1 - (2 * t + 1)) + (N - (3 * t + 2)) + (N - 1 - (4 * t + 2))
-      + (10 * t + 8) = 4 * N
+      + (10 * t + 8) = 4 * N :=
+  lawE_exp_four_summands (N := N) (t := t) (hN := hN)
 
-axiom lawE_exp_odd {N t : ℕ} (hN : 4 * t + 3 ≤ N) :
-    4 * N - 5 * (2 * t + 1) - 3 = 4 * N - (10 * t + 8)
+example {N t : ℕ} (hN : 4 * t + 3 ≤ N) :
+    4 * N - 5 * (2 * t + 1) - 3 = 4 * N - (10 * t + 8) :=
+  lawE_exp_odd (N := N) (t := t) (hN := hN)
 
 /-! ### NODE H.40 [def+lemma] -/
 
 /-- `CS4-F(k)` — the quartic f-first genre's per-centre opening locus,
 `(q(q−1)/2)·q^{4N−10k−4}` (`GENIND` §S5.3; `#ψ = q(q−1)/2` monic irreducible quadratics). -/
-def lawF (q N k : ℕ) : ℕ := (q * (q - 1) / 2) * q ^ (4 * N - 10 * k - 4)
+example (q N k : ℕ) : ℕ := lawF (q := q) (N := N) (k := k)
+example (q N k : ℕ) : lawF q N k = (q * (q - 1) / 2) * q ^ (4 * N - 10 * k - 4) := rfl
 
-axiom lawF_exp_honest {N k : ℕ} (hfl : 4 * k + 1 ≤ N) : 10 * k + 4 ≤ 4 * N
+example {N k : ℕ} (hfl : 4 * k + 1 ≤ N) : 10 * k + 4 ≤ 4 * N :=
+  lawF_exp_honest (N := N) (k := k) (hfl := hfl)
 
-axiom lawF_exp_neg_below_floor : (4 : ℤ) * 2 - 10 * 1 - 4 = -6
+example : (4 : ℤ) * 2 - 10 * 1 - 4 = -6 :=
+  lawF_exp_neg_below_floor
 
 /-! ### NODE H.41 [lemma] — the quartic-law audit (EXECUTED at the gate below) -/
 
-axiom quartic_law_audit :
+example :
     lawE 2 6 1 = 65536 ∧ lawE 3 4 1 = 13122 ∧ lawE 5 3 1 = 2500 ∧
-    lawF 2 6 1 = 1024 ∧ lawF 2 5 1 = 64 ∧ lawE 2 6 1 + lawF 2 6 1 = 66560
+    lawF 2 6 1 = 1024 ∧ lawF 2 5 1 = 64 ∧ lawE 2 6 1 + lawF 2 6 1 = 66560 :=
+  quartic_law_audit
 
 /-! ### NODE H.42 [def+lemma] -/
 
 /-- `CS5-V1E2(h)` — the quintic vertex-at-1 genre: `CS4-E`'s law times the split root's headroom
 fibre `(q^{N−(5h+1)/2} − 1)` (`GENIND` §S5.3). -/
-def lawV1E2 (q N h : ℕ) : ℕ := lawE q N h * (q ^ (N - (5 * h + 1) / 2) - 1)
+example (q N h : ℕ) : ℕ := lawV1E2 (q := q) (N := N) (h := h)
+example (q N h : ℕ) : lawV1E2 q N h = lawE q N h * (q ^ (N - (5 * h + 1) / 2) - 1) := rfl
 
-axiom headroom_exp_odd (t : ℕ) : (5 * (2 * t + 1) + 1) / 2 = 5 * t + 3
+example (t : ℕ) : (5 * (2 * t + 1) + 1) / 2 = 5 * t + 3 :=
+  headroom_exp_odd (t := t)
 
-axiom lawV1E2_eq_zero_iff {q N t : ℕ} (hq : 2 ≤ q) :
-    lawV1E2 q N (2 * t + 1) = 0 ↔ (N ≤ 5 * t + 3 ∨ lawE q N (2 * t + 1) = 0)
+example {q N t : ℕ} (hq : 2 ≤ q) :
+    lawV1E2 q N (2 * t + 1) = 0 ↔ (N ≤ 5 * t + 3 ∨ lawE q N (2 * t + 1) = 0) :=
+  lawV1E2_eq_zero_iff (q := q) (N := N) (t := t) (hq := hq)
 
 /-! ### NODE H.43 [lemma] -/
 
-axiom v4e2_vertex_condition {v₄ t : ℕ} (hv : 1 ≤ v₄) (h : 2 * v₄ < 2 * t + 1) :
-    2 * v₄ + 1 ≤ 2 * t + 1
+example {v₄ t : ℕ} (hv : 1 ≤ v₄) (h : 2 * v₄ < 2 * t + 1) :
+    2 * v₄ + 1 ≤ 2 * t + 1 :=
+  v4e2_vertex_condition (v₄ := v₄) (t := t) (hv := hv) (h := h)
 
-axiom v4e2_first_visible {v₄ t : ℕ} (hv : 1 ≤ v₄) (hvc : 2 * v₄ + 1 ≤ 2 * t + 1) :
-    7 ≤ v₄ + 2 * (2 * t + 1)
+example {v₄ t : ℕ} (hv : 1 ≤ v₄) (hvc : 2 * v₄ + 1 ≤ 2 * t + 1) :
+    7 ≤ v₄ + 2 * (2 * t + 1) :=
+  v4e2_first_visible (v₄ := v₄) (t := t) (hv := hv) (hvc := hvc)
 
-axiom v4e2_needs_eight {v₄ t N : ℕ} (hv : 1 ≤ v₄) (hvc : 2 * v₄ + 1 ≤ 2 * t + 1)
-    (hvis : v₄ + 2 * (2 * t + 1) ≤ N - 1) : 8 ≤ N
+example {v₄ t N : ℕ} (hv : 1 ≤ v₄) (hvc : 2 * v₄ + 1 ≤ 2 * t + 1)
+    (hvis : v₄ + 2 * (2 * t + 1) ≤ N - 1) : 8 ≤ N :=
+  v4e2_needs_eight (v₄ := v₄) (t := t) (N := N) (hv := hv) (hvc := hvc) (hvis := hvis)
 
 /-! ### NODE H.44 [lemma] -/
 
 /-- The pin census at a slot of `F_q`-dimension `c`: the nonzero readable vectors of an
 `F_q`-subspace of dimension `c`. -/
-def pinCensus (q c : ℕ) : ℕ := q ^ c - 1
+example (q c : ℕ) : ℕ := pinCensus (q := q) (c := c)
+example (q c : ℕ) : pinCensus q c = q ^ c - 1 := rfl
 
-axiom pinCensus_genreE (q : ℕ) : pinCensus q 1 = q - 1
+example (q : ℕ) : pinCensus q 1 = q - 1 :=
+  pinCensus_genreE (q := q)
 
-axiom pinCensus_genreF_interior (q : ℕ) : pinCensus q 2 = q ^ 2 - 1
+example (q : ℕ) : pinCensus q 2 = q ^ 2 - 1 :=
+  pinCensus_genreF_interior (q := q)
 
-axiom pinCensus_band_ne_interior {q : ℕ} (hq : 2 ≤ q) :
-    pinCensus q 1 ≠ pinCensus q 2
+example {q : ℕ} (hq : 2 ≤ q) :
+    pinCensus q 1 ≠ pinCensus q 2 :=
+  pinCensus_band_ne_interior (q := q) (hq := hq)
 
 /-! ### NODE H.45 [lemma] -/
 
 /-- `#{unordered pairs of distinct nonzero elements}` over a `Q`-element field — the `SPLITEQ`
 residual census. -/
-def splitEqCensus (Q : ℕ) : ℕ := (Q - 1) * (Q - 2) / 2
+example (Q : ℕ) : ℕ := splitEqCensus (Q := Q)
+example (Q : ℕ) : splitEqCensus Q = (Q - 1) * (Q - 2) / 2 := rfl
 
 /-- `#{monic irreducible quadratics}` over a `Q`-element field — the `INERT` residual census. -/
-def inertCensus (Q : ℕ) : ℕ := Q * (Q - 1) / 2
+example (Q : ℕ) : ℕ := inertCensus (Q := Q)
+example (Q : ℕ) : inertCensus Q = Q * (Q - 1) / 2 := rfl
 
-axiom two_mul_splitEqCensus (Q : ℕ) : 2 * splitEqCensus Q = (Q - 1) * (Q - 2)
+example (Q : ℕ) : 2 * splitEqCensus Q = (Q - 1) * (Q - 2) :=
+  two_mul_splitEqCensus (Q := Q)
 
-axiom two_mul_inertCensus (Q : ℕ) : 2 * inertCensus Q = Q * (Q - 1)
+example (Q : ℕ) : 2 * inertCensus Q = Q * (Q - 1) :=
+  two_mul_inertCensus (Q := Q)
 
 /-! ### NODE H.46 [lemma] (SPLIT-MANDATED into 2) -/
 
 /-- The odd (`α₁`-borne) `dv`-heights of the `A₁` string at genre E. -/
-def slotOdd (N h : ℕ) : Finset ℕ :=
-  (Finset.Icc ((h + 1) / 2) (N - 1)).image (fun v => 2 * v + h)
+example (N h : ℕ) : Finset ℕ := slotOdd (N := N) (h := h)
+example (N h : ℕ) :
+    slotOdd N h = (Finset.Icc ((h + 1) / 2) (N - 1)).image (fun v => 2 * v + h) := rfl
 
 /-- The even (`α₀`-borne) `dv`-heights of the `A₁` string at genre E. -/
-def slotEven (N h : ℕ) : Finset ℕ :=
-  (Finset.Icc (h + 1) (N - 1)).image (fun v => 2 * v)
+example (N h : ℕ) : Finset ℕ := slotEven (N := N) (h := h)
+example (N h : ℕ) :
+    slotEven N h = (Finset.Icc (h + 1) (N - 1)).image (fun v => 2 * v) := rfl
 
-axiom raggedBand_card (N t : ℕ) (hN : 2 * t + 2 ≤ N) :
-    ((slotOdd N (2 * t + 1)).filter (fun m => 2 * N ≤ m)).card = t
+example (N t : ℕ) (hN : 2 * t + 2 ≤ N) :
+    ((slotOdd N (2 * t + 1)).filter (fun m => 2 * N ≤ m)).card = t :=
+  raggedBand_card (N := N) (t := t) (hN := hN)
 
-axiom raggedBand_empty_of_h_one (N : ℕ) (hN : 2 ≤ N) :
-    ((slotOdd N 1).filter (fun m => 2 * N ≤ m)) = ∅
+example (N : ℕ) (hN : 2 ≤ N) :
+    ((slotOdd N 1).filter (fun m => 2 * N ≤ m)) = ∅ :=
+  raggedBand_empty_of_h_one (N := N) (hN := hN)
 
 /-! ### NODE H.47 [lemma] -/
 
-axiom genh4B_aggregate_exp {N h : ℕ} (hfl : 2 * h + 1 ≤ N) :
-    (N + h - 1) + (N - 1 - 2 * h) = 2 * N - h - 2
+example {N h : ℕ} (hfl : 2 * h + 1 ≤ N) :
+    (N + h - 1) + (N - 1 - 2 * h) = 2 * N - h - 2 :=
+  genh4B_aggregate_exp (N := N) (h := h) (hfl := hfl)
 
-axiom und_exp_coincide_iff_h_one {N t : ℕ} (hN : 1 ≤ N) :
-    N + ((2 * t + 1) - 1) / 2 = N + (2 * t + 1) - 1 ↔ t = 0
+example {N t : ℕ} (hN : 1 ≤ N) :
+    N + ((2 * t + 1) - 1) / 2 = N + (2 * t + 1) - 1 ↔ t = 0 :=
+  und_exp_coincide_iff_h_one (N := N) (t := t) (hN := hN)
 
 /-! ### NODE H.48 [lemma] -/
 
-axiom genh4B_F_odd_exp {l k : ℕ} (hk : 1 ≤ k) :
-    2 * ((2 * l + 1) / 2) + 2 * k - 1 = (2 * l + 1) + 2 * k - 2
+example {l k : ℕ} (hk : 1 ≤ k) :
+    2 * ((2 * l + 1) / 2) + 2 * k - 1 = (2 * l + 1) + 2 * k - 2 :=
+  genh4B_F_odd_exp (l := l) (k := k) (hk := hk)
 
-axiom genh4B_F_even_sum (q N k : ℕ) (hq : 1 ≤ q) :
-    q ^ (N + 2 * k - 1) + (q - 1) * q ^ (N + 2 * k - 1) = q ^ (N + 2 * k) ∨ N + 2 * k = 0
+example (q N k : ℕ) (hq : 1 ≤ q) :
+    q ^ (N + 2 * k - 1) + (q - 1) * q ^ (N + 2 * k - 1) = q ^ (N + 2 * k) ∨ N + 2 * k = 0 :=
+  genh4B_F_even_sum (q := q) (N := N) (k := k) (hq := hq)
 
 /-! ### NODE H.49 [lemma] -/
 
-axiom mixed_six_childE_lt_six {k h : ℕ} (hk : 1 ≤ k) (hh : 1 ≤ h)
-    (hlt : 2 * k + 2 * h < 6) : k = 1 ∧ h = 1
+example {k h : ℕ} (hk : 1 ≤ k) (hh : 1 ≤ h)
+    (hlt : 2 * k + 2 * h < 6) : k = 1 ∧ h = 1 :=
+  mixed_six_childE_lt_six (k := k) (h := h) (hk := hk) (hh := hh) (hlt := hlt)
 
-axiom mixed_six_stage_steeper {k h : ℕ} (hk : 1 ≤ k) (hst : 2 * k + 1 ≤ h) :
-    8 ≤ 2 * k + 2 * h
+example {k h : ℕ} (hk : 1 ≤ k) (hst : 2 * k + 1 ≤ h) :
+    8 ≤ 2 * k + 2 * h :=
+  mixed_six_stage_steeper (k := k) (h := h) (hk := hk) (hst := hst)
 
-axiom mixed_six_sameSide {k : ℕ} (hk : 1 ≤ k) : 6 ≤ 6 * k
+example {k : ℕ} (hk : 1 ≤ k) : 6 ≤ 6 * k :=
+  mixed_six_sameSide (k := k) (hk := hk)
 
-axiom mixed_six_distinctSide {k h : ℕ} (hk : 1 ≤ k) (hh : 1 ≤ h) (hne : h ≠ k) :
-    8 ≤ 2 * k + 4 * h
+example {k h : ℕ} (hk : 1 ≤ k) (hh : 1 ≤ h) (hne : h ≠ k) :
+    8 ≤ 2 * k + 4 * h :=
+  mixed_six_distinctSide (k := k) (h := h) (hk := hk) (hh := hh) (hne := hne)
 
 /-! ### NODE H.50 [lemma] -/
 
-axiom tower_needs_eight {e f μ n : ℕ} (hef : 2 ≤ e * f) (hμ : 4 ≤ μ) (hn : e * f * μ ≤ n) :
-    8 ≤ n
+example {e f μ n : ℕ} (hef : 2 ≤ e * f) (hμ : 4 ≤ μ) (hn : e * f * μ ≤ n) :
+    8 ≤ n :=
+  tower_needs_eight (e := e) (f := f) (μ := μ) (n := n) (hef := hef) (hμ := hμ) (hn := hn)
 
-axiom depth_three_needs_sixteen {D μ₁ e₂ f₂ μ₂ n : ℕ} (hD : 2 ≤ D) (h2 : 2 ≤ e₂ * f₂)
-    (hμ₂ : 4 ≤ μ₂) (h1 : e₂ * f₂ * μ₂ ≤ μ₁) (hn : D * μ₁ ≤ n) : 16 ≤ n
+example {D μ₁ e₂ f₂ μ₂ n : ℕ} (hD : 2 ≤ D) (h2 : 2 ≤ e₂ * f₂)
+    (hμ₂ : 4 ≤ μ₂) (h1 : e₂ * f₂ * μ₂ ≤ μ₁) (hn : D * μ₁ ≤ n) : 16 ≤ n :=
+  depth_three_needs_sixteen (D := D) (μ₁ := μ₁) (e₂ := e₂) (f₂ := f₂) (μ₂ := μ₂) (n := n) (hD := hD)
+    (h2 := h2) (hμ₂ := hμ₂) (h1 := h1) (hn := hn)
 
 /-! ## §8 — THE SLOT / LIFT LAYER (H.51–H.58) — **the `H → B` split point**
 
@@ -722,29 +904,38 @@ GC-5: chapters B and E may consume H.51–H.58 by name and nothing else of chapt
 
 /-! ### NODE H.51 [lemma] -/
 
-axiom class_sep {h e : ℕ} (hcop : Nat.Coprime h e) {i i' : ℕ} (hi : i < e) (hi' : i' < e)
-    (hmod : i * h % e = i' * h % e) : i = i'
+example {h e : ℕ} (hcop : Nat.Coprime h e) {i i' : ℕ} (hi : i < e) (hi' : i' < e)
+    (hmod : i * h % e = i' * h % e) : i = i' :=
+  class_sep (h := h) (e := e) (hcop := hcop) (i := i) (i' := i') (hi := hi) (hi' := hi')
+    (hmod := hmod)
 
-axiom class_sep_bij {h e : ℕ} (hcop : Nat.Coprime h e) :
-    Set.BijOn (fun i => i * h % e) (Finset.range e) (Finset.range e)
+example {h e : ℕ} (hcop : Nat.Coprime h e) :
+    Set.BijOn (fun i => i * h % e) (Finset.range e) (Finset.range e) :=
+  class_sep_bij (h := h) (e := e) (hcop := hcop)
 
 /-! ### NODE H.52 [lemma] -/
 
-axiom slot_height_injective {h e : ℕ} (hcop : Nat.Coprime h e) {i i' v v' : ℕ}
+example {h e : ℕ} (hcop : Nat.Coprime h e) {i i' v v' : ℕ}
     (hi : i < e) (hi' : i' < e) (heq : e * v + i * h = e * v' + i' * h) :
-    i = i' ∧ v = v'
+    i = i' ∧ v = v' :=
+  slot_height_injective (h := h) (e := e) (hcop := hcop) (i := i) (i' := i') (v := v) (v' := v')
+    (hi := hi) (hi' := hi') (heq := heq)
 
-axiom slot_min_unique {h e : ℕ} (hcop : Nat.Coprime h e) (he : 0 < e)
+example {h e : ℕ} (hcop : Nat.Coprime h e) (he : 0 < e)
     (v : ℕ → ℕ) {i i' : ℕ} (hi : i < e) (hi' : i' < e)
-    (hmin : e * v i + i * h = e * v i' + i' * h) : i = i'
+    (hmin : e * v i + i * h = e * v i' + i' * h) : i = i' :=
+  slot_min_unique (h := h) (e := e) (hcop := hcop) (he := he) (v := v) (i := i) (i' := i')
+    (hi := hi) (hi' := hi') (hmin := hmin)
 
 /-! ### NODE H.53 [lemma] — §15's fragile signature #2 (the `finrank`/`minpoly` shape) -/
 
-axiom eta_independent {F K : Type*} [Field F] [Field K] [Algebra F K] {η : K}
+example {F K : Type*} [Field F] [Field K] [Algebra F K] {η : K}
     (hgen : (minpoly F η).natDegree = Module.finrank F K) (hint : IsIntegral F η)
     {f : ℕ} (hf : f = Module.finrank F K) (l : Fin f → F)
     (hsum : ∑ t : Fin f, algebraMap F K (l t) * η ^ (t : ℕ) = 0) :
-    ∀ t, l t = 0
+    ∀ t, l t = 0 :=
+  eta_independent (F := F) (K := K) (η := η) (hgen := hgen) (hint := hint) (f := f) (hf := hf)
+    (l := l) (hsum := hsum)
 
 /-! ### NODE H.54 [def] — §15's fragile signature #3; `normIdx` **WITHDRAWN** (§15 rule 2)
 
@@ -762,52 +953,66 @@ hypothesis, exactly as the note prescribes. -/
 /-- `L_M(λ)` — the exact-height `K`-lift of `LEMMA GENHN-LIFT`, as a coefficient vector over the
 ambient ring: `L_M(λ) = Σ_{s<f₁} λ̃_s · x^{i+e₁ s} π^{a−s h}`.  **The signed form** (H.54's
 SIGNATURE NOTE): `i`, `a` explicit, no `Exists.choose`. -/
-noncomputable def stageLift' {O : Type*} [CommRing O] (G : GenreDatum) (π : O)
+noncomputable example {O : Type*} [CommRing O] (G : GenreDatum) (π : O)
     (i a : ℕ) (lift : ℕ → O) : Polynomial O :=
-  ∑ s ∈ Finset.range G.f₁,
-    Polynomial.C (lift s * π ^ (a - s * G.h)) * Polynomial.X ^ (i + G.e₁ * s)
+  stageLift' (O := O) (G := G) (π := π) (i := i) (a := a) (lift := lift)
+
+example {O : Type*} [CommRing O] (G : GenreDatum) (π : O) (i a : ℕ) (lift : ℕ → O) :
+    stageLift' G π i a lift
+      = ∑ s ∈ Finset.range G.f₁,
+          Polynomial.C (lift s * π ^ (a - s * G.h)) * Polynomial.X ^ (i + G.e₁ * s) := rfl
 
 /-! ### NODE H.55 [lemma] -/
 
-axiom stageLift_index_lt (G : GenreDatum) {i s : ℕ} (hi : i < G.e₁) (hs : s < G.f₁) :
-    i + G.e₁ * s < G.keyDeg
+example (G : GenreDatum) {i s : ℕ} (hi : i < G.e₁) (hs : s < G.f₁) :
+    i + G.e₁ * s < G.keyDeg :=
+  stageLift_index_lt (G := G) (i := i) (s := s) (hi := hi) (hs := hs)
 
-axiom stageLift_integral (G : GenreDatum) {i a M s : ℕ} (hi : i < G.e₁) (hs : s < G.f₁)
-    (hM : i * G.h + G.e₁ * a = M) (hbig : G.keyDeg * G.h < M) : s * G.h ≤ a
+example (G : GenreDatum) {i a M s : ℕ} (hi : i < G.e₁) (hs : s < G.f₁)
+    (hM : i * G.h + G.e₁ * a = M) (hbig : G.keyDeg * G.h < M) : s * G.h ≤ a :=
+  stageLift_integral (G := G) (i := i) (a := a) (M := M) (s := s) (hi := hi) (hs := hs) (hM := hM)
+    (hbig := hbig)
 
-axiom stageLift_height (G : GenreDatum) {i a M s : ℕ} (hi : i < G.e₁) (hs : s < G.f₁)
+example (G : GenreDatum) {i a M s : ℕ} (hi : i < G.e₁) (hs : s < G.f₁)
     (hM : i * G.h + G.e₁ * a = M) (hbig : G.keyDeg * G.h < M) :
-    G.e₁ * (a - s * G.h) + (i + G.e₁ * s) * G.h = M
+    G.e₁ * (a - s * G.h) + (i + G.e₁ * s) * G.h = M :=
+  stageLift_height (G := G) (i := i) (a := a) (M := M) (s := s) (hi := hi) (hs := hs) (hM := hM)
+    (hbig := hbig)
 
 /-! ### NODE H.56 [lemma] -/
 
 /-- The quotient identity: the `s`-th summand of `L_M(λ)` equals the normalizer `x^i π^a` times
 `(x^{e₁} π^{−h})^s`, in the cleared form `π^{s h} · (summand) = n(M) · (x^{e₁})^s · lift s`. -/
-axiom stageLift_summand_eq {O : Type*} [CommRing O] (G : GenreDatum) (π : O)
+example {O : Type*} [CommRing O] (G : GenreDatum) (π : O)
     {i a s : ℕ} (hsa : s * G.h ≤ a) (c : O) :
     (Polynomial.C (π ^ (s * G.h)) : Polynomial O) *
         (Polynomial.C (c * π ^ (a - s * G.h)) * Polynomial.X ^ (i + G.e₁ * s))
       = (Polynomial.C (π ^ a) * Polynomial.X ^ i) *
-        (Polynomial.C c * Polynomial.X ^ (G.e₁ * s))
+        (Polynomial.C c * Polynomial.X ^ (G.e₁ * s)) :=
+  stageLift_summand_eq (O := O) (G := G) (π := π) (i := i) (a := a) (s := s) (hsa := hsa) (c := c)
 
 /-! ### NODE H.57 [lemma] -/
 
-axiom wrap_div_mod (r i e : ℕ) (he : 0 < e) :
-    r * i = r * i % e + e * (r * i / e) ∧ r * i % e < e
+example (r i e : ℕ) (he : 0 < e) :
+    r * i = r * i % e + e * (r * i / e) ∧ r * i % e < e :=
+  wrap_div_mod (r := r) (i := i) (e := e) (he := he)
 
 /-- The height bookkeeping behind the wrap: if `i·h + e·a = M` then
 `r·M = (r·i % e)·h + e·(r·a + W·h)` with `W = r·i / e`. -/
-axiom wrap_height {i a M h e r : ℕ} (he : 0 < e) (hM : i * h + e * a = M) :
-    r * M = (r * i % e) * h + e * (r * a + (r * i / e) * h)
+example {i a M h e r : ℕ} (he : 0 < e) (hM : i * h + e * a = M) :
+    r * M = (r * i % e) * h + e * (r * a + (r * i / e) * h) :=
+  wrap_height (i := i) (a := a) (M := M) (h := h) (e := e) (r := r) (he := he) (hM := hM)
 
 /-! ### NODE H.58 [lemma] -/
 
-axiom divMod_bij (D r : ℕ) (hD : 0 < D) :
+example (D r : ℕ) (hD : 0 < D) :
     Set.BijOn (fun p : ℕ × ℕ => p.1 + p.2 * D)
-      (Finset.range D ×ˢ Finset.range r) (Finset.range (D * r))
+      (Finset.range D ×ˢ Finset.range r) (Finset.range (D * r)) :=
+  divMod_bij (D := D) (r := r) (hD := hD)
 
-axiom card_composedBasis (D r : ℕ) (hD : 0 < D) :
-    (Finset.range D ×ˢ Finset.range r).card = D * r
+example (D r : ℕ) (hD : 0 < D) :
+    (Finset.range D ×ˢ Finset.range r).card = D * r :=
+  card_composedBasis (D := D) (r := r) (hD := hD)
 
 /-! ## §9 — THE UNIT-PIVOT LAYER (H.59–H.62) -/
 
@@ -817,42 +1022,51 @@ axiom card_composedBasis (D r : ℕ) (hD : 0 < D) :
 (a function of strictly earlier input slots)`.  This is the condition ANNEX R R2 identifies as the
 missing displayed step of `GENIND-6(c)`: triangularity ALONE does not give surjectivity or constant
 fibres over a truncated DVR (H.62). -/
-structure TriangularUnitPivot {R : Type*} [CommRing R] {n : ℕ}
-    (Φ : (Fin n → R) → (Fin n → R)) where
-  /-- The pivots. -/
-  pivot : Fin n → R
-  /-- The strictly-earlier part. -/
-  tail : (i : Fin n) → (Fin n → R) → R
-  /-- Each pivot is a unit. -/
-  pivot_isUnit : ∀ i, IsUnit (pivot i)
-  /-- The tail at `i` depends only on coordinates `< i`. -/
-  tail_lower : ∀ i v w, (∀ j : Fin n, j < i → v j = w j) → tail i v = tail i w
-  /-- The displayed form. -/
-  apply_eq : ∀ v i, Φ v i = pivot i * v i + tail i v
+-- 0e RETIREMENT (structure): constructor order + field types, then every field name.
+example {R : Type*} [CommRing R] {n : ℕ} (Φ : (Fin n → R) → (Fin n → R))
+    (pivot : Fin n → R) (tail : (i : Fin n) → (Fin n → R) → R)
+    (pivot_isUnit : ∀ i, IsUnit (pivot i))
+    (tail_lower : ∀ i v w, (∀ j : Fin n, j < i → v j = w j) → tail i v = tail i w)
+    (apply_eq : ∀ v i, Φ v i = pivot i * v i + tail i v) : TriangularUnitPivot Φ :=
+  ⟨pivot, tail, pivot_isUnit, tail_lower, apply_eq⟩
+
+example {R : Type*} [CommRing R] {n : ℕ} {Φ : (Fin n → R) → (Fin n → R)}
+    (T : TriangularUnitPivot Φ) : True := by
+  have _ : Fin n → R := T.pivot
+  have _ : (i : Fin n) → (Fin n → R) → R := T.tail
+  have _ : ∀ i, IsUnit (T.pivot i) := T.pivot_isUnit
+  have _ : ∀ i v w, (∀ j : Fin n, j < i → v j = w j) → T.tail i v = T.tail i w := T.tail_lower
+  have _ : ∀ v i, Φ v i = T.pivot i * v i + T.tail i v := T.apply_eq
+  trivial
 
 /-! ### NODE H.60 [theorem] — the back-substitution construction ([NEEDS-DERIVATION-EXPANSION]) -/
 
-axiom TriangularUnitPivot.bijective {R : Type*} [CommRing R] {n : ℕ}
-    {Φ : (Fin n → R) → (Fin n → R)} (T : TriangularUnitPivot Φ) : Function.Bijective Φ
+example {R : Type*} [CommRing R] {n : ℕ}
+    {Φ : (Fin n → R) → (Fin n → R)} (T : TriangularUnitPivot Φ) : Function.Bijective Φ :=
+  TriangularUnitPivot.bijective (R := R) (n := n) (Φ := Φ) (T := T)
 
 /-! ### NODE H.61 [lemma] — §15's fragile signature #4 (the `Fintype`/`Nat.card` mix) -/
 
-axiom TriangularUnitPivot.card_fibre {R : Type*} [CommRing R] [Fintype R] [DecidableEq R]
+example {R : Type*} [CommRing R] [Fintype R] [DecidableEq R]
     {n : ℕ} {Φ : (Fin n → R) → (Fin n → R)} (T : TriangularUnitPivot Φ) (P : Finset (Fin n))
     (t : Fin n → R) :
     Nat.card {v : Fin n → R // ∀ i ∈ P, Φ v i = t i}
-      = Fintype.card R ^ (n - P.card)
+      = Fintype.card R ^ (n - P.card) :=
+  TriangularUnitPivot.card_fibre (R := R) (n := n) (Φ := Φ) (T := T) (P := P) (t := t)
 
 /-! ### NODE H.62 [lemma] — the R2 counterexample (EXECUTED at the gate below) -/
 
 /-- Codex's toy (`ANNEX R R2.0`): `(x, y) ↦ (x, (x+π)y)` mod `π²`, at `π = 2`, `R = ZMod 4`. -/
-def codexToy (v : Fin 2 → ZMod 4) : Fin 2 → ZMod 4 := ![v 0, (v 0 + 2) * v 1]
+example (v : Fin 2 → ZMod 4) : Fin 2 → ZMod 4 := codexToy (v := v)
+example (v : Fin 2 → ZMod 4) : codexToy v = ![v 0, (v 0 + 2) * v 1] := rfl
 
-axiom codexToy_not_surjective : ¬ Function.Surjective codexToy
+example : ¬ Function.Surjective codexToy :=
+  codexToy_not_surjective
 
-axiom codexToy_fibre_not_constant :
+example :
     (Finset.univ.filter (fun v : Fin 2 → ZMod 4 => codexToy v = ![0, 0])).card = 2 ∧
-    (Finset.univ.filter (fun v : Fin 2 → ZMod 4 => codexToy v = ![1, 0])).card = 1
+    (Finset.univ.filter (fun v : Fin 2 → ZMod 4 => codexToy v = ![1, 0])).card = 1 :=
+  codexToy_fibre_not_constant
 
 /-! ## §10 — THE DRAINAGE-RATE CALCULUS (H.63–H.72) -/
 
@@ -863,102 +1077,127 @@ Parse check performed at this gate: Mathlib's `∏ x ∈ s, f` body parses at pr
 (the `∑ … , u i * ∏ …` on the right, at `*`'s level 70, does NOT split). No parenthesization added;
 recorded because the reading is load-bearing and not obvious. -/
 
-axiom prod_sub_prod_le_sum {ι : Type*} [DecidableEq ι] (s : Finset ι) (u T : ι → ℝ)
+example {ι : Type*} [DecidableEq ι] (s : Finset ι) (u T : ι → ℝ)
     (hu : ∀ i ∈ s, 0 ≤ u i) (huT : ∀ i ∈ s, u i ≤ T i) :
-    ∏ i ∈ s, T i - ∏ i ∈ s, (T i - u i) ≤ ∑ i ∈ s, u i * ∏ j ∈ s.erase i, T j
+    ∏ i ∈ s, T i - ∏ i ∈ s, (T i - u i) ≤ ∑ i ∈ s, u i * ∏ j ∈ s.erase i, T j :=
+  prod_sub_prod_le_sum (ι := ι) (s := s) (u := u) (T := T) (hu := hu) (huT := huT)
 
 /-! ### NODE H.64 [lemma] -/
 
-axiom prod_sub_antitone {ι : Type*} (s : Finset ι) (u v T : ι → ℝ)
+example {ι : Type*} (s : Finset ι) (u v T : ι → ℝ)
     (h0 : ∀ i ∈ s, 0 ≤ u i) (huv : ∀ i ∈ s, u i ≤ v i) (hvT : ∀ i ∈ s, v i ≤ T i) :
-    ∏ i ∈ s, (T i - v i) ≤ ∏ i ∈ s, (T i - u i)
+    ∏ i ∈ s, (T i - v i) ≤ ∏ i ∈ s, (T i - u i) :=
+  prod_sub_antitone (ι := ι) (s := s) (u := u) (v := v) (T := T) (h0 := h0) (huv := huv)
+    (hvT := hvT)
 
 /-! ### NODE H.65 [def] — `RateSpecies` (real body) -/
 
 /-- **(A2-RATE)** — the species pinned onto `P(k)`'s fourth member (`ANNEX R R1.1`): a normalized
 conservative complement decays with a POLYNOMIAL coefficient and an EXPONENTIAL deficit, with
 constants depending on the degree data only. -/
-def RateSpecies (Q : ℕ) (K : ℝ) (B c : ℕ) (f : ℕ → ℝ) : Prop :=
-  ∀ M, 1 ≤ M → f M ≤ K * (M : ℝ) ^ B * ((Q : ℝ) ^ (M - c))⁻¹
+example (Q : ℕ) (K : ℝ) (B c : ℕ) (f : ℕ → ℝ) : Prop :=
+  RateSpecies (Q := Q) (K := K) (B := B) (c := c) (f := f)
+
+example (Q : ℕ) (K : ℝ) (B c : ℕ) (f : ℕ → ℝ) :
+    RateSpecies Q K B c f ↔ ∀ M, 1 ≤ M → f M ≤ K * (M : ℝ) ^ B * ((Q : ℝ) ^ (M - c))⁻¹ := Iff.rfl
 
 /-! ### NODE H.66 [lemma] -/
 
-axiom RateSpecies.of_le {Q : ℕ} {K : ℝ} {B c : ℕ} {f g : ℕ → ℝ}
-    (h : RateSpecies Q K B c f) (hg : ∀ M, 1 ≤ M → g M ≤ f M) : RateSpecies Q K B c g
+example {Q : ℕ} {K : ℝ} {B c : ℕ} {f g : ℕ → ℝ}
+    (h : RateSpecies Q K B c f) (hg : ∀ M, 1 ≤ M → g M ≤ f M) : RateSpecies Q K B c g :=
+  RateSpecies.of_le (Q := Q) (K := K) (B := B) (c := c) (f := f) (g := g) (h := h) (hg := hg)
 
-axiom RateSpecies.mono {Q : ℕ} (hQ : 2 ≤ Q) {K K' : ℝ} {B B' c c' : ℕ} {f : ℕ → ℝ}
+example {Q : ℕ} (hQ : 2 ≤ Q) {K K' : ℝ} {B B' c c' : ℕ} {f : ℕ → ℝ}
     (h : RateSpecies Q K B c f) (hK : K ≤ K') (hK0 : 0 ≤ K) (hB : B ≤ B') (hc : c ≤ c') :
-    RateSpecies Q K' B' c' f
+    RateSpecies Q K' B' c' f :=
+  RateSpecies.mono (Q := Q) (hQ := hQ) (K := K) (K' := K') (B := B) (B' := B') (c := c) (c' := c')
+    (f := f) (h := h) (hK := hK) (hK0 := hK0) (hB := hB) (hc := hc)
 
 /-! ### NODE H.67 [theorem] -/
 
-axiom rate_growing {Q : ℕ} (hQ : 2 ≤ Q) {K : ℝ} {B c D M N : ℕ} (hK : 0 ≤ K)
+example {Q : ℕ} (hQ : 2 ≤ Q) {K : ℝ} {B c D M N : ℕ} (hK : 0 ≤ K)
     (hD : 1 ≤ D) (hc : c ≤ M) (hDM : D + M = N) {ρ δ : ℝ}
     (hρ0 : 0 ≤ ρ) (hδ0 : 0 ≤ δ)
     (hρ : ρ ≤ ((Q : ℝ) ^ (D - 1))⁻¹)
     (hδ : δ ≤ K * (M : ℝ) ^ B * ((Q : ℝ) ^ (M - c))⁻¹) :
-    ρ * δ ≤ K * (N : ℝ) ^ B * ((Q : ℝ) ^ (N - 1 - c))⁻¹
+    ρ * δ ≤ K * (N : ℝ) ^ B * ((Q : ℝ) ^ (N - 1 - c))⁻¹ :=
+  rate_growing (Q := Q) (hQ := hQ) (K := K) (B := B) (c := c) (D := D) (M := M) (N := N) (hK := hK)
+    (hD := hD) (hc := hc) (hDM := hDM) (ρ := ρ) (δ := δ) (hρ0 := hρ0) (hδ0 := hδ0) (hρ := hρ)
+    (hδ := hδ)
 
 /-! ### NODE H.68 [theorem] -/
 
-axiom rate_bounded {Q : ℕ} (hQ : 2 ≤ Q) {D M N c₀ : ℕ} (hD : 1 ≤ D) (hDM : D + M = N)
+example {Q : ℕ} (hQ : 2 ≤ Q) {D M N c₀ : ℕ} (hD : 1 ≤ D) (hDM : D + M = N)
     (hM : M ≤ c₀) {ρ δ : ℝ} (hρ0 : 0 ≤ ρ) (hδ0 : 0 ≤ δ) (hδ1 : δ ≤ 1)
     (hρ : ρ ≤ ((Q : ℝ) ^ (D - 1))⁻¹) :
-    ρ * δ ≤ ((Q : ℝ) ^ (N - c₀ - 1))⁻¹
+    ρ * δ ≤ ((Q : ℝ) ^ (N - c₀ - 1))⁻¹ :=
+  rate_bounded (Q := Q) (hQ := hQ) (D := D) (M := M) (N := N) (c₀ := c₀) (hD := hD) (hDM := hDM)
+    (hM := hM) (ρ := ρ) (δ := δ) (hρ0 := hρ0) (hδ0 := hδ0) (hδ1 := hδ1) (hρ := hρ)
 
 /-! ### NODE H.69 [lemma] -/
 
-axiom rate_sum_over_family {Q : ℕ} (hQ : 2 ≤ Q) {K : ℝ} {B c c₀ N m p r : ℕ} (hK : 0 ≤ K)
+example {Q : ℕ} (hQ : 2 ≤ Q) {K : ℝ} {B c c₀ N m p r : ℕ} (hK : 0 ≤ K)
     (hN : 1 ≤ N) (g : Fin r → ℝ) (hg0 : ∀ i, 0 ≤ g i)
     (hg : ∀ i, g i ≤ K * (N : ℝ) ^ B * ((Q : ℝ) ^ (N - 1 - max c c₀))⁻¹) :
     (p * N ^ m : ℝ) * ∑ i, g i
-      ≤ (r * p : ℝ) * (N : ℝ) ^ m * (K * (N : ℝ) ^ B) * ((Q : ℝ) ^ (N - 1 - max c c₀))⁻¹
+      ≤ (r * p : ℝ) * (N : ℝ) ^ m * (K * (N : ℝ) ^ B) * ((Q : ℝ) ^ (N - 1 - max c c₀))⁻¹ :=
+  rate_sum_over_family (Q := Q) (hQ := hQ) (K := K) (B := B) (c := c) (c₀ := c₀) (N := N) (m := m)
+    (p := p) (r := r) (hK := hK) (hN := hN) (g := g) (hg0 := hg0) (hg := hg)
 
 /-! ### NODE H.70 [theorem] — `undecidedSeq` is ANTITONE (SPLIT-MANDATED into 2)
 
 Lands in `Uniformity.Density` (theorems about landed objects), NOT in `.Induction`. -/
 
-axiom undecidedSet_preimage_subset {O : Type*} [CommRing O] [IsDomain O]
+example {O : Type*} [CommRing O] [IsDomain O]
     [IsDiscreteValuationRing O] [Finite (IsLocalRing.ResidueField O)] {n T W : ℕ} (h : T ≤ W) :
-    undecidedSet O n W ⊆ coeffFactor (O := O) (n := n) h ⁻¹' undecidedSet O n T
+    undecidedSet O n W ⊆ coeffFactor (O := O) (n := n) h ⁻¹' undecidedSet O n T :=
+  undecidedSet_preimage_subset (O := O) (n := n) (T := T) (W := W) (h := h)
 
-axiom undecidedSeq_antitone {O : Type*} [CommRing O] [IsDomain O]
+example {O : Type*} [CommRing O] [IsDomain O]
     [IsDiscreteValuationRing O] [Finite (IsLocalRing.ResidueField O)] (n : ℕ) :
-    Antitone (undecidedSeq O n)
+    Antitone (undecidedSeq O n) :=
+  undecidedSeq_antitone (O := O) (n := n)
 
 /-! ### NODE H.71 [theorem] — the lexicographic closure (SPLIT-MANDATED into 3) -/
 
 /-- The three-leg recursion hypothesis of `GENIND.C′`, packaged so the induction can be stated. -/
-structure RecursionLegs (Q m c : ℕ) (u : ℕ → ℕ → ℝ) where
-  -- DEFECT D6: the blueprint writes `head alpha beta : ℕ → ℕ → ℝ` and `B' c' n₀ : ℕ`, which is NOT
-  -- Lean 4 structure syntax — `f a b : T` declares ONE field `f` of type `(a : _) → (b : _) → T`,
-  -- so the structure silently loses `alpha`, `beta`, `c'`, `n₀` and every later field breaks.
-  -- Split one-name-per-field below; the intent is unambiguous from `hsplit`/`halpha`/`hbeta`.
-  head : ℕ → ℕ → ℝ
-  alpha : ℕ → ℕ → ℝ
-  beta : ℕ → ℕ → ℝ
-  K' : ℝ
-  B' : ℕ
-  c' : ℕ
-  n₀ : ℕ
-  hK' : 0 ≤ K'
-  hsplit : ∀ D N, 1 ≤ N → u D N ≤ head D N + alpha D N + beta D N
-  hu0 : ∀ D N, 0 ≤ u D N
-  hhead : ∀ D N, 1 ≤ N → head D N ≤ ((Q : ℝ) ^ (N - 1))⁻¹
-  -- [repaired: A-H.2/α-0] The window condition `m * (k + 1) < N` (EFF.GENIND.09's `mμ ≤ N−1`,
-  -- subtraction-free under this field's `1 ≤ N` guard) is RESTORED: the committed unwindowed sum
-  -- read the unconstrained `u D 0` and made `rate_close` FALSE — machine-refuted at transcription
-  -- (`leanfinal/Uniformity/ChapH/H71.lean`, `legsWindowZero`); see AMENDMENT A-H.2.
-  halpha : ∀ D N, 1 ≤ N → alpha D N ≤
-    ∑ k ∈ Finset.range n₀ with m * (k + 1) < N,
-      ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ * u D (N - m * (k + 1))
-  hbeta : ∀ D N, 1 ≤ N → beta D N ≤ K' * (N : ℝ) ^ (m + B') * ((Q : ℝ) ^ (N - c' - 1))⁻¹
-  -- DEFECT D7 (statement-level): `D` is unused in this field, so its type is uninferable and the
-  -- blueprint's line does not elaborate; `(D N k : ℕ)` is annotated as the minimal
-  -- semantics-preserving repair. The field was ALSO unsatisfiable at `N = 0` — see D7; the
-  -- blueprint repaired it with the `1 ≤ N →` guard (A-H.1/D7), now applied here too so the stub
-  -- carries the current signed type (this file had recorded the defect but kept the empty form).
-  hdesc : ∀ (D N k : ℕ), 1 ≤ N → k < n₀ → 1 ≤ m * (k + 1) → N - m * (k + 1) < N
+-- 0e RETIREMENT (structure): constructor order + field types, then every field name. This is the
+-- A-H.1/D6+D7 and A-H.2/α-0 RE-SIGNED form (seven scalar fields one-per-name; `hdesc` guarded by
+-- `1 ≤ N`; `halpha` windowed by `m * (k + 1) < N`) — the diff below is against the landed
+-- `Uniformity.Density.Induction.RecursionLegs`, i.e. it certifies that the fleet landed the
+-- REPAIRED structure and not the committed one.
+example (Q m c : ℕ) (u : ℕ → ℕ → ℝ)
+    (head alpha beta : ℕ → ℕ → ℝ) (K' : ℝ) (B' c' n₀ : ℕ) (hK' : 0 ≤ K')
+    (hsplit : ∀ D N, 1 ≤ N → u D N ≤ head D N + alpha D N + beta D N)
+    (hu0 : ∀ D N, 0 ≤ u D N)
+    (hhead : ∀ D N, 1 ≤ N → head D N ≤ ((Q : ℝ) ^ (N - 1))⁻¹)
+    (halpha : ∀ D N, 1 ≤ N → alpha D N ≤
+      ∑ k ∈ Finset.range n₀ with m * (k + 1) < N,
+        ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ * u D (N - m * (k + 1)))
+    (hbeta : ∀ D N, 1 ≤ N → beta D N ≤ K' * (N : ℝ) ^ (m + B') * ((Q : ℝ) ^ (N - c' - 1))⁻¹)
+    (hdesc : ∀ (D N k : ℕ), 1 ≤ N → k < n₀ → 1 ≤ m * (k + 1) → N - m * (k + 1) < N) :
+    RecursionLegs Q m c u :=
+  ⟨head, alpha, beta, K', B', c', n₀, hK', hsplit, hu0, hhead, halpha, hbeta, hdesc⟩
+
+example {Q m c : ℕ} {u : ℕ → ℕ → ℝ} (L : RecursionLegs Q m c u) : True := by
+  have _ : ℕ → ℕ → ℝ := L.head
+  have _ : ℕ → ℕ → ℝ := L.alpha
+  have _ : ℕ → ℕ → ℝ := L.beta
+  have _ : ℝ := L.K'
+  have _ : ℕ := L.B'
+  have _ : ℕ := L.c'
+  have _ : ℕ := L.n₀
+  have _ : 0 ≤ L.K' := L.hK'
+  have _ : ∀ D N, 1 ≤ N → u D N ≤ L.head D N + L.alpha D N + L.beta D N := L.hsplit
+  have _ : ∀ D N, 0 ≤ u D N := L.hu0
+  have _ : ∀ D N, 1 ≤ N → L.head D N ≤ ((Q : ℝ) ^ (N - 1))⁻¹ := L.hhead
+  have _ : ∀ D N, 1 ≤ N → L.alpha D N ≤
+      ∑ k ∈ Finset.range L.n₀ with m * (k + 1) < N,
+        ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ * u D (N - m * (k + 1)) := L.halpha
+  have _ : ∀ D N, 1 ≤ N →
+      L.beta D N ≤ L.K' * (N : ℝ) ^ (m + L.B') * ((Q : ℝ) ^ (N - L.c' - 1))⁻¹ := L.hbeta
+  have _ : ∀ (D N k : ℕ), 1 ≤ N → k < L.n₀ → 1 ≤ m * (k + 1) → N - m * (k + 1) < N := L.hdesc
+  trivial
 
 -- [repaired: A-H.2/α-rate] `hmc : m < c` added: H.30's geometric bound fires at the recomposed
 -- slope `γ = c − m`, and `1 ≤ γ` is exactly `hmc`. Without it the axiom is FALSE even windowed
@@ -967,9 +1206,11 @@ structure RecursionLegs (Q m c : ℕ) (u : ℕ → ℕ → ℝ) where
 -- A-H.1/D7 structure inhabited, `rate_close` + the fleet's `legsWindowZero` derives `False`.
 -- At the intended instantiation `c = m(m+1)/2` (the NORMALIZED α-locus slope; `clusterC m` is the
 -- recomposed one), `hmc` ⟺ `m ≥ 2` — GENIND.A's own scope. See AMENDMENT A-H.2.
-axiom rate_close {Q m c : ℕ} (hQ : 2 ≤ Q) (hc : 1 ≤ c) (hm : 1 ≤ m) (hmc : m < c)
+example {Q m c : ℕ} (hQ : 2 ≤ Q) (hc : 1 ≤ c) (hm : 1 ≤ m) (hmc : m < c)
     {u : ℕ → ℕ → ℝ} (L : RecursionLegs Q m c u) :
-    ∃ K : ℝ, 0 ≤ K ∧ ∀ D, RateSpecies Q K (m + L.B' + 1) (L.c' + 1) (u D)
+    ∃ K : ℝ, 0 ≤ K ∧ ∀ D, RateSpecies Q K (m + L.B' + 1) (L.c' + 1) (u D) :=
+  rate_close (Q := Q) (m := m) (c := c) (hQ := hQ) (hc := hc) (hm := hm) (hmc := hmc) (u := u)
+    (L := L)
 
 /-! ### NODE H.72 [theorem] — §15's fragile signature #5, and **DEFECT D4**
 
@@ -997,164 +1238,218 @@ IS visible. -/
 -- machine-checked refutation, not a numerical suspicion.  See D4 in the header for the diagnosis
 -- (which terms of the `2*`-clearing were missed) and the verified candidate repair.
 
+/-- **RETIREMENT FINDING R1 — H.72 IS RETIRED AGAINST THE AMENDMENT, NOT AGAINST THE DISPLAY THIS
+FILE ORIGINALLY GATED.** The blueprint adopted the gate's CANDIDATE A *in place*
+(`[repaired: A-H.1/D4]`, CHAP-H `**SIGNATURE.**` block of H.72) and the fleet landed exactly that
+type, so this node's signed type CHANGED between the stub gate and the landing. The refuted display
+is retained verbatim above as provenance; the `example` below diffs the AMENDED type against
+`Uniformity.Density.Induction.rate_lossPriced`. Class: sanctioned statement change, not silent
+drift — but the reader must not treat the commented display above as what is proved.
+
+**STILL OPEN (F2, and it moved):** the landed corpus contains NO inhabitant of `StageInterface`
+anywhere (`grep -rn ': StageInterface' leanfinal/` finds only binders and docstrings, 2026-08-15),
+so `leanfinal`'s H.72 is a theorem about a possibly-empty type. The repo's ONLY witness is
+`stageIfaceE` in this file's gate section below, and `leanspec` is never imported by `leanfinal`. -/
+example {G : GenreDatum} {N H S : ℕ} (I : StageInterface G N H S) :
+    2 * (G.f₁ * I.stageWindow) + (S + 1) * H + 2 * I.entryCodim + 2 * I.slack
+      ≥ 2 * G.keyDeg * (N - 1 - H) + 2 * G.keyDeg * H + H :=
+  rate_lossPriced (G := G) (N := N) (H := H) (S := S) (I := I)
+
 /-! ## §11 — THE σ DICTIONARY AND THE `(e, f)`-FORCING CHAIN (`μ = 2` ONLY) (H.73–H.79) -/
 
 /-! ### NODE H.73 [def] — `StageLeaf` + `stageSigma` (real bodies; GC-4's dictionary pattern) -/
 
 /-- The three decided leaf labels of a `μ = 2` stage read (`GENHN.C`; `SPLITEQ` and `SPLTAIL` share
 `twoSided`'s σ-block, per the dictionary's own grouping). -/
-inductive StageLeaf where
-  | ram
-  | twoSided
-  | inert
-  deriving DecidableEq, Fintype
+example : StageLeaf := StageLeaf.ram
+example : StageLeaf := StageLeaf.twoSided
+example : StageLeaf := StageLeaf.inert
+example : DecidableEq StageLeaf := inferInstance
+example : Fintype StageLeaf := inferInstance
 
 /-- `GENHN.C`'s leaf dictionary, relative to the ambient. -/
-def stageSigma (G : GenreDatum) : StageLeaf → FactorizationType
-  | .ram      => ⟨{(2 * G.e₁, G.f₁)}⟩
-  | .twoSided => ⟨{(G.e₁, G.f₁), (G.e₁, G.f₁)}⟩
-  | .inert    => ⟨{(G.e₁, 2 * G.f₁)}⟩
+example (G : GenreDatum) : StageLeaf → FactorizationType := stageSigma (G := G)
+example (G : GenreDatum) : stageSigma G .ram = ⟨{(2 * G.e₁, G.f₁)}⟩ := rfl
+example (G : GenreDatum) : stageSigma G .twoSided = ⟨{(G.e₁, G.f₁), (G.e₁, G.f₁)}⟩ := rfl
+example (G : GenreDatum) : stageSigma G .inert = ⟨{(G.e₁, 2 * G.f₁)}⟩ := rfl
 
 /-! ### NODE H.74 [lemma] — GC-4's mandatory degree-conservation lemma -/
 
-axiom stageSigma_degree (G : GenreDatum) (l : StageLeaf) :
-    (stageSigma G l).degree = 2 * G.keyDeg
+example (G : GenreDatum) (l : StageLeaf) :
+    (stageSigma G l).degree = 2 * G.keyDeg :=
+  stageSigma_degree (G := G) (l := l)
 
 /-! ### NODE H.75 [lemma] -/
 
-axiom stageSigma_genreE (t : ℕ) :
+example (t : ℕ) :
     stageSigma (genreE2 t) .ram = ⟨{(4, 1)}⟩ ∧
     stageSigma (genreE2 t) .twoSided = ⟨{(2, 1), (2, 1)}⟩ ∧
-    stageSigma (genreE2 t) .inert = ⟨{(2, 2)}⟩
+    stageSigma (genreE2 t) .inert = ⟨{(2, 2)}⟩ :=
+  stageSigma_genreE (t := t)
 
-axiom stageSigma_degree_instances (t : ℕ) :
+example (t : ℕ) :
     (stageSigma (genreE2 t) .ram).degree = 4 ∧
     (stageSigma genreA2witness .ram).degree = 6 ∧
-    (stageSigma genreD2bwitness .ram).degree = 4
+    (stageSigma genreD2bwitness .ram).degree = 4 :=
+  stageSigma_degree_instances (t := t)
 
 /-! ### NODE H.76 [theorem] — the `(e, f)`-forcing chain (lands in `Uniformity.Density`) -/
 
-axiom efPair_forced_of_dvd {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+example {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {g : Polynomial O} (hg : g.Monic) {e f : ℕ} (he : 1 ≤ e) (hf : 1 ≤ f)
     (hdeg : g.natDegree = e * f) {p : ℕ × ℕ} (hp : (typeOf g).data = {p})
-    (hpe : e ∣ p.1) (hpf : f ∣ p.2) : p = (e, f)
+    (hpe : e ∣ p.1) (hpf : f ∣ p.2) : p = (e, f) :=
+  efPair_forced_of_dvd (O := O) (g := g) (hg := hg) (e := e) (f := f) (he := he) (hf := hf)
+    (hdeg := hdeg) (p := p) (hp := hp) (hpe := hpe) (hpf := hpf)
 
 /-! ### NODE H.77 [lemma] -/
 
-axiom gcd_odd_of_odd {u e : ℕ} (hu : Odd u) : Odd (Nat.gcd u e)
+example {u e : ℕ} (hu : Odd u) : Odd (Nat.gcd u e) :=
+  gcd_odd_of_odd (u := u) (e := e) (hu := hu)
 
-axiom lcm_ram_value_group {u e : ℕ} (he : 1 ≤ e) (hu : Odd u) :
-    Nat.lcm e (2 * e / Nat.gcd u e) = 2 * e
+example {u e : ℕ} (he : 1 ≤ e) (hu : Odd u) :
+    Nat.lcm e (2 * e / Nat.gcd u e) = 2 * e :=
+  lcm_ram_value_group (u := u) (e := e) (he := he) (hu := hu)
 
 /-! ### NODE H.78 [def] -/
 
 /-- `T(b)′`(iii)'s composed dictionary: the σ-composition FORMULA `(e, f) ↦ (e₁e₂·e_s, f₁f₂·f_s)` —
 the part of the REFUTED `T(b)` that SURVIVES, applied to the composed-key pins. -/
-def composedSigma (G : GenreDatum) (e₂ f₂ : ℕ) : StageLeaf → FactorizationType
-  | .ram      => ⟨{(2 * (G.e₁ * e₂), G.f₁ * f₂)}⟩
-  | .twoSided => ⟨{(G.e₁ * e₂, G.f₁ * f₂), (G.e₁ * e₂, G.f₁ * f₂)}⟩
-  | .inert    => ⟨{(G.e₁ * e₂, 2 * (G.f₁ * f₂))}⟩
+example (G : GenreDatum) (e₂ f₂ : ℕ) : StageLeaf → FactorizationType :=
+  composedSigma (G := G) (e₂ := e₂) (f₂ := f₂)
+example (G : GenreDatum) (e₂ f₂ : ℕ) :
+    composedSigma G e₂ f₂ .ram = ⟨{(2 * (G.e₁ * e₂), G.f₁ * f₂)}⟩ := rfl
+example (G : GenreDatum) (e₂ f₂ : ℕ) :
+    composedSigma G e₂ f₂ .twoSided
+      = ⟨{(G.e₁ * e₂, G.f₁ * f₂), (G.e₁ * e₂, G.f₁ * f₂)}⟩ := rfl
+example (G : GenreDatum) (e₂ f₂ : ℕ) :
+    composedSigma G e₂ f₂ .inert = ⟨{(G.e₁ * e₂, 2 * (G.f₁ * f₂))}⟩ := rfl
 
 /-! ### NODE H.79 [lemma] -/
 
-axiom composedSigma_degree (G : GenreDatum) (e₂ f₂ : ℕ) (l : StageLeaf) :
-    (composedSigma G e₂ f₂ l).degree = 2 * (G.keyDeg * (e₂ * f₂))
+example (G : GenreDatum) (e₂ f₂ : ℕ) (l : StageLeaf) :
+    (composedSigma G e₂ f₂ l).degree = 2 * (G.keyDeg * (e₂ * f₂)) :=
+  composedSigma_degree (G := G) (e₂ := e₂) (f₂ := f₂) (l := l)
 
-axiom composedDeg_eq (G : GenreDatum) (e₂ f₂ : ℕ) :
-    G.keyDeg * (e₂ * f₂) = (G.e₁ * e₂) * (G.f₁ * f₂)
+example (G : GenreDatum) (e₂ f₂ : ℕ) :
+    G.keyDeg * (e₂ * f₂) = (G.e₁ * e₂) * (G.f₁ * f₂) :=
+  composedDeg_eq (G := G) (e₂ := e₂) (f₂ := f₂)
 
 /-! ## §12 — THE `n = 4` TEMPLATE (H.80–H.92) -/
 
 /-! ### NODE H.80 [lemma] -/
 
 open Polynomial in
-axiom quartic_dev_E {R : Type*} [CommRing R] (s a₁ a₀ b₁ b₀ : R) :
+example {R : Type*} [CommRing R] (s a₁ a₀ b₁ b₀ : R) :
     ((X ^ 2 - C s) ^ 2 + (C a₁ * X + C a₀) * (X ^ 2 - C s) + (C b₁ * X + C b₀))
       = X ^ 4 + C a₁ * X ^ 3 + C (a₀ - 2 * s) * X ^ 2 + C (b₁ - s * a₁) * X
-        + C (b₀ - s * a₀ + s ^ 2)
+        + C (b₀ - s * a₀ + s ^ 2) :=
+  quartic_dev_E (R := R) (s := s) (a₁ := a₁) (a₀ := a₀) (b₁ := b₁) (b₀ := b₀)
 
 /-! ### NODE H.81 [lemma] -/
 
 open Polynomial in
-axiom quartic_dev_F {R : Type*} [CommRing R] (p₁ p₀ a₁ a₀ b₁ b₀ : R) :
+example {R : Type*} [CommRing R] (p₁ p₀ a₁ a₀ b₁ b₀ : R) :
     ((X ^ 2 + C p₁ * X + C p₀) ^ 2 + (C a₁ * X + C a₀) * (X ^ 2 + C p₁ * X + C p₀)
         + (C b₁ * X + C b₀))
       = X ^ 4 + C (2 * p₁ + a₁) * X ^ 3 + C (p₁ ^ 2 + 2 * p₀ + a₁ * p₁ + a₀) * X ^ 2
-        + C (2 * p₁ * p₀ + a₁ * p₀ + a₀ * p₁ + b₁) * X + C (p₀ ^ 2 + a₀ * p₀ + b₀)
+        + C (2 * p₁ * p₀ + a₁ * p₀ + a₀ * p₁ + b₁) * X + C (p₀ ^ 2 + a₀ * p₀ + b₀) :=
+  quartic_dev_F (R := R) (p₁ := p₁) (p₀ := p₀) (a₁ := a₁) (a₀ := a₀) (b₁ := b₁) (b₀ := b₀)
 
 /-! ### NODE H.82 [lemma] (SPLIT CANDIDATE) -/
 
-axiom quartic_floors_E (t : ℕ) :
+example (t : ℕ) :
     (2 * t + 1 + 1) / 2 = t + 1 ∧ (2 * t + 1) + 1 = 2 * t + 2 ∧
-    (3 * (2 * t + 1) + 1) / 2 = 3 * t + 2 ∧ 2 * (2 * t + 1) + 1 = 4 * t + 3
+    (3 * (2 * t + 1) + 1) / 2 = 3 * t + 2 ∧ 2 * (2 * t + 1) + 1 = 4 * t + 3 :=
+  quartic_floors_E (t := t)
 
-axiom quartic_node_E (t : ℕ) :
+example (t : ℕ) :
     min (2 * (t + 1) + (2 * t + 1)) (2 * (2 * t + 2)) = 2 * (2 * t + 1) + 1 ∧
-    min (2 * (3 * t + 2) + (2 * t + 1)) (2 * (4 * t + 3)) = 4 * (2 * t + 1) + 1
+    min (2 * (3 * t + 2) + (2 * t + 1)) (2 * (4 * t + 3)) = 4 * (2 * t + 1) + 1 :=
+  quartic_node_E (t := t)
 
 /-! ### NODE H.83 [lemma] (SPLIT CANDIDATE) -/
 
-axiom quartic_total_F {N k : ℕ} (hN : 4 * k + 1 ≤ N) :
-    (N - k - 1) + (N - 2 * k - 1) + (N - 3 * k - 1) + (N - 4 * k - 1) + (10 * k + 4) = 4 * N
+example {N k : ℕ} (hN : 4 * k + 1 ≤ N) :
+    (N - k - 1) + (N - 2 * k - 1) + (N - 3 * k - 1) + (N - 4 * k - 1) + (10 * k + 4) = 4 * N :=
+  quartic_total_F (N := N) (k := k) (hN := hN)
 
-axiom quartic_node_F (k : ℕ) :
-    min ((k + 1) + k) (2 * k + 1) = 2 * k + 1 ∧ min ((3 * k + 1) + k) (4 * k + 1) = 4 * k + 1
+example (k : ℕ) :
+    min ((k + 1) + k) (2 * k + 1) = 2 * k + 1 ∧ min ((3 * k + 1) + k) (4 * k + 1) = 4 * k + 1 :=
+  quartic_node_F (k := k)
 
 /-! ### NODE H.84 [lemma] — `w11_node_shape` retained (§15 rule 4 left it to discretion) -/
 
-axiom w11_node_shape (S : ℕ) : 2 * S + 1 = 2 * S + 1 ∧ S + 1 = S + 1
+example (S : ℕ) : 2 * S + 1 = 2 * S + 1 ∧ S + 1 = S + 1 :=
+  w11_node_shape (S := S)
 
-axiom w11_node_E (h : ℕ) : (4 * h + 1, 2 * h + 1) = (2 * (2 * h) + 1, (2 * h) + 1)
+example (h : ℕ) : (4 * h + 1, 2 * h + 1) = (2 * (2 * h) + 1, (2 * h) + 1) :=
+  w11_node_E (h := h)
 
-axiom w11_node_F (k : ℕ) : (4 * k + 1, 2 * k + 1) = (2 * (2 * k) + 1, (2 * k) + 1)
+example (k : ℕ) : (4 * k + 1, 2 * k + 1) = (2 * (2 * k) + 1, (2 * k) + 1) :=
+  w11_node_F (k := k)
 
 /-! ### NODE H.85 [lemma] -/
 
-axiom dv_parity_ne {h va vb : ℕ} (hh : Odd h) : 2 * va + h ≠ 2 * vb
+example {h va vb : ℕ} (hh : Odd h) : 2 * va + h ≠ 2 * vb :=
+  dv_parity_ne (h := h) (va := va) (vb := vb) (hh := hh)
 
-axiom dv_parity_min_unique {h va vb : ℕ} (hh : Odd h) :
-    min (2 * va + h) (2 * vb) = 2 * va + h ∨ min (2 * va + h) (2 * vb) = 2 * vb
+example {h va vb : ℕ} (hh : Odd h) :
+    min (2 * va + h) (2 * vb) = 2 * va + h ∨ min (2 * va + h) (2 * vb) = 2 * vb :=
+  dv_parity_min_unique (h := h) (va := va) (vb := vb) (hh := hh)
 
 /-! ### NODE H.86 [lemma] -/
 
-axiom carry_height_gt {h dμ va : ℕ} (hh : 1 ≤ h) (hd : 2 * h + 1 ≤ dμ) (hva : h + 1 ≤ 2 * va) :
-    dμ < min (2 * (dμ - h)) (2 * va + (dμ - h))
+example {h dμ va : ℕ} (hh : 1 ≤ h) (hd : 2 * h + 1 ≤ dμ) (hva : h + 1 ≤ 2 * va) :
+    dμ < min (2 * (dμ - h)) (2 * va + (dμ - h)) :=
+  carry_height_gt (h := h) (dμ := dμ) (va := va) (hh := hh) (hd := hd) (hva := hva)
 
 /-! ### NODE H.87 [lemma] — the carry cancellation, both characteristics -/
 
-axiom carry_cancel {R : Type*} [CommRing R] {z s S₀ : R} (h : S₀ = z * s ^ 2) :
-    S₀ + z * s ^ 2 - 2 * (z * s ^ 2) = 0
+example {R : Type*} [CommRing R] {z s S₀ : R} (h : S₀ = z * s ^ 2) :
+    S₀ + z * s ^ 2 - 2 * (z * s ^ 2) = 0 :=
+  carry_cancel (R := R) (z := z) (s := s) (S₀ := S₀) (h := h)
 
-axiom carry_cancel_char_two {R : Type*} [CommRing R] (hR : (2 : R) = 0) (z s : R) :
-    z * s ^ 2 + z * s ^ 2 = 0
+example {R : Type*} [CommRing R] (hR : (2 : R) = 0) (z s : R) :
+    z * s ^ 2 + z * s ^ 2 = 0 :=
+  carry_cancel_char_two (R := R) (hR := hR) (z := z) (s := s)
 
-axiom refine_kill_A₁ {R : Type*} [CommRing R] {S₁ s : R} (h : S₁ = -(2 * s)) : S₁ + 2 * s = 0
+example {R : Type*} [CommRing R] {S₁ s : R} (h : S₁ = -(2 * s)) : S₁ + 2 * s = 0 :=
+  refine_kill_A₁ (R := R) (S₁ := S₁) (s := s) (h := h)
 
 /-! ### NODE H.88 [lemma] — `CapBranch` + `capBranch` (real bodies) + the trichotomy -/
 
 /-- The three exits of the `dv0 = N` boundary read, with PAIRWISE-DISJOINT antecedents
 (`GENH4-CAP`, as re-derived at `[r3, PE3 MINOR 1]` from `GENH4-3(i)`'s own "else (ii)"). -/
-inductive CapBranch where | twoSided | ram | und
-  deriving DecidableEq
+example : CapBranch := CapBranch.twoSided
+example : CapBranch := CapBranch.ram
+example : CapBranch := CapBranch.und
+example : DecidableEq CapBranch := inferInstance
 
-def capBranch (N w : ℕ) : CapBranch :=
-  if 2 * w < N then .twoSided else if N % 2 = 1 then .ram else .und
+example (N w : ℕ) : CapBranch := capBranch (N := N) (w := w)
+example (N w : ℕ) :
+    capBranch N w = if 2 * w < N then .twoSided else if N % 2 = 1 then .ram else .und := rfl
 
-axiom capBranch_trichotomy (N w : ℕ) :
+example (N w : ℕ) :
     (capBranch N w = .twoSided ↔ 2 * w < N) ∧
     (capBranch N w = .ram ↔ (N ≤ 2 * w ∧ N % 2 = 1)) ∧
-    (capBranch N w = .und ↔ (N ≤ 2 * w ∧ N % 2 = 0))
+    (capBranch N w = .und ↔ (N ≤ 2 * w ∧ N % 2 = 0)) :=
+  capBranch_trichotomy (N := N) (w := w)
 
-axiom capBranch_seven_three : capBranch 7 3 = .twoSided
+example : capBranch 7 3 = .twoSided :=
+  capBranch_seven_three
 
 /-! ### NODE H.89 [lemma] -/
 
-axiom consulted_ram {u h N : ℕ} (hh : 1 ≤ h) (hu : u ≤ 2 * N - 1) (hN : 1 ≤ N) :
-    (u - h) / 2 ≤ N - 1
+example {u h N : ℕ} (hh : 1 ≤ h) (hu : u ≤ 2 * N - 1) (hN : 1 ≤ N) :
+    (u - h) / 2 ≤ N - 1 :=
+  consulted_ram (u := u) (h := h) (N := N) (hh := hh) (hu := hu) (hN := hN)
 
-axiom consulted_twoSided {w N : ℕ} (hw : w ≤ 2 * N - 2) : w / 2 ≤ N - 1
+example {w N : ℕ} (hw : w ≤ 2 * N - 2) : w / 2 ≤ N - 1 :=
+  consulted_twoSided (w := w) (N := N) (hw := hw)
 
-axiom consulted_refine {dμ N : ℕ} (hd : 2 * dμ ≤ 2 * N - 2) : dμ ≤ N - 1
+example {dμ N : ℕ} (hd : 2 * dμ ≤ 2 * N - 2) : dμ ≤ N - 1 :=
+  consulted_refine (dμ := dμ) (N := N) (hd := hd)
 
 -- **DEFECT D8 — REFUTED, THEREFORE NOT SIGNED** (the `G.23a card_resStratum` precedent: a refuted
 -- statement is commented out, never signed as an axiom).  The blueprint's fourth H.89 declaration is
@@ -1168,38 +1463,56 @@ axiom consulted_refine {dμ N : ℕ} (hd : 2 * dμ ≤ 2 * N - 2) : dμ ≤ N - 
 -- three sibling H.89 lemmas all carry) or add `1 ≤ m`.  `h` is unused in the statement either way.
 -- The blueprint must choose; this file signs neither form.
 
+/-- **RETIREMENT FINDING R2 — H.89 IS RETIRED AGAINST THE AMENDMENT.** The blueprint chose the
+sibling guard `(hN : 1 ≤ N)` and restored it in place (`[repaired: A-H.1/D8]`), and the fleet landed
+exactly that type. Same class as R1: a sanctioned statement change between gate and landing, so the
+`example` below is at the AMENDED type, not the commented display above. `h` remains unused in the
+statement (the landed declaration keeps it, so the named application must supply it). -/
+example {m N h : ℕ} (hN : 1 ≤ N) (hband : 2 * N ≤ m) : ¬ (m ≤ 2 * N - 1) :=
+  band_not_consulted (m := m) (N := N) (h := h) (hN := hN) (hband := hband)
+
 /-! ### NODE H.90 [lemma] -/
 
-axiom invariant_even {dμ h : ℕ} (hd : 2 * h + 2 ≤ dμ) : h + 1 ≤ dμ / 2
+example {dμ h : ℕ} (hd : 2 * h + 2 ≤ dμ) : h + 1 ≤ dμ / 2 :=
+  invariant_even (dμ := dμ) (h := h) (hd := hd)
 
-axiom invariant_odd {dμ h : ℕ} (hd : 2 * h + 1 ≤ dμ) : (h + 1) / 2 ≤ (dμ - h) / 2
+example {dμ h : ℕ} (hd : 2 * h + 1 ≤ dμ) : (h + 1) / 2 ≤ (dμ - h) / 2 :=
+  invariant_odd (dμ := dμ) (h := h) (hd := hd)
 
 /-! ### NODE H.91 [lemma] — `LeafE` + `leafFactorE` (real bodies) -/
 
 /-- The six decided/undecided leaf labels of a genre-E stage read, and their letter/census factors
 (`THEOREM GENH4.A`'s four-slot model, §S6.1's table). -/
-inductive LeafE where | ram | twoSided | splitEq | inert | splTail | und
-  deriving DecidableEq, Fintype
+example : LeafE := LeafE.ram
+example : LeafE := LeafE.twoSided
+example : LeafE := LeafE.splitEq
+example : LeafE := LeafE.inert
+example : LeafE := LeafE.splTail
+example : LeafE := LeafE.und
+example : DecidableEq LeafE := inferInstance
+example : Fintype LeafE := inferInstance
 
-def leafFactorE (q : ℕ) : LeafE → ℕ
-  | .ram      => q - 1
-  | .twoSided => (q - 1) ^ 2
-  | .splitEq  => splitEqCensus q
-  | .inert    => inertCensus q
-  | .splTail  => q - 1
-  | .und      => 1
+example (q : ℕ) : LeafE → ℕ := leafFactorE (q := q)
+example (q : ℕ) :
+    (leafFactorE q .ram, leafFactorE q .twoSided, leafFactorE q .splitEq,
+      leafFactorE q .inert, leafFactorE q .splTail, leafFactorE q .und)
+      = (q - 1, (q - 1) ^ 2, splitEqCensus q, inertCensus q, q - 1, 1) := rfl
 
-axiom leafFactorE_pos {q : ℕ} (hq : 3 ≤ q) (l : LeafE) : 0 < leafFactorE q l
+example {q : ℕ} (hq : 3 ≤ q) (l : LeafE) : 0 < leafFactorE q l :=
+  leafFactorE_pos (q := q) (hq := hq) (l := l)
 
 /-! ### NODE H.92 [lemma] -/
 
-axiom subset_sum_pow {ι : Type*} [DecidableEq ι] (D : Finset ι) (L : ℕ) :
-    ∑ H ∈ D.powerset, L ^ H.card = (1 + L) ^ D.card
+example {ι : Type*} [DecidableEq ι] (D : Finset ι) (L : ℕ) :
+    ∑ H ∈ D.powerset, L ^ H.card = (1 + L) ^ D.card :=
+  subset_sum_pow (ι := ι) (D := D) (L := L)
 
-axiom bracket_telescope_E (q δ : ℕ) (hq : 1 ≤ q) :
-    1 + ∑ j ∈ Finset.range δ, (q - 1) * q ^ j = q ^ δ
+example (q δ : ℕ) (hq : 1 ≤ q) :
+    1 + ∑ j ∈ Finset.range δ, (q - 1) * q ^ j = q ^ δ :=
+  bracket_telescope_E (q := q) (δ := δ) (hq := hq)
 
-axiom macroscopic_rate (q Δ μ : ℕ) : q ^ (2 * (Δ * μ)) = (q ^ 2) ^ (Δ * μ)
+example (q Δ μ : ℕ) : q ^ (2 * (Δ * μ)) = (q ^ 2) ^ (Δ * μ) :=
+  macroscopic_rate (q := q) (Δ := Δ) (μ := μ)
 
 /-! ## §13 — THE ASSEMBLY (H.93–H.99) -/
 
@@ -1208,34 +1521,38 @@ axiom macroscopic_rate (q Δ μ : ℕ) : q ^ (2 * (Δ * μ)) = (q ^ 2) ^ (Δ * �
 /-- One cell of an `(A1)`-admissible family: a shifted product of arithmetic progressions in `ℕ ^ r`
 with an affine positive-coefficient exponent, an affine visibility form, a coefficient, and a
 σ-label.  **The σ-label field is W-12's r4 STRENGTHENING of `(A1)`** — see the note. -/
-structure A1Cell (r : ℕ) where
-  /-- Per-coordinate offset. -/
-  offset : Fin r → ℕ
-  /-- Per-coordinate stride (positive). -/
-  stride : Fin r → ℕ
-  stride_pos : ∀ i, 0 < stride i
-  /-- The exponent's positive coefficients and constant. -/
-  expCoeff : Fin r → ℕ
-  expCoeff_pos : ∀ i, 0 < expCoeff i
-  expConst : ℕ
-  /-- The visibility form. -/
-  visCoeff : Fin r → ℕ
-  visConst : ℕ
-  /-- The family's `q`-independent coefficient. -/
-  coeff : ℕ
-  /-- **The σ-label** (W-12 r4). -/
-  σ : FactorizationType
+-- 0e RETIREMENT (structure): constructor order + field types, then every field name.
+example (r : ℕ) (offset stride : Fin r → ℕ) (stride_pos : ∀ i, 0 < stride i)
+    (expCoeff : Fin r → ℕ) (expCoeff_pos : ∀ i, 0 < expCoeff i) (expConst : ℕ)
+    (visCoeff : Fin r → ℕ) (visConst coeff : ℕ) (σ : FactorizationType) : A1Cell r :=
+  ⟨offset, stride, stride_pos, expCoeff, expCoeff_pos, expConst, visCoeff, visConst, coeff, σ⟩
+
+example {r : ℕ} (C : A1Cell r) : True := by
+  have _ : Fin r → ℕ := C.offset
+  have _ : Fin r → ℕ := C.stride
+  have _ : ∀ i, 0 < C.stride i := C.stride_pos
+  have _ : Fin r → ℕ := C.expCoeff
+  have _ : ∀ i, 0 < C.expCoeff i := C.expCoeff_pos
+  have _ : ℕ := C.expConst
+  have _ : Fin r → ℕ := C.visCoeff
+  have _ : ℕ := C.visConst
+  have _ : ℕ := C.coeff
+  have _ : FactorizationType := C.σ
+  trivial
 
 /-- The parameter locus of a cell: the shifted product of arithmetic progressions. -/
-def A1Cell.locus {r : ℕ} (C : A1Cell r) : Set (Fin r → ℕ) :=
-  {p | ∀ i, ∃ t : ℕ, p i = C.offset i + C.stride i * t}
+example {r : ℕ} (C : A1Cell r) : Set (Fin r → ℕ) := A1Cell.locus (r := r) (C := C)
+example {r : ℕ} (C : A1Cell r) :
+    C.locus = {p | ∀ i, ∃ t : ℕ, p i = C.offset i + C.stride i * t} := rfl
 
 /-- The cell's exponent at a parameter point. -/
-def A1Cell.exp {r : ℕ} (C : A1Cell r) (p : Fin r → ℕ) : ℕ :=
-  C.expConst + ∑ i, C.expCoeff i * p i
+example {r : ℕ} (C : A1Cell r) (p : Fin r → ℕ) : ℕ := A1Cell.exp (r := r) (C := C) (p := p)
+example {r : ℕ} (C : A1Cell r) (p : Fin r → ℕ) :
+    C.exp p = C.expConst + ∑ i, C.expCoeff i * p i := rfl
 
 /-- An `(A1)`-admissible family is a finite list of cells. -/
-def A1Family (r : ℕ) : Type := List (A1Cell r)
+example (r : ℕ) : Type := A1Family (r := r)
+example (r : ℕ) : A1Family r = List (A1Cell r) := rfl
 
 /-! ### NODE H.94 [theorem] — closure of `(A1)` (SPLIT-MANDATED into 3); **DEFECT D5**
 
@@ -1245,53 +1562,50 @@ the choice below (transport the visibility form by the same substitution, keep `
 `coeff`, `σ`) is the one under which the signed `deltaSubst_exp` holds. See D5. -/
 
 /-- (i) The product of two cells. -/
-def A1Cell.prod {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) : A1Cell (r₁ + r₂) where
-  offset := Fin.append C.offset D.offset
-  stride := Fin.append C.stride D.stride
-  stride_pos := by
-    refine Fin.addCases (fun k => ?_) (fun k => ?_)
-    · simpa [Fin.append_left] using C.stride_pos k
-    · simpa [Fin.append_right] using D.stride_pos k
-  expCoeff := Fin.append C.expCoeff D.expCoeff
-  expCoeff_pos := by
-    refine Fin.addCases (fun k => ?_) (fun k => ?_)
-    · simpa [Fin.append_left] using C.expCoeff_pos k
-    · simpa [Fin.append_right] using D.expCoeff_pos k
-  expConst := C.expConst + D.expConst
-  visCoeff := Fin.append C.visCoeff D.visCoeff
-  visConst := C.visConst + D.visConst
-  coeff := C.coeff * D.coeff
-  σ := ⟨C.σ.data + D.σ.data⟩
+example {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) : A1Cell (r₁ + r₂) :=
+  A1Cell.prod (r₁ := r₁) (r₂ := r₂) (C := C) (D := D)
 
-axiom A1Cell.prod_exp {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) (p : Fin (r₁ + r₂) → ℕ) :
-    (C.prod D).exp p = C.exp (fun i => p (Fin.castAdd r₂ i)) + D.exp (fun j => p (Fin.natAdd r₁ j))
+-- The nine data fields, `rfl`-diffed (`stride_pos`/`expCoeff_pos` are proofs, so proof-irrelevant).
+-- D5 named `prod` as fully specified by the blueprint's PROOF field; this is that check.
+example {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) :
+    ((C.prod D).offset, (C.prod D).stride, (C.prod D).expCoeff, (C.prod D).visCoeff)
+      = (Fin.append C.offset D.offset, Fin.append C.stride D.stride,
+          Fin.append C.expCoeff D.expCoeff, Fin.append C.visCoeff D.visCoeff) := rfl
 
-axiom A1Cell.prod_σ_degree {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) :
-    (C.prod D).σ.degree = C.σ.degree + D.σ.degree
+example {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) :
+    ((C.prod D).expConst, (C.prod D).visConst, (C.prod D).coeff, (C.prod D).σ)
+      = (C.expConst + D.expConst, C.visConst + D.visConst, C.coeff * D.coeff,
+          ⟨C.σ.data + D.σ.data⟩) := rfl
+
+example {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) (p : Fin (r₁ + r₂) → ℕ) :
+    (C.prod D).exp p = C.exp (fun i => p (Fin.castAdd r₂ i)) + D.exp (fun j => p (Fin.natAdd r₁ j)) :=
+  A1Cell.prod_exp (r₁ := r₁) (r₂ := r₂) (C := C) (D := D) (p := p)
+
+example {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) :
+    (C.prod D).σ.degree = C.σ.degree + D.σ.degree :=
+  A1Cell.prod_σ_degree (r₁ := r₁) (r₂ := r₂) (C := C) (D := D)
 
 /-- (iii) The `δ`-substitution `w₂ = w₁ + 1 + δ` of `W-12` §S3.4's 2SIDED instance. -/
-def A1Cell.deltaSubst (C : A1Cell 2) : A1Cell 2 where
-  offset := C.offset
-  stride := C.stride
-  stride_pos := C.stride_pos
-  expCoeff := ![C.expCoeff 0 + C.expCoeff 1, C.expCoeff 1]
-  expCoeff_pos := by
-    have h0 := C.expCoeff_pos 0
-    have h1 := C.expCoeff_pos 1
-    intro i
-    fin_cases i
-    · show 0 < C.expCoeff 0 + C.expCoeff 1
-      omega
-    · show 0 < C.expCoeff 1
-      omega
-  expConst := C.expConst + C.expCoeff 1
-  visCoeff := ![C.visCoeff 0 + C.visCoeff 1, C.visCoeff 1]
-  visConst := C.visConst + C.visCoeff 1
-  coeff := C.coeff
-  σ := C.σ
+example (C : A1Cell 2) : A1Cell 2 := A1Cell.deltaSubst (C := C)
 
-axiom A1Cell.deltaSubst_exp (C : A1Cell 2) (w δ : ℕ) :
-    (C.deltaSubst).exp ![w, δ] = C.exp ![w, w + 1 + δ]
+-- **THE D5 CHECK.** `deltaSubst`'s body is a STUB-SIDE DETERMINATION (the blueprint's PROOF field
+-- pins only `expCoeff`); these `rfl`s certify that the fleet landed the SAME determination for
+-- `offset`, `stride`, `expConst`, `visCoeff`, `visConst`, `coeff` and `σ`, not a different one.
+example (C : A1Cell 2) :
+    ((C.deltaSubst).offset, (C.deltaSubst).stride, (C.deltaSubst).coeff, (C.deltaSubst).σ)
+      = (C.offset, C.stride, C.coeff, C.σ) := rfl
+
+example (C : A1Cell 2) :
+    ((C.deltaSubst).expCoeff, (C.deltaSubst).expConst)
+      = (![C.expCoeff 0 + C.expCoeff 1, C.expCoeff 1], C.expConst + C.expCoeff 1) := rfl
+
+example (C : A1Cell 2) :
+    ((C.deltaSubst).visCoeff, (C.deltaSubst).visConst)
+      = (![C.visCoeff 0 + C.visCoeff 1, C.visCoeff 1], C.visConst + C.visCoeff 1) := rfl
+
+example (C : A1Cell 2) (w δ : ℕ) :
+    (C.deltaSubst).exp ![w, δ] = C.exp ![w, w + 1 + δ] :=
+  A1Cell.deltaSubst_exp (C := C) (w := w) (δ := δ)
 
 /-! ### NODE H.95 [def] — `InductionPackage` (real body; lands in `Uniformity.Density`)
 
@@ -1301,16 +1615,19 @@ axiom A1Cell.deltaSubst_exp (C : A1Cell 2) (w δ : ℕ) :
 aggregate menu + (A0) + exact-complement (A2)}` of `THEOREM GENIND.B`, in the form `leanfinal`'s API
 can state: a covering menu, the certified densities, and the complement's RATE species
 (`(A2-RATE)`, `ANNEX R R1.1`). -/
-def InductionPackage (n : ℕ) : Prop :=
-  ∃ (K : ℝ) (B c : ℕ), 0 ≤ K ∧
-    ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
-      [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
-      (∃ S : Finset FactorizationType, CoveringMenu O n S) ∧
-        RateSpecies (residueCard O) K B c (undecidedSeq O n)
+example (n : ℕ) : Prop := InductionPackage (n := n)
+example (n : ℕ) :
+    InductionPackage n ↔
+      ∃ (K : ℝ) (B c : ℕ), 0 ≤ K ∧
+        ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+          [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
+          (∃ S : Finset FactorizationType, CoveringMenu O n S) ∧
+            RateSpecies (residueCard O) K B c (undecidedSeq O n) := Iff.rfl
 
 /-! ### NODE H.96 [theorem] -/
 
-axiom package_two : InductionPackage 2
+example : InductionPackage 2 :=
+  package_two
 
 /-! ### NODE H.97 [theorem] — `package_three_of_rate` (§15 rule 3)
 
@@ -1320,20 +1637,23 @@ theorem package_three_of_drainage (hd : DrainageAt 3) : InductionPackage 3
 ```
 The adopted form, from H.97's ⚠ SIGNATURE NOTE (blueprint line 5923), is signed below. -/
 
-axiom package_three_of_rate
+example
     (hrate : ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
       [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
       RateSpecies (residueCard O) 1 1 0 (undecidedSeq O 3)) :
-    InductionPackage 3
+    InductionPackage 3 :=
+  package_three_of_rate (hrate := hrate)
 
 /-! ### NODE H.98 [theorem] — the capstone, conditionally -/
 
 /-- `GENIND.B` Step 5: the package's `(A2)` member delivers drainage at every degree. -/
-axiom drainage_of_package (hp : ∀ n, InductionPackage n) : ∀ n, DrainageAt n
+example (hp : ∀ n, InductionPackage n) : ∀ n, DrainageAt n :=
+  drainage_of_package (hp := hp)
 
 /-- The capstone, assembled: certified densities + package ⟹ `UniformityStatement`. -/
-axiom uniformity_of_package (hdec : UniformityStatementDecided)
-    (hp : ∀ n, InductionPackage n) : UniformityStatement
+example (hdec : UniformityStatementDecided)
+    (hp : ∀ n, InductionPackage n) : UniformityStatement :=
+  uniformity_of_package (hdec := hdec) (hp := hp)
 
 /-! ### NODE H.99 [gate] — EXECUTED HERE (GC-11; §15's recommended gate order step (c))
 
@@ -1664,6 +1984,9 @@ H.28 is implied by H.27, which IS executed below. -/
   -- `2 * 0 - 1 = 0` in ℕ. The axiom is WITHDRAWN (commented out at H.89 below, the G.23a
   -- precedent). Checked here in the REPAIRED form, with BOTH candidate guards, so the blueprint
   -- can pick either: `1 ≤ N` (matches the sibling lemmas of H.89) or `1 ≤ m`.
+  -- [0e RETIREMENT, 2026-08-15] The blueprint picked `1 ≤ N` (A-H.1/D8) and the fleet landed it, so
+  -- the node is now RETIRED at that amended type (finding R2). The two checks below are kept as the
+  -- record of how the choice was validated; the third records the original refutation.
   chk "H.89 band_not_consulted, REPAIRED with 1 ≤ N" (List.all (R 40) fun m =>
     List.all (R 20) fun N => !(1 ≤ N && 2 * N ≤ m) || !(m ≤ 2 * N - 1))
   chk "H.89 band_not_consulted, REPAIRED with 1 ≤ m" (List.all (R 40) fun m =>
@@ -1779,22 +2102,26 @@ end NumericGate
 
 /-! ## RESUME COMMENT (storm discipline)
 
-Status at this line: chapter H's stub gate is COMPLETE. 188 of the 190 signable declarations are
-landed (H.01 … H.98), one file, `namespace LeanspecH`, no `sorry`, `autoImplicit` off, three
-executed gate blocks green. Nothing is outstanding IN THIS FILE.
+**Status at this line: chapter H's leanspec interface is RETIRED (0e closing pass, 2026-08-15).**
+All 190 signable declarations are landed in `leanfinal` (H.01 … H.98; H.99 is the census block) and
+diffed here — 253 retirement `example`s, zero `axiom`s, zero `sorry`s, `autoImplicit` off, three
+executed gate blocks green (and the numeric gates now run on the LANDED bodies). One deliberate
+residue, `stageIfaceE`. Nothing is outstanding IN THIS FILE. Findings R1–R5 are in the RETIREMENT
+CENSUS in the header; the pre-retirement gate record (defect list D1–D8, findings F1/F2, O1) is kept
+below it verbatim and reads in the past tense.
 
-The outstanding items are all BLUEPRINT-side, and per §15 rule 5 they are recorded here and
-repaired there (dated append), never patched in `leanspec`:
+Disposition of the gate's own list, as of retirement:
 
-* **Must be decided BEFORE the fleet fires on the affected node.** D4 — H.72 `rate_lossPriced` is
-  REFUTED; adopt CANDIDATE A or B (both verified) and re-derive `(C2Q.1)`. D8 — H.89
-  `band_not_consulted` is REFUTED; add `1 ≤ N` or `1 ≤ m`. D7 — H.71 `RecursionLegs.hdesc` is
-  unsatisfiable at `N = 0`, which empties the structure; add `1 ≤ N →`. D5 — H.94
-  `A1Cell.deltaSubst`'s body is a stub-side determination and needs confirming.
-* **Mechanical, already cured here, worth fixing in the blueprint text.** D1 (H.23's `if` → `if h :`
-  plus `decreasing_by`), D2 (H.18's `decreasing_by`), D3 (H.06's mathlib name), D6 (H.71's
-  multi-name fields), O1 (order `H.13` before `H.09`).
-* **Findings.** F1 (σ VALUES are not machine-checkable at any gate — degree only). F2 (the chapter
-  exhibits no `StageInterface`; one is built here). -/
+* **CLOSED by blueprint amendment + landing.** D4 (H.72 → CANDIDATE A, A-H.1/D4), D8 (H.89 → the
+  `1 ≤ N` guard, A-H.1/D8), D7 (H.71 `hdesc` → guarded, A-H.1/D7, with A-H.2's window and `hmc`),
+  D5 (H.94 `A1Cell.deltaSubst` → the stub-side determination confirmed field by field, R4).
+* **CLOSED mechanically on the landed side, still worth fixing in the blueprint text.** D1 (H.23's
+  `if` → `if h :` plus `decreasing_by`), D2 (H.18's `decreasing_by`), D3 (H.06's mathlib name), D6
+  (H.71's multi-name fields), O1 (order `H.13` before `H.09`).
+* **STILL OPEN.** F1 (σ VALUES are not machine-checkable at any gate — `degree` only; unchanged, it
+  is a property of the landed `DecidableEq FactorizationType`). **F2 (R3): the LANDED corpus
+  exhibits no `StageInterface` inhabitant at all**, so `leanfinal`'s H.72 is a theorem about a
+  possibly-empty type; the repo's only witness is `stageIfaceE` here, in a file `leanfinal` never
+  imports. The genre-F instance §3's design note claims is absent everywhere. -/
 
 end LeanspecH
