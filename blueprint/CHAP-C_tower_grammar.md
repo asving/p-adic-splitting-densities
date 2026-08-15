@@ -1104,9 +1104,696 @@ instantiation).
 
 ---
 
-## 4. §4 — THE GAUGE LAYER: NORMALIZERS, THE LETTER, THE WRAP, THE COCYCLE
+## 4. §4 — THE GAUGE LAYER: NORMALIZERS, THE LETTER, THE COCYCLE
 
-<!-- §4 nodes: C.15–C.28 -->
+> **Design note (how the closure-dependent gauge is recast).** The corpus's gauge layer reads
+> residues *at points*: `res(A(ξ)/ϖ(ξ)^k)` for `(T1)/(T2)` points `ξ ∈ K̄₀`, transported by
+> per-point embeddings `ι_ξ` (`EFF.HE6.08/.11/.15`). None of that types in `leanfinal`. The
+> recast, following A3 F-1's own TERMINAL display (`EFF.HE6.58` — whose derivation is
+> point-free algebra): the **normalized slot residue** `γ_k(A) ∈ K` is defined directly from
+> the coefficients by `digAt`-reads (C.21), the ϖ-read is the `η^{−q(k)}`-twist of it (C.22),
+> and every downstream law is stated about these `O`-level objects. The corpus's
+> "at every (T1)/(T2) point ξ, transported by `ι_ξ`" becomes: consumers read values through
+> `addVal ∘ norm` over `AdjoinRoot g` (C.27's exactness), never at points. The corpus's ϖ
+> itself (`x^{i₀}π^{a₀}`, possibly `a₀ < 0`, `EFF.HE6.11`) is never constructed — only its
+> exponent arithmetic (`i₀`, `q(k)`) survives, which is exactly what `EFF.HE6.11` says is
+> "all that is ever used".
+
+### NODE C.15 [def] [fresh]
+
+**STATEMENT.** *The normalizer exponents.* For a frame `F` and `k : ℕ`: the **slot index**
+`slotIdx F k` = the unique `0 ≤ i < e₁` with `i·h ≡ k (mod e₁)` (exists and is unique by
+`Nat.Coprime h e₁` — H.51's bijection); and the **twist exponent**
+`twistExp F k := (slotIdx F 1 * k − slotIdx F k) / e₁` — `EFF.HE6.13`-RIDER's `q(k)`, defined
+by `i₀·k = i(k) + q(k)·e₁` with `i₀ = slotIdx F 1` (ϖ's `x`-exponent, since
+`i₀h + e₁a₀ = 1` forces `i₀h ≡ 1`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+/-- `i(k)`: the unique `0 ≤ i < e₁` with `ih ≡ k (mod e₁)` (`EFF.HE6.58`'s `i(k)`;
+`EFF.HE6.13`'s `i₀(k)`). Total: at the degenerate `e₁ = 1` it is `0`. -/
+noncomputable def KeyFrame.slotIdx (F : KeyFrame O π) (k : ℕ) : ℕ :=
+  Nat.find (F.slotIdx_exists k)   -- packaged via the H.51 bijection; see C.16
+
+/-- `q(k)`: the ϖ-vs-`n(k)` twist exponent, `i₀·k = i(k) + q(k)·e₁` (`EFF.HE6.13` RIDER). -/
+noncomputable def KeyFrame.twistExp (F : KeyFrame O π) (k : ℕ) : ℕ :=
+  (F.slotIdx 1 * k - F.slotIdx k) / F.e₁
+```
+
+**DEPENDS.** C.01 · H.51 (`class_sep_bij` — the mod-`e₁` bijection `i ↦ ih`).
+
+**PROOF.** definitional (the existence witness is C.16's business; the `Nat.find` packaging
+may become `(h⁻¹·k) % e₁` via `Nat.ModEq` inverse arithmetic at the formalizer's choice —
+the SPEC is the defining congruence + range, C.16, not the implementation).
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.HE6.11` (ϖ's exponents: `i₀h + e₁a₀ = 1`, `0 ≤ i₀ < e₁`); `EFF.HE6.13`
+(RIDER: `i₀k = i + qe₁`, `a₀k − a = −qh`); `EFF.HE6.58` (`i(k)` as re-displayed).
+
+**TEETH.** `EFF.HE6.11`'s witness audit (`(e₁,h) = (2,3) ⟹ i₀ = 1, a₀ = −1`) →
+**executable regression** at §13 (`slotIdx` table at the gate frames); the `a₀ < 0`
+phenomenon is DESIGNED OUT (no `a₀` is ever computed — C-H14).
+
+**ENVIRONMENT.** ENV-C5 (pure arithmetic on the frame's numerals).
+
+---
+
+### NODE C.16 [lemma] [fresh]
+
+**STATEMENT.** *Slot-index laws.* For every `k`: (i) `slotIdx F k < F.e₁` and
+`slotIdx F k * F.h ≡ k [MOD F.e₁]`; (ii) uniqueness: any `i < e₁` with `ih ≡ k (mod e₁)`
+equals `slotIdx F k`; (iii) the twist identity
+`F.slotIdx 1 * k = F.slotIdx k + F.e₁ * F.twistExp F k`; (iv) `slotIdx` is `e₁`-periodic in
+`k` and `slotIdx F k = k % e₁`-compatible at `h ≡ 1`; (v) at `F.e₁ = 1`: `slotIdx = 0`,
+`twistExp = 0` (the degenerate/CHAP-B seam — no twist, C-H1).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem KeyFrame.slotIdx_spec (F : KeyFrame O π) (k : ℕ) :
+    F.slotIdx k < F.e₁ ∧ F.slotIdx k * F.h ≡ k [MOD F.e₁]
+
+theorem KeyFrame.slotIdx_unique (F : KeyFrame O π) {k i : ℕ} (hi : i < F.e₁)
+    (hcong : i * F.h ≡ k [MOD F.e₁]) : i = F.slotIdx k
+
+theorem KeyFrame.twistExp_spec (F : KeyFrame O π) (k : ℕ) :
+    F.slotIdx 1 * k = F.slotIdx k + F.e₁ * F.twistExp F k
+```
+
+**DEPENDS.** C.15 · H.51 (`class_sep`, `class_sep_bij`).
+
+**PROOF.**
+1. (i)/(ii): H.51's bijection `i ↦ ih mod e₁` on `range e₁` (coprimality), inverted at `k`.
+2. (iii): `i₀k ≡ k·h·h⁻¹`-arithmetic — `(i₀k)·h ≡ k (mod e₁)` from `i₀h ≡ 1`, so
+   `i₀k mod e₁ = slotIdx k` by (ii); the division is exact and nonneg (both sides congruent,
+   `slotIdx k < e₁ ≤ i₀k + e₁`; the `i₀k < e₁` corner gives `q = 0` with `i₀k = slotIdx k`).
+3. (v): at `e₁ = 1` everything is `mod 1`.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.HE6.13` (RIDER); `EFF.HE6.15` (the (T1) role: *"`i ↦ ih mod e₁` is a
+bijection of `ℤ/e₁` because `gcd(h,e₁) = 1`"* — verbatim the proof mechanism).
+
+**TEETH.** the `.13` audit's `q(3) = 1` at `(2,2,3)` → **executable regression** (§13 gate
+value).
+
+**ENVIRONMENT.** ENV-C5.
+
+---
+
+### NODE C.17 [def] [fresh]
+
+**STATEMENT.** *The slot window `T(k)`.* `slotWindow F k := {t ∈ range F.f₁ :
+(slotIdx F k + F.e₁ * t) * F.h ≤ k}` — `EFF.HE6.13`'s
+`T(k) = {t < f₁ : k ≥ (i₀ + e₁t)·h}`, the set of slots available at height `k`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+/-- `T(k) := {t < f₁ : k ≥ (i₀(k) + e₁t)h}` (`EFF.HE6.13`). -/
+noncomputable def KeyFrame.slotWindow (F : KeyFrame O π) (k : ℕ) : Finset ℕ :=
+  (Finset.range F.f₁).filter (fun t => (F.slotIdx k + F.e₁ * t) * F.h ≤ k)
+```
+
+**DEPENDS.** C.15.
+
+**PROOF.** definitional.
+
+**SIZE.** 6 lines.
+
+**SOURCE.** `EFF.HE6.13` (the `T(k)` display, verbatim).
+
+**TEETH.** the `.12` audit (`(3,1,2)`: `T(1) = ∅`; `(1,2,1)`: `T(0) = {0}` proper) →
+**executable regression** at §13.
+
+**ENVIRONMENT.** ENV-C5.
+
+---
+
+### NODE C.18 [lemma] [fresh]
+
+**STATEMENT.** *Window thresholds (`EFF.HE6.13`'s audited clauses).* (i) **Fullness:**
+`slotWindow F k = range F.f₁ ↔ (slotIdx F k + F.e₁*(F.f₁ − 1)) * F.h ≤ k`. (ii) **Uniform
+sufficiency:** `(F.e₁*F.f₁ − 1) * F.h ≤ k → slotWindow F k = range F.f₁` (from
+`i₀ + e₁(f₁−1) ≤ e₁f₁ − 1` since `i₀ ≤ e₁ − 1`). (iii) **Downward closure:** `t ∈ slotWindow`
+and `t' ≤ t` imply `t' ∈ slotWindow`. (iv) at `F.h = 0`: every window is full.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem KeyFrame.slotWindow_full_iff (F : KeyFrame O π) (hf : 0 < F.f₁) (k : ℕ) :
+    F.slotWindow k = Finset.range F.f₁
+      ↔ (F.slotIdx k + F.e₁ * (F.f₁ - 1)) * F.h ≤ k
+
+theorem KeyFrame.slotWindow_full_of_le (F : KeyFrame O π) (k : ℕ)
+    (hk : (F.e₁ * F.f₁ - 1) * F.h ≤ k) : F.slotWindow k = Finset.range F.f₁
+```
+
+**DEPENDS.** C.15 · C.16 · C.17.
+
+**PROOF.**
+1. (iii) first: the filter's bound is monotone in `t` (`Nat.mul_le_mul`); (i) follows —
+   fullness iff the top slot `t = f₁ − 1` is in.
+2. (ii): `i₀ + e₁(f₁−1) ≤ (e₁−1) + e₁f₁ − e₁ = e₁f₁ − 1` — `EFF.HE6.13`'s audit clause (i),
+   re-derived; `omega` after C.16(i)'s bound.
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.HE6.13` (the fullness clause `k ≥ (i₀(k) + e₁(f₁−1))h`, the uniform
+`k ≥ (D′−1)h`, both audited there).
+
+**TEETH.** `EFF.HE6.13`'s audit (i) → **Lean theorem** (clause (ii) here).
+
+**ENVIRONMENT.** ENV-C5.
+
+---
+
+### NODE C.19 [def] [fresh]
+
+**STATEMENT.** *The stage letter.* `stageLetter F H₀ hpin := AdjoinRoot.root (frameRes F H₀ hpin)
+∈ stageField F H₀ hpin` — the recast of `EFF.HE6.08`'s `η_θ = res(θ^{e₁}π^{−h})`: the
+canonical residual root, generating `K` over `resField X` with power basis
+`{1, η, …, η^{f₁−1}}` (companion lemma, the (T2)-role carrier). `η` is a unit: `ψ(0) ≠ 0`
+because the frame residual has nonzero constant term (B.30 at the frame's side).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def KeyFrame.stageLetter (F : KeyFrame O π) (H₀ : ℕ) (hpin : _) :
+    F.stageField H₀ hpin :=
+  AdjoinRoot.root (F.frameRes H₀ hpin)
+
+theorem KeyFrame.stageLetter_ne_zero (F : KeyFrame O π) (hπ : Irreducible π)
+    (H₀ : ℕ) (hpin : _) : F.stageLetter H₀ hpin ≠ 0
+```
+
+with the power-basis statement (`AdjoinRoot.powerBasis` at `Irreducible ψ`) as a companion
+in the same file.
+
+**DEPENDS.** C.03 · C.04 · B.30 (`resPoly` has nonzero constant term — gives `ψ(0) ≠ 0`,
+hence root ≠ 0).
+
+**PROOF.** 1. definitional. 2. `η = 0 → ψ(0) = 0`, contradicting B.30's constant-term
+clause applied to the frame's side.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.HE6.08` (`η_θ`, `K = F_Q(η_θ)`); `EFF.HE6.15` (the (T2) role:
+`{1, η, …, η^{f₁−1}}` `F_Q`-independent — here the `AdjoinRoot` power basis).
+
+**TEETH.** signed non-applicable.
+
+**ENVIRONMENT.** ENV-C1 (`hπ` explicit).
+
+---
+
+### NODE C.20 [lemma] [fresh]
+
+**STATEMENT.** *Class separation of slot heights, `O[x]`-level.* For `A ∈ O[X]` with
+`deg A < D′` and `i < D′`: the slot value `F.e₁ • addVal (A.coeff i) + i * F.h ≡ i * F.h
+(mod F.e₁)`; consequently (i) a slot value equals `k` only if `i ≡ slotIdx F k (mod e₁)`;
+(ii) if `stageHeight F A = (k : ℕ∞)` then the minimum is attained, and attained ONLY in the
+class `slotIdx F k`; (iii) **the emptiness clause**: if `slotWindow F k = ∅` then NO `A` with
+`deg A < D′` has `stageHeight F A = k` (`EFF.HE6.13`'s twist-free clause — "if `T(k) = ∅`
+the height `k` is not attained at all"). Cross-class ties cannot occur (H.52's mechanism at
+the `O[x]` carrier).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem KeyFrame.stageHeight_class (F : KeyFrame O π) {A : Polynomial O} {i k : ℕ}
+    (hi : i ≤ A.natDegree) (hval : F.e₁ • addVal O (A.coeff i) + (i * F.h : ℕ∞) = (k : ℕ∞)) :
+    i * F.h ≡ k [MOD F.e₁]
+
+theorem KeyFrame.stageHeight_unattained (F : KeyFrame O π) {A : Polynomial O} {k : ℕ}
+    (hA : A.natDegree < F.e₁ * F.f₁) (hwin : F.slotWindow k = ∅) :
+    F.stageHeight A ≠ (k : ℕ∞)
+```
+
+**DEPENDS.** C.02 · C.15 · C.16 · C.17 · H.52 (`slot_height_injective` — the arithmetic
+no-tie engine, instantiated).
+
+**PROOF.**
+1. (i): `e₁•v + ih ≡ ih (mod e₁)`, then C.16's uniqueness.
+2. (ii): the inf over a finite range is attained where finite; every attaining slot passes
+   (i).
+3. (iii): an attaining slot `i = slotIdx k + e₁t` needs `v(a_i) = (k − ih)/e₁ ≥ 0`, i.e.
+   `ih ≤ k`, i.e. `t ∈ slotWindow F k` — empty window, no slot, contradiction with (ii).
+   (`t < f₁` from `i < D′`.)
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.HE6.15` (the (T1) role, verbatim mechanism); `EFF.HE6.13` (the
+`T(k) = ∅` clause).
+
+**TEETH.** `HE6R1`'s P3 NOT-onto rows (`k < λ` fails — `EFF.HE6R1.27`) → **executable
+regression** retained (§13 re-fires one row at `q = 2` and `q = 3`).
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.21 [def] [fresh]
+
+**STATEMENT.** *The normalized slot residue `γ_k(A)` — A3 F-1's TERMINAL display, verbatim in
+`digAt`-form.* For `A ∈ O[X]` and `k : ℕ`, with `i := slotIdx F k`:
+
+```
+slotRes F H₀ hpin k A := Σ_{t ∈ slotWindow F k}
+    (algebraMap … (digAt π ((k − (i + e₁t)·h)/e₁) (A.coeff (i + e₁t)))) · η^t  ∈ stageField F,
+```
+
+where `digAt π m x` is B.24's digit read (`res(x·π^{−m})` for `π^m ∣ x`, junk `0` otherwise —
+which implements `EFF.HE6.58`'s "a coefficient whose pin lies strictly above height `k`
+contributes zero" *and* its normalizer `π^{−(k−jh)/e₁}` in one landed object), and the sum
+ranges over the slot window (slots outside it would need negative digit indices and are
+exactly the pins forced above height `k`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+open Uniformity.Density.Leaf in
+/-- A3 F-1's normalized slot residue
+`γ_k(A) = Σ_t res(a_{i+e₁t}·π^{−(k−(i+e₁t)h)/e₁})·η^t` (`EFF.HE6.58`, TERMINAL layer of the
+`HE6-SLOT-SEAM` chain — the frozen bare-`γ` display is DEAD, C-H8). -/
+noncomputable def KeyFrame.slotRes (F : KeyFrame O π) (H₀ : ℕ) (hpin : _) (k : ℕ)
+    (A : Polynomial O) : F.stageField H₀ hpin :=
+  (F.slotWindow k).sum fun t =>
+    algebraMap _ _ (digAt π ((k - (F.slotIdx k + F.e₁ * t) * F.h) / F.e₁)
+        (A.coeff (F.slotIdx k + F.e₁ * t)))
+      * (F.stageLetter H₀ hpin) ^ t
+```
+
+(the `algebraMap` route `ResidueField O → resField X → stageField` is the composite of the
+landed quotient maps; one private helper may name it.)
+
+**⚠ FAITHFULNESS (trust-boundary definition — the chapter's most consequential recast).**
+Three clauses. (i) This is the **n(k)-read** (`res(A(θ)/n(k)(θ))`), per `EFF.HE6.58`'s
+derivation `res(A(ξ)/n(k)(ξ)) = ι_ξ(γ_k(A))` — the ϖ-read is C.22. (ii) The TERMINAL-form
+discipline (C-H8): the frozen `HE6-SLOT-SEAM` display's bare `γ = Σ res(a_{i₀+e₁t})η^t` is
+**vacuous** (its tying coefficients have positive valuation — `EFF.HE6.58`'s compiler
+confirmation), and this definition is the corrected `γ_k`. Any node or stub matching the
+bare form is a defect. (iii) The per-point embedding `ι_ξ` is eliminated: `γ_k(A)` is
+K-valued data; transport to factors happens through `addVal ∘ norm` statements (C.27), never
+through embeddings into a closure. Flagged to §16 for the cross-read against `EFF.HE6.58`'s
+six displays.
+
+**DEPENDS.** C.02 · C.15 · C.17 · C.19 · B.24 (`digAt`, `digAt_eq`, `digAt_eq_zero_iff`).
+
+**PROOF.** definitional.
+
+**SIZE.** 22 lines.
+
+**SOURCE.** `EFF.HE6.58` (A3 F-1, the six-display correction, verbatim); `EFF.HE6.15`
+(LEMMA HE6-0″, whose consumed residue this is); `EFF.HE6.11` (`R_λ`'s coefficient reads,
+which C.25 builds from this).
+
+**TEETH.** the divisibility sanity `(k − jh)/e₁ ∈ ℕ` on the window (exact division by
+C.16's congruence) → **Lean theorem** (a private lemma in this file, named in the stub);
+`EFF.HE6.58`'s exponent-identity audit → re-derived at C.27's proof step 2.
+
+**ENVIRONMENT.** ENV-C1 (`hπ` explicit through `digAt`).
+
+---
+
+### NODE C.22 [def] [fresh]
+
+**STATEMENT.** *The ϖ-read (twisted read).* `twistRead F H₀ hpin k A :=
+(stageLetter F H₀ hpin)⁻¹ ^ (twistExp F k) * slotRes F H₀ hpin k A` — the corpus's
+`res(A(ξ)/ϖ(ξ)^k) = ι_ξ(γ_k(A))·η_ξ^{−q(k)}` (`EFF.HE6.58`'s corrected conclusion; the
+`[r2]`-corrected sign, TERMINAL: **minus** `q`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+/-- The ϖ-read residue `γ_k(A)·η^{−q(k)}` (`EFF.HE6.15` [r2]-corrected sign; `EFF.HE6.58`
+TERMINAL).  All corpus residual polynomials (`R_λ`, C.25) read through THIS. -/
+noncomputable def KeyFrame.twistRead (F : KeyFrame O π) (H₀ : ℕ) (hpin : _) (k : ℕ)
+    (A : Polynomial O) : F.stageField H₀ hpin :=
+  (F.stageLetter H₀ hpin)⁻¹ ^ (F.twistExp k) * F.slotRes H₀ hpin k A
+```
+
+**⚠ FAITHFULNESS.** The corpus DERIVES this from ϖ (`res(n(k)/ϖ^k) = η^{−q}`); here it is a
+DEFINITION, because ϖ itself (`∈ K₀[x]`, possibly negative `π`-exponent) is never
+constructed. The definitional content matches the corpus's `[r2]`-corrected identity by the
+RIDER's computation, and its ONE machine-checkable consequence is the `(2,2,3)` witness:
+`k = 3, A = x` gives `γ = 1`, `q(3) = 1`, `twistRead = η^{−1} = 2η` in `F₉` over `ℤ₃` — the
+`[r1]` `+q` reading predicts `η` and is refuted. That witness is a MANDATORY §13 gate
+(GC-11; it is also a `q = 3` instance, so the two-prime rule is served by adding the
+`(2,2,1)`-frame `q = 2` row where `q(k) = 0` — the coincidence regime C-H12 names — plus a
+`q(k) ≠ 0` row at `q = 2`: the gate node picks `(e₁,f₁,h) = (2,2,3)` over `ℤ₂` … `i₀ = 1,
+a₀ = −1` and `q(3) = 1` identically, since `q(k)` is `π`-independent arithmetic).
+
+**DEPENDS.** C.15 · C.19 · C.21.
+
+**PROOF.** definitional.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.HE6.15` (the `[r2]` sign correction + witness, verbatim); `EFF.HE6.58`
+(the TERMINAL composed display); `EFF.HE6.13` (RIDER: the fixed `η^q` ratio).
+
+**TEETH.** the `(2,2,3)` PE2-leg-B witness (`CXRES` realizes `2η`) → **executable
+regression** (§13 gate C.124); the sign is additionally guarded by C.24's span law (a wrong
+sign breaks the coset-form image characterization at every proper window).
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.23 [lemma] [fresh]
+
+**STATEMENT.** *The slot lemma, value-and-residue half (LEMMA HE6-0″ recast).* Let `A ∈ O[X]`,
+`deg A < D′`, and suppose `stageHeight F A = (k : ℕ∞)`. Then `slotRes F H₀ hpin k A ≠ 0`.
+Moreover the window coefficients of `slotRes` are exactly the attaining-slot digits: the
+`t`-th coefficient is nonzero iff slot `slotIdx k + e₁t` attains the minimum.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem KeyFrame.slotRes_ne_zero (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : _) {A : Polynomial O} {k : ℕ} (hA : A.natDegree < F.e₁ * F.f₁)
+    (hht : F.stageHeight A = (k : ℕ∞)) :
+    F.slotRes H₀ hpin k A ≠ 0
+```
+
+**DEPENDS.** C.02 · C.19 (power basis) · C.20 · C.21 · B.24 (`digAt_eq_zero_iff`) · H.53
+(`eta_independent` — instantiated at `(resField X, stageField F)` through C.19's basis).
+
+**PROOF.**
+1. The minimum `k` is attained at some slot in class `slotIdx k` (C.20(ii)); at an attaining
+   slot the digit read is nonzero (`digAt_eq_zero_iff`: `π^{m+1} ∤ a` exactly at exact
+   valuation).
+2. `slotRes` is a `K`-combination of `{η^t}_{t<f₁}` with the attaining coefficient nonzero;
+   the power basis (C.19) — H.53's independence packaged — forces the sum ≠ 0.
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.HE6.15` (LEMMA HE6-0″: exactness + nonvanishing, with the two hypothesis
+roles verbatim); `EFF.HE6.58` (the corrected γ this instantiates).
+
+**TEETH.** `HE6R1-T-BASIS` (`EFF.HE6R1.29`: at `γ₀ = −γ₁ ≠ 0` NO cancellation — "the machine
+form of `{1, β}` is a K-basis") → **Lean theorem** (this node's step 2, at the C.12 iterate
+level for β) + **executable regression** retained.
+
+**ENVIRONMENT.** ENV-C3 (`hπ`; finiteness enters only through consumers — bind minimally:
+ENV-C1 + `hπ` suffices; recorded as ENV-C1′).
+
+---
+
+### NODE C.24 [theorem] [fresh]
+
+**STATEMENT.** *The corrected LIFT law (LEMMA HE6-1L, both directions, closure-free).* Fix
+`k` and write `T := slotWindow F k`, `η := stageLetter`. Then the image of
+`{A : deg A < D′ ∧ stageHeight F A = k}` under `slotRes F H₀ hpin k` is exactly
+`{Σ_{t ∈ T} c_t η^t : c_t ∈ image of (resField X), not all 0}` — the braced span of
+`EFF.HE6.13` (n(k)-read; the ϖ-read image is the `η^{−q(k)}`-coset, which for the fullness
+clause is invisible: `η^{−q}·K^× = K^×`). Consequences, as separate clauses: (i) the image
+is all of `K^×` iff `T = range f₁` iff `k ≥ (slotIdx k + e₁(f₁−1))h` (C.18); (ii) if
+`T = ∅` the height is unattained (C.20(iii) restated on the image).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem KeyFrame.slotRes_image (F : KeyFrame O π) (hπ : Irreducible π)
+    [Finite (ResidueField O)] (H₀ : ℕ) (hpin : _) (k : ℕ) :
+    (Set.image (F.slotRes H₀ hpin k)
+        {A : Polynomial O | A.natDegree < F.e₁ * F.f₁ ∧ F.stageHeight A = (k : ℕ∞)})
+      = {x | ∃ c : ℕ → ResidueField O, (∃ t ∈ F.slotWindow k, c t ≠ 0) ∧
+          x = (F.slotWindow k).sum fun t => algebraMap _ _ (c t) * F.stageLetter H₀ hpin ^ t}
+```
+
+with clauses (i)/(ii) as companion corollaries in the same file (public name
+`slotRes_image`; the fullness corollary `slotRes_surj_iff` is the one §6/§9 consume).
+
+**DEPENDS.** C.15–C.21 · C.23 · **H.54 (`stageLift'`) · H.55 · H.56** (the constructive
+direction — the same consumption pattern as C.14, `GenreDatum` plumbing included, μ-dummy
+caveat carried) · B.24.
+
+**PROOF.**
+1. `⊆`: C.21's definition lands in the span; C.23 gives "not all 0".
+2. `⊇`: given `(c_t)`, H.54's lift at height `k` with window data `c` produces `A` with the
+   pinned height (H.55) and residue (H.56); at `D′ = 1` the elementary lift (C.14 step 3's
+   mechanism).
+3. (i): C.18's iff + the span being `K^×` exactly at a full window (power-basis counting,
+   C.19); (ii): C.20(iii).
+
+**SIZE.** 38 lines. **Split-mandated:** C.24 → 2 (image law / corollaries).
+
+**SOURCE.** `EFF.HE6.13` (LEMMA HE6-1L, the corrected display verbatim, TERMINAL layer:
+coset + span + fullness iff + emptiness; the `[r2]` record's witness); `EFF.HE6.12` (the
+STRUCK `(LIFT)` — the sealed display is DEAD and this node is its corrected replacement; both
+counter-instances re-audited there).
+
+**TEETH.** `EFF.HE6.12`'s two counter-instances (`(1,2,1), k = 0`: only `F_Q ⊊ K` reached;
+`(3,1,2), k = 1`: `T(1) = ∅`, unattained) → **Lean theorem** (they are instances of this
+statement's `⊆` direction and (ii)); `EFF.HE6.13`'s `(2,2,3)` witness → §13 gate.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.25 [def] [fresh]
+
+**STATEMENT.** *The level residual polynomial `R_λ` (`EFF.HE6.11`'s display, ϖ-read,
+GC-1-pinned).* For a frame `F` and `f ∈ O[X]` with side data `(u, ℓ)`, nonemptiness `hne₂`,
+and a correct level pin `M₀` (`dvHgt F f (dvSideMin …) = (M₀ : ℕ∞)` — the `sideMin` pin,
+GC-1): writing `j₁ := dvSideMin`, `d := dvSideDeg`,
+
+```
+dvResPoly F f u ℓ … : Polynomial (stageField F H₀ hpin) :=
+  Σ_{t ≤ d} C (twistRead F H₀ hpin (M₀ − t·u) (dev F.key f (j₁ + t·ℓ))) · Z^t,
+```
+
+the `t`-th coefficient being the ϖ-read of the `(j₁ + tℓ)`-th development coefficient at its
+on-side height `M₀ − tu` (junk `0` when the pin sits strictly above the side — `digAt`'s
+junk-0 discipline makes the formula total, B.28's pattern).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+/-- `R_λ(Z) := Σ_t res(A_{j₁+tℓ}(θ)/ϖ(θ)^{m₁−tu})·Z^t ∈ K[Z]` (`EFF.HE6.11`), through the
+C.22 ϖ-read at the GC-1 `sideMin` pin. -/
+noncomputable def dvResPoly (F : KeyFrame O π) (H₀ : ℕ) (hpin : _)
+    (f : Polynomial O) (u ℓ : ℕ) (hne₂ : (dvSideSet F f u ℓ).Nonempty) (M₀ : ℕ)
+    (hpin₂ : dvHgt F f (dvSideMin F f u ℓ hne₂) = (M₀ : ℕ∞)) :
+    Polynomial (F.stageField H₀ hpin) :=
+  ((Finset.range (dvSideDeg F f u ℓ hne₂ + 1)).sum fun t =>
+    Polynomial.C (F.twistRead H₀ hpin (M₀ - t * u) (dev F.key f (dvSideMin F f u ℓ hne₂ + t * ℓ)))
+      * Polynomial.X ^ t)
+```
+
+**⚠ FAITHFULNESS.** `EFF.HE6.11`'s variable `Z` "is the class of `y^ℓ/ϖ^u`" — a
+closure-side gloss carried as documentation only; the polynomial's IDENTITY as data is the
+coefficient list above, and the semantic tie to factors is C.27 + §5's laws (never assumed
+from the gloss). The height argument `M₀ − t·u`: on-side pins satisfy
+`ℓ·(pin) + u·(abscissa) = const`, so the `t`-th pin height is `M₀ − tu` when ℓ ∣ … — the
+same bookkeeping as B.28, with GC-1's warrant that this is the pin under which correctness
+(C.26) is provable.
+
+**DEPENDS.** C.06 · C.07 · C.22 · B.02 · B.28 (the level-1 template).
+
+**PROOF.** definitional.
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.HE6.11` (the `R_λ` display, verbatim — with the `[r1]` bracket's warning
+that ϖ ∉ O[x], which is why the read is C.22's and not a literal quotient); `EFF.HE6.10`
+(sides/lengths).
+
+**TEETH.** signed non-applicable at the definition (C.26 carries the correctness teeth).
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.26 [lemma] [fresh]
+
+**STATEMENT.** *`R_λ` has degree `d` and nonzero constant term (B.30 one level up).* With
+C.25's data, `0 < ℓ`, `Nat.Coprime u ℓ`, `dvSupp F f u ℓ ≠ ⊤`: (i) the `t`-th coefficient is
+`0` iff `¬ DvOnSide F f u ℓ (j₁ + ℓt)`; (ii) coefficients `0` and `d` are nonzero;
+(iii) `natDegree = d` and `coeff 0 ≠ 0`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem dvResPoly_coeff_eq_zero_iff (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : _) {f : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+    (hne₂ : (dvSideSet F f u ℓ).Nonempty) {M₀ : ℕ}
+    (hpin₂ : dvHgt F f (dvSideMin F f u ℓ hne₂) = (M₀ : ℕ∞)) {t : ℕ}
+    (ht : t ≤ dvSideDeg F f u ℓ hne₂) :
+    (dvResPoly F H₀ hpin f u ℓ hne₂ M₀ hpin₂).coeff t = 0
+      ↔ ¬ DvOnSide F f u ℓ (dvSideMin F f u ℓ hne₂ + ℓ * t)
+
+theorem natDegree_dvResPoly (…same…) :
+    (dvResPoly F H₀ hpin f u ℓ hne₂ M₀ hpin₂).natDegree = dvSideDeg F f u ℓ hne₂ ∧
+    (dvResPoly F H₀ hpin f u ℓ hne₂ M₀ hpin₂).coeff 0 ≠ 0
+```
+
+**DEPENDS.** C.07 · C.08 · C.20 · C.22 · C.23 · C.25 · B.30 (the proof template).
+
+**PROOF.**
+1. On-side pin at `j₁ + ℓt` has height exactly `M₀ − tu` (C.08's spacing + the side's line
+   equation); C.23 gives the nonzero read. Off-side pin sits strictly above; every window
+   digit reads `0` (`digAt_eq_zero_iff` — strictly-above means every slot's digit index
+   undershoots its valuation), so the coefficient is `0`; the twist factor is a unit and
+   preserves (non)vanishing.
+2. (ii): endpoints are on-side by definition of min'/max'; (iii) follows.
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.HE6.11` (“So `R_λ` has degree `d` and `R_λ(0) ≠ 0`”); B.30 (the level-1
+twin whose proof route is replayed at the `dv`-carrier).
+
+**TEETH.** `W12-SHAPE`-family at level 1 is B.30's; the level-2 shape is guarded by the §13
+frame audit (`R_λ = r²`, `r` quadratic, at the `EFF.HE6R1.18` frame → the `q = 2`/`q = 3`
+gate instances).
+
+**ENVIRONMENT.** ENV-C1′ (`hπ` explicit).
+
+---
+
+### NODE C.27 [theorem] [fresh]
+
+**STATEMENT.** *(SLOT₂)-exactness in norm form — the value law consumers actually read.* Let
+`L` be a level datum over `F`, `g ∈ O[X]` monic with `0 < deg g` carrying the label `L`
+(§5's `HasLabel`, C.29 — forward reference resolved there; the two nodes land together), and
+`C ∈ O[X]` with `deg C < L.keyDeg₂`. Then
+
+```
+(F.e₁ * L.ℓ) • addVal O (Algebra.norm O (AdjoinRoot.mk g C…)) = g.natDegree • dv2Hgt L C
+```
+
+— the cleared, closure-free form of "`dv₂(C(ξ)) = dv2Hgt L C` exactly at every root":
+summed over the factor's roots via the norm, with `EFF.HE6R1.26`'s battery form
+`v(Res(f,C)) = D″·dv₂(C)` as the `deg g = D″`, `e₁ℓ = 2` instance
+(`8·dv₂/2 = 4·dv₂` ✓ its audit).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem slot2_exact {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [Finite (ResidueField O)]
+    {g : Polynomial O} (hg : HasLabel L g) {C : Polynomial O}
+    (hC : C.natDegree < L.keyDeg₂) (hC0 : dv2Hgt L C ≠ ⊤) :
+    ∃ v : ℕ, dv2Hgt L C = (v : ℕ∞) ∧
+      (F.e₁ * L.ℓ) * (addVal O (Algebra.norm O (AdjoinRoot.mk g C))).get! = g.natDegree * v
+```
+
+(the `addVal … .get!` packaging follows the landed `normValues` idiom; the stub stage fixes
+the exact `ℕ∞`-plumbing against `leanfinal`'s `addVal` API.)
+
+**PROOF (route, the section's hard node).**
+1. Reduce to prime-power label blocks: `HasLabel` gives `g`'s level-1 purity and residual
+   `r`-power; the two-dissection layer one level up (§5's C.33/C.34) splits any counterexample.
+2. The `≥` direction: every root contribution is bounded below by the slot minimum — via the
+   development of `C` and B.31's monic-division monotonicity transposed (C.11's recursion:
+   `dv2Hgt` is an inf of slot values, each a `suppVal`-shape bounded by the norm additivity
+   `gaussVal_mul`-pattern at the `dv`-carrier).
+3. The `≤` direction (no cancellation): the attaining slot's residue is nonzero — C.23 at
+   level 1 for the inner read, then the level-2 attaining term's residue nonzero by C.12's
+   power basis (H.53's mechanism at `(stageField, level2Field)`); a strict drop in the norm
+   valuation would force the level-2 residue sum to vanish, contradiction.
+4. Assemble through `norm = ± resultant = product over the dissected factors` using landed
+   `norm_adjoinRoot_root`-family and `typeOf_mul`-side multiplicativity (B.32-pattern at the
+   `dv`-carrier).
+
+**SIZE.** 55 lines as one node — **split-mandated: C.27 → 3** (≥ half; no-cancellation half;
+assembly). This is the chapter's schedule-risk node alongside C.61; it sits at depth 3 of
+the intra-chapter DAG and should be claimed early.
+
+**DEPENDS.** C.09 · C.11 · C.12 · C.20 · C.23 · C.29 (`HasLabel`, §5) · C.33/C.34 (§5
+dissections — for step 1) · H.53 · B.31/B.32 (templates) · landed `norm_adjoinRoot_root`,
+`addVal` API.
+
+**SOURCE.** `EFF.HE6R1.26` (P2: `v(Res(f,C)) = 4·dv₂(C)`, 1,512 checks, 0 violations, with
+the methodological note that at `ℓ = 1` exactness comes ENTIRELY from `K₂`-independence —
+which is why H.53 carries step 3 there); `EFF.HE6R1.29` (T-BASIS: the no-cancellation tooth);
+`EFF.HE6.15` (the level-1 exactness mechanism being iterated).
+
+**TEETH.** `HE6R1-SLOT2` (1,512 exactness identities) → **Lean theorem** (this node) +
+**executable regression** retained; `HE6R1-T-BASIS` → step 3 (as at C.23).
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.28 [def+lemma] [fresh]
+
+**STATEMENT.** *The level-2 normalizer cocycle.* Over a level datum `L` (side `(u, ℓ)`):
+the **shift** `s L m := the unique 0 ≤ β < ℓ with β·u ≡ m (mod ℓ)` (the `Φ′`-exponent of the
+canonical height-`m` level-2 monomial `ϖ^{(m−βu)/ℓ}Φ′^{β}`), and the **cocycle**
+`c₁ L a b := (s L a + s L b − s L (a+b)) / ℓ`. Lemmas: (i) `s L a + s L b ≡ s L (a+b)
+(mod ℓ)` and `ℓ * c₁ L a b = s L a + s L b − s L (a+b)` exactly, with `c₁ L a b ∈ {0, 1}`;
+(ii) **twist-triviality at `ℓ = 1`**: `s ≡ 0` and `c₁ ≡ 0` — `EFF.HE6R1.06`'s
+"`s(·) ≡ 0` at `ℓ = 1`" and the mechanism of tooth `HE6R1-T-TWIST0` ("the level-2 normalizer
+cocycle degenerates at `ℓ = 1`, `n₂(k) = ϖ^k`"), as a theorem.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def LevelDatum.shift {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (m : ℕ) : ℕ := …  -- the unique β < ℓ with β·u ≡ m (mod ℓ); C.15's pattern at (u, ℓ)
+
+noncomputable def LevelDatum.cocycle {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (a b : ℕ) : ℕ := (L.shift a + L.shift b - L.shift (a + b)) / L.ℓ
+
+theorem LevelDatum.cocycle_mem {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (a b : ℕ) : L.ℓ * L.cocycle a b = L.shift a + L.shift b - L.shift (a + b)
+      ∧ L.cocycle a b ≤ 1
+
+theorem LevelDatum.cocycle_eq_zero_of_ell_one {F : KeyFrame O π} {H₀ hpin}
+    (L : LevelDatum F H₀ hpin) (hℓ : L.ℓ = 1) (a b : ℕ) :
+    L.shift a = 0 ∧ L.cocycle a b = 0
+```
+
+**⚠ FAITHFULNESS + PLACEHOLDER.** The corpus's `s(·)`/`c₁` live in HE7's level-2 frame
+(`ANNEX-LEMMA R1-a`(iii)/(iv) — chapter E's). This node defines the arithmetic normal form
+(the display `c₁(a,b) = (s(a)+s(b)−s(a+b))/ℓ` is quoted verbatim at `EFF.HE6R1.35`) and
+proves its arithmetic; the RESIDUE-transport law (the cocycle unit's residue is `β^{c₁}`,
+R1-a(iii)) is §5's scalar node C.39, which carries the placeholder
+`EFF.HE7.<nn> — ANNEX-LEMMA R1-a(iii)/(iv) [supplied-by: chapter E]` (GC-13). The orchestrator
+reconciles E's transcription with this arithmetic normal form at freeze; a mismatch is a
+stop-the-line finding, not a silent adjustment.
+
+**DEPENDS.** C.09 · C.15/C.16 (the pattern; `s` is `slotIdx` at the pair `(u, ℓ)` with the
+roles of `h, e₁` played by `u, ℓ`).
+
+**PROOF.** (i): the two shifts' sum is a representative of `a + b`'s class; subtracting the
+reduced representative leaves a multiple of `ℓ` in `{0, ℓ}` since both `s`-values are `< ℓ`
+— `omega` after C.16's spec. (ii): everything is mod 1.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.HE6R1.35` (PE2 F-2: the cocycle display, verbatim); `EFF.HE6R1.39` (PE3
+F-1: the pin-height argument — consumed at C.39, recorded here so the TERMINAL form is not
+lost); `EFF.HE6R1.06` (`s(·) ≡ 0` at `ℓ = 1`); `EFF.HE6R1.29` (T-TWIST0, the 1,276-exponent
+tooth).
+
+**TEETH.** `HE6R1-T-TWIST0` (1,276 level-2 twist exponents all zero at `ℓ = 1`) →
+**Lean theorem** (clause (ii)) + **executable regression** retained; the contrastive half
+(HE7-T-BADTWIST: dropping the twist at `ℓ ≥ 2` mispredicts σ on 21 reads) stays with
+chapter E's battery inheritance (GC-8).
+
+**ENVIRONMENT.** ENV-C5.
+
+---
 
 ---
 
@@ -1188,6 +1875,7 @@ instantiation).
 
 ---
 
-<!-- RESUME: §3 COMPLETE (C.01–C.14; note C.13 depends on §4's C.21 slotRes — DAG order recorded in-node). Next: compose §4 (C.15–C.28, the gauge layer) from EFF.HE6.11 (ϖ convention + R_λ), EFF.HE6.13 (HE6-1L corrected LIFT, q(k)), EFF.HE6.15 (slot lemma, A3 F-1 TERMINAL normalized γ_k), EFF.HE6R1.06 (s(·) ≡ 0 at ℓ=1), GENTOW1 .52 (chat_t pin) + W(t), HE7 ANNEX-LEMMA R1-a placeholder (cocycle c₁); consume H.51–H.53. Then §5 (EFF.HE6R1.05/.09/.10/.13/.15/.16/.47). Commit per 2–3 nodes; A-§ delta blocks at tail. -->
+<!-- RESUME: §3–§4 COMPLETE (C.01–C.28; C.13→C.21 and C.27→C.29/C.33/C.34 forward refs recorded in-node; W(t)/chat_t moved to §6 per §4 design note). Next: compose §5 (C.29–C.40, the descent grammar) from EFF.HE6R1.05 (widened box four cases), .09/.10 (HE6R1-1 + proof), .43/.47 (THREE-CLAUSE re-display TERMINAL), .12/.13 (block projection + PE3 F-1 scalar), .14/.15/.16 (peel + proof); define HasLabel (C.29) + the dv-level dissections (C.33/C.34, B.41/B.42/B.48 one level up). Then §6 (HETOW + GENTOW1: composed key Φ₂, chat_t := lift(c_t·η^{W(t)}), HETOW-1/2/3, GENTOW-1/1.1/2/5 TERMINAL forms, K₂-digit lift M_{r,t}). Commit per 2–3 nodes; A-§ deltas at tail. -->
+
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
