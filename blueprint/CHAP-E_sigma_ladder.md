@@ -2280,6 +2280,270 @@ E.22's instance row.
 
 ---
 
-<!-- RESUME: §5 through E.34. Next: E.35–E.38 (level-one digit forcing, R2-a, peel chain, slot-domination). -->
+### NODE E.35 [theorem] [fresh]
 
-*(remaining §5 nodes, then §§6–14 follow)*
+**STATEMENT.** *`(REF-HT)`: the refinement height AND digit are forced by `(RISE)` (carrier
+form).* Over a slot carrier `C`, let `Φ, Λ : Polynomial O` with `Λ ≠ 0`, `deg Λ < C.D`,
+`C.hgt Λ = k`, and suppose the ultrametric rise `C.hgt (Φ_read) …` — schema form: let
+`a, b : Polynomial O` play the roles of the class value and the increment, with
+`C.hgt a = (λ : ℤ)` and `C.hgt b = (k : ℤ)`. If `(λ : WithTop ℤ) < C.hgt (a - b)` (the rise),
+then:
+(i) `k = λ` (`(HT)` forced: if `k ≠ λ`, `hgt_add_eq` gives `hgt (a − b) = min(λ, k) ≤ λ`,
+contradiction — `EFF.T2.19`'s master implication, verbatim mechanism);
+(ii) `C.dig b = C.dig a` (the DIGIT forced: at equal height, `dig (a − b) = dig a − dig b`
+whenever `dig a − dig b ≠ 0` would keep the height at `λ` (`dig_add` applied to
+`(a − b) = a + (−b)` with `dig (−b) = −dig b` — a small negation lemma is part of this node),
+so the rise forces `dig a − dig b = 0` — `EFF.T2.71`'s boxed equivalence, carrier form).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem refht_forced {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K)
+    (hneg : ∀ A, C.hgt (-A) = C.hgt A ∧ C.dig (-A) = - C.dig A)  -- see NOTE
+    {a b : Polynomial O} {lam k : ℤ}
+    (ha : C.hgt a = (lam : WithTop ℤ)) (hb : C.hgt b = (k : WithTop ℤ))
+    (hrise : (lam : WithTop ℤ) < C.hgt (a - b)) :
+    k = lam ∧ C.dig b = C.dig a
+```
+
+**⚠ SIGNATURE NOTE (the negation law).** `hgt(−A) = hgt A`, `dig(−A) = −dig A` is a carrier
+law the corpus uses silently (residues are additive and `d(−x) = d(x)`). It is taken as an
+explicit hypothesis here rather than an E.10 field, pending the stub stage: if three or more
+consumers thread it, RE-PLAN promotes it to an E.10 field (GC-5's re-plan protocol; a field
+addition to E.10 is amendment-level, dated).
+
+**DEPENDS.** E.10 (`hgt_add_eq`, `hgt_add_ge`, `dig_add`).
+
+**PROOF.**
+1. (i): if `k ≠ lam`, `hgt_add_eq a (−b)` (heights differ via `hneg`) gives
+   `hgt (a − b) = min lam k ≤ lam`, contradicting `hrise`.
+2. (ii): now `hgt b = lam`. If `dig a − dig b ≠ 0`: `dig_add a (−b)` gives
+   `hgt (a − b) = lam` — contradiction with `hrise`. So `dig a = dig b`.
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.T2.19` (`(REF-HT)` boxed; the derivation: "If `k ≠ λ`, the ultrametric
+equality yields `d(Φ − L_k(s)) = min(λ, k) ≤ λ`, contradicting `(RISE)`; hence `(HT)`";
+"`(RISE)` is a carrier hypothesis, not an open ledger obligation"); `EFF.T2.71` (the boxed
+digit equivalence "`d((Φ−Λ)(ρ)) > λ ⟺ ι_ρ(s − dig(Λ)) = 0 ⟺ dig(Λ) = s`" and the two riders —
+the `K^×` membership and the lift-freedom immateriality, whose `h(E) < λ` clause is r12 repair
+4(d)'s ultrametric step, all reproduced by this carrier-level proof); `EFF.T2.59` (the
+`(REF-HT)` derivation record: "(HT) is forced by (RISE), and that forcing uses master data
+only").
+
+**⚠ `(RISE)` STAYS STIPULATED.** The hypothesis `hrise` is `(RISE)` — carrier-supplied at
+instances (`EFF.T2.19`'s X02/X10–X11/X24 pins → E.22/E.23 rows). This node is the FORCING, not
+a discharge of `(RISE)`.
+
+**TEETH.** S7 print/coherent index mutant + lift-choice mutant (`EFF.T2.19`) → **Lean
+theorem**: the digit clause makes the coherent-frame read the only one that can elaborate
+(the print label `s·η^{−q}` does not satisfy (ii) unless `q = 0` — the mutant's signature).
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+### NODE E.36 [theorem] [fresh]
+
+**STATEMENT.** *The gcd dichotomy (ANNEX-LEMMA R2-a, schema form).* Let `F, Ψ : Polynomial O`
+be monic, `Ψ` of degree `D″ > 0`, and suppose the FORCING datum: every monic divisor
+`g₀ ∣ gcd`-candidate — schema form: suppose given `hforce : ∀ g₀ : Polynomial O, g₀.Monic →
+g₀ ∣ F → g₀ ∣ Ψ → g₀.natDegree ≠ 0 → D″ ≤ g₀.natDegree` (the instance content: a common root
+is a level-2 point whose full Galois orbit sits inside `g₀`, forcing `deg g₀ ≥ [L_ξ:K₀] ≥ D″` —
+carrier-supplied, C placeholder). Then any monic common divisor of `F` and `Ψ` of positive
+degree equals `Ψ` (degree squeeze: `D″ ≤ deg g₀ ≤ deg Ψ = D″`, both monic), i.e.
+`gcd(F, Ψ) ∈ {1, Ψ}` in the associate-free monic reading; consequently
+`Ψ ∤ F → IsCoprime (F.map …) (Ψ.map …)` over the fraction field — "the CONVENTION's chain,
+closed" (`EFF.HE7.119`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem gcd_dichotomy {O : Type*} [CommRing O] [IsDomain O]
+    {F Ψ : Polynomial O} (hF : F.Monic) (hΨ : Ψ.Monic) {D : ℕ} (hD : 0 < D)
+    (hΨd : Ψ.natDegree = D)
+    (hforce : ∀ g₀ : Polynomial O, g₀.Monic → g₀ ∣ F → g₀ ∣ Ψ →
+      g₀.natDegree ≠ 0 → D ≤ g₀.natDegree) :
+    ∀ g₀ : Polynomial O, g₀.Monic → g₀ ∣ F → g₀ ∣ Ψ →
+      g₀.natDegree = 0 ∨ g₀ = Ψ
+
+theorem coprime_of_not_dvd {O : Type*} [CommRing O] [IsDomain O]
+    {F Ψ : Polynomial O} (hF : F.Monic) (hΨ : Ψ.Monic) {D : ℕ} (hD : 0 < D)
+    (hΨd : Ψ.natDegree = D)
+    (hforce : ∀ g₀ : Polynomial O, g₀.Monic → g₀ ∣ F → g₀ ∣ Ψ →
+      g₀.natDegree ≠ 0 → D ≤ g₀.natDegree)
+    (hndvd : ¬ Ψ ∣ F) :
+    IsCoprime (F.map (algebraMap O (FractionRing O)))
+      (Ψ.map (algebraMap O (FractionRing O)))
+```
+
+**DEPENDS.** E.11 (the coprimality spelling) · mathlib `Polynomial.eq_of_monic_of_dvd`
+(degree-equal monic divisors are equal: `Polynomial.eq_of_monic_of_associated` +
+`Polynomial.natDegree_le_of_dvd`), fraction-field gcd (`EuclideanDomain.gcd_isUnit_iff`).
+
+**PROOF.**
+1. Dichotomy: `g₀ ∣ Ψ` gives `deg g₀ ≤ D` (`natDegree_le_of_dvd`, `Ψ ≠ 0`); at positive degree
+   `hforce` gives `deg g₀ = D`; monic divisor of equal degree ⟹ `g₀ = Ψ`
+   (associated + both monic).
+2. Coprimality: over `FractionRing O` take the monic gcd `g`; pull its monic O-lift back
+   (Gauss/primitive — or argue directly: a nontrivial common factor over the fraction field
+   yields, by clearing denominators and primitivity of monic polynomials, a monic common
+   O-divisor of positive degree — landed `Uniformity.Hensel` has `monic_factorization_unique`
+   machinery; search first per the workflow ladder), then the dichotomy + `hndvd` forces
+   degree 0, i.e. coprime.
+
+**SIZE.** 34 lines. **SPLIT CANDIDATE:** the fraction-field descent as `E36a` (it is the one
+genuinely mathlib-dependent step; if the descent fights, the fallback contract is to state
+`coprime_of_not_dvd` with the O-level conclusion `∀ g₀, Monic → dvd → dvd → natDegree = 0` and
+let E.37 consume that form — a DECISION at the stub stage, flagged).
+
+**SOURCE.** `EFF.HE7.119` (ANNEX-LEMMA R2-a, statement + proof verbatim, incl. "a proper
+common factor would be a Galois-stable factor of Ψ of degree ≥ deg Ψ" and the chain
+"gcd = 1 ⟺ no common root in K̄₀ ⟺ Ψ(ρ) ≠ 0 … ⟺ dv₂(Ψ(ρ)) < ∞"; hypothesis set "deliberately
+wide … covering both f_S and every block factor"); `EFF.HE7.09` (the convention whose
+equivalence chain this licenses — "Codex graded this a GAP as stated" pre-annex, closed by
+R2-a).
+
+**TEETH.** **PROOF-ONLY** at source ("The scenario it excludes is one the battery's frame
+cannot produce") → becomes a **Lean theorem** here — the chapter's clearest净 upgrade of a
+proof-only unit to machine-checked.
+
+**ENVIRONMENT.** ENV-E2 (+ `[IsDomain O]`).
+
+---
+
+### NODE E.37 [theorem] [fresh]
+
+**STATEMENT.** *The standing-convention peel (`Ψ ∤ f_S` restriction-free reading; the peel
+fires at most once).* Let `F, Ψ` be as in E.36 with `F` squarefree over the fraction field and
+`D″ ∣ deg F` bookkeeping. If `Ψ ∣ F` then: (i) `F = Ψ * F′` with `F′` monic,
+`deg F′ = deg F − D″`, and `Ψ ∤ F′` (else `Ψ² ∣ F`, contradicting squarefreeness — "the peel
+happens at most once", `EFF.HE7.09`); (ii) `F′` and `Ψ` coprime (E.18's squarefree-coprime
+step); (iii) if `Ψ ∤ F`, E.36's chain applies directly. Together: the convention
+"`Ψ ∤ f_S`" is NOT a restriction — every input is decided either directly or after ONE peel
+with mass `μ₂ − 1` (`EFF.HE7.09`'s italic clause, transcribed at the identity level; Ψ's
+IRREDUCIBILITY and its `(e,f) = (e₁ℓ, f₁d_r)` on the peel stratum are LEMMA HE6R1-3's — a
+CONCLUSION there, never an assumption here, and its supplier is a C placeholder:
+`EFF.HE6R1 [supplied-by: chapter C]`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem peel_once {O : Type*} [CommRing O] [IsDomain O]
+    {F Ψ : Polynomial O} (hF : F.Monic) (hΨ : Ψ.Monic) {D : ℕ} (hD : 0 < D)
+    (hΨd : Ψ.natDegree = D)
+    (hsq : Squarefree (F.map (algebraMap O (FractionRing O))))
+    (hdvd : Ψ ∣ F) :
+    ∃ F' : Polynomial O, F = Ψ * F' ∧ F'.Monic ∧
+      F'.natDegree = F.natDegree - D ∧ ¬ Ψ ∣ F'
+```
+
+**DEPENDS.** E.18 (the peel identity), E.36 · mathlib `Squarefree`, `Polynomial.map_dvd`.
+
+**PROOF.**
+1. Factor as in E.18 steps 1–3 (`F′` monic, degree drop `D`).
+2. `¬ Ψ ∣ F′`: else `Ψ * Ψ ∣ F`, so `(Ψ.map …)² ∣ F.map …` (map is a ring hom; `Ψ.map` is
+   monic hence a nonunit at `D > 0`), contradicting `hsq`.
+
+**SIZE.** 18 lines.
+
+**SOURCE.** `EFF.HE7.09` (the CONVENTION, verbatim incl. "the peel happens at most once" and
+the necessity derivation: without it "P₂ loses its j = 0 pin and THEOREM HE7.A(1)'s
+`Σ L_{λ₂} = μ₂` is false"); `EFF.HE7.60` (the n = 8 peel row: `μ₂′ = 1` after one peel, 8/8
+machine members, `A₁^{(2)} ≠ 0` "one peel only"); `EFF.HE7.62` (HE7.A′: "on the peel stratum
+irreducibility of Ψ is a CONCLUSION, not an assumption").
+
+**TEETH.** the sealed `DEGENERATE-key-divides` stratum (8 of 1,587, found BY the machine) +
+`he7r1_supp.py` A1–A5 (8/8 peels exact, 2/2 PARI on both σ halves) → the identity layer is a
+**Lean theorem**; the letter claim (`σ(Ψ) = {(4,1)}`) rides E.51's dictionary row with the
+HE6R1-3 placeholder.
+
+**ENVIRONMENT.** ENV-E2 (+ `[IsDomain O]`).
+
+---
+
+### NODE E.38 [theorem] [fresh]
+
+**STATEMENT.** *Slot domination (LEMMA HE7-12, the schema-ownable clauses).* Three layers:
+(i) **the fold (d)**: for slot families `w₁, …, w_j` each of degree `< D″` and slot value
+`> T₂`, the sum `W = Σ w_i` has degree `< D″` and slot value `≥ min_i dv₂(w_i) > T₂` — "the
+slot-min is ultrametric slotwise" — with EXACTNESS and `W ≠ 0` when the values are pairwise
+distinct (ultrametric equality at a uniquely attained min; carrier form via E.10's
+`hgt_add_eq`);
+(ii) **the off-disk arithmetic of (a)**: the displayed bound
+`(ν − T₂) + ε₁ − ℓ(D′−1)ε₀ > 0` under the three-case split (`ε₀ > 0` ⟹ substitute
+`ε₁ = ℓ(λ − D′h) + ℓD′ε₀`; `ε₀ = 0 < ε₁`; `ε₀ = ε₁ = 0`) — pure ℕ/ℤ arithmetic given the
+case data (`EFF.HE7.44`(a)'s positivity computation, transcribed as an arithmetic lemma);
+(iii) **the package transport (c)**: recorded as an OBLIGATION DEF `TransportsTo` — the
+Prop that a rung interface at key `Ψ` yields one at `Ψ − w` with the same
+`(λ, r, dv₂, n₂, K₂, T₂)` — whose eleven-item discharge audit (`EFF.HE7.44`(c) items (1)–(11),
+as COMPLETED by ANNEX R R4: clause (a) also consumes LEMMA HE6-4 and HE6-2′; clause (b) also
+(LIFT₂), the test family, HE7-9(a), HE7.A(1)) is the INSTANCES' obligation (E.23 rows; C
+placeholders for the HE6-side lemmas). E does not re-prove the audit; it fixes the transported
+statement's SHAPE.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem slot_fold {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) {T : ℤ} (ws : List (Polynomial O)) (hne : ws ≠ [])
+    (hdeg : ∀ w ∈ ws, w.natDegree < C.D)
+    (hval : ∀ w ∈ ws, ∃ v : ℤ, C.hgt w = (v : WithTop ℤ) ∧ T < v)
+    (hdist : ws.Pairwise fun w w' => C.hgt w ≠ C.hgt w') :
+    ws.sum ≠ 0 ∧ (∃ v : ℤ, C.hgt ws.sum = (v : WithTop ℤ) ∧ T < v) ∧
+      C.hgt ws.sum = (ws.map C.hgt).foldr min ⊤
+
+theorem offdisk_positivity {ν T₂ ℓ D' h lam ε₀ ε₁ : ℤ}
+    (hν : T₂ < ν) (hλ : D' * h < lam) (hℓ : 1 ≤ ℓ) (hD : 1 ≤ D')
+    (hε₀ : 0 ≤ ε₀) (hε₁ : 0 ≤ ε₁)
+    (hcase : (0 < ε₀ ∧ ε₁ = ℓ * (lam - D' * h) + ℓ * D' * ε₀) ∨ ε₀ = 0) :
+    0 < (ν - T₂) + ε₁ - ℓ * (D' - 1) * ε₀
+```
+
+**DEPENDS.** E.10 (`hgt_add_eq`, `hgt_add_ge`), E.28 (distinct-height uniqueness pattern) ·
+mathlib `List.Pairwise`, `WithTop.min`.
+
+**PROOF.**
+1. `slot_fold`: induction on `ws`; at each step the partial sum's height differs from the next
+   summand's (pairwise distinct + the fold min), so `hgt_add_eq` gives exact min; the min of
+   values `> T` is `> T`; a finite-height element is nonzero (`hgt_zero`: `hgt 0 = ⊤`).
+2. `offdisk_positivity`: case split per `hcase`; in the `ε₀ > 0` branch substitute and
+   simplify to `(ν−T₂) + ℓ(λ−D′h) + ℓε₀ > 0` (each summand `≥ 0`, first `> 0`); in `ε₀ = 0`
+   branches it is `(ν−T₂) + ε₁ > 0`. `linarith`/`nlinarith` on the products.
+
+**SIZE.** 30 lines. **SPLIT-MANDATED:** `slot_fold` and `offdisk_positivity` as two files
+(`E38`, `E38a`) — independent consumers (E.42 needs the fold; E.23's HE7-12(a) row needs the
+arithmetic).
+
+**SOURCE.** `EFF.HE7.44` (LEMMA HE7-12, clauses (a)/(b)/(d) verbatim incl. the `[r3]` `W ≠ 0`
+rider — "the values `dv₂(w_i)` are pairwise DISTINCT (they are the strictly increasing slopes
+… of LEMMA HE7-13 …), so the slot-min is attained by the least-slope increment ALONE and
+`dv₂(W) = min_i dv₂(w_i) < ∞ EXACTLY`"; clause (c)'s eleven-item audit; the (a)-proof's
+three-case positivity computation); `EFF.HE7.43` (the slot-domination mechanism: key slots AT
+`T₂`, increment slots strictly above); ANNEX R R4 (`EFF.HE7.44` CONDITIONALITY (a): the
+completed inventory — "citation-completeness on one sentence, no transfer breaks").
+
+**⚠ THE HE7-12/HE7-13 MUTUAL INDUCTION (OPEN-CALL 3 of the HE7 spec) IS RESOLVED
+STRUCTURALLY HERE.** The corpus notes the circularity — (d)'s `W ≠ 0` cites HE7-13's strict
+increase; HE7-13's proof cites HE7-12(c)(d) — "broken by simultaneous induction along the
+chain". In Lean the two become ONE strong induction along the chain length (E.56's statement
+quantifies the chain and proves both invariants together), so no axiom-level circularity can
+survive elaboration; `slot_fold` above takes the pairwise-distinctness as an explicit
+HYPOTHESIS, discharged by E.56 at each chain step. Recorded in §14 for the cross-read.
+
+**TEETH.** `he7r2_supp.py` B1 (slot geometry, 42/42) + B2 (the off-disk inequality in
+resultant-sum form, 210/210, with the `[r3]` vacuity disclosure: the `δ = ∞` half vacuous on
+41/42 — recorded in §13) → **Lean theorem** for (i)/(ii); (iii) is an obligation def.
+
+**ENVIRONMENT.** ENV-E2 / ENV-E1 (the arithmetic clause).
+
+---
+
+<!-- RESUME: §5 COMPLETE (E.25–E.38). Next: §6 (E.39–E.44, LB1/MP1). -->
+
+*(sections §6–§14 follow)*
