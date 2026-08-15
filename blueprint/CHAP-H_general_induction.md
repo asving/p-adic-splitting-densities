@@ -6975,6 +6975,18 @@ exponent slopes, and the repair must first fix WHICH slope the structure's `c` i
 * **`leanfinal`**: H71.lean stays as the refutation record; the node's status moves BLOCKED →
   READY-AT-REPAIRED-SIGNATURE for the fleet (H.71a/b/c split unchanged; H.71b's α-`calc` is the
   step the repair unblocks).
+  **[LANDED 2026-08-15]** `leanfinal/Uniformity/ChapH/H71.lean` now carries BOTH declarations at
+  the A-H.2 signature (byte-identical to the re-signed stub), `rate_close` PROVED, sorry-free,
+  `#print axioms` = Lean core only. The structure was REPLACED (windowed `halpha`), sanctioned by
+  the no-consumer re-grep above and recorded in the file's docstring. The three-way split landed as
+  `pow_sub_dominance_one_term` (H.71a — the one-term sharpening; H.35's own form does not close
+  step 6 near `N = m`, so it is proved locally, as the node's step 1 anticipates), `locus_geom`
+  (H.71b — the (LOCUS)/(GEOM) transport, with the exponent recomposition as its one hypothesis) and
+  `rate_close` (H.71c — `Nat.strong_induction_on`, no special-cased base: `alphaRange_window_one`
+  from H.22(ii) makes the α-range empty at `N = 1` automatically). H.16(ii)/H.17's identities are
+  machine-checked as the intended-instantiation tie. Numeric mirrors of
+  `verification/rate_close_ah2_check.py`: base-case tightness (ratio exactly `1`), the (α-0)
+  witness-exclusion under the windowed `halpha`, and two `#guard`ed `c = m` divergence cells.
 
 *END OF AMENDMENT A-H.2 (2026-08-15). Touched: node H.71 (STATEMENT, SIGNATURE, its reading note,
 DEPENDS, PROOF, SIZE note, the step-4 ⚠ flag), §16 item 13, `spec/DAG_BLUEPRINT_H.tsv` (one edge),
