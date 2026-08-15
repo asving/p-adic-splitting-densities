@@ -29,3 +29,4 @@ import Uniformity.ChapG
 -- library's import graph and therefore inside plain `lake build`.
 import Uniformity.ChapG.G78
 import Uniformity.ChapH
+import Uniformity.ChapB

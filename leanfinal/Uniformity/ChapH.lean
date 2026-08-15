@@ -1,6 +1,14 @@
 import Uniformity.ChapH.H01
+import Uniformity.ChapH.H02
+import Uniformity.ChapH.H05
+import Uniformity.ChapH.H06
+import Uniformity.ChapH.H07
 import Uniformity.ChapH.H13
+import Uniformity.ChapH.H14
+import Uniformity.ChapH.H15
+import Uniformity.ChapH.H18
 import Uniformity.ChapH.H22
+import Uniformity.ChapH.H23
 import Uniformity.ChapH.H30
 import Uniformity.ChapH.H31
 import Uniformity.ChapH.H32
@@ -12,6 +20,8 @@ import Uniformity.ChapH.H37
 import Uniformity.ChapH.H38
 import Uniformity.ChapH.H39
 import Uniformity.ChapH.H40
+import Uniformity.ChapH.H41
+import Uniformity.ChapH.H42
 import Uniformity.ChapH.H43
 import Uniformity.ChapH.H44
 import Uniformity.ChapH.H45
@@ -20,21 +30,34 @@ import Uniformity.ChapH.H47
 import Uniformity.ChapH.H48
 import Uniformity.ChapH.H49
 import Uniformity.ChapH.H51
+import Uniformity.ChapH.H52
 import Uniformity.ChapH.H53
+import Uniformity.ChapH.H57
 import Uniformity.ChapH.H58
 import Uniformity.ChapH.H59
+import Uniformity.ChapH.H60
+import Uniformity.ChapH.H62
 import Uniformity.ChapH.H63
 import Uniformity.ChapH.H64
 import Uniformity.ChapH.H65
+import Uniformity.ChapH.H66
 import Uniformity.ChapH.H70
+import Uniformity.ChapH.H73
 import Uniformity.ChapH.H76
 import Uniformity.ChapH.H77
 import Uniformity.ChapH.H80
+import Uniformity.ChapH.H81
+import Uniformity.ChapH.H82
 import Uniformity.ChapH.H83
 import Uniformity.ChapH.H86
 import Uniformity.ChapH.H87
 import Uniformity.ChapH.H88
+import Uniformity.ChapH.H89
+import Uniformity.ChapH.H90
+import Uniformity.ChapH.H91
+import Uniformity.ChapH.H92
 import Uniformity.ChapH.H93
+import Uniformity.ChapH.H94
+import Uniformity.ChapH.H95
 
-/-! Chapter H roll-up — wave 1 (layer 0) landed. The H.13-before-H.09 ordering
-constraint (stub-gate finding O1) binds when H.09 lands. -/
+/-! Chapter H roll-up — waves 1, 2, 2b landed (61 nodes). H.13-before-H.09 ordering (gate finding O1) binds when H.09 lands. -/
