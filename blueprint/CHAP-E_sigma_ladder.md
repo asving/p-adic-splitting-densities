@@ -2408,7 +2408,7 @@ equivalence chain this licenses — "Codex graded this a GAP as stated" pre-anne
 R2-a).
 
 **TEETH.** **PROOF-ONLY** at source ("The scenario it excludes is one the battery's frame
-cannot produce") → becomes a **Lean theorem** here — the chapter's clearest净 upgrade of a
+cannot produce") → becomes a **Lean theorem** here — the chapter's clearest net upgrade of a
 proof-only unit to machine-checked.
 
 **ENVIRONMENT.** ENV-E2 (+ `[IsDomain O]`).
@@ -2544,6 +2544,309 @@ resultant-sum form, 210/210, with the `[r3]` vacuity disclosure: the `δ = ∞` 
 
 ---
 
-<!-- RESUME: §5 COMPLETE (E.25–E.38). Next: §6 (E.39–E.44, LB1/MP1). -->
+## 6. §6 — `(LB1)` AND `(MP1)`: THE TWO OPEN OBLIGATIONS, ADJUDICATED PER BRIEF E
 
-*(sections §6–§14 follow)*
+> **The adjudication (BRIEF E product clause (2), executed).** T2's merged spec carries exactly
+> two open mathematical obligations, `(LB1)` (`EFF.T2.18`) and `(MP1)` (`EFF.T2.23`), "both
+> reaffirmed at the governing block"; its §9 self-audit distinguishes them from the two carrier
+> hypotheses that fence nothing (`(SEC-RANK)`, `(RISE)`) and confirms `(MP1′)` "is never stated
+> as an effective conditionality anywhere in the merged text". **No discharge of `(LB1)` or
+> `(MP1)` exists in T2's effective text** — `EFF.T2.18`: "The note enumerates the HE3/HE6 pins
+> and expressly says NONE proves `(LB1)`"; `EFF.T2.23`: "No pin proves the recentered level-one
+> key's orbit/(e,f) item, so `(MP1)` remains open". **Disposition: both are NAMED CAPSTONE
+> HYPOTHESES, carried to chapter I** — and under the Part V owner ruling each must terminate
+> there as a discharge node or a literature cite through gate (b); E's job is to state them at
+> exactly source strength, no wider and no narrower.
+
+### NODE E.39 [def] [fresh]
+
+**STATEMENT.** *`(LB1)` — the level-one block-construction obligation, at exactly
+`EFF.T2.18`'s strength.* The assertion that every level-one state whose clause-4 processing
+demands blocks — every state with at least two sides, and every side whose residual is mixed —
+has the monic side and label blocks of S1.7A: "with their own full developments, single-side
+hulls, pure residuals, product identities, disjoint exhaustive root partitions, and inherited
+continuation data." Schema form: for the level-one carrier/block/interface, the existence of a
+block family realizing `(SIDE-PROD)`/`(LABEL-PROD)`/`(LABEL-DEV)`/`(LABEL-PURE)`/`(LABEL-OWN)`
+(`EFF.T2.17`'s displays) — i.e. for each side `p` and factor `q`, a `BlockData` with its own
+`RungInterface` whose weight (degree) is `classCount`-compatible and whose product is `F`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- `(LB1)` (`EFF.T2.18`): the level-one clause-4 block suite exists. OPEN — a named
+capstone hypothesis; no chapter-E node proves it; chapter I carries it (Part V gate (b) or
+a discharge node). -/
+def LB1Carrier {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) (B : BlockData C) : Prop :=
+  ∀ I : RungInterface C B,
+    (1 < I.sides.card ∨ ∃ p ∈ I.sides, ¬ I.SepSide p) →
+    ∃ blocks : List (Σ B' : BlockData C, RungInterface C B'),
+      B.F = (blocks.map fun x => x.1.F).prod ∧
+      (blocks.map fun x => x.1.F.natDegree).sum = B.F.natDegree
+      -- + the per-block pure-residual and length clauses; see the NOTE
+```
+
+**⚠ SIGNATURE NOTE.** The displayed conjunction abbreviates the full S1.7A clause list
+(`(LABEL-PURE)`: each block's shadow has ONE factor with `k = L_C/(ℓ·deg r)`; `(LABEL-OWN)`
+integrality; the partition compatibility with `classCount`). The stub stage elaborates the
+full record as a `structure BlockSuite` with one field per display — the point FROZEN here is
+the obligation's SHAPE (existence of interfaced blocks multiplying to `F`) and its TRIGGER
+(multi-side or mixed — never a one-side separable state: `EFF.T2.18`'s "Clauses 1 and 2 are
+not" scoping, already honoured at E.16/E.17).
+
+**DEPENDS.** E.10–E.12, E.17. **PROOF.** definitional (a `Prop`). **SIZE.** 24 lines.
+
+**SOURCE.** `EFF.T2.18` (boxed `(LB1)`, the enumeration sentence, the scoping paragraph
+verbatim: "Two level-one routes remain conditional, each where it is taken: the clause-4 route
+on `(LB1)`, and the clause-5 peel at a recentered key on `(MP1)` … No level-one route is
+asserted unconditional simpliciter"); `EFF.T2.17` (the S1.7A displays the blocks must
+satisfy); ledger Display A (the `(LB1)` conjunct).
+
+**TEETH.** S7 mixed-residual and multi-side hostile cases → **signed non-applicability at
+level one** (the corpus's own disposition — the obligation is open); at level ≥ 2 the analogue
+is PROVED content (ANNEX-LEMMA HE7-13′ = E.57), which is why the carrier is level-indexed by
+its instantiation, not globally.
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+### NODE E.40 [def] [fresh]
+
+**STATEMENT.** *`(MP1)` — the level-one recentered-key peel obligation, at exactly
+`EFF.T2.23`'s strength.* The assertion that, at every level-one state whose current key is a
+RECENTERED key dividing its represented block, the quotient `G′` satisfies `(WINDOW)`, carries
+its own full development with `(ACCOUNT)` and the S1.7 test assertions together with the
+occupied-height, lift, frame, origin and residual-degree data, and that the peeled recentered
+key admits a certified orbit/`(e,f)` decomposition — "items 2, 3, 4 and 5 of the suite."
+Schema form: after E.18's peel identity at a recentered key `Φ″`, the existence of a
+`RungInterface` for the quotient block AND the peeled key's emission data.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- `(MP1)` (`EFF.T2.23`): the level-one mid-chain-peel input suite at a RECENTERED key.
+OPEN — a named capstone hypothesis; carried to chapter I. The ORIGINAL-key peel is NOT
+this obligation (it is supplied by HE6-PEEL-CONVENTION, a chapter-C row at E.22). -/
+def MP1Carrier {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) (B : BlockData C) : Prop :=
+  ∀ (Λ : Polynomial O),                        -- the recentering increment
+    Λ ≠ 0 → Λ.natDegree < C.D →
+    ∀ (B' : BlockData C),                      -- the quotient block at key Φ − Λ
+      B'.Φ = B.Φ - Λ → B'.Φ ∣ B.F →
+      Nonempty (RungInterface C B') ∧
+      -- item 5: the peeled key's certified (e,f) emission
+      ∃ e f : ℕ, e * f = C.D ∧ C.eC ∣ e ∧ C.fC ∣ f
+```
+
+**⚠ SIGNATURE NOTE.** Item 5's emission clause is stated in the numerical shadow (D-E2); the
+"certified orbit decomposition" at instances requires `Φ″` irreducible — "asserted nowhere and
+the stated reason r4 declined HE6-PEEL-CONVENTION for that case" (`EFF.T2.61`). The stub stage
+may strengthen the emission record to a full `FactorizationType` emission per §7's dictionary;
+that strengthening is amendment-level (it touches a Display-A conjunct's statement — owner
+gate).
+
+**DEPENDS.** E.10–E.12, E.18. **PROOF.** definitional. **SIZE.** 22 lines.
+
+**SOURCE.** `EFF.T2.23` (boxed `(MP1)` + the quoted suite enumeration, verbatim above; the
+derivation's closing: "No pin proves the recentered level-one key's orbit/(e,f) item, so
+`(MP1)` remains open"); `EFF.T2.61` (what the S1.8C discharge does NOT give: "It does not
+touch `(MP1)`. Peeling a recentered level-one key still needs item 5 …"); ledger Display A
+(the `(MP1)` conjunct).
+
+**TEETH.** S7 reducible/recentered-key boundary attacks → **signed non-applicability**
+(open obligation, the corpus's own disposition); the LEVEL-TWO analogue is discharged (E.42).
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+### NODE E.41 [lemma] [fresh]
+
+**STATEMENT.** *The scope theorem: clauses 1–2 fire without `(LB1)`.* Instantiation check, as
+a theorem: E.16 (`he7a_clause12`) consumes NO `LB1Carrier` and no `MP1Carrier` — stated
+positively: for every `C, B, I`, the clause-(1)(2) conclusions hold with no block-suite
+hypothesis; in particular at a ONE-side state with separable shadow, the full read is decided
+by E.16 + E.17's terminal case alone. This machine-checks `EFF.T2.18`'s scoping sentence
+("Clauses 1 and 2 are not [conditional]: their proofs run on the unsplit hull of F itself") —
+in Lean the check is definitional (E.16's signature does not mention E.39/E.40), so this node
+is a REGRESSION-shaped theorem: the one-side separable read produces its emissions with
+hypotheses drawn from `RungInterface` alone.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem clause12_lb1_free {O : Type*} [CommRing O] {K : Type*} [Field K]
+    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface C B)
+    (hone : I.sides.card = 1) (hsep : ∀ p ∈ I.sides, I.SepSide p) :
+    ∀ p ∈ I.sides, (∀ q ∈ I.linFac p, I.classCount p q = C.D * p.2) ∧
+      (∀ q ∈ I.hiFac p, I.classCountHi p q = C.D * p.2 * q.1)
+```
+
+**DEPENDS.** E.16.
+
+**PROOF.** 1. Direct application of E.16 clause (2) at the (unique) side. The card-one and
+all-separable hypotheses document the unconditional perimeter; they are not needed by the
+application — which IS the point, and the node's comment states it.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.T2.18` (the scoping paragraph); `EFF.T2.33`/`.34` CONDITIONALITY (the
+level-one fences attach to clause-4/clause-5 routes only).
+
+**TEETH.** signed source non-applicability at level one (`EFF.T2.18` TEETH) → upgraded to a
+**Lean theorem** documenting the unconditional perimeter.
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+### NODE E.42 [theorem] [fresh]
+
+**STATEMENT.** *The level-two discharge S1.8B (the composed-key entry, `w = 0 ∨ dv₂(w) > T₂`,
+folded by HE7-12(d)).* Schema form over E.38's fold: let the chain base be `Ψ − w` with either
+`w = 0` (the base IS a DEFINITION-HE6-1-shape key; the package applies literally) or `w ≠ 0`
+with `deg w < D″`, slot value `> T₂`; and let refine increments `w₁, …, w_j` each have degree
+`< D″` and slot values `> T₂` pairwise distinct (supplied inductively by `(REF-HT)` = E.35 and
+HE7-13 = E.56). Then `Φ₂ − W = Ψ − (w + w₁ + ⋯ + w_j)` is covered by ONE instance of the
+slot-domination transport (E.38's fold gives `W' := w + Σ w_i` nonzero of slot value `> T₂`),
+so the whole §S5 package at `Ψ` transports once — "the chain is read at `Ψ_{κ₂, r̃}`, a
+DEFINITION HE6-1 key, and not at `Φ₂`" (`EFF.T2.62`). Items 2–5 of the `(MID-PEEL)` suite at
+the level-two state follow from the transported package — the level-two clause-5 discharge
+(`EFF.T2.24`), leaving `(MP1)` scoped to level one ONLY.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem s18b_fold {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) {T : ℤ}
+    (w : Polynomial O) (ws : List (Polynomial O))
+    (hw : w = 0 ∨ (w.natDegree < C.D ∧ ∃ v : ℤ, C.hgt w = (v : WithTop ℤ) ∧ T < v))
+    (hws : ∀ x ∈ ws, x.natDegree < C.D ∧ ∃ v : ℤ, C.hgt x = (v : WithTop ℤ) ∧ T < v)
+    (hdist : (w :: ws).Pairwise fun a b => a = 0 ∨ b = 0 ∨ C.hgt a ≠ C.hgt b) :
+    (w + ws.sum = 0 ∧ ws = [] ∧ w = 0) ∨
+    ((w + ws.sum).natDegree < C.D ∧
+      ∃ v : ℤ, C.hgt (w + ws.sum) = (v : WithTop ℤ) ∧ T < v)
+```
+
+**DEPENDS.** E.38 (`slot_fold`), E.35 (the increments' heights at instances), E.56 (the
+pairwise-distinctness supply — forward reference, DAG-ordered).
+
+**PROOF.**
+1. Case `w = 0, ws = []`: left disjunct.
+2. Else: the nonzero members of `w :: ws` form a nonempty list with pairwise-distinct finite
+   heights `> T`; `slot_fold` (E.38) gives the sum nonzero with exact min height `> T`; degree
+   bound by `Polynomial.natDegree_add_le` iterated (each `< C.D`).
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.T2.62` (S1.8B's composed-key scope clause, verbatim: the `w = 0` /
+`dv₂(w) > T₂` disjunct, "LEMMA HE7-12(d) folds the whole sum … covered by ONE instance of
+clauses (a)–(c) at `Ψ_{κ₂,r̃}` … Step 2 then runs unchanged"); `EFF.T2.24` (S1.8B: "This is a
+level-two discharge. The level-one recentered-key peel remains `(MP1)`-conditional");
+`EFF.T2.53` (the withdrawn `[r3]`-clause route — the discharge runs through HE7-12(c)'s
+transport, NOT through HE7-8's interleaving clause, which "supplies no item of the input
+suite"; transcribed so no fleet agent resurrects the withdrawn route); `EFF.HE7.44`(d).
+
+**TEETH.** composed-key transport tooth; the accumulated-degree tooth (r12: the `deg w < D″`
+conjunct re-derived master-side after HETOW C-A withdrew the source licence — the degree leg
+here is master-side arithmetic, matching) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+### NODE E.43 [lemma] [fresh]
+
+**STATEMENT.** *The S1.8C content: a recentered level-one key is a test-family member (the
+`(ℓ,d) = (1,1)` identification), and the frame does not move.* Two transcribable clauses:
+(i) **the membership identity**: at `(ℓ, d) = (1, 1)` the test-family shape
+`Ψ = Φ′ + B₀` with `deg B₀ < D′` IS the recentered key `Φ′ − Λ` at `Λ := −B₀` — in Lean, the
+trivial-but-load-bearing algebra `Φ - Λ = Φ + (-Λ)` with degree/height bookkeeping
+(`h(−B₀) = κ`, `dig(−B₀) = ση^{q(κ)}` — the choice-independent pair, E.34's directives);
+(ii) **the frame-stability record**: the items (i)–(v) of the frame "are not 'carried by' Φ″:
+nothing about them moves when the key does" — in the schema, the SlotCarrier `C` does not
+mention `Φ` at all (E.10's signature), so key-recentering is definitionally frame-preserving.
+This machine-checks the adjudication's core structural claim; the parts of S1.8C that consume
+HE3/HE6 pin content (the stage-α transport, the HE6-PROOF licence) are instance rows (E.22,
+C placeholders) at HE3's grade cap.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem recentered_is_member {O : Type*} [CommRing O] (Φ B₀ : Polynomial O) :
+    Φ + B₀ = Φ - (-B₀)
+
+theorem frame_key_free {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) (A : Polynomial O) :
+    -- the carrier's read of ANY A is independent of any key: definitional; stated as
+    -- a rewriting anchor for consumers
+    C.hgt A = C.hgt A ∧ C.dig A = C.dig A
+```
+
+**⚠ NODE-KIND NOTE.** Clause (ii)'s Lean content is intentionally trivial — the theorem's
+VALUE is that it elaborates: the schema's carrier has no key argument, so the corpus's
+"(i)–(v) are functions of the stage datum and of nothing else" is enforced by TYPE. The node
+exists so §13's disposition table has a Lean anchor for `EFF.T2.25`/`.61`'s adjudication
+(the retirement of `(MP1′)`), rather than a prose-only claim. A fleet agent may fold clause
+(ii) into a comment + `rfl` lemma; clause (i) is the consumed identity.
+
+**DEPENDS.** E.10, E.34. **PROOF.** 1. `ring` / `rfl`. **SIZE.** 8 lines.
+
+**SOURCE.** `EFF.T2.25` (S1.8C: "`(MP1′)` is retired … `HE3-A-PROOF`, `HE6-SLOT-SEAM`,
+`HE6-FAMILY` and `HE6-PROOF` certify it between them"; "What is removed is the extra
+frame-level obligation, not the level-one fences"); `EFF.T2.61` (the adjudication, incl. "At
+`(ℓ,d) = (1,1)` the member `Ψ_{λ,Z−s} = Φ′ + B₀` IS the recentered key … A recentered
+level-one key is not a foreign object to HE6; it is one of HE6's own test polynomials" and
+the two reading directives: only the refined sub-block travels; invoked at the product-1
+branch and nowhere else); `EFF.T2.70` (the print/coherent seam and `(IDX-TWIST)`'s role).
+
+**TEETH.** level-one frame-transport hostile tooth → the type-level enforcement above +
+E.22's instance rows.
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+### NODE E.44 [def] [fresh]
+
+**STATEMENT.** *The obligations record for chapter I.* Bundles the §6 dispositions in one
+place, with the adjudication verdicts as docstrings: `(LB1)` CARRIED-OPEN (E.39); `(MP1)`
+CARRIED-OPEN (E.40); `(MP1′)` RETIRED — "denotes a consequence of the pins, not an obligation.
+No instance record carries it and no ledger item fences it" (`EFF.T2.25`) — NO carrier is
+declared for it (declaring one would resurrect a retired name); `(SEC-RANK)`/`(RISE)` are
+carrier hypotheses that fence nothing ("the acceptance record states it 'fences no read'",
+`EFF.T2.52`) — they live as E.12 fields / E.35 hypotheses, NOT as chapter-I conjuncts.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- The chapter-E obligations record: what chapter I receives from the σ-ladder. -/
+structure LadderObligations {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) (B : BlockData C) : Prop where
+  lb1 : LB1Carrier C B
+  mp1 : MP1Carrier C B
+```
+
+**DEPENDS.** E.39, E.40. **PROOF.** definitional. **SIZE.** 8 lines.
+
+**SOURCE.** `EFF.T2.44` (acceptance: "The two open obligations and the HE3 supplier cap
+survive"); EFF-T2 §9 (the two-obligation census, quoted in this section's header); Part V
+(the two-gate ruling this record feeds).
+
+**TEETH.** none (bookkeeping); chapter I's row-disposition census consumes this record's
+field list as ground truth for the `(LB1)`/`(MP1)` Display-A conjuncts.
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+<!-- RESUME: §6 COMPLETE (E.39–E.44). Next: §7 (E.45–E.54, the σ dictionary — TERMINAL SUPPLY). -->
+
+*(sections §7–§14 follow)*
