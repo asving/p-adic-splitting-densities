@@ -3921,7 +3921,7 @@ theorem typeOf_of_separable_residuals (hπ : Irreducible π) {φ : Polynomial O}
     {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
     (hsep : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ∀ h : (sideSet φ f u ℓ).Nonempty,
-      1 < (sideSet φ f u ℓ).card → ∀ H₀ : ℕ, npHgt φ f 0 = (H₀ : ℕ∞) →
+      1 < (sideSet φ f u ℓ).card → ∀ H₀ : ℕ, npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞) →
         (resPoly π φ f u ℓ h H₀).Separable)
     (hperim : ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField φ), … ) :
     ∃ (T : Finset ((ℕ × ℕ) × Polynomial (resField φ))) (F : _ → Polynomial O),
@@ -4041,10 +4041,15 @@ namespace Uniformity.Density.Leaf
 theorem ns6_biconditional (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ) :
-    (∀ u ℓ, … (resPoly …).Separable) ↔ (∀ u ℓ ψ, … multiplicity = 1)
+    (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ∀ h : (sideSet φ f u ℓ).Nonempty,
+        1 < (sideSet φ f u ℓ).card → ∀ H₀ : ℕ, npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞) →
+          (resPoly π φ f u ℓ h H₀).Separable)
+      ↔ (∀ u ℓ ψ, … multiplicity = 1)
 ```
 *(clause 3 is B.63's conclusion and is stated as a separate `iff` in the same file; the SIGNATURE above
-freezes the `1 ↔ 2` half, whose statement needs no perimeter hypothesis.)*
+freezes the `1 ↔ 2` half, whose statement needs no perimeter hypothesis. Clause 1's quantifier prefix
+is byte-identical to B.63's `hsep` — the previously elided pin is written out per amendment A-F.1
+(PA-1): it sits at the side's left endpoint `sideMin`, never at abscissa 0.)*
 
 **DEPENDS.** B.27 · B.45 · B.63 · B.64.
 
@@ -4429,7 +4434,7 @@ namespace Uniformity.Density.Leaf
 not terminate. -/
 def NeedsDescent (π : O) (φ f : Polynomial O) : Prop :=
   ∃ (u ℓ : ℕ) (h : (sideSet φ f u ℓ).Nonempty) (H₀ : ℕ), 0 < ℓ ∧ Nat.Coprime u ℓ ∧
-    1 < (sideSet φ f u ℓ).card ∧ npHgt φ f 0 = (H₀ : ℕ∞) ∧
+    1 < (sideSet φ f u ℓ).card ∧ npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞) ∧
     ¬ (resPoly π φ f u ℓ h H₀).Separable
 ```
 
@@ -4456,8 +4461,11 @@ in different projects that are never in the same environment. **Flagged for huma
 ### NODE B.74 [lemma] [fresh]
 
 **STATEMENT.** *The descent trigger is decidable from the window.* `NeedsDescent π φ f` depends only on
-the development coefficients at the on-side abscissae and on their digits at the line heights;
-consequently (with B.77) it is determined by `f mod π^N` for `N` exceeding every on-side line height.
+the development coefficients at the on-side abscissae and on their digits at the side-line heights —
+each side's residual read entering at the side's left endpoint, `H₀` with
+`npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞)` (the A-F.1/PA-1 pin; on-side heights are then `H₀ − u·k`
+counted from `sideMin`, all **on** the side's line); consequently (with B.77) it is determined by
+`f mod π^N` for `N` exceeding every on-side line height.
 
 **SIGNATURE.**
 ```lean
@@ -5368,5 +5376,44 @@ and B.66's canonical finsets — may force strengthening B.63's `T` to the canon
 §8-owned statement refinement) and **§14 item 13** (= A-§9.1).
 
 ---
+
+### AMENDMENTS (2026-08-15, B §10 finisher — the chapter-G §A- precedent)
+
+**A-F.1 — PA-1 APPLIED: the D-§9.1 `H₀`-pin repair (executes GC-1; discharges A-§9.1).**
+Authority: `blueprint/CONVENTIONS_2026-08-15.md` PA-1 (four-site list confirmed by the adversarial
+cross-read) + Part V owner ruling item 2 ("PA-1 … APPROVED, to be applied by the B-finisher after
+the cross-read verdict confirms the four-site list"). The repair replaces the pin
+`npHgt φ f 0 = (H₀ : ℕ∞)` by `npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞)` (with `h` the side's
+nonemptiness witness already in scope in each statement) at **exactly the four sites PA-1 lists**,
+edited in place above:
+
+1. **B.63** — the `hsep` hypothesis clause (SIGNATURE block).
+2. **B.65** — the same pin in its statement; it lived inside the SIGNATURE's elided clause-1
+   prefix (byte-identical to B.63's `hsep`), so the application writes the previously elided
+   quantifier prefix out in full at the repaired pin — an elision expansion, not a new hypothesis.
+3. **B.73** — the `NeedsDescent` definition body.
+4. **B.74** — the statement gloss only (the SIGNATURE consumes `NeedsDescent` by name and is
+   untouched; it inherits the repair through B.73).
+
+**Zero §9 signature changes** (verified: B.77's `resPoly_congr` is convention-free by design,
+`H₀ < N` only; B.79/B.80/B.82 consume `NeedsDescent` by name). B.28/B.29/B.30 were already stated
+and proved under the `sideMin` pin and are untouched. **The remaining `npHgt φ f 0` statement pins
+were re-verified and are correct as committed:** B.35 (`hHf`/`hHg`), B.41 (`hH₀`) and B.48 (`hH₀`)
+each sit under an `IsPure` hypothesis — on a pure one-sided polygon the side contains abscissa 0
+and the two pins agree (A-§9.1's own dichotomy); and B.75/B.76's abscissa-0 reads are the
+**visibility API**, deliberately pinned at abscissa 0 because `npHgt φ f 0` bounds every consulted
+height (GC-1's closing rider keeps the visibility API and the residual-read API apart by name).
+Consequence for the perimeter: A-§9.1's vacuity caveat on B.63/B.79/B.80/B.82 ("correct but
+vacuously scoped to blocks whose every `card ≥ 2` side contains abscissa 0") is **discharged** —
+the certificates now read every side of a multi-slope polygon through the correct pin, and the §10
+gates below include a two-slope instance whose right side has `sideMin ≠ 0`, i.e. an instance the
+pre-repair pin provably could not fire (its `resPoly` under the abscissa-0 pin is `0`, never
+separable). §14 item 13 remains in the cross-read queue as the verification obligation for this
+application. Owner visibility: listed in CONVENTIONS Part IV item 1; standing statement-change
+authority (2026-08-05) covers it as an honest repair of signed text.
+
+---
+
+<!-- RESUME: (a) PA-1 APPLIED + A-F.1 recorded, committing now. Next: (b) §10 gates B.83–B.86, then (c) §§11–14, then (d) census amendment A-F.2. -->
 
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
