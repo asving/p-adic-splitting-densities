@@ -52,10 +52,12 @@ Count reconciliation. §15's 190 is reproduced exactly: 192 declarations are wri
 SIGNATURE blocks; drop `normIdx` and its dependent `stageLift` (rule 2) and
 `package_three_of_drainage` (rule 3), and add back the two replacement types the blueprint displays
 in its own SIGNATURE NOTES, `stageLift'` and `package_three_of_rate` — 192 − 3 + 1 = **190
-signable**. Of those, one more is withdrawn HERE because the gate REFUTED it
-(`band_not_consulted`, D8), so **189 are signed**, mechanically counted in this file as
-**147 `axiom` + 5 `structure` + 3 `inductive` + 33 `def` + 1 `noncomputable def` = 189**
-(the `axiom` count is §15's `theorem` column, 148, minus the refuted one).
+signable**. Of those, TWO are withdrawn HERE because the gate REFUTED them —
+`rate_lossPriced` (H.72, D4) and `band_not_consulted` (H.89, D8) — leaving **188 signed**:
+mechanically, **146 `axiom` + 5 `structure` + 3 `inductive` + 33 `def` + 1 `noncomputable def`**,
+where 146 is §15's `theorem` column (148) minus the two refutations. The file carries exactly ONE
+declaration that is not a signed blueprint declaration: `stageIfaceE`, the `StageInterface` witness
+that F2 records as missing and that D4's refutation needs (34 `def`s appear in a grep).
 
 ## DEFECT LIST (stage-0e gate, 2026-08-15; recorded here, NOT repaired in the blueprint)
 
@@ -73,15 +75,34 @@ signable**. Of those, one more is withdrawn HERE because the gate REFUTED it
   (`v4.31.0`).** `Nat.coprime_two_right_iff_odd` is not in this mathlib; the lemma is
   `Nat.coprime_two_right : n.Coprime 2 ↔ Odd n` (`Mathlib/Data/Nat/Prime/Basic.lean:148`). Landed
   with the corrected name. Class: stale-Mathlib-name (training-data smell), no semantic content.
-* **D4 — H.72 `rate_lossPriced`'s docstring contradicts its type.** The docstring says *"The
-  conclusion's exponent inequality is stated over `ℤ` so no `ℕ`-truncation can hide a sign"*, but
-  every term of the signed inequality is `ℕ`, including the trailing `- 2 * (2 * I.slack)`, which
-  is therefore TRUNCATED subtraction. Signed VERBATIM (the type elaborates; changing the carrier
-  is a statement change, not a stub adjustment) — but this is exactly §16 item 1's
-  wrong-but-well-typed hazard, now with a second, mechanically visible symptom: the ℕ-truncation
-  makes the inequality WEAKER than the ℤ statement the note claims (subtracting a truncated
-  quantity raises the right-hand side), so a fleet agent could prove the signed form and still not
-  have `(C2Q.1)`. **Needs a blueprint decision before H.72 fires.**
+* **D4 — H.72 `rate_lossPriced` IS FALSE (REFUTED, machine-checked; withdrawn, not signed).**
+  This is the node §16 item 1 calls *"the one node where a wrong statement would be invisible to
+  the stub gate"*. It is not invisible: it is refuted here.
+  1. *The refutation.* `stageIfaceE` (in the gate section) is a genuine `StageInterface (genreE2 0)
+     2 0 4` — genre E at `t = 0`, `stageWindow = 2`, `stageLoss = entryCodim = slack = 0`, all
+     eleven fields proved, `stageLoss = 0` being exactly the `EFF.GENIND.199` exemption §3's design
+     note invokes. At it, H.72's conclusion reads `4 ≥ 8`, and `example : ¬ (…) := by decide`
+     checks that. Had the axiom been signed, `rate_lossPriced stageIfaceE` would prove `False`.
+  2. *Not a one-point accident.* A sweep over five genre data × `N < 7` × `H < 5` × four side
+     lengths × `stageWindow`, `stageLoss`, `entryCodim`, `slack < 6`, filtered by `hS`/`hwin`/
+     `hprice` exactly as the structure imposes them, finds 29 418 counterexamples among 2 777 911
+     admissible configurations (independent Python sweep; the Lean gate re-runs a smaller grid).
+  3. *The diagnosis — WHICH terms of the `2*`-clearing are wrong.* Chain `hwin` and `hprice`
+     directly: multiply `hwin` by `2·f₁` to get `2·keyDeg·(N−1−H) ≤ 2·f₁·M_G + 2·f₁·Δ_G`, bound
+     `2·f₁·Δ_G` by `hprice`, then add `2·keyDeg·H + H` to both sides (using `S ≥ 2·keyDeg`, which
+     `hS` + H.33 give, so `(S − 2·keyDeg)` does not truncate). What comes out is
+     **CANDIDATE A: `2·(f₁·M_G) + (S+1)·H + 2·C_G^extra + 2·O_G ≥ 2·keyDeg·(N−1−H) + 2·keyDeg·H + H`**
+     — zero counterexamples on the whole sweep, and checked in the gate. The signed display is
+     Candidate A with **every term doubled EXCEPT the window term `2·(f₁·M_G)` and the lone `+H`**,
+     and with the slack moved to the right as a subtraction. So the `2*`-clearing was applied to
+     five of the seven terms. **CANDIDATE B** (Candidate A uniformly doubled:
+     `4·(f₁·M_G) + 2·(S+1)·H + 4·C + 4·O ≥ 4·keyDeg·(N−1−H) + 4·keyDeg·H + 2·H`) also has zero
+     counterexamples, so either repair is available; the blueprint must pick and re-derive
+     `(C2Q.1)` from `(CS-1Q.a)`+`(CS-1Q.b)` as its own SIGNATURE NOTE demands.
+  4. *Secondary, and now moot:* the docstring's claim that the inequality is *"stated over `ℤ` so
+     no `ℕ`-truncation can hide a sign"* is false of the signed type — every term is `ℕ`. But the
+     truncation is NOT the cause of the falsity: the sweep with the slack moved to the left (no
+     truncation anywhere) fails at exactly the same 29 418 points.
 * **D5 — H.94 `A1Cell.prod` and `A1Cell.deltaSubst` are `def`s with NO body in the SIGNATURE
   block** (the same class as chapter G's D2, `CubicFamilyIndex.schema`). The PROOF field describes
   `prod` completely (`Fin.append` on the four vectors, `+` on the constants, `*` on the
@@ -137,7 +158,10 @@ signable**. Of those, one more is withdrawn HERE because the gate REFUTED it
   possibly-empty type. Contrast `GenreDatum`, which the chapter instantiates three times
   (`genreE2`, `genreA2witness`, `genreD2bwitness`) — exactly the chapter-G `CertFamily` discipline
   ("all the work sits in the instances"). Either the two claimed instances need signatures, or the
-  design note's claim needs withdrawing.
+  design note's claim needs withdrawing. **Partly closed here:** this file constructs
+  `stageIfaceE : StageInterface (genreE2 0) 2 0 4` (gate section) — so the structure is inhabited
+  and its eleven fields are jointly satisfiable, which is also what makes D4's refutation bite. The
+  chapter still signs no instance of its own, and the genre-F instance §3 claims is still absent.
 * **(NOT a defect — recorded so the count reconciles.)** Two of the 190 signed types are NOT in
   their node's SIGNATURE block but in that node's ⚠ SIGNATURE NOTE, which is where the blueprint
   cures its own two declared defects: H.54's `stageLift'` (line 3413) and H.97's
@@ -941,12 +965,23 @@ TRUNCATED. Signed verbatim anyway (the type elaborates); see D4 in the header. T
 §16 item 1 names as invisible to the stub gate, and the ℕ/ℤ carrier mismatch is the part of it that
 IS visible. -/
 
-/-- **(C2Q.1)** — the loss-priced stage-drain exponent, in the `2*`-cleared form.  The conclusion's
-exponent inequality is stated over `ℤ` so no `ℕ`-truncation can hide a sign. -/
-axiom rate_lossPriced {G : GenreDatum} {N H S : ℕ} (I : StageInterface G N H S) :
-    2 * (G.f₁ * I.stageWindow) + 2 * ((S + 1) * H) + 2 * (2 * I.entryCodim)
-      ≥ 2 * (2 * G.keyDeg * (N - 1 - H)) + 2 * (2 * G.keyDeg * H) + H
-        - 2 * (2 * I.slack)
+-- **DEFECT D4 — REFUTED, THEREFORE NOT SIGNED** (the `G.23a` precedent again; and signing it would
+-- make this file's axiom set INCONSISTENT — see the machine-checked refutation in the gate section,
+-- which derives the false `4 ≥ 8` from a genuine `StageInterface` witness).  The blueprint's H.72 is
+--
+--   /-- **(C2Q.1)** — the loss-priced stage-drain exponent, in the `2*`-cleared form.  The
+--   conclusion's exponent inequality is stated over `ℤ` so no `ℕ`-truncation can hide a sign. -/
+--   theorem rate_lossPriced {G : GenreDatum} {N H S : ℕ} (I : StageInterface G N H S) :
+--       2 * (G.f₁ * I.stageWindow) + 2 * ((S + 1) * H) + 2 * (2 * I.entryCodim)
+--         ≥ 2 * (2 * G.keyDeg * (N - 1 - H)) + 2 * (2 * G.keyDeg * H) + H
+--           - 2 * (2 * I.slack)
+--
+-- and it is FALSE.  Smallest witness (genre E at `t = 0`, i.e. `(Q,e₁,f₁,μ,h) = (2,2,1,2,1)`,
+-- `N = 2`, `H = 0`, `S = 4`, `stageWindow = 2`, `stageLoss = entryCodim = slack = 0`): all of
+-- `hS` (`4 ≤ 4`), `hwin` (`2·(2−1−0) = 2 ≤ 2+0`) and `hprice` (`0 ≤ 0`) hold, LHS `= 4`,
+-- RHS `= 8`.  The instance is CONSTRUCTED in the gate section (`stageIfaceE`), so this is a
+-- machine-checked refutation, not a numerical suspicion.  See D4 in the header for the diagnosis
+-- (which terms of the `2*`-clearing were missed) and the verified candidate repair.
 
 /-! ## §11 — THE σ DICTIONARY AND THE `(e, f)`-FORCING CHAIN (`μ = 2` ONLY) (H.73–H.79) -/
 
@@ -1625,6 +1660,89 @@ the chapter's decidable arithmetic is true on the grid. -/
     (List.all (R 3) fun i => List.all (R 9) fun a => i * 2 + 3 * a != 1)
   chk "H.12 occupied_zero_genreD2bwitness" (0 * 1 + 1 * 0 == 0)
   IO.println "CHAP-H ARITHMETIC GATE: 66 signed ℕ/ℤ statements brute-forced on a grid — all PASS (H.89 band_not_consulted excluded as REFUTED, D8)"
+
+/-! ### THE H.72 REFUTATION, MACHINE-CHECKED — and the `StageInterface` witness F2 asks for
+
+Two artifacts the blueprint does not have. `stageIfaceE` is a genuine `StageInterface` instance (F2:
+the chapter exhibits none, though §3's design note claims two), at genre E with `stageLoss = 0` — the
+`EFF.GENIND.199` exemption the design note names. Instantiating H.72's signed inequality at it gives
+`4 ≥ 8`, so H.72 is FALSE as signed (DEFECT D4) and is withdrawn above rather than signed. -/
+
+/-- A genuine `StageInterface` instance: genre E at `t = 0` (`(Q,e₁,f₁,μ,h) = (2,2,1,2,1)`), window
+`N = 2`, entry height `H = 0`, side length `S = 4`, `stageLoss = 0`. This is the non-vacuity witness
+F2 records as missing from the chapter; it also makes the H.72 refutation below a statement about a
+NON-EMPTY hypothesis. -/
+def stageIfaceE : StageInterface (genreE2 0) 2 0 4 where
+  stageWindow := 2
+  stageLoss := 0
+  entryCodim := 0
+  slack := 0
+  bracket := fun κ => 2 ^ (2 * κ - 1)
+  drainFrac := fun _ => 0
+  stageSigma := stageSigma (genreE2 0) .ram
+  hS := by decide
+  hwin := by decide
+  hprice := by decide
+  hbracket := by
+    intro κ hκ
+    have hc : (clusterC (genreE2 0).μ + 1) * κ = 2 * κ - 1 + 1 := by
+      simp [clusterC, genreE2]
+      omega
+    have hsc : (genreE2 0).stageCard = 2 := by decide
+    rw [hc, hsc, pow_succ]
+    ring
+  hdrain_nonneg := by intro M; norm_num
+  hdrain_le_one := by intro M; norm_num
+  hsigma := by intro _; decide
+
+/-- **H.72 `rate_lossPriced` IS FALSE.** Its conclusion, instantiated at `stageIfaceE`, is `4 ≥ 8`.
+Had the axiom been signed, `rate_lossPriced stageIfaceE` would have proved `False` and every
+`example` in this file would have become vacuous — which is why it is withdrawn, not signed. -/
+example : ¬ (2 * ((genreE2 0).f₁ * stageIfaceE.stageWindow) + 2 * ((4 + 1) * 0)
+      + 2 * (2 * stageIfaceE.entryCodim)
+    ≥ 2 * (2 * (genreE2 0).keyDeg * (2 - 1 - 0)) + 2 * (2 * (genreE2 0).keyDeg * 0) + 0
+      - 2 * (2 * stageIfaceE.slack)) := by decide
+
+/-- The candidate repair (D4's CANDIDATE A) at the same witness: `4 ≥ 4`. -/
+example : 2 * ((genreE2 0).f₁ * stageIfaceE.stageWindow) + (4 + 1) * 0
+      + 2 * stageIfaceE.entryCodim + 2 * stageIfaceE.slack
+    ≥ 2 * (genreE2 0).keyDeg * (2 - 1 - 0) + 2 * (genreE2 0).keyDeg * 0 + 0 := by decide
+
+/-! The same two facts as a SWEEP over the `StageInterface` field data, so the refutation is not a
+one-point accident and the repair is not a one-point coincidence. `hS`/`hwin`/`hprice` are imposed
+as filters exactly as the structure imposes them (`(S - 2·keyDeg)` truncated, as written). -/
+#eval show IO Unit from do
+  let chk (name : String) (b : Bool) : IO Unit :=
+    unless b do throw (IO.userError s!"H.72 SWEEP FAILURE: {name}")
+  -- (Q, e₁, f₁, μ, h) tuples: genre E (two slopes), the A2 witness, the D2b witness, a q = 3 datum
+  let data : List (ℕ × ℕ × ℕ × ℕ) := [(2,1,2,1), (2,1,2,3), (3,1,2,2), (1,2,2,1), (2,2,2,1)]
+  let mutBad := data.any fun (e₁, f₁, μ, _h) =>
+    let keyDeg := e₁ * f₁
+    let sideLen := e₁ * μ * f₁
+    (List.range 7).any fun N => (List.range 5).any fun H =>
+      (List.range 4).any fun dS => (List.range 6).any fun win =>
+        (List.range 6).any fun loss => (List.range 5).any fun ec =>
+          (List.range 5).any fun sl =>
+            let S := sideLen + dS
+            (e₁ * (N - 1 - H) ≤ win + loss) &&
+            (2 * (f₁ * loss) ≤ 2 * ec + (S - 2 * keyDeg) * H + 2 * sl) &&
+            !(2 * (f₁ * win) + 2 * ((S + 1) * H) + 2 * (2 * ec)
+                ≥ 2 * (2 * keyDeg * (N - 1 - H)) + 2 * (2 * keyDeg * H) + H - 2 * (2 * sl))
+  chk "H.72 AS SIGNED is refuted somewhere in the sweep (expected: true)" mutBad
+  let repairOk := data.all fun (e₁, f₁, μ, _h) =>
+    let keyDeg := e₁ * f₁
+    let sideLen := e₁ * μ * f₁
+    (List.range 7).all fun N => (List.range 5).all fun H =>
+      (List.range 4).all fun dS => (List.range 6).all fun win =>
+        (List.range 6).all fun loss => (List.range 5).all fun ec =>
+          (List.range 5).all fun sl =>
+            let S := sideLen + dS
+            !((e₁ * (N - 1 - H) ≤ win + loss) &&
+              (2 * (f₁ * loss) ≤ 2 * ec + (S - 2 * keyDeg) * H + 2 * sl)) ||
+            (2 * (f₁ * win) + (S + 1) * H + 2 * ec + 2 * sl
+              ≥ 2 * keyDeg * (N - 1 - H) + 2 * keyDeg * H + H)
+  chk "H.72 CANDIDATE A holds on the whole sweep" repairOk
+  IO.println "CHAP-H H.72 SWEEP: signed form REFUTED, candidate repair HOLDS"
 
 /-! H.99(iii): non-vacuity of the schema layer — the three witness data elaborate. -/
 #check (genreE2 0 : GenreDatum)
