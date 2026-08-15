@@ -1220,6 +1220,396 @@ deriving depth-monomiality from this node alone is the defect the R2-1 withdrawa
 **ENVIRONMENT.** ENV-D2 + ENV-D3.
 
 ---
-<!-- RESUME: §4 through D.20 committed; next = D.21–D.28 -->
+### NODE D.21 [lemma] [fresh]
+
+**STATEMENT.** *`(C1-level-2)`: the level-2 letter in level-1 letters.* With
+`π₂ := x^{ℓ₁}π^{ℓ′₁}` where `ℓ₁·h + ℓ′₁·e₁ = 1`, `0 ≤ ℓ₁ < e₁` (i.e. `ℓ₁ = iexp e₁ h 1`,
+`ℓ′₁ = aexp e₁ h 1` — D.13 at `k = 1`), the level-1 ratio
+`ρ₁ = res(n̂₁(u₂)·π₂^{−u₂})` evaluates to `η^{−⌊ℓ₁u₂/e₁⌋}`; hence by D.20's factorization
+`z₂ = η₂ · z₁^{−⌊ℓ₁u₂/e₁⌋}` (`z₁ = η`, `(C1-base-letter)`).
+
+**SIGNATURE.**
+```lean
+theorem levelOne_rho (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁)
+    {K : Type*} [Field K] (η : Kˣ) (u₂ : ℤ) (hu : 0 ≤ u₂) :
+    (levelOneArena e₁ h he hcop η).res
+      ⟨(levelOneSection e₁ h).n u₂ * ((varpiSection e₁ h).n u₂)⁻¹, by …⟩
+      = η ^ (-((iexp e₁ h 1 * u₂) / e₁))
+-- ⚠ here `varpiSection` is REUSED with `ϖ := π₂ = n̂₁(1)`: `π₂^{u₂}` is the `u₂`-th power of
+-- the height-1 normalizer, so the LHS is D.19's `chi` at `k = u₂` — the whole lemma is
+-- D.19 + the arithmetic identity `qexp e₁ h u₂ = ⌊ℓ₁u₂/e₁⌋` (with `ℓ₁ = i₀`), `zpow` form
+```
+
+**DEPENDS.** D.13, D.15, D.19, D.20.
+
+**PROOF.** 1. `π₂ = n̂₁(1)` by D.13 at `k = 1` (the corpus's `ℓ₁h + ℓ′₁e₁ = 1, 0 ≤ ℓ₁ < e₁`
+IS the exact-height spec at height 1). 2. D.19 gives residue `η^{−qexp u₂}`. 3.
+`qexp e₁ h u₂ = (i₀u₂ − iexp u₂)/e₁ = ⌊i₀u₂/e₁⌋` since `iexp u₂ = i₀u₂ − e₁⌊i₀u₂/e₁⌋`
+(D.13's reduction, the `EFF.T1.06` derivation "`i(u) = ℓ₁u − e₁⌊ℓ₁u/e₁⌋`"). 4. The `z₂`
+display is D.20 applied at the stage triple — recorded as the named corollary in the same
+file.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.T1.06` (the boxed `(C1-level-2)` `z₂ = η₂z₁^{−⌊ℓ₁u₂/e₁⌋}` + its
+derivation); `EFF.T1.31` SPAN PIN 1 (the A7 GENTOW2 pin is this display verbatim — the
+OUT-interface: chapter C's GENTOW2 layer consumes this node by name).
+
+**TEETH.** T1 §7 attacks 1 and 8 → §12; the GENTOW2 `S5.1` consumer pin (grep count 42) →
+the statement-level edge recorded at §11.
+
+**ENVIRONMENT.** ENV-D1 + ENV-D3.
+
+---
+
+### NODE D.22 [lemma] [fresh]
+
+**STATEMENT.** *`(C4-origin)`: the modular-origin comparison.* For `e ℓ β : ℤ` with `e > 0`
+and a unit `z : Kˣ` (any group element — stated over `CommGroup`): put
+`s_min(β) := (ℓ·β) % e`, `t_min(β) := (ℓ·β − s_min(β))/e`, `ε(β) := z^{−t_min(β)}`. If
+`s_act = s_min(β) + ν·e` with `ν : ℕ`, and `t_Def := (s_act − ℓ·β)/e`, then
+`z^{t_Def} = z^ν · ε(β)`, i.e. `ε(β) = z^{t_Def − ν}`; and **raw equality
+`z^{t_Def} = ε(β)` holds exactly when `z^ν = 1`** — "it holds in particular when `ν = 0`"
+(the exact root-of-unity criterion, `EFF.T1.32`'s "JA-EPS-CORR is absorbed verbatim in (C4),
+including the exact root-of-unity criterion `z^ν = 1`").
+
+**SIGNATURE.**
+```lean
+theorem c4_origin {G : Type*} [CommGroup G] (z : G) (e ℓ β : ℤ) (he : 0 < e)
+    (ν : ℕ) (s_act : ℤ) (hs : s_act = (ℓ * β) % e + ν * e) :
+    z ^ ((s_act - ℓ * β) / e) = z ^ (ν : ℤ) * z ^ (-((ℓ * β - (ℓ * β) % e) / e))
+-- sibling (public, same file): `c4_origin_raw_iff : z ^ t_Def = ε(β) ↔ z ^ (ν : ℤ) = 1`
+```
+
+**DEPENDS.** none beyond mathlib `Int.emod_emod_of_dvd`/`Int.ediv` arithmetic + `zpow` laws.
+
+**PROOF.** "Substitute `s_act = s_min + νe` into `t_Def = (s_act − ℓβ)/e` to obtain
+`t_Def = ν − t_min`, then exponentiate by `z`" (`EFF.T1.16`, verbatim). In Lean:
+`t_Def = ν − t_min` by `omega`-grade `Int` division arithmetic (the divisions are exact:
+`e ∣ ℓβ − s_min` by `Int.emod`, `e ∣ s_act − ℓβ` from `hs`); then `zpow_add`/`zpow_neg`. The
+iff: cancel `ε(β)`.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.T1.16` (the boxed `(C4-origin)` + the raw-equality clause); `EFF.T1.29`
+(the A5 pin `z^{t_Def} = z^ν ε(β)` — the GENTOW-4.1(c)/S3 gauge input: OUT-interface to
+chapter C).
+
+**TEETH.** T1 §4.2 check 3; §7 attacks 1 and 6 → Lean theorem (this node) + §12.
+
+**ENVIRONMENT.** ENV-D2 (`z` in any `CommGroup` — the corpus's `z ∈ K^×` instance follows).
+
+---
+
+### NODE D.23 [lemma] [fresh]
+
+**STATEMENT.** *`(C4-support)`: support transport under the JA conjugation.* Let `K` be a
+field and `H P Q : K[y]` nonzero with — **the inline hypothesis `(H-JA-RES-CONJ)`, exactly
+the corpus's supplier interface, never proved here** — `H = y^ν * Q` and `P = C a * Q.comp (C b * y)`
+for units `a b : Kˣ`. Then `H.support = ν + P.support` (as sets/`Finset`s, elementwise shift)
+and `H.natDegree = P.natDegree + ν`. "Neither the polynomial identities nor their support
+consequences follow from `(C4-origin)` alone" — the two C4 lemmas are deliberately separate
+nodes with separate hypotheses.
+
+**SIGNATURE.**
+```lean
+theorem c4_support {K : Type*} [Field K] {H P Q : Polynomial K} (hH : H ≠ 0) (hQ : Q ≠ 0)
+    (a b : Kˣ) (ν : ℕ)
+    (hHQ : H = Polynomial.X ^ ν * Q)
+    (hPQ : P = Polynomial.C (a : K) * Q.comp (Polynomial.C (b : K) * Polynomial.X)) :
+    H.support = P.support.map (addLeftEmbedding ν)
+    ∧ H.natDegree = P.natDegree + ν
+```
+
+**DEPENDS.** mathlib `Polynomial.support_C_mul` (unit), `Polynomial.natDegree_comp`,
+`Polynomial.support_X_pow_mul` — names verified at stub time.
+
+**PROOF.** "Multiplication by `y^ν` translates support; multiplication by a unit and
+substitution by a unit preserve it" (`EFF.T1.17`, verbatim). 1. `Supp(y^ν Q) = ν + Supp Q`.
+2. `Supp(C a · Q.comp(C b · y)) = Supp Q`: coefficientwise, `coeff j ↦ a·b^j·coeff j`, a unit
+multiple per degree. 3. Degrees add.
+
+**SIZE.** 28 lines.
+
+**SOURCE.** `EFF.T1.17` (the boxed `(C4-support)`, the named `(H-JA-RES-CONJ)` hypothesis
+displayed, the non-consequence fence — "sole live C4-support after R2-2/R12-5/R13-2").
+
+**TEETH.** T1 §4.2 check 3; §7 attacks 1 and 6 → Lean theorem (this node); the R2-2
+withdrawal (the UNFENCED base support claim) is the mutation this node's explicit
+hypothesis kills.
+
+**ENVIRONMENT.** ENV-D3.
+
+---
+
+### NODE D.24 [def] [fresh]
+
+**STATEMENT.** *`(C6-lift)`: the exact lift, point-free.* Over the bundle (`ENV-D4`), for
+`e₁ h f₁ : ℕ`, a residue section `σ : ResidueField O → O` (with `residue ∘ σ = id`,
+`σ 0 = 0` — hypotheses of the property lemmas, not of the def), a height `M : ℕ` and a
+coordinate vector `λ : Fin f₁ → ResidueField O`:
+
+`liftC6 e₁ h σ M λ := Σ_{r : Fin f₁} C (σ (λ r) * π ^ (aexp e₁ h M − r·h).toNat) * X ^ (iexp e₁ h M + e₁·r)`
+
+— the corpus's `L_M(λ) = Σ_r λ̃_r x^{i(M)+e₁r} π^{a−rh}` on coordinates in the basis
+`1, η, …, η^{f₁−1}` (`EFF.T1.20`). The `ξ`-evaluation clause `(C6-residue)` is transcribed
+point-free at D.26 (`γ ∘ L = id` on coordinates); the tower-point/embedding form is chapter
+C's carrier (§4 design note).
+
+**SIGNATURE.**
+```lean
+noncomputable def liftC6 (e₁ h : ℕ) (σ : ResidueField O → O) (M : ℕ)
+    (l : Fin f₁ → ResidueField O) : Polynomial O :=
+  ∑ r : Fin f₁,
+    Polynomial.C (σ (l r) * π ^ (aexp e₁ h M - r * h).toNat)
+      * Polynomial.X ^ (iexp e₁ h M + e₁ * r)
+```
+
+**DEPENDS.** D.13.
+
+**PROOF.** definitional. (`(aexp M − rh).toNat` is exact on the live domain `M > D′h` —
+D.25 proves `0 ≤ aexp M − rh` there; below the live domain the def is junk and NO lemma
+reads it: "A full integral `K₁`-digit slot is asserted below only on the proved live domain
+`k > D′h`. No full `K₁`-slot is asserted at `k ≤ D′h`" — `EFF.T1.01`, transcribed as the
+absence of any sub-domain lemma.)
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.T1.20` (the boxed `(C6-lift)` with the fixed residue section
+`σ : F_Q → Ô`, `res(σ(a)) = a`, `σ(0) = 0`); `EFF.T1.30` (the A6/GENTOW6 lift pin is this
+display + D.25's support clause).
+
+**TEETH.** T1 §4.2 checks 1, 7, 10 → D.25 + gates.
+
+**ENVIRONMENT.** ENV-D4 (+ `f₁` as a section variable; no `Finite` instance — nothing
+counts).
+
+---
+
+### NODE D.25 [lemma] [fresh]
+
+**STATEMENT.** *`(C6-lift)` properties on the live domain.* Under `hσ : ∀ a, residue O (σ a) = a`,
+`hσ0 : σ 0 = 0`, `hπ : Irreducible π`, `he : 0 < e₁`, `hcop : Nat.Coprime h e₁`,
+`hf : 0 < f₁`, and the **live-domain hypothesis** `hM : e₁ * f₁ * h < M`:
+
+1. **integrality exponents:** `∀ r : Fin f₁, 0 ≤ aexp e₁ h M − r·h` (so D.24's `toNat` is
+   exact) and **degree:** `(liftC6 …).natDegree < e₁ * f₁` (`= D′`);
+2. **exact height** (`λ ≠ 0`): `suppVal X (liftC6 e₁ h σ M l) h e₁ = (M : ℕ∞)` — the
+   `(u,ℓ) = (h,e₁)` cleared support value IS the corpus's `dv₁` (chapter B's B.14 at
+   `φ = X`); and `liftC6 … 0 = 0` (empty support, valuation `⊤`);
+3. **x-support:** `(liftC6 …).support = {iexp M + e₁·r : r < f₁, l r ≠ 0}` (the A6/GENTOW6
+   support pin, `EFF.T1.30`);
+4. **x-free criterion `(C6-x-free)`** (`l ≠ 0`): `liftC6 …` is a monomial in `π` alone
+   (`natDegree = 0` with a single support point `0`) **iff** `iexp e₁ h M = 0` and
+   `∀ r ≠ 0, l r = 0`.
+
+**SIGNATURE.**
+```lean
+theorem liftC6_spec (e₁ h f₁ : ℕ) (hπ : Irreducible π) (he : 0 < e₁) (hf : 0 < f₁)
+    (hcop : Nat.Coprime h e₁) (σ : ResidueField O → O)
+    (hσ : ∀ a, IsLocalRing.residue O (σ a) = a) (hσ0 : σ 0 = 0)
+    (M : ℕ) (hM : e₁ * f₁ * h < M) (l : Fin f₁ → ResidueField O) (hl : l ≠ 0) :
+    (liftC6 (O := O) (π := π) e₁ h σ M l).natDegree < e₁ * f₁
+    ∧ Uniformity.Density.Leaf.suppVal Polynomial.X (liftC6 e₁ h σ M l) h e₁ = (M : ℕ∞)
+-- clauses 3–4 are sibling public lemmas `liftC6_support`, `liftC6_xfree` in the same file
+-- (SPLIT MANDATED → 2: `D25a` = clauses 1–2, `D25b` = clauses 3–4)
+```
+
+**DEPENDS.** D.13, D.24 · B.07/B.08 (`gaussVal`, `le_gaussVal_iff`), B.11 (`npHgt`), B.14
+(`suppVal`), B.15 (`npHgt_X`) · mathlib `Polynomial.natDegree_sum_le`-cluster.
+
+**PROOF.** The corpus's own four steps (`EFF.T1.20`'s derivation, verbatim in substance):
+1. `i + e₁r ≤ D′ − 1` and `a − rh ≥ 0`: from `M > D′h`, `iexp < e₁`, `r < f₁` — `omega`
+   after D.13's identity (`a·e₁ = M − ih > D′h − (e₁−1)h ≥ e₁(f₁−1)h` ⇒ `a ≥ (f₁−1)h + 1`
+   when `h > 0`; the `h = 0` degenerate is excluded by `hcop` + `hM` arithmetic — the stub
+   checks this corner: `h ≥ 1` per `EFF.T1.01`'s carrier, carried as a hypothesis if `omega`
+   needs it. ⚠ carry `hh : 0 < h` explicitly — flagged for the cross-read, §13 item 6).
+2. Exact height: every present term has `(h,e₁)`-weight `e₁·(a−rh) + h·(i+e₁r) = ae₁+ih = M`
+   exactly (nonzero coefficient representatives are units: `hσ` + `residue`-unit criterion);
+   distinct `x`-exponents (distinct `r` give distinct `i+e₁r < D′`) prevent cancellation —
+   coordinatewise, no `ι_θ` needed (the point-free payoff).
+3. Support: the same distinctness.
+4. x-free: "Distinct nonnegative `x` exponents prove the x-free equivalence" — the single
+   support point is `iexp M + e₁r₀` for the unique nonzero coordinate; it is `0` iff
+   `iexp M = 0 ∧ r₀ = 0`.
+
+**SIZE.** 55 lines. **SPLIT MANDATED → 2** (D25a/D25b as in the SIGNATURE).
+
+**SOURCE.** `EFF.T1.20` (all four boxed clauses + derivation); `EFF.T1.30` (the A6 support
+display `Supp_x L_M(λ) = {i(M)+e₁r : λ_r ≠ 0}` and the zero/nonzero split); `EFF.T1.25`
+(A1 row 1: `GENHN-LIFT` is "**Verbatim** on `M > D′h`: same component formula, integrality,
+degree, exact height, and residue" — the OUT-interface: this node + D.26 are what
+`GENHN-LIFT` consumers get).
+
+**TEETH.** T1 §4.2 checks 1, 7, 10 → **Lean theorem** (this node); the A1/A6 consumption
+regressions → §12 (retained; PARI-side).
+
+**ENVIRONMENT.** ENV-D4.
+
+---
+
+### NODE D.26 [def+lemma] [fresh]
+
+**STATEMENT.** *`(C5-gamma)`, point-free, and `γ ∘ L = id`.* (i) The **normalized coordinate
+read**: for `A : Polynomial O`, a height `k : ℕ`, and `t : Fin f₁`, with `j := iexp e₁ h k + e₁·t`
+and `w := (k − j·h) / e₁ : ℤ` (the exact π-exponent making slot `j` height-`k`):
+`gammaCoord e₁ h f₁ k A t := if 0 ≤ w then digAt π w.toNat (A.coeff j) else 0` — B.21's
+digit at the height; the corpus's `res(a_{i+e₁t} π^{−(k−(i+e₁t)h)/e₁})` (junk `0` at `w < 0`,
+where the corpus's term "vanishes"; and slots `j ≥ D′` read the zero coefficient). The
+assembled `K₁`-element `γ_k(A) = Σ_t gammaCoord·η^t` is a two-line corollary for any carrier
+`(K₁, η, basis)` and is NOT a separate public name. (ii) **The residue identity, point-free
+`(C6-residue)`:** on the live domain, `gammaCoord e₁ h f₁ M (liftC6 e₁ h σ M l) t = l t` for
+every `t`.
+
+⚠ **What stays with chapter C:** the `ξ`-evaluation forms `(C5-normalizer-read)`
+`res(A(ξ)/n(k)(ξ)) = ι_ξ(γ_k(A))` and `(C5-varpi-read)` `res(A(ξ)/ϖ(ξ)^k) = ι_ξ(γ_k(A))·η_ξ^{−q(k)}`
+quantify over tower points with compatible embeddings (`res(ξ^{e₁}/π^h) = ι_ξ(η)`), a valued
+extension carrier `leanfinal` does not have (GC-7). They are the embedding interface
+`EFF.T1.18 [supplied-by: chapter C]`; the `η^{−q(k)}` factor is D.19's, so C's discharge is
+this node + D.19 + its own point carrier. The HE6 F-1 provenance ("normalized slot
+coefficients in LEMMA HE6-0″", grep count 1) rides the same placeholder.
+
+**SIGNATURE.**
+```lean
+noncomputable def gammaCoord (e₁ h f₁ : ℕ) (k : ℕ) (A : Polynomial O) (t : Fin f₁) :
+    ResidueField O :=
+  let j := iexp e₁ h k + e₁ * t
+  let w : ℤ := ((k : ℤ) - j * h) / e₁
+  if 0 ≤ w then Uniformity.Density.Leaf.digAt π w.toNat (A.coeff j) else 0
+
+theorem gammaCoord_liftC6 (e₁ h f₁ : ℕ) (hπ : Irreducible π) (he : 0 < e₁) (hh : 0 < h)
+    (hf : 0 < f₁) (hcop : Nat.Coprime h e₁) (σ : ResidueField O → O)
+    (hσ : ∀ a, IsLocalRing.residue O (σ a) = a) (hσ0 : σ 0 = 0)
+    (M : ℕ) (hM : e₁ * f₁ * h < M) (l : Fin f₁ → ResidueField O) (t : Fin f₁) :
+    gammaCoord (π := π) e₁ h f₁ M (liftC6 e₁ h σ M l) t = l t
+```
+
+**DEPENDS.** D.13, D.24, D.25 (clause 1's exponent facts) · B.21 (`digAt`), B.22 (`digAt_eq`,
+`digAt_eq_zero_iff`).
+
+**PROOF.** 1. The coefficient of `X^{iexp M + e₁t}` in `liftC6` is the single summand
+`σ(l t)·π^{aexp M − th}` (distinct exponents, D.25 step 3). 2. The slot exponent:
+`(M − (iexp M + e₁t)h)/e₁ = aexp M − th` — exact by D.13's identity (`omega`). 3.
+`digAt π (aexp M − th) (σ(l t)·π^{aexp M − th}) = residue (σ (l t)) = l t` — B.22's
+`digAt_eq` + `hσ`. This is the corpus's "Direct division turns each tying term into its
+normalized coefficient residue" (`EFF.T1.18`), run on coordinates.
+
+**SIZE.** 40 lines. Split candidate (def / theorem).
+
+**SOURCE.** `EFF.T1.18` (the boxed `(C5-gamma)`; the two read displays → the ⚠ interface);
+`EFF.T1.20` (`(C6-residue)` — this is its point-free content); `EFF.T1.30` (A6: "C5-gamma
+and its two reads prove the scalar pin" — the GENTOW-6.3 OUT-interface).
+
+**TEETH.** T1 §4.2 check 4; §7 attack 2 → **Lean theorem** (the identity); the `ξ`-read
+half → chapter-C placeholder, recorded in §11's edges.
+
+**ENVIRONMENT.** ENV-D4.
+
+---
+
+### NODE D.27 [lemma] [fresh]
+
+**STATEMENT.** *The A2/HETOW consumption check — T1's side of it.* The T1-side content of
+`EFF.T1.26`'s effective check "`(H-HETOW-LOCAL)` + `(C5-monomial-ratio)` + `(C5-carry)` ⟹
+the three pinned HETOW displays" is the **binary-carry composite law**: for `a b u₂ : ℤ` and
+a carry bit `c₂ ≤ 1`:
+`qexp (a + b − c₂·u₂) = qexp a + qexp b + wrap a b − c₂·(qexp u₂ + wrap (a + b − c₂·u₂) u₂)`
+— "Two applications of C5-carry in the two binary cases" (`EFF.T1.26`'s derivation,
+verbatim). The first two pinned displays are D.19 verbatim (the monomial ratio and its
+residue); the third pin's exponent is this law read through the supplier's identification.
+**The supplier interface** — the level-two bridge `n̂₂(k)/n₂(k) = n̂(m(k))/ϖ^{m(k)}`, the
+function `m`, `0 ≤ s(a) < e₂`, `c₂ᴴᴱᵀ = ⌊(s(k)+s(k′))/e₂⌋ ∈ {0,1}`, and the identification
+of `τ` — is `(H-HETOW-LOCAL)`, "external and essential": `EFF.HETOW [supplied-by: chapter C]`;
+this node does NOT state it, and the assembled three-display conclusion is chapter C's to
+fire with this node + D.19 as the T1 legs. Non-import transcribed: "T1 does not absorb
+HETOW-4(c)–(d). The side-assembly brackets, telescoping coefficient identity, side-letter
+equality, routing transport, and common refinement polynomial remain HETOW/HE7 supplier
+conclusions."
+
+**SIGNATURE.**
+```lean
+theorem qexp_binary_carry (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁)
+    (a b u₂ : ℤ) (c₂ : ℕ) (hc : c₂ ≤ 1) :
+    qexp e₁ h (a + b - c₂ * u₂)
+      = qexp e₁ h a + qexp e₁ h b + wrap e₁ h a b
+        - c₂ * (qexp e₁ h u₂ + wrap e₁ h (a + b - c₂ * u₂) u₂)
+```
+
+**DEPENDS.** D.14, D.15.
+
+**PROOF.** `interval_cases c₂`. Case `c₂ = 0`: D.15. Case `c₂ = 1`: apply D.15 to the pair
+`(a+b−u₂, u₂)` (whose sum is `a+b`) and to `(a,b)`; solve the linear system (`omega`).
+
+**SIZE.** 18 lines.
+
+**SOURCE.** `EFF.T1.26` (the three pinned displays, the boxed effective check, the supplier
+interface `0 ≤ s(a) < e₂`, `c₂ᴴᱟᵀ ∈ {0,1}`, the binary-carry conditionality "the linear
+carry formula is asserted only for the binary carry", and the HETOW-4(c)–(d) non-import).
+
+**TEETH.** T1 §7 attacks 5 and 8 → §12; the third-pin display itself → chapter-C placeholder
+edge (§11).
+
+**ENVIRONMENT.** ENV-D1.
+
+---
+
+### NODE D.28 [lemma] [fresh]
+
+**STATEMENT.** *`(C3-level-1-key)` — the A3 pin, and the naive/corrected comparison.* Fix a
+carrier `(K₁, η)` with an `F`-basis `b : Basis (Fin f₁) F K₁`, `b r = η^r` (the corpus's
+fixed basis `1, η, …, η^{f₁−1}`, `EFF.T1.01`), `F := ResidueField O`. For a slot `t < f₂`
+with `M_t := (f₂−t)·u₂ > D′h` and a digit `c_t : F ⊆ K₁`:
+
+1. the **corrected level-1 coefficient** is `k̂_t := liftC6 e₁ h σ M_t (b.repr (c_t • η^(Wfloor …)))`
+   — the corpus's `k̂_t = L_{M_t}(c_t η^{W(t)})` on coordinates; `c_t ≠ 0 ⇒` exact height
+   `M_t` (D.25), `c_t = 0 ⇒ k̂_t = 0` with valuation `⊤` (`hσ0` + `b.repr 0 = 0`) — the A3
+   zero branch;
+2. the **multiplicative coefficient is exactly `c_t`**: `(c_t·η^{W(t)})·η^{−W(t)} = c_t` —
+   in `K₁ˣ`-form, `Γ_t · ((levelOneArena …).vartheta u₂ (f₂−t))⁻¹ = c_t` by D.18 (the A3
+   display `c^mult = Γ_t η^{−W(t)} = c_t`);
+3. **naive/corrected agreement in slot `t` iff `c_t·(ϑ_{1,f₂−t} − 1) = 0`** (`EFF.T1.13`'s
+   criterion — over the field: iff `c_t = 0 ∨ η^{W(t)} = 1`).
+
+**SIGNATURE.**
+```lean
+theorem levelOne_corrected_key (e₁ h f₁ f₂ : ℕ) (hπ : Irreducible π) …
+    {K₁ : Type*} [Field K₁] [Algebra (ResidueField O) K₁] (η : K₁ˣ)
+    (b : Basis (Fin f₁) (ResidueField O) K₁) (hb : ∀ r, b r = (η : K₁) ^ (r : ℕ))
+    (σ : ResidueField O → O) (hσ : …) (hσ0 : σ 0 = 0)
+    (u₂ : ℕ) (t : Fin f₂) (hM : e₁ * f₁ * h < (f₂ - t) * u₂) (c : ResidueField O) :
+    (c ≠ 0 → Uniformity.Density.Leaf.suppVal Polynomial.X
+        (liftC6 e₁ h σ ((f₂ - t) * u₂)
+          (b.repr (algebraMap _ K₁ c * (η : K₁) ^ Wfloor e₁ h u₂ f₂ t))) h e₁
+        = (((f₂ - t) * u₂ : ℕ) : ℕ∞))
+    ∧ (c = 0 → liftC6 e₁ h σ ((f₂ - t) * u₂)
+        (b.repr (algebraMap _ K₁ c * (η : K₁) ^ Wfloor e₁ h u₂ f₂ t)) = 0)
+-- clauses 2–3 are sibling public lemmas (`levelOne_cmult`, `levelOne_naive_agree_iff`)
+```
+⚠ Fragile signature (Basis + repr + algebraMap stack) — elaborate FIRST (§12).
+
+**DEPENDS.** D.16, D.18, D.24, D.25 · mathlib `Basis.repr`, `Finsupp` coercions.
+
+**PROOF.** 1. Clause 1 is D.25 at `l := b.repr (…)` (nonzero iff the element is nonzero —
+`Basis.repr` is a linear equiv; zero branch by `map_zero` + `liftC6`'s `hσ0`). 2. Clause 2:
+field algebra + D.18. 3. Clause 3: `c·(η^W − 1) = 0 ↔ c = 0 ∨ η^W = 1` in a field
+(`mul_eq_zero`, `sub_eq_zero`).
+
+**SIZE.** 45 lines.
+
+**SOURCE.** `EFF.T1.13` (the boxed `(C3-level-1-key)`, "Its multiplicative coefficient is
+exactly `c_t`", the agreement criterion `c_t(ϑ_{i,f_{i+1}−t}−1) = 0`); `EFF.T1.27` (the A3
+block: both branches + `c^mult = Γ_t η^{−W(t)} = c_t`; "T1 **supplies the gauge input to**
+LEMMA GENTOW-1" — the OUT-interface, with `EFF.GENTOW1 [supplied-by: chapter C]` on the
+consumer side); `EFF.T1.28` (the A4 block: this node + D.25's x-free clause are "the
+corrected-key and x-free inputs to THEOREM GENTOW-3").
+
+**TEETH.** T1 §4.2 checks 1 and 2 → **Lean theorem** (this node); gauge-naive tooth → clause
+3 is the exact agreement criterion (the naive recipe is NOT a chapter object — only the
+criterion is); §7 attacks 2, 3, 8 → §12.
+
+**ENVIRONMENT.** ENV-D4 + the `(K₁, η, b)` carrier data.
+
+---
+<!-- RESUME: §4 COMPLETE (D.13–D.28); next = §5 (D.29–D.36, read bundle + B-law) -->
 
 <!-- CHAP-D APPEND POINT — do not remove; sections are appended here in order -->
