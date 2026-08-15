@@ -1,5 +1,6 @@
 import Uniformity
 import Leanspec.ChapG
+import Leanspec.ChapB
 /-!
 # leanspec — the isolated interface environment (design stage 0e)
 
