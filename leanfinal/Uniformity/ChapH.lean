@@ -97,5 +97,7 @@ import Uniformity.ChapH.H96
 import Uniformity.ChapH.H97
 import Uniformity.ChapH.H98
 import Uniformity.ChapH.H99
+import Uniformity.ChapH.H09w
 
 /-! Chapter H roll-up — COMPLETE: 99/99 nodes landed 2026-08-15. -/
+/-! Plus `H09w`: the H.09 `StageInterface` non-vacuity witnesses (finding R3, §16 item 14). -/
