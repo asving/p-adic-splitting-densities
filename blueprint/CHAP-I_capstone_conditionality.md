@@ -1214,7 +1214,142 @@ policy (CLAUDE.md). **TEST.** registry match exact. **ENVIRONMENT.** ENV-I2.
 | **O-4** | the C.66 ⊂ C.92 FGMN-axiom subsumption choice (one axiom group or two) — affects I.25's registry | before the C stub gate signs |
 | **O-5** | the `n = 3` frontier package (HYP.08/09/11/28/29 + G's H-1 bridge) — a single post-blueprint unit brief exists implicitly across G/H; book it as the first post-fleet mathematics unit | orchestrator scheduling |
 
-<!-- RESUME: §§7–9 complete. Next: §10 DAG TSV, §11 leanspec, §12 TEETH, §13 cross-read. -->
+---
+
+## 10. DAG ADDITIONS
+
+Written to **`spec/DAG_BLUEPRINT_I.tsv`** in `dag_build.py`'s 9-column contract: **97 rows**,
+all endpoints exact (BP.I.\*, committed BP.{H,E,C}.\* node IDs, ledger `HYP.*`, the two `CAP:`
+nodes, the three `COND:` nodes, `EFF.*` placeholders for the D/F late-bindings, and landed
+`lean:*` nodes; landed declarations with no `lean:` node are carried in the evidence column —
+the CHAP-B H-9 mitigation). **Verified at composition: `python3 spec/dag_build.py &&
+python3 spec/dag_check.py` → `RESULT: PASS`** (3,045 nodes, 4,570 edges; the four
+pre-existing SCCs stay adjudicated; zero new cycles; the seven signed-out rows stay
+unreachable).
+
+Two recorded emission decisions:
+
+1. **The CAP-node double-edge is deliberately avoided.** `BP.I.02`'s statement is the slice
+   of the decided target; the CAP node's own out-edge is the assembly route
+   (`CAP:UniformityStatementDecided → BP.I.16`). Emitting both `BP.I.02 → CAP:…` and
+   `CAP:… → BP.I.16` manufactures a false 4-cycle (caught by the checker on the first build);
+   the statement-source edge therefore targets `lean:UniformityStatementDecided` (the landed
+   declaration node) and the decision is recorded in the row's evidence column.
+2. **No `HYP.* → BP.<other-chapter>.*` edges.** Supplier chapters emit their own discharge
+   edges (`BP.B.65 → HYP.14`, `BP.G.36 → HYP.27` precedents); this chapter emitting the
+   reverse direction would create 2-cycles. The §3 table is the durable record of
+   row-to-supplier bindings; the TSV carries only chapter-I-owned edges (from `BP.I.*`,
+   `COND:*`, and the two `CAP:` assembly-route rows).
+
+**Orchestrator note (PA-3(ii) pattern):** `spec/DAG.tsv`/`DAG_NODES.tsv` regeneration is the
+orchestrator's — this chapter's build/check run was verification-only and the regenerated
+shared files were NOT committed (parallel composers are live; D and F will add TSVs of their
+own; one re-run books all three).
+
+---
+
+## 11. LEANSPEC STUB LIST (stage 0e)
+
+Per GC-6.6: stubs wrap in **`namespace LeanspecI`**, one file `leanspec/Leanspec/ChapI.lean`
+(the ChapG retire-to-examples route is the recorded alternative; whichever the stub agent
+picks, say so in the file header). Gate order GC-6.6: (a) elaborate fragile signatures, (b)
+land `def` bodies, (c) run numeric blocks at `q = 2` AND `q = 3`, (d) sign `axiom` stubs;
+0e type-diff per declaration against the fully-qualified `leanfinal` twin.
+
+**Stub order (topological):** I.01, I.02, I.03, I.05, I.06, I.07 (defs; carrier layer) →
+I.10 (structure) → I.15–I.18 (theorems; land REAL, not axiom — their proofs are projections
+and term applications, provable at stub time modulo dependencies) → I.21 (def) → I.23–I.25
+(gates, per GC-6.6(c)).
+
+**BLOCKED-UNTIL-RESOLUTION (do NOT stub as signed):**
+
+| node | blocker | unblocks |
+|---|---|---|
+| I.01 (`NS7Termination` body) | C §5 descent-history types land at C's stub stage | C stub stage |
+| I.05 (`WindowPinningAt` body) | H.09 `StageInterface` stub lands | H stub stage (in progress — `ChapH/*.lean` landings visible at HEAD) |
+| I.06 (`GenhnHEAt` body) | H.01/H.09 stubs + the O-1 transcription decision | H stub stage + O-1 |
+| I.07 (`GenhnTow1At` body) | C.93's `#check`-suite names | C stub stage |
+| I.08/I.09 and I.10's `jd0`/`genhnBox2` fields | **chapter F freeze** (L-1/L-2) | F freeze — **a signed I.10 stub with `True` fields is a false conditionality claim; forbidden** (I.10's ⚠) |
+| I.16 (`decided_of_capstoneHypotheses`) | I.02's body must be the literal slice (else `exact` fails) | I.02 typed |
+| I.21 (`TypeOfFaithful` body) | the maximal-order carrier (B.56 IF fired, else the discharge unit's own) | orchestrator |
+
+**Numeric block (GC-6.6(c)) for this chapter:** gate I.23's anchors — the `q = 2` triple
+`(1/3, 1/3, 1/3)` and `q = 3` triple `(3/8, 3/8, 1/4)` from `gate_two_padic_*`, plus
+`undecidedCount O 2 N = q^N` spot values `(2,1)↦2, (2,3)↦8, (3,2)↦9`. Both primes ✓.
+
+---
+
+## 12. TEETH DISPOSITIONS (GC-8)
+
+**Chapter I has no source batteries** (GC-8's own battery-inheritance row: "I: no batteries —
+its teeth are the gate nodes"). The full disposition summary, in the closed vocabulary:
+
+| object | disposition |
+|---|---|
+| the landed `n ≤ 2` slices (drainage, mass, densities, the capstone slice) | **Lean theorem** (landed; re-fired by gate I.23 with the `q = 2`/`q = 3` anchors) |
+| the assembly theorems I.15–I.18 | **Lean theorem** (this chapter's contracts) |
+| the axiom surface (Lean core + signed cites only) | **executable regression retained**: AXCHK (I.24) + the cite-footprint gate (I.25), output committed under `spec/` |
+| the carrier defs I.01–I.10, I.21 | **signed non-applicability** (hypothesis carriers have no teeth ANYWHERE by design — "the fields with no teeth are exactly the capstone's conditionality", H.09's line, which is THIS chapter's organizing fact) |
+| GC-11's `e > 1 ∧ f > 1` witness clause at gate I.23 | **signed non-applicability at `n = 2`** (impossible at degree 2: `e·f = 2`); the witnesses live in B.85/C §13/E §10's gates, whose footprints I.24 re-prints on landing |
+| the `AllOInterfaces` conjunct | **signed non-applicability as a Lean field**, reconciled row-by-row at §4.3 (the GC-8 rider-(iii) check: every signed-vacuity row reconciles against Display A ✓) |
+| the grade-cap rows (HYP.45/89/109/144-BOX-4) | recorded as PROCESS rows in §3; no Lean object carries them |
+
+**The rider-(iii) sanity check, run:** Display A's conjunct list vs the signed-vacuity rows —
+the only Display-A content NOT carried as a typed Lean field is the `AllOInterfaces` conjunct
+(§4.3, signed) and the two late-binding F fields (placeholders with a forbidden-to-sign rule,
+§11). Nothing else on the frozen display lacks a carrier. ✓
+
+---
+
+## 13. FLAGGED FOR THE CODEX CROSS-READ (and for the orchestrator)
+
+1. **The §3 table is the chapter's load-bearing artifact — audit it row by row.** Charges:
+   (i) is any of the 154 rows mis-categorized (esp. the 62 NOT-ON-CAPSTONE-PATH rows — each
+   must have a verifiable reason code); (ii) is any OPEN-MATH row's "exact missing statement"
+   weaker than its ledger row; (iii) the census arithmetic (6+16+25+2+7+36+62 = 154).
+2. **The two supplier-gap findings (I-11, O-1/O-2).** Verify independently: (i) that NO
+   committed chapter transcribes THEOREM HE3.A at `μ = 3` beyond B's `e₁ = 1` shadow (grep
+   the four committed blueprints for `EFF.HE3.16`/`HE3.A`); (ii) that `EFF.GENHN.29`'s
+   cap/consultation clauses are consumed by committed H only at H.51's (c) bound.
+3. **HYP.07's discharge claim** (the cubic nonintegral-slope branch = B.42+B.58 at
+   `(ℓ, m, d) = (3, 1, 1)`, unconditional at `d = 1`): check the instance really needs no
+   `B-BOX-1` and that the recursion context supplies B.42's polygon hypotheses.
+4. **I.03's under-statement** (the exact-weights clause carried by the count layer, not the
+   menu carrier): confirm no consumer reads `MenuLawAt` as carrying weight-correctness.
+5. **I.10's `ladder` field quantifier** (ALL instantiations vs degree-`n`-arising ones): the
+   strongest uniform reading was chosen; check Display A's "assume uniformly in O" preamble
+   licenses it and that E.24's carrier types admit the quantification as written.
+6. **The NOT-ON-CAPSTONE-PATH treatment of HYP.78/79** (kept OPEN-MATH at `n ≥ 8`
+   conservatively) **and HYP.80** (likewise) — an audit could sign all three fully out; this
+   chapter chose the conservative reading. Either answer changes only the `n ≥ 8` box family's
+   size.
+7. **The CAP-edge emission decision (§10 item 1)** — confirm the checker-visible shape (CAP
+   nodes reach the assembly nodes, the assembly nodes reach the hypothesis rows) is the
+   intended reachability semantics for the capstone cone.
+8. **Gate I.24's location decision** (`leanfinal/AXCHK.lean` + pointer at `spec/`) — REVISION
+   2 says `spec/AXCHK.lean`; the deviation is recorded; orchestrator may override.
+9. **The stage display (I.20)** — the S3 row's "and nothing else" claim is checkable: it must
+   equal §3's OPEN-MATH ∪ CITE census exactly.
+10. **The late-binding resolution pass (§9, L-1..L-3)** is owed at D/F freeze — the recorded
+    orchestrator item; this chapter is INCOMPLETE by design until it runs (and says so).
+
+---
+
+## FINAL STATE
+
+All 25 nodes composed (§§4–8); the 154-row disposition table complete (§3, census
+reconciled); the three COND orphans resolved (§5); `spec/DAG_BLUEPRINT_I.tsv` emitted
+(97 rows; `dag_check.py` PASS at composition, regenerated shared files left uncommitted for
+the orchestrator's merge run); leanspec stub list with its blocked set (§11); TEETH summary
+(§12); cross-read queue (§13, 10 items). LATE-BINDING section §9 is explicitly open until
+chapters D and F freeze (items L-1/L-2/L-3). CODEX CROSS-READ OWED.
+
+<!-- RESUME: CHAPTER COMPLETE. Remaining external actions: (i) L-1/L-2/L-3 at D/F freeze;
+(ii) orchestrator items O-1..O-5 (§9.3); (iii) cross-read per §13; (iv) leanspec stub stage
+per §11; (v) orchestrator dag_build merge re-run. -->
+
+<!-- SENTINEL: BP-I END OF FILE -->
+
 
 
 
