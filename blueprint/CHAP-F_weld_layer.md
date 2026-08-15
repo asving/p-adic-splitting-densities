@@ -1744,7 +1744,250 @@ separate leg" (the spec's own disposition) — signed accordingly in §13.
 
 ---
 
-<!-- RESUME: §7 composed (F.19–F.26, DECISIONs D-F1/D-F2). Next: §8 (WELD-ZERO pending arc),
-§9 (handoff package F.27–F.28), §10 gates (F.29–F.30). -->
+## 8. §8 — THE WELD-ZERO PENDING ARC (no nodes; the recorded interface to a running unit)
+
+**Status of record (verified at HEAD, 2026-08-15 — the honesty F-2 findings, restated as
+this section's contract).** `HYP.149` (the GENHN-BOX-2 discharge route: gr(O_L) re-aim +
+GENTOW5-A0/A1) is **IN-PROGRESS at clean-pass 1 of 2**. Arc so far: composed 2026-08-14
+(commit `7aec45f1`) → r1 (one CRITICAL cured: WZ-3(ii)'s type-preservation claim withdrawn,
+re-routed through a relabelling bijection; J-D0 removed from the fold's supplier list; one
+GAP + eight minors cured) → the Opus-arm hostile pass (`runs/comp13/WZP2_output.log`,
+0C + 0G + 6 minors — clean pass 1) → pass 2 of 2 REASSIGNED from gpt-5.6-sol to Fable-max
+(append #56's pilot; its EOF line: "WELD-ZERO confirmation pass (pass 2 of 2) runs on
+Fable-max now") — **LAUNCHED, IN FLIGHT, no landing commit in the tree** (checked through
+append #61; `leanfinal/notes/` has no WELD-ZERO note; the unit note is
+`lean/notes/openmath/WELDZERO_2026-08-14.md`, status line "composed, attempt 0/2, hostile
+arc owed"). WELD-ZERO has **no effective spec** (`EXT:WELDZERO_2026-08-14.md`), so under
+GC-10 this chapter cannot transcribe its content even if it wished to.
+
+**What this chapter did and did not take from the arc.** Took: (i) the WZ-BOX-7 rule
+(honesty F-3) — a *negative* finding about frozen GENHN/GENH4 text, machine-witnessed,
+governing F's statement forms; (ii) the consumption-geography facts the GRTJC spec itself
+verified against WELDZERO's citations (W-9 consumed at GENHN S6.1 L874 only; clause (iv)
+not consumed) — these are facts about GENHN/GRTJC at HEAD, independently re-verified by the
+0a compiler, not WZ results. Did NOT take: any WZ lemma (WZ-1/WZ-2/WZ-B), the gr(L) graded-
+field frame, or the wrap-floor formula — those are the running unit's content.
+
+**What a LANDED second pass changes, and under whose authority.** If the Fable-max pass
+returns clean and the ledger books the arc (the 0b fold is the authority — a fleet agent or
+chapter author may not re-disposition rows): per HYP.148/139's own v4 notes, `HYP.148`
+(CARRY) retires and `HYP.139` (MATH) retires WITH it — "the replacement frame is gr(O_L),
+not an FGMN object, so the W-1 transport would no longer be consumed." F-side consequence,
+pre-authorized here so the later editor needs no fresh licence: a dated AMENDMENT block in
+this section converting F.11 (`GenhnBox2`) and F.12 (`W1Transport`) from carried hypotheses
+to DISCHARGE notes citing the WZ unit's landed statements, and re-checking F.26's FGMN cite
+(the WZ route bypasses the FGMN frame at layer 1 — the cite may then be needed only by
+GRTJC-internal mass, possibly lifting the gate-(b) item off the capstone path). Chapter I's
+corresponding conjunct fields move in the same fold. **Until then: HYP.148 CARRY, HYP.139
+MATH, both at full strength, and every §5 statement stands as written.**
+
+---
+
+## 9. §9 — THE CHAPTER-I HANDOFF PACKAGE
+
+**Section contract.** The terminal supply, packaged the way chapter I's Display-A block
+consumes it (the CHAP-E `LadderSupply`/`LadderObligations` pattern; noting, per the E
+precedent's own care, that these are plain structures — no claim of mirroring H.95's
+`def`-`Prop` kind).
+
+### NODE F.27 [def] [fresh]
+
+**STATEMENT.** *`WeldSupply` — the proved-supply record.* One structure bundling the data a
+consuming chapter (D's gauge layer; H's landed count layer; I's assembly) instantiates to
+use the weld layer's PROVED mathematics: a carry cocycle with its twisted algebra (F.07/
+F.08, laws F.09/F.10/F.13), a ledger junction with its Σ-property package (F.14, F.17), and
+the two criterion lemmas' inputs (F.23's `(z, A)` data; F.25's gauge pair). Everything in
+this record is either proved in F or carried by a named field — no hidden hypothesis.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- The weld layer's proved supply, as one record (chapter-I/D consumption surface). -/
+structure WeldSupply (E : ℕ) [NeZero E] (K : Type*) [Field K] (ι α : Type*) where
+  cc : CarryCocycle E K
+  J : LedgerJunction K ι α
+  hΣ : SigmaLedgerLaw J
+```
+
+**DEPENDS.** F.07, F.14, F.17.
+
+**PROOF.** definitional.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** assembly node (no corpus unit — the record packages §§5–7's named supply; the
+CHAP-E §2 "terminal supply" pattern).
+
+**FAITHFULNESS.** `hΣ` is the one carried field (F.17's C-side discharge pending GC-13);
+the rest instantiates from proved nodes.
+
+**TEETH.** none (packaging); the members' teeth are their own.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.28 [def] [fresh]
+
+**STATEMENT.** *`WeldObligations` — the carried-hypothesis block handed to chapter I.* One
+field per surviving Display-A weld obligation, at exactly ledger strength: (1) `jd0box2` —
+F.04's perimeter for each consumed site (the seven-site family abstracted as an index type);
+(2) `genhnBox2` — F.11's face for each `μ ≥ 3` carry site (chapter I indexes the conjunct by
+`n ≥ 6`); (3) `w1` — F.12's transport for the FGMN-framed sites. Annotations carried
+alongside (not Prop fields): the gate-(b) cite flag on F.26 (`[cite: FGMN Thm 4.2 via
+(IN-3)]`, owner sign-off at I's cite block); the `AllOInterfaces[W/J, J-D0]` generality
+conjuncts (HYP.126, HYP.129) — supplied STRUCTURALLY by F's statements being quantified over
+every finite `K`/every `O`, both characteristics, but the ledger rows and their conjunct
+fields remain chapter I's (F does not absorb them). **Per Part V, every field here
+terminates in I as a discharge node or a gate-(b) literature cite — no third category; §8
+names the one pending discharge route.**
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- The weld layer's carried obligations (chapter I's Display-A weld fields), at ledger
+strength. -/
+structure WeldObligations {K : Type*} [Field K] {Γ : Type*} [AddCommGroup Γ]
+    {Site CSite FSite : Type*}
+    (vsite : Site → ValueDictSite Γ K) (csite : CSite → CarrySite K)
+    (Rh RG : FSite → K) : Prop where
+  jd0box2 : ∀ s, JD0Box2 (vsite s)
+  genhnBox2 : ∀ s, GenhnBox2 (csite s)
+  w1 : W1Transport Rh RG
+```
+
+**DEPENDS.** F.04, F.11, F.12; annotations reference F.26 and HYP.126/HYP.129.
+
+**PROOF.** definitional.
+
+**SIZE.** 16 lines.
+
+**SOURCE.** Display A (the frozen v5 conjunct list: `JD0-BOX-2`, `(GENHN-BOX-2 if n≥6)`
+carrying HYP.139, `AllOInterfaces[… W/J … J-D0 …]`); HYP.74/148/139/126/129 (the strengths).
+
+**FAITHFULNESS.** `Prop`-valued structure (`: Prop where`) so it can sit inside I's
+hypothesis block without size issues; the site index types are parameters because the
+concrete site enumerations are other chapters' objects (GC-13). Nothing added, nothing
+dropped: the reconciliation check in §3 (Display-A footprint = exactly these + the
+generality rows) is this node's completeness certificate.
+
+**TEETH.** signed non-applicability (a hypothesis block; H.09's rule — §13).
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+## 10. §10 — GATES (GC-11: `q = 2` AND `q = 3`; `e > 1 ∧ f > 1`; the degeneracy and
+coincidence regimes exercised)
+
+**Arena note (the chapter's own coincidence traps, from F.06 and SL-INVREC).** Two
+degeneracies stalk this chapter's numerics: (i) over `F₂` the unit group is trivial — every
+character check silently passes (F.06); (ii) on involution geographies (`ξ² = 1`) the
+corrected Σ-map and the WRONG boxed map coincide — 468 sealed rows hid the defect that way.
+The gates therefore run character content at `q = 2` on **F₄** (units of order 3 —
+non-involution) and at `q = 3` on **F₉** (units of order 4/8 — non-involution) or `F₃`/`F₅`
+where the check is order-2-safe, and include the explicit `F₂`-triviality and
+involution-instance checks as NEGATIVE controls. `e > 1 ∧ f > 1`: `E = 2` (the coset group,
+e-side) with `K = F₄` over `F₂` and `K = F₉` over `F₃` (f = 2 both). Field constructions
+for the stub stage: `F₄ := AdjoinRoot (X² + X + 1 : (ZMod 2)[X])`, `F₉ := AdjoinRoot
+(X² + 1 : (ZMod 3)[X])` — fragile signatures (§12(a)); if `DecidableEq`/`Fintype` instances
+resist `decide`, the pre-authorized fallback is a private table-built field instance below
+the gate in the same file (never `native_decide` — the axiom census forbids it).
+
+### NODE F.29 [gate] [fresh]
+
+**STATEMENT.** *The twisted-algebra gate.* With the standard nontrivial 2-cocycle on
+`ZMod 2` (`c 1 1 = ζ`, else `1`; `δ 1 1 = 1`, else `0`), check, by `decide`/`norm_num`:
+1. the `CarryCocycle` fields hold — all 8 triples of the `Kˣ`-cocycle identity and all 8 of
+   the integer identity — at `(K, ζ) = (F₄, ω)` (`ω` a generator, order 3 — nontrivial
+   cocycle at `q = 2`) AND `(K, ζ) = (F₃, 2)` (`q = 3`);
+2. `Nat.card (TwistedAlgebra cc) = 16` at `F₄` (`= 4²`) and `= 9` at `F₃` (`= 3²`) — F.13's
+   identity, instance-level;
+3. `Module.finrank K (TwistedAlgebra cc) = 2` both — F.10(a);
+4. `(single 1 1)² = ζ • single 0 1` both — F.10(b) with the orbit product
+   `∏_{k=1}^{1} c(1,k) = c(1,1) = ζ`: expected `ω` at `F₄`, `2` at `F₃`;
+5. the `E = 3` integer-carry instance: the `{0,1}` table `δ a b = if a.val + b.val ≥ 3 then
+   1 else 0` on `ZMod 3` satisfies the integer cocycle identity (27 triples, `decide`) —
+   the carry shadow at odd `E`;
+6. NEGATIVE control: at `K = F₂` every `CarryCocycle` has `c ≡ 1` (units trivial — F.06's
+   regime), checked by `decide`.
+`e > 1 ∧ f > 1` witness: instance 1's `F₄` leg (`E = 2`, `F₄/F₂`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+-- one #eval/decide block per check, leancheck N3Cert idiom; expected values in comments,
+-- e.g.  example : (twistGate_F4.pow2_value = genF4) := by decide
+```
+
+**DEPENDS.** F.07, F.08, F.10, F.13.
+
+**PROOF.** `decide`/`norm_num` per check (stub stage (c) executes BEFORE axiom stubs sign —
+GC-6.6).
+
+**SIZE.** ≤ 40 lines + the private field-table helper if needed.
+
+**SOURCE.** GC-11; `EFF.GRTJC.89`'s JC7 battery shape (cocycle + carry + E-fold chain,
+"two ways") — these are its smallest Lean-executable instances.
+
+**TEETH.** Lean-executed gate; mirrored as `verification/chapF_gate_twisted.py` (§13).
+
+**ENVIRONMENT.** ENV-F1 (concrete instances).
+
+---
+
+### NODE F.30 [gate] [fresh]
+
+**STATEMENT.** *The character/fence/ledger gate.* By `decide`/`norm_num`:
+1. **WM-FENCE instances (F.23):** the source's own `F₅` witness — `orderOf (2 : (ZMod 5)ˣ)
+   = 4`, `¬(4 ∣ 1)`, and the character value `(2 : ZMod 5)⁻¹ = 3 ≠ 1`; a `q = 2` pair at
+   `F₄` (`z = ω`, `orderOf = 3`: fails at `A = 1`, holds at `A = 3`); a `q = 3` pair at
+   `F₃` (`z = 2`, `orderOf = 2`: fails at `A = 1`, holds at `A = 2`);
+2. **`xiChar` instances (F.18):** `xiChar 1 0 (2 : (ZMod 5)ˣ) 2 1 = (2²)⁻¹ = 4` (the
+   `ξ₂ = θ₂⁻¹` degeneration, concrete); a NON-involution instance at each prime — `q = 2`:
+   `χ = ω, γ = 1, z = ω` over `F₄` (order-3 character; expected value computed at stub
+   time and pinned in the file); `q = 3`: `χ = i, γ = 1, z = i` over `F₉` with `i² = −1`
+   (order-4 character) — the separator-style instances SL-INVREC's lesson demands;
+3. **slotScale counts (F.02):** over `Γ = Fin 1`, `K = F₃`: the stratum `S = {v | v 0 = 0}`
+   satisfies `slotScale u '' S = S` for both units and `Nat.card ↥S = 1`; NEGATIVE control
+   (the JD0-T-NONCHAR failure mode): the additive shift `v ↦ v + 1` maps `S` to
+   `{v | v 0 = 1} ≠ S` — the perimeter boundary displayed executably;
+4. **`F₂` degeneracy (F.06):** `slotScale u = id` for every `u` over `K = F₂`, `decide`;
+5. **the torsor witness (F.25):** over `E = 2`, `K = F₅`: `η ν = (−1)^ν` is a nontrivial
+   character (`η 1 = 4 ≠ 1`) and `gaugeBdry (fun _ => 1) = gaugeBdry η` — `μ₂(F₅)`
+   nontrivial, uniqueness dead at the smallest interesting instance;
+6. **JB shear (F.22):** `jbShear 2 1` maps the concrete harness vertex pair
+   `{(0,0), (2,1)}` to `{(0,0), (2,4)}` — an `e = 2, h = 1` instance, plus a `q = 3`-side
+   instance `jbShear 3 2` on the same pair (`{(0,0), (2,7)}`).
+All six checks carry their expected values IN the file; a mismatch at stub stage is a
+stop-the-line blueprint defect, not a thing to patch silently.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+-- decide/norm_num blocks; leancheck N3Cert idiom (expected values pinned in-file).
+```
+
+**DEPENDS.** F.02, F.06, F.18, F.22, F.23, F.25.
+
+**PROOF.** `decide`/`norm_num` per check.
+
+**SIZE.** ≤ 40 lines.
+
+**SOURCE.** GC-11; `EFF.WELDMASTER.25` (the F₅ witness, re-derived in the spec and here);
+`EFF.SIGMALAW.02` (the ξ₂ = θ₂⁻¹ audit); `EFF.JD0.22` BOX-5 (the F₂ census) + the NONCHAR
+tooth ("an additive slot shift … breaks … counts" — the failure-mode display).
+
+**TEETH.** Lean-executed gate; mirrored as `verification/chapF_gate_chars.py` (§13).
+
+**ENVIRONMENT.** ENV-F1 (concrete instances).
+
+---
+
+<!-- RESUME: §§8–10 composed (F.27–F.30). Next: §11 DAG additions + TSV emission, §12
+leanspec stub list, §13 census + TEETH, §14 cross-read queue, FINAL STATE + §2 index
+finalization. -->
 
 <!-- SENTINEL: BP-F END OF FILE -->
