@@ -524,14 +524,123 @@ force.
 
 ## PART III — PER-CHAPTER AUTHOR BRIEFS
 
-### BRIEF B-FIN — chapter B §10 finisher
-STATUS: stub.
+### BRIEF B-FIN — chapter B §10 finisher (+ closing sections §§11–14 and the PA-1 amendment)
 
-### BRIEF C — TOWER GRAMMAR
-STATUS: stub.
+**SCOPE.** Compose CHAP-B's owed tail: §10 = nodes **B.83–B.86** (4 gates, per §2's index row:
+"`q = 2` and `q = 3` firing instances with `e > 1` AND `f > 1`, and the axiom census") plus the
+closing sections the committed front matter already forward-references: **§11 DAG additions**
+(H-9's W12 evidence-column mitigation is promised there), **§12 leanspec stub list** (H-13
+promises the `LeanspecB` wrapper), **§13 TEETH summary** (GC-8 table), **§14 flagged-for-cross-
+read** (committed text already numbers items 1, 2, 5, 12, 13 — the queue must contain at least
+those, with item 13 = A-§9.1). Also: apply **PA-1** as a dated CHAP-B amendment in the same pass,
+and adjudicate §14 item 12 (B.63's existential `T` vs B.66's canonical finsets).
+**PRODUCT.** Terminal exposure: the four gate declarations (leancheck-idiom concrete instances —
+D-4(b) says B.82 fires "with zero adaptation" from the `N3Cert*` pattern) + the four closing
+sections. Gates must include a witness in the UNCONDITIONAL perimeter with `ℓ > 1` and `m·d > 1`
+(D-3's `d = 1, ℓ ≥ 2` row gives `e > 1, f > 1` honestly — e.g. `ℓ = 2, m = 2, d = 1`); a gate
+that needs `B-BOX-1` (`ℓ ≥ 2 ∧ d ≥ 2`) is a defect. Gates fire through the REPAIRED pin (GC-1).
+**INTERFACES IN:** committed B.01–B.82 + landed API only. **OUT:** C consumes B.20 (`ℓ(N⁻)`,
+`L_v`), B.30 (`resPoly` degree), B.58 (the `(e,f)` read) by name (H-10's HT ingredient list); E
+consumes §7/§9; I consumes the gates.
+**BINDING GCs:** GC-1 (and PA-1), GC-6, GC-8 (regressions to `verification/`), GC-9, GC-11,
+GC-12 (§11's DAG rows).
+**TRAPS.** (i) `HE6-BOX-1` is a declared NON-NODE (B.64's note) — `BLOCKED: HE6-BOX-1`, never a
+node. (ii) No uniform-`N` gate: the gates certify per-member at explicit `N` (GC-9.3). (iii) The
+§2 kind census is stale (A-§9.2 corrected it: 17 def/50 lemma/15 theorem/4 gate) — §13/§14 must
+count against the CORRECTED census. (iv) The split table grew (A-§9.3: B.77→2, B.78→2; fleet
+figure ≈ 112 files). (v) §12 must list B.79a's dependence on the RE-PLAN node B.66a (A-§9.5) so
+the stub order is right.
+**SKELETON (estimate 4 nodes + 4 sections):** §10 gates B.83 (`q=2` split/inert/ram instance),
+B.84 (`q=3` instance), B.85 (`e>1 ∧ f>1` ramified-inert instance), B.86 (axiom census gate,
+AxChk pattern); then §§11–14.
 
-### BRIEF E — σ-LADDER MASTER
-STATUS: stub.
+---
+
+### BRIEF C — TOWER GRAMMAR (HARD; Fable-max authorship per append #56)
+
+**SCOPE.** `EFF-GENTOW1` (67 units by heading count), `EFF-GENTOW2` (93 — PA-3(i), newly
+assigned), `EFF-GENTOW3` (62), `EFF-GENTOW4` (57), `EFF-GENTOW5` (84, MERGED — cite contiguous
+IDs per GC-12), `EFF-GENTOW6` (35), `EFF-HETOW` (58); plus `EFF-HE6R1` (48) and the `e₁ ≥ 2`
+twist/normalizer layer CHAP-B's H-1/H-3 explicitly deferred here; plus W12's count layer
+(`LEMMA W12-HT`, `EFF.W12.83`–`.87`) per PA-5. ~360 DAG nodes before unit-level dependency
+derivation (which this blueprint writes for the first time — DAG_README finding 1).
+**PRODUCT.** Terminal nodes must expose, by name: (1) the **level-`r` frame** — the level
+dictionary (`D″ = D′ℓd_r`, `T₂ = ℓd_rλ`, `EFF.HE6R1.18`) as a level-datum structure over the
+FIXED bundle `O` (GC-7), with the level-1 reconciliation lemma to B's API (GC-2); (2) the
+**normalizer/twist layer** (`ϖ`, `η_θ`, `ι_ξ`, the level-2 cocycle `c₁(a,b)` — everything CHAP-B
+H-1 banned from B); (3) the **descent step** (key shift — B.69's SOURCE routes it here), the
+**level-jump trigger** (`LEMMA HE6R1-1`, `ℓ_i·deg r_i ≥ 2`, the `.47` re-display), and the
+**level-2 peel** (`LEMMA HE6R1-3`, `Ψ ∣ f_S`); (4) the **composed-degree/count laws** and the
+`HT` transcription with its exact conditionality; (5) NS-7 termination — carried as the
+**[AGNPRW] Thm 5.2 cite-hypothesis** (HYP.15's answered branch), NOT re-proved.
+**INTERFACES IN:** B.01–B.82 by node ID (polygon, residual, `(e,f)`, certificates); H.51–H.58
+ONLY from chapter H (GC-5); `Quarry/RamificationInertiaLocal` (GC-3 rank form). **OUT:** E (level
+data under the ladder), D (GENTOW2 `B″`/`B′` via GC-13), F, I.
+**BINDING GCs:** all of GC-1…GC-5, GC-7 (the chapter's own convention), GC-9 (HT at every-lift),
+GC-11, GC-12 (GENTOW5/W12 IDs), GC-13, GC-14 (cite D's ϑ table, never restate).
+**TRAPS.** (i) **`THEOREM HE6.A`'s class-size count** (`|S_{λ,r}| = D′ℓ·deg r`) is the one thing
+B refused (H-2) and downstream consumers were told to "get from chapter C" — but its corpus proof
+rests on a fixed algebraic closure + Galois equivariance + resultants, none available and none
+quarriable. C must either re-derive block lengths by a closure-free route (the B §0.4
+divisibility-plus-degree pattern, one level up) or carry the count as an explicit
+schema/hypothesis field (GC-5 RE-PLAN) — **never import a closure** (GC-7). This is C's single
+biggest risk; decide it FIRST (hardest-hole-first). (ii) `HE3-BOX-6` (HYP.143, `n ≥ 8`): the
+ramified base change `O ↝ O[Π]/(Π^ℓ − π)` is "stated too cheaply — `Φ′` need not remain
+irreducible over `O₂`"; any base-change node follows GC-7's explicit-`O₂` rider.
+(iii) `[GENHN-TOW-1]`'s six items (HYP.82) are load-bearing at `n ≥ 8` ONLY and have NO H nodes —
+transcribe what has proofs, box the rest at exact scope (`n ≥ 8`, depth-3 `n ≥ 16`).
+(iv) `LEMMA GENHN-T(b)` is REFUTED — only `T(b)′`'s surviving composition formulas transcribe
+(H-10 of CHAP-H); the composed-key lift is licensed ONLY by `LEMMA GENHN-LIFT` (H.54–H.57 —
+consume, don't re-prove). (v) HT's thin verification + `B-BOX-1` inheritance at `d ≥ 2` (PA-5).
+(vi) GENTOW5's `EFF.GENTOW5.s1of2.06` is a 42-edge COARSE placeholder — C's DEPENDS fields are
+where those edges get re-homed.
+**SKELETON (est. 110–130 nodes):** §3 level-datum structures + dictionary; §4 normalizer/twist
+(HE6R1); §5 descent step, jump trigger, peel; §6 composed keys (consume H §8); §7 class-size /
+block-length (THE DECISION section); §8 HT + count laws; §9 tower thresholds (`n ≥ 8` boxes at
+exact scope); §10 level-`N` certificates; §11 gates (GC-11: `q = 2` AND `3`, a genuinely wild
+`e₁ ≥ 2` witness).
+
+---
+
+### BRIEF E — σ-LADDER MASTER (T2; HARD; Fable-max authorship per append #56)
+
+**SCOPE.** `EFF-T2` alone: **105 units, contiguous** (merged from six shards; §3 of the spec is
+the inventory). Chapter cut E = 105 DAG nodes. Plus the HE7 ladder machinery the cut left in B
+and CHAP-B's H-3 deferred upward: **czar ruling — `EFF-HE7` (137 headings; `(SLOT₂)/(LIFT₂)`,
+the ladder's level-2 machinery and the HE7.A master suite) transcribes HERE, in E, not in B and
+not in C** (E is the σ-ladder chapter; HE7.A's five clauses are Display A's `HE7A[…]` conjunct;
+tower-geometric HE7 units consumed only by C may be delegated to C by GC-13 placeholder).
+Flagged in Part IV as a cut-internal ruling.
+**PRODUCT.** (1) The **ladder carrier suite** as a schema structure (GC-5 pattern, the
+`StageInterface` lesson): per-rung fields at EXACTLY corpus strength — the master `HE7.A` clause
+family `[ACCOUNT, RES-DEG, nonempty, exhaust, root-continuation]` as hypothesis fields, with the
+five instance records as proved instances; (2) **(LB1)/(MP1)** as named fields/nodes — they are
+Display A conjuncts; if a discharge exists in T2's effective text, it is a discharge node, else a
+carried hypothesis (Asvin sign-off via I); (3) the ladder's σ output through a GC-4 dictionary
+with degree conservation; (4) `(H-VARTHETA-RES)_i ∧ 𝒲_(≤i)` (Display A's `∀ i ≥ 3` conjunct) as
+named, indexed hypothesis carriers.
+**INTERFACES IN:** H.51–H.58 (the slot lemma is "the ladder base case" — `EFF.GENHN.27` reverse
+XREF), B §7/§9 by node ID, C's level data by GC-13 placeholder, D's ϑ table by anchor (GC-14).
+**OUT:** I (the HE7A conjunct + LB1/MP1 land in I's hypothesis block from here), C (rung
+instances), F (σ-law faces).
+**BINDING GCs:** GC-1, GC-2 (slot-seam evaluations are support-function statements — D-1
+criterion C2), GC-4 (hard), GC-5, GC-9, GC-10 (T2 is a T-unit: transcription grade), GC-11,
+GC-13, GC-14.
+**TRAPS.** (i) **THE HE6/T2 ADJUDICATION (HYP.150–154)**: `EFF-HE6.md` OPEN-CALL 2 found three A3
+corrections outside every T2 pin span, and **F-1 renders `HE6-SLOT-SEAM`'s frozen slot residue
+VACUOUS while T2 cites it 48×**. The adjudication's return (T2's dated consumption-record EOF
+append, commit `66062771`) GOVERNS: E's nodes route those 48 cites through the adjudicated
+statements — read the v7 ledger rows BEFORE transcribing any pin unit, and every one of the nine
+HE6 pin anchors (`EFF.HE6.09 .13 .14 .15 .17 .29 .30 .32 .56`) resolves to a CHAP-B node ID, not
+to HE6 frozen text. (ii) The COARSE placeholder `EFF.T2.31` carries 44 edges — same re-homing
+duty as C's. (iii) σ-decision at `μ ≥ 3` is `BLOCKED: HYP.81` (first live `n = 6`) — the ladder
+may CARRY it, never prove it. (iv) `HEX3-BOX-1` (HYP.137) is a NON-NODE everywhere (G H-2, H H-4
+precedents). (v) No every-lift weakening: the ladder's certificates obey GC-9 even where T2's
+prose quantifies over `disc ≠ 0` roots.
+**SKELETON (est. 90–110 nodes):** §3 rung/ladder schema structures; §4 the master HE7.A suite as
+fields + the five instance records; §5 slot-seam evaluation layer (via B's `suppVal` API); §6
+(LB1)/(MP1); §7 the σ dictionary + degree conservation; §8 root-continuation/exhaust clauses; §9
+`(H-VARTHETA-RES)` carriers; §10 gates.
 
 ### BRIEF D — GAUGE + CERTIFICATE T-CHAIN
 STATUS: stub.
@@ -547,4 +656,4 @@ STATUS: stub.
 ## PART IV — ITEMS FLAGGED FOR ASVIN (0d checkpoint)
 STATUS: stub.
 
-<!-- RESUME: next item = briefs B-FIN, C, E, then D, F, I, then PART IV flag list -->
+<!-- RESUME: next item = briefs D, F, I, then PART IV flag list, final commit -->
