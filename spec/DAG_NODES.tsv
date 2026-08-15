@@ -2226,155 +2226,160 @@ EFF.W12.s2of2.33	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s2of2.md:769
 EFF.W12.s2of2.34	eff-unit	W12	lemma	math	H	OPEN	EFF-W12-s2of2.md:791
 EFF.W12.s2of2.35	eff-unit	W12	scope-record	record	H	OPEN	EFF-W12-s2of2.md:810
 EFF.W12.s2of2.36	eff-unit	W12	changes-record	record	H	OPEN	EFF-W12-s2of2.md:840
-HYP.01	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:42
-HYP.02	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:49
-HYP.03	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:56
-HYP.04	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:64
-HYP.05	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:77
-HYP.06	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:89
-HYP.07	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:103
-HYP.08	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:110
-HYP.09	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:117
-HYP.10	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:124
-HYP.11	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:131
-HYP.12	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:138
-HYP.13	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:147
-HYP.14	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:154
-HYP.15	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:161
-HYP.16	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:168
-HYP.17	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:175
-HYP.18	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:182
-HYP.19	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:191
-HYP.20	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:198
-HYP.21	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:205
-HYP.22	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:212
-HYP.23	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:219
-HYP.24	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:226
-HYP.25	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:233
-HYP.26	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:240
-HYP.27	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:247
-HYP.28	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:254
-HYP.29	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:261
-HYP.30	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:268
-HYP.31	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:275
-HYP.32	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:282
-HYP.33	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:289
-HYP.34	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:296
-HYP.35	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:303
-HYP.36	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:310
-HYP.37	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:317
-HYP.38	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:324
-HYP.39	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:331
-HYP.40	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:338
-HYP.41	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:347
-HYP.42	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:354
-HYP.43	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:361
-HYP.44	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:368
-HYP.45	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:375
-HYP.46	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:384
-HYP.47	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:391
-HYP.48	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:398
-HYP.49	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:405
-HYP.50	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:412
-HYP.51	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:419
-HYP.52	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:426
-HYP.53	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:433
-HYP.54	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:440
-HYP.55	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:447
-HYP.56	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:454
-HYP.57	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:461
-HYP.58	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:468
-HYP.59	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:475
-HYP.60	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:482
-HYP.61	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:489
-HYP.62	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:496
-HYP.63	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:503
-HYP.64	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:510
-HYP.65	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:517
-HYP.66	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:524
-HYP.67	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:533
-HYP.68	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:540
-HYP.69	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:547
-HYP.70	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:554
-HYP.71	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:561
-HYP.72	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:568
-HYP.73	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:575
-HYP.74	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:582
-HYP.75	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:589
-HYP.76	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:596
-HYP.77	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:603
-HYP.78	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:610
-HYP.79	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:617
-HYP.80	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:624
-HYP.81	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:633
-HYP.82	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:640
-HYP.83	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:647
-HYP.84	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:711
-HYP.85	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:718
-HYP.86	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:725
-HYP.87	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:732
-HYP.88	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:739
-HYP.89	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:746
-HYP.90	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:753
-HYP.91	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:760
-HYP.92	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:767
-HYP.93	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:774
-HYP.94	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:781
-HYP.95	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:788
-HYP.96	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:795
-HYP.97	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:802
-HYP.98	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:809
-HYP.99	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:816
-HYP.100	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:823
-HYP.101	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:830
-HYP.102	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:837
-HYP.103	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:844
-HYP.104	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:851
-HYP.105	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:858
-HYP.106	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:865
-HYP.107	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:872
-HYP.108	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:879
-HYP.109	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:886
-HYP.110	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:893
-HYP.111	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:900
-HYP.112	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:907
-HYP.113	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:914
-HYP.114	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:921
-HYP.115	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:928
-HYP.116	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:935
-HYP.117	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:942
-HYP.118	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:949
-HYP.119	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:956
-HYP.120	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:963
-HYP.121	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:970
-HYP.122	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:977
-HYP.123	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:984
-HYP.124	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:991
-HYP.125	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:998
-HYP.126	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1005
-HYP.127	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1012
-HYP.128	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1019
-HYP.129	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1026
-HYP.130	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1033
-HYP.131	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1040
-HYP.132	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1047
-HYP.133	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1054
-HYP.134	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1061
-HYP.135	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1068
-HYP.136	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:1079
-HYP.137	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1086
-HYP.138	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1093
-HYP.139	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1100
-HYP.140	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1108
-HYP.141	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1115
-HYP.142	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1122
-HYP.143	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1129
-HYP.144	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1136
-HYP.145	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1143
-HYP.146	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1150
-HYP.147	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:1157
-HYP.148	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1169
-HYP.149	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:1177
+HYP.01	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:63
+HYP.02	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:70
+HYP.03	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:77
+HYP.04	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:85
+HYP.05	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:98
+HYP.06	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:110
+HYP.07	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:124
+HYP.08	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:131
+HYP.09	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:138
+HYP.10	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:145
+HYP.11	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:152
+HYP.12	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:159
+HYP.13	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:168
+HYP.14	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:175
+HYP.15	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:182
+HYP.16	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:189
+HYP.17	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:196
+HYP.18	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:203
+HYP.19	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:212
+HYP.20	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:219
+HYP.21	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:226
+HYP.22	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:233
+HYP.23	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:240
+HYP.24	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:247
+HYP.25	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:254
+HYP.26	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:261
+HYP.27	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:268
+HYP.28	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:276
+HYP.29	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:284
+HYP.30	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:292
+HYP.31	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:299
+HYP.32	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:306
+HYP.33	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:313
+HYP.34	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:320
+HYP.35	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:327
+HYP.36	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:334
+HYP.37	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:341
+HYP.38	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:348
+HYP.39	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:355
+HYP.40	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:362
+HYP.41	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:371
+HYP.42	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:378
+HYP.43	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:385
+HYP.44	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:392
+HYP.45	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:399
+HYP.46	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:408
+HYP.47	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:415
+HYP.48	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:422
+HYP.49	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:429
+HYP.50	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:436
+HYP.51	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:443
+HYP.52	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:450
+HYP.53	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:457
+HYP.54	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:464
+HYP.55	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:471
+HYP.56	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:478
+HYP.57	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:485
+HYP.58	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:492
+HYP.59	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:499
+HYP.60	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:506
+HYP.61	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:513
+HYP.62	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:520
+HYP.63	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:527
+HYP.64	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:534
+HYP.65	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:541
+HYP.66	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:548
+HYP.67	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:557
+HYP.68	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:564
+HYP.69	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:571
+HYP.70	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:578
+HYP.71	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:585
+HYP.72	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:592
+HYP.73	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:599
+HYP.74	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:606
+HYP.75	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:613
+HYP.76	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:620
+HYP.77	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:627
+HYP.78	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:634
+HYP.79	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:641
+HYP.80	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:648
+HYP.81	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:657
+HYP.82	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:664
+HYP.83	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:671
+HYP.84	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:735
+HYP.85	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:742
+HYP.86	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:749
+HYP.87	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:756
+HYP.88	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:763
+HYP.89	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:770
+HYP.90	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:777
+HYP.91	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:784
+HYP.92	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:791
+HYP.93	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:798
+HYP.94	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:805
+HYP.95	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:812
+HYP.96	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:819
+HYP.97	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:826
+HYP.98	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:833
+HYP.99	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:840
+HYP.100	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:847
+HYP.101	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:854
+HYP.102	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:861
+HYP.103	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:868
+HYP.104	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:875
+HYP.105	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:882
+HYP.106	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:889
+HYP.107	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:896
+HYP.108	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:903
+HYP.109	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:910
+HYP.110	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:917
+HYP.111	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:924
+HYP.112	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:931
+HYP.113	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:938
+HYP.114	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:945
+HYP.115	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:952
+HYP.116	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:959
+HYP.117	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:966
+HYP.118	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:973
+HYP.119	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:980
+HYP.120	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:987
+HYP.121	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:994
+HYP.122	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1001
+HYP.123	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1008
+HYP.124	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1015
+HYP.125	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1022
+HYP.126	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1029
+HYP.127	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1036
+HYP.128	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1043
+HYP.129	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1050
+HYP.130	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1057
+HYP.131	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1064
+HYP.132	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1071
+HYP.133	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1078
+HYP.134	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1085
+HYP.135	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1092
+HYP.136	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:1103
+HYP.137	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1110
+HYP.138	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1118
+HYP.139	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1125
+HYP.140	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1133
+HYP.141	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1140
+HYP.142	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1147
+HYP.143	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1154
+HYP.144	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1161
+HYP.145	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1168
+HYP.146	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1175
+HYP.147	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:1182
+HYP.148	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1194
+HYP.149	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1203
+HYP.150	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:1217
+HYP.151	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:1224
+HYP.152	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1231
+HYP.153	hyp			hypothesis	I	OPEN	spec/HYPOTHESIS_LEDGER.md:1238
+HYP.154	hyp			hypothesis	I	OPEN-LEDGER-CLOSED	spec/HYPOTHESIS_LEDGER.md:1245
 lean:Anisotropic	lean-decl			lean	A	DONE	leanfinal/Uniformity
 lean:FactorizationType.degree_mk_add	lean-decl			lean	A	DONE	leanfinal/Uniformity
 lean:UniformityStatement	lean-decl			lean	A	DONE	leanfinal/Uniformity
@@ -2448,81 +2453,81 @@ EXT:EFF-T1*.md	ext			ext		OPEN
 EXT:WELD_FACE_AUDIT.md	ext			ext		OPEN	
 EXT:CODEX_GENINDRAT_2026-08-09.md	ext			ext		OPEN	
 EXT:DITERSUP_STMT_2026-08-08.md	ext			ext		OPEN	
-BP.G.01	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.02	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.03	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.04	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.05	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.06	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.07	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.08	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.09	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.10	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.11	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.12	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.13	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.14	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.15	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.16	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.17	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.18	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.19	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.20	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.21	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.22	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
+BP.G.01	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.02	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.03	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.04	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.05	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.06	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.07	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.08	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.09	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.10	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.11	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.12	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.13	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.14	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.15	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.16	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.17	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.18	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.19	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.20	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.21	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.22	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
 BP.G.23	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.24	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.25	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.26	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.27	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.28	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.29	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.30	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.31	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.32	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.33	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.34	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.35	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.36	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.37	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.38	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.39	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.40	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.41	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.42	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.43	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.44	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.45	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.46	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.47	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.48	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.49	blueprint-node	CHAP-G	gate	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.50	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.51	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.52	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.53	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.54	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.55	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.56	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.57	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.58	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.59	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.60	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.61	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.62	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.63	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.64	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.65	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.66	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.67	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.68	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.69	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.70	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.71	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.72	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.73	blueprint-node	CHAP-G	def	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.74	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.75	blueprint-node	CHAP-G	lemma	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.76	blueprint-node	CHAP-G	theorem	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.77	blueprint-node	CHAP-G	gate	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
-BP.G.78	blueprint-node	CHAP-G	gate	blueprint	G	OPEN	blueprint/CHAP-G_base_cases_menus.md
+BP.G.24	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.25	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.26	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.27	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.28	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.29	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.30	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.31	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.32	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.33	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.34	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.35	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.36	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.37	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.38	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.39	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.40	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.41	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.42	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.43	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.44	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.45	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.46	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.47	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.48	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.49	blueprint-node	CHAP-G	gate	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.50	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.51	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.52	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.53	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.54	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.55	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.56	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.57	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.58	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.59	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.60	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.61	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.62	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.63	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.64	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.65	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.66	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.67	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.68	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.69	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.70	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.71	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.72	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.73	blueprint-node	CHAP-G	def	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.74	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.75	blueprint-node	CHAP-G	lemma	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.76	blueprint-node	CHAP-G	theorem	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.77	blueprint-node	CHAP-G	gate	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md
+BP.G.78	blueprint-node	CHAP-G	gate	blueprint	G	DONE	blueprint/CHAP-G_base_cases_menus.md

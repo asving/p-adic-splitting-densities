@@ -1,15 +1,15 @@
 PHASE-0c DAG CHECK  (spec/DAG.tsv)
 ==============================================================================
-nodes 2527   edges 2027   dependency edges 2019   non-dependency (provenance) 8
-node kinds: blueprint-node=78  capstone=2  cond-unmatched=3  eff-unit=2227  ext=34  hyp=149  lean-decl=34
-edge classes: blueprint=327  cn-discharge=14  ledger-cond=36  ledger-discharge=15  ledger-index=8  ledger-loc=68  ledger-path=214  reverse-xref=165  supersession=8  xref=1172
-edge kinds: proof-dep=145  stmt-dep=1882
+nodes 2532   edges 2035   dependency edges 2027   non-dependency (provenance) 8
+node kinds: blueprint-node=78  capstone=2  cond-unmatched=3  eff-unit=2227  ext=34  hyp=154  lean-decl=34
+edge classes: blueprint=327  cn-discharge=14  ledger-cond=36  ledger-discharge=15  ledger-index=8  ledger-loc=72  ledger-path=218  reverse-xref=165  supersession=8  xref=1172
+edge kinds: proof-dep=145  stmt-dep=1890
 
 [1] DANGLING-ID CHECK
     PASS: every edge endpoint is a declared node.
 
 [2] CYCLE DETECTION
-    EXACT-resolved subgraph (1377 edges): 4 non-trivial SCCs
+    EXACT-resolved subgraph (1382 edges): 4 non-trivial SCCs
       [ADJUDICATED] size 3: EFF.GENIND.136, EFF.HEX3.37, EFF.HMENU3.33
             HEX3-BOX-1 (the tail-sigma certification lemma, ledger HYP.137) is supplied by HEX3 and consumed by GENIND and HMENU3; HEX3 s own 4.3 table mixes supplier and consumer rows under one heading, so the harvester reads one consumer edge backwards.
       [ADJUDICATED] size 3: EFF.HE7.128, EFF.HE7.129, EFF.HE7.130
@@ -30,32 +30,31 @@ edge kinds: proof-dep=145  stmt-dep=1882
 
 [3] REACHABILITY FROM THE CAPSTONE
     roots: CAP:UniformityStatement, CAP:UniformityStatementDecided
-    reachable 599 / 2527 nodes (23.7%)
-    unreachable 1928, of which ISOLATED (no recorded edge at all) 1564 and
-    CONNECTED-BUT-UNREACHABLE 364  <- the real candidate out-of-cone list
+    reachable 621 / 2532 nodes (24.5%)
+    unreachable 1911, of which ISOLATED (no recorded edge at all) 1565 and
+    CONNECTED-BUT-UNREACHABLE 346  <- the real candidate out-of-cone list
     connected-but-unreachable by note/kind:
       GENIND           73
       CHAP-G           38
       HMENU3           24
-      HETOW            19
-      HE7              18
-      HE3              17
       HEX3             17
+      hyp              17
+      lean-decl        17
       GRTW2            15
-      HE6              15
+      HE7              15
       WELDMASTER       15
-      hyp              15
-      lean-decl        15
+      HE6              13
+      HETOW            13
+      HE3              12
       LIFTCORNER       12
       GRTJC            10
       GRTJA            10
-      HE6R1            10
+      HE6R1             8
       GENH4             6
       GENTOW1           6
-      T2                5
       ext               5
+      T2                4
       GENHN             3
-      GENTOW4           3
       W11               3
       GRTJB             2
       GENTOW3           2
@@ -72,7 +71,7 @@ edge kinds: proof-dep=145  stmt-dep=1882
       HYP.85   CONSISTENT (unreachable)
       HYP.86   CONSISTENT (unreachable)
       HYP.76   CONSISTENT (unreachable)
-    total isolated nodes: 1564
+    total isolated nodes: 1565
     The 0a specs record inter-note supply edges and supersession chains, but they do
     NOT record intra-note statement->statement dependencies.  Unreachability here is
     therefore mostly MISSING EDGE DATA, not an out-of-cone verdict.  Compare against
@@ -82,14 +81,14 @@ edge kinds: proof-dep=145  stmt-dep=1882
 [4] TOPOLOGICAL LAYERING (SCCs collapsed)
     layers: 15   (layer 0 = terminal supply)
     layer       nodes  connected
-    0            1981        417
-    1             189        189
+    0            1982        417
+    1             190        190
     2              42         42
     3              52         52
     4              86         86
-    5             129        129
+    5             131        131
     6              24         24
-    7               8          8
+    7               9          9
     8               7          7
     9               3          3
     10              1          1
@@ -97,15 +96,15 @@ edge kinds: proof-dep=145  stmt-dep=1882
     12              1          1
     13              2          2
     14              1          1
-    MAX LAYER WIDTH (all nodes)       = 1981   <- nominal parallelism ceiling
+    MAX LAYER WIDTH (all nodes)       = 1982   <- nominal parallelism ceiling
     MAX LAYER WIDTH (connected nodes) = 417   <- ceiling on the edge-bearing subgraph
-    Layer 0 is dominated by the 1564 isolated nodes; the connected column is the honest
+    Layer 0 is dominated by the 1565 isolated nodes; the connected column is the honest
     reading.  DAG width is an upper bound on parallelism, never a throughput promise
     (BLUEPRINT_PHASE_DESIGN REVISION 2, R15).
 
 [5] CHAPTER-CUT CHECK
     chapter order (consumer-first): I > E > D > C > B > H > F > G > A
-      I  CAPSTONE AND CONDITIONALITY        154 nodes
+      I  CAPSTONE AND CONDITIONALITY        159 nodes
       E  SIGMA-LADDER MASTER  [HARD]        105 nodes
       D  GAUGE + CERTIFICATE T-CHAIN        181 nodes
       C  TOWER GRAMMAR  [HARD]              363 nodes
@@ -114,7 +113,7 @@ edge kinds: proof-dep=145  stmt-dep=1882
       F  GRT WELD LAYER                     538 nodes
       G  BASE CASES AND MENUS               301 nodes
       A  LANDED LEAN KERNEL (DONE)           34 nodes
-    cross-chapter dependency edges: 642   backward (against the order): 61 (9.5%)
+    cross-chapter dependency edges: 646   backward (against the order): 61 (9.4%)
     edges with an unassigned endpoint (EXT / unmatched): 114
     BACKWARD ARCS — the residue that makes the cut non-strict; each is a split the
     chapter blueprints must make at unit granularity:
@@ -152,10 +151,10 @@ edge kinds: proof-dep=145  stmt-dep=1882
     cross-read question.
 
 [7] RESOLUTION CENSUS (how provisional is this graph?)
-      from:exact,to:stmt             655
-      from:exact,to:exact            608
+      from:exact,to:stmt             656
+      from:exact,to:exact            612
       from:gov,to:stmt               338
-      from:exact,to:gov              137
+      from:exact,to:gov              140
       from:gov,to:ext                 42
       from:gov,to:gov                 36
       from:stmt,to:gov                34
@@ -174,10 +173,10 @@ edge kinds: proof-dep=145  stmt-dep=1882
       from:ledger,to:gov               3
       from:body,to:gov                 2
     COARSE (an endpoint fell back to a note governing unit, or a conjunct matched no
-    ledger row): 647 of 2027 edges = 31.9%.  Every one of these is a cross-read item.
-    edge-kind basis: blueprint=327  default=1261  derivation-hit=8  statement-hit=431
+    ledger row): 650 of 2035 edges = 31.9%.  Every one of these is a cross-read item.
+    edge-kind basis: blueprint=327  default=1269  derivation-hit=8  statement-hit=431
     stmt-dep/proof-dep is decided by rule 3 only for the 439 edges whose designation was
-    found in the source unit's own text; the remaining 1261 default to stmt-dep and are
+    found in the source unit's own text; the remaining 1269 default to stmt-dep and are
     NOT a classification.
 
 ==============================================================================
