@@ -1189,6 +1189,9 @@ def resStratum (π : O) (N k : ℕ) (p : IsLocalRing.ResidueField O × IsLocalRi
 > union is **not** disjoint). Read **AMENDMENT §A-1** at the end of this file before consuming
 > anything here; it carries the counterexample and the replacement route (which removes this node
 > from the critical path). **Do not assign G.23a as a proof target.** Nothing below is edited.
+> **UPDATE 2026-08-15 (fourth append):** that replacement route is now expanded into twelve
+> fireable nodes **G.23R1–G.23R12** at **AMENDMENT §A-8**, all LANDED in `leanfinal`. G.41/G.42
+> consume `card_resClassSet` (G.23R9), not this node.
 
 **STATEMENT.** *The residual refinement of a depth stratum.* For `2k < N` and `p` **not** a
 double-root pair (i.e. `y² − p.2·y + p.1` has no repeated root; equivalently
@@ -4580,3 +4583,609 @@ new modules wired into the `Uniformity.ChapG` roll-up;
 each report `[propext, Classical.choice, Quot.sound]` (Lean core only). `leanspec` builds green
 with G.30a and all three of G.31's declarations retired to the `example := <landed name>`
 form, which machine-checks that the landed types are the signed ones.
+
+---
+
+## AMENDMENT 2026-08-15 (fourth dated append; Opus arm) — §A-1's REPLACEMENT ROUTE EXPANDED INTO FIREABLE NODES (G.23R1–G.23R12), ALL LANDED
+
+**Status of this block.** A fourth dated append in the same convention as the three above:
+**nothing in §§0–14 is edited in place**; one line is added to the existing G.23 amendment banner
+pointing here. §A-1 refuted `card_resStratum` (G.23a) and *derived* a replacement route — certify
+a **translation-invariant residual CLASS** at centre modulus `m = k` instead of an individual
+pair — but stopped at the derivation: it named no signatures, no DEPENDS, no proof steps, so no
+agent could fire it, and the G.41–G.51 exact-density tail stayed gated. This block expands that
+route into **twelve node entries**, and records that all twelve are **landed in `leanfinal`,
+`sorry`-free, Lean-core-only**. Declaration census rises **110 → 135**.
+
+**Nothing in §A-1 is revised.** Every step below is §A-1's own derivation, formalized: `hshift`
+at `m = k` is the translation-invariance of `𝒫`; `huniq` at `m = k` is G.11 verbatim;
+`#S = #𝒫 · q^(N−2k−1) · q^(N−k−1)`; `card_certSet_gen` contributes `q^k`. The one thing §A-1 did
+not say, and which the formalization had to supply, is **how** `#S` is counted: not by a
+digit-extraction function on `Res O N` (which needs a well-definedness proof at every use site)
+but by exhibiting `S` as the **preimage of a TOP-level set** `resTop ⊆ Res O (2k+1) × Res O (k+1)`
+under the two-coordinate truncation, where the two digits are exactly determined and the set is a
+literal copy of `𝒫`. That is nodes G.23R1/R4/R5/R6, and it is the only design decision in this
+append that §A-1 did not already fix.
+
+**No step of the route resisted proof as derived.** No obstruction is recorded below, because
+none was found; the honesty clause of this unit's charge is discharged vacuously.
+
+---
+
+### A-8.0 — the route in one page, and what each node supplies
+
+Fix `N = 2k+1+r` and a residual class `P ⊆ K × K`, `K = ResidueField O`.
+
+| node | supplies |
+|---|---|
+| G.23R1 | `prodResFactor`: the truncation `Res O N × Res O N →+ Res O m₀ × Res O m₁`, and its **subtraction-free fibre count** |
+| G.23R2 | the digit read is well posed: `π^j·y`'s class determines `ȳ` (below `N`), and conversely at level `j+1` |
+| G.23R3 | `transPair` / `TransInvariant`, and the two classes the chapter needs are invariant AND double-root-free |
+| G.23R4 | `resTop`, `resAdm`, `resClassSet`, and `resAdm = prodResFactor ⁻¹' resTop` |
+| G.23R5 | `#resTop = #P` |
+| G.23R6 | `#resAdm = #P · q^(k+2r)` — §A-1's `#S = #𝒫 · q^(N−2k−1) · q^(N−k−1)` |
+| G.23R7 | the certificate bridge: what the read at a centre means in `(b₀, b₁)` coordinates |
+| G.23R8 | `resCert`: the certified family at `m = k`, with `hcert`/`hshift`/`huniq` discharged |
+| **G.23R9** | **THE COUNT FORMULA** `#resClassSet = #P · q^(2k+2r)` |
+| G.23R10 | the `residualPair` computation rule — links the route to G.21/G.22's phrasing |
+| G.23R11 | a double-root-free class lands in `depthSet π N (2k)`, i.e. depth **exactly** `2k` |
+| G.23R12 | the `O ↔ K` bridges `Anisotropic ↔ AniForm` and `SepPair ↔ (simple residual root)` |
+
+**Naming.** The route's nodes take the letters `R1 … R12` at node G.23 because `G.23a`/`G.23b` are
+already the DECLARATION letters of G.23's two declarations (§A-7's convention: declaration letters
+are lowercase and never carry a `### NODE` heading; these are nodes in their own right and do).
+
+---
+
+### NODE G.23R1 [lemma] [fresh, added by AMENDMENT §A-8]
+
+**STATEMENT.** *The two-coordinate truncation and its fibre count.* The map
+`(x₀, x₁) ↦ (resFactor x₀, resFactor x₁)` is a surjective additive homomorphism, and the preimage
+of any `S` satisfies `#(f ⁻¹' S) · q^(m₀+m₁) = q^N · q^N · #S` — subtraction-free, the kernel size
+`q^(N−m₀)·q^(N−m₁)` never named.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Menu
+
+def prodResFactor {m₀ m₁ N : ℕ} (h₀ : m₀ ≤ N) (h₁ : m₁ ≤ N) :
+    (Res O N × Res O N) →+ (Res O m₀ × Res O m₁)
+
+theorem card_preimage_prodResFactor {m₀ m₁ N : ℕ} (h₀ : m₀ ≤ N) (h₁ : m₁ ≤ N)
+    (S : Set (Res O m₀ × Res O m₁)) :
+    Nat.card (prodResFactor (O := O) h₀ h₁ ⁻¹' S) * (residueCard O ^ m₀ * residueCard O ^ m₁)
+      = residueCard O ^ N * residueCard O ^ N * Nat.card S
+```
+
+**DEPENDS.** landed `resFactor`, `resFactor_surjective`, `card_res`,
+`card_preimage_of_surjective` (`LocalData.lean:192,215,221,228`).
+
+**PROOF.**
+1. the hom: `toFun`, `map_zero'`, `map_add'` all by `simp`; surjectivity coordinatewise from
+   `resFactor_surjective`.
+2. apply `card_preimage_of_surjective` **twice** — at `S` and at `Set.univ` — exactly as
+   `card_dvdSet` (G.14) does; the second instance evaluates `#ker · (q^m₀·q^m₁) = q^N·q^N`.
+3. substitute and `ring`. No cancellation, hence no positivity side condition.
+
+**SIZE.** 40 lines (2 signed declarations + 2 support lemmas `prodResFactor_apply`,
+`prodResFactor_surjective`). **LANDED** `leanfinal/Uniformity/ChapG/G23R1.lean`.
+
+**SOURCE.** `EFF.W11.14` (the two-factor admissible count this generalises the shape of); the
+proof pattern is G.14's, re-cut for a product.
+
+**TEETH.** none of its own; supplier for G.41/G.42's `W11-CENSUS` / P-2 teeth.
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE G.23R2 [lemma] [fresh, added by AMENDMENT §A-8]
+
+**STATEMENT.** *The digit read is well posed.* For `j < N`, the class of `π^j·y` in `Res O N`
+determines `y mod 𝔪`; for `N ≤ j+1`, equal digits give equal classes. (Uniqueness is what makes
+the route's residual read a function of the class; realization is what makes the level-`(j+1)`
+read a bijection onto its image, which is G.23R5's surjectivity leg.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Menu
+
+theorem residue_eq_of_mk_pow_mul_eq (hπ : Irreducible π) {j N : ℕ} (hj : j < N) {y y' : O}
+    (h : (Ideal.Quotient.mk _ (π ^ j * y) : Res O N) = Ideal.Quotient.mk _ (π ^ j * y')) :
+    IsLocalRing.residue O y = IsLocalRing.residue O y'
+
+theorem mk_pow_mul_eq_of_residue_eq (hπ : Irreducible π) {j N : ℕ} (hN : N ≤ j + 1) {y y' : O}
+    (h : IsLocalRing.residue O y = IsLocalRing.residue O y') :
+    (Ideal.Quotient.mk _ (π ^ j * y) : Res O N) = Ideal.Quotient.mk _ (π ^ j * y')
+```
+
+**DEPENDS.** landed `mem_maximalIdeal_pow_iff_dvd`, `mem_maximalIdeal_iff_dvd`
+(`Drainage.lean:635,192`).
+
+**PROOF.**
+1. uniqueness: `Ideal.Quotient.eq` gives `π^N ∣ π^j·(y−y')`; write `π^N = π^j·π^(N−j)` and cancel
+   `π^j` (`mul_dvd_mul_iff_left`, `O` a domain, `π ≠ 0`); `N−j ≥ 1` gives `π ∣ y−y'`.
+2. realization: `π ∣ y−y'` gives `π^(j+1) ∣ π^j·(y−y')`, and `π^N ∣ π^(j+1)` by `pow_dvd_pow`.
+
+**SIZE.** 30 lines. **LANDED** `leanfinal/Uniformity/ChapG/G23R2.lean`.
+
+**SOURCE.** None — derived at this amendment. The digit vocabulary is `EFF.W11.15`'s
+(`c₁ = digit_k(A₁)`, `c₀ = digit_2k(A₀)`); nothing in W-11 states its well-definedness, which is
+precisely the gap §A-1's route (a) fell into at the *pair* level.
+
+**TEETH.** none of its own.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE G.23R3 [def+lemma] [fresh, added by AMENDMENT §A-8]
+
+**STATEMENT.** *The residual translation action, and the two invariant classes.* `transPair d p`
+is the coefficient pair of `R(y+d)` for `R(y) = y² + p.2·y + p.1`, i.e. §A-1's
+`(b₀, b₁) ↦ (b₀ + b₁d + d², b₁ + 2d)`; a class is `TransInvariant` when closed under it. `AniForm`
+and `SepPair` are invariant (translation does not change how `R` factors) and both are disjoint
+from `DblPair`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Menu
+
+def transPair {K : Type*} [CommRing K] (d : K) (p : K × K) : K × K :=
+  (p.1 + p.2 * d + d * d, p.2 + 2 * d)
+
+def TransInvariant {K : Type*} [CommRing K] (P : Set (K × K)) : Prop :=
+  ∀ (d : K) (p : K × K), p ∈ P → transPair d p ∈ P
+
+theorem aniForm_transInvariant {K : Type*} [Field K] : TransInvariant {p : K × K | AniForm p}
+theorem sepPair_transInvariant {K : Type*} [Field K] : TransInvariant {p : K × K | SepPair p}
+theorem aniForm_not_dblPair {K : Type*} [Field K] {p : K × K} (h : AniForm p) : ¬ DblPair p
+theorem sepPair_not_dblPair {K : Type*} [Field K] {p : K × K} (h : SepPair p) : ¬ DblPair p
+```
+
+**DEPENDS.** G.38 (`AniForm`), G.39 (`SepPair`), G.40 (`DblPair`, `dblPair_inj`'s idea).
+
+**PROOF.**
+1. `aniForm_transInvariant`: a root `y` of the translated quadratic gives the root `y − d` of the
+   original — one `linear_combination`.
+2. `sepPair_transInvariant`: `(uv, u+v) ↦ ((u+d)(v+d), (u+d)+(v+d))` by `ring`, and `u ≠ v` gives
+   `u+d ≠ v+d` by `add_right_cancel`.
+3. `aniForm_not_dblPair`: `(y·y, y+y)` has the root `y`.
+4. `sepPair_not_dblPair`: from `uv = y²` and `u+v = 2y`, `(u−y)(v−y) = 0`, and either branch plus
+   the sum forces `u = v`.
+
+**SIZE.** 35 lines (6 signed declarations, all short). **LANDED**
+`leanfinal/Uniformity/ChapG/G23R3.lean`.
+
+**SOURCE.** §A-1's orbit computation (`qval_shift`/`qder_shift` ⇒ `y ↦ y + d̄`); `EFF.W11.16`'s
+row types are the invariants.
+
+**TEETH.** `W11-CENSUS` (the row types are translation-invariant — a fact the census table
+assumes and never states) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-C (binds its own `K`).
+
+---
+
+### NODE G.23R4 [def+lemma] [fresh, added by AMENDMENT §A-8]
+
+**STATEMENT.** *The route's three sets, and the preimage identity.* `resAdm π P k N` is §A-1's
+admissible set `S`: the `(value, derivative)` reads of shape `(π^(2k)·y₀, π^k·y₁)` with digit pair
+in `P`. `resTop π P k` is the same read at the levels `(2k+1, k+1)`. `resClassSet π P k N` is the
+certified set. And `resAdm = prodResFactor ⁻¹' resTop`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Menu
+
+def resTop (π : O) (P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)) (k : ℕ) :
+    Set (Res O (2 * k + 1) × Res O (k + 1)) :=
+  {x | ∃ y₀ y₁ : O,
+      x = (Ideal.Quotient.mk _ (π ^ (2 * k) * y₀), Ideal.Quotient.mk _ (π ^ k * y₁))
+        ∧ (IsLocalRing.residue O y₀, IsLocalRing.residue O y₁) ∈ P}
+
+def resAdm (π : O) (P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O))
+    (k N : ℕ) : Set (Res O N × Res O N) :=
+  {x | ∃ y₀ y₁ : O,
+      x = (Ideal.Quotient.mk _ (π ^ (2 * k) * y₀), Ideal.Quotient.mk _ (π ^ k * y₁))
+        ∧ (IsLocalRing.residue O y₀, IsLocalRing.residue O y₁) ∈ P}
+
+def resClassSet (π : O) (P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O))
+    (k N : ℕ) : Set (Coeff O 2 N) :=
+  {c | ∃ (a : Fin 2 → O) (γ b₀ b₁ : O), proj O 2 N a = c ∧
+      qval a γ = π ^ (2 * k) * b₀ ∧ qder a γ = π ^ k * b₁ ∧
+      (IsLocalRing.residue O b₀, IsLocalRing.residue O b₁) ∈ P}
+
+theorem resAdm_eq_preimage (hπ : Irreducible π) {P} {k N : ℕ}
+    (h₀ : 2 * k + 1 ≤ N) (h₁ : k + 1 ≤ N) :
+    resAdm π P k N = prodResFactor (O := O) h₀ h₁ ⁻¹' resTop π P k
+```
+
+**DEPENDS.** G.23R1, G.23R2 · landed `Res`, `resFactor_mk`, `qval`, `qder`, `proj`.
+
+**PROOF.** (⊆) `resFactor_mk` on both coordinates. (⊇) the private helper
+`exists_digit_of_resFactor`: lift `x.i` to `w ∈ O`; `π^(j+1) ∣ w − π^j·y` gives
+`w = π^j·(y + π·s)`, and `y + π·s` has the same digit.
+
+**Design note (the one decision §A-1 left open).** `resClassSet` is phrased with **explicit**
+`b₀ b₁` rather than through G.21's `residualPair` (whose `Classical.choose` witnesses are awkward
+at use sites); G.23R10 supplies the equivalence, so no consumer is constrained by the choice.
+
+**SIZE.** 40 lines (4 signed declarations + 1 private helper). **LANDED**
+`leanfinal/Uniformity/ChapG/G23R4.lean`.
+
+**SOURCE.** §A-1's `cert_𝒫` display, verbatim (`resAdm` refines `tangAdm π (2k) N` by the digit
+condition, which is A-1's conjunction).
+
+**TEETH.** none (definitions).
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE G.23R5 [lemma] [fresh, added by AMENDMENT §A-8]
+
+**STATEMENT.** *The TOP-level admissible set is a copy of `P`.* `#(resTop π P k) = #P`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Menu
+
+theorem card_resTop (hπ : Irreducible π)
+    (P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)) (k : ℕ) :
+    Nat.card (resTop π P k) = Nat.card P
+```
+
+**DEPENDS.** G.23R2, G.23R4 · landed `Ideal.Quotient.mk_surjective`.
+
+**PROOF.**
+1. take `sec := Function.surjInv` of `IsLocalRing.residue O` and map
+   `p ↦ (⟦π^(2k)·sec p.1⟧, ⟦π^k·sec p.2⟧)`; well defined because `residue (sec β) = β`.
+2. injective: G.23R2's uniqueness at `(j, N) = (2k, 2k+1)` and `(k, k+1)` (both `j < N`).
+3. surjective: G.23R2's realization at the same two places (both `N ≤ j+1`, with equality).
+
+**SIZE.** 35 lines. **LANDED** `leanfinal/Uniformity/ChapG/G23R5.lean`.
+
+**SOURCE.** §A-1's `#S = #𝒫 · q^(N−2k−1) · q^(N−k−1)` — this node is the `#𝒫` factor, isolated.
+
+**TEETH.** none of its own.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE G.23R6 [lemma] [fresh, added by AMENDMENT §A-8]
+
+**STATEMENT.** *§A-1's admissible count.* At `N = 2k+1+r` (so `N−2k−1 = r`, `N−k−1 = k+r`),
+`#(resAdm π P k N) = #P · q^(k+2r)` — subtraction-free.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Menu
+
+theorem card_resAdm (hπ : Irreducible π)
+    (P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)) (k r : ℕ) :
+    Nat.card (resAdm π P k (2 * k + 1 + r)) = Nat.card P * residueCard O ^ (k + 2 * r)
+```
+
+**DEPENDS.** G.23R1, G.23R4, G.23R5 · landed `residueCard_pos`.
+
+**PROOF.** `resAdm_eq_preimage` + `card_preimage_prodResFactor` + `card_resTop` give
+`X · q^(3k+2) = q^(k+2r) · q^(3k+2) · #P`; cancel the positive `q^(3k+2)`
+(`Nat.eq_of_mul_eq_mul_right`). Exponent bookkeeping by `omega` inside two `pow_add` rewrites.
+
+**SIZE.** 20 lines. **LANDED** `leanfinal/Uniformity/ChapG/G23R6.lean`.
+
+**SOURCE.** `EFF.W11.14`; §A-1's `#S` display.
+
+**TEETH.** `W11-CENSUS` / P-2 → **Lean theorem** (jointly with G.23R9).
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE G.23R7 [lemma] [fresh, added by AMENDMENT §A-8]
+
+**STATEMENT.** *The certificate bridge* (the route's analogue of G.18's `cert_iff_tang`). For
+`2k < N` and `k < N`, reading `proj O 2 N a` at the centre class `⟦γ⟧` lands in `resAdm π P k N`
+iff the **integral** value and derivative factor as `π^(2k)·b₀`, `π^k·b₁` with `(b̄₀, b̄₁) ∈ P`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Menu
+
+theorem resAdm_read_iff (hπ : Irreducible π) {P} {k N : ℕ} (h₀ : 2 * k < N) (h₁ : k < N)
+    (γ : O) (a : Fin 2 → O) :
+    readEquiv (Ideal.Quotient.mk _ γ) (proj O 2 N a) ∈ resAdm π P k N
+      ↔ ∃ b₀ b₁ : O, qval a γ = π ^ (2 * k) * b₀ ∧ qder a γ = π ^ k * b₁ ∧
+          (IsLocalRing.residue O b₀, IsLocalRing.residue O b₁) ∈ P
+```
+
+**DEPENDS.** G.04 (`readEquiv_proj`), G.23R2, G.23R4 · landed `mem_maximalIdeal_pow_iff_dvd`.
+
+**PROOF.**
+1. `readEquiv_proj` rewrites the read to `(⟦qval a γ⟧, ⟦qder a γ⟧)`.
+2. (→) the class equation gives `π^N ∣ qval a γ − π^(2k)·y₀`; since `2k ≤ N` this upgrades to
+   `π^(2k) ∣ qval a γ`, producing an integral `b₀`; G.23R2's uniqueness (here `2k < N` is used)
+   identifies `b̄₀ = ȳ₀`. Same at `k`.
+3. (←) immediate.
+
+**SIZE.** 30 lines. **LANDED** `leanfinal/Uniformity/ChapG/G23R7.lean`.
+
+**SOURCE.** G.18 step 2's shape; §A-1's `cert_𝒫`.
+
+**TEETH.** none of its own.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE G.23R8 [lemma] [fresh, added by AMENDMENT §A-8]
+
+**STATEMENT.** *The residual-class census datum at centre modulus `m = k`.* The three
+`card_certSet_gen` hypotheses for `cert γ c := readEquiv γ c ∈ resAdm π P k N`, discharged, plus
+the identification of the certified set with `resClassSet π P k N`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Menu
+
+theorem resCert (hπ : Irreducible π) {P} (hP : TransInvariant P) (k r : ℕ) :
+    ∃ cert : Res O (2 * k + 1 + r) → Coeff O 2 (2 * k + 1 + r) → Prop,
+      (∀ g c, cert g c ↔ readEquiv g c ∈ resAdm π P k (2 * k + 1 + r))
+      ∧ (∀ g g' c, cert g c → resFactor (O := O) (by omega : k ≤ 2 * k + 1 + r) g'
+            = resFactor (by omega : k ≤ 2 * k + 1 + r) g → cert g' c)
+      ∧ (∀ g g' c, cert g c → cert g' c → resFactor (O := O) (by omega : k ≤ 2 * k + 1 + r) g'
+            = resFactor (by omega : k ≤ 2 * k + 1 + r) g)
+      ∧ (∀ c, (∃ g, cert g c) ↔ c ∈ resClassSet π P k (2 * k + 1 + r))
+```
+
+**DEPENDS.** G.11, G.23R3, G.23R7 · landed `proj_surjective`, `Ideal.Quotient.mk_surjective`,
+`qval_shift`, `qder_shift`, `mem_maximalIdeal_pow_iff_dvd`.
+
+**PROOF.**
+1. `hcert` is `Iff.rfl`.
+2. **`hshift` at `m = k` — the point of the whole route.** `resFactor` equality gives
+   `γ' = γ + π^k·d`; `qval_shift`/`qder_shift` give `qval a γ' = π^(2k)·(b₀+b₁d+d²)` and
+   `qder a γ' = π^k·(b₁+2d)`, so the residual pair moves by `transPair d̄`, absorbed by `hP`.
+   (Residue is a ring hom; the two `map_add`/`map_mul` rewrites are explicit, not `simp`, because
+   `simp` mis-normalises `residue (2·d)`.)
+3. **`huniq` at `m = k` is G.11 verbatim**: `cert` gives `Tang π a (2k) γ` since `(2k+1)/2 = k`,
+   and `tang_centre_unique` returns `π^k ∣ γ' − γ`.
+4. the last conjunct is G.23R7 read in both directions on a lift of `c` and a lift of `g`.
+
+**SIZE.** 45 lines. **LANDED** `leanfinal/Uniformity/ChapG/G23R8.lean`.
+
+**SOURCE.** §A-1 ("`hshift` at modulus `m = k` now **holds**… `huniq` at `m = k` is G.11
+verbatim"); G.18's shape.
+
+**TEETH.** `W11-CENSUS` / P-2 → **Lean theorem** (jointly with G.23R9).
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE G.23R9 [theorem] [fresh, added by AMENDMENT §A-8] — **THE COUNT FORMULA**
+
+**STATEMENT.** **The replacement route's headline, and G.23a's replacement on the critical path.**
+At level `N = 2k+1+r`, the classes carrying a residual pair in a *translation-invariant* class `P`
+at a centre of depth `≥ 2k` number `#P · q^(2k+2r)` — i.e. `#P · q^(2N−2k−2)`.
+
+**SIGNATURE (landed byte-for-byte).**
+```lean
+namespace Uniformity.Density.Menu
+
+theorem card_resClassSet (hπ : Irreducible π)
+    {P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)}
+    (hP : TransInvariant P) (k r : ℕ) :
+    Nat.card (resClassSet π P k (2 * k + 1 + r))
+      = Nat.card P * residueCard O ^ (2 * k + 2 * r)
+```
+
+**DEPENDS.** G.23R6, G.23R8 · landed `UniformityCheck.card_certSet_gen` (`CensusGen.lean:64`).
+
+**PROOF.** `card_certSet_gen` at `m = k` on `resCert`'s family; rewrite the certified set by
+`resCert`'s last conjunct and the admissible count by G.23R6; then
+`q^k · (#P · q^(k+2r)) = #P · q^(2k+2r)`.
+
+**SIZE.** 20 lines. **LANDED** `leanfinal/Uniformity/ChapG/G23R9.lean`.
+
+**⚠ ARITHMETIC CROSS-CHECK.** At `P = {p | AniForm p}` (`#P = q(q−1)/2`, G.38) this is
+`((q−1)/2)·q^(2N−2k−1)` — **G.41's value, in both residue characteristics**, matching §A-1's
+two-column table (char ≠ 2: `(q−1)/2` orbits × `q^(2N−2k−1)`; char 2: `q−1` orbits ×
+`q^(2N−2k−1)/2`). The refuted G.23a would have given `q^(2N−2k−2)` per pair and `q²−q` pairs,
+i.e. a factor `q` too small per pair and a factor `q` (resp. `q/2`) over-counted in the union;
+this node has neither error because it never counts a single pair.
+
+**SOURCE.** `EFF.W11.09` (INERTDEEP/2SIDED/SPLIT rows), `EFF.W11.16` (the residual census),
+`EFF.W11.07`; §A-1's replacement-route display.
+
+**TEETH.** `W11-CENSUS` / P-2 (the residual-census rows on 30 census rows) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE G.23R10 [lemma] [fresh, added by AMENDMENT §A-8]
+
+**STATEMENT.** *G.21's computation rule, and `resClassSet` in `residualPair` coordinates.*
+Whenever the value and derivative factor explicitly, `residualPair h0 h1 = (b̄₀, b̄₁)`; hence
+`resClassSet` may be read either way.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Menu
+
+theorem residualPair_eq (hπ : Irreducible π) {k : ℕ} {a : Fin 2 → O} {γ b₀ b₁ : O}
+    (h0 : π ^ (2 * k) ∣ qval a γ) (h1 : π ^ k ∣ qder a γ)
+    (e0 : qval a γ = π ^ (2 * k) * b₀) (e1 : qder a γ = π ^ k * b₁) :
+    residualPair h0 h1 = (IsLocalRing.residue O b₀, IsLocalRing.residue O b₁)
+
+theorem mem_resClassSet_iff_residualPair (hπ : Irreducible π) {P} {k N : ℕ} {c : Coeff O 2 N} :
+    c ∈ resClassSet π P k N
+      ↔ ∃ (a : Fin 2 → O) (γ : O) (h0 : π ^ (2 * k) ∣ qval a γ) (h1 : π ^ k ∣ qder a γ),
+          proj O 2 N a = c ∧ residualPair h0 h1 ∈ P
+```
+
+**DEPENDS.** G.21, G.23R4.
+
+**PROOF.** `h0.choose_spec` and `e0` give `π^(2k)·h0.choose = π^(2k)·b₀`; cancel `π^(2k)`
+(`mul_left_cancel₀`, `π ≠ 0`), so the `Classical.choose` witness **is** `b₀` — an equality in `O`,
+not merely mod `𝔪`. Same at `k`. The membership equivalence is then bookkeeping.
+
+**SIZE.** 25 lines. **LANDED** `leanfinal/Uniformity/ChapG/G23R10.lean`. This discharges the
+"export the two computation rules" instruction of G.21's PROOF note.
+
+**SOURCE.** G.21's declared SIGNATURE defect and its repair instruction.
+
+**TEETH.** none of its own.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE G.23R11 [lemma] [fresh, added by AMENDMENT §A-8]
+
+**STATEMENT.** *A double-root-free residual class sits in the stratum of depth EXACTLY `2k`.* If
+no member of `P` is a `DblPair`, then `resClassSet π P k N ⊆ depthSet π N (2k)` for `2k+1 ≤ N`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Menu
+
+theorem resClassSet_subset_depthSet (hπ : Irreducible π)
+    {P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)}
+    (hP : ∀ p ∈ P, ¬ DblPair p) {k N : ℕ} (hN : 2 * k + 1 ≤ N) :
+    resClassSet π P k N ⊆ depthSet π N (2 * k)
+```
+
+**DEPENDS.** G.11, G.12, G.19, G.23R3, G.23R4 · landed `Tang_mono`, `qval_shift`, `qder_shift`,
+`mem_maximalIdeal_iff_dvd`.
+
+**PROOF.**
+1. `c ∈ tangSet π N (2k)` is immediate from the witnessing `(a, γ)`.
+2. suppose `c ∈ tangSet π N (2k+1)`, witnessed by `(a', γ')`; G.12 transfers to the lift `a`.
+3. G.11 puts `γ'` in `γ`'s coset mod `π^k`: `γ' = γ + π^k·d`.
+4. `qval a γ' = π^(2k)·(b₀+b₁d+d²)` and `qder a γ' = π^k·(b₁+2d)`; the depth-`(2k+1)`
+   divisibilities cancel `π^(2k)`, `π^k` and give `b̄₀ + b̄₁d̄ + d̄² = 0`, `b̄₁ + 2d̄ = 0`.
+5. hence `b̄₁ = −2d̄` and `b̄₀ = d̄²`, i.e. the pair is `((−d̄)(−d̄), (−d̄)+(−d̄))` — a `DblPair`,
+   excluded. (This is §A-1's observation that the *only* pair readable at depth `≥ 2k+1` is a
+   double-root pair, made precise at an arbitrary centre.)
+
+**SIZE.** 40 lines. **LANDED** `leanfinal/Uniformity/ChapG/G23R11.lean`.
+
+**SOURCE.** §A-1 ("`(0,0)` — the only pair that could be read at depth `≥ 2k+1` — is a
+double-root pair"), corrected for the centre translation.
+
+**TEETH.** none of its own; supplier for G.41/G.42.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE G.23R12 [lemma] [fresh, added by AMENDMENT §A-8]
+
+**STATEMENT.** *The two `O ↔ K` bridges.* The `O`-level `Anisotropic ![b₀, b₁]` is exactly
+`AniForm` of the residual pair; and `SepPair` of the residual pair is exactly the existence of a
+simple residual root, i.e. G.28's hypothesis pair. Both characteristic-free.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Menu
+
+theorem residue_eq_zero_iff_dvd (hπ : Irreducible π) (x : O) :
+    IsLocalRing.residue O x = 0 ↔ π ∣ x
+
+theorem aniso_iff_aniForm (hπ : Irreducible π) (b₀ b₁ : O) :
+    Anisotropic ![b₀, b₁] ↔ AniForm (IsLocalRing.residue O b₀, IsLocalRing.residue O b₁)
+
+theorem sepPair_iff_exists_simple_root (hπ : Irreducible π) (b₀ b₁ : O) :
+    SepPair (IsLocalRing.residue O b₀, IsLocalRing.residue O b₁)
+      ↔ ∃ z : O, π ∣ (z ^ 2 + b₁ * z + b₀) ∧ ¬ π ∣ (b₁ + 2 * z)
+```
+
+**DEPENDS.** G.39 · landed `Anisotropic`, `quadForm` (`QuadCert.lean:336,340`), `AniForm`,
+`aniForm_iff` (`AnisotropicForms.lean:55,59`), `mem_maximalIdeal_iff_dvd`, `not_dvd_of_isUnit`.
+
+**PROOF.**
+1. `aniso_iff_aniForm` (→): a residual root `ȳ` lifted to `u` makes `quadForm ![b₀,b₁] u 1 ∈ 𝔪`,
+   so anisotropy would force `1 ∈ 𝔪`. (←) is `exists_anisotropic`'s inner argument via
+   `aniForm_iff`.
+2. `sepPair_iff_exists_simple_root` (→): with `p = (uv, u+v)`, lift `−u` to `z`; then
+   `z²+b₁z+b₀ ↦ u² − (u+v)u + uv = 0` and `b₁+2z ↦ v−u ≠ 0`. (←): from `ζ²+β₁ζ+β₀ = 0` and
+   `β₁+2ζ ≠ 0`, take `u := −ζ`, `v := β₁+ζ`; then `uv = β₀`, `u+v = β₁` and `u ≠ v`.
+
+**⚠ SIGN CONVENTION (read before consuming).** `AniForm`/`SepPair` key on `X² − b₁X + b₀`, while
+`qval`/`qder` read the residual quadratic `R(y) = y² + b₁y + b₀`. The two differ by `y ↦ −y`,
+which changes neither predicate; every landed statement above is in the `AniForm` convention on
+the left and the `qval` convention on the right, and the bridge absorbs the flip.
+
+**SIZE.** 40 lines (3 signed declarations). **LANDED**
+`leanfinal/Uniformity/ChapG/G23R12.lean`.
+
+**SOURCE.** `EFF.W11.16` (the row predicates); G.26/G.27/G.28's `O`-level phrasing.
+
+**TEETH.** `HEX3-CHAR` (`EFF.HEX3.49`: the loci differ across characteristics, the counts do not)
+→ **Lean theorem**, in the sense that the bridge is stated with no characteristic hypothesis.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### A-8.1 — how G.41 and G.42 assemble (for the wave that owns them; NOT landed here)
+
+Both are `card_resClassSet` + one set identity + G.38/G.39. **The arithmetic leg was
+machine-checked at this append** (scratch `example`, not landed): given
+`inertStratum π (2k+1+r) k = resClassSet π {p | AniForm p} k (2k+1+r)`, the chain
+
+```
+2·#inertStratum + q^(2k+2r+1)
+  = (2·#{p | AniForm p} + q)·q^(2k+2r)        -- card_resClassSet + pow_succ
+  = (q·q)·q^(2k+2r)                            -- G.38 two_mul_card_aniForm
+  = q^(2k+2r+2)
+```
+
+type-checks verbatim, `Nat.card ↥{p | AniForm p}` unifying definitionally with G.38's
+`Nat.card {p // AniForm p}`. G.42 is the same with `SepPair` and G.39.
+
+The remaining obligation is the **set identity**, whose two halves are both supplied:
+
+* `⊇`: `resClassSet {p | AniForm p} ⊆ depthSet π N (2k)` by G.23R11 with
+  `aniForm_not_dblPair` (G.23R3), and `DecidedAt … inertType` by G.27 `decidedAt_inert_of_ani`
+  fed through `aniso_iff_aniForm` (G.23R12); the window hypothesis `2k+1 ≤ N` is exactly §A-2's
+  amended one, available at `r = 0`.
+* `⊆`: a class of depth exactly `2k` has a witnessing centre; G.26 `depth_even_dichotomy` splits
+  anisotropic (done) from a simple residual root, and the latter is `splitType`-decided by G.28,
+  contradicting inert-decidedness through the landed `decidedSet_disjoint`.
+* for G.42 replace `AniForm`/G.27/`aniso_iff_aniForm` by `SepPair`/G.28/
+  `sepPair_iff_exists_simple_root` and run the same two halves.
+
+**G.41's `⚠ RE-DERIVATION TARGET` note stands unchanged**: `leancheck`'s `card_inertSet` is the
+same statement by a different route, and remains a sanctioned fallback. It is no longer needed as
+a rescue — the filtration route now has a complete supply line — but it is still the decorrelated
+check, and §A-4's rider 2 (G.47 must record BOTH routes) is untouched.
+
+---
+
+### Amendment bookkeeping (fourth append)
+
+| item | obstruction | verdict | nodes touched | files changed |
+|---|---|---|---|---|
+| A-8 | §A-1's replacement route existed only as prose; G.41–G.51 gated | **route expanded and LANDED** as 12 nodes / 25 declarations, no step resisted | **G.23R1–G.23R12 NEW**; G.23's banner gains a pointer; G.41/G.42 keep their statements and gain a complete supply line | `leanfinal/…/ChapG/G23R{1..12}.lean` (12 new), `leanfinal/…/ChapG.lean`, `leanspec/Leanspec/ChapG.lean` |
+
+Declaration census: **135** (110 + 25). Contract count in `leanspec/Leanspec/ChapG.lean` rises to
+135 accordingly, with all 25 signed **and immediately retired** to the
+`example := <landed name>` form (they land in the same unit that signs them).
+
+**G.23's standing BLOCK is now scoped, not cleared.** `card_resStratum` (G.23a) remains
+**REFUTED and withdrawn** — nothing here revives it — and `depthSet_eq_iUnion_resStratum` (G.23b)
+remains **unlanded** (true as stated, union not disjoint; no consumer needs it now that the route
+does not go through per-pair strata). What is cleared is the *consequence* of the block: G.41 and
+G.42 are no longer waiting on G.23.
+
+**Verification performed for this append.** `leanfinal` builds green (8657 jobs) and
+`sorry`-free with all twelve modules wired into the `Uniformity.ChapG` roll-up; every one of the
+25 declarations reports `[propext, Classical.choice, Quot.sound]` (Lean core only; `transPair`
+and `TransInvariant` report `[propext]` alone). `leanspec` builds green with all 25 retired to
+the `example := <landed name>` form, which machine-checks that the landed types are the signed
+ones. No new axiom, no `sorry`, no statement of any pre-existing node changed.
