@@ -857,7 +857,185 @@ mathematical assumption of the Lean capstone. **What this does NOT say:** nothin
 generalizes the INFORMAL corpus's uses — the informal Display A keeps its conjunct untouched;
 this reconciliation is about what the LEAN chain rests on.
 
-<!-- RESUME: §4 complete (I.01–I.11). Next: §5 COND resolutions, §6 assembly. -->
+---
+
+## 5. §5 — THE COND RESOLUTIONS (DAG_README flag 6, discharged)
+
+The 0c DAG carried three Display-A conjuncts that matched no ledger row, as `COND:` orphan
+nodes. Each is now either tied to an existing row's content or given the formal carrier it
+lacked — "each COND orphan either gets a row or is proved equal to an existing row's content"
+(Brief I product (4)). All three resolutions are [note] nodes: their product is DAG rows +
+this record, no Lean.
+
+### NODE I.12 [note] — `COND:A2_n` RESOLVED
+
+`A2_n` **is** ledger row HYP.27's content, and its formal carrier is **landed**:
+`Uniformity.Density.DrainageAt n` (`Statement.lean:118`). The 0c matcher missed it because
+HYP.27's title is "`A2` drainage" (no `_n` suffix) — a name-form miss, not a missing row.
+Status by degree: `n = 1, 2` PROVED (`drainage_one`, `drainage_two`); `n = 3` open (the
+HYP.08/09 frontier); `n ≥ 4` open (via H.98 ⇐ `InductionPackage`). DAG rows:
+`COND:A2_n → HYP.27`, `COND:A2_n → lean:DrainageAt` (via BP.I.12).
+
+### NODE I.13 [note] — `COND:A1_n` RESOLVED
+
+`A1_n` **is** ledger row HYP.26's content; its formal carrier is composed here as I.03
+(`MenuLawAt`), typed against chapter H's committed `A1Cell`/`A1Family` (H.93) — the
+strengthened (σ-labelled) predicate, whose closure is H.94. The 0c matcher missed HYP.26 for
+the same name-form reason. DAG rows: `COND:A1_n → HYP.26`, `COND:A1_n → BP.I.03`,
+`BP.I.03 → BP.H.93`.
+
+### NODE I.14 [note] — `COND:H-e)-window-pinning` RESOLVED
+
+The pinning conjunct **is** ledger row HYP.24's pinning half (the row's v4 SUPPLIER
+RE-SOURCED block is the authority: supplied by `LEMMA GENHN-3` + GENIND-2's consulted-height
+bound, NOT the off-route `(H-a)/(H-b)` leg). Formal carriers: I.05 (`WindowPinningAt`) +
+H.89 (the `e₁ = 2` discharge) + `StageInterface.hwin` (the carried general field). **Supplier
+gap recorded, not hidden:** `EFF.GENHN.29`'s cap/consultation clauses are consumed by
+committed H only at the (c) congruence bound (H.51) — orchestrator item O-2 books the missing
+transcription (§9.3). DAG rows: `COND:H-e)-window-pinning → HYP.24`,
+`COND:H-e)-window-pinning → BP.I.05`, `BP.I.05 → BP.H.89`.
+(Literal DAG id: `COND:H-e)-window-pinning`, leading paren dropped [F7].)
+
+---
+
+## 6. §6 — THE ASSEMBLY (the structure fired through the landed and committed spine)
+
+> **Section contract.** Everything here is bookkeeping (honesty I-1): projections of I.10 and
+> applications of `UniformityStatement.ofDecided` (landed) / `uniformity_of_package` (H.98,
+> contract) / `totalMassOne_of_drainage` (landed). No theorem in this section makes the
+> capstone less conditional; each makes the conditionality MACHINE-READABLE.
+
+### NODE I.15 [theorem] [fresh]
+
+**STATEMENT.** *The drainage projection.* If `CapstoneHypotheses n` holds for every `n`, then
+`DrainageAt n` holds for every `n`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+theorem drainage_of_capstoneHypotheses
+    (h : ∀ n, CapstoneHypotheses n) : ∀ n, DrainageAt n
+```
+
+**DEPENDS.** I.10. **PROOF.** 1. `intro n; exact (h n).a2`. **SIZE.** 4 lines.
+**SOURCE.** Display A's `A2_n` conjunct; `Statement.lean:118`.
+**TEETH.** none (projection). **ENVIRONMENT.** ENV-I1.
+
+---
+
+### NODE I.16 [theorem] [fresh]
+
+**STATEMENT.** *The decided-target projection.* If `CapstoneHypotheses n` holds for every
+`n`, then `UniformityStatementDecided` holds. (The content: the `a0` fields ARE the
+degree-slices of the decided target; re-indexing is the whole proof. This is where the
+count layer's openness is made visible: nobody can supply `∀ n, CapstoneHypotheses n` today
+precisely because `a0`/`a1` are open at `n ≥ 3`.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+theorem decided_of_capstoneHypotheses
+    (h : ∀ n, CapstoneHypotheses n) : UniformityStatementDecided
+```
+
+**DEPENDS.** I.02, I.10 · landed `UniformityStatementDecided`.
+**PROOF.** 1. `intro n hn σ hσ`. 2. `exact (h n).a0 σ hσ` (the slice body is literal —
+`DecidedSliceAt` was copied from the landed target's body, so `exact` closes it; if
+elaboration balks on instance order, `peel`/`intro O` and reapply).
+**SIZE.** 6 lines.
+**SOURCE.** `Statement.lean:84`; I.02's body-copy discipline.
+**TEETH.** none. **ENVIRONMENT.** ENV-I1.
+
+---
+
+### NODE I.17 [theorem] [fresh]
+
+**STATEMENT.** *THE HONEST CAPSTONE ASSEMBLY.* If `CapstoneHypotheses n` holds for every `n`,
+then `UniformityStatement` holds. Proof = landed `UniformityStatement.ofDecided` on I.15 +
+I.16. **This is the chapter's terminal theorem**: the capstone modulo exactly the §4
+structure — every named cite, every named open hypothesis, nothing else.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+/-- **The capstone, modulo Display A.** `UniformityStatement` follows from the ledger's
+frozen hypothesis block and nothing else. What remains open is exactly the block's fields:
+see the chapter-I disposition table. -/
+theorem uniformity_of_capstoneHypotheses
+    (h : ∀ n, CapstoneHypotheses n) : UniformityStatement :=
+  UniformityStatement.ofDecided (drainage_of_capstoneHypotheses h)
+    (decided_of_capstoneHypotheses h)
+```
+
+**DEPENDS.** I.15, I.16 · landed `UniformityStatement.ofDecided` (check argument order:
+`(hd) (h)` per `Statement.lean:124`). **PROOF.** as displayed (term-mode). **SIZE.** 8 lines.
+**SOURCE.** `Statement.lean:124–131`; Brief I product (2).
+**TEETH.** gate I.24 prints its axiom footprint (must be Lean-core exactly, since every open
+input is a HYPOTHESIS, not an axiom — the design's whole point).
+**ENVIRONMENT.** ENV-I1.
+
+---
+
+### NODE I.18 [theorem] [fresh]
+
+**STATEMENT.** *`TotalMassOne`, not double-counted.* From the same structure, `TotalMassOne`
+— via the `a2` fields and landed `totalMassOne_of_drainage` ONLY (honesty I-4: the mass law
+is the drainage leg in disguise and gets no field of its own).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+theorem totalMassOne_of_capstoneHypotheses
+    (h : ∀ n, CapstoneHypotheses n) : TotalMassOne :=
+  totalMassOne_of_drainage (drainage_of_capstoneHypotheses h)
+```
+
+**DEPENDS.** I.15 · landed `totalMassOne_of_drainage` (`Statement.lean:174`).
+**PROOF.** as displayed. **SIZE.** 5 lines.
+**SOURCE.** `Statement.lean:166–176`; ledger synthesis note (v5 dedup: "not a strengthening
+of the capstone — the drainage leg wearing a different hat").
+**TEETH.** none. **ENVIRONMENT.** ENV-I1.
+
+---
+
+### NODE I.19 [note] — THE PACKAGE ROUTE (H.98 consumed, not re-proved)
+
+The second assembly route is CHAP-H's committed pair, consumed by name and NOT re-exported
+(one-public-declaration discipline; a verbatim re-export adds a name, not content):
+
+* `Uniformity.Density.drainage_of_package : (∀ n, InductionPackage n) → ∀ n, DrainageAt n`
+  (H.98) — the rate route to the `a2` fields;
+* `Uniformity.Density.uniformity_of_package : UniformityStatementDecided →
+  (∀ n, InductionPackage n) → UniformityStatement` (H.98) — the package form of I.17.
+
+Base cases at HEAD-of-contract: `package_two` UNCONDITIONAL (H.96, a chapter-G payoff);
+`package_three_of_rate` (H.97's adopted form — `package_three_of_drainage` is DECLARED
+UNPROVABLE by H.97's own ⚠ and **must not be assigned**). **The GENIND.B fence applies in
+full (honesty I-2): no node here or anywhere composes `InductionPackage n` for `n ≥ 4`.**
+DAG rows tie this note to BP.H.95–H.98 and HYP.27/30.
+
+### NODE I.20 [note] — THE STAGE DISPLAY (what fires at each stage of discharge)
+
+The honest "capstone modulo …" statement at each stage, for the record and for §12's teeth:
+
+| stage | fires | modulo (named) |
+|---|---|---|
+| **S0 — today, landed** | `n = 1`: drainage, total mass (`drainage_one`, `totalMass_one`); `n = 2`: drainage, total mass, the exact densities, THE CAPSTONE SLICE (`drainage_two`, `totalMass_two`, `genuineDensity_two_exact`, `uniformityStatement_two`); `q`-instances at `q = 2, 3` (`gate_two_padic_*`) | nothing — unconditional, Lean-core |
+| **S1 — chapters B–H land** | the leaf layer, the schema, the rate calculus, `package_two`, the σ-μ2 chain, the count laws at order 1 | the gate-(b) cites (C.66/C.92/C.94) where consumed |
+| **S2 — the `n = 3` frontier closes** | `DrainageAt 3` (via H.97+H.98), cubic total mass unconditionally | `hrate₃` (HYP.08) + the cubic value layer (HYP.11/28/29) for the `n = 3` capstone slice |
+| **S3 — the open surface** | `UniformityStatement` via I.17 | **exactly the §4 field list**: LB1, MP1, HE7A instantiations, ∀ i ≥ 3 deep-twist/𝒲, A0/A1 at every degree, JD0-BOX-2, GENHN-BOX-2 (n≥6), window pinning, GENHN-HE (n≥6), GENHN-TOW-1 (n≥8) — i.e. §3's 36 OPEN-MATH rows + 2 CITEs, and nothing else |
+
+**No stage claims more than its row.** The sentence a report may use verbatim: *"proved
+unconditionally at `n ≤ 2`; at general `n` the capstone is machine-checkably equivalent to
+the frozen Display-A block, whose open rows are enumerated at §3 census: 36 OPEN-MATH + 2
+CITEs + 7 chapter-I audit items."*
+
+<!-- RESUME: §§5–6 complete. Next: §7 core-set audits, §8 gates. -->
+
 
 
 
