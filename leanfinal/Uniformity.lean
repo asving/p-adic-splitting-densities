@@ -2,6 +2,7 @@ import Uniformity.Basic
 import Uniformity.HenselFactorization
 import Uniformity.MultiHensel
 import Uniformity.StrongHensel
+import Uniformity.Quarry
 import Uniformity.Density.LocalData
 import Uniformity.Density.CensusGen
 import Uniformity.Density.Transport
