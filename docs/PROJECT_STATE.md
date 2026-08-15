@@ -4757,3 +4757,20 @@ environment — grows chapter-by-chapter with the blueprints);
 HEX3 — supplier-first fleet order, richest landed-Lean support,
 transcription-grade). The chapter blueprints ARE stage 3 of the
 /goal; the fleet (stage 4) fires per chapter behind its stub gate.
+
+**2026-08-15 DATED APPEND #55 — THE STUB GATE EARNS ITS KEEP; STAGE
+4 FIRES.** ChapG stub gate: 109/110 signed, leanspec build green;
+blueprint defects D1–D5 caught mechanically. THE HEADLINE: **G.23
+REFUTED pre-fleet** — neither blueprint route correct; the count
+formula held only at q=2 (where every numeric check ran — the
+coincidence-regime trap again, cf. HE6 F-1); counterexample
+brute-forced at ℤ_[3]; replacement route (translation-invariant
+residual class at m=k) derived, GOVERNS by dated amendment, and
+shortens the critical path. G.28's hypothesis weakened to its true
+2k+1 form (its "fallback" was never available); G.39 reconciliation
+VERIFIED (do-not-correct); G.43 non-circular with the decorrelated-
+leg rider. dag_build.py merge step landed (idempotent, byte-stable).
+**WAVE 1 OF THE G FLEET LAUNCHED — the /goal's stage 4**: 19
+layer-0 nodes, two sonnet batches, blueprint-signature-as-contract,
+per-node commits, nodes land in leanfinal/Uniformity/ChapG/. G.28's
+amended stub gates wave 2.
