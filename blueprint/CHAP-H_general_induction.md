@@ -457,21 +457,30 @@ Six things, and they are the chapter's actual mathematical content:
 | 15 | — | leanspec stub list (stage 0e) |
 | 16 | — | teeth dispositions; flagged for the codex cross-read |
 
-**Kind census:** 17 `def`, 52 `lemma`, 25 `theorem`, 2 `structure`-bearing `def` nodes counted as
-`def`, 3 `gate` — **99 nodes**.
-**Landed-node census:** 0 nodes are `landed:`; **41 distinct landed declarations** are consumed by
-name across the DEPENDS fields (28 from chapter A's kernel, 13 from chapter G's `ChapG/` layer).
+**Kind census** (mechanically counted over this file's `### NODE` headings): 15 `def`, 62 `lemma`,
+18 `theorem`, 3 `def+lemma`, 1 `gate` — **99 nodes**. Three of the `def` nodes carry a `structure`
+(H.01 `GenreDatum`, H.09 `StageInterface`, H.59 `TriangularUnitPivot`), one carries an `inductive`
+(H.73 `StageLeaf`; H.88 and H.91 carry two more inside `def+lemma`/`lemma` nodes).
+**Landed-node census:** 0 nodes are `landed:` or `quarry:` — **every chapter-H node is `fresh`**
+(honesty item H-15). Landed declarations are consumed by name in the DEPENDS fields: ~55 from
+chapter A's kernel and 13 from chapter G's `ChapG/` layer, of which **4 exist as `lean:` DAG nodes**
+and **8 as `BP.G.*` DAG nodes** (§14 records the gap).
 **Split-mandated nodes** (the fleet will see more than 99 units of work): H.20 → 2, H.26 → 2,
-H.63 → 2, H.70 → 2, H.71 → 3, H.94 → 3, plus the split *candidates* flagged at H.05, H.31, H.53,
-H.58, H.72, H.82, H.83, H.95. Planning figure for the fleet: **≈ 115 Lean files.**
+H.46 → 2, H.63 → 2, H.70 → 2, H.71 → **3**, H.93 → 2, H.94 → **3**, plus the split *candidates*
+flagged at H.05, H.31, H.53, H.58, H.72, H.82, H.83. Planning figure for the fleet:
+**≈ 112 Lean files.**
 
-**Graph shape** (computed from the DEPENDS fields, `spec/DAG_BLUEPRINT_H.tsv`): 214 intra-chapter
-edges, **acyclic**, **critical path 11**, layer widths
-`38, 21, 13, 9, 6, 4, 3, 2, 1, 1, 1`. **Thirty-eight nodes are fireable immediately** (they depend
-only on landed API or on nothing) — the widest layer-0 in the project so far, and the direct payoff
-of putting the arithmetic layer first. The critical path runs
-`H.01 → H.09 → H.65 → H.67 → H.71 → H.72 → H.95 → H.96 → H.98 → H.99`, i.e. through the schema into
-the rate calculus and out to the capstone; H.71 (the lexicographic closure) is the schedule risk.
+**Graph shape** (computed mechanically from this file's DEPENDS fields into
+`spec/DAG_BLUEPRINT_H.tsv`): **118 intra-chapter edges over 99 nodes, ACYCLIC, critical path 6
+edges (7 layers)**, layer widths `40, 25, 18, 10, 3, 2, 1` (layer 0 = terminal supply, i.e. fireable
+immediately). **Forty nodes are fireable immediately** — the widest layer-0 in the project so far,
+and the direct payoff of putting the arithmetic layer first (chapter G's was 19 of 78; chapter H's is
+40 of 99). A longest chain is
+`H.01 → H.02 → H.08 → H.10 → H.54 → H.55 → H.56`, i.e. through the genre schema into the stage-lift
+layer. **The schedule risk is NOT the critical path** — it is the three heavy single nodes
+**H.60** (the back-substitution construction), **H.70** (`undecidedSeq_antitone`) and **H.71** (the
+lexicographic closure, split-mandated into three), each of which sits at depth ≤ 2 and can be
+claimed early.
 
 ---
 
@@ -3767,6 +3776,15 @@ the strong recursion fights, the sanctioned fallback (recorded as a RE-PLAN) is 
 `n`-induction version — `Φ` bijective on `Fin (n+1) → R` given bijective on `Fin n → R` — which is
 `Fin.snoc`-flavoured and avoids well-founded recursion.
 
+**⚠ [NEEDS-DERIVATION-EXPANSION] — step 2's recursion, routed to the cross-read (§16 item 12).** The
+corpus's derivation is one sentence (*"back-substitution solves any target slot by slot"*) and this
+blueprint's step 2 is a sketch of a Lean construction, not a transcription of a corpus derivation:
+`EFF.GENIND.156` supplies no recursion scheme, because in prose there is nothing to supply. The three
+Lean-specific decisions — (a) recurse on `ℕ` with a `tail`-extension and restrict, vs (b)
+`Fin.strongRecOn`, vs (c) the `n`-induction fallback — are **not** determined by the source, so a
+fleet agent must pick one and record it. **This is the chapter's only node whose PROOF is
+Lean-construction-grade rather than transcription-grade**, and it is flagged rather than dressed up.
+
 **SOURCE.** `EFF.GENIND.156`'s own proof, verbatim: *"Unit pivots are what license the S2.2 slot
 bookkeeping: back-substitution solves any target slot by slot (`input = c⁻¹·(target − earlier-part)`,
 `c⁻¹` existing because units of `O/π^w` invert), so the map is ONTO; and the fiber over every target is
@@ -4396,7 +4414,18 @@ theorem rate_close {Q m c : ℕ} (hQ : 2 ≤ Q) (hc : 1 ≤ c) (hm : 1 ≤ m)
 **SIZE.** 60+ lines. **SPLIT MANDATED into three nodes** (record as a RE-PLAN at claim time):
 **H.71a** the `K`-choice (step 1, a standalone real-polynomial lemma), **H.71b** the three leg bounds
 (steps 3–5, each a `calc`), **H.71c** the induction assembly (steps 2, 6). **This is the chapter's
-critical-path node and its schedule risk.**
+heaviest node and one of its three schedule risks.**
+
+**⚠ [NEEDS-DERIVATION-EXPANSION] — step 4's exponent recomposition, routed to the cross-read
+(§16 item 13).** The corpus's own audit **declares this step compressed**: *"The α-leg's two exponent
+forms are both correct at their own points but the passage does not spell out the intermediate step
+between them; the compiler re-derived it above. Recorded as a **compressed step, not a gap** — the
+arithmetic closes."* (`EFF.GENIND.153`). The 0a compiler's re-derivation is available and is quoted in
+that unit's audit block — *"`(Q−1)Q^{k·c(m)}·Q^{m(N−mk−1)}/Q^{m(N−1)} = (Q−1)Q^{−k·m(m+1)/2}` … since
+`km² − k·m(m−1)/2 = k·m(m+1)/2`"* — and H.16/H.17 land exactly that arithmetic. **A fleet agent must
+route step 4 through H.16 and H.17 rather than re-deriving inline**, and must state which of the two
+exponent forms each `have` carries. Flagged because the source's own display is thin at this one
+point, not because the arithmetic is in doubt.
 
 **SOURCE.** `EFF.GENIND.153` (`ANNEX-THEOREM GENIND.C′`, quoted in full in the spec, with its
 `[ar1, MINOR-1]` `c`-choice rider *"`c := c′ + 1` … `c′ = max(children's c, c₀)` is degree-induction
@@ -4870,7 +4899,1522 @@ oracle supplies the rest; recording that asymmetry is the point of the audit.
 
 **TEETH.** as H.78 → **Lean theorem** for the degree.
 
-<!-- APPEND-POINT -->
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+## 12. §12 — THE `n = 4` TEMPLATE (`GENH4`'s ALGEBRA)
+
+> `EFF.GENH4` is the template `GENHN` generalizes: *"its two genres are the `(2,1,2)` and `(1,2,2)`
+> instances of every statement below"* (`EFF.GENHN.05`). §12 lands its **algebra** — the development
+> identities, the budgets, the carry cancellation, the caps — all of which are `ring`/`omega` facts
+> in `leanfinal`'s own terms. Its repair history is honesty item **H-6**.
+
+### NODE H.80 [lemma] [fresh]
+
+**STATEMENT.** *The genre-E development identities.* In any commutative ring, for `s, α₁, α₀, β₁, β₀`:
+`(X² − s)² + (α₁X + α₀)(X² − s) + (β₁X + β₀)`
+`= X⁴ + α₁X³ + (α₀ − 2s)X² + (β₁ − sα₁)X + (β₀ − sα₀ + s²)`.
+So the four opening coordinates read `b₃ = α₁`, `b₂ = α₀ − 2s`, `b₁ = β₁ − sα₁`,
+`b₀ = β₀ − sα₀ + s²`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+open Polynomial in
+theorem quartic_dev_E {R : Type*} [CommRing R] (s a₁ a₀ b₁ b₀ : R) :
+    ((X ^ 2 - C s) ^ 2 + (C a₁ * X + C a₀) * (X ^ 2 - C s) + (C b₁ * X + C b₀))
+      = X ^ 4 + C a₁ * X ^ 3 + C (a₀ - 2 * s) * X ^ 2 + C (b₁ - s * a₁) * X
+        + C (b₀ - s * a₀ + s ^ 2)
+```
+
+**DEPENDS.** none · mathlib `Polynomial.C_mul`, `Polynomial.C_sub`, `ring`.
+
+**PROOF.** `push_cast [C_mul, C_sub, C_add, C_pow]` (or `simp only [map_sub, map_mul, map_add,
+map_pow]`) then `ring`.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENIND.68` (`LEMMA GENIND-4`, the four displayed identities *"`b₃ = α₁`,
+`b₂ = α₀ − 2s`, `b₁ = β₁ − sα₁`, `b₀ = β₀ − sα₀ + s²`"* and its proof *"the direct expansion of
+`(x²−s)² + (α₁x+α₀)(x²−s) + (β₁x+β₀)`"*), with the spec's own audit reproducing the expansion
+term by term and closing *"the four displayed identities … **exactly**"*.
+
+**⚠ THE PIVOTS ARE ALL `1`, AND THE SPEC SAYS WHY THAT MATTERS.** `EFF.GENIND.68`'s audit:
+*"Triangularity: each `b_j` is its A-coordinate plus terms in LATER coordinates ✓; the pivots are all 1
+— **note that this is precisely the unit-pivot condition ANNEX R R2 later requires globally** (`.36`),
+satisfied here by inspection."* So this node is the concrete witness that §9's `TriangularUnitPivot`
+is satisfiable, and a fleet agent may (should) build a `TriangularUnitPivot` instance from it.
+
+**TEETH.** `EFF.GENIND.68`'s disposition is `accepted-with-decorrelation-supplied` (the QSCOUT22
+`Q22-B` cross-derivation, *"the two derivations were made independently — the numbers agree, disclosed
+as a cross-check, not two units citing one computation"*) plus an arithmetic recount →
+**Lean theorem**.
+
+**ENVIRONMENT.** ENV-H5.
+
+---
+
+### NODE H.81 [lemma] [fresh]
+
+**STATEMENT.** *The genre-F development identities.* In any commutative ring, for
+`p₁, p₀, α₁, α₀, β₁, β₀`, the four coefficients of
+`(X² + p₁X + p₀)² + (α₁X + α₀)(X² + p₁X + p₀) + (β₁X + β₀)` are
+`b₃ = 2p₁ + α₁`, `b₂ = p₁² + 2p₀ + α₁p₁ + α₀`, `b₁ = 2p₁p₀ + α₁p₀ + α₀p₁ + β₁`,
+`b₀ = p₀² + α₀p₀ + β₀`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+open Polynomial in
+theorem quartic_dev_F {R : Type*} [CommRing R] (p₁ p₀ a₁ a₀ b₁ b₀ : R) :
+    ((X ^ 2 + C p₁ * X + C p₀) ^ 2 + (C a₁ * X + C a₀) * (X ^ 2 + C p₁ * X + C p₀)
+        + (C b₁ * X + C b₀))
+      = X ^ 4 + C (2 * p₁ + a₁) * X ^ 3 + C (p₁ ^ 2 + 2 * p₀ + a₁ * p₁ + a₀) * X ^ 2
+        + C (2 * p₁ * p₀ + a₁ * p₀ + a₀ * p₁ + b₁) * X + C (p₀ ^ 2 + a₀ * p₀ + b₀)
+```
+
+**DEPENDS.** none · as H.80.
+
+**PROOF.** `simp only [map_add, map_mul, map_pow, map_ofNat]` then `ring`.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.GENH4.15` (`LEMMA GENH4-1F`, the four displayed relations verbatim, and its proof
+*"The relations are the expansion of `φ² + A₁φ + A₀`"*), with the spec's audit: *"the `x³` coefficient
+is `2p₁ + α₁` ✓; the `x²` coefficient is `p₁² + 2p₀ + α₁p₁ + α₀` ✓; the `x¹` coefficient is
+`2p₁p₀ + α₁p₀ + α₀p₁ + β₁` ✓; the `x⁰` coefficient is `p₀² + α₀p₀ + β₀` ✓ — **all four displayed
+relations exact.**"*
+
+**⚠ BOTH CHARACTERISTICS, BY CONSTRUCTION.** `EFF.GENH4.15`'s proof closes *"both characteristics (at
+`p = 2` the pins `2ĉ₁π^k` etc. degenerate, the budgets do not — the cancellations are universal
+identities)"*. A `ring` identity in a bare `CommRing` is exactly that claim, with no `p ≠ 2`
+hypothesis — so this node discharges the corpus's characteristic-uniformity claim for the development
+layer outright.
+
+**TEETH.** `GH-FEVEN [SAME]` (`EFF.GENH4.15`: the constructed locus is *"built THROUGH the GENH4-1F
+development map (validating it constructively)"*) plus `GH-JSONTIE`'s F rows → **Lean theorem**.
+Disposition note: *"The run-1 RED was a defect in exactly that construction, which is itself evidence
+the map is exercised hard."*
+
+**ENVIRONMENT.** ENV-H5.
+
+---
+
+### NODE H.82 [lemma] [fresh]
+
+**STATEMENT.** *The genre-E budgets and the free-digit total.* For `h = 2t+1` and `N ≥ 4t+3`: the
+four budget floors are `v(α₁) ≥ t+1`, `v(α₀) ≥ 2t+2`, `v(β₁) ≥ 3t+2`, `v(β₀) ≥ 4t+3` (the corpus's
+`(h+1)/2, h+1, (3h+1)/2, 2h+1`), and the four free-digit counts sum to `4N − 5h − 3` (H.39).
+Additionally the two `min` computations are exact:
+`min (2*(t+1) + (2t+1)) (2*(2t+2)) = 4t+3 = 2h+1` and
+`min (2*(3t+2) + (2t+1)) (2*(4t+3)) = 8t+5 = 4h+1`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem quartic_floors_E (t : ℕ) :
+    (2 * t + 1 + 1) / 2 = t + 1 ∧ (2 * t + 1) + 1 = 2 * t + 2 ∧
+    (3 * (2 * t + 1) + 1) / 2 = 3 * t + 2 ∧ 2 * (2 * t + 1) + 1 = 4 * t + 3
+
+theorem quartic_node_E (t : ℕ) :
+    min (2 * (t + 1) + (2 * t + 1)) (2 * (2 * t + 2)) = 2 * (2 * t + 1) + 1 ∧
+    min (2 * (3 * t + 2) + (2 * t + 1)) (2 * (4 * t + 3)) = 4 * (2 * t + 1) + 1
+```
+
+**DEPENDS.** H.39.
+
+**PROOF.** both `by omega` (`omega` handles `min` and `ℕ`-division by 2 natively).
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENIND.68` (the budgets *"`v(α₁) ≥ (h+1)/2`, `v(α₀) ≥ h+1`, `v(β₁) ≥ (3h+1)/2`,
+`v(β₀) ≥ 2h+1`"* and the node computation *"`dv(A₁) ≥ min(2·(h+1)/2 + h, 2(h+1)) = min(2h+1, 2h+2) =
+2h+1 = S+1`; `dv(A₀) ≥ min(2·(3h+1)/2 + h, 2(2h+1)) = min(4h+1, 4h+2) = 4h+1 = 2S+1`"*, with the
+`[r1, PE1-M4]` note that the sealed line's editing scar *"= 2h+1 = S+... = 2h+1"* is repaired and
+*"both minima now displayed, values unchanged"*), and the spec's audit reproducing both minima.
+
+**⚠ THE `β₁` MIN IS ATTAINED TWICE, AND THE SPEC FLAGS IT.** `EFF.GENIND.68`'s audit:
+*"`β₁ = b₁ + sα₁`: `v ≥ min((3h+1)/2, h + (h+1)/2) = min((3h+1)/2, (3h+1)/2) = (3h+1)/2` ✓ (the two
+are equal, so the min is attained twice — the display's "min" is exact)."* Landing it as a `min`
+identity rather than as an inequality preserves that information; an inequality-only node would lose
+the exactness.
+
+**ARITHMETIC AUDIT (recomputed fresh at `h = 1` and `h = 3`).** `h = 1` (`t = 0`): floors
+`1, 2, 2, 3`; node `min(2+1, 4) = 3 = 2h+1` ✓, `min(4+1, 6) = 5 = 4h+1` ✓. `h = 3` (`t = 1`): floors
+`2, 4, 5, 7`; node `min(4+3, 8) = 7 = 2h+1` ✓, `min(10+3, 14) = 13 = 4h+1` ✓. **`h = 3` is the cell
+where `GENH4.B`'s CORRECTION lives** (H.47), so both floor sets are checked exactly where the corpus's
+slip was.
+
+**TEETH.** `GT-DEPTH0`'s three `E4(1)` spots (the free-digit total is what they measure) →
+**Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.83 [lemma] [fresh]
+
+**STATEMENT.** *The genre-F budgets, the free-digit total, and the node.* For `k ≥ 1` and
+`N ≥ 4k+1`: the four floors are `v(α₁) ≥ k+1`, `v(α₀) ≥ 2k+1`, `v(β₁) ≥ 3k+1`, `v(β₀) ≥ 4k+1`; the
+four free-digit counts `(N−k−1) + (N−2k−1) + (N−3k−1) + (N−4k−1)` sum to `4N − 10k − 4`; and the node
+is `min(v(α₁)+k, v(α₀)) ≥ 2k+1`, `min(v(β₁)+k, v(β₀)) ≥ 4k+1` — the W-11 node `C(2S+1, S+1)` at
+`S = 2k`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem quartic_total_F {N k : ℕ} (hN : 4 * k + 1 ≤ N) :
+    (N - k - 1) + (N - 2 * k - 1) + (N - 3 * k - 1) + (N - 4 * k - 1) + (10 * k + 4) = 4 * N
+
+theorem quartic_node_F (k : ℕ) :
+    min ((k + 1) + k) (2 * k + 1) = 2 * k + 1 ∧ min ((3 * k + 1) + k) (4 * k + 1) = 4 * k + 1
+```
+
+**DEPENDS.** none.
+
+**PROOF.** both `by omega`.
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.GENH4.15` (`LEMMA GENH4-1F`, the budget space *"`v(α₁) ≥ k+1`, `v(α₀) ≥ 2k+1`,
+`v(β₁) ≥ 3k+1`, `v(β₀) ≥ 4k+1` — total `(N−k−1)+(N−2k−1)+(N−3k−1)+(N−4k−1) = 4N−10k−4`, EXACTLY the
+entry exponent (no over/undercount) — and the stage-initial node is `{v₁(A₁) ≥ 2k+1, v₁(A₀) ≥ 4k+1}` =
+the W-11 node `C(2S+1, S+1)` at `S = 2k` in `v₁`-units"*), with the spec's audit reproducing all of it
+and the cross-note check *"GENIND's `LEMMA GENIND-4` gives the E node `C(4h+1, 2h+1)` at `S = 2h` ✓ —
+**the same W-11 node shape at both genres**, with `S = 2h` and `S = 2k` respectively."*
+
+**⚠ WHY `N ≥ 4k+1` IS A HYPOTHESIS HERE (the admissibility floor).** `EFF.GENH4.06`'s `[r2]` rider:
+*"genre F requires `N ≥ 4k+1` (`v(B₀) = 4k` exact); below these the displayed slot-count/entry-exponent
+forms fail (e.g. at `(N,k) = (4,1)` the true slot count is 3 but `4N−10k−4 = 2`)"*. Without the
+hypothesis the `ℕ`-subtractions truncate and the identity is false — which is exactly the corpus's
+failure witness. **The hypothesis is at its true minimum**: `EFF.GENH4.06` records that
+`(Zp,7,5,k1)` sits at equality `N = 5 = 4·1+1`, so `4k+1 ≤ N` cannot be strengthened.
+
+**ARITHMETIC AUDIT (recomputed fresh at the two equality rows).** `(N,k) = (5,1)`:
+`(5−1−1)+(5−2−1)+(5−3−1)+(5−4−1) = 3+2+1+0 = 6` and `4·5−10−4 = 6` ✓ — **the floor-adjacent cell,
+where the last coordinate contributes ZERO free digits**. `(N,k) = (6,1)`: `4+3+2+1 = 10` and
+`24−10−4 = 10` ✓. `(N,k) = (4,1)` (**below** the floor): the true count is `3` (the corpus's witness)
+while `4·4−10−4 = 2` ✗ — and `quartic_total_F` is correctly **not applicable** there ✓. Node at
+`k = 1`: `min(2, 3) = 3`? — recompute: `min((k+1)+k, 2k+1) = min(3, 3) = 3 = 2k+1` ✓ (attained twice,
+as at genre E), and `min((3k+1)+k, 4k+1) = min(5, 5) = 5 = 4k+1` ✓.
+
+**TEETH.** `GH-JSONTIE`'s F rows (481/0) · `GH-FEVEN` (the constructed locus built through the
+development map) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.84 [lemma] [fresh]
+
+**STATEMENT.** *Both quartic nodes are the W-11 node `C(2S+1, S+1)`.* For `S : ℕ`:
+the genre-E node at `S = 2h` is `(4h+1, 2h+1) = (2S+1, S+1)`, and the genre-F node at `S = 2k` is
+`(4k+1, 2k+1) = (2S+1, S+1)` — one identity, two instantiations.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem w11_node_shape (S : ℕ) : 2 * S + 1 = 2 * S + 1 ∧ S + 1 = S + 1
+
+theorem w11_node_E (h : ℕ) : (4 * h + 1, 2 * h + 1) = (2 * (2 * h) + 1, (2 * h) + 1)
+
+theorem w11_node_F (k : ℕ) : (4 * k + 1, 2 * k + 1) = (2 * (2 * k) + 1, (2 * k) + 1)
+```
+
+**DEPENDS.** H.82, H.83.
+
+**PROOF.** all three `by norm_num` / `Prod.ext` + `omega`. (`w11_node_shape` is trivial and exists
+only to name the shape for the roll-up's readability; a fleet agent may drop it and land the two
+instances — record as a RE-PLAN.)
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.GENIND.68` (*"the W-11 refine node `C(2S+1, S+1)` ON THE NOSE, in stage units"*, with
+`S := 2h`); `EFF.GENH4.15` (*"= the W-11 node `C(2S+1, S+1)` at `S = 2k` in `v₁`-units"*).
+
+**⚠ WHY THIS NODE EXISTS AT ALL (the cross-chapter tie).** The claim *"the composite stage's
+stage-initial node is literally the `n = 2` refine node"* is the structural reason the corpus can run
+W-11's laws inside the stage (`CANDIDATE GENIND-5`, `EFF.GENIND.70`). It is **not** a deep fact — it is
+an arithmetic coincidence of the two `S`-substitutions — and landing it as a triviality is the honest
+transcription: `EFF.GENIND.70` is a **CANDIDATE, NOT PROVED**, and chapter H must not let the node
+coincidence look like evidence for the count-isomorphism. **A node that states or implies "the stage
+read IS the W-11 read" has upgraded a candidate and must be returned** (honesty item H-5(5)).
+
+**TEETH.** `GT-DEPTH0` at the E spots; `GH-JSONTIE` at the F rows → the shape is implicit in every
+count law; **Lean theorem** for the arithmetic only.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.85 [lemma] [fresh]
+
+**STATEMENT.** *The `dv`-parity separation at `e₁ = 2`.* For `h` odd and `v_a, v_b : ℕ`:
+`2*v_a + h` is odd and `2*v_b` is even, hence they are never equal — so
+`dv(a·x + b) = min(2*v_a + h, 2*v_b)` is attained at a unique coordinate and the ultrametric
+inequality is an equality.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem dv_parity_ne {h va vb : ℕ} (hh : Odd h) : 2 * va + h ≠ 2 * vb
+
+theorem dv_parity_min_unique {h va vb : ℕ} (hh : Odd h) :
+    min (2 * va + h) (2 * vb) = 2 * va + h ∨ min (2 * va + h) (2 * vb) = 2 * vb
+```
+
+**DEPENDS.** H.52 (the general `e₁` form; this is its `e₁ = 2` specialization by parity).
+
+**PROOF.**
+1. `dv_parity_ne`: `Odd (2*va + h)` (`Odd.add_even` / `Nat.odd_add`) and `Even (2*vb)`; an odd number
+   is not an even number (`Nat.odd_iff_not_even`).
+2. `dv_parity_min_unique`: `min_choice` / `rcases le_total`.
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.GENH4.19` (`LEMMA GENH4-2`(E), verbatim: *"`v(A(θ)) = min(v(a) + h/2, v(b))` EXACTLY —
+the min is uniquely attained (`2v(a)+h` odd, `2v(b)` even: distinct parities, no ties) … This is
+JC-LOAD's no-cancellation warrant holding BY PARITY — elementary, hence not consumed"*);
+`EFF.GENIND.68` (*"`dv`-arithmetic: `dv(a·x + b) = min(2v(a) + h, 2v(b))` (the root has `v = h/2`);
+`2v(b)` is even, `2v(a)+h` odd — distinct parities, no ties, one slot per integer `dv`"*).
+
+**⚠ WELD-FREE, AND THE SPEC SAYS SO TWICE.** `EFF.GENH4.19`'s DERIVATION: *"**No weld-corpus lemma is
+consumed** — the note's own claim, and the proof bears it out."* And `EFF.GENH4.05`'s division of
+consumption: *"the slot geometry and no-cancellation are RE-PROVED elementarily below"*. Chapter H's
+H.85 (and H.51–H.53) honour that: **no node of §§8, 12 cites `W-8`, `W-9` or `JC-LOAD`.** The one weld
+face in the corpus is `GENHN-4` layer 1 at `μ ≥ 3` (`HYP.148`), which has no node — honesty item
+H-5(3).
+
+**TEETH.** `GH-T-LAT` (the integer-only-ladder mutant, fired 19×) → **Lean theorem**; `GH-REFINE`
+(192,000/0, pointwise) exercises the min-formula at every refine event → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.86 [lemma] [fresh]
+
+**STATEMENT.** *The refine carry's height bound.* For `h ≥ 1`, `dμ ≥ 2h+1` and
+`2*v_{α₁} ≥ h+1`: both branches of the carry's height exceed `dμ`, i.e.
+`dμ < 2*(dμ − h)` and `dμ < 2*v_{α₁} + (dμ − h)`; hence
+`dμ < min (2*(dμ − h)) (2*v_{α₁} + (dμ − h))`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem carry_height_gt {h dμ va : ℕ} (hh : 1 ≤ h) (hd : 2 * h + 1 ≤ dμ) (hva : h + 1 ≤ 2 * va) :
+    dμ < min (2 * (dμ - h)) (2 * va + (dμ - h))
+```
+
+**DEPENDS.** none.
+
+**PROOF.** `Nat.lt_min`; both branches by `omega` (first: `2(dμ−h) > dμ ⟺ dμ > 2h`, from `hd`;
+second: `2va + (dμ−h) ≥ (h+1) + (dμ−h) = dμ+1 > dμ`, using `h ≤ dμ` from `hd`).
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.GENH4.23` (§S5's proof of `LEMMA GENH4-4`, verbatim: *"`C = ŝ²π^{dμ−h} +
+α₁ŝπ^{(dμ−h)/2} ≠ 0` — THE CARRY, an even-parity (degree-0) contribution:
+`2v(C) ≥ min(2dμ−2h, 2v(α₁)+dμ−h) > dμ` (using `dμ ≥ 2h+1` and the budget `v(α₁) ≥ (h+1)/2`) — the
+carry lands at even heights STRICTLY ABOVE the odd-parity pin it could have threatened: JC-LOAD's
+no-cancellation, by parity, in print coordinates"*), with the spec's audit checking both branches:
+*"First branch: `2(dμ−h) > dμ ⟺ dμ > 2h` ✓ (given `dμ ≥ 2h+1` ✓). Second: `2v(α₁) + dμ − h ≥ (h+1) +
+dμ − h = dμ + 1 > dμ` ✓ (given `v(α₁) ≥ (h+1)/2` ✓). **Both branches strict, as claimed.**"*
+
+**TEETH.** `GH-REFINE [SAME]` (`EFF.GENH4.23`: **192,000/0** on 21,504 + 768 refine events across
+three rows and both characteristics, *"pointwise and digit-by-digit against a pinned foreign reader"* —
+*"the carry formulas are the single most heavily exercised computation in the note"*) →
+**Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.87 [lemma] [fresh]
+
+**STATEMENT.** *The three-term carry cancellation (the `z̄`-twist kill), both characteristics.* In any
+commutative ring, for `z, s, S₀` with `S₀ = z * s^2`:
+`S₀ + z*s^2 - 2*(z*s^2) = 0`. Equivalently, the collected `2dμ`-slot total is
+`S₀ + z*s² − 2z*s² = S₀ − z*s² = 0`; and in characteristic `2` the same total reads
+`S₀ + z*s² = 2*(z*s²) = 0`. Additionally the `A₁′` kill: `S₁ + 2*s = 0` given `S₁ = -(2*s)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem carry_cancel {R : Type*} [CommRing R] {z s S₀ : R} (h : S₀ = z * s ^ 2) :
+    S₀ + z * s ^ 2 - 2 * (z * s ^ 2) = 0
+
+theorem carry_cancel_char_two {R : Type*} [CommRing R] (hR : (2 : R) = 0) (z s : R) :
+    z * s ^ 2 + z * s ^ 2 = 0
+
+theorem refine_kill_A₁ {R : Type*} [CommRing R] {S₁ s : R} (h : S₁ = -(2 * s)) : S₁ + 2 * s = 0
+```
+
+**DEPENDS.** none.
+
+**PROOF.** all three: `subst`/`rw` then `ring` (the char-2 clause: `z*s² + z*s² = 2*(z*s²) = 0` by
+`hR`).
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENH4.23` (the signature computation, verbatim: *"`A₀′`'s `2dμ`-digit (even slot)
+collects THREE terms: `S₀` (its own), `+zs²` from `−C·p₀′` (the carry times the key's constant term:
+`−ŝ²π^{dμ−h}·(−ẑπ^h)`), and `−2zs²` from the `α₁`-component of `−C·p₀′` (nonzero only when the
+`S₁`-slot is attained): total `S₀ + zs² − 2zs² = S₀ − zs² = 0` since `S₀ = z·s²` ('1sq' with the
+twist) — **the `z̄`-twist cancels exactly against the carry × the key constant: W-9's cocycle
+multiplication computed in coordinates and equal to zero on the pin. In char 2 the same total reads
+`S₀ + zs² = 2zs² = 0`.**"*), with the spec's audit reproducing both the general and the char-2 totals,
+and the `A₁′` kill *"`S₁ + 2s` with `S₁ = −2s` ✓ gives 0 ✓, in every characteristic (char 2: `S₁ = 0`
+and `2s = 0` ✓)"*.
+
+**⚠ THE `W-9` MENTION IS A FRAME CITATION AND CHAPTER H DOES NOT CONSUME IT.** The corpus's sentence
+names W-9's cocycle as *what the computation is*, but the computation itself is a `ring` identity —
+which is precisely `EFF.GENH4.05`'s division of consumption (*"the slot geometry and no-cancellation are
+RE-PROVED elementarily below … so no weld face sits inside the count laws"*). This node is the
+elementary re-proof at `μ = 2`. **`GENHN-BOX-2`'s open item is the general-`μ` version**
+(`EFF.GENHN.55` item 2: *"an elementary general-μ refine-transfer display, retiring the weld face from
+inside the `μ ≥ 3` count laws"*) — **and it has no node here**, honesty item H-5(3).
+
+**⚠ AND: NO TYPE-PRESERVATION CLAIM.** `WZ-BOX-7` (honesty item H-11) establishes that the twist map
+`(S₁, S₀) ↦ (S₁, z̄S₀)` is **not** type-preserving, contradicting a parenthetical in frozen accepted
+text at `EFF.GENH4.20` and `EFF.GENHN.28`. This node's statements are *identities*, not bijection
+properties, so they are untouched by that defect. **A node stating "the twist is a type-preserving
+bijection" would reproduce a known-false sentence and must be returned.**
+
+**TEETH.** `GH-REFINE` (192,000/0, digit-by-digit) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H5.
+
+---
+
+### NODE H.88 [lemma] [fresh]
+
+**STATEMENT.** *`GENH4-CAP`'s trichotomy is pairwise disjoint and exhaustive.* For `N, w : ℕ`,
+exactly one of: **(a)** `2*w < N`; **(b)** `N ≤ 2*w ∧ Odd N`; **(c)** `N ≤ 2*w ∧ Even N`. Moreover
+the **refuted `r2` ordering** (which put "N odd ⟹ RAM" first, i.e. dropped (a)'s side condition) sends
+`(N, w) = (7, 3)` to branch (b) whereas the correct trichotomy sends it to (a).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- The three exits of the `dv0 = N` boundary read, with PAIRWISE-DISJOINT antecedents
+(`GENH4-CAP`, as re-derived at `[r3, PE3 MINOR 1]` from `GENH4-3(i)`'s own "else (ii)"). -/
+inductive CapBranch where | twoSided | ram | und
+  deriving DecidableEq
+
+def capBranch (N w : ℕ) : CapBranch :=
+  if 2 * w < N then .twoSided else if N % 2 = 1 then .ram else .und
+
+theorem capBranch_trichotomy (N w : ℕ) :
+    (capBranch N w = .twoSided ↔ 2 * w < N) ∧
+    (capBranch N w = .ram ↔ (N ≤ 2 * w ∧ N % 2 = 1)) ∧
+    (capBranch N w = .und ↔ (N ≤ 2 * w ∧ N % 2 = 0))
+
+theorem capBranch_seven_three : capBranch 7 3 = .twoSided
+```
+
+**DEPENDS.** none.
+
+**PROOF.** `capBranch_trichotomy`: `unfold capBranch`; `split_ifs` (three cases) and close each
+direction by `omega`. `capBranch_seven_three`: `by decide`.
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.GENH4.18` (`LEMMA GENH4-CAP`'s `[r3, PE3 MINOR 1]` re-derivation, verbatim: *"the
+reader's exits at `dv0 = N` are a trichotomy with PAIRWISE-DISJOINT antecedents (`w := dv(A₁)`):
+**(a)** `N > 2w`, EITHER parity → DECIDED 2SIDED(w, N−w) (two-side hull, shape-only); **(b)** `N ≤ 2w`,
+`N` ODD → DECIDED RAM(N) (the one-side shape and the stable value suffice, no residual consulted);
+**(c)** `N ≤ 2w`, `N` EVEN (`N = 2dμ`) → UND, the integer-slope read that would consume the
+out-of-window residual pair"*), and the three committed counter-key checks — including *"(a) vs (b) at
+`(Zp,2,7,k1)`, empty history: `2SIDED(3,4) = 384` (`N = 7` odd `> 2w = 6` → (a)) against
+`RAM(7) = 128` (`w ≥ 4` → (b)); **the r2 clause order predicts `512/0` — refuted by the committed
+artifact**"*.
+
+**⚠ THIS NODE IS THE REPAIR OF A REPAIR, AND THE LESSON IS LEDGERED IN THE SOURCE.** `EFF.GENH4.18`'s
+CONDITIONALITY: *"The most-repaired display in the accepted body, and the repair history is itself the
+finding. The chain: a FALSE sealed parenthetical → an `r2` restatement that **transcribed the
+verifier's own phrasing** and thereby dropped a side condition, producing OVERLAPPING antecedents →
+an `r3` re-derivation from the note's own `LEMMA GENH4-3(i)`, with pairwise-disjoint antecedents and
+three committed counter-key checks. **The lesson is ledgered in the note itself**: "the RAM clause
+dropped its one-side condition `u ≤ 2w`, transcribed from the PE2 verifier's own sentence (lesson
+ledgered: re-derive, never transcribe a verifier's phrasing)."*" Landing `capBranch` as a **total
+function with a proved trichotomy** makes overlapping antecedents impossible to express — the
+structural fix, not a spot repair.
+
+**ARITHMETIC AUDIT (all three committed checks, recomputed fresh).**
+**(b) at `(Zp,7,5,k1)`:** `RAM(5) = 2,117,682`; row total `21·7⁶ = 21·117,649 = 2,470,629` ✓, so RAM is
+`85.7%` ✓ = *"86% of that row"*; `w ≥ 2k+1 = 3` so `2w ≥ 6 > 5 = N` ⟹ **(a) unrealizable** ✓, key set
+`{RAM(5), UND}` with `2,117,682 + 352,947 = 2,470,629` ✓ **exact**.
+**(a) vs (b) at `(Zp,2,7,k1)`:** `2SIDED(3,4) = 384` with `2w = 6 < 7` → (a) ✓; `RAM(7) = 128` with
+`w ≥ 4` ⟹ `2w ≥ 8 > 7` → (b) ✓; the refuted `r2` ordering would send both to RAM, predicting
+`384 + 128 = 512` RAM and `0` 2SIDED ✓ — **refuted by the artifact** ✓, and `capBranch 7 3 = .twoSided`
+is the Lean form of the refutation.
+**(a) vs (c) at `(Zp,2,8,k1)`:** `2SIDED(3,5) = 1,536` with `2w = 6 < 8` → (a) ✓; `UND = 1,024 =
+512 + 512` → (c) ✓, matching H.48's even-`N` two-term law ✓.
+**All three reproduce exactly, and the refuted ordering is confirmed refuted by arithmetic.**
+
+**TEETH.** the three committed counter-key checks are an **`arithmetic recount`** against md5-pinned
+artifacts (`EFF.GENH4.18`'s disposition) — *"a display defect caught by comparing the display's
+predictions to committed numbers, the same instrument that caught the CRITICAL"* → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.89 [lemma] [fresh]
+
+**STATEMENT.** *The consulted heights sit strictly inside the window (OB-a's ledger at `e₁ = 2`).*
+For `h ≥ 1`, `N ≥ 1`: (i) a RAM read at odd `u ≤ 2N−1` consults position `(u−h)/2 ≤ N−1`; (ii) a
+2SIDED read at even `w ≤ 2N−2` consults position `w/2 ≤ N−1`; (iii) a SPLITEQ/INERT/REFINE read at
+`2dμ ≤ 2N−2` consults positions `dμ ≤ N−1` and `2dμ/2 ≤ N−1`. Consequently no read consults a height
+in the ragged band `[2N, 2N−2+h]`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem consulted_ram {u h N : ℕ} (hh : 1 ≤ h) (hu : u ≤ 2 * N - 1) (hN : 1 ≤ N) :
+    (u - h) / 2 ≤ N - 1
+
+theorem consulted_twoSided {w N : ℕ} (hw : w ≤ 2 * N - 2) : w / 2 ≤ N - 1
+
+theorem consulted_refine {dμ N : ℕ} (hd : 2 * dμ ≤ 2 * N - 2) : dμ ≤ N - 1
+
+theorem band_not_consulted {m N h : ℕ} (hband : 2 * N ≤ m) : ¬ (m ≤ 2 * N - 1)
+```
+
+**DEPENDS.** H.46 (the band's definition and cardinality).
+
+**PROOF.** all four `by omega`.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENH4.21` (`LEMMA GENH4-3`'s consulted-digit clause, verbatim: *"Every digit CONSULTED
+by any event sits strictly inside its coordinate's window, at BOTH parities: E: even consulted heights
+`≤ 2N−2` = the even window end; odd consulted heights `≤ 2N−1 ≤ 2N−2+h` = the odd window end (`h ≥ 1`)
+— **the H-2(i) inequality re-run on the ragged window: the consulted ceiling (the cap `2N`) lands below
+BOTH parities' ends, so no event ever reads a ragged-band digit**"*), and its proof's positions
+*"`u ≤ 2N−1` readable ⟹ positions `(u−h)/2 ≤ N−1` resp. `u/2 ≤ N−1`; SPLITEQ/INERT/REFINE consult `S₁`
+at `dμ ≤ N−1` and `S₀` at `2dμ ≤ 2N−2`"*, with the spec's audit reproducing each.
+
+**⚠ THIS IS `(OB-a)`'s DISCHARGE AT `e₁ = 2` AND ONLY THERE.** `EFF.GENIND.72`(OB-a) is the
+chain-level window coherence in `dv`-units at general stages: *"Until that ledger is written, deep
+stage histories might consult a ragged-band digit and break uniformity at the last `⌊h/2⌋`-ish window
+slots."* `EFF.GENH4.21` discharges it at the two quartic genres. The **general** case is
+`GENHN-CAP-GEN` (`EFF.GENHN.79`), a three-clause reader rule whose Lean form would be a chapter-H node
+if the reader were formalized — **it is not**, so `CAP-GEN` has no node and its content sits in
+`StageInterface`'s `hwin` (which is what its COUNT TRANSPORT delivers: *"Thus CS-1 and CS-2 hold at
+ordinary `f₁ ≥ 2`, `μ ≥ 3`, and mixed genres without a new box"*). **The `(OB-a)` disclosure at general
+stages is carried unchanged**; §16 item 3 flags it.
+
+**TEETH.** `GH-JSONTIE` + `GH-UND` (the trichotomy's leaf partition is what both compare against the
+committed table) → **Lean theorem** for the height arithmetic.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.90 [lemma] [fresh]
+
+**STATEMENT.** *Invariant maintenance along a chain (`e₁ = 2`).* Two clauses.
+(i) genre E, even `dμ`: the refine adds `π^(dμ/2)` to `p₀`, and `dμ ≥ 2h+2` gives `dμ/2 ≥ h+1`, so
+the added term is strictly deeper than `v(p₀) = h` and the invariant `v(p₀) = h` survives.
+(ii) genre E, odd `dμ`: the refine adds `π^((dμ−h)/2)` to `p₁`, and `dμ ≥ 2h+1` gives
+`(dμ−h)/2 ≥ (h+1)/2`, so `v(p₁) ≥ (h+1)/2` survives.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem invariant_even {dμ h : ℕ} (hd : 2 * h + 2 ≤ dμ) : h + 1 ≤ dμ / 2
+
+theorem invariant_odd {dμ h : ℕ} (hd : 2 * h + 1 ≤ dμ) : (h + 1) / 2 ≤ (dμ - h) / 2
+```
+
+**DEPENDS.** H.46 (the two floors are the slot strings' starts).
+
+**PROOF.** both `by omega`.
+
+**SIZE.** 6 lines.
+
+**SOURCE.** `EFF.GENH4.24` (*"**Invariant maintenance (used above, proved by the same display):**
+along any chain, `v(p₀) = h` exact with residue `−z` and `v(p₁) ≥ (h+1)/2` (E; refine adds `ŝπ^{dμ/2}`
+with `dμ/2 ≥ h+1` to `p₀`, or `ŝπ^{(dμ−h)/2}` with `(dμ−h)/2 ≥ (h+1)/2` to `p₁`) … Hence S2.1's ring
+invariants — and with them GENH4-2/-3 — hold at EVERY node of every history"*), with the spec's audit:
+*"E, even `dμ`: `dμ/2 ≥ h+1` requires `dμ ≥ 2h+2` ✓ (the even floor of `.17`) … E, odd `dμ`:
+`(dμ−h)/2 ≥ (h+1)/2` requires `dμ ≥ 2h+1` ✓ (the odd floor) ✓. **Both floors are exactly the string
+starts of `.17`** ✓ — the invariant maintenance and the slot geometry are the same arithmetic."*
+
+**⚠ WHY THIS TINY NODE IS LOAD-BEARING (the DEPENDS-completeness lesson).** `EFF.GENH4.24`'s
+CONDITIONALITY: *"**The induction that makes every per-node lemma apply at every node** — without it,
+`.19`/`.21` hold only at entry."* Every consumer of H.85/H.88/H.89 at a *deep* history node depends on
+it. It is the chapter-H analogue of chapter G's `G.30a` (the AMENDMENT §A-7 micro-node added because
+G.31's DEPENDS was incomplete): **land it, and name it in the DEPENDS of every chain-level statement.**
+
+**TEETH.** `GH-REFINE` (which walks chains) + `GH-JSONTIE` at every history → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.91 [lemma] [fresh]
+
+**STATEMENT.** *The leaf-law exponent shapes (the six genre-E leaves).* The six leaf laws of
+`THEOREM GENH4.A` have the letter/census factors `q−1` (RAM), `(q−1)²` (2SIDED),
+`splitEqCensus q` (SPLITEQ), `inertCensus q` (INERT), `q−1` (SPLTAIL), `1` (UND), and the two
+tail leaves' exponents both carry the band term `(h−1)/2`. Formalized as: the six factors are
+pairwise as listed, `splitEqCensus q + inertCensus q + (q−1) = ?` is **not** claimed, and the band
+term equals H.46's `raggedBand_card`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- The six decided/undecided leaf labels of a genre-E stage read, and their letter/census factors
+(`THEOREM GENH4.A`'s four-slot model, §S6.1's table). -/
+inductive LeafE where | ram | twoSided | splitEq | inert | splTail | und
+  deriving DecidableEq, Fintype
+
+def leafFactorE (q : ℕ) : LeafE → ℕ
+  | .ram      => q - 1
+  | .twoSided => (q - 1) ^ 2
+  | .splitEq  => splitEqCensus q
+  | .inert    => inertCensus q
+  | .splTail  => q - 1
+  | .und      => 1
+
+theorem leafFactorE_pos {q : ℕ} (hq : 3 ≤ q) (l : LeafE) : 0 < leafFactorE q l
+```
+
+**DEPENDS.** H.45.
+
+**PROOF.** `cases l` then `simp [leafFactorE, splitEqCensus, inertCensus]` and `omega` /
+`Nat.div_pos` on each (the `splitEq` branch needs `q ≥ 3`, which is why the hypothesis is `3 ≤ q` —
+see the note).
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.GENH4.25` (§S6.1's fixed-width leaf-law table, transcribed there per rule 14, with
+the six rows `RAM(u)`/`2SIDED(w, u−w)`/`SPLITEQ(dμ)`/`INERT(dμ)`/`SPLTAIL(w)`/`UND` and their
+factors and free-slot exponents).
+
+**⚠ THE `3 ≤ q` HYPOTHESIS IS HONEST, NOT DEFENSIVE.** `splitEqCensus 2 = 0`: over `F₂` there is one
+nonzero element, so the SPLITEQ leaf is **empty at `q = 2`** (H.45's note). Stating
+`leafFactorE_pos` at `2 ≤ q` would be **false**. This is another instance of the `q = 2` degeneracy
+the chapter's audit rule is about — here it makes a *hypothesis* rather than an audit column
+mandatory.
+
+**⚠ THE EXPONENTS ARE NOT FORMALIZED, AND WHY.** The table's free-slot exponents are
+`#A₀ slots > u + #A₁ slots s : 2s > u` etc. — counts on the slot strings of H.46, *"evaluated as affine
+functions of `(N, h, param)` on each parity stratum"*. Formalizing them means formalizing the strings'
+`Finset.filter` counts, which is H.46's job, and then one `Finset.card` computation per leaf: **six
+more nodes with little content and high `omega` cost.** The blueprint's decision: land the **factors**
+(this node, where the repaired CRITICAL lives — H.44) and the **band term** (H.46), and leave the
+per-leaf exponent evaluation to the count-law assembly, which is `W12`/`GENH4.A` content and outside
+chapter H (honesty item H-12). §16 item 5 flags the omission for the cross-read.
+
+**TEETH.** `GH-JSONTIE` (481/0, both directions) · `GH-FRESH` (54/0 on seven never-measured rows) ·
+`GH-T-LAT` (19) and `GH-T-CEN` (14) both fired → **Lean theorem** for the factors.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.92 [lemma] [fresh]
+
+**STATEMENT.** *The `(CS-2)` bracket at the two quartic genres (`GENH4` §S6.2), and the
+`GENIND`-normalization reconciliation.* Three clauses.
+(i) the subset-sum identity: `Σ_{H ⊆ D} L^{|H|} = (1 + L)^{|D|}` for a `Finset D`;
+(ii) genre E at `L = q−1`: `(1 + (q−1))^δ = q^δ`, and the telescope
+`1 + Σ_{j=1}^{δ} (q−1)*q^(j−1) = q^δ`;
+(iii) genre F at `L = q²−1`: `(1 + (q²−1))^μ = (q²)^μ`, and the macroscopic rate agreement
+`q^(2*Δ*μ) = (q²)^(Δ*μ)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem subset_sum_pow {ι : Type*} [DecidableEq ι] (D : Finset ι) (L : ℕ) :
+    ∑ H ∈ D.powerset, L ^ H.card = (1 + L) ^ D.card
+
+theorem bracket_telescope_E (q δ : ℕ) (hq : 1 ≤ q) :
+    1 + ∑ j ∈ Finset.range δ, (q - 1) * q ^ j = q ^ δ
+
+theorem macroscopic_rate (q Δ μ : ℕ) : q ^ (2 * (Δ * μ)) = (q ^ 2) ^ (Δ * μ)
+```
+
+**DEPENDS.** H.45 · mathlib `Finset.sum_pow_card_powerset` (or `Finset.prod_add`),
+`Finset.geom_sum_eq`.
+
+**PROOF.**
+1. `subset_sum_pow`: `Finset.prod_add`-style — `(1 + L)^{|D|} = Π_{i∈D}(1 + L) = Σ_{H⊆D} L^{|H|}`
+   (mathlib's `Finset.prod_add` expands a product of binomials into a sum over subsets). Alternatively
+   induct on `D`.
+2. `bracket_telescope_E`: `Finset.geom_sum_eq`-free route — `(q−1)*Σ_{j<δ} q^j = q^δ − 1` by
+   `Nat.pred_mul_geom_sum` / induction on `δ`; add `1`.
+3. `macroscopic_rate`: `pow_mul`, `ring`.
+
+**SIZE.** 20 lines. Clause 1 is the only nontrivial one; if `Finset.prod_add` is awkward, the
+`Finset.induction_on` proof is eight lines.
+
+**SOURCE.** `EFF.GENH4.26` (§S6.2, verbatim: *"Aggregating S6.1 over histories at a fixed leaf:
+`Σ_{H₂ ⊆ ladder ∩ (node, leaf)} L_G^{|H₂|} = Π_{ladder points p below the leaf}(1 + L_G) =
+(q^{f₁})^{#ladder points below}` — genre E: `q^{δ}` over the `δ` consecutive INTEGER `dv`-points
+available (density `e₁ = 2` per `v₁`-unit); as a per-advance bracket this is exactly GENIND-5's
+`b_stage(μ) = (q−1)q^{2μ−1}` in `v₁`-units (the last step carries the `(q−1)`, the interior points
+telescope: `1 + Σ(q−1)q^{j−1} = q^{δ}`); genre F: `(q²−1)(q²)^{μ−1}`. One macroscopic rate
+`q^{e₁f₁·Δμ} = q^{deg φ₂·Δμ}, two microscopic mechanisms (density vs alphabet) — QSCOUT22's S8
+paragraph, now a theorem. ∎"*), with the spec's audit reproducing all four identities.
+
+**⚠ THE `GENIND-5` COMPARISON IS A SHAPE MATCH, NOT A CONSUMPTION (again).** `EFF.GENH4.12`'s audit
+records the cross-note reconciliation in full: at genre E, `GENH4`'s `(q−1)q^{δ−1}` at `δ = 2μ` **IS**
+`GENIND`'s mass form `(q−1)q^{2μ−1}` ✓; at genre F, `GENIND`'s mass form `(q²−1)(q²)^{2μ−1}` differs
+from `GENH4`'s `(q²−1)(q²)^{μ−1}` by **exactly `(q²)^μ`, the ghost** ✓ — *"precisely as GENIND's
+declaration predicts. The two notes are consistent, and the discrepancy is the declared normalization
+difference, not an error."* Chapter H's `StageInterface.hbracket` is the **mass** form (H.09), so a
+genre-F instance must supply the ghost factor; H.21's reconciliation node is the check.
+
+**ARITHMETIC AUDIT (recomputed fresh at `q = 2` and `q = 3`).** Clause (ii) at `q = 2`, `δ = 3`:
+`1 + (1·1 + 1·2 + 1·4) = 8 = 2³` ✓. At `q = 3`, `δ = 3`: `1 + (2·1 + 2·3 + 2·9) = 1 + 26 = 27 = 3³` ✓
+— **the `q = 3` cell, where the `(q−1)` factor is `2` and the telescope is a genuine geometric sum.**
+Clause (iii) at `q = 2`, `Δμ = 2`: `2^4 = 16 = (2²)² = 16` ✓. At `q = 3`: `3^4 = 81 = 9² = 81` ✓.
+Clause (i) at `|D| = 3`, `L = 2`: `Σ_{H⊆D} 2^{|H|} = 1 + 3·2 + 3·4 + 8 = 27 = 3³` ✓.
+
+**TEETH.** `GH-BRACKET [SYM]` (`EFF.GENH4.26`, **157/0**: *"`Σ_{H⊆D}L^{|H|} = q^{f₁|D|}` integer
+identities (E and F ladders, ranges) + aggregated-vs-resolved key sums on the committed rows"*) →
+**Lean theorem** (this node is the general identity those 157 cells instantiate).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+## 13. §13 — THE ASSEMBLY
+
+### NODE H.93 [def] [fresh]
+
+**STATEMENT.** *`(A1)`-admissible family data, WITH the σ-label clause.* An **`(A1)`-admissible
+family** over a parameter dimension `r` consists of: a finite index set of *cells*; per cell, a shifted
+product of arithmetic progressions in `ℕ^r` (given by offsets and strides); an exponent form
+`ℓ : ℕ^r → ℕ` affine with strictly positive integer coefficients; a coefficient `c : ℕ`; a visibility
+form `ν : ℕ^r → ℕ` affine; **and a splitting-type label `σ : FactorizationType`** (W-12's r4 clause).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- One cell of an `(A1)`-admissible family: a shifted product of arithmetic progressions in `ℕ ^ r`
+with an affine positive-coefficient exponent, an affine visibility form, a coefficient, and a
+σ-label.  **The σ-label field is W-12's r4 STRENGTHENING of `(A1)`** — see the note. -/
+structure A1Cell (r : ℕ) where
+  /-- Per-coordinate offset. -/
+  offset : Fin r → ℕ
+  /-- Per-coordinate stride (positive). -/
+  stride : Fin r → ℕ
+  stride_pos : ∀ i, 0 < stride i
+  /-- The exponent's positive coefficients and constant. -/
+  expCoeff : Fin r → ℕ
+  expCoeff_pos : ∀ i, 0 < expCoeff i
+  expConst : ℕ
+  /-- The visibility form. -/
+  visCoeff : Fin r → ℕ
+  visConst : ℕ
+  /-- The family's `q`-independent coefficient. -/
+  coeff : ℕ
+  /-- **The σ-label** (W-12 r4). -/
+  σ : FactorizationType
+
+/-- The parameter locus of a cell: the shifted product of arithmetic progressions. -/
+def A1Cell.locus {r : ℕ} (C : A1Cell r) : Set (Fin r → ℕ) :=
+  {p | ∀ i, ∃ t : ℕ, p i = C.offset i + C.stride i * t}
+
+/-- The cell's exponent at a parameter point. -/
+def A1Cell.exp {r : ℕ} (C : A1Cell r) (p : Fin r → ℕ) : ℕ :=
+  C.expConst + ∑ i, C.expCoeff i * p i
+
+/-- An `(A1)`-admissible family is a finite list of cells. -/
+def A1Family (r : ℕ) : Type := List (A1Cell r)
+```
+
+**DEPENDS.** landed `Uniformity.FactorizationType`.
+
+**PROOF.** definitional.
+
+**SIZE.** 40 lines. At the contract ceiling; the `A1Cell` structure alone is one node and the three
+derived definitions may share the file.
+
+**SOURCE.** `EFF.GENIND.30` (`LEMMA GENIND-0`'s objects, verbatim: *"parameter sets stay finite unions
+of shifted products of arithmetic progressions; exponents `ℓ = Σ ℓ_l` stay affine with strictly positive
+integer coefficients after coordinate normalization; `c_F = Π c_{F_l}`; visibility `ν = max_l ν_l` is
+handled by splitting the parameter set along the (finitely many) affine dominance regions, each
+rewritten as a shifted product by the `δ`-coordinate trick"*); `EFF.GENIND.60` / `EFF.GENIND.30`'s
+**OPEN-CALL 3** for the σ-label clause.
+
+**⚠ THE σ-LABEL FIELD CLOSES `EFF.GENIND.30`'s OPEN-CALL 3 ON THE LEAN SIDE.** That spec's
+CONDITIONALITY: *"W-12's r4 round added a σ-LABELING clause INSIDE `(A1)` … i.e. the **predicate this
+lemma preserves** moved at the supplier after this note's pin. §S16 records the consumption as SURVIVING
+("more is demanded of `P(n)`, nothing less is delivered by the theorem"), but **this lemma's closure
+claim is stated for the pre-r4 `(A1)`** and no round re-derives closure under the strengthened
+predicate. Carried as OPEN-CALL 3."* And `EFF.GENIND.60` names it *"the one open edge here."*
+Chapter H's `A1Cell` **carries the σ field**, and H.94 proves closure for the strengthened predicate —
+so the open call is discharged for the Lean development. **It is NOT discharged for the corpus**
+(nothing here edits a frozen note); §16 item 4 records the asymmetry.
+
+**TEETH.** `EFF.GENIND.30`: *"NONE directly — `(A1)`-admissibility is a structural predicate no battery
+row measures. Guarded only indirectly … **PROOF-ONLY**; the note supplies no coverage sentence for it,
+which is itself worth flagging to the cross-read."* → **Lean theorem** at H.94, and the missing
+coverage sentence is supplied by the definition being explicit.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.94 [theorem] [fresh]
+
+**STATEMENT.** *`LEMMA GENIND-0`: `(A1)`-admissibility is closed under products, finite disjoint
+unions, and affine reparameterization.* Three clauses.
+(i) **product**: given `A1Cell r₁` and `A1Cell r₂` there is an `A1Cell (r₁ + r₂)` whose locus is the
+product locus, whose exponent is the sum of the two exponents (positive coefficients preserved), whose
+coefficient is the product, and whose σ is the multiset sum
+(`FactorizationType.degree_mk_add`-compatible);
+(ii) **union**: `A1Family` is closed under `++` by construction, and the union's cells' data are the
+concatenation;
+(iii) **affine reparameterization**: for the unimodular change `(w₁, w₂) ↦ (w₁, δ)` with
+`w₂ = w₁ + 1 + δ` (the corpus's `δ`-coordinate trick), a cell over `(w₁, w₂)` transports to a cell over
+`(w₁, δ)` with the same locus image, exponent affine with positive coefficients, and the same σ.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- (i) The product of two cells. -/
+def A1Cell.prod {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) : A1Cell (r₁ + r₂)
+
+theorem A1Cell.prod_exp {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) (p : Fin (r₁ + r₂) → ℕ) :
+    (C.prod D).exp p = C.exp (fun i => p (Fin.castAdd r₂ i)) + D.exp (fun j => p (Fin.natAdd r₁ j))
+
+theorem A1Cell.prod_σ_degree {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) :
+    (C.prod D).σ.degree = C.σ.degree + D.σ.degree
+
+/-- (iii) The `δ`-substitution `w₂ = w₁ + 1 + δ` of `W-12` §S3.4's 2SIDED instance. -/
+def A1Cell.deltaSubst (C : A1Cell 2) : A1Cell 2
+
+theorem A1Cell.deltaSubst_exp (C : A1Cell 2) (w δ : ℕ) :
+    (C.deltaSubst).exp ![w, δ] = C.exp ![w, w + 1 + δ]
+```
+
+**DEPENDS.** H.93 · landed `FactorizationType.degree_mk_add`, `Multiset.sum_add`.
+
+**PROOF.**
+1. (i) `prod`: `offset := Fin.append C.offset D.offset` (and likewise `stride`, `expCoeff`,
+   `visCoeff`); `expConst := C.expConst + D.expConst`; `coeff := C.coeff * D.coeff`;
+   `σ := ⟨C.σ.data + D.σ.data⟩`. Positivity fields by `Fin.addCases`.
+2. `prod_exp`: `Fin.sum_univ_add` splits the sum; `Fin.append_left`/`append_right` rewrite the
+   coefficients; `ring`.
+3. `prod_σ_degree`: `FactorizationType.degree` of a multiset sum is the sum of degrees — this is
+   `FactorizationType.degree_mk_add` (landed) or `Multiset.map_add` + `Multiset.sum_add`.
+4. (ii) nothing to prove: `A1Family` is `List`, closed under `++`. State it as a `rfl`-lemma if the
+   roll-up wants a name.
+5. (iii) `deltaSubst`: substitute — the new exponent's coefficients are
+   `(expCoeff 0 + expCoeff 1, expCoeff 1)` and the new constant is
+   `expConst + expCoeff 1 * (offset-shift + 1)`; positivity is preserved because both new coefficients
+   are sums of positives. `deltaSubst_exp` is `ring` after `Fin.sum_univ_two`.
+
+**SIZE.** 44 lines. **SPLIT MANDATED into three nodes**: **H.94a** the product (i), **H.94b** the union
+(ii, trivial), **H.94c** the `δ`-substitution (iii).
+
+**SOURCE.** `EFF.GENIND.30` (`LEMMA GENIND-0`'s statement and its proof, verbatim: *"Products and
+unions: coordinatewise. Positivity: each `ℓ_l` is affine with positive coefficients in its own
+variables; the concatenated variable set keeps them. Dominance regions: for two affine forms `ν₁, ν₂`
+with integer coefficients, `{ν₁ ≥ ν₂} ∩ (shifted product)` is a finite union of shifted products:
+induct on dimension, solving `ν₁ − ν₂ = δ ≥ 0` by the substitution used at W-12 S3.4's 2SIDED instance
+(`(w₁, w₂) = (w₁, w₁+1+δ)`); finitely many regions for finitely many pairs. `ν` = the region's
+dominating form, affine. ∎"*).
+
+**⚠ THE DOMINANCE-REGION SPLIT IS NOT FULLY FORMALIZED, AND THAT IS DECLARED.** Clause (iii) lands the
+`δ`-substitution — the corpus's *mechanism* — but **not** the induction on dimension that turns
+`{ν₁ ≥ ν₂} ∩ (shifted product)` into a finite union of shifted products at arbitrary `r`. Reason: the
+induction is a genuine combinatorial-geometry argument whose Lean cost is disproportionate to its role
+(the visibility form `ν = max_l ν_l` is consumed only when a family's *visibility floor* is a max of
+several, which happens at multi-child β-genres — chapter C/F territory). **The blueprint's decision:
+land the substitution, declare the general split OPEN, and flag it as §16 item 6.** A fleet agent must
+not claim clause (iii) proves the general dominance split.
+
+**TEETH.** as H.93 (**PROOF-ONLY**) → **Lean theorem** for the three landed clauses.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.95 [def] [fresh]
+
+**STATEMENT.** *The induction package `P(n)`.* For a degree `n`, `InductionPackage n` asserts, over
+every complete DVR `O` with finite residue field:
+(**A1**) a covering menu: a `Finset FactorizationType` `S` with `CoveringMenu O n S`;
+(**A0**) each `σ ∈ S` has `decidedDensity O n σ` equal to a fixed rational function's value — carried
+here as the *existence* of the level-`N` decided counts, i.e. the landed `decidedSeq` data;
+(**A2**) the exact complement with its rate: `RateSpecies (residueCard O) K B c (undecidedSeq O n)`
+for some `(K, B, c)` independent of `O`.
+Formally the package is the conjunction of the menu clause and the rate clause; the density values are
+supplied by `UniformityStatementDecided` at degree `n`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+/-- **`P(n)`** — the degree-`n` package `{history-resolved exact menu + finite (A1)-admissible
+aggregate menu + (A0) + exact-complement (A2)}` of `THEOREM GENIND.B`, in the form `leanfinal`'s API
+can state: a covering menu, the certified densities, and the complement's RATE species
+(`(A2-RATE)`, `ANNEX R R1.1`). -/
+def InductionPackage (n : ℕ) : Prop :=
+  ∃ (K : ℝ) (B c : ℕ), 0 ≤ K ∧
+    ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+      [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
+      (∃ S : Finset FactorizationType, CoveringMenu O n S) ∧
+        Induction.RateSpecies (residueCard O) K B c (undecidedSeq O n)
+```
+
+**⚠ SIGNATURE NOTE (what is in and what is out, and why).** The corpus's `P(k)` has **four** members.
+This definition carries **two**: the menu and the rate. The other two are handled as follows and the
+reasons are the corpus's own.
+* **(A0)**, the σ-decision at leaves, is `(CS-3)`/`(H-e)` at composite stages and **OPEN**
+  (`EFF.GENIND.65`, honesty item H-5(4)). Putting it in the package as a field would make
+  `InductionPackage n` unprovable at every `n ≥ 4` and would hide the conditionality inside a `def`.
+  It enters H.98 as the hypothesis `UniformityStatementDecided`, where it is *visible*.
+* **exactness** (the `(CS-EXACT)` identity half) is separated from the rate by `R6.2`
+  (`EFF.GENIND.170`): only the identity consumer needs it, and no chapter-H consumer is one (H.65's
+  note). The rate half is `RateSpecies`.
+* the **history-resolved** and **`(A1)`-admissible aggregate** qualifiers are `A1Family` data
+  (H.93/H.94); they constrain the menu's *shape*, and no `leanfinal` statement consumes the shape —
+  only the finiteness, which `Finset` gives. **Recorded as a deliberate weakening**, §16 item 2.
+
+**DEPENDS.** H.65 · landed `Uniformity.Density.CoveringMenu`, `undecidedSeq`, `residueCard`,
+`FactorizationType`.
+
+**PROOF.** definitional.
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.GENIND.13` (`THEOREM GENIND.B`'s hypothesis block: *"Define the package
+`P(k) := {history-resolved exact menu (HM3.A-form) + finite (A1)-admissible aggregate menu + (A0) +
+exact-complement (A2)}` for the degree-`k` problem"*); `EFF.GENIND.151` (the `(A2-RATE)` species pin
+and its closure sentence *"the package that closes under GENIND.B's strong induction is
+`P(k)`-with-(A2-RATE)"*, with the `[ar1]` split *"every displayed consumer of S5.2's vanishing bullet
+needs only the simple part"*).
+
+**TEETH.** `EFF.GENIND.13`: *"NONE directly — GENIND.B is a reduction, and no battery row certifies a
+reduction … This is a **PROOF-ONLY** unit"*, with `GENIND-BOX-1` as its coverage sentence (honesty item
+H-1) → carried unchanged.
+
+**ENVIRONMENT.** ENV-H3 (the package quantifies over complete `O`).
+
+---
+
+### NODE H.96 [theorem] [fresh]
+
+**STATEMENT.** *`P(2)` HOLDS, UNCONDITIONALLY — the base case, from chapter G.*
+`InductionPackage 2` holds with `(K, B, c) = (1, 0, 0)`: the menu is chapter G's
+`coveringMenu_two`, and the rate is chapter G's exact law `undecidedSeq O 2 N = q^(−N)`, which gives
+`undecidedSeq O 2 N ≤ 1 * N^0 * q^(−N)` outright.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+theorem package_two : InductionPackage 2
+```
+
+**DEPENDS.** H.65, H.95 · landed **chapter G**: `Uniformity.Density.coveringMenu_two`,
+`Uniformity.Density.undecidedSeq_two_eq` (`ChapG/G37.lean`), `undecidedCount_two_eq`
+(`ChapG/G36.lean`) · landed `two_le_residueCard`.
+
+**PROOF.**
+1. `refine ⟨1, 0, 0, zero_le_one, ?_⟩`; `intro O _ _ _ _ _`.
+2. menu: `exact ⟨{splitType, inertType, ramType}, coveringMenu_two⟩` (chapter G's landed menu; check
+   its exact `Finset` form before writing).
+3. rate: `intro M hM`; rewrite by `undecidedSeq_two_eq` to get
+   `(residueCard O : ℝ)^M / (residueCard O : ℝ)^(2*M)`, i.e. `q^(−M)`; the target is
+   `1 * (M:ℝ)^0 * ((residueCard O : ℝ)^(M − 0))⁻¹ = (q:ℝ)^(−M)`. `field_simp` with
+   `two_le_residueCard`'s positivity, then `pow_sub`/`ring`.
+
+**SIZE.** 18 lines. **VERIFY chapter G's exact statements first** — `undecidedSeq_two_eq`'s displayed
+form (`q^N / q^(2N)` vs `q^(−N)`) fixes step 3's rewriting, and `coveringMenu_two`'s `Finset` literal
+fixes step 2.
+
+**SOURCE.** `EFF.GENIND.15` (`THEOREM GENIND.B`'s consequence: *"by strong induction from the proved
+bases `P(2)` (W-11/W12-L0) and `P(3)` (HEX3+HMENU3)"*, with the base pins *"W-11 @ ACCEPTED 2/2
+`35e6545`"*); chapter G's own headline (`blueprint/CHAP-G` §0.4): *"the exact drainage law
+`undecidedCount O 2 N = q^N`"* at G.36 and the exact densities at G.46–G.49.
+
+**⚠ THIS IS THE CHAPTER'S ONE UNCONDITIONAL PACKAGE, AND IT IS A CHAPTER-G PAYOFF.** Chapter G's H-10
+records that the exact `n = 2` law is *"genuinely NEW … `leanfinal` and `leancheck` both carry only the
+lossy `≤ q^(3M)` at level `2M`"*. That exactness is what makes `package_two` provable with
+`(K, B, c) = (1, 0, 0)` — the sharpest possible constants, matching `EFF.GENIND.153`'s remark that
+*"the `m = 2` closed forms realize `(K, B, c) = (1, 1, 1)` — the ansatz is sharp at the ground
+instance"* (chapter H's constants are even sharper because chapter G's law is exact rather than
+bounded). **If this node cannot be proved, the chapter's base case is missing and H.98 is vacuous** —
+so it is a gate as much as a theorem.
+
+**ARITHMETIC AUDIT (recomputed fresh at `q = 2` and `q = 3`).** `undecidedSeq O 2 N = q^{−N}`: at
+`q = 2`, `N = 1..4`: `1/2, 1/4, 1/8, 1/16`; the target `1·N^0·q^{−N}` is the same ✓ (equality, not
+just `≤`). At `q = 3`: `1/3, 1/9, 1/27, 1/81` ✓. Cross-check against H.28's `m = 2` cluster rate: there
+`u(N)/Q^{2(N−1)} ≤ N·Q^{−(N−1)}`, a *cluster* statement; here `undecidedSeq O 2 N = q^{−N}`, a
+*full-space* statement. **They are different objects** (chapter G's is the level-`N` undecided fraction
+of `Coeff O 2 N`; H.28's is the `(2,d)` cluster system's normalized complement) and the audit records
+that they are not to be identified — §16 item 6.
+
+**TEETH.** chapter G's `W11-T-DRAIN` (30 firings) and `W11-EXHAUST`/P-4 dispositions, both
+**Lean theorem** at G.36/G.37 → inherited here as a landed dependency.
+
+**ENVIRONMENT.** ENV-H3.
+
+---
+
+### NODE H.97 [theorem] [fresh]
+
+**STATEMENT.** *`P(3)` GIVEN DRAINAGE — the second base case, from chapter G.* If
+`DrainageAt 3` holds then `InductionPackage 3` holds, with the rate constants supplied by chapter G's
+`hex3U_le` bound: `(K, B, c) = (1, 1, 0)` (i.e. `undecidedSeq O 3 N ≤ N · q^(−N)`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+theorem package_three_of_drainage (hd : DrainageAt 3) : InductionPackage 3
+```
+
+**DEPENDS.** H.65, H.95 · landed **chapter G**: `coveringMenu_three` (`ChapG/G54.lean`),
+`hex3U_le` (`ChapG/G69.lean`), `hex3U_div_tendsto_zero` (`ChapG/G70.lean`),
+`drainage_three_of_hex3_bound` (`ChapG/G71.lean`), `card_le_undecidedCount_three`
+(`ChapG/G76.lean`) · landed `DrainageAt`, `undecidedSeq`.
+
+**PROOF.**
+1. `refine ⟨1, 1, 0, zero_le_one, ?_⟩`; `intro O _ _ _ _ _`.
+2. menu: `exact ⟨_, coveringMenu_three⟩` (chapter G's five-type cubic menu).
+3. rate: the bound must be routed through chapter G's arithmetic layer. `hex3U_le` gives
+   `hex3U q N ≤ N * q^(2*N−2)`-shaped data and `hex3U_div_tendsto_zero` the vanishing; **the
+   `undecidedSeq O 3 N ≤ hex3U`-style bridge is chapter G's declared frontier** (its honesty item H-1:
+   *"The bridge that would turn the arithmetic layer into a statement about `undecidedCount O 3 N` … is
+   out of chapter-G scope and is the named frontier"*). So step 3 **cannot** be proved from chapter G's
+   landed layer alone.
+4. **Therefore the honest route**: derive the rate from the *hypothesis* `hd : DrainageAt 3`. `hd`
+   gives `UndecidedVanishes O 3 σ` for every `σ`, i.e. `gapSeq → 0` — a *limit*, not a rate. **A bare
+   limit does not yield `RateSpecies`** (`EFF.GENIND.149`'s own counterexample: `1/log(M+1)` is `o(1)`
+   with no exponential rate).
+
+**⚠ THIS NODE IS DECLARED BLOCKED AS STATED, AND THE FIX IS A SIGNATURE CHANGE.** Steps 3–4 show the
+signature above is **not provable** from chapter G plus `DrainageAt 3`: drainage is a limit and
+`InductionPackage` demands a rate. Two sanctioned resolutions, and the blueprint chooses the second:
+
+* *(rejected)* weaken `InductionPackage` to demand only `UndecidedVanishes`. Rejected because
+  `EFF.GENIND.149` is precisely the finding that a bare `o(1)` does not propagate — adopting it would
+  reproduce `CODEX F3`.
+* **(adopted)** state the node with the `n = 3` rate as an explicit hypothesis:
+```lean
+theorem package_three_of_rate
+    (hrate : ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+      [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
+      Induction.RateSpecies (residueCard O) 1 1 0 (undecidedSeq O 3)) :
+    InductionPackage 3
+```
+  whose proof is then steps 1–2 plus `hrate`. **The hypothesis `hrate` is exactly chapter G's named
+  frontier** (the H-1 bridge from the `hex3U` arithmetic layer to `undecidedCount O 3 N`), so the node
+  makes the frontier a *typed obligation* instead of an unprovable claim. `DrainageAt 3` is then a
+  **consequence**, not a hypothesis: `RateSpecies` with `c = 0`, `B = 1` implies
+  `undecidedSeq O 3 N → 0`, hence `gapSeq → 0` by chapter G's `gapSeq_le_undecidedSeq`.
+
+**SIZE.** 20 lines (in the adopted form). **BLUEPRINT DEFECT DECLARED AND CURED IN PLACE**: the
+signature the fleet lands is `package_three_of_rate`, and `package_three_of_drainage` **must not be
+assigned**.
+
+**SOURCE.** `EFF.GENIND.15` (the base `P(3)` (HEX3+HMENU3), pins *"HEX3 @ r3 `b6a1d69`; HMENU3 @
+ACCEPTED body `050425d` + ANNEX A `19c0285`"*); `EFF.GENIND.151` (the species instance *"the `n = 3`
+systems: HEX3.B as displayed"*, i.e. `(K, B, c)` with *"polynomial coefficient, exponential deficit"* —
+HEX3.B's `undecided/q^{3N} ≤ (1+N)q^{−N}`); `EFF.GENIND.149` (the `o(1)`-is-not-a-rate finding);
+`blueprint/CHAP-G` honesty items H-1 and H-4.
+
+**⚠ AND THE `HYP.137` CARVE-OUT APPLIES HERE.** Chapter G's H-2 and honesty item H-4 above: the tail-σ
+lemma is a **NON-NODE**, and the `n = 3` bound any downstream consumer uses is the **conservative**
+one (`U₃^σ ≤ U₃^conv`). `hrate` is stated about `undecidedSeq`, the conservative object ✓ — so the
+carve-out is respected and no node needs `HYP.137`.
+
+**TEETH.** chapter G's `HEX3-LAW` (92 checks, 46 rows, **with the note's own fit disclosure**: the law
+was FITTED on 14 of 29 pairs, so the independent force is the twelve never-measured pairs) →
+**executable regression** retained; the `hrate` hypothesis itself has no teeth and is the frontier.
+
+**ENVIRONMENT.** ENV-H3.
+
+---
+
+### NODE H.98 [theorem] [fresh]
+
+**STATEMENT.** *The capstone, from the package (`GENIND.B` Step 5 + `W-12.D`).* If
+`UniformityStatementDecided` holds and `∀ n, DrainageAt n`, then `UniformityStatement` holds. And:
+if `InductionPackage n` holds for every `n` with rate constants uniform in `n`, then
+`∀ n, DrainageAt n` — so the package delivers the drainage half of the capstone's hypothesis.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+/-- `GENIND.B` Step 5: the package's `(A2)` member delivers drainage at every degree. -/
+theorem drainage_of_package (hp : ∀ n, InductionPackage n) : ∀ n, DrainageAt n
+
+/-- The capstone, assembled: certified densities + package ⟹ `UniformityStatement`. -/
+theorem uniformity_of_package (hdec : UniformityStatementDecided)
+    (hp : ∀ n, InductionPackage n) : UniformityStatement
+```
+
+**DEPENDS.** H.65, H.95, H.96 · landed `Uniformity.Density.UniformityStatement`,
+`UniformityStatementDecided`, `UniformityStatement.ofDecided`, `DrainageAt`, `UndecidedVanishes`,
+`gapSeq_le_undecidedSeq`, `undecidedSeq`, `two_le_residueCard`.
+
+**PROOF.**
+1. `drainage_of_package`: fix `n`; `obtain ⟨K, B, c, hK, h⟩ := hp n`; `intro O _ _ _ _ _ σ`. The rate
+   gives `undecidedSeq O n M ≤ K * M^B * q^(−(M−c))`, whose right side tends to `0` (a polynomial
+   times a geometric with ratio `q⁻¹ < 1`: mathlib's
+   `tendsto_pow_atTop_nhds_zero_of_lt_one` composed with
+   `Polynomial.tendsto_div_pow_atTop_nhds_zero`-style lemma, or
+   `tendsto_nat_pow_mul_geometric_atTop_nhds_zero`). Squeeze with `0 ≤ undecidedSeq` to get
+   `undecidedSeq O n → 0`; then `gapSeq_le_undecidedSeq` and `squeeze_zero` give
+   `UndecidedVanishes O n σ`.
+2. `uniformity_of_package`: `exact UniformityStatement.ofDecided (drainage_of_package hp) hdec`
+   (check the landed argument order of `UniformityStatement.ofDecided`).
+
+**SIZE.** 26 lines. The polynomial-times-geometric limit is the only analytic step; mathlib's
+`tendsto_pow_mul_geometric_atTop_nhds_zero` (or `Nat.tendsto_pow_atTop_nhds_zero_of_lt_one` plus
+`Filter.Tendsto.mul`) is the lemma to search for by `exact?` before hand-rolling.
+
+**SOURCE.** `EFF.GENIND.60` (`§S6` Step 5, verbatim: *"By W12-S2.1 … *Step 5 (fire W-12.D).* `P(n)`'s
+`(A0)+(A1)+(A2)` are W-12.D's hypotheses at degree `n`: THEOREM W-12.D (PROVED, @ pin) yields one
+`R_τ(q) ∈ ℚ(q)` per splitting type of degree `n`, = the Haar density, same expression at every prime
+power and characteristic, `Σ_τ R_τ = 1`. Strong induction over `n` completes THEOREM GENIND.B. ∎"*);
+`EFF.GENIND.15` (the consequence clause and **its `n ≥ 8` widening**, honesty item H-7).
+
+**⚠ WHAT THIS NODE IS NOT.** It is **not** `THEOREM GENIND.B`. `GENIND.B` is the *reduction*
+`(IH) + [GENIND-H(n)] ⟹ P(n)`, whose composite-stage half is the whole open surface (honesty item
+H-1). This node is **Step 5 only**: `P(n)` for all `n` ⟹ the capstone. The reduction's inductive step
+has **no node** in chapter H, for the reason H-1 gives: its content is the event grammar, the two
+transports and the stage clauses, i.e. geometry plus `StageInterface`'s fields. **A node claiming
+`GENIND.B` must be returned.** What chapter H delivers is: the two base cases (H.96, H.97), the rate
+calculus the inductive step consumes (§10), and Step 5 (this node) — the induction's *scaffold* with
+the geometric step left visible as the hypothesis `hp`.
+
+**⚠ AND THE `n ≥ 8` CONDITIONALITY IS VISIBLE IN `hp`, NOT HIDDEN.** `EFF.GENIND.176`: at `n ≤ 7` the
+conditionality is `[GENIND-H(n)]`; at `n ≥ 8` it is `[GENIND-H(n)] + [GENHN-HE(μ ≥ 3)] +
+[GENHN-TOW-1]`. Because `hp : ∀ n, InductionPackage n` is a *hypothesis*, the widening costs this node
+nothing and is recorded honestly: the reader must supply `InductionPackage n` at every `n`, and the
+corpus's own statement of what that costs is §16's disposition table.
+
+**TEETH.** `EFF.GENIND.60`: *"NONE — a theorem application"* → carried unchanged; the node's value is
+that the application is machine-checked against `leanfinal`'s landed `UniformityStatement.ofDecided`
+rather than cited to `W-12.D` (honesty item H-12).
+
+**ENVIRONMENT.** ENV-H3.
+
+---
+
+### NODE H.99 [gate] [fresh]
+
+**STATEMENT.** *The chapter-H census gate.* A file with no public declaration that (i) prints the
+axiom footprint of every capstone-facing chapter-H declaration, (ii) evaluates the chapter's numeric
+audits at `q = 2` and `q = 3` by `#eval`/`decide`, and (iii) asserts the non-vacuity of the schema
+layer by exhibiting the three witness data.
+
+**SIGNATURE.**
+```lean
+-- leanfinal/Uniformity/ChapH/H99.lean  (no public declaration; a census block)
+import Uniformity.ChapH.H98
+import Uniformity.ChapH.H96
+import Uniformity.ChapH.H72
+import Uniformity.ChapH.H70
+
+-- (i) axiom footprints: every one must print exactly
+--   [propext, Classical.choice, Quot.sound]
+#print axioms Uniformity.Density.uniformity_of_package
+#print axioms Uniformity.Density.drainage_of_package
+#print axioms Uniformity.Density.package_two
+#print axioms Uniformity.Density.undecidedSeq_antitone
+#print axioms Uniformity.Density.efPair_forced_of_dvd
+#print axioms Uniformity.Density.Induction.alphaBracket_closed
+#print axioms Uniformity.Density.Induction.uTwo_closed
+#print axioms Uniformity.Density.Induction.uTwo_ratio_le
+#print axioms Uniformity.Density.Induction.rate_close
+#print axioms Uniformity.Density.Induction.rate_lossPriced
+#print axioms Uniformity.Density.Induction.TriangularUnitPivot.bijective
+#print axioms Uniformity.Density.Induction.codexToy_not_surjective
+#print axioms Uniformity.Density.Induction.infinite_genreDatum_of_schema
+#print axioms Uniformity.Density.Induction.not_occupied_genreA2witness
+
+-- (ii) the two-column numeric audits, evaluated
+#eval (Uniformity.Density.Induction.alphaBracket 2 1 3,
+       Uniformity.Density.Induction.alphaBracket 3 1 2,
+       Uniformity.Density.Induction.alphaBracket 4 1 2)   -- expect (32, 54, 192)
+#eval (Uniformity.Density.Induction.uTwo 2 6, Uniformity.Density.Induction.uTwo 3 6)
+                                                          -- expect (64, 567)
+#eval (Uniformity.Density.Induction.lawE 2 6 1, Uniformity.Density.Induction.lawE 3 4 1,
+       Uniformity.Density.Induction.lawE 5 3 1)            -- expect (65536, 13122, 2500)
+#eval (Uniformity.Density.Induction.lawF 2 6 1,
+       Uniformity.Density.Induction.lawV1E2 2 5 1)          -- expect (1024, 12288)
+#eval (Uniformity.Density.Induction.splitEqCensus 3,
+       Uniformity.Density.Induction.inertCensus 3)          -- expect (1, 3)
+
+-- (iii) non-vacuity of the schema layer
+#check (Uniformity.Density.Induction.genreE2 0 : Uniformity.Density.Induction.GenreDatum)
+#check (Uniformity.Density.Induction.genreA2witness : Uniformity.Density.Induction.GenreDatum)
+#check (Uniformity.Density.Induction.genreD2bwitness : Uniformity.Density.Induction.GenreDatum)
+```
+
+**DEPENDS.** every node named above.
+
+**PROOF.** none (a census block). **TEST:** the file compiles; every `#print axioms` line prints
+exactly `[propext, Classical.choice, Quot.sound]`; every `#eval` prints the commented expected value.
+A `native_decide` anywhere in chapter H is a **stop-the-line** event (it adds `Lean.ofReduceBool`).
+
+**SIZE.** 44 lines (a census, not a proof).
+
+**SOURCE.** the repo's standing discipline (`CLAUDE.md`: *"`lake env lean LeanUrat/AxChk_baseline.lean`
+prints every capstone's `#print axioms` footprint. Run it after ANY change touching capstone-path
+code; a footprint regression is a stop-the-line event"*); chapter G's `G.78` gate, whose pattern this
+follows.
+
+**⚠ THE `#eval` COLUMN IS THE CHAPTER'S ARITHMETIC-AUDIT REGRESSION.** Every audit block in §§4–7
+states values at `q = 2` **and** `q = 3`; this gate is where they become executable. If a future edit
+to `alphaBracket`, `uTwo`, `lawE`, `lawF`, `lawV1E2` or the censuses changes any value, the gate's
+comments no longer match and the change is caught **before** any proof breaks. That is the mechanism
+the G.23 refutation shows is needed: the refuted formula *proved fine* at `q = 2`.
+
+**TEETH.** this gate IS the chapter's teeth roll-up; §16's disposition table is its index.
+
+**ENVIRONMENT.** the census file imports the chapter roll-up; no `variable`s.
+
+---
+
+## 14. DAG ADDITIONS
+
+Written to `spec/DAG_BLUEPRINT_H.tsv` in `spec/dag_build.py`'s 9-column contract
+(`from-ID, to-ID, edge-kind, chapter, status, edge-class, resolution, kind-basis, evidence`), edge
+direction **consumer → supplier**. `dag_build.py` merges every `spec/DAG_BLUEPRINT_*.tsv` on every
+rebuild (the merge step landed 2026-08-15, commit `c8c8ea7f`), so no builder edit is needed and the
+rows survive a rebuild.
+
+| file | rows | what |
+|---|---:|---|
+| `spec/DAG_BLUEPRINT_H.tsv` | **358** | the canonical copy of this chapter's edges |
+| `spec/DAG.tsv` (merged) | +358 | the same rows, appended after the harvested rows, de-duplicated on `(from-ID, to-ID)` |
+| `spec/DAG_NODES.tsv` (merged) | +99 | one `BP.H.<nn>` node row each, `node-kind = blueprint-node`, `class = blueprint`, `chapter = H`, `status = OPEN`, `unit-type` read off this file's headings |
+
+Every added row carries `chapter = H`, `edge-class = blueprint`, `kind-basis = blueprint`,
+`resolution = from:exact,to:exact` (blueprint edges are exact by construction — they are generated
+mechanically from the declared DEPENDS/SOURCE fields, not harvested from prose), and an `evidence`
+field beginning `source=blueprint | CHAP-H NODE H.<nn>`.
+
+**Edge census by target class:** `EFF.*` **220** (transcription edges; 105 distinct source units
+across `GENIND`/`GENHN`/`GENH4`), `BP.H.*` **119** (118 intra-chapter dependency edges + 1 capstone
+edge), `BP.G.*` **8** (chapter-G landed nodes consumed by name), `lean:*` **4**, `HYP.*` **7**.
+
+**The eight structural edges added by hand** — the chapter's interface to the rest of the graph, and
+each a claim a cross-reader should check:
+
+| edge | meaning |
+|---|---|
+| `CAP:UniformityStatement → BP.H.98` | the capstone is assembled at H.98 (`GENIND.B` Step 5 fired through `leanfinal`'s landed `UniformityStatement.ofDecided`) |
+| `BP.H.09 → HYP.36` | `(CS-1Q.a)`/`(CS-1Q.b)` **are** `StageInterface`'s `hwin`/`hprice` fields |
+| `BP.H.72 → HYP.36` | H.72's exponent bound **consumes** them; this is where the capstone's conditionality enters Lean |
+| `BP.H.95 → HYP.81` | `P(n)` at `n ≥ 6` rides `[GENHN-HE(μ ≥ 3)]` (honesty H-5(1)) |
+| `BP.H.95 → HYP.82` | `P(n)` at `n ≥ 8` rides `[GENHN-TOW-1]` (honesty H-5(2), H-7) |
+| `BP.H.87 → HYP.148` | H.87 is the **elementary `μ = 2`** carry; `GENHN-BOX-2`'s `μ ≥ 3` face has **no node** (honesty H-5(3)) |
+| `BP.H.97 → HYP.137` | H.97's rate is about the **conservative** object, so `HEX3-BOX-1` stays a NON-NODE (honesty H-4) |
+| `BP.H.76 → HYP.121` | `(T1)`/`(T2)` are hypotheses of H.76; `GENIND-1`'s all-`O` generality stays unaudited (honesty H-3) |
+
+**The eight chapter-G edges** (the supplier-first payoff): `BP.H.96 → BP.G.36, BP.G.37`
+(the exact `n = 2` drainage law and rate); `BP.H.97 → BP.G.54, BP.G.69, BP.G.70, BP.G.71, BP.G.76`
+(the cubic menu, the `hex3U` bound and its vanishing, the conditional drainage assembly, the σ-undecided
+lower bound); `BP.H.26 → BP.G.65` (recorded as a **non-dependency cross-check**, see the warning
+below).
+
+**⚠ ONE `BP.G` EDGE IS A CROSS-CHECK, NOT A DEPENDENCY, AND THE TSV CANNOT SAY SO.** `BP.H.26 →
+BP.G.65` is generated because H.26's transcription-fidelity note cites `ChapG/G65.lean` (`hex3R_rec`)
+in order to say **do not wire `uTwo` to `hex3R`** — they are different objects (H.26's ⚠ block, H.96's
+audit). The edge is emitted because the generator is mechanical; a cross-reader should read it as
+*"H.26 was checked against `BP.G.65` and found distinct"*, and the same caveat applies if a future
+generator run picks up other `ChapG/` citations from ⚠ blocks. **Flagged as §16 item 6.**
+
+**⚠ THE `lean:` NODE SET IS TOO SMALL FOR THIS CHAPTER, AND THAT IS A 0c GAP, NOT A CHAPTER-H ONE.**
+`spec/DAG_NODES.tsv` carries **34** `lean:` nodes (the CN-01…23 certain-nodes plus the P1–P5 landings
+and the two capstone `Prop`s). Chapter H's DEPENDS fields name roughly **55** landed `leanfinal`
+declarations, of which only `UniformityStatement`, `UniformityStatementDecided`,
+`FactorizationType.degree_mk_add` and `efPair_pos_of_mem` are in that set — so **51 landed
+dependencies are invisible to the DAG**. The heaviest invisible ones, which a cross-reader should want
+as nodes: `undecidedSeq`, `undecidedSet`, `UndecidedAt`, `DecidedAt`, `coeffFactor`,
+`card_preimage_coeffFactor`, `CoveringMenu`, `residueCard`, `two_le_residueCard`,
+`UniformityStatement.ofDecided`, `DrainageAt`, `gapSeq_le_undecidedSeq`, `efPair_mul_le_natDegree`,
+`typeOf_data`. **This is not fixable inside a chapter blueprint** (the `lean:` node set is a 0c
+artifact); it is booked as §16 item 10 and as an orchestrator item below.
+
+**Checker status after the merge, RUN** (`python3 spec/dag_build.py && python3 spec/dag_check.py`,
+output committed at `spec/dag_check_output.txt`):
+
+* builder: `nodes 2631  edges 2393 (harvested 1708 + blueprint 685 from 2 file(s))` — the two
+  blueprint files are G's 327 and H's 358 ✓;
+* **[1] dangling-ID check PASS** — every endpoint is a declared node (the 105 `EFF.*` targets were
+  verified against `DAG_NODES.tsv` *before* generation, all present; the 8 `BP.G.*` and 99 `BP.H.*`
+  targets are the builder's own blueprint-node rows; the 7 `HYP.*` targets are ledger rows);
+* **[2] cycle detection PASS** — **no new SCC**: the exact-resolved subgraph still has exactly the
+  four adjudicated SCCs it had before chapter H, and the chapter's own 118 intra-chapter edges are
+  acyclic with critical path 6 (verified independently before the merge);
+* **[3] capstone reachability rises 599 → 640 nodes (23.7% → 24.3%)**; the seven ledger NOT-REACHED
+  rows stay **CONSISTENT 7/7**;
+* **[4] layering**: 15 layers; max connected width 454;
+* **[5] chapter cut**: chapter `H` grows 498 → **597 nodes**; cross-chapter dependency edges
+  603 → **666**, backward arcs 57 → **68 (10.2%)**;
+* **[6] fence check**: 82 crossings, **unchanged** — chapter H's transcription edges add **zero** new
+  fence crossings (the existing GENIND → GENH4 and GENTOW5 → GENHN clusters are harvested `xref`
+  rows, not blueprint rows), so orchestrator item 2 below is **discharged as a finding**: the hazard
+  did not materialize;
+* **[7] resolution census**: COARSE 650 of 2393 = **27.2%** (down from 38.1% before the two
+  blueprints, because all 685 blueprint edges are `from:exact,to:exact`);
+* **RESULT: PASS**, exit code 0.
+
+**⚠ TWO CHECKER FINDINGS ABOUT CHAPTER H, BOTH EXPECTED, BOTH WORTH STATING PLAINLY.**
+
+**(a) Only 5 of the 99 chapter-H nodes are capstone-reachable** (`CHAP-H 94` in the
+connected-but-unreachable census). The reachable set is the assembly spine
+`BP.H.98 → BP.H.95, BP.H.96 → BP.H.65` plus the two chapter-G suppliers. **That is the honest
+structure of a reduction, not a defect**: H.98's hypothesis is `hp : ∀ n, InductionPackage n`, and a
+hypothesis is not a supplier — so the arithmetic layer (§§4–7), the slot layer (§8), the unit-pivot
+layer (§9) and the rate calculus (§10) feed the *proof of the hypothesis*, which chapter H does not
+give (honesty item H-1: `GENIND.B` is a REDUCTION). Chapter G shows the same pattern at smaller scale
+(38 of its 78 nodes connected-but-unreachable). **A cross-reader must NOT "fix" this by wiring the
+arithmetic layer into H.98** — that would assert the reduction.
+
+**(b) A new backward arc `H → I` of weight 7 appears.** These are exactly the seven `BP.H.* → HYP.*`
+structural edges above. They run against the consumer-first order `I > … > H` because a chapter-H node
+*consumes* a capstone-conditionality row. **This is the intended reading and the arc should stay**: it
+is chapter H declaring, in the graph, which conjuncts of the capstone's hypothesis block it rides. The
+pre-existing `G → I` arc of weight 4 is chapter G's analogue. Both are conditionality edges, not
+mathematical dependencies, and `spec/DAG_README.md`'s backward-arc table should gain that
+distinction — booked as orchestrator item 3.
+
+**⚠ ORCHESTRATOR ITEMS.**
+1. The `lean:` node-set gap above (51 invisible landed dependencies). A 0c′ pass could harvest
+   `leanfinal`'s declaration list into `lean:` nodes; until then chapter-H DEPENDS fields are the only
+   record.
+2. **DISCHARGED at the run above.** `spec/DAG_NONIMPORTS.tsv` records 121 fence rows and
+   `spec/DAG_README.md` names *"GENIND → W12/GENH4"* and *"GENTOW5 → GENHN"* as the largest
+   fence-crossing clusters; the hazard was that chapter H's transcription edges would add crossings
+   (a node citing both `EFF.GENIND.*` and `EFF.GENH4.*` where GENIND's NON-IMPORTS fence names
+   GENH4). **The checker reports 82 crossings, unchanged** — all harvested `xref` rows, none from
+   `DAG_BLUEPRINT_H.tsv`. Kept as a standing check for future chapters, not as an open item here.
+3. `spec/DAG_README.md`'s backward-arc table should distinguish **conditionality arcs**
+   (`BP.<CH>.* → HYP.*`, i.e. `H → I` weight 7 and `G → I` weight 4) from **mathematical** backward
+   arcs (`G → H` 13, `H → B` 12, `C → E` 11, …). Conflating them overstates how non-strict the cut
+   is: 11 of the 68 backward arcs are chapters declaring their conditionality, which is what the cut
+   *wants*. A change to a 0c artifact this chapter does not own — booked, not done.
+
+---
+
+## 15. LEANSPEC STUB LIST (stage 0e)
+
+Per REVISION 2 stage **0e**, every SIGNATURE lands first in the isolated `leanspec/` project — real
+bodies for definitions/structures, `axiom` stubs for theorems — with the real namespaces, universes,
+instance arguments and attributes, in topological order, **before** the fleet fires; after a node
+lands in `leanfinal` its normalized environment type is diffed against the signed stub.
+
+**File:** `leanspec/Leanspec/ChapH.lean`, one file (chapter G's convention:
+`leanspec/Leanspec/ChapG.lean` carries all 135 of its declarations in one file), added to
+`leanspec/Leanspec.lean`. It **imports `Uniformity`** and therefore sees chapter G's landed layer.
+
+**Stub count: 190 signed** declarations across the 99 nodes — counted mechanically over this file's
+SIGNATURE blocks (**192 written, minus the 2 explicitly withdrawn**, rules 2 and 3 below). Breakdown:
+
+| what | count | lands as |
+|---|---:|---|
+| `structure` | 5 | **real body** (`GenreDatum`, `StageInterface`, `TriangularUnitPivot`, `RecursionLegs`, `A1Cell`) |
+| `inductive` | 3 | **real body** (`StageLeaf`, `CapBranch`, `LeafE`) |
+| `def` / `noncomputable def` | 34 | **real bodies** (0e rule 1: *"definition/structure BODIES land first"*) |
+| `theorem` | 148 | **`axiom` stubs** |
+
+All 190 names are distinct — checked mechanically over this file (zero duplicates) and against the
+landed name list of §0.3 (no collision: chapter H's new definitions live in
+`Uniformity.Density.Induction`, and the four public names it adds directly to `Uniformity.Density` —
+`undecidedSeq_antitone`, `undecidedSet_preimage_subset`, `efPair_forced_of_dvd`,
+`InductionPackage`/`package_two`/`package_three_of_rate`/`drainage_of_package`/
+`uniformity_of_package` — are absent from both chapter A's and chapter G's inventories).
+
+**Rules for the stub-landing agent.**
+1. **Definitions land as real bodies, not axioms.** The 27 `def`s are: `clusterC`, `alphaExp`,
+   `alphaBracket`, `uTwo`, `lawE`, `lawF`, `lawV1E2`, `pinCensus`, `splitEqCensus`, `inertCensus`,
+   `slotOdd`, `slotEven`, `stageSigma`, `composedSigma`, `capBranch`, `leafFactorE`, `codexToy`,
+   `stageLift'`, `RateSpecies`, `A1Cell.locus`, `A1Cell.exp`, `A1Family`, `A1Cell.prod`,
+   `A1Cell.deltaSubst`, `InductionPackage`, plus `GenreDatum.{keyDeg, stageCard, sideLen, nodeHeight,
+   Occupied}` and the three witness data `genreE2`, `genreA2witness`, `genreD2bwitness` (which are
+   `def`s producing `GenreDatum` and must elaborate their proof fields — **the stub gate's sharpest
+   test of §3**).
+2. **`normIdx` is NOT signed.** H.54's SIGNATURE NOTE withdraws it in favour of `stageLift'`; the
+   `Exists.choose` form is recorded in the blueprint for provenance only. **The stub file must sign
+   `stageLift'` and must not sign `normIdx`.**
+3. **`package_three_of_drainage` is NOT signed.** H.97 declares it a blueprint defect and adopts
+   `package_three_of_rate`; sign only the latter. (Chapter G's precedent: `G.23a card_resStratum` was
+   commented out as REFUTED rather than signed.)
+4. **`w11_node_shape` (H.84) is a trivial naming lemma** and may be dropped at the stub agent's
+   discretion, with a RE-PLAN note; sign `w11_node_E` and `w11_node_F`.
+5. **Elaboration failures in a stub are BLUEPRINT DEFECTS**, not formalization work: they go back to
+   this file, versioned in place by dated append, never patched in `leanspec`.
+6. **Five signatures are known-fragile and should be elaborated FIRST**, because a failure there
+   reshapes the chapter: **H.09** `StageInterface` (40 lines, seven hypothesis fields with `ℕ`-
+   subtraction in `hwin`/`hprice`), **H.53** `eta_independent` (the `Module.finrank`/`minpoly`
+   hypothesis shape), **H.54** `stageLift'` (the `Polynomial` sum with two `ℕ`-subtracted exponents),
+   **H.61** `card_fibre` (the `Fintype`/`Nat.card` mix), **H.72** `rate_lossPriced` (the `2*`-cleared
+   `ℕ` inequality — its SIGNATURE NOTE **requires** the fleet agent to re-derive it before proving,
+   and the stub gate is where a mis-stated inequality will surface as an unprovable-but-elaborating
+   `axiom`, which the gate CANNOT catch; see §16 item 1).
+
+**⚠ THE STUB GATE CANNOT CATCH A WRONG-BUT-WELL-TYPED INEQUALITY.** Chapter G's experience
+(PROJECT_STATE append #55) is that the gate caught defects `D1`–`D5` *mechanically* — but `G.23`'s
+refutation came from a **numeric brute force at `ℤ_[3]`**, not from the gate. Chapter H's analogue is
+**H.99's `#eval` column**: the arithmetic audits must be executed, at `q = 2` **and** `q = 3`, before
+the fleet fires on any node that consumes them. **Recommended gate order:** (a) elaborate the 5
+fragile signatures; (b) land the 27 `def` bodies; (c) run H.99's `#eval` block against the blueprint's
+commented expected values; (d) only then sign the 117 `axiom` stubs.
+
+---
+
+## 16. TEETH DISPOSITIONS AND FLAGGED FOR THE CODEX CROSS-READ
+
+### 16.1 Teeth disposition summary
+
+Per source battery row guarding chapter-H content, with a disposition in
+`{Lean theorem, executable regression, signed non-applicability}`.
+
+**137 dispositions across the 99 nodes: 78 Lean theorem, 41 executable regression, 18 signed
+non-applicability / signed vacuity disclosure.**
+
+| battery family | source | dispositions in this chapter |
+|---|---|---|
+| `GT-PART` / `GT-DEPTH0` (§S11 P-2/P-3) | `EFF.GENIND.08`, `.17`, `.48`, `.49`, `.50` | **Lean theorem** at H.22, H.38, H.39, H.40, H.41, H.42 (the locus exponents and the preregistered spot values); **executable regression** retained for the per-row *parser* |
+| `GT-ALPHA` / `GT-RECUR` (P-5/P-6) | `EFF.GENIND.18`, `.21`, `.45` | **Lean theorem** at H.16, H.17, H.25 (the ghost-fibre exponent, the transport identity, the recursion) |
+| `GT-BRACKETID` / `GT-T-BRACKET` (P-7, 24/24) | `EFF.GENIND.09`, `.22`, `.23` | **Lean theorem** at H.14, H.20, H.21 (the general law those 24 cells instantiate) |
+| `GT-CRIT` / `GT-T-CRIT` (P-8, 0/22) | `EFF.GENIND.11`, `.43` | **Lean theorem** at H.03, H.04, H.42, H.43, H.50 (both directions: the `≥ 4` bound and the below-floor absences) |
+| `GT-BDRAIN` (P-4) | `EFF.GENIND.25`, `.45` | **executable regression** retained (the β drain composition is geometric); its *arithmetic* is H.25/H.63 |
+| `GT-BETA` (P-6, 0/87,156) | `EFF.GENIND.10`, `.24` | **signed non-applicability** — the β-fibration is geometric and has **no node** (honesty H-3) |
+| `GT-ORACLE` (P-9, 0/73,676) | `EFF.GENIND.56` | **executable regression** retained (order-1 σ; `(CS-3)` is exercised by nothing at any degree) |
+| `GT-N3TIE` (P-9) | `EFF.GENIND.20` | **signed non-applicability** — the `n = 3` convention tie is chapter G's |
+| machine legs A–C (`m = 2` closed forms + `R(M)` + rate) | `EFF.GENIND.150` | **Lean theorem** at H.25, H.26, H.27, H.28 (all `(Q, N)`, generalizing 78 checked cells) |
+| machine legs D–F (depth identity, prefactor, union bound) | `EFF.GENIND.152` | **Lean theorem** at H.34, H.36, H.63, H.64 (all `r`, generalizing `r = 2, 3`) |
+| machine leg G (the unit-pivot mutant) | `EFF.GENIND.156` | **Lean theorem** at H.60 **and** H.62 — the mutant becomes a proved counterexample |
+| machine legs H, I (the `CS4-F` gate lines; window 1) | `EFF.GENIND.163`, `.160` | **Lean theorem** at H.40, H.22 |
+| `GN-CLASS` / `GN-T-CRIT` (2,147,916/0) | `EFF.GENHN.07` | **Lean theorem** at H.03, H.04, H.05; the *parser* stays a regression |
+| `GN-FIB` / `GN-T-NODE` | `EFF.GENHN.08`, `.23` | **Lean theorem** at H.08 (the node floor); the fibration is geometric — **signed non-applicability** |
+| `GN-E31` / `GN-T-LAT` | `EFF.GENHN.27` | **Lean theorem** at H.51, H.52, H.53 (and the `f₁ ≥ 2` within-class branch's `signed vacuity disclosure` is **discharged** at H.53) |
+| `GN-LAWTIE` / `GN-STAGE2` / `GN-E3` | `EFF.GENHN.12`, `.36` | **executable regression** retained (stage count laws are `(CS-1)`/`(CS-2)`, i.e. fields) |
+| `GN-REFINE3` (3,072 pin checks) | `EFF.GENHN.33` | **signed non-applicability** — `GENHN-4` layer 1 at `μ ≥ 3` has **no node** (`HYP.148`, honesty H-5(3)) |
+| `GN-SIGMA` / `GN-T-SIG` (37,792/0, wild `p = 3`) | `EFF.GENHN.15`, `.38` | **Lean theorem** at H.74, H.75, H.76, H.77 (degree consistency + the forcing chain + the value-group repair); the σ *decision* stays a regression |
+| `GN-TOWER` | `EFF.GENHN.16` | **Lean theorem** at H.50 (the necessity half); the realization half is geometric |
+| `GH-JSONTIE` / `GH-FRESH` / `GH-T-LAT` / `GH-T-CEN` | `EFF.GENH4.07`, `.25` | **Lean theorem** at H.44, H.45, H.91 (the censuses and factors); the count-law assembly is `W12` content |
+| `GH-REFINE` (192,000/0, digit-by-digit) | `EFF.GENH4.09`, `.23` | **Lean theorem** at H.61, H.85, H.86, H.87, H.90 — the chapter's most heavily corroborated block |
+| `GH-UND` (92/0) | `EFF.GENH4.10` | **Lean theorem** at H.47, H.48 (incl. the `h = 3` correction value and the even-`N` collapse) |
+| `GH-BRACKET` (157/0) | `EFF.GENH4.26` | **Lean theorem** at H.92 |
+| `GH-SIGMA` (6,185/0, `q = 7`) | `EFF.GENH4.11` | **Lean theorem** at H.74 (degree); the σ decision stays a regression |
+| `GH-CAP` counter-key checks | `EFF.GENH4.18` | **Lean theorem** at H.88 (disjointness + exhaustiveness + the refuted `r2` prediction) |
+| `(CS-1)`/`(CS-1Q)`/`(CS-3)` | `EFF.GENIND.63`, `.65`, `.197` | **signed vacuity disclosure**, carried unchanged — **NONE, at any degree, anywhere in the corpus**; these are `StageInterface`'s fields and they ARE the capstone's conditionality |
+| `(CS-2)` | `EFF.GENIND.64` | **Lean theorem** at H.21 — the corpus's only guard is an in-statement arithmetic certificate, and this chapter is the **only** machine check on the normalization at any grade |
+| `[GENHN-HE(μ ≥ 3)]` | `EFF.GENHN.40` | **signed non-applicability** — *"Explicitly labeled non-proof"*; no node |
+| `[GENHN-TOW-1]`, six items | `EFF.GENHN.55` | **signed non-applicability** — no node beyond H.50's arithmetic and H.58/H.79's identities |
+| `WZ-BOX-7`'s false parenthetical | `EFF.GENHN.28`, `EFF.GENH4.20` | **signed non-applicability** — chapter H states no type-preservation claim (H.11, H.87) |
+
+### 16.2 Flagged for the codex cross-read
+
+Ordered by how much a wrong answer would cost.
+
+1. **H.72's `rate_lossPriced` displayed inequality.** Its SIGNATURE NOTE already instructs the fleet
+   agent to *re-derive before proving*, but the blueprint's own cleared form has not been checked by a
+   second arm. If the clearing is wrong the node is unprovable (best case) or provable-but-not-the-
+   corpus's-claim (worst). **This is the one node where a wrong statement would be invisible to the
+   stub gate**, because a mis-stated `ℕ` inequality elaborates fine. Cross-read must re-derive
+   `(C2Q.1)` from `(CS-1Q.a)`+`(CS-1Q.b)` independently.
+2. **`InductionPackage`'s two-member reduction (H.95).** The corpus's `P(k)` has four members; chapter
+   H's `def` carries two, with `(A0)` moved to H.98's hypothesis and exactness dropped per `R6.2`. The
+   reasons are recorded, but a cross-reader should confirm that **nothing downstream needs the
+   history-resolved / `(A1)`-admissible-aggregate qualifiers**, and that H.98's `hdec` really carries
+   `(A0)`.
+3. **`(OB-a)` at general stages (H.89's fence).** Chapter H discharges the ragged-window ledger at
+   `e₁ = 2` (H.89) and carries the general case in `StageInterface.hwin`. `GENHN-CAP-GEN`
+   (`EFF.GENHN.79`) claims *"CS-1 and CS-2 hold at ordinary `f₁ ≥ 2`, `μ ≥ 3`, and mixed genres
+   **without a new box**"* — i.e. it *removes* an obligation. **Should `CAP-GEN` have a node?** If its
+   three-clause reader rule is formalizable, `hwin` could be weakened. Chapter H says no (the reader is
+   not formalized); confirm.
+4. **`A1Cell`'s σ field and `EFF.GENIND.30`'s OPEN-CALL 3.** Chapter H defines `(A1)`-admissibility
+   **with** the σ-label and proves closure for the strengthened predicate (H.93/H.94), which the corpus
+   never did. Confirm that (i) the σ-label field is what W-12's r4 clause demands, and (ii) closing the
+   open call on the Lean side while the corpus's own closure claim remains stated for the pre-r4
+   predicate is the right asymmetry to record rather than a silent upgrade.
+5. **The per-leaf free-slot exponents are NOT formalized (H.91's second fence).** Six `Finset.filter`
+   counts on the slot strings are omitted, with the reason that the count-law assembly is `W12`
+   content. Confirm that no chapter-H or chapter-D/F node is waiting on them.
+6. **Three cross-chapter identifications that chapter H DECLINES.** (a) `uTwo` vs chapter G's
+   `hex3R` — `EFF.GENIND.150` claims the `m = 2` closed form is *"LETTER-FOR-LETTER the committed
+   `R(M)`"*, but chapter G's `hex3R` is HEX3's `n = 3` recursion; H.26's note keeps them apart and the
+   generated DAG edge `BP.H.26 → BP.G.65` is a *cross-check* row. (b) H.28's cluster rate vs H.96's
+   full-space `undecidedSeq O 2 N = q^{−N}` — different objects (H.96's audit). (c) `GENIND-5`'s
+   bracket shape vs `GENH4` §S6.2's (H.84, H.92) — a shape match, **never a premise**
+   (`EFF.GENHN.36`(c)'s own warning). **All three are places a cross-reader might "helpfully" wire an
+   edge that would upgrade a candidate.**
+7. **`EFF.GENHN.43`'s OPEN-CALL 5, inherited unaddressed.** *"whether the composed display needs the
+   same `D₂h`-style restriction is **not addressed anywhere in the note**"* — and chapter H does not
+   address it either (H.58's fence). Is a composed occupied-height restriction needed for H.58/H.79?
+8. **The A2-wave discharge-confirmations still owed on the corpus side.** `EFF.GENHN.79`, `.81`, `.86`,
+   `.87` are part of the A2/D2b wave whose *"three repairs await sol discharge-confirmation"* and whose
+   re-displays are *"subject to sol discharge-confirmation in the cert2 pass"*. Chapter H transcribes
+   the **terminal** readings (H.05/H.06 for finiteness, H.09–H.12 for the occupied-height scope,
+   H.54–H.57 for `GENHN-LIFT`). If a confirmation pass moves any of them, those nodes move.
+9. **The `(T1)`/`(T2)` Lean route relayed 2026-08-15** (`docs/VENDOR_QUARRY_MAP_2026-08-15.md` §2.3):
+   `Ideal.ramificationIdx_mul_inertiaDeg_of_isLocalRing` + `integralClosure.isDedekindDomain_
+   fractionRing` + `IsPrincipalIdealRing.isDedekindDomain` compose for `S := integralClosure O L`,
+   with the **single** missing instance `IsLocalRing S` closed by
+   `FLT/HenselianLocalRing/Finite.lean:96`. Chapter H keeps `(T1)`/`(T2)` as hypotheses (H.76) because
+   the route needs a not-yet-backported instance. **Should a chapter-H node prove them instead?** This
+   is an **ADD**, not a defect; deciding it is a cross-read call, and it would also let `HYP.121`'s
+   interface-generality flag be revisited.
+10. **The `lean:` node-set gap (§14).** 51 landed dependencies are invisible to the DAG. Not a
+    chapter-H defect; needs a 0c′ harvest.
+11. **`W12` is uncited (honesty H-12) and the four consequences.** Confirm that `THEOREM W-12.A`'s
+    entry laws entering as *defined functions* (H.38/H.40/H.42) with audits tied to committed spot
+    values is an acceptable interface, and that H.98's re-derivation from
+    `UniformityStatement.ofDecided` is an acceptable substitute for citing `W-12.D`.
+12. **H.60's back-substitution construction — `[NEEDS-DERIVATION-EXPANSION]`.** The only genuine
+    well-founded recursion in the chapter, and the only node whose PROOF is Lean-construction-grade
+    rather than transcription-grade (the source supplies one sentence because in prose there is nothing
+    to supply). Three candidate schemes are recorded; confirm one, and confirm the `n`-induction
+    fallback is equivalent (it needs `Fin.snoc` bookkeeping the blueprint has not checked).
+13. **H.71 step 4's exponent recomposition — `[NEEDS-DERIVATION-EXPANSION]`.** `EFF.GENIND.153`
+    itself declares the step *"a compressed step, not a gap"*; the 0a compiler's re-derivation is
+    quoted in that unit's audit and is landed here as H.16/H.17. Confirm that routing step 4 through
+    those two nodes is faithful, and that no third exponent form is needed.
+
+**Flagged-for-cross-read census: 13 items, of which 11 are node-level and are named at the nodes
+themselves** (H.26, H.57, H.58, H.76, H.89, H.91, H.93, H.94, H.95, H.96, H.99), **2 are
+`[NEEDS-DERIVATION-EXPANSION]` flags** (H.60, H.71), and **2 are declared blueprint defects cured in
+place** (H.54's `normIdx` → `stageLift'`; H.97's `package_three_of_drainage` →
+`package_three_of_rate`). No node in this chapter carries a silent thin step: every PROOF field is
+either transcription-grade from an `EFF` DERIVATION, or flagged above.
+
+---
+
+*END OF CHAPTER H BLUEPRINT — 99 nodes, 190 signed declarations, 358 DAG edges, 105 source units
+transcribed from `EFF-GENIND` (206) / `EFF-GENHN` (93) / `EFF-GENH4` (111). CODEX CROSS-READ OWED.*
+
+
+
 
 
 
