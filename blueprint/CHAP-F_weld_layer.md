@@ -652,8 +652,382 @@ the coincidence-regime discipline (GC-11) applied to this chapter's own degenera
 
 ---
 
-<!-- RESUME: §§3–4 composed (F.01–F.06). Next: §5 (GENHN-BOX-2 / W-9, F.07–F.13), then §6
-(SIGMALAW, F.14–F.18), §7 (recon + structural, F.19–F.26), §8, §9 (F.27–F.28), §10 gates
-(F.29–F.30), §§11–14. -->
+## 5. §5 — THE `GENHN-BOX-2` / W-9 FACE (the twisted-algebra carry interface, at ledger strength)
+
+**Section contract.** Product (2) of BRIEF F: the supplier statement — COROLLARY W-9's
+twisted group algebra as the `μ ≥ 3` carry bookkeeping — at EXACTLY ledger strength
+(HYP.148, CARRY, first live degree `n = 6`; sub-residue HYP.139, the W-1 transport, MATH).
+Source unit: `EFF.GRTJC.89` (the special-care unit, byte-verbatim in the spec) with its
+proofs unit `.90` and the JC-F1 consequence `.91`. **Consumption geography, verified by the
+spec's own three-source check:** W-9 is consumed at GENHN-4 **layer 1** (GENHN S6.1, exactly
+one line, L874), `μ ≥ 3`, "the ONE weld face inside a count law" on the whole capstone path;
+clauses (i)–(iii) are what layer 1 takes; **clause (iv) is NOT consumed** (the wrap letter
+layer 1 uses is derived elsewhere); everything W-9 rides, W-8/W-7 ride: `(DMULT-w)` (F.26),
+`[ILN]†`'s scored stratum for the value half, `e_m ≥ 2` for the sharp forms. The abstract
+twisted-algebra mathematics of clauses (i)–(iii) is elementary finite algebra and is
+transcribed as PROVABLE nodes (F.07–F.10, plus the count identity F.13); the claim that
+GENHN-4 layer 1's carry bookkeeping IS an instance of that shape is the CARRIED face
+(F.11), and its FGMN-transport residue is F.12. Per honesty F-2, nothing here consumes
+WELDZERO's replacement route.
+
+### NODE F.07 [def] [fresh]
+
+**STATEMENT.** *The carry-cocycle datum (W-9 clauses (i)+(ii) as a structure).* Over a
+finite field `K` and a modulus `E ≥ 1`: a **carry cocycle** is a pair of families
+`c : ZMod E → ZMod E → Kˣ` and `δ : ZMod E → ZMod E → ℕ` with (i) the `Kˣ`-valued 2-cocycle
+identity `c a b * c (a+b) d = c b d * c a (b+d)` (COROLLARY W-9(i): "this is [ILN]†'s COR-2,
+and on the gr side it is nothing but associativity of gr(w)'s multiplication"); (ii) the
+integer cocycle identity `δ a b + δ (a+b) d = δ b d + δ a (b+d)` with `δ` `{0,1}`-valued
+(W-9(ii): "the {0,1}-valued carry cocycle"). The y-degree tie `deg A(a,b) = δ(a,b)`
+(JC-CARRY-m) is instance content at the consuming site, not a field.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- A carry cocycle over `ZMod E` (`EFF.GRTJC.89` clauses (i)/(ii)): the `Kˣ`-valued
+2-cocycle with its `{0,1}`-valued integer shadow. -/
+structure CarryCocycle (E : ℕ) [NeZero E] (K : Type*) [Field K] where
+  c : ZMod E → ZMod E → Kˣ
+  δ : ZMod E → ZMod E → ℕ
+  cocycle : ∀ a b d, c a b * c (a + b) d = c b d * c a (b + d)
+  δ_le_one : ∀ a b, δ a b ≤ 1
+  δ_cocycle : ∀ a b d, δ a b + δ (a + b) d = δ b d + δ a (b + d)
+```
+
+**DEPENDS.** none.
+
+**PROOF.** definitional.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.GRTJC.89` clauses (i)/(ii), byte-verbatim in the spec (its own source-range
+verification: GRTJC L1777–1788 at HEAD, exact); `EFF.GRTJC.90` (the one-line proofs — NOT
+transcribed as proofs here: in the corpus (i)/(ii) are CONCLUSIONS given W-6..W-8; in this
+abstract structure they are FIELDS, so the corpus conditionality is carried by
+instantiation, never silently discharged).
+
+**FAITHFULNESS.** Kind inversion, disclosed: the corpus proves (i)/(ii) from the GRTJC stack
+(W-6/W-7/W-8 + `(MULT-B)|gr` + `(DMULT-w)`); F carries them as structure fields because the
+stack's objects (the harness chain, `𝒜(T)`) have no leanfinal carrier and building them
+would be out-of-cone mass (§3). An instance of `CarryCocycle` at a concrete site is
+therefore exactly "W-9's conclusion holds there" — ledger strength preserved.
+
+**TEETH.** JC7 (581 samples, 0 violations; 261 triples satisfy BOTH identities; E-fold chain
+matched on all 15 rows with E ≤ 8) → executable regression RECORDED at the source; the Lean
+instances fire at F.29's gate.
+
+**ENVIRONMENT.** ENV-F1 (+ `[NeZero E] [Field K]`).
+
+---
+
+### NODE F.08 [def] [fresh]
+
+**STATEMENT.** *The twisted group algebra `K^c[ℤ/E]` (W-9 clause (iii)'s object).* For a
+carry cocycle `cc`: the carrier `ZMod E → K` with the `c`-twisted convolution
+`(f ⋆ g) t = Σ_{a+b=t} c a b · f a · g b`. One public definition; the `Mul`/`One` instances
+and helper lemmas live below it in the same file (GC-6.5's helper clause).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- The twisted group algebra `K^c[ℤ/E]` of the abscissa-coset group over the carry cocycle
+(`EFF.GRTJC.89` clause (iii)). Carrier: `ZMod E → K`; multiplication: `c`-twisted
+convolution. -/
+def TwistedAlgebra {E : ℕ} [NeZero E] {K : Type*} [Field K]
+    (cc : CarryCocycle E K) : Type _ := ZMod E → K
+
+-- helpers below the contract declaration (same file):
+--   instance : Mul (TwistedAlgebra cc) — (f ⋆ g) t = ∑ a, cc.c a (t − a) * f a * g (t − a)
+--   def single (a : ZMod E) (x : K) : TwistedAlgebra cc
+--   instance : AddCommGroup (TwistedAlgebra cc) := Pi.addCommGroup
+--   instance : Module K (TwistedAlgebra cc) := Pi.module _ _ _
+```
+
+**DEPENDS.** F.07; mathlib `Finset.sum` over `ZMod E` (`Fintype (ZMod E)` via `NeZero E`).
+
+**PROOF.** definitional.
+
+**SIZE.** 20 lines (with helpers).
+
+**SOURCE.** `EFF.GRTJC.89` clause (iii) ("𝒜(T) is the twisted group algebra K^{c}[ℤ/E] of
+the abscissa-coset group over the carry cocycle"); the clause's consumer reading from the
+spec's four-supply table: "one K-line per dv-height, i.e. dim_K 𝒜(T) = E".
+
+**FAITHFULNESS.** The corpus object `𝒜(T)` is a subquotient of the harness chain; W-9(iii)
+says it IS this twisted algebra. F declares the abstract right-hand side only; the
+identification is inside F.11's carried face. `Type _`-level `def` (not `abbrev`) so the
+twisted `Mul` instance cannot leak onto plain `ZMod E → K`.
+
+**TEETH.** F.29 gate instances at `q = 2` and `q = 3`.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.09 [theorem] [fresh]
+
+**STATEMENT.** *Associativity IS the cocycle identity (W-9(i)'s elegance, abstract half).*
+For a carry cocycle `cc`, the twisted convolution on `TwistedAlgebra cc` is associative, and
+`single 0 (cc.c 0 0)⁻¹` is a two-sided unit. The proof is the source's own one-liner run in
+reverse: expanding `(f ⋆ g) ⋆ h` and `f ⋆ (g ⋆ h)` termwise, the coefficients match exactly
+by `cocycle` — "the cocycle identity is not an extra hypothesis but a consequence of the
+ring being a ring" (`EFF.GRTJC.90`'s reading), here used in the direction the abstract
+carrier needs (cocycle ⟹ associative).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+theorem TwistedAlgebra.mul_assoc {E : ℕ} [NeZero E] {K : Type*} [Field K]
+    (cc : CarryCocycle E K) (f g h : TwistedAlgebra cc) :
+    f * g * h = f * (g * h)
+```
+
+**DEPENDS.** F.07, F.08; mathlib `Finset.sum_comm`, `Finset.sum_bij` (re-indexing the double
+convolution sum), `Finset.mul_sum`.
+
+**PROOF.** 1. Expand both sides to double sums over `(a, b)` with `a + b + d = t`
+(computation). 2. Re-index by `Finset.sum_bij` (the pairing `(a+b, d) ↔ (a, b+d)`).
+3. Coefficient match per term: `cc.cocycle a b d` (one rewrite). Split candidate if the
+re-indexing exceeds the size box: `F.09a` (the double-sum re-indexing as its own lemma).
+
+**SIZE.** 38 lines.
+
+**SOURCE.** `EFF.GRTJC.89`(i) + `EFF.GRTJC.90` proof (i) (associativity of `gr(w)` expanded
+with `(MULT-B)|gr` yields the identity; reduced mod `ψ_m` gives the `Kˣ` form). Direction
+reversed for the abstract carrier — disclosed, not fresh mathematics (the equivalence of a
+2-cocycle law with twisted-convolution associativity is classical algebra; the corpus walks
+it right-to-left, this node left-to-right).
+
+**FAITHFULNESS.** Stated on the abstract object only. Nothing here claims `𝒜(T)` facts.
+
+**TEETH.** JC7's cocycle leg (RECORDED); F.29 executes the abstract instance at both primes.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.10 [theorem] [fresh]
+
+**STATEMENT.** *Dimension `E` and the power basis (clause (iii)'s count + JC-F1's cyclic
+presentation).* For a carry cocycle `cc`: (a) `Module.finrank K (TwistedAlgebra cc) = E`
+("one K-line per dv-height" — the graded shadow GENHN-2 cites as frame); (b) with
+`v := single 1 1`, the powers satisfy `v ^ k = single k (β k)` with
+`β k = ∏_{i=1}^{k−1} cc.c 1 i ∈ Kˣ` for `1 ≤ k ≤ E`, so `{v^0, …, v^{E−1}}` is a `K`-basis
+and `v ^ E = ζ • 1` with `ζ := ∏_{k=1}^{E−1} cc.c 1 k` — `EFF.GRTJC.91`'s display
+"`𝒜(T) ≅ K[v]/(v^E − ζ_T)` as a K-algebra — at EVERY composite stage" in its abstract form.
+The anchor-INDEXED presentation claim the blueprint fence guards ("`𝒜(T)` is NOT
+`F′[u′]/(u′^E − ζ′)`" as a presentation statement, JC-BOX-5 REVIEW-OWED) is NOT contradicted
+and NOT transcribed: (b) is the abstract-isomorphism fact only, exactly the correction JC-F1
+records.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+theorem TwistedAlgebra.finrank_eq {E : ℕ} [NeZero E] {K : Type*} [Field K]
+    (cc : CarryCocycle E K) : Module.finrank K (TwistedAlgebra cc) = E
+
+theorem TwistedAlgebra.pow_card_single {E : ℕ} [NeZero E] {K : Type*} [Field K]
+    (cc : CarryCocycle E K) :
+    (single 1 1 : TwistedAlgebra cc) ^ E
+      = (∏ k ∈ Finset.Ico 1 E, (cc.c 1 (k : ZMod E) : K)) • single 0 1
+```
+
+**DEPENDS.** F.07, F.08, F.09; mathlib `Module.finrank_pi` (`finrank K (ZMod E → K) =
+card (ZMod E)`), `ZMod.card`, `Finset.prod_Ico_succ_top` (the orbit-product induction).
+
+**PROOF.** 1. (a): the carrier is `ZMod E → K`; `finrank = Fintype.card (ZMod E) = E` —
+mathlib. 2. (b): induction on `k ≤ E`: `v ^ (k+1) = v * v ^ k`; the convolution of two
+`single`s is `single (a+b) (c a b · x · y)` (helper lemma below F.08); the product
+telescopes. 3. At `k = E`: `(E : ZMod E) = 0`, giving the `single 0` form. Split-mandated:
+**F.10 → 2 files** (F.10a the single-convolution helper + finrank; F.10b the power
+induction) — the induction plus helper exceeds the 40-line box.
+
+**SIZE.** 2 × ~30 lines.
+
+**SOURCE.** `EFF.GRTJC.89` clause (iii) consumer column ("dim_K 𝒜(T) = E"); `EFF.GRTJC.91`
+(FINDING JC-F1's displayed derivation: `v^k = β_k·[φ_{γ_k}]`, powers in pairwise distinct
+`ℤ/E`-degrees, dimension count `E = E`; "THROUGH, general m, on (DMULT-w) + JC-IND" — the
+conditionality lands on F.11's instance, not on this abstract node); JC-BOX-5's REVIEW-OWED
+fence honoured by scope (abstract isomorphism only).
+
+**FAITHFULNESS.** The abstract (b) uses only the structure's own fields; the corpus's
+`(DMULT-w)`-riding enters where an instance is claimed (F.11). Degree/normalization
+conventions: `single 0 1` is not the unit unless `cc.c 0 0 = 1` — the statement is therefore
+in `•`-form against `single 0 1`, not against `1`; a fleet agent must not "fix" this by
+normalizing `cc` (statement fence).
+
+**TEETH.** JC8's power-basis leg (the E-fold chain, 15 rows E ≤ 8 — RECORDED); F.29 executes
+`v^E = ζ • single 0 1` at concrete instances, both primes.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.11 [interface-carrier] [fresh]
+
+**STATEMENT.** *`GENHN-BOX-2` at ledger strength — the ONE weld face inside a count law.*
+Transcribed from HYP.148 (CARRY) and GENHN's own dependency ledger (verbatim at HEAD, quoted
+in the ledger row): "GRTJC W-6..W-9 + JC-LOAD/W-8 are consumed at LEMMA GENHN-4 layer 1
+(μ ≥ 3) — the ONE weld face inside a count law, disclosed (GENHN-BOX-2); elsewhere
+frame-only"; the box's own pricing: "the count laws at μ ≥ 3 stand on one accepted weld
+face." As a Lean carrier: a `Prop`-valued structure asserting, for a composite-stage carry
+site at multiplicity `μ ≥ 3` (site data abstract; the concrete stage objects are chapter
+H/C's — `GenreDatum`-keyed, GC-13), the EXISTENCE of a `CarryCocycle` instance whose twisted
+algebra realizes the stage's carry bookkeeping (clauses (i)–(iii)); **clause (iv) is
+deliberately absent** (not consumed at layer 1 — the spec's four-supply table, row (iv):
+"NOT CONSUMED"). Scope pins carried in the statement: first live degree `n = 6` (the same
+threshold as `[GENHN-HE(μ≥3)]`, HYP.81); NOT inherited by the σ chain (HE3 L1293: "the W-9
+weld face (GENHN-BOX-2) is absent from the σ chain") and NOT by the tower leg (GENTOW5
+L157). Compensating instrument standing: GN-REFINE3 (GENHN L1834) — recorded, not a
+discharge.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- A composite-stage CARRY SITE at multiplicity `μ`: the stage's carry bookkeeping as an
+abstract indexed family. Instances are chapter-H/C stage objects (GC-13). -/
+structure CarrySite (K : Type*) [Field K] where
+  E : ℕ
+  hE : 1 ≤ E
+  μ : ℕ
+  carry : ZMod E → ZMod E → K   -- the stage's own carry table (site data)
+
+/-- `GENHN-BOX-2` at ledger strength (HYP.148): at `μ ≥ 3` the site's carry bookkeeping is
+realized by a carry cocycle's twisted algebra — W-9 clauses (i)–(iii), clause (iv) absent.
+CARRIED, not proved; chapter I's `n ≥ 6`-indexed conjunct field. -/
+def GenhnBox2 {K : Type*} [Field K] (s : CarrySite K) : Prop :=
+  3 ≤ s.μ → ∃ (h : NeZero s.E) (cc : CarryCocycle s.E K),
+    ∀ a b, (cc.c a b : K) = s.carry a b
+```
+
+**DEPENDS.** F.07 (statement), F.08–F.10 (the consumer-facing laws an instance inherits).
+Cross-chapter: the concrete site instances are `EFF.GENHN [supplied-by: chapter H — landed
+H.61/H.87 layer]` and composed-stage data `[supplied-by: chapter C]` (GC-13(c)); no F node
+constructs one.
+
+**PROOF.** definitional (a carrier).
+
+**SIZE.** 22 lines.
+
+**SOURCE.** HYP.148 (statement + CONSUMED-BY, quoted; v6/v7 ARC NOTEs: CARRY at full
+strength, the discharge route is HYP.149 = WELD-ZERO, pending — honesty F-2); `EFF.GRTJC.89`
+(the four-supply table's per-clause consumer column; the three annex survivals: Annex #4
+"W-9's cocycle semantics and the residue-chain statement survive", Annex #5, Annex #6);
+`SG2_PROBE_2026-08-10.md` L26–29 (NEEDS-X: GENHN-4 is NOT re-derivable from WELDMASTER
+(M0)–(M4) + WM-COB + J-D0 as stated — why this is a carry, not a theorem).
+
+**FAITHFULNESS.** Ledger strength exactly: the `μ ≥ 3` guard is in the `Prop` (below it the
+site owes nothing weld-side — GENHN-2 re-proves the slot geometry elementarily); the `n ≥ 6`
+degree threshold is chapter I's index on the conjunct field (F does not carry `n`); clause
+(iv) structurally absent. **Per Part V: terminates in I as a discharge node (if WELD-ZERO
+lands and is folded by dated amendment, §8) or stays a named capstone hypothesis.**
+
+**TEETH.** signed non-applicability (carried face; H.09's rule — reconciled §13). Machine
+corroboration at the source: GENHN L1710 pin checks, 0 violations (RECORDED).
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.12 [interface-carrier] [fresh]
+
+**STATEMENT.** *The `W-1` transport, `GENHN-BOX-2`'s sub-residue (HYP.139, MATH).* At ledger
+strength, verbatim from the census: "Residue is NOT the cite but the transport: W-1 (harness
+w, 𝑅 → FGMN objects) stays ATTEMPT"; GRTJC L1990–1993: "Transport of the harness w and 𝑅 to
+the FGMN objects is still W-1 (ATTEMPT) — and the corpus's own march-level dictionary for
+that transport, TR-3′-GEN, is OPEN at general order." As a Lean carrier: a `Prop` asserting,
+for a carry site consumed through the FGMN frame, the existence of the transport dictionary
+(a line-wise unit system `c_λ` with `𝑅_λ = c_λ · R^GMN_λ` — the `(IN-3)` transport clause's
+shape) at the site's order. This is a PROOF obligation, not a citation one (the census's own
+words) — class MATH, distinct from F.11's CARRY: it does NOT discharge with a transcription
+fold.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- `W-1` (HYP.139) at ledger strength: the harness-to-FGMN transport dictionary exists at
+the site's order — a line-wise unit system relating the two residual operators. MATH-class
+obligation; chapter I's field, riding under `GenhnBox2`. Abstract shape: the two operator
+families and the unit system are site data. -/
+def W1Transport {K : Type*} [Field K] {ι : Type*}
+    (Rharness RGMN : ι → K) : Prop :=
+  ∃ c : ι → Kˣ, ∀ λ, Rharness λ = (c λ : K) * RGMN λ
+```
+
+**DEPENDS.** none (shape only). The FGMN-side objects are gate-(b) literature-cite content
+(`(IN-3)`, F.26's provenance); the harness side is GRTJC-internal.
+
+**PROOF.** definitional (a carrier).
+
+**SIZE.** 12 lines.
+
+**SOURCE.** HYP.139 (statement + the consumer chain "W-9 (proved GIVEN W-6..W-8) → GENHN-4's
+layer-1 carry bookkeeping at μ≥3 (GENHN-BOX-2) → count laws at μ≥3"; the v4 note: the
+WELD-ZERO route would retire this row WITH HYP.148 — pending, licenses nothing, honesty
+F-2); `EFF.GRTJC.69`'s CONDITIONALITY ("(IN-3)'s transport prices 𝑅 = c·R^GMN at a line-wise
+unit, and TR-3′-GEN is OPEN beyond its closed strata").
+
+**FAITHFULNESS.** The `ι`-indexed shape is the transport's SIGNATURE only — the mathematics
+(that the unit system exists compatibly at general order) is exactly what is OPEN; stating
+more would manufacture a discharge. The carrier is `∃`-form because the ledger's obligation
+is existence of the dictionary; per-λ explicitness is what TR-3′-GEN's closed strata supply
+where they apply.
+
+**TEETH.** signed non-applicability (MATH-class carry; §13).
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.13 [lemma] [fresh]
+
+**STATEMENT.** *The count form of the twisted layer (conclusions, not type-preservation).*
+For a carry cocycle `cc`: `Nat.card (TwistedAlgebra cc) = (Nat.card K) ^ E`. Together with
+F.10(a) this is the cardinality/dimension pair the count laws consume — the WZ-BOX-7-
+compliant packaging (cancellation identities and cardinalities; honesty F-3). The two landed
+theorems that replace type-preservation claims in the consuming count layer are cited here
+by node ID as the interface: **H.87** (`carry_cancel`/`carry_cancel_char_two` — the
+three-term carry cancellation, both characteristics) and **H.61**
+(`TriangularUnitPivot.card_fibre` — the target-independent fibre count); no F node re-proves
+either, and no F node states a twist-map type-preservation claim in their place.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+theorem TwistedAlgebra.nat_card {E : ℕ} [NeZero E] {K : Type*} [Field K] [Finite K]
+    (cc : CarryCocycle E K) :
+    Nat.card (TwistedAlgebra cc) = Nat.card K ^ E
+```
+
+**DEPENDS.** F.08; mathlib `Nat.card_fun`/`Nat.card_pi`, `ZMod.card`. Interface citations
+(DEPENDS-as-annotation, GC-13(b)): H.87, H.61.
+
+**PROOF.** 1. The carrier is `ZMod E → K` — `Nat.card` of a function type (mathlib).
+2. `Nat.card (ZMod E) = E` (mathlib). One-step.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GRTJC.89` clause (iii)'s consumer reading ("one K-line per dv-height");
+BRIEF F's interface list (H.87 carry cancellation, H.61 fibre count — "the two theorems that
+replace type-preservation claims"); WZ-BOX-7 (the 972/972 live-wrap machine witness against
+twist type-preservation — the rule this node's form obeys).
+
+**FAITHFULNESS.** Trivial mathematics, load-bearing FORM: the node exists so the consuming
+chapters have a named cardinality interface instead of a type-preservation shortcut.
+
+**TEETH.** Lean theorem; re-fired numerically at F.29.
+
+**ENVIRONMENT.** ENV-F1 (+ `[Finite K]`).
+
+---
+
+<!-- RESUME: §5 composed (F.07–F.13). Next: §6 (SIGMALAW, F.14–F.18). -->
 
 <!-- SENTINEL: BP-F END OF FILE -->
