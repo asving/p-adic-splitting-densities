@@ -123,7 +123,7 @@ private theorem inf_npHgt_le_gaussVal (hπ : Irreducible π) {φ : Polynomial O}
     (Finset.range K).inf (fun j => npHgt φ a j) ≤ gaussVal a := by
   have hterm : ∀ j, npHgt φ a j = gaussVal (dev φ a j * φ ^ j) := by
     intro j
-    show gaussVal (dev φ a j) = _
+    change gaussVal (dev φ a j) = gaussVal (dev φ a j * φ ^ j)
     rw [gaussVal_mul hπ, gaussVal_eq_zero_of_monic (hφ.pow j), add_zero]
   calc (Finset.range K).inf (fun j => npHgt φ a j)
       = (Finset.range K).inf (fun j => gaussVal (dev φ a j * φ ^ j)) := by
