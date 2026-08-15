@@ -10,13 +10,19 @@ declaration).
 
 **What is real and what is a stub.** Per stage-0e rule 1 (blueprint §12): the chapter's new
 definitional layer lands as REAL BODIES — 26 `def`s, the `CertFamily` structure and the
-`CubicFamilyIndex` inductive. The 82 theorem signatures land as `axiom` stubs. After a node lands
+`CubicFamilyIndex` inductive. The 81 theorem signatures land as `axiom` stubs. After a node lands
 in `leanfinal` its normalised environment type is diffed against the stub here.
 
 **Amended against blueprint AMENDMENT 2026-08-15** (the four §14 items adjudicated at this gate):
 G.23a `card_resStratum` is **withdrawn — its statement is refuted** — and is commented out below
 rather than signed; G.28 `decidedAt_split_of_sep` carries the amended window hypothesis
 `2 * k + 1 ≤ N`. Signed contract count: **109** declarations (110 minus G.23a).
+
+**Amended against blueprint AMENDMENT 2026-08-15, second append** (defects D2 and D3 cured):
+G.62b `CubicFamilyIndex.schema` is re-signed as a **real `def`** carrying the derived 53 → 33
+assignment (§A-5) — it is the 26th real body, and the `axiom` count drops 82 → 81 accordingly;
+G.52g `c3_pairwise_ne` is re-signed with the **ten inequalities** in place of the placeholder
+`True` (§A-6). Declaration count unchanged at **109**.
 
 **This file is never imported by `leanfinal` or `leancheck`.** It carries `axiom`s by design; it
 is an interface contract, not mathematics. Nothing here is proved.
@@ -35,14 +41,17 @@ own `(K : Type*) [Field K] [Finite K]` inline.
   `(t + 1) / 2 ≤ t + r`. Landed below with the minimal repair — the same `(by omega : …)` proof
   the blueprint already writes on the left-hand side of each equation — which is type-identical by
   proof irrelevance. The blueprint entry needs the placeholder filled in.
-* **D2 — G.62b `CubicFamilyIndex.schema`, DEF WITH NO BODY.** The SIGNATURE block declares a
-  `def … : CubicFamilyIndex → Fin 33` and supplies no body, and the body is underdetermined by the
-  prose (which of the 53 formal families collapse onto which of the 33 schemas is not stated).
-  Landed as an `axiom`-typed constant so that G.63 elaborates; a blueprint amendment owes the
-  table.
-* **D3 — G.52g `c3_pairwise_ne`, PLACEHOLDER STATEMENT.** The blueprint's SIGNATURE is literally
-  `theorem c3_pairwise_ne : /- the ten inequalities -/ True`. Landed verbatim, i.e. vacuous; the
-  ten inequalities are unstated and G.72's proof sketch consumes them.
+* **D2 — G.62b `CubicFamilyIndex.schema`, DEF WITH NO BODY. ✅ CURED 2026-08-15 (blueprint
+  AMENDMENT §A-5).** The SIGNATURE block declared a `def … : CubicFamilyIndex → Fin 33` and
+  supplied no body, and the body was underdetermined by the prose (which of the 53 formal families
+  collapse onto which of the 33 schemas was not stated). The 53 → 33 assignment is now **derived
+  from `EFF-HMENU3`/ANNEX B** and tabulated in the blueprint amendment; the `axiom`-typed
+  placeholder below is replaced by the real `def`, re-signed against the same signature.
+* **D3 — G.52g `c3_pairwise_ne`, PLACEHOLDER STATEMENT. ✅ CURED 2026-08-15 (blueprint AMENDMENT
+  §A-6).** The blueprint's SIGNATURE was literally `theorem c3_pairwise_ne : /- the ten
+  inequalities -/ True`, landed verbatim, i.e. vacuous. The ten inequalities (the five cubic type
+  constants pairwise distinct as `FactorizationType`s — what G.72's step 3 consumes) are now
+  stated; the stub below carries the amended signature.
 * **D4 — ENV-A under-binds `[Finite (ResidueField O)]` (systematic, 22 stubs).** Lean's
   variable-inclusion drops an instance-implicit section variable that the *statement* does not
   mention, but auto-includes it when the *proof* uses it (verified against the landed
@@ -493,10 +502,15 @@ axiom c3_degrees :
     c3split.degree = 3 ∧ c3linInert.degree = 3 ∧ c3inert.degree = 3
       ∧ c3linRam.degree = 3 ∧ c3ram.degree = 3
 
-/-- **G.52g** ⚠ TRANSCRIBED VERBATIM: the blueprint's SIGNATURE for the ten pairwise
-inequalities is the placeholder `True` (`/- the ten inequalities -/ True`). Recorded as a
-signature defect in the stage-0e report; not repaired here. -/
-axiom c3_pairwise_ne : True
+/-- **G.52g** The ten pairwise inequalities. Signature per blueprint **AMENDMENT §A-6** (D3 cured
+2026-08-15): the placeholder `/- the ten inequalities -/ True` is replaced by the ten inequalities
+themselves — the five cubic type constants pairwise distinct as `FactorizationType`s, in the
+`leancheck/UniformityCheck/N3Base.lean` enumeration order. -/
+axiom c3_pairwise_ne :
+    c3split ≠ c3linInert ∧ c3split ≠ c3inert ∧ c3split ≠ c3linRam ∧ c3split ≠ c3ram
+      ∧ c3linInert ≠ c3inert ∧ c3linInert ≠ c3linRam ∧ c3linInert ≠ c3ram
+      ∧ c3inert ≠ c3linRam ∧ c3inert ≠ c3ram
+      ∧ c3linRam ≠ c3ram
 
 /-- **G.53 — Exactly five splitting types occur in degree 3.** No Newton polygon, no Hensel: the
 statement is a consequence of `typeOf_degree` and the positivity of every `(e,f)` pair. -/
@@ -596,11 +610,22 @@ inductive CubicFamilyIndex
   deriving DecidableEq, Fintype
 
 /-- **G.62b** The shape schema underlying each formal family (ANNEX B's "33 shape schemas").
-⚠ BLUEPRINT DEFECT: the SIGNATURE declares a `def` with **no body**, and the body is
-underdetermined by the blueprint's prose (which families collapse onto which of the 33 schemas is
-not specified). Landed as an `axiom`-typed constant so that G.63 elaborates; the real `def` is
-owed a blueprint amendment. -/
-axiom CubicFamilyIndex.schema : CubicFamilyIndex → Fin 33
+
+Body per blueprint **AMENDMENT §A-5** (D2 cured 2026-08-15): the 53 → 33 assignment derived from
+`EFF-HMENU3` ANNEX B. `Fin 33` is read as the five consecutive blocks `0–2` SEP, `3–6` DBL,
+`7–13` tier I, `14–20` tier II, `21–32` B-tier (`EFF.HMENU3.69`'s schema column, `3+4+7+7+12`).
+SEP and DBL are unrefined, so those fibers are singletons (`.69`, both rows "—"); each TRP tier's
+four λ-free schemas (RAM3, 3LIN, LINRAM2, RAM2LIN) are singletons and its three λ-retaining
+schemas VERT1/VERT2/FULL (`EFF.HMENU3.67`) carry fibers of size `#Λ₂ = 2`, `#Λ₂ = 2`, `#Λ₃ = 3`
+(`EFF.HMENU3.68`); the twelve B-schemas each split into their `m = 0` / `m ≥ 1` regimes
+(`EFF.HMENU3.69`, `.37`), giving `bTier i ↦ 21 + i / 2`. -/
+def CubicFamilyIndex.schema : CubicFamilyIndex → Fin 33
+  | .sep i    => ![0, 1, 2] i
+  | .dbl i    => ![3, 4, 5, 6] i
+  | .tierI i  => ![7, 8, 9, 10, 11, 11, 12, 12, 13, 13, 13] i
+  | .tierII i => ![14, 15, 16, 17, 18, 18, 19, 19, 20, 20, 20] i
+  | .bTier i  => ![21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26,
+                   27, 27, 28, 28, 29, 29, 30, 30, 31, 31, 32, 32] i
 
 /-- **G.63a** -/
 axiom card_cubicFamilyIndex : Nat.card CubicFamilyIndex = 53

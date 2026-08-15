@@ -2512,6 +2512,12 @@ does; the section variables are not used).
 
 ### NODE G.52 [def] [fresh]
 
+> **AMENDMENT BANNER 2026-08-15 — SIGNATURE AMENDED: `c3_pairwise_ne` (G.52g) now STATES the ten
+> inequalities** (it was the literal placeholder `/- the ten inequalities -/ True`, i.e. vacuous —
+> stage-0e defect **D3**). The real conjunction and its proof are in **AMENDMENT §A-6**, landed in
+> `leanfinal` and re-signed in `leanspec`. The five `def`s and `c3_degrees` are unchanged. Nothing
+> below is edited.
+
 **STATEMENT.** The five degree-3 splitting types, with their degrees and pairwise distinctness.
 
 **SIGNATURE.**
@@ -2984,6 +2990,13 @@ falsifier of either the bounds or the transcribed targets.
 ## 9. §9 — THE 53-FAMILY INDEX AND THE HEX3 ARITHMETIC LAYER
 
 ### NODE G.62 [def] [fresh]
+
+> **AMENDMENT BANNER 2026-08-15 — `CubicFamilyIndex.schema` (G.62b) NOW HAS A BODY, DERIVED FROM
+> `EFF-HMENU3`** (it was a `def` with no body, underdetermined by the prose here — stage-0e defect
+> **D2**). The full 53 → 33 assignment table and its per-step derivation are in **AMENDMENT §A-5**;
+> the body is landed in `leanfinal` and re-signed as a real `def` in `leanspec`. The
+> `CubicFamilyIndex` inductive and the `schema` **signature** are unchanged. Nothing below is
+> edited.
 
 **STATEMENT.** *The cubic family index (ANNEX B).* HMENU3's menu, after ANNEX B's fixed-λ and
 `b(m)`-regime refinements, consists of **53 formal families** organised as
@@ -4102,3 +4115,272 @@ Declaration census after this amendment: **109 contract declarations** (110 minu
 G.23a). The `leanspec` stubs (`leanspec/Leanspec/ChapG.lean`, commit `dfa34cd6`) are updated to
 match: G.23a commented out with a REFUTED marker, G.28's stub carrying the amended hypothesis.
 Items 5–12 of §14 remain **owed to the codex cross-read**.
+
+---
+
+## AMENDMENT 2026-08-15 (second dated append; Opus arm) — stage-0e defects D2 and D3 CURED
+
+**Status of this block.** A second dated append in the same convention as the block above:
+**nothing in §§0–14 is edited in place**; the banners at the G.62 and G.52 node entries point
+here and this block governs. It discharges two of the five blueprint defects raised at the
+stage-0e leanspec gate (`leanspec/Leanspec/ChapG.lean`, header list D1–D5) — the two that the gate
+recorded as *owing a blueprint amendment* rather than as cosmetic:
+
+* **D2 — G.62b `CubicFamilyIndex.schema`: DEF WITH NO BODY.** CURED at §A-5: the body is derived
+  from `EFF-HMENU3` (ANNEX B) and displayed as a total table.
+* **D3 — G.52g `c3_pairwise_ne`: PLACEHOLDER STATEMENT (`True`).** CURED at §A-6: the ten
+  inequalities are stated.
+
+**Declaration census: unchanged at 109.** Neither cure adds or withdraws a declaration; D2 fixes a
+body, D3 fixes a proposition. **Wave-1 exposure:** both G.52 and G.62 are wave-1 (layer-0) nodes
+and both have already landed in `leanfinal`; each cure is therefore a **signature/body repair of an
+already-landed file**, sanctioned as such (G62.lean replaces a `BLOCKED` marker with the derived
+body at the unchanged signature; G52.lean replaces the vacuous `True` with the real conjunction).
+No other node's statement changes, and no landed proof is invalidated: `schema` had **no**
+consumer in the landed corpus (G.63 is not landed), and `c3_pairwise_ne : True` had none either
+(its only declared consumer is G.72's step 3, unlanded, which needs the real form).
+
+---
+
+### A-5 — G.62b `CubicFamilyIndex.schema`: **D2 CURED: schema body derived from EFF-HMENU3 .62/ANNEX B**
+
+**Banner for the node entry:** `G.62 [BODY DERIVED 2026-08-15 — see AMENDMENT §A-5]`.
+
+**What was missing.** The G.62 SIGNATURE declares `def CubicFamilyIndex.schema : CubicFamilyIndex
+→ Fin 33` and the G.62 PROOF says only that it "is an explicit table (`3 + 4 + 7 + 7 + 12 = 33`
+targets, with tier-I's 11 formal families mapping onto 7 schemas, tier-II's 11 onto 7, the B-tier's
+24 onto 12 — each pair `(m = 0, m ≥ 1)` or `(λ = (1,1), λ = (2))` collapsing to one schema)". The
+table itself was never written down. It is recovered below from the primary text.
+
+#### The derivation, step by step (every step cites its EFF unit)
+
+**Step 1 — the domain is ANNEX B's five-tier family list.** `EFF.HMENU3.69`'s corrected-counts
+table fixes the five tiers and their formal-family counts: SEP `3`, DBL `4`, tier I `11`, tier II
+`11`, B-tier `24`. This is exactly the `CubicFamilyIndex` inductive's constructor arity list
+(`Fin 3`, `Fin 4`, `Fin 11`, `Fin 11`, `Fin 24`), landed verbatim at
+`leanfinal/Uniformity/ChapG/G62.lean`. **The domain shape is not in question; only the map is.**
+
+**Step 2 — the codomain splits into the same five blocks, of sizes `3 | 4 | 7 | 7 | 12`.** Same
+table, schema column: SEP `3`, DBL `4`, tier I `7`, tier II `7`, B-tier `12`, MENU TOTAL `33`;
+independently reconstructed in `EFF.HMENU3.62`'s mandatory arithmetic audit ("tier I `7` + tier II
+`7` + B `12` = 26 TRP schemas, plus 4 DBL + 3 SEP = **33**"). The G.62 STATEMENT quotes the same
+decomposition in the same order (`3 + 4 + 7 + 7 + 12`) as the constructor order, which is what
+licenses reading `Fin 33` as those five consecutive blocks:
+
+| `Fin 33` range | block | size |
+|---|---|---|
+| `0 … 2` | SEP | 3 |
+| `3 … 6` | DBL | 4 |
+| `7 … 13` | tier I | 7 |
+| `14 … 20` | tier II | 7 |
+| `21 … 32` | B-tier | 12 |
+
+**Step 3 — the SEP and DBL fibers are singletons.** `EFF.HMENU3.69`'s table gives the SEP row as
+`3 → 3` and the DBL row as `4 → 4`, both with "how the refinement acts" **empty**: neither tier is
+refined, so `schema` restricted to `sep`/`dbl` is a **bijection onto its block**. The member names
+come from `EFF.HMENU3.14` (THEOREM HM3.C, frozen display): `{SEP3, SEPLQ, SEPC}` and
+`{DBL-RAM, DBL-2SIDED, DBL-SPLITEQ, DBL-INERTDEEP}`, in that order.
+
+**Step 4 — inside a TRP tier, exactly three of the seven schemas retain `λ`.** `EFF.HMENU3.67`
+(ANNEX B's opening, verbatim) names them: `('VERT1', u₀, k, λ)`, `('VERT2', u₀, t, λ)`,
+`('FULL', k, λ)`. Hence the seven schemas are `4` λ-free `+ 3` λ-retaining, and **only the
+λ-retaining three have non-singleton fibers**.
+
+**Step 5 — the four λ-free schemas are named.** `EFF.HMENU3.69`, corrected counts, verbatim:
+"Tier I consists of four λ-free families (RAM3, 3LIN, LINRAM2, RAM2LIN), two VERT1 families, two
+VERT2 families and three FULL families: 4+2+2+3 = 11."
+
+**Step 6 — the fiber sizes over the three λ-retaining schemas are `2, 2, 3`.** Same sentence
+(`.69`). The *reason* — which is what makes the assignment derived rather than stipulated — is
+`EFF.HMENU3.68`'s fixed-label refinement lemma together with its CONDITIONALITY paragraph, which
+names the two label sets: `Λ₂ = {(1,1), (2)}` for a degree-2 residual and
+`Λ₃ = {(1,1,1), (1,2), (3)}` for a degree-3 residual. VERT1 and VERT2 carry a **quadratic**
+residual, so each splits into `#Λ₂ = 2`; FULL carries a **cubic** residual, so it splits into
+`#Λ₃ = 3`. `EFF.HMENU3.69`'s census table supplies exactly those two Λ's (rows: degree 2 with
+`(1,1)`, `(2)`; degree 3 with `(1,1,1)`, `(1,2)`, `(3)`) and its CONDITIONALITY confirms the λ → σ
+reading is the three unramified types of COROLLARY HM3.D (`EFF.HMENU3.17`).
+
+**Step 7 — tier II is a verbatim copy of tier I.** `EFF.HMENU3.69`: "Tier II has the same fixed-λ
+refinement and therefore has 11 families." `EFF.HMENU3.11` supplies the structural reason: tier II
+is `DEEP-X(m; params) = (q−1)q^{4m−1} × [X's law at window N−3m]`, i.e. the **same seven `X`** as
+tier I under a prefix bracket. **The tier-II fiber pattern is therefore forced to equal tier I's**,
+schema for schema.
+
+**Step 8 — every B-tier fiber has size exactly `2`, and the pairing is by `b(m)` regime, not by
+`λ`.** `EFF.HMENU3.69`, verbatim: "B1/B2/B3 with L ∈ {RAM, 2SIDED, SPLITEQ, INERTDEEP} give twelve
+fixed-σ schemas. As already required by HM3.B and HM3-BOX-5, each splits into its m = 0 and m ≥ 1
+regimes because b(m) has two formulas. Hence B contributes 12·2 = 24 formal families." The
+`B1/B2/B3` × `L` product is `EFF.HMENU3.11`'s own list, in its own order. That the doubling is the
+regime split and **not** a λ split is `EFF.HMENU3.09`'s finding (the dictionary already fixes
+`SPLITEQ ↦ λ=(1,1)` and `INERTDEEP ↦ λ=(2)`, so "the β side was **already** fixed-λ before ANNEX
+B … ANNEX B's refinement therefore bites only on tiers I and II"), and `EFF.HMENU3.37`'s effective
+HM3-BOX-5 states it directly ("b(m)'s two regimes mean each B-family is formally TWO (A1) families
+(m = 0; m ≥ 1)"). **The B block is therefore 12 fibers of size 2, and nothing else is consistent
+with the source.**
+
+**Step 9 — arithmetic closure.** Fibers: `3·1 + 4·1 + (4·1 + 2 + 2 + 3) + (4·1 + 2 + 2 + 3) +
+12·2 = 3 + 4 + 11 + 11 + 24 = 53` ✓ and schemas `3 + 4 + 7 + 7 + 12 = 33` ✓ — ANNEX B's two
+totals, re-audited at `EFF.HMENU3.69` and again at `EFF.HMENU3.62`. The map is total and
+surjective by construction (every block is hit).
+
+#### The assignment (the table D2 owed)
+
+Enumeration convention, fixed once: **inside every block, the sources' own list order, with each
+non-singleton fiber occupying a contiguous run** — which is precisely the G.62 PROOF's own reading,
+"each **pair** `(m = 0, m ≥ 1)` or `(λ = (1,1), λ = (2))` collapsing to one schema".
+
+| constructor | family index | formal (A1) family | schema | `Fin 33` |
+|---|---|---|---|---|
+| `sep` | 0 | SEP3 | SEP3 | 0 |
+| `sep` | 1 | SEPLQ | SEPLQ | 1 |
+| `sep` | 2 | SEPC | SEPC | 2 |
+| `dbl` | 0 | DBL-RAM | DBL-RAM | 3 |
+| `dbl` | 1 | DBL-2SIDED | DBL-2SIDED | 4 |
+| `dbl` | 2 | DBL-SPLITEQ | DBL-SPLITEQ | 5 |
+| `dbl` | 3 | DBL-INERTDEEP | DBL-INERTDEEP | 6 |
+| `tierI` | 0 | RAM3 | RAM3 | 7 |
+| `tierI` | 1 | 3LIN | 3LIN | 8 |
+| `tierI` | 2 | LINRAM2 | LINRAM2 | 9 |
+| `tierI` | 3 | RAM2LIN | RAM2LIN | 10 |
+| `tierI` | 4 | VERT1, `λ = (1,1)` | VERT1 | 11 |
+| `tierI` | 5 | VERT1, `λ = (2)` | VERT1 | 11 |
+| `tierI` | 6 | VERT2, `λ = (1,1)` | VERT2 | 12 |
+| `tierI` | 7 | VERT2, `λ = (2)` | VERT2 | 12 |
+| `tierI` | 8 | FULL, `λ = (1,1,1)` | FULL | 13 |
+| `tierI` | 9 | FULL, `λ = (1,2)` | FULL | 13 |
+| `tierI` | 10 | FULL, `λ = (3)` | FULL | 13 |
+| `tierII` | 0 … 10 | `DEEP-`(the tier-I row) | `DEEP-`(the tier-I schema) | tier-I value `+ 7` |
+| `bTier` | `2s` | (B-schema `s`), `m = 0` | B-schema `s` | `21 + s` |
+| `bTier` | `2s+1` | (B-schema `s`), `m ≥ 1` | B-schema `s` | `21 + s` |
+
+with the twelve B-schemas indexed `s = 0 … 11` in `EFF.HMENU3.11`'s order
+`(B1,RAM), (B1,2SIDED), (B1,SPLITEQ), (B1,INERTDEEP), (B2,RAM), …, (B3,INERTDEEP)` — `L` fastest
+inside `Bj`. Explicitly, `tierII i = tierI i + 7` and `bTier i = 21 + i / 2`.
+
+#### The body (Lean, as landed)
+
+```lean
+/-- The shape schema underlying each formal family (ANNEX B's "33 shape schemas"). -/
+def CubicFamilyIndex.schema : CubicFamilyIndex → Fin 33
+  | .sep i    => ![0, 1, 2] i
+  | .dbl i    => ![3, 4, 5, 6] i
+  | .tierI i  => ![7, 8, 9, 10, 11, 11, 12, 12, 13, 13, 13] i
+  | .tierII i => ![14, 15, 16, 17, 18, 18, 19, 19, 20, 20, 20] i
+  | .bTier i  => ![21, 21, 22, 22, 23, 23, 24, 24, 25, 25, 26, 26,
+                   27, 27, 28, 28, 29, 29, 30, 30, 31, 31, 32, 32] i
+```
+
+#### What is derived and what is convention (honesty note)
+
+**Derived from the source, and forced:** the *fiber partition* of the 53 families — which families
+share a schema, and how many schemas each block carries. That is the entire mathematical content
+of a map into an **unlabelled** `Fin 33`, and steps 1–9 fix it uniquely: `3` singletons, `4`
+singletons, `(4 singletons, 2, 2, 3)`, the same again, and `12` doubletons.
+
+**Convention, and immaterial:** the order in which the families are enumerated inside each
+`Fin k`, and the order in which the schemas are enumerated inside `Fin 33`. Any other choice
+differs from this one by a permutation of `Fin 33` composed with permutations of the five domain
+blocks. `CubicFamilyIndex`'s constructors carry no labels (they are bare `Fin`s — the G.62
+STATEMENT's own "this is an INDEX, not a family: it carries no counts and no certificates"), and
+the sole declared consumer, G.63's `schema_surjective`, is invariant under any such relabelling.
+**No family is left ambiguous; no constructor needs a `[FOR-CROSS-READ]` default.**
+
+#### Machine checks run against the landed body
+
+`Fintype.card CubicFamilyIndex = 53` by `decide` ✓; `Function.Surjective CubicFamilyIndex.schema`
+by `decide` (needs `maxRecDepth 8000`) ✓ — so **G.63 is now fireable**, both halves by `decide`;
+the fiber-size profile over all 33 schemas evaluates to
+`[1,1,1, 1,1,1,1, 1,1,1,1,2,2,3, 1,1,1,1,2,2,3, 2,2,2,2,2,2,2,2,2,2,2,2]`, summing to `53` ✓ —
+which is step 9's arithmetic read back off the landed definition.
+
+---
+
+### A-6 — G.52g `c3_pairwise_ne`: **D3 CURED: the ten inequalities stated**
+
+**Banner for the node entry:** `G.52 [SIGNATURE AMENDED 2026-08-15 — see AMENDMENT §A-6]`.
+
+**What was missing.** The G.52 SIGNATURE is literally `theorem c3_pairwise_ne : /- the ten
+inequalities -/ True`. The comment names the intent; the proposition is `True`, so the declaration
+as contracted is **vacuous** and was landed as such in both `leanspec` (stage-0e) and `leanfinal`.
+
+**The intended statement, recovered from the node's own context.** G.52's STATEMENT is "the five
+degree-3 splitting types, with their degrees and **pairwise distinctness**"; the five constants are
+the `FactorizationType`s `c3split, c3linInert, c3inert, c3linRam, c3ram` defined in the same
+SIGNATURE block (source: `EFF.HMENU3.17`, COROLLARY HM3.D's five rows `(1,1)³`, `(1,2),(1,1)`,
+`(1,3)`, `(2,1),(1,1)`, `(3,1)`); "the ten inequalities" is `C(5,2) = 10`, i.e. **the five constants
+pairwise distinct as `FactorizationType`s**. The consumer confirms the reading: G.72's PROOF step 3
+expands a `Finset` sum over the explicit 5-element menu by `Finset.sum_insert` four times "with the
+four distinctness side conditions from G.52's `c3_pairwise_ne`" — side conditions of the form
+`σ ∉ {…}`, which are exactly conjunctions of these ten `≠`s. The blueprint's own PROOF line already
+prescribes the proof ("the ten inequalities by `decide` after reducing to multiset inequality"),
+and the ⚠ RE-DERIVATION TARGET names `leancheck/UniformityCheck/N3Base.lean`, which lands the same
+ten as ten separate `decide`-backed one-liners. **The amended signature keeps the blueprint's ONE
+declaration and its name**, so the ten are conjoined, in `N3Base`'s enumeration order.
+
+**Amended SIGNATURE.**
+
+```lean
+namespace Uniformity.Density
+
+theorem c3_pairwise_ne :
+    c3split ≠ c3linInert ∧ c3split ≠ c3inert ∧ c3split ≠ c3linRam ∧ c3split ≠ c3ram
+      ∧ c3linInert ≠ c3inert ∧ c3linInert ≠ c3linRam ∧ c3linInert ≠ c3ram
+      ∧ c3inert ≠ c3linRam ∧ c3inert ≠ c3ram
+      ∧ c3linRam ≠ c3ram
+```
+
+**PROOF (landed, 3 lines).** `FactorizationType` is a one-field structure over
+`Multiset (ℕ × ℕ)` whose `DecidableEq` instance is `Classical.decEq` (`LocalData.lean:56`), so
+`decide` cannot see the type itself; transport each goal along the field projection first, exactly
+as the blueprint's PROOF line says:
+
+```lean
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩ <;>
+    exact mt (congrArg FactorizationType.data) (by decide)
+```
+
+`Multiset (ℕ × ℕ)` has a genuine `DecidableEq`, so each `by decide` discharges one multiset
+inequality. Footprint: `[propext, Classical.choice, Quot.sound]` — Lean core only.
+
+**Non-vacuity check.** The ten `≠`s are pairwise-distinct *degree-3* multisets, so no pair
+collapses: their cardinalities are `3, 2, 1, 2, 1` and the two card-`2` types differ in their
+second pair (`(1,2)` vs `(2,1)`), the two card-`1` types likewise (`(1,3)` vs `(3,1)`). Nothing
+here is provable from `c3_degrees` alone (all five have degree 3), which is why the node contracts
+a second theorem at all.
+
+---
+
+### Amendment bookkeeping (second append)
+
+| item | defect | verdict | nodes touched | files changed |
+|---|---|---|---|---|
+| A-5 | D2 (G.62b) | **body derived** from `EFF.HMENU3` `.09/.11/.14/.17/.37/.62/.67/.68/.69`; assignment total, no `[FOR-CROSS-READ]` residue | G.62 (body only; signature unchanged) | `leanfinal/…/ChapG/G62.lean`, `leanspec/Leanspec/ChapG.lean` |
+| A-6 | D3 (G.52g) | **statement recovered** from G.52's own context + G.72's consumer; proof landed | G.52 (G.52g signature only) | `leanfinal/…/ChapG/G52.lean`, `leanspec/Leanspec/ChapG.lean` |
+
+Declaration census: **109**, unchanged. Stage-0e defects still open: **D1** (G.18 `tangCert`
+placeholder — repaired in `leanspec` by the minimal `(by omega : …)` fill, blueprint entry still
+owes the fill), **D4** (ENV-A under-binds `[Finite (ResidueField O)]`, systematic across 22 stubs),
+**D5** (cosmetic, `ring_nf` vs `ring1` at G.03). Items 5–12 of §14 remain owed to the codex
+cross-read.
+
+**Verification performed for this append.** `leanfinal` builds green, `sorry`-free, 8,601 jobs, with
+`c3_pairwise_ne` reporting `[propext, Classical.choice, Quot.sound]` and `c3_degrees`
+`[propext, Quot.sound]`. The stage-0e **type diff** was run for both re-signed stubs against their
+landed `leanfinal` twins and passes definitionally: `CubicFamilyIndex.schema = ⟨the stub body⟩`
+by `rfl` and `c3_pairwise_ne`'s stub proposition is the landed one.
+
+**⚠ RECORDED FOR THE FLEET (pre-existing, not caused by this append): `leanspec` no longer builds
+green.** `leanspec/Leanspec/ChapG.lean` re-declares contract names inside `Uniformity.Density`
+and `Uniformity.Density.Menu` while importing the real `Uniformity` package, so every stub whose
+node has since landed in `leanfinal` now fails with *"has already been declared"* — **32 such
+collisions at the start of this append** (`ExactVal`, `readEquiv`, `CertFamily`, `tangSet`,
+`dvdSet`, `residualPair`, `c3split`…`c3ram`, `c3_pairwise_ne`, …), growing by one every time a
+chapter-G node lands. The gate's own note "Name collisions: none. All 110 names elaborate in an
+environment that already contains all of `leanfinal`" was true when `leanfinal` held no chapter-G
+node and is now stale. **This append adds the 33rd collision** (`CubicFamilyIndex.schema`, which
+became a real `def` in `leanfinal` at §A-5); D3's re-sign adds none, since `c3_pairwise_ne` was
+already colliding. The condition is structural — it is the price of the current "stubs live in the
+production namespace" design — and its repair (wrap the contract file in its own namespace, or
+retire each stub as its node lands) is a repo-level decision outside a defect-cure unit's scope.
+**Nothing about the contract is lost meanwhile**: the type diff above is exactly the check the
+stub file exists to support, and it can be run per declaration without elaborating the whole file.
