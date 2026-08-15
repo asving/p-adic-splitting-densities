@@ -1610,6 +1610,375 @@ criterion is); §7 attacks 2, 3, 8 → §12.
 **ENVIRONMENT.** ENV-D4 + the `(K₁, η, b)` carrier data.
 
 ---
-<!-- RESUME: §4 COMPLETE (D.13–D.28); next = §5 (D.29–D.36, read bundle + B-law) -->
+## 5. §5 — THE READ BUNDLE AND THE B-LAW
+
+> **Design note.** `EFF.T1.03`'s five clauses are "site obligations … not assertions about
+> every homogeneous initial form". The bundle D.29 carries exactly the clauses the B-law
+> derivation consumes, at one site (one level `i`, one ladder step `q`), as fields; D.33's
+> B-law is then a two-step proof FROM the fields, and the corpus's own non-import — "T1 does
+> not prove the supplier identity itself" (`EFF.T1.31`) — is the statement that INSTANTIATING
+> the bundle is someone else's theorem (chapter C at `i = 2`; `[GENTOW5-W(i)]` behind
+> `𝒲_{≤i}` at `i ≥ 3`; see D.42/D.44/D.62).
+
+### NODE D.29 [def] [fresh]
+
+**STATEMENT.** *The sitewise read bundle.* Over an arena `A : GaugeArena G K N` and a ladder
+step `q : ℤ`, a **read bundle** carries: the site read `R : G → K`; the ladder unit `w : Kˣ`
+with its defining read `R (n q) = w` (`(C3-ladder-unit)`: the `Kˣ`-typing carries BOTH
+`(C3-read-codomain)` and `(C3-ladder-nonvanishing)` — the two-clause gate of T1 r12, D-H6);
+**ladder multiplicativity** `R ((n q)^s) = w^s` (`(C3-ladder-multiplicativity)`); and **graded
+scalar covariance** `R (X·g) = R X · res g` for every `X : G` and value-zero `g`
+(`(C3-graded-scalar-covariance)` + `(C3-read-codomain)` at the consumed sites).
+
+**SIGNATURE.**
+```lean
+/-- The sitewise C3 read bundle (`EFF.T1.03`): exactly the clauses the B-law consumes, as
+fields. Instantiation = the external supplier's theorem (never proved in chapter D):
+`i = 2` — GENTOW2-B′/B″ [supplied-by: chapter C]; `i ≥ 3` — `[GENTOW5-W(i)]` behind
+`𝒲_{≤i}` (D.44/D.62) plus `(H-VARTHETA-RES)_i` (D.67). -/
+structure ReadBundle {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    (A : GaugeArena G K N) (q : ℤ) where
+  R : G → K
+  w : Kˣ
+  read_n : R (N.n q) = w
+  ladder_mult : ∀ s : ℕ, R ((N.n q) ^ s) = (w : K) ^ s
+  scalar_cov : ∀ (X : G) (g : (MonoidHom.ker A.v)), R (X * g) = R X * (A.res g : K)
+```
+
+**DEPENDS.** D.01, D.07.
+
+**PROOF.** definitional.
+
+**SIZE.** 20 lines.
+
+**FAITHFULNESS.** (i) `(C3-zero-read)` (`R(0) = 0`) has no group-level zero; in this
+packaging the zero digit multiplies at the `K` level (D.34's coefficient `u(β_t)·c_t` with
+`c_t = 0`), which is exactly the corpus's zero-branch bookkeeping (`EFF.T1.12`'s "For
+`c_t = 0`, `k̂_t = 0` and no finite height is assigned") — no consumer of this chapter reads
+a zero slice through `R`. Flagged for the cross-read (§13 item 3). (ii) The countermodels the
+corpus records for INDEPENDENCE of the clauses ("a read vanishing on every positive-grade
+component defeats nonvanishing; the initial-form read into `gr(μ_i)` … defeats the scalar
+codomain", `EFF.T1.03`) become the §12 disposition that no field is derivable from the
+others — the structure must carry all of them.
+
+**SOURCE.** `EFF.T1.03` (the five boxed clauses, `w_i := R_{i+1,κ̄_i}(N_i)`,
+`(C3-ladder-unit)`, the sitewise sentence); `EFF.T5.04` (`(WF-w)` — the same `w`, T5's
+naming); `EFF.T5.09` (the per-level nonvanishing suppliers, transcribed at D.61's interface).
+
+**TEETH.** T1 §4.2 checks 5, 8, 9 (read-bundle checks) → carried to instances (gates run
+the FRAME-C tables against a concrete bundle, D.72).
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+
+### NODE D.30 [def+lemma] [fresh]
+
+**STATEMENT.** *The corrected key polynomial and its degree/monicity.* For a commutative ring
+`S`, a monic `Φ : S[x]` with `d := Φ.natDegree ≥ 1`, `e f ≥ 1`, and coefficients
+`k̂ : Fin f → S[x]` with `∀ t, (k̂ t).natDegree < d` (`(C3-corrected-coefficient-bound)` —
+`(C3-lift-coefficient-space)`'s consumed form): the **corrected key**
+`correctedKey Φ e f k̂ := Φ^(e·f) − Σ_t k̂ t · Φ^(e·t)` is monic of degree `e·f·d` — "The
+coefficient degree bound makes every lower term's degree strictly below the monic leading
+term, **including `e_{i+1} = 1`, `t = f_{i+1}−1`**" (`EFF.T1.12`'s derivation, the boundary
+case named).
+
+**SIGNATURE.**
+```lean
+noncomputable def correctedKey {S : Type*} [CommRing S] (Φ : Polynomial S) (e f : ℕ)
+    (khat : Fin f → Polynomial S) : Polynomial S :=
+  Φ ^ (e * f) - ∑ t : Fin f, khat t * Φ ^ (e * (t : ℕ))
+
+theorem correctedKey_monic {S : Type*} [CommRing S] [Nontrivial S] {Φ : Polynomial S}
+    (hΦ : Φ.Monic) (hd : 0 < Φ.natDegree) {e f : ℕ} (he : 0 < e) (hf : 0 < f)
+    {khat : Fin f → Polynomial S} (hdeg : ∀ t, (khat t).natDegree < Φ.natDegree) :
+    (correctedKey Φ e f khat).Monic
+    ∧ (correctedKey Φ e f khat).natDegree = e * f * Φ.natDegree
+```
+
+**DEPENDS.** mathlib `Polynomial.Monic.pow`, `Polynomial.natDegree_sum_le`,
+`Monic.natDegree_mul`-cluster.
+
+**PROOF.** 1. Each lower term: `natDegree (k̂ t · Φ^{et}) ≤ (d−1) + e·t·d ≤ (d−1) + e(f−1)d
+< e·f·d` (`omega` from `he, hf, hd`). 2. `Monic.sub_of_left`-shape: a monic minus a
+strictly-lower-degree sum is monic of the same degree.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.T1.12` (the boxed `(C3-key)` and the degree derivation). The height clause
+`(C3-common-height)` `dv_i(k̂_t Φ_i^{e_{i+1}t}) = f_{i+1}u_{i+1}` for `c_t ≠ 0` is the
+arithmetic `(f−t)u + tu = fu` on the typed heights of `EFF.T1.02` — recorded here as a
+one-line private lemma over `ℤ`, not a public node (the level-`i` valuation carrier that
+would TYPE it is chapter C's; at level 1 it is D.25's exact-height clause, already proved).
+`(C3-corrected-lift)`'s lift-contract clauses (`(C3-lift-residue/height/zero)`) are
+level-carrier statements: at level 1 they are D.24–D.26 (proved); at level `i ≥ 2` they are
+`EFF.T1.02` hypothesis data `[supplied-by: chapter C]`.
+
+**TEETH.** T1 §4.2 checks 7–10 → the level-1 instance (D.28) + gates; the degree lemma is a
+Lean theorem here.
+
+**ENVIRONMENT.** ENV-D3 (stated over `CommRing S` — consumed at `S = O` and at chapter C's
+level rings).
+
+---
+
+### NODE D.31 [lemma] [fresh]
+
+**STATEMENT.** *`(C3-dictionary)`.* For `Γ c : K` and a unit `ϑ : Kˣ`:
+`Γ = c * ϑ ↔ c = Γ * ϑ⁻¹` — the coherent/multiplicative digit dictionary
+`Γ_t = c_t^{mult}·ϑ_{i,s}`, `c_t^{mult} = Γ_t·ϑ_{i,s}^{−1}`. Stated as an iff so neither
+orientation can be consumed without the other being available.
+
+**SIGNATURE.**
+```lean
+theorem dict_iff {K : Type*} [Field K] (Γ c : K) (ϑ : Kˣ) :
+    Γ = c * ϑ ↔ c = Γ * (ϑ⁻¹ : Kˣ)
+```
+
+**DEPENDS.** none (field algebra).
+
+**PROOF.** `Units.mul_inv_cancel`-shape; `field_simp`.
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.T1.11` (the boxed `(C3-dictionary)`; conditionality "`ϑ_{i,s}` must be a
+`K_i`-unit under EFF.T1.09" — the `ϑ : Kˣ` argument IS that condition; at `i ≥ 3` supplying
+it is `(H-VARTHETA-RES)_i`, D.67); `EFF.T3.05` (`(T1-DICT)`, with T3's fence "T3 does NOT
+cite that conditional conclusion [the B-law] as a premise" — respected: this node is
+dictionary-only).
+
+**ORIENTATION.** the dictionary pairs GENTOW2-orientation `ϑ(t)`-values with T1's `ϑ_{i,s}`
+per D.06; consumers must pass the CORRECT unit (T1's `vartheta` at `s = f−t`, i.e.
+`varthetaG2⁻¹`) — the inverse-orientation tooth's site.
+
+**TEETH.** T1 §4.2 checks 2 and 5; inverse-orientation tooth → D.06/D.10 + gate D.72.
+
+**ENVIRONMENT.** ENV-D3.
+
+---
+
+### NODE D.32 [theorem] [fresh]
+
+**STATEMENT.** *`(C3-Theta)`/`(C3-B-law)`: the B-law from the bundle.* Over a bundle
+`B : ReadBundle A q`: define the **per-grade unit read** `u_B(s) := B.R (N.n (s·q))` (T5's
+`u_i(β_t) := R_{i+1,β_t}(n̂_i(s_t u_{i+1}))`, `EFF.T5.11`). Then for every `s : ℕ`:
+
+`u_B(s) = (A.theta q s : K) * (B.w : K)^s`
+
+— and in slot-indexed form with `s = f_{i+1} − t`: `u(β_t) = Θ_i(t)·w_i^{f_{i+1}−t}`,
+**exactly the `(C3-B-law)` orientation** (D.06's B-law block: `FGMN = u · repo`, never the
+inverse).
+
+**SIGNATURE.**
+```lean
+theorem ReadBundle.blaw {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    {A : GaugeArena G K N} {q : ℤ} (B : ReadBundle A q) (s : ℕ) :
+    B.R (N.n (s * q)) = (A.theta q s : K) * (B.w : K) ^ s
+```
+
+**DEPENDS.** D.04, D.08, D.10, D.29.
+
+**PROOF.** 1. `n(sq) = (n q)^s · thetaEl q s` (D.04's definition rearranged: `thetaEl =
+n(sq)·((n q)^s)⁻¹`; `group`). 2. `thetaEl q s ∈ ker v` (D.08's membership lemma, inverse
+form). 3. `scalar_cov` at `X := (n q)^s`, `g := thetaEl`: `R(n(sq)) = R((n q)^s)·res(thetaEl)
+= w^s · theta` (`ladder_mult`). 4. Commute. This is `EFF.T1.14`'s derivation run forwards
+("Ladder multiplicativity gives `R(N^s) = w^s`; scalar covariance … invert the telescope" —
+here stated directly in the `Θ` orientation, no inversion step left to the consumer).
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.T1.14` (the boxed `(C3-Theta)`, `(C3-slot-grade)` — the grade bookkeeping
+`β_t = (f_{i+1}−t)·κ̄_i` is carried in the SLOT indexing, not as a separate Lean object —
+and `(C3-B-law)`); `EFF.T3.14` is the SAME algebra from port hypotheses (D.38 — see its ⚠
+for the deliberate duplication); `EFF.T5.14`'s consequent (D.62 fires this node).
+
+**ORIENTATION.** B-law direction per D.06's B-law block; `theta` = inverse-telescope
+orientation (rows 2–3).
+
+**TEETH.** T1 §4.2 check 5 + inverse-orientation tooth → **Lean theorem** (this node);
+gate D.72's `U(s) = Θ_s w^s` numeric leg.
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+
+### NODE D.33 [theorem] [fresh]
+
+**STATEMENT.** *`(C3-canonical-read)` and the three-reads cancellation.* Over a bundle `B`
+and the dictionary: for slot `t < f` with `s := f − t`, coherent digit `Γ_t = c_t·ϑ_{i,s}`
+(D.31, with `ϑ := A.vartheta q s`):
+
+1. **canonical read:** `u_B(s) · Γ_t = (B.w : K)^s · c_t · (A.theta q s) · (A.vartheta q s)
+   = w^s·Θ(t)·Γ_t`-form — and by D.10's involution the telescopes cancel slotwise:
+   `u_B(s) · Γ_t = c_t · (B.w : K)^s`;
+2. **three reads:** hence the assembled residual `y^f − Σ_t u_B(f−t)·Γ_t·y^t` equals
+   `y^f − Σ_t c_t·w^{f−t}·y^t` — which is `(WF-psi)`'s display `w^f·ψ(y/w)` for
+   `ψ = y^f − Σ c_t y^t` (the polynomial identity is D.58's; this node proves the
+   COEFFICIENT identity `u_B(f−t)·Γ_t = c_t·w^{f−t}`).
+
+**SIGNATURE.**
+```lean
+theorem ReadBundle.canonical_coeff {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    {A : GaugeArena G K N} {q : ℤ} (B : ReadBundle A q) (f t : ℕ) (ht : t < f)
+    (c : K) :
+    B.R (N.n ((f - t : ℕ) * q)) * (c * (A.vartheta q (f - t) : K))
+      = c * (B.w : K) ^ (f - t)
+```
+
+**DEPENDS.** D.08, D.10, D.31, D.32.
+
+**PROOF.** D.32 + D.10's `theta_mul_vartheta` (`Units.val`-cast bookkeeping); `ring`.
+"At the corrected key, `Γ_t = c_t ϑ` and `Θ = ϑ^{−1}` cancel slotwise" (`EFF.T1.15`,
+verbatim).
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.T1.15` (the boxed `(C3-canonical-read)` and `(C3-three-reads)`: the
+multiplicative residual `ψ_{i+1}(y)`, coherent digits `(c_t ϑ_{i,f_{i+1}−t})`, canonical
+residual `ψ^{(w_i)}`); `EFF.T5.18` (the same cancellation, T5's `Γ_t u_i(β_t) = c_t w_i^{s_t}`
+— D.63 is its packaging); `EFF.T1.31` SPAN PIN 2 (`ψ₃^{(w)} = w^{f₃}ψ₃(y/w)` — supplied to
+GENTOW2's A7 span by D.58 + this node).
+
+**ORIENTATION.** consumes both orientations through D.10's involution — the ONE place they
+meet; the ⚠ in the file body repeats D.06's warning verbatim.
+
+**TEETH.** T1 §4.2 checks 5, 8, 9 + inverse-orientation tooth → **Lean theorem**; gate D.72.
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+
+### NODE D.34 [def+lemma] [fresh]
+
+**STATEMENT.** *The w-twist `(WF-twist)` and its transport package.* For a unit `w : Kˣ` and
+monic `P : K[y]` of degree `f`: `wtwist w P := w^f • P.comp (C (w⁻¹ : K) * X)` — the map
+`P(y) ↦ w^{deg P}·P(y/w)`. The **transport package** (one lemma family, this node):
+`wtwist w P` is monic of degree `f`; the map transports factorizations bijectively and
+preserves degrees, multiplicities, irreducibility, separability, and a nonzero constant term
+(`wtwist w P).coeff 0 = w^f · P.coeff 0`); on roots it is `s ↦ w·s`. ("The map
+`P(y) ↦ w^{deg P}P(y/w)` transports factorizations bijectively and preserves degrees,
+multiplicities, irreducibility, and a nonzero constant term" — `EFF.T1.15`; separability +
+the monic factor correspondence `r(Z) = δ^m r̂(Z/δ)` and root map `ŝ ↦ δŝ` — `EFF.T3.18`
+`(T3-ROUTE)`; "Unit substitution preserves monicity, degree, irreducibility, nonzero constant
+term, and irreducible-factor degrees and multiplicities" — `EFF.T5.08`.)
+
+**SIGNATURE.**
+```lean
+noncomputable def wtwist {K : Type*} [Field K] (w : Kˣ) (P : Polynomial K) : Polynomial K :=
+  (w : K) ^ P.natDegree • P.comp (Polynomial.C (w⁻¹ : K) * Polynomial.X)
+
+theorem wtwist_monic {K : Type*} [Field K] (w : Kˣ) {P : Polynomial K} (hP : P.Monic) :
+    (wtwist w P).Monic ∧ (wtwist w P).natDegree = P.natDegree
+-- sibling public lemmas (SPLIT MANDATED → 3: D34a def+monic/degree, D34b irreducible/
+-- separable/roots, D34c the factor-multiset correspondence `wtwist w (P*Q) = wtwist w P *
+-- wtwist w Q` for monic P Q + `map (algEquiv …)` route note)
+```
+⚠ Route note for the fleet: `P ↦ P.comp (C w⁻¹ * X)` is the `AlgEquiv`
+`Polynomial.compAlgEquiv`-shape (substitution by a unit is a `K`-algebra automorphism —
+`EFF.T3.18`'s own derivation sentence); irreducibility/separability transport should come
+from mathlib's `AlgEquiv`/`Polynomial.Separable.map` machinery, not hand induction. The
+monic renormalization `w^{deg P}` is multiplicative BECAUSE degrees add — the factor
+correspondence needs `natDegree_mul` under `Monic` (no zero divisors issue in a field).
+
+**DEPENDS.** mathlib `Polynomial.comp`, `Polynomial.Monic.comp`, `Polynomial.Separable.map`,
+`Polynomial.roots_smul_nonzero` — exact names at stub time.
+
+**PROOF.** 1. Monic/degree: leading coefficient `w^f · P.leadingCoeff · (w⁻¹)^f = 1`.
+2. Multiplicativity on monics: `(PQ).comp = P.comp · Q.comp` + degree additivity. 3.
+Irreducible/separable: transport along the substitution automorphism, then the nonzero
+scalar. 4. Roots: `(wtwist w P).eval (w·s) = w^f · P.eval s`.
+
+**SIZE.** 50 lines. **SPLIT MANDATED → 3** (as in the SIGNATURE).
+
+**SOURCE.** `EFF.T1.15` (the transport sentence), `EFF.T3.18` (`(T3-ROUTE)` — this node IS
+its content, stated once; D.41 is its two-section instance), `EFF.T5.05` (`(WF-twist)` —
+same display; §8 consumes this node), `EFF.T5.08` (+ its gate: the preservation list is
+"fenced by (C3-ladder-nonvanishing)" — here the `w : Kˣ` argument carries it by type).
+
+**TEETH.** T3 §8.3(2) (HETOW clause (d) "separability/factor/root routing … fully supplied
+by (T3-ROUTE)") → **Lean theorem** (this node); T5 §7 Pass 1(1) → §12; honesty: "Turning
+factor data into a p-adic splitting type still requires the surrounding tower theorem"
+(`EFF.T5.08`) — the D-H4(3) fence, repeated in this node's file docstring.
+
+**ENVIRONMENT.** ENV-D3.
+
+---
+
+### NODE D.35 [lemma] [fresh]
+
+**STATEMENT.** *`(WF-psi)`: the twist coefficients.* For `w : Kˣ` and
+`ψ = y^f − Σ_{t<f} c_t y^t` (monic, coefficients `c : Fin f → K`):
+`wtwist w ψ = y^f − Σ_{t<f} c_t·w^{f−t}·y^t` — T5's boxed computation, and the polynomial
+into which D.33's coefficient identity assembles: the B-law residual
+`y^f − Σ u(β_t)c_t^{coh-normalized} y^t` IS `wtwist w ψ` under the multiplicative
+prescription.
+
+**SIGNATURE.**
+```lean
+theorem wtwist_psi {K : Type*} [Field K] (w : Kˣ) (f : ℕ) (c : Fin f → K) :
+    wtwist w (Polynomial.X ^ f - ∑ t : Fin f, Polynomial.C (c t) * Polynomial.X ^ (t : ℕ))
+      = Polynomial.X ^ f
+        - ∑ t : Fin f, Polynomial.C (c t * (w : K) ^ (f - (t : ℕ)))
+            * Polynomial.X ^ (t : ℕ)
+```
+
+**DEPENDS.** D.34.
+
+**PROOF.** "Substitute … `w^f((y/w)^f − Σ c_t (y/w)^t) = y^f − Σ c_t w^{f−t} y^t`"
+(`EFF.T5.06`'s displayed computation): `Polynomial.comp` linearity + `simp` with
+`mul_pow`/`inv_pow`; per-coefficient `field_simp`. The degree computation feeding
+`wtwist`'s `w^{natDegree}` scalar: `natDegree (X^f − Σ …) = f` (monic by construction —
+private helper).
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.T5.06` (the boxed `(WF-psi)` + its `[COMPUTATION]` derivation; the r4
+census's confirmation that T1's `(C3-three-reads)` boxes the same display).
+
+**TEETH.** T5 §7 Pass 1(1)/(6) → Lean theorem (this node); gate D.72 evaluates a `(WF-psi)`
+instance numerically.
+
+**ENVIRONMENT.** ENV-D3.
+
+---
+
+<a id="D-C7-TABLE"></a>
+### NODE D.36 [table] [fresh] — the C7 package interface and scope fence (anchor `D-C7-TABLE`)
+
+**STATEMENT.** *What T1 supplies to each WELD-M-PKG field — the interface chapter F cites.*
+Transcribed from `EFF.T1.22`'s effective C7 table (per-row fences INCLUDED — "the table does
+not merge field types"):
+
+| Package field | T1 datum available to that field (Lean home) |
+|---|---|
+| `M0`, division chains | common tower and canonical division-chain anchor; **no new identity is proved here** |
+| `M1` | the unconditional value-zero ratio and level-two letter formula in (C1) — D.20, D.21; arbitrary-depth letter monomiality **only under `(H-JA-CONJ)_i`** (inline, D-H10) |
+| `M2` | the dictionary and canonical read in (C3) — D.31, D.32, D.33 — plus (C4-origin) — D.22; support transport **only under `(H-JA-RES-CONJ)`** — D.23. The graded-read bundle consumed, in full: ladder-multiplicativity, slot-grade, scalar-covariance, zero-read, nonvanishing, codomain = D.29's fields (+ D-H3's packaging notes); corrected-key coefficients additionally use the coefficient space — D.30. At depth `i ≥ 3` the scalars `ϑ_{i,s}`, `Θ_i(t)`, `c_tϑ` are `K_i`-scalars **only under `(H-VARTHETA-RES)_i`** — D.67 |
+| `M3` | the cocycle/telescope (C2) — D.03, D.05, D.08 — and canonical twist in (C3) — D.34 — only on the scored stratum; at `i ≥ 3` the `K_iˣ`-valued telescope **only under `(H-VARTHETA-RES)_i`** |
+| `M4` | the exact-height formulas (C5)–(C6) — D.19, D.24–D.26 — at W2-C3's accepted fence; polygon clearance **only under `(H-GENHN-CLEAR)`** (no D node — D-H4(5)) |
+
+**THE SCOPE FENCE `(C7-scope)`, verbatim:** "T1 organizes five named fields around one tower
+cocycle; it proves no cross-face coherence theorem. It also proves no uniqueness of the gauge
+and makes no classification of the fiber of gauges having a fixed coboundary." Chapter F's
+weld faces cite THIS anchor for what the T-chain supplies; a NODE asking chapter D for a
+cross-face compatibility square is a blueprint defect.
+
+**SIGNATURE.** none (a blueprint interface table — no Lean declaration; the B.86-precedent
+class of node-with-no-public-decl, here with no file at all: `dag_build.py` accepts edge-less
+declared nodes).
+
+**DEPENDS.** D.20–D.23, D.29–D.34 (row targets).
+
+**PROOF.** n/a. **SIZE.** 0 Lean lines.
+
+**SOURCE.** `EFF.T1.22` (the effective C7 table, all five rows with their fences),
+`EFF.T1.23` (`(C7-scope)` + the uniqueness/torsor non-claims).
+
+**TEETH.** T1 §4.2 check 6; §7 attack 4 → §12 (signed rows: interface, nothing to execute).
+
+**ENVIRONMENT.** n/a.
+
+---
+<!-- RESUME: §5 COMPLETE (D.29–D.36); next = §6 (D.37–D.44, T3 telescope port) -->
 
 <!-- CHAP-D APPEND POINT — do not remove; sections are appended here in order -->
