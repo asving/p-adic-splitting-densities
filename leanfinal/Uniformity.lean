@@ -21,3 +21,7 @@ import Uniformity.Density.Gates
 import Uniformity.Density.Drainage
 import Uniformity.Density.DensityAPI
 import Uniformity.ChapG
+-- Chapter G's axiom-footprint census (NODE G.78). It imports the roll-up, so it cannot be one of
+-- the roll-up's own imports; it is wired here instead, which keeps it inside the `Uniformity`
+-- library's import graph and therefore inside plain `lake build`.
+import Uniformity.ChapG.G78

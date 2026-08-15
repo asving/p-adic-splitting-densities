@@ -81,6 +81,16 @@ import Uniformity.ChapG.G57
 import Uniformity.ChapG.G58
 import Uniformity.ChapG.G59
 import Uniformity.ChapG.G60
+-- G.61, SPLIT-MANDATED by the blueprint into "5 + 1": the shared infrastructure `G61I`
+-- (node G.61.0 — `res1Equiv`/`liftRes1`, the level-2 `dvdSet`/`exactSet`/`unitSet` counts, and the
+-- injection workhorse `decidedDensity_ge_of_inj`) then one file per conjunct, then the conjunction.
+import Uniformity.ChapG.G61I
+import Uniformity.ChapG.G61a
+import Uniformity.ChapG.G61b
+import Uniformity.ChapG.G61c
+import Uniformity.ChapG.G61d
+import Uniformity.ChapG.G61e
+import Uniformity.ChapG.G61
 import Uniformity.ChapG.G62
 import Uniformity.ChapG.G63
 import Uniformity.ChapG.G64
@@ -96,6 +106,7 @@ import Uniformity.ChapG.G73
 import Uniformity.ChapG.G74
 import Uniformity.ChapG.G75
 import Uniformity.ChapG.G76
+import Uniformity.ChapG.G77
 
 /-!
 # Uniformity.ChapG — chapter G roll-up (BASE CASES AND MENUS)
