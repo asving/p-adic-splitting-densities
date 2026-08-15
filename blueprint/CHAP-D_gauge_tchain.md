@@ -348,26 +348,32 @@ the two highest-stakes reads.
 | 4 | D.13–D.28 | the level-1 gauge layer: exponent calculus, the ℤ²-monomial arena, C2-level-1, C4, C5, C6, the HETOW consumption, the level-1 corrected key |
 | 5 | D.29–D.36 | the read bundle and the B-law: `ReadBundle`, `LiftContract`, the dictionary, the corrected key, C3-Theta/B-law, three reads, the twist transport |
 | 6 | D.37–D.44 | the telescope port (T3): BR1–BR5, T3-BR, comparison, routing, ABS-G2/ABS-HE4/ABS-G5W |
-| 7 | D.45–D.56 | the certificate witness (T4): thresholds, `CertFrame`, ω/ν, T4.2(a)–(d), the two supplier interfaces |
-| 8 | D.57–D.66 | the w-frame (T5): twist, WF-psi, WF-law₂/ᵢ, realized residuals, WF-index, WF-chain |
-| 9 | D.67–D.69 | the `(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}` carriers (Display A's `∀ i ≥ 3` conjunct) and the OPEN-CALL routing |
-| 10 | D.70–D.73 | gates: `q = 2` (F4-JOINT shape, `e > 1 ∧ f > 1`), `q = 3` (X-frame), FRAME-C regression, axiom census |
+| 7 | D.45–D.54 | the certificate witness (T4): thresholds, `CertFrame`, ω/ν, T4.2(a)–(d), the two supplier interfaces *(range corrected at A-1)* |
+| 8 | D.55–D.61 | the w-frame (T5): `𝒲_{≤i}`, WF-law₂/ᵢ, realized residuals, WF-index, WF-chain, supplier record *(twist/WF-psi live in §5 as D.34/D.35; A-1)* |
+| 9 | D.62–D.64 | the `(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}` carriers (Display A's `∀ i ≥ 3` conjunct) and the OPEN-CALL routing *(A-1)* |
+| 10 | D.65–D.68 | gates: `q = 2` (F4-JOINT shape, `e > 1 ∧ f > 1`), `q = 3` (X-frame), FRAME-C regression, axiom census *(A-1)* |
 | 11 | — | DAG additions |
 | 12 | — | leanspec stub list (stage 0e) |
 | 13 | — | TEETH dispositions; flagged for the codex cross-read |
 
-**Kind census (planning figure, to be recounted mechanically at §11):** ≈ 24 `def` (of which 4
-carry a `structure`: D.07 `GaugeArena`, D.29 `ReadBundle`, D.37 `BoundaryReadPort`, D.46
-`CertFrame`), ≈ 32 `lemma`, ≈ 9 `theorem`, ≈ 4 `gate`, ≈ 4 interface nodes with GC-13
-placeholder dependencies — **73 nodes**. Split candidates flagged at D.25, D.26, D.34, D.46,
-D.50 in their SIZE fields.
+**Kind census (recounted mechanically at composition close — amendment A-1; the original
+73-node planning figure is superseded):** **68 nodes** = 18 `def` (of which 4 carry a
+`structure`: D.07 `GaugeArena`, D.29 `ReadBundle`, D.37 `BoundaryReadPort`, D.46 `CertFrame`)
++ 10 `def+lemma`/`def+theorem` + 19 `lemma` + 8 `theorem` + 2 `table` (D.06, D.36 — the two
+citable anchors) + 5 `interface` (GC-13-placeholder nodes: D.42, D.43, D.53, D.54, D.56) +
+2 `record` (D.61, D.64) + 4 `gate` (D.65–D.68). Split-mandated: D.25 → 2, D.34 → 3, D.65 →
+2; split candidates at D.26, D.40 — fleet planning figure **≈ 74 Lean files** (interface/
+record/table nodes carry no file except D.06/D.36's anchors, which live in this blueprint).
 
-**Graph shape (planning estimate; computed mechanically into `spec/DAG_BLUEPRINT_D.tsv` at
-§11):** the §3 arena and §4 arithmetic are terminal supply (≈ 18 nodes fireable immediately);
-the critical path runs D.01 → D.02 → D.04 → D.07 → D.29 → D.33 → D.34 → D.63 (≈ 8 nodes). The
-schedule risks are D.25/D.26 (the C6/C5 concrete layer over chapter B's API — the only nodes
-whose dependencies are outside this chapter and landed-B) and D.46 (the certificate frame's
-dependent-type design).
+**Graph shape (computed mechanically from `spec/DAG_BLUEPRINT_D.tsv`, amendment A-1):**
+**162 intra-chapter edges over 68 nodes, ACYCLIC, critical path 9 nodes (8 edges)**, layer
+widths `10, 9, 13, 7, 8, 6, 6, 4, 5` (layer 0 = terminal supply). **Ten nodes are fireable
+immediately** (D.01, D.13, D.22, D.23, D.30, D.31, D.34, D.45, D.64, D.68-as-census). A
+longest chain: `D.61 → D.55 → D.44 → D.38 → D.37 → D.08 → D.05 → D.04 → D.01` — through the
+abstract arena into the telescope port and the w-frame record. The schedule risks are
+D.25/D.26 (the C6/C5 concrete layer over chapter B's API — the only nodes whose dependencies
+are outside this chapter and landed-B) and D.46 (the certificate frame's dependent-type
+design).
 
 ---
 ## 3. §3 — THE ABSTRACT COCYCLE ARENA AND THE ϑ ORIENTATION TABLE
@@ -3349,6 +3355,260 @@ signed); GC-11.
 **ENVIRONMENT.** the census imports the roll-up; no `variable`s.
 
 ---
-<!-- RESUME: §10 COMPLETE (D.65–D.68). 68 nodes total. Next = closing sections: §11 DAG additions (generate spec/DAG_BLUEPRINT_D.tsv), §12 leanspec stubs, §13 TEETH, §14 cross-read queue, + A-1 index renumber amendment -->
+## AMENDMENT A-1 (2026-08-15, composition close) — the node-count and section-range recount
+
+The §2 pre-composition plan said 73 nodes with §7 = D.45–D.56, §8 = D.57–D.66, §9 =
+D.67–D.69, §10 = D.70–D.73. As composed: **68 nodes**, §7 = D.45–D.54, §8 = D.55–D.61, §9 =
+D.62–D.64, §10 = D.65–D.68. Two structural causes, both improvements: (i) the twist/WF-psi
+pair moved into §5 (D.34/D.35) because T1's three-reads and T3's routing consume them before
+T5 does — this de-duplicated three planned nodes (T3-ROUTE/T5-twist/T5-psi collapse to
+D.34/D.35/D.41); (ii) the T1 hypothesis carriers `(H-JA-CONJ)_i`/`(H-JA-RES-CONJ)`/
+`(H-GENHN-CLEAR)`/`(H-HETOW-LOCAL)` stayed INLINE per the D-H10 carrier ruling instead of
+becoming four nodes. §2's table, kind census and graph-shape paragraph have been corrected
+in place with `(A-1)` markers; everything else in §§0–1 stands as committed.
+
+---
+
+## 11. DAG ADDITIONS
+
+Written to `spec/DAG_BLUEPRINT_D.tsv` in `spec/dag_build.py`'s 9-column contract
+(`from-ID, to-ID, edge-kind, chapter, status, edge-class, resolution, kind-basis, evidence`),
+edge direction **consumer → supplier**, generated by the committed one-shot script
+`spec/gen_dag_d.py` whose edge lists were hand-audited against this file's DEPENDS/SOURCE
+fields (spot-check instructions: §14 item 10).
+
+| file | rows | what |
+|---|---:|---|
+| `spec/DAG_BLUEPRINT_D.tsv` | **337** | the canonical copy of this chapter's edges |
+| `spec/DAG.tsv` / `spec/DAG_NODES.tsv` (merged) | +337 / +68 | regenerated by `dag_build.py` at every rebuild (the durable-merge step) — **deliberately NOT committed by this composer** (scoped-adds discipline: three parallel composers were writing `DAG_BLUEPRINT_{C,D,E}.tsv` simultaneously; the orchestrator runs the final rebuild) |
+
+**Edge census by target class:** `BP.D.*` **162** (intra; **acyclic, critical path 9 nodes**,
+layer widths `10, 9, 13, 7, 8, 6, 6, 4, 5`, 10 fireable immediately — §2's A-1 figures);
+`EFF.T1/T3/T4/T5.*` **148** (transcription edges — all 181 spec unit IDs exist in
+`DAG_NODES.tsv` at HEAD, so every row is `from:exact,to:exact`; the unit-level SOURCE map of
+D-H12); `BP.B.*` **7** (B.07/B.08/B.11/B.14/B.15 at D.25, B.21/B.22 at D.26 — committed IDs
+per GC-13(b)); **14 GC-13 placeholder rows**; `HYP.*` **6** (structural ledger edges below).
+
+**THE GENTOW2 MITIGATION (GC-12's H-9 pattern, new instance).** `spec/EFF-GENTOW2.md` exists
+(93 units, append #54) but the DAG harvest predates it: **zero `EFF.GENTOW2.*` node IDs exist
+at HEAD** — GENTOW2 is present only as `EXT:GENTOW2_PROOF_2026-08-09.md`. The seven GENTOW2
+placeholder rows (D.06, D.07, D.09, D.10, D.42, D.56, D.61) are therefore emitted against the
+**EXT node** with the contiguous `EFF.GENTOW2.<nn>` target carried in the `evidence` column —
+mechanical to re-home when the harvest is re-run against the new spec. The other placeholder
+rows target the documented governing units (`EFF.GENTOW3.18`, `EFF.GENTOW6.12`,
+`EFF.HETOW.22`, `EFF.GENTOW5.s1of2.06`) with `resolution = from:exact,to:gov` — coarse BY
+DECLARATION, resolved when chapter C freezes.
+
+**The six structural `HYP` edges** (the chapter's ledger interface — disclosures, never
+discharges): `BP.D.51 → HYP.113` (the full-exposure conditional leg), `BP.D.52 → HYP.114`
+(the provenance-exclusion fence), `BP.D.55 → HYP.63` (`𝒲_{≤i}` CARRY), `BP.D.61 → HYP.66`
+(the avatar fence) and `→ HYP.99` (the two-clause staleness), `BP.D.64 → HYP.39`
+(the JD0-BOX-2 routing check).
+
+**Checker status, RUN at composition close** (`python3 spec/dag_build.py && python3
+spec/dag_check.py`, six blueprint files merged: G/H/B/C/D/E):
+
+* builder: `nodes 2989  edges 4350 (harvested 1708 + blueprint 2642 from 6 file(s))` —
+  chapter D's 337 among them ✓;
+* **[1] dangling-ID check PASS** — every chapter-D endpoint declared (the GENTOW2 rows pass
+  precisely because of the EXT mitigation above);
+* **[2] cycle detection: RESULT FAIL, but NOT chapter D's** — the two UNADJUDICATED exact
+  SCCs are `{BP.C.56, BP.C.84, BP.C.85, BP.C.87}` and `{BP.C.99, BP.C.100, BP.C.102,
+  BP.C.104}`, both intra-CHAP-C (the parallel composer's; **orchestrator item 1 below**).
+  Chapter D's own 162 intra edges are acyclic (verified independently by the generator's
+  depth pass); D adds **zero** new SCCs and the four previously adjudicated SCCs are
+  unchanged;
+* **[3] capstone reachability:** 67 of 68 chapter-D nodes are CONNECTED-BUT-UNREACHABLE
+  (D.68 is edge-less by the census-gate precedent) — **the honest supplier-chapter pattern**,
+  CHAP-B finding (a) verbatim: D's terminal supply (the ϑ table, the carriers D.44/D.55/
+  D.62/D.63, the T-chain interfaces) is consumed by C/E/F/I, whose inbound wiring arrives at
+  the orchestrator's GC-13 resolution pass. A cross-reader must NOT "fix" this by inventing
+  C/E/F/I node IDs.
+
+**⚠ ORCHESTRATOR ITEMS.**
+1. **The BP.C cycle flag**: relay the two UNADJUDICATED `BP.C.*` SCCs to the CHAP-C composer
+   (their DEPENDS fields; chapter D neither causes nor can fix them).
+2. **The GENTOW2 harvest re-run** (PA-3(ii)'s sibling): once `dag_build.py` harvests
+   `spec/EFF-GENTOW2.md`, re-home this chapter's seven EXT rows to the contiguous IDs named
+   in their evidence columns (mechanical).
+3. **The GC-13 resolution pass**: when C freezes, resolve the 14 placeholder rows and wire
+   C/E/F/I's consumption of D.06 (`D-THETA-TABLE`), D.36 (`D-C7-TABLE`), D.44, D.55, D.62,
+   D.63 into inbound `BP.<X>.* → BP.D.*` rows.
+4. **The shared-output rebuild**: `DAG.tsv`/`DAG_NODES.tsv`/`dag_check_output.txt` were left
+   at HEAD by this composer (scoped adds); one rebuild after all three parallel chapters
+   commit.
+
+---
+
+## 12. LEANSPEC STUB LIST (stage 0e)
+
+**File:** `leanspec/Leanspec/ChapD.lean`, one file, added to `leanspec/Leanspec.lean`.
+**Wrapper choice, declared per GC-6.6:** every declaration wraps in **`namespace LeanspecD`**
+(the CHAP-B H-13/LeanspecB pattern; the ChapG retire-to-examples route was considered and not
+taken — greppability by contract name wins). The 0e type-diff runs per declaration against
+the fully-qualified `leanfinal` twin in `Uniformity.Density.Gauge`.
+
+**Stub inventory (counted over this file's SIGNATURE blocks; the stub agent recounts
+mechanically):**
+
+| what | ≈ count | lands as |
+|---|---:|---|
+| `structure` | 4 | **real bodies** (`NormSection`, `GaugeArena`, `ReadBundle`, `BoundaryReadPort`) + 1 more (`CertFrame`) = **5** |
+| `def` / `noncomputable def` | 28 | **real bodies** (`tau`, `varthetaEl`, `thetaEl`, `vartheta`, `theta`, `varthetaG2`, `chi`, `iexp`, `aexp`, `wrap`, `qexp`, `Wfloor`, `levelOneSection`, `levelOneArena`, `liftC6`, `gammaCoord`, `correctedKey`, `wtwist`, `compData`, `GentowW`, `thresholdTheta`, `nuIdx`, `omega`, `Touched`, `Wle`, `WfIndex`, `WfChain`, `HVarthetaRes`, `VarthetaWConjunct` — 29 with the A-1 recount) |
+| `theorem` | ≈ 48 | **`axiom` stubs** (every public theorem/sibling named in §§3–9's SIGNATURE blocks, incl. the declared siblings: endpoint pairs, membership lemmas promoted to public, split targets) |
+| gate blocks | 4 | D.65–D.67's `decide` legs land as EXECUTED `example`s (not axioms); D.68 lands whole (a census file has nothing to stub) |
+
+Interface/record/table nodes (D.06's table prose, D.36, D.42, D.43, D.53, D.54, D.56, D.61,
+D.64) contribute **no stubs** — they declare no Lean name except D.06's
+`thetaEl_mul_varthetaEl` and D.10's `varthetaG2`, already counted.
+
+**Rules for the stub-landing agent.**
+1. **Elaborate the fragile signatures FIRST:** D.17 (`levelOneArena` — `GaugeArena` fields
+   over `Multiplicative (ℤ × ℤ)` with `MonoidHom.ker` subtype), D.08 (`res` applied to
+   subtype elements — the membership lemmas must be explicit `mem_ker` proofs, not tactic
+   holes), D.28 (the `Basis`/`repr`/`algebraMap` stack), D.39 (`compData`'s kernel proof
+   terms inside a `def`), D.46 (`CertFrame`'s `Finsupp` codomain), and the D.65 `𝔽₄`
+   carrier (§10's ⚠ — pick `GaloisField 2 2` vs an explicit construction by what `decide`s;
+   record the choice in the stub header).
+2. **Definitions land real; the five structures land real** (a `structure` IS its
+   elaboration check).
+3. **Gate order (GC-6.6(c), mandatory):** (a) fragile signatures; (b) the 29 `def`-class
+   bodies + 5 structures; (c) **execute D.65's leg-1 + D.66's + D.67's `decide` blocks at
+   `q = 2` AND `q = 3` (+ `p = 5`)** against the commented expected values — all are
+   executable at stub stage (pure `ℕ`/`ZMod` arithmetic + the landed defs); (d) only then
+   sign the ≈ 48 `axiom` stubs. ⚠ The stub gate cannot catch a wrong-but-well-typed
+   statement — the exposed classes here are D.06's table rows and the gate tables' expected
+   values; both are §14 items (1 and 8).
+4. **No stub for another chapter's placeholder**: the `[supplied-by: chapter C]` rows are
+   NOT axiomatized in leanspec (axiomatizing a supplier's theorem would fake the discharge
+   — exactly the class of defect the honesty items fence).
+5. **Elision-expansion rule:** the schematic fragments in D.40's SIGNATURE (the `compData`
+   projections) and D.65–D.67's `…` lines expand only through the node's own STATEMENT
+   text; elaboration failures are blueprint defects — versioned back into this file by
+   dated append, never patched silently in leanspec.
+
+---
+
+## 13. TEETH DISPOSITION SUMMARY (GC-8)
+
+Vocabulary: **{Lean theorem · executable regression retained · signed non-applicability}**.
+Batteries inherited per GC-8: T1's §4.2 checks 1–10 + the four planted teeth + the inherited
+frames; T3's §8.1/§8.3/§8.4 rows (20, per its own zero-orphan inventory); T4's S8 PE1(1)–(7)
++ PE2 consumption rows; T5's §7 Pass 1(1)–(6)/Pass 2(1)–(6).
+
+| battery family | source | disposition in this chapter |
+|---|---|---|
+| T1 §4.2 check 1 (GENHN-LIFT boundary, incl. the `(1,2,1,0)` low-height counterexample) | `EFF.T1.35` | **Lean theorem** (D.25/D.26 on the live domain; the sub-domain has NO lemma — the counterexample's content is the absence) + **executable regression retained** (PARI leg) |
+| check 2 (positive-wrap sign; exact coefficient equality) | `EFF.T1.36` | **Lean theorem** (D.14/D.18) + gates D.65/D.66 |
+| check 3 (JA origin, root-of-unity criterion) | `EFF.T1.37` | **Lean theorem** (D.22; D.23 under its inline hypothesis) |
+| check 4 (HE6 coefficient normalization, `−q(k)` sign) | `EFF.T1.38` | **Lean theorem** (D.19, D.26); the `ξ`-read halves ride the chapter-C placeholder |
+| check 5 (full orientation tooth, all three `μ = 3` entries) | `EFF.T1.39` | **Lean theorem** (D.06/D.10/D.32/D.33) + gate D.65 leg 3 (all three entries scored) |
+| check 6 (weld scope lint) | `EFF.T1.40` | **signed non-applicability as Lean content** — a prose lint over T1's own text; its Lean shadow is D.36's fence (no cross-face node exists to lint) |
+| check 7 (coefficient-space bound) | `EFF.T1.41` | **Lean theorem** (D.30's strict-degree monicity) |
+| checks 8–9 (nonvanishing / codomain countermodels) | `EFF.T1.42/.43` | **executable regression retained** — the countermodels certify field INDEPENDENCE (D.29's FAITHFULNESS (ii)); in Lean the fields are carried, not derived, so there is nothing to prove and the regressions guard the packaging |
+| check 10 (grade-data value group) | `EFF.T1.44` | **Lean theorem** (D.13's `ℤ`-typed heights; the `e_{i+1} ∤ u_{i+1}` witness arithmetic at gate D.66) |
+| the four planted teeth (gauge-naive, wrong-sign, misindexed telescope, inverse orientation) | `EFF.T1.45` | **Lean theorem + executed gates** — each mutant flips a committed expected value in D.65–D.67 (this is the append-#54 trap's mechanical layer; the blueprint layer is D.06) |
+| inherited frames X / FR-G / F4-JOINT / LP-LD (the 2026-08-10 sealed run) | `EFF.T1.33` | **executable regression retained, with the re-scoping carried** (GC-8 rider (i)): "historical evidence, not a certification of this revised text" — D.65/D.66 re-derive the X/F4-JOINT values inside Lean; FR-G and LP/LD stay PARI-side |
+| T3 §8.1(1)–(2) (endpoints, recurrence/inverse orientation) | `EFF.T3.29` teeth | **Lean theorem** (D.05/D.09/D.10) |
+| T3 §8.1(3)–(4) (no competing frame; no conditional B-law input) | | **signed non-applicability** (structural: D.02 is the only τ; D.37 has no B-law field) + §14 item 7 |
+| T3 §8.3(1)/(3) (GENTOW2-B″, GENTOW5-W legs) | | **executable regression retained** + the D.42/D.44 interfaces (discharge is C's) |
+| T3 §8.3(2) (HETOW-4) | | **Lean theorem** (D.11/D.40/D.41) + D.43's boundary table |
+| T3 §8.3(4)–(6) (conditionality/index/lift lints) | | **signed non-applicability** (carriers D.55/D.59/D.60 never discharge; D.59's `j−1` index is structural) |
+| T3 §8.3(7) (GENTOW-6.4) | `EFF.T3.26/.28` | **signed non-applicability** — `(G6-NONINSTANCE)`, D-H4(4): no node derives GENTOW-6.4 from the telescope |
+| T3 §8.3(8) (GENTOW6 E11 riders) | `EFF.T3.27` | **signed non-applicability** — "regression facts, not new T3 carrier fields"; retained PARI-side |
+| T3 §8.4(1)–(4) (character / theta-free / endpoint-as-input / inverse-orientation mutants) | | **Lean theorem + executed gate** (D.12+D.67 leg 2's `χ(1)² ≠ χ(2)`; D.38's port derivation; D.67 leg 1 scored from assembled definitions; D.10) |
+| T4 S8 PE1(1)–(3) (assembly semantics, floor binding, repaired margin) | | **Lean theorem at frame level** (D.46–D.50) + instance burden at the C placeholders (D.53) |
+| T4 S8 PE1(4)–(7) (setting, exposure, pins) | | PE1(4): gate D.66 leg 4 (`Θ` table); PE1(5): **Lean theorem** (D.51/D.52) + D.54's scoped discharge; PE1(7)/pin stack: **signed non-applicability** (a source-span protocol; carried in D.53's provenance) |
+| T4 PE2 GT3/GT6 consumption (FR-M3/FR-GL/FR5X/FAM-* measured configurations) | `EFF.T4.20` | **executable regression retained** (inherited evidence, `EFF.T4.37`'s fence) + gate D.66 leg 4 anchors the FR-M3 slack `[12,7,4]` vs `[10,7,4]` in Lean |
+| T5 §7 Pass 1(1)/(6), Pass 2(1) | | **Lean theorem** (D.34/D.35/D.58; D.59's structural index) |
+| T5 §7 Pass 1(2)–(5), Pass 2(2)–(6) (conditionality, supplier attribution, span pins) | | **signed non-applicability** (carriers + D.61's record; span-pin verification is the EFF compiler's, already run) |
+
+**The GC-8 riders, discharged.** (i) Re-scoped batteries carry their re-scoping (T1's
+inherited frames; `HE-BND`-class rows do not occur here). (ii) **No battery guarding this
+chapter was fitted to data.** (iii) **The no-teeth reconciliation:** the rows with no Lean
+theorem anywhere are exactly the bundle/port/frame INSTANTIATIONS at `i ≥ 3` (`𝒲_{≤i}`,
+`(H-VARTHETA-RES)_i` — Display A's `∀ i ≥ 3` conjunct, D.63), (FLOOR) and the full-exposure
+instances (chapter C's suppliers), and the four inline JA/GENHN/HETOW hypotheses — which is
+precisely the conditionality this chapter's honesty block declares (D-H3/D-H4/D-H5).
+Nothing else is battery-guarded without also being a proof obligation.
+
+**Retained regressions** (GC-8 home `verification/`, packaging booked as an ORCHESTRATOR
+item at fleet close): `chapD_frameC` (D.67's p = 5 tables), `chapD_f4joint` + `chapD_xframe`
+(the inherited T1 frames, PARI legs), `chapD_frm3_slack` (T4's measured configurations),
+`chapD_t1_countermodels` (checks 8–9's mock reads).
+
+---
+
+## 14. FLAGGED FOR THE CODEX CROSS-READ (the orchestrator queue)
+
+The chapter is single-arm-authored (Fable, this session); D-H13's debt covers all of it.
+Ordered by cost of a wrong answer:
+
+1. **THE ϑ TABLE (D.06) against the four specs.** Byte-check every row: the reference
+   display and the five-row table against `spec/EFF-GENTOW2.md` L1059–1075 (records `.25`,
+   `.41`, `.42`); row 2 against `EFF.T1.14`'s `(C3-Theta)`; row 3 against `EFF.T3.04/.19`;
+   row 4 against `EFF-GENTOW2.md:1072` (the GENTOW5-A1 RECIPROCAL row — the exact pair
+   append #54 names); row 5's verification hashes; the B-law block against
+   `EFF.GENTOW2.34`'s orientation record. **A sign error here is caught by no battery** —
+   this read is the table's only decorrelated check before C/E/F consume the anchor.
+2. **DECISION D-1's packaging delta (D.07/D.62, honesty D-H3).** (i) Is `res : ker v →* Kˣ`
+   on the WHOLE kernel consumed anywhere beyond the corpus's sitewise clauses in a way that
+   could not be instantiated at `i = 2` (check against `EFF.GENTOW2.42`'s letter group)?
+   (ii) Does the `Kˣ` codomain silently strengthen `(C3-read-codomain)` (which places values
+   in `K_i`, with nonzero-ness a separate clause)? For value-zero residues the instances
+   give units — verify no consumer needs a possibly-zero value-zero residue. (iii) D.62's
+   arena-existence rendering of `(H-VARTHETA-RES)_i` vs the ledger-strength sitewise clause
+   — confirm chapter I's row will state both forms per D.62's note.
+3. **D.29's zero-read absorption** (FAITHFULNESS (i)): confirm `(C3-zero-read)` is genuinely
+   consumed nowhere as a field — grep the four specs for zero-slice reads feeding a D node.
+4. **D.46's `grΔ` collapse:** confirm no T4 unit consumes `ShC_j` or `C_j` SEPARATELY from
+   the composite in a way a frame instance cannot supply (the `ω_j = gr(ShC_j(Φ₂^{μ₂}))`
+   equivalence rests on `C_j(f_key) = 0` — instantiation-side; check `EFF.T4.09/.10`).
+5. **D.13's `ZMod`-inverse definition of `iexp`:** verify behaviour at negative heights
+   `k < 0` (T1's heights are `ℤ`) and at `h > e₁`, against `EFF.T1.01`'s normalization; and
+   the D.25 ⚠ (`hh : 0 < h` needed by the integrality `omega`?) — `EFF.T1.01` displays
+   `h ≥ 1`, so carrying `hh` is faithful, but confirm no consumer needs `h = 0`.
+6. **The point-free C5/C6 discipline** (§4 design note): grep T1's A1/A6 consumers
+   (GENHN-LIFT, GENTOW-6.3) for whether any consumes the `ξ`-evaluation form FROM T1
+   (rather than from its own tower carrier) — if one does, D.26's ⚠ interface must move
+   from "chapter C's carrier" to an explicit D-side statement over an abstract valued
+   extension, a RE-PLAN.
+7. **D.44's port-family rendering** of T3's "certified expansion, peel, positive-degree
+   elimination, exact-grade law, and root-evaluation package": T3's own XREF X18 is
+   `PERIMETER-UNRESOLVED`; check the `∃ P : BoundaryReadPort …` hypothesis is neither
+   stronger nor weaker than the five-fold package as consumed by `(ABS-G5W)`.
+8. **The gate tables** (D.65–D.67): recompute every expected value independently (F4-JOINT's
+   `(1,1,ω,ω)`/`(ω,ω,ω²)`/`(ω,ω²,1)`; the X-frame's `(1,1,2,2,1)`; FRAME-C's
+   `U = (1,3,2,1,4)` vs `ϑ = (1,1,2,2,4)` with `w = 3`; `thresholdTheta 3 3 1 = (10,7,4)`)
+   — the wrong-expected-value class the stub gate cannot catch.
+9. **D.57's conjunct-extraction reading of `(WF-lawᵢ)`:** confirm against `EFF.T5.14/.15`
+   that the implication's entire content at carrier granularity is last-conjunct extraction
+   (the alternative — that T5 intends real work inside the arrow — would make D.57 an
+   understatement and D.44's instance wiring wrong).
+10. **The §11 TSV** (`spec/gen_dag_d.py`): spot-check the hand-audited edge lists against
+    this file's DEPENDS/SOURCE fields (the generator is committed for exactly this
+    re-derivation); verify the seven GENTOW2-EXT mitigation rows carry the right contiguous
+    IDs in their evidence columns.
+11. **D.34's mathlib route note:** confirm the `AlgEquiv`/`Separable.map` surface exists at
+    the v4.31.0 pin before the fleet fires D.34 (the B §14 item-6 class: a missing surface
+    silently degrades three consumers — D.41, D.58, and F's routing faces).
+12. **The A-1 recount** (§2 table, kind census, graph shape) — mechanical, against the
+    committed `### NODE` headings and the TSV.
+
+**Queue census: 12 items.** Items 1, 2, 8 are where a wrong answer costs the most (the
+sign discipline, the packaging faithfulness, and the gates' expected values).
+
+---
+
+*END OF CHAPTER D BLUEPRINT — 68 nodes (18 def / 10 def+lemma / 19 lemma / 8 theorem /
+2 table / 5 interface / 2 record / 4 gate), ≈ 82 signable declarations (5 structures + 29
+defs + ≈ 48 theorem stubs), 337 DAG edges (dangling-check PASS; the checker's global FAIL is
+two BP.C.* SCCs, not chapter D's), 181 source units covered (`EFF-T1` 55 / `EFF-T3` 36 /
+`EFF-T4` 45 / `EFF-T5` 45) with battery/record units disposed in §13 rather than transcribed
+as nodes (D-H12). THE ϑ FOUR-WAY ORIENTATION TABLE is node D.06, anchor `D-THETA-TABLE`
+(GC-14 discharged); the C7 supply interface is D.36, anchor `D-C7-TABLE`. JD0-BOX-2: zero
+T-unit cites → chapter I (D-H8). CODEX CROSS-READ OWED — the queue is §14's 12 items.*
+
+<!-- RESUME: CHAPTER COMPLETE — §§0–2 (skeleton, 56989ae9), §3 (b21567a2 + d54e7b5f, TABLE at D.06), §4 (c6093e8b + 2854ff1e), §5 (5ae2ba11), §6 (0bf7309c), §7 (f2885701), §§8–9 (884bdb97), §10 (9dbd382c), TSV (85f2bce5), §§11–14 + A-1 (this commit). Nothing owed by the D composer except the codex cross-read (orchestrator queue §14). -->
 
 <!-- CHAP-D APPEND POINT — do not remove; sections are appended here in order -->
