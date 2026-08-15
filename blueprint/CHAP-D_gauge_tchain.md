@@ -644,6 +644,242 @@ D.72's numeric orientation leg (`U(s) = Θ_s w^s` at the FRAME-C tables), and (i
 **ENVIRONMENT.** ENV-D2.
 
 ---
-<!-- RESUME: §3 through D.06 committed; next = D.07–D.12 -->
+### NODE D.07 [def] [fresh]
+
+**STATEMENT.** *The gauge arena (DECISION D-1's structure).* A **gauge arena** over a section
+`N : NormSection G` with letter field `K` consists of: a height homomorphism
+`v : G →* Multiplicative ℤ`; the **exact-height** clause `v (n k) = ofAdd k` for every `k`
+(`EFF.T1.01`'s "exact height because its defining exponents satisfy `i(k)h + a(k)e₁ = k`",
+abstracted); and a residue homomorphism `res : v.ker →* Kˣ` on the value-zero subgroup. Every
+§3 combination (`τ`, `varthetaEl`, `thetaEl`, the bracket, `χ` for two sections with the same
+`v`) lies in `v.ker` by exact-height arithmetic, so its `K`-valued residue is defined.
+
+**SIGNATURE.**
+```lean
+/-- DECISION D-1's residue interface. Instantiations: level 1 = D.17 (η-powers); level 2 =
+GENTOW2's letter group `⟨γ₁, γ₂⟩` (`EFF.GENTOW2.42`, supplied by chapter C); depth `i ≥ 3` =
+exactly the `(H-VARTHETA-RES)_i` conditionality (D.67) — supplying this structure at depth IS
+the hypothesis. FAITHFULNESS: formally stronger than the sitewise clauses; see CHAP-D honesty
+item D-H3 and §13 item 2. -/
+structure GaugeArena (G : Type*) [CommGroup G] (K : Type*) [Field K]
+    (N : NormSection G) where
+  v : G →* Multiplicative ℤ
+  exact_height : ∀ k : ℤ, v (N.n k) = Multiplicative.ofAdd k
+  res : MonoidHom.ker v →* Kˣ
+```
+
+**DEPENDS.** D.01 · mathlib `MonoidHom.ker` (`Subgroup`-valued).
+
+**PROOF.** definitional.
+
+**SIZE.** 14 lines.
+
+**FAITHFULNESS.** (i) The corpus's five C3 read clauses (`EFF.T1.03`) are SITEWISE; this
+structure asserts hom-ness on all of `v.ker`. The two proved instances justify it (D-H3:
+`EFF.T1.01` at level 1, `EFF.GENTOW2.42` at level 2 — the value-0 monomials form exactly
+`⟨γ₁,γ₂⟩` and `res` is multiplicative there); at `i ≥ 3` NO instance is claimed. (ii) The
+graded reads `R_{i+1,β}` at NONZERO grade are NOT fields of this structure — the arena covers
+only the value-zero residue algebra (τ/ϑ/χ); the positive-grade read obligations stay in
+D.29's `ReadBundle`, sitewise, exactly as `EFF.T1.03` states them. Flagged for cross-read
+(§13 item 2).
+
+**SOURCE.** `EFF.T1.01`–`.03` (packaging per DECISION D-1); `EFF.GENTOW2.42` (the `i = 2`
+licence).
+
+**TEETH.** none directly (a definition); its instances carry the batteries (D.17, gates).
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3 (`{K} [Field K]`).
+
+---
+
+### NODE D.08 [def+lemma] [fresh]
+
+**STATEMENT.** *The `K`-valued telescope.* For an arena `A`: (i) `varthetaEl N q s ∈ v.ker`
+(exact-height arithmetic: `v((n q)^s (n (sq))⁻¹) = ofAdd (s·q − s·q) = 1`); define
+`A.vartheta q s : Kˣ := A.res ⟨varthetaEl …⟩` and `A.theta q s := A.res ⟨thetaEl …⟩`;
+(ii) the residue recursion `(C2-recursion)`, `K`-half:
+`A.vartheta q (s+1) = A.vartheta q s * A.res ⟨tau (s·q) q, _⟩`.
+
+**SIGNATURE.**
+```lean
+noncomputable def GaugeArena.vartheta {G K N} [CommGroup G] [Field K]
+    (A : GaugeArena G K N) (q : ℤ) (s : ℕ) : Kˣ :=
+  A.res ⟨N.varthetaEl q s, A.varthetaEl_mem_ker q s⟩
+-- sibling: `GaugeArena.theta`; membership lemmas `varthetaEl_mem_ker`, `tauEl_mem_ker`
+-- (private); public recursion lemma `vartheta_succ` per the STATEMENT
+```
+
+**DEPENDS.** D.02, D.04, D.05, D.07.
+
+**PROOF.** 1. Membership: `map_mul`/`map_pow`/`map_inv` on `v` + `exact_height` + `omega` on
+the `ofAdd` exponents. 2. Recursion: `A.res` is a `MonoidHom`; apply it to D.05's group
+identity (`map_mul` + `Subgroup` coercion bookkeeping).
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.T1.09` (the residue-level `(C2-vartheta)`), `EFF.T1.10` (the residue
+recursion), `EFF.T3.03`.
+
+**ORIENTATION.** `vartheta` = T1 two-index (D.06 row 2's `ϑ_{i,s}`); `theta` = the B-law
+orientation (D.06 rows 2–3).
+
+**TEETH.** T3 §8.1(2) → Lean theorem (this node's recursion); T1 §4.2 checks 5/8/9 (the read
+bundle sites) → those guard D.29's bundle, not this node — the split is deliberate (this node
+is value-zero algebra only, D.07 FAITHFULNESS (ii)).
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+
+### NODE D.09 [lemma] [fresh]
+
+**STATEMENT.** *The top-slot anchor (T3 §8.1 check 1; GENTOW2's `ϑ(f₃−1) = 1`).*
+`A.vartheta q 0 = 1` and `A.vartheta q 1 = 1` — and since `theta = vartheta⁻¹` (D.10), the
+same endpoints hold in BOTH orientations, which is exactly why the top slot (`t = f_{i+1}−1`,
+`s = 1`) is the safe normalization anchor of the whole table (D.06's anchor paragraph).
+
+**SIGNATURE.**
+```lean
+theorem GaugeArena.vartheta_zero {G K N} [CommGroup G] [Field K]
+    (A : GaugeArena G K N) (q : ℤ) : A.vartheta q 0 = 1
+-- sibling `vartheta_one` in the same file, same shape (public; the stub signs both)
+```
+
+**DEPENDS.** D.05, D.08.
+
+**PROOF.** Push `A.res` through D.05's endpoint identities (`map_one` after showing the
+subtype element is `1` — `Subtype.ext` + D.05).
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.T3.03` (`ϑ_N(0;q) = ϑ_N(1;q) = 1`); `EFF.GENTOW2.41` ("`κ̄ = β_{f₃−1}` means
+`ϑ(f₃−1) = res(n̂₂(u₃)/n̂₂(u₃)¹) = 1` — the top-slot normalization … T3 checks at its §8.1
+item 1"); `EFF.T1.10` (`ϑ_{i,0} = ϑ_{i,1} = 1`).
+
+**ORIENTATION.** both (they agree at `s ∈ {0,1}`; D.06 anchor paragraph).
+
+**TEETH.** T3 §8.1(1) → **Lean theorem** (this node); executable at gate D.72.
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+
+### NODE D.10 [lemma] [fresh]
+
+**STATEMENT.** *The orientation involution and the GENTOW2 alias (T3 §8.1 check 2 as a Lean
+lemma).* (i) `A.theta q s * A.vartheta q s = 1` — the `K`-valued inversion; (ii) the
+slot-indexed alias `varthetaG2 A q f t := A.theta q (f − t)` (GENTOW2's single-argument unit,
+D.06 row 1: argument the SLOT `t`, value the INVERSE-orientation telescope at `s = f − t`),
+with the defining lemma `varthetaG2 A q f t = (A.vartheta q (f − t))⁻¹`.
+
+**SIGNATURE.**
+```lean
+theorem GaugeArena.theta_mul_vartheta {G K N} [CommGroup G] [Field K]
+    (A : GaugeArena G K N) (q : ℤ) (s : ℕ) :
+    A.theta q s * A.vartheta q s = 1
+
+/-- GENTOW2's single-argument slot-indexed ϑ (D-THETA-TABLE row 1): `ϑ(t) = Θ(f−t)`. -/
+noncomputable def GaugeArena.varthetaG2 {G K N} [CommGroup G] [Field K]
+    (A : GaugeArena G K N) (q : ℤ) (f t : ℕ) : Kˣ := A.theta q (f - t)
+```
+
+**DEPENDS.** D.06 (the group inversion), D.08.
+
+**PROOF.** (i) push `res` through D.06's `thetaEl_mul_varthetaEl` (`map_mul`, `map_one`).
+(ii) definitional + `eq_inv_of_mul_eq_one_left` from (i).
+
+**SIZE.** 18 lines. ⚠ Two public declarations (a theorem + the alias def) — the alias is the
+table's row-1 name and must be a REAL name for C/E/F to cite; recorded as a sanctioned GC-6.5
+exception scoped to exactly `varthetaG2` (the D.06 table mandates the name exists).
+
+**SOURCE.** `EFF.T3.04` (+ its §8.1 check 2, "recurrence/inverse orientation");
+`EFF.GENTOW2.25`/`.41` (the single-argument convention and `s := f₃ − t` reindexing).
+
+**ORIENTATION.** the involution itself — D.06 rows 1–3 made a theorem.
+
+**TEETH.** T3 §8.4(4) "inverse-orientation mutant" → **Lean theorem** (this node); gate D.72.
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+
+### NODE D.11 [lemma] [fresh]
+
+**STATEMENT.** *The descending bracket telescope `(T3-BKT)`, group level.* For `H₀ q : ℤ` and
+`t : ℕ`, with `H_r := H₀ − r·q`:
+`∏_{r=0}^{t−1} τ(H_{r+1}, q) = n(H_t) · (n q)^t · (n H₀)⁻¹`.
+
+**SIGNATURE.**
+```lean
+theorem NormSection.tau_bracket_telescope {G : Type*} [CommGroup G]
+    (N : NormSection G) (H₀ q : ℤ) (t : ℕ) :
+    (Finset.range t).prod (fun r => N.tau (H₀ - (r + 1) * q) q)
+      = N.n (H₀ - t * q) * (N.n q) ^ t * (N.n H₀)⁻¹
+```
+
+**DEPENDS.** D.02.
+
+**PROOF.** Induction on `t`. Base: empty product `= 1 = n H₀ · (n H₀)⁻¹` (`pow_zero`,
+`sub_zero` casts). Step: `Finset.prod_range_succ`, then the corpus's own cancellation
+("`H_r = H_{r+1} + q`, so `τ(H_{r+1},q) = n(H_{r+1})n(q)/n(H_r)`; multiplication cancels the
+intermediate normalizers" — `EFF.T3.15`'s verbatim derivation): `group` after the cast rewrite
+`H₀ − (t+1)q + q = H₀ − tq`. "This is an iteration of the imported cocycle seam, not a new
+proof of its normalization or cocycle law" — accordingly this node depends only on D.02's
+definition, not on D.03.
+
+**SIZE.** 22 lines.
+
+**SOURCE.** `EFF.T3.15` (the boxed `(T3-BKT)` with `H_t = H₀ − tq`, product over
+`r = 0,…,t−1` of `τ_N(H_{r+1}, q)`).
+
+**TEETH.** T3 §8.3(2) (HETOW-4 clause (c) "coefficient telescope … fully supplied by
+(T3-BKT)") → Lean theorem (this node) + the ABS-HE4 interface (D.43).
+
+**ENVIRONMENT.** ENV-D2.
+
+---
+
+### NODE D.12 [def+lemma] [fresh]
+
+**STATEMENT.** *The section ratio `χ` and the coboundary `(T3-COB)`.* For TWO sections
+`N N̂ : NormSection G` (same group, same height set — `EFF.T3.12`'s "two normalized
+exact-height sections on the same set of heights"): `χ(k) := n̂(k) · (n(k))⁻¹`, and
+`χ(a)·χ(b)·χ(a+b)⁻¹ = τ_{N̂}(a,b) · τ_N(a,b)⁻¹`. In particular **no character law for `χ` is
+assumed**: `χ` is a character exactly when the two cocycles have equal residue (the corpus's
+own warning, kept as a ⚠ non-claim — T3's battery even exhibits the failure, `χ(1)² = 1 ≠ 2 =
+χ(2)` at FRAME-C, gate D.72).
+
+**SIGNATURE.**
+```lean
+/-- The pointwise section ratio (`EFF.T3.12`; T3's `χ`, renamed from HETOW's `τ` to avoid
+collision with the two-argument cocycle — the spec's own renaming). -/
+def NormSection.chi {G : Type*} [CommGroup G] (Nhat N : NormSection G) (k : ℤ) : G :=
+  Nhat.n k * (N.n k)⁻¹
+
+theorem NormSection.chi_coboundary {G : Type*} [CommGroup G]
+    (Nhat N : NormSection G) (a b : ℤ) :
+    chi Nhat N a * chi Nhat N b * (chi Nhat N (a + b))⁻¹
+      = Nhat.tau a b * (N.tau a b)⁻¹
+```
+
+**DEPENDS.** D.01, D.02.
+
+**PROOF.** Unfold; `group` (the corpus derivation is the displayed two-line residue
+computation, `EFF.T3.16` — here at group level, with the residue image following through
+D.07's `res` at consumers).
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.T3.12` (χ's definition + the renaming note), `EFF.T3.16` (the boxed
+`(T3-COB)` + "no character law for χ is assumed. It is a character exactly when the two
+imported cocycles have equal residue").
+
+**TEETH.** T3 §8.4(1) "character mutant" → **Lean theorem** (this node) + gate D.72's
+`χ(1)² ≠ χ(2)` numeric leg (the mutant that assumes the character law dies there).
+
+**ENVIRONMENT.** ENV-D2.
+
+---
+<!-- RESUME: §3 COMPLETE (D.01–D.12); next = §4 (D.13–D.28, level-1 gauge layer) -->
 
 <!-- CHAP-D APPEND POINT — do not remove; sections are appended here in order -->
