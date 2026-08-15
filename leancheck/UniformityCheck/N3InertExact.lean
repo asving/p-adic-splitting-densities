@@ -101,7 +101,7 @@ theorem possibleSet_inert_subset {π : O} (hπ : Irreducible π) (M : ℕ) :
     exact absurd hta (typeOf_ne_inert3_of_root hr)
   · -- residually rootless: the level-1 class is `{(1,3)}`-decided
     left
-    show coeffFactor (O := O) 3 (show 1 ≤ M + 3 by omega) (proj O 3 (M + 3) a)
+    change coeffFactor (O := O) 3 (show 1 ≤ M + 3 by omega) (proj O 3 (M + 3) a)
       ∈ decidedSet O 3 c3inert 1
     rw [coeffFactor_proj (O := O) 3 (show 1 ≤ M + 3 by omega) a, proj_one_eq_liftRes1]
     exact inert3_decided_iff.2 hno
@@ -161,7 +161,48 @@ theorem possibleSeq_inert_step (M : ℕ) :
     possibleSeq O 3 c3inert (M + 3)
       ≤ ((residueCard O : ℝ) ^ 3 - (residueCard O : ℝ)) / (3 * (residueCard O : ℝ) ^ 3)
         + (1 / (residueCard O : ℝ) ^ 5) * possibleSeq O 3 c3inert M := by
-  sorry
+  classical
+  obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
+  set A : Set (Coeff O 3 (M + 3)) :=
+    (coeffFactor (O := O) 3 (show 1 ≤ M + 3 by omega)) ⁻¹' (decidedSet O 3 c3inert 1) with hAdef
+  set B : Set (Coeff O 3 (M + 3)) := boxImage (O := O) π M (possibleSet O 3 c3inert M) with hBdef
+  -- (1) the outer inclusion bounds the possible count by the two families' counts
+  have hsub : possibleSet O 3 c3inert (M + 3) ⊆ A ∪ B := possibleSet_inert_subset hπ M
+  have hcount : possibleCount O 3 c3inert (M + 3) ≤ Nat.card A + Nat.card B := by
+    have h1 : possibleCount O 3 c3inert (M + 3) ≤ Nat.card (A ∪ B : Set (Coeff O 3 (M + 3))) :=
+      Nat.card_le_card_of_injective (Set.inclusion hsub) (Set.inclusion_injective _)
+    have h2 : Nat.card (A ∪ B : Set (Coeff O 3 (M + 3))) ≤ Nat.card A + Nat.card B := by
+      rw [Nat.card_coe_set_eq, Nat.card_coe_set_eq, Nat.card_coe_set_eq]
+      exact Set.ncard_union_le A B
+    omega
+  -- (2) the two counts, cast to `ℝ`
+  have hAcard : 3 * Nat.card A + residueCard O * residueCard O ^ (3 * M + 6)
+      = residueCard O ^ 3 * residueCard O ^ (3 * M + 6) := card_level1_inert_preimage (O := O) M
+  have hBcard : Nat.card B = residueCard O ^ 4 * possibleCount O 3 c3inert M :=
+    card_boxImage hπ M (possibleSet O 3 c3inert M)
+  have f1R : 3 * (Nat.card A : ℝ)
+      + (residueCard O : ℝ) * (residueCard O : ℝ) ^ (3 * M + 6)
+      = (residueCard O : ℝ) ^ 3 * (residueCard O : ℝ) ^ (3 * M + 6) := by exact_mod_cast hAcard
+  have f2R : (Nat.card B : ℝ)
+      = (residueCard O : ℝ) ^ 4 * (possibleCount O 3 c3inert M : ℝ) := by exact_mod_cast hBcard
+  -- (3) rewrite both summands over the common denominator `q ^ (3M + 9)` and compare counts
+  rw [possibleSeq, possibleSeq, show 3 * (M + 3) = 3 * M + 9 from by ring]
+  have hQ0 : (residueCard O : ℝ) ≠ 0 := ne_of_gt qR_pos
+  have e1 : ((residueCard O : ℝ) ^ 3 - (residueCard O : ℝ)) / (3 * (residueCard O : ℝ) ^ 3)
+      = (Nat.card A : ℝ) / (residueCard O : ℝ) ^ (3 * M + 9) := by
+    rw [div_eq_div_iff (mul_ne_zero (by norm_num) (pow_ne_zero 3 hQ0))
+      (pow_ne_zero (3 * M + 9) hQ0)]
+    linear_combination (-((residueCard O : ℝ) ^ 3)) * f1R
+  have e2 : (1 / (residueCard O : ℝ) ^ 5)
+        * ((possibleCount O 3 c3inert M : ℝ) / (residueCard O : ℝ) ^ (3 * M))
+      = (Nat.card B : ℝ) / (residueCard O : ℝ) ^ (3 * M + 9) := by
+    rw [f2R, div_mul_div_comm, div_eq_div_iff
+      (mul_ne_zero (pow_ne_zero 5 hQ0) (pow_ne_zero (3 * M) hQ0))
+      (pow_ne_zero (3 * M + 9) hQ0)]
+    ring
+  rw [e1, e2, ← add_div]
+  gcongr
+  exact_mod_cast hcount
 
 end Upper
 
@@ -185,7 +226,50 @@ theorem inert3_density_eq :
       = (residueCard O : ℝ) ^ 3 * ((residueCard O : ℝ) + 1)
         / (3 * ((residueCard O : ℝ) ^ 4 + (residueCard O : ℝ) ^ 3 + (residueCard O : ℝ) ^ 2
             + (residueCard O : ℝ) + 1)) := by
-  sorry
+  have hq1 : (1 : ℝ) < (residueCard O : ℝ) := by exact_mod_cast one_lt_residueCard O
+  have hq0 : (0 : ℝ) < (residueCard O : ℝ) := qR_pos
+  set q : ℝ := (residueCard O : ℝ) with hqdef
+  set L : ℝ := (q ^ 3 - q) / (3 * q ^ 3) with hLdef
+  set I : ℝ := genuineDensity O 3 c3inert with hIdef
+  have hshift : Tendsto (fun M : ℕ => M + 3) atTop atTop := tendsto_add_atTop_nat 3
+  -- UPPER: pass `possibleSeq (M+3) ≤ L + q⁻⁵·possibleSeq M` to the limit
+  have htendP : Tendsto (possibleSeq O 3 c3inert) atTop (𝓝 I) := possibleSeq_tendsto 3 c3inert
+  have hup : I ≤ L + (1 / q ^ 5) * I := by
+    have hA : Tendsto (fun M : ℕ => possibleSeq O 3 c3inert (M + 3)) atTop (𝓝 I) :=
+      htendP.comp hshift
+    have hB : Tendsto (fun M : ℕ => L + (1 / q ^ 5) * possibleSeq O 3 c3inert M) atTop
+        (𝓝 (L + (1 / q ^ 5) * I)) := (htendP.const_mul (1 / q ^ 5)).const_add L
+    exact le_of_tendsto_of_tendsto' hA hB (fun M => possibleSeq_inert_step M)
+  -- LOWER: by `n = 3` drainage `decidedSeq` has the SAME limit; pass the lower bound to it
+  have htendD : Tendsto (decidedSeq O 3 c3inert) atTop (𝓝 I) := by
+    have h := decidedSeq_tendsto (O := O) 3 c3inert
+    rwa [hIdef, genuineDensity_three_eq_decidedDensity c3inert]
+  have hlo : L + (1 / q ^ 5) * I ≤ I := by
+    have hA : Tendsto (fun M : ℕ => decidedSeq O 3 c3inert (M + 3)) atTop (𝓝 I) :=
+      htendD.comp hshift
+    have hB : Tendsto (fun M : ℕ => L + (1 / q ^ 5) * decidedSeq O 3 c3inert M) atTop
+        (𝓝 (L + (1 / q ^ 5) * I)) := (htendD.const_mul (1 / q ^ 5)).const_add L
+    exact le_of_tendsto_of_tendsto' hB hA (fun M => decidedSeq_inert_step M)
+  have hfix : I = L + (1 / q ^ 5) * I := le_antisymm hup hlo
+  -- the claimed value satisfies the same fixed-point equation …
+  set V : ℝ := q ^ 3 * (q + 1) / (3 * (q ^ 4 + q ^ 3 + q ^ 2 + q + 1)) with hVdef
+  have hqne : q ≠ 0 := ne_of_gt hq0
+  have hΦne : 3 * (q ^ 4 + q ^ 3 + q ^ 2 + q + 1) ≠ 0 := by positivity
+  have hVfix : V = L + (1 / q ^ 5) * V := by
+    rw [hVdef, hLdef]
+    field_simp
+    ring
+  -- … and the fixed point is unique because the contraction factor `q⁻⁵` is `< 1`
+  have hzero : (1 - 1 / q ^ 5) * (I - V) = 0 := by linear_combination hfix - hVfix
+  have hcne : (1 : ℝ) - 1 / q ^ 5 ≠ 0 := by
+    have h15 : (1 : ℝ) < q ^ 5 := by
+      calc (1 : ℝ) = 1 ^ 5 := by norm_num
+        _ < q ^ 5 := by gcongr
+    have hlt : 1 / q ^ 5 < 1 := by rw [div_lt_one (by positivity)]; exact h15
+    linarith
+  rcases mul_eq_zero.1 hzero with h | h
+  · exact absurd h hcne
+  · exact sub_eq_zero.1 h
 
 /-- The same value for the certified (inner) density — identical by drainage. -/
 theorem inert3_decidedDensity_eq :
@@ -202,12 +286,14 @@ end Value
 now a theorem. (`N3Exact.decidedSeq_inert3_one_padic_two` says the level-1 census alone gives only
 `1/4`; the extra `8/31 − 1/4 = 1/124` is the deep triple-root mass the recursion sums.) -/
 theorem inert3_density_padic_two : genuineDensity ℤ_[2] 3 c3inert = 8 / 31 := by
-  sorry
+  rw [inert3_density_eq, residueCard_padicInt 2]
+  norm_num
 
 /-- **`q = 3`: the inert cubic density over `ℤ_[3]` is exactly `36/121`** — HMENU3's predicted
 value. (Level 1 alone gives `8/27 = 0.29630`; the exact value is `0.29752`.) -/
 theorem inert3_density_padic_three : genuineDensity ℤ_[3] 3 c3inert = 36 / 121 := by
-  sorry
+  rw [inert3_density_eq, residueCard_padicInt 3]
+  norm_num
 
 /-! ## Axiom census -/
 
