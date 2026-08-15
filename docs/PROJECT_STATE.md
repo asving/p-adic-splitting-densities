@@ -4797,3 +4797,25 @@ belt-and-braces (the only cross-FAMILY check — retained where
 cheap). Honesty note: Fable-reviewing-Opus is cross-tier but
 same-family decorrelation; recorded, Asvin's call. PILOT: the
 WELD-ZERO confirmation pass (pass 2 of 2) runs on Fable-max now.
+
+**2026-08-15 APPEND #57 — QUARRY SURVEY VERDICT + THE FABLE-MAX
+CAPACITY CEILING.** (1) docs/VENDOR_QUARRY_MAP_2026-08-15.md
+(committed ecf20826): the quarries collapse ONE bottleneck —
+IsLocalRing (integralClosure O L) via FLT's idempotents machinery —
+that FOUR chapter obligations (E's (FUND), GENHN ERRATUM-E3,
+GENH4's Σef=4, NS-14) would each have paid for; chapter C PROVABLY
+unaffected (OM/MacLane/Newton-polygon machinery: four-way confirmed
+absence — C builds from scratch as planned); our Hensel layer NOVEL
+against both mathlib and FLT (one duplicate lemma; strongHensel +
+the factorization layer = upstreaming candidates). THE BIGGEST WIN
+IS IN OUR OWN PIN: spectralNorm_unique, IsKrasner, |x|=|N(x)|^{1/n},
+local e·f=n, tower multiplicativity ALL PRESENT — HYP.01 [CORE-SET]
+is far closer than its ledger class suggests. Housekeeping: drop
+vendor/norm_extensions (fully upstreamed; record its one statement
+first); LICENSE flag on the mariainesdff clones (no license file —
+read-only reference, adopt nothing). BACKPORT UNIT LAUNCHED (the
+top-2 items). (2) The aggressive Fable-max wave hit repeated 529s
+(6 concurrent max-effort instances = over capacity); regime
+adjusted: Fable-max runs SERIALLY (one at a time); the review wave
+resumes sequentially after the WELD-ZERO confirmation lands;
+opus/sonnet lanes unaffected throughout.
