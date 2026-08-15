@@ -5414,6 +5414,117 @@ authority (2026-08-05) covers it as an honest repair of signed text.
 
 ---
 
-<!-- RESUME: (a) PA-1 APPLIED + A-F.1 recorded, committing now. Next: (b) §10 gates B.83–B.86, then (c) §§11–14, then (d) census amendment A-F.2. -->
+## 10. §10 — GATES: `q = 2` AND `q = 3` FIRING INSTANCES, AND THE AXIOM CENSUS
+
+**What a §10 gate is.** A gate node instantiates the chapter's terminal certificates (B.80/B.82)
+at a **concrete** bundle (`O := ℤ_[2]` and `O := ℤ_[3]`; the landed instance section
+`LocalData.lean` §6 supplies `IsDiscreteValuationRing`, `IsAdicComplete`,
+`Finite (ResidueField ℤ_[p])` and `residueCard_padicInt : residueCard ℤ_[p] = p` by TC), on
+**explicit coefficient vectors** at an **explicit window `N`**, and *evaluates* every hypothesis —
+the development, the heights, `sideSet`/`sideMin`/`sideDeg`, `Visible`, `¬ NeedsDescent`,
+`order1Type` — on the instance. Per GC-11 (the G.23 lesson: a formula whose every check ran at
+`q = 2` was refuted at `ℤ_[3]`), the gates run at **`q = 2` AND `q = 3`**, and include witnesses
+with **`e > 1` and `f > 1` simultaneously** (B.85). Per GC-9.3 no gate asserts any uniform-`N`
+law: every instance is certified per-member at its explicitly hypothesized `N` (here `N` is chosen
+as the least `N` with `npHgt φ f 0 < N`, computed on the instance, never claimed as a formula).
+Per D-4(b)/B.82's calibration note, the gates **fire B.82 (resp. B.80), never re-case**: the
+landed `leancheck` suite (`N3CertRam.lean`, `N3CertLinRam.lean`, `N3InertExact.lean`) proved the
+`n = 3` values by hand without polygons; the point of §10 is that the general engine reproduces
+them (and quartic/sextic values leancheck never reached) with zero new mathematics. Every instance
+below has residual degree `d = 1`, i.e. sits in **D-3's unconditional perimeter — no gate carries
+`B-BOX-1`** (a gate needing it would be a defect, per the author brief). The two-slope instances
+(B.83(iii)/B.84(iii)) fire through the **A-F.1-repaired `sideMin` pin and could not fire under the
+abscissa-0 pin** (their right side has `sideMin = 1`, where the abscissa-0 read makes
+`resPoly = 0`): the repair is load-bearing at the gates, not decorative.
+
+### NODE B.83 [gate] [fresh]
+
+**STATEMENT.** *The `q = 2` firing gate.* Four explicit decided classes over `ℤ_[2]`, one per leaf
+genre, each concluded by firing B.82 (instances (i)–(iii)) or B.80 (instance (iv)):
+
+| | `a` (low coefficients, `f = monicPoly a`) | key data | polygon (heights → side(s)) | value | `N` |
+|---|---|---|---|---|---|
+| (i) inert | `![3, 1]`, `f = X² + X + 3` | `φ = X² + X + 1`, `μ = 1` | `dev₀ = 2`: `(0,1)→(1,0)`, side `(u,ℓ) = (1,1)`, `d = 1` | `⟨{(1,2)}⟩` | 2 |
+| (ii) ramified | `![2, 2]`, `f = X² + 2X + 2` (Eisenstein) | `φ = X`, `μ = 2` | `(2,1,0)`: one side `(1,2)`, argmin `{0,2}`, `d = 1` | `⟨{(2,1)}⟩` | 2 |
+| (iii) two-slope | `![4, 2, 2]`, `f = X³ + 2X² + 2X + 4` | `φ = X`, `μ = 3` | `(2,1,1,0)`: side `(1,1)` argmin `{0,1}` + side `(1,2)` argmin `{1,3}` (**`sideMin = 1`**), each `d = 1` | `⟨{(1,1),(2,1)}⟩` | 3 |
+| (iv) split | `![2, 3, 3]`, `f = X³ + 3X² + 3X + 2 = (X+2)(X²+X+1)` | `φ₁ = X`, `φ₂ = X² + X + 3`; peel `g₁ = X + 2`, `g₂ = X² + X + 1` | per block: `dev₀ = 2` resp. `−2`, side `(1,1)`, `d = 1` | `⟨{(1,1),(1,2)}⟩` | 2 |
+
+Instance (iii) is exactly `leancheck`'s `N3CertLinRam` value `{(1,1),(2,1)}` and instance (ii)'s
+`μ = 2` analogue of `N3CertRam`'s CASE R — reproduced by the general engine, not re-cased.
+Instance (iii)'s right side does not contain abscissa 0: it certifies the A-F.1 pin repair.
+Instance (iv) exercises the order-0 peel with `φ₂ ≠ g₂` (deliberate: `dev φ₂ g₂ 0 = −2 ≠ 0`, so
+the block is `Visible`; taking `φ₂ = g₂` would make `dev = 0` and no certificate fires — B.75's
+junk direction, and the reason keys are lifts, not the factors themselves).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+-- one theorem per instance; one micro-file each (B83a–B83d)
+theorem gate_inert_two :
+    Uniformity.Density.DecidedAt ℤ_[2] 2 ⟨{(1, 2)}⟩ 2
+      (Uniformity.Density.proj ℤ_[2] 2 2 ![3, 1])
+
+theorem gate_ram_two :
+    Uniformity.Density.DecidedAt ℤ_[2] 2 ⟨{(2, 1)}⟩ 2
+      (Uniformity.Density.proj ℤ_[2] 2 2 ![2, 2])
+
+theorem gate_linram_two :
+    Uniformity.Density.DecidedAt ℤ_[2] 3 ⟨{(1, 1), (2, 1)}⟩ 3
+      (Uniformity.Density.proj ℤ_[2] 3 3 ![4, 2, 2])
+
+theorem gate_split_two :
+    Uniformity.Density.DecidedAt ℤ_[2] 3 ⟨{(1, 1), (1, 2)}⟩ 2
+      (Uniformity.Density.proj ℤ_[2] 3 2 ![2, 3, 3])
+```
+
+**DEPENDS.** B.06 (`dev_unique` — the developments are exhibited and verified, not computed) ·
+B.08 (`le_gaussVal_iff` — heights from explicit `2^k`-divisibilities) · B.15 (`dev_X`/`npHgt_X`
+for the `φ = X` instances) · B.20 (`sideMin`/`sideMax`/`sideDeg` on the instance) · B.30
+(`natDegree_resPoly` — each residual has degree 1) · B.66 · B.73 · B.75 · B.82 ((i)–(iii)) ·
+B.80 ((iv)) · landed `LocalData.lean` §6 (the `ℤ_[2]` bundle instances, `residueCard_padicInt`) ·
+mathlib `PadicInt.prime_p` (`Mathlib/NumberTheory/Padics/PadicIntegers.lean:514`, via
+`Prime.irreducible`, supplying `hπ : Irreducible (2 : ℤ_[2])`).
+
+**PROOF.** The same six steps per instance; all numerics are explicit `ℤ_[2]` valuations.
+1. Exhibit the development coefficients (the table's `dev` column), verify `f = Σ aⱼ φʲ` by
+   `ring_nf`, and pin `dev φ f j = aⱼ` by B.06's uniqueness ((ii)/(iii): B.15's `dev_X` directly).
+2. Evaluate heights by B.08: e.g. (i) `npHgt φ f 0 = 1` from `2 ∣ 2 ∧ ¬ 2² ∣ 2`.
+3. Evaluate the side data (B.20): the argmin sets of the table (finite explicit `ℕ∞` infima over
+   `Finset.range`); the candidate-slope enumeration is finite by B.42's bound (`ℓ ∣ sideLen ≤ μ`,
+   `u ≤ ℓ · npHgt φ f 0` — at these instances `≤ 3` cases each).
+4. Each residual polynomial has `natDegree = sideDeg = 1` (B.30), hence is separable (its
+   derivative is a nonzero constant, a unit in `resField φ`); conclude `¬ NeedsDescent` from the
+   step-3 enumeration: every `card ≥ 2` side's residual is separable — **read at the A-F.1 pin**
+   `npHgt φ f (sideMin φ f u ℓ h)`.
+5. `Visible π φ f N` by the table's `N`: the constant development coefficient is `2`-adically
+   exact (e.g. (iii): `¬ 2³ ∣ 4`).
+6. Fire B.82 with steps 1–5 (`hperim`: every pair has `d = 1` — D-3's unconditional row);
+   evaluate `order1Type π φ f` to the table's value (B.66 unfolded on the step-3 finsets).
+   Instance (iv) instead fires B.80 with `s = {1, 2}`, the table's keys/peel (`hgprod` by
+   `ring_nf`; `hne`: `X ≠ X² + X + 1` in `𝔽₂[X]`), and per-block steps 1–5.
+
+**SIZE.** 150 lines. **SPLIT MANDATED → 4** (`B83a.lean`–`B83d.lean`, one instance and one public
+declaration each; the step-1–5 evaluation kit shared by (i)–(iv) is a private-helper candidate —
+if two files want the same helper, the orchestrator books it, RE-PLAN, never a silent copy).
+
+**SOURCE.** `EFF.W12.29` (the `σ(λ)` instance dictionary B.71 transcribes — rows exercised here:
+`(1,1)`, `(2,1)`, integral + non-integral slope); `EFF.HE3.52` (`HE-SIG`'s stage types at `μ ≤ 3`);
+`leancheck/UniformityCheck/N3CertRam.lean`, `N3CertLinRam.lean`, `N3InertExact.lean`
+(`notes/N3_CHECK_2026-08-13.md` §13 — the hand-cased calibration layer these instances reproduce);
+`blueprint/CONVENTIONS_2026-08-15.md` GC-11 (the gate shape) and BRIEF B-FIN.
+
+**TEETH.** `HE-SIG` (`EFF.HE3.52`) → **Lean theorem** (these firings); `W12-ORACLE`
+(0 bad / 41,923) → **executable regression** retained (PARI recomputes the four σ values
+independently; the gate does not replace the oracle, it anchors it); `W12-SHAPE` decided rows at
+`n ∈ {2,3}` → **Lean theorem** (instances (i)–(iv) are four of its rows).
+
+**ENVIRONMENT.** Concrete: `O := ℤ_[2]`, `π := 2`, no `variable` block; imports the chapter
+roll-up; every ENV-C obligation is discharged by the landed `ℤ_[p]` instances (§0.1's ⚠ is
+satisfied by TC, not by binding).
+
+---
+
+<!-- RESUME: (b) §10 header + B.83 landed. Next: B.84 + B.85, then B.86; then (c) §11 (DAG TSV generation + checker run), §12, §13, §14; then (d) A-F.2. -->
 
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
