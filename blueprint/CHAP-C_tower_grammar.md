@@ -3230,7 +3230,497 @@ WINDOW 35 + ROUNDTRIP 150 + T-UNDERCUT ×2 → retained.
 
 ## 7. §7 — CLASS SIZE AND BLOCK LENGTH (DECISION C-D1 EXECUTED)
 
-<!-- §7 nodes: C.59–C.70 -->
+> **Design note.** This section is DECISION C-D1's cash value. Tier 1 (closure-free
+> theorems): C.59 (the ramified leg), C.60 (the `C-BOX-1` carrier + its vacuity perimeter),
+> C.61 (the per-factor singleton `typeOf` — the sandwich), C.63 (the separable-side
+> assembly = `THEOREM HE6.A`'s display recast). Tier 2 (read form): C.64/C.65
+> (`|S_{λ,r}| = D″·μ₂`, computable from `f`). Tier 3 (gate-(b) cite): C.66 ([cite:FGMN])
+> feeding C.67 (the mixed-side tie `μ₂*(r) = m_r` — `LEMMA GENTOW-6.1`, which CLOSES
+> `GENTOW4-BOX-1`/`HYP.144`, cite-conditionally). C.69 bundles the three tiers as the named
+> supply statement downstream chapters cite; C.70 closes the side-length accounting. §5's
+> C.40 and §6's C.48/C.49 fire after C.59–C.63 (forward refs recorded there). **Nothing in
+> this section mentions a root, an orbit, a resultant over `K̄₀`, or an embedding** — the
+> corpus's `EFF.HE6.14`-family test machinery at fractional heights and the Galois
+> equivariance `EFF.HE6.31` have NO nodes (C-H2).
+
+### NODE C.59 [lemma] [fresh]
+
+**STATEMENT.** *The ramified divisibility leg, closure-free at every parameter.* Let `g` be
+monic irreducible over `O` with `HasLabel L g`-grade side data (one `dv`-side `(u, ℓ)`, the
+x-polygon one-sided of slope `h/e₁` — purity heredity from C.33/C.34's dissections). Then
+`(F.e₁ * L.ℓ) ∣ ramIndexOf g`. Route: the leaf's cleared value semigroup contains the three
+values `dv₂(π) = ℓe₁`, `dv₂(x-datum) = ℓh`, `dv₂(Φ′-datum) = u` (each read through
+`addVal ∘ norm` over `AdjoinRoot g` — C.27's carrier at `C ∈ {π·1, X, F.key}`), and
+`gcd(ℓe₁, ℓh, u) = gcd(ℓ·gcd(e₁,h), u) = gcd(ℓ, u) = 1` (frame + datum coprimalities) — so
+the value group of the leaf contains `1/(e₁ℓ)`-cleared, i.e. `e₁ℓ ∣ e'`. This is B.54/B.57's
+mechanism one level up (landed `norm_adjoinRoot_root`, `norm_algebraMap_rootBasis`,
+`natDegree_dvd_addVal_norm`; the `(e, f)` engine stays polynomial-level per GC-3 — no
+silent identification with the ideal-theoretic pair).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem ramLeg_dvd {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {g : Polynomial O} (hg : g.Monic) (hirr : Irreducible g) (hlab : HasLabel L g)
+    (hx : IsPure Polynomial.X g F.h F.e₁) :
+    (F.e₁ * L.ℓ) ∣ ramIndexOf g
+```
+
+**DEPENDS.** C.27 (`slot2_exact` at the three test elements) · C.29 · B.49–B.54 (the
+level-1 mechanism, consumed as templates and as the `e₁`-leg at the x-polygon) · landed
+`ramIndexOf`, `inertiaDegOf_dvd`, `ramIndexOf_mul_inertiaDegOf`.
+
+**PROOF.**
+1. Value reads: `e₁ℓ·addVal(norm(π)) = deg g·(e₁ℓ)` trivially; for `X` and `F.key`, C.27
+   with `C := X` (`dv2Hgt = ℓh` — the slot formula at the linear coefficient) and
+   `C := F.key` (`dv2Hgt = u` — the label's defining side value).
+2. Landed engine: `inertiaDegOf g` divides each `addVal(norm ·)`-datum's cofactor; Bezout
+   over the three cleared values with `gcd = 1` (frame `hcop` + datum `hcop` + `hκ`) forces
+   the value-group index `e' = ramIndexOf g` to absorb `e₁ℓ` (the divisibility assembles
+   exactly as B.54's proof does with two elements; three here).
+3. `Nat.Coprime` bookkeeping: `gcd(ℓe₁, ℓh) = ℓ` (frame coprimality), `gcd(ℓ, u) = 1`
+   (datum coprimality) — `omega`/`Nat.Coprime` lemmas.
+
+**SIZE.** 40 lines. **Split candidate:** step 1's three reads / step 2's assembly.
+
+**SOURCE.** `EFF.HE6.18`'s conclusion clause (`e = e₁ℓ` — the leg this proves half of);
+`EFF.HE6R1.16`'s sandwich (`e ≥ e₁ℓ`); CHAP-B §0.4 + B.54 (the route, one level down);
+DECISION C-D1 Tier 1.
+
+**TEETH.** the σ instances (`{(4,1),(4,1)}` at `(2,1)`-genre, `{(2,2),(2,2)}` at `(1,2)` —
+`EFF.HE6.20`(3)) → §13 gate rows at both primes.
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.60 [def+lemma] [fresh]
+
+**STATEMENT.** *`C-BOX-1` — the level-2 residue-leg hypothesis, named and fenced.*
+`CBox1Side L g : Prop := (F.f₁ * L.r.natDegree) ∣ inertiaDegOf g` — the residue-direction
+divisibility the sandwich needs, **the exact analogue of CHAP-B's `B-BOX-1` one level up**
+(the corpus proves it by realizing the residual root in the leaf's residue field —
+`EFF.HE6.29`'s root label, a `K̄₀`-side statement with no closure-free proof in this
+chapter). Lemma clauses: (i) **vacuity perimeter:** `CBox1Side L g` holds unconditionally
+when `F.f₁ * L.r.natDegree = 1` (`one_dvd`); (ii) the UPPER bound is unconditional:
+`inertiaDegOf g ∣ F.f₁ * L.r.natDegree * (…)`-family bounds come free from the degree
+identity and C.59 (recorded as a companion, mirroring B.54's upper half); (iii) the repair
+route is B-BOX-1's, inherited: B.56/B.62's spectral-norm layer (multiplicative/ℝ-valued —
+the same named RISK), applied at the iterated leaf. **No node assumes `CBox1Side` silently:
+it is an explicit hypothesis on C.61/C.62/C.63/C.69 and on §5's C.40, and nowhere else.**
+A fleet agent needing it discharged at `f₁·d_r ≥ 2` returns `BLOCKED: C-BOX-1 (B-BOX-1
+analogue; repair route B.56/B.62)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+/-- `C-BOX-1`: the level-2 residue-degree lower bound, carried as an explicit hypothesis
+(DECISION C-D1; the `B-BOX-1` analogue — CHAP-B H-7's shape one level up). -/
+def CBox1Side {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (g : Polynomial O) : Prop :=
+  (F.f₁ * L.r.natDegree) ∣ inertiaDegOf g
+
+theorem cbox1_of_deg_one {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (g : Polynomial O) (h1 : F.f₁ * L.r.natDegree = 1) : CBox1Side L g
+```
+
+**DEPENDS.** C.09 · landed `inertiaDegOf` · B.55/B.56/B.62 (the level-1 box + repair route,
+cited as the inheritance).
+
+**PROOF.** (i) `h1 ▸ one_dvd _`. (ii)/(iii) are records + companions.
+
+**SIZE.** 16 lines.
+
+**SOURCE.** CHAP-B H-7 (`B-BOX-1`, verbatim shape: “stated as an explicit hypothesis on
+B.55/B.58 and not assumed anywhere else”); `EFF.HE6.29` (`HE6-ROOT-LABEL` — the corpus's
+closure-side supplier, NOT transcribed, per C-D1); GC-5's RE-PLAN discipline (if a genre
+schema needs this as a field, that is the FALSIFIER protocol of C-D1, not a silent add).
+
+**TEETH.** signed non-applicability (a named hypothesis; its DISCHARGE evidence is the
+batteries' PARI σ agreement, retained as regressions at §13).
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.61 [theorem] [fresh]
+
+**STATEMENT.** *TIER 1 — the per-factor singleton `typeOf` (the sandwich).* Let `g` be
+monic with `HasLabel L g` at multiplicity `m = 1` (so `deg g = L.keyDeg₂ = (e₁ℓ)(f₁d_r)`,
+via C.26's degree law + C.33's degree clause), over the complete bundle, with
+`hbox : CBox1Side L g'` for every monic irreducible factor `g'` of `g` (each inherits the
+label by C.34's uniqueness). Then
+
+```
+typeOf g = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}⟩
+```
+
+and `g` is irreducible over `O`. Proof shape = CHAP-B §0.4's four lines, one level up (=
+`EFF.HE6R1.16`'s own sandwich): for every `(e', f') ∈ (typeOf g).data`, `e₁ℓ ∣ e'` (C.59)
+and `f₁d_r ∣ f'` (`hbox`), so `e'f' ≥ (e₁ℓ)(f₁d_r) = deg g`; landed `typeOf_degree` says
+`Σ e'f' = deg g` and `efPair_pos_of_mem` bounds each below — a multiset of entries each
+`≥ deg g` summing to `deg g` is the singleton.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem tier1_typeOf {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (ResidueField O)]
+    {g : Polynomial O} (hlab : HasLabel L g) (hm1 : …multiplicity-1 clause…)
+    (hx : IsPure Polynomial.X g F.h F.e₁)
+    (hbox : ∀ g' ∈ monicFactors g, CBox1Side L g') :
+    typeOf g = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}, by …⟩ ∧ Irreducible g
+```
+
+**DEPENDS.** C.10 (`keyDeg₂_regroup`) · C.26 · C.29 · C.33/C.34 (label heredity to factors)
+· C.59 · C.60 · landed `typeOf_degree`, `efPair_pos_of_mem`, `typeOf_mul`,
+`FactorizationType.ext`.
+
+**PROOF.**
+1. Heredity: each monic factor `g'` of `g` is `(u,ℓ)`-pure with `r`-power residual
+   (C.34's B.57-pattern purity-of-factors at the `dv`-carrier — consumed via the RE-PLAN'd
+   `dvResPoly_mul_of_pure` helper) and x-pure (B.57 at the x-key).
+2. Legs: C.59 + `hbox` per factor.
+3. The multiset argument: `typeOf_degree` + `efPair_pos_of_mem` + `Multiset` arithmetic
+   (B.58's step 3, verbatim pattern).
+4. Irreducibility: singleton `typeOf` with full degree ⟹ one monic factor.
+
+**SIZE.** 36 lines.
+
+**SOURCE.** DECISION C-D1 Tier 1; `EFF.HE6R1.16` (the sandwich, audited: “`e ≥ e₁ℓ`,
+`f ≥ f₁d_r`, `ef = D″ = (e₁ℓ)(f₁d_r)` ⟹ equality both ✓ — the same sandwich as HE6's
+THEOREM HE6.A step 4, one level up”); CHAP-B §0.4 + B.58 (the level-1 twin).
+
+**TEETH.** the peel's σ prediction (`{(2,2)}` per peeled factor, 12/12 with 5/5 PARI) and
+`HE6-T-CASEB`-family instances → **executable regressions** retained; §13 fires the
+`(e₁ℓ, f₁d_r)` read at `q = 2` AND `q = 3` with `e > 1 ∧ f > 1` (the `(2,2)` witness IS
+such an instance — GC-11's shape satisfied non-vacuously).
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.62 [theorem] [fresh]
+
+**STATEMENT.** *TIER 1 iterated — the composed-label singleton (supplies C.49's
+dictionary).* Same sandwich one level further: for a factor carrying the composed label
+(tower datum `T`, level-2 side `(u₃, ℓ₃)` with residual `r₂` over `level2Field`, at
+multiplicity 1), with the iterated hypotheses (`CBox1Side` at both levels + the level-3
+ramified leg by C.59's route at the level-2 value data):
+`typeOf g = ⟨{(F.e₁ * T.e₂ * ℓ₃, F.f₁ * T.f₂ * r₂.natDegree)}⟩` and `g` irreducible.
+
+**SIGNATURE** (shape). `theorem tier1_typeOf_composed …` — the hypothesis bundle is a
+structure `ComposedLabel` (private to this file unless E requests it by RE-PLAN; expected:
+E's ladder rungs will — book it).
+
+**DEPENDS.** C.11 · C.12 · C.44/C.45 · C.59 (route, at level-2 data) · C.60 (both levels) ·
+C.61 (the level-2 step) · landed engine as C.61.
+
+**PROOF (route).** The three cleared value reads at level 3 (`π ↦ ℓ₃ℓe₁`-family, the
+level-2 key `Ψ ↦ u₃`, the level-1 key at its transported value); Bezout with the composed
+coprimalities; then the multiset argument at `deg g = (e₁e₂ℓ₃)(f₁f₂·deg r₂)`.
+
+**SIZE.** 36 lines.
+
+**SOURCE.** `EFF.HETOW.23` (the composed dictionary this supplies); DECISION C-D1;
+`EFF.GENTOW5` (the third-stage frame consuming the same shape — §9).
+
+**TEETH.** HETOW's 300/300 μ₂ = 3 PARI leg → retained (C.49's row).
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.63 [theorem] [fresh]
+
+**STATEMENT.** *TIER 1 assembled — the separable-side class-size law (`THEOREM HE6.A`
+recast, C-D1).* With the §5 dissection context (`Squarefree f`, `¬ F.key ∣ f`, complete
+bundle) at a side `(u, ℓ)` whose residual `R := dvResPoly …` is **separable**: `f`'s
+slope-`(u,ℓ)` part factors as `∏_{r ∣ R irreducible monic} f_{λ,r}` with, for every `r`
+(under `CBox1Side` at each factor):
+
+```
+deg f_{λ,r} = D′·ℓ·deg r      and      typeOf f_{λ,r} = ⟨{(e₁ℓ, f₁·deg r)}⟩,
+```
+
+each `f_{λ,r}` irreducible — the factor-form of `|S_{λ,r}| = D′·ℓ·deg r` "at EVERY
+`(ℓ, deg r)` — in particular at `ℓ ≥ 2` with `deg R_λ ≥ 2`, the configuration HE3-BOX-6
+boxed; and each `S_{λ,r}` is the root set of a single monic irreducible factor of `f` over
+`O` with `e = e₁ℓ, f = f₁·deg r`" (`EFF.HE6.18`, verbatim — the root-set clause carried as
+the docstring gloss, the factor clause carried as the theorem).
+
+**SIGNATURE** (shape). `theorem classSize_separable …` returning the finset-indexed
+factorization with the two per-`r` clauses.
+
+**DEPENDS.** C.26 · C.33 · C.34 · C.61 (+ its hypothesis bundle) · B.26/B.27's
+separability API shape (`irreducible_separable` — the residue-field separability toolkit at
+the stage field).
+
+**PROOF.** C.34 with the prime factorization of the separable `R` (all `m_r = 1`); per
+block, C.61; degree bookkeeping via C.26.
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.HE6.18` (THEOREM HE6.A, verbatim display — transcribed at C-D1's recast;
+the corpus proof `EFF.HE6.32` has NO node, per C-H2); `EFF.HE6.19` (the widened corollary
+this slots into, via C.30's trichotomy case (a)).
+
+**TEETH.** HE6's dictionary 60/60 at the ℚ₉/ℚ₂₅ non-prime-`q` bases (`EFF.HE6.54`'s PE4
+fresh leg) → **executable regression** retained (the nearest-to-`f₁ ≥ 2` machine evidence
+in the corpus, recorded at exactly that strength); `HE6-T-CASEB` (separability
+machine-certified SHARP: three σ on identical outer data at a repeated residual) →
+retained — it guards the HYPOTHESIS, which no theorem can.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.64 [theorem] [fresh]
+
+**STATEMENT.** *TIER 2 — the block length in read form.* With §5's block context
+(`¬ Ψ ∣ f_S` for a test key `Ψ`): (i) `(blockFactor L f).natDegree = L.keyDeg₂ * mult₂ L f`
+exactly (C.35's exactness, elevated to the public interface); (ii) **computability from
+`f`**: `mult₂ L f` is determined by `f`'s own level-2 data — the above-seam argmin
+structure of `dv2Supp L Ψ f` — without exhibiting `f_S` (C.37's translation: same argmin
+sets shifted by `c_g`). This is `|S_{λ,r}| = D″·μ₂` "computable from `f`" —
+`LEMMA HE6R1-2(b)`'s deliverable, the READ form (HE7-BOX-4 superseded "in read form" and
+no more — `EFF.HE6R1.21`'s qualification carried verbatim).
+
+**SIGNATURE** (shape). `theorem blockDeg_eq …` + `theorem mult₂_readable …` (two public
+statements, one file).
+
+**DEPENDS.** C.35 · C.36 · C.37 · C.65.
+
+**PROOF.** (i) C.34's degree bookkeeping. (ii) C.65's length sum + C.37's argmin
+preservation.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.HE6R1.13`(b) (verbatim: “`μ₂ = Σ_{λ₂ > T₂} L_{λ₂}(f)` and
+`|S_{λ,r}| = D″·μ₂` are computable from `f`, without exhibiting `f_S`”); `EFF.HE6R1.21`
+(the “in read form” fence).
+
+**TEETH.** the `μ₂ = 2` frame audit + the 12-member degenerate stratum's post-peel reads →
+§13 regression.
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.65 [lemma] [fresh]
+
+**STATEMENT.** *The above-seam length sum.* For the block `f_S` (its level-2 polygon):
+the above-seam sides of `dv2Supp L Ψ f_S` span abscissas `0 … mult₂` exactly, so
+`Σ_{(u₂,ℓ₂) above seam} dv2SideLen = mult₂`; by C.37 the same sum computed on `f` equals
+`mult₂` too. (The level-2 `Σ L_λ = μ` identity — whose level-1 ancestor needed `A₀ ≠ 0`
+(the peel convention); here the `j = 0` level-2 pin is finite exactly because `Ψ ∤ f_S` —
+FINDING HE6R1-F2's repaired hypothesis doing its job.)
+
+**SIGNATURE** (shape). `theorem dv2_length_sum …` (side-enumeration plumbing per C.55's
+`dv2SideSet` helper).
+
+**DEPENDS.** C.11 · C.36 · C.37 · C.38a (the `dv2SideSet` helper) · C.13.
+
+**PROOF.** The `j = 0` pin is finite (`Ψ ∤ f_S` ⟺ the constant Ψ-development coefficient
+is nonzero — B.02/B.05 at the Ψ-key); the top pin `(mult₂, 0)`-cleared from monicity; the
+argmin abscissae partition `0 … mult₂` by the C.08-pattern spacing at level 2.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.HE6R1.13`(b); `EFF.HE6R1.14` (the `dv₂(A₀^{(2)}) = ∞` failure mode when
+`Ψ ∣ f` — the 12 BADTOTAL members — which is exactly the hypothesis's necessity, recorded
+in the docstring).
+
+**TEETH.** the BADTOTAL diagnosis (block sizes did not sum to `deg f` at `Ψ ∣ f`) →
+**executable regression** retained; the repaired-hypothesis path re-fires in §13's peel
+row.
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.66 [cite] [cite:FGMN]
+
+**STATEMENT.** *TIER 3's import — residual multiplicativity at the general order
+([cite:FGMN], gate (b)).* The cited theorem, at the scope Step II of `LEMMA GENTOW-6.1`
+consumes: **for monic `f = g·g'` over `O` with the §5 side data at a common side, the side
+residual of the product is the product of the side residuals up to a fixed `K^×`-scalar**
+— FGMN (Fernández–Guàrdia–Montes–Nart, *Residual ideals of MacLane valuations*,
+arXiv:1305.0775v3) **Thm 2.8 + Cor 4.7(3) + Cor 4.4(4)**, read through GENTOW2's
+tower↔MacLane dictionary and shear (`ψ₂^{FGMN} = R_2(φ₃)`-row faithfulness map). Lean
+carrier: an `axiom`-free import is impossible (it is a literature theorem about MacLane
+valuations); per Part V gate (b) it enters as a **declared, cited axiom** in the
+`AXIOM_FAITHFULNESS` pattern — published-source citation (the layout print at
+`docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt`, numbering verified at
+GENTOW2's ledger), faithfulness entry, fresh-context audit, **Asvin signs per cite**. The
+exact Lean statement is drafted at stub stage against C.25's `dvResPoly` carrier and is
+THE deliverable of this node; nothing fires from it until signed.
+
+**⚠ SCOPE FENCE.** The import is stated at exactly the multiplicativity clause Step II
+consumes — never the full FGMN machinery, never `w`'s closed form (C-H10: `w` is NOT
+computed anywhere in the corpus, and this cite must not smuggle it).
+
+**DEPENDS.** C.25 (the carrier the statement is written against) · GENTOW2's dictionary
+layer (§10: C.97/C.98 — the faithfulness map rows the transport reads through; DAG order
+§10's dictionary nodes before this node's SIGN-OFF, though its statement can be drafted
+first).
+
+**PROOF.** none — axiom import under gate (b).
+
+**SIZE.** statement only (≤ 20 lines + the faithfulness entry in
+`docs/AXIOM_FAITHFULNESS.md`).
+
+**SOURCE.** `EFF.GENTOW6.09` (the cite leg, verbatim conditionality: “the cite carries the
+load … GENTOW2's own arc grade applies upstream”); `EFF.GENTOW2` (the FGMN-cite carrier
+note — the corpus's ONE load-bearing literature cite, `TIGHTNESS_CENSUS` row I-3).
+
+**TEETH.** the repo-side `(MULT)` corroboration leg (displayed as corroboration, NOT the
+load-carrier) → **executable regression** retained; disposition table (§16) carries the
+three stacked conditionalities of `EFF.GENTOW6.09` verbatim.
+
+**ENVIRONMENT.** ENV-C1 (statement-level).
+
+---
+
+### NODE C.67 [theorem] [fresh] (cite-conditional through C.66)
+
+**STATEMENT.** *TIER 3 — the multiplicity tie at every side shape (`LEMMA GENTOW-6.1`;
+closes `GENTOW4-BOX-1` = `HYP.144`, cite-conditionally).* In the §5 context, for EVERY side
+of the level polygon and every monic irreducible `r ∣ R` with multiplicity `m_r`:
+
+```
+deg f_{κ,r} = D′·ℓ·deg(r)·m_r,
+```
+
+the block's own level-1 polygon is the single side of slope `κ` and length `ℓ·deg(r)·m_r`
+with residual EXACTLY `r^{m_r}` (monic, unit-free); consequently at every class with
+`ℓ·deg r ≥ 2` read through the composed key, **`μ₂*(r) = m_r`** — the composed polygon
+length equals the level-1 residual multiplicity, class by class, MIXED sides included.
+Proof = the corpus's three steps: (I) block single-side + pure-power residual (C.33/C.34 +
+the degree clause — the slope-uniqueness argument at the factor, closure-free); (II) the
+cite (C.66); (III) the UFD match `k_r = m_r` in `K[Z]` (scalar-robust: units absorb into
+`γ*`, which is why the tie survives η ≠ 1 exposure).
+
+**SIGNATURE** (shape). `theorem multiplicity_tie …` — hypotheses include C.66's axiom by
+name; the conditionality is IN the axiom dependency, visible to `#print axioms` (the
+honest carrier: a consumer sees `[cite:FGMN]` in the footprint, exactly as the ledger
+wants).
+
+**DEPENDS.** C.26 · C.33 · C.34 · C.35 · C.66 · landed UFD facts for `K[Z]`.
+
+**PROOF (route).** `EFF.GENTOW6.08`–`.10`'s three steps; Step I re-derived at the
+`dv`-carrier (hypothesis inheritance to the divisor checked explicitly, as the corpus
+does); Step III `UniqueFactorizationMonoid` matching.
+
+**SIZE.** 40 lines. **Split candidate:** Step I / Steps II–III.
+
+**SOURCE.** `EFF.GENTOW6.07` (verbatim displays); `.08`/.09/.10 (the steps + the three
+stacked conditionalities); `EFF.GENTOW4.36`-family (`HYP.144`'s box text this closes —
+“a faithful-cite unit in GENTOW2's pattern would retire it — and this note IS that unit,
+unlanded”; the Lean node is the landing).
+
+**TEETH.** the tie “held on each measured class row including μ₂* = 3 and
+transposed-profile rows” → **executable regression** retained + one §13 row per prime.
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.68 [lemma] [fresh]
+
+**STATEMENT.** *Pin equality at side-interior abscissas (GENTOW-4.C's m-i TERMINAL
+citation, supplied here).* In C.37's context, the level-2 pins (not just the support
+values) transport: at on-hull abscissas C.37's translation gives the INEQUALITY
+`dv2Pin L Ψ f j ≥ dv2Pin L Ψ f_S j + c_g`-cleared, with **equality at side-INTERIOR
+abscissas** — the equality leg riding C.38/C.39's residual-scalar display (a unit scalar
+cannot create or destroy an interior pin), exactly the m-i completion: “(b) alone gives an
+INEQUALITY at on-hull points; equality at side-interior abscissas rides (c)”.
+
+**SIGNATURE** (shape). `theorem dv2Pin_translation_interior …`.
+
+**DEPENDS.** C.37 · C.38 · C.39.
+
+**PROOF.** Interior abscissas are argmin-adjacent on both sides; the scalar is a unit
+(C.39), so coefficient (non)vanishing at the read heights matches; the pin equality follows
+from the two one-sided bounds.
+
+**SIZE.** 22 lines.
+
+**SOURCE.** `EFF.GENTOW4.33` (acceptance-fold m-i: the citation completed to (b) AND (c) —
+CHAIN-CG-CITE TERMINAL); `EFF.HE6R1.13`(b)/(c).
+
+**TEETH.** as C.37's. **ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.69 [theorem] [fresh] — **TERMINAL SUPPLY: THE CLASS-SIZE/BLOCK-LENGTH BUNDLE**
+
+**STATEMENT.** *The one statement downstream chapters cite.* Under the §5 standing context,
+for a level datum `L` over `F`:
+(1) **[separable side, per-factor]** `R` separable ⟹ per irreducible `r ∣ R`, one
+irreducible factor of degree `D′ℓ·deg r` with `typeOf = ⟨{(e₁ℓ, f₁·deg r)}⟩` —
+conditional on `CBox1Side` per factor (vacuous at `f₁·deg r = 1`) [C.63];
+(2) **[read form]** `deg f_S = D″·μ₂` with `μ₂` computable from `f` [C.64/C.65];
+(3) **[mixed-side tie]** `deg f_{κ,r} = D′ℓ·deg(r)·m_r` and `μ₂*(r) = m_r` —
+cite-conditional on [cite:FGMN] [C.67].
+Stated as one bundled theorem (a conjunction re-exporting the three, hypotheses displayed
+separately per clause) so that CHAP-B H-2's consumers, chapter E's `EFF.HE6.30`/`.32` pin
+anchors ([F1] resolution: they resolve HERE), chapter D's T1 battery check 10, and
+chapter F's faces have ONE name to cite, with the conditionality readable off the
+hypothesis list and the axiom footprint.
+
+**SIGNATURE** (shape). `theorem classSize_supply …` (the bundle; the three clauses may be
+`And`-packed or a small structure — stub-stage choice; the NAME is the contract).
+
+**DEPENDS.** C.63 · C.64 · C.65 · C.67.
+
+**PROOF.** re-export. **SIZE.** 20 lines.
+
+**SOURCE.** DECISION C-D1 (the supply mandate); BRIEF C trap (i) (“downstream consumers
+were told to get it from chapter C” — this is where they get it); BRIEF E trap (i)/[F1]
+(the `.30`/`.32` anchors resolve to a chapter-C node — this one).
+
+**TEETH.** re-exports carry their suppliers' teeth; §13's gate row fires clause (1) at
+both primes with `e > 1 ∧ f > 1`.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.70 [lemma] [fresh]
+
+**STATEMENT.** *Side-length accounting (`n_λ = D′L_λ` closed, factor form).* In the §5
+context at a side `(u, ℓ)` with residual `R = ∏ r^{m_r}`:
+`Σ_r ℓ·deg(r)·m_r = ℓ·deg R = dvSideLen` and hence
+`Σ_r deg f_{κ,r} = D′·dvSideLen` — the `(SEP)`-free per-side degree conservation
+(LEMMA HE6-3(b)'s consumed content, supplied to C.31(iv) and to the §11 count layer).
+
+**SIGNATURE** (shape). `theorem side_degree_conservation …`.
+
+**DEPENDS.** C.08 · C.26 · C.33 · C.67 (mixed sides) or C.63 (separable) — stated once via
+C.67's general form.
+
+**PROOF.** degree additivity of `dvResPoly` on the block product (the RE-PLAN'd
+`dvResPoly_mul_of_pure`) + C.08's length law + `Polynomial.natDegree` arithmetic on
+`∏ r^{m_r}`.
+
+**SIZE.** 18 lines.
+
+**SOURCE.** `EFF.HE6R1.10` (the consumed `n_λ = D′L_λ`, “(SEP)-free”); `EFF.HE6R1.12` (the
+slack display `D′ℓΣ_r(m_r−1)d_r` — which this node's conservation + C.67's tie together
+close, the gap HE6R1-2 was invented for).
+
+**TEETH.** the census reconciliations (`EFF.HE6R1.25`: block sizes sum to `deg f`, 932/944
+with the 12 explained) → regression retained.
+
+**ENVIRONMENT.** ENV-C2.
+
+---
 
 ---
 
@@ -3294,7 +3784,7 @@ WINDOW 35 + ROUNDTRIP 150 + T-UNDERCUT ×2 → retained.
 
 ---
 
-<!-- RESUME: §3–§6 COMPLETE (C.01–C.58). Forward refs in-node: C.13→C.21; C.27→C.29/C.33/C.34; C.31→C.33/C.35; C.40→C.60/C.61; C.49→C.61/C.62; C.56→C.85 (§9). RE-PLAN bookings: dvResPoly_mul_of_pure (B.35 twin); dv2ResPoly + dv2SideSet cluster (C.38/C.55 → helper node C.38a); complementConst/γg/pinHeight (C.36/C.39); stageLiftO GenreDatum packaging (C.14/C.43 — merge). AMENDMENT owed to committed C-H3 wording (see prior note; record in A-§ block at close). Next: §7 (C.59–C.70, DECISION C-D1 executed): C.59 divisibility leg e₁ℓ∣e′ (rank-form/Quarry route, B.57-pattern at dv-carrier); C.60 CBox1Side (the C-BOX-1 hypothesis carrier, B-BOX-1 analogue, + its d_r=1/f₁d_r=1 vacuity lemma); C.61 Tier-1 singleton typeOf (the sandwich); C.62 iterated/composed version; C.63 deg blockFactor = D″·m_r at separable side; C.64 Tier-2 read-form count |S|=D″μ₂ from f (via C.37); C.65 μ₂ = Σ L_{λ₂} count; C.66 [cite:FGMN] Tier-3 mixed-side tie (gate-b, GENTOW-6.1's route + GENTOW2's faithful-cite pattern — read EFF-GENTOW6 .19-.21 + EFF-GENTOW2 FGMN units first); C.67 GENTOW-4.C pin equality (HE6R1-2(b)+(c) — read EFF-GENTOW4 .33); C.68-C.70: class-size supply nodes for E/D (named terminal supply; incl. the HE6.A-consumers' statement at exactly EFF.HE6.18's display recast). Then §8 (GENTOW3+GENTOW6+GENTOW4, C.71–C.82). -->
+<!-- RESUME: §3–§7 COMPLETE (C.01–C.70). Forward refs in-node: C.13→C.21; C.27→C.29/C.33/C.34; C.31→C.33/C.35; C.40→C.60/C.61; C.49→C.61/C.62; C.56→C.85 (§9); C.66's sign-off waits on §10's dictionary nodes (C.97/C.98). RE-PLAN bookings: dvResPoly_mul_of_pure (B.35 twin); dv2ResPoly + dv2SideSet cluster (→ C.38a); complementConst/γg/pinHeight; stageLiftO packaging (C.14/C.43 merge); ComposedLabel structure (C.62 — E may request). A-§ deltas owed at close: (1) C-H3 wording (test keys ARE constructed; immunity = no fractional-height ELEMENT, no base change); (2) §7 supply = C.61+C.63 pair + C.69 bundle (index names C.61/C.64/C.66). Next: §8 (C.71–C.82, shadow-read + caps): read EFF-GENTOW3 math units (.06-.10 area: THEOREM GENTOW-3 (i)-(iv) at S8.1/S8.2/S8.4 TERMINALs, COR GENTOW-3.C, x-free criterion CHAIN-XFREE terminal) + EFF-GENTOW4 (.15-.35: GENTOW-4.1 four clauses, 4.A five clauses incl. TOWERRAT2-C monic signature n>μ₂D₂, 4.2 pure-power tie, boxes .36-.39) + GENTOW6 remaining (6.2/6.2C budget half C.tbd, 6.3 f₁=1 pin + ANNEX-6.3′, 6.4 cap lemma, 6.5 BOX-1 closure + iff WITHDRAWN). Then §9 (GENTOW5 third stage + thresholds + [cite:AGNPRW]). -->
 
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
