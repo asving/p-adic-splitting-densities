@@ -4854,3 +4854,35 @@ flight** (§A-9.1): G.44a's ram index set is `Finset.range (N / 2)`,
 not the signed `Finset.range ((N + 1) / 2)`, which is false at every
 odd `N` — machine-checked at `O := ℤ_[2]`, `N = 1`. Census, teeth
 tally and residue list: blueprint §A-9.3.
+
+**2026-08-15 DATED APPEND #59 — `n = 3` DRAINAGE IS UNCONDITIONAL
+(Lean, `leancheck`); THE QB UNIT CLOSES; BP-B §8; three in-flight
+increments checkpointed after a context reset.** (1) THE HEADLINE:
+unit N3C's Lean leg landed (b00b0505) — `drainage_three : ∀ σ,
+UndecidedVanishes O 3 σ` over EVERY complete DVR with finite residue
+field, wild characteristics included, via the uniform-precision
+recursion `s(M+3) ≤ q⁻²·s(M)` (constant q⁻², not the sharp q⁻⁵ —
+drainage only needs < 1). Hence `genuineDensity = decidedDensity` at
+`n = 3` (`genuineDensity_three_eq_decidedDensity`) and N3Tie re-states
+the q=2/q=3 brackets WITHOUT `genuineDensity_three_le`'s `+1/q²`
+slack. Seven modules, build green 8,713 jobs, in-file `#print axioms`
+gates all Lean-core. The math is §13 of N3_CHECK_2026-08-13.md
+(committed same hash), numerically cross-checked by n3_family_check.py
+PART 4 (9f8027af). IN FLIGHT, deliberately uncommitted: N3InertExact +
+N3InertLower (17 sorries, unwired) — the exact inert value
+`q³(q+1)/(3(q⁴+q³+q²+q+1))` per §13.5's mixed-precision route; the
+MBox counting infrastructure it needs IS landed (N3MBox). (2) QB unit
+CLOSED: note placeholders filled from the committed results
+(6d9732cc). Standing record: target 2 (FLT henselian/étale cluster)
+is BLOCKED BY COST (~330 adaptation lines + 4 from-scratch lemmas vs
+the ~200 budget; cheap path = after a mathlib bump past FLT's pin);
+its cross-repo finding — `lean/`'s `AX_integralClosure_dvr` is the
+live axiom that shortlist #2 would RETIRE — stands. HYP.01
+[CORE-SET]: closed on the monogenic-maximal locus + the inert rung
+unconditional (f5a76a40); >>> owner fresh-eyes audit of the note's
+three caveats still OWED <<<. (3) BP-B §8 committed (ce6a3225,
+B.63–B.74, typeOf transport); §9 (B.75–B.82, level-N decidedness) is
+next for the composer. (4) Process: the orchestrator session was
+/clear'd ~05:17; all three units' uncommitted work sat 2h and is now
+checkpointed (survival discipline). Fable-max-serial regime (#57)
+unchanged; sol-pro 5.6 still awaited (#56).
