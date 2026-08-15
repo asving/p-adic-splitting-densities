@@ -1538,7 +1538,13 @@ namespace Uniformity.Density.Leaf
 theorem digPoly_coeff (hπ : Irreducible π) (k i : ℕ) (a : Polynomial O) :
     (digPoly π k a).coeff i = digAt π k (a.coeff i)
 
-theorem degree_digPoly_le (k : ℕ) (a : Polynomial O) : (digPoly π k a).degree ≤ a.degree
+-- [repaired: A-F.5] `(hπ : Irreducible π)` added. The unhypothesized form was conditionally
+-- REFUTED (amendment A-F.5): over ENV-A it is EQUIVALENT to `∀ π k, digAt π k (0 : O) = 0`,
+-- which is independent at our pin (B.21's `digAt` reads an `Exists.choose` witness of
+-- `π ^ k ∣ 0`, unconstrained when `π ^ k = 0`). `hπ` gives `π ^ k ≠ 0`, which suffices; this
+-- was the one clause of the four that dropped ENV-A′'s `hπ` convention.
+theorem degree_digPoly_le (hπ : Irreducible π) (k : ℕ) (a : Polynomial O) :
+    (digPoly π k a).degree ≤ a.degree
 
 theorem digPoly_eq_map (hπ : Irreducible π) {k : ℕ} {a b : Polynomial O}
     (h : a = Polynomial.C (π ^ k) * b) : digPoly π k a = b.map (IsLocalRing.residue O)
@@ -1572,7 +1578,9 @@ theorem digPoly_eq_zero_iff (hπ : Irreducible π) {k : ℕ} {a : Polynomial O}
 **TEETH.** `W12-SHAPE` → **Lean theorem** (the "digit at the polygon height is nonzero at a vertex"
 half of `EFF.W12.23`'s membership law).
 
-**ENVIRONMENT.** ENV-A'.
+**ENVIRONMENT.** ENV-A'. *[repaired: A-F.5 — `degree_digPoly_le` re-signed with
+`(hπ : Irreducible π)`; the other three clauses already carried it, and the STATEMENT prose
+always scoped all four under `hπ`. Refuted original + refutation record at amendment A-F.5.]*
 
 ---
 
@@ -2249,6 +2257,8 @@ theorem resMk_ne_zero (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ
 2. (←): `map_zero`.
 3. `resMk_eq_zero_iff`: `resMk π φ k a = AdjoinRoot.mk φ̄ (digPoly π k a)` by definition, and
    `(digPoly π k a).degree ≤ a.degree < φ.degree = m` by B.24's `degree_digPoly_le`; apply step 1.
+   (`degree_digPoly_le` takes `(hπ : Irreducible π)` since A-F.5 — supplied by this clause's own
+   `hπ`, already in the signature; call-site free, SIGNATURE byte-unchanged. [repaired: A-F.5])
 4. `resMk_ne_zero`: by step 3 it suffices that `digPoly π k a ≠ 0`, which is B.24's
    `digPoly_eq_zero_iff` — its hypothesis `(k : ℕ∞) ≤ gaussVal a` is `hk` with `le_refl`, and its
    conclusion `(k+1 : ℕ∞) ≤ gaussVal a = (k : ℕ∞)` is false.
@@ -5944,6 +5954,63 @@ next TSV audit — only the `resField`/`resPoly` family is repaired here.
 
 **Stub-file consequence** (executed in this round's companion `LSPEC-B` commit): the B.47
 `axiom` in `leanspec/Leanspec/ChapB.lean` now carries `(hψ : ψ.Monic)` with an `A-F.4`
+comment; the file rebuilds green. Per §12 rule 5 the stub is not the versioning record —
+THIS block is.
+
+---
+
+**A-F.5 — B.24b's SIGNED SIGNATURE CONDITIONALLY REFUTED AND RE-SIGNED (`hπ : Irreducible π`
+added) (2026-08-15).** Authority: standing statement-change authority (2026-08-05),
+honest-repair class; refuted original preserved verbatim per the G.23a / §A-H.1-D4 precedent
+(as at A-F.4). Two items.
+
+**(I) The refutation and the repair.** B.24's STATEMENT prose opens "For `hπ : Irreducible π`
+and `a ∈ O[X]`" — all four clauses are scoped under `hπ` — and the node's ENVIRONMENT is
+ENV-A′, whose convention (§0.1) is that **every signature naming `π` carries
+`(hπ : Irreducible π)`**. The signed SIGNATURE honoured this on three of the four clauses;
+`degree_digPoly_le` (B.24b in the §12 stub numbering) was the one that dropped it. The refuted
+original, verbatim:
+
+```lean
+theorem degree_digPoly_le (k : ℕ) (a : Polynomial O) : (digPoly π k a).degree ≤ a.degree
+```
+
+The refuting unit established three things:
+
+* **The equivalence.** Over ENV-A (which binds a *bare* `{π : O}` — including `π = 0`) the
+  unhypothesized clause is EQUIVALENT to `∀ π k, digAt π k (0 : O) = 0`. At `a = 0` we have
+  `a.degree = ⊥` while `digPoly π k 0 = C (digAt π k 0)` (B.23's sum over `range 1`), so the
+  degree bound at `a = 0` says exactly `digAt π k 0 = 0`; conversely, for `a ≠ 0` the bound
+  holds unconditionally (`a.degree = (a.natDegree : WithBot ℕ)` and B.23's sum never exceeds
+  `natDegree a`), so the `a = 0` case is the statement's entire content beyond ENV-A.
+* **The choose-unit conditional refutation.** B.21's
+  `digAt π k x = if h : π ^ k ∣ x then residue O h.choose else 0` reads an `Exists.choose`
+  witness. At `x = 0` the branch always fires (`π ^ k ∣ 0`), and when `π ^ k = 0` (e.g.
+  `π = 0`, `k = 1`) the witness equation `0 = π ^ k * w` holds for EVERY `w` — the
+  `Exists.choose` on `0 ∣ 0` is unconstrained by the axioms. So `digAt π k 0 = 0` is
+  **independent**: unprovable, and FALSE under any interpretation of the choice that returns
+  a unit witness for `0 ∣ 0` (then `residue O (choose) ≠ 0`). Hence the unhypothesized
+  B.24b is not a theorem.
+* **The `π ^ k ≠ 0` sufficiency.** In the domain `O`, `π ^ k ≠ 0` pins the witness:
+  `0 = π ^ k * w` forces `w = 0`, so `digAt π k 0 = residue O 0 = 0` and the bound follows.
+  `hπ` gives `π ≠ 0`, hence `π ^ k ≠ 0` — and with `hπ` added the refuting unit verified
+  that **all four B.24 clauses are proved**.
+
+The repair taken — the smallest faithful one: add `(hπ : Irreducible π)`, i.e. restore the
+ENV-A′ convention and the hypothesis the STATEMENT prose already carried. (In fact `π ^ k ≠ 0`
+alone would suffice, per the third bullet — but ENV-A′'s uniform `hπ` is what every consumer
+already holds, and a bespoke weaker hypothesis would fragment the interface.) Note that B.24's
+PROOF step 2 always consumed `hπ` implicitly: it routes through step 1's `digAt π k 0 = 0`,
+which is B.22's `digAt_eq` at `y = 0` — an `hπ`-carrying clause. B.24's node text is repaired
+in place with `[repaired: A-F.5]` tags; STATEMENT, DEPENDS and PROOF are byte-unchanged.
+
+**(II) Consumer audit.** `degree_digPoly_le`'s sole consumer chapter-wide (grep-verified:
+the name occurs only at B.24 and at B.36's PROOF step 3) is **B.36** (`resMk_eq_zero_iff`):
+its SIGNATURE is **byte-unchanged** and already binds `(hπ : Irreducible π)` as its first
+argument, so the new hypothesis is free at the call site. Step-3 note added in place.
+
+**Stub-file consequence** (executed in this round's companion `LSPEC-B` commit): the B.24b
+`axiom` in `leanspec/Leanspec/ChapB.lean` now carries `(hπ : Irreducible π)` with an `A-F.5`
 comment; the file rebuilds green. Per §12 rule 5 the stub is not the versioning record —
 THIS block is.
 
