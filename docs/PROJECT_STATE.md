@@ -4920,7 +4920,60 @@ watchdog cron ran during the campaign (torn down at close). OWED
 (carried): codex cross-read of chapter G (Tue); Asvin's fresh-eyes
 on HYP.01's caveats (#59); D-§9.1 repair; BP-B §10.
 
-**2026-08-15 DATED APPEND #61 — THE BLUEPRINT-COMPLETION CAMPAIGN
+**2026-08-15 DATED APPEND #62 (out of order, written after #61's
+campaign ran) — THE BLUEPRINT STAGE IS COMPLETE (all 8 chapters);
+THE TRANSCRIPTION FLEET IS LIVE (70 nodes in Lean, 0 blocked-
+unexplained); TWO MORE FALSE STATEMENTS CAUGHT PRE-PROOF.**
+(1) BLUEPRINTS: all eight chapters composed and committed —
+G 91 (closed), H 99, B 86 (+B.63a/B.66a suppliers), E 68 (242 units
+disposed), C 127 (SCC-repaired, acyclicity machine-verified after
+its composer's own layering script was found buggy), D 68 (the ϑ
+four-way orientation table at anchor D-THETA-TABLE), F 30 (567
+units disposed; WELD-ZERO honestly fenced at 1/2), I 25 (ALL 154
+ledger rows disposed, none dropped). CHAPTER I'S TWO SURFACES,
+the owner's entire review load per the #61 ruling: the gate-(b)
+CITE queue = THREE nodes (C.94 AGNPRW Thm 5.2 / C.66 FGMN residual
+multiplicativity / C.92 FGMN chain battery, possibly subsuming
+C.66; Kuhlmann conditional re-entry only; publisher-numbering
+audit scheduled pre-signing) and the OPEN-MATH surface = 36 rows
+(n=3 frontier incl. the hrate₃ bridge; the count layer CS-1/2/
+EXACT/1Q + A0/A1 per degree; LB1/MP1; deep-twist ∀i≥3; the two
+weld conjuncts; window pinning; GENHN-HE/TOW-1; the n≥8 boxes;
+and GENIND.B's inductive step itself — no chapter claims it).
+Ownership gaps found by I: [GENHN-HE(μ=3)] at n=6,7 has NO
+transcription owner; the window-pinning supplier (EFF.GENHN.29)
+only partially transcribed in H. (2) STUB GATES (the leanspec 0e
+machinery, both landed + wired green): CHAP-B 139 decls, 16
+defects (repaired, A-F.3; B.65's multiplicity reading PROVED
+equivalent, 4 legs); CHAP-H 188/190 decls, 8 defects incl. H.72
+rate_lossPriced REFUTED (29,418 counterexamples; repair CANDIDATE
+A independently re-derived term-for-term from (C2Q.1) — the
+committed display had re-doubled 5 of 7 terms) and H.89 REFUTED at
+(0,0) (repaired, A-H.1). (3) FLEET (opus, per-node commits,
+signatures frozen, BLOCKED-not-weakened): ChapH 61/99 landed
+across waves 1/2/2b (37+19+5, zero blocked); ChapB 9/86 (wave 1:
+9/10 + B.47 BLOCKED — its signature MACHINE-REFUTED by the fleet
+agent itself, nilpotent witness in 𝔽₂[y]/(y²); the signature
+omitted the monicity its own prose asserts; repair A-F.4 in
+flight). Layer closes: full builds green (8,721 → 8,755 jobs),
+strict axiom sweeps ALL-CORE across every fleet file. In flight
+at this append: H wave 3 (17 nodes), B wave 2 (8), the B.47
+repair. (4) PROCESS: the DAG TSVs under-approximate stmt-deps
+that flow through abbrevs (resField burned the wave scheduler) —
+fleet charges now carry a landed-def pre-check returning
+BLOCKED-RESCHEDULE; dag_check.py does not yet read the
+DAG_BLUEPRINT_*.tsv files (extension owed); the 529 storm
+watchdog cron served through the composer phase and is retired.
+FIVE false/unsatisfiable statements have now been caught by
+gates-before-proofs today (G.44a's precedent, B-D5's near-miss,
+H.72, H.89, B.47) — the stub-gate + refute-first fleet discipline
+is the project's highest-value invention this week. OWED to
+Asvin, consolidated: gate-(a) = the capstone statement he has
+already seen plus WELD-ZERO's eventual removal decision; gate-(b)
+= the three-node cite package (assembled after C.92-vs-C.66
+consolidation). OWED elsewhere: codex cross-reads of ALL EIGHT
+chapters (Tue window); leanspec stubs for E/C/D/F/I; the late-
+binding L-1..L-3 rows at D/F freeze; the n=3 rate unit (O-5).** — THE BLUEPRINT-COMPLETION CAMPAIGN
 FIRES (conventions czar → adversarial gate → parallel authors), AND
 THE OWNER NARROWS SIGN-OFF TO TWO GATES.** (1) OWNER RULING (Asvin,
 recorded verbatim in CONVENTIONS_2026-08-15.md PART V, which now
