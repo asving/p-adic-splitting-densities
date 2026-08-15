@@ -750,6 +750,376 @@ def run_part3(fails):
                 fails.append(f"part3-triple-stratum p={p} N={N}")
 
 # --------------------------------------------------------------------------------------
+# PART 4 -- unit N3C: the four-case split, the recursion, and the exact inert value
+#
+# This is the numeric leg for N3_CHECK_2026-08-13.md sections 13.1-13.5.  Setting: O = Z_p,
+# q = p, Phi = q^4+q^3+q^2+q+1.  B = (B0,B1,B2) is the RECENTRED coefficient vector of
+# X^3 + B2 X^2 + B1 X + B0 with every Bi = 0 mod p (i.e. B = shiftVec a gamma lands in m^3,
+# which by 13.1 is exactly the triple-root stratum).  Valuations are capped at the working
+# precision (val_cap), so "v = K" means "v >= K, exact value unknown".
+#
+# Section 13.1's CORRECTED four-case split of the triple-root stratum, with its verdicts:
+#
+#     E : v(B0) = 1                    -> R  = {(3,1)}          Eisenstein
+#     L : v(B0) >= 2, v(B1) = 1        -> LR = {(1,1),(2,1)}    strong Hensel at x0 = pi t
+#     R : v(B0) = 2,  v(B1) >= 2       -> R  = {(3,1)}          no root + coprime norms
+#     S : v(B0) >= 3, v(B1) >= 2       -> recurse on X = pi Y   typeOf_scale
+#
+# The correction to section 9.4 is the v(B1) refinement inside v(B0) = 2: at v(B1) = 1 the type
+# is LR, NOT R (witness X^3 + pX + p^2, which has a root of valuation 1).  Checks 4b/4c test
+# exactly that on real classes; 4d tests the level bookkeeping of the extraction (HYP.08);
+# 4e sandwiches the claimed exact inert density q^3(q+1)/(3Phi) between certified-decided and
+# decided+undecided; 4f tests the recursion (*) and its sharp form.
+#
+# All pass/fail decisions use exact Fraction arithmetic; floats are for display only.
+# --------------------------------------------------------------------------------------
+
+def R_inert(q):
+    """The claimed exact inert density of section 13.5: q^3(q+1) / (3 Phi)."""
+    Phi = q**4 + q**3 + q**2 + q + 1
+    return Fraction(q**3 * (q + 1), 3 * Phi)
+
+_PART2_MEMO = {}
+
+def part2_counts_cached(p, N):
+    """part2_counts(p, N) memoised (PARTS 2 and 4 ask for the same (p,N) several times)."""
+    if (p, N) not in _PART2_MEMO:
+        _PART2_MEMO[(p, N)] = part2_counts(p, N)
+    return _PART2_MEMO[(p, N)]
+
+def case_of(B0, B1, B2, p, K):
+    """Section 13.1's four-case label of a recentred vector, from B mod p^K.  K >= 3.
+
+    Returns (label, list of the four case booleans).  Every condition only has to separate
+    v(B0) in {1, 2, >=3} and v(B1) in {1, >=2}, all of which are readable at cap K >= 3.
+    """
+    assert K >= 3, "the four-case split is a mod-p^3 condition; K >= 3 required"
+    a = val_cap(B0, p, K)[0]
+    b = val_cap(B1, p, K)[0]
+    d = val_cap(B2, p, K)[0]
+    assert a >= 1 and b >= 1 and d >= 1, "case_of wants a RECENTRED vector (all Bi in m)"
+    flags = [a == 1, a >= 2 and b == 1, a == 2 and b >= 2, a >= 3 and b >= 2]
+    labels = [lab for lab, f in zip('ELRS', flags) if f]
+    return (labels[0] if len(labels) == 1 else None), flags
+
+def check4a(fails):
+    """4a -- section 13.5's fixed point: ((q^3-q)/(3q^3)) / (1 - q^-5) = q^3(q+1)/(3 Phi)."""
+    print()
+    print("=" * 94)
+    print("PART 4 -- unit N3C: the four-case split, the recursion, and the exact inert value")
+    print("=" * 94)
+    print("\n  CHECK 4a -- the geometric fixed point I = (q^3-q)/(3q^3) + q^-5 I  (section 13.5)")
+    print(f"  {'q':>3} {'LHS = level-1 mass / (1 - q^-5)':>34} {'RHS = q^3(q+1)/(3Phi)':>24} "
+          f"{'decimal':>10}  verdict")
+    for q in (2, 3, 5, 7, 11, 13):
+        lhs = Fraction(q**3 - q, 3 * q**3) / (1 - Fraction(1, q**5))
+        rhs = R_inert(q)
+        ok = (lhs == rhs)
+        if not ok:
+            fails.append(f"4a q={q}: fixed point {lhs} != closed form {rhs}  <<<")
+        # the same value must be the corpus R_I already used by PARTS 1-2
+        corpus = predicted(q)['I']
+        ok2 = (rhs == corpus)
+        if not ok2:
+            fails.append(f"4a q={q}: closed form {rhs} != corpus predicted()['I'] {corpus}  <<<")
+        print(f"  {q:>3} {str(lhs):>34} {str(rhs):>24} {float(rhs):>10.6f}  "
+              f"{'OK' if ok and ok2 else 'MISMATCH <<<'}"
+              + ("" if ok2 else f"  corpus R_I = {corpus}"))
+    for q, want in ((2, Fraction(8, 31)), (3, Fraction(36, 121))):
+        got = R_inert(q)
+        ok = (got == want and got == predicted(q)['I'])
+        if not ok:
+            fails.append(f"4a q={q}: R_I = {got}, expected {want} (= corpus {predicted(q)['I']})")
+        print(f"  q = {q}: R_I = {got} = {float(got):.6f}   HMENU3/corpus value {want}   "
+              f"{'OK' if ok else 'MISMATCH <<<'}")
+
+def part4_case_scan(p, K):
+    """Enumerate every recentred B mod p^K (all Bi = 0 mod p) and test 13.1's split.
+
+    Returns a dict with the four case counts, the exhaustive/disjoint violations, the type
+    verdicts per case, and the 13.1 refinement data inside v(B0) = 2 (check 4c).
+    """
+    want = {'E': 'R', 'L': 'LR', 'R': 'R'}          # section 13.1's verdicts (S recurses)
+    res = {
+        'counts': {c: 0 for c in 'ELRS'},
+        'notone': [],                                # vectors in 0 or >= 2 cases
+        'wrong': {c: [] for c in 'ELR'},             # certified type != predicted type
+        'undec': {c: [] for c in 'ELR'},             # certifier returned None (a FAILURE)
+        'refine': {'b1': 0, 'b2': 0},                # inside v(B0)=2: v(B1)=1 / v(B1)>=2
+        'refine_wrong': {'b1': [], 'b2': []},
+        'refine_undec': {'b1': [], 'b2': []},
+    }
+    step = p
+    pk = p ** K
+    for B0 in range(0, pk, step):
+        a = val_cap(B0, p, K)[0]
+        for B1 in range(0, pk, step):
+            b = val_cap(B1, p, K)[0]
+            for B2 in range(0, pk, step):
+                lab, flags = case_of(B0, B1, B2, p, K)
+                if lab is None:
+                    res['notone'].append(((B0, B1, B2), flags))
+                    continue
+                res['counts'][lab] += 1
+                if lab == 'S':
+                    continue
+                t = certify_type(B0, B1, B2, p, K)
+                if t is None:
+                    res['undec'][lab].append((B0, B1, B2))
+                elif t != want[lab]:
+                    res['wrong'][lab].append(((B0, B1, B2), t, want[lab]))
+                if a == 2:                            # section 13.1's corrected refinement
+                    key = 'b1' if b == 1 else 'b2'
+                    exp = 'LR' if key == 'b1' else 'R'
+                    res['refine'][key] += 1
+                    if t is None:
+                        res['refine_undec'][key].append((B0, B1, B2))
+                    elif t != exp:
+                        res['refine_wrong'][key].append(((B0, B1, B2), t, exp))
+    return res
+
+def check4b4c(fails, plan):
+    """4b -- the split is exhaustive + disjoint and E/L/R have the predicted types.
+       4c -- the section-13.1 correction: inside v(B0) = 2, v(B1) decides LR vs R."""
+    print("\n  CHECK 4b -- the four-case split of the recentred (triple-root) stratum")
+    print("           enumerating ALL (B0,B1,B2) mod p^K with B0=B1=B2=0 mod p")
+    print(f"  {'p':>2} {'K':>2} {'vectors':>9} {'E':>8} {'L':>8} {'R':>8} {'S':>8}   "
+          f"exactly-one-case   E,L,R types (R,LR,R)")
+    scans = {}
+    for p, K in plan:
+        res = part4_case_scan(p, K)
+        scans[(p, K)] = res
+        tot = sum(res['counts'].values()) + len(res['notone'])
+        box = (p ** (K - 1)) ** 3
+        if tot != box or res['notone']:
+            fails.append(f"4b p={p} K={K}: split not exhaustive/disjoint; "
+                         f"{len(res['notone'])} bad vectors, e.g. {res['notone'][:3]}")
+        nwrong = sum(len(v) for v in res['wrong'].values())
+        nundec = sum(len(v) for v in res['undec'].values())
+        for c in 'ELR':
+            if res['wrong'][c]:
+                fails.append(f"4b p={p} K={K} case {c}: {len(res['wrong'][c])} vectors have the "
+                             f"WRONG certified type, e.g. {res['wrong'][c][:3]}  <<<")
+            if res['undec'][c]:
+                fails.append(f"4b p={p} K={K} case {c}: {len(res['undec'][c])} vectors UNDECIDED "
+                             f"by the sound certifier although the Lean certificate decides them, "
+                             f"e.g. {res['undec'][c][:3]}  <<< HUMAN LOOK")
+            if res['counts'][c] == 0:
+                fails.append(f"4b p={p} K={K}: case {c} is EMPTY (nothing was tested)")
+        print(f"  {p:>2} {K:>2} {box:>9} " +
+              " ".join(f"{res['counts'][c]:>8}" for c in 'ELRS') +
+              f"   {'OK' if not res['notone'] and tot == box else 'VIOLATIONS <<<':<18}"
+              f" {'all OK' if nwrong == 0 and nundec == 0 else f'{nwrong} wrong, {nundec} undecided <<<'}")
+        if nundec:
+            print(f"      *** {nundec} case-E/L/R vectors were left UNDECIDED by the sound "
+                  f"certifier at p={p}, K={K}.")
+            print(f"      *** Section 13.1 says E, L, R are level-3 DECIDEDNESS certificates, so "
+                  f"this needs a human.")
+
+    print("\n  CHECK 4c -- section 13.1's correction to section 9.4: inside v(B0) = 2, split on v(B1)")
+    print("           9.4 read the whole v(B0)=2 stratum as R = {(3,1)}; 13.1 says v(B1) = 1 gives "
+          "LR = {(1,1),(2,1)}")
+    print(f"  {'p':>2} {'K':>2} {'v(B0)=2,v(B1)=1':>16} {'-> all LR?':>11} "
+          f"{'v(B0)=2,v(B1)>=2':>17} {'-> all R?':>10}   both non-empty")
+    for p, K in plan:
+        res = scans[(p, K)]
+        n1, n2 = res['refine']['b1'], res['refine']['b2']
+        bad1 = res['refine_wrong']['b1'] + res['refine_undec']['b1']
+        bad2 = res['refine_wrong']['b2'] + res['refine_undec']['b2']
+        if bad1:
+            fails.append(f"4c p={p} K={K}: v(B0)=2, v(B1)=1 is not uniformly LR: "
+                         f"{len(bad1)} offenders, e.g. {bad1[:3]}  <<<")
+        if bad2:
+            fails.append(f"4c p={p} K={K}: v(B0)=2, v(B1)>=2 is not uniformly R: "
+                         f"{len(bad2)} offenders, e.g. {bad2[:3]}  <<<")
+        if n1 == 0 or n2 == 0:
+            fails.append(f"4c p={p} K={K}: a sub-stratum of v(B0)=2 is EMPTY (n1={n1}, n2={n2})")
+        print(f"  {p:>2} {K:>2} {n1:>16} {'yes' if not bad1 else 'NO <<<':>11} "
+              f"{n2:>17} {'yes' if not bad2 else 'NO <<<':>10}   "
+              f"{'yes' if n1 and n2 else 'NO <<<'}")
+
+    # the explicit section-13.1 witness X^3 + pX + p^2, i.e. B = (p^2, p, 0)
+    Kw = 6
+    print(f"\n  CHECK 4c(ii) -- the witness F = X^3 + pX + p^2  (B = (p^2, p, 0)), at K = {Kw}")
+    print(f"  {'p':>2} {'certified type':>15} {'13.1 claim':>11} {'roots x with p|x, F(x)=0 mod p^K':>36} "
+          f"{'v(x)':>5} {'v(F(x))':>8} {'v(F1(x))':>9}  verdict")
+    for p, _K in plan:
+        B = (p * p, p, 0)
+        t = certify_type(B[0], B[1], B[2], p, Kw)
+        mod = p ** Kw
+        roots = [x for x in range(0, mod, p)
+                 if (x**3 + p * x + p * p) % mod == 0]
+        # independent leg: a root of valuation EXACTLY 1 mod p^Kw, with v(F') = 1, so
+        # v(F(x)) >= Kw > 2 = 2 v(F'(x)) and strong Hensel lifts it to a genuine root of O.
+        good = []
+        for x in roots:
+            vx = val_cap(x, p, Kw)[0]
+            vF = val_cap((x**3 + p * x + p * p) % mod, p, Kw)[0]
+            vF1 = val_cap((3 * x * x + p) % mod, p, Kw)[0]
+            if vx == 1 and vF1 == 1 and vF > 2 * vF1:
+                good.append((x, vx, vF, vF1))
+        ok = (t == 'LR') and bool(good)
+        if t != 'LR':
+            fails.append(f"4c(ii) p={p}: witness X^3+pX+p^2 certified {t}, section 13.1 claims LR  <<<")
+        if not good:
+            fails.append(f"4c(ii) p={p}: witness X^3+pX+p^2 has NO Hensel-liftable root of "
+                         f"valuation 1 mod p^{Kw} (roots found: {roots})  <<<")
+        show = good[0] if good else (None, None, None, None)
+        print(f"  {p:>2} {str(t):>15} {'LR':>11} {str(roots):>36} "
+              f"{str(show[1]):>5} {str(show[2]):>8} {str(show[3]):>9}  {'OK' if ok else 'FAIL <<<'}")
+        print(f"      all {len(roots)} root(s) have valuation exactly 1: "
+              f"{all(val_cap(x, p, Kw)[0] == 1 for x in roots)}; "
+              f"strong Hensel applies (v(F) >= {Kw} > 2 = 2 v(F')) -> a genuine root of valuation 1, "
+              f"so the type contains (1,1) and cannot be {{(3,1)}}")
+
+def check4d(fails, plan):
+    """4d -- typeOf_scale + section 13.3: the extraction X = pi Y preserves the type, and the
+    level bookkeeping is the WEAKEST of the three coordinate precisions, K-3."""
+    print("\n  CHECK 4d -- case S: the extraction d = (B0/p^3, B1/p^2, B2/p) preserves the type")
+    print("           d0 is known mod p^(K-3), d1 mod p^(K-2), d2 mod p^(K-1); section 13.3 uses "
+          "the WEAKEST, K-3")
+    print(f"  {'p':>2} {'K':>2} {'case-S vectors':>14} {'compared':>9} {'agreed':>7} "
+          f"{'B undec':>8} {'d undec':>8} {'both undec':>11}  verdict")
+    for p, K in plan:
+        M = K - 3
+        assert M >= 1
+        pk, pm = p ** K, p ** M
+        n = agreed = bundec = dundec = bothundec = compared = 0
+        bad = []
+        for B0 in range(0, pk, p**3):
+            for B1 in range(0, pk, p**2):
+                for B2 in range(0, pk, p):
+                    n += 1
+                    tB = certify_type(B0, B1, B2, p, K)
+                    d = ((B0 // p**3) % pm, (B1 // p**2) % pm, (B2 // p) % pm)
+                    td = certify_type(d[0], d[1], d[2], p, M)
+                    if tB is None and td is None:
+                        bothundec += 1
+                    elif tB is None:
+                        bundec += 1
+                    elif td is None:
+                        dundec += 1
+                    else:
+                        compared += 1
+                        if tB == td:
+                            agreed += 1
+                        else:
+                            bad.append(((B0, B1, B2), tB, d, td))
+        if bad:
+            fails.append(f"4d p={p} K={K}: {len(bad)} case-S vectors where typeOf(B) != "
+                         f"typeOf(extraction) although BOTH are certified, e.g. {bad[:3]}  <<<")
+        print(f"  {p:>2} {K:>2} {n:>14} {compared:>9} {agreed:>7} {bundec:>8} {dundec:>8} "
+              f"{bothundec:>11}  {'OK' if not bad else str(len(bad)) + ' CONTRADICTIONS <<<'}")
+
+def check4e(fails, plan):
+    """4e -- the exact inert density of section 13.5, sandwiched by brute force."""
+    print("\n  CHECK 4e -- the claimed exact inert density R_I = q^3(q+1)/(3Phi), sandwiched")
+    print("           D = classes certified {(1,3)}; U = classes the sound certifier leaves "
+          "undecided; box = p^(3N)")
+    print("           soundness gives  D/box <= genuineDensity <= (D+U)/box  (a class decided "
+          "as another type cannot be inert)")
+    print(f"  {'p':>2} {'N':>2} {'box':>9} {'D':>9} {'U':>7} {'D/box':>9} {'R_I':>9} "
+          f"{'(D+U)/box':>10} {'width':>9}  {'sandwich':<9} lower-end gain")
+    lowprev = {}
+    for p, N in plan:
+        counts, undec, _ = part2_counts_cached(p, N)
+        box = p ** (3 * N)
+        D, U = counts['I'], undec
+        lo, hi, RI = Fraction(D, box), Fraction(D + U, box), R_inert(p)
+        inside = (lo <= RI <= hi)
+        if not inside:
+            fails.append(f"4e p={p} N={N}: R_I = {RI} OUTSIDE the certified sandwich "
+                         f"[{lo}, {hi}]  <<< the section-13.5 value is refuted")
+        gain = '-'
+        if p in lowprev:
+            prevN, prevlo = lowprev[p]
+            if lo < prevlo:
+                fails.append(f"4e p={p}: certified inert fraction DECREASED from N={prevN} "
+                             f"({prevlo}) to N={N} ({lo}) -- decided sets must be nested  <<<")
+            gain = ('+' + str(float(lo - prevlo)) if lo > prevlo
+                    else 'flat (no new inert class certified)')
+        lowprev[p] = (N, lo)
+        print(f"  {p:>2} {N:>2} {box:>9} {D:>9} {U:>7} {float(lo):>9.6f} {float(RI):>9.6f} "
+              f"{float(hi):>10.6f} {float(hi - lo):>9.6f}  "
+              f"{'inside' if inside else 'OUTSIDE <<<':<9} {gain}")
+    print("      NOTE the pass/fail test on the lower end is MONOTONICITY (non-decreasing), which "
+          "is all the")
+    print("      mathematics gives: decided sets are nested under refinement, so the certified "
+          "fraction cannot")
+    print("      fall, but it may be FLAT at a level that certifies no new inert class (p=2, "
+          "N=4->5->6 is flat).")
+
+def check4f(fails, plan):
+    """4f -- the recursion (*) of section 13.4, and its sharp (section 13.5) form."""
+    print("\n  CHECK 4f -- the recursion (*): tripleUndecidedSeq(N) <= q^-2 undecidedSeq(N-3)")
+    print("           T = level-N classes left undecided whose residue cubic is a perfect cube "
+          "(X-g)^3 mod p")
+    print("           U3 = ALL undecided classes at level N-3.  (*) <=> T <= p^7 U3;  sharp "
+          "(q^-5, section 13.5) <=> T <= p^4 U3")
+    # tie T's definition to PART 3's cube_coeff: the 'trpl' residue branch IS the cubeCoeff image
+    for p in (2, 3, 5, 7):
+        bad = 0
+        for c2 in range(p):
+            for c1 in range(p):
+                for c0 in range(p):
+                    is_cube = any(cube_coeff(g, p) == (c0, c1, c2) for g in range(p))
+                    if is_cube != (residue_branch(c0, c1, c2, p) == 'trpl'):
+                        bad += 1
+        if bad:
+            fails.append(f"4f p={p}: residue_branch=='trpl' differs from the cube_coeff image on "
+                         f"{bad} residue vectors (so T is counting the wrong stratum)")
+        print(f"  cube_coeff cross-check p={p:2d}: residue_branch=='trpl' <=> residue is "
+              f"(X-g)^3 for some g: {'OK' if not bad else 'MISMATCH <<<'}")
+    print(f"  {'p':>2} {'N':>2} {'T':>8} {'U3 (N-3)':>9} {'p^7 U3':>10} {'(*)':>5} "
+          f"{'p^4 U3':>9} {'sharp':>6}   {'T/p^(3N)':>11} {'p^-2 U3/p^(3N-9)':>17}  ratio T/(p^4 U3)")
+    sharp_all = True
+    for p, N in plan:
+        if N < 4:
+            continue
+        _, _, ub = part2_counts_cached(p, N)
+        _, U3, _ = part2_counts_cached(p, N - 3)
+        T = ub['trpl']
+        b7, b4 = p**7 * U3, p**4 * U3
+        ok7, ok4 = (T <= b7), (T <= b4)
+        if not ok7:
+            fails.append(f"4f p={p} N={N}: T = {T} > p^7 U3 = {b7} -- the Lean lemma "
+                         f"card_undecidedTriple_le is CONTRADICTED  <<<")
+        sharp_all = sharp_all and ok4
+        lhs = Fraction(T, p ** (3 * N))
+        rhs = Fraction(U3, p**2 * p ** (3 * (N - 3)))
+        # the density form of (*) and the count form must be the SAME statement
+        if (lhs <= rhs) != ok7:
+            fails.append(f"4f p={p} N={N}: density form of (*) ({lhs} <= {rhs}) disagrees with the "
+                         f"count form (T <= p^7 U3)  <<< bookkeeping bug")
+        ratio = '-' if b4 == 0 else str(Fraction(T, b4))
+        print(f"  {p:>2} {N:>2} {T:>8} {U3:>9} {b7:>10} {'OK' if ok7 else 'FAIL':>5} "
+              f"{b4:>9} {'OK' if ok4 else 'FAIL':>6}   {float(lhs):>11.8f} {float(rhs):>17.8f}  "
+              f"{ratio}")
+    print(f"      SHARP form T <= p^4 U3 (the q^-5 constant section 13.5 needs for the exact "
+          f"value): {'HOLDS on all rows' if sharp_all else 'FAILS on some row'}")
+    print("      (reported, not asserted: 13.4 lands only the weaker q^-2 = p^7 U3 form, which is "
+          "what the fails list tests)")
+
+def run_part4(fails):
+    import time
+    t0 = time.time()
+    # parameters: 4b/4c scan all p^(3(K-1)) recentred vectors mod p^K, so p=5 K=4 is the
+    # expensive row (5^9 = 1953125 vectors, ~35 s).  4d needs K-3 >= 1 with K as large as
+    # affordable.  4e/4f reuse PART 2's counts (memoised, no recomputation).
+    plan_bc = [(2, 4), (3, 4), (5, 4)]
+    plan_d = [(2, 6), (3, 5)]
+    plan_ef = [(2, 4), (2, 5), (2, 6), (3, 3), (3, 4)]
+    check4a(fails)
+    print(f"\n  PARAMETERS -- 4b/4c: (p,K) = {plan_bc};  4c(ii) witness at K = 6;  "
+          f"4d: (p,K) = {plan_d};")
+    print(f"                4e/4f: (p,N) = {plan_ef} (reusing PART 2's certified counts).")
+    check4b4c(fails, plan_bc)
+    check4d(fails, plan_d)
+    check4e(fails, plan_ef)
+    check4f(fails, plan_ef)
+    print(f"\n  PART 4 elapsed: {time.time() - t0:.1f} s")
+
+# --------------------------------------------------------------------------------------
 
 def main():
     fails = []
@@ -759,6 +1129,7 @@ def main():
     run_part2(fails, plan)
     run_part2_validation(fails)
     run_part3(fails)
+    run_part4(fails)
     print()
     print("=" * 94)
     if fails:
