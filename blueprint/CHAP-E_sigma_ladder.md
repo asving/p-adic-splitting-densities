@@ -679,7 +679,8 @@ deliberately at `f₁ ≥ 2, d_r ≥ 2`) → **Lean theorem** for the implicatio
 `s₀ < ℓ`, `ℓ*m₀ + s₀*u = k`, `R.nextT < k` (the use-site condition `k > T₂ = ℓd_r·u`), and
 `t < g`: writing `m_t := m₀ − t*u`, one has `ℓ * (D.T) * ... ` — precisely, in cleared form:
 `ℓ * m_t > u` and hence (with the node condition `ℓ*T < u`, `T = D′h` here) `m_t > T`, giving
-`m_t ≥ T + 1`, i.e. margin `m_t − (D′−1)h > h` when `T = D′h`. This is `EFF.HE7.25`'s displayed
+`m_t ≥ T + 1`, i.e. margin `m_t − (D′−1)h > h` when `T = D′h`. (The two clauses of the SIGNATURE
+are the cleared forms of `m_t > λ` and `m_t > T`.) This is `EFF.HE7.25`'s displayed
 chain, the unit that makes the HE6-1L coset correction NON-PROPAGATING at every HE7 use site
 (honesty E-1's HE7 residual is about OTHER HE6 spans; this margin check is transcribed math, not
 an adjudication).
@@ -719,6 +720,369 @@ exercised wherever (LIFT₂) fires (Q3's frames) → **Lean theorem**.
 
 ---
 
-<!-- RESUME: §3 complete (E.01–E.09). Next: §4 (E.10–E.24, the HE7.A suite). -->
+## 4. §4 — THE MASTER HE7.A SUITE (carrier structures, the five clause families, the instances)
 
-*(sections §4–§14 follow; composed incrementally, committed per 2–3 nodes)*
+> **Design note.** T2's THEOREM HE7.A (`EFF.T2.31`) is stated over a "σ-ladder carrier" whose
+> hypothesis suite `EFF.T2.39` enumerates: *"The theorem assumes the explicit quantitative
+> consequences `(ACCOUNT)`, `(RES-DEG)`, nonemptiness, exhaustion, and root-preserving
+> continuation. These are source obligations, not conclusions obtained merely by naming a
+> carrier."* Chapter E transcribes that architecture literally: the carrier is a structure whose
+> hypothesis fields are exactly those five families plus the slot/lift/cocycle laws of S1.2–S1.4
+> (E.10) and the block data of S1.5–S1.7 (E.11–E.12); the master's clauses are then theorems FROM
+> the fields (E.14–E.21). Per `EFF.T2.43`/`.44` (the formal-gate fence, binding on every
+> signature of this section): **"Any later HE7 formalization that requires irreducibility of the
+> current key is not a formalization of this theorem"** — no structure below carries, and no node
+> below may add, an irreducibility hypothesis on `Φ`; residual LABELS and emitted boundary
+> factors may be irreducible.
+
+**DECISION D-E1 (carrier heights are `WithTop ℤ`).** `EFF.T2.05` declares `h(A) ∈ 𝐙` with
+`h(0) = +∞`; negative heights are real at raw normalizers (`EFF.HE7.05`'s `ϖ = x^{i₀}π^{a₀}`,
+`a₀` possibly `< 0`). E's abstract carrier heights are therefore `WithTop ℤ`. This does NOT
+touch GC-2's `ℕ∞` ruling for chapter C's level-`r` polygon heights: the reconciliation of E's
+carrier `hgt` with B's `npHgt` (level 1) and C's level-`r` instances is exactly C's GC-2
+reconciliation lemma, consumed here as `EFF.HE6R1.18 [supplied-by: chapter C]`. Flagged to the
+conventions czar per GC-2's flag rule; no simp-bridge is declared E-side.
+
+**DECISION D-E2 (the residual factorization enters by its numerical shadow).** E's interface
+carries, per side, the multiset of `(deg r′, multiplicity)` pairs plus, for linear factors, the
+root `s ∈ K` — never the residual polynomial itself. Licence: the master's own consumption is
+through roots and degrees (`EFF.HE7.96`(a): the proofs "consume `r` through its roots and
+degree"; the σ output needs `deg r′` only, `EFF.T2.31`(2)); the residual POLYNOMIAL layer is
+CHAP-B's at level 1 (B.28–B.30, `e₁ = 1` slice) and chapter C's above (GC-13 placeholders,
+honesty E-2). A fleet agent finding a §4 consumer that provably needs the polynomial residual
+returns RE-PLAN, never widens a structure silently (GC-5).
+
+### NODE E.10 [def] [fresh]
+
+**STATEMENT.** *The slot carrier (S1.2–S1.4 as fields).* Over the standing bundle `O` and a
+finite field `K` (the carrier's label field), a **slot carrier** consists of: the key-degree
+bound `D` with `(DEG-EF)` `D = e_𝒞 * f_𝒞` as a field (`EFF.T2.04` — "explicitly not inferred
+from monicity"); the height function `hgt : Polynomial O → WithTop ℤ` and digit function
+`dig : Polynomial O → K` (the ξ-INDEPENDENT data of `(SLOT-V)`/`(SLOT-R)`, `EFF.T2.05` — see
+FAITHFULNESS); the full-height predicate `Full : ℤ → Prop` with the lift law `(LIFT)`/`(OCC)`
+(`EFF.T2.09`: lifts exist AT FULL HEIGHTS ONLY — "There is no all-height lift hypothesis");
+the ultrametric laws for `hgt` (`EFF.T2.04` r12: `d` is a valuation); digit additivity at a
+fixed height (the residue-additivity law `EFF.HE7.96`(c) consumes); and nonvanishing of `dig`
+on nonzero sub-`D` polynomials at their own height.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- A **σ-ladder slot carrier** (T2 S1.2–S1.4, `EFF.T2.04`–`.10`): the ξ-independent
+height/digit data with the ultrametric, lift, and additivity laws as fields. -/
+structure SlotCarrier (O : Type*) [CommRing O] (K : Type*) [Field K] where
+  /-- The current key degree `D > 0`. -/
+  D : ℕ
+  hD : 0 < D
+  /-- Carrier invariants with `(DEG-EF)`: `D = e_𝒞 f_𝒞` (a hypothesis, never inferred). -/
+  eC : ℕ
+  fC : ℕ
+  hef : D = eC * fC
+  heC : 1 ≤ eC
+  hfC : 1 ≤ fC
+  /-- `h(A)`: the exact slot height (`SLOT-V`'s ξ-independent value); `h(0) = ⊤`. -/
+  hgt : Polynomial O → WithTop ℤ
+  /-- `dig(A)`: the exact slot digit (`SLOT-R`'s ξ-independent value); `dig 0 = 0`. -/
+  dig : Polynomial O → K
+  hgt_zero : hgt 0 = ⊤
+  dig_zero : dig 0 = 0
+  /-- nonzero sub-`D` polynomials have finite height and nonzero digit (`EFF.T2.05`). -/
+  hgt_ne_top : ∀ A : Polynomial O, A ≠ 0 → A.natDegree < D → hgt A ≠ ⊤
+  dig_ne_zero : ∀ A : Polynomial O, A ≠ 0 → A.natDegree < D → dig A ≠ 0
+  /-- the ultrametric laws (`EFF.T2.04`, r12's valuation disclosure). -/
+  hgt_add_ge : ∀ A B, min (hgt A) (hgt B) ≤ hgt (A + B)
+  hgt_add_eq : ∀ A B, hgt A ≠ hgt B → hgt (A + B) = min (hgt A) (hgt B)
+  /-- digit additivity at a shared height (residues at a fixed height are additive —
+  `EFF.HE7.96`(c)'s mechanism). -/
+  dig_add : ∀ A B : Polynomial O, ∀ k : ℤ,
+      hgt A = (k : WithTop ℤ) → hgt B = (k : WithTop ℤ) → dig A + dig B ≠ 0 →
+      hgt (A + B) = (k : WithTop ℤ) ∧ dig (A + B) = dig A + dig B
+  /-- the full heights (`OCC`'s finite-domain obligation is the instances'). -/
+  Full : ℤ → Prop
+  /-- `(LIFT)`: at a full height every nonzero digit is realised (`EFF.T2.09`). -/
+  hlift : ∀ k : ℤ, Full k → ∀ c : K, c ≠ 0 →
+      ∃ A : Polynomial O, A ≠ 0 ∧ A.natDegree < D ∧
+        hgt A = (k : WithTop ℤ) ∧ dig A = c
+```
+
+**⚠ FAITHFULNESS (the ξ-quantifier is deliberately absent — flag for the cross-read).**
+`EFF.T2.05` states `(SLOT-V)`/`(SLOT-R)` as evaluation laws at every `ξ ∈ Pt ⊆ K̄₀`. No
+algebraic closure exists in `leanfinal` (GC-7; `docs/VENDOR_QUARRY_MAP_2026-08-15.md` four-way
+absence), so E's schema carries the ξ-INDEPENDENT height/digit pair — which is exactly what the
+laws assert exists — and pushes every root-side consequence into E.12's five clause-family
+fields, where the corpus itself carries them as source obligations (`EFF.T2.39`). At instances,
+`hgt`/`dig` are B's `digAt`-layer reads (B.21) on the `e₁ = 1` slice and chapter C's normalizer
+reads above (GC-13). The evaluation laws themselves are therefore INSTANCE obligations, exactly
+as in the corpus, and are never stated E-side.
+
+**DEPENDS.** none (landed `Polynomial` API only).
+
+**PROOF.** definitional. **SIZE.** 45 lines. **SPLIT CANDIDATE:** if elaboration is heavy, land
+the ultrametric-law pair as a mixin structure `HgtLaws` in `E10a`.
+
+**SOURCE.** `EFF.T2.04` (`(FINITE-RES)`, `(DEG-EF)`, the r12 valuation disclosure); `EFF.T2.05`
+(`(SLOT-V)`/`(SLOT-R)`, `h(0) = +∞, dig(0) = 0`); `EFF.T2.09` (`(LIFT)`/`(OCC)`); `EFF.T2.10`
+(fullness criteria — instances of `Full`, not fields).
+
+**TEETH.** S7 sub-threshold/pass-2 refusal (`EFF.T2.09`: the battery attacks all-height lifts)
+→ the `Full`-gated `hlift` field makes the refusal structural: an all-height lift is not
+expressible against this interface.
+
+**ENVIRONMENT.** ENV-E2 + `variable {K : Type*} [Field K] [Finite K]` (the `[Finite K]` is
+required only by §7's dictionary counts; keep it OUT of this structure — minimal binding,
+GC-6.4).
+
+---
+
+### NODE E.11 [def] [fresh]
+
+**STATEMENT.** *The block data (S1.5–S1.6 as fields) and the ladder support value.* Over a slot
+carrier `C`: a **σ-block** consists of the monic key `Φ` (degree `D`, `Monic` — irreducibility
+NEVER assumed, `(NO-IRR)`), the polynomial `F` with its `Φ`-development `(DEV)`
+`F = Φ^μ + Σ_{j<μ} A_j Φ^j` (`deg A_j < D`), key-freeness `(KEY-FREE)` (`gcd_{K₀[x]}(F,Φ) = 1`,
+carried in the O-level form `IsCoprime` after clearing — see the ⚠ note), the inherited
+threshold `T`, and the development height function `devHgt j := hgt (A j)` (with `devHgt μ = 0`
+for the monic top). The **ladder support value** is the cleared D-1-shape support function on
+`devHgt`:
+`ladderSuppVal devHgt u ℓ μ = inf_{j ≤ μ} (ℓ • devHgt j + (j * u : ℤ))` — an `inf` of
+`ℤ`-linear forms, with `onLadderSide` its argmin predicate. Sides/slopes/lengths are derived
+predicates on the argmin set, exactly D-1/GC-2's representation one abstraction level up; no
+polygon type is declared.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- The cleared support value of a ladder development (D-1's shape on abstract heights):
+`inf over j ≤ μ of (ℓ·hgt j + j·u)`. -/
+noncomputable def ladderSuppVal (hgt : ℕ → WithTop ℤ) (u ℓ μ : ℕ) : WithTop ℤ :=
+  (Finset.range (μ + 1)).inf fun j => ℓ • hgt j + ((j * u : ℕ) : WithTop ℤ)
+
+/-- Abscissa `j` lies on the `(u, ℓ)`-side of the ladder polygon. -/
+def onLadderSide (hgt : ℕ → WithTop ℤ) (u ℓ μ : ℕ) (j : ℕ) : Prop :=
+  j ≤ μ ∧ ℓ • hgt j + ((j * u : ℕ) : WithTop ℤ) = ladderSuppVal hgt u ℓ μ
+
+/-- A **σ-block** over a slot carrier (T2 S1.5–S1.6). -/
+structure BlockData {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) where
+  Φ : Polynomial O
+  F : Polynomial O
+  μ : ℕ
+  hμ : 1 ≤ μ
+  hΦ : Φ.Monic
+  hΦdeg : Φ.natDegree = C.D
+  /-- the development coefficients; `A j = 0` for `j ≥ μ` by convention. -/
+  A : ℕ → Polynomial O
+  hdev : F = Φ ^ μ + ∑ j ∈ Finset.range μ, A j * Φ ^ j          -- (DEV)
+  hdegA : ∀ j < μ, (A j).natDegree < C.D
+  /-- `(KEY-FREE)`, in its two consumed shadows: the O-level coprimality and its
+  polygon consequence `A 0 ≠ 0`. -/
+  hkeyfree : IsCoprime (F.map (algebraMap O (FractionRing O)))
+      (Φ.map (algebraMap O (FractionRing O)))
+  hA0 : A 0 ≠ 0
+  /-- the inherited threshold. -/
+  T : ℕ
+
+/-- The block's development heights: `devHgt j = hgt (A j)` for `j < μ`, `0` at the
+monic top `j = μ`, `⊤` above. -/
+noncomputable def BlockData.devHgt {O : Type*} [CommRing O] {K : Type*} [Field K]
+    {C : SlotCarrier O K} (B : BlockData C) : ℕ → WithTop ℤ :=
+  fun j => if j = B.μ then (0 : WithTop ℤ) else if j < B.μ then C.hgt (B.A j) else ⊤
+```
+
+**⚠ KEY-FREENESS SPELLING.** `EFF.T2.11`'s `(KEY-FREE)` is `gcd_{K₀[x]}(F, Φ) = 1`. The
+signed spelling is `IsCoprime` over `FractionRing O` (mathlib-native, gcd-free); `hA0` is its
+consumed polygon shadow (`EFF.T2.11`'s own derivation: "(KEY-FREE) implies A₀ ≠ 0"), carried
+separately so E.13 does not re-derive field theory. If the stub stage finds `FractionRing`
+elaboration heavy here, the fallback is `hkeyfree : ∀ g : Polynomial O, g ∣ F → g ∣ Φ →
+IsUnit (g.map (algebraMap O (FractionRing O)))` — a DECISION at the stub, flagged, never silent.
+
+**⚠ WINDOW/CAP.** `(WINDOW)` (`T < d(Φ(ρ)) < ∞`) and the `WindowSafe`/`CapSafe` proxy
+assertions (`EFF.T2.11`) are ROOT-side and enter as E.12 continuation fields, not here. The
+corpus's own words: proxy agreement "not inferred merely from the phrase 'arising from a
+label'".
+
+**DEPENDS.** E.10 · mathlib `IsCoprime`, `FractionRing`, `Finset.inf`.
+
+**PROOF.** definitional. **SIZE.** 45 lines. **SPLIT CANDIDATE:** `ladderSuppVal`/`onLadderSide`
+as `E11a` (they are consumed independently by §5).
+
+**SOURCE.** `EFF.T2.11` (`(DEV)`, `(KEY-FREE)`, `(WINDOW)`, the proxy fence); `EFF.T2.02`
+(`(NO-IRR)`: "Φ is monic; irreducibility is not assumed" — boxed, REDLINE); `EFF.HE7.09`
+(the standing `Ψ ∤ f_S` convention is the `hA0`-analogue one level up: "equivalently the
+Ψ-development's constant coefficient `A₀^{(2)} ≠ 0`"); CHAP-B D-1/GC-2 (the support-function
+representation this reuses in shape).
+
+**TEETH.** S7 reducible-key boundary gate (`EFF.T2.02`) → structural: no irreducibility field
+exists to consume. S7 Pass 2 dangerous-collected-term tooth (`EFF.T2.11`) → the proxy fence is
+an instance obligation (C-side), recorded in §13.
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+### NODE E.12 [def] [fresh]
+
+**STATEMENT.** *The rung interface: the five clause families as fields (the `StageInterface`
+lesson at the ladder).* Over a slot carrier `C` and block `B`: the **rung interface** carries
+the side/residual numerical data and the five HE7.A hypothesis families at exactly corpus
+strength (`EFF.T2.39`):
+1. `sides : Finset (ℕ × ℕ)` — the slopes `(u_λ, ℓ_λ)` in lowest terms (coprime, `ℓ ≥ 1`), each
+   with length `len : ℕ × ℕ → ℕ`, satisfying the side laws: every side is an `onLadderSide`
+   argmin class of `B.devHgt` above the threshold (`λ > T` in cleared form
+   `ℓ_λ * T < u_λ`), and `hlen_sum : Σ len = μ` (`(HULL-LENGTH)` — supplied, since its
+   derivation is polygon geometry owned below E; see the ⚠ note);
+2. per side, the residual shadow (D-E2): `linFac : (ℕ × ℕ) → Multiset (K × ℕ)` (linear factors:
+   root `s ∈ K`, multiplicity) and `hiFac : (ℕ × ℕ) → Multiset (ℕ × ℕ)` (higher factors:
+   degree ≥ 2 pairs `(deg, mult)` — or `ℓ_λ ≥ 2` factors of any degree), with
+   `(RES-DEG)`: `ℓ_λ * (Σ deg·mult over both) = len λ` (`EFF.T2.12`'s
+   `e′ Σ m_{λ,r′} deg r′ = L_λ`);
+3. `(ACCOUNT)` as the sampled count law the derivation actually consumes (`EFF.T2.29`'s
+   reading): `rootCount : (ℕ × ℕ) → ℕ` (the number `n_λ` of roots at slope `λ`) with the field
+   `haccount : ∀ λ ∈ sides, rootCount λ = C.D * len λ` — **see the ⚠ DECISION note: E carries
+   (ACCOUNT) at its consumed jump form `(SIDE-COUNT)`, with the integral form recorded as the
+   instances' derivation obligation**;
+4. `hnonempty`: every residual factor's class is nonempty (`classCount` per factor `≥ 1` — in
+   the numerical shadow: `rootCount` distributes over factors with each part
+   `≥ C.D * ℓ_λ * deg`);
+5. `hexhaust`: the classes are disjoint and exhaust (`Σ over factors of classCount = rootCount`);
+6. root-preserving continuation: `(RISE)` and `(SEC-RANK)` as fields — a well-founded rank
+   `σRank` into a type `W` with `[WellFoundedRelation W]` strictly decreasing at every
+   product-1 linear recentering (`EFF.T2.26`: "an instance that cannot supply it does not
+   instantiate HE7.A"; NOT an open obligation — "every listed instance supplies it").
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- The **rung interface**: T2's carrier hypothesis suite as fields (`EFF.T2.39`'s five
+quantitative families + the side/residual numerical shadow). σ-valued outputs NEVER live
+here (GC-4: they exit through §7's dictionary). -/
+structure RungInterface {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) (B : BlockData C) where
+  sides : Finset (ℕ × ℕ)
+  hside_cop : ∀ p ∈ sides, Nat.Coprime p.1 p.2 ∧ 1 ≤ p.2
+  hside_node : ∀ p ∈ sides, p.2 * B.T < p.1                     -- λ > T (clause 1 half)
+  len : ℕ × ℕ → ℕ
+  hlen_pos : ∀ p ∈ sides, 1 ≤ len p
+  hlen_sum : ∑ p ∈ sides, len p = B.μ                           -- (HULL-LENGTH)
+  linFac : ℕ × ℕ → Multiset (K × ℕ)                             -- (root s, mult m)
+  hiFac : ℕ × ℕ → Multiset (ℕ × ℕ)                              -- (deg ≥ 2 …, mult)
+  hresdeg : ∀ p ∈ sides,                                        -- (RES-DEG)
+      p.2 * ((linFac p).map Prod.snd |>.sum
+        + ((hiFac p).map fun q => q.1 * q.2).sum) = len p
+  rootCount : ℕ × ℕ → ℕ
+  haccount : ∀ p ∈ sides, rootCount p = C.D * len p             -- (SIDE-COUNT) form
+  classCount : ℕ × ℕ → K × ℕ → ℕ                                -- per linear factor
+  classCountHi : ℕ × ℕ → ℕ × ℕ → ℕ                              -- per higher factor
+  hnonempty : ∀ p ∈ sides, (∀ q ∈ linFac p, 1 ≤ classCount p q) ∧
+      (∀ q ∈ hiFac p, 1 ≤ classCountHi p q)                     -- nonemptiness
+  hforce : ∀ p ∈ sides, (∀ q ∈ linFac p, C.D * p.2 ≤ classCount p q) ∧
+      (∀ q ∈ hiFac p, C.D * p.2 * q.1 ≤ classCountHi p q)       -- local forcing
+  hexhaust : ∀ p ∈ sides,                                       -- exhaustion
+      ((linFac p).map (classCount p)).sum
+        + ((hiFac p).map (classCountHi p)).sum = rootCount p
+  /-- root-preserving continuation: the `(SEC-RANK)` carrier (`EFF.T2.26`). -/
+  W : Type*
+  wf : WellFoundedRelation W
+  σRank : W                                                     -- the state's rank
+```
+
+**⚠ DECISION D-E3 ((ACCOUNT) is carried at its consumed jump form).** `EFF.T2.16`'s integral
+`(ACCOUNT)` (`Σ_ρ min(w_ρ, κ) = D Σ_λ L_λ min(λ, κ)` for `κ > T`) is consumed by the master
+ONLY through its two jump consequences `(SIDE-COUNT)` `n_λ = D·L_λ` and `(DEG-SUM)`
+(`EFF.T2.29`: "Comparing the jumps of the two piecewise-linear sides at λ yields
+`(SIDE-COUNT)`"). E's field `haccount` carries `(SIDE-COUNT)` directly; the κ-sampled integral
+identity and its jump derivation are the INSTANCES' obligation (level 1: HE6-ACCOUNT via B/C;
+level 2: `EFF.HE7.41`'s `(†₂-count)` + HE6-3's sampling, both C placeholders), recorded per
+instance at E.22/E.23. Rationale: the sampling/elimination derivation quantifies over rational
+κ in gaps (`EFF.HE7.41`), which under GC-2's no-ℚ rule would force a cleared two-variable
+sampling layer E does not own and no E-theorem consumes — the fields E.14–E.16 need exactly
+`(SIDE-COUNT)`. **Flagged for the cross-read** (§14): this is the chapter's largest
+transcription-strength call. The original integral display is quoted in full at E.22's
+instance-obligation list so no strength is silently lost.
+
+**⚠ `(RISE)`/`(WINDOW)` PLACEMENT.** `(RISE)` (`EFF.T2.19`: "a carrier hypothesis, not an open
+ledger obligation") and `(WINDOW)`/proxy-safety enter as hypotheses OF THE TRANSITION THEOREMS
+(E.17/E.18) at the exact step that consumes them, not as standing structure fields — a rung
+that never recenters never owes `(RISE)`. This matches `EFF.T2.19`'s per-step scoping and keeps
+minimal binding (GC-6.4).
+
+**DEPENDS.** E.10, E.11 · mathlib `WellFoundedRelation`, `Multiset.map`, `Multiset.sum`.
+
+**PROOF.** definitional. **SIZE.** 55 lines. **SPLIT-MANDATED:** land as `E12` (fields 1–5,
+counts) + `E12a` (the continuation/rank fields) if elaboration or universe plumbing on `W`
+fights; `W`'s universe is the structure's second parameter — flag any universe issue to the
+orchestrator rather than fixing `W := ℕ` (`EFF.T2.52`: well-foundedness form, "an instance may
+discharge it either way"; `ℕ`-valued would silently strengthen).
+
+**SOURCE.** `EFF.T2.12` (`(RES-FACT)`/`(RES-DEG)`); `EFF.T2.15` (the seven test-package
+clauses — clauses 3/4/5/6 are the `hnonempty`/`hexhaust`/`hforce` shadows; clauses 1/2/7 are
+instance obligations, E.22); `EFF.T2.16` (`(ACCOUNT)` — via D-E3); `EFF.T2.26` (`(SEC-RANK)`
+verbatim: well-founded `W_𝒞`, strict decrease at product-1 linear recenterings ONLY, "Nothing
+is required of `σ_𝒞` at any other transition"); `EFF.T2.29` (`(SIDE-COUNT)`/`(DEG-SUM)`);
+`EFF.T2.30` (the forcing divisibilities `e_𝒞 e′ ∣ e`, `f_𝒞 deg r′ ∣ f` — `hforce` is their
+count shadow `|orbit| ≥ De′deg r′`).
+
+**TEETH.** S7 Pass 2 missing-`(RES-DEG)` refusal → structural (a consumer without `hresdeg`
+cannot elaborate). S7 well-founded-but-root-losing mutant (`EFF.T2.27`) → `hexhaust` +
+`haccount` are separate fields from the rank, so rank descent alone proves nothing — the
+mutant's route is closed by construction; E.20 states the theorem only from BOTH.
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+### NODE E.13 [lemma] [fresh]
+
+**STATEMENT.** *Degree bookkeeping of the block.* For a block `B` over `C`:
+(i) `F.natDegree = μ * C.D` and `F.Monic` (from `(DEV)`, `Φ` monic of degree `D`,
+`deg A_j < D`);
+(ii) `B.devHgt μ = 0` and `B.devHgt 0 ≠ ⊤` (the two hull endpoints are finite — the monic top
+and `(KEY-FREE)`'s `A 0 ≠ 0` with E.10's `hgt_ne_top`);
+(iii) hence `ladderSuppVal B.devHgt u ℓ B.μ ≠ ⊤` for every `(u, ℓ)` — every cleared support
+value is finite (the polygon is honest; `+∞` is never fed to the accounting — `EFF.T2.23`'s
+"the peel occurs before `(WINDOW)` so `+∞` is never fed to Newton accounting" is the
+convention's analogue one clause down).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem BlockData.natDegree_F {O : Type*} [CommRing O] [IsDomain O] {K : Type*} [Field K]
+    {C : SlotCarrier O K} (B : BlockData C) : B.F.natDegree = B.μ * C.D ∧ B.F.Monic
+
+theorem BlockData.suppVal_ne_top {O : Type*} [CommRing O] [IsDomain O] {K : Type*}
+    [Field K] {C : SlotCarrier O K} (B : BlockData C) (u ℓ : ℕ) :
+    ladderSuppVal B.devHgt u ℓ B.μ ≠ ⊤
+```
+
+**DEPENDS.** E.10, E.11 · mathlib `Polynomial.natDegree_add_of_natDegree_lt`,
+`Polynomial.Monic.natDegree_pow`, `Finset.inf_le`.
+
+**PROOF.**
+1. (i): `deg(Φ^μ) = μD` (`Monic.natDegree_pow`); each summand `A_j Φ^j` has degree
+   `< D + jD ≤ μD`; the sum of the lower terms has degree `< μD`
+   (`Polynomial.natDegree_sum_le` + strict bound), so the top survives: degree `μD`, monic
+   (leading coefficient from `Φ^μ`).
+2. (ii): `devHgt μ = 0` by definition; `devHgt 0 = hgt (A 0) ≠ ⊤` by `hA0`, `hdegA`, and
+   E.10's `hgt_ne_top`.
+3. (iii): `ladderSuppVal ≤` the value at `j = μ`, which is `ℓ•0 + μu < ⊤`; `Finset.inf_le` at
+   `μ ∈ range (μ+1)`.
+
+**SIZE.** 22 lines.
+
+**SOURCE.** `EFF.T2.11` (`deg F = μD` in `(DEV)`; the `(KEY-FREE) ⟹ A₀ ≠ 0 ⟹` hull-span
+derivation); `EFF.T2.29` (finite window values as a hypothesis of the count derivation).
+
+**TEETH.** S7 reducible-key gate → the finiteness clauses are what a `Φ ∣ F` input violates
+(`hA0` fails), reproducing the corpus's fail-closed behaviour structurally.
+
+**ENVIRONMENT.** ENV-E2 (+ `[IsDomain O]` for the degree arithmetic).
+
+---
+
+<!-- RESUME: §4 through E.13. Next: E.14–E.16 (side counts, sandwich, HE7.A(1)(2)). -->
+
+*(remaining §4 nodes, then §§5–14 follow)*
