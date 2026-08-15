@@ -2975,4 +2975,925 @@ does not replace it. `HE-SIG` (`EFF.HE3.52`) → **executable regression** retai
 
 ---
 
+## 7. §7 — THE `(e,f)` ASSIGNMENT AND THE LEAF THEOREM
+
+### DECISION D-3 — HOW `(e,f)` IS READ, AND THE CHAPTER'S UNCONDITIONAL PERIMETER
+
+**THE DECISION.** `(e,f)` is read **through `leanfinal`'s own `typeOf`**, i.e. through
+`inertiaDegOf g = sSup (normDivisors g)` = the gcd of the valuations of the norms from
+`AdjoinRoot g` (`TypeOf.lean:193`), and **not** through the corpus's class-size count
+`|S_{λ,r}| = D′ℓ·deg r` (H-2). Two consequences, both load-bearing:
+
+* the chapter needs **no algebraic closure, no Galois action and no resultants**;
+* the chapter's conclusions are statements about the **order** `AdjoinRoot g`, and it never assumes
+  that this order is maximal — `HYP.01` (`typeOf` faithfulness, disposition **NODE [CORE-SET]**) stays
+  exactly as open as it was.
+
+**THE PERIMETER.** Write a leaf as `(m, ℓ, u, ψ)`: key degree `m`, coprime slope `−u/ℓ`, residual
+factor `ψ` of degree `d` and multiplicity `1`. The chapter proves
+`typeOf g = ⟨{(ℓ, m·d)}⟩`:
+
+| region | status | route | nodes |
+|---|---|---|---|
+| `ℓ = 1`, any `m`, any `d` | **UNCONDITIONAL** | `scaleRoots` + landed `typeOf_inert_of_irreducible_map`; the residual-to-reduction bridge is B.59 | B.44, B.59, B.60 |
+| any `ℓ`, any `m`, `d = 1` | **UNCONDITIONAL** | the norm bracket `m ∣ inertiaDegOf g ∣ m·d` (B.55) collapses at `d = 1` | B.49–B.58 |
+| `ℓ ≥ 2`, `d ≥ 2` | **CONDITIONAL on `B-BOX-1`** | the bracket leaves `inertiaDegOf g` a multiple of `m` dividing `m·d`; pinning it to `m·d` is the residue-degree lower bound | B.61, B.62 |
+
+**This perimeter strictly contains the corpus's own unconditional perimeter.** `EFF.HE3.33` verbatim:
+"*`ℓ ≥ 2` sides.* `ℓd ≤ μ ≤ 3` with `ℓ ≥ 2` forces `d = 1`, so the side carries a SINGLE label …
+*non-`K`-rational residual factors on an integer-slope side.* After peeling every `K`-rational root,
+the leftover part of `R_λ` has degree `≤ d ≤ 3` and NO `K`-rational root, hence is a SINGLE
+irreducible factor `r` … **with no nonemptiness assumption and no base change**" — i.e. HE3's
+unconditional region is `{ℓ ≥ 2, d = 1} ∪ {ℓ = 1}`, which is exactly the two rows above. `EFF.HE3.69`
+(R8-3, `LEMMA HE3-4D1`) adds `D′ = 1` (`m = 1`) "unconditional at every `μ`", which is the `ℓ = 1`
+row plus the `d = 1` row at `m = 1`. **Nothing in this chapter's conditional region was
+unconditional in the corpus**, so the chapter loses nothing and states its boundary in Lean rather
+than in prose.
+
+**THE TECHNICAL SPINE of the `ℓ ≥ 2` route, in one display.** For `A := AdjoinRoot g` with
+`ḡ = φ̄^{ℓd}`:
+
+```
+   addVal (Algebra.norm O z)  =  length_O (A ⧸ zA)          (B.50, determinant–length)
+   length_O M                 =  m · length_A M             (B.51, A local, residue field resField φ)
+   ⟹  m ∣ addVal (norm z)  for every z                     (B.52)
+
+   A ⧸ φ(α)A ≅ (AdjoinRoot φ) ⧸ (dev φ g 0)                (B.53, step 1)
+   ⟹  addVal (norm (φ α)) = m · gaussVal (dev φ g 0) = m·u·d (B.53)
+   addVal (norm π) = ℓ·m·d                                   (landed norm_algebraMap_rootBasis)
+   gcd (m·u·d, ℓ·m·d) = m·d·gcd(u,ℓ) = m·d
+   ⟹  inertiaDegOf g ∣ m·d                                  (B.54)
+```
+
+The bracket `m ∣ inertiaDegOf g ∣ m·d` is B.55; at `d = 1` it is an equality, and B.56–B.58 turn it
+into `typeOf g = ⟨{(ℓ, m)}⟩`. **`gcd(u,ℓ) = 1` is where the coprimality hypothesis finally pays**, and
+it pays in the same place the corpus's tooth `HE6-T-BADKEY` (`EFF.HE6.52`) says it must.
+
+---
+
+### NODE B.49 [lemma] [fresh]
+
+**STATEMENT.** *The leaf's order is local with residual residue field.* Let `φ` be an order-1 key and
+`g` monic with `g.map (residue O) = (φ.map (residue O)) ^ k` for some `k ≥ 1`. Then
+`A := AdjoinRoot g` is a local ring whose maximal ideal is the preimage of `(φ̄)` under
+`A → A ⧸ πA ≅ (ResidueField O)[X] ⧸ (φ̄^k)`, and there is a ring isomorphism
+`IsLocalRing.ResidueField A ≃+* resField φ`. In particular
+`Module.finrank (ResidueField O) (ResidueField A) = φ.natDegree`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+noncomputable instance instLocalRingAdjoinRoot {φ : Polynomial O} (hφ : IsKey φ)
+    {g : Polynomial O} (hg : g.Monic) {k : ℕ} (hk : 0 < k)
+    (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ k) :
+    IsLocalRing (AdjoinRoot g)
+
+noncomputable def residueFieldEquiv {φ : Polynomial O} (hφ : IsKey φ)
+    {g : Polynomial O} (hg : g.Monic) {k : ℕ} (hk : 0 < k)
+    (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ k) :
+    IsLocalRing.ResidueField (AdjoinRoot g) ≃+* resField φ
+```
+
+**DEPENDS.** B.01 · B.25 · landed `Uniformity.Density.isMaximal_map_maximalIdeal_adjoinRoot`
+(`InertLeaf.lean:71`, the `k = 1` case, whose proof is the template) ·
+`Uniformity.Density.isUnit_of_notMem_map_maximalIdeal` (`InertLeaf.lean:92`) ·
+mathlib `AdjoinRoot.quotMapOfEquivQuotMapCMapSpanNewtonMap`-style quotient identifications
+(**the concrete route**: `AdjoinRoot g ⧸ π = O[X] ⧸ (g, π) ≅ (ResidueField O)[X] ⧸ (ḡ)` by
+`Ideal.quotientEquivAlgOfEq` and `Polynomial.quotientSpanXSubCAlgEquiv`-style transport; the honest
+statement of the route is "reduce mod `π` first, then mod `ḡ`", i.e.
+`AdjoinRoot.quotEquivQuotMap`).
+
+**PROOF.**
+1. `A ⧸ πA ≅ (ResidueField O)[X] ⧸ (ḡ)` (reduce the two quotients in the other order).
+2. `ḡ = φ̄^k` with `φ̄` irreducible, so `(ResidueField O)[X] ⧸ (φ̄^k)` is a **local** ring: its unique
+   maximal ideal is `(φ̄)/(φ̄^k)`, because `(φ̄^k)` has a unique minimal prime over it in a PID.
+   (`Ideal.isPrimary`/`IsLocalRing.of_unique_max_ideal`; the concrete route is
+   `Polynomial.isLocalRing_quotient_pow_irreducible`, a private helper if the pin lacks it: every
+   element is either a unit or in `(φ̄)`, since `(φ̄)` is maximal and the quotient's nonunits are
+   exactly the elements of `(φ̄)/(φ̄^k)`.)
+3. A commutative ring `A` with `A ⧸ πA` local and `π` in every maximal ideal (`π ∈ maximalIdeal O`,
+   pushed forward) is itself local. (Landed `isMaximal_map_maximalIdeal_adjoinRoot` does the `k = 1`
+   case by showing the pushed-forward ideal is maximal; here it is only local, so the argument is
+   `IsLocalRing.of_isUnit_or_isUnit_of_add_one` applied through the surjection `A → A ⧸ πA`, using
+   that `πA ⊆ Jacobson`.)
+4. `ResidueField A = A ⧸ 𝔪_A = ((ResidueField O)[X] ⧸ (φ̄^k)) ⧸ ((φ̄)/(φ̄^k)) ≅
+   (ResidueField O)[X] ⧸ (φ̄) = resField φ`.
+5. The `finrank` claim is B.26's `finrank_resField` transported along step 4.
+
+**SIZE.** 90 lines. **SPLIT MANDATED → 3**: `B49a.lean` = step 1 (the quotient identification);
+`B49b.lean` = step 2 (the local structure of `K[X] ⧸ (φ̄^k)`, a pure residue-field statement, ENV-D);
+`B49c.lean` = steps 3–5 and the two contracts.
+
+**⚠ THIS NODE GENERALISES A LANDED NODE AND MUST NOT REDEFINE IT.** `InertLeaf.lean:71` proves the
+`k = 1` case in the stronger form "`𝔪·A` is maximal"; at `k ≥ 2` that is **false** (`A ⧸ πA` has
+nilpotents), so the generalisation is to "`A` is local with residue field `resField φ`". The landed
+declaration is consumed unchanged for `k = 1` and is not touched.
+
+**SOURCE.** `EFF.HE3.10` verbatim: "Stage ring `R = O[x]/(Φ′)` is an order in field `L = K₀(θ)`,
+**NOT a complete DVR in general**; carried through `O_L`" — the corpus's own record that the order is
+not the maximal order, which is exactly why D-3 works with `AdjoinRoot g` and states its perimeter.
+Also `EFF.HE3.10`'s `[r1,F7]` correction (the carrier is `O_L`, not `R`).
+
+**TEETH.** signed non-applicable (a structural lemma).
+
+**ENVIRONMENT.** ENV-C (finiteness enters through B.26 at step 5 only; steps 1–4 are ENV-A).
+
+---
+
+### NODE B.50 [lemma] [fresh]
+
+**STATEMENT.** *The determinant–length identity.* Let `A` be an `O`-algebra that is free of finite rank
+`r > 0` as an `O`-module, and let `z ∈ A` with `Algebra.norm O z ≠ 0`. Then
+
+```
+addVal O (Algebra.norm O z)  =  (the O-length of A ⧸ zA).
+```
+
+Concretely (avoiding any dependence on a `Module.length` API): there are `e : Fin r → ℕ` and an
+`O`-module isomorphism `A ⧸ zA ≃ₗ ⨁ i, O ⧸ (π ^ e i)` with
+`addVal O (Algebra.norm O z) = (Σ i, e i : ℕ)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem exists_smith_of_norm (hπ : Irreducible π) {A : Type*} [CommRing A] [Algebra O A]
+    [Module.Free O A] [Module.Finite O A] (hr : 0 < Module.finrank O A)
+    {z : A} (hz : Algebra.norm O z ≠ 0) :
+    ∃ e : Fin (Module.finrank O A) → ℕ,
+      Nonempty ((A ⧸ (Ideal.span {z}).restrictScalars O) ≃ₗ[O]
+        (⨁ i, O ⧸ (Ideal.span {π ^ e i}))) ∧
+      IsDiscreteValuationRing.addVal O (Algebra.norm O z) = ((∑ i, e i : ℕ) : ℕ∞)
+```
+
+**DEPENDS.** mathlib `Basis.smithNormalForm` / `Submodule.smithNormalForm`
+(**confirm the pinned name and shape**; the fact needed is: a submodule of a free module of finite rank
+over a PID admits a basis adapted to a basis of the ambient module, with the elementary divisors
+dividing one another), `Algebra.norm_eq_matrix_det`, `Matrix.det_diagonal`,
+`IsDiscreteValuationRing.addVal`, `LinearMap.det`.
+
+**PROOF.**
+1. `Algebra.norm O z = LinearMap.det (LinearMap.mulLeft O z)`
+   (`Algebra.norm_apply`/`Algebra.norm_eq_matrix_det` with the free basis).
+2. `zA` as an `O`-submodule of `A` is the image of `LinearMap.mulLeft O z`, which is injective because
+   its determinant is nonzero (`LinearMap.injective_iff_det_ne_zero` over a domain — **confirm**;
+   over an integral domain a linear endomorphism of a finite free module is injective iff its
+   determinant is nonzero).
+3. `Submodule.smithNormalForm` applied to `zA ⊆ A` gives a basis `b` of `A` and naturals/elements
+   `d i` with `zA = span {d i • b i}`, hence
+   `A ⧸ zA ≃ₗ ⨁ i, O ⧸ (d i)`. Each `d i ≠ 0` (step 2), so `d i = π^{e i} * unit`
+   (`IsDiscreteValuationRing.eq_unit_mul_pow_irreducible`), giving the direct-sum shape.
+4. In the adapted bases the matrix of `mulLeft z` is diagonal with entries `d i` up to a change of
+   basis of determinant a unit, so `addVal (det) = Σ addVal (d i) = Σ e i`
+   (`AddValuation.map_prod`/`map_mul` and `hπ.addVal_pow`).
+
+**SIZE.** 140 lines. **SPLIT MANDATED → 3**: `B50a.lean` = steps 1–2 (norm = det, injectivity);
+`B50b.lean` = step 3 (the Smith normal form transport to the direct sum); `B50c.lean` = step 4 and the
+contract.
+
+**⚠ THIS IS THE CHAPTER'S THIRD HARD CORE AND ITS ONLY MATHLIB-API RISK OF THE FIRST KIND.** Everything
+else in the chapter is elementary over `leanfinal`'s API; this node needs the PID structure theory
+(`Submodule.smithNormalForm`) at exactly the shape mathlib provides it, and **the shape must be checked
+before the node is assigned**. If `Submodule.smithNormalForm` in the pin is stated only for
+`Basis ι R M` with `ι` a `Fintype` and gives an `∃ (n : ℕ) (bM : Basis (Fin n) …)` package rather than
+a decomposition, step 3 becomes a 60-line repackaging and the node grows to ~200 lines. The
+**fallback**, if the PID theory proves unusable: state B.50 only for `A` a **DVR** (where
+`length_O(A/zA) = f·v_A(z)` is a one-line induction on `v_A(z)`), which suffices for B.53 (where the
+ring is `AdjoinRoot φ`, a DVR by B.59's step 1) but **not** for B.52 (where `A` is not a DVR at
+`d ≥ 2`). Under that fallback B.52 is lost, the bracket loses its lower half, and the chapter's
+`ℓ ≥ 2, d = 1` row becomes conditional too — so the fallback is a real degradation and the
+orchestrator must be told, not silently applied. **§14 item 6.**
+
+**SOURCE.** classical (the corpus imports it as part of `EFF.HE6.06`'s "resultant symmetry … Galois
+invariance of `v`" package and never isolates it); `EFF.HE3.20` (`LEMMA HE3-1`, the resultant identity
+`Σ_ρ dv(Φ″(ρ)) = D′·dv(B₀)`, is the corpus's form of exactly this identity read through roots — this
+node is its root-free form).
+
+**TEETH.** `HE-NORM` (`EFF.HE3.50`, 72,134 exact Bareiss/Sylvester integer-resultant identities, 0
+violations) → **executable regression** retained: the battery checks the resultant form of this
+identity, and the chapter proves the norm form.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE B.51 [lemma] [fresh]
+
+**STATEMENT.** *Length multiplies by the residue degree.* Let `A` be a local `O`-algebra, module-finite
+over `O`, whose residue field has `ResidueField O`-dimension `s`. Then for every `A`-module `M` of
+finite length, `length_O M = s * length_A M`. In the elementary-divisor form of B.50: if
+`A ⧸ zA ≃ₗ[O] ⨁ i, O ⧸ (π^{e i})` then `s ∣ Σ i, e i`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem residueDeg_dvd_sum_of_local (hπ : Irreducible π) {A : Type*} [CommRing A] [IsLocalRing A]
+    [Algebra O A] [Module.Free O A] [Module.Finite O A] {s : ℕ}
+    (hs : Module.finrank (ResidueField O) (IsLocalRing.ResidueField A) = s)
+    (hmap : (algebraMap O A) '' (maximalIdeal O) ⊆ IsLocalRing.maximalIdeal A)
+    {z : A} (hz : Algebra.norm O z ≠ 0) :
+    s ∣ (Nat.find (…) : ℕ) -- see PROOF: the contract is stated on `addVal (norm z)` directly
+```
+**Contract declaration (the one the fleet must land):**
+```lean
+theorem residueDeg_dvd_addVal_norm (hπ : Irreducible π) {A : Type*} [CommRing A] [IsLocalRing A]
+    [Algebra O A] [Module.Free O A] [Module.Finite O A] {s : ℕ}
+    (hs : Module.finrank (ResidueField O) (IsLocalRing.ResidueField A) = s)
+    {z : A} {k : ℕ} (hk : IsDiscreteValuationRing.addVal O (Algebra.norm O z) = (k : ℕ∞)) :
+    s ∣ k
+```
+
+**DEPENDS.** B.50 · mathlib `Module.length`-free route below; `IsLocalRing.ResidueField`,
+`Module.finrank`, `IsNoetherian`, `Submodule.exists_maximal_chain`-style composition-series API
+(**this is the second API risk; the fallback route is stated in the PROOF**).
+
+**PROOF (primary route).**
+1. `A ⧸ zA` is an `A`-module of finite length (it is a finitely generated module over a Noetherian
+   local ring, `O`-finite, hence of finite `O`-length by B.50, hence of finite `A`-length).
+2. Every simple `A`-module is `A ⧸ 𝔪_A = ResidueField A`, whose `O`-length is
+   `finrank (ResidueField O) (ResidueField A) = s` (a one-dimensional `ResidueField A`-space is an
+   `s`-dimensional `ResidueField O`-space, and each `ResidueField O`-line has `O`-length `1`).
+3. `O`-length is additive on short exact sequences, so a composition series of `A ⧸ zA` of `A`-length
+   `t` has `O`-length `s * t`.
+4. B.50 identifies the `O`-length with `addVal (norm z)`, giving `s ∣ addVal (norm z)`.
+
+**PROOF (fallback route, if a composition-series API is missing from the pin).** Replace steps 1–3 by
+a **strong induction on `k`** in the style of landed `natDegree_dvd_addVal_norm`
+(`InertLeaf.lean:128`), with the induction step "pick `w ∈ 𝔪_A` with `zA ⊆ wA`" replaced by "pick a
+maximal `A`-submodule `N` of `A ⧸ zA`; then `(A ⧸ zA) ⧸ N ≅ ResidueField A` has `O`-length `s`, and
+`N` has `O`-length `k − s`, so `s ∣ k − s` by induction". This needs only the existence of a maximal
+submodule of a nonzero finitely generated module over a local ring
+(`Submodule.exists_le_maximal`/Nakayama), which is certainly in the pin.
+
+**SIZE.** 80 lines (primary) or 110 (fallback).
+
+**⚠ THE `k = 1`, `s = natDegree` CASE IS LANDED.** `InertLeaf.lean:128`
+(`natDegree_dvd_addVal_norm`) is exactly this node when `A ⧸ 𝔪A` is a field of degree
+`g.natDegree`, and its proof is the fallback route's shape with the maximal-submodule step replaced by
+`z = π z'`. **The landed proof is the template and it is known to close** — that is why the fallback is
+credible.
+
+**SOURCE.** classical; landed `InertLeaf.lean:128` as the `k = 1` instance; `EFF.HE3.10` (the order
+vs maximal-order distinction that makes this the right general form).
+
+**TEETH.** signed non-applicable.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE B.52 [lemma] [fresh]
+
+**STATEMENT.** *The residue-degree lower bound at the key level.* Let `φ` be an order-1 key with
+`m = φ.natDegree`, and `g` monic of positive degree with
+`g.map (residue O) = (φ.map (residue O))^k`, `k ≥ 1`. Then `m ∣ inertiaDegOf g`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem key_natDegree_dvd_inertiaDegOf (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {g : Polynomial O} (hg : g.Monic) (hd : 0 < g.natDegree) {k : ℕ} (hk : 0 < k)
+    (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ k) :
+    φ.natDegree ∣ inertiaDegOf g
+```
+
+**DEPENDS.** B.26 · B.49 · B.50 · B.51 · landed `Uniformity.Density.inertiaDegOf_mem_normDivisors`,
+`normValues_nonempty`, `normValues` (`TypeOf.lean:182,193,262`).
+
+**PROOF.**
+1. `AdjoinRoot g` is local with residue field `resField φ` (B.49), of
+   `ResidueField O`-dimension `m` (B.26 transported along B.49's `residueFieldEquiv`).
+2. `AdjoinRoot g` is free of finite rank `g.natDegree` over `O` (`AdjoinRoot.powerBasis' hg`).
+3. B.51 with `s := m` gives `m ∣ k` for every `k ∈ normValues g`.
+4. `inertiaDegOf g` is the greatest common divisor of `normValues g`
+   (landed `inertiaDegOf_mem_normDivisors` with `normValues_nonempty hg hd`); `m` is a common divisor
+   by step 3 and is positive (`hφ.pos`), so `m ∈ normDivisors g`, hence
+   `m ≤ inertiaDegOf g` by landed `le_inertiaDegOf`. **For the divisibility rather than the
+   inequality**, use landed `inertiaDegOf_mem_normDivisors`: `inertiaDegOf g ∈ normValues g` is NOT
+   claimed by the landed API, so the divisibility must come from `inertiaDegOf g = sSup (normDivisors g)`
+   and the fact that `normDivisors g` is closed under lcm — **the honest route**: `m ∈ normDivisors g`
+   and `inertiaDegOf g ∈ normDivisors g`, and `Nat.lcm m (inertiaDegOf g) ∈ normDivisors g` (an lcm of
+   two common divisors of a set of naturals is a common divisor), so
+   `Nat.lcm m (inertiaDegOf g) ≤ inertiaDegOf g` by `le_inertiaDegOf`, forcing
+   `m ∣ inertiaDegOf g`. The lcm-closure of `normDivisors` is a **private helper** of this node
+   (~10 lines: `Nat.Coprime`-free, from `Nat.lcm_dvd`).
+
+**SIZE.** 40 lines including the lcm-closure helper.
+
+**⚠ THE lcm STEP IS THE NODE'S ONLY SUBTLETY AND IT IS FLAGGED.** `inertiaDegOf` is defined as
+`sSup (normDivisors g)`, a supremum in `ℕ`, and "the greatest common divisor" is a *name* for it, not
+its definition. Landed `inertiaDegOf_eq_of` (`TypeOf.lean:229`) is the recognition principle
+(`k ∈ normValues` and `k` divides all of them ⟹ `inertiaDegOf = k`), and it is the clean route
+whenever a witness in `normValues` is available. **B.55 uses `inertiaDegOf_eq_of` and therefore needs
+a witness; this node does not have one, which is why it goes through the lcm.**
+
+**SOURCE.** landed `TypeOf.lean`; `docs/GMN_citations.md` Cor 1.20 ("`f(L/K)` is divisible by
+`m·deg ψ_i`") — this node is the `m` half of that divisibility; the `deg ψ_i` half is `B-BOX-1`.
+
+**TEETH.** `HE-SIG` (`EFF.HE3.52`, 947 PARI jobs, 0 bad) → **executable regression** retained.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.53 [lemma] [fresh]
+
+**STATEMENT.** *The norm of the key's value.* Let `φ` be an order-1 key, `g` monic of positive degree
+with `φ ∤ g` (equivalently `dev φ g 0 ≠ 0`), and let `α := AdjoinRoot.root g`. Then
+
+```
+addVal O (Algebra.norm O (Polynomial.aeval α φ))  =  φ.natDegree * gaussVal (dev φ g 0),
+```
+
+read in `ℕ∞` (both sides are `⊤` iff `dev φ g 0 = 0`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem addVal_norm_key_eval (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {g : Polynomial O} (hg : g.Monic) (hd : 0 < g.natDegree) (h0 : dev φ g 0 ≠ 0) :
+    IsDiscreteValuationRing.addVal O (Algebra.norm O (Polynomial.aeval (AdjoinRoot.root g) φ))
+      = (φ.natDegree : ℕ∞) * gaussVal (dev φ g 0)
+```
+
+**DEPENDS.** B.02 · B.05 · B.07 · B.24 · B.25 · B.36 · B.50 · B.51 · mathlib `AdjoinRoot`,
+`Ideal.quotientEquivAlgOfEq`, `AdjoinRoot.quotEquivQuotMap`.
+
+**PROOF.**
+1. **The quotient identification.** `AdjoinRoot g ⧸ (φ(α))` `≅` `O[X] ⧸ (g, φ)` `≅`
+   `(O[X] ⧸ (φ)) ⧸ (g mod φ)` `=` `AdjoinRoot φ ⧸ (dev φ g 0)`, because `g mod φ = g %ₘ φ = dev φ g 0`
+   (B.02 at `j = 0`). Both isomorphisms are `Ideal.quotientEquivAlgOfEq`/the double-quotient
+   isomorphism, and the middle one uses that `(g, φ) = (φ, g %ₘ φ)` as ideals of `O[X]`
+   (from `modByMonic_add_div`).
+2. **`AdjoinRoot φ` is a DVR with uniformizer `π` and residue field `resField φ`.** Local with
+   residue field `resField φ` by B.49 at `k = 1` (or landed
+   `isMaximal_map_maximalIdeal_adjoinRoot`, which gives the stronger "`πA` is maximal"); its maximal
+   ideal is `π·AdjoinRoot φ`, principal; it is a Noetherian domain (`φ` irreducible over `O` by
+   `Monic.irreducible_of_irreducible_map hφ.irred`); hence a DVR.
+3. **The valuation of `dev φ g 0` in `AdjoinRoot φ` is `gaussVal (dev φ g 0)`.** Its class is
+   `π^c * unit` with `c = gaussVal (dev φ g 0)`: divide out `π^c` (B.24's `digPoly_eq_map` route) and
+   apply B.36's `resMk_ne_zero` — the residue of the quotient is nonzero in `resField φ`, i.e. the
+   quotient is a unit of `AdjoinRoot φ`. **This is the slot lemma doing its real work.**
+4. **The length.** `AdjoinRoot φ ⧸ (dev φ g 0) ≅ AdjoinRoot φ ⧸ (π^c)`, whose `O`-length is `m*c`
+   (B.51 with `s = m` and `A`-length `c`, or directly: it is free of rank `m` over `O ⧸ π^c`, so its
+   `O`-length is `m*c`).
+5. **Conclude by B.50** applied to `A := AdjoinRoot g` and `z := φ(α)`: the `O`-length of `A ⧸ zA` is
+   `m*c` by steps 1 and 4, hence `addVal (norm z) = m*c`.
+
+**SIZE.** 90 lines. **SPLIT MANDATED → 3**: `B53a.lean` = step 1 (the quotient identification, pure
+commutative algebra); `B53b.lean` = steps 2–3 (`AdjoinRoot φ` is a DVR and the slot-lemma valuation
+computation); `B53c.lean` = steps 4–5 and the contract.
+
+**⚠ THIS NODE IS THE CHAPTER'S REPLACEMENT FOR `LEMMA HE3-1`.** `EFF.HE3.20` states the corpus's
+version as a **resultant identity** `Σ_ρ dv(Φ″(ρ)) = D′·dv(B₀)` — a sum over roots in `K̄₀`. This node
+is the same identity with the roots replaced by a length and the resultant by a norm: at `e₁ = 1`,
+`dv = addVal`, `D′ = m`, `B₀ = dev φ g 0`, and `Σ_ρ dv(φ(ρ)) = addVal (norm (φ(α)))`. **The
+correspondence is exact and it is §14 item 7.**
+
+**SOURCE.** `EFF.HE3.20` (`LEMMA HE3-1`); `EFF.HE3.22` (`LEMMA HE3-1′`, the support-function form of
+the same quantity, `dv(B₀) = min_j(dv(A_j)+jκ)` — which is B.14's `suppVal` and connects this node to
+B.54).
+
+**TEETH.** `HE-NORM` (`EFF.HE3.50`, 72,134 identities, 0 violations, guarding `.20`) → **Lean
+theorem** (the identity `LEMMA HE3-1` becomes this node); `HE-PSI` (`EFF.HE3.51`, 43,528, guarding
+`.22`) → **Lean theorem** at B.54.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.54 [lemma] [fresh]
+
+**STATEMENT.** *The residue-degree upper bound.* Let `φ` be an order-1 key, `0 < ℓ`,
+`Nat.Coprime u ℓ`, `0 < u`, and let `g` be monic of positive degree, `(u,ℓ)`-pure with
+`sideDeg = d > 0` and `g.map (residue O) = (φ.map (residue O))^{ℓ*d}`. Then
+
+* `gaussVal (dev φ g 0) = (u * d : ℕ)`;
+* `addVal O (Algebra.norm O (φ(α))) = (m * u * d : ℕ)`;
+* `addVal O (Algebra.norm O (algebraMap O (AdjoinRoot g) π)) = (ℓ * m * d : ℕ)`;
+* `inertiaDegOf g ∣ m * d`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem inertiaDegOf_dvd_key_mul_resDeg (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g : Polynomial O}
+    (hg : g.Monic) (hd : 0 < g.natDegree) (hpure : IsPure φ g u ℓ)
+    (hne : (sideSet φ g u ℓ).Nonempty) (hdd : 0 < sideDeg φ g u ℓ hne)
+    (hres : g.map (IsLocalRing.residue O)
+      = (φ.map (IsLocalRing.residue O)) ^ (ℓ * sideDeg φ g u ℓ hne) :
+    inertiaDegOf g ∣ φ.natDegree * sideDeg φ g u ℓ hne
+```
+
+**DEPENDS.** B.13 · B.14 · B.16 · B.18 · B.20 · B.34 · B.53 · landed
+`Uniformity.Density.norm_algebraMap_rootBasis` (`TypeOfInvariance.lean:353`),
+`inertiaDegOf_dvd` (`TypeOf.lean:218`), `normValues` (`TypeOf.lean:182`).
+
+**PROOF.**
+1. **The left height.** `IsPure` at abscissa `μ = ℓ*d` with `npHgt φ g μ = 0` (B.13) gives
+   `suppVal φ g u ℓ = (u*ℓ*d : ℕ)`; `IsPure` at abscissa `0` then gives
+   `ℓ • npHgt φ g 0 = (u*ℓ*d : ℕ)`, i.e. `gaussVal (dev φ g 0) = npHgt φ g 0 = (u*d : ℕ)` after
+   cancelling `ℓ > 0`.
+2. **The two norm valuations.** B.53 with step 1 gives `addVal (norm (φ α)) = m*(u*d)`. Landed
+   `norm_algebraMap_rootBasis hg π` gives `norm (algebraMap O _ π) = π ^ g.natDegree`, and
+   `g.natDegree = m * μ = m*ℓ*d`, so its `addVal` is `ℓ*m*d`.
+3. **Both are in `normValues g`.** Each is positive (`0 < u, d, ℓ, m`) and each is the `addVal` of the
+   norm of a nonzero element (`φ(α) ≠ 0` because `norm (φ α) ≠ 0` by step 2's finiteness;
+   `algebraMap O _ π ≠ 0` because `AdjoinRoot g` is a domain and `π ≠ 0`).
+4. **The gcd.** Landed `inertiaDegOf_dvd` gives `inertiaDegOf g ∣ m*u*d` and
+   `inertiaDegOf g ∣ ℓ*m*d`, hence `inertiaDegOf g ∣ Nat.gcd (m*u*d) (ℓ*m*d) = m*d*Nat.gcd u ℓ = m*d`
+   (`Nat.gcd_mul_left` twice and `hcop`).
+
+**SIZE.** 44 lines.
+
+**⚠ `Nat.Coprime u ℓ` IS CONSUMED HERE AND NOWHERE ELSE IN §7.** Step 4 is the payoff, and it is the
+same hypothesis whose necessity `EFF.HE6.52`'s tooth `HE6-T-BADKEY` established by counterexample
+(`κ = 6/2` gives two factors with different residues). **Minimum-hypothesis check:** `0 < u` is needed
+(at `u = 0` the polygon is horizontal, `g` is not in the `f̄ = φ̄^μ` regime, and step 1's height is
+`0`); `hres` is needed only to make `AdjoinRoot g` local for B.53's step 2 — actually B.53 does not
+need `hres` at all, so **`hres` is over-strong in this node's signature and should be dropped**; it is
+retained only because B.55 consumes both nodes together and the shared hypothesis avoids a
+re-derivation. **Flagged as a minimum-hypothesis item for the cross-read (§14 item 8).**
+
+**SOURCE.** `docs/GMN_citations.md` Cor 1.20; `EFF.HE3.22` (`LEMMA HE3-1′`, whose
+`dv(B₀) = min_j(dv(A_j)+jκ)` is step 1); `EFF.HE3.26` (`COROLLARY HE3-0′`).
+
+**TEETH.** `HE-PSI` (`EFF.HE3.51`, guarding `.22`) → **Lean theorem** (step 1 is `LEMMA HE3-1′`'s
+identity in the pure case).
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.55 [lemma] [fresh]
+
+**STATEMENT.** *The residue-degree bracket, and its collapse at `d = 1`.* Under the joint hypotheses of
+B.52 and B.54:
+`φ.natDegree ∣ inertiaDegOf g` and `inertiaDegOf g ∣ φ.natDegree * d`. In particular if `d = 1` then
+`inertiaDegOf g = φ.natDegree` and `ramIndexOf g = ℓ`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem inertiaDegOf_bracket (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g : Polynomial O}
+    (hg : g.Monic) (hd : 0 < g.natDegree) (hpure : IsPure φ g u ℓ)
+    (hne : (sideSet φ g u ℓ).Nonempty) (hdd : 0 < sideDeg φ g u ℓ hne)
+    (hres : g.map (IsLocalRing.residue O)
+      = (φ.map (IsLocalRing.residue O)) ^ (ℓ * sideDeg φ g u ℓ hne)) :
+    φ.natDegree ∣ inertiaDegOf g ∧ inertiaDegOf g ∣ φ.natDegree * sideDeg φ g u ℓ hne
+
+theorem inertiaDegOf_eq_of_resDeg_one (… same hypotheses …)
+    (h1 : sideDeg φ g u ℓ hne = 1) :
+    inertiaDegOf g = φ.natDegree ∧ ramIndexOf g = ℓ
+```
+
+**DEPENDS.** B.13 · B.20 · B.52 · B.54 · landed `Uniformity.Density.ramIndexOf_mul_inertiaDegOf`
+(`TypeOf.lean:275`).
+
+**PROOF.**
+1. The bracket is B.52 and B.54 conjoined.
+2. At `d = 1` the bracket reads `m ∣ inertiaDegOf g ∣ m`, so `inertiaDegOf g = m`
+   (`Nat.dvd_antisymm`).
+3. `ramIndexOf g * inertiaDegOf g = g.natDegree = m * ℓ * 1` (landed
+   `ramIndexOf_mul_inertiaDegOf`, plus `g.natDegree = m * μ` and `μ = ℓ*d = ℓ`), so
+   `ramIndexOf g = ℓ` by cancelling `m > 0`.
+
+**SIZE.** 18 lines.
+
+**SOURCE.** `docs/GMN_citations.md` Cor 1.20; `EFF.HE3.26`; `EFF.HE3.33` (the corpus's own `d = 1`
+perimeter).
+
+**TEETH.** `HE-SIG` (`EFF.HE3.52`) → **Lean theorem** at `d = 1`; **executable regression** retained
+at `d ≥ 2` (where the bracket is not an equality).
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.56 [lemma] [fresh]
+
+**STATEMENT.** *The singleton lemma.* Let `σ : FactorizationType` with `σ.degree = n`, `0 < n`, and
+suppose every `(e', f') ∈ σ.data` satisfies `n ≤ e' * f'`. Then `σ.data` is a singleton `{(e₀, f₀)}`
+with `e₀ * f₀ = n`. If moreover `a ∣ e'` and `b ∣ f'` for every member and `a * b = n`, then
+`σ = ⟨{(a, b)}⟩`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem factorizationType_singleton {σ : FactorizationType} {n : ℕ} (hn : 0 < n)
+    (hdeg : σ.degree = n) (hge : ∀ p ∈ σ.data, n ≤ p.1 * p.2) :
+    ∃ p, σ.data = {p} ∧ p.1 * p.2 = n
+
+theorem factorizationType_eq_of_dvd {σ : FactorizationType} {a b : ℕ} (ha : 0 < a) (hb : 0 < b)
+    (hdeg : σ.degree = a * b) (hpos : ∀ p ∈ σ.data, 0 < p.1 ∧ 0 < p.2)
+    (hA : ∀ p ∈ σ.data, a ∣ p.1) (hB : ∀ p ∈ σ.data, b ∣ p.2) :
+    σ = ⟨{(a, b)}⟩
+```
+
+**DEPENDS.** landed `Uniformity.Density.FactorizationType.degree` (`LocalData.lean:49`),
+`FactorizationType.ext` (`:52`), `efPair_pos_of_mem` (`TypePositivity.lean:55`) ·
+mathlib `Multiset.sum_map_le`-style bounds, `Multiset.card_eq_one`.
+
+**PROOF.**
+1. `σ.degree = (σ.data.map (fun p => p.1*p.2)).sum = n`. Each summand is `≥ n` by `hge` and `> 0`.
+2. If `σ.data.card ≥ 2` the sum is `≥ 2n > n`; if `σ.data.card = 0` the sum is `0 < n`. So
+   `card = 1` (`Multiset.card_eq_one`), giving the singleton and `e₀*f₀ = n`.
+3. For the second statement: `hA`/`hB` give `a ∣ e₀`, `b ∣ f₀`, so `a*b ∣ e₀*f₀ = a*b`, and with
+   positivity `e₀ = a`, `f₀ = b` (`Nat.eq_of_dvd_of_le` twice, or
+   `Nat.eq_of_mul_eq_mul_left`). The hypothesis `n ≤ e'*f'` of the first statement is supplied by
+   `a ∣ e'`, `b ∣ f'`, positivity, and `a*b = n`.
+4. `FactorizationType.ext` closes.
+
+**SIZE.** 30 lines.
+
+**⚠ THIS IS THE NODE THAT REPLACES THE CORPUS'S GALOIS-ORBIT ARGUMENT.** `EFF.HE3.34`'s base step
+concludes irreducibility from "A Galois-stable set of size `N` all of whose elements have orbit size
+`≥ N` is a single orbit of size exactly `N`", and `EFF.HE6.32` step 3 from the sandwich
+`Σ_r|S_{λ,r}| = Σ_rN_r` with `|S_{λ,r}| ≥ N_r`. **Both are counting arguments over `K̄₀`.** This node is
+the same pigeonhole run on `FactorizationType.data` instead, which is why the chapter needs no
+closure and no Galois action (H-2). It is elementary and it is the chapter's cheapest important node.
+
+**SOURCE.** `EFF.HE3.34` (the orbit argument); `EFF.HE6.32` (the sandwich); landed
+`TypePositivity.lean`.
+
+**TEETH.** signed non-applicable.
+
+**ENVIRONMENT.** ENV-A (no `O` beyond the `FactorizationType` namespace; the node is arithmetic).
+
+---
+
+### NODE B.57 [lemma] [fresh]
+
+**STATEMENT.** *Every monic factor of a pure polynomial is pure of the same slope, with additive
+residual degree.* Let `φ` be an order-1 key, `0 < ℓ`, `Nat.Coprime u ℓ`, `0 < u`, and `g` monic
+`(u,ℓ)`-pure with `sideDeg = d`. If `g = g₁ * g₂` with `g₁, g₂` monic then both `g₁, g₂` are
+`(u,ℓ)`-pure and `sideDeg g₁ + sideDeg g₂ = d`; moreover
+`g_i.map (residue O) = (φ.map (residue O)) ^ (ℓ * sideDeg g_i)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem isPure_of_monic_factor (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g g₁ g₂ : Polynomial O}
+    (hg : g.Monic) (hg₁ : g₁.Monic) (hg₂ : g₂.Monic) (heq : g = g₁ * g₂)
+    (hpure : IsPure φ g u ℓ) (hne : (sideSet φ g u ℓ).Nonempty) :
+    ∃ (hne₁ : (sideSet φ g₁ u ℓ).Nonempty) (hne₂ : (sideSet φ g₂ u ℓ).Nonempty),
+      IsPure φ g₁ u ℓ ∧ IsPure φ g₂ u ℓ ∧
+      sideDeg φ g₁ u ℓ hne₁ + sideDeg φ g₂ u ℓ hne₂ = sideDeg φ g u ℓ hne ∧
+      g₁.map (IsLocalRing.residue O)
+        = (φ.map (IsLocalRing.residue O)) ^ (ℓ * sideDeg φ g₁ u ℓ hne₁)
+```
+
+**DEPENDS.** B.13 · B.16 · B.18 · B.20 · B.30 · B.33 · B.35.
+
+**PROOF.**
+1. `suppVal φ g u ℓ = suppVal φ g₁ u ℓ + suppVal φ g₂ u ℓ` — the ≥ is B.33; the ≤ needs B.35, which
+   assumes both factors pure. **Break the circularity** by first proving purity from the extreme
+   abscissae: `dev φ g_i 0` and the top development coefficient are pinned by
+   `dev φ g 0 = (dev φ g₁ 0) * (dev φ g₂ 0) mod φ` and B.13's `dev_top`, giving
+   `npHgt φ g 0 = npHgt φ g₁ 0 + npHgt φ g₂ 0` (B.09's `gaussVal_mul` plus B.31 for the carry) and
+   `μ = μ₁ + μ₂`. Both abscissa-`0` and abscissa-`μ_i` points then lie on the respective
+   `(u,ℓ)`-lines, because their sum lies on `g`'s line and B.33 gives the one-sided inequality at each
+   — a two-line squeeze.
+2. With both factors pure, B.35 applies and gives the `suppVal` additivity and the residual
+   multiplicativity; `sideDeg` additivity is the degree additivity of `resPoly` (B.30 plus
+   `natDegree_mul` over the field `resField φ`).
+3. The residual-reduction claim: reduce `g_i` mod `π`; its reduction is a monic divisor of
+   `φ̄^{ℓd}`, hence `φ̄^{k_i}` with `k_1 + k_2 = ℓd` (unique factorization in
+   `(ResidueField O)[X]`), and `k_i = ℓ * sideDeg g_i` because `g_i.natDegree = m*ℓ*sideDeg g_i`
+   (step 2 and B.13).
+
+**SIZE.** 60 lines. **Step 1's squeeze is the node's whole risk** and must be written first.
+
+**SOURCE.** `docs/GMN_citations.md` Thm 1.15 ("`N_φ(F_i)` one-sided of slope `λ_i`" — the factors of a
+one-sided polynomial are one-sided); `EFF.HE3.32`.
+
+**TEETH.** `W12-SHAPE` → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.58 [theorem] [fresh]
+
+**STATEMENT.** *THE LEAF THEOREM at residual degree 1 (unconditional).* Over the complete bundle, let
+`φ` be an order-1 key with `m = φ.natDegree`, `0 < u`, `0 < ℓ`, `Nat.Coprime u ℓ`, and let `g` be
+monic, `(u,ℓ)`-pure with `sideDeg φ g u ℓ = 1` and
+`g.map (residue O) = (φ.map (residue O))^ℓ`. Then
+
+```
+typeOf g = ⟨{(ℓ, m)}⟩,
+```
+
+and in particular `g` is irreducible over `O`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem typeOf_leaf_resDeg_one (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g : Polynomial O}
+    (hg : g.Monic) (hpure : IsPure φ g u ℓ) (hne : (sideSet φ g u ℓ).Nonempty)
+    (h1 : sideDeg φ g u ℓ hne = 1)
+    (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ ℓ) :
+    typeOf g = ⟨{(ℓ, φ.natDegree)}⟩
+```
+
+**DEPENDS.** B.13 · B.52 · B.55 · B.56 · B.57 · landed `Uniformity.Density.typeOf_degree`
+(`TypeOf.lean:372`), `efPair_pos_of_mem` (`TypePositivity.lean:55`), `monicFactors_spec`,
+`typeOf_data`.
+
+**PROOF.**
+1. `g.natDegree = m * ℓ` (B.13 with `μ = ℓ * 1`), so `(typeOf g).degree = m*ℓ` (landed
+   `typeOf_degree hg`).
+2. Let `(e', f') ∈ (typeOf g).data`; by `typeOf_data` it is `efPair g'` for some
+   `g' ∈ monicFactors g`, which is monic irreducible with `0 < g'.natDegree`.
+3. `g'` is `(u,ℓ)`-pure with `sideDeg g' ≤ 1` (B.57 applied to the factorization
+   `g = g' * (g / g')`, plus `sideDeg` additivity and `h1`); since `g'` has positive degree its
+   `sideDeg` is `≥ 1` (B.20 and `hres`), hence `= 1`, and `sideDeg (g/g') = 0`, forcing
+   `g/g' = 1`, i.e. `monicFactors g = {g'}` **already at this step** — so step 4 is not strictly
+   needed. **Both routes are recorded; the fleet should take whichever closes, and the second is
+   preferred because it avoids B.56.**
+4. (Route via B.56.) `m ∣ f'` by B.52 and `ℓ ∣ e'` by B.55 (`inertiaDegOf g' = m`,
+   `ramIndexOf g' = ℓ`, applied to `g'` whose data is that of a `d = 1` leaf). B.56's
+   `factorizationType_eq_of_dvd` with `a := ℓ`, `b := m`, `a*b = m*ℓ = (typeOf g).degree` gives
+   `typeOf g = ⟨{(ℓ, m)}⟩`.
+5. Irreducibility is then `monicFactors g = {g}` read off the singleton.
+
+**SIZE.** 50 lines.
+
+**⚠ THE TWO ROUTES OF STEP 3/4 ARE BOTH RECORDED DELIBERATELY.** The short route (step 3) proves
+irreducibility from the `sideDeg` bookkeeping alone and then reads `(e,f)` off B.55; the long route
+(step 4) never proves irreducibility separately. `EFF.HE3.34` uses the long route (orbit counting) and
+`EFF.HE6.32` step 4 uses the short one ("Each class is one irreducible factor … forcing
+`e(g_r) = e₁ℓ`, `f(g_r) = f₁d_r` **exactly**"). Recording both is the chapter's hedge on its
+critical-path node, and a fleet agent may pick either — but it must say which, because the DEPENDS
+differ.
+
+**SOURCE.** `docs/GMN_citations.md` Cor 1.20 ("in particular, if `a_i = 1` then `G_i` is irreducible,
+`f(L/K) = m·deg ψ_i`, `e(L/K) = e`"); `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-2 ([GN15] Thm 2.3's
+last clause, `COVERS-ALL-O`); `EFF.HE6.32` step 4; `EFF.HE3.34`; `EFF.W12.27`.
+
+**TEETH.** `W12-ORACLE` (`EFF.W12.56`, `[IND]`, 0 bad / 41,923 PARI checks) → **executable
+regression** retained (PARI remains the independent engine); `HE-SIG` (`EFF.HE3.52`, all 5 `μ=3`
+stage types) → **Lean theorem** at `d = 1`.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.59 [lemma] [fresh]
+
+**STATEMENT.** *The residual-to-reduction bridge at integral slope.* Let `φ` be an order-1 key,
+`0 < u`, and let `g` be monic `(u,1)`-pure with `sideDeg = d`, so `g.natDegree = m*d`. Let `G` be the
+extracted polynomial of B.44 (`g = G.scaleRoots (π^u)`, `G` monic of degree `m*d`). Then
+
+```
+G.map (residue O)  is irreducible over ResidueField O   ↔   resPoly π φ g u 1 _ H₀  is irreducible
+                                                             over resField φ,
+```
+
+and in that case `(ResidueField O)[X] ⧸ (Ḡ) ≃+* resField φ [Y] ⧸ (resPoly …)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem irreducible_map_iff_irreducible_resPoly (hπ : Irreducible π) {φ : Polynomial O}
+    (hφ : IsKey φ) {u : ℕ} (hu : 0 < u) {g G : Polynomial O} (hg : g.Monic) (hG : G.Monic)
+    (hGdeg : G.natDegree = g.natDegree) (hscale : g = G.scaleRoots (π ^ u))
+    (hpure : IsPure φ g u 1) (hne : (sideSet φ g u 1).Nonempty) {H₀ : ℕ}
+    (hH₀ : npHgt φ g 0 = (H₀ : ℕ∞)) :
+    Irreducible (G.map (IsLocalRing.residue O)) ↔ Irreducible (resPoly π φ g u 1 hne H₀)
+```
+
+**DEPENDS.** B.15 · B.24 · B.25 · B.26 · B.28 · B.29 · B.30 · B.44 · mathlib
+`Polynomial.Monic.irreducible_iff_irreducible_map_fraction_map`-style transfer is **not** what is
+needed; the needed tool is the identification of the two residue algebras
+(`(ResidueField O)[X] ⧸ (Ḡ)` and `resField φ [Y] ⧸ (R)`) as `ResidueField O`-algebras, plus
+`Irreducible` ⟺ the quotient is a field (`Ideal.Quotient.isField_iff_isMaximal`,
+`PrincipalIdealRing.isMaximal_of_irreducible`).
+
+**PROOF.**
+1. Both quotients are `ResidueField O`-algebras of dimension `m*d`: the left by
+   `hGdeg` and `Monic.natDegree_map`, the right by B.26 (`[resField φ : F] = m`) and B.30
+   (`(resPoly).natDegree = d`).
+2. Construct the isomorphism: the `φ`-development of `g` at the on-side abscissae `0, 1, …, d`
+   (spacing `ℓ = 1`) has digits `resCoeff k`; the reduction `Ḡ` has coefficients
+   `digAt π (u*(m*d - i)) (g.coeff i)` (B.44's third clause). Assembling, `Ḡ` is the image of
+   `resPoly` under the `ResidueField O`-algebra map `resField φ [Y] → (ResidueField O)[X]`
+   induced by `y ↦ X^?`… **this is the node's real content and it is where the index bookkeeping
+   between the `φ`-development and the plain coefficient expansion is discharged.** The honest
+   construction: both algebras are `(ResidueField O)[X, y] ⧸ (φ̄(y), R(X-ish))`-shaped, and the
+   isomorphism is `Ideal.quotientEquivAlgOfEq` after showing the two ideals coincide.
+3. `Irreducible p` over a field ⟺ `K[X]⧸(p)` is a field (for `p` monic of positive degree). Transport
+   along step 2.
+
+**SIZE.** 100 lines. **SPLIT MANDATED → 3**: `B59a.lean` = step 1 (the two dimensions);
+`B59b.lean` = step 2 (the algebra isomorphism, the hard part); `B59c.lean` = step 3 and the contract.
+
+**⚠ DECLARED WEAKNESS.** Step 2 is the least-specified step in this chapter. The statement is certain
+(it is the standard identification `F[X]/(Ḡ) ≅ F_φ[Y]/(ψ)` for an unramified leaf) but the *route* is
+described rather than pinned, and the index bookkeeping between a `φ`-development and a plain
+coefficient expansion at `ℓ = 1` has not been checked line by line here. **A fleet agent that cannot
+close step 2 must return `BLOCKED` with the two candidate ideals written out**, and the fallback is to
+drop B.60's `ℓ = 1` row to the `d = 1` case (already covered by B.58), i.e. to lose the
+`ℓ = 1, d ≥ 2` region — **which would leave the whole `d ≥ 2` region conditional and would make
+`B-BOX-1` the chapter's only open item rather than one of two.** §14 item 9.
+
+**SOURCE.** `docs/GMN_citations.md` fact (I) and Cor 1.20; `EFF.HE3.69` (R8-3, `LEMMA HE3-4D1`: "the
+classical Newton-polygon and Hensel read produces the corresponding factor of degree `ℓd`" — this node
+is the `ℓ = 1` half of that read); `EFF.HE3.68` (R8-2, `LEMMA HE3-4U`, the unramified branch).
+
+**TEETH.** `HE-SIG` → **executable regression** retained.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.60 [theorem] [fresh]
+
+**STATEMENT.** *THE LEAF THEOREM at integral slope (unconditional, any `d`).* Over the complete
+bundle, let `φ` be an order-1 key with `m = φ.natDegree`, `0 < u`, and let `g` be monic `(u,1)`-pure
+with `sideDeg = d > 0`, `g.map (residue O) = (φ.map (residue O))^d`, and residual polynomial
+irreducible over `resField φ`. Then
+
+```
+typeOf g = ⟨{(1, m * d)}⟩.
+```
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem typeOf_leaf_integral_slope (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u : ℕ} (hu : 0 < u) {g : Polynomial O} (hg : g.Monic)
+    (hpure : IsPure φ g u 1) (hne : (sideSet φ g u 1).Nonempty) {H₀ : ℕ}
+    (hH₀ : npHgt φ g 0 = (H₀ : ℕ∞)) (hd : 0 < sideDeg φ g u 1 hne)
+    (hres : g.map (IsLocalRing.residue O)
+      = (φ.map (IsLocalRing.residue O)) ^ (sideDeg φ g u 1 hne))
+    (hirr : Irreducible (resPoly π φ g u 1 hne H₀)) :
+    typeOf g = ⟨{(1, φ.natDegree * sideDeg φ g u 1 hne)}⟩
+```
+
+**DEPENDS.** B.13 · B.44 · B.59 · landed `Uniformity.Density.typeOf_inert_of_irreducible_map`
+(`InertLeaf.lean:179`), `typeOf_scaleRoots` (`TypeOfInvariance.lean:486`).
+
+**PROOF.**
+1. B.44 gives monic `G` of degree `g.natDegree = m*d` with `g = G.scaleRoots (π^u)` and
+   `typeOf g = typeOf G`. (B.44's hypothesis `suppVal X f u 1 = u*n` is here
+   `suppVal φ g u 1 = u * d` from `IsPure` and B.13 — **note the different normalisation: B.44 is
+   stated at `φ = X`, and this node needs its general-`φ` analogue.** The general-`φ` analogue is
+   B.44's proof with `dev φ` in place of `C ∘ coeff`; **the orchestrator must book B.44 in the
+   general-`φ` form, or book a second node B.44′. Recorded as a re-plan item.**)
+2. B.59 with `hirr` gives `Irreducible (G.map (residue O))`.
+3. Landed `typeOf_inert_of_irreducible_map hG (0 < m*d) step 2` gives
+   `typeOf G = ⟨{(1, G.natDegree)}⟩ = ⟨{(1, m*d)}⟩`.
+4. Conclude by step 1.
+
+**SIZE.** 30 lines.
+
+**⚠ RE-PLAN ITEM DECLARED IN STEP 1.** B.44 as written is `φ = X`-only; this node needs the
+general-`φ` extraction. The orchestrator should either widen B.44's SIGNATURE to a general order-1 key
+(preferred: the landed `exists_monic_scaleRoots` is stated for a general monic `f` and does not know
+about `φ`, so the widening is in the *hypothesis translation* B.15 → general `φ`, i.e. a new node) or
+book **B.44′**. This is a blueprint defect of the "missing supplier" class — exactly chapter G's
+**A-7** (`G.31`'s missing supplier, cured by adding a micro-node `G.30a`) — and it is booked here
+rather than discovered at fleet time. **§14 item 10.**
+
+**SOURCE.** `EFF.HE3.68`, `.69` (R8-2/R8-3, the unramified and `D′=1` branches, both "PROOF-ONLY" in
+the corpus and both proved here); `docs/GMN_citations.md` Cor 1.20; landed `InertLeaf.lean`.
+
+**TEETH.** `HE-SIG`, `W12-ORACLE` → **executable regression** retained.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.61 [theorem] [fresh]
+
+**STATEMENT.** *THE LEAF THEOREM in general, conditional on `B-BOX-1`.* Over the complete bundle, let
+`φ` be an order-1 key with `m = φ.natDegree`, `0 < u`, `0 < ℓ`, `Nat.Coprime u ℓ`, and let `g` be
+monic `(u,ℓ)`-pure with `sideDeg = d > 0`, `g.map (residue O) = (φ.map (residue O))^{ℓd}`, and
+residual polynomial `resPoly` a unit times an **irreducible** `ψ` of degree `d`. Assume
+
+```
+(B-BOX-1)   ∀ g' ∈ monicFactors g,  m * d ∣ inertiaDegOf g'.
+```
+
+Then `typeOf g = ⟨{(ℓ, m*d)}⟩`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem typeOf_leaf_of_resDeg_lower_bound (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g : Polynomial O}
+    (hg : g.Monic) (hpure : IsPure φ g u ℓ) (hne : (sideSet φ g u ℓ).Nonempty)
+    (hd : 0 < sideDeg φ g u ℓ hne)
+    (hres : g.map (IsLocalRing.residue O)
+      = (φ.map (IsLocalRing.residue O)) ^ (ℓ * sideDeg φ g u ℓ hne))
+    (hBOX : ∀ g' ∈ monicFactors g,
+      φ.natDegree * sideDeg φ g u ℓ hne ∣ inertiaDegOf g') :
+    typeOf g = ⟨{(ℓ, φ.natDegree * sideDeg φ g u ℓ hne)}⟩
+```
+
+**DEPENDS.** B.13 · B.54 · B.56 · B.57 · landed `typeOf_degree`, `typeOf_data`, `efPair_pos_of_mem`,
+`ramIndexOf_mul_inertiaDegOf`, `monicFactors_spec`.
+
+**PROOF.**
+1. `g.natDegree = m*ℓ*d` (B.13), so `(typeOf g).degree = m*ℓ*d`.
+2. For `g' ∈ monicFactors g`: `m*d ∣ inertiaDegOf g' = f'` by `hBOX`. Also `f' ∣ m*d'` with
+   `d' := sideDeg g' ≤ d` by B.57 and B.54 applied to `g'`, so `m*d ∣ m*d'` forces `d' = d`, hence
+   `g'.natDegree = m*ℓ*d = g.natDegree`, hence `monicFactors g = {g}` and `f' = m*d`.
+3. `ramIndexOf g = g.natDegree / f' = ℓ` (landed `ramIndexOf_mul_inertiaDegOf`).
+4. Conclude, or alternatively apply B.56 with `a := ℓ`, `b := m*d`.
+
+**SIZE.** 34 lines.
+
+**⚠ `B-BOX-1` IS AN EXPLICIT HYPOTHESIS, NOT AN AXIOM AND NOT A `sorry`.** It appears in exactly one
+place — this node's `hBOX` — and in the corollaries that consume this node (B.71, B.79). H-7 records
+its precise content (the order-1 root label: the residue field of the leaf realises a root of `ψ` over
+`resField φ`), its ledger neighbours (`HYP.01`, `HYP.12`, both **[CORE-SET]**), and the fact that the
+chapter's two unconditional rows (B.58, B.60) do not touch it. **No node outside `hBOX`'s consumers
+may assume it**; an agent that finds itself wanting it has left the perimeter and must return
+`BLOCKED: B-BOX-1`.
+
+**SOURCE.** `docs/GMN_citations.md` Cor 1.20 (the full statement, of which this is the conditional
+Lean form); `EFF.HE6.29` (`[PIN HE6-ROOT-LABEL]`, Cor HE6-2″ — the corpus's proof of exactly `hBOX`,
+through the resultant account that H-2 puts out of scope); `EFF.HE3.26` (`COROLLARY HE3-0′`:
+"`f₁f_s ∣ f(L_ρ)`").
+
+**TEETH.** `HE6-T-CASEB` (`EFF.HE6.37`, `.52`: "3 distinct PARI σ on identical outer data — box is
+real") → **executable regression** retained, and note carefully: that tooth certifies
+**HE6-BOX-1** (the *repeated* residual factor, `a ≥ 2`), which is a **different** open item from
+`B-BOX-1` (a *multiplicity-1* factor of *degree* `d ≥ 2`). The two must not be conflated; see B.66.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.62 [lemma] [fresh] [OPTIONAL — the `B-BOX-1` repair route]
+
+**STATEMENT.** *`B-BOX-1` from the spectral norm.* Let `g` be a leaf as in B.61 and let
+`L := FractionRing (AdjoinRoot g)`. Then the unique extension of the valuation of `K = FractionRing O`
+to `L` has value group `(1/ℓ)·addVal(K^*)`, its valuation ring has residue field containing a root of
+`ψ` over `resField φ`, and consequently `m*d ∣ inertiaDegOf g'` for every monic irreducible factor
+`g'` of `g` — i.e. `hBOX` of B.61 holds.
+
+**SIGNATURE.** *(not frozen — this node is OPTIONAL and its interface depends on which mathlib route
+survives contact; the orchestrator must re-sign it before it fires.)*
+
+**DEPENDS.** B.30 · B.36 · B.49 · B.53 · mathlib, at our pin `v4.31.0` (rev `fabf563a`), per
+`docs/VENDOR_QUARRY_MAP_2026-08-15.md` §2.1:
+`Mathlib/Analysis/Normed/Unbundled/SpectralNorm.lean:695` `spectralNorm_unique`,
+`:766` `spectralNorm_unique_field_norm_ext`,
+`:987` `spectralNorm_eq_norm_coeff_zero_rpow` (`|x|_L = |N_{L/K}(x)|_K^{1/[L:K]}`),
+`:115` `spectralValue`, `:237` `norm_root_le_spectralValue`;
+`Mathlib/Analysis/Normed/Field/Krasner.lean:56` `IsKrasner`, `:63` `IsKrasner.krasner`,
+`:117` `IsKrasner.of_completeSpace`.
+
+**PROOF SKETCH** (a sketch, not a contract — this node is not fireable as written).
+1. `spectralNorm_unique` gives the unique multiplicative extension of the norm to `L`.
+2. `spectralNorm_eq_norm_coeff_zero_rpow` converts it to `|N_{L/K}(x)|^{1/[L:K]}`, i.e. gives
+   `addVal (norm x) = [L:K] · v_L(x)` after the multiplicative-to-additive translation.
+3. `v_L(φ(α)) = u/ℓ` from B.53 and step 2; `Nat.Coprime u ℓ` then forces the value group to contain
+   `(1/ℓ)ℤ`.
+4. `β := φ(α)^ℓ / π^u` is a unit of the valuation ring, and B.30's `resCoeff` computation gives
+   `ψ(β̄) = 0` in the residue field — the **root label**.
+5. The residue field therefore contains `resField φ [Y] ⧸ (ψ)`, of `ResidueField O`-degree `m*d`, and
+   step 2 gives `m*d ∣ addVal (norm x)` for every `x`.
+
+**SIZE.** unknown; estimated **250–400 lines**, opus-tier, and dominated by a cost the sketch above
+hides: **mathlib's spectral norm is `ℝ`-valued and multiplicative while all of `leanfinal` is
+`ℕ∞`-valued and additive.** Step 2's "translation" is a real bridge — `addVal` ↔ `‖·‖` with
+`‖x‖ = c^{-addVal x}` for a chosen `c > 1` — and it has no precedent anywhere in `leanfinal`
+(`StrongHensel.lean:206`'s `section Dictionary` is the only `addVal` plumbing in the repo and it is
+divisibility-to-`addVal`, not norm-to-`addVal`).
+
+**⚠ RECOMMENDATION TO THE ORCHESTRATOR: DO NOT FIRE THIS NODE WITH THE CHAPTER.** Land B.58 and B.60
+first, ship the chapter with `B-BOX-1` carried as B.61's hypothesis, and book B.62 as a separate unit
+with its own design pass. The reason is scheduling, not doubt: B.62 is the only node in the chapter
+whose size is not bounded by a landed template, and the two unconditional rows of D-3's perimeter are
+worth more than the third row is.
+
+**SOURCE.** `docs/VENDOR_QUARRY_MAP_2026-08-15.md` §2.1; `EFF.HE6.29`; `EFF.HE3.26`;
+`docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-2.
+
+**TEETH.** `HE6-XI` (`EFF.HE6.46`, ξ-side height reads + orthogonality, 24 + 6) → **executable
+regression** retained.
+
+**ENVIRONMENT.** ENV-C (plus whatever normed-field instances the mathlib route needs — undetermined).
+
+---
+
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
