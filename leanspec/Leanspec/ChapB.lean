@@ -444,8 +444,12 @@ noncomputable def digPoly (π : O) (k : ℕ) (a : Polynomial O) : Polynomial (Re
 axiom digPoly_coeff (hπ : Irreducible π) (k i : ℕ) (a : Polynomial O) :
     (digPoly π k a).coeff i = digAt π k (a.coeff i)
 
-/-- **B.24b** [lemma] ENV-A′. -/
-axiom degree_digPoly_le (k : ℕ) (a : Polynomial O) : (digPoly π k a).degree ≤ a.degree
+/-- **B.24b** [lemma] ENV-A′. [repaired: A-F.5] `(hπ : Irreducible π)` added — the
+unhypothesized form is equivalent to `∀ π k, digAt π k (0 : O) = 0`, independent at our pin
+(the `Exists.choose` witness of `π ^ k ∣ 0` is unconstrained when `π ^ k = 0`); `hπ` forces
+`π ^ k ≠ 0`, which suffices (blueprint amendment A-F.5). -/
+axiom degree_digPoly_le (hπ : Irreducible π) (k : ℕ) (a : Polynomial O) :
+    (digPoly π k a).degree ≤ a.degree
 
 /-- **B.24c** [lemma] ENV-A′. -/
 axiom digPoly_eq_map (hπ : Irreducible π) {k : ℕ} {a b : Polynomial O}
