@@ -4827,17 +4827,229 @@ scored per D-4(c) on the aligned rows only.
 
 ### NODE B.78 [lemma] [fresh]
 
-**STATEMENT.** *The window dictionary.* `monicPoly` congruence, and window-exactness of the Hensel
-peel: coprime-reduction factorizations of `π^N`-congruent polynomials are `π^N`-congruent
-blockwise (`EFF.W12.21`'s injectivity leg). *(stub)*
+**STATEMENT.** *The window dictionary: `monicPoly` congruence, and window-exactness of the Hensel
+peel.* Three clauses, in increasing strength.
+
+* **(i) `monicPoly` congruence.** For `a b : Fin n → O` with `π^N ∣ (a i − b i)` for every `i`:
+  `π^N ∣ (monicPoly a − monicPoly b).coeff j` for every `j` (the top coefficients cancel; the rest
+  are the vector differences).
+* **(ii) Binary block stability.** Let `f = g·h` and `f' = g'·h'` with `g, h, g', h'` monic,
+  `ḡ = ḡ' = g₀` and `h̄ = h̄' = h₀` in `(ResidueField O)[X]` with `IsCoprime g₀ h₀`. If
+  `π^N ∣ (f − f').coeff i` for every `i`, then `π^N ∣ (g − g').coeff i` and
+  `π^N ∣ (h − h').coeff i` for every `i`.
+* **(iii) Finset block stability.** The same with `f = ∏_{i ∈ s} g i`, `f' = ∏_{i ∈ s} g' i`, the
+  reductions `(g i).map (residue O) = (g' i).map (residue O) = g₀ i` monic and **pairwise
+  coprime**: then `π^N ∣ ((g i) − (g' i)).coeff j` for every `i ∈ s` and every `j`.
+
+No completeness is assumed anywhere: the factorizations are **given**, and the content is that the
+level-`N` window of the product pins the level-`N` window of each factor. (Producing the
+factorizations is landed Hensel — `exists_monic_factorization_finset` — and needs ENV-B; that
+happens in B.80's proof, not here.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem monicPoly_congr {n N : ℕ} {a b : Fin n → O}
+    (hab : ∀ i, π ^ N ∣ (a i - b i)) (j : ℕ) :
+    π ^ N ∣ (Uniformity.Density.monicPoly a - Uniformity.Density.monicPoly b).coeff j
+
+theorem factor_congr_of_coprime (hπ : Irreducible π) {N : ℕ} {g h g' h' : Polynomial O}
+    (hg : g.Monic) (hh : h.Monic) (hg' : g'.Monic) (hh' : h'.Monic)
+    {g₀ h₀ : Polynomial (ResidueField O)} (hcop : IsCoprime g₀ h₀)
+    (hgr : g.map (IsLocalRing.residue O) = g₀) (hhr : h.map (IsLocalRing.residue O) = h₀)
+    (hgr' : g'.map (IsLocalRing.residue O) = g₀) (hhr' : h'.map (IsLocalRing.residue O) = h₀)
+    (hff' : ∀ i, π ^ N ∣ (g * h - g' * h').coeff i) :
+    (∀ i, π ^ N ∣ (g - g').coeff i) ∧ (∀ i, π ^ N ∣ (h - h').coeff i)
+
+theorem peel_congr (hπ : Irreducible π) {N : ℕ} {ι : Type*} [DecidableEq ι] {s : Finset ι}
+    {g g' : ι → Polynomial O} {g₀ : ι → Polynomial (ResidueField O)}
+    (hgmon : ∀ i ∈ s, (g i).Monic) (hgmon' : ∀ i ∈ s, (g' i).Monic)
+    (h₀mon : ∀ i ∈ s, (g₀ i).Monic)
+    (hcop : ∀ i ∈ s, ∀ j ∈ s, i ≠ j → IsCoprime (g₀ i) (g₀ j))
+    (hgr : ∀ i ∈ s, (g i).map (IsLocalRing.residue O) = g₀ i)
+    (hgr' : ∀ i ∈ s, (g' i).map (IsLocalRing.residue O) = g₀ i)
+    (hff' : ∀ k, π ^ N ∣ ((∏ i ∈ s, g i) - (∏ i ∈ s, g' i)).coeff k) :
+    ∀ i ∈ s, ∀ k, π ^ N ∣ ((g i) - (g' i)).coeff k
+```
+
+**DEPENDS.** landed `Uniformity.Hensel.natDegree_eq_of_map_eq` (`HenselFactorization.lean`),
+`degree_sub_lt_of_monic_of_natDegree_eq` (ibid.), `Uniformity.Hensel.monic_factorization_unique`
+(`HenselFactorization.lean:694` — the `N = ∞` limit of clause (ii), whose proof shape
+(coprimality + degree bound) is the induction step's template) · landed
+`Uniformity.Density.monicPoly` (`LocalData.lean:151`) · mathlib `Polynomial.coeff_sub`,
+`Polynomial.coeff_mul`, `Finset.prod` API, `IsCoprime.prod_right`.
+
+**PROOF.**
+1. **(i).** `monicPoly a − monicPoly b = ∑ i, C (a i − b i) * X^i` (the `X^n` cancels); its `j`-th
+   coefficient is `a j − b j` for `j < n` and `0` otherwise; both are divisible by hypothesis.
+2. **(ii), by induction on `k ≤ N`**: claim `π^k ∣ (g − g').coeff i` and `π^k ∣ (h − h').coeff i`
+   for all `i`. Base `k = 1`: `ḡ = ḡ'` and `h̄ = h̄'` are the hypotheses (`hgr/hgr'` etc.), and
+   `map (residue O) (g − g') = 0` is coefficientwise `π ∣ ·`.
+3. Step `k → k+1` (`k ≥ 1`, `k < N`): write `A := g' − g`, `B := h' − h`; by the induction
+   hypothesis every coefficient of `A, B` is in `(π^k)`, and `deg A < deg g`, `deg B < deg h`
+   (monic, equal degrees via `natDegree_eq_of_map_eq` twice and
+   `degree_sub_lt_of_monic_of_natDegree_eq`). Expand:
+   `g'h' − gh = A·h + g·B + A·B`, so `A·h + g·B ≡ (g'h' − gh) ≡ 0 mod π^{k+1}` — the `A·B` term
+   has coefficients in `(π^{2k}) ⊆ (π^{k+1})` since `k ≥ 1`, and `g'h' − gh = f' − f` has
+   coefficients in `(π^N) ⊆ (π^{k+1})`.
+4. Divide by `π^k` coefficientwise (each coefficient of `A, B` is `π^k·(something)`, `O` a domain)
+   and reduce mod `π`: with `Ā₁, B̄₁` the reductions of the quotients,
+   `Ā₁·h₀ + g₀·B̄₁ = 0` in `(ResidueField O)[X]`. Hence `g₀ ∣ Ā₁·h₀`; coprimality
+   (`hcop.dvd_of_dvd_mul_right` shape) gives `g₀ ∣ Ā₁`; and `deg Ā₁ ≤ deg A < deg g = deg g₀`
+   forces `Ā₁ = 0`, i.e. `π^{k+1} ∣ A.coeff i` for every `i`. Symmetrically `B̄₁ = 0`. **This is
+   `EFF.W12.21`'s displayed injectivity proof, verbatim in structure** ("Write
+   `f_i′ = f_i + π^{k−1}A_i`, `deg A_i < m_i d_i` … coprimality gives `P̄_i^{m_i} | Ā_i`, forcing
+   `Ā_i = 0` by degree").
+5. **(iii), by `Finset.induction` on `s`** : split `∏_{s} = g i₀ * ∏_{s \ i₀}`; the complement
+   product is monic with reduction `∏_{j ≠ i₀} g₀ j`, coprime to `g₀ i₀` by
+   `IsCoprime.prod_right` over `hcop`; clause (ii) peels `i₀` and hands the complement product
+   congruence to the induction hypothesis.
+
+**SIZE.** 116 lines. **SPLIT MANDATED → 2** (recorded in the AMENDMENT block): `B78a.lean` =
+clauses (i)–(ii) (steps 1–4); `B78b.lean` = clause (iii) (step 5, consuming B78a).
+
+**⚠ CLAUSE (ii) AT `N = "∞"` IS LANDED; THIS NODE IS ITS FINITE-PRECISION FORM.** Landed
+`monic_factorization_unique` proves `g = g'` from `g·h = g'·h'` exactly; this node proves
+`g ≡ g' mod π^N` from `g·h ≡ g'·h' mod π^N`. The landed proof cancels in one step (divisibility
+plus a degree bound); the finite-precision form needs the height-by-height induction because
+division by `h'` is not available mod `π^N`. The landed lemma is still consumed — B.80 uses it to
+show that its conclusion does not depend on WHICH peel of the representative was supplied.
+
+**SOURCE.** `EFF.W12.21` (`LEMMA W12-S2.1`, "the level-0 product structure (window-exact
+Hensel)"), statement AND quoted proof — clauses (ii)/(iii) are its injectivity leg over `O`
+instead of `O/π^N` (the corpus works in `O/π^N` where the statement is a bijection; this chapter
+needs only the congruence direction, which is the same induction); `EFF.W12.85` step 3 (the same
+mechanism "now on the weighted side modules" — NOT transcribed, that is chapter C's); the
+surjectivity leg of `EFF.W12.21` is landed `exists_monic_factorization_finset`
+(`MultiHensel.lean:111`) and is consumed by B.67, not re-proved here.
+
+**TEETH.** `W12-BLOCK` (0/1,594,670 — the Hensel product identity and fiber bijection, pointwise
+on every DBL member; guards `EFF.W12.21`) → **Lean theorem** (this node is the injectivity half;
+the surjectivity half is landed and its tooth is discharged at B.67).
+
+**ENVIRONMENT.** ENV-A' (clause (i) is even `π`-hypothesis-free but is stated in ENV-A' for
+uniformity; **no completeness** — see the STATEMENT's last paragraph).
 
 ---
 
 ### NODE B.79 [theorem] [fresh]
 
-**STATEMENT.** *The block certificate (R8-1's order-1 certificate).* A visible block with separable
-(terminal) residuals in D-3's perimeter has its `typeOf` pinned across the entire `π^N`-congruence
-class, with value `order1Type`. *(stub; SPLIT MANDATED → 2)*
+**STATEMENT.** *The block certificate — R8-1's order-1 certificate, in two halves.* Over the
+complete bundle, let `φ` be an order-1 key with `m = φ.natDegree`, and `g` monic with
+`g.map (residue O) = (φ.map (residue O))^μ`, `0 < μ`. Assume
+
+* **(clause 1 of `EFF.HE3.67`)** `hterm : ¬ NeedsDescent π φ g` — every (terminal) residual
+  polynomial of every slope of `g` is separable (B.73; at order 1 every residual is terminal);
+* `hperim` — every `(slope, irreducible residual factor)` pair lies in D-3's unconditional
+  perimeter (`ℓ = 1` or `deg ψ = 1`), or `B-BOX-1` holds for the pairs outside it *(the same
+  clause as B.63's `hperim`; exact form in the leanspec stub, §12 item 4)*.
+
+Then:
+
+* **(a — the value.)** `typeOf g = order1Type π φ g` (B.66's order-1 datum is the actual type).
+* **(b — the certificate.)** If moreover **(clause 2 of `EFF.HE3.67`)** `hvis : Visible π φ g N`,
+  then for **every** monic `g'` of the same degree with `π^N ∣ (g − g').coeff i` for all `i`:
+
+```
+typeOf g' = order1Type π φ g   (=  typeOf g).
+```
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem typeOf_eq_order1Type (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {g : Polynomial O} (hg : g.Monic) {μ : ℕ} (hμ : 0 < μ)
+    (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (hterm : ¬ NeedsDescent π φ g)
+    (hperim : ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField φ), …) :
+    typeOf g = order1Type π φ g
+
+theorem typeOf_congr_of_certificate (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {g : Polynomial O} (hg : g.Monic) {μ : ℕ} (hμ : 0 < μ)
+    (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (hterm : ¬ NeedsDescent π φ g)
+    (hperim : ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField φ), …)
+    {N : ℕ} (hvis : Visible π φ g N)
+    {g' : Polynomial O} (hg' : g'.Monic) (hdeg : g'.natDegree = g.natDegree)
+    (hgg' : ∀ i, π ^ N ∣ (g - g').coeff i) :
+    typeOf g' = order1Type π φ g
+```
+*(the `hperim` clause is byte-identical to B.63's; both are spelled out once, in the leanspec stub
+of §12 item 4, and the stub is the single source for both — a divergence there is a stub-stage
+blueprint defect.)*
+
+**DEPENDS.** (a): B.13 · B.42 · B.45 · B.58 · B.60 · B.61 · B.63 · B.63a (`typeOf_prod`) · B.66.
+(b): (a) · B.73 · B.74 · B.75 · B.76 (`visible_congr`) · B.77 (all three transport clauses) ·
+landed `Uniformity.Hensel.natDegree_eq_of_map_eq`.
+
+**PROOF.**
+1. **(a).** B.63 (whose `hsep` is `hterm` unfolded — B.73's `NeedsDescent` is the `∃`-negation of
+   exactly B.63's `∀`-clause, a `push_neg` away) factors `g` over the pairs
+   `(slope, irreducible residual factor)` and gives
+   `(typeOf g).data = Σ_{(S,ψ)} {(ℓ_S, m·deg ψ)}`.
+2. B.66's `order1Type π φ g` is by definition the same multiset, indexed by B.66's canonical
+   finsets `slopeFinset`/`resFactorFinset`. **Tying step 1's existentially produced index family
+   to the canonical finsets is this half's real work** (B.63's `T` is existential): the proof
+   re-reads B.63's own steps 1–2 — the slope split is B.42's, whose slopes are by construction
+   the elements of `slopeFinset`; the residual split is B.45's, whose factors are
+   `resFactorFinset`'s — so the two multisets are equal term by term. `FactorizationType.ext`
+   closes. *(See the ⚠ RE-PLAN item.)*
+3. **(b).** Transport every hypothesis of (a) from `g` to `g'`:
+   `g'.map (residue O) = (φ.map (residue O))^μ` — from `hgg'` at any `i` with the reduction map
+   (the `N ≥ 1` needed is automatic: `hvis` forces `0 < N`, since `Visible` at `N = 0` is
+   `∃ i, ¬ 1 ∣ …`, false); `¬ NeedsDescent π φ g'` — by B.74's `needsDescent_congr` (which
+   consumes B.75 and B.77, and whose hypotheses are exactly `hgg'`, `hvis`); `hperim` for `g'` —
+   its data (slopes, residual factors) are **equal**, not just corresponding, by B.77's
+   `sideSet_congr`/`resPoly_congr`, so the clause transports by rewriting.
+4. Apply (a) to `g'`: `typeOf g' = order1Type π φ g'`.
+5. `order1Type π φ g' = order1Type π φ g`: B.66's definition reads only `slopeFinset` and
+   `resFactorFinset`, both of which are built from `sideSet`/`resPoly` data that B.77 transports
+   (a ~10-line congruence unfold, private to this node — `order1Type_congr`).
+
+**SIZE.** (a) 60 lines + (b) 40 lines. **SPLIT MANDATED → 2** (§2's table, honored):
+`B79a.lean` = `typeOf_eq_order1Type`; `B79b.lean` = `typeOf_congr_of_certificate`.
+
+**⚠ RE-PLAN ITEM: B.66's PRIVATE HELPERS BECOME SHARED SUPPLIERS.** B.66 defined
+`slopeFinset`/`resFactorFinset` as private helpers "and if either turns out to be reusable the
+orchestrator books it separately" — step 2 and step 5 make both reusable (B.79a needs them to
+*state* nothing but to *prove* everything; the private-copy ban of §0.2 applies). **The
+orchestrator must book B.66a (`slopeFinset`/`resFactorFinset` + their membership lemmas
+`mem_slopeFinset ↔ (sideSet …).Nonempty ∧ 1 ≤ card ∧ …`, `mem_resFactorFinset ↔ ψ ∈ (B.45
+factorization)`) before B.79a fires** — the same missing-supplier class as chapter G's A-7 and
+this chapter's B.44′/B.63a. Booked here rather than discovered at fleet time. **§14 item 12**: the
+cross-read must check that B.79a step 2's "term by term" tie is actually available from B.42/B.45's
+statements as committed (if B.63's existential cannot be re-opened, B.63's SIGNATURE needs its `T`
+strengthened to the canonical finsets — a §8-owned statement refinement, same class as defect
+D-§9.1).
+
+**⚠ WHAT THIS NODE DOES *NOT* SAY.** No bound on `N` in terms of `μ`, `λ`, or anything else: the
+refuted `LEMMA HE3-5` bullet ("one more window unit", `EFF.HE3.37`) is **not** transcribed, per
+H-4 and D-4(c). The hypothesis is `Visible` — the member's own polygon in the window — and R8-1's
+counterexample (`f = Φ″³ + 5^M`, height `M` unbounded) is precisely a family where `Visible`
+demands `N > M` with `M` arbitrary. At order 1 there is additionally no recursion: R8-1's
+"apply the same criterion to that child's recentered development" has no children here (the
+recentering chain is chapter C's, H-1/B.69), so clauses 1 + 2 are the whole criterion.
+
+**SOURCE.** `EFF.HE3.67` (R8-1, the rewritten recursive certificate — clauses 1 and 2 verbatim,
+transcribed at the single order-1 node per H-4's line-221 commitment; its induction proof
+degenerates to the one-node case, which is B.63 + B.77); `EFF.HE3.15` (DEFINITION 2's decided
+leaves: "(a) the read TERMINATES with every TERMINAL residual polynomial separable … (b) every
+event along the history is lift-stable at the stage window" — clauses (a)/(b) are `hterm`/`hvis`;
+`EFF.HE3.67`'s CONDITIONALITY (i) records that R8-1 *agrees* with DEFINITION 2, correcting only
+HE3-5's bound, and this node transcribes that agreement); `EFF.W12.86` step 5 ("By the definition
+of a decided order-1 key, every terminal residual is separable. S2.3's order-1 Ore theorem then
+certifies, for every disc-nonzero lift, one étale piece for each terminal side factor with its
+displayed `(e, f)`" — strengthened here to every lift per D-4(a)/H-11); `EFF.W12.27`.
+
+**TEETH.** `HE-SIG` (`EFF.HE3.52`, 947 PARI jobs, 0 bad, all 5 `μ = 3` stage types) → **Lean
+theorem** inside D-3's perimeter, **executable regression** retained outside it (`hperim`
+carried); `HE-BND` (`EFF.HE3.55`, RE-SCOPED) → **executable regression** retained per D-4(c);
+`HE-T-CAP` (`EFF.HE3.54`) → **Lean theorem** (via B.77's clause 5 guard, consumed at step 3).
+
+**ENVIRONMENT.** ENV-C (through B.63; the transport steps alone are ENV-A', but the node's
+conclusions name `typeOf` on a factored residual read, which is §0.1's ENV-C trigger).
 
 ---
 
