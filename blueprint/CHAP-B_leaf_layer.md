@@ -5751,6 +5751,124 @@ states a count (B.82's FULL-GENERALITY note).
 
 ---
 
-<!-- RESUME: (b) COMPLETE — §10 = B.83, B.84, B.85, B.86 all landed. Next: (c) §11 (generate spec/DAG_BLUEPRINT_B.tsv from DEPENDS/SOURCE fields, run dag_build+dag_check, write section), then §12 (LeanspecB stub list), §13 (TEETH dispositions), §14 (the 13-item cross-read queue + finisher additions); then (d) A-F.2 census amendment. -->
+## 11. DAG ADDITIONS
+
+Written to `spec/DAG_BLUEPRINT_B.tsv` in `spec/dag_build.py`'s 9-column contract
+(`from-ID, to-ID, edge-kind, chapter, status, edge-class, resolution, kind-basis, evidence`),
+edge direction **consumer → supplier**, generated mechanically from this file's DEPENDS/SOURCE
+fields (the CHAP-G §11 / CHAP-H §14 route). `dag_build.py` merges every
+`spec/DAG_BLUEPRINT_*.tsv` on every rebuild (the durable-merge step, commit `c8c8ea7f`), so the
+rows survive a rebuild.
+
+| file | rows | what |
+|---|---:|---|
+| `spec/DAG_BLUEPRINT_B.tsv` | **545** | the canonical copy of this chapter's edges |
+| `spec/DAG.tsv` (merged) | +545 | the same rows, appended after the harvested rows, de-duplicated on `(from-ID, to-ID)` — verified pure additions, zero deletions |
+| `spec/DAG_NODES.tsv` (merged) | +86 | one `BP.B.<nn>` node row each, `node-kind = blueprint-node`, `class = blueprint`, `chapter = B`, `status = OPEN`, `unit-type` read off this file's headings |
+
+Every added row carries `chapter = B`, `edge-class = blueprint`, `kind-basis = blueprint`,
+`resolution = from:exact,to:exact` (blueprint edges are exact by construction — generated from
+the declared DEPENDS/SOURCE fields, not harvested from prose), and an `evidence` field beginning
+`source=blueprint | CHAP-B NODE B.<nn>`.
+
+**Edge census by target class:** `BP.B.*` **340** (intra-chapter dependency edges; acyclic,
+critical path **18 nodes** — one longest chain:
+`B.83 → B.82 → B.79 → B.63 → B.42 → B.41 → B.39 → B.37 → B.34 → B.30 → B.29 → B.28 → B.20 →
+B.17 → B.16 → B.14 → B.11 → B.07`; 12 nodes fireable immediately, layer widths
+`12, 9, 9, 9, 6, 3, 2, 2, 3, 4, 4, 3, 4, 2, 2, 4, 3, 5`); `EFF.*` **180** (transcription edges,
+59 distinct source units: HE3 **83**, W12 **57**, HE6 **38**, HE6R1 **2**); `lean:*` **22**
+(rows over 12 distinct landed-API nodes); `HYP.*` **3** (the structural edges below). These
+supersede §2's pre-composition estimates (214 edges, path 16, 17 fireable) — deltas booked in
+amendment **A-F.2**.
+
+**THE H-9 MITIGATION, EXECUTED (GC-12).** All 57 `W12` rows are emitted against the
+**shard-local** IDs that exist in `DAG_NODES.tsv` at HEAD, with the **contiguous** merged ID
+carried in the `evidence` column so the remap is mechanical (shard-2 offset `+52`). The 17
+distinct remapped units: `EFF.W12.08/.09/.21/.22/.23/.24/.25/.27/.28/.29/.51 →
+EFF.W12.s1of2.<same>` and `EFF.W12.62 → s2of2.10`, `.79 → s2of2.27`, `.83 → s2of2.31`,
+`.84 → s2of2.32`, `.85 → s2of2.33`, `.86 → s2of2.34`. Re-running the harvest against the merge
+and re-homing these to contiguous IDs is the ORCHESTRATOR item PA-3(ii) (GC-12: these rows are
+the template for that remap).
+
+**The three structural edges added by hand** — the chapter's interface to the ledger, each a
+claim a cross-reader should check:
+
+| edge | meaning |
+|---|---|
+| `BP.B.65 → HYP.14` | B.65 discharges NS-6 (`HYP.14`) **at order 1 only** — a PARTIAL discharge, labelled as such in the evidence column; the order-`r` statement is chapter C's (B.65's ⚠) |
+| `BP.B.58 → HYP.01` | the `(e,f)` read is over the **order** `AdjoinRoot g` (D-3); `typeOf` faithfulness `HYP.01` [CORE-SET] stays open — disclosed, not discharged (H-7) |
+| `BP.B.58 → HYP.12` | the `(e,f)` ordering convention `HYP.12` [CORE-SET] — disclosed, not discharged (H-7) |
+
+**⚠ TWO ROWS ARE DISAMBIGUATION CITES, NOT TRANSCRIPTION, AND THE TSV CANNOT SAY SO** (the
+`BP.H.26 → BP.G.65` caveat class). The two `EFF.HE6R1.*` rows (`BP.B.64 → EFF.HE6R1.09` and
+`→ .29`) are generated because B.64's SOURCE cites `LEMMA HE6R1-1`'s jump condition **in order to
+say it is a different statement** (the level-2 trigger, not this chapter's order-1 stopping
+criterion — H-3). A cross-reader must read them as *"B.64 was checked against HE6R1 and found
+distinct"*, not as chapter B transcribing HE6R1 (it does not, per H-3).
+
+**⚠ MICRO-NODES ARE CITED VIA THEIR PARENTS.** `dag_build.py`'s `BP_ID` accepts numeric node
+IDs only, so DEPENDS references to the RE-PLAN suppliers B.63a (`typeOf_prod`) and B.66a
+(`slopeFinset`/`resFactorFinset` + membership lemmas) are emitted against `BP.B.63` / `BP.B.66`
+with the micro-node named in the evidence column. The stub-order consequence (B.66a before
+B.79a) is booked in §12, not in the TSV.
+
+**Checker status after the merge, RUN** (`python3 spec/dag_build.py && python3
+spec/dag_check.py`, output committed at `spec/dag_check_output.txt`):
+
+* builder: `nodes 2717  edges 2938 (harvested 1708 + blueprint 1230 from 3 file(s))` — the three
+  blueprint files are G's 327, H's 358 and B's 545 ✓;
+* **[1] dangling-ID check PASS** — every endpoint declared (all 59 `EFF.*` targets verified
+  against `DAG_NODES.tsv` **before** generation; the W12 targets exist precisely because the
+  rows are shard-local per the mitigation above);
+* **[2] cycle detection PASS** — **no new SCC**: the exact-resolved subgraph keeps exactly the
+  four adjudicated SCCs it had before chapter B; the chapter's own 340 intra edges are acyclic
+  with critical path 18 (verified independently before the merge);
+* **[3] capstone reachability 640 / 2717 (23.6%)** — see finding (a) below; the seven ledger
+  NOT-REACHED rows stay **CONSISTENT 7/7**;
+* **[5] chapter cut**: chapter `B` grows 319 → **405 nodes**; cross-chapter dependency edges
+  666 → **748** (+82 = this chapter's 22 `lean:` + 3 `HYP.` + 57 shard-local `W12` rows,
+  exactly); backward arcs 68 → **71 (9.5%, down from 10.2%)**;
+* **[6] fence check**: 82 crossings, **unchanged** — chapter B's rows add **zero** fence
+  crossings (all 82 are harvested `xref` rows);
+* **[7] resolution census**: COARSE 650 of 2938 = **22.1%** (down from 27.2% — all 545 new
+  edges are `from:exact,to:exact`);
+* **RESULT: PASS**, exit code 0.
+
+**⚠ TWO CHECKER FINDINGS ABOUT CHAPTER B, BOTH EXPECTED, BOTH WORTH STATING PLAINLY.**
+
+**(a) Zero of the 86 chapter-B nodes are capstone-reachable** (`CHAP-B 85` in the
+connected-but-unreachable census; B.86 is edge-less by the G.78/H.99 census-gate precedent and
+counts as isolated). **That is the honest structure of a supplier chapter whose consumers are
+unauthored, not a defect**: chapter B's terminal nodes (B.20, B.30, B.58, §7/§9 per the OUT
+interface of BRIEF B-FIN) are consumed by chapters C, E and I, none of which has a frozen
+blueprint yet — and GC-13's rule is exactly that unauthored chapters may NOT be given guessed
+node IDs, so the inbound wiring arrives at the orchestrator's resolution pass when C/E/I freeze.
+Chapter H showed the mirror pattern (94 of 99 unreachable, hypothesis-not-supplier); chapter B
+shows the supplier side of it. **A cross-reader must NOT "fix" this by inventing C/E node IDs.**
+
+**(b) The three new backward arcs are all `B → I` conditionality/discharge arcs** (backward
+count 68 → 71; the delta is exactly `BP.B.65 → HYP.14`, `BP.B.58 → HYP.01`, `BP.B.58 → HYP.12`).
+They are intended reading — a chapter declaring, in the graph, which ledger rows it partially
+discharges or rides — the same class as `H → I` (7) and `G → I` (4). This strengthens CHAP-H
+§14's orchestrator item 3 (the README's backward-arc table should distinguish conditionality
+arcs from mathematical ones): **14 of the 71 backward arcs are now this intended class.**
+
+**⚠ ORCHESTRATOR ITEMS.**
+1. **PA-3(ii) / the W12 remap** (carried from H-9): re-run `dag_build.py`'s harvest against the
+   merged `EFF-W12.md` and re-home this chapter's 57 shard-local rows to contiguous IDs using
+   the evidence column (mechanical; the table above is the spec).
+2. **The GC-13 resolution pass**: when chapters C/E/I freeze, resolve their consumption of
+   B.20/B.30/B.58/§7/§9 into inbound `BP.<X>.* → BP.B.*` rows (finding (a) closes then).
+3. **The `lean:` node-set gap, chapter-B instance** (CHAP-H §14 orchestrator item 1 recurring):
+   this chapter's DEPENDS fields name ~200 distinct backticked landed/mathlib declarations, of
+   which only 12 exist as `lean:` nodes; the heaviest invisible ones here are
+   `natDegree_dvd_addVal_norm`, `norm_adjoinRoot_root`, `norm_algebraMap_rootBasis`,
+   `monic_factorization_unique`, `exists_monic_lift`, `strongHensel`, `decidedAt_of_congr`'s
+   whole `DensityAPI` neighbourhood, and mathlib's `PadicInt.prime_p`. Needs the 0c′ harvest;
+   until then the DEPENDS fields are the only record.
+
+---
+
+<!-- RESUME: §11 landed + TSV generated + checker PASS committed. Next: §12 (LeanspecB stub list, 135 signed decls), §13 (TEETH dispositions), §14 (13-item queue + finisher additions); then (d) A-F.2. -->
 
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
