@@ -962,15 +962,20 @@ example (K : Type*) [Field K] [Finite K] :
 
 end Menu
 
-/-- **G.61** -/
-axiom lowers_three [IsAdicComplete (maximalIdeal O) O] :
+/-- **G.61** LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G61`, whose five conjuncts are SPLIT-MANDATED across `G61a`…`G61e` over the
+shared infrastructure `G61I`). **These are LOWER BOUNDS, not the densities** (chapter honesty block
+H-4): HM3.D's five closed forms `q³(q²−q+1)/(6(q+1)Φ)`, `q³(q²+q+1)/(2(q+1)Φ)`, `q³(q+1)/(3Φ)`,
+`q(q³+q+1)/((q+1)Φ)`, `(q²+1)/Φ` with `Φ = q⁴+q³+q²+q+1` are NOT proved here. -/
+example [IsAdicComplete (maximalIdeal O) O] :
     1 / (residueCard O : ℝ) ^ 9 ≤ decidedDensity O 3 c3split
     ∧ ((residueCard O : ℝ) ^ 3 - (residueCard O : ℝ) ^ 2) / (2 * (residueCard O : ℝ) ^ 3)
         ≤ decidedDensity O 3 c3linInert
     ∧ ((residueCard O : ℝ) ^ 3 - (residueCard O : ℝ)) / (3 * (residueCard O : ℝ) ^ 3)
         ≤ decidedDensity O 3 c3inert
     ∧ ((residueCard O : ℝ) - 1) ^ 2 / (residueCard O : ℝ) ^ 4 ≤ decidedDensity O 3 c3linRam
-    ∧ ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ 4 ≤ decidedDensity O 3 c3ram
+    ∧ ((residueCard O : ℝ) - 1) / (residueCard O : ℝ) ^ 4 ≤ decidedDensity O 3 c3ram :=
+  lowers_three (O := O)
 
 /-! ## §9 — the 53-family index and the HEX3 arithmetic layer (G.62–G.72) -/
 
@@ -1136,17 +1141,24 @@ example [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
     residueCard O ^ N ≤ undecidedCount O 3 N :=
   card_le_undecidedCount_three (N := N)
 
-/-- **G.77a** -/
-axiom gate_three_padic_two :
+/-- **G.77a** LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G77`). -/
+example :
     (1 : ℝ) / 512 ≤ decidedDensity ℤ_[2] 3 c3split
       ∧ (1 : ℝ) / 4 ≤ decidedDensity ℤ_[2] 3 c3linInert
       ∧ (1 : ℝ) / 4 ≤ decidedDensity ℤ_[2] 3 c3inert
       ∧ (1 : ℝ) / 16 ≤ decidedDensity ℤ_[2] 3 c3linRam
-      ∧ (1 : ℝ) / 16 ≤ decidedDensity ℤ_[2] 3 c3ram
+      ∧ (1 : ℝ) / 16 ≤ decidedDensity ℤ_[2] 3 c3ram :=
+  gate_three_padic_two
 
-/-- **G.77b** -/
-axiom gate_three_hmenu3_containment_two :
+/-- **G.77b** LANDED (wave-8, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G77`). This is the CONTAINMENT check against HMENU3's transcribed targets: it is
+`norm_num` on rationals and proves nothing about densities. Its value is that a future change to
+either side breaks the build. Re-run in exact rationals at blueprint AMENDMENT §A-9.2: all ten
+inequalities hold at `q = 2` and `q = 3`, the tightest with a `0.41%` margin. -/
+example :
     (1 : ℝ) / 512 ≤ 4 / 93 ∧ (1 : ℝ) / 4 ≤ 28 / 93 ∧ (1 : ℝ) / 4 ≤ 8 / 31
-      ∧ (1 : ℝ) / 16 ≤ 22 / 93 ∧ (1 : ℝ) / 16 ≤ 5 / 31
+      ∧ (1 : ℝ) / 16 ≤ 22 / 93 ∧ (1 : ℝ) / 16 ≤ 5 / 31 :=
+  gate_three_hmenu3_containment_two
 
 end Uniformity.Density
