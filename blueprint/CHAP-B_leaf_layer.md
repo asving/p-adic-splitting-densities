@@ -5776,6 +5776,39 @@ authority 2026-08-05, honest-repair class):
   review item only. Harmless for the retirement-form 0e diff (ChapG's 0e-G unit verified
   that). **Patched as gate.**
 
+**(IV) Census deltas and the round's close.**
+
+* **Declaration-level census, landed:** the composed prediction "135 signed + 5 RE-PLAN = 140
+  signable; 25 def-class real bodies / 110 theorem-`axiom`s" (§12 and A-F.2 item 2) lands as
+  **139 signed = 22 real bodies + 117 `axiom`s**, breakdown **22 real (1 `structure` + 1
+  `abbrev` + 20 `def`) / 109 theorem rows / 3 bodyless def-class rows / 5 RE-PLAN
+  suppliers**. The three moves: B.51's first block unsignable (B-D6: −1 theorem row);
+  `residueFieldEquiv` out of the real-body column, `instFieldResField` into it (B-D2/B-D3:
+  net 25 → 22 with the two Prop-class rows also moving to `axiom`s); the 5 suppliers signed
+  (B-D4). §12's table and rules 1/8 are updated in place; **A-F.2 item 2's declaration-level
+  census is superseded on these numbers** (its node-level content — B.62 deliberately
+  unfrozen, B.86 declaration-free — is unchanged and re-affirmed).
+* **Node-level kind census unchanged:** A-§9.2/A-F.2's `17 def, 50 lemma, 15 theorem, 4 gate
+  = 86 nodes` counts NODES and survives this round — B.26 and B.49 were already `[lemma]`
+  nodes; the B-D2 mis-classification lived in their SIGNATURE blocks and §12's
+  declaration-level rows, both now repaired.
+* **Cross-read riders from this round** (recorded here; §14's committed numbering
+  unchanged): (a) the two **NOT-CONTRACT** B.66a membership forms of item B-D4 — riders to
+  §14 item 12, to be confirmed or re-signed when the B.66a unit fires; (b) the **B-D5
+  equivalence adjudication** (B.65 clause 2 ≡ B.45-multiplicity) — a fresh-eyes check of the
+  four-leg argument in item B-D5 is owed before B.65 fires. The §10 gate instances'
+  hand-computed polygon data (§14 item 14) were independently recomputed at the gate — no
+  discrepancy; the gate's GC-11 execution record (all `decide`/`#eval` green at `q = 2` AND
+  `q = 3` after the B-D14 repair) is in the stub file's header.
+* **Close.** Sixteen defects, sixteen dispositions: B-D1, B-D4…B-D10, B-D12…B-D16 patched
+  as gate; B-D2/B-D3 patched as gate with the repair route chosen and recorded (demotion +
+  explicit application; `IsKey`-as-class rejected); B-D11 patched-differently-because
+  (tautology repaired, harmless over-tags disclosed rather than re-tagged); none rejected.
+  The blueprint text now matches the gate-verified repaired forms wherever a form is signed;
+  `leanspec/Leanspec/ChapB.lean` remains the landed single source for the fully-expanded
+  signed texts, and the transcription fleet reads THIS file's repaired nodes plus §12 item
+  4's canonical displays.
+
 ---
 
 ## 10. §10 — GATES: `q = 2` AND `q = 3` FIRING INSTANCES, AND THE AXIOM CENSUS
@@ -6252,20 +6285,23 @@ considered and not taken — a wrapped namespace keeps the stubs greppable by co
 Collision count with `leanfinal` is structurally zero; the 0e type diff runs per declaration
 against the fully-qualified `leanfinal` twin.
 
-**Stub count: 135 signed** declarations across the 86 nodes — counted mechanically over this
-file's SIGNATURE blocks. Breakdown:
+**Stub count, LANDED at the 0e gate: 139 signed declarations = 22 real bodies + 117 `axiom`s**
+*[repaired: A-F.3/B-D2+B-D3+B-D4+B-D6 — supersedes the composed prediction "135 signed + 5
+RE-PLAN = 140 signable / 25 real bodies / 110 axioms"; the pre-gate table is retired and the
+landed breakdown follows]*:
 
-| what | count | lands as |
+| what | count | landed as |
 |---|---:|---|
 | `structure` | 1 | **real body** (`IsKey`) |
 | `abbrev` | 1 | **real body** (`resField`) |
-| `instance` | 3 | **real body** (`instFieldResField`, `instFiniteResField`, `instLocalRingAdjoinRoot`) |
-| `def` / `noncomputable def` | 20 | **real bodies** (`dev`, `gaussVal`, `npHgt`, `suppVal`, `OnSide`, `sideSet`, `sideMin`, `sideMax`, `sideDeg`, `digAt`, `digPoly`, `resMk`, `resCoeff`, `resPoly`, `IsPure`, `GradedCoprime`, `residueFieldEquiv`, `order1Type`, `NeedsDescent`, `Visible`) |
-| `theorem` | 110 | **`axiom` stubs** (100 across §§3–9 + the 10 gate theorems of §10) |
+| `def` / `noncomputable def` | 20 | **real bodies** (`dev`, `gaussVal`, `npHgt`, `suppVal`, `OnSide`, `sideSet`, `sideMin`, `sideMax`, `sideDeg`, `digAt`, `digPoly`, `resMk`, `instFieldResField`, `resCoeff`, `resPoly`, `IsPure`, `GradedCoprime`, `order1Type`, `NeedsDescent`, `Visible`) — the composed list minus `residueFieldEquiv` (→ bodyless row, B-D2) plus `instFieldResField` (demoted from `instance`, B-D3) |
+| theorem rows | 109 | **`axiom` stubs** — of the composed 110: B.51's first block is unsignable (B-D6), only its contract declaration `residueDeg_dvd_addVal_norm` is signed |
+| bodyless def-class rows | 3 | **`axiom`s** (B-D2: `instFiniteResField`, `instLocalRingAdjoinRoot` — `[lemma]`-kind proof obligations; `residueFieldEquiv` — data-with-proof-obligation) |
+| RE-PLAN suppliers | 5 | **`axiom`s** (B.63a `typeOf_prod`; B.66a `slopeFinset`, `resFactorFinset`, `mem_slopeFinset`, `mem_resFactorFinset` — B-D4; membership lemmas NOT-CONTRACT, see A-F.3) |
 
-Plus **5 RE-PLAN supplier stubs signed from their bookings** (they have no §-node of their own;
+The 5 RE-PLAN supplier stubs are signed from their bookings (they have no §-node of their own;
 see rule 2): `typeOf_prod` (B.63a), `slopeFinset`, `resFactorFinset`, `mem_slopeFinset`,
-`mem_resFactorFinset` (B.66a) — signable universe **140**. All names checked distinct against
+`mem_resFactorFinset` (B.66a). All names checked distinct against
 each other and against §0.3's landed inventory (chapter B's new definitions live in
 `Uniformity.Density.Leaf`, absent from chapters A/G/H's inventories; the deliberate quarry-side
 name coincidence `NeedsDescent` ↔ `LeanUrat`'s `needsDescent` is cross-project and harmless,
@@ -6273,11 +6309,15 @@ B.73's FAITHFULNESS).
 
 **Rules for the stub-landing agent.**
 
-1. **Definitions land as real bodies, not axioms** (the 25 rows above). The three `instance`s
-   are the sharpest §4 test: `instFieldResField` must elaborate `AdjoinRoot`-field structure from
-   `IsKey` (B.25's ⚠ records the TC alternative — if the mathlib route
-   `AdjoinRoot.instField`-by-TC works at our pin, the explicit instance is REPLACED and the stub
-   file records the swap as a dated append).
+1. **Definitions land as real bodies, not axioms** (the 22 real-body rows above; [repaired:
+   A-F.3/B-D2+B-D3] — the composed "25 rows" over-counted by the three bodyless def-class
+   rows). The instance question is SETTLED at the gate: no chapter-B declaration can be an
+   `instance` (each carries the explicit non-class `hφ : IsKey φ` — a hard error at our pin,
+   B-D3); `instFieldResField` is a `@[reducible] noncomputable def` with the
+   `Fact ⟨hφ.irred⟩` + `AdjoinRoot.instField` body (B-D1, elaborated at the gate), brought
+   into scope by `letI`/`haveI` at use sites; `instFiniteResField`/`instLocalRingAdjoinRoot`
+   are `theorem`s the fleet proves (B-D2); `residueFieldEquiv` is data the fleet constructs,
+   with the `IsLocalRing` instance applied explicitly in its type.
 2. **Stub order is §11's topological order, with one hard exception:** the B.66a suppliers
    (`slopeFinset`/`resFactorFinset` + membership lemmas) and B.63a (`typeOf_prod`) must be signed
    **before** B.79a/B.79b, B.80, B.71 and B.63's stub (A-§9.5 booking (1); B.79's ⚠ — B.79a
@@ -6386,10 +6426,12 @@ B.73's FAITHFULNESS).
    item against each node's ENVIRONMENT field (§0.1's rewritten ⚠); the completeness half is
    real (25 stubs genuinely carry `[IsAdicComplete …]`).]*
 8. **Gate order (GC-6.6(c), mandatory):** (a) elaborate the rule-6 fragile signatures; (b) land
-   the 25 `def`-class bodies; (c) **execute B.86's `decide`/`#eval` arithmetic block at `q = 2`
-   AND `q = 3`** against the commented expected values — it is executable at stub stage (pure
-   arithmetic + landed `FactorizationType`/`residueCard`, no chapter-B proof needed); (d) only
-   then sign the 110 + 5 `axiom` stubs. **⚠ The stub gate cannot catch a wrong-but-well-typed
+   the 22 `def`-class bodies ([repaired: A-F.3/B-D2] — was "25"); (c) **execute B.86's
+   `decide`/`#eval` arithmetic block at `q = 2` AND `q = 3`** against the commented expected
+   values — it is executable at stub stage (pure arithmetic + landed
+   `FactorizationType`/`residueCard`, no chapter-B proof needed); (d) only
+   then sign the 117 `axiom` stubs (109 theorem rows + 3 bodyless def-class rows + 5 RE-PLAN
+   suppliers; [repaired: A-F.3/B-D2+B-D4+B-D6] — was "110 + 5"). **⚠ The stub gate cannot catch a wrong-but-well-typed
    statement** (CHAP-H §15's warning; chapter G's G.23 died at a numeric brute force, not at the
    gate) — for this chapter the exposed class is the gate INSTANCES' polygon data (hand-computed
    in §10's tables) and the `hperim` display of rule 4; both are cross-read items (§14 items
