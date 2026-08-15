@@ -89,4 +89,6 @@ import Uniformity.ChapH.H93
 import Uniformity.ChapH.H94
 import Uniformity.ChapH.H95
 
-/-! Chapter H roll-up — 89/99 landed + H.71 partial (RecursionLegs landed; rate_close REFUTED, A-H.2 adjudication in flight). -/
+/-! Chapter H roll-up — 89/99 landed + H.71 partial (RecursionLegs landed; rate_close REFUTED as
+committed — blueprint repaired at AMENDMENT A-H.2, 2026-08-15: `halpha` windowed per EFF.GENIND.09
++ `hmc : m < c`; re-landing at the repaired signature owed to the fleet). -/

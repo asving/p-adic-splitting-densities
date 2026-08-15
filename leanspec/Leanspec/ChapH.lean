@@ -945,15 +945,29 @@ structure RecursionLegs (Q m c : ℕ) (u : ℕ → ℕ → ℝ) where
   hsplit : ∀ D N, 1 ≤ N → u D N ≤ head D N + alpha D N + beta D N
   hu0 : ∀ D N, 0 ≤ u D N
   hhead : ∀ D N, 1 ≤ N → head D N ≤ ((Q : ℝ) ^ (N - 1))⁻¹
+  -- [repaired: A-H.2/α-0] The window condition `m * (k + 1) < N` (EFF.GENIND.09's `mμ ≤ N−1`,
+  -- subtraction-free under this field's `1 ≤ N` guard) is RESTORED: the committed unwindowed sum
+  -- read the unconstrained `u D 0` and made `rate_close` FALSE — machine-refuted at transcription
+  -- (`leanfinal/Uniformity/ChapH/H71.lean`, `legsWindowZero`); see AMENDMENT A-H.2.
   halpha : ∀ D N, 1 ≤ N → alpha D N ≤
-    ∑ k ∈ Finset.range n₀, ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ * u D (N - m * (k + 1))
+    ∑ k ∈ Finset.range n₀ with m * (k + 1) < N,
+      ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ * u D (N - m * (k + 1))
   hbeta : ∀ D N, 1 ≤ N → beta D N ≤ K' * (N : ℝ) ^ (m + B') * ((Q : ℝ) ^ (N - c' - 1))⁻¹
-  -- DEFECT D7 (statement-level, NOT repaired here): `D` is unused in this field, so its type is
-  -- uninferable and the blueprint's line does not elaborate; `(D N k : ℕ)` is annotated as the
-  -- minimal semantics-preserving repair. The field is ALSO unsatisfiable at `N = 0` — see D7.
-  hdesc : ∀ (D N k : ℕ), k < n₀ → 1 ≤ m * (k + 1) → N - m * (k + 1) < N
+  -- DEFECT D7 (statement-level): `D` is unused in this field, so its type is uninferable and the
+  -- blueprint's line does not elaborate; `(D N k : ℕ)` is annotated as the minimal
+  -- semantics-preserving repair. The field was ALSO unsatisfiable at `N = 0` — see D7; the
+  -- blueprint repaired it with the `1 ≤ N →` guard (A-H.1/D7), now applied here too so the stub
+  -- carries the current signed type (this file had recorded the defect but kept the empty form).
+  hdesc : ∀ (D N k : ℕ), 1 ≤ N → k < n₀ → 1 ≤ m * (k + 1) → N - m * (k + 1) < N
 
-axiom rate_close {Q m c : ℕ} (hQ : 2 ≤ Q) (hc : 1 ≤ c) (hm : 1 ≤ m)
+-- [repaired: A-H.2/α-rate] `hmc : m < c` added: H.30's geometric bound fires at the recomposed
+-- slope `γ = c − m`, and `1 ≤ γ` is exactly `hmc`. Without it the axiom is FALSE even windowed
+-- (counterexamples at `c = m` in `verification/rate_close_ah2_check.py`), and signing the
+-- committed form would have made this file's axiom set INCONSISTENT (the D4 precedent): with the
+-- A-H.1/D7 structure inhabited, `rate_close` + the fleet's `legsWindowZero` derives `False`.
+-- At the intended instantiation `c = m(m+1)/2` (the NORMALIZED α-locus slope; `clusterC m` is the
+-- recomposed one), `hmc` ⟺ `m ≥ 2` — GENIND.A's own scope. See AMENDMENT A-H.2.
+axiom rate_close {Q m c : ℕ} (hQ : 2 ≤ Q) (hc : 1 ≤ c) (hm : 1 ≤ m) (hmc : m < c)
     {u : ℕ → ℕ → ℝ} (L : RecursionLegs Q m c u) :
     ∃ K : ℝ, 0 ≤ K ∧ ∀ D, RateSpecies Q K (m + L.B' + 1) (L.c' + 1) (u D)
 
