@@ -4774,3 +4774,26 @@ leg rider. dag_build.py merge step landed (idempotent, byte-stable).
 layer-0 nodes, two sonnet batches, blueprint-signature-as-contract,
 per-node commits, nodes land in leanfinal/Uniformity/ChapG/. G.28's
 amended stub gates wave 2.
+
+**2026-08-15 DATED APPEND #56 — UNLIMITED KEY LIVE; EXTERNAL
+QUARRIES PULLED; FABLE-MAX REPLACES SOL ON THE BRANCH (Asvin).**
+(1) The unlimited API key is live (both test launches ran clean;
+throttles lifted, opus/sonnet tiering retained, 3–5 concurrent
+heavy units authorized). (2) EXTERNAL LEAN QUARRIES cloned to
+vendor/ (git-ignored; quarry discipline applies — verbatim-copy-
+after-verification with provenance, kernel re-checks against OUR
+pinned mathlib): ImperialCollegeLondon/FLT (local fields, Hensel
+variants), mariainesdff/LocalClassFieldTheory + local_fields_journal
++ norm_extensions (complete DVRs, DVR extensions, THE norm-extension
+uniqueness we cite informally — CPP'24 paper). Survey unit to map
+them against the ledger's MATH rows queued. (3) **Asvin: "try (on
+our branched path) to finish the blueprint with fable on max
+reasoning instead of sol pro 5.6 (and the other tasks we initially
+deferred to sol pro)"** — the sol-deferred queue (spec/blueprint
+cross-reads, WELD-ZERO + JD0 confirmation passes, the n=2
+adversarial pass, hard-chapter authorship E/C) REASSIGNS to
+Fable-max agents; codex's Tuesday window becomes optional
+belt-and-braces (the only cross-FAMILY check — retained where
+cheap). Honesty note: Fable-reviewing-Opus is cross-tier but
+same-family decorrelation; recorded, Asvin's call. PILOT: the
+WELD-ZERO confirmation pass (pass 2 of 2) runs on Fable-max now.
