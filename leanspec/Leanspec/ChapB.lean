@@ -16,12 +16,19 @@ greppable by contract name. Collisions with `leanfinal` are therefore structural
 here is declared inside `Uniformity.*`), and the 0e type diff runs per declaration against the
 fully-qualified `leanfinal` twin `Uniformity.Density.Leaf.<name>` once a node lands.
 
-**What is real and what is a stub.** Per stage-0e rule 1 (blueprint §12): the chapter's
-definitional layer lands as REAL BODIES — 1 `structure` (`IsKey`), 1 `abbrev` (`resField`), 16
-`def`s and 1 `instance` (`instFieldResField`). **Four of §12's nominal "25 def-class real bodies"
-have no body in the blueprint and cannot have one** (defects B-D2/B-D3, below): they are proof
-obligations wearing `def`/`instance` clothing, and land as `axiom`s. The 110 theorem signatures
-land as `axiom` stubs, minus the one that cannot elaborate (B-D6). `sorry` appears nowhere.
+**What is real and what is a stub — the landed census.** 139 declarations:
+
+| kind | count | note |
+|---|---:|---|
+| real bodies (`structure` 1 + `abbrev` 1 + `def` 20) | **22** | §12 rule 1's definitional layer |
+| `axiom` stubs of theorem rows | **109** | of §12's 110 — B.51's first block is unsignable (B-D6) |
+| `axiom`s standing in for body-less def-class rows | **3** | B-D2: `instFiniteResField`, `instLocalRingAdjoinRoot`, `residueFieldEquiv` |
+| `axiom`s for the 5 RE-PLAN suppliers | **5** | B.63a (1) + B.66a (4), B-D4 |
+
+So §12's predicted "25 real bodies / 110 axioms" lands as **22 real bodies / 117 axioms**; the 20
+`def`s are the blueprint's 20 minus `residueFieldEquiv` plus `instFieldResField` (demoted from
+`instance`, B-D3). B.62 is deliberately unsigned (§12 rule 3). `sorry` appears nowhere. The file
+also elaborates clean under `-DautoImplicit=false`, i.e. no binder here is silently auto-bound.
 
 **This file is never imported by `leanfinal` or `leancheck`.** It carries `axiom`s by design; it
 is an interface contract, not mathematics. Nothing here is proved.
@@ -61,15 +68,20 @@ listed; nothing was adjusted silently.
   construct. *Classification: def with no body (ChapG defect D2's class).* Landed as `axiom`s
   (the D2 precedent's `axiom`-typed placeholder), so §12's "25 real bodies / 110 axioms" split is
   in fact **21 real bodies / 114 axioms**.
-* **B-D3 — B.25/B.26/B.49's three `instance`s are not typeclass-findable.** Each carries an
-  explicit non-class hypothesis (`hφ : IsKey φ`, plus `hg`/`hk`/`hres` at B.49), so instance
-  synthesis can never fire them. This is not merely cosmetic: **B.49's `residueFieldEquiv` type
-  does not elaborate** without `IsLocalRing (AdjoinRoot g)` in scope, and the instance declared
-  immediately above it cannot supply it by TC. *Classification: missing dependency (instance
-  unreachable).* **Stub-side repair applied**: `residueFieldEquiv`'s type names the instance
-  explicitly, `@IsLocalRing.ResidueField (AdjoinRoot g) _ (instLocalRingAdjoinRoot hφ hg hk hres)`.
-  The blueprint must either make the three `instance`s `[IsKey φ]`-class-based, demote them to
-  plain `def`/`theorem`, or write the explicit application at every use site.
+* **B-D3 — B.25/B.26/B.49's three `instance`s cannot be declared as `instance`s at all: HARD
+  ERROR.** Each carries an explicit non-class hypothesis (`hφ : IsKey φ`, plus `hg`/`hk`/`hres` at
+  B.49), and at our pin Lean rejects the declaration outright: *"This instance has 1 argument that
+  cannot be inferred using typeclass synthesis. Specifically argument 6: `(hφ : IsKey φ)`. These
+  arguments are not instance-implicit and appear neither in another instance-implicit argument nor
+  the return type."* Consequences: (i) `instFieldResField` is demoted to `@[reducible]
+  noncomputable def` here; (ii) the other two are `axiom`s anyway (B-D2) and an `axiom` cannot
+  carry `instance`; (iii) **B.49's `residueFieldEquiv` type therefore does not elaborate** — it
+  needs `IsLocalRing (AdjoinRoot g)`, which nothing can supply by TC — so its type names the
+  instance explicitly here:
+  `@IsLocalRing.ResidueField (AdjoinRoot g) _ (instLocalRingAdjoinRoot hφ hg hk hres)`.
+  *Classification: elaboration error + missing dependency.* The blueprint must make the three rows
+  `[IsKey φ]`-class-based (i.e. make `IsKey` a class), demote them to plain `def`/`theorem`, or
+  write the explicit application at every use site.
 * **B-D4 — B.66a (`slopeFinset`, `resFactorFinset`, `mem_slopeFinset`, `mem_resFactorFinset`) is
   booked with no signature and no body.** The booking (B.79's ⚠ RE-PLAN item, A-§9.5) gives only
   the names and a partially elided membership statement `mem_slopeFinset ↔ (sideSet …).Nonempty ∧
@@ -130,11 +142,104 @@ listed; nothing was adjusted silently.
   *used* in `resPoly π φ gS u ℓ hne H₀`, so the clause is genuinely dependent and any consumer
   that instantiates it must supply the same witness — the `Nonempty`-argument fragility §12 rule 6
   flags at B.20/B.28/B.29 reappears here, inside a hypothesis.
+* **B-D13 — B.50 `exists_smith_of_norm` uses the `⨁` big-operator, whose notation is
+  `scoped[DirectSum]`.** ENV-A′ opens only `IsLocalRing Polynomial`, so the verbatim signature
+  fails: `⨁` parses as a prefix operator with no binder and Lean reports
+  `unknown identifier 'i'` (twice), then an application type mismatch. *Classification: missing
+  dependency (missing `open`).* **Stub-side repair applied**: `open DirectSum in` on the
+  declaration; the intended object is unambiguous.
+* **B-D14 — B.86's census block names a constant that does not exist:
+  `Uniformity.Density.FactorizationType`.** `FactorizationType` is declared in `Uniformity`
+  (`LocalData.lean:43`), *before* `namespace Density` opens at `:58`; the correct name is
+  `Uniformity.FactorizationType`. All six degree-conservation `#eval`s of B.86 part (ii) fail with
+  `unknown identifier` as written. *Classification: elaboration error (wrong qualified name).*
+  **Stub-side repair applied** (unambiguous) in the GC-11 block below. The same slip would break
+  B.86 as a leanfinal file verbatim.
+* **B-D15 — §0.1's ⚠ ENV-C premise is FALSE at our pin, so §12 rule 7's mechanical check has a
+  void criterion.** §0.1 asserts: *"`Uniformity.Density.Res` … is declared inside a
+  `variable (O) … [Finite (ResidueField O)]` section, so a stub that mentions `Res O N` without
+  that instance does not elaborate."* Checked directly: none of `Res`, `Coeff`, `proj`,
+  `residueCard`, `DecidedAt` carries `[Finite (ResidueField O)]` in its own signature — their
+  bodies do not use it, so Lean trimmed it from them too (only genuinely counting theorems such as
+  `card_res` keep it). Empirically, of the 139 declarations in this file **zero** end up carrying
+  `[Finite (ResidueField O)]`, including `card_resField` (which names `residueCard O`) and all
+  three `DecidedAt` certificates; `[IsAdicComplete (maximalIdeal O) O]` by contrast is included in
+  25 of them, because it is genuinely mentioned nowhere else and Lean keeps it once a statement's
+  elaboration needs it. *Classification: false premise in the environment spec (documentation +
+  process defect).* Consequence: chapter B's claim to fix chapter G's defect D4 *"by
+  construction"* does not hold — the D4 phenomenon simply reappears in `leanfinal`, where each
+  node file's own `variable` block will drop the instance exactly as here. Harmless for the
+  retirement-form 0e diff (ChapG's 0e-G unit verified that), but the ENV-C tag cannot be audited
+  the way rule 7 describes.
+* **B-D16 — B.17, B.19, B.20d, B.20e use `u` and `ℓ` with no binder, and ENV-A does not declare
+  them.** They survive only through Lean's `autoImplicit`: under leanfinal's option set
+  (`relaxedAutoImplicit = false`, `autoImplicit` left on) they auto-bind, in first-occurrence order
+  `{ℓ u : ℕ}`; under `autoImplicit = false` all four fail with
+  `unknown identifier 'ℓ'`. *Classification: missing binder (latent — signature depends on an
+  option the project has not fixed).* **Stub-side repair applied**: the binders are written
+  explicitly, in the same order Lean's auto-binding produces, so the elaborated types are
+  identical to the verbatim ones under leanfinal's options (verified by `#check` against a
+  verbatim copy). ENV-A should declare `{u ℓ : ℕ}`.
 
 **What the stub gate CANNOT catch** (§12 rule 8's ⚠, restated): a wrong-but-well-typed statement.
 The exposed class for this chapter is the §10 gate instances' hand-computed polygon data and the
 `hperim` display; the executed arithmetic of B.86 (§ "GC-11 EXECUTION" below) is the mechanical
 half of that defense, and §14 items 14–15 are the human half.
+
+## GC-11 EXECUTION RECORD (§12 rule 8(c) / GC-11, run 2026-08-15 at this gate)
+
+**Ran, and passed, at stub stage** (all `decide`/`#eval`, no `native_decide`; both primes):
+1. all six degree-conservation checks of B.86 part (ii) — `⟨{(1,2)}⟩.degree = 2`,
+   `⟨{(2,1)}⟩.degree = 2`, `⟨{(1,1),(2,1)}⟩.degree = 3`, `⟨{(1,1),(1,2)}⟩.degree = 3`,
+   `⟨{(2,2)}⟩.degree = 4`, `⟨{(3,2)}⟩.degree = 6` — all `true`, matching the blueprint's
+   `-- expect true` comments (after the B-D14 name repair);
+2. D-3's bracket arithmetic at the B.85 `e > 1 ∧ f > 1` witnesses:
+   `(gcd 2 4, gcd 2 6, gcd 1 2) = (2, 2, 1)`, matching the blueprint's `-- expect (2, 2, 1)`;
+3. the split-gate multiset sum `{(1,1)} + {(1,2)} = {(1,1),(1,2)}` — `true`;
+4. `residueCard ℤ_[2] = 2` and `residueCard ℤ_[3] = 3` discharged by the landed
+   `residueCard_padicInt` (real proofs, not `#eval`);
+5. B.86 part (iii): all ten gate signatures elaborate at their stated types, printed below.
+
+**Must wait for real bodies:** B.86 part (i), the `#print axioms` footprints of the fourteen
+capstone-path theorems and the ten gates. At stub stage each of those names is an `axiom` in this
+file, so its footprint is itself — the check is vacuous until `leanfinal` carries the proofs.
+
+**§14 item 14 (the gate instances' hand-computed data), recomputed independently at this gate — no
+discrepancy found.** Not machine-checked (the chapter-B definitions have no lemmas yet), but
+recomputed from scratch, by a different arm than the one that wrote §10, over `monicPoly a =
+X ^ n + ∑ i, C (a i) * X ^ i`:
+
+* `B.83(i)` `![3,1]` → `X² + X + 3`, reduction `X² + X + 1` irreducible over `𝔽₂` ⇒ `{(1,2)}`. ✓
+* `B.83(ii)` `![2,2]` → `X² + 2X + 2`, Eisenstein at `2` ⇒ `{(2,1)}`. ✓
+* `B.83(iii)` `![4,2,2]` → `X³ + 2X² + 2X + 4`, `φ = X` (`m = 1`), heights `(2,1,1,0)`.
+  Slope `−1` side: `inf = 2`, argmin `{0,1}`, `sideMin = 0`, `sideDeg = 1`, residual `Y + 1`
+  ⇒ `(ℓ, m·d) = (1,1)`. Slope `−1/2` side: `inf = 3`, argmin `{1,3}`, **`sideMin = 1 ≠ 0`**,
+  `sideDeg = 1`, residual `Y + 1` ⇒ `(2,1)`. Total `{(1,1),(2,1)}`. ✓
+  **This also verifies A-F.1's teeth claim / §14 item 13(iii) directly**: under the retired
+  abscissa-`0` pin the second side reads `H₀ = 2` and its `k = 0` coefficient is
+  `digAt π 2 (2) = 0` (since `4 ∤ 2`), so `resPoly` loses its constant term and is never
+  separable; under the GC-1 `sideMin` pin `H₀ = 1` and both coefficients are units. The instance
+  provably could not fire pre-repair, exactly as claimed.
+* `B.83(iv)` `![2,3,3]` → `X³ + 3X² + 3X + 2`, reduction `X(X² + X + 1)` (squarefree, two distinct
+  irreducibles) ⇒ order-0 peel gives `{(1,1)} + {(1,2)}`. ✓
+* `B.84(i)` `![4,0]` → `X² + 4`, reduction `X² + 1` irreducible over `𝔽₃` ⇒ `{(1,2)}`. ✓
+* `B.84(ii)` `![3,3]` → `X² + 3X + 3`, Eisenstein at `3` ⇒ `{(2,1)}`. ✓
+* `B.84(iii)` `![9,3,3]` → `X³ + 3X² + 3X + 9`, heights `(2,1,1,0)` — the same polygon as B.83(iii),
+  same two sides, `sideMin = 1` on the second ⇒ `{(1,1),(2,1)}`. ✓
+* `B.84(iv)` `![3,1,3]` → `X³ + 3X² + X + 3`, reduction `X(X² + 1)` over `𝔽₃` ⇒ `{(1,1),(1,2)}`. ✓
+* `B.85(i)` `![-1,2,3,2]` → `X⁴ + 2X³ + 3X² + 2X − 1 = φ² − 2` with `φ = X² + X + 1` (`m = 2`,
+  `μ = 2`). Development `(dev 0, dev 1, dev 2) = (−2, 0, 1)`, heights `(1, ⊤, 0)`, one side of
+  slope `−1/2`: `ℓ = 2`, `sideSet = {0,2}`, `d = 1` ⇒ `(ℓ, m·d) = (2,2)`. ✓ **`e > 1` AND `f > 1`
+  simultaneously**, which is GC-11's mandated witness shape.
+* `B.85(ii)` `![-1,3,6,7,6,3]` → `X⁶ + 3X⁵ + 6X⁴ + 7X³ + 6X² + 3X − 1 = φ³ − 2`, same `φ`;
+  heights `(1,⊤,⊤,0)`, slope `−1/3`, `ℓ = 3`, `d = 1`, `m = 2` ⇒ `{(3,2)}`. ✓
+* `B.85(iii)` `![-2,0,2,0]` → `X⁴ + 2X² − 2 = φ² − 3` with `φ = X² + 1` over `ℤ_[3]` ⇒ `{(2,2)}`. ✓
+* `B.85(iv)` `![-2,0,3,0,3,0]` → `X⁶ + 3X⁴ + 3X² − 2 = φ³ − 3`, same `φ` ⇒ `{(3,2)}`. ✓
+
+Every stated `N` is also sufficient on this recomputation (the two-slope gates need `N = 3` to fix
+`v(a₀) = 2` exactly, and they ask for `3`; the `e·f` gates need `N = 2` to fix `v(dev 0) = 1`, and
+they ask for `2`). What is NOT verified here: that these `N` are *minimal*, and the `Visible`-level
+column of §10's tables, neither of which any signed statement claims.
 -/
 
 namespace LeanspecB
@@ -260,7 +365,7 @@ noncomputable def sideSet (φ f : Polynomial O) (u ℓ : ℕ) : Finset ℕ :=
   open Classical in (Finset.range (f.natDegree + 1)).filter (OnSide φ f u ℓ)
 
 /-- **B.17** [lemma] ENV-A. -/
-axiom onSide_modEq {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
+axiom onSide_modEq {ℓ u : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
     {j j' : ℕ}
     (htop : suppVal φ f u ℓ ≠ ⊤) (hj : OnSide φ f u ℓ j) (hj' : OnSide φ f u ℓ j') :
     j ≡ j' [MOD ℓ]
@@ -297,12 +402,12 @@ noncomputable def sideDeg (φ f : Polynomial O) (u ℓ : ℕ)
     (h : (sideSet φ f u ℓ).Nonempty) : ℕ := (sideMax φ f u ℓ h - sideMin φ f u ℓ h) / ℓ
 
 /-- **B.20d** [lemma] ENV-A. -/
-axiom sideMax_eq {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
+axiom sideMax_eq {ℓ u : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
     (htop : suppVal φ f u ℓ ≠ ⊤) (h : (sideSet φ f u ℓ).Nonempty) :
     sideMax φ f u ℓ h = sideMin φ f u ℓ h + ℓ * sideDeg φ f u ℓ h
 
 /-- **B.20e** [lemma] ENV-A. -/
-axiom onSide_eq_add_mul {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
+axiom onSide_eq_add_mul {ℓ u : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
     (htop : suppVal φ f u ℓ ≠ ⊤) (h : (sideSet φ f u ℓ).Nonempty) {j : ℕ}
     (hj : j ∈ sideSet φ f u ℓ) :
     ∃ k ≤ sideDeg φ f u ℓ h, j = sideMin φ f u ℓ h + ℓ * k
@@ -359,8 +464,8 @@ abbrev resField (φ : Polynomial O) : Type _ := AdjoinRoot (φ.map (IsLocalRing.
 `IsKey.irred`. **DEFECT B-D3** — declared `noncomputable instance` in the blueprint, which is a
 HARD ERROR at our pin ("This instance has 1 argument that cannot be inferred using typeclass
 synthesis … `(hφ : IsKey φ)`"); demoted to `noncomputable def` here, the minimal change that keeps
-the signed type. -/
-noncomputable def instFieldResField {φ : Polynomial O} (hφ : IsKey φ) :
+the signed type (`@[reducible]` is then forced by the linter for a class-typed `def`). -/
+@[reducible] noncomputable def instFieldResField {φ : Polynomial O} (hφ : IsKey φ) :
     Field (resField φ) :=
   haveI : Fact (Irreducible (φ.map (IsLocalRing.residue O))) := ⟨hφ.irred⟩
   AdjoinRoot.instField
@@ -1306,9 +1411,11 @@ end LeanspecB
 /-
 RESUME (stage-0e chapter-B stub gate)
 =====================================
-STATE: complete pass written. Signed: 21 real def-class bodies + 114 `axiom`s (109 of the 110
-theorem rows — B.51's `residueDeg_dvd_sum_of_local` is unsignable, defect B-D6 — plus the 4
-bodyless def-class rows of B-D2 and the 5 RE-PLAN suppliers of B-D4/B.63a).
+STATE: COMPLETE. 139 declarations landed: 22 real def-class bodies + 117 `axiom`s (109 of the 110
+  theorem rows — B.51's `residueDeg_dvd_sum_of_local` is unsignable, defect B-D6 — plus the 3
+bodyless def-class rows of B-D2 and the 5 RE-PLAN suppliers of B-D4/B.63a). Build green via
+`lake build Leanspec.ChapB`; also clean under `-DautoImplicit=false`. 16 defects recorded
+(B-D1 … B-D16).
 B.62 deliberately unsigned (§12 rule 3). B.86 is a census block: parts (ii)+(iii) executed above,
 part (i) (`#print axioms`) deferred to real bodies.
 NEXT IF RESUMING: (1) `cd leanspec && lake build Leanspec.ChapB`; (2) re-read the DEFECT LIST in
