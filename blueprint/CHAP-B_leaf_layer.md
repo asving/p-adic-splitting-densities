@@ -5055,16 +5055,185 @@ conclusions name `typeOf` on a factored residual read, which is §0.1's ENV-C tr
 
 ### NODE B.80 [theorem] [fresh]
 
-**STATEMENT.** *THE FULL LEVEL-`N` DECIDEDNESS CERTIFICATE.* Order-0 peel + per-block certificates
-⟹ `DecidedAt O n σ N (proj O n N a)` with `σ` the assembled order-1 type. *(stub)*
+**STATEMENT.** *THE FULL LEVEL-`N` DECIDEDNESS CERTIFICATE (every degree, every block count).*
+Over the complete bundle, let `a : Fin n → O` with `0 < n` and write `f := monicPoly a`. Suppose
+given order-0 data — order-1 keys `φ i` (`i ∈ s`) with pairwise distinct reductions, exponents
+`e i ≥ 1`, `f.map (residue O) = ∏_{i ∈ s} (φ̄ i)^{e i}` — and a peel of the representative: monic
+`g i` with `f = ∏_{i ∈ s} g i` and `(g i).map (residue O) = (φ̄ i)^{e i}` (B.67 supplies one;
+by landed `monic_factorization_unique` iterated, the choice is unique, so the hypotheses are data
+of `a` alone). Assume, **per block**, R8-1's two clauses and the perimeter:
+`Visible π (φ i) (g i) N`, `¬ NeedsDescent π (φ i) (g i)`, and `hperim i`. Then the class of `a`
+is decided — for **every** lift, per D-4(a):
+
+```
+DecidedAt O n ⟨Σ_{i ∈ s} (order1Type π (φ i) (g i)).data⟩ N (proj O n N a).
+```
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem decidedAt_of_order1_certificate (hπ : Irreducible π) {n N : ℕ} (hn : 0 < n)
+    (a : Fin n → O) {ι : Type*} [DecidableEq ι] {s : Finset ι}
+    {φ : ι → Polynomial O} {e : ι → ℕ}
+    (hkey : ∀ i ∈ s, IsKey (φ i)) (he : ∀ i ∈ s, 0 < e i)
+    (hne : ∀ i ∈ s, ∀ j ∈ s, i ≠ j →
+      (φ i).map (IsLocalRing.residue O) ≠ (φ j).map (IsLocalRing.residue O))
+    {g : ι → Polynomial O} (hgmon : ∀ i ∈ s, (g i).Monic)
+    (hgprod : Uniformity.Density.monicPoly a = ∏ i ∈ s, g i)
+    (hgres : ∀ i ∈ s, (g i).map (IsLocalRing.residue O)
+      = ((φ i).map (IsLocalRing.residue O)) ^ (e i))
+    (hvis : ∀ i ∈ s, Visible π (φ i) (g i) N)
+    (hterm : ∀ i ∈ s, ¬ NeedsDescent π (φ i) (g i))
+    (hperim : ∀ i ∈ s, ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField (φ i)), …) :
+    Uniformity.Density.DecidedAt O n ⟨∑ i ∈ s, (order1Type π (φ i) (g i)).data⟩ N
+      (Uniformity.Density.proj O n N a)
+```
+
+**DEPENDS.** B.46 · B.63a (`typeOf_prod`) · B.66 · B.75 · B.78 (all three clauses) · B.79(b) ·
+landed `Uniformity.Density.decidedAt_of_congr` (`DensityAPI.lean:140`),
+`Uniformity.Density.proj_eq_iff_dvd` (`DensityAPI.lean:124`, consumed inside the former),
+`Uniformity.Hensel.exists_monic_factorization_finset` (`MultiHensel.lean:111`),
+`Uniformity.Hensel.natDegree_eq_of_map_eq`, `Uniformity.Density.FactorizationType.ext`.
+
+**PROOF.**
+1. Enter through landed `decidedAt_of_congr`: it remains to show, for every `b : Fin n → O` with
+   `π^N ∣ (b i − a i)` for all `i`, that `typeOf (monicPoly b) = ⟨Σ (order1Type …).data⟩`.
+2. `f' := monicPoly b` satisfies `π^N ∣ (f − f').coeff j` for all `j` (B.78(i)), and `0 < N`
+   (from any `hvis i` with `s.Nonempty`; `s = ∅` is impossible: `hgprod` + `hgres` would force
+   `f̄ = 1` against `0 < n` and monicity). Hence `f'.map (residue O) = f.map (residue O)`.
+3. Peel `f'`: the reductions `(φ̄ i)^{e i}` are pairwise coprime — distinct monic irreducibles are
+   non-associated, B.46's `isCoprime_pow_of_not_dvd` pairwise, exactly as in B.67 step 1 — so
+   landed `exists_monic_factorization_finset` gives monic `g' i` with `f' = ∏ g' i` and
+   `(g' i).map (residue O) = (φ̄ i)^{e i}`.
+4. B.78(iii) applied to the two peels of the `π^N`-congruent products:
+   `π^N ∣ ((g i) − (g' i)).coeff k` for every `i ∈ s`, `k`. Degrees match by
+   `natDegree_eq_of_map_eq` on both sides of `hgres`.
+5. Per block, B.79(b) with `hvis i`, `hterm i`, `hperim i`:
+   `typeOf (g' i) = order1Type π (φ i) (g i)`.
+6. `(typeOf f').data = Σ_{i ∈ s} (typeOf (g' i)).data` by B.63a's `typeOf_prod` (the same step as
+   B.67's step 3, applied to the step-3 peel); substitute step 5 and close with
+   `FactorizationType.ext`.
+
+**SIZE.** 55 lines.
+
+**⚠ THE σ IS WELL-DEFINED DATA OF `a` ALONE.** The signature takes the peel `g` as a hypothesis
+tuple rather than unpacking B.67's existential (D-4(b); B.71 chose the existential route — both
+are recorded deliberately, and the leanspec stub fixes each). Landed
+`monic_factorization_unique`, iterated over `s` exactly as in B.78 step 5's induction pattern,
+shows any two peels of the same `f` along the same reduction data are **equal**, so
+`⟨Σ (order1Type π (φ i) (g i)).data⟩` does not depend on the supplied peel. This uniqueness
+corollary is a private helper of this node; if chapter C wants it by name (its `HT` transcription
+will), the orchestrator books it — RE-PLAN candidate, flagged.
+
+**⚠ H-11 CASHED.** The conclusion quantifies over **every** lift of the class — including the
+equal-characteristic `disc = 0` lifts that `EFF.W12.27`'s `[r4]` strike shows have *no σ in the
+corpus's sense* (its counter-instance `F = y³ + b₀`, char 3, `F′ ≡ 0`). `typeOf F` is still
+defined and still computed by this certificate (for that instance: the `(u,ℓ) = (h,3)` leaf,
+`d = 1`, B.58's norm bracket — no separability used anywhere in §7's route). The corpus's
+`disc ≠ 0` quantifier is thus not weakness repaired but strength gained; §14 item 5.
+
+**SOURCE.** `EFF.W12.27` verbatim ("the shape is σ-DECIDED with σ read off the shape alone, and
+(A0)-strongly (every `disc ≠ 0` lift has this σ …)" — the certification sentence this node makes
+a theorem, at the stronger every-lift quantifier per D-4(a)); `EFF.W12.51` (`W12-BOX-7`, the
+pinned definiendum this node's `DecidedAt` strictly implies); `EFF.W12.21` ("σ(f) = ⊔_i σ(f_i)
+branchwise, and f is σ-decided iff every f_i is" — steps 3–6 are the "if" direction);
+`EFF.W12.08` (the σ-pin and its `[r4]` totality remark); `EFF.HE3.16` (THEOREM HE3.A's
+"factors over `O` into exactly `k` monic irreducible factors, in bijection with the members of
+`τ_stage(ℓ)`" — at `e₁ = 1, f₁ = m`, the stage type is `order1Type`, per B.66's FAITHFULNESS).
+
+**TEETH.** `W12-ORACLE` (`EFF.W12.56`, `[IND]`, 0 bad / 41,923 PARI σ-multiset checks per decided
+member) → **executable regression** retained, with the scope note of D-4(a): the battery's
+"`disc = 0 ⟹ never decided`" clause tests the corpus's weaker predicate, not this node's (the
+PARI oracle cannot score a `disc = 0` lift; the Lean theorem covers it); tooth `W12-T-SIGMA`
+(`EFF.W12.27`) → **Lean theorem** (this node); `W12-BLOCK` → **Lean theorem** at B.78 (consumed
+at step 4).
+
+**ENVIRONMENT.** ENV-C **plus completeness** (= ENV-B ∩ ENV-C as in §7's leaf theorems: step 3 is
+Hensel). Binding note for the stub agent: `DecidedAt`, `proj`, `Coeff` need
+`[Finite (ResidueField O)]` (§0.1's ⚠); `exists_monic_factorization_finset` needs
+`[IsAdicComplete (maximalIdeal O) O]`; both are bound.
 
 ---
 
 ### NODE B.81 [lemma] [fresh]
 
-**STATEMENT.** *Eventual certification.* Every terminating order-1 member is decided at **some**
-level `N` read off its own polygon — per-member, never uniform (R8-1's stratification bullet
-carried). *(stub; SPLIT CANDIDATE)*
+**STATEMENT.** *Eventual certification — the per-member level exists.* Over the complete bundle,
+with the data of B.80 minus the level: `a : Fin n → O`, order-0 data `(φ i, e i)`, the peel `g i`,
+and per block `dev (φ i) (g i) 0 ≠ 0`, `¬ NeedsDescent π (φ i) (g i)`, `hperim i`. Then there is a
+level `N` — explicitly, any `N > max_{i ∈ s} npHgt (φ i) (g i) 0` — at which B.80 fires, and its
+σ is the member's own type:
+
+```
+∃ N : ℕ, 0 < N ∧ DecidedAt O n (typeOf (monicPoly a)) N (proj O n N a).
+```
+
+The level is **per-member** (read off the member's own polygon heights) and this chapter states no
+uniform law over any family — D-4(c); R8-1's counterexample shows none exists even for the family
+of a single shape.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem exists_decidedAt_of_terminating (hπ : Irreducible π) {n : ℕ} (hn : 0 < n)
+    (a : Fin n → O) {ι : Type*} [DecidableEq ι] {s : Finset ι}
+    {φ : ι → Polynomial O} {e : ι → ℕ}
+    (hkey : ∀ i ∈ s, IsKey (φ i)) (he : ∀ i ∈ s, 0 < e i)
+    (hne : ∀ i ∈ s, ∀ j ∈ s, i ≠ j →
+      (φ i).map (IsLocalRing.residue O) ≠ (φ j).map (IsLocalRing.residue O))
+    {g : ι → Polynomial O} (hgmon : ∀ i ∈ s, (g i).Monic)
+    (hgprod : Uniformity.Density.monicPoly a = ∏ i ∈ s, g i)
+    (hgres : ∀ i ∈ s, (g i).map (IsLocalRing.residue O)
+      = ((φ i).map (IsLocalRing.residue O)) ^ (e i))
+    (hnz : ∀ i ∈ s, dev (φ i) (g i) 0 ≠ 0)
+    (hterm : ∀ i ∈ s, ¬ NeedsDescent π (φ i) (g i))
+    (hperim : ∀ i ∈ s, ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField (φ i)), …) :
+    ∃ N : ℕ, 0 < N ∧ Uniformity.Density.DecidedAt O n
+      (typeOf (Uniformity.Density.monicPoly a)) N (Uniformity.Density.proj O n N a)
+```
+
+**DEPENDS.** B.63a · B.66 · B.76 (`exists_visible`, `visible_mono`, `visible_iff_npHgt_lt`) ·
+B.79(a) · B.80 · landed `FactorizationType.ext`.
+
+**PROOF.**
+1. Per block, B.76(v) with `hnz i` gives `N i` with `Visible π (φ i) (g i) (N i)`; take
+   `N := max (1, max_{i ∈ s} N i)` (`Finset.max'` over the image, or `Finset.sup` + 1); B.76(iii)
+   makes every block visible at `N`, and `0 < N`.
+2. B.80 at this `N` gives `DecidedAt O n ⟨Σ (order1Type π (φ i) (g i)).data⟩ N (proj O n N a)`.
+3. The σ is the member's own type: per block B.79(a) gives
+   `typeOf (g i) = order1Type π (φ i) (g i)`; B.63a's `typeOf_prod` over `hgprod` gives
+   `(typeOf (monicPoly a)).data = Σ (typeOf (g i)).data`; `FactorizationType.ext` closes
+   `typeOf (monicPoly a) = ⟨Σ (order1Type …).data⟩`, and rewriting in step 2 concludes.
+
+**SIZE.** 40 lines. **SPLIT CANDIDATE** (§2's table, honored): the natural boundary is step 3 as
+`B81a` (`typeOf_eq_sum_order1Type`, the member's-own-type identity — reusable by chapter C's
+menu-to-density weld) and steps 1–2 as `B81b`; the orchestrator decides at fleet time.
+
+**⚠ WHAT "EVENTUAL" DOES AND DOES NOT BUY.** This node certifies **one member at a time**. It does
+NOT say that the decided proportion tends to anything (that is drainage, chapter I — forward
+reference, marked per the chapter charge), and it does NOT bound `N` by the shape (refuted,
+D-4(c)). It is the order-1 kernel of the drainage argument: every terminating order-1 member
+eventually enters `decidedSet`, with `hnz`/`hterm`/`hperim` delimiting exactly which members
+"terminating" means — `¬ hnz` is `EFF.HE3.55`'s out-of-genre residue, `¬ hterm` is the descent
+locus (chapter C), and the perimeter's conditional region carries `B-BOX-1` (H-7).
+
+**SOURCE.** `EFF.HE3.67` (R8-1's replacement bullet 3, transcribed at order 1: "the σ-undecided
+mass is therefore obtained by stratifying by complete read histories and their deepest consulted
+heights. No single 'one more window unit' law, nor one unstratified exact q-power, follows" — the
+per-member `N` of step 1 IS the deepest-consulted-height stratification, and the refusal to state
+more is the correction carried); `EFF.HE3.55` (HE-BND: the measured two-step decided profile is
+the instance evidence for exactly this per-member eventuality, valid post-R8-1 only row-by-row);
+`EFF.W12.86` step 5 (the corpus's termination argument — its depth-increase recursion `s_u ≥
+s_v + 1` is chapter C's; at order 1 only its terminal clause is needed, which is `hterm`).
+
+**TEETH.** `HE-BND` (`EFF.HE3.55`, 3,744 boundary reads, RE-SCOPED by R8-1) → **executable
+regression** retained: the battery's saturation columns (`N = 6, 7`) are per-member eventuality
+observed; the never-decided residue (28/51) decomposes as the battery says into out-of-genre
+(`¬ hnz`, 25/49) + deeper (`¬ hterm`-or-deeper, 3/2), which is this node's hypothesis frontier
+measured.
+
+**ENVIRONMENT.** ENV-C plus completeness (inherits B.80's binding).
 
 ---
 
