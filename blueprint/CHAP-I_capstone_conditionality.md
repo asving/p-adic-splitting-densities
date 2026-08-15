@@ -226,7 +226,9 @@ I.22 — provenance/resolution/audit rows, no Lean files). Plus the §3 table (1
 | 13 | — | flagged for the codex cross-read |
 
 Numbering note: I.04, I.11–I.14, I.19, I.20, I.22 are `[note]` nodes (no Lean file; DAG rows
-only). Lean files: I01–I03, I05–I10, I15–I18, I21, I23–I25 (16 files).
+only), and I.08/I.09 are late-binding placeholders that type directly into I.10's fields at
+the F freeze (no separate files). Lean files: I01–I03, I05–I07, I10, I15–I18, I21, I23–I25
+(**15 files**).
 
 ---
 
