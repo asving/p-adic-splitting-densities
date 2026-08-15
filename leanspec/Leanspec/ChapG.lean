@@ -101,8 +101,11 @@ G.45, G.50, G.52, G.53, G.55–G.57, G.62, G.64, G.73** (wave-1/2, 33 node-files
 **plus G.08, G.11, G.16, G.17, G.18, G.20, G.22, G.24, G.25, G.30, G.34, G.40, G.54, G.63** (wave-3,
 2026-08-15, 14 node-files, 20 declarations — G.40 and G.63 split into three and two declarations
 respectively), **plus G.30a and G.31** (2026-08-15, the G.31 cure unit, 2 node-files, 4
-declarations) — **49 node-files, 72 declarations retired** in total; see the individual doc
-comments below for the retiring `example`. G.23 and G.31 were investigated in wave-3 and found
+declarations), **plus G.35, G.36, G.37, G.58, G.59, G.65–G.72, G.74** (wave-5, 2026-08-15,
+14 node-files, 17 declarations — G.37 and G.72 each split into two, G.66 is a `def` retired at
+both strengths per the §A-5 precedent) — **63 node-files, 89 declarations retired** in total; see
+the individual doc comments below for the retiring `example`. G.23 and G.31 were investigated in
+wave-3 and found
 BLOCKED. **G.31's block is CLEARED (blueprint AMENDMENT §A-7):** it needed `Finset.range N` in
 `decidedSet_ram_eq` justified by showing `depthSet π N t = ∅` for `t ≥ N`, which was not among its
 DEPENDS; that general form turns out to be **false** at even `t` in residue characteristic 2, and
@@ -457,27 +460,35 @@ example (hπ : Irreducible π) {N : ℕ} {a : Fin 2 → O} {γ : O}
     ∃ b : Fin 2 → O, proj O 2 N b = proj O 2 N a ∧ typeOf (monicPoly b) = inertType :=
   exists_inert_lift (hπ := hπ) (N := N) (a := a) (γ := γ) (hT := hT)
 
-/-- **G.35** -/
-axiom undecidedSet_eq_tangSet (hπ : Irreducible π)
+/-- **G.35** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G35`). -/
+example (hπ : Irreducible π)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O] (N : ℕ) :
-    undecidedSet O 2 N = tangSet π N N
+    undecidedSet O 2 N = tangSet π N N :=
+  undecidedSet_eq_tangSet (hπ := hπ) (N := N)
 
 end Menu
 
 /-- **G.36 — W-11 clause (iii), exactly: the `n = 2` σ-undecided count is `q^N`.** Every complete
 DVR with finite residue field, every level `N`, both characteristics, wild residue characteristic
 included. This is the exact form of the landed bound `undecidedCount_le` (which gives only
-`q^(3M)` at level `2M`). -/
-axiom undecidedCount_two_eq [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
-    undecidedCount O 2 N = residueCard O ^ N
+`q^(3M)` at level `2M`). LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G36`), the chapter's headline node. -/
+example [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
+    undecidedCount O 2 N = residueCard O ^ N :=
+  undecidedCount_two_eq (N := N)
 
-/-- **G.37a** -/
-axiom undecidedSeq_two_eq [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
-    undecidedSeq O 2 N = (1 / (residueCard O : ℝ)) ^ N
+/-- **G.37a** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G37`). -/
+example [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
+    undecidedSeq O 2 N = (1 / (residueCard O : ℝ)) ^ N :=
+  undecidedSeq_two_eq (N := N)
 
-/-- **G.37b** -/
-axiom gapSeq_two_le [IsAdicComplete (maximalIdeal O) O] (σ : FactorizationType) (N : ℕ) :
-    gapSeq O 2 σ N ≤ (1 / (residueCard O : ℝ)) ^ N
+/-- **G.37b** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G37`). -/
+example [IsAdicComplete (maximalIdeal O) O] (σ : FactorizationType) (N : ℕ) :
+    gapSeq O 2 σ N ≤ (1 / (residueCard O : ℝ)) ^ N :=
+  gapSeq_two_le (σ := σ) (N := N)
 
 /-! ## §7 — `n = 2`: exact counts, exact densities, the capstone slice (G.38–G.51) -/
 
@@ -693,15 +704,19 @@ example [IsAdicComplete (maximalIdeal O) O] {a : Fin 3 → O}
     (h : Irreducible ((monicPoly a).map (residue O))) : typeOf (monicPoly a) = c3inert :=
   typeOf_inert3_of_irreducible_map (a := a) (h := h)
 
-/-- **G.58** -/
-axiom typeOf_ram3_of_eisenstein {a : Fin 3 → O}
+/-- **G.58** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G58`), the cheapest cubic leaf certificate. -/
+example {a : Fin 3 → O}
     (hlow : ∀ i : Fin 3, a i ∈ maximalIdeal O) (h0 : a 0 ∉ (maximalIdeal O) ^ 2) :
-    typeOf (monicPoly a) = c3ram
+    typeOf (monicPoly a) = c3ram :=
+  typeOf_ram3_of_eisenstein (a := a) (hlow := hlow) (h0 := h0)
 
-/-- **G.59** -/
-axiom typeOf_linRam_of_residue [IsAdicComplete (maximalIdeal O) O] {a : Fin 3 → O}
+/-- **G.59** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G59`). -/
+example [IsAdicComplete (maximalIdeal O) O] {a : Fin 3 → O}
     (h2 : IsUnit (a 2)) (h1 : a 1 ∈ maximalIdeal O) (h0 : a 0 ∈ maximalIdeal O)
-    (h0' : a 0 ∉ (maximalIdeal O) ^ 2) : typeOf (monicPoly a) = c3linRam
+    (h0' : a 0 ∉ (maximalIdeal O) ^ 2) : typeOf (monicPoly a) = c3linRam :=
+  typeOf_linRam_of_residue (a := a) (h2 := h2) (h1 := h1) (h0 := h0) (h0' := h0')
 
 namespace Menu
 
@@ -785,57 +800,85 @@ example : Function.Surjective CubicFamilyIndex.schema := schema_surjective
 retirement form (0e-diff against `Uniformity.ChapG.G64`). -/
 example (q M : ℕ) : ℕ := hex3R (q := q) (M := M)
 
-/-- **G.65** -/
-axiom hex3R_rec (q M : ℕ) (hq : 2 ≤ q) (hM : 1 ≤ M) :
+/-- **G.65** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G65`). Proved via a parity-free "two-step" recursion
+`hex3R q (M+2) = q²·hex3R q M + (q−1)·q^M`, not the parity case-split the blueprint suggested. -/
+example (q M : ℕ) (hq : 2 ≤ q) (hM : 1 ≤ M) :
     hex3R q M
-      = q ^ (M - 1) + (q - 1) * ∑ j ∈ Finset.Icc 1 ((M - 1) / 2), q ^ j * hex3R q (M - 2 * j)
+      = q ^ (M - 1) + (q - 1) * ∑ j ∈ Finset.Icc 1 ((M - 1) / 2), q ^ j * hex3R q (M - 2 * j) :=
+  hex3R_rec (q := q) (M := M) (hq := hq) (hM := hM)
 
 /-- **G.66** HEX3's `u(q, N)` — the per-centre conservative-undecided count of the cubic TRP
-stratum (`EFF.HEX3.08`, THEOREM HEX3.A), in telescoped form. Pure arithmetic. -/
-def hex3U (q N : ℕ) : ℕ :=
-  q ^ (2 * N - 2)
-    + (q - 1) * ∑ k ∈ Finset.Icc 1 ((N - 1) / 3),
-        q ^ (4 * k - 1) * ((q ^ (N - 3 * k) - 1) * hex3R q (N - 3 * k))
+stratum (`EFF.HEX3.08`, THEOREM HEX3.A), in telescoped form. Pure arithmetic. LANDED (wave-5,
+2026-08-15) — retirement form (0e-diff against `Uniformity.ChapG.G66`), in both available
+strengths per the §A-5 precedent: the type-level `example` plus an `rfl` check that the landed
+BODY is the signed one. -/
+example (q N : ℕ) : ℕ := hex3U (q := q) (N := N)
 
-/-- **G.67** -/
-axiom hex3U_rec (q N : ℕ) (hq : 2 ≤ q) (hN : 2 ≤ N) :
+example (q N : ℕ) :
+    hex3U q N
+      = q ^ (2 * N - 2)
+        + (q - 1) * ∑ k ∈ Finset.Icc 1 ((N - 1) / 3),
+            q ^ (4 * k - 1) * ((q ^ (N - 3 * k) - 1) * hex3R q (N - 3 * k)) := rfl
+
+/-- **G.67** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G67`), the hardest node of the chain: the blueprint's double-sum telescoping
+is landed via a coefficient-collapse lemma proved by a self-reflection bijection `k ↦ l−k`,
+reducing to the standard finite geometric series. -/
+example (q N : ℕ) (hq : 2 ≤ q) (hN : 2 ≤ N) :
     hex3U q N + ∑ k ∈ Finset.Icc 1 ((N - 1) / 3),
         (q - 1) * q ^ (3 * k) * q ^ (2 * (N - 3 * k) - 2)
       = q ^ (2 * N - 2) + ∑ k ∈ Finset.Icc 1 ((N - 1) / 3),
           (q - 1) * q ^ (3 * k) * (hex3U q (N - 3 * k)
-            + (q ^ (N - 3 * k) - 1) * hex3R q (N - 3 * k))
+            + (q ^ (N - 3 * k) - 1) * hex3R q (N - 3 * k)) :=
+  hex3U_rec (q := q) (N := N) (hq := hq) (hN := hN)
 
-/-- **G.68** -/
-axiom two_mul_hex3R_le (q M : ℕ) (hq : 2 ≤ q) (hM : 1 ≤ M) :
-    2 * hex3R q M ≤ (M + 1) * q ^ (M - 1)
+/-- **G.68** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G68`). -/
+example (q M : ℕ) (hq : 2 ≤ q) (hM : 1 ≤ M) :
+    2 * hex3R q M ≤ (M + 1) * q ^ (M - 1) :=
+  two_mul_hex3R_le (q := q) (M := M) (hq := hq) (hM := hM)
 
-/-- **G.69** -/
-axiom hex3U_le (q N : ℕ) (hq : 2 ≤ q) (hN : 2 ≤ N) :
-    hex3U q N ≤ N * q ^ (2 * N - 2)
+/-- **G.69** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G69`), THEOREM HEX3.B's vanishing bound — proof-only (no battery touches it),
+done entirely in `ℕ` (not `ℚ`/`ℝ` as the blueprint suggested) via a telescoping identity by
+induction on the sum's upper bound. -/
+example (q N : ℕ) (hq : 2 ≤ q) (hN : 2 ≤ N) :
+    hex3U q N ≤ N * q ^ (2 * N - 2) :=
+  hex3U_le (q := q) (N := N) (hq := hq) (hN := hN)
 
-/-- **G.70** -/
-axiom hex3U_div_tendsto_zero (q : ℕ) (hq : 2 ≤ q) :
+/-- **G.70** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G70`). -/
+example (q : ℕ) (hq : 2 ≤ q) :
     Filter.Tendsto (fun N : ℕ => (q * hex3U q N : ℝ) / (q : ℝ) ^ (3 * N))
-      Filter.atTop (nhds 0)
+      Filter.atTop (nhds 0) :=
+  hex3U_div_tendsto_zero (q := q) (hq := hq)
 
 end Menu
 
-/-- **G.71** -/
-axiom drainage_three_of_hex3_bound [IsAdicComplete (maximalIdeal O) O]
+/-- **G.71** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G71`), the frontier interface node: names the `n = 3` hypothesis this chapter
+does not discharge (H-1) and wires its consequence. -/
+example [IsAdicComplete (maximalIdeal O) O]
     (h : ∀ N : ℕ, (undecidedCount O 3 N : ℝ)
       ≤ (residueCard O : ℝ) * (Menu.hex3U (residueCard O) N : ℝ))
-    (σ : FactorizationType) : UndecidedVanishes O 3 σ
+    (σ : FactorizationType) : UndecidedVanishes O 3 σ :=
+  drainage_three_of_hex3_bound (h := h) (σ := σ)
 
-/-- **G.72a** -/
-axiom totalMass_three_of_drainage [IsAdicComplete (maximalIdeal O) O]
+/-- **G.72a** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G72`). -/
+example [IsAdicComplete (maximalIdeal O) O]
     (hd : ∀ σ : FactorizationType, UndecidedVanishes O 3 σ) :
     genuineDensity O 3 c3split + genuineDensity O 3 c3linInert + genuineDensity O 3 c3inert
-      + genuineDensity O 3 c3linRam + genuineDensity O 3 c3ram = 1
+      + genuineDensity O 3 c3linRam + genuineDensity O 3 c3ram = 1 :=
+  totalMass_three_of_drainage (hd := hd)
 
-/-- **G.72b** -/
-axiom one_le_sum_three :
+/-- **G.72b** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G72`); unconditional, no drainage hypothesis. -/
+example :
     1 ≤ genuineDensity O 3 c3split + genuineDensity O 3 c3linInert + genuineDensity O 3 c3inert
-      + genuineDensity O 3 c3linRam + genuineDensity O 3 c3ram
+      + genuineDensity O 3 c3linRam + genuineDensity O 3 c3ram :=
+  one_le_sum_three
 
 /-! ## §10 — `n = 3`: the σ-undecided lower bound (G.73–G.77) -/
 
@@ -854,9 +897,11 @@ example (N : ℕ) : Nat.card (species3 (O := O) N) = residueCard O ^ N :=
 
 end Menu
 
-/-- **G.74** -/
-axiom exists_split3_lift {N : ℕ} {c : Coeff O 3 N} (hc : c ∈ Menu.species3 N) :
-    ∃ a : Fin 3 → O, proj O 3 N a = c ∧ typeOf (monicPoly a) = c3split
+/-- **G.74** LANDED (wave-5, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G74`). -/
+example {N : ℕ} {c : Coeff O 3 N} (hc : c ∈ Menu.species3 N) :
+    ∃ a : Fin 3 → O, proj O 3 N a = c ∧ typeOf (monicPoly a) = c3split :=
+  exists_split3_lift (hc := hc)
 
 /-- **G.75** -/
 axiom exists_ram3_lift [IsAdicComplete (maximalIdeal O) O] (hπ : Irreducible π)
