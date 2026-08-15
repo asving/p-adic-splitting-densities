@@ -5189,3 +5189,87 @@ G.42 are no longer waiting on G.23.
 and `TransInvariant` report `[propext]` alone). `leanspec` builds green with all 25 retired to
 the `example := <landed name>` form, which machine-checks that the landed types are the signed
 ones. No new axiom, no `sorry`, no statement of any pre-existing node changed.
+
+---
+
+## AMENDMENT 2026-08-15 (fifth dated append; Opus arm, the CLOSING TAIL) — §A-9: **CHAPTER G CLOSED**
+
+This append lands the chapter's remaining nodes — the `n = 2` count layer G.41–G.44, the exact
+density chain G.46–G.49/G.51, the `n = 3` lower-bound node G.61 with its infrastructure, and the
+two gates G.77/G.78 — and then closes the chapter with a census. As with every append,
+**nothing in §§0–14 or in §§A-1…A-8 is edited in place**; the banners prescribed below belong on
+the affected node entries.
+
+### A-9.1 — G.44a's ram index set: **DEFECT. `Finset.range ((N+1)/2)` is FALSE at odd `N`; the
+genuine index is `Finset.range (N/2)`.**
+
+**Banner for the node entry:** `G.44 [SIGNATURE AMENDED 2026-08-15 — see AMENDMENT §A-9.1;
+G.44b (inert) unchanged]`.
+
+The signed ram statement is
+
+```lean
+decidedSeq O 2 ramType N = ∑ j ∈ Finset.range ((N + 1) / 2), (q - 1) / q ^ (2 * j + 2)
+```
+
+**It fails at every odd `N`, first at `N = 1`.** Two independent derivations of the failure, with
+disjoint inputs:
+
+*Leg 1 (structural; machine-checked at this append).* `decidedSet_ram_eq` (G.31) writes the
+ram-decided set as `⋃ j ∈ Finset.range N, depthSet π N (2*j+1)`. At `N = 1` the only index is
+`j = 0` and `depthSet π 1 1 = ∅` by G.30a (`depthSet_odd_eq_empty`, hypothesis `N ≤ 2*j+1`, here
+`1 ≤ 1`). So `decidedCount O 2 ramType 1 = 0` and `decidedSeq O 2 ramType 1 = 0`, while the signed
+right-hand side is `∑ j ∈ Finset.range 1, (q-1)/q^2 = (q-1)/q^2`, which is `> 0` because
+`q ≥ 2` (`two_le_residueCard`). Contradiction.
+
+*Leg 2 (arithmetic; independent of G.30a and of the depth filtration's emptiness lemmas).* At
+`N = 1` the level-1 census closes exactly: the landed G.36 gives `undecidedCount O 2 1 = q`, and
+G.41/G.42 at `k = 0, r = 0` give `2·#inertStratum + q = q²`, i.e.
+`#inertStratum = #splitStratum = (q²−q)/2`. The `q²` level-1 classes are partitioned into the
+three decided sets and the undecided set, so
+`(q²−q)/2 + (q²−q)/2 + #ramDecided + q = q²`, forcing `#ramDecided = 0` — again `0 ≠ (q−1)/q²`.
+(The same closure at `N = 2` reads `(q⁴−q³)/2 + (q⁴−q³)/2 + (q³−q²) + q² = q⁴` ✓, and there the
+two index conventions agree, which is why the defect is invisible at even `N`.)
+
+**The correction.** The genuine ram index set is `{j | 2*j+2 ≤ N}` — the hypothesis
+`decidedAt_ram_of_depth_odd` (G.25) actually requires, and the range on which `card_depthSet`
+(G.20) returns a nonzero count — and `{j | 2*j+2 ≤ N} = Finset.range (N/2)` (`omega`). The inert
+index set `{k | 2*k+1 ≤ N} = Finset.range ((N+1)/2)` is **CORRECT as signed**, so G.44b is
+untouched: the two halves genuinely have different index sets, and the blueprint's error was to
+reuse one expression for both.
+
+**Nothing downstream changes.** G.46 consumes G.44a only through G.45's limit, and
+`N/2 → ∞` exactly as `(N+1)/2 → ∞`; the limit `(q−1)/q² · q²/(q²−1) = 1/(q+1)` is unaffected.
+G.47, G.48, G.49 and G.51 are downstream of the limit only.
+
+---
+
+### A-9.2 — G.61's MANDATORY NUMERIC CONSISTENCY CHECK: **RE-RUN, ALL TEN INEQUALITIES HOLD, and
+the tightest has a 0.41% margin**
+
+The G.61 node entry asks a cross-reader to re-run its bound-versus-target table, on the ground that
+"a bound exceeding its target would be a genuine contradiction (`decidedDensity ≤ genuineDensity`
+is landed), and it is the cheapest available falsifier of either the bounds or the transcribed
+targets". Re-run at this append in exact rationals, independently of the blueprint's own arithmetic:
+
+| `q` | | split | linInert | inert | linRam | ram | Σ targets |
+|---|---|---|---|---|---|---|---|
+| 2 | target | `4/93` | `28/93` | `8/31` | `22/93` | `5/31` | **`1`** ✓ |
+| 2 | bound | `1/512` | `1/4` | `1/4` | `1/16` | `1/16` | |
+| 2 | slack | 95.5% | 17.0% | **3.1%** | 73.6% | 61.3% | |
+| 3 | target | `63/968` | `351/968` | `36/121` | `93/484` | `10/121` | **`1`** ✓ |
+| 3 | bound | `1/19683` | `1/3` | `8/27` | `4/81` | `2/81` | |
+| 3 | slack | 99.9% | 8.1% | **0.41%** | 74.3% | 70.1% | |
+
+All ten inequalities hold, and the five HM3.D targets sum to exactly `1` at both primes — which is
+an independent check on the transcription of `R_τ` and of `Φ = q⁴+q³+q²+q+1`, since a slip in any
+one closed form would almost surely break the sum.
+
+**The check has real force at one entry.** The inert bound at `q = 3` is `8/27 = 0.296296…` against
+the target `36/121 = 0.297520…`: cross-multiplying, `8·121 = 968 < 972 = 36·27`, a margin of
+`4/3267 ≈ 0.41%`. A single transcription slip in either the level-1 `NoRootCubic` census
+(`(q³−q)/(3q³)`) or in HM3.D's `q³(q+1)/(3Φ)` would have flipped that inequality and produced a
+visible contradiction with the landed `decidedDensity ≤ genuineDensity`. It did not. This is the
+strongest available corroboration that G.60's residue-field cubic census and HMENU3's transcribed
+cubic densities are the same mathematics read two ways.
+

@@ -642,10 +642,30 @@ for _cells in BLUEPRINT_EDGES:
 # the blueprint's own NODE headings are the node list, the edge file only the edge list.
 for _ch, (_kinds, _src) in _BPMETA.items():
     _BPNODES.update(_kinds)
+
+# BLUEPRINT NODE STATUS (added 2026-08-15, chapter-G closing tail).  A blueprint node's status
+# is READ OFF ITS OWN EDGE ROWS in spec/DAG_BLUEPRINT_<CH>.tsv rather than hardcoded OPEN: the
+# node is DONE exactly when every one of its outgoing (consumer-side) rows is marked DONE, i.e.
+# when the chapter records every dependency of that node as discharged.  A node the chapter
+# declares but gives no edge (G.78, the axiom-footprint census gate) has no row to read, so it
+# is listed explicitly below.  Deterministic and idempotent, like the merge itself.
+BLUEPRINT_EDGELESS_DONE = {'BP.G.78'}
+_BP_OUT = collections.defaultdict(list)
+for _cells in BLUEPRINT_EDGES:
+    if BP_ID.match(_cells[0]):
+        _BP_OUT[_cells[0]].append(_cells[4])
+
+def bp_status(nid):
+    rows = _BP_OUT.get(nid)
+    if not rows:
+        return 'DONE' if nid in BLUEPRINT_EDGELESS_DONE else 'OPEN'
+    return 'DONE' if all(s == 'DONE' for s in rows) else 'OPEN'
+
 for _nid in sorted(_BPNODES, key=lambda x: (BP_ID.match(x).group(1), int(BP_ID.match(x).group(2)))):
     _ch = BP_ID.match(_nid).group(1)
     _kinds, _src = _BPMETA[_ch]
-    node(_nid, 'blueprint-node', 'CHAP-%s' % _ch, _kinds.get(_nid, ''), 'blueprint', 'OPEN', _src)
+    node(_nid, 'blueprint-node', 'CHAP-%s' % _ch, _kinds.get(_nid, ''), 'blueprint',
+         bp_status(_nid), _src)
 for _cells in BLUEPRINT_EDGES:                 # blueprint endpoints outside the harvest
     for _nid in (_cells[0], _cells[1]):
         if _nid not in NODES:
