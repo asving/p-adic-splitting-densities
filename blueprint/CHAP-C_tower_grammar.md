@@ -4199,9 +4199,603 @@ the 6.2C supplier-chain repair route).
 
 ---
 
-## 9. §9 — THE THIRD STAGE, THE THRESHOLDS, AND TERMINATION
+## 9. §9 — THE THIRD STAGE, THE THRESHOLDS, TERMINATION, AND THE CAPS
 
-<!-- §9 nodes: C.83–C.96 -->
+> **Design note.** GENTOW5 at its acceptance scope: the third stage (first live `n = 16`),
+> depth ≥ 4 NOT claimed (the FP-4 fences transcribed as statement hypotheses). Its TERMINAL
+> layers are heavy (C-H8): GENTOW5-D's two-directional closure WITHDRAWN (S11.1 — forward
+> direction only), the K_i-digit lift's threshold at `bound_i` (S12.2), clause (b)'s
+> residual display re-indexed twice (S11.5 + the post-D3i `ω_{j−1}` corrigendum), and —
+> the section's central honesty object — **`[GENTOW5-W(i)]`, the OPEN transported lemma**
+> (`u_i(β_t) = θ_i(t)·w_i^{f_{i+1}−t}`), with `𝒲_{≤n} := ⋀_{3≤q≤n} [GENTOW5-W(q)]`
+> conditioning every clause (a)/(b)/(c)/(e) leg at `n ≥ 3` (S12.1 WITHDREW the contrary
+> "w-blind ⟹ unconditional" claim). C.89 carries `𝒲` as the NAMED hypothesis family —
+> Display A's `(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}` conjunct is supplied to chapters E and I from
+> there. The ϑ/θ reciprocity (`θ_i(t) = ϑ_{i,f_{i+1}−t}^{-1}` — "same monomial quotient,
+> inverse read") is GC-14's fourth row: cited to the D-table anchor, stated here only in
+> normalizer-ratio form. GENTOW6's caps/attainment layer closes the section (A-§8's
+> relocation).
+
+### NODE C.83 [def] [fresh]
+
+**STATEMENT.** *The depth-`r` tower datum (DEF GENTOW5-1).* Over the fixed bundle: stage
+data `(e_i, f_i, ψ_i)` for `i = 1 … r` with **properness** `l_i := e_i·f_i ≥ 2` at every
+`i ≥ 2` (an improper stage is a refinement, not a level); `ê_i := e_1⋯e_i`,
+`D_i := l_1⋯l_i`; the ladder `dv_i := ê_i·v`; heights `u_1 := h`,
+`u_{i+1}` with `Nat.Coprime u_{i+1} e_{i+1}`; side constants `E_i := e_i·f_i·u_i`
+(`E_1 = D_1·h`); the **floor chain** `u_{i+1} > e_{i+1}·E_i` **as a datum field** (its
+automatic derivation at leaves is C.91(e), conditional at `n ≥ 3` — S12.1's carve-out:
+"later arguments may still use that inequality unconditionally when it is included
+explicitly in the fixed tower datum"); the **normalizer recursion**
+`n̂_{i+1}(k) := n̂_i(m_i(k))·Φ_i^{b_i(k)}` with `e_{i+1}·m_i(k) + b_i(k)·u_{i+1} = k`,
+`0 ≤ b_i(k) < e_{i+1}` (unique by coprimality; at `i = 2` this is §6's `n̂₂` verbatim);
+the **cocycle** `τ_i(a,b) := n̂_i(a)n̂_i(b)/n̂_i(a+b)`-exponent data and **letters**
+`Λ_i := Φ_i^{e_{i+1}}/n̂_i(u_{i+1})`-exponent data (carried as exponent bookkeeping, never
+as fraction-field elements — the C.15/C.28 discipline iterated); and the iterated residue
+fields `K_i` (C.12's `AdjoinRoot` chain — GC-7's depth-≥ 3 note applies: if the instance
+chain fails to elaborate, the recorded fallback triggers a DECISION here).
+
+**SIGNATURE** (shape). `structure DeepTower (F : KeyFrame O π) … (r : ℕ)` with per-level
+fields as `Fin r`-indexed data + the recursion as `def`s over it (`towerNorm i k : ℕ × ℕ ×
+(Fin i → ℕ)` — the unrolled exponent vector; `towerShift`, `towerCocycle` mirroring
+C.15/C.28 at each rung).
+
+**DEPENDS.** C.01 · C.09 · C.12 · C.15/C.16 · C.28 · C.42 (the depth-2 instance this
+extends).
+
+**PROOF.** definitional; uniqueness of the recursion solve per rung = C.16's argument at
+`(u_{i+1}, e_{i+1})`.
+
+**SIZE.** 40 lines. **Split candidate:** the structure / the recursion defs.
+
+**SOURCE.** `EFF.GENTOW5.14`–`.16` (verbatim, incl. the FGMN-collapsing gloss for
+properness [via GENTOW2's dictionary — documentation only] and the `i = 2` verbatim
+identification); `EFF.GENTOW5.21` (the worked pins `n̂₃(85) = 2⁸Φ₂`, `n̂₂(21) = 16Φ′` —
+§13 regression values).
+
+**TEETH.** P-B1/B2 ("floor chain tight, `u = 5, 21, 85, 341`") → §13 regression rows.
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.84 [def+lemma] [fresh]
+
+**STATEMENT.** *The level-`i` weight and the K_i-digit flavor lifts (TERMINAL forms).*
+(i) `wt_i` on exponent data `(v, a, J_1 … J_i)`: `ê_i·v + a·(ê_i/e_1)h + Σ_{j<i}
+J_j·(ê_i/ê_{j+1})u_{j+1} + J_i·E_i` — the TOP variable priced at `E_i` (a LOWER bound, the
+`[GT5-r1]` repair: the exact top value is only known `> E_i` by the field floor; the
+docstring carries the asymmetry); `wt_i` consumes NO data beyond the depth-`i` datum.
+(ii) the flavor monomials at the `[GT5-r2]` corrected display — the base RE-SOLVES per
+flavor: `M_{r,t}(m) := n̂_i(m − Δ(r,t))·x^{e_1 r}·Φ_1^{e_2t_1}⋯Φ_{i−1}^{e_it_{i−1}}`,
+`Δ(r,t) := e_1r·(ê_i/e_1)h + Σ_{j<i} e_{j+1}t_j·(ê_i/ê_{j+1})u_{j+1}`; exponents stay in
+ladder range, `deg M_{r,t} < D_i`; a flavor is ABSENT when the ladder solve fails (the
+negative-height proviso); `lift_i(c; m) := Σ d_{r,t}·M_{r,t}(m)` with inverse-twisted
+digits, **valid for `m > bound_i`** (S12.2 TERMINAL: the display consumes the PRECEDING
+lift instance — threshold `bound_i`, NOT `bound_{i+1}`; the S11.4 bracket is DEAD).
+
+**SIGNATURE** (shape). `def towerWeight …` + `def flavorMonomial …` + `def towerLift …`
+(+ the exact-height lemma `wt`-audit companions).
+
+**DEPENDS.** C.83 · H.54–H.57 (the base lift, per C-H5) · C.56's `k2DigitLift` (the
+`i = 2` instance — reconciliation lemma companion).
+
+**PROOF.** definitional + the range arithmetic (`i0′ + e_1r < D_1`,
+`b_j′ + e_{j+1}t_j < l_{j+1}` — `omega`).
+
+**SIZE.** 36 lines.
+
+**SOURCE.** `EFF.GENTOW5.24` (the weight, `[GT5-r1]` TERMINAL); `.17` (the corrected
+flavor display, verbatim, with the FR-A verification `n̂₂(14−3)·Φ₁ = 3⁵xΦ₁` and the
+fixed-base non-existence `11/2 ∉ ℤ`); S12.2 via `.17`'s conditionality (the `bound_i`
+rung).
+
+**TEETH.** FA1-LIFT (22/0: fixed-base flavor non-existence + the re-solved member green)
+→ **executable regression** + §13 row; the grid-4 equality instance (`170 = 170 = 170`)
+→ retained (guards against any lean on top-carry strictness).
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.85 [theorem] [fresh]
+
+**STATEMENT.** *The graded frame and the substitution theorem (GENTOW5-A0/A1/A) — the
+general-`μ₂` layer-1 kills; GENTOW-BOX-1's mathematical content, RETIRED here.* Three
+layers:
+(A0) **the graded frame, abstract** (ENV-C4-style): for a field with a valuation, the
+associated graded object has invertible nonzero homogeneous elements — `[a][b] = [ab] ≠ 0`
+(mathlib `Valuation` carrier; the corpus's `gr(L₂)`; "pointwise, at a root, there is no
+carry problem — carries are a phenomenon of the slot GRID");
+(A1) **the ϑ-dictionary in normalizer-ratio form**: the coherent per-height digits `γ_j`
+and the multiplicative-convention coefficients `c_j` differ by the FIXED units
+`ϑ_t = res-ratio of n̂_i(λ)^t/n̂_i(tλ)` with the telescoping
+`ϑ_{t+1} = ϑ_t·res(τ(tλ, λ))` (`ϑ_0 = ϑ_1 = 1`) — stated at C's own carriers via
+C.21/C.28's reads; **the orientation is the D-table's RECIPROCAL row (GC-14): every
+consumer cites the anchor `[ϑ-TABLE — supplied-by: chapter D]`, and this node states only
+the ratio form**;
+(A) **the substitution theorem**: at a composed stage-α event (one side of integer
+`dv₂`-slope `λ > E₂`, residual `(T − s)^{μ₂}` in the multiplicative convention), the
+refine `Φ₂⁺ := Φ₂ − lift(s; λ)` kills ALL `μ₂` pins: `dv2Pin … Φ₂⁺ f k > ((μ₂−k)λ : ℕ∞)`
+for `k < μ₂` — Step A is the Taylor/substitution identity `R(T+w) = Σ_k [Σ_j binom(j,k)
+w^{j−k}c_j]T^k` (an identity over ANY commutative ring, both characteristics —
+binomial-free conclusion `(T−w)^{μ₂}|_{T→T+w} = T^{μ₂}`), Step B is the grid translation
+(C.87's forward direction + the flow-up pricing `λ > E₂`). **This node supplies C.56's
+general-`μ₂` leg** and lifts GENTOW-2's grade-note restriction.
+
+**SIGNATURE** (shape). Three public theorems — **split-mandated C.85 → 3** (`graded_frame`
+[ENV-C4 abstract]; `theta_dictionary`; `substitution_kills` [the C.56 supplier]).
+
+**⚠ DECISION NOTE (the A0 carrier).** The corpus's `gr(L₂)` lives on the completed leaf at
+a root — closure-adjacent. The Lean route: A0 abstractly over `Valuation K Γ` (mathlib),
+instantiated NOT at a leaf field but through the C.27 norm-form exactness — Step A's
+"evaluate at `x₀`" becomes the multiplicative-residual bookkeeping over `K₂[T]` (a finite
+field we have) with C.27 transporting values. If the stub stage finds the abstract
+`Valuation` route heavier than a direct `K₂[T]`-computation, the formalizer may drop A0
+entirely and prove `substitution_kills` from the Taylor identity + C.27 + C.87 alone —
+A0 is scaffolding, not consumed content (the corpus's own framing). Recorded per GC-2's
+DECISION-block discipline.
+
+**DEPENDS.** C.11 · C.21 · C.27 · C.28 · C.52 (Step 0) · C.56 (the statement it supplies —
+DAG: this node BEFORE C.56's general leg) · C.87 (forward direction) · C.84 (the lift).
+
+**PROOF (route).** `EFF.GENTOW5.10`'s two steps, verbatim route; the convention fence
+(`EFF.GENTOW5.09`: at `μ₂ = 2`, char 2, the convention is invisible — every K₂-element a
+square — C-H12's coincidence regime, transcribed in the docstring as the reason the
+`μ₂ = 2` batteries never saw it).
+
+**SIZE.** 3 × ~40 lines.
+
+**SOURCE.** `EFF.GENTOW5.06` (A0 + proof); `.08` (A1 + the tower-side re-proof of
+ANNEX-LEMMA R1-a(iii) — "reproved here in the tower's own letters rather than cited, since
+the base conventions differ"; so NO HE7 placeholder is needed for THIS node's cocycle
+residue law — C.39's placeholder remains only for the HE6R1-side scalar); `.09` (the
+convention fence); `.10` (THEOREM GENTOW5-A, verbatim, both steps + the audited
+char-independence); `.13` (S1.5: GENTOW-BOX-1 "RETIRED as a mathematical box; the residue
+is grade-only" — the Lean node IS the retirement's formal content; no W-9-analogue weld
+face is consumed, verbatim).
+
+**TEETH.** P-A1/A2/A3 (the FIRST `μ₂ = 3` pointwise re-division kills in the program,
+incl. a char-3 row and an `f₂ = 2` two-flavor row) + T-A1W/T-A2W (wrong height, wrong
+digit) + T-A4W (the CONVENTION tooth: the naive-digit twin keeps its pin at 22) →
+**executable regressions** retained; §13 fires one kill row per prime.
+
+**ENVIRONMENT.** ENV-C4 (A0) / ENV-C3 (A1, A).
+
+---
+
+### NODE C.86 [lemma] [fresh]
+
+**STATEMENT.** *COROLLARY GENTOW5-A′: GENTOW-2 closes at general `μ₂`; the level-1 rider.*
+(i) C.56/C.57's clauses hold at general `μ₂`: (ii) = C.85; (iii) consumed layer 1 only
+through (ii); (iv) is the SAME Step-A computation at the refined frame — reverse transport
+with minimal class `binom(μ₂,j)w^{μ₂−j}`, char-sensitive exactly where `q ∤ binom(μ₂,j)`.
+(ii) **the level-1 rider**: the S1 argument runs verbatim one level down (GENHN-BOX-2's
+own retirement condition — "the GENH4-S5 computation at general `(e₁, f₁, μ)`"); recorded
+as a DISPLAY node (the corpus claims nothing on frozen GENHN text; the Lean statement is
+the level-1 instance of C.85, honest and self-contained — the consumption bookkeeping
+against `HYP.148` is chapter I's).
+
+**SIGNATURE** (shape). `theorem refine_general_mu …` (the (i) re-export) +
+`theorem substitution_kills_level1 …` (the rider as a real level-1 theorem over B's API).
+
+**DEPENDS.** C.56 · C.57 · C.85 · B §5–§7 (the level-1 carriers for the rider).
+
+**PROOF.** re-export + the transport table (`gr(L₁)`, `GENHN-2` for `GENHN-2′`, GENH4
+layer 2 for layer 2).
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.GENTOW5.11` (verbatim, incl. the grade-note lift); `.12` (the rider, with
+its "no new claim on frozen text" fence — transcribed as an honest new Lean theorem, which
+is MORE than the corpus display but exactly what the display exhibits; flagged §16).
+
+**TEETH.** P-A rows (the (i) instances); the rider is machine-unexercised in the corpus
+(disposition: signed — the Lean proof is its first teeth).
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.87 [lemma] [fresh]
+
+**STATEMENT.** *LEMMA GENTOW5-D, TERMINAL (one-directional).* For every level `i`: the
+forward reduction moves (x-carry, `Φ_j`-carries) are `wt_i`-NONDECREASING; lift-generated
+terms preserve weight exactly; INTERIOR carries' key-parts strictly raise it (floor rung
+`j+1`, in-datum); the TOP carry's key-part PRESERVES it exactly (`E_i`-priced — no floor
+rung consumed; at `i = 1` the only move IS the top carry, the `[GT5-r2]` edge).
+**The two-directional closure ("all slots at weight ≥ W is the same condition on every
+grid") is WITHDRAWN** (S11.1, CRITICAL — FALSE as written): the converse rewriting is
+weight-NONINCREASING, with the single surviving remnant the SINGLE-STEP top-rung expansion
+(weight-preserving). Named consumers use the forward direction only (S11.1's consumption
+walk, verified: C.85 Step B, C.91(c) Steps 0/3, C.91(d)).
+
+**SIGNATURE** (shape). `theorem towerCarry_forward_mono …` + the top-rung remnant
+companion; NO two-directional statement exists in this chapter (a stub matching the
+withdrawn closure is a defect).
+
+**DEPENDS.** C.83 · C.84 · C.50/C.52 (the `i = 2` instance it must match — the corpus's
+own cross-check: GENTOW1 Step 0 prices the `Φ₂`-part "at weight E2 exactly").
+
+**PROOF (route).** the two displayed carry computations, uniform in `j`, with the audited
+interior/top split; the `i = 1` edge clause.
+
+**SIZE.** 40 lines.
+
+**SOURCE.** `EFF.GENTOW5.25` (the `[GT5-r1]`/`[GT5-r2]` restated statement + proof +
+failure-mode fence, verbatim; S11.1's withdrawal — CHAIN TERMINAL; the grid-4
+`170 = 170 = 170` fence).
+
+**TEETH.** `gentow5_af1_direction_check.py` (8/0, both directions) → **executable
+regression** retained; the grid-4 equality → retained.
+
+**ENVIRONMENT.** ENV-C5/C1.
+
+---
+
+### NODE C.88 [theorem] [fresh]
+
+**STATEMENT.** *LEMMA GENTOW5-C: `(SLOT_i)` and `(LIFT_i)` up the tower.* By induction on
+`i` (base `i ≤ 2` = B's slot layer + §4/§6's — accepted corpus recast as C.23/C.27/C.24
+and C.58's mechanisms): for `ξ`-free consumers, the level-`(i+1)` slot value of
+`C ∈ O[x]`, `deg C < D_{i+1}`, is the slot minimum EXACTLY (norm-form per C.27's carrier);
+minimizing slots in one class mod `e_{i+1}`; the height-`k` residue is the displayed
+`K_{i+1}`-combination `Σ_t γ_t ϑ_t β_i^t ≠ 0` (no cancellation — the `K_i`-basis leg,
+H.53 iterated); and `(LIFT_i)`: `k`-uniformly above
+`bound_{i+1} = (l_{i+1}−1)·u_{i+1} + e_{i+1}·bound_i` (the PE5-F-3 restored token,
+re-derived at the primary source), every `K_{i+1}`-residue at height `k` is realized by
+some `C` with `deg C < D_{i+1}` (inverse-twisted digits, C.84's lift).
+
+**SIGNATURE** (shape). `theorem tower_slot_exact …` + `theorem tower_lift …` — **split-
+mandated C.88 → 2**; the `bound` recursion as a companion `def boundRec`.
+
+**DEPENDS.** C.23 · C.24 · C.27 · C.83 · C.84 · C.87 · H.51–H.53 (iterated) · **GC-13
+placeholder `EFF.HE7.<nn> — ANNEX-THEOREM R1-b/R1-c [supplied-by: chapter E]`** (the
+`i ≥ 3` proof pattern's corpus anchor; the four-clause instantiation table — (a) induction
+hypothesis, (b) `u_{i+1}` exact, (c) coprimality, (d) the `K_i`-basis — is this chapter's
+own and is the Lean proof's skeleton, so the placeholder is provenance, not a proof
+dependency; if E's transcription lands first the SOURCE gains its node ID).
+
+**PROOF (route).** `EFF.GENTOW5.22`'s four steps: (1) values exact one level down + the
+defining `u_{i+1}`; (2) cross-class ties impossible (coprimality bijection, H.51's
+pattern); (3) within-class: the telescoped `τ_i`-cocycle residues are fixed letter units
+(C.85(A1)'s mechanism per rung — per-grade fixedness ONLY, never the single-`w` form:
+S11.2's fence transcribed in the docstring); (4) the `K_i`-basis kills cancellation
+(H.53); `(LIFT_i)` = prescribe inverse-twisted digits, bound arithmetic never sees
+residues.
+
+**SIZE.** 2 × ~45 lines. The chapter's third schedule-risk node (with C.27 and C.33).
+
+**SOURCE.** `EFF.GENTOW5.22` (verbatim, incl. the acceptance-grade fold on the ANNEX R
+pin and the bound-token restoration); `.23` (the base-vs-tower remark: J-D0 transport for
+count/degree/vanishing ONLY — "no invariance under CHANGING systems mid-argument is
+consumed (that stronger claim is false — HE7-T-BADTWIST)", carried as the docstring
+fence).
+
+**TEETH.** the corpus's own coverage box: NO dedicated machine row at `i ≥ 3` — the §13
+gate ADDS one (GC-11's extra-force clause for thin verification): a depth-3 `(SLOT₃)`
+spot value at `q = 2` and `q = 3` on the S4 witness chain's data (`n̂₃(85) = 2⁸Φ₂`
+family); A-rows cover `i ≤ 2`.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.89 [def+lemma] [fresh] — **TERMINAL SUPPLY: THE `𝒲` HYPOTHESIS FAMILY**
+
+**STATEMENT.** *`[GENTOW5-W(i)]` — the OPEN transported lemma, as a named hypothesis
+carrier (Display A's `𝒲_{≤i}` conjunct; supplied to chapters E and I).*
+`GENTOW5W F … (i) : Prop` := the single-`w` geometric form of the cross-frame unit at
+level `i`: there exists `w_i ∈ K_i^×` (the corpus's `R_{i+1,k̄_i}(n̂_i(u_{i+1}))`) with
+`u_i(β_t) = θ_i(t)·w_i^{f_{i+1}−t}` for every slot `t` — stated at C's carriers via the
+normalizer-ratio reads, with `θ_i(t)` in ratio form (GC-14 anchor cite; the reciprocity
+`θ_i(t) = ϑ_{i,f_{i+1}−t}^{-1}` is the D-table's business). And
+`Wle F … (n) : Prop := ∀ q, 3 ≤ q → q ≤ n → GENTOW5W … q`. Lemma clauses:
+(i) **`i = 2` DISCHARGE, unconditional**: `GENTOW5W … 2` holds — the landed GENTOW2 r3
+B-law (§10's C.99/C.100 supply it; DAG: those before this clause);
+(ii) **`i = 1`**: the SHAPE holds with a fixed letter-power unit `u1`; **the tie
+`u1 = w_1` is OPEN** (S11.3's re-scope — the clause is stated as the shape + a separate
+named open tie, never as the tied form);
+(iii) **`i ≥ 3`: OPEN** — "per-grade fixedness underdetermines (fixed families exist that
+fit no single `w`)"; a fleet agent needing it returns `BLOCKED: [GENTOW5-W(i)] (HYP-class
+open lemma; the honest-sorry analogue)` — it is a HYPOTHESIS on C.90/C.91's `n ≥ 3` legs
+and on E's deep rungs, and chapter I carries it in the capstone block.
+
+**SIGNATURE** (shape). `def GENTOW5W …` + `def Wle …` + `theorem gentow5w_two …` (+ the
+`i = 1` shape lemma).
+
+**DEPENDS.** C.83 · C.85(A1) · C.99/C.100 (§10 — the `i = 2` discharge's suppliers; DAG
+order §10's B″/B′ before clause (i)).
+
+**PROOF.** (i) from C.99/C.100 (the landed law at the depth-2 tower); (ii) the letter
+formula's species (§10's dictionary layer); (iii) none — the definition IS the carrier.
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.GENTOW5.27`'s S11.2 fence (verbatim: the `[GENTOW5-W(i)]` display and
+"hereby an OPEN transported lemma, the honest-sorry analogue") and S11.3 (the `i = 1`
+re-scope + the three-regime net position: "pinned-`w_i` unconditionally realized at
+`i = 2` exactly; at `i = 1` the shape with the tie open; at `i ≥ 3` open behind
+`[GENTOW5-W(i)]`"); BRIEF E product (4) (the `(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}` conjunct this
+supplies).
+
+**TEETH.** GENTOW2 PE6's w-measurement (w-avatar ≠ 1 at 6 primes / 4 frames,
+`u₃`-DEPENDENT within each tower — so `w = 1` is NOT generic and the ψ^{(w)} form is
+operative) → **executable regression** retained + §16 disposition row; no Lean theorem
+can discharge (iii) — signed as the chapter's second named open hypothesis (with
+C-BOX-1).
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.90 [theorem] [fresh] (cite-conditional through C.92; `𝒲`-conditional at `n ≥ 3`)
+
+**STATEMENT.** *THEOREM GENTOW5-B (a)+(b): the key certificate and one-sidedness, at the
+three-regime TERMINAL scope.* For a depth-`r` tower datum with gauge-corrected recipe keys
+(C.83/C.84; the gauge-naive form refuted at letter-live frames):
+(a) **[key certificate]** `Φ_{i+1}` is a key/prime polynomial for the level-`i` MacLane
+valuation with residual `R_{ν_i}(Φ_{i+1}) = ψ_{i+1}^{(w_i)} := w_i^{f_{i+1}}·
+ψ_{i+1}(y/w_i)` — the **w-TWISTED** form (the on-the-nose `ψ_{i+1}` is NOT claimed; the
+`w_i = 1` case is OPEN; σ, values, degrees, irreducibility and repo-side residue classes
+are w-blind) — at `i = 2` unconditional; at `i = 1` the S11.3 shape; at `i ≥ 3` under
+`Wle … n` (C.89);
+(b) **[one-sidedness at every level]** for `1 ≤ j ≤ i+1` the level-`(j−1)` polygon of
+`Φ_{i+1}` is one-sided of slope `λ_j` with residual
+**`(ψ_j^{(ω_{j−1})})^{l_{j+1}⋯l_{i+1}}`** (the POST-D3i TERMINAL display — S11.5's
+re-index fixing the degree count, S12.1's per-level twist, the corrigendum's `ω_{j−1}`
+index with `ω_1` = the S11.3 unit; three DEAD prior displays), and exact intermediate
+values `v(Φ_{j−1}(ξ))`-cleared — recipe roots are depth-`(i+1)` node points (repo-class
+membership, w-blind AFTER the single-`w` form is supplied — S12.1's withdrawal of the
+contrary transcribed).
+
+**SIGNATURE** (shape). Two public theorems — **split-mandated C.90 → 2**; the MacLane-side
+objects enter ONLY through C.92's cite statements (the repo side is §5/§6's polygons; the
+FGMN side exists in Lean only as the cited interface).
+
+**DEPENDS.** C.83 · C.84 · C.85 · C.88 · C.89 (the `n ≥ 3` hypothesis + the `i = 2`
+discharge) · C.92 ([cite:FGMN-chain]) · C.99/C.100 (§10).
+
+**PROOF (route).** `EFF.GENTOW5.27`'s (B-1)/(B-2) legs: (B-1) = C.88's `(SLOT_i)` value
+clause; (B-2) = the landed B-law with the audited cancellation ("the ϑ-twist cancels the
+θ leg ONLY; the w-leg SURVIVES" — the two-line residue computation transcribed exactly);
+then the certificate run through C.92's cited clauses (Cor 4.7(1), eq (14)/Prop 5.7,
+Lemma 5.3(2), Lemma 1.11, Cor 1.13, Thm 6.3, Cor 6.4 — each consumed by exact cited
+name).
+
+**SIZE.** 2 × ~45 lines.
+
+**SOURCE.** `EFF.GENTOW5.26`–`.28` (statements at TERMINAL scope, incl. the index-0
+scope fold — (a)/(b) claimed at `i ≥ 1` only — and every supersession chain named);
+DECISION C-D1 (this is the tower-side FGMN interface, kept strictly behind gate (b)).
+
+**TEETH.** P-B3 (10 polygons one-sided, on-chord support exactly the char-2 binomial
+spots; the refuting/verifying witness pairs `f32@Φ4`/`Φ4@Φ3` vs `f32@Φ3`/`Φ4@Φ2`) →
+**executable regressions** retained; FR-A's repo-side `ψ₃` class row → retained; §13
+fires the `q = 2` witness chain and a `q = 3` frame.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.91 [theorem] [fresh] (`𝒲`-conditional at `n ≥ 3`)
+
+**STATEMENT.** *THEOREM GENTOW5-B (c)+(d)+(e): budgets, refine transfer, and the
+self-feeding floor — the third stage assembled.* At induction indices `i ≥ 1` (index 0
+NOT claimed for (c)/(e); (d) holds at `i ≥ 0` via C.86's rider):
+(c) the level-`(i+1)` tower-entry locus `T_{i+1}` is weight-characterized with per-slot
+digit floors, fibration, node pins `p_j ≥ (μ−j)E_{i+1} + 1`, and field floor — LEMMA
+GENTOW-1(a)–(d) under the substitution table `(D′, e₂, u₂, E₂) ↦ (D_{i+1}, e_{i+2},
+u_{i+2}, E_{i+2})`, with Step 2's aboveness on the S11.1.1–.3 one-directional route (the
+"both grids agree" parenthetical is DEAD) and the deeper reads by the bottom-up entry
+ladder (each rung one `(SLOT_j)` read — C.88);
+(d) refine transfer at level `i+1`, general `μ` — C.85's statement with `2 ↦ i+1` (its
+lift in range: `λ > E_{i+1} > bound_{i+1}`, S12.2);
+(e) the NODE-FLOOR COROLLARY: every side of the level-`(i+1)` composed polygon of an
+`f ∈ T_{i+1}` has slope `> E_{i+1} > dv_{i+1}(x^{D_{i+1}})`, hence `u_{i+2} > e_{i+2}E_{i+1}`
+automatically at tower leaves — **the induction feeds itself** (C.55 at every level).
+At `n ≥ 3`, (c) and (e) are conditional on `Wle … n` (S12.1 items 3–4, with the
+datum-field carve-out C.83 implements).
+
+**SIGNATURE** (shape). Three public theorems — **split-mandated C.91 → 3**.
+
+**DEPENDS.** C.52–C.55 (the index-1 instances) · C.83 · C.84 · C.85 · C.87 · C.88 ·
+C.89 · C.90 · C.92.
+
+**PROOF (route).** `EFF.GENTOW5.29`–`.31`'s displays: Steps 0–5 with the substitution
+table ((c)); the level-blind S1 proof ((d)); the two-line convexity + floor-chain
+telescoping ((e)).
+
+**SIZE.** 3 × ~40 lines.
+
+**SOURCE.** `EFF.GENTOW5.29` (TERMINAL: the `[GT5-r3]` re-indexed read clause — the
+(i+2)-anchored pairing REFUTED at the committed witness rows — and S11.1's Step-2
+supersession); `.30` ((d), with its S12.1 unaffected-scope certificate); `.31` ((e), with
+the S12.1 item-4 conditionality and carve-out).
+
+**TEETH.** P-B1/B2 (floor chain tight) + the `gentow5_rider_f32dev.py` 7/0 rows +
+P-A1/A2/A3 ((d)'s instances) → retained; §13 re-fires the depth-3 witness values at both
+primes.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.92 [cite] [cite:FGMN-chain]
+
+**STATEMENT.** *The MacLane-chain certificate battery ([cite:FGMN], gate (b) — SECOND
+import, wider than C.66).* The cited clauses, each an exact Lean statement drafted at stub
+stage against C.25/C.83's carriers, signed per Part V gate (b) as ONE import with an
+itemized faithfulness entry: FGMN **Lemma 1.11 + Cor 1.13** (prime polynomials),
+**Lemma 5.3(2)** (admissibility/degree forcing), **Prop 5.7 + eq (14)** (residual of a
+key), **Cor 4.7(1)/(3)** (R-operator additivity/multiplicativity — the (3) clause is
+C.66's; this import subsumes it if the orchestrator prefers ONE FGMN axiom group),
+**Thm 6.3 + Cor 6.4** (the key-certificate and length-`r` one-sidedness, "for any
+`1 ≤ j ≤ r`" — level-general IN THE SOURCE). Transport through GENTOW2's dictionary/shear
+rows (§10) with the `ψ₂^{FGMN}`/`ψ₂^{repo}` discipline (C-H10).
+
+**⚠ SCOPE FENCE.** Exactly these clauses at exactly the consumed generality; the
+`w`-closed-form and anything about `nu`-optimality beyond the struck (H-b) chain clause
+(`EFF.GENTOW2`'s TOWERRAT-R3-1 STRUCK row) are NOT imported.
+
+**DEPENDS.** C.25 · C.83 · §10's dictionary nodes (C.97/C.98) · the layout print
+(`docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt`, numbering verified at
+GENTOW2's ledger).
+
+**PROOF.** none — gate-(b) import; Asvin signs.
+
+**SIZE.** statement block (≤ 40 lines) + the faithfulness entry.
+
+**SOURCE.** `EFF.GENTOW5.27`/.28's `[Q1][Q2][Q4][Q6][Q7][Q8][Q9][Q10]` consumption
+(each grep-verified at GENTOW2); `EFF.GENTOW2`'s pinned quote blocks (the citable
+surface).
+
+**TEETH.** the corpus's decode/measurement legs (PE4 decode 14/0; PE6 w-measurement) →
+retained as regressions; §16's table carries the stacked conditionality verbatim.
+
+**ENVIRONMENT.** ENV-C1 (statement-level).
+
+---
+
+### NODE C.93 [lemma] [fresh]
+
+**STATEMENT.** *Threshold arithmetic and the `HYP.82` census made formal.* (i) First-live:
+a depth-`r` tower with a live top problem `μ_r ≥ 2` needs `n = D_r·μ_r ≥ 2^{r+1}`
+(properness `l_i ≥ 2` telescoped); depth 2 first lives at `n ≥ 8` (C.31's bound), depth 3
+at `n ≥ 16`, depth 4 at `n = 32` (the S4 witness is exactly minimal). (ii) The
+`[GENHN-TOW-1]` census as a Lean-facing record: items (1)–(5) + (6)(β) are THEOREMS of
+this chapter (C.52–C.58, C.72–C.81, C.55); item (6)(α) at depth 3 is C.90/C.91's scope;
+depth ≥ 4 is NOT claimed by any node (the boxes stay at exact scope `n ≥ 32`-first-live) —
+the census is a documentation node (a `#check`-suite over the named theorems, the
+CHAP-G G.30 pattern) so chapter I's `HYP.82` row can cite ONE name.
+
+**SIGNATURE** (shape). `theorem tower_first_live …` (the arithmetic) + the census as the
+node's documented `#check` block (no new Prop).
+
+**DEPENDS.** C.31 · C.32 · C.55 · the §6/§8/§9 theorem names.
+
+**PROOF.** (i) `Nat.pow` telescoping, `omega`. (ii) mechanical.
+
+**SIZE.** 22 lines.
+
+**SOURCE.** `EFF.GENTOW5.20` (verbatim); C-H4's disposition table (this node is its
+executable form); `EFF.GENIND.176`-family via CHAP-H H-7 (the `n ≥ 8` handoff this
+chapter received).
+
+**TEETH.** the S4 witness chain (`u = 5, 21, 85, 341`; `n = 32`) → §13 regression.
+
+**ENVIRONMENT.** ENV-C5.
+
+---
+
+### NODE C.94 [cite] [cite:AGNPRW]
+
+**STATEMENT.** *NS-7 — descent termination as a literature cite (gate (b); `HYP.15`'s
+answered branch).* The cited theorem: **[AGNPRW] Thm 5.2** (the Ore–Mac Lane–Montes
+termination: the key-polynomial descent on a fixed monic squarefree `f` over a complete
+DVR terminates), imported at the scope the tower consumes: every descent history of §5's
+grammar on a fixed `f` reaches multiplicity 1 (or an α-refine chain that terminates) in
+finitely many steps. What is PROVED here and NOT cited: the jump-count bound (C.32 — the
+level depth is `≤ log₂`-bounded unconditionally) and the α-refine finiteness interface
+(via E's HE7-8 placeholder). What the cite carries: the full termination of the composite
+descent including refine chains at every level — the resolution doc's "only PARTIAL" row,
+imported rather than re-proved (C-H9). Exact Lean statement drafted at stub stage;
+Asvin signs.
+
+**DEPENDS.** C.30 · C.32 · C.83.
+
+**PROOF.** none — gate-(b) import.
+
+**SIZE.** statement block (≤ 20 lines) + faithfulness entry.
+
+**SOURCE.** `HYP.15` (the ledger row); CHAP-B H-8 (NS-7 "belongs with the tower's descent
+bookkeeping" — this is that node); BRIEF C product (5) (verbatim: "carried as the [AGNPRW]
+Thm 5.2 cite-hypothesis, NOT re-proved").
+
+**TEETH.** C.32's arithmetic instances guard the jump half; the cite's faithfulness entry
+carries the scope audit.
+
+**ENVIRONMENT.** ENV-C2 (statement-level).
+
+---
+
+### NODE C.95 [theorem] [fresh]
+
+**STATEMENT.** *The 𝒯-free cap lemma and the attainment certificate at its pinned scope
+(GENTOW-6.4 + GENTOW-6.3/6.3′).* (i) **the cap (LEMMA GENTOW-6.4, CHAIN-CAP TERMINAL):**
+the C.58-band cap behaviour WITHOUT the `𝒯` hypothesis — the per-window read at partial-
+side `f` obeys the same three-band law, with the per-window bijection codomain CORRECTED
+per PE2-F-2: above-top slots are FORCED to 0, exact condition **`n % D₂ ≠ D₂ − 1`**
+(sharper than the report's `D₂ ∤ n`; the FRAME-F witness carries 3 such slots) — this is
+the supplier C.82's 6.2C(d) leg consumes (prove-first, the corpus's own repair shape);
+(ii) **the attainment certificate (THEOREM GENTOW-6.3), SCOPE-PINNED to `f₁ = 1`,
+`μ₂ = 2`** (the `[GT6-r1]` CRITICAL: at `f₁ ≥ 2` the sealed displays are NOT proved as
+written): the genre-general form of §8's C.74(a) certificate — the Y-bookkeeping and the
+certificate slot at the pinned scope; the `f₁`-general form (ANNEX-6.3′) enters at
+exactly its earned grade: its `μ₂ = 2` fence was LIFTED by the SUB-BOX battery row
+(x-ful rows, GREEN 265/0), its derivation keeps prose grade — transcribed as a SEPARATE
+statement with the `f₁ ≥ 2` hypothesis explicit and the §16 table carrying the grade.
+
+**SIGNATURE** (shape). `theorem cap_free …` + `theorem attainment_certificate …` (+ the
+6.3′ variant) — **split-mandated C.95 → 2**.
+
+**DEPENDS.** C.50 · C.52 · C.58 · C.74 · C.77.
+
+**PROOF (route).** (i) the corpus's fresh derivation (303/0-guarded); (ii) the S3
+combinatorial prose at the pin.
+
+**SIZE.** 2 × ~35 lines.
+
+**SOURCE.** `EFF.GENTOW6.21` (6.4, prove-first, with the T-CAP/T-TRI teeth);
+`EFF.GENTOW6.31` (PE2-F-2's codomain correction, CHAIN-CODOMAIN TERMINAL — the SHARPER
+condition transcribed); `EFF.GENTOW6.12` (6.3 at the theorem-head pin, CHAIN-SCOPE
+TERMINAL); `.20` (6.3′ + its licence arc).
+
+**TEETH.** T-CAP ×3 + T-TRI ×28 (GREEN 303/0) + the seven certificate rows (Θ attained at
+the predicted slot) + LEG A's two `f₁ = 2/η ≠ 1` frames → retained; §13 fires FRAME-F's
+`n % D₂ = D₂ − 1`-adjacent row at both primes.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.96 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW6-BOX-1's closure at `f₁ = 1` (THEOREM GENTOW-6.5, the IF direction
+ONLY).* At `f₁ = 1`, `μ₂ ≥ 3`: the attainment claim at the top coordinate
+`j* = (μ₂−2) + ⌊(2e₂t*+1)/(e₂f₂)⌋` — the height-`Θ_{j*}` graded digit at the certificate
+slot is `binom(μ₂,2)·ĉ_{t*}²·π^{2a_{t*}}·(wrap unit)`: **attainment on the floor IF
+`p ∤ binom(μ₂,2)`** — the "iff" is WITHDRAWN (the converse is FALSE, genre-dependent both
+ways: the BP3 witness attains WITH `p ∣ binom(3,2)` via a different slot; FR5X at
+`m = 4, p = 2` fails attainment — both witnesses transcribed as the §13/§16 negative-
+control rows); the equality census at `e₂(f₂−t*) = 1` carries the corrected `k ≥ 3`
+branches (the sibling-r1 bracket). NOT delivered and NOT nodes: the `j < j*`
+classification at `μ₂ ≥ 3`, and the `f₁ ≥ 2 × μ₂ ≥ 3` compound (prose-only ANNEX-REMARK —
+recorded in §16, no node). GENTOW6-BOX-4's DISCHARGE (the x-ful battery row) is a TEETH
+row, not a node.
+
+**SIGNATURE** (shape). `theorem box1_attainment_if …` (the IF direction; hypothesis
+`¬ p ∣ Nat.choose μ₂ 2` explicit).
+
+**DEPENDS.** C.50 · C.74 · C.85 · C.95.
+
+**PROOF (route).** the k-extraction ledger (clause (a)'s Y-ceiling) + the graded-digit
+computation at the certificate slot; the binomial hypothesis enters exactly once.
+
+**SIZE.** 36 lines.
+
+**SOURCE.** `EFF.GENTOW6.34` (the amended BOX-1 state, verbatim, with both sibling-r1
+brackets and the audited BP3/FR5X witnesses; conditionality stack: the closure rides the
+boxes-note's 0/2 — the Lean proof discharges that grade residue for the IF direction);
+`HYP.67` (the ledger row this retires at `f₁ = 1`, IF-direction).
+
+**TEETH.** the boxes-note leg (sealed GREEN 459/0, 4 teeth at exact kill counts) +
+`gentow6_boxes_pe1_fresh.py` → retained; BP3/FR5X as negative controls at BOTH primes
+(BP3 is `q = 3`, FR5X is `q = 2` — GC-11's pair, exhibited by the corpus itself).
+
+**ENVIRONMENT.** ENV-C3.
+
+---
 
 ---
 
