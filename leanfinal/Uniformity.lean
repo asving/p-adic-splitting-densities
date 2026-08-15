@@ -20,3 +20,4 @@ import Uniformity.Density.Statement
 import Uniformity.Density.Gates
 import Uniformity.Density.Drainage
 import Uniformity.Density.DensityAPI
+import Uniformity.ChapG
