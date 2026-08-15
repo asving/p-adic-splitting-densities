@@ -48,12 +48,14 @@ proves nothing.
 * **`w11_node_shape` (H.84) IS signed** (§15 rule 4 leaves it to the stub agent's discretion; it is
   a one-line `And` of two `rfl`s and costs nothing to carry).
 
-Signed count landed here: **190**, reconciling with §15's figure exactly — 192 written in the
-SIGNATURE blocks, minus `normIdx` and its dependent `stageLift` (rule 2) and minus
-`package_three_of_drainage` (rule 3), plus the two replacement types the blueprint displays in its
-SIGNATURE NOTES, `stageLift'` and `package_three_of_rate`: 192 − 3 + 1 = 190. Mechanically counted
-in this file: **148 `axiom` + 5 `structure` + 3 `inductive` + 33 `def` + 1 `noncomputable def`
-= 190**, and the 148 matches §15's `theorem` column on the nose.
+Count reconciliation. §15's 190 is reproduced exactly: 192 declarations are written in the
+SIGNATURE blocks; drop `normIdx` and its dependent `stageLift` (rule 2) and
+`package_three_of_drainage` (rule 3), and add back the two replacement types the blueprint displays
+in its own SIGNATURE NOTES, `stageLift'` and `package_three_of_rate` — 192 − 3 + 1 = **190
+signable**. Of those, one more is withdrawn HERE because the gate REFUTED it
+(`band_not_consulted`, D8), so **189 are signed**, mechanically counted in this file as
+**147 `axiom` + 5 `structure` + 3 `inductive` + 33 `def` + 1 `noncomputable def` = 189**
+(the `axiom` count is §15's `theorem` column, 148, minus the refuted one).
 
 ## DEFECT LIST (stage-0e gate, 2026-08-15; recorded here, NOT repaired in the blueprint)
 
@@ -115,6 +117,17 @@ in this file: **148 `axiom` + 5 `structure` + 3 `inductive` + 33 `def` + 1 `nonc
   `GENIND.C′`, is switched off. **Recommended repair (blueprint-side): add `1 ≤ N →` to `hdesc`**
   (with `1 ≤ N` the statement is true and the field is a genuine descent witness). Not applied
   stub-side: weakening a hypothesis field is a statement change.
+* **D8 — H.89 `band_not_consulted` IS FALSE AS SIGNED (REFUTED; withdrawn, not signed).**
+  `theorem band_not_consulted {m N h : ℕ} (hband : 2 * N ≤ m) : ¬ (m ≤ 2 * N - 1)` fails at
+  `(N, m) = (0, 0)`: the antecedent `2 * 0 ≤ 0` holds and `2 * 0 - 1 = 0` in ℕ, so the conclusion
+  is `¬ (0 ≤ 0)`. Found by the ARITHMETIC GATE at the bottom of this file (brute force over
+  `m < 16`, `N < 9`; `(0,0)` is the only counterexample in that box, and the statement is true
+  everywhere else on a 40 × 20 grid once either `1 ≤ N` or `1 ≤ m` is added — both repairs are
+  checked at the gate). Commented out at H.89 per the `G.23a` precedent rather than signed as a
+  false axiom. Signed count is therefore **189**, not 190. Note that the three sibling lemmas of
+  H.89 (`consulted_ram`, `consulted_twoSided`, `consulted_refine`) all DO carry the guard that this
+  one drops — `consulted_ram` even takes `1 ≤ N` explicitly — so the omission looks like a
+  transcription slip, not a considered scope.
 * **F2 — `StageInterface` HAS NO EXHIBITED INSTANCE ANYWHERE IN THE CHAPTER** (vacuity-witness gap;
   finding, not a typing failure). §3's design note asserts *"Two instances are exhibited (H.38's
   genre E and H.42's genre F) with `stageLoss = 0`"*, but `grep StageInterface` over the blueprint
@@ -1094,7 +1107,17 @@ axiom consulted_twoSided {w N : ℕ} (hw : w ≤ 2 * N - 2) : w / 2 ≤ N - 1
 
 axiom consulted_refine {dμ N : ℕ} (hd : 2 * dμ ≤ 2 * N - 2) : dμ ≤ N - 1
 
-axiom band_not_consulted {m N h : ℕ} (hband : 2 * N ≤ m) : ¬ (m ≤ 2 * N - 1)
+-- **DEFECT D8 — REFUTED, THEREFORE NOT SIGNED** (the `G.23a card_resStratum` precedent: a refuted
+-- statement is commented out, never signed as an axiom).  The blueprint's fourth H.89 declaration is
+--
+--   theorem band_not_consulted {m N h : ℕ} (hband : 2 * N ≤ m) : ¬ (m ≤ 2 * N - 1)
+--
+-- and it is FALSE at `(N, m) = (0, 0)`: the antecedent `2 * 0 ≤ 0` holds, and the conclusion
+-- `¬ (0 ≤ 2 * 0 - 1)` is `¬ (0 ≤ 0)`, because ℕ-truncated `2 * 0 - 1 = 0`.  Found by the arithmetic
+-- gate below (brute force over `m < 16`, `N < 9`; `(0,0)` is the only counterexample in that box).
+-- Two minimal repairs both hold on a 40 × 20 grid and are checked below: add `1 ≤ N` (the guard its
+-- three sibling H.89 lemmas all carry) or add `1 ≤ m`.  `h` is unused in the statement either way.
+-- The blueprint must choose; this file signs neither form.
 
 /-! ### NODE H.90 [lemma] -/
 
@@ -1377,6 +1400,231 @@ this file, so this block is a build-time gate, not a print-out. Two primes minim
     List.all [0,1,2,3,4] fun d => 1 + (List.range d).foldl (fun acc j => acc + (q - 1) * q ^ j) 0
       == q ^ d)
   IO.println "CHAP-H NUMERIC GATE: all checks PASS (q = 2 and q = 3 throughout)"
+
+
+/-! ### THE ARITHMETIC GATE — every DECIDABLE ℕ/ℤ statement signed above, brute-forced
+
+Beyond GC-11's numeric-audit requirement: the chapter's arithmetic layer is its bulk (§0.4) and its
+statements are `ℕ`-subtraction/division-heavy, which is precisely the class the elaboration gate
+CANNOT see (§15's own warning, and the reason G.23 was refuted by brute force rather than by the
+gate). So every signed statement that is decidable over `ℕ`/`ℤ` — 66 of them, including all of
+H.03/H.04/H.08/H.14/H.16/H.17/H.19/H.20/H.22/H.32–H.36/H.38–H.40/H.42–H.52/H.55/H.57/H.58/H.77/
+H.79/H.82–H.86/H.89/H.90/H.92 — is checked here on a grid (witness data for the `GenreDatum`-indexed
+ones). A failure throws, so this is a build-time gate.
+
+**It found exactly one false statement: H.89 `band_not_consulted` (DEFECT D8).** Everything else in
+the chapter's decidable arithmetic is true on the grid. -/
+
+#eval show IO Unit from do
+  let chk (name : String) (b : Bool) : IO Unit :=
+    unless b do throw (IO.userError s!"ARITHMETIC GATE FAILURE: {name}")
+  let R (n : ℕ) := List.range n
+  -- H.03 / H.08 at the three witness data
+  chk "H.03 four_le_sideLen" (List.all [genreE2 0, genreE2 2, genreA2witness, genreD2bwitness]
+    fun G => 4 ≤ G.sideLen)
+  chk "H.08 keyDeg_mul_h_lt_nodeHeight" (List.all [genreE2 0, genreE2 2, genreA2witness,
+      genreD2bwitness] fun G => List.all (R G.μ) fun j => G.keyDeg * G.h < G.nodeHeight j)
+  chk "H.08 nodeHeight_of_f_one" (List.all [genreE2 0, genreE2 2, genreA2witness] fun G =>
+    List.all (R 4) fun j => G.nodeHeight j == (G.μ - j) * G.e₁ * G.h + 1)
+  -- H.04
+  chk "H.04 keyDeg_two_cases" (List.all (R 9) fun e => List.all (R 9) fun f =>
+    !(e * f == 2) || ((e == 2 && f == 1) || (e == 1 && f == 2)))
+  chk "H.04 sideLen_four_cases" (List.all (R 9) fun e => List.all (R 9) fun f =>
+    List.all (R 9) fun m => !(2 ≤ m && 2 ≤ e * f && e * m * f == 4) ||
+      ((e == 2 && f == 1 && m == 2) || (e == 1 && f == 2 && m == 2)))
+  -- H.14, H.16, H.17
+  chk "H.14 two_mul_clusterC" (List.all (R 13) fun m => 2 * clusterC m == m * (m - 1))
+  chk "H.14 clusterC_eq_sum" (List.all (R 13) fun m =>
+    clusterC m == (List.range m).foldl (· + ·) 0)
+  chk "H.14 clusterC_succ_values" (clusterC 2 + 1 == 2 && clusterC 3 + 1 == 4
+    && clusterC 4 + 1 == 7 && clusterC 5 + 1 == 11)
+  chk "H.16 sum_alphaSlots" (List.all (R 7) fun m => List.all (R 7) fun W => List.all (R 7) fun k =>
+    (List.range m).foldl (fun acc j => acc + (W + j * k)) 0 == alphaExp m W k)
+  chk "H.16 two_mul_alphaExp_add" (List.all (R 7) fun m => List.all (R 7) fun W =>
+    List.all (R 7) fun k => 2 * alphaExp m W k + k * (m * (m + 1)) == 2 * (m * (W + m * k)))
+  chk "H.17 ghostSlots_eq" (List.all (R 7) fun m => List.all (R 7) fun k =>
+    (List.range m).foldl (fun acc j => acc + j * k) 0 == k * clusterC m)
+  chk "H.17 ghost_add_child" (List.all (R 7) fun m => List.all (R 7) fun W => List.all (R 7) fun k =>
+    k * clusterC m + m * W == alphaExp m W k)
+  -- H.19, H.20 (Q = 2..5, c = 1..3, mu = 1..4)
+  chk "H.19 alphaBracket_succ" (List.all [2,3,4,5] fun Q => List.all [1,2,3] fun c =>
+    List.all [1,2,3,4] fun m => alphaBracket Q c (m + 1) == Q ^ (c + 1) * alphaBracket Q c m)
+  chk "H.20 alphaBracket_closed" (List.all [2,3,4,5] fun Q => List.all [1,2,3] fun c =>
+    List.all [1,2,3,4] fun m => Q * alphaBracket Q c m == (Q - 1) * Q ^ ((c + 1) * m))
+  chk "H.20 alphaBracket_eq" (List.all [2,3,4,5] fun Q => List.all [1,2,3] fun c =>
+    List.all [1,2,3,4] fun m => alphaBracket Q c m == (Q - 1) * Q ^ ((c + 1) * m - 1))
+  -- H.22
+  chk "H.22 drain_codim" (List.all (R 7) fun d => List.all [1,2,3,4,5,6] fun m =>
+    List.all (R 7) fun N => d * (m - 1) * (N - 1) + d * (N - 1) == d * m * (N - 1))
+  chk "H.22 window_one_exponents" (List.all (R 7) fun d => List.all [1,2,3,4,5,6] fun m =>
+    d * m * (1 - 1) == 0 && d * (m - 1) * (1 - 1) == 0
+      && List.all [1,2,3,4,5,6,7,8] (fun k => !(m * k ≤ 0)))
+  -- H.32, H.33, H.34, H.35, H.36
+  chk "H.32 two_mul_supportLine_sum" (List.all (R 9) fun S => List.all (R 9) fun H =>
+    2 * ((List.range S).foldl (fun acc r => acc + (r + 1) * H) 0) == S * (S + 1) * H)
+  chk "H.33 two_mul_a_le_sideLen" (List.all (R 7) fun e => List.all (R 7) fun f =>
+    List.all [2,3,4,5,6] fun m => 2 * (e * f) ≤ e * m * f)
+  chk "H.33 two_mul_a_le_S" (List.all (R 7) fun e => List.all (R 7) fun f =>
+    List.all [2,3,4,5,6] fun m => List.all (R 9) fun S =>
+      !(e * m * f ≤ S) || 2 * (e * f) ≤ S)
+  chk "H.34 exp_compose" (List.all [1,2,3,4,5,6,7,8] fun D => List.all (R 9) fun M =>
+    List.all (R 9) fun c => !(c ≤ M && D + M ≤ 8) || ((D - 1) + (M - c) == (D + M) - 1 - c))
+  chk "H.35 pow_sub_dominance" (List.all (R 8) fun N => List.all [1,2,3,4,5,6,7] fun m =>
+    List.all [1,2,3,4] fun B => !(m ≤ N) || (N - m) ^ B + m * (N - m) ^ (B - 1) ≤ N ^ B)
+  chk "H.36 entry_codim" (List.all (R 7) fun d => List.all [1,2,3,4,5,6] fun D =>
+    List.all (R 9) fun N => !(D ≤ N) || d * (D - 1) + d * (N - D) == d * (N - 1))
+  -- H.38, H.39, H.40, H.42, H.43
+  chk "H.38 lawE_exp_honest" (List.all (R 14) fun N => List.all (R 14) fun h =>
+    !(2 * h + 1 ≤ N) || 5 * h + 3 ≤ 4 * N)
+  chk "H.38 lawE_floor_fails_at_two_one" (List.all [2,3,4,5] fun q =>
+    !(2 * 1 + 1 ≤ 2) && lawE q 2 1 != 0)
+  chk "H.39 lawE_exp_four_summands" (List.all (R 20) fun N => List.all (R 6) fun t =>
+    !(4 * t + 3 ≤ N) || ((N - (t + 1)) + (N - 1 - (2 * t + 1)) + (N - (3 * t + 2))
+      + (N - 1 - (4 * t + 2)) + (10 * t + 8) == 4 * N))
+  chk "H.39 lawE_exp_odd" (List.all (R 20) fun N => List.all (R 6) fun t =>
+    !(4 * t + 3 ≤ N) || (4 * N - 5 * (2 * t + 1) - 3 == 4 * N - (10 * t + 8)))
+  chk "H.40 lawF_exp_honest" (List.all (R 20) fun N => List.all (R 6) fun k =>
+    !(4 * k + 1 ≤ N) || 10 * k + 4 ≤ 4 * N)
+  chk "H.42 headroom_exp_odd" (List.all (R 8) fun t => (5 * (2 * t + 1) + 1) / 2 == 5 * t + 3)
+  chk "H.42 lawV1E2_eq_zero_iff" (List.all [2,3,4] fun q => List.all (R 12) fun N =>
+    List.all (R 4) fun t => (lawV1E2 q N (2 * t + 1) == 0)
+      == (decide (N ≤ 5 * t + 3) || (lawE q N (2 * t + 1) == 0)))
+  chk "H.43 v4e2_vertex_condition" (List.all [1,2,3,4,5] fun v => List.all (R 8) fun t =>
+    !(2 * v < 2 * t + 1) || 2 * v + 1 ≤ 2 * t + 1)
+  chk "H.43 v4e2_first_visible" (List.all [1,2,3,4,5] fun v => List.all (R 8) fun t =>
+    !(2 * v + 1 ≤ 2 * t + 1) || 7 ≤ v + 2 * (2 * t + 1))
+  chk "H.43 v4e2_needs_eight" (List.all [1,2,3,4,5] fun v => List.all (R 8) fun t =>
+    List.all (R 20) fun N => !(2 * v + 1 ≤ 2 * t + 1 && v + 2 * (2 * t + 1) ≤ N - 1) || 8 ≤ N)
+  -- H.44, H.45
+  chk "H.44 pinCensus_genreE/F" (List.all (R 8) fun q =>
+    pinCensus q 1 == q - 1 && pinCensus q 2 == q ^ 2 - 1)
+  chk "H.44 pinCensus_band_ne_interior" (List.all [2,3,4,5,6,7] fun q =>
+    pinCensus q 1 != pinCensus q 2)
+  chk "H.45 two_mul censuses" (List.all (R 10) fun Q =>
+    2 * splitEqCensus Q == (Q - 1) * (Q - 2) && 2 * inertCensus Q == Q * (Q - 1))
+  -- H.46
+  chk "H.46 raggedBand_card" (List.all (R 6) fun t => List.all (R 16) fun N =>
+    !(2 * t + 2 ≤ N) || ((slotOdd N (2 * t + 1)).filter (fun m => 2 * N ≤ m)).card == t)
+  chk "H.46 raggedBand_empty_of_h_one" (List.all (R 16) fun N =>
+    !(2 ≤ N) || (((slotOdd N 1).filter (fun m => 2 * N ≤ m)) == (∅ : Finset ℕ)))
+  -- H.47, H.48
+  chk "H.47 genh4B_aggregate_exp" (List.all (R 14) fun N => List.all (R 7) fun h =>
+    !(2 * h + 1 ≤ N) || ((N + h - 1) + (N - 1 - 2 * h) == 2 * N - h - 2))
+  chk "H.47 und_exp_coincide_iff_h_one" (List.all [1,2,3,4,5,6,7,8] fun N =>
+    List.all (R 6) fun t =>
+      (N + ((2 * t + 1) - 1) / 2 == N + (2 * t + 1) - 1) == (t == 0))
+  chk "H.48 genh4B_F_odd_exp" (List.all (R 8) fun l => List.all [1,2,3,4,5] fun k =>
+    2 * ((2 * l + 1) / 2) + 2 * k - 1 == (2 * l + 1) + 2 * k - 2)
+  chk "H.48 genh4B_F_even_sum" (List.all [1,2,3,4,5] fun q => List.all (R 8) fun N =>
+    List.all (R 5) fun k => (q ^ (N + 2 * k - 1) + (q - 1) * q ^ (N + 2 * k - 1)
+      == q ^ (N + 2 * k)) || (N + 2 * k == 0))
+  -- H.49, H.50
+  chk "H.49 mixed_six_childE_lt_six" (List.all [1,2,3,4,5] fun k => List.all [1,2,3,4,5] fun h =>
+    !(2 * k + 2 * h < 6) || (k == 1 && h == 1))
+  chk "H.49 mixed_six_stage_steeper" (List.all [1,2,3,4,5] fun k => List.all (R 12) fun h =>
+    !(2 * k + 1 ≤ h) || 8 ≤ 2 * k + 2 * h)
+  chk "H.49 mixed_six_sameSide" (List.all [1,2,3,4,5,6] fun k => 6 ≤ 6 * k)
+  chk "H.49 mixed_six_distinctSide" (List.all [1,2,3,4,5] fun k => List.all [1,2,3,4,5] fun h =>
+    !(h != k) || 8 ≤ 2 * k + 4 * h)
+  chk "H.50 tower_needs_eight" (List.all (R 7) fun e => List.all (R 7) fun f =>
+    List.all (R 9) fun m => List.all (R 20) fun n =>
+      !(2 ≤ e * f && 4 ≤ m && e * f * m ≤ n) || 8 ≤ n)
+  chk "H.50 depth_three_needs_sixteen" (List.all [2,3,4] fun D => List.all (R 20) fun m1 =>
+    List.all (R 5) fun e2 => List.all (R 5) fun f2 => List.all (R 9) fun m2 =>
+      List.all (R 40) fun n =>
+        !(2 ≤ e2 * f2 && 4 ≤ m2 && e2 * f2 * m2 ≤ m1 && D * m1 ≤ n) || 16 ≤ n)
+  -- H.51, H.52
+  chk "H.51 class_sep" (List.all [1,2,3,4,5,6,7] fun e => List.all (R 10) fun h =>
+    !(Nat.gcd h e == 1) || (List.all (R e) fun i => List.all (R e) fun i' =>
+      !(i * h % e == i' * h % e) || i == i'))
+  chk "H.52 slot_height_injective" (List.all [1,2,3,4,5] fun e => List.all (R 8) fun h =>
+    !(Nat.gcd h e == 1) || (List.all (R e) fun i => List.all (R e) fun i' =>
+      List.all (R 6) fun v => List.all (R 6) fun v' =>
+        !(e * v + i * h == e * v' + i' * h) || (i == i' && v == v')))
+  -- H.55 at the witness data
+  chk "H.55 stageLift_index_lt" (List.all [genreE2 0, genreE2 2, genreA2witness, genreD2bwitness]
+    fun G => List.all (R G.e₁) fun i => List.all (R G.f₁) fun s => i + G.e₁ * s < G.keyDeg)
+  chk "H.55 stageLift_integral" (List.all [genreE2 0, genreE2 2, genreA2witness, genreD2bwitness]
+    fun G => List.all (R G.e₁) fun i => List.all (R G.f₁) fun s => List.all (R 12) fun a =>
+      !(G.keyDeg * G.h < i * G.h + G.e₁ * a) || s * G.h ≤ a)
+  chk "H.55 stageLift_height" (List.all [genreE2 0, genreE2 2, genreA2witness, genreD2bwitness]
+    fun G => List.all (R G.e₁) fun i => List.all (R G.f₁) fun s => List.all (R 12) fun a =>
+      !(G.keyDeg * G.h < i * G.h + G.e₁ * a)
+        || G.e₁ * (a - s * G.h) + (i + G.e₁ * s) * G.h == i * G.h + G.e₁ * a)
+  -- H.57, H.58
+  chk "H.57 wrap_div_mod" (List.all (R 8) fun r => List.all (R 8) fun i =>
+    List.all [1,2,3,4,5,6] fun e => r * i == r * i % e + e * (r * i / e) && r * i % e < e)
+  chk "H.57 wrap_height" (List.all (R 6) fun r => List.all (R 6) fun i => List.all (R 6) fun a =>
+    List.all (R 6) fun h => List.all [1,2,3,4,5] fun e =>
+      r * (i * h + e * a) == (r * i % e) * h + e * (r * a + (r * i / e) * h))
+  chk "H.58 card_composedBasis" (List.all [1,2,3,4] fun D => List.all (R 5) fun r =>
+    (Finset.range D ×ˢ Finset.range r).card == D * r)
+  -- H.77
+  chk "H.77 gcd_odd_of_odd" (List.all (R 9) fun j => List.all (R 16) fun e =>
+    (Nat.gcd (2 * j + 1) e) % 2 == 1)
+  chk "H.77 lcm_ram_value_group" (List.all [1,2,3,4,5,6,7,8] fun e => List.all (R 9) fun j =>
+    Nat.lcm e (2 * e / Nat.gcd (2 * j + 1) e) == 2 * e)
+  -- H.79 at the witnesses
+  chk "H.79 composedDeg_eq" (List.all [genreE2 0, genreA2witness, genreD2bwitness] fun G =>
+    List.all (R 5) fun e2 => List.all (R 5) fun f2 =>
+      G.keyDeg * (e2 * f2) == (G.e₁ * e2) * (G.f₁ * f2))
+  -- H.82, H.83, H.84
+  chk "H.82 quartic_floors_E" (List.all (R 9) fun t =>
+    (2 * t + 1 + 1) / 2 == t + 1 && (2 * t + 1) + 1 == 2 * t + 2
+      && (3 * (2 * t + 1) + 1) / 2 == 3 * t + 2 && 2 * (2 * t + 1) + 1 == 4 * t + 3)
+  chk "H.82 quartic_node_E" (List.all (R 9) fun t =>
+    min (2 * (t + 1) + (2 * t + 1)) (2 * (2 * t + 2)) == 2 * (2 * t + 1) + 1
+      && min (2 * (3 * t + 2) + (2 * t + 1)) (2 * (4 * t + 3)) == 4 * (2 * t + 1) + 1)
+  chk "H.83 quartic_total_F" (List.all (R 22) fun N => List.all (R 6) fun k =>
+    !(4 * k + 1 ≤ N) || ((N - k - 1) + (N - 2 * k - 1) + (N - 3 * k - 1) + (N - 4 * k - 1)
+      + (10 * k + 4) == 4 * N))
+  chk "H.83 quartic_node_F" (List.all (R 9) fun k =>
+    min ((k + 1) + k) (2 * k + 1) == 2 * k + 1 && min ((3 * k + 1) + k) (4 * k + 1) == 4 * k + 1)
+  chk "H.84 w11_node_E/F" (List.all (R 9) fun h =>
+    (4 * h + 1, 2 * h + 1) == (2 * (2 * h) + 1, (2 * h) + 1))
+  -- H.85, H.86
+  chk "H.85 dv_parity_ne" (List.all (R 6) fun j => List.all (R 8) fun va => List.all (R 8) fun vb =>
+    2 * va + (2 * j + 1) != 2 * vb)
+  chk "H.85 dv_parity_min_unique" (List.all (R 6) fun j => List.all (R 8) fun va =>
+    List.all (R 8) fun vb =>
+      (min (2 * va + (2 * j + 1)) (2 * vb) == 2 * va + (2 * j + 1))
+        || (min (2 * va + (2 * j + 1)) (2 * vb) == 2 * vb))
+  chk "H.86 carry_height_gt" (List.all [1,2,3,4,5] fun h => List.all (R 16) fun dm =>
+    List.all (R 8) fun va => !(2 * h + 1 ≤ dm && h + 1 ≤ 2 * va)
+      || dm < min (2 * (dm - h)) (2 * va + (dm - h)))
+  -- H.89 (the four consulted-height bounds)
+  chk "H.89 consulted_ram" (List.all [1,2,3,4,5] fun h => List.all (R 16) fun u =>
+    List.all (R 9) fun N => !(1 ≤ N && u ≤ 2 * N - 1) || (u - h) / 2 ≤ N - 1)
+  chk "H.89 consulted_twoSided" (List.all (R 16) fun w => List.all (R 9) fun N =>
+    !(w ≤ 2 * N - 2) || w / 2 ≤ N - 1)
+  chk "H.89 consulted_refine" (List.all (R 16) fun dm => List.all (R 9) fun N =>
+    !(2 * dm ≤ 2 * N - 2) || dm ≤ N - 1)
+  -- H.89 `band_not_consulted` IS REFUTED AS SIGNED (DEFECT D8): at `(N, m) = (0, 0)` the
+  -- antecedent `2 * N ≤ m` holds and the conclusion `¬ (m ≤ 2 * N - 1)` is FALSE, because
+  -- `2 * 0 - 1 = 0` in ℕ. The axiom is WITHDRAWN (commented out at H.89 below, the G.23a
+  -- precedent). Checked here in the REPAIRED form, with BOTH candidate guards, so the blueprint
+  -- can pick either: `1 ≤ N` (matches the sibling lemmas of H.89) or `1 ≤ m`.
+  chk "H.89 band_not_consulted, REPAIRED with 1 ≤ N" (List.all (R 40) fun m =>
+    List.all (R 20) fun N => !(1 ≤ N && 2 * N ≤ m) || !(m ≤ 2 * N - 1))
+  chk "H.89 band_not_consulted, REPAIRED with 1 ≤ m" (List.all (R 40) fun m =>
+    List.all (R 20) fun N => !(1 ≤ m && 2 * N ≤ m) || !(m ≤ 2 * N - 1))
+  chk "H.89 band_not_consulted, REFUTED as signed: (N,m) = (0,0) is a counterexample"
+    (2 * 0 ≤ 0 && 0 ≤ 2 * 0 - 1)
+  -- H.90
+  chk "H.90 invariant_even" (List.all (R 8) fun h => List.all (R 20) fun dm =>
+    !(2 * h + 2 ≤ dm) || h + 1 ≤ dm / 2)
+  chk "H.90 invariant_odd" (List.all (R 8) fun h => List.all (R 20) fun dm =>
+    !(2 * h + 1 ≤ dm) || (h + 1) / 2 ≤ (dm - h) / 2)
+  -- H.92
+  chk "H.92 subset_sum_pow" (List.all [1,2,3,4] fun L => List.all (R 5) fun d =>
+    (Finset.range d).powerset.sum (fun H => L ^ H.card) == (1 + L) ^ d)
+  chk "H.92 macroscopic_rate" (List.all [2,3] fun q => List.all (R 4) fun D =>
+    List.all (R 4) fun m => q ^ (2 * (D * m)) == (q ^ 2) ^ (D * m))
+  -- H.11 / H.12 (bounded Occupied searches)
+  chk "H.11 not_occupied_genreA2witness (bounded i<3, a<=8)"
+    (List.all (R 3) fun i => List.all (R 9) fun a => i * 2 + 3 * a != 1)
+  chk "H.12 occupied_zero_genreD2bwitness" (0 * 1 + 1 * 0 == 0)
+  IO.println "CHAP-H ARITHMETIC GATE: 66 signed ℕ/ℤ statements brute-forced on a grid — all PASS (H.89 band_not_consulted excluded as REFUTED, D8)"
 
 /-! H.99(iii): non-vacuity of the schema layer — the three witness data elaborate. -/
 #check (genreE2 0 : GenreDatum)
