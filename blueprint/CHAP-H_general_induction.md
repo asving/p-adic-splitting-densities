@@ -4451,6 +4451,13 @@ theorem**, and the anchor is landed at H.28.
 
 ### NODE H.72 [theorem] [fresh]
 
+> **AMENDMENT BANNER 2026-08-15 — THE COMMITTED DISPLAY WAS MACHINE-REFUTED AT THE 0e GATE**
+> (`leanspec/Leanspec/ChapH.lean`, defect D4: the constructed witness `stageIfaceE` instantiates it
+> to `4 ≥ 8`, checked by `decide`; 29,418 counterexamples over the full admissible external sweep).
+> The SIGNATURE below is REPAIRED IN PLACE to the corrected `2*`-clearing (the gate's CANDIDATE A),
+> re-derived from `(CS-1Q.a)`+`(CS-1Q.b)` and verified with **zero** counterexamples over the same
+> sweep. The refuted display is preserved verbatim in **AMENDMENT §A-H.1/D4** (the G.23a precedent).
+
 **STATEMENT.** *`GENIND-C2Q` — the loss-priced CS-drain exponent.* Let `G` be a genre datum, `S`
 the actual side length, `H` the entry height, and `I : StageInterface G N H S`. Suppose the entry mass
 obeys `ρ ≤ ((Q:ℝ)^(bS*H + I.entryCodim))⁻¹` in the `2*`-cleared form of H.33, and the stage drain
@@ -4458,43 +4465,49 @@ obeys `δ ≤ K★ * (N:ℝ)^B★ * ((Q:ℝ)^(f₁ * I.stageWindow))⁻¹`. Then
 `ρ * δ ≤ K★ * (N:ℝ)^B★ * ((Q:ℝ)^(a*(N−1)))⁻¹ * ((Q:ℝ)^(H/2))⁻¹ * (Q:ℝ)^(I.slack)`
 — i.e. the exponent is `−a(N−1) − H/2 + O_G(1)`, exactly `(C2Q.1)`.
 
-**SIGNATURE.**
+**SIGNATURE.** [repaired: A-H.1/D4]
 ```lean
 namespace Uniformity.Density.Induction
 
-/-- **(C2Q.1)** — the loss-priced stage-drain exponent, in the `2*`-cleared form.  The conclusion's
-exponent inequality is stated over `ℤ` so no `ℕ`-truncation can hide a sign. -/
+/-- **(C2Q.1)** — the loss-priced stage-drain exponent, in the `2*`-cleared form.  Stated in `ℕ`
+with the slack cleared to the LEFT, so no truncating `-` appears anywhere in the display (the
+committed form's trailing `- 2 * (2 * I.slack)` did truncate, and its docstring's "stated over `ℤ`"
+claim was false of the type — see AMENDMENT §A-H.1/D4). -/
 theorem rate_lossPriced {G : GenreDatum} {N H S : ℕ} (I : StageInterface G N H S) :
-    2 * (G.f₁ * I.stageWindow) + 2 * ((S + 1) * H) + 2 * (2 * I.entryCodim)
-      ≥ 2 * (2 * G.keyDeg * (N - 1 - H)) + 2 * (2 * G.keyDeg * H) + H
-        - 2 * (2 * I.slack)
+    2 * (G.f₁ * I.stageWindow) + (S + 1) * H + 2 * I.entryCodim + 2 * I.slack
+      ≥ 2 * G.keyDeg * (N - 1 - H) + 2 * G.keyDeg * H + H
 ```
 
-**⚠ SIGNATURE NOTE — READ BEFORE CLAIMING.** The displayed inequality above is the **exponent
-bookkeeping** of `(C2Q.1)`, cleared of every division and stated in `ℕ` with the slack on the small
-side. It is **deliberately not** the real-analytic product bound: the product bound needs `ρ` and `δ`
-as hypotheses with three more nonnegativity side conditions, and the whole content of the corpus's
-proof is the *exponent* algebra (its own audit: *"Multiplying: exponent `= −b_S H − C_extra − a(N−1−H)
-+ γΔ_G + O(1) = −a(N−1) − (b_S − a)H − C_extra + γΔ_G + O(1)` ✓ as displayed. Applying (CS-1Q.b): the
-exponent `≤ −a(N−1) − H/2 + O(1)` ✓ **exact**"*). **The fleet agent's first task on this node is to
-re-derive the cleared form from `I.hwin` and `I.hprice` and to CONFIRM the displayed inequality before
-proving it** — if the re-derivation disagrees, that is a blueprint defect and must be returned, not
-patched. The `ℤ`-valued variant is the sanctioned fallback if the `ℕ` form cannot be stated without a
-truncating `-`.
+**⚠ SIGNATURE NOTE — READ BEFORE CLAIMING.** [repaired: A-H.1/D4] The displayed inequality above is
+the **exponent bookkeeping** of `(C2Q.1)`, cleared of every division and stated in `ℕ` with the slack
+cleared to the LEFT. It is **deliberately not** the real-analytic product bound: the product bound
+needs `ρ` and `δ` as hypotheses with three more nonnegativity side conditions, and the whole content
+of the corpus's proof is the *exponent* algebra (its own audit: *"Multiplying: exponent `= −b_S H −
+C_extra − a(N−1−H) + γΔ_G + O(1) = −a(N−1) − (b_S − a)H − C_extra + γΔ_G + O(1)` ✓ as displayed.
+Applying (CS-1Q.b): the exponent `≤ −a(N−1) − H/2 + O(1)` ✓ **exact**"*). The re-derivation this
+note demanded of the fleet **was performed at the 0e gate and REFUTED the committed display**: the
+committed clearing re-doubled five of its seven terms (every half-integer quantity — `b_S = (S+1)/2`
+and the `H/2` — must be cleared ONCE by the global `×2`; the committed form multiplied `(S+1)*H`,
+`entryCodim`, both `keyDeg` terms and `slack` by `2` a second time). The display above is the correct
+clearing, term for term: `(S+1)*H` is `2·b_S·H` (H.32, consumed ONCE), the lone `+H` is the cleared
+`H/2`, and the slack sits on the left so `ℕ` cannot truncate it. **The fleet lands the display above
+verbatim; a re-derivation that disagrees with it is now a stop-the-line event**, not a return.
 
 **DEPENDS.** H.01, H.02, H.09, H.32, H.33, H.34.
 
-**PROOF.**
+**PROOF.** [repaired: A-H.1/D4 — steps 3–5 re-derived for the corrected display]
 1. from `I.hwin` (`(CS-1Q.a)`): `e₁*(N−1−H) ≤ stageWindow + stageLoss`, so
    `f₁*e₁*(N−1−H) ≤ f₁*stageWindow + f₁*stageLoss`, i.e. (with `a = keyDeg = e₁*f₁`)
    `a*(N−1−H) ≤ f₁*stageWindow + f₁*stageLoss`.
 2. from `I.hprice` (`(CS-1Q.b)`): `2*(f₁*stageLoss) ≤ 2*entryCodim + (S − 2*keyDeg)*H + 2*slack`,
    and `2*keyDeg ≤ S` by H.33 (using `I.hS` and `G.hmul`), so the `(S − 2*keyDeg)` factor is honest.
-3. add: `2*(a*(N−1−H)) ≤ 2*(f₁*stageWindow) + 2*entryCodim + (S−2a)*H + 2*slack`.
-4. add `2*a*H` to both sides and use `(S−2a)*H + 2a*H = S*H`:
-   `2*a*(N−1) ≤ 2*(f₁*stageWindow) + 2*entryCodim + S*H + 2*slack`.
-5. the entry price contributes `(S+1)*H = S*H + H` (H.32's supporting-line sum at the actual side
-   length), so the displayed form follows by `omega` from steps 3–4 once every product is expanded.
+3. double step 1 and chain step 2:
+   `2*(a*(N−1−H)) ≤ 2*(f₁*stageWindow) + 2*entryCodim + (S−2a)*H + 2*slack`.
+4. add `2*a*H` to both sides and use `(S−2a)*H + 2a*H = S*H` (honest by step 2's `2a ≤ S`):
+   `2*a*(N−1−H) + 2*a*H ≤ 2*(f₁*stageWindow) + 2*entryCodim + S*H + 2*slack`.
+5. add `H` to both sides and use `S*H + H = (S+1)*H` (H.32's supporting-line sum at the actual side
+   length, consumed once — NOT doubled), so the displayed form follows by `omega` from steps 3–4
+   once every product is expanded.
 
 **SIZE.** 30 lines. Every step is `Nat`-linear once the products `f₁*e₁ = keyDeg` and
 `(S−2a)*H + 2a*H = S*H` are rewritten; `omega` closes after those two `have`s (it cannot see through
@@ -5390,8 +5403,14 @@ theorem consulted_twoSided {w N : ℕ} (hw : w ≤ 2 * N - 2) : w / 2 ≤ N - 1
 
 theorem consulted_refine {dμ N : ℕ} (hd : 2 * dμ ≤ 2 * N - 2) : dμ ≤ N - 1
 
-theorem band_not_consulted {m N h : ℕ} (hband : 2 * N ≤ m) : ¬ (m ≤ 2 * N - 1)
+theorem band_not_consulted {m N h : ℕ} (hN : 1 ≤ N) (hband : 2 * N ≤ m) : ¬ (m ≤ 2 * N - 1)
 ```
+
+[repaired: A-H.1/D8] `band_not_consulted` as committed (no `hN`) was **machine-refuted at the 0e
+gate** at `(N, m) = (0, 0)`, where the ℕ-truncated `2 * 0 - 1 = 0` makes the conclusion `¬ (0 ≤ 0)`.
+The `1 ≤ N` guard above is the one the node's own STATEMENT prose ("For `h ≥ 1`, `N ≥ 1`") and its
+three sibling lemmas already carry — a transcription slip, cured; the guarded form is verified on a
+40 × 20 grid at the gate. Refuted original preserved in AMENDMENT §A-H.1/D8.
 
 **DEPENDS.** H.46 (the band's definition and cardinality).
 
@@ -6336,12 +6355,15 @@ non-applicability / signed vacuity disclosure.**
 
 Ordered by how much a wrong answer would cost.
 
-1. **H.72's `rate_lossPriced` displayed inequality.** Its SIGNATURE NOTE already instructs the fleet
+1. **H.72's `rate_lossPriced` displayed inequality.** ~~Its SIGNATURE NOTE already instructs the fleet
    agent to *re-derive before proving*, but the blueprint's own cleared form has not been checked by a
-   second arm. If the clearing is wrong the node is unprovable (best case) or provable-but-not-the-
-   corpus's-claim (worst). **This is the one node where a wrong statement would be invisible to the
-   stub gate**, because a mis-stated `ℕ` inequality elaborates fine. Cross-read must re-derive
-   `(C2Q.1)` from `(CS-1Q.a)`+`(CS-1Q.b)` independently.
+   second arm.~~ **ADJUDICATED AT THE 0e GATE (2026-08-15, A-H.1/D4): the committed clearing was
+   WRONG, exactly as this item feared** — refuted by a constructed `StageInterface` witness
+   (`stageIfaceE`, `4 ≥ 8` by `decide`) plus a 29,418-counterexample sweep, and repaired in place to
+   the gate-verified clearing. The item's premise ("invisible to the stub gate") was itself too
+   pessimistic: the gate SAW it by constructing an instance and executing the inequality, which is
+   the reusable lesson. The cross-read's remaining task on this node is CONFIRMATION of the repaired
+   display, not first discovery.
 2. **`InductionPackage`'s two-member reduction (H.95).** The corpus's `P(k)` has four members; chapter
    H's `def` carries two, with `(A0)` moved to H.98's hypothesis and exactness dropped per `R6.2`. The
    reasons are recorded, but a cross-reader should confirm that **nothing downstream needs the
@@ -6412,6 +6434,101 @@ either transcription-grade from an `EFF` DERIVATION, or flagged above.
 
 *END OF CHAPTER H BLUEPRINT — 99 nodes, 190 signed declarations, 358 DAG edges, 105 source units
 transcribed from `EFF-GENIND` (206) / `EFF-GENHN` (93) / `EFF-GENH4` (111). CODEX CROSS-READ OWED.*
+
+---
+
+## AMENDMENT A-H.1 (2026-08-15, dated append) — THE STAGE-0e STUB-GATE DEFECT LIST, REPAIRED
+
+**Provenance.** The chapter-H stub gate `leanspec/Leanspec/ChapH.lean` (commits
+`2c3310a3..39799cbc`, builds green: 188 signed declarations, three executed gate blocks, zero
+`sorry`) found **8 defects — among them TWO MACHINE-REFUTED STATEMENTS — plus two findings and one
+ordering conflict**. Per §15 rule 5, elaboration-level defects were cured minimally stub-side and
+are repaired here blueprint-side; statement-level defects were NOT patched in `leanspec` (the two
+refuted statements are withdrawn there, commented out per the G.23a precedent) and are repaired
+here.
+
+**Convention of this block (differs from CHAP-G's A-1…A-9).** Node text IS repaired in place, each
+repaired passage tagged `[repaired: A-H.1/<item>]`; this block records the finding, the refuted or
+defective ORIGINAL (quoted verbatim, never deleted), the machine-check citation, and the
+verification evidence for each repair. Where a passage is superseded rather than repaired, the
+strikethrough stays in the main text. Items: **D1–D8** (the gate's defect list, D4 and D8 the
+refutations), **F1/F2** (findings), **O1** (ordering), **C1** (the count reconciliation).
+
+### A-H.1/D4 — H.72 `rate_lossPriced`: **STATEMENT MACHINE-REFUTED; CANDIDATE A ADOPTED**
+
+**The refuted original** (committed SIGNATURE, preserved per the G.23a precedent):
+
+    /-- **(C2Q.1)** — the loss-priced stage-drain exponent, in the `2*`-cleared form.  The
+    conclusion's exponent inequality is stated over `ℤ` so no `ℕ`-truncation can hide a sign. -/
+    theorem rate_lossPriced {G : GenreDatum} {N H S : ℕ} (I : StageInterface G N H S) :
+        2 * (G.f₁ * I.stageWindow) + 2 * ((S + 1) * H) + 2 * (2 * I.entryCodim)
+          ≥ 2 * (2 * G.keyDeg * (N - 1 - H)) + 2 * (2 * G.keyDeg * H) + H
+            - 2 * (2 * I.slack)
+
+**The refutation (machine-checked, not a numerical suspicion).** The gate constructs a genuine
+instance `stageIfaceE : StageInterface (genreE2 0) 2 0 4` — genre E at `t = 0`, `stageWindow = 2`,
+`stageLoss = entryCodim = slack = 0` (the `EFF.GENIND.199` exemption), **all eleven fields proved**
+— and at it the displayed conclusion evaluates to `4 ≥ 8`; `example : ¬ (…) := by decide` checks
+that (`leanspec/Leanspec/ChapH.lean`, gate section). Had the axiom been signed, `rate_lossPriced
+stageIfaceE` would have proved `False`. Not a one-point accident: an independent external sweep
+(five genre data × `N < 7` × `H < 5` × four side lengths × `stageWindow, stageLoss, entryCodim,
+slack < 6`, filtered by `hS`/`hwin`/`hprice` exactly as the structure imposes them) finds **29,418
+counterexamples among 2,777,911 admissible configurations**; the Lean gate re-runs a smaller grid
+with the same verdict. Secondary: the docstring's "stated over `ℤ`" claim was false of the signed
+type (every term `ℕ`; the trailing `- 2*(2*I.slack)` truncated) — but truncation is NOT the cause:
+the sweep with the slack moved to the left fails at exactly the same 29,418 points.
+
+**The diagnosis.** A `2*`-clearing error applied to **five of the seven terms**. Every half-integer
+quantity in `(C2Q.1)` — the supporting-line price `b_S = (S+1)/2` (H.32/H.33's licence) and the
+`H/2` — must be cleared ONCE by the global `×2`. The committed display multiplied `(S+1)*H`,
+`2*entryCodim`, both `keyDeg` terms and `2*slack` by `2` a SECOND time, while leaving the window
+term `2*(f₁*M_G)` and the lone `+H` single — an inhomogeneous clearing, hence false.
+
+**The repair (CANDIDATE A, adopted).**
+
+    2 * (G.f₁ * I.stageWindow) + (S + 1) * H + 2 * I.entryCodim + 2 * I.slack
+      ≥ 2 * G.keyDeg * (N - 1 - H) + 2 * G.keyDeg * H + H
+
+**Verified against the source, not merely counterexample-free.** Re-derivation from `EFF.GENIND.198`'s
+`(C2Q.1)` chain, i.e. from the node's own PROOF field: `hwin ×f₁` gives `a(N−1−H) ≤ f₁·M_G + f₁·Δ_G`
+(`a = keyDeg`); doubling and chaining `hprice` gives `2a(N−1−H) ≤ 2(f₁·M_G) + 2C + (S−2a)H + 2·O`;
+adding `2aH` (with `(S−2a)H + 2aH = SH`, honest by H.33's `2a ≤ S`) and then `H` to both sides (with
+`SH + H = (S+1)H`) yields Candidate A **exactly** — it is the correct clearing of the corpus's
+audited exponent line *"≤ −a(N−1) − H/2 + O(1)"* with `b_S` and `H/2` each cleared once. Sweep
+verdict: **zero counterexamples over the full admissible sweep**, and the instance check at
+`stageIfaceE` gives `4 ≥ 4` (tight, as an entry-exemption instance should be). CANDIDATE B (Candidate
+A uniformly doubled) is also counterexample-free but is a clearing by `4`, not the corpus's by-`2`
+form — rejected as unfaithful to the `2*`-clearing licence H.33 states.
+
+**Downstream re-derivation (every consumer checked).** H.72 is a DAG **sink** inside the chapter:
+no node lists it in DEPENDS (grep verified), and its only DAG edge is `BP.H.72 → HYP.36` — a
+conditionality edge, independent of the display's constants. Mentions audited one by one: §1's
+honesty block ("proved from `hwin`/`hprice`" — still exactly true); H.31's SIZE note (consumes only
+"*some* `N`-independent constant" — unchanged); H.33's TEETH (H.72 consumes `2*keyDeg ≤ S` — still
+does, at step 4); H.34's fence (containment-as-hypothesis — unchanged); H.65's note (bound-direction
+consumer — unchanged); H.09's `hdrain` note (unchanged); H.72's own floor-adjacent-branch note
+(H.68's `rate_bounded` — unchanged); H.99's `#print axioms` row (name unchanged). The constant
+change propagates **nowhere**; the repaired PROOF field consumes H.32 once (the committed display
+would have needed it doubled, so the repair also removes a latent mismatch with H.32's statement).
+Repairs applied in place at the node: SIGNATURE, SIGNATURE NOTE, PROOF steps 3–5; §16.2 item 1
+marked adjudicated.
+
+### A-H.1/D8 — H.89 `band_not_consulted`: **STATEMENT MACHINE-REFUTED; THE SIBLING GUARD RESTORED**
+
+**The refuted original:**
+
+    theorem band_not_consulted {m N h : ℕ} (hband : 2 * N ≤ m) : ¬ (m ≤ 2 * N - 1)
+
+**The refutation.** At `(N, m) = (0, 0)` the antecedent `2*0 ≤ 0` holds and the conclusion is
+`¬ (0 ≤ 2*0 − 1)` = `¬ (0 ≤ 0)` (ℕ-truncation), i.e. `False`. Found by the gate's ARITHMETIC GATE
+(brute force `m < 16`, `N < 9`; `(0,0)` the only counterexample in the box).
+
+**The repair.** Add `(hN : 1 ≤ N)` — the guard the node's own STATEMENT prose ("For `h ≥ 1`,
+`N ≥ 1`") already asserts and all three sibling lemmas carry (`consulted_ram` takes `1 ≤ N`
+explicitly), so the omission was a transcription slip, exactly as the gate diagnosed. Both candidate
+guards (`1 ≤ N`, `1 ≤ m`) were verified at the gate on a 40 × 20 grid; `1 ≤ N` is chosen for
+sibling-uniformity. Repair applied in place at the node's SIGNATURE; PROOF ("all four `by omega`")
+unchanged.
 
 
 
