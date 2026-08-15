@@ -4414,3 +4414,110 @@ Arc: composed (2026-08-10) → r1–r12 (2026-08-12 hostile-arc repair rounds: t
 **One in-place edit accompanies this fold, and it is the only one.** The front-matter status line is refreshed IN PLACE — on the R11-3 precedent, which likewise applied its cure in place while every other repair appends — to record that the acceptance block, not the highest-numbered r-section, is now the governing section. The replacement stays DATELESS, so R11-3's self-maintaining property survives unbroken: the governing block carries every round-dependent fact, and acceptance only moves which block that is. Apart from that one line, nothing above the start of the final-rider block is touched by this fold; everything else here appends.
 
 **Standing conditionalities, unchanged and displayed.** The lemma is accepted WITH its honesty ledger, not cleared of it: the closed canonical-letter exponent vector is proved only at level 2 (general depth has a terminating reduction algorithm); the B-law is conditional on the stated sitewise residual-read facts and on its GENTOW2-B\(''\)/GENTOW5-W(i) supplier perimeter; the full integral \(K_1\)-lift is proved on the live domain \(M>D'h\) only; WELD-M-PKG remains five heterogeneously typed fields with no cross-face coherence, no single map and no gauge uniqueness; raw print/canonical equality is iff \(z^\nu=1\), not iff \(\nu=0\); the \((\mathrm{H\!-\!VARTHETA\!-\!RES})_i\) fence at depth \(i\ge3\) reaches (C3) and (C7)'s \(M2\)/\(M3\) rows; and \(dv_i\) is NOT integer-valued in general — integrality holds exactly at the consumed nonzero-argument sites enumerated in the grade-data paragraph, the codomain being \(dv_i\in e(\mu_i)\Lambda_r=\frac{e(\mu_i)}{e(\mu_r)}\mathbb Z\supseteq\mathbb Z\). Consumption checks of the seven annexes against the accepted text, and the absorbed notes' dated appends, ride the next queue (the T3/T4/T5 pattern).
+
+### Dated consumption append (2026-08-15 — S-4/T5 w-FRAME, import I1)
+
+*Provenance: composition unit S-4; the consuming note is
+`T5_WFRAME_2026-08-12.md` (THE w-FRAME NOTE, ACCEPTED 2/2, 2026-08-12), whose
+acceptance record schedules this queue ("Consumption checks and the absorbed
+notes' dated appends ride the next queue (the T3/S-2 pattern)") — as does this
+note's own closing block, which invites exactly this shape: "Later work appends
+dated consumption records or a further dated append BELOW this block; it does not
+rewrite the accepted text." Finding of record: `spec/EFF-T5.md` §5's I1 row
+("**CONSUMED; append OUTSTANDING** (N1). Frame pin STALE by two rounds") with its
+§4 negative row `grep -cF 'WF-w' T1_GAUGE_COCYCLE_2026-08-12.md` = 0 — re-confirmed
+0 immediately before this append. Executed in the corpus-maintenance queue (MQ)
+batch of 2026-08-15. Edit shape append-only; the accepted text above is unchanged.*
+
+**WHAT T5 CONSUMES FROM THIS NOTE, AND WHAT IT DOES NOT.** T5's import I1 pins
+(C3-B-law), (C3-canonical-read) and (C3-three-reads), read with r2's A7 re-scope,
+and takes from them exactly four things: the corrected-key digit
+Γ_t = c_t·ϑ_{i,s_t}; the orientation Θ_i(t) = ϑ_{i,s_t}^{-1}; the ϑ/Θ
+cancellation; and the canonical residual twist
+ψ_{i+1}^{(w_i)}(y) = w_i^{f_{i+1}}·ψ_{i+1}(y/w_i), which T5 names (WF-psi). It also
+takes the unit display w_i = R_{i+1,κ̄_i}(n̂_i(u_{i+1})) ∈ K_i^×, which T5 names
+**(WF-w)** — the token whose absence from this note was `spec/EFF-T5.md`'s N1
+diagnostic, and which this append now supplies. **The three-leg consumption check
+PASSES, with three riders.**
+
+*Leg (a) — STATEMENT.* Every identification is exact against this note's own
+displays: s_t = f_{i+1} − t; T5's Θ_i(t) is this note's (C3-Theta) box under that
+substitution; T5's Γ_t is this note's Γ_t display character for character; the
+cancellation is this note's own sentence that the ϑ/Θ factors cancel; T5's
+(WF-psi) is this note's (C3-three-reads) canonical residual, with T5 adding only
+the elementary expansion to y^{f_{i+1}} − Σ c_t w_i^{f_{i+1}−t} y^t; and T5's
+(WF-w) reproduces this note's unit display including its `∈ K_i^×`. T5's own r4
+census re-verified the same list independently. **Closed.**
+
+*Leg (b) — PROVENANCE (the B-law boundary).* The load-bearing question is whether
+T5 credits this note with the B-law *identity*. **It does not**, and it says so in
+its own voice: "T1 supplies the dictionary and the final cancellation.
+GENTOW2-B″ supplies the unconditional i = 2 B-law. At i ≥ 3, `[GENTOW5-W(i)]`
+supplies the sitewise B-law only within the displayed cumulative hypothesis" — and
+again, at the close of I1, that its supplier fence "leaves the unconditional base
+law to GENTOW2 and every higher-rung law to the explicit cumulative hypothesis
+𝒲_{≤i}". T5 also builds the check into its own hostile-pass battery ("Verify that
+T1 supplies only the dictionary/cancellation and that each B-law names its
+supplier"). This matches this note's A7 self-description exactly: T1 "only
+**supplies the gauge algebra to** the preceding B-law display … but it does not
+prove the supplier identity itself. Thus the B-law is no longer labeled 'absorbed
+verbatim.'" I1's span pin does name the (C3-B-law) tag while its supply list omits
+the identity — consistent, since this note's own (C3-B-law) box is itself gated at
+sites where the ladder-multiplicativity obligation is discharged. **Closed.**
+
+*Leg (c) — DEFINITION AUDIT.* Fence coverage is complete on T5's side: its r5
+carry enumerates every site that divides by or substitutes w_i — (WF-w), the
+twists (WF-twist) and (WF-psi), the unit-substitution paragraph, both realized
+displays, the I2/I4/I5 instance displays, and every ψ_j^{(ω_{j−1})} leg of
+(WF-index) — and it excludes i = 1 explicitly ("**i = 1: NONE.**"). No uncovered
+site was found. No hypothesis migrates into this note's displays, and T5 adds no
+character law and no value of w_i.
+
+**RIDERS (3), recorded not repaired. These are T5's obligations, not corrections
+to this note.**
+
+1. **T5 asserts w_i ∈ K_i^× on ONE clause of what is now a TWO-clause gate.**
+   This note's r11 round split the inference — the unit status is asserted only at
+   sites carrying BOTH (C3-read-codomain), which places w_i in K_i, and
+   (C3-ladder-nonvanishing), which makes it nonzero, and "Neither alone yields a
+   unit" — and r12's m-2 finding recorded that the earlier one-clause form was
+   thereby superseded. T5's honesty item names (C3-ladder-nonvanishing) alone, at
+   "(T1 r8)". T5 is faithful to the frame it pinned: the r1–r10 carrier in this
+   note displays the unit membership with no codomain clause, so this is frame
+   staleness, not mis-transcription. **The exposure is at i ≥ 3 only:** at i = 2
+   this note's r11 text itself discharges the codomain clause through the accepted
+   GENTOW2 supplier, whose per-grade unit is typed into K₂^× = F₃^\*; at i ≥ 3 this
+   note requires "an explicitly cited level-general analogue carrying both
+   clauses", while T5's discharge is a nonvanishing argument only ("A fixed
+   K_i^×-value is in particular nonzero"). The live sites are T5's general-i
+   (WF-w)/(WF-twist)/(WF-psi)/realized-i/I5/(WF-index) displays.
+2. **The frame pin is stale by THREE rounds, not two — and the omitted round is
+   the one that matters.** T5's governing rider pins the frame of record at "T1
+   with r1–r10"; this note is at **r13** and ACCEPTED 2/2 at r13. `spec/EFF-T5.md`
+   records the drift as "STALE by two rounds" and glosses it "T1 then moved twice
+   more (r12, r13)" — **both counts omit r11**, which is precisely the round that
+   declares (C3-read-codomain) and so creates rider 1. Re-counted here directly
+   from this note's round headings: r11, r12, r13 all postdate the pin. (The
+   spec's OPEN-CALL 1 gets the substance right — it names a frame that "predates
+   R11-1/R12-3" — so only the two counts are off by one.)
+3. **An unconsumed r13 movement sits at the I1 pin itself.** This note's r13
+   round re-declared the A7 span that I1 reads through, giving its effective
+   reading in order: the r8 residual-obligation text as amended by r11's two
+   clauses, then the connective lead-in, then the retained supplier display, then
+   the r2 slotwise-cancellation paragraph unchanged. T5's pin reads "with T1 r2's
+   A7 re-scope" and its census records only the r8 delta. Both flanking sentences
+   T5 quotes survive verbatim and are declared landmarks at count 1, so nothing
+   T5 quotes is false — the pin simply sits inside a re-declared span it does not
+   name. A locator refresh, not a mathematical defect.
+
+Nothing in this note is corrected by this append. Its accepted text, honesty
+ledger, standing conditionalities and byte-freeze are untouched, and consumers may
+cite either this note's (C3-Theta)/(C3-three-reads)/(C3-B-law) or T5's
+(WF-w)/(WF-psi)/(WF-law) as appropriate — noting that the B-law identity is in
+neither note's gift, but GENTOW2's at i = 2 and `[GENTOW5-W(i)]`'s, conditionally,
+above it.
+
+BYTE-FREEZE: pre-append body md5 ebc2b21a274d12fa117959b093237405, re-verified by
+prefix after this append. This line records THIS append's own verification only; it
+introduces no governance rule on the accepted text above, whose freeze is stated in
+this note's own closing block.

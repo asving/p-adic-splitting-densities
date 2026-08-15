@@ -1039,3 +1039,151 @@ runs/cert2/E13_gentow3_output.log); the PE1-0/PE1-1 witness pair
 re-checked against the committed records (same honest σ = {(8,1)},
 shadow pins (21,14)/tRAM vs (28,14)/tINERT). Ledger: row 9 → folded,
 awaiting discharge-confirm (cert5).)*
+
+### Dated absorption append (2026-08-15 — S-3/T4, GT3-THRESHOLD; the FIRST run of the charged consumption check)
+
+*Provenance: composition unit S-3, blueprint protocol; the absorbing note is
+`T4_CERTIFICATE_WITNESS_2026-08-12.md` (THE CERTIFICATE WITNESS NOTE, ACCEPTED
+2/2, 2026-08-12), whose acceptance record schedules exactly this: "Consumption
+checks + the absorbed notes' dated appends ride the next queue." Finding of
+record: `spec/EFF-T4.md` §5's two GT3 rows ("**ABSORBED (2/2 accepted);
+consumption check + append OUTSTANDING**") and §8 item 1 ("Run the GT3 and GT6
+consumption checks (EFF.T4.39) and land the dated absorption appends … Verified
+not yet done"), with the negative XREF row `grep -cF 'GT3-THRESHOLD'
+GENTOW3_PROOF_2026-08-09.md` = 0 — re-confirmed 0 immediately before this append,
+together with `grep -cF 'T4'` = 0. Executed in the corpus-maintenance queue (MQ)
+batch of 2026-08-15. Edit shape append-only, per this note's own fence at S7
+("THE NOTE IS FROZEN AT THIS RECORD: dated appends and dated brackets only;
+statement displays and sealed artifacts stay byte-untouched"); the body above is
+BYTE-UNTOUCHED.*
+
+**TWO CONCLUSIONS OF THIS NOTE ARE ABSORBED by T4's certificate-witness lemma as
+the instance `GT3-THRESHOLD`**, and the three-leg consumption check **PASSES on
+both, with four riders recorded below.** T4's own identification of the seam
+(its S4 Result sentence) is: "GENTOW-3(iv)'s phrase 'touched coordinate(s)' is
+exactly DEFINITION T4.1. Its attainment conclusion is LEMMA T4.2(a), and its
+repaired deep-perturbation persistence is LEMMA T4.2(b)."
+
+**ROW 1 — clause (iv)'s certificate-scoped attainment (this note's S2, the
+THEOREM GENTOW-3 display, clause (iv) with its GT3-r2 PIN).**
+
+*Leg (a), STATEMENT.* T4 defines ω_j := gr_{Θ_j}(Δ_j(f_key)) with
+f_key := Φ₂^{μ₂}, Δ_j = ShC_j − C_j, Θ_j = (μ₂−j)E₂ + δ, δ = u₂ − e₂D'h — every
+symbol this note's own S2 setting fixes — and calls j *touched* iff ω_j ≠ 0.
+Under this note's GT3-r2 PIN ("coordinate j is touched iff the key power's
+assembled height-THETA_j K2-digit … does not cancel"), that IS clause (iv)'s
+hypothesis. T4 then imports clause (i) as its (FLOOR), specializes it to f_key,
+and its attainment lemma returns `j touched ⟺ ν_j(f_key) = Θ_j` — clause (iv)'s
+conclusion, with the DRAIN half (C_j(f_key) = 0) definitional on T4's side. The
+recovery uses only: (FLOOR) [= clause (i)], the membership fact for f_key, the
+definition of ν_j as a minimum, and DEFINITION T4.1. **Closed.**
+
+*Leg (b), PROVENANCE.* Non-circular, verified by enumeration rather than by
+declaration. Clause (iv)'s *conclusion* is not among T4's premises: T4 cites
+clause (iv) only for the per-genre, per-coordinate *computation* of ω_j — machine
+data this note localizes in its own sealed instrument and BOX-1 record, not in
+(iv)'s inference. T4's ownership fence states the split: "GENTOW-6 still owns the
+top-slot uniqueness calculation … T4 owns only the shared meaning of the
+assembled witness and the inference from a nonzero critical digit to attainment",
+and "No accepted source is rewritten by this composition unit."
+
+*Leg (c), DEFINITION AUDIT.* One-sidedness is preserved exactly as this note's
+own PE3 round demanded: T4 writes "The instance is one-sided at member level. If
+ω_j = 0, the key power does not attain the floor at j; this does not imply that no
+other member can attain it", and names the committed FR-M3 W member as the witness
+— the same witness that refuted the r2 only-if claim here. T4's ⟺ is scoped to the
+key power alone. No character, decidedness, or ShC_j ≠ 0 hypothesis is added.
+
+**ROW 2 — S8.1's deep-perturbation persistence (this note's S8.1, the repaired
+margin ledger).**
+
+*Leg (a), STATEMENT.* T4's perturbation-stability clause takes g ∈ 𝒟_{<μ₂},
+f := f_key + g, and returns gr_{Θ_j}(Δ_j(f)) = ω_j whenever
+gr_{Θ_j}(Δ_j(g)) = 0 — in particular whenever g is in-budget in this note's box
+sense (every composed slot of g clears weight μ₂E₂ + 1). The chain is: linearity
+of C_j and ShC_j on 𝒟_{≤μ₂} (this note's own corrected linearity), plus S8.1's
+imported margin "every disagreeing height of g's two reads is
+>= THETA_j + 1, STRICTLY above the floor", plus (FLOOR) to exclude lower
+digits. That returns
+S8.1's conclusion verbatim in content: "the height-THETA_j digit of (Sh − C)(f0 +
+g) equals the key power's assembled certificate digit … so the divergence at
+THETA_j PERSISTS for every in-budget g". **Closed.**
+
+*Leg (b), PROVENANCE.* T4 consumes S8.1's *margin*, never its conclusion, and the
+WITHDRAWN inference is explicitly excluded — T4's import fence reads "the base's
+withdrawn 'same shift' inference is NOT used", and T4's own PE1 check-item 3
+exists to police it. This matches S8.1's own withdrawal of that inference here.
+The Θ_j+1 margin and the box hypothesis remain **this note's arithmetic**: T4
+re-derives neither ("This note adds no machine computation").
+
+*Leg (c), DEFINITION AUDIT.* Two differences, both tracking this note's own
+repair. `disc ≠ 0` is DROPPED: T4's clause carries no discriminant hypothesis,
+correctly, since f_key = Φ₂^{μ₂} has disc = 0 and S8.1's derivation never
+mentions disc — T4 thereby covers disc = 0 perturbations that clause (iv)'s
+parenthetical did not, and the disc ≠ 0 quarantine survives on the σ-read legs
+where the sources demand it. The BOX HYPOTHESIS is ADDED relative to clause
+(iv)'s unqualified "deep perturbations", and it is this note's own operative
+hypothesis — S8.1 says so: "The parenthetical hypothesis '(slots at heights >
+THETA_j)' is NOT consumed by the corrected derivation;
+the box hypothesis is the operative one."
+Boundary consistency holds on the measured row: T4 keeps the
+FR-M3 W member inside its class at exact equality while recording that it sits
+OUTSIDE S8.1's box, which is this note's placement of it.
+
+**RIDERS (4), recorded not repaired.**
+
+1. **(FLOOR) is carried on T4's class 𝔐, not on this note's 𝒯.** 𝔐 is T4's own
+   affine development slice (a pure coefficient condition, no discriminant and no
+   decidedness hypothesis), and T4 obtains (FLOOR) on 𝔐 by re-reading clause
+   (i)'s *proof* at its Steps 0–2 quantification domain — not by quoting a
+   conclusion of this note. **No inclusion between 𝔐 and 𝒯 is displayed in
+   either note, and none is claimed here.** ROW 1's recovery does not need one
+   (only f_key is involved, and clause (iv) is stated at f = Φ₂^{μ₂}); but
+   `spec/EFF-T4.md` §5's fence "(FLOOR) on 𝔐 remains a hypothesis" is live and
+   travels with the absorption.
+2. **ROW 2 absorbs clause (iv)'s persistence AS REPAIRED BY S8.1, never clause
+   (iv) as displayed.** The literal sentence "deep perturbations (disc ≠ 0) keep
+   the divergence" is not what T4 recovers, and could not be: this note withdrew
+   the inference behind it. Consumers should cite "(iv)'s persistence clause as
+   repaired by S8.1", not "(iv)".
+3. **A provenance-gloss seam is open on T4's side.** Clause (iv)'s PIN glosses the
+   digit as "the proof's single-Phi'-extraction sum"; T4's r3 round widened its
+   own equivalence paragraph to *every* provenance ("all single-Φ′-extraction
+   routes, all other branch terms, and every incoming carry and recarry"), while
+   T4's instance record still carries the pre-r3 wording — logged as OPEN-CALL 1
+   in `spec/EFF-T4.md`. The identification "exactly DEFINITION T4.1" therefore
+   holds at the head-phrase "assembled height-Θ_j K₂-digit", not at the
+   parenthetical. Nothing in this note changes; the seam is T4's to close.
+4. **This is the FIRST execution of the charged check, and one half of the charge
+   is still unrun.** T4's `EFF.T4.39` PE2 charge has two halves: the
+   substitution-recovery protocol (run here, PASS) and a battery half ("Re-run the
+   accepted GENTOW-3 battery and specifically inspect FR-M3's measured slack
+   [12,7,4] against [10,7,4], the W-member's entry-driven attainment at j = 0,
+   FR-GL's two-coordinate attainment, and FR5X's identically-zero coordinates").
+   The arc never ran either: T4's PASS 2 log (`runs/comp12/T4P7_output.log`, sol
+   arm, VERDICT CLEAN) contains zero occurrences of "consumption", "battery",
+   `FR-GL`, `FR5X`, `BP3` or `[12,7,4]` — its four sections are analytic
+   re-derivations of T4.2(a)–(d), FLOOR/𝔐, ω_j well-posedness, and the CERT-TOP
+   fences — and the earlier T4P3 attempt records that "both requested regression
+   consumptions remain unperformed" for infrastructure reasons. **The battery
+   half of EFF.T4.39 remains OUTSTANDING and is not discharged by this append.**
+
+Nothing in this note is corrected by this append; its statement displays, sealed
+artifacts, boxes and grades are byte-untouched, and consumers may cite either this
+note's clause (iv)/S8.1 or T4's `GT3-THRESHOLD`.
+
+**LINE-WRAP WARNING — DO NOT REFLOW THE QUOTATIONS ABOVE.** T4 pins twelve
+substrings of this note by *occurrence count 1* on a single line (its R5-V
+validation table: the S2 setting line, clause (i)'s FLOOR display, Step 1's entry
+bound, clause (iv) at the key power, S0's W member, clause (iv)'s σ-leg
+parenthetical, and six S8.1 lines). An append that reproduces one of those lines
+verbatim silently turns a count-1 marker into count 2 and can make a downstream
+span fail closed. **Two quotations in this append are therefore deliberately
+broken at a different point than the source's own line breaks** — S8.1's margin
+sentence and its box-hypothesis decoupling sentence — so that no line here
+contains a pinned marker. All twelve markers were re-counted after this append and
+each returns exactly 1. Any future editor who "tidies" this wrapping will break
+the pins; quote pinned lines only with a deliberate break.
+
+BYTE-FREEZE: pre-append body md5 bff65fa364f2a5919d482e61c8afc413, re-verified
+by prefix after this append; edit shape append-only.

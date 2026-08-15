@@ -2311,3 +2311,125 @@ diagram is read under the ambient hypothesis 𝒲_{≤n} as a whole (its
 first arrow consumes [GENTOW5-W(n)] with the earlier instances
 ambient). R-i4 (the lift rung) is unaffected and was DISCHARGED.
 Awaiting sol re-confirmation in the next queue.
+
+### Dated consumption append (2026-08-15 — S-4/T5 w-FRAME: the S12.1/S11.2 fence and import I4)
+
+*Provenance: composition unit S-4; the consuming note is
+`T5_WFRAME_2026-08-12.md` (ACCEPTED 2/2, 2026-08-12), whose acceptance record
+schedules this queue ("Consumption checks and the absorbed notes' dated appends
+ride the next queue (the T3/S-2 pattern)"). Findings of record: `spec/EFF-T5.md`
+§5's rows for "GENTOW5 S12.1 + the dated corrigendum" ("**CONSUMED; append
+OUTSTANDING** (N3)"), "GENTOW5 S11.2 proved fixed-unit list" ("**CONSUMED on the
+proved side**"), "GENTOW5 S11.2 scope walk (L1925–1928)" ("**NOT CONSUMED —
+NON-IMPORT**"), and "GENTOW5-PE3" ("**CONSUMED as avatar-coherent; append
+OUTSTANDING**"), with `grep -cF 'WF-w' GENTOW5_PROOF_2026-08-09.md` = 0 —
+re-confirmed 0 immediately before this append. Executed in the corpus-maintenance
+queue (MQ) batch of 2026-08-15. Edit shape append-only; the body above, including
+S12.1 and its dated corrigendum, is BYTE-UNTOUCHED. **All checks PASS**; two riders
+are recorded.*
+
+**WHAT T5 TAKES FROM THIS NOTE IS A FENCE, NOT A THEOREM.** T5 imports S12.1's
+cumulative hypothesis 𝒲_{≤n} := ⋀_{3≤q≤n}[GENTOW5-W(q)] and carries it on every
+arrow of its own consequence chain; it takes the *proved* half of S11.2 for a
+nonvanishing discharge; and it treats S11.2's superseded scope walk as a declared
+NON-IMPORT.
+
+*Leg (a), STATEMENT — 𝒲_{≤n} rides every arrow.* T5's chain
+𝒲_{≤n} ⟹ (a)@n ⟹ Corollary 6.4 ⟹ (b)@n ⟹ S11.1.1/S11.1.3 ⟹ (c)@n ⟹ (e)@n ⟹ the
+next automatic floor reproduces S12.1's dependency diagram, and its four
+consequence items reproduce S12.1's four numbered blocks (clause (a)'s realized
+residual/admissibility/KP-membership/certificate/non-equivalence; ALL of clause (b)
+at n ≥ 3 including P-membership; clause (c) with S11.1.1/S11.1.3; clause (e) and
+the next automatic floor). T5's (WF-index) reproduces the corrigendum's index shift
+exactly — ψ_j^{(ω_{j−1})} with ω₁ = S11.3's fixed letter-power unit, so ψ₂ carries
+ω₁, ψ₃ carries w₂, ψ_j carries w_{j−1} for j ≥ 4, and the top term consumes w_n,
+never w_{n+1} — and it preserves the unaffected scope (the i = 2 rung
+unconditional, the i = 1 residual exactly S11.3's statement). **One display differs
+from a raw source line, in the SAFE direction:** S12.1's diagram antecedent is the
+single conjunct [GENTOW5-W(n)] while T5 promotes it to the cumulative 𝒲_{≤n} — on
+this note's own corrigendum instruction that the diagram "is read under the ambient
+hypothesis 𝒲_{≤n} as a whole". A stronger hypothesis, deliberately taken, and
+recorded as such in the spec. **Closed.**
+
+*The two carve-outs are carried verbatim in substance.* S11.1.2's numerical ρ-ladder
+remains unconditional floor arithmetic on T5's side as on this note's; and a floor
+inequality explicitly included in the fixed tower datum remains independently
+available, with only its claimed automatic derivation from the recipe conditional.
+Nothing else in T5's §4 is exempted from 𝒲_{≤n}.
+
+*Leg (b), PROVENANCE.* Non-circular by construction: T5 imports a conditionality
+statement and this note's own dated self-correction, not a conclusion. The i ≥ 3
+nonvanishing discharge rides only the PROVED half of S11.2 — per-grade FIXEDNESS of
+u_i(β), each grade's unit a fixed K_i^×-value, x₀-freeness, g-freeness, and the
+definitional reciprocity — and T5 states the inference and its limit in one breath:
+a fixed K_i^×-value is in particular nonzero, so its ladder-nonvanishing gate is
+discharged at every permitted i ≥ 3 site "while the single-w geometric law itself
+stays behind 𝒲_{≤i}". That is exactly this note's own split: S11.2 marks the
+single-w geometric form NOT PROVED at i ≥ 3 and calls it an open transported lemma,
+the honest-sorry analogue. **Closed.**
+
+*Leg (c), DEFINITION AUDIT — the NON-IMPORT is correct.* S11.2's per-consumer scope
+walk (the sentence listing σ, values, degrees, irreducibility transport, the
+repo-side residue classes and P-membership, (c)'s budgets, (d), (e) as "w-blind
+there") is the sentence S12.1 later withdrew: "A fixed per-grade unit family is not
+enough: 'w-blind' means invariance AFTER the family has been proved to have the
+single-w_i geometric form. It does not construct that form." T5 imports **nothing**
+from that span — its only two references to it are *about* the withdrawal, never as
+a premise. **No migration.**
+
+**IMPORT I4 — THE PE3 CLOSURE IS CONSUMED AS AVATAR-COHERENT, NOT INTRINSIC.** T5's
+I4 takes from the GENTOW5-PE3 pass record (`GENTOW5_passPE3_report.md` @
+`39c36aa2`, byte-identical to the working tree — re-verified) the single boxed
+closure ψ₃^{(w_av)}(Y_av) = 0, keyed on **both** avatars: PE3's measured w = z₂ ≠ 1
+at its seventh prime, and Y = the FGMN class avatar. Both re-keyings are literally
+sourced from PE3's PSIW line and its parenthetical, and the untwisted tooth
+(ψ₃(Y) ≠ 0) is carried with them.
+
+*Legs (b)/(c).* T5 states what an intrinsic evaluation would additionally require —
+either a direct canonical-frame measurement of w₂ with a canonical-frame read of
+the class, or a proved (non-descriptive) avatar–intrinsic identification at that
+frame — and then records "Neither is in the PE3 record." Its own superseded base
+version had boxed the *intrinsic* key on this avatar-keyed record; that is the r5
+finding, and the base box is marked SUPERSEDED. The row's battery disposition is
+signed non-applicability, not a theorem, and T5 does not lift PE3's re-scoped
+clause (a) to the un-re-scoped clause. **No avatar→intrinsic upgrade. PASS.**
+
+**RIDERS (2), recorded not repaired.**
+
+1. **S12.1's withdrawal is PARTIAL, and the spec's row overstates it.**
+   `spec/EFF-T5.md` labels the S11.2 scope walk "**WITHDRAWN by S12.1**"; S12.1
+   withdraws a *named sub-list* — exact values, repo-side residue classes,
+   P-membership, clause (c), clause (e) — while its own Unaffected-scope paragraph
+   expressly preserves the refine-transfer clause (d) at its stated event
+   hypotheses, LEMMA GENTOW5-D under a supplied floor-chain datum, formal
+   monicity/degrees and recipe-height arithmetic, LEMMAS GENTOW5-A0/A1 and the S4
+   witness. The scope walk also listed σ, degrees and irreducibility transport,
+   which survive. Because T5 treats the whole span as a NON-IMPORT the
+   overstatement costs nothing in T5's direction — it only makes T5 more
+   conservative — but the accurate wording is "partially withdrawn: the five named
+   items", and that is the wording this note supports.
+2. **I4's source is a pass report, and this corpus has no precedent for appending
+   to one** (no pass report under `lean/notes/openmath/` carries a dated append, a
+   BYTE-FREEZE line, or an append ledger; each is a dated verdict from which an
+   acceptance counter was computed — PE3's own verdict is NOT CLEAN with the
+   counter held at 0/2). The I4 record is therefore landed here, on the note that
+   owns the re-scoped clause PE3 verified. Two context facts belong with it so no
+   later reader mistakes I4 for an import from a clean pass: PE3's overall verdict
+   is NOT CLEAN (0 CRITICAL + 1 GAP + 2 MINOR), and its one GAP is an index
+   conflation in clause (c)'s displayed statement — **not** in the leg-W row T5
+   imports.
+
+**A NOTE FOR CONSUMERS OF T5, not a correction to this note.** T5 contains one
+stale sentence that says the opposite of its governing text: an early section still
+reads that the certified WI companion "discharges these conjuncts in its tower
+range", while T5's governing r1 text states "Certification of the WI companion does
+not discharge these conjuncts from the frozen GENTOW5 statements. Both the
+higher-rung supplier law and every downstream conclusion retain their explicit
+cumulative hypothesis." The second is operative; `spec/HYPOTHESIS_LEDGER.md` carries
+the strike/append disposition for the first. **Anything citing T5 about this note's
+conditionality must cite the governing sentence.** Nothing in this note is corrected
+by this append; S12.1, the corrigendum, S11.2, all statement displays and all sealed
+artifacts are byte-untouched.
+
+BYTE-FREEZE: pre-append body md5 30f0f889df69908441ea9da04038d8ed, re-verified
+by prefix after this append; edit shape append-only.

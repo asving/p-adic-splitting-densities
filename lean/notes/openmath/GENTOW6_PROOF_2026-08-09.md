@@ -1303,3 +1303,142 @@ grade and no box status changes. Readers should read the clause as "sealed at
 BYTE-FREEZE: pre-append body md5 ced0e318104975717f14bfe76bec3490, re-verified
 by prefix after this append; edit shape append-only; all statement displays,
 artifact md5s and sealed artifacts byte-untouched.
+
+### Dated absorption append (2026-08-15 — S-3/T4, GT6-CERT-TOP; the FIRST run of the charged consumption check)
+
+*Provenance: composition unit S-3; the absorbing note is
+`T4_CERTIFICATE_WITNESS_2026-08-12.md` (ACCEPTED 2/2, 2026-08-12), whose
+acceptance record schedules this queue ("Consumption checks + the absorbed notes'
+dated appends ride the next queue"). Finding of record: `spec/EFF-T4.md` §5's GT6
+row ("**ABSORBED at the sealed scope; check + append OUTSTANDING**") and §8 item 1;
+the negative rows `grep -cF 'GT6-CERT-TOP'` = 0 and `grep -cF 'T4'` = 0 against
+this note were re-confirmed 0 immediately before this append. Executed in the
+corpus-maintenance queue (MQ) batch of 2026-08-15. Edit shape append-only; the
+body above is BYTE-UNTOUCHED. **See the LINE-WRAP WARNING at the foot of this
+append before re-flowing anything here.**
+
+**EXACTLY ONE CONCLUSION OF THIS NOTE IS ABSORBED** by T4's certificate-witness
+lemma, as the instance `GT6-CERT-TOP`: **THEOREM GENTOW-6.3(b), the top-lift
+certificate, at the sealed scope f₁ = 1, μ₂ = 2, 2·i_{t\*} ≥ D'.** The three-leg
+consumption check **PASSES, with three riders.** The absorption boundary is
+narrow and is stated here in full, because four neighbours are NOT absorbed:
+
+| this note's result | T4's disposition |
+|---|---|
+| GENTOW-6.3(b) CERT-TOP, at f₁=1, μ₂=2, 2i_{t\*}≥D' | **ABSORBED** as `GT6-CERT-TOP` |
+| ANNEX-THEOREM GENTOW-6.3′ (corrected lift, f₁-general) | **NOT ABSORBED** — conditional invocation only; the exposure premise is NOT discharged at f₁ ≥ 2 (the GENTOW6-BOX-4 residue) |
+| THEOREM GENTOW-6.5 (μ₂ ≥ 3 refinement) | **NOT ABSORBED** — signed candidate/non-instance; T4 infers no touchedness and no attainment from it |
+| GENTOW-6.3(c) (no-overflow regime) | **CITED, not absorbed** — T4 records that this note proves the *stronger* conclusion and that between-regimes cancellation is not excluded |
+| LEMMA GENTOW-6.4(a) (grid display) | **CITED** for its grid-and-height face only; its bijection/count face is consumed nowhere in T4 |
+
+*Leg (a) — STATEMENT.* T4's clause (c) says: a canonical slot of coordinate j at
+height Θ_j that is *fully exposed* by a single-extraction contribution with
+nonzero normalized digit is a nonzero component of ω_j, hence ω_j ≠ 0, hence j is
+touched and the floor is attained there. Its premise is the strong one — T4's own
+text adds that "Uniqueness only among single-extraction contributions does not
+discharge this premise: the exposure calculation must also exclude every other
+term and every incoming carry or recarry from the slot." With the slot data of
+6.3(b) (composed coordinate j\*, slot b\*, x-slot a\* = 2i_{t\*} − D', digit
+(ĉ_{t\*})²·π^{2a_{t\*}}·(wrap unit) at v = 2a_{t\*}, nonzero in K₂) and the
+premise discharged as in leg (b), T4 returns ω_{j\*} ≠ 0, j\* touched, and
+ν_{j\*}(f_key) = Θ_{j\*} = (2−j\*)E₂ + δ — this note's own conclusion that the
+shadow diverges at Θ_{j\*} at coordinate j\*, exactly on the floor. **Closed.**
+
+*Leg (b) — PROVENANCE (non-circular, and this is the leg the charge cared about).*
+`EFF.T4.39` warned that recovering CERT-TOP from *intra-provenance* uniqueness
+would not count as consumption of T4's clause (c). It does not: T4 discharges full
+exposure from **6.3(a)**, which is a classification of the *whole* height-Θ layer,
+not a uniqueness claim inside one provenance. 6.3(a) closes each competing
+provenance separately — other branch terms and the pairwise enumeration in its
+head clause; the division/recarry steps in its Y-exponent-lowering clause;
+multi-extraction branches, which it places at weight ≥ Θ + δ and so outside the
+layer; and tail (non-extraction) routes, which it says are shared by both reads
+and cancel. Layer-completeness from (a) plus in-layer slot uniqueness from (b)'s
+proof is exactly full exposure in T4's sense, and T4's own discharge unit says so
+("6.3(a) is a classification of the whole layer, not a uniqueness claim inside one
+provenance"). **6.3(b)'s CONCLUSION is provably never imported:** T4 contains zero
+occurrences of `UNCONDITIONALLY`, of "shadow diverges", and of "GENTOW-3(iv)'s
+certificate holds" — re-counted this round — and T4's own pin-validation table
+lists four 6.3(b) substrings, all from its slot/uniqueness/digit *calculation*,
+with the attainment sentence absent. What T4 declares source-owned is stated in
+its S6: this note "still owns the complete assembled-slot exposure calculation —
+the exclusion, in S0's full-exposure sense, of every other branch term and every
+incoming carry and recarry from the slot, not merely uniqueness among
+single-extraction branches — together with the corrected-lift support calculation
+and the higher-μ₂ binomial coefficient", while T4 "owns only the shared meaning of
+the assembled witness and the inference from a nonzero critical digit to
+attainment". Both sides also rest on GENTOW-3(i)'s floor — a common ancestor, not
+a cycle. **Closed.**
+
+*Leg (c) — DEFINITION AUDIT.* The three scope conditions are stated on T4's side
+at the instance heading (f₁ = 1, μ₂ = 2), at its Assume display (2i_{t\*} ≥ D'),
+and again at the discharge ("Verdict: YES at the sealed scope — f₁=1, μ₂=2,
+2i_{t\*}≥D' — and NO elsewhere") and at the status refresh. Against this note's
+own hypotheses: μ₂ = 2, f₁ = 1 (this note's GT6-r1 SCOPE PIN, which T4 byte-quotes
+as its own fence), 2i_{t\*} ≥ D', the corrected gauge ĉ_t with its W(t), the set T
+and t\* = max T, and the full-side tower setting — all present on T4's side. Only
+Φ₂-irreducibility / T ≠ ∅ is not restated, carried implicitly in "t\* = max T".
+Nothing is widened: this note's clause (b) is genre-universal, and T4 records it
+per fixed genre datum at the key power — a narrowing. T4 adds δ ≥ 1, which is
+imported from the GENTOW-3 side, not invented. **No hypothesis migration.**
+
+**RIDERS (3), recorded not repaired.**
+
+1. **Cite T4's *effective* text, never its base S4.1 as printed.** T4 is a
+   base-plus-repair-instruction document, and its base S4.1 still literally
+   contains the weak basis its own r3 round banned ("Maximality of t\* makes this
+   the unique height-Θ_{j\*} branch in the displayed slot") and a
+   consumed-instance sentence that its r5 round expressly WITHDREW and deleted.
+   The absorbed statement is the repair-composed effective text (T4's r3
+   replacement of clause (c) and S4.1, plus the r5 discharge unit); PASS 2 graded
+   the effective r5-plus-rider text.
+2. **T4 carries no non-circularity declaration by name.** Neither T4 nor
+   `spec/EFF-T4.md` contains the word "circular" anywhere — re-checked this round,
+   zero hits in both. Leg (b) above is therefore established by enumeration (the
+   quote inventory plus the S6 ownership fence), not by quoting a declared fence,
+   unlike the S-2/T3 precedent where an orientation-and-primitives fence was
+   stated outright.
+3. **The scope conditions are not co-located with the invocation.** f₁ = 1 and
+   μ₂ = 2 appear in T4's S4.1 only in the *section heading*; the body's own Assume
+   display carries 2i_{t\*} ≥ D' alone. They are correctly restated at the r5
+   discharge and in the spec's conditionality, so the scope is not lost — but a
+   reader who quotes S4.1's display without its heading loses two of the three
+   fences.
+
+**Status of the charge.** `EFF.T4.39`'s PE2 charge had two halves. The analytic
+half was addressed by T4's PASS 2 (`runs/comp12/T4P7_output.log`, sol arm, VERDICT
+CLEAN), whose "CERT-TOP and scope fences" section reaches the same conclusion as
+leg (b) above and closes "really do establish r3's stronger full-exposure premise";
+the **protocol consumption check is executed here for the first time**. The
+**battery half remains OUTSTANDING**: the charge also required re-running the
+accepted GENTOW-6 battery, the corrected-lift f₁ = 2 BOX-4 rows, the gauge-live
+η ≠ 1 rows, the no-overflow FAM-E/FAM-D controls, and a check of the BP3 and FR5X
+higher-μ₂ rows against the one-sided binomial statement. The PASS 2 log contains
+zero occurrences of "battery", `FR5X`, `BP3`, `FAM-E` or `FAM-D`, and this append
+does not discharge that half.
+
+**Collateral record — the "final line" gloss above is now stale, by this queue's
+own hand.** T4's r4 round re-anchored its BOX-4 span END to what was then this
+note's last line, glossing it "the source's final line" (repeated in
+`spec/EFF-T4.md`'s XREF row for that marker). Two dated appends of 2026-08-15 now
+sit below it, so that gloss is false as written. **The pin itself is intact and was
+re-verified this round:** both span markers still occur exactly once, the BEGIN
+marker still precedes the END marker, their line numbers (1249, 1265) and byte
+offsets are unchanged because appends only add after them, and no line of either
+2026-08-15 append duplicates any of the seven substrings of this note that T4 pins
+at count 1. Only the words "final line" need refreshing on T4's side.
+
+**LINE-WRAP WARNING — DO NOT REFLOW OR RE-BLOCKQUOTE THE QUOTATIONS ABOVE.** T4
+pins seven substrings of this note by *occurrence count 1* on a single line, five
+of them including their leading blockquote marker, plus two span-delimiter
+substrings. An append that reproduces any of those lines verbatim silently turns a
+count-1 marker into count 2 and can make T4's BOX-4 span fail closed — which is
+exactly the failure T4's own r4 round had to repair. This append therefore
+paraphrases 6.3(a)/(b) clause by clause instead of block-quoting them, and quotes
+no pinned line. All nine markers were re-counted after this append and each
+returns exactly 1.
+
+BYTE-FREEZE: pre-append body md5 8adac32f663915fcc4b26d12fe7c7136 (the state
+including the 2026-08-15 MQ seal-token append), re-verified by prefix after this
+append; edit shape append-only; all statement displays, artifact md5s and sealed
+artifacts byte-untouched.

@@ -1523,3 +1523,111 @@ cite either this display (6) or T3's (ABS-G2).
 BYTE-FREEZE: pre-append body md5 69b71584e8a74e89479b067f66bfd491, re-verified
 by prefix after this append; edit shape append-only; statement
 displays and sealed artifacts byte-untouched.
+
+### Dated consumption append (2026-08-15 — S-4/T5 w-FRAME, imports I2 and I3)
+
+*Provenance: composition unit S-4; the consuming note is
+`T5_WFRAME_2026-08-12.md` (ACCEPTED 2/2, 2026-08-12), whose acceptance record
+schedules this queue ("Consumption checks and the absorbed notes' dated appends
+ride the next queue (the T3/S-2 pattern)"). Findings of record: `spec/EFF-T5.md`
+§5's I2 row ("**CONSUMED; append OUTSTANDING** (N2)") and its I3 row ("GENTOW2-PE6
+… **CONSUMED at measured strength; append OUTSTANDING**"), with the §4 negative row
+`grep -cF 'WF-w' GENTOW2_PROOF_2026-08-09.md` = 0 — re-confirmed 0 immediately
+before this append. Executed in the corpus-maintenance queue (MQ) batch of
+2026-08-15. Edit shape append-only; the body above stays BYTE-FROZEN, including the
+2026-08-12 S-2 absorption append. **Both checks PASS**; three riders are recorded.*
+
+**IMPORT I2 — LEMMA GENTOW2-B″ IS CONSUMED BY T5 AS ITS UNCONDITIONAL RUNG,
+supplying (WF-law₂).** T5 pins display (6) with its w-identification and consumes
+it as `u_2(β_t) = Θ_2(t)·w_2^{f_3−t}`, `w_2 = R_{3,κ̄_2}(n̂_2(u_3))`.
+
+*Leg (a), STATEMENT.* The identifications are exact: T5's u_2(β_t) is this note's
+u(β_t) at i = 2 (same read, same slot grade — T5's β_t = s_t·κ̄_i with
+κ̄_i = u_{i+1}/e(μ_i) is this note's β_t := u₃(f₃−t)/e(µ₂) and κ̄ := β_{f₃−1});
+T5's Θ_2(t) is this note's single-argument ϑ(t), and T5's own census states the
+bridge explicitly (B″'s ϑ(t) "is this note's Θ_2(t), the inverse-telescope
+orientation") — which is right, since this note defines ϑ(t) as the residue of the
+same normalizer-monomial quotient that T1's Θ box inverts. T5's (WF-law₂) is
+therefore display (6) verbatim in content. **Closed.**
+
+*Leg (b), PROVENANCE.* Non-circular at source: B″'s proof here consumes only
+FGMN's graded-residual kit and this note's own in-scope legs, nothing from T1 or
+T5. T5 does not over-extend its reach — it confines this note to "the
+unconditional i = 2 B-law" and routes every higher rung to
+`[GENTOW5-W(i)]` under an explicit cumulative hypothesis. Nor does T5 contradict
+the fence of the 2026-08-12 S-2 append above: that append states that neither the
+displayed B-law nor a one-w family is an *input* to T3's instance, whereas T5
+imports the B-law as a *conclusion* — the licensed direction. **Closed.**
+
+*Leg (c), DEFINITION AUDIT.* T5 adds no hypothesis: its (WF-law₂) display carries
+no antecedent, in deliberate contrast to its (WF-law_i), which boxes
+𝒲_{≤i} ⟹ [ … ]. Its r5 site obligation on the terminal rescaling is a *discharge*,
+not an added hypothesis, and the discharge is real at source — LEMMA GENTOW2-B′
+types its per-grade unit into K₂^× = F₃^\*, which supplies **both** clauses of T1's
+current two-clause unit gate at i = 2 (codomain and nonvanishing at once). So the
+one-clause exposure recorded against T5 at i ≥ 3 (see the 2026-08-15 append on
+`T1_GAUGE_COCYCLE_2026-08-12.md`) **does not bite here**. **No migration.**
+
+**IMPORT I3 — THE PE6 MEASUREMENTS ARE CONSUMED AT MEASURED STRENGTH.** T5's I3
+takes two legs of different strength from the GENTOW2-PE6 pass record
+(`GENTOW2_passPE6_report.md` @ `deba21bd`, byte-identical to the working tree —
+re-verified): an **intrinsic** w₂ ≠ 1, PROVED only at the three IDY-closed frames
+LD1/GA1/GA3, and an **avatar** ≠ 1, MEASURED at all six primes of four frames with
+recorded avatars z₁ (LD1), z₁² (LD3), z₂² (GA1), z₂ (GA3).
+
+*Leg (a), STATEMENT.* The avatar object T5 displays is PE6's measured
+`res((n̂₂(u₃)/π₃^{u₃})(ξ))` character for character, and T5's three measured pairs
+are exactly PE6's canonical-frame (u(β₀), ϑ(0)) values at LD1, GA1 and GA3. The
+intrinsic conclusion is T5's own inversion of **this note's** unconditional i = 2
+law — display (6) at t = 0 with f₃ = 2 at those frames — and T5 labels it as such.
+**Closed.**
+
+*Leg (b), PROVENANCE.* Non-circular, and pointedly so: the intrinsic leg routes
+through two independently measured canonical-frame quantities plus this note's
+landed unconditional law. It does **not** route through the avatar, and T5
+explicitly refuses PE6's own avatar→intrinsic bridge as a proof leg — recording
+that the identification "rides Thm 4.2/eq (16) — row 23, DESCRIPTIVE — not a proved
+leg." **Closed.**
+
+*Leg (c), DEFINITION AUDIT — no avatar→intrinsic upgrade.* T5 fences this in four
+places: LD3 is excluded from the intrinsic claim; the LW3 caveat is displayed
+precisely because it prices the avatar leg (the first measured geography where
+avatar and intrinsic unit differ, w_av = 2 ≠ w₃ = 1); the records are said to
+refute a universal w = 1 claim "intrinsically at LD1/GA1/GA3, avatar-wise at all
+six primes" and no general avatar formula is inferred; and a hostile-pass tooth
+lints every w = 1 / avatar-w / theta-free claim against PE6 and LW3. T5's governing
+discipline sentence — an instance "imports only its pinned display. It does not
+enlarge the containing theorem or turn a measurement into a symbolic formula" —
+holds here. **No migration.**
+
+**RIDERS (3), recorded not repaired.**
+
+1. **T5's LD3 exclusion is an argument from absence.** PE6 nowhere states "LD3 has
+   no canonical row"; T5 infers it from LD3's absence from PE6's canonical
+   enumeration of LD1/GA1/GA3. Every LD3 occurrence in PE6 was checked and none
+   supplies a canonical-frame u(β₀), so the inference is correct — and it is
+   conservative, since it narrows T5's own claim — but it is not a quoted source
+   sentence.
+2. **The three "≠ 1" facts T5 needs are letter inequalities, one step past PE6's
+   literal sentence.** PE6's stated ≠ 1 facts are about the *avatar*; T5's
+   intrinsic conclusion needs z₁ ≠ 1, z₂² ≠ 1 and z₂ ≠ z₂², which it extracts from
+   PE6's recorded letter values. Letter inequalities are frame-independent, so this
+   is not an avatar→intrinsic upgrade — but the chain is an inference, not a quote.
+3. **Append site.** I3's source is a pass report, and this corpus has **no
+   precedent** for appending to one: of the pass reports under
+   `lean/notes/openmath/`, none carries a dated append, none carries a BYTE-FREEZE
+   line or append ledger, and each is a dated verdict from which an acceptance
+   counter was computed — PE6's own record advances the counter to 2/2. Appending
+   to it would retroactively edit that evidence. The I3 record is therefore landed
+   **here**, on the note that owns the statement I3 inverts, exactly as the three
+   existing dated absorption appends in this corpus all land on statement-owning
+   notes. The same reasoning routes the I4/GENTOW5-PE3 record to
+   `GENTOW5_PROOF_2026-08-09.md`.
+
+Nothing in this note is corrected by this append; its statement displays, sealed
+artifacts, acceptance record and the 2026-08-12 S-2 append are byte-untouched.
+Consumers may cite either this note's display (6) or T5's (WF-law₂).
+
+BYTE-FREEZE: pre-append body md5 e3f9f211fba53cd2c8236d067a1ddacf, re-verified
+by prefix after this append; edit shape append-only; statement displays and sealed
+artifacts byte-untouched.
