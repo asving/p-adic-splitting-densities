@@ -3724,9 +3724,478 @@ with the 12 explained) → regression retained.
 
 ---
 
-## 8. §8 — THE SHADOW-READ LAYER AND THE CAPS
+## 8. §8 — THE SHADOW-READ LAYER AND THE PARTIAL SIDES
 
-<!-- §8 nodes: C.71–C.82 -->
+> **Design note.** GENTOW3 ([GENHN-TOW-1] item (3)): the faithfulness geography of the
+> stage-shadow read — WHEN a known-wrong read (T(b)'s refuted object) is nonetheless right.
+> Its TERMINAL forms carry three of the corpus's sharpest post-acceptance repairs (C-H8):
+> the `[GT3-r2]` certificate pin inside (iv)'s statement, S8.1's withdrawn-inference
+> re-derivation (persistence STRICTLY above the floor, under the box hypothesis), and
+> CHAIN-NONFUNC's double supersession ending at the σ-only claim (S8.4 — activated under
+> the owner's delegated authority with the INCOMPLETE-read disclosure attached; this
+> chapter transcribes the TERMINAL σ-claim and nothing stronger). GENTOW4 ([GENHN-TOW-1]
+> item (4)): partial inner sides — the datum at every side (4.1), the bouquet + projection
+> (4.A, with TOWERRAT2-C's corrected monic signature), the pure-power tie (4.2), the
+> `c_g`-read (4.C). The mixed-side tie routes to §7's C.67 (GENTOW4-BOX-1's closure).
+> GENTOW6's budget half (6.2/6.2C) closes the section; its caps/attainment layer (6.3/6.4/
+> 6.5) lands in §9 with the thresholds (A-§8 delta against the index's section gloss).
+> The GENTOW6 caps aside, everything here is FULL-strength: items (2), (3), (4) of
+> `HYP.82` at their notes' own acceptance scopes.
+
+### NODE C.71 [def] [fresh]
+
+**STATEMENT.** *The two reads and the faithfulness threshold.* For a tower datum `T` and
+`f ∈ 𝒯`: the **composed (honest) read** — the `Φ₂`-development coefficients `C_j` (B.02's
+`dev` at the key `Φ₂`); the **stage-shadow read** — the two-variable division carried out
+with every coefficient reduced mod `Φ′`: `ShC_j := Σ_b ḡ_{j,b}·Φ′^b` (`deg ḡ < D′`), the
+mod-`Φ′`-reduced division tower (implemented as iterated `Polynomial.modByMonic` at `Φ′`
+inside the `Φ₂`-division — a total `O[x]`-construction); the **margin** `δ T := T.u₂ −
+T.e₂ * (F.e₁*F.f₁) * F.h` (`≥ 1` by the node floor); and the **threshold**
+`Θ T j := (μ₂ − j) * T.E₂ + δ T`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def shadowDev {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
+    (f : Polynomial O) (j : ℕ) : Polynomial O := …  -- the mod-Φ′-reduced division tower
+
+def TowerDatum.margin … : ℕ := T.u₂ - T.e₂ * ((F.e₁ * F.f₁) * F.h)
+
+def TowerDatum.theta … (μ₂ j : ℕ) : ℕ := (μ₂ - j) * T.E₂ + T.margin
+```
+
+**DEPENDS.** B.02 · C.42 · C.43 · C.50.
+
+**PROOF.** definitional (`margin ≥ 1` as a companion via `T.hfloor`). **SIZE.** 18 lines.
+
+**SOURCE.** `EFF.GENTOW3.16` (the two reads, verbatim; the shadow is "the refuted T(b)
+object" — the docstring says so); `EFF.GENTOW3.18` (`δ := u₂ − e₂D′h`, `Θ_j`).
+
+**TEETH.** signed non-applicable. **ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.72 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-3(i)+(ii): the floor and the faithful band (gauge-immune,
+unconditional).* On `𝒯`: (i) every `dv₂`-height at which `shadowDev` and `dev Φ₂` carry
+different slot digits is `≥ Θ T j` (the first disagreeing height of the difference clears
+the threshold: `dv2Hgt … (shadowDev T f j − dev (composedKey T) f j) ≥ (Θ T j : ℕ∞)`);
+(ii) at every height `m < Θ T j` the two reads' digits agree — values, classes, and
+`K₂`-residues; consequently any read whose consulted heights at coordinate `j` are all
+`< Θ T j` returns identical output on both reads.
+
+**SIGNATURE** (shape). `theorem shadow_floor …` + `theorem shadow_faithful_band …` (the
+band is the floor restated — one file, two public names since (ii) is the one every
+downstream protection cites).
+
+**DEPENDS.** C.11 · C.50 · C.52 (Step 0's carry pricing: the x-carry's `Φ′`-branch raises
+weight by EXACTLY `δ` — "the whole engine of the note") · C.71.
+
+**PROOF (route).** `EFF.GENTOW3.22`–`.24`'s Steps 0–2: the division ledger (`Ĝ_j` at weight
+`≥ (μ₂−j)E₂`), then every discrepancy branch pays `≥ 1` Φ′-extraction at `+δ` each —
+weight-level and VALUE-BLIND throughout (the S7.1 certificate: "clauses (i)/(ii) and their
+proofs are gauge-immune and uniform in `f₁`").
+
+**SIZE.** 40 lines. **Split candidate:** (i)'s ledger / (ii)'s restatement.
+
+**SOURCE.** `EFF.GENTOW3.18`/.19 (verbatim); `.22` (Step 0 with the `+δ EXACTLY` audit).
+
+**TEETH.** P-1 FLOOR 274 checks (census corrected to 137 member_check calls — CHAIN-CENSUS
+TERMINAL `.49`) → **executable regression** retained; P-6 LABEL 6 + A7-BAND rows →
+retained; §13 fires one floor row per prime.
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.73 [def+theorem] [fresh]
+
+**STATEMENT.** *X-free genres and GENTOW-3(iii) exactness.* **Definition (the PRIMARY
+clause — the operative one at every `f₁`; the displayed `i(u₂(f₂−t)) = 0` test is its
+`f₁ = 1` evaluation ONLY, CHAIN-XFREE TERMINAL):** the tower datum `T` is **x-free** iff
+every lift coefficient of `composedKey T` (each `t < f₂` with `c_t ≠ 0`) is an x-free
+monomial `π^a` — i.e. `stageLiftO`'s output at that slot has `X`-degree `0`. **Theorem
+(iii):** at an x-free datum the discrepancy is ZERO at every height: `shadowDev T f j =
+dev (composedKey T) f j` identically on `𝒯` — the shadow IS the composed read.
+
+**SIGNATURE** (shape). `def IsXFree …` + `theorem shadow_exact_of_xfree …`.
+
+**DEPENDS.** C.43 · C.71 · C.52 (no x-overflow ⟹ mod-`Φ′` reduction is the identity).
+
+**PROOF.** (iii): no coefficient ever has x-degree `≥ D′`, so every reduction step is
+trivial; the two division towers coincide term by term.
+
+**SIZE.** 22 lines.
+
+**SOURCE.** `EFF.GENTOW3.17` (the definition with the `[GT3-r1]` scope bracket — the
+PRIMARY clause transcribed, the `f₁ = 1`-only equivalence recorded as a companion lemma
+with the `f₁ = 1` hypothesis explicit, per the re-derivation at `.45`); `.20` ((iii),
+"so read needs no `f₁` restriction"); witness FAM-D (`Φ₂ = (x²−3)² + 27`, lift `−27`
+x-free).
+
+**TEETH.** P-3 XFREE 3 + the 12-member FAM-D sweep (zero discrepancies, DRAIN self-shadow)
+→ retained; FAM-D is `q = 3` — §13 pairs it with a `q = 2` x-free instance.
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.74 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-3(iv) at its THREE TERMINAL layers (attainment, persistence,
+σ-non-functionality).* At a non-x-free datum:
+(a) **[certificate-scoped attainment — the `[GT3-r2]` pin, in-statement]** coordinate `j`
+is **touched** iff the key power's assembled height-`Θ_j` `K₂`-digit (the
+single-`Φ′`-extraction sum of `Φ₂^{μ₂}`'s self-overflow) does not cancel — the CERTIFICATE
+sense, NOT the weaker `ShC_j ≠ 0` (the FR-M3 member separates the two: `ShC_0 = 64 ≠ 0`
+while the height-10 digit cancels). Where the certificate holds, `f = Φ₂^{μ₂}` has composed
+read DRAIN (`C_j = 0`) while its shadow carries a nonzero digit at exactly `Θ_j`.
+(b) **[persistence, S8.1 TERMINAL]** for in-budget perturbations `g` (every slot of `g` at
+weight `≥ μ₂E₂ + 1` — the GENTOW-1(a) box hypothesis, THE operative one; the frozen
+"slots at heights > Θ_j" parenthetical is NOT consumed): every disagreeing height of `g`'s
+two reads is `≥ Θ_j + 1`, STRICTLY above the floor — so linearity
+(`(Sh−C)(f₀+g) = (Sh−C)(f₀) + (Sh−C)(g)`) isolates the certificate digit at `Θ_j` and the
+divergence persists. The withdrawn inference ("both reads shift by the SAME g-digits") is
+DEAD.
+(c) **[σ-non-functionality, S8.4 TERMINAL]** the surviving scope: there exist members with
+identical honest σ and different shadow content at heights `≥ Θ_j` (the committed PE1
+triple), and members with identical shadow data and different honest reads (the S8.1
+pair) — stated as the two-witness existence claim, i.e. **"not a function of the honest
+read's σ"** and NO MORE (S8.2's verdict-level-tuple scope is itself WITHDRAWN; the
+activation-basis disclosure of `EFF.GENTOW3.61` — search returned INCOMPLETE, read as
+stronger-than-EMPTY under the owner's delegated authority — is carried in the docstring).
+
+**SIGNATURE** (shape). Three public theorems — **split-mandated C.74 → 3**
+(`shadow_attained_of_certificate`, `shadow_persistence`, `shadow_not_sigma_function`);
+the certificate predicate `TouchCert T j : Prop` as a companion def in the first file.
+
+**DEPENDS.** C.43 · C.52 · C.53 (the box hypothesis's carrier) · C.71 · C.72 · C.73.
+
+**PROOF (route).** (a): the single-extraction sum computation (`EFF.GENTOW3.21`'s proof
+route). (b): S8.1's three-step chain, transcribed with its audit (`wt ≥ μ₂E₂+1` →
+ledger `≥ (μ₂−j)E₂+1` → `+kδ` with `k ≥ 1` → `≥ Θ_j + 1`). (c): the two committed witness
+pairs as constructed instances (`decide`-grade data at the FR-M3/PE1 frames).
+
+**SIZE.** 3 × ~35 lines.
+
+**SOURCE.** `EFF.GENTOW3.21` ((iv) with the in-statement `[GT3-r2]` pin — the only
+statement-internal edit of that arc; the THREE supersessions on this one clause
+enumerated); `.58` (S8.1 TERMINAL, with the boundary member sitting exactly on the repaired
+hypothesis edge); `.59`/`.62` (CHAIN-NONFUNC: S8.2 SUPERSEDED, S8.4 TERMINAL); `.61` (the
+activation disclosure — carried verbatim in the docstring per its own OPEN-CALL).
+
+**TEETH.** SHARP 11 rows (the certificate at four families) + the FR-M3 separation pin +
+the PE1 triple → **executable regressions** retained; the δ = 1 regime's refuted
+per-member claim (`.30`: "the FIRST leaf height is already unfaithful" REFUTED — the
+measured member decides faithfully AT `Θ_0` with identical hulls) → recorded as the
+NEGATIVE control row in §16's table: (a) is certificate-scoped precisely because of it.
+
+**ENVIRONMENT.** ENV-C1 ((a)/(b)); ENV-C3 ((c) reads σ).
+
+---
+
+### NODE C.75 [theorem] [fresh]
+
+**STATEMENT.** *COROLLARY GENTOW-3.C: the entry/event band is shadow-faithful at EVERY
+genre — item (3)'s parenthetical discharged.* On `𝒯`: (1) the level-1 coefficients `A_J`
+have degree `< D′`, so the mod-`Φ′` projection is the identity on them — the entry read is
+discrepancy-free outright; (2) at the composed frame, the event data occupies `dv₂`-heights
+`≤ (μ₂−j)E₂ = Θ_j − δ < Θ_j` per coordinate, so C.72(ii) gives digit agreement on the whole
+band, for every genre (`δ ≥ 1` unconditional on `𝒯`). Hence GENHN-T(b)′(iv)'s sentence
+"this inequality HOLDS at the entry/event band" is a THEOREM.
+
+**SIGNATURE** (shape). `theorem entry_band_faithful …` (two clauses).
+
+**DEPENDS.** C.50 · C.52 · C.71 · C.72.
+
+**PROOF.** (1) degree-level, no threshold; (2) `omega` on `(μ₂−j)E₂ < Θ_j` + C.72(ii).
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.GENTOW3.29` (verbatim, incl. the two-leg structure and the discharge
+sentence); the upgrade is NOT landed on GENHN in the corpus (`.42` N1) — the Lean node IS
+the landing, and §14's DAG rows record the retirement of that dangling arc.
+
+**TEETH.** ENTRY 274 — with the note's own disclosure carried: "entailed by FLOOR 274
+given `δ ≥ 1` — honest as COR 3.C's machine face, not independent evidence" (`disclosed
+non-independence`, §16 table row).
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.76 [lemma] [fresh]
+
+**STATEMENT.** *GENTOW-4.1: the level-2 datum at PARTIAL sides (four clauses).* In the
+partial-side setting (`f` monic, `Squarefree f`, the standing peels done, the inner side
+`(u₂, e₂)` of the level polygon PARTIAL: `e₂f₂μ₂* < μ₁` allowed):
+(a) **[floor, every side]** every side of the level polygon has `dv`-slope `> D′h`
+(side-blind — the `[r1]` node-floor derivation); in particular every sibling slope
+qualifies as a level-2 datum slope;
+(b) **[`ψ₂(0) ≠ 0` via vertex attainment]** the residual of EVERY side has nonzero
+constant term — both endpoints of every side are vertices, hence ATTAINED pins (argmin
+endpoints are attained by C.07/C.26's machinery — the hull-free form of "a vertex of a
+lower hull of an integer point set is a point of the set"); so `(κ₂, r̃)` is a level-2
+datum over the frame with NO full-side hypothesis (C.44 re-fires with this in place of
+HETOW-1(a)'s full-side endpoint step);
+(c) **[key bridge]** `IsTestKey`-hood of `composedKey T` holds verbatim at partial sides
+(C.47's proof is side-blind — the corpus routes this through the restated HETOW-2's
+`w = 0` disjunct; the m-A supply audit is discharged by construction here: our C.47 IS the
+"own statement form at `W = 0`");
+(d) **[frame peels]** if `F.key ∣ f` then it divides exactly once (`Squarefree`),
+contributing `typeOf`-entry `(e₁, f₁)` (B's leaf read at the frame key — via §7's C.61 at
+the degenerate level datum), and the read continues on `f / F.key`; if `composedKey T ∣ f`
+likewise via C.40's peel at key `Φ₂` (licensed by (c)), contributing `(e₁e₂, f₁f₂)` and
+dropping `μ₂*` by 1.
+
+**SIGNATURE** (shape). Four public clauses — **split-mandated C.76 → 2** ((a)+(b) /
+(c)+(d)).
+
+**DEPENDS.** C.07 · C.26 · C.30 · C.40 · C.44 · C.47 · C.61.
+
+**PROOF (route).** (a): the R9-corrected node-floor derivation (side-blind, as quoted at
+`EFF.HE6R1.04`: every pin strictly above the slope-`D′h` line). (b): argmin endpoints are
+attained (`min'`/`max'` membership) + C.26(ii)'s endpoint nonvanishing; then
+`ψ₂^{μ₂*} ∣ R` with `R(0) ≠ 0` forces `ψ₂(0) ≠ 0`. (c): C.47's proof audit — no step reads
+the side length. (d): `Squarefree` + C.61/C.40.
+
+**SIZE.** 2 × ~35 lines.
+
+**SOURCE.** `EFF.GENTOW4.11`–`.14` (the four clauses, verbatim, incl. `.13`'s dated
+re-pointing bracket and m-A's supply correction — CHAIN-SUPPLY TERMINAL: HE7-13′ supplied
+"by its own statement form at `W = 0`", which in this chapter is C.47 itself);
+`EFF.GENTOW4.15` (the proof, incl. the HETOW-1 dependency audit); `.16` (the REMARK fence:
+at a partial side the inner side's left endpoint is an interior vertex — carried in (b)'s
+docstring).
+
+**TEETH.** FR-G (the naive-key failure measured AT `dv₂ = T₂` exactly) + T-5 WRONGKEY
+(incl. the key-∣-f peel corner) → retained; PE2-P's hull `(0,13)–(1,10)–(5,0)` (the
+interior-vertex witness) → §13 regression row.
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.77 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-4.A(i)+(ii): the bouquet and the projection at partial sides.*
+(i) **[bouquet]** `f` factors as `∏_{(κ,r)} f_{κ,r}` over the label classes — supplied
+closure-free by C.33 + C.34 applied side by side (the corpus's route through LEMMA
+HE7-6/HE7-11's Galois stability has NO node; the dissections deliver the same
+factorization), with `D′·ℓ·d_r ∣ deg f_{κ,r}`;
+(ii) **[projection]** fix the inner class block `f_S := blockFactor` at `(κ₂, r̃)`,
+`g := f / f_S`, and the `Φ₂`-development of `f` (length `M = ⌊n/D₂⌋ ≥ μ₂*`, **`C_M` monic
+of degree `n − M·D₂ < D₂`, the constant `1` exactly when `D₂ ∣ n`; the partial-side
+signature is `n > μ₂*·D₂`** — the TOWERRAT2-C display of record; the frozen "top
+coefficient NOT monic" parenthetical is FALSE and DEAD). Then: `c_g` is the constant of
+C.36; `deg f_S = D₂·μ₂*` where `μ₂* := Σ_{λ₂>T₂} L_{λ₂}(P₂(f))`; the slope-`>T₂` part of
+`P₂(f)` is the INITIAL segment of the level-2 argmin structure, spans abscissas
+`[0, μ₂*]`, and equals `P₂(f_S)` translated up by `c_g` — C.37/C.64's law re-fired at the
+partial side; per side the residuals agree up to the `K₂^×` scalar `γ_g` (C.38/C.39).
+
+**SIGNATURE** (shape). `theorem partial_bouquet …` + `theorem partial_projection …` —
+**split-mandated C.77 → 2**.
+
+**DEPENDS.** C.33 · C.34 · C.35 · C.36 · C.37 · C.38 · C.39 · C.64 · C.65 · C.76.
+
+**PROOF (route).** (i): C.33 (slopes) then C.34 (residual factors) per side. (ii): the
+initial-segment claim by argmin-slope monotonicity (the corpus's convexity argument at the
+cleared carrier: attained slopes strictly decrease left to right); the span from `f_S`'s
+own C.65; the translation from C.37.
+
+**SIZE.** 2 × ~40 lines.
+
+**SOURCE.** `EFF.GENTOW4.18`/.19 (verbatim); `.57` (TOWERRAT2-C — CHAIN-MONIC TERMINAL:
+the corrected `C_M` display, with the note's own witness `C₂ = Φ′ + 4 = x² + 2`, monic,
+refuting the frozen parenthetical); `.23` (the proof's geometric core, whose `C_M` clause
+was right where the statement's parenthetical was wrong).
+
+**TEETH.** P-1 parse gate + T-3 SIBDROP 117/117 (tower-class-only σ ≠ PARI on every
+member — the bouquet is NEEDED) + P-4 (segment `= [0, μ₂*]`, `c_g` at the right endpoint)
++ T-2 NOCG 49 kills (the translation is load-bearing) → all retained; §13 fires PE2-P's
+frame (`c_g = 5, p^S = (23,11)`, floors `(21,11)`).
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.78 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-4.A(iii)+(iv): the per-block decision from `f`'s own development,
+and the class recursion.* (iii) the composed dictionary fires on `f_S` at `(κ₂, r̃)` with
+key `Φ₂` — every side of `P₂(f_S)` has slope `> T₂` with `Σ L_{λ₂} = μ₂*`; each
+irreducible `r₂` of a separable level-2 residual gives ONE irreducible factor with
+`(e, f) = (e₁e₂ℓ₂, f₁f₂·deg r₂)` (C.49/C.62's dictionary, partial-side entry) — **and
+every input to the decision is computed from `f`'s OWN development: `f_S` is never
+exhibited** (C.77(ii)'s translation + scale-invariant consumption of residuals);
+(iv) every other class `C_{κ,r}` is priced by the same clauses at ITS datum: `μ₂*(κ,r) = 1`
+⟹ one irreducible factor with `(e,f) = (e₁ℓ, f₁d_r)` (§7's C.63 — "THEOREM HE6.A's
+dictionary recovered through the level-2 read", a consistency the corpus flags as two
+proofs of one statement); repeated with `ℓd_r = 1` ⟹ the α-refine family (C.56/C.57);
+repeated with `ℓd_r ≥ 2` ⟹ ITSELF a tower class, read by this same theorem (partial
+side) or C.48/C.49 (full side) — the recursion is genuine. `σ(f)` = the disjoint union
+over classes plus the peels.
+
+**SIGNATURE** (shape). `theorem partial_block_decision …` + `theorem partial_class_
+recursion …` — **split-mandated C.78 → 2**.
+
+**DEPENDS.** C.30 · C.49 · C.56 · C.57 · C.62 · C.63 · C.76 · C.77.
+
+**PROOF (route).** (iii): instantiate the level-2 machinery at `f_S` through C.77(ii)'s
+computability; the m-B row accounting (three rows replaced by 4.1(a)(b)+(ii), two
+discharged by 4.1(d)'s peels — "No row is undischarged") is transcribed as the proof's
+hypothesis-discharge checklist. (iv): C.30's trichotomy per class.
+
+**SIZE.** 2 × ~35 lines.
+
+**SOURCE.** `EFF.GENTOW4.20`/.21 (verbatim, incl. the m-B rider and the recursion fence);
+`EFF.GENTOW4.52` (m-B, CHAIN-COUNT TERMINAL — the two-partition reconciliation of the
+fullness rows).
+
+**TEETH.** P-2 HEADLINE 117/117 (every member decided, σ = PARI both routes) → retained;
+FR-M (first machine contact of the recursion) + FR-3B (first three-block instance) →
+retained; §13 fires one recursion row.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.79 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-4.A(v): the `μ₂* = 2` decision table (translation/scale-invariant).*
+If `μ₂* = 2`, the block decision is complete on `f`'s own data, by the five-row table:
+TWO sides (distinct slopes) → `{(e₁e₂, f₁f₂)} ×2`; ONE side at `ℓ₂ = 2` (half-integer
+slope) → `{(2e₁e₂, f₁f₂)}`; ONE side, integer slope, `γ_g`-scaled residual irreducible
+quadratic → `{(e₁e₂, 2f₁f₂)}`; split (two `K₂`-roots) → `{(e₁e₂, f₁f₂)} ×2`; double root →
+α-refine, repeat (terminating — the refine chain finiteness via the `EFF.HE7.<nn> —
+LEMMA HE7-8/13 [supplied-by: chapter E]` placeholder). Slopes are translation-invariant;
+root/irreducibility tests invariant under the `K₂^×` scaling — which is exactly why the
+decision is computable from `f` alone.
+
+**SIGNATURE** (shape). `theorem partial_mu2star_two_decision …` (the five cases as an
+inductive case tag per GC-4's domain-type licence; σ outputs through the §16-noted GC-4
+dictionary of §11).
+
+**DEPENDS.** C.38 · C.39 · C.56 · C.57 · C.62 · C.77 · C.78 · the HE7-8/13 placeholder.
+
+**PROOF (route).** the three shapes of a `[0,2]` segment; each case is a C.62 instance or
+a refine step; invariances from C.37/C.39.
+
+**SIZE.** 40 lines.
+
+**SOURCE.** `EFF.GENTOW4.22` (verbatim, five-row display); `.40` (the unlocked GENHN.B
+cite: "(v) for inner-μ₂ = 2 partial leaves at pure-power sides — with GENTOW4-BOX-1 named
+at mixed sides"; in this chapter the mixed-side name resolves to C.67's closure).
+
+**TEETH.** the battery IS a μ₂ = 2 battery (117 members exercise exactly this clause) →
+retained; T-2 NOCG (the translation-free alternative fails 49×) → retained.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.80 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-4.2 + the mixed routing: the tie at pure-power sides,
+unconditionally.* If the inner side's residual is a pure power (`R_{κ₂} = c·ψ₂^{μ₂}`,
+`c ∈ K^×`) then `μ₂* = μ₂` and `deg f_S = D₂·μ₂` — the two-count identity: the side
+carries `D′·L_side` worth of degree (C.70's conservation), all of it in the one class
+(the only irreducible factor is `ψ₂`), against `deg f_S = D₂·μ₂*` (C.64); divide. **At a
+MIXED side the read is UNCHANGED** (μ₂* computed from `f`, the decision fires — C.77/C.78)
+**and the tie `μ₂*(r) = m_r` is C.67** (cite-conditional; the corpus's honest box
+`GENTOW4-BOX-1` and its "Ore-II / FGMN Lemma 2.17 content" attribution are exactly what
+C.66/C.67 landed) — this node states the pure-power case with NO cite and routes the
+mixed case by name.
+
+**SIGNATURE** (shape). `theorem tie_pure_power …` (+ a `mixed → C.67` re-export
+corollary).
+
+**DEPENDS.** C.34 · C.64 · C.70 · C.67 (the mixed re-export only).
+
+**PROOF.** the corpus's division argument, closure-free: degree conservation on the side
+(C.70) + single-class residual (C.34's uniqueness at one irreducible factor) + C.64.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.GENTOW4.24` (verbatim, incl. the two-count audit); `.25` (the mixed
+fence, verbatim — its "this corpus has not proved" clause is now dated: GENTOW6/C.67
+closed it cite-conditionally; §16's table records the box's closure chain
+`HYP.144 → EFF.GENTOW6.07 → C.67`).
+
+**TEETH.** P-3 (`μ₂* = 2 = μ₂` on every pure-side member) + FAM-P5 read-mode (mixed:
+every decision PARI-exact, tie checked EMPIRICALLY — the empirical row stays as the
+regression guarding C.67's cite) → retained.
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.81 [theorem] [fresh]
+
+**STATEMENT.** *COROLLARY GENTOW-4.C: the `c_g`-read — absolute block pins from `f`'s
+digits.* In C.77(ii)'s setting: `c_g` = the height of `P₂(f)` at abscissa `μ₂*` (the right
+endpoint of the `>T₂` initial segment), and the block pins are `p_j^S = p_j − c_g`
+wherever `(j, p_j)` lies on the `>T₂` argmin structure — with the equality's citation
+COMPLETED per m-i: at argmin vertices by attainment (C.76(b)'s mechanism at the level-2
+pin set), at side-INTERIOR abscissas through the residual scalar (C.68). Consequently
+GENTOW-1(c)'s node floors are VISIBLE THROUGH THE PROJECTION:
+`p_j^S ≥ (μ₂* − j)·E₂ + 1` for `j < μ₂*` (C.54(c) applies to `f_S`, whose entry is
+full-side by construction).
+
+**SIGNATURE** (shape). `theorem cg_read …`.
+
+**DEPENDS.** C.37 · C.54 · C.64 · C.68 · C.76 · C.77.
+
+**PROOF.** right endpoint from C.77(ii)'s span; translation from C.37; interior equality
+from C.68; the floor transport through `f_S ∈ 𝒯` at the datum
+`(Q; e₁, f₁, e₂f₂·μ₂*; h)`.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.GENTOW4.26` (verbatim, incl. the PE2-P values `c_g = 5, p^S = (23,11)`,
+floors `(21,11)`, `j = 1` exact); `.33` (m-i — the completed citation, CHAIN-CG-CITE
+TERMINAL); `.27` (the floor-transport route).
+
+**TEETH.** P-4 (floors through the projection, every row) → retained; PE2-P's numbers →
+§13 regression.
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.82 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-6.2 + COR 6.2C: block budgets through the projection (the BUDGET
+half ONLY).* The GENTOW-1 budget fibration (C.52/C.53) transports to the block factor at a
+partial side: the block's digit box is the `𝒯`-box of `f_S`'s own full-side datum, read
+through C.81's `c_g`-shift — per window `N`, the block's free-digit count is the clipped
+sum at the shifted floors. **The LEDGER/COUNT half is NOT here** — it was `GENTOW6-BOX-2`
+in the corpus and its Lean home is §11's count layer at exactly the strength proved there;
+a fleet agent must not read "block budgets" as a count law (the corpus's own fence,
+verbatim: "the split is explicit … a consumer must not read 'block budgets PROVED' as a
+count law").
+
+**SIGNATURE** (shape). `theorem block_budget …` (+ the 6.2C supplier-chain corollary,
+whose PE1-GAP'd dependency is repaired prove-first by §9's C.89 cap lemma — DAG order
+C.89 → this node's corollary half).
+
+**DEPENDS.** C.52 · C.53 · C.77 · C.81 · C.89 (§9's 𝒯-free cap — the 6.2C(d) leg only).
+
+**PROOF (route).** compose the fibration with the projection; the shift is a bijection on
+digit boxes (triangular-unimodular composed with a translation).
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.GENTOW6.11` (verbatim, incl. the PROVED-budget/BOX-2-ledger split and
+the 6.2C supplier-chain repair route).
+
+**TEETH.** PE2's walk ("nothing narrows") → retained; §13 fires one block-budget row.
+
+**ENVIRONMENT.** ENV-C2.
+
+---
 
 ---
 
