@@ -55,13 +55,25 @@ variable [Finite (ResidueField O)]
 
 **⚠ ENV-C IS MANDATORY FOR EVERY NODE THAT NAMES `Res`, `Coeff`, `proj`, `residueCard`,
 `DecidedAt`, `PossibleAt`, `decidedSet`, `typeOf`-density objects, OR THAT FACTORS A RESIDUAL
-POLYNOMIAL.** Chapter G's stage-0e gate recorded defect **D4** — "ENV-A under-binds
-`[Finite (ResidueField O)]`, systematic across 22 stubs". This chapter fixes that class of defect by
-construction: the finiteness instance is bound in exactly one environment block, and §2's index
-records the environment of every node so the stub-landing agent can check the binding mechanically.
-`Uniformity.Density.Res` (`LocalData.lean:75`) is declared inside a
-`variable (O) … [Finite (ResidueField O)]` section, so a stub that mentions `Res O N` without that
-instance does not elaborate.
+POLYNOMIAL.** *[repaired: A-F.3/B-D15 — this block's original enforcement premise was FALSE at our
+pin and its "fixed by construction" claim is withdrawn; the honest version follows.]* Chapter G's
+stage-0e gate recorded defect **D4** — "ENV-A under-binds `[Finite (ResidueField O)]`, systematic
+across 22 stubs". The tag above remains the chapter's DESIGN rule, and §2's index records the
+environment of every node — but it is a **review discipline, not a mechanical check**: the original
+text claimed that `Uniformity.Density.Res` is declared inside a
+`variable (O) … [Finite (ResidueField O)]` section "so a stub that mentions `Res O N` without that
+instance does not elaborate". **Checked at the 0e gate: false.** Lean's use-driven variable
+inclusion trims the instance from every declaration whose own statement/body does not need it —
+none of `Res`, `Coeff`, `proj`, `residueCard`, `DecidedAt` carries `[Finite (ResidueField O)]` in
+its own signature (only genuinely counting theorems such as `card_res` keep it), so such a stub
+elaborates fine, and empirically **zero of the 139 landed chapter-B stubs** end up carrying the
+instance (`[IsAdicComplete …]` by contrast survives in 25, because elaboration genuinely needs it
+there). Consequently this chapter does NOT fix chapter G's D4 "by construction": the D4 phenomenon
+recurs in `leanfinal`, where each node file's own `variable` block will trim the instance exactly
+the same way — **it must be handled there, by per-node binding review at fleet time** (each node's
+ENVIRONMENT field is the spec the reviewer checks against), not claimed away here. The ENV-C tag
+is design documentation of which nodes *mathematically* count; it cannot be audited by
+elaboration failure.
 
 **ENV-D — the residue arena** (pure residue-field algebra, no `O` at all):
 
@@ -5238,8 +5250,10 @@ PARI oracle cannot score a `disc = 0` lift; the Lean theorem covers it); tooth `
 (`EFF.W12.27`) → **Lean theorem** (this node); `W12-BLOCK` → **Lean theorem** at B.78 (consumed
 at step 4).
 
-**ENVIRONMENT.** ENV-C **plus completeness** (= ENV-B ∩ ENV-C as in §7's leaf theorems: step 3 is
-Hensel). Binding note for the stub agent: `DecidedAt`, `proj`, `Coeff` need
+**ENVIRONMENT.** ENV-C. *[repaired: A-F.3/B-D11 — the former "plus completeness" rider was a
+tautology: ENV-C is DEFINED as ENV-B plus finiteness (§0.1), so it already includes
+`[IsAdicComplete (maximalIdeal O) O]`; the rider named the Hensel consumer (step 3), which the
+binding note already does.]* Binding note for the stub agent: `DecidedAt`, `proj`, `Coeff` need
 `[Finite (ResidueField O)]` (§0.1's ⚠); `exists_monic_factorization_finset` needs
 `[IsAdicComplete (maximalIdeal O) O]`; both are bound.
 
@@ -5322,7 +5336,8 @@ observed; the never-decided residue (28/51) decomposes as the battery says into 
 (`¬ hnz`, 25/49) + deeper (`¬ hterm`-or-deeper, 3/2), which is this node's hypothesis frontier
 measured.
 
-**ENVIRONMENT.** ENV-C plus completeness (inherits B.80's binding).
+**ENVIRONMENT.** ENV-C (inherits B.80's binding; the former "plus completeness" rider was
+tautological — completeness is already inside ENV-C, §0.1). *[repaired: A-F.3/B-D11]*
 
 ---
 
@@ -5402,8 +5417,9 @@ per B.58's precedent); `HE-BND` (RE-SCOPED) → **executable regression** retain
 `σ(λ)` dictionary of `EFF.W12.29` — B.71's instance table — is checked at the gates through this
 node (two rows: the `e = 2` and `e = 3` sides with degree-`≥ 2` keys).
 
-**ENVIRONMENT.** ENV-C plus completeness (through B.79 ← B.63; the node itself adds only
-`DecidedAt`/`proj`, which are ENV-C names per §0.1's ⚠).
+**ENVIRONMENT.** ENV-C (through B.79 ← B.63; the node itself adds only `DecidedAt`/`proj`, which
+are ENV-C names per §0.1's ⚠; the former "plus completeness" rider was tautological —
+completeness is already inside ENV-C, §0.1). *[repaired: A-F.3/B-D11]*
 
 ---
 
@@ -5722,6 +5738,43 @@ authority 2026-08-05, honest-repair class):
   it resolves through the unchanged (4a) display; (v) B.79a/B.79b and B.80–B.82 are §9 nodes
   whose signed SIGNATURE blocks stay byte-unchanged — their elisions resolve through
   (4a)/(4a′), exactly as their committed parentheticals already say. **Patched as gate.**
+
+**(III) Process / environment repairs** (documentation-level; no signature touched):
+
+* **B-D11 — the "ENV-C plus completeness" tautology at B.80/B.81/B.82.** ENV-C is *defined*
+  as ENV-B plus finiteness (§0.1), so it already includes
+  `[IsAdicComplete (maximalIdeal O) O]` and the rider asserted nothing. The three ENVIRONMENT
+  lines now read plain ENV-C with the rider retired (the Hensel-consumer notes survive —
+  they are the informative content the rider was reaching for). The gate's wider finding —
+  twelve nodes (B.37, B.39, B.43, B.47, B.52–B.55, B.57, B.64, B.66, B.73) are tagged ENV-C
+  while needing no Hensel lift — is **recorded, not re-tagged**: harmless at our pin (Lean's
+  use-driven inclusion trims what a statement does not mention; see B-D15), and a re-tagging
+  sweep of twelve committed ENVIRONMENT fields would churn text the fleet reads without
+  changing any elaborated type. The stub-order consequence is nil. **Patched-differently-
+  because:** the gate classified it documentation-level; the tautology (asserted and false-
+  by-vacuity) is repaired, the imprecise-but-harmless over-tags are disclosed here instead
+  of edited.
+* **B-D12 — `hperim`'s dependent binder (rule-6 recurrence inside a hypothesis).** The §12
+  item 4 displays quantify `∀ hne : …Nonempty, ∀ H₀ : ℕ` after a `→`-chain, and the `hne`
+  binder is *used* in `resPoly π φ gS u ℓ hne H₀` — genuinely dependent, elaborates as
+  displayed. Noted in place at item 4 (the ⚠ dependent-binder note): consumers instantiating
+  `hperim` must thread the same witness; the `Nonempty`-argument fragility §12 rule 6 flags
+  at B.20/B.28/B.29 reappears inside a hypothesis. **Patched as gate (note imported).**
+* **B-D15 — §0.1's ⚠ ENV-C enforcement premise was FALSE at our pin.** The claim "`Res` …
+  is declared inside a `variable (O) … [Finite (ResidueField O)]` section, so a stub that
+  mentions `Res O N` without that instance does not elaborate" fails: use-driven inclusion
+  trims the instance from `Res`/`Coeff`/`proj`/`residueCard`/`DecidedAt` themselves (their
+  bodies do not use it; only counting theorems like `card_res` keep it), and **0 of the 139
+  landed stubs** carry `[Finite (ResidueField O)]` — including `card_resField` and all three
+  `DecidedAt` certificates — while `[IsAdicComplete …]` survives in 25 (genuinely needed
+  there). Consequences, now stated honestly in the rewritten §0.1 ⚠ and rule 7: (i) the
+  chapter's claim to fix chapter G's D4 *"by construction"* is **withdrawn** — the D4
+  phenomenon recurs in `leanfinal`, where each node file's `variable` block trims the
+  instance identically, and must be handled THERE by per-node binding review at fleet time
+  (each node's ENVIRONMENT field is the reviewer's spec), not claimed fixed here; (ii) §12
+  rule 7's "mechanical check" has a void criterion on its finiteness half and survives as a
+  review item only. Harmless for the retirement-form 0e diff (ChapG's 0e-G unit verified
+  that). **Patched as gate.**
 
 ---
 
@@ -6326,6 +6379,12 @@ B.73's FAITHFULNESS).
    mechanically checks every stub naming `Res`/`Coeff`/`proj`/`residueCard`/`DecidedAt`/
    `typeOf`-on-residual-reads against `[Finite (ResidueField O)]`, and every Hensel-consuming
    stub against `[IsAdicComplete (maximalIdeal O) O]`.
+   *[repaired: A-F.3/B-D15 — the finiteness half of this "mechanical check" has a VOID
+   criterion at our pin: Lean's use-driven inclusion trims `[Finite (ResidueField O)]` from
+   every declaration that does not genuinely need it (0 of the 139 landed stubs carry it), so
+   binding it can never be enforced by elaboration failure. The check survives as a REVIEW
+   item against each node's ENVIRONMENT field (§0.1's rewritten ⚠); the completeness half is
+   real (25 stubs genuinely carry `[IsAdicComplete …]`).]*
 8. **Gate order (GC-6.6(c), mandatory):** (a) elaborate the rule-6 fragile signatures; (b) land
    the 25 `def`-class bodies; (c) **execute B.86's `decide`/`#eval` arithmetic block at `q = 2`
    AND `q = 3`** against the commented expected values — it is executable at stub stage (pure
