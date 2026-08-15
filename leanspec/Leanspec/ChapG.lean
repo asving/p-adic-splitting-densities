@@ -114,7 +114,9 @@ G.45, G.50, G.52, G.53, G.55–G.57, G.62, G.64, G.73** (wave-1/2, 33 node-files
 respectively), **plus G.30a and G.31** (2026-08-15, the G.31 cure unit, 2 node-files, 4
 declarations), **plus G.35, G.36, G.37, G.58, G.59, G.65–G.72, G.74** (wave-5, 2026-08-15,
 14 node-files, 17 declarations — G.37 and G.72 each split into two, G.66 is a `def` retired at
-both strengths per the §A-5 precedent) — **63 node-files, 89 declarations retired** in total; see
+both strengths per the §A-5 precedent), **plus G.60, G.75, G.76** (wave-5-remainder / "wave-7",
+2026-08-15, 3 node-files, 8 declarations — G.60 carries three `def`s and three `theorem`s) —
+**66 node-files, 97 declarations retired** in total; see
 the individual doc comments below for the retiring `example`. G.23 and G.31 were investigated in
 wave-3 and found
 BLOCKED. **G.31's block is CLEARED (blueprint AMENDMENT §A-7):** it needed `Finset.range N` in
@@ -893,29 +895,36 @@ example [IsAdicComplete (maximalIdeal O) O] {a : Fin 3 → O}
 
 namespace Menu
 
-/-- **G.60a** -/
-def NoRootCubic {K : Type*} [Field K] (c : Fin 3 → K) : Prop :=
-  ∀ y : K, y ^ 3 + c 2 * y ^ 2 + c 1 * y + c 0 ≠ 0
+/-- **G.60a** The monic cubic `X³ + c 2 X² + c 1 X + c 0` has no root in `K`. LANDED (wave-7,
+2026-08-15) — retirement form (0e-diff against `Uniformity.ChapG.G60`). -/
+example (K : Type*) [Field K] (c : Fin 3 → K) : Prop := NoRootCubic (K := K) c
 
-/-- **G.60b** -/
-def LinAni {K : Type*} [Field K] (c : Fin 3 → K) : Prop :=
-  ∃ (ρ : K) (p : K × K), AniForm p ∧ c = ![-(ρ * p.1), p.1 + ρ * p.2, -(p.2 + ρ)]
+/-- **G.60b** LANDED (wave-7, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G60`). -/
+example (K : Type*) [Field K] (c : Fin 3 → K) : Prop := LinAni (K := K) c
 
-/-- **G.60c** -/
-def Split3 {K : Type*} [Field K] (c : Fin 3 → K) : Prop :=
-  ∃ r s t : K, r ≠ s ∧ r ≠ t ∧ s ≠ t ∧ c = ![-(r * s * t), r*s + r*t + s*t, -(r + s + t)]
+/-- **G.60c** LANDED (wave-7, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G60`). -/
+example (K : Type*) [Field K] (c : Fin 3 → K) : Prop := Split3 (K := K) c
 
-/-- **G.60d** -/
-axiom three_mul_card_noRootCubic (K : Type*) [Field K] [Finite K] :
-    3 * Nat.card {c : Fin 3 → K // NoRootCubic c} + Nat.card K = Nat.card K ^ 3
+/-- **G.60d** LANDED (wave-7, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G60`): re-derived from `leancheck`'s `CubicCount.three_mul_card_noRootCubic`
+against `leanfinal`'s own `AniForm` (G.38), not imported. -/
+example (K : Type*) [Field K] [Finite K] :
+    3 * Nat.card {c : Fin 3 → K // NoRootCubic c} + Nat.card K = Nat.card K ^ 3 :=
+  three_mul_card_noRootCubic (K := K)
 
-/-- **G.60e** -/
-axiom two_mul_card_linAni (K : Type*) [Field K] [Finite K] :
-    2 * Nat.card {c : Fin 3 → K // LinAni c} + Nat.card K ^ 2 = Nat.card K ^ 3
+/-- **G.60e** LANDED (wave-7, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G60`). -/
+example (K : Type*) [Field K] [Finite K] :
+    2 * Nat.card {c : Fin 3 → K // LinAni c} + Nat.card K ^ 2 = Nat.card K ^ 3 :=
+  two_mul_card_linAni (K := K)
 
-/-- **G.60f** -/
-axiom six_mul_card_split3 (K : Type*) [Field K] [Finite K] :
-    6 * Nat.card {c : Fin 3 → K // Split3 c} + 3 * Nat.card K ^ 2 = Nat.card K ^ 3 + 2 * Nat.card K
+/-- **G.60f** LANDED (wave-7, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G60`). -/
+example (K : Type*) [Field K] [Finite K] :
+    6 * Nat.card {c : Fin 3 → K // Split3 c} + 3 * Nat.card K ^ 2 = Nat.card K ^ 3 + 2 * Nat.card K :=
+  six_mul_card_split3 (K := K)
 
 end Menu
 
@@ -1076,16 +1085,22 @@ example {N : ℕ} {c : Coeff O 3 N} (hc : c ∈ Menu.species3 N) :
     ∃ a : Fin 3 → O, proj O 3 N a = c ∧ typeOf (monicPoly a) = c3split :=
   exists_split3_lift (hc := hc)
 
-/-- **G.75** -/
-axiom exists_ram3_lift [IsAdicComplete (maximalIdeal O) O] (hπ : Irreducible π)
+/-- **G.75** LANDED (wave-7, 2026-08-15) — retirement form (0e-diff against
+`Uniformity.ChapG.G75`). Genuinely new construction (no `leancheck` target): both cases rescale
+by `π^m` and choose the rescaled constant term's exponent to be `2 * N + 1`, decoupling the two
+cases' parity bookkeeping from the blueprint's own sketch. -/
+example [IsAdicComplete (maximalIdeal O) O] (hπ : Irreducible π)
     {N : ℕ} {c : Coeff O 3 N} (hc : c ∈ Menu.species3 N) :
     ∃ a : Fin 3 → O, proj O 3 N a = c ∧
-      (typeOf (monicPoly a) = c3ram ∨ typeOf (monicPoly a) = c3linRam)
+      (typeOf (monicPoly a) = c3ram ∨ typeOf (monicPoly a) = c3linRam) :=
+  exists_ram3_lift (hπ := hπ) (hc := hc)
 
 /-- **G.76** The `n = 3` σ-undecided count is at least `q^N`: the `q^N` classes with both
-separation coordinates hidden admit both a split lift and a ramified lift. -/
-axiom card_le_undecidedCount_three [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
-    residueCard O ^ N ≤ undecidedCount O 3 N
+separation coordinates hidden admit both a split lift and a ramified lift. LANDED (wave-7,
+2026-08-15) — retirement form (0e-diff against `Uniformity.ChapG.G76`). -/
+example [IsAdicComplete (maximalIdeal O) O] (N : ℕ) :
+    residueCard O ^ N ≤ undecidedCount O 3 N :=
+  card_le_undecidedCount_three (N := N)
 
 /-- **G.77a** -/
 axiom gate_three_padic_two :
