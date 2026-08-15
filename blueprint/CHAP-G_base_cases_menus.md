@@ -4384,3 +4384,199 @@ production namespace" design — and its repair (wrap the contract file in its o
 retire each stub as its node lands) is a repo-level decision outside a defect-cure unit's scope.
 **Nothing about the contract is lost meanwhile**: the type diff above is exactly the check the
 stub file exists to support, and it can be run per declaration without elaborating the whole file.
+
+---
+
+## AMENDMENT 2026-08-15 (third dated append; Opus arm) — G.31's DEPENDENCY GAP CURED
+
+**Status of this block.** A third dated append in the same convention as the two above:
+**nothing in §§0–14 is edited in place**; the banner prescribed at §A-7 for G.31's node entry
+points here and this block governs. It discharges the **open obstruction** the wave-3 fleet
+booked against G.31 (recorded in `leanspec/Leanspec/ChapG.lean`'s header: "G.31 needs
+`Finset.range N` in `decidedSet_ram_eq` justified by showing `depthSet π N t = ∅` for `t ≥ N`,
+which is not among its DEPENDS and was not established"). The cure adds **one micro-node**, so
+the declaration census rises **109 → 110**.
+
+---
+
+### A-7 — G.31's missing supplier: **GAP CURED by a new micro-node G.30a; G.31's own STATEMENT is CORRECT as signed**
+
+**Banner for the node entry:** `G.31 [DEPENDS AMENDED 2026-08-15 — see AMENDMENT §A-7; statement
+unchanged, previously BLOCKED]`.
+
+**The gap, exactly.** G.31's conclusion is
+
+```lean
+decidedSet O 2 ramType N = ⋃ j ∈ Finset.range N, depthSet π N (2 * j + 1)
+```
+
+The blueprint's PROOF discharges the `⊆` inclusion (steps 1–4: a ram-decided class has a maximal
+depth `t < N`, odd by G.30, giving `j < N`) but the `⊇` inclusion needs more than step 1 supplies.
+`Finset.range N` runs `j = 0 … N−1`, i.e. odd depths `2j+1` up to `2N−1`, whereas G.30 — the
+supplier that makes a stratum ram-decided — is only available at `t < N`. The union therefore
+**overshoots**: for `N ≤ 2j+1 ≤ 2N−1` the blueprint offers nothing about `depthSet π N (2j+1)`,
+and the inclusion fails unless those strata are empty. That is the fleet's obstruction, and it is
+real.
+
+**Adjudication.** The fact the fleet asked for — `depthSet π N t = ∅` for **all** `t ≥ N` — is
+**FALSE** (counterexample below, residue characteristic 2, even `t`). The restriction to **odd**
+`t` is **TRUE**, provable in ~15 lines from the landed `depthSet`/`Tang` definitions, and is
+exactly what an odd-indexed union consumes. So:
+
+* **G.31's STATEMENT is correct as signed** — no defect, no repair, and it is now landed
+  (`leanfinal/Uniformity/ChapG/G31.lean`);
+* the missing supplier is signed below as **MICRO-NODE G.30a** and landed as
+  `leanfinal/Uniformity/ChapG/G30a.lean`;
+* any future consumer tempted by the general form must not assume it — see the counterexample.
+
+**Why the node is called `G.30a` and not `G.31a`.** `G.31a`/`G.31b`/`G.31c` are already in use as
+the DECLARATION letters of node G.31's three declarations (`inertStratum`, `splitStratum`,
+`decidedSet_ram_eq`; see `leanspec/Leanspec/ChapG.lean`), in the same convention that gives
+`G.23a`, `G.52g`, `G.62b` elsewhere in this document. The new node is a node in its own right,
+topologically between G.30 and G.31 (its only intra-chapter DEPENDS is G.19), so it takes a
+node-level letter at G.30, whose single declaration carries no letter. Node names are always
+introduced by a `### NODE` heading; declaration letters never are.
+
+#### The mechanism: why ODD works and EVEN fails
+
+Fix a level-`N` class `c`, a lift `a`, a centre `γ` with `Tang π a t γ`, i.e.
+`π^t ∣ qval a γ` and `π^((t+1)/2) ∣ qder a γ` (`Drainage.lean:511`). Assume `t ≥ N`. Ask whether
+`c` can be pushed to depth `t+1` **without leaving its class**.
+
+**Move 1 — the value is free above the window, always.** Replace `a` by
+`b := ![a 0 − qval a γ, a 1]` (G.33's move). Then `qval b γ = 0` and `qder b γ = qder a γ`, and `b`
+is a lift of the *same* class because `a 0 − b 0 = qval a γ` is `π^t`-divisible, hence
+`π^N`-divisible as `t ≥ N`. The value requirement at depth `t+1` is therefore free.
+
+**Move 2 — the derivative requirement moves only at even `t`.** Depth `t+1` asks
+`π^((t+2)/2) ∣ qder`.
+
+* `t = 2j+1` **odd**: `(t+2)/2 = (2j+3)/2 = j+1 = (2j+2)/2 = (t+1)/2`. The requirement does not
+  move, so Move 1 alone finishes: **`depthSet π N (2j+1) = ∅` whenever `N ≤ 2j+1`.**
+* `t = 2k` **even**: `(t+1)/2 = k` but `(t+2)/2 = k+1`. The requirement genuinely increases by one,
+  and the class may be unable to meet it.
+
+**The even obstruction, in coordinates.** For a fixed lift, every centre of depth `≥ 2k` is
+`γ + π^k z` (if `π^(2k)` divides both `qval a γ` and `qval a γ'`, then writing `h = γ' − γ` and
+`qval a γ' = qval a γ + qder a γ·h + h²`, a valuation `v(h) < k` would force
+`v(qval a γ') = 2v(h) < 2k`). Writing `qval a γ = π^(2k) b₀`, `qder a γ = π^k b₁`,
+
+```
+qval a (γ + π^k z) = π^(2k) · (z² + b₁ z + b₀),      qder a (γ + π^k z) = π^k · (b₁ + 2z)
+```
+
+so reaching depth `2k+1` means the residual quadratic acquires a **double** root mod `π`:
+`∃ z, π ∣ z² + b₁z + b₀ ∧ π ∣ b₁ + 2z`. The freedom available inside the class is exactly
+`δ₀, δ₁ ∈ π^N·O` added to the two coefficients, which moves `b₀` by `(δ₁γ + δ₀)/π^(2k)` — **all of
+`O` mod `π`, since `N ≤ 2k`** — but moves `b₁` only by `π^(N−k)·O`. In the entire overshoot regime
+`N ≤ 2k < 2N` we have `k < N`, so **`b₁ mod π` is pinned by the class**. If the residue
+characteristic is odd this costs nothing (`z := −b₁/2` kills `b₁ + 2z`, and the free `b₀` is then
+set to `b₁²/4`); in residue characteristic **2**, `b₁ + 2z ≡ b₁`, so the double root exists only
+when `π ∣ b₁` — a condition the class can neither supply nor repair.
+
+**Counterexample to the general form (`t ≥ N`, even `t`).** `O = ℤ₂`, `π = 2`, `N = 2`, `t = 2`,
+`c = proj O 2 2 ![0, 2]`.
+
+* `c ∈ tangSet 2 2 2`: take the lift `![0,2]` and `γ = 0` — `qval = 0` (so `4 ∣ qval`) and
+  `qder = 2` (so `2 = π^((2+1)/2) ∣ qder`).
+* `c ∉ tangSet 2 2 3`: a lift is `b = ![4l, 2+4m]`; depth 3 asks `4 ∣ qder b γ = 2γ + 2 + 4m`,
+  forcing `γ` **odd**, and then `qval b γ = γ² + (2+4m)γ + 4l` is **odd**, so `8 ∤ qval b γ`.
+
+Hence `depthSet 2 2 2 ≠ ∅` although `t = N`. A second instance with `t > N`: `N = 3`, `t = 4`,
+`c = proj O 2 3 ![0, 4]`. Both were verified twice — by the hand argument above and by exhaustive
+search over lifts and centres mod `2^8` (`verification/`-style scratch check, 2026-08-15).
+
+**Consistency with the chapter's counts.** Nothing else in chapter G asserts the general form:
+G.17 `card_tangSet` is stated only at `N = t+r` (`t ≤ N`) and G.20 `card_depthSet` only at
+`N = t+1+r` (`t < N`), so no landed count reaches above the window, and the nonempty even stratum
+at `N = t = 2`, `q = 2` disturbs neither `card_tangSet π N N = q^N` nor the drainage law of §6.
+
+---
+
+### NODE G.30a [lemma] [fresh, added by AMENDMENT §A-7]
+
+**STATEMENT.** *Odd strata above the window are empty.* At level `N`, no class has exact depth
+`2j+1` once `N ≤ 2j+1`: the value at the centre can be killed without leaving the class, and at
+odd depth the derivative requirement does not increase.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Menu
+
+theorem depthSet_odd_eq_empty (hπ : Irreducible π) {N j : ℕ} (hN : N ≤ 2 * j + 1) :
+    depthSet π N (2 * j + 1) = (∅ : Set (Coeff O 2 N))
+```
+
+**DEPENDS.** G.19 · landed `proj_eq_iff_dvd` (`DensityAPI.lean:124`), `qval`, `qder`, `Tang`.
+
+**PROOF.**
+1. `Set.eq_empty_iff_forall_notMem`; take `c` in the stratum and destructure `hc.1` into a lift
+   `a`, a centre `γ` and `hTang : Tang π a (2j+1) γ`.
+2. exhibit `![a 0 − qval a γ, a 1]` as a witness for `c ∈ tangSet π N (2j+1+1)`, contradicting
+   `hc.2`.
+3. same class: `proj_eq_iff_dvd hπ` coordinatewise; the `1`-coordinate is equal, the
+   `0`-coordinate differs by `qval a γ`, and `π^N ∣ qval a γ` by `pow_dvd_pow π hN` composed with
+   `hTang.1`.
+4. value: `qval ![a 0 − qval a γ, a 1] γ = 0` by `simp only [qval, …]; ring`, then `dvd_zero`.
+5. derivative: `qder` is unchanged, and `(2j+1+1+1)/2 = (2j+1+1)/2` by `omega`, so `hTang.2` is
+   already the goal. **This step is the whole content: it is what fails at even depth.**
+
+**SIZE.** 15 lines. One public declaration.
+
+**SOURCE.** None — derived at this amendment from the landed `depthSet`/`Tang` definitions. No
+`EFF` unit states it; W-11's census units stop at the window (`EFF.W11.22`), which is why the gap
+survived the blueprint freeze.
+
+**TEETH.** None of its own; it is a supplier for G.31's `W11-EXHAUST` / P-4 teeth.
+
+**ENVIRONMENT.** ENV-A' (`Irreducible π`; **no** completeness — this node does not need ENV-B).
+
+---
+
+### G.31's corrected DEPENDS
+
+The landed proof (`leanfinal/Uniformity/ChapG/G31.lean`) uses:
+
+**DEPENDS.** G.12, G.19, G.25, G.30, **G.30a**, G.33 · landed `decidedSet`
+(`GenuineDensity.lean:74`), `proj_surjective`, `exists_max_step` (`Drainage.lean:556`),
+`Tang_zero`, `splitType_ne_ramType`, `inertType_ne_ramType`.
+
+Three changes against the blueprint's `G.19, G.29, G.30 · landed decidedSet,
+decidedSet_disjoint, typeOf_two_cases, undecidedSet`:
+
+1. **G.30a added** — the cure, consumed in the `⊇` branch `N ≤ 2j+1`.
+2. **G.29 drops out; G.33 and G.12 come in.** The blueprint's step 2 wants "a class in
+   `tangSet π N N` has two lifts of different types (G.33, G.34)". Only **one** is needed: if a
+   ram-decided class had a depth-`N` centre, G.33's `exists_split_lift` produces a `splitType`
+   lift of that same class, and `splitType_ne_ramType` closes it. G.29 states the converse
+   implication (depth `< N` ⇒ decided) and is not used. G.12 `tang_of_proj_eq` is needed to
+   transfer the maximality of the depth across lifts of the class.
+3. **`decidedSet_disjoint` and `typeOf_two_cases` drop out.** G.30's even branch is refuted
+   directly: it hands a second decided type for the same class, so applying both `DecidedAt`s to
+   one lift gives `inertType = ramType` (resp. `splitType = ramType`).
+
+The blueprint's PROOF steps 1–4 are otherwise landed as written; step 4's index bound `j < N` from
+`2j+1 < N` is the `⊆` half only, and the `⊇` half is the new step "`2j+2 ≤ N`: G.25; otherwise
+G.30a".
+
+---
+
+### Amendment bookkeeping (third append)
+
+| item | obstruction | verdict | nodes touched | files changed |
+|---|---|---|---|---|
+| A-7 | wave-3's G.31 BLOCK (`depthSet π N t = ∅ for t ≥ N` missing) | **gap cured**; the general form is **refuted** at even `t` in residue char 2, the ODD form is proved and suffices | **G.30a NEW**; G.31 DEPENDS corrected (statement unchanged) | `leanfinal/…/ChapG/G30a.lean` (new), `leanfinal/…/ChapG/G31.lean` (new), `leanfinal/…/ChapG.lean`, `leanspec/Leanspec/ChapG.lean` |
+
+Declaration census: **110** (109 + G.30a's one theorem). Contract count in
+`leanspec/Leanspec/ChapG.lean` rises to 110 accordingly. Stage-0e defects still open: **D1**
+(G.18's placeholder, blueprint entry still owes the fill), **D4** (ENV-A under-binds
+`[Finite (ResidueField O)]`), **D5** (cosmetic). Items 5–12 of §14 remain owed to the codex
+cross-read. **G.23 remains the chapter's only standing BLOCK** (statement refuted at §A-1); with
+this append **G.31 is no longer blocked**.
+
+**Verification performed for this append.** `leanfinal` builds green and `sorry`-free with both
+new modules wired into the `Uniformity.ChapG` roll-up;
+`Uniformity.Density.Menu.depthSet_odd_eq_empty` and `Uniformity.Density.Menu.decidedSet_ram_eq`
+each report `[propext, Classical.choice, Quot.sound]` (Lean core only). `leanspec` builds green
+with G.30a and all three of G.31's declarations retired to the `example := <landed name>`
+form, which machine-checks that the landed types are the signed ones.
