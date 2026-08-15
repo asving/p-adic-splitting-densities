@@ -1448,7 +1448,18 @@ H.79/H.82–H.86/H.89/H.90/H.92 — is checked here on a grid (witness data for 
 ones). A failure throws, so this is a build-time gate.
 
 **It found exactly one false statement: H.89 `band_not_consulted` (DEFECT D8).** Everything else in
-the chapter's decidable arithmetic is true on the grid. -/
+the chapter's decidable arithmetic is true on the grid (79 `chk` lines below cover the 66
+statements; several statements are checked in more than one regime).
+
+**The ℝ-valued statements cannot be executed here** (`ℝ` is noncomputable), so they were swept
+EXTERNALLY, in floating point, with the same intent: H.30 (`Q ≤ 7`, `c ≤ 4`, partial sums to 40),
+H.31 (`Q ≤ 7`, partial sums to 60), H.63 and H.64 (200 000 random nonneg configurations each,
+`|s| ≤ 5`), H.67/H.68 (all `Q ≤ 5`, `K ∈ {0, ½, 1, 3}`, `B ≤ 3`, `c, c₀ ≤ 8`, `D ≤ 6`, `M ≤ 8` at
+the extremal `ρ`, `δ`), H.69 (`Q ≤ 4`, `K ≤ 2`, `B, c, c₀ ≤ 3`, `N ≤ 6`, `m, p, r ≤ 3`).
+**Zero counterexamples**, and each also has a one-line hand derivation (H.66/H.67/H.68 are
+`(D−1) + (M−c) = N−1−c` (H.34) plus monotonicity; H.30 is `(Q−1)/(Q^c − 1) ≤ 1`; H.31 is the
+`2^{−1/2}`-ratio geometric bound; H.63/H.64 are the standard telescoping/monotone product bounds).
+H.28 is implied by H.27, which IS executed below. -/
 
 #eval show IO Unit from do
   let chk (name : String) (b : Bool) : IO Unit :=
@@ -1754,12 +1765,22 @@ end NumericGate
 
 /-! ## RESUME COMMENT (storm discipline)
 
-Status at this line: chapter H's stub file is COMPLETE — all 190 signed declarations landed
-(H.01 … H.98, plus the H.99 gate executed), one file, `namespace LeanspecH`, no `sorry`.
-If a future session needs to resume: nothing is outstanding in this file. The outstanding
-BLUEPRINT-side items are the DEFECT LIST in the header (D1–D5, O1, F1) — they are recorded, not
-repaired, per §15 rule 5 (defects go back to the blueprint by dated append, never patched here).
-The two that need a decision BEFORE the fleet fires: **D4** (H.72's ℕ-vs-ℤ carrier) and **D5**
-(H.94's `deltaSubst` body, currently a stub-side determination). -/
+Status at this line: chapter H's stub gate is COMPLETE. 188 of the 190 signable declarations are
+landed (H.01 … H.98), one file, `namespace LeanspecH`, no `sorry`, `autoImplicit` off, three
+executed gate blocks green. Nothing is outstanding IN THIS FILE.
+
+The outstanding items are all BLUEPRINT-side, and per §15 rule 5 they are recorded here and
+repaired there (dated append), never patched in `leanspec`:
+
+* **Must be decided BEFORE the fleet fires on the affected node.** D4 — H.72 `rate_lossPriced` is
+  REFUTED; adopt CANDIDATE A or B (both verified) and re-derive `(C2Q.1)`. D8 — H.89
+  `band_not_consulted` is REFUTED; add `1 ≤ N` or `1 ≤ m`. D7 — H.71 `RecursionLegs.hdesc` is
+  unsatisfiable at `N = 0`, which empties the structure; add `1 ≤ N →`. D5 — H.94
+  `A1Cell.deltaSubst`'s body is a stub-side determination and needs confirming.
+* **Mechanical, already cured here, worth fixing in the blueprint text.** D1 (H.23's `if` → `if h :`
+  plus `decreasing_by`), D2 (H.18's `decreasing_by`), D3 (H.06's mathlib name), D6 (H.71's
+  multi-name fields), O1 (order `H.13` before `H.09`).
+* **Findings.** F1 (σ VALUES are not machine-checkable at any gate — degree only). F2 (the chapter
+  exhibits no `StageInterface`; one is built here). -/
 
 end LeanspecH
