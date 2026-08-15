@@ -2917,16 +2917,26 @@ monic irreducible of degree `d_ψ`, then the corresponding factor `g` has
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [repaired: A-F.4] `(hψ : ψ.Monic)` added. The STATEMENT above already asserts "ψ monic
+-- irreducible"; the signed signature carried neither, and without monicity the statement is
+-- FALSE — machine refutation displayed at amendment A-F.4 (`resField φ` has nilpotents when
+-- `φ̄` is not squarefree: `O = ℤ_[2]`, `φ = X²`, `ψ = C (root φ̄) * X`, `a = 2` gives
+-- `(ψ ^ 2).natDegree = 0 ≠ 4`). Monicity alone suffices; irreducibility is NOT taken.
 theorem natDegree_of_residual_piece {φ : Polynomial O} {u ℓ : ℕ} {g : Polynomial O}
-    {ψ : Polynomial (resField φ)} {a : ℕ}
+    {ψ : Polynomial (resField φ)} {a : ℕ} (hψ : ψ.Monic)
     (hg : g.natDegree = ℓ * φ.natDegree * (ψ ^ a).natDegree) :
     g.natDegree = ℓ * φ.natDegree * a * ψ.natDegree
 ```
 
-**DEPENDS.** mathlib `Polynomial.natDegree_pow`.
+**DEPENDS.** B.25 (`resField` in the signature — the stmt-dep TSV row was missing, added at
+A-F.4) · mathlib `Polynomial.Monic.natDegree_pow` (`Mathlib/Algebra/Polynomial/Monic.lean:198`
+at our pin; `[Semiring R]` only). *[repaired: A-F.4 — was the unhypothesized
+`Polynomial.natDegree_pow`, which at our pin (`Degree/Domain.lean:54`) requires
+`[NoZeroDivisors (resField φ)]`: unavailable, and false to assume, for a general `φ`.]*
 
 **PROOF.**
-1. `(ψ^a).natDegree = a * ψ.natDegree` (`natDegree_pow`); rewrite and `ring`.
+1. `(ψ^a).natDegree = a * ψ.natDegree` (`hψ.natDegree_pow`); rewrite and `ring`.
+   Pin-verified at A-F.4: `rw [hg, hψ.natDegree_pow]; ring` closes it, core axioms only.
 
 **SIZE.** 4 lines. **This node is deliberately trivial**: it is the place the corpus's degree formula
 is *stated* in the shape every consumer quotes, so that no consumer has to unfold `natDegree_pow`
@@ -2984,7 +2994,9 @@ theorem exists_residual_dissection (hπ : Irreducible π) {φ : Polynomial O} (h
    B.46 (`¬ ψ₀ ∣ H` because the `ψ` are pairwise non-associated and `ψ₀` is prime).
 3. B.41 at `(u,ℓ)` with this `G, H` gives `f = g * h` with `g` pure of residual `ψ₀^{a ψ₀}` and `h`
    pure of residual `H`, degrees as predicted.
-4. `natDegree` of `g` is `ℓ * m * (ψ₀^{a ψ₀}).natDegree = ℓ * m * a ψ₀ * ψ₀.natDegree` by B.47.
+4. `natDegree` of `g` is `ℓ * m * (ψ₀^{a ψ₀}).natDegree = ℓ * m * a ψ₀ * ψ₀.natDegree` by B.47
+   (B.47's `hψ` monicity hypothesis is `ψ₀.Monic`, supplied by step 1's B.45 clause
+   `∀ ψ ∈ s, ψ.Monic ∧ Irreducible ψ`; [repaired: A-F.4]).
 5. Recurse on `h` (its residual polynomial is `H`, of strictly smaller degree since `0 < a ψ₀` and
    `0 < ψ₀.natDegree`).
 
@@ -5809,6 +5821,131 @@ authority 2026-08-05, honest-repair class):
   `leanspec/Leanspec/ChapB.lean` remains the landed single source for the fully-expanded
   signed texts, and the transcription fleet reads THIS file's repaired nodes plus §12 item
   4's canonical displays.
+
+**A-F.4 — B.47's SIGNED SIGNATURE MACHINE-REFUTED AND RE-SIGNED (`hψ : ψ.Monic` added), PLUS
+THE `resField`/`resPoly` STMT-DEP EXTRACTION GAP (2026-08-15).** Authority: standing
+statement-change authority (2026-08-05), honest-repair class; refuted original preserved
+verbatim per the G.23a / §A-H.1-D4 precedent. Three items.
+
+**(I) The refutation and the repair.** B.47's STATEMENT prose asserts "`ψ` monic irreducible";
+its signed SIGNATURE carried **no hypothesis on `ψ` at all**, and the unhypothesized statement
+is FALSE: `resField φ = F[y]/(φ̄)` is only a field when `φ` is a key, and B.47 binds a bare
+`{φ : Polynomial O}` — for non-squarefree `φ̄` the ring has nilpotents and `natDegree` is not
+multiplicative under powers. The refuted original, verbatim:
+
+```lean
+theorem natDegree_of_residual_piece {φ : Polynomial O} {u ℓ : ℕ} {g : Polynomial O}
+    {ψ : Polynomial (resField φ)} {a : ℕ}
+    (hg : g.natDegree = ℓ * φ.natDegree * (ψ ^ a).natDegree) :
+    g.natDegree = ℓ * φ.natDegree * a * ψ.natDegree
+```
+
+The refutation is machine-checked (elaborates in the `leancheck` environment, footprint
+`[propext, Classical.choice, Quot.sound]`; re-verified 2026-08-15 before this amendment).
+Witness: `O = ℤ_[2]`, `φ = X²` (so `resField φ = 𝔽₂[y]/(y²)`), `ψ = C (AdjoinRoot.root φ̄) * X`
+(degree 1, but `ψ ^ 2 = 0`), `a = 2`, `ℓ = 1`, `g` any polynomial of `natDegree = 0`: the
+hypothesis `hg` holds (`(ψ ^ 2).natDegree = 0`) while the conclusion demands
+`g.natDegree = 1 * 2 * 2 * 1 = 4`. The full script, preserved here as the durable record:
+
+```lean
+import Mathlib
+
+open IsLocalRing Polynomial
+
+noncomputable section
+
+/-- B.25a's `resField`, copied verbatim from `blueprint/CHAP-B_leaf_layer.md` / the stub. -/
+abbrev resField {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (φ : Polynomial O) : Type _ := AdjoinRoot (φ.map (IsLocalRing.residue O))
+
+/-- B.47's signed statement (`natDegree_of_residual_piece`), universally closed over ENV-A. -/
+def B47 : Prop :=
+  ∀ {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {φ : Polynomial O} {_u ℓ : ℕ} {g : Polynomial O}
+    {ψ : Polynomial (resField φ)} {a : ℕ},
+    g.natDegree = ℓ * φ.natDegree * (ψ ^ a).natDegree →
+    g.natDegree = ℓ * φ.natDegree * a * ψ.natDegree
+
+instance : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+
+theorem B47_false : ¬ B47.{0} := by
+  intro H
+  set O := ℤ_[2]
+  set φ : Polynomial O := X ^ 2 with hφ
+  set F := ResidueField O
+  set f : Polynomial F := φ.map (IsLocalRing.residue O) with hf
+  have hmap : f = X ^ 2 := by rw [hf, hφ, Polynomial.map_pow, Polynomial.map_X]
+  have hmonic : f.Monic := by rw [hmap]; exact monic_X_pow 2
+  have hdeg : f.natDegree = 2 := by rw [hmap]; simp
+  -- the root of `f = X²` is a nonzero nilpotent of `resField φ`
+  have hr2 : (AdjoinRoot.root f) ^ 2 = 0 := by
+    have : AdjoinRoot.mk f (X ^ 2) = 0 := AdjoinRoot.mk_eq_zero.2 (by rw [hmap])
+    simpa [map_pow] using this
+  have hrne : (AdjoinRoot.root f) ≠ 0 := by
+    have hX : (X : Polynomial F) ≠ 0 := X_ne_zero
+    have hlt : (X : Polynomial F).natDegree < f.natDegree := by
+      rw [hdeg, natDegree_X]; norm_num
+    simpa using AdjoinRoot.mk_ne_zero_of_natDegree_lt hmonic hX hlt
+  -- `ψ = (root f) · Y` has degree 1 but `ψ² = 0` has degree 0
+  set ψ : Polynomial (resField φ) := C (AdjoinRoot.root f) * X with hψ
+  have hψdeg : ψ.natDegree = 1 := by
+    rw [hψ]; exact natDegree_C_mul_X _ hrne
+  have hψsq : ψ ^ 2 = 0 := by
+    rw [hψ, mul_pow, ← C_pow, hr2, map_zero, zero_mul]
+  have hφdeg : φ.natDegree = 2 := by rw [hφ]; simp
+  have := @H O _ _ _ φ 0 1 1 ψ 2 (by rw [hψsq]; simp)
+  rw [hφdeg, hψdeg] at this
+  simp at this
+
+#print axioms B47_false
+```
+
+**The repair taken — the smallest faithful one** (option (iii) of the refuting unit's
+analysis): add `(hψ : ψ.Monic)` to the SIGNATURE — the hypothesis the STATEMENT prose already
+asserts — and route the degree computation through `Polynomial.Monic.natDegree_pow`
+(`Mathlib/Algebra/Polynomial/Monic.lean:198` at our pin, `[Semiring R]` only) instead of the
+unhypothesized `Polynomial.natDegree_pow` the DEPENDS field cited, which at our pin
+(`Mathlib/Algebra/Polynomial/Degree/Domain.lean:54`) requires `[NoZeroDivisors R]` — exactly
+what `resField φ` lacks for a bare `φ`. **Monicity alone suffices**, pin-verified: the
+repaired statement proves by `rw [hg, hψ.natDegree_pow]; ring` in the `leancheck` environment,
+footprint `[propext, Classical.choice, Quot.sound]`. Irreducibility (the STATEMENT's other
+half) is deliberately NOT taken into the signature: it is unused, and the weaker hypothesis
+keeps the node maximally consumable. The alternatives — (i) `hφ : IsKey φ` + `NoZeroDivisors`
+via B.25's field instance, (ii) `Irreducible ψ` — were both rejected as strictly stronger than
+what the proof uses. B.47's node text (SIGNATURE, DEPENDS, PROOF) is repaired in place with
+`[repaired: A-F.4]` tags.
+
+**(II) Consumer audit** (B.47's two TSV consumers, both conceptually re-typechecked):
+
+* **B.48** (`exists_residual_dissection`): SIGNATURE **byte-unchanged** — it does not embed
+  B.47's statement; its PROOF step 4 applies B.47 to `ψ₀ ∈ s`, and step 1's B.45
+  factorization supplies `∀ ψ ∈ s, ψ.Monic ∧ Irreducible ψ`, so the new `hψ` argument is
+  `(step-1 clause).1` at the call site. Step-4 note added in place.
+* **B.64** (`lt_natDegree_of_multiplicity_two`): SIGNATURE **byte-unchanged** — it consumes
+  B.47's *conclusion shape* as its own hypothesis `hg : g.natDegree = ℓ * φ.natDegree * a *
+  ψ.natDegree`; whoever chains B.47 into B.64 now holds monicity upstream anyway (same B.45
+  provenance). No text change.
+
+**(III) The stmt-dep extraction gap — 18 TSV rows added.** The refuting unit also exposed a
+systematic gap in `spec/DAG_BLUEPRINT_B.tsv`: rows were extracted from DEPENDS fields only, so
+nodes whose SIGNATURE consumes the residual-read abbrevs (`resField`/`instFieldResField`/
+`resMk` — B.25; `resCoeff` — B.28; `resPoly` — B.29) without re-listing the definer under
+DEPENDS carry **no dep row at all** to the defining node — this burned the wave scheduler
+(B.47 itself was scheduled with no path to B.25). Mechanical criterion: every `### NODE`
+SIGNATURE block was scanned for the five abbrev names; every (node → definer) pair with no
+existing TSV row of any kind got a `stmt-dep` row. The 18 added pairs:
+B.29→B.25 · B.41→B.25 · B.43→B.29 · **B.47→B.25** · B.48→B.25 · B.60→B.29 · B.63→B.25 ·
+B.63→B.29 · B.64→B.25 · B.65→B.25 · B.65→B.29 · B.71→B.25 · B.71→B.29 · B.72→B.29 ·
+B.79→B.25 · B.80→B.25 · B.81→B.25 · B.82→B.25. (Pairs already present as `proof-dep` — e.g.
+B.26→B.25, B.30→B.29 — were left alone; `dag_build.py`'s merge dedups on `(from, to)`, so a
+second row would be discarded anyway.) The same extraction pattern should be assumed guilty
+for the other definitional families (`sideSet`/`sideDeg`/`sideMin`/`npHgt`, `typeOf`) at the
+next TSV audit — only the `resField`/`resPoly` family is repaired here.
+
+**Stub-file consequence** (executed in this round's companion `LSPEC-B` commit): the B.47
+`axiom` in `leanspec/Leanspec/ChapB.lean` now carries `(hψ : ψ.Monic)` with an `A-F.4`
+comment; the file rebuilds green. Per §12 rule 5 the stub is not the versioning record —
+THIS block is.
 
 ---
 
