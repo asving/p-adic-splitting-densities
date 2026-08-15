@@ -34,8 +34,8 @@ locality back up through the surjection, (4) identify the residue field, (5) tra
 mandated split boundary does not exist in it; the node therefore lands as the single file
 `B49.lean`.  The delivered route names the maximal ideal directly and never forms `A ⧸ πA`:
 
-Let `Φ : A →+* resField φ` be `AdjoinRoot.map (residue O) g φ̄` — available because `φ̄ ∣ ḡ = φ̄ ^ k`
-(this is where `0 < k` enters) — so that `Φ (mk g P) = mk φ̄ (P mod 𝔪)`.
+Let `Φ : A →+* resField φ` be `AdjoinRoot.map (residue O) g φ̄` — available because
+`φ̄ ∣ ḡ = φ̄ ^ k` (this is where `0 < k` enters) — so that `Φ (mk g P) = mk φ̄ (P mod 𝔪)`.
 
 1. **`Φ` is surjective** (`mk φ̄`, `Polynomial.map (residue O)` and `mk g` all are), so
    `A ⧸ ker Φ ≃+* resField φ`, a field because `φ̄` is irreducible (B.25's `instFieldResField`);
