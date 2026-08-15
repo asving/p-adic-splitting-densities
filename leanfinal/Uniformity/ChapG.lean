@@ -32,6 +32,8 @@ import Uniformity.ChapG.G27
 import Uniformity.ChapG.G28
 import Uniformity.ChapG.G29
 import Uniformity.ChapG.G30
+import Uniformity.ChapG.G30a
+import Uniformity.ChapG.G31
 import Uniformity.ChapG.G32
 import Uniformity.ChapG.G33
 import Uniformity.ChapG.G34
