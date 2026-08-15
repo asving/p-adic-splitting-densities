@@ -6033,6 +6033,124 @@ at fleet close**, booked here (per-family names: `chapB_w12_oracle`, `chapB_he_s
 
 ---
 
-<!-- RESUME: §13 landed. Next: §14 (the 13 committed items + 14/15); then (d) A-F.2 census amendment + end-of-chapter line. -->
+## 14. FLAGGED FOR THE CODEX CROSS-READ (the orchestrator queue)
+
+The chapter is Opus-authored (§§0–8), §9 and this tail by two further same-family arms; H-12's
+cross-read debt covers all of it. **Items 1–13 are the committed text's own forward references**
+(every "§14 item n" in §§0–9 resolves here — the committed contract, populated in full); items
+14–16 are added by the §10 finisher for its own additions. Ordered as committed, not by cost.
+
+1. **The route's immunity claim to `HE3-BOX-6` (`HYP.143`).** H-5 claims the chapter is immune
+   *by construction* (no test key, no base change — the divisibility-plus-degree route needs no
+   element at a fractional height). Two committed sites make the claim concrete and each is a
+   place to attack it: the theorem-of-the-product note (B.35's ⚠, L2171 vicinity) distinguishes
+   what a base change COULD transport (a `ℕ∞` valuation identity) from what it cannot (a
+   `resField`-statement) and asserts no node smuggles the shortcut in; DECISION D-2's
+   alternative-2 rejection (L2287 vicinity) asserts the surviving obstruction at `e₁ = 1` is the
+   residual-index one, not key irreducibility. **The single most important item on this list**
+   (H-5's own words): a cross-reader should hunt for any node whose PROOF implicitly needs a
+   fractional-height element.
+2. **The divergence from `THEOREM HE6.A`'s class-size route.** §0.4 (L172) replaces the corpus's
+   `|S_{λ,r}| = D′ℓ·deg r` count (resultants + Galois + closure) by divisibility-plus-degree;
+   B.42's step 5 additionally needs the unproved-in-source private helper of `B42b.lean` (the
+   leftmost-support-point containment, L2684 vicinity) — *"a cross-reader should not accept
+   step 5 without checking it."* Verify the helper's statement is actually provable and that
+   nothing downstream silently expects the class-size count (H-2's consequence: block-length
+   consumers must go to chapter C).
+3. **The vacuous-ceiling simplification claim (B.15/B.16, L1160 vicinity).** The corpus's third
+   vertex clause ("every point weakly above the polygon") becomes definitionally vacuous under
+   the `suppVal`-as-`inf` representation, *claimed as a real simplification*. Check: is the
+   ceiling clause genuinely consumed nowhere (e.g. inside B.42's convexity bookkeeping) in a
+   form the `inf` does not already give?
+4. **H-1's scope claim made concrete: `ϖ = π = n(1)`, `q(k) = 0`, `ξ` removed — three sites.**
+   (i) B.28 (L1764/L1777): the normalizer system degenerates to pure `π`-powers and THE WITNESS
+   (`EFF.HE3.24`, the PARI flip naive-vs-coherent at `(e₁,f₁) = (2,2)`) is signed
+   non-applicable at `e₁ = 1` — the chapter's most delicate teeth disposition. (ii) B.36
+   (L2239): the slot-seam pin transcribed with the ambient closure removed (`ξ` → injectivity of
+   `F[y]_{<m} → F[y]/(φ̄)`), from `EFF.HE6.58`'s corrected form — *"the chapter's most
+   consequential transcription choice."* (iii) B.39 (L2445): the corrected `(LIFT)`'s
+   `T(k) = ∅` clause provably cannot fire at `h = 0`. Each is an `e₁ = 1` degeneration argument;
+   each should be re-derived, not pattern-matched.
+5. **The `disc ≠ 0` → every-lift strengthening (H-11, L345; D-4(a), L4520 vicinity).** The
+   corpus's decided predicate is `disc ≠ 0`-restricted and its unrestricted form was FALSE for
+   the corpus's root-read σ (the `[r4]` strike, char-3 counter-instance); this chapter's
+   `monicFactors`-read σ is total, so §§8–9 state the strictly stronger every-lift conclusions.
+   Verify each SOURCE field that says "strengthened per D-4(a)/H-11" actually has the strength
+   coming from the σ-read swap and not from an unproved separability assumption.
+6. **B.50's declared fallback is a real degradation (L3166 vicinity).** If the Smith/PID length
+   route proves unusable and B.50 degrades to DVR-only, B.52 is lost, the norm bracket loses its
+   lower half, and D-3's `ℓ ≥ 2, d = 1` row silently becomes conditional — *"the orchestrator
+   must be told, not silently applied."* Cross-read: confirm the primary route's mathlib
+   surface (`Module.length` over a PID at our pin) actually exists before the fleet fires B.50.
+7. **B.53's exact-correspondence claim (L3355 vicinity).** The chapter's norm/length identity is
+   claimed to be *exactly* `LEMMA HE3-1`'s resultant identity with roots replaced by length
+   (`Σ_ρ dv(φ(ρ)) = addVal (norm φ(α))` at `e₁ = 1`). Verify the correspondence — a mismatch here
+   would mean B.53 proves a different quantity than the corpus's `m·u·d`.
+8. **The minimum-hypothesis flag at B.53 (L3421 vicinity).** `hres` is recorded as over-strong in
+   B.53's committed signature (retained only to share hypotheses with B.54 at B.55). Adjudicate:
+   drop it (a statement-level change, statement-fence applies) or keep the sharing; either way
+   the stub must match the adjudication.
+9. **B.59's step 2 is the load-bearing unchecked identification (L3711 vicinity).** If it fails,
+   B.60's `ℓ = 1, d ≥ 2` region drops to B.58's `d = 1` case and **`B-BOX-1` would become the
+   chapter's only open item rather than one of two** — i.e. the committed text says the chapter
+   currently has TWO open items (B-BOX-1, and B.59-step-2's route risk). Cross-read: write out
+   the two candidate ideals of the `F[X]/(Ḡ) ≅ F_φ[Y]/(ψ)` identification and confirm the index
+   bookkeeping.
+10. **The two pre-fleet supplier bookings (L3771, L3955 vicinities).** B.44′ (the general-`φ`
+    widening of B.44, chapter G's A-7 class) and B.63a (`typeOf_prod`, the `Finset`-indexed
+    `typeOf_mul`) are booked in committed text rather than discovered at fleet time. Confirm
+    both bookings are complete as stated (B.63a is also B.67's and B.80's dependency; B.44′
+    gates B.60) and that §12's stub order honors them.
+11. **The more-elementary alternative route at B.67/§8 (L4407 vicinity).** `Σ_S ℓ_S d_S = μ` is
+    obtained as a corollary of B.42's factorization (a degree count over `O`) where the corpus
+    used an independent length argument whose proof was completed only by an A3 correction
+    outside every T2 pin span (`EFF.HE6.59`). Confirm the corollary route actually delivers the
+    identity at the point of consumption.
+12. **B.79a's tie between B.63's existential `T` and B.66's canonical finsets (A-§9.5; B.79's
+    ⚠, L5021 vicinity).** The cross-read must check that B.79a step 2's "term by term" tie is
+    available from B.42/B.45's statements *as committed*; if B.63's existential cannot be
+    re-opened, B.63's SIGNATURE needs its `T` strengthened to the canonical finsets — a §8-owned
+    statement refinement (same authority class as PA-1, i.e. it would need the owner-gated
+    amendment route). **Adjudication (finisher, per the author brief):** committed B.42/B.45
+    both produce their `Finset`s *existentially* as well, so the tie is NOT mechanically
+    available from statements alone; the honest resolution is the strengthening — but it is a
+    statement change to committed signed text, so it is NOT applied in this pass. Booked as the
+    recommended repair, owner-gated, with the alternative (B.79a re-proves the split rather than
+    re-reading it, at ~2× the committed size) recorded. Whichever lands, §12 rule 2's stub order
+    already forces B.66a first.
+13. **The `H₀`-pin repair — now APPLIED (A-§9.1/D-§9.1 → PA-1 → A-F.1).** The remaining
+    verification obligation: (i) the four applied sites are exactly PA-1's list, with no fifth
+    statement pin hiding elsewhere (the finisher's grep found the remaining `npHgt φ f 0`
+    statement pins only under `IsPure` hypotheses — B.35/B.41/B.48 — and in the visibility API,
+    both correct by GC-1; re-run that audit); (ii) B.28/B.29/B.30's correctness clauses really
+    are proved under the `sideMin` pin as A-§9.1 asserts; (iii) the §10 two-slope gate instances
+    (B.83(iii) and B.84(iii)) genuinely fail under the abscissa-0 pin (the repair's teeth —
+    recompute their side-2 reads both ways).
+14. **The §10 gate instances' hand-computed data (finisher addition).** All twelve instance
+    evaluations (developments, heights, argmin sets, the unique-`card ≥ 2`-slope enumerations,
+    `Visible` levels, expected `FactorizationType` values, at BOTH primes) were computed by one
+    arm by hand. Recompute independently — a wrong expected value here is exactly the class the
+    stub gate cannot catch (§12 rule 8's warning); PARI cross-check per gate TEETH.
+15. **§12 item 4's shared-clause dictionary (finisher addition).** The `hperim` display is NEW
+    contract text fixing elisions in five committed signatures (B.63, B.71, B.79a/b, B.80,
+    B.82); the peel convention resolves B.71's elision to B.80's data form. Check: (i) the
+    display's quantification (pure monic divisors with unit-times-`ψ` residual at the `sideMin`
+    pin) is what B.63's steps 1–2 actually produce; (ii) the three disjuncts route to
+    B.60/B.58/B.61 with no gap (e.g. `u = 0` integral-slope pieces are the `ℓ = 1` disjunct);
+    (iii) no committed signature's elision is narrower than the display.
+16. **The §11 mechanical DAG generation (finisher addition).** 545 rows were parser-generated
+    from DEPENDS/SOURCE prose: spot-check the parse (micro-node references mapped to parent
+    nodes; the two `EFF.HE6R1` disambiguation rows carry their NOT-transcription caveat; the
+    W12 shard-local remap table against the merge's `+52` offset), and confirm the three
+    structural `HYP` edges say what §11's table claims.
+
+**Queue census: 16 items — 13 committed forward references (each anchored above; the committed
+text's own numbering, populated in full), 3 finisher additions (14–16).** Item 12 carries the
+finisher's adjudication per the author brief; items 1, 9, 14 are where a wrong answer costs the
+most (route immunity, the second open item, and the gates' expected values respectively).
+
+---
+
+<!-- RESUME: §14 landed (16 items). Next: (d) A-F.2 census amendment + end-of-chapter line, final commit. -->
 
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
