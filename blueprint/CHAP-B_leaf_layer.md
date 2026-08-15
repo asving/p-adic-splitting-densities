@@ -5412,6 +5412,37 @@ separable). §14 item 13 remains in the cross-read queue as the verification obl
 application. Owner visibility: listed in CONVENTIONS Part IV item 1; standing statement-change
 authority (2026-08-05) covers it as an honest repair of signed text.
 
+**A-F.2 — NODE-INDEX AND CENSUS UPDATE AT CHAPTER CLOSE (2026-08-15; §2 left byte-unchanged —
+index, not contract, per A-§9.2's precedent; this block is the record).** With §§10–14 landed:
+
+1. **Kind census — A-§9.2's correction CONFIRMED at close, mechanically:** `17 def, 50 lemma,
+   15 theorem, 4 gate = 86 nodes` (grep over the NODE headings). §2's printed `21/45/16/4` stays
+   superseded.
+2. **Declaration-level census (new; §12):** 135 signed declarations (25 def-class real bodies +
+   110 theorems) + 5 RE-PLAN supplier declarations (B.63a, B.66a) + B.62 deliberately unfrozen +
+   B.86 declaration-free. §2's "41 distinct landed declarations … of which 20 are DAG nodes" is
+   superseded by the mechanical count: ~200 distinct backticked landed/mathlib names across
+   DEPENDS fields, of which **12** exist as `lean:` DAG nodes (§11 orchestrator item 3).
+3. **Split table, final:** §2's mandates (B.13→2, B.32→3, B.42→4, B.44→3, B.48→3, B.55→2,
+   B.56→4, B.79→2) + A-§9.3's (B.77→2, B.78→2) + §10's (**B.83→4, B.84→4, B.85→2**). Fleet
+   planning figure: A-§9.3's ≈112 Lean files becomes **≈119** (the four gate nodes yield 11
+   files, not 4).
+4. **Graph shape, superseding §2's pre-composition estimates** (which were computed before
+   §§7–10's DEPENDS fields existed): **340 intra-chapter edges** (not 214), acyclic, **critical
+   path 18 nodes** (not 16; 17 within B.01–B.82 + the gate layer), **12 nodes fireable
+   immediately** (not 17), layer widths `12, 9, 9, 9, 6, 3, 2, 2, 3, 4, 4, 3, 4, 2, 2, 4, 3, 5`.
+   One longest chain: `B.83 → B.82 → B.79 → B.63 → B.42 → B.41 → B.39 → B.37 → B.34 → B.30 →
+   B.29 → B.28 → B.20 → B.17 → B.16 → B.14 → B.11 → B.07` (§11; the promised
+   `spec/DAG_BLUEPRINT_B.tsv` now exists, 545 rows, checker PASS). §2's schedule-risk reading
+   survives unchanged: B.42 sits on the critical path; B.56/B.62's `B-BOX-1` repair stays
+   off-path and OPTIONAL.
+5. **Environment refinement of §2's §10 row** (A-§9.4's pattern): the index's env column reads
+   `C` for the gates; actual gates bind NO standing environment — they are concrete `ℤ_[2]` /
+   `ℤ_[3]` instances whose ENV-C obligations are discharged by the landed `LocalData.lean` §6
+   instances via TC (B.83–B.85), and B.86 is a bare census file.
+6. **The §14 row of §2's index** ("flagged-for-cross-read") now resolves to a 16-item queue
+   (13 committed + 3 finisher).
+
 ---
 
 ## 10. §10 — GATES: `q = 2` AND `q = 3` FIRING INSTANCES, AND THE AXIOM CENSUS
@@ -6151,6 +6182,11 @@ most (route immunity, the second open item, and the gates' expected values respe
 
 ---
 
-<!-- RESUME: §14 landed (16 items). Next: (d) A-F.2 census amendment + end-of-chapter line, final commit. -->
+*END OF CHAPTER B BLUEPRINT — 86 nodes (17 def / 50 lemma / 15 theorem / 4 gate), 135 signed
+declarations (+5 RE-PLAN suppliers), 545 DAG edges (checker PASS), 59 source units cited from
+`EFF-HE3` (72) / `EFF-HE6` (62) / `EFF-W12` (88, merged), PA-1 applied (A-F.1). CODEX CROSS-READ
+OWED — the queue is §14's 16 items.*
+
+<!-- RESUME: CHAPTER COMPLETE — (a) PA-1/A-F.1 fb2f440c; (b) §10 B.83-B.86; (c) §11 c14b8e40 + §12 + §13 + §14; (d) A-F.2 + close. Nothing owed by the B-finisher. -->
 
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
