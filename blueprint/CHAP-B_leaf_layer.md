@@ -4505,32 +4505,323 @@ certificate (`EFF.HE3.67`), never the superseded `LEMMA HE3-5` display of `EFF.H
 
 ### DECISION D-4 — WHAT A LEVEL-`N` CERTIFICATE IS, AND WHAT IS *NOT* CLAIMED
 
-*(to be filled — the three clauses: the unweakened `DecidedAt`; hypotheses on one representative,
-transported; R8-1 carried at the single order-1 node with no uniform-level law.)*
+**THE DECISION, in three clauses.**
+
+**(a) The decided predicate is `leanfinal`'s landed `DecidedAt`, unweakened.**
+`Uniformity.Density.DecidedAt O n σ N c` (`GenuineDensity.lean:66`) quantifies over **every**
+lift `a : Fin n → O` with `proj O n N a = c` — no `disc ≠ 0` restriction, no separability
+restriction on the lift. The corpus's pinned notion is weaker: `EFF.W12.51` (`W12-BOX-7`)
+verbatim, "Decided = certified on window digits for all `disc ≠ 0` lifts", and `EFF.W12.27`
+records (with the `[r4, PE4 m2]` strike and its explicit equal-characteristic counter-instance)
+that the unrestricted "every lift" was **FALSE for the corpus's σ**, which is read through roots.
+This chapter's σ is read through `monicFactors` and `typeOf` is total on monic polynomials
+(H-11), so the every-lift statements below are provable — they are **strictly stronger** than
+their sources, and every SOURCE field in this section says so where it applies. That divergence
+is §14 item 5 (already flagged at H-11).
+
+**(b) Certificate hypotheses are stated on ONE representative's data and the theorem transports
+them.** A node below takes a concrete `a : Fin n → O` (or a concrete block `g`), states its
+polygon/residual hypotheses on that representative, and concludes `DecidedAt … (proj O n N a)` —
+i.e. the same conclusion for every other lift, obtained through the transport layer B.76–B.78,
+entered via landed `decidedAt_of_congr` (`DensityAPI.lean:140`, which already performs the
+`proj`-to-coefficientwise reduction through `proj_eq_iff_dvd`). The alternative — defining a
+window-level "shape datum" type on `Coeff O n N` and stating the certificate on it — is
+**rejected** for chapter B: it is the count layer's object (`EFF.W12.08`'s SHAPE `T`, consumed by
+the `HT` law), it belongs to chapter C together with `LEMMA W12-HT` (H-10), and nothing in this
+chapter's conclusions needs it. The representative-based form is also exactly the landed
+`leancheck` idiom (`UniformityCheck/N3CertRam.lean` and its siblings certify concrete coefficient
+hypotheses `π² ∣ B₀ ∧ …`), so the §10 gates can fire B.82 with zero adaptation.
+
+**(c) `R8-1`'s certificate is carried at the single order-1 node, and NO uniform-level law is
+stated.** `EFF.HE3.67` (R8-1) replaced `LEMMA HE3-5`'s "one more window unit" bound by a
+**recursive** criterion — clause 1: "every terminal residual polynomial is separable"; clause 2:
+"at every nonterminal node ν, every recentered value consulted there is either read exactly below
+`c_ν`, or is known only to be `≥ c_ν` but satisfies `c_ν > b_{ν,j}`" — and refuted the uniform
+bound by an explicit counterexample (`f = (Φ′ − C)³ + 5^M`, unbounded `M`). Chapter B's read has
+**one** node (H-1: order 1, no recentering chain — the key shift is chapter C's descent step, per
+B.69's SOURCE), so the criterion instantiates as: clause 1 = `¬ NeedsDescent` (B.73), clause 2 =
+`Visible` (B.75) with the one cap `c = N`. Consequently: (i) B.79/B.80/B.82 state **per-member**
+certificates at an explicitly hypothesized `N`; (ii) B.81 states **existence** of a certifying
+`N` read off the member's own polygon — R8-1's stratification bullet ("stratifying by complete
+read histories and their deepest consulted heights") in its order-1 form; (iii) **no node of this
+chapter asserts any `N`-law of the form "decided as soon as `N > (fixed function of the shape)`
+uniformly over a family"** — that was the refuted bullet, and its battery table `HE-BND`
+(`EFF.HE3.55`) survives only as re-scoped instance evidence, which is how every TEETH field below
+scores it.
+
+**THE PERIMETER, restated for this section.** Every certificate below concludes a `typeOf` value
+through §7/§8, so D-3's perimeter is inherited verbatim: unconditional at `ℓ = 1` (any `d`) and at
+`d = 1` (any `ℓ`); conditional on `B-BOX-1` at `ℓ ≥ 2 ∧ d ≥ 2`, carried as the explicit `hperim`
+hypothesis exactly as in B.63 — never assumed silently (H-7). A fleet agent needing `B-BOX-1`
+outside an `hperim` clause returns `BLOCKED: B-BOX-1`; one needing `HE6-BOX-1` returns
+`BLOCKED: HE6-BOX-1` (it is a NON-NODE, B.64).
 
 ---
 
 ### NODE B.75 [def] [fresh]
 
-**STATEMENT.** *Window visibility.* `Visible π φ f N` : the order-1 read of `f` at the key `φ` is
-contained in the height-`N` window — some digit of the constant development coefficient
-`dev φ f 0` lies strictly below height `N`. *(stub; full node below)*
+**STATEMENT.** *Window visibility.* For `π : O`, polynomials `φ, f` and a level `N : ℕ`, say the
+order-1 read of `f` at the key `φ` is **visible at level `N`** when some coefficient of the
+constant development coefficient `dev φ f 0` is not divisible by `π^N` — equivalently (B.76, given
+`hπ`), when `npHgt φ f 0 < N`. Since the `φ`-adic polygon of `f` runs from `(0, npHgt φ f 0)` down
+to `(μ, 0)` and is convex, `npHgt φ f 0` bounds **every** height the order-1 read consults: every
+vertex height, every on-side line height `H₀ − u·k`, and every "strictly above the line" ceiling.
+`Visible π φ f N` therefore says: *all data the read consumes sit at heights `≤ N − 1`.*
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `Visible π φ f N` : the order-1 read of `f` at the key `φ` is contained in the height-`N`
+window — some digit of `dev φ f 0` sits strictly below height `N`. Equivalently (given
+`Irreducible π`): `npHgt φ f 0 < N`. -/
+def Visible (π : O) (φ f : Polynomial O) (N : ℕ) : Prop :=
+  ∃ i, ¬ π ^ N ∣ (dev φ f 0).coeff i
+```
+
+**DEPENDS.** B.02 (`dev`).
+
+**PROOF.** definitional. Two choices are deliberate. (i) The **digit form** (`∃ i, ¬ π^N ∣ …`)
+rather than the valuation form (`npHgt φ f 0 < N`) is primary, because it is literally a statement
+about the window — it mentions no `ℕ∞`, and it is the form a certificate checker evaluates on a
+level-`N` class; the two are equated in B.76 (`visible_iff_npHgt_lt`, needing `hπ`), which is why
+`π` is an argument of the definition. (ii) Visibility is pinned at **abscissa 0**, not per side:
+B.76's calculus derives every per-side bound from it (for `0 < ℓ`,
+`suppVal φ f u ℓ ≤ ℓ • npHgt φ f 0`, so every on-side height is `≤ npHgt φ f 0`), and a per-side
+definition would multiply the transport lemmas by the number of sides for no gain.
+
+**FAITHFULNESS.** Three sources, and the definition must be read against all three.
+(1) `EFF.HE3.67` (R8-1, the rewritten certificate — H-4's line-221 commitment) clause 2 verbatim:
+"at every nonterminal node ν, every recentered value consulted there is either read exactly below
+`c_ν`, or is known only to be `≥ c_ν` but satisfies `c_ν > b_{ν,j}`, so that the required strict
+inequality above the supporting line is nevertheless certified." At chapter B's single order-1
+node with cap `c = N` (DECISION D-4(c)): values on the hull are read exactly below `N` (their
+heights are `≤ npHgt φ f 0 < N`), and values off the hull need only "`≥ hull ceiling`", certified
+since `N > npHgt φ f 0 ≥ b_j` for every supporting-line height `b_j`. **The superseded
+`LEMMA HE3-5` display (`EFF.HE3.37`) is not transcribed, and no "one more window unit" clause
+exists here.**
+(2) `EFF.W12.23` verbatim: "Every pinned or priced slot sits at height `≤ P(0) ≤ N−1`: in-window,
+no truncation error" — `P(0)` is `npHgt φ f 0` and "`≤ N−1`" is `< N`. Also `EFF.W12.28`'s
+per-family visibility clause "`u₀ ≤ N−1`" (there `u₀ = v(b₀) = P(0)` at the TRP center).
+(3) The **junk direction is meaningful**: `Visible` is *false* exactly when every digit of
+`dev φ f 0` vanishes in-window — `EFF.HE3.55`'s never-decided residue, "the 25 / 49 with vanishing
+residual constant (no full side: outside the genre)", is precisely the `¬ Visible` locus, and it
+is correct that no certificate below fires there. **Flagged for human review.**
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.HE3.67` (R8-1 clause 2, the rewritten certificate — transcribed per H-4);
+`EFF.W12.23` (the in-window slot-height law); `EFF.W12.28` (the `u₀ ≤ N−1` instances);
+`EFF.HE3.55` (the `¬ Visible` residue, read through its R8-1 re-scoping).
+
+**TEETH.** `HE-BND` (`EFF.HE3.55`, 3,744 boundary reads, **RE-SCOPED by R8-1**) → **executable
+regression** retained with the re-scoping carried (D-4(c)): the battery's zero-decided row at
+`cap < μλ` is instance evidence that invisibility blocks certification; no general `N`-law is
+scored.
+
+**ENVIRONMENT.** ENV-A (no `hπ` in the definition; `π` is data. The equivalence lemma is B.76's
+and lives in ENV-A').
 
 ---
 
 ### NODE B.76 [lemma] [fresh]
 
-**STATEMENT.** *The visibility calculus.* The `npHgt`-truncation congruence (`GENHN-3(a)` at
-`e₁ = 1`), and `Visible`'s characterization, monotonicity, congruence-invariance, and existence.
-*(stub)*
+**STATEMENT.** *The visibility calculus.* Fix `hπ : Irreducible π` and `φ` monic of positive
+degree. (i) **The truncation congruence** (`GENHN-3(a)`'s "lift-stability iff `dv < e₁N`" at
+`e₁ = 1`): if `π^N ∣ (f − f').coeff i` for every `i`, then for every abscissa `j`
+
+```
+min (npHgt φ f j) N  =  min (npHgt φ f' j) N        (in ℕ∞),
+```
+
+so heights `< N` transport **exactly** and heights `≥ N` transport **as the bound** `≥ N`.
+(ii) `Visible π φ f N ↔ npHgt φ f 0 < (N : ℕ∞)`. (iii) `Visible` is monotone in `N`.
+(iv) `Visible` is invariant under `π^N`-congruence of `f`. (v) `Visible π φ f N` holds for some
+`N` iff `dev φ f 0 ≠ 0` (and then for every `N > npHgt φ f 0`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem npHgt_min_congr (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic)
+    (hd : 0 < φ.natDegree) {N : ℕ} {f f' : Polynomial O}
+    (hff' : ∀ i, π ^ N ∣ (f - f').coeff i) (j : ℕ) :
+    min (npHgt φ f j) (N : ℕ∞) = min (npHgt φ f' j) (N : ℕ∞)
+
+theorem visible_iff_npHgt_lt (hπ : Irreducible π) {φ f : Polynomial O} {N : ℕ} :
+    Visible π φ f N ↔ npHgt φ f 0 < (N : ℕ∞)
+
+theorem visible_mono {φ f : Polynomial O} {N M : ℕ} (hNM : N ≤ M) :
+    Visible π φ f N → Visible π φ f M
+
+theorem visible_congr (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic)
+    (hd : 0 < φ.natDegree) {N : ℕ} {f f' : Polynomial O}
+    (hff' : ∀ i, π ^ N ∣ (f - f').coeff i) :
+    Visible π φ f N ↔ Visible π φ f' N
+
+theorem exists_visible (hπ : Irreducible π) {φ f : Polynomial O} (h0 : dev φ f 0 ≠ 0) :
+    ∃ N : ℕ, Visible π φ f N
+```
+
+**DEPENDS.** B.02 · B.07 · B.08 (`le_gaussVal_iff`, `gaussVal_eq_top_iff`) · B.10 (`dev_congr`) ·
+B.11 · B.75 · mathlib `min_eq_left/right`, `ENat` order lemmas, landed
+`Uniformity.Hensel.pow_dvd_iff_le_addVal` (`StrongHensel.lean`, the `addVal`/divisibility
+dictionary).
+
+**PROOF.**
+1. (i): B.10's `dev_congr` gives `π^N ∣ (dev φ f j − dev φ f' j).coeff i` for every `i`, i.e.
+   `(N : ℕ∞) ≤ gaussVal (dev φ f j − dev φ f' j)` by B.08's `le_gaussVal_iff`. For `x, y` with
+   `gaussVal (x − y) ≥ N`: if `gaussVal x < N` then `gaussVal y = gaussVal x` (the minimum
+   coefficient valuation is untouched by a perturbation of valuation `≥ N` — `AddValuation`
+   ultrametric on each coefficient, via `min`-of-`addVal` case analysis); if `gaussVal x ≥ N` then
+   `gaussVal y ≥ N` (`y = x − (x − y)`, both arguments `≥ N`). Both branches together are exactly
+   the `min`-truncation identity.
+2. (ii): `Visible` unfolds to `¬ ∀ i, π^N ∣ (dev φ f 0).coeff i` (pushing `∃¬` through `¬∀`),
+   which by B.08's `le_gaussVal_iff` is `¬ ((N : ℕ∞) ≤ gaussVal (dev φ f 0))`, i.e.
+   `npHgt φ f 0 < N` by `not_le`.
+3. (iii): `π^M ∣ x → π^N ∣ x` for `N ≤ M` (`pow_dvd_pow` + `dvd_trans`), contrapose the witness.
+4. (iv): (i) at `j = 0` truncated below `N`: `npHgt φ f 0 < N ↔ npHgt φ f' 0 < N` reads off the
+   `min` identity (`min a N < N ↔ a < N`); then (ii) twice. *(This is where `hφ`/`hd` enter, via
+   B.10; (ii) and (iii) are hypothesis-free beyond `hπ`.)*
+5. (v): `h0` gives `gaussVal (dev φ f 0) ≠ ⊤` (B.08's `gaussVal_eq_top_iff`), so it is some
+   `(H₀ : ℕ∞)`; take `N := H₀ + 1` and apply (ii).
+
+**SIZE.** 44 lines. **Five public declarations — one object** (the visibility calculus), on the
+B.20 precedent; if the merge queue objects, the split boundary is `{npHgt_min_congr}` in
+`B76a.lean` (it is the transport engine, consumed by B.77) and the four `Visible` lemmas in
+`B76b.lean`.
+
+**⚠ CLAUSE (i) IS THE WHOLE TRANSPORT ENGINE AND IT IS DELIBERATELY `min`-TRUNCATED.** The naive
+statement "`npHgt φ f' j = npHgt φ f j`" is **false** at heights `≥ N` (the class contains lifts
+of every deeper height — R8-1's counterexample lives exactly there, `A₀ = 5^M` with `M`
+unbounded), and the pair of one-sided statements ("exact below `N`", "`≥ N` preserved") is
+awkward to chain. The `min`-truncation is both, in one rewritable equality. This is the form in
+which `GENHN-3(a)` is consumed by R8-1 — `spec/EFF-HE3.md` XREF ledger verbatim:
+"`GENHN_PROOF_2026-08-08.md:GENHN-3(a)` … Lift-stability iff `dv < e₁N` / consumed by HE3-5
+(`.37`) and R8-1 (`.67`)" — transcribed here at `e₁ = 1` (`dv = addVal`, cap `= N`). The citation
+is **through HE3's ledger, not through an EFF-GENHN unit**: chapter B's cut does not include
+GENHN (H-3-adjacent scope note), and the half-page proof above is self-contained, so nothing is
+consumed from GENHN beyond the name.
+
+**SOURCE.** `EFF.HE3.67` (R8-1's proof cites "LEMMA HE3-2(b) plus GENHN-3(a)" at one node — this
+node is the `GENHN-3(a)` half at `e₁ = 1`); `spec/EFF-HE3.md` XREF ledger (`GENHN-3(a)`, count
+11); `EFF.W12.23` ("in-window, no truncation error").
+
+**TEETH.** `HE-T-CAP` (`EFF.HE3.54`, Q5: the reader variant that dropped out-of-window digits
+disagrees with the sound reader on 17 (`p = 5`) + 43 (`p = 7`) members) → **executable
+regression** retained: the tooth is a live check that exactly the `min`-truncation, and nothing
+finer, survives the window.
+
+**ENVIRONMENT.** ENV-A'.
 
 ---
 
 ### NODE B.77 [lemma] [fresh]
 
-**STATEMENT.** *Level stability (the transport pinned by B.74).* Under `π^N`-congruence and
-`Visible π φ f N`, the objects `npHgt` (truncated), `suppVal`, `sideSet`, and `resPoly` transport
-from `f` to `f'`. *(stub)*
+**STATEMENT.** *Level stability (the transport pinned by B.74).* Fix `hπ : Irreducible π`, `φ`
+monic of positive degree, a level `N`, and `f, f'` with `π^N ∣ (f − f').coeff i` for every `i` and
+`f'.natDegree = f.natDegree`. Assume `hvis : Visible π φ f N`. Then the four objects the order-1
+read consists of transport from `f` to `f'`:
+
+* **`npHgt`** — truncated at `N`: this is B.76(i), restated here as clause (0) because B.74's
+  consumers read it off this node;
+* **`suppVal`**: `suppVal φ f' u ℓ = suppVal φ f u ℓ` for **all** `u ℓ : ℕ` (no positivity, no
+  coprimality);
+* **`sideSet`**: `sideSet φ f' u ℓ = sideSet φ f u ℓ` for all `u ℓ` — hence, definitionally,
+  `sideMin`, `sideMax`, `sideDeg` and `IsPure` transport too;
+* **`resPoly`**: for every `H₀ : ℕ` with `H₀ < N`,
+  `resPoly π φ f' u ℓ h' H₀ = resPoly π φ f u ℓ h H₀` (with `h'` the nonemptiness witness obtained
+  from `h` by rewriting along the `sideSet` clause) — hence `Separable`, degree, constant term,
+  and the residual factorization all transport.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem suppVal_congr (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic)
+    (hd : 0 < φ.natDegree) {N : ℕ} {f f' : Polynomial O}
+    (hff' : ∀ i, π ^ N ∣ (f - f').coeff i) (hdeg : f'.natDegree = f.natDegree)
+    (hvis : Visible π φ f N) (u ℓ : ℕ) :
+    suppVal φ f' u ℓ = suppVal φ f u ℓ
+
+theorem sideSet_congr (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic)
+    (hd : 0 < φ.natDegree) {N : ℕ} {f f' : Polynomial O}
+    (hff' : ∀ i, π ^ N ∣ (f - f').coeff i) (hdeg : f'.natDegree = f.natDegree)
+    (hvis : Visible π φ f N) (u ℓ : ℕ) :
+    sideSet φ f' u ℓ = sideSet φ f u ℓ
+
+theorem resPoly_congr (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic)
+    (hd : 0 < φ.natDegree) {N : ℕ} {f f' : Polynomial O}
+    (hff' : ∀ i, π ^ N ∣ (f - f').coeff i) (hdeg : f'.natDegree = f.natDegree)
+    (hvis : Visible π φ f N) {u ℓ : ℕ} (h : (sideSet φ f u ℓ).Nonempty) {H₀ : ℕ}
+    (hH₀ : H₀ < N) :
+    resPoly π φ f' u ℓ (by rw [sideSet_congr hπ hφ hd hff' hdeg hvis]; exact h) H₀
+      = resPoly π φ f u ℓ h H₀
+```
+
+**DEPENDS.** B.02 · B.07 · B.08 · B.10 (`dev_congr`) · B.11 · B.14 · B.16 · B.20 · B.21/B.22
+(`digAt`, `digAt_eq`, `digAt_eq_zero_iff`, `digAt_add`) · B.23/B.24 (`digPoly`) · B.25 (`resMk`) ·
+B.28 · B.29 · B.75 · B.76 (`npHgt_min_congr`, `visible_iff_npHgt_lt`).
+
+**PROOF.**
+1. **Setup.** Write `H j := npHgt φ f j`, `H' j := npHgt φ f' j`; B.76(i) gives
+   `min (H j) N = min (H' j) N` for every `j`; `hvis` gives `H 0 < N` (B.76(ii)). The two `inf`
+   ranges agree by `hdeg`.
+2. **`suppVal`.** Case `ℓ = 0`: both sides are `inf_j (u*j : ℕ∞) `, attained at `j = 0`, value
+   `0` — equal with no hypotheses. Case `0 < ℓ`: put `S := suppVal φ f u ℓ`. Then
+   `S ≤ ℓ • H 0 + 0 < ℓ • N` (the `inf` against `j = 0`, `H 0 < N`, and `ℓ`-scaling is strictly
+   monotone below `⊤`). For each `j`: if `H j < N` then `H' j = H j` (step 1's `min` identity read
+   below `N`) and the `j`-terms agree; if `H j ≥ N` then `H' j ≥ N` and **both** `j`-terms are
+   `≥ ℓ • N > S`, so neither participates in either `inf`. The two `inf`s therefore run over
+   pointwise-equal relevant terms: `suppVal φ f' u ℓ = S`. *(The minimum of the `f`-side is
+   attained at a `j` with `H j < N` — from `S < ℓ • N`.)*
+3. **`sideSet`.** `OnSide φ f' u ℓ j ↔ OnSide φ f u ℓ j` for every `j` in the common range: on the
+   `H j < N` branch both defining equalities have identical left- and right-hand sides (step 2);
+   on the `H j ≥ N` branch both fail (`ℓ • H j + u*j ≥ ℓ • N > S`, same for `f'` — for `ℓ = 0`
+   the branch is empty since `0 • ⊤ = 0` makes every term finite and equal anyway). `Finset.ext` +
+   `Finset.mem_filter` close.
+4. **`sideMin`/`sideMax`/`sideDeg`/`IsPure` transport** is definitional rewriting along step 3
+   (they are built from `sideSet` and, for `IsPure`, from `OnSide` at the two endpoints — B.20,
+   B.34) plus `hdeg`; recorded in the statement, not as separate contract declarations.
+5. **`resPoly`.** By B.29 it suffices that `resCoeff π φ f' u ℓ h' H₀ k = resCoeff π φ f u ℓ h H₀ k`
+   for `k ≤ sideDeg` (equal ranges by step 4). `resCoeff` (B.28) is
+   `resMk π φ (H₀ − u*k) (dev φ f (sideMin + ℓ*k))`; `sideMin` agrees by step 4; the read height
+   satisfies `H₀ − u*k ≤ H₀ < N`; and B.10 gives `π^N ∣` every coefficient of the `dev`
+   difference. The digit lemma: for `x, y ∈ O` with `π^N ∣ x − y` and `k < N`,
+   `digAt π k x = digAt π k y` — from B.22's `digAt_eq`/`digAt_eq_zero_iff` by the case split
+   `π^k ∣ x` or not (if yes, `π^k ∣ y` and the two quotients differ by `π^{N−k}·(unit stuff)` with
+   `N − k ≥ 1`, so their residues agree; if no, both are junk `0`). Lift coefficientwise through
+   `digPoly` (B.24's `digPoly_coeff`) and push through `resMk` (B.25). **This digit lemma is a
+   private helper of this node** (~12 lines); it is the only place §9 touches digits directly.
+
+**SIZE.** 110 lines. **SPLIT MANDATED → 2** (recorded in the AMENDMENT block — §2's split table
+predates this section): `B77a.lean` = steps 1–4 (`suppVal_congr`, `sideSet_congr` — the polygon
+half); `B77b.lean` = step 5 (`resPoly_congr` — the residual half, consuming B77a).
+
+**⚠ THE `H₀ < N` CLAUSE IS CONVENTION-FREE, DELIBERATELY.** Two `H₀`-pinning conventions coexist
+upstream: B.28/B.30 pin `H₀` at the side's **left endpoint** `sideMin` (the convention under which
+`resPoly` is the side's residual polynomial), while committed B.63/B.65/B.73/B.74 pin `H₀` at
+**abscissa 0** (`npHgt φ f 0 = H₀`), which agrees with the former exactly on sides containing `0`
+— on a one-sided (pure) polygon, always; on an interior side of a multi-slope polygon, **not**.
+This node's transport holds for **every** `H₀ < N` — it transports whatever polynomial the
+consumer's convention names, junk or not — so both conventions' consumers (B.74 among them, whose
+statement is committed) compose with it unchanged. The convention seam itself is a §8-owned repair
+and is booked in the AMENDMENT block below (defect notice D-§9.1); it is **§14 item 13**.
+
+**SOURCE.** `EFF.W12.27` verbatim: "All data the read consumes sit at heights `≤ N−1`, so every
+lift of the window class shares them" — this node is that sentence as four equalities;
+`EFF.HE3.67` (R8-1 clause 2: the two transport branches — "read exactly below `c_ν`" is step 2's
+low branch, "known only to be `≥ c_ν` but `c_ν > b_{ν,j}`" is the high branch, where both terms
+leave the `inf`); `EFF.W12.84` step 2 ("bijective in every characteristic and at every finite
+window, including when some conservative lower bounds lie beyond the window" — the high branch
+again, in the count layer's language); `spec/EFF-HE3.md` XREF `GENHN-3(a)` (via B.76).
+
+**TEETH.** `HE-T-CAP` (`EFF.HE3.54`, 17 + 43 members: the unsound reader's dropped digits are
+exactly a violation of clause 5's `k < N` guard) → **Lean theorem** (this node); `HE-BND`
+(`EFF.HE3.55`, 3,744 boundary reads, **RE-SCOPED by R8-1**) → **executable regression** retained,
+scored per D-4(c) on the aligned rows only.
+
+**ENVIRONMENT.** ENV-A'.
 
 ---
 
