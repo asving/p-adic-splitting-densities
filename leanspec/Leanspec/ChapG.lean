@@ -24,6 +24,13 @@ assignment (§A-5) — it is the 26th real body, and the `axiom` count drops 82 
 G.52g `c3_pairwise_ne` is re-signed with the **ten inequalities** in place of the placeholder
 `True` (§A-6). Declaration count unchanged at **109**.
 
+**Amended against blueprint AMENDMENT 2026-08-15, third append** (§A-7, G.31's dependency gap
+cured): one **new** node, **G.30a** `depthSet_odd_eq_empty`, is signed below between G.30 and
+G.31 — the supplier that justifies G.31's `Finset.range N` index set. Declaration count rises
+**109 → 110**. Only the ODD form is signed: the general shape `depthSet π N t = ∅ for t ≥ N` that
+wave-3 named as G.31's missing premise is **refuted** at even `t` in residue characteristic 2
+(§A-7's `ℤ₂`, `N = 2`, `t = 2` counterexample), and must not be signed by any future node.
+
 **This file is never imported by `leanfinal` or `leancheck`.** It carries `axiom`s by design; it
 is an interface contract, not mathematics. Nothing here is proved.
 
@@ -93,12 +100,15 @@ finalizing): **G.01–G.07, G.09, G.10, G.12–G.15, G.19, G.21, G.26–G.29, G.
 G.45, G.50, G.52, G.53, G.55–G.57, G.62, G.64, G.73** (wave-1/2, 33 node-files, 48 declarations),
 **plus G.08, G.11, G.16, G.17, G.18, G.20, G.22, G.24, G.25, G.30, G.34, G.40, G.54, G.63** (wave-3,
 2026-08-15, 14 node-files, 20 declarations — G.40 and G.63 split into three and two declarations
-respectively) — **47 node-files, 68 declarations retired** in total; see the individual doc
+respectively), **plus G.30a and G.31** (2026-08-15, the G.31 cure unit, 2 node-files, 4
+declarations) — **49 node-files, 72 declarations retired** in total; see the individual doc
 comments below for the retiring `example`. G.23 and G.31 were investigated in wave-3 and found
-BLOCKED (see the standing G.23a withdrawal above for the former; G.31 needs `Finset.range N` in
-`decidedSet_ram_eq` justified by showing `depthSet π N t = ∅` for `t ≥ N`, which is not among its
-DEPENDS and was not established — booked as an open obstruction, not attempted here). Everything
-else remains an
+BLOCKED. **G.31's block is CLEARED (blueprint AMENDMENT §A-7):** it needed `Finset.range N` in
+`decidedSet_ram_eq` justified by showing `depthSet π N t = ∅` for `t ≥ N`, which was not among its
+DEPENDS; that general form turns out to be **false** at even `t` in residue characteristic 2, and
+the true ODD form — all the odd-indexed union consumes — is now the signed node G.30a, so G.31
+landed at its **unchanged** statement. G.23 remains blocked (see the standing G.23a withdrawal
+above). Everything else remains an
 UNLANDED `axiom` or (for defs not yet landed) a real local body. The `leancheck`-shadowing
 direction was checked separately (`leancheck` imports `leanfinal` and opens `Uniformity.Density`
 while re-declaring `c3split`, `readEquiv`, `dvdSet`, … in `UniformityCheck`): current-namespace
@@ -395,22 +405,36 @@ G.31.)* Odd depth strata above the level-`N` window are empty. **Only the ODD fo
 the general shape `depthSet π N t = ∅ for t ≥ N` — the one wave-3 booked as G.31's missing
 premise — is REFUTED at even `t` in residue characteristic 2 (§A-7's `ℤ₂`, `N = 2`, `t = 2`
 counterexample). G.31's union is odd-indexed, so this form is what it consumes. ENV-A' (no
-completeness). -/
-axiom depthSet_odd_eq_empty (hπ : Irreducible π) {N j : ℕ} (hN : N ≤ 2 * j + 1) :
-    depthSet π N (2 * j + 1) = (∅ : Set (Coeff O 2 N))
+completeness). LANDED (2026-08-15, G.31 cure unit) — retirement form (0e-diff against
+`Uniformity.ChapG.G30a`). -/
+example (hπ : Irreducible π) {N j : ℕ} (hN : N ≤ 2 * j + 1) :
+    depthSet π N (2 * j + 1) = (∅ : Set (Coeff O 2 N)) :=
+  depthSet_odd_eq_empty (hπ := hπ) (N := N) (j := j) (hN := hN)
 
-/-- **G.31a** The inert half of an even stratum. -/
-def inertStratum (π : O) (N k : ℕ) : Set (Coeff O 2 N) :=
-  {c ∈ depthSet π N (2 * k) | DecidedAt O 2 inertType N c}
+/-- **G.31a** The inert half of an even stratum. LANDED (2026-08-15, G.31 cure unit) —
+retirement form (0e-diff against `Uniformity.ChapG.G31`), in both available strengths: the
+type-level `example` prescribed by the lifecycle rule for `def`s, plus a `rfl` check that the
+landed BODY is the signed one (the §A-5 precedent — a type-only check cannot see body drift). -/
+example (π : O) (N k : ℕ) : Set (Coeff O 2 N) := inertStratum (π := π) (N := N) (k := k)
 
-/-- **G.31b** The split half of an even stratum. -/
-def splitStratum (π : O) (N k : ℕ) : Set (Coeff O 2 N) :=
-  {c ∈ depthSet π N (2 * k) | DecidedAt O 2 splitType N c}
+example (π : O) (N k : ℕ) :
+    inertStratum π N k = {c ∈ depthSet π N (2 * k) | DecidedAt O 2 inertType N c} := rfl
 
-/-- **G.31c** -/
-axiom decidedSet_ram_eq (hπ : Irreducible π)
+/-- **G.31b** The split half of an even stratum. LANDED (2026-08-15, G.31 cure unit) —
+retirement form, type and body, as at G.31a. -/
+example (π : O) (N k : ℕ) : Set (Coeff O 2 N) := splitStratum (π := π) (N := N) (k := k)
+
+example (π : O) (N k : ℕ) :
+    splitStratum π N k = {c ∈ depthSet π N (2 * k) | DecidedAt O 2 splitType N c} := rfl
+
+/-- **G.31c** LANDED (2026-08-15, G.31 cure unit) — retirement form (0e-diff against
+`Uniformity.ChapG.G31`). The node was BLOCKED at wave 3 for a missing premise, **not** a
+statement defect: this type-check confirms the landed theorem is the one signed here, index set
+`Finset.range N` included. The overshoot `N ≤ 2j+1` is discharged by G.30a above. -/
+example (hπ : Irreducible π)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O] (N : ℕ) :
-    decidedSet O 2 ramType N = ⋃ j ∈ Finset.range N, depthSet π N (2 * j + 1)
+    decidedSet O 2 ramType N = ⋃ j ∈ Finset.range N, depthSet π N (2 * j + 1) :=
+  decidedSet_ram_eq (hπ := hπ) (N := N)
 
 /-! ## §6 — `n = 2`: the exact drainage law (G.32–G.37) -/
 
