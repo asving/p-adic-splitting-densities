@@ -398,8 +398,127 @@ one way. **SUPERSEDES/REPAIRS:** the stale README sentence (recorded, not edited
 
 ---
 
+### GC-13 — CROSS-CHAPTER DEPENDS UNDER PARALLEL AUTHORSHIP: THE THREE-TIER CITATION RULE
+
+**DECISION.** A DEPENDS entry pointing outside the author's own chapter is written in exactly one
+of three forms, in this priority order: (a) a **landed declaration name** (chapters A/G and any
+node landed by fleet time); (b) a **committed blueprint node ID** (`B.58`, `H.51`, `G.36` — G, B
+§§3–9, H are committed contracts); (c) for a chapter not yet frozen, the placeholder
+**`EFF.<NOTE>.<nn> [supplied-by: chapter <X>]`** — never a guessed node ID of an unauthored
+chapter. The orchestrator resolves (c)-placeholders to node IDs when both chapters freeze, at
+the stub stage.
+
+**RATIONALE.** The remaining chapters are authored in parallel (the point of this document);
+without this rule, D would invent C's node numbers for GENTOW2's `B″`/`B′` lemmas and every such
+guess would be a merge conflict wearing a dependency's clothes. The EFF unit ID is the one
+stable cross-chapter coordinate that exists today (the 0a specs are byte-frozen).
+**SUPERSEDES/REPAIRS:** nothing. **BINDS:** all parallel authors; the orchestrator owns the
+resolution pass.
+
+---
+
+### GC-14 — THE ϑ-ORIENTATION TABLE: D OWNS THE CANONICAL COPY, EVERYONE CITES IT
+
+**DECISION.** The four-way ϑ-orientation table (GENTOW2 `EFF.GENTOW2` orientation records at its
+`.25`/`.26` cluster and OPEN-CALL 2; mandated by PROJECT_STATE append #54: *"the gauge chapter's
+blueprint carry the four-way orientation table as a node annotation, else a sign error no battery
+catches"*) is authored ONCE, as a node annotation in chapter D (the gauge chapter, T1), and every
+ϑ-touching node in C, E or F cites that D annotation by anchor — no chapter restates the table's
+content in its own words.
+
+**THE CONTENT, pinned here so no author guesses** (from `EFF-GENTOW2.md`'s orientation records —
+transcribe from the spec, not from this summary): GENTOW2's single-argument slot-indexed `ϑ(t)`
+IS T1's `Θ₂(t)`, and T1's box `(C3-Theta)` has `Θ_i(t) = ϑ_{i, f_{i+1}−t}^{−1}` — i.e. GENTOW2's
+ϑ is the **INVERSE** of T1's two-index `ϑ_{i,s}`; T3's `(T1-THETA)`/`(ABS-G2)` give
+`ϑ(t) = ϑ_{G2}(t) = Θ_N(f₃−t; u₃)` (inverse orientation recorded at T3 §8.1 check 2); T5
+L991–993 is the closing reconciliation. Separately and NOT to be conflated: the B-law direction
+(3) is `u(β) := R_{3,β}(n̂₂(β̂))`, read `FGMN = u · repo` and **not** the inverse (the r2 F3
+finding exists because a fallback clause once wrote the inverse); T1's `(C3-B-law)`
+`u(β_t) = Θ_i(t)·w_i^{f_{i+1}−t}` and T3's `(ABS-G2)` `u(β_t) = ϑ_{G2}(t)·w^{f₃−t}` agree in that
+orientation. Top-slot normalization anchor: `ϑ(f₃−1) = 1`.
+
+**RATIONALE.** Two notes carry mutually inverse conventions for the same letter; a sign error
+here is caught by NO battery (append #54's own words), and duplicated prose copies of the table
+would drift. One canonical copy + citations is the only divergence-proof layout.
+**SUPERSEDES/REPAIRS:** discharges append #54's OPEN-CALL 2 mandate at the blueprint level.
+**BINDS:** D (owns), C/E/F (cite).
+
+---
+
 ## PART II — PROPOSED-AMENDMENT LIST
-STATUS: stub.
+
+Committed artifacts are not edited by this document. Each PA names the owner, the exact repair,
+and the cost. Application point: the leanspec-stub stage, before any affected signature freezes
+(the chapter-G A-7 precedent class).
+
+### PA-1 — THE D-§9.1 REPAIR (CHAP-B committed §8 statements; executes GC-1)
+
+**Owner:** the B §10-finisher applies it as a dated CHAP-B amendment; Asvin sign-off at the 0d
+checkpoint (statement-level change to committed signed text; standing statement-change authority
+2026-08-05 covers it as an honest repair, but it is listed in Part IV regardless).
+**Repairs, exactly four, all replacing the pin `npHgt φ f 0 = (H₀ : ℕ∞)` by
+`npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞)` (with `h` the side's nonemptiness witness already in
+scope in each statement):**
+1. **B.63** — the `hsep` hypothesis clause (currently
+   `1 < (sideSet φ f u ℓ).card → ∀ H₀ : ℕ, npHgt φ f 0 = (H₀ : ℕ∞) → (resPoly π φ f u ℓ h H₀).Separable`).
+2. **B.65** — the same pin in its statement.
+3. **B.73** — the `NeedsDescent` definition body (currently
+   `∃ (u ℓ : ℕ) (h : _) (H₀ : ℕ), 0 < ℓ ∧ Nat.Coprime u ℓ ∧ 1 < (sideSet φ f u ℓ).card ∧
+   npHgt φ f 0 = (H₀ : ℕ∞) ∧ ¬ (resPoly π φ f u ℓ h H₀).Separable`).
+4. **B.74** — the statement gloss only.
+
+**Not touched:** every §9 signature (B.77's `resPoly_congr` is convention-free by design;
+B.79/B.80/B.82 consume `NeedsDescent` by name); B.28/B.29/B.30 (already correct under the
+`sideMin` pin). **Cost:** four statement-level edits, zero proof-route changes, zero new nodes.
+**Until applied:** B.63/B.79/B.80/B.82 are correct but vacuously scoped to blocks whose every
+`card ≥ 2` side contains abscissa 0 (CHAP-B A-§9.1's own words). **Related but separate:** CHAP-B
+§14 item 12 (strengthening B.63's existential `T` to B.66's canonical finsets) is a §8-owned
+refinement the finisher should adjudicate in the same pass, but it is NOT part of PA-1.
+
+### PA-2 — `leanspec/Leanspec/ChapG.lean`: RETIRE THE 32-AND-GROWING NAME COLLISIONS
+
+**Owner:** orchestrator / stub agent. **Repair:** wrap the surviving ChapG stubs in
+`namespace LeanspecG` (GC-6.6), or comment out stubs whose nodes have landed (each landing
+currently adds one `has already been declared` failure — CHAP-B H-13 records the mechanism).
+**Cost:** one mechanical file pass; no blueprint text changes (chapter G is CLOSED; its
+blueprint is not edited). The 0e type-diff is unaffected — it compares fully-qualified
+normalized types, not namespaces of the stub file.
+
+### PA-3 — THE CHAPTER CUT IS STALE IN TWO PLACES (0c artifact; orchestrator item)
+
+(i) **GENTOW2 now has a spec** (`spec/EFF-GENTOW2.md`, 93 units, manifest-gap recovery, append
+#54) but the cut's chapter-C note list predates it. **Ruling (czar):** GENTOW2 is assigned to
+**chapter C** (it is a tower note and the FGMN-cite carrier), with D and F consuming its
+`B″`/`B′` lemmas via GC-13 placeholders. Flagged in Part IV — a cut change is Asvin-visible.
+(ii) **W12 and GENTOW5 are merged** (contiguous IDs) but `dag_build.py` still harvests
+shard-local IDs; `spec/DAG_README.md`'s "no merge run" sentence is stale. **Repair:** re-run the
+harvest against the merges and remap the evidence-column IDs (GC-12); CHAP-B §11's W12 rows are
+the template. **Cost:** one build re-run + mechanical remap; no blueprint edits.
+
+### PA-4 — CHAP-H §15's "real namespaces" CLAUSE vs THE STUB-COLLISION LESSON
+
+**Owner:** the ChapH stub-landing agent (the file `leanspec/Leanspec/ChapH.lean` does NOT exist
+yet — verified at HEAD). **Conflict:** CHAP-H §15 (committed) instructs stubs "with the real
+namespaces", which reproduces the ChapG collision structure the moment H nodes land. **Repair:**
+land the ChapH stubs wrapped in `namespace LeanspecH` per GC-6.6; CHAP-H's blueprint text stays
+byte-unchanged (the deviation is recorded here and in the stub file's header). **Cost:** nil now;
+avoids ~190 future collisions. The same applies to the future ChapB stub file (CHAP-B H-13
+already specifies `LeanspecB` — no conflict there).
+
+### PA-5 — W12's REMAINING TRANSCRIPTION IS ASSIGNED TO CHAPTER C (cut-internal ruling)
+
+The 0c cut puts W12 in chapter H; committed CHAP-H H-12 explicitly does NOT transcribe it, and
+committed CHAP-B transcribed its order-1 digit-calculus and leaf-certification units
+(`EFF.W12.08 .23 .24 .25 .27 .51 .83–.87` appear in B's SOURCE fields). **Ruling (czar):** the
+remaining W12 mass — `LEMMA W12-HT` (`EFF.W12.83`–`.87`, the all-degree order-1 count law) and
+the level-`N` cell/count layer — goes to **chapter C** (CHAP-B H-10's own routing: "counting
+level-`N` cells is chapters C/H's object … it belongs to chapter C together with `LEMMA W12-HT`",
+and H is closed). `THEOREM W-12.D`'s reduction shape is already H.98 + landed
+`UniformityStatement.ofDecided` and is NOT re-transcribed. Flagged in Part IV (cut change,
+Asvin-visible). **Trap carried with the assignment:** an `HT` transcription at `d ≥ 2` inherits
+`B-BOX-1` through B.55/B.58 (CHAP-B H-10), and `EFF.W12.87` OPEN-CALL 6 discloses HT's thin
+verification (grid `n∈{3,4}, q∈{2,3}, N≤6`, no hostile-arc pass) — GC-11 gates apply with extra
+force.
 
 ---
 
@@ -428,4 +547,4 @@ STATUS: stub.
 ## PART IV — ITEMS FLAGGED FOR ASVIN (0d checkpoint)
 STATUS: stub.
 
-<!-- RESUME: next item = PART II amendments (PA-1 D-§9.1 repair list, PA-2 leanspec ChapG, PA-3 GENTOW2 cut addendum), then briefs B-FIN/C/E/D/F/I, then PART IV -->
+<!-- RESUME: next item = briefs B-FIN, C, E, then D, F, I, then PART IV flag list -->
