@@ -23,6 +23,9 @@ import Uniformity.ChapH.H22
 import Uniformity.ChapH.H23
 import Uniformity.ChapH.H24
 import Uniformity.ChapH.H25
+import Uniformity.ChapH.H26
+import Uniformity.ChapH.H27
+import Uniformity.ChapH.H28
 import Uniformity.ChapH.H29
 import Uniformity.ChapH.H30
 import Uniformity.ChapH.H31
@@ -50,6 +53,7 @@ import Uniformity.ChapH.H52
 import Uniformity.ChapH.H53
 import Uniformity.ChapH.H54
 import Uniformity.ChapH.H55
+import Uniformity.ChapH.H56
 import Uniformity.ChapH.H57
 import Uniformity.ChapH.H58
 import Uniformity.ChapH.H59
@@ -89,5 +93,9 @@ import Uniformity.ChapH.H92
 import Uniformity.ChapH.H93
 import Uniformity.ChapH.H94
 import Uniformity.ChapH.H95
+import Uniformity.ChapH.H96
+import Uniformity.ChapH.H97
+import Uniformity.ChapH.H98
+import Uniformity.ChapH.H99
 
-/-! Chapter H roll-up — 90/99 landed; rate_close re-landing at A-H.2 in flight. -/
+/-! Chapter H roll-up — COMPLETE: 99/99 nodes landed 2026-08-15. -/
