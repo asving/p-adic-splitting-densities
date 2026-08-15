@@ -3325,6 +3325,391 @@ the E-side shell is a **Lean theorem** (thin by design).
 
 ---
 
-<!-- RESUME: §7 COMPLETE (E.45–E.54). Next: §8 (E.55–E.60, root-continuation/exhaust). -->
+## 8. §8 — ROOT-CONTINUATION AND EXHAUST: THE REFINE CHAIN, THE BLOCK SPLIT, TERMINATION
 
-*(sections §8–§14 follow)*
+> **The two hard nodes of the chapter live here** (E.55, E.57), plus the mutual-induction
+> resolution (E.56) and the arithmetic gates that keep `μ₂ ≤ 3` clean (E.59, E.60).
+
+### NODE E.55 [theorem] [fresh] — **HARD NODE**
+
+**STATEMENT.** *α-refine chains are finite (LEMMA HE7-8, (REF-TERM), characteristic-free).*
+Over the carrier with the coefficient link (see hypotheses): suppose an INFINITE chain of
+α-refines — keys `Ψ^{(0)} = Ψ`, `Ψ^{(j+1)} = Ψ^{(j)} − w_j` with `deg w_j < D″`,
+`hgt w_j = λ^{(j)}` STRICTLY increasing integers, each step at a node whose development
+satisfies the single-side floor `hgt (A_m^{(j)}) ≥ (μ₂ − m)·λ^{(j)}` for every `m < μ₂` — and
+`μ₂ ≥ 2`. Then `F = (Ψ − W)^{μ₂}` for the π-adic limit `W` of the partial sums, so `F` is not
+squarefree over the fraction field — contradiction. Hence every α-refine chain is finite. "The
+argument needs no 'binomial kill' … the node condition … plus `λ^{(j)} → ∞` is all that is
+used."
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem refine_chain_finite {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {K : Type*} [Field K] (C : SlotCarrier O K)
+    -- the coefficient link: heights control O-coefficient valuations
+    (hcoeff : ∀ (A : Polynomial O) (v : ℤ), A.natDegree < C.D →
+      (v : WithTop ℤ) ≤ C.hgt A → ∀ i, ((v : WithTop ℤ) ≤ hOcoeff (A.coeff i)))
+    -- (hOcoeff abbreviates the O-valuation read into WithTop ℤ; see NOTE)
+    {F Ψ : Polynomial O} {μ₂ : ℕ} (hμ : 2 ≤ μ₂)
+    (hsq : Squarefree (F.map (algebraMap O (FractionRing O))))
+    (w : ℕ → Polynomial O) (lam : ℕ → ℤ)
+    (hdeg : ∀ j, (w j).natDegree < C.D * μ₂)     -- deg < D″; see NOTE on D″
+    (hh : ∀ j, C.hgt (w j) = (lam j : WithTop ℤ))
+    (hmono : StrictMono lam)
+    (A : ℕ → ℕ → Polynomial O)
+    (hdev : ∀ j, F = (Ψ - ∑ i ∈ Finset.range j, w i) ^ μ₂
+      + ∑ m ∈ Finset.range μ₂, A j m * (Ψ - ∑ i ∈ Finset.range j, w i) ^ m)
+    (hfloor : ∀ j, ∀ m < μ₂, ((μ₂ - m : ℕ) : ℤ) * lam j ≤ … )  -- cleared floor; NOTE
+    : False
+```
+
+**⚠ SIGNATURE NOTE (three spelling calls, all stub-stage).** (a) `hOcoeff` is the DVR
+valuation `addVal`-read of an `O`-element into `WithTop ℤ` — spell against the landed
+`Uniformity` valuation API (`addVal`/`pow_dvd_iff_le_addVal` family, chapter-A kernel), not a
+new definition. (b) The degree bound is against `D″ = C.D * μ₂`… no — at the ladder the
+refine increments have `deg < D″` where `D″` is the CURRENT key degree `C.D`-at-the-rung;
+instances fix it; the blueprint freezes `deg w_j < <current key degree>` with the parameter
+made explicit at stub time. (c) `hfloor`'s right side is `hgt (A j m)` cleared into the same
+`WithTop ℤ` order — the display is elided here; the stub elaborates it as
+`((μ₂ - m : ℕ) : ℤ) • (lam j) ≤ C.hgt (A j m)`-shaped. None of the three calls changes the
+theorem's strength; each is flagged in §12.
+
+**DEPENDS.** E.10 (heights), E.38 (`slot_fold` for the partial sums' heights) · mathlib
+`IsAdicComplete`, `Polynomial.coeff` limits, `Squarefree`.
+
+**PROOF (the corpus's, in Lean steps).**
+1. Partial sums `W_j` converge coefficientwise: for each coefficient index `i`, the tail
+   increments' coefficients have `addVal → ∞` (via `hh`, `hmono`, `hcoeff` — `lam j → ∞`
+   since strictly monotone integer sequence), so the coefficient sequence is Cauchy in the
+   `maximalIdeal`-adic topology; `IsAdicComplete` gives limits; assemble `W` (degree `< D″`,
+   coefficientwise).
+2. The floors force `A j m → 0` coefficientwise (same mechanism through `hfloor`).
+3. Pass to the limit in `hdev` at each fixed polynomial coefficient (all sums are finite in
+   each coefficient): `F = (Ψ − W)^{μ₂}`.
+4. `μ₂ ≥ 2` makes `(Ψ − W)^{μ₂}`'s image not squarefree
+   (`Squarefree` fails on `p^k, k ≥ 2, p` nonunit — mathlib `Squarefree.pow`-contrapositive /
+   `sq_dvd`); contradiction with `hsq`.
+
+**SIZE.** 60 lines. **SPLIT-MANDATED ×3:** `E55a` (step 1, the coefficientwise completeness
+limit — reusable), `E55b` (step 3, the limit-passing in a polynomial identity), `E55` (the
+assembly + step 4). This is the chapter's hardest genuinely-provable node; claim it early
+(the CHAP-H H.60/H.70 scheduling lesson).
+
+**SOURCE.** `EFF.HE7.53` (LEMMA HE7-8, statement + proof verbatim — the convergence argument
+is the source's own: "dv₂(A) → ∞ forces the Φ′-development coefficients of A, hence its
+O-coefficients, to converge π-adically to 0 … The partial sums W_j therefore converge in the
+(complete) O-module of polynomials of degree < D″ … Passing to the limit … gives
+f_S = (Ψ − W)^{μ₂} in O[x] … With μ₂ ≥ 2 this makes disc f_S = 0"; the no-binomial-kill
+NON-IMPORT); `EFF.T2.26` (`HE7-REF-TERM` as the pinned `(SEC-RANK)` supplier at a DEFINITION
+HE6-1 key — THIS node is that supplier's Lean form, discharging `(SEC-RANK)` "in its
+well-foundedness form … it refutes infinite α-refine chains directly", `EFF.T2.52`).
+
+**TEETH.** Q1's 42 one-step refines + PE2's first 2-step chains + `he7annex_supp.py` P4 (the
+WRONG continuation cycles 48/48 — the tooth showing termination is not free) → **Lean
+theorem**; the completeness hypothesis is declared per GC-6.4 (only here and its splits).
+
+**ENVIRONMENT.** ENV-E2 + `[IsAdicComplete (maximalIdeal O) O]`.
+
+---
+
+### NODE E.56 [theorem] [fresh]
+
+**STATEMENT.** *The strict slope increase along the chain (LEMMA HE7-13), with the HE7-12(d)
+mutual induction resolved as ONE chain invariant.* Carrier mechanism, two clauses:
+(i) **the per-step jump** (the refined class rises): if `hgt a = hgt b = (λ : ℤ)` and
+`dig a = dig b`, then `(λ : WithTop ℤ) < hgt (a − b)` — the SAME-residue kill (LEMMA HE7-13's
+own mechanism per root; HE7-13′(b)); taken from the carrier law `hsame` (hypothesis, promotion
+candidate — the E.35 note's counterpart);
+(ii) **the chain invariant** (the simultaneous induction of `EFF.HE7.44`(d)'s `[r3]` rider and
+HE7-13, resolved): along a refine chain where step `j`'s increment `w_j` is read at the
+current slope `λ^{(j)}` (its `hgt`) and each refined class rises past it (clause (i)), the
+slope sequence is STRICTLY MONOTONE and the increments' heights are pairwise distinct — by
+strong induction on the chain length, proving [distinctness + strict increase + the fold's
+`W ≠ 0` exactness (E.38's `slot_fold` at the pairwise-distinct heights)] TOGETHER at each
+step. No circularity survives: the invariant is one induction hypothesis.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem same_digit_rises {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K)
+    (hsame : ∀ (a b : Polynomial O) (k : ℤ), C.hgt a = (k : WithTop ℤ) →
+      C.hgt b = (k : WithTop ℤ) → C.dig a = C.dig b → (k : WithTop ℤ) < C.hgt (a - b))
+    {a b : Polynomial O} {k : ℤ} (ha : C.hgt a = (k : WithTop ℤ))
+    (hb : C.hgt b = (k : WithTop ℤ)) (hd : C.dig a = C.dig b) :
+    (k : WithTop ℤ) < C.hgt (a - b)
+
+theorem chain_invariant {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) (w : ℕ → Polynomial O) (lam : ℕ → ℤ)
+    (hh : ∀ j, C.hgt (w j) = (lam j : WithTop ℤ))
+    (hstep : ∀ j, lam j < lam (j + 1))   -- supplied per step by the refined read
+    : StrictMono lam ∧ ∀ i j, i < j → C.hgt (w i) ≠ C.hgt (w j)
+```
+
+**⚠ SIGNATURE NOTE (what the induction actually buys).** `hstep` — one step's increase — is
+what the refined-at-the-new-key READ supplies (the new node's slope is the new min, above the
+old by clause (i) applied at every root of the refined class + the polygon re-read; the
+polygon re-read is the instances' E.23 row via the transported package E.38(iii)/E.42). The
+theorem's content is the PACKAGING: step-local increase ⟹ global strict monotonicity +
+pairwise-distinct heights — exactly what E.38's `slot_fold` and E.55's `hmono` consume. So the
+corpus's "the two lemmas induct together along the chain" is realized as: E.56 packages the
+invariant; E.38 consumes distinctness; E.55 consumes monotonicity; no cycle. (Flagged in §14
+for the cross-read as the resolution of HE7's OPEN-CALL 3.)
+
+**DEPENDS.** E.10, E.35 (the sibling forcing), E.38.
+
+**PROOF.**
+1. `same_digit_rises`: exact `hsame` (the node exists to NAME the law and its promotion
+   candidacy — same protocol as E.35's `hneg`).
+2. `chain_invariant`: `strictMono_nat_of_lt_succ hstep`; distinctness: `i < j` gives
+   `lam i < lam j` (monotone), so the heights differ (`Nat.cast` injectivity into
+   `WithTop ℤ`).
+
+**SIZE.** 18 lines.
+
+**SOURCE.** `EFF.HE7.45` (LEMMA HE7-13 `[r2]`: "the strict slope increase along the refine
+chain — DERIVED, not assumed"); `EFF.HE7.44`(d) (the `[r3]` rider: "the values dv₂(w_i) are
+pairwise DISTINCT (they are the strictly increasing slopes … the two lemmas induct together
+along the chain, the base W = w₁ being a single nonzero (LIFT₂) polynomial)"; the OPEN-CALL 3
+flag at the spec's RESOLUTION TRACE: "Flagged, not repaired"); `EFF.HE7.96`(b) (the per-root
+mechanism: "a difference of two elements of the same dv₂ and the SAME residue — LEMMA
+HE7-13's own mechanism, per root").
+
+**TEETH.** PE2's 2-step chains (634/634 members, independent instrument) + `he7annex_supp.py`
+P3 (0 floor violations across 148 refines) → **Lean theorem** (the packaging); the per-step
+supply is instance content.
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+### NODE E.57 [theorem] [fresh] — **HARD NODE**
+
+**STATEMENT.** *The mixed-node block split (ANNEX-LEMMA HE7-13′(a), schema form).* Given the
+rung interface `I` for block `B` (key `Ψ̃`, all-roots-on-disk situation) plus the carrier legs
+as hypotheses (the Galois-stability/orbit-forcing data, C-supplied — the E.36 `hforce`
+pattern): the label classes partition into BLOCK data — for each side `p` and each factor `q`
+of its shadow, a block `B_{p,q} : BlockData C` with: (i) `B.F = Π f_{p,q}` and degree
+additivity; (ii) each block's OWN interface has a SINGLE side of slope `p` with length
+`L_{p,q} = deg f_{p,q} / (C.D … )` and pure residual shadow (one factor, multiplicity
+`k = L_{p,q}/(p.2 * deg q) ∈ ℤ_{≥1}`); (iii) side lengths add: `Σ_q L_{p,q} = len p`;
+(iv) the per-block trichotomy gate: a level-3 block has `L_{p,q} = k·p.2·deg q ≥ 4`, so the
+block's `μ ≥ 4` (E.59). This is the PROVED level-≥2 counterpart of `(LB1)` (E.39) — annex
+grade at source, full displayed proof, promoted here to a proof target.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem block_split {O : Type*} [CommRing O] [IsDomain O] {K : Type*} [Field K]
+    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface C B)
+    -- carrier legs (C-supplied at instances; the schema's explicit hypotheses):
+    (hblocks : ∀ p ∈ I.sides, ∀ q ∈ I.linFac p,
+      ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
+        Fpq.natDegree = I.classCount p q)
+    (hblocksHi : ∀ p ∈ I.sides, ∀ q ∈ I.hiFac p,
+      ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
+        Fpq.natDegree = I.classCountHi p q)
+    (hpart : True)  -- the product/disjointness leg; typed at stub per the NOTE
+    : ∃ blocks : List (Polynomial O),
+        B.F = blocks.prod ∧
+        (blocks.map Polynomial.natDegree).sum = B.F.natDegree
+```
+
+**⚠ SIGNATURE NOTE (schema honesty; the annex-grade caveat).** The conclusion shape displayed
+is the PRODUCT/EXHAUSTION layer; the full contract adds, per block, the single-side and
+pure-residual interface clauses of (ii)–(iv) as a `BlockSuite` record (the E.39 note's
+structure, INSTANTIATED here rather than hypothesized — this is the level-≥2 vs level-1
+asymmetry the corpus draws). The `hpart : True` placeholder marks the disjointness/product
+carrier leg (the classes partition the roots — `EFF.HE7.96`(a)'s "the label's factor is the
+minimal polynomial" argument, K-theoretic, C-supplied); typed at GC-13 resolution — the node
+is BLOCKED for the fleet until then (§12). **Grade note carried:** the source is ANNEX GRADE
+("never hostile-passed as written", later covered by the annex stack's 2/2); this chapter's
+Lean target, once proved, strictly upgrades it.
+
+**DEPENDS.** E.12, E.14–E.16 (the per-block count laws), E.36 (the dichotomy shape), E.59 ·
+C placeholders as displayed.
+
+**PROOF (the corpus's, mapped).**
+1. Per class: Galois-stable root set ⟹ monic `O`-divisor (the `hblocks` legs).
+2. Per block: HE7-9/HE7-10 re-run on `f_C` (the E.14–E.16 shapes at the block's own
+   interface) give the single side + length; residual uniqueness by the
+   minimal-polynomial argument (carrier leg) gives the pure shadow `c·r^k`.
+3. Length additivity: the partition sums class counts (`hexhaust`) against `haccount` per
+   block.
+4. The trichotomy gate: E.59's arithmetic.
+
+**SIZE.** 50 lines. **SPLIT-MANDATED ×2:** `E57` (product/lengths) + `E57a` (the per-block
+pure-residual interface record).
+
+**SOURCE.** `EFF.HE7.96` (ANNEX-LEMMA HE7-13′, clauses (a)–(e) verbatim + the full proof;
+"a mixed node is a bouquet of PURE nodes"); `EFF.HE7.119` rider (ii) (the `Ψ̃ ∤ f_C` one-liner
+this consumes through E.36/E.37); ANNEX F-1 (the wiring: "the refine is the α-refine OF THE
+REPEATED CLASS'S OWN BLOCK, whose node IS pure"; first live `μ₂ = 3, n = 12`; "vacuous at
+every machine-certified degree (μ₂ = 2 forces pure)").
+
+**TEETH.** `he7_pe3_probe12.py` (144/144 at μ₂ = 3, n = 12 — the first mixed-node machine
+contact) + `he7annex_supp.py` P2/P5 (128/128 parked residuals exact; 16/16 mixed/pure
+boundary) → proof target; the annex-grade source status is recorded in §13.
+
+**ENVIRONMENT.** ENV-E2 (+ `[IsDomain O]`).
+
+---
+
+### NODE E.58 [lemma] [fresh]
+
+**STATEMENT.** *The per-class refine quartet (HE7-13′(b)–(e), carrier arithmetic).* Let `C` be
+the carrier with the `hsame` law (E.56) and negation law (E.35's `hneg`); let `Ψ̃, w` have
+`hgt w = (λ : ℤ)` with digit `s := dig w`. For an element `a` (the read of `Ψ̃` "at a root",
+schema: any polynomial with the stated height/digit):
+(b) `hgt a = λ ∧ dig a = s` ⟹ `λ < hgt (a − w)` (the refined class jumps — E.56(i));
+(c) `hgt a = λ ∧ dig a ≠ s` ⟹ `hgt (a − w) = λ ∧ dig (a − w) = dig a − s ≠ 0` (companions
+persist exactly, labels translated — `dig_add` on `a + (−w)`);
+(d) `hgt a = (μ : ℤ)` with `μ < λ` ⟹ `hgt (a − w) = (μ : ℤ) ∧ dig (a − w) = dig a` (lower
+sides untouched — `hgt_add_eq` + the height-μ digit read unchanged; the digit clause needs the
+fixed-height digit read of a sum where one summand sits strictly higher: a small companion law
+`dig_add_high`, hypothesis with promotion candidacy);
+(e) `hgt a = (ν : ℤ)` with `λ < ν` ⟹ `hgt (a − w) = λ ∧ dig (a − w) = −s` (steeper sides
+collapse onto `λ` — same mechanism, roles swapped; "(e) is what governs, and refutes, the
+naive whole-f_S continuation").
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem refine_quartet {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K)
+    (hneg : ∀ A, C.hgt (-A) = C.hgt A ∧ C.dig (-A) = - C.dig A)
+    (hsame : ∀ (a b : Polynomial O) (k : ℤ), C.hgt a = (k : WithTop ℤ) →
+      C.hgt b = (k : WithTop ℤ) → C.dig a = C.dig b → (k : WithTop ℤ) < C.hgt (a - b))
+    (hhigh : ∀ (a b : Polynomial O) (k : ℤ), C.hgt a = (k : WithTop ℤ) →
+      (k : WithTop ℤ) < C.hgt b → C.hgt (a + b) = (k : WithTop ℤ) ∧
+        C.dig (a + b) = C.dig a)
+    {w : Polynomial O} {lam : ℤ} (hw : C.hgt w = (lam : WithTop ℤ)) :
+    (∀ a, C.hgt a = (lam : WithTop ℤ) → C.dig a = C.dig w →
+      (lam : WithTop ℤ) < C.hgt (a - w)) ∧
+    (∀ a, C.hgt a = (lam : WithTop ℤ) → C.dig a ≠ C.dig w →
+      C.hgt (a - w) = (lam : WithTop ℤ) ∧ C.dig (a - w) = C.dig a - C.dig w) ∧
+    (∀ a (μ : ℤ), μ < lam → C.hgt a = (μ : WithTop ℤ) →
+      C.hgt (a - w) = (μ : WithTop ℤ) ∧ C.dig (a - w) = C.dig a) ∧
+    (∀ a (ν : ℤ), lam < ν → C.hgt a = (ν : WithTop ℤ) →
+      C.hgt (a - w) = (lam : WithTop ℤ) ∧ C.dig (a - w) = - C.dig w)
+```
+
+**DEPENDS.** E.10 (`dig_add`, `hgt_add_eq`), E.35, E.56.
+
+**PROOF.**
+1. (b): E.56(i). (c): `dig a − dig w ≠ 0`; `dig_add a (−w)` (via `hneg`) gives both clauses.
+2. (d): `hhigh a (−w)` at `hgt(−w) = λ > μ`. (e): `hhigh (−w) a`-shape with roles swapped:
+   `hgt(a − w) = hgt(−w) = λ` (the strictly-lower summand is `−w`… careful: here `−w` is the
+   LOWER one; apply `hhigh (−w) a` then translate; `dig = dig(−w) = −s`).
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.HE7.96` clauses (b)–(e) + proof, verbatim (incl. the PE3-charge answer:
+"the mechanism is NOT slot disjointness … What protects the companion classes on-disk is
+RESIDUE SEPARATION, clause (c)'s calculation: same value, different residue"; the translation
+law `r₂^τ(Z) = r₂(Z + s₂)` is the shadow's label move, carried by the instances' factor
+bookkeeping); `EFF.HE7.44`(a) (clause (d)/(e)'s off-disk sibling).
+
+**TEETH.** `he7annex_supp.py` P2 (clause (c) verified as polynomial EQUALITY, 128/128), P3
+(clause (b), 148 refines), P4 (clause (e)'s cycle tooth, 48/48), P5 (16/16) → **Lean
+theorem**; the three carrier laws (`hneg`/`hsame`/`hhigh`) are the promotion-candidate
+cluster — if E.10 grows fields, all three go together (one dated amendment).
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+### NODE E.59 [lemma] [fresh]
+
+**STATEMENT.** *The per-block level-jump gate (μ ≥ 4 at any jump; non-propagation at
+μ₂ ≤ 3).* For a block with single-side length `L = k * (ℓ * d)` (`k` the pure-residual
+multiplicity, `ℓ*d` the factor's product): if `k ≥ 2` and `ℓ*d ≥ 2` (the jump configuration)
+then `L ≥ 4`; hence any interface containing that block has `μ = Σ len ≥ L ≥ 4`. Contrapositive
+(the NON-PROPAGATION consumed by E.52 and chapter I's degree-indexing): at `μ ≤ 3` no jump
+configuration exists — every node is decided by rows 1–4/6 or a pure refine.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem block_jump_gate {k ℓ d L : ℕ} (hk : 2 ≤ k) (hld : 2 ≤ ℓ * d)
+    (hL : L = k * (ℓ * d)) : 4 ≤ L
+
+theorem no_jump_of_mu_le_three {μ L : ℕ} (hμ : μ ≤ 3) (hLμ : L ≤ μ) : ¬ 4 ≤ L
+```
+
+**DEPENDS.** E.07 (`jump_floor`).
+
+**PROOF.** 1. `jump_floor` + `hL`; 2. `omega`.
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.HE7.96`(a) ("the μ₂ ≥ 4 gate is unchanged: `L_{λ,r} = k·ℓ₂ deg r ≥ 4`, so
+`μ₂ ≥ L_λ ≥ L_{λ,r} ≥ 4`, so the μ₂ ≤ 3 non-propagation of HE7.A(3) — hence COROLLARY
+HE7.B(i)'s n ≤ 15 coverage — is unchanged by the block reduction"); `EFF.HE7.14` (the
+non-propagation display).
+
+**TEETH.** `he7annex_supp.py` (96/96 at μ₂ = 4 — the first live jump row) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.60 [theorem] [fresh]
+
+**STATEMENT.** *THEOREM HE7.C, schema form (the ladder is finite at every degree).* Packaging
+of E.07 + E.55: in any read history, (i) every level jump sits at a state with `μ ≥ 4`
+(E.59/E.07(i) with clause (1)'s `Σ len = μ`); (ii) the jump target's mass halves
+(E.07(ii)/E.17(ii)); (iii) hence the jump count satisfies `2^(J+1) ≤ μ₀` (E.07(iii)) — the
+cleared `J ≤ log₂ μ − 1 ≤ log₂ n − 2`; (iv) interleaved α-refines are finite (E.55); every
+other step strictly decreases μ (E.17/E.18) — so the read tree is finite. Corollary instances,
+as separate small clauses: at `μ₀ = 4` (`n = 8`, `D′ = 2`): `J ≤ 1` and the one jump lands at
+`μ₂ ≤ 2` (`2^(J+1) ≤ 4` forces `J ≤ 1`; halving gives `μ₂ ≤ 2`); at `μ₀ ≤ 7` (`n ≤ 15`,
+`D′ ≥ 2`): every jump target has `μ₂ ≤ 3` (halving + floor); **the `n = 16` clause is stated
+in R3's rider form ONLY**: `J ≥ 2 → μ₀ ≥ 8` (necessary direction; E.64 does the `n`-reading).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem ladder_finite_bounds (μ : ℕ → ℕ) (J : ℕ)
+    (h4 : ∀ i ≤ J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
+    2 ^ (J + 1) ≤ μ 0 ∧ (μ 0 = 4 → J ≤ 1) ∧ (μ 0 ≤ 7 → ∀ i, 1 ≤ i → i ≤ J → μ i ≤ 3)
+    ∧ (2 ≤ J → 8 ≤ μ 0)
+```
+
+**DEPENDS.** E.07, E.17, E.55 (the α-refine leg, cited in the packaging comment — the
+theorem's statement is pure arithmetic; the READ-finiteness composition is E.20's engine with
+E.55 discharging the within-level `W`).
+
+**PROOF.**
+1. First clause: E.07(iii). Second: `2^(J+1) ≤ 4` forces `J + 1 ≤ 2`. Third: halving from
+   `μ 0 ≤ 7` gives `μ 1 ≤ 3` (2μ₁ ≤ 7 ⟹ μ₁ ≤ 3), and inductively `μ i ≤ 3` for `i ≥ 1`.
+   Fourth: `2^3 ≤ μ 0`. `omega` + `Nat.pow` lemmas throughout.
+
+**SIZE.** 18 lines.
+
+**SOURCE.** `EFF.HE7.15` (THEOREM HE7.C `[r1]`, statement + proof verbatim; the widening
+rider; **ANNEX R R3's rider transcribed**: "read both sentences as 'level 3 / J = 2 is
+unreachable below n = 16; n = 16 is the first degree NOT EXCLUDED by the bound.' No consumer
+uses more"); `EFF.HE7.16`(i) (the `μ ≤ 7 ⟹ μ₂ ≤ ⌊7/2⌋ = 3` floor, the `[r2, HE7-PE1 F-3]`
+repair — the ℕ-division form above IS the floored form, so the pre-r2 defect cannot recur);
+`EFF.HE7.57` (the n = 8 frame's `μ₂ = 2`).
+
+**TEETH.** Q1 (n = 8: one jump, μ₂ = 2, everywhere) + `he7annex_supp.py` (n = 16 constructed
+family — the machine-instance evidence for the NOT-EXCLUDED direction, never cited as the
+existential theorem) → **Lean theorem** (necessary directions only).
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+<!-- RESUME: §8 COMPLETE (E.55–E.60). Next: §9 (E.61–E.64, VARTHETA/W carriers) + §10 gates. -->
+
+*(sections §9–§14 follow)*
