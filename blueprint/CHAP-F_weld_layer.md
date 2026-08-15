@@ -1301,7 +1301,450 @@ include a separator-style instance).
 
 ---
 
-<!-- RESUME: §6 composed (F.14–F.18, DECISION D-F3). Next: §7 (recon + structural clauses,
-F.19–F.26, DECISIONs D-F1/D-F2). -->
+## 7. §7 — MUTUAL-RECON ADJUDICATIONS + THE REACHABLE GRT STRUCTURAL CLAUSES
+
+**Section contract.** Products (4) and (5) of BRIEF F. First the two DECISIONs the global
+DAG defers to this chapter (DAG_README SCC items 3–4: "the chapter blueprint must decide
+which direction is the statement dependency; this draft does not"); then the structural
+clauses that Display A's `AllOInterfaces[… W/J …]` conjunct (HYP.126: "Weld/J suppliers are
+characteristic-general at every use") and the two surviving faces' supplier stacks actually
+name — each an interface-carrier at its recorded scope and grade, never an upgrade.
+
+**DECISION D-F1 — the `EFF.GRTW2.20 ↔ EFF.LIFTCORNER.72` SCC (the W2-OPEN-2-designation
+pair; dated 2026-08-15).** **Ruling: the statement dependency is `EFF.LIFTCORNER.72 →
+EFF.GRTW2.20` (LIFTCORNER depends on GRTW2); the reverse recorded edge is consumer-
+acknowledgment provenance, not a dependency.** Grounds, from the units' own text: (i)
+LIFTCORNER.72 IS a consumption census — "COR 2 and the S1 orbit frame consume GRTW2 clause 3
+(the ψ-transport definition + its corner degeneration)", with the grade-cap consequence
+("the unit's grade is CAPPED at that consumption"); its content quantifies over GRTW2's
+objects. (ii) The opposite direction exists in the harvest only because GRTW2's acceptance
+record ACKNOWLEDGES the consumer by name ("the accepted LIFTCORNER's shift-descent
+consumption … now ride[s] an ACCEPTED supplier at its fenced scope") — the spec itself calls
+this "the ONE fully closed supplier-consumer loop in the shard": declaration on one side,
+acknowledgment on the other. An acknowledgment row is `ledger-index`-class provenance under
+the DAG's own vocabulary. (iii) Corroborating: GRTW2.20's own SUPERSESSION KIND for the
+Σ-LAW's re-derivation of the same recursion is "license (corroboration, nothing moves)" —
+GRTW2.20's statement consumes nothing of LIFTCORNER. **DAG consequence (§11):** the TSV
+emits `EFF.LIFTCORNER.72 → EFF.GRTW2.20 (stmt-dep)` and re-classes the reverse edge
+`provenance` — breaking SCC 3.
+
+**DECISION D-F2 — the `EFF.GRTW2.35 ↔ EFF.LIFTCORNER.62` SCC (the W2-OPEN-1-designation
+pair; dated 2026-08-15).** **Ruling: the statement dependency is `EFF.LIFTCORNER.62 →
+EFF.GRTW2.35`; the reverse edge is again consumer-acknowledgment provenance.** Grounds: (i)
+LIFTCORNER.62 is the WITHDRAWN-identification record — its entire content is a claim ABOUT
+W2-OPEN-1's statement ("W2-OPEN-1 as recorded (GRTW2 §5.3) quantifies over the committed
+value/cocycle battery … with the transported classifier lifts"), itemizing what is owed
+((a) the orbit-membership display; (b) the battery legs, K12 above all) before any slice of
+it may be claimed — a reference to GRTW2.35's statement, hence a stmt-dep. (ii) GRTW2.35's
+own three E5 re-affirmations ("W2-OPEN-1 remains open …") make no reference to LIFTCORNER
+content; the reverse harvest edge is LIFTCORNER's appearance in GRTW2's consumer tables.
+(iii) Scope note: BOTH units are out-of-cone mass (§3 rows 4 and 10–11's neighborhood —
+the value layer); this adjudication is DAG hygiene, not capstone conditionality. **DAG
+consequence (§11):** `EFF.LIFTCORNER.62 → EFF.GRTW2.35 (stmt-dep)`; reverse re-classed
+`provenance` — breaking SCC 4.
+
+*(Both rulings follow one principle, stated once so the cross-read can attack it: where an
+SCC pairs a CONSUMPTION/WITHDRAWAL record with the unit it consumes or corrects, the record
+depends on the unit; an acceptance record's acknowledgment of its consumer is provenance.
+The two SCCs are the only two genuine MUTUAL-RECON pairs in the exact-resolved subgraph.)*
+
+### NODE F.19 [interface-carrier] [fresh]
+
+**STATEMENT.** *THEOREM JA-RES at its recorded scope (the per-slot law — `JD0-BOX-2`'s
+residual leg and JB-DEV(iii)(RES)'s supplier).* Verbatim scope from `EFF.GRTJA.08`: level
+`m ≥ 2`, shared keys below `m`; IF `(VD-(m−1))` holds at every on-line digit `a_i` of `A`
+(the PER-DIGIT PROVISO), THEN for every attained abscissa `i`:
+`c_i = z_{m−1}^{−i·A_{m−1}} · C_i` — the print's order-`m` residual coefficient equals the
+harness packed digit times the PURE CHARACTER in the abscissa. **Unconditional at `m = 2`**
+(the proviso is `(VD-1)` = W2-L3, consumed); **proviso-scoped at `m ≥ 3`**, root-inclusive
+`[r2]`. **Grade: GRTJA arc 1/2 — the single priced input on J-D0's critical path (honesty
+F-7); carried, never upgraded.** Lean form: a `Prop`-carrier over abstract site data (the
+print/harness coefficient families and the exponent datum), whose instance is the priced
+supplier obligation chapter I sees through F.04's provenance.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- JA-RES at recorded scope (`EFF.GRTJA.08`): the per-slot pure-character law relating
+print residual coefficients to harness packed digits. Carried at GRTJA arc 1/2. -/
+def JAResLaw {K : Type*} [Field K] {ι : Type*}
+    (printCoeff harnessDigit : ι → K) (z : Kˣ) (A : ℤ) (abscissa : ι → ℤ) : Prop :=
+  ∀ i, printCoeff i = (z ^ (-(abscissa i * A)) : Kˣ) * harnessDigit i
+```
+
+**DEPENDS.** none (shape). Instance provenance: `EFF.GRTJA.08` (+ its proviso structure);
+the m = 2 unconditional instance additionally consumes W2-L3 = `EFF.GRTW2.14`.
+
+**PROOF.** definitional (a carrier).
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.GRTJA.08` (statement + proof + the spec's re-derived exponent audit: "the
+cancellation is exact and the character is purely abscissa-linear — which is precisely what
+makes JA-BOX-1's slot-independent form false"); `EFF.GRTJA.24` (grade record superseding the
+stale 0/2 self-descriptions); C2-1's consumer sweep ("JA-RES survives unchanged").
+
+**FAITHFULNESS.** The carrier fixes the law's SHAPE (one `z`-power per abscissa — exactly
+what F.05's strikes instantiate); the per-digit proviso and the root-inclusive perimeter are
+instance-side hypotheses (they quantify over tower digits F has no carrier for). JA-BOX-1's
+refuted slot-independent form is fenced by construction: the exponent is `abscissa i * A`,
+never a constant.
+
+**TEETH.** CK-RES 443 scored + the 16-row proviso-failing boundary census — RECORDED.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.20 [interface-carrier] [fresh]
+
+**STATEMENT.** *THEOREM JA-GRID at its C2-4-pinned scope (J-D0's grid leg).* Governing form
+`THEOREM JA-GRID-CORR` (`EFF.GRTJA.07`'s supersession, TERMINAL C2-4): **only the arithmetic
+grid identity (eq-(12-int) digits = abscissa/side coordinates) and the carry clause are
+unconditional; the print T-point additionally needs `u(V) ≥ 0`.** Consumed by J-D0 at
+GRTJA's arc grade (BOX-1's own wording: "rides JA-GRID at GRTJA's arc grade"). The `u ≥ 0`
+proviso's unbounded-grid form is HYP.21 — OUT of cone (§3 row 1); the carrier therefore
+states the unconditional half only, with the T-point clause explicitly absent.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- JA-GRID-CORR's unconditional half (`EFF.GRTJA.07`, terminal C2-4): the integer-grid
+digit/coordinate identity with its carry clause, as an abstract indexed law. Carried at
+GRTJA arc 1/2; the print T-point clause (needs `u(V) ≥ 0`) is deliberately absent. -/
+def JAGridLaw {ι : Type*} (digit : ι → ℤ) (coord : ι → ℤ) (carry : ι → ℤ) : Prop :=
+  ∀ i, digit i = coord i + carry i
+```
+
+**DEPENDS.** none.
+
+**PROOF.** definitional (a carrier).
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GRTJA.07` (+ the C-4 freeze-predicate row: "only the arithmetic grid and
+carry are unconditional; the print T-point needs `u(V) ≥ 0`" — supersession kind scope-pin,
+TERMINAL C2-4); `EFF.JD0.25` (the priced-supplier table: "JA-GRID grid = T-side abscissas;
+J-D0 consumes both AT THAT GRADE").
+
+**FAITHFULNESS.** The abstract shape (digit = coordinate + carry) is the eq-(12-int)
+identity's skeleton; the concrete grid objects are the sites'. Scope-pin honoured by
+omission of the T-point clause.
+
+**TEETH.** CK-GRID 3,248 GREEN — RECORDED.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.21 [interface-carrier] [fresh]
+
+**STATEMENT.** *The `(ξ, w)` covariance family at its accepted fenced scope (`JD0-BOX-2`'s
+GRTW2 leg).* From `EFF.GRTW2.19` (the closed form: THE DISPLAYED PAIR SATISFIES the orbit
+equations — deliberately NOT "is the pair", the support-stabilizer non-uniqueness of `.21`)
+and `EFF.GRTJA.11` (the orbit action; ORB legs PROVED/machine, chamber half consumed at
+split grade riding W2-OPEN-2 — the chamber half is out-of-cone value mass, §3 row 10, and
+is NOT carried here). Lean form: the orbit-equation predicate — a pair `(ξ, w)` SATISFIES
+the covariance equations for a residual `ψ` when `w • ψ(ξ·y) = ψ`-transported form holds;
+carried as the abstract satisfaction predicate with the non-uniqueness disclosure in the
+statement gloss (distinct satisfying characters exist on sparse supports — the
+invisible-twist genre, machine-recorded at I4B r = 4 with `ξ = −1` invisible on
+`supp = {0,2}`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+open Polynomial
+
+/-- The (ξ,w) orbit-equation predicate (`EFF.GRTW2.19`): the displayed pair SATISFIES the
+covariance equations — an existence/satisfaction form, never uniqueness (`EFF.GRTW2.21`). -/
+def XiWSatisfies {K : Type*} [Field K] (ξ w : Kˣ) (R ψ : K[X]) : Prop :=
+  R = (w : K) • ψ.comp (C (ξ : K) * X)
+```
+
+**DEPENDS.** F.03 (the `resTwist` normal form is the monic-normalized special case).
+
+**PROOF.** definitional (a carrier).
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GRTW2.19` (the closed form, ACCEPTED); `EFF.GRTW2.21` (remark 2: the
+stabilizer non-uniqueness + the I4B r = 4 invisible twist, with the spec's own stabilizer
+arithmetic `ξ² = 1 ⟹ ξ ∈ {±1}` over `F₃`); `EFF.GRTJA.11` (the orbit action's machine legs
+ORB-EPS 1,744 / ORB-RES 444 / TW-INST 1,452); `EFF.JD0.25` (consumed as "part of the gauge
+dictionary (BOX-2); anchor re-choice legitimacy rides the accepted lift covariance, with
+LIFTCORNER as its corner cap").
+
+**FAITHFULNESS.** Satisfaction, not uniqueness — the exact deliberate weakening the source
+records; a fleet agent adding a uniqueness clause has left the source. The LIFTCORNER corner
+cap is provenance on F.04, not a Lean dependency.
+
+**TEETH.** CK-XI (21 perimeter junctions, 0 violations, invisible twist RECORDED not
+hidden) — RECORDED; F.30 exhibits an invisible-twist instance numerically (`q = 3`:
+`ξ = −1` on `supp = {0,2}` over `F₃`).
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.22 [interface-carrier] [fresh]
+
+**STATEMENT.** *The JB position faces at ACCEPTED 2/2 (J-D0's L4 leg).* From `EFF.JD0.25`'s
+accepted-supplier table: "JB-VTX vertex-for-vertex polygon, JB-DEV same-division — the
+position faces S2.1(a)/(c); row 12's `u ≥ 0` proviso carried where B-ties are consumed
+(BOX-1)". The B-ties are out of cone (§3 rows 1, 3, 13), so the proviso is NOT carried here
+— what the cone consumes is: (JB-DEV) the harness division chain and the classifier's
+division chain are the SAME division (clause (i), `EFF.GRTJB.89`), and (JB-VTX) the shear
+`Σ_q(i,u) = (i, e_q·u + h_q·i)` carries the harness polygon vertex-for-vertex to the print
+polygon (clauses (a)/(b), `EFF.GRTJB.101/.102`; the certifier annex E-3 correction: (c)'s
+run datum is the ABSCISSA RUN, not ambient lattice data). Lean form: the shear as a def
+(provable content — it is an explicit affine map) plus the face predicate.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- The JB frame shear `Σ_q(i,u) = (i, e·u + h·i)` (`EFF.GRTJB.86/.101`). -/
+def jbShear (e h : ℤ) : ℤ × ℤ → ℤ × ℤ := fun p => (p.1, e * p.2 + h * p.1)
+
+/-- JB-VTX's vertex transport, abstract: the shear maps the harness vertex set onto the
+print vertex set (`EFF.GRTJB.102`). ACCEPTED 2/2; instances are site data. -/
+def JBVtxFace (e h : ℤ) (harnessVtx printVtx : Set (ℤ × ℤ)) : Prop :=
+  jbShear e h '' harnessVtx = printVtx
+```
+
+**DEPENDS.** none.
+
+**PROOF.** definitional; `jbShear` injectivity (`e ≠ 0`) is a below-the-line helper lemma
+the gate uses.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.GRTJB.86` (the two frames and the shear), `.89/.90` (JB-DEV (i)/(ii)),
+`.100–.105` (JB-VTX (a)–(e); E-3's abscissa-run correction at `.172` carried: no ambient-
+lattice datum appears in the carrier), `.165` (the acceptance record); `EFF.JD0.25` (the
+consumption row, verbatim above).
+
+**FAITHFULNESS.** Face-level only: the division-chain identity (JB-DEV(i)) has no leanfinal
+carrier for "the classifier's division" yet (chapter C's descent layer), so JB-DEV enters as
+provenance on F.04/F.11 rather than a Lean predicate here; JB-VTX's shear IS carried because
+it is bare integer affine geometry. Row 12/row 22's no-leg rows: §3 (out).
+
+**TEETH.** the 18-family sealed verdict table + `jb_dev`/`jb_eps` IND legs — RECORDED;
+F.30 exercises `jbShear` on a concrete polygon at both primes.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.23 [lemma] [fresh]
+
+**STATEMENT.** *WM-FENCE, the fixed-data character-triviality criterion (PROVABLE — the
+criterion, not the out-of-cone law).* For a finite field `K`, `z : Kˣ`, `A : ℤ`: (absolute
+form) `(∀ i : ℤ, z ^ (i * A) = 1) ↔ (orderOf z : ℤ) ∣ A`; (slot-grid form)
+`(∀ i : ℤ, z ^ (e * i * A) = 1) ↔ (orderOf z : ℤ) ∣ e * A`. Transcribed from
+`EFF.WELDMASTER.25`'s displayed pair with the F-4 scoping carried in the statement gloss:
+**"Neither display contains an existential quantifier over the fixed inputs"** — the
+criterion tests fixed data; it supplies NO freedom or existence theorem for varying `z`,
+`A`, the attained set, or the representative (any such variation a consumer needs must be
+proved by J-D0 independently — the corrected S6 clause). A DAG edge into WM-FENCE carries
+this scoping (§11).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+theorem wmFence_absolute {K : Type*} [Field K] [Finite K] (z : Kˣ) (A : ℤ) :
+    (∀ i : ℤ, z ^ (i * A) = 1) ↔ ((orderOf z : ℤ) ∣ A)
+
+theorem wmFence_slotGrid {K : Type*} [Field K] [Finite K] (z : Kˣ) (e A : ℤ) :
+    (∀ i : ℤ, z ^ (e * i * A) = 1) ↔ ((orderOf z : ℤ) ∣ e * A)
+```
+
+**DEPENDS.** none (mathlib `orderOf_dvd_iff_zpow_eq_one` and `zpow` arithmetic).
+
+**PROOF.** 1. (⟸) if `ord ∣ A` then `z^{iA} = (z^A)^i = 1` — two rewrites. 2. (⟹)
+instantiate `i = 1`; `z^A = 1` gives `ord ∣ A` by mathlib `orderOf_dvd_iff_zpow_eq_one`
+(integer form). 3. Slot-grid form: apply the absolute form to `A' := e*A` after re-indexing
+`e*i*A = i*(e*A)` (`mul_left_comm`).
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.WELDMASTER.25` (the F-4 annex: both displays verbatim; the corrected
+consumption clause "the J-D block … may consume WM-FENCE only as the fixed-data (F-b)
+character-triviality criterion … WM-FENCE supplies no freedom or existence theorem"; the
+`F₅` witness with the spec's re-derivation: `ord(2) = 4 ∤ 1`, `χ₁ = 2⁻¹ = 3 ≠ 1`).
+
+**FAITHFULNESS.** The criterion is transcribed; `PERIM-μ` — the LAW that the criterion's
+condition holds on all claimed order-≥2 faces — is HYP.86, OUT of cone (§3 row 9). The two
+must never be conflated; this node's docstring says so.
+
+**TEETH.** Lean theorem; the `F₅` witness + both-prime instances fire at F.30.
+
+**ENVIRONMENT.** ENV-F1 (+ `[Finite K]`).
+
+---
+
+### NODE F.24 [def] [fresh]
+
+**STATEMENT.** *`WELD-M-PKG`, the anchored five-face transport package (chapter D's C7
+anchor).* Transcribed from `EFF.WELDMASTER.22` (the C6 F-1 annex — the charge unit): for a
+tower on the frozen S1 perimeter there exists ONE NAMED PACKAGE `𝐓 = (𝐓_{M0}, …, 𝐓_{M4})`
+whose fields are exactly the frozen clauses (M0 division-chain identity; M1 `w_m = v_{m+1}`
++ the affine shear with its fences; M2 the per-slot read/operator character transport; M3
+the multiplication transport to `K^c[ℤ/E]` on the scored stratum; M4 the representative/
+lift covariance at W2-C3's accepted fenced scope). **"One" means one named five-field
+package, not uniqueness and not a further common-map coherence theorem** — the RECORD-
+ASSEMBLY LEMMA is the product constructor ("Choose the five cited witnesses and apply the
+product/record constructor"), and the η-twist non-uniqueness witness (`∂(Ẽη) = ∂Ẽ`) is
+F.25's content. Lean form: a `structure` with five `Prop` fields — the record IS the
+theorem's honest content; **no cross-face compatibility field exists** (the F-1 lesson
+honoured structurally; T1's own consumption at L13/L1074 honours exactly this scope).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- WELD-M-PKG (`EFF.WELDMASTER.22`): the five-face transport package as a record of five
+Props. Existence-only; NO cross-face coherence field. Chapter D's (C7) consumption anchor;
+the field contents are per-face site data (M3 = a `CarryCocycle` realization; M4 at W2-C3's
+fenced scope via GC-13). -/
+structure WeldMPkg (M0 M1 M2 M3 M4 : Prop) : Prop where
+  m0 : M0
+  m1 : M1
+  m2 : M2
+  m3 : M3
+  m4 : M4
+```
+
+**DEPENDS.** F.07/F.08 (M3's shape), F.22 (M1's shear), F.21 (M4's covariance shape);
+`EFF.GRTW2.29 [supplied-by: chapter C]` for M4's W2-C3 instance scope (GC-13(c)).
+
+**PROOF.** definitional; the RECORD-ASSEMBLY LEMMA is the anonymous constructor — no
+separate node.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.WELDMASTER.22` (the package display + RECORD-ASSEMBLY LEMMA + "No
+compatibility beyond those displayed ties is asserted" + the seven-item consumer sweep with
+its verified T1 cross-check); `EFF.WELDMASTER.03` (the superseded frozen S1 "ONE transport"
+wording — NOT transcribed; the annex's package form governs).
+
+**FAITHFULNESS.** The `Prop`-parameters form makes the record exactly the "product of five
+propositions" the source says it is; typing the five faces concretely would assert the
+cross-face tie the source explicitly declines. Chapter D cites this node for (C7) as "an
+interface map and scope fence" — its GC-13 placeholder resolves here.
+
+**TEETH.** the frozen face table's per-field batteries — RECORDED at WELDMASTER; the
+package's Lean content is definitional.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.25 [lemma] [fresh]
+
+**STATEMENT.** *The gauge-torsor lemma (the `H¹ = 0` uniqueness claim killed, structurally).*
+From `EFF.WELDMASTER.23` (the C6 F-2 annex): for `F, G : ZMod E → Kˣ` with equal
+coboundaries (`∂F = ∂G` where `(∂F) a b := F a * F b * (F (a+b))⁻¹`), the ratio `η := F/G`
+is a group homomorphism `ZMod E → Kˣ`; conversely `∂(F·η) = ∂F` for every homomorphism `η`.
+Hence gauges with a fixed coboundary form a torsor under `Hom(ZMod E, Kˣ) ≅ μ_E(K)` —
+"rather than being unique". Minimal witness (gate F.29): `E = 2`, `K = F₅`,
+`η(ν) = (−1)^ν` nontrivial since `−1 = 4 ∈ F₅ˣ` has order 2.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- The 1-coboundary of a gauge (`EFF.WELDMASTER.23`). -/
+def gaugeBdry {E : ℕ} [NeZero E] {K : Type*} [Field K] (F : ZMod E → Kˣ) :
+    ZMod E → ZMod E → Kˣ := fun a b => F a * F b * (F (a + b))⁻¹
+
+theorem gaugeBdry_eq_iff {E : ℕ} [NeZero E] {K : Type*} [Field K]
+    (F G : ZMod E → Kˣ) :
+    gaugeBdry F = gaugeBdry G ↔
+      ∀ a b, (F a * (G a)⁻¹) * (F b * (G b)⁻¹) = F (a + b) * (G (a + b))⁻¹
+```
+
+**DEPENDS.** none (mathlib commutative-group algebra).
+
+**PROOF.** 1. (⟹) pointwise: divide the two coboundary identities; `Kˣ` is commutative so
+the terms regroup — `field_simp`-style unit algebra. 2. (⟸) reverse the same regrouping.
+3. The homomorphism reading (`η := F * G⁻¹` multiplicative) is definitional from the RHS.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.WELDMASTER.23` (the torsor derivation, whose every step the spec re-checked
+— `H¹(ℤ/E, Kˣ) = Hom = μ_E(K)`, "need not vanish"; the withdrawn PE10 gloss NOT transcribed;
+the F₅ witness); its CONDITIONALITY ("affects only the certification narrative, not
+WM-CLASS's proved existence/class identity").
+
+**FAITHFULNESS.** Stated as the iff between coboundary equality and the ratio being a
+character — the torsor phrasing without importing group-cohomology carriers. Blocks any
+future "canonical gauge by `H¹ = 0`" claim by giving the counterexample machinery a name.
+
+**TEETH.** Lean theorem; the `μ₂(F₅)` witness at F.29.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.26 [interface-carrier] [fresh]
+
+**STATEMENT.** *The `(DMULT-w)` tier — what W-9's chain rides, at its HEAD provenance.*
+Verbatim shape from `EFF.GRTJC.69`: there is a unit `ω(λ, μ) ∈ K_mˣ`, **independent of `f`
+and `g`** (line-only), with `𝑅_{λ+μ}(f·g) = ω(λ,μ) · y^{δ(λ,μ)} · 𝑅_λ(f) · 𝑅_μ(g)`,
+`δ(λ,μ) ∈ {0,1}`. Status at HEAD (the five-layer CHAIN's terminal): **DERIVED from
+[FGMN] Thm 4.2's rank-one freeness via LEMMA JC-RANKMULT (Annex #6); the "quoted product
+identity" claim WITHDRAWN** — so the literature import underneath is the `(IN-3)` FGMN
+graded package (`EFF.GRTJC.43`, PDF-VERIFIED at Annex #3), and **per Part V that exercised
+cite is an owner gate-(b) item**: `[cite: FGMN Thm 4.2 (rank-one freeness), via
+EFF.GRTJC.43's (IN-3) package]`, routed through chapter I's cite block. Consumer split
+carried verbatim: "(COORD-B)(2), (MULT-B), JC-CARRY-m, W-8 and JC-BOX-4's corner closure
+need only (DMULT-w)" — the mechanism being that the normalized coordinate `ρ_λ = 𝑅_λ/a_λ` is
+invariant under ANY line-wise rescaling. `(DMULT-s)` (`ω ≡ 1`) is §3 row 5: OUT.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- The (DMULT-w) tier (`EFF.GRTJC.69`): residual multiplicativity up to a line-only unit,
+with the {0,1} wrap exponent. Carried; discharge rides the gate-(b) FGMN cite. -/
+def DmultW {K : Type*} [Field K] {Λ : Type*} [Add Λ]
+    (R : Λ → K[X] → K[X]) (y : K[X]) (δ : Λ → Λ → ℕ) : Prop :=
+  ∀ lam mu : Λ, ∃ ω : Kˣ, ∀ f g : K[X],
+    R (lam + mu) (f * g) = (ω : K) • (y ^ δ lam mu * R lam f * R mu g)
+```
+
+**DEPENDS.** F.07 (the δ shadow's shape). Cite provenance: `EFF.GRTJC.43` ((IN-3), the
+CITE-SCOPE unit and chain home), `EFF.GRTJC.125` (Annex #3, FGMN cites PDF-VERIFIED),
+`EFF.GRTJC.129` (Annex #6, JC-RANKMULT). Gate-(b) flag: **owner sign-off required for the
+FGMN import** (Part V; chapter I's cite block aggregates).
+
+**PROOF.** definitional (a carrier).
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.GRTJC.69` (the two-tier display + the displayed (DMULT-w) derivation
+`ω(λ,μ) = c_{λ+μ}/(c_λc_μ)` — "the 2-coboundary of the line-wise unit system; nothing gives
+ω ≡ 1"; the consumer split; the weld-audit row verified: "the one reachable GRTJC face,
+COROLLARY W-9, rides the CITABLE tier").
+
+**FAITHFULNESS.** `∃ ω` is placed AFTER `(lam, mu)` and BEFORE `(f, g)` — ω depends only on
+the lines, the exact content of "independent of f and g" (a quantifier-order trap the spec's
+own text resolves; the stub stage must not commute it). The `•`-form keeps `ω` visibly a
+unit.
+
+**TEETH.** R1-DMULT 2,784/0 etc. measure the `ω ≡ 1` tier (OUT); (DMULT-w) "carries no
+separate leg" (the spec's own disposition) — signed accordingly in §13.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+<!-- RESUME: §7 composed (F.19–F.26, DECISIONs D-F1/D-F2). Next: §8 (WELD-ZERO pending arc),
+§9 (handoff package F.27–F.28), §10 gates (F.29–F.30). -->
 
 <!-- SENTINEL: BP-F END OF FILE -->
