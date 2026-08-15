@@ -375,5 +375,138 @@ rides Display A's `∀ i ≥ 3` conjunct (HYP.57/63).
 | HYP.79 | `P-BINOM` | **OPEN-MATH** — rider on HYP.78; `n ≥ 8` | missing: floor attainment + lower-coordinate classification when `p ∣ binom(m,2)`. |
 | HYP.80 | `COMPOUND-6.5′` | **OPEN-MATH** — owner: C; `n ≥ 8` compound family | its `[H-c]` parentage is out of cone, but the content overlaps HYP.67's `f₁ ≥ 2, μ₂ ≥ 3` tower face (ledger dedup note), so it is conservatively kept in the `n ≥ 8` open family rather than signed out. |
 
-<!-- RESUME: §3 rows 01–80 written. Next: §3.7–3.10 (rows 81–154) + CAP/COND + census. -->
+### 3.7 Completeness additions from the adjudication (HYP.81–98)
+
+| row | title | category | disposition detail |
+|---|---|---|---|
+| HYP.81 | `[GENHN-HE(μ ≥ 3)]` | **OPEN-MATH** — Display-A conjunct (`if n ≥ 6`); carrier I.06 | **scope split (v3), transcribed exactly:** at `μ = 3` (first-live `n = 6, 7`) the corpus proof is UNCONDITIONAL (THEOREM HE3.A) but has **no transcription owner** — orchestrator item O-1 (honesty I-11(i)); at `μ ≥ 4` (`n ≥ 8`) it rides the open HE3-BOX-6 ramified branch (HYP.143). Everyone else returns `BLOCKED: HYP.81` (E trap (iii), GC-5). |
+| HYP.82 | `[GENHN-TOW-1]` | **OPEN-MATH** — Display-A conjunct (`if n ≥ 8`); carrier I.07 | census made formal at C.93 (contract): items (1)–(5)+(6)(β) are C theorems; (6)(α) depth 3 = C.90/C.91's scope; depth ≥ 4 claimed by no node. The open remainder = the `n ≥ 8` box family (HYP.67–71/78–80/143/144-BOX-2/142). |
+| HYP.83 | `(VD-m)` | **NOT-ON-CAPSTONE-PATH** (NOT-REACHED, COR-ORPH-01) | ORPHAN-1 cured by independent verification; weld-internal frontier. |
+| HYP.84 | `(C-coll)` | **NOT-ON-CAPSTONE-PATH** (NOT-REACHED, COR-ORPH-02) | ditto. |
+| HYP.85 | `(R-coll)` | **NOT-ON-CAPSTONE-PATH** (NOT-REACHED, COR-ORPH-03) | ditto. |
+| HYP.86 | `PERIM-μ` | **NOT-ON-CAPSTONE-PATH** (NOT-REACHED, COR-ORPH-04) | ditto; J-D0 names it first among the fences count-layer consumers need not carry. |
+| HYP.87 | `GENIND-BOX-3` | **DISCHARGED-BY** (structural) | the all-prime-power/`d ≥ 2` scope worry ("rests on proof q-uniformity") dissolves in Lean: every blueprint signature quantifies over the full bundle (`∀ O`, all `q`), so the landed proofs ARE the q-uniformity. The battery's `d = 1`-prime-`q` limitation survives only as regression-scope disclosure (GC-8 rider (i), per owning chapter). |
+| HYP.88 | `GENIND-BOX-4` | **OPEN-MATH** — owner: H §10 / C seam | missing: the simple-slice β-bookkeeping compression proved on EVERY route of the `n ≥ 4` drainage recursion (distinct from HYP.30, per the ledger's dedup note). |
+| HYP.89 | `GENIND-BOX-5` | **NOT-ON-CAPSTONE-PATH** (PROCESS) | a grade cap ("clean count not started"); the blueprint program (chapters B–I) IS the clean count of the conditional structure — the row's content is superseded by the artifact set it asked for. |
+| HYP.90 | `GENIND-BOX-6` | **NOT-ON-CAPSTONE-PATH** (PROCESS) | oracle-coverage disclosure (mixed-char only); the Lean statements cover equal characteristic by construction (`∀ O` includes `𝔽_q⟦t⟧`), and the oracle's scope stays a regression caveat in the owning chapters' teeth tables. |
+| HYP.91 | `GENIND-5` / `OB-a…OB-d` | **DISCHARGE-NODE-HERE** audit A-7 | bounded representation check: the four displayed obstructions and their routing, verified against CHAP-H's committed text + `spec/DAG_BLUEPRINT_H.tsv` (OB-a = H.89's ledger + `hwin`; the §3 table is where the check is recorded). |
+| HYP.92 | `ANNEX-LEMMA GENIND-C2Q` | **NOT-ON-CAPSTONE-PATH** (MERGED → HYP.36) | supplier node under CS-1Q. |
+| HYP.93 | `GENIND-6` | **NOT-ON-CAPSTONE-PATH** (MERGED → HYP.31) | represented by [GENIND-H] and children. |
+| HYP.94 | `UniformityStatement` signature | **NOT-ON-CAPSTONE-PATH** (CLOSED-SIGNED, Q3) | the three signed points verified at `Statement.lean:55–58`; any CHANGE to the statement is owner gate (a). |
+| HYP.95 | Haar bridge | **NOT-ON-CAPSTONE-PATH** (CLOSED, Q5 — no Haar) | the capstone asserts a proportion limit; re-introducing Haar re-opens the row and owes measurability. |
+| HYP.96 | `AX-CELLREC`/`AX-LEAF` | **NOT-ON-CAPSTONE-PATH** (POLICY, Q7) | quarantined in the quarry's measure route; `leanfinal` is Lean-core-only. Gate I.24/I.25 enforce mechanically. |
+| HYP.97 | `RealInstanceAt.faithful` | **NOT-ON-CAPSTONE-PATH** (POLICY, Q7) | conditions the quarry only; still illegitimate to consume at theorem strength there. |
+| HYP.98 | `DEFINITION-AUDIT` [CORE-SET] | **DISCHARGE-NODE-HERE** audit A-4 | the one place the human-review surface lives: the types, the uniformity theorem, the two densities, the cites, the changed definitions' faithfulness paragraphs. RECURRING (append #49 directive 2: fresh eyes at chapter milestones), scheduled §7; HYP.12 and HYP.111's definitional half ride inside it. |
+
+### 3.8 T-chain riders, coverage debt, and the all-O block (HYP.99–135)
+
+| row | title | category | disposition detail |
+|---|---|---|---|
+| HYP.99 | T3/T5 frame staleness | **DISCHARGED-BY** (late-binding: D) | D transcribes from the EFF specs at HEAD (merged, correction-resolved), which is exactly the cross-note HEAD audit the row asked for; the `w_i ∈ K_i^×` gate rides D's statements. |
+| HYP.100 | contradictory T5 sentence | **NOT-ON-CAPSTONE-PATH** (PROCESS) | corpus hygiene (stale L299 vs governing L616); the EFF-T5 spec already resolves the governing reading; strike/append stays an MQ-class action. |
+| HYP.101 | HE7.A source suite | **DISCHARGED-BY** (contract) E §4 | the five clause families are `RungInterface`'s FIELDS and the five instance records are proved instances (E's §4); naming a carrier is insufficient — the instances supply ACCOUNT/RES-DEG/nonempty/exhaust/continuation each. |
+| HYP.102 | `(MID-PEEL)` items 2–5 | **DISCHARGED-BY** (contract) E | per-instance discharge records; the level-2 analogue proved (E.42); item-1 master-proved in source. |
+| HYP.103 | T2 S4.2 non-claims | **DISCHARGED-BY** (contract) E's honesty block + census | the twelve exclusions preserved as chapter-E fences (no E node claims a density law; §13's census lists the exclusions). |
+| HYP.104 | `C3-lift-coefficient-space` | **DISCHARGED-BY** (late-binding: D) | independent site obligation (`deg k̂_t < deg Φ_i`) carried in D's key-formation statements. |
+| HYP.105 | factor patterns need tower correctness | **DISCHARGE-NODE-HERE** I.21 + audit A-1 | the missing trust-boundary theorem is NAMED here: `TypeOfFaithful` (I.21) is the statement connecting residual factor patterns to splitting types; it rides the core-set audit next to HYP.01 (the row's own v5 placement). |
+| HYP.106 | nonzero-digit lift contract | **DISCHARGED-BY** (late-binding: D) | zero-branch scope fence in D's statements. |
+| HYP.107 | A2 binary carry | **DISCHARGED-BY** (late-binding: D) | the HETOW pin restricted to the stated binary-carry regime in D's A2 node. |
+| HYP.108 | A6 provenance | **DISCHARGED-BY** (late-binding: D) | scalar read = HE6 F-1, lift = GENTOW6 S6.1 — provenance carried in D's SOURCE fields. |
+| HYP.109 | T-unit grade caveats | **NOT-ON-CAPSTONE-PATH** (PROCESS) | grade bookkeeping; the blueprint consumes EFF statements, not grades. |
+| HYP.110 | `W12-BOX-5` | **NOT-ON-CAPSTONE-PATH** (NO-CONSUMER) | `omCount` is the quarry's; the W-2/LIFTCORNER seam is recorded UNCONSUMED at F's out-of-cone census. |
+| HYP.111 | `W12-BOX-7` (split at v5) | **DISCHARGE-NODE-HERE** audit A-5 (definitional half) · **NOT-ON-CAPSTONE-PATH** (lifted; deep-tail half) | the "decided" predicate's meaning is core (it is what `decidedDensity` counts) and rides A-4/A-5; the deep-tail TRP reconciliation is lifted by Q4 and cannot move `genuineDensity` at all (P4 narrowing, row text). |
+| HYP.112 | T4 μ₂≥3 candidate fence | **DISCHARGED-BY** (late-binding: D) | the consumption ban carried in D's T4 statements; ALSO fences C's `n ≥ 8` boxes (noted at HYP.71). |
+| HYP.113 | T4.2(c) exposure premise | **DISCHARGED-BY** (late-binding: D) | full-exposure premise displayed in the statement. |
+| HYP.114 | T4.2(d) provenance exclusion | **DISCHARGED-BY** (late-binding: D) | exclusion carried. |
+| HYP.115 | T4 fail-closed pins | **DISCHARGED-BY** (late-binding: D) | fail-closed behaviour is the transcription default (missing pin ⇒ no node). |
+| HYP.116 | `GENTOW3-BOX-2` | **DISCHARGED-BY** (contract) C's teeth discipline | evidence-scope disclosure (`f₁ = 1, η = 1` only) carried as a GC-8 rider-(i) re-scoping row in C's disposition table. |
+| HYP.117 | `(G5-COND)` ride list | **NOT-ON-CAPSTONE-PATH** (MERGED → HYP.63) | the consumer map. |
+| HYP.118 | T3 narrowed delivery | **DISCHARGED-BY** (late-binding: D) | two absorptions + one non-instance, GENTOW-6.4 unabsorbed — D's scope text. |
+| HYP.119 | HENSEL branch-(ii) residue | **NOT-ON-CAPSTONE-PATH** (NO-CONSUMER) | the landed `MultiHensel`/P5 set supersedes the trigger/count uses; determinacy stays unadjudicated as a corpus item with no blueprint consumer. Re-entry: an ordinary node if a consumer appears. |
+| HYP.120 | eight-audit coverage debt | **NOT-ON-CAPSTONE-PATH** (AGGREGATE) | umbrella for HYP.121–134, each dispositioned below. |
+| HYP.121 | `GENIND-1` all-O | **DISCHARGED-BY** (contract) H.93/H.94 | the closure lemma is `ℕ`-level (O-free) in chapter H's form; the all-O edge dissolves. |
+| HYP.122 | `[RMG]` all-O | **NOT-ON-CAPSTONE-PATH** (NO-CONSUMER) | RMENGINE is an `EXT:` note (no 0a spec, outside the cut); the Lean route re-derives the reduction content fresh in B/C. Re-entry: any RMG import would be a new cut decision. |
+| HYP.123 | `[ILN]†` all-O | **NOT-ON-CAPSTONE-PATH** (NOT-REACHED except via HYP.148) | GRTJB/GRTJC consumers are out-of-cone; the one reachable GRT face's generality rides HYP.148's carrier statement (∀`O` by construction). |
+| HYP.124 | `GRB` all-O | **NOT-ON-CAPSTONE-PATH** (NO-CONSUMER) | GRB_ORDER2 is `EXT:`; not consumed by the Lean route. |
+| HYP.125 | `ITER-LAW` all-O | **NOT-ON-CAPSTONE-PATH** (NO-CONSUMER) | ITERLAWN is `EXT:`; ditto. |
+| HYP.126 | `W-1/W-2/J-A/J-B` all-O | **NOT-ON-CAPSTONE-PATH** (NOT-REACHED) | consumers are `[H-a]–[H-c]`, out of cone; the W-1 transport's own row is HYP.139 (live, dispositioned there). |
+| HYP.127 | `DU lemma` all-O | **NOT-ON-CAPSTONE-PATH** (NOT-REACHED) | "named in S7.1's pricing only". |
+| HYP.128 | `W-10` all-O | **NOT-ON-CAPSTONE-PATH** (NOT-REACHED) | census O-11, out of cone. |
+| HYP.129 | `J-D0` all-O | **DISCHARGED-BY** (late-binding: F, structural) | the generality edge terminates in the ∀`O` form of F's `GaugeFormPerimeter` statement — in Lean the all-O claim IS the statement's binder. |
+| HYP.130 | `L2core` all-O | **NOT-ON-CAPSTONE-PATH** (POLICY) | quarry-side (the `lean/` mirror of HUMAN_PROOF); `leanfinal` does not consume it. |
+| HYP.131 | HUMAN_PROOF all-O | **NOT-ON-CAPSTONE-PATH** (POLICY) | same: the leanfinal capstone route is not HUMAN_PROOF's. |
+| HYP.132 | local-integrals all-O | **NOT-ON-CAPSTONE-PATH** (POLICY — the explicit route exclusion the row demanded) | the measure route is quarantined (Q7); "removable only by explicit route exclusion" — Q7 IS that exclusion, recorded. |
+| HYP.133 | `(CONV)=α⁻¹` bridge | **NOT-ON-CAPSTONE-PATH** (NO-CONSUMER) | `leanfinal` is monic-native (`Coeff O n N` counts monic classes); no projective-to-monic transfer node exists in any committed chapter. Re-entry: a bridge node if a projective object ever enters. |
+| HYP.134 | GENHN count all-O | **DISCHARGED-BY** (contract) H §7 at `μ = 2` (∀`O` statements) | the `μ ≥ 3` half rides HYP.81/HYP.148 and is accounted there. |
+| HYP.135 | `F4-JOINT` graded model | **NOT-ON-CAPSTONE-PATH** (PROCESS) | battery supply-model bookkeeping (kept separate from HYP.62); D's teeth table. |
+
+### 3.9 v3/v4/v7 additions (HYP.136–154) and the terminal open item
+
+| row | title | category | disposition detail |
+|---|---|---|---|
+| HYP.136 | `S-0` tripwire | **NOT-ON-CAPSTONE-PATH** (CLOSED) | GREEN post-campaign; retained as reference. |
+| HYP.137 | `HEX3-BOX-1` tail-σ lemma | **NOT-ON-CAPSTONE-PATH** as a conjunct (disclosure-without-promotion, Q9) | **stays MATH in the ledger** — the lemma is real and unproved; its only live consumer is the W-12.B corroboration aside. NON-NODE everywhere (G H-2's tripwire `BLOCKED: HYP.137` stands; honesty I-5). |
+| HYP.138 | N3_CHECK §6d HEX3 reconciliation | **NOT-ON-CAPSTONE-PATH** (PROCESS) | the two readers' counts measure different sets; until reconciled neither is citable as confirming/refuting HEX3.A — carried as a regression caveat on HYP.29's teeth, not a conjunct. |
+| HYP.139 | `W-1` transport | **OPEN-MATH** — owner: F (carrier, late-binding) riding under HYP.148 | missing: the harness `(w, 𝑅) →` FGMN-objects transport (TR-3′-GEN, OPEN at general order); class MATH. Retired as a side effect IF WELD-ZERO lands and passes (I-7); until then full strength. |
+| HYP.140 | `GENTOW5_WI` stale grade box | **NOT-ON-CAPSTONE-PATH** (PROCESS) | SOL row 18 (2026-08-12) is HEAD-of-record; strike/append is MQ-class hygiene. |
+| HYP.141 | shard source-designation refutations | **NOT-ON-CAPSTONE-PATH** (PROCESS) | the register discipline ("grep-verifiable designation or marked undesignated") is inherited by D's SOURCE fields (HYP.54/55 rows above). |
+| HYP.142 | `GENHN-ERR-1` dual disposition | **OPEN-MATH** — owner: the H/C seam at `f₁ ≥ 2` count laws | missing: reconcile the two records (GENHN L2593 settled vs HE6R1 L926 owes-a-lemma) and say which governs; if HE6R1's reading governs, the `f₁ ≥ 2` count argument on the corrected region is a NEW lemma. Feeds the `n ≥ 8` leg (HYP.82) and the `μ ≥ 3` censuses (HYP.23). |
+| HYP.143 | `HE3-BOX-6` ramified branch (ii) | **OPEN-MATH** — owner: C (GC-7's explicit-`O₂` rider; Brief C trap (ii)); live at `μ ≥ 4` / `n ≥ 8` | missing: test keys at non-integer dv heights (the higher-order Montes construction) OR an honest explicit-`O₂` base change under which `Φ′` irreducibility is re-established. Supplier-side under HYP.81; adds no conjunct. |
+| HYP.144 | `GENTOW4-BOX-1/-2/-4` | **SPLIT**: BOX-1 **DISCHARGED-BY** (contract, cite-conditional) C.67 through C.66's FGMN axiom · BOX-2 **OPEN-MATH** (owner C; the partial-side COUNT layer, `n ≥ 8` family) · BOX-4 **NOT-ON-CAPSTONE-PATH** (PROCESS; a grade cap) | C.67's own header: "closes `GENTOW4-BOX-1` = `HYP.144`, cite-conditionally". |
+| HYP.145 | GENTOW2 S6.1 rows 23–24 | **DISCHARGED-BY** (contract) C §10 | the descriptive fence + two-leg elevation debt preserved in C's dictionary-layer discipline (C-H10). |
+| HYP.146 | `W11-BOX-1` | **NOT-ON-CAPSTONE-PATH** (NOT-REACHED as a route) | the general W-11 menu tie is a program the taken route (GENIND) supersedes; the `n = 2` instance is landed via chapter G. Stays MATH in the ledger as a corpus item. |
+| HYP.147 | `exists_anisotropic` | **DISCHARGED-BY** (landed) `Uniformity.Density.exists_anisotropic` (`AnisotropicForms.lean:149`, CN-15) | residual (gate_bracket general-`O` integration; `exists_aniForm`/`exists_aniK` dedup) = MQ-5/MQ-6 class, not on the path. |
+| HYP.148 | `GENHN-BOX-2` / W-9 face | **OPEN-MATH** — Display-A conjunct (`if n ≥ 6`); owner: F (carrier, late-binding: `EFF.GENHN.50` [supplied-by: chapter F]) | the ONE weld face inside a count law on the whole path. CARRY at full strength (WELD-ZERO 1-of-2, I-7); carries HYP.139 as sub-residue; compensating instrument GN-REFINE3 recorded. |
+| HYP.149 | WELD-ZERO route | **NOT-ON-CAPSTONE-PATH** as an obligation (IN-PROGRESS route) | asserted by no accepted note; licenses nothing; if it lands + passes, HYP.148/139's fields are removed by the gate-(a) amendment route (I-7). |
+| HYP.150 | EFF-HE6 OPEN-CALL 2, T2-closed | **NOT-ON-CAPSTONE-PATH** (CLOSED-FOR-T2) | residual (HE7/HE6R1 consumption vs A3 F-1/F-3/F-4) recorded at E §14 item 8 — an open LEDGER residual, not a capstone conjunct. |
+| HYP.151 | A3 F-1 defect record | **NOT-ON-CAPSTONE-PATH** (CLOSED, historical) | zero live consumers of the false pre-A3 reading. |
+| HYP.152 | consumption-not-citation protocol | **NOT-ON-CAPSTONE-PATH** (PROCESS) | standing protocol; no mathematics. |
+| HYP.153 | compiler-invented-no-span rule | **NOT-ON-CAPSTONE-PATH** (PROCESS) | standing process rule. |
+| HYP.154 | `LEMMA HE6-0` tenth-pin concern | **NOT-ON-CAPSTONE-PATH** (PROCESS — chapter-cut bookkeeping) | recorded FOR the B/C stub stages: a cut assembling HE6-adjacent material from T2's pins alone must source `LEMMA HE6-0` from HE6 itself. No pin owed. |
+
+**T-1 (the terminal open item, no row number): THE INDUCTIVE STEP.** `(IH) + [GENIND-H(n)] ⟹
+P(n)` at `n ≥ 4` — the content of Display A's hypothesis block as a single implication. **NO
+NODE ANYWHERE** (honesty I-2, the GENIND.B fence). It is not a ledger row because it is not a
+single hypothesis: it is the conjunction the whole block names, and its Lean-facing shadow is
+exactly "supply `InductionPackage n` at every `n`" (H.98's `hp`). Recorded here so the table's
+completeness claim is honest: closing every OPEN-MATH row above is NECESSARY for the capstone;
+it becomes SUFFICIENT only through this step, whose formal composition is future work owned by
+the orchestrator's post-blueprint program.
+
+### 3.10 The CAP and COND nodes
+
+| node | category | disposition detail |
+|---|---|---|
+| `CAP:UniformityStatement` | **landed target** (`Statement.lean:71`) | owner gate (a) guards any change. Consumed by I.16; fired unconditionally at `n ≤ 2` (gate I.23). |
+| `CAP:UniformityStatementDecided` | **landed target** (`Statement.lean:84`) | the certified-form target; the count layer's assembly point (I.02/I.17). |
+| `COND:A1_n` | **RESOLVED** at I.13 | = HYP.26's content; formal carrier H.93/H.94/H.95 menu clause + I.03. DAG_README flag 6, first orphan: cured. |
+| `COND:A2_n` | **RESOLVED** at I.12 | = HYP.27's content; formal carrier = landed `DrainageAt n` (`Statement.lean:118`). Second orphan: cured. |
+| `COND:H-e)-window-pinning` | **RESOLVED** at I.14 | = HYP.24's pinning half; suppliers H.89 (`e₁ = 2`) + `StageInterface.hwin` (general, carried) + orchestrator item O-2. Third orphan: cured. (The literal DAG id drops the leading paren — [F7]; matched on that form.) |
+
+### 3.11 Census and reconciliation
+
+**Category counts over the 154 rows** (each row exactly once; splits counted at their primary):
+
+| category | count | rows |
+|---|---:|---|
+| DISCHARGED-BY (landed) | 6 | 03, 04, 05, 06, 10, 147 |
+| DISCHARGED-BY (contract/structural) | 16 | 07, 13, 14, 37, 40, 43, 44, 72, 87, 101, 102, 103, 116, 121, 134, 145 |
+| DISCHARGED-BY (late-binding: D/F) | 25 | 46–56, 58, 60, 61, 99, 104, 106–108, 112–115, 118, 129 |
+| CITE (gate (b)) | 2 | 15 ([AGNPRW] via C.94), 38 (FGMN via C.66/C.92) |
+| DISCHARGE-NODE-HERE | 7 | 01, 12, 17, 91, 98, 105, 111(def-half) |
+| OPEN-MATH | 36 | 08, 09, 11, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 35, 36, 41, 42, 57, 63, 67–71, 74, 78, 79, 80, 81, 82, 88, 139, 142, 143, 144(BOX-2), 148 |
+| NOT-ON-CAPSTONE-PATH | 62 | 02, 16, 18, 19–22, 31, 34, 39, 45, 59, 62, 64–66, 73, 75–77, 83–86, 89, 90, 92–97, 100, 109, 110, 117, 119, 120, 122–128, 130–133, 135–138, 140, 141, 146, 149–154 (+ 111's deep-tail half, secondary) |
+| **total** | **154** | 6+16+25+2+7+36+62 = 154 (111 counted once, at its primary; 144 counted once, at BOX-2) |
+
+**Reconciliation against the ledger's own v7 tally** (35 CARRY · 18 MATH · 81 NODE · 4 MERGED
+· 13 CLOSED · 2 POLICY · 1 IN-PROGRESS): all 18 MATH rows land in OPEN-MATH except HYP.07
+(terminates at B's committed contract), HYP.137 and HYP.146 (both stay MATH in the ledger but
+are NOT capstone conjuncts — disclosure-without-promotion and route-not-taken respectively);
+all 13 CLOSED + 2 POLICY + the IN-PROGRESS row land in NOT-ON-CAPSTONE-PATH; all 4 MERGED land
+in NOT-ON-CAPSTONE-PATH (MERGED); the 35 CARRY rows split into the Display-A conjunct carriers
+(OPEN-MATH), the cite (HYP.15), and the all-O block's per-row terminations (§3.8). **No row is
+silently dropped: 6+16+26+2+7+36+61 = 154.**
+
+<!-- RESUME: §3 complete (154 rows + CAP/COND + census). Next: §4 carriers + structure. -->
+
 
