@@ -165,13 +165,13 @@ theorem exists_ram3_lift (hπ : Irreducible π) {N : ℕ} {c : Coeff O 3 N} (hc 
     have hproj : proj O 3 N b = c := by
       funext i
       fin_cases i
-      · show (Ideal.Quotient.mk _ (b 0) : Res O N) = c 0
+      · change (Ideal.Quotient.mk _ (b 0) : Res O N) = c 0
         rw [hc.1, Ideal.Quotient.eq_zero_iff_mem]
         simp only [hb, Matrix.cons_val_zero]
         exact (mem_maximalIdeal_pow_iff_dvd hπ N _).2 hM0
-      · show (Ideal.Quotient.mk _ (b 1) : Res O N) = c 1
+      · change (Ideal.Quotient.mk _ (b 1) : Res O N) = c 1
         rw [hc.2]; simp [hb]
-      · show (Ideal.Quotient.mk _ (b 2) : Res O N) = c 2
+      · change (Ideal.Quotient.mk _ (b 2) : Res O N) = c 2
         rw [hc2]; simp [hb]
     have hb0 : b 0 = π ^ M := by simp [hb]
     have hb1 : b 1 = 0 := by simp [hb]
@@ -245,13 +245,13 @@ theorem exists_ram3_lift (hπ : Irreducible π) {N : ℕ} {c : Coeff O 3 N} (hc 
     have hproj : proj O 3 N b = c := by
       funext i
       fin_cases i
-      · show (Ideal.Quotient.mk _ (b 0) : Res O N) = c 0
+      · change (Ideal.Quotient.mk _ (b 0) : Res O N) = c 0
         rw [hc.1, Ideal.Quotient.eq_zero_iff_mem]
         simp only [hb, Matrix.cons_val_zero]
         exact (mem_maximalIdeal_pow_iff_dvd hπ N _).2 (dvd_trans (pow_dvd_pow π (by omega)) dvd_rfl)
-      · show (Ideal.Quotient.mk _ (b 1) : Res O N) = c 1
+      · change (Ideal.Quotient.mk _ (b 1) : Res O N) = c 1
         rw [hc.2]; simp [hb]
-      · show (Ideal.Quotient.mk _ (b 2) : Res O N) = c 2
+      · change (Ideal.Quotient.mk _ (b 2) : Res O N) = c 2
         simp only [hb, Matrix.cons_val_two, Matrix.tail_cons]
         exact ha₂
     have hne : (π : O) ≠ 0 := hπ.ne_zero
