@@ -31,6 +31,17 @@ G.31 — the supplier that justifies G.31's `Finset.range N` index set. Declarat
 wave-3 named as G.31's missing premise is **refuted** at even `t` in residue characteristic 2
 (§A-7's `ℤ₂`, `N = 2`, `t = 2` counterexample), and must not be signed by any future node.
 
+**Amended against blueprint AMENDMENT 2026-08-15, fourth append** (§A-8, the G.23 REPLACEMENT
+ROUTE expanded into fireable nodes): **twelve new nodes G.23R1–G.23R12** carrying **25
+declarations** are signed below, between G.23b and §5. §A-1 refuted G.23a and derived — in prose
+only — a replacement route that certifies a *translation-invariant residual CLASS* at centre
+modulus `m = k` instead of an individual pair; §A-8 turns that derivation into node entries and
+lands all twelve in `leanfinal` in the same unit, so all 25 are written directly in the
+retirement form. Declaration count rises **110 → 135**. The headline is **G.23R9**
+`card_resClassSet` (`#resClassSet = #P · q^(2k+2r)`), which is what G.41 and G.42 consume in
+place of the withdrawn G.23a. G.23a stays withdrawn and G.23b stays an unlanded `axiom` (true as
+stated, union not disjoint, and no consumer needs it any more).
+
 **This file is never imported by `leanfinal` or `leancheck`.** It carries `axiom`s by design; it
 is an interface contract, not mathematics. Nothing here is proved.
 
@@ -330,6 +341,168 @@ axiom depthSet_eq_iUnion_resStratum (hπ : Irreducible π) {N k : ℕ} (hk : 2 *
     depthSet π N (2 * k)
       = ⋃ p ∈ {p : IsLocalRing.ResidueField O × IsLocalRing.ResidueField O |
           ∀ z : IsLocalRing.ResidueField O, p ≠ (z * z, z + z)}, resStratum π N k p
+
+/-! ### The G.23 REPLACEMENT ROUTE — nodes G.23R1–G.23R12 (blueprint AMENDMENT §A-8)
+
+§A-1 refuted G.23a and derived a replacement route (certify a translation-invariant residual
+CLASS at centre modulus `m = k`, not an individual pair). §A-8 expands that derivation into
+twelve fireable nodes carrying **25 declarations**; all twelve landed in `leanfinal` in the same
+unit that signs them here, so every stub below is written directly in the **retirement form**
+`example : <signed type> := <landed name>`, which machine-checks the landed type against the
+signed one. Contract count **110 → 135**.
+-/
+
+/-- **G.23R1a** The two-coordinate truncation, as an additive group homomorphism. LANDED
+(2026-08-15, §A-8) — retirement form (0e-diff against `Uniformity.ChapG.G23R1`). -/
+example {m₀ m₁ N : ℕ} (h₀ : m₀ ≤ N) (h₁ : m₁ ≤ N) :
+    (Res O N × Res O N) →+ (Res O m₀ × Res O m₁) :=
+  prodResFactor (O := O) (h₀ := h₀) (h₁ := h₁)
+
+/-- **G.23R1b** The two-coordinate fibre count, subtraction-free. LANDED (2026-08-15, §A-8). -/
+example {m₀ m₁ N : ℕ} (h₀ : m₀ ≤ N) (h₁ : m₁ ≤ N) (S : Set (Res O m₀ × Res O m₁)) :
+    Nat.card (prodResFactor (O := O) h₀ h₁ ⁻¹' S) * (residueCard O ^ m₀ * residueCard O ^ m₁)
+      = residueCard O ^ N * residueCard O ^ N * Nat.card S :=
+  card_preimage_prodResFactor (h₀ := h₀) (h₁ := h₁) (S := S)
+
+/-- **G.23R2a** Digit uniqueness. LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π) {j N : ℕ} (hj : j < N) {y y' : O}
+    (h : (Ideal.Quotient.mk _ (π ^ j * y) : Res O N) = Ideal.Quotient.mk _ (π ^ j * y')) :
+    IsLocalRing.residue O y = IsLocalRing.residue O y' :=
+  residue_eq_of_mk_pow_mul_eq (hπ := hπ) (j := j) (N := N) (hj := hj) (y := y) (y' := y') (h := h)
+
+/-- **G.23R2b** Digit realization. LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π) {j N : ℕ} (hN : N ≤ j + 1) {y y' : O}
+    (h : IsLocalRing.residue O y = IsLocalRing.residue O y') :
+    (Ideal.Quotient.mk _ (π ^ j * y) : Res O N) = Ideal.Quotient.mk _ (π ^ j * y') :=
+  mk_pow_mul_eq_of_residue_eq (hπ := hπ) (j := j) (N := N) (hN := hN) (y := y) (y' := y') (h := h)
+
+/-- **G.23R3a** The residual translation `y ↦ y + d` read on residual pairs. LANDED
+(2026-08-15, §A-8). -/
+example {K : Type*} [CommRing K] (d : K) (p : K × K) : K × K := transPair (d := d) (p := p)
+
+/-- **G.23R3b** Translation-invariance of a residual class. LANDED (2026-08-15, §A-8). -/
+example {K : Type*} [CommRing K] (P : Set (K × K)) : Prop := TransInvariant (P := P)
+
+/-- **G.23R3c** LANDED (2026-08-15, §A-8). -/
+example {K : Type*} [Field K] : TransInvariant {p : K × K | AniForm p} :=
+  aniForm_transInvariant (K := K)
+
+/-- **G.23R3d** LANDED (2026-08-15, §A-8). -/
+example {K : Type*} [Field K] : TransInvariant {p : K × K | SepPair p} :=
+  sepPair_transInvariant (K := K)
+
+/-- **G.23R3e** LANDED (2026-08-15, §A-8). -/
+example {K : Type*} [Field K] {p : K × K} (h : AniForm p) : ¬ DblPair p :=
+  aniForm_not_dblPair (K := K) (p := p) (h := h)
+
+/-- **G.23R3f** LANDED (2026-08-15, §A-8). -/
+example {K : Type*} [Field K] {p : K × K} (h : SepPair p) : ¬ DblPair p :=
+  sepPair_not_dblPair (K := K) (p := p) (h := h)
+
+/-- **G.23R4a** The residual-class admissible set at the TOP levels `(2k+1, k+1)`. LANDED
+(2026-08-15, §A-8). -/
+example (π : O) (P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)) (k : ℕ) :
+    Set (Res O (2 * k + 1) × Res O (k + 1)) := resTop (π := π) (P := P) (k := k)
+
+/-- **G.23R4b** The residual-class admissible set at level `N`. LANDED (2026-08-15, §A-8). -/
+example (π : O) (P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)) (k N : ℕ) :
+    Set (Res O N × Res O N) := resAdm (π := π) (P := P) (k := k) (N := N)
+
+/-- **G.23R4c** The level-`N` classes carrying a residual pair in `P` at a centre of depth
+`≥ 2k`. LANDED (2026-08-15, §A-8). -/
+example (π : O) (P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)) (k N : ℕ) :
+    Set (Coeff O 2 N) := resClassSet (π := π) (P := P) (k := k) (N := N)
+
+/-- **G.23R4d** LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π)
+    {P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)} {k N : ℕ}
+    (h₀ : 2 * k + 1 ≤ N) (h₁ : k + 1 ≤ N) :
+    resAdm π P k N = prodResFactor (O := O) h₀ h₁ ⁻¹' resTop π P k :=
+  resAdm_eq_preimage (hπ := hπ) (P := P) (k := k) (N := N) (h₀ := h₀) (h₁ := h₁)
+
+/-- **G.23R5** LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π)
+    (P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)) (k : ℕ) :
+    Nat.card (resTop π P k) = Nat.card P := card_resTop (hπ := hπ) (P := P) (k := k)
+
+/-- **G.23R6** LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π)
+    (P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)) (k r : ℕ) :
+    Nat.card (resAdm π P k (2 * k + 1 + r)) = Nat.card P * residueCard O ^ (k + 2 * r) :=
+  card_resAdm (hπ := hπ) (P := P) (k := k) (r := r)
+
+/-- **G.23R7** The certificate bridge. LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π)
+    {P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)} {k N : ℕ}
+    (h₀ : 2 * k < N) (h₁ : k < N) (γ : O) (a : Fin 2 → O) :
+    readEquiv (Ideal.Quotient.mk _ γ) (proj O 2 N a) ∈ resAdm π P k N
+      ↔ ∃ b₀ b₁ : O, qval a γ = π ^ (2 * k) * b₀ ∧ qder a γ = π ^ k * b₁ ∧
+          (IsLocalRing.residue O b₀, IsLocalRing.residue O b₁) ∈ P :=
+  resAdm_read_iff (hπ := hπ) (P := P) (k := k) (N := N) (h₀ := h₀) (h₁ := h₁) (γ := γ) (a := a)
+
+/-- **G.23R8** The residual-class census datum at centre modulus `m = k`. LANDED
+(2026-08-15, §A-8). -/
+example (hπ : Irreducible π)
+    {P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)}
+    (hP : TransInvariant P) (k r : ℕ) :
+    ∃ cert : Res O (2 * k + 1 + r) → Coeff O 2 (2 * k + 1 + r) → Prop,
+      (∀ g c, cert g c ↔ readEquiv g c ∈ resAdm π P k (2 * k + 1 + r))
+      ∧ (∀ g g' c, cert g c → resFactor (O := O) (by omega : k ≤ 2 * k + 1 + r) g'
+            = resFactor (by omega : k ≤ 2 * k + 1 + r) g → cert g' c)
+      ∧ (∀ g g' c, cert g c → cert g' c → resFactor (O := O) (by omega : k ≤ 2 * k + 1 + r) g'
+            = resFactor (by omega : k ≤ 2 * k + 1 + r) g)
+      ∧ (∀ c, (∃ g, cert g c) ↔ c ∈ resClassSet π P k (2 * k + 1 + r)) :=
+  resCert (hπ := hπ) (P := P) (hP := hP) (k := k) (r := r)
+
+/-- **G.23R9 — THE COUNT FORMULA** of the replacement route, and G.23a's replacement on the
+critical path: at level `N = 2k+1+r` the classes carrying a residual pair in a
+translation-invariant class `P` at a centre of depth `≥ 2k` number `#P · q^(2k+2r)`, i.e.
+`#P · q^(2N−2k−2)`. LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π)
+    {P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)}
+    (hP : TransInvariant P) (k r : ℕ) :
+    Nat.card (resClassSet π P k (2 * k + 1 + r))
+      = Nat.card P * residueCard O ^ (2 * k + 2 * r) :=
+  card_resClassSet (hπ := hπ) (P := P) (hP := hP) (k := k) (r := r)
+
+/-- **G.23R10a** G.21's computation rule. LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π) {k : ℕ} {a : Fin 2 → O} {γ b₀ b₁ : O}
+    (h0 : π ^ (2 * k) ∣ qval a γ) (h1 : π ^ k ∣ qder a γ)
+    (e0 : qval a γ = π ^ (2 * k) * b₀) (e1 : qder a γ = π ^ k * b₁) :
+    residualPair h0 h1 = (IsLocalRing.residue O b₀, IsLocalRing.residue O b₁) :=
+  residualPair_eq (hπ := hπ) (k := k) (a := a) (γ := γ) (b₀ := b₀) (b₁ := b₁)
+    (h0 := h0) (h1 := h1) (e0 := e0) (e1 := e1)
+
+/-- **G.23R10b** LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π)
+    {P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)} {k N : ℕ}
+    {c : Coeff O 2 N} :
+    c ∈ resClassSet π P k N
+      ↔ ∃ (a : Fin 2 → O) (γ : O) (h0 : π ^ (2 * k) ∣ qval a γ) (h1 : π ^ k ∣ qder a γ),
+          proj O 2 N a = c ∧ residualPair h0 h1 ∈ P :=
+  mem_resClassSet_iff_residualPair (hπ := hπ) (P := P) (k := k) (N := N) (c := c)
+
+/-- **G.23R11** LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π)
+    {P : Set (IsLocalRing.ResidueField O × IsLocalRing.ResidueField O)}
+    (hP : ∀ p ∈ P, ¬ DblPair p) {k N : ℕ} (hN : 2 * k + 1 ≤ N) :
+    resClassSet π P k N ⊆ depthSet π N (2 * k) :=
+  resClassSet_subset_depthSet (hπ := hπ) (P := P) (hP := hP) (k := k) (N := N) (hN := hN)
+
+/-- **G.23R12a** LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π) (x : O) : IsLocalRing.residue O x = 0 ↔ π ∣ x :=
+  residue_eq_zero_iff_dvd (hπ := hπ) (x := x)
+
+/-- **G.23R12b** The anisotropy bridge. LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π) (b₀ b₁ : O) :
+    Anisotropic ![b₀, b₁] ↔ AniForm (IsLocalRing.residue O b₀, IsLocalRing.residue O b₁) :=
+  aniso_iff_aniForm (hπ := hπ) (b₀ := b₀) (b₁ := b₁)
+
+/-- **G.23R12c** The separable-split bridge. LANDED (2026-08-15, §A-8). -/
+example (hπ : Irreducible π) (b₀ b₁ : O) :
+    SepPair (IsLocalRing.residue O b₀, IsLocalRing.residue O b₁)
+      ↔ ∃ z : O, π ∣ (z ^ 2 + b₁ * z + b₀) ∧ ¬ π ∣ (b₁ + 2 * z) :=
+  sepPair_iff_exists_simple_root (hπ := hπ) (b₀ := b₀) (b₁ := b₁)
 
 /-! ## §5 — `n = 2`: type classification by depth (G.24–G.31) -/
 
