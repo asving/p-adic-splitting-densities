@@ -19,3 +19,10 @@ import UniformityCheck.N3Struct
 import UniformityCheck.N3Drain
 import UniformityCheck.N3Exact
 import UniformityCheck.P5Consume
+import UniformityCheck.N3Shift
+import UniformityCheck.N3CertRam
+import UniformityCheck.N3CertLinRam
+import UniformityCheck.N3Recur
+import UniformityCheck.N3Drain3
+import UniformityCheck.N3MBox
+import UniformityCheck.N3Tie
