@@ -14,13 +14,19 @@ splitting types, with their degrees and pairwise distinctness.
 DEPENDS: landed `Uniformity.Density.FactorizationType`,
 `Uniformity.Density.FactorizationType.degree`.
 
-⚠ **BLUEPRINT DEFECT D3, carried forward (not introduced here).** The blueprint's own SIGNATURE
-for the ten pairwise inequalities is the literal placeholder `theorem c3_pairwise_ne :
-/- the ten inequalities -/ True`, already recorded as a signature defect at the stage-0e
-leanspec gate (`leanspec/Leanspec/ChapG.lean` D3) and landed there verbatim, i.e. vacuous. Per
-blueprint §12 rule 3 ("elaboration failures / signature defects go back to the blueprint, never
-patched here"), this file lands the SIGNATURE exactly as contracted — the ten inequalities
-themselves are not stated and are not proved by this node.
+✅ **BLUEPRINT DEFECT D3 CURED** (AMENDMENT 2026-08-15 §A-6). The blueprint's original SIGNATURE
+for the ten pairwise inequalities was the literal placeholder `theorem c3_pairwise_ne :
+/- the ten inequalities -/ True` — recorded as a signature defect at the stage-0e leanspec gate
+(`leanspec/Leanspec/ChapG.lean` D3) and landed there and here verbatim, i.e. vacuous. Per
+blueprint §12 rule 3 the repair went back to the blueprint: the intended statement was recovered
+from G.52's own STATEMENT ("the five degree-3 splitting types, with their degrees and **pairwise
+distinctness**"; the five constants are `EFF.HMENU3.17`'s COROLLARY HM3.D rows) and from the
+declared consumer G.72, whose PROOF step 3 expands the 5-element menu with "the four distinctness
+side conditions from G.52's `c3_pairwise_ne`". `C(5,2) = 10`, so "the ten inequalities" are the
+five constants pairwise distinct as `FactorizationType`s; the blueprint was amended with that
+signature, and this file now lands it. The order is `leancheck/UniformityCheck/N3Base.lean`'s (the
+node's ⚠ RE-DERIVATION TARGET, which lands the same ten as ten separate `decide`-backed lemmas);
+the proof is the blueprint's own PROOF line, "`decide` after reducing to multiset inequality".
 
 ## Status
 
@@ -52,9 +58,20 @@ theorem c3_degrees :
   refine ⟨?_, ?_, ?_, ?_, ?_⟩ <;>
     simp [c3split, c3linInert, c3inert, c3linRam, c3ram, FactorizationType.degree]
 
-/-- ⚠ TRANSCRIBED VERBATIM (blueprint defect D3): the blueprint's SIGNATURE for the ten pairwise
-inequalities is the placeholder `True`. Landed as contracted. -/
-theorem c3_pairwise_ne : True := trivial
+/-- The ten pairwise inequalities: the five degree-3 splitting types are pairwise distinct as
+`FactorizationType`s. Signature per blueprint AMENDMENT 2026-08-15 §A-6 (defect D3 cured; it was
+the placeholder `True`).
+
+`DecidableEq FactorizationType` is `Classical.decEq` (`LocalData.lean`), so each goal is
+transported along the `data` projection first — where `Multiset (ℕ × ℕ)` has a genuine decidable
+equality — exactly as the blueprint's PROOF line prescribes. -/
+theorem c3_pairwise_ne :
+    c3split ≠ c3linInert ∧ c3split ≠ c3inert ∧ c3split ≠ c3linRam ∧ c3split ≠ c3ram
+      ∧ c3linInert ≠ c3inert ∧ c3linInert ≠ c3linRam ∧ c3linInert ≠ c3ram
+      ∧ c3inert ≠ c3linRam ∧ c3inert ≠ c3ram
+      ∧ c3linRam ≠ c3ram := by
+  refine ⟨?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_, ?_⟩ <;>
+    exact mt (congrArg FactorizationType.data) (by decide)
 
 section AxCheck
 #print axioms Uniformity.Density.c3_degrees
