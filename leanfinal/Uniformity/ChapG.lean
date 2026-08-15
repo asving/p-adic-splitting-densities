@@ -67,6 +67,7 @@ import Uniformity.ChapG.G56
 import Uniformity.ChapG.G57
 import Uniformity.ChapG.G58
 import Uniformity.ChapG.G59
+import Uniformity.ChapG.G60
 import Uniformity.ChapG.G62
 import Uniformity.ChapG.G63
 import Uniformity.ChapG.G64
@@ -80,6 +81,8 @@ import Uniformity.ChapG.G71
 import Uniformity.ChapG.G72
 import Uniformity.ChapG.G73
 import Uniformity.ChapG.G74
+import Uniformity.ChapG.G75
+import Uniformity.ChapG.G76
 
 /-!
 # Uniformity.ChapG — chapter G roll-up (BASE CASES AND MENUS)
