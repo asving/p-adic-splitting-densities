@@ -642,18 +642,168 @@ fields + the five instance records; §5 slot-seam evaluation layer (via B's `sup
 (LB1)/(MP1); §7 the σ dictionary + degree conservation; §8 root-continuation/exhaust clauses; §9
 `(H-VARTHETA-RES)` carriers; §10 gates.
 
-### BRIEF D — GAUGE + CERTIFICATE T-CHAIN
-STATUS: stub.
+### BRIEF D — GAUGE + CERTIFICATE T-CHAIN (T1 / T3 / T4 / T5)
 
-### BRIEF F — GRT WELD LAYER
-STATUS: stub.
-
-### BRIEF I — CAPSTONE AND CONDITIONALITY
-STATUS: stub.
+**SCOPE.** `EFF-T1` (55 headings; merged from 3 shards), `EFF-T3` (36), `EFF-T4` (45), `EFF-T5`
+(45). ~181 DAG nodes. All four are ACCEPTED T-units: **GC-10 transcription grade governs the
+whole chapter** — the EFF canonical statements are the spec, deviations only via AMENDMENT
+blocks.
+**PRODUCT.** Terminal nodes must expose, by name: (1) the **gauge cocycle layer** (T1) with the
+**canonical ϑ four-way orientation table as a node annotation — D OWNS IT, GC-14; the content is
+pinned in GC-14 and transcribed from `EFF-GENTOW2`'s orientation records + T1 `(C3-Theta)` /
+`(C3-B-law)`, T3 `(T1-THETA)`/`(ABS-G2)`, T5 L991–993**; (2) the **telescope** (T3) with its
+§8.1 orientation checks (`ϑ_N(0;q) = ϑ_N(1;q) = 1`, the top-slot anchor) as Lean lemmas — they
+are the executable form of the sign discipline; (3) the **certificate witness** (T4) and the
+**w-frame** (T5) interfaces; (4) the `𝒲_(≤i)` carriers that Display A's `∀ i ≥ 3` conjunct
+consumes (hand off to E/I by name).
+**INTERFACES IN:** GENTOW2's `B″`/`B′` lemmas via GC-13 placeholders (`EFF.GENTOW2.<nn>
+[supplied-by: chapter C]`); B's polygon/residual API by node ID; landed kernel. **OUT:** E (ϑ
+table by anchor; w-frame), F (weld faces cite T-chain), I (the `𝒲` conjunct carriers), C (cites
+the table back, GC-14).
+**BINDING GCs:** GC-4, GC-6, GC-8, GC-10 (hard), GC-11, GC-13, GC-14 (owner).
+**TRAPS.** (i) **The ϑ-orientation trap is THE trap** (PROJECT_STATE append #54; GENTOW2
+OPEN-CALL 2: GENTOW2's own text says the ϑ ↔ ϑ_t correspondence is unadjudicated while T1/T3/T5
+have since installed it AS AN INVERSE — "a sign error no battery catches"). Every ϑ-node carries
+the annotation; the B-law direction (3) (`FGMN = u · repo`, NOT the inverse — the r2 F3 finding)
+must not be conflated with the Θ/ϑ inversion. (ii) T3/T5 consume GENTOW/HETOW content (the v1
+design's own warning: "T3/T5 ← GENTOW/HETOW") — those are GC-13 placeholders, never re-proofs.
+(iii) `HYP.01`/`HYP.12` escalations originated in T3/T1 OPEN-CALLs (the trust-boundary theorem
+naming) — answered by placement into the core-set audit (HYP.98); D must NOT open a node for
+them (they are I's). (iv) The `EXT:EFF-T1*.md` glob in the DAG is a parse artefact, not a file —
+don't chase it. (v) JD0: transcribe a JD0 interface unit ONLY where a T-unit cites a JD0
+designation; otherwise `JD0-BOX-2` goes straight to I as a named hypothesis (its machine-grade
+bar is SIGNED, Q6/HYP.39) — G closed without JD0 and D does not adopt orphans silently.
+**SKELETON (est. 70–90 nodes):** §3 gauge/letter primitives + THE ORIENTATION TABLE node; §4 T1
+cocycle layer; §5 T3 telescope + orientation checks; §6 T4 certificate witness; §7 T5 w-frame;
+§8 the `𝒲_(≤i)` carriers; §9 gates (GC-11).
 
 ---
 
-## PART IV — ITEMS FLAGGED FOR ASVIN (0d checkpoint)
-STATUS: stub.
+### BRIEF F — GRT WELD LAYER (consumer-first: Display A backwards)
 
-<!-- RESUME: next item = briefs D, F, I, then PART IV flag list, final commit -->
+**SCOPE.** `EFF-GRTJA` (36 headings), `EFF-GRTJB` (157), `EFF-GRTJC` (121), `EFF-GRTW2` (60,
+merged), `EFF-WELDMASTER` (30), `EFF-LIFTCORNER` (118, merged), `EFF-SIGMALAW` (18). ~538 DAG
+nodes — **but the weld-face audit signed most of the weld layer OUT of the capstone cone**
+(HYP.21/75/76/77/83–86 NOT-REACHED; the whole `[H-c]` value package OUT at v4). **The chapter is
+authored consumer-first from Display A's two surviving weld conjuncts backwards**, and
+out-of-cone units get the recorded-not-transcribed treatment (CHAP-B H-2's pattern: a NON-NODE
+note naming the unit, its status, and why no node exists).
+**PRODUCT.** (1) The **`JD0-BOX-2` interface statement** (unit-character gauge-form perimeter,
+FRAME grade, machine-grade bar SIGNED — HYP.39/74): stated as the named hypothesis I will carry;
+(2) the **`GENHN-BOX-2` / W-9 graded face** interface (HYP.148, live at `n ≥ 6`; its W-1
+transport sub-residue HYP.139): the supplier statement (`COROLLARY W-9`'s twisted algebra as the
+`μ ≥ 3` carry bookkeeping), stated at exactly ledger strength; (3) the **σ-law** (SIGMALAW)
+through a GC-4 dictionary; (4) adjudication of the two genuine **MUTUAL-RECON pairs**
+`EFF.GRTW2.20 ↔ EFF.LIFTCORNER.72` and `EFF.GRTW2.35 ↔ EFF.LIFTCORNER.62` (`W2-OPEN-1`/
+`W2-OPEN-2`): the blueprint DECIDES which direction is the statement dependency (DAG_README SCC
+items 3–4 defer exactly this to the chapter); (5) the reachable GRTJA/GRTJB/GRTJC structural
+clauses that Display A's `AllOInterfaces[… W/J …]` names.
+**INTERFACES IN:** D's T-chain by node ID or GC-13 placeholder; H.87's carry cancellation and
+H.61's fibre count by node ID (the two theorems that replace type-preservation claims); C/E
+outputs via GC-13. **OUT:** I (the two surviving conjunct statements), nothing else load-bearing.
+**BINDING GCs:** GC-4, GC-6, GC-8, GC-10 (weld notes are transcription-grade), GC-11, GC-13,
+GC-14 (cite D's table).
+**TRAPS.** (i) **Do not build the out-of-cone value package** — `VD-m`, `C-coll`, `R-coll`,
+`PERIM-μ`, `DMULT-S`, `W2-VALUE` are all NOT-REACHED (v4 fold); a node for any of them is wasted
+fleet mass and a false conditionality entry. (ii) **WELD-ZERO has NO spec** (`EXT:`; HYP.149
+IN-PROGRESS — the Fable-max confirmation pass 2 of 2 is in flight per append #56). F must not
+transcribe WELDZERO content until that pass returns; carry the arc as PENDING with the ledger
+row cited. (iii) **The WZ-BOX-7 false-parenthetical rule** (GC-10 rider): the twist dictionary
+is NOT type-preserving (972/972 live-wrap flips, machine witness) — never state a
+type-preservation claim about a twist map; side with conclusions (cancellation identities,
+cardinalities). (iv) `DMULT`: W-9 rides the citable `(DMULT-w)` tier (PDF-VERIFIED), not
+`DMULT-S` — cite accordingly. (v) The fence-crossing clusters and the `{GRTJA,GRTJB}` mutual
+cluster mean F's DEPENDS fields are where 82 fence hits get adjudicated — do it explicitly, one
+line each.
+**SKELETON (est. 50–70 nodes, deliberately small for 538 DAG nodes — the out-of-cone census
+section does the shrinking honestly):** §3 the out-of-cone census (NON-NODE table, row by row,
+citing the v4 fold); §4 JD0-BOX-2 interface; §5 GENHN-BOX-2 / W-9 face interface; §6 SIGMALAW
+dictionary; §7 the mutual-recon adjudications + reachable GRT structural clauses; §8 WELD-ZERO
+pending arc; §9 gates.
+
+---
+
+### BRIEF I — CAPSTONE AND CONDITIONALITY (the ledger made formal)
+
+**SCOPE.** The 154 chapter-I DAG nodes: every `HYP.*` row of `spec/HYPOTHESIS_LEDGER.md` (v7:
+154 rows), the two `CAP:` targets (`UniformityStatement`, `UniformityStatementDecided` — landed
+`Prop` definitions, `Statement.lean:71/:84`), and the three `COND:` orphans (`A1_n`, `A2_n`,
+`(H-e)-window-pinning`). Source of truth: **Display A, FROZEN at v5 (question 8)** — the
+conjunct list in the ledger's capstone-conditionality preview.
+**PRODUCT — the mandate, verbatim from the czar charge:** every node of this chapter is a
+hypothesis-ledger row made formal, and **each surviving hypothesis becomes either (a) a DISCHARGE
+node** (citing the landed discharger by declaration name, with the row's DISCHARGED stamp as
+provenance) **or (b) a NAMED CAPSTONE HYPOTHESIS — and every (b) requires Asvin sign-off** (the
+0d-checkpoint list in Part IV aggregates them). Concretely: (1) a capstone hypothesis STRUCTURE
+(the H.95 `InductionPackage` lesson, one level up): one field per Display-A conjunct, at exactly
+ledger strength, degree-indexed where the display is (`if n≥6`, `if n≥8` clauses as indexed
+fields); (2) the assembly theorem: the structure + chapter products ⇒ `UniformityStatement` via
+H.98's `uniformity_of_package` and landed `UniformityStatement.ofDecided`; (3) the discharge
+nodes for CLOSED/DISCHARGED rows are provenance NOTES (no Lean node — the declaration already
+exists); NOT-REACHED / OUT-OF-CONE / OUT-OF-PATH-BY-POLICY rows get signed non-applicability
+lines, never nodes; (4) the **COND resolution**: `A2_n` = `DrainageAt n` (landed,
+`Statement.lean:118`); `A1_n` = the `(A1)`-admissibility law (H.93/H.94's strengthened predicate
+— tie the conjunct to those nodes and give it the ledger row it lacks); `(H-e)-window-pinning` =
+supplied by `LEMMA GENHN-3` + GENIND-2's consulted-height bound (HYP.24's re-sourcing) — each
+COND orphan either gets a row or is proved equal to an existing row's content (DAG_README flag 6
+discharged); (5) the **CORE-SET audit nodes**: HYP.01, HYP.12, HYP.17, HYP.98, HYP.111
+(definitional half) are human-review nodes scheduled WITH Asvin, never fleet nodes; (6) gates:
+the `n = 1`/`n = 2` unconditional slices re-fired (landed `drainage_one`/`drainage_two`, chapter
+G's landed `n = 2` capstone slice) + the `spec/AXCHK.lean` axiom-census analogue (REVISION 2's
+maintained interface list, diffable output committed).
+**INTERFACES IN:** everything, by landed name or committed node ID (I is last in consumer-first
+order = first authored among none — it is authored NOW against Display A, with GC-13
+placeholders for E/C/D/F products). **OUT:** none (terminal).
+**BINDING GCs:** GC-8 (the signed-vacuity ↔ Display-A reconciliation check is I's to run),
+GC-10 (hard — ledger rows are the spec), GC-11, GC-13.
+**TRAPS.** (i) **Display A only** — Display B is HISTORICAL (v5) and must not be cited as the
+interface; a conjunct without a dagger is NOT discharged (v5's own warning). (ii) `TotalMassOne`
+is the drainage leg in disguise — never counted as a separate obligation (ledger's synthesis
+note; keeping it out of `UniformityStatement` is what stops double-counting). (iii) `HEX3-BOX-1`
+(HYP.137) is disclosure-without-promotion: visible in the preview, NOT a conjunct — do not
+promote it. (iv) The `disc ≠ 0` locus in `A0_n[disc≠0]` interacts with GC-9: `leanfinal`'s
+`DecidedAt` carries no such restriction, so I's formalization of `A0_n` must state the corpus's
+conjunct faithfully AND record the GC-9 divergence (B's H-11 text is the template).
+(v) `HYP.148/149`'s WELD-ZERO arc is IN-PROGRESS — the field for `GENHN-BOX-2` carries the arc
+note, licenses nothing. (vi) Rows stamped MERGED are represented by their parent — one field,
+never two.
+**SKELETON (est. 40–60 nodes + the row-disposition table):** §3 the row→disposition census
+(all 154 rows, one line each: discharge-note / hypothesis-field / non-applicability); §4 the
+capstone hypothesis structure (Display A, field by field, with ledger row IDs); §5 the COND
+resolutions; §6 the assembly theorems; §7 the CORE-SET audit schedule; §8 gates + AXCHK.
+
+---
+
+## PART IV — ITEMS FLAGGED FOR ASVIN (the 0d sign-off checkpoint)
+
+1. **PA-1 (the D-§9.1 repair).** Four statement-level edits to committed, signed CHAP-B text
+   (B.63/B.65/B.73/B.74 — pin `H₀` at `sideMin`, not abscissa 0). Honest repair of a defect the
+   chapter's own §9 composer found; standing statement-change authority (2026-08-05) covers it,
+   but it touches signed contracts, so it is listed for explicit sign-off.
+2. **Three cut-internal assignment rulings** (czar calls; cheap to reverse now, expensive
+   later): GENTOW2 → chapter C (PA-3(i)); W12's remaining mass (`LEMMA W12-HT` + count layer) →
+   chapter C (PA-5); `EFF-HE7` → chapter E, not B/C (BRIEF E). The 0c cut tables become stale in
+   these three places; the orchestrator should book them.
+3. **GC-2's carrier question** (`ℕ∞`-by-construction vs `WithTop ℤ` for level-`r` heights):
+   ruled narrowly with CONFIDENCE medium-high; if chapter C's author takes the fallback, that
+   DECISION block should get fresh eyes (the fresh-eyes core-set audit arm).
+4. **Every (b)-class capstone hypothesis in chapter I requires individual sign-off** — the brief
+   builds the list; the sign-off surface is Display A's surviving conjuncts (currently: NS7-cite,
+   LB1, MP1, HE7A×5, (H-VARTHETA-RES)/𝒲, A0/A1/A2, JD0-BOX-2, GENHN-BOX-2 (n≥6), (H-e)-pinning,
+   GENHN-HE(μ≥3) (n≥6), GENHN-TOW-1 (n≥8), AllOInterfaces×14).
+5. **The CORE-SET human reads stay human**: HYP.01 (`typeOf` faithfulness), HYP.12 (`(e,f)`
+   ordering), HYP.17, HYP.98, HYP.111-definitional — chapter I schedules them; no agent
+   discharges them (Q4 policy, explicitly not liftable).
+6. **This document is itself un-cross-read** (Opus-authored, same-family). Per append #56 a
+   Fable-max cross-read may discharge the obligation now; the codex cross-family pass stays
+   optional belt-and-braces post-Tuesday. Recommended before the parallel authors fire.
+
+---
+
+## FINAL STATE
+
+All GC decisions (GC-1…GC-14) written; PA-1…PA-5 recorded; six briefs complete; Part IV flag
+list complete. This document is ready for (i) the cross-read (Part IV item 6), (ii) the
+parallel chapter authors' consumption.
+
+<!-- RESUME: DOCUMENT COMPLETE (GC-1..14, PA-1..5, six briefs, Part IV). Next action belongs to the orchestrator: cross-read per Part IV item 6, then fire the parallel authors. -->
