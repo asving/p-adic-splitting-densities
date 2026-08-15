@@ -5273,3 +5273,169 @@ visible contradiction with the landed `decidedDensity ≤ genuineDensity`. It di
 strongest available corroboration that G.60's residue-field cubic census and HMENU3's transcribed
 cubic densities are the same mathematics read two ways.
 
+
+---
+
+### A-9.3 — **CHAPTER G CLOSED** (dated census, 2026-08-15)
+
+**Verdict.** Every node of this chapter is landed in `leanfinal`, `sorry`-free, with a Lean-core-only
+axiom footprint, EXCEPT the one node whose statement this file's own amendments refuted. The
+chapter is closed; what remains open is named below and is named as *residue*, not as work in
+flight.
+
+#### Node census
+
+| | count | detail |
+|---|---:|---|
+| nodes declared in §§3–10 | 78 | G.01 … G.78 |
+| nodes added by amendment | 13 | G.30a (§A-7) + G.23R1…G.23R12 (§A-8) |
+| **node entries total** | **91** | |
+| **landed** | **90** | one Lean file each under `leanfinal/Uniformity/ChapG/` |
+| **blocked residue** | **1** | **G.23** — see below |
+| **Lean node files** | **96** | 9,202 lines; the split-mandated nodes land as several files each (G.23 → 12, G.61 → 7, G.30a, G.60/G.75 in place) |
+| **public declarations censused at G.78** | **155** | one `#print axioms` line each, across 95 node modules |
+
+#### The blocked residue, in full
+
+**G.23 is the chapter's only unlanded node, and it is unlanded because it is WRONG, not because it
+is hard.** Its two declarations:
+
+* **G.23a `card_resStratum` — REFUTED and WITHDRAWN** at §A-1. The per-pair residual stratum does
+  not have the stated cardinality; neither of the two routes the node offered governs. Nothing in
+  this chapter revives it, and no landed declaration depends on it.
+* **G.23b `depthSet_eq_iUnion_resStratum` — UNLANDED, true as stated.** The union is genuinely a
+  union but is **not disjoint**, so it cannot carry a count; and after §A-8 no consumer needs it,
+  because the replacement route indexes by a translation-invariant residual CLASS
+  (`resClassSet`) rather than by an individual pair. It remains an `axiom` stub in
+  `leanspec/Leanspec/ChapG.lean` — the chapter's single surviving stub — precisely so that its
+  status stays visible.
+
+**The consequence of the block is cleared, not the block.** G.41 and G.42 — the two nodes that
+were waiting on G.23a's count — are landed here from `card_resClassSet` (G.23R9), and G.43, G.44,
+G.46–G.49 and G.51 follow. The critical path the chapter named in §2
+(`G.01 → G.02 → G.11 → G.18 → G.17 → G.20 → G.23 → G.41 → G.43 → G.47 → G.48 → G.51`) is
+therefore complete with **`G.23` replaced by `G.23R1 → … → G.23R9`**, and that substitution is the
+chapter's single largest structural revision.
+
+#### Teeth tally (unchanged from §13, now all discharged)
+
+**80 dispositions across the nodes: 42 Lean theorem, 34 executable regression, 4 signed
+non-applicability.** Every `Lean theorem` disposition is now a landed theorem; the
+`executable regression` dispositions remain in `verification/` as the chapter always specified;
+the four `signed non-applicability` items (`W11-T-TAMEDISC` in equal characteristic, `HM3-ORACLE`
+at G.06, ANNEX B at G.62/G.63, the four W-11 C7 corrections as battery items) are signed, with
+their *content* carried at G.28, G.42 and G.44 as §13 records.
+
+#### `leanspec` contract state
+
+Signed contract: **135** declarations (110 at stage 0e + 25 at §A-8), one withdrawn (G.23a, §A-1).
+At this append **every remaining declaration is retired** to the
+`example … := <landed name>` form, which machine-checks that the landed type IS the signed type —
+with the single exception of G.23b's `axiom` stub, kept deliberately (above). `leanspec` builds
+green.
+
+#### The honesty block, re-affirmed after closure
+
+Closing the chapter changes **nothing** in §1. In particular:
+
+* **H-1 stands.** No node of this chapter proves `DrainageAt 3`; the H-1/H-2/H-3 bridge from the
+  HEX3 arithmetic layer to `undecidedCount O 3 N` is still the named frontier, and G.53's `n = 3`
+  total mass still carries drainage as an explicit hypothesis.
+* **H-4 stands.** G.61 delivers five **lower bounds**, not the five HM3.D densities. The blueprint's
+  own numeric consistency table (every bound strictly below its target at `q = 2` and `q = 3`) is
+  the check, and it is re-run as `gate_three_hmenu3_containment_two` (G.77) inside Lean.
+* **H-5 stands and is now fully cashed.** The `n = 2` layer is unconditional: G.36's exact drainage
+  law `undecidedCount O 2 N = q^N`, G.43's every-window count identity, G.48's exact densities and
+  G.51's `n = 2` slice of `UniformityStatement` are all proved from Lean core over the standing
+  bundle, in both characteristics, wild residue characteristic included, with no axiom and no
+  hypothesis carried.
+* **G.51 IS NOT THE CAPSTONE.** `UniformityStatement` quantifies over all `n > 0`. The honest
+  sentence remains: *the uniformity theorem is proved at `n = 1` (landed, `Gates.lean`) and at
+  `n = 2` (G.51), unconditionally, over every complete DVR with finite residue field.*
+* **H-8 stands: the codex cross-read is still OWED**, and §14 items 5–12 are still owed. Closure is
+  a formalization milestone, not a review milestone.
+
+#### Known bookkeeping residue (declared, not repaired here)
+
+1. **The DAG carries no rows for the 13 amendment-added nodes.** `spec/DAG_BLUEPRINT_G.tsv`'s
+   endpoint grammar is `BP.G.<digits>`, which `G.30a` and `G.23R1…G.23R12` do not match. Their
+   dependency structure is recorded in their node entries (§§A-7, A-8) and in the node files'
+   `DEPENDS` docstrings, not in the TSV. Changing the ID grammar would touch `dag_build.py`'s
+   sort key for every chapter and is deliberately deferred.
+2. **§13's teeth table predates the amendments**, so it attributes `W11-CENSUS` to G.23; that
+   disposition is discharged at G.23R9 instead.
+3. **H-4's parenthetical mislabels the `n = 3` menu node** as G.51 (the `n = 2` capstone slice);
+   the cubic `CoveringMenu` is G.54.
+
+#### Node-level findings of the closing tail (recorded, not repaired in §§3–10)
+
+1. **G.42's DEPENDS: `decidedSet_split_eq` needs G.34, not G.33.** G.41's companion
+   `decidedSet_inert_eq` rules out a depth-`N` centre by G.33 `exists_split_lift` (a `splitType`
+   lift contradicts inert-decidedness). The split half cannot copy that step — **a `splitType`
+   lift is consistent with split-decidedness** — and uses the landed G.34 `exists_inert_lift`
+   instead, contradicting via `splitType_ne_inertType`. This vindicates the blueprint's original
+   G.33/G.34 pairing, which §A-7 had trimmed to G.33 alone on the strength of the ram case only:
+   the trim is correct for G.31 and wrong for G.42, so **both lift constructions are load-bearing**
+   and neither may be retired.
+2. **G.41/G.42 are factored, as the blueprint recommended.** The shared engine
+   `stratum_eq_resClassSet` is parametrised by the residual predicate pair `(P, Q)` and the type
+   pair `(σ, τ)`, with the dichotomy absorbed as a hypothesis `AniForm p ∨ SepPair p → p ∈ P ∨ p ∈ Q`;
+   G.26 supplies the dichotomy *inside* the lemma, so the hypothesis is not where the content sits.
+   The blueprint's `card_stratum_of_residualClass` RE-PLAN request (G.42's SIZE note) is thereby
+   satisfied under a different name, and the engine is reusable at `n = 3`.
+3. **`card_biUnion_range_of_disjoint` and `depthSet_disjoint` are the two new shared helpers**
+   (landed in G.41, consumed by G.43 and G.44). They are the chapter's disjoint-union counting
+   layer, which the blueprint assumed as mathlib and which mathlib does not carry in this shape.
+4. **G.47's two routes are certified independent MECHANICALLY, not by assertion.** The blueprint
+   requires route 1 (from G.43's every-window count identity) and route 2 (subtraction from the
+   landed total mass) "as a mutual check ... they use disjoint inputs". That claim is now checked by
+   re-elaborating the inert value and route 2 verbatim inside an import closure that contains
+   `Uniformity.ChapG.G46` but NOT `G43` — a closure in which `#check @decidedCount_split_eq_inert`
+   fails with `unknown identifier`. Both compiled there; route 1 textually invokes G.43. So the
+   disjointness of the two routes' inputs is a fact about the import graph, not a reading of the
+   proof text. (Reflection would not have settled it: imported theorem bodies have `value? = none`
+   in Lean 4.31.)
+5. **G.61a needed genuinely new Hensel work.** `leancheck`'s `split3_decided` is a 
+   `typeOf_split3_of_residue`-style citation; `leanfinal`'s G.55 demands a full residue
+   factorization into three pairwise-unit-separated linear factors, so G.61a lands its own
+   simple-root lifting lemma (`g61a_exists_cubic_root`, private) and `typeOf_split3_of_deep` before
+   `split3_decided`. This is the one place in the closing tail where the `leancheck` reference was
+   not portable, and it is why the split conjunct's file is the largest of the five.
+6. **G.61a's split certificate is NOT G.55, and the reason is mathematical, not editorial.** The
+   blueprint's level-3 split class `![0, π, −(1+π)]` reduces mod `π` to `X²(X−1)` — a REPEATED
+   residue root — so G.55 `typeOf_split3_of_residue`, which demands three pairwise-unit-separated
+   residue roots, does not apply. Nor could any level-1 census route supply this conjunct at
+   `q = 2`: **no monic cubic over `𝔽₂` has three distinct roots**, so a totally-split cubic over a
+   `q = 2` base is necessarily invisible at level 1. That is exactly why the split bound is the
+   deep single-class `1/q⁹` and not a residue-census value, and why G.61a lands its own
+   `typeOf_split3_of_deep` plus a private cubic-peeling/root-lifting toolkit. The node's
+   `⚠ RE-DERIVATION TARGET` claim ("leancheck's `N3Gates.lowers_three` is this exact statement")
+   holds for the statement but NOT for the supply line of the first conjunct.
+7. **G.61b's middle is new too.** `leanfinal`'s G.56 wants a residual FACTORIZATION
+   `f̄ = (X − C ρ̄)·g₀` with `g₀` monic of degree 2 and irreducible, where `leancheck` wanted
+   `Anisotropic ![β₀,β₁]` plus three congruences. The node builds `g₀ := monicPoly ![b₀, −b₁]` and
+   gets irreducibility from `AniForm` through mathlib's
+   `Polynomial.irreducible_of_degree_le_three_of_not_isRoot`. Two further gaps in the landed API
+   were filled rather than worked around: `Menu.mem_dvdSet_of_dvd` (`leancheck` gets it from its
+   own `dvd_res_iff`, which has no `leanfinal` counterpart) and `Fin 2`/`Fin 3` expand-and-eval
+   lemmas over the residue FIELD (`QuadCert.lean`'s are stated over a discrete valuation ring, so
+   they are unavailable exactly where the cofactors live).
+
+#### Verification performed for this append
+
+* **`leanfinal`: 8,678 jobs green, zero `sorry`, zero axioms beyond Lean core.** The chapter's
+  95 node modules are all wired into `Uniformity.ChapG`, and `Uniformity.ChapG.G78` is wired into
+  `Uniformity.lean` (it imports the roll-up, so it cannot be one of the roll-up's own imports; this
+  keeps it inside the library's import graph and therefore inside plain `lake build`).
+* **The G.78 census was machine-audited at the closing commit**, not merely run: all 155 lines
+  report a SUBSET of `{propext, Classical.choice, Quot.sound}` — 144 the full triple, 11 a strict
+  subset, of which two report no axioms at all. **Zero violations.**
+* **`leanspec`: 8,681 jobs green** with 134 of 135 signed declarations retired to
+  `example … := <landed name>`, which machine-checks the landed types against the signed ones.
+* **`spec/dag_check.py`: PASS**, with 319 of 327 chapter-G edge rows and 77 of 78 chapter-G nodes
+  at `DONE`; the rebuild is verified idempotent (a second run is byte-identical).
+* **`leancheck` untouched** — it is EVIDENCE and a RE-DERIVATION TARGET, never an import (H-9), and
+  no file under `leancheck/` was written at any point in this append.
+* **No pre-existing Lean file was edited.** The closing tail's diff under `leanfinal/` is 13 new
+  node files plus the two roll-up files; the statement fence held everywhere except the one
+  adjudicated correction at §A-9.1.
