@@ -2132,14 +2132,23 @@ key, `0 < ℓ`, `Nat.Coprime u ℓ`, and let `f, g` be monic with `f`, `g` both 
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [repaired: A-F.6] `(hu : 0 < u)` and the two divisibilities `(hfd) (hgd)` added to BOTH
+-- theorems. The originals are REFUTED (machine-checked, amendment A-F.6): without `hfd`/`hgd`,
+-- `IsPure`'s truncated right endpoint `natDegree / natDegree` makes the `IsPure (f*g)` clause
+-- false at `f = g = X`, `φ = X²+1` over `ℤ₃`; without `hu`, the `φ`-carry sits at the SAME
+-- weight as the digit read and `resPoly` multiplicativity fails at `f = g = X²+X+1`, `u = 0`.
 theorem suppVal_mul_of_pure (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
-    (hf : f.Monic) (hg : g.Monic) (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ) :
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
+    (hf : f.Monic) (hg : g.Monic)
+    (hfd : φ.natDegree ∣ f.natDegree) (hgd : φ.natDegree ∣ g.natDegree)
+    (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ) :
     suppVal φ (f * g) u ℓ = suppVal φ f u ℓ + suppVal φ g u ℓ ∧ IsPure φ (f * g) u ℓ
 
 theorem resPoly_mul_of_pure (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
-    (hf : f.Monic) (hg : g.Monic) (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
+    (hf : f.Monic) (hg : g.Monic)
+    (hfd : φ.natDegree ∣ f.natDegree) (hgd : φ.natDegree ∣ g.natDegree)
+    (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ)
     {H₀f H₀g : ℕ} (hHf : npHgt φ f 0 = (H₀f : ℕ∞)) (hHg : npHgt φ g 0 = (H₀g : ℕ∞))
     -- [repaired: A-F.3/B-D9] the three binders carry their types (verbatim, Lean reads
     -- `(hf' hg' hfg')` as three anonymous `Sort`-valued binders)
@@ -2148,21 +2157,32 @@ theorem resPoly_mul_of_pure (hπ : Irreducible π) {φ : Polynomial O} (hφ : Is
     resPoly π φ (f * g) u ℓ hfg' (H₀f + H₀g)
       = resPoly π φ f u ℓ hf' H₀f * resPoly π φ g u ℓ hg' H₀g
 ```
-(the three `Nonempty` witnesses are named `hf' hg' hfg'` and are supplied by B.18.)
+(the three `Nonempty` witnesses are named `hf' hg' hfg'` and are supplied by B.18. Both new
+hypotheses are free at every consumer — the A-F.6 consumer audit, six nodes.)
 
 **DEPENDS.** B.09 · B.13 · B.14 · B.18 · B.20 · B.22 · B.24 · B.25 · B.26 · B.28 · B.29 · B.30 ·
 B.33 · B.34 · B.36 · mathlib `Polynomial.coeff_mul`, `Finset.Nat.sum_antidiagonal_eq_sum_range_succ`,
 and the domain property of `(resField φ)[Y]`.
 
 **PROOF.**
-1. Write `n_f := f.natDegree / m`, `n_g := g.natDegree / m`, so `n_{fg} = n_f + n_g`
-   (`natDegree_mul` for monics plus `Nat.add_div_right`-style arithmetic; a private helper).
+1. Write `n_f := f.natDegree / m`, `n_g := g.natDegree / m`, so `n_{fg} = n_f + n_g` —
+   [repaired: A-F.6] the division is now EXACT by `hfd`/`hgd` (`Nat.mul_div_cancel_left`-style
+   arithmetic after `natDegree_mul` for monics; a private helper). Without the divisibilities this
+   step is FALSE (`(1+1)/2 = 1 ≠ 0 + 0` at `f = g = X`, `m = 2` — the A-F.6 counterexample), and
+   step 7's `IsPure` conclusion rests on it.
 2. `≥` in the first claim is B.33.
 3. For `≤`, compute the digit of the product at the *predicted* height and index and show it is
    nonzero. By B.05 and the convolution of step 2 of B.33, the development coefficient of `f*g` at
-   index `t` is `c t = Σ_{j+i=t} dev φ f j * dev φ g i` **after carrying**; by B.32's step-1 carry
-   identity the carry contributes only terms of strictly larger weight, so at the minimal weight the
-   digit of `dev φ (f*g) t` equals the digit of the uncarried `c t`.
+   index `t` is `c t = Σ_{j+i=t} dev φ f j * dev φ g i` **after carrying**; the carry into abscissa
+   `t` is `(c (t-1)) /ₘ φ`, whose Gauss valuation is `≥` the line bound at `t-1`, which exceeds the
+   line bound at `t` by `u/ℓ` — [repaired: A-F.6] **`hu : 0 < u` is exactly what makes this strict**
+   (valuations are integers, so the carry's valuation is `≥ ⌈H(t) + u/ℓ⌉ ≥ H(t) + 1`): the carry
+   contributes only terms of strictly larger weight, so at the minimal weight the digit of
+   `dev φ (f*g) t` equals the digit of the uncarried `c t`. Precisely (the K_n display): for
+   `j + i = ℓ·n` every term of `c (ℓn)` has `gaussVal ≥ K_n := H₀f + H₀g − u·n`, with equality only
+   when both `j` and `i` are on-side, and every term of `c (ℓn − 1)` has `gaussVal ≥ K_n + u/ℓ > K_n`,
+   so the carry dies mod `π^{K_n}`. At `u = 0` the carry sits at the SAME weight and DOES corrupt the
+   minimal-weight digit — the second A-F.6 counterexample.
 4. The digit of `c t` at the line height is `Σ_{j+i=t} (digit of dev φ f j) * (digit of dev φ g i)`
    by B.22's `digAt_add` and the multiplicativity of `digAt` on products at added heights (a private
    helper: `digAt π (k+k') (x*y) = digAt π k x * digAt π k' y` when `π^k ∣ x`, `π^k' ∣ y`, immediate
@@ -2193,7 +2213,11 @@ the carry disappears entirely because every development coefficient is already a
 steps 3–4 are one line. The cost of the fallback is stated and it is **not** small: `m ≥ 2` would then
 be reachable from `m = 1` only by the unramified base change `O → AdjoinRoot φ` **plus Galois descent
 of the factorization**, neither of which exists in `leanfinal` or in any quarry (H-6). A fleet agent
-returning `BLOCKED` on B.35 must say which of steps 3–7 failed and why.
+returning `BLOCKED` on B.35 must say which of steps 3–7 failed and why. *[A-F.6: the wave-10 `BLOCKED`
+return did exactly that (steps 1 and 3, with machine-checked counterexamples), and `B-BOX-2` was
+adjudicated **REJECTED** for it: at `m = 1` both defects are invisible (divisibility is automatic and
+the `dev` coefficients are constants, so there is no carry at all), so the fallback would have masked
+a real statement bug at the not-small cost above. The repair is the two added hypotheses instead.]*
 
 **⚠ WHY THE RAMIFIED BASE CHANGE IS *NOT* USED HERE, AND WHY THAT MATTERS.** A tempting shortcut for
 the `ℓ ≥ 2` case is `O ↝ O' := O[T]/(T^ℓ − π)`, over which the slope becomes integral and the whole
@@ -2438,9 +2462,16 @@ suppVal φ (e - (h * U + g * V)) u ℓ ≥ c + 1.
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [repaired: A-F.6] `(hu : 0 < u)` and `(hgd) (hhd)` added: the original is REFUTED
+-- (amendment A-F.6, CE at `u = ℓ = 1`: `g = h = X`, `φ = X²+1` over `ℤ₃`, `e = π^c` —
+-- `GradedCoprime` holds because `resPoly X` is a unit constant, and no `U, V` exist). Without
+-- the divisibilities, `e.natDegree < (g*h).natDegree` does NOT bound the abscissa range of `E`
+-- by `a + b` (step 1), because `deg g = ℓ·m·(sideDeg g)` fails for truncation-pure `g`.
 theorem exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h : Polynomial O}
-    (hg : g.Monic) (hh : h.Monic) (hgh : GradedCoprime π φ u ℓ g h)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h : Polynomial O}
+    (hg : g.Monic) (hh : h.Monic)
+    (hgd : φ.natDegree ∣ g.natDegree) (hhd : φ.natDegree ∣ h.natDegree)
+    (hgh : GradedCoprime π φ u ℓ g h)
     {c : ℕ} {e : Polynomial O} (hdeg : e.natDegree < (g * h).natDegree)
     (he : ((c : ℕ) : ℕ∞) ≤ suppVal φ e u ℓ) :
     ∃ U V : Polynomial O, U.natDegree < g.natDegree ∧ V.natDegree < h.natDegree ∧
@@ -2564,8 +2595,13 @@ fixed in the PROOF. Then `f = g * h` with `g, h` monic, `g` `(u,ℓ)`-pure of re
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [repaired: A-F.6] `(hu : 0 < u)` and `(hfd : φ.natDegree ∣ f.natDegree)` added: the
+-- original is REFUTED (amendment A-F.6, CE: `f = X`, `φ = X²+1` over `ℤ₃`, `u = ℓ = 1`,
+-- `G = H = 1` — `resPoly X = C θ` is a unit constant, so `hprod` holds with `c = θ`, and the
+-- conclusion forces `X = 1`). `hu` also feeds the repaired B.35/B.39 in steps 2–3.
 theorem exists_graded_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f : Polynomial O} (hf : f.Monic)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f : Polynomial O}
+    (hf : f.Monic) (hfd : φ.natDegree ∣ f.natDegree)
     (hpure : IsPure φ f u ℓ) {H₀ : ℕ} (hH₀ : npHgt φ f 0 = (H₀ : ℕ∞))
     (hne : (sideSet φ f u ℓ).Nonempty)
     {G H : Polynomial (resField φ)} (hG : G.Monic) (hH : H.Monic) (hGH : IsCoprime G H)
@@ -2611,14 +2647,16 @@ iteration, with the two correction sequences defined by `Nat.rec` and their inva
 `B41d.lean` = steps 4–5 and the contract. **This is the chapter's largest node and the fleet must
 receive it pre-split.**
 
-**⚠ SIGNATURE HAZARD, DECLARED.** The index arithmetic between `μ_f`, `G.natDegree + H.natDegree` and
-`ℓ` is stated loosely in the STATEMENT above and is **pinned in the SIGNATURE**: the conclusion's
-degrees are `ℓ * m * G.natDegree` and `ℓ * m * H.natDegree`, and their sum must equal `f.natDegree`.
-The stub-landing agent must check `f.natDegree = ℓ * m * (G.natDegree + H.natDegree)` is derivable from
-`hpure` + `hprod` + B.30 (it is: B.30 gives `(resPoly).natDegree = sideDeg`, `hprod` gives
-`sideDeg = G.natDegree + H.natDegree`, and `IsPure` + B.13 give
-`f.natDegree = m * μ_f` with `μ_f = ℓ * sideDeg`) — and if it is not, **this is a blueprint defect and
-goes back to this file**, not patched in `leanspec` (0e rule 3).
+**⚠ SIGNATURE HAZARD, DECLARED — AND FIRED (A-F.6).** The index arithmetic between `μ_f`,
+`G.natDegree + H.natDegree` and `ℓ` is stated loosely in the STATEMENT above and is **pinned in the
+SIGNATURE**: the conclusion's degrees are `ℓ * m * G.natDegree` and `ℓ * m * H.natDegree`, and their
+sum must equal `f.natDegree`. The parenthetical derivation this paragraph originally claimed —
+"`IsPure` + B.13 give `f.natDegree = m * μ_f`" — is **FALSE**: `IsPure`'s right endpoint is the
+truncated `f.natDegree / m`, and `f = X` at `φ = X²+1` is `(1,1)`-pure with `m ∤ f.natDegree` (the
+A-F.6 counterexample class). This IS the predicted blueprint defect and it came back to this file per
+0e rule 3: the SIGNATURE now carries `(hfd : φ.natDegree ∣ f.natDegree)`, from which the derivation is
+honest — `hfd` makes the endpoint exact, `hcop` + B.17's spacing give `ℓ ∣ (f.natDegree / m)`, so
+`f.natDegree = ℓ * m * sideDeg`, and B.30 + `hprod` give `sideDeg = G.natDegree + H.natDegree`.
 
 **SOURCE.** `docs/GMN_citations.md` Thm 1.15 and Thm 1.19 (both are applications of this one engine);
 `EFF.HE3.32` (`LEMMA HE3-4`, the residue peel, which is this engine's conclusion read as a class
@@ -2648,13 +2686,19 @@ there is a finite family of coprime slope pairs `(u_i, ℓ_i)` with **pairwise d
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [repaired: A-F.6] conclusion STRENGTHENED (hypotheses unchanged): clause 1 now records
+-- `0 < p.1` (proof step 2 already derives every slope positive from `hres`) and clause 3 now
+-- records `φ.natDegree ∣ (F p).natDegree` (B.41's conclusion pins the factor degrees at
+-- `ℓ·m·d`). Both additions are what the repaired B.48 needs at its B.63 call site (`hu`,
+-- `hfd`); without them the A-F.6 repair would not be call-site free downstream.
 theorem exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ) :
     ∃ (s : Finset (ℕ × ℕ)) (F : ℕ × ℕ → Polynomial O),
-      (∀ p ∈ s, 0 < p.2 ∧ Nat.Coprime p.1 p.2) ∧
+      (∀ p ∈ s, 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2) ∧
       (∀ p ∈ s, ∀ q ∈ s, p ≠ q → p.1 * q.2 ≠ q.1 * p.2) ∧
-      (∀ p ∈ s, (F p).Monic ∧ IsPure φ (F p) p.1 p.2) ∧
+      (∀ p ∈ s, (F p).Monic ∧ IsPure φ (F p) p.1 p.2 ∧
+        φ.natDegree ∣ (F p).natDegree) ∧
       f = ∏ p ∈ s, F p ∧
       (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
         (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s))
@@ -2672,7 +2716,11 @@ landed `Uniformity.Hensel.exists_monic_factorization_finset` (as the shape to mi
 2. **`hres` forces every slope positive.** `f̄ = φ̄^μ` says `dev φ f j ≡ 0 mod π` for `j < μ`
    (a private helper: reduce the development mod `π` and use B.06's uniqueness in
    `(ResidueField O)[X]`), so `npHgt φ f j ≥ 1` for `j < μ`, so `suppVal φ f u ℓ` is attained at
-   `j = μ` only when `u = 0`; hence every side with two elements has `u ≥ 1`.
+   `j = μ` only when `u = 0`; hence every side with two elements has `u ≥ 1`. [A-F.6: this step is
+   also what discharges the conclusion's new `0 < p.1` clause, and it is where the repaired B.41's
+   `hu` comes from at this node's own call sites; `hres` gives `f.natDegree = m·μ` (degrees of both
+   sides), which supplies B.41's new `hfd` — both new hypotheses are derivable here, no signature
+   change to THIS node's hypothesis list.]
 3. **Strong induction on `μ`.** If `s` has at most one element, `f` is already pure (B.34) and the
    family is `{f}`; done.
 4. Otherwise pick two distinct slopes and, by B.19, the abscissa `i` they share (the vertex). Choose a
@@ -2745,9 +2793,19 @@ half is exactly this node's last conclusion) → **Lean theorem**; `HE6-SEP`
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [repaired: A-F.6] the STATEMENT says "under B.41's hypotheses" and "g, g' `(u,ℓ)`-pure …
+-- h, h' `(u,ℓ)`-pure", but the frozen signature carried neither B.41's `hu` (added there at
+-- A-F.6) nor the purity of `g'`, `h'` (an elision of the node's own STATEMENT, the A-F.4
+-- class) nor any divisibility. Re-signed to the STATEMENT: `hu` + purity of `g'`,`h'` +
+-- the four divisibilities (from which `g.natDegree = g'.natDegree`, needed by proof step 1,
+-- becomes derivable via `hgg'` + B.30). No counterexample to the weaker form is on record —
+-- this is a fidelity restoration, not a refutation repair; see the A-F.6 audit table.
 theorem graded_factorization_unique (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h g' h' : Polynomial O}
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h g' h' : Polynomial O}
     (hg : g.Monic) (hh : h.Monic) (hg' : g'.Monic) (hh' : h'.Monic)
+    (hgd : φ.natDegree ∣ g.natDegree) (hhd : φ.natDegree ∣ h.natDegree)
+    (hgd' : φ.natDegree ∣ g'.natDegree) (hhd' : φ.natDegree ∣ h'.natDegree)
+    (hgp' : IsPure φ g' u ℓ) (hhp' : IsPure φ h' u ℓ)
     (hcopGH : GradedCoprime π φ u ℓ g h)
     (hgg' : ∀ hne hne' H₀, resPoly π φ g u ℓ hne H₀ = resPoly π φ g' u ℓ hne' H₀)
     (hhh' : ∀ hne hne' H₀, resPoly π φ h u ℓ hne H₀ = resPoly π φ h' u ℓ hne' H₀)
@@ -2762,7 +2820,15 @@ theorem graded_factorization_unique (hπ : Irreducible π) {φ : Polynomial O} (
    `degree_sub_lt_of_monic_of_natDegree_eq`) and `g*h = g'*h'` gives
    `g*(h - h') = (g' - g)*h'`.
 2. Suppose `g ≠ g'`. Let `c := suppVal φ (g' - g) u ℓ`, finite by B.08. From step 1 and B.35's
-   additivity, `suppVal φ (h - h') u ℓ = c + suppVal φ h' u ℓ - suppVal φ g u ℓ`.
+   additivity, `suppVal φ (h - h') u ℓ = c + suppVal φ h' u ℓ - suppVal φ g u ℓ`. [A-F.6 route
+   note: B.35 (both factors PURE) does not literally apply to `g·(h−h')` or `(g'−g)·h'` — the
+   difference factors are not pure. The step needs the **pure × arbitrary half-law**
+   `suppVal φ (p·a) = suppVal φ p + suppVal φ a` for `p` pure (the landed template
+   `monic_factorization_unique` proves the corresponding fact directly); a fleet agent must
+   either derive that half-law as a private helper from B.35's carry lemma (same K_n estimate,
+   one factor's on-side set arbitrary) or mirror the landed template — a `BLOCKED` return here
+   should say so rather than force B.35. Recorded at re-sign time; B.43 currently has no
+   consumer among chapter nodes.]
 3. Read residual polynomials at weight `c`: the residual of `g' - g` is a nonzero
    `D ∈ (resField φ)[Y]` of degree `< G.natDegree`, and step 1 gives `G * D' = D * H` in
    `(resField φ)[Y]` for the corresponding residual `D'` of `h - h'`. Coprimality of `G` and `H`
@@ -2979,8 +3045,14 @@ B.45 (`c` a unit). Then there are monic `f_ψ` with
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [repaired: A-F.6] `(hu : 0 < u)` and `(hfd : φ.natDegree ∣ f.natDegree)` added: the
+-- original is REFUTED (amendment A-F.6, CE: `f = X³ + 4X + 3`, `φ = X²+1` over `ℤ₃`,
+-- `u = ℓ = 1` — `(1,1)`-pure with `sideDeg = 1 > 0` and `H₀ = 1`, but every conclusion factor
+-- has even degree `ℓ·m·aψ·deg ψ` while `deg f = 3`). Both are free at the only consumer,
+-- B.63, from B.42's strengthened conclusion (its new `0 < p.1` and divisibility clauses).
 theorem exists_residual_dissection (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f : Polynomial O} (hf : f.Monic)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f : Polynomial O}
+    (hf : f.Monic) (hfd : φ.natDegree ∣ f.natDegree)
     (hpure : IsPure φ f u ℓ) (hne : (sideSet φ f u ℓ).Nonempty) {H₀ : ℕ}
     (hH₀ : npHgt φ f 0 = (H₀ : ℕ∞)) (hd : 0 < sideDeg φ f u ℓ hne) :
     ∃ (s : Finset (Polynomial (resField φ))) (a : Polynomial (resField φ) → ℕ)
@@ -3047,20 +3119,26 @@ factor `ψ` of degree `d` and multiplicity `1`. The chapter proves
 
 | region | status | route | nodes |
 |---|---|---|---|
-| `ℓ = 1`, any `m`, any `d` | **UNCONDITIONAL** | `scaleRoots` + landed `typeOf_inert_of_irreducible_map`; the residual-to-reduction bridge is B.59 | B.44, B.59, B.60 |
+| `ℓ = 1`, `m = 1`, any `d` | **UNCONDITIONAL** *[repaired: A-F.7 — was "any `m`"]* | `scaleRoots` + landed `typeOf_inert_of_irreducible_map`; the residual-to-reduction bridge is B.59, re-signed at `φ = X` | B.44, B.59, B.60 |
 | any `ℓ`, any `m`, `d = 1` | **UNCONDITIONAL** | the norm bracket `m ∣ inertiaDegOf g ∣ m·d` (B.55) collapses at `d = 1` | B.49–B.58 |
-| `ℓ ≥ 2`, `d ≥ 2` | **CONDITIONAL on `B-BOX-1`** | the bracket leaves `inertiaDegOf g` a multiple of `m` dividing `m·d`; pinning it to `m·d` is the residue-degree lower bound | B.61, B.62 |
+| `d ≥ 2` with `ℓ ≥ 2` **or** `m ≥ 2` | **CONDITIONAL on `B-BOX-1`** *[repaired: A-F.7 — was `ℓ ≥ 2, d ≥ 2`; the `ℓ = 1, m ≥ 2, d ≥ 2` region moved here when B.59's general-key form was refuted and B.44′ was refuted]* | the bracket leaves `inertiaDegOf g` a multiple of `m` dividing `m·d`; pinning it to `m·d` is the residue-degree lower bound | B.61, B.62 |
 
-**This perimeter strictly contains the corpus's own unconditional perimeter.** `EFF.HE3.33` verbatim:
+**The corpus comparison, corrected at A-F.7.** `EFF.HE3.33` verbatim:
 "*`ℓ ≥ 2` sides.* `ℓd ≤ μ ≤ 3` with `ℓ ≥ 2` forces `d = 1`, so the side carries a SINGLE label …
 *non-`K`-rational residual factors on an integer-slope side.* After peeling every `K`-rational root,
 the leftover part of `R_λ` has degree `≤ d ≤ 3` and NO `K`-rational root, hence is a SINGLE
 irreducible factor `r` … **with no nonemptiness assumption and no base change**" — i.e. HE3's
-unconditional region is `{ℓ ≥ 2, d = 1} ∪ {ℓ = 1}`, which is exactly the two rows above. `EFF.HE3.69`
-(R8-3, `LEMMA HE3-4D1`) adds `D′ = 1` (`m = 1`) "unconditional at every `μ`", which is the `ℓ = 1`
-row plus the `d = 1` row at `m = 1`. **Nothing in this chapter's conditional region was
-unconditional in the corpus**, so the chapter loses nothing and states its boundary in Lean rather
-than in prose.
+unconditional region is `{ℓ ≥ 2, d = 1} ∪ {ℓ = 1}`. `EFF.HE3.69`
+(R8-3, `LEMMA HE3-4D1`) adds `D′ = 1` (`m = 1`) "unconditional at every `μ`". *[A-F.7: the original
+claim here — that the chapter's perimeter strictly contains the corpus's — is **NO LONGER TRUE**
+and is retracted. The chapter's unconditional region is now `{d = 1} ∪ {ℓ = 1, m = 1}`; the corpus
+additionally covers `{ℓ = 1, m ≥ 2, d ≥ 2}` by two routes the chapter excludes by construction: at
+`μ ≤ 3` the `EFF.HE3.33` subtraction argument (a class-size count — the resultant/Galois route H-2
+removes) and at every `μ` the `EFF.HE3.68` unramified base change with split-component summation
+(LEMMA HE3-4U — the base-change route H-6 removes). That region is CONDITIONAL here on `B-BOX-1`
+(B.61), whose `hBOX` is in D-3's order-reading exactly the residue-degree lower bound both corpus
+routes deliver. Recorded OPEN-MATH in chapter I's ledger (dated addendum, 2026-08-15) with the two
+known repair routes.]*
 
 **THE TECHNICAL SPINE of the `ℓ ≥ 2` route, in one display.** For `A := AdjoinRoot g` with
 `ḡ = φ̄^{ℓd}`:
@@ -3222,7 +3300,10 @@ before the node is assigned**. If `Submodule.smithNormalForm` in the pin is stat
 a decomposition, step 3 becomes a 60-line repackaging and the node grows to ~200 lines. The
 **fallback**, if the PID theory proves unusable: state B.50 only for `A` a **DVR** (where
 `length_O(A/zA) = f·v_A(z)` is a one-line induction on `v_A(z)`), which suffices for B.53 (where the
-ring is `AdjoinRoot φ`, a DVR by B.59's step 1) but **not** for B.52 (where `A` is not a DVR at
+ring is `AdjoinRoot φ`, a DVR by the landed quarry backport
+`AdjoinRoot.isDiscreteValuationRing_of_irreducible_map_residue`
+(`Quarry/AdjoinRootDVR.lean` — [repaired: A-F.7] this parenthesis originally cited "B.59's step 1",
+which never asserted DVR-ness and is retired with the re-cut of B.59) but **not** for B.52 (where `A` is not a DVR at
 `d ≥ 2`). Under that fallback B.52 is lost, the bracket loses its lower half, and the chapter's
 `ℓ ≥ 2, d = 1` row becomes conditional too — so the fallback is a real degradation and the
 orchestrator must be told, not silently applied. **§14 item 6.**
@@ -3610,9 +3691,14 @@ residual degree.* Let `φ` be an order-1 key, `0 < ℓ`, `Nat.Coprime u ℓ`, `0
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [repaired: A-F.6] `(hgd : φ.natDegree ∣ g.natDegree)` added: the original is REFUTED
+-- (amendment A-F.6, CE: `g = X = X * 1` at `φ = X²+1` over `ℤ₃`, `u = ℓ = 1` — the residue
+-- clause forces `X̄ = φ̄⁰ = 1`). `hu` was already present; with `hgd` it makes `ḡ = φ̄^{deg g/m}`
+-- derivable (proof step 0 below), which pins the factor degrees.
 theorem isPure_of_monic_factor (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g g₁ g₂ : Polynomial O}
-    (hg : g.Monic) (hg₁ : g₁.Monic) (hg₂ : g₂.Monic) (heq : g = g₁ * g₂)
+    (hg : g.Monic) (hg₁ : g₁.Monic) (hg₂ : g₂.Monic)
+    (hgd : φ.natDegree ∣ g.natDegree) (heq : g = g₁ * g₂)
     (hpure : IsPure φ g u ℓ) (hne : (sideSet φ g u ℓ).Nonempty) :
     ∃ (hne₁ : (sideSet φ g₁ u ℓ).Nonempty) (hne₂ : (sideSet φ g₂ u ℓ).Nonempty),
       IsPure φ g₁ u ℓ ∧ IsPure φ g₂ u ℓ ∧
@@ -3624,6 +3710,12 @@ theorem isPure_of_monic_factor (hπ : Irreducible π) {φ : Polynomial O} (hφ :
 **DEPENDS.** B.13 · B.16 · B.18 · B.20 · B.30 · B.33 · B.35.
 
 **PROOF.**
+0. [A-F.6] Derive `ḡ = φ̄^{n}` with `n := g.natDegree / m` (exact by `hgd`): `hpure` + `hgd` put the
+   right endpoint `n` on the side at height `0` (B.13), so for `j < n` the line forces
+   `ℓ·npHgt φ g j ≥ u·(n−j) > 0` (here `hu` pays), i.e. `π ∣ dev φ g j`; with `dev φ g n = 1` the
+   reduction is `φ̄^n` by B.06's uniqueness. Unique factorization in `(ResidueField O)[X]` then gives
+   `ḡᵢ = φ̄^{kᵢ}` with `k₁ + k₂ = n` — in particular `m ∣ gᵢ.natDegree`, which is what lets the
+   repaired B.35 fire in step 2 (its `hfd`/`hgd` at the factors) and what step 3 reads off.
 1. `suppVal φ g u ℓ = suppVal φ g₁ u ℓ + suppVal φ g₂ u ℓ` — the ≥ is B.33; the ≤ needs B.35, which
    assumes both factors pure. **Break the circularity** by first proving purity from the extreme
    abscissae: `dev φ g_i 0` and the top development coefficient are pinned by
@@ -3721,62 +3813,69 @@ stage types) → **Lean theorem** at `d = 1`.
 
 ### NODE B.59 [lemma] [fresh]
 
-**STATEMENT.** *The residual-to-reduction bridge at integral slope.* Let `φ` be an order-1 key,
-`0 < u`, and let `g` be monic `(u,1)`-pure with `sideDeg = d`, so `g.natDegree = m*d`. Let `G` be the
-extracted polynomial of B.44 (`g = G.scaleRoots (π^u)`, `G` monic of degree `m*d`). Then
+**STATEMENT.** *The residual-to-reduction bridge at integral slope — **at the linear key `φ = X`***
+*[repaired: A-F.7 — the frozen general-key form is REFUTED by a compiled witness; see the amendment
+and `leanfinal/Uniformity/ChapB/B59_REFUTATION.lean.txt`].* Let `0 < u` and let `g` be monic
+`(u,1)`-pure at the key `X`, with `G` the extracted polynomial of B.44 (`g = G.scaleRoots (π^u)`,
+`G` monic of degree `n = g.natDegree`). Then
 
 ```
-G.map (residue O)  is irreducible over ResidueField O   ↔   resPoly π φ g u 1 _ H₀  is irreducible
-                                                             over resField φ,
+G.map (residue O)  is irreducible over ResidueField O   ↔   resPoly π X g u 1 _ H₀  is irreducible
+                                                             over resField X,
 ```
 
-and in that case `(ResidueField O)[X] ⧸ (Ḡ) ≃+* resField φ [Y] ⧸ (resPoly …)`.
+`resField X ≅ ResidueField O` being B.44's declared identification (`AdjoinRoot X̄`).
 
 **SIGNATURE.**
 ```lean
 namespace Uniformity.Density.Leaf
 
-theorem irreducible_map_iff_irreducible_resPoly (hπ : Irreducible π) {φ : Polynomial O}
-    (hφ : IsKey φ) {u : ℕ} (hu : 0 < u) {g G : Polynomial O} (hg : g.Monic) (hG : G.Monic)
+-- [repaired: A-F.7] re-signed at `φ = X` (the `{φ} (hφ : IsKey φ)` binders removed; `IsKey X`
+-- is provable and supplied in the proof). The frozen general-`φ` original is REFUTED:
+-- `hscale : g = G.scaleRoots (π ^ u)` is `φ = X`-shaped, and at `2 ≤ φ.natDegree` it forces
+-- `sideDeg = 0`, so `resPoly` degenerates to a unit constant (never `Irreducible`) while
+-- `Ḡ` is free to be irreducible — compiled witness `g = G = X`, kept as provenance at
+-- `leanfinal/Uniformity/ChapB/B59_REFUTATION.lean.txt`.
+theorem irreducible_map_iff_irreducible_resPoly (hπ : Irreducible π)
+    {u : ℕ} (hu : 0 < u) {g G : Polynomial O} (hg : g.Monic) (hG : G.Monic)
     (hGdeg : G.natDegree = g.natDegree) (hscale : g = G.scaleRoots (π ^ u))
-    (hpure : IsPure φ g u 1) (hne : (sideSet φ g u 1).Nonempty) {H₀ : ℕ}
-    (hH₀ : npHgt φ g 0 = (H₀ : ℕ∞)) :
-    Irreducible (G.map (IsLocalRing.residue O)) ↔ Irreducible (resPoly π φ g u 1 hne H₀)
+    (hpure : IsPure X g u 1) (hne : (sideSet X g u 1).Nonempty) {H₀ : ℕ}
+    (hH₀ : npHgt X g 0 = (H₀ : ℕ∞)) :
+    Irreducible (G.map (IsLocalRing.residue O)) ↔ Irreducible (resPoly π X g u 1 hne H₀)
 ```
 
-**DEPENDS.** B.15 · B.24 · B.25 · B.26 · B.28 · B.29 · B.30 · B.44 · mathlib
-`Polynomial.Monic.irreducible_iff_irreducible_map_fraction_map`-style transfer is **not** what is
-needed; the needed tool is the identification of the two residue algebras
-(`(ResidueField O)[X] ⧸ (Ḡ)` and `resField φ [Y] ⧸ (R)`) as `ResidueField O`-algebras, plus
-`Irreducible` ⟺ the quotient is a field (`Ideal.Quotient.isField_iff_isMaximal`,
-`PrincipalIdealRing.isMaximal_of_irreducible`).
+**DEPENDS.** B.15 (`dev_X`/`npHgt_X`) · B.21 · B.22 (`digAt_eq`) · B.25 · B.28 · B.29 · B.30 ·
+B.44 (the digit clause and its declared `resField X ≅ ResidueField O` identification —
+`AdjoinRoot X̄ ≃+* ResidueField O`, mathlib `AdjoinRoot` API at the pin per B.44's SPLIT note) ·
+mathlib: `Irreducible` transports along `Polynomial.map` of a `RingEquiv` between fields
+(`MulEquiv.irreducible_iff`-style, plus `Polynomial.mapEquiv`).
 
-**PROOF.**
-1. Both quotients are `ResidueField O`-algebras of dimension `m*d`: the left by
-   `hGdeg` and `Monic.natDegree_map`, the right by B.26 (`[resField φ : F] = m`) and B.30
-   (`(resPoly).natDegree = d`).
-2. Construct the isomorphism: the `φ`-development of `g` at the on-side abscissae `0, 1, …, d`
-   (spacing `ℓ = 1`) has digits `resCoeff k`; the reduction `Ḡ` has coefficients
-   `digAt π (u*(m*d - i)) (g.coeff i)` (B.44's third clause). Assembling, `Ḡ` is the image of
-   `resPoly` under the `ResidueField O`-algebra map `resField φ [Y] → (ResidueField O)[X]`
-   induced by `y ↦ X^?`… **this is the node's real content and it is where the index bookkeeping
-   between the `φ`-development and the plain coefficient expansion is discharged.** The honest
-   construction: both algebras are `(ResidueField O)[X, y] ⧸ (φ̄(y), R(X-ish))`-shaped, and the
-   isomorphism is `Ideal.quotientEquivAlgOfEq` after showing the two ideals coincide.
-3. `Irreducible p` over a field ⟺ `K[X]⧸(p)` is a field (for `p` monic of positive degree). Transport
-   along step 2.
+**PROOF.** *(re-cut at A-F.7; the old step 2's bicategorical ideal identification is gone — at
+`φ = X` the bridge is coefficientwise.)*
+1. At `φ = X`: `dev X g j = C (g.coeff j)` (B.15), `hpure`'s right endpoint is `n = g.natDegree`
+   itself, and `hscale` + `hg` monic force `addVal (G.coeff 0) = 0` on the side (the leading
+   coefficient `1` pins `gaussVal G = 0`, and `OnSide 0` pins `addVal (G.coeff 0)` to it), so
+   `H₀ = u * n`, `sideMin = 0`, `sideMax = n`, `sideDeg = n`.
+2. Coefficientwise digit identity: `g.coeff k = π^{u(n−k)} * G.coeff k`
+   (`Polynomial.coeff_scaleRoots`), so `resCoeff π X g u 1 hne H₀ k = resMk π X (u(n−k))
+   (C (g.coeff k))` is the class of `digAt π (u(n−k)) (g.coeff k) = residue O (G.coeff k)`
+   (B.22's `digAt_eq` — B.44's third clause verbatim). Hence `resPoly π X g u 1 hne H₀` is the
+   image of `G.map (residue O)` under the coefficient-field identification
+   `ResidueField O ≃+* resField X`, with matching degree `n` (step 1 + `Monic.natDegree_map`).
+3. `Irreducible` transports along the induced `Polynomial` ring equivalence. Done.
 
-**SIZE.** 100 lines. **SPLIT MANDATED → 3**: `B59a.lean` = step 1 (the two dimensions);
-`B59b.lean` = step 2 (the algebra isomorphism, the hard part); `B59c.lean` = step 3 and the contract.
+**SIZE.** 40 lines (was 100: the general-`φ` ideal identification is gone). **SPLIT MANDATED → 2**:
+`B59a.lean` = steps 1–2 (the digit identity); `B59b.lean` = step 3 and the contract.
 
-**⚠ DECLARED WEAKNESS.** Step 2 is the least-specified step in this chapter. The statement is certain
-(it is the standard identification `F[X]/(Ḡ) ≅ F_φ[Y]/(ψ)` for an unramified leaf) but the *route* is
-described rather than pinned, and the index bookkeeping between a `φ`-development and a plain
-coefficient expansion at `ℓ = 1` has not been checked line by line here. **A fleet agent that cannot
-close step 2 must return `BLOCKED` with the two candidate ideals written out**, and the fallback is to
-drop B.60's `ℓ = 1` row to the `d = 1` case (already covered by B.58), i.e. to lose the
-`ℓ = 1, d ≥ 2` region — **which would leave the whole `d ≥ 2` region conditional and would make
-`B-BOX-1` the chapter's only open item rather than one of two.** §14 item 9.
+**⚠ THE DECLARED WEAKNESS FIRED — REFUTED AND RE-SIGNED (A-F.7).** The wave-10 fleet returned the
+predicted `BLOCKED` **stronger than predicted**: not a failed step-2 route but a compiled refutation
+of the frozen SIGNATURE (`b59_signature_refuted`, sorry-free, Lean-core axioms, reproduced clean at
+the pin during adjudication — `g = G = X` satisfies every hypothesis at ANY key with
+`2 ≤ φ.natDegree`, with `Irreducible Ḡ` true and `Irreducible resPoly` false). §14 item 9's fallback
+was adjudicated EXECUTED with one refinement: the `m = 1` slice of the `ℓ = 1` row survives
+unconditionally (this node + B.44 + landed `InertLeaf`), and only the `ℓ = 1, m ≥ 2, d ≥ 2` region
+drops to `B-BOX-1` (B.61) — see B.60, DECISION D-3, and amendment A-F.7 (which also REFUTES the
+conjectured general-`φ` extraction B.44′, so the drop is forced, not chosen). §14 item 9.
 
 **SOURCE.** `docs/GMN_citations.md` fact (I) and Cor 1.20; `EFF.HE3.69` (R8-3, `LEMMA HE3-4D1`: "the
 classical Newton-polygon and Hensel read produces the corresponding factor of degree `ℓd`" — this node
@@ -3790,53 +3889,65 @@ is the `ℓ = 1` half of that read); `EFF.HE3.68` (R8-2, `LEMMA HE3-4U`, the unr
 
 ### NODE B.60 [theorem] [fresh]
 
-**STATEMENT.** *THE LEAF THEOREM at integral slope (unconditional, any `d`).* Over the complete
-bundle, let `φ` be an order-1 key with `m = φ.natDegree`, `0 < u`, and let `g` be monic `(u,1)`-pure
-with `sideDeg = d > 0`, `g.map (residue O) = (φ.map (residue O))^d`, and residual polynomial
-irreducible over `resField φ`. Then
+**STATEMENT.** *THE LEAF THEOREM at integral slope — **at the linear key `φ = X`, any `d`***
+*[repaired: A-F.7 — the general-key `ℓ = 1, d ≥ 2` region is re-routed to B.61's `B-BOX-1`; the
+conjectured general-`φ` extraction B.44′ is REFUTED, amendment A-F.7].* Over the complete bundle, let
+`0 < u` and let `g` be monic `(u,1)`-pure at the key `X` with `sideDeg = d > 0`,
+`g.map (residue O) = X^d`, and residual polynomial irreducible over `resField X`. Then
 
 ```
-typeOf g = ⟨{(1, m * d)}⟩.
+typeOf g = ⟨{(1, d)}⟩.
 ```
 
 **SIGNATURE.**
 ```lean
 namespace Uniformity.Density.Leaf
 
-theorem typeOf_leaf_integral_slope (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+-- [repaired: A-F.7] re-signed at `φ = X` (binders `{φ} (hφ : IsKey φ)` removed, `φ := X`
+-- substituted; conclusion `X.natDegree * … = 1 * …` kept in the substituted shape). The
+-- general-`φ` original's ROUTE is refuted with B.59's/B.44′'s (amendment A-F.7); its general
+-- STATEMENT is true per the source (GMN Cor 1.20) but not provable by this chapter's D-3
+-- machinery without `B-BOX-1` — that region now lives at B.61.
+theorem typeOf_leaf_integral_slope (hπ : Irreducible π)
     {u : ℕ} (hu : 0 < u) {g : Polynomial O} (hg : g.Monic)
-    (hpure : IsPure φ g u 1) (hne : (sideSet φ g u 1).Nonempty) {H₀ : ℕ}
-    (hH₀ : npHgt φ g 0 = (H₀ : ℕ∞)) (hd : 0 < sideDeg φ g u 1 hne)
+    (hpure : IsPure X g u 1) (hne : (sideSet X g u 1).Nonempty) {H₀ : ℕ}
+    (hH₀ : npHgt X g 0 = (H₀ : ℕ∞)) (hd : 0 < sideDeg X g u 1 hne)
     (hres : g.map (IsLocalRing.residue O)
-      = (φ.map (IsLocalRing.residue O)) ^ (sideDeg φ g u 1 hne))
-    (hirr : Irreducible (resPoly π φ g u 1 hne H₀)) :
-    typeOf g = ⟨{(1, φ.natDegree * sideDeg φ g u 1 hne)}⟩
+      = (X.map (IsLocalRing.residue O)) ^ (sideDeg X g u 1 hne))
+    (hirr : Irreducible (resPoly π X g u 1 hne H₀)) :
+    typeOf g = ⟨{(1, X.natDegree * sideDeg X g u 1 hne)}⟩
 ```
 
-**DEPENDS.** B.13 · B.44 · B.59 · landed `Uniformity.Density.typeOf_inert_of_irreducible_map`
-(`InertLeaf.lean:179`), `typeOf_scaleRoots` (`TypeOfInvariance.lean:486`).
+**DEPENDS.** B.13 · B.15 · B.44 · B.59 (re-signed at `X`) · landed
+`Uniformity.Density.typeOf_inert_of_irreducible_map` (`InertLeaf.lean:179`), `typeOf_scaleRoots`
+(`TypeOfInvariance.lean:486`).
 
 **PROOF.**
-1. B.44 gives monic `G` of degree `g.natDegree = m*d` with `g = G.scaleRoots (π^u)` and
-   `typeOf g = typeOf G`. (B.44's hypothesis `suppVal X f u 1 = u*n` is here
-   `suppVal φ g u 1 = u * d` from `IsPure` and B.13 — **note the different normalisation: B.44 is
-   stated at `φ = X`, and this node needs its general-`φ` analogue.** The general-`φ` analogue is
-   B.44's proof with `dev φ` in place of `C ∘ coeff`; **the orchestrator must book B.44 in the
-   general-`φ` form, or book a second node B.44′. Recorded as a re-plan item.**)
-2. B.59 with `hirr` gives `Irreducible (G.map (residue O))`.
-3. Landed `typeOf_inert_of_irreducible_map hG (0 < m*d) step 2` gives
-   `typeOf G = ⟨{(1, G.natDegree)}⟩ = ⟨{(1, m*d)}⟩`.
+1. At `φ = X`: `hres` + `hpure` pin `g.natDegree = sideDeg = d` (B.15's `npHgt_X` and the polygon's
+   right endpoint; degrees of both sides of `hres`). B.44's remaining hypothesis
+   `suppVal X g u 1 = u * g.natDegree` is derivable (`IsPure`'s right endpoint sits at height `0`
+   by B.13, so the on-side value is `u·n`). B.44 gives monic `G` of degree `d` with
+   `g = G.scaleRoots (π^u)` and `typeOf g = typeOf G`.
+2. B.59 (re-signed at `X`) with `hirr` gives `Irreducible (G.map (residue O))`.
+3. Landed `typeOf_inert_of_irreducible_map hG (0 < d) step 2` gives
+   `typeOf G = ⟨{(1, G.natDegree)}⟩ = ⟨{(1, d)}⟩`.
 4. Conclude by step 1.
 
 **SIZE.** 30 lines.
 
-**⚠ RE-PLAN ITEM DECLARED IN STEP 1.** B.44 as written is `φ = X`-only; this node needs the
-general-`φ` extraction. The orchestrator should either widen B.44's SIGNATURE to a general order-1 key
-(preferred: the landed `exists_monic_scaleRoots` is stated for a general monic `f` and does not know
-about `φ`, so the widening is in the *hypothesis translation* B.15 → general `φ`, i.e. a new node) or
-book **B.44′**. This is a blueprint defect of the "missing supplier" class — exactly chapter G's
-**A-7** (`G.31`'s missing supplier, cured by adding a micro-node `G.30a`) — and it is booked here
-rather than discovered at fleet time. **§14 item 10.**
+**⚠ THE STEP-1 RE-PLAN ITEM IS RESOLVED — B.44′ IS REFUTED (A-F.7), AND THE ROW IS SPLIT.** The
+original step 1 booked a general-`φ` widening of B.44 ("B.44′", §14 item 10). Adjudication with a
+machine-checked counterexample (amendment A-F.7: `φ = X²+1`, `u = 1`, `g = X²+4` over `ℤ₃` — the
+`dev`-shift extraction `G = X²+2` has `typeOf g = ⟨{(1,2)}⟩ ≠ ⟨{(1,1),(1,1)}⟩ = typeOf G` and
+`Ḡ = (X−1)(X+1)` reducible while `resPoly g = Y+1` is irreducible): **no `dev`-shift extraction
+preserves `typeOf` or bridges irreducibility at `m ≥ 2`** — the extraction collapses the key's own
+residue extension. The corpus proves the general-key integral-slope leaf only by unramified base
+change with split-component summation (`EFF.HE3.68`, LEMMA HE3-4U: "`Φ′ = ∏ Φ′_a` … summing over all
+`f₁` components gives `|S_r| = f₁·e₁·d = D′d`"), which H-6 excludes from `leanfinal`, or by the
+residue-tower read of GMN Cor 1.20, which in D-3's order-not-field reading is exactly `B-BOX-1`'s
+content. Hence: **this node keeps `m = 1` unconditionally; `ℓ = 1, m ≥ 2, d ≥ 2` routes to B.61
+(`hBOX`)** — D-3's table is amended accordingly, and the region is recorded OPEN-MATH in chapter I's
+ledger. `d = 1` at any `m` was always B.58's. **§14 item 10.**
 
 **SOURCE.** `EFF.HE3.68`, `.69` (R8-2/R8-3, the unramified and `D′=1` branches, both "PROOF-ONLY" in
 the corpus and both proved here); `docs/GMN_citations.md` Cor 1.20; landed `InertLeaf.lean`.
@@ -4007,7 +4118,8 @@ and is written out in full in the leanspec stub — see §12 item 4.)*
 1. B.42 splits `f` into `(u_i,ℓ_i)`-pure pieces `f_i`, one per slope.
 2. B.48 splits each `f_i` according to its residual factorization; `hsep` and B.45 make every
    multiplicity `1`, so each piece has residual a unit times a single irreducible `ψ`.
-3. Each piece is a leaf: B.58 if `ψ.natDegree = 1`, B.60 if `ℓ_i = 1`, B.61 under `B-BOX-1`
+3. Each piece is a leaf: B.58 if `ψ.natDegree = 1`, B.60 if `ℓ_i = 1 ∧ φ.natDegree = 1`
+   [repaired: A-F.7 — B.60 is re-signed at the linear key], B.61 under `B-BOX-1`
    otherwise. Its `typeOf` is `⟨{(ℓ_i, m·ψ.natDegree)}⟩`.
 4. Landed `typeOf_mul` (iterated over the `Finset` product by `Finset.prod_induction`, with
    monicity preserved) turns the product into the multiset sum.
@@ -4395,7 +4507,9 @@ theorem sideSet_scaleRoots (hπ : Irreducible π) {f : Polynomial O} (hf : f.Mon
 
 **⚠ WHY ONLY `φ = X`.** For a general key `φ`, `scaleRoots` does not act on the `φ`-development in a
 closed form (it does not preserve `φ`), so no general statement is available or needed: the only
-consumer is B.44/B.60's integral-slope extraction, which is at `φ = X` after B.69's shift. Recorded so
+consumer is B.44/B.60's integral-slope extraction, which since A-F.7 is stated at `φ = X` outright
+(B.59/B.60 re-signed at the linear key; the conjectured general-`φ` extraction B.44′ is REFUTED —
+amendment A-F.7 confirms this node's "no general statement is available" the hard way). Recorded so
 that nobody looks for the general statement.
 
 **SOURCE.** `spec/CERTAIN_NODES_2026-08-14.md` CN-13; landed `ScaleExtraction.lean`;
@@ -4449,7 +4563,9 @@ theorem typeOf_order1 (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic) (
           npHgt (φ i) gS (sideMin (φ i) gS u ℓ hne) = (H₀ : ℕ∞) →
           ∀ ψ : Polynomial (resField (φ i)), ψ.Monic → Irreducible ψ →
             (∃ c : (resField (φ i))ˣ, resPoly π (φ i) gS u ℓ hne H₀ = c • ψ) →
-            (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+            -- [repaired: A-F.7] first disjunct narrowed from `ℓ = 1` (B.60 is re-signed at the
+            -- linear key; the general-key `ℓ = 1, d ≥ 2` region is `hBOX`'s, third disjunct)
+            ((ℓ = 1 ∧ (φ i).natDegree = 1) ∨ ψ.natDegree = 1 ∨
               ∀ g' ∈ monicFactors gS,
                 (φ i).natDegree * ψ.natDegree ∣ inertiaDegOf g')) :
     (typeOf f).data = ∑ i ∈ s, (order1Type π (φ i) (g i)).data
@@ -6548,13 +6664,19 @@ B.73's FAITHFULNESS).
          npHgt φ gS (sideMin φ gS u ℓ hne) = (H₀ : ℕ∞) →
          ∀ ψ : Polynomial (resField φ), ψ.Monic → Irreducible ψ →
            (∃ c : (resField φ)ˣ, resPoly π φ gS u ℓ hne H₀ = c • ψ) →
-           (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+           -- [repaired: A-F.7] first disjunct narrowed from `ℓ = 1`
+           ((ℓ = 1 ∧ φ.natDegree = 1) ∨ ψ.natDegree = 1 ∨
              ∀ g' ∈ monicFactors gS,
                φ.natDegree * ψ.natDegree ∣ inertiaDegOf g'))
    ```
 
-   The three disjuncts route to B.60 (`ℓ = 1`), B.58 (`ψ.natDegree = 1`) and B.61 (`hBOX`,
-   i.e. `B-BOX-1` for exactly that piece) — D-3's perimeter table, one row each. The
+   The three disjuncts route to B.60 (`ℓ = 1 ∧ φ.natDegree = 1` — re-signed at the linear key,
+   A-F.7), B.58 (`ψ.natDegree = 1`) and B.61 (`hBOX`, i.e. `B-BOX-1` for exactly that piece) —
+   D-3's amended perimeter table, one row each. *[A-F.7: pieces with `ℓ = 1`, `φ.natDegree ≥ 2`,
+   `ψ.natDegree ≥ 2` now fall to the third disjunct. At `φ.natDegree ≥ 2` the narrowing costs
+   the gates nothing extra at `u = 0`: a monic divisor of `f` (with `f̄ = φ̄^μ`) of positive
+   degree reduces to `φ̄^k`, `k ≥ 1`, so `npHgt gS 0 ≥ 1 > 0 = suppVal` and `(0,1)`-purity
+   fails — the `u = 0` instances of `hperim` are vacuous there.]* The
    quantification is over the `(u,ℓ)`-pure monic divisors with a multiplicity-1 residual
    (B.48's output clause at separability), which is what B.63's steps 1–2 produce and what
    B.77 transports.
@@ -6570,7 +6692,8 @@ B.73's FAITHFULNESS).
          npHgt (φ i) gS (sideMin (φ i) gS u ℓ hne') = (H₀ : ℕ∞) →
          ∀ ψ : Polynomial (resField (φ i)), ψ.Monic → Irreducible ψ →
            (∃ c : (resField (φ i))ˣ, resPoly π (φ i) gS u ℓ hne' H₀ = c • ψ) →
-           (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+           -- [repaired: A-F.7] first disjunct narrowed from `ℓ = 1`
+           ((ℓ = 1 ∧ (φ i).natDegree = 1) ∨ ψ.natDegree = 1 ∨
              ∀ g' ∈ monicFactors gS,
                (φ i).natDegree * ψ.natDegree ∣ inertiaDegOf g'))
    ```
@@ -6676,7 +6799,8 @@ roll-up gate whose index this table is).
 chapter was fitted to data** — the `HEX3-LAW` fit-disclosure class has no chapter-B instance
 (nearest miss: `W12-ORACLE` is `[IND]`-graded, independent by construction). (iii) **The
 no-teeth reconciliation**: the rows with no Lean theorem anywhere are exactly `B-BOX-1`
-(carried as `hperim`'s third disjunct at `ℓ ≥ 2 ∧ d ≥ 2`), the `HYP.01`/`HYP.12` [CORE-SET]
+(carried as `hperim`'s third disjunct at `d ≥ 2` with `ℓ ≥ 2` or `m ≥ 2` [repaired: A-F.7 — was
+`ℓ ≥ 2 ∧ d ≥ 2`]), the `HYP.01`/`HYP.12` [CORE-SET]
 disclosures (§11's structural edges), and order-1-ness itself (`hterm`; the recursion is
 chapter C's) — which is precisely the conditionality B.82's FULL-GENERALITY note declares.
 Nothing else in the chapter is guarded by a battery without also being a proof obligation.
@@ -6746,17 +6870,24 @@ cross-read debt covers all of it. **Items 1–13 are the committed text's own fo
    B.53's committed signature (retained only to share hypotheses with B.54 at B.55). Adjudicate:
    drop it (a statement-level change, statement-fence applies) or keep the sharing; either way
    the stub must match the adjudication.
-9. **B.59's step 2 is the load-bearing unchecked identification (L3711 vicinity).** If it fails,
-   B.60's `ℓ = 1, d ≥ 2` region drops to B.58's `d = 1` case and **`B-BOX-1` would become the
-   chapter's only open item rather than one of two** — i.e. the committed text says the chapter
-   currently has TWO open items (B-BOX-1, and B.59-step-2's route risk). Cross-read: write out
-   the two candidate ideals of the `F[X]/(Ḡ) ≅ F_φ[Y]/(ψ)` identification and confirm the index
-   bookkeeping.
+9. **B.59's step 2 is the load-bearing unchecked identification (L3711 vicinity).**
+   **[RESOLVED — FIRED, adjudicated at A-F.7, 2026-08-15.]** The risk was real and worse than
+   booked: the wave-10 fleet REFUTED the frozen signature itself (compiled witness,
+   `leanfinal/Uniformity/ChapB/B59_REFUTATION.lean.txt`) — `hscale` is `φ = X`-shaped and at
+   `deg φ ≥ 2` forces `resPoly` to a unit constant. The booked fallback executed with one
+   refinement: B.59/B.60 are re-signed at `φ = X` (the `m = 1` slice survives unconditionally),
+   the `ℓ = 1, m ≥ 2, d ≥ 2` region moves under `B-BOX-1` (B.61), and **`B-BOX-1` is now the
+   chapter's only open item**. The old step-2 ideal identification is gone (the `φ = X` bridge
+   is coefficientwise). See amendment A-F.7.
 10. **The two pre-fleet supplier bookings (L3771, L3955 vicinities).** B.44′ (the general-`φ`
     widening of B.44, chapter G's A-7 class) and B.63a (`typeOf_prod`, the `Finset`-indexed
     `typeOf_mul`) are booked in committed text rather than discovered at fleet time. Confirm
     both bookings are complete as stated (B.63a is also B.67's and B.80's dependency; B.44′
     gates B.60) and that §12's stub order honors them.
+    **[HALF-RESOLVED at A-F.7, 2026-08-15: the B.44′ booking is CLOSED-REFUTED** — no `dev`-shift
+    extraction exists at `m ≥ 2` (machine-checked counterexample in amendment A-F.7:
+    `φ = X²+1`, `g = X²+4` over `ℤ₃`); B.60 no longer cites it (re-signed at `φ = X`). The B.63a
+    half of this item is untouched and stays open for the cross-read.]**
 11. **The more-elementary alternative route at B.67/§8 (L4407 vicinity).** `Σ_S ℓ_S d_S = μ` is
     obtained as a corollary of B.42's factorization (a degree count over `O`) where the corpus
     used an independent length argument whose proof was completed only by an A3 correction
@@ -6792,7 +6923,10 @@ cross-read debt covers all of it. **Items 1–13 are the committed text's own fo
     B.82); the peel convention resolves B.71's elision to B.80's data form. Check: (i) the
     display's quantification (pure monic divisors with unit-times-`ψ` residual at the `sideMin`
     pin) is what B.63's steps 1–2 actually produce; (ii) the three disjuncts route to
-    B.60/B.58/B.61 with no gap (e.g. `u = 0` integral-slope pieces are the `ℓ = 1` disjunct);
+    B.60/B.58/B.61 with no gap (e.g. `u = 0` integral-slope pieces — A-F.7 narrowed the first
+    disjunct to `ℓ = 1 ∧ φ.natDegree = 1`; at `φ.natDegree ≥ 2` the `u = 0` instances are
+    vacuous since no positive-degree divisor of `φ̄^μ`-reducing `f` is `(0,1)`-pure — re-check
+    the vacuity derivation displayed at §12 item 4(a));
     (iii) no committed signature's elision is narrower than the display.
 16. **The §11 mechanical DAG generation (finisher addition).** 545 rows were parser-generated
     from DEPENDS/SOURCE prose: spot-check the parse (micro-node references mapped to parent
@@ -6813,5 +6947,185 @@ declarations (+5 RE-PLAN suppliers), 545 DAG edges (checker PASS), 59 source uni
 OWED — the queue is §14's 16 items.*
 
 <!-- RESUME: CHAPTER COMPLETE — (a) PA-1/A-F.1 fb2f440c; (b) §10 B.83-B.86; (c) §11 c14b8e40 + §12 + §13 + §14; (d) A-F.2 + close. Nothing owed by the B-finisher. -->
+
+### AMENDMENTS (2026-08-15, wave-10 refutation adjudicator — the chapter-G §A- precedent)
+
+**A-F.6 — THE PRODUCT-LAW REPAIR (B.35 refuted twice; the defect propagates to five consumers).**
+Wave-10 fleet return on B.35: `BLOCKED`, with two machine-checked counterexamples against a literal
+Python transcription of the landed definitions (B.02/B.07/B.11/B.14/B.16/B.20/B.21/B.23/B.25/B.28/
+B.29/B.34). This adjudication (i) re-verified both counterexamples by hand AND by an independent
+re-transcription of the landed `leanfinal/Uniformity/ChapB` definition bodies (decorrelated from the
+refuter's script per the extraction-corruption rule), (ii) verified the repair against the source,
+(iii) audited every consumer, finding the same defect class in FOUR more frozen signatures — each
+now refuted by its own new machine-checked counterexample — and (iv) applied the repairs.
+Authority: standing statement-change authority (2026-08-05); every change is an added hypothesis on
+a refuted statement, a conclusion strengthening the proof already delivers, or a restoration of a
+node's own STATEMENT prose. Stubs re-signed in `leanspec/Leanspec/ChapB.lean`; build green.
+
+**(I) The refuted originals** (frozen signatures, verbatim; ambient for all counterexamples:
+`O = ℤ₃`, `π = 3`, `φ = X² + 1` — `IsKey`: monic, `m = 2`, `φ̄` irreducible over `𝔽₃` since `−1` is
+a non-residue; `resField φ = 𝔽₉ = 𝔽₃[θ]/(θ²+1)`):
+
+* **B.35a** (was):
+  ```lean
+  theorem suppVal_mul_of_pure (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+      {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
+      (hf : f.Monic) (hg : g.Monic) (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ) :
+      suppVal φ (f * g) u ℓ = suppVal φ f u ℓ + suppVal φ g u ℓ ∧ IsPure φ (f * g) u ℓ
+  ```
+  **REFUTED** (refuter's CE 1, re-verified): `u = ℓ = 1`, `f = g = X`. `dev φ X = (X, 0)`,
+  `npHgt = (0, ⊤)`, `suppVal φ X 1 1 = 0`, and `X.natDegree / m = 1/2 = 0`, so `IsPure φ X 1 1`
+  HOLDS — `IsPure`'s right endpoint is the TRUNCATED division, so purity does not imply
+  `m ∣ deg`. Product `X² = φ·1 − 1`: `dev = (−1, 1, 0)`, `suppVal = 0 = 0 + 0` (clause 1
+  survives), but the right endpoint is now `2/2 = 1` with weight `0 + 1 = 1 ≠ 0`, so
+  `IsPure φ X² 1 1` FAILS. Root cause: PROOF step 1 (`n_{fg} = n_f + n_g`) is false at truncated
+  division (`(1+1)/2 = 1 ≠ 0+0`), and step 7 rests on it.
+* **B.35b** (was):
+  ```lean
+  theorem resPoly_mul_of_pure (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+      {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
+      (hf : f.Monic) (hg : g.Monic) (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ)
+      {H₀f H₀g : ℕ} (hHf : npHgt φ f 0 = (H₀f : ℕ∞)) (hHg : npHgt φ g 0 = (H₀g : ℕ∞))
+      (hf' : (sideSet φ f u ℓ).Nonempty) (hg' : (sideSet φ g u ℓ).Nonempty)
+      (hfg' : (sideSet φ (f * g) u ℓ).Nonempty) :
+      resPoly π φ (f * g) u ℓ hfg' (H₀f + H₀g)
+        = resPoly π φ f u ℓ hf' H₀f * resPoly π φ g u ℓ hg' H₀g
+  ```
+  (the `(hf' hg' hfg')` types are A-F.3/B-D9's expansion, which this amendment inherits.)
+  **REFUTED even with the divisibilities** (refuter's CE 2, re-verified): `u = 0`, `ℓ = 1`
+  (`Nat.Coprime 0 1` holds), `f = g = X² + X + 1` (`m ∣ deg`). `dev φ f = (X, 1)`, all heights
+  `0`, `IsPure` holds, `H₀f = H₀g = 0`, `resPoly f = θ + Y`. Product
+  `f² = X⁴+2X³+3X²+2X+1 = φ·(X²+2X+2) − 1` with `X²+2X+2 = φ + (2X+1)`: `dev = (−1, 2X+1, 1)`
+  — the carry `c₀ /ₘ φ = 1` out of `c₀ = X²` lands on abscissa 1 where the uncarried
+  convolution is `2X`; `resPoly (f²) = −1 + (2θ+1)Y + Y²` while `(θ+Y)² = −1 + 2θY + Y²`:
+  they differ by exactly `Y`. Root cause: PROOF step 3's carry estimate — the carry into
+  abscissa `t` has weight larger by exactly `u/ℓ`, which at `u = 0` is NOT strict.
+
+**(II) The repair and its source verification.** Both theorems gain
+`(hfd : φ.natDegree ∣ f.natDegree) (hgd : φ.natDegree ∣ g.natDegree)` and `(hu : 0 < u)`.
+With them the blueprint proof is sound: step 1's division is exact; step 3's estimate is the K_n
+display now written into the node (for `j+i = ℓn` every term of `c (ℓn)` has
+`gaussVal ≥ K_n := H₀f + H₀g − u·n`, equality only on-side; `c (ℓn−1)`'s terms have
+`gaussVal ≥ K_n + u/ℓ`, and integrality of valuations plus `u ≥ 1` gives `≥ K_n + 1`, so the
+carry dies mod `π^{K_n}`). Source check: NS-9 = [FGMN] Thm 2.8/Cor 2.7 and [AGNPRW] Thm 4.6 +
+Cor 2.9 state `S_λ`/`N⁺`/`R` multiplicativity for arbitrary nonzero `g, h` — but for the
+INTRINSIC `S_λ/R` (graded-algebra normalization), not for this chapter's digit-read transcription
+(B.28/B.29 at the `IsPure` endpoints), whose faithful scope is the negative-slope sides
+(`u ≥ 1`) of full-degree pure factors. The two CEs are exactly the two transcription deltas.
+**Honesty note on `hu` in B.35a:** at `u = 0` (which forces `ℓ = 1` by coprimality) the FIRST
+theorem remains TRUE given the divisibilities — `suppVal φ f 0 1 = 0` for every monic `f` with
+`m ∣ deg f` (B.13's top point at weight 0), clause 1 is `0 = 0 + 0`, and the endpoint digits
+live in the field `resField φ` (abscissa 0 receives no carry; the top digit is `1`) — but it is
+excluded anyway: the case needs a separate proof paragraph, no consumer wants it, and the pair
+shares one carry lemma. Recorded as excluded-not-refuted.
+**`B-BOX-2` REJECTED** (the refuter's reason, adopted): at `m = 1` the divisibility is automatic
+and `dev` coefficients are constants (no carry at all), so BOTH defects are invisible there —
+the fallback would have masked a real statement bug at the cost its own text calls not small
+(unramified base change + Galois descent, H-6). The repair is the added hypotheses instead.
+
+**(III) The consumer audit (every DEPENDS naming B.35).** The refuter's consumer list
+(B.39/B.41/B.42/**B.44**/B.48/**B.58**) misread two entries: the actual DEPENDS-consumers are
+B.39, B.41, B.42, **B.43**, B.48, **B.57** (B.44 and B.58 do not name B.35; both were audited
+anyway and are CLEAN — B.44 is `φ = X`-only, where both defects vanish; B.58's `hres` pins
+`deg g = m·ℓ` and its `hu` was already present). Verdicts, with the new counterexamples
+(same ambient; all machine-checked against the landed definitions):
+
+| consumer | own signature exposed? | new CE | repair | B.35's new hyps derivable at its call sites? |
+|---|---|---|---|---|
+| B.39 `exists_graded_solve` | **YES — REFUTED** | `g = h = X`, `e = π^c`: `GradedCoprime` holds (`resPoly X = C θ`, a unit, coprime to itself), all hypotheses hold, and no `U, V` exist (`suppVal φ (π^c − wX) 1 1 ≤ c` for every constant `w`) | `+ hu, hgd, hhd` | yes: B.41 calls it on factors of pinned degree `ℓ·m·(deg)` with its own new `hu` |
+| B.41 `exists_graded_factorization` | **YES — REFUTED** | `f = X`, `G = H = 1`: `hprod` holds with `c = θ`; conclusion forces `X = 1` | `+ hu, hfd`; hazard note corrected (its claimed `IsPure ⟹ m ∣ deg` derivation is exactly the refuted step) | yes: steps 2/5 apply B.35 to `g₀h₀`/`gh` of constructed degrees `ℓ·m·deg G`, `ℓ·m·deg H`; `hu` is its own hypothesis |
+| B.42 `exists_slope_factorization` | **NO** (hypotheses clean: `hres` derives `m ∣ deg f` and slope positivity) | — | conclusion STRENGTHENED: `0 < p.1` and `φ.natDegree ∣ (F p).natDegree` (needed downstream) | yes: proof step 2 derives `u ≥ 1` per slope; B.41's outputs carry pinned degrees |
+| B.43 `graded_factorization_unique` | **PARTIAL** (no CE found; signature ELIDED its own STATEMENT's purity of `g', h'` and B.41's hypothesis set) | — | `+ hu`, purity of `g'`,`h'`, four divisibilities (fidelity restoration); route note added: step 2 over-consumes B.35 (needs a pure×arbitrary half-law or the landed template); B.43 has no consumers | n/a as-written (B.35 not literally applicable in its proof; flagged) |
+| B.48 `exists_residual_dissection` | **YES — REFUTED** | `f = X³+4X+3`, `u = ℓ = 1`: `(1,1)`-pure (`dev = (3X+3, X)`, heights `(1,0)`), `sideDeg = 1 > 0`, `H₀ = 1`; every conclusion factor degree `ℓ·m·aψ·deg ψ` is even, `deg f = 3` | `+ hu, hfd` | yes: it forwards `hu`/`hfd` to B.41, and the recursion factors carry pinned degrees |
+| B.57 `isPure_of_monic_factor` | **YES — REFUTED** | `g = X = X · 1`: conclusion's residue clause forces `X̄ = φ̄⁰ = 1` | `+ hgd`; new proof step 0 derives `ḡ = φ̄^{n}` (needs `hu`, already present) and hence the FACTORS' divisibility for step 2's B.35 call | yes: via step 0 (UFD: `ḡᵢ = φ̄^{kᵢ}`) |
+
+Call-site freeness downstream of the table: B.48's only consumer is B.63, which obtains `hu` and
+`hfd` from B.42's strengthened conclusion (that strengthening exists for exactly this reason);
+B.57's consumers B.58/B.61 derive `hgd` from their own `hres` (degrees of both sides). B.54's
+landed docstring finding (its `hres` is the only degree pin; `IsPure` does not give it — same
+defect, `g = X` witness) is CONFIRMED-CONSISTENT with this amendment; §14 item 8's related B.53
+flag is unaffected.
+
+**(IV) Where applied.** Signatures + tags at NODES B.35, B.39, B.41, B.42, B.43, B.48, B.57;
+PROOF-field updates at B.35 (steps 1, 3), B.42 (step 2), B.57 (new step 0), B.43 (route note);
+the B.41 hazard paragraph rewritten (it predicted this defect class and its own suggested
+derivation was an instance of it); stub re-signs in `leanspec/Leanspec/ChapB.lean` (tagged
+`[repaired: A-F.6]`). None of the seven touched nodes is landed in `leanfinal` (B.35–B.43,
+B.48, B.57 are all unfired), so no landed proof is invalidated and no capstone footprint moves.
+
+---
+
+**A-F.7 — THE `ℓ = 1` LEAF AT GENERAL KEYS (B.59 refuted by compiled witness; B.44′ refuted by
+adjudication; the perimeter row splits).**
+
+**(I) The refutation, confirmed.** Wave-10 return on B.59: the frozen signature (was):
+```lean
+theorem irreducible_map_iff_irreducible_resPoly (hπ : Irreducible π) {φ : Polynomial O}
+    (hφ : IsKey φ) {u : ℕ} (hu : 0 < u) {g G : Polynomial O} (hg : g.Monic) (hG : G.Monic)
+    (hGdeg : G.natDegree = g.natDegree) (hscale : g = G.scaleRoots (π ^ u))
+    (hpure : IsPure φ g u 1) (hne : (sideSet φ g u 1).Nonempty) {H₀ : ℕ}
+    (hH₀ : npHgt φ g 0 = (H₀ : ℕ∞)) :
+    Irreducible (G.map (IsLocalRing.residue O)) ↔ Irreducible (resPoly π φ g u 1 hne H₀)
+```
+is FALSE at every DVR and
+every key with `2 ≤ deg φ`: the witness `g = G = X` satisfies every hypothesis (`hscale` because
+`X.scaleRoots c = X`), `hscale + 0 < u` force `ḡ = X^n`, `φ̄ ∤ X^n`, so `H₀ = 0`, `sideSet = {0}`,
+`sideDeg = 0` and `resPoly` is a nonzero CONSTANT — never irreducible — while `Ḡ` is free to be
+irreducible. Compiled witness `b59_signature_refuted`:
+`leanfinal/Uniformity/ChapB/B59_REFUTATION.lean.txt` (committed 982d21a3), **kept as provenance**;
+re-verified during this adjudication: compiles clean at the pin (`lake env lean`, sorry-free,
+Lean-core axioms only). The blueprint prose's dropped hypotheses (`0 < sideDeg`,
+`g.natDegree = m·d`) do not repair it — they make the `deg φ ≥ 2` branch vacuous instead of false.
+
+**(II) The B.44′ adjudication: REFUTED, not authored.** B.60's step-1 re-plan booking conjectured
+a general-`φ` extraction ("B.44's proof with `dev φ` in place of `C ∘ coeff`" — §14 item 10).
+That extraction exists as a formula but does not do the job. Machine-checked counterexample
+(new, this adjudication): `O = ℤ₃`, `φ = X² + 1`, `u = 1`, `g = X² + 4`. Then `dev φ g = (3, 1)`,
+heights `(1, 0)`, `g` is `(1,1)`-pure with `sideDeg = 1`, `H₀ = 1 = u·d`, and
+`resPoly g = 1 + Y` is linear, hence irreducible over `𝔽₉`. The `dev`-shift extraction
+`G := Σ_j (dev φ g j / π^{u(d−j)}) φ^j = 1 + φ = X² + 2` gives: `Ḡ = X² + 2 = (X−1)(X+1)`
+REDUCIBLE over `𝔽₃` (so the B.59-shaped bridge fails), and `typeOf g = ⟨{(1,2)}⟩` (inert:
+`−4 ≡ 2` is a non-residue mod 3) while `typeOf G = ⟨{(1,1),(1,1)}⟩` (Hensel at the simple root
+`x = 1`), so `typeOf`-preservation fails too. **Structural reason:** the extraction collapses the
+key's own residue extension (`resField φ/F`) into the base residue field — no `O[X]`-level
+polynomial in the shifted `dev` data can encode the tower. The corpus knows this: its general-key
+integral-slope leaf is proved ONLY by (a) `EFF.HE3.68` (R8-2, LEMMA HE3-4U), an unramified base
+change with split-component summation — quoted: *"Φ′ = ∏_{a=1}^{f₁} Φ′_a … the a-th component
+contributes e₁d roots, and summing over all f₁ components gives |S_r| = f₁·e₁·d = D′d"*, whose
+own CONDITIONALITY note says the repair *abandons* the single-key claim ("No claim that a single
+split key still contributes D′ roots is used") — a route H-6 excludes from `leanfinal`; or (b)
+GMN Cor 1.20's residue-tower read (fact (I)), whose content in D-3's order-not-field `typeOf`
+reading is precisely the residue-degree lower bound `B-BOX-1` (the class `z̄ = (φ(θ)/π^u)‾`
+generates a degree-`d` extension of `resField φ` — an element of the FIELD, not obviously of the
+order `AdjoinRoot g`). B.70's ⚠ ("no general statement is available") said this in committed
+text already. **Verdict: do not sign B.44′ in any form; the booking is CLOSED-REFUTED.**
+
+**(III) The decision applied (the blueprint's own contingency, refined).** B.59's ⚠ fallback
+("drop B.60's `ℓ = 1` row to `d = 1`") executes, refined by the observation that the `m = 1`
+slice needs no drop — there the extraction is B.44 (landed, `leanfinal/Uniformity/ChapB/B44.lean`)
+and the bridge is coefficientwise:
+
+* **B.59 re-signed at `φ = X`** (true, non-vacuous, 40-line coefficientwise proof; the general-`φ`
+  100-line ideal identification is retired with the signature).
+* **B.60 re-signed at `φ = X`** (any `d`; unconditional via B.44 + re-signed B.59 + landed
+  `typeOf_inert_of_irreducible_map`).
+* **The `ℓ = 1, m ≥ 2, d ≥ 2` region moves under `B-BOX-1`** (B.61 covers it as stated — its
+  hypotheses never excluded `ℓ = 1`). D-3's perimeter table amended; its "strictly contains the
+  corpus's perimeter" claim RETRACTED with the honest delta displayed. `hperim`'s first disjunct
+  narrowed to `(ℓ = 1 ∧ φ.natDegree = 1)` in §12 item 4(a)/(4a′) and in the blueprint's B.71
+  display; stub file updated at B.63, B.71, B.79a, B.79b, B.80, B.81, B.82. Gate impact: NONE —
+  all twelve §10 gate instances discharge `hperim` through the `d = 1` disjunct (checked), and at
+  `deg φ ≥ 2` the `u = 0` instances are vacuous (no positive-degree divisor of a `φ̄^μ`-reduction
+  is `(0,1)`-pure — derivation at §12 item 4(a)).
+* **OPEN-MATH routing:** the region `{ℓ = 1, m ≥ 2, d ≥ 2}` is recorded in chapter I's ledger
+  (dated addendum, `blueprint/CHAP-I_capstone_conditionality.md`) as OPEN-MATH carried by
+  `B-BOX-1`/B.61's `hBOX`, with the two known repair routes: HE3-4U's base change (needs the
+  H-6-excluded unramified base-change + descent machinery, the B.62-class own-design tier) or
+  the order-level root label (`HYP` H-7's content, shared with the `ℓ ≥ 2, d ≥ 2` region).
+  **B-BOX-1 is now the chapter's only open item** (§14 item 9's predicted terminal state).
+* B59_REFUTATION.lean.txt: KEPT as committed provenance, referenced from B.59's node text and
+  this amendment. §14 items 9 (RESOLVED-FIRED) and 10 (B.44′ half CLOSED-REFUTED) annotated;
+  the dangling "DVR by B.59's step 1" citation in §7's fallback note repaired to the landed
+  `Quarry/AdjoinRootDVR.lean` backport.
 
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->

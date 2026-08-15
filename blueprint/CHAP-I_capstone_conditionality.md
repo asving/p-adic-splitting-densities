@@ -1350,6 +1350,30 @@ chapters D and F freeze (items L-1/L-2/L-3). CODEX CROSS-READ OWED.
 (ii) orchestrator items O-1..O-5 (§9.3); (iii) cross-read per §13; (iv) leanspec stub stage
 per §11; (v) orchestrator dag_build merge re-run. -->
 
+---
+
+### DATED ADDENDUM (2026-08-15, CHAP-B A-F.7 — OPEN-MATH routing per the leaf-layer refutations)
+
+**The `ℓ = 1, m ≥ 2, d ≥ 2` leaf region is OPEN-MATH, carried by `B-BOX-1` (B.61's `hBOX`).**
+CHAP-B amendment A-F.7 (2026-08-15): B.59's frozen general-key signature was REFUTED by a compiled
+witness (`leanfinal/Uniformity/ChapB/B59_REFUTATION.lean.txt`) and the conjectured general-`φ`
+extraction B.44′ was REFUTED by adjudication (counterexample `φ = X²+1`, `g = X²+4` over `ℤ₃`), so
+B.59/B.60 are re-signed at the linear key and CHAP-B's unconditional leaf perimeter is now
+`{d = 1} ∪ {ℓ = 1, m = 1}` — the integral-slope leaves with key degree `m ≥ 2` and residual degree
+`d ≥ 2` are CONDITIONAL on `B-BOX-1`, exactly like the `ℓ ≥ 2, d ≥ 2` region (they were previously
+booked unconditional; nothing landed in `leanfinal` is affected — the touched nodes are unfired
+stubs). **Owner:** CHAP-B (B.61/B.62 and the H-7 root-label item; ledger neighbours `HYP.01`,
+`HYP.12`, both [CORE-SET]). **Exact missing statement:** B.61's `hBOX` at `ℓ = 1` — for `g` monic
+`(u,1)`-pure at a key `φ` of degree `m ≥ 2` with irreducible residual of degree `d ≥ 2`:
+`∀ g' ∈ monicFactors g, m * d ∣ inertiaDegOf g'`. **Two known repair routes:** (a) the corpus's
+`EFF.HE3.68` (LEMMA HE3-4U) unramified base change with split-component summation — needs the
+H-6-excluded base-change + descent machinery (B.62-tier own design pass); (b) the order-level root
+label of GMN Cor 1.20 / `EFF.HE6.29` (Cor HE6-2″) — the residue class of `φ(θ)/π^u` generates a
+degree-`d` extension of `resField φ`, an element of the field not known to lie in the order
+`AdjoinRoot g` (the same order/field gap as `HYP.01`). This addendum is cross-referenced from
+CHAP-B's D-3 table and amendment A-F.7; it adds no new ledger row — it widens the recorded scope of
+the `B-BOX-1` conditionality that §3's disposition already carries through B.61's consumers.
+
 <!-- SENTINEL: BP-I END OF FILE -->
 
 
