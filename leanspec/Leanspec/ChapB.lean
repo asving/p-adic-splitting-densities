@@ -705,9 +705,12 @@ axiom exists_residual_factorization {K : Type*} [Field K] [Finite K]
 axiom isCoprime_pow_of_not_dvd {K : Type*} [Field K] {ψ S : Polynomial K}
     (hψ : Irreducible ψ) {a : ℕ} (h : ¬ ψ ∣ S) : IsCoprime (ψ ^ a) S
 
-/-- **B.47** [lemma] ENV-A. -/
+/-- **B.47** [lemma] ENV-A. [repaired: A-F.4] `(hψ : ψ.Monic)` added — the original signed
+form (no hypothesis on `ψ`) is machine-REFUTED (blueprint amendment A-F.4: `O = ℤ_[2]`,
+`φ = X²`, `ψ = C (root φ̄) * X`, `a = 2`); the STATEMENT prose always asserted "ψ monic
+irreducible", and monicity alone suffices via `Polynomial.Monic.natDegree_pow`. -/
 axiom natDegree_of_residual_piece {φ : Polynomial O} {u ℓ : ℕ} {g : Polynomial O}
-    {ψ : Polynomial (resField φ)} {a : ℕ}
+    {ψ : Polynomial (resField φ)} {a : ℕ} (hψ : ψ.Monic)
     (hg : g.natDegree = ℓ * φ.natDegree * (ψ ^ a).natDegree) :
     g.natDegree = ℓ * φ.natDegree * a * ψ.natDegree
 
