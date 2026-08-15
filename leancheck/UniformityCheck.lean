@@ -26,3 +26,5 @@ import UniformityCheck.N3Recur
 import UniformityCheck.N3Drain3
 import UniformityCheck.N3MBox
 import UniformityCheck.N3Tie
+import UniformityCheck.N3InertLower
+import UniformityCheck.N3InertExact
