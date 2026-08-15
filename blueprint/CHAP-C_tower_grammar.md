@@ -5530,41 +5530,443 @@ regressions.
 
 ## 12. §12 — LEVEL-`N` TOWER CERTIFICATES
 
-<!-- §12 nodes: C.117–C.122 -->
+> **Design note.** B §9 one level up, same architecture (D-4 global via GC-9): visibility
+> API separate from residual-read API (GC-1's closing rule), hypotheses on ONE
+> representative transported via landed `decidedAt_of_congr`, per-member at explicit `N`,
+> existence-of-certifying-`N` as its own node, NO uniform-`N` law anywhere. The
+> conditionality of a tower certificate is exactly §7's (C-BOX-1 where `f₁d_r ≥ 2`; the
+> cites where the read consumes them) — a certificate node never adds conditionality of
+> its own.
+
+### NODE C.117 [def] [fresh]
+
+**STATEMENT.** *Level-2 window visibility.* `Visible₂ L Ψ f N : Prop` — every height the
+level-2 read consults is `< ` the cleared window bound: all level-1 slot digits feeding
+`dv2Pin L Ψ f j` for `j ≤ deg f / D″`, and every residual-read height, sit at cleared
+`dv`-value `< (F.e₁ * L.ℓ) * N`-scale (the B.75 pattern at the `dv₂`-ladder; correctly
+pinned at abscissa 0 per GC-1's visibility rule — visibility bounds EVERY consulted
+height, so the abscissa-0 pin is the right one HERE and only here).
+
+**SIGNATURE** (shape). `def Visible₂ …` (+ monotonicity in `N` companion).
+
+**DEPENDS.** C.11 · C.21 · B.75 (template + the GC-1 visibility/residual split).
+
+**PROOF.** definitional. **SIZE.** 18 lines.
+
+**SOURCE.** B.75 (D-4's visibility layer); `EFF.GENTOW1.39`/C.58(e) (the window content
+identity that makes visibility the right gate).
+
+**TEETH.** §13 rows. **ENVIRONMENT.** ENV-C3.
 
 ---
 
-## 13. §13 — GATES
+### NODE C.118 [lemma] [fresh]
 
-<!-- §13 nodes: C.123–C.126 -->
+**STATEMENT.** *Visible reads are window functions.* If `proj O n N a = proj O n N a'`
+(same window class) and the level-2 read of `a`'s member is `Visible₂`, then the two
+members' level-2 heights, side sets, and residual polynomials agree at every consulted
+datum (`dv2Pin`-congruence, `dv2SideSet`-congruence, `dv2ResPoly`-congruence) — stated
+convention-free (`consulted height < bound` only, B.77's pattern) so any consumer serves.
+
+**SIGNATURE** (shape). `theorem dv2_read_congr …` — **split candidate** (heights half /
+residual half, B.77's own split).
+
+**DEPENDS.** C.11 · C.25 · C.117 · B.77 (template) · landed `proj`, `dev_congr` (B.10).
+
+**PROOF (route).** B.77's route at the `dv₂`-carrier: window-equal members have
+`dev`-digit-equal developments below the bound; every consulted read factors through
+those digits.
+
+**SIZE.** 36 lines.
+
+**SOURCE.** B.77 (the level-1 twin); C.58(e) (the content identity).
+
+**TEETH.** the HE6R1 battery's members-of-identical-outer-data design (perturbations
+strictly above the λ-line — `EFF.HE6R1.18`) → retained.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.119 [theorem] [fresh]
+
+**STATEMENT.** *The tower certificate kernel.* Let `a` be a representative whose member
+`f` satisfies, VISIBLY at window `N` (C.117): the §5 standing pair, a level datum `L`
+with `¬ Ψ ∣ f_S`-visible data, and a SEPARABLE above-seam level-2 residual profile. Then
+`typeOf` of every lift's corresponding block is pinned: the composed dictionary values
+`(e₁ℓ·ℓ₂, f₁d_r·deg r₂)` per level-2 factor — for EVERY lift of the window class
+(C.118's congruence + §7's reads; conditional exactly on `C-BOX-1`'s iterate where
+`f₁d_r ≥ 2` and on the §9/§10 cites where the read consumes them, each named in the
+hypothesis list).
+
+**SIGNATURE** (shape). `theorem tower_cert_kernel …` (B.79's shape at the composed read).
+
+**DEPENDS.** C.37 · C.61/C.62 · C.117 · C.118 · B.79 (template).
+
+**PROOF (route).** transport the representative's visible data to every lift (C.118);
+fire §7 on the transported data.
+
+**SIZE.** 40 lines.
+
+**SOURCE.** B.79 (the level-1 twin, D-4(b)'s representative discipline); `EFF.HE6R1.30`
+(the leg's own summary: the level-2 read decides against PARI on 677/682 with zero
+mis-decisions — the corpus form of this kernel).
+
+**TEETH.** the 677/682-zero-misdecision census → **executable regression** retained; §13
+fires two members.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.120 [theorem] [fresh]
+
+**STATEMENT.** *The tower `DecidedAt` certificate.* Under C.119's hypotheses plus the
+complete-σ assembly (all blocks of the member's dissection certified — the §5 dissection
+enumerates them), the window class is DECIDED: `DecidedAt O n N c σ` for the assembled
+σ (through GC-4's dictionary — the σ value assembled by `typeOf_mul` over the dissection),
+via landed `decidedAt_of_congr`. B.82's pattern at composed reads; fires with zero
+adaptation from the `N3Cert*` leancheck idiom per D-4(b)'s precedent.
+
+**SIGNATURE** (shape). `theorem tower_decidedAt …`.
+
+**DEPENDS.** C.33/C.34 · C.119 · B.82 (template) · landed `DecidedAt`,
+`decidedAt_of_congr`, `typeOf_mul`.
+
+**PROOF.** assemble per block; transport.
+
+**SIZE.** 34 lines.
+
+**SOURCE.** B.82; `EFF.HE6R1.25` (the σ census this certifies member-wise).
+
+**TEETH.** §13's decided members at both primes.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.121 [lemma] [fresh]
+
+**STATEMENT.** *Existence of a certifying `N`, per member.* For a fixed member `f`
+satisfying §5's standing pair with a decided tower read (separable above-seam residuals
+after finitely many peels/refines — C.113's termination), there EXISTS `N` at which
+C.120's hypotheses are visible — read off the member's OWN polygon data (its maximal
+consulted height + 1). Per-member only; NO family-uniform `N` (GC-9.3: the `R8-1`
+refutation stands — the B.81 pattern verbatim).
+
+**SIGNATURE** (shape). `theorem exists_certifying_N …`.
+
+**DEPENDS.** C.113 · C.117 · C.120 · B.81 (template).
+
+**PROOF.** the consulted-height set is finite; take its max.
+
+**SIZE.** 22 lines.
+
+**SOURCE.** B.81; GC-9.3.
+
+**TEETH.** signed non-applicable (existence; the numeric leg is per-member at §13).
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.122 [lemma] [fresh]
+
+**STATEMENT.** *The degenerate-stratum path (the certificate meets the peel).* If the
+member's visible data show `Ψ ∣ f` (the 12-member BADTOTAL stratum), the certificate
+routes through C.40's peel: one `(e₁ℓ, f₁d_r)` factor certified outright, the read
+continuing on the peeled complement at `mult₂ − 1` — decidedness of the class follows
+from the peeled member's certificate (one recursion step, C.113(i)-bounded). The
+FINDING-HE6R1-F2 repair as a certificate-layer theorem.
+
+**SIGNATURE** (shape). `theorem tower_cert_peel_path …`.
+
+**DEPENDS.** C.36(i) (the `Ψ ∣ f_S ↔ Ψ ∣ f` check on visible data) · C.40 · C.119/C.120.
+
+**PROOF.** case split on the visible divisibility; peel; recurse once.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.HE6R1.14`/.16 (the stratum + the 12/12-decided, 5/5-PARI supplementary
+leg — the corpus form of this path).
+
+**TEETH.** the supplementary leg → retained; §13 fires one degenerate member.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+## 13. §13 — GATES (GC-11: `q = 2` AND `q = 3`, WILD `e₁ ≥ 2`, `e > 1 ∧ f > 1`, EXECUTED AT STUB STAGE)
+
+> **Gate discipline.** All four gates are leancheck-idiom concrete instances (`#eval` +
+> `decide`-grade theorem blocks), EXECUTED at the leanspec stub stage per GC-6.6(c) BEFORE
+> any fleet agent fires on §§7–12; retained regressions live under `verification/`
+> (GC-8). Every §-audit value named in §§3–12's TEETH rows re-fires in exactly one gate.
+> The coincidence-regime discipline (C-H12) is explicit: each gate names which of its
+> rows would be blind at the other prime and why.
+
+### NODE C.123 [gate] [fresh]
+
+**STATEMENT.** *The `q = 2` gate.* Over `O = ℤ₂`-class data: the S2 tower witness values
+(C.97: `u₂ = 5, u₃ = 21`, ladder `[4,10,21]`, `n̂₂(21) = 16Φ′`); FAM-A5/A7/B budget-table
+rows (C.52's floors — sixteen recomputed entries), node floors `[21,11]/[29,15]/[13,7]`,
+`E₂`-vs-`dv₂(x^{D₂})` splits `10/14/6 > 8/8/4`; refine row A5-R1 (`p₀ = 2λ = 26`, the
+`q = 2` vanishing of the `j = 1` pin — the char-split's `q = 2` half); FAM-B BAND-2/3
+window rows; the `(1,2)`-genre bite (`EFF.HE6.20`(3): live at `q = 2`,
+σ `{(2,2),(2,2)}`); FR5X (the C.96 negative control: attainment FAILS at `m = 4, p = 2`);
+HT spot values at `q = 2` (`(q−1)((q−1)(q−2)/2)q^{2N−8}` at `q = 2` = 0 — the degenerate
+census, itself a check); a depth-3 `(SLOT₃)` spot value on the S4 chain.
+
+**SIGNATURE** (shape). `theorem gateC_q2 : <conjunction of decidable instances> := by
+decide/norm_num` + the `#eval` block (GC-6.6(c)).
+
+**DEPENDS.** the §§3–12 nodes whose TEETH name it. **PROOF.** computation.
+**SIZE.** ~60 lines. **SOURCE.** the per-node TEETH rows. **TEETH.** IS the teeth.
+**ENVIRONMENT.** ENV-C3, concrete `O`-instances (the leancheck `ℤ₂`-idiom).
+
+---
+
+### NODE C.124 [gate] [fresh]
+
+**STATEMENT.** *The `q = 3` gate.* Over `O = ℤ₃`/`ℤ₅`-class data: the `(2,2,3)` twist
+witness (C.22's MANDATORY row: `q(3) = 1`, `twistRead = 2η` in `F₉`, the `[r1]` `+q`
+reading refuted); the HE6R1 frame (`D″ = 4, T₂ = 2λ, μ₂ = 2`, `K₂ = F₉`), one decided
+member + one degenerate member (C.122's path, σ `{(2,2),(2,2)}`); FAM-D rows (x-free
+witness, budget floors `[13,7]`, D-R1/D-R2 refine rows — BOTH pins present at `q = 3`,
+the char-split's other half); BP3 (the C.96 negative control: attainment WITH
+`p ∣ binom(3,2)` via the other slot); the letter-live GENTOW2 frame (C.101's twisted
+prescription vs the `q = 2` letter-dead twin — the ψ vs ψ^{(w)} divergence EXHIBITED);
+HT spot values at `q = 3` (the obstruction instance `2·1/2·q^{2N−8}`-family values).
+
+**SIGNATURE/PROOF/etc.** as C.123.
+
+---
+
+### NODE C.125 [gate] [fresh]
+
+**STATEMENT.** *The wild `e > 1 ∧ f > 1` witness gate (GC-11's shape clause).* Two rows,
+both GENUINELY WILD (`e₁ ≥ 2`, `p ∣ e`): (i) `q = 2`: the frame `(e₁,f₁,h) = (2,1,1)`,
+`Φ′ = x² − 2` over `ℤ₂` (wild: `2 ∣ e₁`), level datum `ℓ = 1, r` quadratic → the
+Tier-1 read `typeOf = ⟨{(2, 2)}⟩` (`e = 2 > 1, f = 2 > 1`) via C.61 + C.119/C.120 at an
+explicit member and window; (ii) `q = 3`: the `(2,2,3)`-family frame over `ℤ₃` (tame `e`
+but wild-adjacent twist-live) PLUS the `ℤ₃` frame `Φ′ = x² − 3` (wild at... `e₁ = 2`,
+`p = 3` — TAME; the honest wild-at-`q = 3` row is `e₁ = 3`: the FAM-C-family
+`(e₂ = 3)`-composed instance or a `(3,1,2)`-frame instance — the gate constructs one,
+`Φ′ = x³ − 3` class, and fires the C.59 ramified leg on it). A row that cannot deliver
+`e > 1 ∧ f > 1` UNCONDITIONALLY (i.e. would need `C-BOX-1` at `f₁d_r ≥ 2` beyond the
+vacuity perimeter) is a DEFECT — witness (i) is chosen precisely because `f₁·d_r = 2`
+with `f₁ = 1, d_r = 2` requires `C-BOX-1`… **⚠ honesty check executed at composition
+time:** at witness (i), `f₁·d_r = 1·2 = 2 ≥ 2`, so the Tier-1 read DOES carry `C-BOX-1`.
+The B-D-3 lesson (`d = 1, ℓ ≥ 2` gives `e > 1, f > 1` honestly) transposes: take instead
+`f₁ = 2, d_r = 1` — wait, that also has `f₁d_r = 2`. **At level 2 the unconditional
+`e > 1 ∧ f > 1` witness is the COMPOSED route:** `e = e₁ℓ > 1` from C.59
+(unconditional) and `f = f₁d_r` with `f₁d_r = 1` forced `f = 1`. So an UNCONDITIONAL
+`f > 1` at a tower leaf needs the residue leg — i.e. `C-BOX-1`'s perimeter is exactly the
+gate's constraint, and the HONEST gate fires: (a) the `e > 1, f = 1` wild row
+unconditionally (`(e₁ℓ, 1)`, e.g. `ℓ = 2` at `f₁ = d_r = 1`: `typeOf = {(4,1)}` — the
+`EFF.HE6.20` σ at the `(2,1)`-genre bite, `q = 3`); (b) the `e > 1 ∧ f > 1` row
+`{(2,2)}` CONDITIONALLY on `C-BOX-1`, with the PARI-certified battery value as the
+regression that the hypothesis is true-in-fact at the witness (the corpus's 677/682); and
+(c) the record that an unconditional-in-Lean `e > 1 ∧ f > 1` tower witness is exactly
+`C-BOX-1`-gated — **this is a finding of the gate's composition, promoted to §16's
+cross-read list** (it sharpens BRIEF C's GC-11 expectation: at level ≥ 2 the two-sided
+witness is conditional, unlike B's level-1 D-3 row).
+
+**SIGNATURE/PROOF/etc.** as C.123; the (b)-row's conditional firing uses `C-BOX-1` as an
+explicit named hypothesis instantiated by the battery regression (never silently).
+
+---
+
+### NODE C.126 [gate] [fresh]
+
+**STATEMENT.** *The axiom census gate.* Per terminal theorem of §§7–12: `#print axioms`
+= Lean core (`propext`, `Classical.choice`, `Quot.sound`) PLUS exactly the declared
+gate-(b) axioms where and only where declared: `fgmn_calculus_exists` on
+§10-theorems/C.90/C.91/C.67-chain, the [cite:AGNPRW] axiom on C.94's consumers, and
+NOTHING else; the AxChk-pattern diffable output committed (the
+`lean/LeanUrat/AxChk_baseline.lean` idiom at the ChapC roll-up; a footprint regression is
+stop-the-line per the repo rule).
+
+**SIGNATURE** (shape). the AxChk file + its committed output.
+
+**DEPENDS.** all terminal nodes. **PROOF.** mechanical. **SIZE.** ~40 lines.
+**SOURCE.** repo axiom policy; Part V gate (b). **TEETH.** IS the census.
+**ENVIRONMENT.** —.
+
+---
 
 ---
 
 ## 14. §14 — DAG ADDITIONS
 
-<!-- populated per completed section -->
+Emitted at `spec/DAG_BLUEPRINT_C.tsv` (760 rows, mechanically extracted from this file's
+SOURCE and DEPENDS fields; regenerate with the §14 extraction described here — the node
+list is the headings, per `dag_build.py`'s contract):
+
+* **565 `proof-dep` rows** — the intra-chapter DEPENDS edges (464 `C → C`) plus the
+  cross-chapter consumption edges to committed blueprint nodes (`BP.B.*` per GC-13(b);
+  `BP.H.51`–`BP.H.58` ONLY, per GC-5/H-14 — mechanically verified: no other `H.*` appears
+  in any DEPENDS field).
+* **195 `stmt-dep` rows** — the SOURCE transcription edges. Per GC-12: `W12` and `GENTOW5`
+  rows are emitted against the SHARD-LOCAL IDs that exist in `DAG_NODES.tsv` at HEAD
+  (`EFF.W12.s2of2.NN = EFF.W12.(NN+52)`, `EFF.GENTOW5.s2of2.NN = EFF.GENTOW5.(NN+43)`),
+  with the contiguous ID carried in the `evidence` column — remap mechanical at the
+  orchestrator's re-harvest. **`GENTOW2` rows are emitted against the contiguous IDs and
+  currently DANGLE** — GENTOW2 has ZERO rows in the HEAD harvest (it is the manifest-gap
+  recovery, PA-3(i)); the evidence column says so per row, and the re-harvest lands them.
+  Booked as an orchestrator item with PA-3(ii)'s re-run.
+* **Graph shape** (intra-chapter, computed): **126 nodes, 464 edges, ACYCLIC, critical
+  path 19 (20 layers)**, layer widths
+  `8, 3, 6, 12, 6, 8, 4, 8, 5, 5, 4, 10, 7, 7, 8, 7, 4, 5, 5, 4` — 8 nodes fireable
+  immediately. The chapter is SPINE-SHAPED (unlike H's wide layer 0): the §3→§4→§5 frame
+  is serial, and the schedule risks are the three heavy nodes **C.27** ((SLOT₂)
+  exactness), **C.33** (the slope dissection), and **C.88** ((SLOT_i) up the tower) plus
+  the §7 sandwich chain they feed. Fleet guidance: claim C.33 and C.27's splits first;
+  §§10–11 fan out early (C.97/C.98/C.107/C.108 sit in low layers).
+* **COARSE-edge refinement:** the 42-edge governing-unit placeholder
+  `EFF.GENTOW5.s1of2.06` (BRIEF C trap (vi)) is re-homed unit-by-unit by §9's SOURCE
+  fields (the real consumers of GENTOW5's units are C.83–C.96); the dangling
+  `GENHN ← GENTOW` discharge arcs (items (1)–(5) "unlanded" in every GENTOW note's
+  scope-B) are LANDED by C.52–C.58/C.72–C.81/C.55 — the cross-read re-homes those
+  reverse-XREF rows against this chapter's nodes.
 
 ---
 
-## 15. §15 — LEANSPEC STUB LIST
+## 15. §15 — LEANSPEC STUB LIST (stage 0e)
 
-<!-- populated at chapter close -->
+* File `leanspec/Leanspec/ChapC.lean`, everything wrapped in `namespace LeanspecC`
+  (GC-6.6; the ChapG retire-to-examples route is the recorded alternative — pick one and
+  say which in the stub header).
+* Gate order GC-6.6(a)–(d): (a) elaborate the fragile signatures FIRST — the flagged
+  fragile set: C.01 (`KeyFrame`'s `hresirr` dependent-type plumbing), C.03/C.12 (the
+  `AdjoinRoot` iterates + instance chain — GC-7's depth-≥ 3 fallback triggers HERE if
+  anywhere), C.09 (`LevelDatum` over pin data), C.83 (`DeepTower`'s `Fin r`-indexed
+  fields), C.92/C.66 (the `FGMNCalculus` structure — its fields must elaborate against
+  C.25's carriers), C.21 (`slotRes`'s `digAt` composite); (b) land the `def` bodies real
+  (26 def + 7 def+lemma + 1 def+theorem nodes); (c) EXECUTE the §13 gate blocks at
+  `q = 2` AND `q = 3` (C.123–C.125's `#eval` values against this file's displayed
+  numbers); (d) only then sign the `axiom` stubs for the theorem nodes.
+* Stub-order constraints the fleet must respect (forward refs recorded in-node):
+  C.21 → C.13; C.29/C.33/C.34 → C.27; C.60/C.61 → C.40; C.61/C.62 → C.49; C.85 → C.56
+  (general-μ₂ leg); C.97–C.100 → C.89(i); C.89 → C.90/C.91's `n ≥ 3` legs; C.66's
+  SIGN-OFF → after C.97/C.98 elaborate.
+* RE-PLAN bookings for the orchestrator (shared helpers promised by node ⚠s):
+  `dvResPoly_mul_of_pure` (B.35's twin — C.34/C.37/C.70); the `dv2ResPoly` +
+  `dv2SideSet` cluster (C.38a — C.38/C.55/C.64/C.65); `complementConst`/`γg`/`pinHeight`
+  (C.36/C.39); the `stageLiftO` GenreDatum packaging (C.14/C.43 — merge into ONE helper);
+  `ComposedLabel` (C.62 — chapter E may request it by name).
+* The three `cite` nodes (C.66, C.92, C.94) land as STATEMENTS ONLY at stub stage;
+  their axioms are not declared until Asvin signs (Part V gate (b)) — a stub build that
+  needs them before sign-off uses `variable`-hypothesis form, never a provisional axiom.
 
 ---
 
 ## 16. §16 — TEETH DISPOSITIONS; FLAGGED FOR THE CODEX CROSS-READ
 
-<!-- populated at chapter close; running flag list kept here meanwhile -->
+### 16.1 Teeth disposition summary (GC-8 vocabulary; per-battery, aggregated)
 
-**Cross-read flags (running list):**
-1. C-H3's immunity claim (no base change, no fractional-height test key anywhere in §5/§7).
-2. DECISION C-D1's Tier-1 recast (root count → factor degree) — attack the faithfulness of the
-   recast against `EFF.HE6.18`'s statement and `EFF.HE6R1.16`'s sandwich.
-3. The TERMINAL-form discipline of C-H8 — verify no superseded display leaked into any node.
+| battery (source) | rows | disposition |
+|---|---|---|
+| HE6R1 sealed battery (944 members, σ census, P2/P3/P4/P5, 5 teeth) | `EFF.HE6R1.23`–`.29` | **Lean theorem** for P2's law (C.27), the peel σ (C.40/C.61), the dictionary audits (C.04/C.10/C.12); **executable regressions retained** for the census/teeth (677/682, T-CRACK, T-BASIS, T-TWIST0, T-NAIVEHE6A, T-WITHHOLD); §13 re-fires the frame values |
+| HETOW battery + supp + 2026-08-10 leg | `EFF.HETOW.32`–`.40`, `.52` | **Lean theorem** for HETOW-1(c)/2/3 content (C.46–C.49); regressions retained (300/300 μ₂=3, P5 level-3 exclusion, W(t) checks); the `f₁ ≥ 2` carry leg's PROOF-ONLY corpus status is DISCHARGED by C.47's uniform proof (recorded, cross-read item 7) |
+| GENTOW1 battery (NEC 350, ROUNDTRIP 150, WINDOW 35, STRINGS 22, REFINE 40, 5+ teeth) | `EFF.GENTOW1.10`–`.12`, `.42`–`.45` | **Lean theorem** for (a)–(e)/(i)–(iv) at their TERMINAL forms (C.52–C.58); regressions retained incl. T-MUTFLOOR, T-REFWRONG ×8, T-UNDERCUT ×2, T-BELOWNODE; the budget tables' 16 recomputed entries → §13 |
+| GENTOW3 battery (FLOOR 274, SHARP 11, XFREE, LABEL 6) + RUN B + E13/X1 searches | `EFF.GENTOW3.34`–`.37`, `.55`, `.61` | **Lean theorem** for (i)/(ii)/(iii)/3.C (C.72/C.73/C.75); (iv) at its three TERMINAL layers (C.74); regressions retained; ENTRY 274's `disclosed non-independence` carried verbatim; the S8.4 activation disclosure carried at C.74(c) |
+| GENTOW4 battery (117 members, P-1..P-6, T-2 NOCG 49, T-3 SIBDROP, T-5 WRONGKEY) + FR-M/FR-3B | `EFF.GENTOW4.08`, `.31`, `.41`–`.48` | **Lean theorem** for 4.1/4.A/4.2/4.C (C.76–C.81); FAM-P5's mixed-tie EMPIRICAL rows retained as the regression guarding C.67's cite; PE2-P values → §13 |
+| GENTOW5 battery (A-rows, B-rows, FA1-LIFT 22, direction-check 8) | `EFF.GENTOW5.34`–`.37`, `.54` | **Lean theorem** for A0/A1/A/C/D/B-clauses at TERMINAL scope (C.85–C.91); the `i ≥ 3` machine gap DISCLOSED and partially closed by §13's added depth-3 spot row (GC-11 extra force); `[GENTOW5-W(i)]` = **signed open hypothesis** (C.89 — no teeth can discharge it) |
+| GENTOW6 battery + r1 cap leg (303/0) + SUB-BOX leg (459/0, 265/0) | `EFF.GENTOW6.14`, `.22`, `.33`–`.35` | **Lean theorem** for 6.1 (cite-conditional, C.67), 6.2-budget (C.82), 6.3-pinned/6.4 (C.95), 6.5-IF (C.96); BP3/FR5X negative controls → §13; the boxes-note 0/2 grade residue discharged by the Lean proof at the IF direction |
+| GENTOW2 battery + PE4 decode + PE5/PE6 fresh routes + LP1 | `EFF.GENTOW2.60`–`.67`, `.45` | **Lean theorem** for B/B′/B″/A over `[FGMNCalculus]` (C.99–C.103); PE4's LD2 REFUTATION row retained (guards the DEAD per-height form); the w-measurement retained (guards the DISCLOSURE); LP1 retained (guards the letter conflation) |
+| W12-HT N1 certificate (1,196 comparisons, 4 DROP-teeth, 300+322 rank tests) | `EFF.W12.87`/.88 | **Lean theorem** for steps 1–6 + HT-branch/global (C.109–C.114) — the FIRST warrant-grade check beyond the thin grid; certificate retained as regression; §13 re-fires spot values at both primes |
+| signed non-applicability | — | definitional nodes (C.01–C.13 class), interface identities (C.05), manifests (C.93/C.106/C.116), the named open hypotheses (C-BOX-1 at C.60, `[GENTOW5-W(i)]` at C.89 — their "teeth" are the batteries above, retained as evidence-of-truth-in-fact, never as discharge) |
+
+**Sanity check (GC-8 rider (iii)):** the signed-vacuity/open rows reconcile against
+Display A's conjunct list — this chapter's opens are exactly: `C-BOX-1` (feeds B's
+`B-BOX-1`-family conditionality, already a capstone conjunct through B), `𝒲_{≤n}` =
+`(H-VARTHETA-RES)/[GENTOW5-W(i)]` (a named Display-A conjunct, supplied to I via C.89),
+the three gate-(b) cites (FGMN ×2, AGNPRW — capstone-visible through `#print axioms`,
+C.126), and `[W12-H]`/`GENTOW4-BOX-2`-class boxes explicitly left with chapter I. No
+other C node carries conditionality — matching H.09's "the fields with no teeth are
+exactly the capstone's conditionality".
+
+### 16.2 Flagged for the codex cross-read
+
+1. **C-H3's immunity claim** (no base change, no fractional-height ELEMENT below degree
+   `D″` anywhere in §5/§7) — attack it; note A-1's wording repair below.
+2. **DECISION C-D1's Tier-1 recast** (root count → factor degree; orbit → factor) —
+   attack faithfulness against `EFF.HE6.18` + `EFF.HE6R1.16`; C.29's FAITHFULNESS note
+   and C.40's are the target texts.
+3. **TERMINAL-form discipline (C-H8)** — verify no superseded display leaked into any
+   node: the checklist is §§5–11's SOURCE chains (R2a/b/c, S8.1/S8.4, TOWERRAT2-C, m-A/
+   m-i/m-ii, `.39`/`.47`, S11.1/S11.2/S11.3/S11.5/S12.1/S12.2 + the ω-corrigendum,
+   PE2-F-2's codomain, R3-1..4).
+4. **The `HYP.121` non-inheritance claim** (§11: fracture permanence discharged by
+   factorization uniqueness) — verify the factor-level recast really needs no GENIND-1
+   content.
+5. **The `FGMNCalculus` packaging** (§10 design note + C.92): is the structure-plus-one-
+   axiom form faithful to gate (b)'s intent, and is the field list COMPLETE for every §10
+   proof (walk C.99/C.100/C.101/C.103's cited names)?
+6. **C.125's composition-time finding:** at level ≥ 2 the unconditional `e > 1 ∧ f > 1`
+   witness is `C-BOX-1`-gated (unlike B's level-1 D-3 row) — check the reasoning and
+   whether a genuinely unconditional two-sided tower witness exists that this chapter
+   missed.
+7. **C.47's uniform-`f₁` proof** discharging what the corpus could only prove-only
+   (HETOW-BOX-3's `f₁ ≥ 2` carry leg) — verify the (LIFT)-form really closes it at every
+   `f₁`.
+8. **C.86's level-1 rider as a real theorem** (the corpus display claims nothing on
+   frozen text; the Lean statement is a new theorem) — confirm this is an honest
+   strengthening, not a scope leak into GENHN-BOX-2's bookkeeping (which stays chapter
+   I's).
+9. **The ϑ-orientation hygiene**: every ϑ-adjacent statement (C.85(A1), C.89, C.99,
+   C.100(3), C.101) is in ratio/normalizer form with the D-table cited — grep for any
+   bare-ϑ sign convention that slipped through.
+10. **The §14 extraction** — spot-check DEPENDS-to-TSV fidelity and the shard-local
+    remaps (three W12/GENTOW5 rows at random).
 
 ---
 
-<!-- RESUME: §3–§7 COMPLETE (C.01–C.70). Forward refs in-node: C.13→C.21; C.27→C.29/C.33/C.34; C.31→C.33/C.35; C.40→C.60/C.61; C.49→C.61/C.62; C.56→C.85 (§9); C.66's sign-off waits on §10's dictionary nodes (C.97/C.98). RE-PLAN bookings: dvResPoly_mul_of_pure (B.35 twin); dv2ResPoly + dv2SideSet cluster (→ C.38a); complementConst/γg/pinHeight; stageLiftO packaging (C.14/C.43 merge); ComposedLabel structure (C.62 — E may request). A-§ deltas owed at close: (1) C-H3 wording (test keys ARE constructed; immunity = no fractional-height ELEMENT, no base change); (2) §7 supply = C.61+C.63 pair + C.69 bundle (index names C.61/C.64/C.66). Next: §8 (C.71–C.82, shadow-read + caps): read EFF-GENTOW3 math units (.06-.10 area: THEOREM GENTOW-3 (i)-(iv) at S8.1/S8.2/S8.4 TERMINALs, COR GENTOW-3.C, x-free criterion CHAIN-XFREE terminal) + EFF-GENTOW4 (.15-.35: GENTOW-4.1 four clauses, 4.A five clauses incl. TOWERRAT2-C monic signature n>μ₂D₂, 4.2 pure-power tie, boxes .36-.39) + GENTOW6 remaining (6.2/6.2C budget half C.tbd, 6.3 f₁=1 pin + ANNEX-6.3′, 6.4 cap lemma, 6.5 BOX-1 closure + iff WITHDRAWN). Then §9 (GENTOW5 third stage + thresholds + [cite:AGNPRW]). -->
+## A-§ DELTA BLOCK (dated records against this file's own committed skeleton — the
+CHAP-B A-§ precedent; the index/honesty text above is NOT edited)
+
+**A-1 (C-H3 wording repair, owed since §5's composition).** C-H3 says "the §5/§7 route
+needs no test key at a fractional height". IMPRECISE as written: §3/§5 DO construct test
+keys (C.13/C.14 — `O[x]`-algebra via H.54's lifts) and use them throughout (`Ψ ∣ f_S`
+etc.). The honest immunity claim, superseding that sentence's reading: **no ELEMENT of
+degree `< D″` at a fractional `dv`-height is ever needed (the enlarged family fixes
+HE3-BOX-6 BY DEGREE — `EFF.HE6.14`'s own framing), and no base change is performed
+anywhere.** Cross-read item 1 attacks the repaired form.
+
+**A-2 (kind census, mechanical count over this file's `### NODE` headings).** §2's
+planned census read ≈30 def / ≈62 lemma / ≈22 theorem / 2 cite / 4 gate. ACTUAL:
+**26 def · 39 lemma · 46 theorem · 7 def+lemma · 1 def+theorem · 3 cite · 4 gate =
+126 nodes** (total exactly as planned; the kind split moved lemma→theorem mass, and the
+FGMN import split into two cites C.66/C.92 plus C.94). §2 is index, not contract, on
+kinds.
+
+**A-3 (§7 supply naming).** §2's supply table names C.61 (Tier 1), C.64 (Tier 2), C.66
+(Tier 3). As composed, Tier 1's assembled law is the PAIR C.61 + C.63, and **C.69 is the
+bundled supply statement consumers should cite first**; C.66's Tier-3 content fires
+through C.67. The §2 pointers remain correct (they name the tiers' kernels).
+
+**A-4 (§8/§9 section-content relocation).** The GENTOW6 caps/attainment cluster
+(6.3/6.3′/6.4/6.5) planned for §8 landed in §9 (C.95/C.96) — §8's header was renamed
+accordingly; the index row for §9's content gloss should be read to include "the caps".
+
+**A-5 (split-mandate table, aggregated for the fleet).** Split-mandated:
+C.24 → 2, C.27 → 3, C.33 → 3, C.34 → 2, C.49 → 3, C.52 → 3, C.53 → 1(+companion),
+C.56 → 2, C.57 → 2, C.58 → 3, C.74 → 3, C.76 → 2, C.77 → 2, C.78 → 2, C.85 → 3,
+C.88 → 2, C.90 → 2, C.91 → 3, C.95 → 2, C.110 → 2, C.111 → 2, C.113 → 2, C.114 → 2.
+Split candidates flagged in-node: C.14, C.37, C.54, C.59, C.67, C.99, C.118. Fleet
+planning figure: **≈ 165 Lean files.**
+
+**A-6 (composition-time finding at C.125).** Recorded as cross-read item 6: the GC-11
+`e > 1 ∧ f > 1` witness at tower level is `C-BOX-1`-conditional; the gate fires the
+honest triple ((a) unconditional `e > 1, f = 1` wild row; (b) conditional `{(2,2)}` row
+with the battery regression instantiating the hypothesis; (c) the finding itself).
+
+---
+
+---
+
+<!-- RESUME: CHAPTER COMPLETE — all sections §0–§16 composed (126 nodes, C.01–C.126), DAG emitted (spec/DAG_BLUEPRINT_C.tsv, 760 rows), TEETH summary + cross-read flags + A-§ deltas landed. CODEX CROSS-READ OWED (§16.2's ten items). Orchestrator items: PA-3(ii) re-harvest (GENTOW2 rows dangle by design); GC-13 placeholder resolution vs chapters D/E at freeze (HE7 units, ϑ-TABLE anchor, (ABS-HE4)); gate-(b) sign-offs for C.66/C.92/C.94; the RE-PLAN helper bookings in §15. -->
 
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
