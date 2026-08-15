@@ -880,6 +880,346 @@ imported cocycles have equal residue").
 **ENVIRONMENT.** ENV-D2.
 
 ---
-<!-- RESUME: §3 COMPLETE (D.01–D.12); next = §4 (D.13–D.28, level-1 gauge layer) -->
+## 4. §4 — THE LEVEL-1 GAUGE LAYER
+
+> **Design note (the point-free discipline).** T1's level-1 layer has two faces: exponent
+> arithmetic (`i(k)`, `a(k)`, `wrap`, `q(k)`, `W(t)` — pure `ℕ`/`ℤ`, D.13–D.16) and monomial
+> algebra in the group `x^ℤ π^ℤ`, represented EXACTLY by the exponent lattice
+> `Multiplicative (ℤ × ℤ)` (D.17). The C5/C6 reads at tower points `ξ` with embeddings `ι_ξ`
+> are the ONE part that needs a valued extension carrier — which `leanfinal` does not have and
+> chapter C owns (GC-7). This chapter therefore transcribes C5/C6 **point-free**: the
+> normalized-digit read `γ_k` and the exact lift `L_M` are defined on coordinates over the
+> bundle (D.24–D.26, via chapter B's digit API), the identity `γ_M(L_M(λ)) = λ` is proved
+> there, and the `ξ`-evaluation clauses `(C5-normalizer-read)`/`(C6-residue)`-at-`ξ` are
+> carried as the embedding interface for chapter C (each node's ⚠ states the exact clause
+> left to the tower carrier). Nothing is weakened: the corpus's own derivations of C2-wrap,
+> C5-carry, C2-level-1 and the A3/A4 pins are exponent/coordinate computations.
+
+### NODE D.13 [def] [fresh]
+
+**STATEMENT.** *The level-1 exponent pair.* For `e₁ h : ℕ` with `0 < e₁` and
+`Nat.Coprime h e₁`, and a height `k : ℤ`: `iexp e₁ h k` is the unique `i` with `0 ≤ i < e₁`
+and `i·h ≡ k (mod e₁)`, and `aexp e₁ h k := (k − iexp·h) / e₁ : ℤ`, so that the **exact-height
+identity** `(iexp e₁ h k)·h + (aexp e₁ h k)·e₁ = k` holds (`EFF.T1.01`'s
+`i(k)h + a(k)e₁ = k`, `0 ≤ i(k) < e₁`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Gauge
+
+/-- `i(k)`: the reduced x-exponent of the level-1 normalizer `n̂₁(k) = x^{i(k)}π^{a(k)}`. -/
+def iexp (e₁ h : ℕ) (k : ℤ) : ℕ := ((k : ZMod e₁) * (h : ZMod e₁)⁻¹).val
+
+/-- `a(k)`: the π-exponent, fixed by the exact-height identity. -/
+def aexp (e₁ h : ℕ) (k : ℤ) : ℤ := (k - iexp e₁ h k * h) / e₁
+
+theorem iexp_aexp_spec (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁) (k : ℤ) :
+    iexp e₁ h k < e₁ ∧ (iexp e₁ h k : ℤ) * h + aexp e₁ h k * e₁ = k
+```
+⚠ Three public declarations — permitted on the B.15 precedent (the pair + its spec are one
+interface; every §4 node consumes all three). `ZMod e₁` needs `NeZero e₁` — supplied from
+`he` at use sites (`haveI`); the def itself is total (garbage at `e₁ = 0`, spec'd only under
+`he`).
+
+**DEPENDS.** mathlib `ZMod.val`, `ZMod.inv` (coprime inverse: `ZMod.inv_mul_of_unit` /
+`ZMod.coe_unit_of_coprime` cluster — the stub agent verifies the exact names at the pin).
+
+**PROOF.** 1. `iexp < e₁`: `ZMod.val_lt` (under `NeZero`). 2. Congruence `iexp·h ≡ k`:
+`(h : ZMod e₁)` is a unit by `hcop`; multiply the definition back. 3. Divisibility
+`e₁ ∣ k − iexp·h` from the congruence (`ZMod.intCast_zmod_eq_zero_iff_dvd`); the identity by
+`Int.ediv_mul_cancel`.
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.T1.01` (the displayed `n̂₁(k) = x^{i(k)}π^{a(k)}, 0 ≤ i(k) < e₁,
+i(k)h + a(k)e₁ = k`).
+
+**TEETH.** T1 §4.2 check 1 (live-domain boundary) → gates D.70/D.71 evaluate `iexp`/`aexp`
+tables; check 10 (grade-data value group) → the `ℤ`-typing of `aexp` (heights are integers,
+`EFF.T1.02`'s integrality clause).
+
+**ENVIRONMENT.** ENV-D1.
+
+---
+
+### NODE D.14 [def+lemma] [fresh]
+
+**STATEMENT.** *The wrap bit and `(C2-wrap)`.* `wrap e₁ h a b := (iexp a + iexp b) / e₁`
+(`ℕ`-division). Then (i) `wrap ∈ {0,1}`; (ii) the **wrap identity**
+`iexp a + iexp b = iexp (a+b) + e₁ * wrap a b` — the exponent form of `(C2-wrap)`'s monomial
+display `n̂₁(a)n̂₁(b) = n̂₁(a+b)·(x^{e₁}/π^h)^{wrap(a,b)}` (the monomial form itself is a
+D.17-arena corollary, proved there as the `tau` computation).
+
+**SIGNATURE.**
+```lean
+def wrap (e₁ h : ℕ) (a b : ℤ) : ℕ := (iexp e₁ h a + iexp e₁ h b) / e₁
+
+theorem iexp_add_wrap (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁) (a b : ℤ) :
+    iexp e₁ h a + iexp e₁ h b = iexp e₁ h (a + b) + e₁ * wrap e₁ h a b
+    ∧ wrap e₁ h a b ≤ 1
+```
+
+**DEPENDS.** D.13.
+
+**PROOF.** 1. Both sides of the identity are `< 2e₁`-bounded and congruent mod `e₁`
+(`iexp (a+b) ≡ iexp a + iexp b`, from D.13's congruence + `ZMod` ring arithmetic); `omega`
+closes from the two D.13 bounds. 2. `wrap ≤ 1` from `iexp a + iexp b < 2e₁` (`Nat.div_lt_iff`
+shape). This is the corpus derivation: "the reduced exponent satisfies
+`i(a)+i(b) = i(a+b) + e₁ wrap(a,b)`" (`EFF.T1.07`).
+
+**SIZE.** 22 lines.
+
+**SOURCE.** `EFF.T1.07` (the boxed `(C2-wrap)` and `wrap(a,b) = ⌊(i(a)+i(b))/e₁⌋ ∈ {0,1}`).
+
+**TEETH.** T1 §4.2 check 2 + the "positive-wrap" and "wrong-sign" teeth → Lean theorem (this
+node; the sign convention is `+e₁·wrap` on the RIGHT of `iexp (a+b)`) + gates D.70/D.71
+(wrap tables at both primes).
+
+**ENVIRONMENT.** ENV-D1.
+
+---
+
+### NODE D.15 [def+lemma] [fresh]
+
+**STATEMENT.** *The carry exponent `q(k)` and `(C5-carry)`.* With `i₀ := iexp e₁ h 1`:
+`qexp e₁ h k := (i₀ * k − iexp e₁ h k) / e₁ : ℤ` (integral: `i₀·k ≡ iexp k (mod e₁)` since
+both `≡ h⁻¹·k`), and the **carry law**
+`qexp (a+b) = qexp a + qexp b + wrap a b`.
+
+**SIGNATURE.**
+```lean
+def qexp (e₁ h : ℕ) (k : ℤ) : ℤ := (iexp e₁ h 1 * k - iexp e₁ h k) / e₁
+
+theorem qexp_add (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁) (a b : ℤ) :
+    qexp e₁ h (a + b) = qexp e₁ h a + qexp e₁ h b + wrap e₁ h a b
+```
+
+**DEPENDS.** D.13, D.14.
+
+**PROOF.** 1. Integrality of the defining division: `i₀ ≡ h⁻¹`, `iexp k ≡ h⁻¹k (mod e₁)` (D.13)
+⇒ `e₁ ∣ i₀k − iexp k`. 2. The law: multiply by `e₁` and substitute D.14's wrap identity —
+"multiply the difference by `e₁` and use `i(a)+i(b)−i(a+b) = e₁ wrap(a,b)`" (`EFF.T1.19`'s
+verbatim derivation); `omega`/`ring` after clearing the exact divisions
+(`Int.ediv_mul_cancel` on the three integrality facts).
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.T1.19` (the boxed `(C5-carry)` `q(a+b) = q(a)+q(b)+wrap(a,b)`;
+`q(k) = (i₀k − i(k))/e₁`).
+
+**TEETH.** T1's A2 consumption regression + §4.2 check 4 (the `−q(k)` sign) → Lean theorem
+(this node + D.19); gate D.71.
+
+**ENVIRONMENT.** ENV-D1.
+
+---
+
+### NODE D.16 [def] [fresh]
+
+**STATEMENT.** *The level-1 telescope exponent.* `Wfloor e₁ h u₂ f₂ t := (f₂ − t) * iexp e₁ h u₂ / e₁ : ℕ`
+— the corpus's `W(t) = ⌊(f₂−t)·i(u₂)/e₁⌋` (`EFF.T1.10`). A definition only; the law
+`ϑ_{1,f₂−t} = η^{W(t)}` is D.18.
+
+**SIGNATURE.**
+```lean
+def Wfloor (e₁ h : ℕ) (u₂ : ℤ) (f₂ t : ℕ) : ℕ := (f₂ - t) * iexp e₁ h u₂ / e₁
+```
+
+**DEPENDS.** D.13.
+
+**PROOF.** definitional. (`ℕ`-subtraction `f₂ − t` is the corpus's `s = f₂ − t ≥ 0`; consumers
+always have `t < f₂` in scope — `t ≤ f₂` truncation junk is never consumed, noted for the stub.)
+
+**SIZE.** 6 lines.
+
+**SOURCE.** `EFF.T1.10` (`W(t) = ⌊(f₂−t)i(u₂)/e₁⌋`, `ϑ_{1,f₂−t} = η^{W(t)}`, "The exponent
+has the displayed positive sign").
+
+**TEETH.** the wrong-sign tooth → D.18 + gates.
+
+**ENVIRONMENT.** ENV-D1.
+
+---
+
+### NODE D.17 [def] [fresh]
+
+**STATEMENT.** *The level-1 arena.* The level-1 monomials `x^i π^a` are represented exactly by
+the exponent lattice `Multiplicative (ℤ × ℤ)` (first coordinate the `x`-exponent, second the
+`π`-exponent). Define (i) the **level-1 section** `levelOneSection e₁ h : NormSection _` by
+`n k := (iexp e₁ h k, aexp e₁ h k)`; (ii) for a field `K` with a distinguished unit `η : Kˣ`
+(the corpus's `η = res(x^{e₁}/π^h)`, `K₁ = F_Q(η)` — `EFF.T1.01`), the **level-1 arena**
+`levelOneArena e₁ h he hcop η : GaugeArena _ K _` with height hom `v (i,a) := i·h + a·e₁` and
+residue hom `res : ker v →* Kˣ` sending `(i,a) ↦ η^{i/e₁}` — well-defined because
+`ih + ae₁ = 0` and `Nat.Coprime h e₁` force `e₁ ∣ i` and `(i,a) = (i/e₁)·(e₁,−h)`, i.e. the
+kernel is the cyclic group generated by the exponent pair of `x^{e₁}/π^h`, mapped by
+`t ↦ η^t`.
+
+**SIGNATURE.**
+```lean
+def levelOneSection (e₁ h : ℕ) : NormSection (Multiplicative (ℤ × ℤ)) where
+  n k := Multiplicative.ofAdd (iexp e₁ h k, aexp e₁ h k)
+  n_zero := by simp [iexp, aexp]
+
+noncomputable def levelOneArena (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁)
+    {K : Type*} [Field K] (η : Kˣ) :
+    GaugeArena (Multiplicative (ℤ × ℤ)) K (levelOneSection e₁ h)
+```
+⚠ Two public declarations (section + arena) — sanctioned: they are one instance split only by
+where the field `K` enters; C and the gates cite both by name.
+
+**DEPENDS.** D.01, D.07, D.13 (`iexp_aexp_spec` gives `exact_height`).
+
+**PROOF.** 1. `n_zero`: `iexp 0 = 0`, `aexp 0 = 0` (compute). 2. `v` is a hom: componentwise
+`ℤ`-linear. 3. `exact_height`: D.13's identity verbatim. 4. Kernel description: for
+`ih + ae₁ = 0`, `e₁ ∣ ih` and `Nat.Coprime h e₁` give `e₁ ∣ i` (`Nat.Coprime.dvd_of_dvd_mul_right`,
+`ℤ`-cast); set `t := i / e₁`, then `a = −t·h` (from the kernel equation, `e₁ ≠ 0`). 5. `res`
+hom-ness: `t` is additive in `(i,a)` (the quotient of a linear form), so `t ↦ η^t` is a
+`zpow` hom.
+
+**SIZE.** 40 lines. Fragile signature (dependent `GaugeArena` fields + `Multiplicative`
+coercions) — elaborate FIRST at the stub stage (§12).
+
+**FAITHFULNESS.** The exponent lattice is an exact model of the monomial group: all §4
+consumed identities are monomial-exponent identities (`EFF.T1.07/.10/.19`'s own derivations
+are exponent computations). What the lattice does NOT model is evaluation of monomials at
+field elements — deliberately (the §4 design note); no node consumes it. The distinguished
+`η` is DATA here; its corpus meaning (`res(x^{e₁}/π^h)` inside `K₁ = F_Q(η)` with basis
+`1,…,η^{f₁−1}`) is restored at D.26 where the coordinate reads land.
+
+**SOURCE.** `EFF.T1.01` (the carrier: `dv₁(x) = h`, `dv₁(π) = e₁`, `η`, `K₁`, the basis,
+`n̂₁(k)`); `EFF.T1.04` (`z₁ := η`, `(C1-base-letter)`).
+
+**TEETH.** T1 §4.2 checks 1/2/4 (all level-1 checks run through this instance) → gates
+D.70/D.71 instantiate it at both primes.
+
+**ENVIRONMENT.** ENV-D1 + ENV-D3 (`{K} [Field K]`, `η : Kˣ`).
+
+---
+
+### NODE D.18 [lemma] [fresh]
+
+**STATEMENT.** *`(C2-level-1)`: the level-1 telescope is an explicit `η`-power.* In the
+level-1 arena, for `u₂ : ℤ` and `s : ℕ`:
+`(levelOneArena …).vartheta u₂ s = η ^ (s * iexp e₁ h u₂ / e₁)`, and in slot-indexed form
+`(levelOneArena …).vartheta u₂ (f₂ − t) = η ^ Wfloor e₁ h u₂ f₂ t`. **"The exponent has the
+displayed positive sign"** (`EFF.T1.10` — transcribed as stated; the wrong-sign mutation is
+the tooth).
+
+**SIGNATURE.**
+```lean
+theorem levelOneArena_vartheta (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁)
+    {K : Type*} [Field K] (η : Kˣ) (u₂ : ℤ) (s : ℕ) :
+    (levelOneArena e₁ h he hcop η).vartheta u₂ s = η ^ (s * iexp e₁ h u₂ / e₁)
+```
+
+**DEPENDS.** D.08, D.13, D.16, D.17.
+
+**PROOF.** 1. The group element `varthetaEl u₂ s` has exponent pair
+`(s·iexp u₂ − iexp (s·u₂), s·aexp u₂ − aexp (s·u₂))`. 2. `iexp (s·u₂) ≡ s·iexp u₂ (mod e₁)`
+(D.13's congruence, `ZMod` arithmetic), and both `iexp`-values are reduced, so
+`s·iexp u₂ − iexp (s·u₂) = e₁·(s·iexp u₂ / e₁)` — "reducing `s·i(u₂)` modulo `e₁` yields the
+floor count" (`EFF.T1.10`'s verbatim derivation). 3. The kernel-generator exponent is
+therefore `t = s·iexp u₂ / e₁`; D.17's `res` gives `η^t`. 4. Slot form: substitute
+`s := f₂ − t` and fold D.16.
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.T1.10` (the boxed `(C2-level-1)` `ϑ_{1,s} = η^{⌊s·i(u₂)/e₁⌋}` + the `W(t)`
+display).
+
+**ORIENTATION.** T1 two-index (D.06 row 2). The GENTOW2-orientation value at this instance is
+the INVERSE `η^{−W(t)}` — a consumer wanting GENTOW2's `ϑ(t)` reads `varthetaG2` (D.10), never
+this lemma with a silent sign flip.
+
+**TEETH.** T1 §4.2 check 2 → **Lean theorem** (this node); gauge-naive and wrong-sign teeth →
+gates D.70/D.71 evaluate the `η`-power tables at both primes.
+
+**ENVIRONMENT.** ENV-D1 + ENV-D3.
+
+---
+
+### NODE D.19 [lemma] [fresh]
+
+**STATEMENT.** *`(C5-monomial-ratio)`: the `ϖ`-comparison.* Let `ϖ := n̂₁(1)` (the level-1
+normalizer avatar) and let `varpiSection` be the section `k ↦ ϖ^k` (also a `NormSection` —
+powers of a fixed element, `n 0 = 1`). Then in the exponent lattice
+`chi (levelOneSection e₁ h) varpiSection k = ((e₁, −h) : ℤ × ℤ) ^ (−qexp e₁ h k)` — the
+corpus's `n(k)/ϖ^k = (x^{e₁}/π^h)^{−q(k)}` — and hence, applying D.17's `res`,
+the residue is `η^{−qexp k}`. Moreover `(C5-carry)` (D.15) is exactly the coboundary law
+(D.12) of this section pair: `χ(a)χ(b)/χ(a+b) = (x^{e₁}/π^h)^{wrap(a,b)}` — the consistency
+triangle wrap/carry/coboundary closes, which is the A2 regression's content.
+
+**SIGNATURE.**
+```lean
+theorem chi_varpi (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁) (k : ℤ) :
+    NormSection.chi (levelOneSection e₁ h) (varpiSection e₁ h) k
+      = Multiplicative.ofAdd ((-(qexp e₁ h k)) • ((e₁ : ℤ), -(h : ℤ)))
+-- sibling (same file, public): `varpiSection` [def] and the residue corollary `res_chi_varpi`
+```
+⚠ Direction check for the stub: `chi Nhat N k = n̂(k)·(n(k))⁻¹` (D.12) with
+`Nhat := levelOneSection` (the exact-height section) and `N := varpiSection` — matching the
+corpus's `n(k)/ϖ^k`.
+
+**DEPENDS.** D.12, D.13, D.15, D.17.
+
+**PROOF.** 1. Exponent subtraction: `(iexp k − i₀k, aexp k − a₀k)`. 2. First coordinate
+`= −e₁·qexp k` (D.15's defining division, cleared). 3. Second coordinate `= h·qexp k`: from
+the two exact-height identities `iexp k·h + aexp k·e₁ = k` and `k·(i₀h + a₀e₁) = k`,
+subtract: `(iexp k − i₀k)h + (aexp k − a₀k)e₁ = 0`; substitute step 2 — "Exponent subtraction
+gives the monomial ratio" (`EFF.T1.19`). 4. The coboundary consistency: D.12 + D.15 + D.14
+(`omega` on exponents).
+
+**SIZE.** 32 lines.
+
+**SOURCE.** `EFF.T1.19` (the boxed `(C5-monomial-ratio)`); `EFF.T1.26` (the first two pinned
+HETOW displays are exactly this statement + its residue — consumed at D.27).
+
+**TEETH.** T1 §4.2 check 4 ("guards the `−q(k)` sign") → **Lean theorem** (this node); the A2
+consumption regression → D.27 + §12.
+
+**ENVIRONMENT.** ENV-D1 + ENV-D2.
+
+---
+
+### NODE D.20 [lemma] [fresh]
+
+**STATEMENT.** *`(C1-general)`: the letter factorization.* In any arena `A` over `(G, K, N)`:
+for `a b c : G` of EQUAL height (`v a = v b = v c`), writing the three value-zero ratios
+`z := res(a·c⁻¹)`, `η' := res(a·b⁻¹)`, `ρ := res(b·c⁻¹)`:
+`z = η' · ρ`. Instantiated at `a := Φ_i^{e_{i+1}}`, `b := n̂_i(u_{i+1})`, `c := π_{i+1}^{u_{i+1}}`
+(all of height `u_{i+1}` — `EFF.T1.02`'s stage typing) this is
+`z_{i+1} = η_{i+1}·ρ_i` (`EFF.T1.05`). **Fences transcribed:** "No arbitrary-depth
+canonical-letter monomial assertion follows from the T1 carrier"; the specialization
+`ρ_i = J_i(z₁,…,z_i)` `(C1-JA-specialization)` requires the external `(H-JA-CONJ)_i` — an
+inline hypothesis of any consumer (D-H10), NOT stated or proved here.
+
+**SIGNATURE.**
+```lean
+theorem GaugeArena.res_ratio_factor {G K N} [CommGroup G] [Field K]
+    (A : GaugeArena G K N) (a b c : G) (hab : A.v a = A.v b) (hbc : A.v b = A.v c) :
+    A.res ⟨a * c⁻¹, by …⟩ = A.res ⟨a * b⁻¹, by …⟩ * A.res ⟨b * c⁻¹, by …⟩
+-- the three membership side goals are `map_mul`/`map_inv` + the height equalities;
+-- the stub spells them as explicit `mem_ker` arguments, not tactic holes
+```
+
+**DEPENDS.** D.07.
+
+**PROOF.** `a·c⁻¹ = (a·b⁻¹)·(b·c⁻¹)`; `map_mul` on `res`. "The three defining fractions have
+value zero, and residue multiplicativity gives `z_{i+1} = η_{i+1}ρ_i`" (`EFF.T1.05`,
+verbatim).
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.T1.05` (the boxed `(C1-general)` + the R2-1 fence + `(C1-JA-specialization)`);
+`EFF.T1.04` (the definitions of `η_{i+1}`, `z_{i+1}`, `z₁ := η`).
+
+**TEETH.** T1 §7 attack 1 (no dedicated battery row — the fence IS the tooth: a consumer
+deriving depth-monomiality from this node alone is the defect the R2-1 withdrawal killed) →
+§12 signed row.
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+<!-- RESUME: §4 through D.20 committed; next = D.21–D.28 -->
 
 <!-- CHAP-D APPEND POINT — do not remove; sections are appended here in order -->
