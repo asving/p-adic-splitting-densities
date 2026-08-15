@@ -78,7 +78,15 @@ theorem shiftVec_boxClass (π : O) (M : ℕ) (p : ResidueField O × MBox O M) :
 theorem boxClass_mem_decidedSet {π : O} (hπ : Irreducible π) {M : ℕ} {σ : FactorizationType}
     (p : ResidueField O × MBox O M) (hp : mtrunc M p.2 ∈ decidedSet O 3 σ M) :
     boxClass π M p ∈ decidedSet O 3 σ (M + 3) := by
-  sorry
+  have hs := shiftVec_boxClass π M p
+  have hb := boxVec_eq_boxLift π M p.2
+  show DecidedAt O 3 σ (M + 3)
+    (proj O 3 (M + 3) (shiftVec (boxVec π M p.2) (-(resSect O p.1))))
+  refine decidedAt_of_extract hπ (γ := resSect O p.1) (d := boxLift M p.2) ?_ ?_ ?_ ?_
+  · rw [hs, hb]; rfl
+  · rw [hs, hb]; rfl
+  · rw [hs, hb]; rfl
+  · rw [proj_boxLift]; exact hp
 
 /-- The image of the reconstruction over the level-`M` classes lying in `S`. Written as a
 `Set.range` over `ResidueField O × ↥(mtrunc ⁻¹' S)` so that its cardinality is a product. -/
@@ -89,12 +97,37 @@ noncomputable def boxImage (π : O) (M : ℕ) (S : Set (Coeff O 3 M)) : Set (Coe
 theorem mem_boxImage {π : O} {M : ℕ} {S : Set (Coeff O 3 M)} {c : Coeff O 3 (M + 3)} :
     c ∈ boxImage π M S ↔
       ∃ p : ResidueField O × MBox O M, mtrunc M p.2 ∈ S ∧ boxClass π M p = c := by
-  sorry
+  constructor
+  · rintro ⟨⟨g, x, hx⟩, rfl⟩
+    exact ⟨(g, x), hx, rfl⟩
+  · rintro ⟨⟨g, x⟩, hS, rfl⟩
+    exact ⟨(g, ⟨x, hS⟩), rfl⟩
 
 /-- **`#(boxImage) = q⁴ · #S`** — `q` residual centres times the sharp mixed-box fibre `q³`. -/
 theorem card_boxImage {π : O} (hπ : Irreducible π) (M : ℕ) (S : Set (Coeff O 3 M)) :
     Nat.card (boxImage (O := O) π M S) = residueCard O ^ 4 * Nat.card S := by
-  sorry
+  classical
+  -- (a) the parametrisation is injective, so the image count is the parameter count
+  have hinj : Function.Injective
+      (fun p : ResidueField O × ((mtrunc (O := O) M) ⁻¹' S) =>
+        boxClass π M (p.1, (p.2 : MBox O M))) := by
+    intro p q hpq
+    have h := boxClass_injective hπ M hpq
+    simp only [Prod.mk.injEq] at h
+    exact Prod.ext h.1 (Subtype.ext h.2)
+  have hcard : Nat.card (boxImage (O := O) π M S)
+      = Nat.card (ResidueField O × ((mtrunc (O := O) M) ⁻¹' S)) :=
+    Nat.card_range_of_injective hinj
+  -- (b) the sharp mixed-box fibre: `#(mtrunc⁻¹ S) = q³ · #S`
+  have hfib : Nat.card ((mtrunc (O := O) M) ⁻¹' S) = residueCard O ^ 3 * Nat.card S := by
+    have h := card_preimage_mtrunc (O := O) M S
+    rw [card_coeff, card_mbox] at h
+    refine Nat.eq_of_mul_eq_mul_right (pow_pos (residueCard_pos O) (3 * M)) ?_
+    calc Nat.card ((mtrunc (O := O) M) ⁻¹' S) * residueCard O ^ (3 * M)
+        = Nat.card S * residueCard O ^ (3 * M + 3) := h
+      _ = residueCard O ^ 3 * Nat.card S * residueCard O ^ (3 * M) := by ring
+  rw [hcard, Nat.card_prod, hfib, show Nat.card (ResidueField O) = residueCard O from rfl]
+  ring
 
 /-! ## 2. Disjointness from the level-1 family -/
 
