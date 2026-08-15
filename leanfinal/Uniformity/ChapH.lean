@@ -1,11 +1,13 @@
 import Uniformity.ChapH.H01
 import Uniformity.ChapH.H02
 import Uniformity.ChapH.H03
+import Uniformity.ChapH.H04
 import Uniformity.ChapH.H05
 import Uniformity.ChapH.H06
 import Uniformity.ChapH.H07
 import Uniformity.ChapH.H08
 import Uniformity.ChapH.H09
+import Uniformity.ChapH.H10
 import Uniformity.ChapH.H11
 import Uniformity.ChapH.H12
 import Uniformity.ChapH.H13
@@ -15,9 +17,11 @@ import Uniformity.ChapH.H16
 import Uniformity.ChapH.H17
 import Uniformity.ChapH.H18
 import Uniformity.ChapH.H19
+import Uniformity.ChapH.H20
 import Uniformity.ChapH.H22
 import Uniformity.ChapH.H23
 import Uniformity.ChapH.H24
+import Uniformity.ChapH.H25
 import Uniformity.ChapH.H29
 import Uniformity.ChapH.H30
 import Uniformity.ChapH.H31
@@ -39,6 +43,7 @@ import Uniformity.ChapH.H46
 import Uniformity.ChapH.H47
 import Uniformity.ChapH.H48
 import Uniformity.ChapH.H49
+import Uniformity.ChapH.H50
 import Uniformity.ChapH.H51
 import Uniformity.ChapH.H52
 import Uniformity.ChapH.H53
@@ -54,12 +59,16 @@ import Uniformity.ChapH.H65
 import Uniformity.ChapH.H66
 import Uniformity.ChapH.H67
 import Uniformity.ChapH.H68
+import Uniformity.ChapH.H69
 import Uniformity.ChapH.H70
+import Uniformity.ChapH.H72
 import Uniformity.ChapH.H73
 import Uniformity.ChapH.H74
+import Uniformity.ChapH.H75
 import Uniformity.ChapH.H76
 import Uniformity.ChapH.H77
 import Uniformity.ChapH.H78
+import Uniformity.ChapH.H79
 import Uniformity.ChapH.H80
 import Uniformity.ChapH.H81
 import Uniformity.ChapH.H82
@@ -77,4 +86,4 @@ import Uniformity.ChapH.H93
 import Uniformity.ChapH.H94
 import Uniformity.ChapH.H95
 
-/-! Chapter H roll-up — 78/99 nodes landed (waves 1-3). -/
+/-! Chapter H roll-up — 87/99 nodes landed (waves 1-4). -/
