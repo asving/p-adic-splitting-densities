@@ -133,7 +133,10 @@ theorem card_boxImage {π : O} (hπ : Irreducible π) (M : ℕ) (S : Set (Coeff 
 
 /-- A perfect cube has a root: `(X − γ)³` vanishes at `γ`. -/
 theorem not_noRootCubic_cubeCoeff {K : Type*} [Field K] (g : K) : ¬ NoRootCubic (cubeCoeff g) := by
-  sorry
+  intro h
+  refine h g ?_
+  simp only [cubeCoeff_zero, cubeCoeff_one, cubeCoeff_two]
+  ring
 
 /-- **The two families are disjoint.** A reconstruction is residually a perfect cube, hence
 residually rooted, hence not in the (residually rootless) level-1 inert family. -/
@@ -141,7 +144,34 @@ theorem boxClass_notMem_level1 {π : O} (hπ : Irreducible π) {M : ℕ}
     (p : ResidueField O × MBox O M) :
     boxClass π M p ∉
       (coeffFactor (O := O) 3 (show 1 ≤ M + 3 by omega)) ⁻¹' (decidedSet O 3 c3inert 1) := by
-  sorry
+  intro hmem
+  -- the residue vector of the recentred reconstruction is the perfect cube `(X − γ̄)³`
+  have hmemB : ∀ i, boxVec π M p.2 i ∈ maximalIdeal O := by
+    intro i
+    rw [hπ.maximalIdeal_eq, Ideal.mem_span_singleton]
+    fin_cases i
+    · exact dvd_mul_of_dvd_left (dvd_pow_self π (by omega)) _
+    · exact dvd_mul_of_dvd_left (dvd_pow_self π (by omega)) _
+    · exact dvd_mul_right π _
+  have hres : resVec (shiftVec (boxVec π M p.2) (-(resSect O p.1))) = cubeCoeff p.1 := by
+    have h1 : ∀ i, shiftVec (shiftVec (boxVec π M p.2) (-(resSect O p.1))) (resSect O p.1) i
+        ∈ maximalIdeal O := by
+      intro i
+      rw [shiftVec_boxClass π M p]
+      exact hmemB i
+    have h2 := (shiftVec_mem_iff (shiftVec (boxVec π M p.2) (-(resSect O p.1)))
+      (resSect O p.1)).1 h1
+    rwa [residue_resSect] at h2
+  -- level-1 `{(1,3)}`-decidedness would force the residue cubic to be rootless
+  have hdec : DecidedAt O 3 c3inert 1
+      (liftRes1 (resVec (shiftVec (boxVec π M p.2) (-(resSect O p.1))))) := by
+    have h3 : proj O 3 1 (shiftVec (boxVec π M p.2) (-(resSect O p.1)))
+        ∈ decidedSet O 3 c3inert 1 := by
+      rw [← coeffFactor_proj (O := O) 3 (show 1 ≤ M + 3 by omega)
+        (shiftVec (boxVec π M p.2) (-(resSect O p.1)))]
+      exact hmem
+    rwa [proj_one_eq_liftRes1] at h3
+  exact not_noRootCubic_cubeCoeff p.1 (by rw [← hres]; exact inert3_decided_iff.1 hdec)
 
 /-! ## 3. The level-1 family's count, and the step -/
 
