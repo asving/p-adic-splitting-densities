@@ -3083,12 +3083,10 @@ carries (6)(α) at exact scope); the audit (`κ₃ = 21/2 > 10 > 8` at FAM-A5).
 
 ---
 
-### NODE C.56 [theorem] [fresh]
+### NODE C.56a [def] [fresh]
 
-**STATEMENT.** *GENTOW-2(i)+(ii): the composed refine transfer.* For a composed stage-α
-event (one side of integer `dv₂`-slope `λ > E₂` with residual `(T − s)^{μ₂}` over `K₂`,
-`s ∈ K₂^×`) set `Φ₂⁺ := Φ₂ − lift(s; λ)` with the **base-resolved K₂-digit lift** (the
-`.62` TERMINAL display):
+**STATEMENT.** *The base-resolved K₂-digit lift (the `.62` TERMINAL display) — split out
+of C.56 per the A-7 SCC repair.* `k2DigitLift T s m` for `s ∈ K₂`, at heights `m > E₂`:
 
 ```
 lift(s; m) := Σ_{r,t} d_{r,t} · M_{r,t}(m),   M_{r,t}(m) := n̂₂(m − Δ(r,t)) · x^{e₁r} · Φ′^{e₂t},
@@ -3096,7 +3094,45 @@ lift(s; m) := Σ_{r,t} d_{r,t} · M_{r,t}(m),   M_{r,t}(m) := n̂₂(m − Δ(r,
 ```
 
 (`n̂₂(m) := π^{a₀}x^iΦ′^b`, `i < e₁, b < e₂`, `e₁e₂a₀ + ie₂h + bu₂ = m`, the `(i,b)`-pair
-unique per class mod `e₁e₂`, `a₀ ≥ 0` at `m > E₂` — the audited inequality). Then:
+unique per class mod `e₁e₂`, `a₀ ≥ 0` at `m > E₂` — the audited inequality
+`E₂ ≥ (e₁−1)e₂h + (e₂−1)u₂ + 1`); `d_{r,t}` the inverse-twisted `K`-expansion digits of
+`s` in the coherent normalization; `deg lift < D₂` always (the frozen sentence STANDS).
+The frozen fixed-base display is DEAD (its compensating `π`-exponent goes non-integer at
+seam-live heights — the FR-A machine counter-instance `11/2 ∉ ℤ`).
+
+**SIGNATURE** (shape).
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def k2DigitLift {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
+    (s : AdjoinRoot (towerLabel T)) (m : ℕ) : Polynomial O := …
+```
+(+ the exact-height and `deg < D₂` companions; the `n̂₂`-solve is C.15/C.16's pattern at
+the pair `(u₂, e₂)` composed with the frame solve.)
+
+**DEPENDS.** C.15/C.16 · C.28 · C.42 · C.44 · C.50 · H.51/H.52 (the two-step class
+separation) · H.54–H.56 (the base-level digit realization, per C-H5).
+
+**PROOF.** definitional + the range/`a₀ ≥ 0` arithmetic (`omega` from `T.hfloor`).
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.GENTOW1.27` (the setting + the `.62` TERMINAL lift display, verbatim;
+the `a₀ ≥ 0` audit); `EFF.GENTOW1.53`-region (the S3 correction's provenance).
+
+**TEETH.** the FR-A verification (`n̂₂(14−3)·Φ₁ = 3⁵xΦ₁`; fixed-base non-existence) →
+**executable regression** + §13 row (shared with C.84's).
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.56 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-2(i)+(ii): the composed refine transfer.* For a composed stage-α
+event (one side of integer `dv₂`-slope `λ > E₂` with residual `(T − s)^{μ₂}` over `K₂`,
+`s ∈ K₂^×`) set `Φ₂⁺ := Φ₂ − k2DigitLift T s λ` with the **base-resolved K₂-digit lift**
+of C.56a (the `.62` TERMINAL display, split out per A-7). Then:
 (i) `Φ₂⁺` keeps every key invariant — monic of degree `D₂`; level-1 development one-sided
 of slope `κ₂` with residual `ψ₂` and side digits byte-unchanged (the perturbation's slots
 sit at weight `λ > E₂`); x-polygon one side (the audited chain
@@ -3109,10 +3145,11 @@ consumes the composed graded frame: **DEPENDS on §9's C.85 (GENTOW5's S1.5 grad
 the retirement of GENTOW-BOX-1)**, and fires only after it.
 
 **SIGNATURE** (shape). Two public theorems (`refine_invariants`, `refine_kills`) — **split-
-mandated C.56 → 2**; the lift `def` (`k2DigitLift`) as the first file's companion.
+mandated C.56 → 2**; the lift `def` is C.56a's (A-7 repair — no longer a companion here).
 
 **DEPENDS.** C.28 (cocycle units enter the residual assembly IDENTICALLY — layer 1's
-mechanism) · C.43 · C.47 · C.50 · C.52 · C.85 (§9, general-`μ₂` leg only) · H.51/H.52.
+mechanism) · C.43 · C.47 · C.50 · C.52 · C.56a (the lift) · C.85 (§9, general-`μ₂` leg
+only) · H.51/H.52.
 
 **PROOF (route).** (i): `EFF.GENTOW1.32`'s strictly-above + x-side chain (audited exact).
 (ii): layers 1–2 of `.33` — the graded substitution identity `(T−s)^{μ₂} ↦ T^{μ₂}`
@@ -4277,8 +4314,12 @@ lift instance — threshold `bound_i`, NOT `bound_{i+1}`; the S11.4 bracket is D
 **SIGNATURE** (shape). `def towerWeight …` + `def flavorMonomial …` + `def towerLift …`
 (+ the exact-height lemma `wt`-audit companions).
 
-**DEPENDS.** C.83 · H.54–H.57 (the base lift, per C-H5) · C.56's `k2DigitLift` (the
-`i = 2` instance — reconciliation lemma companion).
+**DEPENDS.** C.83 · H.54–H.57 (the base lift, per C-H5) · C.56a (`k2DigitLift` — the
+`i = 2` instance; the reconciliation lemma `towerLift`-at-depth-2 `= k2DigitLift` is this
+node's companion).
+
+**A-7 NOTE.** The lift entry formerly pointed at the pre-split parent theorem node,
+closing an SCC; the def now lives at its own node and the edge points there.
 
 **PROOF.** definitional + the range arithmetic (`i0′ + e_1r < D_1`,
 `b_j′ + e_{j+1}t_j < l_{j+1}` — `omega`).
@@ -4336,8 +4377,12 @@ entirely and prove `substitution_kills` from the Taylor identity + C.27 + C.87 a
 A0 is scaffolding, not consumed content (the corpus's own framing). Recorded per GC-2's
 DECISION-block discipline.
 
-**DEPENDS.** C.11 · C.21 · C.27 · C.28 · C.52 (Step 0) · C.56 (the statement it supplies —
-DAG: this node BEFORE C.56's general leg) · C.87 (forward direction) · C.84 (the lift).
+**DEPENDS.** C.11 · C.21 · C.27 · C.28 · C.52 (Step 0) · C.87 (forward direction) ·
+C.84 (the lift).
+
+**SUPPLIES (not a dependency — A-7).** C.56's general-`μ₂` leg (DAG order: this node
+BEFORE C.56's general leg fires); the former DEPENDS entry naming C.56 was a supplies
+annotation misfiled as a dependency and closed an SCC.
 
 **PROOF (route).** `EFF.GENTOW5.10`'s two steps, verbatim route; the convention fence
 (`EFF.GENTOW5.09`: at `μ₂ = 2`, char 2, the convention is invisible — every K₂-element a
@@ -5098,7 +5143,12 @@ bare `ψ₂` token appears in any C signature (a stub carrying one is a defect).
 (the convention itself is a blueprint-level rule; the Lean artifact is the pair of
 distinctly-named carriers, which makes the conflation unwritable).
 
-**DEPENDS.** C.12 · C.21/C.22 · C.42 · C.92 · C.102.
+**DEPENDS.** C.12 · C.21/C.22 · C.42 · C.92.
+
+**A-7 NOTE.** The former fifth DEPENDS entry named the letter-formula node — a
+statement-gloss citation (the "equal up to the letter twist" clause), not a proof/def
+dependency of the two named carriers; it closed an SCC and is removed. The gloss stays in
+the STATEMENT, where it belongs.
 
 **PROOF.** definitional.
 
@@ -5799,15 +5849,15 @@ stop-the-line per the repo rule).
 
 ## 14. §14 — DAG ADDITIONS
 
-Emitted at `spec/DAG_BLUEPRINT_C.tsv` (760 rows, mechanically extracted from this file's
+Emitted at `spec/DAG_BLUEPRINT_C.tsv` (771 rows, mechanically extracted from this file's
 SOURCE and DEPENDS fields; regenerate with the §14 extraction described here — the node
 list is the headings, per `dag_build.py`'s contract):
 
-* **565 `proof-dep` rows** — the intra-chapter DEPENDS edges (464 `C → C`) plus the
+* **574 `proof-dep` rows** — the intra-chapter DEPENDS edges (469 `C → C`) plus the
   cross-chapter consumption edges to committed blueprint nodes (`BP.B.*` per GC-13(b);
   `BP.H.51`–`BP.H.58` ONLY, per GC-5/H-14 — mechanically verified: no other `H.*` appears
   in any DEPENDS field).
-* **195 `stmt-dep` rows** — the SOURCE transcription edges. Per GC-12: `W12` and `GENTOW5`
+* **197 `stmt-dep` rows** — the SOURCE transcription edges. Per GC-12: `W12` and `GENTOW5`
   rows are emitted against the SHARD-LOCAL IDs that exist in `DAG_NODES.tsv` at HEAD
   (`EFF.W12.s2of2.NN = EFF.W12.(NN+52)`, `EFF.GENTOW5.s2of2.NN = EFF.GENTOW5.(NN+43)`),
   with the contiguous ID carried in the `evidence` column — remap mechanical at the
@@ -5815,14 +5865,20 @@ list is the headings, per `dag_build.py`'s contract):
   currently DANGLE** — GENTOW2 has ZERO rows in the HEAD harvest (it is the manifest-gap
   recovery, PA-3(i)); the evidence column says so per row, and the re-harvest lands them.
   Booked as an orchestrator item with PA-3(ii)'s re-run.
-* **Graph shape** (intra-chapter, computed): **126 nodes, 464 edges, ACYCLIC, critical
-  path 19 (20 layers)**, layer widths
-  `8, 3, 6, 12, 6, 8, 4, 8, 5, 5, 4, 10, 7, 7, 8, 7, 4, 5, 5, 4` — 8 nodes fireable
+* **Graph shape** (intra-chapter, computed AFTER the A-7 SCC repair — Tarjan +
+  Kahn, both 0 back-edges, and the same confirmed by direct cycle detection over the
+  emitted TSV): **127 nodes, 469 edges, ACYCLIC, critical path 17 (18 layers)**, layer
+  widths `8, 3, 6, 12, 6, 9, 5, 8, 5, 5, 4, 10, 9, 11, 10, 8, 5, 3` — 8 nodes fireable
   immediately. The chapter is SPINE-SHAPED (unlike H's wide layer 0): the §3→§4→§5 frame
   is serial, and the schedule risks are the three heavy nodes **C.27** ((SLOT₂)
   exactness), **C.33** (the slope dissection), and **C.88** ((SLOT_i) up the tower) plus
   the §7 sandwich chain they feed. Fleet guidance: claim C.33 and C.27's splits first;
   §§10–11 fan out early (C.97/C.98/C.107/C.108 sit in low layers).
+* **⚠ Checker gap (for the next orchestrator pass):** the official `spec/dag_check.py`
+  does NOT read `DAG_BLUEPRINT_*.tsv` files — per-chapter TSV acyclicity currently needs
+  a DIRECT check (chapter D's checker run caught this chapter's original SCCs exactly
+  because it ran one). Extend `dag_check.py` to sweep the blueprint TSVs, or every
+  chapter's acyclicity claim rests on its own composer's script.
 * **COARSE-edge refinement:** the 42-edge governing-unit placeholder
   `EFF.GENTOW5.s1of2.06` (BRIEF C trap (vi)) is re-homed unit-by-unit by §9's SOURCE
   fields (the real consumers of GENTOW5's units are C.83–C.96); the dangling
@@ -5962,11 +6018,47 @@ planning figure: **≈ 165 Lean files.**
 honest triple ((a) unconditional `e > 1, f = 1` wild row; (b) conditional `{(2,2)}` row
 with the battery regression instantiating the hypothesis; (c) the finding itself).
 
----
+**A-7 (SCC repair, 2026-08-15 — post-completion defect, found by chapter D's checker run
+and confirmed by direct cycle detection over `spec/DAG_BLUEPRINT_C.tsv`; §14's original
+"ACYCLIC" claim was WRONG, produced by a buggy composer-side layering script whose
+memoization masked back-edges).** Two non-trivial SCCs existed and are adjudicated per
+edge:
+
+* **SCC 1 = {C.56, C.84, C.85, C.87}** (loops `C.56 → C.85 → C.56` and
+  `C.56 → C.85 → C.87 → C.84 → C.56`). Two defective edges, two dispositions:
+  * `C.85 → C.56` — **(a) a wrong DEPENDS entry**: "C.56 (the statement it supplies)"
+    was a SUPPLIES annotation misfiled in the DEPENDS field. Removed from DEPENDS; now a
+    separate **SUPPLIES** paragraph on C.85 (which the extraction correctly ignores).
+  * `C.84 → C.56` — **(c) a real structural defect**: C.84's flavor-lift reconciliation
+    genuinely depends on the `k2DigitLift` DEF, which lived as a companion inside the
+    theorem node C.56 (whose general-`μ₂` leg depends on C.85 → C.87 → C.84). Broken by
+    the mandated-split pattern: **new micro-node C.56a [def]** carries `k2DigitLift`
+    (the `.62` TERMINAL display, verbatim, with its own SOURCE/TEETH); C.56 and C.84 both
+    depend on C.56a. Node count 126 → **127**; A-2's census gains one `def` (27 def
+    total); A-5's fleet figure ≈165 → **≈166**.
+* **SCC 2 = {C.99, C.100, C.102, C.104}** (loop `C.99 → C.100 → C.104 → C.102 → C.99`;
+  the coordinator's minimal back-edge report named `C.102 → C.99`, which is REAL and
+  KEPT — the γ-calculus companion). One defective edge:
+  * `C.104 → C.102` — **(a)/(b) a citation, not a dependency**: the ψ₂-discipline's
+    "equal up to the letter twist" clause is a statement gloss about the two carriers,
+    not a def/proof input to them. Removed from DEPENDS (the gloss stays in C.104's
+    STATEMENT, which the extraction does not read).
+
+**Verification after repair** (both directions, committed with this amendment): Tarjan
+SCC + Kahn topological sort over the DEPENDS graph AND direct cycle detection over the
+regenerated `spec/DAG_BLUEPRINT_C.tsv` — **0 non-trivial SCCs, 0 back-edges, 127/127
+nodes topologically sorted**; the three reported back-edges (`C.85→C.56`, `C.84→C.56`,
+`C.102→C.99`-closing via `C.104→C.102`) are absent/re-pointed (`C.84 → C.56a` present).
+Corrected graph shape in §14 (critical path 17, 18 layers). **Checker gap recorded in
+§14**: `spec/dag_check.py` does not read `DAG_BLUEPRINT_*.tsv` — per-chapter acyclicity
+currently needs the direct check; flagged for the next orchestrator pass to extend the
+checker. Cross-read item 10 now also covers this repair's three edited DEPENDS fields.
 
 ---
 
-<!-- RESUME: CHAPTER COMPLETE — all sections §0–§16 composed (126 nodes, C.01–C.126), DAG emitted (spec/DAG_BLUEPRINT_C.tsv, 760 rows), TEETH summary + cross-read flags + A-§ deltas landed. CODEX CROSS-READ OWED (§16.2's ten items). Orchestrator items: PA-3(ii) re-harvest (GENTOW2 rows dangle by design); GC-13 placeholder resolution vs chapters D/E at freeze (HE7 units, ϑ-TABLE anchor, (ABS-HE4)); gate-(b) sign-offs for C.66/C.92/C.94; the RE-PLAN helper bookings in §15. -->
+---
+
+<!-- RESUME: CHAPTER COMPLETE + A-7 SCC repair applied (127 nodes incl. C.56a; spec/DAG_BLUEPRINT_C.tsv 771 rows, verified acyclic by Tarjan+Kahn AND direct TSV check, 0 back-edges), TEETH summary + cross-read flags + A-§ deltas landed. CODEX CROSS-READ OWED (§16.2's ten items). Orchestrator items: PA-3(ii) re-harvest (GENTOW2 rows dangle by design); GC-13 placeholder resolution vs chapters D/E at freeze (HE7 units, ϑ-TABLE anchor, (ABS-HE4)); gate-(b) sign-offs for C.66/C.92/C.94; the RE-PLAN helper bookings in §15. -->
 
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
