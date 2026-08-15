@@ -154,8 +154,11 @@ their outputs through a dictionary of this shape (F's weld faces consume them by
 
 ### GC-5 — GENRE/STAGE CARRIERS: `GenreDatum` / `StageInterface` ARE THE ONLY CARRIERS
 
-**DECISION.** CHAP-H's committed `GenreDatum` (H.01: `(Q; e₁, f₁, μ; h, entry)` with the
-`GENHN.CLASS`(i) side conditions as fields) and `StageInterface` (H.09: `stageWindow`,
+**DECISION.** CHAP-H's committed `GenreDatum` (H.01: `(Q; e₁, f₁, μ; h)` with the
+`GENHN.CLASS`(i) side conditions as fields — **WITHOUT the entry pattern**, per H.01's own
+SIGNATURE NOTE: entry data would import a chapter-C object and break `DecidableEq`
+[F4-corrected]; **chapter C's author: entry-pattern data lives C-side, as C structures KEYED to
+a `GenreDatum`, never as new `GenreDatum` fields**) and `StageInterface` (H.09: `stageWindow`,
 `stageLoss`, `entryCodim`, `slack`, `bracket`, `drainFrac`, `stageSigma` + the hypothesis fields
 `hS`/`hwin`/`hprice`/`hbracket`/`hdrain_nonneg`/`hdrain_le_one`/`hsigma`) are the binding
 interface for composite-stage data; no chapter may declare a parallel carrier, and new fields
@@ -222,8 +225,10 @@ conjuncts untraceable. **SUPERSEDES/REPAIRS:** nothing; codifies H §3 + H-14 as
    helper triggers RE-PLAN, never a silent second public name.
 6. **Leanspec stubs wrap in `namespace Leanspec<X>`** (CHAP-B H-13's repair), one file
    `leanspec/Leanspec/Chap<X>.lean`, never re-declaring contract names inside `Uniformity.*`
-   (chapter G's stub file did, and accumulated 32 has-already-been-declared collisions, growing
-   per landing). Definition/structure bodies land real, theorems land as `axiom` stubs, and the
+   (chapter G's stub file originally did, accumulating 32 has-already-been-declared collisions
+   before commit `1e774afb` retired it to anonymous `example`s — see PA-2; retire-to-examples
+   is the recorded alternative route). Definition/structure bodies land real, theorems land as
+   `axiom` stubs, and the
    gate order is CHAP-H §15's: (a) elaborate the declared fragile signatures first, (b) land the
    `def` bodies, (c) run the chapter's `#eval` numeric block at `q = 2` AND `q = 3` against the
    blueprint's expected values, (d) only then sign the `axiom` stubs. The 0e type-diff runs per
@@ -419,8 +424,8 @@ resolution pass.
 
 ### GC-14 — THE ϑ-ORIENTATION TABLE: D OWNS THE CANONICAL COPY, EVERYONE CITES IT
 
-**DECISION.** The four-way ϑ-orientation table (GENTOW2 `EFF.GENTOW2` orientation records at its
-`.25`/`.26` cluster and OPEN-CALL 2; mandated by PROJECT_STATE append #54: *"the gauge chapter's
+**DECISION.** The four-way ϑ-orientation table (GENTOW2 `EFF.GENTOW2` orientation records at
+`.25`/`.34`/`.41`/`.42` and OPEN-CALL 2; mandated by PROJECT_STATE append #54: *"the gauge chapter's
 blueprint carry the four-way orientation table as a node annotation, else a sign error no battery
 catches"*) is authored ONCE, as a node annotation in chapter D (the gauge chapter, T1), and every
 ϑ-touching node in C, E or F cites that D annotation by anchor — no chapter restates the table's
@@ -430,8 +435,13 @@ content in its own words.
 transcribe from the spec, not from this summary): GENTOW2's single-argument slot-indexed `ϑ(t)`
 IS T1's `Θ₂(t)`, and T1's box `(C3-Theta)` has `Θ_i(t) = ϑ_{i, f_{i+1}−t}^{−1}` — i.e. GENTOW2's
 ϑ is the **INVERSE** of T1's two-index `ϑ_{i,s}`; T3's `(T1-THETA)`/`(ABS-G2)` give
-`ϑ(t) = ϑ_{G2}(t) = Θ_N(f₃−t; u₃)` (inverse orientation recorded at T3 §8.1 check 2); T5
-L991–993 is the closing reconciliation. Separately and NOT to be conflated: the B-law direction
+`ϑ(t) = ϑ_{G2}(t) = Θ_N(f₃−t; u₃)` (inverse orientation recorded at T3 §8.1 check 2);
+**GENTOW5's `LEMMA GENTOW5-A1` `ϑ_t` is the fourth row [F6-added] — the exact pair append #54's
+trap names**: A1's `theta_t = res(n̂₂(λ)^t / n̂₂(tλ))` is **RECIPROCAL**, so
+`ϑ(t) = ϑ_{f₃−t}^{−1}` at `λ = u₃` (`EFF-GENTOW2.md:1072`; GENTOW2 itself DECLINES to adjudicate
+this correspondence — its NON-IMPORT N-7 — which is why the table, not either note alone, is the
+authority); T5 L991–993 is the closing reconciliation. Separately and NOT to be conflated: the
+B-law direction
 (3) is `u(β) := R_{3,β}(n̂₂(β̂))`, read `FGMN = u · repo` and **not** the inverse (the r2 F3
 finding exists because a fallback clause once wrote the inverse); T1's `(C3-B-law)`
 `u(β_t) = Θ_i(t)·w_i^{f_{i+1}−t}` and T3's `(ABS-G2)` `u(β_t) = ϑ_{G2}(t)·w^{f₃−t}` agree in that
@@ -475,14 +485,17 @@ B.79/B.80/B.82 consume `NeedsDescent` by name); B.28/B.29/B.30 (already correct 
 §14 item 12 (strengthening B.63's existential `T` to B.66's canonical finsets) is a §8-owned
 refinement the finisher should adjudicate in the same pass, but it is NOT part of PA-1.
 
-### PA-2 — `leanspec/Leanspec/ChapG.lean`: RETIRE THE 32-AND-GROWING NAME COLLISIONS
+### PA-2 — `leanspec/Leanspec/ChapG.lean` COLLISIONS: **CLOSED, ALREADY EXECUTED BY ANOTHER ROUTE** [F3]
 
-**Owner:** orchestrator / stub agent. **Repair:** wrap the surviving ChapG stubs in
-`namespace LeanspecG` (GC-6.6), or comment out stubs whose nodes have landed (each landing
-currently adds one `has already been declared` failure — CHAP-B H-13 records the mechanism).
-**Cost:** one mechanical file pass; no blueprint text changes (chapter G is CLOSED; its
-blueprint is not edited). The 0e type-diff is unaffected — it compares fully-qualified
-normalized types, not namespaces of the stub file.
+**Status at HEAD:** the premise is stale. Commit `1e774afb` ("leanspec CLOSED for chapter G")
+already retired the ChapG stubs to **anonymous `example`s (140) plus one deliberate,
+non-colliding named axiom stub (G.23b)**, and the file builds green — the collision mechanism
+CHAP-B H-13 recorded is gone. **No action remains.** Recorded consequences: (i) the 0e
+type-diff obligation for chapter G is discharged by the retire-to-examples route (an anonymous
+`example` with the contract type IS the type check); (ii) GC-6.6's `Leanspec<X>` wrapper rule
+stands for FUTURE chapters, with ChapG's retire-to-examples as an acceptable alternative
+precedent a stub agent may choose instead — either route avoids the collision class; pick one
+per chapter and say which in the stub file header.
 
 ### PA-3 — THE CHAPTER CUT IS STALE IN TWO PLACES (0c artifact; orchestrator item)
 
@@ -531,9 +544,20 @@ force.
 closing sections the committed front matter already forward-references: **§11 DAG additions**
 (H-9's W12 evidence-column mitigation is promised there), **§12 leanspec stub list** (H-13
 promises the `LeanspecB` wrapper), **§13 TEETH summary** (GC-8 table), **§14 flagged-for-cross-
-read** (committed text already numbers items 1, 2, 5, 12, 13 — the queue must contain at least
-those, with item 13 = A-§9.1). Also: apply **PA-1** as a dated CHAP-B amendment in the same pass,
-and adjudicate §14 item 12 (B.63's existential `T` vs B.66's canonical finsets).
+read**. **The §14 queue is ALL of items 1–13** [F5-corrected] — the committed text numbers every
+one of them as forward references (compile the queue by grepping `§14 item` in CHAP-B; anchors
+and glosses): **1** the route's immunity claim to `HE3-BOX-6` (H-5; also B.44's shortcut note
+L2171, B.51's residual-index remark L2287) · **2** the divergence from `HE6.A`'s class-size route
+(§0.4 L172, §6 L2684) · **3** the claimed real simplification where a hypothesis becomes vacuous
+(§4 L1160) · **4** H-1's scope claim made concrete, `ϖ = π = n(1)` (three sites: L1764/L1777,
+L2239, L2445) · **5** the `disc ≠ 0` → every-lift strengthening (H-11/D-4a; L345, L4520) · **6**
+a shortcut the orchestrator must be told about, never silently applied (§7 L3166) · **7** an
+exact-correspondence claim (§7 L3355) · **8** the minimum-hypothesis flag (§7 L3421) · **9** the
+claim that `B-BOX-1` is the chapter's ONLY open item (§7 L3711) · **10** the pre-fleet-discovery
++ private-copy notes (§8 L3771, L3955) · **11** the recorded more-elementary alternative route
+(§8 L4407) · **12** B.79a's tie between B.63's existential `T` and B.66's canonical finsets
+(A-§9.5) · **13** = A-§9.1/D-§9.1. Under-populating this queue is a contract violation. Also:
+apply **PA-1** as a dated CHAP-B amendment in the same pass, and adjudicate item 12.
 **PRODUCT.** Terminal exposure: the four gate declarations (leancheck-idiom concrete instances —
 D-4(b) says B.82 fires "with zero adaptation" from the `N3Cert*` pattern) + the four closing
 sections. Gates must include a witness in the UNCONDITIONAL perimeter with `ℓ > 1` and `m·d > 1`
@@ -562,8 +586,11 @@ AxChk pattern); then §§11–14.
 assigned), `EFF-GENTOW3` (62), `EFF-GENTOW4` (57), `EFF-GENTOW5` (84, MERGED — cite contiguous
 IDs per GC-12), `EFF-GENTOW6` (35), `EFF-HETOW` (58); plus `EFF-HE6R1` (48) and the `e₁ ≥ 2`
 twist/normalizer layer CHAP-B's H-1/H-3 explicitly deferred here; plus W12's count layer
-(`LEMMA W12-HT`, `EFF.W12.83`–`.87`) per PA-5. ~360 DAG nodes before unit-level dependency
-derivation (which this blueprint writes for the first time — DAG_README finding 1).
+(`LEMMA W12-HT`, `EFF.W12.83`–`.87`) per PA-5. **Planning figure ≈ 505 DAG nodes** [F2-corrected]:
+DAG_README's 363 covers GENTOW1/3/4/5/6 + HETOW only; this brief's rulings add GENTOW2 (93,
+PA-3(i)), HE6R1 (48 — currently counted inside chapter B's 319), and the W12-HT slice (PA-5) —
+all before unit-level dependency derivation (which this blueprint writes for the first time,
+DAG_README finding 1).
 **PRODUCT.** Terminal nodes must expose, by name: (1) the **level-`r` frame** — the level
 dictionary (`D″ = D′ℓd_r`, `T₂ = ℓd_rλ`, `EFF.HE6R1.18`) as a level-datum structure over the
 FIXED bundle `O` (GC-7), with the level-1 reconciliation lemma to B's API (GC-2); (2) the
@@ -587,13 +614,16 @@ schema/hypothesis field (GC-5 RE-PLAN) — **never import a closure** (GC-7). Th
 biggest risk; decide it FIRST (hardest-hole-first). (ii) `HE3-BOX-6` (HYP.143, `n ≥ 8`): the
 ramified base change `O ↝ O[Π]/(Π^ℓ − π)` is "stated too cheaply — `Φ′` need not remain
 irreducible over `O₂`"; any base-change node follows GC-7's explicit-`O₂` rider.
-(iii) `[GENHN-TOW-1]`'s six items (HYP.82) are load-bearing at `n ≥ 8` ONLY and have NO H nodes —
-transcribe what has proofs, box the rest at exact scope (`n ≥ 8`, depth-3 `n ≥ 16`).
+(iii) `[GENHN-TOW-1]` (HYP.82; EFF-GENHN's characterization, whose own audit says **"seven items
+under six numerals"** [F8] — count by that quote, not by the numerals) is load-bearing at
+`n ≥ 8` ONLY and has NO H nodes — transcribe what has proofs, box the rest at exact scope
+(`n ≥ 8`, depth-3 `n ≥ 16`).
 (iv) `LEMMA GENHN-T(b)` is REFUTED — only `T(b)′`'s surviving composition formulas transcribe
 (H-10 of CHAP-H); the composed-key lift is licensed ONLY by `LEMMA GENHN-LIFT` (H.54–H.57 —
 consume, don't re-prove). (v) HT's thin verification + `B-BOX-1` inheritance at `d ≥ 2` (PA-5).
-(vi) GENTOW5's `EFF.GENTOW5.s1of2.06` is a 42-edge COARSE placeholder — C's DEPENDS fields are
-where those edges get re-homed.
+(vi) GENTOW5's `EFF.GENTOW5.06` (merged-ID form per GC-12; the harvest still carries it
+shard-local) is a 42-edge **governing-unit placeholder target** (DAG_README's gov rule,
+L308–311 [F8]) — C's DEPENDS fields are where those edges get re-homed unit by unit.
 **SKELETON (est. 110–130 nodes):** §3 level-datum structures + dictionary; §4 normalizer/twist
 (HE6R1); §5 descent step, jump trigger, peel; §6 composed keys (consume H §8); §7 class-size /
 block-length (THE DECISION section); §8 HT + count laws; §9 tower thresholds (`n ≥ 8` boxes at
@@ -630,10 +660,16 @@ GC-13, GC-14.
 corrections outside every T2 pin span, and **F-1 renders `HE6-SLOT-SEAM`'s frozen slot residue
 VACUOUS while T2 cites it 48×**. The adjudication's return (T2's dated consumption-record EOF
 append, commit `66062771`) GOVERNS: E's nodes route those 48 cites through the adjudicated
-statements — read the v7 ledger rows BEFORE transcribing any pin unit, and every one of the nine
-HE6 pin anchors (`EFF.HE6.09 .13 .14 .15 .17 .29 .30 .32 .56`) resolves to a CHAP-B node ID, not
-to HE6 frozen text. (ii) The COARSE placeholder `EFF.T2.31` carries 44 edges — same re-homing
-duty as C's. (iii) σ-decision at `μ ≥ 3` is `BLOCKED: HYP.81` (first live `n = 6`) — the ladder
+statements — read the v7 ledger rows BEFORE transcribing any pin unit. **Where the anchors
+resolve [F1-corrected]:** the nine HE6 pin anchors (`EFF.HE6.09 .13 .14 .15 .17 .29 .30 .32
+.56`) resolve to CHAP-B node IDs only where B transcribed them — the `e₁ = 1` slice. The
+class-size/count route in `.30`/`.32` is explicitly NOT a B node (CHAP-B H-2: it must come from
+chapter C — Brief C trap (i) owns that decision), and the `e₁ ≥ 2` twist/ϖ-normalizer content of
+`.13`/`.14` is CHAP-B H-1 out-of-scope (BLOCKED there): both resolve to **chapter-C GC-13
+placeholders**, never to HE6 frozen text and never to a B node that doesn't exist. (ii) The 44-edge cluster at `EFF.T2.31` is a **governing-unit placeholder target**
+(DAG_README's documented gov rule, L308–311 [F8]: the edges land there because the citing
+designations were unresolved, not because `.31` is the real consumer) — E's DEPENDS fields are
+where those edges get re-homed unit by unit. (iii) σ-decision at `μ ≥ 3` is `BLOCKED: HYP.81` (first live `n = 6`) — the ladder
 may CARRY it, never prove it. (iv) `HEX3-BOX-1` (HYP.137) is a NON-NODE everywhere (G H-2, H H-4
 precedents). (v) No every-lift weakening: the ladder's certificates obey GC-9 even where T2's
 prose quantifies over `disc ≠ 0` roots.
@@ -681,7 +717,9 @@ cocycle layer; §5 T3 telescope + orientation checks; §6 T4 certificate witness
 
 ### BRIEF F — GRT WELD LAYER (consumer-first: Display A backwards)
 
-**SCOPE.** `EFF-GRTJA` (36 headings), `EFF-GRTJB` (157), `EFF-GRTJC` (121), `EFF-GRTW2` (60,
+**SCOPE.** `EFF-GRTJA` (36 headings), `EFF-GRTJB` (**SERIES headings: 173 units** — the raw
+`###` heading count of 157 UNDERCOUNTS; SERIES constructs carry multiple units per heading
+[F8]), `EFF-GRTJC` (**SERIES headings: 132 units**; 121 raw), `EFF-GRTW2` (60,
 merged), `EFF-WELDMASTER` (30), `EFF-LIFTCORNER` (118, merged), `EFF-SIGMALAW` (18). ~538 DAG
 nodes — **but the weld-face audit signed most of the weld layer OUT of the capstone cone**
 (HYP.21/75/76/77/83–86 NOT-REACHED; the whole `[H-c]` value package OUT at v4). **The chapter is
@@ -727,15 +765,18 @@ pending arc; §9 gates.
 
 **SCOPE.** The 154 chapter-I DAG nodes: every `HYP.*` row of `spec/HYPOTHESIS_LEDGER.md` (v7:
 154 rows), the two `CAP:` targets (`UniformityStatement`, `UniformityStatementDecided` — landed
-`Prop` definitions, `Statement.lean:71/:84`), and the three `COND:` orphans (`A1_n`, `A2_n`,
-`(H-e)-window-pinning`). Source of truth: **Display A, FROZEN at v5 (question 8)** — the
+`Prop` definitions, `Statement.lean:71/:84`), and the three `COND:` orphans (`A1_n`, `A2_n`, and the window-pinning
+conjunct whose LITERAL DAG id is `COND:H-e)-window-pinning` — the leading paren is dropped in
+`DAG_NODES.tsv` [F7]; match on that form, prose name `(H-e)-window-pinning`). Source of truth: **Display A, FROZEN at v5 (question 8)** — the
 conjunct list in the ledger's capstone-conditionality preview.
 **PRODUCT — the mandate, verbatim from the czar charge:** every node of this chapter is a
 hypothesis-ledger row made formal, and **each surviving hypothesis becomes either (a) a DISCHARGE
 node** (citing the landed discharger by declaration name, with the row's DISCHARGED stamp as
 provenance) **or (b) a NAMED CAPSTONE HYPOTHESIS — and every (b) requires Asvin sign-off** (the
 0d-checkpoint list in Part IV aggregates them). Concretely: (1) a capstone hypothesis STRUCTURE
-(the H.95 `InductionPackage` lesson, one level up): one field per Display-A conjunct, at exactly
+(the H.95 `InductionPackage` lesson, one level up — noting [F7] that H.95 itself is a
+`def`-`Prop` EXISTENTIAL, not a `structure`; I's carrier may be a structure but must not claim
+to mirror H.95's kind): one field per Display-A conjunct, at exactly
 ledger strength, degree-indexed where the display is (`if n≥6`, `if n≥8` clauses as indexed
 fields); (2) the assembly theorem: the structure + chapter products ⇒ `UniformityStatement` via
 H.98's `uniformity_of_package` and landed `UniformityStatement.ofDecided`; (3) the discharge
@@ -749,8 +790,9 @@ COND orphan either gets a row or is proved equal to an existing row's content (D
 discharged); (5) the **CORE-SET audit nodes**: HYP.01, HYP.12, HYP.17, HYP.98, HYP.111
 (definitional half) are human-review nodes scheduled WITH Asvin, never fleet nodes; (6) gates:
 the `n = 1`/`n = 2` unconditional slices re-fired (landed `drainage_one`/`drainage_two`, chapter
-G's landed `n = 2` capstone slice) + the `spec/AXCHK.lean` axiom-census analogue (REVISION 2's
-maintained interface list, diffable output committed).
+G's landed `n = 2` capstone slice) + the `spec/AXCHK.lean` axiom-census analogue — a PLANNED
+artifact per REVISION 2 (not yet in the tree [F7]); its working ancestor and pattern source is
+`lean/LeanUrat/AxChk_baseline.lean` (maintained interface list, diffable output committed).
 **INTERFACES IN:** everything, by landed name or committed node ID (I is last in consumer-first
 order = first authored among none — it is authored NOW against Display A, with GC-13
 placeholders for E/C/D/F products). **OUT:** none (terminal).
@@ -806,7 +848,7 @@ All GC decisions (GC-1…GC-14) written; PA-1…PA-5 recorded; six briefs comple
 list complete. This document is ready for (i) the cross-read (Part IV item 6), (ii) the
 parallel chapter authors' consumption.
 
-<!-- RESUME: DOCUMENT COMPLETE (GC-1..14, PA-1..5, six briefs, Part IV). Next action belongs to the orchestrator: cross-read per Part IV item 6, then fire the parallel authors. -->
+<!-- RESUME: DOCUMENT COMPLETE + cross-read fixes F1-F8 applied (verdict FIRE-WITH-FIXES); PART V (owner ruling) governs over Part IV. Next action: fire the parallel authors. -->
 
 ---
 
