@@ -2331,6 +2331,408 @@ consumers reindex by `s = f_{i+1} − t`.
 **ENVIRONMENT.** ENV-D2 + ENV-D3.
 
 ---
-<!-- RESUME: §6 COMPLETE (D.37–D.44); next = §7 (D.45–D.56, T4 certificate witness) -->
+## 7. §7 — THE CERTIFICATE WITNESS (T4)
+
+> **Design note (the composite read `grΔ`).** T4's machinery has five layers of definitions
+> (`𝒟_{≤μ₂}`, `𝒜_j`, `C_j/ShC_j`, `Δ_j`, `gr_m`) but its four lemmas consume ONE composite:
+> the assembled height-`m` digit of the `j`-th discrepancy, `gr_m(Δ_j(·))`, plus its
+> additivity — the spec itself says "Linearity is the ONLY property used downstream"
+> (`EFF.T4.06`). The frame D.46 therefore carries the composite as a single additive-map
+> field `grΔ`, finitely-supported over canonical slots so that "distinct canonical slots form
+> separate components" (`EFF.T4.07`) is the CODOMAIN's structure, and complete assembly
+> ("all branches, carries, recarries … added before the class is taken") is the
+> INSTANTIATION obligation on whoever supplies `grΔ` — the honest relocation of the r3/r4
+> exposure repairs (honesty item D-H7(2)). The un-collapsed layers (`ShC_j`, the grid
+> `𝒜_j`, the member slot condition) are the suppliers' concrete objects: `EFF.T4.03–.09
+> [supplied-by: chapter C]` at the GT3/GT6 instances (D.53/D.54).
+
+### NODE D.45 [def+lemma] [fresh]
+
+**STATEMENT.** *The composed thresholds.* `thresholdTheta μ₂ E₂ δ j := (μ₂ − j)·E₂ + δ` —
+T4's `Θ_j = (μ₂−j)E₂ + δ` with `E₂ = e₂f₂u₂`, `δ = u₂ − e₂D′h ≥ 1` (`EFF.T4.01`); plus the
+consumed arithmetic: `δ ≥ 1 → j < j′ < μ₂ → thresholdTheta … j′ < thresholdTheta … j`
+(strict antitone on the coordinate range) and `thresholdTheta … j ≥ 1 + (μ₂ − j)·E₂ − E₂`
+shapes as `omega`-corollaries.
+
+**SIGNATURE.**
+```lean
+def thresholdTheta (μ₂ E₂ δ j : ℕ) : ℕ := (μ₂ - j) * E₂ + δ
+
+theorem thresholdTheta_anti (μ₂ E₂ δ : ℕ) (hE : 0 < E₂) {j j' : ℕ}
+    (h : j < j') (h' : j' < μ₂) :
+    thresholdTheta μ₂ E₂ δ j' < thresholdTheta μ₂ E₂ δ j
+```
+
+**DEPENDS.** none. **PROOF.** `omega`. **SIZE.** 10 lines.
+
+**SOURCE.** `EFF.T4.01` (the setting: `D′ = e₁f₁`, `E₂ = e₂f₂u₂`, `δ = u₂ − e₂D′h ≥ 1`,
+`Θ_j = (μ₂−j)E₂ + δ` for `j < μ₂`).
+
+**TEETH.** T4 S8 PE1(4) → gate D.66's `Θ` table at the X-frame numbers.
+
+**ENVIRONMENT.** ENV-D1.
+
+---
+
+### NODE D.46 [def] [fresh]
+
+**STATEMENT.** *The certificate frame.* Over a dividend group `Dv` (`AddCommGroup` — the
+`𝒟_{≤μ₂}` module), a slot type `Slot`, and a digit field `K`: a **certificate frame**
+carries `μ₂ : ℕ`; thresholds `Θ : ℕ → ℕ`; the member class `M : Set Dv` (the affine
+development slice `𝔐` — **a pure coefficient condition: NO discriminant hypothesis and no
+decidedness hypothesis**, `EFF.T4.05`; the concrete slot-weight definition is the
+suppliers'); the distinguished member `fkey : Dv` with `fkey_mem : fkey ∈ M` (membership
+fact 1 — and `disc(f_key) = 0` at the instances, the recorded proof no disc condition COULD
+be a field); the composite assembled read `grΔ : ℕ → ℕ → Dv →+ (Slot →₀ K)` ("`(m,j) ↦
+gr_m(Δ_j ·)` after complete slot assembly and cancellation"); and **(FLOOR)** as a field:
+`∀ f ∈ M, ∀ j < μ₂, ∀ m < Θ j, grΔ m j f = 0` — at exactly the R5-F1-rebound
+quantification ("for every `f ∈ 𝔐`, every `j < μ₂`, and every `m < Θ_j`", `EFF.T4.13`).
+
+**SIGNATURE.**
+```lean
+/-- T4's certificate frame (`EFF.T4.01–.13`, composite-read packaging per the §7 design
+note). Instantiating `grΔ` = supplying COMPLETE assembly (every branch, carry, recarry —
+`EFF.T4.07/.08`); instantiating `floor` = GENTOW-3(i) at 𝔐 [supplied-by: chapter C]. -/
+structure CertFrame (Dv : Type*) [AddCommGroup Dv] (Slot : Type*)
+    (K : Type*) [Field K] where
+  μ₂ : ℕ
+  Θ : ℕ → ℕ
+  M : Set Dv
+  fkey : Dv
+  fkey_mem : fkey ∈ M
+  grΔ : ℕ → ℕ → Dv →+ (Slot →₀ K)
+  floor : ∀ f ∈ M, ∀ j < μ₂, ∀ m < Θ j, grΔ m j f = 0
+```
+
+**DEPENDS.** D.45 (the instances set `Θ := thresholdTheta …`) · mathlib `Finsupp`,
+`AddMonoidHom`.
+
+**PROOF.** definitional.
+
+**SIZE.** 24 lines.
+
+**FAITHFULNESS.** Three disclosed deltas, all consumption-neutral: (i) `C_j/ShC_j/Δ_j/gr_m`
+collapse to `grΔ` (only the composite + additivity are consumed downstream — the spec's own
+sentence); the identity `Δ_j(f_key) = ShC_j(Φ₂^{μ₂})` (`EFF.T4.09`'s `C_j(f_key) = 0`) is an
+instantiation-side fact. (ii) Membership fact 2 (in-budget closure of `𝔐`) is a supplier
+lemma consumed as a hypothesis at D.50's specialization, not a frame field (the corpus
+derives it from the concrete slot condition, "pure coefficient arithmetic"). (iii) The slot
+type is abstract; "distinct canonical slots form separate components" is the `Finsupp`
+codomain. Flagged for cross-read (§13 item 4).
+
+**SOURCE.** `EFF.T4.03` (`𝒟_{≤μ₂}`, `𝒟_{<μ₂}`), `.04` (`𝒜_j`, one `K₂`-digit per height),
+`.05` (`𝔐` + the three membership facts + NO-disc), `.06` (`ShC_j`, `Δ_j`, linearity), `.07`
+(`gr_m`, complete assembly), `.08` (full exposure — all-provenance), `.09` (`f_key`), `.13`
+((FLOOR), the R2-G1/R5-F1 binding chain).
+
+**TEETH.** S8 PE1(1)–(3) → carried to the instances (D.53/D.54) and §12.
+
+**ENVIRONMENT.** ENV-D3 + the `(Dv, Slot)` parameters.
+
+---
+
+### NODE D.47 [def] [fresh]
+
+**STATEMENT.** *The first-discrepancy height, totalized.* For a frame `F` and `q : Dv`:
+`nuIdx F j q := sInf {m : ℕ∞ | ∃ m' : ℕ, m = m' ∧ F.grΔ m' j q ≠ 0}` — `ν_j(q) :=
+min{m : gr_m(Δ_j(q)) ≠ 0}` with `min ∅ := +∞` (`EFF.T4.12`'s totalization: "`ν_j(q) = +∞`
+exactly when `Δ_j(q)` is identically zero" — in this packaging, when every `grΔ m j q = 0`).
+
+**SIGNATURE.**
+```lean
+noncomputable def CertFrame.nuIdx {Dv Slot K} [AddCommGroup Dv] [Field K]
+    (F : CertFrame Dv Slot K) (j : ℕ) (q : Dv) : ℕ∞ :=
+  sInf {m : ℕ∞ | ∃ m' : ℕ, m = (m' : ℕ∞) ∧ F.grΔ m' j q ≠ 0}
+```
+
+**DEPENDS.** D.46.
+
+**PROOF.** definitional (`sInf ∅ = ⊤` in `ℕ∞` is the mathlib convention — exactly the
+corpus's `min ∅ := +∞`).
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.T4.12` (R1-m1's totalization; "so the equivalence in T4.2(a) can be stated
+without a disjunction").
+
+**TEETH.** S8 PE1(2) → D.49.
+
+**ENVIRONMENT.** as D.46.
+
+---
+
+### NODE D.48 [def] [fresh]
+
+**STATEMENT.** *The certificate witness `ω_j` and touched/untouched.*
+`CertFrame.omega F j := F.grΔ (F.Θ j) j F.fkey : Slot →₀ K` — "the fully assembled
+height-`Θ_j` `K₂`-digit of the key power. Its assembly includes every input landing in the
+canonical composed grid … Every collision and cancellation is completed before the digit is
+taken" (`EFF.T4.10`, r3 text — the assembly sentence is `grΔ`'s instantiation obligation,
+§7 design note). `Touched F j := F.omega j ≠ 0`; untouched `:= ¬ Touched`.
+
+**SIGNATURE.**
+```lean
+noncomputable def CertFrame.omega {Dv Slot K} [AddCommGroup Dv] [Field K]
+    (F : CertFrame Dv Slot K) (j : ℕ) : Slot →₀ K :=
+  F.grΔ (F.Θ j) j F.fkey
+
+def CertFrame.Touched {Dv Slot K} [AddCommGroup Dv] [Field K]
+    (F : CertFrame Dv Slot K) (j : ℕ) : Prop := F.omega j ≠ 0
+```
+
+**DEPENDS.** D.46.
+
+**PROOF.** definitional.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.T4.10` (DEFINITION T4.1: `ω_j := gr_{Θ_j}(Δ_j(f_key)) =
+gr_{Θ_j}(ShC_j(Φ₂^{μ₂}))` — the second form via `EFF.T4.09`'s `C_j(f_key) = 0`,
+instantiation-side; touched ⟺ `ω_j ≠ 0`); `EFF.T4.11` (the fence: "deliberately stronger
+than … `ShC_j(Φ₂^{μ₂}) ≠ 0` [or] some unassembled single-extraction branch is nonzero. A
+shadow coordinate may be nonzero while its height-`Θ_j` digit cancels. **FR-M3 at `j = 0` is
+the committed separator: the self-shadow has pin 12, but `Θ₀ = 10` and `ω₀ = 0`**" — the
+separator is a §12 retained regression + D.53's instance row).
+
+**TEETH.** S8 PE1(1) → the codomain structure + D.53/D.54; the FR-M3 separator → §12.
+
+**ENVIRONMENT.** as D.46.
+
+---
+
+### NODE D.49 [theorem] [fresh]
+
+**STATEMENT.** *LEMMA T4.2(a): exact attainment for the key power.*
+`Touched F j ↔ nuIdx F j F.fkey = (F.Θ j : ℕ∞)` (for `j < F.μ₂`); and at an untouched
+coordinate `nuIdx F j F.fkey > (F.Θ j : ℕ∞)` — "where `+∞ > Θ_j` includes the case of an
+identically zero discrepancy".
+
+**SIGNATURE.**
+```lean
+theorem CertFrame.touched_iff_nu_eq {Dv Slot K} [AddCommGroup Dv] [Field K]
+    (F : CertFrame Dv Slot K) {j : ℕ} (hj : j < F.μ₂) :
+    F.Touched j ↔ F.nuIdx j F.fkey = (F.Θ j : ℕ∞)
+-- sibling public corollary: `nu_gt_of_untouched`
+```
+
+**DEPENDS.** D.46, D.47, D.48.
+
+**PROOF.** T4's three steps (`EFF.T4.14`'s assembled proof, verbatim in substance):
+1. `floor` at `fkey_mem` specializes: `grΔ m j fkey = 0` for `m < Θ j` — so every element of
+   D.47's set is `≥ Θ j`, giving `nuIdx ≥ Θ j` (`le_sInf`). 2. Equality holds iff `Θ j`
+   itself is in the set (`sInf`-membership at the bottom of a bounded-below set of naturals
+   in `ℕ∞`), i.e. iff `grΔ (Θ j) j fkey ≠ 0`. 3. That digit IS `omega j` (D.48,
+   definitional); the untouched corollary: `nuIdx ≥ Θ j` and `≠ Θ j` give `>`, including
+   `⊤`.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.T4.14` (statement + the three-step proof; "including the identically-zero
+case through the convention `ν_j(f_key) = +∞`").
+
+**TEETH.** S8 PE1(2) ("uses the GENTOW-3 floor and does not infer a member-general
+converse" — the statement is about `fkey` ALONE; the no-converse warning is D.52's ⚠ and
+`EFF.T4.19`'s fence at D.53) → **Lean theorem**.
+
+**ENVIRONMENT.** as D.46.
+
+---
+
+### NODE D.50 [theorem] [fresh]
+
+**STATEMENT.** *LEMMA T4.2(b): perturbation stability.* For `g : Dv` with
+`f := F.fkey + g ∈ F.M` ("a pure coefficient condition"): if `F.grΔ (F.Θ j) j g = 0` then
+`F.grΔ (F.Θ j) j f = F.omega j`. **Specialization** (the in-budget case): if moreover
+`∀ m, m ≤ F.Θ j → F.grΔ m j g = 0` (the supplier's "S8.1 repaired margin ledger places
+every discrepancy of `g` at height at least `Θ_j + 1`") and `F.Touched j` and `j < F.μ₂`,
+then `F.nuIdx j f = (F.Θ j : ℕ∞)` — "every touched coordinate remains divergent exactly at
+`Θ_j` under such an in-budget perturbation".
+
+**SIGNATURE.**
+```lean
+theorem CertFrame.perturb_stable {Dv Slot K} [AddCommGroup Dv] [Field K]
+    (F : CertFrame Dv Slot K) {j : ℕ} {g : Dv} (hf : F.fkey + g ∈ F.M)
+    (hg : F.grΔ (F.Θ j) j g = 0) :
+    F.grΔ (F.Θ j) j (F.fkey + g) = F.omega j
+-- sibling public corollary `perturb_nu_eq` with the margin hypothesis, per the STATEMENT
+```
+
+**DEPENDS.** D.46, D.47, D.48, D.49.
+
+**PROOF.** "`Δ_j(f) = Δ_j(f_key) + Δ_j(g)`; taking the height-`Θ_j` graded component proves
+the first assertion" (`EFF.T4.15`) — `map_add` on `grΔ` + `hg`. The corollary: `floor` at
+`hf` excludes digits below `Θ j`; the margin hypothesis excludes `g`-digits at `Θ j` and the
+first assertion + `Touched` makes the `Θ j` digit nonzero; conclude by D.49's `sInf`
+arithmetic. **IMPORT FENCE transcribed:** the withdrawn "same shift" inference is NOT used
+(PE1(3)'s exact check); the margin enters ONLY as the displayed hypothesis, whose discharge
+is the supplier's S8.1 box (`EFF.T4.15`'s conditionality: "the in-budget case is a
+*specialization*, supplied by S8.1's box" — membership fact 2 + the ledger,
+`[supplied-by: chapter C]` at D.53).
+
+**SIZE.** 28 lines.
+
+**SOURCE.** `EFF.T4.15` (statement + proof, R2-G2 as rebound by R5-F1(2)/(3); the deep-
+perturbation parenthetical decoupling note).
+
+**TEETH.** S8 PE1(3) → **Lean theorem**; PE2 GT3 consumption → D.53/§12.
+
+**ENVIRONMENT.** as D.46.
+
+---
+
+### NODE D.51 [lemma] [fresh]
+
+**STATEMENT.** *LEMMA T4.2(c): the fully-exposed assembled-slot criterion.* If a canonical
+slot `σ` of coordinate `j` at height `Θ_j` is **fully exposed** by a contribution with
+nonzero normalized digit — in the frame: `(F.omega j) σ = ξ` with `ξ ≠ 0`, where equality
+against the ASSEMBLED value is the full-exposure semantics (`EFF.T4.08`: "the complete list
+of summands landing in that slot consists of `ξ` alone", every provenance propagated) —
+then `F.Touched j`, and by D.49 the floor is attained there. **⚠ The premise is
+all-provenance** (ledger `HYP.113` records this as a live conditional-theorem leg):
+"Uniqueness only among single-extraction contributions does not discharge this premise: the
+exposure calculation must also exclude every other term and every incoming carry or recarry
+from the slot" — in this packaging, the burden sits in proving the INSTANCE equation
+`(omega j) σ = ξ` against the complete `grΔ`, which is exactly where the corpus puts it
+(D.54's R5-63A discharge).
+
+**SIGNATURE.**
+```lean
+theorem CertFrame.touched_of_exposed {Dv Slot K} [AddCommGroup Dv] [Field K]
+    (F : CertFrame Dv Slot K) {j : ℕ} {σ : Slot} {ξ : K}
+    (hexp : (F.omega j) σ = ξ) (hne : ξ ≠ 0) : F.Touched j
+```
+
+**DEPENDS.** D.48 (+ D.49 for the attainment corollary).
+
+**PROOF.** "Its normalized digit is nonzero, so the selected slot is a nonzero component …
+Distinct canonical slots are separate components; hence `ω_j ≠ 0`" (`EFF.T4.16`) —
+`Finsupp.ne_iff`: a function with a nonzero value is nonzero.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.T4.16` (R3-G1's replaced statement + proof; conditionality "full exposure
+in the sense of EFF.T4.08 — an all-provenance premise, NOT single-extraction uniqueness";
+`HYP.113`).
+
+**TEETH.** S8 PE1(5) (r3 form) → **Lean theorem** at frame level + the instance burden at
+D.54; §12.
+
+**ENVIRONMENT.** as D.46.
+
+---
+
+### NODE D.52 [lemma] [fresh]
+
+**STATEMENT.** *LEMMA T4.2(d): the no-contribution criterion.* If, after complete
+propagation, no summand of any provenance lands in any height-`Θ_j` slot of coordinate `j`
+— or the complete assembled contribution cancels — then `ω_j = 0`; in the frame both legs
+ARE the single equation `F.grΔ (F.Θ j) j F.fkey = 0`, so the lemma is the definitional
+unfolding `F.omega j = 0 ↔ ¬ F.Touched j`. **The two ⚠ warnings transcribed** (they are the
+r4 content, `HYP.114`): (i) "Absence of single-extraction sources alone does not discharge
+the first hypothesis: the exclusion must cover every provenance named in DEFINITION T4.1's
+assembly" — instance burden, as in D.51; (ii) "**No attainment statement for another member
+follows: entry-driven content may still attain `Θ_j`**" — `ω_j` classifies the KEY-POWER
+witness only (the FR-M3 `W`-member attains `Θ₀ = 10` through entry-driven content while
+`ω₀ = 0`, `EFF.T4.19` — retained at D.53/§12).
+
+**SIGNATURE.**
+```lean
+theorem CertFrame.omega_zero_iff_untouched {Dv Slot K} [AddCommGroup Dv] [Field K]
+    (F : CertFrame Dv Slot K) (j : ℕ) : F.omega j = 0 ↔ ¬ F.Touched j
+```
+
+**DEPENDS.** D.48.
+
+**PROOF.** `not_not` on D.48's definition.
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.T4.17` (R4-G1's replaced clause (d): the all-provenance/cancellation legs,
+the two warnings, and the record that consumers "invoke (d) only through its cancellation
+leg (FR-M3's measured `ω₀ = 0`) and its no-other-member warning, never through the
+no-source leg"; `HYP.114`).
+
+**TEETH.** S8 PE1(1); PE2 GT3 (FR-M3 `ω₀ = 0`) and GT6 (FAM-E/FAM-D no-overflow controls)
+→ retained regressions, §12.
+
+**ENVIRONMENT.** as D.46.
+
+---
+
+### NODE D.53 [interface] [fresh — GC-13 placeholders]
+
+**STATEMENT.** *Instance `GT3-THRESHOLD`* (`EFF.T4.18`): the certificate frame instantiated
+at GENTOW-3's composed tower — `Δ_j = ShC_j − C_j`, `Θ_j = thresholdTheta μ₂ E₂ δ j`
+(D.45), `ω_j` the key power's assembled digit. **Consumed facts, each a chapter-C
+placeholder:** (1) `(FLOOR)` on `𝔐` = GENTOW-3(i) read at its Steps 0–2 quantification
+domain (`EFF.GENTOW3 [supplied-by: chapter C]`; the R5-F1 supplier cite); (2) the per-genre
+per-coordinate computation of `ω_j` = GENTOW-3(iv) through GT3-r2/r3; (3) the `Θ_j + 1`
+perturbation margin = GENTOW-3 S8.1 (feeds D.50's specialization hypothesis); (4) the
+x-free extreme = GENTOW-3(iii): every discrepancy zero, every `ω_j = 0`. **Result** (the
+absorption, verbatim): "GENTOW-3(iv)'s phrase 'touched coordinate(s)' is exactly DEFINITION
+T4.1. Its attainment conclusion is LEMMA T4.2(a), and its repaired deep-perturbation
+persistence is LEMMA T4.2(b)." **Fences carried:** the one-sidedness scope (`EFF.T4.19`:
+`ω_j = 0` does not bar other members — the `W` member attains `Θ₀` entry-driven); the
+measured-configuration set (`EFF.T4.20`: FAM-A5/A7/B/C, FR-GL attained; FR-M3 `[10,7,4]` vs
+`[12,7,4]`, `ω₀ = 0`, `ω₁,ω₂ ≠ 0`; FR5X identically zero rows) — inherited evidence,
+retained as §12 regressions; the six-span GT3 pin stack (`EFF.T4.21`) is the placeholder's
+provenance, fail-closed per `EFF.T4.29`; the `ω_j` wording seam (`EFF.T4.18`'s NOTE —
+pre-r3 vocabulary in the Substitution block, governed by D.48's r3 definition) carried to
+§13.
+
+**SIGNATURE.** none in chapter D (the instance is C's `CertFrame` term; D supplies the frame
+and lemmas).
+
+**DEPENDS.** D.45–D.52 · `EFF.GENTOW3 [supplied-by: chapter C]` (spans per `EFF.T4.21`).
+
+**PROOF.** n/a. **SIZE.** 0 Lean lines.
+
+**SOURCE.** `EFF.T4.18` (+ `.19`, `.20`, `.21`).
+
+**TEETH.** S8 PE2 GT3 consumption, in full → §12 (executable regressions retained: the
+FR-M3 slack `[12,7,4]` vs `[10,7,4]` check is also gate material, D.66's ⚠).
+
+**ENVIRONMENT.** n/a.
+
+---
+
+### NODE D.54 [interface] [fresh — GC-13 placeholders]
+
+**STATEMENT.** *Instance `GT6-CERT-TOP`* (`EFF.T4.22/.23/.41`): the sealed
+`f₁ = 1, μ₂ = 2` instance. Data (source-owned algebra, retained per N-5): `T = {t < f₂ :
+ĉ_t ≠ 0}`, `t* = max T`, lift monomials `ĉ_t π^{a_t} x^{i_t}`, hypothesis `2i_{t*} ≥ D′`;
+the `(t*,t*)` pair extracts into `j* = ⌊(2e₂t*+1)/(e₂f₂)⌋`, `b* = (2e₂t*+1) mod e₂f₂`,
+`a* = 2i_{t*} − D′`, with normalized digit `(ĉ_{t*})²π^{2a_{t*}}·(wrap unit) ≠ 0` ("A
+product of units in `K₂ˣ`: nonzero — no binomial coefficient, no characteristic condition").
+**The conditional invocation and its discharge:** invoking D.51 needs FULL EXPOSURE (r3
+text: "the displayed contribution is the sole summand in its canonical height-`Θ_{j*}`
+slot"); **R5-63A discharges it — "YES at the sealed scope — `f₁ = 1`, `μ₂ = 2`,
+`2i_{t*} ≥ D′` — and NO elsewhere"** (`EFF.T4.41`'s five byte-quoted legs: whole-layer
+classification, weight separation `≥ Θ + δ` for multi-extraction, tracked carries, slot
+uniqueness, unconditional nonzero digit). Conclusion at that scope: `ω_{j*} ≠ 0`, `j*`
+touched, `ν_{j*}(f_key) = Θ_{j*}` (D.51 + D.49). **Withdrawn text carried:** the r0
+sentence claiming a "literal exposed-slot instance" on the pre-r3 basis is WITHDRAWN
+(R5-F2); the governing status is "resolved at the `f₁ = 1` scope, **and only there**".
+
+**SIGNATURE.** none in chapter D (the exposure equation `(omega j*) σ* = digit` is the
+C-side calculation `EFF.GENTOW6 [supplied-by: chapter C]` — the R5-63A legs live in
+GENTOW6's spans; D supplies D.51's firing).
+
+**DEPENDS.** D.45–D.49, D.51 · `EFF.GENTOW6 [supplied-by: chapter C]` (spans 1 and 3 of
+T4's GT6 stack; the R5-63A legs X33–X39).
+
+**PROOF.** n/a. **SIZE.** 0 Lean lines.
+
+**SOURCE.** `EFF.T4.22` (the instance data), `.23` (the conditional + withdrawal), `.41`
+(R5-63A — the discharge, its scope fence, and its acceptance re-adjudication note).
+
+**TEETH.** S8 PE1(5)/(6), PE2 GT6 consumption → §12; the scope fence ("NO elsewhere") is a
+signed row — a fleet agent instantiating CERT-TOP outside `f₁ = 1, μ₂ = 2, 2i_{t*} ≥ D′`
+must return BLOCKED.
+
+**ENVIRONMENT.** n/a.
+
+---
+<!-- RESUME: §7 COMPLETE (D.45–D.54); next = §8 (D.55–D.61, T5 w-frame) — NOTE index renumber owed at close (§2 table says D.45–D.56/§8 D.57–D.66; actual: §7 = D.45–D.54, §8 = D.55–D.61, §9 = D.62–D.64, §10 = D.65–D.68) -->
 
 <!-- CHAP-D APPEND POINT — do not remove; sections are appended here in order -->
