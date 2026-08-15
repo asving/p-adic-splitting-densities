@@ -3896,4 +3896,599 @@ regression** retained.
 
 ---
 
+## 8. §8 — NS-6, THE ORDER-0 PEEL, AND `typeOf` TRANSPORT
+
+### NODE B.63 [theorem] [fresh]
+
+**STATEMENT.** *NS-6, the `⇐` direction: separable residuals give a complete leaf factorization.* Over
+the complete bundle, let `φ` be an order-1 key and `f` monic with
+`f.map (residue O) = (φ.map (residue O))^μ`, `0 < μ`. Suppose that for every slope `(u,ℓ)` of `f`'s
+`φ`-adic polygon the residual polynomial is **separable**. Then `f` factors as a product indexed by
+pairs `(slope, monic irreducible residual factor)`, each factor being a leaf in the sense of B.58 /
+B.60 / B.61, with `(f_{S,ψ}).natDegree = ℓ_S * m * ψ.natDegree`; and
+
+```
+(typeOf f).data  =  Σ_{(S,ψ)}  {(ℓ_S, m * ψ.natDegree)}
+```
+whenever every `(S,ψ)` lies in D-3's unconditional perimeter (`ℓ_S = 1` or `ψ.natDegree = 1`), and in
+general under `B-BOX-1` for the pairs outside it.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem typeOf_of_separable_residuals (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
+    (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (hsep : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ∀ h : (sideSet φ f u ℓ).Nonempty,
+      1 < (sideSet φ f u ℓ).card → ∀ H₀ : ℕ, npHgt φ f 0 = (H₀ : ℕ∞) →
+        (resPoly π φ f u ℓ h H₀).Separable)
+    (hperim : ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField φ), … ) :
+    ∃ (T : Finset ((ℕ × ℕ) × Polynomial (resField φ))) (F : _ → Polynomial O),
+      f = ∏ t ∈ T, F t ∧
+      (typeOf f).data = (T.val.map (fun t => (t.1.2, φ.natDegree * t.2.natDegree)))
+```
+*(the `hperim` clause is the perimeter/`B-BOX-1` disjunction; its exact form is fixed by B.58/B.60/B.61
+and is written out in full in the leanspec stub — see §12 item 4.)*
+
+**DEPENDS.** B.27 · B.42 · B.45 · B.48 · B.58 · B.60 · B.61 · landed
+`Uniformity.Density.typeOf_mul` (`TypeOfAlgebra.lean:58`), `monicFactors_mul` (`:46`),
+`FactorizationType.degree_mk_add` (`:72`).
+
+**PROOF.**
+1. B.42 splits `f` into `(u_i,ℓ_i)`-pure pieces `f_i`, one per slope.
+2. B.48 splits each `f_i` according to its residual factorization; `hsep` and B.45 make every
+   multiplicity `1`, so each piece has residual a unit times a single irreducible `ψ`.
+3. Each piece is a leaf: B.58 if `ψ.natDegree = 1`, B.60 if `ℓ_i = 1`, B.61 under `B-BOX-1`
+   otherwise. Its `typeOf` is `⟨{(ℓ_i, m·ψ.natDegree)}⟩`.
+4. Landed `typeOf_mul` (iterated over the `Finset` product by `Finset.prod_induction`, with
+   monicity preserved) turns the product into the multiset sum.
+
+**SIZE.** 70 lines. **SPLIT CANDIDATE** at step 4 (the `Finset`-indexed `typeOf_mul` iteration is
+reusable and the orchestrator should expect a RE-PLAN request for `typeOf_prod`).
+
+**⚠ `typeOf_prod` IS A MISSING SUPPLIER AND IS BOOKED HERE.** Landed `typeOf_mul` is binary; step 4
+needs the `Finset`-indexed version. `spec/CERTAIN_NODES_2026-08-14.md` REJECTED R10 already flagged the
+gap ("it needs CN-17 (`n`-fold Hensel) AND CN-03 (`typeOf_mul`) AND CN-21 … **Recommendation to the
+orchestrator: book it as the FIRST second-layer node**"). It is B.67's DEPENDS too. **Booked as
+`B.63a typeOf_prod`** — a 20-line `Finset.prod_induction` — so that two nodes do not each grow a
+private copy. §14 item 10.
+
+**SOURCE.** `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-6 §3 F-1 verbatim: "(⇐) is [GN15] Thm 2.3's
+last clause (`ord_ψ = 1 ⟹ g_{λ,ψ}` irreducible), applied to every `(λ,ψ)`"; `EFF.W12.27`;
+`EFF.HE3.15` (DEFINITION 2's clause (a): "the read TERMINATES with every TERMINAL residual polynomial
+separable"); `EFF.W12.86` steps 5–6.
+
+**TEETH.** `W12-SHAPE` (0/164, both directions), `W12-ORACLE` (`[IND]`, 0 bad / 41,923) →
+**executable regression** retained; `HE-SIG` (`EFF.HE3.52`, all 5 `μ=3` stage types) → **Lean
+theorem** inside the perimeter.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.64 [lemma] [fresh]
+
+**STATEMENT.** *NS-6, the `⇒` direction: a repeated residual factor forces a further level.* Let `φ`
+be an order-1 key, `(u,ℓ)` a slope of `f`, and `ψ` a monic irreducible factor of the residual
+polynomial with multiplicity `a ≥ 2`. Then the corresponding factor `g` of `f` (B.48) has
+
+```
+g.natDegree = ℓ * m * a * ψ.natDegree  >  ℓ * m * ψ.natDegree,
+```
+
+i.e. `g`'s degree strictly exceeds the degree that a single order-1 leaf with the data `(ℓ, ψ)` would
+have; consequently `g` is **not** an order-1 leaf for the pair `(u/ℓ, ψ)`, and the order-1 datum does
+not determine `typeOf g`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem lt_natDegree_of_multiplicity_two {φ : Polynomial O} {u ℓ a : ℕ} (hℓ : 0 < ℓ)
+    (hm : 0 < φ.natDegree) {ψ : Polynomial (resField φ)} (hψ : 0 < ψ.natDegree) (ha : 2 ≤ a)
+    {g : Polynomial O} (hg : g.natDegree = ℓ * φ.natDegree * a * ψ.natDegree) :
+    ℓ * φ.natDegree * ψ.natDegree < g.natDegree
+```
+
+**DEPENDS.** B.47 · mathlib `Nat` arithmetic only.
+
+**PROOF.**
+1. `hg` rewrites the goal to `ℓ*m*ψ.natDegree < ℓ*m*a*ψ.natDegree`.
+2. `Nat.mul_lt_mul_of_lt_of_le` with `1 < a` and the positivity of `ℓ*m*ψ.natDegree`; close by
+   `omega` after `ring_nf`.
+
+**SIZE.** 8 lines.
+
+**⚠ WHY THIS IS THE HONEST FORM OF NS-6's `⇒`.** `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` §3 F-1
+gives the route verbatim: "(⇒) is [AGNPRW] Thm 2.10's degree law `deg Q = m·e·deg R(Q)`: a residual
+factor `ψ` with `ord_ψ(R) = a ≥ 2` gives `deg g_{λ,ψ} = e_λ·a·deg ψ·deg φ > e_λ·deg ψ·deg φ = deg(lift of ψ)`,
+so the type is not `f`-complete and a level must be added." **That is a degree inequality and nothing
+more**, which is why this node is eight lines. What it does **not** prove — and what this chapter does
+not claim — is that `typeOf g` is genuinely *undetermined* by the order-1 data. That stronger claim is
+`HE6-BOX-1`, and it has a machine certificate but no proof: `EFF.HE6.36` widens the box to
+`{ℓ≥2, d_r≥1} ∪ {ℓ=1, d_r≥2}` and `EFF.HE6.37`'s tooth `HE6-T-CASEB` exhibits "3 distinct PARI σ on
+identical outer data — box is real". **`HE6-BOX-1` IS AN EXPLICIT NON-NODE OF THIS CHAPTER AND MUST NOT
+BE GIVEN ONE.** Its ℓ=1 branch lives entirely in `EFF-HE6R1.md` (H-3), its disposition is
+disclosure-without-promotion, and a fleet agent who needs it must return `BLOCKED: HE6-BOX-1`.
+
+**SOURCE.** `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-6 §3 F-1; `EFF.HE6.36`; `EFF.HE6.37`;
+`EFF.HE6R1.09` (`LEMMA HE6R1-1`'s jump condition `ℓ_i·deg r_i ≥ 2`, which is the *level-2* trigger and
+a different statement).
+
+**TEETH.** `HE6-T-CASEB` (`EFF.HE6.37`) → **executable regression** retained (the box is certified
+real by machine and is not proved here); `HE6R1-T-CRACK` (`EFF.HE6R1.29`, "3 distinct σ at identical
+outer data", fired at both `p=3,5`) → **executable regression** retained.
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.65 [theorem] [fresh]
+
+**STATEMENT.** *NS-6, the biconditional (ledger `HYP.14`).* Over the complete bundle, with `φ` an
+order-1 key and `f` monic with `f̄ = φ̄^μ`, `0 < μ`, the following are equivalent:
+
+1. every residual polynomial of every slope of `f` is separable;
+2. every `(slope, monic irreducible residual factor)` pair has multiplicity `1`;
+3. `f` factors as a product of order-1 leaves, one per such pair, with degrees
+   `ℓ_S * m * ψ.natDegree`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem ns6_biconditional (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
+    (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ) :
+    (∀ u ℓ, … (resPoly …).Separable) ↔ (∀ u ℓ ψ, … multiplicity = 1)
+```
+*(clause 3 is B.63's conclusion and is stated as a separate `iff` in the same file; the SIGNATURE above
+freezes the `1 ↔ 2` half, whose statement needs no perimeter hypothesis.)*
+
+**DEPENDS.** B.27 · B.45 · B.63 · B.64.
+
+**PROOF.**
+1. `1 ↔ 2` is B.45's last clause (`Separable ↔ ∀ ψ ∈ s, a ψ = 1`), which rests on B.27
+   (`Separable ↔ Squarefree` over a finite field).
+2. `2 → 3` is B.63.
+3. `3 → 2` by degree count: if some `a ψ ≥ 2` then B.64 gives a factor of degree strictly larger than
+   any leaf's, contradicting clause 3's degree list.
+
+**SIZE.** 20 lines.
+
+**⚠ THIS NODE DISCHARGES LEDGER ROW `HYP.14`.** `spec/HYPOTHESIS_LEDGER.md` `HYP.14` reads: "`NS-6`
+stopping criterion. STATEMENT: The tower stops at order `r` iff every order-`r` residual is separable;
+descent continues iff some is inseparable. CLASS: cite-scope-residue. PROPOSED DISPOSITION: NODE —
+short GN15/AGNPRW corollary." **The discharge is at order 1 only** (`r = 1`); the order-`r` statement
+is chapter C's and this node is its base case. The DAG edge `BP.B.65 → HYP.14` in §11 is therefore a
+*partial* discharge and is labelled as such in the `evidence` column.
+
+**SOURCE.** `spec/HYPOTHESIS_LEDGER.md` `HYP.14`; `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-6 and
+§3 F-1 ("~½ page, LOW risk"); `docs/GMN_citations.md` Lemma 3.11(3);
+`docs/BLUEPRINT_PHASE_DESIGN_2026-08-13.md` §4 ("NS-6 corollary (B)").
+
+**TEETH.** `W12-SHAPE` (both directions) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.66 [def] [fresh]
+
+**STATEMENT.** *The order-1 type datum.* For `φ` an order-1 key and `f` monic with `f̄ = φ̄^μ` whose
+residuals are all separable, the **order-1 datum** of `f` is the multiset of pairs
+`(ℓ_S, m · ψ.natDegree)` over all `(slope S, monic irreducible residual factor ψ)`, as a
+`FactorizationType`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `order1Type π φ f` : the `FactorizationType` predicted by `f`'s order-1 polygon-and-residual data.
+`0` (the empty type) when the data are not separable — the junk branch is never read. -/
+noncomputable def order1Type (π : O) (φ f : Polynomial O) : FactorizationType :=
+  open Classical in
+  ⟨(slopeFinset π φ f).val.bind (fun p =>
+      (resFactorFinset π φ f p).val.map (fun ψ => (p.2, φ.natDegree * ψ.natDegree)))⟩
+```
+*(`slopeFinset` and `resFactorFinset` are the two `Finset`s produced by B.42 and B.45; their
+definitions are private helpers of this node, and if either turns out to be reusable the orchestrator
+books it separately.)*
+
+**DEPENDS.** B.20 · B.42 · B.45 · landed `FactorizationType`.
+
+**PROOF.** definitional.
+
+**FAITHFULNESS.** `EFF.W12.62` item 2 verbatim: "THEOREM W-12.A is the transcription spec for order-1
+menu entries AT EVERY DEGREE (**`typeOf`-keyed by `(C, P_i, λ_{i,S})`**)" — level-0 configuration `C`,
+per-branch polygon `P_i`, per-side residual type `λ_{i,S}`. This node is the last two components at a
+single branch; the level-0 component is B.67. `EFF.HE3.15` calls the analogous object the **stage type**
+`τ_stage(ℓ) := {(e_s^{(i)}, f_s^{(i)})}` with `Σ e_s f_s = μ`, and `EFF.HE3.16` (THEOREM HE3.A) states
+the transport `(e,f) ↦ (e₁e, f₁f)` — at `e₁ = 1, f₁ = m` that is `(e,f) ↦ (e, m·f)`, which is exactly
+this definition's second component. **Flagged for human review.**
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.W12.62`; `EFF.HE3.15`; `EFF.HE3.16`.
+
+**TEETH.** `HM3`-side menu rows are chapter G's; here **signed non-applicability** (a definition).
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.67 [theorem] [fresh]
+
+**STATEMENT.** *The order-0 peel at every degree.* Over the complete bundle, let `f` be monic of
+positive degree and let `f.map (residue O) = ∏_{i ∈ s} φ̄_i ^ {a_i}` with the `φ̄_i` monic irreducible
+and pairwise distinct. Then `f = ∏_{i ∈ s} f_i` with each `f_i` monic,
+`f_i.map (residue O) = φ̄_i^{a_i}`, `f_i.natDegree = a_i * φ̄_i.natDegree`, and
+
+```
+(typeOf f).data  =  Σ_{i ∈ s} (typeOf f_i).data.
+```
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem exists_order0_peel {f : Polynomial O} (hf : f.Monic) (hd : 0 < f.natDegree)
+    {ι : Type*} [DecidableEq ι] {s : Finset ι} {φ₀ : ι → Polynomial (ResidueField O)}
+    {a : ι → ℕ} (hmon : ∀ i ∈ s, (φ₀ i).Monic) (hirr : ∀ i ∈ s, Irreducible (φ₀ i))
+    (hne : ∀ i ∈ s, ∀ j ∈ s, i ≠ j → φ₀ i ≠ φ₀ j)
+    (hres : f.map (IsLocalRing.residue O) = ∏ i ∈ s, (φ₀ i) ^ (a i)) :
+    ∃ g : ι → Polynomial O, (∀ i ∈ s, (g i).Monic) ∧ f = ∏ i ∈ s, g i ∧
+      (∀ i ∈ s, (g i).map (IsLocalRing.residue O) = (φ₀ i) ^ (a i)) ∧
+      (typeOf f).data = ∑ i ∈ s, (typeOf (g i)).data
+```
+
+**DEPENDS.** B.46 · B.63a (`typeOf_prod`) · landed
+`Uniformity.Hensel.exists_monic_factorization_finset` (`MultiHensel.lean:111`),
+`Uniformity.Density.typeOf_mul` (`TypeOfAlgebra.lean:58`), `monicFactors_mul`,
+`Uniformity.Density.typeOf_of_residual_coprime` (`TypeOfAlgebra.lean:131`).
+
+**PROOF.**
+1. The powers `(φ₀ i)^{a i}` are pairwise coprime: distinct monic irreducibles are non-associated,
+   so B.46's `isCoprime_pow_of_not_dvd` applies to each pair (with a `Finset.prod` extension by
+   `IsCoprime.prod_right`).
+2. Landed `exists_monic_factorization_finset` with `g₀ i := (φ₀ i)^{a i}` gives the monic lifts, the
+   product identity, the reductions and the degrees.
+3. B.63a's `typeOf_prod` (landed `typeOf_mul` iterated) gives the multiset identity.
+
+**SIZE.** 40 lines.
+
+**SOURCE.** `EFF.W12.21` (`LEMMA W12-S2.1`, "Level-0 product structure (window-exact Hensel
+bijection)"); `EFF.W12.22` (simple branches and the level-0 census); `spec/HYPOTHESIS_LEDGER.md`
+`HYP.03` (**DISCHARGED**, whose residual scope note reads: "composing this with `typeOf_mul` … into the
+full order-0 leaf law at every degree is flagged but not yet assembled
+(`spec/CERTAIN_NODES_2026-08-14.md` REJECTED R10) — the row's own '`n≥4` splitting-type assembly'
+consumer still awaits that weld"). **This node is that weld.**
+
+**TEETH.** `W12-LVL0` (`EFF.W12.54`, 0/138 violations: 5 cubic level-0 pattern censuses plus their sum
+`q³`) → **executable regression** retained; `W12-BLOCK` (0/1,594,670) → **Lean theorem** (the product
+identity).
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.68 [theorem] [fresh]
+
+**STATEMENT.** *THE ORDER-0 LEAF LAW at every degree (`CERTAIN_NODES` REJECTED **R10**).* Over the
+complete bundle, let `f` be monic of positive degree with `f.map (residue O)` **separable**, and let
+`f.map (residue O) = ∏_{i ∈ s} r̄_i` be its factorization into distinct monic irreducibles. Then
+
+```
+typeOf f = ⟨ Σ_{i ∈ s} {(1, (r̄_i).natDegree)} ⟩.
+```
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem typeOf_of_separable_reduction {f : Polynomial O} (hf : f.Monic) (hd : 0 < f.natDegree)
+    {ι : Type*} [DecidableEq ι] {s : Finset ι} {r : ι → Polynomial (ResidueField O)}
+    (hmon : ∀ i ∈ s, (r i).Monic) (hirr : ∀ i ∈ s, Irreducible (r i))
+    (hne : ∀ i ∈ s, ∀ j ∈ s, i ≠ j → r i ≠ r j)
+    (hres : f.map (IsLocalRing.residue O) = ∏ i ∈ s, r i) :
+    typeOf f = ⟨∑ i ∈ s, {((1 : ℕ), (r i).natDegree)}⟩
+```
+
+**DEPENDS.** B.67 (at `a i = 1`) · landed `Uniformity.Density.typeOf_inert_of_irreducible_map`
+(`InertLeaf.lean:179`), `FactorizationType.ext`.
+
+**PROOF.**
+1. B.67 at `a i = 1` gives `f = ∏ g i` with `(g i).map (residue O) = r i` irreducible and
+   `(typeOf f).data = Σ (typeOf (g i)).data`.
+2. Landed `typeOf_inert_of_irreducible_map` gives `typeOf (g i) = ⟨{(1, (g i).natDegree)}⟩`, and
+   `(g i).natDegree = (r i).natDegree` (landed `Uniformity.Hensel.natDegree_eq_of_map_eq`).
+3. `FactorizationType.ext` closes.
+
+**SIZE.** 22 lines.
+
+**⚠ THIS IS THE NODE `CERTAIN_NODES` CALLED "the single highest-value node not on this list".**
+REJECTED **R10** verbatim: "The full order-0 leaf law (`f̄` separable with monic irreducible
+factorization `∏ r̄ᵢ` ⟹ `typeOf f = ⟨Σ (1, deg r̄ᵢ)⟩`). Passes F1 and F2 — but FAILS F3: it needs
+CN-17 (`n`-fold Hensel) AND CN-03 (`typeOf_mul`) AND CN-21 (the unramified leaf), three internal
+edges. **Recommendation to the orchestrator: book it as the FIRST second-layer node once CN-03, CN-17
+and CN-21 land.**" All three landed on 2026-08-14, so the node is fireable **immediately** and it
+depends only on B.67 inside this chapter. **The orchestrator should fire B.67 + B.68 in wave 1
+regardless of the rest of the chapter's schedule**: they are independent of §§3–7 entirely and they
+close a named standing gap.
+
+**SOURCE.** `spec/CERTAIN_NODES_2026-08-14.md` REJECTED R10; `spec/HYPOTHESIS_LEDGER.md` `HYP.03`'s
+residual-scope note; `EFF.W12.22`.
+
+**TEETH.** `W12-LVL0` (0/138) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.69 [lemma] [fresh]
+
+**STATEMENT.** *The development is shift-covariant.* For `c : O`, `φ` monic and any `f`:
+`dev (φ.comp (X + C c)) (f.comp (X + C c)) j = (dev φ f j).comp (X + C c)`; hence
+`npHgt`, `suppVal`, `sideSet`, `sideDeg` and (up to the induced isomorphism of residual fields)
+`resPoly` are invariant under the shift `X ↦ X + c`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem dev_comp_shift (φ : Polynomial O) (c : O) (f : Polynomial O) (j : ℕ) :
+    dev (φ.comp (X + Polynomial.C c)) (f.comp (X + Polynomial.C c)) j
+      = (dev φ f j).comp (X + Polynomial.C c)
+
+theorem npHgt_comp_shift (hπ : Irreducible π) (φ : Polynomial O) (c : O) (f : Polynomial O)
+    (j : ℕ) : npHgt (φ.comp (X + Polynomial.C c)) (f.comp (X + Polynomial.C c)) j = npHgt φ f j
+```
+
+**DEPENDS.** B.02 · B.07 · B.11 · landed `Uniformity.Density.shift` (`TypeOfInvariance.lean:89`),
+`shift_apply`, `shift_monic`, `shift_natDegree` · mathlib `Polynomial.comp` as a ring hom
+(`algEquivAevalXAddC`).
+
+**PROOF.**
+1. The shift is a ring automorphism of `O[X]` preserving degrees (landed `shift`, an `AlgEquiv`), so it
+   commutes with monic division: `(f %ₘ φ).comp (X+C c) = (f.comp (X+C c)) %ₘ (φ.comp (X+C c))` by
+   the uniqueness clause of monic division (B.06's step-3 helper).
+2. Induction on `j` as in B.10.
+3. `npHgt` invariance: the shift acts on coefficients by an `O`-linear map with unit determinant, so
+   `gaussVal (a.comp (X + C c)) = gaussVal a` — proved by `≤` in both directions using
+   `c ↦ -c` for the inverse.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.HE3.27` (`LEMMA HE3-2`, the recentering: "Keep `κ > D′h`, `s ∈ K^×`, `w := −C` …
+`Φ″ = Φ′ + w`") — the corpus's recentering is a shift of the *key*, and this node is the shift of the
+*variable*; the two are the two halves of the recentering calculus, and **only the variable shift is a
+chapter-B node**: the key shift `φ ↦ φ − C` changes the order-1 datum and is the descent step, i.e.
+chapter C's.
+
+**TEETH.** `HE-T-CAP` (`EFF.HE3.54`) → **executable regression** retained.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE B.70 [lemma] [fresh]
+
+**STATEMENT.** *The development is scale-covariant at `φ = X`.* For `hπ : Irreducible π`, `w : ℕ` and
+`f` monic of degree `n`: `npHgt X (f.scaleRoots (π^w)) j = npHgt X f j + (w * (n - j) : ℕ)` for
+`j ≤ n`, hence `suppVal X (f.scaleRoots (π^w)) u 1 = suppVal X f (u + w) 1 + (w * ... )` — precisely,
+the polygon is sheared by `w` and the slopes shift by `w`:
+`sideSet X (f.scaleRoots (π^w)) (u + w) 1 = sideSet X f u 1`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem npHgt_scaleRoots (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic) (w j : ℕ)
+    (hj : j ≤ f.natDegree) :
+    npHgt X (f.scaleRoots (π ^ w)) j = npHgt X f j + ((w * (f.natDegree - j) : ℕ) : ℕ∞)
+
+theorem sideSet_scaleRoots (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic) (u w : ℕ) :
+    sideSet X (f.scaleRoots (π ^ w)) (u + w) 1 = sideSet X f u 1
+```
+
+**DEPENDS.** B.15 · B.16 · B.20 · landed `Uniformity.Density.dvd_sub_coeff_of_scaleRoots`
+(`ScaleExtraction.lean:61`) · mathlib `Polynomial.coeff_scaleRoots`.
+
+**PROOF.**
+1. `npHgt X g j = addVal O (g.coeff j)` (B.15) and
+   `(f.scaleRoots (π^w)).coeff j = π^{w*(n-j)} * f.coeff j` (`coeff_scaleRoots` for a monic `f`);
+   `AddValuation.map_mul` and `hπ.addVal_pow` give the first claim.
+2. Second claim: substitute the first into `OnSide` at `(u+w, 1)` and cancel the common
+   `w*n` from both sides of the equality (`Nat` arithmetic, valid because `suppVal` shifts by the same
+   constant).
+
+**SIZE.** 24 lines.
+
+**⚠ WHY ONLY `φ = X`.** For a general key `φ`, `scaleRoots` does not act on the `φ`-development in a
+closed form (it does not preserve `φ`), so no general statement is available or needed: the only
+consumer is B.44/B.60's integral-slope extraction, which is at `φ = X` after B.69's shift. Recorded so
+that nobody looks for the general statement.
+
+**SOURCE.** `spec/CERTAIN_NODES_2026-08-14.md` CN-13; landed `ScaleExtraction.lean`;
+`EFF.W12.79` (the `κ(T)` correction's level-0 decoration-orbit factor is the counting shadow of this
+shear).
+
+**TEETH.** `W12-L1X` (`EFF.W12.55`, 0/1,594,090, cross-implementation) → **executable regression**
+retained.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE B.71 [theorem] [fresh]
+
+**STATEMENT.** *The full order-1 `typeOf` read.* Over the complete bundle, let `f` be monic of positive
+degree, let `f.map (residue O) = ∏_{i ∈ s} φ̄_i^{a_i}` with the `φ̄_i` distinct monic irreducible, and
+choose monic lifts `φ_i` (order-1 keys). Suppose every block's residual polynomials are separable and
+every `(block, slope, residual factor)` triple lies in D-3's unconditional perimeter (or `B-BOX-1`
+holds for the triples outside it). Then
+
+```
+(typeOf f).data  =  Σ_{i ∈ s}  Σ_{(S,ψ) for block i}  {(ℓ_S, (φ̄_i).natDegree * ψ.natDegree)}.
+```
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem typeOf_order1 (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic) (hd : 0 < f.natDegree)
+    {ι : Type*} [DecidableEq ι] {s : Finset ι} {φ : ι → Polynomial O} {a : ι → ℕ}
+    (hkey : ∀ i ∈ s, IsKey (φ i))
+    (hne : ∀ i ∈ s, ∀ j ∈ s, i ≠ j → (φ i).map (IsLocalRing.residue O) ≠ (φ j).map (IsLocalRing.residue O))
+    (hres : f.map (IsLocalRing.residue O)
+      = ∏ i ∈ s, ((φ i).map (IsLocalRing.residue O)) ^ (a i))
+    (hsep : ∀ i ∈ s, …) (hperim : ∀ i ∈ s, …) :
+    (typeOf f).data = ∑ i ∈ s, (order1Type π (φ i) (…the block factor…)).data
+```
+*(the block factor is the `g i` produced by B.67; the SIGNATURE therefore quantifies over the
+existential B.67 supplies, which the leanspec stub spells out — §12 item 4.)*
+
+**DEPENDS.** B.63 · B.66 · B.67 · B.68.
+
+**PROOF.**
+1. B.67 peels the blocks and gives the multiset additivity.
+2. B.63 computes each block's `typeOf` as its `order1Type` (B.66).
+3. Sum.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.W12.09` (THEOREM W-12.A: "`σ(T)` is read off by Ore's theorem: one étale piece
+`(e_S, d_i·deg ψ)` per side `S` and irreducible residual factor `ψ` of `R_S`"); `EFF.W12.29` (the
+`σ(λ)` readout dictionary); `EFF.HE3.16` (THEOREM HE3.A's transport `(e,f) ↦ (e₁e, f₁f)`).
+
+**TEETH.** `W12-SHAPE`, `W12-ORACLE`, `HE-SIG` → **executable regression** retained; the
+`σ(λ)` dictionary of `EFF.W12.29` (`(1,1) ↦ {(1,1),(1,1)}`, `(2) ↦ {(1,2)}`, `(1,1,1) ↦ {(1,1)³}`,
+`(1,2) ↦ {(1,1),(1,2)}`, `(3) ↦ {(1,3)}`, `e=2` side with degree-1 residual `↦ {(2,1)}`, `e=3` side
+`↦ {(3,1)}`) is **this node's instance table** and B.83/B.84's gates check two of its rows.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.72 [lemma] [fresh]
+
+**STATEMENT.** *Degree conservation.* `(order1Type π φ g).degree = g.natDegree` for a block `g` whose
+residuals are separable; and `(typeOf f).degree = f.natDegree` (landed) is consistent with B.71's sum.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem degree_order1Type (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {g : Polynomial O} (hg : g.Monic) {μ : ℕ} (hμ : 0 < μ)
+    (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (hsep : …) : (order1Type π φ g).degree = g.natDegree
+```
+
+**DEPENDS.** B.13 · B.20 · B.30 · B.42 · B.45 · B.66 · landed `FactorizationType.degree`,
+`FactorizationType.degree_mk_add`.
+
+**PROOF.**
+1. `(order1Type).degree = Σ_{(S,ψ)} ℓ_S * m * ψ.natDegree`.
+2. For each slope `S`, `Σ_ψ ψ.natDegree = sideDeg S` (B.45's factorization has
+   `Σ ψ.natDegree * a ψ = (resPoly).natDegree = sideDeg` by B.30, and separability makes `a ψ = 1`).
+3. `Σ_S ℓ_S * sideDeg S = μ` — **the polygon's length identity**, which is B.42's degree bookkeeping
+   (`Σ (f_S).natDegree = f.natDegree` divided by `m`).
+4. `m * μ = g.natDegree` (B.13).
+
+**SIZE.** 26 lines.
+
+**⚠ STEP 3 IS `EFF.HE6.30`(a) AND ITS PROOF WAS INCOMPLETE IN THE SOURCE.** `EFF.HE6.59` (A3 F-2)
+records: "completes `HE6-3(a)`'s proof via length argument `Σ L_λ = μ`", and `EFF.HE6.30`'s OPEN-CALL
+2 records that this correction "sits **outside** every T2 pin span" and is one of the compilation's most
+consequential items. **This chapter obtains `Σ_S ℓ_S d_S = μ` as a corollary of B.42's factorization
+rather than as an independent length argument**, which is a different (and, being a degree count over
+`O`, more elementary) route. Recorded as §14 item 11.
+
+**SOURCE.** `EFF.HE6.30`(a) as completed by `EFF.HE6.59`; `EFF.HE3.13` ("`Σ_{labels} e_s f_s = μ`
+whenever every `R_λ` is separable"); landed `typeOf_degree`.
+
+**TEETH.** `HE6-SEP` (`EFF.HE6.49`, 4,232) → **executable regression** retained.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.73 [def] [fresh]
+
+**STATEMENT.** *The descent-trigger predicate.* `NeedsDescent π φ f` holds when some slope of `f`'s
+`φ`-adic polygon has a non-separable residual polynomial. By B.65, `¬ NeedsDescent` is exactly the
+hypothesis of B.63.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `NeedsDescent π φ f` : some side's residual polynomial is not separable — the order-1 read does
+not terminate. -/
+def NeedsDescent (π : O) (φ f : Polynomial O) : Prop :=
+  ∃ (u ℓ : ℕ) (h : (sideSet φ f u ℓ).Nonempty) (H₀ : ℕ), 0 < ℓ ∧ Nat.Coprime u ℓ ∧
+    1 < (sideSet φ f u ℓ).card ∧ npHgt φ f 0 = (H₀ : ℕ∞) ∧
+    ¬ (resPoly π φ f u ℓ h H₀).Separable
+```
+
+**DEPENDS.** B.16 · B.20 · B.29.
+
+**PROOF.** definitional.
+
+**FAITHFULNESS.** `docs/GMN_citations.md` Lemma 3.11(3) at order 1; `EFF.HE6R1.09`'s jump condition is
+the **level-2** analogue and must not be conflated (H-3). The quarry has a declaration of the same name
+(`lean/LeanUrat/OM/ResidualPolynomial.lean`'s `needsDescent`) but it is `PadicValuation`-wired and
+therefore not a quarry copy (H-6); the name coincidence is deliberate and harmless, since the two live
+in different projects that are never in the same environment. **Flagged for human review.**
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `docs/GMN_citations.md` Lemma 3.11(3); `EFF.HE3.15`; `EFF.W12.86` step 5.
+
+**TEETH.** signed non-applicable (a definition).
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.74 [lemma] [fresh]
+
+**STATEMENT.** *The descent trigger is decidable from the window.* `NeedsDescent π φ f` depends only on
+the development coefficients at the on-side abscissae and on their digits at the line heights;
+consequently (with B.77) it is determined by `f mod π^N` for `N` exceeding every on-side line height.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem needsDescent_congr (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ) {N : ℕ}
+    {f f' : Polynomial O} (hff' : ∀ i, π ^ N ∣ (f - f').coeff i)
+    (hvis : Visible π φ f N) : NeedsDescent π φ f ↔ NeedsDescent π φ f'
+```
+*(`Visible` is B.75.)*
+
+**DEPENDS.** B.10 · B.73 · B.75 · B.77.
+
+**PROOF.**
+1. B.77's level-stability transports `npHgt`, `suppVal`, `sideSet` and `resPoly` from `f` to `f'`
+   under `hvis`.
+2. `Separable` is a property of `resPoly`, so it transports.
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.HE3.67` (R8-1's recursive certificate, whose clause 2 is exactly "every recentred
+value consulted there is either read exactly below `c_ν`, or is known only to be `≥ c_ν` but satisfies
+`c_ν > b_{ν,j}`"); `EFF.W12.27` ("All data the read consumes sit at heights `≤ N−1`, so every lift of
+the window class shares them").
+
+**TEETH.** `HE-BND` (`EFF.HE3.55`, 3,744 boundary reads, **RE-SCOPED by R8-1**) → **executable
+regression** retained, with the re-scoping carried: the battery's decided/undecided profile is scored
+only on rows aligned with R8-1's corrected criterion.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
