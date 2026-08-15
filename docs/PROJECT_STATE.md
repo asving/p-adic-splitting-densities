@@ -4886,3 +4886,36 @@ next for the composer. (4) Process: the orchestrator session was
 /clear'd ~05:17; all three units' uncommitted work sat 2h and is now
 checkpointed (survival discipline). Fable-max-serial regime (#57)
 unchanged; sol-pro 5.6 still awaited (#56).
+
+**2026-08-15 DATED APPEND #60 — THE FIRST EXACT `n = 3` DENSITY: the
+inert value is a THEOREM; BP-B §9 composed (with a defect notice);
+the storm-ops day.** (1) THE HEADLINE, in `leancheck` (Lean core
+only, statements byte-identical to the morning skeletons):
+`inert3_density_eq : genuineDensity O 3 c3inert =
+q³(q+1)/(3(q⁴+q³+q²+q+1))` over every complete DVR with finite
+residue field, both characteristics — gates `8/31` at q=2 and
+`36/121` at q=3, EXACTLY HM3.D's predicted values, which §10.3 could
+only bracket. Route: the sharp-constant (q⁻⁵) self-similar lower
+bound over `decidedSeq` (`N3InertLower`, 8098a11c — mixed-box
+reconstruction count `card_boxImage` = q⁴·#S + family disjointness)
+and its upper twin over `possibleSeq` (`N3InertExact`, ace8d018 —
+residue trichotomy + forced case S), equal limits by #59's drainage,
+fixed point pinned. Wired (aac91374), full build 8,715 jobs, 14/14
+axiom gates Lean-core. The other four HMENU3 rows stay OPEN (§13.5's
+peel-Jacobian/two-term-recursion obstruction, unchanged). N3 note
+§14 records the landing. (2) BP-B §9 (B.75–B.82, level-N decidedness
+certificates; DECISION D-4) composed in 5 commits (786496a7 →
+4f792898), R8-1 transcribed from the rewritten certificate per H-4.
+**DEFECT NOTICE D-§9.1**: §8's committed nodes pin `H₀` at abscissa
+0, §4's at `sideMin` — junk resPoly on interior sides of multi-slope
+polygons; repair owed at the leanspec-stub stage (cross-read items
+§14.12/§14.13). Chapter B stands at B.01–B.82 of 86; §10 (gates +
+census) remains. (3) OPS: 529 capacity waves all day — the three
+pre-#59 units were storm casualties (transcripts confirm), and
+today's two fillers each died ≥1× mid-flight and were RESUMED with
+zero loss thanks to partial commits every 2-3 fills; per Asvin
+("if fable is fine and opus isnt you can also use fable agents"),
+the fillers ran on FABLE — regime memory amended; a 10-min storm
+watchdog cron ran during the campaign (torn down at close). OWED
+(carried): codex cross-read of chapter G (Tue); Asvin's fresh-eyes
+on HYP.01's caveats (#59); D-§9.1 repair; BP-B §10.
