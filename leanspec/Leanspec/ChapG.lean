@@ -390,6 +390,15 @@ example (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
       ∨ (∃ k, t = 2 * k ∧ (DecidedAt O 2 inertType N c ∨ DecidedAt O 2 splitType N c)) :=
   depth_type (hπ := hπ) (N := N) (t := t) (ht := ht) (c := c) (hc := hc)
 
+/-- **G.30a** *(NEW NODE — blueprint AMENDMENT 2026-08-15 §A-7, the dependency-gap cure for
+G.31.)* Odd depth strata above the level-`N` window are empty. **Only the ODD form is signed:**
+the general shape `depthSet π N t = ∅ for t ≥ N` — the one wave-3 booked as G.31's missing
+premise — is REFUTED at even `t` in residue characteristic 2 (§A-7's `ℤ₂`, `N = 2`, `t = 2`
+counterexample). G.31's union is odd-indexed, so this form is what it consumes. ENV-A' (no
+completeness). -/
+axiom depthSet_odd_eq_empty (hπ : Irreducible π) {N j : ℕ} (hN : N ≤ 2 * j + 1) :
+    depthSet π N (2 * j + 1) = (∅ : Set (Coeff O 2 N))
+
 /-- **G.31a** The inert half of an even stratum. -/
 def inertStratum (π : O) (N k : ℕ) : Set (Coeff O 2 N) :=
   {c ∈ depthSet π N (2 * k) | DecidedAt O 2 inertType N c}
