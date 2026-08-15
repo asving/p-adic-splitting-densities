@@ -1799,7 +1799,619 @@ chapter E's battery inheritance (GC-8).
 
 ## 5. §5 — THE DESCENT GRAMMAR: THE WIDENED BOX, THE JUMP, THE PEEL, THE PROJECTION
 
-<!-- §5 nodes: C.29–C.40 -->
+> **Design note (what is proved vs what is carried).** This section transcribes the descent
+> grammar at its TERMINAL forms (C-H8): the per-factor trichotomy behind COROLLARY HE6.B
+> `[r1]` (C.30), the jump floors and the one-step multiplicity drop (C.31), the THREE-CLAUSE
+> jump bound of the owner-directive re-display `EFF.HE6R1.47` (C.32 — the frozen
+> `J ≤ log₂n − 2` unconditional display is DEAD), the two dissections one level up
+> (C.33/C.34 — the section's heavy nodes), and LEMMA HE6R1-2/-3 (C.36–C.40). The standing
+> hypotheses `disc f ≠ 0` and `Φ′ ∤ f` (`HE6-PEEL-CONVENTION`, `EFF.HE6.09` — T2's
+> 32-consumption pin) enter as `Squarefree f` plus `¬ F.key ∣ f`; the `disc`-to-`Squarefree`
+> recast is a GC-9-class divergence, flagged per node. **`HE6-BOX-1` is a NON-NODE**
+> (C-H13): its widened closure is exactly C.30 + §7 + chapter E's branch — an agent
+> "needing the box" consumes those.
+
+### NODE C.29 [def] [fresh]
+
+**STATEMENT.** *Level purity and the label predicate.* `IsDvPure F g u ℓ : Prop` — `g`'s
+level polygon is one-sided of slope `u/ℓ`: both extreme abscissae `0` and
+`g.natDegree / D′` lie in `dvSideSet F g u ℓ` (B.34's shape at the `dv`-carrier). And
+`HasLabel L g : Prop` — `g` is monic, `0 < deg g`, `IsDvPure F g L.u L.ℓ`, and `g`'s level
+residual is an `r`-power: `∃ m, 0 < m ∧ dvResPoly F H₀ hpin g L.u L.ℓ … = L.r ^ m` (the
+closure-free form of "every root of `g` is a level-2 point with level-1 label `(λ, r)`").
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+def IsDvPure (F : KeyFrame O π) (g : Polynomial O) (u ℓ : ℕ) : Prop :=
+  0 ∈ dvSideSet F g u ℓ ∧ g.natDegree / (F.e₁ * F.f₁) ∈ dvSideSet F g u ℓ
+
+def HasLabel {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (g : Polynomial O) : Prop :=
+  g.Monic ∧ 0 < g.natDegree ∧ IsDvPure F g L.u L.ℓ ∧
+  ∃ (hne₂ : (dvSideSet F g L.u L.ℓ).Nonempty) (M₀ : ℕ)
+    (hpin₂ : dvHgt F g (dvSideMin F g L.u L.ℓ hne₂) = (M₀ : ℕ∞)) (m : ℕ),
+    0 < m ∧ dvResPoly F H₀ hpin g L.u L.ℓ hne₂ M₀ hpin₂ = L.r ^ m
+```
+
+**⚠ FAITHFULNESS.** The corpus's `S_{λ,r}` is a set of roots in `K̄₀`; `HasLabel` is the
+factor-level surrogate (DECISION C-D1's recast). The tie "every root of a `HasLabel` factor
+is a `(λ, r)`-point" is not stated (no points exist); what downstream consumes is exactly
+this predicate plus C.27/C.37's value laws.
+
+**DEPENDS.** C.06 · C.07 · C.09 · C.25 · B.34 (shape template).
+
+**PROOF.** definitional. **SIZE.** 20 lines.
+
+**SOURCE.** `EFF.HE6.10` (sides/labels); `EFF.HE6R1.13` (“let `(λ, r)` be a level-1 label of
+`f`, `S = S_{λ,r}`, `f_S` the block factor”); DECISION C-D1.
+
+**TEETH.** signed non-applicable. **ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.30 [lemma] [fresh]
+
+**STATEMENT.** *The descent trichotomy (COROLLARY HE6.B `[r1]`'s case split, re-derived from
+the proof's own display).* For a side `(u, ℓ)` (`0 < ℓ`, coprime) and a monic irreducible
+factor `r` of the side residual with multiplicity `m_r ≥ 1` and `d_r := deg r ≥ 1`, exactly
+one of:
+(a) `m_r = 1` — the separable-at-`r` case (decided by the §7 layer);
+(b) `m_r ≥ 2 ∧ ℓ = 1 ∧ d_r = 1` — repeated `K`-rational linear at an integer slope (the
+α-refine case: descent stays at the current level — chapter B's order-1 recentering at the
+degenerate frame, `EFF.HE6.19`'s "HE3 stage-α" branch);
+(c) `m_r ≥ 2 ∧ 2 ≤ ℓ * d_r` — the **level jump** (LEMMA HE6R1-1's widened condition:
+"a node requires a level jump exactly when its side carries a repeated irreducible residual
+factor with `ℓ_i·deg r_i ≥ 2`").
+The three cases are pairwise disjoint and exhaustive, decidably in `(m_r, ℓ, d_r)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem descent_trichotomy (mr ℓ dr : ℕ) (hm : 1 ≤ mr) (hℓ : 0 < ℓ) (hd : 1 ≤ dr) :
+    (mr = 1 ∧ ¬(mr ≥ 2 ∧ ℓ = 1 ∧ dr = 1) ∧ ¬(mr ≥ 2 ∧ 2 ≤ ℓ * dr)) ∨
+    (mr ≥ 2 ∧ ℓ = 1 ∧ dr = 1 ∧ ¬(2 ≤ ℓ * dr) ∧ mr ≠ 1) ∨
+    (mr ≥ 2 ∧ 2 ≤ ℓ * dr ∧ ¬(ℓ = 1 ∧ dr = 1) ∧ mr ≠ 1)
+```
+
+(the formalizer may package the three cells as an `inductive` case tag — GC-4 allows
+inductive DOMAIN types; the σ carrier is unaffected.)
+
+**DEPENDS.** none (arithmetic).
+
+**PROOF.** `ℓ = 1 ∧ dr = 1 ↔ ℓ*dr = 1 ↔ ¬(2 ≤ ℓ*dr)` given positivity; `omega`.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.HE6R1.10` (the proof's own three-way split, verbatim: “HE6.A decides a
+separable residual at every ℓ; HE3's stage-α decides a repeated K-rational linear factor at
+an integer slope; the complement is exactly a repeated irreducible `r` with `ℓ·deg r ≥ 2`”);
+`EFF.HE6.19` (COROLLARY HE6.B `[r1]`, the honest scope + "the excluded set is now EXACTLY
+the complement of the union of the two surviving node hypotheses"); `EFF.HE6R1.05` (the §S2
+four-case enumeration — the four cells `(ℓ ≥ 2?) × (d ≥ 2?)` of case (c)∪(b) refine this
+trichotomy; per GC-10's re-derive rule the PROOF-consumed split is the one transcribed).
+
+**TEETH.** `HE6-T-CASEB` + `HE6R1-T-CRACK` (both branches of (c) machine-certified genuinely
+undecided by outer data — three distinct PARI σ on identical outer data) → **executable
+regressions** retained; they guard the NECESSITY of the case split, which no Lean theorem
+states (a Lean theorem cannot say "no outer-data-only argument decides this").
+
+**ENVIRONMENT.** ENV-C5.
+
+---
+
+### NODE C.31 [lemma] [fresh]
+
+**STATEMENT.** *Jump floors and the one-step multiplicity drop.* (i) In case (c) the side
+length obeys `L_λ ≥ m_r·ℓ·d_r ≥ 4` (floor: `m_r ≥ 2`, `ℓd_r ≥ 2`). (ii) `L_λ ≤ μ` (side
+lengths bound the polygon's abscissa range), so `μ ≥ 4`. (iii) At a composite frame
+(`2 ≤ D′`): `n = D′μ ≥ 8` — the first-bite bound, and depth-3 first bites at `n ≥ 16`
+(iterating: a second jump needs `μ₂ ≥ 4`, so `μ ≥ 8`, `n ≥ 16`). (iv) **The drop:** at a
+jump on `(u, ℓ)` with residual `R` of degree `d_R` and block `f_S`,
+`μ₂ = deg f_S / D″ ≤ deg R / d_r ≤ μ / (ℓ·d_r) ≤ μ/2` — `EFF.HE6R1.10`'s audited chain
+(`n_λ = D′L_λ`, `(SEP)`-free, enters as `deg f_S ≤ D′·L_λ` from C.33's dissection).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem jump_floor (mr ℓ dr L μ : ℕ) (hm : 2 ≤ mr) (hjump : 2 ≤ ℓ * dr)
+    (hL : mr * (ℓ * dr) ≤ L) (hLμ : L ≤ μ) : 4 ≤ L ∧ 4 ≤ μ
+
+theorem first_bite (D μ n : ℕ) (hD : 2 ≤ D) (hμ : 4 ≤ μ) (hn : n = D * μ) : 8 ≤ n
+
+theorem jump_drop (D ℓ dr μ μ₂ dfS : ℕ) (hD : 0 < D) (hℓ : 0 < ℓ) (hd : 0 < dr)
+    (hμ₂ : μ₂ * (D * ℓ * dr) = dfS) (hfS : dfS ≤ D * (ℓ * (μ / ℓ)))  -- deg f_S ≤ D′L_λ, L_λ ≤ μ
+    (hL : ℓ * dr * 2 ≤ 2 * μ) : 2 * μ₂ ≤ μ
+```
+
+(the exact hypothesis plumbing of `jump_drop` is fixed at stub stage against C.33/C.35's
+outputs; the SPEC is the chain `μ₂ ≤ deg R_λ/d_r ≤ μ/(ℓd_r)` with every step ℕ-cleared.)
+
+**DEPENDS.** C.30 · C.33/C.35 (suppliers of `deg f_S ≤ D′L_λ` and `L_λ ≤ μ` — forward
+within-section refs, fired after them).
+
+**PROOF.** 1. (i)/(ii)/(iii): `Nat.mul_le_mul` + `omega` (H.03's pattern; the depth-3 clause
+iterates (iv) once). 2. (iv): divide the audited chain
+`μ₂·D″ = deg f_S ≤ D′L_λ = D′ℓd_R` and `d_R·… ≤ μ`-clearing; `omega`/`Nat.div` lemmas.
+
+**SIZE.** 22 lines.
+
+**SOURCE.** `EFF.HE6R1.09`/.10 (the displays + the compile-time audit “`L_λ = ℓ·deg R_λ ≥
+ℓ·m·d_r = m(ℓd_r) ≥ 4` ✓ … `μ₂ = deg f_S/D″ ≤ … ≤ μ/(ℓd_r)` ✓ every step exact”);
+`EFF.HE6.19`'s first-bite audit (`n = D′μ ≥ 2·4 = 8`); `EFF.HE6.20` items 1–2.
+
+**TEETH.** `EFF.HE6.20`'s bite-frame numbers (`n = 8, μ = 4, D′ = 2, ℓ = 2, d = 2`, polygon
+`(0,2u)–(4,0)`) → **Lean theorem** instances + §13 regression.
+
+**ENVIRONMENT.** ENV-C5.
+
+---
+
+### NODE C.32 [theorem] [fresh]
+
+**STATEMENT.** *The jump-count bound — the THREE-CLAUSE re-display, `ℕ`-cleared (TERMINAL;
+the frozen unconditional `J ≤ log₂n − 2` is withdrawn at ambient roots and DEAD).* Let
+`a : Fin J → ℕ` be the multiplicities at the successive jumps of a history (`a 0 ≤ μ`,
+`4 ≤ a j` for every jump, `2 * a (j+1) ≤ a j`). Then:
+(a) **any history:** `2 ^ (J + 1) ≤ 2 * μ` — the cleared form of `J ≤ log₂ μ − 1`
+(read: `4·2^{J−1} ≤ μ`);
+(b) **composite-stage-rooted** (`2 ≤ D′`, `n = D′·μ`): `2 ^ (J + 2) ≤ n` — the cleared
+`J ≤ log₂ n − 2`, THE bound every consumption site cites (stage-rooted, unchanged by the
+re-display);
+(c) **ambient-rooted** (`D′ = 1`, `n = μ`): `2 ^ (J + 1) ≤ n` — the cleared
+`J ≤ log₂ n − 1`, **and this is sharp**: `J = 1, n = 4` satisfies every hypothesis with
+equality (the R7/A4 quartic witness `m = 2, ℓ = 1, d_r = 2`, side length `4 = μ = n`), while
+clause (b)'s bound would read `8 ≤ 4`, false — the frozen display's refutation, landed as
+arithmetic.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem jump_count_bound {J μ : ℕ} (a : Fin (J + 1) → ℕ) (ha0 : a 0 ≤ μ)
+    (hfloor : ∀ j, 4 ≤ a j) (hdrop : ∀ j : Fin J, 2 * a j.succ ≤ a j.castSucc) :
+    2 ^ (J + 2) ≤ 2 * μ
+-- (a) with J+1 jumps ⇒ 2^{(J+1)+1} ≤ 2μ; the (b)/(c) corollaries and the sharpness
+-- example land as companions `jump_count_stage`, `jump_count_ambient`,
+-- `jump_count_ambient_sharp` in the same file.
+```
+
+**DEPENDS.** C.31 (whose (iv) instantiates `hdrop` for real histories).
+
+**PROOF.**
+1. Downward induction: `a J ≥ 4` and each step doubles — `4 * 2^J ≤ a 0·…` via
+   `Nat.pow_le` induction; `≤ μ` closes (a).
+2. (b): `μ ≤ n / D′ ≤ n / 2` cleared: `2μ ≤ n`, chain with (a).
+3. (c): substitute `n = μ`. Sharpness: `decide`-grade instance `J = 1, a = ![4, …]`-check
+   plus the counter-evaluation `2^3 = 8 > 4` against (b)'s conclusion — the A4
+   counterexample's arithmetic, exactly (`EFF.HE6R1.43`'s audit: “`J ≤ log₂4 − 2 = 0` is
+   contradicted by `J = 1`”).
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.HE6R1.47` (the owner-directive re-display, all three clauses verbatim,
+with its consumer sweep: “THEOREM HE7.C's bounds are stage-rooted (clause (b)) and
+unchanged”); `EFF.HE6R1.43` (the obstruction record + exact counterexample); `EFF.HE6R1.09`
+(the superseded display — carried as DEAD, per C-H8); `EFF.HE6R1.11` (the structural
+punchline: both widened-box branches supply the descent factor `ℓd_r ≥ 2`, unaffected by
+the re-display).
+
+**TEETH.** the A4 counterexample → **Lean theorem** (the sharpness companion); the `n = 8`
+one-jump/`n = 16` two-jump consumption values (`EFF.HE6R1.17`(i)) → **Lean theorem**
+instances of (b).
+
+**ENVIRONMENT.** ENV-C5.
+
+---
+
+### NODE C.33 [theorem] [fresh]
+
+**STATEMENT.** *The slope dissection at the level polygon (B.41/B.42 one level up).* Over
+the complete bundle (`[IsAdicComplete …]`), let `f` be monic with `F.key ∤ f`,
+`Squarefree f` NOT required here, and let the level polygon of `f` have side slopes
+`λ₁ = u₁/ℓ₁ > … > λ_s` above the frame's floor (`u_i > ℓ_i·D′·F.h`). Then `f` factors as
+`f = f₀ · ∏_i f_i` with each `f_i` monic, `IsDvPure F f_i u_i ℓ_i`, the `Φ′`-degree of `f_i`
+equal to the side's length `L_{λ_i}` (so `deg f_i = D′·L_{λ_i}` — the `(SEP)`-free
+`n_λ = D′L_λ` of LEMMA HE6-3(b), consumed by C.31), and `f₀` the below-floor remainder
+(the part whose development sits at or below the frame floor — order-1 territory, chapter
+B's); the factorization is unique among monic dissections.
+
+**SIGNATURE** (shape; the stub fixes the side-indexing plumbing).
+```lean
+namespace Uniformity.Density.Tower
+
+theorem exists_dv_slope_dissection (F : KeyFrame O π) (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hf : f.Monic) (hkey : ¬ F.key ∣ f) … :
+    ∃ …, f = … ∧ (∀ i, IsDvPure F (f_i) (u_i) (ℓ_i)) ∧
+      (∀ i, (f_i).natDegree = (F.e₁ * F.f₁) * ℓ_i * dvSideDeg F f (u_i) (ℓ_i) _) ∧ …
+```
+
+**⚠ HEAVY NODE — split-mandated: C.33 → 3** (graded solve at the `dv`-filtration; the limit
+through completeness; uniqueness). The proof is B.41/B.42's route re-run at the
+`dv`-graded structure — the graded pieces are `(stageHeight ≥ k)`-filtered `O[x]_{<D′}`
+modules instead of `π`-adic ones; the Hensel engine (`exists_solve_*`,
+`isCoprime_of_map_eq`, `exists_adicLimit_of_degree_lt`) is consumed as landed.
+
+**DEPENDS.** C.01 · C.06 · C.07 · C.08 · C.20 · C.23 · C.26 · C.29 · B.41/B.42 (route
+templates — NOT consumable directly: they require `IsKey φ`, false for `F.key` at `h ≥ 1`) ·
+landed Hensel engine.
+
+**PROOF (route).**
+1. Two-piece split at the top slope: the `dv`-graded coprimality of the slope-`λ₁` part
+   against the rest (C.26's residual nonvanishing at the seam gives the unit leading datum);
+   B.42's induction shape.
+2. Newton/Hensel iteration in the `dv`-filtration; degree bookkeeping through C.08's length
+   law gives `deg f_i = D′L_{λ_i}`.
+3. Uniqueness via `monic_factorization_unique` + purity separation (distinct slopes ⟹
+   coprime reductions in the graded ring — C.20's class separation).
+
+**SIZE.** 3 × ~45 lines.
+
+**SOURCE.** `EFF.HE6.10` (the polygon this dissects); `EFF.HE6R1.10` (the consumed
+`n_λ = D′L_λ` — LEMMA HE6-3(b), “(SEP)-free”, entering as this node's degree clause);
+`docs/GMN_citations.md` Thm 1.15 scope note (the level-1 twin's warrant, B §6's D-2).
+
+**TEETH.** the §13 frame audit (the `EFF.HE6R1.18` battery frame's single side `λ ∈ {3,5}`,
+`deg f_S = 8`) → **executable regression**; `HE6-T-BADKEY` guards `hcop` (via C.09).
+
+**ENVIRONMENT.** ENV-C2 (`hπ` explicit; NO residue-field finiteness — GC-6.4).
+
+---
+
+### NODE C.34 [theorem] [fresh]
+
+**STATEMENT.** *The residual dissection at the level polygon (B.48 one level up).* With
+C.33's context and a pure factor `g` (`IsDvPure F g u ℓ`, side residual
+`R := dvResPoly F … g u ℓ …`): for every factorization `R = ∏_k ρ_k^{m_k}` into pairwise
+coprime prime powers over the stage field, `g` factors as `g = ∏_k g_k` with `g_k` monic,
+`IsDvPure F g_k u ℓ`, and `dvResPoly` of `g_k` equal to `ρ_k^{m_k}` (up to the C.39-class
+unit scalar — the `K^×`-scale consumers are invariant under); unique among monic
+refinements. In particular for `L` a level datum with `L.r ∣ R`: the **`(λ, r)`-block
+factorization** `g = f_S · g'` with `HasLabel L f_S` (multiplicity `m_r`) and
+`¬ L.r ∣ dvResPoly … g' …`.
+
+**SIGNATURE** (shape).
+```lean
+namespace Uniformity.Density.Tower
+
+theorem exists_dv_residual_dissection (F : KeyFrame O π) (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] {H₀ hpin}
+    {g : Polynomial O} (hg : g.Monic) {u ℓ : ℕ} (hpure : IsDvPure F g u ℓ) … :
+    ∃ fS g', g = fS * g' ∧ HasLabel (L) fS ∧ … ∧ ¬ L.r ∣ dvResPoly F H₀ hpin g' u ℓ … …
+```
+
+**⚠ HEAVY NODE — split-mandated: C.34 → 2** (the coprime-residual Hensel split; the
+block-factor packaging). Route: B.48's graded-coprime lift (`GradedCoprime`,
+`exists_graded_solve`-pattern) at the `dv`-carrier, with C.26 supplying degree/constant-term
+control and the multiplicativity of `dvResPoly` on pure products (the B.35-analogue enters
+as a private helper here or a RE-PLAN node if reusable — ⚠ the orchestrator should expect
+that RE-PLAN: `dvResPoly_mul_of_pure`, the level-2 twin of B.35, is needed by C.37 too).
+
+**DEPENDS.** C.25 · C.26 · C.29 · C.33 · B.44–B.48 (route templates) · landed Hensel engine.
+
+**PROOF (route).** B.48's steps at the `dv`-graded ring: lift the coprime residual
+factorization through the graded Hensel solve; purity of the factors from the two-line
+squeeze (B.57's step-1 pattern at the `dv`-carrier); uniqueness from
+`monic_factorization_unique` + residual coprimality.
+
+**SIZE.** 2 × ~45 lines.
+
+**SOURCE.** `EFF.HE6R1.13` (the block factor `f_S` — cited there to `LEMMA HE7-6
+[supplied-by: chapter E]`; per GC-13 this node is chapter C's own supply of the
+tower-geometric content, and the orchestrator reconciles E's HE7-6 transcription with this
+node at freeze — one of the two becomes the citing party, never both proving);
+`EFF.HE6.20` item 1 (single-label sides need no dissection — the `R = r^m` case is
+`fS = g`).
+
+**TEETH.** `EFF.HE6R1.25`'s census (the block = everything at `R_λ = r²`, `μ₂ = 2`) →
+§13 regression.
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.35 [def] [fresh]
+
+**STATEMENT.** *The block factor and `μ₂`.* Via C.34's uniqueness: `blockFactor L f`
+(defined under C.33/C.34's hypotheses by choice from the unique dissection) — the monic
+`f_S` with `HasLabel L f_S` in the `(λ, r)`-block factorization of `f`'s slope-`λ` part —
+and `mult₂ L f := (blockFactor L f).natDegree / L.keyDeg₂` (the corpus's
+`μ₂ := deg f_S / D″`, `EFF.HE6R1.12`). Companion: `(blockFactor L f).natDegree =
+L.keyDeg₂ * mult₂ L f` exactly (the division is exact — C.34's degree bookkeeping).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def blockFactor {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) (h : …C.33/C.34 context…) : Polynomial O := …
+
+noncomputable def mult₂ {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) (h : …) : ℕ := (blockFactor L f h).natDegree / L.keyDeg₂
+```
+
+**DEPENDS.** C.09 · C.33 · C.34.
+
+**PROOF.** definitional (choice from C.34's unique existence). **SIZE.** 14 lines.
+
+**SOURCE.** `EFF.HE6R1.12` (“THEOREM HE7.A is stated about the block factor `f_S` and puts
+`μ₂ := deg f_S/D″`”); `EFF.HE6R1.18` (`μ₂ = 8/4 = 2` audit).
+
+**TEETH.** the `μ₂ = 2` frame value → §13 regression. **ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.36 [lemma] [fresh]
+
+**STATEMENT.** *Block projection, clause (a) (LEMMA HE6R1-2(a), `[r1′]`-hypothesis form).*
+Let `f` be monic, `Squarefree f`, `¬ F.key ∣ f` (the PEEL-CONVENTION pair), `L` a level
+datum with block `f_S := blockFactor L f` and complement `g := f / f_S`, and let `Ψ` be a
+test key (`IsTestKey L Ψ`) with **`¬ Ψ ∣ f_S`**. Then: (i) the `[r1′]` equivalence
+`Ψ ∣ f_S ↔ Ψ ∣ f` (so the hypothesis may be checked on `f`); (ii) `L.r` does not divide
+`g`'s side residual (`¬ L.r ∣ dvResPoly F … g L.u L.ℓ …` — C.34's complement clause,
+restated); (iii) consequently the **complement constant**
+`c_g := (the ℕ-value of) L.ℓ • dvSupp F g L.u L.ℓ`… is finite and well-defined — the
+closure-free `c_g` ("for every level-2 point `ξ`, `dv₂(g(ξ)) = ℓ·h_{F_g}(λ)`, a constant
+depending on `(g, λ)` only").
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem block_complement_notdvd {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hf : f.Monic) (hsq : Squarefree f) (hkey : ¬ F.key ∣ f) (hctx : …) :
+    (∀ Ψ, IsTestKey L Ψ → (Ψ ∣ blockFactor L f hctx ↔ Ψ ∣ f)) ∧
+    ¬ L.r ∣ dvResPoly F H₀ hpin (f /ₘ blockFactor L f hctx) L.u L.ℓ … …
+```
+
+with `complementConst` (the `c_g` value) as a companion `def` in the same file (RE-PLAN if
+another section needs it by name — expected: C.37, C.39, §7).
+
+**DEPENDS.** C.13 · C.29 · C.34 · C.35 · B.31 (division monotonicity).
+
+**PROOF.**
+1. (i) `⟸` needs: a `Ψ`-divisor of `f` divides `f_S`. Closure-free route: `Ψ` is monic with
+   `HasLabel`-grade slot data (C.13); any common divisor bookkeeping runs through C.34's
+   uniqueness — `gcd(Ψ, f)`'s residual is an `r`-power (Ψ's is), so the gcd sits inside the
+   `(λ,r)`-block by the dissection's uniqueness; squarefreeness transfers divisibility.
+   (The corpus's root-set argument `EFF.HE6R1.13`'s bracket is replaced by this
+   factor-level argument — FAITHFULNESS-flagged, §16.)
+2. (ii) is C.34's clause.
+3. (iii): finiteness of `dvSupp F g L.u L.ℓ` from `g ≠ 0`; the constancy claim is
+   definitional in the recast (the constant IS the support value; the corpus's "for every
+   point" content is carried by C.27's exactness at label factors).
+
+**SIZE.** 34 lines.
+
+**SOURCE.** `EFF.HE6R1.13` (LEMMA HE6R1-2 with the `[r1′]` insertion + its equivalence
+argument, verbatim; clause (a)); `EFF.HE6.09` (the standing-hypothesis pair).
+
+**TEETH.** the 12-member `Ψ ∣ f_S` stratum (`EFF.HE6R1.14`: BADTOTAL diagnosis) →
+**executable regression** retained (the §13 gate re-fires one degenerate member and checks
+the (i)-equivalence detects it).
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.37 [theorem] [fresh]
+
+**STATEMENT.** *Block projection, clause (b): THE TRANSLATION IDENTITY (the GC-2 mechanism
+node).* With C.36's context (in particular `¬ Ψ ∣ f_S`), for every level-2 side `(u₂, ℓ₂)`
+above the seam (`u₂ > ℓ₂ * L.seam`):
+
+```
+dv2Supp L Ψ f u₂ ℓ₂ = dv2Supp L Ψ f_S u₂ ℓ₂ + ℓ₂ • (c_g : ℕ∞)
+```
+
+— `EFF.HE6R1.13`(b)'s `h_{F₂,f}(κ₂) = h_{F₂,f_S}(κ₂) + c_g`, cleared by `ℓ₂`. Consequently
+the above-seam level-2 polygon of `f` is that of `f_S` translated by `c_g`: same argmin
+sets shifted, same slopes, same lengths — so `mult₂` and the §7 count are computable from
+`f` without exhibiting `f_S` (the consequence itself is packaged at C.64).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem dv2Supp_translation {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : …C.36's context…)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂) :
+    dv2Supp L Ψ f u₂ ℓ₂
+      = dv2Supp L Ψ (blockFactor L f …) u₂ ℓ₂ + ℓ₂ • (complementConst L f … : ℕ∞)
+```
+
+**DEPENDS.** C.11 · C.13 · C.27 (`slot2_exact` — the value transport) · C.35 · C.36 · the
+`dvResPoly_mul_of_pure` RE-PLAN helper (C.34's ⚠) · B.32 (additivity template).
+
+**PROOF (route).**
+1. `f = f_S·g` gives the Ψ-development of `f` as the product's; the level-2 pin of the
+   product at index `j` decomposes through the development-of-product bookkeeping
+   (B.32/B.33's shape at the `dv2`-carrier).
+2. Above the seam, `g`'s contribution to every pin is EXACTLY `c_g` (no interaction): the
+   attaining slot of `g` sits at the side value (C.36(ii)–(iii): `r ∤ R^{(g)}` kills
+   cancellation at the seam residue — C.23's mechanism at the `(stageField, level2Field)`
+   pair), so each pin translates by `c_g`.
+3. Infima translate; argmin sets are preserved under constant shifts.
+
+**SIZE.** 44 lines. **Split candidate** (step 2's no-interaction lemma may become C.37a —
+the orchestrator books it if the stub run finds the file over the contract bound).
+
+**SOURCE.** `EFF.HE6R1.13`(b) (verbatim, including “same breakpoints, same slopes λ₂, same
+lengths `L_{λ₂}`”); GC-2 (this identity is the czar's named ℕ∞-mechanism: *"the translation
+identity `EFF.HE6R1.13`(b) with `c_g` is the mechanism"*).
+
+**TEETH.** `HE6R1`'s P2/P4 legs (252 flat identities; the 1,512 exactness identities feed
+step 2 via C.27) → **executable regression** retained; §13 re-fires the frame instance.
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.38 [lemma] [fresh]
+
+**STATEMENT.** *Block projection, clause (c): same radical at every above-seam side.* With
+C.37's context, at every level-2 side `(u₂, ℓ₂)` above the seam: the level-2 residuals of
+`f` and `f_S` (the `dv2`-analogue of C.25, built from `twistRead`-reads of the
+Ψ-development at the side — `dv2ResPoly`, a companion `def` in this file, RE-PLAN if §7/§9
+need it by name: they do — book it) have the same degree `L_{λ₂}/ℓ₂` and the same monic
+irreducible factors (same radical); in particular one is separable iff the other is.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem dv2ResPoly_radical_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    (hctx : …C.37's context…) {u₂ ℓ₂ : ℕ} (hseam : ℓ₂ * L.seam < u₂) … :
+    (dv2ResPoly L Ψ f u₂ ℓ₂ …).radical = (dv2ResPoly L Ψ (blockFactor L f …) u₂ ℓ₂ …).radical
+    ∧ (dv2ResPoly L Ψ f u₂ ℓ₂ …).natDegree = (dv2ResPoly L Ψ (blockFactor L f …) u₂ ℓ₂ …).natDegree
+```
+
+**DEPENDS.** C.25 (template) · C.37 · C.39 (the scalar — the radical equality is scalar-
+invariance + C.37's translation; fired together).
+
+**PROOF.** C.37 shifts every read height by `c_g`; the residual coefficients of `f` at the
+shifted heights are the `f_S`-coefficients times the C.39 scalar (a fixed `K₂^×` unit per
+side); a unit scalar preserves degree, radical, separability.
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.HE6R1.13`(c) (verbatim through the truncation: “same degree `L_{λ₂}/ℓ₂` and
+the same monic irreducible factors (same radical); in particular one is separable iff the
+other is”).
+
+**TEETH.** as C.37's. **ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.39 [lemma] [fresh]
+
+**STATEMENT.** *The per-side scalar, TERMINAL pin-height form (PE3 F-1).* With C.37's
+context, at every above-seam side `(u₂, ℓ₂)`:
+
+```
+dv2ResPoly L Ψ f … = γ_g · β^{c₁(m₁^{f_S}, c_g)} · dv2ResPoly L Ψ f_S …
+```
+
+where `γ_g` is `g`'s level-2 residue read (a fixed element of `K₂^×`), `β` = C.12's
+level-2 letter (`AdjoinRoot.root L.r`), `m₁^{f_S}` is the PIN height at the side's starting
+index (an integer — NOT the side's line value, which off the first side need not be one:
+PE3 F-1's ill-formedness witness `39/2 ∉ ℤ`), and `c₁` is C.28's cocycle. At `L.ℓ = 1` the
+exponent vanishes (C.28(ii)) and the scalar is `γ_g` alone — the battery-exercised branch.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem dv2ResPoly_scalar {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin) … :
+    dv2ResPoly L Ψ f u₂ ℓ₂ …
+      = Polynomial.C (γg … * (AdjoinRoot.root L.r) ^ (L.cocycle (pinHeight …) (complementConst …)))
+          * dv2ResPoly L Ψ (blockFactor L f …) u₂ ℓ₂ …
+```
+
+(`γg` and `pinHeight` are companion `def`s in this file; `pinHeight` is the level-2
+`dv2Pin` at the side's `dvSideMin`-analogue index — the GC-1 pin discipline at level 2.)
+
+**DEPENDS.** C.12 · C.22 · C.28 · C.36 · C.37 · **GC-13 placeholder:
+`EFF.HE7.<nn> — ANNEX-LEMMA R1-a(iii)/(iv) [supplied-by: chapter E]`** (the cocycle-unit
+residue law `res(τ₂) = β^{c₁}`; C.28's arithmetic is chapter C's, the residue-transport
+step is stated here with the placeholder as its corpus anchor — the orchestrator reconciles
+at freeze; if E's transcription of R1-a lands first, this node's step 2 cites it by node ID).
+
+**PROOF (route).**
+1. Multiply the developments; normalize each side by the pin-height monomial (PE3 F-1's own
+   mechanism: “normalize each side by `n₂(m₁)·Ψ(ξ)^{j₁}` … the `Ψ(ξ)^{j₁}` factor is COMMON
+   to `f` and `f_S` and CANCELS in the ratio”).
+2. The normalizer composition picks up exactly `β^{c₁(m₁^{f_S}, c_g)}` (C.28's arithmetic +
+   the placeholder residue law); the remaining ratio is `γ_g` by C.36(iii)'s constancy.
+3. `ℓ = 1` clause: C.28(ii).
+
+**SIZE.** 36 lines.
+
+**SOURCE.** `EFF.HE6R1.39` (PE3 F-1, TERMINAL layer of chain C-5, verbatim display
+`R^f_{λ₂} = γ_g·β^{c₁(m₁^{f_S}, c_g)}·R^{f_S}_{λ₂}`, with the ill-formedness audit);
+`EFF.HE6R1.35` (PE2 F-2 — layer 2, DEAD as a display, kept as the derivation's source);
+`EFF.HE6R1.13`(c)'s `[r1′]` `γ_g` (layer 1, exact at `ℓ = 1`).
+
+**TEETH.** “PE3's blast-radius check found no consumer of the exponent at HEAD”
+(`EFF.HE6R1.39`) → the scalar's UNIT-hood (not its exponent) is what C.38/§7 consume —
+**signed non-applicability** for the exponent value; the `ℓ = 1` clause rides
+`HE6R1-T-TWIST0`'s regression (C.28).
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.40 [theorem] [fresh]
+
+**STATEMENT.** *The level-2 peel (LEMMA HE6R1-3, closure-free).* With the standing pair
+(`Squarefree f`, `¬ F.key ∣ f`) and C.35's block `f_S`, suppose instead `Ψ ∣ f_S` for a test
+key `Ψ` (`IsTestKey L Ψ`). Then: (i) `Ψ` is the ONLY such divisor and appears to the first
+power: `f_S = Ψ * f_S'` with `¬ Ψ ∣ f_S'` (squarefreeness); (ii) `typeOf Ψ =
+⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}⟩` — `e(Ψ) = e₁ℓ, f(Ψ) = f₁d_r` — hence `Ψ` is
+irreducible over `O`; **conditional exactly as §7's Tier-1 is** (the residue leg at
+`f₁·d_r ≥ 2` carries `C-BOX-1` — this node consumes C.61 and inherits its conditionality,
+no more); (iii) `mult₂` drops by exactly one:
+`(f_S'.natDegree) = L.keyDeg₂ * (mult₂ L f … − 1)`, and the peel applies at most once
+(squarefreeness kills a second `Ψ`-factor).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem level2_peel {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (ResidueField O)]
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : …) (hdvd : Ψ ∣ blockFactor L f hctx)
+    (hbox : CBox1Side L Ψ) :   -- §7's C-BOX-1 hypothesis carrier, C.60; vacuous at f₁·d_r = 1
+    typeOf Ψ = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}, …⟩ ∧
+    Irreducible Ψ ∧
+    ∃ fS', blockFactor L f hctx = Ψ * fS' ∧ ¬ Ψ ∣ fS' ∧
+      fS'.natDegree = L.keyDeg₂ * (mult₂ L f hctx - 1)
+```
+
+**⚠ FAITHFULNESS (the C-D1 recast at its sharpest).** The corpus proof (`EFF.HE6R1.16`) is
+a Galois-orbit squeeze (“`g₀ ∈ O[x]` is Galois-stable, so it contains ξ's whole orbit”).
+The Lean route replaces it: `Ψ` has degree `D″ = (e₁ℓ)(f₁d_r)` (C.13) and label-grade slot
+data, so §7's divisibility legs give `e₁ℓ ∣ e'` and (under `hbox`) `f₁d_r ∣ f'` for every
+`(e', f') ∈ (typeOf Ψ).data`; landed `typeOf_degree` + `efPair_pos_of_mem` force the
+singleton — **the same sandwich as the corpus's step, `ef = D″` forcing equality, with the
+orbit replaced by the factor** (`EFF.HE6R1.16`'s audit itself notes this is “the same
+sandwich as HE6's THEOREM HE6.A step 4, one level up”). Flagged §16 with C-D1.
+
+**DEPENDS.** C.10 (`keyDeg₂_regroup`) · C.13 · C.35 · C.36(i) · **C.60/C.61 (§7's
+divisibility legs + Tier-1 — forward dependency; §7 fires before this node)** · landed
+`typeOf_degree`, `efPair_pos_of_mem`, `FactorizationType.ext`.
+
+**PROOF.**
+1. (ii): C.61 applied to `Ψ` itself (a degree-`D″` label carrier: C.13's slot data make
+   `HasLabel L Ψ` with `m = 1` — a private lemma here); irreducibility from the singleton
+   `typeOf` + degree (`typeOf` of a monic with singleton data of full degree ⟹ one monic
+   factor — landed `monicFactors` uniqueness).
+2. (i)/(iii): `Squarefree f` descends to `f_S`; degree arithmetic through C.35's exact
+   division and C.10.
+
+**SIZE.** 34 lines.
+
+**SOURCE.** `EFF.HE6R1.15` (LEMMA HE6R1-3, verbatim: `g₀ = Ψ`, `Ψ` irreducible of degree
+`D″`, `e(Ψ) = e₁ℓ, f(Ψ) = f₁d_r`, `μ₂` drops by 1, at most once); `EFF.HE6R1.16` (the proof
++ audit + the 12/12, 5/5-PARI machine confirmation); `EFF.HE6R1.14` (FINDING HE6R1-F2 — the
+missing hypothesis this peel repairs).
+
+**TEETH.** the supplementary leg (`he6r1_supp.py` item (A): 12/12 decided, 5/5 PARI,
+`σ = {(2,2),(2,2)}` member by member) → **executable regression** retained + the σ value
+`{(e₁ℓ, f₁d_r)} = {(2,2)}` fires as a §13 gate instance (`q = 3` from the battery; the
+`q = 2` twin at the `(1,2)`-genre frame per `EFF.HE6.20`(3), which is live at `q = 2`).
+
+**ENVIRONMENT.** ENV-C3.
+
+---
 
 ---
 
@@ -1875,7 +2487,7 @@ chapter E's battery inheritance (GC-8).
 
 ---
 
-<!-- RESUME: §3–§4 COMPLETE (C.01–C.28; C.13→C.21 and C.27→C.29/C.33/C.34 forward refs recorded in-node; W(t)/chat_t moved to §6 per §4 design note). Next: compose §5 (C.29–C.40, the descent grammar) from EFF.HE6R1.05 (widened box four cases), .09/.10 (HE6R1-1 + proof), .43/.47 (THREE-CLAUSE re-display TERMINAL), .12/.13 (block projection + PE3 F-1 scalar), .14/.15/.16 (peel + proof); define HasLabel (C.29) + the dv-level dissections (C.33/C.34, B.41/B.42/B.48 one level up). Then §6 (HETOW + GENTOW1: composed key Φ₂, chat_t := lift(c_t·η^{W(t)}), HETOW-1/2/3, GENTOW-1/1.1/2/5 TERMINAL forms, K₂-digit lift M_{r,t}). Commit per 2–3 nodes; A-§ deltas at tail. -->
+<!-- RESUME: §3–§5 COMPLETE (C.01–C.40). Forward refs recorded in-node: C.13→C.21; C.27→C.29/C.33/C.34; C.31→C.33/C.35; C.40→C.60/C.61 (§7 fires before C.40). RE-PLAN bookings so far: dvResPoly_mul_of_pure (B.35 twin, from C.34/C.37), dv2ResPoly def (from C.38), complementConst/γg/pinHeight defs (C.36/C.39). AMENDMENT owed to committed C-H3 wording: §5 DOES construct test keys (C.13/C.14, O[x]-algebra) — record in A-§5 block at chapter close: the immunity claim is "no fractional-height ELEMENT below degree D″, no base change", not "no test key". Next: §6 (C.41–C.58) from EFF-HETOW (composed key Φ₂ wrap-corrected .13, HETOW-1/2/3 bridges, W(t), C-A/C-B riders) + EFF-GENTOW1 (GENTOW-1 clip R2a .65, GENTOW-2 DOM/COD R2b .66, GENTOW-5 three bands R2c .67, K₂-digit lift M_{r,t} .62/.53, COR GENTOW-1.1). Read those EFF units first. Then §7 (DECISION section, C.59–C.70). Commit per 2–3 nodes. -->
 
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
