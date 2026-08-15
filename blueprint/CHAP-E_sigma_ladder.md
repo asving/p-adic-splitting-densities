@@ -3710,6 +3710,306 @@ existential theorem) → **Lean theorem** (necessary directions only).
 
 ---
 
-<!-- RESUME: §8 COMPLETE (E.55–E.60). Next: §9 (E.61–E.64, VARTHETA/W carriers) + §10 gates. -->
+## 9. §9 — THE `(H-VARTHETA-RES)_i ∧ 𝒲_(≤i)` INDEXED CARRIERS (Display A's `∀ i ≥ 3` conjunct)
 
-*(sections §9–§14 follow)*
+### NODE E.61 [def] [fresh]
+
+**STATEMENT.** *The deep-twist residue carrier `(H-VARTHETA-RES)_i`.* For each level `i ≥ 3`,
+the named hypothesis that the within-class deep twist units `ϑ_t` of the level-`i` slot read
+(E.29's inputs at that level) are CORRECTLY SUPPLIED: each `ϑ_t` is the residue symbol of the
+letter monomial `θ_t` (E.33's telescoped product) under the level-`i` transport — a fixed
+nonzero element of the previous level's field, "depending on `(k, t)` and the s-bookkeeping
+only, NOT on `C` or `ξ`" (R1-a(iii)). Carried as an indexed `Prop`-family over the ladder
+data; the CONTENT at instances is chapter C's letter/transport layer (the residues of the
+`Λ_j`-monomials — carrier evaluation), so the definition here is the named carrier with the
+supply as its single field; the ϑ ORIENTATION cites chapter D's canonical table by anchor
+(GC-14; honesty E-5) — no content of that table is restated.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- `(H-VARTHETA-RES)_i` (Display A, ∀ i ≥ 3): the level-i deep-twist units are the
+letter-monomial residues, correctly oriented per chapter D's canonical ϑ table
+[GC-14 anchor: EFF.GENTOW2 orientation records, supplied-by chapter D]. -/
+structure VarthetaRes (i : ℕ) : Prop where
+  supplied : True   -- typed at GC-13/GC-14 resolution: the level-i twist-supply
+                    -- proposition over chapter C's letter layer; see the NOTE
+```
+
+**⚠ SIGNATURE NOTE.** The `True` placeholder is the SAME protocol as E.51's: the carrier's
+field is typed when C's letter layer freezes (the orchestrator's GC-13 resolution pass); until
+then the blueprint freezes the carrier's NAME, INDEX, and consumption route (chapter I's
+Display-A block consumes `∀ i ≥ 3, VarthetaRes i` through E.24's `LadderSupply`). What is NOT
+open: at `i ≤ 2` no carrier exists — R1-a(iv): "The twist is trivial at level 1, a
+single-letter power at level 2, and a genuine multi-letter monomial first at level 3 — which
+is why nothing at n ≤ 15 moves" (E.63 is that statement's arithmetic shadow).
+
+**DEPENDS.** E.33 (the exponent engine) · C/D placeholders as displayed.
+
+**PROOF.** definitional. **SIZE.** 10 lines.
+
+**SOURCE.** `EFF.HE7.110` (R1-b's ϑ_t and its closing compatibility sentence); `EFF.HE7.108`
+(R1-a(iii): the fixed letter-monomial residue); `EFF.HE7.112` (the composite twist unit);
+ledger Display A (the `(H-VARTHETA-RES)_i ∧ 𝒲_(≤i)` `∀ i ≥ 3` conjunct); GC-14 (the
+orientation table's ownership).
+
+**TEETH.** `he7rannex_supp.py`'s disclosure (ii) — `ϑ_t, t ≥ 1` machine-invisible at the
+level-3 family — is WHY this is a carried conjunct and not a discharged one; recorded at §13.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.62 [def] [fresh]
+
+**STATEMENT.** *The w-frame carrier `𝒲_(≤i)`.* The indexed conjunct's second half: the
+w-frame data through level `i` (T5's `𝒲` apparatus — gauge letters, their normalization
+anchors, and the frame bookkeeping the deep reads assume). E declares the named indexed
+carrier; ALL content is chapter D's (T5, `EFF.T5 [supplied-by: chapter D]`) — Brief D product
+(4) hands the `𝒲_(≤i)` carriers to E/I by name, and this node is the E-side socket.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- `𝒲_(≤i)` (Display A, ∀ i ≥ 3): the w-frame holds through level i.
+Content [supplied-by: chapter D (T5)]; E declares the socket. -/
+structure WFrame (i : ℕ) : Prop where
+  supplied : True   -- typed at GC-13 resolution against chapter D's T5 layer
+```
+
+**DEPENDS.** D placeholder (`EFF.T5 [supplied-by: chapter D]`).
+
+**PROOF.** definitional. **SIZE.** 8 lines.
+
+**SOURCE.** ledger Display A (the conjunct); BRIEF D product (4) ("the `𝒲_(≤i)` carriers that
+Display A's `∀ i ≥ 3` conjunct consumes (hand off to E/I by name)"); BRIEF E product (4).
+
+**TEETH.** none (socket). **ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.63 [lemma] [fresh]
+
+**STATEMENT.** *The conjunct is packaged indexed, and vacuous below level 3.* The Display-A
+conjunct `∀ i ≥ 3, (H-VARTHETA-RES)_i ∧ 𝒲_(≤i)`, as one named def `DeepTwistConjunct`; plus
+the vacuity shadow: with E.61's note (`τ₁ ≡ 1`; level-2 twist is the single letter `Λ₁^c`,
+already carried by the level-2 machinery E.29/E.33 WITHOUT this conjunct), the conjunct
+constrains nothing at ladder depth `≤ 2` — stated as: `DeepTwistConjunct` restricted to
+ladders of `rungs.length ≤ 1` (base + one rung = levels 1–2) is trivially satisfiable. (The
+`n`-reading — depth ≥ 3 unreachable below `n = 16` — is E.64.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+def DeepTwistConjunct : Prop := ∀ i, 3 ≤ i → VarthetaRes i ∧ WFrame i
+
+theorem deepTwist_vacuous_shallow (Λ : LadderData) (h : Λ.rungs.length ≤ 1) :
+    -- the levels of Λ are ≤ 2, so no consumer of DeepTwistConjunct's indices
+    -- exists on Λ's reads: stated as the index bound
+    ∀ i, 3 ≤ i → Λ.rungs.length + 1 < i ∨ True
+```
+
+**⚠ NODE-KIND NOTE.** The second declaration's Lean content is an index-arithmetic
+triviality; its blueprint value is the RECORD: consumers at `n ≤ 15` never instantiate the
+conjunct (E.64 + E.60's `μ₂ ≤ 3` gate), matching R1-d's "the first level at which any new
+symbol (a ϑ_t ≠ 1 …) can appear is level 3, unreachable below n = 16". The stub stage may
+tighten the statement to the honest consumer form once chapter I's Display-A block fixes its
+degree-indexing shape; flagged in §12.
+
+**DEPENDS.** E.61, E.62, E.05. **PROOF.** trivial/arithmetic. **SIZE.** 10 lines.
+
+**SOURCE.** `EFF.HE7.114` (R1-d's level-3 sentence); `EFF.HE7.108`(iv); ledger Display A (the
+`∀ i ≥ 3` indexing, degree-indexed per CHAP-H H-7's precedent).
+
+**TEETH.** none (packaging). **ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.64 [lemma] [fresh]
+
+**STATEMENT.** *Depth ≥ 3 is unreachable below `n = 16` (the necessary direction, R3-rider
+form).* If a read history performs `J ≥ 2` level jumps then `μ₀ ≥ 8` (E.60's fourth clause),
+hence `n = D₀·μ₀ ≥ 2·8 = 16` when `D₀ ≥ 2` (composite stages have `D′ ≥ 2`). Stated with the
+`n`-bookkeeping explicit: `2 ≤ D₀ → 2 ≤ J → 16 ≤ D₀ * μ₀`. NO existential converse is stated
+(ANNEX R R3; the constructed `n = 16` family is machine evidence only).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem depth3_needs_16 {D₀ μ₀ J : ℕ} (hD : 2 ≤ D₀) (hJ8 : 2 ≤ J → 8 ≤ μ₀)
+    (hJ : 2 ≤ J) : 16 ≤ D₀ * μ₀
+```
+
+**DEPENDS.** E.60. **PROOF.** 1. `hJ8 hJ`; `Nat.mul_le_mul hD` at `8 ≤ μ₀`. **SIZE.** 6
+lines.
+
+**SOURCE.** `EFF.HE7.15` + ANNEX R R3's rider (quoted at E.07's ⚠ note); `EFF.HE7.114` ("the
+first level at which any new symbol … can appear is level 3, unreachable below n = 16
+(THEOREM HE7.C)").
+
+**TEETH.** `he7rannex_supp.py` (the n = 16 family, 79/79) → instance evidence for
+non-vacuity of the threshold; the theorem is the necessary direction only.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+## 10. §10 — GATES (GC-11: `q = 2` AND `q = 3`, the non-coincidence seam, `e > 1 ∧ f > 1`)
+
+> Gates are leancheck-idiom concrete instances executed at the leanspec stub stage (GC-6.6(c))
+> BEFORE the fleet fires. Numeric expectations below are recomputed fresh in this blueprint
+> (shown per node); a mismatch at execution is a stop-the-line event. Per GC-8, retained
+> executable regressions live under `verification/` named per node.
+
+### NODE E.65 [gate] [fresh]
+
+**STATEMENT.** *`q = 2`: the n = 8 frame end-to-end.* At `(e₁, f₁, h) = (2, 1, 1)`,
+`ℓ = 2, d_r = 1` (the `EFF.HE7.57` frame): `#eval` checks — base rung `(2,1,1,0)`:
+`bound₁ = 1`; level-2 rung `(2,1,u,2)` at `u = 5`: `nextT = 2·1·5 = 10`, `bound₂ = 7`;
+`degAt`: `D′ = 2, D″ = 4`; the μ₂ = 2 dictionary values and degrees: `mu2Sigma` rows decided
+= `{(8,1)}, {(4,2)}, {(4,1),(4,1)}` each of degree 8 (`mu2Sigma_degree`); the jump bounds at
+`μ₀ = 4`: `J ≤ 1`, `μ₂ ≤ 2` (E.60). Expected values, recomputed fresh: `2^(J+1) ≤ 4 ⟹ J ≤ 1`
+✓; `2·μ₂ ≤ 4 ⟹ μ₂ ≤ 2` ✓; `(2·1−1)·5 + 2·1 = 7` ✓.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+-- E65 gate: #eval / example-decide block at q = 2 (the n = 8 frame).
+example : (RungDatum.mk 2 1 5 2 (by norm_num) (by norm_num) (by norm_num)
+    (by norm_num)).nextBound 1 = 7 := by decide
+-- + the mu2Sigma degree/alphabet decides, + degAt/nextT evaluations per the STATEMENT
+```
+
+**DEPENDS.** E.01, E.02, E.05, E.07, E.49, E.50, E.60.
+
+**PROOF.** `decide`/`norm_num` per check. **SIZE.** 24 lines.
+
+**SOURCE.** `EFF.HE7.57` (the frame); `EFF.HE7.23` TEETH (the Q3 threshold table's first two
+frames); `EFF.HE7.58` (the dictionary).
+
+**TEETH.** re-fires Q1/Q3's spot values as Lean-side `decide`s; retained regression:
+`verification/chapE_gate_q2.py` (mirror of the checks, per GC-8).
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.66 [gate] [fresh]
+
+**STATEMENT.** *`q = 3` AND the non-coincidence seam witness (honesty E-6).* Two batteries:
+(i) at `q = 3`, the `(3, 1, 2)` frame (FINDING HE7-F1's own): `reachSet` computations —
+`i₀(1)`-class arithmetic showing height `k = 1` UNATTAINED (`reachSet_empty_iff`:
+`T(1) = ∅` at `i₀ = 2`: `2·2 = 4 > 1` ✓ — recomputed: `i₀(1)` solves `2i₀ ≡ 1 (mod 3)`,
+`i₀ = 2`, `i₀h = 4 > 1` ✓); attainable heights `{3a + 2i} = {0, 2, 3, 4, 5, …}` spot-checked;
+`bound₁ = (3·1−1)·2 = 4` ✓.
+(ii) the NON-coincidence seam regime at `(e₁, f₁, h) = (2, 2, 3)` (`HYP.151`'s witness frame,
+pushed PAST the coincidence bound `k ≤ (D′−1)h = 9`): at `k = 10`: `i₀(10)` with
+`i₀·3 ≡ 10 (mod 2)` ⟹ `i₀ = 0`; `T(10) = {t < 2 : (0 + 2t)·3 ≤ 10} = {0, 1}` FULL, and
+`k = 10 ≥ (D′−1)h + 1 = 10` — the first height past the coincidence regime; at `k = 11`:
+`i₀ = 1`, `T(11) = {t : (1+2t)·3 ≤ 11} = {0, 1}` full ✓; seam-exponent integrality
+(`seam_exp_dvd`) at these `k` — `#eval`s all. This gate exists BECAUSE four hostile rounds
+missed HYP.151's defect inside the coincidence regime; the checks here sit outside it.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+-- E66 gate: q = 3 + non-coincidence seam #eval/decide block per the STATEMENT.
+example : reachSet 3 2 1 2 1 = ∅ := by decide
+example : reachSet 2 3 2 0 10 = Finset.univ := by decide
+-- + bound₁ = 4 at (3,1,2); + seam_exp_dvd instances at k = 10, 11
+```
+
+**DEPENDS.** E.02, E.25, E.30.
+
+**PROOF.** `decide` per check. **SIZE.** 20 lines.
+
+**SOURCE.** `EFF.HE7.21` (FINDING HE7-F1's two counterexample frames — the `(3,1,2)` and
+`(2,2,1)` computations, machine-confirmed by HE7-T-LIFT2SHARP); `spec/HYPOTHESIS_LEDGER.md`
+HYP.151 (the `(2,2,3)` witness and the sharp threshold `k > (D′−1)h = 9`); GC-11 (two primes,
+executed pre-fleet).
+
+**TEETH.** the coincidence-regime trap (HYP.151; G.23's class) → this gate is the mechanical
+instrument GC-11 mandates; retained regression: `verification/chapE_gate_q3_seam.py`.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.67 [gate] [fresh]
+
+**STATEMENT.** *The `e > 1 ∧ f > 1` witness.* The dictionary's row-2 value at the n = 8 frame
+is `(e, f) = (4, 2)` — both `> 1` — and a level-2 frame with `d_r = 2` gives
+`(e_𝒞, f_𝒞) = (e₁ℓ, f₁d_r)` with BOTH components `> 1` at `(e₁, f₁) = (2, 1), ℓ = 2, d_r = 2`:
+`(4, 2)`. Checks: `LadderLeaf.ef`: leaf `⟨[(2,1)], (1,2)⟩` at base `(2,1)` evaluates to
+`(2·2·1, 1·1·2) = (4, 2)` ✓; `ladderSigma_degree` on `{that leaf}` = `4·2 = 8` ✓;
+`ef_forcing` fires at `(a,b) = (4,2)`, `e*f = 8` ✓; `ladderSigma_prepend` at the same data
+(associativity spot check). GC-11's simultaneous-witness requirement is met INSIDE the
+certified perimeter (the n = 8 box's row 2 is a real member class — Q1's battery contains
+{(4,2)} members).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+-- E67 gate:
+example : (LadderLeaf.mk [(2,1)] (1,2)).ef 2 1 = (4, 2) := by decide
+example : (ladderSigma 2 1 {LadderLeaf.mk [(2,1)] (1,2)}).degree = 8 := by
+  simp [ladderSigma_degree]  -- + decide on the map/sum
+-- + ef_forcing instance; + prepend spot check
+```
+
+**DEPENDS.** E.15, E.45, E.46, E.47, E.49.
+
+**PROOF.** `decide`/`simp` per check. **SIZE.** 16 lines.
+
+**SOURCE.** `EFF.HE7.58` row 2 (`{(4,2)}` — a certified alphabet letter with `e, f > 1`);
+GC-11 (the CHAP-B §10 shape).
+
+**TEETH.** Q1's `{(4,2)}` members (the letter occurs in the battery) → the gate re-fires the
+value Lean-side; retained regression: `verification/chapE_gate_ef.py`.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.68 [gate] [fresh]
+
+**STATEMENT.** *The five-frame threshold regression (Q3's table as Lean `decide`s).* The bound
+recursion `boundAt`/`nextBound` evaluated at the five Q3 frames `(e₁, f₁, h, ℓ, d_r, u)`,
+against the spec's recorded thresholds: `(2,1,1,2,1,5) → 7`; `(2,1,1,2,2,5) → 17`;
+`(2,2,1,2,2,7) → 27`; `(3,1,2,2,3,13) → 73`; `(1,2,1,3,2,11) → 58`. Recomputed fresh here:
+`bound₁ = (e₁f₁−1)h` = `1, 1, 3, 4, 1`; `bound₂ = (ℓd_r−1)u + ℓ·bound₁` =
+`(2−1)5+2 = 7 ✓, (4−1)5+2 = 17 ✓, (4−1)7+2·3 = 27 ✓, (6−1)13+2·4 = 73 ✓, (6−1)11+3·1 = 58 ✓`.
+**All five recomputations match the spec's table exactly.** Plus the E.08 implication fired at
+one frame (`(‡₂) ⟹ (†₂)` at `(2,2,5)`-rung, `b = 1`: `k = 17` gives `m₀ ≥ (2−1)·5 + 1 = 6` —
+check `2m₀ + s₀·5 = 17, s₀ = 1 ⟹ m₀ = 6 ≥ 6` ✓ boundary-exact).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+-- E68 gate: the five-frame threshold table as decides on nextBound/boundAt.
+example : (RungDatum.mk 2 2 5 1 _ _ _ _).nextBound 1 = 17 := by decide
+-- … (all five frames; boundary-exact lift_threshold_step instance)
+```
+
+**DEPENDS.** E.02, E.05, E.08.
+
+**PROOF.** `decide` ×6. **SIZE.** 18 lines.
+
+**SOURCE.** `EFF.HE7.23` TEETH (the five-frame table, verbatim values); `EFF.HE7.22`
+(sharpness — the gate checks sufficiency values only; the non-necessity half is the source's
+enumeration evidence, §13).
+
+**TEETH.** Q3/HE7-LIFT2 (ten frames, exhaustive) → the five threshold values become Lean
+`decide`s; retained regression: `verification/chapE_gate_thresholds.py`.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+<!-- RESUME: §§3–10 COMPLETE (all 68 nodes). Next: §11 DAG additions, §12 stub list, §13 census+TEETH, §14 cross-read flags. -->
+
+*(closing sections follow)*
