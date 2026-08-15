@@ -219,8 +219,7 @@ are transcribed (the WZ-BOX-7 lesson — side with conclusions).
 
 ## 2. NODE INDEX
 
-*(committed early; refined per section as composed — the per-section node lists below are the
-authority once their section is composed; counts updated at completion)*
+*(final — all sections composed; this index is the authority)*
 
 | § | nodes | content |
 |---|---|---|
@@ -238,11 +237,28 @@ authority once their section is composed; counts updated at completion)*
 | 14 | — | flagged for the codex cross-read |
 
 **Terminal supply (what other chapters consume from E), named now:** `RungDatum` (E.01),
-`RungInterface` (E.10) with the HE7.A clause fields, `LadderData` (E.05), the σ dictionary
-`ladderSigma` + `ladderSigma_degree` (E.45/E.46), the rung transport law `rungStep_sigma` (E.48),
-the stage-transport/composition laws (E.49–E.51), the indexed carriers `VarthetaRes` / `WFrame`
-(E.61/E.62), and the HE7A conjunct package `HE7APackage` (E.24) — the object chapter I's
-hypothesis block receives.
+`LadderData` (E.05), `SlotCarrier`/`BlockData`/`RungInterface` (E.10–E.12, the HE7.A clause
+fields), the σ dictionary `ladderSigma` + `ladderSigma_degree` + `ladderSigma_prepend`
+(E.45–E.47), the rung transport law `typeOf_list_prod` (E.48), the μ₂ = 2 dictionary
+`mu2Sigma` + its alphabet (E.49/E.50), the indexed carriers `VarthetaRes`/`WFrame`/
+`DeepTwistConjunct` (E.61–E.63), and the chapter-I package `HE7APackage`/`LadderSupply`/
+`LadderObligations` (E.24, E.44).
+
+**Kind census** (mechanically counted over this file's `### NODE` headings): 14 `def`,
+26 `lemma`, 20 `theorem`, 2 `def+lemma` (E.19, E.49), 2 `instance-record` (E.22, E.23),
+4 `gate` — **68 nodes**. Nine nodes carry a `structure` (E.01 `RungDatum`, E.05 `LadderData`,
+E.10 `SlotCarrier`, E.11 `BlockData`, E.12 `RungInterface`, E.24 `LadderSupply`, E.44
+`LadderObligations`, E.61/E.62 the Prop-carriers) and two an `inductive` (E.17 `ContCase`,
+E.45 is a plain structure `LadderLeaf`, E.49 `Mu2Row`).
+**Split-mandated:** E.12 → 2, E.29 → 2, E.38 → 2, E.55 → **3**, E.57 → 2; split candidates
+flagged at E.03, E.10, E.11, E.13, E.18, E.20, E.36. **Fleet planning figure: ≈ 74–80 Lean
+files.**
+**Graph shape** (from `spec/DAG_BLUEPRINT_E.tsv`, computed mechanically from the DEPENDS
+fields): **315 rows; intra-chapter proof-dep graph ACYCLIC, 8 layers, widths
+`8, 13, 13, 12, 7, 9, 5, 1`**; critical path 7 edges. The schedule risks are the two HARD
+nodes **E.55** (`refine_chain_finite`, split ×3) and **E.57** (`block_split`, blocked on
+GC-13 resolution) — claim E.55 early.
+**Blocked-until-resolution:** E.51, E.57, E.61, E.62 (GC-13/GC-14 placeholders; §12).
 
 ---
 
@@ -3991,7 +4007,8 @@ check `2m₀ + s₀·5 = 17, s₀ = 1 ⟹ m₀ = 6 ≥ 6` ✓ boundary-exact).
 ```lean
 namespace Uniformity.Density.Ladder
 -- E68 gate: the five-frame threshold table as decides on nextBound/boundAt.
-example : (RungDatum.mk 2 2 5 1 _ _ _ _).nextBound 1 = 17 := by decide
+example : (RungDatum.mk 2 2 5 2 (by norm_num) (by norm_num) (by norm_num)
+    (by norm_num)).nextBound 1 = 17 := by decide
 -- … (all five frames; boundary-exact lift_threshold_step instance)
 ```
 
@@ -4010,6 +4027,310 @@ enumeration evidence, §13).
 
 ---
 
-<!-- RESUME: §§3–10 COMPLETE (all 68 nodes). Next: §11 DAG additions, §12 stub list, §13 census+TEETH, §14 cross-read flags. -->
+## 11. DAG ADDITIONS
 
-*(closing sections follow)*
+**Machine-readable edges:** `spec/DAG_BLUEPRINT_E.tsv` — **315 rows over the 68 nodes**,
+computed mechanically from this file's DEPENDS fields (`proof-dep` rows, `BP.E.*`/`BP.H.*`/
+`BP.B.*` targets) and SOURCE fields (`stmt-dep` rows against the CONTIGUOUS `EFF.T2.*` /
+`EFF.HE7.*` / `EFF.HE6.*` / `EFF.HE6R1.*` IDs, all of which exist contiguous in
+`spec/DAG_NODES.tsv` at HEAD — no shard-local remap is needed for E, unlike W12/GENTOW5;
+GC-12 satisfied directly).
+
+**Graph shape** (computed at emission): intra-chapter proof-dep graph over 68 nodes is
+**ACYCLIC, 8 topological layers, widths `8, 13, 13, 12, 7, 9, 5, 1`** — 8 nodes fireable
+immediately; critical path 7 edges. The declared FORWARD REFERENCES (E.23/E.24 → §5/§6/§8
+suppliers; E.42 → E.56; E.52 → E.55/E.56; E.57 → E.59) are ordinary DAG edges — the file's
+prose order is expository, the TSV order is the build order (§12).
+
+**Cross-chapter edges (the citation-rule ledger, GC-13):**
+* **Into H (sanctioned slice only):** `BP.E.25 → BP.H.51`, `BP.E.28 → BP.H.51`,
+  `BP.E.27 → BP.H.53` — three edges, all inside H.51–H.58. H.52/H.54–H.58 are cited as
+  patterns/available API but not consumed by any E signature; C's instance layer is their
+  expected consumer. **No E node touches any H node outside §8 of H** (GC-5 verified by the
+  emission script: the only `BP.H.*` targets are .51/.53).
+* **Into B (committed node IDs, `e₁ = 1` slice):** E.22's instance rows cite B.16–B.22,
+  B.28–B.30, B.79–B.82 (obligation-table rows, not Lean-signature imports — the TSV carries
+  them as E.22 proof-deps).
+* **Into C/D (GC-13(c) placeholders — the orchestrator's resolution list):**
+  `EFF.HE6.09/.13/.14/.15/.17/.29/.30/.32/.56 [supplied-by: chapter C]` (E.22; honesty E-2's
+  routing — `.30`/`.32` class-size and `.13`/`.14` twist/ϖ are C's, per CHAP-B H-1/H-2);
+  `EFF.HE6R1.* [supplied-by: chapter C]` (E.23/E.37/E.51 — HE6R1-1/2/3 + the `.18` level
+  dictionary at D-E1); `EFF.HE7.06`-Pt / `.29`-Galois / `.96`-partition legs
+  `[supplied-by: chapter C]` (E.23, E.36, E.57); `EFF.T5 [supplied-by: chapter D]` (E.62);
+  the GC-14 ϑ-orientation table `[supplied-by: chapter D]` (E.33, E.61).
+
+**The `EFF.T2.31` gov-cluster re-homing (honesty E-7, executed).** The 44 edges parked at
+`EFF.T2.31` by the harvest re-home unit by unit through this chapter's stmt-dep rows: the
+master's clauses live at `BP.E.16/.17/.18/.20` (all of which carry `EFF.T2.31` stmt-deps),
+its proof intermediates at `BP.E.14/.15/.19` (`EFF.T2.27/.29/.30`), its instances at
+`BP.E.22/.23` (`EFF.T2.33–.37`), its fences at the §4 header + E.21 (`EFF.T2.39/.28/.32`).
+Downstream chapters citing "T2's master" should cite the specific `BP.E.*` node; the
+orchestrator's remap pass replaces gov-cluster edges accordingly (an ORCHESTRATOR item, per
+GC-12's division of labour).
+
+**Chapter-cut correction rows.** The harvest carries `EFF.HE7.*` under chapter **B** (the old
+cut); this chapter's rows are emitted under chapter **E** per the czar ruling (BRIEF E,
+ratified Part V item 2). The orchestrator's re-run of `dag_build.py` should move the 137 HE7
+unit rows' chapter column to E (bookable mechanical change; flagged here so the discrepancy
+is not read as a defect).
+
+---
+
+## 12. LEANSPEC STUB LIST (stage 0e)
+
+Per GC-6.6: file `leanspec/Leanspec/ChapE.lean`, wrapped in `namespace LeanspecE` (never
+re-declaring contract names in `Uniformity.*`; the ChapG retire-to-examples route is the
+recorded alternative). Gate order (CHAP-H §15 / GC-6.6(c)): (a) elaborate the FRAGILE
+signatures first; (b) land the `def` bodies real; (c) EXECUTE the §10 numeric gates at `q = 2`
+AND `q = 3` against this file's expected values; (d) only then sign the `axiom` stubs.
+
+**(a) Fragile-signature list (elaborate first, in this order):**
+1. E.10 `SlotCarrier` (the `WithTop ℤ` laws; the `dig_add` field's conjunction shape);
+2. E.11 `BlockData` + `ladderSuppVal` (the `FractionRing` coprimality spelling — fallback
+   DECISION pre-authorized in the node);
+3. E.12 `RungInterface` (the `W : Type*` universe parameter — flag ANY universe issue,
+   never fix `W := ℕ`);
+4. E.29 `twisted_slot_spec` (the structure-valued `TwistedSlotRead` re-plan is
+   pre-authorized);
+5. E.55 `refine_chain_finite` (the `hcoeff`/`hOcoeff`/`hfloor` spellings — three stub-stage
+   calls, none strength-changing);
+6. E.45/E.49 (the `FactorizationType` anonymous-constructor compatibility — 0e type-diff
+   against the landed twin);
+7. E.48 (`typeOf_mul`'s side conditions copied VERBATIM into the `hcond` slot).
+
+**(b) Def bodies:** E.01, E.02, E.05, E.10–E.12, E.14 (`SepSide`), E.17 (`ContCase`,
+`contCaseOf`), E.19 (`LadderState`), E.26, E.30 (`reachSet`), E.32 (`realizedSet`), E.33
+(`coc`), E.34, E.39/E.40 (the two obligation `Prop`s), E.44, E.45 (`LadderLeaf`, `ef`,
+`ladderSigma`), E.47 (`prepend`), E.49 (`Mu2Row`, `mu2Sigma`), E.61–E.63 (the carriers), E.24
+(`HE7APackage`, `LadderSupply` — LAST among defs: forward references).
+
+**(c) Numeric gates:** E.65, E.66, E.67, E.68 — all `decide`/`norm_num`; expected values
+recomputed in this file (E.68's five frames match the spec's table exactly; E.66's
+non-coincidence witnesses at `k = 10, 11` over `(2,2,3)`).
+
+**(d) Axiom stubs:** every lemma/theorem node not in (b)/(c).
+
+**BLOCKED-UNTIL-RESOLUTION (do NOT stub as provable):** E.51 (`hpeel : True` placeholder),
+E.57 (`hpart : True`), E.61/E.62 (`supplied : True`) — these four carry GC-13(c) placeholders
+typed only at the orchestrator's resolution pass; stub them as `axiom`s with a
+`-- BLOCKED: GC-13 resolution` header, and mark E.52 (consumes E.51's row only through
+`mu2Sigma`, so NOT blocked) explicitly unblocked.
+
+**Order note:** the TSV (§11) is the stub build order; the four forward-referencing nodes
+(E.23, E.24, E.42, E.52) land after their §5/§6/§8 suppliers.
+
+---
+
+## 13. UNIT-DISPOSITION CENSUS (all 242 source units) + TEETH SUMMARY (GC-8)
+
+### 13.1 Disposition vocabulary
+
+Per GC-10/GC-8: **NODE(→E.xx)** = transcribed into the named node(s); **INSTANCE-ROW(→E.22/23)**
+= carrier/instance content, entered in an obligation table with citation form fixed;
+**RECORDED** = process/acceptance/pin-bookkeeping content — transcription would create no Lean
+obligation; the unit's content is preserved by the EFF spec itself (byte-frozen) and, where it
+constrains this chapter, quoted at the constraining node; **FENCE-HONOURED** = a negative
+claim/non-import enforced structurally (no field/hypothesis exists to violate it).
+
+### 13.2 EFF-T2 (105 units)
+
+| units | disposition |
+|---|---|
+| .01 | RECORDED (scope; §0.4) |
+| .02 | NODE→E.10/E.11 + FENCE-HONOURED (`(NO-IRR)` — no irreducibility field exists; §4 header) |
+| .03 | RECORDED (the 37-pin table; pin discipline is EFF-side) |
+| .04 | NODE→E.10 (`(DEG-EF)`, valuation laws) |
+| .05 | NODE→E.10 (`(SLOT-V)/(SLOT-R)` ξ-independent data; FAITHFULNESS note) |
+| .06 | NODE→E.25/E.26 (corrected `(GAMMA)`/`(HE6-SEAM)`; honesty E-1) |
+| .07 | NODE→E.33 (`(COC-DEF)`/`(COC)`) |
+| .08 | NODE→E.33 (`(THETA-EVAL)`/`(BETA)` exponent layer) + GC-14 anchor |
+| .09 | NODE→E.10 (`Full`/`hlift`; no-all-height-lift honoured structurally) |
+| .10 | NODE→E.08/E.30 (fullness criteria) |
+| .11 | NODE→E.11/E.13 (`(DEV)`/`(KEY-FREE)`/`(HULL-LENGTH)`); proxy fence → INSTANCE-ROW |
+| .12 | NODE→E.12 (`(RES-DEG)` field) |
+| .13/.14 | NODE→E.54 (`(FRAME)`/`(ORIGIN)` — thin shell; conversions INSTANCE-ROW) |
+| .15 | NODE→E.12 (clauses 3–6 as fields' shadows) + INSTANCE-ROW (clauses 1/2/7) |
+| .16 | NODE→E.12 via **D-E3** (jump form) + INSTANCE-ROW (integral form, quoted in full at E.22) |
+| .17 | NODE→E.17/E.48 (S1.7A displays; parent-multiplicity NON-IMPORT honoured) |
+| .18 | NODE→E.39 (`(LB1)` carrier, OPEN) + E.41 (the scope theorem) |
+| .19 | NODE→E.35 (`(REF-HT)` forcing; `(RISE)` stays hypothesis) |
+| .20 | NODE→E.34 (`(IDX-TWIST)` bijection layer; qualifiers as directives) |
+| .21 | NODE→E.17/E.47 (child data + `(MASS)`) |
+| .22 | NODE→E.17 (four-case processing) |
+| .23 | NODE→E.18 (identity layer) + E.40 (`(MP1)` carrier, OPEN) |
+| .24 | NODE→E.42 (S1.8B) |
+| .25 | NODE→E.43 (S1.8C anchors; `(MP1′)` retired — no carrier declared) |
+| .26 | NODE→E.12 (`(SEC-RANK)` fields, well-founded form) |
+| .27 | NODE→E.19 (`(RANK)` lex) |
+| .28 | NODE→E.21 (`(BOUNDARY-PROD)` + fences) |
+| .29 | NODE→E.14 (`(SIDE-COUNT)`/`(DEG-SUM)` — via D-E3) |
+| .30 | NODE→E.15 (the sandwich + `(FUND)` fence at E.53) |
+| .31 | NODE→E.16/E.17/E.18/E.20 (the master's six clauses) |
+| .32 | NODE→E.21 (T2.KEY-BOUNDARY) |
+| .33–.37 | INSTANCE-ROW→E.22 (level 1) / E.23 (level 2 + towers) |
+| .38 | RECORDED (`(GRADE)` — the HE3 cap carried at E.22 for chapter I) |
+| .39 | NODE→E.12 + §4 header (the five-family fence IS the field list) |
+| .40–.46 | RECORDED (re-composition ledger, round records r4/r5) |
+| .47–.51 | RECORDED (pin adjudications/ledgers; .47's HE6-SLOT-SEAM adjudication feeds honesty E-1) |
+| .52 | RECORDED (the three `(SEC-RANK)` discharge bullets → quoted at E.23's row) |
+| .53 | RECORDED (the withdrawn `[r3]`-clause route → quoted at E.42 so it cannot recur) |
+| .54 | RECORDED (GENTOW4 reading directive → quoted at E.23) |
+| .55–.58 | RECORDED (sweep/discipline/round records) |
+| .59/.60 | NODE→E.35 (the `(REF-HT)` derivation; .60's superseded height ground RECORDED) |
+| .61 | NODE→E.43 (the S1.8C adjudication content) |
+| .62 | NODE→E.42 (composed-key scope clause) |
+| .63–.69 | RECORDED (pin/bookkeeping/round records) |
+| .70 | NODE→E.34 (+E.22 frame rows; the seam computation's instance half) |
+| .71 | NODE→E.35 (level-one height+digit forcing) |
+| .72–.84 | RECORDED (qualifiers, acceptance boxes, pin tables; .77/.78/.80/.81/.84 tables are pin-ledgers) |
+| .85 | RECORDED (β-guard well-posedness analysis → context of E.22's `HE6-BETA-GUARD` row) |
+| .86 | RECORDED (β-guard census widening — consumption bookkeeping) |
+| .87–.89 | RECORDED (riders/acceptance/pin tables) |
+| .90 | NODE→E.42 (the master-side degree bound — the `natDegree_add_le` leg of E.42's proof) |
+| .91–.105 | RECORDED (final ledgers, acceptance boxes, fences .93/.104 = Stage-2 formal gate → quoted at §4 header via .43/.44) |
+
+**T2 census check:** 105 units — 34 NODE-mapped, 7 INSTANCE-ROW (.15 partial, .33–.37, .16
+partial), 64 RECORDED (with the four load-bearing RECORDED units quoted verbatim at their
+constraining nodes: .38, .52, .53, .54). The two open obligations (.18, .23) are carried, not
+transcribed-away — honesty §6.
+
+### 13.3 EFF-HE7 (137 units)
+
+| units | disposition |
+|---|---|
+| .01–.04 | RECORDED (merge/effective-text/scope records; .03/.04 fences honoured at §4/§5 headers) |
+| .05 | INSTANCE-ROW→E.22/E.23 (the inherited level-1 frame; ϖ is C's) |
+| .06 | NODE→E.01/E.03 (the datum's arithmetic) + INSTANCE-ROW (Pt/transport legs → C) |
+| .07 | NODE→E.05/E.06 (the substitution table = the rung recursion + telescoping) |
+| .08 | NODE→E.04/E.33 (+E.54: twist-invariance clause) |
+| .09 | NODE→E.37 (the convention + peel-at-most-once; chain licensed by E.36) |
+| .10 | RECORDED (pointer; the §S9 under-count qualification noted) |
+| .11 | NODE→E.26–E.29 ((SLOT₂) = the `ϑ ≡ 1` instance of E.29) |
+| .12 | NODE→E.08/E.31 ((LIFT₂)) |
+| .13 | NODE→E.14–E.16 (HE7.A(1)(2) schema) |
+| .14 | NODE→E.17 (the widened trichotomy) + E.59 (non-propagation) |
+| .15 | NODE→E.07/E.60 (HE7.C; R3's rider honoured — necessary direction only) |
+| .16 | (i) NODE→E.60's corollary clauses; (ii) RECORDED at annex grade (via R1-d = .114; conditionality preserved) |
+| .17 | RECORDED (the §S2 HE7.D display; M-B rider; operative content at .48) |
+| .18 | FENCE-HONOURED (non-circularity; "Neither requires Ψ irreducible" — structural) |
+| .19 | NODE→E.30/E.32 (HE7-L1, corrected coset form) |
+| .20/.21 | RECORDED (fold box + FINDING HE7-F1; the counterexample frames re-fired at E.66) |
+| .22 | NODE→E.32 (sharpness object; OPEN-CALL 2 wording discharged by the composed Lean object — see §14 item 7) |
+| .23 | NODE→E.02/E.05 (+E.68 gate: the five-frame table) |
+| .24/.25 | NODE→E.09 (the use-site margins; .24's chain supplies `huse`) |
+| .26 | RECORDED (self-scope; under-count qualification = source defect 3, preserved by the spec) |
+| .27 | NODE→E.31 (the inverse-twist mechanism at DEFINITION HE7-3's shape) |
+| .28/.29/.30 | INSTANCE-ROW→E.23 (disk criterion / local forcing / ξ-side estimate — carrier legs; the (S5.3)-offsets arithmetic shadow at E.38(ii)) |
+| .31–.33 | RECORDED (the offsets' `[r2]` correction — folded into E.38(ii)'s case data) |
+| .34/.35 | INSTANCE-ROW→E.23 (evaluation displays; congruence clause = E.28; HE7-7″ licensed by E.36) |
+| .36/.37 | INSTANCE-ROW→E.23 (block factor; reduction to f_S) |
+| .38 | RECORDED |
+| .39 | INSTANCE-ROW→E.23 (proper-block read; the twice-corrected scalar noted verbatim) |
+| .40–.42 | INSTANCE-ROW→E.23 ((RES₂)/HE7-9/10/11 — count shapes at E.14–E.16) |
+| .43 | NODE→E.38 (the slot-domination preamble/mechanism) |
+| .44 | NODE→E.38/E.42 (HE7-12; (c)'s audit = E.23 obligations; R4 completion transcribed) |
+| .45 | NODE→E.56 (HE7-13; mutual induction resolved — §14 item 6) |
+| .46 | RECORDED (regression record; B2's 41/42 vacuity disclosure noted at E.38 TEETH) |
+| .47 | RECORDED (DEFINITION HE7-2 — superseded normalizer line; operative form .107) |
+| .48 | NODE→E.29/E.31 via .110/.111; the induction packaging at E.05/E.20 |
+| .49–.52 | RECORDED (level-genericity records) |
+| .53 | NODE→E.55 (HE7-8 / (REF-TERM)) |
+| .54/.55 | RECORDED (HE7-8's hypothesis-set boxes; the mixed-node extension = ANNEX F-1's, at E.57's wiring) |
+| .56 | RECORDED |
+| .57 | NODE→E.65 (the n = 8 frame as the q = 2 gate) |
+| .58 | NODE→E.49 (the six-row dictionary) |
+| .59/.60 | NODE→E.52/E.51 (row-5 upgrade; peel row) |
+| .61 | NODE→E.50 (alphabet; the HE6-T-CASEB match stays evidence) |
+| .62 | NODE→E.52 (HE7.A′ schema; "five-row" off-by-one = source defect 6, preserved) |
+| .63 | FENCE-HONOURED (GENHN.C consumed as template only — E consumes no GENHN.C) |
+| .64–.75 | RECORDED (supply lists, under-counts, HE7-BOX records → §14 residuals where live) |
+| .76–.95 | RECORDED (regression-records and changes-records; the battery evidence enters TEETH rows below) |
+| .96 | NODE→E.57/E.58 (HE7-13′ block split + refine quartet) |
+| .97 | RECORDED (the wiring — quoted at E.52/E.57) |
+| .98–.106 | RECORDED |
+| .107 | NODE→E.05 (via D-E1; the corrected recursion's base-is-a-definition) + E.03 |
+| .108 | NODE→E.04/E.33 (R1-a's exponent/telescoping halves; residue half INSTANCE-ROW) |
+| .109 | RECORDED (the two replaced §S6 sentences — diagnostic) |
+| .110 | NODE→E.29 (R1-b) |
+| .111 | NODE→E.31 (R1-c) |
+| .112/.113 | RECORDED (composite twist unit; R1.2 audit → E.23 obligations + E.61's carrier) |
+| .114/.115 | RECORDED (R1-d + honest grade — annex-grade statuses preserved at E.57/E.29/E.31 TEETH) |
+| .116–.118 | RECORDED (regressions) |
+| .119 | NODE→E.36 (R2-a) |
+| .120–.137 | RECORDED (riders, dated corrections — the .136/.137 scalar corrections quoted at E.23's proper-block row) |
+
+**HE7 census check:** 137 units — 33 NODE-mapped, 12 INSTANCE-ROW, 92 RECORDED.
+
+### 13.4 TEETH disposition summary (GC-8 table)
+
+| disposition | count | items |
+|---|---|---|
+| **Lean theorem** | 40 nodes | the §3/§5/§7/§8/§9 lemma/theorem nodes + E.14–E.21 (each node's TEETH field names its battery rows: Q1–Q5, HE7-T-SLOT2TIE, HE7-T-BADTWIST, HE7-T-LIFT2SHARP, HE7-T-CASEB-SEP, `he7r1/r2/annex/rannex_supp.py`, S7 gates) |
+| **executable regression retained** | 4 | `verification/chapE_gate_q2.py`, `chapE_gate_q3_seam.py`, `chapE_gate_ef.py`, `chapE_gate_thresholds.py` (mirrors of E.65–E.68; to be created at stub stage (c)) |
+| **signed non-applicability / vacuity disclosures** | 9 rows | (1) `(LB1)` open (E.39); (2) `(MP1)` open (E.40); (3) `ϑ_t, t ≥ 1` machine-invisible (`g₂ = 1` disclosure — E.27/E.61); (4) proper blocks proof-only (`EFF.HE7.39` TEETH); (5) B2's `δ = ∞` half vacuous 41/42 (E.38); (6) the coset correction's `q(k) = 0` sealed-tooth limitation (E.30 — cured by E.66's gate); (7) COROLLARY HE7.B(ii)/HE7.D at ANNEX GRADE (E.29/E.31/E.57 carry the note); (8) HE3 consumed at grade cap 0/2 (E.22); (9) the HE6-A3 HE7-side residual (honesty E-1) |
+
+**Sanity check (H.09's rule):** the fields with no teeth are exactly the capstone's
+conditionality — here: `(LB1)`, `(MP1)`, the `∀ i ≥ 3` carriers (E.61/E.62), and E.12's
+carrier fields at instances — precisely the `HE7A[…] + (LB1) + (MP1) + (H-VARTHETA-RES)∧𝒲`
+conjuncts of Display A. Reconciles.
+
+---
+
+## 14. FLAGGED FOR THE CODEX CROSS-READ (and for the orchestrator)
+
+1. **D-E3** — `(ACCOUNT)` carried at its consumed jump form `(SIDE-COUNT)`, the integral
+   identity demoted to an instance obligation (quoted in full at E.22). The chapter's largest
+   transcription-strength call; please check the claim "no E-theorem consumes the integral
+   form" against E.14–E.16's proofs.
+2. **D-E1** — carrier heights `WithTop ℤ` (per `EFF.T2.05`'s `h(A) ∈ ℤ`); interaction with
+   GC-2's `ℕ∞` ruling delegated to C's reconciliation lemma. Czar flag per GC-2.
+3. **D-E2** — the residual factorization enters by its numerical shadow `(deg, mult, root)`.
+   Check: does any T2/HE7 consumption read residual POLYNOMIAL structure beyond roots/degrees
+   anywhere E claims a theorem? (The λ₂-translation `r₂^τ(Z) = r₂(Z + s₂)` of HE7-13′(c) is
+   handled in the shadow as a label move — verify E.58's clause (c) suffices for E.57's
+   companion bookkeeping.)
+4. **E.10's ξ-quantifier absence** — the schema carries ξ-independent height/digit data and
+   pushes evaluation laws to instances. This is the chapter's central faithfulness claim;
+   fresh eyes should test it against `EFF.T2.05`'s exact wording.
+5. **The carrier-law promotion cluster** — `hneg` (E.35), `hsame` (E.56), `hhigh` (E.58) are
+   explicit hypotheses pending promotion to E.10 fields (one dated amendment if ≥3 consumers
+   thread them — the count is already 3; the B-finisher-analogous pass should decide at stub
+   time).
+6. **The HE7-12/HE7-13 mutual induction** (HE7's OPEN-CALL 3) — resolved structurally: E.56
+   packages the invariant, E.38 takes distinctness as hypothesis, E.55 takes monotonicity.
+   Verify no residual circularity in the TSV (script reports ACYCLIC).
+7. **HE7's OPEN-CALL 2** (the subgroup-coset vs punctured-subspace wording) — discharged at
+   the formal level by E.32's composed object (`w •` translate of a punctured subspace);
+   confirm both source riders are satisfied by that object.
+8. **The HE6-A3 HE7-side residual** (honesty E-1) — HYP.150 is scoped to T2; E's HE7-derived
+   nodes cite HE6 spans only through HE7's own displays. A future consumption check of
+   HE7/HE6R1 against A3 F-1/F-3/F-4 remains open at the ledger; nothing in E licenses it.
+9. **E.48's `hcond` slot** — `typeOf_mul`'s exact landed side conditions to be copied
+   verbatim at stub time; check the ladder's blocks can supply them (root-set disjointness
+   route flagged).
+10. **E.52's scoping** — no member-level Lean theorem at n = 8 is promised by this blueprint
+    (the certificate layer is post-blueprint, B.79–B.82-pattern at level 2). Confirm chapter
+    I's Display-A block expects the schema form, not the member form.
+11. **The four BLOCKED-until-resolution nodes** (E.51, E.57, E.61, E.62) and their `True`
+    placeholders — the orchestrator's GC-13/GC-14 resolution pass types them; fleet must not
+    fire on them before that.
+12. **The §2 index census** (updated below) and the split-mandated figure — planning figure
+    ≈ **74–80 Lean files** for 68 nodes.
+13. **Gate expectations** — E.68's five threshold recomputations match `EFF.HE7.23`'s table
+    exactly; E.66's `(2,2,3)` seam witnesses sit at `k = 10, 11 > (D′−1)h = 9` (the
+    non-coincidence regime). Re-verify the `i₀` computations independently.
+14. **The czar-ruling chapter move** (HE7: B → E in the DAG's chapter column) — §11's
+    correction row; orchestrator books the `dag_build.py` re-run.
+
+---
+
+## FINAL STATE
+
+All 68 nodes composed (§§3–10); closing sections §§11–14 complete; `spec/DAG_BLUEPRINT_E.tsv`
+emitted (315 rows, acyclic, 8 layers). CODEX CROSS-READ OWED (§14 is the queue).
+
+<!-- RESUME: CHAPTER COMPLETE. Remaining external actions: (i) orchestrator GC-13/GC-14
+resolution pass (types the four placeholder nodes); (ii) cross-read per §14; (iii) leanspec
+stub stage per §12; (iv) dag_build.py re-run for the HE7 chapter-column move. -->
+
+<!-- SENTINEL: BP-E END OF FILE -->
