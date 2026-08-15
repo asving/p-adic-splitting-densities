@@ -862,3 +862,53 @@ cite either LEMMA HETOW-4 or T3's (ABS-HE4)/(HE4-COB).
 BYTE-FREEZE: pre-append body md5 6ded277db84f9eefb43d46021ba9c7e2, re-verified
 by prefix after this append; edit shape append-only; statement
 displays of HETOW-1/2/3/4/A and all sealed artifacts byte-untouched.
+
+### Dated fidelity append (2026-08-15 — MQ, the F-2 annex's GENTOW1 quotation)
+
+*Provenance: corpus-maintenance queue (MQ). Finding of record:
+`spec/EFF-HETOW.md` **OPEN-CALL 3**, with the TEETH paragraph and the
+quotation-fidelity row of its XREF audit (Phase-0a effective-spec
+compilation of this note; the finding is recorded there as disposition
+NEAR-MISS). Independently reconfirmed here before landing. Edit shape
+append-only; the body above stays BYTE-FROZEN, the quoted annex included.*
+
+**FIDELITY CORRECTION — the F-2 annex presents its GENTOW1 sentence as a
+verbatim quotation ("Step 4, quoted") and it is not verbatim.** The annex
+above reads:
+
+> "All roots x₀ of f ∈ 𝒯 are tower-node points: the full inner side forces
+> v(Φ′(x₀)) = u₂/(e₁e₂) exactly with η₂(x₀) a ψ₂-root — T(b)′(iii)'s
+> (T1′)/(T2′) transport, consumed."
+
+A fixed-string search for that text in `GENTOW1_PROOF_2026-08-09.md` returns
+**0**. The referent is `GENTOW1_PROOF_2026-08-09.md:246` (Step 4, node (c)),
+whose actual text is:
+
+> "All roots x0 of f ∈ 𝒯 are tower-node points: the full inner side forces
+> v(Phi'(x0)) = u2/(e1e2) exactly with eta2(x0) a psi2-root (the level-1
+> Newton polygon of the inner read has the one side of slope kappa2, residual
+> psi2^{mu2} zero-free at the corners — T(b)'(iii)'s (T1')/(T2') transport,
+> consumed)."
+
+Two divergences: **(1) transliteration** — the source is ASCII (`x0`, `Phi'`,
+`u2/(e1e2)`, `eta2`, `psi2`), the annex is Unicode (`x₀`, `Φ′`, `u₂/(e₁e₂)`,
+`η₂`, `ψ₂`); **(2) an UNMARKED ELISION** — the source's parenthetical
+justification "(the level-1 Newton polygon of the inner read has the one side
+of slope kappa2, residual psi2^{mu2} zero-free at the corners" is dropped, the
+em-dash spliced in its place, and the closing parenthesis replaced by a period,
+with no ellipsis.
+
+**Disposition: quotation discipline, not substance.** What the annex needs from
+GENTOW1 — the all-roots transport conclusion and its attribution to T(b)′(iii)'s
+(T1′)/(T2′) — is reproduced faithfully; the elided clause is the *reason* for the
+conclusion, not the conclusion, and it is present in the source. So the cite
+attached at HETOW-3(b)'s use site stands and no clause of this note is affected.
+What IS affected is machine resolvability: a consumer that pins by exact-line
+search (as T2 does) cannot locate this string in GENTOW1. Read the annex's
+quotation as a transliterated paraphrase with an unmarked elision; the
+authoritative text is GENTOW1's line 246 as displayed above. No statement
+display, no artifact, no grade and no absorption status changes.
+
+BYTE-FREEZE: pre-append body md5 ad1f3a7591cfc647f9326b9771cc5e31, re-verified
+by prefix after this append; edit shape append-only; the HETOW-1/2/3/4/A
+statement displays and all sealed artifacts byte-untouched.
