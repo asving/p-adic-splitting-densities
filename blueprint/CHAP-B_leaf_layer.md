@@ -5988,6 +5988,51 @@ B.73's FAITHFULNESS).
 
 ---
 
-<!-- RESUME: §12 landed. Next: §13 (TEETH dispositions), §14 (13-item queue + items 14-15); then (d) A-F.2. -->
+## 13. TEETH DISPOSITION SUMMARY (GC-8)
+
+Per source battery row guarding chapter-B content, with a disposition in the closed vocabulary
+**{Lean theorem · executable regression retained · signed non-applicability}** (GC-8). Counted
+mechanically over this file's TEETH fields:
+
+**106 canonical disposition markers across the 86 nodes: 36 Lean theorem, 46 executable
+regression retained, 24 signed non-applicability/vacuity** — plus three special rows: B.16's
+legacy phrasing ("not applicable here (a definition)" = signed non-applicability, bringing that
+column to 25), B.84 (dispositions by reference to B.83, its `q = 3` mirror), and B.86 (the
+roll-up gate whose index this table is).
+
+| battery family | source | nodes carrying it | disposition in this chapter |
+|---|---|---|---|
+| `W12-SHAPE` (0/164, both directions) | `EFF.W12.24`/`.27` | B.02, B.11, B.13, B.16, B.20, B.24, B.29, B.30, B.42, B.57, B.63, B.65, B.71, B.83 | **Lean theorem** at the dissection/NS-6/leaf-law nodes (B.42, B.63, B.65, B.71) and the gates; **signed non-applicability** at the definitional §3 rows |
+| `W12-ORACLE` (`[IND]`, 0 bad / 41,923) | `EFF.W12.56` | B.48, B.58, B.60, B.63, B.71, B.80, B.82, B.83, B.85 | **executable regression retained** everywhere — PARI stays the independent engine; D-4(a) scope note at B.80 (the oracle cannot score `disc = 0` lifts; the Lean theorem covers them) |
+| `W12-BLOCK` / `W12-LVL0` / `W12-L1X` / `W12-CENSUS4` / `W12-T-SIGMA` | `EFF.W12.21`/`.22`/`.25`/`.28` | B.05, B.26, B.32, B.41, B.44, B.45, B.67, B.68, B.70, B.78, B.80 | **Lean theorem** (the block/peel/transport laws are proved here; `W12-T-SIGMA` becomes B.80 itself); parser legs stay **executable regression** |
+| `HE-SIG` (947 PARI jobs, 0 bad, all 5 `μ = 3` stage types) | `EFF.HE3.52` | B.29, B.47, B.48, B.52, B.55, B.58–B.60, B.63, B.71, B.79, B.82, B.83 | **Lean theorem inside D-3's perimeter, executable regression retained outside it** (`hperim` carried) — the GC-8 rider-(i) re-scoping, stated per node |
+| `HE-BND` (3,744 boundary reads, **RE-SCOPED by R8-1**) | `EFF.HE3.55` | B.74, B.75, B.77, B.79, B.81, B.82 | **executable regression retained, with the re-scoping carried** (D-4(c)): scored only on rows aligned with R8-1's corrected criterion; no general `N`-law is scored |
+| `HE-NORM` / `HE-PSI` (the §3/§4 height-and-development batteries) | `EFF.HE3.49`/`.50` | B.07–B.09, B.14, B.22, B.33, B.36, B.50, B.53, B.54 | **Lean theorem** (the `gaussVal`/`suppVal`/digit laws are §3/§5 nodes) |
+| `HE-T-CAP` | `EFF.HE3.54` | B.10, B.69, B.76, B.77, B.79 | **Lean theorem** (via B.77's clause-5 guard) |
+| `HE6-T-BADKEY` (the coprimality tooth) | `EFF.HE6.52` | B.17, B.85 | **Lean theorem** — `gcd(u,ℓ) = 1` pays at B.17's spacing and B.85's bracket collapse, exactly where the tooth says it must |
+| `HE6-T-CASEB` ("3 distinct PARI σ on identical outer data — box is real") | `EFF.HE6.37` | B.61, B.64 | **executable regression retained** — it certifies `HE6-BOX-1`, a NON-NODE (B.64's ⚠); NOT proved here, and NOT to be conflated with `B-BOX-1` (B.61's TEETH note) |
+| `HE6-GEN` / `HE6-RANK` / `HE6-SEP` / `HE6-XI` | `EFF.HE6.44`–`.46` | B.35, B.39, B.42, B.62, B.72 | **executable regression retained** (`HE6-XI` guards only the OPTIONAL B.62); `HE6-SEP`'s separability half is a **Lean theorem** at B.27/B.45 |
+| `HE6R1-*` (level-2 batteries: `LIFT2`, `SLOT2`, `GEN2`, `T-BASIS`, `T-CRACK`, `T-TWIST0`) | `EFF.HE6R1.29` etc. | B.21, B.25, B.35, B.36, B.39, B.64 | **executable regression retained / signed non-applicability** — HE6R1 is NOT transcribed here (H-3); these rows corroborate scope claims (H-1's trivial-twist claim, the level-2 jump disambiguation) and guard nothing chapter-B proves |
+| `B-BOX-1` (chapter-fresh, no ledger row) | H-7 / B.61 | B.55, B.58, B.61, B.62 | **carried hypothesis** (`hBOX`/`hperim` third disjunct) — the GC-8 rider-(iii) class: no teeth anywhere, and that IS the chapter's conditionality (see reconciliation below) |
+
+**The GC-8 riders, discharged.** (i) Re-scoped batteries carry their re-scoping in the table
+(`HE-BND` per R8-1; `HE-SIG` inside/outside the perimeter). (ii) **No battery guarding this
+chapter was fitted to data** — the `HEX3-LAW` fit-disclosure class has no chapter-B instance
+(nearest miss: `W12-ORACLE` is `[IND]`-graded, independent by construction). (iii) **The
+no-teeth reconciliation**: the rows with no Lean theorem anywhere are exactly `B-BOX-1`
+(carried as `hperim`'s third disjunct at `ℓ ≥ 2 ∧ d ≥ 2`), the `HYP.01`/`HYP.12` [CORE-SET]
+disclosures (§11's structural edges), and order-1-ness itself (`hterm`; the recursion is
+chapter C's) — which is precisely the conditionality B.82's FULL-GENERALITY note declares.
+Nothing else in the chapter is guarded by a battery without also being a proof obligation.
+
+**Where the retained regressions live.** Per GC-8 the landed home is `verification/` (chapter
+G's G.30 precedent). The 46 retained rows currently run inside the corpus notes' PARI/battery
+harnesses; **packaging them as named `verification/chapB_*` regressions is an ORCHESTRATOR item
+at fleet close**, booked here (per-family names: `chapB_w12_oracle`, `chapB_he_sig_perimeter`,
+`chapB_he_bnd_r81`, `chapB_he6_caseb`, `chapB_he6r1_scope`).
+
+---
+
+<!-- RESUME: §13 landed. Next: §14 (the 13 committed items + 14/15); then (d) A-F.2 census amendment + end-of-chapter line. -->
 
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
