@@ -5175,9 +5175,356 @@ DESCRIPTIVE, verbatim gate); PA-3(i) (the czar assignment this section discharge
 
 ---
 
-## 11. §11 — THE HT COUNT LAYER
+## 11. §11 — THE HT COUNT LAYER (`LEMMA W12-HT`, PA-5)
 
-<!-- §11 nodes: C.107–C.116 -->
+> **Design note.** `EFF.W12.83`–`.87` at exactly corpus strength (C-H7): per-member at
+> explicit `N` (GC-9.3 — no uniform-`N` law), σ through `monicFactors` at every-lift
+> strength where the corpus certifies "for every disc-nonzero lift" (the GC-9.1 divergence,
+> flagged per node), `B-BOX-1` inherited at `d ≥ 2` exactly through B.55/B.58 (C.113), and
+> the thin-verification disclosure (grid `n ∈ {3,4}, q ∈ {2,3}, N ≤ 6`, no hostile arc)
+> carried at C.116 with GC-11's extra-force gates. **One genuine simplification, flagged
+> for the cross-read (§16):** the corpus consumes `GENIND-1` at fracture permanence
+> (`HYP.121`, UNAUDITED interface — CHAP-H H-3); the Lean recast works on FACTORS (the
+> dissection's factorization `f = ∏ gᵢ`), where "later translations internal to one
+> cluster neither alter nor re-couple the others" is discharged by factorization
+> uniqueness (landed `monic_factorization_unique`) — **the HT chain here does NOT inherit
+> `HYP.121`**. Counting is over `Coeff O n N`-classes (landed carriers), so every count is
+> a `Finset.card` statement.
+
+### NODE C.107 [def] [fresh]
+
+**STATEMENT.** *The residual censuses.* Over a finite field `K` (ENV-C4): `S_λ(K)` — the
+number of monic polynomials over `K` with nonzero constant term and prescribed
+factorization type `λ` (the side-census of `(HT-rec)`); and the level-0 configuration
+census `C₀(q)` — the number of monic squarefree-type configurations realizing the datum
+`{(d_i, m_i)}` (distinct monic irreducibles `P̄_i` of the prescribed degrees). Both as
+`Finset.card` definitions with the standard generating identities as companions where
+§13's gates need spot values.
+
+**SIGNATURE** (shape). `noncomputable def sideCensus (K) [Field K] [Finite K]
+(λ : FactorizationType-shape data) : ℕ` + `def configCensus …`.
+
+**DEPENDS.** landed `FactorizationType` (GC-4's carrier for `λ`) · B.26/B.27's ENV-D
+census toolkit shapes.
+
+**PROOF.** definitional. **SIZE.** 20 lines.
+
+**SOURCE.** `EFF.W12.83` (the `S_{λ_{v,S}}(Q_i)` and `C₀(q)` objects); GC-4 (λ through
+the landed carrier).
+
+**TEETH.** spot values at §13. **ENVIRONMENT.** ENV-C4.
+
+---
+
+### NODE C.108 [def] [fresh]
+
+**STATEMENT.** *The order-1 refinement tree and its node quantities.* The `HTTree` datum:
+a finite tree per repeated branch `i` (degree `d_i`, `Q_i = q^{d_i}`), each node `v`
+carrying multiplicity `m_v`, previous center depth `s_v` (0 at the root), the exact
+polygon data `P_v` (heights, in C's argmin carriers), and per-side residual types
+`λ_{v,S}`; children = repeated LINEAR factors on `e = 1` sides (slope `−s_u`); repeated
+factors of degree `> 1` or on `e > 1` sides are NOT children (they open composite stages —
+outside the order-1 statement, the fence transcribed as a structure invariant). Node
+quantities: `B_v(N) = m_v·N − Σ_{j<m_v}⌈P_v(j)⌉ − L_v` (with `L_v` the integral-boundary
+count), `D_v(N) = Σ_{j<m_v} max(N − ((m_v−j)s_v + 1), 0)` (note the CLIP — the same
+`max(0, ·)` discipline as C.53), the conservative cell
+`C_{m_v}(s_v) = {(a_j) : v(a_j) ≥ (m_v−j)s_v + 1}`, and the SIDE-TAGGED orbit factor
+`κ_v = ∏_{S,a} r_{v,S,a}!/∏_H r_{v,S,a,H}!` ("the side tag is necessary because roots on
+different sides cannot be permuted"), plus `κ₀(T)` at level 0.
+
+**SIGNATURE** (shape). `structure HTNode …` / `structure HTTree …` + the quantity `def`s
+(`ℚ`-free: `⌈P_v(j)⌉` enters through the cleared pin data — the ceiling of `u·j/ℓ`-form
+values is `Nat`-computable from the argmin representation).
+
+**DEPENDS.** C.06/C.07 (polygon carriers) · C.107 · landed `Coeff`, `proj`.
+
+**PROOF.** definitional. **SIZE.** 40 lines.
+
+**SOURCE.** `EFF.W12.83` (setting, verbatim: the datum, `B_v`, `D_v`, `C_{m_v}(s_v)`,
+`(HT-orbit)` with the side-tag rationale and the `side_index` convention note).
+
+**TEETH.** the N1 certificate's `side_index` grouping → the side-tag is guarded by
+DROP-teeth (C.116). **ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.109 [lemma] [fresh]
+
+**STATEMENT.** *Step 1 — the exact node cell.* On one degree-`d_i` branch, with the
+`Φ`-adic window development (`F = Φ^m + Σ a_jΦ^j`, `a_j ∈ (O/π^N)[x]_{<d_i}` — B's `dev`
+at level `N` through `Coeff`-classes): prescribing the polygon `P_v` leaves
+`m·N − Σ⌈P_v(j)⌉` digit slots; each of the `L_v` integral boundary positions prices one
+digit by the residual; hence, after fixing the actual residual polynomials,
+`#E_v(𝐑) = Q^{B_v(N)}` — S2.2's digit calculation, **no separability needed**; summing
+residual letters of the prescribed types contributes exactly `∏_S S_{λ_{v,S}}(Q)` with no
+extra unit factor (the right-to-left sweep: one side's monic normalization fixes the
+shared vertex unit for the next — C.25's fixed-convention reads, level-1 instance).
+
+**SIGNATURE** (shape). `theorem ht_node_cell_card …` (a `Finset.card` identity over the
+window classes).
+
+**DEPENDS.** C.107 · C.108 · B.20 (`sideLen`/`sideDeg` — H-10's named ingredient) ·
+B.24 (`digAt`/`digPoly`) · B.28/B.30 (the priced digits) · landed `card_coeff`.
+
+**PROOF (route).** the slot count + the priced-digit count, per side right-to-left.
+
+**SIZE.** 36 lines.
+
+**SOURCE.** `EFF.W12.84` step 1 (verbatim).
+
+**TEETH.** the certificate's per-key comparisons (C.116) → retained; §13 spot-fires one
+cell count at each prime.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.110 [theorem] [fresh]
+
+**STATEMENT.** *Step 2 — transfer at one repeated linear root.* Let `(Y − z)^a` be a
+repeated factor on an `e = 1` side of slope `−k`; isolate its cluster factor `G` by the
+residual dissection (B.48). Choosing a lift `z̃` and recentering `Ψ = Φ − z̃π^k`:
+`(b_j) ∈ C_a(k)` (i.e. `v(b_j) ≥ (a−j)k + 1`) iff the normalized residual of the
+translate is `Y^a` — the binomial vanishing after `π^{(a−j)k}`-normalization; translation
+is unitriangular on the finite coefficient module (block-unitriangular at `d_i > 1`, the
+monic-redivision digit calculus), hence bijective **in every characteristic and at every
+finite window, including when conservative bounds lie beyond the window**; and
+`#C_a(k) = Q^{D_u(N)}`. Changing the lift composes with another unitriangular translation
+— the node and fiber size are lift-independent.
+
+**SIGNATURE** (shape). `theorem ht_transfer …` — **split-mandated C.110 → 2** (the
+translate-residual iff / the unitriangular bijection + card).
+
+**DEPENDS.** C.108 · B.02–B.06 (developments at two keys) · B.48 (the cluster isolation)
+· B.69 (shift covariance — H-10's descent-step routing: "B.69's SOURCE routes it here",
+discharged) · landed `card_coeff`.
+
+**PROOF (route).** `EFF.W12.84` step 2, verbatim route; the W-11 S2.3 mechanism without
+the quadratic restriction.
+
+**SIZE.** 2 × ~35 lines.
+
+**SOURCE.** `EFF.W12.84` step 2 (verbatim); CHAP-B B.69 (whose SOURCE field names this
+section as the consumer — the loop closes here).
+
+**TEETH.** the certificate's 300 translation-rank tests → retained; §13 fires one
+translate at each prime.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.111 [theorem] [fresh]
+
+**STATEMENT.** *Step 3 — simultaneous children and the free fiber `(HT-fiber)`.* At each
+weighted digit height the multiplication linearization
+`(A_α) ↦ Σ_α A_α∏_{β≠α}Ḡ_β` is an isomorphism (coprimality + degree bound + equal digit
+dimension — the W12-S2.1 mechanism on weighted side modules, = B.37–B.40's
+`GradedCoprime` engine at the weighted grading); solving by height gives the
+finite-window multiplication bijection; the child coordinates occur independently and
+simultaneously — **in the factor representation this is factorization uniqueness**
+(landed `monic_factorization_unique`; the corpus's GENIND-1/fracture-permanence
+consumption is discharged representation-side, `HYP.121` NOT inherited — FAITHFULNESS
+flag, §16); hence
+
+```
+E_v(𝐑) ≃ U_v(𝐑) × ∏_{u child} C_{m_u}(s_u),    #U_v(𝐑) = Q^{B_v(N) − Σ_u D_u(N)},
+```
+
+the exponent a nonnegative integer BY the bijection (divisibility is a consequence, not
+an assumption).
+
+**SIGNATURE** (shape). `theorem ht_fiber …` — **split-mandated C.111 → 2** (the
+multiplication bijection / the fiber assembly).
+
+**DEPENDS.** C.109 · C.110 · B.37–B.40 (the graded-coprime engine, consumed or re-run at
+the weighted grading — RE-PLAN if a weighted-grading generalization of B.39 is needed as
+a shared helper; expected) · landed `monic_factorization_unique`.
+
+**PROOF (route).** `EFF.W12.85` step 3, verbatim route.
+
+**SIZE.** 2 × ~35 lines.
+
+**SOURCE.** `EFF.W12.85` step 3 (verbatim, incl. the nonnegativity remark and the
+specialization notes).
+
+**TEETH.** 322 coprime-multiplication-rank tests → retained.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.112 [lemma] [fresh]
+
+**STATEMENT.** *Step 4 — histories and orbit factors: `(HT-rec)`.* Replacing each child
+cell by its selected-history subset gives the relative factor `#(u)/Q^{D_u(N)}`; the
+multiset-to-actual-roots assignment count on one side is `r_{v,S,a}!/∏_H r_{v,S,a,H}!`;
+multiplying and inserting into `(HT-fiber)`:
+
+```
+#(v) = Q^{B_v(N)} · (∏_S S_{λ_{v,S}}(Q_i)) · κ_v · ∏_{u child} #(u)/Q^{D_u(N)}.
+```
+
+Concatenation-compatible (child tuples compose; unitriangular translations compose) and
+fracture-compatible (uniqueness identifies the same cluster before and after sibling
+operations).
+
+**SIGNATURE** (shape). `theorem ht_rec …` (the recursion as an exact `Finset.card`
+identity — division-free form: `#(v)·Q^{ΣD_u} = …·∏#(u)`).
+
+**DEPENDS.** C.108 · C.109 · C.110 · C.111.
+
+**PROOF (route).** `EFF.W12.85` step 4, verbatim.
+
+**SIZE.** 34 lines.
+
+**SOURCE.** `EFF.W12.85` step 4.
+
+**TEETH.** DROP-KAPPA0 (370) + DROP-HISTORY-CENSUS (302) → retained (they kill the
+κ-omission mutants).
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.113 [theorem] [fresh]
+
+**STATEMENT.** *Step 5 — termination and Ore certification.* (i) Depth strictly
+increases: an eligible `e = 1` child has `s_u ≥ s_v + 1` (lower-polygon convexity in the
+argmin representation: every point strictly above the slope-`s_v` line through
+`(m_v, 0)`); window-visibility bounds the depth (`m_v·s_v + 1 ≤ P_v(0) ≤ N − 1`); no
+root-to-leaf chain is infinite. (ii) At a decided order-1 key every terminal residual is
+separable, and the order-1 Ore theorem certifies one factor per terminal side factor with
+its displayed `(e, f)` — **for EVERY lift of the window class** (B.79/B.82's every-lift
+certificates; the corpus's "for every disc-nonzero lift" is the GC-9.1 divergence, flagged:
+the Lean conclusion is strictly stronger, via `monicFactors`). **`B-BOX-1` inheritance,
+exactly here:** at terminal side factors with residual degree `d ≥ 2` the `(e,f)` read is
+B.58's, conditional on `B-BOX-1` — the HT chain's conditionality is exactly B's, no more
+(C-H7(iii)). (iii) The order-≥ 2 fence: a repeated factor of residual degree `> 1` or on
+an `e > 1` side opens a composite stage and remains under `[W12-H]` — routed to §5's
+trichotomy case (c) and chapter I's box, NEVER certified here.
+
+**SIGNATURE** (shape). `theorem ht_terminates …` + `theorem ht_leaf_certified …` —
+**split-mandated C.113 → 2**.
+
+**DEPENDS.** C.07/C.08 (argmin convexity arithmetic) · C.108 · B.58 (+ its `B-BOX-1`
+hypothesis at `d ≥ 2`) · B.63 (NS-6: leaves separable ⟺ descent stops) · B.79/B.82 (the
+certificates).
+
+**PROOF (route).** `EFF.W12.86` step 5, verbatim; the convexity leg in cleared argmin
+form.
+
+**SIZE.** 2 × ~35 lines.
+
+**SOURCE.** `EFF.W12.86` step 5 (verbatim, incl. the `[W12-H]` fence); CHAP-B H-10 (the
+inheritance clause, verbatim: "an HT transcription at `d ≥ 2` inherits `B-BOX-1` through
+B.55/B.58").
+
+**TEETH.** DROP-L (1,136) → retained; §13 fires a depth-2 chain at each prime.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.114 [theorem] [fresh] — **TERMINAL SUPPLY: THE COUNT LAW**
+
+**STATEMENT.** *`(HT-branch)` and `(HT-global)` — the all-degree order-1 count law
+(= THEOREM W-12.A's effective statement).* Iterating C.112 over the finite tree
+(C.113(i)):
+
+```
+(HT-branch)   H_i(T,N) = (∏_{v∈T_i} κ_v ∏_S S_{λ_{v,S}}(Q_i)) · Q_i^{Σ_v B_v(N) − Σ_{v≠root} D_v(N)};
+(HT-global)   #T(N) = κ₀(T) · C₀(q) · ∏_{i: m_i=1} q^{d_i(N−1)} · ∏_{i: m_i≥2} H_i(T,N)
+```
+
+— per window-visible decided order-1 shape `T`, at explicit `N`, as exact `Finset.card`
+identities over `Coeff O n N`. Supplied to: chapter H's entry-law audits (CHAP-B H-10's
+routing — "counting level-`N` cells is chapters C/H's object … together with
+`LEMMA W12-HT`"), chapter I's count-side conditionality, and this chapter's §13 gates.
+
+**SIGNATURE** (shape). `theorem ht_branch …` + `theorem ht_global …` — **split-mandated
+C.114 → 2**.
+
+**DEPENDS.** C.107–C.113.
+
+**PROOF.** telescope over the tree (every non-root occurs once as a child — `−D_v` once;
+every node contributes `B_v`, censuses, `κ_v` once); level 0 by the branch-independence
+(B.48's coprime dissection at level 0) + the assignment count.
+
+**SIZE.** 2 × ~30 lines.
+
+**SOURCE.** `EFF.W12.83` (the displays, verbatim); `.86` step 6; `.87` ("W-12.A regains
+full order-1 coverage: its controlling formula is (HT-global) … the former display is the
+depth-zero specialization").
+
+**TEETH.** the N1 certificate (1,196 per-key comparisons, 0 mismatches) → **executable
+regression** retained; GC-11 extra-force gates at §13 (C.116's disposition).
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.115 [lemma] [fresh]
+
+**STATEMENT.** *Specializations and the obstruction instance (consumer compatibility as
+theorems).* (i) The dated-obstruction instance: for `H = (1)` then `SPLITEQ(2)`:
+`B_root = D_child = 2N − 5`, root census `S_{(1²)}(q) = q − 1`, leaf census
+`(q−1)(q−2)/2`, leaf exponent `2N − 8`, so `(HT-branch)` gives
+`(q−1)·((q−1)(q−2)/2)·q^{2N−8}` — exactly W12-L0's count. (ii) W12-L0's recovery shape:
+at multiplicity two `κ_v = 1` and the exponents telescope (the `(q−1)^t` factor).
+(iii) The depth-zero specialization (no non-root `D_v`, no internal orbit) is the former
+W-12.A display. Each as a computable instance lemma (`decide`/`norm_num`-grade at fixed
+small parameters, plus the symbolic telescope at (ii)).
+
+**SIGNATURE** (shape). three companion lemmas, one file (`ht_obstruction_instance`,
+`ht_L0_shape`, `ht_depth_zero`).
+
+**DEPENDS.** C.107 · C.114.
+
+**PROOF.** arithmetic + the displayed audits.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.W12.87` (the consumer sweep, verbatim rows: the discharge instance,
+W-12.A restoration, W12-L0/L1 recovery, the cubic consumers).
+
+**TEETH.** the audited `2N−5`/`2N−8` values → **Lean theorem** + §13 rows at `q = 2` AND
+`q = 3`.
+
+**ENVIRONMENT.** ENV-C3/C5.
+
+---
+
+### NODE C.116 [lemma] [fresh] — **the §11 disposition + Phase-B consumer spec**
+
+**STATEMENT.** *The thin-verification disposition and the transcription contract.*
+Documentation node: (i) the machine certificate is CORROBORATION, not the warrant ("the
+proof above supplies the all-degree warrant"), on grid `n ∈ {3,4}, q ∈ {2,3}, N ≤ 6`,
+NO hostile-arc pass (`EFF.W12.87` OPEN-CALL 6) — the Lean proofs of C.109–C.114 are the
+first warrant-grade check beyond that grid, and §13's gates re-fire the certificate's
+spot values at both primes (GC-11 extra force); (ii) the Phase-B consumer contract,
+verbatim: a history-resolved order-1 menu entry "must implement (HT-rec), retaining
+complete child-history multisets, side tags, `D_v`, `κ_v`, and `κ₀`" — transcribed as
+the `#check`-manifest of C.108's fields so no downstream menu drops a tag; (iii) the
+boxes that DO NOT MOVE: `[W12-H]`, W12-BOX-1's inputs `(H-a)–(H-e)`, W-12.B, the tail
+problems — unchanged, chapter I's rows; (iv) the provenance note (`EFF.W12.88`): the law
+was N1-conjectured → machine-certified → P1-composed → orchestrator-verified — carried
+in the docstring as the audit trail.
+
+**SIGNATURE.** documentation node (`#check` suite).
+
+**DEPENDS.** C.108 · C.114.
+
+**PROOF.** mechanical. **SIZE.** 16 lines.
+
+**SOURCE.** `EFF.W12.87`/.88 (verbatim); PA-5 (the assignment + its trap clause).
+
+**TEETH.** the four DROP-teeth at exact kill counts (302/22/370/1,136) → retained as
+regressions.
+
+**ENVIRONMENT.** ENV-C1.
+
+---
 
 ---
 
