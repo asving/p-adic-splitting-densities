@@ -492,8 +492,14 @@ claimed early.
 > same with the composite-stage layer: `GenreDatum` carries the local invariants of
 > `THEOREM GENHN.CLASS` clause (i), and `StageInterface` carries the `(CS-1Q)`/`(CS-2)`/`(CS-3)`
 > clause family *as fields, in the corpus's own terminal wording*. Everything in §10 is then proved
-> from the fields. Two instances are exhibited (H.38's genre E and H.42's genre F) with
-> `stageLoss = 0`, which is exactly the exemption `EFF.GENIND.199` grants.
+> from the fields. ~~Two instances are exhibited (H.38's genre E and H.42's genre F) with
+> `stageLoss = 0`, which is exactly the exemption `EFF.GENIND.199` grants.~~
+> [repaired: A-H.1/F2] **The committed claim was FALSE as written**: H.38/H.42 sign only the laws
+> `lawE`/`lawF`, and no chapter node exhibits a `StageInterface` instance. The genre-E instance now
+> EXISTS — the 0e gate's `stageIfaceE : StageInterface (genreE2 0) 2 0 4` (`stageLoss = 0`, the
+> `EFF.GENIND.199` exemption, all eleven fields proved; `leanspec/Leanspec/ChapH.lean`) — and is
+> booked as H.38-adjacent node content for the fleet to land. The genre-F instance is still OWED:
+> §16 TODO item 14.
 
 ### NODE H.01 [def] [fresh]
 
@@ -2270,7 +2276,9 @@ chapter-H statement about `b_S` is multiplied through by `2`; this node is the o
 because `2a ≤ S` says exactly that `2(b_S − a) = S + 1 − 2a ≥ 1` is a genuine positive `ℕ`.
 
 **TEETH.** none in the corpus → **Lean theorem**. This node is a DEPENDS of `StageInterface`'s
-`hprice` field being *satisfiable* (H.38/H.42 exhibit instances) and of H.72's exponent computation.
+`hprice` field being *satisfiable* ([repaired: A-H.1/F2] the satisfiability witness is the gate's
+`stageIfaceE`, booked at H.38 — the committed "(H.38/H.42 exhibit instances)" was false; the
+genre-F instance is §16 TODO item 14) and of H.72's exponent computation.
 
 **ENVIRONMENT.** ENV-H1.
 
@@ -2517,6 +2525,20 @@ exact) → **Lean theorem**; `GT-CRIT` (the genre appears exactly where the gram
 ABSENT below its floor) → **Lean theorem** for the floor half; `GT-T-CS` at its preregistered count
 12 → **executable regression** retained (it is a per-row grammar check, not a law check).
 
+**H.38-ADJACENT CONTENT [added: A-H.1/F2] — the genre-E `StageInterface` instance.** The chapter
+must exhibit the two `stageLoss = 0` instances §3's design note promises (the note as committed
+claimed they were already here; they were not). The genre-E one is the 0e gate's
+
+    def stageIfaceE : StageInterface (genreE2 0) 2 0 4
+    -- stageWindow = 2, stageLoss = entryCodim = slack = 0, bracket κ = 2^(2κ−1),
+    -- drainFrac = 0, stageSigma = stageSigma (genreE2 0) .ram; all eleven fields proved
+    -- (leanspec/Leanspec/ChapH.lean, gate section)
+
+which the fleet lands as H.38-adjacent content (same file, below the public declaration, RE-PLAN
+note to the orchestrator per §0.2's one-public-name rule if it needs a public name). It is the
+non-vacuity witness for `StageInterface` (F2) and the instance at which H.72's repaired display is
+tight (`4 ≥ 4`). The genre-F counterpart is §16 TODO item 14.
+
 **ENVIRONMENT.** ENV-H1.
 
 ---
@@ -2718,6 +2740,12 @@ headroom = 0)"*. `(3,5,1)`: `lawE 3 5 1 = 2·3^{12} = 1,062,882`; headroom `3^2 
 **TEETH.** `GT-DEPTH0` (the `V1E2(1)` spot exact at `(·,2,5,n5)`) · `GT-CRIT` (the zero-headroom
 absence at `(·,3,3,n5)`) · `GT-T-CRIT` at its preregistered count 4 → **Lean theorem**, both
 directions.
+
+**F2 RECORD [added: A-H.1/F2].** §3's design note as committed claimed this node exhibits a genre-F
+`StageInterface` instance with `stageLoss = 0`. It does not — this node signs only `lawV1E2` and
+its exponent lemmas — and NO chapter node does. The genre-E counterpart now exists (the gate's
+`stageIfaceE`, booked at H.38); **the genre-F instance is an explicit open obligation, §16 TODO
+item 14** (a new small node, or the claim stays withdrawn).
 
 **ENVIRONMENT.** ENV-H1.
 
@@ -6329,15 +6357,39 @@ lands in `leanfinal` its normalized environment type is diffed against the signe
 `leanspec/Leanspec/ChapG.lean` carries all 135 of its declarations in one file), added to
 `leanspec/Leanspec.lean`. It **imports `Uniformity`** and therefore sees chapter G's landed layer.
 
-**Stub count: 190 signed** declarations across the 99 nodes — counted mechanically over this file's
-SIGNATURE blocks (**192 written, minus the 2 explicitly withdrawn**, rules 2 and 3 below). Breakdown:
+**Stub count [recounted: A-H.1/C1, the gate's reconciliation]: 188 signed** declarations across the
+99 nodes. The arithmetic, mechanically re-counted at the 0e gate: **193 written** across this file's
+SIGNATURE **and ⚠ SIGNATURE-NOTE** `lean` displays (the committed "192 written" was an off-by-one;
+the two NOTE-signed replacement forms `stageLift'` and `package_three_of_rate` count among the
+written), **minus the 3 superseded forms** (`normIdx` + its dependent `stageLift`, rule 2;
+`package_three_of_drainage`, rule 3) = **190 signable**, **minus the 2 REFUTED at the gate**
+(H.72 `rate_lossPriced`, H.89 `band_not_consulted` — both repaired, AMENDMENT A-H.1/D4 and /D8;
+the leanspec stubs sign the repaired forms' predecessors as withdrawn comments per the G.23a
+precedent) = **188 signed**: mechanically **146 `theorem`→`axiom` + 5 `structure` + 3 `inductive` +
+33 `def` + 1 `noncomputable def`**, verified by grep against the landed
+`leanspec/Leanspec/ChapH.lean`, which carries exactly ONE extra non-blueprint declaration — the F2
+witness `stageIfaceE` (now booked at H.38). Breakdown of the 190 signable:
 
 | what | count | lands as |
 |---|---:|---|
 | `structure` | 5 | **real body** (`GenreDatum`, `StageInterface`, `TriangularUnitPivot`, `RecursionLegs`, `A1Cell`) |
 | `inductive` | 3 | **real body** (`StageLeaf`, `CapBranch`, `LeafE`) |
-| `def` / `noncomputable def` | 34 | **real bodies** (0e rule 1: *"definition/structure BODIES land first"*) |
-| `theorem` | 148 | **`axiom` stubs** |
+| `def` / `noncomputable def` | 34 | **real bodies** (0e rule 1: *"definition/structure BODIES land first"*; 33 + `stageLift'`) |
+| `theorem` | 148 | **`axiom` stubs** (146 after the two A-H.1 refutation-repairs; the fleet lands the REPAIRED H.72/H.89 forms) |
+
+**Ordering note [added: A-H.1/O1].** §3 is NOT in DAG order: H.09 `StageInterface`'s `hbracket`
+field mentions `clusterC` = H.13 (§4), and H.09's own DEPENDS says so. The stub file HOISTS H.13
+above H.09, and the fleet must order the `leanfinal` roll-up the same way — **`ChapH/H13.lean`
+imports before `ChapH/H09.lean`**; any instruction here to land "in the section ordering" is
+unsatisfiable as written and means the hoisted order.
+
+**FINDING F1 [added: A-H.1/F1], project-wide.** `DecidableEq FactorizationType` is noncomputable in
+the landed kernel (`Uniformity/Density/LocalData.lean:56`, `Classical.decEq`), so **σ-VALUED
+equalities cannot be executed at this or any gate** — H.75's first three conjuncts, and any
+`stageSigma`/`composedSigma` VALUE check. Only their `degree` projections are executable
+(`Multiset` map/sum are computable), which is exactly what GC-4's mandatory degree-conservation
+lemma provides. σ-value claims are theorem-only for the whole project; numeric gates must gate
+degrees, never σ values.
 
 All 190 names are distinct — checked mechanically over this file (zero duplicates) and against the
 landed name list of §0.3 (no collision: chapter H's new definitions live in
@@ -6370,9 +6422,10 @@ landed name list of §0.3 (no collision: chapter H's new definitions live in
    subtraction in `hwin`/`hprice`), **H.53** `eta_independent` (the `Module.finrank`/`minpoly`
    hypothesis shape), **H.54** `stageLift'` (the `Polynomial` sum with two `ℕ`-subtracted exponents),
    **H.61** `card_fibre` (the `Fintype`/`Nat.card` mix), **H.72** `rate_lossPriced` (the `2*`-cleared
-   `ℕ` inequality — its SIGNATURE NOTE **requires** the fleet agent to re-derive it before proving,
-   and the stub gate is where a mis-stated inequality will surface as an unprovable-but-elaborating
-   `axiom`, which the gate CANNOT catch; see §16 item 1).
+   `ℕ` inequality — [updated: A-H.1/D4] the feared failure mode FIRED: the committed display was
+   mis-cleared, and the gate DID catch it, by constructing a `StageInterface` instance and executing
+   the inequality (`decide`) rather than by elaboration; the node is repaired in place and §16 item 1
+   is adjudicated).
 
 **⚠ THE STUB GATE CANNOT CATCH A WRONG-BUT-WELL-TYPED INEQUALITY.** Chapter G's experience
 (PROJECT_STATE append #55) is that the gate caught defects `D1`–`D5` *mechanically* — but `G.23`'s
@@ -6380,7 +6433,8 @@ refutation came from a **numeric brute force at `ℤ_[3]`**, not from the gate. 
 **H.99's `#eval` column**: the arithmetic audits must be executed, at `q = 2` **and** `q = 3`, before
 the fleet fires on any node that consumes them. **Recommended gate order:** (a) elaborate the 5
 fragile signatures; (b) land the 27 `def` bodies; (c) run H.99's `#eval` block against the blueprint's
-commented expected values; (d) only then sign the 117 `axiom` stubs.
+commented expected values; (d) only then sign the `axiom` stubs (146 after the A-H.1
+refutation-withdrawals; the committed "117" was a miscount). [recounted: A-H.1/C1]
 
 ---
 
@@ -6498,18 +6552,31 @@ Ordered by how much a wrong answer would cost.
     itself declares the step *"a compressed step, not a gap"*; the 0a compiler's re-derivation is
     quoted in that unit's audit and is landed here as H.16/H.17. Confirm that routing step 4 through
     those two nodes is faithful, and that no third exponent form is needed.
+14. **[TODO, added: A-H.1/F2] The genre-F `StageInterface` instance is OWED.** §3's design note
+    promised two `stageLoss = 0` instances; the chapter signed neither. The genre-E one now exists
+    (the 0e gate's `stageIfaceE : StageInterface (genreE2 0) 2 0 4`, booked as H.38-adjacent node
+    content). The genre-F one (over a datum with `f₁ = 2`, e.g. `genreD2bwitness`'s schema — the
+    cell where the MASS normalization of `hbracket` is visible, per H.09's normalization note) is a
+    **new small node or the §3 claim stays withdrawn**; the cross-read/orchestrator picks. Until it
+    lands, every `f₁ ≥ 2` consumer of `StageInterface` is a theorem about an unexhibited instance
+    family.
 
-**Flagged-for-cross-read census: 13 items, of which 11 are node-level and are named at the nodes
-themselves** (H.26, H.57, H.58, H.76, H.89, H.91, H.93, H.94, H.95, H.96, H.99), **2 are
-`[NEEDS-DERIVATION-EXPANSION]` flags** (H.60, H.71), and **2 are declared blueprint defects cured in
-place** (H.54's `normIdx` → `stageLift'`; H.97's `package_three_of_drainage` →
-`package_three_of_rate`). No node in this chapter carries a silent thin step: every PROOF field is
-either transcription-grade from an `EFF` DERIVATION, or flagged above.
+**Flagged-for-cross-read census: 14 items** [recounted: A-H.1/F2]**, of which 11 are node-level and
+are named at the nodes themselves** (H.26, H.57, H.58, H.76, H.89, H.91, H.93, H.94, H.95, H.96,
+H.99), **2 are `[NEEDS-DERIVATION-EXPANSION]` flags** (H.60, H.71), **2 are declared blueprint
+defects cured in place** (H.54's `normIdx` → `stageLift'`; H.97's `package_three_of_drainage` →
+`package_three_of_rate`), **and 1 is the A-H.1/F2 TODO (item 14)**. No node in this chapter carries
+a silent thin step: every PROOF field is either transcription-grade from an `EFF` DERIVATION, or
+flagged above. The stage-0e gate's own defect list and its repairs are **AMENDMENT A-H.1** at the
+end of this file — read it before assigning any of H.06, H.18, H.23, H.38, H.42, H.71, H.72, H.89,
+H.94.
 
 ---
 
-*END OF CHAPTER H BLUEPRINT — 99 nodes, 190 signed declarations, 358 DAG edges, 105 source units
-transcribed from `EFF-GENIND` (206) / `EFF-GENHN` (93) / `EFF-GENH4` (111). CODEX CROSS-READ OWED.*
+*END OF CHAPTER H BLUEPRINT — 99 nodes, 188 signed declarations (190 signable − 2 machine-refuted,
+repaired; A-H.1/C1), 358 DAG edges, 105 source units transcribed from `EFF-GENIND` (206) /
+`EFF-GENHN` (93) / `EFF-GENH4` (111). CODEX CROSS-READ OWED. STAGE-0e GATE CLOSED — AMENDMENT A-H.1
+BELOW GOVERNS THE NINE TOUCHED NODES.*
 
 ---
 
@@ -6669,6 +6736,55 @@ written `expConst + expCoeff 1 * (offset-shift + 1)`, "offset-shift" undefined �
 disambiguating rather than contradicting the pin), and the visibility form transports by the same
 affine substitution. No blueprint pin conflicts with the adopted body; the adjudication note now
 sits in the node block itself.
+
+### A-H.1/F2 — `StageInterface` HAD NO EXHIBITED INSTANCE; THE GENRE-E ONE IS BOOKED, GENRE-F OWED
+
+§3's design note asserted *"Two instances are exhibited (H.38's genre E and H.42's genre F) with
+`stageLoss = 0`"* — false as committed: `grep StageInterface` over the chapter finds the identifier
+only in H.09 (its own block) and H.72 (its consumer), and H.38/H.42 sign only `lawE`/`lawF` plus
+exponent lemmas. So `StageInterface G N H S` had no non-vacuity witness anywhere and H.72 was a
+theorem about a possibly-empty type — the exact vacuity class this project's honesty invariant
+exists to catch. **Partly closed by the gate**: `stageIfaceE : StageInterface (genreE2 0) 2 0 4`
+(all eleven fields proved) is constructed in `leanspec/Leanspec/ChapH.lean` and is hereby booked as
+**H.38-adjacent node content** for the fleet. The genre-F instance is an explicit TODO — **§16 item
+14** (new). Repairs applied in place: the §3 design note (struck + corrected), H.38 (the booked
+instance), H.42 (the F2 record), H.33's TEETH line (its satisfiability parenthetical repeated the
+false claim).
+
+### A-H.1/F1 — FINDING (recorded, not a defect): σ VALUES ARE NON-EXECUTABLE, PROJECT-WIDE
+
+`DecidableEq FactorizationType` is noncomputable in the landed kernel
+(`Uniformity/Density/LocalData.lean:56`, `Classical.decEq`), so σ-VALUED equalities — H.75's first
+three conjuncts, any `stageSigma`/`composedSigma` value check — cannot be `#guard`/`#eval`-executed
+at this or ANY gate; only their `degree` projections can (`Multiset` map/sum are computable), which
+is exactly GC-4's mandatory degree-conservation lemma. Consequence for every chapter: numeric gates
+gate DEGREES; σ-value claims are theorem-only. Recorded in §15.
+
+### A-H.1/O1 — ORDERING: §3 IS NOT IN DAG ORDER; H.13 IS HOISTED ABOVE H.09
+
+H.09 `StageInterface`'s `hbracket` field mentions `clusterC` = H.13 (§4); H.09's own DEPENDS lists
+it. The stub file hoists H.13 above H.09, and the `leanfinal` roll-up must import
+`ChapH/H13.lean` before `ChapH/H09.lean`. Recorded in §15 (ordering note); "land in the section
+ordering" is unsatisfiable as written and means the hoisted order.
+
+### A-H.1/C1 — THE COUNT RECONCILIATION (§15, the header, and the END line, recounted)
+
+Gate-verified arithmetic: **193 written** in the chapter's `lean` displays (SIGNATURE blocks + the
+two ⚠-NOTE replacement forms; the committed "192" was an off-by-one) = 149 `theorem` + 33 `def` +
+3 `noncomputable def` + 5 `structure` + 3 `inductive`. Minus the 3 superseded (`normIdx`,
+`stageLift`, `package_three_of_drainage`; §15 rules 2–3) = **190 signable** (the committed table's
+5/3/34/148). Minus the 2 refuted (D4, D8) = **188 signed** = 146 `axiom` + 5 `structure` +
+3 `inductive` + 33 `def` + 1 `noncomputable def`, matching `leanspec/Leanspec/ChapH.lean` by
+mechanical grep, plus that file's single extra declaration `stageIfaceE` (F2). The fleet lands the
+two REPAIRED statements (H.72, H.89) as theorems again, so the fleet-facing target count is 190
+landed declarations across the 99 nodes plus the F2 instances. §15's stub-count paragraph, its
+rule-6 H.72 parenthetical, the "(d) … 117 axiom stubs" miscount, and the END line are repaired in
+place with `[recounted: A-H.1/C1]`/`[updated: A-H.1/D4]` tags.
+
+*END OF AMENDMENT A-H.1 (2026-08-15). Touched nodes: H.06, H.18, H.23, H.38, H.42, H.71, H.72,
+H.89, H.94; touched sections: §3 design note, H.33 TEETH, §15, §16. Statement changes (D4, D7, D8)
+are honest corrections of machine-refuted or unsatisfiable text under the standing
+statement-change authority; every refuted original is preserved above.*
 
 
 
