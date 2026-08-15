@@ -807,3 +807,35 @@ list complete. This document is ready for (i) the cross-read (Part IV item 6), (
 parallel chapter authors' consumption.
 
 <!-- RESUME: DOCUMENT COMPLETE (GC-1..14, PA-1..5, six briefs, Part IV). Next action belongs to the orchestrator: cross-read per Part IV item 6, then fire the parallel authors. -->
+
+---
+
+## PART V — OWNER RULING (Asvin, 2026-08-15): the sign-off scope is TWO gates
+
+**Ruling (near-verbatim):** "we have a fixed global target, we agree that it should be proven
+modulo literature cites (except my paper), and the only thing I really need to sign off on is the
+main Lean statement and the ways we import literature cites. Everything else should work itself
+out provided we can get to the target."
+
+**Operative consequences (this section GOVERNS over Part IV):**
+
+1. **The two retained owner gates:** (a) the main Lean statement — `UniformityStatement`
+   (`leanfinal/Uniformity/Density/Statement.lean`) and any change to it; (b) every
+   literature-cite import: the exact Lean statement of the cited published theorem, imported via
+   the axiom-faithfulness pattern (published-source citation + faithfulness entry + fresh-context
+   audit), signed per cite. **The owner's own paper is never citable** — it is the target.
+2. **Part IV is disposed as follows** (orchestrator authority under the ruling):
+   - PA-1 (the D-§9.1 H₀ repair): APPROVED, to be applied by the B-finisher after the
+     cross-read verdict confirms the four-site list.
+   - The three cut rulings (GENTOW2→C, W12-HT→C, HE7→E): ACCEPTED as authored.
+   - GC-2's carrier fallback: orchestrator decides at need with a DECISION block.
+   - Chapter I's per-conjunct sign-off plan: REPLACED — every hypothesis carried toward the
+     capstone must terminate as either a DISCHARGE NODE or a LITERATURE CITE routed through
+     gate (b). No third category. Chapter I's brief is to be read with this substitution.
+   - CORE-SET human reads: retained as gate-(b) adjacent where the row is about a cite/def
+     faithfulness; otherwise absorbed into the standing fresh-eyes audit cadence.
+3. **Cite-vs-prove is now the fleet's choice** where a published source exists (e.g. [GN15]
+   Thm 2.3): CITE_SCOPE_RESOLUTION's "every cite becomes a node to prove" is relaxed from
+   mandate to option; each exercised cite goes through gate (b). Chapters should record the
+   choice per node (`[fresh]` / `[quarry:…]` / **`[cite:<source>]`** — new tag, gate-(b) gated).
+4. Pushing to remotes still requires owner sign-off (unchanged standing rule).

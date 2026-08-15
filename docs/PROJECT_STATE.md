@@ -4919,3 +4919,32 @@ the fillers ran on FABLE — regime memory amended; a 10-min storm
 watchdog cron ran during the campaign (torn down at close). OWED
 (carried): codex cross-read of chapter G (Tue); Asvin's fresh-eyes
 on HYP.01's caveats (#59); D-§9.1 repair; BP-B §10.
+
+**2026-08-15 DATED APPEND #61 — THE BLUEPRINT-COMPLETION CAMPAIGN
+FIRES (conventions czar → adversarial gate → parallel authors), AND
+THE OWNER NARROWS SIGN-OFF TO TWO GATES.** (1) OWNER RULING (Asvin,
+recorded verbatim in CONVENTIONS_2026-08-15.md PART V, which now
+GOVERNS over its Part IV): the target is fixed — `UniformityStatement`
+proven **modulo literature cites, his own paper never citable** — and
+the only owner sign-offs are (a) the main Lean statement and (b) each
+literature-cite import (axiom-faithfulness pattern, per cite).
+Everything else is orchestrator/fleet authority toward the target.
+Consequences: PA-1 approved; the cut rulings accepted; chapter I's
+per-conjunct plan replaced by discharge-node-or-signed-cite;
+cite-vs-prove becomes a per-node fleet choice (new `[cite:]` tag,
+gate-(b) gated) — CITE_SCOPE's prove-everything mandate relaxed to an
+option. (2) CAMPAIGN: per Asvin ("launch agents in parallel (fable)
+to create the blueprints… set an agent first to make uniform
+choices"), the CONVENTIONS CZAR ran first and landed
+`blueprint/CONVENTIONS_2026-08-15.md` (6 commits, 8c282339→febec7d6):
+GC-1..14 (headline: H₀ pins at sideMin — the D-§9.1 repair, four
+sites, zero signature changes; one polygon representation at all
+tower levels; primed (e,f); one σ dictionary; GenreDatum/
+StageInterface as sole carriers with a discharge/consume table;
+every-lift default; two-prime gates with e>1∧f>1 witness), PA-1..5,
+and six author briefs (B-FIN, C, E, D, F, I). A fresh-context
+ADVERSARIAL CROSS-READ of the doc is in flight (plan-level pass;
+codex capped, fable substitutes); wave A (B-FIN + HARD C + HARD E)
+fires on its verdict, then D/F, then I last. Storm ops: 10-min
+watchdog cron re-armed; one czar kill (transient auth error, a NEW
+failure mode alongside the 529s) recovered by resume with zero loss.
