@@ -4491,4 +4491,91 @@ only on rows aligned with R8-1's corrected criterion.
 
 ---
 
+## 9. §9 — LEVEL-`N` DECIDEDNESS CERTIFICATES IN FULL GENERALITY
+
+This section turns §§3–8's polynomial-level leaf theory into statements about `leanfinal`'s
+level-`N` coefficient classes: **window visibility** (B.75–B.76), **level stability** (B.77–B.78),
+and the **decidedness certificates** themselves (B.79–B.82) — at general `O`, every degree `n`,
+every window `N`, both characteristics. "Full generality" is measured against two baselines: the
+landed `leancheck` suite (`UniformityCheck/N3Cert*.lean`), which is `n = 3` by hand-cased polygon
+readings, and the corpus's own certification (`EFF.W12.27`), which quantifies over `disc ≠ 0` lifts
+only — H-11 records why this section's conclusions hold for **every** lift of the class. Per H-4 and
+the chapter's line-221 commitment: **B.75 and B.79 transcribe `R8-1`'s rewritten recursive
+certificate (`EFF.HE3.67`), never the superseded `LEMMA HE3-5` display of `EFF.HE3.37`.**
+
+### DECISION D-4 — WHAT A LEVEL-`N` CERTIFICATE IS, AND WHAT IS *NOT* CLAIMED
+
+*(to be filled — the three clauses: the unweakened `DecidedAt`; hypotheses on one representative,
+transported; R8-1 carried at the single order-1 node with no uniform-level law.)*
+
+---
+
+### NODE B.75 [def] [fresh]
+
+**STATEMENT.** *Window visibility.* `Visible π φ f N` : the order-1 read of `f` at the key `φ` is
+contained in the height-`N` window — some digit of the constant development coefficient
+`dev φ f 0` lies strictly below height `N`. *(stub; full node below)*
+
+---
+
+### NODE B.76 [lemma] [fresh]
+
+**STATEMENT.** *The visibility calculus.* The `npHgt`-truncation congruence (`GENHN-3(a)` at
+`e₁ = 1`), and `Visible`'s characterization, monotonicity, congruence-invariance, and existence.
+*(stub)*
+
+---
+
+### NODE B.77 [lemma] [fresh]
+
+**STATEMENT.** *Level stability (the transport pinned by B.74).* Under `π^N`-congruence and
+`Visible π φ f N`, the objects `npHgt` (truncated), `suppVal`, `sideSet`, and `resPoly` transport
+from `f` to `f'`. *(stub)*
+
+---
+
+### NODE B.78 [lemma] [fresh]
+
+**STATEMENT.** *The window dictionary.* `monicPoly` congruence, and window-exactness of the Hensel
+peel: coprime-reduction factorizations of `π^N`-congruent polynomials are `π^N`-congruent
+blockwise (`EFF.W12.21`'s injectivity leg). *(stub)*
+
+---
+
+### NODE B.79 [theorem] [fresh]
+
+**STATEMENT.** *The block certificate (R8-1's order-1 certificate).* A visible block with separable
+(terminal) residuals in D-3's perimeter has its `typeOf` pinned across the entire `π^N`-congruence
+class, with value `order1Type`. *(stub; SPLIT MANDATED → 2)*
+
+---
+
+### NODE B.80 [theorem] [fresh]
+
+**STATEMENT.** *THE FULL LEVEL-`N` DECIDEDNESS CERTIFICATE.* Order-0 peel + per-block certificates
+⟹ `DecidedAt O n σ N (proj O n N a)` with `σ` the assembled order-1 type. *(stub)*
+
+---
+
+### NODE B.81 [lemma] [fresh]
+
+**STATEMENT.** *Eventual certification.* Every terminating order-1 member is decided at **some**
+level `N` read off its own polygon — per-member, never uniform (R8-1's stratification bullet
+carried). *(stub; SPLIT CANDIDATE)*
+
+---
+
+### NODE B.82 [theorem] [fresh]
+
+**STATEMENT.** *The single-key certificate (the §10 gates' engine).* The one-block form of B.80:
+`DecidedAt O n (order1Type π φ (monicPoly a)) N (proj O n N a)`. *(stub)*
+
+---
+
+### AMENDMENT BLOCK (2026-08-15, §9 composer)
+
+*(to be filled — census/split-table refinements and the H₀-convention defect notice.)*
+
+---
+
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
