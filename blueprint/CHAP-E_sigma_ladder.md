@@ -1379,6 +1379,334 @@ ledger has it.
 
 ---
 
-<!-- RESUME: §4 through E.18. Next: E.19–E.21 (rank, termination packaging, KEY-BOUNDARY), then E.22–E.24 (instances, package). -->
+### NODE E.19 [def+lemma] [fresh]
 
-*(remaining §4 nodes, then §§5–14 follow)*
+**STATEMENT.** *The `(RANK)` tuple and its well-foundedness.* The read's state rank is the
+lexicographic triple `rank(S) = (deg F_S, μ_S, σ_𝒞(S))` (`EFF.T2.27`). Define the abstract
+state carrier `LadderState W := ℕ × ℕ × W` with the lexicographic order (first two components
+`<` on `ℕ`, third the rung's `WellFoundedRelation W`), and prove it well-founded. Companion
+decrease lemmas, one per transition kind, each taking the kind's numeric fact as hypothesis
+(the six checks of `EFF.T2.27`'s derivation): split (deg strictly down), peel (deg and mass
+down — E.18(i)), child jump (deg non-increasing, mass strictly down — E.17(ii)), product-1
+recentering (deg and mass preserved, `W` strictly down), boundary residual (deg down).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- The `(RANK)` state: `(deg, μ, σ)` ordered lexicographically (`EFF.T2.27`). -/
+def LadderState (W : Type*) := ℕ ×ₗ (ℕ ×ₗ W)
+
+instance ladderState_wf {W : Type*} (r : WellFoundedRelation W) :
+    WellFoundedRelation (LadderState W)
+
+theorem rank_decreases_of_deg_lt {W : Type*} (r : WellFoundedRelation W)
+    {s s' : LadderState W} (h : s'.1 < s.1) : (ladderState_wf r).rel s' s
+
+theorem rank_decreases_of_mass_lt {W : Type*} (r : WellFoundedRelation W)
+    {s s' : LadderState W} (h1 : s'.1 = s.1) (h2 : s'.2.1 < s.2.1) :
+    (ladderState_wf r).rel s' s
+
+theorem rank_decreases_of_sec {W : Type*} (r : WellFoundedRelation W)
+    {s s' : LadderState W} (h1 : s'.1 = s.1) (h2 : s'.2.1 = s.2.1)
+    (h3 : r.rel s'.2.2 s.2.2) : (ladderState_wf r).rel s' s
+```
+
+**DEPENDS.** E.12 (the `W`/`wf` fields) · mathlib `Prod.Lex`, `Prod.lex_wf` /
+`WellFoundedRelation` instances for `×ₗ`.
+
+**PROOF.**
+1. Instance: `Prod.Lex` of well-founded relations is well-founded (mathlib
+   `WellFounded.prod_lex`, twice).
+2. The three decrease lemmas: constructors of `Prod.Lex` (left / right-left / right-right),
+   after rewriting the equal components.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.T2.27` (`(RANK)` boxed display; "Every permitted nonterminal transition
+therefore strictly decreases `(RANK)`, and no transition increases a component earlier than the
+one it decreases"; the six transition checks in the DERIVATION; the CONDITIONALITY sentence —
+"Every transition must also preserve or partition roots and transport its polynomial product;
+rank descent alone is insufficient" — which is why E.20 takes the partition data separately);
+`EFF.T2.26` (`(SEC-RANK)`: `W_𝒞` MERELY well-founded, "an instance may discharge it either
+way" — hence the abstract `W`, never `ℕ`).
+
+**TEETH.** S7 Pass 2 well-founded-but-root-losing mutant → closed structurally: this node
+exports ONLY rank descent; exhaustion is E.20's separate input (the mutant cannot be expressed
+as a use of this node alone).
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.20 [theorem] [fresh]
+
+**STATEMENT.** *Termination and exhaustion of the recursive read (HE7.A clause 6, schema
+form).* Abstract form: let `step : LadderState W → Finset (LadderState W) → Prop` be a
+transition system in which every non-terminal state `s` steps to a finite set of successors
+each of strictly smaller rank (E.19's relation), and let a **conserved weight**
+`wt : LadderState W → ℕ` satisfy: at every step, `Σ_{s′ ∈ successors} wt s′ = wt s` (the
+root-partition bookkeeping: "preserve or partition roots"), and at terminal states `wt` is the
+emitted class size. Then: (i) every read tree from `s₀` is FINITE (well-founded recursion);
+(ii) the multiset of terminal emissions has total weight `wt s₀` (exhaustion: "pairwise
+disjoint root sets, their product is `F`"); (iii) at every terminal the `(e, f)`-increments
+multiply along the path (the composed invariants, via E.06). Clause-6 packaging: applied with
+`wt = the state's represented degree` and the per-transition conservation supplied by
+`hexhaust`/`haccount` (E.12) at splits, E.18(i) at peels, and the child/refine cases' block
+data.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem read_terminates_exhausts {W : Type*} (r : WellFoundedRelation W)
+    (step : LadderState W → Finset (LadderState W))
+    (terminal : LadderState W → Prop) [DecidablePred terminal]
+    (wt : LadderState W → ℕ)
+    (hdec : ∀ s, ¬ terminal s → ∀ s' ∈ step s, (ladderState_wf r).rel s' s)
+    (hcons : ∀ s, ¬ terminal s → ∑ s' ∈ step s, wt s' = wt s) :
+    ∀ s₀, ∃ leaves : Multiset (LadderState W),
+      (∀ l ∈ leaves, terminal l) ∧ (leaves.map wt).sum = wt s₀
+```
+
+**DEPENDS.** E.19 · mathlib `WellFounded.fix` / `WellFounded.induction`,
+`Finset.sum_multiset` bridges.
+
+**PROOF.**
+1. Well-founded induction on `s₀` along `(ladderState_wf r).rel`.
+2. Terminal case: `leaves := {s₀}`, weight matches trivially.
+3. Non-terminal: each `s′ ∈ step s₀` is smaller (`hdec`), apply the inductive hypothesis, take
+   the multiset union of the returned leaf sets; the weight sums telescope by `hcons` and
+   `Multiset.sum_bind`.
+
+**SIZE.** 26 lines. **SPLIT CANDIDATE:** the multiset-bind bookkeeping as a private helper.
+
+**SOURCE.** `EFF.T2.31` clause 6 + DERIVATION ("Each transition preserves or partitions roots
+and transports products, so induction gives exhaustion as well as termination"); `EFF.T2.27`
+(the well-founded induction and its insufficiency caveat — here `hcons` is the extra input);
+`EFF.T2.44` (the S-6 GO's shape: master = induction over the six transitions).
+
+**⚠ SCHEMA HONESTY.** This node is the INDUCTION ENGINE, not the full clause 6: instantiating
+`step` with the actual four-case read requires, per state, the transition's input suite —
+`(LB1)` at level-one clause-4 states (E.39), `(MP1)` at level-one recentered-key peels (E.40),
+the S1.8B/S1.8C discharges at level two (E.42/E.43), `(RISE)`/`(REF-HT)` at recenterings
+(E.55/E.56 layer), and the α-refine finiteness folded into `W`'s well-foundedness
+(`EFF.T2.26`'s instance table). The instantiation map is E.22/E.23's obligation tables; the
+conditionality is exactly `EFF.T2.31`'s: "Full carrier suite, including `(SEC-RANK)` and
+`(RISE)`; `(LB1)` when level-one clause 4 constructs blocks; `(MP1)` for a level-one clause-5
+peel at a recentered key."
+
+**TEETH.** S7 finite-refinement/root-preservation attacks → **Lean theorem** (the engine);
+Q1's "1,587/1,587 members decided" is the instance evidence at `n = 8` (E.23).
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.21 [theorem] [fresh]
+
+**STATEMENT.** *THEOREM T2.KEY-BOUNDARY, schema form.* Let `F : Polynomial O` be monic with a
+boundary decomposition `(BOUNDARY-PROD)` `F = (Π_i P_i) * (Π_j B_j)` (given as data: a finite
+list of certified boundary factors `P_i` and residual blocks `B_j`, with the products' root
+counts disjoint and exhaustive in the weight bookkeeping of E.20), where each residual block
+carries a full rung-interface suite. Then the terminal emissions of the blocks' reads, together
+with the boundary factors, have pairwise-disjoint weight and total weight `deg F` — "Adjoin the
+certified irreducible boundary factors `P_i`, and apply HE7.A separately to each key-free
+residual block `B_j`" (`EFF.T2.32`). The gcd computation producing `(BOUNDARY-PROD)` is the
+instances' (`G = monicGCD_{K₀[x]}(F, Φ)`, `EFF.T2.28`); the corpus fence transcribes: "Nothing
+asserts that `G = Φ`, that `Φ` is irreducible, that one factor `Φ` is peeled, or that a peel
+lowers `μ` by exactly one."
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem key_boundary {O : Type*} [CommRing O] [IsDomain O]
+    (F : Polynomial O) (hF : F.Monic)
+    (boundary : List (Polynomial O)) (blocks : List (Polynomial O))
+    (hprod : F = boundary.prod * blocks.prod)
+    (hbmon : ∀ P ∈ boundary, Polynomial.Monic P)
+    (hkmon : ∀ B ∈ blocks, Polynomial.Monic B)
+    -- per-block read results, supplied by E.20's engine at each block:
+    (emit : Polynomial O → Multiset ℕ)                -- terminal class weights
+    (hemit : ∀ B ∈ blocks, (emit B).sum = B.natDegree) :
+    (boundary.map Polynomial.natDegree).sum
+      + (blocks.map (fun B => (emit B).sum)).sum = F.natDegree
+```
+
+**DEPENDS.** E.20 · mathlib `Polynomial.natDegree_list_prod` (monic), `List.sum_map`.
+
+**PROOF.**
+1. Degrees add over the monic product (`Polynomial.Monic.natDegree_mul` iterated /
+   `natDegree_list_prod` with monicity).
+2. Substitute `hemit` per block; `List.sum` arithmetic closes.
+
+**SIZE.** 18 lines.
+
+**SOURCE.** `EFF.T2.32` (THEOREM T2.KEY-BOUNDARY, statement + verbatim proof: "The boundary
+decomposition already gives the polynomial product and the disjoint exhaustive partition …
+Multiplying the resulting identities proves the assertion"); `EFF.T2.28` (`(BOUNDARY-PROD)`,
+the suite obligation per residual block, and the four-part negative fence, transcribed above);
+`EFF.T2.44` ("A reducible key boundary is handled by a separate gcd/orbit decomposition, never
+by a false one-factor peel").
+
+**TEETH.** S7 Pass 1 reducible-key gate; Pass 2 multiple-boundary-factor tooth → **Lean
+theorem** (the composition layer); the per-block suites are instance obligations (E.22/E.23).
+
+**ENVIRONMENT.** ENV-E2 (+ `[IsDomain O]`).
+
+---
+
+### NODE E.22 [instance-record] [fresh]
+
+**STATEMENT.** *The level-one instance record (HE3+HE6 composite), as an obligation table.*
+The corpus's S3.1/S3.2 records (`EFF.T2.33`/`.34`) instantiate the §4 structures at
+`K = 𝔽_{Q^{f₁}}`, `Φ = Φ′`, `D = D′ = e₁f₁`, `(e_𝒞, f_𝒞) = (e₁, f₁)`, `d = dv = e₁v`,
+`T = D′h`, `dig(A) = γ_{dv(A)}(A)`, `gcd(h, e₁) = 1`, dictionary `(e, f) = (e₁e_s, f₁f_s)`.
+This node is NOT a Lean construction — it is the blueprint's binding obligation map for the
+instance, one row per §4 field:
+
+| field (E.10–E.12) | supplier at level 1 | citation form |
+|---|---|---|
+| `hgt`/`dig` data + `(SLOT-V)/(SLOT-R)` laws | B's digit layer on the `e₁ = 1` slice (B.21 `digAt`, B.22); `e₁ ≥ 2` normalizer reads | B.21/B.22 by node ID; `EFF.HE6.09 [supplied-by: chapter C]` (honesty E-2) |
+| `Full`/`hlift` | fullness criterion `k ≥ (i(k)+e₁(f₁−1))h`, uniform `(D′−1)h` | `EFF.T2.10`'s HE6 row: `EFF.HE6.15 .17 [supplied-by: chapter C]`; arithmetic half = E.08/E.32 |
+| `hef` `(DEG-EF)` | `D′ = e₁f₁` definitional at the instance | E.01 base rung |
+| block `(DEV)`/`(KEY-FREE)`/`hA0` | B's development layer (B.01–B.14) | B node IDs (committed) |
+| `sides`/`len`/`hlen_sum` | B's polygon side data (B.16–B.20) via GC-2 | B.16–B.20 by node ID |
+| `linFac`/`hiFac`/`hresdeg` | B's residual factorization (B.28–B.30, `sideMin` pin per GC-1/PA-1) | B.28–B.30 by node ID |
+| `haccount` (D-E3) + the INTEGRAL `(ACCOUNT)` | `HE6-ACCOUNT` (the resultant identity, κ > D′h) + `HE6-BETA-GUARD` transitivity (Rider 2) | `EFF.HE6.56 [supplied-by: chapter C]` — B's H-2 refusal covers the class-size route |
+| `hforce` | test-package clause 6 (local invariants divisible) | `EFF.T2.15` clause 6: `EFF.HE6.29 [supplied-by: chapter C]` |
+| `hnonempty`/`hexhaust` | test-package clauses 3–4 (resultant symmetry / disjoint exhaust) | same placeholder family |
+| `W`/`wf`/`σRank` `(SEC-RANK)` | `HE3-A-PROOF`'s stage-α termination — an `ℕ`-valued rank (window bound minus current floor) | `EFF.T2.52`'s level-one bullet: `EFF.HE3.02-area [supplied-by: chapter C]`; B's certificates (B.79–B.82) fire the leaf reads |
+| `(RISE)` at recenterings | `HE3-A-PROOF` stage-α + `HE6-FAMILY`/`HE6-PROOF` | `EFF.T2.19`'s X02/X10–X11 pins → C placeholders |
+| test clauses 1/2/7 + `(WINDOW)`/proxy safety | HE6 test package | C placeholders |
+
+**Fences carried verbatim** (`EFF.T2.33`): clause-4 block construction is `(LB1)`-conditional;
+a clause-5 peel at a RECENTERED level-one key is `(MP1)`-conditional; the ORIGINAL-key peel is
+supplied by `HE6-PEEL-CONVENTION` (C placeholder). **Grade cap** (`EFF.T2.38`): HE3 is consumed
+at attempt grade 0/2 (clean 1/2), so this instance and every level-two chain consuming it
+through S1.8C "remain capped there" — recorded for chapter I's conditionality bookkeeping, NOT
+as a Lean object.
+
+**SIGNATURE.** none (obligation record; the stub stage checks the table's B-node citations
+against committed CHAP-B signatures).
+
+**DEPENDS.** E.10–E.12 (the field list); CHAP-B nodes cited above; chapter-C placeholders as
+listed.
+
+**PROOF.** n/a. **SIZE.** n/a (table).
+
+**SOURCE.** `EFF.T2.33` (HE3-INSTANCE, boxed); `EFF.T2.34` (HE6-INSTANCE, boxed;
+`|S_{λ,r}| = D′ℓ deg r`, `(e,f) = (e₁ℓ, f₁deg r)`); `EFF.T2.16` (the integral `(ACCOUNT)`,
+quoted here in full per D-E3's promise: "`Σ_{ρ:F(ρ)=0} min(w_ρ, κ) = D Σ_{λ∈Sides(P)} L_λ
+min(λ, κ)` — This is the only side-accounting identity used by the master proof", `κ > T`,
+HE6 proves it on `κ > D′h`); `EFF.T2.56`/`.96` (the final Source-pin line discipline this
+table mirrors).
+
+**TEETH.** HE6 seam gate; level-one `(RISE)` discharge tooth; the five-instance perimeter gate
+→ disposition: the table rows are checked at the stub stage (0e) against B's signatures; C-side
+rows enter C's TEETH tables.
+
+**ENVIRONMENT.** n/a.
+
+---
+
+### NODE E.23 [instance-record] [fresh]
+
+**STATEMENT.** *The level-two and tower instance records (HE7 / HETOW / GENTOW4), as an
+obligation table.* `EFF.T2.35`–`.37` instantiate §4 at `K_𝒞 = K₂`, `Φ = Ψ_{λ,r}` (resp. `Φ₂`),
+`D = D″ = D′ℓd_r` (resp. `D₂ = D′e₂f₂`), `(e_𝒞, f_𝒞) = (e₁ℓ, f₁d_r)` (resp. `(e₁e₂, f₁f₂)`),
+`d = dv₂ = ℓe₁v`, `T = T₂`. Obligation map — the decisive difference from E.22: **most field
+suppliers are E's own §5 nodes** (the level-2 machinery is HE7's, ruled into E):
+
+| field | supplier | citation form |
+|---|---|---|
+| `hgt`/`dig` + slot laws | (SLOT₂) = E.29 (schema) over the level-1 carrier; normalizer system `n₂` | E.29; carrier data `EFF.HE7.06 [supplied-by: chapter C]` for the `Pt`-evaluation legs |
+| `Full`/`hlift` | (LIFT₂) = E.31, thresholds E.08, margins E.09 | E-internal |
+| `sides` etc. at level 2 | the `P₂` polygon of the Ψ-development, read off `f` when the block is proper: LEMMA HE6R1-2 (with the CORRECTED per-side scalar `γ_g·β^{c₁(m₁^{f_S}, c_g)}`, honesty E-1's HE7 residual noted) | `EFF.HE6R1 [supplied-by: chapter C]`; the scalar's exponent arithmetic = E.04/E.33 |
+| `haccount` | `(†₂-count)` + HE6-3 sampling (`EFF.HE7.41`'s proof) | the derivation is C's (polygon sampling); its termwise output `n_{λ₂} = D″L_{λ₂}` enters as the field |
+| `hforce` | LEMMA HE7-5 = local forcing (key-free) | `EFF.HE7.29 [supplied-by: chapter C]` for the Galois/valuation legs; GC-3 rank form at the `e·f` read |
+| `hnonempty`/`hexhaust` | LEMMAS HE7-9/HE7-10 + COROLLARY HE7-7″ (licensed by R2-a = E.36) | schema shape E.14–E.16; carrier legs C placeholders |
+| `(SEC-RANK)` | LEMMA HE7-8 = E.55 (well-foundedness form) at a DEFINITION HE6-1 key; at the COMPOSED key via `HETOW-A`(ii)/`GENTOW-4-A`(iii) + the W+w fold (E.42) | E.55/E.42 + `EFF.T2.52`'s two composed-key bullets → `[supplied-by: chapter C]` for the HETOW/GENTOW4 clauses |
+| `(RISE)`/`(REF-HT)` | LEMMA HE7-12/13 = E.38/E.56; the derivation E.56 | E-internal (schema) |
+| the peel at Ψ | LEMMA HE6R1-3 + the convention chain = E.37 (licensed by R2-a = E.36) | `EFF.HE6R1 [supplied-by: chapter C]` for HE6R1-3's own proof |
+| mixed-node blocks | ANNEX-LEMMA HE7-13′ = E.57 | E-internal (schema) + C legs |
+
+**Fences carried verbatim**: `EFF.T2.35` — "If the underlying level-one key was recentered,
+S1.8C transports the HE3+HE6 frame with its existing `(LB1)`/`(MP1)` triggers";
+`EFF.T2.36`/`.37` — "Any proper-gcd key boundary uses T2.KEY-BOUNDARY" (= E.21); "Raw and
+coherent coefficient arrays are not identified"; GENTOW4's reading directive (`EFF.T2.54`):
+the superseded "top coefficient NOT monic" parenthetical is NEVER consumed — only
+`μ₂* = Σ_{λ₂>T₂} L_{λ₂}(f)` and `deg f_S = D₂μ₂*`; "The count-side mixed-multiplicity tie,
+partial-side budgets, and density laws are not conclusions of this σ-decision instance"
+(`EFF.T2.37` — those are chapter C/D objects).
+
+**SIGNATURE.** none (obligation record). **DEPENDS.** E.10–E.12, E.29, E.31, E.36–E.38, E.42,
+E.55–E.57; C placeholders as listed. **PROOF.** n/a.
+
+**SOURCE.** `EFF.T2.35` (HE7-INSTANCE), `.36` (HETOW-INSTANCE, incl. the frame conversion
+`R_{λ₂}(Z) = τ(H₀)·R̂_{λ₂}(Z/δ)`, `δ = τ(u₃) ∈ K^×` — a `(FRAME)` instance, σ-invariant per
+E.54), `.37` (GENTOW4-INSTANCE); `EFF.T2.52` (the three `(SEC-RANK)` discharge bullets,
+verbatim-quoted in the spec); `EFF.T2.56` (the per-record Source-pin discipline).
+
+**TEETH.** live cocycle carry; mixed block; level-two peel; refine-chain termination; HETOW
+frame gate; composed-key/C-A gate → dispositions distributed to the supplying nodes' TEETH
+fields; the GENTOW4 perimeter row enters §13.
+
+**ENVIRONMENT.** n/a.
+
+---
+
+### NODE E.24 [def] [fresh]
+
+**STATEMENT.** *The HE7A conjunct package (Display A's `HE7A[ACCOUNT, RES-DEG, nonempty,
+exhaust, root-continuation]`, handed to chapter I).* A `Prop`-valued bundle, one field per
+Display-A sub-conjunct at exactly ledger strength, over a rung instantiation: the five clause
+families ARE E.12's fields, so the package is the statement "a rung interface exists for the
+block" plus the two obligations and the indexed deep-twist carriers:
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- Display A's `HE7A[…]` conjunct: the σ-ladder carrier suite holds for the block —
+packaged for chapter I's hypothesis structure. The five clause families are the FIELDS of
+`RungInterface` (E.12); `(LB1)`/`(MP1)` are §6's carriers; the `∀ i ≥ 3` deep-twist and
+w-frame carriers are §9's. -/
+def HE7APackage {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) (B : BlockData C) : Prop :=
+  Nonempty (RungInterface C B)
+
+/-- The full chapter-E supply to chapter I: the package at every rung of a ladder,
+plus the carried obligations. -/
+structure LadderSupply {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) (B : BlockData C) : Prop where
+  package : HE7APackage C B
+  lb1 : LB1Carrier C B           -- E.39
+  mp1 : MP1Carrier C B           -- E.40
+  vartheta : ∀ i ≥ 3, VarthetaRes i    -- E.61 (with E.62's 𝒲 conjunct at I)
+```
+
+**⚠ SIGNATURE NOTE.** `LadderSupply`'s last three fields reference §6/§9 declarations
+(forward references within this chapter — the stub stage lands §6/§9 first or reorders; the
+DAG (§11) carries the true topological order: E.39, E.40, E.61, E.62 precede E.24). Chapter I
+consumes `HE7APackage` and `LadderSupply` BY NAME; any change to their field list is a
+capstone-conditionality change and goes through the owner gate (Part V (a)).
+
+**DEPENDS.** E.12, E.39, E.40, E.61 (forward, see note).
+
+**PROOF.** definitional. **SIZE.** 18 lines.
+
+**SOURCE.** `EFF.T2.39` (the five-family fence, verbatim — the field list IS the fence);
+`spec/HYPOTHESIS_LEDGER.md` Display A (the `HE7A[…]` conjunct + `(LB1)`, `(MP1)`,
+`(H-VARTHETA-RES)_i ∧ 𝒲_(≤i)` conjuncts); BRIEF E product clauses (1), (2), (4).
+
+**TEETH.** none (packaging); chapter I's gates re-fire the `n ≤ 2` slices against it.
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+<!-- RESUME: §4 COMPLETE (E.10–E.24). Next: §5 (E.25–E.38, slot-seam evaluation layer). -->
+
+*(sections §5–§14 follow)*
