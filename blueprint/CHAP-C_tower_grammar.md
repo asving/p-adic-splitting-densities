@@ -2417,7 +2417,814 @@ missing hypothesis this peel repairs).
 
 ## 6. §6 — COMPOSED KEYS AND THE TOWER BRIDGES
 
-<!-- §6 nodes: C.41–C.58 -->
+> **Design note.** Two halves. **HETOW half (C.41–C.49):** the wrap cocycle, the composed
+> frame datum, the WRAP-CORRECTED key `Φ₂` (the gauge-naive `chat_t` is DEAD corpus-wide —
+> C-H5), and the three bridge lemmas HETOW-1/2/3 tying the GENHN composed carrier to §5's
+> level-2 machinery — culminating in `IsTestKey`-hood of `Φ₂` (HETOW-2's `w = 0` branch,
+> the ONLY branch any consumer reads after C-A(ii)'s re-scope). **GENTOW1 half
+> (C.50–C.58):** the composed grid and budgets ([GENHN-TOW-1] items (1), (2), (5) at their
+> TERMINAL forms: R2a's clip, R2b's `DOM_N`/`COD_N`, R2c's three bands, the `.62` K₂-digit
+> lift base re-solve). Every node here reads at the CORRECTED `chat_t := lift(c_t·η^{W(t)})`,
+> `W(t) = ⌊(f₂−t)·i(u₂)/e₁⌋`; the naive form appears only inside refutation records.
+
+### NODE C.41 [lemma] [fresh]
+
+**STATEMENT.** *The wrap cocycle (HETOW-12).* For a frame `F` (write `i(k) := slotIdx F k`,
+`Q(k) := twistExp F k`): with `wrap(a,b) := (i(a) + i(b)) / e₁ ∈ {0,1}` (integer division):
+(i) `i(a) + i(b) = i(a+b) + e₁·wrap(a,b)` and `Q(a+b) = Q(a) + Q(b) + wrap(a,b)`;
+(ii) telescoping, with `W(t) := (f₂−t) * i(u₂) / e₁` (= H.57's wrap exponent):
+`(f₂−t)·i(u₂) = i((f₂−t)·u₂) + e₁·W(t)` and `Q((f₂−t)u₂) = (f₂−t)·Q(u₂) + W(t)`
+— "both because the two sides are `≡ mod e₁` and `0 ≤ i(·) < e₁`".
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem KeyFrame.slotIdx_add (F : KeyFrame O π) (a b : ℕ) :
+    F.slotIdx a + F.slotIdx b
+      = F.slotIdx (a + b) + F.e₁ * ((F.slotIdx a + F.slotIdx b) / F.e₁) ∧
+    (F.slotIdx a + F.slotIdx b) / F.e₁ ≤ 1
+
+theorem KeyFrame.twistExp_add (F : KeyFrame O π) (a b : ℕ) :
+    F.twistExp (a + b)
+      = F.twistExp a + F.twistExp b + (F.slotIdx a + F.slotIdx b) / F.e₁
+
+theorem KeyFrame.twistExp_nsmul (F : KeyFrame O π) (u₂ f₂ t : ℕ) (ht : t < f₂) :
+    F.twistExp ((f₂ - t) * u₂)
+      = (f₂ - t) * F.twistExp u₂ + (f₂ - t) * F.slotIdx u₂ / F.e₁
+```
+
+**DEPENDS.** C.15 · C.16 · **H.57** (`wrap_div_mod`, `wrap_height` — the floor arithmetic
+consumed, per C-H5's GENHN-LIFT licence).
+
+**PROOF.** 1. `i(a)+i(b) ≡ i(a+b) (mod e₁)` (both `≡ (a+b)h⁻¹`); both in `[0, 2e₁)`, so the
+quotient is `0` or `1` — C.16's uniqueness + `omega`. 2. Expand C.16(iii) on both sides.
+3. Induction on `f₂ − t` via (i), or directly H.57's `wrap_div_mod`.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.HETOW.12` (verbatim displays + the frame-X audit `W = (1,0)`);
+`EFF.HETOW.11` (`Q(k) = ⌊i₀k/e₁⌋`, which is C.15's `twistExp` — the identification is
+C.16(iii)).
+
+**TEETH.** `EFF.HETOW.12`'s audit (`i(3) = 1, W(0) = 1, W(1) = 0` at frame X) →
+**executable regression** (§13); the identity leg of the 2026-08-10 run (`k = 1..60` per
+frame) → retained.
+
+**ENVIRONMENT.** ENV-C5.
+
+---
+
+### NODE C.42 [def] [fresh]
+
+**STATEMENT.** *The composed frame (tower) datum.* Over a frame `F` (+ pin data): a
+**tower datum** `T` consists of `e₂, f₂, u₂ : ℕ` and `ψ₂ : Polynomial (stageField F H₀ hpin)`
+with: `0 < e₂`, `0 < f₂`, `2 ≤ e₂ * f₂` (a composite inner stage), `Nat.Coprime u₂ e₂`
+(the inner slope `κ₂ = u₂/e₂` in lowest terms), the **node floor**
+`e₂ * (F.e₁ * F.f₁) * F.h < u₂` (the `[r1]`-corrected `u₂ > e₂D′h`), and `ψ₂` monic
+irreducible of degree `f₂` with `ψ₂.coeff 0 ≠ 0`. Derived: `D₂ := (e₁f₁)·e₂f₂` and
+`E₂ := e₂ * f₂ * u₂` (GENTOW1's ONE NEW CONSTANT — the `dv₂`-height of every side term of
+`Φ₂`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+structure TowerDatum (F : KeyFrame O π) (H₀ : ℕ) (hpin : _) where
+  e₂ : ℕ
+  f₂ : ℕ
+  u₂ : ℕ
+  ψ₂ : Polynomial (F.stageField H₀ hpin)
+  he₂ : 0 < e₂
+  hf₂ : 0 < f₂
+  hcomp : 2 ≤ e₂ * f₂
+  hcop : Nat.Coprime u₂ e₂
+  hfloor : e₂ * (F.e₁ * F.f₁) * F.h < u₂
+  hψmonic : ψ₂.Monic
+  hψirr : Irreducible ψ₂
+  hψdeg : ψ₂.natDegree = f₂
+  hψ0 : ψ₂.coeff 0 ≠ 0
+
+def TowerDatum.D₂ … : ℕ := (F.e₁ * F.f₁) * (T.e₂ * T.f₂)
+def TowerDatum.E₂ … : ℕ := T.e₂ * T.f₂ * T.u₂
+```
+
+**DEPENDS.** C.01 · C.03.
+
+**PROOF.** definitional. **SIZE.** 24 lines.
+
+**SOURCE.** `EFF.HETOW.15` (the datum HETOW-1 opens with); `EFF.GENTOW1.07` (`E₂ := e₂f₂u₂`
+with the two-family height verification, and the SPLIT `E₂ > dv₂(x^{D₂}) = D₂e₂h` — the
+lemma half lands at C.50); `EFF.GENTOW1.14` (the genre data list).
+
+**TEETH.** `EFF.GENTOW1.07`'s five-family audit (`E₂ = 10/14/6/21/6` vs `8/8/4/18/4`) →
+§13 regression rows. **ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.43 [def] [fresh]
+
+**STATEMENT.** *The wrap-corrected composed key.* For a tower datum `T`, writing
+`c_t := −(ψ₂.coeff t)` (the corpus's sign convention: `ψ₂ = Z^{f₂} − Σ_t c_t Z^t`) and
+`η := stageLetter`:
+
+```
+composedKey T := Φ′^{e₂f₂} − Σ_{t<f₂} L_{(f₂−t)u₂}(c_t·η^{W(t)}) · Φ′^{e₂t},
+```
+
+where `L_k(c)` is the exact-height-`k` stage lift of `c ∈ K` — **consumed as H.54's
+`stageLift'`** (C-H5: the lift is licensed ONLY by GENHN-LIFT; at `D′ = 1` the elementary
+branch as in C.14 step 3) — and `W(t)` is C.41's wrap exponent. This is `EFF.HETOW.13`'s
+display verbatim; the gauge-naive `lift(c_t)` (no `η^{W(t)}`) is DEAD (`EFF.HETOW.14`'s
+counter-instance: frame X, naive key `Φ′² + 3xΦ′ + 54` has `σ = {(4,1)}`, corrected
+`… + 108` has `σ = {(2,2)}` — the two differ by exactly `η^{W(0)} = 2`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def composedKey {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) :
+    Polynomial O :=
+  F.key ^ (T.e₂ * T.f₂)
+    - (Finset.range T.f₂).sum fun t =>
+        stageLiftO F ((T.f₂ - t) * T.u₂)
+            (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp F T t))
+          * F.key ^ (T.e₂ * t)
+```
+
+(`stageLiftO` is this node's private packaging of H.54's `stageLift'` through the
+`GenreDatum` plumbing of C.14 step 2 — RE-PLAN to a shared node if C.14's own packaging
+lands first, which it should: the orchestrator merges the two; `wrapExp F T t` abbreviates
+`(T.f₂ − t) * F.slotIdx T.u₂ / F.e₁`.)
+
+**DEPENDS.** C.15 · C.19 · C.41 · C.42 · **H.54–H.56** (via the C.14 packaging).
+
+**PROOF.** definitional. **SIZE.** 22 lines.
+
+**SOURCE.** `EFF.HETOW.13` (the display + the `(LIFT)`-construction gloss + residue claim
+`c·η^{−Q(k)}`, verbatim; CHAIN-KEY TERMINAL); `EFF.GENTOW1.06` (the same pin from the
+consumer side, with the nine-site manifest); `EFF.HETOW.14` (the counter-instance).
+
+**TEETH.** `EFF.HETOW.13`'s supp-leg check (“corrected-key slot residues = minpoly(β) at
+each frame: X: `Z²+2Z+2`; Z/W: `Z²+3Z+4`”) → **Lean theorem** at C.46 + **executable
+regression**; the `54 vs 108` naive/corrected pair → §13 gate row (it is a `q = 3` frame;
+the `q = 2` twin is any η = 1 frame where naive = corrected — the gate documents WHY that
+row cannot distinguish, C-H12's coincidence discipline).
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.44 [def+lemma] [fresh]
+
+**STATEMENT.** *HETOW-1(a): the translated label `r̃`.* For a tower datum `T` with
+`Q := twistExp F T.u₂`: define
+`towerLabel T := η^{−Q·f₂} • ψ₂.comp (C (η^Q) * Z) ∈ K[Z]` (monic normalization of the
+affine substitution — the explicit form `r̃ = η^{−Qf₂}·ψ₂(η^{Q}Z)`, whose `t`-coefficient
+is `−c_t·η^{−(f₂−t)Q}`). Lemma clauses: `towerLabel T` is monic irreducible of degree `f₂`
+with nonzero constant term (`ψ₂(0) ≠ 0` transfers; irreducibility under a degree-1 unit
+substitution transfers), so **`⟨T.u₂, T.e₂, towerLabel T⟩` is a `LevelDatum`** over `F`
+(C.09's fields all discharged: the node floor gives `hκ` since `e₂D′h < u₂`) — the bridge
+datum every §5 object reads at.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def towerLabel {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) :
+    Polynomial (F.stageField H₀ hpin) := …
+
+theorem towerLabel_spec {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
+    (hπ : Irreducible π) :
+    (towerLabel T).Monic ∧ Irreducible (towerLabel T) ∧
+    (towerLabel T).natDegree = T.f₂ ∧ (towerLabel T).coeff 0 ≠ 0
+
+noncomputable def TowerDatum.levelDatum … : LevelDatum F H₀ hpin :=
+  ⟨T.u₂, T.e₂, towerLabel T, …⟩
+```
+
+**DEPENDS.** C.09 · C.19 · C.42 · C.15.
+
+**PROOF.** 1. Coefficient formula: expand the composition (`EFF.HETOW.16`(a)'s computation:
+substitute; the `t`-coefficient is `−c_t·η^{Qt−Qf₂}`). 2. Irreducibility/degree/constant
+term under `Z ↦ η^Q·Z` + unit scale: mathlib composition-with-unit lemmas. 3. `LevelDatum`
+fields: `hκ` from `T.hfloor` (`ℓ·D′·h = e₂D′h < u₂`); the rest from clauses 1–2.
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.HETOW.15`(a) (verbatim — the `[r1]` DEFINITIONAL repair: `r̃` has ONE
+definition, minpoly(β); this node takes the EXPLICIT form `η^{−Qf₂}ψ₂(η^QZ)`, which
+`EFF.HETOW.16`(a) proves IS the minimal polynomial — so the two corpus presentations
+coincide and the explicit one is the Lean-friendly definition); `EFF.HETOW.16`(a) (the
+`ψ₂(0) ≠ 0` full-side argument).
+
+**TEETH.** the frame-X value `r̃ = Z² + 2Z + 2` → §13 regression. **ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.45 [lemma] [fresh]
+
+**STATEMENT.** *HETOW-1(b), field form: `K(β) = K(η₂)`.* The two level-2 carriers coincide:
+`level2Field (T.levelDatum) = AdjoinRoot (towerLabel T) ≃ₐ[stageField F …] AdjoinRoot T.ψ₂`,
+the algebra isomorphism induced by the affine substitution (`β ↦ η^{−Q}·η₂` — the corpus's
+pointwise `β_{x₀} = η_{x₀}^{−Q}·η₂(x₀)`, recast as the canonical iso of quotients; "the
+root equivalence is the K-affine substitution `Z ↦ η^{Q}Z`", which the corpus itself flags
+POINTWISE-hence-wrap-free).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def towerLabelEquiv {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
+    (hπ : Irreducible π) :
+    AdjoinRoot (towerLabel T) ≃ₐ[F.stageField H₀ hpin] AdjoinRoot T.ψ₂
+```
+
+**DEPENDS.** C.12 · C.44 · mathlib `AdjoinRoot` equiv-under-composition machinery.
+
+**PROOF.** The substitution `Z ↦ η^Q·Z` (a unit-scale automorphism of `K[Z]`) maps
+`(towerLabel T)` to a unit multiple of `ψ₂`; quotients by associate ideals are canonically
+isomorphic; `AdjoinRoot.algEquivOfEq`-family plumbing.
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.HETOW.15`(b)/`EFF.HETOW.16`(b) (the two-factor split + "POINTWISE, hence
+wrap-free: only the single height `u₂` is normalized — no product of normalizers occurs").
+
+**TEETH.** signed non-applicable (an interface iso; guarded through C.46's residue values).
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.46 [lemma] [fresh]
+
+**STATEMENT.** *HETOW-1(c): the corrected key's slot residues are `r̃`'s coefficients.* For
+each `t < f₂`, the ϖ-read (C.22's `twistRead`) of `composedKey T`'s slot-`e₂t` development
+coefficient at height `(f₂−t)u₂` equals `(towerLabel T).coeff t` — via the cancellation
+`η^{W(t)}·η^{−Q((f₂−t)u₂)} = η^{−(f₂−t)Q}` (C.41(ii)). Consequently `composedKey T`
+satisfies the slot clauses of `IsTestKey (T.levelDatum)` at every `t` with `c_t ≠ 0`; at
+the gauge-naive key the residue is `−c_t·η^{−(f₂−t)Q−W(t)}` instead and the assembled
+polynomial need not be irreducible (frame X: `(Z+1)²`) — transcribed as the refutation
+record, not a node.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem composedKey_slot_residue {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
+    (hπ : Irreducible π) {t : ℕ} (ht : t < T.f₂) :
+    F.twistRead H₀ hpin ((T.f₂ - t) * T.u₂) (dev F.key (composedKey T) (T.e₂ * t))
+      = (towerLabel T).coeff t
+```
+
+**DEPENDS.** C.21 · C.22 · C.41 · C.43 · C.44 · H.55/H.56 (the lift's height/residue).
+
+**PROOF.** 1. The slot-`e₂t` development coefficient IS `−L_{(f₂−t)u₂}(c_t·η^{W(t)})`
+(development uniqueness as in C.14 step 4). 2. Its `twistRead` at height `(f₂−t)u₂` is
+`−c_t·η^{W(t)}·η^{−Q((f₂−t)u₂)}` (H.56's residue + C.22's twist). 3. C.41(ii) cancels to
+`−c_t·η^{−(f₂−t)Q}` = C.44's coefficient — `EFF.HETOW.16`(c)'s computation, step for step.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.HETOW.15`(c) + `.16`(c) (verbatim, incl. the audit
+`η^{W(t)}·η^{−(f₂−t)Q−W(t)} = η^{−(f₂−t)Q}` ✓); `EFF.HETOW.14` (the naive-key refutation).
+
+**TEETH.** the three-frame supp check (slot residues = minpoly(β)) → **Lean theorem** (this
+node) + regression; the naive-key `(Z+1)²` degeneration → §13's contrast row.
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.47 [theorem] [fresh]
+
+**STATEMENT.** *HETOW-2 at the (LIFT)-form: the composed key IS a test key, `w = 0`.*
+`IsTestKey (T.levelDatum) (composedKey T)` — monic of degree `D₂ = keyDeg₂`, top/off-lattice/
+zero-slot clauses from the explicit sum, height and residue clauses from H.55 + C.46; "NO
+x-degree-≥ D′ overflow occurs at ANY `f₁`: each `B_t` is already reduced, exact-height …
+`Φ₂` is LITERALLY of DEFINITION HE6-1's displayed form and `w = 0`". Consequently **every
+§5 statement applies at `Φ₂` verbatim** (the peel C.40, the projection C.36–C.39, the
+exactness C.27 — no perturbation lemma is needed). The corpus's carry branch (junk-augmented
+presentations, `dv₂(w) > T₂`) is NOT transcribed: C-A(i) withdrew its exemplar and C-A(ii)
+re-scoped its licence to exactly this `w = 0` form, and no consumer reads the other branch
+(T2's r12 derives the degree conjunct master-side).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem composedKey_isTestKey {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
+    (hπ : Irreducible π) [Finite (ResidueField O)] :
+    IsTestKey (T.levelDatum) (composedKey T)
+```
+
+**DEPENDS.** C.13 · C.14 (packaging) · C.42 · C.43 · C.44 · C.46 · H.55 (degree `< D′`,
+exact height — `EFF.HETOW.18`'s audited chain `x`-degree `≤ (e₁−1) + e₁(f₁−1) = D′−1`).
+
+**PROOF.** Clause-by-clause against C.13: degree/monic (`ring_nf` on the explicit sum +
+degree bounds); heights H.55; residues C.46; the fullness legality
+`(f₂−t)u₂ ≥ u₂ > e₂D′h > (D′−1)h` (`EFF.HETOW.18`'s chain, `omega` from `T.hfloor`).
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.HETOW.17` (LEMMA HETOW-2, restated form) + `.18` (the F-4 `w = 0` branch,
+verbatim — “the construction this note and the machine legs actually consume”);
+`EFF.HETOW.43` (C-A(i)/(ii): the carry branch's exemplar WITHDRAWN and the licence
+re-scoped to `w = 0` — the reason the carry branch has NO node; its surviving accounting
+core is recorded, not transcribed); `EFF.HETOW.19` (the carry branch, for the record).
+
+**TEETH.** HETOW-2's (LIFT)-branch is what both machine legs instantiate (`f₁ = 1` frames);
+the `f₁ ≥ 2` reach is PROOF-ONLY in the corpus (HETOW-BOX-3) — disposition: **Lean theorem
+at every `f₁`** (this node's proof is uniform), with the corpus's proof-only disclosure
+carried in §16's table (the Lean proof discharges what the corpus could not machine-check —
+GC-11 still demands the §13 gates fire an `f₁ = 1` instance at both primes).
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.48 [lemma] [fresh]
+
+**STATEMENT.** *HETOW-3: full-side block identities.* Let `f` be monic on the frame's
+opening locus with a FULL inner side: `IsDvPure F f T.u₂ T.e₂` with
+`dvResPoly F … f T.u₂ T.e₂ … = ψ₂-power` matching `e₂f₂μ₂ = μ₁` (the 𝒯-membership shape,
+C.51). Then: (a) `dvHgt F f 0 ≠ ⊤` (i.e. `A₀ ≠ 0`) and `¬ F.key ∣ f`; (b) the block is
+everything: `blockFactor (T.levelDatum) f … = f` and `mult₂ … = μ₁ / (e₂f₂)` exactly;
+(c) if `composedKey T ∣ f`, the peel C.40 applies at `Φ₂` (licensed by C.47) and peels one
+factor with `typeOf = ⟨{(e₁e₂, f₁f₂)}⟩` (C.40's conditionality inherited), continuing at
+`mult₂ − 1`.
+
+**SIGNATURE** (shape).
+```lean
+namespace Uniformity.Density.Tower
+
+theorem fullSide_block {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hf : f.Monic) (hfull : …) … :
+    dvHgt F f 0 ≠ ⊤ ∧ ¬ F.key ∣ f ∧ blockFactor (T.levelDatum) f … = f ∧ …
+```
+
+**DEPENDS.** C.29 · C.34 · C.35 · C.40 · C.44 · C.47.
+
+**PROOF.** (a) the full side's left endpoint is an attained pin (its height `κ₂μ₁`-cleared
+is finite); `A₀ ≠ 0` ⟹ `F.key ∤ f` (the `j = 0` development coefficient is nonzero).
+(b) the side residual is `r̃`-power via C.44/C.45's translation (`ψ₂^{μ₂}` transports to
+`r̃^{μ₂}` under the affine substitution, up to the unit scale — `EFF.HETOW.21`(b)'s
+transport); C.34's uniqueness gives `f_S = f`; the degree identity `deg f = D′μ₁ = D₂μ₂`
+under `e₂f₂μ₂ = μ₁` (`EFF.HETOW.21`'s audit). (c) chain C.47 → C.40.
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.HETOW.20` (LEMMA HETOW-3, verbatim) + `.21` (proof + audit); the F-2/F-3
+annexes (`EFF.HETOW.54`/`.55`): clause (b)'s all-roots transport cite resolves to
+**GENTOW1 Step 4** = C.54's realizability layer here — the NEAR-MISS the compiler
+adjudicated; this node's (b) consumes C.34/C.44 instead, so the cite chain is closed
+inside the chapter.
+
+**TEETH.** `EFF.HETOW.21`'s audit (`deg f/D″ = μ₁/(e₂f₂) = μ₂` integrality = the full-side
+hypothesis) → **Lean theorem**; §13 fires the `n = 12` instance (`.25`'s audit values).
+
+**ENVIRONMENT.** ENV-C2.
+
+---
+
+### NODE C.49 [theorem] [fresh]
+
+**STATEMENT.** *THEOREM HETOW.A's composed-stage dictionary (clauses (ii)–(iv), at exactly
+ledger strength).* In C.48's full-side setting: (ii) each monic irreducible factor `r₂` of
+a separable level-2 residual (of `f` at an above-seam side `(u₃, ℓ₃)`) contributes ONE
+irreducible factor of `f` with `typeOf`-entry `(e₁e₂·ℓ₃, f₁f₂·deg r₂)` — **the composed
+stage dictionary, conditional exactly as the iterated Tier-1 is** (C.61 applied at the
+level-2 datum; `C-BOX-1`'s iterate carried, no more); a repeated `K₂`-rational linear
+factor at integer `λ₂` is a finite α-refine chain (C.56/C.57's refine layer, finiteness by
+`EFF.HE7.<nn> — LEMMA HE7-8 [supplied-by: chapter E]`); a repeated factor with
+`ℓ₃·deg r₂ ≥ 2` passes to level 3 and requires `mult₂ ≥ 4` (C.31's floor one level up).
+(iii) At `mult₂ = 3` the level-3 branch is DEAD (`L_{λ₂} ≥ 4 > 3` — the counting exclusion,
+pure arithmetic); at `mult₂ = 2` the trichotomy instance is a consistency check, NOT
+independent supply (the corpus's own label: "two proofs of one statement" — no node
+duplicates it). (iv) Termination: the tower entry is one jump with descent factor
+`e₂f₂ ≥ 2`; C.32(b) applies with `μ₁ ≥ mult₂·e₂f₂`; at `n = 12` (`μ₁ = 6`): exactly one
+jump, `mult₂ = 3`, no second jump — wrap-immune (the acceptance record's positive scope
+finding: the wrap correction moves unit factors only).
+
+**SIGNATURE** (shape — three public theorems in one file is over-budget: **split-mandated
+C.49 → 3**: dictionary / μ₂-exclusions / termination instance).
+```lean
+namespace Uniformity.Density.Tower
+
+theorem composed_dictionary {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) … :
+    … typeOf-entry (F.e₁ * T.e₂ * ℓ₃, F.f₁ * T.f₂ * r₂.natDegree) …
+
+theorem level3_dead_at_mult2_three … : …
+theorem tower_termination_instance … : …
+```
+
+**DEPENDS.** C.31 · C.32 · C.48 · C.61/C.62 (§7 — the iterated `(e,f)` read) · C.56/C.57 ·
+GC-13 placeholder `EFF.HE7.<nn> — LEMMA HE7-8 [supplied-by: chapter E]`.
+
+**PROOF (route).** (ii): instantiate §7's Tier-1 at the ITERATED frame — the level-2 datum
+over the level-2 field is C.12's carrier; the composed `(e, f)` multiplies through landed
+`ramIndexOf_mul_inertiaDegOf` + the §7 divisibility legs at both levels (GC-3's rank-form
+chains). (iii): `omega` from C.31. (iv): C.32(b) + `EFF.HETOW.25`'s audit values.
+
+**SIZE.** 3 × ~30 lines.
+
+**SOURCE.** `EFF.HETOW.23` (the dictionary display `e = e₁e₂ℓ₂, f = f₁f₂·deg r₂`,
+verbatim — "the note's deliverable … exactly the content of `[GENHN-HE(μ₂)]` at the tower
+stage"); `EFF.HETOW.24` ((iii), incl. the consistency-check fence); `EFF.HETOW.25` ((iv) +
+wrap-immunity certificate); `EFF.HETOW.22` (clause (i) — NOT re-transcribed: its content is
+C.44–C.48; its 2026-08-10 supersession re-grounds it on HETOW-4, which is chapter D's
+`(ABS-HE4)` — C-H11(ii)).
+
+**TEETH.** 300/300 PARI at `μ₂ = 3` on both inner branches + P5 (“no member ever took the
+LEVEL3 branch”, 300/300) → **executable regressions** retained; the `n = 12` audit
+(`J ≤ 1`, `μ₂ = 3`) → **Lean theorem** (the termination instance) + §13 gate.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.50 [def+lemma] [fresh]
+
+**STATEMENT.** *The composed grid and the weight.* For a tower datum `T`: the composed slot
+grid indexes `(j, a, b)` with `a < D′`, `b < e₂f₂`, `j < μ₂`; the **slot offset**
+`w(a,b) := a * e₂ * h + b * u₂`; the **weight** of a monomial datum `(v, a, b, j)`:
+`wt := e₁e₂·v + w(a,b) + j·E₂` (GENTOW1's weight — "wt = dv₂ of the evaluated monomial …
+on the actual locus a LOWER bound with the j-graded part strict"). Lemma half: the SPLIT
+`E₂ > dv₂(x^{D₂}) = D₂·e₂·h` (from the node floor `u₂ > e₂D′h` — the structural novelty
+COR GENTOW-1.1 turns on), and the two term-family verifications
+(`Φ′^{e₂f₂}`: `e₂f₂·u₂ = E₂`; lift term `t`: `e₂u₂(f₂−t) + e₂t·u₂ = E₂`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+def slotOffset {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) (a b : ℕ) : ℕ :=
+  a * (T.e₂ * F.h) + b * T.u₂
+
+def gridWeight … (v a b j : ℕ) : ℕ :=
+  (F.e₁ * T.e₂) * v + slotOffset T a b + j * T.E₂
+
+theorem E₂_gt_xfloor {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) :
+    T.D₂ * (T.e₂ * F.h) < T.E₂
+```
+
+**DEPENDS.** C.42.
+
+**PROOF.** `E₂ = e₂f₂u₂ > e₂f₂·e₂D′h = D₂e₂h` from `T.hfloor`; `Nat.mul_lt_mul_left`.
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.GENTOW1.07` (E₂ + the SPLIT, verbatim, with the five-family audit);
+`EFF.GENTOW1.08` (the weight + its lower-bound scope note — transcribed in the docstring:
+every "weight ≥ W" statement is a lower-bound statement on the locus).
+
+**TEETH.** the five-family audit rows → §13 regression (two of the five are `q = 2`,
+FAM-D is `q = 3` — GC-11 served). **ENVIRONMENT.** ENV-C5/C1.
+
+---
+
+### NODE C.51 [def] [fresh]
+
+**STATEMENT.** *The tower-entry locus `𝒯` (FULL side only).* `towerLocus T n` — the set of
+monic `f` of degree `n = μ₂·D₂` whose level-1 read exhibits the full inner side: `IsDvPure
+F f T.u₂ T.e₂`, the polygon one side from `(0, μ₁·κ₂-cleared)` to `(μ₁, 0)`, and the side
+residual equal to `ψ₂^{μ₂}` under C.44's translation (twist-coherent normalization = the
+`dvResPoly`-read, whose coherence is exactly C.25's fixed convention). Every §6 GENTOW1
+statement is scoped to `𝒯` — the FULL-side fence (`EFF.GENTOW1.14`'s own repetition at
+`.46`); partial sides are §8's (GENTOW4).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+def towerLocus {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) (μ₂ : ℕ) :
+    Set (Polynomial O) :=
+  {f | f.Monic ∧ f.natDegree = μ₂ * T.D₂ ∧ IsDvPure F f T.u₂ T.e₂ ∧
+       ∃ hne₂ M₀ hpin₂, dvResPoly F H₀ hpin f T.u₂ T.e₂ hne₂ M₀ hpin₂
+         = (towerLabel T) ^ (T.e₂ * T.f₂ * μ₂ / T.e₂) …}
+```
+
+(the residual exponent bookkeeping — `ψ₂^{μ₂}` at the `r̃`-carrier with side degree
+`f₂μ₂` — is fixed at stub stage against C.26's degree lemma; the SPEC is `.14`'s display.)
+
+**DEPENDS.** C.25 · C.29 · C.42 · C.44.
+
+**PROOF.** definitional. **SIZE.** 16 lines.
+
+**SOURCE.** `EFF.GENTOW1.14` (verbatim, incl. the FULL-side fence).
+
+**TEETH.** P-4's level-1 entry gate (12 random in-budget members per family, REAL 180) →
+regression retained. **ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.52 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-1(a): the weight characterization / composed budget floors.* Monic
+`f` of degree `n = μ₂D₂` lies on `𝒯` iff every composed slot of `g := f − Φ₂^{μ₂}` has
+weight `≥ μ₂E₂ + 1`; equivalently, in `f = Φ₂^{μ₂} + Σ_{j<μ₂} C_j Φ₂^j` with
+`C_j = Σ c_{j,a,b} x^a Φ′^b`:
+
+```
+v(c_{j,a,b}) ≥ ⌈((μ₂−j)·E₂ − w(a,b)) / (e₁e₂)⌉ + [pin],
+[pin] = 1 iff e₁e₂ ∣ (μ₂−j)E₂ − w(a,b) ≥ 0
+```
+
+— "the r2-F2 level-1 display verbatim with `(D′h, ih, e₁) ↦ (E₂, w(a,b), e₁e₂)`". Proof
+spine: Step 0 (weight monotonicity of the two carries — x-carry priced by the key's side,
+`Φ′`-carry priced by `E₂`, both value-blind), Step 1 (`Φ₂^{μ₂}`'s own level-1 data via
+C.47's test-key hood + graded multiplicativity), Step 2 (⟸ realizability with the
+outer-grammar chain `u₂ + (μ₁−1)e₂D′h + 1 > μ₁e₂D′h`), Step 3 (⟹ + fibration prep).
+
+**SIGNATURE** (shape). `theorem towerLocus_iff_budget …` with the floor function
+`budgetFloor T j a b : ℕ` as a companion def (consumed by C.53's count and §11).
+
+**⚠ HEAVY NODE — split-mandated: C.52 → 3** (Step 0; Steps 1–2; Step 3). Step 0 is
+value-blind (wrap-immunity leg 1: “lift(c_t·η^{W(t)}) and lift(c_t) sit at the same
+height”) — its sub-node carries NO gauge dependency and can fire before C.43.
+
+**DEPENDS.** C.42 · C.43 · C.47 · C.50 · C.51 · B.02–B.06 (development bookkeeping at two
+keys) · C.20 (class separation for the pin lattice).
+
+**PROOF (route).** `EFF.GENTOW1.19`–`.22`'s four steps, each with its compile-time audit
+transcribed as the sub-node's numeric check (`e₂u₂(f₂−t) + e₂tu₂ = E₂` exact and
+`t`-independent; the outer chain reduces to the node floor).
+
+**SIZE.** 3 × ~40 lines.
+
+**SOURCE.** `EFF.GENTOW1.15` (the display, verbatim); `.19` (Step 0 + value-blind pin);
+`.20` (Step 1 + the gauge-live failure record); `.21` (Step 2 + audit); `.22` (Step 3).
+
+**TEETH.** the budget tables (`EFF.GENTOW1.10`: sixteen entries recomputed from this
+display, zero discrepancies) → **executable regression** retained + §13 fires two rows at
+`q = 2` AND `q = 3` (FAM-A5 and FAM-D); NEC 350 + T-MUTFLOOR ×5 (the `dv₂(x^{D₂})`-based
+mutant floors machine-dead) → retained.
+
+**ENVIRONMENT.** ENV-C1 (Steps 0–3 need no completeness: they are development arithmetic).
+
+---
+
+### NODE C.53 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-1(b), TERMINAL (R2a clip): the fibration and the clipped free count.*
+`f ↦ (c_{j,a,b})` is a triangular-unimodular digit bijection from `𝒯` onto the budget box
+(digits free above floors; one `K₂`-digit per `dv₂`-height per coordinate); per window `N`
+the free-`O`-digit count is **`Σ_{j,a,b} max(0, N − budgetFloor T j a b)`** — the CLIP; the
+sealed unclipped `Σ (N − floor)` "is false whenever `N < floor` at some slot" and is DEAD.
+
+**SIGNATURE** (shape). `theorem towerLocus_fibration …` + companion
+`def towerFreeCount T μ₂ N : ℕ := Σ max(0, N − floor)` (the §11 count layer's input).
+
+**DEPENDS.** C.52 (Step 3's triangularity: `c_{j,a,b}` = the coefficient at degree
+`jD₂ + bD′ + a` plus an `Ô`-combination of strictly higher-degree coefficients — unipotent
+in the x-degree filtration).
+
+**PROOF.** unipotence ⟹ bijection (mod-`π^N` corollary at C.58(e)); the count is the
+product structure of the budget box, clipped termwise.
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.GENTOW1.16` (frozen (b) + the R2a replacement, both quoted — TERMINAL:
+R2a, `.65`); `EFF.GENTOW1.22` (Step 3); `EFF.GENTOW1.26` (the count-law unlock remark,
+whose UNCLIPPED exponent inherits the correction — §11 consumes the clipped form only).
+
+**TEETH.** ROUNDTRIP 150 → retained; R2a's counter-instance (the clip active at small `N`)
++ its inactivity on the committed rows → **Lean theorem** (the clip is definitionally
+active in the formula) + §13 regression.
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.54 [lemma] [fresh]
+
+**STATEMENT.** *GENTOW-1(c)+(d): node floors and the field floor.* On `𝒯`:
+(c) the composed pins obey `dv2Pin (T.levelDatum) Φ₂ f j ≥ ((μ₂−j)·E₂ + 1 : ℕ∞)` for
+`j < μ₂`, with equality REALIZABLE at every `j` (the two-stage CRT solve: pick `b` with
+`b·u₂ ≡ target (mod e₂)`, then `a` with `a·h ≡ … (mod e₁)` — two-step class separation,
+gcd's from the frame data);
+(d) the field floor in norm form: for every monic irreducible factor `g` of `f ∈ 𝒯`,
+`(deg g) * T.E₂ < (F.e₁ * T.e₂) * addVal(norm(Φ₂ mod g))`-cleared — the closure-free
+"`dv₂(Φ₂(x₀)) > E₂` at every root", C.27's carrier ("need not be an integer on `𝒯` — the
+strict inequality IS the statement", transcribed as the cleared strict inequality).
+
+**SIGNATURE** (shape). Two public theorems, one file (`towerLocus_node_floor`,
+`towerLocus_field_floor`); the CRT realizability as a third companion.
+
+**DEPENDS.** C.11 · C.27's carrier idiom · C.43 · C.46 · C.52 · H.51/H.52 (the CRT's
+class-separation legs) · C.23 (the residue nonvanishing feeding (d)'s ψ₂-cancellation).
+
+**PROOF (route).** (c): the floors are C.52's budget converted through the recursion
+(C.11); realizability by the CRT display (`EFF.GENTOW1.23`, verbatim mechanism). (d): the
+exact-height term census of `Φ₂(x₀)` — every term at `dv₂ = E₂` exactly — and the
+height-`E₂` residue is `(unit)·ψ₂(η₂)`, which vanishes at the label (C.44's root data);
+ultrametric strictness. **The (d) leg is VALUE-LIVE at the gauge seam** (at naive lifts the
+term-`t` residue carries `η^{−W(t)}` and the sum is NOT `ψ₂(η₂)` — the corpus's 20/20
+machine refutation): the proof MUST route through C.46's corrected residues; a proof
+attempt that succeeds without C.46 is a defect signal (it proved the wrong statement).
+
+**SIZE.** 40 lines. **Split candidate:** (c) / (d).
+
+**SOURCE.** `EFF.GENTOW1.17` ((c) + P-5 sharpness: the five NODE-EQ anchors hit
+`μ₂E₂ + 1` exactly); `.18` ((d) + the non-integrality guard); `.23` (Step 4, the CRT);
+`.24` (Step 5 + the `[GT1-r1]` VALUE-LIVE bracket with the 20/20 GAUGE-NODE evidence).
+
+**TEETH.** P-5 (five NODE-EQ anchors, `[21,11]/[29,15]/[13,7]/[43,22]/[13,7]` all
+recomputed) → **executable regression** + two §13 rows; T-BELOWNODE (a digit AT weight
+`μ₂E₂` breaks the entry endpoint) → retained; GAUGE-NODE 20/20 → retained as the (d)-leg's
+decorrelated guard.
+
+**ENVIRONMENT.** ENV-C3 ((d) counts residues).
+
+---
+
+### NODE C.55 [theorem] [fresh]
+
+**STATEMENT.** *COROLLARY GENTOW-1.1 — the depth-3 node floor ((6)(β) DISCHARGED, sharper
+constant).* Every side of the composed polygon `(j, dv2Pin …)` of an `f ∈ 𝒯` has
+`dv₂`-slope `κ₃ > E₂ > dv₂(x^{D₂}) = D₂e₂h`; cleared: every side `(u₃, ℓ₃)` of the
+`dv2Supp`-argmin with nonempty side set has `ℓ₃ * T.E₂ < u₃`. Proof: pins
+`p_j ≥ (μ₂−j)E₂ + 1` with right endpoint `(μ₂, 0)` give minimal side slope
+`≥ E₂ + 1/μ₂ > E₂` (cleared: `μ₂·u₃ ≥ μ₂·ℓ₃·E₂ + ℓ₃`); convexity-free in the argmin
+representation (the argmin's two-point slopes are all `> E₂` directly from the pin bounds);
+`E₂ > D₂e₂h` is C.50. **This is the `κ₃ > e₂f₂u₂` hypothesis GENTOW5's (β)-floor fence
+routes here** (`EFF-GENTOW5` FP-4 fence 2: GENTOW5 "cites it AS IN-FLIGHT and does not
+re-derive it") — the supply lands HERE, and §9's third-stage nodes consume THIS node by ID.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Tower
+
+theorem towerLocus_depth3_floor {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
+    {f : Polynomial O} (hf : f ∈ towerLocus T μ₂) {u₃ ℓ₃ : ℕ} (hℓ₃ : 0 < ℓ₃)
+    (hcop : Nat.Coprime u₃ ℓ₃)
+    (hne : (dv2SideSet (T.levelDatum) (composedKey T) f u₃ ℓ₃).Nonempty) :
+    ℓ₃ * T.E₂ < u₃
+```
+
+(`dv2SideSet` — the level-2 argmin Finset, C.11's `dv2Supp` filtered as in C.07 — is the
+RE-PLAN'd `dv2ResPoly`-cluster's sibling; the orchestrator books both as one helper node
+C.38a if the stub stage prefers.)
+
+**DEPENDS.** C.11 · C.50 · C.54(c).
+
+**PROOF.** the pin arithmetic above; `omega` after clearing.
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.GENTOW1.25` (verbatim, incl. the discharge sentence: “Item (6)(beta) is
+hereby discharged INTO item (1); item (6)(alpha) … is untouched and keeps the box” — §9
+carries (6)(α) at exact scope); the audit (`κ₃ = 21/2 > 10 > 8` at FAM-A5).
+
+**TEETH.** the FAM-A5 witness values → **Lean theorem** instance + §13 regression.
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.56 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-2(i)+(ii): the composed refine transfer.* For a composed stage-α
+event (one side of integer `dv₂`-slope `λ > E₂` with residual `(T − s)^{μ₂}` over `K₂`,
+`s ∈ K₂^×`) set `Φ₂⁺ := Φ₂ − lift(s; λ)` with the **base-resolved K₂-digit lift** (the
+`.62` TERMINAL display):
+
+```
+lift(s; m) := Σ_{r,t} d_{r,t} · M_{r,t}(m),   M_{r,t}(m) := n̂₂(m − Δ(r,t)) · x^{e₁r} · Φ′^{e₂t},
+Δ(r,t) := e₁e₂h·r + e₂u₂·t
+```
+
+(`n̂₂(m) := π^{a₀}x^iΦ′^b`, `i < e₁, b < e₂`, `e₁e₂a₀ + ie₂h + bu₂ = m`, the `(i,b)`-pair
+unique per class mod `e₁e₂`, `a₀ ≥ 0` at `m > E₂` — the audited inequality). Then:
+(i) `Φ₂⁺` keeps every key invariant — monic of degree `D₂`; level-1 development one-sided
+of slope `κ₂` with residual `ψ₂` and side digits byte-unchanged (the perturbation's slots
+sit at weight `λ > E₂`); x-polygon one side (the audited chain
+`λ − (e₂f₂−1)(u₂−e₂D′h) > dv₂(x^{D₂})`); hence `IsTestKey`-hood and the carrier
+`(e₁e₂, f₁f₂)` rerun verbatim at `Φ₂⁺` (carrier through §7, conditionality inherited);
+(ii) THE KILLS: in the `Φ₂⁺`-development of `f` the `μ₂` event pins die:
+`dv2Pin … Φ₂⁺ f j > ((μ₂−j)·λ : ℕ∞)` for every `j < μ₂`. At `μ₂ = 2` the proof is
+pointwise-elementary (actual re-division — the battery's 8 rows); at general `μ₂` layer 1
+consumes the composed graded frame: **DEPENDS on §9's C.85 (GENTOW5's S1.5 graded frame —
+the retirement of GENTOW-BOX-1)**, and fires only after it.
+
+**SIGNATURE** (shape). Two public theorems (`refine_invariants`, `refine_kills`) — **split-
+mandated C.56 → 2**; the lift `def` (`k2DigitLift`) as the first file's companion.
+
+**DEPENDS.** C.28 (cocycle units enter the residual assembly IDENTICALLY — layer 1's
+mechanism) · C.43 · C.47 · C.50 · C.52 · C.85 (§9, general-`μ₂` leg only) · H.51/H.52.
+
+**PROOF (route).** (i): `EFF.GENTOW1.32`'s strictly-above + x-side chain (audited exact).
+(ii): layers 1–2 of `.33` — the graded substitution identity `(T−s)^{μ₂} ↦ T^{μ₂}`
+(binomial-free, both characteristics) + Step-0 carry monotonicity for two carries.
+
+**SIZE.** 2 × ~40 lines.
+
+**SOURCE.** `EFF.GENTOW1.28`/.29 (the clauses); `.32`/.33 (proofs + the layer-1 honesty
+note verbatim); `.27` (the setting + the `.62` TERMINAL lift display — the frozen
+fixed-base display is DEAD; “deg lift < D₂ always” STANDS); `.68` (F-4: “constant term
+untouched” means the x-side DIGIT — the wording-rider carried in (i)'s docstring).
+
+**TEETH.** P-6/`GP-EF` 8 (refined keys keep the carrier, PARI) + REFINE 40 +
+T-REFWRONG ×8 (wrong-height/wrong-residue/wrong-flavor normalizers all leave the pin
+alive — a three-way mutation tooth) → **executable regressions** retained; §13 fires one
+refine row at each prime (A5-R1 at `q = 2`, D-R1 at `q = 3`).
+
+**ENVIRONMENT.** ENV-C1 ((i)); ENV-C3 ((ii)'s residue legs).
+
+---
+
+### NODE C.57 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-2(iii)+(iv), TERMINAL (R2b): the refine bijection and the
+transported event data.* (iii) `(digits at Φ₂) ↦ (digits at Φ₂⁺)` is triangular (new digit
+= old digit + strictly-lower-height data) and bijects **`DOM_N` onto `COD_N`** — R2b's
+completed inventory: the two window boxes with the SAME clipped cardinality
+(`Σ max(0, N − floor)` on both sides), onto = injection between finite sets of equal
+cardinality, then the inverse-limit passage to full strings; `|K₂| − 1` letter choices of
+`s` per step. **A consumer cites R2b's sets, never the frozen "onto by cardinality"
+sentence** (which defined neither set). (iv) For a deeper member `g` in the `Φ₂⁺`-frame,
+the OLD-key read exhibits exactly the α-event: `dv2Pin … Φ₂ g j = ((μ₂−j)·λ : ℕ∞)` with
+residue `binom(μ₂,j)·(−s̄)^{μ₂−j}` (coherent normalization, wrap units included) at every
+`j` with `¬ p ∣ binom(μ₂,j)`, other coordinates strictly above — at `μ₂ = 2, q = 2` the
+`j = 1` pin vanishes (`2s = 0`) and the event is carried by `p₀ = 2λ` alone; at `q = 3`
+both pins show. Heights transport by `dv₂ = e₂·dv`; residues by the `η₂`-dictionary.
+
+**SIGNATURE** (shape). `refine_bijection` (with `DOM_N`/`COD_N` as companion defs) +
+`refine_transported_event` — **split-mandated C.57 → 2**.
+
+**DEPENDS.** C.53 · C.56 · landed `Finset.card` bijection lemmas; (iv): binomial expansion
++ C.11's height comparison (`(μ₂−i)λ + (i−j)λ = (μ₂−j)λ` — the audited cancellation).
+
+**PROOF (route).** (iii): triangularity from C.56(ii)'s layers; the counting lemma with the
+clipped exponent on BOTH sides; injectivity; finite-set onto; inverse limit (the corpus's
+own four-move R2b structure). (iv): `EFF.GENTOW1.34`'s expansion, verbatim route.
+
+**SIZE.** 2 × ~40 lines.
+
+**SOURCE.** `EFF.GENTOW1.30` (frozen (iii) + R2b, TERMINAL — `.66`); `.31`/(iv) verbatim
+(char-sensitive display); `.33` layer 3 (the sealed gap, quoted: “onto by cardinality with
+neither set defined”); `.34` (the (iv) proof + audit).
+
+**TEETH.** R2b's enumeration contact (A5-R1 at `N = 4`: 16 DOM members → 16 distinct
+images covering COD exactly) → **executable regression** + §13 row; the eight-row
+`p₀ = 2λ` + `q = 2/q = 3` pin-split audit (`EFF.GENTOW1.12`) → **Lean theorem** ((iv)'s
+instances) + regression. The char split is a GC-11 exhibit: five `q = 2` rows and two
+`q = 3` rows DISAGREE on the `j = 1` pin — the §13 gate fires one of each.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.58 [theorem] [fresh]
+
+**STATEMENT.** *GENTOW-5, TERMINAL (R2c three bands + R2a re-scope): the composed window
+ledger.* On `𝒯`, per window `N`:
+**(a) THREE BANDS** (the sealed "LIFT-STABLE iff `< e₁e₂N`" is DEAD — refuted by its own
+first-band sentence): a computed `dv₂`-value `m` is — BAND 1 (`m < e₁e₂N`): stable across
+lifts; BAND 2 (`m = e₁e₂N`, at `f₁f₂ ≥ 2`): VALUE-exact for every lift while the full
+`K₂`-residue is NOT determined (the unread digit TIES at equality — R2c's strict-`>`
+re-scope; readable nonzero parts survive by tower-basis independence); BAND 3
+(`m > e₁e₂N`): unstable (the undercut).
+**(b) ragged strings:** the class-`(a,b)` slot string of `C_j` ends at
+`e₁e₂(N−1) + w(a,b)`, ragged across the `e₁e₂` height classes; within one `dv₂`-height the
+`K₂`-digit's `f₁f₂` component `O`-digits die at different lift depths (the within-digit
+band, NEW at level 2 for `e₂ ≥ 2`).
+**(c) consultation:** every digit consulted by a readable event sits strictly inside its
+class string: `m < e₁e₂N ∧ m ≡ w(a,b) (mod e₁e₂) ⟹ m ≤ e₁e₂(N−1) + w(a,b)` (one
+congruence).
+**(d) upward carries:** along composed refine chains every update determines new digits at
+height `d` from old digits at heights `≤ d` — deep composed histories never consult the
+ragged band.
+**(e) capped-window content identity:** the composed digit map induces a bijection
+`(f mod π^N, monic deg n) ↔ (composed digits mod π^N)`; every decided composed read at
+heights `< e₁e₂N` is a function of the window data; the budget/count display is exact per
+window **at the CLIPPED display** (R2a's consumer re-scope, verbatim: "exact as sealed for
+`N ≥ max floor`").
+
+**SIGNATURE** (shape). Five public statements — **split-mandated C.58 → 3** ((a); (b)+(c);
+(d)+(e)). (a)'s BAND 2 consumes H.53's independence at the `(K, K₂)` tower basis
+(`{η^r η₂^t}` — GENHN-2″'s mechanism, instantiated through C.12/C.19).
+
+**DEPENDS.** C.11 · C.12 · C.19 · C.50 · C.52 · C.53 · C.56(d-layer) · H.53.
+
+**PROOF (route).** `EFF.GENTOW1.40`'s five clauses, each one or two audited lines; (a)'s
+undercut instance + first-band independence; (c) is `omega`; (e) is C.53's unipotence
+mod `π^N`.
+
+**SIZE.** 3 × ~35 lines.
+
+**SOURCE.** `EFF.GENTOW1.35` (frozen (a) + R2c TERMINAL, `.67`); `.36`–`.39` ((b)–(e), with
+(e)'s R2a scope-pin quoted); `.40` (the proof).
+
+**TEETH.** the FAM-B per-band machine contact (BAND 2 `dv₂ = 8`; BAND 3 `14 vs 11` across
+two lifts; `TOTAL violations 0`) → **executable regression** retained + §13 fires the
+BAND-2 row at both primes (FAM-B is `q = 2`; FAM-D is the `q = 3` twin); STRINGS 22 +
+WINDOW 35 + ROUNDTRIP 150 + T-UNDERCUT ×2 → retained.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
 
 ---
 
@@ -2487,7 +3294,7 @@ missing hypothesis this peel repairs).
 
 ---
 
-<!-- RESUME: §3–§5 COMPLETE (C.01–C.40). Forward refs recorded in-node: C.13→C.21; C.27→C.29/C.33/C.34; C.31→C.33/C.35; C.40→C.60/C.61 (§7 fires before C.40). RE-PLAN bookings so far: dvResPoly_mul_of_pure (B.35 twin, from C.34/C.37), dv2ResPoly def (from C.38), complementConst/γg/pinHeight defs (C.36/C.39). AMENDMENT owed to committed C-H3 wording: §5 DOES construct test keys (C.13/C.14, O[x]-algebra) — record in A-§5 block at chapter close: the immunity claim is "no fractional-height ELEMENT below degree D″, no base change", not "no test key". Next: §6 (C.41–C.58) from EFF-HETOW (composed key Φ₂ wrap-corrected .13, HETOW-1/2/3 bridges, W(t), C-A/C-B riders) + EFF-GENTOW1 (GENTOW-1 clip R2a .65, GENTOW-2 DOM/COD R2b .66, GENTOW-5 three bands R2c .67, K₂-digit lift M_{r,t} .62/.53, COR GENTOW-1.1). Read those EFF units first. Then §7 (DECISION section, C.59–C.70). Commit per 2–3 nodes. -->
+<!-- RESUME: §3–§6 COMPLETE (C.01–C.58). Forward refs in-node: C.13→C.21; C.27→C.29/C.33/C.34; C.31→C.33/C.35; C.40→C.60/C.61; C.49→C.61/C.62; C.56→C.85 (§9). RE-PLAN bookings: dvResPoly_mul_of_pure (B.35 twin); dv2ResPoly + dv2SideSet cluster (C.38/C.55 → helper node C.38a); complementConst/γg/pinHeight (C.36/C.39); stageLiftO GenreDatum packaging (C.14/C.43 — merge). AMENDMENT owed to committed C-H3 wording (see prior note; record in A-§ block at close). Next: §7 (C.59–C.70, DECISION C-D1 executed): C.59 divisibility leg e₁ℓ∣e′ (rank-form/Quarry route, B.57-pattern at dv-carrier); C.60 CBox1Side (the C-BOX-1 hypothesis carrier, B-BOX-1 analogue, + its d_r=1/f₁d_r=1 vacuity lemma); C.61 Tier-1 singleton typeOf (the sandwich); C.62 iterated/composed version; C.63 deg blockFactor = D″·m_r at separable side; C.64 Tier-2 read-form count |S|=D″μ₂ from f (via C.37); C.65 μ₂ = Σ L_{λ₂} count; C.66 [cite:FGMN] Tier-3 mixed-side tie (gate-b, GENTOW-6.1's route + GENTOW2's faithful-cite pattern — read EFF-GENTOW6 .19-.21 + EFF-GENTOW2 FGMN units first); C.67 GENTOW-4.C pin equality (HE6R1-2(b)+(c) — read EFF-GENTOW4 .33); C.68-C.70: class-size supply nodes for E/D (named terminal supply; incl. the HE6.A-consumers' statement at exactly EFF.HE6.18's display recast). Then §8 (GENTOW3+GENTOW6+GENTOW4, C.71–C.82). -->
 
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
