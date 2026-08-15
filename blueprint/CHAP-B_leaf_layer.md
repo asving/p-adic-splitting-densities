@@ -1179,7 +1179,9 @@ on the `(u,ℓ)`-side with `suppVal φ f u ℓ ≠ ⊤`. Then `ℓ ∣ (j - j')`
 ```lean
 namespace Uniformity.Density.Leaf
 
-theorem onSide_modEq (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O} {j j' : ℕ}
+-- [repaired: A-F.3/B-D16] `{ℓ u : ℕ}` bound explicitly (was auto-implicit; ENV-A declares neither)
+theorem onSide_modEq {ℓ u : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
+    {j j' : ℕ}
     (htop : suppVal φ f u ℓ ≠ ⊤) (hj : OnSide φ f u ℓ j) (hj' : OnSide φ f u ℓ j') :
     j ≡ j' [MOD ℓ]
 ```
@@ -1275,7 +1277,9 @@ with `Finset.inf'_eq_inf`).
 ```lean
 namespace Uniformity.Density.Leaf
 
-theorem eq_of_onSide_onSide (hℓ : 0 < ℓ) (hℓ' : 0 < ℓ') {φ f : Polynomial O} {u u' j j' : ℕ}
+-- [repaired: A-F.3/B-D16] `{ℓ ℓ' : ℕ}` bound explicitly (was auto-implicit)
+theorem eq_of_onSide_onSide {ℓ ℓ' : ℕ} (hℓ : 0 < ℓ) (hℓ' : 0 < ℓ') {φ f : Polynomial O}
+    {u u' j j' : ℕ}
     (hne : u * ℓ' ≠ u' * ℓ)
     (htop : suppVal φ f u ℓ ≠ ⊤) (htop' : suppVal φ f u' ℓ' ≠ ⊤)
     (hj : OnSide φ f u ℓ j) (hj' : OnSide φ f u ℓ j')
@@ -1332,11 +1336,12 @@ noncomputable def sideMax (φ f : Polynomial O) (u ℓ : ℕ)
 noncomputable def sideDeg (φ f : Polynomial O) (u ℓ : ℕ)
     (h : (sideSet φ f u ℓ).Nonempty) : ℕ := (sideMax φ f u ℓ h - sideMin φ f u ℓ h) / ℓ
 
-theorem sideMax_eq (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
+-- [repaired: A-F.3/B-D16] `{ℓ u : ℕ}` bound explicitly in both theorems (was auto-implicit)
+theorem sideMax_eq {ℓ u : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
     (htop : suppVal φ f u ℓ ≠ ⊤) (h : (sideSet φ f u ℓ).Nonempty) :
     sideMax φ f u ℓ h = sideMin φ f u ℓ h + ℓ * sideDeg φ f u ℓ h
 
-theorem onSide_eq_add_mul (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
+theorem onSide_eq_add_mul {ℓ u : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
     (htop : suppVal φ f u ℓ ≠ ⊤) (h : (sideSet φ f u ℓ).Nonempty) {j : ℕ}
     (hj : j ∈ sideSet φ f u ℓ) :
     ∃ k ≤ sideDeg φ f u ℓ h, j = sideMin φ f u ℓ h + ℓ * k
@@ -1572,8 +1577,14 @@ namespace Uniformity.Density.Leaf
 /-- `resField φ = F[y]/(φ̄)` : the order-1 residual field of the key `φ`. -/
 abbrev resField (φ : Polynomial O) : Type _ := AdjoinRoot (φ.map (IsLocalRing.residue O))
 
-noncomputable instance instFieldResField {φ : Polynomial O} (hφ : IsKey φ) :
-    Field (resField φ) := AdjoinRoot.instField (hf := hφ.irred.ne_zero) -- see PROOF note
+-- [repaired: A-F.3/B-D1+B-D3] body: at our pin `AdjoinRoot.instField` takes `[Fact (Irreducible f)]`
+-- and has no argument `hf`; kind: an `instance` with the explicit non-class `(hφ : IsKey φ)` is a
+-- HARD ERROR at our pin (TC-unreachable), so the declaration is a `@[reducible] noncomputable def`
+-- and consumers bring it into scope by `letI`/`haveI` at each use site.
+@[reducible] noncomputable def instFieldResField {φ : Polynomial O} (hφ : IsKey φ) :
+    Field (resField φ) :=
+  haveI : Fact (Irreducible (φ.map (IsLocalRing.residue O))) := ⟨hφ.irred⟩
+  AdjoinRoot.instField
 
 /-- The residual reduction `O[X] → resField φ` at height `k`. -/
 noncomputable def resMk (π : O) (φ : Polynomial O) (k : ℕ) (a : Polynomial O) : resField φ :=
@@ -2106,7 +2117,10 @@ theorem resPoly_mul_of_pure (hπ : Irreducible π) {φ : Polynomial O} (hφ : Is
     {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
     (hf : f.Monic) (hg : g.Monic) (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ)
     {H₀f H₀g : ℕ} (hHf : npHgt φ f 0 = (H₀f : ℕ∞)) (hHg : npHgt φ g 0 = (H₀g : ℕ∞))
-    (hf' hg' hfg') :
+    -- [repaired: A-F.3/B-D9] the three binders carry their types (verbatim, Lean reads
+    -- `(hf' hg' hfg')` as three anonymous `Sort`-valued binders)
+    (hf' : (sideSet φ f u ℓ).Nonempty) (hg' : (sideSet φ g u ℓ).Nonempty)
+    (hfg' : (sideSet φ (f * g) u ℓ).Nonempty) :
     resPoly π φ (f * g) u ℓ hfg' (H₀f + H₀g)
       = resPoly π φ f u ℓ hf' H₀f * resPoly π φ g u ℓ hg' H₀g
 ```
@@ -3118,6 +3132,9 @@ Concretely (avoiding any dependence on a `Module.length` API): there are `e : Fi
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [repaired: A-F.3/B-D13] the `⨁` notation is `scoped[DirectSum]` at our pin; ENV-A′ opens only
+-- `IsLocalRing Polynomial`, so the declaration needs the `open DirectSum in` prefix
+open DirectSum in
 theorem exists_smith_of_norm (hπ : Irreducible π) {A : Type*} [CommRing A] [Algebra O A]
     [Module.Free O A] [Module.Finite O A] (hr : 0 < Module.finrank O A)
     {z : A} (hz : Algebra.norm O z ≠ 0) :
@@ -3385,8 +3402,10 @@ theorem inertiaDegOf_dvd_key_mul_resDeg (hπ : Irreducible π) {φ : Polynomial 
     {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g : Polynomial O}
     (hg : g.Monic) (hd : 0 < g.natDegree) (hpure : IsPure φ g u ℓ)
     (hne : (sideSet φ g u ℓ).Nonempty) (hdd : 0 < sideDeg φ g u ℓ hne)
+    -- [repaired: A-F.3/B-D7] the binder's closing parenthesis was missing (B.55's byte-identical
+    -- `hres` fixes the intended form)
     (hres : g.map (IsLocalRing.residue O)
-      = (φ.map (IsLocalRing.residue O)) ^ (ℓ * sideDeg φ g u ℓ hne) :
+      = (φ.map (IsLocalRing.residue O)) ^ (ℓ * sideDeg φ g u ℓ hne)) :
     inertiaDegOf g ∣ φ.natDegree * sideDeg φ g u ℓ hne
 ```
 
@@ -3498,7 +3517,8 @@ theorem factorizationType_eq_of_dvd {σ : FactorizationType} {a b : ℕ} (ha : 0
     σ = ⟨{(a, b)}⟩
 ```
 
-**DEPENDS.** landed `Uniformity.Density.FactorizationType.degree` (`LocalData.lean:49`),
+**DEPENDS.** landed `Uniformity.FactorizationType.degree` (`LocalData.lean:49`; qualified name
+corrected, [repaired: A-F.3/B-D14] — it is declared before `namespace Density` opens),
 `FactorizationType.ext` (`:52`), `efPair_pos_of_mem` (`TypePositivity.lean:55`) ·
 mathlib `Multiset.sum_map_le`-style bounds, `Multiset.card_eq_one`.
 
@@ -5102,7 +5122,8 @@ theorem decidedAt_of_order1_certificate (hπ : Irreducible π) {n N : ℕ} (hn :
 landed `Uniformity.Density.decidedAt_of_congr` (`DensityAPI.lean:140`),
 `Uniformity.Density.proj_eq_iff_dvd` (`DensityAPI.lean:124`, consumed inside the former),
 `Uniformity.Hensel.exists_monic_factorization_finset` (`MultiHensel.lean:111`),
-`Uniformity.Hensel.natDegree_eq_of_map_eq`, `Uniformity.Density.FactorizationType.ext`.
+`Uniformity.Hensel.natDegree_eq_of_map_eq`, `Uniformity.FactorizationType.ext` (qualified name
+corrected, [repaired: A-F.3/B-D14]).
 
 **PROOF.**
 1. Enter through landed `decidedAt_of_congr`: it remains to show, for every `b : Fin n → O` with
@@ -5445,6 +5466,76 @@ index, not contract, per A-§9.2's precedent; this block is the record).** With 
 
 ---
 
+### AMENDMENTS (2026-08-15, stub-gate repair round — the chapter-G §A- precedent)
+
+**A-F.3 — THE STUB-GATE REPAIR ROUND (defects B-D1…B-D16 of the 0e gate,
+`leanspec/Leanspec/ChapB.lean`).** The stage-0e stub gate landed every signable chapter-B
+declaration in `leanspec/Leanspec/ChapB.lean` (namespace `LeanspecB`, commits 2efaef43 +
+4d57a483; builds green, also clean under `-DautoImplicit=false`) and recorded **sixteen
+blueprint defects, B-D1…B-D16**, in its file header. Per §12 rule 5 / H §15 rule 5 the stub
+file is never patched silently and the blueprint is versioned by dated append: THIS block is
+that append. Every repaired node carries a `[repaired: A-F.3/B-Dn]` tag in place; the gate
+file's per-defect comments are the ground truth for each repaired form (**the repairs
+ELABORATE at our pin; the originals do not**). §9's signed SIGNATURE blocks (B.75–B.82) are
+**byte-unchanged** — the gate found no §9 signature defect; B-D10's §9 elisions resolve
+through §12 item 4 (made canonical below). Authority: standing statement-change authority
+(2026-08-05) — every repair is an honest correction of text that failed to elaborate or
+mis-named the landed API; none weakens a statement.
+
+**(I) Elaboration / syntax / name / binder repairs** (mechanical; the intended statement was
+never in doubt):
+
+* **B-D1 — B.25 `instFieldResField`: body did not elaborate.** Before:
+  `AdjoinRoot.instField (hf := hφ.irred.ne_zero)`. At our pin
+  (`Mathlib/RingTheory/AdjoinRoot.lean:516`) `AdjoinRoot.instField` takes **no** explicit
+  argument and requires `[Fact (Irreducible f)]`; there is no `hf`, and `f ≠ 0` is not the
+  hypothesis it needs. After:
+  `haveI : Fact (Irreducible (φ.map (IsLocalRing.residue O))) := ⟨hφ.irred⟩` then
+  `AdjoinRoot.instField` (`IsKey.irred` is exactly the irreducibility the instance wants).
+  The kind demotion on the same declaration is B-D3's (item II). DEPENDS' "confirm the pinned
+  route" is hereby confirmed-and-settled: the `Fact`-route body above, as an explicit `def`.
+  **Patched as gate.**
+* **B-D7 — B.54 `inertiaDegOf_dvd_key_mul_resDeg`: unbalanced parenthesis.** The `hres`
+  binder read `… ^ (ℓ * sideDeg φ g u ℓ hne) :` — the binder's closing paren was missing;
+  now `… ^ (ℓ * sideDeg φ g u ℓ hne)) :` (B.55's byte-identical `hres` fixes the intended
+  form). **Patched as gate.**
+* **B-D9 — B.35 `resPoly_mul_of_pure`: three untyped binders.** Before: `(hf' hg' hfg')` —
+  verbatim, Lean reads three anonymous `Sort`-valued binders and the statement never mentions
+  them where B.29 needs them. After (fixed by the node's own gloss "the three `Nonempty`
+  witnesses … are supplied by B.18"): `(hf' : (sideSet φ f u ℓ).Nonempty)
+  (hg' : (sideSet φ g u ℓ).Nonempty) (hfg' : (sideSet φ (f * g) u ℓ).Nonempty)`.
+  **Patched as gate** (rule-5 expansion from the node's own text).
+* **B-D13 — B.50 `exists_smith_of_norm`: missing `open`.** The `⨁` big-operator is
+  `scoped[DirectSum]` at our pin; ENV-A′ opens only `IsLocalRing Polynomial`, so the verbatim
+  signature fails (`⨁` parses as a prefix operator with no binder; `unknown identifier 'i'`
+  twice, then an application type mismatch). Repair: `open DirectSum in` on the declaration.
+  **Patched as gate.**
+* **B-D14 — B.86: wrong qualified name, ×6 executable lines.** `FactorizationType` is
+  declared in `Uniformity` (`Density/LocalData.lean:43`), *before* `namespace Density` opens
+  (`:58`); `Uniformity.Density.FactorizationType` does not exist and all six
+  degree-conservation `#eval`s of B.86 part (ii) failed with `unknown identifier` as written
+  (the same slip would break B.86 as a `leanfinal` file verbatim). All six lines now read
+  `Uniformity.FactorizationType`. Riders, same slip elsewhere: B.56's and B.80's DEPENDS
+  prose cited `Uniformity.Density.FactorizationType.degree`/`.ext` — corrected in place
+  (DEPENDS is prose, not signature; B.80's SIGNATURE block is untouched); §0.3's inventory
+  lists `FactorizationType`/`.degree`/`.ext` under its `Uniformity.Density` heading —
+  recorded here, §0.3 left byte-unchanged (index, not contract): the correct FQNs are
+  `Uniformity.FactorizationType`(`.degree`/`.ext`); unqualified use inside
+  `open Uniformity` scopes is unaffected. **Patched as gate.**
+* **B-D16 — B.17 / B.19 / B.20d / B.20e: `u`, `ℓ` (resp. `ℓ, ℓ'`) had no binder.** ENV-A
+  declares neither; the committed signatures survived only through `autoImplicit` (under
+  `autoImplicit = false` all four fail with `unknown identifier 'ℓ'` — a latent defect:
+  the signature depended on an option the project has not fixed). Repair: the binders are
+  written explicitly, in Lean's first-occurrence auto-bind order — `{ℓ u : ℕ}` at B.17,
+  B.20d, B.20e; `{ℓ ℓ' : ℕ}` at B.19 — so the elaborated types are **identical** to the
+  verbatim ones under leanfinal's option set (gate-verified by `#check` against a verbatim
+  copy). The alternative (declare `{u ℓ : ℕ}` in ENV-A's `variable` block) was considered
+  and not taken: explicit binders keep each signature self-contained and byte-identical to
+  the gate-verified form, and a `variable`-block change would touch every node's
+  environment. **Patched as gate.**
+
+---
+
 ## 10. §10 — GATES: `q = 2` AND `q = 3` FIRING INSTANCES, AND THE AXIOM CENSUS
 
 **What a §10 gate is.** A gate node instantiates the chapter's terminal certificates (B.80/B.82)
@@ -5724,12 +5815,15 @@ import Uniformity.ChapB  -- the chapter roll-up
 -- (ii) the two-prime arithmetic audit, executed (all `decide`, no `native_decide`)
 -- degree conservation of every gate value (GC-4's mandatory invariant, B.72's law
 -- instantiated): Σ e·f over the multiset = the instance's degree n
-#eval decide ((⟨{(1,2)}⟩ : Uniformity.Density.FactorizationType).degree = 2)      -- expect true
-#eval decide ((⟨{(2,1)}⟩ : Uniformity.Density.FactorizationType).degree = 2)      -- expect true
-#eval decide ((⟨{(1,1),(2,1)}⟩ : Uniformity.Density.FactorizationType).degree = 3) -- expect true
-#eval decide ((⟨{(1,1),(1,2)}⟩ : Uniformity.Density.FactorizationType).degree = 3) -- expect true
-#eval decide ((⟨{(2,2)}⟩ : Uniformity.Density.FactorizationType).degree = 4)      -- expect true
-#eval decide ((⟨{(3,2)}⟩ : Uniformity.Density.FactorizationType).degree = 6)      -- expect true
+-- [repaired: A-F.3/B-D14] `FactorizationType` is declared in `Uniformity` (`LocalData.lean:43`,
+-- BEFORE `namespace Density` opens at `:58`); the former `Uniformity.Density.FactorizationType`
+-- does not exist and all six lines failed with `unknown identifier`
+#eval decide ((⟨{(1,2)}⟩ : Uniformity.FactorizationType).degree = 2)      -- expect true
+#eval decide ((⟨{(2,1)}⟩ : Uniformity.FactorizationType).degree = 2)      -- expect true
+#eval decide ((⟨{(1,1),(2,1)}⟩ : Uniformity.FactorizationType).degree = 3) -- expect true
+#eval decide ((⟨{(1,1),(1,2)}⟩ : Uniformity.FactorizationType).degree = 3) -- expect true
+#eval decide ((⟨{(2,2)}⟩ : Uniformity.FactorizationType).degree = 4)      -- expect true
+#eval decide ((⟨{(3,2)}⟩ : Uniformity.FactorizationType).degree = 6)      -- expect true
 -- D-3's bracket arithmetic at the B.85 witnesses (m ∣ inertiaDeg ∣ m·d collapse site):
 #eval (Nat.gcd (2*1*1) (2*2*1), Nat.gcd (2*1*1) (3*2*1), Nat.gcd (1*1*1) (2*1*1))
                                                           -- expect (2, 2, 1) = (m·d, m·d, m·d)
