@@ -3,6 +3,7 @@ Copyright (c) 2026 Asvin G. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
+import Uniformity.ChapG.G27
 import Uniformity.ChapG.G26
 import Uniformity.ChapG.G21
 import Uniformity.ChapG.G14
