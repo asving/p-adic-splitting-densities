@@ -5649,6 +5649,108 @@ outside `leancheck`'s `n ≤ 3` suite, so the oracle is the only independent leg
 
 ---
 
-<!-- RESUME: (b) B.83–B.85 landed. Next: B.86 (axiom census gate), then (c) §11 (DAG TSV generation + checker run), §12, §13, §14; then (d) A-F.2. -->
+### NODE B.86 [gate] [fresh]
+
+**STATEMENT.** *The chapter-B census gate* (chapter G's G.78 / chapter H's H.99 pattern). A file
+with no public declaration that (i) prints the axiom footprint of every capstone-facing chapter-B
+declaration — each must print exactly `[propext, Classical.choice, Quot.sound]`; (ii) executes the
+chapter's arithmetic audit at `q = 2` **and** `q = 3` by `decide`/`#eval` — the gate values'
+degree conservation and D-3's bracket arithmetic; (iii) asserts non-vacuity by `#check`ing the ten
+gate theorems of B.83–B.85.
+
+**SIGNATURE.**
+```lean
+-- leanfinal/Uniformity/ChapB/B86.lean  (no public declaration; a census block)
+import Uniformity.ChapB  -- the chapter roll-up
+
+-- (i) axiom footprints: each line must print exactly
+--   [propext, Classical.choice, Quot.sound]
+#print axioms Uniformity.Density.Leaf.exists_slope_factorization      -- B.42
+#print axioms Uniformity.Density.Leaf.exists_residual_dissection      -- B.48
+#print axioms Uniformity.Density.Leaf.typeOf_leaf_resDeg_one          -- B.58
+#print axioms Uniformity.Density.Leaf.typeOf_leaf_integral_slope      -- B.60
+#print axioms Uniformity.Density.Leaf.typeOf_leaf_of_resDeg_lower_bound -- B.61
+#print axioms Uniformity.Density.Leaf.typeOf_of_separable_residuals   -- B.63
+#print axioms Uniformity.Density.Leaf.ns6_biconditional               -- B.65
+#print axioms Uniformity.Density.Leaf.typeOf_of_separable_reduction   -- B.68
+#print axioms Uniformity.Density.Leaf.typeOf_order1                   -- B.71
+#print axioms Uniformity.Density.Leaf.typeOf_eq_order1Type            -- B.79a
+#print axioms Uniformity.Density.Leaf.typeOf_congr_of_certificate     -- B.79b
+#print axioms Uniformity.Density.Leaf.decidedAt_of_order1_certificate -- B.80
+#print axioms Uniformity.Density.Leaf.exists_decidedAt_of_terminating -- B.81
+#print axioms Uniformity.Density.Leaf.decidedAt_of_leaf_certificate   -- B.82
+#print axioms Uniformity.Density.Leaf.gate_inert_two                  -- B.83 (i)
+#print axioms Uniformity.Density.Leaf.gate_ram_two                    -- B.83 (ii)
+#print axioms Uniformity.Density.Leaf.gate_linram_two                 -- B.83 (iii)
+#print axioms Uniformity.Density.Leaf.gate_split_two                  -- B.83 (iv)
+#print axioms Uniformity.Density.Leaf.gate_inert_three                -- B.84 (i)
+#print axioms Uniformity.Density.Leaf.gate_ram_three                  -- B.84 (ii)
+#print axioms Uniformity.Density.Leaf.gate_linram_three               -- B.84 (iii)
+#print axioms Uniformity.Density.Leaf.gate_split_three                -- B.84 (iv)
+#print axioms Uniformity.Density.Leaf.gate_ef_two                     -- B.85 (i)+(ii)
+#print axioms Uniformity.Density.Leaf.gate_ef_three                   -- B.85 (iii)+(iv)
+
+-- (ii) the two-prime arithmetic audit, executed (all `decide`, no `native_decide`)
+-- degree conservation of every gate value (GC-4's mandatory invariant, B.72's law
+-- instantiated): Σ e·f over the multiset = the instance's degree n
+#eval decide ((⟨{(1,2)}⟩ : Uniformity.Density.FactorizationType).degree = 2)      -- expect true
+#eval decide ((⟨{(2,1)}⟩ : Uniformity.Density.FactorizationType).degree = 2)      -- expect true
+#eval decide ((⟨{(1,1),(2,1)}⟩ : Uniformity.Density.FactorizationType).degree = 3) -- expect true
+#eval decide ((⟨{(1,1),(1,2)}⟩ : Uniformity.Density.FactorizationType).degree = 3) -- expect true
+#eval decide ((⟨{(2,2)}⟩ : Uniformity.Density.FactorizationType).degree = 4)      -- expect true
+#eval decide ((⟨{(3,2)}⟩ : Uniformity.Density.FactorizationType).degree = 6)      -- expect true
+-- D-3's bracket arithmetic at the B.85 witnesses (m ∣ inertiaDeg ∣ m·d collapse site):
+#eval (Nat.gcd (2*1*1) (2*2*1), Nat.gcd (2*1*1) (3*2*1), Nat.gcd (1*1*1) (2*1*1))
+                                                          -- expect (2, 2, 1) = (m·d, m·d, m·d)
+-- the two residue cardinalities the gates rely on (via landed residueCard_padicInt):
+example : Uniformity.Density.residueCard ℤ_[2] = 2 := Uniformity.Density.residueCard_padicInt 2
+example : Uniformity.Density.residueCard ℤ_[3] = 3 := Uniformity.Density.residueCard_padicInt 3
+-- the split-gate multiset sum (B.80's Σ-shape at instance (iv)):
+#eval decide (({(1,1)} + {(1,2)} : Multiset (ℕ × ℕ)) = {(1,1),(1,2)})             -- expect true
+
+-- (iii) non-vacuity: the ten gate theorems elaborate at their stated types
+#check @Uniformity.Density.Leaf.gate_inert_two
+#check @Uniformity.Density.Leaf.gate_ram_two
+#check @Uniformity.Density.Leaf.gate_linram_two
+#check @Uniformity.Density.Leaf.gate_split_two
+#check @Uniformity.Density.Leaf.gate_inert_three
+#check @Uniformity.Density.Leaf.gate_ram_three
+#check @Uniformity.Density.Leaf.gate_linram_three
+#check @Uniformity.Density.Leaf.gate_split_three
+#check @Uniformity.Density.Leaf.gate_ef_two
+#check @Uniformity.Density.Leaf.gate_ef_three
+```
+
+**DEPENDS.** every node named above (the census imports the chapter roll-up).
+
+**PROOF.** none (a census block). **TEST:** the file compiles; every `#print axioms` line prints
+exactly `[propext, Classical.choice, Quot.sound]`; every `#eval` prints the commented expected
+value; both `example`s elaborate. A `native_decide` anywhere in chapter B is a **stop-the-line**
+event (it adds `Lean.ofReduceBool`), per the H.99 precedent and repo policy.
+
+**SIZE.** 70 lines (a census, not a proof).
+
+**SOURCE.** repo policy (`CLAUDE.md`: "`lake env lean LeanUrat/AxChk_baseline.lean` prints every
+capstone's `#print axioms` footprint … a footprint regression is a stop-the-line event"); chapter
+G's G.78 and chapter H's H.99 (the pattern this follows); GC-6.6's gate order (this block is step
+(c), executed at the leanspec stub stage before the `axiom` stubs are signed).
+
+**⚠ THE `#eval` COLUMN IS DELIBERATELY THIN, AND WHY THAT IS HONEST.** Chapter H's H.99 executes
+count formulas because chapter H *has* computable count functions. Chapter B's objects
+(`gaussVal`, `suppVal`, `order1Type`) are `noncomputable` (`ℕ∞`-infima, `Classical` field
+instances), so the chapter's real numeric teeth are the **gate theorems themselves** — B.83–B.85
+prove `DecidedAt` at explicit values, which is strictly stronger than evaluating a formula. The
+`decide` lines above are the residual *arithmetic* audit (multiset degree bookkeeping, the gcd
+bracket, the residue cards) — the layer where a silent edit could drift without breaking a proof.
+A future chapter-C count layer gets the H.99-style executable column; nothing in this chapter
+states a count (B.82's FULL-GENERALITY note).
+
+**TEETH.** this gate IS the chapter's teeth roll-up; §13's disposition table is its index.
+
+**ENVIRONMENT.** the census file imports the chapter roll-up; no `variable`s.
+
+---
+
+<!-- RESUME: (b) COMPLETE — §10 = B.83, B.84, B.85, B.86 all landed. Next: (c) §11 (generate spec/DAG_BLUEPRINT_B.tsv from DEPENDS/SOURCE fields, run dag_build+dag_check, write section), then §12 (LeanspecB stub list), §13 (TEETH dispositions), §14 (the 13-item cross-read queue + finisher additions); then (d) A-F.2 census amendment. -->
 
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
