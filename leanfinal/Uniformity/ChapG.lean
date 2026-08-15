@@ -43,6 +43,20 @@ import Uniformity.ChapG.G37
 import Uniformity.ChapG.G38
 import Uniformity.ChapG.G39
 import Uniformity.ChapG.G40
+-- The G.23 REPLACEMENT ROUTE (blueprint AMENDMENT §A-8). Node-numbered at G.23, but it
+-- rests on the finite-field layer G.38–G.40, so it is imported after them.
+import Uniformity.ChapG.G23R1
+import Uniformity.ChapG.G23R2
+import Uniformity.ChapG.G23R3
+import Uniformity.ChapG.G23R4
+import Uniformity.ChapG.G23R5
+import Uniformity.ChapG.G23R6
+import Uniformity.ChapG.G23R7
+import Uniformity.ChapG.G23R8
+import Uniformity.ChapG.G23R9
+import Uniformity.ChapG.G23R10
+import Uniformity.ChapG.G23R11
+import Uniformity.ChapG.G23R12
 import Uniformity.ChapG.G45
 import Uniformity.ChapG.G50
 import Uniformity.ChapG.G52
