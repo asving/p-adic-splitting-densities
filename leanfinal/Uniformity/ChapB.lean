@@ -27,13 +27,17 @@ import Uniformity.ChapB.B25
 import Uniformity.ChapB.B26
 import Uniformity.ChapB.B27
 import Uniformity.ChapB.B28
+import Uniformity.ChapB.B29
+import Uniformity.ChapB.B30
 import Uniformity.ChapB.B31
 import Uniformity.ChapB.B32a
 import Uniformity.ChapB.B32b
 import Uniformity.ChapB.B32c
 import Uniformity.ChapB.B33
+import Uniformity.ChapB.B34
 import Uniformity.ChapB.B36
 import Uniformity.ChapB.B40
+import Uniformity.ChapB.B44
 import Uniformity.ChapB.B45
 import Uniformity.ChapB.B46
 import Uniformity.ChapB.B47
@@ -48,8 +52,11 @@ import Uniformity.ChapB.B56
 import Uniformity.ChapB.B64
 import Uniformity.ChapB.B69
 import Uniformity.ChapB.B70
+import Uniformity.ChapB.B73
 import Uniformity.ChapB.B75
 import Uniformity.ChapB.B76
+import Uniformity.ChapB.B77a
+import Uniformity.ChapB.B77b
 import Uniformity.ChapB.B78
 
-/-! Chapter B roll-up — 48/86 base nodes landed (waves 1-7). -/
+/-! Chapter B roll-up — 54/86 base nodes landed (waves 1-9). -/
