@@ -1707,6 +1707,282 @@ capstone-conditionality change and goes through the owner gate (Part V (a)).
 
 ---
 
-<!-- RESUME: §4 COMPLETE (E.10–E.24). Next: §5 (E.25–E.38, slot-seam evaluation layer). -->
+## 5. §5 — THE SLOT-SEAM EVALUATION LAYER (corrected seam, SLOT/LIFT at every level, the twist bookkeeping)
 
-*(sections §5–§14 follow)*
+> **Placement note (the H → E entry point, and the E-1 discipline).** This section is where E
+> consumes H §8 (H.51–H.58) — the slot lemma is "the ladder base case" (`EFF.GENHN.27`'s reverse
+> XREF) — and where the HYP.150–154 adjudication bites: every seam display below is T2's own
+> corrected `(GAMMA)`/`(HE6-SEAM)` form (= A3 F-1's `γ_k(A)`), never the bare pre-A3
+> `HE6-SLOT-SEAM` residue. Per GC-2/D-1 criterion C2, every evaluation statement is a
+> support-function/argmin statement on `ladderSuppVal`-shaped objects or pure exponent
+> arithmetic; no polygon object exists here.
+
+### NODE E.25 [lemma] [fresh]
+
+**STATEMENT.** *Seam exponent integrality (the `(GAMMA)` sum is denominator-free on its
+support).* Fix `e, h : ℕ` coprime (`1 ≤ e`), `i < e`, and `k : ℕ` with `k ≡ i*h [MOD e]`. Then
+for every `t` with `k ≥ (i + e*t)*h`: `e ∣ k − (i + e*t)*h`, so the `(GAMMA)` exponent
+`(k − (i+e*t)h)/e` is an honest natural, and the map `t ↦ (k − (i+e*t)h)/e` is strictly
+antitone in `t` (each step drops by `t*h`-increments: exact drop `h` per unit `t` after the
+division... precisely: `(k − (i+e(t+1))h)/e = (k − (i+et)h)/e − h`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem seam_exp_dvd {e h i k t : ℕ} (hcop : Nat.Coprime h e) (hi : i < e)
+    (hk : k % e = (i * h) % e) (ht : (i + e * t) * h ≤ k) :
+    e ∣ k - (i + e * t) * h
+
+theorem seam_exp_step {e h i k t : ℕ} (hi : i < e)
+    (ht : (i + e * (t + 1)) * h ≤ k) :
+    (k - (i + e * t) * h) / e = (k - (i + e * (t + 1)) * h) / e + h
+```
+
+**DEPENDS.** H.51 (`class_sep` — the congruence engine) · mathlib `Nat.sub_mod`,
+`Nat.add_mul_div_left`.
+
+**PROOF.**
+1. `seam_exp_dvd`: `(i + et)h ≡ ih ≡ k (mod e)`, so the difference is `≡ 0`;
+   `Nat.dvd_sub'` after `Nat.modEq` bookkeeping.
+2. `seam_exp_step`: `(i + e(t+1))h = (i + et)h + e*h`, so the numerators differ by `e*h`;
+   divide (`Nat.add_mul_div_left`, `e > 0`). `omega` finishes with the guard `ht`.
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.T2.06` (`(GAMMA)` boxed: `γ_k(A) = Σ_{t≥0, i+e₁t<D′}
+res(a_{i+e₁t}·π^{−(k−(i+e₁t)h)/e₁})·η^t` — "The coefficient normalizers inside `γ_k(A)` … are
+mandatory"); `EFF.HE7.19` (LEMMA HE7-L1's proof: "the slot `i` contributes at height `k` iff
+`e₁v(a_i) = k − ih ≥ 0` … which forces `i ≡ i₀ (mod e₁)` and `k ≥ ih`").
+
+**⚠ HYP.150/151 DISCIPLINE (binding on every consumer of this node).** The bare pre-A3
+`HE6-SLOT-SEAM` display — the unnormalized coefficient-residue sum — is AFFIRMATIVELY FALSE for
+`k > (D′−1)h` (HYP.151's re-derivation: at those heights every bare summand vanishes while the
+true residue is a unit). `EFF.T2.06`'s own words transcribed here: "The bare unnormalized
+coefficient-residue sum is not an alternative formula." No chapter-E node states the bare form;
+E.66's gate exercises a `k > (D′−1)h` witness at `q = 3` (honesty E-6).
+
+**TEETH.** the HE6 seam gate; the print/coherent-frame hostile tooth → **Lean theorem** for
+the exponent half; the residue half is E.29.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.26 [def] [fresh]
+
+**STATEMENT.** *The (twisted) seam sum.* In the stage-field arena (`F ⊆ K` finite fields,
+`η : K`): `seamSum γ η = Σ_{t<g} (algebraMap F K (γ t)) * η^t` for `γ : Fin g → F`; and the
+twisted form `seamSumT γ ϑ η = Σ_{t<g} (algebraMap F K (γ t)) * (ϑ t : K) * η^t` for a unit
+vector `ϑ : Fin g → Kˣ` whose entries lie in the `F`-span... — precisely, for R1-b's use the
+twist units are `algebraMap`-images of `Fˣ`-elements (`ϑ_t ∈ K_i^×`, the PREVIOUS level's
+field), so the signed form takes `ϑ : Fin g → F` with a nonvanishing hypothesis. This is the
+assembly `Σ_t γ_t·ϑ_t·β^t` of `EFF.HE7.110` (and `Σ_t γ_t β^t` of `(SLOT₂)`, the `ϑ ≡ 1`
+instance).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- The seam sum `Σ_t γ_t η^t` (the `(GAMMA)`/`(SLOT₂)` residue assembly). -/
+def seamSum {F K : Type*} [Field F] [Field K] [Algebra F K]
+    {g : ℕ} (γ : Fin g → F) (η : K) : K :=
+  ∑ t : Fin g, algebraMap F K (γ t) * η ^ (t : ℕ)
+
+/-- The twisted seam sum `Σ_t γ_t·ϑ_t·η^t` (R1-b's display); `ϑ` in the base field. -/
+def seamSumT {F K : Type*} [Field F] [Field K] [Algebra F K]
+    {g : ℕ} (γ ϑ : Fin g → F) (η : K) : K :=
+  ∑ t : Fin g, algebraMap F K (γ t * ϑ t) * η ^ (t : ℕ)
+```
+
+**DEPENDS.** none (ENV-E3 primitives).
+
+**PROOF.** definitional. **SIZE.** 12 lines.
+
+**SOURCE.** `EFF.T2.06` (`(GAMMA)`); `EFF.HE7.11` ((SLOT₂)(b): "`res(C(ξ)/n₂(k)(ξ)) =
+ι_ξ^{(2)}(Σ_{t<d_r} γ_t·β^t)`"); `EFF.HE7.110` (R1-b: "`ι_ξ^{(i+1)}(Σ_{t<g_i}
+γ_t·ϑ_t·β_i^t)`", "`ϑ_t ∈ K_i^×` … depending on `(k, t)` and the s-bookkeeping only").
+
+**TEETH.** none directly (definition); E.27 carries the kill.
+
+**ENVIRONMENT.** ENV-E3.
+
+---
+
+### NODE E.27 [lemma] [fresh]
+
+**STATEMENT.** *The twisted seam kill (no cancellation).* With `[Algebra F K]`, `η : K`
+integral with `(minpoly F η).natDegree = Module.finrank F K = g`: if some `γ t ≠ 0` and every
+`ϑ t ≠ 0`, then `seamSumT γ ϑ η ≠ 0`. (R1-b Step 3's closing argument: "the coefficients
+`γ_t·ϑ_t` lie in `K_i` and vanish iff `γ_t` does (`ϑ_t` is a unit), and at least one attaining
+`γ_t ≠ 0` — so the sum is NONZERO"; at `ϑ ≡ 1` this is `(SLOT₂)` Step 3's K-basis
+independence.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem seamSumT_ne_zero {F K : Type*} [Field F] [Field K] [Algebra F K] {η : K}
+    (hgen : (minpoly F η).natDegree = Module.finrank F K) (hint : IsIntegral F η)
+    {g : ℕ} (hg : g = Module.finrank F K) (γ ϑ : Fin g → F)
+    (hγ : ∃ t, γ t ≠ 0) (hϑ : ∀ t, ϑ t ≠ 0) :
+    seamSumT γ ϑ η ≠ 0
+```
+
+**DEPENDS.** E.26, **H.53** (`eta_independent`, consumed by committed signature — the
+sanctioned H §8 slice).
+
+**PROOF.**
+1. Suppose the sum is 0. `eta_independent` (H.53) applied to the coefficient family
+   `t ↦ γ t * ϑ t` gives `γ t * ϑ t = 0` for every `t`.
+2. Fields have no zero divisors: `ϑ t ≠ 0` forces `γ t = 0` for every `t`, contradicting `hγ`.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.HE7.110` (Step 3, quoted above); `EFF.HE7.11` (Step 3: "r is irreducible over
+K of degree d_r, so {1, β, …, β^{d_r−1}} is a K-basis of K₂; since the γ_t lie in K and at
+least one attaining γ_t is nonzero, the sum is nonzero"); `EFF.GENHN.27` (the level-1 base:
+within-class residue-field independence — H.53's own source).
+
+**TEETH.** `he7rannex_supp.py` P3 (18/79 σ flips when the deep letter is dropped — the twist
+is load-bearing in the kill's inputs) → **Lean theorem**; the `ϑ_t, t ≥ 1` machine hole
+(`EFF.HE7.110`'s disclosure: `g₂ = 1` throughout the level-3 family, "structurally invisible")
+is recorded in §13 as instance evidence NOT covering `t ≥ 1` — the Lean proof covers every `t`
+at once, the same H.53 move that discharged GENHN's `f₁ ≥ 2` vacuity.
+
+**ENVIRONMENT.** ENV-E3.
+
+---
+
+### NODE E.28 [lemma] [fresh]
+
+**STATEMENT.** *Rung class separation and the single-class minimum.* For a rung `R` (coprime
+`u, ℓ`): (i) two slots `s ≢ s′ (mod ℓ)` have term values `ℓ*v + s*u ≢ ℓ*v′ + s′*u (mod ℓ)`
+never equal (cross-class ties impossible); (ii) the minimizing slots of any family
+`s ↦ ℓ * w s + s * u` (`w : ℕ → ℕ`, `s < L = ℓg`) all lie in ONE residue class
+`s₀ + ℓ·{0,…,g−1}`; (iii) within the class, slot `s₀ + ℓt` attains the min `k` iff
+`w (s₀ + ℓt) = m₀ − t*u` (where `ℓm₀ + s₀u = k`). This is `(SLOT₂)` Step 2 / R1-b Step 2 —
+"the (e₁, f₁) pattern of GENHN-2 with `(e₁, f₁) ↦ (ℓ, d_r)`" — i.e. H.51/H.52's content
+re-lettered at the rung.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem rung_class_sep (R : RungDatum) {s s' v v' : ℕ}
+    (hs : s < R.slotCount) (hs' : s' < R.slotCount)
+    (hmod : s % R.ℓ ≠ s' % R.ℓ) :
+    R.ℓ * v + s * R.u ≠ R.ℓ * v' + s' * R.u
+
+theorem rung_min_class (R : RungDatum) {s k m₀ s₀ t : ℕ}
+    (hks : R.ℓ * m₀ + s₀ * R.u = k) (hs₀ : s₀ < R.ℓ)
+    (hattain : s = s₀ + R.ℓ * t) (w : ℕ → ℕ)
+    (hval : R.ℓ * w s + s * R.u = k) :
+    w s = m₀ - t * R.u ∧ t * R.u ≤ m₀
+```
+
+**DEPENDS.** E.01, E.03, **H.51** (`class_sep`) · the coprimality transposed: H.51 separates
+`i*h mod e`; here the roles are `(h, e) ↦ (u, ℓ)` — the same lemma, arguments swapped.
+
+**PROOF.**
+1. `rung_class_sep`: reduce both sides mod `ℓ`: `s*u ≢ s′*u (mod ℓ)` by H.51's injectivity
+   (`Nat.Coprime u ℓ`; note H.51's `hcop : Coprime h e` instantiates at `(u, ℓ)`).
+2. `rung_min_class`: substitute and cancel: `ℓ·w s + (s₀ + ℓt)u = ℓm₀ + s₀u` gives
+   `ℓ(w s + tu) = ℓm₀`, cancel `ℓ ≥ 1`: `w s + tu = m₀`. `omega`.
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.HE7.11` (Step 2, verbatim: "`ℓ·dv(c_s) + s·u ≡ s·u (mod ℓ)`, and `s ↦ s·u mod
+ℓ` is a bijection of `ℤ/ℓ` because `gcd(u, ℓ) = 1` … The minimum … is therefore attained inside
+a single class `s₀ + ℓ·{0,…,d_r−1}` — exactly ℓ classes of exactly d_r slots each"; Step 3's
+attaining criterion "iff `dv(c_{s₀+ℓt}) = m₀ − tu`"); `EFF.HE7.110` (Step 2 "twist-free …
+verbatim").
+
+**TEETH.** HE7-T-SLOT2TIE (`gcd(u,ℓ) ≠ 1` ⟹ classes share heights, exactness fails — fired) →
+**Lean theorem**; the tooth's hypothesis is E.01's `hcop` field.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.29 [theorem] [fresh]
+
+**STATEMENT.** *The twisted slot lemma at a rung (R1-b schema; `(SLOT₂)` is its `ϑ ≡ 1`
+instance).* Let `C` be the LEVEL-`i` slot carrier (E.10), `R` the rung, and
+`c : ℕ → Polynomial O` a slot family (`c s = 0` for `s ≥ L`, `deg (c s) < C.D`, not all zero).
+Define `k := min over occupied s of (ℓ * (hgt (c s)).untop + s * u)` (cleared; `WithTop`
+handled by restriction to the occupied support). Then:
+(i) the minimum is attained in one class `s₀ + ℓ·{t < g}` (E.28), and per attaining slot the
+level-`i` digit is `γ_t := C.dig (c (s₀ + ℓt))` — nonzero exactly at attainers;
+(ii) with twist inputs `ϑ : Fin g → K` (all nonzero; supplied by the cocycle bookkeeping E.33
+at instances, `ϑ ≡ 1` at the base rung), the level-`(i+1)` residue of the assembled development
+`Σ_s c s * Φ^s` at height `k` is `seamSumT γ ϑ η ≠ 0` (E.27) — so the level-`(i+1)` height is
+the min EXACTLY (no cancellation) — **stated as a specification of the next level's carrier**:
+the pair `(hgt_{i+1}, dig_{i+1})` defined by (min, seamSumT) satisfies E.10's field laws on
+developments, given E.10's laws one level down.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- The twisted slot specification (R1-b): the value/residue read of a slot family at the
+next level, as data + laws. `η` generates `K'` over `K` with minpoly degree `g`. -/
+theorem twisted_slot_spec {O : Type*} [CommRing O] {K K' : Type*} [Field K] [Field K']
+    [Algebra K K'] (C : SlotCarrier O K) (R : RungDatum) {η : K'}
+    (hgen : (minpoly K η).natDegree = Module.finrank K K')
+    (hint : IsIntegral K η) (hg : R.g = Module.finrank K K')
+    (c : ℕ → Polynomial O)
+    (hdeg : ∀ s, (c s).natDegree < C.D) (hsupp : ∀ s, R.slotCount ≤ s → c s = 0)
+    (hocc : ∃ s < R.slotCount, c s ≠ 0)
+    (ϑ : Fin R.g → K) (hϑ : ∀ t, ϑ t ≠ 0)
+    {k m₀ s₀ : ℕ} (hs₀ : s₀ < R.ℓ) (hk : R.ℓ * m₀ + s₀ * R.u = k)
+    (hmin : ∀ s < R.slotCount, c s ≠ 0 → ∀ v : ℤ, C.hgt (c s) = (v : WithTop ℤ) →
+      (k : ℤ) ≤ R.ℓ * v + s * R.u)
+    (hatt : ∃ s < R.slotCount, c s ≠ 0 ∧
+      C.hgt (c s) = ((m₀ : ℤ) - (((s - s₀) / R.ℓ : ℕ) : ℤ) * R.u : ℤ)) :
+    seamSumT (fun t => if h : _ then C.dig (c (s₀ + R.ℓ * t)) else 0) ϑ η ≠ 0
+    -- (the full spec bundles the class location E.28(ii) and the attainment
+    --  criterion E.28(iii); see the SIGNATURE NOTE)
+```
+
+**⚠ SIGNATURE NOTE (the contract is the BUNDLE, this display is its kill clause).** The
+formalization-trivial decomposition: (a) E.28 locates the class and characterizes attainers;
+(b) the `γ`-vector is `dig ∘ c` on the class (zero off-attainers by E.10's `dig`-laws); (c)
+E.27 kills cancellation. The fleet lands the node as a `structure`-valued spec
+(`TwistedSlotRead`: fields `k, s₀, γ, hclass, hattain, hkill`) if the flat theorem fights
+elaboration — RE-PLAN with the orchestrator booking `E29a`, per GC-5. The `if h : _` in the
+display abbreviates the in-class guard `s₀ + ℓt < L ∧ c (s₀+ℓt) ≠ 0`; the stub stage fixes the
+exact spelling.
+
+**DEPENDS.** E.10, E.26, E.27, E.28 · H.53 (through E.27).
+
+**PROOF.**
+1. Class location + attainment: E.28 on the cleared values (the `hmin`/`hatt` hypotheses are
+   the cleared form of "k is the min, attained").
+2. `γ_t ≠ 0` at some `t`: the attaining slot's digit is nonzero by E.10's `dig_ne_zero`.
+3. Kill: E.27.
+
+**SIZE.** 34 lines. **SPLIT-MANDATED** (the structure-valued spec route above).
+
+**SOURCE.** `EFF.HE7.110` (ANNEX-THEOREM R1-b, statement + Steps 1–3, incl. "At i = 1 every
+θ_t = 1 … and the display is (SLOT₂) byte-for-byte" and the closing compatibility sentence:
+"what the correction moves is the residue's COORDINATES (γ_t ↦ γ_t·ϑ_t)"); `EFF.HE7.11`
+((SLOT₂), the `ϑ ≡ 1` instance, statement + proof verbatim); `EFF.T2.06` (the level-1
+`(GAMMA)` instance).
+
+**⚠ WHAT IS NOT HERE.** The evaluation reading (`dv₂(C(ξ)) = k` at points `ξ`) is carrier
+content — this node specifies the ξ-INDEPENDENT data `(k, seamSumT …)` and its laws, exactly
+the split E.10's FAITHFULNESS note declares. The clause-(c) arbitrary-ξ inequality
+(`EFF.HE7.11`(c)) is an instance obligation (C placeholder at E.23).
+
+**TEETH.** Q2 / HE7-SLOT2 (12,632 exactness identities, 0 violations) + `he7rannex_supp.py`
+(level 3, 79/79) → the schema becomes a **Lean theorem**; the `g₂ = 1` disclosure rides E.27's
+TEETH note.
+
+**ENVIRONMENT.** ENV-E2 + ENV-E3 (mixed: `O`-polynomials, two stage fields).
+
+---
+
+<!-- RESUME: §5 through E.29. Next: E.30–E.34 (lift layer, coset record, twist telescoping, cocycle). -->
+
+*(remaining §5 nodes, then §§6–14 follow)*
