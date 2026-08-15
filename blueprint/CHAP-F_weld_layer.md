@@ -255,23 +255,33 @@ to this chapter).
 | 14 | — | flagged for the codex cross-read |
 
 **Terminal supply (what other chapters consume from F), named now:** the gauge-form action
-`UnitCharAction` + perimeter carrier `JD0Box2` (F.01–F.03), the twisted-carry interface
-`TwistedCarrySpec` + face carrier `GenhnBox2` + `W1Transport` (F.07–F.10), the Σ-law
-dictionary `sigmaLawSigma` + `sigmaLawSigma_degree` (F.14–F.16), the structural-clause
-interfaces (F.19–F.26), and the chapter-I package `WeldSupply`/`WeldObligations` (F.27–F.28).
+`gaugeCobdry`/`slotScale`/`resTwist` + the perimeter carrier `JD0Box2` + the strike shape
+`JD0SiteStrike` (F.01–F.05); the twisted-carry layer `CarryCocycle`/`TwistedAlgebra` with
+its laws + the face carrier `GenhnBox2` + `W1Transport` (F.07–F.12); the Σ-law core
+`LedgerJunction`/`delta_eq`/`unit_eq_one_of_sigma_eq_one`/`SigmaLedgerLaw`/`xiChar`
+(F.14–F.18 — σ-valued outputs are E's `ladderSigma`, per DECISION D-F3); the
+structural-clause interfaces `JAResLaw`/`JAGridLaw`/`XiWSatisfies`/`JBVtxFace`/`wmFence_*`/
+`WeldMPkg`/`gaugeBdry_eq_iff`/`DmultW` (F.19–F.26, incl. chapter D's C7 anchors F.23/F.24);
+and the chapter-I package `WeldSupply`/`WeldObligations` (F.27–F.28).
 
-**Kind census** (mechanically counted over this file's `### NODE` headings): 10 `def`,
-7 `lemma`, 4 `theorem`, 7 `interface-carrier` (Prop-valued `def`s at ledger strength), 2
-`gate` — **30 nodes**. **BRIEF F estimated 50–70; the shortfall is deliberate and §13
-accounts for it**: the estimate predated this composition's finding that the GRTJB/GRTJC
-structural mass consumed by the two surviving conjuncts enters as *supplier-grade rows on
-carrier statements* (INSTANCE-ROW/RECORDED), not as per-clause Lean nodes — transcribing
-them as nodes would re-create the out-of-cone build the census exists to prevent.
+**Kind census** (mechanically counted over this file's `### NODE` headings): 8 `def`
+(F.01, F.05, F.07, F.08, F.14, F.24, F.27, F.28), 8 `lemma` (F.02, F.03, F.06, F.13, F.15,
+F.16, F.23, F.25), 2 `theorem` (F.09, F.10), 1 `def+lemma` (F.18), 9 `interface-carrier`
+(Prop-valued carriers at ledger strength: F.04, F.11, F.12, F.17, F.19–F.22, F.26), 2
+`gate` (F.29, F.30) — **30 nodes**. **BRIEF F estimated 50–70; the shortfall is deliberate
+and §13 accounts for it**: the estimate predated this composition's finding that the
+GRTJB/GRTJC structural mass consumed by the two surviving conjuncts enters as
+*supplier-grade rows on carrier statements* (INSTANCE-ROW/RECORDED), not as per-clause Lean
+nodes — transcribing them as nodes would re-create the out-of-cone build the census exists
+to prevent. **Split-mandated:** F.10 → 2 files; split candidates F.03, F.09. **Fleet
+planning figure: ≈ 31–33 Lean files.**
 
-**Graph shape** (from `spec/DAG_BLUEPRINT_F.tsv`, computed from the DEPENDS fields): 121
-rows; intra-chapter proof-dep graph ACYCLIC, 5 layers, widths `9, 9, 6, 4, 2`; critical path
-4 edges. No HARD node; the two carriers with GC-13 placeholders (F.10, F.24) are
-blocked-until-resolution.
+**Graph shape** (from `spec/DAG_BLUEPRINT_F.tsv`, computed mechanically from the DEPENDS
+fields): **114 rows over the 30 nodes; intra-chapter proof-dep graph ACYCLIC, 6 layers,
+widths `12, 8, 6, 1, 2, 1`**; critical path 5 edges (F.07 → F.08 → F.09 → F.10 → F.11 →
+F.28). No HARD node. **Blocked-until-resolution (GC-13):** F.17's C-side instance discharge
+and F.24's M4 instance — the carrier DECLARATIONS themselves elaborate now; only the
+instance obligations wait (§12).
 
 ---
 
@@ -1986,8 +1996,373 @@ tooth ("an additive slot shift … breaks … counts" — the failure-mode displ
 
 ---
 
-<!-- RESUME: §§8–10 composed (F.27–F.30). Next: §11 DAG additions + TSV emission, §12
-leanspec stub list, §13 census + TEETH, §14 cross-read queue, FINAL STATE + §2 index
-finalization. -->
+## 11. DAG ADDITIONS + FENCE ADJUDICATIONS
+
+**Machine-readable edges:** `spec/DAG_BLUEPRINT_F.tsv` — **114 rows over the 30 nodes**,
+computed mechanically from this file's DEPENDS fields (`proof-dep` rows; `BP.F.*` and
+`BP.H.61`/`BP.H.87` targets) and SOURCE fields (`stmt-dep` rows against the merged,
+contiguous `EFF.GRTJA/GRTJB/GRTJC/GRTW2/WELDMASTER/LIFTCORNER/SIGMALAW/JD0.*` IDs plus the
+`HYP.*` ledger rows). **Every cited endpoint verified to exist in `spec/DAG_NODES.tsv` at
+HEAD** (all seven weld notes have merged specs; no shard-local remap is needed for F —
+GC-12 satisfied directly).
+
+**The two adjudication rows (D-F1/D-F2, §7).** The TSV's last two rows install the DECIDED
+statement-dependency directions `EFF.LIFTCORNER.72 → EFF.GRTW2.20` and
+`EFF.LIFTCORNER.62 → EFF.GRTW2.35`. The complementary half of each ruling — re-classing the
+harvest's REVERSE edges (`GRTW2 → LIFTCORNER`, the consumer-acknowledgment rows) out of the
+dependency graph — is a `dag_build.py`/checker change on harvested rows, which is the
+ORCHESTRATOR's (GC-12's division of labour); the checker's SCC 3–4 annotations should then
+read ADJUDICATED-BY: CHAP-F D-F1/D-F2.
+
+**dag_check status at composition (executed, then shared outputs restored to HEAD).**
+`dag_build.py` + `dag_check.py` were run WITH this chapter's TSV merged: dangling-ID check
+**PASS** (every F endpoint declared); cycle check — **F introduces ZERO new SCCs** (the
+SCC list is byte-identical with and without `DAG_BLUEPRINT_F.tsv`; verified by diff). The
+checker's overall verdict at HEAD is FAIL on **2 unadjudicated SCCs among `BP.C.*` nodes**
+(`{BP.C.56, .84, .85, .87}` and `{BP.C.99, .100, .102, .104}`) — chapter C's in-progress
+rows, flagged to the orchestrator and the C composer (§14 item 10), not F's to fix. The
+committed `spec/dag_check_output.txt` is left at HEAD (the orchestrator's re-run commits
+the merged outputs).
+
+**Cross-chapter edges (the citation-rule ledger, GC-13):**
+* **Into H (committed node IDs):** `BP.F.13 → BP.H.87`, `BP.F.13 → BP.H.61` — the two
+  type-preservation-replacing theorems, cited as interfaces (honesty F-3). No other H node
+  is touched (F consumes nothing of H §8 — that entry point is B/E's).
+* **Into E (committed node IDs, D-F3):** `BP.F.17 → BP.E.45`, `BP.F.17 → BP.E.46`
+  (`ladderSigma` + degree conservation — the σ-law faces' GC-4 consumption).
+* **Into C (GC-13(c) placeholders — the orchestrator's resolution list):**
+  `EFF.SIGMALAW.03 [supplied-by: chapter C]` (F.17 — the level-`m` residue-algebra
+  carriers); `EFF.GRTW2.29 [supplied-by: chapter C]` (F.24 — M4's W2-C3 fenced-scope
+  instance). Concrete `CarrySite`/`ValueDictSite` instances additionally arrive from H's
+  landed count layer and C's composed stages (F.11's DEPENDS note) — placeholder-free
+  because F carries them as type parameters.
+* **Into D (GC-14):** no F node cites ϑ-orientation content (checked: no F statement
+  mentions ϑ) — the GC-14 anchor obligation is vacuous for F; chapter D consumes F.24
+  (WELD-M-PKG, its C7 anchor) and F.23 (WM-FENCE with the F-4 scoping) in the other
+  direction.
+
+**Fence adjudications (honesty F-10; BRIEF F trap (v)).** The global checker reports 82
+fence-crossing edges; the weld notes' fence rows (per the checker's census: GRTW2 15,
+WELDMASTER 15, LIFTCORNER 12, GRTJC 10, GRTJA 10, GRTJB 2) generate F's share. Adjudicated
+one line each, at the level F's DEPENDS fields touch them:
+1. `{GRTJA, GRTJB}` mutual cluster: GRTJA cites JB faces (JB-VTX/JB-DEV) and GRTJB cites
+   JA-RES back (its DEV(iii)(RES) layer "is JA-RES at read level") — NOT a cycle at unit
+   level: the citations land on disjoint units (`.08` vs `.89–.105`), same shape as the
+   checker's HE6↔HE6R1 finding; F's rows keep them disjoint (F.19 vs F.22).
+2. GRTJA fences (N-1 imports, JA-BOX-1..5): F consumes no fenced material — F.19/F.20
+   transcribe the two preserved rows only; the JA-BOX-1 refuted display is fenced
+   structurally (F.19's abscissa-linear exponent).
+3. WELDMASTER's one-perimeter fence (WM-FENCE): every F edge into `EFF.WELDMASTER.25`
+   carries the F-4 scoping in its evidence column ("fixed-data criterion, no freedom") —
+   the spec's own instruction "A DAG edge into WM-FENCE must carry this scoping," executed.
+4. GRTW2's dependency-line fence (`EFF.GRTW2.40`) and LIFTCORNER's fences (`.16/.17/.45/
+   .71`): F touches neither notes' fenced imports; the two LIFTCORNER units F cites
+   (`.62/.72`) are scope records, and their D-F1/D-F2 direction rulings are exactly fence-
+   respecting (consumption declared by the consumer).
+5. GRTJC's tautology fence (`.83`) and cyclic fence (`.93`): honoured by omission — no F
+   node states the fenced forms; F.10's JC-BOX-5 scope note is the one contact point,
+   handled in the node.
+
+---
+
+## 12. LEANSPEC STUB LIST (stage 0e)
+
+Per GC-6.6: file `leanspec/Leanspec/ChapF.lean`, wrapped in `namespace LeanspecF` (never
+re-declaring contract names in `Uniformity.*`; ChapG's retire-to-examples is the recorded
+alternative). Gate order (CHAP-H §15 / GC-6.6(c)): (a) elaborate the FRAGILE signatures
+first; (b) land the `def` bodies real; (c) EXECUTE the §10 numeric gates at `q = 2` AND
+`q = 3` against this file's expected values; (d) only then sign the `axiom` stubs.
+
+**(a) Fragile-signature list (elaborate first, in this order):**
+1. F.08 `TwistedAlgebra` (the `Type _` wrapper + the twisted `Mul`/`AddCommGroup`/`Module`
+   instances — instance leakage onto plain `ZMod E → K` is the failure mode to catch);
+2. F.10 (`Module.finrank` through the def wrapper; the `single`/`•` spelling — the
+   `single 0 1` normalization fence is a statement fence, not adjustable);
+3. F.28 (`structure … : Prop where` — the Prop-valued structure syntax with three index
+   types as parameters);
+4. F.26 (`DmultW`'s quantifier order: `∃ ω` BETWEEN the line pair and `(f, g)` — a
+   type-checked commute of the quantifiers is a blueprint defect, return BLOCKED);
+5. F.29/F.30's concrete field instances (`F₄ := AdjoinRoot (X² + X + 1)`,
+   `F₉ := AdjoinRoot (X² + 1)` — `DecidableEq`/`Fintype` for `decide`; the pre-authorized
+   fallback is a private table-built instance below the gate; `native_decide` FORBIDDEN);
+6. F.15 (the multiplied-form `δ_j` normalization — do not "simplify" to a division tower);
+7. F.03 (`resTwist`'s `noncomputable` marker vs the gate's need for evaluable instances —
+   gates use `eval`-level checks, not `decide` on `resTwist` itself, if it resists).
+
+**(b) Def bodies (land real, topological order per the TSV):** F.01, F.07, F.14, F.05,
+F.08, F.18 (def half), F.20, F.21 (needs F.03's def only), F.22, F.25 (def half), F.04,
+F.11, F.12, F.26, F.24, F.17, F.27, F.28.
+
+**(c) Numeric gates:** F.29, F.30 — all `decide`/`norm_num`; expected values pinned in this
+file (§10): card 16/9, finrank 2, `v² = ζ•single 0 1` with ζ = ω resp. 2, the F₅ fence
+witness (`orderOf 2 = 4`, `χ₁ = 3`), `ξ₂ = θ₂⁻¹ = 4` at F₅, the F₂ triviality control, the
+NONCHAR shift control, the μ₂(F₅) torsor witness, the two `jbShear` images.
+
+**(d) Axiom stubs:** F.02, F.03, F.06, F.09, F.10, F.13, F.15, F.16, F.18 (lemma half),
+F.23, F.25 (lemma half).
+
+**BLOCKED-UNTIL-RESOLUTION (do NOT stub as provable):** the two GC-13 instance obligations
+— F.17's C-side `SigmaLedgerLaw` discharge (`EFF.SIGMALAW.03 [supplied-by: chapter C]`) and
+F.24's M4 instance (`EFF.GRTW2.29 [supplied-by: chapter C]`). The carrier DECLARATIONS
+(F.17, F.24) elaborate and land in (b); only their instance nodes wait for the
+orchestrator's resolution pass. F.11/F.12's site instances likewise wait on H/C landings but
+create no stub obligation (they are type-parameterized).
+
+---
+
+## 13. UNIT-DISPOSITION CENSUS (all 567 SERIES units over 7 notes, + the 5 consumed JD0
+units) + TEETH SUMMARY (GC-8)
+
+### 13.1 Disposition vocabulary
+
+Per GC-10/GC-8 (the CHAP-E §13 vocabulary): **NODE(→F.xx)** = transcribed into the named
+node(s); **INSTANCE-ROW(→F.xx)** = supplier/stack content entered as a grade-annotated row
+on a carrier's statement (citation form fixed at the node); **RECORDED** = process/
+acceptance/round/pin content, or mathematics whose only consumers are out-of-cone (§3) —
+preserved by the byte-frozen EFF spec, quoted at a constraining node where it constrains;
+**FENCE-HONOURED** = a negative claim enforced structurally; **OUT(§3.n)** = the unit's
+content is the out-of-cone package of §3 row n; **DECISION** = consumed by a D-F ruling.
+
+### 13.2 EFF-GRTJA (36 units)
+
+| units | disposition |
+|---|---|
+| .01–.03 | RECORDED (unit block, scope, base definitions — consumed inside GRTJA's own proofs) |
+| .04 | RECORDED (JA-PIN: print-pin citations; supplier evidence for the class pin — no cone consumer distinct from the sites) |
+| .05/.06 | RECORDED (JA-VAL preserved row; JA-EPS superseded by C2-1 — both site-internal) |
+| .07 | NODE→F.20 (JA-GRID at C2-4's pinned scope) |
+| .08 | NODE→F.19 (JA-RES) + F.03/F.04 provenance |
+| .09 | RECORDED (JA-VDIND: forward proved at source, converse positively refuted by PE8's constructed escapes — quoted at F.19's gloss) |
+| .10 | RECORDED (JA-MIN: "nothing downstream in this note consumes JA-MIN" — its own blast-radius clause) |
+| .11 | NODE→F.21 (the (ξ,w) orbit action; chamber half OUT(§3.10)) |
+| .12–.14 | RECORDED (imports at pinned commits) |
+| .15–.18 | FENCE-HONOURED (JA-BOX-1's refuted slot-independent form fenced by F.19's abscissa-linear exponent; boxes 2–5 quoted where they scope F.19) |
+| .19–.23 | RECORDED (machine brackets, run records, scope records) |
+| .24 | RECORDED (the acceptance/grade record — the arc-1/2 grade consumed at F.04/F.19's annotations; honesty F-7) |
+| .25–.36 | RECORDED (changes-records; .31's CRITICAL cure and .34's C2-4 scope-pin folded into F.20's statement) |
+
+**GRTJA check:** 36 units — 3 NODE-mapped, 33 RECORDED/FENCE.
+
+### 13.3 EFF-GRTJB (173 SERIES units)
+
+| units | disposition |
+|---|---|
+| .01–.02 | RECORDED (scope records) |
+| .03–.10 | RECORDED (SERIES S-STATUS, 8 members — grade chronology) |
+| .11–.19 | RECORDED (definitions/hypotheses feeding the conditionality matrix) |
+| .20 | RECORDED (THE CONDITIONALITY MATRIX — its rows 4/12 are §3 rows 1/3's mass; its JB-DEV/VTX rows are F.22's provenance) |
+| .21–.30 | RECORDED (instrument/scope records; ⟨n1⟩–⟨n5⟩) |
+| .31–.37 | RECORDED (grade surfaces) |
+| .38–.42 | RECORDED (.39 CITE-SCOPE fence — cite hygiene preserved at the spec) |
+| .43–.80 | RECORDED (repair rounds r1–r8; .77 the `u ≥ 0` chain terminal → OUT(§3.1/§3.3) via HYP.21/75) |
+| .81–.88 | .86 NODE→F.22 (frames + shear); rest RECORDED |
+| .89–.98 | .89 NODE→F.22 (JB-DEV(i)); .90–.95 INSTANCE-ROW→F.22 (clauses (ii)/(iii) at their per-layer perimeters; the (VD-m) reading fence .93 quoted); .96–.98 RECORDED |
+| .99 | RECORDED (JB-AFF) |
+| .100–.108 | .101/.102 NODE→F.22 (JB-VTX (a)/(b)); .103–.105 INSTANCE-ROW→F.22 ((c) at E-3's corrected run datum, (d) min ties, (e) window clause); .100/.106–.108 RECORDED |
+| .109–.118 | RECORDED (JB-TREE: consumed by no cone note — J-D0's L4 leg is VTX/DEV only, HYP.75 re-verified) |
+| .119–.133 | RECORDED (§5: the `u ≥ 0` lattice discharge .121/.122 and JB-CREAD/JB-EPS — their cone-facing mass is OUT(§3.1/§3.3); .126's unconditional ε-collapse noted at F.22's gloss) |
+| .134–.140 | FENCE-HONOURED/RECORDED (JB-BOX-1..6; BOX-2's inherited-conditionality quantification quoted at F.22) |
+| .141–.163 | RECORDED (sealed batteries, censuses, walker records) |
+| .164 | RECORDED (SERIES post-freeze arc, 8 members) |
+| .165 | RECORDED (ACCEPTED 2/2 — the grade consumed at F.22) |
+| .166–.173 | RECORDED (fold/certifier annexes; .172 E-3 folded into F.22's statement; .173 the off-perimeter NOT-SUPPLIED reading preserved) |
+
+**GRTJB check:** 173 units — 4 NODE-mapped, ~9 INSTANCE-ROW, 160 RECORDED/FENCE/OUT.
+
+### 13.4 EFF-GRTJC (132 SERIES units)
+
+| units | disposition |
+|---|---|
+| .01–.39 | RECORDED (instruments, batteries, S-STATUS series, repair rounds r1–r6; .31/.36's corrections folded where their terminals land below) |
+| .40–.46 | RECORDED (conditionality stack head; (IN-1)/(IN-2)/(IN-4)/(IN-5) hypothesis rows — stack provenance on F.11) |
+| .43 | NODE→F.26 ((IN-3), the FGMN CITE-SCOPE home — gate-(b)) |
+| .47–.53 | RECORDED (harness definitions — the out-of-cone build declined, §3 preamble) |
+| .54 | INSTANCE-ROW→F.11 (THEOREM W-6, stack citation) |
+| .55–.61 | RECORDED (JC-DOM/JC-GAUGE/JC-PER/JC-FIB/JC-ANCHMON/JC-SCAL/JC-SPAN — W-9's proof machinery, carried by the stack citation) |
+| .62/.63 | INSTANCE-ROW→F.11 (JC-LOAD, JC-PSIKER(iii) — the wild-decidedness warrant J-D0's BOX-6 routes) |
+| .64–.68 | RECORDED ((COORD-B) repair layer) |
+| .69 | NODE→F.26 ((DMULT) two tiers; (DMULT-s) OUT(§3.5)) + F.12 (the transport shape) |
+| .70–.76 | RECORDED (.71 (MULT-B), .70 (COORD-B)(2) — ride (DMULT-w), carried via F.26) |
+| .77 | INSTANCE-ROW→F.07 (JC-CARRY-m: the y-degree tie `deg A(a,b) = δ(a,b)` — instance content at the consuming site) |
+| .78–.83 | RECORDED (.79 the J-B↔J-C germ interface; .83 tautology fence honoured by omission) |
+| .84/.85 | INSTANCE-ROW→F.11 (THEOREM W-8 + its Annex-#4-cured proof — stack citation) |
+| .86–.88 | RECORDED |
+| .89 | NODE→F.07/F.09/F.10/F.11 (COROLLARY W-9, the special-care unit; clause (iv) NOT consumed — structurally absent from F.11) |
+| .90 | NODE→F.09 (the proofs' associativity reading; kind inversion disclosed at F.07) |
+| .91 | NODE→F.10 (JC-F1's power basis/cyclic presentation; JC-BOX-5's REVIEW-OWED presentation fence honoured by abstract-isomorphism scope) |
+| .92–.104 | RECORDED/FENCE (JC-F2; (CYC)/JC-CYC; the eight boxes — JC-BOX-3's blast radius quoted at F.26) |
+| .105–.121 | RECORDED (preregistrations, run records, grade tables; .121's named-consumer fence checked against F's consumption: F takes W-9 + (DMULT-w) + stack citations only) |
+| .122–.132 | RECORDED (acceptance + post-acceptance annexes; the three survival clauses quoted at F.11; .125/.129 NODE→F.26 provenance) |
+
+**GRTJC check:** 132 units — 7 NODE-mapped (.43, .69, .89, .90, .91, .125, .129), 6
+INSTANCE-ROW, 119 RECORDED/FENCE/OUT.
+
+### 13.5 EFF-GRTW2 (60 units)
+
+| units | disposition |
+|---|---|
+| .01–.03 | RECORDED (changes-records, grade-arc series) |
+| .04–.07 | RECORDED (the Object + three clauses; grade cap; literature fence; machine bracket — clause 3 is D-F1's dependency target via .20) |
+| .08–.13 | RECORDED (.11 W2-L0, .12 W2-L1/TH-BASE, .13 W2-L2 — GRTW2-internal suppliers) |
+| .14 | INSTANCE-ROW→F.19 (LEMMA W2-L3 = (VD-1): the m = 2 unconditional leg) |
+| .15–.18 | RECORDED (.17 (C-coll) perimeter → OUT(§3.7); .18 W2-C2 value law → OUT(§3.4) mass) |
+| .19 | NODE→F.21 (the (ξ,w) closed form) |
+| .20 | DECISION D-F1 (content RECORDED: the covariance-generated-by-print-constant identification; the Σ-LAW's independent re-derivation noted) |
+| .21 | NODE→F.21 (the non-uniqueness/support-stabilizer gloss + the invisible-twist genre) |
+| .22–.28 | RECORDED (.23 W2-BOX-1 boundary witness; .24/.25 W2-C1 legs; .26 review-owed parametrization; .27/.28 transported type + mechanism) |
+| .29 | GC-13→chapter C at F.24 (THEOREM W2-C3: M4's fenced scope) |
+| .30–.32 | RECORDED (the honest re-scope; the converse's boundary counter-instance) |
+| .33 | OUT(§3.10) (W2-OPEN-2/OPEN-2a — narrowed by the Σ-LAW annex; residue value-layer) |
+| .34 | RECORDED (four-route derivability adjudication) |
+| .35 | DECISION D-F2 + OUT(§3.4) (W2-OPEN-1 — the open value layer) |
+| .36–.45 | RECORDED (W2-T3E; tables; round records; footer) |
+| .46 | RECORDED (acceptance box — ACCEPTED at fenced scope; consumed at F.21/F.24's grade annotations) |
+| .47–.49 | RECORDED (annex header; fold-carry closure; OPEN-2a narrowing) |
+| .50 | RECORDED (ANNEX 3: Σ-LAW PROVED — the consumption record; the SIGMALAW units themselves govern §6) |
+| .51–.60 | RECORDED (annex corrections, E5 adjudication; .56/.58's corrected theorems are value-layer/out-of-cone mass) |
+
+**GRTW2 check:** 60 units — 2 NODE-mapped, 1 INSTANCE-ROW, 2 DECISION-consumed, 1 GC-13
+placeholder, 54 RECORDED/OUT.
+
+### 13.6 EFF-WELDMASTER (30 units)
+
+| units | disposition |
+|---|---|
+| .01–.02 | RECORDED (title superseded by .22; convention) |
+| .03 | RECORDED (the frozen "ONE transport" S1 theorem — SUPERSEDED, not transcribed; F.24 carries the annex form) |
+| .04–.21 | RECORDED (definitions, faces M0–M4's frozen displays, fences, tables, acceptance — consumed only through the .22 package form; .10 WM-CLASS noted at F.25's blast-radius gloss) |
+| .22 | NODE→F.24 (WELD-M-PKG, charge unit 1) |
+| .23 | NODE→F.25 (the torsor correction, charge-adjacent) |
+| .24 | RECORDED (F-3 RESOLVED-ALREADY) |
+| .25 | NODE→F.23 (WM-FENCE criterion, charge unit 2; the PERIM-μ LAW stays OUT(§3.9)) |
+| .26–.30 | RECORDED (remaining annexes/records) |
+
+**WELDMASTER check:** 30 units — 3 NODE-mapped, 27 RECORDED.
+
+### 13.7 EFF-LIFTCORNER (118 units)
+
+| units | disposition |
+|---|---|
+| .01–.61 | RECORDED (conventions, machine-leg/repair-arc series, preregistrations, derivations, COR 1/COR 2 content — the ITER-LAW-LIFT discharge is ITERLAWN-facing; its interface conjunct is chapter I's HYP.125, and no F node states ITER-LAW content) |
+| .62 | DECISION D-F2 + RECORDED (the withdrawn COR 2 = W2-OPEN-1 identification; obligations (a)/(b) STILL OWED at HEAD — value-layer, out-of-cone) |
+| .63–.71 | RECORDED (CHAIN-P with AC-1/AC-4/AC-5 terminal; grade boxes; fences) |
+| .72 | DECISION D-F1 + RECORDED (the W-2 consumption census; the "honest decoupling fact" — the COR 1 chain is W-2-free — quoted here as the census's load-bearing line) |
+| .73–.77 | RECORDED (S5 consequence display with its three supersessions; the (RM-m) m ≥ 2 OPEN residual preserved) |
+| .78–.118 | RECORDED (acceptance-box series, post-acceptance arc, certifier annexes — LIFTCORNER's ACCEPTED 2/2 grade is consumed at F.04's provenance as GRTW2's "corner cap") |
+
+**LIFTCORNER check:** 118 units — 0 NODE-mapped, 2 DECISION-consumed, 116 RECORDED.
+
+### 13.8 EFF-SIGMALAW (18 units)
+
+| units | disposition |
+|---|---|
+| .01 | RECORDED (unit block; CERTIFIED grade → F.17) |
+| .02 | NODE→F.17/F.18 (the corrected-map headline + the ξ₂ = θ₂⁻¹ audit) |
+| .03 | NODE→F.18 + GC-13→C at F.17 (the §3.4 objects) |
+| .04 | NODE→F.17 (SL-L1's gap clause; the recursions are C-side instance content) |
+| .05 | NODE→F.14/F.17 (THEOREM SL-1) |
+| .06 | NODE→F.17 (SL-L2 gauge-ratio law — instance content, simultaneous-induction note preserved) |
+| .07 | NODE→F.17 ((EC-q), the hostile-pass-derived automorphism law) |
+| .08 | NODE→F.15 (SL-C1) |
+| .09 | NODE→F.16 (SL-C2; converse N-1 stays open, stated nowhere) |
+| .10 | RECORDED (sealed battery; the E10 #4 leak-free corrections noted) |
+| .11 | RECORDED (ACCEPTED 2/2, six commit pins verified — grade at F.17) |
+| .12–.18 | RECORDED (E10 findings — #2's ξ₁ := 1 at F.18, #5's derivation at F.15; changes-records; ledger row) |
+
+**SIGMALAW check:** 18 units — 8 NODE-mapped, 10 RECORDED.
+
+### 13.9 EFF-JD0 (5 units consumed out-of-chapter, per BRIEF F product (1))
+
+`.05` NODE→F.01/F.03 · `.06` NODE→F.02 (mechanism shadow only) · `.22` NODE→F.04/F.06
+(BOX-2 verbatim; BOX-5) · `.24` RECORDED (consumers; the fence-bookkeeping clause quoted at
+§3 rows 6–9) · `.25` RECORDED (the supplier stack — F.04's provenance table). The rest of
+EFF-JD0 is chapter G's cut (G closed without it; only these five units are consumed here,
+each named).
+
+### 13.10 Census totals and the compression statement
+
+567 SERIES units + 5 JD0 units consumed: **30 NODE-mapped units → 30 nodes; ~17
+INSTANCE-ROW; 2 GC-13 placeholders; 4 DECISION-consumed; everything else RECORDED /
+FENCE-HONOURED / OUT(§3)** — the 538-DAG-node chapter compresses to 30 nodes because the
+capstone consumes exactly two weld faces plus their supplier interfaces, and the census
+above accounts for every unit by ID range. (CHAP-E's 242→68 was the model; F's 567→30 is
+steeper because the weld-face audit had already signed 9 of 10 chartered rows out.)
+
+### 13.11 TEETH disposition summary (GC-8 table)
+
+| disposition | count | items |
+|---|---|---|
+| **Lean theorem** | 13 nodes | F.02, F.03, F.06, F.09, F.10, F.13, F.15, F.16, F.18, F.23, F.25 + the executed gates F.29, F.30 |
+| **executable regression retained** | 2 + 2 | NEW: `verification/chapF_gate_twisted.py`, `verification/chapF_gate_chars.py` (mirrors of F.29/F.30, created at stub stage (c)); RETAINED IN PLACE: `verification/openmath/jd0_checks.py` (the sealed J-D0 battery, 68,523/0) and `verification/openmath/sigmalaw_checks.py` (6,970 samples) — already in the tree, named here per GC-8 |
+| **signed non-applicability / vacuity disclosures** | 9 rows | (1) `JD0-BOX-2` carried, HYP.74 (F.04); (2) `GENHN-BOX-2` carried, HYP.148 (F.11); (3) `W-1` MATH, HYP.139 (F.12); (4) F.17's C-side discharge pending (GC-13); (5) the GRTJA arc-1/2 grade cap on F.19/F.20 and F.04's residual leg (honesty F-7); (6) `(DMULT-w)` "carries no separate leg" — its discharge is the gate-(b) FGMN cite (F.26); (7) F.06's F₂ vacuity — disclosed AND proved (the strongest form); (8) F.28's obligations block (a hypothesis block has no teeth by design); (9) the involution-coincidence disclosure (SL-INVREC 218/218) carried at F.17/F.30 |
+| **out-of-cone (no disposition owed)** | the §3 table | 13 rows, each with its BLOCKED string — per GC-8's rider (i), never silently promoted |
+
+**Sanity check (H.09's rule):** the fields with no teeth are exactly the capstone's
+conditionality — here `JD0-BOX-2`, `GENHN-BOX-2 (n ≥ 6)`, `W-1`, the `AllOInterfaces[W/J,
+J-D0]` generality rows, and the two GC-13 instance obligations — precisely Display A's
+surviving weld conjuncts plus the cross-chapter supply seams. Reconciles with §3's
+Display-A footprint check. ✓
+
+---
+
+## 14. FLAGGED FOR THE CODEX CROSS-READ (and for the orchestrator)
+
+1. **D-F1/D-F2** — the SCC direction principle ("a consumption/withdrawal record depends on
+   the unit it consumes; an acknowledgment is provenance"). Attack the principle and both
+   applications; the reverse-edge re-classing is an orchestrator item (§11).
+2. **The 30-node count vs BRIEF F's 50–70 estimate** — §2's justification + §13's census.
+   Verify no reachable clause was dropped: the candidates to re-check are GRTJB's JB-TREE
+   faces (disposed RECORDED on HYP.75's re-verified geography) and GRTJC's harness
+   definition layer (.47–.53, disposed RECORDED as declined out-of-cone build).
+3. **F.07's kind inversion** (W-9's conclusions carried as structure FIELDS) — the
+   chapter's central faithfulness call; check the FAITHFULNESS note's claim that
+   instantiation preserves ledger strength.
+4. **DECISION D-F3** (GC-4 satisfied by consuming E's `ladderSigma`; no σ-valued output in
+   SIGMALAW) — re-read `EFF-SIGMALAW.md` for any σ-valued output this composition missed.
+5. **F.04's residual-leg placement** — `JD0Box2` carries the slot + ledger legs; the
+   residual leg rides F.19 (JA-RES at arc 1/2) so the grade cap stays visible. Check
+   chapter I's block wires all three (F.28 carries F.04 only; F.19 reaches I through the
+   §9 annotations).
+6. **F.10's `single 0 1` normalization fence** (the unit of the twisted algebra is
+   `single 0 (c 0 0)⁻¹`, not `single 0 1`) — verify the power-basis statement's `•`-form is
+   the right contract and the stub stage does not normalize `cc`.
+7. **F.26's quantifier order** (`∃ ω` between the line pair and `(f, g)`) — the spec's own
+   trap; also verify the gate-(b) cite tag (`FGMN Thm 4.2` via `(IN-3)`) is the right
+   citation target at HEAD (Annex #6 re-based the derivation).
+8. **The gate field constructions** (F₄/F₉ via `AdjoinRoot`; table fallback;
+   `native_decide` forbidden) — and the involution/`F₂` negative controls' adequacy against
+   honesty F-9.
+9. **§8's pre-authorized WELD-ZERO amendment path** — verify it does not overstep the 0b
+   fold's authority (the amendment fires only after the ledger books the arc).
+10. **ORCHESTRATOR + C composer: the two `BP.C.*` SCCs at HEAD** (`{BP.C.56, .84, .85,
+    .87}`, `{BP.C.99, .100, .102, .104}`) — found during F's dag_check run; they FAIL the
+    checker and are not F's. F's own rows introduce zero new SCCs (verified by SCC-list
+    diff, §11).
+11. **HYP.126/HYP.129 "supplied structurally"** (F.28's annotation) — check chapter I's
+    brief expects the generality rows to stay I-side (F quantifies over every finite `K`;
+    the conjunct fields remain I's).
+12. **GC-12 confirmation** — every F-cited EFF ID verified to exist contiguous in
+    `DAG_NODES.tsv` at HEAD (§11); no evidence-column remap owed for F.
+13. **F.03's `resTwist` normalization arithmetic** (the `C (ξ^deg)⁻¹` factor vs the
+    source's `ξ^{−deg R}·R(ξ·y)`; monic-form death of the overall unit) — re-derive the
+    leading-coefficient computation independently.
+14. **The §2 kind census and file figure** (8/8/2/1/9/2 = 30; ≈ 31–33 files after the F.10
+    split) — recount at stub time.
+
+---
+
+## FINAL STATE
+
+All 30 nodes composed (§§4–10); the out-of-cone census (§3) disposes the value package row
+by row; closing sections §§11–14 complete; `spec/DAG_BLUEPRINT_F.tsv` emitted (114 rows,
+ACYCLIC, 6 layers, widths 12/8/6/1/2/1, critical path 5) and verified to add zero SCCs at
+HEAD; the two GRTW2↔LIFTCORNER mutual-recon SCCs are DECIDED (D-F1/D-F2); WELD-ZERO status
+of record: clean-pass 1 of 2, pass 2 Fable-max IN FLIGHT, nothing consumed from it.
+CODEX CROSS-READ OWED (§14 is the queue).
+
+<!-- RESUME: CHAPTER COMPLETE. Remaining external actions: (i) orchestrator dag_build re-run
+(merges DAG_BLUEPRINT_F.tsv; re-classes the two adjudicated reverse edges; books the BP.C
+SCC flag); (ii) cross-read per §14; (iii) leanspec stub stage per §12; (iv) the §8 WELD-ZERO
+amendment fires only after the ledger books the arc. -->
 
 <!-- SENTINEL: BP-F END OF FILE -->
