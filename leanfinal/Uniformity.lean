@@ -28,3 +28,4 @@ import Uniformity.ChapG
 -- the roll-up's own imports; it is wired here instead, which keeps it inside the `Uniformity`
 -- library's import graph and therefore inside plain `lake build`.
 import Uniformity.ChapG.G78
+import Uniformity.ChapH

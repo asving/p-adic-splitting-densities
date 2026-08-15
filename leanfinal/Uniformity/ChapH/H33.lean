@@ -3,7 +3,7 @@ Copyright (c) 2026 Asvin G. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
-import Uniformity
+import Mathlib
 
 /-!
 # Uniformity.ChapH.H33 — `two_mul_a_le_sideLen`, `two_mul_a_le_S`

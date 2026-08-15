@@ -1,0 +1,40 @@
+import Uniformity.ChapH.H01
+import Uniformity.ChapH.H13
+import Uniformity.ChapH.H22
+import Uniformity.ChapH.H30
+import Uniformity.ChapH.H31
+import Uniformity.ChapH.H32
+import Uniformity.ChapH.H33
+import Uniformity.ChapH.H34
+import Uniformity.ChapH.H35
+import Uniformity.ChapH.H36
+import Uniformity.ChapH.H37
+import Uniformity.ChapH.H38
+import Uniformity.ChapH.H39
+import Uniformity.ChapH.H40
+import Uniformity.ChapH.H43
+import Uniformity.ChapH.H44
+import Uniformity.ChapH.H45
+import Uniformity.ChapH.H46
+import Uniformity.ChapH.H47
+import Uniformity.ChapH.H48
+import Uniformity.ChapH.H49
+import Uniformity.ChapH.H51
+import Uniformity.ChapH.H53
+import Uniformity.ChapH.H58
+import Uniformity.ChapH.H59
+import Uniformity.ChapH.H63
+import Uniformity.ChapH.H64
+import Uniformity.ChapH.H65
+import Uniformity.ChapH.H70
+import Uniformity.ChapH.H76
+import Uniformity.ChapH.H77
+import Uniformity.ChapH.H80
+import Uniformity.ChapH.H83
+import Uniformity.ChapH.H86
+import Uniformity.ChapH.H87
+import Uniformity.ChapH.H88
+import Uniformity.ChapH.H93
+
+/-! Chapter H roll-up — wave 1 (layer 0) landed. The H.13-before-H.09 ordering
+constraint (stub-gate finding O1) binds when H.09 lands. -/
