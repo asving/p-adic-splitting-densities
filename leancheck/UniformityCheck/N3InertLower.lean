@@ -182,7 +182,25 @@ theorem card_level1_inert_preimage (M : ℕ) :
         (decidedSet O 3 c3inert 1))
         + residueCard O * residueCard O ^ (3 * M + 6)
       = residueCard O ^ 3 * residueCard O ^ (3 * M + 6) := by
-  sorry
+  have hcp := card_preimage_coeffFactor (O := O) 3 (show 1 ≤ M + 3 by omega)
+    (decidedSet O 3 c3inert 1)
+  rw [card_coeff, card_coeff] at hcp
+  -- hcp : #(preimage) * q ^ (3 * 1) = #(decided at 1) * q ^ (3 * (M + 3))
+  have hd : 3 * Nat.card (decidedSet O 3 c3inert 1) + residueCard O = residueCard O ^ 3 :=
+    decidedCount_inert3_one
+  refine Nat.eq_of_mul_eq_mul_right (pow_pos (residueCard_pos O) 3) ?_
+  calc (3 * Nat.card ((coeffFactor (O := O) 3 (show 1 ≤ M + 3 by omega)) ⁻¹'
+          (decidedSet O 3 c3inert 1))
+        + residueCard O * residueCard O ^ (3 * M + 6)) * residueCard O ^ 3
+      = 3 * (Nat.card ((coeffFactor (O := O) 3 (show 1 ≤ M + 3 by omega)) ⁻¹'
+            (decidedSet O 3 c3inert 1)) * residueCard O ^ (3 * 1))
+          + residueCard O * residueCard O ^ (3 * M + 6) * residueCard O ^ 3 := by ring
+    _ = 3 * (Nat.card (decidedSet O 3 c3inert 1) * residueCard O ^ (3 * (M + 3)))
+          + residueCard O * residueCard O ^ (3 * M + 6) * residueCard O ^ 3 := by rw [hcp]
+    _ = (3 * Nat.card (decidedSet O 3 c3inert 1) + residueCard O)
+          * (residueCard O ^ (3 * M + 6) * residueCard O ^ 3) := by ring
+    _ = residueCard O ^ 3 * (residueCard O ^ (3 * M + 6) * residueCard O ^ 3) := by rw [hd]
+    _ = residueCard O ^ 3 * residueCard O ^ (3 * M + 6) * residueCard O ^ 3 := by ring
 
 /-- **THE SELF-SIMILAR LOWER BOUND.** `decidedSeq (M+3) ≥ (q³−q)/(3q³) + q^(-5)·decidedSeq M`:
 the level-1 inert census plus the reconstruction of the deep inert mass, with the SHARP constant
@@ -191,7 +209,60 @@ theorem decidedSeq_inert_step (M : ℕ) :
     ((residueCard O : ℝ) ^ 3 - (residueCard O : ℝ)) / (3 * (residueCard O : ℝ) ^ 3)
         + (1 / (residueCard O : ℝ) ^ 5) * decidedSeq O 3 c3inert M
       ≤ decidedSeq O 3 c3inert (M + 3) := by
-  sorry
+  classical
+  obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
+  set A : Set (Coeff O 3 (M + 3)) :=
+    (coeffFactor (O := O) 3 (show 1 ≤ M + 3 by omega)) ⁻¹' (decidedSet O 3 c3inert 1) with hAdef
+  set B : Set (Coeff O 3 (M + 3)) := boxImage (O := O) π M (decidedSet O 3 c3inert M) with hBdef
+  -- (1) both families are `{(1,3)}`-decided at level `M + 3`
+  have hsubA : A ⊆ decidedSet O 3 c3inert (M + 3) := preimage_decidedSet_subset _
+  have hsubB : B ⊆ decidedSet O 3 c3inert (M + 3) := by
+    intro c hc
+    obtain ⟨p, hp, rfl⟩ := mem_boxImage.1 hc
+    exact boxClass_mem_decidedSet hπ p hp
+  -- (2) they are disjoint: the reconstruction is residually a perfect cube
+  have hdisj : Disjoint A B := by
+    rw [Set.disjoint_right]
+    intro c hcB hcA
+    obtain ⟨p, hp, rfl⟩ := mem_boxImage.1 hcB
+    exact boxClass_notMem_level1 hπ p hcA
+  -- (3) so the decided count at `M + 3` dominates the sum of the two counts
+  have hcount : Nat.card A + Nat.card B ≤ decidedCount O 3 c3inert (M + 3) := by
+    have h1 : Nat.card (A ∪ B : Set (Coeff O 3 (M + 3))) ≤ decidedCount O 3 c3inert (M + 3) :=
+      Nat.card_le_card_of_injective (Set.inclusion (Set.union_subset hsubA hsubB))
+        (Set.inclusion_injective _)
+    have h2 : Nat.card (A ∪ B : Set (Coeff O 3 (M + 3))) = Nat.card A + Nat.card B := by
+      rw [Nat.card_coe_set_eq, Nat.card_coe_set_eq, Nat.card_coe_set_eq]
+      exact Set.ncard_union_eq hdisj (Set.toFinite _) (Set.toFinite _)
+    omega
+  -- (4) the two counts, cast to `ℝ`
+  have hAcard : 3 * Nat.card A + residueCard O * residueCard O ^ (3 * M + 6)
+      = residueCard O ^ 3 * residueCard O ^ (3 * M + 6) := card_level1_inert_preimage (O := O) M
+  have hBcard : Nat.card B = residueCard O ^ 4 * decidedCount O 3 c3inert M :=
+    card_boxImage hπ M (decidedSet O 3 c3inert M)
+  have f1R : 3 * (Nat.card A : ℝ)
+      + (residueCard O : ℝ) * (residueCard O : ℝ) ^ (3 * M + 6)
+      = (residueCard O : ℝ) ^ 3 * (residueCard O : ℝ) ^ (3 * M + 6) := by exact_mod_cast hAcard
+  have f2R : (Nat.card B : ℝ)
+      = (residueCard O : ℝ) ^ 4 * (decidedCount O 3 c3inert M : ℝ) := by exact_mod_cast hBcard
+  -- (5) rewrite both summands over the common denominator `q ^ (3M + 9)` and compare counts
+  rw [decidedSeq, decidedSeq, show 3 * (M + 3) = 3 * M + 9 from by ring]
+  have hQ0 : (residueCard O : ℝ) ≠ 0 := ne_of_gt qR_pos
+  have e1 : ((residueCard O : ℝ) ^ 3 - (residueCard O : ℝ)) / (3 * (residueCard O : ℝ) ^ 3)
+      = (Nat.card A : ℝ) / (residueCard O : ℝ) ^ (3 * M + 9) := by
+    rw [div_eq_div_iff (mul_ne_zero (by norm_num) (pow_ne_zero 3 hQ0))
+      (pow_ne_zero (3 * M + 9) hQ0)]
+    linear_combination (-((residueCard O : ℝ) ^ 3)) * f1R
+  have e2 : (1 / (residueCard O : ℝ) ^ 5)
+        * ((decidedCount O 3 c3inert M : ℝ) / (residueCard O : ℝ) ^ (3 * M))
+      = (Nat.card B : ℝ) / (residueCard O : ℝ) ^ (3 * M + 9) := by
+    rw [f2R, div_mul_div_comm, div_eq_div_iff
+      (mul_ne_zero (pow_ne_zero 5 hQ0) (pow_ne_zero (3 * M) hQ0))
+      (pow_ne_zero (3 * M + 9) hQ0)]
+    ring
+  rw [e1, e2, ← add_div]
+  gcongr
+  exact_mod_cast hcount
 
 end Lower
 
