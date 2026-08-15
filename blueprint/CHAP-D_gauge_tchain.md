@@ -3138,6 +3138,217 @@ the four specs' self-audit sections).
 **ENVIRONMENT.** n/a.
 
 ---
-<!-- RESUME: §§8–9 COMPLETE (D.55–D.64); next = §10 gates (D.65–D.68), then closing sections §§11–14 + index renumber amendment -->
+## 10. §10 — GATES: `q = 2` AND `q = 3` FIRING INSTANCES, THE FRAME-C REGRESSION, AND THE CENSUS
+
+**What a §10 gate is here.** Chapter D's arithmetic content is the gauge calculus — exponent
+tables, telescope values, orientation identities — so the gates instantiate the level-1
+arena at the T-units' OWN inherited battery frames (`EFF.T1.33`) and execute the expected
+values by `decide` (never `native_decide`). Per GC-11: `q = 2` AND `q = 3`; the `e > 1 ∧
+f > 1` witness is D.65's frame itself (`e₁ = 2, f₁ = 2` — the F4-JOINT axes; at the gauge
+layer the meaningful pair is the level datum `(e₁, f₁)`, both `> 1` simultaneously). The
+field-level legs run over concrete finite fields (`ZMod 3`, `ZMod 5`, and an `𝔽₄` carrier);
+⚠ the `𝔽₄` carrier choice (`GaloisField 2 2` vs an explicit quotient construction) is a
+known `decide`-fragility — the stub agent picks the computable route and records it; the
+exponent-table legs are pure `ℕ` and decide regardless.
+
+### NODE D.65 [gate] [fresh]
+
+**STATEMENT.** *The `q = 2` gate — the F4-JOINT frame (`e₁ = 2, f₁ = 2, h = 1`,
+`K₁ = 𝔽₄`, `η = ω` of order 3, `u₂ = 3`; "live wrap"), `EFF.T1.33/.34`'s expected values
+reproduced by the general engine.* Executed checks:
+
+1. **exponent tables** (`ℕ`, `decide`): `iexp 2 1 k = k % 2`; `wrap 2 1 a b = 1` exactly on
+   odd/odd (the live wrap); `Wfloor`-table `⌊s·i(3)/2⌋ = (0,0,1,1)` for `s = 0…3`.
+2. **the telescope vector** (`𝔽₄`): `(ϑ_{1,0},…,ϑ_{1,3}) = (1, 1, ω, ω)` — via D.18 the
+   exponent table of leg 1 exponentiated at `η = ω`; **exactly `EFF.T1.34`'s `μ = 3` leg**.
+3. **the μ = 3 canonical vector** (`𝔽₄`): with `w = ω` and unit digits: `Γ = (1, ω, ω)`,
+   `u(β) = (ω, ω, ω²)` (D.32's B-law at the instance), full canonical coefficient vector
+   `(ω, ω², 1)` — assembling to `(y + ω)³` (D.58 + D.35).
+4. **the quadratic triple** (`𝔽₄`): `R_corr = y² + y + ω`, `R_naive = y² + y + 1`,
+   `ψ^{(w)} = y² + ωy + 1` — the corrected/naive/canonical separation (the gauge-naive
+   mutant's kill site: `R_naive ≠ R_corr` because `ϑ₂ = ω ≠ 1`, D.28 clause 3's criterion).
+
+**SIGNATURE.**
+```lean
+-- leanfinal/Uniformity/ChapD/D65.lean — one #eval/decide/example block per check above;
+-- public declarations: `gate_f4_theta_vector` (leg 2) and `gate_f4_canonical` (leg 3) as
+-- `example`-promoted theorems over the chosen 𝔽₄ carrier; legs 1 by `decide` lines
+example : (List.range 4).map (fun s => s * (iexp 2 1 3) / 2) = [0, 0, 1, 1] := by decide
+```
+
+**DEPENDS.** D.13, D.14, D.16, D.17, D.18, D.28, D.32, D.35, D.58.
+
+**PROOF.** legs 1: `decide`; legs 2–4: unfold D.17's arena at the concrete data, rewrite
+with D.18, evaluate in the `𝔽₄` carrier (`decide` if computable, else `simp`/`norm_num`
+over the explicit multiplication table).
+
+**SIZE.** 60 lines. **SPLIT candidate → 2** (ℕ-legs / 𝔽₄-legs).
+
+**SOURCE.** `EFF.T1.33` (F4-JOINT frame axes), `EFF.T1.34` (all expected values, including
+the full-orientation check-5 discipline "score all three entries of the canonical `μ = 3`
+vector, not only the `s = 2` B-unit" — leg 3 scores all three), `EFF.T1.36` (check 2:
+"Exact coefficient equality, not merely factor pattern, must be scored" — legs 3–4 are
+coefficient equalities).
+
+**TEETH.** T1 §4.2 checks 2 and 5 + all four planted teeth (`EFF.T1.45`: gauge-naive,
+wrong-sign, misindexed telescope, inverse orientation — each would flip a value in legs
+2–4) → **executed Lean gate**; GC-11's `e > 1 ∧ f > 1` obligation.
+
+**ENVIRONMENT.** ENV-D5 (concrete; the `𝔽₄` carrier per the section ⚠).
+
+---
+
+### NODE D.66 [gate] [fresh]
+
+**STATEMENT.** *The `q = 3` gate — the X frame (`p = 3`, `e₁ = 2, f₁ = 1, h = 1`,
+`η = 2 ∈ 𝔽₃`, `u₂ = 3`) plus the T4 threshold table.* Executed checks (all over
+`ℤ`/`ZMod 3`, fully `decide`-friendly):
+
+1. **exponent tables:** `iexp 2 1` / `aexp 2 1` / `wrap 2 1` / `qexp 2 1` values on
+   `k = −2…6` (incl. the carry law `qexp (a+b) = qexp a + qexp b + wrap a b` on a grid —
+   D.15 executed);
+2. **the telescope vector** (`𝔽₃ = ZMod 3`): `(ϑ_{1,0},…,ϑ_{1,4}) = (1, 1, 2, 2, 1)`
+   (`2^{⌊s/2⌋} mod 3`), and the involution table `Θ_s·ϑ_s = 1` with `Θ = (1, 1, 2, 2, 1)`
+   (`2⁻¹ = 2` in `𝔽₃`) — D.10 executed;
+3. **the corrected/naive split** (the X frame's axis): D.28 clause 3's criterion fires —
+   at `s ≥ 2` slots with `c_t ≠ 0`, `c_t(ϑ − 1) ≠ 0` since `ϑ₂ = 2 ≠ 1` (`decide`);
+4. **the T4 threshold table:** `thresholdTheta 3 3 1 = (10, 7, 4)` on `j = 0,1,2` —
+   **FR-M3's committed thresholds `[10,7,4]`** — plus the separator arithmetic: self-shadow
+   pins `[12, 7, 4]` give `ν₀ = 12 > 10 = Θ₀` (untouched with slack, `ω₀ = 0` — the D.48
+   fence's separator) while `j = 1, 2` attain (`7 = Θ₁`, `4 = Θ₂`) — as `ℕ∞` facts
+   (`decide` on the underlying `ℕ` comparisons).
+
+**SIGNATURE.**
+```lean
+-- leanfinal/Uniformity/ChapD/D66.lean
+example : (List.range 5).map (fun s => (2 : ZMod 3) ^ (s * (iexp 2 1 3) / 2))
+    = [1, 1, 2, 2, 1] := by decide
+example : (List.range 3).map (thresholdTheta 3 3 1) = [10, 7, 4] := by decide
+-- + the carry-law grid, the involution table, the D.28-criterion instances
+```
+
+**DEPENDS.** D.10, D.13, D.14, D.15, D.18, D.28, D.45, D.48.
+
+**PROOF.** `decide` throughout (ℕ/ℤ/`ZMod 3`).
+
+**SIZE.** 45 lines.
+
+**SOURCE.** `EFF.T1.33` (frame X: "`p = 3, e₁ = 2, f₁ = 1, h = 1, η = 2, u₂ = 3`; corrected
+versus naive p-adic split"); `EFF.T4.20` (FR-M3: thresholds `[10,7,4]`, self-shadow pins
+`[12,7,4]`, `ω₀ = 0`, `ω₁, ω₂ ≠ 0` — the retained measured configuration this gate's leg 4
+anchors); `EFF.T4.11` (the separator's meaning).
+
+**TEETH.** GC-11's second prime (never `q = 2` alone); T1 wrong-sign/misindexed teeth at
+`q = 3`; T4 S8 PE1(2)'s slack check ("specifically inspect FR-M3's measured slack `[12,7,4]`
+against `[10,7,4]`") → **executed Lean gate**.
+
+**ENVIRONMENT.** ENV-D5.
+
+---
+
+### NODE D.67 [gate] [fresh]
+
+**STATEMENT.** *The FRAME-C regression (`p = 5`) — T3's declared battery frame, executed.*
+`EFF.T3.29`'s two port instances over `𝔽₅ = ZMod 5`, at the level-1 arena
+`e₁ = 2, h = 1, η = 2` (matching `res(x²/5) = 2`; `w = res(x/T) = 3`):
+
+1. **the BR leg (`q_BR = 1`):** the tables `U = (1, 3, 2, 1, 4)`, `ϑ = (1, 1, 2, 2, 4)`
+   on `s = 0…4`; the runner obligations **verified from the assembled definitions, never
+   from the endpoint formula** (`EFF.T3.29`'s own instruction "without defining `U(s)` from
+   the endpoint formula" — the §8.4(3) endpoint-as-input mutant's kill): `w^s = U(s)·ϑ_s`
+   and `U(s) = Θ_s·w^s` for all five `s` (`3^s` vs the products, `decide`);
+2. **the CMP leg (`q_CMP = 2`, `N̂(k) = x^k`, `H₀ = 6`, `D = 3`):** `χ(k) = 2^{⌊k/2⌋}`
+   (D.12's `chi` at the two exponent-pair sections, residue via D.17); **the non-character
+   check `χ(1)·χ(1) = 1 ≠ 2 = χ(2)`** (D.12's "no character law" fence, executed);
+   `δ = χ(2) = 2`, `χ(6) = 2³ = 3`; the comparison `ρ_t = 3·ρ̂_t·2^{−t}` and
+   `R(Z) = 3·R̂(Z/2)` in `𝔽₅[Z]` from D.40 at explicit `Acoef` data;
+3. **the coverage record carried:** FRAME-C has both axes live (`Θ ≠ 1` at `s ≥ 2`, `w =
+   3 ≠ 1`) but "its reference `T` is formal … This machine-coverage gap is not a proof gap"
+   — `(T3-JOINT-OPEN)` stays open (D.64's last row); this gate does NOT claim a realized
+   p-adic tower.
+
+**SIGNATURE.**
+```lean
+-- leanfinal/Uniformity/ChapD/D67.lean
+example : (List.range 5).map (fun s => ((3 : ZMod 5) ^ s, /- U·ϑ product -/ …))
+    = … := by decide
+example : ((2 : ZMod 5) ^ (1 / 2)) * ((2 : ZMod 5) ^ (1 / 2)) ≠ (2 : ZMod 5) ^ (2 / 2) := by
+  decide   -- χ(1)² ≠ χ(2): the character mutant dies here
+-- + the δ/χ(6) values and one explicit-coefficient (T3-CMP) instance
+```
+
+**DEPENDS.** D.08, D.10, D.12, D.17, D.38, D.39, D.40.
+
+**PROOF.** `decide` over `ZMod 5` + `Polynomial` coefficient extensionality on leg 2's
+explicit instance (small: `D = 3`).
+
+**SIZE.** 55 lines.
+
+**SOURCE.** `EFF.T3.29` (the whole frame, verbatim values), `EFF.T3.30` (`(T3-JOINT-OPEN)`).
+
+**TEETH.** T3 §8.4(1) (character mutant — leg 2's `≠`), §8.4(2)–(4) (theta-free /
+endpoint-as-input / inverse-orientation mutants — leg 1's two identities scored from
+assembled definitions) → **executed Lean gate**; this node is the chapter's FRAME-C
+executable-regression retention (GC-8: named `verification/chapD_frameC` at fleet close,
+§12).
+
+**ENVIRONMENT.** ENV-D5.
+
+---
+
+### NODE D.68 [gate] [fresh]
+
+**STATEMENT.** *The chapter-D census gate* (B.86/G.78/H.99 pattern). A file with no public
+declaration that (i) prints the axiom footprint of every capstone-facing chapter-D
+declaration — each must print exactly `[propext, Classical.choice, Quot.sound]`; (ii)
+re-executes the three gates' headline `decide` lines (the two telescope vectors, the
+threshold table, the non-character check) as regression anchors; (iii) asserts non-vacuity
+by `#check`ing the gate theorems and the six carrier definitions (D.44, D.55, D.59, D.60,
+D.62, D.63) at their stated types.
+
+**SIGNATURE.**
+```lean
+-- leanfinal/Uniformity/ChapD/D68.lean (no public declaration)
+import Uniformity.ChapD
+#print axioms Uniformity.Density.Gauge.NormSection.tau_cocycle            -- D.03
+#print axioms Uniformity.Density.Gauge.NormSection.thetaEl_mul_varthetaEl -- D.06
+#print axioms Uniformity.Density.Gauge.NormSection.tau_bracket_telescope  -- D.11
+#print axioms Uniformity.Density.Gauge.iexp_aexp_spec                     -- D.13
+#print axioms Uniformity.Density.Gauge.qexp_add                           -- D.15
+#print axioms Uniformity.Density.Gauge.levelOneArena_vartheta             -- D.18
+#print axioms Uniformity.Density.Gauge.c4_origin                          -- D.22
+#print axioms Uniformity.Density.Gauge.liftC6_spec                        -- D.25
+#print axioms Uniformity.Density.Gauge.gammaCoord_liftC6                  -- D.26
+#print axioms Uniformity.Density.Gauge.qexp_binary_carry                  -- D.27
+#print axioms Uniformity.Density.Gauge.ReadBundle.blaw                    -- D.32
+#print axioms Uniformity.Density.Gauge.ReadBundle.canonical_coeff         -- D.33
+#print axioms Uniformity.Density.Gauge.wtwist_monic                       -- D.34
+#print axioms Uniformity.Density.Gauge.BoundaryReadPort.t3_br             -- D.38
+#print axioms Uniformity.Density.Gauge.gentowW_of_ports                   -- D.44
+#print axioms Uniformity.Density.Gauge.CertFrame.touched_iff_nu_eq        -- D.49
+#print axioms Uniformity.Density.Gauge.CertFrame.perturb_stable           -- D.50
+#print axioms Uniformity.Density.Gauge.gentowW_realized                   -- D.58
+-- (ii) regression anchors: the four headline decide lines of D.65–D.67, re-executed
+-- (iii) #check the gate theorems + the six carriers at their stated types
+```
+
+**DEPENDS.** every node named above (imports the roll-up).
+
+**PROOF.** none (a census). **TEST:** compiles; every `#print axioms` line prints exactly
+Lean core; every `decide` anchor evaluates; `native_decide` anywhere in chapter D is a
+**stop-the-line** event (repo policy; the H.99 precedent).
+
+**SIZE.** 55 lines.
+
+**SOURCE.** repo policy (`CLAUDE.md` axiom census discipline); GC-6.6's gate order (this
+block is step (c), executed at the leanspec stub stage before the `axiom` stubs are
+signed); GC-11.
+
+**TEETH.** this gate IS the chapter's teeth roll-up; §12's disposition table is its index.
+
+**ENVIRONMENT.** the census imports the roll-up; no `variable`s.
+
+---
+<!-- RESUME: §10 COMPLETE (D.65–D.68). 68 nodes total. Next = closing sections: §11 DAG additions (generate spec/DAG_BLUEPRINT_D.tsv), §12 leanspec stubs, §13 TEETH, §14 cross-read queue, + A-1 index renumber amendment -->
 
 <!-- CHAP-D APPEND POINT — do not remove; sections are appended here in order -->
