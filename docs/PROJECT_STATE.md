@@ -4973,7 +4973,50 @@ already seen plus WELD-ZERO's eventual removal decision; gate-(b)
 = the three-node cite package (assembled after C.92-vs-C.66
 consolidation). OWED elsewhere: codex cross-reads of ALL EIGHT
 chapters (Tue window); leanspec stubs for E/C/D/F/I; the late-
-binding L-1..L-3 rows at D/F freeze; the n=3 rate unit (O-5).** — THE BLUEPRINT-COMPLETION CAMPAIGN
+binding L-1..L-3 rows at D/F freeze; the n=3 rate unit (O-5).**
+
+**2026-08-15 DATED APPEND #63 — CHAPTER H IS COMPLETE IN `leanfinal`:
+THE GENERAL-INDUCTION MACHINE IS MACHINE-CHECKED (99/99 nodes,
+Lean-core only), INCLUDING THE TWICE-REFUTED RATE RECURSION.**
+Commit 891766b9; build 8,828 jobs green; strict multiline axiom
+sweep: every ChapH declaration ⊆ Lean core. The chapter delivers,
+as THEOREMS over any complete DVR with finite residue field: the
+genre schema + finiteness; the two-species rate calculus — the
+m=2 drainage chain closed form `u(M) = Q^(M−1) + ⌊(M−1)/2⌋(Q−1)
+Q^(M−2)` (H.26) and its (A2-RATE) ground instance (H.28), and the
+α-species closure `rate_close` at its A-H.2 form; the slot/lift
+layer; the σ dictionaries (values classical, degree projections
+executable — gate finding F1); the n=4 template; and THE ASSEMBLY
+(H.98): `drainage_of_package : (∀n, InductionPackage n) → ∀n,
+DrainageAt n` and `uniformity_of_package : UniformityStatementDecided
+→ (∀n, InductionPackage n) → UniformityStatement`, with
+`package_two` UNCONDITIONAL from chapter G and
+`package_three_of_rate` carrying the n=3 rate as its explicit
+hypothesis. HONESTY FENCE (unchanged from the blueprint): H.98 is
+GENIND.B's Step 5 ONLY — the inductive step P(<n)⟹P(n) is NOT
+claimed by any node; the geometric layer rides the (CS-*)
+interface fields per the three-layer architecture; so chapter H =
+the abstract induction machine, awaiting packages from B/C/E.
+**THE A-H.2 STORY (for the methods section):** rate_close was
+refuted by the stub-gate arm (29,418 counterexamples), its FIRST
+proposed repair (m ≤ c) was itself refuted at the boundary c = m
+by the adjudication unit, which then found the true defect — a
+conflation of the normalized α-discount slope m(m+1)/2 with the
+recomposed clusterC slope m(m−1)/2 — restored EFF.GENIND.09's
+window condition, added `hmc : m < c` (⟺ m ≥ 2 = GENIND.A's exact
+scope, tight at m=2), re-derived the proof (base case via
+H.22(ii)'s empty α-range), certified 32 instantiation cells in
+exact rationals, and the fleet then PROVED it (c854dfbb). The
+corpus audit had called this step "compressed, not a gap" — it
+was a statement-level gap only visible under forced formalization.
+Day's refutation ledger: SEVEN false/unsatisfiable signed
+statements caught pre-proof (G.44a, B-D5-near-miss, H.72, H.89,
+B.47, B.24b, rate_close-repair-1), all repaired from sources.
+CHAPTER B: 44/86 base nodes landed, wave 7 (B.28 resCoeff et al.)
+in flight. Leanspec: ChapH retirement diff (stage 0e close, the
+G precedent) launched. Commit-race artifacts recorded: H55.lean
+attributed to B.17's commit; H.69's commit carries a 4-line B10
+tidy — content verified correct in both cases, history untouched. — THE BLUEPRINT-COMPLETION CAMPAIGN
 FIRES (conventions czar → adversarial gate → parallel authors), AND
 THE OWNER NARROWS SIGN-OFF TO TWO GATES.** (1) OWNER RULING (Asvin,
 recorded verbatim in CONVENTIONS_2026-08-15.md PART V, which now
