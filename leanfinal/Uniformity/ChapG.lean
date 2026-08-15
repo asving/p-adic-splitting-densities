@@ -3,16 +3,25 @@ Copyright (c) 2026 Asvin G. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
-import Uniformity.ChapG.G27
-import Uniformity.ChapG.G26
-import Uniformity.ChapG.G21
-import Uniformity.ChapG.G14
-import Uniformity.ChapG.G12
-import Uniformity.ChapG.G10
-import Uniformity.ChapG.G09
-import Uniformity.ChapG.G05
-import Uniformity.ChapG.G03
 import Uniformity.ChapG.G01
+import Uniformity.ChapG.G03
+import Uniformity.ChapG.G05
+import Uniformity.ChapG.G09
+import Uniformity.ChapG.G10
+import Uniformity.ChapG.G12
+import Uniformity.ChapG.G14
+import Uniformity.ChapG.G21
+import Uniformity.ChapG.G26
+import Uniformity.ChapG.G27
+import Uniformity.ChapG.G32
+import Uniformity.ChapG.G33
+import Uniformity.ChapG.G38
+import Uniformity.ChapG.G45
+import Uniformity.ChapG.G50
+import Uniformity.ChapG.G52
+import Uniformity.ChapG.G62
+import Uniformity.ChapG.G64
+import Uniformity.ChapG.G73
 
 /-!
 # Uniformity.ChapG — chapter G roll-up (BASE CASES AND MENUS)
