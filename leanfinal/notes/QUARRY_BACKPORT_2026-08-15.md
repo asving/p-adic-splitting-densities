@@ -98,6 +98,30 @@ Re-attempt this only after a mathlib bump past FLT's pin, at which point the fou
 declarations arrive for free and the backport collapses to header surgery. **That, not the
 étale induction, is the cheap path.** Recorded so the next agent does not re-audit.
 
+### CROSS-REPO FINDING — the §2.3 bottleneck is currently a signed-off AXIOM in `lean/`
+
+Not in the survey, found while confirming the other repo's baseline. `lean/LeanUrat/SerreLocalFields.lean`
+declares
+
+```lean
+axiom AX_integralClosure_dvr (p : ℕ) [Fact p.Prime]
+    (L : Type) [Field L] [Algebra ℚ_[p] L] [FiniteDimensional ℚ_[p] L]
+    [Algebra ℤ_[p] L] [IsScalarTower ℤ_[p] ℚ_[p] L] :
+    IsDiscreteValuationRing (integralClosure ℤ_[p] L)
+```
+
+— Serre, *Local Fields* Ch. II §2 Prop. 3, DVR clause, at the concrete instance `(ℤ_[p], ℚ_[p])`.
+Declared 2026-07-31, Codex statement audit PASSED, entry `AX-SERRE-DVR` in
+`docs/AXIOM_FAITHFULNESS.md:299`, consumers landed (`MovesU/BridgeE567_zfLaws`, `BridgeE9_zpBridge`).
+Its downstream in that repo: `integralClosure_isLocalRing`, `isLocalRing_integralClosure_adjoinRoot`
+(and `maximalIdeal_liesOver`, which is derived axiom-free).
+
+**So §2.3 is not merely a chapter obligation — it is a live axiom, and shortlist #2 is its retirement
+route.** That reframes the value of the item: it is not only "unlocks `(FUND)`, GENHN E3, GENH4,
+NS-14, HYP.01's classical half", it is "removes a declared axiom from the trusted base". Worth
+saying in any progress report. (The axiom is correctly quarantined off the density capstones —
+`OM.RealInstanceV2.montes_unconditional` still prints Lean core only, re-confirmed today.)
+
 ### The substitute: RESULTS_TARGET2_PLACEHOLDER
 
 ---
