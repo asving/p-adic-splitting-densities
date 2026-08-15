@@ -4801,7 +4801,377 @@ boxes-note's 0/2 — the Lean proof discharges that grade residue for the IF dir
 
 ## 10. §10 — THE GENTOW2 SUPPLY LAYER
 
-<!-- §10 nodes: C.97–C.106 -->
+> **Design note (how the FGMN side types).** GENTOW2's lemmas B/B′/B″ are statements about
+> the FGMN residual operators `R_{i,β}` applied to repo objects. Those operators exist in
+> Lean ONLY through the gate-(b) import. **Packaging refinement of C.92 (recorded as
+> A-§10 delta):** the import lands as a STRUCTURE `FGMNCalculus` — one field per cited
+> clause (`[Q1]`…`[Q10]`, Prop 1.15, Def 1.8's expansion-minimum, Cor 4.4, Thm 4.8,
+> Lemma 3.17, Prop 1.9, Def 3.12's `γ_i`-letters) at exactly the consumed generality —
+> plus ONE signed axiom `fgmn_calculus_exists` (the cite; faithfulness entry itemized per
+> field). B′/B″/B then become genuine LEAN THEOREMS over `[FGMNCalculus]`: their proofs
+> are the corpus's own four-step derivations, consuming the fields by cited name, with the
+> repo-side legs (digit reads, γ-calculus, ladder monomials) supplied by §§3–6. The
+> `#print axioms` footprint of every §10 theorem shows exactly the one cite — the honest
+> conditionality carrier. Terminal supply: C.99 (B″) and C.100 (B′) are what chapters D
+> and F route to via GC-13; C.97 is D's T1-battery-check-10 witness; the ϑ-orientation
+> stays D's (GC-14 — the full four-way table lives at `EFF.GENTOW2.25`'s orientation
+> record and is D's to author; every node below states ratios, never bare ϑ).
+
+### NODE C.97 [def+lemma] [fresh] — **TERMINAL SUPPLY: THE S2 TOWER WITNESS**
+
+**STATEMENT.** *The concrete third-stage tower (D's T1 battery check 10 instantiates
+this).* Over `O = ℤ₂`-class data (`residueCard = 2`): the genre `(2,1,4) → (2,1,2)` third
+stage — `Φ′ = x² − 2` (frame `(e₁,f₁,h) = (2,1,1)`), `Φ₂ = Φ′² − 4x` (`u₂ = 5`),
+`Φ₃ = Φ₂² − 16Φ′` (`u₃ = 21`), `ψ₃^{repo} = T − 1` — as a concrete `DeepTower` instance,
+with the audited numeral identities as `#eval`-checkable lemmas: `u₃ = e₃·κ₃`-cleared
+(`2·21/2 = 21`), `dv₂(Φ₂^{e₃})`-value `= 21 = u₃` (T1's r12 terminal-binding identity),
+the ladder values `[4, 10, 21]` for `(x, Φ′, Φ₂)`, `n̂₂(21) = 16Φ′`, and the floor chain
+`5 > 2·2·1`, `21 > 2·10`.
+
+**SIGNATURE** (shape). `def s2Witness : DeepTower …` + `theorem s2Witness_values …` (the
+`#eval` block per GC-11's executed-gate discipline — this node's values ARE gate data and
+re-fire in §13).
+
+**DEPENDS.** C.83 · C.42/C.43 (the depth-2 sub-instance).
+
+**PROOF.** `decide`/`norm_num`-grade computation.
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.GENTOW2.05` (the dictionary's witness column, with the compile-time audit
+table — four independent occurrences of `u₃ = 21`, zero disagreements); `EFF.GENTOW5.21`
+(the deeper chain `u = 5, 21, 85, 341` — extended witness for C.83).
+
+**TEETH.** P-W1/P-N1/P-N2 + T1 battery check 10 (the consumer this supplies) →
+**executable regression** + §13 rows (the witness is `q = 2`; §13 pairs it with FAM-D's
+`q = 3` tower).
+
+**ENVIRONMENT.** ENV-C3 (concrete).
+
+---
+
+### NODE C.98 [lemma] [fresh]
+
+**STATEMENT.** *The normalization shear, repo side (dictionary faithfulness, cleared).*
+The affine pin-cloud map `(j, y) ↦ (j, y + j·w₂·e(µ₁))`-cleared (the corpus's
+`(j, y) ↦ (j, y/e(µ₁) + jw₂)` multiplied through by `e(µ₁)`) is a bijection on height
+data that sends lines to lines and preserves on/above; consequently one-sidedness of the
+repo `dv₁`-pin cloud at cleared slope `κ₂` is EQUIVALENT to one-sidedness of the sheared
+cloud at the corresponding cleared slope — a pure statement about `ℕ`-linear argmin data
+(both sides in C's own carriers; the FGMN-side gloss "the sheared cloud IS `N₂(Φ₃)`" is
+C.92-interface documentation, cited not proved). Witness: `κ₂ = 5/2 ↔ λ₂ = 1/4`, pins
+`(4,0),(2,7),(0,10) ↦ (4,4),(2,11/2),(0,5)`-cleared.
+
+**SIGNATURE** (shape). `theorem shear_onesided_iff …` (over abstract height functions
+`ℕ → ℕ∞`, ENV-C5-style — reusable for every dictionary row).
+
+**DEPENDS.** C.06/C.07 (the argmin carriers).
+
+**PROOF.** the affine map preserves the argmin comparisons termwise; `omega` after
+clearing.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.GENTOW2.06` (verbatim, incl. the exact witness audit and the FGMN
+Lemma 2.4 gloss — the gloss stays a docstring cite).
+
+**TEETH.** P-W1/W2/N1/N2 + TOOTH T1 (floor-breaching recipe comes back not-one-sided) →
+retained.
+
+**ENVIRONMENT.** ENV-C5.
+
+---
+
+### NODE C.99 [theorem] [fresh] — **TERMINAL SUPPLY: `LEMMA GENTOW2-B″`** (over `[FGMNCalculus]`)
+
+**STATEMENT.** *The single-`w` slot law.* For each slot `t < f₃`, with
+`w := u(κ̄) = R_{3,κ̄}(n̂₂(u₃))`:
+
+```
+(6)   u(β_t) = ϑ(t) · w^{f₃−t},
+```
+
+where `ϑ(t)` is the repo-derivable `n̂₂`-cocycle ratio (grade-determined, `x₀`-free, a
+`z₁^j z₂^k` letter monomial — C.99's companion is the **γ-calculus**: the value-0 Laurent
+monomials in `π, x, Φ′` form exactly `⟨γ₁, γ₂⟩`, so `ϑ(t) = z₁^j z₂^k` with
+`ϑ(f₃−1) = 1`). Consequently the (B-law) sum reads
+`R_{3,α}(Φ₃) = w^{f₃}·P(y/w)` with `P(y) := y^{f₃} − Σ ϑ(t)c_t y^t` — the realized
+residual is the `w`-conjugate of the multiplicative-convention polynomial, with `P`'s
+irreducible-factor pattern for EVERY value of `w`. **Dual-cite:** consumers may cite this
+node or chapter D's `(ABS-G2)` (the T3 absorption — `EFF.GENTOW2.92`); the orchestrator
+keeps ONE of the two as the Lean home at freeze (this chapter claims it; D's brief cites
+it via GC-13, so the expected resolution is: home HERE, D cites).
+
+**SIGNATURE** (shape). `theorem gentow2_Bpp [FGMNCalculus …] …` + companion
+`theorem theta_letter_valued …` (the γ-calculus, whose `res(γ₂(x₀)) = z₂` leg uses the
+C-m1 denominator-clearing mechanism — implemented via `digAt`-style clearing as in C.21,
+no fraction field).
+
+**DEPENDS.** C.83/C.84 (ladder monomials) · C.92 (the interface: Cor 4.7(1)/(2),
+Thm 4.8 + Prop 1.15, Def 1.8, Lemma 3.17, Prop 1.9, Cor 4.4, eq (14)/[Q7]) · C.21/C.28
+(the repo-side reads and cocycle arithmetic) · C.100 (B′(3), consumed at step (iv)).
+
+**PROOF (route).** the corpus's four steps, verbatim: (i) peel `G := ẑ·N^d` through
+Cor 4.7(2) — `R = ϑ(t)·w^d`, a `y`-degree-0 scalar; (ii) the Φ₂-adic expansion + Def 1.8's
+minimum + Cor 4.7(1); (iii) `j ≥ 1` terms die (Lemma 3.17 / the `e₃ ∤ j` grade argument /
+eq (14) placing them at `y`-degree ≥ 1); (iv) the `j = 0` term:
+`digit(G) = ϑ(t)·ϑ(t)^{−1} = 1`, then B′(3). The `digit(G)`-at-`deg ≥ m₃` fence (R3-2):
+`digit` is applied to `Q₀` (in scope), never to `G` — the statement's reads respect
+`.33`'s scope fence by construction.
+
+**SIZE.** 44 lines. **Split candidate:** the γ-calculus companion.
+
+**SOURCE.** `EFF.GENTOW2.43` (verbatim display + the EXACT `w^{f₃}P(y/w)` audit; the
+byte-pin table — the corpus's most-pinned display); `.44` (the proof); `.41`/.42 (the
+cocycle setting + γ-calculus); `.69` (C-m1); `.87` (R3-2's fence); `.92` ((ABS-G2)
+dual-cite).
+
+**TEETH.** decode MULT/COC/MP pins + PE5's γ₂-live fresh route (GREEN 91/0, first
+`e₃ = 2 ×` cocycle-live frame) → **executable regressions** retained; §13 fires one
+letter-live row (the corpus's letter-live frames are `q = 3`-family; the `q = 2` twin is
+letter-dead — the gate documents the coincidence per C-H12 and fires the VALUES at both).
+
+**ENVIRONMENT.** ENV-C3 + `[FGMNCalculus]`.
+
+---
+
+### NODE C.100 [theorem] [fresh] — **TERMINAL SUPPLY: `LEMMA GENTOW2-B′`** (over `[FGMNCalculus]`)
+
+**STATEMENT.** *The per-grade unit law.* There is a unit `u(β) ∈ K₂^×` depending only on
+the grade `β` — namely `u(β) := R_{3,β}(n̂₂(β̂))` — such that for each `Φ₂`-free `g` of
+exact grade `β` (`deg g < m₃`):
+
+```
+(3)   R_{3,β}(g) = u(β) · digit(g).
+```
+
+**Direction (3) reads `FGMN = u · repo` and NOT the inverse** (the r2-F3 finding exists
+because a fallback clause once wrote the inverse — GC-14's B-law-direction row; the
+docstring carries the orientation record verbatim). Clause (5): with arbitrary `u`, the
+B-sum gives `R_{3,α}(Φ₃) = y^{f₃} − Σ u(β_t)c_t y^t`. Clause (4) — the per-grade
+equivalence `(repo read = ε₂-normalized coordinate) ⟺ u(β) = 1` — is transcribed with its
+FULL honesty stack: its consumed form `u(β_t) = 1` is machine-REFUTED at letter-live
+grades (PE4 LD2), and its SOLE surviving consumer is C.101's per-height-iff sentence (the
+PE6 FOLD's unified consumption list: **the true consumption is B′(3) + B″**).
+
+**SIGNATURE** (shape). `theorem gentow2_Bp [FGMNCalculus …] …` (clauses (3)/(5); clause
+(4) as a separate companion with the refutation recorded in its docstring); the two reads
+(`(R-FGMN)`/`(R-repo)`) as companion defs against the interface + C's `digit` (the
+`twistRead`-family read at the ladder normalizer — C.104's convention layer).
+
+**DEPENDS.** C.83/C.84 · C.92 (Cor 4.4(1), Thm 4.8 + Prop 1.15, Def 3.16, Cor 4.7) ·
+C.21 (the digit read) · C.104 (the two-reads convention).
+
+**PROOF (route).** `EFF.GENTOW2.35`: `u(β) ≠ 0` by the single-pin polygon + Cor 4.4(1);
+the REPAIRED h-step (divide the lift product by `Φ₂` — the pre-repair step applied B-1
+outside its `deg < D₂` scope, DEAD); the grade-0 lift via T(b)′(iii)'s repo supply
+(H.54-family lifts at grade 0).
+
+**SIZE.** 40 lines.
+
+**SOURCE.** `EFF.GENTOW2.34` (verbatim, incl. the ORIENTATION RECORD and the [r2]/[r3]
+in-place brackets); `.35` (the repaired proof); `.36` (the worked N1 trace — §13 value);
+`.28` (the (B-2) REFUTATION — the honesty box: the consumed `u(β_t) = 1` form is DEAD);
+`.76`/.81 (the m1-CURE/PE6-FOLD consumption unification, TERMINAL).
+
+**TEETH.** PE4 LD2 (the refutation tooth) + the N1 worked trace + decode pins →
+retained; §13 fires the N1 values.
+
+**ENVIRONMENT.** ENV-C3 + `[FGMNCalculus]`.
+
+---
+
+### NODE C.101 [theorem] [fresh] (over `[FGMNCalculus]`)
+
+**STATEMENT.** *`LEMMA GENTOW2-B` (r3 RESTATED — the B-law and the multiplicative
+prescription).* With the recipe data (lifts `k̂_t` at `dv₂`-heights `u₃(f₃−t)`, digits
+`c_t ∈ K₂`, `c₀ ≠ 0`, pins on the slope-`κ₃` line, **`κ₃ > e₂f₂u₂` an EXPLICIT
+HYPOTHESIS** — supplied at tower leaves by C.55, cited AS a hypothesis here exactly as
+the corpus routes it): `Φ₃ := Φ₂^{e₃f₃} − Σ k̂_t Φ₂^{e₃t}` satisfies
+
+```
+(B-law)   R_ν(Φ₃) = y^{f₃} − Σ_{t<f₃} u(β_t)·c_t·y^t,   u(β_t) = ϑ(t)·w^{f₃−t};
+```
+
+the multiplicative prescription `c_t := ϑ(t)^{−1}·a_t` realizes `R_ν(Φ₃) = ψ₃^{(w)}`
+(admissible for every `w`); the unadjusted per-height prescription realizes `ψ₃` itself
+iff `u(β_t) = 1` at each used slot — holding at letter-dead slots, failing at letter-live
+LD2. The pre-r3 conclusion (`R_ν(Φ₃) = ψ₃` per-height) is DEAD.
+
+**SIGNATURE** (shape). `theorem gentow2_B [FGMNCalculus …] …`.
+
+**DEPENDS.** C.55 (the hypothesis supplier at leaves) · C.92 · C.99 · C.100 · C.84 (the
+lifts).
+
+**PROOF.** B′(5)'s sum + B″'s (6) + the substitution audit (`w^{f₃}ψ₃(y/w)` exact); the
+R3-3-completed `α := e₃f₃(w₃ + λ₃)` display opens the proof.
+
+**SIZE.** 36 lines.
+
+**SOURCE.** `EFF.GENTOW2.25` (the r3-RESTATED statement, verbatim — SUPERSESSION:
+replacement; the pre-r3 display DEAD; **the ϑ ORIENTATION RECORD in that unit is the
+D-table's source text (GC-14) — cited by anchor, not restated here**); `.26` (proof);
+`.88` (R3-3).
+
+**TEETH.** PE4 LD2 + PE5 GREEN 91/0 + the byte-pinned statement ledger rows → retained;
+§13 fires the witness prescription at `q = 2` (letter-dead: on-the-nose) AND `q = 3`
+(letter-live: twisted) — the pair EXHIBITS the ψ vs ψ^{(w)} divergence, GC-11's
+coincidence-regime discipline at its sharpest.
+
+**ENVIRONMENT.** ENV-C3 + `[FGMNCalculus]`.
+
+---
+
+### NODE C.102 [lemma] [fresh]
+
+**STATEMENT.** *The letter formula and its species.* `z₂ = η₂ · z₁^{−⌊ℓ₁u₂/e₁⌋}` under
+the canonical evaluation identification — the FGMN letter is the repo letter times a
+`z₁`-power; on the nose exactly when `z₁^{⌊ℓ₁u₂/e₁⌋} = 1` (e.g. `f₁ = 1` over `q = 2` —
+the C-H12 coincidence made a THEOREM: the letter-dead perimeter is characterized). Its
+three consequences (`EFF.GENTOW2.39`) transcribed as companions, including the species of
+the `i = 1` cross-frame unit (C.89(ii)'s supplier: the `u1` shape is a fixed
+`z₁`-letter-power).
+
+**SIGNATURE** (shape). `theorem letter_formula [FGMNCalculus …] …` (the identification
+side needs the interface's Prop 1.15/Def 3.12 fields; the repo side is C.19/C.44's
+letters).
+
+**DEPENDS.** C.19 · C.44 · C.92 · C.99's γ-calculus companion.
+
+**PROOF (route).** `EFF.GENTOW2.38`'s derivation through the γ-calculus.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.GENTOW2.37`/.38 (statement + proof); `.39` (the three consequences);
+`.05`'s ψ₂-row (the twist-aware identification this formula quantifies).
+
+**TEETH.** LP1 (the letter-live probe: "the TOOTH fired: `η₂ ≠ z₂`") → retained — it
+guards against the pre-repair `(η₂ ↔ z₂)` conflation, which is DEAD.
+
+**ENVIRONMENT.** ENV-C3 + `[FGMNCalculus]`.
+
+---
+
+### NODE C.103 [theorem] [fresh] (over `[FGMNCalculus]`)
+
+**STATEMENT.** *THEOREM GENTOW2-A: the depth-3 key certificate (the `i = 2` instance of
+C.90, concrete-witness-grade).* At the S2 recipe data with an admissible target: `Φ₃` is a
+key/prime polynomial for `ν = µ₃` with residual `ψ₃^{(w)}`, NOT `ν`-equivalent to `Φ₂` —
+the certificate run: additivity + eq (14) give the residual; degree-forcing [Q6] +
+Lemma 5.3(2) [Q4] give `KP(ν)`-membership; Lemma 1.11 [Q1] + Cor 1.13 [Q2] give prime;
+`R(Φ₃) ≠ 1 = R(Φ₂)` gives non-equivalence. (The `[Q10]`-scope (H-b) chain clause is
+STRUCK — TOWERRAT-R3-1; the proof consumes Cor 6.4 only at its displayed quantifier.)
+
+**SIGNATURE** (shape). `theorem gentow2_A [FGMNCalculus …] …`.
+
+**DEPENDS.** C.92 · C.97 · C.99 · C.100 · C.101.
+
+**PROOF (route).** `EFF.GENTOW2.21`–`.23`'s certificate run, by cited field names.
+
+**SIZE.** 34 lines.
+
+**SOURCE.** `EFF.GENTOW2.20` (the theorem); `.21`–`.23` (proofs); `.86` (R3-1's STRUCK
+scope clause — the (H-b) chain sentence is DEAD and this node must not consume
+`ν`-optimality); `.24` (the consumption note).
+
+**TEETH.** the sealed battery + PE5/PE6 routes → retained; C.90's `i = 2` regime cites
+this node as its concrete anchor.
+
+**ENVIRONMENT.** ENV-C3 + `[FGMNCalculus]`.
+
+---
+
+### NODE C.104 [def] [fresh]
+
+**STATEMENT.** *The two-reads convention and the `ψ₂`-discipline.* (i) `(R-repo)`:
+`digit g := ` C's coherent read of a `Φ₂`-free `g` at its exact grade — the
+`twistRead`-family read against the ladder normalizer (C.21/C.22 at the `n̂₂`-basis),
+valued in the CONCRETE `K₂` (C.12); `(R-FGMN)`: the interface's `ε₂`-normalized
+coordinate (C.92 field). Both defined ONLY on `Φ₂`-free `g`, `deg g < m₃`, exact grade —
+the scope fence R3-2 re-invokes (transcribed as the defs' hypothesis). (ii) The
+**`ψ₂`-discipline (R3-4, standing)**: every statement in this chapter writes `ψ₂repo`
+(minpoly of the repo letter `η₂` — C.42's `ψ₂` field) or `ψ₂FGMN` (the interface's
+`R₂(φ₃)` — minpoly of `z₂`); the two are equal exactly up to C.102's letter twist; NO
+bare `ψ₂` token appears in any C signature (a stub carrying one is a defect).
+
+**SIGNATURE** (shape). `def repoRead …` + the naming convention as enforced docstrings
+(the convention itself is a blueprint-level rule; the Lean artifact is the pair of
+distinctly-named carriers, which makes the conflation unwritable).
+
+**DEPENDS.** C.12 · C.21/C.22 · C.42 · C.92 · C.102.
+
+**PROOF.** definitional.
+
+**SIZE.** 18 lines.
+
+**SOURCE.** `EFF.GENTOW2.33` (the two reads, with the r2-F1 canonical-evaluation repair —
+the `(η₂ ↔ z₂)` parenthetical DEAD); `.89` (R3-4's disambiguation line, verbatim).
+
+**TEETH.** LP1 (guards the conflation) → retained.
+
+**ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.105 [lemma] [fresh]
+
+**STATEMENT.** *w-blindness (the invariance that makes the uncomputed `w`
+consumer-invisible).* For a unit `w ∈ K₂^×` and monic `P ∈ K₂[y]`: the `w`-conjugate
+`P^{(w)} := w^{deg P}·P(y/w)` is monic with `P^{(w)}(0) = w^{deg}P(0)`; it is irreducible
+iff `P` is; its irreducible-factor DEGREE pattern equals `P`'s; and the induced
+factor-type data (the σ-relevant reads: degrees, multiplicities, separability) are
+invariant. Consequently every §9/§10 consumer that reads σ, values, degrees,
+irreducibility or repo-side residue classes through a `ψ^{(w)}`-form is `w`-independent —
+the corpus's "w-blind" claim as ONE lemma, consumed wherever C.90/C.101 say "w-blind".
+The `w`-DISCLOSURE is carried as the docstring: `w` is measured ≠ 1 at 6 primes / 4
+frames and `u₃`-dependent (PE6), its closed form OPEN — no node computes it, and this
+lemma is why none needs to.
+
+**SIGNATURE** (shape). `theorem wconj_invariants {K : Type*} [Field K] …` (ENV-C4
+abstract — reusable at every level's residue field).
+
+**DEPENDS.** none beyond mathlib (`Polynomial.scaleRoots`-family; landed
+`irreducible_scaleRoots_iff`, `typeOf_scale`-shapes at the residue level).
+
+**PROOF.** the substitution `y ↦ wy` is a `K`-algebra automorphism of `K[y]` composed
+with unit scaling; every listed invariant transports.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.GENTOW2.25`'s w-clauses + `.82`/.83 (the w-disclosure brackets + the
+honest scope note: "measured at 4 frames … does not decide `w_i` at unmeasured frames or
+levels `i > 2`"); `EFF.GENTOW5.27`'s w-blindness list.
+
+**TEETH.** the PE6 w-measurement rows → retained (they guard the DISCLOSURE, not the
+lemma); the lemma itself is fully proved.
+
+**ENVIRONMENT.** ENV-C4.
+
+---
+
+### NODE C.106 [lemma] [fresh] — **the §10 supply manifest**
+
+**STATEMENT.** *What chapters D and F consume from here, as one documented `#check`
+block.* The manifest node (CHAP-G G.30 / C.93 pattern): `B″ = C.99`; `B′ = C.100`
+(direction (3), never inverted); `B-law + prescription = C.101`; the S2 witness = C.97;
+the shear = C.98; the letter formula = C.102; the certificate = C.103; the reads/naming
+= C.104; w-blindness = C.105; the ϑ four-way orientation = **chapter D's table (GC-14),
+sourced at `EFF.GENTOW2.25`'s orientation record** — this chapter cites the anchor and
+supplies the RATIO-form statements only. Rows 23–24 of GENTOW2's S6.1 are DESCRIPTIVE
+(HYP.66/HYP.145's gate) and have NO node — recorded here so no consumer invents one.
+
+**SIGNATURE.** documentation node (`#check` suite; no new Prop).
+
+**DEPENDS.** C.97–C.105.
+
+**PROOF.** mechanical. **SIZE.** 14 lines.
+
+**SOURCE.** `EFF.GENTOW2.52` (the consumed-statement inventory); `.78` (rows 23–24
+DESCRIPTIVE, verbatim gate); PA-3(i) (the czar assignment this section discharges).
+
+**TEETH.** none (manifest). **ENVIRONMENT.** ENV-C1.
+
+---
 
 ---
 
