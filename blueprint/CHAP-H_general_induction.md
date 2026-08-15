@@ -797,7 +797,7 @@ def genreE2 (t : ℕ) : GenreDatum where
   hh := by omega
   hkey := by omega
   hmul := le_refl 2
-  hcop := by simpa using Nat.coprime_two_right_iff_odd.2 ⟨t, by ring⟩
+  hcop := Nat.coprime_two_right.2 ⟨t, rfl⟩  -- [repaired: A-H.1/D3]
 
 theorem genreE2_injective : Function.Injective genreE2
 
@@ -813,7 +813,10 @@ theorem infinite_genreDatum_of_schema :
    `congrArg GenreDatum.h`.)
 2. `infinite_genreDatum_of_schema`: `Set.infinite_of_injective_forall_mem genreE2_injective`, the
    membership being four `rfl`s.
-3. the `hcop` field: `Nat.Coprime (2*t+1) 2` ⟺ `2*t+1` is odd; `Nat.coprime_two_right_iff_odd`.
+3. the `hcop` field: `Nat.Coprime (2*t+1) 2` ⟺ `2*t+1` is odd. [repaired: A-H.1/D3] The lemma at
+   the pin (`v4.31.0`) is `Nat.coprime_two_right : n.Coprime 2 ↔ Odd n`
+   (`Mathlib/Data/Nat/Prime/Basic.lean:148`); the committed name `Nat.coprime_two_right_iff_odd`
+   does not exist there (stale-mathlib-name). The cured field elaborates at the gate as displayed.
 
 **SIZE.** 20 lines.
 
@@ -1457,13 +1460,15 @@ def alphaBracket (Q c : ℕ) : ℕ → ℕ
   | 0 => 1
   | (μ + 1) => ∑ k ∈ Finset.range (μ + 1),
       (Q - 1) * Q ^ (c * (k + 1)) * alphaBracket Q c (μ - k)
+  decreasing_by omega
 ```
 
 **DEPENDS.** none.
 
-**PROOF.** definitional. **Termination:** the recursive call is at `μ - k ≤ μ < μ + 1`; supply
-`decreasing_by omega` (or restructure with `Nat.rec` on the strong-recursion principle
-`Nat.strongRecOn` if the equation compiler balks on the `Finset.sum` binder).
+**PROOF.** definitional. **Termination [repaired: A-H.1/D2]:** the recursive call is at
+`μ - k ≤ μ < μ + 1`, unconditionally true, but the equation compiler does not find it by itself —
+the `decreasing_by omega` line is part of the body (the committed display omitted it and did not
+elaborate). Fallback if the `Finset.sum` binder still balks: restructure on `Nat.strongRecOn`.
 
 **SIZE.** 10 lines.
 
@@ -1757,13 +1762,19 @@ def uTwo (Q : ℕ) : ℕ → ℕ
   | 0 => 1
   | 1 => 1
   | (N + 2) => Q ^ (N + 1) +
-      ∑ k ∈ Finset.range (N + 2), if 1 ≤ k ∧ 2 * k ≤ N + 1 then (Q - 1) * Q ^ k * uTwo Q (N + 2 - 2 * k) else 0
+      ∑ k ∈ Finset.range (N + 2),
+        if h : 1 ≤ k ∧ 2 * k ≤ N + 1 then (Q - 1) * Q ^ k * uTwo Q (N + 2 - 2 * k) else 0
+  decreasing_by omega
 ```
 
 **DEPENDS.** none.
 
-**PROOF.** definitional. **Termination:** in the live branch `1 ≤ k`, so `N + 2 − 2k ≤ N < N + 2`;
-`decreasing_by omega` after `split_ifs`.
+**PROOF.** definitional. **Termination [repaired: A-H.1/D1]:** the guard must be the DEPENDENT
+`if h : …` (as displayed above) so that `1 ≤ k` reaches the termination context; with the committed
+non-dependent `if … then … else 0` the well-founded-recursion goal is `N + 2 - 2 * k < N + 2` with
+`k` unconstrained — false at `k = 0` — and the definition does not elaborate. `dite` and `ite` agree
+on a `Decidable` proposition, so the VALUES are unchanged; the 0e gate certifies twelve of them
+(`#guard`, six at `q = 2` and six at `q = 3`, H.29's column).
 
 **SIZE.** 12 lines.
 
@@ -4365,15 +4376,20 @@ and `u D N ≤ head D N + alpha D N + beta D N`. Then with `c := c' + 1`, `B := 
 large enough (H.35), `RateSpecies Q K B c (u D)` for every `D`, by lexicographic induction on
 `(D, N)`.
 
-**SIGNATURE.**
+**SIGNATURE.** [repaired: A-H.1/D6 (fields split one-per-name), A-H.1/D7 (`hdesc`: binder annotated,
+`1 ≤ N` guard added — the committed field was unsatisfiable at `N = 0` and emptied the structure)]
 ```lean
 namespace Uniformity.Density.Induction
 
 /-- The three-leg recursion hypothesis of `GENIND.C′`, packaged so the induction can be stated. -/
 structure RecursionLegs (Q m c : ℕ) (u : ℕ → ℕ → ℝ) where
-  head alpha beta : ℕ → ℕ → ℝ
+  head : ℕ → ℕ → ℝ
+  alpha : ℕ → ℕ → ℝ
+  beta : ℕ → ℕ → ℝ
   K' : ℝ
-  B' c' n₀ : ℕ
+  B' : ℕ
+  c' : ℕ
+  n₀ : ℕ
   hK' : 0 ≤ K'
   hsplit : ∀ D N, 1 ≤ N → u D N ≤ head D N + alpha D N + beta D N
   hu0 : ∀ D N, 0 ≤ u D N
@@ -4381,12 +4397,19 @@ structure RecursionLegs (Q m c : ℕ) (u : ℕ → ℕ → ℝ) where
   halpha : ∀ D N, 1 ≤ N → alpha D N ≤
     ∑ k ∈ Finset.range n₀, ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ * u D (N - m * (k + 1))
   hbeta : ∀ D N, 1 ≤ N → beta D N ≤ K' * (N : ℝ) ^ (m + B') * ((Q : ℝ) ^ (N - c' - 1))⁻¹
-  hdesc : ∀ D N k, k < n₀ → 1 ≤ m * (k + 1) → N - m * (k + 1) < N
+  hdesc : ∀ (D N k : ℕ), 1 ≤ N → k < n₀ → 1 ≤ m * (k + 1) → N - m * (k + 1) < N
 
 theorem rate_close {Q m c : ℕ} (hQ : 2 ≤ Q) (hc : 1 ≤ c) (hm : 1 ≤ m)
     {u : ℕ → ℕ → ℝ} (L : RecursionLegs Q m c u) :
     ∃ K : ℝ, 0 ≤ K ∧ ∀ D, RateSpecies Q K (m + L.B' + 1) (L.c' + 1) (u D)
 ```
+
+The `1 ≤ N` guard on `hdesc` matches the field's three siblings and the SCOPE note's own *"every
+window `N ≥ 1`"*; the induction (PROOF step 4) invokes descent only inside `halpha`'s `1 ≤ N` scope,
+so the guarded field is exactly the descent witness the proof consumes. Without it the committed
+field was FALSE at `N = 0, k = 0` whenever `1 ≤ m ∧ 1 ≤ n₀` (`0 - m·1 < 0` in ℕ), making
+`RecursionLegs Q m c u` uninhabited there and silently switching off the α-leg — see AMENDMENT
+§A-H.1/D7.
 
 **DEPENDS.** H.30, H.35, H.65, H.66, H.69, H.70 (the window descent's well-foundedness input).
 
@@ -5711,12 +5734,31 @@ concatenation;
 `w₂ = w₁ + 1 + δ` (the corpus's `δ`-coordinate trick), a cell over `(w₁, w₂)` transports to a cell over
 `(w₁, δ)` with the same locus image, exponent affine with positive coefficients, and the same σ.
 
-**SIGNATURE.**
+**SIGNATURE.** [repaired: A-H.1/D5 — the committed block left `prod` and `deltaSubst` BODYLESS
+(`def … : A1Cell _` with no `where`, an elaboration failure, chapter G's D2 class). `prod`'s body
+below is the PROOF field's, verbatim in content; `deltaSubst`'s body is the 0e gate's
+STUB-SIDE DETERMINATION, adopted — see the adjudication note after the block.]
 ```lean
 namespace Uniformity.Density.Induction
 
 /-- (i) The product of two cells. -/
-def A1Cell.prod {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) : A1Cell (r₁ + r₂)
+def A1Cell.prod {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) : A1Cell (r₁ + r₂) where
+  offset := Fin.append C.offset D.offset
+  stride := Fin.append C.stride D.stride
+  stride_pos := by
+    refine Fin.addCases (fun k => ?_) (fun k => ?_)
+    · simpa [Fin.append_left] using C.stride_pos k
+    · simpa [Fin.append_right] using D.stride_pos k
+  expCoeff := Fin.append C.expCoeff D.expCoeff
+  expCoeff_pos := by
+    refine Fin.addCases (fun k => ?_) (fun k => ?_)
+    · simpa [Fin.append_left] using C.expCoeff_pos k
+    · simpa [Fin.append_right] using D.expCoeff_pos k
+  expConst := C.expConst + D.expConst
+  visCoeff := Fin.append C.visCoeff D.visCoeff
+  visConst := C.visConst + D.visConst
+  coeff := C.coeff * D.coeff
+  σ := ⟨C.σ.data + D.σ.data⟩
 
 theorem A1Cell.prod_exp {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r₂) (p : Fin (r₁ + r₂) → ℕ) :
     (C.prod D).exp p = C.exp (fun i => p (Fin.castAdd r₂ i)) + D.exp (fun j => p (Fin.natAdd r₁ j))
@@ -5725,11 +5767,43 @@ theorem A1Cell.prod_σ_degree {r₁ r₂ : ℕ} (C : A1Cell r₁) (D : A1Cell r�
     (C.prod D).σ.degree = C.σ.degree + D.σ.degree
 
 /-- (iii) The `δ`-substitution `w₂ = w₁ + 1 + δ` of `W-12` §S3.4's 2SIDED instance. -/
-def A1Cell.deltaSubst (C : A1Cell 2) : A1Cell 2
+def A1Cell.deltaSubst (C : A1Cell 2) : A1Cell 2 where
+  offset := C.offset
+  stride := C.stride
+  stride_pos := C.stride_pos
+  expCoeff := ![C.expCoeff 0 + C.expCoeff 1, C.expCoeff 1]
+  expCoeff_pos := by
+    have h0 := C.expCoeff_pos 0
+    have h1 := C.expCoeff_pos 1
+    intro i
+    fin_cases i
+    · show 0 < C.expCoeff 0 + C.expCoeff 1
+      omega
+    · show 0 < C.expCoeff 1
+      omega
+  expConst := C.expConst + C.expCoeff 1
+  visCoeff := ![C.visCoeff 0 + C.visCoeff 1, C.visCoeff 1]
+  visConst := C.visConst + C.visCoeff 1
+  coeff := C.coeff
+  σ := C.σ
 
 theorem A1Cell.deltaSubst_exp (C : A1Cell 2) (w δ : ℕ) :
     (C.deltaSubst).exp ![w, δ] = C.exp ![w, w + 1 + δ]
 ```
+
+**⚠ D5 ADJUDICATION (the `deltaSubst` body is CONFIRMED, gate-determined).** The committed PROOF
+field pinned only the exponent data — coefficients `(expCoeff 0 + expCoeff 1, expCoeff 1)` and a
+constant `expConst + expCoeff 1 * (offset-shift + 1)` with "offset-shift" undefined — and left
+`offset`, `stride`, `visCoeff`, `visConst`, `coeff` unspecified. The body above keeps `offset`,
+`stride`, `coeff`, `σ` and transports the VISIBILITY form by the same substitution
+(`visCoeff := ![v 0 + v 1, v 1]`, `visConst := visConst + visCoeff 1`). This is not a free choice:
+under kept offsets the signed `deltaSubst_exp` FORCES `expConst := expConst + expCoeff 1`, i.e.
+"offset-shift" resolves to `0`, which is consistent with (and disambiguates) the PROOF field's pin;
+the visibility transport by the same affine map is the unique choice making the vis form track the
+substituted coordinates. The blueprint's pins nowhere conflict with this body — ADOPTED as the
+node's specified body. Clause (iii)'s "same locus image" gloss is realized at the exponent level via
+`deltaSubst_exp`'s reindexing (the parameter box `offset`/`stride` is reused; the substitution acts
+on the forms, not the box).
 
 **DEPENDS.** H.93 · landed `FactorizationType.degree_mk_add`, `Multiset.sum_add`.
 
@@ -5744,9 +5818,11 @@ theorem A1Cell.deltaSubst_exp (C : A1Cell 2) (w δ : ℕ) :
 4. (ii) nothing to prove: `A1Family` is `List`, closed under `++`. State it as a `rfl`-lemma if the
    roll-up wants a name.
 5. (iii) `deltaSubst`: substitute — the new exponent's coefficients are
-   `(expCoeff 0 + expCoeff 1, expCoeff 1)` and the new constant is
-   `expConst + expCoeff 1 * (offset-shift + 1)`; positivity is preserved because both new coefficients
-   are sums of positives. `deltaSubst_exp` is `ring` after `Fin.sum_univ_two`.
+   `(expCoeff 0 + expCoeff 1, expCoeff 1)` and the new constant is `expConst + expCoeff 1`
+   [repaired: A-H.1/D5 — the committed "`expConst + expCoeff 1 * (offset-shift + 1)`" left
+   "offset-shift" undefined; under the adopted kept-offset body the signed `deltaSubst_exp` forces
+   it to `0`]; positivity is preserved because both new coefficients are sums of positives.
+   `deltaSubst_exp` is `ring` after `Fin.sum_univ_two`.
 
 **SIZE.** 44 lines. **SPLIT MANDATED into three nodes**: **H.94a** the product (i), **H.94b** the union
 (ii, trivial), **H.94c** the `δ`-substitution (iii).
@@ -6529,6 +6605,70 @@ explicitly), so the omission was a transcription slip, exactly as the gate diagn
 guards (`1 ≤ N`, `1 ≤ m`) were verified at the gate on a 40 × 20 grid; `1 ≤ N` is chosen for
 sibling-uniformity. Repair applied in place at the node's SIGNATURE; PROOF ("all four `by omega`")
 unchanged.
+
+### A-H.1/D7 — H.71 `RecursionLegs.hdesc`: **UNSATISFIABLE AT `N = 0`; BINDER + GUARD REPAIRED**
+
+**The defective original field:**
+
+    hdesc : ∀ D N k, k < n₀ → 1 ≤ m * (k + 1) → N - m * (k + 1) < N
+
+Two problems in one line. (a) `D` occurs nowhere else in the field, so Lean cannot infer its type
+and the line does not elaborate ("failed to infer type of binder `D`") — repaired by annotating
+`(D N k : ℕ)`, minimal and semantics-preserving. (b) **The field had no `1 ≤ N` guard, unlike its
+siblings `hsplit`/`hhead`/`halpha`/`hbeta`.** At `N = 0`, `k = 0` the antecedents are satisfiable
+whenever `1 ≤ m ∧ 1 ≤ n₀` and the conclusion is `0 - m·1 < 0`, i.e. `0 < 0` — FALSE. So
+`RecursionLegs Q m c u` was UNINHABITED whenever `1 ≤ m ∧ 1 ≤ n₀`; since `rate_close` hypothesizes
+`1 ≤ m`, the theorem survived only in the corner `n₀ = 0`, where `halpha`'s sum is empty — i.e. the
+α-leg, the whole point of `GENIND.C′`, was switched off (the gate's analysis). **Repair:**
+`1 ≤ N →` added (an honest statement correction — the guarded field is exactly the descent witness
+PROOF step 4 consumes, inside `halpha`'s own `1 ≤ N` scope, and matches the SCOPE note's *"every
+window `N ≥ 1`"*). Applied in place at the node's SIGNATURE.
+
+### A-H.1/D6 — H.71 `RecursionLegs`: **MULTI-NAME STRUCTURE FIELDS SPLIT (syntax-level)**
+
+The committed block declared `head alpha beta : ℕ → ℕ → ℝ` and `B' c' n₀ : ℕ`. **Lean 4 structure
+fields do not admit multiple names**: `f a b : T` declares ONE field `f` of type
+`(a : _) → (b : _) → T` (with `a`, `b` auto-bound), so the structure as written silently lost
+`alpha`, `beta`, `c'`, `n₀`, and `hsplit`/`halpha`/`hbeta`/`hdesc`/`rate_close` all failed
+("unknown identifier", or — with `autoImplicit` on — a misleading `HPow` instance error). Split
+one-name-per-field in place (seven fields where the committed text wrote two lines); the intent was
+unambiguous from the hypothesis fields that consume them. The gate notes this was the chapter's
+ONLY elaboration failure outside H.23.
+
+### A-H.1/D1 — H.23 `uTwo`: **NON-TERMINATION AS WRITTEN; DEPENDENT `if h :` + `decreasing_by`**
+
+The committed body's recursive call sat inside a NON-dependent `if 1 ≤ k ∧ 2 * k ≤ N + 1 then …
+else 0`, so the well-founded-recursion goal was `N + 2 - 2 * k < N + 2` with `k` unconstrained —
+false at `k = 0`; the definition did not elaborate. Repaired in place to the dependent `if h : …`
+(putting `1 ≤ k` into the termination context) plus `decreasing_by omega`. **Zero semantic change**
+(`dite` = `ite` on a `Decidable` proposition); the gate certifies twelve values (`#guard`, `q = 2`
+and `q = 3`, H.29's column) against the recursion.
+
+### A-H.1/D2 — H.18 `alphaBracket`: **MISSING `decreasing_by` LINE (incomplete body)**
+
+Same class as D1, benign: the goal `μ - k < μ + 1` is unconditionally true, so only the tactic line
+was missing from the displayed body (the PROOF field already said to supply it). `decreasing_by
+omega` added to the SIGNATURE display in place.
+
+### A-H.1/D3 — H.06 `genreE2.hcop`: **STALE MATHLIB NAME AT THE PIN**
+
+`Nat.coprime_two_right_iff_odd` does not exist at the pin (`v4.31.0`); the lemma is
+`Nat.coprime_two_right : n.Coprime 2 ↔ Odd n` (`Mathlib/Data/Nat/Prime/Basic.lean:148`). Field
+repaired in place to `Nat.coprime_two_right.2 ⟨t, rfl⟩` (elaborates at the gate); PROOF step 3
+updated. Class: stale-mathlib-name (training-data smell), no semantic content.
+
+### A-H.1/D5 — H.94 `A1Cell.prod` / `A1Cell.deltaSubst`: **BODYLESS `def`s; BODIES ADOPTED**
+
+The committed SIGNATURE block displayed both as `def … : A1Cell _` with NO body (chapter G's D2
+class, `CubicFamilyIndex.schema`). `prod`'s body was fully pinned by the PROOF field and is now
+displayed verbatim in the block. `deltaSubst`'s body is the 0e gate's STUB-SIDE DETERMINATION,
+**adjudicated and ADOPTED** here: the PROOF field pinned only the exponent data — with the constant
+written `expConst + expCoeff 1 * (offset-shift + 1)`, "offset-shift" undefined — and left `offset`,
+`stride`, `visCoeff`, `visConst`, `coeff` unspecified. Under the kept-offset body the signed
+`deltaSubst_exp` forces the constant to `expConst + expCoeff 1` (i.e. offset-shift `= 0`,
+disambiguating rather than contradicting the pin), and the visibility form transports by the same
+affine substitution. No blueprint pin conflicts with the adopted body; the adjudication note now
+sits in the node block itself.
 
 
 
