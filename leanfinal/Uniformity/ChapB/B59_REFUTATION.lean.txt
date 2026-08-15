@@ -1,0 +1,173 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapB.B04
+import Uniformity.ChapB.B08
+import Uniformity.ChapB.B12
+import Uniformity.ChapB.B30
+import Uniformity.ChapB.B34
+
+/-!
+# REFUTATION of the frozen signature of chapter-B NODE B.59
+
+**This file is evidence, not a node.**  It is kept as `.lean.txt` (the repo's
+`lean/quarantine/*.lean.txt` convention for documented dead ends) so that it is never picked
+up by `Uniformity/ChapB.lean` or by a build.  To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapB/B59_REFUTATION.lean.txt /tmp/b59_counter.lean
+cd leanfinal && lake env lean /tmp/b59_counter.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, on 2026-08-15.
+
+## What is refuted
+
+`leanspec/Leanspec/ChapB.lean`, **B.59** `irreducible_map_iff_irreducible_resPoly`:
+
+```lean
+axiom irreducible_map_iff_irreducible_resPoly (hπ : Irreducible π) {φ : Polynomial O}
+    (hφ : IsKey φ) {u : ℕ} (hu : 0 < u) {g G : Polynomial O} (hg : g.Monic) (hG : G.Monic)
+    (hGdeg : G.natDegree = g.natDegree) (hscale : g = G.scaleRoots (π ^ u))
+    (hpure : IsPure φ g u 1) (hne : (sideSet φ g u 1).Nonempty) {H₀ : ℕ}
+    (hH₀ : npHgt φ g 0 = (H₀ : ℕ∞)) :
+    Irreducible (G.map (IsLocalRing.residue O)) ↔ Irreducible (resPoly π φ g u 1 hne H₀)
+```
+
+The theorem below produces, at **any** DVR `O`, **any** key `φ` with `2 ≤ φ.natDegree` and
+**any** `u`, a witness `g = G = X` satisfying every hypothesis, with the left side of the `↔`
+TRUE and the right side FALSE.  (The ENV-C instances are satisfiable alongside: take
+`O = ℤ_[3]`, `π = 3`, `φ = X ^ 2 + 1`, whose reduction is irreducible over `𝔽₃`.)
+
+## Why it happens
+
+`hscale` is a `φ = X`-shaped hypothesis — it is B.44's, and B.44 is stated at `φ = X` only
+(the blueprint books this as a re-plan item at B.60 step 1: *"B.44 as written is `φ = X`-only;
+this node needs the general-`φ` extraction"*).  Carried to a general key it degenerates:
+
+1. `hscale` + `hG.Monic` + `hGdeg` give `g.coeff i = G.coeff i * π ^ (u * (n - i))`, so for
+   `0 < u` every `i < n` has `π ∣ g.coeff i`, i.e. `ḡ = X ^ n` over the residue field.
+2. `φ̄` is irreducible of degree `≥ 2`, so `φ̄ ∤ X ^ n`; hence `dev φ g 0 = g %ₘ φ` has a unit
+   coefficient and `npHgt φ g 0 = 0`.  So `hH₀` forces `H₀ = 0` and `suppVal φ g u 1 = 0`.
+3. `IsPure`'s second clause is `OnSide φ g u 1 (g.natDegree / φ.natDegree)`, i.e.
+   `npHgt φ g (n / m) + u * (n / m) = 0`, which for `0 < u` forces `n / m = 0`, i.e.
+   `g.natDegree < φ.natDegree`.
+4. Then `sideSet φ g u 1 = {0}`, `sideDeg = 0`, and `resPoly` is a **nonzero constant** —
+   a unit of `(resField φ)[Y]`, never `Irreducible`.  But `Ḡ` is free to be irreducible.
+
+So on the `2 ≤ φ.natDegree` branch the frozen signature is not merely under-hypothesised: it
+is refuted, and adding the blueprint prose's missing `0 < sideDeg` / `g.natDegree = m * d`
+would make that branch **vacuous** instead.  The node is non-vacuous only when `φ̄ = X`, i.e.
+exactly B.44's `φ = X` case.  Re-signing B.59 requires the general-`φ` extraction (`B.44′`),
+not `Polynomial.scaleRoots`.
+-/
+namespace Uniformity.Density.Leaf
+
+open IsLocalRing Polynomial
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+-- `hu : 0 < u` is B.59's own hypothesis; it is kept so that the statement below is literally
+-- B.59's hypothesis list, and it is deliberately unused — the refutation holds for every `u`.
+set_option linter.unusedVariables false in
+theorem b59_signature_refuted (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    (hm : 2 ≤ φ.natDegree) {u : ℕ} (hu : 0 < u) :
+    ∃ (g G : Polynomial O), g.Monic ∧ G.Monic ∧ G.natDegree = g.natDegree ∧
+      g = G.scaleRoots (π ^ u) ∧ IsPure φ g u 1 ∧
+      ∃ hne : (sideSet φ g u 1).Nonempty, ∃ H₀ : ℕ, npHgt φ g 0 = (H₀ : ℕ∞) ∧
+        Irreducible (G.map (IsLocalRing.residue O)) ∧
+        ¬ Irreducible (resPoly π φ g u 1 hne H₀) := by
+  classical
+  letI := instFieldResField hφ
+  have hdφ : 0 < φ.natDegree := by omega
+  -- ## degree facts
+  have hXdeg : (X : Polynomial O).degree < φ.degree := by
+    rw [degree_X, Polynomial.degree_eq_natDegree hφ.monic.ne_zero]
+    exact_mod_cast (by omega : (1 : ℕ) < φ.natDegree)
+  -- ## the `φ`-development of `X`
+  have hdev0 : dev φ (X : Polynomial O) 0 = X :=
+    (Polynomial.modByMonic_eq_self_iff hφ.monic).2 hXdeg
+  have hdev1 : dev φ (X : Polynomial O) 1 = 0 :=
+    dev_eq_zero_of_lt hφ.monic hdφ X 1 (by rw [natDegree_X, one_mul]; omega)
+  -- ## the polygon of `X`
+  have hnp1 : npHgt φ (X : Polynomial O) 1 = ⊤ := npHgt_eq_top_iff.2 hdev1
+  have hnp0 : npHgt φ (X : Polynomial O) 0 = 0 := by
+    have hg : npHgt φ (X : Polynomial O) 0 = gaussVal (X : Polynomial O) := by
+      rw [npHgt, hdev0]
+    have h1 : ¬ ((1 : ℕ) : ℕ∞) ≤ gaussVal (X : Polynomial O) := by
+      rw [le_gaussVal_iff hπ]
+      intro hall
+      have h := hall 1
+      rw [Polynomial.coeff_X_one, pow_one] at h
+      exact hπ.not_isUnit (isUnit_of_dvd_one h)
+    rw [hg]
+    by_contra hne0
+    exact h1 (by simpa using Order.one_le_iff_ne_zero.2 hne0)
+  have hsupp : suppVal φ (X : Polynomial O) u 1 = 0 := by
+    refine le_antisymm ?_ zero_le
+    have hinf := Finset.inf_le
+      (f := fun j => (1 : ℕ) • npHgt φ (X : Polynomial O) j + ((u * j : ℕ) : ℕ∞))
+      (Finset.mem_range.2 (Nat.succ_pos _) :
+        (0 : ℕ) ∈ Finset.range ((X : Polynomial O).natDegree + 1))
+    simpa [suppVal, hnp0] using hinf
+  have hon0 : OnSide φ (X : Polynomial O) u 1 0 := by
+    show (1 : ℕ) • npHgt φ (X : Polynomial O) 0 + ((u * 0 : ℕ) : ℕ∞)
+      = suppVal φ (X : Polynomial O) u 1
+    rw [hnp0, hsupp]
+    simp
+  have hmem0 : (0 : ℕ) ∈ sideSet φ (X : Polynomial O) u 1 :=
+    Finset.mem_filter.2 ⟨Finset.mem_range.2 (Nat.succ_pos _), hon0⟩
+  have hne : (sideSet φ (X : Polynomial O) u 1).Nonempty := ⟨0, hmem0⟩
+  -- ## the side is the single abscissa `0`
+  have hsideSet : sideSet φ (X : Polynomial O) u 1 = {0} := by
+    refine Finset.ext fun j => ⟨fun hj => ?_, fun hj => ?_⟩
+    · have hj' : j ∈ Finset.filter (OnSide φ (X : Polynomial O) u 1)
+          (Finset.range ((X : Polynomial O).natDegree + 1)) := hj
+      obtain ⟨hjr, hjon⟩ := Finset.mem_filter.1 hj'
+      rw [natDegree_X] at hjr
+      have hj2 : j = 0 ∨ j = 1 := by have := Finset.mem_range.1 hjr; omega
+      rcases hj2 with rfl | rfl
+      · simp
+      · exfalso
+        have hone : (1 : ℕ) • npHgt φ (X : Polynomial O) 1 + ((u * 1 : ℕ) : ℕ∞)
+            = suppVal φ (X : Polynomial O) u 1 := hjon
+        rw [hnp1, hsupp] at hone
+        simp at hone
+    · rw [Finset.mem_singleton] at hj
+      subst hj
+      exact hmem0
+  have hmin : sideMin φ (X : Polynomial O) u 1 hne = 0 :=
+    Nat.le_zero.1 (Finset.min'_le _ 0 hmem0)
+  have hmax : sideMax φ (X : Polynomial O) u 1 hne = 0 := by
+    refine Nat.le_zero.1 (Finset.max'_le _ _ _ fun y hy => ?_)
+    rw [hsideSet, Finset.mem_singleton] at hy
+    omega
+  have hsd : sideDeg φ (X : Polynomial O) u 1 hne = 0 := by
+    rw [sideDeg, hmin, hmax]
+  have hH₀ : npHgt φ (X : Polynomial O) (sideMin φ (X : Polynomial O) u 1 hne)
+      = ((0 : ℕ) : ℕ∞) := by rw [hmin, hnp0]; simp
+  have htop : suppVal φ (X : Polynomial O) u 1 ≠ ⊤ := by rw [hsupp]; simp
+  -- ## the residual polynomial is a nonzero constant, hence a unit
+  obtain ⟨hdegres, hcoeff0⟩ :=
+    natDegree_resPoly hπ hφ Nat.one_pos (Nat.coprime_one_right u) htop hne hH₀
+  rw [hsd] at hdegres
+  have hunit : IsUnit (resPoly π φ (X : Polynomial O) u 1 hne 0) := by
+    rw [Polynomial.eq_C_of_natDegree_eq_zero hdegres]
+    exact Polynomial.isUnit_C.2 (isUnit_iff_ne_zero.2 hcoeff0)
+  -- ## assembling the witness
+  refine ⟨X, X, monic_X, monic_X, rfl, ?_, ⟨hon0, ?_⟩, hne, 0, ?_, ?_, ?_⟩
+  · -- `X = X.scaleRoots (π ^ u)`
+    refine (Polynomial.ext fun i => ?_).symm
+    rw [Polynomial.coeff_scaleRoots, natDegree_X]
+    rcases i with _ | _ | i <;> simp
+  · -- the second `IsPure` clause, at the abscissa `X.natDegree / φ.natDegree = 0`
+    rw [natDegree_X, Nat.div_eq_of_lt (by omega)]
+    exact hon0
+  · rw [hnp0]; simp
+  · rw [Polynomial.map_X]
+    exact Polynomial.irreducible_X
+  · exact fun hirr => hirr.not_isUnit hunit
+
+end Uniformity.Density.Leaf
