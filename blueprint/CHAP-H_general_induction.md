@@ -2435,7 +2435,766 @@ needs (`p̃(m)` is `N`-independent, so it is absorbed into the closure's `K`). H
 
 **ENVIRONMENT.** ENV-H1.
 
+---
+
+## 7. §7 — ARITHMETIC IV: THE GENRE LAWS, THEIR FLOORS, THE TOWER THRESHOLDS
+
+> Every law here is a **defined function of `(q, N, parameter)`** plus a **visibility floor**, and
+> every node states the floor. That is not decoration: two of the corpus's confirmed defects were
+> *missing floors* (`EFF.GENIND.162`, `EFF.GENH4.06`), one of them producing a NON-INTEGER count. The
+> floors are stated as hypotheses of the law's *inhabitedness*, never as hypotheses of the law's
+> *definition* — a defined `ℕ`-valued function must be total.
+
+### NODE H.38 [def+lemma] [fresh]
+
+**STATEMENT.** *The quartic e-first law `CS4-E(h)` and its floor.* Define
+`lawE q N h = (q − 1) * q^(4*N − 5*h − 3)` for `q, N, h : ℕ`. Its **visibility floor** is
+`2*h + 1 ≤ N`, because the genre's entry height is `v(a₀) = 2h` and `DRAIN` fires at `v(a₀) ≥ N`.
+Two clauses: (i) the floor implies the exponent is honest, `5*h + 3 ≤ 4*N`; (ii) the floor **fails**
+at `(N, h) = (2, 1)` while `lawE q 2 1 = q − 1 ≠ 0` for `q ≥ 2` — the unfloored display's
+false positive.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- `CS4-E(h)` — the quartic e-first genre's per-centre opening locus, `(q−1)q^{4N−5h−3}`
+(`GENIND` §S5.3 = `W-12` §S2.5's `QRT-G2(h;(1²))`).  Total by construction; the visibility floor
+`2h ≤ N−1` is a hypothesis of `lawE_floor_*`, not of the definition. -/
+def lawE (q N h : ℕ) : ℕ := (q - 1) * q ^ (4 * N - 5 * h - 3)
+
+theorem lawE_exp_honest {N h : ℕ} (hfl : 2 * h + 1 ≤ N) : 5 * h + 3 ≤ 4 * N
+
+theorem lawE_floor_fails_at_two_one {q : ℕ} (hq : 2 ≤ q) :
+    ¬ (2 * 1 + 1 ≤ 2) ∧ lawE q 2 1 ≠ 0
+```
+
+**DEPENDS.** none.
+
+**PROOF.**
+1. `lawE_exp_honest`: `omega` (from `2h+1 ≤ N`: `4N ≥ 8h+4 ≥ 5h+3` for `h ≥ 0` — check
+   `8h+4 − 5h − 3 = 3h+1 ≥ 0` ✓).
+2. `lawE_floor_fails_at_two_one`: the first conjunct is `by omega` (`3 ≤ 2` is false); the second:
+   `4*2 − 5*1 − 3 = 0`, so `lawE q 2 1 = (q−1)*q^0 = q−1 ≠ 0` by `hq` and `Nat.sub_ne_zero_of_lt`.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.GENIND.48` (the law and its landed `[r1, PE1-M3]` floor, verbatim: *"**CS4-E(h)**
+[e-first: `e = 2`, `ψ` linear, `μ = 2`; = `QRT-G2(h;(1²))`]: slope `h/2`, `h` odd, residual `(y−z)²`:
+`(q−1)·q^{4N−5h−3}`, VISIBILITY FLOOR `2h ≤ N−1` … at `(N, h) = (2, 1)` the unfloored display would
+return `q−1` against a true locus of 0"*).
+
+**ARITHMETIC AUDIT (recomputed fresh at `q ∈ {2, 3, 5}`, against `EFF.GENIND.99`'s preregistered
+spots).** `(q,N,h) = (2,6,1)`: `4·6 − 5 − 3 = 16`, `lawE = 1·2^16 = 65,536` ✓ = the reported
+`E4(1) = 65,536`. `(3,4,1)`: `16 − 5 − 3 = 8`, `lawE = 2·3^8 = 13,122` ✓ = the reported value.
+`(5,3,1)`: `12 − 5 − 3 = 4`, `lawE = 4·5^4 = 2,500` ✓ = the reported value. **All three
+never-measured spots reproduce, at three distinct `q`.** Floor checks: `(2,6,1)` needs `3 ≤ 6` ✓;
+`(3,4,1)` needs `3 ≤ 4` ✓; `(5,3,1)` needs `3 ≤ 3` ✓ **at equality** — so the `q = 5` spot is the
+floor-adjacent cell, and it is inhabited.
+
+**TEETH.** `GT-DEPTH0 [SAME, both directions]` (`EFF.GENIND.48`, §S11 P-3, the three `E4(1)` spots,
+exact) → **Lean theorem**; `GT-CRIT` (the genre appears exactly where the grammar predicts and is
+ABSENT below its floor) → **Lean theorem** for the floor half; `GT-T-CS` at its preregistered count
+12 → **executable regression** retained (it is a per-row grammar check, not a law check).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.39 [lemma] [fresh]
+
+**STATEMENT.** *The four-summand exponent identity behind `lawE`.* For `h = 2t + 1` (h odd) and
+`N ≥ 4t + 3`, the four free-digit counts of the `(2,2)`-E stage sum to `lawE`'s exponent:
+`(N − (t+1)) + (N − 1 − (2t+1)) + (N − (3t+2)) + (N − 1 − (4t+2)) + (10*t + 8) = 4 * N`,
+i.e. the sum is `4N − 10t − 8 = 4N − 5h − 3`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem lawE_exp_four_summands {N t : ℕ} (hN : 4 * t + 3 ≤ N) :
+    (N - (t + 1)) + (N - 1 - (2 * t + 1)) + (N - (3 * t + 2)) + (N - 1 - (4 * t + 2))
+      + (10 * t + 8) = 4 * N
+
+theorem lawE_exp_odd {N t : ℕ} (hN : 4 * t + 3 ≤ N) :
+    4 * N - 5 * (2 * t + 1) - 3 = 4 * N - (10 * t + 8)
+```
+
+**DEPENDS.** none.
+
+**PROOF.** both `by omega` (the hypothesis clears every `ℕ`-subtraction: `4t+3 ≤ N` gives
+`t+1 ≤ N`, `2t+2 ≤ N`, `3t+2 ≤ N`, `4t+3 ≤ N`).
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.GENIND.68` (`LEMMA GENIND-4`'s free-digit total, verbatim: *"Free-digit total:
+`(N − (h+1)/2) + (N−1−h) + (N − (3h+1)/2) + (N−1−2h) = 4N − 5h − 3` ✓ — matching the opening law
+exactly, which is the no-over/undercount check"*), with the spec's audit reproducing it; the same
+four-summand pattern at `EFF.GENIND.50` (`CS5-V1E2`).
+
+**⚠ WHY `h = 2t+1` AND NOT `h` WITH `Odd h`.** The corpus's four summands contain `(h+1)/2` and
+`(3h+1)/2`, both of which need `h` odd to be integers. Substituting `h = 2t+1` makes every summand a
+literal `ℕ` expression and the whole identity `omega`-closable; carrying `Odd h` and `h/2` would
+introduce two `ℕ`-divisions that `omega` cannot see through. **The `Odd h` form is the wrong
+signature** and a node stating it should be returned.
+
+**TEETH.** as H.38 (`GT-DEPTH0`); this node is the *no-over/undercount* check the corpus names, so
+it inherits `EFF.GENIND.68`'s `accepted-with-decorrelation-supplied` (the QSCOUT22 `Q22-B`
+cross-derivation) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.40 [def+lemma] [fresh]
+
+**STATEMENT.** *The quartic f-first law `CS4-F(k)`, its floor, and the ℤ-witness of the missing
+floor.* Define `lawF q N k = (q * (q − 1) / 2) * q^(4*N − 10*k − 4)`. Its floor is `4*k + 1 ≤ N`
+(entry heights `(4k, 3k, 2k, k)`, so `v(a₀) = 4k`). Two clauses: (i) the floor implies
+`10*k + 4 ≤ 4*N`; (ii) at `(N, k) = (2, 1)` the exponent is **negative over `ℤ`**:
+`(4:ℤ)*2 − 10*1 − 4 = −6` — the sharpest possible signature of a missing floor, since no `ℕ`-valued
+count can have a negative exponent.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- `CS4-F(k)` — the quartic f-first genre's per-centre opening locus,
+`(q(q−1)/2)·q^{4N−10k−4}` (`GENIND` §S5.3; `#ψ = q(q−1)/2` monic irreducible quadratics). -/
+def lawF (q N k : ℕ) : ℕ := (q * (q - 1) / 2) * q ^ (4 * N - 10 * k - 4)
+
+theorem lawF_exp_honest {N k : ℕ} (hfl : 4 * k + 1 ≤ N) : 10 * k + 4 ≤ 4 * N
+
+theorem lawF_exp_neg_below_floor : (4 : ℤ) * 2 - 10 * 1 - 4 = -6
+```
+
+**DEPENDS.** none.
+
+**PROOF.**
+1. `lawF_exp_honest`: `omega` (`4N ≥ 16k+4 ≥ 10k+4` ✓).
+2. `lawF_exp_neg_below_floor`: `decide` / `norm_num`.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENIND.49` (the law, and **ANNEX R R4**'s correction: *"the visibility floor
+`4k ≤ N−1` is missing … At `(q, N, k) = (2, 2, 1)` the unfloored display returns
+`(2·1/2)·2^{8−10−4} = 2^{−6}` — a NON-INTEGER against a true locus of 0"*); `EFF.GENIND.163`
+(`R4.1`, the floor re-derived from the heights `(4k, 3k, 2k, k)`); `EFF.GENIND.162` (`R4.0`, the
+finding); `EFF.GENH4.06` (the same floor as an **admissibility** condition `N ≥ 4k+1`, landed at
+`[r2]` with its own failure witness *"at `(N,k) = (4,1)` the true slot count is 3 but `4N−10k−4 = 2`"*).
+
+**⚠ TWO DISTINCT FLOOR FACTS, BOTH LANDED.** `EFF.GENIND.49`'s floor is `4k ≤ N−1` (visibility:
+below it the genre is empty). `EFF.GENH4.06`'s floor is `N ≥ 4k+1` (admissibility: below it the
+displayed *slot-count form* is wrong even where the genre is nonempty — its witness is `(N,k) = (4,1)`
+where `4k+1 = 5 > 4`). **They are the same inequality** (`4k ≤ N−1` ⟺ `4k+1 ≤ N`) and this node
+states it once; the two *failure modes* are distinct and both are recorded, because a fleet agent who
+proves only "the genre is empty" has not covered `EFF.GENH4.06`'s case.
+
+**ARITHMETIC AUDIT (recomputed fresh at `q = 2` and `q = 3`).** `#{monic irreducible quadratics over
+F_q} = (q²−q)/2 = q(q−1)/2` ✓ (`EFF.GENIND.47`'s audit). `(q,N,k) = (2,6,1)`:
+`24 − 10 − 4 = 10`, `lawF = (2·1/2)·2^10 = 1,024` ✓ = `EFF.GENIND.99`'s reported `F4(1) = 1,024`.
+`(3,4,1)`: the corpus reports **`F4 ABSENT (4k ≤ 3 impossible)`**; recomputed `4·1 = 4 > 3 = N−1` ✓
+**absent** — *"the runner and the display disagreed; the runner was right"* (`EFF.GENIND.49`).
+`(2,5,1)`: `20 − 10 − 4 = 6`, `lawF = 1·2^6 = 64` ✓ = `R4.2`'s check. `(2,8,1)` at `q = 2`:
+`32 − 10 − 4 = 18`, `lawF = 2^18`. **Row-total cross-check** at `(2,6,n4)`:
+`lawE + lawF = 65,536 + 1,024 = 66,560` ✓ = §S11 P-3's "row CS total 66,560 = E4+F4" and §S10's
+independent cost-probe figure — **three independent agreements**, as `EFF.GENIND.49` records.
+At `q = 3` the census factor is `3·2/2 = 3 ≠ 1`, so the `q = 3` column genuinely tests it (at `q = 2`
+it is `1` and would hide a census error).
+
+**TEETH.** `GT-DEPTH0` (the `F4(1)` spot exact; correctly ABSENT where the floor excludes it) →
+**Lean theorem**; `R4.2`'s machine leg H (`genind_annexr_supp.py` @ `f5271e4`, GREEN — a
+**source-code gate verification** reading the pinned runner's two gate lines `709`/`869` verbatim) →
+**Lean theorem**, and note the asymmetry `EFF.GENIND.162` records: *"the runner had the floor and the
+display did not, so no run could have surfaced it"*, which is why the floor must be in the blueprint.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.41 [lemma] [fresh]
+
+**STATEMENT.** *The quartic law audit.* Closed numeric facts:
+`lawE 2 6 1 = 65536`, `lawE 3 4 1 = 13122`, `lawE 5 3 1 = 2500`, `lawF 2 6 1 = 1024`,
+`lawF 2 5 1 = 64`, and `lawE 2 6 1 + lawF 2 6 1 = 66560`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem quartic_law_audit :
+    lawE 2 6 1 = 65536 ∧ lawE 3 4 1 = 13122 ∧ lawE 5 3 1 = 2500 ∧
+    lawF 2 6 1 = 1024 ∧ lawF 2 5 1 = 64 ∧ lawE 2 6 1 + lawF 2 6 1 = 66560
+```
+
+**DEPENDS.** H.38, H.40.
+
+**PROOF.** `by decide` on each conjunct (`refine ⟨?_, ?_, ?_, ?_, ?_, ?_⟩ <;> decide`), or
+`by norm_num [lawE, lawF]`.
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.GENIND.99` (the preregistered spot values: `E4(1) = 65,536`, `F4(1) = 1,024`,
+`DRAIN₀ = 32,768`, CS total `66,560` at `(·,2,6,n4)`; `E4(1) = 13,122` at `(·,3,4,n4)`;
+`E4(1) = 2,500` at `(·,5,3,n4)`); `EFF.GENIND.163`/`R4.2` (`lawF 2 5 1 = 64`).
+
+**⚠ WHY THE ROW TOTAL IS A CONJUNCT.** `EFF.GENIND.99`'s own audit closes with *"all twenty-one
+preregistered spot values and all four tooth counts are re-derivable from the displayed laws"*, and
+the row total is the one figure **three** instruments agree on (P-3's tally, the cost probe, and the
+sum of the two laws). Landing the sum as a conjunct means a future edit to either law breaks the
+audit loudly rather than silently rebalancing.
+
+**TEETH.** `GT-DEPTH0` / `GT-CRIT` / `GT-T-CS` → **Lean theorem** (the node converts the
+preregistration's derivability audit into a machine check).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.42 [def+lemma] [fresh]
+
+**STATEMENT.** *The quintic vertex-at-1 law `CS5-V1E2(h)` and its headroom.* Define
+`lawV1E2 q N h = lawE q N h * (q^(N − (5*h+1)/2) − 1)` for `h` odd. Its exponent identity is
+H.39's (the four-coordinate exponent is again `4N − 5h − 3`), and its **headroom factor vanishes
+exactly at `N = (5h+1)/2`**: for `h = 2t+1`, `(5h+1)/2 = 5t + 3`, so the locus is `0` iff `N ≤ 5t+3`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- `CS5-V1E2(h)` — the quintic vertex-at-1 genre: `CS4-E`'s law times the split root's headroom
+fibre `(q^{N−(5h+1)/2} − 1)` (`GENIND` §S5.3). -/
+def lawV1E2 (q N h : ℕ) : ℕ := lawE q N h * (q ^ (N - (5 * h + 1) / 2) - 1)
+
+theorem headroom_exp_odd (t : ℕ) : (5 * (2 * t + 1) + 1) / 2 = 5 * t + 3
+
+theorem lawV1E2_eq_zero_iff {q N t : ℕ} (hq : 2 ≤ q) :
+    lawV1E2 q N (2 * t + 1) = 0 ↔ (N ≤ 5 * t + 3 ∨ lawE q N (2 * t + 1) = 0)
+```
+
+**DEPENDS.** H.38, H.39.
+
+**PROOF.**
+1. `headroom_exp_odd`: `omega` (`(10t+6)/2 = 5t+3`).
+2. `lawV1E2_eq_zero_iff`: `Nat.mul_eq_zero`; the right factor is `q^(N − (5t+3)) − 1 = 0` iff
+   `q^(N−(5t+3)) ≤ 1` iff `N − (5t+3) = 0` (using `2 ≤ q`, `Nat.one_lt_pow`) iff `N ≤ 5t+3`. `omega`
+   for the `ℕ`-subtraction.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.GENIND.50` (the law, verbatim: *"`(q−1)·q^{4N−5h−3}·(q^{N−(5h+1)/2} − 1)` — the
+CS4-E law times the `b₀` headroom factor (the split root's fiber)"*, with the note that
+`v(b₀)` must be *"NOT window-zero (else DRAIN fires first)"*), and the spec's audit re-deriving the
+four-coordinate exponent and both spot values.
+
+**ARITHMETIC AUDIT (recomputed fresh at `q = 2` and `q = 3`).** `(q,N,h) = (2,5,1)`, so `t = 0`,
+`(5h+1)/2 = 3`: `lawE 2 5 1 = 1·2^{20−5−3} = 2^{12} = 4,096`; headroom `2^{5−3} − 1 = 3`;
+`lawV1E2 = 4,096·3 = 12,288` ✓ = `EFF.GENIND.99`'s reported `V1E2(1) = 12,288`.
+`(3,3,1)`: headroom `3^{3−3} − 1 = 0`, so `lawV1E2 = 0` ✓ = the corpus's *"NO CS key at all (V1E2
+headroom = 0)"*. `(3,5,1)`: `lawE 3 5 1 = 2·3^{12} = 1,062,882`; headroom `3^2 − 1 = 8`;
+`lawV1E2 = 8,503,056` — a `q = 3` cell with **both** factors non-degenerate, which is the cell the
+`q = 2` column cannot supply (at `q = 2` the `(q−1)` factor is `1`). ✓
+
+**TEETH.** `GT-DEPTH0` (the `V1E2(1)` spot exact at `(·,2,5,n5)`) · `GT-CRIT` (the zero-headroom
+absence at `(·,3,3,n5)`) · `GT-T-CRIT` at its preregistered count 4 → **Lean theorem**, both
+directions.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.43 [lemma] [fresh]
+
+**STATEMENT.** *The quintic vertex-at-4 genre's vertex condition and first visibility.* For
+`v₄ ≥ 1` and `h` odd: lower-hull convexity at the vertex `(4, v₄)` requires the left slope `h/2` to
+exceed the right slope `v₄`, i.e. `h > 2*v₄`, i.e. (h odd) `h ≥ 2*v₄ + 1`. Under that condition the
+entry height `v₀ = v₄ + 2*h` satisfies `v₀ ≥ 7`, so the genre is first visible at `N ≥ 8`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem v4e2_vertex_condition {v₄ t : ℕ} (hv : 1 ≤ v₄) (h : 2 * v₄ < 2 * t + 1) :
+    2 * v₄ + 1 ≤ 2 * t + 1
+
+theorem v4e2_first_visible {v₄ t : ℕ} (hv : 1 ≤ v₄) (hvc : 2 * v₄ + 1 ≤ 2 * t + 1) :
+    7 ≤ v₄ + 2 * (2 * t + 1)
+
+theorem v4e2_needs_eight {v₄ t N : ℕ} (hv : 1 ≤ v₄) (hvc : 2 * v₄ + 1 ≤ 2 * t + 1)
+    (hvis : v₄ + 2 * (2 * t + 1) ≤ N - 1) : 8 ≤ N
+```
+
+**DEPENDS.** none.
+
+**PROOF.** all three `by omega`. (For `v4e2_first_visible`: `hvc` gives `t ≥ v₄ ≥ 1`, so
+`v₄ + 2(2t+1) ≥ 1 + 2·3 = 7`.)
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENIND.51` (the law and its `VERTEX CONDITION h ≥ 2v₄+1`, verbatim: *"hull convexity
+at `(4, v₄)`: the left drop `(v₀−v₄)/4` must exceed the right drop `v₄` — caught by the battery's
+smoke: at `h < 2v₄+1` the same digits read as a single `e = 5` decided side"*, and *"visibility
+`v₀ = v₄+2h ≤ N−1`: first visible at `N = 8`"*), with the spec's audit re-deriving both and
+§S14 claim group **C8**'s independent recount *"`v₀ = v₄ + 2h ≥ 1 + 2·(2v₄+1)|_{v₄=1} = 7 ⟹ N ≥ 8`"*.
+
+**⚠ THIS GENRE'S LAW IS DERIVATION-ONLY AND GETS NO `def`.** `EFF.GENIND.51`'s own disposition is a
+**`signed vacuity disclosure`**: *"the law is checked only in the negative direction
+(PREDICTED-ABSENT), and the note says so in the display itself ("its law is derivation-only here").
+The positive direction is unexercised at every window of every roster in this note."* Chapter H
+therefore lands the *conditions* (which are proved geometry, and whose arithmetic is checkable) and
+**does not define** `lawV4E2` — defining an unexercised law would create a Lean object with no
+evidence behind it. The `(q−1)²q^{5N−5v₄−5h−4}` display stays in the spec.
+
+**ARITHMETIC AUDIT (recomputed fresh).** The minimizing cell is `(v₄, h) = (1, 3)` giving `v₀ = 7`
+✓; `(v₄,h) = (1,5)` gives `11`; `(2,5)` gives `12` — so `7` is the minimum ✓, and
+`v₀ ≤ N−1` forces `N ≥ 8` ✓. Absence corroboration: §S11 P-3 reports "V4E2 ABSENT (the vertex
+condition)" at `(·,2,5,n5)`; recomputed, `7 > N−1 = 4` ✓. **The pre-seal smoke's RED** (the predictor
+listed `V4E2(1,1)` at `(Zp,2,4,n5)`) is exactly the `h < 2v₄+1` violation: `h = 1`, `v₄ = 1` gives
+`2·1+1 = 3 > 1` ✗ ✓ — the condition this node proves is the one that killed the false prediction.
+
+**TEETH.** `signed vacuity disclosure` for the law (carried unchanged); **Lean theorem** for the
+vertex condition and the `N ≥ 8` threshold, which are the only claims with support.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.44 [lemma] [fresh]
+
+**STATEMENT.** *The comp-weighted pin census (the repaired GENH4 CRITICAL).* At the quartic genres,
+a RAM or 2SIDED pin at slot height `m` is censused `q^(comp m) − 1`, where `comp m` is the pinned
+slot's `F_q`-dimension. Three clauses:
+(i) at genre E, `comp m = 1` identically, so the factor is `q − 1 = Q − 1` (`Q = q`);
+(ii) at genre F below the boundary band (`m ≤ N − 1`), `comp m = 2`, so the factor is
+`q^2 − 1 = Q − 1` (`Q = q²`);
+(iii) at genre F **on** the boundary band (`N ≤ m ≤ N + k − 1`), `comp m = 1`, so the factor is
+`q − 1`, which is **NOT** `Q − 1 = q² − 1` when `q ≥ 2`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- The pin census at a slot of `F_q`-dimension `c`: the nonzero readable vectors of an
+`F_q`-subspace of dimension `c`. -/
+def pinCensus (q c : ℕ) : ℕ := q ^ c - 1
+
+theorem pinCensus_genreE (q : ℕ) : pinCensus q 1 = q - 1
+
+theorem pinCensus_genreF_interior (q : ℕ) : pinCensus q 2 = q ^ 2 - 1
+
+theorem pinCensus_band_ne_interior {q : ℕ} (hq : 2 ≤ q) :
+    pinCensus q 1 ≠ pinCensus q 2
+```
+
+**DEPENDS.** none.
+
+**PROOF.**
+1. first two: `rfl` / `simp [pinCensus]`.
+2. third: `q − 1 < q² − 1` for `q ≥ 2` (`Nat.sub_lt_sub_right` after `q < q^2`); `omega` with
+   `Nat.lt_irrefl`.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENH4.07` (the `[r2]`-corrected census, verbatim: *"**`q^{comp}−1` per RAM and per
+2SIDED pin** `[r2]` — `comp` = the pinned slot's `F_q`-dimension (S2.3): identically 1 at genre E
+(every slot is one `F_q`-digit; the factor is `q−1 = Q−1`), and at genre F `comp(m) = 2` at pin
+height `m ≤ N−1` (the factor is `q²−1 = Q−1`) but `comp(m) = 1` on the boundary band
+`N ≤ m ≤ N+k−1` (a single in-window `F_q`-digit: census `q−1`, NOT `Q−1`)"*); `EFF.GENH4.25` (the
+same clause at §S6.1, with the record that the sealed parenthetical *"declared only the EXPONENTS
+comp-weighted; PE2 CRITICAL 1"*); `EFF.GENHN.79` (`GENHN-CAP-GEN`'s COUNT TRANSPORT: *"A nonzero
+visible boundary pin has `Q^{comp(m)}−1` choices, exactly as ERRATUM E2 states"*).
+
+**⚠ THIS NODE IS THE REPAIRED CRITICAL, AND IT IS `q = 2`-BLIND BY DESIGN.** Clause (iii) is stated
+as an **inequality** rather than a value, because the interesting content is precisely that the two
+censuses **differ** — and they differ at every `q ≥ 2`, including `q = 2` (`1 ≠ 3`). That is the one
+place in this chapter where `q = 2` is a *good* witness; the exponent side of the same repair is
+`q`-blind and is covered at H.92's genre-F law. **A node stating only `pinCensus q 1 = q − 1` has not
+landed the repair**: the repair is the *distinction*.
+
+**ARITHMETIC AUDIT.** `q = 2`: band `2^1 − 1 = 1`, interior `2^2 − 1 = 3` ✓ distinct. `q = 3`: band
+`2`, interior `8` ✓ distinct. `q = 5`: `4` vs `24` ✓. `EFF.GENHN.32`'s exhaustive `(1,3,2)` rows give
+the same shape at `f₁ = 3`: at `N = 7`, `comp(N) = 2` and the census is `Q^2 − 1 = 3` ✓ (with
+`Q = q = 2`), and at `N = 8` the pin is interior so the census is `Q^{f₁} − 1 = 7` ✓ — **and both
+rows balance exactly against their totals** (`24,576 + 8,192 = 32,768` ✓;
+`1,835,008 + 262,144 = 2,097,152` ✓), as that spec's audit records. **Three independent derivations
+of the same census agree** (E2's clause, `CAP-GEN`'s COUNT TRANSPORT, and `CR-3`).
+
+**TEETH.** `GH-JSONTIE [SAME]` (`EFF.GENH4.07`, executable regression against a **foreign
+md5-pinned artifact table**, both directions, 481/0) → **Lean theorem** for the census values;
+`GH-T-CEN` (planted mutant against the INERT census, fired 14×) → **executable regression** retained.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.45 [lemma] [fresh]
+
+**STATEMENT.** *The residual censuses over the stage field.* For `Q ≥ 2`: the number of unordered
+pairs of distinct nonzero elements of a `Q`-element field is `(Q−1)(Q−2)/2` (`SPLITEQ`), and the
+number of monic irreducible quadratics is `Q(Q−1)/2` (`INERT`). Subtraction-free:
+`2 * splitEqCensus Q = (Q−1)*(Q−2)` and `2 * inertCensus Q = Q*(Q−1)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- `#{unordered pairs of distinct nonzero elements}` over a `Q`-element field — the `SPLITEQ`
+residual census. -/
+def splitEqCensus (Q : ℕ) : ℕ := (Q - 1) * (Q - 2) / 2
+
+/-- `#{monic irreducible quadratics}` over a `Q`-element field — the `INERT` residual census. -/
+def inertCensus (Q : ℕ) : ℕ := Q * (Q - 1) / 2
+
+theorem two_mul_splitEqCensus (Q : ℕ) : 2 * splitEqCensus Q = (Q - 1) * (Q - 2)
+
+theorem two_mul_inertCensus (Q : ℕ) : 2 * inertCensus Q = Q * (Q - 1)
+```
+
+**DEPENDS.** none · mathlib `Nat.even_mul_succ_self` (parity of consecutive products).
+
+**PROOF.**
+1. `two_mul_inertCensus`: `Q * (Q−1)` is even (`Nat.even_mul_pred_self`); `Nat.two_mul_div_two_of_even`.
+2. `two_mul_splitEqCensus`: `(Q−1)*(Q−2)` is a product of consecutive naturals for `Q ≥ 2`, hence
+   even; the `Q ∈ {0,1}` cases give `0` on both sides (`ℕ`-subtraction truncates), so `interval_cases`
+   on `Q ≤ 2` first.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.GENH4.07` (the censuses over `F_{q^{f₁}}`: *"`(Q−1)(Q−2)/2` for SPLITEQ, `Q(Q−1)/2`
+for INERT"*), with the spec's audit *"`Q(Q−1)/2` = the number of monic irreducible quadratics over
+`F_Q` ✓ (`(Q²−Q)/2`)"* and its remark that both *"match the standard W-11 residual table over `K`"*;
+`EFF.GENIND.47` (`#ψ = q(q−1)/2`).
+
+**⚠ THE `SPLITEQ` CENSUS IS THE **ORDERED-PAIR-HALVED** ONE, and the `q = 2` cell is degenerate.**
+At `Q = 2` there is exactly one nonzero element, so `splitEqCensus 2 = 0` — the genre is empty. The
+`ℕ`-truncation at `Q = 2` is therefore *correct*, not an artifact, but it means the `q = 2` column
+cannot test the formula. **The `q = 3` and `q = 4` cells are mandatory** (audit below). This is the
+same trap as G.39's `q(q−1)/2` vs `(q−1)(q−2)/2` reconciliation, which chapter G's AMENDMENT §A-3
+verified — the two censuses count over different domains and must not be conflated.
+
+**ARITHMETIC AUDIT (recomputed fresh at `Q = 2, 3, 4, 5`).** `splitEqCensus`: `Q=2 → 0`; `Q=3 → 1`
+(the pair `{1,2}`) ✓; `Q=4 → 3` ✓ (`{1,2},{1,3},{2,3}` over `F₄^×`); `Q=5 → 6` ✓.
+`inertCensus`: `Q=2 → 1` ✓ (`x²+x+1`); `Q=3 → 3` ✓ (`x²+1, x²+x+2, x²+2x+2`); `Q=4 → 6` ✓;
+`Q=5 → 10` ✓. Sum check against the full residual table over `F_Q` (chapter G's `n = 2` census):
+`splitEq + inert + double + (b₀ = 0 rows)` must be `Q²`; at `Q = 3`: `1 + 3 = 4` non-degenerate
+non-double pairs with both roots nonzero, and chapter G's `two_mul_card_aniForm`/`two_mul_card_sepPair`
+give `q(q−1)/2 = 3` each over all of `F_q × F_q` ✓ — **the two chapters' censuses differ exactly by
+the `b₀ = 0` rows, which is chapter G's AMENDMENT §A-3 reconciliation, verified there.** Chapter H
+consumes the `F_Q^×`-domain versions, because `SPLITEQ` is about *stage* letters in `K^×`.
+
+**TEETH.** `GH-JSONTIE` (481/0, both directions) · `GH-T-CEN` (fired 14×) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.46 [lemma] [fresh]
+
+**STATEMENT.** *The E-genre slot strings and the ragged band's cardinality.* For `h = 2t+1` odd and
+`N ≥ 2t+2`: the `A₁` odd string runs over `dv`-heights `{2h+1, 2h+3, …, 2N−2+h}`, the `A₁` even
+string over `{2h+2, 2h+4, …, 2N−2}`; together they cover **every** integer in `[2h+1, 2N−2]`; and the
+**ragged band** `{m | 2N ≤ m ≤ 2N−2+h}` contains exactly `(h−1)/2 = t` odd heights, **empty at
+`h = 1`**.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- The odd (`α₁`-borne) `dv`-heights of the `A₁` string at genre E. -/
+def slotOdd (N h : ℕ) : Finset ℕ :=
+  (Finset.Icc ((h + 1) / 2) (N - 1)).image (fun v => 2 * v + h)
+
+/-- The even (`α₀`-borne) `dv`-heights of the `A₁` string at genre E. -/
+def slotEven (N h : ℕ) : Finset ℕ :=
+  (Finset.Icc (h + 1) (N - 1)).image (fun v => 2 * v)
+
+theorem raggedBand_card (N t : ℕ) (hN : 2 * t + 2 ≤ N) :
+    ((slotOdd N (2 * t + 1)).filter (fun m => 2 * N ≤ m)).card = t
+
+theorem raggedBand_empty_of_h_one (N : ℕ) (hN : 2 ≤ N) :
+    ((slotOdd N 1).filter (fun m => 2 * N ≤ m)) = ∅
+```
+
+**DEPENDS.** none · mathlib `Finset.card_image_of_injective`, `Finset.Icc`, `Nat.card_Icc`.
+
+**PROOF.**
+1. `slotOdd` is the image of `Icc ((h+1)/2) (N−1)` under the injection `v ↦ 2v + h`
+   (`Finset.card_image_of_injective` with `fun a b => by omega`).
+2. the filter `2N ≤ 2v + h` is `v ≥ (2N − h)/2`, i.e. `v ≥ N − t` for `h = 2t+1` (`omega`).
+   So the filtered set is the image of `Icc (max ((h+1)/2) (N−t)) (N−1)`, whose card is
+   `(N−1) − (N−t) + 1 = t` when `N − t ≥ (h+1)/2 = t+1`, i.e. `N ≥ 2t+1` ✓ (from `hN`).
+3. `Nat.card_Icc` then `omega`.
+4. `raggedBand_empty_of_h_one`: `t = 0` in clause 2 gives card `0`; `Finset.card_eq_zero`.
+
+**SIZE.** 22 lines. **SPLIT CANDIDATE:** the two `def`s plus `raggedBand_card` is one node;
+`raggedBand_empty_of_h_one` is a two-line corollary and can share the file.
+
+**SOURCE.** `EFF.GENH4.17` (§S2.3's slot strings, with the spec's audit of all eight endpoints, and
+verbatim: *"the band `{2N ≤ dv ≤ 2N−2+h}` holds exactly `(h−1)/2` odd slots per string (empty at
+`h = 1`)"*, plus *"Both strings cover EVERY integer of their ranges below `2N−1` — the half-integer
+(`E = 2`) ladder realized in full"*).
+
+**ARITHMETIC AUDIT (recomputed fresh).** Band count: odd heights in `[2N, 2N−2+h]` are
+`2N+1, 2N+3, …, 2N−2+h`; with `h = 2t+1` the top is `2N + 2t − 1`, so the count is
+`((2N+2t−1) − (2N+1))/2 + 1 = (2t−2)/2 + 1 = t` ✓ **exactly `(h−1)/2`**, and `t = 0` at `h = 1` ✓.
+Endpoint checks at `h = 3` (`t = 1`), `N = 7`: odd string `[2·3+1, 2·7−2+3] = [7, 15]` odd, even
+string `[8, 12]` even; union covers `[7, 12]` entirely ✓; band `[14, 15]` contains the single odd
+height `15` ✓ = `t = 1`. **This is the `h = 3` cell — the one where the corpus's genre-E drainage
+CORRECTION lives (`EFF.GENH4.10`: `512`, not `256`)** — so the band count is checked exactly where the
+slip was.
+
+**TEETH.** `GH-T-LAT` (`EFF.GENH4.17`, planted mutant: *"my `law_E` corrupted to the integer-only
+`dv` ladder must mismatch on every E row"*, fired **19** times) → **Lean theorem** (the
+half-integer ladder's full coverage is this node's first clause).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.47 [lemma] [fresh]
+
+**STATEMENT.** *`GENH4.B`'s genre-E aggregate, and the `h = 1` coincidence that hid the CORRECTION.*
+Two clauses.
+(i) the aggregate over the ladder: for `2h + 1 ≤ N`,
+`(N + h − 1) + (N − 1 − 2*h) = 2*N − h − 2`.
+(ii) **the coincidence is iff `h = 1`**: for `h` odd, `N + (h−1)/2 = N + h − 1` iff `h = 1`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem genh4B_aggregate_exp {N h : ℕ} (hfl : 2 * h + 1 ≤ N) :
+    (N + h - 1) + (N - 1 - 2 * h) = 2 * N - h - 2
+
+theorem und_exp_coincide_iff_h_one {N t : ℕ} (hN : 1 ≤ N) :
+    N + ((2 * t + 1) - 1) / 2 = N + (2 * t + 1) - 1 ↔ t = 0
+```
+
+**DEPENDS.** none.
+
+**PROOF.** both `by omega` (clause (ii): the left is `N + t`, the right is `N + 2t`, equal iff
+`t = 0`).
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.GENH4.10` (`THEOREM GENH4.B`, the genre-E law `UND(h; H₂) = (q−1)^{r+t}·q^{N+h−1}`
+and its aggregate `(q−1)^{r+1}·q^{2N−h−2}`, plus **the CORRECTION disclosed**, verbatim:
+*"QSCOUT22 S6/S8 quoted the genre-E law as `(q−1)q^{N+(h−1)/2}`; that is the `h = 1` instance only. At
+`h = 3` the committed artifact (`qscout22_results.json` @ `dd67cda`, row consE Zp q=2 N=7 h=3) reads
+`UND = 512 = (q−1)q^{N+h−1}`, not 256. The law proved here matches the committed table on every row;
+the quoted display was the scout note's summary slip, not a measurement error."*), with the spec's
+audit: *"at `h = 1`, `N+(h−1)/2 = N = N+h−1` ✓ — the two laws coincide exactly at `h = 1`, which is
+why the slip survived"*.
+
+**⚠ WHY THE COINCIDENCE IS THE THEOREM.** The corpus corrected a *value*; chapter H proves the
+*mechanism* — the two laws agree precisely on the one-parameter slice every check ran on. This is the
+G.23 lesson in its purest form and the reason H.29's audit rule exists. Landing only the aggregate
+(clause (i)) would leave the slip's mechanism unrecorded.
+
+**ARITHMETIC AUDIT (recomputed fresh at `q = 2` and `q = 3`).** `(q,N,h) = (2,7,3)`: proved law
+`(q−1)q^{N+h−1} = 1·2^9 = 512` ✓ = the committed artifact; scout's law `1·2^{7+1} = 256` ✗.
+`(3,7,3)`: proved `2·3^9 = 39,366`; scout's `2·3^8 = 13,122` — **a factor `3 = q` apart, so the
+`q = 3` column also separates them** ✓. `(2,5,1)`: proved `1·2^5 = 32`; scout's `1·2^5 = 32` —
+**identical**, the coincidence ✓. Aggregate check at `(2,7,3)`: `(N+h−1) + (N−1−2h) = 9 + 0 = 9` and
+`2N−h−2 = 14−3−2 = 9` ✓ (the ladder is empty at `N = 2h+1`, the floor-adjacent cell).
+
+**TEETH.** `GH-UND [SAME]` (`EFF.GENH4.10`, executable regression, 92/0: *"THEOREM GENH4.B's closed
+forms vs every UND key (committed JSON + all fresh rows), **incl. the `h = 3` correction value 512**
+and the even-N two-term F law; aggregates"*) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.48 [lemma] [fresh]
+
+**STATEMENT.** *`GENH4.B`'s genre-F law: the odd-`N` single power and the even-`N` two-term sum.*
+Two clauses.
+(i) at odd `N = 2ℓ+1`: `2*(N/2) + 2*k − 1 = N + 2*k − 2` — the single `q`-power.
+(ii) at even `N = 2ℓ`: the two terms are `q^(N+2k−1)` and `(q−1)*q^(N+2k−1)`, and their sum is
+`q^(N+2k)` — i.e. the "two-term" law **collapses to a single `q`-power at even `N`**.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem genh4B_F_odd_exp {l k : ℕ} (hk : 1 ≤ k) :
+    2 * ((2 * l + 1) / 2) + 2 * k - 1 = (2 * l + 1) + 2 * k - 2
+
+theorem genh4B_F_even_sum (q N k : ℕ) (hq : 1 ≤ q) :
+    q ^ (N + 2 * k - 1) + (q - 1) * q ^ (N + 2 * k - 1) = q ^ (N + 2 * k) ∨ N + 2 * k = 0
+```
+
+**DEPENDS.** none.
+
+**PROOF.**
+1. (i) `omega` ((2l+1)/2 = l, so the left is `2l + 2k − 1` and the right is `2l + 2k − 1`) ✓.
+2. (ii) if `N + 2k ≥ 1`, factor: `q^{M−1}(1 + (q−1)) = q^{M−1}·q = q^M` with `M := N + 2k`
+   (`Nat.sub_add_cancel`, `pow_succ`); the disjunct handles `M = 0` where `ℕ`-subtraction truncates.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENH4.10` (`THEOREM GENH4.B`'s genre-F law: *"`UND(k; H₂) = (q²−1)^t (q−1)^r ·
+[ q^{2⌊N/2⌋+2k−1} + 1_{2|N}·(q−1)·q^{N+2k−1} ]` … the second term is the
+readable-value/unreadable-residual band at `dv0 = N` (`GENH4-CAP(F)`), present at even `N` only; at
+odd `N` the law is the single `q`-power `q^{N+2k−2}`"*), and the spec's own **compiler observation**,
+carried verbatim as this node's clause (ii): *"the "two-term" sum collapses to a single `q`-power at
+even `N`. The display is faithful to the FORM `GENH4-CAP(F)` produces (a main term plus a band term),
+and GENIND's `(CS-EXACT)` requirement ("a FINITE SUM of `q`-powers") is met either way. Recorded as an
+observation, not a correction — and it is worth recording because the two-term language drove a
+granularity correction across three GENIND sites."*
+
+**⚠ THE COLLAPSE IS THE POINT, AND IT IS NOT A CORRECTION.** `EFF.GENIND.14`'s `[r2, PE2-m1]`
+granularity rider exists *because* of this two-term law: *"not always a single `q`-power — GENH4.B's
+genre-F law at even `N` is a TWO-term sum (the `CAP(F)` boundary band), so the r1 gloss "one
+closed-form `q`-power family per stratum" was satisfiable only at a finer granularity than the
+stratum it names"*. Chapter H lands the collapse as a theorem so that a reader can see the corrected
+`(CS-EXACT)` wording ("a FINITE SUM of `q`-powers") is satisfied *both* ways — the rider was
+right about granularity and the sum is nevertheless one power. **Do not "simplify" the corpus's
+two-term display away**: the two terms have different geometric meanings (main stratum vs band).
+
+**ARITHMETIC AUDIT (recomputed fresh at `q = 2` and `q = 3`).** `(q,N,k) = (2,8,1)`: main
+`q^{N+2k−1} = 2^9 = 512`, band `(q−1)q^9 = 512`, sum `1,024 = 2^{10} = q^{N+2k}` ✓ — the corpus's
+committed check *"(2,8,1) F → 1024 = 512 + 512"* ✓. `(3,8,1)`: main `3^9 = 19,683`, band
+`2·3^9 = 39,366`, sum `59,049 = 3^{10}` ✓ — **the `q = 3` cell, where the two terms are `1 : 2`
+rather than `1 : 1`, so the collapse is a genuine identity and not a doubling coincidence.** At
+`q = 2` the two terms are equal, which is exactly the degeneracy the `q = 3` column removes.
+`(2,7,1)`: odd, `2·(7/2) + 2 − 1 = 6 + 1 = 7`? recompute: `2·3 + 2·1 − 1 = 7` and
+`N + 2k − 2 = 7 + 2 − 2 = 7` ✓.
+
+**TEETH.** `GH-UND [SAME]` (92/0, *"incl. … the even-N two-term F law"*) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.49 [lemma] [fresh]
+
+**STATEMENT.** *The `m = 6` mixed grammar's entry heights (Gauss additivity), three families.* For
+integer slopes `k, h ≥ 1`:
+(i) **child + E-block** (`(e,γ,μ) = (2,1,2)`, block slope `h/2`): entry height `2k + 2h`; the
+**unique** cell with `2k + 2h < 6` is `(k,h) = (1,1)`, giving `4`; and the stage-steeper arrangement
+`h ≥ 2k+1` gives `≥ 8`.
+(ii) **child + f-first block, SAME side** (`(1,2,2)`, forced `k = h`): entry height `6k ≥ 6`.
+(iii) **child + f-first block, DISTINCT sides** (`h ≠ k`): entry height `2k + 4h ≥ 8`.
+Consequently every non-`M6` mixed genre enters at `v(a₀) ≥ 6`, i.e. `N ≥ 7`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem mixed_six_childE_lt_six {k h : ℕ} (hk : 1 ≤ k) (hh : 1 ≤ h)
+    (hlt : 2 * k + 2 * h < 6) : k = 1 ∧ h = 1
+
+theorem mixed_six_stage_steeper {k h : ℕ} (hk : 1 ≤ k) (hst : 2 * k + 1 ≤ h) :
+    8 ≤ 2 * k + 2 * h
+
+theorem mixed_six_sameSide {k : ℕ} (hk : 1 ≤ k) : 6 ≤ 6 * k
+
+theorem mixed_six_distinctSide {k h : ℕ} (hk : 1 ≤ k) (hh : 1 ≤ h) (hne : h ≠ k) :
+    8 ≤ 2 * k + 4 * h
+```
+
+**DEPENDS.** none.
+
+**PROOF.** first three `by omega`. The fourth: `h ≠ k` with both `≥ 1`; if `h ≥ 2` then
+`2k + 4h ≥ 2 + 8 = 10`; if `h = 1` then `k ≠ 1` so `k ≥ 2` and `2k + 4 ≥ 8` ✓. `omega` after
+`rcases Nat.lt_or_ge h 2`.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.GENIND.32` (the complete `m = 6` mixed grammar, `[r5]`-re-derived, verbatim: the
+three bulleted families with their entry heights and *"No other arrangement fits the `2 + 4 = 6`
+abscissa budget. So every non-M6 mixed genre enters at `v(a₀) ≥ 6`, i.e. `N ≥ 7`, and the
+first-visible mixed genre — uniquely, at `v(a₀) = 4`, `N = 5` — is PE2's"*), with the spec's own
+ARITHMETIC AUDIT re-deriving every height by Gauss additivity.
+
+**⚠ WHAT IS NOT CLAIMED.** "No other arrangement fits the budget" is a **grammar completeness**
+claim over frame shapes — geometric, chapter C, no node. This node proves the *four height
+inequalities*, which is the checkable content and the part the `n = 6` threshold rests on.
+`EFF.GENIND.32` also carries a **`STALE-SELF-DESCRIPTION`** (its `§S15` honest-limit sentence says
+the same-side f-first genre is machine-unrealized, which PE6 later closed corpus-first,
+2,132,082/0) — chapter H does not reproduce the stale sentence.
+
+**ARITHMETIC AUDIT (recomputed fresh, Gauss additivity `v(a₀) = Σ_sides length × slope`).** child
+length 2 at slope `k` contributes `2k`; E-block length 4 at slope `h/2` contributes `4·(h/2) = 2h` ✓
+→ `2k + 2h` ✓, minimum `4` at `(1,1)` ✓, and `k ≥ 2` with `h ≥ 1` gives `≥ 6` ✓. Same-side f-first:
+one side of length 6 at slope `k` gives `6k` ✓, `= 6` at `k = 1` so `N ≥ 7` ✓. Distinct-side:
+`2k + 4h`, minimum `8` at `(k,h) = (2,1)` ✓ (`(1,2)` gives `10`). Budget `2 + 4 = 6 = m` ✓ saturated.
+Cross-check against genre **M6** (`EFF.GENIND.33`): hull `(0,4)–(2,2)–(6,0)`, left side length 2 drop
+2 → slope 1 ✓, right side length 4 drop 2 → slope `1/2` ✓ (so `e = 2`, `h = 1`), entry height
+`2·1 + 4·(1/2) = 4` ✓ = the `(k,h) = (1,1)` cell ✓, first visible at `N = 5` ✓. **The unique cell and
+the unique machine-realized instance coincide.**
+
+**TEETH.** `EFF.GENIND.32`'s cross-check against PE5's committed artifacts (NINEMIX's Gauss-additive
+entry height `11 = 1·3 + 2·2 + 2·1 + 4·(1/2)`, SAMESIDE's `4 = 4 × 1` on 59,049 exhaustive states) →
+**Lean theorem** for the height arithmetic; the grammar-completeness half stays a
+`disclosed non-repair`/foreign-regression.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.50 [lemma] [fresh]
+
+**STATEMENT.** *The tower thresholds.* Three clauses.
+(i) a stage's own read admits a composite opening only if the stage multiplicity is `≥ 4` (H.03
+applied inside the stage), so towers need `μ ≥ 4`;
+(ii) hence towers exist at degree `n` only if `n ≥ e₁f₁·μ ≥ 2·4 = 8`;
+(iii) a **third** stage forces `μ₁ ≥ e₂f₂μ₂ ≥ 2·4 = 8` and hence `n ≥ D′·μ₁ ≥ 2·8 = 16`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem tower_needs_eight {e f μ n : ℕ} (hef : 2 ≤ e * f) (hμ : 4 ≤ μ) (hn : e * f * μ ≤ n) :
+    8 ≤ n
+
+theorem depth_three_needs_sixteen {D μ₁ e₂ f₂ μ₂ n : ℕ} (hD : 2 ≤ D) (h2 : 2 ≤ e₂ * f₂)
+    (hμ₂ : 4 ≤ μ₂) (h1 : e₂ * f₂ * μ₂ ≤ μ₁) (hn : D * μ₁ ≤ n) : 16 ≤ n
+```
+
+**DEPENDS.** H.03 (for the "inside the stage" application, cited in the SOURCE reasoning; the Lean
+statements are self-contained arithmetic).
+
+**PROOF.**
+1. `tower_needs_eight`: `8 = 2*4 ≤ (e*f)*μ ≤ n` by `Nat.mul_le_mul` then `le_trans`.
+2. `depth_three_needs_sixteen`: `8 = 2*4 ≤ e₂*f₂*μ₂ ≤ μ₁`, then `16 = 2*8 ≤ D*μ₁ ≤ n`. `omega`
+   after the two `Nat.mul_le_mul`s.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENHN.16` (`LEMMA GENHN-T(a)`, verbatim: *"a stage's own read admits a composite
+opening (a TOWER event) iff the stage multiplicity satisfies `μ ≥ 4` (GENIND.A(IV) applied inside the
+stage); hence towers exist at degree `n` iff `n ≥ (e₁f₁)·μ ≥ 2·4 = 8`. `n = 8 = 2·2·2` is the first
+live instance … `n = 4..7` are tower-free"*); `EFF.GENHN.18`'s `[r3]` **R1 arithmetic**, verbatim:
+*"a third stage forces `μ₁ ≥ e₂f₂μ₂ ≥ 8`, hence `n ≥ D′μ₁ ≥ 16`"*, with that spec's own audit
+recomputing it and noting the two inputs are `GENHN-T(a)` applied twice.
+
+**⚠ THE "iff" IS AN "only if" HERE.** `GENHN-T(a)` states an iff, and the *realization* half (the
+`n = 8` genre `(2,1,4)` exists with positive opening locus, and the machine witness `GN-TOWER`
+exhibits an explicit member) is **geometric — no node**. This chapter proves the necessity direction,
+which is the direction the conditionality bookkeeping consumes (`n ≤ 7` tower-free ⟹ `[GENHN-TOW-1]`
+is empty there). `EFF.GENHN.16` also carries a corrected proof display (`R4 F-5`: read `(T−c)²`, not
+`(T²−c)²`) whose content is the realization half — **and the machine witness was right while the
+proof display was wrong** (`stale self-description`, that spec's TEETH field). Chapter H reproduces
+neither display.
+
+**ARITHMETIC AUDIT (recomputed fresh).** `2·4 = 8` ✓; `n = 8 = 2·2·2` is the minimal factorization
+with `e₁f₁ = 2`, `μ = 4` ✓, and the inner datum `(e₂f₂, μ₂) = (2, 2)` ✓ — consistent with
+`EFF.GENHN.16`'s *"`(e₁f₁) = 2, μ = 4, inner (e₂f₂) = 2, μ₂ = 2`"*. Depth 3: `2·4 = 8 ≤ μ₁` and
+`2·8 = 16 ≤ n` ✓, matching the `[r3]` depth split *"depth 2 exhausts the tower genres at
+`n ∈ {8, …, 15}`; at `n ≥ 16` the ITERATED (depth-≥ 3) composition additionally rides
+`[GENHN-TOW-1]` item (6)"*. **The two thresholds `8` and `16` are the chapter's degree-range
+boundaries and they are what H.95's package indexing rests on.**
+
+**TEETH.** `GN-TOWER` (`EFF.GENHN.16`, executable regression: the criterion + the `n = 8` witness +
+the min-`n` scan, *"min-n = 8; zero stage-CS anywhere else in the battery"*) → **Lean theorem** for
+the necessity half; `passPE1` R4's note that the scan *"verifies the arithmetic minimum only"* is
+exactly this node's scope ✓.
+
 <!-- APPEND-POINT -->
+
 
 
 
