@@ -5711,8 +5711,9 @@ authority 2026-08-05, honest-repair class):
   **Delta recorded: none** — the statement signed is equivalent to the intended one under
   B.45's construction, with no added squarefree hypothesis and no normalization rider. The
   stub's NOT-CONTRACT marker is superseded by this re-signing: B.65 clause 2 as now displayed
-  at the node IS contract, byte-identical to the gate's signed type. **Patched as gate,
-  re-signed as contract.**
+  at the node IS contract, and its elaborated type is identical to the gate's signed
+  `ns6_biconditional` (the display carries an in-block repair comment, which elaborates
+  away). **Patched as gate, re-signed as contract.**
 * **B-D6 — B.51's first signed block was unsignable.** Its conclusion was literally
   `s ∣ (Nat.find (…) : ℕ)` — a placeholder term, not a statement. The node's own PROOF note
   already said the contract is stated on `addVal (norm z)` directly. Repair: the node is
