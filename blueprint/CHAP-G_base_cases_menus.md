@@ -1182,6 +1182,14 @@ def resStratum (π : O) (N k : ℕ) (p : IsLocalRing.ResidueField O × IsLocalRi
 
 ### NODE G.23 [lemma] [fresh]
 
+> **AMENDMENT BANNER 2026-08-15 — `card_resStratum` (G.23a) IS REFUTED; NEITHER DECLARED ROUTE
+> GOVERNS.** The true per-pair count is `q^(2N−2k−1)/#Stab(p)`, not `q^(2N−2k−2)`; the strata over
+> a residue-field translation orbit coincide, so the "sum over `q²−q` pairs" certainty argument
+> below double-counts by the orbit size. `depthSet_eq_iUnion_resStratum` (G.23b) survives (the
+> union is **not** disjoint). Read **AMENDMENT §A-1** at the end of this file before consuming
+> anything here; it carries the counterexample and the replacement route (which removes this node
+> from the critical path). **Do not assign G.23a as a proof target.** Nothing below is edited.
+
 **STATEMENT.** *The residual refinement of a depth stratum.* For `2k < N` and `p` **not** a
 double-root pair (i.e. `y² − p.2·y + p.1` has no repeated root; equivalently
 `p ∉ rootPairMap '' {diagonal}`), `#(resStratum π N k p) = q^(2N−2k−2)`; and the strata over the
@@ -1423,6 +1431,10 @@ implication, mixed characteristic).
 
 ### NODE G.28 [lemma] [fresh]
 
+> **AMENDMENT BANNER 2026-08-15 — SIGNATURE AMENDED: `hN : 2 * k + 1 ≤ N`** (was `2 * k + 2 ≤ N`,
+> which is one stronger than this node's own proof uses). The amended form is what the fleet
+> lands, and it is what G.42 needs at `r = 0`. See **AMENDMENT §A-2**. Nothing below is edited.
+
 **STATEMENT.** A simple residual root at an even-depth centre ⟹ the SPLIT certificate at window
 `2k+2`; hence the class is `splitType`-decided at every level `N ≥ 2k+2`.
 
@@ -1511,6 +1523,13 @@ theorem decidedAt_of_depth_lt (hπ : Irreducible π)
 ---
 
 ### NODE G.30 [lemma] [fresh]
+
+> **AMENDMENT BANNER 2026-08-15 — THE `⚠ BOUNDARY CONDITION, DECLARED` BLOCK BELOW IS WITHDRAWN,
+> INCLUDING ITS FALLBACK.** The split certificate fits the window at the top even stratum
+> `t = N − 1`; G.28's amended hypothesis `2 * k + 1 ≤ N` is all this node needs, so the even branch
+> requires only `t < N` and no stratum is lost. The proposed fallback (restrict to `t + 2 ≤ N`)
+> would leave G.42 unprovable as stated at `r = 0`. See **AMENDMENT §A-2**. Nothing below is
+> edited.
 
 **STATEMENT.** *The stratum-to-type map.* For `t < N`: if `t = 2j+1` is odd, every class of
 `depthSet π N t` is `ramType`-decided; if `t = 2k` is even, every class of `depthSet π N t` is
@@ -3800,6 +3819,13 @@ non-applicability.**
 
 ## 14. FLAGGED FOR THE CODEX CROSS-READ
 
+> **AMENDMENT BANNER 2026-08-15 — ITEMS 1–4 ARE ADJUDICATED** at the stage-0e gate (the fleet fires
+> before the codex read): item 1 **refuted** the G.23a statement, item 2 found **no defect** but
+> amended G.28's signature, items 3 and 4 **confirm** the blueprint as written. See **AMENDMENT
+> §§A-1…A-4** at the end of this file. Items 5–12 remain owed. Item 11 (`dag_build.py`) is
+> **done** — the builder now merges every `spec/DAG_BLUEPRINT_*.tsv` on rebuild (commit
+> `c8c8ea7f`). Nothing below is edited.
+
 Ordered by how much a wrong answer would cost.
 
 1. **G.23's declared proof-route defect** (the residual-stratum census: centre modulus `k` vs
@@ -3842,3 +3868,237 @@ Ordered by how much a wrong answer would cost.
 ---
 
 *END OF CHAPTER G BLUEPRINT — 78 nodes, 110 declarations, 327 DAG edges.*
+
+---
+
+## AMENDMENT 2026-08-15 (dated append; stage-0e gate, Opus arm) — items 1–4 of §14 adjudicated
+
+**Status of this block.** A dated append in the `EFF-W12` convention: **nothing in §§0–14 is edited
+in place**. Where a node's content is superseded, the amendment banner at that node's entry points
+here and this block governs. Four of §14's twelve cross-read items were adjudicated ahead of the
+codex read because the chapter-G fleet fires before the read lands. **A-1 refutes a node
+statement**; A-2 corrects a signature; A-3 and A-4 confirm the blueprint as written.
+
+**Wave-1 exposure** (wave 1 = the 19 layer-0 nodes, i.e. those with no intra-chapter DEPENDS:
+G.01, G.03, G.05, G.09, G.10, G.12, G.14, G.21, G.26, G.27, G.32, G.33, G.38, G.45, G.50, G.52,
+G.62, G.64, G.73): **no wave-1 node's statement changes.** A-2 changes a **layer-1** signature
+(G.28, whose only DEPENDS is the wave-1 node G.26), so it must land before wave 2 fires. A-1
+blocks a layer-6 node (G.23) and re-cuts the proof route of two layer-7 nodes (G.41, G.42).
+
+---
+
+### A-1 — G.23 `card_resStratum`: **STATEMENT REFUTED. NEITHER ROUTE GOVERNS.**
+
+**Banner for the node entry:** `G.23 [STATEMENT REFUTED 2026-08-15 — see AMENDMENT §A-1; do not
+assign as a proof target]`.
+
+**The finding.** The residual pair is **not an invariant of the class**. It is well defined only
+modulo the residue-field translation action, so the strata over distinct pairs in one translation
+orbit are **equal as sets**, and §14 item 1's certainty argument ("the sum over the `q²−q`
+non-degenerate pairs must reproduce G.20, which is proved independently") **double-counts by the
+orbit size**.
+
+**The mechanism, explicitly.** Fix a centre `γ` of depth `≥ 2k` for the lift `a`, and write
+`qval a γ = π^(2k)·b₀`, `qder a γ = π^k·b₁`. For any `d : O` the centre `γ' = γ + π^k·d` also has
+depth `≥ 2k`, because
+
+    qval a (γ + π^k d) = π^(2k)·(b₀ + b₁·d + d²)        (qval_shift)
+    qder a (γ + π^k d) = π^k·(b₁ + 2·d)                  (qder_shift)
+
+so the residual pair moves by `(b₀, b₁) ↦ (b₀ + b₁·d̄ + d̄², b₁ + 2·d̄)`, `d̄ = d mod 𝔪` — i.e. by the
+substitution `y ↦ y + d̄` on the residual quadratic `R(y) = y² + b₁y + b₀`. G.23's PROOF step 2
+identifies this action correctly; what it gets wrong is the conclusion drawn from it. The
+stabiliser is
+
+    Stab(p) = {d̄ : R(y + d̄) = R(y)} = {d̄ : 2d̄ = 0 ∧ d̄² + b₁d̄ = 0},
+
+so for `p` **not** a double-root pair:
+
+* residue characteristic `≠ 2`: `Stab(p) = {0}`, orbit size `q`;
+* residue characteristic `2`: `Stab(p) = {0, b₁}` (and `b₁ ≠ 0`, since `b₁ = 0` in characteristic
+  `2` forces the double-root pair `R = (y + √b₀)²`), orbit size `q/2`.
+
+Therefore `resStratum π N k p = resStratum π N k p'` for every `p'` in the orbit of `p`, and
+
+    #(resStratum π N k p) = q^(2N−2k−1) / #Stab(p)
+                          = q^(2N−2k−1)          (residue char ≠ 2)
+                          = q^(2N−2k−1)/2        (residue char 2),
+
+**not** `q^(2N−2k−2)`. The two agree exactly when `q = 2` — which is why every numeric
+cross-check in this chapter (all computed at `q = 2`) missed it.
+
+**Counterexample (machine-checked, and small enough to check by hand).** `O = ℤ_[3]`, `q = 3`,
+`N = 1`, `k = 0`, `p = (1, 0)` (not a double-root pair: the double-root pairs over `𝔽₃` are
+`(0,0), (1,2), (1,1)`; `p` is anisotropic). G.23a asserts `#(resStratum) = q^(2·1−0−2) = 1`. The
+truth is `3`: the three classes `(a₀,a₁) ∈ {(1,0), (2,1), (2,2)}` each admit a centre reading `p`
+— `γ = 0, 1, 2` respectively — and each has depth exactly `0`. A brute-force enumeration over
+`(p, N, k) ∈ {(3,1,0), (3,2,0), (2,1,0), (2,2,0), (3,3,1)}` returns per-pair strata
+`3, 27, 1, 4, 27` against the blueprint's `1, 9, 1, 4, 9`: **odd residue characteristic is wrong
+by the factor `q` in every case, `q = 2` is right in every case.**
+
+**What is NOT affected.** G.20 (`card_depthSet`) is independent and correct. **G.41 and G.42 have
+correct STATEMENTS**: their proofs as written commit two compensating errors — the union over
+pairs is not disjoint (over-counts by the orbit size) and the per-pair count is too small by
+exactly the orbit size — and the two cancel. Verified against the orbit picture in both
+characteristics:
+
+| | residue char ≠ 2 | residue char 2 |
+|---|---|---|
+| anisotropic pairs | `q(q−1)/2` | `q(q−1)/2` |
+| orbit size | `q` | `q/2` |
+| anisotropic **orbits** | `(q−1)/2` | `q−1` |
+| classes per orbit | `q^(2N−2k−1)` | `q^(2N−2k−1)/2` |
+| `#inertStratum` | `((q−1)/2)·q^(2N−2k−1)` | `((q−1)/2)·q^(2N−2k−1)` |
+
+— which is G.41's statement in both columns, and the same table with `SepPair` for `AniForm` is
+G.42's. G.43 and everything downstream (G.44–G.51) are untouched.
+
+**THE REPLACEMENT ROUTE (governs; it removes G.23 from the critical path).** Do not certify an
+individual pair `p`. Certify a **translation-invariant residual CLASS** `𝒫 ⊆ K × K` — the
+predicate, not the point. Both classes the chapter needs are translation-invariant, because
+`y ↦ y + d̄` does not change how `R` factors:
+
+    cert_𝒫 γ c  :=  readEquiv γ c ∈ tangAdm π (2k) N  ∧  (digit_2k of the value,
+                    digit_k of the derivative) ∈ 𝒫.
+
+* `hshift` at modulus `m = k` now **holds** (it is exactly the translation-invariance of `𝒫`), and
+  it is what route (a) needed and did not have;
+* `huniq` at `m = k` is G.11 verbatim;
+* `#S = #𝒫 · q^(N−2k−1) · q^(N−k−1)`, so `card_certSet_gen` gives
+  `#{c} = q^k · #S = #𝒫 · q^(2N−2k−2)`.
+
+Instantiating `𝒫 := {p | AniForm p}` (`#𝒫 = q(q−1)/2`, G.38) yields
+`#inertStratum = ((q−1)/2)·q^(2N−2k−1)` — **G.41 exactly, in one step, both characteristics** —
+and `𝒫 := {p | SepPair p}` (G.39) yields G.42. This is the shared private lemma
+`card_stratum_of_residualClass` that G.42's SIZE note already recommends; it is hereby promoted
+from "recommended factoring" to **the route**, and it needs neither route (a) nor route (b) nor
+G.23.
+
+**Why both declared routes fail.** Route (a) (`m = k`, residual pinned): `hshift` is **false** —
+moving the centre inside its mod-`π^k` coset changes the pinned pair. Route (b) (`m = k+1`):
+`huniq` is **false in residue characteristic 2** — the stabiliser `{0, b₁}` puts two distinct
+mod-`π^(k+1)` centres on the same class. (Route (b) does produce the correct count
+`q^(2N−2k−1)` in odd residue characteristic, so it is a valid route for that half only.)
+
+**Fleet instruction.** G.23a `card_resStratum` is **withdrawn** — it must not be assigned, and its
+`leanspec` stub is commented out as REFUTED. G.23b `depthSet_eq_iUnion_resStratum` is **TRUE as
+stated** (every class of depth exactly `2k` reads some non-double pair, and `(0,0)` — the only pair
+that could be read at depth `≥ 2k+1` — is a double-root pair) and stays; note only that the union
+is **not** disjoint. G.41/G.42 fire against the replacement route above. Nodes G.21 and G.22 (the
+`residualPair` and `resStratum` definitions) are **unchanged**.
+
+---
+
+### A-2 — G.30's window boundary: **NO DEFECT. G.28's WINDOW HYPOTHESIS IS OVER-STRONG BY ONE.**
+
+**Banner for the node entries:** `G.28 [SIGNATURE AMENDED 2026-08-15 — hN : 2*k+1 ≤ N; see
+AMENDMENT §A-2]`, `G.30 [BOUNDARY NOTE WITHDRAWN 2026-08-15 — see AMENDMENT §A-2]`.
+
+**Verdict.** The split certificate **does** fit in the window at the top even stratum. G.28's
+declared hypothesis `hN : 2*k+2 ≤ N` is one stronger than its own proof uses — the proof's step 4
+derives `hN' : 2*k+1 ≤ N` and never uses more. The amended signature is
+
+```lean
+theorem decidedAt_split_of_sep (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] {N k : ℕ} {a : Fin 2 → O} {γ z : O}
+    {b₀ b₁ : O} (hN : 2 * k + 1 ≤ N)                      -- was `2 * k + 2 ≤ N`
+    (h0 : qval a γ = π ^ (2 * k) * b₀) (h1 : qder a γ = π ^ k * b₁)
+    (hz : π ∣ (z ^ 2 + b₁ * z + b₀)) (hs : ¬ π ∣ (b₁ + 2 * z)) :
+    DecidedAt O 2 splitType N (proj O 2 N a)
+```
+
+**The evidence, from the landed text.** `CertSplit π a N` (`Drainage.lean:245`) asks for
+`2*w+1 ≤ N`, and at `γ' = γ + π^k z` the certificate holds with `w := k`: the derivative has exact
+valuation `k` (from `hs`) and the value is `π^(2k+1)`-divisible (from `hz`) — both **read inside
+the window** when `2k+1 = N`. Transport to every other lift is `CertSplit_congr`
+(`Drainage.lean:455`), whose only exponent side conditions are discharged `by omega` from
+`hw : 2*w+1 ≤ N` — equality included. And `typeOf_of_certSplit` (`Drainage.lean:407`) **discards
+the window bound entirely** (`obtain ⟨γ, w, -, hd1, hd2, hv⟩`). Nothing anywhere needs `2k+2 ≤ N`.
+
+Sanity instance: `O = ℤ_[3]`, `N = 1`, `k = 0`, class `(a₀,a₁) ≡ (0,1)`. Depth is exactly
+`0 = N−1`, the residual quadratic is `X(X+1)` — separable-split with both roots simple — and every
+lift reduces to `X² + X mod 3`, so Hensel splits **every** lift: the class is `splitType`-decided
+at level `1`. The stratum is not lost.
+
+**Consequences.** G.30's even branch needs only `t < N`, so the top even stratum survives, no
+stratum is dropped, and **G.43's identity acquires no `q^(−N)`-order error term**. The
+`⚠ BOUNDARY CONDITION, DECLARED` block at G.30 is withdrawn, including its fallback.
+
+**The fallback was not available anyway** — recording this, because it is the load-bearing half of
+the verdict. G.41 and G.42 are stated at level `N = 2*k+1+r` for **every** `r ≥ 0`, and `r = 0` is
+precisely the boundary stratum `2k = N−1`. Restricting G.30's even branch to `t + 2 ≤ N`, as the
+withdrawn block proposed, would leave G.42 **unprovable as stated at `r = 0`**, not merely
+imprecise. Any fleet agent that finds itself reaching for that fallback has hit a different bug.
+
+**On W-11's SPLIT-TAIL.** W-11 needs a boundary family because it classifies by the *shape*
+`(u, w) = (v(A₀), v(A₁))`, and at `u ≥ N` the shape is not window-determined (`EFF.W11.08`,
+C7-F1). The chapter never asserts a shape at the boundary — only `σ` — and C7-F1's own sentence is
+that `σ = split` **is** certified there. §0.4's dictionary already says the three W-11 families
+collapse into one depth stratum; A-2 is that collapse discharging its last obligation.
+
+---
+
+### A-3 — G.39's `q(q−1)/2` versus W-11's `(q−1)(q−2)/2`: **RECONCILIATION VERIFIED.**
+
+The displayed reconciliation at G.39 is **correct as written; do not "correct" G.39**. The check,
+made independently of the display:
+
+* W-11's residual census (`EFF.W11.16`) counts pairs `(c₁, c₀) ∈ F_q × F_q^*` — `c₀ ≠ 0` — with
+  rows `(q−1)(q−2)/2` split, `q(q−1)/2` irreducible, `q−1` double, summing to `q(q−1)` ✓.
+* The chapter counts all of `F_q × F_q`. The pairs W-11 excludes are exactly those with `b₀ = 0`,
+  i.e. `X² − b₁X = X·(X − b₁)`: for `b₁ ≠ 0` two **distinct** roots (`q−1` pairs, joining the split
+  row); for `b₁ = 0` the double root `0` (one pair, joining the double row); **none** anisotropic,
+  since `0` is always a root — which is why the irreducible row is unchanged.
+* Hence `(q−1)(q−2)/2 + (q−1) = q(q−1)/2` ✓ and `(q−1) + 1 = q` ✓, and the three chapter rows
+  `q(q−1)/2`, `q(q−1)/2`, `q` sum to `q²` ✓.
+* Independent leg (no W-11 input): the separable-split pairs are in bijection with the 2-element
+  subsets of `K`, so their number is `C(q,2) = q(q−1)/2`, which is G.39's statement
+  `2·#SepPair + q = q·q` ✓; the anisotropic count is then `q² − q(q−1)/2 − q = q(q−1)/2` ✓ = G.38.
+
+**Rider (the chapter's convention is the right one, not merely a rescaling).** The `b₀ = 0`,
+`b₁ ≠ 0` pairs are **realized** by the depth filtration: a class of depth exactly `2k` has `b₀ = 0`
+iff `π^(2k+1) ∣ qval` while `π^(k+1) ∤ qder`, which is exactly W-11's 2SIDED/SPLIT-TAIL. And
+`(0,0)` is **never** realized at depth exactly `2k` (it is Tang at `2k+1`). So the chapter's larger
+pair space is the correct index for its strata, and W-11's `c₀ ≠ 0` normalisation is correct for
+its own refine-node convention. Both tables are right about their own object.
+
+---
+
+### A-4 — G.43's non-telescope route: **NON-CIRCULAR, VERIFIED.**
+
+`G.38` (`two_mul_card_aniForm`) and `G.39` (`two_mul_card_sepPair`) are statements about
+`K × K` for a finite field `K`, under ENV-C — no `O`, no `Coeff`, no `proj`, no `Tang`, no
+`decidedSet`, no density. Their DEPENDS are the landed `AniForm`, `rootPairMap`,
+`rootPairMap_injective`, `exists_rootPairMap_iff`, `two_mul_choose_two` and mathlib's `Sym2`. **No
+`n = 2` input reaches them**, so the chain `G.38/G.39 → G.41/G.42 → G.43` is acyclic and the
+identity is not proved from itself. The route stands as a fourth independent derivation of
+every-window `split = inert`, beside W-11's finite telescope (`EFF.W11.27`), PE4's disc-fibration
+(`EFF.W11.40`) and the aggregate route (`EFF.W11.12`).
+
+Two riders a consumer must carry:
+
+1. **G.43 inherits A-1's repair through its suppliers.** G.41 and G.42's *statements* are correct
+   (A-1's table), but their proof route is re-cut; G.43's own statement and proof are unaffected.
+2. **Shared-mechanism caveat, not circularity.** G.38 and G.39 both factor through
+   `rootPairMap_injective` + `Sym2.natCard`. An error there would move *both* counts together, so
+   the `split = inert` identity would survive while the *values* at G.46–G.48 would not. The
+   decorrelated leg is G.47's mandated **route 2** (split obtained by subtraction from the landed
+   `sum_three_decidedDensities_eq_one`), which shares no input with route 1. G.47's requirement
+   that **both routes be recorded in the node file** is therefore load-bearing and must not be
+   dropped as redundant.
+
+---
+
+### Amendment bookkeeping
+
+| item | §14 item | verdict | nodes touched | wave-1 impact |
+|---|---|---|---|---|
+| A-1 | 1 (G.23) | **statement refuted**; replacement route governs | G.23a withdrawn; G.23b kept (union not disjoint); G.41/G.42 re-routed | none (G.23 is layer 6; G.41/G.42 layer 7) |
+| A-2 | 2 (G.30) | no defect; G.28 signature amended `2k+2 → 2k+1` | G.28 signature; G.30's boundary block withdrawn | none, but **G.28 is layer 1** — land before wave 2 |
+| A-3 | 3 (G.39) | reconciliation verified as displayed | none | none |
+| A-4 | 4 (G.43) | non-circular | none | none |
+
+Declaration census after this amendment: **109 contract declarations** (110 minus the withdrawn
+G.23a). The `leanspec` stubs (`leanspec/Leanspec/ChapG.lean`, commit `dfa34cd6`) are updated to
+match: G.23a commented out with a REFUTED marker, G.28's stub carrying the amended hypothesis.
+Items 5–12 of §14 remain **owed to the codex cross-read**.
