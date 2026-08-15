@@ -1983,6 +1983,303 @@ TEETH note.
 
 ---
 
-<!-- RESUME: §5 through E.29. Next: E.30–E.34 (lift layer, coset record, twist telescoping, cocycle). -->
+### NODE E.30 [lemma] [fresh]
+
+**STATEMENT.** *The realized-set arithmetic `T(k)` (LEMMA HE7-L1's combinatorial core, with the
+corrected thresholds).* For `e, h : ℕ` coprime, `f₁ ≥ 1`, `D′ = e*f₁`, and `k : ℕ`; let
+`i₀ = i₀(k) < e` be the class index (`i₀*h ≡ k (mod e)`, E.03's uniqueness at the base rung).
+Define `T(k) := {t < f₁ : (i₀ + e*t)*h ≤ k}` (a `Finset (Fin f₁)`). Then:
+(i) `T(k) = Finset.univ ↔ (i₀ + e*(f₁−1))*h ≤ k` (fullness iff the deepest slot reaches);
+(ii) `(D′−1)*h ≤ k → T(k) = univ` (the k-uniform sufficient bound: `i₀ + e(f₁−1) ≤ D′−1`);
+(iii) `T(k) = ∅ ↔ k < (i₀)*h`... precisely: `T(k) = ∅ ↔ ¬ (i₀*h ≤ k)` (the `t = 0` slot is the
+shallowest — "If T(k) = ∅ the height k is not attained at all").
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+def reachSet (e h f₁ i₀ k : ℕ) : Finset (Fin f₁) :=
+  Finset.univ.filter fun t => (i₀ + e * (t : ℕ)) * h ≤ k
+
+theorem reachSet_full_iff {e h f₁ i₀ k : ℕ} (hf : 1 ≤ f₁) :
+    reachSet e h f₁ i₀ k = Finset.univ ↔ (i₀ + e * (f₁ - 1)) * h ≤ k
+
+theorem reachSet_full_of_uniform {e h f₁ i₀ k : ℕ} (hi : i₀ < e) (hf : 1 ≤ f₁)
+    (hk : (e * f₁ - 1) * h ≤ k) : reachSet e h f₁ i₀ k = Finset.univ
+
+theorem reachSet_empty_iff {e h f₁ i₀ k : ℕ} (hf : 1 ≤ f₁) :
+    reachSet e h f₁ i₀ k = ∅ ↔ k < i₀ * h
+```
+
+**DEPENDS.** E.03 (the class index) · mathlib `Finset.filter`, `Fin` arithmetic.
+
+**PROOF.**
+1. (i): the filter is monotone-decreasing in `t` (`(i₀ + et)h` increases with `t`), so full iff
+   the largest `t = f₁ − 1` passes. `Finset.filter_eq_univ_iff` (`Finset.eq_univ_iff_forall`) +
+   monotonicity.
+2. (ii): `i₀ ≤ e − 1` gives `i₀ + e(f₁−1) ≤ e−1 + ef₁ − e = ef₁ − 1 = D′−1`; multiply by `h`
+   and chain with `hk`; apply (i). (This is HE7-L1's own
+   `max_k (i₀(k) + e₁(f₁−1))h = (D′−1)h` computation.)
+3. (iii): empty iff the SMALLEST `t = 0` fails: `¬ (i₀h ≤ k)`. `Finset.filter_eq_empty_iff` +
+   monotonicity.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.HE7.19` (LEMMA HE7-L1: the display `T(k) := {t < f₁ : k ≥ (i₀ + e₁t)·h}`, the
+two boundary clauses "it is ALL of K^× iff T(k) = {0,…,f₁−1} iff k ≥ (i₀(k) + e₁(f₁−1))·h; a
+k-uniform sufficient condition is k ≥ (D′−1)h. If T(k) = ∅ the height k is not attained at
+all"; the proof's threshold computation); `EFF.HE7.21` (FINDING HE7-F1's two counterexamples —
+`(3,1,2)`: `k = 1` unattained; `(2,2,1)`: `k ∈ {0,1}` realise only `F_Q ⊊ K` — which E.66/E.68
+re-fire numerically); `EFF.T2.10` (the T2-side fullness criteria).
+
+**⚠ THE COSET CORRECTION AND THE TWO RIDERS (transcribed at exactly source strength).** The
+REALIZED-SET display this arithmetic feeds was corrected twice: (a) the ϖ-read realized set is
+the COSET `η_θ^{−q(k)}·{Σ_{t∈T(k)} c_t·η_θ^t : c_t ∈ F_Q, not all 0}` (dated correction from
+HE6 PE2 F-1 — the external unit factor; "Both boundary clauses are twist-invariant"); (b) the
+set inside the braces is "the nonzero elements of a proper F_Q-linear subspace (a punctured
+proper subspace)", NOT a subgroup-coset (ANNEX R R5's rider; the two riders "point in opposite
+directions on the same phrase" and are BOTH true of different objects — HE7's OPEN-CALL 2,
+recorded in §13/§14, wording only, no mathematics). E's Lean object is (a)+(b) composed:
+`realizedSet = (fixed unit) • {seamSum γ η : γ supported on T(k), γ ≠ 0}` — E.32's statement.
+The sub-threshold clause is exercised by NO sealed tooth at `q(k) ≠ 0` (the disclosed
+limitation of Q3's frames); E.66's gate adds a `q(k) ≠ 0` numeric witness.
+
+**TEETH.** Q3 / HE7-LIFT1 (five level-1 frames, exhaustive reachable-height tables) +
+HE7-T-LIFT2SHARP → **Lean theorem** (this arithmetic); E.68 re-fires the tables.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.31 [theorem] [fresh]
+
+**STATEMENT.** *The twisted lift at a rung (R1-c schema; `(LIFT₂)` is its `ϑ ≡ 1` instance).*
+Let `C` be the level-`i` carrier, `R` the rung, `K'` the next field (`[K':K] = g` via `η` as in
+E.29), and `k, m₀, s₀` with `ℓm₀ + s₀u = k`, `s₀ < ℓ`, and the per-height threshold
+`(g − 1)*u + b ≤ m₀` where every height `≥ b` is `C.Full` (the level-`i` fullness supply).
+Then for every `c ∈ K'` written `c = seamSum γ η` (the K-basis expansion, `γ : Fin g → K`) with
+`c ≠ 0`, and every twist vector `ϑ : Fin g → K` (all nonzero), there is a slot family
+`C_t := lift of γ_t * ϑ_t⁻¹` at height `m_t = m₀ − t*u` (E.10's `hlift`, legal since
+`m_t ≥ b` by the threshold — E.08's arithmetic), whose assembled development has twisted slot
+read exactly `(k, c)` by E.29 — "the residue is `Σ_t (γ_tϑ_t^{−1})·ϑ_t·β_i^t = c`"
+(`EFF.HE7.111`). The k-uniform form: `R.nextBound b ≤ k` suffices (E.08).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem twisted_lift {O : Type*} [CommRing O] {K K' : Type*} [Field K] [Field K']
+    [Algebra K K'] (C : SlotCarrier O K) (R : RungDatum) {η : K'}
+    (hgen : (minpoly K η).natDegree = Module.finrank K K')
+    (hint : IsIntegral K η) (hg : R.g = Module.finrank K K')
+    {b : ℕ} (hfull : ∀ m : ℕ, b ≤ m → C.Full m)
+    {k m₀ s₀ : ℕ} (hs₀ : s₀ < R.ℓ) (hk : R.ℓ * m₀ + s₀ * R.u = k)
+    (hthr : (R.g - 1) * R.u + b ≤ m₀)
+    (γ ϑ : Fin R.g → K) (hγ : ∃ t, γ t ≠ 0) (hϑ : ∀ t, ϑ t ≠ 0) :
+    ∃ c : ℕ → Polynomial O,
+      (∀ s, R.slotCount ≤ s → c s = 0) ∧ (∀ s, (c s).natDegree < C.D) ∧
+      (∀ t : Fin R.g, γ t ≠ 0 →
+        C.hgt (c (s₀ + R.ℓ * t)) = ((m₀ - (t : ℕ) * R.u : ℕ) : WithTop ℤ) ∧
+        C.dig (c (s₀ + R.ℓ * t)) = γ t * (ϑ t)⁻¹) ∧
+      (∀ t : Fin R.g, γ t = 0 → c (s₀ + R.ℓ * t) = 0)
+```
+
+**DEPENDS.** E.08, E.10 (`hlift`), E.28, E.29 (the readout), E.30 (the fullness supply shape).
+
+**PROOF.**
+1. Per `t` with `γ t ≠ 0`: `m_t := m₀ − t*u ≥ m₀ − (g−1)u ≥ b` (from `hthr`, E.08's step), so
+   `C.Full m_t` (`hfull`); `hlift` at digit `γ t * (ϑ t)⁻¹ ≠ 0` supplies `c (s₀ + ℓt)`.
+2. Set every other slot to 0. Conclusion clauses are the construction's contract; the E.29
+   readout (`res = Σ (γϑ⁻¹)·ϑ·η^t = seamSum γ η = c`) is the consumer's next move, stated
+   there.
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.HE7.111` (ANNEX-THEOREM R1-c, statement + proof verbatim: "§S4.2 one level up,
+with ONE pre-twist line added … invoke (LIFT_{i−1}) at level-i height `m_t := m₀ − tu_i` … for
+the residue **γ_t·ϑ_t^{−1} ∈ K_i^×** — the INVERSE twist … The bound recursion is unchanged —
+values never see the twist"); `EFF.HE7.12` ((LIFT₂), the `ϑ ≡ 1` instance, statement + proof);
+`EFF.HE7.27` (DEFINITION HE7-3's inverse-twisted prescription — the mechanism's first
+appearance, "machine-load-bearing per tooth HE7-T-BADTWIST").
+
+**TEETH.** HE7-T-BADTWIST (21 reads change when the twist is dropped; twisted read == PARI
+480/480) + `he7rannex_supp.py` K2R (R1-c's mechanism used constructively, 15 members) → **Lean
+theorem**; Q3 (ten frames) evidences the thresholds (E.68).
+
+**ENVIRONMENT.** ENV-E2 + ENV-E3.
+
+---
+
+### NODE E.32 [lemma] [fresh]
+
+**STATEMENT.** *The realized set at a height (corrected, punctured-subspace-coset form).* In
+ENV-E3 with `η` as in E.27 and a fixed unit `w : K'ˣ` (the external twist `η_θ^{−q(k)}` — a
+DATUM here; its value is instance content): the set of realizable residues at a height with
+reach set `T ⊆ Fin f₁` is
+`{w • seamSum γ η : γ : Fin f₁ → F, (∀ t ∉ T, γ t = 0), γ ≠ 0}` — the `w`-translate of the
+nonzero elements of the `F`-span of `{η^t : t ∈ T}`:
+(i) this set equals `w • (span puncture)` — a PUNCTURED PROPER SUBSPACE translate when
+`T ≠ univ` (R5's rider wording), all of `K'^×`'s… precisely `w • (K'∖{0}) = K' ∖ {0}` when
+`T = univ` ("at full T(k) the coset is still ALL of K^×");
+(ii) when `T = univ` the set is `K' \ {0}` exactly (basis spans; `w`-translate of everything
+nonzero is everything nonzero).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+def realizedSet {F K' : Type*} [Field F] [Field K'] [Algebra F K']
+    {f₁ : ℕ} (η : K') (w : K'ˣ) (T : Finset (Fin f₁)) : Set K' :=
+  { x | ∃ γ : Fin f₁ → F, (∀ t ∉ T, γ t = 0) ∧ (∃ t, γ t ≠ 0) ∧
+        x = (w : K') * seamSum γ η }
+
+theorem realizedSet_full {F K' : Type*} [Field F] [Field K'] [Algebra F K'] {f₁ : ℕ}
+    {η : K'} (hgen : (minpoly F η).natDegree = Module.finrank F K')
+    (hint : IsIntegral F η) (hf : f₁ = Module.finrank F K') (w : K'ˣ) :
+    realizedSet (F := F) η w Finset.univ = {x : K' | x ≠ 0}
+```
+
+**DEPENDS.** E.26, E.27 · mathlib `PowerBasis` span (`Algebra.adjoin.powerBasis`) or the
+H.53-route (`minpoly` degree + `Basis.mk`).
+
+**PROOF.**
+1. `⊆`: a nonzero `γ` gives `seamSum γ η ≠ 0` (E.27 at `ϑ ≡ 1`), and `w` is a unit.
+2. `⊇`: `{η^t}` spans (`minpoly` degree = finrank makes the power family a basis — the H.53
+   route B object); expand `w⁻¹ * x` in the basis; nonzero `x` gives a nonzero coordinate
+   vector.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.HE7.19` (the frozen realized-set display + the dated EFFECTIVE READING:
+"`η_θ^{q(k)} := res(ϖ(θ)^k/n(k)(θ))`, realized set = `η_θ^{−q(k)} · {Σ_{t∈T(k)} c_t·η_θ^t :
+c_t ∈ F_Q, not all 0}`"); `EFF.HE7.22` (sharpness + ANNEX R R5's rider: "read 'a proper
+subgroup-coset of K₂' as 'the nonzero elements of a proper F_Q-linear subspace (a punctured
+proper subspace)'" — the Lean object above IS the composed corrected form, discharging the
+OPEN-CALL 2 wording question at the formal level: both riders are literally true of this
+object, `w` the coset half, the braces the subspace half); `EFF.T2.50` (the `(Q-DEF)`
+reconciliation directive: "the two agree on q(k) with no sign convention left free").
+
+**TEETH.** HE7-T-LIFT2SHARP (exact sets by enumeration, ten frames; "every k above the
+closed-form threshold IS surjective, and some k below it is NOT") → **Lean theorem** for the
+full case; the sub-threshold proper case is E.30(iii)+(i) with this node's set; E.66/E.68 add
+the `q(k) ≠ 0` numeric witness the sealed teeth lacked (`EFF.HE7.19`'s disclosed limitation).
+
+**ENVIRONMENT.** ENV-E3.
+
+---
+
+### NODE E.33 [lemma] [fresh]
+
+**STATEMENT.** *Twist-unit telescoping (R1-a(iii)'s exponent engine) and the `q(k)` wrap.*
+(i) For any commutative group `G` and `n : ℤ → G`: defining `τ(a,b) := n(a)·n(b)·(n(a+b))⁻¹`,
+the telescoping identity holds: for `θ_t := n(m₀ − t*u) * n(u)^t * (n(m₀))⁻¹`,
+`θ_t = Π_{j<t} τ(m₀ − (j+1)*u, u)` — "each factor is `n_i(m₀−(j+1)u_i)n_i(u_i)/n_i(m₀−ju_i)`;
+the product collapses" (`EFF.HE7.110` Step 3).
+(ii) If `n` is a homomorphism (`n(a+b) = n(a)n(b)`), then `τ ≡ 1` and every `θ_t = 1` — the
+level-1 degeneration ("τ₁ ≡ 1 because `k ↦ ϖ^k` is a homomorphism — THE point of the re-based
+system", `EFF.HE7.108`(ii); "At i = 1 every θ_t = 1 (ϖ-powers multiply)").
+(iii) The `(COC)` identity: `τ(a,b)·τ(a+b,c) = τ(b,c)·τ(a,b+c)` — four-factor cancellation
+(`EFF.T2.07`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+def coc {G : Type*} [CommGroup G] (n : ℤ → G) (a b : ℤ) : G :=
+  n a * n b * (n (a + b))⁻¹
+
+theorem coc_cocycle {G : Type*} [CommGroup G] (n : ℤ → G) (a b c : ℤ) :
+    coc n a b * coc n (a + b) c = coc n b c * coc n a (b + c)
+
+theorem theta_telescope {G : Type*} [CommGroup G] (n : ℤ → G) (m₀ u : ℤ) (t : ℕ) :
+    n (m₀ - t * u) * (n u) ^ t * (n m₀)⁻¹
+      = ∏ j ∈ Finset.range t, coc n (m₀ - (j + 1) * u) u
+
+theorem coc_of_hom {G : Type*} [CommGroup G] (n : ℤ → G)
+    (hn : ∀ a b, n (a + b) = n a * n b) (a b : ℤ) : coc n a b = 1
+```
+
+**DEPENDS.** E.04 (the `{0,1}` exponent law pairs with this at instances) · mathlib
+`Finset.prod_range_succ`, `CommGroup` simp set.
+
+**PROOF.**
+1. `coc_cocycle`: unfold; both sides equal `n a · n b · n c · (n (a+b+c))⁻¹` after
+   associativity/cancellation (`group` tactic; mind `(a+b)+c = a+(b+c)` rewrites).
+2. `theta_telescope`: induction on `t`; the `j = t` factor is
+   `n(m₀−(t+1)u)·n(u)·(n(m₀−tu))⁻¹`; product telescopes (`Finset.prod_range_succ`), `group`.
+3. `coc_of_hom`: unfold, rewrite, cancel.
+
+**SIZE.** 22 lines.
+
+**SOURCE.** `EFF.T2.07` (`(COC-DEF)`/`(COC)` boxed; the four-factor cancellation derivation);
+`EFF.HE7.110` (Step 3's telescoping, verbatim); `EFF.HE7.108` (R1-a(ii)'s `τ₁ ≡ 1` +
+(R1.1)'s recursion — whose EXPONENT content is E.04; the letter-monomial RESIDUE value
+`res(τ_i(a,b)(ξ)) = ι(Π β_j^{e_j})` is carrier content, instance-supplied); `EFF.T2.08`
+(`(THETA-EVAL)`, `Θ_s = ϑ_s^{−1}`, `(BETA)` `τ(k,k′) = β^c` — "It is not replaced by 1. At
+deeper levels the same construction gives a monomial in all preceding residual letters").
+
+**⚠ GC-14 (the ϑ ORIENTATION).** The letters `ϑ_s`/`Θ_s` here obey `EFF.T2.08`'s
+`Θ_s = ϑ_s^{−1}` and `(THETA-EVAL)`'s direction. The FOUR-WAY orientation reconciliation
+(GENTOW2's ϑ vs T1's Θ vs T3's ϑ_{G2} vs GENTOW5's reciprocal ϑ_t) is chapter D's canonical
+table (GC-14); every chapter-E consumer cites that table by anchor — `EFF.GENTOW2 orientation
+records [supplied-by: chapter D, the GC-14 table]` — and NO chapter-E node adjudicates or
+restates the correspondence (honesty E-5). This node's `coc`/`θ_t` are T2/HE7-internal letters,
+used only through the displays quoted above.
+
+**TEETH.** `he7rannex_supp.py` (the exponent-vector value identity on every computed
+`n₃`-monomial) → **Lean theorem** for the exponent/group half; the residue evaluation stays
+instance content.
+
+**ENVIRONMENT.** ENV-E1 (abstract group).
+
+---
+
+### NODE E.34 [lemma] [fresh]
+
+**STATEMENT.** *`(IDX-TWIST)`'s bijection layer (the print/coherent relabelling is lossless).*
+In a field `K`: for a fixed unit `w : Kˣ`, the map `x ↦ w * x` is a bijection of `K` fixing `0`
+and restricts to a bijection of `K \ {0}` onto itself; consequently, for any subset
+`S ⊆ K \ {0}` closed under the relabelling's index translation (the family's labels run over
+`K^×`, the master's digits over `K` with `0` the empty recentering), the relabelled family
+covers every element "member for member; what it does not do is match them at equal index
+names" (`EFF.T2.70`). Packaged with the two qualifiers as RECORDED READING DIRECTIVES (not Lean
+content): equality of polynomials exactly at the COMPATIBLE lift choice, modulo height-`>κ`
+increments at an arbitrary permitted one; covering direction at `κ > D′h`, not mere fullness
+(`EFF.T2.20`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem unit_mul_bijOn {K : Type*} [Field K] (w : Kˣ) :
+    Set.BijOn (fun x : K => (w : K) * x) {x | x ≠ 0} {x | x ≠ 0}
+
+theorem unit_mul_zero {K : Type*} [Field K] (w : Kˣ) : (w : K) * 0 = 0
+```
+
+**DEPENDS.** none · mathlib `Units.mulLeft_bijective`, `Set.BijOn`.
+
+**PROOF.**
+1. `Units.mulLeft_bijective w` restricted: nonzero maps to nonzero (unit × nonzero ≠ 0),
+   surjectivity onto nonzero by `w⁻¹ * y`. Assemble `Set.BijOn`.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.T2.70` (the bijection argument, verbatim: "`η^{q(κ)}` is ONE fixed element of
+`K^×` … Multiplication by it is a bijection of K fixing 0, and of K^× onto itself. The family's
+labels at `(ℓ,d) = (1,1)` run over exactly `K^×` … this master's digits at a full height run
+over all of K … with `L_κ(0) = 0` the empty recentering"); `EFF.T2.20` (`(IDX-TWIST)` boxed +
+the two qualifiers, transcribed as directives above — they are statements about the INSTANCE's
+lift choices, carrier content).
+
+**TEETH.** the print/coherent-frame mutant (its cure is exactly this bijection +
+E.29's coherent read) → **Lean theorem** for the bijection; the frame conversion itself is
+E.22's instance row.
+
+**ENVIRONMENT.** ENV-E3.
+
+---
+
+<!-- RESUME: §5 through E.34. Next: E.35–E.38 (level-one digit forcing, R2-a, peel chain, slot-domination). -->
 
 *(remaining §5 nodes, then §§6–14 follow)*
