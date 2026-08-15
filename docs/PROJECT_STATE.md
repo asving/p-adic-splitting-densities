@@ -4819,3 +4819,38 @@ top-2 items). (2) The aggressive Fable-max wave hit repeated 529s
 adjusted: Fable-max runs SERIALLY (one at a time); the review wave
 resumes sequentially after the WELD-ZERO confirmation lands;
 opus/sonnet lanes unaffected throughout.
+
+**2026-08-15 DATED APPEND #58 — CHAPTER G IS CLOSED IN `leanfinal`;
+THE UNIFORMITY THEOREM IS PROVED AT `n = 2`, UNCONDITIONALLY.**
+The chapter-G fleet's closing tail (wave 8) landed the last twelve
+nodes: the `n = 2` count layer G.41/G.42 (`card_inertStratum`,
+`card_splitStratum`), G.43 (`decidedCount_split_eq_inert` — the
+every-window COUNT identity, strictly stronger than the corpus's
+density-only version), G.44, the exact density chain G.46–G.49
+(`genuineDensity_two_exact`: split = inert = `q/(2(q+1))`,
+ram = `1/(q+1)`, every other type `0`), G.51
+(`uniformityStatement_two`), the `n = 3` lower-bound node G.61
+(`lowers_three`) with its new infrastructure (`res1Equiv`,
+`liftRes1`, `unitSet`, the level-2 stratum counts,
+`decidedDensity_ge_of_inj`), and the two gates G.77/G.78.
+**leanfinal green, zero `sorry`, zero axioms beyond Lean core; every
+chapter-G declaration censused at G.78. leanspec green with every
+signed contract retired to `example := <landed name>` except G.23b's
+deliberately-kept stub.** Chapter-G node status: 90 of 91 node
+entries landed; the single blocked residue is **G.23**, unlanded
+because its statement is WRONG (G.23a refuted at §A-1, G.23b true
+but its union is not disjoint) — its function on the critical path is
+served by the twelve-node replacement route G.23R1–G.23R12.
+**HONESTY FENCE, unchanged.** G.51 is the `n = 2` SLICE of
+`UniformityStatement`, not the capstone: the capstone quantifies over
+all `n > 0`. The honest sentence is *the uniformity theorem is proved
+at `n = 1` (`Gates.lean`) and at `n = 2` (G.51), unconditionally,
+over every complete DVR with finite residue field, both
+characteristics, wild residue characteristic included*. Nothing in
+chapter G proves `DrainageAt 3`; G.61's five values are LOWER BOUNDS,
+not HM3.D's five densities; the codex cross-read of the chapter is
+still OWED. **One blueprint statement was refuted and corrected in
+flight** (§A-9.1): G.44a's ram index set is `Finset.range (N / 2)`,
+not the signed `Finset.range ((N + 1) / 2)`, which is false at every
+odd `N` — machine-checked at `O := ℤ_[2]`, `N = 1`. Census, teeth
+tally and residue list: blueprint §A-9.3.
