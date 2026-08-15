@@ -9,9 +9,16 @@ in the blueprint's node order `H.01 … H.99` (`H.99` is a gate/census block, no
 
 **STATE (read this first): RETIRED, 2026-08-15.** Chapter H is complete in `leanfinal`, so every
 stub here has been diffed against its landed declaration and replaced by an `example` — no `axiom`
-remains. **190 declarations retired / 253 retirement `example`s / 5 findings (R1–R5) / 1 deliberate
-residue (`stageIfaceE`) / 0 substantive divergences.** Full accounting in the RETIREMENT CENSUS
-below; everything above it in this header is the pre-retirement gate record.
+remains. **191 declarations retired / 261 retirement `example`s / 5 findings (R1–R5) / 0 deliberate
+residues / 0 substantive divergences.** Full accounting in the RETIREMENT CENSUS below; everything
+above it in this header is the pre-retirement gate record.
+
+**AMENDED 2026-08-15 (later the same day): R3 IS CLOSED and the last residue is GONE.** The one
+declaration this file kept as a real local `def` — `stageIfaceE`, the only `StageInterface`
+inhabitant in the repo — has been landed in `leanfinal` (`Uniformity/ChapH/H09w.lean`, the H.09
+witness file, together with the genre-F witness `stageIfaceF` that §16 TODO item 14 owed) and is now
+retired here like every other declaration: 190 + 1 = **191** retired, 253 + 8 = **261** `example`s
+(one type diff + seven field `rfl`s). Nothing in this file is a local definition any more.
 
 ## FILE LAYOUT AND NAMESPACE (the two governing deviations, both recorded)
 
@@ -102,10 +109,13 @@ residue.**
   A-H.1/D8) and the fleet landed at the repaired types. Retired at the **amended** types — see
   findings R1 and R2 at the nodes themselves. 188 signed + 2 amended = **190** = §15's signable
   count.
-* **Deliberate residue: `stageIfaceE`** stays a real local `def` (the G-precedent's one deliberate
-  survivor). It is not a blueprint node and has NO landed counterpart, so there is nothing to
-  retire it against; it is also load-bearing here, as the only `StageInterface` inhabitant in the
-  repo (finding R3) and the witness that makes D4's refutation machine-checked.
+* **1** declaration that is not a blueprint node at all, `stageIfaceE` → 8 `example`s (type +
+  seven field `rfl`s). It was this pass's one deliberate residue — a real local `def`, kept because
+  it had NO landed counterpart to retire against, and load-bearing here as the only
+  `StageInterface` inhabitant in the repo (finding R3) and the witness that makes D4's refutation
+  machine-checked. **CLOSED later on 2026-08-15**: it is landed in
+  `leanfinal/Uniformity/ChapH/H09w.lean` (verbatim, proof terms included) and retired here, so the
+  residue count is now zero. 190 blueprint declarations + this one = 191 retired.
 
 ### FINDINGS (the product of this pass)
 
@@ -115,11 +125,19 @@ residue.**
   file's own refutations, and the landed types are byte-identical to the amended SIGNATURE blocks —
   **not** silent drift. Recorded at the nodes, where the refuted displays are also retained verbatim
   as provenance. *The reader must not treat those commented displays as what is proved.*
-* **R3 — F2 IS STILL OPEN, and it moved into `leanfinal`.** The landed corpus contains **no**
-  inhabitant of `StageInterface` (`grep -rn ': StageInterface' leanfinal/` finds only binders and
-  docstrings, 2026-08-15), so `leanfinal`'s H.72 is a theorem about a possibly-empty type. The
-  repo's only witness is `stageIfaceE` here, and `leanspec` is never imported by `leanfinal`. The
-  genre-F instance §3's design note claims is still absent everywhere.
+* **R3 — F2 WAS STILL OPEN, and it had moved into `leanfinal`; CLOSED the same day.** As found:
+  the landed corpus contained **no** inhabitant of `StageInterface` (`grep -rn ': StageInterface'
+  leanfinal/` found only binders and docstrings, 2026-08-15), so `leanfinal`'s H.72 was a theorem
+  about a possibly-empty type; the repo's only witness was `stageIfaceE` here, and `leanspec` is
+  never imported by `leanfinal`. **Closure (2026-08-15, de-vacuity unit):**
+  `leanfinal/Uniformity/ChapH/H09w.lean` lands `stageIfaceE` (ported verbatim from this file, proof
+  terms included) AND `stageIfaceF (N H : ℕ) (l : StageLeaf) : StageInterface genreD2bwitness N H 4`,
+  the genre-F instance §3's design note claimed and §16 TODO item 14 owed — over the `f₁ = 2` datum
+  item 14 names, where `hbracket`'s MASS normalization is visible (the witness's bracket at
+  `κ = μ = 2` is H.21's certified `alphaBracket 4 1 2 = 192 = ghost 16 × letters 12`, and the
+  letter-sum candidate is machine-checked NOT to satisfy `hbracket` there). Both footprints are Lean
+  core only. What is NOT closed: `(CS-1Q)`/`(CS-3)` still have no teeth anywhere in the corpus and
+  `HYP.36` stays CARRY — inhabitation is not per-genre verification.
 * **R4 — D5 IS CLOSED: `A1Cell.deltaSubst`'s stub-side determination was landed unchanged.** The
   blueprint's PROOF field pinned only `expCoeff`; the three `rfl` diffs at H.94 confirm the fleet
   landed this file's choice for all seven unpinned fields (`offset`, `stride`, `expConst`,
@@ -242,10 +260,13 @@ resolution really goes to the LANDED declarations and not to a surviving local s
   possibly-empty type. Contrast `GenreDatum`, which the chapter instantiates three times
   (`genreE2`, `genreA2witness`, `genreD2bwitness`) — exactly the chapter-G `CertFamily` discipline
   ("all the work sits in the instances"). Either the two claimed instances need signatures, or the
-  design note's claim needs withdrawing. **Partly closed here:** this file constructs
+  design note's claim needs withdrawing. **Partly closed here:** this file constructed
   `stageIfaceE : StageInterface (genreE2 0) 2 0 4` (gate section) — so the structure is inhabited
   and its eleven fields are jointly satisfiable, which is also what makes D4's refutation bite. The
   chapter still signs no instance of its own, and the genre-F instance §3 claims is still absent.
+  [**FULLY CLOSED 2026-08-15**, after this record was written: both witnesses are landed in
+  `leanfinal/Uniformity/ChapH/H09w.lean` and this file's `stageIfaceE` is retired against the landed
+  one — see finding R3 in the retirement census above. This bullet reads in the past tense.]
 * **(NOT a defect — recorded so the count reconciles.)** Two of the 190 signed types are NOT in
   their node's SIGNATURE block but in that node's ⚠ SIGNATURE NOTE, which is where the blueprint
   cures its own two declared defects: H.54's `stageLift'` (line 3413) and H.97's
@@ -1246,10 +1267,12 @@ is retained verbatim above as provenance; the `example` below diffs the AMENDED 
 `Uniformity.Density.Induction.rate_lossPriced`. Class: sanctioned statement change, not silent
 drift — but the reader must not treat the commented display above as what is proved.
 
-**STILL OPEN (F2, and it moved):** the landed corpus contains NO inhabitant of `StageInterface`
-anywhere (`grep -rn ': StageInterface' leanfinal/` finds only binders and docstrings, 2026-08-15),
-so `leanfinal`'s H.72 is a theorem about a possibly-empty type. The repo's ONLY witness is
-`stageIfaceE` in this file's gate section below, and `leanspec` is never imported by `leanfinal`. -/
+**F2/R3, RESOLVED 2026-08-15 (was: STILL OPEN, and it had moved):** at retirement the landed corpus
+contained NO inhabitant of `StageInterface` anywhere, so `leanfinal`'s H.72 was a theorem about a
+possibly-empty type and the repo's ONLY witness was `stageIfaceE` in this file's gate section below —
+in a file `leanfinal` never imports. Both witnesses now live in `leanfinal`
+(`Uniformity/ChapH/H09w.lean`: `stageIfaceE` at genre E, `stageIfaceF` at genre F), and the `example`
+below is therefore a diff of a theorem with an EXHIBITED hypothesis type. -/
 example {G : GenreDatum} {N H S : ℕ} (I : StageInterface G N H S) :
     2 * (G.f₁ * I.stageWindow) + (S + 1) * H + 2 * I.entryCodim + 2 * I.slack
       ≥ 2 * G.keyDeg * (N - 1 - H) + 2 * G.keyDeg * H + H :=
@@ -2009,39 +2032,37 @@ H.28 is implied by H.27, which IS executed below. -/
   chk "H.12 occupied_zero_genreD2bwitness" (0 * 1 + 1 * 0 == 0)
   IO.println "CHAP-H ARITHMETIC GATE: 66 signed ℕ/ℤ statements brute-forced on a grid — all PASS (H.89 band_not_consulted excluded as REFUTED, D8)"
 
-/-! ### THE H.72 REFUTATION, MACHINE-CHECKED — and the `StageInterface` witness F2 asks for
+/-! ### THE H.72 REFUTATION, MACHINE-CHECKED — and the `StageInterface` witness F2 asked for
 
-Two artifacts the blueprint does not have. `stageIfaceE` is a genuine `StageInterface` instance (F2:
-the chapter exhibits none, though §3's design note claims two), at genre E with `stageLoss = 0` — the
-`EFF.GENIND.199` exemption the design note names. Instantiating H.72's signed inequality at it gives
-`4 ≥ 8`, so H.72 is FALSE as signed (DEFECT D4) and is withdrawn above rather than signed. -/
+Two artifacts the blueprint did not have. `stageIfaceE` is a genuine `StageInterface` instance (F2:
+no chapter node exhibits one, though §3's design note claimed two), at genre E with `stageLoss = 0` —
+the `EFF.GENIND.199` exemption the design note names. Instantiating H.72's signed inequality at it
+gives `4 ≥ 8`, so H.72 is FALSE as signed (DEFECT D4) and is withdrawn above rather than signed.
 
-/-- A genuine `StageInterface` instance: genre E at `t = 0` (`(Q,e₁,f₁,μ,h) = (2,2,1,2,1)`), window
-`N = 2`, entry height `H = 0`, side length `S = 4`, `stageLoss = 0`. This is the non-vacuity witness
-F2 records as missing from the chapter; it also makes the H.72 refutation below a statement about a
-NON-EMPTY hypothesis. -/
-def stageIfaceE : StageInterface (genreE2 0) 2 0 4 where
-  stageWindow := 2
-  stageLoss := 0
-  entryCodim := 0
-  slack := 0
-  bracket := fun κ => 2 ^ (2 * κ - 1)
-  drainFrac := fun _ => 0
-  stageSigma := stageSigma (genreE2 0) .ram
-  hS := by decide
-  hwin := by decide
-  hprice := by decide
-  hbracket := by
-    intro κ hκ
-    have hc : (clusterC (genreE2 0).μ + 1) * κ = 2 * κ - 1 + 1 := by
-      simp [clusterC, genreE2]
-      omega
-    have hsc : (genreE2 0).stageCard = 2 := by decide
-    rw [hc, hsc, pow_succ]
-    ring
-  hdrain_nonneg := by intro M; norm_num
-  hdrain_le_one := by intro M; norm_num
-  hsigma := by intro _; decide
+**R3 IS CLOSED, 2026-08-15 — the witness IS LANDED and this file's copy is RETIRED.** `stageIfaceE`
+was this file's one deliberate residue: built here, in a file `leanfinal` never imports, so
+`leanfinal`'s `StageInterface` consumers (H.72) were still theorems about a possibly-empty type. It
+has been ported to `leanfinal/Uniformity/ChapH/H09w.lean` (the H.09 witness file, **not** a blueprint
+node) as `Uniformity.Density.Induction.stageIfaceE` — verbatim, proof terms included — together with
+the genre-F witness §16 TODO item 14 owed (`stageIfaceF`, over `genreD2bwitness`). So the local `def`
+is deleted; the name below now resolves through the header's `open Uniformity.Density.Induction` to
+the LANDED declaration, which means every `decide` in the refutation and sweep material that follows
+runs on the landed fields. THAT resolution is the diff. Retirement form per this file's `def`
+protocol: the type, then the body field by field.
+
+The landed witness's genre E datum is `(Q,e₁,f₁,μ,h) = (2,2,1,2,1)` at window `N = 2`, entry height
+`H = 0`, side length `S = 4`, `stageLoss = 0` — the same eleven fields this file proved. -/
+
+-- 0e RETIREMENT (def; landed 2026-08-15 as `Uniformity.Density.Induction.stageIfaceE` in
+-- `leanfinal/Uniformity/ChapH/H09w.lean`). Type first, then every field of the body by `rfl`.
+example : StageInterface (genreE2 0) 2 0 4 := stageIfaceE
+example : stageIfaceE.stageWindow = 2 := rfl
+example : stageIfaceE.stageLoss = 0 := rfl
+example : stageIfaceE.entryCodim = 0 := rfl
+example : stageIfaceE.slack = 0 := rfl
+example : stageIfaceE.bracket = fun κ => 2 ^ (2 * κ - 1) := rfl
+example : stageIfaceE.drainFrac = fun _ => (0 : ℝ) := rfl
+example : stageIfaceE.stageSigma = stageSigma (genreE2 0) .ram := rfl
 
 /-- **H.72 `rate_lossPriced` IS FALSE.** Its conclusion, instantiated at `stageIfaceE`, is `4 ≥ 8`.
 Had the axiom been signed, `rate_lossPriced stageIfaceE` would have proved `False` and every
@@ -2102,13 +2123,15 @@ end NumericGate
 
 /-! ## RESUME COMMENT (storm discipline)
 
-**Status at this line: chapter H's leanspec interface is RETIRED (0e closing pass, 2026-08-15).**
-All 190 signable declarations are landed in `leanfinal` (H.01 … H.98; H.99 is the census block) and
-diffed here — 253 retirement `example`s, zero `axiom`s, zero `sorry`s, `autoImplicit` off, three
-executed gate blocks green (and the numeric gates now run on the LANDED bodies). One deliberate
-residue, `stageIfaceE`. Nothing is outstanding IN THIS FILE. Findings R1–R5 are in the RETIREMENT
-CENSUS in the header; the pre-retirement gate record (defect list D1–D8, findings F1/F2, O1) is kept
-below it verbatim and reads in the past tense.
+**Status at this line: chapter H's leanspec interface is RETIRED (0e closing pass, 2026-08-15;
+amended the same day when R3 closed).** All 190 signable declarations are landed in `leanfinal`
+(H.01 … H.98; H.99 is the census block) and diffed here — plus `stageIfaceE`, the one
+non-blueprint declaration, so **191 retired / 261 retirement `example`s**, zero `axiom`s, zero
+`sorry`s, zero local definitions, `autoImplicit` off, three executed gate blocks green (and the
+numeric gates now run on the LANDED bodies, including the landed `stageIfaceE`'s fields). Nothing is
+outstanding IN THIS FILE. Findings R1–R5 are in the RETIREMENT CENSUS in the header; the
+pre-retirement gate record (defect list D1–D8, findings F1/F2, O1) is kept below it verbatim and
+reads in the past tense.
 
 Disposition of the gate's own list, as of retirement:
 
@@ -2118,10 +2141,14 @@ Disposition of the gate's own list, as of retirement:
 * **CLOSED mechanically on the landed side, still worth fixing in the blueprint text.** D1 (H.23's
   `if` → `if h :` plus `decreasing_by`), D2 (H.18's `decreasing_by`), D3 (H.06's mathlib name), D6
   (H.71's multi-name fields), O1 (order `H.13` before `H.09`).
+* **CLOSED by a landing, after the retirement pass.** **F2 (R3)** — the landed corpus exhibited no
+  `StageInterface` inhabitant at all; now it exhibits two,
+  `leanfinal/Uniformity/ChapH/H09w.lean`'s `stageIfaceE` (genre E, ported verbatim from this file)
+  and `stageIfaceF` (genre F over `genreD2bwitness`, the `f₁ = 2` datum §16 TODO item 14 named). H.72
+  is a theorem about a non-empty type, §3's repaired design note is true for the first time, and this
+  file's copy of the witness is retired against the landed one. Teeth are unchanged: `(CS-1Q)`/`(CS-3)`
+  still have none anywhere and `HYP.36` stays CARRY.
 * **STILL OPEN.** F1 (σ VALUES are not machine-checkable at any gate — `degree` only; unchanged, it
-  is a property of the landed `DecidableEq FactorizationType`). **F2 (R3): the LANDED corpus
-  exhibits no `StageInterface` inhabitant at all**, so `leanfinal`'s H.72 is a theorem about a
-  possibly-empty type; the repo's only witness is `stageIfaceE` here, in a file `leanfinal` never
-  imports. The genre-F instance §3's design note claims is absent everywhere. -/
+  is a property of the landed `DecidableEq FactorizationType`). -/
 
 end LeanspecH
