@@ -844,4 +844,1052 @@ itself is the corpus's unstated background fact — it is what makes `EFF.HE3.31
 
 ---
 
+### NODE B.10 [lemma] [fresh]
+
+**STATEMENT.** *The development is level-stable.* Monic division commutes with coefficient
+reduction: if `π ^ N` divides every coefficient of `f - f'` then `π ^ N` divides every coefficient of
+`dev φ f j - dev φ f' j`, for every `j`. Consequently `(N : ℕ∞) ≤ gaussVal (f - f')` implies
+`(N : ℕ∞) ≤ gaussVal (dev φ f j - dev φ f' j)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem dev_congr (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic) {N : ℕ}
+    {f f' : Polynomial O} (h : ∀ i, π ^ N ∣ (f - f').coeff i) :
+    ∀ j i, π ^ N ∣ (dev φ f j - dev φ f' j).coeff i
+```
+
+**DEPENDS.** B.02 · B.08 · mathlib `Polynomial.map_modByMonic`, `Polynomial.map_divByMonic`
+(both require `Monic`; **confirm the exact names by local `rg` in the pinned mathlib before writing —
+they exist as `Polynomial.map_modByMonic`/`Polynomial.map_divByMonic` for a ring hom and a monic
+divisor, and if the pin spells them differently the fallback is stated below**).
+
+**PROOF.**
+1. Reformulate as a statement about `Polynomial.map (Ideal.Quotient.mk ((maximalIdeal O) ^ N))`:
+   `π^N ∣ (a - b).coeff i` for all `i` is equivalent to `a.map ρ = b.map ρ` for
+   `ρ := Ideal.Quotient.mk ((maximalIdeal O)^N)`, by `Ideal.Quotient.eq_zero_iff_mem`,
+   `mem_maximalIdeal_pow_iff_dvd` (landed, `Drainage.lean`) and `Polynomial.ext_iff`.
+2. So it suffices to prove `(dev φ f j).map ρ = dev (φ.map ρ) (f.map ρ) j` for every `j` — a
+   statement about one polynomial, not two.
+3. Induction on `j`. `j = 0`: `map_modByMonic` with `hφ` (monicity is preserved by `map`).
+4. `j+1`: `map_divByMonic` with `hφ` gives `(f /ₘ φ).map ρ = (f.map ρ) /ₘ (φ.map ρ)`, then the
+   induction hypothesis at `f /ₘ φ`.
+5. Apply step 2 to `f` and to `f'` and combine with the hypothesis rewritten by step 1.
+6. **Fallback if `map_modByMonic`/`map_divByMonic` are absent from the pin:** prove them as private
+   helpers from `Polynomial.modByMonic_add_div` — `f = f %ₘ φ + φ * (f /ₘ φ)` maps to
+   `f.map ρ = (f %ₘ φ).map ρ + (φ.map ρ) * ((f /ₘ φ).map ρ)` with
+   `((f %ₘ φ).map ρ).degree < (φ.map ρ).degree` (by `degree_map_le` and `Monic.degree_map`), and the
+   remainder-uniqueness clause of B.06 identifies the two decompositions.
+
+**SIZE.** 22 lines (or 40 with the fallback helpers).
+
+**SOURCE.** `EFF.W12.23` (the development is read on `(O/π^N)[x]`, i.e. it is defined at level `N`);
+`EFF.HE3.27`(c) ("every new digit consulted lies strictly inside its class's window and is
+determined by old digits at weakly lower `dv`-heights").
+
+**TEETH.** `HE-T-CAP` (`EFF.HE3.54`, "the strongest tooth": a planted mutant reader that drops
+out-of-window digits, 17 (`p=5`) / 43 (`p=7`) disagreements) → **Lean theorem** (this node is the
+level-stability the tooth's honest reader relies on).
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE B.11 [def] [fresh]
+
+**STATEMENT.** *The polygon's height function.* For an order-1 key `φ` and any `f`, define
+`npHgt φ f j : ℕ∞ = gaussVal (dev φ f j)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `npHgt φ f j` : the height of the `φ`-adic Newton polygon's `j`-th support point (`⊤` when the
+`j`-th development coefficient vanishes, i.e. when the abscissa `j` carries no point). -/
+noncomputable def npHgt (φ f : Polynomial O) (j : ℕ) : ℕ∞ := gaussVal (dev φ f j)
+```
+
+**DEPENDS.** B.02 · B.07.
+
+**PROOF.** definitional.
+
+**FAITHFULNESS.** This is the **primary object of DECISION D-1**. The corpus's polygon is "the lower
+hull of `{(j, dv(A_j))}_{j≤μ}`" (`EFF.HE3.13`, `EFF.HE6.10`, `EFF.W12.23` all verbatim); this node
+declares the *point set as a function* `j ↦ dv(A_j)` and D-1 declares that the hull is never formed.
+The `⊤` value replaces the corpus's convention of *omitting* an abscissa from the support: a zero
+development coefficient has `dv = ∞`, which in the corpus's own words is guarded away by the peel
+convention `EFF.HE6.09` ("a root `ρ` with `Φ′(ρ) = 0` has `dv(Φ′(ρ)) = ∞` and carries NO finite side
+label"). Here nothing is guarded away: `⊤` is a value of `ℕ∞`, an `inf` absorbs it, and the peel
+convention is a *consequence* (B.13's `npHgt φ f μ = 0` plus B.20's finiteness), not an assumption.
+**Flagged for human review as the chapter's central new definition.**
+
+**SIZE.** 5 lines.
+
+**SOURCE.** `EFF.HE3.13`; `EFF.HE6.10`; `EFF.W12.23`.
+
+**TEETH.** `W12-SHAPE` (`EFF.W12.54`, 0/164, both directions) → **executable regression** retained.
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.12 [lemma] [fresh]
+
+**STATEMENT.** `npHgt φ f j = ⊤ ↔ dev φ f j = 0`; and for `φ` monic with `0 < deg φ`,
+`npHgt φ f j = ⊤` whenever `f.natDegree < j`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem npHgt_eq_top_iff {φ f : Polynomial O} {j : ℕ} : npHgt φ f j = ⊤ ↔ dev φ f j = 0
+
+theorem npHgt_eq_top_of_lt {φ : Polynomial O} (hφ : φ.Monic) (hd : 0 < φ.natDegree)
+    (f : Polynomial O) {j : ℕ} (hj : f.natDegree < j) : npHgt φ f j = ⊤
+```
+
+**DEPENDS.** B.04 · B.08 · B.11.
+
+**PROOF.**
+1. First claim: unfold `npHgt` and apply B.08's `gaussVal_eq_top_iff`.
+2. Second claim: `f.natDegree < j ≤ j * φ.natDegree` since `1 ≤ φ.natDegree`; apply B.04 then the
+   first claim.
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.HE6.09` (the `dv = ∞` corner).
+
+**TEETH.** signed non-applicable.
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.13 [lemma] [fresh]
+
+**STATEMENT.** *The top of the polygon.* Let `φ` be monic with `m := φ.natDegree > 0` and let `f` be
+monic with `f.natDegree = μ * m`. Then `dev φ f μ = 1`, hence `npHgt φ f μ = 0`; and
+`npHgt φ f j = ⊤` for every `j > μ`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem dev_top {φ : Polynomial O} (hφ : φ.Monic) (hd : 0 < φ.natDegree) {f : Polynomial O}
+    (hf : f.Monic) {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree) : dev φ f μ = 1
+
+theorem npHgt_top {φ : Polynomial O} (hφ : φ.Monic) (hd : 0 < φ.natDegree) {f : Polynomial O}
+    (hf : f.Monic) {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree) : npHgt φ f μ = 0
+```
+
+**DEPENDS.** B.02 · B.03 · B.11 · mathlib `Polynomial.Monic.natDegree_divByMonic`
+(or `Polynomial.natDegree_divByMonic` plus `Monic.divByMonic`), `Polynomial.Monic.divByMonic`
+(the quotient of a monic by a monic is monic when the degrees allow),
+`Polynomial.eq_one_of_monic_natDegree_zero`.
+
+**PROOF.**
+1. `dev_top` by induction on `μ`, generalising `f`.
+2. `μ = 0`: `f.natDegree = 0` and `f` monic force `f = 1`
+   (`eq_one_of_monic_natDegree_zero`); `dev φ 1 0 = 1 %ₘ φ = 1` because `1.degree = 0 < φ.degree`
+   (`modByMonic_eq_self_iff hφ`).
+3. `μ+1`: `f /ₘ φ` is monic of degree `f.natDegree − m = μ * m` (`natDegree_divByMonic` and the
+   monicity of the quotient of monics); apply the induction hypothesis to it, and
+   `dev φ f (μ+1) = dev φ (f /ₘ φ) μ` by `rfl`.
+4. `npHgt_top`: `npHgt φ f μ = gaussVal 1 = 0`, since `(1 : Polynomial O).coeff 0 = 1` has
+   `addVal = 0` and the `inf` over `range 1` is that value.
+5. The tail claim is B.12's second clause at `j > μ`, using `f.natDegree = μ*m < j*m` for `j > μ`.
+
+**SIZE.** 24 lines. **SPLIT MANDATED → 2** (`dev_top` and `npHgt_top` land as separate files
+`B13a.lean`, `B13b.lean`): step 3's monicity-of-the-quotient obligation is the largest single piece
+and the fleet should not carry it and step 4 in one unit.
+
+**SOURCE.** `EFF.HE3.13` verbatim ("`A_μ = 1`, `dv = 0`"); `EFF.HE6.10` ("`dv(A_μ) = 0`");
+`EFF.W12.23` (the polygon includes the terminal point `(m, 0)`).
+
+**TEETH.** `W12-SHAPE` → **Lean theorem** (the polygon's terminal point becomes a theorem).
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.14 [def] [fresh]
+
+**STATEMENT.** *The cleared support value.* For an order-1 key `φ`, a polynomial `f`, and
+`u ℓ : ℕ`, define
+`suppVal φ f u ℓ : ℕ∞ = (Finset.range (f.natDegree + 1)).inf (fun j => ℓ • npHgt φ f j + u * j)`.
+For `0 < ℓ` this is `ℓ` times the corpus's support function at the slope `u/ℓ`:
+`suppVal φ f u ℓ = ℓ · h_F(u/ℓ)` where `h_F(κ) = min_j (dv(A_j) + jκ)` is `EFF.HE3.31`'s `(★)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `suppVal φ f u ℓ` : the cleared support value of `f`'s `φ`-adic polygon at the slope `−u/ℓ`,
+i.e. `ℓ` times the corpus's `h_F(u/ℓ) = min_j (dv(A_j) + j·u/ℓ)`. -/
+noncomputable def suppVal (φ f : Polynomial O) (u ℓ : ℕ) : ℕ∞ :=
+  (Finset.range (f.natDegree + 1)).inf (fun j => ℓ • npHgt φ f j + (u * j : ℕ))
+```
+
+**DEPENDS.** B.11 · mathlib `Finset.inf`, the `ℕ∞` `AddCommMonoidWithOne`/`SMul ℕ` structure.
+
+**PROOF.** definitional. Two choices are load-bearing and deliberate: (i) `ℓ • x` rather than
+`(ℓ : ℕ∞) * x`, because scalar multiplication by a natural number on `ℕ∞` has the `nsmul` simp set
+and avoids `⊤ * 0` corner cases (`ℓ • ⊤ = ⊤` for `ℓ > 0`, and `0 • ⊤ = 0`, which is exactly why
+`0 < ℓ` is a hypothesis of every consumer); (ii) the range is `f.natDegree + 1`, uniform in `u, ℓ`,
+which by B.12's tail clause and B.08's `gaussVal_range` loses nothing.
+
+**FAITHFULNESS.** The corpus's own two displays, both transcribed here at `e₁ = 1`:
+`EFF.HE3.31` (byte-frozen, consumer-pinned by HE6 and HE7) `h_F(κ) = min_j (dv(A_j) + jκ) =
+Σ_{slopes λ} L_λ · min(λ, κ)` and `EFF.HE6.17`(d) `h_F(κ) := min_j(dv(A_j) + jκ)`. The *second*
+equality of `(★)` — the sum over slopes — is **not** part of this definition; it is a theorem about
+it and is NOT a chapter-B node (it is the counting layer's, chapter C/H). **Flagged for human
+review; this is DECISION D-1's second object.**
+
+**SIZE.** 6 lines.
+
+**SOURCE.** `EFF.HE3.31` (`(★)`, byte-frozen); `EFF.HE6.17`(d); `EFF.HE6.30` (`(†)`);
+`EFF.HE3.22` (`LEMMA HE3-1′`: `dv(B₀) = min_j(dv(A_j) + jκ)` generically).
+
+**TEETH.** `HE-PSI` (`EFF.HE3.51`, 43,528 checks, guarding `.22`, `.29`, `.31` — i.e. guarding `(★)`
+itself) → **Lean theorem** (`(★)`'s first equality becomes this definition; its content moves to
+B.32 and B.36).
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.15 [lemma] [fresh]
+
+**STATEMENT.** *The DECISION's compatibility check: `suppVal` at `φ = X` is CN-12's landed read.* Let
+`f` be monic of degree `n > 0`, `hπ : Irreducible π`, and `M : ℕ`. Then
+
+* `dev X f j = C (f.coeff j)` and `npHgt X f j = addVal O (f.coeff j)` for every `j`; and
+* `((M * n : ℕ) : ℕ∞) ≤ suppVal X f M 1 ↔ ∀ i < n, π ^ (M * (n - i)) ∣ f.coeff i`.
+
+The right-hand side is verbatim the hypothesis of the landed
+`Uniformity.Density.exists_monic_scaleRoots` (`ScaleExtraction.lean:92`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem dev_X (f : Polynomial O) (j : ℕ) : dev X f j = Polynomial.C (f.coeff j)
+
+theorem npHgt_X (f : Polynomial O) (j : ℕ) :
+    npHgt X f j = IsDiscreteValuationRing.addVal O (f.coeff j)
+
+theorem suppVal_X_iff (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic)
+    (hn : 0 < f.natDegree) (M : ℕ) :
+    ((M * f.natDegree : ℕ) : ℕ∞) ≤ suppVal X f M 1 ↔
+      ∀ i < f.natDegree, π ^ (M * (f.natDegree - i)) ∣ f.coeff i
+```
+
+**DEPENDS.** B.02 · B.08 · B.11 · B.14 · landed `Uniformity.Hensel.pow_dvd_iff_le_addVal`
+(`StrongHensel.lean:244`) · mathlib `Polynomial.modByMonic_X`, `Polynomial.divByMonic_X`
+(**confirm names**; the fallback is `Polynomial.divX` plus `f = C (f.coeff 0) + X * f.divX`).
+
+**PROOF.**
+1. `dev_X`: induction on `j`. `j = 0`: `f %ₘ X = C (f.coeff 0)` (mathlib `modByMonic_X`, or from
+   `Polynomial.divX_mul_X_add` and remainder uniqueness). `j+1`: `f /ₘ X = f.divX` and
+   `(f.divX).coeff j = f.coeff (j+1)` (`Polynomial.coeff_divX`), then the induction hypothesis.
+2. `npHgt_X`: `gaussVal (C a) = addVal O a`, because `(C a).natDegree = 0` and the `inf` over
+   `range 1` is `addVal O ((C a).coeff 0) = addVal O a`.
+3. `suppVal_X_iff`, (→): `Finset.le_inf_iff` gives, for each `i ≤ n`,
+   `M*n ≤ 1 • addVal O (f.coeff i) + M*i`, i.e. `M*n - M*i ≤ addVal O (f.coeff i)` in `ℕ∞`
+   (`WithTop`-safe: move the finite summand `M*i` across by
+   `ENat.add_le_add_iff_right`/`WithTop.add_le_add_iff_right` with `M*i ≠ ⊤`), i.e.
+   `M*(n-i) ≤ addVal O (f.coeff i)`, i.e. the divisibility by `pow_dvd_iff_le_addVal hπ`.
+4. (←): `Finset.le_inf`; for `i < n` use the hypothesis, and for `i = n` use `f.coeff n = 1`
+   (`hf`), whose `addVal` is `0`, so the term is `0 + M*n = M*n`.
+
+**SIZE.** 30 lines. **Three public declarations** — permitted because `dev_X` and `npHgt_X` are the
+`φ = X` dictionary every later `φ = X` specialisation needs (B.83's gate, and chapters C/H's ordinary
+Newton polygon), and `suppVal_X_iff` is the DECISION's compatibility certificate.
+
+**⚠ THIS NODE IS DECISION D-1's CRITERION-C8 CERTIFICATE.** `ScaleExtraction.lean:76-80` states,
+verbatim, that CN-12's divisibility hypothesis *is* the polygon condition "written without any
+polygon representation". This node proves that the representation chosen by D-1 reproduces that
+condition exactly, so the DECISION does not fork `leanfinal`'s existing polygon read — it extends it.
+If this node fails to prove, **D-1 is refuted** and the cross-read must be told before any node of
+§§4–10 fires.
+
+**SOURCE.** `EFF.W12.23`; `spec/CERTAIN_NODES_2026-08-14.md` CN-12 and REJECTED R1
+("the two representation-free polygon reads, CN-12 … and CN-13").
+
+**TEETH.** signed non-applicable as a battery item (a compatibility identity), but it is the
+chapter's **internal decision gate** — see the warning above.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE B.16 [def] [fresh]
+
+**STATEMENT.** *The side of a slope.* For `u ℓ : ℕ` say the abscissa `j` is **on the `(u,ℓ)`-side**
+of `f`'s `φ`-adic polygon when `ℓ • npHgt φ f j + u * j = suppVal φ f u ℓ`, i.e. when the `j`-th
+support point attains the cleared support value.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `OnSide φ f u ℓ j` : the abscissa `j` lies on the side of slope `−u/ℓ`. -/
+def OnSide (φ f : Polynomial O) (u ℓ j : ℕ) : Prop :=
+  ℓ • npHgt φ f j + (u * j : ℕ) = suppVal φ f u ℓ
+
+/-- The on-side abscissae, as a `Finset`. -/
+noncomputable def sideSet (φ f : Polynomial O) (u ℓ : ℕ) : Finset ℕ :=
+  open Classical in (Finset.range (f.natDegree + 1)).filter (OnSide φ f u ℓ)
+```
+
+**DEPENDS.** B.11 · B.14.
+
+**PROOF.** definitional. `sideSet` is a `Finset.filter` with `Classical` decidability — the landed
+precedent for `open Classical in` inside a definition is `Uniformity.Density.monicFactors`
+(`TypeOf.lean:154`).
+
+**FAITHFULNESS.** The corpus's on-side condition is `EFF.W12.23`'s three-way membership law, verbatim:
+"`j` a **VERTEX** of `P`: `v(a_j) = P(j)` exactly and `digit_{P(j)}(a_j) ≠ 0`; `j` an **on-side
+lattice point** (side `S`): `v(a_j) ≥ P(j)`, with `digit_{P(j)}(a_j)` = the residual coefficient
+`r_j`; every other `j < m`: … `v(a_j) ≥ ⌈P(j)⌉`". `OnSide` is the *first* clause's equality
+`v(a_j) = P(j)` in cleared form; the *digit* half of the vertex clause is B.28's residual coefficient
+and its nonvanishing is B.30. The third clause (the "automatic ceiling") is not a condition at all in
+this representation: `suppVal` is an `inf`, so `suppVal ≤ ℓ•H j + u*j` holds for every `j` by
+definition, which is exactly "every point lies weakly above the polygon". **That the ceiling clause
+becomes vacuous is a real simplification and is claimed as such** — see §14 item 3.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.W12.23`; `EFF.HE3.14` (the side's "lattice abscissas `j₀ + ℓk`").
+
+**TEETH.** `W12-SHAPE`, `HEX3`-side rows: not applicable here (a definition).
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.17 [lemma] [fresh]
+
+**STATEMENT.** *The `ℓ`-spacing of a side.* Let `0 < ℓ`, `Nat.Coprime u ℓ`, and let `j, j'` both be
+on the `(u,ℓ)`-side with `suppVal φ f u ℓ ≠ ⊤`. Then `ℓ ∣ (j - j')` as integers, i.e.
+`j ≡ j' [MOD ℓ]`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem onSide_modEq (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O} {j j' : ℕ}
+    (htop : suppVal φ f u ℓ ≠ ⊤) (hj : OnSide φ f u ℓ j) (hj' : OnSide φ f u ℓ j') :
+    j ≡ j' [MOD ℓ]
+```
+
+**DEPENDS.** B.11 · B.14 · B.16 · mathlib `Nat.Coprime.dvd_of_dvd_mul_left`, `Nat.ModEq`,
+`WithTop.ne_top_iff_exists`.
+
+**PROOF.**
+1. From `htop` and `hj`, `ℓ • npHgt φ f j ≠ ⊤`, so `npHgt φ f j ≠ ⊤` (as `0 < ℓ`); write
+   `npHgt φ f j = (H : ℕ∞)` with `H : ℕ`, and likewise `H'` at `j'`.
+2. The two `OnSide` equalities give, after `Nat.cast_injective` on `ℕ∞`, the `ℕ`-equality
+   `ℓ * H + u * j = ℓ * H' + u * j'`.
+3. Pass to `ℤ`: `ℓ * (H - H') = u * (j' - j)`. Hence `(ℓ : ℤ) ∣ u * (j' - j)`.
+4. `Nat.Coprime u ℓ` gives `IsCoprime (u : ℤ) (ℓ : ℤ)` (`Nat.isCoprime_iff_coprime`), so
+   `(ℓ : ℤ) ∣ (j' - j)`, which is `j ≡ j' [MOD ℓ]` (`Int.natCast_mod_cast` / `Nat.modEq_iff_dvd`).
+
+**SIZE.** 18 lines. **SPLIT CANDIDATE**: if the `ℕ∞ → ℕ → ℤ` transport in steps 1–3 exceeds ~10
+lines, extract it as a private helper `onSide_nat_eq` returning the `ℕ`-equality of step 2, which
+B.20 and B.28 also want.
+
+**⚠ THE `Nat.Coprime u ℓ` HYPOTHESIS IS LOAD-BEARING AND THE CORPUS PROVED IT SO BY
+COUNTEREXAMPLE.** `EFF.HE6.52`'s tooth `HE6-T-BADKEY` fired on exactly this: "`gcd(u,ℓ) = 1`
+hypothesis is load-bearing (`κ = 6/2` gives 2 factors, different residues)". Dropping coprimality
+makes this lemma false (`u = ℓ = 2`: the spacing is `1`, not `2`) and silently corrupts B.28's
+residual coefficients and B.30's degree. **Minimum-hypothesis check:** `htop` cannot be dropped
+(without it both sides may be `⊤` and any `j` is "on side"); `0 < ℓ` cannot be dropped (`ℓ = 0`
+makes `OnSide` say `u*j = suppVal` and the conclusion is vacuous but the proof's step 1 fails);
+`Nat.Coprime u ℓ` cannot be weakened to `0 < u`.
+
+**SOURCE.** `EFF.HE3.14` verbatim ("lattice abscissas `j₀ + ℓk` (`k = 0, …, d_λ`)");
+`EFF.HE6.52` (the tooth); `EFF.HE3.13` ("slope `λ = u/ℓ` **in lowest terms**").
+
+**TEETH.** `HE6-T-BADKEY` (`EFF.HE6.52`) → **Lean theorem** (the tooth's content — that coprimality
+is necessary — is here the necessity of a hypothesis, and the *sufficiency* is this theorem).
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.18 [lemma] [fresh]
+
+**STATEMENT.** *The support value is attained, and its finiteness criterion.* Let `φ` be monic with
+`0 < deg φ` and let `f` be monic with `f.natDegree = μ * φ.natDegree`. Then
+
+* `suppVal φ f u ℓ ≠ ⊤` for every `u ℓ`, and in fact `suppVal φ f u ℓ ≤ (u * μ : ℕ)`;
+* there exists `j ≤ f.natDegree` with `OnSide φ f u ℓ j` (the `inf` is attained);
+* `sideSet φ f u ℓ` is nonempty.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem suppVal_ne_top {φ : Polynomial O} (hφ : φ.Monic) (hd : 0 < φ.natDegree)
+    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree) (u ℓ : ℕ) :
+    suppVal φ f u ℓ ≤ ((u * μ : ℕ) : ℕ∞)
+
+theorem sideSet_nonempty {φ : Polynomial O} (hφ : φ.Monic) (hd : 0 < φ.natDegree)
+    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree) (u ℓ : ℕ) :
+    (sideSet φ f u ℓ).Nonempty
+```
+
+**DEPENDS.** B.13 · B.14 · B.16 · mathlib `Finset.inf_le`, `Finset.exists_mem_eq_inf`
+(**confirm**: for a `Finset` in a `LinearOrder` with `OrderTop`, the `inf` over a nonempty `Finset`
+is attained; the pinned name may be `Finset.exists_mem_eq_inf'` on `inf'`, in which case convert
+with `Finset.inf'_eq_inf`).
+
+**PROOF.**
+1. `suppVal_ne_top`: `μ ≤ f.natDegree` when `0 < φ.natDegree` (from `hdeg`, by `Nat.le_mul_of_pos_right`
+   — and when `μ = 0` the bound is `0 ≤ 0`), so `μ ∈ Finset.range (f.natDegree + 1)`; `Finset.inf_le`
+   at `j = μ` gives `suppVal ≤ ℓ • npHgt φ f μ + u*μ = ℓ • 0 + u*μ = u*μ` by B.13's `npHgt_top`.
+2. `sideSet_nonempty`: `Finset.range (f.natDegree + 1)` is nonempty, so the `inf` is attained at some
+   `j` in it; that `j` satisfies `OnSide` by definition and hence lies in the filter.
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.HE3.13` (`A_μ = 1` is what makes the polygon's right end finite);
+`EFF.HE6.30`(a) (the length argument `Σ_λ L_λ = μ`, whose premise is this finiteness).
+
+**TEETH.** signed non-applicable.
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.19 [lemma] [fresh]
+
+**STATEMENT.** *Two distinct slopes share at most one abscissa (the vertex property).* Let `0 < ℓ`,
+`0 < ℓ'`, `suppVal φ f u ℓ ≠ ⊤`, `suppVal φ f u' ℓ' ≠ ⊤`, and `u * ℓ' ≠ u' * ℓ` (the two slopes
+`u/ℓ` and `u'/ℓ'` are distinct). If `j` and `j'` are both on the `(u,ℓ)`-side **and** both on the
+`(u',ℓ')`-side, then `j = j'`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem eq_of_onSide_onSide (hℓ : 0 < ℓ) (hℓ' : 0 < ℓ') {φ f : Polynomial O} {u u' j j' : ℕ}
+    (hne : u * ℓ' ≠ u' * ℓ)
+    (htop : suppVal φ f u ℓ ≠ ⊤) (htop' : suppVal φ f u' ℓ' ≠ ⊤)
+    (hj : OnSide φ f u ℓ j) (hj' : OnSide φ f u ℓ j')
+    (hk : OnSide φ f u' ℓ' j) (hk' : OnSide φ f u' ℓ' j') : j = j'
+```
+
+**DEPENDS.** B.11 · B.14 · B.16 · B.17's private helper `onSide_nat_eq` · mathlib `Int` arithmetic.
+
+**PROOF.**
+1. As in B.17 steps 1–2, extract `H := npHgt φ f j` and `H' := npHgt φ f j'` as naturals and the two
+   `ℕ`-equalities `ℓ*H + u*j = ℓ*H' + u*j'` and `ℓ'*H + u'*j = ℓ'*H' + u'*j'`.
+2. In `ℤ`: `ℓ*(H − H') = u*(j' − j)` and `ℓ'*(H − H') = u'*(j' − j)`.
+3. Multiply the first by `ℓ'` and the second by `ℓ`: `ℓ'*u*(j' − j) = ℓ*u'*(j' − j)`, i.e.
+   `(u*ℓ' − u'*ℓ)*(j' − j) = 0`.
+4. `hne` gives `(u*ℓ' − u'*ℓ : ℤ) ≠ 0`, so `j' − j = 0` by `mul_eq_zero`, i.e. `j = j'`
+   (`Int.natCast_inj`).
+
+**SIZE.** 16 lines.
+
+**WHY THIS REPLACES THE HULL.** In the `Finset (ℕ × ℕ)` representation the analogous fact is the
+vertex/collinearity bookkeeping that `HullStability.lean` spends 1744 lines on, and whose naive form
+is **provably false** (`NewtonPolygon.lean:784`, `npVertices_not_stable_of_hull_preserved`, witness
+`S = {(0,0),(1,0)}`, `S' = {(0,0)}`). Here it is sixteen lines of `ℤ`-arithmetic with no
+representation to stabilise. This node is DECISION D-1's **criterion-C5 certificate** and the largest
+single piece of evidence for the decision; if it fails, the decision's canonicity claim is empty.
+
+**SOURCE.** `EFF.HE3.13` ("each side has a `dv`-slope … in lowest terms"); `EFF.HE6.10`.
+
+**TEETH.** signed non-applicable as a battery item; internal decision evidence (see above).
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.20 [def] [fresh]
+
+**STATEMENT.** *The side's numerical data.* For `0 < ℓ` and `Nat.Coprime u ℓ`, with
+`suppVal φ f u ℓ ≠ ⊤`, define the side's **left endpoint** `sideMin := (sideSet φ f u ℓ).min'`, its
+**right endpoint** `sideMax := (sideSet φ f u ℓ).max'`, its **length**
+`sideLen := sideMax − sideMin`, and its **residual degree** `sideDeg := sideLen / ℓ`. By B.17,
+`ℓ ∣ sideLen`, so `sideLen = ℓ * sideDeg` exactly; and the on-side abscissae are contained in
+`{sideMin + ℓ*k | k ≤ sideDeg}`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+noncomputable def sideMin (φ f : Polynomial O) (u ℓ : ℕ)
+    (h : (sideSet φ f u ℓ).Nonempty) : ℕ := (sideSet φ f u ℓ).min' h
+
+noncomputable def sideMax (φ f : Polynomial O) (u ℓ : ℕ)
+    (h : (sideSet φ f u ℓ).Nonempty) : ℕ := (sideSet φ f u ℓ).max' h
+
+noncomputable def sideDeg (φ f : Polynomial O) (u ℓ : ℕ)
+    (h : (sideSet φ f u ℓ).Nonempty) : ℕ := (sideMax φ f u ℓ h - sideMin φ f u ℓ h) / ℓ
+
+theorem sideMax_eq (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
+    (htop : suppVal φ f u ℓ ≠ ⊤) (h : (sideSet φ f u ℓ).Nonempty) :
+    sideMax φ f u ℓ h = sideMin φ f u ℓ h + ℓ * sideDeg φ f u ℓ h
+
+theorem onSide_eq_add_mul (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {φ f : Polynomial O}
+    (htop : suppVal φ f u ℓ ≠ ⊤) (h : (sideSet φ f u ℓ).Nonempty) {j : ℕ}
+    (hj : j ∈ sideSet φ f u ℓ) :
+    ∃ k ≤ sideDeg φ f u ℓ h, j = sideMin φ f u ℓ h + ℓ * k
+```
+
+**DEPENDS.** B.16 · B.17 · B.18 · mathlib `Finset.min'_le`, `Finset.le_max'`,
+`Nat.ModEq`, `Nat.div_mul_cancel`.
+
+**PROOF.**
+1. `sideMax_eq`: `sideMin ≤ sideMax` (`Finset.min'_le_max'`), and `ℓ ∣ (sideMax − sideMin)` by B.17
+   applied to the two members `sideMin`, `sideMax` (both are in `sideSet`, hence `OnSide`), so
+   `Nat.div_mul_cancel` gives the identity.
+2. `onSide_eq_add_mul`: for `j ∈ sideSet`, `sideMin ≤ j ≤ sideMax`, and `ℓ ∣ (j − sideMin)` by B.17;
+   set `k := (j − sideMin)/ℓ`; then `j = sideMin + ℓ*k` by `Nat.div_mul_cancel` and `k ≤ sideDeg`
+   from `j ≤ sideMax` and step 1 by `omega` after clearing `ℓ`.
+
+**SIZE.** 26 lines. **Five public declarations, three of them definitions** — this is one *object*
+(the side's numerical data) and splitting it across files would force every consumer to import three
+modules for one triple. If the merge queue objects, the split boundary is `{sideMin, sideMax,
+sideDeg}` in `B20a.lean` and `{sideMax_eq, onSide_eq_add_mul}` in `B20b.lean`. **SPLIT CANDIDATE.**
+
+**FAITHFULNESS.** `EFF.HE3.13` verbatim: "each side has a `dv`-slope `λ = u/ℓ` in lowest terms
+(`u, ℓ > 0`), horizontal length `L_λ = ℓ·d_λ`, and a residual polynomial `R_λ ∈ K[Z]` of degree
+`d_λ`". `sideLen` is `L_λ` and `sideDeg` is `d_λ`. `EFF.HE3.14` verbatim: "the side of `P(F)` with
+slope `λ = u/ℓ` in lowest terms, left endpoint `(j₀, κ₀)`, lattice abscissas `j₀ + ℓk`
+(`k = 0, …, d_λ`)" — `sideMin` is `j₀` and `suppVal` is `ℓκ₀ + u j₀`. `L_v` of `EFF.W12.83`
+("`L_v = #{j < m_v : P_v(j) ∈ ℤ}`", the "priced digits") is the **count** `(sideSet).card`, which is
+`≤ sideDeg + 1` and equals it exactly when every on-side lattice abscissa carries a point; the
+count is chapter C/H's object and the inequality is all this chapter needs. **Flagged for human
+review.**
+
+**SOURCE.** `EFF.HE3.13`; `EFF.HE3.14`; `EFF.W12.83`; `EFF.HE6.10`.
+
+**TEETH.** `W12-SHAPE` (`EFF.W12.54`, 23 rows, both directions — every row is a
+`(polygon, residual, count, σ)` tuple keyed by exactly this data) → **executable regression**
+retained.
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+## 4. §4 — THE ORDER-1 RESIDUAL FIELD AND THE RESIDUAL POLYNOMIAL
+
+### NODE B.21 [def] [fresh]
+
+**STATEMENT.** *The digit at a height.* For `π : O`, `k : ℕ` and `x : O`, define
+`digAt π k x : ResidueField O` to be the residue class of the unique `y` with `x = π^k * y` when
+`π^k ∣ x`, and `0` otherwise. (Uniqueness of `y` holds because `O` is a domain and `π^k ≠ 0`; the
+`otherwise` branch is junk and no lemma reads it.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `digAt π k x` : the residue of `x / π ^ k` when `π ^ k ∣ x` (junk `0` otherwise) — the "digit of
+`x` at height `k`" of the corpus's digit calculus. -/
+noncomputable def digAt (π : O) (k : ℕ) (x : O) : ResidueField O :=
+  open Classical in if h : π ^ k ∣ x then IsLocalRing.residue O h.choose else 0
+```
+
+**DEPENDS.** none (mathlib `IsLocalRing.residue`, `Dvd.dvd.choose`).
+
+**PROOF.** definitional.
+
+**FAITHFULNESS.** `EFF.W12.23` verbatim: "Each `a_j` is a free module of `N` digit-slots over the
+residue `F_q`-space `F_q^d ≅ F_{q^d}` … write `digit_h(a_j) ∈ F_{q^d}` for the slot at height `h`
+(**the GMN order-1 residual-coefficient convention**)". This node is the scalar half of `digit_h`
+(the `F_q`-level digit); B.23 assembles the polynomial and B.28 pushes it into `F_{q^d}`. The corpus's
+`digit_h` is the *slot*, i.e. it is read at a height that need not be the element's own valuation —
+which is exactly why `digAt` takes `k` as an argument rather than computing it: `EFF.HE3.14`'s
+residual coefficient is `0` "whenever the pin at `j₁+tℓ` lies strictly above the `λ`-line", and that
+is `digAt π k x = 0` with `k` the LINE height and `v(x) > k`. **Flagged for human review.**
+
+**SIZE.** 6 lines.
+
+**SOURCE.** `EFF.W12.23`; `EFF.HE3.14`; `EFF.HE6.13` (`LEMMA HE6-1L`'s reachable-residue set is a
+statement about exactly this map's image).
+
+**TEETH.** `HE6R1-LIFT2` (`EFF.HE6R1.27`, 5 exhaustive frames; the reachable-set question is about
+`digAt`'s image) → **executable regression** retained: `(LIFT₂)`'s threshold is disclosed
+**sufficient, not sharp** (`EFF.HE6R1.46`, "non-sharp by exactly 1 in every tested frame"), so no
+Lean theorem is claimed for the sharp form.
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.22 [lemma] [fresh]
+
+**STATEMENT.** *The digit's specification.* For `hπ : Irreducible π`:
+
+* if `x = π^k * y` then `digAt π k x = residue O y` (well-definedness);
+* if `π^k ∣ x` then `digAt π k x = 0 ↔ π^(k+1) ∣ x` (the digit detects exactness);
+* `digAt π k (x + x') = digAt π k x + digAt π k x'` when `π^k ∣ x` and `π^k ∣ x'`;
+* `digAt π 0 x = residue O x`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem digAt_eq (hπ : Irreducible π) {k : ℕ} {x y : O} (h : x = π ^ k * y) :
+    digAt π k x = IsLocalRing.residue O y
+
+theorem digAt_eq_zero_iff (hπ : Irreducible π) {k : ℕ} {x : O} (h : π ^ k ∣ x) :
+    digAt π k x = 0 ↔ π ^ (k + 1) ∣ x
+
+theorem digAt_add (hπ : Irreducible π) {k : ℕ} {x x' : O} (h : π ^ k ∣ x) (h' : π ^ k ∣ x') :
+    digAt π k (x + x') = digAt π k x + digAt π k x'
+
+theorem digAt_zero (x : O) : digAt π 0 x = IsLocalRing.residue O x
+```
+
+**DEPENDS.** B.21 · mathlib `mul_left_cancel₀`, `IsLocalRing.residue`,
+`Ideal.Quotient.eq_zero_iff_mem`, `Irreducible.maximalIdeal_eq`, `pow_ne_zero`.
+
+**PROOF.**
+1. `digAt_eq`: `π^k ∣ x` from `h`, so the `dif_pos` branch fires with some `y'` and
+   `π^k * y' = x = π^k * y`; `mul_left_cancel₀ (pow_ne_zero k hπ.ne_zero)` gives `y' = y`.
+2. `digAt_eq_zero_iff`: write `x = π^k * y` (from `h`); by step 1 the digit is `residue O y`, which is
+   `0` iff `y ∈ maximalIdeal O` iff `π ∣ y` (`hπ.maximalIdeal_eq`, `Ideal.mem_span_singleton`) iff
+   `π^(k+1) ∣ π^k*y = x` (again by `mul_left_cancel₀` for the ← direction).
+3. `digAt_add`: write `x = π^k*y`, `x' = π^k*y'`; then `x + x' = π^k*(y+y')`; apply step 1 three times
+   and `map_add`.
+4. `digAt_zero`: `π^0 = 1 ∣ x` and `x = 1 * x`, so step 1 with `y = x`.
+
+**SIZE.** 24 lines. **Four public declarations** — the digit API is one object and every consumer
+needs at least two of the four; `digAt_zero` is the one a merge queue may reasonably ask to inline.
+
+**SOURCE.** `EFF.W12.23`; `EFF.HE3.14`.
+
+**TEETH.** `HE-NORM`, `HE-PSI` → **Lean theorem** (the digit read becomes a theorem rather than a
+convention).
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE B.23 [def] [fresh]
+
+**STATEMENT.** *The digit polynomial.* For `π : O`, `k : ℕ` and `a ∈ O[X]`, define
+`digPoly π k a : (ResidueField O)[X] = Σ_{i ≤ a.natDegree} C (digAt π k (a.coeff i)) * X^i`.
+When `(k : ℕ∞) ≤ gaussVal a` this is the reduction of `a / π^k`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `digPoly π k a` : the coefficientwise digit of `a` at height `k`, as a polynomial over the
+residue field. When `π ^ k` divides every coefficient of `a`, this is `(a / π ^ k) mod π`. -/
+noncomputable def digPoly (π : O) (k : ℕ) (a : Polynomial O) : Polynomial (ResidueField O) :=
+  ∑ i ∈ Finset.range (a.natDegree + 1), Polynomial.C (digAt π k (a.coeff i)) * Polynomial.X ^ i
+```
+
+**DEPENDS.** B.21.
+
+**PROOF.** definitional.
+
+**SIZE.** 6 lines.
+
+**SOURCE.** `EFF.W12.23`; `EFF.HE3.14`.
+
+**TEETH.** signed non-applicable (a definition).
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.24 [lemma] [fresh]
+
+**STATEMENT.** *The digit polynomial's specification.* For `hπ : Irreducible π` and `a ∈ O[X]`:
+
+* `(digPoly π k a).coeff i = digAt π k (a.coeff i)` for every `i`;
+* `(digPoly π k a).degree ≤ a.degree`;
+* if `(k : ℕ∞) ≤ gaussVal a` and `a = C (π^k) * b` then `digPoly π k a = b.map (residue O)`;
+* if `(k : ℕ∞) ≤ gaussVal a` then `digPoly π k a = 0 ↔ (k+1 : ℕ∞) ≤ gaussVal a`. In particular for
+  `a ≠ 0` and `k` with `gaussVal a = (k : ℕ∞)`, `digPoly π k a ≠ 0`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem digPoly_coeff (hπ : Irreducible π) (k i : ℕ) (a : Polynomial O) :
+    (digPoly π k a).coeff i = digAt π k (a.coeff i)
+
+theorem degree_digPoly_le (k : ℕ) (a : Polynomial O) : (digPoly π k a).degree ≤ a.degree
+
+theorem digPoly_eq_map (hπ : Irreducible π) {k : ℕ} {a b : Polynomial O}
+    (h : a = Polynomial.C (π ^ k) * b) : digPoly π k a = b.map (IsLocalRing.residue O)
+
+theorem digPoly_eq_zero_iff (hπ : Irreducible π) {k : ℕ} {a : Polynomial O}
+    (h : (k : ℕ∞) ≤ gaussVal a) : digPoly π k a = 0 ↔ ((k + 1 : ℕ) : ℕ∞) ≤ gaussVal a
+```
+
+**DEPENDS.** B.08 · B.21 · B.22 · B.23 · landed `Uniformity.Hensel.coeff_sum_range_C_mul_X_pow`
+(`HenselFactorization.lean:175`) · mathlib `Polynomial.ext_iff`,
+`Polynomial.coeff_eq_zero_of_natDegree_lt`.
+
+**PROOF.**
+1. `digPoly_coeff`: landed `coeff_sum_range_C_mul_X_pow` gives the value
+   `if i < a.natDegree + 1 then digAt π k (a.coeff i) else 0`; for `i > a.natDegree`,
+   `a.coeff i = 0` and `digAt π k 0 = 0` (from B.22's `digAt_eq` with `y = 0`).
+2. `degree_digPoly_le`: `Polynomial.degree_le_iff_coeff_zero` plus step 1 and
+   `coeff_eq_zero_of_natDegree_lt`.
+3. `digPoly_eq_map`: coefficientwise by step 1 — `a.coeff i = π^k * b.coeff i` (from `h` and
+   `coeff_C_mul`), so B.22's `digAt_eq` gives `residue O (b.coeff i) = (b.map (residue O)).coeff i`
+   (`coeff_map`).
+4. `digPoly_eq_zero_iff`: by step 1 and `Polynomial.ext_iff`, `digPoly π k a = 0` iff
+   `digAt π k (a.coeff i) = 0` for all `i`, iff `π^(k+1) ∣ a.coeff i` for all `i` (B.22's
+   `digAt_eq_zero_iff`, whose hypothesis `π^k ∣ a.coeff i` comes from `h` via B.08's
+   `le_gaussVal_iff`), iff `(k+1 : ℕ∞) ≤ gaussVal a` (B.08 again).
+
+**SIZE.** 28 lines. **Four public declarations**, same justification as B.22.
+
+**SOURCE.** `EFF.W12.23` (the three-way slot-membership law); `EFF.HE3.14`.
+
+**TEETH.** `W12-SHAPE` → **Lean theorem** (the "digit at the polygon height is nonzero at a vertex"
+half of `EFF.W12.23`'s membership law).
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE B.25 [def] [fresh]
+
+**STATEMENT.** *The order-1 residual field.* For an order-1 key `φ` define
+`resField φ := AdjoinRoot (φ.map (residue O))`, the quotient `F[y]/(φ̄)`. Since `φ̄` is irreducible,
+`resField φ` is a field, and it is an `F`-algebra of degree `m = φ.natDegree`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `resField φ = F[y]/(φ̄)` : the order-1 residual field of the key `φ`. -/
+abbrev resField (φ : Polynomial O) : Type _ := AdjoinRoot (φ.map (IsLocalRing.residue O))
+
+noncomputable instance instFieldResField {φ : Polynomial O} (hφ : IsKey φ) :
+    Field (resField φ) := AdjoinRoot.instField (hf := hφ.irred.ne_zero) -- see PROOF note
+
+/-- The residual reduction `O[X] → resField φ` at height `k`. -/
+noncomputable def resMk (π : O) (φ : Polynomial O) (k : ℕ) (a : Polynomial O) : resField φ :=
+  AdjoinRoot.mk (φ.map (IsLocalRing.residue O)) (digPoly π k a)
+```
+
+**DEPENDS.** B.01 · B.23 · mathlib `AdjoinRoot`, `AdjoinRoot.instField` / `AdjoinRoot.span_maximal_of_irreducible`
+(**confirm the pinned route to the `Field` instance**: mathlib provides `Fact (Irreducible p) →
+Field (AdjoinRoot p)` as `AdjoinRoot.instField`; the idiomatic use is
+`haveI : Fact (Irreducible (φ.map (residue O))) := ⟨hφ.irred⟩` inside each consuming proof, and the
+instance is then found by TC. **If so, the `instFieldResField` declaration above is replaced by a
+`Fact`-producing `instance` or by a local `haveI` in each consumer, and this node's SIGNATURE drops
+to the `abbrev` plus `resMk`.**)
+
+**PROOF.** definitional, modulo the instance route named in DEPENDS. Note that `resField` must be an
+`abbrev` (not a `def`) so that the `Field`/`Algebra F` instances found for
+`AdjoinRoot (φ.map (residue O))` apply to it without re-declaration.
+
+**FAITHFULNESS.** `docs/GMN_citations.md` Def 1.21 verbatim: "the order-1 residue field
+`F_φ := F[y]/(ψ₀(y))`". `EFF.HE6.08` gives it as `K := F_Q(η_θ) ≅ F_{Q^{f₁}}`, i.e. as a subfield of
+`k̄` generated by a residue — at `e₁ = 1` the two presentations agree because `η_θ = res(θ)` is a root
+of `φ̄` (`EFF.HE6.08`'s `η_θ := res(θ^{e₁}π^{−h})` degenerates to `res(θ)` at `e₁ = 1, h = 0`).
+**This chapter uses the quotient presentation and never the subfield presentation** — the subfield
+presentation needs an ambient `k̄` and the embeddings `ι_ξ`, which H-1 puts out of scope.
+**Flagged for human review.**
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `docs/GMN_citations.md` Def 1.21, fact (I); `EFF.HE6.08`; `EFF.HE3.13`
+(`R_λ ∈ K[Z]` with `K` the order-1 residue field).
+
+**TEETH.** `HE6R1-T-BASIS` (`EFF.HE6R1.29`, "`{1, β}` is a K-basis of `K₂` — load-bearing", fired) →
+**executable regression** retained at the level-2 analogue; this node is its level-1 base.
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.26 [lemma] [fresh]
+
+**STATEMENT.** *The residual field is finite of the right size.* For an order-1 key `φ` with
+`m := φ.natDegree`, over the standing bundle with finite residue field:
+`Module.finrank F (resField φ) = m` and `Nat.card (resField φ) = residueCard O ^ m`; and
+`Finite (resField φ)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem finrank_resField {φ : Polynomial O} (hφ : IsKey φ) :
+    Module.finrank (ResidueField O) (resField φ) = φ.natDegree
+
+noncomputable instance instFiniteResField {φ : Polynomial O} (hφ : IsKey φ) :
+    Finite (resField φ)
+
+theorem card_resField {φ : Polynomial O} (hφ : IsKey φ) :
+    Nat.card (resField φ) = residueCard O ^ φ.natDegree
+```
+
+**DEPENDS.** B.01 · B.25 · landed `Uniformity.Density.residueCard` (`LocalData.lean:72`) ·
+mathlib `AdjoinRoot.powerBasis`, `PowerBasis.finrank`, `Polynomial.natDegree_map_eq_of_monic`
+(or `Monic.natDegree_map`), `Module.card_eq_pow_finrank` (**confirm the pinned name**; the fact is
+`#V = #F ^ finrank F V` for a finite-dimensional space over a finite field — in the pin it is
+`Module.card_eq_pow_finrank` or `Module.card_fintype`; if neither, the fallback is
+`Nat.card_congr (AdjoinRoot.powerBasis _).basis.equivFun.toEquiv` followed by
+`Nat.card_fun`/`card_pi`).
+
+**PROOF.**
+1. `(φ.map (residue O)).natDegree = φ.natDegree` by `Monic.natDegree_map hφ.monic`.
+2. `AdjoinRoot.powerBasis` (needs `φ̄ ≠ 0`, from `hφ.irred.ne_zero`) has dimension
+   `(φ.map (residue O)).natDegree`; `PowerBasis.finrank` gives `finrank_resField`.
+3. `Finite`: the power basis gives a linear equivalence with `Fin m → F`, and `F` is finite by the
+   bundle's `[Finite (ResidueField O)]`; `Finite.of_equiv`.
+4. `card_resField`: `Module.card_eq_pow_finrank` with steps 2 and 3, and
+   `residueCard O = Nat.card (ResidueField O)` by definition.
+
+**SIZE.** 22 lines.
+
+**⚠ THIS NODE IS NS-4 (`docs/GMN_citations.md` fact (I)) AT ORDER 1.** The resolution doc's verdict
+is `COVERS-ALL-O` with the note "**Finiteness** is then immediate and characteristic-free — it
+follows from `F` finite, which is our hypothesis, not theirs." That is exactly steps 3–4.
+
+**SOURCE.** `docs/GMN_citations.md` fact (I), NS-4; `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-4;
+`EFF.W12.25` (the residual censuses are stated over `Q = q^d`, i.e. over this field).
+
+**TEETH.** `W12-CENSUS4` (`EFF.W12.57`, fires 8×; the censuses `S_λ(Q)` are polynomial in
+`Q = q^d = card (resField φ)`) → **Lean theorem** (the identification `Q = q^m` becomes a theorem).
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.27 [lemma] [fresh]
+
+**STATEMENT.** *Separability over the residual field.* Let `K` be a finite field. Then every
+irreducible `p ∈ K[y]` is separable, and for any `p ≠ 0`: `p.Separable ↔ Squarefree p`. Consequently
+for a monic `R ∈ K[y]` of positive degree, `R.Separable` iff every monic irreducible factor of `R`
+occurs with multiplicity `1`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem irreducible_separable {K : Type*} [Field K] [Finite K] {p : Polynomial K}
+    (hp : Irreducible p) : p.Separable
+
+theorem separable_iff_squarefree {K : Type*} [Field K] [Finite K] {p : Polynomial K}
+    (hp : p ≠ 0) : p.Separable ↔ Squarefree p
+```
+
+**DEPENDS.** mathlib `Irreducible.separable` (needs `PerfectField K`; a finite field is perfect —
+**confirm the pinned instance name**, `PerfectField.ofFinite` or via `ExpChar`/`PerfectRing`),
+`Polynomial.separable_iff_squarefree` (**confirm**: in the pin the equivalence
+`Separable ↔ Squarefree` holds over a perfect field; if the pin only has
+`Polynomial.Squarefree.separable`-style one-directional lemmas, the missing direction for a finite
+field is `Polynomial.separable_of_squarefree` over a perfect field — record whichever the pin has and
+prove the other from `EuclideanDomain.gcd`-based `Separable` unfolding).
+
+**PROOF.**
+1. `Finite K → PerfectField K` (mathlib instance; a finite field is perfect since Frobenius is
+   surjective by injectivity plus finiteness).
+2. `irreducible_separable`: `Irreducible.separable` over a perfect field.
+3. `separable_iff_squarefree`: the pinned equivalence over a perfect field.
+
+**SIZE.** 10 lines. If the pin's names differ this node grows to ~30 lines and becomes the place the
+Frobenius-surjectivity argument lands; it is still a single unit.
+
+**⚠ WHY THIS IS A NODE AND NOT A `simp` STEP.** `docs/GMN_citations.md` fact (I)'s parenthetical is
+the whole reason: "**finite fields are perfect at every `r`, so 'needs descent = non-squarefree =
+discriminant locus' with no inseparable-irreducible exceptions in any characteristic**". The
+`Separable ↔ Squarefree` bridge is what makes NS-6 (B.63/B.64) a statement about **multiplicities**
+rather than about derivatives, and it is the single place the chapter uses finiteness of the residue
+field for anything other than counting.
+
+**SOURCE.** `docs/GMN_citations.md` fact (I); `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-6;
+`EFF.W12.27` ("If every residual is separable"); `EFF.HE3.15` ("every TERMINAL residual polynomial
+separable").
+
+**TEETH.** `HEX3`-side separability rows are chapter G's; here **signed non-applicability** as a
+battery item (a residue-field algebra fact, characteristic-uniform as a theorem).
+
+**ENVIRONMENT.** ENV-D + `[Finite K]`.
+
+---
+
+### NODE B.28 [def] [fresh]
+
+**STATEMENT.** *The residual coefficients of a side.* Fix an order-1 key `φ`, a polynomial `f`,
+`u ℓ : ℕ` with `0 < ℓ` and `Nat.Coprime u ℓ`, and a nonemptiness witness `h` for
+`sideSet φ f u ℓ`. Write `j₀ := sideMin φ f u ℓ h`, `d := sideDeg φ f u ℓ h`, and let `H₀ : ℕ` be the
+natural number with `npHgt φ f j₀ = (H₀ : ℕ∞)` (it exists: `j₀` is on the side and the support value
+is finite). The **`k`-th residual coefficient** (`k ≤ d`) is
+
+```
+resCoeff k := resMk π φ (H₀ - u * k) (dev φ f (j₀ + ℓ * k))  ∈  resField φ,
+```
+
+i.e. the digit of the `(j₀ + ℓk)`-th development coefficient read at the **line** height `H₀ − u·k`,
+pushed into the residual field. It is `0` exactly when the point at abscissa `j₀ + ℓk` lies strictly
+above the `(u,ℓ)`-line.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `resCoeff` : the `k`-th residual coefficient of the `(u,ℓ)`-side of `f`'s `φ`-adic polygon. -/
+noncomputable def resCoeff (π : O) (φ f : Polynomial O) (u ℓ : ℕ)
+    (h : (sideSet φ f u ℓ).Nonempty) (H₀ k : ℕ) : resField φ :=
+  resMk π φ (H₀ - u * k) (dev φ f (sideMin φ f u ℓ h + ℓ * k))
+```
+
+**DEPENDS.** B.02 · B.11 · B.16 · B.20 · B.23 · B.25.
+
+**PROOF.** definitional. **The height is `H₀ − u·k`, not `npHgt φ f (j₀ + ℓk)`** — this is the whole
+content of the definition and it is the difference between the *line* and the *point*. `H₀` is passed
+as an explicit argument rather than extracted from `npHgt` inside the definition, because extracting
+it needs the finiteness proof and a definition must not carry a proof obligation; B.29's consumer
+supplies it and B.30 pins it.
+
+**FAITHFULNESS.** `EFF.HE3.14` verbatim (the coherent-construction pin): "For the side of `P(F)` with
+slope `λ = u/ℓ` in lowest terms, left endpoint `(j₀, κ₀)`, lattice abscissas `j₀ + ℓk`
+(`k = 0, …, d_λ`; the line heights `κ₀ − ku ∈ ℤ`): `R_λ(Z) := Σ_{k=0}^{d_λ} res(A_{j₀+ℓk}(θ) ·
+n(u)(θ)^k / n(κ₀)(θ)) · Z^k`." At `e₁ = 1` the normalizer system `n(·)` is the pure power
+`n(k) = π^k` (`EFF.HE6.13`'s `n(k) := x^{i₀(k)}π^{(k−i₀(k)h)/e₁}` with `i₀ = 0, h = 0`), so the
+argument of `res` is `A_{j₀+ℓk} · π^{uk} / π^{κ₀} = A_{j₀+ℓk} / π^{κ₀−uk}` — verbatim this node with
+`κ₀ = H₀`. **The `ϖ`-vs-`n(k)` discrepancy and its coset factor `η_θ^{−q(k)}` (`EFF.HE6.13` RIDER,
+`EFF.HE6.15` as corrected by `EFF.HE6.58`) are invisible at `e₁ = 1`, where `q(k) = 0` and
+`ϖ = π = n(1)`.** That is H-1's scope claim made concrete, and it is §14 item 4.
+**Flagged for human review.**
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.HE3.14` (the coherent construction — and note `EFF.HE3.24` records THE WITNESS: a
+PARI-adjudicated flip between the *naive* and the *coherent* `R_λ` at `(e₁,f₁) = (2,2)`, i.e. the
+naive normalization is **wrong** at `e₁ ≥ 2`; this chapter is at `e₁ = 1` where the two agree, and
+that is exactly why the chapter may use the simple form); `EFF.HE6.11`; `EFF.W12.23`.
+
+**TEETH.** THE WITNESS (`EFF.HE3.24`) → **signed non-applicability at `e₁ = 1`**, with the reason
+recorded above: the witness distinguishes naive from coherent normalization only when `e₁ ≥ 2`, and
+`e₁ = 1` is out of its scope by construction. **This is the chapter's most delicate teeth
+disposition and it is §14 item 4.**
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.29 [def] [fresh]
+
+**STATEMENT.** *The residual polynomial.* With the data of B.28,
+`resPoly := Σ_{k ≤ d} C (resCoeff k) * Y^k ∈ (resField φ)[Y]`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `resPoly π φ f u ℓ h H₀` : the residual polynomial `R_{u/ℓ}(f) ∈ (resField φ)[Y]`. -/
+noncomputable def resPoly (π : O) (φ f : Polynomial O) (u ℓ : ℕ)
+    (h : (sideSet φ f u ℓ).Nonempty) (H₀ : ℕ) : Polynomial (resField φ) :=
+  ∑ k ∈ Finset.range (sideDeg φ f u ℓ h + 1),
+    Polynomial.C (resCoeff π φ f u ℓ h H₀ k) * Polynomial.X ^ k
+```
+
+**DEPENDS.** B.20 · B.28.
+
+**PROOF.** definitional.
+
+**FAITHFULNESS.** `EFF.HE3.13`: "a residual polynomial `R_λ ∈ K[Z]` of degree `d_λ` with
+`R_λ(0) ≠ 0`". `docs/GMN_citations.md` Def 2.21 (at order 1): "`R_{λ}(f)(y) := c_s + c_{s+e} y + … +
+c_{s+de} y^d ∈ F_r[y]`, a monic (after normalization) degree-`d` polynomial … `c_s` and `c_{s+de}`
+are always nonzero, so `R_λ(f)` has degree `d` and is never divisible by `y`". **This node does NOT
+normalize to monic**: the corpus's "monic after normalization" is a choice of representative in the
+`K^×`-scaling orbit, and the two facts every consumer needs — `degree = d` and `coeff 0 ≠ 0` — are
+scaling-invariant and are B.30. Monicity would force a division and buys nothing; the *factorization*
+statements (B.48, B.63) are stated up to units, exactly as `EFF.HE3.32`'s `R_λ = Π_r r^{m_r}` is.
+**Flagged for human review.**
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.HE3.13`; `EFF.HE3.14`; `docs/GMN_citations.md` Def 2.21; `EFF.HE6.11`.
+
+**TEETH.** `W12-SHAPE`, `HE-SIG` → **executable regression** retained (the batteries read `R_λ`'s
+factorization type per row).
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.30 [lemma] [fresh]
+
+**STATEMENT.** *The residual polynomial has degree `d` and nonzero constant term.* With the data of
+B.28, assume additionally `hφ : IsKey φ`, `hπ : Irreducible π`, `suppVal φ f u ℓ ≠ ⊤`, and that `H₀`
+is correct (`npHgt φ f (sideMin …) = (H₀ : ℕ∞)`). Then
+
+* `resCoeff k = 0 ↔ ¬ OnSide φ f u ℓ (j₀ + ℓ*k)` for every `k ≤ d`;
+* `resCoeff 0 ≠ 0` and `resCoeff d ≠ 0`;
+* `(resPoly …).natDegree = d` and `(resPoly …).coeff 0 ≠ 0`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem resCoeff_eq_zero_iff (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {f : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+    (htop : suppVal φ f u ℓ ≠ ⊤) (h : (sideSet φ f u ℓ).Nonempty) {H₀ : ℕ}
+    (hH₀ : npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞)) {k : ℕ} (hk : k ≤ sideDeg φ f u ℓ h) :
+    resCoeff π φ f u ℓ h H₀ k = 0 ↔ ¬ OnSide φ f u ℓ (sideMin φ f u ℓ h + ℓ * k)
+
+theorem natDegree_resPoly (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {f : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+    (htop : suppVal φ f u ℓ ≠ ⊤) (h : (sideSet φ f u ℓ).Nonempty) {H₀ : ℕ}
+    (hH₀ : npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞)) :
+    (resPoly π φ f u ℓ h H₀).natDegree = sideDeg φ f u ℓ h ∧
+      (resPoly π φ f u ℓ h H₀).coeff 0 ≠ 0
+```
+
+**DEPENDS.** B.03 · B.08 · B.11 · B.16 · B.20 · B.24 · B.25 · B.28 · B.29 · B.36 (the slot lemma —
+**this is a forward dependency inside §5 and it is deliberate**: B.36 needs only B.03/B.08/B.24/B.25,
+not this node, so the DAG stays acyclic; the topological order is B.36 before B.30) ·
+landed `Uniformity.Hensel.coeff_sum_range_C_mul_X_pow`.
+
+**PROOF.**
+1. The line height at `j_k := j₀ + ℓk` is `H₀ − u·k`, and `H₀ − u·k ≤ npHgt φ f j_k` always: from
+   `OnSide … j₀` and `Finset.inf_le` at `j_k`,
+   `ℓ*H₀ + u*j₀ = suppVal ≤ ℓ • npHgt φ f j_k + u*j_k`, and `u*j_k = u*j₀ + u*ℓ*k`, so
+   `ℓ*(H₀ − u*k) ≤ ℓ • npHgt φ f j_k`, hence the claim after cancelling `ℓ > 0`.
+   (Do the `ℕ∞` arithmetic by cases on `npHgt φ f j_k = ⊤`.)
+2. Equality in step 1 holds iff `OnSide φ f u ℓ j_k`, by the same computation read backwards.
+3. `resCoeff_eq_zero_iff`: `resCoeff k = AdjoinRoot.mk φ̄ (digPoly π (H₀−u*k) (dev φ f j_k))`. By
+   B.36 (the slot lemma) applied to `a := dev φ f j_k` — whose degree is `< φ.degree` by B.03 — the
+   class `AdjoinRoot.mk φ̄ (digPoly π c a)` is `0` iff `digPoly π c a = 0`. By B.24's
+   `digPoly_eq_zero_iff` (whose hypothesis `(c : ℕ∞) ≤ gaussVal a` is step 1) that is
+   `(c+1 : ℕ∞) ≤ gaussVal a = npHgt φ f j_k`, i.e. strict inequality in step 1, i.e. `¬ OnSide` by
+   step 2.
+4. `resCoeff 0 ≠ 0`: `k = 0` gives `j_0 = j₀`, which IS on side (`Finset.min'_mem`); apply step 3.
+5. `resCoeff d ≠ 0`: `j_d = sideMax` by B.20's `sideMax_eq`, which is on side
+   (`Finset.max'_mem`); apply step 3.
+6. `natDegree_resPoly`: `(resPoly).coeff k = resCoeff k` for `k ≤ d` and `0` above
+   (`coeff_sum_range_C_mul_X_pow`); with step 5 the leading coefficient is nonzero, so the
+   `natDegree` is `d`; with step 4 the constant coefficient is nonzero.
+
+**SIZE.** 34 lines. **SPLIT CANDIDATE** at step 3/step 6 (`resCoeff_eq_zero_iff` in `B30a.lean`,
+`natDegree_resPoly` in `B30b.lean`); steps 1–2's `ℕ∞` arithmetic is the largest piece and belongs
+with step 3.
+
+**⚠ THIS NODE IS `docs/GMN_citations.md` Def 2.21's LOAD-BEARING CLAUSE, AT ORDER 1 AND AT GENERAL
+`O`.** The corpus states "`c_s` and `c_{s+de}` are always nonzero" as part of a *definition*; here it
+is a theorem, and its proof is where the slot lemma (B.36) is actually consumed.
+
+**SOURCE.** `docs/GMN_citations.md` Def 2.21; `EFF.HE3.13` ("`R_λ` … of degree `d_λ` with
+`R_λ(0) ≠ 0`"); `EFF.HE3.14`; `EFF.W12.23` (the vertex clause's `digit ≠ 0`).
+
+**TEETH.** `W12-SHAPE` (0/164, both directions) → **Lean theorem** (the degree-and-endpoints half of
+every row's polygon key).
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
