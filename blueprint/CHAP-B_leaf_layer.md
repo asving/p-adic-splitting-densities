@@ -2254,4 +2254,725 @@ node).
 
 ---
 
+## 6. §6 — THE TWO DISSECTIONS
+
+### DECISION D-2 — HOW THE DISSECTIONS ARE PROVED
+
+> Recorded here because it is the chapter's second interface decision and it fixes ≈ 40% of the
+> chapter's Lean mass.
+
+**THE DECISION.** Both dissections are proved **over `O`, by one graded successive-approximation
+engine (B.37–B.41), modelled declaration-for-declaration on the landed Hensel engine of
+`leanfinal/Uniformity/HenselFactorization.lean`.** No base change of any kind is used.
+
+**The three alternatives, and why each is rejected.**
+
+1. **Unramified base change `O → AdjoinRoot φ` to make the key linear (`m = 1`).** Rejected: the
+   dissection would then be a factorization over `AdjoinRoot φ`, and descending it to `O` needs
+   **Galois descent for an unramified extension**, which exists in neither `leanfinal` nor any quarry
+   (H-6) and is a strictly larger obligation than the graded engine.
+2. **Totally ramified base change `O → O_ℓ := O[T]/(T^ℓ − π)` to make the slope integral (`ℓ = 1`),
+   then landed `exists_monic_factorization` after `scaleRoots`.** Rejected, and the reason is
+   **NOT** HE3-BOX-6's: over `O_ℓ` the residue field is unchanged, so `φ̄` stays irreducible and `φ`
+   stays an order-1 key — HE3-BOX-6's objection ("`Φ′` need not remain irreducible over `O₂`",
+   `EFF.HE3.44`) bites at `e₁ ≥ 2`, where a key's irreducibility is **not** determined by its
+   reduction, and does not bite here. **The real obstruction is on the residual side:** the on-side
+   abscissae stay `ℓ`-spaced over `O_ℓ` (B.17's argument is unchanged), so the residual polynomial
+   over `O_ℓ` at slope `(u,1)` is `R_O(Y^ℓ)` rather than `R_O(Y)`; factoring `R_O(Y^ℓ)` over
+   `resField φ` is a **strictly finer** dissection whose pieces are permuted by the (possibly
+   non-Galois) extension `O_ℓ/O`, so descent fails for the same reason as in alternative 1 and for a
+   worse reason besides (`O_ℓ/O` need not be Galois when the `ℓ`-th roots of unity are absent).
+   **This is a finding, not a transcription:** the corpus's own objection to the ramified base change
+   is about key irreducibility, and at `e₁ = 1` that objection is void — the obstruction that
+   remains is the residual-index one recorded here. **§14 item 1.**
+3. **Rational sampling with an intermediate slope, then a single coprime-Hensel step.** Rejected as
+   incomplete rather than wrong: at a vertex the support value at an intermediate slope `κ` is
+   attained at exactly one abscissa (B.19 is the reason), so the "residual polynomial at `κ`" is a
+   monomial and carries no coprime factorization to feed landed Hensel. Rational sampling is what
+   *detects* the vertex (`EFF.HE6.30`(c): "integer sampling cannot separate three slopes inside one
+   open interval, but rational sampling … can"), and B.42 uses it for exactly that; it does not by
+   itself produce the factorization.
+
+**The template, named precisely.** B.38 ↔ landed `exists_solve_field` (`HenselFactorization.lean:133`);
+B.39 ↔ `exists_solve_mod` (`:230`); B.40 ↔ `exists_solve_step` (`:248`); B.41 ↔
+`exists_adicLimit_of_degree_lt` (`:306`) + `exists_monic_factorization` (`:393`); B.43 ↔
+`monic_factorization_unique` (`:694`). **The landed file is 790 lines for the ungraded case; the
+graded case is the chapter's largest cluster and the fleet should be sized for ≈ 900 lines across
+B.37–B.43.** Every one of those landed lemmas is `sorry`-free with a Lean-core footprint, so the
+template is known to close; what is new is the graded weight bookkeeping.
+
+---
+
+### NODE B.37 [def] [fresh]
+
+**STATEMENT.** *Graded coprimality at a slope.* Fix an order-1 key `φ`, `0 < ℓ`, `Nat.Coprime u ℓ`,
+and monic `g, h` that are `(u,ℓ)`-pure with heights `H_g, H_h` at abscissa `0`. Say the pair is
+**`(u,ℓ)`-coprime** when their residual polynomials are coprime in `(resField φ)[Y]`:
+`IsCoprime (resPoly π φ g u ℓ _ H_g) (resPoly π φ h u ℓ _ H_h)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `GradedCoprime π φ u ℓ g h` : `g` and `h` are `(u,ℓ)`-pure with coprime residual polynomials. -/
+def GradedCoprime (π : O) (φ : Polynomial O) (u ℓ : ℕ) (g h : Polynomial O) : Prop :=
+  ∃ (Hg Hh : ℕ) (hg' : (sideSet φ g u ℓ).Nonempty) (hh' : (sideSet φ h u ℓ).Nonempty),
+    npHgt φ g 0 = (Hg : ℕ∞) ∧ npHgt φ h 0 = (Hh : ℕ∞) ∧
+    IsPure φ g u ℓ ∧ IsPure φ h u ℓ ∧
+    IsCoprime (resPoly π φ g u ℓ hg' Hg) (resPoly π φ h u ℓ hh' Hh)
+```
+
+**DEPENDS.** B.16 · B.18 · B.20 · B.29 · B.34.
+
+**PROOF.** definitional.
+
+**FAITHFULNESS.** This is the graded analogue of the landed engine's hypothesis
+`IsCoprime g₀ h₀` on residue-field reductions (`HenselFactorization.lean:393`). The corpus's
+corresponding hypotheses are `EFF.HE3.32`'s "`R_λ = Π_r r^{m_r}` (`r` irreducible over `K`)" — the
+factors of a squarefree-at-`r` residual are pairwise coprime — and `docs/GMN_citations.md` Thm 1.19's
+"pairwise-distinct monic irreducibles in `F_φ[y]`". **Flagged for human review.**
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `docs/GMN_citations.md` Thm 1.15, Thm 1.19; `EFF.HE3.32`.
+
+**TEETH.** signed non-applicable (a definition).
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.38 [lemma] [fresh]
+
+**STATEMENT.** *The graded Bézout solve over the residual field.* Let `K` be a field and
+`G, H ∈ K[Y]` coprime with `G.natDegree = a`, `H.natDegree = b`. For every `W ∈ K[Y]` with
+`W.degree < ((a + b : ℕ) : WithBot ℕ)` there are `U, V ∈ K[Y]` with `U.degree < (a : WithBot ℕ)`,
+`V.degree < (b : WithBot ℕ)` and `W = H * U + G * V`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem exists_solve_resField {K : Type*} [Field K] {G H : Polynomial K}
+    (hG : G.Monic) (hH : H.Monic) (hcop : IsCoprime G H) {W : Polynomial K}
+    (hW : W.degree < ((G.natDegree + H.natDegree : ℕ) : WithBot ℕ)) :
+    ∃ U V : Polynomial K, U.degree < (G.natDegree : WithBot ℕ) ∧
+      V.degree < (H.natDegree : WithBot ℕ) ∧ W = H * U + G * V
+```
+
+**DEPENDS.** landed `Uniformity.Hensel.exists_solve_field` (`HenselFactorization.lean:133`).
+
+**PROOF.**
+1. This is **literally** the landed `exists_solve_field` with `k := K`, `g₀ := G`, `h₀ := H`,
+   `w := W`. `exact Uniformity.Hensel.exists_solve_field hG hH hcop hW`.
+
+**SIZE.** 4 lines. **This node exists only to record that the landed lemma is stated at the right
+generality** (`{k : Type*} [Field k]`, not over `ResidueField O`), so no re-proof is needed and the
+graded engine inherits it. If `exists_solve_field`'s section variables turn out to bind
+`ResidueField O`, this node becomes a 40-line re-proof and the orchestrator must be told —
+**check first: `HenselFactorization.lean:131` reads `variable {k : Type*} [Field k]`, so the node is a
+one-liner.**
+
+**SOURCE.** landed API; `docs/GMN_citations.md` Thm 1.19's proof needs exactly this Bézout step.
+
+**TEETH.** signed non-applicable.
+
+**ENVIRONMENT.** ENV-D.
+
+---
+
+### NODE B.39 [lemma] [fresh]
+
+**STATEMENT.** *The graded solve at one weight.* Let `φ` be an order-1 key, `0 < ℓ`,
+`Nat.Coprime u ℓ`, and `g, h` monic `(u,ℓ)`-pure and `(u,ℓ)`-coprime with residual polynomials
+`G, H` of degrees `a, b`. Let `e ∈ O[X]` with `e.natDegree < (a + b) * ℓ * m` (the degree of `g*h`)
+and `suppVal φ e u ℓ ≥ c` for a given `c`. Then there exist `U, V ∈ O[X]` with
+`U.natDegree < g.natDegree`, `V.natDegree < h.natDegree`,
+`suppVal φ U u ℓ ≥ c - suppVal φ h u ℓ`, `suppVal φ V u ℓ ≥ c - suppVal φ g u ℓ`, and
+
+```
+suppVal φ (e - (h * U + g * V)) u ℓ ≥ c + 1.
+```
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h : Polynomial O}
+    (hg : g.Monic) (hh : h.Monic) (hgh : GradedCoprime π φ u ℓ g h)
+    {c : ℕ} {e : Polynomial O} (hdeg : e.natDegree < (g * h).natDegree)
+    (he : ((c : ℕ) : ℕ∞) ≤ suppVal φ e u ℓ) :
+    ∃ U V : Polynomial O, U.natDegree < g.natDegree ∧ V.natDegree < h.natDegree ∧
+      ((c + 1 : ℕ) : ℕ∞) ≤ suppVal φ (e - (h * U + g * V)) u ℓ
+```
+
+**DEPENDS.** B.20 · B.28 · B.29 · B.30 · B.33 · B.35 · B.36 · B.37 · B.38 · landed
+`Uniformity.Hensel.exists_monic_lift`, `Uniformity.Hensel.eq_sum_range_of_degree_lt`.
+
+**PROOF.**
+1. Form the residual polynomial of `e` **at the weight `c`** rather than at its own support value: by
+   B.28's definition with `H₀` replaced by the line height determined by `c`, this is a well-defined
+   element `E ∈ (resField φ)[Y]` (zero if `suppVal φ e u ℓ > c`), of degree `< a + b` because
+   `e.natDegree < (g*h).natDegree` bounds the abscissa range.
+2. Apply B.38 with `G, H, W := E`: obtain `U₀, V₀ ∈ (resField φ)[Y]` with the degree bounds and
+   `E = H * U₀ + G * V₀`.
+3. Lift `U₀, V₀` back to `O[X]`: each residual coefficient of `U₀` is an element of
+   `resField φ = F[y]/(φ̄)`, hence the class of some `p ∈ F[y]` of degree `< m` (choose the canonical
+   representative via `AdjoinRoot.mk`'s surjectivity plus `modByMonic`), which lifts to `O[X]` of
+   degree `< m` by `Ideal.Quotient.mk_surjective` coefficientwise; assemble
+   `U := Σ_k (lift of U₀'s k-th coefficient) * π^{(line height)} * φ^{j₀ + ℓk}`. The weight
+   bookkeeping is the only content: `suppVal φ U u ℓ ≥ c - suppVal φ h u ℓ` by B.33 and the
+   construction.
+4. `e - (h*U + g*V)` has residual polynomial `E - (H*U₀ + G*V₀) = 0` at weight `c`, hence by B.30's
+   `resCoeff_eq_zero_iff` (contrapositive) its support value at `(u,ℓ)` is `> c`, i.e. `≥ c + 1`.
+5. The degree bounds on `U, V` follow from step 3's construction: `U` has abscissa range `< a`, so
+   degree `< a * ℓ * m = g.natDegree`.
+
+**SIZE.** 70 lines. **SPLIT MANDATED → 2**: `B39a.lean` = step 3 (the residual-to-`O[X]` lift with its
+weight bookkeeping — reusable, so its extraction is a **RE-PLAN request**, orchestrator books it as
+**B.39a `resLift`**); `B39b.lean` = steps 1–2, 4–5 and the contract.
+
+**⚠ THE `resLift` OF STEP 3 IS THE `(LIFT)` OF `EFF.HE6.13`, AT `e₁ = 1`.** The pin
+`[PIN HE6-LIFT-1L]` (T2 count 34) gives the **exact reachable-residue set** at height `k`:
+`η_θ^{−q(k)} · { Σ_{t ∈ T(k)} c_t η_θ^t : c_t ∈ F_Q, not all 0 }` with
+`T(k) := { t < f₁ : k ≥ (i₀ + e₁t)h }`, and "The set is ALL of `K^×` iff `T(k) = {0,…,f₁−1}`". At
+`e₁ = 1, h = 0` we have `i₀ = 0`, `T(k) = {0,…,m−1}` for **every** `k ≥ 0`, and `q(k) = 0` — so the
+reachable set is all of `resField φ` at every height, unconditionally, and the lift of step 3 is
+total. **`EFF.HE6.12` records that the original `(LIFT)` was FALSE as stated, refuted by two
+independent counterexamples**, and `EFF.HE6.13` is the corrected form; the reason the correction is
+invisible here is that `T(k) = ∅` (the "height not attained" clause) cannot happen at `h = 0`. This
+is the third place H-1's scope claim does real work and it is **§14 item 4**.
+
+**SOURCE.** `EFF.HE6.13` (`[PIN HE6-LIFT-1L]`, `(LIFT)` corrected) and `EFF.HE6.12` (the refutation
+of the original); `EFF.HE3.21` (`LEMMA HE3-1L`, the letter lift: "fullness at `κ ≥ (D′−1)h`", which at
+`h = 0` is every `κ`); landed `HenselFactorization.lean:230,248` as the ungraded template.
+
+**TEETH.** `HE6R1-LIFT2` (`EFF.HE6R1.27`, 5 exhaustive frames, threshold **sufficient not sharp**) →
+**executable regression** retained; `HE6-RANK` (`EFF.HE6.51`, "old family 3 spurious vectors vs
+enlarged family's exactly 1") → **signed non-applicability**: the rank question is about the *enlarged
+test family* at fractional height, which H-1 puts out of scope.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.40 [lemma] [fresh]
+
+**STATEMENT.** *The graded adic limit.* Let `d : ℕ` and let `p : ℕ → O[X]` satisfy
+`(p k).natDegree < d` for every `k` and
+`((k : ℕ) : ℕ∞) ≤ suppVal φ (p (k+1) - p k) u ℓ` for every `k`. Then (over the complete bundle) there
+is `P ∈ O[X]` with `P.natDegree < d` and `((k : ℕ) : ℕ∞) ≤ suppVal φ (P - p k) u ℓ` for every `k`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem exists_graded_limit (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic)
+    (hd0 : 0 < φ.natDegree) {u ℓ : ℕ} (hℓ : 0 < ℓ) (d : ℕ) (p : ℕ → Polynomial O)
+    (hdeg : ∀ k, (p k).natDegree < d)
+    (hstep : ∀ k, ((k : ℕ) : ℕ∞) ≤ suppVal φ (p (k + 1) - p k) u ℓ) :
+    ∃ P : Polynomial O, P.natDegree < d ∧ ∀ k, ((k : ℕ) : ℕ∞) ≤ suppVal φ (P - p k) u ℓ
+```
+
+**DEPENDS.** B.14 · B.31 · landed `Uniformity.Hensel.exists_adicLimit_of_degree_lt`
+(`HenselFactorization.lean:306`) · B.08.
+
+**PROOF.**
+1. `suppVal φ a u ℓ ≥ (k : ℕ∞)` implies `gaussVal a ≥ (⌈k/ℓ⌉ : ℕ∞)` — a weight-to-coefficient
+   conversion: from `Finset.le_inf_iff`, `ℓ • gaussVal (dev φ a j) + u*j ≥ k` at `j = 0` gives
+   `ℓ • gaussVal (dev φ a 0) ≥ k`; and `gaussVal a ≤ npHgt φ a j` is **the wrong direction** — so use
+   instead B.31's `gaussVal_le_npHgt` in the form: `gaussVal a = inf_j` over a representation, hence
+   `gaussVal a ≥ (S - u * μ)/ℓ` where `S = suppVal`. Precisely: for every `j ≤ μ`,
+   `ℓ • npHgt φ a j ≥ S - u*j ≥ S - u*μ`, and `gaussVal a ≥ min_j npHgt φ a j` … **this step is the
+   node's only content and it must be got right**: the clean statement is
+   `((k - u * μ) / ℓ : ℕ) ≤ gaussVal a` where `μ := d / φ.natDegree`, proved from
+   `Finset.le_inf_iff` plus `gaussVal a = gaussVal (Σ_j dev φ a j * φ^j) ≥ min_j gaussVal (dev φ a j)`
+   (B.09's sum bound and B.05).
+2. With step 1, `hstep` gives `p (k+1) - p k ∈ coeffIdeal (maximalIdeal O ^ ⌈(k - uμ)/ℓ⌉)`, so after
+   reindexing `k ↦ ℓ*k + u*μ` the hypothesis of landed `exists_adicLimit_of_degree_lt` holds for the
+   subsequence `q j := p (ℓ*j + u*μ)`.
+3. Landed `exists_adicLimit_of_degree_lt` gives `P` with `P - q j ∈ coeffIdeal (maximalIdeal O ^ j)`.
+4. Convert back: `P - p k = (P - q j) + (q j - p k)` for a suitable `j` and use B.33's easy
+   inequality plus B.08 to recover the `suppVal` bound; the telescoping `q j - p k` is a finite sum of
+   `hstep` increments and its `suppVal` is bounded below by the smallest index.
+
+**SIZE.** 50 lines. Step 1 is the whole risk and the fleet must state it as a standalone private
+helper `gaussVal_ge_of_suppVal_ge` before anything else.
+
+**SOURCE.** landed `HenselFactorization.lean:306` as template; `EFF.HE3.27`(c) (the in-window,
+upward clause — the corpus's form of "the approximation converges inside the window").
+
+**TEETH.** signed non-applicable.
+
+**ENVIRONMENT.** ENV-B.
+
+---
+
+### NODE B.41 [theorem] [fresh]
+
+**STATEMENT.** *The graded factorization (the engine).* Over the complete bundle, let `φ` be an
+order-1 key, `0 < ℓ`, `Nat.Coprime u ℓ`, and let `f` be monic with a factorisation of its residual
+data: suppose `G, H ∈ (resField φ)[Y]` are monic coprime with `G.natDegree + H.natDegree = μ_f`, that
+`f` is `(u,ℓ)`-pure of residual polynomial `G * H` (up to a unit), and that `deg f = μ_f * ℓ * m`
+— wait, `deg f = μ_f * m` with `μ_f = ℓ * (G.natDegree + H.natDegree)`; the exact index arithmetic is
+fixed in the PROOF. Then `f = g * h` with `g, h` monic, `g` `(u,ℓ)`-pure of residual polynomial `G`,
+`h` `(u,ℓ)`-pure of residual polynomial `H`, and
+`g.natDegree = ℓ * m * G.natDegree`, `h.natDegree = ℓ * m * H.natDegree`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem exists_graded_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f : Polynomial O} (hf : f.Monic)
+    (hpure : IsPure φ f u ℓ) {H₀ : ℕ} (hH₀ : npHgt φ f 0 = (H₀ : ℕ∞))
+    (hne : (sideSet φ f u ℓ).Nonempty)
+    {G H : Polynomial (resField φ)} (hG : G.Monic) (hH : H.Monic) (hGH : IsCoprime G H)
+    (hprod : ∃ c : (resField φ)ˣ,
+      resPoly π φ f u ℓ hne H₀ = Polynomial.C (c : resField φ) * (G * H)) :
+    ∃ g h : Polynomial O, g.Monic ∧ h.Monic ∧ f = g * h ∧
+      g.natDegree = ℓ * φ.natDegree * G.natDegree ∧
+      h.natDegree = ℓ * φ.natDegree * H.natDegree ∧
+      IsPure φ g u ℓ ∧ IsPure φ h u ℓ ∧ GradedCoprime π φ u ℓ g h
+```
+
+**DEPENDS.** B.13 · B.18 · B.20 · B.29 · B.30 · B.33 · B.34 · B.35 · B.37 · B.39 · B.40 · landed
+`Uniformity.Hensel.exists_monic_lift`, `Uniformity.Hensel.natDegree_eq_of_map_eq`,
+`Uniformity.Hensel.degree_sub_lt_of_monic_of_natDegree_eq`, `Uniformity.Hensel.isCoprime_of_map_eq`.
+
+**PROOF.** The landed `exists_monic_factorization` (`HenselFactorization.lean:393`) is the template;
+each step below names the landed step it mirrors.
+1. **Initial approximation.** Lift `G` and `H` to monic `g₀, h₀ ∈ O[X]` of degrees
+   `ℓ*m*G.natDegree`, `ℓ*m*H.natDegree` whose residual polynomials are `G`, `H`: use B.39a's
+   `resLift` on the coefficients, then multiply by the appropriate `φ`-powers. (Landed step: the
+   `exists_monic_lift` call.) The construction must make `g₀` **monic**, which fixes its top
+   development coefficient to `1`; B.13 then forces its polygon's right endpoint.
+2. **The error.** `e₀ := f - g₀ * h₀` has `suppVal φ e₀ u ℓ ≥ suppVal φ f u ℓ + 1`, because the
+   residual polynomials agree at the top weight (B.35's `resPoly_mul_of_pure` applied to `g₀ * h₀`,
+   plus `hprod`) and B.30 converts "residual polynomial vanishes" into "support value is strictly
+   larger". `e₀.natDegree < f.natDegree` since both `f` and `g₀h₀` are monic of the same degree
+   (landed `degree_sub_lt_of_monic_of_natDegree_eq`).
+3. **The iteration.** Define `g_{k+1} := g_k + V_k`, `h_{k+1} := h_k + U_k` from B.39 applied to
+   `e_k := f - g_k h_k` at weight `c_k := suppVal φ f u ℓ + k + 1`; the degree bounds keep
+   `g_k` monic of fixed degree. Then `e_{k+1} = e_k - (h_k U_k + g_k V_k) - U_k V_k` and both
+   correction terms have support value `≥ c_k + 1` (the cross term by B.33). (Landed step:
+   `exists_solve_step`'s loop.)
+4. **The limit.** B.40 applied to `(g_k)` and to `(h_k)` gives monic `g, h` of the right degrees with
+   `suppVal φ (f - g*h) u ℓ = ⊤`, i.e. `f = g*h` (B.08's `gaussVal_eq_top_iff` after B.40's step-1
+   conversion). (Landed step: `exists_adicLimit_of_degree_lt`.)
+5. **The residual data of the limit.** `resPoly π φ g u ℓ = G` because `g - g₀` has support value
+   `> suppVal φ g u ℓ`, so B.30's `resCoeff_eq_zero_iff` makes the residual polynomials equal; same
+   for `h`. `IsPure` for `g` and `h`, and `GradedCoprime`, follow from `hGH` and B.35.
+
+**SIZE.** 220 lines. **SPLIT MANDATED → 4**: `B41a.lean` = step 1 (the initial approximation, the
+place `resLift` is consumed); `B41b.lean` = step 2 (the error bound); `B41c.lean` = step 3 (the
+iteration, with the two correction sequences defined by `Nat.rec` and their invariants);
+`B41d.lean` = steps 4–5 and the contract. **This is the chapter's largest node and the fleet must
+receive it pre-split.**
+
+**⚠ SIGNATURE HAZARD, DECLARED.** The index arithmetic between `μ_f`, `G.natDegree + H.natDegree` and
+`ℓ` is stated loosely in the STATEMENT above and is **pinned in the SIGNATURE**: the conclusion's
+degrees are `ℓ * m * G.natDegree` and `ℓ * m * H.natDegree`, and their sum must equal `f.natDegree`.
+The stub-landing agent must check `f.natDegree = ℓ * m * (G.natDegree + H.natDegree)` is derivable from
+`hpure` + `hprod` + B.30 (it is: B.30 gives `(resPoly).natDegree = sideDeg`, `hprod` gives
+`sideDeg = G.natDegree + H.natDegree`, and `IsPure` + B.13 give
+`f.natDegree = m * μ_f` with `μ_f = ℓ * sideDeg`) — and if it is not, **this is a blueprint defect and
+goes back to this file**, not patched in `leanspec` (0e rule 3).
+
+**SOURCE.** `docs/GMN_citations.md` Thm 1.15 and Thm 1.19 (both are applications of this one engine);
+`EFF.HE3.32` (`LEMMA HE3-4`, the residue peel, which is this engine's conclusion read as a class
+count); landed `HenselFactorization.lean:393` as template.
+
+**TEETH.** `W12-BLOCK` (`EFF.W12.55`, 0/1,594,670: "Hensel product identity `g·l == f` + fiber
+bijection") → **Lean theorem** (the product identity is step 4).
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.42 [theorem] [fresh]
+
+**STATEMENT.** *THE THEOREM OF THE POLYGON at order 1 (NS-1).* Over the complete bundle, let `φ` be
+an order-1 key and `f` monic with `f.map (residue O) = (φ.map (residue O)) ^ μ` and `0 < μ`. Then
+there is a finite family of coprime slope pairs `(u_i, ℓ_i)` with **pairwise distinct** slopes
+(`u_i * ℓ_j ≠ u_j * ℓ_i` for `i ≠ j`) and monic `f_i` with
+
+* `f = ∏ f_i`;
+* each `f_i` is `(u_i, ℓ_i)`-pure;
+* `Σ (f_i).natDegree = f.natDegree`;
+* the slopes `(u_i, ℓ_i)` are exactly the slopes of `f`'s `φ`-adic polygon, i.e. exactly the coprime
+  pairs whose `sideSet φ f u ℓ` has at least two elements.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
+    (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ) :
+    ∃ (s : Finset (ℕ × ℕ)) (F : ℕ × ℕ → Polynomial O),
+      (∀ p ∈ s, 0 < p.2 ∧ Nat.Coprime p.1 p.2) ∧
+      (∀ p ∈ s, ∀ q ∈ s, p ≠ q → p.1 * q.2 ≠ q.1 * p.2) ∧
+      (∀ p ∈ s, (F p).Monic ∧ IsPure φ (F p) p.1 p.2) ∧
+      f = ∏ p ∈ s, F p ∧
+      (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
+        (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s))
+```
+
+**DEPENDS.** B.13 · B.16 · B.17 · B.18 · B.19 · B.20 · B.30 · B.34 · B.35 · B.41 ·
+landed `Uniformity.Hensel.exists_monic_factorization_finset` (as the shape to mirror for the
+`Finset` induction).
+
+**PROOF.**
+1. **The slope set is finite and bounded.** Every slope `(u,ℓ)` of `f` has `ℓ ≤ μ` (B.20:
+   `ℓ ∣ sideLen ≤ μ`) and `u ≤ ℓ * npHgt φ f 0` (the leftmost height, finite by B.18 and `hres`,
+   which forces `npHgt φ f j ≥ 1` for `j < μ`). So the slopes live in a fixed
+   `Finset.range × Finset.range`, and `s` is a `Finset.filter` of it.
+2. **`hres` forces every slope positive.** `f̄ = φ̄^μ` says `dev φ f j ≡ 0 mod π` for `j < μ`
+   (a private helper: reduce the development mod `π` and use B.06's uniqueness in
+   `(ResidueField O)[X]`), so `npHgt φ f j ≥ 1` for `j < μ`, so `suppVal φ f u ℓ` is attained at
+   `j = μ` only when `u = 0`; hence every side with two elements has `u ≥ 1`.
+3. **Strong induction on `μ`.** If `s` has at most one element, `f` is already pure (B.34) and the
+   family is `{f}`; done.
+4. Otherwise pick two distinct slopes and, by B.19, the abscissa `i` they share (the vertex). Choose a
+   coprime pair `(w, t)` with slope strictly between them (rational sampling: the interval is
+   nonempty in `ℚ`, and `Nat.Coprime`-normalising a mediant gives the pair — a private helper
+   `exists_coprime_between`). At `(w,t)` the support value is attained **only at `i`** (B.19 plus
+   convexity of the `inf` in the slope — the private helper `onSide_unique_of_between`).
+5. **Apply B.41 at the slope `(w,t)`** with `G := Y^{i'}` and `H :=` the remaining factor of
+   `resPoly π φ f w t`, where `i'` is `i`'s position on the `(w,t)`-side. Because the support value is
+   attained only at `i`, the residual polynomial at `(w,t)` is `C c * Y^{i'}` for a unit `c`, so the
+   coprime split to feed B.41 is **not** available in that form — instead apply B.41 at a slope
+   `(w,t)` chosen so that the residual polynomial has **two** coprime factors, namely
+   `Y^{i'}` and `(the part of degree ≥ 1 with nonzero constant term)`. **This is the step that needs
+   the mediant chosen ON a vertex rather than strictly between:** take `(w,t)` to be one of the two
+   slopes met at `i` — say the steeper one `(u₁,ℓ₁)` — whose residual polynomial `R₁` has degree
+   `d₁ ≥ 1` and nonzero constant term (B.30), and split `R₁ = Y^0 * R₁`… **RESOLVED as follows**: the
+   correct split is at the *steepest* slope. Let `(u₁,ℓ₁)` be the slope with the largest value of
+   `u/ℓ` in `s` (`Finset.max'` on the mediant order — private helper). Its side spans
+   `[j₁, j₁ + ℓ₁ d₁]` with `j₁ = 0` (the steepest side starts at abscissa `0`, since heights left of
+   it would violate the `inf`). The residual polynomial at `(u₁,ℓ₁)` for the **whole** `f` has degree
+   `d₁` and nonzero constant term; the rest of the polygon contributes the monomial factor. So take
+   `G := resPoly π φ f u₁ ℓ₁` (degree `d₁`, nonzero constant term, hence coprime to `Y`) and
+   `H := Y^{μ/ℓ₁ - d₁}`, which are coprime because `G.coeff 0 ≠ 0`
+   (`IsCoprime` with a power of `Y` ⟺ nonzero constant term — private helper
+   `isCoprime_X_pow_iff`). B.41 then peels off the steepest side.
+6. The peeled factor `g` has degree `ℓ₁ m d₁ < f.natDegree` (strictly, since `s` has ≥ 2 elements), and
+   the cofactor `h` has `h̄ = φ̄^{μ - ℓ₁ d₁}` (B.35 and step 2), with polygon the remaining sides
+   (B.35's `suppVal` additivity, which pins the cofactor's support values). Apply the induction
+   hypothesis to `h`.
+7. The last conclusion (the slope set is exactly the set of `(u,ℓ)` with a two-element side) is B.35
+   run in the other direction: the product's support value at any `(u,ℓ)` is the sum of the factors',
+   and a two-element side of the product forces one of a factor.
+
+**SIZE.** 180 lines. **SPLIT MANDATED → 4**: `B42a.lean` = the three private helpers
+(`exists_coprime_between`, `isCoprime_X_pow_iff`, and the steepest-slope selection);
+`B42b.lean` = steps 1–2 (the slope set is a finite `Finset` and every slope is positive);
+`B42c.lean` = step 5 (the peel at the steepest slope, the only place B.41 is called);
+`B42d.lean` = steps 3, 6–7 (the induction and the contract).
+
+**⚠ THIS NODE IS THE CHAPTER'S CRITICAL-PATH RISK AND ITS STEP 5 IS DECLARED UNSETTLED.** The
+STATEMENT is certain — it is `docs/GMN_citations.md` Thm 1.15 verbatim at order 1, `COVERS-ALL-O` by
+`docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-1 — but the *route* went through two candidate splits
+above before settling on "peel the steepest side", and the settled version rests on the unproved
+geometric claim **"the steepest side starts at abscissa 0"**. That claim is true (a side steeper than
+all others must contain the leftmost support point, or the `inf` at its slope would be attained
+further right) but it is not among the nodes below, and it must be added as a private helper of
+`B42b.lean`. **A cross-reader should not accept step 5 without checking it**, and a fleet agent that
+cannot prove it must return `BLOCKED` with the counterexample attempt rather than re-cut the route.
+**§14 item 2.**
+
+**SOURCE.** `docs/GMN_citations.md` Thm 1.15 (order-1 theorem of the polygon);
+`docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-1 ([AGNPRW] Thm 4.4 / [GN15] Thm 2.3, `COVERS-ALL-O`);
+`EFF.W12.09`, `.27`, `.46` (the corpus's three citation sites); `EFF.HE3.13`.
+
+**TEETH.** `W12-SHAPE` (`EFF.W12.54`, 0/164 over 23 rows, **both directions** — the completeness
+half is exactly this node's last conclusion) → **Lean theorem**; `HE6-SEP`
+(`EFF.HE6.49`, 4,232 strict-excess certificates) → **executable regression** retained.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.43 [lemma] [fresh]
+
+**STATEMENT.** *Uniqueness of the graded factorization.* Under B.41's hypotheses, if `f = g*h` and
+`f = g'*h'` with `g, g', h, h'` monic, `g, g'` `(u,ℓ)`-pure with residual polynomial `G` and
+`h, h'` `(u,ℓ)`-pure with residual polynomial `H`, and `IsCoprime G H`, then `g = g'` and `h = h'`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem graded_factorization_unique (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h g' h' : Polynomial O}
+    (hg : g.Monic) (hh : h.Monic) (hg' : g'.Monic) (hh' : h'.Monic)
+    (hcopGH : GradedCoprime π φ u ℓ g h)
+    (hgg' : ∀ hne hne' H₀, resPoly π φ g u ℓ hne H₀ = resPoly π φ g' u ℓ hne' H₀)
+    (hhh' : ∀ hne hne' H₀, resPoly π φ h u ℓ hne H₀ = resPoly π φ h' u ℓ hne' H₀)
+    (heq : g * h = g' * h') : g = g' ∧ h = h'
+```
+
+**DEPENDS.** B.30 · B.33 · B.35 · B.37 · B.39 · landed
+`Uniformity.Hensel.monic_factorization_unique` (`HenselFactorization.lean:694`) as template.
+
+**PROOF.** Mirror the landed proof.
+1. `g' - g` has degree `< g.natDegree` (both monic of equal degree, landed
+   `degree_sub_lt_of_monic_of_natDegree_eq`) and `g*h = g'*h'` gives
+   `g*(h - h') = (g' - g)*h'`.
+2. Suppose `g ≠ g'`. Let `c := suppVal φ (g' - g) u ℓ`, finite by B.08. From step 1 and B.35's
+   additivity, `suppVal φ (h - h') u ℓ = c + suppVal φ h' u ℓ - suppVal φ g u ℓ`.
+3. Read residual polynomials at weight `c`: the residual of `g' - g` is a nonzero
+   `D ∈ (resField φ)[Y]` of degree `< G.natDegree`, and step 1 gives `G * D' = D * H` in
+   `(resField φ)[Y]` for the corresponding residual `D'` of `h - h'`. Coprimality of `G` and `H`
+   forces `G ∣ D`, contradicting `D ≠ 0` and `D.degree < G.degree`.
+4. Hence `g = g'`, and then `h = h'` by cancelling `g` in `g*h = g*h'` (`O[X]` is a domain).
+
+**SIZE.** 60 lines.
+
+**SOURCE.** landed `HenselFactorization.lean:694`; `docs/GMN_citations.md` Thm 1.15 (the
+factorization's uniqueness is implicit in "`f_φ = F_1 … F_g`" being well defined).
+
+**TEETH.** signed non-applicable.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.44 [lemma] [fresh]
+
+**STATEMENT.** *The integral-slope shortcut, as an independent check.* Let `φ = X` (so `m = 1`) and
+let `f` be monic of degree `n > 0` with `IsPure X f u 1` and `suppVal X f u 1 = u * n`. Then
+`f = G.scaleRoots (π^u)` for a monic `G` of degree `n` with
+`G.map (residue O) = resPoly π X f u 1 _ H₀` (up to the identification `resField X ≅ ResidueField O`),
+and `typeOf f = typeOf G`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem exists_scaleRoots_of_pure_integral (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic)
+    (hn : 0 < f.natDegree) {u : ℕ} (hpure : IsPure X f u 1)
+    (hsupp : suppVal X f u 1 = ((u * f.natDegree : ℕ) : ℕ∞)) :
+    ∃ G : Polynomial O, G.Monic ∧ G.natDegree = f.natDegree ∧
+      f = G.scaleRoots (π ^ u) ∧ typeOf f = typeOf G ∧
+      (∀ i, IsLocalRing.residue O (G.coeff i) = digAt π (u * (f.natDegree - i)) (f.coeff i))
+```
+
+**DEPENDS.** B.15 · B.21 · B.24 · B.28 · landed `Uniformity.Density.exists_monic_scaleRoots`,
+`exists_monic_scaleRoots_typeOf` (`ScaleExtraction.lean:92,136`), `typeOf_scaleRoots`
+(`TypeOfInvariance.lean:486`).
+
+**PROOF.**
+1. B.15's `suppVal_X_iff` converts `hsupp`'s `≥` half into `∀ i < n, π^(u*(n-i)) ∣ f.coeff i`.
+2. Landed `exists_monic_scaleRoots_typeOf hπ hf u` (step 1 is exactly its hypothesis) gives monic `G`
+   with `G.natDegree = f.natDegree`, `f = G.scaleRoots (π^u)` and `typeOf f = typeOf G`.
+3. The residue identity: `f.coeff i = π^{u(n-i)} * G.coeff i` (`Polynomial.coeff_scaleRoots`), so
+   B.22's `digAt_eq` gives the claim.
+
+**SIZE.** 26 lines. **SPLIT MANDATED → 3 only if the `resField X ≅ ResidueField O` identification is
+not `rfl`**: `resField X = AdjoinRoot (X.map (residue O)) = AdjoinRoot X`, and
+`AdjoinRoot X ≃ₐ ResidueField O` needs mathlib's `AdjoinRoot.adjoinRootXEquivField` or an explicit
+`AdjoinRoot.equiv`; **the stub-landing agent must resolve this before B.44 fires**, and if the
+identification is not available the SIGNATURE drops the `resPoly` clause and keeps only the `digAt`
+clause (which is representation-free). Booked as a declared signature risk.
+
+**⚠ WHY THIS NODE EXISTS.** It is the chapter's **independent cross-check on the graded engine**: for
+`m = 1` and `ℓ = 1` the entire dissection is landed API, so B.41/B.42 restricted to that case must
+agree with B.44. The corpus does the analogous internal decorrelation at `EFF.HE3.34`
+("at `μ ≤ 3`, HE6.A agrees with HE3-4 — internal decorrelation"). **If B.44 and B.42 disagree at
+`m = ℓ = 1`, the graded engine is wrong.** The disagreement test is B.83's gate.
+
+**SOURCE.** `spec/CERTAIN_NODES_2026-08-14.md` CN-12/CN-13; `EFF.HE3.34` (the decorrelation pattern);
+landed `ScaleExtraction.lean`.
+
+**TEETH.** `W12-L1X` (`EFF.W12.55`, 0/1,594,090, "FRESH direct cubic read vs SEALED W-11 classifier,
+pointwise" — a cross-implementation check) → **executable regression** retained; this node is the
+Lean analogue of that cross-implementation discipline.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.45 [lemma] [fresh]
+
+**STATEMENT.** *The residual factorization exists and its factors are pairwise coprime.* Let `K` be a
+finite field and `R ∈ K[Y]` monic of positive degree. Then there is a `Finset` of monic irreducible
+`ψ` and multiplicities `a : K[Y] → ℕ` with `R = ∏ ψ^{a ψ}`, the `ψ` pairwise non-associated, hence
+pairwise coprime; and `R` is separable iff every `a ψ = 1`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem exists_residual_factorization {K : Type*} [Field K] [Finite K]
+    {R : Polynomial K} (hR : R.Monic) (hd : 0 < R.natDegree) :
+    ∃ (s : Finset (Polynomial K)) (a : Polynomial K → ℕ),
+      (∀ ψ ∈ s, ψ.Monic ∧ Irreducible ψ) ∧ (∀ ψ ∈ s, 0 < a ψ) ∧
+      (∀ ψ ∈ s, ∀ χ ∈ s, ψ ≠ χ → IsCoprime ψ χ) ∧
+      R = ∏ ψ ∈ s, ψ ^ a ψ ∧
+      (R.Separable ↔ ∀ ψ ∈ s, a ψ = 1)
+```
+
+**DEPENDS.** B.27 · mathlib `UniqueFactorizationMonoid.factors`, `Polynomial.Monic.factors`-style
+API, `Polynomial.Separable`, `EuclideanDomain.isCoprime_of_...`
+(**the concrete route**: use `UniqueFactorizationMonoid.normalizedFactors R` — over `K[Y]` the
+normalisation is "monic", so the normalised factors are monic irreducible — and take
+`s := (normalizedFactors R).toFinset`, `a ψ := (normalizedFactors R).count ψ`; coprimality of distinct
+monic irreducibles is `(Irreducible.coprime_iff_not_dvd).2` plus
+`Irreducible.dvd_irreducible_iff_associated`).
+
+**PROOF.**
+1. `R ≠ 0` from `hR`; `normalizedFactors R` is a multiset of monic irreducibles with product
+   associated to `R`, and both are monic, so the product **equals** `R`
+   (`Polynomial.eq_of_monic_of_associated`).
+2. `s`, `a` as in DEPENDS; `Finset.prod_pow_eq_prod` of the multiset (`Multiset.toFinset_prod_pow`,
+   or `Finset.prod_multiset_count`).
+3. Coprimality: distinct monic irreducibles are non-associated, so neither divides the other, and in
+   a PID that is coprimality.
+4. Separability: `R.Separable ↔ Squarefree R` by B.27, and `Squarefree (∏ ψ^{a ψ}) ↔ ∀ ψ, a ψ ≤ 1` in
+   a UFD (`UniqueFactorizationMonoid.squarefree_iff_nodup_normalizedFactors`), which with `0 < a ψ`
+   is `a ψ = 1`.
+
+**SIZE.** 44 lines.
+
+**SOURCE.** `docs/GMN_citations.md` Thm 1.19 ("`R_λ(f) ∼ ψ_1^{a_1} … ψ_t^{a_t}` into
+pairwise-distinct monic irreducibles in `F_φ[y]`"); `EFF.HE3.32` ("`R_λ = Π_r r^{m_r}`");
+`EFF.W12.25` (the censuses are indexed by exactly this factorization type).
+
+**TEETH.** `W12-CENSUS4` (`EFF.W12.57`, fires 8×) → **executable regression** retained.
+
+**ENVIRONMENT.** ENV-D + `[Finite K]`.
+
+---
+
+### NODE B.46 [lemma] [fresh]
+
+**STATEMENT.** *A residual factor splits off, one at a time.* Let `K` be a field and
+`R = ψ^a * S` with `ψ` monic irreducible, `0 < a`, and `¬ ψ ∣ S`. Then `IsCoprime (ψ^a) S`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem isCoprime_pow_of_not_dvd {K : Type*} [Field K] {ψ S : Polynomial K}
+    (hψ : Irreducible ψ) {a : ℕ} (h : ¬ ψ ∣ S) : IsCoprime (ψ ^ a) S
+```
+
+**DEPENDS.** mathlib `Irreducible.coprime_iff_not_dvd`, `IsCoprime.pow_left`.
+
+**PROOF.**
+1. `IsCoprime ψ S` by `(hψ.coprime_iff_not_dvd).2 h` (in `K[Y]`, a PID; the mathlib name may be
+   `EuclideanDomain.isCoprime_of_...` — **confirm**).
+2. `IsCoprime.pow_left`.
+
+**SIZE.** 6 lines.
+
+**SOURCE.** `docs/GMN_citations.md` Thm 1.19; `EFF.HE3.32`.
+
+**TEETH.** signed non-applicable.
+
+**ENVIRONMENT.** ENV-D.
+
+---
+
+### NODE B.47 [lemma] [fresh]
+
+**STATEMENT.** *The degree of a residual piece.* In the situation of B.41, if `G = ψ^a` with `ψ`
+monic irreducible of degree `d_ψ`, then the corresponding factor `g` has
+`g.natDegree = ℓ * m * a * d_ψ`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem natDegree_of_residual_piece {φ : Polynomial O} {u ℓ : ℕ} {g : Polynomial O}
+    {ψ : Polynomial (resField φ)} {a : ℕ}
+    (hg : g.natDegree = ℓ * φ.natDegree * (ψ ^ a).natDegree) :
+    g.natDegree = ℓ * φ.natDegree * a * ψ.natDegree
+```
+
+**DEPENDS.** mathlib `Polynomial.natDegree_pow`.
+
+**PROOF.**
+1. `(ψ^a).natDegree = a * ψ.natDegree` (`natDegree_pow`); rewrite and `ring`.
+
+**SIZE.** 4 lines. **This node is deliberately trivial**: it is the place the corpus's degree formula
+is *stated* in the shape every consumer quotes, so that no consumer has to unfold `natDegree_pow`
+inline. `docs/GMN_citations.md` Thm 1.19/Cor 1.20 and [GN15] Thm 2.3's
+`deg g_{λ,ψ} = e_λ · ord_ψ(R) · deg ψ · deg φ` is exactly `ℓ * a * d_ψ * m`.
+
+**SOURCE.** `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-2, quoting [GN15] Thm 2.3:
+"`deg g_{λ,ψ} = e_λ ord_ψ(R_{r+1,λ}(g)) deg ψ deg φ`"; `EFF.HE3.32` (`|S_r| = D′ℓ deg r`, the same
+number read as a class size).
+
+**TEETH.** `HE-SIG` (`EFF.HE3.52`, 947 PARI jobs, all 5 `μ=3` stage types) → **executable regression**
+retained.
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.48 [theorem] [fresh]
+
+**STATEMENT.** *THE THEOREM OF THE RESIDUAL POLYNOMIAL at order 1 (NS-2, first half).* Over the
+complete bundle, let `φ` be an order-1 key, `0 < ℓ`, `Nat.Coprime u ℓ`, and let `f` be monic and
+`(u,ℓ)`-pure with residual polynomial `R` of degree `d > 0`. Write `R = c * ∏_{ψ ∈ s} ψ^{a ψ}` by
+B.45 (`c` a unit). Then there are monic `f_ψ` with
+
+* `f = ∏_{ψ ∈ s} f_ψ`;
+* each `f_ψ` is `(u,ℓ)`-pure with residual polynomial a unit times `ψ^{a ψ}`;
+* `(f_ψ).natDegree = ℓ * m * a ψ * ψ.natDegree`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem exists_residual_dissection (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f : Polynomial O} (hf : f.Monic)
+    (hpure : IsPure φ f u ℓ) (hne : (sideSet φ f u ℓ).Nonempty) {H₀ : ℕ}
+    (hH₀ : npHgt φ f 0 = (H₀ : ℕ∞)) (hd : 0 < sideDeg φ f u ℓ hne) :
+    ∃ (s : Finset (Polynomial (resField φ))) (a : Polynomial (resField φ) → ℕ)
+      (F : Polynomial (resField φ) → Polynomial O),
+      (∀ ψ ∈ s, ψ.Monic ∧ Irreducible ψ ∧ 0 < a ψ) ∧
+      f = ∏ ψ ∈ s, F ψ ∧
+      (∀ ψ ∈ s, (F ψ).Monic ∧ IsPure φ (F ψ) u ℓ ∧
+        (F ψ).natDegree = ℓ * φ.natDegree * a ψ * ψ.natDegree) ∧
+      (∀ ψ ∈ s, ∃ (hne' : (sideSet φ (F ψ) u ℓ).Nonempty) (H : ℕ) (c : (resField φ)ˣ),
+        resPoly π φ (F ψ) u ℓ hne' H = Polynomial.C (c : resField φ) * ψ ^ a ψ)
+```
+
+**DEPENDS.** B.26 · B.27 · B.29 · B.30 · B.35 · B.41 · B.45 · B.46 · B.47.
+
+**PROOF.**
+1. Normalise `R` to monic: `R`'s leading coefficient is a unit (B.30 gives `natDegree = d`, and the
+   leading coefficient of a nonzero polynomial over a field is a unit), so `R = C c * R'` with `R'`
+   monic; B.45 factors `R'`.
+2. `Finset.induction_on` over `s`, mirroring landed `exists_monic_factorization_finset`
+   (`MultiHensel.lean:111`): peel `ψ₀`, set `G := ψ₀^{a ψ₀}` and `H := ∏_{ψ ∈ s'} ψ^{a ψ}`, coprime by
+   B.46 (`¬ ψ₀ ∣ H` because the `ψ` are pairwise non-associated and `ψ₀` is prime).
+3. B.41 at `(u,ℓ)` with this `G, H` gives `f = g * h` with `g` pure of residual `ψ₀^{a ψ₀}` and `h`
+   pure of residual `H`, degrees as predicted.
+4. `natDegree` of `g` is `ℓ * m * (ψ₀^{a ψ₀}).natDegree = ℓ * m * a ψ₀ * ψ₀.natDegree` by B.47.
+5. Recurse on `h` (its residual polynomial is `H`, of strictly smaller degree since `0 < a ψ₀` and
+   `0 < ψ₀.natDegree`).
+
+**SIZE.** 110 lines. **SPLIT MANDATED → 3**: `B48a.lean` = step 1 (the monic normalisation of `R`);
+`B48b.lean` = the `Finset` induction skeleton (steps 2, 5) with `sorry`-free peeling but the B.41 call
+abstracted as a hypothesis — **NO: `leanfinal` holds no `sorry`; the abstraction is a
+`private theorem` taking the peel as an explicit hypothesis**; `B48c.lean` = the contract, discharging
+that hypothesis by B.41.
+
+**SOURCE.** `docs/GMN_citations.md` Thm 1.19 verbatim; `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-2
+([GN15] Thm 2.3, `COVERS-ALL-O`); `EFF.HE3.32` (`LEMMA HE3-4`); `EFF.W12.27`.
+
+**TEETH.** `W12-ORACLE` (`EFF.W12.56`, 0 bad / 41,923 checks, PARI `factorpadic` per decided member,
+class `[IND]`) → **executable regression** retained: PARI is the independent engine and the chapter
+does not replace it. `HE-SIG` (`EFF.HE3.52`) → **executable regression** retained.
+
+**ENVIRONMENT.** ENV-C.
+
+---
+
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
