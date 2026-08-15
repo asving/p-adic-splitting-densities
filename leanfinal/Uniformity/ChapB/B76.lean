@@ -143,7 +143,7 @@ theorem npHgt_min_congr (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Mon
 theorem visible_iff_npHgt_lt (hπ : Irreducible π) {φ f : Polynomial O} {N : ℕ} :
     Visible π φ f N ↔ npHgt φ f 0 < (N : ℕ∞) := by
   rw [← not_le]
-  show (∃ i, ¬ π ^ N ∣ (dev φ f 0).coeff i) ↔ ¬ ((N : ℕ∞) ≤ gaussVal (dev φ f 0))
+  change (∃ i, ¬ π ^ N ∣ (dev φ f 0).coeff i) ↔ ¬ ((N : ℕ∞) ≤ gaussVal (dev φ f 0))
   rw [le_gaussVal_iff hπ, not_forall]
 
 /-! ### (iii) monotonicity in the level -/
@@ -183,7 +183,7 @@ theorem exists_visible (hπ : Irreducible π) {φ f : Polynomial O} (h0 : dev φ
   obtain ⟨H, hH⟩ : ∃ H : ℕ, (H : ℕ∞) = gaussVal (dev φ f 0) :=
     ENat.ne_top_iff_exists.1 fun h => h0 (gaussVal_eq_top_iff.1 h)
   refine ⟨H + 1, (visible_iff_npHgt_lt hπ).2 ?_⟩
-  show gaussVal (dev φ f 0) < ((H + 1 : ℕ) : ℕ∞)
+  change gaussVal (dev φ f 0) < ((H + 1 : ℕ) : ℕ∞)
   rw [← hH]
   exact_mod_cast Nat.lt_succ_self H
 
