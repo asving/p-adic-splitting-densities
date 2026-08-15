@@ -3325,3 +3325,64 @@ acceptance block ("ACCEPTED at 2/2 — PE9 … and PE10 …"); the
 RESOLVED-ALREADY quote checked against Fold Annex E-2 at HEAD.
 Transcribed unaltered per the standing division of labor. Ledger:
 row 21 → both repairs folded, awaiting sol discharge (cert3).)*
+
+### Dated arithmetic append (2026-08-15 — MQ, §7.1's 6,700 headline: RECOUNT SETTLES IT)
+
+*Provenance: corpus-maintenance queue (MQ). Finding of record: `spec/EFF-GRTJB.md`
+**source defect 2 / OPEN-CALL 13** (Phase-0a effective-spec compilation; merged at
+commit `812efb00`, which recorded "table sums to 6,575 against the 6,700 headline,
+125-sample gap, unreconstructed by any substitution tried"). This append closes
+that open call: the gap IS reconstructed here, from the sealed artifacts. Edit
+shape append-only; the body above stays BYTE-FROZEN.*
+
+**THE DISCREPANCY.** §7.1's headline says "ALL 18 FAMILIES GREEN, **6,700**
+samples, 0 violations"; §7.1's own sample column sums to **6,575**
+(1 + 893 + 25 + 893 + 893 + 34 + 79 + 194 + 955 + 28 + 79 + 5 + 4 + 2,480 =
+6,563, plus the four tooth families at 3 rows each = 12). Gap: 125.
+
+**THE RECOUNT (this append's own work, against the sealed artifacts
+`grt_jb_checks.py` md5 `55f4911eaddd8524fd91368b30ed71bd` — the seal-and-verdict
+md5 already pinned in the r1 erratum above — and `grt_jb_checks_results.json`).**
+
+1. Re-summing the sealed JSON's own `families` map over all 18 declared families
+   gives **exactly 6,575**, in per-family agreement with §7.1's table. The table
+   is therefore a faithful transcription of the instrument's per-family counters.
+2. The `6,700` is likewise a faithful transcription — of the instrument's printed
+   `TOTAL samples:` line. That line computes `sum(COUNTS.values())`
+   (`grt_jb_checks.py:969`), i.e. it sums **every** key of the `COUNTS` dict.
+3. `COUNTS` holds more than the 18 family counters. The JB-CREAD census
+   bookkeeping is written into the same dict — `COUNTS['JB-CREAD-SCORED']`,
+   `['JB-CREAD-BOUNDARY']`, `['JB-CREAD-V0']` at `grt_jb_checks.py:731`–`733`
+   (plus `JB-CREAD-RZERO`, `JB-TREE-OFFPERIM`, both 0 on this run) — and the
+   sealed JSON records those census values as **SCORED 104, BOUNDARY 21, V0 0**.
+4. **104 + 21 + 0 = 125, and 6,575 + 125 = 6,700 exactly.**
+
+**VERDICT — the table is right; the headline over-counts by 125.** The 6,575 is
+the true number of scored samples across the 18 families. The 6,700 is the
+instrument's own total, inflated by census counters that are *census rows, not
+samples* (they are the JB-CREAD stratum census this section displays separately,
+one line below the table: "JB-CREAD censuses: scored 104 | boundary 21 | …" —
+i.e. the 125 is double-reported, once as a census and once inside the headline
+total). Neither figure is a transcription error by this note; the defect is
+instrument-side, in the conflation of sample counters and census counters inside
+one `COUNTS` dict.
+
+**Nothing in the note's fences moves.** All 18 families are GREEN with 0
+violations at every per-family count, every sealed prediction still hits, and no
+law, box, grade or clause of §§1–6 reads the headline total. Readers should take
+**6,575 samples across 18 families, plus a separately-displayed 125-row JB-CREAD
+census** as the operative figures, and treat "6,700" as the runner's inflated
+print.
+
+**Corpus-wide rider (recorded, not repaired).** The idiom
+`print('TOTAL samples: %d', sum(COUNTS.values()))` appears in **24** runners under
+`verification/openmath/`; it inflates the printed total in exactly those runners
+that also use the same dict for non-sample bookkeeping keys. The sibling case is
+confirmed: GRTW2 §6.1's 6,403-vs-6,396 has the identical cause (see that note's
+2026-08-15 MQ append). Any headline sample total quoted from a runner's
+`TOTAL samples:` line should be re-derived from its per-family counters before it
+is cited.
+
+BYTE-FREEZE: pre-append body md5 f78a564118b3237c9afb4a9692c153a7, re-verified
+by prefix after this append; edit shape append-only; all statement displays,
+sealed artifacts and per-family figures byte-untouched.
