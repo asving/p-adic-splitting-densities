@@ -67,11 +67,11 @@ private theorem map_dev_congr {S : Type*} [CommRing S] (ρ : O →+* S) {φ : Po
   induction j with
   | zero =>
     intro f f' hff
-    show (f %ₘ φ).map ρ = (f' %ₘ φ).map ρ
+    change (f %ₘ φ).map ρ = (f' %ₘ φ).map ρ
     rw [Polynomial.map_modByMonic ρ hφ, Polynomial.map_modByMonic ρ hφ, hff]
   | succ j ih =>
     intro f f' hff
-    show (dev φ (f /ₘ φ) j).map ρ = (dev φ (f' /ₘ φ) j).map ρ
+    change (dev φ (f /ₘ φ) j).map ρ = (dev φ (f' /ₘ φ) j).map ρ
     refine ih _ _ ?_
     rw [Polynomial.map_divByMonic ρ hφ, Polynomial.map_divByMonic ρ hφ, hff]
 
