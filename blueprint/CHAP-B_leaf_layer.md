@@ -5239,14 +5239,133 @@ measured.
 
 ### NODE B.82 [theorem] [fresh]
 
-**STATEMENT.** *The single-key certificate (the §10 gates' engine).* The one-block form of B.80:
-`DecidedAt O n (order1Type π φ (monicPoly a)) N (proj O n N a)`. *(stub)*
+**STATEMENT.** *The single-key certificate — the section capstone and the §10 gates' engine.* Over
+the complete bundle, let `a : Fin n → O` with `0 < n`, write `f := monicPoly a`, and let `φ` be an
+order-1 key with `f.map (residue O) = (φ.map (residue O))^μ`, `0 < μ` (one block; no peel).
+Assume R8-1's two clauses and the perimeter on `f` itself: `Visible π φ f N`,
+`¬ NeedsDescent π φ f`, `hperim`. Then
+
+```
+DecidedAt O n (order1Type π φ f) N (proj O n N a).
+```
+
+This is the general-`(O, n, q, N)` statement of which the landed `leancheck` suite
+(`UniformityCheck/N3CertRam.lean`, `N3CertLinRam.lean`, `N3InertExact.lean`, …) is the hand-cased
+`n = 3` instance layer, and it is the node the §10 gates fire: a `q = 2` and a `q = 3` instance
+with `e > 1` **and** `f > 1` is a `(u,ℓ)`-leaf with `ℓ ≥ 2` on a key of degree `m ≥ 2`, `d = 1` —
+inside D-3's unconditional perimeter, so the gates carry **no** `B-BOX-1` hypothesis.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem decidedAt_of_leaf_certificate (hπ : Irreducible π) {n N : ℕ} (hn : 0 < n)
+    (a : Fin n → O) {φ : Polynomial O} (hφ : IsKey φ) {μ : ℕ} (hμ : 0 < μ)
+    (hres : (Uniformity.Density.monicPoly a).map (IsLocalRing.residue O)
+      = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (hvis : Visible π φ (Uniformity.Density.monicPoly a) N)
+    (hterm : ¬ NeedsDescent π φ (Uniformity.Density.monicPoly a))
+    (hperim : ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField φ), …) :
+    Uniformity.Density.DecidedAt O n (order1Type π φ (Uniformity.Density.monicPoly a)) N
+      (Uniformity.Density.proj O n N a)
+```
+
+**DEPENDS.** B.66 · B.78(i) (`monicPoly_congr`) · B.79 (both halves) · landed
+`Uniformity.Density.decidedAt_of_congr` (`DensityAPI.lean:140`),
+`Uniformity.Density.monicPoly_monic`, `monicPoly_natDegree` (`LocalData.lean`).
+
+**PROOF.**
+1. Enter through landed `decidedAt_of_congr`: fix `b` with `π^N ∣ (b i − a i)` for all `i`; show
+   `typeOf (monicPoly b) = order1Type π φ (monicPoly a)`.
+2. B.78(i) turns the vector congruence into `π^N ∣ (monicPoly a − monicPoly b).coeff j` for all
+   `j`; `monicPoly b` is monic of the same degree `n` (landed `monicPoly_monic`,
+   `monicPoly_natDegree`).
+3. B.79(b) with `hvis`, `hterm`, `hperim` applied to `g := monicPoly a`, `g' := monicPoly b`
+   concludes.
+
+**SIZE.** 26 lines.
+
+**⚠ THE CRITICAL PATH ENDS HERE** (§2: `… → B.58 → B.63 → B.79 → B.82`), and the node is
+deliberately **thin**: all mathematics is upstream, so the §10 gate agents (which instantiate `O`,
+`q`, `a`, `φ` concretely and must also *evaluate* `Visible`/`NeedsDescent`/`order1Type` on their
+instance) inherit no proof burden beyond the evaluation. Gate calibration: `N3CertRam.lean`'s CASE
+R (`π² ∣ B₀, π³ ∤ B₀, π² ∣ B₁, π ∣ B₂` ⟹ `typeOf = {(3,1)}`) is this node at
+`n = 3, φ = X, μ = 3, (u,ℓ) = (2,3), d = 1, N = 3` — but proved there by hand without polygons;
+the gates must fire **this** node, not re-case.
+
+**⚠ FULL-GENERALITY CLAIM, DELIMITED.** "In full generality" (the §2 index row) means: general
+complete-DVR `O` in both characteristics, every degree `n`, every key degree `m`, every window
+`N`, every slope, every residual degree — with exactly two carried conditionalities, both named:
+`B-BOX-1` inside `hperim` at `ℓ ≥ 2 ∧ d ≥ 2` (H-7), and order-1-ness itself (`hterm`; the
+descent/recursion layer is chapter C's, D-4(c)). Nothing else is scoped: no `n ≤ 3`, no `q`-list,
+no mixed-characteristic pin (`EFF.W12.08`'s r2 pin is "load-bearing only for `p = 2`
+disc-spectrum displays, never for counts" — and this section states no counts).
+
+**SOURCE.** `EFF.W12.27` (the certification clause, at D-4(a)'s stronger quantifier);
+`EFF.HE3.67` (R8-1 — this node is the certificate of B.79 delivered on `leanfinal`'s `DecidedAt`,
+per H-4's line-221 commitment); `leancheck/UniformityCheck/N3CertRam.lean` and siblings
+(`notes/N3_CHECK_2026-08-13.md` §13) — the landed `n = 3` instance layer this node generalizes;
+`docs/BLUEPRINT_PHASE_DESIGN_2026-08-13.md` §1 item 5 (leancheck as node-sizing calibration).
+
+**TEETH.** `HE-SIG` (`EFF.HE3.52`, 947 PARI jobs, 0 bad) → **Lean theorem** inside the perimeter;
+`W12-ORACLE` (0/41,923) → **executable regression** retained (PARI stays the independent engine,
+per B.58's precedent); `HE-BND` (RE-SCOPED) → **executable regression** retained per D-4(c); the
+`σ(λ)` dictionary of `EFF.W12.29` — B.71's instance table — is checked at the gates through this
+node (two rows: the `e = 2` and `e = 3` sides with degree-`≥ 2` keys).
+
+**ENVIRONMENT.** ENV-C plus completeness (through B.79 ← B.63; the node itself adds only
+`DecidedAt`/`proj`, which are ENV-C names per §0.1's ⚠).
 
 ---
 
-### AMENDMENT BLOCK (2026-08-15, §9 composer)
+### AMENDMENTS (2026-08-15, §9 composer — the chapter-G §A- precedent)
 
-*(to be filled — census/split-table refinements and the H₀-convention defect notice.)*
+The node **count and content contract of the §2 index row is met exactly** (8 nodes, B.75–B.82,
+level-`N` decidedness certificates in full generality). Five recorded deltas against §2's
+finer-grained tables, plus one defect notice against committed §8 statements:
+
+**A-§9.1 — DEFECT NOTICE D-§9.1: the `H₀`-pinning convention in committed B.63/B.65/B.73/B.74.**
+B.28/B.29/B.30 pin the residual polynomial's height argument at the side's **left endpoint**:
+`npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞)` (and B.30's correctness clauses are proved under that
+pin). The committed signatures of B.63 (`hsep`), B.65, B.73 (`NeedsDescent`) and B.74 instead pin
+`npHgt φ f 0 = (H₀ : ℕ∞)`. The two agree exactly when the side contains abscissa `0` — always on a
+pure (one-sided) polygon, **not** on the interior/right sides of a multi-slope polygon, where the
+abscissa-`0` pin feeds `resPoly` read heights `H₀ − u·k` **above** the side's line, making every
+`resCoeff` junk-`0` and `resPoly = 0` (never `Separable`), so B.63's `hsep` becomes unsatisfiable
+and B.73's `NeedsDescent` spuriously true on such polygons. **Proposed repair (owner: §8; a
+statement-level fix at the leanspec-stub stage, before any signature freezes — the same class as
+chapter G's A-7):** replace the pin by `npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞)` in B.63's
+`hsep`, B.65, B.73's definition body, and B.74's statement gloss. §9 is built to compose with
+either convention: B.77's `resPoly_congr` is convention-free (`H₀ < N` only), and B.79/B.80/B.82
+consume `NeedsDescent` **by name**, so the repair touches no §9 signature. Flagged as **§14 item
+13**; until repaired, B.63/B.79/B.80/B.82 are correct but vacuously scoped to blocks whose every
+`card ≥ 2` side contains abscissa 0 or is read under the repaired pin.
+
+**A-§9.2 — kind census correction.** §2 predicts `21 def, 45 lemma, 16 theorem, 4 gate`. Committed
+§§3–8 already contain 16 def / 46 lemma / 12 theorem; §9 as composed adds `1 def (B.75), 4 lemma
+(B.76, B.77, B.78, B.81), 3 theorem (B.79, B.80, B.82)`. With §10's 4 gates the chapter totals
+**17 def, 50 lemma, 15 theorem, 4 gate = 86 nodes** — the total matches §2, the kind split does
+not (the §2 census predates the previous composer's §7/§8 and this §9). §2 is index, not contract,
+on kinds; left uncorrected there to avoid touching committed text — this block is the record.
+
+**A-§9.3 — split-table additions.** §2 mandates `B.79 → 2` (honored) and flags B.81 (honored, as
+CANDIDATE). §9 additionally mandates **`B.77 → 2`** (polygon half / residual half) and
+**`B.78 → 2`** (binary / finset) — both over the 40-line contract bound, both recorded in their
+SIZE fields. Fleet planning figure: §2's ≈ 110 Lean files becomes **≈ 112**.
+
+**A-§9.4 — environment refinement of the §2 row.** The index's env column reads `C` for §9;
+actual bindings, per §0.1's minimal-binding principle (the chapter-G D4 lesson): **B.75 ENV-A,
+B.76–B.78 ENV-A′, B.79–B.82 ENV-C plus completeness** (B.80/B.81 through Hensel, B.79/B.82 through
+B.63). The stub-landing agent should bind per node, not per section.
+
+**A-§9.5 — RE-PLAN bookings issued by this section.** (1) **B.66a** — B.66's private
+`slopeFinset`/`resFactorFinset` plus their membership lemmas become shared suppliers (consumed by
+B.79a steps 2/5); must land before B.79a fires (B.79's ⚠). (2) **B.80's peel-uniqueness helper**
+(any two monic peels along the same order-0 data are equal; `monic_factorization_unique`
+iterated) — booked as a candidate node the moment chapter C's `HT` transcription asks for it by
+name. (3) Cross-read queue additions: **§14 item 12** (B.79a's tie between B.63's existential `T`
+and B.66's canonical finsets — may force strengthening B.63's `T` to the canonical finsets, a
+§8-owned statement refinement) and **§14 item 13** (= A-§9.1).
 
 ---
 
