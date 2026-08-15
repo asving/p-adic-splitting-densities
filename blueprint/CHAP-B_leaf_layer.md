@@ -5869,6 +5869,125 @@ arcs from mathematical ones): **14 of the 71 backward arcs are now this intended
 
 ---
 
-<!-- RESUME: §11 landed + TSV generated + checker PASS committed. Next: §12 (LeanspecB stub list, 135 signed decls), §13 (TEETH dispositions), §14 (13-item queue + finisher additions); then (d) A-F.2. -->
+## 12. LEANSPEC STUB LIST (stage 0e)
+
+Per REVISION 2 stage **0e**, every SIGNATURE lands first in the isolated `leanspec/` project —
+real bodies for definitions/structures/instances, `axiom` stubs for theorems — in topological
+order, **before** the fleet fires; after a node lands in `leanfinal` its normalized environment
+type is diffed against the signed stub.
+
+**File:** `leanspec/Leanspec/ChapB.lean`, one file, added to `leanspec/Leanspec.lean`; it imports
+`Uniformity` and therefore sees the landed kernel and chapter G's layer.
+**Wrapper choice, declared per GC-6.6:** every declaration wraps in **`namespace LeanspecB`**
+(H-13's committed choice, re-affirmed here; the stub file's header must state
+*"wrapper: `LeanspecB` per CHAP-B §12/H-13; the ChapG retire-to-examples route (PA-2) was
+considered and not taken — a wrapped namespace keeps the stubs greppable by contract name"*).
+Collision count with `leanfinal` is structurally zero; the 0e type diff runs per declaration
+against the fully-qualified `leanfinal` twin.
+
+**Stub count: 135 signed** declarations across the 86 nodes — counted mechanically over this
+file's SIGNATURE blocks. Breakdown:
+
+| what | count | lands as |
+|---|---:|---|
+| `structure` | 1 | **real body** (`IsKey`) |
+| `abbrev` | 1 | **real body** (`resField`) |
+| `instance` | 3 | **real body** (`instFieldResField`, `instFiniteResField`, `instLocalRingAdjoinRoot`) |
+| `def` / `noncomputable def` | 20 | **real bodies** (`dev`, `gaussVal`, `npHgt`, `suppVal`, `OnSide`, `sideSet`, `sideMin`, `sideMax`, `sideDeg`, `digAt`, `digPoly`, `resMk`, `resCoeff`, `resPoly`, `IsPure`, `GradedCoprime`, `residueFieldEquiv`, `order1Type`, `NeedsDescent`, `Visible`) |
+| `theorem` | 110 | **`axiom` stubs** (100 across §§3–9 + the 10 gate theorems of §10) |
+
+Plus **5 RE-PLAN supplier stubs signed from their bookings** (they have no §-node of their own;
+see rule 2): `typeOf_prod` (B.63a), `slopeFinset`, `resFactorFinset`, `mem_slopeFinset`,
+`mem_resFactorFinset` (B.66a) — signable universe **140**. All names checked distinct against
+each other and against §0.3's landed inventory (chapter B's new definitions live in
+`Uniformity.Density.Leaf`, absent from chapters A/G/H's inventories; the deliberate quarry-side
+name coincidence `NeedsDescent` ↔ `LeanUrat`'s `needsDescent` is cross-project and harmless,
+B.73's FAITHFULNESS).
+
+**Rules for the stub-landing agent.**
+
+1. **Definitions land as real bodies, not axioms** (the 25 rows above). The three `instance`s
+   are the sharpest §4 test: `instFieldResField` must elaborate `AdjoinRoot`-field structure from
+   `IsKey` (B.25's ⚠ records the TC alternative — if the mathlib route
+   `AdjoinRoot.instField`-by-TC works at our pin, the explicit instance is REPLACED and the stub
+   file records the swap as a dated append).
+2. **Stub order is §11's topological order, with one hard exception:** the B.66a suppliers
+   (`slopeFinset`/`resFactorFinset` + membership lemmas) and B.63a (`typeOf_prod`) must be signed
+   **before** B.79a/B.79b, B.80, B.71 and B.63's stub (A-§9.5 booking (1); B.79's ⚠ — B.79a
+   *proves* through the canonical finsets, so a stub order that reaches B.79 first would freeze a
+   signature whose proof route has no supplier).
+3. **B.62 is NOT signed.** Its SIGNATURE field is explicitly *"not frozen — this node is
+   OPTIONAL … the orchestrator must re-sign it before it fires"* (the H §15 rule-3 /
+   `G.23a`-comment-out precedent class). Signing it now would freeze an interface the mathlib
+   spectral-norm route has not validated.
+4. **THE SHARED-CLAUSE DICTIONARY — the single source the committed signatures defer to.**
+   Three clauses, spelled here once; **a divergence between any consumer and this display is a
+   stub-stage blueprint defect** (B.79's own rule), and this display is NEW contract text —
+   flagged for the cross-read as §14 item 15.
+
+   **(4a) `hperim` — the perimeter/`B-BOX-1` disjunction** (consumed verbatim by B.63, B.79a,
+   B.79b, B.82; per block — `(φ, f) := (φ i, g i)` — by B.71 and B.80). Fixed by B.58/B.60/B.61,
+   read at the A-F.1 `sideMin` pin:
+
+   ```lean
+   (hperim : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
+     ∀ gS : Polynomial O, gS.Monic → gS ∣ f → IsPure φ gS u ℓ →
+       ∀ hne : (sideSet φ gS u ℓ).Nonempty, ∀ H₀ : ℕ,
+         npHgt φ gS (sideMin φ gS u ℓ hne) = (H₀ : ℕ∞) →
+         ∀ ψ : Polynomial (resField φ), ψ.Monic → Irreducible ψ →
+           (∃ c : (resField φ)ˣ, resPoly π φ gS u ℓ hne H₀ = c • ψ) →
+           (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+             ∀ g' ∈ monicFactors gS,
+               φ.natDegree * ψ.natDegree ∣ inertiaDegOf g'))
+   ```
+
+   The three disjuncts route to B.60 (`ℓ = 1`), B.58 (`ψ.natDegree = 1`) and B.61 (`hBOX`,
+   i.e. `B-BOX-1` for exactly that piece) — D-3's perimeter table, one row each. The
+   quantification is over the `(u,ℓ)`-pure monic divisors with a multiplicity-1 residual
+   (B.48's output clause at separability), which is what B.63's steps 1–2 produce and what
+   B.77 transports.
+
+   **(4b) `hsep` — B.63's separability prefix**: post-A-F.1 it is written out in B.63's own
+   SIGNATURE (and B.65's clause 1 is byte-identical); the stub copies it from there, no elision
+   remains.
+
+   **(4c) the peel convention** — B.71's `(…the block factor…)` elision: the stub signs B.71 in
+   **B.80's data form** (monic `g : ι → Polynomial O` with `hgprod`/`hgres` as hypotheses),
+   NOT over B.67's existential — an `axiom` stub cannot bind an existential's witness, and
+   B.80's ⚠ already records that the two routes were chosen deliberately and *"the leanspec
+   stub fixes each"*: it fixes both to the data form, with B.80's peel-uniqueness note (landed
+   `monic_factorization_unique` iterated) as the reason the choice is well-defined.
+
+5. **Elision-expansion rule.** The committed `…` elisions expand ONLY through rule 4 or the
+   node's own STATEMENT text (B.65's clause-2 multiplicity form expands per B.45's factorization
+   data). **Elaboration failures in a stub are BLUEPRINT DEFECTS**, not formalization work: they
+   go back to this file, versioned in place by dated append, never patched in `leanspec` (H §15
+   rule 5).
+6. **Seven signatures are known-fragile and are elaborated FIRST:** **B.20**
+   (`sideMin`/`sideMax`/`sideDeg` — dependent `Nonempty` argument in a `def` type), **B.28/B.29**
+   (`resCoeff`/`resPoly` — the same dependent argument plus the `H₀` pin), **B.49**
+   (`residueFieldEquiv` — the `≃+*` with `IsLocalRing` instance arguments), **B.66**
+   (`order1Type` — `Classical` + `Multiset.bind` over the B.66a finsets), **B.80** (the indexed
+   family: `[DecidableEq ι]`, `Finset` products, per-block `hperim`), and the **§10 gate
+   signatures** (`ℤ_[p]` literals + `![…]` vectors + the `⟨{…}⟩` `FactorizationType` anonymous
+   constructor — the first time the anonymous constructor meets a multiset literal in a stub).
+7. **Environments bind per NODE, never per section** (A-§9.4; the chapter-G D4 lesson):
+   §0.1's ⚠ list plus each node's ENVIRONMENT field is the binding spec; the stub agent
+   mechanically checks every stub naming `Res`/`Coeff`/`proj`/`residueCard`/`DecidedAt`/
+   `typeOf`-on-residual-reads against `[Finite (ResidueField O)]`, and every Hensel-consuming
+   stub against `[IsAdicComplete (maximalIdeal O) O]`.
+8. **Gate order (GC-6.6(c), mandatory):** (a) elaborate the rule-6 fragile signatures; (b) land
+   the 25 `def`-class bodies; (c) **execute B.86's `decide`/`#eval` arithmetic block at `q = 2`
+   AND `q = 3`** against the commented expected values — it is executable at stub stage (pure
+   arithmetic + landed `FactorizationType`/`residueCard`, no chapter-B proof needed); (d) only
+   then sign the 110 + 5 `axiom` stubs. **⚠ The stub gate cannot catch a wrong-but-well-typed
+   statement** (CHAP-H §15's warning; chapter G's G.23 died at a numeric brute force, not at the
+   gate) — for this chapter the exposed class is the gate INSTANCES' polygon data (hand-computed
+   in §10's tables) and the `hperim` display of rule 4; both are cross-read items (§14 items
+   14–15), and B.86's execution is the mechanical half of the defense.
+
+---
+
+<!-- RESUME: §12 landed. Next: §13 (TEETH dispositions), §14 (13-item queue + items 14-15); then (d) A-F.2. -->
 
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
