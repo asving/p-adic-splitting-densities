@@ -37,6 +37,9 @@ import Uniformity.ChapG.G31
 import Uniformity.ChapG.G32
 import Uniformity.ChapG.G33
 import Uniformity.ChapG.G34
+import Uniformity.ChapG.G35
+import Uniformity.ChapG.G36
+import Uniformity.ChapG.G37
 import Uniformity.ChapG.G38
 import Uniformity.ChapG.G39
 import Uniformity.ChapG.G40
@@ -48,10 +51,21 @@ import Uniformity.ChapG.G54
 import Uniformity.ChapG.G55
 import Uniformity.ChapG.G56
 import Uniformity.ChapG.G57
+import Uniformity.ChapG.G58
+import Uniformity.ChapG.G59
 import Uniformity.ChapG.G62
 import Uniformity.ChapG.G63
 import Uniformity.ChapG.G64
+import Uniformity.ChapG.G65
+import Uniformity.ChapG.G66
+import Uniformity.ChapG.G67
+import Uniformity.ChapG.G68
+import Uniformity.ChapG.G69
+import Uniformity.ChapG.G70
+import Uniformity.ChapG.G71
+import Uniformity.ChapG.G72
 import Uniformity.ChapG.G73
+import Uniformity.ChapG.G74
 
 /-!
 # Uniformity.ChapG — chapter G roll-up (BASE CASES AND MENUS)
