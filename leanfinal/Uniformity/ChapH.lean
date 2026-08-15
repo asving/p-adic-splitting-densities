@@ -18,6 +18,7 @@ import Uniformity.ChapH.H17
 import Uniformity.ChapH.H18
 import Uniformity.ChapH.H19
 import Uniformity.ChapH.H20
+import Uniformity.ChapH.H21
 import Uniformity.ChapH.H22
 import Uniformity.ChapH.H23
 import Uniformity.ChapH.H24
@@ -47,6 +48,7 @@ import Uniformity.ChapH.H50
 import Uniformity.ChapH.H51
 import Uniformity.ChapH.H52
 import Uniformity.ChapH.H53
+import Uniformity.ChapH.H54
 import Uniformity.ChapH.H57
 import Uniformity.ChapH.H58
 import Uniformity.ChapH.H59
@@ -61,6 +63,7 @@ import Uniformity.ChapH.H67
 import Uniformity.ChapH.H68
 import Uniformity.ChapH.H69
 import Uniformity.ChapH.H70
+import Uniformity.ChapH.H71
 import Uniformity.ChapH.H72
 import Uniformity.ChapH.H73
 import Uniformity.ChapH.H74
@@ -86,4 +89,4 @@ import Uniformity.ChapH.H93
 import Uniformity.ChapH.H94
 import Uniformity.ChapH.H95
 
-/-! Chapter H roll-up — 87/99 nodes landed (waves 1-4). -/
+/-! Chapter H roll-up — 89/99 landed + H.71 partial (RecursionLegs landed; rate_close REFUTED, A-H.2 adjudication in flight). -/
