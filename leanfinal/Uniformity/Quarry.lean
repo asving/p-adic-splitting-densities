@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import Uniformity.Quarry.RamificationInertiaLocal
+import Uniformity.Quarry.AdjoinRootDVR
 
 /-!
 # Uniformity.Quarry — vendored-library backports and the locality layer
