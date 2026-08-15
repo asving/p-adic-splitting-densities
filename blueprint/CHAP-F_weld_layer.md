@@ -1028,6 +1028,280 @@ chapters have a named cardinality interface instead of a type-preservation short
 
 ---
 
-<!-- RESUME: §5 composed (F.07–F.13). Next: §6 (SIGMALAW, F.14–F.18). -->
+## 6. §6 — THE Σ-LAW (SIGMALAW), transcription of the proved ledger identity
+
+**Section contract.** Product (3) of BRIEF F. SIGMALAW is the weld layer's one fully
+ACCEPTED-and-CERTIFIED proof note (2/2 + SOL-certified; the shortest arc in its queue, with
+two independent re-derivations); it proves the Σ-LAW — the per-coordinate ledger identity
+`Prnt_j(A) = u_j·Σ_m(R_m v(A))` (THEOREM SL-1's `(Σ-LEDGER)`) and its corollaries SL-C1
+(`δ_j = ρ_j/Σ_m(ρ_j)`) and SL-C2 (strict ⟹ byte-equal) — narrowing GRTW2's `W2-OPEN-2` box
+(`EFF.GRTW2.49/.50`). F transcribes the abstract algebraic core as provable nodes and the
+corpus-scope statement as an interface with GC-13 placeholders for the tower objects.
+
+**DECISION D-F3 — the GC-4 reading for this section (dated 2026-08-15).** BRIEF F phrases
+product (3) as "the σ-law (SIGMALAW) through a GC-4 dictionary". Adjudication against the
+source: SIGMALAW's Σ is a **coordinate map on the level-`m` residue algebra** (a
+character-twisted `K₀`-linear bijection, an automorphism on the `(EC-q)` perimeter), and NO
+unit of `EFF-SIGMALAW.md` outputs a factorization type — there is no σ-valued output for
+GC-4 to bind. GC-4 is therefore satisfied by CONSUMPTION, not by declaring a dictionary:
+where the weld's σ-law faces need σ-valued outputs they consume chapter E's landed
+dictionary by name (`ladderSigma` + `ladderSigma_degree` — CHAP-E §7's own header names
+chapter F as that consumer), and no F node declares a `FactorizationType`-valued function.
+Flagged for the cross-read (§14 item 4). This decision changes no statement of the source —
+it reads the brief's packaging instruction against the note's actual content, per GC-10.
+
+### NODE F.14 [def] [fresh]
+
+**STATEMENT.** *The abstract ledger junction.* Over a field `K` (the level-`m` residue
+algebra, abstracted): a **ledger junction** consists of a coordinate map `Σ : K → K`, a slot
+family of constants `u : ι → Kˣ` (slot-constant — the point of SL-1), and per-slot print and
+read maps `Prnt, read : ι → α → K` (with `α` the abstract object type), subject to the
+hypothesis field `hledger : ∀ j a, Prnt j a = (u j : K) * Σ (read j a)` — THEOREM SL-1's
+`(Σ-LEDGER)` display as a structure, at the abstraction level where its corollaries are
+provable. Properties of `Σ` (multiplicativity = the `(EC-q)` automorphism law; injectivity +
+`Σ 1 = 1` for the SL-C2 economy) enter as hypotheses of the consuming lemmas, never as
+fields — matching the source's own care that SL-C2 needs strictly less than SL-C1.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- An abstract ledger junction (`EFF.SIGMALAW.05`'s `(Σ-LEDGER)` as a structure):
+prints = slot constant × Σ of reads. -/
+structure LedgerJunction (K : Type*) [Field K] (ι α : Type*) where
+  Σmap : K → K
+  u : ι → Kˣ
+  Prnt : ι → α → K
+  read : ι → α → K
+  hledger : ∀ j a, Prnt j a = (u j : K) * Σmap (read j a)
+```
+
+**DEPENDS.** none.
+
+**PROOF.** definitional.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.SIGMALAW.05` (THEOREM SL-1, `(Σ-LEDGER)` verbatim: "Prnt_j(A) = u_j ·
+Σ_m(R_m v(A)), u_j = z_m^{−k_j·A_m}·ε_m(β_j)·U_m(β_j) — slot-constant"); the concrete `u_j`
+formula is instance content (F.17).
+
+**FAITHFULNESS.** The abstraction keeps exactly what SL-C1/SL-C2 consume: the ledger shape
+and slot-constancy. The scope pin ("every on-line level-m object at every shared-below
+junction, every m ≥ 1" — the acceptance record's governing re-display, E10 #1's resolution)
+is F.17's, not this structure's.
+
+**TEETH.** SL-VDM (2,828 leak-free samples) RECORDED at source; abstract instances at F.30.
+
+**ENVIRONMENT.** ENV-F1 (+ `[Field K]`).
+
+---
+
+### NODE F.15 [lemma] [fresh]
+
+**STATEMENT.** *SL-C1's core: the slot constant cancels and `δ = ρ/Σ(ρ)`.* Let `J` be a
+ledger junction, `j` a slot, and `C, P : α` two objects with reads `x := J.read j C ≠ 0` and
+`J.read j P = ρ · x` for a unit `ρ : Kˣ`. Assume `Σmap` is multiplicative on the pair
+(`hmul : J.Σmap (ρ * x) = J.Σmap ρ * J.Σmap x` — supplied at instances by the `(EC-q)`
+automorphism law) and `J.Σmap x ≠ 0`, `J.Σmap ρ ≠ 0`. Then the ledger ratio
+`δ_j := (Prnt j C · (ρ·x)) / (Prnt j P · x)` equals `ρ / Σmap ρ` — E10 #5's four-line
+derivation, transcribed: by `hledger` both prints factor through `u j`, which cancels
+("which is the point of its being slot-constant"), leaving `(ρ·x/x)·Σ(x)/Σ(ρx) = ρ/Σ(ρ)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+theorem LedgerJunction.delta_eq {K : Type*} [Field K] {ι α : Type*}
+    (J : LedgerJunction K ι α) (j : ι) (C P : α) (ρ : Kˣ)
+    (hx : J.read j C ≠ 0) (hP : J.read j P = (ρ : K) * J.read j C)
+    (hmul : J.Σmap ((ρ : K) * J.read j C) = J.Σmap (ρ : K) * J.Σmap (J.read j C))
+    (hΣx : J.Σmap (J.read j C) ≠ 0) (hΣρ : J.Σmap (ρ : K) ≠ 0) :
+    (J.Prnt j C * ((ρ : K) * J.read j C)) / (J.Prnt j P * J.read j C)
+      = (ρ : K) / J.Σmap (ρ : K)
+```
+
+**DEPENDS.** F.14; mathlib `div_eq_div_iff`, `mul_comm`/`mul_assoc` (field algebra),
+`Units.ne_zero`.
+
+**PROOF.** 1. Rewrite both prints by `hledger` and `hP`. 2. `u j` cancels (unit, both
+occurrences). 3. Rewrite `Σ(ρx)` by `hmul`; `field_simp` closes. Each step ≤ 3 tactics.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.SIGMALAW.08` (COROLLARY SL-C1 "δ_j = ρ_j / Σ_m(ρ_j)"; proof form = E10
+#5's complete derivation, whose arithmetic the spec re-checked: "`u_j` cancels, which is the
+point of its being slot-constant"; CHAIN terminal E10 #5 — the frozen proof's dangling
+ellipsis is NOT transcribed).
+
+**FAITHFULNESS.** The `hmul` hypothesis is stated PER-PAIR rather than as "`Σ` is a ring
+automorphism" — the automorphism property is the `(EC-q)` perimeter's content
+(`EFF.SIGMALAW.07`, the hostile-pass-derived law) and lives at F.17's instance level; taking
+it per-pair here keeps the abstract lemma exactly as strong as the derivation needs. The
+`δ_j` normalization (multiplied form rather than a division tower) avoids `0/0` junk while
+remaining literally equivalent on the hypotheses — spelled out so the stub stage does not
+"simplify" it back.
+
+**TEETH.** SL-DELTA (1,414 leak-free rows keying the element identity directly) — RECORDED;
+abstract instance re-fired at F.30.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.16 [lemma] [fresh]
+
+**STATEMENT.** *SL-C2's core: strict ⟹ unit-trivial, on the weaker hypotheses.* Let
+`Σ : K → K` be INJECTIVE with `Σ 1 = 1` (no automorphism property — the source's own
+economy: "Σ_m is a K₀-linear coordinate BIJECTION fixing 1 … no automorphism property
+needed, OA-M1 not consumed"). If `ρ : Kˣ` satisfies `Σ (ρ : K) = 1` — SL-C1's δ being
+strict (`δ_j = ρ_j`) forces exactly this at the consuming site — then `(ρ : K) = 1`. Chain:
+`Σ ρ = 1 = Σ 1` ⟹ `ρ = 1` by injectivity. This is the Σ-leg that made THEOREM OPEN-2a-Σ
+"unconditional on its Σ-leg"; the CONVERSE remains UNPROVED (the note's N-1) and no F node
+states it.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+theorem unit_eq_one_of_sigma_eq_one {K : Type*} [Field K]
+    {Σmap : K → K} (hinj : Function.Injective Σmap) (h1 : Σmap 1 = 1)
+    (ρ : Kˣ) (hρ : Σmap (ρ : K) = 1) : (ρ : K) = 1
+```
+
+**DEPENDS.** none (mathlib `Function.Injective`).
+
+**PROOF.** 1. `Σmap ρ = Σmap 1` from `hρ` and `h1`. 2. `hinj` closes. Two steps.
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.SIGMALAW.09` (COROLLARY SL-C2 = THEOREM OPEN-2a-Σ, proof chain verbatim:
+"strict ⟹ δ_j = ρ_j on supp (OA-L3) ⟹ Σ_m(ρ_j) = 1 = Σ_m(1) (SL-C1) ⟹ ρ_j = 1 (Σ_m is a
+K₀-linear coordinate BIJECTION fixing 1 …) ⟹ byte-equal (OA-L4)"). The OA-L3/OA-L4 legs
+(strictness ⟹ δ = ρ; unit-trivial ⟹ byte-equal) are OPEN2ATTACK content — an `EXT:` note
+with no effective spec, so those legs stay at their consuming instances (F.17), cited not
+transcribed (GC-10).
+
+**FAITHFULNESS.** "A genuinely weaker hypothesis for the weaker conclusion, correctly
+identified" (the spec's own audit) — preserved by taking injective + fixes-1 instead of
+automorphism.
+
+**TEETH.** SL-PHIR (1,414) + the separator censuses (SL-SEP2 = 96, SL-SEP3 = 27, exact) —
+RECORDED at source.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.17 [interface-carrier] [fresh]
+
+**STATEMENT.** *THEOREM SL-1 at corpus scope (the interface the abstract core instantiates).*
+At every **shared-below junction at level `m + 1`**, for every supported slot `j` and every
+on-line level-`m` object `A` at weight `β_j` (gap rows included with no correction term —
+LEMMA SL-L1's load-bearing gap clause), the ledger identity holds with the §3.4 formula
+characters: `Prnt_j(A) = u_j · Σ_m(R_m v(A))`, `u_j = z_m^{−k_j·A_m}·ε_m(β_j)·U_m(β_j)`
+slot-constant, where `Σ_m` is the composite of the per-level twists by
+`ξ_q = χ_{q−1}^{γ_q}·z_{q−1}^{−e_{q−1}A_{q−1}}` (NOT the bare interior twist σ′ — the note's
+defining correction, `EFF.SIGMALAW.02`: the boxed σ′ is the WRONG map, coinciding with Σ_m
+exactly on involution geographies, which is why it survived 468 sealed rows), and `Σ_m` is a
+ring automorphism by the `(EC-q)` eigen-coefficient law (`ψ_{q−1} ↦ ξ_q^{g_{q−1}}·ψ_{q−1}`,
+ideal preservation). **Grade: ACCEPTED 2/2 + CERTIFIED** — citable supply; the Lean form is
+a `LedgerJunction` instance whose data (levels, letters `z_q`, characters, evaluators
+`H_q`/`P_q`) is tower content: `EFF.SIGMALAW.03/.04 [supplied-by: chapter C]` (the level-`m`
+residue-algebra carriers) — the instance node fires at the orchestrator's GC-13 resolution,
+blocked until then.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- SL-1's Σ-properties package: what the corollaries consume from the corpus theorem.
+The corpus discharge (ACCEPTED 2/2) lands at the C-side junction instance —
+BLOCKED: GC-13 (chapter C level carriers); stub as axiom with header per §12. -/
+def SigmaLedgerLaw {K : Type*} [Field K] {ι α : Type*}
+    (J : LedgerJunction K ι α) : Prop :=
+  Function.Injective J.Σmap ∧ J.Σmap 1 = 1 ∧
+    ∀ x y, J.Σmap (x * y) = J.Σmap x * J.Σmap y
+```
+
+**DEPENDS.** F.14; `EFF.SIGMALAW.03/.04/.05/.06/.07 [supplied-by: chapter C]` for the
+concrete junction instance (GC-13(c)); E's `ladderSigma`/`ladderSigma_degree` by GC-13(b)
+node ID where a σ-face consumes the law (D-F3).
+
+**PROOF.** definitional (the carrier `Prop`; the corpus theorem is its instance-level
+discharge, ACCEPTED — the instance obligation is booked in §12 as blocked-until-resolution).
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.SIGMALAW.05` (SL-1 verbatim + the governing scope from the acceptance
+record); `.06` (SL-L2, the gauge-ratio law `Λ_q(w) = χ_q^{−w}`, simultaneous induction —
+instance content); `.07` (`(EC-q)`, the hostile-pass-derived automorphism law); `.04`
+(SL-L1's gap clause); `.02` (the corrected-map headline). Grade: `.11` (ACCEPTED 2/2, six of
+six commit pins verified) + `.01` (ledger-CERTIFIED).
+
+**FAITHFULNESS.** The carrier packages exactly the three Σ-properties the corollaries
+consume (injective, fixes 1, multiplicative); SL-1's full quantifier lives at the C-side
+instance. The wrong-map lesson is carried as a statement fence: no F or C node may define
+`Σ_m` as the bare `sigma_twist` (`z_q ↦ θ_q z_q`) — the corrected ξ-composite is the only
+sanctioned definition (`EFF.SIGMALAW.02`'s two machine-witnessed non-involution separators
+are the refutation of record).
+
+**TEETH.** the sealed battery (6,970 samples; all preregistered families GREEN; all six
+teeth rows CAUGHT) + SL-INVREC 218/218 (why the wrong map survived) — RECORDED; F.30 fires
+the `ξ₂ = θ₂⁻¹` degeneration numerically.
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+### NODE F.18 [def+lemma] [fresh]
+
+**STATEMENT.** *The formula character and its `q = 2` degeneration.* Over `K` with letters
+`z χ : Kˣ` and exponents `γ e A : ℤ` (integer exponents — `zpow`), define the **formula
+character** `xiChar χ γ z e A := χ ^ γ * z ^ (−(e * A))` (`ξ_q = χ_{q−1}^{γ_q} ·
+z_{q−1}^{−e_{q−1}A_{q−1}}`, `EFF.SIGMALAW.02/.03`; `ξ₁ := 1` is the E10 #2 supplement,
+covered by the base instance). Lemma (the spec's own arithmetic audit, transcribed): at the
+base level `χ = 1`, `xiChar 1 γ z e A = (z ^ (e * A))⁻¹` — i.e. `ξ₂ = θ₂⁻¹` where
+`θ₂ = z₁^{e₁A₁}` is the boxed interior twist: **at `q = 2` the true map is exactly the
+inverse of the boxed one**, and at `q ≥ 3` it differs further by the χ-chain factor — the
+divergence the non-involution separators witness.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Weld
+
+/-- The §3.4 formula character `ξ = χ^γ · z^{−eA}` (`EFF.SIGMALAW.03`). -/
+def xiChar {K : Type*} [Field K] (χ : Kˣ) (γ : ℤ) (z : Kˣ) (e A : ℤ) : Kˣ :=
+  χ ^ γ * z ^ (-(e * A))
+
+theorem xiChar_base {K : Type*} [Field K] (γ : ℤ) (z : Kˣ) (e A : ℤ) :
+    xiChar 1 γ z e A = (z ^ (e * A))⁻¹
+```
+
+**DEPENDS.** none (mathlib `one_zpow`, `zpow_neg`).
+
+**PROOF.** 1. `1 ^ γ = 1` (mathlib). 2. `z ^ (−(eA)) = (z ^ (eA))⁻¹` (`zpow_neg`).
+3. `one_mul`. Three rewrites.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.SIGMALAW.02` (the corrected map, verbatim: "ξ_q = χ_{q−1}^{γ_q}·
+z_{q−1}^{−e_{q−1}A_{q−1}} — i.e. θ_q^{−1} at q = 2, and θ_q^{−1}·(the χ-chain correction
+χ_{q−1}^{γ_q}) at q ≥ 3"; the spec's arithmetic audit of exactly this: "At q = 2, χ₁ = 1
+(the base), so ξ₂ = z₁^{−e₁A₁} = θ₂⁻¹ ✓"); `.13`'s `ξ₁ := 1` supplement RECORDED.
+
+**FAITHFULNESS.** Pure character bookkeeping; the tower indexing (which `χ`, `z`, `γ`, `e`,
+`A` at which level) is C's instance data.
+
+**TEETH.** F.30 fires `xiChar` instances at `q = 2` and `q = 3` including a NON-involution
+geography (SL-INVREC's lesson: involution geographies hide the wrong map — the gate must
+include a separator-style instance).
+
+**ENVIRONMENT.** ENV-F1.
+
+---
+
+<!-- RESUME: §6 composed (F.14–F.18, DECISION D-F3). Next: §7 (recon + structural clauses,
+F.19–F.26, DECISIONs D-F1/D-F2). -->
 
 <!-- SENTINEL: BP-F END OF FILE -->
