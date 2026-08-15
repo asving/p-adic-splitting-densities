@@ -15,23 +15,32 @@ import Uniformity.ChapB.B13b
 import Uniformity.ChapB.B14
 import Uniformity.ChapB.B15
 import Uniformity.ChapB.B16
+import Uniformity.ChapB.B17
+import Uniformity.ChapB.B18
 import Uniformity.ChapB.B21
 import Uniformity.ChapB.B22
 import Uniformity.ChapB.B23
+import Uniformity.ChapB.B24
 import Uniformity.ChapB.B25
 import Uniformity.ChapB.B26
 import Uniformity.ChapB.B27
 import Uniformity.ChapB.B31
+import Uniformity.ChapB.B32a
+import Uniformity.ChapB.B32b
+import Uniformity.ChapB.B32c
+import Uniformity.ChapB.B40
 import Uniformity.ChapB.B45
 import Uniformity.ChapB.B46
 import Uniformity.ChapB.B47
 import Uniformity.ChapB.B49
 import Uniformity.ChapB.B50
 import Uniformity.ChapB.B51
+import Uniformity.ChapB.B52
 import Uniformity.ChapB.B56
+import Uniformity.ChapB.B64
 import Uniformity.ChapB.B69
 import Uniformity.ChapB.B75
 import Uniformity.ChapB.B76
 import Uniformity.ChapB.B78
 
-/-! Chapter B roll-up — 34/86 landed (waves 1-4). -/
+/-! Chapter B roll-up — 44/86 landed (waves 1-5). -/

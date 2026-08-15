@@ -49,6 +49,7 @@ import Uniformity.ChapH.H51
 import Uniformity.ChapH.H52
 import Uniformity.ChapH.H53
 import Uniformity.ChapH.H54
+import Uniformity.ChapH.H55
 import Uniformity.ChapH.H57
 import Uniformity.ChapH.H58
 import Uniformity.ChapH.H59
@@ -89,7 +90,4 @@ import Uniformity.ChapH.H93
 import Uniformity.ChapH.H94
 import Uniformity.ChapH.H95
 
-/-! Chapter H roll-up — 90/99 landed. H.71 is COMPLETE at the A-H.2 signature (2026-08-15):
-`RecursionLegs` re-landed with `halpha` WINDOWED per EFF.GENIND.09, and `rate_close` proved with
-the added `hmc : m < c`. The refutation of the pre-A-H.2 statement is preserved inside
-`Uniformity/ChapH/H71.lean` against a locally restated copy of the old structure. -/
+/-! Chapter H roll-up — 90/99 landed; rate_close re-landing at A-H.2 in flight. -/
