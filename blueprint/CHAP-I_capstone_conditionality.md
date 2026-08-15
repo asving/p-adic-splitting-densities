@@ -1034,7 +1034,188 @@ unconditionally at `n ≤ 2`; at general `n` the capstone is machine-checkably e
 the frozen Display-A block, whose open rows are enumerated at §3 census: 36 OPEN-MATH + 2
 CITEs + 7 chapter-I audit items."*
 
-<!-- RESUME: §§5–6 complete. Next: §7 core-set audits, §8 gates. -->
+---
+
+## 7. §7 — THE `typeOf` FAITHFULNESS BRIDGE AND THE CORE-SET AUDIT LEDGER
+
+### NODE I.21 [def] [fresh]
+
+**STATEMENT.** *`TypeOfFaithful` — the trust-boundary bridge statement (HYP.01 + HYP.105
+named; GC-3: chapter I "speaks both languages and owns the bridge statement").* On the
+`disc ≠ 0` locus over the bundle: for monic `f` with `disc f ≠ 0`, the gcd-engine multiset
+`typeOf f` equals the classical ideal-theoretic multiset — over the factors `g` of `f`, the
+pairs `((maximalIdeal S).ramificationIdx' R, (maximalIdeal S).inertiaDeg' R)` computed at the
+MAXIMAL order `S` of each factor field (GC-3's primed rank-form API), with the ordering/
+normalization convention of HYP.12. This is a STATEMENT definition (`Prop`), not a theorem:
+it is the core-set review object, and its eventual discharge is a future proof unit or a
+gate-(b) cite — Part V's two terminals, explicitly open today.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+/-- **THE TRUST BOUNDARY, NAMED** (ledger HYP.01 [CORE-SET] + HYP.105; GC-3's kept-apart
+rule): `typeOf`'s gcd multiset (over the ORDER `AdjoinRoot g`) agrees on the `disc ≠ 0`
+locus with the ideal-theoretic `(e, f)` multiset (over the maximal order/DVR), in the primed
+rank-form generation. NO chapter may silently identify the two APIs (GC-3); a node needing
+the identification hypothesizes THIS name or returns `BLOCKED: HYP.01`. -/
+def TypeOfFaithful : Prop :=
+  True  -- ⚠ STUB-STAGE BODY (BLOCKED-UNTIL-RESOLUTION): the real body quantifies over the
+        -- bundle and monic f with disc f ≠ 0, and equates (typeOf f).data with the
+        -- maximal-order multiset via `Ideal.ramificationIdx'`/`inertiaDeg'`. Typing it
+        -- needs the factor-field valuation-ring carrier — the same object B-BOX-1's repair
+        -- route (B.56, OPTIONAL) would build. FROZEN HERE: name, locus, both APIs by name.
+```
+
+**DEPENDS.** landed `typeOf`, `FactorizationType` · `Quarry/RamificationInertiaLocal` (GC-3's
+primed API) · the maximal-order carrier (B.56's layer IF fired, else fresh at discharge time).
+**PROOF.** definitional. **SIZE.** 16 lines.
+**SOURCE.** ledger HYP.01 (verbatim STATEMENT + the Q4 non-lift), HYP.105 (the v5 placement:
+"name the theorem inside the core-set audit"), HYP.12 (the convention clause); GC-3's
+KEPT-APART paragraph.
+**TEETH.** none until discharged; audit A-1 is the human leg.
+**ENVIRONMENT.** ENV-I1.
+
+---
+
+### NODE I.22 [note] — THE CORE-SET AUDIT LEDGER (A-1 … A-7)
+
+Under Part V item 2: cite/def-faithfulness rows stay **gate-(b)-adjacent human reads**; the
+rest are absorbed into the standing fresh-eyes cadence (auto-memory: periodic fresh-context
+audits during the build; findings are stop-the-line). No audit row is a fleet node.
+
+| id | row(s) | object | class | when |
+|---|---|---|---|---|
+| A-1 | HYP.01, HYP.105 | `typeOf` faithfulness — review I.21's statement against the classical (e,f) multiset; the engine of the type definition | gate-(b)-adjacent (def-faithfulness), human | before any node hypothesizes `TypeOfFaithful`; refreshed at each fresh-eyes pass |
+| A-2 | HYP.12 | `(e,f)` ordering/multiset normalization vs the classical convention | gate-(b)-adjacent (def-faithfulness), human — one clause of A-4 | with A-4 |
+| A-3 | HYP.17 | [AGNPRW] Thm 5.2 / GN15 / Kuhlmann publisher-numbering | gate-(b)-adjacent (cite), bounded lookup | **BEFORE C.94/C.66/C.92 sign** — load-bearing since Q1 cites by number |
+| A-4 | HYP.98 | the core set: the types, `UniformityStatement`, `genuineDensity`/`decidedDensity`, the cites, changed-definition faithfulness paragraphs | RECURRING fresh-eyes (append #49 directive 2) | at chapter milestones; next at the D/F freeze |
+| A-5 | HYP.111 (def half) | the "decided" predicate's meaning (what `decidedDensity` counts) | rides A-4 | with A-4 |
+| A-6 | (I.10) | the field list of `CapstoneHypotheses` vs frozen Display A — one-to-one, nothing added, nothing dropped, §4.3 reconciliation intact | fresh-eyes, decorrelated arm | at this chapter's cross-read + each gate-(a) event |
+| A-7 | HYP.91 | OB-a…OB-d representation: OB-a = H.89 + `hwin` ✓; OB-b/c/d checked against CHAP-H's committed text + `DAG_BLUEPRINT_H.tsv` | bounded, one pass | at the H stub stage |
+
+DAG rows tie A-* to their HYP rows via `BP.I.22`.
+
+---
+
+## 8. §8 — GATES (GC-11; the `n ≤ 2` re-fire, AXCHK, the cite footprint)
+
+### NODE I.23 [gate] [fresh]
+
+**STATEMENT.** *The unconditional-slice gate (`q = 2` AND `q = 3`; the landed `n ≤ 2`
+capstone slices re-fired as regression anchors).* A census file, no public declaration:
+(i) `#print axioms` on the landed unconditional set — `drainage_one`, `totalMass_one`,
+`drainage_two`, `totalMass_two`, `coveringMenu_two`, `coveringMenu_three`,
+`genuineDensity_two_exact`, `uniformityStatement_two`, `gate_two_padic_two_exact`,
+`gate_two_padic_three_exact` — every line must print exactly
+`[propext, Classical.choice, Quot.sound]`; (ii) the chapter-G landed `n = 2` values re-stated
+as `#check`-level regression anchors with the expected numbers in comments: at `q = 2` the
+three densities are `1/3, 1/3, 1/3`; at `q = 3` they are `3/8, 3/8, 1/4`; the exact drainage
+law `undecidedCount O 2 N = q^N` at both primes (G.36); (iii) non-vacuity `#check`s for I.02/
+I.03's `n = 2` instances (the slice of `UniformityStatementDecided` recoverable from
+`genuineDensity_two_exact` + `genuineDensity_eq_decidedDensity_two`).
+
+**GC-11 compliance.** Two primes ✓ (`q = 2` and `q = 3` via `gate_two_padic_*`); the
+`e > 1 ∧ f > 1` witness clause is **signed non-applicable at `n = 2`** (a degree-2 type has
+`e·f = 2`, so `e > 1 ∧ f > 1` is impossible; the meaningful witnesses live in B/C/E's gates
+— e.g. B.85 — and I.24 re-prints their footprints once landed). Disposition recorded in §12.
+
+**DEPENDS.** the landed set named in (i). **PROOF.** none (census). **SIZE.** ~40 lines.
+**SOURCE.** GC-11 ("I's gates additionally re-run the capstone-slice values (chapter G's
+landed `n = 2` numbers) as regression anchors"); `ChapG/G49.lean` (the values).
+**TEST.** compiles; every footprint line exact; anchor comments match. **ENVIRONMENT.** ENV-I2.
+
+---
+
+### NODE I.24 [gate] [fresh] — **AXCHK: the maintained interface census**
+
+**STATEMENT.** *`spec/AXCHK.lean` — REVISION 2's planned artifact, composed here.* A
+maintained, diffable census file listing EVERY exported capstone-facing interface of
+`leanfinal` with its `#print axioms` line: the `Statement.lean` API (both CAP targets and the
+cross-implications), the density/drainage layer, the chapter roll-ups' terminal supplies as
+they land (G now; B/C/E/H/D/F at their landings), and this chapter's I.15–I.18. Output
+committed as `spec/AXCHK_output.txt` (the diffable artifact); a footprint regression is
+stop-the-line (repo standing rule). Pattern source: `lean/LeanUrat/AxChk_baseline.lean`
+(the quarry's working ancestor).
+
+**Location decision (recorded):** REVISION 2 names `spec/AXCHK.lean`; the file must live
+where `lake env lean` can elaborate it against `leanfinal` — the composed artifact is
+`leanfinal/AXCHK.lean` with a one-line pointer at `spec/` (this keeps `spec/` Lean-free; the
+orchestrator may override at stub time; either way the OUTPUT commits under `spec/`).
+
+**Maintenance rule.** Every chapter's stub-gate agent APPENDS its chapter's terminal names on
+landing (the file is the one place the whole trusted surface is greppable — GC-8's "keeps the
+capstone's honesty audit greppable" rationale, applied to axioms).
+
+**DEPENDS.** the landed tree; grows monotonically. **PROOF.** none. **SIZE.** ~60 lines at
+composition; grows. **SOURCE.** REVISION 2 fleet-protocol repairs ("a maintained leanfinal
+analogue of AxChk_baseline (spec/AXCHK.lean listing every exported interface, diffable output
+committed)"); Brief I product (6). **TEST.** output diff empty against committed baseline
+except intended additions. **ENVIRONMENT.** ENV-I2.
+
+---
+
+### NODE I.25 [gate] [fresh] — **THE CITE-FOOTPRINT GATE**
+
+**STATEMENT.** *Axiom hygiene under Part V: Lean core + exactly the signed cites, nowhere
+else.* A census block asserting, at every AXCHK run: (i) every declaration NOT downstream of
+a gate-(b) import prints exactly Lean core; (ii) every cite-conditional declaration (C.67's
+pattern: "the conditionality is IN the axiom dependency") prints Lean core + exactly the
+signed cite axioms it declares — the honest carrier the ledger wants; (iii) the FORBIDDEN
+list is enforced mechanically: `AX_cellRecursion`-family (quarry-quarantined, Q7),
+`Lean.ofReduceBool` (`native_decide` — stop-the-line per H.99's precedent), and any axiom
+not in the signed registry. The signed registry at composition time: **empty** (no gate-(b)
+cite is signed yet); expected entries: C.94's [AGNPRW] axiom, C.66/C.92's FGMN axiom group
+(one or two entries per the orchestrator's subsumption choice, §9.3 O-4).
+
+**DEPENDS.** I.24 (runs with it). **PROOF.** none. **SIZE.** ~25 lines.
+**SOURCE.** Part V gate (b); C.66/C.67/C.92/C.94's committed footprint design; repo axiom
+policy (CLAUDE.md). **TEST.** registry match exact. **ENVIRONMENT.** ENV-I2.
+
+---
+
+## 9. §9 — LATE-BINDING: CHAPTERS D AND F (composing in parallel — placeholders + the resolution pass)
+
+> **⚠ THIS SECTION IS EXPLICITLY INCOMPLETE BY DESIGN.** Chapters D and F are being composed
+> NOW, in parallel with this chapter. Every supply below is taken at GC-13(c) placeholder
+> strength (`EFF.<NOTE>.<nn> [supplied-by: chapter <X>]`), never a guessed node ID. **The
+> completion of this section is a RECORDED ORCHESTRATOR ITEM at the D/F freeze** (the charge's
+> instruction, verbatim); until the resolution pass runs, the §11 stub list's blocked entries
+> stand and no fleet agent fires on I.01/I.05/I.06/I.07/I.08/I.09/I.10/I.21.
+
+### 9.1 Chapter-D residue (placeholders)
+
+| what | placeholder | binds |
+|---|---|---|
+| the ϑ four-way orientation table | anchor **`D-THETA-TABLE`** (D.06 per D's front matter) | no chapter-I node reads ϑ; recorded because §3's D-rows (HYP.46–61, 99, 104, 106–108, 112–115, 118) resolve to D node IDs at freeze |
+| T1/T3/T4/T5 supplier-interface nodes | `EFF.T1.*`/`EFF.T3.*`/`EFF.T4.*`/`EFF.T5.*` [supplied-by: chapter D] | the 25 late-binding rows of §3.5/§3.8 |
+| the `𝒲_(≤i)` carriers (D product (4)) | handed to E/I by name — E.62 is the committed socket | I.10's `ladder` field consumes them THROUGH E.24; no direct D edge |
+| D-H8's JD0 ruling | "chapter D opens no JD0 node; `JD0-BOX-2` lands in chapter I as the named hypothesis" | confirmed: I.08 is that landing (via F's carrier composition) |
+
+### 9.2 Chapter-F residue (placeholders)
+
+| what | placeholder | binds |
+|---|---|---|
+| Display A weld conjunct 1: `JD0-BOX-2` | `EFF.JD0.05` [supplied-by: chapter F] (F §4: `GaugeFormPerimeter`/`JD0Box2` + the per-site strike ledger) | I.08 → I.10's `jd0` field |
+| Display A weld conjunct 2: `GENHN-BOX-2` + W-1 | `EFF.GENHN.50` [supplied-by: chapter F] (F §5: `GenhnBox2` + `W1Transport`) | I.09 → I.10's `genhnBox2` field |
+| the `WeldSupply`/`WeldObligations` package for I | F §9's terminal supply (name per F's front matter) | the §3 rows HYP.74/139/148's carrier column |
+| WELD-ZERO status | **1 of 2 clean passes; pass 2 LAUNCHED, IN FLIGHT** (append #56; no landing commit at HEAD) | honesty I-7; F's §8 pending arc; NOTHING here moves until it lands AND passes |
+
+### 9.3 Recorded orchestrator items (the resolution pass + the gaps this chapter found)
+
+| id | item | trigger |
+|---|---|---|
+| **L-1** | type I.08/I.10's `jd0` field against F's frozen carrier name; replace the `True` placeholder; re-run §11's blocked list | F freeze |
+| **L-2** | type I.09/I.10's `genhnBox2` field against F's frozen `GenhnBox2`/`W1Transport`; arc note travels with the field | F freeze |
+| **L-3** | resolve §3.5/§3.8's 25 D-rows to D node IDs; re-emit the affected `DAG_BLUEPRINT_I.tsv` rows with exact endpoints | D freeze |
+| **O-1** | **book the `[GENHN-HE(μ = 3)]` transcription** (THEOREM HE3.A at `μ = 3`, first-live `n = 6, 7` — corpus-unconditional, NO owner in any committed chapter; honesty I-11(i)). Candidate homes: a chapter-B appendix (HE3 is B's note) or a chapter-E instance section; cheap relative to its Display-A weight | now (this chapter's finding) |
+| **O-2** | **book the `LEMMA GENHN-3` cap/consultation transcription** (`EFF.GENHN.29` beyond the (c) bound H.51 consumes) — the general window-pinning supplier; candidate: an H-appendix node next to H.89 | now (this chapter's finding) |
+| **O-3** | if WELD-ZERO lands + passes both arcs: the gate-(a) amendment removing I.10's `jd0`-adjacent `genhnBox2` field and retiring HYP.139/148 rows — owner-visible, never a fleet edit | WELD-ZERO acceptance |
+| **O-4** | the C.66 ⊂ C.92 FGMN-axiom subsumption choice (one axiom group or two) — affects I.25's registry | before the C stub gate signs |
+| **O-5** | the `n = 3` frontier package (HYP.08/09/11/28/29 + G's H-1 bridge) — a single post-blueprint unit brief exists implicitly across G/H; book it as the first post-fleet mathematics unit | orchestrator scheduling |
+
+<!-- RESUME: §§7–9 complete. Next: §10 DAG TSV, §11 leanspec, §12 TEETH, §13 cross-read. -->
+
 
 
 
