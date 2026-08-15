@@ -246,6 +246,479 @@ hypothesis block receives.
 
 ---
 
-<!-- RESUME: skeleton committed. Next: read EFF-T2 units .01–.44 + lemma units, EFF-HE7 math units, then compose §3. -->
+## 3. §3 — THE RUNG/LADDER SCHEMA
 
-*(sections §3–§14 follow in dependency order; composed incrementally, committed per 2–3 nodes)*
+> **Design note (the `GenreDatum`/`StageInterface` lesson, one level up).** T2's carrier `𝒞` and
+> HE7's level datum `𝔇_i` (DEFINITION HE7-2 as corrected by ANNEX-DEF HE7-2′, `EFF.HE7.107`) are
+> the corpus's own schema objects. Chapter E transcribes their **arithmetic core** as `RungDatum`
+> (E.01) — provable-outright exponent bookkeeping lives on it (§3, §5) — and their **carrier
+> content** as the hypothesis-field structures of §4. The split is exactly CHAP-H's three-layer
+> architecture: arithmetic = theorems, carrier = fields, σ = dictionary (§7).
+
+### NODE E.01 [def] [fresh]
+
+**STATEMENT.** *The rung datum.* A **rung** consists of natural numbers `ℓ, g, u, T` subject to:
+`1 ≤ ℓ` (the slope denominator = the rung's value-group index), `1 ≤ g` (the residual-factor
+degree = the rung's residue-degree jump), `Nat.Coprime u ℓ` (the slope `λ = u/ℓ` in lowest
+terms), and the **node condition** `ℓ * T < u` (i.e. `λ > T`, DEFINITION HE7-2's `λ_i > T_i`).
+This is the arithmetic core of `EFF.HE7.47`'s level datum `𝔇_i = (Φ_i, D_i, w_i, ℓ_i, g_i, u_i,
+K_i, K_{i+1}, 𝒫_i)` — the polynomial `Φ_i`, the fields `K_i ⊆ K_{i+1}` and the point set `𝒫_i`
+are carrier data and live in §4's structures, never here. The **base rung** (level 0 → 1) is
+`(ℓ, g, u, T) = (e₁, f₁, h, 0)` — `EFF.HE7.47`'s `𝔇_0` with `T_0 := 0`; the node condition
+degenerates to `1 ≤ h`. The **level-2 rung** is `(ℓ, d_r, u, D′h)` with `u = ℓλ > ℓD′h`
+(DEFINITION HE7-1's `λ > D′h`, `EFF.HE7.06`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- A **rung datum**: the arithmetic core of one σ-ladder level (`EFF.HE7.47`/`.107`).
+`ℓ` = slope denominator (value-index jump), `g` = residual degree (residue-degree jump),
+`u` = slope numerator, `T` = the rung's disk threshold; `ℓ*T < u` is the node condition
+`λ > T`. -/
+structure RungDatum where
+  ℓ : ℕ
+  g : ℕ
+  u : ℕ
+  T : ℕ
+  hℓ : 1 ≤ ℓ
+  hg : 1 ≤ g
+  hcop : Nat.Coprime u ℓ
+  hnode : ℓ * T < u
+```
+
+**DEPENDS.** none.
+
+**PROOF.** definitional.
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.HE7.47` (DEFINITION HE7-2's tuple, the clauses `ℓ_i ≥ 1, g_i ≥ 1, u_i ∈ ℤ with
+gcd(u_i, ℓ_i) = 1`, the node condition `λ_i > T_i`, and the level-0 datum); `EFF.HE7.06`
+(DEFINITION HE7-1: `λ = u/ℓ ∈ ℚ` lowest terms, `λ > D′h`, `d_r := deg r`); `EFF.T2.04`
+(`(DEG-EF)` — the carrier's `D = e_𝒞 f_𝒞`, which §4 carries as a field, NOT inferred from
+monicity).
+
+**⚠ CARRIER FENCE.** `u : ℕ`, not `ℤ`: every consumed height in the corpus sits strictly above
+the rung's threshold (`EFF.HE7.24`'s use-site chain), and `T ≥ 0` with the node condition forces
+`u ≥ 1`. A node that provably needs a negative `u_i` must return RE-PLAN (none exists in T2/HE7's
+effective text — the level-`i` slopes satisfy `λ_i > T_i ≥ 0`). The normalizer `ϖ = x^{i₀}π^{a₀}`
+with possibly `a₀ < 0` (`EFF.HE7.05`) is chapter-C carrier content (honesty E-2), not a rung
+field.
+
+**TEETH.** HE7-T-SLOT2TIE (`EFF.HE7.06`: at `gcd(u, ℓ) ≠ 1` the slot-min is not exact — the
+`hcop` field is machine-load-bearing) → the field makes the tooth's hypothesis structural.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.02 [def] [fresh]
+
+**STATEMENT.** *Derived rung data.* For a rung `R`: the **slot count** `L = ℓ * g`
+(`EFF.HE7.47`'s `L_i := ℓ_i g_i`); the **next threshold** `nextT = L * u` (`T_{i+1} := L_i·u_i`);
+the **degree multiplier** (the key-degree recursion `D_{i+1} := D_i·L_i` is `degMul = L`); and the
+**bound step** `nextBound b = (L − 1) * u + ℓ * b` (`EFF.HE7.23`'s recursion
+`bound_{i+1} = (ℓ_i g_i − 1)·u_i + ℓ_i·bound_i`, `bound_0 = 0`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- `L = ℓg`, the number of slots the rung's key-development occupies. -/
+def RungDatum.slotCount (R : RungDatum) : ℕ := R.ℓ * R.g
+
+/-- `T' = L·u`, the next level's disk threshold (`EFF.HE7.47`). -/
+def RungDatum.nextT (R : RungDatum) : ℕ := R.slotCount * R.u
+
+/-- One step of the (LIFT) threshold recursion (`EFF.HE7.23`):
+`bound' = (L−1)·u + ℓ·bound`. -/
+def RungDatum.nextBound (R : RungDatum) (b : ℕ) : ℕ :=
+  (R.slotCount - 1) * R.u + R.ℓ * b
+```
+
+**DEPENDS.** E.01.
+
+**PROOF.** definitional.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.HE7.47` (the displayed recursions `L_i := ℓ_i g_i`, `D_{i+1} := D_i L_i`,
+`T_{i+1} := L_i·u_i`); `EFF.HE7.23` (the bound recursion, one formula for the whole ladder —
+"**explicitly preserved by ANNEX R**: 'The bound recursion is unchanged — values never see the
+twist'"); `EFF.HE7.06` (`T₂ := ℓd_r·u`, the level-2 instance).
+
+**ARITHMETIC AUDIT (recomputed fresh).** Base rung `(e₁,f₁,h,0) = (2,1,1,0)`: `L = 2`,
+`nextT = 2·1 = 2`... at the n = 8 frame (`EFF.HE7.57`) the level-2 rung is `(ℓ,d_r,u,T) =
+(2,1,u,2u′)` — with base `(2,1,1,0)`: `bound₁ = nextBound 0 = (2−1)·1 + 2·0 = 1 = (D′−1)h ✓`
+(`D′ = 2, h = 1`). Level-2 rung `(2,1,5,2)` (the Q3 frame `(2,1,1,2,1,5)`):
+`bound₂ = (2·1−1)·5 + 2·1 = 7 ✓` (Q3 table: `thr₂ = 7`). Frame `(2,1,1,2,2,5)` → rung
+`(2,2,5,2)`: `bound₂ = (4−1)·5 + 2·1 = 17 ✓`. Frame `(3,1,2,2,3,13)` → base `(3,1,2,0)`:
+`bound₁ = (3−1)·2 = 4 = (D′−1)h` with `D′ = 3, h = 2` ✓; rung `(2,3,13,6)`:
+`bound₂ = (6−1)·13 + 2·4 = 73 ✓`. **Three of the five Q3 frames re-derived exactly** (all five
+are E.68's gate).
+
+**TEETH.** Q3 / HE7-LIFT2 (`EFF.HE7.23`: five level-2 frames' thresholds verified against
+exhaustive enumeration) → **Lean theorem** at E.31/E.35 with these definitions; the numeric leg
+re-fires at E.68.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.03 [lemma] [fresh]
+
+**STATEMENT.** *The normalizer exponents exist and are unique (Bézout at the rung).* For a rung
+`R` and every `k : ℤ` there are unique `m : ℤ` and `s : ℕ` with `s < ℓ` and
+`ℓ * m + s * u = k`. This is `EFF.HE7.06`'s "`ℓ·m(k) + s(k)·u = k` with `0 ≤ s(k) < ℓ` — possible
+and unique because `gcd(u, ℓ) = 1`", the exponent content of the normalizer system
+`n_{i+1}(k) := n_i(m_i(k))·Φ_i^{s_i(k)}` (`EFF.HE7.107`, ANNEX-DEF HE7-2′). The normalizer
+POLYNOMIAL is carrier content (§4/chapter C); this node is its exponent bookkeeping only.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem normExp_exists_unique (R : RungDatum) (k : ℤ) :
+    ∃! p : ℤ × ℕ, p.2 < R.ℓ ∧ (R.ℓ : ℤ) * p.1 + (p.2 : ℤ) * (R.u : ℤ) = k
+
+/-- The slot exponent `s(k)`: the unique `s < ℓ` with `s·u ≡ k (mod ℓ)`. -/
+noncomputable def RungDatum.sExp (R : RungDatum) (k : ℤ) : ℕ :=
+  (normExp_exists_unique R k).choose.2
+
+/-- The carry exponent `m(k)`: `(k − s(k)·u)/ℓ`. -/
+noncomputable def RungDatum.mExp (R : RungDatum) (k : ℤ) : ℤ :=
+  (normExp_exists_unique R k).choose.1
+```
+
+**DEPENDS.** E.01 · mathlib `Nat.Coprime`, `ZMod.unitOfCoprime` (or `Nat.chineseRemainder`-free
+route: `Int.emod`/`Int.ediv` on `k * u⁻¹ mod ℓ`).
+
+**PROOF.**
+1. Existence: `gcd(u, ℓ) = 1` gives `u` invertible mod `ℓ`; set `s := (k * u⁻¹) % ℓ` computed in
+   `ZMod ℓ` lifted by `ZMod.val` (`0 < ℓ` from `R.hℓ`), so `ℓ ∣ k − s*u`; set
+   `m := (k − s*u) / ℓ` (`Int.ediv_emod_unique`).
+2. Uniqueness: if `ℓm + su = ℓm′ + s′u` then `ℓ ∣ (s − s′)u` over `ℤ`, coprimality gives
+   `ℓ ∣ s − s′`, and `s, s′ < ℓ` forces `s = s′` (the H.51 pattern one letter over), then
+   `m = m′` by cancellation (`Int.eq_of_mul_eq_mul_left`, `ℓ ≠ 0`).
+
+**SIZE.** 24 lines. **SPLIT CANDIDATE:** land the `∃!` lemma as the public contract; `sExp`/`mExp`
+may ride a second file (`E03a`) if `choose`-plumbing runs long — but consumers (E.04, E.33)
+should take `s`/`m` as explicit arguments with the defining equation as hypothesis (the H.54
+`stageLift'` lesson) wherever possible.
+
+**SOURCE.** `EFF.HE7.06` (the `n₂(k)` display and its Bézout clause); `EFF.HE7.107` (the
+recursion's `ℓ_i·m_i(k) + s_i(k)·u_i = k, 0 ≤ s_i(k) < ℓ_i`, "possible and unique because
+`gcd(u_i, ℓ_i) = 1`").
+
+**TEETH.** Q2 / HE7-SLOT2 (12,632 exactness identities ride this bookkeeping) → the arithmetic
+half becomes a **Lean theorem** here.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.04 [lemma] [fresh]
+
+**STATEMENT.** *The cocycle exponent is 0 or 1, and the carry identity.* For a rung `R` and
+`a, b : ℤ`, with `s := R.sExp`, `m := R.mExp`: `s a + s b − s (a+b) ∈ {0, ℓ}`; writing
+`c := (s a + s b − s (a+b)) / ℓ ∈ {0, 1}`, one has `m a + m b = m (a+b) − c * u`. This is
+ANNEX-LEMMA R1-a(ii)'s arithmetic half (`EFF.HE7.108`): the exponent bookkeeping behind
+`τ_{i+1}(a,b) = Λ_i^c · τ_i(m(a), m(b)) · τ_i(m(a)+m(b), c·u)` — the letter-monomial residue
+itself is carrier content (E.33 states its exponent law; the residue law is a §4 field/C
+placeholder). At the base rung the level-1 cocycle is trivial (`τ₁ ≡ 1`: `k ↦ ϖ^k` is a
+homomorphism — R1-a(ii), "THE point of the re-based system").
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem cocycle_exp_mem (R : RungDatum) (a b : ℤ)
+    (sa sb sab : ℕ) (ma mb mab : ℤ)
+    (ha : sa < R.ℓ ∧ (R.ℓ:ℤ) * ma + sa * R.u = a)
+    (hb : sb < R.ℓ ∧ (R.ℓ:ℤ) * mb + sb * R.u = b)
+    (hab : sab < R.ℓ ∧ (R.ℓ:ℤ) * mab + sab * R.u = a + b) :
+    (sa + sb - sab : ℤ) = 0 ∨ (sa + sb - sab : ℤ) = R.ℓ
+
+theorem cocycle_carry (R : RungDatum) {a b : ℤ} {sa sb sab : ℕ} {ma mb mab : ℤ}
+    (ha : sa < R.ℓ ∧ (R.ℓ:ℤ) * ma + sa * R.u = a)
+    (hb : sb < R.ℓ ∧ (R.ℓ:ℤ) * mb + sb * R.u = b)
+    (hab : sab < R.ℓ ∧ (R.ℓ:ℤ) * mab + sab * R.u = a + b)
+    {c : ℤ} (hc : (sa + sb - sab : ℤ) = c * R.ℓ) :
+    ma + mb = mab - c * R.u
+```
+
+**DEPENDS.** E.01, E.03 (uniqueness, for the `mod ℓ` congruence) · mathlib `Int.emod_emod_of_dvd`.
+
+**PROOF.**
+1. `cocycle_exp_mem`: adding the two defining equations and subtracting the third:
+   `ℓ(ma + mb − mab) + (sa + sb − sab)·u = 0`, so `ℓ ∣ (sa + sb − sab)·u`, coprimality gives
+   `ℓ ∣ sa + sb − sab`; the range `−ℓ < sa + sb − sab < 2ℓ` (from the three `< ℓ` bounds)
+   leaves `{0, ℓ}` (R1-a(ii)'s own range argument, verbatim).
+2. `cocycle_carry`: substitute `sa + sb − sab = c·ℓ` into the displayed combination and cancel
+   `ℓ ≠ 0`. `omega` after `push_cast`.
+
+**SIZE.** 22 lines.
+
+**SOURCE.** `EFF.HE7.108` (R1-a(ii), verbatim: "`s_i(a) + s_i(b) − s_i(a+b)` lies in
+`(−ℓ_i, 2ℓ_i)` and is `≡ 0 mod ℓ_i`, so it is 0 or `ℓ_i`, i.e. `c ∈ {0,1}`; applying
+`ℓ_i·(·) + u_i·(s-identity) = 0` gives `m_i(a) + m_i(b) = m_i(a+b) − c·u_i`"); `EFF.T2.07`
+(`(COC)`, the cocycle identity this bookkeeping feeds); `EFF.HE7.08` (the level-2 instance
+`c := (s(k) + s(k′) − s(k+k′))/ℓ ∈ ℤ`, sharpened to `{0,1}` by R1-a — "the display is not
+edited, and `{0,1} ⊂ ℤ` so nothing conflicts").
+
+**TEETH.** `he7rannex_supp.py` (the Λ₂Λ₁-monomial twist arithmetic, 102 slot instances, exponent
+value identity held on every computed monomial) → **Lean theorem** for the exponent half.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.05 [def] [fresh]
+
+**STATEMENT.** *The ladder.* A **ladder** is a base rung together with a list of higher rungs,
+chained by the threshold recursion: the base has `T = 0`, and each successive rung's threshold is
+the previous rung's `nextT` (`T_{i+1} = L_i·u_i`). Derived along the ladder: `degAt i` (the
+key-degree at level `i`, `D_{i+1} = D_i·L_i`, seeded by `D₀`), and `boundAt i` (the (LIFT)
+threshold, `EFF.HE7.23`'s recursion seeded at `0`). The level-1 instance reconciles with CHAP-H's
+`GenreDatum`: a `GenreDatum G` yields the base rung `(G.e₁, G.f₁, G.h, 0)` (the slot/lift layer
+H.51–H.58 is stated on exactly these three numbers), and with CHAP-B's polygon data on the
+`e₁ = 1` slice (B.11 `npHgt`, B.14 `suppVal` — the level-1 heights E's seam layer reads).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- The threshold chain: rung `r'` follows `r` when `r'.T = r.nextT`. -/
+def rungFollows (r r' : RungDatum) : Prop := r'.T = r.nextT
+
+/-- A **ladder**: base rung (threshold 0) + chained higher rungs. -/
+structure LadderData where
+  base : RungDatum
+  rungs : List RungDatum
+  hbase : base.T = 0
+  hchain : List.Chain rungFollows base rungs
+
+/-- The key degree at level `i+1` (`D₀` the seed; `D_{i+1} = D_i·L_i`). -/
+def LadderData.degAt (Λ : LadderData) (D₀ : ℕ) : ℕ → ℕ
+  | 0 => D₀ * Λ.base.slotCount
+  | (i+1) => Λ.degAt D₀ i * ((Λ.rungs.get? i).map RungDatum.slotCount |>.getD 1)
+
+/-- The (LIFT) threshold at level `i+1` (`EFF.HE7.23`). -/
+def LadderData.boundAt (Λ : LadderData) : ℕ → ℕ
+  | 0 => Λ.base.nextBound 0
+  | (i+1) => ((Λ.rungs.get? i).getD Λ.base).nextBound (Λ.boundAt i)
+```
+
+**⚠ SIGNATURE NOTE.** The `get?`/`getD` spelling is a contract for TOTALITY, not elegance; a
+fleet agent may land the recursion as a `List.foldl` over `rungs.take i` with a proved
+equivalence, provided `degAt`/`boundAt` keep these names and types. The `getD 1`/`getD Λ.base`
+defaults are never consulted at in-range indices (the consumers all carry `i < rungs.length`
+hypotheses); an out-of-range read is not a corpus configuration.
+
+**DEPENDS.** E.01, E.02 · mathlib `List.Chain`, `List.get?`.
+
+**PROOF.** definitional.
+
+**SIZE.** 30 lines.
+
+**SOURCE.** `EFF.HE7.47`/`.107` (the level recursion; the level-0 datum `(x, 1, v, e₁, f₁, h,
+F_Q, K, K̄₀)` with `T_0 := 0`; "levels 1 and 2 are byte-unchanged"); `EFF.HE7.23` (`bound_0 = 0`,
+the displayed instances `bound₁ = (D′−1)h`, `bound₂ = (ℓd_r−1)u + ℓ(D′−1)h`); `EFF.T2.35`
+(HE7-INSTANCE's `d = dv₂ = ℓ·dv = ℓe₁v`, `T = T₂ = ℓd_ru` — the value-normalization multiplier
+`c_{i+1} = ℓ_i·c_i` is carried by the carrier, §4, not here).
+
+**TEETH.** as E.02; E.68 executes the five-frame threshold table through `boundAt`.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.06 [lemma] [fresh]
+
+**STATEMENT.** *Ladder telescoping (degree conservation along levels).* For a ladder `Λ` and
+seed `D₀`: `Λ.degAt D₀ i = D₀ * (Λ.base :: Λ.rungs.take i).map slotCount |>.prod` — the level-`i`
+key degree is the seed times the product of all slot counts through level `i`. In corpus letters:
+`D″ = D′·ℓd_r`, `D_2 = D′·e₂f₂`, and in general `D_{i+1} = D₀·Π_j L_j` — the degree half of
+`EFF.HE7.48`'s composed invariants `e = e₁ℓ_1⋯ℓ_{i+1}`, `f = f₁g_1⋯g_{i+1}` (whose `e·f`
+product IS this telescoping, since `L_j = ℓ_j g_j`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem LadderData.degAt_eq_prod (Λ : LadderData) (D₀ : ℕ) (i : ℕ)
+    (hi : i ≤ Λ.rungs.length) :
+    Λ.degAt D₀ i = D₀ * ((Λ.base :: Λ.rungs.take i).map RungDatum.slotCount).prod
+```
+
+**DEPENDS.** E.05 · mathlib `List.prod_cons`, `List.take_succ`, `List.map_append`.
+
+**PROOF.**
+1. Induction on `i`. Base: `degAt D₀ 0 = D₀ * base.slotCount` and the list is `[base]` ✓.
+2. Step: `take (i+1) = take i ++ [rungs.get i]` (in range by `hi`); `List.prod_append` and the
+   recursion's multiplier agree; `ring`-normalize the association.
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.HE7.48` (THEOREM HE7.D's composed `e`/`f` display); `EFF.HE7.06` (`D″ :=
+D′ℓd_r`); `EFF.T2.36` (`D = D₂ = D′e₂f₂`); `EFF.T2.30` (`(FUND)` — `|Ω| = ef`, whose ladder
+form this feeds at E.15/E.53).
+
+**TEETH.** Q1's per-member `Σef = 8` at `n = 8` (`EFF.HE7.36` TEETH) → degree conservation is
+the checkable shadow; E.46/E.67 carry the executable form.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.07 [lemma] [fresh]
+
+**STATEMENT.** *The jump arithmetic (THEOREM HE7.C's bounds, exponent form).* Three clauses,
+pure ℕ-arithmetic:
+(i) **the jump floor**: if `2 ≤ m` and `2 ≤ p` then `4 ≤ m * p` (the corpus instance:
+`L_λ ≥ ℓ·m·d_r = m·(ℓd_r) ≥ 2·2 = 4`, so `μ ≥ 4` at every level jump — the WIDENED condition
+`ℓ·d_r ≥ 2`, both branches: `ℓ ≥ 2, d_r ≥ 1` and `ℓ = 1, d_r ≥ 2`);
+(ii) **the halving**: if `2 ≤ p` and `μ₂ * p ≤ μ` then `2 * μ₂ ≤ μ` (the corpus's
+`μ₂ ≤ μ/(ℓd_r) ≤ μ/2`, cleared of division);
+(iii) **the jump count**: for `μ : ℕ → ℕ` with `4 ≤ μ i` for all `i ≤ J` and
+`2 * μ (i+1) ≤ μ i` for all `i < J`: `2 ^ (J + 1) ≤ μ 0` — the cleared form of
+`J ≤ log₂ μ − 1` (`EFF.HE7.15`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem jump_floor {m p : ℕ} (hm : 2 ≤ m) (hp : 2 ≤ p) : 4 ≤ m * p
+
+theorem jump_halving {μ μ₂ p : ℕ} (hp : 2 ≤ p) (h : μ₂ * p ≤ μ) : 2 * μ₂ ≤ μ
+
+theorem jump_count_bound (μ : ℕ → ℕ) (J : ℕ)
+    (h4 : ∀ i ≤ J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
+    2 ^ (J + 1) ≤ μ 0
+```
+
+**DEPENDS.** none · mathlib `Nat.pow_succ`, `Nat.mul_le_mul`.
+
+**PROOF.**
+1. (i): `4 = 2*2 ≤ m*p` by `Nat.mul_le_mul`. (ii): `2*μ₂ ≤ p*μ₂ = μ₂*p ≤ μ`.
+2. (iii): induction on `J`. Base `J = 0`: `2^1 = 2 ≤ 4 ≤ μ 0`. Step: apply the inductive
+   hypothesis to `i ↦ μ (i+1)` at `J`, getting `2^(J+1) ≤ μ 1`; then
+   `2^(J+2) = 2·2^(J+1) ≤ 2·μ 1 ≤ μ 0` by `hh 0`.
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.HE7.15` (THEOREM HE7.C `[r1]`, the displayed proof: "`μ ≥ L_λ = ℓ·deg R_λ ≥
+ℓ·m·d_r = m·(ℓ·d_r) ≥ 2·2 = 4`", "`μ₂ ≤ … ≤ μ/(ℓd_r) ≤ μ/2`", "if jumps occur at levels 1..J
+then `μ_i ≥ 4` for `i ≤ J` and `μ_J ≤ μ/2^{J−1}`, so `4 ≤ μ/2^{J−1}`, i.e. `J ≤ log₂ μ − 1`";
+the `[r1]` widening rider: "both displays only ever use the product `ℓ·d_r ≥ 2`"); `EFF.HE7.14`
+(the non-propagation arithmetic `L_{λ₂} ≥ m₂·(ℓ₂ deg r₂) ≥ 4` hence `μ₂ ≥ 4`).
+
+**⚠ THE n = 16 SENTENCE CARRIES ANNEX R R3's RIDER AND E TRANSCRIBES ONLY THE NECESSARY
+DIRECTION.** `EFF.HE7.15`'s closing existential ("The first n at which a level-3 object can be
+needed is n = 16") is superseded by R3: the displays prove only `J ≥ 2 ⟹ μ ≥ 8 ⟹ n ≥ 16` —
+"level 3 / J = 2 is unreachable below n = 16" — and "No consumer uses more". E.64 states exactly
+the necessary direction; no chapter-E node states the existential (the constructed `n = 16`
+family is machine-instance evidence, `he7rannex_supp.py`, not a theorem here).
+
+**TEETH.** `he7annex_supp.py` (96/96 at `μ₂ = 4, n = 16`) and Q1's 42 one-step refine firings
+→ **Lean theorem** (this node); consumed by E.60, E.64.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.08 [lemma] [fresh]
+
+**STATEMENT.** *The lift-threshold implication `(‡) ⟹ (†)` at a rung.* For a rung `R`, bound
+seed `b : ℕ`, and `k, m₀, s₀ : ℕ` with `s₀ < ℓ` and `ℓ * m₀ + s₀ * u = k`: if
+`(R.slotCount − 1) * u + ℓ * b ≤ k` (the k-uniform `(‡)`), then `(g − 1) * u + b ≤ m₀` (the
+per-height `(†)`). Corpus instances: level 2 (`b = (D′−1)h`): `(‡₂) ⟹ (†₂)`
+(`EFF.HE7.12`'s closing step, verbatim: "`m₀ = (k − s₀u)/ℓ ≥ (k − (ℓ−1)u)/ℓ`, and
+`k ≥ (ℓd_r−1)u + ℓ(D′−1)h` gives `m₀ ≥ (d_r−1)u + (D′−1)h = (†₂)`"); level `i` (R1-c's
+"the same arithmetic as §S4.2's (‡₂) step", `EFF.HE7.111`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem lift_threshold_step (R : RungDatum) {b k m₀ s₀ : ℕ}
+    (hs : s₀ < R.ℓ) (hk : R.ℓ * m₀ + s₀ * R.u = k)
+    (hcrit : (R.slotCount - 1) * R.u + R.ℓ * b ≤ k) :
+    (R.g - 1) * R.u + b ≤ m₀
+```
+
+**DEPENDS.** E.01, E.02.
+
+**PROOF.**
+1. From `hk` and `s₀ ≤ ℓ − 1`: `ℓ * m₀ = k − s₀*u ≥ k − (ℓ−1)*u`.
+2. From `hcrit`: `k − (ℓ−1)*u ≥ (ℓg − 1)*u + ℓb − (ℓ−1)*u = ℓ(g−1)*u + ℓb` (expand
+   `slotCount = ℓ*g`; all subtractions guarded by the hypotheses — clear them first with
+   `Nat.sub` lemmas or restate over `ℤ` internally and descend).
+3. Cancel `ℓ ≥ 1`: `m₀ ≥ (g−1)*u + b`. `omega` closes after the two rewrites.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.HE7.12` ((LIFT₂)'s `(†₂)`/`(‡₂)` displays and the closing implication);
+`EFF.HE7.111` (R1-c: "The bound recursion is unchanged — values never see the twist:
+`m₀ = (k − s₀u_i)/ℓ_i ≥ (k − (ℓ_i−1)u_i)/ℓ_i ≥ (g_i−1)u_i + bound_i` when `k ≥ bound_{i+1}`");
+`EFF.T2.10` (`(FULL2)`/`(FULL2-U)`, the T2-side statement of the same two bounds).
+
+**TEETH.** HE7-T-LIFT2SHARP (exact reachable sets vs closed-form thresholds, ten frames,
+deliberately at `f₁ ≥ 2, d_r ≥ 2`) → **Lean theorem** for the implication; the sharpness
+(non-necessity) direction is E.32's set arithmetic + E.68's enumeration gate.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.09 [lemma] [fresh]
+
+**STATEMENT.** *The use-site margin (every consumed level-1 call sits above threshold with margin
+> h).* For a rung `R` (read: the level-2 rung `(ℓ, d_r, u, D′h)`) and `k, m₀, s₀, t : ℕ` with
+`s₀ < ℓ`, `ℓ*m₀ + s₀*u = k`, `R.nextT < k` (the use-site condition `k > T₂ = ℓd_r·u`), and
+`t < g`: writing `m_t := m₀ − t*u`, one has `ℓ * (D.T) * ... ` — precisely, in cleared form:
+`ℓ * m_t > u` and hence (with the node condition `ℓ*T < u`, `T = D′h` here) `m_t > T`, giving
+`m_t ≥ T + 1`, i.e. margin `m_t − (D′−1)h > h` when `T = D′h`. This is `EFF.HE7.25`'s displayed
+chain, the unit that makes the HE6-1L coset correction NON-PROPAGATING at every HE7 use site
+(honesty E-1's HE7 residual is about OTHER HE6 spans; this margin check is transcribed math, not
+an adjudication).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem useSite_margin (R : RungDatum) {k m₀ s₀ t : ℕ}
+    (hs : s₀ < R.ℓ) (hk : R.ℓ * m₀ + s₀ * R.u = k)
+    (huse : R.nextT < k) (ht : t < R.g) :
+    R.ℓ * (m₀ - t * R.u) > R.u ∧ m₀ - t * R.u > R.T
+```
+
+**DEPENDS.** E.01, E.02.
+
+**PROOF.**
+1. `ℓm₀ = k − s₀u > ℓgu − (ℓ−1)u = ℓ(g−1)u + u`, so `ℓ(m₀ − (g−1)u) > u`; since `t ≤ g−1`,
+   `ℓ(m₀ − tu) ≥ ℓ(m₀ − (g−1)u) > u` (first clause). Guard the ℕ-subtractions via
+   `t*u ≤ (g−1)*u ≤ m₀` (from the first display).
+2. Node condition `ℓ*T < u` chains: `ℓ(m₀ − tu) > u > ℓT`, cancel `ℓ ≥ 1`: `m₀ − tu > T`
+   (second clause). `omega` after expansion.
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.HE7.25` (verbatim displays: "`m₀ = (k − s₀u)/ℓ ≥ (k − (ℓ−1)u)/ℓ >
+(ℓd_r·u − (ℓ−1)u)/ℓ = (d_r − 1)u + u/ℓ = (d_r − 1)u + λ`" and "`m_t = m₀ − t·u ≥ m₀ − (d_r−1)u
+> λ > D′h > (D′−1)h`, margin `m_t − (D′−1)h > λ − (D′−1)h > h ≥ 1`"; VERDICT: "the r1-corrected
+level-1 threshold is satisfied with margin > h at every §S4.3 use site, so no statement of this
+note moves"); `EFF.HE7.24` (§S4.3's chain `u₂ = ℓ₂κ₂ > ℓ₂T₂ ≥ T₂` supplying `huse` at the two
+use classes).
+
+**TEETH.** No direct tooth (a hypothesis-margin check, `EFF.HE7.25`); its consequence is
+exercised wherever (LIFT₂) fires (Q3's frames) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+<!-- RESUME: §3 complete (E.01–E.09). Next: §4 (E.10–E.24, the HE7.A suite). -->
+
+*(sections §4–§14 follow; composed incrementally, committed per 2–3 nodes)*
