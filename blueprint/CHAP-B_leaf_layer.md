@@ -1637,7 +1637,11 @@ namespace Uniformity.Density.Leaf
 theorem finrank_resField {φ : Polynomial O} (hφ : IsKey φ) :
     Module.finrank (ResidueField O) (resField φ) = φ.natDegree
 
-noncomputable instance instFiniteResField {φ : Polynomial O} (hφ : IsKey φ) :
+-- [repaired: A-F.3/B-D2+B-D3] was `noncomputable instance` with no body: an `instance` with the
+-- explicit non-class `(hφ : IsKey φ)` is a HARD ERROR at our pin (TC-unreachable), and
+-- `Finite (resField φ)` is a proof obligation ([lemma]-kind, this node's own kind), not a
+-- definitional body. Consumers bring it into scope by `haveI := instFiniteResField hφ`.
+theorem instFiniteResField {φ : Polynomial O} (hφ : IsKey φ) :
     Finite (resField φ)
 
 theorem card_resField {φ : Polynomial O} (hφ : IsKey φ) :
@@ -3058,15 +3062,22 @@ it pays in the same place the corpus's tooth `HE6-T-BADKEY` (`EFF.HE6.52`) says 
 ```lean
 namespace Uniformity.Density.Leaf
 
-noncomputable instance instLocalRingAdjoinRoot {φ : Polynomial O} (hφ : IsKey φ)
+-- [repaired: A-F.3/B-D2+B-D3] was `noncomputable instance` with no body: TC-unreachable as an
+-- `instance` (explicit `hφ`/`hg`/`hk`/`hres`), and `IsLocalRing (AdjoinRoot g)` is a proof
+-- obligation ([lemma]-kind), not a definitional body. Applied EXPLICITLY at every use site.
+theorem instLocalRingAdjoinRoot {φ : Polynomial O} (hφ : IsKey φ)
     {g : Polynomial O} (hg : g.Monic) {k : ℕ} (hk : 0 < k)
     (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ k) :
     IsLocalRing (AdjoinRoot g)
 
+-- [repaired: A-F.3/B-D2+B-D3] data-with-proof-obligation (an `≃+*` only a proof can construct —
+-- steps 1–4 below ARE its body). The former type did not elaborate: nothing supplies
+-- `IsLocalRing (AdjoinRoot g)` by TC, so the instance is applied explicitly in the type.
 noncomputable def residueFieldEquiv {φ : Polynomial O} (hφ : IsKey φ)
     {g : Polynomial O} (hg : g.Monic) {k : ℕ} (hk : 0 < k)
     (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ k) :
-    IsLocalRing.ResidueField (AdjoinRoot g) ≃+* resField φ
+    @IsLocalRing.ResidueField (AdjoinRoot g) _ (instLocalRingAdjoinRoot hφ hg hk hres) ≃+*
+      resField φ
 ```
 
 **DEPENDS.** B.01 · B.25 · landed `Uniformity.Density.isMaximal_map_maximalIdeal_adjoinRoot`
@@ -3202,19 +3213,14 @@ over `O`, whose residue field has `ResidueField O`-dimension `s`. Then for every
 finite length, `length_O M = s * length_A M`. In the elementary-divisor form of B.50: if
 `A ⧸ zA ≃ₗ[O] ⨁ i, O ⧸ (π^{e i})` then `s ∣ Σ i, e i`.
 
-**SIGNATURE.**
+**SIGNATURE.** *(The node's SOLE signed declaration — the contract the fleet must land.)*
 ```lean
 namespace Uniformity.Density.Leaf
 
-theorem residueDeg_dvd_sum_of_local (hπ : Irreducible π) {A : Type*} [CommRing A] [IsLocalRing A]
-    [Algebra O A] [Module.Free O A] [Module.Finite O A] {s : ℕ}
-    (hs : Module.finrank (ResidueField O) (IsLocalRing.ResidueField A) = s)
-    (hmap : (algebraMap O A) '' (maximalIdeal O) ⊆ IsLocalRing.maximalIdeal A)
-    {z : A} (hz : Algebra.norm O z ≠ 0) :
-    s ∣ (Nat.find (…) : ℕ) -- see PROOF: the contract is stated on `addVal (norm z)` directly
-```
-**Contract declaration (the one the fleet must land):**
-```lean
+-- [repaired: A-F.3/B-D6] the former first block, `residueDeg_dvd_sum_of_local`, ended in the
+-- literal placeholder `s ∣ (Nat.find (…) : ℕ)` and is not a signable statement; it is RETIRED
+-- from the SIGNATURE (its content — the `Nat.find` extraction of the elementary-divisor sum and
+-- the `hmap` locality bookkeeping — is proof-route material, absorbed into the PROOF below).
 theorem residueDeg_dvd_addVal_norm (hπ : Irreducible π) {A : Type*} [CommRing A] [IsLocalRing A]
     [Algebra O A] [Module.Free O A] [Module.Finite O A] {s : ℕ}
     (hs : Module.finrank (ResidueField O) (IsLocalRing.ResidueField A) = s)
@@ -3468,7 +3474,15 @@ theorem inertiaDegOf_bracket (hπ : Irreducible π) {φ : Polynomial O} (hφ : I
       = (φ.map (IsLocalRing.residue O)) ^ (ℓ * sideDeg φ g u ℓ hne)) :
     φ.natDegree ∣ inertiaDegOf g ∧ inertiaDegOf g ∣ φ.natDegree * sideDeg φ g u ℓ hne
 
-theorem inertiaDegOf_eq_of_resDeg_one (… same hypotheses …)
+-- [repaired: A-F.3/B-D8] the elision `(… same hypotheses …)` is expanded from
+-- `inertiaDegOf_bracket`'s list immediately above (the STATEMENT's "Under the joint hypotheses
+-- of B.52 and B.54"); rule-5 expansion, unambiguous
+theorem inertiaDegOf_eq_of_resDeg_one (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g : Polynomial O}
+    (hg : g.Monic) (hd : 0 < g.natDegree) (hpure : IsPure φ g u ℓ)
+    (hne : (sideSet φ g u ℓ).Nonempty) (hdd : 0 < sideDeg φ g u ℓ hne)
+    (hres : g.map (IsLocalRing.residue O)
+      = (φ.map (IsLocalRing.residue O)) ^ (ℓ * sideDeg φ g u ℓ hne))
     (h1 : sideDeg φ g u ℓ hne = 1) :
     inertiaDegOf g = φ.natDegree ∧ ramIndexOf g = ℓ
 ```
@@ -4064,12 +4078,22 @@ theorem ns6_biconditional (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKe
     (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ∀ h : (sideSet φ f u ℓ).Nonempty,
         1 < (sideSet φ f u ℓ).card → ∀ H₀ : ℕ, npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞) →
           (resPoly π φ f u ℓ h H₀).Separable)
-      ↔ (∀ u ℓ ψ, … multiplicity = 1)
+      -- [repaired: A-F.3/B-D5] clause 2 re-signed: the former `(∀ u ℓ ψ, … multiplicity = 1)`
+      -- was an elision rule 5 cannot expand ("multiplicity" is B.45's existentially-produced
+      -- exponent `a ψ`, which no closed statement can name); the multiplicity-free form below is
+      -- EXACTLY equivalent to it — the adjudication against B.45's construction is A-F.3 item
+      -- B-D5, which is contract-binding
+      ↔ (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ∀ h : (sideSet φ f u ℓ).Nonempty,
+          1 < (sideSet φ f u ℓ).card → ∀ H₀ : ℕ, npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞) →
+            ∀ ψ : Polynomial (resField φ), ψ.Monic → Irreducible ψ →
+              ¬ (ψ ^ 2 ∣ resPoly π φ f u ℓ h H₀))
 ```
 *(clause 3 is B.63's conclusion and is stated as a separate `iff` in the same file; the SIGNATURE above
 freezes the `1 ↔ 2` half, whose statement needs no perimeter hypothesis. Clause 1's quantifier prefix
 is byte-identical to B.63's `hsep` — the previously elided pin is written out per amendment A-F.1
-(PA-1): it sits at the side's left endpoint `sideMin`, never at abscissa 0.)*
+(PA-1): it sits at the side's left endpoint `sideMin`, never at abscissa 0. Clause 2 carries the same
+prefix; its `¬ ψ² ∣` body is the multiplicity-free reading of "multiplicity 1", re-signed and proved
+equivalent to B.45's `a ψ = 1` clause at A-F.3/B-D5.)*
 
 **DEPENDS.** B.27 · B.45 · B.63 · B.64.
 
@@ -4120,6 +4144,11 @@ noncomputable def order1Type (π : O) (φ f : Polynomial O) : FactorizationType 
 *(`slopeFinset` and `resFactorFinset` are the two `Finset`s produced by B.42 and B.45; their
 definitions are private helpers of this node, and if either turns out to be reusable the orchestrator
 books it separately.)*
+
+*[repaired: A-F.3/B-D4 — the booking fired (B.79's ⚠) and the four B.66a suppliers are now SIGNED;
+their signed forms — the two `Finset` suppliers as opaque constants and the two membership lemmas
+with the elisions expanded (marked NOT-CONTRACT) — are displayed in full at amendment A-F.3 item
+B-D4, which is their single blueprint source.]*
 
 **DEPENDS.** B.20 · B.42 · B.45 · landed `FactorizationType`.
 
@@ -4362,17 +4391,39 @@ holds for the triples outside it). Then
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [repaired: A-F.3/B-D10] re-signed in B.80's DATA form per §12 rule 4(c): the peel
+-- `g : ι → Polynomial O` enters as hypotheses (`hgmon`/`hgprod`/`hgres`), NOT over B.67's
+-- existential (whose witness a signature cannot bind); `hsep`/`hperim` are §12 item 4's
+-- dictionary clauses at the per-block instantiation `(φ, f) := (φ i, g i)`
 theorem typeOf_order1 (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic) (hd : 0 < f.natDegree)
     {ι : Type*} [DecidableEq ι] {s : Finset ι} {φ : ι → Polynomial O} {a : ι → ℕ}
     (hkey : ∀ i ∈ s, IsKey (φ i))
-    (hne : ∀ i ∈ s, ∀ j ∈ s, i ≠ j → (φ i).map (IsLocalRing.residue O) ≠ (φ j).map (IsLocalRing.residue O))
+    (hne : ∀ i ∈ s, ∀ j ∈ s, i ≠ j →
+      (φ i).map (IsLocalRing.residue O) ≠ (φ j).map (IsLocalRing.residue O))
     (hres : f.map (IsLocalRing.residue O)
       = ∏ i ∈ s, ((φ i).map (IsLocalRing.residue O)) ^ (a i))
-    (hsep : ∀ i ∈ s, …) (hperim : ∀ i ∈ s, …) :
-    (typeOf f).data = ∑ i ∈ s, (order1Type π (φ i) (…the block factor…)).data
+    {g : ι → Polynomial O} (hgmon : ∀ i ∈ s, (g i).Monic) (hgprod : f = ∏ i ∈ s, g i)
+    (hgres : ∀ i ∈ s, (g i).map (IsLocalRing.residue O)
+      = ((φ i).map (IsLocalRing.residue O)) ^ (a i))
+    (hsep : ∀ i ∈ s, ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
+      ∀ h : (sideSet (φ i) (g i) u ℓ).Nonempty, 1 < (sideSet (φ i) (g i) u ℓ).card →
+        ∀ H₀ : ℕ, npHgt (φ i) (g i) (sideMin (φ i) (g i) u ℓ h) = (H₀ : ℕ∞) →
+          (resPoly π (φ i) (g i) u ℓ h H₀).Separable)
+    (hperim : ∀ i ∈ s, ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
+      ∀ gS : Polynomial O, gS.Monic → gS ∣ g i → IsPure (φ i) gS u ℓ →
+        ∀ hne : (sideSet (φ i) gS u ℓ).Nonempty, ∀ H₀ : ℕ,
+          npHgt (φ i) gS (sideMin (φ i) gS u ℓ hne) = (H₀ : ℕ∞) →
+          ∀ ψ : Polynomial (resField (φ i)), ψ.Monic → Irreducible ψ →
+            (∃ c : (resField (φ i))ˣ, resPoly π (φ i) gS u ℓ hne H₀ = c • ψ) →
+            (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+              ∀ g' ∈ monicFactors gS,
+                (φ i).natDegree * ψ.natDegree ∣ inertiaDegOf g')) :
+    (typeOf f).data = ∑ i ∈ s, (order1Type π (φ i) (g i)).data
 ```
-*(the block factor is the `g i` produced by B.67; the SIGNATURE therefore quantifies over the
-existential B.67 supplies, which the leanspec stub spells out — §12 item 4.)*
+*(the block factor `g i` now enters as data — B.67 supplies one, and B.80's ⚠ peel-uniqueness note
+(landed `monic_factorization_unique` iterated) is the reason the statement is well-posed over any
+supplied peel. The former existential-quantifying form is retired: §12 rule 4(c) fixed both B.71 and
+B.80 to the data form, and the gate signed exactly this. [repaired: A-F.3/B-D10])*
 
 **DEPENDS.** B.63 · B.66 · B.67 · B.68.
 
@@ -4405,10 +4456,14 @@ residuals are separable; and `(typeOf f).degree = f.natDegree` (landed) is consi
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [repaired: A-F.3/B-D10] `(hsep : …)` expanded to B.63's `hsep` clause at `(φ, g)` (§12 item 4(b))
 theorem degree_order1Type (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {g : Polynomial O} (hg : g.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
-    (hsep : …) : (order1Type π φ g).degree = g.natDegree
+    (hsep : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ∀ h : (sideSet φ g u ℓ).Nonempty,
+      1 < (sideSet φ g u ℓ).card → ∀ H₀ : ℕ, npHgt φ g (sideMin φ g u ℓ h) = (H₀ : ℕ∞) →
+        (resPoly π φ g u ℓ h H₀).Separable) :
+    (order1Type π φ g).degree = g.natDegree
 ```
 
 **DEPENDS.** B.13 · B.20 · B.30 · B.42 · B.45 · B.66 · landed `FactorizationType.degree`,
@@ -5046,7 +5101,12 @@ orchestrator books it separately" — step 2 and step 5 make both reusable (B.79
 orchestrator must book B.66a (`slopeFinset`/`resFactorFinset` + their membership lemmas
 `mem_slopeFinset ↔ (sideSet …).Nonempty ∧ 1 ≤ card ∧ …`, `mem_resFactorFinset ↔ ψ ∈ (B.45
 factorization)`) before B.79a fires** — the same missing-supplier class as chapter G's A-7 and
-this chapter's B.44′/B.63a. Booked here rather than discovered at fleet time. **§14 item 12**: the
+this chapter's B.44′/B.63a. Booked here rather than discovered at fleet time.
+*[repaired: A-F.3/B-D4 — executed: the four suppliers are signed (the gate landed them before
+B.63/B.66/B.71/B.79a/B.79b/B.80 per §12 rule 2); signed forms displayed at A-F.3 item B-D4. Note
+the booking's membership sketch above had two redundant conjuncts (`1 ≤ card ↔ Nonempty`) and an
+elision rule 5 could not expand; the signed forms carry B.42's own characterisation clause and the
+B.45-factor reading instead.]* **§14 item 12**: the
 cross-read must check that B.79a step 2's "term by term" tie is actually available from B.42/B.45's
 statements as committed (if B.63's existential cannot be re-opened, B.63's SIGNATURE needs its `T`
 strengthened to the canonical finsets — a §8-owned statement refinement, same class as defect
@@ -5533,6 +5593,135 @@ never in doubt):
   and not taken: explicit binders keep each signature self-contained and byte-identical to
   the gate-verified form, and a `variable`-block change would touch every node's
   environment. **Patched as gate.**
+
+**(II) Statement-level repairs** (each re-signs contract text; standing statement-change
+authority 2026-08-05, honest-repair class):
+
+* **B-D2 — three def-class rows had NO BODY: B.26 `instFiniteResField`, B.49
+  `instLocalRingAdjoinRoot`, B.49 `residueFieldEquiv`.** §12 rule 1 mandated real bodies for
+  all 25 def-class rows, but these three SIGNATUREs stopped at the type. The first two are
+  Prop-valued classes (`Finite (resField φ)`, `IsLocalRing (AdjoinRoot g)`) whose "body" is a
+  proof — B.26 and B.49 are `[lemma]` nodes, so this was a **kind mis-classification in §12's
+  own census**, not a transcription slip; both rows are now declared `theorem` in place
+  (`[lemma]`-kind proof obligations, landing as `axiom` stubs at the gate per the ChapG D2
+  precedent). `residueFieldEquiv` is *data* (an `≃+*`) that only a proof can construct: it
+  stays `noncomputable def`, marked **data-with-proof-obligation** in place (its PROOF steps
+  1–4 are the body the fleet must land). Census consequence in item (IV).
+  **Patched as gate.**
+* **B-D3 — the three `instance` declarations of B.25/B.26/B.49 are a HARD ERROR at our
+  pin.** Each carries an explicit non-class hypothesis (`hφ : IsKey φ`, plus `hg`/`hk`/`hres`
+  at B.49) and Lean rejects the declaration outright: *"This instance has 1 argument that
+  cannot be inferred using typeclass synthesis. Specifically argument 6: `(hφ : IsKey φ)`.
+  These arguments are not instance-implicit and appear neither in another instance-implicit
+  argument nor the return type."* Of the gate's three repair routes (make `IsKey` a class ·
+  demote to plain `def`/`theorem` · explicit application at use sites), this round takes
+  **demotion + explicit application**: `instFieldResField` → `@[reducible] noncomputable def`
+  (consumers `letI`/`haveI` it); `instFiniteResField`/`instLocalRingAdjoinRoot` → `theorem`
+  (with B-D2); and `residueFieldEquiv`'s type — which does **not** elaborate without
+  `IsLocalRing (AdjoinRoot g)`, unsuppliable by TC — now applies the instance explicitly:
+  `@IsLocalRing.ResidueField (AdjoinRoot g) _ (instLocalRingAdjoinRoot hφ hg hk hres) ≃+*
+  resField φ`. Making `IsKey` a class was rejected: it would ripple through every chapter-B
+  signature and chapter C's tower carriers (GC-7 consumes `IsKey` as a structure).
+  **Patched as gate.**
+* **B-D4 — B.66a signed (the RE-PLAN suppliers had no signature and no body).** The booking
+  (B.79's ⚠, A-§9.5) gave only names and a partially elided membership sketch
+  `mem_slopeFinset ↔ (sideSet …).Nonempty ∧ 1 ≤ card ∧ …`, whose first two conjuncts are
+  redundant (`1 ≤ card ↔ Nonempty`) and whose third was an elision rule 5 cannot expand. The
+  two `Finset` suppliers are **underdetermined** — B.42 produces its slope `Finset`
+  existentially, and any canonical body needs an abscissa bound the blueprint never states —
+  so they are signed as **types only** (`axiom`-typed opaque constants at the gate, ChapG D2
+  precedent; the fleet's B.66a unit must choose a definitional body, e.g. a `Finset.filter`
+  of B.42-step-1's bounded slope grid, and prove the membership lemmas for it). Signed forms,
+  displayed here as their single blueprint source (ENV-C; `π` from the environment):
+
+  ```lean
+  -- B.66a-i/ii: signed as TYPES; bodies are fleet work (see above)
+  slopeFinset (π : O) (φ f : Polynomial O) : Finset (ℕ × ℕ)
+  resFactorFinset (π : O) (φ f : Polynomial O) (p : ℕ × ℕ) :
+      Finset (Polynomial (resField φ))
+
+  -- B.66a-iii  ⚠ NOT-CONTRACT (interpretive expansion: B.42's own characterisation clause,
+  -- the determinate content; redundant conjuncts dropped)
+  theorem mem_slopeFinset {φ f : Polynomial O} {p : ℕ × ℕ} :
+      p ∈ slopeFinset π φ f ↔
+        (0 < p.2 ∧ Nat.Coprime p.1 p.2 ∧ 1 < (sideSet φ f p.1 p.2).card)
+
+  -- B.66a-iv  ⚠ NOT-CONTRACT (interpretive expansion: monic irreducible dividing the side's
+  -- residual polynomial at the GC-1 `sideMin` pin, B.45's factor reading)
+  theorem mem_resFactorFinset {φ f : Polynomial O} {p : ℕ × ℕ}
+      {ψ : Polynomial (resField φ)} :
+      ψ ∈ resFactorFinset π φ f p ↔
+        (ψ.Monic ∧ Irreducible ψ ∧
+          ∀ (h : (sideSet φ f p.1 p.2).Nonempty) (H₀ : ℕ),
+            npHgt φ f (sideMin φ f p.1 p.2 h) = (H₀ : ℕ∞) →
+              ψ ∣ resPoly π φ f p.1 p.2 h H₀)
+  ```
+
+  The **NOT-CONTRACT** markers mean: the two membership statements are the gate's
+  determinate reading of an under-specified booking; the orchestrator confirms or re-signs
+  them when the B.66a unit fires (they are the §14-item-12 adjudication's natural home —
+  B.79a step 2's "term by term" tie is proved against exactly these). **Patched as gate,
+  with the caveat markers carried.**
+* **B-D5 — B.65 clause 2 re-signed, with the adjudication against B.45's construction.**
+  Before: `↔ (∀ u ℓ ψ, … multiplicity = 1)` — "multiplicity" is B.45's existentially-produced
+  exponent `a ψ`, which no closed statement can name (rule 5 could not expand it; the gate
+  signed an interpretive `¬ ψ ^ 2 ∣ resPoly` form marked NOT-CONTRACT and asked the owner to
+  re-sign). **Adjudicated here and re-signed as the gate's form**, which is *exactly
+  equivalent* to the intended multiplicity clause. The verification, against B.45's STATEMENT
+  and PROOF (`s := (normalizedFactors R).toFinset`, `a ψ := (normalizedFactors R).count ψ`,
+  `R` monic — hence `≠ 0` — of positive degree; only the *separability* clause of B.45 uses
+  `[Finite K]`, via B.27):
+  1. **On `s`, separability-free:** for `ψ ∈ s` — monic irreducible, and monic means
+     *normalized* in `K[Y]` (`Polynomial.Monic.normalize_eq_self`) — the count is the ψ-adic
+     multiplicity: `ψ ^ n ∣ R ↔ n ≤ (normalizedFactors R).count ψ` (UFM count/divisibility at
+     `R ≠ 0`). With B.45's `0 < a ψ`: `a ψ = 1 ↔ ¬ (2 ≤ a ψ) ↔ ¬ ψ ^ 2 ∣ R`. **No
+     squarefree-ness enters.**
+  2. **Off `s`:** a monic irreducible `ψ ∉ s` has `ψ ∤ R` (for a normalized irreducible,
+     membership in `(normalizedFactors R).toFinset` ↔ divisibility), so `¬ ψ ^ 2 ∣ R` holds
+     vacuously — quantifying over ALL monic irreducible ψ adds nothing beyond `s`. Hence
+     "`∀ ψ ∈ s, a ψ = 1`" ⟺ "`∀ ψ` monic irreducible, `¬ ψ ^ 2 ∣ R`".
+  3. **No unit-normalization delta:** clause 2 applies this to `R := resPoly π φ f u ℓ h H₀`,
+     which is NOT monic in general (B.30 gives only `natDegree = sideDeg` and
+     `coeff 0 ≠ 0`; B.48 normalizes by a unit `C c`). Divisibility by `ψ ^ 2` is invariant
+     under unit scaling and the ψ-multiplicity of `R` equals that of its monic normalization
+     — which is precisely why the `¬ ψ ^ 2 ∣` reading is the right closed form (a
+     count-through-`normalizedFactors` reading would have had to spell out the monic
+     normalization).
+  4. **Degenerate leg (belt-and-braces):** if some prefix instance had `resPoly = 0`, both
+     clause 1 and clause 2 fail at it identically (`Separable 0` is false — `IsCoprime 0 0`
+     fails in the nontrivial `(resField φ)[Y]` — and `ψ ^ 2 ∣ 0` holds for the monic
+     irreducible `Y`), so the biconditional is unaffected; under the prefix's hypotheses
+     B.30 in fact gives `coeff 0 ≠ 0`, so the leg never fires.
+  **Delta recorded: none** — the statement signed is equivalent to the intended one under
+  B.45's construction, with no added squarefree hypothesis and no normalization rider. The
+  stub's NOT-CONTRACT marker is superseded by this re-signing: B.65 clause 2 as now displayed
+  at the node IS contract, byte-identical to the gate's signed type. **Patched as gate,
+  re-signed as contract.**
+* **B-D6 — B.51's first signed block was unsignable.** Its conclusion was literally
+  `s ∣ (Nat.find (…) : ℕ)` — a placeholder term, not a statement. The node's own PROOF note
+  already said the contract is stated on `addVal (norm z)` directly. Repair: the node is
+  restated with `residueDeg_dvd_addVal_norm` (the former "Contract declaration" second block,
+  byte-unchanged) as its SOLE signed declaration; the former first block
+  (`residueDeg_dvd_sum_of_local`, with its `hmap`/`hz` bookkeeping) is retired to proof-route
+  material. Census consequence: §12's 110 theorem rows → **109 signed** (item IV).
+  **Patched as gate.**
+* **B-D8 — B.55 `inertiaDegOf_eq_of_resDeg_one`: `(… same hypotheses …)` expanded** from
+  `inertiaDegOf_bracket`'s list immediately above it (the STATEMENT's "Under the joint
+  hypotheses of B.52 and B.54"; unambiguous rule-5 expansion from the node's own text).
+  **Patched as gate.**
+* **B-D10 — the `hsep`/`hperim` elisions (B.63, B.71, B.72, B.79a, B.79b, B.80, B.81, B.82),
+  and B.71's peel form.** No adjudication was needed beyond §12 rule 4 — but the expanded
+  text is contract text that no node stated in full, so this round makes it canonical:
+  (i) §12 item 4 now displays the per-block instantiation **(4a′)** verbatim and names
+  `leanspec/Leanspec/ChapB.lean` as the landed single source for every fully-expanded signed
+  text; (ii) **B.71 is re-signed in place in B.80's data form** per rule 4(c) (`g : ι →
+  Polynomial O` with `hgmon`/`hgprod`/`hgres`; the former existential-quantifying sketch is
+  retired — an `axiom` stub cannot bind an existential's witness, and the well-posedness over
+  any supplied peel is B.80's peel-uniqueness note); (iii) **B.72's `(hsep : …)` is expanded
+  in place** to B.63's `hsep` at `(φ, g)`; (iv) B.63's `hperim` elision keeps its pointer —
+  it resolves through the unchanged (4a) display; (v) B.79a/B.79b and B.80–B.82 are §9 nodes
+  whose signed SIGNATURE blocks stay byte-unchanged — their elisions resolve through
+  (4a)/(4a′), exactly as their committed parentheticals already say. **Patched as gate.**
 
 ---
 
@@ -6072,6 +6261,36 @@ B.73's FAITHFULNESS).
    (B.48's output clause at separability), which is what B.63's steps 1–2 produce and what
    B.77 transports.
 
+   **(4a′) the per-block instantiation, displayed** *(imported from the 0e gate as the
+   now-canonical text — [repaired: A-F.3/B-D10]; consumed by B.71 and B.80/B.81 with the
+   nonemptiness witness renamed `hne'` at B.80/B.81 to avoid shadowing their outer `hne`)*:
+
+   ```lean
+   (hperim : ∀ i ∈ s, ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
+     ∀ gS : Polynomial O, gS.Monic → gS ∣ g i → IsPure (φ i) gS u ℓ →
+       ∀ hne' : (sideSet (φ i) gS u ℓ).Nonempty, ∀ H₀ : ℕ,
+         npHgt (φ i) gS (sideMin (φ i) gS u ℓ hne') = (H₀ : ℕ∞) →
+         ∀ ψ : Polynomial (resField (φ i)), ψ.Monic → Irreducible ψ →
+           (∃ c : (resField (φ i))ˣ, resPoly π (φ i) gS u ℓ hne' H₀ = c • ψ) →
+           (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+             ∀ g' ∈ monicFactors gS,
+               (φ i).natDegree * ψ.natDegree ∣ inertiaDegOf g'))
+   ```
+
+   B.82 consumes (4a) at `(φ, f) := (φ, monicPoly a)` (`gS ∣ Uniformity.Density.monicPoly a`).
+   **Canonicity after the 0e gate** *[repaired: A-F.3/B-D10]*: the gate expanded every
+   `hsep`/`hperim` elision (B.63, B.71, B.72, B.79a, B.79b, B.80, B.81, B.82) from exactly
+   these displays, and the LANDED single source for the fully-expanded signed texts is now
+   `leanspec/Leanspec/ChapB.lean` — a divergence between this dictionary, that file, and any
+   consumer is a stub-stage blueprint defect (B.79's own rule, unchanged).
+
+   **⚠ dependent-binder note** *[noted: A-F.3/B-D12]*: the (4a)/(4a′) displays quantify
+   `∀ hne : …Nonempty, ∀ H₀ : ℕ` after a `→`-chain and the `hne` binder is *used* in
+   `resPoly π φ gS u ℓ hne H₀` — the clause is genuinely dependent, so any consumer that
+   instantiates it must supply the same witness. Rule 6's `Nonempty`-argument fragility
+   (flagged at B.20/B.28/B.29 for `def` types) recurs here **inside a hypothesis**; it
+   elaborates as displayed, but proof scripts instantiating `hperim` must thread the witness.
+
    **(4b) `hsep` — B.63's separability prefix**: post-A-F.1 it is written out in B.63's own
    SIGNATURE (and B.65's clause 1 is byte-identical); the stub copies it from there, no elision
    remains.
@@ -6082,10 +6301,16 @@ B.73's FAITHFULNESS).
    B.80's ⚠ already records that the two routes were chosen deliberately and *"the leanspec
    stub fixes each"*: it fixes both to the data form, with B.80's peel-uniqueness note (landed
    `monic_factorization_unique` iterated) as the reason the choice is well-defined.
+   *[repaired: A-F.3/B-D10 — executed: B.71's SIGNATURE is now re-signed in the data form in
+   place, matching the gate byte-for-byte.]*
 
 5. **Elision-expansion rule.** The committed `…` elisions expand ONLY through rule 4 or the
-   node's own STATEMENT text (B.65's clause-2 multiplicity form expands per B.45's factorization
-   data). **Elaboration failures in a stub are BLUEPRINT DEFECTS**, not formalization work: they
+   node's own STATEMENT text. *(The parenthetical formerly here — "B.65's clause-2 multiplicity
+   form expands per B.45's factorization data" — was FALSE and is retired [repaired:
+   A-F.3/B-D5]: B.45's exponent function `a ψ` is existentially produced, so rule 5 could NOT
+   expand clause 2; the gate flagged it and clause 2 is re-signed in the equivalent
+   multiplicity-free form `¬ ψ ^ 2 ∣ resPoly …` at B.65, adjudicated at A-F.3 item B-D5.)*
+   **Elaboration failures in a stub are BLUEPRINT DEFECTS**, not formalization work: they
    go back to this file, versioned in place by dated append, never patched in `leanspec` (H §15
    rule 5).
 6. **Seven signatures are known-fragile and are elaborated FIRST:** **B.20**
