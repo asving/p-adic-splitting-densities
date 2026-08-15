@@ -2733,6 +2733,411 @@ must return BLOCKED.
 **ENVIRONMENT.** n/a.
 
 ---
-<!-- RESUME: §7 COMPLETE (D.45–D.54); next = §8 (D.55–D.61, T5 w-frame) — NOTE index renumber owed at close (§2 table says D.45–D.56/§8 D.57–D.66; actual: §7 = D.45–D.54, §8 = D.55–D.61, §9 = D.62–D.64, §10 = D.65–D.68) -->
+## 8. §8 — THE W-FRAME (T5)
+
+> **Design note.** The twist machinery (WF-twist/WF-psi and the transport package) landed in
+> §5 (D.34/D.35) because T1's three-reads and T3's routing consume it first; §8 adds T5's
+> OWN content: the cumulative hypothesis and its non-discharge discipline, the two-scope law
+> split, the realized-residual cancellation, and the corrected index/chain carriers. T5's
+> `(WF-w)` is D.29's `w` field; `(WF-twist)`/`(WF-psi)` are D.34/D.35 — each §8 node names
+> its T5 display so the unit-level SOURCE map stays total.
+
+### NODE D.55 [def] [fresh]
+
+**STATEMENT.** *The cumulative hypothesis `𝒲_{≤i}`.* For a rung-indexed family of laws
+`W : ℕ → Prop` (instantiated at `[GENTOW5-W(q)]` = D.44's `GentowW` at chapter C's rung-`q`
+data): `Wle W i := ∀ q, 3 ≤ q → q ≤ i → W q` — `𝒲_{≤i} = ⋀_{3≤q≤i}[GENTOW5-W(q)]`, with
+`Wle W 2` the EMPTY conjunction (trivially true — `EFF.T5.13`'s r4-G1 base repair). **The
+non-discharge discipline, transcribed (D-H5(2)):** "Certification of the WI companion does
+not discharge these conjuncts from the frozen GENTOW5 statements" (`EFF.T5.29`, the r1
+replacement of the stale opposite at source L299 — ledger `HYP.100`); ledger `HYP.63`
+carries `𝒲_{≤i}` with disposition "CARRY — WI proves only the induction step, not induction
+from empty base". Nothing in this chapter, and nothing in any chapter, discharges an
+instance of this predicate; chapter I carries it (D.63).
+
+**SIGNATURE.**
+```lean
+/-- `𝒲_{≤i}` (`EFF.T3.22`, `EFF.T5.13/.29`). CARRY (`HYP.63`); never discharged. -/
+def Wle (W : ℕ → Prop) (i : ℕ) : Prop := ∀ q, 3 ≤ q → q ≤ i → W q
+
+theorem Wle_two (W : ℕ → Prop) : Wle W 2   -- the empty conjunction
+```
+
+**DEPENDS.** D.44 (the intended instantiation of `W`).
+
+**PROOF.** `Wle_two`: `omega` kills `3 ≤ q ∧ q ≤ 2`.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.T3.22` (the `𝒲_{≤n}` display), `EFF.T5.13` (+ the empty base), `EFF.T5.29`
+(the non-discharge sentence + the superseded-but-physically-present predecessor,
+`HYP.100`).
+
+**TEETH.** T3 §8.3(4)/§8.4(5) and T5 §7 Pass 1(3)/Pass 2(5) (conditionality lints) → the
+def's shape + §12 signed rows (no discharge theorem exists to lint).
+
+**ENVIRONMENT.** ENV-D1.
+
+---
+
+### NODE D.56 [interface] [fresh — GC-13 placeholders]
+
+**STATEMENT.** *`(WF-law₂)`: the unconditional base rung.* At `i = 2`,
+`u₂(β_t) = Θ₂(t)·w₂^{f₃−t} = ϑ_{2,f₃−t}^{−1}·w₂^{f₃−t}` (`t < f₃`) — **unconditional: no
+`𝒲` hypothesis** (`Wle W 2` is empty). Supplied by LEMMA GENTOW2-B″
+(`EFF.GENTOW2.43 [supplied-by: chapter C]`, object-addressed at `33f86204` L729–738 — the
+same span the D.06 table's row-5 verification pins); in D-terms: chapter C constructs
+`GentowW A₂ u₃ R₃ w₂` at its level-2 arena, D.42's port route being the derivation. The
+site obligation `(C3-ladder-nonvanishing)` is discharged here by GENTOW2-B′(3)/B″ — "the
+discharge T1 r8 itself names at the accepted GENTOW2 site" (`EFF.T5.09`).
+
+**SIGNATURE.** none in chapter D (the statement is `GentowW` at C's instance; D.44 named
+the predicate precisely so this row is a C-side term, not a D-side axiom).
+
+**DEPENDS.** D.44 · `EFF.GENTOW2.43 [supplied-by: chapter C]`, `EFF.GENTOW2.34 [supplied-by:
+chapter C]` (B′(3), the nonvanishing leg).
+
+**PROOF.** n/a. **SIZE.** 0 Lean lines.
+
+**SOURCE.** `EFF.T5.12` (the boxed `(WF-law₂)`, its unconditionality, the r1 two-scope
+split superseding the base's single unscoped law); `EFF.T5.15` (the supplier record:
+"`i = 2`: LEMMA GENTOW2-B″, unconditionally").
+
+**ORIENTATION.** `Θ₂(t) = ϑ_{2,f₃−t}^{−1}` — D.06 rows 1–2 (the reconciliation row 5 is
+the verification this display rests on).
+
+**TEETH.** T5 §7 Pass 1(2)/Pass 2(3) → §12; gate D.72's orientation leg.
+
+**ENVIRONMENT.** n/a.
+
+---
+
+### NODE D.57 [theorem] [fresh]
+
+**STATEMENT.** *`(WF-lawᵢ)`: the higher rung retains its hypothesis.* For `i ≥ 3`:
+`Wle W i → W i` — the rung-`i` law is the LAST CONJUNCT of the cumulative hypothesis; "the
+new rung hypothesis is `[GENTOW5-W(i)]`; the earlier members remain the ambient induction
+history. The existence or certification of the companion note does not remove these
+hypotheses from the statement" (`EFF.T5.15`). With `W i := GentowW (level-i data)` the
+consequent unfolds to the boxed display `𝒲_{≤i} ⟹ [u_i(β_t) = Θ_i(t)w_i^{s_t}]`. **The
+stacked conditionality transcribed** (`EFF.T5.14`): additionally `(H-VARTHETA-RES)_i` at
+every `i ≥ 3` use of `Θ_i(t)` (D.62 — "a SECOND conditional stack on the same displays and
+must not be conflated with `𝒲_{≤i}`", `EFF.T5.10`), and `(C3-ladder-nonvanishing)` at
+every `w_i` site (typed into D.29/D.44's `w : Kˣ`; D-H6).
+
+**SIGNATURE.**
+```lean
+theorem wf_law_i (W : ℕ → Prop) (i : ℕ) (hi : 3 ≤ i) (h : Wle W i) : W i
+```
+
+**DEPENDS.** D.55 (+ D.44 for the intended `W`).
+
+**PROOF.** `h i hi le_rfl`.
+
+**SIZE.** 6 lines. (The triviality is the POINT: the corpus's r1 repair replaced a
+discharge claim by hypothesis-retention, and hypothesis-retention in Lean is conjunct
+extraction — anything more would be the r4-G1-refuted "induction from empty base".)
+
+**SOURCE.** `EFF.T5.14` (the boxed `(WF-lawᵢ)` implication + the three-layer
+conditionality; `HYP.63`), `EFF.T5.15` (the supplier split + certification-not-discharge).
+
+**TEETH.** T5 §7 Pass 1(2), Pass 2(3), Pass 2(5) → §12 signed rows.
+
+**ENVIRONMENT.** ENV-D1.
+
+---
+
+### NODE D.58 [theorem] [fresh]
+
+**STATEMENT.** *`(WF-realized)`: the realized-residual cancellation.* Given the sitewise
+B-law `GentowW A q R w` (D.44) and digits `c : Fin f → K` under the **coherent recipe**
+`Γ_t = c_t·ϑ_{i,s_t}` (`EFF.T5.18`'s "Whenever the relevant (WF-law) equality is
+available"): the read coefficients cancel slotwise,
+`R (N.n (s_t·q)) * (c t * (A.vartheta q s_t : K)) = c t * (w : K)^{s_t}` (D.33's shape, now
+from `GentowW`), and hence the assembled residual equals the twist:
+`X^f − Σ_t C (R (N.n ((f−t)·q)) * Γ_t) * X^t = wtwist w (X^f − Σ_t C (c t) * X^t)` —
+`R_ν(Φ_{i+1}) = ψ_{i+1}^{(w_i)}` at the coefficient level. **Scope split transcribed:**
+at `i = 2` unconditional (`(WF-realized₂)`, via D.56's instance); at `i ≥ 3` inside
+`Wle W i` (`(WF-realizedᵢ)`'s two-arrow display `𝒲_{≤i} ⟹ (WF-law)ᵢ ⟹ R_{ν_i}(Φ_{i+1}) =
+ψ_{i+1}^{(w_i)}` — D.57 then this node).
+
+**SIGNATURE.**
+```lean
+theorem gentowW_realized {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    {A : GaugeArena G K N} {q : ℤ} {R : G → K} {w : Kˣ}
+    (hW : GentowW A q R w) (f : ℕ) (c : Fin f → K) :
+    (Polynomial.X ^ f
+      - ∑ t : Fin f, Polynomial.C
+          (R (N.n ((f - (t : ℕ)) * q)) * (c t * (A.vartheta q (f - (t : ℕ)) : K)))
+          * Polynomial.X ^ (t : ℕ))
+    = wtwist w (Polynomial.X ^ f - ∑ t : Fin f, Polynomial.C (c t) * Polynomial.X ^ (t : ℕ))
+```
+
+**DEPENDS.** D.10, D.34, D.35, D.44.
+
+**PROOF.** 1. Coefficientwise: `hW` at `s = f − t`, then `Θ·ϑ = 1` (D.10) — "Substituting
+(WF-law) into `Γ_t u_i(β_t)` cancels `ϑ_{i,s_t}ϑ_{i,s_t}^{−1} = 1`, leaving `c_t w_i^{s_t}`
+— exactly the coefficient of `y^t` in (WF-psi)" (`EFF.T5.18`, verbatim). 2. Assemble with
+D.35's `wtwist_psi`.
+
+**SIZE.** 26 lines.
+
+**SOURCE.** `EFF.T5.18` (the corollary + the boxed `(WF-realized₂)`), `EFF.T5.19` (the
+boxed `(WF-realizedᵢ)` two-arrow form), `EFF.T5.20` (the supplier attribution: "T1 supplies
+the dictionary and the final cancellation. GENTOW2-B″ supplies the unconditional `i = 2`
+B-law. At `i ≥ 3`, `[GENTOW5-W(i)]` supplies the sitewise B-law only within the displayed
+cumulative hypothesis" — which is exactly this node's dependency shape: D.10/D.34/D.35 the
+T1 side, `hW` the supplier side).
+
+**ORIENTATION.** the cancellation site — both orientations meet through D.10, as at D.33.
+
+**TEETH.** T5 §7 Pass 1(2)/Pass 2(2) → **Lean theorem**; gate D.72 (the FRAME-C `U·ϑ = w^s`
+identity is this cancellation's numeric shadow).
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+
+### NODE D.59 [def] [fresh]
+
+**STATEMENT.** *`(WF-index)`: the corrected-index residual-power carrier.* For a top rung
+`n`, level reads `Rlev : ℕ → Polynomial K` (chapter C's `R_{j−1}(Φ_{n+1})`), residuals
+`ψ : ℕ → Polynomial K`, twist units `ω : ℕ → Kˣ`, and multiplicities `l : ℕ → ℕ`:
+`WfIndex Rlev ψ ω l n := ∀ j, 2 ≤ j → j ≤ n + 1 → Rlev (j−1) = (wtwist (ω (j−1)) (ψ j)) ^ (∏_{k=j+1}^{n+1} l k)`
+— the clause-(b) residual display `R_{j−1}(Φ_{n+1}) = (ψ_j^{(ω_{j−1})})^{l_{j+1}⋯l_{n+1}}`
+**at the corrected index `ω_{j−1}`** with `ω₁ =` S11.3's fixed letter-power unit,
+`ω₂ = w₂`, `ω_q = w_q (q ≥ 3)`. The correction's reason, transcribed: "The display as first
+written demanded `w_{n+1}` at the top term, **exceeding the assumed `𝒲_{≤n}`**" — an
+off-by-one that would have consumed a conjunct outside the hypothesis; "No display in T3
+uses the superseded index `ψ_j^{(ω_j)}`" and neither does any D node. The `j = 2` leg is
+scoped to `ω₁`'s OWN letter-power form — "NOT via (C3-ladder-nonvanishing) applied to a
+displayed `w₁`. Its identification with `w₁` is exactly WFRAME OPEN-2; the `i = 1` display
+stays open with it" (`EFF.T5.09`; the outer `ψ₁` leg is separately governed and UNNAMED —
+T3 §8 deferred obligation 2, `[supplied-by: chapter C]` if GENTOW5's spec exposes it).
+
+**SIGNATURE.**
+```lean
+/-- The clause-(b) corrected-index display (`EFF.T5.32` (WF-index), `EFF.T3.24` (G5-TWIST)).
+A CARRIER: instances are chapter C's; consumed under `Wle` per D.60's chain. -/
+def WfIndex {K : Type*} [Field K] (Rlev : ℕ → Polynomial K) (ψ : ℕ → Polynomial K)
+    (ω : ℕ → Kˣ) (l : ℕ → ℕ) (n : ℕ) : Prop :=
+  ∀ j, 2 ≤ j → j ≤ n + 1 →
+    Rlev (j - 1) = (wtwist (ω (j - 1)) (ψ j)) ^ (∏ k ∈ Finset.Icc (j + 1) (n + 1), l k)
+```
+
+**DEPENDS.** D.34.
+
+**PROOF.** definitional.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.T5.32` (the boxed `(WF-index)` + the `ω` assignment + the corrigendum
+reason), `EFF.T3.24` (`(G5-TWIST)` — the same display, T3's copy, with the `ψ_j`-carries
+list and the `ψ₁` fence).
+
+**ORIENTATION.** the twists are `wtwist` at the units `ω_{j−1}` — no ϑ enters; the index
+correction is an `ω`-INDEX matter, kept apart from D.06's ϑ-orientation rows (a conflation
+of the two is the T5 §7 Pass 1(4)/Pass 2(6) "twist-index mutant").
+
+**TEETH.** T3 §8.3(5)/§8.4(6), T5 §7 Pass 1(4)/Pass 2(6) (index lints) → the def fixes
+`j−1` structurally; §12.
+
+**ENVIRONMENT.** ENV-D3.
+
+---
+
+### NODE D.60 [def] [fresh]
+
+**STATEMENT.** *`(G5-COND)`/`(WF-chain)`: the conditional consumer chain, as a carrier.*
+The eight stations `𝒲_{≤n} ⟹ (a)@n ⟹ Corollary 6.4 ⟹ (b)@n ⟹ S11.1.1/S11.1.3 ⟹ (c)@n ⟹
+(e)@n ⟹ the next automatic floor` — carried as the chain-of-implications predicate
+`WfChain (P : Fin 8 → Prop) : Prop := ∀ k : Fin 7, P k.castSucc → P k.succ`, with the
+station vector instantiated by chapter C (`P 0 := Wle W n`, `P 3 := WfIndex …`-content at
+clause (b), etc. — the GC-13 resolution wires the stations to C's clause nodes). **Two
+transcription notes carried with the carrier:** (i) T5's display deliberately PROMOTES the
+source's single-conjunct antecedent `[GENTOW5-W(n)]` to the cumulative `𝒲_{≤n}` "on the
+corrigendum's own instruction … the one place T5's display is *stronger in hypothesis* than
+the raw source line" (`EFF.T5.30`) — the carrier uses the cumulative form; (ii) the scope
+rows: clauses (a)/(b)/(c)/(e)'s listed conclusions ALL consume `𝒲_{≤n}`, with exactly two
+carve-outs — "S11.1.2's numerical ρ-ladder remains unconditional floor arithmetic" and "a
+floor inequality explicitly included in the fixed datum remains independently available"
+(`EFF.T5.31`; `EFF.T3.23`'s ride-list is the same content at T3 granularity).
+
+**SIGNATURE.**
+```lean
+/-- The (G5-COND)/(WF-chain) implication chain (`EFF.T3.23`, `EFF.T5.30/.31`). Stations
+supplied by chapter C; chapter I consumes the assembled conditional. -/
+def WfChain (P : Fin 8 → Prop) : Prop := ∀ k : Fin 7, P k.castSucc → P k.succ
+```
+
+**DEPENDS.** D.55, D.59 (station content).
+
+**PROOF.** definitional.
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.T3.23` (the boxed `(G5-COND)` + the ride-list + the "w-blind" fence:
+""w-blind" means invariant after the single-`w_i` geometric law has been proved. It does
+not construct that law from an arbitrary fixed per-grade family"), `EFF.T5.30` (`(WF-chain)`
++ the strengthening note), `EFF.T5.31` (the four scope rows + two carve-outs).
+
+**TEETH.** T3 §8.3(4)/§8.4(5), T5 §7 Pass 1(3) → §12 signed rows (a carrier has no
+executable content; the lint is that NO chapter-D node discharges a station).
+
+**ENVIRONMENT.** ENV-D1.
+
+---
+
+### NODE D.61 [record] [fresh]
+
+**STATEMENT.** *The per-level nonvanishing suppliers, the two-clause gate, and the avatar
+fences — T5's site-obligation record, transcribed for the consumers.* No Lean declaration;
+five rows every consumer of `w`-sites must read:
+
+1. **`i = 2` supplier:** GENTOW2-B′(3)/B″ — B′(3) the per-grade-unit clause, B″ the single
+   slot-independent `w ∈ K₂ˣ` (`EFF.T5.09`; placeholders as at D.56).
+2. **`i ≥ 3` supplier:** GENTOW5 S11.2's PROVED fixed-unit list — "the `s = 1` grade of
+   that family is exactly the base ladder read … A fixed `K_iˣ`-value is in particular
+   nonzero" — deliberately routed AROUND `𝒲_{≤i}` ("on S11.2's PROVED side of the fence,
+   while the single-`w` geometric law itself stays behind `𝒲_{≤i}`"). **The fence with
+   teeth:** "Per-grade fixedness alone does not prove (WF-law). In particular, this note
+   does not revive S11.2's withdrawn "w-blind" argument" (`EFF.T5.16`) — a D/E/C node
+   deriving `GentowW` from fixedness is a defect.
+3. **`i = 1`: NONE.** No supplier; no `i = 1` instance of (WF-w)/(WF-twist)/(WF-psi) is
+   asserted anywhere; `ω₁` rides S11.3's letter-power form (D.59); `ω₁ = w₁?` is WFRAME
+   OPEN-2 — OPEN, chapter I's ledger.
+4. **The two-clause gate staleness** (`HYP.99`, D-H6): T5 carries one clause; T1 HEAD
+   carries two; D.29/D.44 type `w : Kˣ` (both clauses by construction). The note-owner
+   repair is NOT executed here.
+5. **The avatar fence** (`EFF.T5.07`, `HYP.66`): "«Cross-frame» means that `w_i` converts
+   the multiplicative residual frame to the canonical residual frame. It does not identify
+   `w_i` with a separately normalized uniformizer avatar" — live counterexample LW3:
+   `w_av = 2 ≠ w₃ = 1` (`EFF.T5.28`). No D node mentions an avatar; the fence is for C/E
+   consumers of D.29's `w`.
+
+**SIGNATURE.** none. **DEPENDS.** D.29, D.44, D.55 ·
+`EFF.GENTOW2.34/.43 [supplied-by: chapter C]` · `EFF.GENTOW5 [supplied-by: chapter C]`
+(S11.2/S11.3 spans). **PROOF.** n/a. **SIZE.** 0 Lean lines.
+
+**SOURCE.** `EFF.T5.09` (the carry + the three supplier rows + the staleness flag),
+`EFF.T5.10` (the HVR stack), `EFF.T5.16` (the fixedness fence), `EFF.T5.07`/`.28` (the
+avatar fence + LW3), `HYP.63/.66/.99/.100`.
+
+**TEETH.** T5 §7 Pass 1(1)/(2)/(5)/(6), Pass 2(3)/(6) → §12 (signed rows + the LW3
+regression retained).
+
+**ENVIRONMENT.** n/a.
+
+---
+
+## 9. §9 — THE `(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}` CARRIERS (Display A's `∀ i ≥ 3` conjunct)
+
+### NODE D.62 [def] [fresh]
+
+**STATEMENT.** *The `(H-VARTHETA-RES)_i` carrier.* The corpus's fence (`EFF.T1.09`): at
+depth `i ≥ 3` every consumer of `ϑ_{i,s}`/`Θ_i(t)` carries
+"`(H-VARTHETA-RES)_i : res(n̂_i(u_{i+1})^s / n̂_i(su_{i+1})) ∈ K_i (s ≥ 0)`". In the
+DECISION-D-1 packaging the Lean carrier is **arena existence over the level's height data**:
+`HVarthetaRes G K N v := ∃ A : GaugeArena G K N, A.v = v` — supplying the level-`i`
+residue interface IS the hypothesis. **Strength delta, disclosed (D-H3):** the arena form
+asserts the residue hom on the whole value-zero subgroup; the corpus's clause asserts it at
+the ϑ-quotients only. The delta is in the SAFE direction for the capstone (a stronger
+carried hypothesis claims less), but chapter I's ledger row must state the corpus form as
+the ledger-strength content and THIS name as the Lean-consumed form — handed to I with that
+exact note (§13 item 2; the czar's fresh-eyes audit arm is the natural reviewer).
+
+**SIGNATURE.**
+```lean
+/-- The Lean carrier of `(H-VARTHETA-RES)_i` (`EFF.T1.09` R9-2 fence; DECISION D-1
+packaging — see the chapter's D-H3 and the strength-delta note). Consumed by E (ladder
+displays at `i ≥ 3`) and I (Display A's `∀ i ≥ 3` conjunct, via D.63). -/
+def HVarthetaRes (G : Type*) [CommGroup G] (K : Type*) [Field K]
+    (N : NormSection G) (v : G →* Multiplicative ℤ) : Prop :=
+  ∃ A : GaugeArena G K N, A.v = v
+```
+
+**DEPENDS.** D.01, D.07.
+
+**PROOF.** definitional.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.T1.09` (the fence + the displayed hypothesis), `EFF.T5.10` (the carry at
+every `i ≥ 3` `Θ`-use, "not adjudicated here" whether S11.2's S2.1 computation discharges
+it — that adjudication is nobody's in this chapter: OPEN, routed at D.64).
+
+**TEETH.** T1 §4.2 checks 5/8/9 (the depth fence's checks) → §12; no discharge exists to
+test.
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+
+### NODE D.63 [def] [fresh]
+
+**STATEMENT.** *Display A's `∀ i ≥ 3` conjunct, assembled.* The indexed family
+`VarthetaWConjunct HVR W i := HVR i ∧ Wle W i` over abstract rung-indexed `HVR W : ℕ → Prop`
+— instantiated at `HVR i := HVarthetaRes (level-i data)` (D.62) and `W q := GentowW
+(level-q data)` (D.44), both instantiations chapter C's. This is the name chapters E and I
+consume for the capstone conjunct `(H-VARTHETA-RES)_i ∧ 𝒲_(≤i)` (`∀ i ≥ 3`); per the Part V
+owner ruling, its terminal disposition in chapter I is DISCHARGE NODE or LITERATURE CITE —
+this chapter only supplies the carrier at exact ledger strength (modulo D.62's disclosed
+delta).
+
+**SIGNATURE.**
+```lean
+def VarthetaWConjunct (HVR W : ℕ → Prop) (i : ℕ) : Prop := HVR i ∧ Wle W i
+```
+
+**DEPENDS.** D.55, D.62 (+ D.44).
+
+**PROOF.** definitional.
+
+**SIZE.** 6 lines.
+
+**SOURCE.** `EFF.T1.09` + `EFF.T3.22` + `EFF.T5.10/.13` (the two stacked families);
+Display A's conjunct list (`spec/HYPOTHESIS_LEDGER.md` capstone preview — the `∀ i ≥ 3`
+row; CONVENTIONS Part IV item 4's sign-off surface names `(H-VARTHETA-RES)/𝒲` explicitly).
+
+**TEETH.** none (a carrier); I's gates re-fire the `n ≤ 2` slices where the conjunct is
+empty.
+
+**ENVIRONMENT.** ENV-D1.
+
+---
+
+### NODE D.64 [record] [fresh]
+
+**STATEMENT.** *OPEN-CALL and orphan routing — the chapter's residual-obligation table.* No
+Lean declaration; one row per surviving open item of the four specs, each routed:
+
+| item | content | routing |
+|---|---|---|
+| T1 OPEN-CALL 1 (`(H-JA-CONJ)_i` source designation) | the JA supplier for letter monomiality | inline hypothesis at D.20's consumers; designation resolution FOR-0d — chapter I gate (b) if cited as literature |
+| T1 OPEN-CALL 2 (`(H-JA-RES-CONJ)` source) | the conjugation supplier | inline at D.23; same routing |
+| T1 OPEN-CALL 3 (`(H-GENHN-CLEAR)` source) | the clearance supplier | NO D node (D-H4(5)); consumers in C |
+| T1 OPEN-CALL 4 = T3 OPEN-CALL 1 (**NEEDS ASVIN**) | "the surrounding tower correctness theorem" converting residual factor patterns to p-adic splitting types — unnamed in both notes; "Assigning a source or formal interface would be invention" | **chapter I / the 0d trust boundary** (owner gate (b) — a literature cite if one exists); D and E consume factor-pattern statements only, never splitting types, until it lands |
+| T1 OPEN-CALL 5 (level-general residual-read supplier) | the `i ≥ 3` read bundle | D.29-instantiation obligation = `[GENTOW5-W(i)]`/HVR stack (D.44/D.62); C's spans |
+| T3 deferred obligation 1 (GENTOW5 §S2 perimeter, XREF X18 `PERIMETER-UNRESOLVED`) | the five-fold certified package's fine designations | `EFF.GENTOW5 [supplied-by: chapter C]` — C's DEPENDS re-home it |
+| T3 deferred obligation 2 (the outer `ψ₁` statement) | unnamed source theorem | `[supplied-by: chapter C]` if GENTOW5's spec exposes it; else I ledger |
+| T3 deferred obligation 3 (ABS-G5W consumption check + dated append) | protocol action | ORCHESTRATOR item (not mathematical) |
+| T5 OPEN-CALL 1 / `HYP.99` (two-clause staleness) | note-owner repair | recorded at D.61(4); NOT executed |
+| WFRAME OPEN-2 (`ω₁ = w₁?`), OPEN-3/`HYP.66` (avatar) | open identifications | I ledger rows; D.59/D.61 fence them |
+| `JD0-BOX-2` | zero T-unit cites (D-H8's grep) | **chapter I**, named hypothesis (`HYP.39`) |
+| `HYP.01`/`HYP.12` escalations | trust-boundary naming from T3/T1 open calls | **chapter I** core-set (`HYP.98`); NO D node (Brief D trap (iii)) |
+| T3 `(T3-JOINT-OPEN)` | a realized p-adic B″ frame with `Θ ≠ 1 ∧ w ≠ 1` simultaneously — "a machine-coverage gap, not a proof gap" | gate D.72 carries the record; coverage stays open |
+
+**SIGNATURE.** none. **DEPENDS.** n/a. **PROOF.** n/a. **SIZE.** 0 Lean lines.
+
+**SOURCE.** `EFF-T1.md` §8 (OPEN-CALLs 1–5 + FOR-0d routing), `EFF-T3.md` §8–§9 (deferred
+obligations + OPEN-CALL 1), `EFF-T5.md` §8–§9 + `HYP.63/.66/.99/.100`, `EFF.T3.30`.
+
+**TEETH.** n/a (a routing table; §13 asks the cross-read to verify it is EXHAUSTIVE against
+the four specs' self-audit sections).
+
+**ENVIRONMENT.** n/a.
+
+---
+<!-- RESUME: §§8–9 COMPLETE (D.55–D.64); next = §10 gates (D.65–D.68), then closing sections §§11–14 + index renumber amendment -->
 
 <!-- CHAP-D APPEND POINT — do not remove; sections are appended here in order -->
