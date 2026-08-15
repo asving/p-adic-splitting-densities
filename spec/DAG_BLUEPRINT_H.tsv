@@ -232,6 +232,7 @@ BP.H.69	BP.H.67	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=
 BP.H.69	BP.H.68	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H NODE H.69 DEPENDS
 BP.H.69	EFF.GENIND.152	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H NODE H.69 SOURCE (transcription)
 BP.H.70	EFF.GENIND.201	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H NODE H.70 SOURCE (transcription)
+BP.H.71	BP.H.22	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H NODE H.71 DEPENDS [added: A-H.2]
 BP.H.71	BP.H.30	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H NODE H.71 DEPENDS
 BP.H.71	BP.H.35	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H NODE H.71 DEPENDS
 BP.H.71	BP.H.65	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H NODE H.71 DEPENDS

@@ -4393,19 +4393,27 @@ no row tests the inequality directly.)"* → **Lean theorem**, and the disclosur
 
 ### NODE H.71 [theorem] [fresh]
 
-**STATEMENT.** *`GENIND.C′` — the quantitative vanishing clause, abstractly.* Let `u : ℕ → ℕ → ℝ`
+**STATEMENT.** [repaired: A-H.2 — the committed pair was REFUTED at transcription, two independent
+defects; refuted original and both refutations in AMENDMENT §A-H.2] *`GENIND.C′` — the quantitative
+vanishing clause, abstractly.* Let `u : ℕ → ℕ → ℝ`
 be a family of normalized complements indexed by `(degree, window)`, and suppose the three legs of the
 `S5.2` recursion hold at every `(D, N)`:
 (**head**) `head D N ≤ ((Q:ℝ)^(N−1))⁻¹`;
-(**α**) `alpha D N ≤ Σ_{k<n₀} (Q−1)*((Q:ℝ)^(c*(k+1)))⁻¹ * u D (N − m*(k+1))` with `1 ≤ c`;
+(**α**) `alpha D N ≤ Σ_{k<n₀, m*(k+1)<N} (Q−1)*((Q:ℝ)^(c*(k+1)))⁻¹ * u D (N − m*(k+1))` — the sum
+over the α-ADMISSIBLE multiplicities only (`EFF.GENIND.09`'s window condition `mμ ≤ N−1`, restored:
+A-H.2/α-0) — with `m < c` (A-H.2/α-rate: the normalized α-discount must beat the descent by at least
+one window per multiplicity; at the intended instantiation `c = m(m+1)/2` this is `clusterC m ≥ 1`,
+i.e. exactly the `m ≥ 2` of `GENIND.A`'s own scope);
 (**β**) `beta D N ≤ K' * (N:ℝ)^(m+B') * ((Q:ℝ)^(N−c'−1))⁻¹` (H.69's conclusion at strictly lower
 degree);
-and `u D N ≤ head D N + alpha D N + beta D N`. Then with `c := c' + 1`, `B := m + B' + 1` and `K`
-large enough (H.35), `RateSpecies Q K B c (u D)` for every `D`, by lexicographic induction on
-`(D, N)`.
+and `u D N ≤ head D N + alpha D N + beta D N`. Then with `c := c' + 1`, `B := m + B' + 1` and
+`K := 1 + K'` (step 1 — explicit per A-H.2; H.35 is the citable dominance), `RateSpecies Q K B c (u D)`
+for every `D`, by lexicographic induction on `(D, N)`.
 
 **SIGNATURE.** [repaired: A-H.1/D6 (fields split one-per-name), A-H.1/D7 (`hdesc`: binder annotated,
-`1 ≤ N` guard added — the committed field was unsatisfiable at `N = 0` and emptied the structure)]
+`1 ≤ N` guard added — the committed field was unsatisfiable at `N = 0` and emptied the structure),
+A-H.2 (`halpha`: window condition `m * (k + 1) < N` restored; `rate_close`: hypothesis
+`hmc : m < c` added — both changes adjudicated against the source, AMENDMENT §A-H.2)]
 ```lean
 namespace Uniformity.Density.Induction
 
@@ -4423,11 +4431,12 @@ structure RecursionLegs (Q m c : ℕ) (u : ℕ → ℕ → ℝ) where
   hu0 : ∀ D N, 0 ≤ u D N
   hhead : ∀ D N, 1 ≤ N → head D N ≤ ((Q : ℝ) ^ (N - 1))⁻¹
   halpha : ∀ D N, 1 ≤ N → alpha D N ≤
-    ∑ k ∈ Finset.range n₀, ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ * u D (N - m * (k + 1))
+    ∑ k ∈ Finset.range n₀ with m * (k + 1) < N,
+      ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ * u D (N - m * (k + 1))
   hbeta : ∀ D N, 1 ≤ N → beta D N ≤ K' * (N : ℝ) ^ (m + B') * ((Q : ℝ) ^ (N - c' - 1))⁻¹
   hdesc : ∀ (D N k : ℕ), 1 ≤ N → k < n₀ → 1 ≤ m * (k + 1) → N - m * (k + 1) < N
 
-theorem rate_close {Q m c : ℕ} (hQ : 2 ≤ Q) (hc : 1 ≤ c) (hm : 1 ≤ m)
+theorem rate_close {Q m c : ℕ} (hQ : 2 ≤ Q) (hc : 1 ≤ c) (hm : 1 ≤ m) (hmc : m < c)
     {u : ℕ → ℕ → ℝ} (L : RecursionLegs Q m c u) :
     ∃ K : ℝ, 0 ≤ K ∧ ∀ D, RateSpecies Q K (m + L.B' + 1) (L.c' + 1) (u D)
 ```
@@ -4439,44 +4448,78 @@ field was FALSE at `N = 0, k = 0` whenever `1 ≤ m ∧ 1 ≤ n₀` (`0 - m·1 <
 `RecursionLegs Q m c u` uninhabited there and silently switching off the α-leg — see AMENDMENT
 §A-H.1/D7.
 
-**DEPENDS.** H.30, H.35, H.65, H.66, H.69, H.70 (the window descent's well-foundedness input).
+**The two A-H.2 changes, read.** The window condition (`m * (k + 1) < N` ⟺ `m*(k+1) ≤ N−1` under
+the field's own `1 ≤ N` guard; subtraction-free per H.15's discipline) makes `halpha`'s appeal to
+the induction hypothesis legitimate: every summand's window `N − m*(k+1)` is `≥ 1`. As committed,
+the unwindowed sum read the UNCONSTRAINED value `u D 0` — defect (α-0), machine-refuted. `hmc` is
+the rate regime: H.30's geometric bound fires at the recomposed slope `γ := c − m`, and H.30's
+hypothesis `1 ≤ c` instantiated at `γ` is exactly `hmc` — defect (α-rate), refuted without it, and
+`m ≤ c` (the weaker candidate) is ALSO refuted, at `c = m` (AMENDMENT §A-H.2). `hc : 1 ≤ c` is now
+implied by `hm + hmc` and is kept for signature stability.
 
-**PROOF.** the corpus's three-leg closure, transcribed.
-1. Set `B := m + B' + 1`, `c := c' + 1`. Choose `K` by H.35: large enough that
-   `K * ((N:ℝ)^B − (N−m)^B) ≥ 1 + K' * (N:ℝ)^(m+B')` for all `N ≥ m` (a degree-`(B−1)` polynomial
-   inequality; `pow_sub_dominance` supplies the leading term). Land the choice as an explicit
-   `K := 1 + L.K' + …` with the inequality proved by `nlinarith`/`positivity` per `N`.
-2. **Induction.** Strong induction on `N` (the degree component is fixed inside `u D` — the
-   degree descent enters only through `hbeta`, whose bound is already in the target shape).
-   `Nat.strongRecOn` on `N`.
-3. **Head leg.** `((Q:ℝ)^(N−1))⁻¹ ≤ K * N^B * ((Q:ℝ)^(N−c))⁻¹` because `c ≥ 1` (H.66(ii)) and
+**DEPENDS.** H.22 (clause (ii), the empty α-range at `N = 1` — the base case; added: A-H.2), H.30,
+H.35, H.65, H.66, H.69, H.70 (the window descent's well-foundedness input).
+
+**PROOF.** the corpus's three-leg closure, transcribed. [repaired: A-H.2 — step 1's `K` made
+explicit, step 2 given its base case (H.22(ii)), step 4 re-derived at the windowed α-leg with the
+`hmc` recomposition. The pre-A-H.2 step 4 invoked *"the IH at each `N − m(k+1) < N`"* with no floor
+on the window — an IH that does not exist at window `0`, since `RateSpecies` says nothing at
+`M = 0`; that hole was defect (α-0)'s proof-side face.]
+1. Set `B := m + B' + 1`, `ĉ := c' + 1`, `K := 1 + K'`. The dominance step, explicit and
+   subtraction-free: for `1 ≤ m`, `1 ≤ N`, `(N−m)^B + N^(B−1) ≤ N^B` — from
+   `N^B = (N−m)*N^(B−1) + m*N^(B−1) ≥ (N−m)*(N−m)^(B−1) + N^(B−1)` — hence
+   `K*(N^B − (N−m)^B) ≥ (1+K')*N^(B−1) ≥ 1 + K'*N^(m+B')` (`B − 1 = m + B'`; `N^(m+B') ≥ 1`).
+   (H.35 `pow_sub_dominance` remains the signed dominance node; the display above is the one-term
+   sharpening its own proof route yields, landed as H.35-adjacent content — H.35's `(N−m)^(B−1)`
+   form alone does not close step 6 near `N = m` with an `N`-free `K`.)
+2. **Induction.** Strong induction on `N` (`Nat.strongRecOn`; the degree component is fixed inside
+   `u D` — the degree descent enters only through `hbeta`, whose bound is already in the target
+   shape). **The base `N = 1` invokes no IH**: the windowed α-sum is EMPTY (`m*(k+1) < 1` is
+   impossible — H.22(ii)'s window-1 inventory), so
+   `u D 1 ≤ head + 0 + β ≤ 1 + K' * ((Q:ℝ)^(1−c'−1))⁻¹ = 1 + K' = K = K * 1^B * ((Q:ℝ)^(1−ĉ))⁻¹` ✓
+   (both `ℕ`-truncated exponents are `0`; EQUALITY — the `K`-choice is tight at the base, and the
+   A-H.2 numeric leg reproduces `u/bound = 1` there exactly).
+3. **Head leg.** `((Q:ℝ)^(N−1))⁻¹ ≤ K * N^B * ((Q:ℝ)^(N−ĉ))⁻¹` because `ĉ ≥ 1` (H.66(ii)) and
    `K * N^B ≥ 1`.
-4. **α leg.** By the IH at each `N − m*(k+1) < N` (`hdesc`),
-   `u D (N − m(k+1)) ≤ K * (N−m)^B * ((Q:ℝ)^(N−m(k+1)−c))⁻¹`. Multiplying by
-   `(Q−1)((Q:ℝ)^(c*(k+1)))⁻¹` and summing, H.30 bounds the geometric factor by `1`, giving
-   `alpha D N ≤ K * (N−m)^B * ((Q:ℝ)^(N−c))⁻¹`. **The exponent recomposition is the delicate step**:
-   the corpus's own audit notes the passage uses the *weaker* `Q^{−k·c(m)}` at the geometric-sum step
-   and the *sharper* `Q^{−k·m(m+1)/2}` at the locus step, and re-derives the intermediate — carry both
-   as `have`s.
-5. **β leg.** `hbeta` plus `c = c' + 1` makes `((Q:ℝ)^(N−c'−1))⁻¹ = ((Q:ℝ)^(N−c))⁻¹` exactly.
-6. **Sum.** head + α + β `≤ (1 + K*(N−m)^B + K'*N^(m+B')) * ((Q:ℝ)^(N−c))⁻¹ ≤ K*N^B*((Q:ℝ)^(N−c))⁻¹`
-   by step 1's choice of `K` ✓.
+4. **α leg [re-derived: A-H.2].** Set `γ := c − m`; by `hmc` this is exact with `1 ≤ γ`. For each
+   ADMISSIBLE `k` (i.e. `m*(k+1) < N`, `halpha`'s restored filter) the window `W_k := N − m*(k+1)`
+   satisfies `1 ≤ W_k < N`, so the IH applies — the admissibility floor is precisely what the
+   committed statement lacked. Carry the corpus's two exponent forms as two `have`s:
+   (LOCUS) the summand bound — the IH times the nonneg coefficient (`hu0`, `2 ≤ Q`):
+   `(Q−1)*((Q:ℝ)^(c*(k+1)))⁻¹ * u D W_k ≤ (Q−1) * K * W_k^B * ((Q:ℝ)^(c*(k+1) + (W_k − ĉ)))⁻¹`;
+   (GEOM) the recomposition — `γ*(k+1) + (N − ĉ) ≤ c*(k+1) + (W_k − ĉ)` in `ℕ`, from
+   `c*(k+1) = γ*(k+1) + m*(k+1)` (exact, `hmc`) and `(W_k + m*(k+1)) − ĉ ≤ m*(k+1) + (W_k − ĉ)`
+   (`omega`, truncation included) — so, also using `W_k^B ≤ (N−m)^B` (`m*(k+1) ≥ m`), each summand
+   is `≤ (Q−1)*((Q:ℝ)^(γ*(k+1)))⁻¹ * K * (N−m)^B * ((Q:ℝ)^(N−ĉ))⁻¹`.
+   Summing: the filtered sum ≤ the full `range n₀` sum (nonneg terms), and H.30 **at `c := γ`**
+   (its hypothesis `1 ≤ c` instantiated at `γ` is exactly `hmc`) bounds the geometric factor by
+   `1`: `alpha D N ≤ K * (N−m)^B * ((Q:ℝ)^(N−ĉ))⁻¹`. At the intended instantiation
+   `c = m(m+1)/2`, the recomposed slope is `γ = clusterC m`, and (GEOM) is H.16/H.17's identity
+   `k*clusterC m + m*W = alphaExp m W k` transcribed onto the exponents — **route the two `have`s
+   through H.16 and H.17**, per the (now-discharged) expansion flag below.
+5. **β leg.** `hbeta` plus `ĉ = c' + 1` makes `((Q:ℝ)^(N−c'−1))⁻¹ = ((Q:ℝ)^(N−ĉ))⁻¹` exactly.
+6. **Sum.** head + α + β `≤ (1 + K*(N−m)^B + K'*N^(m+B')) * ((Q:ℝ)^(N−ĉ))⁻¹ ≤ K*N^B*((Q:ℝ)^(N−ĉ))⁻¹`
+   by step 1 ✓.
 
 **SIZE.** 60+ lines. **SPLIT MANDATED into three nodes** (record as a RE-PLAN at claim time):
 **H.71a** the `K`-choice (step 1, a standalone real-polynomial lemma), **H.71b** the three leg bounds
 (steps 3–5, each a `calc`), **H.71c** the induction assembly (steps 2, 6). **This is the chapter's
-heaviest node and one of its three schedule risks.**
+heaviest node and one of its three schedule risks.** [updated: A-H.2 — H.71b's α-`calc`, the step
+both defects sat in, is now writable at the repaired fields; H.71a/H.71c were unaffected.]
 
-**⚠ [NEEDS-DERIVATION-EXPANSION] — step 4's exponent recomposition, routed to the cross-read
-(§16 item 13).** The corpus's own audit **declares this step compressed**: *"The α-leg's two exponent
+**⚠ [NEEDS-DERIVATION-EXPANSION — DISCHARGED: A-H.2] — step 4's exponent recomposition (§16 item
+13, adjudicated).** The corpus's own audit **declares this step compressed**: *"The α-leg's two exponent
 forms are both correct at their own points but the passage does not spell out the intermediate step
 between them; the compiler re-derived it above. Recorded as a **compressed step, not a gap** — the
 arithmetic closes."* (`EFF.GENIND.153`). The 0a compiler's re-derivation is available and is quoted in
 that unit's audit block — *"`(Q−1)Q^{k·c(m)}·Q^{m(N−mk−1)}/Q^{m(N−1)} = (Q−1)Q^{−k·m(m+1)/2}` … since
-`km² − k·m(m−1)/2 = k·m(m+1)/2`"* — and H.16/H.17 land exactly that arithmetic. **A fleet agent must
-route step 4 through H.16 and H.17 rather than re-deriving inline**, and must state which of the two
-exponent forms each `have` carries. Flagged because the source's own display is thin at this one
-point, not because the arithmetic is in doubt.
+`km² − k·m(m−1)/2 = k·m(m+1)/2`"* — and H.16/H.17 land exactly that arithmetic. **The A-H.2
+adjudication found the compression was hiding a STATEMENT defect, not merely a thin display**: the
+two exponent forms differ by `Q^{−k·m}` and are interchangeable only under `m < c`, a relation the
+committed abstract signature dropped — and without which `rate_close` is FALSE (defect (α-rate),
+AMENDMENT §A-H.2). Step 4 now displays the intermediate as the (LOCUS)/(GEOM) `have` pair, routed
+through H.16 and H.17 exactly as this flag mandated. Residue for the cross-read: confirm the pair
+and that no third exponent form is needed.
 
 **SOURCE.** `EFF.GENIND.153` (`ANNEX-THEOREM GENIND.C′`, quoted in full in the spec, with its
 `[ar1, MINOR-1]` `c`-choice rider *"`c := c′ + 1` … `c′ = max(children's c, c₀)` is degree-induction
@@ -6548,10 +6591,16 @@ Ordered by how much a wrong answer would cost.
     rather than transcription-grade (the source supplies one sentence because in prose there is nothing
     to supply). Three candidate schemes are recorded; confirm one, and confirm the `n`-induction
     fallback is equivalent (it needs `Fin.snoc` bookkeeping the blueprint has not checked).
-13. **H.71 step 4's exponent recomposition — `[NEEDS-DERIVATION-EXPANSION]`.** `EFF.GENIND.153`
+13. **H.71 step 4's exponent recomposition — `[NEEDS-DERIVATION-EXPANSION]`.** [ADJUDICATED:
+    A-H.2 — the compression was hiding a STATEMENT defect: the two exponent forms are
+    interchangeable only under `m < c`, which the committed abstract signature dropped;
+    `rate_close` was machine-refuted at transcription and repaired (window condition restored +
+    `hmc : m < c`), and step 4 is re-derived in place through H.16/H.17 as this item asked.]
+    `EFF.GENIND.153`
     itself declares the step *"a compressed step, not a gap"*; the 0a compiler's re-derivation is
     quoted in that unit's audit and is landed here as H.16/H.17. Confirm that routing step 4 through
-    those two nodes is faithful, and that no third exponent form is needed.
+    those two nodes is faithful, and that no third exponent form is needed — the residue is now the
+    (LOCUS)/(GEOM) `have` pair displayed at the node.
 14. **[TODO, added: A-H.1/F2] The genre-F `StageInterface` instance is OWED.** §3's design note
     promised two `stageLoss = 0` instances; the chapter signed neither. The genre-E one now exists
     (the 0e gate's `stageIfaceE : StageInterface (genreE2 0) 2 0 4`, booked as H.38-adjacent node
@@ -6785,6 +6834,153 @@ place with `[recounted: A-H.1/C1]`/`[updated: A-H.1/D4]` tags.
 H.89, H.94; touched sections: §3 design note, H.33 TEETH, §15, §16. Statement changes (D4, D7, D8)
 are honest corrections of machine-refuted or unsatisfiable text under the standing
 statement-change authority; every refuted original is preserved above.*
+
+## AMENDMENT A-H.2 (2026-08-15, dated append) — H.71 `rate_close`: STATEMENT REFUTED AT
+## TRANSCRIPTION; THE WINDOW CONDITION RESTORED, THE RATE-REGIME HYPOTHESIS ADDED
+
+**Provenance.** The chapter-H transcription fleet, landing node H.71 in
+`leanfinal/Uniformity/ChapH/H71.lean`, refuted `rate_close` at its signed (post-A-H.1/D6+D7) type
+with **two independent counterexample families** — neither a `ℕ`-truncation accident, neither cured
+by A-H.1 (those cured elaboration and inhabitation; these are about what the fields say). The fleet
+landed `RecursionLegs` plus the refutation and **withheld** `rate_close` (the G.23a / A-H.1-D4/D8
+precedent: the refuting instance takes the theorem as a hypothesis of an `example : False`, so
+nothing false enters any environment). This block is the adjudication of the repair — a genuine
+mathematical decision, derived from the source units and re-signed here.
+
+**The refuted original** (the A-H.1-repaired SIGNATURE, preserved per the G.23a precedent — the
+structure's other twelve fields are unchanged and are not requoted):
+
+    halpha : ∀ D N, 1 ≤ N → alpha D N ≤
+      ∑ k ∈ Finset.range n₀, ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ * u D (N - m * (k + 1))
+
+    theorem rate_close {Q m c : ℕ} (hQ : 2 ≤ Q) (hc : 1 ≤ c) (hm : 1 ≤ m)
+        {u : ℕ → ℕ → ℝ} (L : RecursionLegs Q m c u) :
+        ∃ K : ℝ, 0 ≤ K ∧ ∀ D, RateSpecies Q K (m + L.B' + 1) (L.c' + 1) (u D)
+
+### The two refutations (the fleet's, preserved)
+
+**(α-0) — the window-`0` value `u D 0` is unconstrained, and the α-leg reads it.** Machine-checked
+(`leanfinal/Uniformity/ChapH/H71.lean`: `legsWindowZero` + the `example … : False`). `halpha` sums
+over ALL `k < n₀` with no window condition, so at `N = m*(k+1)` the summand is `u D 0`, bounded only
+below (`hu0`); since the conclusion quantifies `∃ K` BEFORE `∀ D`, a family with window-`0` value
+unbounded in `D` satisfies every field and kills every `K`. Witness: `Q = 2`, `m = c = 1`,
+`n₀ = 1`, `head = beta = 0`, `u D N := D · (2^N)⁻¹`, `alpha := u` — `hsplit`/`halpha` hold with
+EQUALITY, and the conclusion at `M = 1` demands `D/2 ≤ K` for every `D`.
+
+**(α-rate) — the α-leg's budget does not pay for its descent.** Each α-summand descends `m*(k+1)`
+windows but is discounted only `Q^(−c*(k+1))`; recomposed against the IH, the `k`-th term gains
+`Q^((m−c)(k+1))`, divergent when `m > c`. Witness (numeric, `N ≤ 59` exact; two divergence cells
+`#guard`-ed in the fleet file): `Q = 2`, `c = 1`, `m = 2`, `n₀ = 4`, `u D N := (9/10)^N` — every
+field holds, and the conclusion forces `K ≥ 1.8^M/(2M³) → ∞` (`K > 10^19` at `M = 100`,
+`K > 10^43` at `M = 200`).
+
+### The adjudication (unit citations)
+
+**(α-0): the window condition is RESTORED, not a normalization invented.** The α-sum's filter
+`m*(k+1) < N` (⟺ `m*(k+1) ≤ N−1` under `halpha`'s own `1 ≤ N` guard; subtraction-free per H.15's
+discipline) is the corpus's own text at every level:
+* `EFF.GENIND.08` (`GENIND.A`(I)): the α(k) EVENT carries *"`1 ≤ k, mk ≤ N−1`"* inside the event
+  grammar itself — inadmissible multiplicities are not events, so the recursion's α-sum never
+  ranges over them;
+* `EFF.GENIND.09` (`GENIND.A`(II)): the `[r1, PE1-M1]` **WINDOW CONDITION** `mμ ≤ N−1`,
+  already-landed base text (*"the per-step admissibilities `m·k_i ≤ (current window) − 1` conjoin
+  along the chain to exactly this"*);
+* `EFF.GENIND.45` (the `S5.2` recursion this node packages): every α-term is supplied at a REALIZED
+  `k` (`GT-RECUR`: *"exact at every realized `k`"*);
+* H.20's own fence: *"[the window condition] appears as a hypothesis of H.67/H.71, not here"* — the
+  blueprint DESIGNATED this node as the window condition's carrier, and the committed signature
+  dropped it;
+* H.25 (the blueprint's own `m = 2` instantiation) writes the sum as `Σ_{k ≥ 1, 2k ≤ N−1}`.
+The alternative repair `hu1 : ∀ D, u D 0 ≤ 1` is REJECTED: the corpus's windows start at `N = 1`
+(boundary `u(1) = total = 1`, `ANNEX R R3` = `EFF.GENIND.07`/`.160`); window `0` is never read, so
+constraining `u D 0` would be an invented normalization with no source sentence — the honest fix is
+that the statement never touch it.
+
+**(α-rate): `hmc : m < c` is ADDED; the fleet's candidate `m ≤ c` is REJECTED AS INSUFFICIENT; the
+sharper-exponent restatement is NOT FORCED.** The committed signature conflated the corpus's two
+exponent slopes, and the repair must first fix WHICH slope the structure's `c` is:
+* the structure's `u` is NORMALIZED (`hhead`'s bound is `Q^{−(N−1)}` = the normalized head,
+  `EFF.GENIND.153`), so `halpha`'s coefficient is the normalized α-locus discount. Its intended
+  instantiation is `c = m(m+1)/2`: `EFF.GENIND.08`'s locus `(Q−1)·Q^{m(N−1) − k·m(m+1)/2}` over the
+  total `Q^{m(N−1)}` — equivalently `EFF.GENIND.21`'s absolute transport
+  `(Q−1)·Q^{+k·c(m)} × the window-(N−mk) menu`, normalized (the sign alone shows `c ≠ clusterC m`:
+  the ABSOLUTE coefficient GROWS). At `m = 2` (H.25): absolute `(Q−1)Q^{k}`, normalized
+  `(Q−1)Q^{−3k}` — structure-`c = 3 = m(m+1)/2`, not `clusterC 2 = 1`.
+* `clusterC m = m(m−1)/2` (H.13) is the RECOMPOSED slope `γ = c − m` — the one H.30's geometric sum
+  runs at (`EFF.GENIND.153`'s audit: *"`Σ_{k≥1}(Q−1)Q^{−k·c(m)} ≤ 1` … for `c(m) ≥ 1`, i.e.
+  `m ≥ 2` … tight at `m = 2`"*; H.30's own tightness note is the same fact). H.16/H.17's identity
+  `k·clusterC m + m·W = alphaExp m W k` IS this recomposition.
+* So the honest regime hypothesis is `1 ≤ γ`, i.e. **`m < c`** (= `m + 1 ≤ c`). At the intended
+  instantiation it reads `clusterC m ≥ 1` ⟺ `m ≥ 2` — exactly `GENIND.A`'s scope (*"every cluster
+  system `(m, d, N)` with `m ≥ 2`"*, `EFF.GENIND.08`), tight at `m = 2`.
+* **The `m = 2` question, settled affirmatively:** the α-species recursion IS instantiated at
+  `m = 2` — α(k) events exist there (first at `(m, N, k) = (2, 3, 1)`, `EFF.GENIND.07`'s R3 site
+  (a)); §5's `uTwo` is that instance and H.28 grounds the species on it; `.153`'s ground sharpness
+  `(K, B, c) = (1, 1, 1)` is at `m = 2`. It satisfies `hmc` because the structure's `c` there is
+  `3`, not `clusterC 2 = 1` — the worry *"`m = 2` gives `c = 1 < m`"* dissolves once the two slopes
+  are unconflated. Hence the hypothesis route is available at every instantiation and the
+  sharper-exponent restatement (`halpha` at `Q^{−(m+γ)(k+1)}`) is not forced; the hypothesis route
+  is adopted as minimal and faithful.
+* **`m ≤ c` is refuted at its boundary `c = m`** (new finding of this adjudication): with equality
+  the recomposed factor is `Q^0` per term and the geometric sum is `n₀(Q−1)`, not `≤ 1`. Two
+  witnesses, every repaired field verified exactly for `N ≤ 400`
+  (`verification/rate_close_ah2_check.py`, PART 3): `(Q, m, c, n₀) = (3, 1, 1, 2)` with
+  `u = (9/10)^N` forces `K ≥ 4.9·10^17` by `M = 50`; `(3, 2, 2, 2)` with `u = (11/20)^N` forces
+  `K ≥ 1.3·10^36` by `M = 200`. Both diverge; both satisfy the window condition, so the two A-H.2
+  defects are genuinely independent and each repair is separately load-bearing.
+
+### The repaired display (applied in place at the node)
+
+    halpha : ∀ D N, 1 ≤ N → alpha D N ≤
+      ∑ k ∈ Finset.range n₀ with m * (k + 1) < N,
+        ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ * u D (N - m * (k + 1))
+
+    theorem rate_close {Q m c : ℕ} (hQ : 2 ≤ Q) (hc : 1 ≤ c) (hm : 1 ≤ m) (hmc : m < c)
+        {u : ℕ → ℕ → ℝ} (L : RecursionLegs Q m c u) :
+        ∃ K : ℝ, 0 ≤ K ∧ ∀ D, RateSpecies Q K (m + L.B' + 1) (L.c' + 1) (u D)
+
+(`hc` is now implied by `hm + hmc`; kept for signature stability.)
+
+### Verification
+
+1. **Both refuting witnesses fail the repaired hypotheses.** (α-0)'s (`m = c = 1`): `hmc` is
+   `1 < 1`, false; AND the windowed `halpha` fails at `N = 1` (`alpha D 1 = D/2 > 0` = the empty
+   sum, `D ≥ 1`). (α-rate)'s (`m = 2, c = 1`): `hmc` is `2 < 1`, false; AND the windowed `halpha`
+   fails at `N = 2`. Checked in `verification/rate_close_ah2_check.py` PART 2.
+2. **The repaired statement is PROVED at blueprint level**: PROOF steps 1–6 re-derived in place with
+   the explicit `K := 1 + K'` — in particular step 2's base case (`N = 1`, empty α-range, H.22(ii);
+   this closes the *"IH at `M = 0`"* hole) and step 4's (LOCUS)/(GEOM) recomposition pair (H.30
+   fired at `γ = c − m`; H.16/H.17 at the intended instantiation).
+3. **Numeric leg** (`verification/rate_close_ah2_check.py`, exact rationals, ALL CHECKS PASSED):
+   the MAXIMAL family solving the three repaired legs with equality obeys the conclusion with
+   `K = 1 + K'` at 32 instantiation cells (`Q ∈ {2,3}`, `m ∈ {2,3}` with `c = m(m+1)/2`,
+   `K' ∈ {0,3}`, `(B', c') ∈ {(0,0),(1,2)}`, `n₀ ∈ {4,9}`), all `ℕ`-truncations live, `N ≤ 90` —
+   with the base-case ratio EXACTLY `1` (the `K`-choice is sharp, as step 2 derives); plus the two
+   `c = m` divergences of the adjudication; plus item 1's witness-exclusion checks.
+
+### Consumers and artifacts
+
+* **No mathematical consumer** (re-grepped 2026-08-15, post-fleet): `rate_close`/`RecursionLegs`
+  occur only at this node, this amendment, H.99's `#print axioms` census row (name unchanged),
+  `leanspec/Leanspec/ChapH.lean` (the stub — updated by this amendment), the fleet's
+  `leanfinal/Uniformity/ChapH/H71.lean` (the refutation record — left standing), and the chapter
+  roll-up's status comment. DAG: `BP.H.71 → BP.H.22` added (the base case is now an explicit
+  dependency); the other H.71 edges are unchanged.
+* **`leanspec/Leanspec/ChapH.lean` updated to the repaired types** (`halpha` windowed;
+  `rate_close` with `hmc`; `hdesc` aligned to the A-H.1/D7 guarded form the stub had recorded but
+  not applied). The signed-as-committed `rate_close` axiom was FALSE and could not stand, by the
+  stub's own D4 precedent (*"signing it would make this file's axiom set inconsistent"*): with the
+  A-H.1/D7 form of `RecursionLegs` inhabited, `rate_close` + `legsWindowZero` derives `False`.
+  Build re-verified green (`lake build Leanspec.ChapH`).
+* **`leanfinal`**: H71.lean stays as the refutation record; the node's status moves BLOCKED →
+  READY-AT-REPAIRED-SIGNATURE for the fleet (H.71a/b/c split unchanged; H.71b's α-`calc` is the
+  step the repair unblocks).
+
+*END OF AMENDMENT A-H.2 (2026-08-15). Touched: node H.71 (STATEMENT, SIGNATURE, its reading note,
+DEPENDS, PROOF, SIZE note, the step-4 ⚠ flag), §16 item 13, `spec/DAG_BLUEPRINT_H.tsv` (one edge),
+`leanspec/Leanspec/ChapH.lean`, `verification/rate_close_ah2_check.py` (new). Statement changes are
+honest corrections of a machine-refuted signature under the standing statement-change authority;
+the refuted original and both refutations are preserved above.*
 
 
 
