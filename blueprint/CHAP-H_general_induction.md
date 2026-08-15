@@ -3193,7 +3193,724 @@ the min-`n` scan, *"min-n = 8; zero stage-CS anywhere else in the battery"*) →
 the necessity half; `passPE1` R4's note that the scan *"verifies the arithmetic minimum only"* is
 exactly this node's scope ✓.
 
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+## 8. §8 — THE SLOT / LIFT LAYER (THE `H → B` SPLIT POINT)
+
+> **Placement note.** `spec/DAG_README.md`'s heaviest backward arc is `H → B` (weight 12) with the
+> mandated remedy *"GENHN's stage/slot infrastructure belongs below chapter B, its count/tower results
+> above it"*. §8 **is** that infrastructure: `EFF.GENHN.27`'s reverse XREF records
+> `HE7_PROOF:LEMMA GENHN-2` count 1 — *"HE7 consumes THE SLOT LEMMA as its ladder base case"*.
+> Every node of §8 depends only on §3 and on mathlib, so chapters B and E may consume H.51–H.58
+> without consuming anything else in chapter H.
+
+### NODE H.51 [lemma] [fresh]
+
+**STATEMENT.** *Class separation mod `e₁`.* If `Nat.Coprime h e₁` and `i, i' < e₁` with
+`i * h ≡ i' * h [MOD e₁]`, then `i = i'`. Equivalently the map `i ↦ (i * h) % e₁` is injective on
+`Finset.range e₁`, hence a bijection of `range e₁` onto itself.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem class_sep {h e : ℕ} (hcop : Nat.Coprime h e) {i i' : ℕ} (hi : i < e) (hi' : i' < e)
+    (hmod : i * h % e = i' * h % e) : i = i'
+
+theorem class_sep_bij {h e : ℕ} (hcop : Nat.Coprime h e) :
+    Set.BijOn (fun i => i * h % e) (Finset.range e) (Finset.range e)
+```
+
+**DEPENDS.** none · mathlib `Nat.Coprime.cancel_right_dvd_of_dvd_mul_right`,
+`ZMod.natCast_self_eq_zero`, `ZMod.val_cast_of_lt`, `Nat.ModEq`.
+
+**PROOF.**
+1. `class_sep`: from `hmod`, `e ∣ (i − i') * h` (over `ℤ`, or in `ℕ` after `wlog i' ≤ i`). Since
+   `Nat.Coprime h e`, `e ∣ (i − i')` (`Nat.Coprime.dvd_of_dvd_mul_right`). With `i − i' < e` this
+   forces `i = i'`.
+2. `class_sep_bij`: injectivity is clause 1; the map lands in `range e` by `Nat.mod_lt` (needs
+   `0 < e`, from `Nat.pos_of_ne_zero` and `hcop`'s `e ≠ 0` when `e = 0` is excluded — handle `e = 0`
+   by `Finset.range 0 = ∅`); surjectivity on a finite set follows from injectivity
+   (`Finset.injOn_iff_bijOn_of_card_eq` / `Set.InjOn.bijOn_image`).
+
+**SIZE.** 16 lines. `e = 0` and `e = 1` should be dispatched first (`interval_cases`-style).
+
+**SOURCE.** `EFF.GENHN.27` (`LEMMA GENHN-2`, verbatim: *"the minimum's residue class mod `e₁` is
+`i·h mod e₁` (distinct for distinct `i` mod `e₁` since `gcd(h, e₁) = 1`)"* and *"Across classes there
+are no ties (distinct residues mod `e₁`): this is JC-LOAD's no-cancellation holding BY CLASS
+SEPARATION + RESIDUE-FIELD INDEPENDENCE — elementary, hence not consumed"*); `EFF.GENHN.29`(c) (the
+one-line congruence bound that uses it).
+
+**⚠ THE WELD-FREE DECLARATION IS LOAD-BEARING AND CHAPTER H HONOURS IT.** `EFF.GENHN.27`(c): *"the
+JC-LOAD / W-9 sentences are frame citations, not consumptions — the lemma's own words: "elementary,
+hence not consumed", "cited as frame". This is the note's cleanest weld-free declaration and is what
+makes `GENHN-BOX-2` a box about **layer 1 of GENHN-4 only**, not about the slot geometry."* And
+`runs/qgen/WELD_FACE_AUDIT.md` independently confirms the routing. **Chapter H's §8 therefore consumes
+NO weld face**, and no node of §8 may cite `W-9`, `JC-LOAD` or `W-8`. A fleet agent reaching for one
+has left the chapter.
+
+**TEETH.** `GN-E31`'s three-class computation (`EFF.GENHN.27`, the `e₁ = 3, f₁ = 1` instance,
+machine-checked at the E31 rows) · `GN-T-LAT` (planted mutant: *"E31 law collapsed to integer
+lattice"* must break; fired 2/2) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.52 [lemma] [fresh]
+
+**STATEMENT.** *The slot-min has no cross-class ties.* Fix `h, e₁` coprime and a finite family of
+candidate heights `m_i = e₁ * v_i + i * h` indexed by `i < e₁` (one per residue class). If
+`m_i = m_{i'}` then `i = i'` and `v_i = v_{i'}`. Consequently the minimum of the family is attained at
+a **unique** index, so the ultrametric inequality `dv(A(θ)) ≥ min_i m_i` is an **equality**.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem slot_height_injective {h e : ℕ} (hcop : Nat.Coprime h e) {i i' v v' : ℕ}
+    (hi : i < e) (hi' : i' < e) (heq : e * v + i * h = e * v' + i' * h) :
+    i = i' ∧ v = v'
+
+theorem slot_min_unique {h e : ℕ} (hcop : Nat.Coprime h e) (he : 0 < e)
+    (v : ℕ → ℕ) {i i' : ℕ} (hi : i < e) (hi' : i' < e)
+    (hmin : e * v i + i * h = e * v i' + i' * h) : i = i'
+```
+
+**DEPENDS.** H.51.
+
+**PROOF.**
+1. `slot_height_injective`: reduce `heq` mod `e`: `i * h % e = i' * h % e`, so `i = i'` by H.51;
+   substituting back and cancelling `e > 0` gives `v = v'` (`Nat.eq_of_mul_eq_mul_left`).
+   (`e = 0` forces `i = i' = 0` vacuously since `i < 0` is impossible — so `he` is not needed for the
+   first clause once `hi` is available.)
+2. `slot_min_unique`: the first component of clause 1.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.GENHN.27`'s DERIVATION, verbatim: *"Ultrametric equality when all candidate values
+are attained at distinct heights; distinct classes never tie (`dv ≡ ih mod e₁`)"*; `EFF.GENH4.19`
+(`LEMMA GENH4-2`, the `e₁ = 2` instance by **parity**: *"the min is uniquely attained (`2v(a)+h` odd,
+`2v(b)` even: distinct parities, no ties)"* — which is this node at `e₁ = 2`, `h` odd).
+
+**⚠ THE WITHIN-CLASS TIE IS H.53, NOT THIS NODE.** `GENHN-2` has two separation mechanisms: *across*
+classes (this node, by coprimality) and *within* a class (H.53, by residue-field independence). At
+`f₁ = 1` there is no within-class branch at all, which is why `GENH4-2`'s parity argument is complete
+at `e₁ = 2, f₁ = 1` and why *"the `f₁ ≥ 2` within-class tie branch is exercised only foreign-ly"*
+(`EFF.GENHN.27`'s TEETH). Keeping the two nodes apart is what makes the `f₁ ≥ 2` gap visible.
+
+**TEETH.** as H.51; additionally `GH-T-LAT` (`EFF.GENH4.17`, fired 19×) → **Lean theorem** for the
+`e₁ = 2` parity instance.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.53 [lemma] [fresh]
+
+**STATEMENT.** *Within-class independence: residue-field independence kills the tie.* Let `K` be a
+field, `F ≤ K` a subfield with `[K : F] = f₁`, and `η : K` a generator of `K` over `F` with minimal
+polynomial of degree `f₁`. If `λ_0, …, λ_{f₁−1} ∈ F` satisfy `Σ_t λ_t * η^t = 0` then every
+`λ_t = 0`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem eta_independent {F K : Type*} [Field F] [Field K] [Algebra F K] {η : K}
+    (hgen : (minpoly F η).natDegree = Module.finrank F K) (hint : IsIntegral F η)
+    {f : ℕ} (hf : f = Module.finrank F K) (l : Fin f → F)
+    (hsum : ∑ t : Fin f, algebraMap F K (l t) * η ^ (t : ℕ) = 0) :
+    ∀ t, l t = 0
+```
+
+**DEPENDS.** none · mathlib `Algebra.adjoin.powerBasis`, `PowerBasis.basis`,
+`Basis.ext_elem_iff`, `minpoly.degree_le_of_ne_zero`, `Polynomial.aeval`.
+
+**PROOF.**
+1. from `hgen` + `hint`, `η` generates a power basis of `K` over `F` of dimension `f`
+   (`Algebra.adjoin.powerBasis` plus `Algebra.adjoin_eq_top_of_finrank_eq` — or, more directly,
+   `PowerBasis.mk` with `hgen`).
+2. the sum is the power basis's coordinate expansion of `0`; `Basis.forall_coord_eq_zero_iff` (or
+   `Fintype.linearIndependent_iff` on the power basis's linear independence) gives `l t = 0` for
+   every `t`.
+3. Route B, if the power-basis plumbing fights: let `p := Σ_t (l t) X^t ∈ F[X]`; `hsum` says
+   `aeval η p = 0`, so `minpoly F η ∣ p`; `p.natDegree < f = (minpoly F η).natDegree` forces
+   `p = 0` (`minpoly.degree_le_of_ne_zero` contrapositive), hence every coefficient vanishes
+   (`Polynomial.ext_iff` + `Finset.sum` coefficient extraction). **Route B is the recommended one**
+   — it is four `have`s and uses only `minpoly` API.
+
+**SIZE.** 26 lines. **SPLIT CANDIDATE:** if route B's coefficient extraction is long, land the
+polynomial statement (`aeval η p = 0 ∧ p.natDegree < (minpoly F η).natDegree → p = 0`) as a private
+helper and the `Fin f`-indexed form as the public contract.
+
+**SOURCE.** `EFF.GENHN.27` (verbatim: *"at a within-class tie among `i, i+e₁, …, i+e₁(f₁−1)` the
+residue is `Σ_t res(a_{i+e₁t})·η^t ≠ 0` because `{1, η, …, η^{f₁−1}}` are `F_Q`-independent
+(`deg ψ = f₁`)"*, and its DERIVATION: *"a vanishing `F_Q`-combination of `1, η, …, η^{f₁−1}` with some
+nonzero coefficient contradicts `[F_Q(η) : F_Q] = f₁`"*); `EFF.GENH4.19`(F) (the `f₁ = 2` instance:
+*"the residue is `res(a)·ȳ + res(b) ≠ 0` because `{1, ȳ}` are `F_q`-independent (`ψ`
+irreducible)"*); `EFF.GENHN.81` (`GENHN-LIFT`'s residue step: *"GENHN-2's independence gives their sum
+`λ`, with no cancellation"*).
+
+**⚠ WHY `η` IS AXIOMATIZED BY ITS MINPOLY DEGREE AND NOT CONSTRUCTED.** The corpus's `η` is
+`res(θ^{e₁}π^{−h})`, a residue of a stage-ring element — its *construction* needs the carrier
+(honesty item H-5(3)/E3). Chapter H states the independence for **any** generator with the right
+minpoly degree, so the node is provable in `ENV-H4` with no `O` at all, and the stage layer's
+consumers supply `η` as a hypothesis. This is the same move as H.09's fields: the geometric input is a
+hypothesis, the algebra is a theorem.
+
+**TEETH.** `GN-E31` (the `f₁ = 1` degenerate case) · `GENH4-2(F)`'s `(1,2,2)` instance (foreign
+evidence at `f₁ = 2`) · `EFF.GENHN.32`'s exhaustive `(1,3,2)` rows at `f₁ = 3` (32,768 and 2,097,152
+states, both balancing exactly) → **Lean theorem** (the node covers every `f₁` at once, which no
+battery row does — `EFF.GENHN.27`'s `signed vacuity disclosure` for the `f₁ ≥ 2` branch is
+**discharged on the Lean side by this node**).
+
+**ENVIRONMENT.** ENV-H4.
+
+---
+
+### NODE H.54 [def] [fresh]
+
+**STATEMENT.** *The exact-height stage lift `L_M`.* Fix a genre datum `G` and `M : ℕ` with
+`G.keyDeg * G.h < M`. Let `i = i(M) < e₁` and `a = a(M)` be as in H.10 (so `i*h + e₁*a = M`). For
+`λ : Fin f₁ → F` (the `F_Q`-coordinates of an element of `K`), define
+`stageLift G M λ = Σ_{s < f₁} λ_s • X^(i + e₁*s) * π^(a − s*h)` — a polynomial of degree `< D′` whose
+every nonzero summand has exact `dv`-height `M`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- The exponent data of the height-`M` normalizer: `i(M) < e₁` and `a(M)` with
+`i·h + e₁·a = M` (H.10 supplies existence at `keyDeg * h < M`). -/
+noncomputable def GenreDatum.normIdx (G : GenreDatum) (M : ℕ) : ℕ × ℕ :=
+  if hM : G.keyDeg * G.h < M then (G.occupied_of_keyDeg_mul_h_lt hM).choose ... else (0, M)
+
+/-- `L_M(λ)` — the exact-height `K`-lift of `LEMMA GENHN-LIFT`, as a coefficient vector over the
+ambient ring: `L_M(λ) = Σ_{s<f₁} λ̃_s · x^{i+e₁ s} π^{a−s h}`. -/
+noncomputable def stageLift {O : Type*} [CommRing O] (G : GenreDatum) (π : O) (M : ℕ)
+    (lift : ℕ → O) : Polynomial O :=
+  ∑ s ∈ Finset.range G.f₁,
+    Polynomial.C (lift s * π ^ ((G.normIdx M).2 - s * G.h)) *
+      Polynomial.X ^ ((G.normIdx M).1 + G.e₁ * s)
+```
+
+**⚠ SIGNATURE NOTE (the `choose` and how to avoid it).** `normIdx` as written uses `Exists.choose`,
+which is opaque and will make H.55/H.56 painful. **The contract form the fleet should land** takes
+`i` and `a` as explicit arguments with the defining equation as a hypothesis:
+```lean
+noncomputable def stageLift' {O : Type*} [CommRing O] (G : GenreDatum) (π : O)
+    (i a : ℕ) (lift : ℕ → O) : Polynomial O :=
+  ∑ s ∈ Finset.range G.f₁,
+    Polynomial.C (lift s * π ^ (a - s * G.h)) * Polynomial.X ^ (i + G.e₁ * s)
+```
+and H.55/H.56 carry `(hi : i < G.e₁) (hM : i * G.h + G.e₁ * a = M) (hbig : G.keyDeg * G.h < M)`.
+**This is the signed form**; `normIdx` is recorded only because the corpus writes `i(M)`, `a(M)` as
+functions. A fleet agent must land `stageLift'`.
+
+**DEPENDS.** H.01, H.02, H.10 · landed `Polynomial.C`, `Polynomial.X`.
+
+**PROOF.** definitional.
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.GENHN.81` (`LEMMA GENHN-LIFT`, verbatim: *"Write `λ∈K` uniquely as
+`λ=\sum_{s=0}^{f_1-1}\lambda_s\eta^s`, `\lambda_s\in F_Q`, and define
+`L_M(\lambda):=\sum_{s=0}^{f_1-1}\widetilde{\lambda_s}\,x^{\,i+e_1s}\pi^{\,a-sh}`"*).
+
+**TEETH.** **PROOF-ONLY** (`EFF.GENHN.81`: *"No machine leg exercises `L_M` at `f₁ ≥ 2` inside
+GENHN"*, disposition `accepted-with-decorrelation-supplied` — the algebra was hand-re-derived by the
+0a compiler before transcription) → the chapter supplies the proof at H.55/H.56.
+
+**ENVIRONMENT.** ENV-H2 (the lift lands in `Polynomial O`; the `dv`-height statements are ENV-H1
+arithmetic).
+
+---
+
+### NODE H.55 [lemma] [fresh]
+
+**STATEMENT.** *`L_M` is integral, of degree `< D′`, and every nonzero summand has exact `dv`-height
+`M`.* Three clauses, under `i < e₁`, `i*h + e₁*a = M`, `keyDeg*h < M`:
+(i) **integrality**: for every `s < f₁`, `s * h ≤ a` — so the exponent `a − s*h` is an honest `ℕ`;
+in the identity form `a = s*h + (a − s*h)`;
+(ii) **degree**: `i + e₁*s ≤ D′ − 1` for every `s < f₁`, hence `deg (stageLift') < D′`;
+(iii) **exact height**: `e₁ * (a − s*h) + (i + e₁*s) * h = M` for every `s < f₁`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem stageLift_index_lt (G : GenreDatum) {i s : ℕ} (hi : i < G.e₁) (hs : s < G.f₁) :
+    i + G.e₁ * s < G.keyDeg
+
+theorem stageLift_integral (G : GenreDatum) {i a M s : ℕ} (hi : i < G.e₁) (hs : s < G.f₁)
+    (hM : i * G.h + G.e₁ * a = M) (hbig : G.keyDeg * G.h < M) : s * G.h ≤ a
+
+theorem stageLift_height (G : GenreDatum) {i a M s : ℕ} (hi : i < G.e₁) (hs : s < G.f₁)
+    (hM : i * G.h + G.e₁ * a = M) (hbig : G.keyDeg * G.h < M) :
+    G.e₁ * (a - s * G.h) + (i + G.e₁ * s) * G.h = M
+```
+
+**DEPENDS.** H.01, H.02, H.54.
+
+**PROOF.**
+1. `stageLift_index_lt`: `i + e₁*s ≤ (e₁−1) + e₁*(f₁−1) = e₁*f₁ − 1 = keyDeg − 1`. `omega` after
+   `Nat.succ_le_of_lt` on both `hi` and `hs`.
+2. `stageLift_integral`: from clause 1, `(i + e₁*s) * h ≤ (keyDeg − 1) * h < keyDeg * h < M`;
+   substituting `M = i*h + e₁*a` gives `(i + e₁*s)*h < i*h + e₁*a`, i.e. `e₁*s*h < e₁*a`, i.e.
+   `s*h < a` (cancel `e₁ > 0`), so `s*h ≤ a`. `omega` once the multiplications are expanded.
+3. `stageLift_height`: with `s*h ≤ a` (clause 2), the `ℕ`-subtraction is honest and the identity
+   expands to `e₁*a − e₁*s*h + i*h + e₁*s*h = e₁*a + i*h = M` ✓ — the `s*h` terms cancel
+   identically. `omega` after `Nat.sub_add_cancel`.
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.GENHN.81`'s PROOF, verbatim: *"Since `i+e_1s\le D'-1` and `M>D'h`,
+`a-sh=\frac{M-(i+e_1s)h}{e_1}\ge0`, so every summand is integral and has degree `<D'`. Its evaluated
+height is `e_1(a-sh)+(i+e_1s)h=M`."*; the spec's own audit reproduces all three
+(*"the displayed identity is correct … exact, and the `sh` terms cancel identically"*).
+
+**ARITHMETIC AUDIT (recomputed fresh at two genre data).** `(e₁,f₁,h) = (3,1,1)`, `keyDeg = 3`,
+`keyDeg*h = 3`, take `M = 4`: `i*1 + 3a = 4` with `i < 3` gives `i = 1, a = 1`; only `s = 0`
+(`f₁ = 1`), `s*h = 0 ≤ 1` ✓, index `1 + 0 = 1 < 3` ✓, height `3*1 + 1*1 = 4 = M` ✓.
+`(e₁,f₁,h) = (2,3,1)`, `keyDeg = 6`, `keyDeg*h = 6`, take `M = 9`: `i + 2a = 9` with `i < 2` gives
+`i = 1, a = 4`; `s ∈ {0,1,2}`: `s*h = 0,1,2 ≤ 4` ✓; indices `1, 3, 5 < 6` ✓; heights
+`2*4 + 1 = 9`, `2*3 + 3 = 9`, `2*2 + 5 = 9` ✓ **all three equal `M`** — this is the `f₁ = 3` cell
+`EFF.GENHN.32` exercises exhaustively, and the three summands sitting at one height is exactly the
+"one `K`-digit per height" content.
+
+**TEETH.** **PROOF-ONLY** at `f₁ ≥ 2` (`EFF.GENHN.81`), with `EFF.GENHN.32`'s two exhaustive `f₁ = 3`
+rows as foreign corroboration → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1 (all three clauses are exponent arithmetic; the polynomial lives in ENV-H2 but
+these statements do not mention it).
+
+---
+
+### NODE H.56 [lemma] [fresh]
+
+**STATEMENT.** *`L_M`'s residue is `λ`.* With the hypotheses of H.55, dividing `L_M(λ)` by the
+normalizer `n(M) = x^i π^a` leaves, summand by summand, `(x^{e₁} π^{−h})^s` times the lifted
+coefficient — so the residue of the `s`-th summand against `n(M)` is `λ_s · η^s`, and by H.53 the
+total residue is `λ` with no cancellation. Formalized at the exponent level (the part that is not
+carrier-dependent): for every `s < f₁`,
+`(i + e₁*s) = i + e₁*s` and `(a − s*h) + s*h = a`, i.e. the quotient monomial is
+`x^{e₁*s} π^{-(s*h)}` — stated as the identity
+`x^(i + e₁*s) * π^(a − s*h) = (x^i * π^a) * (x^(e₁*s) * π^(a − s*h) / π^a)` in the honest form
+`π^a * x^(i + e₁*s) = x^i * π^(a − s*h) * (x^(e₁*s) * π^(s*h)) * ...` — see the SIGNATURE for the
+exact contract.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- The quotient identity: the `s`-th summand of `L_M(λ)` equals the normalizer `x^i π^a` times
+`(x^{e₁} π^{−h})^s`, in the cleared form `π^{s h} · (summand) = n(M) · (x^{e₁})^s · lift s`. -/
+theorem stageLift_summand_eq {O : Type*} [CommRing O] (G : GenreDatum) (π : O)
+    {i a s : ℕ} (hsa : s * G.h ≤ a) (c : O) :
+    (Polynomial.C (π ^ (s * G.h)) : Polynomial O) *
+        (Polynomial.C (c * π ^ (a - s * G.h)) * Polynomial.X ^ (i + G.e₁ * s))
+      = (Polynomial.C (π ^ a) * Polynomial.X ^ i) *
+        (Polynomial.C c * Polynomial.X ^ (G.e₁ * s))
+```
+
+**DEPENDS.** H.54, H.55 · landed `Polynomial.C_mul`, `Polynomial.X_pow_mul`.
+
+**PROOF.**
+1. both sides are `C (…) * X^(…)`; push `C` through products (`Polynomial.C_mul`) and collect the
+   `X`-powers (`pow_add`).
+2. the scalar identity is `π^(s*h) * (c * π^(a − s*h)) = π^a * c`, which is
+   `pow_add`/`Nat.add_sub_cancel'` with `hsa`.
+3. `ring` closes after the two rewrites.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.GENHN.81`'s PROOF, verbatim: *"Dividing by `n(M)=x^i\pi^a` leaves residue
+`\lambda_s\eta^s`; GENHN-2's independence gives their sum `\lambda`, with no cancellation."*;
+the spec's audit: *"Dividing `x^{i+e₁s}π^{a−sh}` by `n(M) = x^iπ^a` gives `x^{e₁s}π^{−sh} =
+(x^{e₁}π^{−h})^s`, whose residue at `θ` is `η^s` ✓"*.
+
+**⚠ WHY THE STATEMENT IS CLEARED OF DENOMINATORS.** `x^{e₁}π^{−h}` is not in `O[x]`; the corpus works
+in `L`/`O_L` (ERRATUM E3, honesty item H-5(3)). Chapter H states the identity **multiplied through by
+`π^{s h}`**, which is an identity in `Polynomial O` and needs no carrier. The step from this identity
+to *"the residue is `η^s`"* needs `η := res(θ^{e₁}π^{−h})`, i.e. the carrier — and that step is a
+hypothesis of the consuming statement, not a node.
+
+**⚠ EXTERNAL-QUARRY NOTE (relayed 2026-08-15, `docs/VENDOR_QUARRY_MAP_2026-08-15.md`).** The survey
+confirms **four-way absence** of Newton-polygon, MacLane/key-polynomial and Okutsu–Montes API in our
+mathlib pin and in all four vendored quarries. That is independent confirmation of this chapter's
+architecture: the geometric layer *cannot* be a transcription target at any grade, so carrying it as
+`StageInterface` fields (H.09) is not a shortcut but the only honest option. It also means **no node
+of §8 may be labelled `quarry:`** — every one is `fresh`.
+
+**TEETH.** as H.55 (**PROOF-ONLY**, with `hetowr1_supp.py`'s three `η ≠ 1` frames as foreign
+evidence).
+
+**ENVIRONMENT.** ENV-H2.
+
+---
+
+### NODE H.57 [lemma] [fresh]
+
+**STATEMENT.** *The wrap exponent `W(t)`.* For `r, i, e₁ : ℕ` with `0 < e₁`:
+`r * i = (r * i % e₁) + e₁ * (r * i / e₁)`, and `r * i % e₁ < e₁`. Writing
+`W := r * i / e₁ = ⌊r·i/e₁⌋` and `i(r·M) := r*i % e₁`, this is the corpus's cocycle bookkeeping
+`n(u₂)^r = n(r·u₂) · (x^{e₁}/π^{h})^{W}`, at the exponent level.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem wrap_div_mod (r i e : ℕ) (he : 0 < e) :
+    r * i = r * i % e + e * (r * i / e) ∧ r * i % e < e
+
+/-- The height bookkeeping behind the wrap: if `i·h + e·a = M` then
+`r·M = (r·i % e)·h + e·(r·a + W·h)` with `W = r·i / e`. -/
+theorem wrap_height {i a M h e r : ℕ} (he : 0 < e) (hM : i * h + e * a = M) :
+    r * M = (r * i % e) * h + e * (r * a + (r * i / e) * h)
+```
+
+**DEPENDS.** H.51 (the class bookkeeping) · mathlib `Nat.mod_add_div`, `Nat.mod_lt`.
+
+**PROOF.**
+1. `wrap_div_mod`: `(Nat.mod_add_div _ _).symm` and `Nat.mod_lt _ he`.
+2. `wrap_height`: multiply `hM` by `r`: `r*M = r*i*h + e*(r*a)`; substitute
+   `r*i = (r*i % e) + e*W` from clause 1 and expand:
+   `r*M = (r*i % e)*h + e*W*h + e*r*a = (r*i % e)*h + e*(r*a + W*h)` ✓. `ring_nf` then `omega`.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.GENHN.28` (the twist: *"Products wrap through `θ^{e₁} = (unit lift)·π^h`:
+`n(κ)^t = ẑ^{fl}·n(tκ)` with the explicit integer `fl` = the wrap count — W-9's cocycle, literal"*);
+`EFF.GENHN.42` (the HETOW erratum's explicit form: *"`n̂(u₂)^{f₂−t} = n̂((f₂−t)u₂)·(x^{e₁}/π^{h})^{W(t)}`
+with `W(t) = ⌊(f₂−t)·i(u₂)/e₁⌋`"*); `EFF.GENHN.81`'s APPLICATION (*"`W(t)=\left\lfloor\frac{r\,i(u_2)}
+{e_1}\right\rfloor`"* and the re-derivation *"`res(n(u₂)^r/n(ru₂)) = η^{W(t)}`"*).
+
+**⚠ THE CORPUS'S OWN TWO DERIVATIONS AGREE, AND CHAPTER H REPRODUCES THE ARITHMETIC ONLY.**
+`EFF.GENHN.81`'s audit: *"the note's own verification paragraph re-derives exactly this
+(`e₁(r·a(u₂)−a(ru₂)) = −e₁W(t)h`, matching the erratum's own cocycle display) ✓ — two independent
+derivations agree."* The step from the exponent identity to `res(...) = η^W` needs the carrier and is a
+hypothesis of the consumer. **Chapter H does not state a cocycle identity in `K`** — that would be a
+`W-9` consumption, which §8 is forbidden (H.51's fence).
+
+**ARITHMETIC AUDIT (recomputed fresh).** `(e₁, h, i, a) = (3, 2, 2, ?)`: take `M = 4`, so
+`2*2 + 3a = 4` has no `ℕ` solution — use instead `M = 7`: `2*2 + 3a = 7` gives `a = 1` ✓. Then
+`r = 2`: `r*i = 4`, `4 % 3 = 1`, `W = 1`; check `2*7 = 14` against
+`1*2 + 3*(2*1 + 1*2) = 2 + 12 = 14` ✓. `r = 3`: `r*i = 6`, `6 % 3 = 0`, `W = 2`; check `21` against
+`0 + 3*(3 + 4) = 21` ✓. `(e₁, h, i, a) = (2, 1, 1, 3)`, `M = 7`: `r = 3` gives `r*i = 3`,
+`3 % 2 = 1`, `W = 1`; check `21` against `1*1 + 2*(9 + 1) = 21` ✓. **Three cells at two `e₁`, all
+exact.**
+
+**TEETH.** **PROOF-ONLY**; `EFF.GENHN.81` is part of the A2 wave whose *"three repairs await sol
+discharge-confirmation"* → **Lean theorem** is the chapter's contribution and the confirmation is
+still owed on the corpus side (§16 item 8).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.58 [lemma] [fresh]
+
+**STATEMENT.** *The composed-key basis is triangular-unimodular.* For `D′, r : ℕ` with `0 < D′`, the
+map `(a, b) ↦ a + b * D′` is a bijection from `Finset.range D′ ×ˢ Finset.range r` onto
+`Finset.range (D′ * r)`. Hence `{x^a Φ′^b : a < D′, b < r}` has `D′ * r` members whose `x`-degrees
+are exactly `0, 1, …, D′*r − 1`, each once — and since `Φ′` is monic, the family is a
+triangular-unimodular basis of the polynomials of degree `< D′*r`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem divMod_bij (D r : ℕ) (hD : 0 < D) :
+    Set.BijOn (fun p : ℕ × ℕ => p.1 + p.2 * D)
+      (Finset.range D ×ˢ Finset.range r) (Finset.range (D * r))
+
+theorem card_composedBasis (D r : ℕ) (hD : 0 < D) :
+    (Finset.range D ×ˢ Finset.range r).card = D * r
+```
+
+**DEPENDS.** none · mathlib `Nat.divModEquiv`, `Nat.div_add_mod`, `Finset.card_product`.
+
+**PROOF.**
+1. `card_composedBasis`: `Finset.card_product`, `Finset.card_range`, `mul_comm`.
+2. `divMod_bij`: the inverse is `n ↦ (n % D, n / D)`; `Nat.mod_add_div` gives the round trip,
+   `Nat.mod_lt` and `Nat.div_lt_iff_lt_mul` give membership in both directions. Assemble with
+   `Set.BijOn.mk` / `Set.InvOn.bijOn`.
+
+**SIZE.** 18 lines. **SPLIT CANDIDATE:** the cardinality is a one-liner; if the `BijOn` plumbing runs
+long, land it alone as the node and keep the cardinality as a private `have`.
+
+**SOURCE.** `EFF.GENHN.43` (`T(b)′` clause (ii), verbatim: *"`{x^a Φ′^b : a < D′, b < e₂f₂}` is a
+triangular-unimodular basis of the degree-`< D₂` polynomials"*), and its proof *"Basis:
+`deg(x^a Φ′^b) = a + bD′` hits each degree `< D₂` once, leading coefficient 1 —
+triangular-unimodular"*, with the spec's audit: *"`{x^a Φ′^b}` has `D′ · e₂f₂ = D₂` elements ✓, and
+`deg(x^aΦ′^b) = a + bD′` ranges over `0..D₂−1` bijectively (base-`D′` representation) ✓, leading
+coefficient `1` since `Φ′` is monic ✓."*
+
+**⚠ THE BASIS CLAIM ITSELF NEEDS MONICITY AND IS NOT IN THIS NODE.** *"triangular-unimodular basis of
+the degree-`< D₂` polynomials"* is a linear-algebra statement about `Polynomial O`; this node proves
+the **degree bijection**, which is its combinatorial core and the part that is `Q`- and
+carrier-independent. The passage from the degree bijection to a basis is the unit-pivot argument
+(§9, H.60) applied to the degree filtration — and H.60 is stated so that it *can* be applied here.
+`EFF.GENHN.43`'s CONDITIONALITY also records an OPEN item chapter H does not touch: *"whether the
+composed display needs the same `D₂h`-style restriction is **not addressed anywhere in the note**"*
+(OPEN-CALL 5 there). **Chapter H does not address it either, and §16 item 7 flags it.**
+
+**ARITHMETIC AUDIT (recomputed fresh).** `D′ = 2`, `r = 2` (the `n = 8` first-live tower):
+`D₂ = 4`, degrees `0+0, 1+0, 0+2, 1+2 = 0,1,2,3` ✓ each once. `D′ = 2`, `r = 3`: `D₂ = 6`, degrees
+`0,1,2,3,4,5` ✓. `D′ = 3`, `r = 2`: `D₂ = 6`, degrees `0,1,2,3,4,5` ✓. Tie count cross-check against
+`EFF.GENHN.43`'s within-class bound: *"at most `f₁` tying monomials per `t`, `f₂` `t`-values, `≤ f₁f₂`
+in all"* — and `f₁f₂ = [K₂ : F_Q]` ✓, *"exactly the K₂-dimension, which is why the residues assemble
+one `K₂`-digit and no more"* ✓.
+
+**TEETH.** `SUPP-B` (`EFF.GENHN.43`, executable regression on two decorrelated instruments: the first
+`f₂ = 2` tower genre `(2,1,4)→(1,2,2)` over `K₂ = F₄`, plus `genhn_pe2_fresh.py`'s *"first outer-`f₁ = 2`
+tower genres, first 2-stage dictionary contact, the η₂-cocycle adjudication, and `Q = 4` tower
+legs"*; clause (ii) **HELD** at PE2) → **Lean theorem** for the degree bijection.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+## 9. §9 — THE UNIT-PIVOT LAYER (THE R2 REPAIR, WITH ITS COUNTEREXAMPLE)
+
+### NODE H.59 [def] [fresh]
+
+**STATEMENT.** *Triangular with unit pivots.* Let `R` be a commutative ring and
+`Φ : (Fin n → R) → (Fin n → R)`. Say `Φ` is **triangular with unit pivots** for the order
+`0 < 1 < ⋯ < n−1` when there are `c : Fin n → R` and `g : (i : Fin n) → (Fin n → R) → R` such that
+each `c i` is a unit, each `g i` depends only on the coordinates `< i`, and
+`Φ v i = c i * v i + g i v` for every `v, i`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- **Triangular with unit pivots.**  `Φ` solves each output slot as `unit × (its input slot) +
+(a function of strictly earlier input slots)`.  This is the condition ANNEX R R2 identifies as the
+missing displayed step of `GENIND-6(c)`: triangularity ALONE does not give surjectivity or constant
+fibres over a truncated DVR (H.62). -/
+structure TriangularUnitPivot {R : Type*} [CommRing R] {n : ℕ}
+    (Φ : (Fin n → R) → (Fin n → R)) where
+  /-- The pivots. -/
+  pivot : Fin n → R
+  /-- The strictly-earlier part. -/
+  tail : (i : Fin n) → (Fin n → R) → R
+  /-- Each pivot is a unit. -/
+  pivot_isUnit : ∀ i, IsUnit (pivot i)
+  /-- The tail at `i` depends only on coordinates `< i`. -/
+  tail_lower : ∀ i v w, (∀ j : Fin n, j < i → v j = w j) → tail i v = tail i w
+  /-- The displayed form. -/
+  apply_eq : ∀ v i, Φ v i = pivot i * v i + tail i v
+```
+
+**DEPENDS.** none.
+
+**PROOF.** definitional.
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.GENIND.156` (`R2.1`, the rider at schema level, verbatim: *"In GENIND-6(c)'s
+coordinate map and GENIND-3 step (3)'s fiber sentence, read "triangular" as **triangular with UNIT
+pivots**: in a coordinate order realizing the triangular structure, each solved output slot is
+`c·(its input slot) + (a function of strictly earlier input slots)` with pivot `c` a unit of that
+slot's truncated ring `O/π^w`"*).
+
+**⚠ THE SUPERSESSION KIND IS `license`, NOT `wording-rider`.** `EFF.GENIND.156`: *"although the
+surface instruction is "read X as Y", the operative content is a new condition with a proof of what it
+buys (onto + constant fibre), which a wording substitution is not. **This is the shard's canonical
+illustration of rule 18's warning that near-identically phrased riders are not interchangeable.**"*
+Chapter H therefore lands the condition as a **structure** (a definition with a theorem attached),
+not as a comment on an existing node.
+
+**TEETH.** `EFF.GENIND.156`'s machine leg G (a **planted mutant** realizing the toy) →
+**Lean theorem** at H.60 and **Lean theorem** at H.62 (the mutant becomes the counterexample).
+
+**ENVIRONMENT.** ENV-H5.
+
+---
+
+### NODE H.60 [theorem] [fresh]
+
+**STATEMENT.** *Unit pivots ⟹ bijective.* If `Φ : (Fin n → R) → (Fin n → R)` is triangular with unit
+pivots then `Φ` is bijective. (Back-substitution: solve slot `i` by
+`v i = (pivot i)⁻¹ * (target i − tail i v)`, the earlier slots being already determined.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem TriangularUnitPivot.bijective {R : Type*} [CommRing R] {n : ℕ}
+    {Φ : (Fin n → R) → (Fin n → R)} (T : TriangularUnitPivot Φ) : Function.Bijective Φ
+```
+
+**DEPENDS.** H.59 · mathlib `IsUnit.unit`, `Units.inv_mul_cancel_left`, `Fin.induction`,
+`Function.bijective_iff_has_inverse`.
+
+**PROOF.**
+1. **Injectivity.** Suppose `Φ v = Φ w`. Prove `v i = w i` by strong induction on `i` (well-founded
+   on `Fin n`'s order, or on `(i : ℕ)`): the IH gives `v j = w j` for `j < i`, so
+   `tail i v = tail i w` by `tail_lower`; then `pivot i * v i = pivot i * w i` from `apply_eq`, and
+   `v i = w i` by `IsUnit.mul_left_cancel` (`pivot_isUnit i`).
+2. **Surjectivity.** Given `t : Fin n → R`, construct `v` by strong recursion:
+   `v i := (pivot i).unit⁻¹ * (t i − tail i v)` — well-founded because `tail i v` reads only
+   coordinates `< i` (use `Fin.strongRecOn` or define `v` on `ℕ` by `Nat.strongRecOn` and restrict).
+   Then `Φ v i = pivot i * v i + tail i v = (t i − tail i v) + tail i v = t i` ✓.
+3. The recursion in step 2 is the one delicate construction; the sanctioned Lean idiom is to build
+   `v : ℕ → R` by `Nat.strongRecOn` on a `tail'`-extension that ignores indices `≥ n`, then
+   `fun i => v i`. Land the extension as a private definition.
+
+**SIZE.** 34 lines. **This is the hardest node of §9** and the only one with a real construction. If
+the strong recursion fights, the sanctioned fallback (recorded as a RE-PLAN) is to state and prove the
+`n`-induction version — `Φ` bijective on `Fin (n+1) → R` given bijective on `Fin n → R` — which is
+`Fin.snoc`-flavoured and avoids well-founded recursion.
+
+**SOURCE.** `EFF.GENIND.156`'s own proof, verbatim: *"Unit pivots are what license the S2.2 slot
+bookkeeping: back-substitution solves any target slot by slot (`input = c⁻¹·(target − earlier-part)`,
+`c⁻¹` existing because units of `O/π^w` invert), so the map is ONTO; and the fiber over every target is
+exactly the free slots (each pinned/priced slot solved uniquely, each free slot unconstrained) — a
+target-independent `q`-power. Without unit pivots both conclusions fail"*; `EFF.GENIND.157` (`R2.2`,
+the enumerated species check showing every ledger row's pivot is the literal unit `1`).
+
+**⚠ WHAT THIS NODE REPAIRS.** `EFF.GENIND.155` (`R2.0`, CODEX F1, a **CONFIRMED GAP**):
+*"GENIND-6(c)'s onto-with-constant-fiber is carried by 'triangular with exact budget floors' + 'the
+same S2.2 slot bookkeeping' — and triangularity alone does NOT give surjectivity/constant fibers over
+truncated DVRs. The missing displayed step is the unit-pivot condition (the division ledger's pivots
+are units because the extracted factors are MONIC — true, used, never displayed as the load-bearing
+condition)."* The gap's disposition is `decorrelated-model audit`: *"No battery row could produce
+this: the runner only ever executes monic ledgers, so the failure mode is off its state space by
+construction."* **Chapter H is the first place in either repo where the condition is stated and
+proved.**
+
+**TEETH.** machine leg G (`genind_annexr_supp.py` @ `f5271e4`, GREEN: *"over `ℤ/4`, `(x+2)·y` is
+bijective in `y` iff `x` is odd (a unit) — the toy's collapse — while the monic-pivot form `(1+2x)·y`
+is bijective at every `x`"* — a **planted mutant** exercising exactly the failure mode) →
+**Lean theorem** (this node's positive half) and **Lean theorem** at H.62 (its negative half).
+
+**ENVIRONMENT.** ENV-H5.
+
+---
+
+### NODE H.61 [lemma] [fresh]
+
+**STATEMENT.** *Constant fibres over the free slots.* Let `Φ` be triangular with unit pivots on
+`Fin n → R` with `R` finite, and let `P ⊆ Fin n` be a set of "pinned" indices. Then for every target
+`t`, the set `{v | ∀ i ∈ P, Φ v i = t i}` has cardinality `(Nat.card R) ^ (n − #P)` — a
+**target-independent** count. (This is the corpus's *"the fiber over every target is exactly the free
+slots … a target-independent `q`-power"*.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem TriangularUnitPivot.card_fibre {R : Type*} [CommRing R] [Fintype R] [DecidableEq R]
+    {n : ℕ} {Φ : (Fin n → R) → (Fin n → R)} (T : TriangularUnitPivot Φ) (P : Finset (Fin n))
+    (t : Fin n → R) :
+    Nat.card {v : Fin n → R // ∀ i ∈ P, Φ v i = t i}
+      = Fintype.card R ^ (n - P.card)
+```
+
+**DEPENDS.** H.59, H.60 · mathlib `Fintype.card_fun`, `Equiv.subtypeEquivOfSubtype`,
+`Fintype.card_congr`.
+
+**PROOF.**
+1. by H.60, `Φ` is bijective, so `v ↦ Φ v` is an `Equiv`; transport the fibre along it:
+   `{v | ∀ i ∈ P, Φ v i = t i} ≃ {u | ∀ i ∈ P, u i = t i}` (`Equiv.subtypeEquiv` with
+   `T.bijective.toEquiv`).
+2. `{u : Fin n → R | ∀ i ∈ P, u i = t i} ≃ (↥(Pᶜ) → R)` (the coordinates outside `P` are free;
+   `Equiv.piCongr`-style, or `Fintype.card` by `Finset.prod` over the coordinates).
+3. `Fintype.card_fun` gives `(card R) ^ (Pᶜ).card = (card R) ^ (n − P.card)`
+   (`Finset.card_compl`, `Fintype.card_fin`).
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.GENIND.156` (the fibre clause quoted at H.60); `EFF.GENH4.23` (the onto-by-cardinality
+step, verbatim: *"onto by cardinality: the refine slice fixes the two pinned digits and frees exactly
+the slots above `dμ` resp. `2dμ` — the same count as the node (slot strings are key-independent,
+S2.3)"*).
+
+**⚠ THE FULL-SLICE QUANTIFIER, AND THE MISUSE IT PREVENTS (the GENH4 GAP-1 record).**
+`EFF.GENH4.09`'s CONDITIONALITY: *"Its "ONTO the floored fresh node" quantifier is the subject of
+ANNEX R2's GAP-1: the onto-statement quantifies over the FULL refine slice, and ANNEX R's R2
+misapplied it to a FIXED member where only lift digits vary. **The lemma is not corrected — the misuse
+is withdrawn**"*, with R2.G1 verbatim: *"GENH4-4's onto-the-fresh-node statement quantifies over the
+FULL refine slice — all in-window digits free. On a FIXED member only LIFT digits vary."* This node's
+signature quantifies `v` over **all** of `Fin n → R` and takes the pinned set `P` as data — so a
+fixed-member application does not typecheck. **That is deliberate**: the contract makes the withdrawn
+misuse un-expressible.
+
+**TEETH.** `GH-REFINE [SAME]` (`EFF.GENH4.09`, executable regression, **192,000/0** on 21,504 + 768
+refine events across three rows and both characteristics, *"pointwise and digit-by-digit against a
+pinned foreign reader"*) → **Lean theorem** (the strongest count-side guard in the corpus, and this
+node is its general law).
+
+**ENVIRONMENT.** ENV-H5 with `[Fintype R] [DecidableEq R]`.
+
+---
+
+### NODE H.62 [lemma] [fresh]
+
+**STATEMENT.** *The counterexample: triangular WITHOUT unit pivots is not surjective.* Over
+`R = ZMod 4` with `π = 2`, the map `Φ : (Fin 2 → ZMod 4) → (Fin 2 → ZMod 4)`,
+`Φ v = ![v 0, (v 0 + 2) * v 1]`, is triangular (the second output depends on `v 1` with a coefficient
+in `v 0` only) but **not surjective**: no `v` has `Φ v = ![0, 1]`, because at `v 0 = 0` the pivot
+`0 + 2 = 2` is a non-unit and `2 * v 1 ∈ {0, 2}`. Moreover the fibre size is **not constant**: over
+`![0, 0]` it is `2` and over `![1, 0]` it is `1`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- Codex's toy (`ANNEX R R2.0`): `(x, y) ↦ (x, (x+π)y)` mod `π²`, at `π = 2`, `R = ZMod 4`. -/
+def codexToy (v : Fin 2 → ZMod 4) : Fin 2 → ZMod 4 := ![v 0, (v 0 + 2) * v 1]
+
+theorem codexToy_not_surjective : ¬ Function.Surjective codexToy
+
+theorem codexToy_fibre_not_constant :
+    (Finset.univ.filter (fun v : Fin 2 → ZMod 4 => codexToy v = ![0, 0])).card = 2 ∧
+    (Finset.univ.filter (fun v : Fin 2 → ZMod 4 => codexToy v = ![1, 0])).card = 1
+```
+
+**DEPENDS.** none (deliberately independent of H.59 — the toy is *not* a `TriangularUnitPivot`, which
+is the point).
+
+**PROOF.** `by decide` on both (the domain has `16` elements; `DecidableEq (Fin 2 → ZMod 4)` and
+`Fintype` are instances). If `decide` times out, `Finset.filter` + `Finset.card` by `native_decide`
+is **forbidden** (it would add an axiom); instead enumerate `v 0 ∈ ZMod 4` by `decide` on the
+four-case split.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.GENIND.155` (`R2.0`, CODEX F1's counterexample verbatim: *"Codex's valid toy:
+`(x, y) ↦ (x, (x+π)y)` mod `π²`, triangular, fiber collapses at `x = 0`"*), with the spec's own
+ARITHMETIC AUDIT: *"Concretely over `ℤ/4` (π = 2): at `x = 0`, `(0+2)y = 2y ∈ {0, 2}` for
+`y ∈ {0,1,2,3}` — image size 2, fibre size 2; at `x = 1`, `3y` is a bijection — image size 4, fibre
+size 1 ✓. **The toy is valid and the collapse is exactly as described.** Triangularity holds
+throughout ✓"*; `EFF.GENIND.156` (the rider's sharpness witness); `EFF.GENIND.157` (*"The toy's pivot
+`x + π` is the lead of a non-monic multiplier — a shape the displayed species exclude"*).
+
+**⚠ WHY THE COUNTEREXAMPLE IS A NODE AND NOT A COMMENT.** Three reasons, all recorded in the corpus.
+(1) The gap was **invisible to the battery by construction** (`EFF.GENIND.155`'s TEETH: *"the runner
+only ever executes monic ledgers, so the failure mode is off its state space … the runs EXCLUDE the
+signature and therefore cannot FIND the missing hypothesis"*). (2) `EFF.GENIND.157`'s species check is
+`PROOF-ONLY`, so the *only* machine evidence for the whole repair is leg G's planted mutant — and this
+node is that mutant, promoted to a theorem. (3) A future node tempted to state "triangular ⟹
+bijective" is refuted here, loudly. **This is the §9 analogue of H.06/H.11/H.12: the refutation is
+part of the deliverable.**
+
+**ARITHMETIC AUDIT.** Fibre over `![0,0]`: `v 0 = 0` and `2 * v 1 = 0` ⟹ `v 1 ∈ {0, 2}` ⟹ 2 ✓.
+Fibre over `![1,0]`: `v 0 = 1` and `3 * v 1 = 0` ⟹ `v 1 = 0` (3 is a unit mod 4) ⟹ 1 ✓. Image size:
+at `v 0 = 0` the second coordinate ranges over `{0,2}` (2 values); at `v 0 ∈ {1,3}` over all 4; at
+`v 0 = 2` the pivot is `4 = 0`, so the second coordinate is `0` only (1 value). Total image
+`2 + 4 + 1 + 4 = 11 < 16` ✓ **not surjective**, and `![0,1]` is missing ✓.
+
+**TEETH.** machine leg G (the planted mutant) → **Lean theorem**. Disposition upgrade recorded: the
+corpus's evidence is a mutant that *fired*; chapter H's is a proof.
+
 <!-- APPEND-POINT -->
+
 
 
 
