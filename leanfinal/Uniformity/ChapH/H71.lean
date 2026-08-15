@@ -23,6 +23,10 @@ complement family `u` belongs to H.65's `RateSpecies` with constants `B = m + B'
 * `RecursionLegs Q m c u` — the three-leg hypothesis, at the **A-H.2** signature.
 * `rate_close` — the closure theorem, at the **A-H.2** signature, PROVED (no `sorry`, Lean core
   axioms only).
+* A **non-vacuity witness** (`legsHeadOnly`, `legsHeadOnly_rate`): the repaired structure is
+  inhabited at `(Q, m, c) = (2, 2, 3)` — inside `rate_close`'s hypotheses, since `2 < 3` — and
+  `rate_close` is fired on it. A-H.1/D7 was an inhabitation defect, so this obligation is not
+  optional here.
 
 ## Re-landing record (read this before comparing against an earlier checkout)
 
@@ -362,6 +366,55 @@ theorem rate_close {Q m c : ℕ} (hQ : 2 ≤ Q) (hc : 1 ≤ c) (hm : 1 ≤ m) (h
       _ ≤ ((1 + L.K') * (N : ℝ) ^ (m + L.B' + 1)) * ((Q : ℝ) ^ (N - (L.c' + 1)))⁻¹ :=
           mul_le_mul_of_nonneg_right hscalar hP0.le
       _ = (1 + L.K') * (N : ℝ) ^ (m + L.B' + 1) * ((Q : ℝ) ^ (N - (L.c' + 1)))⁻¹ := by ring
+
+end Uniformity.Density.Induction
+
+/-! ## Non-vacuity: the repaired structure is INHABITED in the `hmc` regime, and `rate_close` fires
+
+`sorry`-free ≠ non-vacuous. A-H.1/D7 was precisely an inhabitation defect (the pre-repair `hdesc`
+emptied the type), so the repaired structure owes a witness *inside* `rate_close`'s hypotheses —
+i.e. at some `2 ≤ Q`, `1 ≤ m`, `m < c`. The head-only family below is that witness at
+`(Q, m, c) = (2, 2, 3)`, the intended instantiation's smallest cell (`c = m(m+1)/2 = 3`,
+recomposed slope `γ = clusterC 2 = 1`, the tight one). The head leg holds with EQUALITY; the α and
+β legs are slack at `0`. `rate_close` is then fired on it, so the theorem is not vacuously true. -/
+
+namespace Uniformity.Density.Induction
+
+/-- The head-only family at `Q = 2`: `u D N = (2^(N−1))⁻¹`, constant in the degree index. -/
+private noncomputable def uHead : ℕ → ℕ → ℝ := fun _ N => (((2 : ℕ) : ℝ) ^ (N - 1))⁻¹
+
+/-- **Inhabitation witness at `(Q, m, c) = (2, 2, 3)`, inside `rate_close`'s hypotheses.**
+`hhead` holds with equality; `alpha = beta = 0` are slack. -/
+private noncomputable def legsHeadOnly : RecursionLegs 2 2 3 uHead where
+  head := uHead
+  alpha := fun _ _ => 0
+  beta := fun _ _ => 0
+  K' := 0
+  B' := 0
+  c' := 0
+  n₀ := 4
+  hK' := le_rfl
+  hsplit := by intro D N _; simp
+  hu0 := by intro D N; unfold uHead; positivity
+  hhead := by intro D N _; exact le_rfl
+  halpha := by
+    intro D N _
+    refine Finset.sum_nonneg ?_
+    intro k _
+    have : (0 : ℝ) ≤ uHead D (N - 2 * (k + 1)) := by unfold uHead; positivity
+    have hq : (0 : ℝ) ≤ (((2 : ℕ) : ℝ) - 1) * ((((2 : ℕ) : ℝ)) ^ (3 * (k + 1)))⁻¹ := by
+      norm_num
+    exact mul_nonneg hq this
+  hbeta := by intro D N _; simp
+  hdesc := by intro D N k hN hk _; omega
+
+/-- **`rate_close` fires on the witness** — the theorem is non-vacuous at `(Q, m, c) = (2, 2, 3)`,
+with the conclusion `∀ D, RateSpecies 2 K 3 1 (uHead D)` for `K = 1 + K' = 1`. -/
+private theorem legsHeadOnly_rate :
+    ∃ K : ℝ, 0 ≤ K ∧ ∀ D,
+      RateSpecies 2 K (2 + legsHeadOnly.B' + 1) (legsHeadOnly.c' + 1) (uHead D) :=
+  rate_close (Q := 2) (m := 2) (c := 3) (by norm_num) (by norm_num) (by norm_num) (by norm_num)
+    legsHeadOnly
 
 end Uniformity.Density.Induction
 
