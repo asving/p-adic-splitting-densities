@@ -57,8 +57,21 @@ import Uniformity.ChapG.G23R9
 import Uniformity.ChapG.G23R10
 import Uniformity.ChapG.G23R11
 import Uniformity.ChapG.G23R12
+-- §7 — `n = 2`: exact counts, exact densities, the capstone slice (G.41–G.51). The count layer
+-- G.41/G.42 consumes the replacement route's `card_resClassSet` (G.23R9) in place of the refuted
+-- G.23a, so it is imported after it; G.45 and G.50 landed in earlier waves and move into place
+-- here so the §7 block reads in the blueprint's own order.
+import Uniformity.ChapG.G41
+import Uniformity.ChapG.G42
+import Uniformity.ChapG.G43
+import Uniformity.ChapG.G44
 import Uniformity.ChapG.G45
+import Uniformity.ChapG.G46
+import Uniformity.ChapG.G47
+import Uniformity.ChapG.G48
+import Uniformity.ChapG.G49
 import Uniformity.ChapG.G50
+import Uniformity.ChapG.G51
 import Uniformity.ChapG.G52
 import Uniformity.ChapG.G53
 import Uniformity.ChapG.G54
