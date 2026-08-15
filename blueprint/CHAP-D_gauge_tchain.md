@@ -370,6 +370,280 @@ whose dependencies are outside this chapter and landed-B) and D.46 (the certific
 dependent-type design).
 
 ---
-<!-- RESUME: skeleton committed; next = §3 (D.01–D.12, THE TABLE at D.06) -->
+## 3. §3 — THE ABSTRACT COCYCLE ARENA AND THE ϑ ORIENTATION TABLE
+
+> **Design note (why a bare `CommGroup`).** Every §3 identity is an identity between elements
+> constructed from a height-indexed section into a commutative group; the corpus proves them by
+> "exact-height arithmetic" plus residue multiplicativity, and the exact-height part is pure
+> group algebra. Proving the group half once, abstractly, is what makes the level-1 instance
+> (§4), the `i = 2` GENTOW2 instance (chapter C's, consumed at D.42) and the depth-`i ≥ 3`
+> conditional layer (§9) *instances of one theorem* instead of three parallel calculations —
+> exactly D-1's licence (honesty item D-H3).
+
+### NODE D.01 [def] [fresh]
+
+**STATEMENT.** *The normalizer section.* A **normalizer section** on a commutative group `G` is
+a map `n : ℤ → G` (heights are integers — `EFF.T1.02`'s integrality clause scopes every consumed
+height to `ℤ`) with the height-zero normalization `n 0 = 1` (`(C2-zero-normalizer)`,
+`EFF.T1.02`). This is the whole §3 carrier: exact heights, residues, and the tower do not enter
+until D.07.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Gauge
+
+/-- A **normalizer section** at a fixed tower level: heights to monomials, normalized at
+height zero (`C2-zero-normalizer`, `EFF.T1.02`; `N(0) = 1`, `EFF.T3.01`). -/
+structure NormSection (G : Type*) [CommGroup G] where
+  n : ℤ → G
+  n_zero : n 0 = 1
+```
+
+**DEPENDS.** none.
+
+**PROOF.** definitional.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.T1.02` (the boxed `(C2-zero-normalizer)`: "n̂_i(0) = 1"); `EFF.T3.01`
+("`N(k) := n̂_i(k)`, `N(0) = 1`"); `EFF.T1.01` (the level-1 instance this abstracts — the
+exact-height clause `i(k)h + a(k)e₁ = k` becomes D.07's `exact_height` field, not a field
+here).
+
+**TEETH.** T3 §8.1(1) (normalized endpoints) → Lean theorem at D.05/D.09.
+
+**ENVIRONMENT.** ENV-D2.
+
+---
+
+### NODE D.02 [def+lemma] [fresh]
+
+**STATEMENT.** *The normalizer cocycle `τ` and its endpoints.* For a normalizer section `N`,
+`τ(a,b) := n(a)·n(b)·n(a+b)⁻¹`, with `τ(0,a) = τ(a,0) = 1`. (The corpus's quotient
+`n̂(a)n̂(b)/n̂(a+b)` — division is `·⁻¹` in `G`.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Gauge
+
+/-- The T1 normalizer two-cocycle `τ_N(a,b) = N(a)N(b)/N(a+b)` (`EFF.T1.08`, `EFF.T3.02`). -/
+def NormSection.tau {G : Type*} [CommGroup G] (N : NormSection G) (a b : ℤ) : G :=
+  N.n a * N.n b * (N.n (a + b))⁻¹
+
+theorem NormSection.tau_zero_left {G : Type*} [CommGroup G] (N : NormSection G) (a : ℤ) :
+    N.tau 0 a = 1
+-- and the mirror `tau_zero_right`, a private corollary in the same file (commutativity)
+```
+
+**DEPENDS.** D.01.
+
+**PROOF.** 1. Unfold: `τ(0,a) = n 0 * n a * (n (0+a))⁻¹`. 2. `N.n_zero` + `zero_add` +
+`mul_inv_cancel`-shape closes it (`simp [NormSection.tau, N.n_zero]`). 3. Mirror by
+`add_comm`/`mul_comm`.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.T1.08` ("`τ_i(0,a) = τ_i(a,0) = 1`" — the endpoint half; R1-2's derivation
+"`n̂(0) = 1` gives both endpoints"); `EFF.T3.02` (the imported `(T1-C2)` display).
+
+**TEETH.** T3 §8.1(3) (no competing frame — the τ used everywhere below is THIS τ) →
+executable regression retained (§12); the endpoint half → Lean theorem (this node).
+
+**ENVIRONMENT.** ENV-D2.
+
+---
+
+### NODE D.03 [lemma] [fresh]
+
+**STATEMENT.** *The cocycle law `(C2-cocycle)`.* For all `a b c : ℤ`:
+`τ(a,b)·τ(a+b,c) = τ(b,c)·τ(a,b+c)`.
+
+**SIGNATURE.**
+```lean
+theorem NormSection.tau_cocycle {G : Type*} [CommGroup G] (N : NormSection G) (a b c : ℤ) :
+    N.tau a b * N.tau (a + b) c = N.tau b c * N.tau a (b + c)
+```
+
+**DEPENDS.** D.02.
+
+**PROOF.** 1. Unfold `tau`: both sides are products of `n a, n b, n c` and one inverse
+`(n (a+b+c))⁻¹` (the middle terms `n (a+b)`/`n (b+c)` cancel against their inverses).
+2. Rewrite the two argument spellings by `add_assoc` (`(a+b)+c = a+(b+c)`), then `group`.
+This is the corpus derivation verbatim: "Associativity compares the two parenthesizations of
+three normalizers" (`EFF.T1.08`).
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.T1.08` (the boxed `(C2-cocycle)`); `EFF.T3.02` (re-imported as `(T1-C2)`).
+
+**TEETH.** T1's "misindexed telescope tooth" (`EFF.T1.08` TEETH) → the mutation this statement
+kills is a shifted argument; Lean theorem (this node) + gate D.72's numeric leg.
+
+**ENVIRONMENT.** ENV-D2.
+
+---
+
+### NODE D.04 [def] [fresh]
+
+**STATEMENT.** *The two telescope orientations, at the group level.* For a section `N`, a
+ladder step `q : ℤ` and `s : ℕ`:
+
+* `varthetaEl N q s := (n q)^s · (n (s·q))⁻¹` — **T1's orientation** (`(C2-vartheta)`,
+  `EFF.T1.09`: numerator the TOP-STEP power `n̂(u)^s`, denominator the slot-height normalizer
+  `n̂(su)`);
+* `thetaEl N q s := n (s·q) · ((n q)^s)⁻¹` — **the B-law (inverse) orientation**
+  (`(C3-Theta)`/`(T1-THETA)`: `Θ = ϑ⁻¹`).
+
+The suffix `El` marks the group ELEMENT; the `K`-valued residues are D.08's `vartheta`/`theta`.
+
+**SIGNATURE.**
+```lean
+/-- T1's telescope orientation: the group element under `ϑ_{i,s} = res(n̂(u)^s / n̂(su))`
+(`EFF.T1.09` (C2-vartheta)). ORIENTATION: T1 two-index; see D.06 (`D-THETA-TABLE`). -/
+def NormSection.varthetaEl {G : Type*} [CommGroup G] (N : NormSection G) (q : ℤ) (s : ℕ) : G :=
+  (N.n q) ^ s * (N.n (s * q))⁻¹
+
+/-- The B-law orientation `Θ_N(s;q) = ϑ_N(s;q)⁻¹` (`EFF.T3.04` (T1-THETA), `EFF.T1.14`
+(C3-Theta)). ORIENTATION: inverse of `varthetaEl`; see D.06. -/
+def NormSection.thetaEl {G : Type*} [CommGroup G] (N : NormSection G) (q : ℤ) (s : ℕ) : G :=
+  N.n (s * q) * ((N.n q) ^ s)⁻¹
+```
+
+**DEPENDS.** D.01.
+
+**PROOF.** definitional.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.T1.09` (the boxed `(C2-vartheta)` — the fraction `n̂_i(u_{i+1})^s /
+n̂_i(su_{i+1})`); `EFF.T3.03` (`ϑ_N(s;q) := res(N(q)^s / N(sq))`); `EFF.T3.04`
+(`Θ_N(s;q) := ϑ_N(s;q)⁻¹ = res(N(sq)/N(q)^s)`); `EFF.T1.14` (`(C3-Theta)`).
+
+**ORIENTATION.** T1 two-index convention for `varthetaEl`; `thetaEl` is its inverse — rows 1–2
+of D.06. The slot reindexing `s = f_{i+1} − t` is applied at consumers (D.33, D.58), never
+baked into these definitions.
+
+**TEETH.** T1 "inverse-orientation tooth" (`EFF.T1.11/.14/.15` TEETH) → Lean theorem at D.10 +
+gate D.72.
+
+**ENVIRONMENT.** ENV-D2.
+
+---
+
+### NODE D.05 [lemma] [fresh]
+
+**STATEMENT.** *Telescope endpoints and recursion `(C2-recursion)`/`(T1-TEL)`, group level.*
+`varthetaEl N q 0 = 1`; `varthetaEl N q 1 = 1`; and
+`varthetaEl N q (s+1) = varthetaEl N q s · tau N (s·q) q`.
+
+**SIGNATURE.**
+```lean
+theorem NormSection.varthetaEl_succ {G : Type*} [CommGroup G]
+    (N : NormSection G) (q : ℤ) (s : ℕ) :
+    N.varthetaEl q (s + 1) = N.varthetaEl q s * N.tau (s * q) q
+-- with `varthetaEl_zero` and `varthetaEl_one` as sibling lemmas in the same file
+-- (one public declaration = the recursion; the endpoints are its two `simp` corollaries,
+--  public per the STATEMENT — the stub signs all three)
+```
+
+**DEPENDS.** D.01, D.02, D.04.
+
+**PROOF.** 1. `varthetaEl q 0 = (n q)^0 · (n 0)⁻¹ = 1` by `pow_zero`, `N.n_zero`
+(`Nat.cast`-arithmetic: `(0 : ℕ) * q = 0`). 2. `varthetaEl q 1 = n q · (n q)⁻¹ = 1`
+(`one_mul` cast). 3. Recursion: unfold; RHS
+`= (n q)^s (n (sq))⁻¹ · n (sq) · n q · (n (sq + q))⁻¹ = (n q)^{s+1} (n ((s+1)q))⁻¹` by
+`group` after the cast rewrite `((s+1 : ℕ) : ℤ) * q = s*q + q` (`push_cast; ring_nf`). This is
+the corpus derivation: "Factor `N(u)^{s+1}/N((s+1)u)` through `N(su)`" (`EFF.T1.10`).
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.T1.10` (the boxed `(C2-recursion)`: `ϑ_{i,0} = ϑ_{i,1} = 1`,
+`ϑ_{i,s+1} = ϑ_{i,s}·res(τ_i(su_{i+1},u_{i+1}))` — this node is its group-level half; the
+residue half is D.08); `EFF.T3.03` (`(T1-TEL)`).
+
+**ORIENTATION.** T1 two-index (D.06 row 1).
+
+**TEETH.** T3 §8.1(1) (endpoints) and §8.1(2) (recurrence) → Lean theorem (this node) +
+executable at gates D.70–D.72; T1 §4.2 check 2 (positive-wrap/wrong-sign) → the recursion's
+`τ`-factor is on the RIGHT of the product, the sign discipline the check guards.
+
+**ENVIRONMENT.** ENV-D2.
+
+---
+
+<a id="D-THETA-TABLE"></a>
+### NODE D.06 [table] [fresh] — ★ THE ϑ FOUR-WAY ORIENTATION TABLE (GC-14 canonical copy)
+
+**ANCHOR: `D-THETA-TABLE`.** This node is the ONE canonical copy of the orientation table
+(GC-14; PROJECT_STATE append #54's mandate: *"the gauge chapter's blueprint carry the four-way
+orientation table as a node annotation, else a sign error no battery catches"*). Chapters C, E
+and F cite this anchor; **no chapter restates the content in its own words.** Transcribed from
+`EFF-GENTOW2.md`'s orientation records (`.25` — the `[TABLE]` at its L1065–1075, including
+L1072 — with `.34`, `.41`, `.42`), T1 `EFF.T1.14`, T3 `EFF.T3.04`/`.19`, and T5's closing
+reconciliation (T5 source L991–993, carried as row 5's verification record).
+
+**THE TABLE.** GENTOW2's single-argument, slot-indexed unit is the reference. Slots `t < f₃`;
+under the substitution `s := f₃ − t`, its defining display (`EFF.GENTOW2.41`) is
+`ϑ(t) := res((n̂₂(u₃(f₃−t)) / n̂₂(u₃)^{f₃−t})(x₀)) = res(n̂₂(su₃)/n̂₂(u₃)^s)` — numerator at
+the SLOT height, denominator the `(f₃−t)`-th power of the TOP-SLOT normalizer.
+
+| # | note · symbol | definition | relation to GENTOW2's `ϑ(t)` | Lean name (this chapter) |
+|---|---|---|---|---|
+| 1 | **GENTOW2** `ϑ(t)` | `res((n̂₂(u₃(f₃−t))/n̂₂(u₃)^{f₃−t})(x₀))` | — (the reference) | `varthetaG2` (D.10) |
+| 2 | **T1** `(C3-Theta)` · `Θ_i(t)` | `ϑ_{i,f_{i+1}−t}^{−1} = res(n̂_i((f_{i+1}−t)u_{i+1})/n̂_i(u_{i+1})^{f_{i+1}−t})` | **`ϑ(t) = Θ₂(t)`** — same object; hence GENTOW2's ϑ is the **INVERSE** of T1's two-index `ϑ_{i,s}` | `theta` at `s = f_{i+1}−t`; T1's `ϑ_{i,s}` = `vartheta` |
+| 3 | **T3** `(T1-THETA)`/`(ABS-G2)` · `Θ_N(s;q)` = `ϑ_{G2}(t)` | `ϑ_N(s;q)^{−1} = res(N(sq)/N(q)^s)`; `ϑ_{G2}(t) := res(n̂₂(su₃)/n̂₂(u₃)^s) = Θ_N(s;u₃)` | **`ϑ(t) = ϑ_{G2}(t) = Θ_N(f₃−t; u₃)`**; T3 records the inverse orientation explicitly at its §8.1 check 2 | `theta` (same object as row 2) |
+| 4 | **GENTOW5** `LEMMA GENTOW5-A1` · `vartheta_t` (source L214–215) | `theta_t := [n̂₂(λ)(x₀)]^t · [n̂₂(tλ)(x₀)]^{−1} = ι(vartheta_t)` | **RECIPROCAL**: A1's `theta_t = res(n̂₂(λ)^t/n̂₂(tλ))`, so **`ϑ(t) = vartheta_{f₃−t}^{−1}` at `λ = u₃`** — the exact pair append #54's trap names. GENTOW2 itself **DECLINES to adjudicate** this correspondence (its NON-IMPORT N-7) — which is why THIS TABLE, not either note alone, is the authority | A1's `theta_t` = `vartheta u₃ t` (T1 orientation, argument `t` not `f₃−t`) |
+| 5 | **T5** L991–993 (the reconciliation) | "B″'s single-argument `ϑ(t)` is this note's `Θ₂(t)`, the inverse-telescope orientation" | the acceptance-pass verdict that closes the loop — **VERIFIED** (T5 ledger item 2, byte span `33f86204` L729–738, ledger md5-8 `d4c8b885`, raw-span md5 `8978f8ba…`; both legs re-checked at EFF compile time, `EFF.GENTOW2.25`) | — (a verification record, not a new object) |
+
+**THE B-LAW DIRECTION — separate, and NOT to be conflated with the Θ/ϑ inversion.**
+`u(β) := R_{3,β}(n̂₂(β̂))` is an FGMN-side read of a repo-side object, and direction (3) of
+`LEMMA GENTOW2-B′` reads **`FGMN = u · repo`**, i.e. `R_{3,β}(g) = u(β)·digit(g)` — **NOT the
+inverse** (`EFF.GENTOW2.34`'s orientation record; the r2 F3 finding exists because a fallback
+clause once wrote the inverse convention). T1's `(C3-B-law)` `u(β_t) = Θ_i(t)·w_i^{f_{i+1}−t}`
+and T3's `(ABS-G2)` `u(β_t) = ϑ_{G2}(t)·w^{f₃−t}` agree in that orientation — all three sides
+consistent, and D.33 states the Lean form in exactly it.
+
+**TOP-SLOT NORMALIZATION ANCHOR.** `ϑ(f₃−1) = 1`: the top slot `t = f₃−1` has `s = 1`, and
+`κ̄ = β_{f₃−1}` gives `ϑ(f₃−1) = res(n̂₂(u₃)/n̂₂(u₃)¹) = 1` (`EFF.GENTOW2.41`'s orientation
+record) — T3's §8.1 item 1 (`ϑ_N(0;q) = ϑ_N(1;q) = 1`) is the same anchor in T1 orientation
+(both orientations agree at `s ∈ {0,1}` since `1⁻¹ = 1`). Lean form: D.09.
+
+**THE LEAN CONTENT OF THIS NODE** (the inversion, as a theorem — the executable half of the
+sign discipline):
+
+**SIGNATURE.**
+```lean
+/-- ★ D-THETA-TABLE. The two telescope orientations are mutually inverse:
+`Θ_N(s;q) · ϑ_N(s;q) = 1` (T3 §8.1 check 2's content, group level). Consumers: see the
+four-way orientation table at blueprint anchor `D-THETA-TABLE` (CHAP-D node D.06). -/
+theorem NormSection.thetaEl_mul_varthetaEl {G : Type*} [CommGroup G]
+    (N : NormSection G) (q : ℤ) (s : ℕ) :
+    N.thetaEl q s * N.varthetaEl q s = 1
+```
+
+**DEPENDS.** D.04.
+
+**PROOF.** Unfold both; `group`.
+
+**SIZE.** 8 Lean lines (the table is blueprint annotation, not Lean text; the docstring
+carries the anchor pointer).
+
+**SOURCE.** GC-14 (the czar pin — content re-transcribed from the specs, not from the pin);
+`EFF.GENTOW2.25` (the `[TABLE]` and the T5-verification record), `.34` (the B-law direction
+record), `.41` (the defining display + top-slot anchor), `.42` (ϑ is x₀-free and
+letter-valued — the fact that makes row 1's object land in the letter group, D-1's `i = 2`
+licence); `EFF.T1.14` (`(C3-Theta)`, `(C3-B-law)`); `EFF.T3.04` (`(T1-THETA)`), `EFF.T3.19`
+(`(ABS-G2)`); GENTOW5-A1 row: `EFF-GENTOW2.md:1072` (per GC-14 — GENTOW5's own spec carries
+the merged-ID twin; C's author resolves it, GC-12).
+
+**TEETH.** The trap has NO battery (append #54: "a sign error no battery catches") — the
+teeth are (i) this node's Lean inversion theorem, (ii) D.10's `K`-valued form, (iii) gate
+D.72's numeric orientation leg (`U(s) = Θ_s w^s` at the FRAME-C tables), and (iv) the
+`ORIENTATION:` field discipline on every ϑ-touching node of chapters C/D/E/F.
+
+**ENVIRONMENT.** ENV-D2.
+
+---
+<!-- RESUME: §3 through D.06 committed; next = D.07–D.12 -->
 
 <!-- CHAP-D APPEND POINT — do not remove; sections are appended here in order -->
