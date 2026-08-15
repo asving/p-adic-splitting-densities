@@ -507,6 +507,357 @@ in NOT-ON-CAPSTONE-PATH (MERGED); the 35 CARRY rows split into the Display-A con
 (OPEN-MATH), the cite (HYP.15), and the all-O block's per-row terminations (§3.8). **No row is
 silently dropped: 6+16+26+2+7+36+61 = 154.**
 
-<!-- RESUME: §3 complete (154 rows + CAP/COND + census). Next: §4 carriers + structure. -->
+---
+
+## 4. §4 — THE DISPLAY-A CARRIERS AND THE CAPSTONE HYPOTHESIS STRUCTURE
+
+> **Section contract.** One field per Display-A conjunct, at exactly ledger strength,
+> degree-indexed where the display is (`if n ≥ 6`, `if n ≥ 8`). Under Part V gate (a), the
+> field list of I.10 is capstone-conditionality state: **any field change (add, remove,
+> restate) is owner-gated** — including the removal WELD-ZERO would license (I-7). Carrier
+> `def`s are `Prop`s; none is proved; non-vacuity is a leanspec elaboration check plus the
+> `n ≤ 2` conclusion gates (I.23), never a claimed instance (a `Prop` structure's
+> instantiability IS the open mathematics).
+
+### NODE I.01 [def] [fresh]
+
+**STATEMENT.** *`NS7(O)` — the termination hypothesis, at exactly HYP.15's strength.* The
+project's MacLane/Okutsu key-polynomial descent terminates over every complete DVR in scope:
+for every `O` in the bundle and every monic squarefree `f` over `O`, every descent history of
+the tower grammar on `f` reaches multiplicity `1` (or a terminating α-refine chain) in
+finitely many steps. **This is the carried-hypothesis form**; the DISCHARGE is the gate-(b)
+cite C.94 ([AGNPRW] Thm 5.2) — once C.94's axiom is signed and landed, this `Prop` is proved
+from it and the field becomes cite-conditional, visible to `#print axioms` (gate I.25).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+/-- `NS7(O)` (Display A line 1; ledger HYP.15, CARRY-as-CITE): OM descent terminates over
+every complete DVR with finite residue field. Discharged by chapter C's gate-(b) cite C.94
+([AGNPRW] Thm 5.2) once signed; carried as a named Prop until then. -/
+def NS7Termination : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
+    True  -- ⚠ STUB-STAGE BODY: the real body quantifies over C's descent-history type
+          -- (C §5's level-datum chain over the FIXED bundle, GC-7) and asserts finiteness.
+          -- FROZEN HERE: the name, the bundle quantifier, the Prop kind. The body is typed
+          -- against C's committed §5 carriers at stub time (GC-13 tier (b): C is committed).
+```
+
+**⚠ BLOCKED-UNTIL-RESOLUTION (the E.51-class pattern, disclosed).** The body references
+chapter C's descent-history carrier by name; C is committed but its §5 Lean types land at stub
+stage. Per CHAP-E's precedent (its four `True`-placeholder nodes, E §14 item 11) this node is
+**BLOCKED-UNTIL-RESOLUTION: the fleet must not fire on it while the placeholder body reads
+`True`** — the orchestrator's stub-resolution pass types it. It is listed so in §11.
+
+**DEPENDS.** C §5's level-datum/descent types [C committed; exact names at stub time] · C.94
+(the discharging cite). **PROOF.** definitional. **SIZE.** 14 lines.
+**SOURCE.** ledger HYP.15 (verbatim disposition, Q1's answer: *"in Lean, NS7 stays a carried
+hypothesis until proved or declared-with-faithfulness"*); Display A line 1.
+**TEETH.** none (a carrier); the cite's teeth are C.94's faithfulness entry + audit A-3.
+**ENVIRONMENT.** ENV-I1.
+
+---
+
+### NODE I.02 [def] [fresh]
+
+**STATEMENT.** *`A0_n` — the decided-value law at degree `n` (HYP.25's Lean-facing slice).*
+The degree-`n` slice of the certified target: for every splitting type `σ` of degree `n` there
+exist `num, den ∈ ℚ[x]`, `den ≠ 0`, with `decidedDensity O n σ = num(q)/den(q)` (and
+`den(q) ≠ 0`) at every `O` in the bundle — i.e. exactly `UniformityStatementDecided`'s body
+with `n` fixed. The `∃` stands outside the `∀ O` (the uniformity order).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+/-- `A0_n` (Display A; ledger HYP.25): the degree-`n` decided-value law — the degree-`n`
+slice of `UniformityStatementDecided`. FAITHFULNESS: the corpus states `(A0)` on the
+`disc ≠ 0` locus; `decidedDensity` counts the every-lift decided classes (GC-9, the
+strictly stronger read) — divergence recorded, honesty I-6. -/
+def DecidedSliceAt (n : ℕ) : Prop :=
+  ∀ σ : FactorizationType, σ.degree = n →
+    ∃ num den : Polynomial ℚ, den ≠ 0 ∧
+      ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+        [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
+        den.eval ((residueCard O : ℕ) : ℚ) ≠ 0 ∧
+          decidedDensity O n σ
+            = ((num.eval ((residueCard O : ℕ) : ℚ) / den.eval ((residueCard O : ℕ) : ℚ) : ℚ) : ℝ)
+```
+
+**DEPENDS.** landed `UniformityStatementDecided` (the body is its literal slice — copy the
+landed body, do not re-type it), `decidedDensity`, `residueCard`, `FactorizationType`.
+**PROOF.** definitional. **SIZE.** 14 lines.
+**SOURCE.** ledger HYP.25 (`A0` lift well-posedness, "fixed-n public assumption with
+load-bearing fence"); H.95's SIGNATURE NOTE (the (A0)-routes-to-`hdec` decision, consumed
+here as the slice form); `Statement.lean:84–91` (the body).
+**TEETH.** none (carrier); the `n = 2` instance is FIRED unconditionally by gate I.23 (from
+landed `genuineDensity_two_exact` + the `n = 2` drainage tie), which is the field's
+non-vacuity witness.
+**ENVIRONMENT.** ENV-I1.
+
+---
+
+### NODE I.03 [def] [fresh]
+
+**STATEMENT.** *`A1_n` — the exact-core-menu law at degree `n` (HYP.26, at ledger strength).*
+For degree `n`: there is a finite covering menu — `∃ S : Finset FactorizationType` with
+`CoveringMenu O n S` for every `O` — **whose shape is `(A1)`-admissible**: the menu is carried
+by an `A1Family` (H.93's cells with σ-labels, q-independent coefficients, affine exponents)
+whose cells' σ-labels enumerate `S`. Fixed `n`, all `q` simultaneously; σ is not an A1 binder
+(the labels are internal data — ledger wording).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+/-- `A1_n` (Display A; ledger HYP.26; COND:A1_n's resolution — I.13): a q-independent
+`(A1)`-admissible family list carrying a covering menu at degree `n`. The shape clause uses
+chapter H's committed `A1Family`/`A1Cell` (H.93, with W-12 r4's σ-label field). -/
+def MenuLawAt (n : ℕ) : Prop :=
+  ∃ (r : ℕ) (F : Induction.A1Family r) (S : Finset FactorizationType),
+    (∀ C ∈ F, C.σ ∈ S) ∧ (∀ σ ∈ S, σ.degree = n) ∧
+    ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+      [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
+      CoveringMenu O n S
+```
+
+**⚠ SIGNATURE NOTE.** The exact-weights clause of HYP.26 ("internal σ_F labels and exact
+weights") is carried by the `A1Cell.coeff` field plus the count laws (C.114/H §7) — this
+carrier states the menu + shape + labels; the WEIGHT-correctness tie is part of the count
+layer (OPEN-MATH, §3 rows HYP.23/32/35), deliberately not smuggled into the carrier. Recorded
+as the carrier's one under-statement; the cross-read checks it (§13 item 4).
+
+**DEPENDS.** H.93 (`A1Cell`, `A1Family`; committed contract) · landed `CoveringMenu`,
+`FactorizationType`. **PROOF.** definitional. **SIZE.** 16 lines.
+**SOURCE.** ledger HYP.26 (verbatim: "a finite disjoint q-independent family list carries
+internal σ_F labels and exact weights; σ is not an A1 binder"); `EFF.GENIND.13` (the package's
+menu member); DAG_README flag 6 (the `COND:A1_n` orphan this resolves with I.13).
+**TEETH.** the `n = 2`/`n = 3` menu instances are landed (`coveringMenu_two`,
+`coveringMenu_three`) — gate I.23 fires them as the field's non-vacuity witnesses (menu
+clause only; the A1Family shape at `n ≤ 3` is a stub-stage exercise flagged in §11).
+**ENVIRONMENT.** ENV-I1.
+
+---
+
+### NODE I.04 [note] — `A2_n` IS LANDED `DrainageAt n` (no new Lean)
+
+`A2_n`'s formal carrier exists: `Uniformity.Density.DrainageAt` (`Statement.lean:118`),
+PROVED at `n = 1` (`drainage_one`) and `n = 2` (`drainage_two`), open at `n ≥ 3`. Chapter I
+declares **no** parallel drainage Prop (that would double-count the leg — honesty I-4). The
+COND resolution is I.12; the structure field `a2` (I.10) binds the landed name directly.
+DAG rows: `BP.I.04 → lean:DrainageAt`, `BP.I.04 → HYP.27`, `COND:A2_n → BP.I.04`.
+
+---
+
+### NODE I.05 [def] [fresh]
+
+**STATEMENT.** *`(H-e)-window-pinning` — the pinning carrier (HYP.24's pinning half; the
+third COND orphan).* All read data consumed by a stage decision are pinned inside the stage
+window: no read consults a height in the ragged band, and every consulted position is
+`≤ N − 1` in window coordinates. At `e₁ = 2` this is DISCHARGED by H.89's ledger (contract:
+`consulted_ram`/2SIDED/SPLITEQ clauses); at general genres it is the `StageInterface.hwin`
+field's content, per-genre (GC-5's table).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+/-- `(H-e)-window-pinning` (Display A; ledger HYP.24's pinning half; COND resolution I.14).
+Supplier re-sourcing per v4: LEMMA GENHN-3 + GENIND-2's consulted-height bound — NOT the
+off-route (H-a)/(H-b) leg. Discharged at `e₁ = 2` by H.89; general case = per-genre `hwin`. -/
+def WindowPinningAt (n : ℕ) : Prop :=
+  True  -- ⚠ STUB-STAGE BODY (BLOCKED-UNTIL-RESOLUTION): the real body quantifies over the
+        -- degree-n stage data (H.09's StageInterface instances) and asserts the hwin
+        -- clause at every stage of every genre of degree n. Typed at stub time against
+        -- H.09's committed field list; FROZEN HERE: name, degree index, Prop kind.
+```
+
+**DEPENDS.** H.09 (`StageInterface.hwin`, committed) · H.89 (the `e₁ = 2` discharge,
+committed). **PROOF.** definitional. **SIZE.** 10 lines.
+**SOURCE.** ledger HYP.24 (the v4 SUPPLIER RE-SOURCED block, verbatim: "the pinning is
+supplied elementarily, by `LEMMA GENHN-3` … together with GENIND-2's consulted-height
+bound"); `EFF.GENHN.29`; CHAP-H H.89 + §16 item 3 (the `hwin` carry).
+**TEETH.** none (carrier); H.89's own audit rows are the `e₁ = 2` teeth.
+**ENVIRONMENT.** ENV-I1.
+
+---
+
+### NODE I.06 [def] [fresh]
+
+**STATEMENT.** *`[GENHN-HE(μ ≥ 3)]` — the deep-leaf σ-decision carrier (HYP.81), degree-
+indexed `n ≥ 6`.* Stage leaves of multiplicity `μ ≥ 3` arising in the degree-`n` problem have
+the required σ-decision (separable stage residuals decide σ with the `(eE, f[K-ext])`
+transport for all lifts — GC-9 form). Scope split carried IN the docstring: `μ = 3`
+(first-live `n = 6, 7`) is corpus-unconditional (HE3.A) awaiting a transcription owner (O-1);
+`μ ≥ 4` (`n ≥ 8`) rides HYP.143.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+/-- `[GENHN-HE(μ ≥ 3)]` (Display A, `if n ≥ 6`; ledger HYP.81). μ = 3 slice: THEOREM HE3.A,
+unconditional in the corpus, transcription owner UNASSIGNED (orchestrator O-1). μ ≥ 4: open
+(HE3-BOX-6, HYP.143). Consumers return `BLOCKED: HYP.81`, never assume. -/
+def GenhnHEAt (n : ℕ) : Prop :=
+  True  -- ⚠ STUB-STAGE BODY (BLOCKED-UNTIL-RESOLUTION): quantifies over degree-n stage
+        -- leaves with μ ≥ 3 (H's StageLeaf/GenreDatum layer) asserting the σ-decision
+        -- clause. Typed at stub time against H.01/H.09 + the O-1 resolution.
+```
+
+**DEPENDS.** H.01/H.09 (committed carriers) · the O-1 transcription (future).
+**PROOF.** definitional. **SIZE.** 10 lines.
+**SOURCE.** ledger HYP.81 (incl. the v3 SCOPE SPLIT verbatim); `EFF.GENHN.40`.
+**TEETH.** none (carrier). **ENVIRONMENT.** ENV-I1.
+
+---
+
+### NODE I.07 [def] [fresh]
+
+**STATEMENT.** *`[GENHN-TOW-1]` — the deep-tower supplier carrier (HYP.82), degree-indexed
+`n ≥ 8`.* The `n ≥ 8` tower leg satisfies the additional GENHN supplier law — the census
+C.93 makes formal ("seven items under six numerals" [F8]; items (1)–(5)+(6)(β) are C
+theorems, (6)(α) at depth 3 is C.90/C.91, depth ≥ 4 claimed nowhere).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+/-- `[GENHN-TOW-1]` (Display A, `if n ≥ 8`; ledger HYP.82). Keyed to chapter C's census
+C.93: the boxed remainder is the n ≥ 8 open family (HYP.67–71/78–80/142/143/144-BOX-2). -/
+def GenhnTow1At (n : ℕ) : Prop :=
+  True  -- ⚠ STUB-STAGE BODY (BLOCKED-UNTIL-RESOLUTION): the census conjunction, typed
+        -- against C.93's #check-suite names at stub time (C committed).
+```
+
+**DEPENDS.** C.93 (committed contract). **PROOF.** definitional. **SIZE.** 8 lines.
+**SOURCE.** ledger HYP.82; C.93's STATEMENT (the census made formal).
+**TEETH.** none (carrier); C.93's S4-witness regression is the census's teeth.
+**ENVIRONMENT.** ENV-I1.
+
+---
+
+### NODE I.08 [def] [late-binding: chapter F] — `JD0-BOX-2`
+
+**STATEMENT (placeholder at GC-13(c) strength).** *The unit-character gauge-form perimeter
+(HYP.74).* The weld's entire conditional value dictionary acts by slot-wise unit characters —
+`EFF.JD0.05` [supplied-by: chapter F]. Chapter F's §4 composes the carrier
+(`GaugeFormPerimeter`/`JD0Box2`, F.01–F.06 at F's current §2 index) and the per-site strike
+ledger; chapter I binds the FIELD NAME `jd0` (I.10) to F's carrier at F's freeze (§9). Until
+then this node is a placeholder: **no Lean file**; the DAG row targets `EFF.JD0.05`.
+
+**SOURCE.** ledger HYP.74 (CARRY, reachability SIGNED; grade bar signed at HYP.39); Display A.
+**RESOLUTION.** §9 item L-1 (orchestrator, at F freeze).
+
+---
+
+### NODE I.09 [def] [late-binding: chapter F] — `GENHN-BOX-2` + the W-1 sub-residue
+
+**STATEMENT (placeholder at GC-13(c) strength).** *The W-9 graded face (HYP.148, `if n ≥ 6`)
+with its W-1 transport sub-residue (HYP.139).* LEMMA GENHN-4's layer 1 at `μ ≥ 3` consumes
+COROLLARY W-9's twisted group algebra as the carry bookkeeping — `EFF.GENHN.50` [supplied-by:
+chapter F] (F §5's `GenhnBox2` + `W1Transport` carriers). The WELD-ZERO arc note travels with
+the field (I-7): IN-PROGRESS, 1-of-2, licenses nothing; removal on a passed arc is owner-gated.
+**No Lean file** until F freezes; DAG rows target `EFF.GENHN.50` and HYP.139/148.
+
+**SOURCE.** ledger HYP.148 (incl. v6/v7 ARC NOTEs), HYP.139; Display A.
+**RESOLUTION.** §9 item L-2.
+
+---
+
+### NODE I.10 [structure] [fresh] — **THE CAPSTONE HYPOTHESIS STRUCTURE**
+
+**STATEMENT.** *Display A, made formal: one field per conjunct, at ledger strength,
+degree-indexed where the display is.* For a degree `n`, `CapstoneHypotheses n` carries:
+`ns7` (I.01); `ladder` — the σ-ladder supply quantified over rung instantiations
+(E.24's `LadderSupply`, which packages `HE7A[…]`, `(LB1)` = E.39, `(MP1)` = E.40, and the
+`∀ i ≥ 3` deep-twist carriers E.61/E.62 — one field here because E.24 is ONE committed
+bundle; its `.lb1`/`.mp1`/`.vartheta` projections are the ledger's three conjuncts); `a0`
+(I.02); `a1` (I.03); `a2` (landed `DrainageAt n`); `jd0` (I.08, late-binding); `genhnBox2`
+(`6 ≤ n →`, I.09, late-binding); `windowPinning` (I.05); `genhnHE` (`6 ≤ n →`, I.06);
+`genhnTow1` (`8 ≤ n →`, I.07). The `AllOInterfaces` conjunct is NOT a field — §4.3's signed
+reconciliation (honesty I-10).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+
+/-- **Display A** (`spec/HYPOTHESIS_LEDGER.md`, FROZEN v5), one field per conjunct.
+Kind note [F7]: H.95's `InductionPackage` is a `def`-Prop existential; this carrier is a
+`structure` and does NOT claim to mirror H.95's kind. Field-list changes are owner gate (a)
+events (CONVENTIONS Part V). -/
+structure CapstoneHypotheses (n : ℕ) : Prop where
+  ns7 : NS7Termination
+  ladder : ∀ (O : Type) [CommRing O] /- bundle -/ (K : Type) [Field K]
+      (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C),
+      Ladder.LadderSupply C B          -- E.24: HE7A + LB1 + MP1 + ∀ i ≥ 3 carriers
+  a0 : DecidedSliceAt n
+  a1 : MenuLawAt n
+  a2 : DrainageAt n
+  jd0 : True                            -- ⚠ LATE-BINDING F (I.08); typed at F freeze
+  genhnBox2 : 6 ≤ n → True              -- ⚠ LATE-BINDING F (I.09); typed at F freeze
+  windowPinning : WindowPinningAt n
+  genhnHE : 6 ≤ n → GenhnHEAt n
+  genhnTow1 : 8 ≤ n → GenhnTow1At n
+```
+
+**⚠ THE TWO `True` FIELDS ARE PLACEHOLDERS, NOT VACUITIES-BY-DESIGN.** They are the
+chapter-E BLOCKED-UNTIL-RESOLUTION pattern applied to a parallel chapter: the orchestrator's
+§9 pass types them against F's frozen carrier names before ANY stub is signed (E §14 item 11
+precedent — "the fleet must not fire on them before that"). A signed stub with a `True` field
+here would be a false conditionality claim — listed as a §11 blocker.
+
+**⚠ QUANTIFIER DISCLOSURE (the `ladder` field).** Display A assumes the ladder suite
+"uniformly in O"; E's carriers are instance-level (per `SlotCarrier`/`BlockData`). The field
+quantifies over ALL instantiations — the strongest uniform reading, matching the ledger's
+"assume uniformly in O" preamble. If the eventual assembly needs only the instantiations
+arising from degree-`n` inputs, weakening the field is a gate-(a) statement change (it
+weakens a hypothesis, hence STRENGTHENS the theorem — still owner-visible because the field
+list is the public conditionality). Cross-read item (§13 item 5).
+
+**DEPENDS.** I.01, I.02, I.03, I.05, I.06, I.07 · E.24 (`LadderSupply`, committed; via it
+E.39/E.40/E.61/E.62) · landed `DrainageAt` · I.08/I.09 (late-binding).
+**PROOF.** definitional. **SIZE.** 24 lines.
+**SOURCE.** Display A verbatim (`spec/HYPOTHESIS_LEDGER.md` "Display A — public interface —
+FROZEN"); ledger rows HYP.15/41/42/57/63/25/26/27/74/148/24/81/82; Brief I product (1) as
+modified by Part V item 2.
+**TEETH.** the structure's teeth are the gates (I.23–I.25) + §12's reconciliation.
+**ENVIRONMENT.** ENV-I1.
+
+---
+
+### 4.3 — NODE I.11 [note] — THE `AllOInterfaces` RECONCILIATION (signed, row by row)
+
+Display A's final conjunct names 14 interface-generality edges. On the Lean side (honesty
+I-10) each terminates as follows — this list is §12's GC-8-rider-(iii) reconciliation, and it
+is SIGNED here rather than carried as a Lean field:
+
+| name | ledger row | Lean-side termination |
+|---|---|---|
+| GENIND-1 | HYP.121 | ∀`O`-free by form: H.93/H.94 (contract) |
+| RMG | HYP.122 | out of cut (`EXT:RMENGINE`); route re-derives — NO import to generalize |
+| ILN | HYP.123 | consumers out of cone; residual rides HYP.148's ∀`O` carrier |
+| GRB | HYP.124 | out of cut (`EXT:GRB_ORDER2`); no import |
+| ITER-LAW | HYP.125 | out of cut (`EXT:ITERLAWN`); no import |
+| W/J | HYP.126 | consumers `[H-a]–[H-c]` out of cone |
+| DU | HYP.127 | pricing-only; no import |
+| W-10 | HYP.128 | census O-11 out of cone |
+| J-D0 | HYP.129 | the ∀`O` binder of F's carrier statement (late-binding) |
+| L2core | HYP.130 | quarry-side; leanfinal does not consume |
+| HUMAN_PROOF | HYP.131 | quarry-side; Q7 policy |
+| local-integrals | HYP.132 | measure route quarantined — Q7 IS the demanded route exclusion |
+| CONV | HYP.133 | leanfinal is monic-native; no projective transfer exists |
+| GENHN-count | HYP.134 | H §7 ∀`O` statements at `μ = 2` (contract); `μ ≥ 3` rides HYP.81/148 |
+
+**The sanity check GC-8 demands passes:** every signed-out name above either has NO consumer
+on the Lean route (rows marked out of cut/cone/quarry — matching §3's NOT-ON-CAPSTONE
+justifications) or terminates in a ∀`O` statement form; none of the 14 hides an unstated
+mathematical assumption of the Lean capstone. **What this does NOT say:** nothing here
+generalizes the INFORMAL corpus's uses — the informal Display A keeps its conjunct untouched;
+this reconciliation is about what the LEAN chain rests on.
+
+<!-- RESUME: §4 complete (I.01–I.11). Next: §5 COND resolutions, §6 assembly. -->
+
 
 
