@@ -1892,4 +1892,366 @@ every row's polygon key).
 
 ---
 
+## 5. §5 — THE SLOT LEMMA AND THE PRODUCT LAW
+
+### NODE B.31 [lemma] [fresh]
+
+**STATEMENT.** *Monic division does not lower the Gauss valuation.* For `φ` monic and any `a ∈ O[X]`:
+`gaussVal a ≤ gaussVal (a %ₘ φ)` and `gaussVal a ≤ gaussVal (a /ₘ φ)`. Consequently
+`gaussVal f ≤ npHgt φ f j` for every `j`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem gaussVal_le_modByMonic (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic)
+    (a : Polynomial O) : gaussVal a ≤ gaussVal (a %ₘ φ)
+
+theorem gaussVal_le_divByMonic (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic)
+    (a : Polynomial O) : gaussVal a ≤ gaussVal (a /ₘ φ)
+
+theorem gaussVal_le_npHgt (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic)
+    (f : Polynomial O) (j : ℕ) : gaussVal f ≤ npHgt φ f j
+```
+
+**DEPENDS.** B.02 · B.08 · B.10 (its step-2 map-commutation, which is the whole content) · B.11.
+
+**PROOF.**
+1. Reduce to the case `gaussVal a ≠ ⊤` (else `a = 0` and both sides are `⊤`), and write
+   `gaussVal a = (k : ℕ∞)`.
+2. By B.08, `π^k` divides every coefficient of `a`, i.e. `a.map ρ = 0` for
+   `ρ := Ideal.Quotient.mk ((maximalIdeal O)^k)`.
+3. By B.10's step 2 (`map` commutes with monic division), `(a %ₘ φ).map ρ = (a.map ρ) %ₘ (φ.map ρ) = 0`
+   and likewise for `/ₘ`.
+4. B.08 in the other direction turns each `map … = 0` back into `(k : ℕ∞) ≤ gaussVal (…)`.
+5. `gaussVal_le_npHgt`: induction on `j`, using both halves at each step
+   (`npHgt φ f j = gaussVal (dev φ f j)` and `dev φ f (j+1) = dev φ (f /ₘ φ) j`).
+
+**SIZE.** 18 lines.
+
+**SOURCE.** `EFF.W12.23` (the development lives at level `N` — i.e. the digits of `a_j` are digits of
+`f`); `EFF.HE3.27`(c).
+
+**TEETH.** signed non-applicable.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE B.32 [lemma] [fresh]
+
+**STATEMENT.** *The representation bound (the carry lemma).* Let `φ` be monic with `0 < deg φ`,
+`0 < ℓ`, and suppose `f = Σ_{t ∈ range K} c t * φ^t` for some family `c : ℕ → O[X]` with **no degree
+restriction**. Then
+
+```
+(Finset.range K).inf (fun t => ℓ • gaussVal (c t) + (u * t : ℕ))  ≤  suppVal φ f u ℓ.
+```
+
+In words: the canonical development minimises the weighted `inf` among all `φ`-representations —
+carrying can only raise the weight, because moving mass from index `t` to index `t+1` adds `u` to the
+weight and cannot lower the Gauss valuation (B.31).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem inf_weight_le_suppVal (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic)
+    (hd : 0 < φ.natDegree) {ℓ : ℕ} (hℓ : 0 < ℓ) (u : ℕ) {f : Polynomial O}
+    {c : ℕ → Polynomial O} {K : ℕ} (hc : ∑ t ∈ Finset.range K, c t * φ ^ t = f) :
+    (Finset.range K).inf (fun t => ℓ • gaussVal (c t) + (u * t : ℕ)) ≤ suppVal φ f u ℓ
+```
+
+**DEPENDS.** B.02 · B.05 · B.07 · B.09 · B.11 · B.14 · B.31 · mathlib `Finset.inf_le`,
+`Finset.le_inf`, `Nat.rec` (strong induction on `Σ_t (c t).natDegree`).
+
+**PROOF.**
+1. **The one-step carry.** Define `c' t := (c t %ₘ φ) + (c (t-1) /ₘ φ)` (with the `t = 0` term reading
+   `c 0 %ₘ φ`), extended by `0` past `K`. Then `Σ_t c' t * φ^t = f` — a computation:
+   `c t = c t %ₘ φ + φ * (c t /ₘ φ)` (`modByMonic_add_div`), and reindexing the `φ * (c t /ₘ φ) * φ^t`
+   terms to index `t+1` is `Finset.sum_range_succ'` plus `pow_succ`.
+2. **The carry raises the weight.** `gaussVal (c' t) ≥ min (gaussVal (c t %ₘ φ)) (gaussVal (c (t-1) /ₘ φ))`
+   (the `inf` of a sum bound: `gaussVal (x + y) ≥ min (gaussVal x) (gaussVal y)`, a private helper of
+   two lines from B.08), and each of those is `≥ gaussVal (c t)` resp. `≥ gaussVal (c (t-1))` by
+   B.31. Hence
+   `ℓ • gaussVal (c' t) + u*t ≥ min (ℓ • gaussVal (c t) + u*t) (ℓ • gaussVal (c (t-1)) + u*(t-1))`,
+   using `u*(t-1) ≤ u*t`. Taking `inf` over `t`, the new `inf` is `≥` the old one.
+3. **Termination.** `Σ_t (c' t).natDegree < Σ_t (c t).natDegree` unless every `c t` already has
+   degree `< φ.natDegree`, because `%ₘ` strictly drops the degree of any `c t` of degree
+   `≥ φ.natDegree` and `/ₘ` drops it by `φ.natDegree ≥ 1`. Strong induction on that sum.
+4. **The base case.** When every `c t` has degree `< φ.natDegree`, B.06's uniqueness gives
+   `c t = dev φ f t` for `t < K`, and the `inf` is `suppVal φ f u ℓ` up to the range: B.08's
+   `gaussVal_range` and B.12's tail clause make the two ranges interchangeable.
+
+**SIZE.** 60 lines. **SPLIT MANDATED → 3**: `B32a.lean` = the two private helpers
+(`gaussVal_add_ge` and the one-step carry identity of step 1); `B32b.lean` = the weight-monotonicity
+of step 2; `B32c.lean` = the induction (steps 3–4) and the contract declaration. The fleet must not
+attempt this as one unit — it is the chapter's largest single combinatorial argument after B.42.
+
+**SOURCE.** `EFF.W12.23` ("Monic division gives the UNIQUE `Φ`-adic development"); the carry
+bookkeeping is `EFF.W12.24`'s "right-to-left sweep" read as an inequality rather than a count.
+
+**TEETH.** `W12-BLOCK` (`EFF.W12.55`, 0/1,594,670) → **executable regression** retained.
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE B.33 [lemma] [fresh]
+
+**STATEMENT.** *The easy half of the product law.* For `φ` monic with `0 < deg φ`, `0 < ℓ`, and any
+`f g ∈ O[X]`:
+`suppVal φ f u ℓ + suppVal φ g u ℓ ≤ suppVal φ (f * g) u ℓ`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem suppVal_add_le_suppVal_mul (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic)
+    (hd : 0 < φ.natDegree) {ℓ : ℕ} (hℓ : 0 < ℓ) (u : ℕ) (f g : Polynomial O) :
+    suppVal φ f u ℓ + suppVal φ g u ℓ ≤ suppVal φ (f * g) u ℓ
+```
+
+**DEPENDS.** B.05 · B.09 · B.14 · B.32 · mathlib `Finset.sum_mul_sum`, `Finset.inf_le`.
+
+**PROOF.**
+1. Let `K` be large enough that B.05 applies to both `f` and `g` (e.g.
+   `K := f.natDegree + g.natDegree + 2`), so `f = Σ_{j<K} dev φ f j * φ^j` and likewise for `g`.
+2. Multiply: `f * g = Σ_{t < 2K} c t * φ^t` with `c t := Σ_{j+i=t} dev φ f j * dev φ g i`
+   (`Finset.sum_mul_sum` plus the `Finset.Nat.antidiagonal` reindexing; the reindexing identity is a
+   private helper).
+3. `gaussVal (c t) ≥ inf over the pairs (j,i) with j+i=t of (gaussVal (dev φ f j) + gaussVal (dev φ g i))`
+   by B.09 (`gaussVal_mul`) and the sum bound `gaussVal (x+y) ≥ min …` (B.32's private helper,
+   extended to a `Finset.sum` by induction).
+4. Hence `ℓ • gaussVal (c t) + u*t ≥ inf_{j+i=t} ((ℓ • gaussVal (dev φ f j) + u*j) + (ℓ • gaussVal (dev φ g i) + u*i))`
+   `≥ suppVal φ f u ℓ + suppVal φ g u ℓ` (`Finset.inf_le` at each of `j` and `i`).
+5. Apply B.32 to the representation of step 2: the left-hand `inf` of B.32 is `≥` the constant of
+   step 4, so `suppVal φ (f*g) u ℓ ≥ suppVal φ f u ℓ + suppVal φ g u ℓ`.
+
+**SIZE.** 34 lines, plus the antidiagonal private helper (~10 lines) and the `Finset.sum` extension of
+the sum bound (~8 lines).
+
+**SOURCE.** `EFF.HE6.06` (the ultrametric inequality, imported classically there — here proved);
+`EFF.HE3.22` (`LEMMA HE3-1′`, whose "generically" is exactly the failure of the reverse inequality
+that B.35 must rule out).
+
+**TEETH.** `HE-PSI` (`EFF.HE3.51`, guarding `.22`) → **Lean theorem** (the inequality half of
+`LEMMA HE3-1′`).
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
+### NODE B.34 [def] [fresh]
+
+**STATEMENT.** *The initial form of a one-sided polynomial.* Say `f` is **`(u,ℓ)`-pure** when
+`sideSet φ f u ℓ` contains both `0` and `f.natDegree / φ.natDegree` — i.e. the polygon is one-sided of
+slope `−u/ℓ` spanning the whole abscissa range. For such `f`, with `H₀` the height at `0`, the
+**initial form** is `resPoly π φ f u ℓ h H₀ ∈ (resField φ)[Y]`, of degree `sideDeg φ f u ℓ h` and with
+nonzero constant term (B.30). Declare the predicate.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- `IsPure φ f u ℓ` : the `φ`-adic polygon of `f` is a single side of slope `−u/ℓ` spanning the whole
+abscissa range `0 … f.natDegree / φ.natDegree`. -/
+def IsPure (φ f : Polynomial O) (u ℓ : ℕ) : Prop :=
+  OnSide φ f u ℓ 0 ∧ OnSide φ f u ℓ (f.natDegree / φ.natDegree)
+```
+
+**DEPENDS.** B.16 · B.20 · B.29 · B.30.
+
+**PROOF.** definitional. The right endpoint is `f.natDegree / φ.natDegree` and not `f.natDegree`,
+because the development index runs to `μ = deg f / deg φ` (B.13). For a `(u,ℓ)`-pure monic `f` of
+degree `μ*m`, B.13 gives `npHgt φ f μ = 0`, so `OnSide … μ` forces `suppVal φ f u ℓ = u*μ` — the
+polygon's right endpoint is at height `0`, as `EFF.HE3.13`'s `A_μ = 1` requires.
+
+**FAITHFULNESS.** `EFF.HE6.32` step 1 and `EFF.HE3.32` both work "at a slope `λ`" with the block
+factor already separated, i.e. on a pure polynomial; `docs/GMN_citations.md` Thm 1.15 phrases the
+conclusion as "`N_φ(F_i)` one-sided of slope `λ_i`". `IsPure` is that conclusion as a predicate.
+**Flagged for human review.**
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `docs/GMN_citations.md` Thm 1.15; `EFF.HE3.32`; `EFF.HE6.32`.
+
+**TEETH.** signed non-applicable (a definition).
+
+**ENVIRONMENT.** ENV-A.
+
+---
+
+### NODE B.35 [theorem] [fresh]
+
+**STATEMENT.** *The theorem of the product at order 1 (NS-9's order-1 case).* Let `φ` be an order-1
+key, `0 < ℓ`, `Nat.Coprime u ℓ`, and let `f, g` be monic with `f`, `g` both `(u,ℓ)`-pure. Then
+
+* `suppVal φ (f * g) u ℓ = suppVal φ f u ℓ + suppVal φ g u ℓ`;
+* `f * g` is `(u,ℓ)`-pure;
+* `resPoly` of `f * g` equals the product of the `resPoly`s of `f` and `g` (with the heights added):
+  `resPoly π φ (f*g) u ℓ h_{fg} (H₀f + H₀g) = resPoly π φ f u ℓ h_f H₀f * resPoly π φ g u ℓ h_g H₀g`;
+* `sideDeg (f*g) = sideDeg f + sideDeg g`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem suppVal_mul_of_pure (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
+    (hf : f.Monic) (hg : g.Monic) (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ) :
+    suppVal φ (f * g) u ℓ = suppVal φ f u ℓ + suppVal φ g u ℓ ∧ IsPure φ (f * g) u ℓ
+
+theorem resPoly_mul_of_pure (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
+    (hf : f.Monic) (hg : g.Monic) (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ)
+    {H₀f H₀g : ℕ} (hHf : npHgt φ f 0 = (H₀f : ℕ∞)) (hHg : npHgt φ g 0 = (H₀g : ℕ∞))
+    (hf' hg' hfg') :
+    resPoly π φ (f * g) u ℓ hfg' (H₀f + H₀g)
+      = resPoly π φ f u ℓ hf' H₀f * resPoly π φ g u ℓ hg' H₀g
+```
+(the three `Nonempty` witnesses are named `hf' hg' hfg'` and are supplied by B.18.)
+
+**DEPENDS.** B.09 · B.13 · B.14 · B.18 · B.20 · B.22 · B.24 · B.25 · B.26 · B.28 · B.29 · B.30 ·
+B.33 · B.34 · B.36 · mathlib `Polynomial.coeff_mul`, `Finset.Nat.sum_antidiagonal_eq_sum_range_succ`,
+and the domain property of `(resField φ)[Y]`.
+
+**PROOF.**
+1. Write `n_f := f.natDegree / m`, `n_g := g.natDegree / m`, so `n_{fg} = n_f + n_g`
+   (`natDegree_mul` for monics plus `Nat.add_div_right`-style arithmetic; a private helper).
+2. `≥` in the first claim is B.33.
+3. For `≤`, compute the digit of the product at the *predicted* height and index and show it is
+   nonzero. By B.05 and the convolution of step 2 of B.33, the development coefficient of `f*g` at
+   index `t` is `c t = Σ_{j+i=t} dev φ f j * dev φ g i` **after carrying**; by B.32's step-1 carry
+   identity the carry contributes only terms of strictly larger weight, so at the minimal weight the
+   digit of `dev φ (f*g) t` equals the digit of the uncarried `c t`.
+4. The digit of `c t` at the line height is `Σ_{j+i=t} (digit of dev φ f j) * (digit of dev φ g i)`
+   by B.22's `digAt_add` and the multiplicativity of `digAt` on products at added heights (a private
+   helper: `digAt π (k+k') (x*y) = digAt π k x * digAt π k' y` when `π^k ∣ x`, `π^k' ∣ y`, immediate
+   from `digAt_eq`).
+5. Pushing into `resField φ` (a ring hom, B.25), the residual coefficient of `f*g` at position `k` is
+   `Σ_{k₁+k₂=k} resCoeff_f k₁ * resCoeff_g k₂`, i.e. `resPoly (f*g) = resPoly f * resPoly g`
+   coefficientwise (`Polynomial.coeff_mul`).
+6. `(resField φ)[Y]` is a domain (`resField φ` is a field, B.25), and both factors are nonzero (B.30:
+   nonzero constant term), so the product is nonzero; in particular its degree-`0` and
+   degree-`(d_f+d_g)` coefficients are nonzero (leading coefficients multiply, constant terms
+   multiply).
+7. A nonzero residual coefficient at position `0` says (B.30's `resCoeff_eq_zero_iff`, contrapositive)
+   that the abscissa `0` is on the `(u,ℓ)`-side of `f*g` at the predicted support value, which forces
+   `suppVal φ (f*g) u ℓ ≤ suppVal φ f u ℓ + suppVal φ g u ℓ`; with step 2 this is the equality, and
+   with the position-`(d_f+d_g)` coefficient it is `IsPure`.
+
+**SIZE.** 90 lines across the split. **SPLIT MANDATED → 4**: `B35a.lean` = the two private helpers
+(index arithmetic of step 1, `digAt` multiplicativity of step 4); `B35b.lean` = the carry-does-not-see
+-the-minimal-weight lemma (step 3, the delicate one); `B35c.lean` = `resPoly_mul_of_pure`
+(steps 4–6); `B35d.lean` = `suppVal_mul_of_pure` (step 7) and the contract.
+
+**⚠ THIS IS THE CHAPTER'S SECOND HARD CORE, AND ITS FALLBACK IS `B-BOX-2`.** Step 3 is the only place
+the carry bookkeeping and the digit read interact, and it is where a wrong estimate would silently
+make B.42 and B.48 false. **`B-BOX-2` (the fallback, to be invoked only on a `BLOCKED` return with a
+minimised reproducer):** restrict the whole chapter to `m = 1` (`φ` linear, `φ̄` of degree 1), where
+`dev φ f j = C (f.coeff j)` after a shift (B.15 at `φ = X`, composed with landed `typeOf_shift`) and
+the carry disappears entirely because every development coefficient is already a constant. At `m = 1`
+steps 3–4 are one line. The cost of the fallback is stated and it is **not** small: `m ≥ 2` would then
+be reachable from `m = 1` only by the unramified base change `O → AdjoinRoot φ` **plus Galois descent
+of the factorization**, neither of which exists in `leanfinal` or in any quarry (H-6). A fleet agent
+returning `BLOCKED` on B.35 must say which of steps 3–7 failed and why.
+
+**⚠ WHY THE RAMIFIED BASE CHANGE IS *NOT* USED HERE, AND WHY THAT MATTERS.** A tempting shortcut for
+the `ℓ ≥ 2` case is `O ↝ O' := O[T]/(T^ℓ − π)`, over which the slope becomes integral and the whole
+argument collapses to the `ℓ = 1` case. `EFF.HE3.44`'s HE3-BOX-6 is precisely the record of that
+shortcut failing: "the substitute ramified base change `O ↝ O[Π]/(Π^ℓ−π)` is **stated too cheaply:
+`Φ′` need not remain irreducible over `O₂`**". **The obstruction is specifically to keeping the key
+irreducible, i.e. to transporting the *residual field*, and it does NOT obstruct transporting a
+*valuation identity*.** So a base change would be admissible for the first clause alone
+(`suppVal` additivity, a statement in `ℕ∞` about `O`-polynomials) and is inadmissible for the third
+(`resPoly` multiplicativity, a statement in `(resField φ)[Y]`). Since the chapter needs all four
+clauses from one argument, the base change is not used at all — but the distinction is recorded
+because it is the exact content of HE3-BOX-6 and a cross-reader should check that no node below
+smuggles the shortcut in. **§14 item 1.**
+
+**SOURCE.** `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-9 (theorem of the product);
+`EFF.HE3.14`, `.22`; `EFF.HE6.11`; `EFF.HE3.44` (the base-change objection quoted above).
+
+**TEETH.** `HE6-GEN` (`EFF.HE6.49`, the flat resultant identity
+`2v(Res(f,Ψ)) = ℓ·deg r·D′·h_F(κ)` at rational heights) → **executable regression** retained: the
+identity is the corpus's *multiplicative* form of this node's additivity, read through resultants,
+and the chapter does not formalise resultants (H-2). `HE6R1-GEN2` (`EFF.HE6R1.28`, 252 flat
+identities, 0 violations) → **executable regression** retained at the level-2 analogue.
+
+**ENVIRONMENT.** ENV-A' + `[Finite (ResidueField O)]` (via B.26, which B.30 consumes).
+
+---
+
+### NODE B.36 [lemma] [fresh]
+
+**STATEMENT.** *The slot lemma at order 1 over the base.* Let `φ` be an order-1 key with
+`m = φ.natDegree`, and let `p ∈ (ResidueField O)[y]` with `p.degree < (m : WithBot ℕ)`. Then
+`AdjoinRoot.mk (φ.map (residue O)) p = 0 ↔ p = 0`. Consequently, for `a ∈ O[X]` with
+`a.degree < φ.degree` and any `k`, `resMk π φ k a = 0 ↔ digPoly π k a = 0`; and if `a ≠ 0` with
+`gaussVal a = (k : ℕ∞)` then `resMk π φ k a ≠ 0`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem mk_eq_zero_iff_of_degree_lt {φ : Polynomial O} (hφ : IsKey φ)
+    {p : Polynomial (ResidueField O)} (hp : p.degree < (φ.natDegree : WithBot ℕ)) :
+    AdjoinRoot.mk (φ.map (IsLocalRing.residue O)) p = 0 ↔ p = 0
+
+theorem resMk_eq_zero_iff (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ) {k : ℕ}
+    {a : Polynomial O} (ha : a.degree < φ.degree) :
+    resMk π φ k a = 0 ↔ digPoly π k a = 0
+
+theorem resMk_ne_zero (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ) {k : ℕ}
+    {a : Polynomial O} (ha : a.degree < φ.degree) (ha0 : a ≠ 0)
+    (hk : gaussVal a = (k : ℕ∞)) : resMk π φ k a ≠ 0
+```
+
+**DEPENDS.** B.01 · B.23 · B.24 · B.25 · mathlib `AdjoinRoot.mk_eq_zero`, `Polynomial.degree_map`
+(for a monic and a field target: `Monic.degree_map`), `Polynomial.eq_zero_of_dvd_of_degree_lt_degree`
+(or `Polynomial.eq_zero_of_dvd_of_natDegree_lt`).
+
+**PROOF.**
+1. `mk_eq_zero_iff_of_degree_lt`, (→): `AdjoinRoot.mk_eq_zero` gives `φ̄ ∣ p`; `φ̄` has degree `m`
+   (`Monic.degree_map hφ.monic`) and `p.degree < m`, so `p = 0`
+   (`eq_zero_of_dvd_of_degree_lt_degree`).
+2. (←): `map_zero`.
+3. `resMk_eq_zero_iff`: `resMk π φ k a = AdjoinRoot.mk φ̄ (digPoly π k a)` by definition, and
+   `(digPoly π k a).degree ≤ a.degree < φ.degree = m` by B.24's `degree_digPoly_le`; apply step 1.
+4. `resMk_ne_zero`: by step 3 it suffices that `digPoly π k a ≠ 0`, which is B.24's
+   `digPoly_eq_zero_iff` — its hypothesis `(k : ℕ∞) ≤ gaussVal a` is `hk` with `le_refl`, and its
+   conclusion `(k+1 : ℕ∞) ≤ gaussVal a = (k : ℕ∞)` is false.
+
+**SIZE.** 20 lines.
+
+**⚠ THIS NODE IS `EFF.HE6.15` (T2 PIN `HE6-SLOT-SEAM`, 48 T2 citations) AT `e₁ = 1`.** The pin's
+statement is *"`dv(A(ξ)) = min_i(e₁v(a_i) + ih)` **EXACTLY**, and the residue of the attaining class,
+read after division by `ϖ(ξ)^{dv(A)}`, is `ι_ξ(γ)·η_ξ^{−q}`"*, as corrected by `EFF.HE6.58` (A3 F-1,
+which replaced a **vacuous bare `γ`** by `γ_k(A) := Σ_{t≥0, i+e₁t<D′} res(a_{i+e₁t}π^{−(k−(i+e₁t)h)/e₁}) η_θ^t`).
+At `e₁ = 1, h = 0`: the exactness clause `dv(A(ξ)) = min_i v(a_i)` **is** `gaussVal a`, the twist
+`η_ξ^{−q(k)}` is trivial (`q(k) = 0`), and `γ_k(A)` collapses to the single term
+`res(a_0 π^{−k}) η_θ^0`… no: it collapses to `Σ_{t<m} res(a_t π^{−k}) η_θ^t`, which is precisely the
+class of `digPoly π k a` in `F[y]/(φ̄)` under `y ↦ η_θ`. So **`resMk π φ k a` is `γ_k(A)`** and
+`resMk_ne_zero` is the exactness clause. **The `ξ` is gone**: the corpus states the lemma at a point
+`ξ` of `K̄₀` satisfying `(T1)/(T2)`, this chapter states it as the injectivity of
+`F[y]_{<m} → F[y]/(φ̄)`, which is the same fact with the ambient closure removed. **That removal is
+§14 item 4 and it is the chapter's most consequential transcription choice.** Note also that
+`EFF.HE6.30`'s OPEN-CALL 2 flags exactly this pin as one whose A3 correction "sits **outside** every
+T2 pin span" and calls it "the most consequential item in this compilation" — so the corrected form
+`EFF.HE6.58`, not the pin span `EFF.HE6.15` alone, is what is transcribed here.
+
+**SOURCE.** `EFF.HE6.15` (`[PIN HE6-SLOT-SEAM]`, LEMMA HE6-0″) **as corrected by** `EFF.HE6.58`
+(A3 F-1); `EFF.HE3.03` (`LEMMA GENHN-2`, the SLOT LEMMA, whose over-consumption at non-root points
+`EFF.HE6.15` exists to cure); `EFF.HE3.71` (R8-5: the provenance fix — cite HE6-0″, not GENHN-2).
+
+**TEETH.** `HE6R1-SLOT2` (`EFF.HE6R1.26`, 0 violations / 1,512, "(SLOT₂) exactness
+`v(Res(f,C)) = 4·dv₂(C)`") → **executable regression** retained at the level-2 analogue;
+`HE-NORM` (`EFF.HE3.50`, 72,134 identities) → **Lean theorem** (the level-1 exactness clause is this
+node).
+
+**ENVIRONMENT.** ENV-A'.
+
+---
+
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
