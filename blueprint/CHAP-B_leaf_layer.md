@@ -5525,6 +5525,130 @@ satisfied by TC, not by binding).
 
 ---
 
-<!-- RESUME: (b) §10 header + B.83 landed. Next: B.84 + B.85, then B.86; then (c) §11 (DAG TSV generation + checker run), §12, §13, §14; then (d) A-F.2. -->
+### NODE B.84 [gate] [fresh]
+
+**STATEMENT.** *The `q = 3` firing gate — GC-11's second prime, never `q = 2` alone.* The exact
+mirror of B.83 over `ℤ_[3]`, same four genres, same firing route, independent arithmetic:
+
+| | `a` (`f = monicPoly a`) | key data | polygon | value | `N` |
+|---|---|---|---|---|---|
+| (i) inert | `![4, 0]`, `f = X² + 4` | `φ = X² + 1` (irreducible over `𝔽₃`), `μ = 1` | `dev₀ = 3`: side `(1,1)`, `d = 1` | `⟨{(1,2)}⟩` | 2 |
+| (ii) ramified | `![3, 3]`, `f = X² + 3X + 3` (Eisenstein) | `φ = X`, `μ = 2` | `(1,1,0)`: side `(1,2)`, argmin `{0,2}`, `d = 1` | `⟨{(2,1)}⟩` | 2 |
+| (iii) two-slope | `![9, 3, 3]`, `f = X³ + 3X² + 3X + 9` | `φ = X`, `μ = 3` | `(2,1,1,0)`: sides `(1,1)` argmin `{0,1}` + `(1,2)` argmin `{1,3}` (**`sideMin = 1`**), each `d = 1` | `⟨{(1,1),(2,1)}⟩` | 3 |
+| (iv) split | `![3, 1, 3]`, `f = X³ + 3X² + X + 3 = (X+3)(X²+1)` | `φ₁ = X`, `φ₂ = X² + 4`; peel `g₁ = X + 3`, `g₂ = X² + 1` | per block: `dev₀ = 3` resp. `−3`, side `(1,1)`, `d = 1` | `⟨{(1,1),(1,2)}⟩` | 2 |
+
+The values coincide with B.83's multisets **by design** (same genres); what changes is every piece
+of arithmetic underneath (`𝔽₃`-irreducibility of `X² + 1`, `3`-adic heights, `residueCard = 3`).
+That non-coincidence-proofing is GC-11's entire point: G.23's refuted count law passed every
+`q = 2` check and died at `ℤ_[3]`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem gate_inert_three :
+    Uniformity.Density.DecidedAt ℤ_[3] 2 ⟨{(1, 2)}⟩ 2
+      (Uniformity.Density.proj ℤ_[3] 2 2 ![4, 0])
+
+theorem gate_ram_three :
+    Uniformity.Density.DecidedAt ℤ_[3] 2 ⟨{(2, 1)}⟩ 2
+      (Uniformity.Density.proj ℤ_[3] 2 2 ![3, 3])
+
+theorem gate_linram_three :
+    Uniformity.Density.DecidedAt ℤ_[3] 3 ⟨{(1, 1), (2, 1)}⟩ 3
+      (Uniformity.Density.proj ℤ_[3] 3 3 ![9, 3, 3])
+
+theorem gate_split_three :
+    Uniformity.Density.DecidedAt ℤ_[3] 3 ⟨{(1, 1), (1, 2)}⟩ 2
+      (Uniformity.Density.proj ℤ_[3] 3 2 ![3, 1, 3])
+```
+
+**DEPENDS.** B.06 · B.08 · B.15 · B.20 · B.30 · B.66 · B.73 · B.75 · B.82 ((i)–(iii)) · B.80
+((iv)) · landed `LocalData.lean` §6 (`ℤ_[3]` bundle, `residueCard_padicInt`) · mathlib
+`PadicInt.prime_p` (via `Prime.irreducible`, `hπ : Irreducible (3 : ℤ_[3])`).
+
+**PROOF.** B.83's six steps verbatim with `2 ↦ 3`; the only genuinely new leg is (i)'s
+`𝔽₃`-irreducibility of `X² + 1` (no root: `0² + 1 = 1`, `1² + 1 = 2`, `2² + 1 = 2` — `decide` on
+`ZMod 3`, transported along `PadicInt.residueField`).
+
+**SIZE.** 150 lines. **SPLIT MANDATED → 4** (`B84a.lean`–`B84d.lean`).
+
+**SOURCE.** as B.83, plus `blueprint/CONVENTIONS_2026-08-15.md` GC-11's RATIONALE (the G.23
+refutation at `ℤ_[3]`, the two-prime floor) and `EFF.HE6.37` / `EFF.HE6R1.29` (the corpus's own
+`p = 3, 5` two-prime discipline for σ-distinguishing checks).
+
+**TEETH.** as B.83, at `q = 3`; jointly with B.83 this node **is** the chapter's GC-11
+obligation (executed at the leanspec stub stage per GC-6.6(c), before the fleet fires on any
+node consuming the audited arithmetic).
+
+**ENVIRONMENT.** Concrete: `O := ℤ_[3]`, `π := 3`; otherwise as B.83.
+
+---
+
+### NODE B.85 [gate] [fresh]
+
+**STATEMENT.** *The `e > 1 ∧ f > 1` witnesses, both primes — the GC-11 simultaneous-witness rule,
+and B.82's TEETH promise (`EFF.W12.29`'s two rows with degree-`≥ 2` keys) cashed.* Four decided
+classes whose single leaf has `ℓ ≥ 2` **and** `m·d ≥ 2` — ramified-inert genres `leancheck` never
+reached (`n ∈ {4, 6}`), all inside D-3's unconditional perimeter via its `d = 1, ℓ ≥ 2` row
+(`e = ℓ > 1`, `f = m·d = 2 > 1` honestly, no `B-BOX-1`):
+
+| | `f` | `a` | key data | polygon | value | `N` |
+|---|---|---|---|---|---|---|
+| (i) `ℤ_[2]` quartic | `(X²+X+1)² − 2` | `![−1, 2, 3, 2]` | `φ = X²+X+1`, `μ = 2` | `dev = (−2, 0, 1)`: side `(1,2)`, argmin `{0,2}`, `d = 1` | `⟨{(2,2)}⟩` | 2 |
+| (ii) `ℤ_[2]` sextic | `(X²+X+1)³ − 2` | `![−1, 3, 6, 7, 6, 3]` | `φ = X²+X+1`, `μ = 3` | `dev = (−2, 0, 0, 1)`: side `(1,3)`, argmin `{0,3}`, `d = 1` | `⟨{(3,2)}⟩` | 2 |
+| (iii) `ℤ_[3]` quartic | `(X²+1)² − 3` | `![−2, 0, 2, 0]` | `φ = X²+1`, `μ = 2` | `dev = (−3, 0, 1)`: side `(1,2)`, `d = 1` | `⟨{(2,2)}⟩` | 2 |
+| (iv) `ℤ_[3]` sextic | `(X²+1)³ − 3` | `![−2, 0, 3, 0, 3, 0]` | `φ = X²+1`, `μ = 3` | `dev = (−3, 0, 0, 1)`: side `(1,3)`, `d = 1` | `⟨{(3,2)}⟩` | 2 |
+
+These exercise D-3's norm-bracket spine off the trivial diagonal: (i) `gcd(m·u·d, ℓ·m·d) =
+gcd(2, 4) = 2 = m·d`; (ii) `gcd(2, 6) = 2` — the place `Nat.Coprime u ℓ` pays (`HE6-T-BADKEY`'s
+site). Degree conservation: `e·f = 4 = deg f` resp. `6`. The unique `card ≥ 2` slope is forced:
+`weight(0) = ℓ·1` equals `weight(μ) = μ·u` iff `ℓ = μ·u`, and `Nat.Coprime u ℓ` then forces
+`u = 1, ℓ = μ` — the enumeration of step 3 is a two-line argument at these instances.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+theorem gate_ef_two :
+    Uniformity.Density.DecidedAt ℤ_[2] 4 ⟨{(2, 2)}⟩ 2
+      (Uniformity.Density.proj ℤ_[2] 4 2 ![-1, 2, 3, 2])
+    ∧ Uniformity.Density.DecidedAt ℤ_[2] 6 ⟨{(3, 2)}⟩ 2
+      (Uniformity.Density.proj ℤ_[2] 6 2 ![-1, 3, 6, 7, 6, 3])
+
+theorem gate_ef_three :
+    Uniformity.Density.DecidedAt ℤ_[3] 4 ⟨{(2, 2)}⟩ 2
+      (Uniformity.Density.proj ℤ_[3] 4 2 ![-2, 0, 2, 0])
+    ∧ Uniformity.Density.DecidedAt ℤ_[3] 6 ⟨{(3, 2)}⟩ 2
+      (Uniformity.Density.proj ℤ_[3] 6 2 ![-2, 0, 3, 0, 3, 0])
+```
+
+**DEPENDS.** B.06 (the developments `f = φ^μ − p` are exhibited: `a₀ = −p`, `a_μ = 1`, rest `0`;
+verified by `ring_nf`, pinned by `dev_unique`) · B.08 · B.20 · B.30 · B.66 · B.73 · B.75 · B.82 ·
+landed `LocalData.lean` §6 · mathlib `PadicInt.prime_p`.
+
+**PROOF.** B.83's six steps; the development step is trivial by construction (`f := φ^μ − p`),
+and the slope enumeration is the two-line coprimality argument displayed above. All four fire
+B.82 (single block, `hres : f̄ = φ̄^μ` by construction).
+
+**SIZE.** 90 lines. **SPLIT MANDATED → 2** (`B85a.lean` = `gate_ef_two`, `B85b.lean` =
+`gate_ef_three`).
+
+**SOURCE.** `EFF.W12.29` (the promised two rows: `e = 2` and `e = 3` sides with degree-`≥ 2`
+keys — B.82's TEETH field names this node as their check site); `EFF.HE3.33` (the corpus's own
+unconditional `ℓ ≥ 2, d = 1` row this witness family inhabits); `EFF.HE6.52` (`HE6-T-BADKEY`,
+the coprimality tooth); DECISION D-3 (the perimeter row and the bracket spine).
+
+**TEETH.** `EFF.W12.29`'s σ(λ) dictionary rows at `e ∈ {2,3}`, `f = 2` → **Lean theorem** (this
+node; the committed B.82 TEETH promise is discharged here); `HE6-T-BADKEY` → **Lean theorem**
+(the `gcd = m·d` step is where a non-coprime pair would fail); `W12-ORACLE` → **executable
+regression** retained (PARI recomputes the quartic/sextic σ independently — these degrees are
+outside `leancheck`'s `n ≤ 3` suite, so the oracle is the only independent leg).
+
+**ENVIRONMENT.** Concrete, both bundles (`ℤ_[2]` in `B85a`, `ℤ_[3]` in `B85b`); as B.83.
+
+---
+
+<!-- RESUME: (b) B.83–B.85 landed. Next: B.86 (axiom census gate), then (c) §11 (DAG TSV generation + checker run), §12, §13, §14; then (d) A-F.2. -->
 
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
