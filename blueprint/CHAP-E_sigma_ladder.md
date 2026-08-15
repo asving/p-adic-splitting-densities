@@ -2847,6 +2847,484 @@ field list as ground truth for the `(LB1)`/`(MP1)` Display-A conjuncts.
 
 ---
 
-<!-- RESUME: §6 COMPLETE (E.39–E.44). Next: §7 (E.45–E.54, the σ dictionary — TERMINAL SUPPLY). -->
+## 7. §7 — THE σ DICTIONARY AND THE TRANSPORT LAWS (GC-4; **TERMINAL SUPPLY**)
 
-*(sections §7–§14 follow)*
+> **This is the chapter's terminal supply.** What chapter H's §11 dictionary, the drainage
+> recursions, and chapter F's σ-law faces consume from E: `ladderSigma` + `ladderSigma_degree`
+> (E.45/E.46), the rung transport law `rungStep_sigma` (E.48), and the μ₂ = 2 dictionary with
+> its three-letter alphabet (E.49–E.52). GC-4 binds: every σ output is a
+> `Uniformity.Density.FactorizationType`, produced by a NAMED dictionary function with a
+> degree-conservation lemma; inductive leaf labels are dictionary DOMAINS only. Ordering /
+> multiset normalization is `HYP.12` [CORE-SET] — no node here re-decides it; everything is
+> stated against the landed `FactorizationType` API.
+
+### NODE E.45 [def] [fresh]
+
+**STATEMENT.** *The ladder leaf and the σ dictionary.* A **ladder leaf** is the numerical
+record of one terminal emission: the per-level jump data `path : List (ℕ × ℕ)` (each entry
+`(ℓ_i, g_i)` — value-index and residue-degree jumps of the levels traversed) and the terminal
+read `term : ℕ × ℕ` (`(ℓ′, deg r′)` of the deciding separable-side factor). Its `(e, f)` at
+base `(e₀, f₀)` is the composed product
+`leafEF (e₀,f₀) leaf = (e₀ * Π ℓ_i * ℓ′, f₀ * Π g_i * deg r′)` — HE7.A clause 6's "multiplying
+the successive displayed `e`- and `f`-increments" / THEOREM HE7.D's
+`e = e₁ℓ_1⋯ℓ_{i+1}, f = f₁g_1⋯g_{i+1}`. The **dictionary**:
+`ladderSigma (e₀ f₀) (leaves : Multiset LadderLeaf) : FactorizationType` — the multiset image
+under `leafEF`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- One terminal emission of the σ-ladder read (numerical shadow, D-E2). -/
+structure LadderLeaf where
+  path : List (ℕ × ℕ)
+  term : ℕ × ℕ
+  deriving DecidableEq
+
+/-- The composed `(e, f)` of a leaf at base `(e₀, f₀)` (`EFF.HE7.48`'s display). -/
+def LadderLeaf.ef (l : LadderLeaf) (e₀ f₀ : ℕ) : ℕ × ℕ :=
+  (e₀ * (l.path.map Prod.fst).prod * l.term.1,
+   f₀ * (l.path.map Prod.snd).prod * l.term.2)
+
+/-- **The σ dictionary** (GC-4): ladder leaves → the landed factorization type. -/
+def ladderSigma (e₀ f₀ : ℕ) (leaves : Multiset LadderLeaf) :
+    Uniformity.Density.FactorizationType :=
+  ⟨leaves.map fun l => l.ef e₀ f₀⟩
+```
+
+**⚠ GC-4 CONFORMANCE.** Output carrier: landed `FactorizationType`, by anonymous constructor
+against its landed definition (the CHAP-B `typeOf g = ⟨{(ℓ, m·d)}⟩` pattern) — if the landed
+type's constructor is not the raw multiset (e.g. carries an invariant field), the stub stage
+adapts THROUGH the landed API (`FactorizationType.ext`), never by a parallel type. `LadderLeaf`
+is an allowed dictionary DOMAIN (decidable, inductive-free record).
+
+**DEPENDS.** none E-internal · landed `Uniformity.Density.FactorizationType`.
+
+**PROOF.** definitional. **SIZE.** 20 lines.
+
+**SOURCE.** `EFF.T2.31` clause 6 ("their ramification and residue degrees are obtained by
+multiplying the successive displayed e- and f-increments"); `EFF.HE7.48` (the composed
+invariants display); `EFF.T2.33`–`.37` (the five instance dictionaries:
+`(e,f) = (e₁e_s, f₁f_s)`, `(e₁ℓ, f₁deg r)`, `(e₁ℓℓ₂, f₁d_r deg r₂)`, `(e₁e₂ℓ₂, f₁f₂deg r₂)`).
+
+**TEETH.** Q1 (1,335 PARI σ agreements at n = 8 — every one is a value of this dictionary) →
+instance evidence; the dictionary itself is definitional; E.46 is its mandatory invariant.
+
+**ENVIRONMENT.** ENV-E1 + landed kernel.
+
+---
+
+### NODE E.46 [lemma] [fresh]
+
+**STATEMENT.** *Degree conservation (GC-4's mandatory invariant).*
+`(ladderSigma e₀ f₀ leaves).degree = Σ_{l ∈ leaves} (l.ef e₀ f₀).1 * (l.ef e₀ f₀).2` — and,
+under the weight bookkeeping of E.20/E.21 (each leaf's `e·f` = its emitted block degree,
+summing to `deg F`), `= F.natDegree`. Stated in two clauses: the unconditional multiset
+identity, and the conditional block-degree form with the weight hypothesis explicit.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem ladderSigma_degree (e₀ f₀ : ℕ) (leaves : Multiset LadderLeaf) :
+    (ladderSigma e₀ f₀ leaves).degree
+      = (leaves.map fun l => (l.ef e₀ f₀).1 * (l.ef e₀ f₀).2).sum
+
+theorem ladderSigma_degree_eq_deg {O : Type*} [CommRing O]
+    (e₀ f₀ : ℕ) (leaves : Multiset LadderLeaf) (F : Polynomial O)
+    (hwt : (leaves.map fun l => (l.ef e₀ f₀).1 * (l.ef e₀ f₀).2).sum = F.natDegree) :
+    (ladderSigma e₀ f₀ leaves).degree = F.natDegree
+```
+
+**DEPENDS.** E.45 · landed `FactorizationType.degree`, `FactorizationType.degree_mk_add`.
+
+**PROOF.**
+1. Unfold `degree` on the constructed multiset (landed `degree_mk_add` / the landed
+   definition's `Multiset.sum` shape); `Multiset.map_map` collapses the two maps.
+2. Second clause: rewrite with `hwt`.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** GC-4 (the mandatory invariant, `stageSigma_degree`/`typeOf_degree` pattern);
+`EFF.HE7.36` (`D″ ∣ deg f_S` and the orbit-size sum — the weight bookkeeping's source);
+`EFF.T2.30` (`(FUND)` `|Ω| = ef`).
+
+**TEETH.** Q1's `Σef = 8` per member → **Lean theorem** + E.67's executable gate.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.47 [lemma] [fresh]
+
+**STATEMENT.** *Rung composition of leaves (associativity of the ladder product).* Prepending
+a rung `(ℓ, g)` to a leaf's path multiplies its `(e, f)` componentwise:
+`(LadderLeaf.mk ((ℓ,g) :: p) t).ef e₀ f₀ = (LadderLeaf.mk p t).ef (e₀ * ℓ) (f₀ * g)` — the
+dictionary commutes with descending one level. Consequence (the form C's tower grammar
+consumes): `ladderSigma e₀ f₀ (leaves.map (prepend (ℓ,g))) = ladderSigma (e₀*ℓ) (f₀*g) leaves`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+def LadderLeaf.prepend (r : ℕ × ℕ) (l : LadderLeaf) : LadderLeaf :=
+  ⟨r :: l.path, l.term⟩
+
+theorem ladderSigma_prepend (e₀ f₀ : ℕ) (r : ℕ × ℕ) (leaves : Multiset LadderLeaf) :
+    ladderSigma e₀ f₀ (leaves.map (LadderLeaf.prepend r))
+      = ladderSigma (e₀ * r.1) (f₀ * r.2) leaves
+```
+
+**DEPENDS.** E.45 · mathlib `List.prod_cons`, `Multiset.map_map`.
+
+**PROOF.** 1. `ef` unfolds; `List.prod_cons` + `mul_comm`/`mul_assoc` normalize; `Multiset.map`
+congruence; `FactorizationType` constructor congruence.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.T2.21` (the child carrier's inherited invariants `e_child = e_𝒞 e′,
+f_child = f_𝒞 deg r′` — prepending IS the child jump's bookkeeping); `EFF.HE7.16`(ii) (the
+level-i composition); `EFF.GENHN.17`-side surviving composition formulas (via CHAP-H H-10's
+ruling — the composed-key σ composition is exactly this law; E consumes nothing else of
+GENHN).
+
+**TEETH.** `he7rannex_supp.py` (level-3 σ = PARI 79/79 — three-level compositions) → instance
+evidence; the law is a **Lean theorem**.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.48 [theorem] [fresh]
+
+**STATEMENT.** *The rung σ-transport law (σ is multiplicative over the block split).* For
+monic `F = Π blocks` over `O` (the `(SIDE-PROD)`/`(LABEL-PROD)`/`(BOUNDARY-PROD)` situations):
+`typeOf F = Σ_blocks typeOf block` — via the LANDED product law `typeOf_mul` (chapter A
+kernel), iterated over the list. Combined with the dictionary: if each block's read emits
+`ladderSigma`-leaves matching its `typeOf` (the instance hypothesis), the whole state's σ is
+the multiset SUM of the blocks' σ — the transport law the drainage recursions and H §11's
+`composedSigma` consume from E, and the σ-half of HE7.A clauses 4/6 and T2.KEY-BOUNDARY.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density
+-- (a theorem about landed objects: lives in the owning namespace, GC-6.2)
+
+theorem typeOf_list_prod {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] (l : List (Polynomial O))
+    (hm : ∀ g ∈ l, Polynomial.Monic g) (hcond : True) :
+    -- hcond placeholder: typeOf_mul's actual side conditions (coprimality/monicity),
+    -- to be instantiated VERBATIM from the landed typeOf_mul signature at stub time
+    typeOf l.prod = (l.map typeOf).sum
+```
+
+**⚠ SIGNATURE NOTE (the landed side-condition is the contract).** The landed `typeOf_mul`'s
+exact hypotheses (monicity; possibly coprimality of the factors' reductions or root-set
+disjointness) BIND this node: the stub stage copies them verbatim into `hcond`'s place; the
+blueprint freezes the SHAPE (`typeOf` of a monic product = sum). If `typeOf_mul` requires
+coprimality that the ladder's blocks supply only through their disjoint root sets (carrier
+content), the node takes that as an explicit hypothesis and E.23 routes it — never a silent
+strengthening of the landed lemma. Flagged for the stub stage's 0e type-diff.
+
+**DEPENDS.** landed `typeOf_mul`, `monicFactors_mul` · E.45 (the dictionary this feeds).
+
+**PROOF.** 1. Induction on `l`; `typeOf_mul` at each cons; sum bookkeeping.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.T2.17` (`(SIDE-PROD)`/`(LABEL-PROD)` — "Every emitted label block is read
+from its own development"); `EFF.T2.32` (T2.KEY-BOUNDARY's "Multiplying the resulting
+identities proves the assertion"); `EFF.T2.31` clause 6 ("their product is F").
+
+**TEETH.** Q1's member-by-member σ against PARI (each member's σ is assembled by exactly this
+sum) → **Lean theorem** modulo the landed side-conditions.
+
+**ENVIRONMENT.** ENV-E2 (+ the landed kernel's instances).
+
+---
+
+### NODE E.49 [def+lemma] [fresh]
+
+**STATEMENT.** *The μ₂ = 2 dictionary (the n = 8 six-row table, `EFF.HE7.58`).* Dictionary
+domain: the six-row case type `Mu2Row` (rows 1–4 the polygon cases, row 5 the α-refine
+pointer, row 6 the peel); dictionary function at the n = 8 frame (base `(e₁ℓ, f₁d_r) = (4,1)`,
+`K₂ = F_q`):
+row 1 (`one side, len 2, λ₂ ∉ ℤ`) ↦ `⟨{(8,1)}⟩`; row 2 (`λ₂ ∈ ℤ, R₂ inert`) ↦ `⟨{(4,2)}⟩`;
+rows 3/4 (`R₂ split` / `two sides len 1`) ↦ `⟨{(4,1),(4,1)}⟩`; row 5 (α-refine) ↦ recurse
+(E.52's loop, terminating by E.55/E.56); row 6 (peel) ↦ `⟨{(4,1),(4,1)}⟩`. Lemma half: the
+value map on decided rows is total and lands in the three-letter alphabet.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- The μ₂ = 2 dictionary rows (`EFF.HE7.58`'s table; rows 5/6 route onward). -/
+inductive Mu2Row
+  | oneSideHalf      -- row 1: λ₂ ∉ ℤ (ℓ₂ = 2)
+  | oneSideInert     -- row 2: λ₂ ∈ ℤ, R₂ irreducible quadratic
+  | oneSideSplit     -- row 3: λ₂ ∈ ℤ, R₂ split
+  | twoSides         -- row 4
+  | refineRow        -- row 5: R₂ = (Z−s₂)² — α-refine, re-read
+  | peelRow          -- row 6: Ψ ∣ f — peel
+  deriving DecidableEq
+
+/-- The decided-row σ values at the n = 8 frame. -/
+def mu2Sigma : Mu2Row → Option Uniformity.Density.FactorizationType
+  | .oneSideHalf  => some ⟨{(8, 1)}⟩
+  | .oneSideInert => some ⟨{(4, 2)}⟩
+  | .oneSideSplit => some ⟨{(4, 1), (4, 1)}⟩
+  | .twoSides     => some ⟨{(4, 1), (4, 1)}⟩
+  | .refineRow    => none        -- re-read at the refined key (E.52)
+  | .peelRow      => some ⟨{(4, 1), (4, 1)}⟩
+
+theorem mu2Sigma_degree : ∀ r v, mu2Sigma r = some v → v.degree = 8
+```
+
+**DEPENDS.** E.45 (GC-4 conformance shape) · landed `FactorizationType`.
+
+**PROOF.** 1. `decide`-style case check on the five decided rows (degrees `8·1`, `4·2`,
+`4+4`, `4+4`, `4+4`).
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.HE7.58` (the table, transcribed row-for-row — the source's own six-row
+markdown form; row 5's "→ one of the above" upgraded at `EFF.HE7.59` = E.52's licence; row 6
+per `EFF.HE7.60`); `EFF.HE7.57` (the n = 8 frame: `D″ = 4, K₂ = K = F_q, T₂ = 2u, μ₂ = 2`).
+
+**TEETH.** Q1 ("exactly the three outputs of THEOREM HE7.A's μ₂ = 2 dictionary (§S8), and no
+fourth value ever appears", 1,335/1,335) + `he7r1_supp.py` (row 6, 8/8 + 2/2 + 2/2) →
+the value map is a **Lean def + decidable lemma**; E.65/E.67 fire it numerically.
+
+**ENVIRONMENT.** ENV-E1 + landed kernel.
+
+---
+
+### NODE E.50 [lemma] [fresh]
+
+**STATEMENT.** *The three-letter alphabet ("no fourth value possible").* The image of
+`mu2Sigma` on decided rows is exactly
+`{⟨{(8,1)}⟩, ⟨{(4,2)}⟩, ⟨{(4,1),(4,1)}⟩}` — three values; and row 5's recursion lands in the
+same alphabet (given E.52: the re-read terminates in a decided row). This is `EFF.HE7.61`'s
+decorrelation anchor: the alphabet MATCHES HE6's independently observed σ-alphabet
+(HE6-T-CASEB) — the match itself is instance evidence, recorded here as the docstring, not a
+Lean claim.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem mu2Sigma_alphabet :
+    ∀ r v, mu2Sigma r = some v →
+      v = ⟨{(8, 1)}⟩ ∨ v = ⟨{(4, 2)}⟩ ∨ v = ⟨{(4, 1), (4, 1)}⟩
+```
+
+**DEPENDS.** E.49. **PROOF.** 1. `decide` / case check. **SIZE.** 8 lines.
+
+**SOURCE.** `EFF.HE7.58` (exhaustiveness WITH row 6 — "The exhaustiveness claim holds only
+WITH row 6"); `EFF.HE7.61` (the alphabet-match fence); `EFF.HE7.60` ("the three-σ alphabet and
+the 'no fourth value possible' claim survive verbatim").
+
+**TEETH.** HE7-T-CASEB-SEP (three distinct PARI σ inside ONE outer family, 8/8 predicted) →
+**Lean theorem** for the alphabet; the family-realization half stays machine evidence (§13).
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.51 [theorem] [fresh]
+
+**STATEMENT.** *The peel-row law (row 6, given the peel supplier).* At the n = 8 frame: if the
+peel emission hypothesis holds — `Ψ` emits `(e,f) = (4,1)` (LEMMA HE6R1-3's conclusion,
+supplied as `EFF.HE6R1 [supplied-by: chapter C]`) — and the quotient `f′` (degree 4, every
+root a level-2 point, `μ₂′ = 1`) emits one factor with `4 ∣ e*f` and `e*f = 4` forcing
+`(e,f) = (4,1)` (the divisibility from local forcing = `hforce`'s shadow; the arithmetic:
+`ef = 4 ∧ 4 ∣ ef`-forced orbit gives the unique split), then
+`σ(f) = ⟨{(4,1), (4,1)}⟩` with degree 8 — `EFF.HE7.60`'s displayed derivation, schema form.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem peel_row_law
+    (hpeel : True)   -- placeholder anchoring the HE6R1-3 emission supplier
+                     -- [supplied-by: chapter C]; stub stage replaces by the
+                     -- typed emission record per GC-13 resolution
+    {e f : ℕ} (hforce4 : 4 ∣ e * f) (hef : e * f = 4)
+    (he : 4 ∣ e ∨ (e = 4 ∧ f = 1)) :   -- the forcing shadow at μ₂′ = 1
+    e = 4 ∧ f = 1
+```
+
+**⚠ SIGNATURE NOTE.** The honest Lean content of the quotient leg is the arithmetic
+`4 ∣ ef ∧ ef = 4 ∧ (forcing e-side) ⟹ (e,f) = (4,1)` — the rest is the C-supplied emission.
+The `hpeel : True` placeholder is DELIBERATE and survives only until GC-13 resolution: the
+orchestrator replaces it with C's typed HE6R1-3 record at freeze; a fleet agent must NOT prove
+this node while the placeholder is `True` (it would be vacuous) — the node is BLOCKED until
+resolution, and §12's stub list marks it so.
+
+**DEPENDS.** E.15 (`ef_forcing` shape), E.49 · C placeholder as displayed.
+
+**PROOF.** 1. `omega`/`interval_cases` on `ef = 4` with the divisibility. (Post-resolution:
+compose with C's emission record.)
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.HE7.60` (the peel row, verbatim derivation: "LEMMA HE6R1-3 gives Ψ
+irreducible over O of degree D″ = 4 with `(e,f) = (4,1)` … `deg f′ = 4 = D″` and `μ₂′ = 1` —
+and at `μ₂′ = 1` every root of f′ is a level-2 point, so `D″ = 4` divides its local degree
+(LEMMA HE6-0′), forcing f′ irreducible with `(e,f) = (4,1)`"); `EFF.HE7.09` (the peel
+convention).
+
+**TEETH.** `he7r1_supp.py` A4/A5 (2/2 PARI on σ(f) AND σ(Ψ) — "the latter a direct oracle
+test of the peel's irreducibility-and-letter claim", which "no textual argument of this note
+supplies") → the oracle evidence is recorded in §13 as the supplier's machine leg; E's
+arithmetic shell is a **Lean theorem**.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.52 [theorem] [fresh]
+
+**STATEMENT.** *THEOREM HE7.A′ schema (the n = 8 bite decided, refine loop included).* At the
+n = 8 frame with the E.23 instance suite: every member is decided by the six-row dictionary —
+rows 1–4/6 directly (E.49/E.51), row 5 by re-reading at the refined key `Ψ − w` (licensed by
+the transported package = E.38(iii)'s obligation discharged at this frame + E.42's fold), the
+re-read landing at a STRICTLY larger slope (E.56) so the loop terminates (E.55's finiteness /
+E.07's bounds at `μ₂ = 2`: at most finitely many refines, then a decided row). Conditionality
+transcribed: "unconditionally" is scoped to the n = 8 box configuration with `disc f ≠ 0`; the
+peel leg rests on HE6R1-3 (C placeholder); "no base change, no irreducibility of Ψ **as a
+hypothesis** … and no order-≥2 citation".
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem he7a_prime_schema
+    -- the decided-read statement at the n = 8 frame, over the instance suite:
+    (read : ℕ → Mu2Row)                  -- the row at refine-step i
+    (hterm : ∃ i, read i ≠ .refineRow)   -- termination supply (E.55/E.56 at μ₂ = 2)
+    : ∃ i v, mu2Sigma (read i) = some v ∧
+        (v = ⟨{(8,1)}⟩ ∨ v = ⟨{(4,2)}⟩ ∨ v = ⟨{(4,1),(4,1)}⟩)
+```
+
+**⚠ SIGNATURE NOTE.** The schema takes the refine trajectory as a function and its
+termination as the hypothesis E.55/E.56 discharge at instances — `Nat.find` on `hterm` yields
+the deciding index. The full HE7.A′ (member-level, with the actual polygon reads producing
+`read`) is the instance composition at E.23 + gates E.65. The blueprint deliberately does NOT
+promise a member-level Lean theorem at n = 8 — that is the leancheck-style certificate
+layer's job (B.79–B.82 pattern at level 2), a POST-blueprint target recorded in §14.
+
+**DEPENDS.** E.49, E.50, E.51, E.55, E.56 (termination supply, forward), E.38/E.42 (the
+refined-key licence).
+
+**PROOF.** 1. `Nat.find hterm` gives the first decided row; E.49 evaluates it; E.50 gives the
+alphabet.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.HE7.62` (THEOREM HE7.A′, verbatim incl. the three "no …" clauses and the
+peel-stratum conclusion-not-assumption sentence; the "five-row dictionary" off-by-one is the
+source's — recorded as HE7 source defect 6, §13); `EFF.HE7.59` (row 5's displayed upgrade:
+"read AT THE REFINED KEY, which LEMMA HE7-12 licenses … strictly larger slope by LEMMA
+HE7-13, so the loop terminates (LEMMA HE7-8)").
+
+**TEETH.** Q1 + `he7r1_supp.py` + `he7r2_supp.py` jointly: "1,587/1,587 members decided … 0
+mis-decisions" → instance evidence; the schema is a **Lean theorem**.
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.53 [lemma] [fresh]
+
+**STATEMENT.** *The GC-3 bridge fence (the dictionary's `(e,f)` vs the ideal-theoretic pair).*
+A statement-shaped fence node: the dictionary's leaf values `(e, f)` satisfy
+`e * f = <block degree>` (E.46's conservation), and AT INSTANCES the block degree is
+`Module.finrank K₀ L` of the emitted factor's field — the rank-form fundamental identity
+`Ideal.ramificationIdx_mul_inertiaDeg_eq_finrank_of_isLocalRing`
+(`leanfinal/Uniformity/Quarry/RamificationInertiaLocal.lean`, the GC-3 primed generation).
+The node's Lean content is the CONSERVATION composition (E.46 + the finrank hypothesis); the
+identification of the dictionary's `(e, f)` with `(ramificationIdx', inertiaDeg')` is
+**`HYP.01` + `HYP.12` [CORE-SET] and is NOT made** — any consumer needing it states it as an
+explicit hypothesis or returns `BLOCKED: HYP.01` (GC-3's fence, verbatim).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem leaf_ef_finrank {e f n : ℕ} (hef : e * f = n)
+    (hrank : n = n) :  -- anchor: instances substitute finrank K₀ L here via the
+                       -- quarry identity; the fence forbids more
+    e * f = n
+```
+
+**⚠ NODE-KIND NOTE.** Deliberately thin (the Lean half is arithmetic already proved at E.46);
+the node EXISTS to give §13's GC-3/HYP.01 row a blueprint anchor and to forbid, in writing,
+the silent identification — the inertiaDegOf-lesson class of defect. The stub stage may
+retire the Lean stub to a comment block + the E.46 citation if the czar prefers; either way
+the FENCE TEXT is the contract.
+
+**DEPENDS.** E.46 · [quarry:
+`Uniformity/Quarry/RamificationInertiaLocal.lean` — cited, not consumed].
+
+**PROOF.** trivial. **SIZE.** 6 lines.
+
+**SOURCE.** GC-3 ("KEPT APART, on pain of HYP.01"); `EFF.T2.30` (`(FUND)`); ledger HYP.01 /
+HYP.12 rows (CORE-SET, human-review).
+
+**TEETH.** none (fence). **ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.54 [lemma] [fresh]
+
+**STATEMENT.** *Frame/origin invariance of σ (the `(FRAME)`/`(ORIGIN)` discipline at the
+dictionary).* The landed kernel already carries the σ-invariances the frame changes need:
+`typeOf_shift` (recentering `x ↦ x + c`), `typeOf_scaleRoots`/`typeOf_scale` (the `Y ↦ bY`,
+`c·` moves). This node packages them at the ladder's use shape: for monic `F` and a frame
+change of the residual read (scalar `c ≠ 0`, variable scale `b ≠ 0`, origin monomial `Y^ν`
+removed BEFORE factoring — `(ORIGIN)`'s "recorded and removed"), the emitted factor DEGREES
+and MULTIPLICITIES — hence `ladderSigma`'s inputs — are unchanged: "Frame changes preserve
+factor degrees, multiplicities, separability, and transported root classes. Literal
+coefficient strings are not asserted to be invariant" (`EFF.T2.13`). Lean form: the numerical
+shadow's invariance is definitional (degrees/multiplicities of a multiset are unchanged by a
+relabelling bijection = E.34's unit multiplication acting on roots); stated as: `ladderSigma`
+depends only on the `(deg, mult)` shadow, which the frame acts on trivially.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem ladderSigma_frame_invariant (e₀ f₀ : ℕ) (leaves leaves' : Multiset LadderLeaf)
+    (h : leaves = leaves') :  -- the shadow equality the frame change induces
+    ladderSigma e₀ f₀ leaves = ladderSigma e₀ f₀ leaves'
+```
+
+**⚠ NODE-KIND NOTE.** Trivial as stated (`congrArg`) — DELIBERATELY: the mathematical content
+("the frame change induces `h`") is the instances' (`EFF.T2.13`/`.14` are IMPORTED frame
+conversions; `EFF.T2.36`'s `R_{λ₂}(Z) = τ(H₀)·R̂(Z/δ)` instance is C's). The landed
+`typeOf_shift`/`typeOf_scaleRoots`/`typeOf_scale` citations are the REAL teeth at the
+`typeOf`-level and are consumed by name wherever an instance needs the polynomial-level move.
+The node anchors §13's `(FRAME)`/`(ORIGIN)` row and the twist-invariance clause of
+`EFF.HE7.08` ("Every statement used below is twist-invariant … vanishing/non-vanishing at a
+residue, degree, and the multiset of irreducible factors up to `K₂^×`-scaling").
+
+**DEPENDS.** E.45 · landed `typeOf_shift`, `typeOf_scaleRoots`, `typeOf_scale` (cited).
+
+**PROOF.** `congrArg`. **SIZE.** 6 lines.
+
+**SOURCE.** `EFF.T2.13` (`(FRAME)`, verbatim); `EFF.T2.14` (`(ORIGIN)`: "The factor `Y^ν` is
+recorded and removed before the normalized residual is factored"; "A nonzero origin shift is
+not silently discarded"); `EFF.HE7.08` (twist-invariance as the load-bearing scope fence,
+with tooth HE7-T-BADTWIST showing dropping the twist mispredicts σ).
+
+**TEETH.** HE7-T-BADTWIST + S7 HETOW frame gate / nonzero-origin tooth → dispositions at §13;
+the E-side shell is a **Lean theorem** (thin by design).
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+<!-- RESUME: §7 COMPLETE (E.45–E.54). Next: §8 (E.55–E.60, root-continuation/exhaust). -->
+
+*(sections §8–§14 follow)*
