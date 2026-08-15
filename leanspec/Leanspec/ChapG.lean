@@ -13,6 +13,11 @@ definitional layer lands as REAL BODIES — 26 `def`s, the `CertFamily` structur
 `CubicFamilyIndex` inductive. The 82 theorem signatures land as `axiom` stubs. After a node lands
 in `leanfinal` its normalised environment type is diffed against the stub here.
 
+**Amended against blueprint AMENDMENT 2026-08-15** (the four §14 items adjudicated at this gate):
+G.23a `card_resStratum` is **withdrawn — its statement is refuted** — and is commented out below
+rather than signed; G.28 `decidedAt_split_of_sep` carries the amended window hypothesis
+`2 * k + 1 ≤ N`. Signed contract count: **109** declarations (110 minus G.23a).
+
 **This file is never imported by `leanfinal` or `leancheck`.** It carries `axiom`s by design; it
 is an interface contract, not mathematics. Nothing here is proved.
 
@@ -230,11 +235,21 @@ def resStratum (π : O) (N k : ℕ) (p : IsLocalRing.ResidueField O × IsLocalRi
     ∃ (a : Fin 2 → O) (γ : O), proj O 2 N a = c ∧ Tang π a (2 * k) γ ∧
       ∃ (h0 : π ^ (2 * k) ∣ qval a γ) (h1 : π ^ k ∣ qder a γ), residualPair h0 h1 = p}
 
-/-- **G.23a** -/
-axiom card_resStratum (hπ : Irreducible π) {N k : ℕ} (hk : 2 * k < N)
-    {p : IsLocalRing.ResidueField O × IsLocalRing.ResidueField O}
-    (hp : ∀ z : IsLocalRing.ResidueField O, p ≠ (z * z, z + z)) :
-    Nat.card (resStratum π N k p) = residueCard O ^ (2 * N - 2 * k - 2)
+/- **G.23a — ⚠ WITHDRAWN: STATEMENT REFUTED** (blueprint AMENDMENT 2026-08-15 §A-1). The stub is
+commented out rather than signed, because a refuted statement must not stand as a fleet contract.
+
+    axiom card_resStratum (hπ : Irreducible π) {N k : ℕ} (hk : 2 * k < N)
+        {p : IsLocalRing.ResidueField O × IsLocalRing.ResidueField O}
+        (hp : ∀ z : IsLocalRing.ResidueField O, p ≠ (z * z, z + z)) :
+        Nat.card (resStratum π N k p) = residueCard O ^ (2 * N - 2 * k - 2)
+
+The residual pair is not an invariant of the class: recentring by `γ + π^k·d` moves it by
+`y ↦ y + d̄`, so the strata over one translation orbit are EQUAL and the true per-pair count is
+`q^(2N−2k−1)/#Stab(p)` — `q^(2N−2k−1)` in residue characteristic ≠ 2 and `q^(2N−2k−1)/2` in
+residue characteristic 2, agreeing with the withdrawn formula only at `q = 2`. Counterexample:
+`O = ℤ_[3]`, `N = 1`, `k = 0`, `p = (1,0)` — the stratum is `{(1,0), (2,1), (2,2)}`, of size 3,
+where the formula says 1. G.41/G.42's STATEMENTS are unaffected; their route is re-cut through a
+translation-invariant residual CLASS (`AniForm` / `SepPair`) at centre modulus `m = k`. -/
 
 /-- **G.23b** -/
 axiom depthSet_eq_iUnion_resStratum (hπ : Irreducible π) {N k : ℕ} (hk : 2 * k < N) :
@@ -267,10 +282,13 @@ axiom decidedAt_inert_of_ani (hπ : Irreducible π) {N k : ℕ} {a : Fin 2 → O
     (hani : Anisotropic ![b₀, b₁]) :
     DecidedAt O 2 inertType N (proj O 2 N a)
 
-/-- **G.28** -/
+/-- **G.28** — window hypothesis AMENDED to `2 * k + 1 ≤ N` (was `2 * k + 2 ≤ N`) per blueprint
+AMENDMENT 2026-08-15 §A-2: the node's own proof uses only `2 * k + 1 ≤ N`, `CertSplit` asks only
+`2 * w + 1 ≤ N`, `CertSplit_congr` transports at equality, and `typeOf_of_certSplit` discards the
+window bound — so the top even stratum `t = N − 1` is covered and G.42 is provable at `r = 0`. -/
 axiom decidedAt_split_of_sep (hπ : Irreducible π)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O] {N k : ℕ} {a : Fin 2 → O} {γ z : O}
-    {b₀ b₁ : O} (hN : 2 * k + 2 ≤ N)
+    {b₀ b₁ : O} (hN : 2 * k + 1 ≤ N)
     (h0 : qval a γ = π ^ (2 * k) * b₀) (h1 : qder a γ = π ^ k * b₁)
     (hz : π ∣ (z ^ 2 + b₁ * z + b₀)) (hs : ¬ π ∣ (b₁ + 2 * z)) :
     DecidedAt O 2 splitType N (proj O 2 N a)
