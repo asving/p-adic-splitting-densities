@@ -1263,3 +1263,43 @@ GENTOW-6.3' (S6.1) thereby loses its "machine-unexercised at
 f1 >= 2 / prose-only" fence at mu2 = 2; its derivation keeps the
 prose grade of this note's arc. Artifacts: runner md5 9d6e16cc,
 output md5 2d8d617a, verdict commit follows this append.
+
+### Dated correction append (2026-08-15 — MQ, the S6.4 seal-citation token)
+
+*Provenance: corpus-maintenance queue (MQ). Finding of record:
+`spec/EFF-GENTOW6.md` **OPEN-CALL 4** with its pin row **P-02** (Phase-0a
+effective-spec compilation, landed at commit `cdc998b5`, first surfaced at
+`09c8437b`); confirmed independently here before landing. Edit shape
+append-only; the body above stays BYTE-FROZEN, including the corrected
+sentence itself.*
+
+**CORRECTION — one commit token in the S6.4 artifact ledger does not
+resolve; the seal event it names is real and is pinned by the other two
+tokens in the same clause.** The r1 artifact paragraph above reads
+"gentow6_r1_caplemma.py md5 bf953a8ff0ef925d5be711fbbe60a418 (sealed
+640b31ff at 14329683; post-run-1 instrument repair disclosed in S6.2 and in
+the RED commit e803c21d)". Of the three commit tokens in that clause:
+
+- `14329683` RESOLVES (`14329683ebd809bf21aeff6755c082fe0ff8a651`) and its
+  message reads "GENTOW6 r1 (commit 2/3, SEAL): fresh instrument
+  gentow6_r1_caplemma.py sealed with preregistered P-A..P-E + teeth
+  T-TRI/T-CAP …" — i.e. it *is* the seal commit for exactly this instrument,
+  with exactly the preregistration this note claims.
+- `e803c21d` RESOLVES (`e803c21ddbb34dfd3d924b578c762d58189a9cbd`), the kept
+  run-1 RED commit, as described.
+- **`640b31ff` DOES NOT RESOLVE**: `git cat-file -t 640b31ff` → "fatal: Not a
+  valid object name 640b31ff". It is not a commit in this repository, and it
+  is not a prefix of any md5 stated in this note's artifact ledger.
+
+**Disposition: erratum on the citation, not on the seal.** The seal PROPERTY
+the note rests on — preregistered wants/teeth committed BEFORE the verdict,
+runner md5 `bf953a8f…` identical at seal and at verdict — is carried entirely
+by `14329683`, which is verified above; `640b31ff` is a stray token (mistyped,
+or a reference to an object outside this repository) and nothing in §S6.2,
+§S6.4, or the GENTOW6-BOX arc depends on it. No artifact md5, no verdict, no
+grade and no box status changes. Readers should read the clause as "sealed at
+`14329683`".
+
+BYTE-FREEZE: pre-append body md5 ced0e318104975717f14bfe76bec3490, re-verified
+by prefix after this append; edit shape append-only; all statement displays,
+artifact md5s and sealed artifacts byte-untouched.
