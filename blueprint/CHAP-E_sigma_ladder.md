@@ -1083,6 +1083,302 @@ derivation); `EFF.T2.29` (finite window values as a hypothesis of the count deri
 
 ---
 
-<!-- RESUME: §4 through E.13. Next: E.14–E.16 (side counts, sandwich, HE7.A(1)(2)). -->
+### NODE E.14 [lemma] [fresh]
+
+**STATEMENT.** *The separable-side degree sum `(DEG-SUM)` and the count match.* Call a side
+`p ∈ sides` **separable** (in the numerical shadow) when every multiplicity in `linFac p` and
+`hiFac p` equals `1`. For a separable side: (i) `p.2 * (Σ degrees) = len p` (`(DEG-SUM)`,
+`e′ Σ_{r′} deg r′ = L_λ`, the multiplicity-free specialization of `hresdeg`); (ii) hence the
+forced class sizes sum to the side's root count:
+`Σ_{linear} D * p.2 * 1 + Σ_{higher} D * p.2 * deg = D * len p = rootCount p`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+def RungInterface.SepSide {O : Type*} [CommRing O] {K : Type*} [Field K]
+    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface C B) (p : ℕ × ℕ) : Prop :=
+  (∀ q ∈ I.linFac p, q.2 = 1) ∧ (∀ q ∈ I.hiFac p, q.2 = 1)
+
+theorem RungInterface.forced_sum_eq {O : Type*} [CommRing O] {K : Type*} [Field K]
+    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface C B)
+    {p : ℕ × ℕ} (hp : p ∈ I.sides) (hsep : I.SepSide p) :
+    ((I.linFac p).map fun _ => C.D * p.2).sum
+      + ((I.hiFac p).map fun q => C.D * p.2 * q.1).sum = I.rootCount p
+```
+
+**DEPENDS.** E.12 · mathlib `Multiset.sum_map_mul_left`, `Multiset.map_congr`.
+
+**PROOF.**
+1. Under `hsep`, `hresdeg` reads `p.2 * (Σ_{lin} 1·… + Σ_{hi} deg) = len p` — rewrite each
+   summand's multiplicity to 1 (`Multiset.map_congr`).
+2. Multiply by `C.D`, distribute over the two multiset sums (`Multiset.sum_map_mul_left`),
+   and close with `haccount hp` (`rootCount p = C.D * len p`). `ring_nf` on the scalars.
+
+**SIZE.** 18 lines.
+
+**SOURCE.** `EFF.T2.29` (`(DEG-SUM)`: "For separable `R_λ`, `(RES-DEG)` specializes to
+`(DEG-SUM)`"); `EFF.T2.12` (`(RES-DEG)`); `EFF.HE7.13`'s proof ("`Σ_{r₂}|S_{λ₂,r₂}| = n_{λ₂} =
+D″L_{λ₂} = Σ_{r₂}D″ℓ₂deg r₂`" — this identity one level down).
+
+**TEETH.** S7 Pass 2 missing-`(RES-DEG)` refusal → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+### NODE E.15 [theorem] [fresh]
+
+**STATEMENT.** *The sandwich (orbit count forced termwise) and the `(e,f)` forcing.* Two
+clauses.
+(i) **Multiset sandwich**: if a finite family of counts satisfies termwise `lower q ≤ count q`
+and `Σ count = Σ lower`, then `count = lower` termwise. Applied at a separable side via E.14 +
+`hforce` + `hexhaust`: every class count EQUALS its forced size, `classCount p q = C.D * p.2`
+(linear) and `classCountHi p q = C.D * p.2 * q.1` (higher) — `EFF.T2.30`'s "Summing over
+disjoint exhaustive classes … forces equality term by term".
+(ii) **The `(e,f)` forcing chain**: for `a, b, e, f : ℕ` with `0 < a, 0 < b`, `a ∣ e`, `b ∣ f`
+and `e * f = a * b`: `e = a ∧ f = b`. (The corpus step "equality in `(FUND)` forces equality in
+both local divisibilities"; instances take `a = e_𝒞·e′`, `b = f_𝒞·deg r′`,
+`e*f = |orbit| = D·e′·deg r′ = a*b` via `(DEG-EF)`.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem multiset_sandwich {α : Type*} (s : Multiset α) (count lower : α → ℕ)
+    (hle : ∀ q ∈ s, lower q ≤ count q)
+    (hsum : (s.map count).sum = (s.map lower).sum) :
+    ∀ q ∈ s, count q = lower q
+
+theorem ef_forcing {a b e f : ℕ} (ha : 0 < a) (hb : 0 < b)
+    (hae : a ∣ e) (hbf : b ∣ f) (hprod : e * f = a * b) : e = a ∧ f = b
+```
+
+**DEPENDS.** E.12, E.14 · mathlib `Multiset.sum_map_le_sum_map`, `Nat.eq_of_dvd_of_lt_two_mul`
+(or direct: `Nat.le_of_dvd` + product comparison).
+
+**PROOF.**
+1. `multiset_sandwich`: contrapositive — a strict inequality at one member with `≤` elsewhere
+   makes the sums strictly unequal (`Multiset.sum_lt_sum` pattern; induction on `s` if the
+   exact lemma is absent).
+2. `ef_forcing`: write `e = a*x`, `f = b*y`; `hprod` gives `a*b*x*y = a*b`, cancel (`ha`, `hb`)
+   to `x*y = 1`, so `x = y = 1` (`Nat.mul_eq_one`).
+
+**SIZE.** 20 lines.
+
+**⚠ FENCE (H §11 is NOT consumed).** CHAP-H's H.76 (`e₁ ∣ e, f₁ ∣ f, e·f ≤ e₁f₁ ⟹ …`) is the
+`μ = 2` σ-forcing analogue of clause (ii), but H §11 is outside E's sanctioned slice
+(GC-5/H-14: only H.51–H.58). Clause (ii) is therefore proved fresh here — eight lines, cheaper
+than a fence violation.
+
+**SOURCE.** `EFF.T2.30` (verbatim: "Local forcing and `(DEG-EF)` make every orbit in the class
+have size at least `De′deg r′`. Summing over disjoint exhaustive classes and using
+`(SIDE-COUNT)` and `(DEG-SUM)` forces equality term by term. The full class therefore has room
+for exactly one orbit; equality in `(FUND)` forces equality in both local divisibilities.");
+`EFF.HE7.13`'s sandwich ("the sandwich forces equality, each class is a single Galois orbit …
+`e ≥ e₁ℓℓ₂, f ≥ f₁d_rd_{r₂}` with `ef = …` forces equality on both").
+
+**⚠ WHAT THE SCHEMA DOES *NOT* PROVE (GC-3 / HYP.01 fence).** The step from "class count
+`= De′deg r′`" to "the class is ONE GALOIS ORBIT = the root set of one monic irreducible factor
+with local invariants `(e, f)`" consumes `(FUND)` (`|Ω| = [K₀(ρ):K₀] = e·f`) and the field
+`hforce`'s orbit reading — carrier content. `(FUND)` at instances is the rank-form identity
+`Ideal.ramificationIdx_mul_inertiaDeg_eq_finrank_of_isLocalRing`
+(`leanfinal/Uniformity/Quarry/RamificationInertiaLocal.lean`, GC-3), applied by chapters B/C at
+their instance records; identifying the polynomial-level `efPair` with the ideal-theoretic pair
+is `HYP.01` + `HYP.12` and is NEVER done silently here — E.16 states its conclusion as counts
+plus the forcing arithmetic, and the orbit/irreducible-factor reading is an instance field.
+
+**TEETH.** S7 Pass 1 pure-mathematics theorem gate (`EFF.T2.30`) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-E1 (clause ii) / ENV-E2 (clause i application).
+
+---
+
+### NODE E.16 [theorem] [fresh]
+
+**STATEMENT.** *THEOREM HE7.A, clauses (1)–(2), schema form.* Let `C, B, I` be a slot carrier,
+block, and rung interface. Then:
+(1) every side `p ∈ I.sides` satisfies the node condition `p.2 * B.T < p.1` (λ > T) and
+`Σ_{p ∈ sides} len p = B.μ` — packaging of `hside_node` and `hlen_sum`;
+(2) for every SEPARABLE side `p` and every factor `q` in its shadow: the class count equals
+`C.D * p.2 * deg q` exactly (E.15(i) applied through E.14), and any `(e, f)` pair divisible by
+`(C.eC * p.2, C.fC * deg q)` whose product is the class count equals it componentwise
+(E.15(ii) with `(DEG-EF)`). This is `EFF.T2.31` clauses 1–2 at the strength the schema owns
+(the orbit/irreducibility reading is the instances' — E.15's fence).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem he7a_clause12 {O : Type*} [CommRing O] {K : Type*} [Field K]
+    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface C B) :
+    ((∀ p ∈ I.sides, p.2 * B.T < p.1) ∧ ∑ p ∈ I.sides, I.len p = B.μ) ∧
+    (∀ p ∈ I.sides, I.SepSide p →
+      (∀ q ∈ I.linFac p, I.classCount p q = C.D * p.2) ∧
+      (∀ q ∈ I.hiFac p, I.classCountHi p q = C.D * p.2 * q.1))
+```
+
+**DEPENDS.** E.12, E.14, E.15.
+
+**PROOF.**
+1. Clause (1): `exact ⟨I.hside_node, I.hlen_sum⟩`.
+2. Clause (2): fix a separable side; `E.14` gives `Σ forced = rootCount`; `hexhaust` gives
+   `Σ actual = rootCount`; `hforce` gives termwise `forced ≤ actual`; `multiset_sandwich`
+   (over the disjoint union of the two factor multisets, or applied twice with the paired
+   bound) forces termwise equality. Bookkeeping: combine the two multisets via
+   `Multiset.add` and case on membership.
+
+**SIZE.** 24 lines.
+
+**SOURCE.** `EFF.T2.31` (clauses 1–2, verbatim: "every side λ … satisfies λ > T,
+`Σ L_λ = μ`; … `|S_{λ,r′}| = De′deg r′`. This class is one Galois orbit … Its invariants are
+`e = e_𝒞 e′, f = f_𝒞 deg r′`"); `EFF.HE7.13` (the level-2 instance and its proof shape, which
+this schema reproduces); `EFF.T2.18` (clauses 1–2 carry NO `(LB1)` conditionality — "their
+proofs run on the unsplit hull of F itself" — and accordingly this node consumes no block
+construction).
+
+**TEETH.** Q1 / HE7-READ2 (1,335 PARI jobs, 0 mismatch — the level-2 instance of this clause
+pair) → schema **Lean theorem** + instance evidence recorded at E.23.
+
+**ENVIRONMENT.** ENV-E2.
+
+---
+
+### NODE E.17 [theorem] [fresh]
+
+**STATEMENT.** *The continuation trichotomy (HE7.A clauses (3)–(4), the four-case split).*
+(i) **Classification**: for a factor with side-denominator `ℓ`, degree `d ≥ 1`, and block
+multiplicity `k ≥ 1` (the `(LABEL-OWN)` integer `k = deg F_{λ,r′}/(De′deg r′)`): exactly one of
+**terminal** (`k = 1`), **refine** (`k ≥ 2 ∧ ℓ*d = 1`), **child** (`k ≥ 2 ∧ ℓ*d ≥ 2`) holds —
+the WIDENED split on the product `ℓ·deg r` (`EFF.HE7.14`'s `[r1]`: "split on the product
+ℓ₂·deg r₂ (NOT on ℓ₂ alone)"; the pre-r1 split is REFUTED — FINDING HE6R1-F1, "β₂ ∈ K₂(β₂)∖K₂
+is not a value of (LIFT₂)").
+(ii) **`(MASS)` at a child**: `μ_child * (ℓ*d) ≤ μ` implies `2 * μ_child ≤ μ` (E.07(ii)) and
+the child's key data multiply: `e_child = e_𝒞 * ℓ_λ * …` per E.06's telescoping.
+(iii) **`(LABEL-OWN)` integrality**: `k * (D * ℓ * d) = deg F_{λ,r′}` with `k ≥ 1` — carried as
+the definition of the block-multiplicity datum, with the corpus fence: "No equality between
+`k_{λ,r′}` and `m_{λ,r′}` from the parent residual factorization is assumed" (`EFF.T2.17`) —
+the schema does NOT relate `k` to the multiplicities in `linFac`/`hiFac`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+/-- The three continuation cases of HE7.A(3)–(4), on the numerical shadow. -/
+inductive ContCase | terminal | refine | child
+  deriving DecidableEq
+
+def contCaseOf (ℓ d k : ℕ) : ContCase :=
+  if k = 1 then .terminal else if ℓ * d = 1 then .refine else .child
+
+theorem contCase_complete (ℓ d k : ℕ) (hℓ : 1 ≤ ℓ) (hd : 1 ≤ d) (hk : 1 ≤ k) :
+    (contCaseOf ℓ d k = .terminal ∧ k = 1) ∨
+    (contCaseOf ℓ d k = .refine ∧ 2 ≤ k ∧ ℓ * d = 1) ∨
+    (contCaseOf ℓ d k = .child ∧ 2 ≤ k ∧ 2 ≤ ℓ * d)
+
+theorem child_mass {μ μc ℓ d : ℕ} (h2 : 2 ≤ ℓ * d) (h : μc * (ℓ * d) ≤ μ) :
+    2 * μc ≤ μ
+```
+
+**DEPENDS.** E.01, E.07 · mathlib `Nat.mul_eq_one`.
+
+**PROOF.**
+1. `contCase_complete`: unfold; `k = 1` or `2 ≤ k` (`hk`); at `2 ≤ k`, `ℓ*d = 1` or
+   `2 ≤ ℓ*d` (`hℓ, hd` give `1 ≤ ℓ*d`). `omega` per branch.
+2. `child_mass`: `jump_halving` (E.07(ii)) verbatim.
+
+**SIZE.** 22 lines.
+
+**SOURCE.** `EFF.T2.31` (clauses 3–4: "the continuation is decided by the product `e′deg r′`.
+Product 1 gives the certified linear recentering; product at least 2 gives the certified child
+carrier and the mass bound `(MASS)`"; clause 4's block reading with `(LABEL-PURE)`/
+`(LABEL-OWN)`); `EFF.T2.17` (S1.7A: the displayed `k_{λ,r′} = ν/(e′deg r′) ∈ ℤ_{≥1}` and the
+parent-multiplicity NON-IMPORT — "The parent-multiplicity formula installed by r1 is deleted by
+r2"); `EFF.T2.21` (`(MASS)`, `μ_child ≤ μ/(e′deg r′) ≤ μ/2`); `EFF.T2.22` (the processing
+order: side split, then label split, then per-block decision); `EFF.HE7.14` (the widened
+trichotomy + the refutation of the pre-r1 branch).
+
+**⚠ `(LB1)` SCOPE.** Constructing the label BLOCKS at a level-one multi-side/mixed state is
+`(LB1)` (E.39); this node classifies given the block data. Consumers at level one must thread
+E.39's hypothesis; at level ≥ 2 the blocks are ANNEX-LEMMA HE7-13′(a) = E.57. The corpus's own
+scoping (`EFF.T2.18`): "Clauses 1 and 2 are not [conditional]; … the clause-4 route [is], on
+`(LB1)`."
+
+**TEETH.** S7 Pass 2 mixed-residual-two-repeated-classes tooth; `he7r2_supp.py` B1–B5 (the
+refine branch, 42/42); `he7_pe3_probe12.py` (144/144 at the first mixed node) → the
+classification becomes a **Lean theorem**; the block construction stays a carried hypothesis
+at level 1 (§6).
+
+**ENVIRONMENT.** ENV-E1.
+
+---
+
+### NODE E.18 [theorem] [fresh]
+
+**STATEMENT.** *The mid-chain peel `(MID-PEEL)`/`(MID-MASS)` (HE7.A clause 5's identity
+layer).* Let `G, Φ̃ : Polynomial O` with `Φ̃` monic of degree `D`, `G` monic of degree `D * ν`
+(`ν ≥ 1`), `G` squarefree, and `Φ̃ ∣ G`. Put `G′ := G / Φ̃`. Then:
+(i) `G = Φ̃ * G′` with `G′` monic of degree `D * (ν − 1)` (`(MID-MASS)`: mass drops by exactly
+one, represented degree by `D`);
+(ii) `G′` and `Φ̃` are coprime over the fraction field — `EFF.T2.23`'s derivation verbatim:
+"a common irreducible divisor of `G′` and `Φ̃` would square-divide `G`";
+(iii) if `ν = 1` then `G′ = 1` (the degenerate guard — "no successor exists").
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Ladder
+
+theorem midPeel {O : Type*} [CommRing O] [IsDomain O] {G Φ : Polynomial O} {D ν : ℕ}
+    (hΦ : Φ.Monic) (hΦd : Φ.natDegree = D) (hG : G.Monic) (hGd : G.natDegree = D * ν)
+    (hν : 1 ≤ ν) (hD : 0 < D)
+    (hsq : Squarefree (G.map (algebraMap O (FractionRing O)))) (hdvd : Φ ∣ G) :
+    ∃ G' : Polynomial O, G = Φ * G' ∧ G'.Monic ∧ G'.natDegree = D * (ν - 1) ∧
+      IsCoprime (G'.map (algebraMap O (FractionRing O)))
+        (Φ.map (algebraMap O (FractionRing O)))
+```
+
+**DEPENDS.** E.11 (the coprimality spelling) · mathlib `Polynomial.Monic.dvd` factor API
+(`Polynomial.eq_of_monic_of_associated`, `Squarefree`, `EuclideanDomain.gcd` over the fraction
+field), `Polynomial.Monic.natDegree_mul`.
+
+**PROOF.**
+1. `hdvd` gives `G = Φ * G′`; monicity of `Φ, G` makes `G′` monic
+   (`Polynomial.Monic.of_mul_monic_left`), degrees add (`natDegree_mul` at monic ≠ 0), so
+   `deg G′ = Dν − D = D(ν−1)`.
+2. Coprimality: over `FractionRing O` (a field), if a nonunit common factor `q` existed, then
+   `q² ∣ G.map …`, contradicting `hsq` — mathlib route: `Squarefree.isCoprime_of_dvd_mul` shape
+   or direct: `IsCoprime` in a PID ⟺ no common irreducible; assemble via
+   `EuclideanDomain.isCoprime_of_squarefree_mul` (search; else four `have`s through
+   `UniqueFactorizationMonoid`).
+3. `ν = 1`: degree 0 + monic ⟹ `G′ = 1` (`Polynomial.Monic.natDegree_eq_zero`).
+
+**SIZE.** 30 lines. **SPLIT CANDIDATE:** the squarefree-coprime step as a private helper
+(`E18a`) if the mathlib search comes back empty.
+
+**SOURCE.** `EFF.T2.23` (`(MID-PEEL)`/`(MID-MASS)` displays; the separability⟹key-freeness
+derivation, verbatim; "If ν = 1, G′ = 1 and no successor exists"; "The peel occurs before
+`(WINDOW)` so +∞ is never fed to Newton accounting"); `EFF.T2.31` clause 5 ("The quotient is
+key-free, its mass is smaller by one, and its represented degree is smaller by D; the peeled
+boundary roots are discharged by their certified boundary/orbit decomposition, which is item 5
+of the `(MID-PEEL)` input suite and is a HYPOTHESIS of this clause, not a consequence of the
+peel identity").
+
+**⚠ `(MP1)` FENCE (the clause's conditionality is NOT this node's).** This node proves the
+PEEL IDENTITY layer only. Items 2–5 of the `(MID-PEEL)` input suite — `(WINDOW)` for `G′`, its
+full development with `(ACCOUNT)` and the S1.7 test assertions, and the peeled key's certified
+orbit/`(e,f)` decomposition — are: at the ORIGINAL level-one key, supplied by
+`EFF.HE6.PEEL-CONVENTION`-content through the level-1 instance (E.22, B/C-side); at a
+RECENTERED level-one key, `(MP1)` — OPEN, carried at E.40; at level two, discharged by S1.8B =
+E.42. A fleet agent asked to prove the input suite has left the chapter.
+
+**TEETH.** S7 reducible/recentered-key boundary attacks; Pass 2 several-boundary-factor tooth
+→ the identity layer becomes a **Lean theorem**; the suite stays split by level exactly as the
+ledger has it.
+
+**ENVIRONMENT.** ENV-E2 (+ `[IsDomain O]`).
+
+---
+
+<!-- RESUME: §4 through E.18. Next: E.19–E.21 (rank, termination packaging, KEY-BOUNDARY), then E.22–E.24 (instances, package). -->
 
 *(remaining §4 nodes, then §§5–14 follow)*
