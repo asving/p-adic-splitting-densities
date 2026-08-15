@@ -3877,9 +3877,12 @@ unconditionally (this node + B.44 + landed `InertLeaf`), and only the `ℓ = 1, 
 drops to `B-BOX-1` (B.61) — see B.60, DECISION D-3, and amendment A-F.7 (which also REFUTES the
 conjectured general-`φ` extraction B.44′, so the drop is forced, not chosen). §14 item 9.
 
-**SOURCE.** `docs/GMN_citations.md` fact (I) and Cor 1.20; `EFF.HE3.69` (R8-3, `LEMMA HE3-4D1`: "the
-classical Newton-polygon and Hensel read produces the corresponding factor of degree `ℓd`" — this node
-is the `ℓ = 1` half of that read); `EFF.HE3.68` (R8-2, `LEMMA HE3-4U`, the unramified branch).
+**SOURCE.** *[re-scoped: A-F.7]* `EFF.HE3.69` (R8-3, `LEMMA HE3-4D1`, **the linear-key case
+`D′ = 1`** — exactly this node's re-signed scope: "the classical Newton-polygon and Hensel read
+produces the corresponding factor"); `docs/GMN_citations.md` Cor 1.20 at `m = 1`. The former cites
+for the general key — fact (I)'s residue tower and `EFF.HE3.68` (R8-2, `LEMMA HE3-4U`, the
+unramified base-change branch) — now source the OPEN-MATH region instead (amendment A-F.7,
+CHAP-I addendum): HE3-4U is H-6-excluded and fact (I) is `B-BOX-1`'s content in D-3's reading.
 
 **TEETH.** `HE-SIG` → **executable regression** retained.
 
@@ -3949,8 +3952,10 @@ content. Hence: **this node keeps `m = 1` unconditionally; `ℓ = 1, m ≥ 2, d 
 (`hBOX`)** — D-3's table is amended accordingly, and the region is recorded OPEN-MATH in chapter I's
 ledger. `d = 1` at any `m` was always B.58's. **§14 item 10.**
 
-**SOURCE.** `EFF.HE3.68`, `.69` (R8-2/R8-3, the unramified and `D′=1` branches, both "PROOF-ONLY" in
-the corpus and both proved here); `docs/GMN_citations.md` Cor 1.20; landed `InertLeaf.lean`.
+**SOURCE.** *[re-scoped: A-F.7]* `EFF.HE3.69` (R8-3, `LEMMA HE3-4D1`, the `D′ = 1` branch,
+"PROOF-ONLY" in the corpus and proved here); `docs/GMN_citations.md` Cor 1.20 at `m = 1`; landed
+`InertLeaf.lean`. The unramified branch `EFF.HE3.68` (R8-2, `LEMMA HE3-4U`) is NO LONGER proved by
+this node — it sources the OPEN-MATH `ℓ = 1, m ≥ 2, d ≥ 2` region (amendment A-F.7).
 
 **TEETH.** `HE-SIG`, `W12-ORACLE` → **executable regression** retained.
 
