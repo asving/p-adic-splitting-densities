@@ -5016,7 +5016,39 @@ CHAPTER B: 44/86 base nodes landed, wave 7 (B.28 resCoeff et al.)
 in flight. Leanspec: ChapH retirement diff (stage 0e close, the
 G precedent) launched. Commit-race artifacts recorded: H55.lean
 attributed to B.17's commit; H.69's commit carries a 4-line B10
-tidy — content verified correct in both cases, history untouched. — THE BLUEPRINT-COMPLETION CAMPAIGN
+tidy — content verified correct in both cases, history untouched.
+
+**2026-08-15 DATED APPEND #64 — THE PRODUCT-LAW REPAIR ROUND
+(A-F.6/A-F.7): SEVEN chapter-B signatures re-signed after machine
+refutations; the B.44′ conjecture REFUTED; B-BOX-1's scope widened
+honestly; the day's refutation ledger reaches FIFTEEN.** (1) The
+stage-0e/fleet machinery caught, in one wave: B.35's product law
+FALSE in both clauses (truncated-division endpoint; u=0 carry at
+the minimal weight) and B.59's ℓ=1 leaf FALSE at general keys by a
+COMPILED witness (hscale is φ=X-shaped; resPoly degenerates to a
+unit). The adjudication (fable, source-verified) then found the
+defect radius wider: B.39/B.41/B.48/B.57 also refutable (four new
+CEs at φ=X²+1/ℤ₃), B.42 strengthened, B.43 flagged. All seven
+re-signed at A-F.6 with hu + divisibility hypotheses whose
+call-site freeness is verified PER CONSUMER; B-BOX-2 (m=1
+fallback) REJECTED with the masking argument recorded. (2) A-F.7:
+the conjectured general-φ extraction B.44′ is FALSE — the
+extraction collapses the key's residue tower (CE: typeOf changes
+{(1,2)}→{(1,1),(1,1)}) — so B.59/B.60 re-sign at φ=X (B.44-backed,
+non-vacuous) and the ℓ=1, m≥2, d≥2 region moves under B-BOX-1,
+recorded OPEN-MATH in CHAP-I with both repair routes named
+(HE3-4U's unramified base change = H-6-excluded; GMN Cor 1.20's
+residue tower = B-BOX-1's content). Gates verified unaffected
+(all 12 discharge at d=1). None of the seven was landed — no Lean
+proof invalidated, no footprint moved. (3) FLEET STATE: ChapH
+COMPLETE + retirement-sealed (261 diffs, standing gate) +
+de-vacuified (StageInterface witnesses E and F landed, H.72 fires
+tight at both); ChapB 57/86 pending wave 11 (the re-signed family,
+in flight). (4) LEDGER: fifteen machine-refuted-before-proof
+statements today. ORCHESTRATOR QUEUE: DAG TSV regeneration
+(B.59/B.60 edges stale); B.43's route re-plan before scheduling;
+the stale ChapH blueprint prose (item 14 discharged by H09w);
+roll-up copyright lint; stub gates + fleets for C/E/D/F/I. — THE BLUEPRINT-COMPLETION CAMPAIGN
 FIRES (conventions czar → adversarial gate → parallel authors), AND
 THE OWNER NARROWS SIGN-OFF TO TWO GATES.** (1) OWNER RULING (Asvin,
 recorded verbatim in CONVENTIONS_2026-08-15.md PART V, which now
