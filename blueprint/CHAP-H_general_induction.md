@@ -1186,5 +1186,1256 @@ the partial-slot content itself is `signed non-applicability` here (no chapter-H
 
 **ENVIRONMENT.** ENV-H1.
 
+---
+
+## 4. §4 — ARITHMETIC I: THE α SPECIES
+
+> Every node of §§4–7 is `ENV-H1` and consumes **no `O`**. They are the corpus's count laws with the
+> geometry stripped: the corpus derives an exponent from a polygon, chapter H proves the exponent
+> identity. Each count-formula node carries an **ARITHMETIC AUDIT recomputed at `q = 2` AND at
+> `q = 3`** (the G.23 lesson: `q = 2`-only checks hide factors — there, a stabilizer of order 2).
+
+### NODE H.13 [def] [fresh]
+
+**STATEMENT.** `clusterC m = m(m−1)/2`, the corpus's `c(m)`, defined as `Nat.choose m 2`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- `c(m) = m(m−1)/2`, the α-bracket's exponent coefficient offset (`GENIND` §S1). Defined as
+`m.choose 2` so that `2 * clusterC m = m * (m − 1)` is exact in `ℕ` with no floor. -/
+def clusterC (m : ℕ) : ℕ := m.choose 2
+```
+
+**DEPENDS.** none.
+
+**PROOF.** definitional.
+
+**SIZE.** 4 lines.
+
+**SOURCE.** `EFF.GENIND.07` (*"Write `c(m) := m(m−1)/2`"*).
+
+**⚠ WHY `Nat.choose` AND NOT `m * (m-1) / 2`.** `ℕ` division floors, and `m * (m-1)` is always even,
+so the two agree — but only *provably* via `Nat.choose_two_right`. Using `choose` makes
+`two_mul_clusterC` (H.14) a mathlib rewrite rather than a parity argument, and makes
+`Finset.sum_range_id`-style identities available for H.15.
+
+**TEETH.** none (a definition).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.14 [lemma] [fresh]
+
+**STATEMENT.** Three clauses. (i) `2 * clusterC m = m * (m − 1)`. (ii) `clusterC m = Σ_{j<m} j`.
+(iii) the exponent-coefficient instances: `clusterC 2 + 1 = 2`, `clusterC 3 + 1 = 4`,
+`clusterC 4 + 1 = 7`, `clusterC 5 + 1 = 11`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem two_mul_clusterC (m : ℕ) : 2 * clusterC m = m * (m - 1)
+
+theorem clusterC_eq_sum (m : ℕ) : clusterC m = ∑ j ∈ Finset.range m, j
+
+theorem clusterC_succ_values :
+    clusterC 2 + 1 = 2 ∧ clusterC 3 + 1 = 4 ∧ clusterC 4 + 1 = 7 ∧ clusterC 5 + 1 = 11
+```
+
+**DEPENDS.** H.13.
+
+**PROOF.**
+1. (i) `Nat.choose_two_right : n.choose 2 = n * (n - 1) / 2`; then `Nat.two_mul_div_two_of_even`
+   with `Nat.even_mul_pred_self`.
+2. (ii) `Finset.sum_range_id_mul_two` gives `2 * Σ_{j<m} j = m * (m-1)`; combine with (i) and
+   cancel by `Nat.eq_of_mul_eq_mul_left`.
+3. (iii) `by decide` (or `norm_num [clusterC, Nat.choose]`).
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.GENIND.09` (*"exponent coefficient `c(m)+1 = m(m−1)/2 + 1` (= 2, 4, 7, 11 at
+`m = 2, 3, 4, 5`)"*); `EFF.GENIND.23` (the instance display, with the spec's own ARITHMETIC AUDIT
+*"`1+1 = 2` ✓, `3+1 = 4` ✓, `6+1 = 7` ✓, `10+1 = 11` ✓"* and the tie to §S11 P-7's scored tuple
+`(exponent coefficients 2/4/7/11)`).
+
+**ARITHMETIC AUDIT (recomputed fresh).** `c(2) = 1`, `c(3) = 3`, `c(4) = 6`, `c(5) = 10` ✓
+(triangular numbers); `+1` gives `2, 4, 7, 11` ✓ — the four values §S11 P-7 scored. Note that the
+`m = 2` value `2` is the coefficient chapter G's `hex3R`/`hex3U` layer sees as W-11's
+`(q−1)q^{2l−1}` telescoping coefficient (`EFF.GENIND.23`), and the `m = 3` value `4` is HMENU3's
+`(q−1)q^{4μ−1}` — **so this node's clause (iii) is the cross-chapter tie**, checkable against two
+landed chapter-G objects.
+
+**TEETH.** `GT-BRACKETID` / `GT-T-BRACKET` (`EFF.GENIND.22`, `.23`; executable regression, symbolic
+identity, §S11 P-7 "24/24 … integer-exact … (exponent coefficients 2/4/7/11)", tooth firing at its
+preregistered count 24) → **Lean theorem** at H.20/H.21 (clause (iii) here, the closed form there).
+Disposition note: the display naming `GT-AGGDEEP` at `EFF.GENIND.23` is a recorded **source defect**
+(a battery-family name that appears nowhere else in the note); chapter H cites the two families that
+exist and does not reproduce the phantom name.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.15 [def] [fresh]
+
+**STATEMENT.** *The α-locus exponent, in transported coordinates.* For `m, W, k : ℕ` put
+`alphaExp m W k = m * W + k * clusterC m`. Here `W` is the **reduced window minus one**, i.e.
+`W = N − 1 − m*k` for the α(k)-transport out of window `N`; the corpus's displayed exponent is
+`m(N−1) − k·m(m+1)/2`, and H.16 proves the two agree.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- The α(k)-locus's free-digit exponent, written in the TRANSPORTED coordinate `W = N − 1 − mk`:
+`alphaExp m W k = m·W + k·c(m)` — the reduced-window exponent plus the ghost exponent.  H.16
+identifies it with `GENIND`'s displayed `m(N−1) − k·m(m+1)/2`. -/
+def alphaExp (m W k : ℕ) : ℕ := m * W + k * clusterC m
+```
+
+**DEPENDS.** H.13.
+
+**PROOF.** definitional.
+
+**SIZE.** 5 lines.
+
+**SOURCE.** `EFF.GENIND.17` (the α-locus law `(Q−1)·Q^{m(N−1) − k·m(m+1)/2}` and its derivation as
+the S2.2 slot count `Q^{Σ_j (N−1−(m−j)k)}`); `EFF.GENIND.21` (the ghost-fibre count
+`Σ_{j<m} jk = k·m(m−1)/2 = k·c(m)` and the transported menu
+`(Q−1)·Q^{k·c(m)} × the window-(N−mk) menu`).
+
+**⚠ COORDINATE CHOICE, AND WHY (the subtraction-free discipline).** The corpus's display has two
+`ℕ`-subtractions (`N−1`, and the whole exponent) which truncate silently below the admissibility
+bound `mk ≤ N−1`. Writing the exponent in `W` makes every chapter-H α statement subtraction-free and
+makes the transport identity H.17 **definitional**. The re-derivation is one line: with `N−1 = W+mk`,
+the `j`-th summand of the corpus's slot count is `N−1−(m−j)k = W + jk`, so
+`Σ_{j<m}(W+jk) = mW + k·Σ_{j<m}j = mW + k·c(m)` ✓ — recomputed at H.16. Chapter G used the same
+discipline (its `G23R*` route is "subtraction-free" by design).
+
+**TEETH.** none (a definition).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.16 [lemma] [fresh]
+
+**STATEMENT.** *The slot count and the closed form.* Two clauses.
+(i) `Σ_{j<m} (W + j*k) = alphaExp m W k`.
+(ii) the closed-form reconciliation, subtraction-free:
+`2 * alphaExp m W k + k * (m * (m+1)) = 2 * (m * (W + m * k))`.
+(Dividing by `2` and substituting `N − 1 = W + m*k`, clause (ii) is the corpus's
+`m(N−1) − k·m(m+1)/2`.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem sum_alphaSlots (m W k : ℕ) :
+    ∑ j ∈ Finset.range m, (W + j * k) = alphaExp m W k
+
+theorem two_mul_alphaExp_add (m W k : ℕ) :
+    2 * alphaExp m W k + k * (m * (m + 1)) = 2 * (m * (W + m * k))
+```
+
+**DEPENDS.** H.13, H.14, H.15.
+
+**PROOF.**
+1. (i) `Finset.sum_add_distrib`; the first part is `m * W` (`Finset.sum_const`,
+   `Finset.card_range`), the second is `(Σ_{j<m} j) * k = clusterC m * k` by H.14(ii) and
+   `Finset.sum_mul`. `ring_nf`.
+2. (ii) unfold `alphaExp`; rewrite `2 * (k * clusterC m) = k * (2 * clusterC m) = k * (m * (m-1))`
+   by H.14(i). The goal becomes
+   `2*m*W + k*(m*(m-1)) + k*(m*(m+1)) = 2*m*W + 2*m*m*k`, i.e.
+   `k*m*((m-1) + (m+1)) = 2*m*m*k`. Split on `m = 0` (`simp`) and `m ≥ 1` (`omega` after
+   `Nat.succ_pred_eq_of_pos`).
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.GENIND.17`'s own ARITHMETIC AUDIT, verbatim: *"the free-digit sum is
+`Σ_{j=0}^{m−1} (N−1−(m−j)k) = m(N−1) − k·Σ_{j=0}^{m−1}(m−j) = m(N−1) − k·(m + (m−1) + … + 1)
+= m(N−1) − k·m(m+1)/2` ✓ — the displayed exponent, recomputed fresh."*
+
+**ARITHMETIC AUDIT (recomputed fresh, at two `Q`).** Take `m = 2`, `k = 1`, `N = 6` so
+`W = N−1−mk = 3`: `alphaExp = 2·3 + 1·1 = 7`; the corpus's form is
+`m(N−1) − k·m(m+1)/2 = 2·5 − 1·3 = 7` ✓. Cross-check against `EFF.GENIND.99`'s preregistered spot
+`ALPHA(1) = 1,024` at `(q,N) = (2,6)`, `m = 4`, `d = 1`: there `W = 6−1−4 = 1` and
+`alphaExp = 4·1 + 1·6 = 10`, so the locus is `(Q−1)Q^{10} = 1·2^{10} = 1,024` ✓ **exactly the
+preregistered value**. At `q = 3`, `(N, m, k) = (4, 4, 1)`: the corpus records `ALPHA ABSENT` because
+α needs `mk ≤ N−1`, i.e. `4 ≤ 3` ✗ ✓ — the admissibility bound, not the exponent, is what excludes
+it, and `alphaExp` is never evaluated there. At `q = 3`, `(N, m, k) = (6, 3, 1)`: `W = 2`,
+`alphaExp = 3·2 + 1·3 = 9`, locus `2·3^9 = 39,366`; the corpus's form gives
+`3·5 − 1·6 = 9` ✓ **agreement at `q = 3` as well as `q = 2`.**
+
+**TEETH.** `GT-ALPHA` (`EFF.GENIND.18`, `.21`; executable regression, pointwise + fibres + onto,
+§S11 P-5 "0/2,474 — every pointwise scaled re-read agrees (verdict + σ), every ghost fiber exactly
+`q^{k·m(m−1)/2}`") → **Lean theorem** for the exponent arithmetic (the pointwise re-read is
+geometric and stays a regression).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.17 [lemma] [fresh]
+
+**STATEMENT.** *The α-transport identity (the ghost/child decomposition).* The α(k)-slice's
+exponent is the ghost exponent plus the reduced-window system's own exponent:
+`k * clusterC m + m * W = alphaExp m W k`, where `m * W` is the state exponent of the SAME `(m, d)`
+system at the reduced window (whose `N' − 1 = W`) and `k * clusterC m` is the ghost-fibre exponent
+`Σ_{j<m} j*k`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem ghostSlots_eq (m k : ℕ) : ∑ j ∈ Finset.range m, j * k = k * clusterC m
+
+theorem ghost_add_child_eq_alphaExp (m W k : ℕ) :
+    k * clusterC m + m * W = alphaExp m W k
+```
+
+**DEPENDS.** H.13, H.14, H.15.
+
+**PROOF.**
+1. `ghostSlots_eq`: `Finset.sum_mul` backwards then H.14(ii); `ring`.
+2. `ghost_add_child_eq_alphaExp`: unfold `alphaExp`; `omega` (or `Nat.add_comm`).
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.GENIND.21` (`LEMMA GENIND-2(a)`, verbatim: *"each scaled state has exactly
+`Q^{k·c(m)}` ghost-fiber preimages (`Σ_{j<m} jk = k·m(m−1)/2` ghost slots), all key-constant. Hence
+the α(k)-slice's history-resolved menu = `(Q−1)·Q^{k·c(m)} × the window-(N−mk) menu`"*), with the
+spec's own audit *"Ghost-slot total `Σ_{j=0}^{m−1} jk = k·(m−1)m/2 = k·c(m)` ✓"*; `EFF.GENIND.18`
+(`GENIND-1(ii)`'s cardinality check
+`#slice = (Q−1)·Q^{m(N−1)−k·m(m+1)/2}/(Q−1) = #D_k = Π_{j<m} Q^{N−1−(m−j)k}`).
+
+**⚠ WHAT IS AND IS NOT TRANSPORTED.** This node is the **exponent bookkeeping** of the α-transport,
+i.e. exactly the part `EFF.GENIND.17`'s cross-check calls *"consistent with `.21`'s statement"*. The
+*bijection* (`GENIND-1(ii)`'s recentering `x ↦ x + ẑπ^k` killing the `m` pinned digits by the
+binomial identities) is **geometric and has no node** — the honesty item is H-3. What chapter H
+delivers is that the two sides' cardinalities agree *identically in `m, W, k`*, which is the
+no-over/undercount check, and that they agree with **no characteristic hypothesis** (the corpus's own
+claim: *"the binomial identities … valid in every characteristic"*).
+
+**TEETH.** `GT-ALPHA` (fibres exactly `q^{k·m(m−1)/2}`, 0/2,474) → **Lean theorem** for the fibre
+exponent; `GT-RECUR` (`EFF.GENIND.21`, §S11 P-6 "0/8 — the α-drain self-similarity
+`(q−1)q^{k·c(m)}·u_m(N−mk)` exact at every realized `k`") → **Lean theorem** at H.25 (the recursion's
+α-term uses exactly this identity).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.18 [def] [fresh]
+
+**STATEMENT.** *The α-bracket, by its convolution recursion.* For `Q, c : ℕ` define
+`alphaBracket Q c : ℕ → ℕ` by `alphaBracket Q c 0 = 1` and, for `μ ≥ 1`,
+`alphaBracket Q c μ = Σ_{k=1}^{μ} (Q−1) * Q^(c*k) * alphaBracket Q c (μ−k)` — the sum over all
+finite sequences `(k₁, …, k_r)` with `k_i ≥ 1` and `Σ k_i = μ` of `Π_i (Q−1)Q^{c k_i}`, computed by
+peeling the first step.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- The α-prefix aggregate `b_{m,d}(μ)`, defined by the composition recursion (peel the first
+step).  `alphaBracket Q c μ = Σ over compositions (k₁,…,k_r) of μ with kᵢ ≥ 1 of
+Π (Q−1)Q^{c kᵢ}`, and `alphaBracket Q c 0 = 1`. -/
+def alphaBracket (Q c : ℕ) : ℕ → ℕ
+  | 0 => 1
+  | (μ + 1) => ∑ k ∈ Finset.range (μ + 1),
+      (Q - 1) * Q ^ (c * (k + 1)) * alphaBracket Q c (μ - k)
+```
+
+**DEPENDS.** none.
+
+**PROOF.** definitional. **Termination:** the recursive call is at `μ - k ≤ μ < μ + 1`; supply
+`decreasing_by omega` (or restructure with `Nat.rec` on the strong-recursion principle
+`Nat.strongRecOn` if the equation compiler balks on the `Finset.sum` binder).
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENIND.22` (`LEMMA GENIND-2(b)`, verbatim: *"`Σ` over all finite sequences
+`(k₁, …, k_r)`, `k_i ≥ 1`, `Σk_i = μ`, of `Π_i (Q−1)Q^{c(m)·k_i} = (Q−1)·Q^{(c(m)+1)μ−1} =:
+b_{m,d}(μ)`"*), and its proof's generating function *"one step contributes
+`A₁(x) = Σ_{k≥1}(Q−1)Q^{c·k}x^k`; chains contribute `A₁/(1−A₁)`"* — the peel-the-first-step
+recursion is that generating function's functional equation `B = 1 + A₁·B`.
+
+**⚠ WHY A RECURSION AND NOT A LITERAL COMPOSITION SUM.** A `Finset` of compositions in Lean is a
+`Finset (List ℕ)` with two side conditions and no mathlib API; the peel recursion is the same object
+(`B = 1 + A₁ B`) and gives H.20's closed form by induction in four lines. The corpus's own proof is
+the generating-function identity, i.e. the recursion — so the recursion, not the sum, is the faithful
+transcription. **A fleet agent must not "improve" this into a `Finset (Composition μ)` statement**:
+that changes the contract and the closed-form proof.
+
+**TEETH.** none (a definition; guarded at H.20/H.21).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.19 [lemma] [fresh]
+
+**STATEMENT.** *The telescoping step.* For `2 ≤ Q` and `1 ≤ c`, and every `μ ≥ 1`:
+`alphaBracket Q c (μ + 1) = Q ^ (c + 1) * alphaBracket Q c μ`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem alphaBracket_succ (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 1 ≤ c) {μ : ℕ} (hμ : 1 ≤ μ) :
+    alphaBracket Q c (μ + 1) = Q ^ (c + 1) * alphaBracket Q c μ
+```
+
+**DEPENDS.** H.18.
+
+**PROOF.**
+1. unfold both sides by the defining equation; the left is
+   `Σ_{k<μ+1} (Q−1)Q^{c(k+1)} B(μ−k)` and the right is `Q^{c+1} Σ_{k<μ} (Q−1)Q^{c(k+1)} B(μ−1−k)`.
+2. re-index the right sum by `k ↦ k+1` (`Finset.sum_range_succ'` / `Finset.sum_nbij'`): it becomes
+   `Σ_{1 ≤ k < μ+1} (Q−1)Q^{c(k+1)} B(μ−k) · Q^{c+1}/Q^{c+1}` — concretely,
+   `Q^{c+1} · (Q−1)Q^{c(k+1)} B(μ−1−k) = (Q−1)Q^{c(k+2)} · Q · B(μ−1−k)`.
+3. the identity therefore reduces to
+   `(Q−1)Q^{c} B(μ) + Σ_{1≤k<μ+1} (Q−1)Q^{c(k+1)} B(μ−k) = Q^{c+1} B(μ)`
+   — i.e. to `Σ_{1≤k<μ+1} (Q−1)Q^{c(k+1)} B(μ−k) = (Q^{c+1} − (Q−1)Q^c) B(μ) = Q^c B(μ)`.
+4. and that is `Q^c · B(μ) = Q^c · Σ_{k<μ}(Q−1)Q^{c(k+1)}B(μ−1−k)`, which is the re-indexed right
+   sum of step 2 — closing the loop by the defining equation of `B(μ)` (valid because `μ ≥ 1`).
+5. Bookkeeping: all `ℕ`-subtractions (`Q − 1`, `μ − k`) are guarded — `Q ≥ 2` and `k < μ+1`. Land
+   the `Q`-arithmetic as `Nat.sub_add_cancel`-rewrites **before** the sum manipulation.
+
+**SIZE.** 26 lines. **This is the hardest node of §4.** If the re-indexing fights, the sanctioned
+fallback is to prove the pair `(B μ, B (μ+1))` satisfies the two-term linear recursion by strong
+induction on `μ` with the closed form of H.20 as the induction *statement* (i.e. merge H.19 into
+H.20 and prove the closed form directly by strong induction from the convolution). Record the merge
+as a RE-PLAN.
+
+**SOURCE.** `EFF.GENIND.22`'s DERIVATION verbatim: *"one step contributes
+`A₁(x) = Σ_{k≥1}(Q−1)Q^{c·k}x^k = (Q−1)Q^c x/(1−Q^c x)`; chains contribute
+`A₁/(1−A₁) = (Q−1)Q^c x/(1 − Q^{c+1}x)`"* — the denominator `1 − Q^{c+1}x` **is** this node's
+one-step recursion, and the spec's own audit re-derives it: *"`(1−Q^c x) − (Q−1)Q^c x = 1 − Q^c
+x·(1 + Q − 1) = 1 − Q^{c+1}x` ✓"*.
+
+**TEETH.** `GT-BRACKETID` / `GT-T-BRACKET` → **Lean theorem** at H.20.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.20 [theorem] [fresh]
+
+**STATEMENT.** *THE GENERAL BRACKET.* For `2 ≤ Q`, `1 ≤ c` and `1 ≤ μ`:
+`Q * alphaBracket Q c μ = (Q − 1) * Q ^ ((c + 1) * μ)`.
+(Dividing by `Q`: `b_{m,d}(μ) = (Q−1)·Q^{(c+1)μ−1}`, the corpus's display; the `Q *` form is
+subtraction-free in the exponent.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem alphaBracket_closed (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 1 ≤ c) {μ : ℕ} (hμ : 1 ≤ μ) :
+    Q * alphaBracket Q c μ = (Q - 1) * Q ^ ((c + 1) * μ)
+
+/-- The corpus's displayed form, for consumers that prefer it. -/
+theorem alphaBracket_eq (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 1 ≤ c) {μ : ℕ} (hμ : 1 ≤ μ) :
+    alphaBracket Q c μ = (Q - 1) * Q ^ ((c + 1) * μ - 1)
+```
+
+**DEPENDS.** H.18, H.19.
+
+**PROOF.**
+1. induction on `μ`, base `μ = 1`: the defining equation gives
+   `B 1 = Σ_{k<1} (Q−1)Q^{c(k+1)} B(1−k) = (Q−1)Q^c · B 0 = (Q−1)Q^c`; then
+   `Q * (Q−1)Q^c = (Q−1)Q^{c+1} = (Q−1)Q^{(c+1)·1}` ✓ by `ring`/`pow_succ`.
+2. step: `Q * B(μ+1) = Q * Q^{c+1} * B μ` (H.19) `= Q^{c+1} * (Q * B μ)`
+   `= Q^{c+1} * (Q−1) * Q^{(c+1)μ}` (IH) `= (Q−1) * Q^{(c+1)(μ+1)}` by `pow_add` and `ring`.
+3. `alphaBracket_eq`: from clause 1, `(c+1)*μ ≥ 1`, so
+   `Q^{(c+1)μ} = Q * Q^{(c+1)μ − 1}` (`Nat.sub_add_cancel`, `pow_succ`); cancel `Q` by
+   `Nat.eq_of_mul_eq_mul_left (by omega : 0 < Q)`.
+
+**SIZE.** 18 lines. **SPLIT MANDATED:** land `alphaBracket_closed` and `alphaBracket_eq` as two
+declarations in one node file (the second is a three-line corollary and every downstream consumer in
+§10 uses the first).
+
+**SOURCE.** `EFF.GENIND.22` (the display and its proof); `EFF.GENIND.09` (`GENIND.A`(II)'s bracket
+with the **WINDOW CONDITION** `mμ ≤ N−1`, `[r1, PE1-M1]`).
+
+**⚠ THE WINDOW CONDITION IS NOT A HYPOTHESIS OF THIS NODE — DELIBERATELY.** `EFF.GENIND.22`'s own
+CONDITIONALITY: *"The generating-function identity is unconditional; the **realized-history** reading
+carries `mμ ≤ N−1`."* This node states the identity, so it carries `2 ≤ Q`, `1 ≤ c`, `1 ≤ μ` and
+nothing else — hypotheses at their true minimum (the G.28 lesson). The window condition belongs to
+the *consumer* that interprets `alphaBracket` as a realized-history aggregate: it appears as a
+hypothesis of H.67/H.71, not here. **A node stating this identity under `m*μ ≤ N−1` is over-strong
+and must be returned.**
+
+**ARITHMETIC AUDIT (recomputed fresh at `Q = 2`, `Q = 3` AND `Q = 4`).**
+* `Q = 4`, `c = 1`, `μ = 2` (the corpus's own in-line certificate, `EFF.GENIND.64`): compositions of
+  `2` are `(2)` and `(1,1)`; mass terms `(4−1)·4² = 48` and `[(4−1)·4]² = 144`; sum `= 192`. Closed
+  form `(Q−1)Q^{(c+1)μ−1} = 3·4³ = 192` ✓, and `Q * B = 4 · 48+144?` — no: `B 2 = 192` and
+  `Q * B 2 = 768 = 3 · 4^4 = 3 · 256` ✓.
+* **`Q = 2`, `c = 1`, `μ = 3`:** compositions of `3`: `(3) → 1·2³ = 8`; `(2,1) → (1·2²)(1·2) = 8`;
+  `(1,2) → 8`; `(1,1,1) → 2³ = 8`. Sum `= 32`. Closed form `(2−1)·2^{2·3−1} = 2⁵ = 32` ✓.
+* **`Q = 3`, `c = 1`, `μ = 2`:** `(2) → 2·3² = 18`; `(1,1) → (2·3)² = 36`. Sum `= 54`. Closed form
+  `2·3^{3} = 54` ✓. **This is the check the G.23 lesson demands** — at `Q = 2` the two composition
+  terms are equal (`8 = 8` above), which would hide a symmetry-factor error; at `Q = 3` they differ
+  (`18 ≠ 36`), so the sum genuinely tests the convolution.
+* **`Q = 3`, `c = 3` (i.e. `m = 3`), `μ = 2`:** `(2) → 2·3⁶ = 1458`; `(1,1) → (2·3³)² = 54² = 2916`.
+  Sum `= 4374`. Closed form `2·3^{4·2−1} = 2·3⁷ = 4374` ✓.
+* **`Q = 2`, `c = 6` (`m = 4`), `μ = 1`:** `(1) → 1·2⁶ = 64`; closed form `1·2^{7·1−1} = 2⁶ = 64` ✓.
+* **`Q = 2`, `c = 10` (`m = 5`), `μ = 2`:** `(2) → 2^{20} = 1,048,576`; `(1,1) → (2^{10})² = 2^{20}`.
+  Sum `= 2^{21}`; closed form `1·2^{11·2−1} = 2^{21}` ✓.
+The six cells cover `m ∈ {2,3,4,5}` and `Q ∈ {2,3,4}` — a strict superset of the corpus's own
+`m ∈ {2,3,4,5}, μ ∈ {1,2,3}, q ∈ {2,3}` 24-cell tooth (`EFF.GENIND.09`'s `GT-BRACKETID`).
+
+**TEETH.** `GT-BRACKETID [SYM]` (`EFF.GENIND.09`, `.22`; executable regression, symbolic identity
+check at `m ∈ {2,3,4,5}`, `μ ∈ {1,2,3}`, `q ∈ {2,3}`, §S11 P-7 "24/24", tooth `GT-T-BRACKET` at its
+preregistered count 24) → **Lean theorem** (this node is the general law those 24 cells
+instantiate).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.21 [lemma] [fresh]
+
+**STATEMENT.** *The bracket audit and the mass/letter reconciliation.* Four clauses, all closed
+numeric facts.
+(i) `alphaBracket 4 1 2 = 192` and `48 + 144 = 192`.
+(ii) `alphaBracket 3 1 2 = 54` and `18 + 36 = 54`.
+(iii) `alphaBracket 2 1 3 = 32`.
+(iv) the ghost × letter reconciliation at `|K| = 4`, `μ = 2`, `c = 1`:
+`4 ^ 2 * ((4 − 1) * 4 ^ 1) = 192` — i.e. `ghost × letters = mass`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem alphaBracket_audit :
+    alphaBracket 4 1 2 = 192 ∧ alphaBracket 3 1 2 = 54 ∧ alphaBracket 2 1 3 = 32
+
+theorem massNorm_eq_ghost_mul_letters :
+    (4 : ℕ) ^ 2 * ((4 - 1) * 4 ^ 1) = alphaBracket 4 1 2
+```
+
+**DEPENDS.** H.18 (and H.20 for the cross-check, though the proofs are by evaluation).
+
+**PROOF.**
+1. `alphaBracket_audit`: `by decide` — or, if the recursion's `decide` is too deep,
+   `by simp [alphaBracket, Finset.sum_range_succ]; norm_num` three times.
+2. `massNorm_eq_ghost_mul_letters`: `norm_num` after the first clause (`16 * 12 = 192`).
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENIND.64`'s in-line numeric certificate, verbatim: *"Checked numerically this round
+at `(q, μ″) = (2, 2)`, `|K| = 4` (genre F, `c(2) = 1`): composition sum
+`Σ_{(k₁..k_r), Σk_i=2} Π_i (|K|−1)|K|^{k_i} = 48 + 144 = 192 = (|K|−1)|K|³` (mass form);
+letters-only `Σ (|K|−1)^r = 3 + 9 = 12 = (|K|−1)|K|¹` (GENH4 form); ghost `|K|² = 16`;
+`16 · 12 = 192`."*; `EFF.GENHN.36` (the same reconciliation
+`(|K|−1)|K|^{2κ−1} = |K|^{κ} · (|K|−1)|K|^{κ−1}`).
+
+**⚠ WHY THE RECONCILIATION IS A NODE.** `EFF.GENIND.64`'s NORMALIZATION DECLARATION is the corpus's
+own warning that *"a discharge of `(CS-2)` in the wrong normalization would be off by the ghost
+factor `|K|^{μ″}`, invisible at genre E and visible at genre F"*. `StageInterface.hbracket` (H.09)
+is stated in the **mass** normalization; clause (iv) is the machine check that the mass form is the
+one whose ghost factor is `|K|^{c(μ)μ}`, so a genre-F instance built from `GENH4`'s letter-sum form
+will fail to satisfy `hbracket` — **loudly, at elaboration time**, which is the point.
+
+**ARITHMETIC AUDIT.** All four clauses ARE the audit; each is recomputed independently in H.20's
+audit block, and clause (ii) at `Q = 3` is the non-degenerate cell (`18 ≠ 36`) the `q = 2`-only
+regime would have hidden. Genre-E invisibility, recomputed: with `|K| = q` and `δ = 2μ″` integer
+`dv`-points, the letter-sum reads `(q−1)q^{δ−1} = (q−1)q^{2μ″−1}`, which **equals** the mass form
+`(q−1)q^{(c(2)+1)μ″−1}` ✓ — so at genre E the two normalizations coincide numerically and the gap is
+genuinely invisible, exactly as `EFF.GENIND.64` claims. Genre-F gap: mass `(q²−1)(q²)^{2μ−1}` ÷
+letters `(q²−1)(q²)^{μ−1} = (q²)^{μ}` ✓ = the ghost.
+
+**TEETH.** `EFF.GENIND.64`'s **`arithmetic recount`** (a compiler-verifiable certificate embedded in
+the statement; the spec's own disposition) → **Lean theorem**. No battery row exercises `(CS-2)` at
+any genre — `signed vacuity disclosure` at `EFF.GENIND.64` — so this node is the *only* machine
+guard on the normalization, at any grade, anywhere.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.22 [lemma] [fresh]
+
+**STATEMENT.** *The DRAIN locus exponent and the five-event exponent inventory at window 1.* Two
+clauses.
+(i) `DRAIN`'s locus exponent is `d*(m−1)*(N−1)`, and relative to the total `d*m*(N−1)` its
+codimension is exactly `d*(N−1)`: subtraction-free,
+`d * (m − 1) * (N − 1) + d * (N − 1) = d * m * (N − 1)` for `1 ≤ m`.
+(ii) at `N = 1` the state count is `1`, the DRAIN locus is the whole space, α needs `m*k ≤ 0` with
+`k ≥ 1` (impossible), and `DEC`/`β`/`CS` need `v(a₀) < N = 1` (impossible): **of the five events
+exactly one is inhabited**, stated as the exponent facts
+`d * m * (1 − 1) = 0`, `d * (m−1) * (1−1) = 0`, and `¬ ∃ k, 1 ≤ k ∧ m * k ≤ 0` for `1 ≤ m`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem drain_codim (d m N : ℕ) (hm : 1 ≤ m) :
+    d * (m - 1) * (N - 1) + d * (N - 1) = d * m * (N - 1)
+
+theorem window_one_exponents (d m : ℕ) (hm : 1 ≤ m) :
+    d * m * (1 - 1) = 0 ∧ d * (m - 1) * (1 - 1) = 0 ∧ ¬ ∃ k, 1 ≤ k ∧ m * k ≤ 0
+```
+
+**DEPENDS.** none.
+
+**PROOF.**
+1. `drain_codim`: `rcases Nat.exists_eq_add_of_le hm with ⟨m', rfl⟩` then `ring_nf`; `omega` on the
+   `ℕ`-subtraction `(1 + m') - 1 = m'`.
+2. `window_one_exponents`: first two by `simp`; third: `intro ⟨k, hk, hmk⟩`; `Nat.pos_of_ne_zero`
+   plus `Nat.mul_pos hm hk` contradicts `hmk`. `omega`.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENIND.08` (`GENIND.A`(I): *"DRAIN: `v(a₀) ≥ N` (conservative exit); locus
+`q^{d(m−1)(N−1)}`"*); `EFF.GENIND.160` (`ANNEX R R3.1`, the window-1 convention rider, verbatim:
+*"states: `a_j ∈ (O/π¹)[x]_{<d}` with `ā_j = 0` forces every `a_j = 0` — exactly
+`q^{dm(N−1)} = q⁰ = 1` state; read: `a₀ = 0` gives `v(a₀) ≥ 1 = N`, so the conservative read exits
+UNDECIDED before consulting any digit — DRAIN; `u_{m,d}(1) = total = 1`; grammar coherence: DRAIN's
+locus law `q^{d(m−1)(N−1)} = 1 = the whole space`; α needs `mk ≤ N−1 = 0` (none); `DEC/β/CS` need a
+polygon, i.e. `v(a₀) < N` (none) — of the five events exactly one is inhabited"*), with the spec's
+own audit reproducing every clause.
+
+**⚠ THE BOUNDARY CASE IS A NODE, NOT A REMARK (the G.31 lesson).** `ANNEX R R3` was filed as a
+**CONFIRMED GAP** — a *scope leak*, `EFF.GENIND.159` — precisely because window-1 systems arise as
+transport targets at three enumerated sites and the `S1` convention said `N ≥ 2`. Chapter H's
+consumers of the window-1 boundary are H.24 (`uTwo 1 = 1`), H.71 (`GENIND.C′`'s `N ≥ 1`) and H.71's
+truncation base case (`T = 1`). Landing the boundary as a lemma here means DEPENDS-completeness holds
+at every one of them; leaving it as prose is exactly the defect that made `EFF.GENIND.159`.
+
+**ARITHMETIC AUDIT (recomputed fresh at `q = 2` and `q = 3`).** `DRAIN₀` spot values from
+`EFF.GENIND.99`: at `(q, N, n) = (2, 6, 4)`, `d = 1`, `m = 4`: `q^{d(m−1)(N−1)} = 2^{3·5} = 32,768`
+✓ (the preregistered value). At `(3, 4, 4)`: `3^{3·3} = 19,683` ✓. At `(5, 3, 4)`: `5^{3·2} = 15,625`
+✓. At `(2, 5, 5)`, `m = 5`: `2^{4·4} = 65,536` ✓. At `(3, 3, 5)`: `3^{4·2} = 6,561` ✓. **All five
+preregistered `DRAIN₀` values reproduce, across `q ∈ {2, 3, 5}`.** Window-1: `q^{1·m·0} = 1` at every
+`q` ✓, and the codimension identity at `N = 1` reads `0 + 0 = 0` ✓.
+
+**TEETH.** `GT-PART [SAME]` (`EFF.GENIND.08`, §S11 P-2 "0/33 — partition exact on every row, with
+`Zp`/`F_q[[t]]` depth-0 tallies IDENTICAL at all 11 shared `(m, q, N)`") → **Lean theorem** for the
+exponent arithmetic; `EFF.GENIND.160`'s machine leg I (`genind_annexr_supp.py` @ `f5271e4`, GREEN,
+`(m, Q) ∈ {2,3,4}²`, with a decorrelated sympy re-solve) → **Lean theorem** for clause (ii).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+## 5. §5 — ARITHMETIC II: THE `m = 2` DRAINAGE SPECIES AND THE `(A2-RATE)` GROUND INSTANCE
+
+> `EFF.GENIND.150` is, in the spec's own words, *"the most fully checkable unit in the three GENIND
+> shards"* — every displayed step re-derives. §5 is its Lean transcription, and its last node (H.28)
+> is the `(A2-RATE)` species's only proved instance at general `Q`.
+
+### NODE H.23 [def] [fresh]
+
+**STATEMENT.** *The `m = 2` conservative complement, by its first-step recursion.* For `Q : ℕ`
+define `uTwo Q : ℕ → ℕ` by `uTwo Q 0 = 1`, `uTwo Q 1 = 1`, and for `N ≥ 2`
+`uTwo Q N = Q^(N−1) + Σ_{k : 1 ≤ k, 2k ≤ N−1} (Q−1) * Q^k * uTwo Q (N − 2k)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+/-- The conservative-undecided count of the `(2, d)` cluster system at window `N`, in `Q = q^d`
+units, by `GENIND` §S5.2's first-step recursion specialized to `m = 2` (where the recursion has no
+β-terms: `m = 2 < 4` excludes CS, and a repeated linear `e = 1` factor at `m = 2` spans the whole
+polygon, i.e. is α). -/
+def uTwo (Q : ℕ) : ℕ → ℕ
+  | 0 => 1
+  | 1 => 1
+  | (N + 2) => Q ^ (N + 1) +
+      ∑ k ∈ Finset.range (N + 2), if 1 ≤ k ∧ 2 * k ≤ N + 1 then (Q - 1) * Q ^ k * uTwo Q (N + 2 - 2 * k) else 0
+```
+
+**DEPENDS.** none.
+
+**PROOF.** definitional. **Termination:** in the live branch `1 ≤ k`, so `N + 2 − 2k ≤ N < N + 2`;
+`decreasing_by omega` after `split_ifs`.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.GENIND.150` (`R1.1`, verbatim: *"the first-step recursion degenerates to head + α:
+`u(N) = Q^{N−1} + Σ_{k ≥ 1, 2k ≤ N−1} (Q−1)·Q^k · u(N−2k)`, `u(1) = 1` (the window-1 boundary: R3's
+rider below), writing `u := u_{2,d}`, `Q := q^d`, `c(2) = 1`"*); `EFF.GENIND.45` (the general
+first-step recursion this specializes).
+
+**⚠ THE `c(2) = 1` COINCIDENCE, DECLARED.** The α-term's coefficient is `(Q−1)Q^{k·c(m)}` with
+`c(2) = 1`, so it reads `(Q−1)Q^k` — the exponent is `k`, **not** `k·c(m)` in general. A fleet agent
+extending this to `m ≥ 3` must write `Q^(k * clusterC m)` (H.13) and must NOT copy the `Q^k`.
+`EFF.GENIND.150`'s own scope: `m = 2` only, because *"at `m = 2` the recursion of S5.2 closes without
+β-terms"*.
+
+**TEETH.** none (a definition; guarded at H.25/H.26/H.29).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.24 [lemma] [fresh]
+
+**STATEMENT.** `uTwo Q 1 = 1` and `uTwo Q 2 = Q`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem uTwo_one (Q : ℕ) : uTwo Q 1 = 1
+
+theorem uTwo_two (Q : ℕ) : uTwo Q 2 = Q
+```
+
+**DEPENDS.** H.23.
+
+**PROOF.**
+1. `uTwo_one` : `rfl`.
+2. `uTwo_two` : unfold at `N = 0`: `Q^1 + Σ_{k<2} …`; every `k` fails `2k ≤ 1` for `k ≥ 1`, so the
+   sum is `0`. `simp [uTwo, Finset.sum_range_succ]`.
+
+**SIZE.** 6 lines.
+
+**SOURCE.** `EFF.GENIND.150` (*"iterating from `u(1) = 1`, `u(2) = Q`"*); `EFF.GENIND.160`
+(`R3.1`'s window-1 clause `u_{m,d}(1) = total = 1`, and the two-way coherence check: the closed form
+`u(2ℓ+1) = (ℓ+1)Q^{2ℓ} − ℓQ^{2ℓ−1}` returns `1` at `ℓ = 0`).
+
+**⚠ DEPENDS COMPLETENESS (the G.31 lesson).** `uTwo_one` is the **window-1 boundary** whose absence
+was `CODEX F2`, a CONFIRMED GAP (`EFF.GENIND.159`). It is a DEPENDS of H.26's closed form (whose
+odd branch is anchored there) and of H.25's recursion at `N = 3` (which calls `uTwo Q 1`). Both
+DEPENDS fields name it. H.22(ii) supplies the *reason* the value is `1`; this node supplies the
+value.
+
+**TEETH.** `EFF.GENIND.160`'s machine leg I (GREEN) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.25 [theorem] [fresh]
+
+**STATEMENT.** *The telescoped recursion.* For `2 ≤ Q` and `N ≥ 3`:
+`uTwo Q N + Q^(N−2) = Q^(N−1) + Q^2 * uTwo Q (N − 2)`
+(the subtraction-free form of the corpus's `u(N) = Q^{N−1} − Q^{N−2} + Q²·u(N−2)`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem uTwo_rec (Q : ℕ) (hQ : 2 ≤ Q) {N : ℕ} (hN : 3 ≤ N) :
+    uTwo Q N + Q ^ (N - 2) = Q ^ (N - 1) + Q ^ 2 * uTwo Q (N - 2)
+```
+
+**DEPENDS.** H.23, H.24.
+
+**PROOF.** The corpus's telescope, transcribed. Write `S(N) := Σ_{k ≥ 1, 2k ≤ N−1} (Q−1)Q^k u(N−2k)`
+so `u(N) = Q^{N−1} + S(N)`.
+1. re-index `S(N)`'s `k ≥ 2` tail by `j = k − 1`:
+   `Σ_{k≥2}(Q−1)Q^k u(N−2k) = Q · Σ_{j≥1}(Q−1)Q^{j} u((N−2)−2j) = Q · S(N−2)`.
+   The index ranges match: `2k ≤ N−1, k ≥ 2` ⟺ `2j ≤ N−3, j ≥ 1`. (`Finset.sum_nbij'` with
+   `k ↦ k−1`; the side conditions are `omega`.)
+2. hence `S(N) = (Q−1)·Q·u(N−2) + Q·S(N−2)`.
+3. substitute `S(N−2) = u(N−2) − Q^{N−3}`, i.e. use `u(N−2) = Q^{N−3} + S(N−2)` **additively**:
+   `S(N) + Q·Q^{N−3} = (Q−1)Q·u(N−2) + Q·u(N−2) = Q^2 · u(N−2)`.
+4. add `Q^{N−1}` to both sides and use `Q·Q^{N−3} = Q^{N−2}`:
+   `u(N) + Q^{N−2} = Q^{N−1} + Q^2 u(N−2)` ✓.
+5. `N = 3` uses `uTwo Q 1` (H.24) inside step 3's `u(N−2)`.
+
+**SIZE.** 30 lines. Every `ℕ`-subtraction (`N−1`, `N−2`, `N−3`, `N−2k`) is guarded by `3 ≤ N` and
+`2k ≤ N−1`; land the `Nat.sub` normalizations as `have`s first (`obtain ⟨M, rfl⟩ : ∃ M, N = M + 3`).
+
+**SOURCE.** `EFF.GENIND.150` (the telescope, and the spec's own full re-derivation: *"Re-index
+`S(N)` at `j = k−1` on its `k ≥ 2` tail … the index ranges match, since `2k ≤ N−1, k ≥ 2`
+⟺ `2j ≤ N−3, j ≥ 1` ✓. Hence `S(N) = (Q−1)Q·u(N−2) + Q·S(N−2)`, and substituting
+`S(N−2) = u(N−2) − Q^{N−3}` gives `u(N) = Q^{N−1} − Q^{N−2} + Q²·u(N−2)` ✓ — the displayed
+telescoped recurrence, exactly"*).
+
+**ARITHMETIC AUDIT (recomputed fresh at `Q = 2` and `Q = 3`).** `Q = 2`: `u(1)=1`, `u(2)=2`,
+`u(3) = 2² + (1)(2)(1) = 6`; check `u(3)+u`-form: `6 + 2^1 = 2^2 + 2^2·1 = 8` ✓. `u(4) = 2³ + 1·2·2 =
+12`; check `12 + 2² = 2³ + 2²·2 = 16` ✓. `u(5) = 2⁴ + 1·2·u(3) + 1·2²·u(1) = 16 + 12 + 4 = 32`;
+check `32 + 2³ = 2⁴ + 2²·12 = 16 + 48 = 64` ✓. `Q = 3`: `u(1)=1`, `u(2)=3`,
+`u(3) = 3² + 2·3·1 = 15`; check `15 + 3 = 9 + 9·1 = 18` ✓. `u(4) = 3³ + 2·3·3 = 45`; check
+`45 + 9 = 27 + 9·3 = 54` ✓. `u(5) = 3⁴ + 2·3·15 + 2·9·1 = 81 + 90 + 18 = 189`; check
+`189 + 27 = 81 + 9·15 = 216` ✓. **Both characteristics of `Q` behave; the `Q = 3` cells are the ones
+where the `(Q−1)` factor is not `1` and therefore genuinely test the α-coefficient.**
+
+**TEETH.** `GT-RECUR [SAME]` (`EFF.GENIND.21`, `.45`; §S11 P-6 "GT-RECUR 0/8 — the α-drain
+self-similarity `(q−1)q^{k·c(m)}·u_m(N−mk)` exact at every realized `k`") → **Lean theorem**;
+`EFF.GENIND.150`'s machine leg A (`genind_annexr_supp.py` @ `f5271e4`, GREEN: the closed forms solve
+the recursion symbolically in `Q` at `N = 2..14`) → **Lean theorem** at H.26.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.26 [theorem] [fresh]
+
+**STATEMENT.** *THE CLOSED FORM.* For `2 ≤ Q` and `M ≥ 2`:
+`uTwo Q M = Q^(M−1) + ((M−1)/2) * (Q−1) * Q^(M−2)`
+(`ℕ` division is exactly the corpus's `⌊(M−1)/2⌋`). Equivalently, in the parity-split form the
+corpus also displays: `uTwo Q (2ℓ) + (ℓ−1)*Q^(2ℓ−2) = ℓ*Q^(2ℓ−1)` for `ℓ ≥ 1`, and
+`uTwo Q (2ℓ+1) + ℓ*Q^(2ℓ−1) = (ℓ+1)*Q^(2ℓ)` for `ℓ ≥ 1`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem uTwo_closed (Q : ℕ) (hQ : 2 ≤ Q) {M : ℕ} (hM : 2 ≤ M) :
+    uTwo Q M = Q ^ (M - 1) + ((M - 1) / 2) * ((Q - 1) * Q ^ (M - 2))
+
+theorem uTwo_even (Q : ℕ) (hQ : 2 ≤ Q) {l : ℕ} (hl : 1 ≤ l) :
+    uTwo Q (2 * l) + (l - 1) * Q ^ (2 * l - 2) = l * Q ^ (2 * l - 1)
+
+theorem uTwo_odd (Q : ℕ) (hQ : 2 ≤ Q) (l : ℕ) :
+    uTwo Q (2 * l + 1) + l * Q ^ (2 * l - 1) = (l + 1) * Q ^ (2 * l)
+```
+
+**DEPENDS.** H.23, H.24, H.25.
+
+**PROOF.**
+1. two-step induction on `M` via `Nat.le_induction` on the statement `P M ∧ P (M+1)`, or
+   `Nat.strongRecOn` with the recursion H.25 as the step. Bases: `M = 2` gives
+   `uTwo Q 2 = Q = Q^1 + 0` ✓ (H.24, `(2−1)/2 = 0`); `M = 3` gives
+   `uTwo Q 3 = Q² + (Q−1)Q = Q^2 + 1·(Q−1)Q^1` ✓ (`(3−1)/2 = 1`).
+2. step from `M` to `M+2`: H.25 gives `u(M+2) + Q^{M} = Q^{M+1} + Q²·u(M)`; substitute the IH for
+   `u(M)` and check
+   `Q^{M+1} + Q²(Q^{M−1} + ⌊(M−1)/2⌋(Q−1)Q^{M−2}) = Q^{M+1} + Q^{M+1}? ` — recompute:
+   `Q²·Q^{M−1} = Q^{M+1}` and `Q²·(Q−1)Q^{M−2} = (Q−1)Q^{M}`, so the right side is
+   `Q^{M+1} + Q^{M+1} + ⌊(M−1)/2⌋(Q−1)Q^{M}`; subtracting `Q^M` from both sides and using
+   `Q^{M+1} = Q·Q^M` and `⌊(M+1)/2⌋ = ⌊(M−1)/2⌋ + 1` gives the target. Land the exponent
+   normalizations first.
+3. `uTwo_even`/`uTwo_odd`: substitute `M = 2l` resp. `M = 2l+1` in clause 1 and evaluate
+   `(M−1)/2` (`= l−1` resp. `= l`); then `Nat.succ_pred`-style rearrangement plus `ring_nf`. Both are
+   `omega`-closable once the `Q`-powers are aligned.
+
+**SIZE.** 34 lines. **SPLIT MANDATED:** land `uTwo_closed` as H.26 and the two parity forms as a
+second declaration in the same file (they are three-line corollaries and H.27 uses `uTwo_closed`
+only).
+
+**SOURCE.** `EFF.GENIND.150`, verbatim: *"iterating from `u(1) = 1`, `u(2) = Q` gives the CLOSED
+FORMS `u(2ℓ) = ℓ·Q^{2ℓ−1} − (ℓ−1)·Q^{2ℓ−2}`, `u(2ℓ+1) = (ℓ+1)·Q^{2ℓ} − ℓ·Q^{2ℓ−1}`, equivalently
+`u(M) = Q^{M−1} + ⌊(M−1)/2⌋·(Q−1)·Q^{M−2}` — which is LETTER-FOR-LETTER the committed `R(M)`
+displayed inside `THEOREM HEX3.A`"*, with the spec's own audit verifying all three forms are one
+function and both base cases.
+
+**⚠ THE `R(M)` TIE IS A CROSS-CHAPTER CHECK, NOT A DEPENDENCY.** `EFF.GENIND.150` claims the closed
+form is letter-for-letter W-11's `R(M)` as displayed inside `THEOREM HEX3.A`, machine-checked at
+`M = 1..14` (leg B). Chapter G lands `hex3R` and `hex3R_rec` (`ChapG/G65.lean`) — **the `n = 3`
+`R`-recursion, a different object**. Do NOT wire `uTwo` to `hex3R`: the corpus's tie is at the
+*value* level for the `m = 2` cluster, and chapter G's `hex3R` is HEX3's `R(M)` inside the `n = 3`
+telescope. §16 item 6 flags the identification for the cross-read.
+
+**ARITHMETIC AUDIT (recomputed fresh at `Q = 2` and `Q = 3`, against H.25's values).** `Q = 2`:
+`M=2 → 2^1 + 0 = 2` ✓; `M=3 → 2^2 + 1·1·2 = 6` ✓; `M=4 → 2^3 + 1·1·4 = 12` ✓;
+`M=5 → 2^4 + 2·1·8 = 32` ✓; `M=6 → 2^5 + 2·1·16 = 64`; check against H.25:
+`u(6) + 2^4 = 2^5 + 2^2·u(4) = 32 + 48 = 80`, so `u(6) = 64` ✓. `Q = 3`:
+`M=2 → 3 + 0 = 3` ✓; `M=3 → 9 + 1·2·3 = 15` ✓; `M=4 → 27 + 1·2·9 = 45` ✓;
+`M=5 → 81 + 2·2·27 = 189` ✓; `M=6 → 243 + 2·2·81 = 567`; check
+`u(6) + 3^4 = 3^5 + 3^2·45 = 243 + 405 = 648`, so `u(6) = 567` ✓. **Ten cells, two values of `Q`,
+all exact.** Parity forms at `Q = 3, ℓ = 3` (`M = 6`): `ℓQ^{2ℓ−1} − (ℓ−1)Q^{2ℓ−2} = 3·3^5 − 2·3^4 =
+729 − 162 = 567` ✓.
+
+**TEETH.** `EFF.GENIND.150`'s machine legs A and B (symbolic solve at `N = 2..14`; the `R(M)`
+equality at `M = 1..14`) → **Lean theorem** for the closed form (legs A/B are the corpus's only
+evidence, and this node replaces them with a proof at every `N`).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.27 [lemma] [fresh]
+
+**STATEMENT.** *The rate, in `ℕ`.* For `2 ≤ Q` and `1 ≤ N`: `uTwo Q N ≤ N * Q^(N−1)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem uTwo_le (Q : ℕ) (hQ : 2 ≤ Q) {N : ℕ} (hN : 1 ≤ N) : uTwo Q N ≤ N * Q ^ (N - 1)
+```
+
+**DEPENDS.** H.24, H.26.
+
+**PROOF.**
+1. `N = 1`: `uTwo Q 1 = 1 ≤ 1 * Q^0 = 1` ✓ (H.24).
+2. `N ≥ 2`: by H.26, `uTwo Q N = Q^{N−1} + ⌊(N−1)/2⌋(Q−1)Q^{N−2}`.
+   Bound `(Q−1)Q^{N−2} ≤ Q^{N−1}` (since `Q−1 ≤ Q`), so
+   `uTwo Q N ≤ (1 + ⌊(N−1)/2⌋)·Q^{N−1}`.
+3. `1 + ⌊(N−1)/2⌋ ≤ N` for `N ≥ 1` (`omega` after `Nat.div_le_self`-style bound
+   `⌊(N−1)/2⌋ ≤ N−1`).
+4. `Nat.mul_le_mul_right`.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.GENIND.150` (*"Rate (leg C): `u(N) ≤ N·Q^{N−1}` … at `N = 2..14`,
+`Q ∈ {2,3,4,5,8,9}` — coefficient POLYNOMIAL (degree 1) in the window, deficit LINEAR in the
+window"*), with the spec's own audit: *"at `N = 2ℓ`, `u = ℓQ^{2ℓ−1} − (ℓ−1)Q^{2ℓ−2} ≤ ℓQ^{2ℓ−1} ≤
+2ℓ·Q^{2ℓ−1} = N·Q^{N−1}` ✓"*.
+
+**⚠ HYPOTHESIS AT ITS TRUE MINIMUM.** The corpus's leg C is checked at `Q ∈ {2,3,4,5,8,9}` and
+`N ≤ 14`; this node is stated at **every** `Q ≥ 2` and **every** `N ≥ 1`, with no `d = 1` and no
+characteristic hypothesis — which is what makes `GENIND-BOX-3`'s `Q`-uniformity claim a theorem for
+this leg (honesty item H-3).
+
+**TEETH.** `EFF.GENIND.150`'s machine leg C → **Lean theorem** (the node generalizes the 78 checked
+cells to all `(Q, N)`).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.28 [theorem] [fresh]
+
+**STATEMENT.** *THE `(A2-RATE)` GROUND INSTANCE.* For `2 ≤ Q` and `1 ≤ N`, in `ℝ`:
+`(uTwo Q N : ℝ) / (Q:ℝ)^(2*(N−1)) ≤ (N:ℝ) / (Q:ℝ)^(N−1)`.
+This is the species `u_{μ,d}(M)/Q^{μ(M−1)} ≤ K·M^B·Q^{−(M−c)}` at `(μ, K, B, c) = (2, 1, 1, 1)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem uTwo_ratio_le (Q : ℕ) (hQ : 2 ≤ Q) {N : ℕ} (hN : 1 ≤ N) :
+    (uTwo Q N : ℝ) / (Q : ℝ) ^ (2 * (N - 1)) ≤ (N : ℝ) / (Q : ℝ) ^ (N - 1)
+```
+
+**DEPENDS.** H.27 · mathlib `div_le_div_iff`, `pow_pos`, `Nat.cast_le`.
+
+**PROOF.**
+1. `have hQ0 : (0:ℝ) < Q := by positivity` (from `2 ≤ Q`).
+2. `rw [div_le_div_iff (by positivity) (by positivity)]`; the goal is
+   `(uTwo Q N : ℝ) * Q^(N−1) ≤ N * Q^(2*(N−1))`.
+3. `Q^(2*(N−1)) = Q^(N−1) * Q^(N−1)` by `pow_mul`/`two_mul`, `pow_add`.
+4. cancel `Q^(N−1) > 0` by `mul_le_mul_right`; the goal is `(uTwo Q N : ℝ) ≤ N * Q^(N−1)`.
+5. `exact_mod_cast uTwo_le Q hQ hN`.
+
+**SIZE.** 12 lines.
+
+**SOURCE.** `EFF.GENIND.150` (*"`u(N)/Q^{2(N−1)} ≤ N·Q^{−(N−1)}`"*); `EFF.GENIND.151` (the
+`(A2-RATE)` species display, with the instance list: *"`(μ, d) = (2, d)`: `K = 1, B = 1, c = 1` (the
+closed forms above, machine legs A–C)"*), and its audit: *"`K·M^B·Q^{−(M−c)}` with `K = B = c = 1` is
+`M·Q^{−(M−1)}` ✓"*.
+
+**⚠ WHAT THIS NODE IS AND IS NOT.** It is the **ground instance** of `(A2-RATE)`, unconditional. It
+is **not** `(A2-RATE)` itself, which is a species *pinned onto `P(k)`'s fourth member* and whose
+general form is a hypothesis — `EFF.GENIND.151`'s TEETH: *"nothing for the general species, which is
+why it is a hypothesis pin and not a theorem"*, disposition `signed vacuity disclosure` at general
+`(μ, d)`. Chapter H's `RateSpecies` predicate (H.65) is the general form; this node discharges it at
+`μ = 2`.
+
+**ARITHMETIC AUDIT (recomputed fresh at `Q = 2` and `Q = 3`).** `Q = 2, N = 5`: `u = 32`,
+`32/2^8 = 0.125`; bound `5/2^4 = 0.3125` ✓. `Q = 3, N = 5`: `u = 189`, `189/3^8 = 189/6561 ≈
+0.0288`; bound `5/3^4 = 5/81 ≈ 0.0617` ✓. `Q = 2, N = 2`: `2/2^2 = 0.5`; bound `2/2 = 1` ✓ (the
+tightest cell). `Q = 3, N = 2`: `3/9 = 1/3`; bound `2/3` ✓. The bound is never tight but is within a
+factor `< 4` at every cell checked — consistent with `EFF.GENIND.153`'s claim that *"the `m = 2`
+closed forms realize `(K, B, c) = (1, 1, 1)` — the ansatz is sharp at the ground instance."*
+
+**TEETH.** `EFF.GENIND.150`'s leg C → **Lean theorem**; `EFF.GENIND.151`'s `signed vacuity
+disclosure` at general `(μ, d)` is **carried unchanged** (H.65 is a predicate, not a theorem).
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.29 [lemma] [fresh]
+
+**STATEMENT.** *The `uTwo` audit.* Closed numeric facts at two values of `Q`:
+`uTwo 2 1 = 1`, `uTwo 2 2 = 2`, `uTwo 2 3 = 6`, `uTwo 2 4 = 12`, `uTwo 2 5 = 32`, `uTwo 2 6 = 64`;
+`uTwo 3 1 = 1`, `uTwo 3 2 = 3`, `uTwo 3 3 = 15`, `uTwo 3 4 = 45`, `uTwo 3 5 = 189`,
+`uTwo 3 6 = 567`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem uTwo_audit_two :
+    uTwo 2 1 = 1 ∧ uTwo 2 2 = 2 ∧ uTwo 2 3 = 6 ∧ uTwo 2 4 = 12 ∧ uTwo 2 5 = 32 ∧ uTwo 2 6 = 64
+
+theorem uTwo_audit_three :
+    uTwo 3 1 = 1 ∧ uTwo 3 2 = 3 ∧ uTwo 3 3 = 15 ∧ uTwo 3 4 = 45 ∧ uTwo 3 5 = 189 ∧ uTwo 3 6 = 567
+```
+
+**DEPENDS.** H.23.
+
+**PROOF.** `by decide` on each conjunct; if the recursion's `decide` is too deep,
+`by simp [uTwo, Finset.sum_range_succ]; norm_num`.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** the values are this blueprint's own recomputation from `EFF.GENIND.150`'s recursion and
+closed form (audited at H.25 and H.26); the corpus displays no `uTwo` table, only the symbolic legs.
+
+**⚠ WHY A `q = 3` COLUMN IS MANDATORY HERE (the G.23 lesson, stated once for the whole chapter).**
+Chapter G's `G.23` count formula was **refuted** because the two candidate laws
+`q^{2N−2k−1}` and `q^{2N−2k−2}` **agree exactly at `q = 2`**, and every numeric cross-check in that
+chapter ran at `q = 2` (`blueprint/CHAP-G` AMENDMENT §A-1: *"The two agree exactly when `q = 2` —
+which is why every numeric cross-check in this chapter (all computed at `q = 2`) missed it"*). Here
+the same trap is live in three places: `(Q−1) = 1` at `Q = 2` kills every letter factor, so a missing
+or spurious `(Q−1)` is invisible; `Q^k` vs `Q^{k·c(m)}` agree at `m = 2`; and the α-term's
+composition weights coincide at `Q = 2` (H.20's audit). **Every count-formula node in this chapter
+carries both columns; a node whose audit is `q = 2`-only is a blueprint defect.**
+
+**TEETH.** `arithmetic recount` (self-supplied) → **Lean theorem**; also the regression that a
+future change to `uTwo`'s definition cannot pass silently.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+## 6. §6 — ARITHMETIC III: THE PRICING INEQUALITIES
+
+### NODE H.30 [lemma] [fresh]
+
+**STATEMENT.** *The α-leg's geometric sum.* For `2 ≤ Q`, `1 ≤ c` and every `n`, in `ℝ`:
+`Σ_{k<n} (Q−1) * (Q:ℝ)^(−(c*(k+1)) : ℤ) ≤ 1`.
+(The corpus's `Σ_{k≥1}(Q−1)Q^{−k·c(m)} ≤ 1 for c(m) ≥ 1`; the side condition is exactly
+`Q ≤ Q^c`.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem alpha_geom_partial_le_one (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 1 ≤ c) (n : ℕ) :
+    ∑ k ∈ Finset.range n, ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ ≤ 1
+```
+
+**DEPENDS.** none · mathlib `geom_sum_eq`, `Finset.geom_sum_le`, `one_sub_inv_pos`.
+
+**PROOF.**
+1. set `r := ((Q:ℝ)^c)⁻¹`; then the `k`-th term is `(Q−1) * r^(k+1) = (Q−1)·r·r^k`.
+2. `0 < r < 1` from `2 ≤ Q`, `1 ≤ c` (`one_lt_pow`, `inv_lt_one`).
+3. `Σ_{k<n} r^k ≤ (1−r)⁻¹` (mathlib's `geom_sum_le_of_lt_one` / `tsum_geometric_lt_one`-style
+   partial bound).
+4. hence the sum is `≤ (Q−1)·r·(1−r)⁻¹`, and the goal reduces to
+   `(Q−1)·r ≤ 1 − r`, i.e. `(Q−1)·Q^{−c} + Q^{−c} ≤ 1`, i.e. `Q·Q^{−c} ≤ 1`, i.e. `Q ≤ Q^c` ✓
+   (`Nat.pow_le_pow_right` with `1 ≤ c`, cast to `ℝ`).
+
+**SIZE.** 18 lines.
+
+**SOURCE.** `EFF.GENIND.153` (`ANNEX-THEOREM GENIND.C′`'s α-leg, verbatim: *"`Σ_{k≥1}(Q−1)Q^{−k·c(m)}
+≤ 1` for `c(m) ≥ 1`"*), with the spec's own audit: *"requires
+`(Q−1)·Q^{−c(m)}/(1−Q^{−c(m)}) ≤ 1` ⟺ `(Q−1) ≤ Q^{c(m)} − 1` ⟺ `Q ≤ Q^{c(m)}` ✓ for `c(m) ≥ 1`,
+i.e. `m ≥ 2` ✓ — the displayed side condition is exactly right and tight at `m = 2`."*
+
+**⚠ TIGHTNESS DECLARED.** The inequality is an **equality** at `c = 1` (`m = 2`) in the limit:
+`(Q−1)/Q + 1/Q = 1`. So the partial-sum form is the right statement — a strict-inequality version
+would be false in the limit at `m = 2`, which is the chapter's ground instance. **Hypothesis at its
+true minimum: `1 ≤ c`, not `2 ≤ c`.**
+
+**TEETH.** none in the corpus (the closure is `PROOF-ONLY`, `EFF.GENIND.153`) → **Lean theorem**,
+the only available disposition, and the chapter supplies it.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.31 [lemma] [fresh]
+
+**STATEMENT.** *The height-sum bound.* For `2 ≤ Q` and every `n`, in `ℝ`:
+`Σ_{H<n} ((Q:ℝ)^(H:ℝ))^(−1/2) ≤ (1 − (2:ℝ)^(−1/2))⁻¹`, i.e.
+`Σ_{H<n} (Q:ℝ)^(−H/2) ≤ (1 − 2^(−1/2))⁻¹`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem height_geom_partial_le (Q : ℕ) (hQ : 2 ≤ Q) (n : ℕ) :
+    ∑ H ∈ Finset.range n, ((Q : ℝ) ^ (H : ℝ))⁻¹ ^ ((1:ℝ)/2)
+      ≤ (1 - ((2:ℝ) ^ ((1:ℝ)/2))⁻¹)⁻¹
+```
+
+**DEPENDS.** none · mathlib `Real.rpow_natCast`, `geom_sum_le_of_lt_one`.
+
+**PROOF.**
+1. rewrite the summand as `r^H` with `r := ((Q:ℝ)^((1:ℝ)/2))⁻¹` (`Real.rpow_natCast`,
+   `Real.rpow_mul`).
+2. `0 < r ≤ ((2:ℝ)^((1:ℝ)/2))⁻¹ < 1` from `2 ≤ Q` (`Real.rpow_le_rpow` monotone in the base).
+3. `Σ_{H<n} r^H ≤ (1−r)⁻¹` (partial geometric bound), and `(1−r)⁻¹ ≤ (1−r₀)⁻¹` where
+   `r₀ := ((2:ℝ)^((1:ℝ)/2))⁻¹`, by `one_div_le_one_div_of_le` and `r ≤ r₀`.
+
+**SIZE.** 18 lines. **The `rpow` bookkeeping is the whole cost.** Sanctioned simplification if it
+fights: state the bound with the explicit constant `4` in place of `(1−2^{−1/2})⁻¹ ≈ 3.4142` — every
+consumer (H.72, H.71) uses only *some* `N`-independent constant, and `4` is `N`-independent. Record
+the substitution as a RE-PLAN so §16 can flag it.
+
+**SOURCE.** `EFF.GENIND.189` (`ANNEX-LEMMA GENIND-C2`'s (C2.4), verbatim: *"`Σ_{H≥0}Q^{-H/2}
+≤(1-2^{-1/2})^{-1}`"* because `Q ≥ 2`), with the spec's audit *"≈ 3.414 ✓"*; `EFF.GENIND.198`
+(C2Q's closing, the same sum).
+
+**TEETH.** none in the corpus (`signed vacuity disclosure`: the `Q`-normalized lemma is unexercised,
+`EFF.GENIND.189`) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.32 [lemma] [fresh]
+
+**STATEMENT.** *The supporting-line sum.* For `S, H : ℕ`:
+`2 * (Σ_{r<S} ((r+1) * H)) = S * (S + 1) * H`.
+(The corpus's `Σ_{r=1}^{S} rH/S = (S+1)H/2 = b_S·H` after dividing by `S`; the `ℕ` form multiplies
+through by `2S` and states the numerator identity, which is what the pricing consumes.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem two_mul_supportLine_sum (S H : ℕ) :
+    2 * (∑ r ∈ Finset.range S, (r + 1) * H) = S * (S + 1) * H
+```
+
+**DEPENDS.** none · mathlib `Finset.sum_range_id_mul_two`, `Gauss_sum`.
+
+**PROOF.**
+1. `Finset.sum_mul` backwards: the sum is `(Σ_{r<S}(r+1)) * H`.
+2. `Σ_{r<S}(r+1) = Σ_{r ∈ range (S+1)} r` (`Finset.sum_range_succ_comm` / `Finset.sum_range_id'`),
+   and `2 * Σ_{r ∈ range (S+1)} r = S * (S+1)` (`Finset.sum_range_id_mul_two`).
+3. `ring`.
+
+**SIZE.** 8 lines.
+
+**SOURCE.** `EFF.GENIND.204` (`C2-G3`, verbatim: *"Relative to the side's right endpoint, its `S`
+coefficient columns have supporting-line heights `H/S, 2H/S, …, SH/S`. Therefore the number of forced
+`Q`-digit levels is at least `Σ_{r=1}^{S}(⌈rH/S⌉−1) ≥ Σ_{r=1}^{S} rH/S − O_m(1) = (S+1)/2·H −
+O_m(1)`"*), with the spec's audit *"`Σ_{r=1}^{S} rH/S = (H/S)·S(S+1)/2 = (S+1)H/2` ✓ exact"*;
+`EFF.GENIND.189` (the same sum at `S = L`, `(C2.2)`).
+
+**⚠ THE CEILING TERM IS NOT IN THIS NODE.** `C2-G3`'s inequality has an `O_m(1)` absorbing ceiling
+errors, already-pinned level-zero digits and the residual-letter census. Chapter H carries that slack
+as `StageInterface.slack` (H.09), a field, so the *identity* is what this node proves and the *bound*
+is H.33's. Putting the `O_m(1)` inside this node would make it unprovable (it is a genre-dependent
+constant, not a formula).
+
+**TEETH.** none in the corpus (`EFF.GENIND.204`: *"the three quartic checks are unchanged by
+construction, so no measured number tests the strengthening"*) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.33 [lemma] [fresh]
+
+**STATEMENT.** *The domination `b_S − a ≥ 1/2`, subtraction-free.* Two clauses.
+(i) `2 * (e * f) ≤ e * μ * f` when `2 ≤ μ` — i.e. `2a ≤ L`.
+(ii) if additionally `L ≤ S` then `2 * (e * f) ≤ S`, i.e. `2a ≤ S`, i.e.
+`(S+1)/2 − a ≥ 1/2` — the `(C2E.3)` domination.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem two_mul_a_le_sideLen {e f m : ℕ} (hm : 2 ≤ m) : 2 * (e * f) ≤ e * m * f
+
+theorem two_mul_a_le_S {e f m S : ℕ} (hm : 2 ≤ m) (hS : e * m * f ≤ S) :
+    2 * (e * f) ≤ S
+```
+
+**DEPENDS.** none.
+
+**PROOF.**
+1. (i) `2 * (e*f) = e * 2 * f ≤ e * m * f` by `Nat.mul_le_mul_right` / `Nat.mul_le_mul_left` with
+   `hm`.
+2. (ii) `le_trans (two_mul_a_le_sideLen hm) hS`.
+
+**SIZE.** 6 lines.
+
+**SOURCE.** `EFF.GENIND.204` (`(C2E.3)`: *"Since `L=e\mu\gamma\ge2e\gamma=2a`,
+`\frac{S+1}{2}-a \ge\frac{L+1}{2}-a \ge\frac12`"*), with the spec's audit *"`L = eμγ ≥ 2eγ = 2a` ✓
+(μ ≥ 2) — so `(L+1)/2 − a ≥ (2a+1)/2 − a = 1/2` ✓, and a fortiori `(S+1)/2 − a ≥ 1/2` ✓"*;
+`EFF.GENIND.189` (`(C2.0)`: `L ≥ 2a`, `b := (L+1)/2 ≥ a + 1/2`).
+
+**⚠ WHY THE `2 *` FORM.** `b_S = (S+1)/2` is a half-integer whenever `S` is even, and `ℕ` division
+would floor it — the exact failure mode that would silently weaken `hprice` (H.09). Every
+chapter-H statement about `b_S` is multiplied through by `2`; this node is the one that licenses it,
+because `2a ≤ S` says exactly that `2(b_S − a) = S + 1 − 2a ≥ 1` is a genuine positive `ℕ`.
+
+**TEETH.** none in the corpus → **Lean theorem**. This node is a DEPENDS of `StageInterface`'s
+`hprice` field being *satisfiable* (H.38/H.42 exhibit instances) and of H.72's exponent computation.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.34 [lemma] [fresh]
+
+**STATEMENT.** *The exponent composition.* If `D + M = N` then for real `ρ ≤ Q^(−(D−1))` and
+`δ ≤ Q^(−(M−c))` with `ρ, δ ≥ 0` and `c ≤ M`: `ρ * δ ≤ Q^(−(N−1−c))`. Stated in `ℕ`-exponent form
+(subtraction-free) as: `(D − 1) + (M − c) = N − 1 − c` given `1 ≤ D`, `c ≤ M`, `D + M = N`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem exp_compose {D M N c : ℕ} (hD : 1 ≤ D) (hc : c ≤ M) (h : D + M = N) :
+    (D - 1) + (M - c) = N - 1 - c
+
+theorem mul_le_of_exp_compose {Q : ℕ} (hQ : 2 ≤ Q) {D M N c : ℕ} (hD : 1 ≤ D) (hc : c ≤ M)
+    (h : D + M = N) {ρ δ : ℝ} (hρ0 : 0 ≤ ρ) (hδ0 : 0 ≤ δ)
+    (hρ : ρ ≤ ((Q : ℝ) ^ (D - 1))⁻¹) (hδ : δ ≤ ((Q : ℝ) ^ (M - c))⁻¹) :
+    ρ * δ ≤ ((Q : ℝ) ^ (N - 1 - c))⁻¹
+```
+
+**DEPENDS.** none.
+
+**PROOF.**
+1. `exp_compose`: `omega`.
+2. `mul_le_of_exp_compose`: `mul_le_mul hρ hδ hδ0 (by positivity)` then rewrite the product of
+   inverses by `← inv_mul_eq_inv_mul`, `pow_add`, and `exp_compose`.
+
+**SIZE.** 10 lines.
+
+**SOURCE.** `EFF.GENIND.152` (`GENIND-C1`(iii), the GROWING regime: *"with (i),
+`contribution_l ≤ K·N^B·Q^{−(D_l−1)−(M_l−c)} = K·N^B·Q^{−(N−c−1)}` — the exponents COMPOSE EXACTLY
+because `D_l + M_l = N`"*), with the spec's audit *"`Q^{−(D_l−1)}·Q^{−(M_l−c)} = Q^{−(D_l+M_l−1−c)} =
+Q^{−(N−1−c)}` ✓ using `D_l + M_l = N`"* and its honest note that `D_l + M_l = N` is `M_l := N − D_l`
+by definition, so *"leg D verifies a definitional identity against hull data — a consistency check on
+the extraction, not on the algebra."*
+
+**TEETH.** `EFF.GENIND.152`'s machine leg D (the depth identity at six committed extractions) →
+**Lean theorem**, with the corpus's own scoping preserved: the *identity* is definitional, and what
+leg D checks is the extraction. The extraction is geometric and has no node.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.35 [lemma] [fresh]
+
+**STATEMENT.** *The polynomial-dominance step.* For `1 ≤ m`, `1 ≤ B` and `N ≥ m`, in `ℕ`:
+`(N − m)^B + m * (N − m)^(B−1) ≤ N^B`, and `(N−m)^B < N^B` when `1 ≤ m ≤ N`.
+(The usable form of the corpus's *"`N^B − (N−m)^B` has positive leading coefficient `m·B·N^{B−1}`"*:
+the gap dominates `m·(N−m)^{B−1}`, which is what the `K`-choice needs.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem pow_sub_dominance {N m B : ℕ} (hm : 1 ≤ m) (hmN : m ≤ N) (hB : 1 ≤ B) :
+    (N - m) ^ B + m * (N - m) ^ (B - 1) ≤ N ^ B
+```
+
+**DEPENDS.** none · mathlib `Nat.pow_le_pow_left`, `Finset.geom_sum₂`-style factoring or the
+binomial `add_pow_le`.
+
+**PROOF.**
+1. write `N = (N−m) + m` (`Nat.sub_add_cancel hmN`) and set `A := N − m`.
+2. the goal is `A^B + m*A^(B−1) ≤ (A+m)^B`.
+3. `(A+m)^B ≥ A^B + B * A^(B−1) * m` by the binomial lower bound (`Nat.add_pow_le` or
+   `Finset.sum` over the two lowest terms of `add_pow`); with `1 ≤ B` this dominates
+   `A^B + m*A^(B−1)`.
+4. `Nat.add_le_add_left` plus `Nat.le_mul_of_pos_left` with `1 ≤ B`.
+
+**SIZE.** 14 lines. The binomial two-term lower bound is the one non-`omega` step; if mathlib's
+`add_pow_le` is awkward, prove `A^B + B*A^(B−1)*m ≤ (A+m)^B` by induction on `B` (three lines).
+
+**SOURCE.** `EFF.GENIND.153` (`GENIND.C′`'s `K`-choice: *"`K` large enough that `K·[N^B − (N−m)^B]`
+dominates the head + β coefficients (a degree-`(B−1)` polynomial inequality, satisfiable since
+`N^B − (N−m)^B` has positive leading coefficient `m·B·N^{B−1}`)"*), with the spec's audit
+*"`N^B − (N−m)^B` has leading term `mBN^{B−1}` ✓ (binomial), so a degree-`(B−1)` polynomial
+inequality is satisfiable for large `K` ✓"*.
+
+**TEETH.** none (`EFF.GENIND.153`: *"the induction itself is unguarded — no battery row exercises a
+lexicographic induction"*, disposition **PROOF-ONLY**) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.36 [lemma] [fresh]
+
+**STATEMENT.** *The entry-mass codimension.* The relative mass of `{v(a₀) ≥ D}` inside a cluster
+system's state space is `Q^(−(D−1))`: in exponent form, the pinned digit count is `d*(D−1)` out of
+`d*(N−1)` at coordinate `0`, so the codimension is `D − 1` in `Q`-digits. Stated subtraction-free:
+for `1 ≤ D ≤ N`, `d * (D − 1) + d * (N − D) = d * (N − 1)`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem entry_codim (d D N : ℕ) (hD : 1 ≤ D) (hDN : D ≤ N) :
+    d * (D - 1) + d * (N - D) = d * (N - 1)
+```
+
+**DEPENDS.** none.
+
+**PROOF.** `omega` after `rcases` on `D` and `N` to clear the `ℕ`-subtractions
+(`obtain ⟨D', rfl⟩ : ∃ D', D = D' + 1`; `obtain ⟨E, rfl⟩ : ∃ E, N = D + E`).
+
+**SIZE.** 6 lines.
+
+**SOURCE.** `EFF.GENIND.152` (`GENIND-C1`(i), verbatim: *"the `j = 0` term of the min gives
+`D_l ≤ v(a₀)`, so the genre lies inside `{v(a₀) ≥ D_l}`, whose relative mass is exactly
+`Q^{−(D_l−1)}` (π-levels `1..D_l−1` of `a₀` pinned to zero — `d·(D_l−1)` q-digits; level 0 is pinned
+in every state)"*), with the spec's audit reproducing the count exactly.
+
+**⚠ THE `j = 0` STEP IS GEOMETRIC AND IS NOT IN THIS NODE.** `D_l = min_j(v(a_j) + j·k_l) ≤ v(a₀)`
+is a property of the polygon's content and has no node (honesty item H-3). What chapter H proves is
+the *codimension arithmetic* once the containment is granted; the containment enters H.67/H.72 as a
+hypothesis on the schema.
+
+**ARITHMETIC AUDIT (recomputed fresh at `q = 2` and `q = 3`, against the corpus's three committed
+loci).** M6 (`EFF.GENIND.33`): locus `(q−1)²q^{6N−17}`, total `q^{6(N−1)}`, so
+`ρ = (q−1)²q^{−11}`; `D = 4` gives the bound `Q^{−3} = q^{−3}`. Check `(q−1)²q^{−11} ≤ q^{−3}`
+⟺ `(q−1)² ≤ q⁸`: at `q = 2`, `1 ≤ 256` ✓; at `q = 3`, `4 ≤ 6561` ✓; at `q = 5`, `16 ≤ 390,625` ✓.
+PSTEEP3 at `(q,N) = (2,5)`: locus `32 = 2⁵` of `2^{3·4} = 2^{12}` ⟹ `ρ = 2^{−7}`, bound at `D = 3` is
+`2^{−2}` ✓. PSTEEP4 at `(2,6)`: locus `512 = 2⁹` of `2^{4·5} = 2^{20}` ⟹ `ρ = 2^{−11}`, bound at
+`D = 4` is `2^{−3}` ✓. **All three of `EFF.GENIND.152`'s machine-leg-E instances reproduce, and the
+M6 check is carried at three values of `q`.**
+
+**TEETH.** `EFF.GENIND.152`'s machine leg E (the prefactor bound at three committed loci) →
+**Lean theorem** for the codimension arithmetic; leg E's own reach limit (*"legs D/E cover six
+extractions and three loci, all at `n ≤ 6`"*) is carried as a `signed vacuity disclosure` on the
+*geometric* containment, which has no node.
+
+**ENVIRONMENT.** ENV-H1.
+
+---
+
+### NODE H.37 [lemma] [fresh]
+
+**STATEMENT.** *The genre-count polynomial bound.* For `m, N : ℕ` with `1 ≤ N`, the number of
+`(partition-arrangement type, slope tuple)` pairs available to a β-genre at window `N` is at most
+`p * N^m` where `p` is the number of arrangement types at multiplicity `m` — because each of at most
+`m` sides carries one integer slope in `[1, N−1]`. Formalized as: the set of slope tuples
+`{s : Fin m → ℕ | ∀ i, 1 ≤ s i ∧ s i ≤ N − 1}` is finite with cardinality `≤ N^m`.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem card_slopeTuples_le (m N : ℕ) :
+    Nat.card {s : Fin m → ℕ // ∀ i, 1 ≤ s i ∧ s i ≤ N - 1} ≤ N ^ m
+```
+
+**DEPENDS.** none · mathlib `Nat.card_pi`, `Fintype.card_fun`, `Set.Finite.subset`.
+
+**PROOF.**
+1. the subtype injects into `Fin m → Fin N` by `s ↦ fun i => ⟨s i, by omega⟩` (using
+   `s i ≤ N − 1 < N`, which needs `1 ≤ N`; when `N = 0` the subtype is empty and the bound is
+   `0 ≤ 0`).
+2. `Nat.card_le_card_of_injective` then `Nat.card_fun`/`Fintype.card_fun`: `(Fin N)^(Fin m)` has
+   cardinality `N^m`.
+3. `N = 0` case: `1 ≤ s i` and `s i ≤ 0 − 1 = 0` (in `ℕ`) is contradictory, so the subtype is empty.
+
+**SIZE.** 14 lines.
+
+**SOURCE.** `EFF.GENIND.152` (`GENIND-C1`(iv), verbatim: *"a β-genre's datum at window `N` is a
+partition arrangement of `m` (finitely many types for fixed `m`) plus one integer slope per side, each
+slope `≤ v(a₀) ≤ N−1`: at most `p̃(m)·N^m` live genres — polynomial in `N` of degree `≤ m`"*), with
+the spec's audit *"slopes `≤ v(a₀) ≤ N−1`, at most `m` sides ⟹ at most `N^m` slope tuples times
+`p̃(m)` partition types ✓"*.
+
+**⚠ `p̃(m)` IS NOT DEFINED HERE.** The corpus's `p̃(m)` is the number of *arrangement types* — a
+partition-of-`m` count refined by side/vertex structure, i.e. frame-grammar data (chapter C). This
+node proves the `N^m` factor, which is the `N`-dependent half and the only half the rate closure
+needs (`p̃(m)` is `N`-independent, so it is absorbed into the closure's `K`). H.71's statement carries
+`p` as an opaque `ℕ` parameter. **A node attempting to compute `p̃(m)` has left the chapter.**
+
+**TEETH.** none (`EFF.GENIND.152`'s (iv) is `computation`, unguarded) → **Lean theorem**.
+
+**ENVIRONMENT.** ENV-H1.
+
 <!-- APPEND-POINT -->
+
+
 
