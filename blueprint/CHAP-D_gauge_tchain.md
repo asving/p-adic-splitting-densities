@@ -1979,6 +1979,358 @@ declared nodes).
 **ENVIRONMENT.** n/a.
 
 ---
-<!-- RESUME: §5 COMPLETE (D.29–D.36); next = §6 (D.37–D.44, T3 telescope port) -->
+## 6. §6 — THE TELESCOPE PORT (T3)
+
+> **Design note (why D.38 exists next to D.32).** T3 deliberately does NOT consume T1's
+> conditional B-law: "T3 does **not** cite that conditional conclusion as a premise for
+> `[GENTOW5-W(i)]`. Instead, the boundary-read port below discharges the obligation from the
+> source's primitive read package" (`EFF.T3.05`). The port hypotheses BR1–BR5 are a DIFFERENT
+> (weaker, source-local) interface than D.29's bundle, and the two derivations of the same
+> display are the point: D.32 (bundle ⇒ B-law) serves T1's consumers; D.38 (port ⇒ B-law)
+> serves the GENTOW2/GENTOW5 discharges without circularity — the §8.4(3)
+> "endpoint-as-input" mutant is exactly a consumer who erases this distinction.
+
+### NODE D.37 [def] [fresh]
+
+**STATEMENT.** *The boundary-read port `(BR1)–(BR5)`.* Over an arena `A` at ladder step
+`q : ℤ` and exponent `s : ℕ`, a **boundary-read port** carries the source-local read data of
+`G := N(q)^s`: the peel unit `w : Kˣ` and peeled read `ctR : K` with **(BR1)**
+`ctR = w^s`; the expansion reads `ctRQ : ℕ → K` over a finite support `expSupport : Finset ℕ`
+with **(BR2)** `ctR = Σ_{j ∈ expSupport} ctRQ j`; **(BR3)** positive-degree elimination
+`∀ j ≠ 0, ctRQ j = 0`; the per-grade factor `U : K` and digit `digit : K` with **(BR4)**
+`ctRQ 0 = U * digit`; and **(BR5)** evaluation `digit = (A.vartheta q s : K)`. Fence
+transcribed as a NON-field: "These are source-local residual-read hypotheses. **Neither the
+B-law nor a one-`w_i` power law is included among them**" (`EFF.T3.11`) — the structure has
+no B-law field, and adding one is the §8.4(3) mutant.
+
+**SIGNATURE.**
+```lean
+structure BoundaryReadPort {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    (A : GaugeArena G K N) (q : ℤ) (s : ℕ) where
+  w : Kˣ
+  ctR : K
+  ctRQ : ℕ → K
+  expSupport : Finset ℕ
+  br1 : ctR = (w : K) ^ s
+  br2 : ctR = ∑ j ∈ expSupport, ctRQ j
+  br3 : ∀ j ≠ 0, ctRQ j = 0
+  U : K
+  digit : K
+  br4 : ctRQ 0 = U * digit
+  br5 : digit = (A.vartheta q s : K)
+```
+
+**DEPENDS.** D.07, D.08.
+
+**PROOF.** definitional.
+
+**SIZE.** 22 lines.
+
+**FAITHFULNESS.** BR2's `Σ_{j≥0}` (infinitely indexed, finitely supported) is carried as an
+explicit `Finset` support — the corpus's `Φ_i`-adic expansion is finite by degree. BR4's
+"`Q₀` has exact grade `β_s`" is carried IN `br4`'s shape (the read factors through `U·digit`
+exactly when the grade is exact — the corpus's own reading); the exactness itself is the
+supplier's obligation when constructing the port.
+
+**SOURCE.** `EFF.T3.06` (the port declaration: expansion + `ct`), `.07` (BR1 peel + `w_i`),
+`.08` (BR2 expansion), `.09` (BR3), `.10` (BR4 exact constant digit + `U_i(β_s)`), `.11`
+(BR5 + the non-circularity fence).
+
+**TEETH.** T3 §8.1(4) ("no conditional B-law input") and §8.4(3) ("endpoint-as-input
+mutant") → the structure's field list IS the tooth (no B-law field); §12.
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+
+### NODE D.38 [theorem] [fresh]
+
+**STATEMENT.** *`(T3-BR)`: the boundary-read telescope.* For a port `P : BoundaryReadPort A q s`:
+`P.U = (A.theta q s : K) * (P.w : K)^s`. ("Under (BR1)–(BR5), `U_i(β_s) = Θ_N(s;q)·w_i^s`."
+The endpoint equation is DERIVED, never supplied — "its two sides arose independently from
+the peeled read of `N(q)^s` and the coherent digit of the surviving constant coefficient.")
+
+**SIGNATURE.**
+```lean
+theorem BoundaryReadPort.t3_br {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    {A : GaugeArena G K N} {q : ℤ} {s : ℕ} (P : BoundaryReadPort A q s) :
+    P.U = (A.theta q s : K) * (P.w : K) ^ s
+```
+
+**DEPENDS.** D.08, D.10, D.37.
+
+**PROOF.** T3's four displayed steps, verbatim (`EFF.T3.14`'s `[VERBATIM]` derivation):
+1. `ctR = w^s` (br1). 2. `ctR = ctRQ 0`: br2 + br3 collapse the sum — if `0 ∉ expSupport`
+the sum is `0`, contradicting `w^s ≠ 0` (unit), so `0 ∈ expSupport` and
+`Finset.sum_eq_single_of_mem`. 3. `ctRQ 0 = U·ϑ` (br4 + br5). 4. `w^s = U·ϑ`, hence
+`U = ϑ⁻¹·w^s = Θ·w^s` (D.10's involution; `Units.eq`-division in `K`).
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.T3.14` (the boxed `(T3-BR)` + the verbatim proof + the endpoint
+non-supply sentence).
+
+**ORIENTATION.** conclusion in the B-law orientation (D.06 rows 2–3); the `ϑ⁻¹` step is the
+recorded inverse orientation of T3 §8.1 check 2 (D.10).
+
+**TEETH.** T3 §8.3(1)/(3) (GENTOW2-B″/GENTOW5-W legs), §8.4(2) (theta-free mutant), §8.4(3),
+§8.4(4) → **Lean theorem** (this node); gate D.72 runs the FRAME-C `U/ϑ` tables against it.
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+
+### NODE D.39 [def] [fresh]
+
+**STATEMENT.** *The two-section comparison data.* Over an arena `A : GaugeArena G K N` and a
+SECOND exact-height section `N̂` for the SAME height hom (`hNhat : ∀ k, A.v (N̂.n k) =
+Multiplicative.ofAdd k` — `EFF.T3.12`'s "two normalized exact-height sections on the same
+set of heights"): the `K`-valued ratio `chiK k := A.res ⟨chi N̂ N k, _⟩` (membership: heights
+cancel), `δ := chiK q`; and for descent data `H₀ q : ℤ`, `D : ℕ`, `Acoef : Fin (D+1) → G`
+with exact heights `hA : ∀ t, A.v (Acoef t) = ofAdd (H₀ − t·q)` (`EFF.T3.13`'s "`A_t` has
+height `H_t`"): the assembled coefficients
+`rho t := A.res ⟨Acoef t * (N.n q)^t * (N.n H₀)⁻¹, _⟩` and
+`rhoHat t := A.res ⟨Acoef t * (N̂.n q)^t * (N̂.n H₀)⁻¹, _⟩`, and the two polynomials
+`Rpoly := Σ_t (rho t) Z^t`, `RpolyHat := Σ_t (rhoHat t) Z^t` — "All displayed residual
+quotients have height zero."
+
+**SIGNATURE.**
+```lean
+noncomputable def compData {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    (A : GaugeArena G K N) (Nhat : NormSection G)
+    (hNhat : ∀ k, A.v (Nhat.n k) = Multiplicative.ofAdd k)
+    (H₀ q : ℤ) (D : ℕ) (Acoef : Fin (D + 1) → G)
+    (hA : ∀ t, A.v (Acoef t) = Multiplicative.ofAdd (H₀ - t * q)) :
+    (Fin (D + 1) → Kˣ) × (Fin (D + 1) → Kˣ) × Kˣ
+-- packaged `(rho, rhoHat, δ)`; the two polynomials are `∑ t, C ((rho t : K)) * X ^ (t : ℕ)`
+-- shapes formed at the consumers (D.40) — no separate public name
+```
+⚠ Fragile signature (kernel-membership proof terms inside a `def`) — elaborate FIRST (§12);
+the membership lemmas are private helpers with explicit statements, not tactic holes.
+
+**DEPENDS.** D.01, D.07, D.12.
+
+**PROOF.** definitional; the three membership facts are `map_mul`/`map_pow`/`map_inv` +
+`hNhat`/`hA`/`exact_height` + `omega` on exponents.
+
+**SIZE.** 34 lines.
+
+**SOURCE.** `EFF.T3.12` (χ, δ, the renaming fence), `EFF.T3.13` (`H_t = H₀ − tq`,
+`ρ_t`, `ρ̂_t`, `R(Z)`, `R̂(Z)`, `δ = χ(q)`, the height-zero clause).
+
+**TEETH.** T3 §8.2 (the port frames) → gate D.72 instantiates this data at FRAME-C's
+`p = 5` tables.
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+
+### NODE D.40 [theorem] [fresh]
+
+**STATEMENT.** *`(T3-CMP)`: the assembled comparison.* With D.39's data:
+`(rho t : K) = (rhoHat t : K) * (chiK H₀ : K) * ((δ : K))⁻¹ ^ (t : ℕ)` for every `t`, and
+the polynomial identity `Rpoly = C (chiK H₀ : K) * RpolyHat.comp (C ((δ : K))⁻¹ * X)` —
+"`R(Z) = χ(H₀)·R̂(Z/δ)`".
+
+**SIGNATURE.**
+```lean
+theorem compData_cmp {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    (A : GaugeArena G K N) (Nhat : NormSection G) (hNhat : …) (H₀ q : ℤ) (D : ℕ)
+    (Acoef : Fin (D + 1) → G) (hA : …) (t : Fin (D + 1)) :
+    ((compData A Nhat hNhat H₀ q D Acoef hA).1 t : K)
+      = ((compData …).2.1 t : K) * ((compData …).2.2 : K)⁻¹ ^ (t : ℕ)
+          * (chiK-of-H₀-term)
+-- the polynomial identity is the sibling public lemma `compData_cmp_poly`
+-- (the exact spelled signature is fixed at stub time from D.39's packaging — the field
+--  projections above are schematic; SPLIT: coefficient identity / polynomial identity)
+```
+
+**DEPENDS.** D.12, D.39.
+
+**PROOF.** The corpus's displayed two-line computation (`EFF.T3.17` `[VERBATIM]`):
+`ρ_t/ρ̂_t = res((N(q)/N̂(q))^t · (N̂(H₀)/N(H₀))) = χ(q)^{−t}·χ(H₀)` — in Lean: form the
+kernel-element quotient, apply `map_mul`-algebra, recognize D.12's `chi` at `q` (to the
+`−t`) and at `H₀`; "summing over `t` proves its polynomial identity" — `Finset.sum_congr`
++ `Polynomial.comp` coefficient arithmetic (`mul_pow`, `C_mul`).
+
+**SIZE.** 30 lines. SPLIT (coefficient leg / polynomial leg) as in the SIGNATURE.
+
+**SOURCE.** `EFF.T3.17` (the boxed `(T3-CMP)` + verbatim derivation).
+
+**TEETH.** T3 §8.2, §8.3(2), §8.4(1) → **Lean theorem**; gate D.72 checks
+`ρ_t = 3·ρ̂_t·2^{−t}` and `R(Z) = 3R̂(Z/2)` in `𝔽₅[Z]` (FRAME-C's displayed obligation).
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+
+### NODE D.41 [lemma] [fresh]
+
+**STATEMENT.** *`(T3-ROUTE)`: polynomial routing along the comparison.* Multiplication by
+the nonzero scalar `chiK H₀` and the substitution `Z ↦ Z/δ` preserve separability and the
+multiset of irreducible-factor degrees and multiplicities; a monic factor `r̂` of degree `m`
+of `RpolyHat` corresponds to the monic factor `r := wtwist δ r̂ = δ^m·r̂(Z/δ)` of `Rpoly`
+(up to the global scalar), with root correspondence `ŝ ↦ δ·ŝ`; "Rationality over any field
+containing `K` is preserved" — the correspondence commutes with `Polynomial.map
+(algebraMap K L)` for any field extension `L/K`.
+
+**SIGNATURE.**
+```lean
+theorem t3_route {K : Type*} [Field K] (δ : Kˣ) {rhat : Polynomial K} (h : rhat.Monic) :
+    wtwist δ rhat = (δ : K) ^ rhat.natDegree • rhat.comp (Polynomial.C ((δ : K))⁻¹ * Polynomial.X)
+    ∧ ((wtwist δ rhat).Separable ↔ rhat.Separable)
+-- roots leg + map-commutation leg: sibling public lemmas `t3_route_roots`, `t3_route_map`
+-- (this node is D.34's package INSTANTIATED at w := δ and re-exported under T3's name —
+--  one-line proofs; the point is the T3-citable name and the rationality clause)
+```
+
+**DEPENDS.** D.34 (the transport package — the mathematical content lives there), D.40
+(the consumer shape).
+
+**PROOF.** Each clause is D.34's corresponding clause at `w := δ`; the map-commutation leg:
+`wtwist` commutes with `Polynomial.map` of a ring hom sending `δ ↦ algebraMap δ`
+(coefficientwise).
+
+**SIZE.** 16 lines.
+
+**SOURCE.** `EFF.T3.18` (the boxed `(T3-ROUTE)`: `r(Z) = δ^m r̂(Z/δ)`, `ŝ ↦ δŝ`, the
+rationality sentence; derivation "Because `δ ∈ K^×`, substitution by `Z/δ` is a `K`-algebra
+automorphism").
+
+**TEETH.** T3 §8.2, §8.3(2), honesty item 10 → Lean theorem; the HETOW clause-(d) supply
+(D.43's table row).
+
+**ENVIRONMENT.** ENV-D3.
+
+---
+
+### NODE D.42 [interface] [fresh — GC-13 placeholders]
+
+**STATEMENT.** *`(ABS-G2)`: the `i = 2` discharge — chapter C's port construction.* T3's §3
+absorption (`EFF.T3.19`): at `s = f₃ − t`, `q = u₃`, `N = n̂₂`, GENTOW2's certified
+"expansion, peel, positive-degree elimination, exact-grade digit law, and root-evaluation
+calculation are **precisely (BR1)–(BR5)**"; therefore D.38 yields
+`u(β_t) = ϑ_{G2}(t)·w^{f₃−t}` and, with D.35/D.34, the rescaling display
+`y^{f₃} − Σ ϑ_{G2}(t)w^{f₃−t}c_t y^t = w^{f₃}P(y/w)` — "This absorbs GENTOW2-B″ and its
+factor-pattern invariance. No value of `w` is required." **Unconditional at the landed
+`i = 2` rung.** What chapter C owes (the placeholder): the port instance —
+`EFF.GENTOW2.43 [supplied-by: chapter C]` (LEMMA GENTOW2-B″, whose proof `.44` step (iv)
+consumes B′(3) = `EFF.GENTOW2.34 [supplied-by: chapter C]`) constructing
+`BoundaryReadPort (levelTwoArena) u₃ (f₃−t)` per slot. Chapter D declares NO Lean name here;
+the orchestrator wires C's construction to D.38 at the resolution pass.
+
+**SIGNATURE.** none in chapter D (the conclusion is D.38 + D.35 applied to C's instance; a
+D-side alias theorem would duplicate a name across the chapter boundary).
+
+**DEPENDS.** D.38, D.35, D.10 · `EFF.GENTOW2.43 [supplied-by: chapter C]` ·
+`EFF.GENTOW2.34 [supplied-by: chapter C]` · `EFF.GENTOW2.42 [supplied-by: chapter C]` (the
+letter-group arena instance, D-H3(ii)).
+
+**PROOF.** n/a (interface). **SIZE.** 0 Lean lines.
+
+**SOURCE.** `EFF.T3.19` (the `(ABS-G2)` block, the BR-discharge sentence, the
+unconditionality clause, `ϑ_{G2}(t) = Θ_N(s;u₃)`).
+
+**ORIENTATION.** `ϑ_{G2}` is D.06 row 3 = `varthetaG2`/`theta` — the ANNOTATION IS the
+content here; C's port construction must land its digit clause in T1-orientation `vartheta`
+(BR5) and read its conclusion in GENTOW2-orientation (the involution D.10 mediates).
+
+**TEETH.** T3 §8.3(1) (GENTOW2-B″ leg) → executable regression retained (§12); the landed
+absorption append (T3 X29) → provenance note.
+
+**ENVIRONMENT.** n/a.
+
+---
+
+### NODE D.43 [interface] [fresh — GC-13 placeholders]
+
+**STATEMENT.** *`(ABS-HE4)`: the HETOW comparison discharge.* T3's §4 absorption
+(`EFF.T3.20`): at `N = n₂`, `N̂ = n̂₂`, `τ_H = chiK` ("T3's χ, not T1's two-variable
+cocycle"), `q = u₃`, `δ = τ_H(u₃)`, `H_t = H₀ − tu₃`: HETOW's assembled coefficients
+instantiate D.39's data, and D.40/D.41 supply `(ABS-HE4)`'s displays (`ρ_t = ρ̂_t
+τ_H(H₀)δ^{−t}`, `R_{λ₂}(Z) = τ_H(H₀)R̂_{λ₂}(Z/δ)`, the monic-factor and root routing) plus
+`(HE4-COB)` = D.12's instance. **The absorption boundary table, transcribed verbatim** (each
+row a supply/fence, chapter C's HETOW transcription cites it):
+
+| HETOW-4 component | status |
+|---|---|
+| clause (a), `τ_H(k) = η^{−Q(m(k))}` | source-specific ladder arithmetic; NOT supplied by T3/D — the level-1 shape is D.19 + D.27's carry leg, the bridge is `EFF.HETOW [supplied-by: chapter C]` |
+| clause (b), coboundary-comparison shape | supplied by D.12 (`(T3-COB)`) |
+| clause (b), explicit two-floor exponent | obtained after substituting HETOW's floor arithmetic — supplier-side |
+| clause (c), coefficient telescope + polynomial rescaling | fully supplied by D.11 (`(T3-BKT)`) + D.40 (`(T3-CMP)`) |
+| clause (d), separability/factor/root routing | fully supplied by D.41 (`(T3-ROUTE)`) |
+| common polynomial lift and later iterate independence | remain on HETOW-4's lift and finite-chain inputs — supplier-side |
+
+**SIGNATURE.** none in chapter D (same rationale as D.42).
+
+**DEPENDS.** D.11, D.12, D.39, D.40, D.41 · `EFF.HETOW [supplied-by: chapter C]` (the
+bridge, `m`, the `τ` identification — `(H-HETOW-LOCAL)`'s fields; see D.27).
+
+**PROOF.** n/a. **SIZE.** 0 Lean lines.
+
+**SOURCE.** `EFF.T3.20` (the `(ABS-HE4)` displays, `(HE4-COB)`, the "No character law for
+`τ_H` is asserted" fence, and the verbatim absorption-boundary table).
+
+**TEETH.** T3 §8.3(2) → executable regression retained; §8.4(1) character mutant → D.12 +
+gate D.72.
+
+**ENVIRONMENT.** n/a.
+
+---
+
+### NODE D.44 [def+theorem] [fresh]
+
+**STATEMENT.** *`[GENTOW5-W(i)]` as a named carrier, and `(ABS-G5W)`.* (i) The **sitewise
+B-law predicate**: `GentowW A q R w := ∀ s : ℕ, R (N.n (s·q)) = (A.theta q s : K)·(w : K)^s`
+— "the sitewise B-law holds for the level's read data". The corpus's `[GENTOW5-W(i)]` is
+this predicate AT chapter C's level-`i` tower instantiation (arena + FGMN read + `w_i`);
+chapter C/E/I consume the NAME `GentowW` with their own instances (the GC-13 resolution
+wires `EFF.T3.21`'s `θ_i(t) = Θ_N(s;u_{i+1})`, `w_i = R_{i+1,κ̄_i}(n̂_i(u_{i+1}))` data).
+(ii) **`(ABS-G5W)`, the derivation theorem:** a family of ports at every `s` yields the
+predicate — `(∀ s, ∃ P : BoundaryReadPort A q s, P.U = R (N.n (s·q)) ∧ P.w = w) → GentowW A q R w`
+("The certified level-`i` expansion, peel, positive-degree elimination, exact-grade law, and
+root-evaluation package instantiate (BR1)–(BR5). Hence `[GENTOW5-W(i)]`"). At `i = 2` this
+is the landed GENTOW2-B″ instance (D.42); "the `i = 1` residual remains GENTOW5 S11.3's
+fixed `z₁`-letter-power statement; T3 does not identify that unit with a displayed `w₁`"
+(the `ω₁`/OPEN-2 fence — §8).
+
+**SIGNATURE.**
+```lean
+/-- The sitewise B-law predicate whose level-`i` tower instance is `[GENTOW5-W(i)]`
+(`EFF.T3.21`). SUPPLY STATUS transcribed: "SUPPLIED by T3-A0 and §7; consumption check +
+dated append outstanding." -/
+def GentowW {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    (A : GaugeArena G K N) (q : ℤ) (R : G → K) (w : Kˣ) : Prop :=
+  ∀ s : ℕ, R (N.n (s * q)) = (A.theta q s : K) * (w : K) ^ s
+
+theorem gentowW_of_ports {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    {A : GaugeArena G K N} {q : ℤ} {R : G → K} {w : Kˣ}
+    (h : ∀ s : ℕ, ∃ P : BoundaryReadPort A q s, P.U = R (N.n (s * q)) ∧ P.w = w) :
+    GentowW A q R w
+```
+
+**DEPENDS.** D.37, D.38.
+
+**PROOF.** per `s`: destructure, rewrite with D.38.
+
+**SIZE.** 20 lines.
+
+**SOURCE.** `EFF.T3.21` (the `(ABS-G5W)` display `u_i(β_t) = θ_i(t)w_i^{f_{i+1}−t}`,
+`i ≥ 3`, its BR-instantiation derivation, the `i = 2`/`i = 1` boundary sentences, SUPPLY
+STATUS); the GENTOW5_WI §S2 span is `PERIMETER-UNRESOLVED` in T3's own XREF (X18) — the
+port-family hypothesis above is the blueprint's exact rendering of "the certified …
+package", and the perimeter resolution is `EFF.GENTOW5 [supplied-by: chapter C]` (T3 §8
+deferred obligation 1).
+
+**ORIENTATION.** `θ_i(t)` = B-law orientation (D.06 row 3); the predicate is stated in `s`,
+consumers reindex by `s = f_{i+1} − t`.
+
+**TEETH.** T3 §8.3(3), §8.4(2)–(4) → Lean theorem (the derivation); §8.3(4) (conditionality)
+→ D.60/D.62/D.65 carry it — nothing here discharges any instance.
+
+**ENVIRONMENT.** ENV-D2 + ENV-D3.
+
+---
+<!-- RESUME: §6 COMPLETE (D.37–D.44); next = §7 (D.45–D.56, T4 certificate witness) -->
 
 <!-- CHAP-D APPEND POINT — do not remove; sections are appended here in order -->
