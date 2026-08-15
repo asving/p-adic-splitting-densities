@@ -43,6 +43,22 @@ statement does not need — exactly as the `leanfinal` twin's own environment bl
 nodes (B.27, B.38, B.45, B.46) bind their own `{K : Type*} [Field K]` inline and mention no `O`.
 The §10 gates bind nothing: they are concrete `ℤ_[2]` / `ℤ_[3]` instances.
 
+## RE-SIGN LOG (post-0e, blueprint-authorized amendments)
+
+* **A-F.6 (2026-08-15, wave-10 refutation adjudication).** B.35a/B.35b REFUTED as frozen
+  (fleet counterexamples, re-verified); consumer audit refuted FOUR more frozen signatures.
+  Re-signed here, matching the blueprint's `[repaired: A-F.6]` tags: B.35a/b (`hu`, `hfd`,
+  `hgd`), B.39 (`hu`, `hgd`, `hhd`), B.41 (`hu`, `hfd`), B.42 (conclusion strengthened:
+  `0 < p.1`, factor-degree divisibility), B.43 (STATEMENT-restoration: `hu`, four
+  divisibilities, purity of `g'`,`h'`), B.48 (`hu`, `hfd`), B.57 (`hgd`). Full record with
+  all six counterexamples: blueprint amendment A-F.6.
+* **A-F.7 (2026-08-15, same adjudication).** B.59 REFUTED as frozen (compiled witness,
+  `leanfinal/Uniformity/ChapB/B59_REFUTATION.lean.txt`); the conjectured general-`φ`
+  extraction B.44′ REFUTED. B.59/B.60 re-signed at `φ = X`; the `hperim` displays' first
+  disjunct narrowed to `(ℓ = 1 ∧ φ.natDegree = 1)` at B.63, B.71, B.79a, B.79b, B.80, B.81,
+  B.82 (7 sites, matching the blueprint's §12 item 4 dictionary). Full record: blueprint
+  amendment A-F.7 + CHAP-I dated addendum (OPEN-MATH routing of `ℓ = 1, m ≥ 2, d ≥ 2`).
+
 ## THE DEFECT LIST (stage-0e gate, 2026-08-15)
 
 Recorded here and in the 0e report; **NOT repaired in the blueprint** (§12 rule 5 / H §15 rule 5:
@@ -568,18 +584,26 @@ section ENVFIN1
 -- ENV-A′ + `[Finite (ResidueField O)]` (B.35's ENVIRONMENT: "via B.26, which B.30 consumes").
 variable [Finite (ResidueField O)]
 
-/-- **B.35a** [theorem] ENV-A′ + `[Finite (ResidueField O)]`. -/
+/-- **B.35a** [theorem] ENV-A′ + `[Finite (ResidueField O)]`. **[repaired: A-F.6]** —
+`(hu : 0 < u)` and `(hfd) (hgd)` added; the frozen form is machine-REFUTED (blueprint amendment
+A-F.6: `f = g = X` at `φ = X²+1` over `ℤ₃`, `u = ℓ = 1` — `IsPure`'s truncated right endpoint). -/
 axiom suppVal_mul_of_pure (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
-    (hf : f.Monic) (hg : g.Monic) (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ) :
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
+    (hf : f.Monic) (hg : g.Monic)
+    (hfd : φ.natDegree ∣ f.natDegree) (hgd : φ.natDegree ∣ g.natDegree)
+    (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ) :
     suppVal φ (f * g) u ℓ = suppVal φ f u ℓ + suppVal φ g u ℓ ∧ IsPure φ (f * g) u ℓ
 
 /-- **B.35b** [theorem] ENV-A′ + `[Finite (ResidueField O)]`. **DEFECT B-D9** — the signed
 `(hf' hg' hfg')` binders carry no types; expanded per the node's own gloss ("the three `Nonempty`
-witnesses … are supplied by B.18"). -/
+witnesses … are supplied by B.18"). **[repaired: A-F.6]** — `(hu : 0 < u)` and `(hfd) (hgd)`
+added; the frozen form is machine-REFUTED even with the divisibilities (amendment A-F.6:
+`f = g = X²+X+1` at `u = 0`, `ℓ = 1` — the `φ`-carry sits at the same weight as the digit read). -/
 axiom resPoly_mul_of_pure (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
-    (hf : f.Monic) (hg : g.Monic) (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f g : Polynomial O}
+    (hf : f.Monic) (hg : g.Monic)
+    (hfd : φ.natDegree ∣ f.natDegree) (hgd : φ.natDegree ∣ g.natDegree)
+    (hfp : IsPure φ f u ℓ) (hgp : IsPure φ g u ℓ)
     {H₀f H₀g : ℕ} (hHf : npHgt φ f 0 = (H₀f : ℕ∞)) (hHg : npHgt φ g 0 = (H₀g : ℕ∞))
     (hf' : (sideSet φ f u ℓ).Nonempty) (hg' : (sideSet φ g u ℓ).Nonempty)
     (hfg' : (sideSet φ (f * g) u ℓ).Nonempty) :
@@ -624,10 +648,14 @@ axiom exists_solve_resField {K : Type*} [Field K] {G H : Polynomial K}
     ∃ U V : Polynomial K, U.degree < (G.natDegree : WithBot ℕ) ∧
       V.degree < (H.natDegree : WithBot ℕ) ∧ W = H * U + G * V
 
-/-- **B.39** [lemma] ENV-C. -/
+/-- **B.39** [lemma] ENV-C. **[repaired: A-F.6]** — `(hu : 0 < u)` and `(hgd) (hhd)` added; the
+frozen form is machine-REFUTED (amendment A-F.6: `g = h = X`, `e = π^c` at `φ = X²+1` over `ℤ₃`,
+`u = ℓ = 1` — `GradedCoprime` holds since `resPoly X` is a unit constant, and no `U, V` exist). -/
 axiom exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h : Polynomial O}
-    (hg : g.Monic) (hh : h.Monic) (hgh : GradedCoprime π φ u ℓ g h)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h : Polynomial O}
+    (hg : g.Monic) (hh : h.Monic)
+    (hgd : φ.natDegree ∣ g.natDegree) (hhd : φ.natDegree ∣ h.natDegree)
+    (hgh : GradedCoprime π φ u ℓ g h)
     {c : ℕ} {e : Polynomial O} (hdeg : e.natDegree < (g * h).natDegree)
     (he : ((c : ℕ) : ℕ∞) ≤ suppVal φ e u ℓ) :
     ∃ U V : Polynomial O, U.natDegree < g.natDegree ∧ V.natDegree < h.natDegree ∧
@@ -652,9 +680,12 @@ section ENVC3
 -- ENV-C.
 variable [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
 
-/-- **B.41** [theorem] ENV-C. -/
+/-- **B.41** [theorem] ENV-C. **[repaired: A-F.6]** — `(hu : 0 < u)` and `(hfd)` added; the
+frozen form is machine-REFUTED (amendment A-F.6: `f = X`, `G = H = 1` at `φ = X²+1` over `ℤ₃`,
+`u = ℓ = 1` — `hprod` holds with `c = θ` and the conclusion forces `X = 1`). -/
 axiom exists_graded_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f : Polynomial O} (hf : f.Monic)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f : Polynomial O}
+    (hf : f.Monic) (hfd : φ.natDegree ∣ f.natDegree)
     (hpure : IsPure φ f u ℓ) {H₀ : ℕ} (hH₀ : npHgt φ f 0 = (H₀ : ℕ∞))
     (hne : (sideSet φ f u ℓ).Nonempty)
     {G H : Polynomial (resField φ)} (hG : G.Monic) (hH : H.Monic) (hGH : IsCoprime G H)
@@ -665,22 +696,32 @@ axiom exists_graded_factorization (hπ : Irreducible π) {φ : Polynomial O} (h�
       h.natDegree = ℓ * φ.natDegree * H.natDegree ∧
       IsPure φ g u ℓ ∧ IsPure φ h u ℓ ∧ GradedCoprime π φ u ℓ g h
 
-/-- **B.42** [theorem] ENV-C. -/
+/-- **B.42** [theorem] ENV-C. **[repaired: A-F.6]** — conclusion STRENGTHENED (hypotheses
+unchanged): clause 1 records `0 < p.1` (proof step 2 derives every slope positive from `hres`),
+clause 3 records `φ.natDegree ∣ (F p).natDegree` (B.41's pinned factor degrees) — both are what
+the repaired B.48 needs at B.63. -/
 axiom exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ) :
     ∃ (s : Finset (ℕ × ℕ)) (F : ℕ × ℕ → Polynomial O),
-      (∀ p ∈ s, 0 < p.2 ∧ Nat.Coprime p.1 p.2) ∧
+      (∀ p ∈ s, 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2) ∧
       (∀ p ∈ s, ∀ q ∈ s, p ≠ q → p.1 * q.2 ≠ q.1 * p.2) ∧
-      (∀ p ∈ s, (F p).Monic ∧ IsPure φ (F p) p.1 p.2) ∧
+      (∀ p ∈ s, (F p).Monic ∧ IsPure φ (F p) p.1 p.2 ∧
+        φ.natDegree ∣ (F p).natDegree) ∧
       f = ∏ p ∈ s, F p ∧
       (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
         (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s))
 
-/-- **B.43** [lemma] ENV-C. -/
+/-- **B.43** [lemma] ENV-C. **[repaired: A-F.6]** — `(hu)`, the four divisibilities and the
+purity of `g'`, `h'` added: the node's own STATEMENT ("under B.41's hypotheses"; "g, g' pure …
+h, h' pure") was elided from the frozen signature (the A-F.4 class); no counterexample to the
+weaker form is on record — fidelity restoration, see the A-F.6 audit table and route note. -/
 axiom graded_factorization_unique (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h g' h' : Polynomial O}
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h g' h' : Polynomial O}
     (hg : g.Monic) (hh : h.Monic) (hg' : g'.Monic) (hh' : h'.Monic)
+    (hgd : φ.natDegree ∣ g.natDegree) (hhd : φ.natDegree ∣ h.natDegree)
+    (hgd' : φ.natDegree ∣ g'.natDegree) (hhd' : φ.natDegree ∣ h'.natDegree)
+    (hgp' : IsPure φ g' u ℓ) (hhp' : IsPure φ h' u ℓ)
     (hcopGH : GradedCoprime π φ u ℓ g h)
     (hgg' : ∀ hne hne' H₀, resPoly π φ g u ℓ hne H₀ = resPoly π φ g' u ℓ hne' H₀)
     (hhh' : ∀ hne hne' H₀, resPoly π φ h u ℓ hne H₀ = resPoly π φ h' u ℓ hne' H₀)
@@ -722,9 +763,13 @@ section ENVC4
 -- ENV-C.
 variable [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
 
-/-- **B.48** [theorem] ENV-C. -/
+/-- **B.48** [theorem] ENV-C. **[repaired: A-F.6]** — `(hu : 0 < u)` and `(hfd)` added; the
+frozen form is machine-REFUTED (amendment A-F.6: `f = X³+4X+3` at `φ = X²+1` over `ℤ₃`,
+`u = ℓ = 1` — pure with `sideDeg = 1 > 0`, yet every conclusion factor degree is even while
+`deg f = 3`). Both free at B.63 via B.42's strengthened conclusion. -/
 axiom exists_residual_dissection (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f : Polynomial O} (hf : f.Monic)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f : Polynomial O}
+    (hf : f.Monic) (hfd : φ.natDegree ∣ f.natDegree)
     (hpure : IsPure φ f u ℓ) (hne : (sideSet φ f u ℓ).Nonempty) {H₀ : ℕ}
     (hH₀ : npHgt φ f 0 = (H₀ : ℕ∞)) (hd : 0 < sideDeg φ f u ℓ hne) :
     ∃ (s : Finset (Polynomial (resField φ))) (a : Polynomial (resField φ) → ℕ)
@@ -844,10 +889,13 @@ section ENVC6
 -- ENV-C.
 variable [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
 
-/-- **B.57** [lemma] ENV-C. -/
+/-- **B.57** [lemma] ENV-C. **[repaired: A-F.6]** — `(hgd)` added; the frozen form is
+machine-REFUTED (amendment A-F.6: `g = X = X * 1` at `φ = X²+1` over `ℤ₃`, `u = ℓ = 1` — the
+residue clause forces `X̄ = φ̄⁰ = 1`). -/
 axiom isPure_of_monic_factor (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g g₁ g₂ : Polynomial O}
-    (hg : g.Monic) (hg₁ : g₁.Monic) (hg₂ : g₂.Monic) (heq : g = g₁ * g₂)
+    (hg : g.Monic) (hg₁ : g₁.Monic) (hg₂ : g₂.Monic)
+    (hgd : φ.natDegree ∣ g.natDegree) (heq : g = g₁ * g₂)
     (hpure : IsPure φ g u ℓ) (hne : (sideSet φ g u ℓ).Nonempty) :
     ∃ (hne₁ : (sideSet φ g₁ u ℓ).Nonempty) (hne₂ : (sideSet φ g₂ u ℓ).Nonempty),
       IsPure φ g₁ u ℓ ∧ IsPure φ g₂ u ℓ ∧
@@ -863,23 +911,29 @@ axiom typeOf_leaf_resDeg_one (hπ : Irreducible π) {φ : Polynomial O} (hφ : I
     (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ ℓ) :
     typeOf g = ⟨{(ℓ, φ.natDegree)}⟩
 
-/-- **B.59** [lemma] ENV-C. -/
-axiom irreducible_map_iff_irreducible_resPoly (hπ : Irreducible π) {φ : Polynomial O}
-    (hφ : IsKey φ) {u : ℕ} (hu : 0 < u) {g G : Polynomial O} (hg : g.Monic) (hG : G.Monic)
+/-- **B.59** [lemma] ENV-C. **[repaired: A-F.7]** — re-signed at `φ = X` (`{φ} (hφ : IsKey φ)`
+removed). The frozen general-key form is REFUTED by a compiled witness
+(`leanfinal/Uniformity/ChapB/B59_REFUTATION.lean.txt`, kept as provenance): `hscale` is
+`φ = X`-shaped, and at `2 ≤ φ.natDegree` it forces `sideDeg = 0`, so `resPoly` is a unit
+constant (never irreducible) while `Ḡ` is free to be irreducible (`g = G = X` witnesses). -/
+axiom irreducible_map_iff_irreducible_resPoly (hπ : Irreducible π)
+    {u : ℕ} (hu : 0 < u) {g G : Polynomial O} (hg : g.Monic) (hG : G.Monic)
     (hGdeg : G.natDegree = g.natDegree) (hscale : g = G.scaleRoots (π ^ u))
-    (hpure : IsPure φ g u 1) (hne : (sideSet φ g u 1).Nonempty) {H₀ : ℕ}
-    (hH₀ : npHgt φ g 0 = (H₀ : ℕ∞)) :
-    Irreducible (G.map (IsLocalRing.residue O)) ↔ Irreducible (resPoly π φ g u 1 hne H₀)
+    (hpure : IsPure X g u 1) (hne : (sideSet X g u 1).Nonempty) {H₀ : ℕ}
+    (hH₀ : npHgt X g 0 = (H₀ : ℕ∞)) :
+    Irreducible (G.map (IsLocalRing.residue O)) ↔ Irreducible (resPoly π X g u 1 hne H₀)
 
-/-- **B.60** [theorem] ENV-C. -/
-axiom typeOf_leaf_integral_slope (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+/-- **B.60** [theorem] ENV-C. **[repaired: A-F.7]** — re-signed at `φ = X` with B.59 (the
+`ℓ = 1, m ≥ 2, d ≥ 2` region now routes to B.61's `hBOX`; the conjectured general-`φ`
+extraction B.44′ is REFUTED — blueprint amendment A-F.7). -/
+axiom typeOf_leaf_integral_slope (hπ : Irreducible π)
     {u : ℕ} (hu : 0 < u) {g : Polynomial O} (hg : g.Monic)
-    (hpure : IsPure φ g u 1) (hne : (sideSet φ g u 1).Nonempty) {H₀ : ℕ}
-    (hH₀ : npHgt φ g 0 = (H₀ : ℕ∞)) (hd : 0 < sideDeg φ g u 1 hne)
+    (hpure : IsPure X g u 1) (hne : (sideSet X g u 1).Nonempty) {H₀ : ℕ}
+    (hH₀ : npHgt X g 0 = (H₀ : ℕ∞)) (hd : 0 < sideDeg X g u 1 hne)
     (hres : g.map (IsLocalRing.residue O)
-      = (φ.map (IsLocalRing.residue O)) ^ (sideDeg φ g u 1 hne))
-    (hirr : Irreducible (resPoly π φ g u 1 hne H₀)) :
-    typeOf g = ⟨{(1, φ.natDegree * sideDeg φ g u 1 hne)}⟩
+      = ((X : Polynomial O).map (IsLocalRing.residue O)) ^ (sideDeg X g u 1 hne))
+    (hirr : Irreducible (resPoly π X g u 1 hne H₀)) :
+    typeOf g = ⟨{(1, (X : Polynomial O).natDegree * sideDeg X g u 1 hne)}⟩
 
 /-- **B.61** [theorem] ENV-C. -/
 axiom typeOf_leaf_of_resDeg_lower_bound (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
@@ -962,7 +1016,8 @@ axiom typeOf_of_separable_residuals (hπ : Irreducible π) {φ : Polynomial O} (
           npHgt φ gS (sideMin φ gS u ℓ hne) = (H₀ : ℕ∞) →
           ∀ ψ : Polynomial (resField φ), ψ.Monic → Irreducible ψ →
             (∃ c : (resField φ)ˣ, resPoly π φ gS u ℓ hne H₀ = c • ψ) →
-            (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+            -- [repaired: A-F.7] first disjunct narrowed from `ℓ = 1`
+            ((ℓ = 1 ∧ φ.natDegree = 1) ∨ ψ.natDegree = 1 ∨
               ∀ g' ∈ monicFactors gS,
                 φ.natDegree * ψ.natDegree ∣ inertiaDegOf g')) :
     ∃ (T : Finset ((ℕ × ℕ) × Polynomial (resField φ))) (F : _ → Polynomial O),
@@ -1072,7 +1127,8 @@ axiom typeOf_order1 (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic) (hd
           npHgt (φ i) gS (sideMin (φ i) gS u ℓ hne) = (H₀ : ℕ∞) →
           ∀ ψ : Polynomial (resField (φ i)), ψ.Monic → Irreducible ψ →
             (∃ c : (resField (φ i))ˣ, resPoly π (φ i) gS u ℓ hne H₀ = c • ψ) →
-            (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+            -- [repaired: A-F.7] first disjunct narrowed from `ℓ = 1`
+            ((ℓ = 1 ∧ (φ i).natDegree = 1) ∨ ψ.natDegree = 1 ∨
               ∀ g' ∈ monicFactors gS,
                 (φ i).natDegree * ψ.natDegree ∣ inertiaDegOf g')) :
     (typeOf f).data = ∑ i ∈ s, (order1Type π (φ i) (g i)).data
@@ -1207,7 +1263,8 @@ axiom typeOf_eq_order1Type (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsK
           npHgt φ gS (sideMin φ gS u ℓ hne) = (H₀ : ℕ∞) →
           ∀ ψ : Polynomial (resField φ), ψ.Monic → Irreducible ψ →
             (∃ c : (resField φ)ˣ, resPoly π φ gS u ℓ hne H₀ = c • ψ) →
-            (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+            -- [repaired: A-F.7] first disjunct narrowed from `ℓ = 1`
+            ((ℓ = 1 ∧ φ.natDegree = 1) ∨ ψ.natDegree = 1 ∨
               ∀ g' ∈ monicFactors gS,
                 φ.natDegree * ψ.natDegree ∣ inertiaDegOf g')) :
     typeOf g = order1Type π φ g
@@ -1223,7 +1280,8 @@ axiom typeOf_congr_of_certificate (hπ : Irreducible π) {φ : Polynomial O} (h�
           npHgt φ gS (sideMin φ gS u ℓ hne) = (H₀ : ℕ∞) →
           ∀ ψ : Polynomial (resField φ), ψ.Monic → Irreducible ψ →
             (∃ c : (resField φ)ˣ, resPoly π φ gS u ℓ hne H₀ = c • ψ) →
-            (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+            -- [repaired: A-F.7] first disjunct narrowed from `ℓ = 1`
+            ((ℓ = 1 ∧ φ.natDegree = 1) ∨ ψ.natDegree = 1 ∨
               ∀ g' ∈ monicFactors gS,
                 φ.natDegree * ψ.natDegree ∣ inertiaDegOf g'))
     {N : ℕ} (hvis : Visible π φ g N)
@@ -1252,7 +1310,8 @@ axiom decidedAt_of_order1_certificate (hπ : Irreducible π) {n N : ℕ} (hn : 0
           npHgt (φ i) gS (sideMin (φ i) gS u ℓ hne') = (H₀ : ℕ∞) →
           ∀ ψ : Polynomial (resField (φ i)), ψ.Monic → Irreducible ψ →
             (∃ c : (resField (φ i))ˣ, resPoly π (φ i) gS u ℓ hne' H₀ = c • ψ) →
-            (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+            -- [repaired: A-F.7] first disjunct narrowed from `ℓ = 1`
+            ((ℓ = 1 ∧ (φ i).natDegree = 1) ∨ ψ.natDegree = 1 ∨
               ∀ g' ∈ monicFactors gS,
                 (φ i).natDegree * ψ.natDegree ∣ inertiaDegOf g')) :
     Uniformity.Density.DecidedAt O n ⟨∑ i ∈ s, (order1Type π (φ i) (g i)).data⟩ N
@@ -1277,7 +1336,8 @@ axiom exists_decidedAt_of_terminating (hπ : Irreducible π) {n : ℕ} (hn : 0 <
           npHgt (φ i) gS (sideMin (φ i) gS u ℓ hne') = (H₀ : ℕ∞) →
           ∀ ψ : Polynomial (resField (φ i)), ψ.Monic → Irreducible ψ →
             (∃ c : (resField (φ i))ˣ, resPoly π (φ i) gS u ℓ hne' H₀ = c • ψ) →
-            (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+            -- [repaired: A-F.7] first disjunct narrowed from `ℓ = 1`
+            ((ℓ = 1 ∧ (φ i).natDegree = 1) ∨ ψ.natDegree = 1 ∨
               ∀ g' ∈ monicFactors gS,
                 (φ i).natDegree * ψ.natDegree ∣ inertiaDegOf g')) :
     ∃ N : ℕ, 0 < N ∧ Uniformity.Density.DecidedAt O n
@@ -1298,7 +1358,8 @@ axiom decidedAt_of_leaf_certificate (hπ : Irreducible π) {n N : ℕ} (hn : 0 <
           npHgt φ gS (sideMin φ gS u ℓ hne) = (H₀ : ℕ∞) →
           ∀ ψ : Polynomial (resField φ), ψ.Monic → Irreducible ψ →
             (∃ c : (resField φ)ˣ, resPoly π φ gS u ℓ hne H₀ = c • ψ) →
-            (ℓ = 1 ∨ ψ.natDegree = 1 ∨
+            -- [repaired: A-F.7] first disjunct narrowed from `ℓ = 1`
+            ((ℓ = 1 ∧ φ.natDegree = 1) ∨ ψ.natDegree = 1 ∨
               ∀ g' ∈ monicFactors gS,
                 φ.natDegree * ψ.natDegree ∣ inertiaDegOf g')) :
     Uniformity.Density.DecidedAt O n (order1Type π φ (Uniformity.Density.monicPoly a)) N
