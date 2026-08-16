@@ -228,14 +228,173 @@ theorem coeff_level_prod_trailing {π : O} (hπ : Irreducible π) {ι : Type*}
 
 end Trailing
 
+/-! ## 2. The shared carrier `plantedPoly`, and its elementary shape -/
+
+section Carrier
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+/-- **Every lift of a `ClusterState` is `𝔪`-valued** (for `1 ≤ N`).  The class lies in the
+image of `𝔪`, and `𝔪 ^ N ≤ 𝔪` closes the gap between the witness and the lift.  This is what
+makes `classSect` usable as a presentation section with no `𝔪`-respecting refinement
+(A-H.7 §5's soundness note on the carrier). -/
+theorem mem_maximalIdeal_of_proj {n N : ℕ} (hN : 1 ≤ N) (c : ClusterState O n N)
+    {a : Fin n → O} (ha : proj O n N a = c.1) (i : Fin n) : a i ∈ maximalIdeal O := by
+  obtain ⟨b, hb, hba⟩ :=
+    (Ideal.mem_map_iff_of_surjective _ Ideal.Quotient.mk_surjective).1 (c.2 i)
+  have hmk : Ideal.Quotient.mk ((maximalIdeal O) ^ N) (a i) = c.1 i := congrFun ha i
+  have hsub : b - a i ∈ (maximalIdeal O) ^ N := Ideal.Quotient.eq.1 (hba.trans hmk.symm)
+  have hsub' : b - a i ∈ maximalIdeal O := Ideal.pow_le_self (by omega) hsub
+  have hrw : a i = b - (b - a i) := by ring
+  rw [hrw]
+  exact Ideal.sub_mem _ hb hsub'
+
+/-- The pinned class lift is `𝔪`-valued. -/
+theorem mem_maximalIdeal_classSect {n N : ℕ} (hN : 1 ≤ N) (c : ClusterState O n N) (i : Fin n) :
+    classSect O n N c.1 i ∈ maximalIdeal O :=
+  mem_maximalIdeal_of_proj hN c (proj_classSect O n N c.1) i
+
+/-- **A-H.7 §5 (THE SHARED CARRIER of H.116b1–H.116b4).**  The PLANTED POLYNOMIAL of a
+genre-indexed family `bb` of child presentations against a cofactor presentation `Qc`: the
+product of the planted factors `alphaParent π b_p k_p (resSect O z_p)` (H.115b's inverse shear,
+at the PINNED centres of A-H.5) times the cofactor's canonical lift.
+
+Presentations are indexed by CLASSES, not by lifts, and that is sound: for `1 ≤ N` every lift
+of a `ClusterState` is automatically `𝔪`-valued (`mem_maximalIdeal_of_proj`), so `classSect`
+needs no `𝔪`-respecting refinement.  The dependent index `{x // x ∈ L}` (rather than
+`∀ p ∈ L`) is deliberate: it is a `Fintype`, which is what makes H.116b4's presentation space
+finite. -/
+noncomputable def plantedPoly (π : O) {N r : ℕ} (L : Finset (ℕ × ℕ × ResidueField O))
+    (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
+    (Qc : ClusterState O r N) : Polynomial O :=
+  (∏ p ∈ L.attach, alphaParent π (classSect O p.1.1 N (bb p).1) p.1.2.1 (resSect O p.1.2.2))
+    * monicPoly (classSect O r N Qc.1)
+
+variable (π : O) {N r : ℕ} (L : Finset (ℕ × ℕ × ResidueField O))
+  (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
+  (Qc : ClusterState O r N)
+
+/-- The planted product is monic. -/
+theorem plantedPoly_monic : (plantedPoly π L bb Qc).Monic :=
+  ((Polynomial.monic_prod_of_monic _ _
+    (fun _ _ => alphaParent_monic π _ _ _)).mul (monicPoly_monic _))
+
+/-- The planted product has degree `Σ_p μ_p + r`. -/
+theorem plantedPoly_natDegree :
+    (plantedPoly π L bb Qc).natDegree = (∑ p ∈ L, p.1) + r := by
+  have hprodm : (∏ p ∈ L.attach,
+      alphaParent π (classSect O p.1.1 N (bb p).1) p.1.2.1 (resSect O p.1.2.2)).Monic :=
+    Polynomial.monic_prod_of_monic _ _ (fun p _ => alphaParent_monic π _ _ _)
+  rw [plantedPoly, Polynomial.natDegree_mul hprodm.ne_zero (monicPoly_monic _).ne_zero,
+    Polynomial.natDegree_prod _ _ (fun p _ => (alphaParent_monic π _ _ _).ne_zero),
+    monicPoly_natDegree]
+  congr 1
+  rw [Finset.sum_congr rfl (fun p _ => alphaParent_natDegree π _ _ _)]
+  exact Finset.sum_attach L (fun q => q.1)
+
+omit [IsDiscreteValuationRing O] in
+/-- Reading a monic polynomial's coefficient vector back through `monicPoly` is the identity —
+the explicit form of `exists_monicPoly_eq`'s witness. -/
+theorem monicPoly_coeff_self {n : ℕ} {f : Polynomial O} (hf : f.Monic) (hd : f.natDegree = n) :
+    monicPoly (fun i : Fin n => f.coeff (i : ℕ)) = f := by
+  set a : Fin n → O := fun i => f.coeff (i : ℕ) with ha
+  refine Polynomial.ext fun i => ?_
+  rcases lt_trichotomy i n with hi | hi | hi
+  · rw [monicPoly_coeff_lt a hi]
+  · subst hi
+    have h1 : (monicPoly a).coeff i = 1 := by
+      have h := (monicPoly_monic a).coeff_natDegree
+      rwa [monicPoly_natDegree] at h
+    have h2 : f.coeff i = 1 := by
+      have h := hf.coeff_natDegree
+      rwa [hd] at h
+    rw [h1, h2]
+  · rw [coeff_eq_zero_of_natDegree_lt (by rw [monicPoly_natDegree]; omega),
+      coeff_eq_zero_of_natDegree_lt (by omega)]
+
+/-- The frame of a planted product splits over the product. -/
+theorem plantedPoly_comp (q : Polynomial O) :
+    (plantedPoly π L bb Qc).comp q
+      = (∏ p ∈ L.attach, (alphaParent π (classSect O p.1.1 N (bb p).1) p.1.2.1
+            (resSect O p.1.2.2)).comp q) * ((monicPoly (classSect O r N Qc.1)).comp q) := by
+  rw [plantedPoly, Polynomial.mul_comp, Polynomial.prod_comp]
+
+end Carrier
+
+/-! ## 3. The frame profile of a planted factor at its OWN frame -/
+
+section OwnFrame
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+/-- **The planted factor's profile at its OWN slope-and-residue.**  The frame is
+`π ^ (μ k) ·` a MONIC degree-`μ` polynomial whose reduction is `X ^ μ`, so every coefficient
+below abscissa `μ` carries one more `π` and the coefficient AT `μ` does not.  This is the
+`k' = k, z' = z` half of the exact planted profile; the FOREIGN half is H116bR's landed
+`coeff_zero_recentre_alphaParent_not_dvd` (abscissa `0`). -/
+theorem planted_frame_own {π : O} (hπ : Irreducible π) {μ k : ℕ} {b : Fin μ → O}
+    (hb : ∀ i, b i ∈ maximalIdeal O) {ŵ w' : O} {z : ResidueField O}
+    (hŵ : residue O ŵ = z) (hw' : residue O w' = z) :
+    (∀ j < μ, π ^ (μ * k + 1) ∣
+        ((alphaParent π b k ŵ).comp (C (π ^ k) * (X + C w'))).coeff j) ∧
+      ¬ π ^ (μ * k + 1) ∣ ((alphaParent π b k ŵ).comp (C (π ^ k) * (X + C w'))).coeff μ := by
+  have hG : (alphaParent π b k ŵ).comp (C (π ^ k) * (X + C w'))
+      = C (π ^ (μ * k)) * ((alphaFrame b ŵ).comp (X + C w')) := recentre_alphaParent_own b k ŵ w'
+  set G : Polynomial O := (alphaFrame b ŵ).comp (X + C w') with hGdef
+  have hGmonic : G.Monic :=
+    (alphaFrame_monic b ŵ).comp (monic_X_add_C w') (by rw [natDegree_X_add_C]; exact one_ne_zero)
+  have hGdeg : G.natDegree = μ := by
+    rw [hGdef, natDegree_comp, natDegree_X_add_C, alphaFrame_natDegree, Nat.mul_one]
+  have hGmap : G.map (residue O) = X ^ μ := by
+    rw [hGdef, Polynomial.map_comp, alphaFrame_map_residue hb ŵ, hŵ, Polynomial.map_add,
+      map_X, Polynomial.map_C, hw', pow_comp, sub_comp, X_comp, C_comp]
+    congr 1
+    ring
+  refine ⟨fun j hj => ?_, ?_⟩
+  · rw [hG, coeff_C_mul, pow_succ]
+    refine mul_dvd_mul_left _ ?_
+    refine (residue_eq_zero_iff_dvd hπ _).1 ?_
+    have h := congrArg (fun p : Polynomial (ResidueField O) => p.coeff j) hGmap
+    simp only [coeff_map, coeff_X_pow, if_neg (Nat.ne_of_lt hj)] at h
+    exact h
+  · rw [hG, coeff_C_mul]
+    have htop : G.coeff μ = 1 := by
+      have h := hGmonic.coeff_natDegree
+      rwa [hGdeg] at h
+    rw [htop]
+    exact not_pow_succ_dvd_pow_mul' hπ (μ * k) (by rw [map_one]; exact one_ne_zero)
+
+/-- A polynomial with a UNIT constant term is Bézout-coprime to `X ^ μ` — the residue-level
+datum both the genre computation and `monicFactor_congr_of_pow_dvd_sub` consume.  (The witness
+is the one `exists_residue_split` builds; it is isolated here because the split itself is not
+what this node needs.) -/
+theorem isCoprime_X_pow_of_coeff_zero_ne_zero {u : Polynomial (ResidueField O)}
+    (hu0 : u.coeff 0 ≠ 0) (μ : ℕ) : IsCoprime (X ^ μ : Polynomial (ResidueField O)) u := by
+  refine IsCoprime.pow_left ?_
+  refine ⟨-(C (u.coeff 0)⁻¹ * u.divX), C (u.coeff 0)⁻¹, ?_⟩
+  have hsplit : X * u.divX + C (u.coeff 0) = u := X_mul_divX_add u
+  have hinv : C (u.coeff 0)⁻¹ * C (u.coeff 0) = (1 : Polynomial (ResidueField O)) := by
+    rw [← C_mul, inv_mul_cancel₀ hu0, map_one]
+  linear_combination (-(C (u.coeff 0)⁻¹)) * hsplit + hinv
+
+end OwnFrame
+
 end Uniformity.Density.Induction
 
-/-! ## Axiom footprint (§1) -/
+/-! ## Axiom footprint (§1–§3) -/
 
 section AxCheck
 
 #print axioms Uniformity.Density.Induction.coeff_mul_first
 #print axioms Uniformity.Density.Induction.coeff_level_mul_trailing
 #print axioms Uniformity.Density.Induction.coeff_level_prod_trailing
+#print axioms Uniformity.Density.Induction.mem_maximalIdeal_of_proj
+#print axioms Uniformity.Density.Induction.plantedPoly
+#print axioms Uniformity.Density.Induction.plantedPoly_monic
+#print axioms Uniformity.Density.Induction.plantedPoly_natDegree
+#print axioms Uniformity.Density.Induction.monicPoly_coeff_self
+#print axioms Uniformity.Density.Induction.plantedPoly_comp
+#print axioms Uniformity.Density.Induction.planted_frame_own
+#print axioms Uniformity.Density.Induction.isCoprime_X_pow_of_coeff_zero_ne_zero
 
 end AxCheck
