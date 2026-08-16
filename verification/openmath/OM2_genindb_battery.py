@@ -696,7 +696,7 @@ def hex3U_ref(q, N):
 
 def part1():
     print("\nPART 1 — the cluster grammar (N-2a/N-2b/N-2c + CC-2), both characteristics")
-    plan = [(2, 2, range(1, 7)), (2, 3, range(1, 6)), (2, 4, range(1, 5)),
+    plan = [(2, 2, range(1, 7)), (2, 3, range(1, 7)), (2, 4, range(1, 5)),
             (3, 2, range(1, 6)), (3, 3, range(1, 5)), (3, 4, range(1, 4))]
     if FAST:
         plan = [(2, 2, range(1, 5)), (2, 3, range(1, 5)), (2, 4, range(1, 4)),
