@@ -5563,3 +5563,46 @@ terminal layer; CHARTERED (fable) with the D3-pattern audit
 (data-field freedom + pin over-strengthening across remaining
 A-C.1 carrier nodes) folded in. Codex cross-read of A-C.2 owed
 per §16 → Tuesday queue.
+
+**2026-08-16 DATED APPEND #76 — LAW E-W PROVED; A-C.4 SIGNS THE
+TWO OM-10 LAW NODES (unit EWBS2, the OM-10 follow-on).** (1) The
+OM-10 named cheap open ("one careful page at the K2-division
+bookkeeping") is DISCHARGED at theorem grade:
+`lean/notes/openmath/LAWEW_PROOF_2026-08-16.md` proves LAW E-W
+at the trinomial single-crossing geography class (F1)-(F5) —
+`Φ′ = x^D′ − πω`, `Φ₂` trinomial with the sole x-carrying entry
+adjacent to the monic term, on-side, in-grid; members with
+entries at `j′ ≤ 1`, any `μ₂ ≥ 2`. Mechanism: the development
+identity births the crossing seed `g·Y^(b+m−1)(Y − Φ′)`; the
+trace half dies under the mod-Φ′ reduction; a one-display
+telescoping census gives the EXACT quotient/remainder; the two
+on-side integralities collapse every slot height to
+`H_C + δ` / `H_C + E₂ + δ` = `Θ_j + excess`. Corollaries:
+tightness (T-E-BOUND a theorem), witness infeasibility for the
+FULL in-budget locus at μ₂ = 2 (beyond the swept 1-2 entries),
+single-crossing membership classification with the hard residue
+NARROWED to equal-excess multi-crossing ties. (2) Method: the
+proof's own displays were machine-certified BEFORE composition
+(`verification/openmath/ewbs2_lawew_cert.py`, GREEN 2796/0, 5/5
+teeth: slot DICTS bit-exact on 281 crossing rows, 11 frames,
+D′ ∈ {3..6}, i₂ ∈ {1,2}, μ₂ ∈ {2,3}, p ∈ {2,3,5}, ω ≠ 1);
+Codex adversarial passes: pass 1 one finding (C1 crossing
+hypothesis) FIXED, pass 2 four wording findings FIXED, pass 3
+clean TWICE (NO FINDINGS / PASS). NEW refutation kept: the
+naive `j′ ≥ 2` per-coordinate extension FAILS at p = 2
+(constructed member at frame V1p2m3, pin one grade high; p = 3
+agrees 92/92). (3) Ledger: HYP.71(b)'s refutation leg and
+HYP.78's single-crossing classification move CERTIFIED →
+PROVED (dated ARC NOTEs; dispositions unchanged — HYP.71(a)
+and the ties remain open). (4) Blueprint AMENDMENT A-C.4
+(A-C.3 being reserved for the C.114 realizes-refinement per
+append #75): NODE C.127 (LAW E-W, three axiom-stubs
+`lawEW_faithful_of_nox`/`lawEW_faithful_high`/`lawEW_pin`,
+subtraction-free `gridWeight + margin` form, scope fence on
+`j′ ≥ 2`) + NODE C.128 (LAW B-S2 pair-or-triple as a
+`TouchCert` iff, grade CERTIFIED-OPEN, the B4 any-k refutation
+verbatim in TEETH); census 129 → 131; 12 DAG rows; `lake build
+Leanspec.ChapC` GREEN (8983 jobs). Commits a0ae4b3f (battery),
+0a950d9e + pass-3 records (proof note), e01b9abd (leanspec),
+b36ccd9e (blueprint+DAG), c17a7ce0 (ledger), + the A-C.4
+relabel.
