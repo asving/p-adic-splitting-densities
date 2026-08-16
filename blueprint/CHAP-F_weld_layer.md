@@ -2668,15 +2668,25 @@ differ, the landed spelling won.
 **Series name.** `A-W.<n>`, "W" for weld — declared with its reason in the header banner
 (`A-F.<n>` is chapter B's finisher series; a second `A-F.1` would collide in the fleet's grep).
 
+**Landing provenance (recorded because it is not the usual one).** A-W.1's text landed in two
+commits, not one: the body was swept into a concurrent unit's whole-tree commit `f97b81d9`
+("BP:H.108: TEETH prose …") while this unit was composing its own commit message, and the commit
+carrying the intended `BP-W: A-W.1 …` message is therefore this provenance note. Nothing was lost
+and nothing else was touched; recorded so a later `git log -- blueprint/CHAP-F_weld_layer.md`
+reader does not conclude the amendment was authored by the chapter-H unit.
+
 **Convention of this block** (CHAP-E's A-E.1 convention, itself CHAP-H's A-H.1): node text IS
 repaired in place, each repaired passage tagged `[repaired: A-W.1/F-D<n>]` or `[added: …]`;
 superseded text stays visible as a strikethrough or a quoted original; this block records, per
 defect, the finding, the defective ORIGINAL, the repair and the evidence. Nothing is deleted.
 
-**Where the two files now differ.** In exactly one place: F.22's `jbShear_injective`, signed here at
-F-D4 *after* the gate ran, has no stub. Everything else in the blueprint now matches the landed
-forms byte-for-byte in the identifiers and in the gate spellings. (The blueprint additionally
-carries F-D4/F-D5/F-D6 as *rules*; the stub carries them as *executed code*.)
+**Where the two files now differ.** At DECLARATION level, in exactly one place: F.22's
+`jbShear_injective`, signed here at F-D4 *after* the gate ran, has no stub. Every identifier and
+every gate spelling now agrees. Remaining differences are the stub's own declared conventions, not
+drift: the stub drops the `namespace Uniformity.Density.Weld` headers (it wraps everything in
+`LeanspecF`), abbreviates some docstrings, and line-breaks a few signatures differently — the
+blueprint additionally carries F-D4/F-D5/F-D6 as *rules* where the stub carries them as *executed
+code*.
 
 ### A-W.1/F-D1 — `Σmap` / `hΣ` / `hΣx` / `hΣρ` ARE NOT LEGAL LEAN IDENTIFIERS (hard parse error)
 
