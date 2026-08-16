@@ -25,7 +25,7 @@ complete Lean declarations is **38**, i.e. **30% of the chapter**.
 3 `structure`, 2 `abbrev`, 36 `def` (real bodies, stage-0e rule 1), 1 `theorem` and 1 `example`.
 Three of the 82 are NOT blueprint declarations and are marked as such at their sites:
 `KeyFrame.Pin` (the D4 abbreviation), `isKey_X` (the D9 helper), and the D11 negative-control
-`example`. Plus a 39-declaration NUMERIC GATE section with **47 `#guard`s**, all passing.
+`example`. Plus a 43-declaration NUMERIC GATE section with **51 `#guard`s**, all passing.
 `lake build Leanspec.ChapC` is green; `grep sorry` finds only this sentence.
 
 **FOUR FINDINGS THE FLEET MUST SEE BEFORE IT FIRES:** `D1` (70 nodes unsigned, including every
