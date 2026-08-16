@@ -7,12 +7,15 @@ import Uniformity.ChapB.B04
 import Uniformity.ChapB.B06
 import Uniformity.ChapB.B08
 import Uniformity.ChapB.B30
+import Uniformity.ChapB.B33
+import Uniformity.ChapB.B35b
 import Uniformity.ChapB.B34
 import Uniformity.ChapB.B35b
 import Uniformity.ChapB.B66
 import Uniformity.ChapB.B66a
 import Uniformity.ChapB.B73
 import Uniformity.ChapB.B75
+import Uniformity.ChapB.B76
 import Uniformity.Density.Drainage
 import Uniformity.Density.LocalData
 
@@ -514,6 +517,164 @@ theorem slope_bounds_of_le {φ : Polynomial O} (hφ : IsKey φ) {f : Polynomial 
   exact ⟨h1, le_trans h2 (Finset.sup_le fun j hj => hB j (by
     have := Finset.mem_range.1 hj; omega))⟩
 
+
+/-! ## 5. The height form of the A-F.12 perimeter discharge
+
+`perim_degree_bound` is enough wherever the degree arithmetic already forces `deg ψ = 1`
+(B.83/B.84). It is *not* enough at B.85's `e > 1 ∧ f > 1` witnesses: there `m = 2` and `n ∈ {4,6}`
+leave `ℓ = 1, deg ψ = 2` arithmetically open. The height form below closes it. -/
+
+/-- A monic divisor whose reduction is a positive power of the key has abscissa-0 height `≥ 1`. -/
+theorem one_le_npHgt_zero (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {gS : Polynomial O} {k : ℕ} (hk : 0 < k)
+    (hSbar : gS.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ k) :
+    ((1 : ℕ) : ℕ∞) ≤ npHgt φ gS 0 := by
+  rw [npHgt, le_gaussVal_iff hπ]
+  intro i
+  have hmod : (dev φ gS 0).map (IsLocalRing.residue O) = 0 := by
+    have : dev φ gS 0 = gS %ₘ φ := rfl
+    rw [this, Polynomial.map_modByMonic _ hφ.monic, hSbar]
+    refine (Polynomial.modByMonic_eq_zero_iff_dvd (hφ.monic.map _)).2 ?_
+    exact dvd_pow_self _ hk.ne'
+  have hc : (IsLocalRing.residue O) ((dev φ gS 0).coeff i) = 0 := by
+    have := congrArg (fun p => Polynomial.coeff p i) hmod
+    simpa using this
+  have := Ideal.Quotient.eq_zero_iff_mem.1 hc
+  rw [hπ.maximalIdeal_eq, Ideal.mem_span_singleton] at this
+  simpa using this
+
+set_option linter.unusedVariables false in
+/-- **A-F.12's uniform perimeter bound, HEIGHT form** — the sharper companion of
+`perim_degree_bound`, and the one B.85's `e > 1 ∧ f > 1` witnesses need.
+
+Where `perim_degree_bound` reads the *degree* identity
+`ℓ · φ.natDegree · ψ.natDegree = gS.natDegree ≤ n`, this reads the *height* identity at the
+divisor's abscissa 0 and transports it to the class member:
+
+* `ḡS = φ̄ ^ k` with `k ≥ 1` (because `deg ψ ≥ 1` and `ℓ · sideDeg = k`) forces
+  `npHgt φ gS 0 ≥ 1` — the abscissa-0 development coefficient reduces to `0` mod `𝔪`
+  (`one_le_npHgt_zero`);
+* purity at abscissa `0` turns that into `ℓ · npHgt φ gS 0 = u · k = ℓ · (u · deg ψ)`, i.e.
+  `npHgt φ gS 0 = u · deg ψ`;
+* B.33's superadditivity `suppVal gS + suppVal w ≤ suppVal (gS·w)` bounds the divisor's support
+  value by the class member's, and B.35b's `suppVal_le_weight` at abscissa `0` bounds that by
+  `ℓ · npHgt φ gT 0`;
+* B.76's `npHgt_min_congr` identifies `npHgt φ gT 0` with `npHgt φ f 0 = Hf`, since `hvis` puts
+  `Hf` strictly inside the window.
+
+Conclusion: `1 ≤ u · deg ψ ≤ Hf`. At an instance with `Hf = 1` (every B.85 witness, and B.83/B.84
+(i),(ii),(iv)) this pins `deg ψ = 1` outright — the SECOND disjunct — with no case analysis and
+no `B-BOX-1`. -/
+theorem perim_height_bound (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {N : ℕ} {f : Polynomial O} {μ : ℕ}
+    (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (hvis : Visible π φ f N)
+    {gT : Polynomial O} (hgTm : gT.Monic) (hdegT : gT.natDegree = f.natDegree)
+    (hcong : ∀ k, π ^ N ∣ (f - gT).coeff k)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+    {gS : Polynomial O} (hgSm : gS.Monic) (hdvd : gS ∣ gT) (hpure : IsPure φ gS u ℓ)
+    (hne : (sideSet φ gS u ℓ).Nonempty) {H₀ : ℕ}
+    (hH₀ : npHgt φ gS (sideMin φ gS u ℓ hne) = (H₀ : ℕ∞))
+    {ψ : Polynomial (resField φ)} (hψm : ψ.Monic) (hψi : Irreducible ψ)
+    (hc : ∃ c : (resField φ)ˣ, resPoly π φ gS u ℓ hne H₀ = c • ψ)
+    {Hf : ℕ} (hHf : npHgt φ f 0 = (Hf : ℕ∞)) :
+    1 ≤ u * ψ.natDegree ∧ u * ψ.natDegree ≤ Hf := by
+  classical
+  letI : Field (resField φ) := instFieldResField hφ
+  -- the window sees the polygon
+  have hHfN : Hf < N := by
+    have h := (visible_iff_npHgt_lt hπ).1 hvis
+    rw [hHf] at h
+    exact_mod_cast h
+  have hN : 0 < N := by omega
+  -- the class member reduces like `f`
+  have hbar : gT.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ := by
+    have hsub : (f - gT).map (IsLocalRing.residue O) = 0 := by
+      ext j
+      rw [Polynomial.coeff_map, Polynomial.coeff_zero]
+      refine Ideal.Quotient.eq_zero_iff_mem.2 ?_
+      rw [hπ.maximalIdeal_eq, Ideal.mem_span_singleton]
+      exact (dvd_pow_self π hN.ne').trans (hcong j)
+    rw [Polynomial.map_sub, sub_eq_zero] at hsub
+    rw [← hsub]; exact hres
+  -- the monic divisor's reduction is a power of the key's
+  have hprime : Prime (φ.map (IsLocalRing.residue O)) := hφ.irred.prime
+  have hSdvd : gS.map (IsLocalRing.residue O) ∣ (φ.map (IsLocalRing.residue O)) ^ μ := by
+    rw [← hbar]; exact Polynomial.map_dvd _ hdvd
+  obtain ⟨k, hk, hassoc⟩ := (dvd_prime_pow hprime μ).1 hSdvd
+  have hSbar : gS.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ k :=
+    Polynomial.eq_of_monic_of_associated (hgSm.map _) ((hφ.monic.map _).pow _) hassoc
+  have hSdeg : gS.natDegree = k * φ.natDegree := by
+    rw [natDegree_eq_of_map_eq hgSm hSbar, Polynomial.natDegree_pow,
+      hφ.monic.natDegree_map (IsLocalRing.residue O)]
+  have htop : suppVal φ gS u ℓ ≠ ⊤ :=
+    ne_top_of_le_ne_top (ENat.coe_ne_top _) (suppVal_ne_top hφ.monic hφ.pos hgSm hSdeg u ℓ)
+  -- the residual degree and B.35b
+  have hRdeg := (natDegree_resPoly hπ hφ hℓ hcop htop hne hH₀).1
+  obtain ⟨c, hcψ⟩ := hc
+  have hψdeg : ψ.natDegree = sideDeg φ gS u ℓ hne := by
+    rw [← hRdeg, hcψ, Units.smul_def, Polynomial.smul_eq_C_mul,
+      Polynomial.natDegree_C_mul (Units.ne_zero c)]
+  have hkeq : ℓ * sideDeg φ gS u ℓ hne = k :=
+    sideDeg_of_pure hφ.monic hφ.pos hgSm hSdeg hℓ hcop hpure hne
+  have hd1 : 1 ≤ ψ.natDegree := one_le_natDegree_of_monic_irreducible hψm hψi
+  have hkpos : 0 < k := by
+    rw [← hkeq, ← hψdeg]
+    exact Nat.mul_pos hℓ hd1
+  -- the abscissa-0 height of the divisor, in `ℕ`
+  obtain ⟨h, hh⟩ := WithTop.ne_top_iff_exists.mp (npHgt_ne_top_of_onSide hℓ htop hpure.1)
+  have hh1 : 1 ≤ h := by
+    rcases Nat.eq_zero_or_pos h with rfl | hp
+    · exfalso
+      have hone := one_le_npHgt_zero hπ hφ hkpos hSbar
+      rw [← hh] at hone
+      exact absurd (Nat.cast_le.mp hone) (by omega)
+    · exact hp
+  have hsuppS : suppVal φ gS u ℓ = ((u * k : ℕ) : ℕ∞) :=
+    suppVal_of_pure hφ.monic hφ.pos hgSm hSdeg hpure
+  -- purity at abscissa 0 : `ℓ · h = u · k`
+  have honside : ℓ • npHgt φ gS 0 + ((u * 0 : ℕ) : ℕ∞) = suppVal φ gS u ℓ := hpure.1
+  have hnat : ℓ * h = u * k := by
+    rw [← hh, hsuppS] at honside
+    have : ((ℓ * h : ℕ) : ℕ∞) = ((u * k : ℕ) : ℕ∞) := by
+      rw [← honside]; push_cast [nsmul_eq_mul]; rfl
+    exact_mod_cast this
+  -- the class member's abscissa-0 height is `f`'s
+  have hgT0 : npHgt φ gT 0 = (Hf : ℕ∞) := by
+    have hmin := npHgt_min_congr hπ hφ.monic hφ.pos hcong 0
+    rw [hHf] at hmin
+    have hlt : (Hf : ℕ∞) < (N : ℕ∞) := by exact_mod_cast hHfN
+    rw [min_eq_left hlt.le] at hmin
+    rcases le_or_gt (N : ℕ∞) (npHgt φ gT 0) with hge | hlt'
+    · rw [min_eq_right hge] at hmin
+      exact absurd hmin hlt.ne
+    · rw [min_eq_left hlt'.le] at hmin
+      exact hmin.symm
+  -- superadditivity : the divisor's support value is below the class member's
+  obtain ⟨w, hw⟩ := hdvd
+  have hmul := suppVal_add_le_suppVal_mul hπ hφ.monic hφ.pos hℓ u gS w
+  rw [← hw] at hmul
+  have hleT : suppVal φ gS u ℓ ≤ suppVal φ gT u ℓ := le_trans le_self_add hmul
+  have hweight : suppVal φ gT u ℓ ≤ ((ℓ * Hf : ℕ) : ℕ∞) := by
+    refine le_trans (suppVal_le_weight hφ.monic hφ.pos hℓ u gT 0) ?_
+    rw [hgT0]
+    have hcast : ℓ • ((Hf : ℕ) : ℕ∞) + ((u * 0 : ℕ) : ℕ∞) = ((ℓ * Hf : ℕ) : ℕ∞) := by
+      rw [Nat.mul_zero, Nat.cast_zero, add_zero, nsmul_eq_mul, Nat.cast_mul]
+    rw [hcast]
+  have hfinal : u * k ≤ ℓ * Hf := by
+    have : ((u * k : ℕ) : ℕ∞) ≤ ((ℓ * Hf : ℕ) : ℕ∞) := by
+      rw [← hsuppS]; exact le_trans hleT hweight
+    exact_mod_cast this
+  -- read both conclusions off `ℓ · h = u · k = ℓ · (u · deg ψ)`
+  rw [hψdeg]
+  have hud : h = u * sideDeg φ gS u ℓ hne := by
+    refine Nat.eq_of_mul_eq_mul_left hℓ ?_
+    rw [hnat, ← hkeq]; ring
+  refine ⟨by rw [← hud]; exact hh1, ?_⟩
+  refine Nat.le_of_mul_le_mul_left ?_ hℓ
+  calc ℓ * (u * sideDeg φ gS u ℓ hne) = u * k := by rw [← hkeq]; ring
+    _ ≤ ℓ * Hf := hfinal
+
 end Arena
 
 /-! ## 4. The concrete-bundle helpers (`φ = X`, and `ℤ_[p]` arithmetic)
@@ -560,4 +721,5 @@ section AxCheck
 #print axioms Uniformity.Density.Leaf.GateKit.dev_four
 #print axioms Uniformity.Density.Leaf.GateKit.padic_addVal
 #print axioms Uniformity.Density.Leaf.GateKit.perim_degree_bound
+#print axioms Uniformity.Density.Leaf.GateKit.perim_height_bound
 end AxCheck
