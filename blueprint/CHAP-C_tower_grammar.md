@@ -9556,8 +9556,8 @@ nothing: `BlockContext`'s `LevelDatum` carries `hκ`, and the dissection carries
 * **(b) satisfiability at a LANDED instance** — `redraft_applies_at_s2Frame`: at the same
   `s2Frame`, `g = g′ = x² + 2` at `(u, ℓ) = (4, 1)` discharges EVERY redraft binder by frame
   computation, so the redraft delivers its conclusion there; `Absolute.redraft_applies_absolute`
-  closes the scope over `ℤ_[2]`. PART 1b adds five more witnesses (including a degree-4 `g` with a
-  degree-2 residual and a mixed-degree pair).
+  closes the scope over `ℤ_[2]`. PART 1b checks FIVE witnesses in all — this one plus four more,
+  including a degree-4 `g` with a degree-2 residual and a mixed-degree pair.
 * **(c) numeric consistency (the B.42 witness-disc pattern)** — `degree_bookkeeping_consistent`:
   at the witness the residual degrees ADD (`2 = 1 + 1`), where at the refuting pair they read
   `1 = 0 + 0`; and PART 1c runs the full identity `R(g·g′) = R(g)R(g′)` on **26 in-binder pairs**

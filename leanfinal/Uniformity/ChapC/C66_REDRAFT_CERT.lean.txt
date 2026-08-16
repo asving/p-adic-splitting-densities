@@ -102,9 +102,9 @@ binders the refuting pair satisfies eleven and fails exactly `hfloor`, `hdg`, `h
 
 EVERY binder of `C66StatementR` is discharged by a landed-frame computation, and the redraft
 therefore DELIVERS its conclusion there. So the redraft is not true-for-lack-of-instances: the
-`hfloor`/`hdg` fences cut out the refuting pair without emptying the statement. (Five further
-satisfying witnesses, including a degree-4 `g` with a degree-2 residual and a mixed-degree pair,
-are checked numerically in `ac6_cite_redraft_check.py` PART 1b.)
+`hfloor`/`hdg` fences cut out the refuting pair without emptying the statement. (`ac6_cite_redraft_check.py`
+PART 1b checks FIVE satisfying witnesses in all — this one plus four more, including a degree-4
+`g` with a degree-2 residual and a mixed-degree pair.)
 
 ## LEG C — numeric consistency (the B.42 witness-disc pattern), in Lean
 
