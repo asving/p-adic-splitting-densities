@@ -1,0 +1,199 @@
+==============================================================================
+PART 1 — NODE C.66 `fgmn_residual_mul` [cite:FGMN], at the LANDED s2Frame
+         Phi' = x^2 - 2 over Z_2 ; (e1,f1,h) = (2,1,1) ; D' = e1*f1 = 2
+==============================================================================
+
+[1a] THE REFUTING PAIR of C66_REFUTATION.lean.txt: g = g' = X, (u,l) = (2,1)
+      HOLDS   hg  (g monic)
+      HOLDS   hg' (g' monic)
+      HOLDS   hl  (0 < l)
+      HOLDS   hcop (Coprime u l)
+      FAILS   hfloor (l*((e1*f1)*h) < u)  [A-C.6 NEW]
+      FAILS   hdg  (e1*f1 | deg g)  [A-C.6 NEW]
+      FAILS   hdg' (e1*f1 | deg g') [A-C.6 NEW]
+      HOLDS   hpos  (0 < deg g)     [A-C.6 NEW]
+      HOLDS   hpos' (0 < deg g')    [A-C.6 NEW]
+      HOLDS   hpg  (IsDvPure g)
+      HOLDS   hpg' (IsDvPure g')
+      HOLDS   hne  (side g nonempty)
+      HOLDS   hne' (side g' nonempty)
+      HOLDS   hne''(side g*g' nonempty)
+      -> the A-C.1 draft's binders all hold; the A-C.6 redraft FAILS at: ['hfloor (l*((e1*f1)*h) < u)  [A-C.6 NEW]', 'hdg  (e1*f1 | deg g)  [A-C.6 NEW]', "hdg' (e1*f1 | deg g') [A-C.6 NEW]"]
+      R(X)   = 1   (side [0])
+      R(X*X) = 1 + Z   (side [0, 1])
+      R(X)*R(X) = 1  =/=  R(X*X)  ->  multiplicativity VIOLATED (this is the refutation, reproduced numerically)
+
+[1b] SATISFIABILITY of the A-C.6 redraft at the s2Frame
+      g = g' = x^2 + 2  (= Phi' + 4)  at (u,l) = (4,1)
+        all 14 redraft binders HOLD
+      g = g' = x^2 + 6  (= Phi' + 8)  at (u,l) = (6,1)
+        all 14 redraft binders HOLD
+      g = x^2 + 2, g' = x^2 + 10 (= Phi' + 12, same slope)  at (u,l) = (4,1)
+        all 14 redraft binders HOLD
+      g = g' = x^4 + 12 (= Phi'^2 + 4Phi' + 16, deg 4 = 2D', residual of degree 2)  at (u,l) = (4,1)
+        all 14 redraft binders HOLD
+      g = x^4 + 12 (deg 4), g' = x^2 + 2 (deg 2), SAME slope u/l = 4  at (u,l) = (4,1)
+        all 14 redraft binders HOLD
+      -> the redraft is NON-VACUOUS: its binder set is inhabited at the landed frame.
+
+[1c] NUMERIC CONSISTENCY (the B.42 witness-disc pattern): R(g*g') = c * R(g)R(g')
+     over the stage field K_1 = F_2 (f1 = 1), so the scalar c must be 1.
+      g = 2 + x^2                g' = 2 + x^2                (u,l)=(4,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 10 + x^2               g' = 10 + x^2               (u,l)=(4,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 18 + x^2               g' = 18 + x^2               (u,l)=(4,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 6 + x^2                g' = 6 + x^2                (u,l)=(6,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 22 + x^2               g' = 22 + x^2               (u,l)=(6,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 38 + x^2               g' = 38 + x^2               (u,l)=(6,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 14 + x^2               g' = 14 + x^2               (u,l)=(8,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 46 + x^2               g' = 46 + x^2               (u,l)=(8,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 78 + x^2               g' = 78 + x^2               (u,l)=(8,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 30 + x^2               g' = 30 + x^2               (u,l)=(10,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 94 + x^2               g' = 94 + x^2               (u,l)=(10,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 158 + x^2              g' = 158 + x^2              (u,l)=(10,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 62 + x^2               g' = 62 + x^2               (u,l)=(12,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 190 + x^2              g' = 190 + x^2              (u,l)=(12,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 318 + x^2              g' = 318 + x^2              (u,l)=(12,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 126 + x^2              g' = 126 + x^2              (u,l)=(14,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 382 + x^2              g' = 382 + x^2              (u,l)=(14,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 638 + x^2              g' = 638 + x^2              (u,l)=(14,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 2 + x^2                g' = 10 + x^2               (u,l)=(4,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 6 + x^2                g' = 22 + x^2               (u,l)=(6,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 14 + x^2               g' = 46 + x^2               (u,l)=(8,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 30 + x^2               g' = 94 + x^2               (u,l)=(10,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 62 + x^2               g' = 190 + x^2              (u,l)=(12,1)  R(g)=1 + Z        R(g')=1 + Z        R(gg')=1 + Z^2          OK
+      g = 12 + x^4               g' = 12 + x^4               (u,l)=(4,1)  R(g)=1 + Z + Z^2  R(g')=1 + Z + Z^2  R(gg')=1 + Z^2 + Z^4    OK
+      g = 12 + x^4               g' = 2 + x^2                (u,l)=(4,1)  R(g)=1 + Z + Z^2  R(g')=1 + Z        R(gg')=1 + Z^3          OK
+      g = 12 + x^4               g' = 10 + x^2               (u,l)=(4,1)  R(g)=1 + Z + Z^2  R(g')=1 + Z        R(gg')=1 + Z^3          OK
+      -> 26 in-binder pairs, all consistent with c = 1.
+
+==============================================================================
+PART 2 — NODE C.94 `agnprw_termination` [cite:AGNPRW Thm 5.6], leaf layer over Z_2
+==============================================================================
+
+[2a] THE REFUTING SELF-LOOP of C94_REFUTATION.lean.txt: s' = s = <X, X>,
+     (u,l) = (0,1), (u',l') = (1,1)
+      HOLDS   s'.block = s.block
+      HOLDS   s.key.Monic
+      HOLDS   s'.key.Monic
+      HOLDS   0 < s.key.natDegree
+      HOLDS   s'.key.natDegree = s.key.natDegree
+      FAILS   s'.key <> s.key                      [A-C.6 NEW]
+      HOLDS   (s.key - s'.key).natDegree < s.key.natDegree
+      FAILS   0 < u                                [A-C.6 NEW]
+      HOLDS   0 < l
+      HOLDS   Coprime u l                          [A-C.6 NEW]
+      HOLDS   0 < u'                               [A-C.6 NEW]
+      HOLDS   0 < l'
+      HOLDS   Coprime u' l'                        [A-C.6 NEW]
+      FAILS   1 < (sideSet s.key s.block u l).card [A-C.6 NEW]
+      FAILS   1 < (sideSet s'.key s.block u' l').card [A-C.6 NEW]
+      FAILS   IsPure s.key s.block u l             [A-C.6 NEW]
+      FAILS   IsPure s'.key s.block u' l'          [A-C.6 NEW]
+      FAILS   resPoly = (X - C z)^m, z <> 0, 2 <= m  [A-C.6 NEW]  (m = 0, R = 1)
+      HOLDS   u * l' < u' * l   (slope strictly increases)
+      -> the A-C.6 redraft FAILS at 7 named clauses (the A-C.1 draft had 0).
+
+[2b] A GENUINE TWO-STEP REFINE DESCENT over Z_2 (the satisfiability probe)
+     block f = (x-6)^2 - 32 = x^2 - 12x + 4  (irreducible over Q_2: roots 6 +- 4*sqrt2)
+     keys:  x  ->  x-2  ->  x-6 ;  slopes 1/1 -> 2/1 -> 5/2 (the last is a JUMP)
+
+     STEP 1:  key x  ->  -2 + x   at (u,l) = (1,1) -> (2,1)
+       x-adic development of f: ['4', '-12', '1']  heights [2, 2, 0]
+       HOLDS   s'.block = s.block
+       HOLDS   s.key.Monic
+       HOLDS   s'.key.Monic
+       HOLDS   0 < s.key.natDegree
+       HOLDS   s'.key.natDegree = s.key.natDegree
+       HOLDS   s'.key <> s.key                      [A-C.6 NEW]
+       HOLDS   (s.key - s'.key).natDegree < s.key.natDegree
+       HOLDS   0 < u                                [A-C.6 NEW]
+       HOLDS   0 < l
+       HOLDS   Coprime u l                          [A-C.6 NEW]
+       HOLDS   0 < u'                               [A-C.6 NEW]
+       HOLDS   0 < l'
+       HOLDS   Coprime u' l'                        [A-C.6 NEW]
+       HOLDS   1 < (sideSet s.key s.block u l).card [A-C.6 NEW]
+       HOLDS   1 < (sideSet s'.key s.block u' l').card [A-C.6 NEW]
+       HOLDS   IsPure s.key s.block u l             [A-C.6 NEW]
+       HOLDS   IsPure s'.key s.block u' l'          [A-C.6 NEW]
+       HOLDS   resPoly = (X - C z)^m, z <> 0, 2 <= m  [A-C.6 NEW]  (m = 2, R = 1 + Z^2)
+       HOLDS   u * l' < u' * l   (slope strictly increases)
+
+     STEP 2:  key -2 + x  ->  -6 + x   at (u,l) = (2,1) -> (5,2)
+       -2 + x-adic development of f: ['-16', '-8', '1']  heights [4, 3, 0]
+       HOLDS   s'.block = s.block
+       HOLDS   s.key.Monic
+       HOLDS   s'.key.Monic
+       HOLDS   0 < s.key.natDegree
+       HOLDS   s'.key.natDegree = s.key.natDegree
+       HOLDS   s'.key <> s.key                      [A-C.6 NEW]
+       HOLDS   (s.key - s'.key).natDegree < s.key.natDegree
+       HOLDS   0 < u                                [A-C.6 NEW]
+       HOLDS   0 < l
+       HOLDS   Coprime u l                          [A-C.6 NEW]
+       HOLDS   0 < u'                               [A-C.6 NEW]
+       HOLDS   0 < l'
+       HOLDS   Coprime u' l'                        [A-C.6 NEW]
+       HOLDS   1 < (sideSet s.key s.block u l).card [A-C.6 NEW]
+       HOLDS   1 < (sideSet s'.key s.block u' l').card [A-C.6 NEW]
+       HOLDS   IsPure s.key s.block u l             [A-C.6 NEW]
+       HOLDS   IsPure s'.key s.block u' l'          [A-C.6 NEW]
+       HOLDS   resPoly = (X - C z)^m, z <> 0, 2 <= m  [A-C.6 NEW]  (m = 2, R = 1 + Z^2)
+       HOLDS   u * l' < u' * l   (slope strictly increases)
+
+     -> both steps satisfy EVERY redraft clause: the redrafted `refine` constructor is INHABITED,
+        and a two-step chain exists, so the no-infinite-history statement is not vacuously true
+        for lack of steps.
+
+[2c] WHY THE REDRAFT CARRIES `2 <= m` ON THE RESIDUAL.
+     C94_REFUTATION's repair sketch (b) offered `0 < sideDeg` as the side-content
+     clause.  With that (plus the self-loop exclusion, coprimality and 0 < u) the
+     statement is STILL FALSE: over Z_2 take the fixed block f = x^2 - 2 and the
+     keys phi_n = x^2 - 2 + 2^n (n = 1, 2, 3, ...).
+       n = 1..20: every clause of the WEAKER repair holds at every n: True
+       sideDeg (= m) is [1] throughout, and the
+       residual is ['1 + Z'] — a SIMPLE root, so the OM
+       algorithm would OUTPUT the type (n_i = 1) instead of refining.  The chain is
+       therefore not a descent at all in [AGNPRW] Def 5.5's sense, but it IS an
+       infinite chain of the weaker relation ==> the weaker statement proves False.
+       with the redraft's `2 <= m`, every member of the family FAILS that clause: True
+
+==============================================================================
+PART 3 — NODE C.92 `fgmn_calculus_exists` [cite:FGMN-chain]: the DECISION's census
+==============================================================================
+
+  occurrences of `fgmn_calculus_exists` in leanspec: 5
+    leanspec/Leanspec/ChapC.lean:21  [DECLARATION]  axioms (`fgmn_residual_mul`, `fgmn_calculus_exists`, `agnprw_termination`) are DECLARED
+    leanspec/Leanspec/ChapC.lean:1330  [prose/comment]  /-- NODE C.126's census name / C.92's ONE signed axiom (`fgmn_calculus_exists`): the inter
+    leanspec/Leanspec/ChapC.lean:1333  [DECLARATION]  axiom fgmn_calculus_exists {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    leanspec/Leanspec/ChapC.lean:3526  [prose/comment]  signatures FIRST" list; neither exists. `C.126`'s axiom census names `fgmn_calculus_exists
+    leanspec/Leanspec/ChapC.lean:4256  [prose/comment]  fgmn_calculus_exists (C.92), agnprw_termination (C.94) — category-signed by append #66,
+
+  declarations taking the class as a HYPOTHESIS `[FGMNCalculus ...]`/`(I : ...)`: 16
+    leanspec/Leanspec/ChapC.lean:1332  flagged for the owner; consumers may also take `[FGMNCalculus W e' f' u']` hypothesis-form. -/
+    leanspec/Leanspec/ChapC.lean:1336  Nonempty (FGMNCalculus W e' f' u')
+    leanspec/Leanspec/ChapC.lean:2188  (I : FGMNCalculus W e' f' u') (i k : ℕ) : Polynomial O :=
+    leanspec/Leanspec/ChapC.lean:2196  (I : FGMNCalculus W e' f' u') (t : ℕ) : W.fld r :=
+    leanspec/Leanspec/ChapC.lean:2218  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    leanspec/Leanspec/ChapC.lean:2228  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    leanspec/Leanspec/ChapC.lean:2242  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:2253  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:2268  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:2287  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:2298  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:3368  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    leanspec/Leanspec/ChapC.lean:3379  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    leanspec/Leanspec/ChapC.lean:3390  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u') : Prop :=
+    leanspec/Leanspec/ChapC.lean:3401  (W : DeepTower F H₀ hpin 2) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
+    leanspec/Leanspec/ChapC.lean:3407  (W : DeepTower F H₀ hpin 1) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
+
+  -> TERM-LEVEL consumers of the axiom: 0 (every consumer already takes the class hypothesis-form).
+  -> DECISION (A-C.6): option (1) hypothesis-form.  Dropping the axiom costs no consumer,
+     removes a name from the trusted base, and makes the [FGMN] conditionality visible in
+     every downstream signature.  C.126's census row retires; C.92 EXITS the gate-(b) queue.
+
+==============================================================================
+PART 1 (C.66) : PASS
+PART 2 (C.94) : PASS
+PART 3 (C.92) : PASS
+==============================================================================
