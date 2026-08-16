@@ -663,6 +663,33 @@ def MenuLawAt (n : ℕ) : Prop :=
       CoveringMenu O n S
 ```
 
+**⛔ THE SIGNATURE ABOVE IS VOIDED AND RE-SIGNED BY AMENDMENT A-I.1 (2026-08-16), defects I-D5
+and I-D9.** The block is kept verbatim because it is the object of a machine refutation: as
+written the `(A1)`-admissibility clause is **provably vacuous** (`r = 0, F = []` satisfies it
+for every `S`, so `MenuLawAt n` is EQUAL to its bare menu clause — proved in the 0e gate and
+preserved as `MenuLawAtVoided` in `leanspec/Leanspec/ChapI.lean`), and it does not elaborate
+(`A1Family` is a plain `def`; instance search will not find `Membership` through it). **The
+signed form is:**
+
+```lean
+namespace Uniformity.Density
+
+/-- `A1_n` (Display A; ledger HYP.26; COND:A1_n's resolution — I.13): a q-independent
+`(A1)`-admissible family list **whose σ-labels ENUMERATE** a covering menu at degree `n`
+[A-I.1: the enumeration is two-directional — the STATEMENT's "whose cells' σ-labels enumerate
+`S`" — the ⊆ half alone is vacuous]. The shape clause uses chapter H's landed
+`A1Family`/`A1Cell` (H.93, with W-12 r4's σ-label field); the `@id` spelling is A-I.1's
+elaboration repair for `A1Family`'s plain-`def` reducibility (I-D5), and is type-identical. -/
+def MenuLawAt (n : ℕ) : Prop :=
+  ∃ (r : ℕ) (F : Induction.A1Family r) (S : Finset FactorizationType),
+    (∀ C ∈ @id (List (Induction.A1Cell r)) F, C.σ ∈ S) ∧
+    (∀ σ ∈ S, ∃ C ∈ @id (List (Induction.A1Cell r)) F, C.σ = σ) ∧
+    (∀ σ ∈ S, σ.degree = n) ∧
+    ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+      [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
+      CoveringMenu O n S
+```
+
 **⚠ SIGNATURE NOTE.** The exact-weights clause of HYP.26 ("internal σ_F labels and exact
 weights") is carried by the `A1Cell.coeff` field plus the count laws (C.114/H §7) — this
 carrier states the menu + shape + labels; the WEIGHT-correctness tie is part of the count
@@ -978,6 +1005,12 @@ HYP.08/09 frontier); `n ≥ 4` open (via H.98 ⇐ `InductionPackage`). DAG rows:
 strengthened (σ-labelled) predicate, whose closure is H.94. The 0c matcher missed HYP.26 for
 the same name-form reason. DAG rows: `COND:A1_n → HYP.26`, `COND:A1_n → BP.I.03`,
 `BP.I.03 → BP.H.93`.
+
+*[A-I.1 rider, 2026-08-16, defect I-D9: what this resolution DELIVERS is stated exactly. As
+committed, I.03's shape clause was one-directional and therefore VACUOUS (machine-proved), so
+`COND:A1_n` resolved to the MENU clause alone. A-I.1 re-signs I.03 at the two-directional
+enumeration, so the resolution now delivers **menu + σ-label enumeration**; the WEIGHT tie
+(HYP.23/32/35) is still NOT delivered and I.03's ⚠ SIGNATURE NOTE still governs.]*
 
 ### NODE I.14 [note] — `COND:H-e)-window-pinning` RESOLVED
 
@@ -2182,6 +2215,70 @@ fleet agent must be able to see what it was told, and why it is wrong).
 > **Forbidden, permanently:** resolving I.01 against `Uniformity.Density.Tower.NS7TerminationStatement`
 > (machine-refuted: it implies `False` — `leanfinal/Uniformity/ChapC/C94_REFUTATION.lean.txt`),
 > and citing that name at all — it does not exist in `leanfinal` at HEAD.
+
+---
+
+### I-D9 — I.03's `(A1)`-admissibility clause: the source CARRIES content; the clause is
+### RE-SIGNED at the enumeration (not struck)
+
+**Verdict: CONTENTFUL, and the signed clause lost the content.** The adjudication is from the
+node's own STATEMENT and from the ledger row, both of which say more than the signed Lean:
+
+* NODE I.03 STATEMENT, verbatim: *"the menu is carried by an `A1Family` … **whose cells'
+  σ-labels enumerate `S`**"*. **Enumerate is two-directional.** The signed clause carried the
+  ⊆ half only (`∀ C ∈ F, C.σ ∈ S`), and the missing ⊇ half is exactly what the empty family
+  exploits.
+* ledger HYP.26, verbatim: *"a finite disjoint q-independent family list carries internal σ_F
+  labels and exact weights; σ is not an A1 binder"* — a family that carries labels for the
+  menu's types, not a family that may be empty.
+
+So the clause is NOT redundant and must NOT be struck; it is re-signed with the reverse
+inclusion added (signature block at NODE I.03 above):
+
+```lean
+    (∀ σ ∈ S, ∃ C ∈ @id (List (Induction.A1Cell r)) F, C.σ = σ) ∧
+```
+
+**Certification (the A-E.2 standard: the re-signed form must not be satisfiable by the witness
+that killed the old one), all machine-checked in `leanspec/Leanspec/ChapI.lean`'s §4 gate:**
+
+1. **The refutation of the OLD form is PRESERVED VERBATIM** as `MenuLawAtVoided` (named-and-
+   voided, the `OM4Shadow.*` pattern) together with its proof
+   `MenuLawAtVoided n ↔ ∃ S, (∀ σ ∈ S, σ.degree = n) ∧ ∀ O …, CoveringMenu O n S` — the
+   `A1Family` existential adds nothing. **No consumer, gate or census row may cite
+   `MenuLawAtVoided`.**
+2. **The empty family no longer satisfies the re-signed shape clause at any nonempty menu**:
+   `¬ (∀ σ ∈ ({σ₀} : Finset FactorizationType), ∃ C ∈ ([] : List (A1Cell 0)), C.σ = σ)`,
+   proved. So the OM-4 FINDING-0 witness genre is dead against the new form.
+3. **Non-vacuity is preserved where it was earned**: `MenuLawAt 2` is still PROVED
+   unconditionally at gate I.23 — but now with a REAL three-cell family (σ-labels
+   `splitType`, `inertType`, `ramType` at `r = 0`), not the empty list. The old witness was
+   cheap precisely because the clause was empty; the new one exhibits the enumeration.
+
+**What the re-sign does NOT close (disclosed, unchanged):** the WEIGHT-correctness tie
+(`A1Cell.coeff` + the count laws, §3 rows HYP.23/32/35) stays OPEN-MATH and outside the
+carrier — I.03's own ⚠ SIGNATURE NOTE is untouched and still governs. The re-sign kills the
+vacuity, not the disclosed gap. **I.13's COND resolution is correspondingly upgraded**: what
+`COND:A1_n` resolves to today is the menu clause **plus the label enumeration**, still not the
+weight tie.
+
+---
+
+### I-D5 — I.03's `∀ C ∈ F`: the intended membership, adjudicated and signed
+
+**Verdict: the intended membership is LIST membership on `A1Cell r`, and the `@id` spelling is
+signed as the blueprint form (not merely a stub-side repair).** H.93 lands
+`def A1Family (r : ℕ) : Type := List (A1Cell r)` — a plain `def`, so `Membership` instance
+search does not see through it and the committed `∀ C ∈ F` fails to elaborate (cascading into
+`cannot resolve field 'σ'`). A type ascription does not cure it (ascription is transparent).
+The signed spelling is `∀ C ∈ @id (List (Induction.A1Cell r)) F, …`, which is TYPE-IDENTICAL
+(the two types are definitionally equal) and elaborates.
+
+**Root-cure option left open for the fleet** (either is acceptable, neither is required by this
+amendment): make H.93's `A1Family` an `abbrev`, or land a
+`Membership (A1Cell r) (A1Family r)` instance. **If the root cure lands, this amendment's
+`@id` spelling reverts to the plain `∀ C ∈ F` with no other change** — the statement is the
+same either way, which is why this defect is an elaboration repair and not a strength event.
 
 <!-- SENTINEL: BP-I END OF FILE -->
 

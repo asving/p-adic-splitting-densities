@@ -364,21 +364,41 @@ def DecidedSliceAt (n : ℕ) : Prop :=
 /-! ### NODE I.03 [def] — `A1_n`, the exact-core-menu law at degree `n` (HYP.26, at ledger
 strength; COND:A1_n's resolution, I.13). Lands `Uniformity.Density.MenuLawAt`. ENV-I1.
 
-Defect **I-D5** (`@id` repair on the `A1Family` membership) and defect **I-D9** (the
-`(A1)`-admissibility clause is VACUOUS — machine-checked in the gate below) both live here. -/
+**RE-SIGNED AT AMENDMENT A-I.1 (2026-08-16)** — defects I-D5 (the `@id` membership repair, now
+the signed spelling) and I-D9 (the one-directional shape clause was PROVABLY VACUOUS; the
+signed clause is the two-directional ENUMERATION the node's own STATEMENT always said —
+*"whose cells' σ-labels enumerate `S`"*). The pre-A-I.1 form and its vacuity proof are
+preserved verbatim below as `MenuLawAtVoided` (named-and-voided: no consumer may cite it). -/
 
 /-- `A1_n` (Display A; ledger HYP.26; COND:A1_n's resolution — I.13): a q-independent
-`(A1)`-admissible family list carrying a covering menu at degree `n`. The shape clause uses
-chapter H's landed `A1Family`/`A1Cell` (H.93, with W-12 r4's σ-label field).
+`(A1)`-admissible family list whose σ-labels ENUMERATE a covering menu at degree `n`. The shape
+clause uses chapter H's landed `A1Family`/`A1Cell` (H.93, with W-12 r4's σ-label field).
 
-⚠ SIGNATURE NOTE (blueprint's own): the exact-weights clause of HYP.26 is carried by the
-`A1Cell.coeff` field plus the count laws (C.114/H §7) — this carrier states menu + shape +
-labels, and the WEIGHT-correctness tie stays OPEN-MATH (§3 rows HYP.23/32/35).
-⚠ DEFECT I-D9, ADDED AT THE 0e GATE: the shape clause is ONE-DIRECTIONAL, so `r = 0, F = []`
-satisfies it for every `S` and the `A1Family` existential is VACUOUS. The gate below proves it.
-⚠ DEFECT I-D5: `∀ C ∈ F` is spelled `∀ C ∈ @id (List (Induction.A1Cell r)) F` because
-`Induction.A1Family` is a plain `def` and instance search will not unfold it. Type-identical. -/
+⚠ SIGNATURE NOTE (blueprint's own, UNCHANGED by A-I.1): the exact-weights clause of HYP.26 is
+carried by the `A1Cell.coeff` field plus the count laws (C.114/H §7) — this carrier states menu
++ shape + labels, and the WEIGHT-correctness tie stays OPEN-MATH (§3 rows HYP.23/32/35).
+⚠ A-I.1 (I-D9): the second conjunct (`∀ σ ∈ S, ∃ C ∈ F, C.σ = σ`) is the half that was missing.
+Without it `r = 0, F = []` satisfies the shape clause for EVERY `S` and the `A1Family`
+existential is vacuous — proved in the gate below against `MenuLawAtVoided`, and the empty
+family is proved NOT to satisfy the re-signed clause at a nonempty menu.
+⚠ A-I.1 (I-D5): `∀ C ∈ F` is spelled `∀ C ∈ @id (List (Induction.A1Cell r)) F` because
+`Induction.A1Family` is a plain `def` and instance search will not unfold it. Type-identical;
+reverts to the plain spelling if H.93 lands an `abbrev` or a `Membership` instance. -/
 def MenuLawAt (n : ℕ) : Prop :=
+  ∃ (r : ℕ) (F : Induction.A1Family r) (S : Finset FactorizationType),
+    (∀ C ∈ @id (List (Induction.A1Cell r)) F, C.σ ∈ S) ∧
+    (∀ σ ∈ S, ∃ C ∈ @id (List (Induction.A1Cell r)) F, C.σ = σ) ∧
+    (∀ σ ∈ S, σ.degree = n) ∧
+    ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+      [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
+      CoveringMenu O n S
+
+/-- **NAMED-AND-VOIDED (A-I.1, defect I-D9): I.03's pre-amendment form**, kept so its machine
+refutation survives verbatim (the `OM4Shadow.*` pattern). The shape clause here is the
+one-directional one; the gate below proves this `Prop` is EQUAL to its bare menu clause, i.e.
+the `A1Family` existential carries nothing. **No consumer, gate or census row may cite this
+name**; it exists to be refuted. -/
+def MenuLawAtVoided (n : ℕ) : Prop :=
   ∃ (r : ℕ) (F : Induction.A1Family r) (S : Finset FactorizationType),
     (∀ C ∈ @id (List (Induction.A1Cell r)) F, C.σ ∈ S) ∧ (∀ σ ∈ S, σ.degree = n) ∧
     ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
@@ -596,11 +616,12 @@ example : Prop :=
 example : Prop := ∀ (K : Type) [Field K] (s : Weld.CarrySite K), Weld.GenhnBox2 s
 example : Prop := ∀ (K ι : Type) [Field K] (Rh RG : ι → K), Weld.W1Transport Rh RG
 
--- (7) **DEFECT I-D9, machine-PROVED: I.03's `(A1)`-admissibility clause is VACUOUS.** The shape
--- clause is one-directional, so `r = 0, F = []` satisfies it for every `S`, and `MenuLawAt` is
--- EQUAL to its bare menu clause. This is the OM-4 FINDING-0 genre and is NOT what I.03's own ⚠
--- SIGNATURE NOTE discloses.
-example (n : ℕ) : MenuLawAt n ↔
+-- (7) **DEFECT I-D9, machine-PROVED, PRESERVED VERBATIM AGAINST THE VOIDED NAME.** The
+-- pre-A-I.1 shape clause is one-directional, so `r = 0, F = []` satisfies it for every `S`, and
+-- `MenuLawAtVoided` is EQUAL to its bare menu clause. This is the OM-4 FINDING-0 genre and is
+-- NOT what I.03's ⚠ SIGNATURE NOTE disclosed. (Statement and proof are the 0e gate's, with the
+-- carrier name re-pointed at the voided copy — that is the whole diff.)
+example (n : ℕ) : MenuLawAtVoided n ↔
     ∃ S : Finset FactorizationType, (∀ σ ∈ S, σ.degree = n) ∧
       ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
         [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
@@ -610,6 +631,22 @@ example (n : ℕ) : MenuLawAt n ↔
     exact ⟨S, hdeg, hmenu⟩
   · rintro ⟨S, hdeg, hmenu⟩
     exact ⟨0, ([] : List (Induction.A1Cell 0)), S, by intro C hC; simp at hC, hdeg, hmenu⟩
+
+-- (7a) **A-I.1's CERTIFICATION of the I-D9 re-sign (the A-E.2 standard: the witness that killed
+-- the old form must FAIL against the new one).** The empty family does not satisfy the
+-- re-signed enumeration clause at any nonempty menu — so the vacuity witness genre is dead.
+example (σ₀ : FactorizationType) :
+    ¬ (∀ σ ∈ ({σ₀} : Finset FactorizationType),
+        ∃ C ∈ @id (List (Induction.A1Cell 0)) ([] : Induction.A1Family 0), C.σ = σ) := by
+  intro h
+  obtain ⟨C, hC, _⟩ := h σ₀ (Finset.mem_singleton_self σ₀)
+  simp at hC
+
+-- (7b) the re-signed carrier still IMPLIES the old one (nothing was traded away): A-I.1
+-- STRENGTHENED I.03, it did not respell it.
+example (n : ℕ) (h : MenuLawAt n) : MenuLawAtVoided n := by
+  obtain ⟨r, F, S, hsub, _, hdeg, hmenu⟩ := h
+  exact ⟨r, F, S, hsub, hdeg, hmenu⟩
 
 -- (8) I.07's partially-typed census leg: C.93 clause (i), the `n = D_r·μ_r ≥ 2^{r+1}` threshold
 -- the whole HYP.82 census rests on, is LANDED and reachable.
@@ -889,14 +926,37 @@ example : DecidedSliceAt 2 := by
   obtain ⟨h1, h2⟩ := hlaw O
   exact ⟨h1, by rw [← genuineDensity_eq_decidedDensity_two]; exact h2⟩
 
--- NON-VACUITY of the `a1` field at `n = 2`: `MenuLawAt 2` is PROVED from `coveringMenu_two`.
--- ⚠ READ WITH DEFECT I-D9: the `A1Family` component of this witness is the EMPTY list, which is
--- exactly why the witness is cheap — the shape clause carries no content. The menu clause is
--- what is really certified here.
+-- NON-VACUITY of the `a1` field at `n = 2`: `MenuLawAt 2` is PROVED from `coveringMenu_two`,
+-- **at A-I.1's re-signed (enumerating) carrier** — so the witness now has to EXHIBIT a family
+-- whose σ-labels run over the whole menu, which the 0e gate's empty-list witness could not.
+-- ⚠ WHAT THIS DOES AND DOES NOT CERTIFY: the three cells carry the σ-labels and nothing else
+-- (r = 0, so the locus/exponent/coefficient data is trivial). The label ENUMERATION is
+-- certified; the WEIGHT-correctness tie (I.03's ⚠ SIGNATURE NOTE, §3 rows HYP.23/32/35) is
+-- still not in the carrier and is not certified by anything here.
+private def a1LabelCell (σ : FactorizationType) : Induction.A1Cell 0 where
+  offset := fun i => i.elim0
+  stride := fun i => i.elim0
+  stride_pos := fun i => i.elim0
+  expCoeff := fun i => i.elim0
+  expCoeff_pos := fun i => i.elim0
+  expConst := 0
+  visCoeff := fun i => i.elim0
+  visConst := 0
+  coeff := 1
+  σ := σ
+
 example : MenuLawAt 2 := by
-  refine ⟨0, ([] : List (Induction.A1Cell 0)), {splitType, inertType, ramType}, ?_, ?_, ?_⟩
+  refine ⟨0, [a1LabelCell splitType, a1LabelCell inertType, a1LabelCell ramType],
+    {splitType, inertType, ramType}, ?_, ?_, ?_, ?_⟩
   · intro C hC
-    simp at hC
+    simp only [id_eq, List.mem_cons, List.not_mem_nil, or_false] at hC
+    rcases hC with h | h | h <;> subst h <;> simp [a1LabelCell]
+  · intro σ hσ
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hσ
+    rcases hσ with h | h | h <;> subst h
+    · exact ⟨a1LabelCell splitType, by simp, rfl⟩
+    · exact ⟨a1LabelCell inertType, by simp, rfl⟩
+    · exact ⟨a1LabelCell ramType, by simp, rfl⟩
   · intro σ hσ
     simp only [Finset.mem_insert, Finset.mem_singleton] at hσ
     rcases hσ with h | h | h <;> subst h
