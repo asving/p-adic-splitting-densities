@@ -2840,6 +2840,24 @@ theorem. Clause-by-clause transcription fidelity was source-verified at A-F.9 (I
 route (a future fresh proof retires the cite): the obstruction record's "missing mechanism"
 display — the general-key vertex split, `B-BOX-1`-tier own design.
 
+*[A-3 disposition, 2026-08-16 — **CAVEAT: the cite line is one citation short; `hφ : IsKey φ` is
+WIDER than [GN15] Thm 2.3's `φ`-hypothesis.** `IsKey φ ⟺ φ ∈ KP(µ₀)` is exact and verbatim
+([GN15] §1.1: *"`KP(µ₀)` is the set of all monic polynomials `g ∈ O[x]` such that `ḡ` is
+irreducible in `F[x]`"*), but Thm 2.3's second standing hypothesis `φ ≁_µ φ_r` reads
+`φ ≁_{µ₀} x` at `r = 0` (§1.4: *"Take `π₀ = π₁ = π`, `Φ₀ = φ₀ = γ₀ = x`"*) and therefore
+excludes `{x + a : a ∈ m}` — i.e. `φ = x`, THIS NODE'S COMMONEST INSTANCE (`f̄ = x̄^μ`:
+Eisenstein `f`, the totally-ramified branch, the landed `m = ℓ = 1` instance B.44). The
+mathematics is sound and the STATEMENT is unchanged: the excluded sub-case is covered by the same
+theorem in intrinsic form, **[FGMN] Thm 6.6** (arXiv:1305.0775v3 numbering; hypothesis "`φ` a
+**proper** key polynomial", and every Gauss key is proper — [FGMN] Def 5.10 *"Note that
+`KP(µ₀)_str = KP(µ₀)`"*, `KP_str ⊂ KP_pr`; independently `e₀ = m₀ = 1`), at the same
+arbitrary-discrete-valued-field scope. **Owner action at gate (b): sign [FGMN] Thm 6.6 as
+co-primary alongside [GN15] Thm 2.3; do not sign [GN15] Thm 2.3 alone as covering `∀ φ, IsKey φ`.**
+Full quotes, the two properness legs and the residual-field check (Cor 1.12(5)'s two branches
+coincide at `r = 0`) are in `blueprint/CHAP-I_capstone_conditionality.md`, 2026-08-16 addendum,
+clause-mapping bullet "STANDING HYPOTHESIS ON `φ`". FGMN print numbers not yet verified (predicted
+Thm 6.6 → 6.5, Def 5.10 → 5.9 by the audit's uniform `−1` §§5–6 drift).]*
+
 **SIZE.** n/a (cite import; the leanspec stub is the signable artifact). *[repaired: A-F.10 —
 the former `SPLIT MANDATED → 4` (`B42a`–`B42d.lean`) is retired with the route; the `B42a.lean`
 name is re-purposed by NODE B.42a below.]*

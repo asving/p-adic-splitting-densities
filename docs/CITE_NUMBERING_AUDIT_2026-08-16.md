@@ -98,6 +98,18 @@ the standing hypothesis **`φ ∈ KP(µ)` with `φ ≁_µ φ_r`**, which CHAP-I'
 At the claimed instantiation (MacLane chain length `r = 0`) this excludes the key `φ ∼ x`. Whether
 CHAP-B's `IsKey φ` implies it is a mathematical question, not a citation question — but the quote
 should not silently drop a hypothesis of the theorem it quotes.
+**[A-3 disposition, 2026-08-16 — ANSWERED, and the answer is NO.]** `IsKey φ ⟺ φ ∈ KP(µ₀)` is
+exact and verbatim, but `IsKey` does **not** imply `φ ≁_{µ₀} φ₀ = x`: the excluded class is
+`{x + a : a ∈ m}` (nonempty; `φ = x` is the import's commonest instance). The mathematics is
+nevertheless sound at COVERS-ALL-O scope, on a second cite the entry did not carry — **[FGMN]
+Thm 6.6** (arXiv v3), the intrinsic form of the same theorem, whose `φ`-hypothesis is "**proper**
+key polynomial", satisfied by every `φ ∈ KP(µ₀)` ([FGMN] Def 5.10: *"Note that
+`KP(µ₀)_str = KP(µ₀)`"*, with `KP_str ⊂ KP_pr`; independently `e₀ = m₀ = 1`). **Signature
+consequence: [FGMN] Thm 6.6 must be signed co-primary with [GN15] Thm 2.3.** Full quotes and the
+two properness legs: `blueprint/CHAP-I_capstone_conditionality.md`, 2026-08-16 addendum, bullet
+"STANDING HYPOTHESIS ON `φ`" (mirrored at CHAP-B NODE B.42). New numbering residual added there:
+[FGMN] Thm 6.6 / Def 5.10 print numbers unverified (predicted Thm 6.5 / Def 5.9 by §4's uniform
+`−1` drift).
 
 **Secondary display GMN Thm 1.15 — VERIFIED against print.** The AMS serves the complete printed
 article free at `ams.org/journals/tran/2012-364-01/S0002-9947-2011-05442-5/`. Printed header:

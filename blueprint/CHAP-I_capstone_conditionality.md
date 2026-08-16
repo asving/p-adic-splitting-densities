@@ -1430,7 +1430,12 @@ theorem exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (h
   `g = g₀ · φ^{ord_φ(g)} · ∏_{(λ,ψ)} g_{λ,ψ}`, where `−λ` runs on the slopes of `N⁻(g)` and `ψ`
   runs on the prime factors of `R_λ(g)` … `deg g₀ = deg g − ℓ(N⁻(g))·deg φ`,
   `deg g_{λ,ψ} = e_λ·ord_ψ(R_λ(g))·deg ψ·deg φ`"* — instantiated at MacLane chain length
-  `r = 0` (the Gauss valuation; `φ` = an order-1 key). **Secondary displays:** GMN Thm 1.15
+  `r = 0` (the Gauss valuation; `φ` = an order-1 key). *[A-3 disposition, 2026-08-16 — **this
+  source line is one citation short**: the standing hypothesis `φ ≁_µ φ_r` reads `φ ≁_{µ₀} x` at
+  `r = 0` and so excludes the keys with `φ̄ = x̄`; add **[FGMN] Thm 6.6** (arXiv:1305.0775v3 —
+  same display, hypothesis "proper key polynomial", satisfied by every `φ ∈ KP(µ₀)`) as a
+  CO-PRIMARY covering the full `IsKey` range. See the "STANDING HYPOTHESIS ON `φ`" bullet below.]*
+  **Secondary displays:** GMN Thm 1.15
   (`docs/GMN_citations.md` §1: *"`f_φ = F_1 … F_g` factors in `O[x]` with `N_φ(F_i)` one-sided
   of slope `λ_i` and `R_{λ_i}(F_i) ∼ R_{λ_i}(f)`"* — the per-slope grouping and clauses 3/6
   transcribed here, at ℚ_p scope); [AGNPRW] Thm 4.4 (arbitrary valued field — NS-1's verbatim
@@ -1448,6 +1453,94 @@ theorem exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (h
   ↔ `R_{λ_i}(F_i) ∼ R_{λ_i}(f)` (GMN Thm 1.15 verbatim; generally from `R(gh) = R(g)R(h)` with
   the co-factors' `R` constant at `λ_i`). `∼` = equality up to a unit of
   `resField φ = F_φ`, matching the `∃ c : (resField φ)ˣ` form.
+* **Clause mapping, the STANDING HYPOTHESIS ON `φ`** — `hφ : IsKey φ` ↔ `φ ∈ KP(µ)`, `φ ≁_µ φ_r`
+  at `r = 0` *(added [A-3 disposition, 2026-08-16]; this bullet REPLACES the audit's omission flag,
+  caveat (1) last sentence. Sources read directly: arXiv:1309.4340v2 = [GN15], and
+  `docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt` = [FGMN] arXiv v3. **MIXED VERDICT —
+  half of the hypothesis is an exact match, half is NOT implied and needs a second cite; read the
+  fourth paragraph before signing.**)*
+  * **(i) `IsKey φ ⟺ φ ∈ KP(µ₀)` — EXACT, verbatim, both directions.** [GN15] §1.1 (after Def 1.1):
+    *"A key polynomial for `µ` is a monic polynomial `φ ∈ K[x]` which is `µ`-minimal and
+    `µ`-irreducible. We denote by `KP(µ)` the set of all key polynomials for `µ`. For instance,
+    `KP(µ₀)` is the set of all monic polynomials `g ∈ O[x]` such that `[ḡ]` is irreducible in
+    `F[x]`."* (The overline on the second `g` is dropped by PDF text extraction in **both** this
+    source and the identical [FGMN] §1.2 sentence; the reading is forced — "irreducible in `F[x]`"
+    is a statement about the reduction. Non-textual leg: `g` itself lies in `O[x]`, where
+    irreducibility over `F[x]` is not even typed.) This is `IsKey` clause-for-clause —
+    `monic : φ.Monic` ↔ "monic", `irred : Irreducible (φ.map (IsLocalRing.residue O))` ↔ "`ḡ`
+    irreducible in `F[x]`", and `pos : 0 < φ.natDegree` is *implied* by the source side (an
+    irreducible in `F[x]` has degree `≥ 1`, and monicity gives `deg φ̄ = deg φ`), so it adds no
+    strength and loses none: the two predicates have the same extension. Independent corroboration
+    at the same `r`: [FGMN] Lemma 5.3 (arXiv v3) read at `r = 0` (`m₀ = 1`, `φ₀ = x`) — its two
+    branches, *"deg g = m_r and g ∼_µ φ_r"* and *"s(g) = 0, deg g = s′(g)m_r and R_r(g) is
+    irreducible in F_r[y]"*, have union exactly "`ḡ` irreducible in `F[x]`".
+  * **(ii) `φ ≁_µ φ_r` at `r = 0` is NOT vacuous and is NOT implied by `IsKey` — it excludes
+    `{x + a : a ∈ m}`.** [GN15] §1.4 fixes the `r = 0` slot of the chain data: *"Take
+    `π₀ = π₁ = π`, `Φ₀ = φ₀ = γ₀ = x`"* — so at `r = 0` the hypothesis reads `φ ≁_{µ₀} x`. With
+    `∼_µ` per [GN15] Def 1.1 (*"g, h are µ-equivalent, and we write g ∼_µ h, if H_µ(g) = H_µ(h)"*)
+    and Thm 1.10 at `r = 0` (`∆₀ ≅ F[y]`, `g + P₀⁺ ↦ R₀(g)(y)`, with `R₀(g) = g/π^{µ₀(g)}` per
+    §1.4, i.e. `R₀(φ) = φ̄` for monic `φ`), for monic `φ ∈ O[x]`:
+    `φ ∼_{µ₀} x ⟺ µ₀(φ − x) > 0 ⟺ φ̄ = y in F[y] ⟺ deg φ = 1 and φ ≡ x (mod m)`
+    (for `deg φ ≥ 2` the difference `φ − x` is monic, so `µ₀(φ − x) = 0`). **Hence the source
+    theorem, as literally stated, does not cover the sub-case `φ ∈ {x + a : a ∈ m}` — nonempty,
+    containing `φ = x`, and in fact the import's MOST-USED instance (every `f̄ = φ̄^μ` with
+    `φ̄ = x̄`: Eisenstein `f`, the whole totally-ramified branch, the landed `m = ℓ = 1` instance
+    B.44).** *This one line is a repo-side derivation from the quoted definitions, labelled as
+    such — not a source quote.*
+  * **(iii) The excluded sub-case is covered by the SAME theorem in its intrinsic form, at the same
+    (COVERS-ALL-O) scope — so there is NO mathematical gap.** [GN15] §2 opens *"All results in this
+    section are extracted from [3]"* ([3] = [FGMN]). The FGMN original is **Thm 6.6** (arXiv v3):
+    *"Let `µ` be an inductive valuation and let `φ` be a **proper** key polynomial for `µ`. Then,
+    every monic polynomial `g ∈ O_v[x]` factorizes into a product of monic polynomials in
+    `O_v[x]`: `g = g₀ φ^{ord_φ(g)} ∏_{(λ,L)} g_{λ,L}` … `deg g₀ = deg g − ℓ(N⁻_{µ,φ}(g)) deg φ`,
+    `deg g_{λ,L} = e_λ ord_L(R_{µ_λ}(g)) deg L deg φ`. Moreover, if `ord_L(R_{µ_λ}(g)) = 1`, then
+    `g_{λ,L}` is irreducible in `O_v[x]`."* — identical display and identical degree laws to the
+    [GN15] Thm 2.3 quoted above (`Max(∆(µ_λ)) ∋ L ↔ ψ ∈ F_{r+1}[y]` with `deg L = deg ψ` by [FGMN]
+    Def 6.5), with **"proper"** in place of **"`φ ≁_µ φ_r`"**. And at `r = 0` EVERY key is proper,
+    on two independent legs: [FGMN] Def 5.10 — *"We say that `φ` is a proper key polynomial for `µ`
+    if `deg φ` is a multiple of `e_r(µ)m_r(µ)`. … We say that `φ` is a strong key polynomial for
+    `µ` if `r = 0` or `deg φ > m_r(µ)`. … By Lemma 5.3, `KP(µ)_str ⊂ KP(µ)_pr ⊂ KP(µ)`. …
+    **Note that `KP(µ₀)_str = KP(µ₀)`.**"* — leg (a) is that quoted final sentence plus the quoted
+    inclusion `str ⊂ pr`; leg (b) is direct arithmetic, `e₀ = m₀ = 1` ([GN15] §1.4: *"Take
+    `e₀ = m₀ = 1` and `ν₀ = λ₀ = h₀ = w₀ = V₀ = 0`"*), so "multiple of `e₀m₀ = 1`" holds for any
+    degree. [GN15]'s own Def 2.4 says the same thing in its own voice: *"a key polynomial `φ` for
+    an inductive valuation `µ` of depth `r` is strong if **either `r = 0`** or `deg φ > m_r(µ)`"*.
+    Scope is not narrowed by the swap: [FGMN]'s standing setting is *"Let `K` be a field equipped
+    with a discrete valuation `v`"* (abstract/§1) — the same arbitrary discrete valued field as
+    [GN15], hence COVERS-ALL-O and ENV-C in both characteristics.
+  * **(iv) Structural corroboration that `r = 0` really is the exempt slot.** (a) [GN15]'s own
+    chain definition imposes the `≁` condition only from the first augmentation onward: *"A chain
+    of augmented valuations as in (1.1) is called a MacLane chain of length `r` of `µ` if
+    `φ_{i+1} ≁_{µ_i} φ_i` for all **`1 ≤ i < r`**"* — the `i = 0` slot (`φ₀ = x`) is deliberately
+    exempt, so appending `(φ, λ)` to `µ₀` is a MacLane chain of length 1 for *every*
+    `φ ∈ KP(µ₀)`; and the theory carries the `φ̄ = x` case rather than excluding it (§1.4: *"For
+    `i = 0` we have `z₀ = 0` (and `ψ₀ = y`) if and only if `φ̄₁ = x` in `F[x]`"*). (b) The
+    theorem's residue-field display stays correct in the excluded case: since `R₀(φ) = φ̄`, when
+    `φ̄ = y` the two branches of [GN15] Cor 1.12(5) (*"`R(φ) = R_r(φ)(y_r) ∆` if `φ ≁_µ φ_r`, and
+    `R(φ) = y_r ∆` otherwise"*) **coincide**, and `F_{r+1} = F_r[y]/(R_r(φ)) = F[y]/(y) = F = F_φ`
+    — agreeing with [FGMN] Cor 5.5 (*"take `ψ = R_r(φ)`, if `φ ≁_µ φ_r`, and `ψ = y`, if
+    `φ ∼_µ φ_r` … `F_φ ≃ F_r[y]/(ψ)` and `f(φ) = f₀⋯f_{r−1} deg ψ`"*), which gives `f(φ) = 1` for
+    `φ = x` — correct. (c) Mixed-characteristic-only corroboration: GMN Thm 1.15 (printed TAMS,
+    verified at A-3) imposes **no** hypothesis on `φ` beyond monic with irreducible reduction, so
+    it covers `φ = x` outright — but its standing setting is *"We fix a finite extension `K` of
+    `ℚ_p` as a base field"* (`docs/references/HigherNewton.tex` §1.1), so it does **not** reach
+    ENV-C's equal-characteristic case. **[FGMN] Thm 6.6 is therefore the load-bearing leg, not
+    GMN.**
+  * **(v) CONSEQUENCE FOR THE SIGNATURE — one line, owner's call, no Lean statement change.** The
+    import's `∀ φ, IsKey φ` range is *sound* but is **not** covered by "[GN15] Thm 2.3" alone.
+    Sign the cite as **[FGMN] Thm 6.6 (proper key polynomials; every Gauss key is proper) for the
+    whole `IsKey` range, with [GN15] Thm 2.3 as the chain-relative restatement covering
+    `φ ≁_{µ₀} x`** — i.e. add the FGMN properness leg to the primary source line above. Do NOT
+    sign [GN15] Thm 2.3 as if it covered `∀ φ, IsKey φ`. *No change to
+    `LeanspecB.exists_slope_factorization` is required or implied — the statement is faithful; only
+    the source line is short one citation.* **Numbering caveat, owed (same class as this file's
+    other FGMN rows):** [FGMN]'s published (J. Algebra) numbers drift uniformly by `−1` across
+    §§5–6 per `docs/CITE_NUMBERING_AUDIT_2026-08-16.md` §4 (Lemma 5.3 → 5.2, Cor 5.4 → 5.3,
+    Prop 5.7 → 5.6, Thm 5.8 → 5.7, Thm 6.3 → 6.2, Cor 6.4 → 6.3), so print is **PREDICTED**
+    Def 5.10 → **Def 5.9** and Thm 6.6 → **Thm 6.5** — *predicted, NOT verified* (arXiv 1305.0775
+    has only v1–v3, none carrying the published numbering; confirmed against the arXiv abs page
+    this session). Confirm both numbers against the Elsevier PDF — the same two-minute check §7 of
+    the numbering audit already lists as the FGMN residual — before signature.
 * **Known caveats, disclosed.** (1) ~~**Numbering verification owed (the HYP.17 class,
   extended):**~~ **DONE — [verified: A-3, 2026-08-16]** (`docs/CITE_NUMBERING_AUDIT_2026-08-16.md`).
   [GN15] Thm 2.3: **VERIFIED** — volume/pages from the publisher (AMS CONM 637 ToC: 207–241;
@@ -1461,9 +1554,15 @@ theorem exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (h
   **Secondary displays DRIFTED, do not sign the numbers as written:** [AGNPRW] Thm 4.4 →
   **Thm 4.10**, Thm 4.6 → **Thm 4.15**, Cor 2.9 → **Cor 2.17** (published = Found. Comput. Math.
   **25 (2025), no. 2, 631–681**; the repo's numbers are arXiv-v1 numbers and arXiv was never
-  updated); [FGMN] Thm 2.8 → **Thm 2.8** (stable). One non-numbering observation for the math
+  updated); [FGMN] Thm 2.8 → **Thm 2.8** (stable). ~~One non-numbering observation for the math
   owner: the source Thm 2.3 carries the hypothesis **`φ ∈ KP(µ)` with `φ ≁_µ φ_r`**, which the
-  display quoted above omits. (2)
+  display quoted above omits.~~ **DISPOSED — [A-3 disposition, 2026-08-16]**, in the
+  "STANDING HYPOTHESIS ON `φ`" clause-mapping bullet above. Verdict in one line: `IsKey φ ⟺ φ ∈
+  KP(µ₀)` is EXACT, but `φ ≁_{µ₀} φ₀ = x` is **NOT** implied by `IsKey` — it excludes
+  `{x + a : a ∈ m}` (`φ = x` itself, the import's commonest instance) — so the range is faithful
+  mathematics but needs a SECOND cite: **[FGMN] Thm 6.6** ("proper" key polynomial; every Gauss key
+  is proper, `KP(µ₀)_str = KP(µ₀)`, `e₀ = m₀ = 1`), same arbitrary-discrete-valued-field scope. Do
+  not sign [GN15] Thm 2.3 alone as covering `∀ φ, IsKey φ`. No Lean statement change implied. (2)
   **Clause 6 is the one clause of the import never refutation-tested** (clauses 1–5 survived
   two machine-refutation waves, A-F.6/A-F.9, and were then source-verified clause-by-clause at
   A-F.9 (II)–(III)); it sits inside the digit-read transcription's verified faithful scope
