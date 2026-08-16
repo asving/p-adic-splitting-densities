@@ -51,11 +51,15 @@
   P4m3: j*=2 pin=None theta=11 att=False pair-or-triple=True dict={}
   P4m4: j*=3 pin=None theta=11 att=False pair-or-triple=True dict={}
   P4m5: j*=4 pin=None theta=11 att=False pair-or-triple=False dict={}
+  -- STUBGAP: D' = 3, f2 = 2 (pair in-grid; merged triple + P*c0-cross census, unit-DEPENDENT) --
+  D3m3: j*=2 pin=9 theta=9 att=True pair-or-triple=True dict={(0, 0): (875, 3)}
+  D3m7: j*=6 pin=9 theta=9 att=True pair-or-triple=True dict={(0, 0): (9625, 3)}
+  D3r13: j*=2 pin=12 theta=9 att=False pair-or-triple=True dict={(0, 0): (28561, 4)}
   -- PROBE: f2 = 3, D' = 2 (x-ful c0; inside the stub's hypotheses, outside the certified law) --
   P32m3: j*=2 pin=10 theta=10 att=True pair-or-triple=True dict={(0, 0): (40625, 5), (0, 2): (75, 2), (1, 1): (-625, 4)}
   P32m4: j*=3 pin=10 theta=10 att=True pair-or-triple=True dict={(0, 0): (118750, 5), (0, 1): (625, 4), (0, 2): (150, 2), (1, 0): (-9375, 5), (1, 1): (-1750, 3)}
 
-CHECKS: 624, VIOLATIONS: 0
-TALLY: {'BS2-ANCH': 8, 'DUAL': 58, 'BS2-STUBJ': 47, 'BS2-FLOOR': 249, 'BS2-DICT': 47, 'BS2-HT': 124, 'BS2-LAW': 53, 'BS2-SWAP': 1, 'BS2-TAUG': 18, 'BS2-TAUR': 6, 'TEETH': 6, 'BS2-STUBGAP': 6, 'PROBE': 1}
+CHECKS: 656, VIOLATIONS: 0
+TALLY: {'BS2-ANCH': 8, 'DUAL': 61, 'BS2-STUBJ': 47, 'BS2-FLOOR': 262, 'BS2-DICT': 47, 'BS2-HT': 124, 'BS2-LAW': 53, 'BS2-SWAP': 1, 'BS2-TAUG': 18, 'BS2-TAUR': 12, 'TEETH': 6, 'BS2-STUBGAP': 16, 'PROBE': 1}
 KILLS: {'T-BS2-QUAD': 1, 'T-BS2-WDEPTH': 1, 'T-BS2-MIX': 1, 'T-BS2-SIGN': 1, 'T-BS2-OMEGA': 1, 'T-BS2-TAU': 1}
 VERDICT: GREEN

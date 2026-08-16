@@ -68,8 +68,14 @@ CHECKS (all hard unless marked MEASURED):
              f1 = 1, mu2 >= 3) yet its top coordinate is EMPTY (no wrap
              seed climbs 1 Y-power per 4 x-powers into the top band):
              TouchCert FALSE while p !| binom says attain, at mu2 = 3, 4.
-             The stub's promotion path REQUIRES the narrowing F.e1 = 2
-             (and T.f2 = 2 -- see the P32 probe).
+             SECOND AXIS: at D' = 3 (PHI' = x^3 - p, c0 = c0h*p^2*x^2,
+             PARI (3,2)) the census is the SINGLE merged digit
+             (b3*c2h^2 + mu2(mu2-1)*c0h)*c2h*p^(3v2) -- unit-DEPENDENT;
+             at p = 13, mu2 = 3, c0h = 2 it dies (1 + 12 = 13; residual
+             disc -7 == 6 a non-QR mod 13, valid key) while
+             pair-or-triple says attain.  The stub's promotion path
+             REQUIRES the narrowing F.e1 = 2 (and T.f2 = 2 -- see the
+             P32 probe).
   PROBE      (MEASURED ONLY) the f2 = 3, D' = 2 frame P32 (x-ful c0 =
              c0h p^4 x, the slotIdx(3u2) = 1 slice): inside the stub's
              hypotheses, outside the certified law; the seed calculus
@@ -223,15 +229,21 @@ def sweep_tau(fr):
         chk('BS2-TAUG',
             ee * vp(gv, fr.p) + fr.w(*slot) >= th + 1,
             '%s slot %s below Theta+1: %s' % (fr.name, slot, gv))
-    # the refined first-kappa1-order (0,0) display: remainder at
-    # height >= Theta + 2
+    # the refined (0,0) display is EXACT (the kappa1-correction at the
+    # top coordinate is completely enumerable: only the kappa1-triple's
+    # (0,0) deposit -kappa1*b3*c2h^3*p^(3v2); pair and quad admit no
+    # kappa1-decoration in the top band)
     refined = (binom(fr.mu2, 4) * fr.c2h ** 4 * fr.p ** (4 * fr.v2)
                if fr.mu2 >= 4 else 0) \
         - fr.tau * binom(fr.mu2, 3) * fr.c2h ** 3 * fr.p ** (3 * fr.v2)
-    diff = got.get((0, 0), 0) - refined
-    chk('BS2-TAUR', diff == 0 or ee * vp(diff, fr.p) >= th + 2,
-        '%s refined (0,0): got %s refined %s diff %s'
-        % (fr.name, got.get((0, 0), 0), refined, diff))
+    chk('BS2-TAUR', got.get((0, 0), 0) == refined,
+        '%s refined (0,0) EXACT: got %s refined %s'
+        % (fr.name, got.get((0, 0), 0), refined))
+    rest = {k: v for k, v in got.items() if k != (0, 0)}
+    wantf = {k: v for k, v in predicted_top(fr).items() if k != (0, 0)}
+    chk('BS2-TAUR', rest == wantf,
+        '%s refined dict (non-(0,0) slots) EXACT: got %s want %s'
+        % (fr.name, rest, wantf))
     att = (fr.pin(sh[js]) == th)
     chk('BS2-LAW', att == law_want(fr),
         '%s LAW B-S2 (tau key): att %s want %s'
@@ -416,6 +428,66 @@ def main():
             chk('BS2-STUBGAP', law_want(fr) and got == {} and not att,
                 'P4m%d refutation row: law_want %s dict %s'
                 % (mu2, law_want(fr), got))
+
+    # ---- the D' = 3 stub-gap frames (second refutation axis) -------------
+    # At D' = 3 the pair diagonal is IN-GRID (x^2 < x^3): no pair seed.
+    # The mechanism's census: the top coordinate is the SINGLE slot (0,0)
+    # with the MERGED digit (b3*c2h^2 + mu2(mu2-1)*c0h)*c2h*p^(3v2) --
+    # the triple diagonal plus the P*c0 cross-diagonal (c0 carries x^2:
+    # slotIdx(2u2) = 2), both at wrap depth 1.  This law is UNIT-DEPENDENT
+    # (c0h enters the digit) -- pair-or-triple is unit-independent, so a
+    # c0h making the merged digit die refutes the stub as stated:
+    # mu2 = 3, p = 5, c0h = 4: 1 + 6*4 = 25 == 0 mod 25.
+    # (Run-2 finding, kept: at p = 5, mu2 = 3 the digit-death congruence
+    # c2h^2 + 6c0h == 0 COINCIDES mod 5 with the residual-degeneracy
+    # disc = c2h^2 - 4c0h == 0, so hpsi-irr rescues the stub there --
+    # c0h in {4, -1} give PARI (6,1), invalid keys.  At p = 13 the two
+    # congruences separate: c0h = 2 kills the digit (1 + 12 = 13) with
+    # disc = -7 == 6 a non-QR mod 13 -- a VALID key.)
+    print('  -- STUBGAP: D\' = 3, f2 = 2 (pair in-grid; merged'
+          ' triple + P*c0-cross census, unit-DEPENDENT) --')
+    jobs, d3frames = [], []
+    for nm, p, mu2, c0h in (('D3m3', 5, 3, 1), ('D3m7', 5, 7, 1),
+                            ('D3r13', 13, 3, 2)):
+        PHI1 = [-p, 0, 0, 1]
+        PHI2 = padd(padd(pmul(PHI1, PHI1), pmul([0, p], PHI1)),
+                    [0, 0, c0h * p ** 2])
+        d3frames.append((nm, p, mu2, c0h, PHI1, PHI2))
+        jobs.append((PHI2, p, nm))
+    sigs = gp_sig_batch(jobs)
+    for nm, p, mu2, c0h, PHI1, PHI2 in d3frames:
+        chk('BS2-STUBGAP', sigs[nm] == ((3, 2),),
+            '%s key PARI (e,f): %s' % (nm, sigs[nm]))
+        fr = mkframe(nm, p, PHI1, 1, 3, 1, 2, mu2, 4, PHI2)
+        # stub hypothesis arithmetic: slotIdx(u2) = slotIdx(4): 1*h = 1
+        # == 4 mod e1 = 3 OK; e2(f2-t*) = 1; hfloor 3 < 4.
+        chk('BS2-STUBGAP', 4 % 3 == 1 and 3 < 4,
+            '%s stub hypothesis arithmetic' % nm)
+        f = ppow(fr.PHI2, mu2)
+        sh = fr.dual_shadow(f, fr.name)
+        js = top_j(fr, 1)
+        for j in range(mu2):
+            pn = fr.pin(sh[j])
+            chk('BS2-FLOOR', pn is None or pn >= fr.theta(j),
+                '%s floor at j=%d: pin %s < theta %d'
+                % (fr.name, j, pn, fr.theta(j)))
+        got = fr.slotdict(sh[js])
+        merged = (binom(mu2, 3) + mu2 * (mu2 - 1) * c0h) * p ** 3
+        want = {(0, 0): merged} if merged else {}
+        chk('BS2-STUBGAP', got == want,
+            '%s D3 census dict: got %s want %s' % (nm, got, want))
+        pn = fr.pin(sh[js])
+        att = (pn == fr.theta(js))
+        print('  %s: j*=%d pin=%s theta=%d att=%s pair-or-triple=%s '
+              'dict=%s'
+              % (fr.name, js, pn, fr.theta(js), att, law_want(fr),
+                 {k: (v, vp(v, p)) for k, v in sorted(got.items())}))
+        if nm == 'D3r13':
+            # the refutation row: pair-or-triple TRUE via b2 = 3
+            # (13 !| 3); merged digit (1 + 6*2)*13^3 = 13^4 dies
+            chk('BS2-STUBGAP', law_want(fr) and not att,
+                '%s refutation row: law_want %s att %s'
+                % (nm, law_want(fr), att))
 
     # ---- the f2 = 3 probe (MEASURED ONLY) --------------------------------
     print('  -- PROBE: f2 = 3, D\' = 2 (x-ful c0; inside the stub\'s'
