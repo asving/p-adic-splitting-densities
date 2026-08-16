@@ -4562,6 +4562,122 @@ axiom inf_eq_of_attained {ι : Type*} {s : Finset ι} {g : ι → ℕ∞} {M : �
 
 end AC5SlotHeights
 
+/-! # A-C.5 — THE C.109 SPLIT: the five layers under the cell law
+
+NODE C.109 (`ht_node_cell_card`) is an EXACT COUNT whose proof is five independent steps;
+the A-C.2 re-sign fixed its statement and the A-C.3 append recorded that the split "should
+expose the fiber decomposition as its own layer — that is the step that fails".  A-C.5 signs
+the five layers as nodes C.109-i … C.109-v, leaving C.109 itself byte-unchanged as their
+ASSEMBLY.  Nothing here weakens C.109: each layer is a statement C.109's proof must produce
+anyway, now with its own signature, DAG row and teeth.
+
+Certification leg, run BEFORE signing (`verification/c109_ac5_sweep_check.py`, 124 checks,
+exit 0): the sweep layer C.109-v at the A-C.2 shared-vertex instance I6 and at the NEW
+instances I7 (a degree-1 and a degree-2 side sharing a vertex, with an interior lattice
+point), I8 (four sides, three interior shared vertices) and I3 (an off-hull position), at
+q = 2 and q = 3; cross-checked against the FULL cell count (`cell = Q^B × sweep`); four
+teeth, two of which are BLIND at q = 2 and recorded as such.
+
+**A finding of that leg, which changed a signature before it was signed (`[DICT]`):** the
+naive dictionary `sideSet Φ f u ℓ = v.nodeSideSet u ℓ` is FALSE on the re-signed cell.  A
+priced digit at a NON-VERTEX on-side lattice point may VANISH — the same char-2 mechanism
+A-C.2's defect D3 turned on — and then that abscissa does not attain the support minimum.
+Witness (machine-found): `Φ = X`, `f = X² + 4` over `ℤ/2⁵` at `Pceil = (2,1,0)`, side
+`(1,1)`, residual `(Y+1)²` of type `(1²)`: `sideSet = {0,2}` while `nodeSideSet = {0,1,2}`.
+C.109-iv is therefore signed with CONTAINMENT plus equality of the two ENDPOINTS (which the
+vertex clause does pin), equality of the residual degree, and the left-endpoint height —
+which is exactly what the residual read `resPoly … (sideMin …) H₀` consumes. -/
+
+section AC5Split
+
+/-- **C.109-i** — class-invariance of the cell under window-visibility.  `EFF.W12.23`'s
+"Every pinned or priced slot sits at height ≤ P(0) ≤ N−1: in-window, no truncation error",
+as the statement that makes C.109's left-hand side a count OF CLASSES: two lifts with the
+same level-`N` class are both in the cell or both out of it. -/
+axiom htCell_class_invariant (hπ : Irreducible π)
+    {Φ : Polynomial O} (hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
+    (v : HTNode) (hwf : v.WF) (N : ℕ) (hvis : ∀ j, j ≤ v.m → v.Pceil j < N)
+    {a b : Fin (v.m * Φ.natDegree) → O}
+    (hab : proj O (v.m * Φ.natDegree) N a = proj O (v.m * Φ.natDegree) N b) :
+    monicPoly a ∈ htCell π Φ v ↔ monicPoly b ∈ htCell π Φ v
+
+/-- **C.109-ii** — the block slot count.  Through C.109a's development bridge the box splits
+componentwise, and B.08's `le_gaussVal_iff` turns each block's height floor into
+divisibility of every coefficient by `π^{P j}`: block `j` keeps `N − P j` digits, so the
+box keeps `Σ_j (N − P j)` of them.  (`hP` is C.109's `hvis` restricted to `j < m`; with it
+the ℕ-subtraction is the honest one and `Σ_j (N − P j) = mN − Σ_j P j`.) -/
+axiom ht_box_slot_card (hπ : Irreducible π) [Finite (ResidueField O)]
+    {Φ : Polynomial O} (hΦ : IsKey Φ) [Finite (resField Φ)]
+    (m N : ℕ) (P : ℕ → ℕ) (hP : ∀ j, j < m → P j < N) :
+    Nat.card {c : Coeff O (m * Φ.natDegree) N //
+        ∃ a : Fin (m * Φ.natDegree) → O, proj O (m * Φ.natDegree) N a = c ∧
+          ∀ j, j < m → ((P j : ℕ) : ℕ∞) ≤ npHgt Φ (monicPoly a) j}
+      = Nat.card (resField Φ) ^ (∑ j ∈ Finset.range m, (N - P j))
+
+/-- **C.109-iii** — the priced-digit fibre at `resField Φ`.  On one block already floored at
+height `h`, prescribing the digit AT height `h` — B.25's `resMk`, the corpus's
+`digit_{P(j)}(a_j) ∈ F_{q^d}` under the class map `b ↦ b mod P̄` — has fibres of size
+`Q^{N−h−1}`, UNIFORMLY in the prescribed value `r` (including `r = 0`).  Uniformity is the
+content: it is what makes "each of the `L` integral boundary positions prices ONE digit"
+a division by `Q` and not an inequality.  Summing over `r` returns C.109-ii's `Q^{N−h}`. -/
+axiom ht_priced_digit_fibre (hπ : Irreducible π) [Finite (ResidueField O)]
+    {Φ : Polynomial O} (hΦ : IsKey Φ) [Finite (resField Φ)]
+    (h N : ℕ) (hh : h < N) (r : resField Φ) :
+    Nat.card {c : Coeff O Φ.natDegree N //
+        ∃ A : Polynomial O, A.natDegree < Φ.natDegree ∧
+          proj O Φ.natDegree N (fun i => A.coeff i) = c ∧
+          ((h : ℕ) : ℕ∞) ≤ gaussVal A ∧ resMk π Φ h A = r}
+      = Nat.card (resField Φ) ^ (N - h - 1)
+
+/-- **C.109-iv** — the node/polygon side dictionary under `WF`.  For a cell member, the
+node's combinatorial side data (`nodeSideSet`/`nodeSideDeg`, A-C.2's ℚ-free chord tests, as
+re-signed and used by A-C.3) CONTROLS the polynomial's own polygon reads (B.16/B.20's
+`sideSet`/`sideMin`/`sideDeg`) — which is what licenses reading the residual polynomial of
+`f` against the node's prescribed type.  **Containment, not equality**: see the `[DICT]`
+witness in the section header.  The ENDPOINTS do agree, because the cell pins the height at
+vertices, and the endpoints are all the residual read needs. -/
+axiom ht_side_dictionary (hπ : Irreducible π)
+    {Φ : Polynomial O} (hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
+    (v : HTNode) (hwf : v.WF) {N : ℕ} (hvis : ∀ j, j ≤ v.m → v.Pceil j < N)
+    {f : Polynomial O} (hf : f ∈ htCell π Φ v) {u ℓ : ℕ} (hs : (u, ℓ) ∈ v.sides)
+    (hne : (sideSet Φ f u ℓ).Nonempty) :
+    sideSet Φ f u ℓ ⊆ v.nodeSideSet u ℓ ∧
+      (sideSet Φ f u ℓ).min = (v.nodeSideSet u ℓ).min ∧
+      (sideSet Φ f u ℓ).max = (v.nodeSideSet u ℓ).max ∧
+      sideDeg Φ f u ℓ hne = v.nodeSideDeg u ℓ ∧
+      npHgt Φ f (sideMin Φ f u ℓ hne)
+        = ((v.Pceil (sideMin Φ f u ℓ hne) : ℕ) : ℕ∞)
+
+/-- **C.109-v** — the right-to-left sweep and the census product (`EFF.W12.24`, verbatim:
+"The sweep spends exactly the `L` priced slots, whence `S_T(q^d) = Π_S S_{λ_S}(q^d)` — no
+extra unit factors").  The priced digits are a function `r` supported on the `L` on-hull
+positions below `m` together with the monic top `r m = 1`; the vertex digits are nonzero;
+each side's residual polynomial has its prescribed type.  The count of such `r` is the bare
+product of the side censuses.  This is the ONLY layer with a genuinely combinatorial
+content, and it is the one A-C.5 certified numerically before signing
+(`verification/c109_ac5_sweep_check.py`).
+
+Two clauses are load-bearing and have teeth: the vertex-nonvanishing clause is NOT implied
+by the type conditions (a residual can have a zero constant term and still have type `λ`
+whenever `λ` contains a linear factor — T-SWEEP-VERTEX), and the off-hull positions must
+NOT be priced (they belong to C.109-ii's digit count — T-SWEEP-HULL). -/
+axiom ht_sweep_census {K : Type*} [CommRing K] [IsDomain K]
+    [UniqueFactorizationMonoid K] [Finite K] (v : HTNode) (hwf : v.WF) :
+    Nat.card {r : ℕ → K //
+        (∀ j, r j ≠ 0 → j ≤ v.m) ∧
+        (∀ j, j < v.m → ¬ v.OnHull j → r j = 0) ∧
+        r v.m = 1 ∧
+        (∀ j, j ≤ v.m → v.IsVertex j → r j ≠ 0) ∧
+        (∀ u ℓ : ℕ, (u, ℓ) ∈ v.sides →
+          residualTypeOf (∑ k ∈ Finset.range (v.nodeSideDeg u ℓ + 1),
+              Polynomial.C (r ((v.nodeSideSet u ℓ).min.getD 0 + ℓ * k)) * Polynomial.X ^ k)
+            = v.sideType u ℓ)}
+      = ∏ p ∈ v.sides, sideCensus K (v.sideType p.1 p.2)
+
+end AC5Split
+
 end LeanspecC
 
 /-

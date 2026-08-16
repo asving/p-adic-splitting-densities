@@ -1,0 +1,131 @@
+==============================================================================
+A-C.5 certification: NODE C.109-v (the right-to-left sweep + census
+product), with the C.109-iv dictionary shape and four teeth
+==============================================================================
+[PASS] WF ceiled-consistency I6 q=2
+[PASS] WF sides = the genuine sides I6 q=2  (lean=[(1, 1), (2, 1)] typed=[(1, 1), (2, 1)])
+[PASS] WF/ENC sides agree with the direct hull I6 q=2
+[PASS] WF side-type degree law at (2, 1) I6 q=2
+[PASS] WF side-type degree law at (1, 1) I6 q=2
+[PASS] I6 q=2: L = 2
+[PASS] I6 q=2: one INTERIOR shared vertex
+[PASS] SWEEP I6 q=2 (two sides, shared vertex)  (assignments=1 prod_S S_lambda=1)
+[PASS] WF ceiled-consistency I7 q=2 lam=((1, 2),)
+[PASS] WF sides = the genuine sides I7 q=2 lam=((1, 2),)  (lean=[(1, 1), (3, 1)] typed=[(1, 1), (3, 1)])
+[PASS] WF/ENC sides agree with the direct hull I7 q=2 lam=((1, 2),)
+[PASS] WF side-type degree law at (3, 1) I7 q=2 lam=((1, 2),)
+[PASS] WF side-type degree law at (1, 1) I7 q=2 lam=((1, 2),)
+[PASS] I7 q=2: L = 3 (j = 0,1,2 on hull)
+[PASS] I7 q=2: j = 2 is on the hull but NOT a vertex
+[PASS] I7 q=2: one INTERIOR shared vertex (j = 1)
+[PASS] SWEEP I7 q=2 (deg-1 + deg-2, shared vertex, lam=((1, 2),))  (assignments=1 prod_S S_lambda=1)
+[PASS] WF ceiled-consistency I7 q=2 lam=((1, 1), (1, 1))
+[PASS] WF sides = the genuine sides I7 q=2 lam=((1, 1), (1, 1))  (lean=[(1, 1), (3, 1)] typed=[(1, 1), (3, 1)])
+[PASS] WF/ENC sides agree with the direct hull I7 q=2 lam=((1, 1), (1, 1))
+[PASS] WF side-type degree law at (3, 1) I7 q=2 lam=((1, 1), (1, 1))
+[PASS] WF side-type degree law at (1, 1) I7 q=2 lam=((1, 1), (1, 1))
+[PASS] I7 q=2: L = 3 (j = 0,1,2 on hull)
+[PASS] I7 q=2: j = 2 is on the hull but NOT a vertex
+[PASS] I7 q=2: one INTERIOR shared vertex (j = 1)
+[PASS] SWEEP I7 q=2 (deg-1 + deg-2, shared vertex, lam=((1, 1), (1, 1)))  (assignments=0 prod_S S_lambda=0)
+[PASS] WF ceiled-consistency I7 q=2 lam=((2, 1),)
+[PASS] WF sides = the genuine sides I7 q=2 lam=((2, 1),)  (lean=[(1, 1), (3, 1)] typed=[(1, 1), (3, 1)])
+[PASS] WF/ENC sides agree with the direct hull I7 q=2 lam=((2, 1),)
+[PASS] WF side-type degree law at (3, 1) I7 q=2 lam=((2, 1),)
+[PASS] WF side-type degree law at (1, 1) I7 q=2 lam=((2, 1),)
+[PASS] I7 q=2: L = 3 (j = 0,1,2 on hull)
+[PASS] I7 q=2: j = 2 is on the hull but NOT a vertex
+[PASS] I7 q=2: one INTERIOR shared vertex (j = 1)
+[PASS] SWEEP I7 q=2 (deg-1 + deg-2, shared vertex, lam=((2, 1),))  (assignments=1 prod_S S_lambda=1)
+[PASS] WF ceiled-consistency I8 q=2
+[PASS] WF sides = the genuine sides I8 q=2  (lean=[(0, 1), (1, 1), (2, 1), (4, 1)] typed=[(0, 1), (1, 1), (2, 1), (4, 1)])
+[PASS] WF/ENC sides agree with the direct hull I8 q=2
+[PASS] WF side-type degree law at (4, 1) I8 q=2
+[PASS] WF side-type degree law at (2, 1) I8 q=2
+[PASS] WF side-type degree law at (1, 1) I8 q=2
+[PASS] WF side-type degree law at (0, 1) I8 q=2
+[PASS] I8 q=2: L = 4
+[PASS] I8 q=2: THREE interior shared vertices
+[PASS] SWEEP I8 q=2 (four sides, three shared vertices)  (assignments=1 prod_S S_lambda=1)
+[PASS] WF ceiled-consistency I3 q=2
+[PASS] WF sides = the genuine sides I3 q=2  (lean=[(1, 2)] typed=[(1, 2)])
+[PASS] WF/ENC sides agree with the direct hull I3 q=2
+[PASS] WF side-type degree law at (1, 2) I3 q=2
+[PASS] I3 q=2: L = 1 (j = 1 is OFF the hull)
+[PASS] SWEEP I3 q=2 (ell = 2 side, an off-hull position)  (assignments=1 prod_S S_lambda=1)
+[PASS] T-SWEEP-UNIT q=2 I6: mutant is BLIND at Q = 2 (recorded)  (mutant=1 true=1)
+[PASS] T-SWEEP-UNIT q=2 I8: mutant is BLIND at Q = 2 (recorded)  (mutant=1 true=1)
+[PASS] T-SWEEP-VERTEX q=2 I6: vertex-nonvanishing is LOAD-BEARING  (mutant=2 true=1)
+[PASS] T-SWEEP-VERTEX q=2 I8: vertex-nonvanishing is LOAD-BEARING  (mutant=2 true=1)
+[PASS] T-SWEEP-TOP q=2 I6: mutant is BLIND at Q = 2 (recorded)  (mutant=1 true=1)
+[PASS] T-SWEEP-TOP q=2 I7: mutant is BLIND at Q = 2 (recorded)  (mutant=1 true=1)
+[PASS] T-SWEEP-HULL q=2 I3: off-hull positions are NOT priced  (mutant=2 true=1)
+[PASS] WF ceiled-consistency I6 q=3
+[PASS] WF sides = the genuine sides I6 q=3  (lean=[(1, 1), (2, 1)] typed=[(1, 1), (2, 1)])
+[PASS] WF/ENC sides agree with the direct hull I6 q=3
+[PASS] WF side-type degree law at (2, 1) I6 q=3
+[PASS] WF side-type degree law at (1, 1) I6 q=3
+[PASS] I6 q=3: L = 2
+[PASS] I6 q=3: one INTERIOR shared vertex
+[PASS] SWEEP I6 q=3 (two sides, shared vertex)  (assignments=4 prod_S S_lambda=4)
+[PASS] WF ceiled-consistency I7 q=3 lam=((1, 2),)
+[PASS] WF sides = the genuine sides I7 q=3 lam=((1, 2),)  (lean=[(1, 1), (3, 1)] typed=[(1, 1), (3, 1)])
+[PASS] WF/ENC sides agree with the direct hull I7 q=3 lam=((1, 2),)
+[PASS] WF side-type degree law at (3, 1) I7 q=3 lam=((1, 2),)
+[PASS] WF side-type degree law at (1, 1) I7 q=3 lam=((1, 2),)
+[PASS] I7 q=3: L = 3 (j = 0,1,2 on hull)
+[PASS] I7 q=3: j = 2 is on the hull but NOT a vertex
+[PASS] I7 q=3: one INTERIOR shared vertex (j = 1)
+[PASS] SWEEP I7 q=3 (deg-1 + deg-2, shared vertex, lam=((1, 2),))  (assignments=4 prod_S S_lambda=4)
+[PASS] WF ceiled-consistency I7 q=3 lam=((1, 1), (1, 1))
+[PASS] WF sides = the genuine sides I7 q=3 lam=((1, 1), (1, 1))  (lean=[(1, 1), (3, 1)] typed=[(1, 1), (3, 1)])
+[PASS] WF/ENC sides agree with the direct hull I7 q=3 lam=((1, 1), (1, 1))
+[PASS] WF side-type degree law at (3, 1) I7 q=3 lam=((1, 1), (1, 1))
+[PASS] WF side-type degree law at (1, 1) I7 q=3 lam=((1, 1), (1, 1))
+[PASS] I7 q=3: L = 3 (j = 0,1,2 on hull)
+[PASS] I7 q=3: j = 2 is on the hull but NOT a vertex
+[PASS] I7 q=3: one INTERIOR shared vertex (j = 1)
+[PASS] SWEEP I7 q=3 (deg-1 + deg-2, shared vertex, lam=((1, 1), (1, 1)))  (assignments=2 prod_S S_lambda=2)
+[PASS] WF ceiled-consistency I7 q=3 lam=((2, 1),)
+[PASS] WF sides = the genuine sides I7 q=3 lam=((2, 1),)  (lean=[(1, 1), (3, 1)] typed=[(1, 1), (3, 1)])
+[PASS] WF/ENC sides agree with the direct hull I7 q=3 lam=((2, 1),)
+[PASS] WF side-type degree law at (3, 1) I7 q=3 lam=((2, 1),)
+[PASS] WF side-type degree law at (1, 1) I7 q=3 lam=((2, 1),)
+[PASS] I7 q=3: L = 3 (j = 0,1,2 on hull)
+[PASS] I7 q=3: j = 2 is on the hull but NOT a vertex
+[PASS] I7 q=3: one INTERIOR shared vertex (j = 1)
+[PASS] SWEEP I7 q=3 (deg-1 + deg-2, shared vertex, lam=((2, 1),))  (assignments=6 prod_S S_lambda=6)
+[PASS] WF ceiled-consistency I8 q=3
+[PASS] WF sides = the genuine sides I8 q=3  (lean=[(0, 1), (1, 1), (2, 1), (4, 1)] typed=[(0, 1), (1, 1), (2, 1), (4, 1)])
+[PASS] WF/ENC sides agree with the direct hull I8 q=3
+[PASS] WF side-type degree law at (4, 1) I8 q=3
+[PASS] WF side-type degree law at (2, 1) I8 q=3
+[PASS] WF side-type degree law at (1, 1) I8 q=3
+[PASS] WF side-type degree law at (0, 1) I8 q=3
+[PASS] I8 q=3: L = 4
+[PASS] I8 q=3: THREE interior shared vertices
+[PASS] SWEEP I8 q=3 (four sides, three shared vertices)  (assignments=16 prod_S S_lambda=16)
+[PASS] WF ceiled-consistency I3 q=3
+[PASS] WF sides = the genuine sides I3 q=3  (lean=[(1, 2)] typed=[(1, 2)])
+[PASS] WF/ENC sides agree with the direct hull I3 q=3
+[PASS] WF side-type degree law at (1, 2) I3 q=3
+[PASS] I3 q=3: L = 1 (j = 1 is OFF the hull)
+[PASS] SWEEP I3 q=3 (ell = 2 side, an off-hull position)  (assignments=2 prod_S S_lambda=2)
+[PASS] T-SWEEP-UNIT q=3 I6: the per-vertex unit factor is KILLED  (mutant=8 true=4)
+[PASS] T-SWEEP-UNIT q=3 I8: the per-vertex unit factor is KILLED  (mutant=128 true=16)
+[PASS] T-SWEEP-VERTEX q=3 I6: vertex-nonvanishing is LOAD-BEARING  (mutant=6 true=4)
+[PASS] T-SWEEP-VERTEX q=3 I8: vertex-nonvanishing is LOAD-BEARING  (mutant=24 true=16)
+[PASS] T-SWEEP-TOP q=3 I6: the monic top is LOAD-BEARING  (mutant=8 true=4)
+[PASS] T-SWEEP-TOP q=3 I7: the monic top is LOAD-BEARING  (mutant=12 true=6)
+[PASS] T-SWEEP-HULL q=3 I3: off-hull positions are NOT priced  (mutant=6 true=2)
+[PASS] XCELL I6 q=2 N=5: cell = Q^B * (sweep count)  (cell=16 Q^4=16 sweep=1)
+[PASS] XCELL I6 q=3 N=5: cell = Q^B * (sweep count)  (cell=324 Q^4=81 sweep=4)
+[PASS] XCELL I7 q=2 N=6 (NEW): cell = Q^B * (sweep count)  (cell=128 Q^7=128 sweep=1)
+[PASS] DICT: a cell member with sideSet STRICTLY inside nodeSideSet exists (so C.109-iv must be signed with containment, not equality)  (witness f=[4, 0, 1] sideSet=[0, 2] nodeSideSet=[0, 1, 2])
+[PASS] DICT: containment holds at the witness
+[PASS] DICT: the two ENDPOINTS agree at the witness
+[PASS] DICT: the residual degree agrees at the witness
+[PASS] DICT: the left-endpoint height is Pceil at the witness
+==============================================================================
+CHECKS: 124, FAILURES: 0
+RESULT: ALL CHECKS PASS

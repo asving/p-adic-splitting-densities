@@ -804,3 +804,31 @@ BP.C.127	BP.C.129	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	sourc
 BP.C.128	BP.C.129	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.128 DEPENDS — added A-C.5 (2026-08-16): the Lean transcription shares C.127's slot-height bottleneck
 BP.C.13	BP.C.22	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.13 DEPENDS — added A-C.5 (2026-08-16): clause 5's residue read is C.22's twistRead (the source's ϖ-read), the C.47 refutation's repair site
 BP.C.13	EFF.HE6.15	stmt-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.13 SOURCE — added A-C.5 (2026-08-16): the [r2] sign correction (ϖ-read = n(k)-read × η^{−q}) is what makes clause 5's read adjudicable
+BP.C.109	BP.C.109-i	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109 DEPENDS — added A-C.5 (2026-08-16): the SPLIT, layer (i) class-invariance
+BP.C.109	BP.C.109-ii	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109 DEPENDS — added A-C.5 (2026-08-16): the SPLIT, layer (ii) block slot count
+BP.C.109	BP.C.109-iii	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109 DEPENDS — added A-C.5 (2026-08-16): the SPLIT, layer (iii) the priced-digit fibre
+BP.C.109	BP.C.109-iv	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109 DEPENDS — added A-C.5 (2026-08-16): the SPLIT, layer (iv) the side dictionary
+BP.C.109	BP.C.109-v	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109 DEPENDS — added A-C.5 (2026-08-16): the SPLIT, layer (v) the sweep + census product
+BP.C.109-i	EFF.W12.s1of2.23	stmt-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-i SOURCE — NEW node per A-C.5 (2026-08-16): the in-window/no-truncation sentence; contiguous EFF.W12.23 (merged 2026-08-14)
+BP.C.109-i	BP.C.108	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-i DEPENDS (A-C.5)
+BP.C.109-i	BP.B.02	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-i DEPENDS (A-C.5)
+BP.C.109-i	BP.B.11	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-i DEPENDS (A-C.5)
+BP.C.109-i	BP.B.24	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-i DEPENDS (A-C.5): the digit congruences under the k < N guard
+BP.C.109-ii	EFF.W12.s1of2.24	stmt-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-ii SOURCE — NEW node per A-C.5 (2026-08-16): slot j contributes N − ceil(P(j)) free digits; contiguous EFF.W12.24 (merged 2026-08-14)
+BP.C.109-ii	BP.C.109a	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-ii DEPENDS (A-C.5): the development bridge
+BP.C.109-ii	BP.B.08	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-ii DEPENDS (A-C.5): le_gaussVal_iff
+BP.C.109-ii	BP.B.11	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-ii DEPENDS (A-C.5)
+BP.C.109-ii	BP.C.107	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-ii DEPENDS (A-C.5): Q = card resField
+BP.C.109-iii	EFF.W12.s1of2.23	stmt-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-iii SOURCE — NEW node per A-C.5 (2026-08-16): the three slot regimes, incl. the possibly-zero on-side residual coefficient
+BP.C.109-iii	BP.B.08	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-iii DEPENDS (A-C.5)
+BP.C.109-iii	BP.B.21	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-iii DEPENDS (A-C.5): digAt
+BP.C.109-iii	BP.B.23	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-iii DEPENDS (A-C.5): digPoly
+BP.C.109-iii	BP.B.25	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-iii DEPENDS (A-C.5): resField / resMk, the class-map bijection
+BP.C.109-iv	EFF.W12.s2of2.83	stmt-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-iv SOURCE — NEW node per A-C.5 (2026-08-16): the L_v display, sides OF THE POLYGON; contiguous EFF.W12.83
+BP.C.109-iv	BP.C.108	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-iv DEPENDS (A-C.5): the A-C.2 WF apparatus in A-C.3's forms
+BP.C.109-iv	BP.B.14	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-iv DEPENDS (A-C.5): suppVal
+BP.C.109-iv	BP.B.16	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-iv DEPENDS (A-C.5): OnSide / sideSet
+BP.C.109-iv	BP.B.20	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-iv DEPENDS (A-C.5): sideMin / sideMax / sideDeg
+BP.C.109-v	EFF.W12.s1of2.24	stmt-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-v SOURCE — NEW node per A-C.5 (2026-08-16): the census normalization (sweep right-to-left), no extra unit factors
+BP.C.109-v	BP.C.107	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-v DEPENDS (A-C.5): residualTypeOf / sideCensus
+BP.C.109-v	BP.C.108	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109-v DEPENDS (A-C.5): the WF side apparatus

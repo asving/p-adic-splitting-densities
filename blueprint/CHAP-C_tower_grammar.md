@@ -6993,14 +6993,23 @@ theorem ht_node_cell_card (hπ : Irreducible π)
 **DEPENDS.** C.107 · C.108 (incl. the A-C.2 `WF` apparatus) · **C.109a (the development
 bridge — the refutation record's named cost, now a node)** · B.20 (`sideLen`/`sideDeg` —
 H-10's named ingredient) · B.24 (`digAt`/`digPoly`) · B.28/B.30 (the priced digits) ·
-landed `card_coeff`.
+landed `card_coeff` · **[A-C.5] C.109-i · C.109-ii · C.109-iii · C.109-iv · C.109-v (the
+five layers this node now ASSEMBLES — see the A-C.5 amendment section)**.
 
-**PROOF (route).** through C.109a's bridge to the block boxes; then the slot count + the
-priced-digit count, per side right-to-left (`EFF.W12.24`'s sweep: the rightmost side's
-monic top is the polynomial's leading `1`; each side's census fixes its left-vertex unit
-for the next side — no extra unit factor).
+**PROOF (route).** **[A-C.5: the route is now five signed layers, and C.109 is their
+assembly — the statement is byte-unchanged.]** C.109-i makes the left-hand side a count of
+CLASSES (window-visibility, no truncation error); C.109-ii counts the digit slots the
+polygon's floors leave, through C.109a's bridge to the block boxes and B.08's
+`le_gaussVal_iff` per block; C.109-iii prices one digit per integral boundary position with
+a fibre lemma at `resField Φ` that is UNIFORM in the prescribed residue (which is what makes
+pricing a division by `Q`); C.109-iv is the dictionary that lets the node's combinatorial
+side data control the member's own polygon reads (containment plus endpoint equality — NOT
+set equality, see the A-C.5 record); C.109-v is the right-to-left sweep, whose output is the
+bare census product with no extra unit factor (`EFF.W12.24`). The A-C.3 append's judgement
+that "the C.109 SPLIT should expose the fiber decomposition as its own layer — that is the
+step that fails" is honoured: the fibre IS C.109-iii, standing alone.
 
-**SIZE.** 36 lines (+ C.109a's 40).
+**SIZE.** 36 lines of assembly (+ C.109a's 40; the five layers carry their own sizes).
 
 **SOURCE.** `EFF.W12.84` step 1 (verbatim); **[A-C.2]** `EFF.W12.24` (the count + census
 normalization displays, verbatim — the `L` and sweep laws the re-sign enforces).
@@ -8918,6 +8927,256 @@ A-C.6 (concurrent) the cite REDRAFT unit (C.66/C.92/C.94), which touches disjoin
 **Census effect:** nodes 131 → **137** (+C.109-i, -ii, -iii, -iv, -v, +C.129). No committed
 node is deleted; C.109, C.113(i), C.128 are re-signed in place; C.13's clause 5 is re-signed
 and C.47/C.14's signatures are byte-unchanged.
+
+---
+
+## A-C.5 ITEM 1 — THE C.109 SPLIT: five signed layers under an unchanged assembly
+
+**Why split.** C.109 is an EXACT COUNT and its proof is five independent steps, each of
+which can fail on its own; A-C.2 fixed the STATEMENT but left the proof a single 36-line
+obligation, and A-C.3's append recorded the diagnosis that mattered: *"the queued C.109
+SPLIT (C.109-i..-v) should expose the fiber decomposition as its own layer — that is the
+step that fails."* A-C.5 signs the five layers. **C.109's own signature is byte-unchanged**
+— nothing is weakened, and no layer is a restatement of the goal (each is strictly smaller:
+(i) is about classes, (ii) about heights only, (iii) about ONE block, (iv) about the polygon
+dictionary, (v) about residues only, with no `O` in sight).
+
+**CERTIFICATION, run before signing (`verification/c109_ac5_sweep_check.py`, 124 checks,
+exit 0; output retained as `c109_ac5_sweep_check_output.txt`).** The charter named C.109-v as
+the layer to certify — it is the one with genuinely combinatorial content, and the one the
+corpus itself got wrong once (the archived draft's spurious `(q^d−1)`-per-interior-vertex
+factor, `EFF.W12.24`'s `.02` correction). Certified at the A-C.2 shared-vertex instance
+**I6** (`Pceil = (3,1,0)`: two degree-1 sides sharing the vertex `j = 1`) and at the NEW
+instance **I7** (`Pceil = (5,2,1,0)`: a degree-1 side and a degree-2 side sharing the vertex
+`j = 1`, with an interior lattice point at `j = 2` — the shape where the shared unit is spent
+by a census of degree > 1, which I6 cannot test), both at `q = 2, 3` and all three quadratic
+types; plus **I8** (`Pceil = (7,3,1,0,0)`: four degree-1 sides, THREE interior shared
+vertices — maximal exposure to the spurious factor) and **I3** (`Pceil = (1,1,0)`: a position
+below the top that is NOT on the hull). Cross-checked against the FULL cell count at I6
+(`q = 2, 3`) and I7 (`q = 2, N = 6`): `cell = Q^{B_v(N)} × (sweep count)`, exactly.
+Four teeth: **T-SWEEP-UNIT** (one extra `(Q−1)` per interior shared vertex — the archived
+draft's error), **T-SWEEP-VERTEX** (drop the vertex-nonvanishing clause), **T-SWEEP-TOP**
+(free unit top instead of the monic `1`), **T-SWEEP-HULL** (price the off-hull positions).
+**Recorded honestly:** T-SWEEP-UNIT and T-SWEEP-TOP are BLIND at `q = 2` (both mutate by a
+factor `Q − 1 = 1`); the script asserts the coincidence there rather than skipping it, and
+this is precisely why the law is certified at two primes.
+
+**THE FINDING THAT CHANGED A SIGNATURE BEFORE IT WAS SIGNED (the D5 discipline paying off
+again).** The natural dictionary for C.109-iv is `sideSet Φ f u ℓ = v.nodeSideSet u ℓ`. It is
+**FALSE** on the re-signed cell. A priced digit at a NON-VERTEX on-side lattice point may
+VANISH — the cell only demands `≥ Pceil` there — and then that abscissa does not attain the
+support minimum, so it drops out of the polynomial's own side. Machine-found witness:
+`Φ = X`, `f = X² + 4` over `ℤ/2⁵`, `Pceil = (2,1,0)`, side `(1,1)`, residual `(Y+1)²` of type
+`(1²)`; `sideSet = {0,2}` while `nodeSideSet = {0,1,2}`. This is the same char-2 mechanism as
+A-C.2's defect D3, now biting a *different* statement. C.109-iv is therefore signed with
+CONTAINMENT plus equality of the two ENDPOINTS (pinned by the vertex clause), equality of the
+residual degree, and the left-endpoint height — all four verified at the witness, and all
+four are exactly what the residual read `resPoly … (sideMin …) H₀` consumes.
+
+---
+
+### NODE C.109-i [lemma] [fresh] [signed: A-C.5] — **class-invariance of the cell**
+
+**STATEMENT.** Under window-visibility, membership of `monicPoly a` in `htCell π Φ v`
+depends only on the level-`N` class `proj O (m·d) N a`. This is `EFF.W12.23`'s closing
+sentence — *"Every pinned or priced slot sits at height ≤ P(0) ≤ N−1: in-window, no
+truncation error"* — as a statement, and it is what makes C.109's left-hand side a count OF
+CLASSES rather than of lifts.
+
+```lean
+theorem htCell_class_invariant (hπ : Irreducible π)
+    {Φ : Polynomial O} (hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
+    (v : HTNode) (hwf : v.WF) (N : ℕ) (hvis : ∀ j, j ≤ v.m → v.Pceil j < N)
+    {a b : Fin (v.m * Φ.natDegree) → O}
+    (hab : proj O (v.m * Φ.natDegree) N a = proj O (v.m * Φ.natDegree) N b) :
+    monicPoly a ∈ htCell π Φ v ↔ monicPoly b ∈ htCell π Φ v
+```
+
+**DEPENDS.** C.108 (`htCell`, `HTNode.WF`) · B.02 (`dev`) · B.11 (`npHgt`) · B.24's
+`digPoly_congr`/`digAt_congr` (the `k < N` guard — B.77b's landed congruences are exactly
+this layer's engine) · B.28/B.29 (the residual read at an in-window height).
+
+**PROOF (route).** `dev` is a polynomial in the coefficients, so congruence mod `π^N`
+propagates to every development coefficient; `hvis` puts every pinned height and every
+priced digit strictly below `N`, where B.77b's digit congruences apply; the type clause then
+reads the same residual polynomial on both sides.
+
+**SIZE.** ~45 lines. **SOURCE.** `EFF.W12.23` (the in-window sentence, verbatim).
+**TEETH.** the `hvis`-free statement is FALSE by inspection (take `b` differing from `a` at
+digit `N` when some `Pceil j ≥ N`); the fleet must not drop `hvis`. **ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.109-ii [lemma] [fresh] [signed: A-C.5] — **the block slot count**
+
+**STATEMENT.** Prescribing only the polygon FLOORS leaves `Σ_{j<m}(N − P j)` digit slots:
+the box of level-`N` classes whose block heights clear `P` has cardinality
+`Q^{Σ_{j<m}(N − P j)}`. Through C.109a the box splits componentwise; B.08's
+`le_gaussVal_iff` turns each block's floor into divisibility of every coefficient by
+`π^{P j}`, and each block then keeps `N − P j` of its `N` digits.
+
+```lean
+theorem ht_box_slot_card (hπ : Irreducible π) [Finite (ResidueField O)]
+    {Φ : Polynomial O} (hΦ : IsKey Φ) [Finite (resField Φ)]
+    (m N : ℕ) (P : ℕ → ℕ) (hP : ∀ j, j < m → P j < N) :
+    Nat.card {c : Coeff O (m * Φ.natDegree) N //
+        ∃ a : Fin (m * Φ.natDegree) → O, proj O (m * Φ.natDegree) N a = c ∧
+          ∀ j, j < m → ((P j : ℕ) : ℕ∞) ≤ npHgt Φ (monicPoly a) j}
+      = Nat.card (resField Φ) ^ (∑ j ∈ Finset.range m, (N - P j))
+```
+
+**DEPENDS.** C.109a (the development bridge) · B.08 (`le_gaussVal_iff`) · B.11 (`npHgt`) ·
+landed `card_coeff` · C.107 (`Q = Nat.card (resField Φ)` at the key).
+
+**PROOF (route).** C.109a's equivalence, then `Nat.card` of a product = the product of the
+cards, then per block: the classes killed by `π^{P j}` are `(q^{N−P j})^{deg Φ} = Q^{N−P j}`.
+`hP` keeps the ℕ-subtraction honest, so `Σ_j (N − P j) = mN − Σ_j P j` — the `B_v(N)` of the
+assembly, before the `L` priced digits are removed by C.109-iii.
+
+**SIZE.** ~55 lines. **SOURCE.** `EFF.W12.24` (*"slot `j` contributes `N − ⌈P(j)⌉` free
+digits"*, verbatim); `EFF.W12.23` (the free-module digit-slot display).
+**TEETH.** the A-C.2 battery's `B` column at all 13 instances (the exponent is exactly this
+layer's output, minus `L`). **ENVIRONMENT.** ENV-C1 + `[Finite (ResidueField O)]`.
+
+---
+
+### NODE C.109-iii [lemma] [fresh] [signed: A-C.5] — **the priced-digit fibre at `resField Φ`**
+
+**STATEMENT.** *This is the layer A-C.3's append predicted would be the hard one.* On one
+block already floored at height `h < N`, prescribing the digit AT height `h` — B.25's
+`resMk`, i.e. the corpus's `digit_{P(j)}(a_j) ∈ F_{q^d}` under the class map `b ↦ b mod P̄` —
+cuts the count by exactly `Q`, **uniformly in the prescribed value** `r` (including `r = 0`,
+the possibility `EFF.W12.23`'s on-side clause explicitly allows).
+
+```lean
+theorem ht_priced_digit_fibre (hπ : Irreducible π) [Finite (ResidueField O)]
+    {Φ : Polynomial O} (hΦ : IsKey Φ) [Finite (resField Φ)]
+    (h N : ℕ) (hh : h < N) (r : resField Φ) :
+    Nat.card {c : Coeff O Φ.natDegree N //
+        ∃ A : Polynomial O, A.natDegree < Φ.natDegree ∧
+          proj O Φ.natDegree N (fun i => A.coeff i) = c ∧
+          ((h : ℕ) : ℕ∞) ≤ gaussVal A ∧ resMk π Φ h A = r}
+      = Nat.card (resField Φ) ^ (N - h - 1)
+```
+
+**WHY UNIFORMITY IS THE CONTENT.** "Each integral boundary position prices one digit" is a
+DIVISION by `Q`, not an inequality: the count must be independent of which residue is
+prescribed, or the census product in C.109-v could not factor out. Summing this layer over
+`r ∈ resField Φ` returns C.109-ii's per-block `Q^{N−h}`, which is the coherence check the
+fleet should run first.
+
+**DEPENDS.** B.08 (`le_gaussVal_iff`) · B.21/B.23/B.24 (`digAt`/`digPoly`) · B.25
+(`resField`, `resMk` — the class map is an `F_q`-linear bijection on degree-`< d`
+representatives) · landed `card_coeff`.
+
+**PROOF (route).** The `≥ h` box is `π^h ·` (a full box at level `N − h`); `resMk π Φ h` is
+then the level-0 residual reduction of that box, a surjective `F_q`-linear map onto
+`resField Φ` (B.25's class-map bijection), and all fibres of a surjective group homomorphism
+between finite abelian groups have equal size.
+
+**SIZE.** ~60 lines. **SOURCE.** `EFF.W12.23` (the three slot regimes, verbatim: the
+on-side clause's *"possibly zero; priced jointly by `λ_S`"* is the `r = 0` case this layer
+must cover); `EFF.W12.24` (*"minus one priced digit if `j` is a lattice point"*).
+**TEETH.** an `r`-DEPENDENT mutant (e.g. `Q^{N−h−1}` for `r ≠ 0` and `Q^{N−h}` for `r = 0`)
+already fails the summation coherence check above at every `N > h`.
+**ENVIRONMENT.** ENV-C1 + `[Finite (ResidueField O)]`.
+
+---
+
+### NODE C.109-iv [lemma] [fresh] [signed: A-C.5] — **the node/polygon side dictionary under `WF`**
+
+**STATEMENT.** For a member of the cell, the node's combinatorial side data — A-C.2's ℚ-free
+chord-test encodings `nodeSideSet`/`nodeSideDeg`, in the forms A-C.3 re-signed and builds on
+(commit `26c6b611`) — CONTROLS the member's own polygon reads (B.16/B.20's
+`sideSet`/`sideMin`/`sideDeg`): containment, equality of the two ENDPOINTS, equality of the
+residual degree, and the left-endpoint height `= Pceil`.
+
+```lean
+theorem ht_side_dictionary (hπ : Irreducible π)
+    {Φ : Polynomial O} (hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
+    (v : HTNode) (hwf : v.WF) {N : ℕ} (hvis : ∀ j, j ≤ v.m → v.Pceil j < N)
+    {f : Polynomial O} (hf : f ∈ htCell π Φ v) {u ℓ : ℕ} (hs : (u, ℓ) ∈ v.sides)
+    (hne : (sideSet Φ f u ℓ).Nonempty) :
+    sideSet Φ f u ℓ ⊆ v.nodeSideSet u ℓ ∧
+      (sideSet Φ f u ℓ).min = (v.nodeSideSet u ℓ).min ∧
+      (sideSet Φ f u ℓ).max = (v.nodeSideSet u ℓ).max ∧
+      sideDeg Φ f u ℓ hne = v.nodeSideDeg u ℓ ∧
+      npHgt Φ f (sideMin Φ f u ℓ hne)
+        = ((v.Pceil (sideMin Φ f u ℓ hne) : ℕ) : ℕ∞)
+```
+
+**⚠ CONTAINMENT, NOT EQUALITY — and this is certified, not assumed.** See the amendment's
+finding above: `sideSet = nodeSideSet` is FALSE at `Φ = X`, `f = X² + 4` over `ℤ/2⁵`
+(`sideSet = {0,2}`, `nodeSideSet = {0,1,2}`). Any fleet agent who "strengthens" this clause
+to an equality has re-introduced a refuted statement.
+
+**DEPENDS.** C.108 (the A-C.2 `WF` apparatus + `htCell`, in A-C.3's forms) · B.14/B.16
+(`suppVal`, `OnSide`, `sideSet`) · B.20 (`sideMin`/`sideMax`/`sideDeg`) · B.11 (`npHgt`) ·
+B.13b (`npHgt_top`, the monic-top read).
+
+**PROOF (route).** `WF`'s ceiled-consistency makes `Pceil` its own hull, so the node's
+support minimum is attained exactly on `nodeSideSet`; the cell's `≥ Pceil` clause gives
+`ℓ·npHgt + u·j ≥` the node's support value at every `j ≤ m` (and `= ⊤` above `m`, by the
+degree clause), while the vertex clause gives equality at the two endpoints of the side —
+whence containment, endpoint equality, and the degree.
+
+**SIZE.** ~70 lines. **SOURCE.** `EFF.W12.83` (the `L_v` display: sides are the sides OF THE
+POLYGON) · `EFF.W12.23` (the three-way membership law).
+**TEETH.** `verification/c109_ac5_sweep_check.py` `[DICT]` (the witness above, plus the four
+surviving clauses verified at it). **ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.109-v [lemma] [fresh] [signed: A-C.5] — **the right-to-left sweep and the census product**
+
+**STATEMENT.** `EFF.W12.24`'s census normalization, verbatim: *"The sweep spends exactly the
+`L` priced slots, whence `S_T(q^d) = Π_S S_{λ_S}(q^d)` — no extra unit factors."* The priced
+digits form a function `r` supported on the `L` on-hull positions below `m` together with the
+monic top `r m = 1`; the vertex digits are nonzero; each side's residual polynomial carries
+its prescribed type. The number of such `r` is the bare product of the side censuses.
+
+```lean
+theorem ht_sweep_census {K : Type*} [CommRing K] [IsDomain K]
+    [UniqueFactorizationMonoid K] [Finite K] (v : HTNode) (hwf : v.WF) :
+    Nat.card {r : ℕ → K //
+        (∀ j, r j ≠ 0 → j ≤ v.m) ∧
+        (∀ j, j < v.m → ¬ v.OnHull j → r j = 0) ∧
+        r v.m = 1 ∧
+        (∀ j, j ≤ v.m → v.IsVertex j → r j ≠ 0) ∧
+        (∀ u ℓ : ℕ, (u, ℓ) ∈ v.sides →
+          residualTypeOf (∑ k ∈ Finset.range (v.nodeSideDeg u ℓ + 1),
+              Polynomial.C (r ((v.nodeSideSet u ℓ).min.getD 0 + ℓ * k)) * Polynomial.X ^ k)
+            = v.sideType u ℓ)}
+      = ∏ p ∈ v.sides, sideCensus K (v.sideType p.1 p.2)
+```
+
+**NOTE (the layer is `O`-free).** Everything here happens in `K = resField Φ`; that is why
+the sweep can be certified by pure residue-level enumeration, and why it is the layer whose
+certification the A-C.5 charter demanded.
+
+**⚠ TWO CLAUSES ARE LOAD-BEARING, with teeth.** (a) The vertex-nonvanishing clause is NOT
+implied by the type conditions: a residual with a ZERO constant term can still have type `λ`
+whenever `λ` contains a linear factor (T-SWEEP-VERTEX kills the version without it: at I6
+over `F₃`, 6 assignments instead of 4). (b) The off-hull positions must NOT be priced — they
+belong to C.109-ii's digit count (T-SWEEP-HULL at I3: 6 instead of 2).
+
+**DEPENDS.** C.107 (`residualTypeOf`, `sideCensus`) · C.108 (the `WF` side apparatus).
+
+**PROOF (route).** Induct on the sides from the right. The rightmost side's right endpoint is
+`(m, 0)` with coefficient `1`; choosing its residual as a monic degree-`g_S` polynomial with
+nonzero constant term of type `λ_S` (`S_{λ_S}` ways) fixes all of its priced digits INCLUDING
+its left-vertex value, a unit. Each next side to the left has its right-vertex coefficient
+already fixed to a unit `u`, and its residual is `u·(monic of type λ_S)` — again exactly
+`S_{λ_S}` choices for the remaining digits. No unit is spent twice; that is the whole content.
+
+**SIZE.** ~80 lines. **SOURCE.** `EFF.W12.24` (the sweep paragraph + the two re-derivation
+cross-checks — W-11's 2SIDED row `(q−1)²` NOT `(q−1)³`, and W-10's `(2,1,1)` row).
+**TEETH.** `verification/c109_ac5_sweep_check.py`: I6/I7/I8/I3 at `q = 2, 3`, XCELL against
+the full cell law, and the four mutations (T-SWEEP-UNIT — the archived draft's own error,
+`.02` — T-SWEEP-VERTEX, T-SWEEP-TOP, T-SWEEP-HULL), with the `q = 2` blindness of two of them
+RECORDED. **ENVIRONMENT.** ENV-C1 (pure residue-field combinatorics; no `O`).
 
 ---
 
