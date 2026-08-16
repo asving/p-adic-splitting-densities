@@ -133,24 +133,163 @@ ChapH modules; no D vocabulary is consumed.
 
 ---
 
-## §2. CERTIFICATIONS (script: `verification/om6_window_pinning_check.py`)
+## §2. CERTIFICATIONS (script: `verification/om6_window_pinning_check.py` — 26/26 PASS)
 
-[TO BE FILLED — CERT-1..CERT-5 results with exact counts.]
+**CERT-1 — GENHN-3(c), general congruence bound.** Grid `e₁ ∈ [1,6]`, `h ∈ [1,9]` coprime,
+`N ∈ [1,10]`, all classes, all `m < e₁N` in class: both displayed inequalities hold on all
+**6,325** cells; the occupied form (`m = e₁v + ih < e₁N ⟹ v ≤ N−1`) on **5,017** cells.
+* **ATTACK (occupancy) — LANDS.** `(e₁, h, m) = (3, 2, 1)`: `i(1) = 2` (`1 ≡ 4 mod 3`), all
+  hypotheses hold, but `1 = 3v + 4` has no solution `v ≥ 0` — `m` is an UNOCCUPIED height,
+  so the display's *"— inside the string"* is FALSE as a membership claim. The two
+  INEQUALITIES survive at the attack point (checked `N ∈ [1,10]`). This is the same defect
+  family as `EFF.GENHN.28`'s second conditionality (`a(m) ≥ 0` fails at unoccupied heights,
+  witness `(3,1,2,1)`; post-D2b `D′h < m` scope pin). **Repair adopted:** membership landed
+  only in the occupied form. Finding recorded as **F-OM6.1** in AMENDMENT A-H.3; GENHN's
+  frozen text NOT edited (WZ-BOX-7 discipline).
+* **ATTACK (coprimality) — LANDS.** `(e₁, h) = (4, 2)`: class residues `[0, 2, 0, 2]`
+  collapse — `i(m)` ill-defined without `gcd(h, e₁) = 1` (H.51's hypothesis is load-bearing).
+
+**CERT-2 — GENHN-3(b), raggedness.** **1,540** strings: end `= e₁(N−1) + ih` exactly;
+band count `= min(⌊ih/e₁⌋, N)` exactly; ends pairwise distinct across classes (RAGGED).
+Genre-E specialization reproduces H.46's `raggedBand_card` value `t` on `t ∈ [0,4]`,
+`N ∈ [2t+2, 2t+7]`. Bonus identity: total band over classes `= (e₁−1)(h−1)/2` at
+`gcd = 1`, `N` large (classical reciprocity) — verified `e₁ ∈ [1,7]`, `h ∈ [1,11]`; at
+`e₁ = 2` this is H.46's `t = (h−1)/2`, single class.
+* **ATTACK (clamp) — LANDS.** `(e₁, i, h, N) = (2, 1, 21, 3)`: band card `= N = 3`, not
+  `⌊ih/e₁⌋ = 10` — the `min(·, N)` clamp is real; an unclamped transcription would be false.
+
+**CERT-3 — GENHN-3(a) interior + undercut.** Valuation-layer model (in-window digits fixed,
+out-of-window digits exhaustively completed; `q ∈ {2,3}`; genres `(e₁,h) ∈
+{(1,1),(2,1),(2,3),(3,2)}`, `N ∈ {2,3}`): **1,496** in-window states.
+`dv < e₁N ⟹` constant over ALL completions (stability); `dv ≥ e₁N ⟹` completions
+DISAGREE — the undercut is realized at every such state (instability); no occupied
+in-window value ever ties `e₁N` (no-tie, `gcd = 1`). The residue-tie independence behind
+"in-window slot digits agree across lifts" is GENHN-2's F_Q-independence — CITED
+(`EFF.GENHN.27`), not re-derived; the model certifies the valuation layer only (honest
+scope: this layer is characteristic-blind by construction).
+* **ATTACK (no-tie needs `gcd = 1`) — LANDS.** `(e₁, h) = (2, 2)`: the in-window value
+  `2(N−1) + 1·2 = 2N` TIES the cap — coprimality is load-bearing in `no_tie_at_cap`.
+
+**CERT-4 — the `[r2]`/CAP-GEN band layer.** `comp(m)` regimes exact on `f₁ ∈ [2,4]`,
+`k ∈ [1,3]`, `N ∈ [2,10]` (interior `= f₁`; band `∈ [1, f₁)`; beyond `= 0`); census
+`= q^comp − 1` by exhaustive span enumeration (`q ∈ {2,3}`). Committed instance numbers
+reproduced exactly (`[r2]`(4) / `EFF.GENHN.32` / H.44's audit): `(1,3,2)` at `N = 7`:
+`comp(N) = 2`, `RAM(7) = 3·2¹³ = 24,576`, `UND = 2¹³ = 8,192`, total `2¹⁵ = 32,768`; at
+`N = 8`: interior pin `comp = 3`, `RAM(7) = 7·2¹⁸ = 1,835,008`, `UND = 2¹⁸ = 262,144`,
+total `2²¹ = 2,097,152`; `(1,2,2)` at `k = 1`: band `= {N}` (the GENH4-CAP(F) frame).
+Trichotomy antecedents pairwise disjoint + exhaustive on `[0,60]²`; `capBranch(7,3) =
+2SIDED` with the committed `384 + 128 = 512 = 2⁹` partition.
+* **ATTACK (the r2 defect reproduced) — LANDS.** The RAM clause WITHOUT its side condition
+  `N ≤ 2w` double-fires with (a) (e.g. `(N,w) = (1,0)`) — the ledgered lesson ("re-derive,
+  never transcribe a verifier's phrasing") is confirmed by construction.
+
+**CERT-5 — GENHN-3(d), triangularity, BOTH characteristics.** Char 0: `ℤ/p^M` with carries,
+`p = 2` EXHAUSTIVE at `M = 3, μ = 2` (all `f`, all `s`, all height-`≥ D` perturbations,
+`D ∈ {1,2}`), `p = 3` thinned — new digits at heights `< D` never move. Char `p`:
+`𝔽_q[t]/t^M` (no carries), `q = 2` EXHAUSTIVE at `M = 2, μ = 2`, `q = 3` thinned — same.
+The downward-carry search IS the exhaustive leg: 0 violations.
+* **Tightness — LANDS.** A height-1 old-digit change moves a height-1 new digit
+  (`p = 2, s = 1, f = 1`): "heights ≤ d" cannot be improved to "< d".
 
 ---
 
 ## §3. PER-GAP ANALYSIS AND STATUSES
 
-[TO BE FILLED — per-gap: source quote, certification pointer, proof/refutation, status.]
+**GAP-1 — (c) general congruence bound: PROVED.** The display's two inequalities, verbatim
+scope, general `e₁` (H.51 supplies only the ingredient; H.89 only the `e₁ = 2` shadow):
+`consulted_le_cap` (`m < e₁N ∧ m ≡ ih (mod e₁) ⟹ m ≤ e₁N − e₁ + (ih mod e₁)`) and
+`cap_le_string_end` (`… ≤ e₁(N−1) + ih`), both ℕ-truncation-safe (the A-H.1/D8 lesson:
+`e₁ = 0` and `N = 0` handled inside, no spurious guards). The "inside the string"
+conclusion: **REFUTED unpinned (F-OM6.1)**, PROVED in the occupied form
+(`consulted_inside_string`), refutation machine-checked (`unoccupied_height_witness`).
+
+**GAP-2 — (b) general raggedness: PROVED.** `string_end_le` + `string_end_mem` (the class-i
+string ends at exactly `e₁(N−1) + ih`), `string_ends_ragged` (ends strictly increase across
+classes), `bandCard` (`= min(⌊ih/e₁⌋, N)` — generalizes H.46's `raggedBand_card`, gate-tied
+to its genre-E value `t`). The R4 F-1 rider is honored: nowhere does the transcription say
+"the band is never consulted" as a height-interval claim; the docstrings carry the corrected
+"unread component cells" reading.
+
+**GAP-3 — (a) interior criterion: PROVED at the rider-corrected strength.** The R4 F-1
+TERMINAL wording replaces the frozen "iff `< e₁N`" by "the sufficient interior criterion
+together with GENHN-CAP-GEN's exact boundary criterion". The sufficient direction is landed
+(`out_window_dv_ge` + `interior_min_stable`); the undercut computation is landed as the
+witness pair (`no_tie_at_cap`, coprimality load-bearing + `cap_undercuts`). What this does
+NOT claim: the boundary criterion (CAP-GEN clause 2) — see GAP-4. The residue-independence
+tie-break: REDUCES-TO(H.51 + `EFF.GENHN.27`), consumed as the corpus consumes it.
+
+**GAP-4 — (a) band clause beyond the `(1,2)` frame: split verdict.**
+* The `[r2]` band GEOMETRY and the CAP-GEN census clause: **PROVED** (`compVis` + three
+  regime laws; census through landed H.44 `pinCensus`; the committed `(1,3,2)` instance
+  partitions machine-checked — three independent derivations of the census now agree in
+  Lean as they did in the spec's audit: E2's clause, CAP-GEN COUNT TRANSPORT, CR-3).
+* CAP-GEN's three-clause READER rule (undercut test / dictionary-constancy on the
+  completion set / complete-pin recursion) and the `[r2]` trichotomy transport at
+  `f₁ ≥ 3`: **CERTIFIED-OPEN.** The mathematics is corpus-derived (EFF.GENHN.79, part of
+  the A2 wave, itself awaiting sol discharge-confirmation per its ledger line) and its
+  arithmetic consequences are certified here (CERT-4), but the reader is not formalized —
+  CHAP-H §16 item 3's standing decision, which this unit UPHOLDS rather than overturns:
+  formalizing the reader is a chapter-scale unit, not an appendix. The un-formalized
+  remainder is exactly what `StageInterface.hwin` carries (HYP.36 CARRY).
+
+**GAP-5 — (d) triangularity: PROVED at the update-map core.** `recenter_descends`: the S6
+recentering descends to `R⧸I` for EVERY commutative ring — instantiating `I = (π^{d+1})`
+gives "new digits at heights `≤ d` are a function of old digits at heights `≤ d`", and the
+`∀ R` quantifier IS "both ring types" (stronger than checking two instances).
+`recenter_coeff_hasse`: the coefficient-axis triangularity (GENIND-2(a)'s "binomial update
+matrix is triangular with unit diagonal") via `Polynomial.taylor_coeff`/`hasseDeriv`. The
+chain-iterated reading ("deep histories never consult …") REDUCES-TO the per-step statement
++ GENIND-2(a)'s ghost-zone argument, which is how the display itself argues ("(d) is S6's
+triangularity"); the iteration is not separately transcribed.
 
 ---
 
 ## §4. LANDINGS
 
-[TO BE FILLED — Lean file, amendment, ledger note, commit hashes.]
+* **Lean:** `leanfinal/Uniformity/ChapH/H89w.lean` — 17 declarations (15 in
+  `Uniformity.Density.Induction` + 2 ring-generic), sorry-free; `#print axioms`: every
+  declaration within `{propext, Classical.choice, Quot.sound}` (several smaller;
+  `string_end_mem` axiom-free). Compiled standalone AND registered in the `ChapH.lean`
+  roll-up; full `lake build Uniformity.ChapH.H89w` green (8,569 jobs). Header carries the
+  H09w-style contract: appendix file, not a node; fences quoted.
+* **Script:** `verification/om6_window_pinning_check.py` — 26/26 (§2).
+* **Blueprint:** CHAP-H **AMENDMENT A-H.3** (dated append; registers H89w, records
+  F-OM6.1, restates the four carried fences). CHAP-I **dated addendum** (O-2 DISCHARGED at
+  its named candidate home; I.14's resolution unchanged).
+* **Ledger:** HYP.24 dated **ARC NOTE** (disposition unchanged: CARRY; gap narrowed;
+  pointers to A-H.3, H89w, this note).
+* **Commits (all scoped-add verified):** `2f8f0f5d` skeleton · `69cbef3a` certification
+  leg · `d526fb61` H89w.lean · `da97f23d` roll-up registration · `db0df19c` bookkeeping
+  (A-H.3 + CHAP-I addendum + HYP.24 ARC NOTE) · final: this note completed.
 
 ---
 
 ## §5. LEDGER EFFECT (HYP.24's honest post-unit disposition)
 
-[TO BE FILLED.]
+**HYP.24 stays CARRY.** What changed and what did not, exactly:
+
+* **Discharged before this unit, unchanged:** the pinning half at `e₁ = 2` (H.89, its
+  A-H.1/D8-repaired guards intact); the `(1,2)`-frame band trichotomy (H.88); the quartic
+  census (H.44); the genre-E band (H.46).
+* **Newly transcribed (this unit):** the elementary supplier's OWN clauses at general
+  `e₁` — the (c) bound, (b) raggedness, (a)-interior with undercut/no-tie, the
+  `[r2]`/CAP-GEN band-census arithmetic, (d)'s descent. The supplier-gap sentence of I.14
+  ("consumed by committed H only at the (c) bound (H.51)") is now false in the good
+  direction; O-2 is discharged.
+* **Still carried (why the row cannot move):** (i) the general-genre pinning content as
+  CONSUMED by the count laws is `StageInterface.hwin` — HYP.36 CARRY, no universal
+  discharge exists (obstructed for embedded/mixed genres, `EFF.GENIND.197/.199`), and
+  GC-5 assigns per-genre instances only; (ii) `GENHN-CAP-GEN`'s reader rule — the exact
+  boundary criterion that would upgrade GAP-3's sufficient direction to the full
+  adjudication — has no Lean form (CHAP-H §16 item 3, upheld); (iii) EFF.GENHN.79 itself
+  is part of GENHN's A2 repair wave, "await[ing] sol discharge-confirmation" (its ledger
+  line) — a transcription cannot outrun its source's own acceptance state; (iv) the
+  DECISION half of HYP.24 is other units' scope entirely.
+* **Interaction notes for the orchestrator:** (a) I.05's `WindowPinningAt` stub (`True`
+  body) is in the D-D12 vacuous-carrier neighborhood; at resolution time its real body
+  should quantify H.09's stage data and assert the `hwin` clause per genre — H89w now
+  supplies the general-`e₁` vocabulary the body can gate against (the I composer's call,
+  not made here). (b) The Display-A adjudication unit re-signing D.62/D.63: no contact
+  (H89w imports ChapH only). (c) F-OM6.1's occupancy scope pin joins EFF.GENHN.28's
+  `a(m) ≥ 0` defect as the second instance of the same unoccupied-height family — if a
+  future GENHN erratum wave lands, both should be pinned by one scope clause.
