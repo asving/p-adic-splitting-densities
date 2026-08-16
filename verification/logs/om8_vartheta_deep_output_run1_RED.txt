@@ -1,0 +1,125 @@
+== LEG A: lattice factorization (char-blind exponent arithmetic) ==
+  ok: A1 nhat_3(43) = pi x Phi1 Phi2
+  ok: A1 nhat_3(86) = pi^9 x Phi1
+  ok: A1 nhat_3(129) = pi^13 x Phi2
+  ok: A1 theta_3(0)-split = (-1,-1,-1)  [WI P-A3 reproduced]
+  ok: A1 vartheta_{3,2}: value 0, split (1,1,1)
+  ok: A1 vartheta_{3,3}: value 0, split (2,2,1)
+  ok: A1 recursion vartheta_{s+1} = vartheta_s * tau(su,u), s = 0..8
+  ok: A1 A9-chain nhat_3(27) = pi^3 x Phi2
+  ok: A1 A9-chain nhat_3(54) = pi^13 x
+  ok: A1 A9-chain nhat_3(81) = pi^17 Phi2
+  ok: A1 A9-chain vartheta_{3,2}: value 0, split (1,0,1)
+  ok: A1 A9-chain vartheta_{3,3}: value 0, split (2,0,1)
+-- A2: random sweep, 400 valid tower data --
+  ok: A2 sweep: 400 frames, 7007 vartheta rows, every value-zero quotient descends (fails = 0)
+-- A3: gcd-mutant tooth --
+  ok: A3 gcd(u_3, e_3) = 2 mutant: ladder/descent BREAKS (the coprimality fence is load-bearing)
+
+== LEG B: mixed-characteristic PARI oracle ==
+    gp| LW3-FP 1 16
+    gp| LW3-EF 1 8 2
+    gp| LW3-VALS 4 10 21 43
+    gp| LW3-G 1 1 1
+    gp| LW3-T2 1 member 1
+    gp| LW3-T3 1 member 1
+    gp| LW3-NONMEM 1
+    gp| LW3-WLAW 1 1
+    gp| P5D3-FP 1 8
+    gp| P5D3-EF 1 8 1
+    gp| P5D3-VALS 4 10 21
+    gp| P5-LETTERS 2 2 2
+    gp| P5-VT vt2 vt3
+    gp| P5-FP 1 8
+    gp| P5-T2 0 member 1
+    gp| P5-T3 0 member 1
+    gp| P5-TRANSPORT 0 0 0
+    gp| P5-YGEN 1
+    gp| P5-TR0 0
+    gp| P5-WUNIQ 1
+    gp| P5-W 2
+    gp| P5-E2 0
+    gp| P5-NM 0
+    gp| P5N-FP 2 8
+    gp| P5N-EF 2 16 1
+    gp| GPB-DONE
+  ok: B-LW3 one deg-16 p-adic factor
+  ok: B-LW3 single prime, (e,f) = (8,2)
+  ok: B-LW3 ladder (4,10,21,43)
+  ok: B-LW3 letters (2,2,2)
+  ok: B-LW3 vartheta_{3,2} = 2 IN F_3 (containment row, depth-4 field)
+  ok: B-LW3 vartheta_{3,3} = 2 IN F_3 (containment row, depth-4 field)
+  ok: B-LW3 nonmember tooth: Y generates F_9 (test discriminates)
+  ok: B-LW3 W-law reproduction: tr(Y) = w_3 = 1, norm(Y) = 2
+  ok: B-P5 depth-3: one deg-8 factor, (e,f) = (8,1)
+  ok: B-P5 depth-3 ladder (4,10,21)
+  record: B-P5 letters measured: ['2', '2', '2']
+  record: B-P5 vartheta values from letters: ['vt2', 'vt3']
+FAIL: B-P5 coherent key: ONE deg-24 factor
+FAIL: B-P5 single prime, (e,f) = (8,3)
+FAIL: B-P5 ladder (4,10,21,43)
+FAIL: B-P5 vartheta_{3,2} member of F_5 in F_125 + letter-monomial value
+FAIL: B-P5 vartheta_{3,3} member of F_5 in F_125 + letter-monomial value
+FAIL: B-P5 letter transport depth-3 -> depth-4 prime
+  ok: B-P5 Y generates F_125
+FAIL: B-P5 W-LAW slot t=2: tr(Y) = c_2 w = 0
+  ok: B-P5 W-LAW: UNIQUE w in F_5^x with psi_4^{(w)}(Y) = 0 (three-slot frame -- the WI f>=3 gap row)
+  record: B-P5 measured w_3 = ['2']
+FAIL: B-P5 W-LAW slot t=1: e_2(Y) = w^2
+FAIL: B-P5 W-LAW slot t=0: norm(Y) = 4w^3
+  record: B-P5 naive twin: FP ['2', '8'] EF ['2', '16', '1']
+FAIL: B-P5 gauge-naive twin KILLED (no psi_4-twist carries its class)
+    gp| A9D3-FP 1 8
+    gp| A9D3-EF 1 4 2
+    gp| A9D3-VALS 2 6 13
+    gp| A9-G1 1
+    gp| A9-G2 1 nonprime 1
+    gp| A9-G3 1 field 1
+    gp| A9-W2 1 inF9 1
+    gp| A9-T2D3 1 member9 1
+    gp| A9-T3D3 0 member9 0
+    gp| A9-T2NONPRIME 1
+    gp| A9-T3NONPRIME 1
+    gp| GPA9-DONE
+  ok: B-A9 depth-3: one deg-8 factor, (e,f) = (4,2) -- K_3 = F_9 live
+  ok: B-A9 ladder (2,6,13)
+  ok: B-A9 letter g1 = 2
+  ok: B-A9 letter g2: psi_2-root (g2^2 = -1), OUTSIDE F_3
+  ok: B-A9 letter g3 in F_9^x
+  record: B-A9 w_2 record: ['1', 'inF9', '1']
+  ok: B-A9 vartheta_{3,2} = g1*g3 IN F_9 (deeper-alphabet row)
+FAIL: B-A9 vartheta_{3,3} = g1^2*g3 IN F_9 (deeper-alphabet row)
+  record: B-A9 nonprime-field vartheta: T2 ['1'] T3 ['1']  (1 = the first deep vartheta measured OUTSIDE the prime field)
+
+== LEG C: equal characteristic F_3((t)) ==
+    gp| EC-LAD 8 20 42 86
+    gp| EC-T2MEM 1
+    gp| EC-T2NOT1 1
+    gp| EC-T3MEM 1
+    gp| EC-T3NOT1 1
+    gp| EC-YTOOTH 1 1 1
+    gp| GPEC-DONE
+  ok: C ladder v_t(Res) = (8,20,42,86) i.e. v_s = (4,10,21,43)
+  ok: C vartheta_{3,2} = 2 in F_3 (equal-char membership row)
+  ok: C vartheta_{3,2} != 1 (value sharp)
+  ok: C vartheta_{3,3} = 2 in F_3 (equal-char membership row)
+  ok: C vartheta_{3,3} != 1 (value sharp)
+  ok: C nonmember tooth: Y avoids every F_3 residue (generates F_9)
+
+== LEG D: the rho-twist defeat at real frame data (D2) ==
+  ok: D2 canonical rho: vartheta_{3,2} = 2 IN F_3 (carrier HOLDS)
+  ok: D2 adversarial rho' (gamma_3 -> omega): vartheta_{3,2} NOT in F_3 (carrier FAILS at the SAME real exponents -- rho-dependence is real)
+  ok: D2 rho' well-defined: triangular pivots e_1*e_2*e_3 = 8 != 0 (free basis)
+
+== VERDICT: 52 checks, 11 failures ==
+  FAILED: B-P5 coherent key: ONE deg-24 factor
+  FAILED: B-P5 single prime, (e,f) = (8,3)
+  FAILED: B-P5 ladder (4,10,21,43)
+  FAILED: B-P5 vartheta_{3,2} member of F_5 in F_125 + letter-monomial value
+  FAILED: B-P5 vartheta_{3,3} member of F_5 in F_125 + letter-monomial value
+  FAILED: B-P5 letter transport depth-3 -> depth-4 prime
+  FAILED: B-P5 W-LAW slot t=2: tr(Y) = c_2 w = 0
+  FAILED: B-P5 W-LAW slot t=1: e_2(Y) = w^2
+  FAILED: B-P5 W-LAW slot t=0: norm(Y) = 4w^3
+  FAILED: B-P5 gauge-naive twin KILLED (no psi_4-twist carries its class)
+  FAILED: B-A9 vartheta_{3,3} = g1^2*g3 IN F_9 (deeper-alphabet row)

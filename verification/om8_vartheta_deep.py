@@ -269,8 +269,9 @@ print("P5D3-EF ", #idealprimedec(K3,5), " ", pr3.e, " ", pr3.f);
 x3 = Mod(x, Q3); Q13 = Mod(Q1, Q3); Q23 = Mod(Q2, Q3);
 print("P5D3-VALS ", nfeltval(K3,x3,pr3), " ", nfeltval(K3,Q13,pr3), " ", nfeltval(K3,Q23,pr3));
 h1 = nfmodpr(K3, x3^2/5, pr3); h2 = nfmodpr(K3, Q13^2/(25*x3), pr3); h3 = nfmodpr(K3, Q23^2/(625*Q13), pr3);
-print("P5-LETTERS ", lift(h1), " ", lift(h2), " ", lift(h3));
-L1 = lift(h1); L2 = lift(h2); L3 = lift(h3);
+itg(v) = {for(a = 0, 4, if(v == a, return(a))); -1};
+L1 = itg(h1); L2 = itg(h2); L3 = itg(h3);
+print("P5-LETTERS ", L1, " ", L2, " ", L3);
 vt2 = (L1*L2*L3) % 5;            \\ vartheta_{3,2} split (1,1,1)
 vt3 = (L1^2*L2^2*L3) % 5;        \\ vartheta_{3,3} split (2,2,1)
 print("P5-VT ", vt2, " ", vt3);
@@ -330,7 +331,7 @@ print("A9-W2 ", w2rec, " inF9 ", w2rec^9 == w2rec);
 \\ depth-3 vartheta values from measured letters (splits (1,0,1) and (2,0,1)):
 vt2 = g1*g3; vt3 = g1^2*g3;
 T2 = nfmodpr(K3, (27*x3*R23)^2/(3^13*x3), pr3);
-T3 = nfmodpr(K3, (27*x3*R23)^3/(3^17*x3*R23), pr3);
+T3 = nfmodpr(K3, (27*x3*R23)^3/(3^17*R23), pr3);   \\ nhat_3(81) = 3^17 Phi2 (NO x -- run-1 typo repaired)
 print("A9-T2D3 ", T2 == vt2, " member9 ", T2^9 == T2);
 print("A9-T3D3 ", T3 == vt3, " member9 ", T3^9 == T3);
 print("A9-T2NONPRIME ", T2^3 != T2);
