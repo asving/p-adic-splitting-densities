@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import Uniformity.ChapC.C11
+import Uniformity.ChapC.C25
 
 /-!
 # Uniformity.ChapC.C38a — the `dv2`-side cluster: level-2 sides as argmin data
@@ -29,27 +30,25 @@ D-1/GC-2 still forbid a polygon carrier, so a level-2 side is not a geometric ob
 argmin `Finset` of the `ℕ`-linear form whose infimum defines `dv2Supp` (C.11), and the side's
 numerals are that `Finset`'s `min'`, `max'`, and their gap divided by `ℓ₂`.
 
-## What this file lands, and what it does NOT (clause split, recorded)
+## The cluster's two halves
 
-NODE C.38a's signed twin has **seven** declarations in two independent halves:
+NODE C.38a's signed twin has **seven** declarations in two independent halves, all landed here:
 
-* **clause 1 — the side geometry (LANDED HERE):** `Dv2OnSide`, `dv2SideSet`, `dv2SideMin`,
-  `dv2SideMax`, `dv2SideDeg`. These call only C.11's `dv2Supp`/`dv2Pin`, both landed
-  (`C11.lean`), so they are transcribable today. They are what C.55 (`towerLocus_depth3_floor`),
-  C.64 (`mult₂_readable`), C.65 (`dv2_length_sum`) and C.68 (`dv2Pin_translation_interior`)
-  consume — none of those four statements mentions the residual half — so this is not an orphan
-  landing.
-* **clause 2 — the residual read (NOT LANDED; blocked):** `dv2Res` and `dv2ResPoly`. `dv2Res L A`
-  is by its A-C.1 determination *"`A`'s own `dvResPoly` evaluated at the letter `β`"*
-  (`AdjoinRoot.mk L.r`), and `dvResPoly` is **NODE C.25**, which has no file in
-  `leanfinal/Uniformity/ChapC/` (`grep -rn dvResPoly leanfinal/Uniformity/` finds only a prose
-  mention in `C09.lean`; there is no `C25.lean`). `dvResPoly` is a public node `def`, not a
-  private helper, so it may not be re-declared locally under the standing D9 pattern — that would
-  fork the definition. **RESCHEDULE C.38a clause 2 behind C.25.** The reschedule record is
-  `leanfinal/notes/RESCHEDULE_C38a_clause2_2026-08-16.md`; the node is **not** complete until
-  clause 2 lands in this file. Downstream of clause 2 and therefore also waiting: C.38
-  (`dv2ResPoly_radical_eq`), C.39 (`γg`, `pinHeight`, `dv2ResPoly_scalar`), and §10's `repoRead`
-  (C.104's `repoRead := dv2Res`).
+* **the side geometry:** `Dv2OnSide`, `dv2SideSet`, `dv2SideMin`, `dv2SideMax`, `dv2SideDeg` —
+  the table above. These call only C.11's `dv2Supp`/`dv2Pin`. They are what C.55
+  (`towerLocus_depth3_floor`), C.64 (`mult₂_readable`), C.65 (`dv2_length_sum`) and C.68
+  (`dv2Pin_translation_interior`) consume; none of those four statements mentions the residual
+  half.
+* **the residual read:** `dv2Res` and `dv2ResPoly` — the `K₂`-valued half. This is what C.38
+  (`dv2ResPoly_radical_eq`), C.39 (`γg := dv2Res L (f /ₘ blockFactor L f)`,
+  `dv2ResPoly_scalar`) and §10's `repoRead := dv2Res` (C.104) consume.
+
+**Landing history.** The two halves were committed separately (`ac84a745`, then this file's
+second landing) because `dvResPoly` — NODE C.25, which `dv2Res` calls — had no file in
+`leanfinal/Uniformity/ChapC/` at the start of the wave-7 slot. C.25 landed mid-slot at commit
+`495eb769`, and the residual half went in against it. The interim reschedule record
+`leanfinal/notes/RESCHEDULE_C38a_clause2_2026-08-16.md` is therefore **superseded** and is kept
+only for the C.25-fanout scheduling table it carries.
 
 ## Shape details, copied rather than chosen
 
@@ -86,9 +85,37 @@ NODE C.38a's signed twin has **seven** declarations in two independent halves:
   prose is explicitly *"the fleet's argmin-partition corollary — recorded"*, i.e. unsigned; C.65's
   signed statement uses `dv2SideMax` alone. Nothing is added here.
 
-**DEPENDS.** C.11 (`dv2Pin`, `dv2Supp`) · C.09 (`LevelDatum`) · C.07 · B.16 · B.20 (the shape
-templates) — all by committed node ID (GC-13(b)). The import is `Uniformity.ChapC.C11`, which
-pulls C.06/C.09 and through them C.01/C.02/C.03 and the B chain.
+## The residual half: three things the `def`s do NOT say
+
+* **`dv2Res` is a `dif`, and its `else` branch is junk `0`, not a value.** The A-C.1
+  determination reads *"`dv2Res A` is the coherent `K₂`-read: `A`'s own `dvResPoly` evaluated at
+  the letter `β` (`AdjoinRoot.mk L.r`)"*. To call `dvResPoly` at all one needs C.25's two
+  arguments — a nonempty level-1 side set for `A` at the level's own side `(L.u, L.ℓ)`, and a
+  natural number `M₀` witnessing that the `dvSideMin` pin is finite — so the body branches on the
+  existence of that pair and returns `0` when it fails. This is B.28's junk-0 discipline, the
+  same one C.25's own `twistRead` calls rely on, and it is what makes the read **total** so that
+  `γg` (C.39) and `repoRead` (C.104) can be stated without carrying side conditions. Consumers
+  must not read `dv2Res L A = 0` as "the residue vanishes": off the pinned locus it means "not
+  pinned". The A-C.1 determination is signed, so this is transcription, not a choice made here.
+* **`Exists.choose`, so the witnesses are non-canonical.** The `then` branch feeds
+  `h.choose`/`h.choose_spec.choose`/`h.choose_spec.choose_spec` into `dvResPoly`. `h.choose` is a
+  proof of a `Prop` (`Finset.Nonempty`) and so is irrelevant, but `M₀ := h.choose_spec.choose` is
+  data, pinned only up to the equation `dvHgt F A (dvSideMin F A L.u L.ℓ h.choose) = (M₀ : ℕ∞)`.
+  That equation determines `M₀` uniquely (`Nat.cast` is injective on `ℕ∞`), so the value is in
+  fact canonical — but only *provably* so, via a lemma nobody has stated. Anything rewriting
+  under `dv2Res` needs that uniqueness step; it is not definitional.
+* **`dv2ResPoly` sums to `dv2SideDeg`, not to the side's length.** The index range is
+  `Finset.range (dv2SideDeg … + 1)` with the `t`-th coefficient read at abscissa
+  `dv2SideMin + t·ℓ₂` — C.25's shape one level up, with `dv2Res` in place of `twistRead`. The
+  claim that its `natDegree` is `dv2SideDeg` (i.e. that the top coefficient is nonzero) is C.26's
+  analogue and is **not** a §5 node; C.38's degree clause compares two `natDegree`s and does not
+  need it.
+
+**DEPENDS.** C.11 (`dv2Pin`, `dv2Supp`) · C.09 (`LevelDatum`, its `u`/`ℓ`/`r` fields) · C.07
+(`dvSideSet`, `dvSideMin`) · C.06 (`dvHgt`) · C.25 (`dvResPoly`) · B.02 (`dev`) · B.16 · B.20
+(the shape templates) — all by committed node ID (GC-13(b)). The imports are
+`Uniformity.ChapC.C11` and `Uniformity.ChapC.C25`, which between them pull C.06/C.07/C.09/C.22
+and through them C.01/C.02/C.03 and the B chain.
 
 **PROOF.** Definitional (with `Classical` decidability for the filter, as in C.07/B.16). The
 bodies are the gate-verified `leanspec/Leanspec/ChapC.lean` stub bodies verbatim.
@@ -104,7 +131,7 @@ ENVIRONMENT: ENV-C2.
 
 ## Status
 
-Clause 1 of 2. Sorry-free, axiom-free (Lean core only).
+NODE C.38a COMPLETE (all seven signed declarations). Sorry-free, axiom-free (Lean core only).
 -/
 
 namespace Uniformity.Density.Tower
@@ -145,6 +172,30 @@ noncomputable def dv2SideDeg {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H
     (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) (h : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) : ℕ :=
   (dv2SideMax L Ψ f u₂ ℓ₂ h - dv2SideMin L Ψ f u₂ ℓ₂ h) / ℓ₂
 
+/-- **C.38a (f) — the coherent `K₂`-residue read of one coefficient**: its own level residual
+polynomial (C.25's `dvResPoly`, taken at the level's own side `(L.u, L.ℓ)`) evaluated at the
+letter `β`, i.e. mapped through `AdjoinRoot.mk L.r`. Junk `0` off the pinned locus, so the read
+is total — see the docstring: `dv2Res L A = 0` means "not pinned", NOT "residue vanishes". -/
+noncomputable def dv2Res {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (A : Polynomial O) : AdjoinRoot L.r :=
+  open Classical in
+  if h : ∃ (hne : (dvSideSet F A L.u L.ℓ).Nonempty) (M₀ : ℕ),
+      dvHgt F A (dvSideMin F A L.u L.ℓ hne) = (M₀ : ℕ∞)
+  then AdjoinRoot.mk L.r
+    (dvResPoly F H₀ hpin A L.u L.ℓ h.choose h.choose_spec.choose h.choose_spec.choose_spec)
+  else 0
+
+/-- **C.38a (g) — the level-2 residual polynomial over `K₂`** (C.25 one level up, assembled from
+the per-slot coherent reads): `Σ_{t ≤ d₂} C (dv2Res L (dev Ψ f (j₁ + t·ℓ₂))) · X^t`, with
+`j₁ := dv2SideMin` and `d₂ := dv2SideDeg`. This is the object C.38's radical clause and C.39's
+scalar identity are stated about. -/
+noncomputable def dv2ResPoly {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) :
+    Polynomial (AdjoinRoot L.r) :=
+  (Finset.range (dv2SideDeg L Ψ f u₂ ℓ₂ hne + 1)).sum fun t =>
+    Polynomial.C (dv2Res L (dev Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne + t * ℓ₂)))
+      * Polynomial.X ^ t
+
 end Uniformity.Density.Tower
 
 /-! ## Axiom footprint -/
@@ -156,5 +207,7 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.dv2SideMin
 #print axioms Uniformity.Density.Tower.dv2SideMax
 #print axioms Uniformity.Density.Tower.dv2SideDeg
+#print axioms Uniformity.Density.Tower.dv2Res
+#print axioms Uniformity.Density.Tower.dv2ResPoly
 
 end AxCheck
