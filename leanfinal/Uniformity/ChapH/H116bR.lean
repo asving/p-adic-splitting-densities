@@ -39,21 +39,29 @@ This module lands the layers of C1–C4 that are pure frame arithmetic (no polyg
   of any lift at any centre (non-drain), and `k * μ ≤ betaContent c k` under a child event;
 * §3 the planted-factor frame profiles (C1) — divisibility, the difference one digit
   deeper, the reduction `X ^ μ`, and the unit constant term at foreign frames;
-* §4 the exact peel (C2);
-* §5 the single-child replant and its genre transport (C3–C4, the frame-arithmetic legs).
+* §4 the EXACT peel (C2): `monicPoly a = alphaParent π b k ẑ * Q` in `O[X]`, with no
+  `π`-power in front and `Q` monic of degree `m − μ`;
+* §5 Gauss for the `π`-level (exact levels ADD under multiplication), the EXACT planted
+  profile at every frame, and the swap bound: a re-planting moves every frame exactly one
+  digit past that frame's exact level;
+* §6 the state-level transport (C4): the content at a slope and the child events at that
+  slope are the SAME on both sides of a deep frame congruence.
 
-## What is NOT here (still owed to H.116b)
+## What is NOT here (still owed to H.116b) — see `notes/BLOCKED_H116b_2026-08-16.md`
 
+* the MULTI-child peel (a `Finset`-indexed product of planted factors) and the
+  "multiplicity ADDS" lemma that makes the child set of a planted product EXACTLY `L`;
 * the `¬ IsCSState` transport for the replanted state (side data + `resPoly` of the swap
   agree — certification check G; needs the ChapB polygon API);
 * the fibre COUNT itself.  **FINDING (certification D3, refuted with witnesses):** the
   naive stability — "two exact planted presentations of `≡ π^N`-lifts, shifted by the same
   `Δ`, stay `≡ π^N`" — is FALSE in same-slope multi-child genres (the two planted
-  sub-lattices carry a genuine syzygy; gauge of size `q^4` in the census cell), so
-  injectivity of the replant map does NOT follow from presentation stability.  The measured
-  facts (battery E1/E2): the fibres ARE equicardinal per `(L, D)`-with-`z` and the
-  canonical-lift replant IS a bijection; the counting proof must run through the raw
-  presentation space with constant presentation-multiplicity.  Recorded in the unit note.
+  sub-lattices carry a genuine syzygy), so injectivity of the replant map does NOT follow
+  from presentation stability, and (check E3) the round trip is not the identity.  The route
+  that IS open is certified by `verification/openmath/OM2_h116b_gauge_resultant.py` (39/39):
+  the planting map is UNIFORMLY many-to-one with a cofactor-independent multiplicity, and
+  `v(Res(P_p, P_p')) = μ_p μ_p' min(k_p, k_p')` is genre-determined and does not see the
+  child's deep digits.
 
 DEPENDS: H.108 (`betaContent`, `IsDrainState`, `betaContent_le`, `betaContent_le_of_lt`,
 `betaContent_le_mul`), H.107 (`resOrd_ge_iff`, `resOrd_le`, `mem_maximalIdeal_pow_iff_dvd_of_irr`),
@@ -72,10 +80,12 @@ explicit, every binder INLINE.
 ## TEETH (GC-8)
 
 `verification/openmath/OM2_h116b_replant_cert.py` (68/68): §1–§2 are exercised by every
-factorization/content read of checks B/C; §3 is check F verbatim (the three-case profile,
+factorization/content read of checks B/C; §3 is check F verbatim (the three-case profile
 `w_{k'} = μ·min(k,k')`, b-independence, unit constants); §4 is check B (exact factorization,
-margin ≥ N+3 at every tested lift); §5 is check C (replant lands in the fibre with the child
-set EXACTLY `L`).
+margin ≥ N+3 at every tested lift); §5–§6 are check C (the replant lands in the fibre with
+the child set EXACTLY `L` and the contents unchanged).
+`verification/openmath/OM2_h116b_gauge_resultant.py` (39/39) is the teeth for the counting
+mechanism §7 will need, not for anything proved here.
 
 ## Status
 
@@ -884,7 +894,7 @@ end Transport
 
 end Uniformity.Density.Induction
 
-/-! ## Axiom footprint (stages 1–2: §1–§3) -/
+/-! ## Axiom footprint (§1–§6) -/
 
 section AxCheck
 
