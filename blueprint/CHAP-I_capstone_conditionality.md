@@ -573,10 +573,23 @@ chapter C's descent-history carrier by name; C is committed but its §5 Lean typ
 stage. Per CHAP-E's precedent (its four `True`-placeholder nodes, E §14 item 11) this node is
 **BLOCKED-UNTIL-RESOLUTION: the fleet must not fire on it while the placeholder body reads
 `True`** — the orchestrator's stub-resolution pass types it. It is listed so in §11.
-*[A-C.1 rider, 2026-08-16: the wait is OVER — C's §5 carriers landed (`DescentState`,
+*[A-C.1 rider, 2026-08-16: ~~the wait is OVER — C's §5 carriers landed (`DescentState`,
 `DescentStep`, `NS7TerminationStatement`, amendment A-C.1 at CHAP-C NODE C.94), and the typed
 body is `NS7TerminationStatement`'s matrix; see this file's 2026-08-16 A-C.1 addendum. The
-placeholder may be resolved at the next stub-resolution pass.]*
+placeholder may be resolved at the next stub-resolution pass.~~]*
+**⛔ STRUCK BY AMENDMENT A-I.1 (2026-08-16), defect I-D3/I-D6 series — the struck text is kept
+verbatim above because a fleet agent that followed it would land an inconsistency.**
+`Uniformity.Density.Tower.NS7TerminationStatement` was MACHINE-REFUTED at A-C.6
+(`leanfinal/Uniformity/ChapC/C94_REFUTATION.lean.txt` proves it implies `False`, absolutely,
+over `ℤ_[2]`, Lean-core and sorry-free) and the name does not exist in `leanfinal` at HEAD.
+**The live resolution target is the A-C.6 REDRAFT** `LeanspecC.NS7TerminationStatementR` over
+`LeanspecC.DescentStepR` (`leanspec/Leanspec/ChapC.lean`, commit `958cc39b`), which is
+**cite-conditional and awaiting the owner's gate-(b) signature**: until that signature, I.01
+stays at its signed `True` placeholder and the stub-resolution pass may NOT type it. On
+signature the resolution is `NS7Termination := NS7TerminationStatementR`'s matrix (bundle
+quantifier frozen), the discharging axiom is `agnprw_termination : NS7TerminationStatementR`,
+and I.01's consumers move from `#axiom_core` to `#axiom_reg … [agnprw_termination]` (gate I.25).
+See AMENDMENT A-I.1 §I-D6.
 
 **DEPENDS.** C §5's level-datum/descent types [C committed; exact names at stub time] · C.94
 (the discharging cite). **PROOF.** definitional. **SIZE.** 14 lines.
@@ -1692,7 +1705,10 @@ drafts ARE the node blocks. Audit A-3's pre-signing numbering check is DONE for 
 (this was HYP.17's row); the residual print-reads (audit §7.1/§7.2) remain the owner's
 two-minute closing checks.
 
-**I.01 UNBLOCKED (the D24 deadlock, broken on the C side).** `I.01`'s `NS7Termination` was
+**⛔ ~~I.01 UNBLOCKED (the D24 deadlock, broken on the C side).~~ STRUCK BY AMENDMENT A-I.1
+(2026-08-16), defect I-D6 — the paragraph is kept verbatim below because it is an UNSAFE
+INSTRUCTION that a fleet agent might otherwise execute; see A-I.1 §I-D6 for the live target.**
+~~`I.01`'s `NS7Termination` was
 committed with a literal `True` placeholder body, `BLOCKED-UNTIL-RESOLUTION`, waiting on "C's
 committed §5 carriers at stub time". Those carriers now exist (A-C.1: `DescentState`,
 `DescentStep`, both typed against C's §5 layer — `HasLabel`, `IsTestKey`, `LevelDatum`), and
@@ -1701,7 +1717,13 @@ orchestrator's stub-resolution pass may now type I.01's body** (either
 `NS7Termination := NS7TerminationStatement` — the bundle quantifier is the statement's own —
 or its unfolding under I.01's frozen name/kind). Display A's line-1 conjunct stops being
 vacuous in Lean at that pass; `I.25`'s registry expectation (`agnprw_termination` on C.94's
-consumers) is now declarable.
+consumers) is now declarable.~~
+
+**Why struck:** A-C.6 machine-refuted `NS7TerminationStatement` (it implies `False` over
+`ℤ_[2]`; record `leanfinal/Uniformity/ChapC/C94_REFUTATION.lean.txt`), and the name does not
+exist in `leanfinal` at HEAD, so the instruction is both unsafe and unexecutable. I.01 is
+**still BLOCKED**, now on the owner's gate-(b) signature of the A-C.6 REDRAFT
+`LeanspecC.NS7TerminationStatementR` (over `DescentStepR`), not on chapter C's carriers.
 
 ### DATED ADDENDUM (2026-08-16, OM-4 — THE `(LB1)`/`(MP1)` TERMINAL-FATE ADJUDICATION: one new gate-(b) cite, one decomposition, one stop-the-line carrier finding)
 
@@ -2074,6 +2096,92 @@ the field exactly as I-7 states: IN-PROGRESS, clean-pass 1 of 2, pass 2 IN FLIGH
 Unit record: `docs/openmath-campaign/OM-9_weld_2026-08-16.md`; ledger ARC NOTEs at
 HYP.74/HYP.139/HYP.148 (dispositions unchanged: CARRY/MATH/CARRY). This addendum adds no
 new ledger row and moves no bucket.
+
+## AMENDMENT A-I.1 (2026-08-16, unit A-I.1 — THE STAGE-0e DEFECT ADJUDICATION: the Display-A
+## carrier fields re-signed at the ARISING-CONFIGURATION binding, the `𝒲` conjunct given a
+## field, I.03's vacuous clause repaired, I.01's resolution instruction re-pointed)
+
+**What this amendment is.** The stage-0e stub gate
+(`leanspec/Leanspec/ChapI.lean`, commits `e92c4e0f`/`529cfc87`/`3dbd4269`/`46d3c0ac`) elaborated
+every chapter-I signature against the landed corpus and recorded twelve defects, I-D1 … I-D12.
+I-D1/I-D2 are `leanfinal`-side (duplicate declarations, roll-up gaps) and are cured elsewhere.
+This amendment adjudicates the BLUEPRINT-side defects from their sources and re-signs, per
+defect, the honest form: **I-D3** (the `ladder` field: repaired application AND the
+canonical-binding ruling), **I-D4** (the `𝒲_{≤i}` conjunct's missing field), **I-D5** (I.03's
+`A1Family` membership), **I-D6** (I.01's unsafe resolution instruction), **I-D9** (I.03's
+provably vacuous `(A1)`-admissibility clause), plus rulings on **I-D7/I-D8** (the weld
+placeholders) and one **NEW** defect the adjudication found, **I-D13** (below), which is the
+sharpest finding of the unit.
+
+**Owner-facing flag (CONVENTIONS Part V gate (a)).** §I-D3 and §I-D4 CHANGE THE FIELD LIST OF
+`CapstoneHypotheses` — the public conditionality display. They are taken under the standing
+statement-change authority as *strengthening-toward-dischargeability* (no conjunct dropped, one
+conjunct added, the conclusion `UniformityStatement` untouched, `UniformityStatement` itself not
+edited), and they are listed at the top of this amendment's OWNER-FACING FLAG LIST so the owner
+reads them at the next visit. **`UniformityStatement` (gate (a)'s main statement) is untouched
+by this amendment.**
+
+---
+
+### I-D13 (NEW, stop-the-line, machine-transported) — the ∀-over-all-configurations reading of
+### the Display-A carrier fields is not merely UNDISCHARGEABLE, it is REFUTABLE
+
+The 0e gate recorded (I-D3) that a `∀ ρ` binder puts the `ladder` field in OM-8's ρ-defeat
+regime, i.e. *undischargeable*. The adjudication finds the stronger and worse fact:
+
+> **The signed `ladder` field is FALSE.** Its binders range over ALL `(O, K, C, B)` and (after
+> the 0e repair) all level data. The A-E.2 re-signed carriers are machine-certified **FALSE at
+> concrete legal instances** — `lb1_resigned_not_trivial : ¬ LB1Carrier C₁ B₁` over
+> `C₁ : SlotCarrier ℤ ℚ` with `B₁.F = X² + X + 1`, and `mp1_resigned_not_trivial :
+> ¬ MP1Carrier C₂ B₂` at key `X²`, `F = X⁴ − 5X² + 4`
+> (`verification/om4_resign_nontriviality.lean`; the leanspec carriers there are byte-identical
+> to the landed `Uniformity.Density.Ladder.*` ones modulo namespace — re-verified at this
+> amendment, not taken on the docstring's word). Instantiating the field at `(ℤ, ℚ, C₁, B₁)`
+> and any level data yields `LB1Carrier C₁ B₁`, contradiction.
+
+Consequences, stated flatly: `CapstoneHypotheses n` as signed is **uninhabited for every `n`**;
+`∀ n, CapstoneHypotheses n` is FALSE; and I.17 (`uniformity_of_capstoneHypotheses`) therefore
+**proves `UniformityStatement` from a contradiction** — the assembly is vacuous, and the
+"honest conditionality display" displays a hypothesis nobody can hold rather than one nobody
+has yet proved. This is the OM-4 FINDING-0 genre with the sign flipped (FINDING 0: a conjunct
+too weak to say anything; I-D13: a conjunct too strong to be true), and it is stop-the-line by
+the same rule.
+
+**The pincer that forces the cure.** Three readings of the level/block data were available, and
+the two obvious ones are both closed by machine evidence already in the tree:
+
+| reading | verdict | evidence |
+|---|---|---|
+| `∀` over ALL configurations (as signed) | **REFUTABLE** — contradictory hypothesis block | `lb1_resigned_not_trivial`, `mp1_resigned_not_trivial`, `hvarthetaRes_resigned_not_trivial` (`verification/om4_resign_nontriviality.lean`); OM-8 LEG D2's ρ-defeat at REAL tower exponents |
+| `∃`-bundled data (or, equivalently, the data threaded as parameters of `CapstoneHypotheses` and supplied at I.17) | **FABRICABLE** — a degenerate configuration satisfies it, so the conjunct stops tracking conditionality | defect D-D12 (the voided `HVarthetaResVoided`); E.24's own recorded rejection of this option (`ChapE/E24.lean`, "⚠ THE `vartheta` FIELD'S DATA THREADING", option 2) |
+| `∀` over the **arising** configurations (this amendment) | the honest reading: the corpus's own claim | E.24 option 1's rejection reason read positively; OM-8 §3.1's verdict (YES at every DEF GENTOW5-1 instantiation with the canonical node-point residue read) |
+
+**Rule installed (binding on every later pass).** *No Display-A carrier field may quantify over
+a configuration space larger than the arising one, and no such field may be typed at a guard
+that already implies its own carrier* (the NON-SWALLOWING fence — see §I-D3).
+
+---
+
+### I-D6 — I.01's resolution instruction, RE-POINTED (signed)
+
+**Verdict: the instruction was UNSAFE AND UNEXECUTABLE; struck at both sites, re-pointed at
+the A-C.6 REDRAFT.** The two struck sites are NODE I.01's A-C.1 rider and the 2026-08-16 A-C.1
+addendum's "I.01 UNBLOCKED" paragraph; both keep their text verbatim under a strike marker (a
+fleet agent must be able to see what it was told, and why it is wrong).
+
+**Signed resolution instruction (replaces the struck one):**
+
+> I.01 stays at its signed `True` placeholder. Its live discharge target is the A-C.6 REDRAFT
+> `LeanspecC.NS7TerminationStatementR` (over `LeanspecC.DescentStepR`,
+> `leanspec/Leanspec/ChapC.lean`, commit `958cc39b`), which is **cite-conditional and awaiting
+> the owner's gate-(b) signature**. Until that signature: no pass may type I.01's body. On
+> signature: `NS7Termination` is resolved to `NS7TerminationStatementR`'s matrix under I.01's
+> FROZEN name / bundle quantifier / `Prop` kind, the discharging axiom is
+> `agnprw_termination : NS7TerminationStatementR`, and I.01's consumers move from
+> `#axiom_core` to `#axiom_reg … [agnprw_termination]` at gate I.25.
+> **Forbidden, permanently:** resolving I.01 against `Uniformity.Density.Tower.NS7TerminationStatement`
+> (machine-refuted: it implies `False` — `leanfinal/Uniformity/ChapC/C94_REFUTATION.lean.txt`),
+> and citing that name at all — it does not exist in `leanfinal` at HEAD.
 
 <!-- SENTINEL: BP-I END OF FILE -->
 
