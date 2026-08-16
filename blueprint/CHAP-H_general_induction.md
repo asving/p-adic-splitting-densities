@@ -458,6 +458,7 @@ Six things, and they are the chapter's actual mathematical content:
 | 16 | — | teeth dispositions; flagged for the codex cross-read |
 | 17 | H.100–H.124 | *[dated extension 2026-08-16, unit T-1/OM-2]* **THE T-1 COMPLETION LAYER**: N-1 level-0 class transport (H.100–H.105) · N-2 cluster event grammar over `O` (H.106–H.117) · N-3 conservative verdict, `RecursionLegs` legs, the S-1 bridge, the composed reduction (H.118–H.124) |
 | A-H.5 | H.114, H.115, H.116 | *[dated append 2026-08-16, unit T-1 wave 3]* **THE CENTRE-SHIFT RE-SIGN**: clause (i) of `alphaChild_spec`/`betaChild_spec` REFUTED (∀-lift-pair quantifier); DECISION D-H17.3 pins the centre in the def, requantifies clause (i) at the canonical centre, and closes both opaque-carrier deviations. Carries LESSON L-BATT (GC-candidate) |
+| A-H.6 | H.121 (iii), H.122, **+H.121d**, **+H.30b** | *[dated append 2026-08-16, unit A-H.6]* **THE β-ENVELOPE RE-SIGN (F-H17.2's repair)**: clause (iii) re-signed at `(K′,B′,c′) = (1/3, 1, 1)` — `#(β∧undec)(N) ≤ (1/3)·N·Q^{m(N−1)}·Q^{−(N−1)}` — a STRENGTHENING (it implies the frozen envelope at every `N`); the finding's own repair candidate `(m−1)·Q^{−(N−1)}` is **REFUTED** (`q = 2` first failure `N = 32`); two nodes added — H.121d (the content-weighted β census, the priced non-circular pricing step) and H.30b (the α-geometric sum at `c ≥ 2`); H.122's `rate_close` route is **CLOSED as refuted**, the local replay is signed with its closing arithmetic. `verification/AH6_beta_envelope_check.py` |
 
 **Kind census** (mechanically counted over this file's `### NODE` headings): 15 `def`, 62 `lemma`,
 18 `theorem`, 3 `def+lemma`, 1 `gate` — **99 nodes**. Three of the `def` nodes carry a `structure`
@@ -8320,11 +8321,16 @@ per-`k` aggregation of H.114/H.115's shear against the child count; normalized, 
 instantiation, EQUALITY on true data). ⚠ FINDING F-H17.1 applies: the realized range is
 window-dependent, so this equality does NOT inhabit the landed fixed-`n₀` `RecursionLegs`
 cleanly — PA-H17.1 (§17.0) is the repair;
-(iii) **the β leg, bounded at `(K′, B′, c′) = (1, 0, 1)`**:
-`#(β ∧ undec)(N) ≤ N^m · Q^{m(N−1)} · Q^{−(N−2)}` — the battery measures `K′ ≤ 0.0004`
-against this envelope, so `K′ = 1` is safe; the proof route is the degree-descent (children
-have degree `< m`) through the per-genre fibration (H.116), the union bound (H.63), and the
-two regime lemmas (H.67/H.68).
+(iii) **[RE-SIGNED: A-H.6]** **the β leg, bounded at `(K′, B′, c′) = (1/3, 1, 1)`**:
+`#(β ∧ undec)(N) ≤ (1/3) · N · Q^{m(N−1)} · Q^{−(N−1)}` — the proof route is the
+degree-descent (children have degree `< m`) through the per-genre fibration (H.116), the
+union bound (H.63), the `μ = 2` child rate (H.28 / H122m2's landed `m = 2` species), and
+**H.121d**'s content-weighted β census.
+⚠ **The frozen envelope `#(β ∧ undec)(N) ≤ N^m · Q^{m(N−1)} · Q^{−(N−2)}` (at
+`(K′,B′,c′) = (1,0,1)`, battery `K′ ≤ 0.0004`) is TRUE but is SUPERSEDED**: it can never
+certify H.122 (FINDING F-H17.2), and the re-signed envelope IMPLIES it at every `N ≥ 1`.
+The finding's own repair candidate, `β̂(N) ≤ (m−1)·Q^{−(N−1)}` with NO polynomial factor,
+is **REFUTED** — see AMENDMENT A-H.6 for both records and the certificate.
 
 **SIGNATURE.**
 ```lean
@@ -8348,18 +8354,34 @@ theorem uCluster_alpha_leg {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValua
       = ∑ k ∈ (Finset.range N).filter (fun k => 1 ≤ k ∧ m * k ≤ N - 1),
           (residueCard O - 1) * residueCard O ^ (k * clusterC m) * uCluster O π m (N - m * k)
 
+-- [RE-SIGNED: A-H.6.  The frozen type is preserved verbatim in AMENDMENT A-H.6 §1.]
 theorem uCluster_beta_leg {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] {π : O}
     (hπ : Irreducible π) {m : ℕ} (hm : 2 ≤ m) (hm3 : m ≤ 3) (N : ℕ) (hN : 1 ≤ N) :
     (Nat.card {c : ClusterState O m N //
         IsBetaState π c ∧ ClusterUndecided O π m N c} : ℝ)
-      ≤ (N : ℝ) ^ m * (residueCard O : ℝ) ^ (m * (N - 1))
-          * ((residueCard O : ℝ) ^ (N - 2))⁻¹
+      ≤ (1 / 3 : ℝ) * (N : ℝ) * (residueCard O : ℝ) ^ (m * (N - 1))
+          * ((residueCard O : ℝ) ^ (N - 1))⁻¹
+
+-- [NEW NODE H.121d: A-H.6.  The content-weighted β census — the pricing step that turns
+-- H.116 (ii)'s fibration plus the μ = 2 child rate into clause (iii)'s linear envelope.]
+theorem beta_content_census {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m : ℕ} (hm : 2 ≤ m) (hm3 : m ≤ 3) (N : ℕ) (hN : 1 ≤ N) :
+    ∑ D ∈ Finset.range N,
+        (Nat.card {c : ClusterState O m N //
+            IsBetaState π c ∧ ∃ (μ k : ℕ) (z : ResidueField O),
+              HasChildAt π c μ k z ∧ betaContent c k = D} : ℝ)
+          * (residueCard O : ℝ) ^ D
+      ≤ (1 / 3 : ℝ) * (residueCard O : ℝ) ^ (m * (N - 1))
 ```
 
 **DEPENDS.** H.111, H.113 (head = drain, exact), H.114/H.115 (α aggregation), H.116 (β
 fibration), H.117 (CS empty at `m ≤ 3`), H.118, H.119 · H.63 (`prod_sub_prod_le_sum`),
-H.67 (`rate_growing`), H.68 (`rate_bounded`) · H.13.
+H.67 (`rate_growing`), H.68 (`rate_bounded`) · H.13 · *[added A-H.6, clause (iii) only]*
+**H.121d** (`beta_content_census`) and **H.28** (the `μ = 2` ground rate; equivalently the
+landed `uClusterNorm_rateSpecies_two` of `ChapH/H122m2.lean`). H.67/H.68 are NO LONGER
+consumed by clause (iii) — the A-H.6 route prices the envelope directly (see A-H.6 §3).
 
 **PROOF.** 1. (i) H.111's partition restricted to the undecided set: drain ⊆ undecided
 (constructor), CS empty (H.117 (i) + `m ≤ 3`), DEC ∩ undecided = ∅ (H.119 (ii): no disjunct
@@ -8367,16 +8389,23 @@ fires on a DEC state). 2. (ii) partition the α-undecided set by the unique even
 (H.112 (i)); per `(k, z)` the shear carries the verdict (H.118's `alpha` constructor one
 way, H.119 (ii)'s inversion the other) onto the child undecided set with constant fibre
 `Q^{k·clusterC m}` (H.115 (iii)); sum over `z ≠ 0` (`Q − 1` values) and realized `k`
-(H.112 (ii) bounds the range; out-of-window `k` are empty). 3. (iii) partition the
-β-undecided set by genre (H.116 (ii)); per genre the composed count is
-`census_g · [Π T_l − Π(T_l − u_l)]` ≤ union bound (H.63); the child factors `u_l` are at
-degree `μ_l < m` — the DEGREE-DESCENT: at `m = 2` there are no β genres (children need
-`2 ≤ μ < m`); at `m = 3` children have `μ = 2` and their species is H.122 at `m = 2`
-(alternatively §5's landed `m = 2` closed form H.26/H.28); genre bookkeeping (slopes ×
-windows ≤ polynomial in `N`) prices the envelope through H.67/H.68. The `m ≤ 3` guard keeps
-the leg unconditional; at `m ≥ 4` the same display is HYP-gated (CS mass) and is NOT stated.
+(H.112 (ii) bounds the range; out-of-window `k` are empty). 3. (iii) **[RE-WRITTEN: A-H.6 §3
+— the priced, non-circular route; the old step-3 text is preserved verbatim in A-H.6 §1]**
+partition the β-undecided set by genre (H.116 (ii)); per genre the composed count is
+`F_g · [Π T_l − Π(T_l − u_l)]` ≤ (H.63's union bound) `F_g · Σ_l u_l Π_{j≠l} T_j`
+`= #(genre g) · Σ_l û_l` — **the genre census `census_g` cancels, so TRACK V is not
+consumed**. The child factors `û_l` are at degree `μ_l < m` — the DEGREE-DESCENT: at `m = 2`
+there are no β genres (children need `2 ≤ μ < m`); at `m = 3` every child has `μ = 2` and
+exactly one child exists (`2 + 2 > 3`), so `û_l(M) ≤ M·Q^{−(M−1)}` by §5's landed `m = 2`
+ground rate H.28 (equivalently `ChapH/H122m2.lean`'s `uClusterNorm_rateSpecies_two` — **NOT**
+the signed H.122, which would be circular). With `M = N − D` and `M ≤ N` this gives
+`#(β ∧ undec)(N) ≤ N·Q^{−(N−1)}·Σ_{β states} Q^{D}`, and **H.121d** closes the sum at
+`(1/3)·Q^{m(N−1)}`. The `m ≤ 3` guard keeps the leg unconditional; at `m ≥ 4` the same
+display is HYP-gated (CS mass) and is NOT stated.
 
-**SIZE.** 60 lines total; SPLIT MANDATED: H.121a (split), H.121b (α leg), H.121c (β leg).
+**SIZE.** 60 lines total; SPLIT MANDATED: H.121a (split), H.121b (α leg), H.121c (β leg),
+*[added A-H.6]* **H.121d** (the content-weighted β census — a standalone polygon count, land
+it BEFORE H.121c).
 **SOURCE.** OM-2 §3.3 N-3 (displayed; *"hsplit and hhead hold as EQUALITIES; halpha holds
 as an EQUALITY with the windowed range and the structure slope c = m(m+1)/2; hbeta holds
 with measured K′ ≤ 0.0004 at (B′, c′) = (0, 1)"*); `EFF.GENIND.45` (the `S5.2` recursion),
@@ -8409,22 +8438,37 @@ theorem uClusterNorm_rateSpecies {O : Type} [CommRing O] [IsDomain O]
 ```
 
 **DEPENDS.** H.119, H.120, H.121 · H.65 (`RateSpecies`), H.66 (closure), H.30
-(`alpha_geom_partial_le_one`, fired at the recomposed slope `γ = clusterC m`), H.16/H.17
-(the recomposition identity) · H.71 (`rate_close` — see the route note).
+(`alpha_geom_partial_le_one`, fired at `γ = clusterC 2 = 1`, the `m = 2` leg only),
+*[added A-H.6]* **H.30b** (`alpha_geom_partial_le_third`, fired at `γ = clusterC 3 = 3 ≥ 2`,
+the `m = 3` leg), H.16/H.17 (the recomposition identity) · *[added A-H.6]* the LANDED
+`uClusterNorm_rateSpecies_two` (`ChapH/H122m2.lean`) for the `m = 2` half.
+**H.71 (`rate_close`) IS NO LONGER A DEPENDS** — see the route note.
 
-**PROOF.** 1. Strong induction on `N` (base `N = 1`: `û(1) = 1 ≤ 1·Q^0` by H.119 (i)).
-2. Head leg: H.113 exact, `Q^{−(N−1)}`. 3. α leg: H.121 (ii) + the induction hypothesis at
-windows `N − mk ≥ 1` + H.30 at `γ = clusterC m = c − m ≥ 1` (`m ≥ 2`) — H.71c's step-4
-(LOCUS)/(GEOM) recomposition verbatim, at the UNBOUNDED windowed range. 4. β leg: H.121
-(iii) absorbed by the `c`-inflation (H.66's `RateSpecies.mono`). 5. Sum by H.71's step-1
-one-term dominance (`pow_sub_dominance_one_term`, landed in `ChapH/H71.lean`).
-**ROUTE NOTE (F-H17.1).** Steps 1–5 are exactly the landed `rate_close` proof — but the
-landed theorem cannot be FIRED as-is (its `RecursionLegs` input fixes `n₀`; the clean legs
-of H.121 do not inhabit it, F-H17.1). Either PA-H17.1 lands first (then this node is one
-`rate_close` application at the repaired structure) or the fleet replays the six steps
-locally against H.121; both routes are sanctioned, the first is preferred.
+**PROOF [RE-WRITTEN: A-H.6 §4; the old PROOF and ROUTE NOTE are preserved verbatim in
+A-H.6 §1].** **The node splits on `m`.**
+**(m = 2) LANDED, unconditionally**: `ChapH/H122m2.lean`'s `uClusterNorm_rateSpecies_two`
+(the β bucket is empty by `not_isBetaState_two`, so `û(N) ≤ (N−1)·Q^{−(N−1)}`).
+**(m = 3)** strong induction on `N`. 1. Base `N = 1`: `û(1) = 1 ≤ 1·Q^0` by H.119 (i)
+(`uCluster_one`). 2. Split by H.121 (i) and normalize by `Q^{3(N−1)}`:
+`û(N) = ĥead(N) + α̂(N) + β̂(N)`. 3. Head: H.113 exact, `ĥead(N) = Q^{−(N−1)}`. 4. α: H.121
+(ii) + IH at windows `N − 3k ≥ 1` gives
+`α̂(N) ≤ Q^{−(N−1)}·(N−3)·Σ_{k≥1}(Q−1)Q^{−3k}`, and **H.30b** at `c := clusterC 3 = 3 ≥ 2`
+bounds that sum by `1/3` (the true value is `1/(Q²+Q+1) ≤ 1/7`), so
+`α̂(N) ≤ (N−3)⁺/3 · Q^{−(N−1)}`. 5. β: H.121 (iii) gives `β̂(N) ≤ (N/3)·Q^{−(N−1)}`
+directly — no `RateSpecies.mono` inflation. 6. Sum:
+`û(N) ≤ [1 + (N−3)⁺/3 + N/3]·Q^{−(N−1)} ≤ N·Q^{−(N−1)}` for every `N ≥ 2`
+(`N ≥ 4`: `1 + (N−3)/3 + N/3 = 2N/3`; `N ∈ {2,3}`: the α range is empty and
+`1 + N/3 ≤ N`), with `N = 1` from step 1.
+**ROUTE NOTE [RE-SIGNED: A-H.6].** `rate_close` (H.71) is **REFUTED as a route to this
+node's constants** and is retired from the DEPENDS: at ANY legs it returns
+`RateSpecies Q (1 + K′) (m + B′ + 1) (c′ + 1)`, whose `B`-slot is `≥ m + 1 ≥ 3` and whose
+`c`-slot is `≥ 2`, while H.66's `RateSpecies.mono` moves constants UPWARD only — so
+`(1,1,1)` is unreachable through it, before and after PA-H17.1 (which repairs the RANGE,
+F-H17.1, not the constants). **The local six-step replay above is the ONLY sanctioned
+route**, and PA-H17.1 is not a prerequisite for it.
 
-**SIZE.** 45 lines (or 15 if PA-H17.1 lands first). **SOURCE.** OM-2 §3.3 N-3 (*"the
+**SIZE.** 55 lines (`m = 2` is a citation; the `m = 3` induction is the work).
+**SOURCE.** OM-2 §3.3 N-3 (*"the
 species conclusion RateSpecies holds at (K, B, c) = (1, 1, 1) on true data at both
 degrees"*); `EFF.GENIND.150` (the `m = 2` closed-form tie), `EFF.GENIND.153`
 (`GENIND.C′` + the sharpness remark). **TEETH.** battery `P3 RateSpecies (K,B,c)=(1,1,1) on
@@ -9074,3 +9118,395 @@ the H.98 fence.
 Sections §§0–16 and A-H.1/A-H.2/A-H.3/A-H.4 are byte-unchanged by this append. DECISION D-H17.2
 and every H.98/GENIND-BOX-1 fence stand. CODEX/decorrelated CROSS-READ OWED on the re-signed
 clause (i) and on the `∀ a` licence of §4.*
+
+---
+
+## AMENDMENT A-H.6 (2026-08-16, dated append; unit A-H.6) — H.121 CLAUSE (iii): THE β ENVELOPE
+## RE-SIGNED AT `(K′, B′, c′) = (1/3, 1, 1)`; THE FINDING'S OWN REPAIR CANDIDATE REFUTED;
+## H.122's `rate_close` ROUTE CLOSED AND THE LOCAL REPLAY SIGNED WITH ITS ARITHMETIC
+
+**Provenance.** FINDING **F-H17.2** (`leanfinal/notes/RESCHEDULE_H121c_H122_2026-08-16.md`,
+commit `a3eff841`) showed that H.121 clause (iii) as frozen **can never certify H.122**: the
+normalized envelope is `β̂(N) ≤ Q·N^m·Q^{−(N−1)}` and `Q·N^m > N` for every `Q ≥ 2, m ≥ 2,
+N ≥ 1`, so the β cell alone overruns H.122's TOTAL budget `N·Q^{−(N−1)}`. The finding named a
+repair candidate and explicitly deferred the statement-level call. **This amendment makes that
+call. It also REFUTES the candidate**, certifies the true sharp form, and re-signs.
+
+The whole adjudication is decided by ONE new executable artifact,
+`verification/AH6_beta_envelope_check.py` (**54/54 checks, exit 0**, exact `Fraction`
+arithmetic; the reader is imported VERBATIM from `verification/openmath/OM2_genindb_battery.py`,
+the same transcription H.119/H.121a/H.121b gate). ⚠ S-1 throughout: every count below is the
+CONSERVATIVE complement `u_{m,1}`, never the semantic `undecidedCount` (finding F-2).
+
+---
+
+### §1. The frozen originals (preserved verbatim; nothing here is deleted)
+
+**(1a) H.121 clause (iii), as committed** — TRUE, but SUPERSEDED (never false):
+
+```lean
+theorem uCluster_beta_leg {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m : ℕ} (hm : 2 ≤ m) (hm3 : m ≤ 3) (N : ℕ) (hN : 1 ≤ N) :
+    (Nat.card {c : ClusterState O m N //
+        IsBetaState π c ∧ ClusterUndecided O π m N c} : ℝ)
+      ≤ (N : ℝ) ^ m * (residueCard O : ℝ) ^ (m * (N - 1))
+          * ((residueCard O : ℝ) ^ (N - 2))⁻¹
+```
+
+with its STATEMENT text: *"(iii) the β leg, bounded at `(K′, B′, c′) = (1, 0, 1)`:
+`#(β ∧ undec)(N) ≤ N^m · Q^{m(N−1)} · Q^{−(N−2)}` — the battery measures `K′ ≤ 0.0004`
+against this envelope, so `K′ = 1` is safe; the proof route is the degree-descent (children
+have degree `< m`) through the per-genre fibration (H.116), the union bound (H.63), and the
+two regime lemmas (H.67/H.68)."*
+
+**(1b) H.121 PROOF step 3, as committed:** *"3. (iii) partition the β-undecided set by genre
+(H.116 (ii)); per genre the composed count is `census_g · [Π T_l − Π(T_l − u_l)]` ≤ union bound
+(H.63); the child factors `u_l` are at degree `μ_l < m` — the DEGREE-DESCENT: at `m = 2` there
+are no β genres (children need `2 ≤ μ < m`); at `m = 3` children have `μ = 2` and their species
+is H.122 at `m = 2` (alternatively §5's landed `m = 2` closed form H.26/H.28); genre bookkeeping
+(slopes × windows ≤ polynomial in `N`) prices the envelope through H.67/H.68."*
+
+**(1c) H.122's PROOF and ROUTE NOTE, as committed:** *"PROOF. 1. Strong induction on `N` (base
+`N = 1`: `û(1) = 1 ≤ 1·Q^0` by H.119 (i)). 2. Head leg: H.113 exact, `Q^{−(N−1)}`. 3. α leg:
+H.121 (ii) + the induction hypothesis at windows `N − mk ≥ 1` + H.30 at `γ = clusterC m = c − m
+≥ 1` (`m ≥ 2`) — H.71c's step-4 (LOCUS)/(GEOM) recomposition verbatim, at the UNBOUNDED windowed
+range. 4. β leg: H.121 (iii) absorbed by the `c`-inflation (H.66's `RateSpecies.mono`). 5. Sum by
+H.71's step-1 one-term dominance (`pow_sub_dominance_one_term`, landed in `ChapH/H71.lean`).
+ROUTE NOTE (F-H17.1). Steps 1–5 are exactly the landed `rate_close` proof — but the landed
+theorem cannot be FIRED as-is (its `RecursionLegs` input fixes `n₀`; the clean legs of H.121 do
+not inhabit it, F-H17.1). Either PA-H17.1 lands first (then this node is one `rate_close`
+application at the repaired structure) or the fleet replays the six steps locally against H.121;
+both routes are sanctioned, the first is preferred."*
+
+**(1d) The finding's repair candidate, verbatim** (F-H17.2 §2, *"What the conclusion actually
+needs, and what is true"*): *"H.122 at `(1,1,1)` therefore needs a β envelope of the shape
+`β̂(N) ≤ K'' · Q^{−(N−1)}` with `K'' ≤ m − 1` and **no polynomial factor in `N`** — sharper than
+clause (iii) in the polynomial degree AND in the offset."* Call this **CANDIDATE-0**. It is
+REFUTED in §2.1. H.122's SIGNED TARGET is **byte-unchanged** by this amendment.
+
+---
+
+### §2. The certification (`verification/AH6_beta_envelope_check.py`, 54/54, exit 0)
+
+**Method, in three validated legs.** LEG A brute-forces every cluster state `(m, d = 1, N)` with
+the corpus reader and reports `#(β ∧ undec)` exactly. LEG B is a structural count at `m = 3`
+that makes large `N` reachable: at `m = 3` a β state has EXACTLY ONE child, of degree `μ = 2`
+(children need `2 ≤ μ < m`, and `2 + 2 > 3` forbids a second), so H.116 (ii)'s per-genre
+uniformity (battery `P1(f)`) gives `#(β ∧ undec)(N) = Σ_M n_β(N,M)·û₂(M)` with `n_β(N,M)` the
+number of β states whose child sits at window `M` and `û₂` the `m = 2` normalized complement
+(H.26's closed form). `n_β` is a pure Newton-polygon count — it depends only on the valuation
+vector and the unit residues — so it costs `O(N³(Q−1)³)` classes instead of `Q^{3(N−1)}` states.
+**LEG B is checked against LEG A cell-by-cell before it is used** (checks `B1`/`B2`, both counts
+and composed masses, `q ∈ {2,3}`, every overlapping `N`). LEG D re-derives the same limit from a
+CLOSED FORM off a decorrelated route (§2.2). Notation: `β̂(N) := #(β ∧ undec)(N)/Q^{m(N−1)}`.
+
+#### §2.1 CANDIDATE-0 (`β̂(N) ≤ (m−1)·Q^{−(N−1)}`, no polynomial factor) is **REFUTED**
+
+The refuting quantity is `ratio(N) := β̂(N)·Q^{N−1}`, which CANDIDATE-0 asserts is `≤ m − 1 = 2`.
+It is not bounded: it grows linearly.
+
+| `q` | first `N` with `ratio(N) > 2` | exact `ratio` there | exact `β̂` there |
+|---|---|---|---|
+| 2 | **`N = 32`** | `4518967813/2147483648 = 2.104308…` | `4518967813/4611686018427387904` |
+| 3 | **`N = 30`** | `441064751910830/205891132094649 = 2.142223…` | `441064751910830/14130386091738734504764811067` |
+
+(9 failures at `q = 2` and 11 at `q = 3` within `N ≤ 40`; check `C1`.) The growth is not an
+artifact of the window: `ratio(N)/N` converges UP to a positive limit, so no constant envelope
+of CANDIDATE-0's shape exists at any `Q`.
+
+**Why the finding reached it.** F-H17.2 derived the budget `(m−1)·Q^{−(N−1)}` by pricing the α
+leg with H.30 (`Σ_{k≥1}(Q−1)Q^{−kγ} ≤ 1`, correct but crude at `γ = clusterC 3 = 3`, where the
+true value is `1/(Q²+Q+1) ≤ 1/7`) and by using `N − mk ≤ N − m`. That leaves the β cell only the
+`O(1)` residue `(m−1)`. The measured β mass is genuinely `Θ(N·Q^{−(N−1)})`, so the crude α
+pricing — not the β cell — is what has to give. **The mathematics decided against the
+candidate; §2.2 certifies what is true instead, and §4 fixes the α pricing.**
+
+#### §2.2 The true sharp form: `β̂(N) ≤ K·N·Q^{−(N−1)}`, and the exact constant
+
+`ratio(N)/N` is the sharpest admissible `K`. Measured suprema (exact rationals, `m = 3`):
+
+| `q` | `sup_N ratio(N)/N` (over the tested range) | attained | asymptotic slope `(Q−1)/(2(Q²+Q+1))` |
+|---|---|---|---|
+| 2 | `13024600325359/193514046488576 = 0.067306…` | `N = 44` | `1/14 = 0.0714…` |
+| 3 | `393294254319121127/5403406870691968356 = 0.072786…` | `N = 40` | `1/13 = 0.0769…` |
+| 5 | `0.059474…` | `N = 26` | `4/62 = 0.0645…` |
+| 7 | `0.047819…` | `N = 22` | `6/114 = 0.0526…` |
+
+The slope is maximized at `Q = 3` (`1/13`), so **`K = 1/3` carries a uniform safety factor of
+`> 4.3` at every `Q` and every tested `N`** (checks `C2`, `C3`; measured margins `4.98×` at
+`q = 2`, `4.58×` at `q = 3`). Sample of the exact data at `q = 2, m = 3`:
+
+| `N` | `β̂(N)` exact | `ratio(N)` | `G(N)` (below) |
+|---|---|---|---|
+| 5 | `1/256` | `1/16` | `1/16` |
+| 6 | `13/2048` | `13/64` | `5/32` |
+| 7 | `29/8192` | `29/128` | `11/64` |
+| 8 | `47/16384` | `47/128` | `7/32` |
+
+**The PROVABLE constant, and where it comes from.** The route of §3 prices the cell by
+`β̂(N) ≤ N·Q^{−(N−1)}·G(N)` with the **content-weighted β census**
+
+    G(N)  :=  ( Σ_{β states c at window N}  Q^{betaContent c k(c)} ) / Q^{m(N−1)} .
+
+Exactly (check `C4`, and independently `D1–D4`):
+
+    G(N) ↑ Q/(Q² + Q + 1)   strictly from below,  and   Q/(Q²+Q+1) ≤ 2/7 < 1/3   for Q ≥ 2.
+
+`Q/(Q²+Q+1)` is decreasing in `Q` (`d/dQ` numerator `1 − Q² < 0`), so `Q = 2` is the worst case
+(check `D5`, `Q ≤ 199`). Measured suprema: `2/7` (`q = 2`), `3/13` (`q = 3`), `5/31` (`q = 5`),
+`7/57` (`q = 7`) — the closed form on the nose.
+
+**LEG D — the closed form, by the three β polygon shapes at `m = 3` (a decorrelated leg).**
+Write a state as `a₀ + a₁x + a₂x² + x³` with `v(a_j) ≥ 1`. A β event is a hull side of length 2
+with integer slope whose residual is a perfect square, or a single side of length 3 whose cubic
+residual has a double root. Exhaustively:
+
+| case | polygon | content `D` | digit count `/Q^{3(N−1)}` | `× Q^D`, summed |
+|---|---|---|---|---|
+| **A** | side `(1, 2k) → (3, 0)`, slope `k ≥ 1`; `v₀ ≥ 3k+1`; residual `y² + r₂y + r₁ = (y−z)²` | `3k` | `(Q−1)·Q^{−6k}` | `(Q−1)Σ_{k≥1}Q^{−3k} = 1/(Q²+Q+1)` |
+| **B** | side `(0, t+2k) → (2, t)`, slope `k`, then `(2,t) → (3,0)` slope `t`, `1 ≤ t ≤ k−1` | `2k + t` | `(Q−1)²·Q^{−3(t+k)}` | `(Q−1)²Σ_{j,t≥1}Q^{−j−3t} = 1/(Q²+Q+1)` |
+| **C** | one side `(0, 3k) → (3, 0)`; cubic residual `(y−z)²(y−w)`, `z,w ≠ 0`, `w ≠ z` | `3k` | `(Q−1)(Q−2)·Q^{−6k}` | `(Q−2)/(Q²+Q+1)` |
+
+Case B's sum is re-indexed by `j := k − t ≥ 1`: `(Q−1)²·(Σ_{j≥1}Q^{−j})(Σ_{t≥1}Q^{−3t}) =
+(Q−1)²/((Q−1)(Q³−1)) = 1/(Q²+Q+1)`. **Total `= (1 + 1 + (Q−2))/(Q²+Q+1) = Q/(Q²+Q+1)`** ✓, which
+is exactly LEG C's measured `sup_N G(N)`. (`D4` checks the identity; `C4` checks that the
+FINITE-`N` sum never exceeds the limit — the window truncation only removes states.)
+
+#### §2.3 The TOOTH (the frozen envelope fails where the re-signed one holds)
+
+Checks `C7`/`C8`, at every `N ∈ [2, 40]`, both `q`:
+
+* the FROZEN envelope `N^m·Q^{−(N−2)}` **exceeds H.122's total budget `N·Q^{−(N−1)}`** — indeed
+  it exceeds `1`, the trivial bound `β̂ ≤ 1`, for a long initial stretch (F-H17.2's own table);
+* the TRUE `β̂(N)` is **inside** that budget at every one of those `N`;
+* the RE-SIGNED envelope `(1/3)·N·Q^{−(N−1)}` is inside it too, with the `≥ 4.3×` margin above.
+
+So the defect F-H17.2 found was in the ENVELOPE, never in the cell — and the re-sign is the
+minimal change that closes it.
+
+#### §2.4 No weakening: the re-sign IMPLIES the frozen clause
+
+`(1/3)·N·Q^{−(N−1)} ≤ N^m·Q^{−max(N−2,0)}` for every `Q ≥ 2`, `m ≥ 2`, `N ≥ 1` (at `N = 1`:
+`1/3 ≤ 1`; at `N ≥ 2`: divide by `Q^{−(N−2)}` and compare `N/(3Q) ≤ N^m`). Machine-checked at
+every tested cell as `C6`. **The unique consumer of clause (iii) anywhere in the corpus is
+H.122** (`grep -rn uCluster_beta_leg` → the leanspec stub, the blueprint signature, and the
+F-H17.2 record; no other node's DEPENDS names it), so nothing else can be disturbed even in
+principle. This is a STRENGTHENING under the statement-fence.
+
+---
+
+### §3. Route adjudication I — H.121c (clause (iii)) is PRICED and NON-CIRCULAR
+
+**VERDICT: the census route the F-H17.2 record priced is CORRECT, it does yield a LINEAR (not
+constant) envelope, and it needs exactly one new node.** Step by step, at `2 ≤ m ≤ 3`:
+
+1. **Partition by genre** — H.116 (ii) `betaExtract_fiber_card` (`∃ F` only, TRACK V's
+   `census_g` NOT owed): per genre `g` (a fixed child set with fixed windows) the joint child map
+   has equicardinal fibres `F_g`, and `#(genre g) = F_g · Π_l T_l` with `T_l = Q^{μ_l(M_l − 1)}`.
+2. **Union bound** — H.63 `prod_sub_prod_le_sum`, no exactness hypothesis:
+   `#(β ∧ undec in g) = F_g·[Π_l T_l − Π_l (T_l − u_l)] ≤ F_g·Σ_l u_l Π_{j≠l} T_j
+   = #(genre g)·Σ_l û_l(M_l)`. **`F_g` cancels against `#(genre g)`** — this is why the route
+   avoids the genre census entirely, which is the F-H17.2 record's own §1 item 1.
+3. **The child rate at `μ = 2`, non-circularly** — at `m = 2` there are no β genres (H.118's
+   `betaChild_mult_lt` + H.109's `2 ≤ μ` force `2 ≤ μ < m`), so the count is `0` and the clause
+   is trivial. At `m = 3` every child has `μ = 2` and there is exactly one (`2 + 2 > 3`). Its
+   rate is §5's landed ground instance **H.28**, equivalently the LANDED, unconditional
+   `uClusterNorm_rateSpecies_two` of `leanfinal/Uniformity/ChapH/H122m2.lean` (with the tie
+   `uCluster_two_eq_uTwo` of the same file): `û₂(M) ≤ M·Q^{−(M−1)}`. **This is NOT the signed
+   H.122** (which quantifies `2 ≤ m ≤ 3` and is the node being served), so there is no circle —
+   the F-H17.2 record's §1 item 2, discharged.
+4. **The content substitution** — with `M = N − D`, `D = betaContent c k`:
+   `û₂(N − D) ≤ (N − D)·Q^{−(N−D−1)} ≤ N·Q^{D}·Q^{−(N−1)}`. Summing over β states,
+   `#(β ∧ undec)(N) ≤ N·Q^{−(N−1)}·Σ_{β states} Q^{D}`.
+5. **NEW NODE H.121d** closes `Σ_{β states} Q^{D} ≤ (1/3)·Q^{m(N−1)}` (§5 below; certified in
+   §2.2, sharp value `Q/(Q²+Q+1) ≤ 2/7`).
+6. Conclude clause (iii) at `(K′, B′, c′) = (1/3, 1, 1)`. ∎
+
+**What changed against the committed step 3.** The committed text priced the envelope "through
+H.67/H.68" with *"genre bookkeeping (slopes × windows ≤ polynomial in `N`)"* — an unquantified
+polynomial, which is exactly where the `N^m` came from and exactly what F-H17.2 killed.
+H.67/H.68 are **no longer consumed by clause (iii)**; the pricing is now an explicit finite sum
+(H.121d) with a certified constant. **H.121c's reschedule reason is unchanged**: it still needs
+H.116b (`betaExtract_fiber_card`), plus now H.121d.
+
+---
+
+### §4. Route adjudication II — H.122's `rate_close` route is CLOSED; the replay is signed
+
+**VERDICT: `rate_close` (H.71) is REFUTED as a route to `(1,1,1)`, permanently, and is retired
+from H.122's DEPENDS.** The landed closure returns
+
+    ∃ K, 0 ≤ K ∧ ∀ D, RateSpecies Q K (m + L.B' + 1) (L.c' + 1) (u D),      K = 1 + L.K'
+
+so its `B`-slot is `≥ m + 1 ≥ 3` and its `c`-slot is `≥ 2` **at any legs whatsoever**, while
+H.66's `RateSpecies.mono` moves `(K, B, c)` UPWARD only. `(1,1,1)` is therefore out of reach
+through `rate_close` both before and after PA-H17.1 (which repairs the RANGE, F-H17.1, and does
+not touch constants). This is F-H17.2's second leg, here promoted from a finding to the node's
+signed route. **PA-H17.1 is no longer a prerequisite for H.122.**
+
+**The signed route: the local replay, with its closing arithmetic.** The node splits on `m`.
+
+* **`m = 2` — LANDED, unconditional.** `uClusterNorm_rateSpecies_two`
+  (`ChapH/H122m2.lean`, commit `2720c2f3`, sorry-free, Lean-core footprint): the β bucket is
+  empty (`not_isBetaState_two`), so `û(N) ≤ (N−1)·Q^{−(N−1)}` and `(1,1,1)` closes with room.
+* **`m = 3` — strong induction on `N`.** Base `N = 1` is H.119 (i). For `N ≥ 2`, H.121 (i)
+  normalized reads `û(N) = ĥead(N) + α̂(N) + β̂(N)` with all three `≥ 0`, and:
+
+      ĥead(N) = Q^{−(N−1)}                                        [H.113, EXACT]
+      α̂(N)    ≤ (N−3)⁺ · Q^{−(N−1)} · Σ_{k≥1}(Q−1)Q^{−3k}
+              ≤ (N−3)⁺/3 · Q^{−(N−1)}                             [H.121 (ii) + IH + H.30b]
+      β̂(N)    ≤ (N/3) · Q^{−(N−1)}                                [H.121 (iii), re-signed]
+      ⟹  û(N) ≤ [1 + (N−3)⁺/3 + N/3] · Q^{−(N−1)} ≤ N · Q^{−(N−1)}
+
+  the last step being `2N/3 ≤ N` for `N ≥ 4` and `1 + N/3 ≤ N` for `N ∈ {2,3}` (where the α
+  range `3k ≤ N−1, k ≥ 1` is EMPTY). Machine-checked as `E2` for `2 ≤ N < 400`; the α exponent
+  recomposition `Q^{−6k}·Q^{−(N−3k−1)} = Q^{−3k}·Q^{−(N−1)}` is H.16/H.17's identity at
+  `clusterC 3 = 3`. **`E4` independently checks the CONCLUSION on true data**: the exact
+  recursion's `û(N)` satisfies `û(N) ≤ N·Q^{−(N−1)}` for `1 ≤ N ≤ 40` at `q ∈ {2,3}`.
+
+**The one new arithmetic input: NODE H.30b** (§6). H.30 alone (`Σ ≤ 1`) does NOT close the
+`m = 3` leg — with it the display becomes `1 + (N−3) + N/3 ≤ N`, false from `N = 4` on. The
+sharpening `Σ_{k≥1}(Q−1)Q^{−ck} ≤ 1/3` for `c ≥ 2` is what the linear β term is paid for with.
+
+**⚠ FENCE — clause (iii) alone does NOT close `m = 2`, and must not be used there.** Check `E3`:
+at `m = 2` the α factor is `H.30` at `γ = clusterC 2 = 1`, where `Σ = 1` is TIGHT (H.30's own
+tightness note), so `1 + (N−2) + N/3 ≤ N` FAILS from `N = 4` on. The `m = 2` leg is closed by
+the EMPTINESS of the β bucket, not by clause (iii)'s envelope — which is precisely why
+`ChapH/H122m2.lean` is cited as a leg rather than re-derived. A fleet agent that tries to run
+one uniform `2 ≤ m ≤ 3` induction through clause (iii) will fail at `m = 2, N = 4` and must
+return this fence, not a weakened statement.
+
+---
+
+### §5. NEW NODE H.121d [theorem] [fresh] — the content-weighted β census
+
+**STATEMENT.** *The pricing step of the β leg.* At `2 ≤ m ≤ 3`, weighting each β state by
+`Q^{D}` at its own child content `D = betaContent c k` costs at most a third of the census:
+
+    Σ_{c : β state at window N}  Q^{betaContent c k(c)}   ≤   (1/3) · Q^{m(N−1)} .
+
+Certified sharp value `Q/(Q²+Q+1) ≤ 2/7` (§2.2, checks `C4`, `D1–D5`); `1/3` is the signed
+literal, with the margin deliberate.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem beta_content_census {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m : ℕ} (hm : 2 ≤ m) (hm3 : m ≤ 3) (N : ℕ) (hN : 1 ≤ N) :
+    ∑ D ∈ Finset.range N,
+        (Nat.card {c : ClusterState O m N //
+            IsBetaState π c ∧ ∃ (μ k : ℕ) (z : ResidueField O),
+              HasChildAt π c μ k z ∧ betaContent c k = D} : ℝ)
+          * (residueCard O : ℝ) ^ D
+      ≤ (1 / 3 : ℝ) * (residueCard O : ℝ) ^ (m * (N - 1))
+```
+
+The sum ranges over `Finset.range N` because `betaContent c k ≤ N − 1` on non-drain states
+(H.108's landed `betaContent_le`, and β states are non-drain by `IsBetaState`'s first conjunct);
+at `m = 2` every summand's `Nat.card` is `0` (no β states) and the bound is trivial.
+
+**DEPENDS.** H.106 (`card_clusterState`), H.108 (`betaContent`, `betaContent_le`), H.109
+(`HasChildAt`), H.110/H.111 (`IsBetaState`), H.112 (i)/(ii) (event uniqueness and the window),
+H.117 (i) (CS empty at `m ≤ 3`) · H.30-family geometric sums.
+
+**PROOF.** At `m = 2` the β set is empty (H.118's `betaChild_mult_lt` + H.109's `2 ≤ μ` give
+`2 ≤ μ < m`), so both sides are `0 ≤ …`. At `m = 3` a β state carries EXACTLY ONE child, of
+degree `μ = 2` (`2 ≤ μ < 3`, and two children would need `2 + 2 ≤ 3`), so `k(c)` is well defined
+(H.112 (i)'s uniqueness argument, transported from α to the single β child). Stratify the β set
+by the child's slope `k` and by the polygon shape; §2.2's LEG-D table is the whole content, and
+each row is a digit count against `card_clusterState`:
+
+1. **Case A** (`v₁ = 2k` exactly, `v₀ ≥ 3k+1` and visible, `v₂ ≥ k`, residual `y² + r₂y + r₁`
+   a perfect square with root `z ≠ 0` — exactly `Q − 1` admissible residue pairs `(r₁, r₂)`, one
+   per `z`, in every characteristic): `D = 3k`, count `≤ (Q−1)·Q^{3(N−1)−6k}`.
+2. **Case B** (`v₂ = t` exactly, `v₀ = t + 2k` exactly, `1 ≤ t ≤ k−1`, `v₁ ≥ t+k`, residual
+   `r₂y² + sy + r₀ = r₂(y−z)²` — `(Q−1)²` admissible `(r₂, z)`, with `r₀, s` determined):
+   `D = 2k + t`, count `≤ (Q−1)²·Q^{3(N−1)−3(t+k)}`.
+3. **Case C** (one side `(0,3k) → (3,0)`, cubic residual `(y−z)²(y−w)` with `z, w ≠ 0`, `w ≠ z`
+   — `(Q−1)(Q−2)` admissible residue triples): `D = 3k`, count `≤ (Q−1)(Q−2)·Q^{3(N−1)−6k}`.
+
+Multiply each by `Q^{D}`, sum the three geometric series (Case B re-indexed by `j := k − t ≥ 1`
+into a product of two independent geometrics) and get `Q/(Q²+Q+1) ≤ 2/7 < 1/3`. Every finite-`N`
+count is `≤` the unbounded count (the window only deletes states — in Case A it deletes the
+`v₀ ≥ N` states, which are DRAIN, not β), so the finite sums are bounded by the limits.
+
+**SIZE.** 70 lines; SPLIT CANDIDATE: H.121d-i (the exhaustive case list: a β state at `m = 3`
+is A, B or C, with its content), H.121d-ii (the three digit counts + the geometric sums).
+**SOURCE.** A-H.6 §2.2/§3 (this amendment); no corpus antecedent — the committed step 3's
+*"genre bookkeeping (slopes × windows ≤ polynomial in `N`)"* is what this node replaces.
+**TEETH.** `verification/AH6_beta_envelope_check.py` checks `C4` (the finite-`N` sum never
+exceeds `Q/(Q²+Q+1)`, `q ∈ {2,3}`, `N ≤ 40`, exact) and `D1–D5` (the closed form, per case,
+`q ∈ {2,3}`, plus the `Q`-monotonicity to `Q = 199`) → **Lean theorem here**.
+**ENVIRONMENT.** ENV-H17 + `[Finite]` + `[IsAdicComplete]` + `π` explicit.
+
+---
+
+### §6. NEW NODE H.30b [lemma] [fresh] — the α-geometric sum at `c ≥ 2`
+
+**STATEMENT.** *H.30, sharpened where the slope has room.* For `2 ≤ Q`, `2 ≤ c` and every `n`,
+in `ℝ`: `Σ_{k<n} (Q−1)·(Q^{c(k+1)})⁻¹ ≤ 1/3`. (The true value is `(Q−1)/(Q^c − 1) ≤ 1/(Q+1)`;
+`1/3` is the `Q`-uniform literal and is TIGHT at `(Q, c) = (2, 2)`.)
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem alpha_geom_partial_le_third (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 2 ≤ c) (n : ℕ) :
+    ∑ k ∈ Finset.range n, ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ ≤ 1 / 3
+```
+
+**DEPENDS.** none · the landed `alpha_geom_partial_le_one` (H.30, `ChapH/H30.lean`) supplies the
+identical skeleton; mathlib `geom_sum_le_of_lt_one`.
+
+**PROOF.** Steps 1–3 of H.30 verbatim (set `r := ((Q:ℝ)^c)⁻¹`, `0 < r < 1`, partial geometric
+bound) give `Σ ≤ (Q−1)·r/(1−r) = (Q−1)/(Q^c − 1)`. Then `Q^c − 1 ≥ Q² − 1 = (Q−1)(Q+1)` by
+`2 ≤ c` (`Nat.pow_le_pow_right`), so the bound is `≤ 1/(Q+1) ≤ 1/3` by `2 ≤ Q`.
+
+**⚠ WHY IT IS NEEDED, AND WHY H.30 IS NOT RETIRED.** H.30's `1` is TIGHT at `c = 1`, i.e. at
+`m = 2` (its own tightness note), and the `m = 2` leg of H.122 needs exactly that form. H.30b
+fires only at `m ≥ 3`, where `clusterC m = m(m−1)/2 ≥ 3 ≥ 2`. Both are live.
+
+**SIZE.** 12 lines (H.30's proof plus two inequalities). **SOURCE.** A-H.6 §4.
+**TEETH.** `verification/AH6_beta_envelope_check.py` check `E1` (`2 ≤ c ≤ 11`, `q ∈ {2,3}`,
+exact) → **Lean theorem here**. **ENVIRONMENT.** ENV-H1.
+
+---
+
+### §7. What this amendment does NOT do
+
+It does **not** change H.122's signed statement (`RateSpecies (residueCard O) 1 1 1
+(uClusterNorm O π m)` at `2 ≤ m ≤ 3` is byte-unchanged); it does **not** prove H.121c, H.121d,
+H.30b or H.122 (all remain fresh, and H.121c is still RESCHEDULED behind H.116b); it does
+**not** touch clauses (i)/(ii) of H.121, which are LANDED (`H121.lean`, `H121b.lean`); it does
+**not** retire H.30, H.63, H.67, H.68 or H.71 as nodes (only their consumption by H.121 (iii)
+and H.122 changes); it does **not** discharge PA-H17.1 (F-H17.1 still stands as a defect of
+`rate_close`'s RANGE — it is simply no longer on H.122's critical path); it does **not**
+disturb the S-1 fence (H.123) or any `GENIND-BOX-1`/H.98 gate; and it declares **no** new axiom.
+
+### Bookkeeping installed by this amendment
+
+1. **`blueprint/CHAP-H_general_induction.md`** — the §2 amendment banner (row A-H.6); NODE
+   H.121 (clause (iii) STATEMENT re-signed, SIGNATURE re-signed + H.121d's signature added,
+   PROOF step 3 re-written, DEPENDS updated, SIZE/SPLIT updated); NODE H.122 (PROOF and ROUTE
+   NOTE re-written, DEPENDS updated, SIZE updated); this amendment block, carrying the frozen
+   originals verbatim (§1) and the two new nodes in full (§5, §6).
+2. **`leanspec/Leanspec/ChapH.lean`** — `LeanspecH17`: `uCluster_beta_leg` re-signed;
+   `beta_content_census` (H.121d) and `alpha_geom_partial_le_third` (H.30b) added as stubs.
+   `lake build Leanspec.ChapH` green.
+3. **`spec/DAG_BLUEPRINT_H.tsv`** — rows added for `BP.H.121d` and `BP.H.30b` and their
+   consumers; `BP.H.122 → BP.H.71` REMOVED (the route is closed), `BP.H.121 → BP.H.67` and
+   `BP.H.121 → BP.H.68` REMOVED (no longer consumed).
+4. **`verification/AH6_beta_envelope_check.py`** — new, retained as a standing regression
+   (exit 0 = CANDIDATE-0 stays refuted AND the re-signed envelope stays true); named in the
+   TEETH of H.121 (iii), H.121d and H.30b.
+
+*END OF AMENDMENT A-H.6 (2026-08-16). Touched nodes: H.121 (clause (iii) STATEMENT/SIGNATURE/
+PROOF/DEPENDS/SIZE), H.122 (PROOF/ROUTE NOTE/DEPENDS/SIZE), and the two nodes added here
+(H.121d, H.30b). Sections §§0–16 and A-H.1/A-H.2/A-H.3/A-H.4/A-H.5 are byte-unchanged by this
+append, as are H.121 clauses (i)/(ii) and H.122's signed statement. FINDING F-H17.2 is
+DISCHARGED at the statement level; its CANDIDATE-0 is refuted and preserved (§1d). CODEX/
+decorrelated CROSS-READ OWED on the re-signed clause (iii), on H.121d's three-case exhaustion,
+and on §4's closing arithmetic.*
