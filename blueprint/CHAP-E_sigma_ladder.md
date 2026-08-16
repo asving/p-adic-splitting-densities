@@ -37,6 +37,16 @@ read may discharge the obligation earlier per Part IV item 6's precedent).
 > consuming E.05, E.07, E.12, E.18, E.19, E.24, E.29, E.38, E.39, E.40, E.44, E.45, E.48, E.49,
 > E.60, E.67 or E.68.
 
+> **AMENDMENT BANNER 2026-08-16 (second) — E.36's SECOND SIGNED THEOREM WAS FALSE AND IS
+> RE-SIGNED.** The landing wave refuted `coprime_of_not_dvd` at its committed type (machine-checked
+> witness `O = ℤ[2i]`, `Ψ = X² + 1`, `F = (X − i)²`, in `leanfinal/Uniformity/ChapE/E36.lean`'s
+> `E36Refutation`): monic-factor descent from `Frac(O)[X]` to `O[X]` is EQUIVALENT to integral
+> closedness of `O`, so the committed PROOF's "Gauss/primitive" pull-back is not merely
+> mathlib-dependent, it is unsound over a bare domain. **AMENDMENT A-E.3** (end of file) re-signs
+> the clause with `[IsIntegrallyClosed O]` — PROVED, and free at every call site, since ENV-E2's
+> `[IsDiscreteValuationRing O]` yields the class by instance search. E.36's dichotomy clause and
+> E.37's `peel_once` are unchanged. Read A-E.3 before consuming E.36's coprimality clause.
+
 ---
 
 ## 0. How to read this chapter
@@ -2543,7 +2553,9 @@ carrier-supplied, C placeholder). Then any monic common divisor of `F` and `Ψ` 
 degree equals `Ψ` (degree squeeze: `D″ ≤ deg g₀ ≤ deg Ψ = D″`, both monic), i.e.
 `gcd(F, Ψ) ∈ {1, Ψ}` in the associate-free monic reading; consequently
 `Ψ ∤ F → IsCoprime (F.map …) (Ψ.map …)` over the fraction field — "the CONVENTION's chain,
-closed" (`EFF.HE7.119`).
+closed" (`EFF.HE7.119`) — **over a NORMAL `O`** *[re-signed: A-E.3 — the coprimality clause
+additionally binds `[IsIntegrallyClosed O]`; over a bare domain it is FALSE, machine-checked
+witness `O = ℤ[2i]` in `leanfinal/Uniformity/ChapE/E36.lean`'s `E36Refutation`]*.
 
 **SIGNATURE.**
 ```lean
@@ -2557,7 +2569,9 @@ theorem gcd_dichotomy {O : Type*} [CommRing O] [IsDomain O]
     ∀ g₀ : Polynomial O, g₀.Monic → g₀ ∣ F → g₀ ∣ Ψ →
       g₀.natDegree = 0 ∨ g₀ = Ψ
 
-theorem coprime_of_not_dvd {O : Type*} [CommRing O] [IsDomain O]
+-- [re-signed: A-E.3] `[IsIntegrallyClosed O]` ADDED; every other binder is byte-unchanged.
+-- The committed form (without it) is REFUTED — see AMENDMENT A-E.3 for the witness.
+theorem coprime_of_not_dvd {O : Type*} [CommRing O] [IsDomain O] [IsIntegrallyClosed O]
     {F Ψ : Polynomial O} (hF : F.Monic) (hΨ : Ψ.Monic) {D : ℕ} (hD : 0 < D)
     (hΨd : Ψ.natDegree = D)
     (hforce : ∀ g₀ : Polynomial O, g₀.Monic → g₀ ∣ F → g₀ ∣ Ψ →
@@ -2569,23 +2583,45 @@ theorem coprime_of_not_dvd {O : Type*} [CommRing O] [IsDomain O]
 
 **DEPENDS.** E.11 (the coprimality spelling) · mathlib `Polynomial.eq_of_monic_of_dvd`
 (degree-equal monic divisors are equal: `Polynomial.eq_of_monic_of_associated` +
-`Polynomial.natDegree_le_of_dvd`), fraction-field gcd (`EuclideanDomain.gcd_isUnit_iff`).
+`Polynomial.natDegree_le_of_dvd`), fraction-field gcd (`EuclideanDomain.gcd_isUnit_iff`) ·
+*[added: A-E.3 — the descent's actual mathlib route, machine-checked]*
+`IsIntegrallyClosed.eq_map_mul_C_of_dvd` (a monic factor over `Frac(O)` of a monic `O`-polynomial
+has an `O`-model, exactly under normality) + `Polynomial.Monic.dvd_of_fraction_map_dvd_fraction_map`
+(the divisibility comes back down) + `Polynomial.natDegree_map_eq_of_injective`,
+`Function.Injective.monic_map_iff`, `IsFractionRing.injective`.
 
 **PROOF.**
 1. Dichotomy: `g₀ ∣ Ψ` gives `deg g₀ ≤ D` (`natDegree_le_of_dvd`, `Ψ ≠ 0`); at positive degree
    `hforce` gives `deg g₀ = D`; monic divisor of equal degree ⟹ `g₀ = Ψ`
    (associated + both monic).
-2. Coprimality: over `FractionRing O` take the monic gcd `g`; pull its monic O-lift back
+2. Coprimality *[re-signed: A-E.3 — the descent is a normality step, not a Gauss/primitivity
+   step; the original text is preserved below as the superseded route]*: over `FractionRing O`,
+   if `IsCoprime` fails then the normalized gcd gives a MONIC common divisor `g` of positive
+   degree (`EuclideanDomain.gcd_isUnit_iff` + scaling by `C (leadingCoeff g)⁻¹`). Because `O` is
+   integrally closed, `g ∣ Ψ.map` with `Ψ` monic yields an `O`-model `g₀` with
+   `g₀.map = g` (`IsIntegrallyClosed.eq_map_mul_C_of_dvd`, whose `C (leadingCoeff g)` factor is
+   `1` at monic `g`); `g₀` is monic (`Function.Injective.monic_map_iff`) of the same positive
+   degree (`natDegree_map_eq_of_injective`), and divides `F` and `Ψ` back over `O`
+   (`Monic.dvd_of_fraction_map_dvd_fraction_map`). Clause 1 + `hndvd` then force
+   `g₀.natDegree = 0` — contradiction. ~~take the monic gcd `g`; pull its monic O-lift back
    (Gauss/primitive — or argue directly: a nontrivial common factor over the fraction field
    yields, by clearing denominators and primitivity of monic polynomials, a monic common
    O-divisor of positive degree — landed `Uniformity.Hensel` has `monic_factorization_unique`
    machinery; search first per the workflow ladder), then the dichotomy + `hndvd` forces
-   degree 0, i.e. coprime.
+   degree 0, i.e. coprime.~~ *(The struck route is FALSE as an unconditional claim: monic-factor
+   descent from `Frac(O)[X]` to `O[X]` is EQUIVALENT to integral closedness of `O`.)*
 
-**SIZE.** 34 lines. **SPLIT CANDIDATE:** the fraction-field descent as `E36a` (it is the one
-genuinely mathlib-dependent step; if the descent fights, the fallback contract is to state
-`coprime_of_not_dvd` with the O-level conclusion `∀ g₀, Monic → dvd → dvd → natDegree = 0` and
-let E.37 consume that form — a DECISION at the stub stage, flagged).
+**SIZE.** 34 lines. **SPLIT CANDIDATE:** the fraction-field descent as `E36a` — *[updated:
+A-E.3]* it is not merely "the one genuinely mathlib-dependent step", it is the step whose
+unconditional form is FALSE; it is landed as its own isolating lemma
+`coprime_of_not_dvd_of_descent` (the conclusion with the descent as an explicit hypothesis
+`hdesc`) plus the `[IsIntegrallyClosed O]` discharge. ~~if the descent fights, the fallback
+contract is to state `coprime_of_not_dvd` with the O-level conclusion
+`∀ g₀, Monic → dvd → dvd → natDegree = 0` and let E.37 consume that form — a DECISION at the stub
+stage, flagged~~ — the O-level fallback is the **RECORDED ALTERNATIVE, NOT ADOPTED** (A-E.3): it is
+literally clause 1 + `hndvd`, so it is already available, but it would push the descent onto every
+consumer of `(KEY-FREE)`, which E.11's `BlockData.hkeyfree` spells as `IsCoprime` over
+`FractionRing O`.
 
 **SOURCE.** `EFF.HE7.119` (ANNEX-LEMMA R2-a, statement + proof verbatim, incl. "a proper
 common factor would be a Galois-stable factor of Ψ of degree ≥ deg Ψ" and the chain
@@ -2596,9 +2632,21 @@ R2-a).
 
 **TEETH.** **PROOF-ONLY** at source ("The scenario it excludes is one the battery's frame
 cannot produce") → becomes a **Lean theorem** here — the chapter's clearest net upgrade of a
-proof-only unit to machine-checked.
+proof-only unit to machine-checked. *[added: A-E.3]* Plus a machine-checked **refutation** of the
+committed (normality-free) coprimality signature: the teeth bit both ways here.
 
-**ENVIRONMENT.** ENV-E2 (+ `[IsDomain O]`).
+**ENVIRONMENT.** ENV-E2 (+ `[IsDomain O]`; *[re-signed: A-E.3]* the coprimality clause also
+`[IsIntegrallyClosed O]`).
+
+**⚠ THE ENV DETERMINATION, RECORDED** *[added: A-E.3]*. This node's SIGNATURE does NOT bind
+ENV-E2's full DVR bundle: it binds the ENV-arithmetic weakening `{O : Type*} [CommRing O]
+[IsDomain O]` (bare domain — the dichotomy clause is pure degree arithmetic and wants nothing
+more). So `IsIntegrallyClosed O` is **not derivable inside the signed binder list** and had to be
+written down; the re-sign is a real hypothesis addition, not instance-restatement. At full ENV-E2
+it WOULD be restatement: `[IsDiscreteValuationRing O]` + `[IsDomain O]` gives `IsIntegrallyClosed O`
+by `infer_instance` at our pin (DVR → PID → UFD → integrally closed; machine-checked 2026-08-16).
+Consequence, and the reason A-E.3 chose this form: **every call site is unaffected** — all of them
+live in the DVR arena (E.11's blocks, E.22/E.23's instance rows), where the class is free.
 
 ---
 
@@ -2648,6 +2696,18 @@ irreducibility of Ψ is a CONCLUSION, not an assumption").
 `he7r1_supp.py` A1–A5 (8/8 peels exact, 2/2 PARI on both σ halves) → the identity layer is a
 **Lean theorem**; the letter claim (`σ(Ψ) = {(4,1)}`) rides E.51's dictionary row with the
 HE6R1-3 placeholder.
+
+**⚠ A-E.3 DISPOSITION — `peel_once`'s SIGNATURE IS UNCHANGED** *[added: A-E.3, 2026-08-16]*. E.36's
+coprimality clause was re-signed with `[IsIntegrallyClosed O]`; this node's DEPENDS consumes E.36
+but **needs no re-sign and no instance threading**, because the signed contract here consumes only
+E.36's *statement-level* company, never its coprimality term: the conclusion is the `∃ F′`
+factorization, and the PROOF uses (1) monic factoring + degree drop (E.18's steps, pure degree
+arithmetic over a domain) and (2) `Squarefree (F.map …)` against `(Ψ.map …)^2 ∣ F.map …` — no
+descent from `Frac(O)[X]` to `O[X]` anywhere, hence no normality. STATEMENT clause (ii) (`F′` and
+`Ψ` coprime) and clause (iii) (`Ψ ∤ F` ⟹ E.36's chain) are NOT signed conjuncts (the E-D13
+situation): whoever consumes clause (ii)/(iii) as a *term* consumes `coprime_of_not_dvd` and
+inherits its `[IsIntegrallyClosed O]` — free in the DVR arena where all such consumers live. Both
+`[IsDomain O]` and monicity stay exactly as committed.
 
 **ENVIRONMENT.** ENV-E2 (+ `[IsDomain O]`).
 
@@ -4716,6 +4776,9 @@ emitted (315 rows, acyclic, 8 layers). CODEX CROSS-READ OWED (§14 is the queue)
 checks, builds green): 13 defects, all repaired here by dated AMENDMENT A-E.1 below** — read it
 before consuming E.05, E.07, E.12, E.18, E.19, E.24, E.29, E.38, E.39, E.40, E.44, E.45, E.48,
 E.49, E.60, E.67 or E.68.
+**LANDING-WAVE RE-SIGN 2026-08-16: AMENDMENT A-E.3** — E.36's `coprime_of_not_dvd` was refuted at
+its committed type (bare-domain witness `ℤ[2i]`) and is re-signed with `[IsIntegrallyClosed O]`,
+free at ENV-E2; E.36's dichotomy clause and E.37 unchanged.
 
 <!-- RESUME: CHAPTER COMPLETE; STAGE-0e GATE CLOSED AND REPAIRED (amendment A-E.1, 2026-08-16).
 Remaining external actions: (i) orchestrator GC-13/GC-14 resolution pass (types the four
@@ -5020,5 +5083,138 @@ a transcription loss.
   E-D9's re-sign onto the landed lemma's own shape.
 * The DAG (`spec/DAG_BLUEPRINT_E.tsv`): no edge changes — every repair is intra-node, and the
   one dependency wording that moved (E.05's mathlib names) is not a DAG row.
+
+## AMENDMENT A-E.3 (2026-08-16, dated append) — E.36 `coprime_of_not_dvd`: REFUTED OVER A BARE DOMAIN; RE-SIGNED WITH `[IsIntegrallyClosed O]`
+
+**Provenance.** The chapter-E landing wave 3, landing node E.36 in
+`leanfinal/Uniformity/ChapE/E36.lean`, **refuted the node's second signed theorem at its committed
+type** with a machine-checked counterexample, landed the dichotomy clause verbatim, and landed TWO
+proved repair forms while WITHHOLDING the refuted name (the A-H.2 / G.23a precedent: nothing false
+enters any environment). This block is the adjudication: the signed contract becomes the
+`[IsIntegrallyClosed O]` form, and the record below is the evidence that the added class is both
+necessary and free where the node is used. Same convention as A-E.1 (CHAP-H's A-H.1): node text is
+repaired in place with `[re-signed: A-E.3]` / `[added: A-E.3]` tags, superseded text stays visible
+struck through, nothing is deleted.
+
+**The refuted original** (the committed SIGNATURE, preserved verbatim; it was also the leanspec
+stub until this amendment):
+
+    theorem coprime_of_not_dvd {O : Type*} [CommRing O] [IsDomain O]
+        {F Ψ : Polynomial O} (hF : F.Monic) (hΨ : Ψ.Monic) {D : ℕ} (hD : 0 < D)
+        (hΨd : Ψ.natDegree = D)
+        (hforce : ∀ g₀ : Polynomial O, g₀.Monic → g₀ ∣ F → g₀ ∣ Ψ →
+          g₀.natDegree ≠ 0 → D ≤ g₀.natDegree)
+        (hndvd : ¬ Ψ ∣ F) :
+        IsCoprime (F.map (algebraMap O (FractionRing O)))
+          (Ψ.map (algebraMap O (FractionRing O)))
+
+### The refutation (the wave's, preserved verbatim in substance; machine-checked legs named)
+
+**The witness.** `O = ℤ[2i] = {x + 2yi : x, y ∈ ℤ} ⊂ ℂ` — a domain (subring of ℂ), NOT integrally
+closed, with `FractionRing O = ℚ(i)` (`i = (2i)/2` is already a quotient of two elements of `O`).
+Put
+
+* `Ψ = X² + 1` — monic, `natDegree Ψ = 2 =: D > 0`, and `Ψ = (X − i)(X + i)` over `ℚ(i)`;
+* `F = X² − (2i)·X − 1` — monic, coefficients `−2i ∈ O`, `−1 ∈ O`, and `F = (X − i)²`.
+
+**Every hypothesis holds, and the conclusion fails.**
+
+* `hforce` **holds.** A monic `g₀ ∈ O[X]` with `g₀ ∣ Ψ` has `natDegree g₀ ≤ 2`; the only case below
+  `D = 2` is `natDegree g₀ = 1`, i.e. `g₀ = X − a` with `a ∈ O`, `a² = −1`. Writing `a = x + 2yi`
+  this is `x² − 4y² = −1` **and** `4xy = 0`, which has no integer solution (`x = 0` forces
+  `4y² = 1`; `y = 0` forces `x² = −1`). So the degree-1 case is empty and `hforce` holds vacuously
+  there, trivially at degree 2. Machine-checked:
+  `E36Refutation.no_sqrt_neg_one_in_Z2i : ∀ x y : ℤ, 4 * x * y = 0 → x ^ 2 - 4 * y ^ 2 ≠ -1`.
+* `hndvd` **holds.** `Ψ ∣ F` with both monic of degree 2 forces `F = Ψ`
+  (`eq_of_monic_of_natDegree_eq_of_dvd`, landed in the same file), and `F ≠ Ψ`: constant
+  coefficients `−1` vs `1` (and `X`-coefficients `−2i` vs `0`). Machine-checked:
+  `E36Refutation.fWitness_ne_psiWitness`.
+* **The conclusion FAILS.** `F` and `Ψ` share the factor `X − i` over `ℚ(i)`, so no Bézout identity
+  `aF + bΨ = 1` exists — evaluate at `i` and read `0 = 1`. Machine-checked at the `ℂ` shadow
+  (`E36Refutation.witnesses_not_isCoprime`, via `not_isCoprime_of_common_root`), which suffices:
+  `IsCoprime` is preserved by the ring map `ℚ(i) → ℂ` (`IsCoprime.map` through
+  `Polynomial.mapRingHom`), so a Bézout identity over `ℚ(i)` would give one over `ℂ`. Formalizing
+  `ℤ[2i]` and `FractionRing ℤ[2i] ≅ ℚ(i)` as Lean objects is plumbing with no mathematical content;
+  what is machine-checked is exactly the part where a transcription error could hide.
+
+### Where the committed PROOF broke (the diagnosis, sharper than the flag)
+
+PROOF step 2 read: *"over `FractionRing O` take the monic gcd `g`; pull its monic O-lift back
+(Gauss/primitive …)"*. **That pull-back is the false step.** A monic factor of a monic
+`O`-polynomial has coefficients in `Frac(O)` that are integral over `O`, so it lies in `O[X]`
+**if and only if `O` is integrally closed**: monic-factor descent ⟺ integral closure. `ℤ[2i]` fails
+it — `i ∈ Frac(O)` is a root of `X² + 1 ∈ O[X]` and `i ∉ O`, which is precisely the witness above.
+The node's own SPLIT-CANDIDATE note had flagged this as "the one genuinely mathlib-dependent step";
+the correct reading is that it is not a mathlib-availability question at all — the unconditional
+claim is FALSE, and "Gauss/primitivity" is the wrong lemma family (Gauss's lemma is about a GCD
+domain / UFD, i.e. it already assumes what has to be assumed).
+
+### The two proved repair forms (both landed; the first is kept, the second is signed)
+
+1. `coprime_of_not_dvd_of_descent` — the committed conclusion with the descent promoted to an
+   explicit hypothesis
+
+       (hdesc : ∀ g : Polynomial (FractionRing O), g.Monic → 0 < g.natDegree →
+         g ∣ F.map (algebraMap O (FractionRing O)) → g ∣ Ψ.map (algebraMap O (FractionRing O)) →
+         ∃ g₀ : Polynomial O, g₀.Monic ∧ g₀.natDegree ≠ 0 ∧ g₀ ∣ F ∧ g₀ ∣ Ψ)
+
+   PROVED. It certifies that `hdesc` is the ONLY missing ingredient: gcd-normalization
+   (`monic_common_divisor_of_not_isCoprime`) + clause 1 + `hndvd` are all machine-checked.
+   **Kept as an isolating lemma, NOT a signed contract name.**
+2. **`coprime_of_not_dvd` at `[IsIntegrallyClosed O]`** — the committed statement with the single
+   class added and every other binder byte-unchanged. PROVED, by discharging `hdesc` through
+   mathlib's `IsIntegrallyClosed.eq_map_mul_C_of_dvd` (the `C (leadingCoeff g)` factor is `1` at
+   monic `g`) + `Polynomial.Monic.dvd_of_fraction_map_dvd_fraction_map`, with
+   `Function.Injective.monic_map_iff` / `natDegree_map_eq_of_injective` /
+   `IsFractionRing.injective` for the transport. **THIS IS THE A-E.3 SIGNED CONTRACT.**
+
+So `[IsIntegrallyClosed O]` is sufficient, and by the refutation *some* such hypothesis is
+necessary — the class is not defensive decoration.
+
+### Why form 2 (the choice rationale): it is CALL-SITE-FREE
+
+The node's SIGNATURE binds the ENV-arithmetic weakening `[CommRing O] [IsDomain O]` (a bare domain,
+because clause 1 is pure degree arithmetic), so inside that binder list the class is a genuine
+addition. But **every consumer instantiates in the DVR arena**: E.11's `BlockData.hkeyfree` supplies
+`(KEY-FREE)` as `IsCoprime` over `FractionRing O` with `O` the standing complete DVR, and the
+instance rows E.22/E.23 are the same. At ENV-E2 verbatim
+(`[CommRing O] [IsDomain O] [IsDiscreteValuationRing O] [Finite (ResidueField O)]`) mathlib derives
+`IsIntegrallyClosed O` by instance search — DVR → PID → UFD → integrally closed — machine-checked at
+our pin (`example … : IsIntegrallyClosed O := by infer_instance`, Lean 4.31.0 / current mathlib pin,
+2026-08-16). Consequence: **no consumer signature moves, no instance is threaded anywhere, and the
+re-sign is invisible downstream** — the hypothesis is discharged by the arena.
+
+### The recorded alternative (NOT adopted): the O-level fallback
+
+The node's own fallback contract — state the coprimality clause at the `O` level as
+`∀ g₀, Monic → dvd → dvd → natDegree = 0` and let E.37 consume that form — is EXACTLY
+`gcd_dichotomy` + `hndvd`, hence already available from the landed file with no new mathematics.
+It is recorded here as the standing alternative and **not adopted**, for one reason: it does not
+close the CONVENTION's chain at the spelling the chapter actually consumes. `(KEY-FREE)` is spelled
+`IsCoprime` over `FractionRing O` (E.11), so the fallback would push the fraction-field descent —
+the false-without-normality step — onto every consumer, once per consumer, instead of discharging
+it once here where the hypothesis is free. Should a future node genuinely need the node over a
+non-normal domain, the fallback is the route, and `coprime_of_not_dvd_of_descent` is its interface.
+
+### Evidence and disposition
+
+* **Landed:** `leanfinal/Uniformity/ChapE/E36.lean` — `gcd_dichotomy` (committed signature,
+  verbatim), `coprime_of_not_dvd` (A-E.3 signature), `coprime_of_not_dvd_of_descent`,
+  `monic_common_divisor_of_not_isCoprime`, `eq_of_monic_of_natDegree_eq_of_dvd`, and namespace
+  `E36Refutation` (the refutation, kept as provenance). `lake env lean` clean, zero `sorry`,
+  `#print axioms` = `[propext, Classical.choice, Quot.sound]` for all eight printed declarations.
+* **Re-signed:** `leanspec/Leanspec/ChapE.lean`'s `coprime_of_not_dvd` stub, at the A-E.3 type, with
+  the committed form preserved in its docstring and an entry in that file's RE-SIGN LOG;
+  `lake build Leanspec.ChapE` green.
+* **E.37 `peel_once`: NO CHANGE** (disposition recorded at the node) — it consumes E.36's
+  statement-level company only; its signed conclusion is the `∃ F′` factorization and its proof
+  needs no descent, hence no normality. Whoever consumes E.37's unsigned clauses (ii)/(iii) as
+  terms consumes `coprime_of_not_dvd` and inherits the class, free at ENV-E2.
+* **Not touched:** every other node (no other blueprint signature mentions `coprime_of_not_dvd`);
+  the DAG `spec/DAG_BLUEPRINT_E.tsv` (no edge changes — the repair is intra-node, and E.37's E.36
+  edge stands); the four GC-13/GC-14 placeholder nodes; the dichotomy clause's strength.
+* **Strength ledger:** the coprimality clause is now WEAKER than committed by one class hypothesis,
+  which is the honest strength — the committed form was false. Nothing else in the chapter is
+  weakened, because no other node's hypotheses change.
 
 <!-- SENTINEL: BP-E END OF FILE -->
