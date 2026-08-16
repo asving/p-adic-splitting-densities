@@ -1064,9 +1064,99 @@ fullness regime (`EFF.HE6.13`'s uniform sufficient condition) — then set
 namespace Uniformity.Density.Tower
 
 theorem exists_testKey {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
-    [Finite (ResidueField O)] (hπ : Irreducible π) :
+    [Finite (ResidueField O)] (hπ : Irreducible π) (hh : 1 ≤ F.h) :
     ∃ Ψ : Polynomial O, IsTestKey L Ψ
 ```
+
+**⚠ D20 RE-SIGN [signed: A-C.1, 2026-08-16].** The originally-signed form carried no frame
+hypothesis, and the stub gate found the case `F.h = 0 ∧ 2 ≤ F.e₁·F.f₁` (live: `hcop` forces
+`e₁ = 1` at `h = 0`, `f₁` unconstrained) covered by NEITHER proof branch — step 2's
+`GenreDatum` needs `1 ≤ h` (D19), step 3 covers only `D′ = 1`. Re-signed with
+`(hh : 1 ≤ F.h)`, the corpus's own frame hypothesis (`EFF.HE6.08`; C.01's docstring: "the
+corpus frame has `1 ≤ h`"), under which the two branches are EXHAUSTIVE (`2 ≤ D′` via the
+C.14a adapter; `D′ = 1`, which forces `e₁ = f₁ = 1`, via the elementary lift). The excluded
+`h = 0` corner is the degenerate frame admitted for C.05's reconciliation alone; no test-key
+consumer fires on it. The STATEMENT's original "with `2 ≤ F.e₁ * F.f₁`" clause was the
+misplaced trace of the proof's INTERNAL split (restoring it would kill the proof's own step 3
+and leave `h = 0 ∧ D′ ≥ 2` inside the statement and uncovered) — it is superseded by the
+`1 ≤ F.h` reading above. Step 2's `GenreDatum` plumbing is now NODE C.14a (below), the §15
+RE-PLAN booking ("the `stageLiftO` GenreDatum packaging — merge into ONE helper") executed.
+
+---
+
+### NODE C.14a [def] [fresh] [signed: A-C.1] — **the H §8 carrier bridge (D19/D20 resolution)**
+
+**STATEMENT.** *The adapter from the frame to H.01's landed carrier, with the corpus
+preconditions explicit.* (i) `KeyFrame.genreDatum F hh hkey : GenreDatum` — the landed H.01
+datum at `(Q, e₁, f₁, μ, h) := (residueCard O, F.e₁, F.f₁, 2, F.h)`, requiring EXACTLY the two
+hypotheses the corpus has and `KeyFrame` (deliberately) lacks: `hh : 1 ≤ F.h` (`EFF.HE6.08`'s
+frame) and `hkey : 2 ≤ F.e₁ * F.f₁` (`GENHN.CLASS`(i)'s composite-stage clause); `hQ` is landed
+`two_le_residueCard`, and the `μ`-slot is the dummy `2` (H.54's lift never reads `μ` —
+machine-verified at the stub gate, `ChapH/H54.lean:76`). **H's landed side is untouched.**
+(ii) `KeyFrame.stageLiftIA F i a lift` — the lift with H.54's own summand shape over the
+frame's numerals, TOTAL (no hypotheses: definitions are total; the preconditions sit on the
+consuming theorems). (iii) `stageLiftIA_eq_stageLift'` — the `rfl`-grade reconciliation on the
+corpus perimeter: **the ONE door through which chapter C consumes H §8** (GC-5/H-14 honored);
+H.55/H.56 transport through it. (iv) `KeyFrame.stageCoord` (the `F_Q`-digit read of a
+stage-field element in the letter basis, canonical-representative-based) and
+`KeyFrame.stageLiftO F H₀ hpin M c` — the element-at-height-`M` form C.43's display consumes,
+with the `(i, a)`-solve by C.15's `slotIdx` (H.54's signed lesson executed: `i`, `a` explicit,
+the height equation carried by the consuming lemmas, never `Exists.choose`).
+
+**SIGNATURE.** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`]
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def KeyFrame.genreDatum (F : KeyFrame O π) [Finite (ResidueField O)]
+    (hh : 1 ≤ F.h) (hkey : 2 ≤ F.e₁ * F.f₁) : Uniformity.Density.Induction.GenreDatum where
+  Q := residueCard O
+  e₁ := F.e₁
+  f₁ := F.f₁
+  μ := 2
+  h := F.h
+  hQ := two_le_residueCard O
+  he₁ := F.he₁
+  hh := hh
+  hkey := hkey
+  hmul := le_rfl
+  hcop := F.hcop
+
+noncomputable def KeyFrame.stageLiftIA (F : KeyFrame O π) (i a : ℕ) (lift : ℕ → O) :
+    Polynomial O :=
+  ∑ s ∈ Finset.range F.f₁,
+    Polynomial.C (lift s * π ^ (a - s * F.h)) * Polynomial.X ^ (i + F.e₁ * s)
+
+theorem stageLiftIA_eq_stageLift' (F : KeyFrame O π) [Finite (ResidueField O)]
+    (hh : 1 ≤ F.h) (hkey : 2 ≤ F.e₁ * F.f₁) (i a : ℕ) (lift : ℕ → O) :
+    F.stageLiftIA (π := π) i a lift
+      = Uniformity.Density.Induction.stageLift' (F.genreDatum hh hkey) π i a lift := rfl
+
+noncomputable def KeyFrame.stageCoord (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀)
+    (c : F.stageField H₀ hpin) (s : ℕ) : ResidueField O :=
+  (resFieldXEquiv O).symm (((AdjoinRoot.mk_surjective c).choose).coeff s)
+
+noncomputable def KeyFrame.stageLiftO (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀)
+    (M : ℕ) (c : F.stageField H₀ hpin) : Polynomial O :=
+  F.stageLiftIA (π := π) (F.slotIdx M) ((M - F.slotIdx M * F.h) / F.e₁)
+    (fun s => resLift (F.stageCoord H₀ hpin c s))
+```
+(`KeyFrame.Pin` is the named pin proposition — the stub gate's D4 recommendation, hereby
+ADOPTED as a blueprint declaration of this node; `resLift` is the choice-section of the
+residue map, a private helper of this file.)
+
+**DEPENDS.** C.01 · C.15 · H.01 · H.54 (both by committed ID; the consuming height/residue
+clauses enter H.55/H.56 only through the reconciliation) · landed `two_le_residueCard`,
+`resFieldXEquiv` (B.59's auxiliary).
+
+**PROOF.** definitional (`rfl` for the reconciliation). **SIZE.** 40 lines.
+
+**SOURCE.** `EFF.HE6.08` (the `1 ≤ h` frame hypothesis); `EFF.GENHN.07` clause (i) (the
+`2 ≤ e₁f₁` clause, via H.01); H.54's ⚠ SIGNATURE NOTE (the `(i, a)`-explicit lesson);
+stub-gate defects D19/D20 (the adjudication record).
+
+**TEETH.** signed non-applicable (an adapter; its consumers' teeth fire at C.14/C.43/§13).
+
+**ENVIRONMENT.** ENV-C1 + `[Finite (ResidueField O)]` (for `Q`).
 
 **DEPENDS.** C.09 · C.10 · C.13 · **H.54 (`stageLift'`) · H.55 · H.56 · H.57** (the H §8
 entry point, GC-5; `normIdx` NOT consumed) · B.02–B.06 (development uniqueness for reading
@@ -1923,12 +2013,28 @@ theorem jump_floor (mr ℓ dr L μ : ℕ) (hm : 2 ≤ mr) (hjump : 2 ≤ ℓ * d
 theorem first_bite (D μ n : ℕ) (hD : 2 ≤ D) (hμ : 4 ≤ μ) (hn : n = D * μ) : 8 ≤ n
 
 theorem jump_drop (D ℓ dr μ μ₂ dfS : ℕ) (hD : 0 < D) (hℓ : 0 < ℓ) (hd : 0 < dr)
+    (hjump : 2 ≤ ℓ * dr)
     (hμ₂ : μ₂ * (D * ℓ * dr) = dfS) (hfS : dfS ≤ D * (ℓ * (μ / ℓ)))  -- deg f_S ≤ D′L_λ, L_λ ≤ μ
-    (hL : ℓ * dr * 2 ≤ 2 * μ) : 2 * μ₂ ≤ μ
+    : 2 * μ₂ ≤ μ
 ```
 
 (the exact hypothesis plumbing of `jump_drop` is fixed at stub stage against C.33/C.35's
 outputs; the SPEC is the chain `μ₂ ≤ deg R_λ/d_r ≤ μ/(ℓd_r)` with every step ℕ-cleared.)
+
+**⚠ D21 RE-SIGN [signed: A-C.1, 2026-08-16].** As originally committed, `jump_drop`'s third
+hypothesis read `hL : ℓ * dr * 2 ≤ 2 * μ` (an UPPER bound `ℓd_r ≤ μ`, where the argument needs
+the LOWER bound) and the clause was **FALSE** — machine-refuted at the stub gate at
+`(D, ℓ, d_r, μ, μ₂, deg f_S) = (1, 1, 1, 1, 1, 1)`, **168 counterexamples** on
+`D, ℓ, d_r ∈ [1,4] × μ, μ₂ ∈ [0,12]` (the executable refutation record is PRESERVED VERBATIM
+in `leanspec/Leanspec/ChapC.lean`'s numeric section: `jumpDropAsSigned`/`jumpDropCounterCount`).
+The re-signed form above replaces `hL` by `hjump : 2 ≤ ℓ * dr` — **verified against the source
+unit `EFF.HE6R1.10`**, whose displayed chain reads verbatim *"μ₂ = deg f_S/D″ ≤ … ≤ μ/(ℓd_r),
+using LEMMA HE6-3(b) … for the middle step and ℓd_r ≥ 2 for the last"*: the jump hypothesis is
+the SOURCE's own, and `EFF.HE6R1.11`'s punchline ("both branches of the widened box supply the
+descent factor ℓd_r ≥ 2") is why it is available at every jump — the same hypothesis the
+sibling `jump_floor` carries as `hjump`. Zero counterexamples on the larger box
+`D, ℓ, d_r ∈ [1,5] × μ, μ₂ ∈ [0,24]` (`#guard jumpDropRepairedCount == 0`, executed). The
+original transcription was a slip, not a source error.
 
 **DEPENDS.** C.30 · C.33/C.35 (suppliers of `deg f_S ≤ D′L_λ` and `L_λ ≤ μ` — forward
 within-section refs, fired after them).
@@ -6104,5 +6210,27 @@ checker. Cross-read item 10 now also covers this repair's three edited DEPENDS f
 
 <!-- RESUME: CHAPTER COMPLETE + A-7 SCC repair applied (127 nodes incl. C.56a; spec/DAG_BLUEPRINT_C.tsv 771 rows, verified acyclic by Tarjan+Kahn AND direct TSV check, 0 back-edges), TEETH summary + cross-read flags + A-§ deltas landed. CODEX CROSS-READ OWED (§16.2's ten items). Orchestrator items: PA-3(ii) re-harvest (GENTOW2 rows dangle by design); GC-13 placeholder resolution vs chapters D/E at freeze (HE7 units, ϑ-TABLE anchor, (ABS-HE4)); gate-(b) sign-offs for C.66/C.92/C.94; the RE-PLAN helper bookings in §15. -->
 
+
+**A-C.1 (2026-08-16, the SIGNATURE-COMPLETION amendment set — the stub gate's D1/D2 cure).**
+The stub gate of 2026-08-16 (`leanspec/Leanspec/ChapC.lean`, defect list D1–D25) found 70 of
+127 nodes without a Lean signature and 19 more with ellipses inside the Lean text. This
+amendment set completes and signs them; every touched node carries a per-node
+`[signed: A-C.1]` tag, and every signed signature has an ELABORATED twin in
+`leanspec/Leanspec/ChapC.lean`'s A-C.1 layer (`lake build Leanspec.ChapC` green at each
+increment — a signature that does not elaborate is not signed). Itemized record, grown per
+increment:
+
+* **A-C.1(a) — D21 (stop-the-line).** `C.31`'s `jump_drop` re-signed: `hL` (FALSE as signed,
+  168 counterexamples) → `hjump : 2 ≤ ℓ * dr`, verified against `EFF.HE6R1.10`'s own display;
+  refutation record preserved verbatim in the leanspec numeric section. See the node's D21
+  block.
+* **A-C.1(b) — D19/D20 (the carrier bridge).** New node **C.14a** (`KeyFrame.genreDatum` +
+  `stageLiftIA` + the `rfl` reconciliation + `stageCoord`/`stageLiftO`): H §8 is reachable
+  from chapter C's carrier exactly on the corpus perimeter (`1 ≤ h`, `2 ≤ e₁f₁`), as explicit
+  hypotheses; H's landed side untouched; the `μ`-dummy recorded. `C.14` re-signed with
+  `(hh : 1 ≤ F.h)` (its D20 case gap closed by exclusion of the for-C.05-only degenerate
+  frame). Node count 127 → **128**; census: +1 def.
+* **A-C.1(c) — D4 adoption.** `KeyFrame.Pin` (the named pin proposition) is hereby a
+  blueprint declaration (C.14a's block); new signatures below bind `(hpin : F.Pin H₀)`.
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->

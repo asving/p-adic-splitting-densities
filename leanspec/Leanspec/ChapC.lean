@@ -677,11 +677,87 @@ def IsTestKey {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
       F.stageHeight (dev F.key Ψ (L.ℓ * t)) = (((L.r.natDegree - t) * L.u : ℕ) : ℕ∞) ∧
       F.slotRes H₀ hpin ((L.r.natDegree - t) * L.u) (dev F.key Ψ (L.ℓ * t)) = L.r.coeff t))
 
-/-! ### NODE C.14 [lemma] — existence of a test key -/
+/-! ### NODE C.14 [lemma] — existence of a test key
+
+**D20 RE-SIGNED [signed: A-C.1, 2026-08-16].** The original signing carried NO frame
+hypothesis, leaving the case `F.h = 0 ∧ 2 ≤ F.e₁·F.f₁` with no proof route (D20). Re-signed
+with `(hh : 1 ≤ F.h)` — the corpus's own frame hypothesis (`EFF.HE6.08`; C.01's docstring:
+"the corpus frame has `1 ≤ h`") — under which the blueprint proof's two branches are
+EXHAUSTIVE: `2 ≤ D′` fires H §8 through the C.14a adapter below; `D′ = 1` (which forces
+`e₁ = f₁ = 1`) takes the elementary lift. The excluded `h = 0` corner is the degenerate
+frame admitted for C.05 alone; no chapter-C consumer fires a test key on it. (The STATEMENT
+field's "`2 ≤ F.e₁ * F.f₁`" clause was the misplaced trace of the proof's internal split —
+restoring IT would kill the proof's own step 3 and leave `h = 0 ∧ D′ ≥ 2` uncovered.) -/
 
 axiom exists_testKey {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
-    [Finite (ResidueField O)] (hπ : Irreducible π) :
+    [Finite (ResidueField O)] (hπ : Irreducible π) (hh : 1 ≤ F.h) :
     ∃ Ψ : Polynomial O, IsTestKey L Ψ
+
+/-! ### NODE C.14a [def] — the H §8 carrier bridge (the D19/D20 RESOLUTION) [signed: A-C.1]
+
+The adjudication, from the sources: `EFF.HE6.08`'s corpus frame carries `1 ≤ h`;
+`GENHN.CLASS`(i)'s composite-stage datum carries `2 ≤ e₁f₁` — exactly the two proof fields
+H.01's landed `GenreDatum` demands that `KeyFrame` lacks (D19); and H.54's `stageLift'` body
+reads only `(f₁, e₁, h)` of its datum (`ChapH/H54.lean:76`, verified at the stub gate).
+Resolution (the §15 RE-PLAN "merge C.14/C.43's packaging into ONE helper", executed):
+* `KeyFrame.genreDatum` — the adapter into H.01's landed carrier, with the two corpus
+  preconditions as EXPLICIT HYPOTHESES, `Q := residueCard O` (`hQ` from landed
+  `two_le_residueCard`), and the `μ`-slot filled by the dummy `2` (never read by H §8's
+  lift layer). **H's landed side is untouched.**
+* `KeyFrame.stageLiftIA` — the lift with H.54's OWN body over the frame's numerals, TOTAL
+  (a def is total; the corpus preconditions sit on the theorems that consume H.55/H.56).
+* `stageLiftIA_eq_stageLift'` — the `rfl`-grade reconciliation on the corpus perimeter:
+  THE one door through which chapter C consumes H §8 (GC-5 honored).
+* `KeyFrame.stageCoord` / `resLift` / `KeyFrame.stageLiftO` — the element-at-height form
+  C.43's display consumes: digits via the canonical `AdjoinRoot` representative (Classical
+  choice on `mk`-surjectivity; junk `0` outside), the `(i, a)`-solve via C.15's `slotIdx`
+  (H.54's signed lesson: `i`, `a` explicit, the height equation on the consuming lemmas). -/
+
+noncomputable def KeyFrame.genreDatum (F : KeyFrame O π) [Finite (ResidueField O)]
+    (hh : 1 ≤ F.h) (hkey : 2 ≤ F.e₁ * F.f₁) : Uniformity.Density.Induction.GenreDatum where
+  Q := residueCard O
+  e₁ := F.e₁
+  f₁ := F.f₁
+  μ := 2
+  h := F.h
+  hQ := two_le_residueCard O
+  he₁ := F.he₁
+  hh := hh
+  hkey := hkey
+  hmul := le_rfl
+  hcop := F.hcop
+
+/-- H.54's summand shape over the frame's own numerals — total, hypothesis-free. -/
+noncomputable def KeyFrame.stageLiftIA (F : KeyFrame O π) (i a : ℕ) (lift : ℕ → O) :
+    Polynomial O :=
+  ∑ s ∈ Finset.range F.f₁,
+    Polynomial.C (lift s * π ^ (a - s * F.h)) * Polynomial.X ^ (i + F.e₁ * s)
+
+/-- The reconciliation: on the corpus perimeter (`1 ≤ h`, `2 ≤ e₁f₁`) the frame lift IS
+H.54's `stageLift'` at the adapter datum — definitionally. H.55/H.56 transport through this. -/
+theorem stageLiftIA_eq_stageLift' (F : KeyFrame O π) [Finite (ResidueField O)]
+    (hh : 1 ≤ F.h) (hkey : 2 ≤ F.e₁ * F.f₁) (i a : ℕ) (lift : ℕ → O) :
+    F.stageLiftIA (π := π) i a lift
+      = Uniformity.Density.Induction.stageLift' (F.genreDatum hh hkey) π i a lift := rfl
+
+/-- **STUB-SIDE HELPER (D19-cure class), not a blueprint node.** A choice-section of the
+residue map. -/
+noncomputable def resLift (x : ResidueField O) : O :=
+  (IsLocalRing.residue_surjective (R := O) x).choose
+
+/-- The stage coordinate read: the `F_Q`-digits of a stage-field element in the letter basis
+`{η^s}`, through a chosen `AdjoinRoot.mk`-preimage (junk-stable: consumers pin it only
+through H.56-shaped residue clauses). -/
+noncomputable def KeyFrame.stageCoord (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀)
+    (c : F.stageField H₀ hpin) (s : ℕ) : ResidueField O :=
+  (resFieldXEquiv O).symm (((AdjoinRoot.mk_surjective c).choose).coeff s)
+
+/-- The blueprint's `stageLiftO`: the exact-height-`M` lift of a stage-field ELEMENT —
+the `(i, a)`-solve by C.15's `slotIdx` (the unique class solve), digits by `stageCoord`. -/
+noncomputable def KeyFrame.stageLiftO (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀)
+    (M : ℕ) (c : F.stageField H₀ hpin) : Polynomial O :=
+  F.stageLiftIA (π := π) (F.slotIdx M) ((M - F.slotIdx M * F.h) / F.e₁)
+    (fun s => resLift (F.stageCoord H₀ hpin c s))
 
 /-! ### NODE C.25 [def] — the level residual polynomial `R_λ` (D4 cured) -/
 
@@ -785,13 +861,19 @@ axiom jump_floor (mr ℓ dr L μ : ℕ) (hm : 2 ≤ mr) (hjump : 2 ≤ ℓ * dr)
 
 axiom first_bite (D μ n : ℕ) (hD : 2 ≤ D) (hμ : 4 ≤ μ) (hn : n = D * μ) : 8 ≤ n
 
--- D17: the blueprint's own parenthetical says "the exact hypothesis plumbing of `jump_drop` is
--- fixed at stub stage against C.33/C.35's outputs" — C.33 and C.35 are UNSIGNABLE (D2), so it
--- cannot be. Signed at the written type. `hfS`'s `μ / ℓ` is ℕ-division: at `ℓ ∤ μ` the hypothesis
+-- D17 (original finding, retained): `hfS`'s `μ / ℓ` is ℕ-division: at `ℓ ∤ μ` the hypothesis
 -- is strictly WEAKER than the intended `deg f_S ≤ D′·L_λ`, a silent truncation.
+-- **D21 RE-SIGNED [signed: A-C.1, 2026-08-16].** The originally-signed third hypothesis
+-- `hL : ℓ * dr * 2 ≤ 2 * μ` made the clause FALSE (machine-refuted; 168 counterexamples —
+-- the refutation record is PRESERVED VERBATIM in the numeric section below). Re-signed with
+-- the source's own jump hypothesis `hjump : 2 ≤ ℓ * dr`, verified against `EFF.HE6R1.10`
+-- verbatim: "μ₂ = deg f_S/D″ ≤ … ≤ μ/(ℓd_r), using LEMMA HE6-3(b) … for the middle step and
+-- ℓd_r ≥ 2 for the last" — the jump hypothesis IS the source's, and `.11`'s punchline ("both
+-- branches of the widened box supply the descent factor ℓd_r ≥ 2") is why it is available at
+-- every jump. 0 counterexamples on the larger box (`#guard jumpDropRepairedCount == 0` below).
 axiom jump_drop (D ℓ dr μ μ₂ dfS : ℕ) (hD : 0 < D) (hℓ : 0 < ℓ) (hd : 0 < dr)
-    (hμ₂ : μ₂ * (D * ℓ * dr) = dfS) (hfS : dfS ≤ D * (ℓ * (μ / ℓ)))
-    (hL : ℓ * dr * 2 ≤ 2 * μ) : 2 * μ₂ ≤ μ
+    (hjump : 2 ≤ ℓ * dr)
+    (hμ₂ : μ₂ * (D * ℓ * dr) = dfS) (hfS : dfS ≤ D * (ℓ * (μ / ℓ))) : 2 * μ₂ ≤ μ
 
 /-! ### NODE C.32 [theorem] — the three-clause jump-count bound (`EFF.HE6R1.47`) -/
 
@@ -1243,8 +1325,9 @@ def c31_floor_grid : Bool := Id.run do
 
 #guard c31_floor_grid
 
-/-! C.31's third clause exactly as signed, as a decidable predicate: all hypotheses true and the
-conclusion false. -/
+/-! C.31's third clause exactly as ORIGINALLY signed (pre-A-C.1; the refutation record of D21,
+preserved verbatim per the re-sign discipline), as a decidable predicate: all hypotheses true
+and the conclusion false. -/
 def jumpDropAsSigned (D l dr mu mu2 dfS : ℕ) : Bool :=
   decide (0 < D) && decide (0 < l) && decide (0 < dr) &&
   decide (mu2 * (D * l * dr) = dfS) && decide (dfS ≤ D * (l * (mu / l))) &&
