@@ -288,7 +288,7 @@ T2 = nfmodpr(K4, NH43^2/NH86, pr4); T3 = nfmodpr(K4, NH43^3/NH129, pr4);
 print("P5-T2 ", T2 == vt2, " member ", T2^5 == T2);
 print("P5-T3 ", T3 == vt3, " member ", T3^5 == T3);
 j1 = nfmodpr(K4, x4^2/5, pr4); j2 = nfmodpr(K4, Q14^2/(25*x4), pr4); j3 = nfmodpr(K4, Q24^2/(625*Q14), pr4);
-print("P5-TRANSPORT ", j1 == h1, " ", j2 == h2, " ", j3 == h3);
+print("P5-TRANSPORT ", itg(j1) == L1, " ", itg(j2) == L2, " ", itg(j3) == L3);
 Y = nfmodpr(K4, Q34/NH43, pr4);
 print("P5-YGEN ", Y^5 != Y);
 trY = Y + Y^5 + Y^25; e2Y = Y*Y^5 + Y*Y^25 + Y^5*Y^25; nmY = Y^31;
@@ -302,11 +302,11 @@ fq4n = factorpadic(F5n, 5, 400);
 print("P5N-FP ", matsize(fq4n)[1], " ", poldegree(fq4n[1,1]));
 K4n = nfinit([F5n, [5]]); prn = idealprimedec(K4n, 5);
 print("P5N-EF ", #prn, " ", prn[1].e, " ", prn[1].f);
-if(#prn == 1 && prn[1].f == 3,
-  my(Yn = nfmodpr(K4n, Mod(Q3,F5n)/(5*Mod(x,F5n)*Mod(Q1,F5n)*Mod(Q2,F5n)), prn[1]));
-  my(bad = select(w -> Yn^3 + w^2*Yn + w^3 == 0, [1,2,3,4]));
-  print("P5N-KILL ", #bad == 0),
-  print("P5N-KILL 1"));
+nkl = -1;
+if(#prn != 1 || prn[1].f != 3, nkl = 1);
+if(nkl == -1, Yn = nfmodpr(K4n, Mod(Q3,F5n)/(5*Mod(x,F5n)*Mod(Q1,F5n)*Mod(Q2,F5n)), prn[1]));
+if(nkl == -1, nkl = (#select(w -> Yn^3 + w^2*Yn + w^3 == 0, [1,2,3,4]) == 0));
+print("P5N-KILL ", nkl);
 print("GPB-DONE");
 """
 
