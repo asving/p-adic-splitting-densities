@@ -22,8 +22,8 @@ queue. Unit notes land in `docs/openmath-campaign/OM-<k>_<slug>_2026-08-16.md`; 
 | OM-5 | B-BOX-1 (the level-2 class-size residue leg) | CHAP-B H-2 residue; CHAP-I addendum routes | **DONE** — CITE-CANDIDATE (queue #5, COMPOSITE: Montes dichotomy + Serre/norm glue legs — HELD for explicit owner nod, fallback B.62); proved: the region is entirely off the monogenic-maximal locus; signable Prop + wiring landed |
 | OM-6 | window pinning + the EFF.GENHN.29 transcription gap | HYP.24 | **DONE** — 4/5 gaps PROVED at general e₁ (17 Lean decls, H89w, build 8923 green), 1 display clause refuted+repaired (F-OM6.1), reader rule CERTIFIED-OPEN per standing decision, O-2 discharged, HYP.24 CARRY-narrowed |
 | OM-7 | GENHN-HE(μ=3) + TOW-1 (incl. the no-owner finding) | HYP.81/82 | **DONE** — O-1 DISCHARGED: μ=3 transcription owner = H73w (H-adjacent, A-H.4; transport + 5-type dictionary + exhaustiveness + μ=2 consistency + HE3.B arithmetic, Lean-core); battery 97/97 GREEN closing all 4 recorded coverage gaps (first embedded n=7, first equal-char μ=3, first D′=4 f₁=2, first h=3); C.93(i) `tower_first_live` PROVED at the signed signature (sharp, fleet-wired); HYP.81/82 both stay CARRY with residues exactly {HYP.143} and {the n≥8 box family} (OM-10); cite-candidate considered and declined (NS-3/NS-9 recorded as option) |
-| OM-8 | the deep-twist ∀i≥3 conjunct | HYP.57/63 | queued |
-| OM-9 | the weld conjuncts (JD0-BOX-2 side; GENHN-BOX-2 awaits WELD-ZERO pass 2) | HYP.74, HYP.148+139 | queued |
+| OM-8 | the deep-twist ∀i≥3 conjunct | HYP.57/63 | **RUNNING** (wave 4, at the A-D.2 sitewise carrier) |
+| OM-9 | the weld conjuncts (JD0-BOX-2 side; GENHN-BOX-2 awaits WELD-ZERO pass 2) | HYP.74, HYP.148+139 | **RUNNING** (wave 4, WELD-ZERO arc fenced) |
 | OM-10 | the n≥8 box family | HYP.67–71/78–80/142/143/144-BOX-2 | queued |
 
 Non-members (orchestrator decisions, not open math): B.43 route re-plan; B.62 norm-bridge
