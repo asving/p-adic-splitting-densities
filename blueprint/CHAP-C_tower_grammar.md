@@ -3694,8 +3694,10 @@ row.
 consumes: **for monic `f = g·g'` over `O` with the §5 side data at a common side, the side
 residual of the product is the product of the side residuals up to a fixed `K^×`-scalar**
 — FGMN (Fernández–Guàrdia–Montes–Nart, *Residual ideals of MacLane valuations*,
-arXiv:1305.0775v3) **Thm 2.8 + Cor 4.7(3) + Cor 4.4(4)**, read through GENTOW2's
-tower↔MacLane dictionary and shear (`ψ₂^{FGMN} = R_2(φ₃)`-row faithfulness map). Lean
+arXiv:1305.0775v3) **Thm 2.8 + Cor 4.7(3) + Cor 4.4(4)** *[⚠ arXiv-v3 numbers — the
+PUBLISHED loci are Thm 2.8 + Cor 4.12(3) + Cor 4.9(3); see the A-3 rider below BEFORE
+transcribing — inline pointer added at A-C.1 to close D23's top-down trap]*, read through
+GENTOW2's tower↔MacLane dictionary and shear (`ψ₂^{FGMN} = R_2(φ₃)`-row faithfulness map). Lean
 carrier: an `axiom`-free import is impossible (it is a literature theorem about MacLane
 valuations); per Part V gate (b) it enters as a **declared, cited axiom** in the
 `AXIOM_FAITHFULNESS` pattern — published-source citation (the layout print at
@@ -3719,6 +3721,41 @@ three author-side citation echoes — including one from 2019, post-publication 
 numbering is the journal's. Statement text unchanged; every quoted display was found verbatim under
 its new number. Not print-read (ScienceDirect 403s automated fetches despite bronze OA): risk
 LOW-MEDIUM, two-minute closing check in audit §7.2.
+
+**SIGNATURE** [signed: A-C.1 — the stub gate's draft `fgmn_residual_mul`, elaborated in
+`leanspec/Leanspec/ChapC.lean`, ADOPTED as this node's exact Lean statement; fragile-order
+sign-off honored: C.97/C.98 elaborated in the same amendment].
+
+```lean
+namespace Uniformity.Density.Tower
+
+axiom fgmn_residual_mul (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : F.Pin H₀)
+    {g g' : Polynomial O} (hg : g.Monic) (hg' : g'.Monic) {u ℓ : ℕ} (hℓ : 0 < ℓ)
+    (hcop : Nat.Coprime u ℓ)
+    (hpg : IsDvPure F g u ℓ) (hpg' : IsDvPure F g' u ℓ)
+    (hne : (dvSideSet F g u ℓ).Nonempty) (hne' : (dvSideSet F g' u ℓ).Nonempty)
+    (hne'' : (dvSideSet F (g * g') u ℓ).Nonempty)
+    {M₀ M₀' M₀'' : ℕ}
+    (hp : dvHgt F g (dvSideMin F g u ℓ hne) = (M₀ : ℕ∞))
+    (hp' : dvHgt F g' (dvSideMin F g' u ℓ hne') = (M₀' : ℕ∞))
+    (hp'' : dvHgt F (g * g') (dvSideMin F (g * g') u ℓ hne'') = (M₀'' : ℕ∞)) :
+    ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
+      dvResPoly F H₀ hpin (g * g') u ℓ hne'' M₀'' hp''
+        = Polynomial.C c
+            * (dvResPoly F H₀ hpin g u ℓ hne M₀ hp * dvResPoly F H₀ hpin g' u ℓ hne' M₀' hp')
+```
+
+**⚠ THE THREE DRAFTING DECISIONS THE OWNER MUST INSPECT** (the blueprint fixed none of them;
+transcribed from the stub gate's draft, now the signed statement): (1) the "fixed
+`K^×`-scalar" is an existential nonzero `c` in `stageField`, not a named function of the data
+(the corpus does not name it; C-H10 forbids claiming a closed form); (2) the two factors and
+the product are read at the SAME `(u, ℓ)` with three separate nonemptiness/pin witnesses,
+because `dvResPoly` takes them as arguments and no signed node relates the three (that
+relation is `dvResPoly_mul_of_pure`, the RE-PLAN'd B.35 twin); (3) purity of both factors at
+the common side is hypothesized (`IsDvPure`) — the "common side data" of the prose.
+Status: **gate-(b)-SIGNED-AT-CATEGORY (append #66), statement-UNINSPECTED** — the owner's
+per-statement inspection is owed; queued in CHAP-I's gate-(b) addendum (A-C.1).
 
 **DEPENDS.** C.25 (the carrier the statement is written against) · GENTOW2's dictionary
 layer (§10: C.97/C.98 — the faithfulness map rows the transport reads through; DAG order
@@ -4390,10 +4427,70 @@ as fraction-field elements — the C.15/C.28 discipline iterated); and the itera
 fields `K_i` (C.12's `AdjoinRoot` chain — GC-7's depth-≥ 3 note applies: if the instance
 chain fails to elaborate, the recorded fallback triggers a DECISION here).
 
-**SIGNATURE** (shape). `structure DeepTower (F : KeyFrame O π) … (r : ℕ)` with per-level
-fields as `Fin r`-indexed data + the recursion as `def`s over it (`towerNorm i k : ℕ × ℕ ×
-(Fin i → ℕ)` — the unrolled exponent vector; `towerShift`, `towerCocycle` mirroring
-C.15/C.28 at each rung).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`, fragile no. 1].
+
+**⚠ DECISION A-C.1/GC-7 (the depth-≥ 3 carrier fallback, TAKEN — the DECISION block GC-7
+mandates).** The literal iterated-`AdjoinRoot` telescope cannot be structure fields (the field
+`ψ_{i+1} : Polynomial K_i` with `K_{i+1} := AdjoinRoot ψ_{i+1}` is a dependent telescope no
+Lean `structure` carries — exactly the elaboration failure GC-7's depth-≥ 3 note anticipates).
+GC-7's recorded fallback is taken: the `K_i` are abstract field data with the iterate
+witnessed by `RingEquiv` fields (`base : fld 1 ≃+* stageField`;
+`step : fld (i+1) ≃+* AdjoinRoot (ψ i)`). Arithmetic data is ℕ-total with range-scoped
+hypothesis fields; stage `1` IS the frame; `towerNorm i k` solves the level-`(i+1)`
+normalizer's exponent data (so `towerNorm 1` is §6's `n̂₂` verbatim).
+
+```lean
+namespace Uniformity.Density.Tower
+
+def towerSolve (u e k : ℕ) : ℕ :=
+  ((List.range e).find? (fun b => (b * u) % e == k % e)).getD 0
+
+structure DeepTower (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) (r : ℕ) where
+  e : ℕ → ℕ
+  f : ℕ → ℕ
+  u : ℕ → ℕ
+  fld : ℕ → Type*
+  fldField : ∀ i, Field (fld i)
+  ψ : (i : ℕ) → Polynomial (fld i)
+  he1 : e 1 = F.e₁
+  hf1 : f 1 = F.f₁
+  hu1 : u 1 = F.h
+  he : ∀ i, 1 ≤ i → i ≤ r → 0 < e i
+  hf : ∀ i, 1 ≤ i → i ≤ r → 0 < f i
+  hproper : ∀ i, 2 ≤ i → i ≤ r → 2 ≤ e i * f i
+  hcop : ∀ i, 2 ≤ i → i ≤ r → Nat.Coprime (u i) (e i)
+  hfloor : ∀ i, 1 ≤ i → i < r → e (i + 1) * (e i * f i * u i) < u (i + 1)
+  hψ : ∀ i, 1 ≤ i → i < r →
+    (ψ i).Monic ∧ Irreducible (ψ i) ∧ (ψ i).natDegree = f (i + 1) ∧ (ψ i).coeff 0 ≠ 0
+  base : fld 1 ≃+* F.stageField H₀ hpin
+  step : ∀ i, 1 ≤ i → i < r → (fld (i + 1) ≃+* AdjoinRoot (ψ i))
+
+attribute [instance] DeepTower.fldField
+
+def DeepTower.ehat (T : DeepTower F H₀ hpin r) (i : ℕ) : ℕ := ∏ j ∈ Finset.Icc 1 i, T.e j
+def DeepTower.Dcum (T : DeepTower F H₀ hpin r) (i : ℕ) : ℕ :=
+  ∏ j ∈ Finset.Icc 1 i, (T.e j * T.f j)
+def DeepTower.Econst (T : DeepTower F H₀ hpin r) (i : ℕ) : ℕ := T.e i * T.f i * T.u i
+
+def DeepTower.towerNorm (T : DeepTower F H₀ hpin r) : (i : ℕ) → ℕ → ℕ × ℕ × (Fin i → ℕ)
+  | 0, k => ((k - F.slotIdx k * F.h) / F.e₁, F.slotIdx k, fun x => x.elim0)
+  | i + 1, k =>
+      let b := towerSolve (T.u (i + 2)) (T.e (i + 2)) k
+      let m := (k - b * T.u (i + 2)) / T.e (i + 2)
+      let p := towerNorm T i m
+      (p.1, p.2.1, Fin.snoc p.2.2 b)
+
+def DeepTower.towerShift (T : DeepTower F H₀ hpin r) (i m : ℕ) : ℕ :=
+  towerSolve (T.u i) (T.e i) m
+def DeepTower.towerCocycle (T : DeepTower F H₀ hpin r) (i a b : ℕ) : ℕ :=
+  (T.towerShift i a + T.towerShift i b - T.towerShift i (a + b)) / T.e i
+
+def DeepTower.trunc (T : DeepTower F H₀ hpin r) (i : ℕ) (hi : i ≤ r) :
+    DeepTower F H₀ hpin i  -- every field re-scoped; body in the leanspec twin
+```
+(the letter/cocycle objects `Λ_i`/`τ_i` are carried as the `towerShift`/`towerCocycle`
+exponent bookkeeping, per the STATEMENT's "never as fraction-field elements"; `trunc` is the
+depth-restriction consumers use to instantiate level-general statements per rung.)
 
 **DEPENDS.** C.01 · C.09 · C.12 · C.15/C.16 · C.28 · C.42 (the depth-2 instance this
 extends).
@@ -4818,6 +4915,72 @@ stops at v3 (2013-07-26); a later author version (2013-12-04, UPCommons handle 2
 §§1, 3, 4, 5, 6; three author-side citation echoes, one post-publication (2019), match that numbering
 and none match v3. Not print-read: risk LOW-MEDIUM, closing check in audit §7.2.
 
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`, fragile no. 2].
+The §10 design note's packaging, DRAFTED: one field per consumed cited clause, typed against
+C.83's carrier; every field docstring carries the PUBLISHED number (A-3 audit §4). Parameters:
+the chain `W : DeepTower F H₀ hpin r` (keys `keyAt 1 … r`, `keyAt 1 = F.key`) plus the
+NEXT-stage numerals `(e', f', u')` — the recipe stage the §10 lemmas read (S2 witness: `r = 2`,
+`(e₃, f₃, u₃)`).
+
+```lean
+namespace Uniformity.Density.Tower
+
+class FGMNCalculus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) where
+  keyAt : ℕ → Polynomial O
+  keyAt_one : keyAt 1 = F.key
+  keyAt_deg : ∀ i, 1 ≤ i → i ≤ r → (keyAt i).natDegree = W.Dcum i
+  ExactGrade : ℕ → Polynomial O → Prop          -- the ν-grade pin (R3-2's scope fence)
+  Rgr : ℕ → Polynomial O → W.fld r              -- the graded read (C.104's (R-FGMN))
+  Rres : Polynomial O → Polynomial (W.fld r)    -- the residual operator R_ν
+  KP : Polynomial O → Prop
+  nuEquiv : Polynomial O → Polynomial O → Prop
+  letterZ : ℕ → W.fld r                         -- the z_i letters (Def 3.12-family)
+  Rgr_mul : ∀ β β' (g g' : Polynomial O), ExactGrade β g → ExactGrade β' g' →
+    ExactGrade (β + β') (g * g') ∧ Rgr (β + β') (g * g') = Rgr β g * Rgr β' g'
+      -- [published Cor 4.12(3); was Cor 4.7(3)]
+  Rgr_ne_zero : ∀ β (g : Polynomial O), ExactGrade β g → g ≠ 0 → Rgr β g ≠ 0
+      -- [published Cor 4.9(3); was Cor 4.4(4)]
+  Rres_recipe : ∀ (khat : ℕ → Polynomial O),
+    (∀ t, t < f' → ExactGrade ((f' - t) * u') (khat t)) →
+    (∀ t, t < f' → (khat t).natDegree < (keyAt r).natDegree) →
+    Rres ((keyAt r) ^ (e' * f') - ∑ t ∈ Finset.range f', khat t * (keyAt r) ^ (e' * t))
+      = Polynomial.X ^ f'
+        - ∑ t ∈ Finset.range f',
+            Polynomial.C (Rgr ((f' - t) * u') (khat t)) * Polynomial.X ^ t
+      -- [published Prop 5.6 + eq (11) + Cor 4.12(1) + Def 1.8's expansion-minimum]
+  KP_criterion : ∀ (g : Polynomial O), g.Monic →
+    g.natDegree = e' * f' * (keyAt r).natDegree →
+    Irreducible (Rres g) → (Rres g).natDegree = f' → KP g
+      -- [published Lemma 5.2(2); was Lemma 5.3(2)]
+  KP_irred : ∀ (g : Polynomial O), KP g → g.Monic → Irreducible g
+      -- [published Lemma 1.8 + Cor 1.10; Gauss transport to O[x] in the faithfulness entry]
+  Rres_keyAt : Rres (keyAt r) = 1
+      -- [published Thm 6.2; was Thm 6.3 — the non-equivalence pivot C.103 reads]
+  nuEquiv_ne_of_Rres : ∀ (g g' : Polynomial O), KP g → KP g' →
+    Rres g ≠ Rres g' → ¬ nuEquiv g g'
+      -- [published Prop 5.6, the consumed equivalence]
+
+axiom fgmn_calculus_exists {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (he' : 0 < e') (hf' : 0 < f')
+    (hcop : Nat.Coprime u' e') (hfloor : e' * W.Econst r < u') :
+    Nonempty (FGMNCalculus W e' f' u')
+```
+
+**⚠ THE A-C.1 DRAFTING FLAGS (owner must inspect — like C.66's, this statement is the unit's
+own drafting under append #66's category-level signature: gate-(b)-SIGNED-AT-CATEGORY,
+statement-UNINSPECTED):** (1) the interface carries its OWN operator carriers (`Rgr`/`Rres`
+valued in `W.fld r`) with `ExactGrade` as the R3-2 scope fence conditioning every graded
+clause; (2) **two BOOKED RESIDUAL FIELDS**, to be added when their consumers fire: the
+level-general one-sidedness clause (published **Cor 6.3**, was Cor 6.4 — C.90(b)'s leg; it
+needs the level-`i` `dv`-carriers, which are §9-scope) and the γ-letter defining reads
+(published Def 3.12-family — C.102's leg); until then C.90(b)/C.102 are typed against
+`letterZ` + their own repo-side carriers and the residual clauses enter as per-node
+hypotheses; (3) `KP_irred` is stated over `O[x]` (source: over `K_v[x]`; monic + `KP ⊂ O[x]`
++ Gauss — the transport recorded here so the faithfulness entry carries it); (4)
+`fgmn_calculus_exists` is DECLARED (not variable-form) under append #66's category signature,
+matching the C.66 precedent; C.126's census expects exactly this name.
+
 **DEPENDS.** C.25 · C.83 · §10's dictionary nodes (C.97/C.98) · the layout print
 (`docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt`, numbering verified at
 GENTOW2's ledger).
@@ -5023,9 +5186,40 @@ with the audited numeral identities as `#eval`-checkable lemmas: `u₃ = e₃·�
 the ladder values `[4, 10, 21]` for `(x, Φ′, Φ₂)`, `n̂₂(21) = 16Φ′`, and the floor chain
 `5 > 2·2·1`, `21 > 2·10`.
 
-**SIGNATURE** (shape). `def s2Witness : DeepTower …` + `theorem s2Witness_values …` (the
-`#eval` block per GC-11's executed-gate discipline — this node's values ARE gate data and
-re-fire in §13).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`, fragile no. 3].
+A `def`-kind node whose body is a proof-carrying concrete construction (`KeyFrame`'s
+`hirr`/`hpure`/`hresirr` at `Φ′ = x² − 2` are theorem-grade), so the stub layer carries it as
+axiom CONSTANTS with the defining numerals as signed value clauses — the fleet lands the
+construction. The recipe-key identities and the ladder `[4, 10, 21]` are machine-verified
+from the polynomials up at the stub gate (finding D25/F1); `towerNorm 1 21 = (4, 0, ![1])`
+IS `n̂₂(21) = 16Φ′` in exponent data (`π = 2`: `2⁴·x⁰·Φ′¹`).
+
+```lean
+namespace Uniformity.Density.Tower
+
+axiom s2Frame [Finite (ResidueField O)] (h2 : Irreducible (2 : O))
+    (hq : residueCard O = 2) : KeyFrame O (2 : O)
+
+axiom s2Frame_data [Finite (ResidueField O)] (h2 : Irreducible (2 : O))
+    (hq : residueCard O = 2) :
+    (s2Frame h2 hq).e₁ = 2 ∧ (s2Frame h2 hq).f₁ = 1 ∧ (s2Frame h2 hq).h = 1 ∧
+    (s2Frame h2 hq).key = Polynomial.X ^ 2 - Polynomial.C 2
+
+axiom s2Witness [Finite (ResidueField O)] (h2 : Irreducible (2 : O))
+    (hq : residueCard O = 2) (H₀ : ℕ) (hpin : (s2Frame h2 hq).Pin H₀) :
+    DeepTower (s2Frame h2 hq) H₀ hpin 3
+
+axiom s2Witness_values [Finite (ResidueField O)] (h2 : Irreducible (2 : O))
+    (hq : residueCard O = 2) (H₀ : ℕ) (hpin : (s2Frame h2 hq).Pin H₀) :
+    (s2Witness h2 hq H₀ hpin).e 2 = 2 ∧ (s2Witness h2 hq H₀ hpin).f 2 = 1 ∧
+    (s2Witness h2 hq H₀ hpin).u 2 = 5 ∧
+    (s2Witness h2 hq H₀ hpin).e 3 = 2 ∧ (s2Witness h2 hq H₀ hpin).f 3 = 1 ∧
+    (s2Witness h2 hq H₀ hpin).u 3 = 21 ∧
+    (s2Witness h2 hq H₀ hpin).towerNorm 1 21 = (4, 0, fun _ => 1)
+```
+(the `ℤ₂`-class is carried as `(h2 : Irreducible (2 : O))` + `(hq : residueCard O = 2)` —
+the leancheck `ℤ_[2]`-idiom instantiates both; the floor chain `5 > 2·2·1`, `21 > 2·10` is
+the structure's own `hfloor` at these numerals.)
 
 **DEPENDS.** C.83 · C.42/C.43 (the depth-2 sub-instance).
 
@@ -5057,8 +5251,25 @@ cloud at the corresponding cleared slope — a pure statement about `ℕ`-linear
 C.92-interface documentation, cited not proved). Witness: `κ₂ = 5/2 ↔ λ₂ = 1/4`, pins
 `(4,0),(2,7),(0,10) ↦ (4,4),(2,11/2),(0,5)`-cleared.
 
-**SIGNATURE** (shape). `theorem shear_onesided_iff …` (over abstract height functions
-`ℕ → ℕ∞`, ENV-C5-style — reusable for every dictionary row).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`, fragile no. 4].
+Signed ENV-C5-abstract over height functions `ℕ → ℕ∞` (reusable for every dictionary row):
+the shear `P ↦ (fun i => P i + i·c)` matches sides `(u, ℓ)` of the sheared cloud with sides
+`(u + ℓc, ℓ)` of the unsheared cloud, argmin-POINTWISE (on/above preserved termwise — the
+per-`j` iff is the strong reusable form; the one-sidedness equivalence is its two-endpoint
+instance). The witness `κ₂ = 5/2 ↔ λ₂ = 1/4` is the instance `c := e(µ₁)·w₂`-cleared.
+
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def hSupp (P : ℕ → ℕ∞) (n u ℓ : ℕ) : ℕ∞ :=
+  (Finset.range (n + 1)).inf fun j => ℓ • P j + (u * j : ℕ∞)
+
+def hOnSide (P : ℕ → ℕ∞) (n u ℓ j : ℕ) : Prop :=
+  hSupp P n u ℓ = ℓ • P j + (u * j : ℕ∞) ∧ P j ≠ ⊤
+
+theorem shear_onesided_iff (P : ℕ → ℕ∞) (n c u ℓ j : ℕ) (hℓ : 0 < ℓ) (hj : j ≤ n) :
+    hOnSide (fun i => P i + (i * c : ℕ∞)) n u ℓ j ↔ hOnSide P n (u + ℓ * c) ℓ j
+```
 
 **DEPENDS.** C.06/C.07 (the argmin carriers).
 
@@ -6232,5 +6443,18 @@ increment:
   frame). Node count 127 → **128**; census: +1 def.
 * **A-C.1(c) — D4 adoption.** `KeyFrame.Pin` (the named pin proposition) is hereby a
   blueprint declaration (C.14a's block); new signatures below bind `(hpin : F.Pin H₀)`.
+* **A-C.1(d) — the fragile five signed (§15 gate order (a), now satisfiable).** `C.83`
+  (`DeepTower`, on GC-7's recorded depth-≥ 3 fallback — DECISION block at the node: abstract
+  `K_i` with `RingEquiv` iterate witnesses; `towerNorm`/`towerShift`/`towerCocycle` as
+  exponent bookkeeping; `trunc` added), `C.92` (`FGMNCalculus`, one field per consumed
+  published clause + the `fgmn_calculus_exists` axiom; TWO booked residual fields recorded
+  at the node — C.90(b)'s Cor 6.3 leg and C.102's letter reads), `C.97` (the S2 witness as
+  axiom-constants with signed value clauses; `ℤ₂`-class carried by
+  `Irreducible (2 : O)` + `residueCard O = 2`), `C.98` (`shear_onesided_iff`,
+  ENV-C5-abstract over `ℕ → ℕ∞` with the new `hSupp`/`hOnSide` carriers), `C.66` (the stub
+  gate's `fgmn_residual_mul` draft ADOPTED as the exact statement; drafting flags carried;
+  the D23 top-down numbering trap closed by an inline pointer at the SOURCE paragraph).
+  C.92/C.66 remain **statement-UNINSPECTED** under append #66's category signature — the
+  owner's per-statement inspection is queued in CHAP-I's gate-(b) addendum.
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->

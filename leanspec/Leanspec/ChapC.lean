@@ -1093,6 +1093,259 @@ def TowerDatum.margin {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpi
 def TowerDatum.theta {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
     (μ₂ j : ℕ) : ℕ := (μ₂ - j) * T.E₂ + T.margin
 
+/-! # A-C.1 SIGNATURE-COMPLETION LAYER (2026-08-16)
+
+The amendment set **A-C.1** cures D1/D2: the signatures below are NEW signings (each tagged
+`[signed: A-C.1]` in the blueprint), elaborated here per §15's rule that a signature that does
+not elaborate is not signed. Conventions of this layer:
+* theorem-shaped nodes land as `axiom` (the standing stub lifecycle);
+* `def`-shaped nodes land with real bodies where the body is data/arithmetic; where a
+  blueprint `def` is a proof-carrying CONSTRUCTION (a structure instance whose fields are
+  theorem-grade), it lands as an `axiom` CONSTANT plus defining-equation axioms, and says so —
+  the fleet lands the body (recorded per node);
+* fragile-first order honored: C.83, C.92, C.97, C.98 open the layer (C.66 was already
+  elaborated by the gate, above), then the terminal-supply and section batches in DAG order. -/
+
+/-! ## A-C.1 §9-CARRIER — NODE C.83 [def] `DeepTower` (fragile no. 1)
+
+**DECISION A-C.1/GC-7 (the depth-≥ 3 carrier fallback, TAKEN).** The literal iterated
+`AdjoinRoot` telescope cannot be structure fields (the field `ψ (i+1) : Polynomial (K i)` with
+`K (i+1) := AdjoinRoot (ψ (i+1))` is a dependent telescope no Lean `structure` carries), which
+is exactly the failure mode GC-7 recorded with its fallback: *"a level structure carrying an
+abstract `[Field K_r]` with a specified `Algebra` chain and a proof it is the iterate"*. That
+fallback is taken here: `fld i` abstract with `Field` data, the iterate witnessed by
+`RingEquiv` fields (`base`, `step`). Arithmetic data is ℕ-total with range-scoped hypothesis
+fields (the file's junk-total discipline); the normalizer recursion / shift / cocycle are defs
+over the numerals, mirroring C.15/C.28 rung by rung (exponent bookkeeping only — never
+fraction-field elements). Indexing: stage `1` IS the frame (`e 1 = F.e₁` etc.); a `DeepTower`
+of depth `r` carries stages `1 … r`; `towerNorm i k` is the exponent solve of the
+level-`(i+1)` normalizer `n̂_{i+1}(k)` (so `towerNorm 1` is §6's `n̂₂` verbatim). -/
+
+/-- The C.15/C.28-pattern class solve at the pair `(u, e)`: the unique `b < e` with
+`b·u ≡ k [MOD e]` (junk `0` when no solve exists; total). -/
+def towerSolve (u e k : ℕ) : ℕ :=
+  ((List.range e).find? (fun b => (b * u) % e == k % e)).getD 0
+
+/-- NODE C.83 — the depth-`r` tower datum (`DEF GENTOW5-1`), on the GC-7 fallback carrier. -/
+structure DeepTower (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) (r : ℕ) where
+  /-- stage ramification data; `e 1 = F.e₁`; junk outside `1 … r`. -/
+  e : ℕ → ℕ
+  f : ℕ → ℕ
+  /-- stage heights; `u 1 = F.h`; the floor chain is `hfloor`. -/
+  u : ℕ → ℕ
+  /-- the level residue fields `K_i` (abstract, per DECISION A-C.1/GC-7). -/
+  fld : ℕ → Type*
+  fldField : ∀ i, Field (fld i)
+  /-- `ψ i` = the minimal polynomial of the level-`(i+1)` letter over `K_i` (live `1 ≤ i < r`). -/
+  ψ : (i : ℕ) → Polynomial (fld i)
+  he1 : e 1 = F.e₁
+  hf1 : f 1 = F.f₁
+  hu1 : u 1 = F.h
+  he : ∀ i, 1 ≤ i → i ≤ r → 0 < e i
+  hf : ∀ i, 1 ≤ i → i ≤ r → 0 < f i
+  /-- PROPERNESS at every stage `≥ 2`: `l_i = e_i f_i ≥ 2` (an improper stage is a refinement). -/
+  hproper : ∀ i, 2 ≤ i → i ≤ r → 2 ≤ e i * f i
+  hcop : ∀ i, 2 ≤ i → i ≤ r → Nat.Coprime (u i) (e i)
+  /-- THE FLOOR CHAIN, AS A DATUM FIELD (S12.1's carve-out): `u_{i+1} > e_{i+1}·E_i`. -/
+  hfloor : ∀ i, 1 ≤ i → i < r → e (i + 1) * (e i * f i * u i) < u (i + 1)
+  hψ : ∀ i, 1 ≤ i → i < r →
+    (ψ i).Monic ∧ Irreducible (ψ i) ∧ (ψ i).natDegree = f (i + 1) ∧ (ψ i).coeff 0 ≠ 0
+  /-- the iterate witness, base: `K_1` IS the frame's stage field. -/
+  base : fld 1 ≃+* F.stageField H₀ hpin
+  /-- the iterate witness, step: `K_{i+1} = K_i(β_{i+1})` as the `AdjoinRoot` iterate. -/
+  step : ∀ i, 1 ≤ i → i < r → (fld (i + 1) ≃+* AdjoinRoot (ψ i))
+
+-- the abstract chain's `Field` data, registered so consumers elaborate (directed: keyed on
+-- the projection `DeepTower.fld`).
+attribute [instance] DeepTower.fldField
+
+namespace DeepTower
+
+variable {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+
+/-- `ê_i = e_1⋯e_i`. -/
+def ehat (T : DeepTower F H₀ hpin r) (i : ℕ) : ℕ := ∏ j ∈ Finset.Icc 1 i, T.e j
+
+/-- `D_i = l_1⋯l_i = (e_1f_1)⋯(e_if_i)`. -/
+def Dcum (T : DeepTower F H₀ hpin r) (i : ℕ) : ℕ := ∏ j ∈ Finset.Icc 1 i, (T.e j * T.f j)
+
+/-- the side constant `E_i := e_i·f_i·u_i` (`E_1 = D_1·h`). -/
+def Econst (T : DeepTower F H₀ hpin r) (i : ℕ) : ℕ := T.e i * T.f i * T.u i
+
+/-- The normalizer recursion, as pure exponent bookkeeping: `towerNorm i k` is the exponent
+data `(a₀, i₀, (b_1, …, b_i))` of `n̂_{i+1}(k) = π^{a₀} x^{i₀} Φ_1^{b_1} ⋯ Φ_i^{b_i}` —
+solved by `e_{j+1}·m_j(k) + b_j(k)·u_{j+1} = k`, `0 ≤ b_j(k) < e_{j+1}` (unique by
+coprimality; the frame solve at the bottom). `towerNorm 1` is §6's `n̂₂`, verbatim. -/
+def towerNorm (T : DeepTower F H₀ hpin r) : (i : ℕ) → ℕ → ℕ × ℕ × (Fin i → ℕ)
+  | 0, k => ((k - F.slotIdx k * F.h) / F.e₁, F.slotIdx k, fun x => x.elim0)
+  | i + 1, k =>
+      let b := towerSolve (T.u (i + 2)) (T.e (i + 2)) k
+      let m := (k - b * T.u (i + 2)) / T.e (i + 2)
+      let p := towerNorm T i m
+      (p.1, p.2.1, Fin.snoc p.2.2 b)
+
+/-- the rung-`i` shift (C.15's pattern at `(u_i, e_i)`). -/
+def towerShift (T : DeepTower F H₀ hpin r) (i m : ℕ) : ℕ := towerSolve (T.u i) (T.e i) m
+
+/-- the rung-`i` cocycle (C.28's pattern; the `τ_i`-exponent bookkeeping). -/
+def towerCocycle (T : DeepTower F H₀ hpin r) (i a b : ℕ) : ℕ :=
+  (T.towerShift i a + T.towerShift i b - T.towerShift i (a + b)) / T.e i
+
+/-- truncation to depth `i ≤ r` (every field re-scoped; used to instantiate level-general
+consumers at each rung). -/
+def trunc (T : DeepTower F H₀ hpin r) (i : ℕ) (hi : i ≤ r) : DeepTower F H₀ hpin i where
+  e := T.e
+  f := T.f
+  u := T.u
+  fld := T.fld
+  fldField := T.fldField
+  ψ := T.ψ
+  he1 := T.he1
+  hf1 := T.hf1
+  hu1 := T.hu1
+  he := fun j h1 h2 => T.he j h1 (h2.trans hi)
+  hf := fun j h1 h2 => T.hf j h1 (h2.trans hi)
+  hproper := fun j h1 h2 => T.hproper j h1 (h2.trans hi)
+  hcop := fun j h1 h2 => T.hcop j h1 (h2.trans hi)
+  hfloor := fun j h1 h2 => T.hfloor j h1 (h2.trans_le hi)
+  hψ := fun j h1 h2 => T.hψ j h1 (h2.trans_le hi)
+  base := T.base
+  step := fun j h1 h2 => T.step j h1 (h2.trans_le hi)
+
+end DeepTower
+
+/-! ## A-C.1 §10-CARRIER — NODE C.92 [cite] `FGMNCalculus` (fragile no. 2)
+
+The §10 design note's packaging, drafted: **one field per consumed cited clause**, typed
+against C.83's carrier (the depth-`r` chain) — the FGMN side exists in Lean ONLY through this
+interface. Every field docstring carries the PUBLISHED number of
+`docs/CITE_NUMBERING_AUDIT_2026-08-16.md` §4 (J. Algebra 427 (2015) 30–75,
+DOI 10.1016/j.jalgebra.2014.12.022); the arXiv-v3 numbers the sources pin are given in
+parentheses. Parameters: the chain `W` (depth `r`, keys `keyAt 1 … r` with `keyAt 1 = F.key`)
+plus the NEXT-stage numerals `(e', f', u')` — the recipe stage the §10 lemmas read
+(at the S2 witness: `r = 2`, `(e₃, f₃, u₃)`).
+
+⚠ LIKE C.66: the STATEMENT below is this unit's own drafting under append #66's
+category-level signature — gate-(b)-SIGNED-AT-CATEGORY, statement-UNINSPECTED; flagged for
+the owner. TWO BOOKED RESIDUAL FIELDS (recorded in the blueprint node, to be added when
+their consumers fire): the level-general one-sidedness clause (published **Cor 6.3**, was
+Cor 6.4 — C.90(b)'s leg; needs the level-`i` `dv`-carriers, §9-scope) and the γ-letter
+defining reads (published Def 3.12-family — C.102's leg). -/
+
+/-- NODE C.92 — the MacLane-chain certificate interface ([cite:FGMN-chain], gate (b)). -/
+class FGMNCalculus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) where
+  /-- the MacLane chain keys `Φ_1 … Φ_r` (`Φ_1 = F.key`); junk outside. -/
+  keyAt : ℕ → Polynomial O
+  keyAt_one : keyAt 1 = F.key
+  /-- `deg Φ_i = D_i` (chain-degree law; published §§5–6 chain conventions). -/
+  keyAt_deg : ∀ i, 1 ≤ i → i ≤ r → (keyAt i).natDegree = W.Dcum i
+  /-- the exact-grade pin (`ν`-value data): the scope carrier of R3-2's fence — every graded
+  read below is conditioned on it (`digit` applied only in scope). -/
+  ExactGrade : ℕ → Polynomial O → Prop
+  /-- the graded coefficient read `R_{r+1,β}` at cleared grade `β`, valued in the top residue
+  field (C.104's `(R-FGMN)`, the `ε₂`-normalized coordinate; published §4). -/
+  Rgr : ℕ → Polynomial O → W.fld r
+  /-- the residual operator `R_ν(·)` of the depth-`r` valuation, valued in `K_r[y]`
+  (published §§4–6). -/
+  Rres : Polynomial O → Polynomial (W.fld r)
+  /-- `KP(ν)`-membership (key/prime polynomial for the depth-`r` MacLane valuation). -/
+  KP : Polynomial O → Prop
+  /-- `ν`-equivalence `∼_ν`. -/
+  nuEquiv : Polynomial O → Polynomial O → Prop
+  /-- the FGMN residue letters `z_i` (published Def 3.12-family `γ_i`-letters), in `K_r`. -/
+  letterZ : ℕ → W.fld r
+  /-- [published **Cor 4.12(3)**; was Cor 4.7(3)] graded multiplicativity of the `R`-read. -/
+  Rgr_mul : ∀ β β' (g g' : Polynomial O), ExactGrade β g → ExactGrade β' g' →
+    ExactGrade (β + β') (g * g') ∧ Rgr (β + β') (g * g') = Rgr β g * Rgr β' g'
+  /-- [published **Cor 4.9(3)**; was Cor 4.4(4)] nonvanishing of the in-scope graded read
+  (the single-pin polygon leg C.100's `u(β) ≠ 0` consumes). -/
+  Rgr_ne_zero : ∀ β (g : Polynomial O), ExactGrade β g → g ≠ 0 → Rgr β g ≠ 0
+  /-- [published **Prop 5.6 + eq (11)**; was Prop 5.7 + eq (14), plus Def 1.8's
+  expansion-minimum and **Cor 4.12(1)**] the recipe expansion law: the residual of the
+  recipe key is the `y`-polynomial of the graded slot reads — the raw (B-law) sum. -/
+  Rres_recipe : ∀ (khat : ℕ → Polynomial O),
+    (∀ t, t < f' → ExactGrade ((f' - t) * u') (khat t)) →
+    (∀ t, t < f' → (khat t).natDegree < (keyAt r).natDegree) →
+    Rres ((keyAt r) ^ (e' * f') - ∑ t ∈ Finset.range f', khat t * (keyAt r) ^ (e' * t))
+      = Polynomial.X ^ f'
+        - ∑ t ∈ Finset.range f',
+            Polynomial.C (Rgr ((f' - t) * u') (khat t)) * Polynomial.X ^ t
+  /-- [published **Lemma 5.2(2)**; was Lemma 5.3(2)] the key-polynomial criterion at the
+  recipe degree (admissibility/degree forcing). -/
+  KP_criterion : ∀ (g : Polynomial O), g.Monic →
+    g.natDegree = e' * f' * (keyAt r).natDegree →
+    Irreducible (Rres g) → (Rres g).natDegree = f' → KP g
+  /-- [published **Lemma 1.8 + Cor 1.10**; were Lemma 1.11 + Cor 1.13] key polynomials are
+  irreducible (over `K_v[x]` in the source; monic + `KP(µ) ⊂ O[x]` transports it to `O[x]`
+  by Gauss — the transport recorded in the faithfulness entry). -/
+  KP_irred : ∀ (g : Polynomial O), KP g → g.Monic → Irreducible g
+  /-- [published **Thm 6.2**; was Thm 6.3 items (1)(2)(3), v3's (3) absorbed into (2)] the
+  chain key's own residual is trivial — the non-equivalence pivot C.103 reads. -/
+  Rres_keyAt : Rres (keyAt r) = 1
+  /-- [published **Prop 5.6**, the consumed equivalence] distinct residuals ⟹ not
+  `ν`-equivalent. -/
+  nuEquiv_ne_of_Rres : ∀ (g g' : Polynomial O), KP g → KP g' →
+    Rres g ≠ Rres g' → ¬ nuEquiv g g'
+
+/-- NODE C.126's census name / C.92's ONE signed axiom (`fgmn_calculus_exists`): the interface
+is realized on every chain. Gate-(b)-SIGNED-AT-CATEGORY (append #66), statement-UNINSPECTED —
+flagged for the owner; consumers may also take `[FGMNCalculus W e' f' u']` hypothesis-form. -/
+axiom fgmn_calculus_exists {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (he' : 0 < e') (hf' : 0 < f')
+    (hcop : Nat.Coprime u' e') (hfloor : e' * W.Econst r < u') :
+    Nonempty (FGMNCalculus W e' f' u')
+
+/-! ## A-C.1 §10 — NODE C.97 [def+lemma] the S2 tower witness (fragile no. 3)
+
+`def`-kind node whose body is a proof-carrying concrete construction (a `DeepTower` instance
+over `ℤ₂`-class data: `KeyFrame`'s `hirr`/`hpure`/`hresirr` fields at `Φ′ = x² − 2` are
+theorem-grade); per this layer's rule it lands as axiom CONSTANTS with the defining numerals
+as signed value clauses. The recipe-key identities (`Φ₂ = Φ′² − 4x`, `Φ₃ = Φ₂² − 16Φ′`) and
+the ladder `[4, 10, 21]` are already machine-verified from the polynomials up in the numeric
+gate below (finding D25/F1); `towerNorm 1 21 = (4, 0, ![1])` is `n̂₂(21) = 16Φ′` in exponent
+data (`π = 2`: `π⁴x⁰Φ′¹`). -/
+
+axiom s2Frame [Finite (ResidueField O)] (h2 : Irreducible (2 : O))
+    (hq : residueCard O = 2) : KeyFrame O (2 : O)
+
+axiom s2Frame_data [Finite (ResidueField O)] (h2 : Irreducible (2 : O))
+    (hq : residueCard O = 2) :
+    (s2Frame h2 hq).e₁ = 2 ∧ (s2Frame h2 hq).f₁ = 1 ∧ (s2Frame h2 hq).h = 1 ∧
+    (s2Frame h2 hq).key = Polynomial.X ^ 2 - Polynomial.C 2
+
+axiom s2Witness [Finite (ResidueField O)] (h2 : Irreducible (2 : O))
+    (hq : residueCard O = 2) (H₀ : ℕ) (hpin : (s2Frame h2 hq).Pin H₀) :
+    DeepTower (s2Frame h2 hq) H₀ hpin 3
+
+axiom s2Witness_values [Finite (ResidueField O)] (h2 : Irreducible (2 : O))
+    (hq : residueCard O = 2) (H₀ : ℕ) (hpin : (s2Frame h2 hq).Pin H₀) :
+    (s2Witness h2 hq H₀ hpin).e 2 = 2 ∧ (s2Witness h2 hq H₀ hpin).f 2 = 1 ∧
+    (s2Witness h2 hq H₀ hpin).u 2 = 5 ∧
+    (s2Witness h2 hq H₀ hpin).e 3 = 2 ∧ (s2Witness h2 hq H₀ hpin).f 3 = 1 ∧
+    (s2Witness h2 hq H₀ hpin).u 3 = 21 ∧
+    (s2Witness h2 hq H₀ hpin).towerNorm 1 21 = (4, 0, fun _ => 1)
+
+/-! ## A-C.1 §10 — NODE C.98 [lemma] the normalization shear (fragile no. 4)
+
+Signed ENV-C5-abstract, over height functions `ℕ → ℕ∞` (reusable for every dictionary row):
+the shear `P ↦ P + j·c` matches sides `(u, ℓ)` of the sheared cloud with sides
+`(u + ℓc, ℓ)` of the unsheared one, argmin-pointwise (on/above preserved termwise). The
+witness `κ₂ = 5/2 ↔ λ₂ = 1/4` is the instance `c = e(µ₁)·w₂`-cleared. -/
+
+/-- the abstract cleared support value of a height function on `[0, n]` (C.06/C.07's shape,
+carrier-free). -/
+noncomputable def hSupp (P : ℕ → ℕ∞) (n u ℓ : ℕ) : ℕ∞ :=
+  (Finset.range (n + 1)).inf fun j => ℓ • P j + (u * j : ℕ∞)
+
+/-- membership of abscissa `j` in the `(u, ℓ)`-side of the abstract cloud. -/
+def hOnSide (P : ℕ → ℕ∞) (n u ℓ j : ℕ) : Prop :=
+  hSupp P n u ℓ = ℓ • P j + (u * j : ℕ∞) ∧ P j ≠ ⊤
+
+/-- NODE C.98 — `shear_onesided_iff`. -/
+axiom shear_onesided_iff (P : ℕ → ℕ∞) (n c u ℓ j : ℕ) (hℓ : 0 < ℓ) (hj : j ≤ n) :
+    hOnSide (fun i => P i + (i * c : ℕ∞)) n u ℓ j ↔ hOnSide P n (u + ℓ * c) ℓ j
+
 /-! # §§9–13 — THE THIRD STAGE, THE GENTOW2 SUPPLY LAYER, THE HT COUNT LAYER, THE LEVEL-`N`
 CERTIFICATES, AND THE GATES (C.83–C.126)
 
