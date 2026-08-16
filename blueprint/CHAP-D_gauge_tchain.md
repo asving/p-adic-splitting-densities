@@ -691,8 +691,9 @@ exactly the `(H-VARTHETA-RES)_i` conditionality (**D.62** = `HVarthetaRes`; "D.6
 pre-A-1 numbering) — supplying this structure at depth IS the hypothesis. FAITHFULNESS:
 formally stronger than the sitewise clauses; see CHAP-D honesty item D-H3 and §13 item 2.
 ⚠ D-D12 (stage-0e gate, stop-the-line): the EXISTENTIAL form of that reading — D.62's
-`HVarthetaRes` — is VACUOUS as signed; re-sign owned by the Display-A carrier adjudication
-unit (see §9's A-D.1 cross-reference stub). This structure itself is unaffected. -/
+`HVarthetaRes` — is VACUOUS as signed; re-signed by the Display-A carrier adjudication unit as
+DECISION D-2 / amendment A-D.2 (see §9's A-D.1 cross-reference stub). This structure itself is
+unaffected. -/
 structure GaugeArena (G : Type*) [CommGroup G] (K : Type*) [Field K]
     (N : NormSection G) where
   v : G →* Multiplicative ℤ
@@ -3356,13 +3357,20 @@ regression retained).
 > `VarthetaWConjunct` degenerates to `Wle` plus that fact; and D-H3's "formally STRONGER than the
 > sitewise clauses" holds for D.07 used as a THEOREM HYPOTHESIS but is **FALSE in the existential
 > direction D.62 uses** (this is §14 item 2(iii), answered).
-> **Ownership: the D-D12 re-sign is NOT A-D.1's.** A separate Display-A carrier adjudication unit
-> owns the DECISION block and the re-signed D.62/D.63; this amendment records the refutation,
-> leaves both nodes' committed text byte-unchanged, and forwards the gate's (non-applied) repair
-> direction: *state `HVarthetaRes` against a GIVEN ambient residue datum and require the arena's
-> `res` to agree with it on the ϑ-quotients, or state the sitewise clause directly.* Until that
-> unit lands, **no chapter (E, I) may consume D.62/D.63 as a strength claim**, and the two nodes'
-> §13 rows stay open. Everything else in §9 is unaffected.
+> **Ownership: the D-D12 re-sign is NOT A-D.1's — it is amendment A-D.2's, and it is IN FLIGHT.**
+> A separate Display-A carrier adjudication unit owns the DECISION block and the re-signed
+> D.62/D.63. As of A-D.1's close it had **already landed the Lean side** (commit `d420f112`,
+> `leanspec/Leanspec/ChapD.lean`, build green): per its own record, *"D.62/D.63 re-signed in
+> leanspec — sitewise ambient-residue carrier (**DECISION D-2**), old existential form
+> named-and-voided as `HVarthetaResVoided`, D-H3 direction restored as a proved lemma"*, with the
+> *"blueprint DECISION block + amendment A-D.2 and the non-triviality countermodel"* owed in that
+> unit's following commits. A-D.1 therefore records the refutation only, leaves both nodes'
+> committed text **byte-unchanged**, and forwards the gate's repair direction it did not apply:
+> *state `HVarthetaRes` against a GIVEN ambient residue datum and require the arena's `res` to
+> agree with it on the ϑ-quotients, or state the sitewise clause directly* — which is the
+> direction A-D.2 reports taking. **Read A-D.2's block, not this stub, for the signed carrier**;
+> until it lands here, no chapter (E, I) may consume D.62/D.63 as a strength claim from THIS text,
+> and the two nodes' §13 rows stay open. Everything else in §9 is unaffected.
 
 ### NODE D.62 [def] [fresh]
 
@@ -4090,30 +4098,63 @@ def-class names and the 9 proved helpers of A-D.1. Interface/record/table nodes 
 prose, D.36, D.42, D.43, D.53, D.54, D.56, D.61, D.64) contribute **no stubs** — they declare no
 Lean name except D.06's `thetaEl_mul_varthetaEl` and D.10's `varthetaG2`, already counted.
 
-**Rules for the stub-landing agent.**
-1. **Elaborate the fragile signatures FIRST:** D.17 (`levelOneArena` — `GaugeArena` fields
-   over `Multiplicative (ℤ × ℤ)` with `MonoidHom.ker` subtype), D.08 (`res` applied to
-   subtype elements — the membership lemmas must be explicit `mem_ker` proofs, not tactic
-   holes), D.28 (the `Basis`/`repr`/`algebraMap` stack), D.39 (`compData`'s kernel proof
-   terms inside a `def`), D.46 (`CertFrame`'s `Finsupp` codomain), and the D.65 `𝔽₄`
-   carrier (§10's ⚠ — pick `GaloisField 2 2` vs an explicit construction by what `decide`s;
-   record the choice in the stub header).
+**Rules for the stub-landing agent** *[status line added at A-D.1: the stage-0e stub gate RAN
+(`leanspec/Leanspec/ChapD.lean`, commits bdd93c33 + a63cffc2 — green, 0 sorry, 0
+`native_decide`, `autoImplicit` off) and every rule below now carries its outcome. A fleet agent
+landing chapter D in `leanfinal` inherits the OUTCOMES, not the open questions]*.
+
+1. **Elaborate the fragile signatures FIRST — DONE, with five findings.** D.17
+   (`levelOneArena`) → had **no body**; landed real, needing `levelOneHeight` +
+   `levelOneHeight_ker_dvd` (**D-D2**). D.08 (`res` applied to subtype elements) → the
+   membership lemmas are explicit `mem_ker` proofs, four of them, PROVED (**SD-1**); the
+   originally-signed name `tauEl_mem_ker` is `tau_mem_ker`. D.28 (the basis stack) → `Basis`
+   **does not exist** at the pin (`Module.Basis`, **D-D5**) and four type slips hid under its
+   `…` elisions (**D-D7**). D.39 (`compData`) → had **no body** and D.40's signature was
+   explicitly schematic; both landed real via `GaugeArena.chiK` + `rho_mem_ker` (**D-D3**).
+   D.46 (`CertFrame`'s `Finsupp` codomain) → elaborated as signed, **no defect**, and its
+   inhabitation witness satisfies (FLOOR) with a TOUCHED coordinate. The D.65 `𝔽₄` carrier →
+   **decided: the discrete-log model** (§10's ⚠, note **SD-6**) — neither `GaloisField 2 2` nor
+   `AdjoinRoot` has a computable `DecidableEq` at the pin.
 2. **Definitions land real; the five structures land real** (a `structure` IS its
-   elaboration check).
-3. **Gate order (GC-6.6(c), mandatory):** (a) fragile signatures; (b) the 29 `def`-class
-   bodies + 5 structures; (c) **execute D.65's leg-1 + D.66's + D.67's `decide` blocks at
-   `q = 2` AND `q = 3` (+ `p = 5`)** against the commented expected values — all are
-   executable at stub stage (pure `ℕ`/`ZMod` arithmetic + the landed defs); (d) only then
-   sign the ≈ 48 `axiom` stubs. ⚠ The stub gate cannot catch a wrong-but-well-typed
-   statement — the exposed classes here are D.06's table rows and the gate tables' expected
-   values; both are §14 items (1 and 8).
+   elaboration check) — and **no `axiom` may appear inside a `def` body or in a fact a
+   SIGNATURE needs to be statable**: that is why A-D.1 signs 9 PROVED helpers rather than
+   stubbing them (the def layer must stay axiom-clean apart from D.17's one licensed
+   definitional dependency on D.13 — D.68(iv)).
+3. **Gate order (GC-6.6(c), mandatory):** (a) fragile signatures; (b) the **30** `def`-class
+   bodies (+ A-D.1's 2 new names) + 5 structures; (c) **execute D.65's, D.66's and D.67's
+   blocks at `q = 2` AND `q = 3` (+ `p = 5`, + FRAME-H2's `h > 1` leg)** against the committed
+   expected values; (d) only then sign the **63** `axiom` stubs.
+   ⚠ **THE GATE-ROW RULE (A-D.1/D-D1, mandatory — see §10's rider):** no gate row that mentions
+   `iexp`/`aexp`/`qexp`/`wrap`/`Wfloor` may be a bare `by decide`; every such row is
+   `by simp only [<local defs>, iexp_one]; decide` (or `iexp_eq_of_inv c hc` at `h > 1`), and no
+   row may spell `Θ_s` as `(ϑ_s)⁻¹` — `Θ` and `U` are committed as LITERAL DATA whose
+   certificate is the executed involution `Θ_s·ϑ_s = 1`.
+   ⚠ The stub gate cannot catch a wrong-but-well-typed statement — the exposed classes here are
+   D.06's table rows and the gate tables' expected values (§14 items 1 and 8). **Both were
+   recomputed by hand at A-D.1**: the table is consistent (no sign error) and every expected
+   value reproduces — but this caught **D-D9** (an unstated indexing convention: D.65 leg 3's
+   vectors are ascending-`s`, so slot-order readers get them wrong) only *because* the values
+   were recomputed, not because they were executed. Recomputation is not optional.
 4. **No stub for another chapter's placeholder**: the `[supplied-by: chapter C]` rows are
    NOT axiomatized in leanspec (axiomatizing a supplier's theorem would fake the discharge
-   — exactly the class of defect the honesty items fence).
+   — exactly the class of defect the honesty items fence). **Held at the gate:** D.42, D.43,
+   D.53, D.54, D.56 and D.61 declare nothing, and no chapter-C/E/F node ID is guessed.
 5. **Elision-expansion rule:** the schematic fragments in D.40's SIGNATURE (the `compData`
    projections) and D.65–D.67's `…` lines expand only through the node's own STATEMENT
    text; elaboration failures are blueprint defects — versioned back into this file by
-   dated append, never patched silently in leanspec.
+   dated append, never patched silently in leanspec. **A-D.1 IS that append**, and the
+   expansions are now IN the SIGNATURE blocks above (D.19, D.21, D.24–D.28, D.39, D.40,
+   D.65–D.67): a later agent must consume them, not re-resolve them differently.
+6. *[NEW, A-D.1]* **Battery-coverage rules, from the findings the gate frames themselves
+   exposed.** (i) **D-F1:** an `h = 1` frame CANNOT score D.15 (`qexp ≡ aexp` there) — FRAME-H2
+   (D.66 leg 5) is mandatory. (ii) **D-F2:** a table whose top index is `f₃ − 1` must be
+   committed one step FURTHER than the slots it serves — FRAME-C's `ϑ`/`U` now run to `s = 5`.
+   (iii) **D-F3:** an orientation-distinctness check must be scored where the telescope is
+   INJECTIVE — at FRAME-C that is `t = 1` or `t = 4`, never the middle slots where
+   `ϑ₂ = ϑ₃`. (iv) **Inhabitation is a gate obligation, not a review remark:** every
+   hypothesis-carrying structure whose emptiness would make its theorems vacuous gets a witness
+   with the discriminating field TRUE (`BoundaryReadPort`, `CertFrame` — done; and D.62's
+   carrier FAILED exactly this test, defect D-D12).
 
 ---
 
@@ -4135,7 +4176,9 @@ frames; T3's §8.1/§8.3/§8.4 rows (20, per its own zero-orphan inventory); T4'
 | check 7 (coefficient-space bound) | `EFF.T1.41` | **Lean theorem** (D.30's strict-degree monicity) |
 | checks 8–9 (nonvanishing / codomain countermodels) | `EFF.T1.42/.43` | **executable regression retained** — the countermodels certify field INDEPENDENCE (D.29's FAITHFULNESS (ii)); in Lean the fields are carried, not derived, so there is nothing to prove and the regressions guard the packaging |
 | check 10 (grade-data value group) | `EFF.T1.44` | **Lean theorem** (D.13's `ℤ`-typed heights; the `e_{i+1} ∤ u_{i+1}` witness arithmetic at gate D.66) |
-| the four planted teeth (gauge-naive, wrong-sign, misindexed telescope, inverse orientation) | `EFF.T1.45` | **Lean theorem + executed gates** — each mutant flips a committed expected value in D.65–D.67 (this is the append-#54 trap's mechanical layer; the blueprint layer is D.06) |
+| the four planted teeth (gauge-naive, wrong-sign, misindexed telescope, inverse orientation) | `EFF.T1.45` | **Lean theorem + EXECUTED gates** — each mutant flips a committed expected value in D.65–D.67 (this is the append-#54 trap's mechanical layer; the blueprint layer is D.06). *[A-D.1: executed at the stage-0e gate. Kill sites, named: gauge-naive → `ϑ₂ = ω ≠ 1` (D.65 leg 4) and `ϑ₂ = 2 ≠ 1` (D.66 leg 3); wrong-sign → the `+e₁·wrap` side of `(C2-wrap)` and the `−q(k)` sign, on grids INCLUDING negative heights (D.66 leg 1); misindexed telescope → the `Wfloor` slot table (D.65 leg 1) and, for the `i(u₂) ≠ 1` case, FRAME-H2's `Wfloor 3 2 1 4 = (2,2,1,0)` (D.66 leg 5); inverse orientation → `U(2) ≠ ϑ₂·w²` and the row-1/row-4 distinctness (D.67 legs 1 and 4)]* |
+| *[NEW at A-D.1]* the append-#54 ϑ-ORIENTATION TRAP itself ("a sign error no battery catches") | append #54 · GC-14 | **NO LONGER BATTERY-FREE: Lean theorem + executed gate** — D.06's four rows are arithmetic at FRAME-C (D.67 leg 4): involution on `s = 0…5`, top-slot anchor, row-4 reciprocal `ϑ_{G2}(t)·ϑ_{f₃−t} = 1`, and numerical distinctness of the two orientations. The premise of the trap is superseded FOR THIS TABLE; the residual risk is a wrong TRANSCRIPTION of a row from the specs, which is §14 item 1's byte-check, still owed |
+| *[NEW at A-D.1]* frame-coverage findings D-F1 / D-F2 / D-F3 | this amendment (gate-frame analysis) | **battery repairs, all three executed**: D-F1 → FRAME-H2 added (D.66 leg 5) because `qexp ≡ aexp` at `h = 1`; D-F2 → FRAME-C's `ϑ`/`U` extended to `s = 5` because the bottom slot reads there; D-F3 → the distinctness leg pinned to `t = 1`/`t = 4` because `ϑ₂ = ϑ₃` at FRAME-C. **None of the three is a defect in a node; all three are holes in the FRAMES**, which is the class GC-8 exists to surface |
 | inherited frames X / FR-G / F4-JOINT / LP-LD (the 2026-08-10 sealed run) | `EFF.T1.33` | **executable regression retained, with the re-scoping carried** (GC-8 rider (i)): "historical evidence, not a certification of this revised text" — D.65/D.66 re-derive the X/F4-JOINT values inside Lean; FR-G and LP/LD stay PARI-side |
 | T3 §8.1(1)–(2) (endpoints, recurrence/inverse orientation) | `EFF.T3.29` teeth | **Lean theorem** (D.05/D.09/D.10) |
 | T3 §8.1(3)–(4) (no competing frame; no conditional B-law input) | | **signed non-applicability** (structural: D.02 is the only τ; D.37 has no B-law field) + §14 item 7 |
@@ -4152,8 +4195,14 @@ frames; T3's §8.1/§8.3/§8.4 rows (20, per its own zero-orphan inventory); T4'
 | T5 §7 Pass 1(2)–(5), Pass 2(2)–(6) (conditionality, supplier attribution, span pins) | | **signed non-applicability** (carriers + D.61's record; span-pin verification is the EFF compiler's, already run) |
 
 **The GC-8 riders, discharged.** (i) Re-scoped batteries carry their re-scoping (T1's
-inherited frames; `HE-BND`-class rows do not occur here). (ii) **No battery guarding this
-chapter was fitted to data.** (iii) **The no-teeth reconciliation:** the rows with no Lean
+inherited frames; `HE-BND`-class rows do not occur here) — *[A-D.1: **FRAME-H2 is NOT an
+inherited frame** and carries no historical evidence; it is authored by this amendment and every
+value in it is computed from D.13/D.15/D.16's definitions, so rider (i) does not apply to it and
+rider (ii) is not at risk]*. (ii) **No battery guarding this
+chapter was fitted to data** — *[A-D.1: still true. D-F2's extension of FRAME-C to `s = 5` uses
+the ASSEMBLED formula `ϑ_s = η^{⌊s·i(u₂)/e₁⌋}`, never the endpoint formula `U(s) = Θ_s·w^s` the
+gate is meant to test; the two committed tables `Θ` and `U` are data whose only certificates are
+executed identities]*. (iii) **The no-teeth reconciliation:** the rows with no Lean
 theorem anywhere are exactly the bundle/port/frame INSTANTIATIONS at `i ≥ 3` (`𝒲_{≤i}`,
 `(H-VARTHETA-RES)_i` — Display A's `∀ i ≥ 3` conjunct, D.63), (FLOOR) and the full-exposure
 instances (chapter C's suppliers), and the four inline JA/GENHN/HETOW hypotheses — which is
@@ -4161,32 +4210,57 @@ precisely the conditionality this chapter's honesty block declares (D-H3/D-H4/D-
 Nothing else is battery-guarded without also being a proof obligation.
 
 **Retained regressions** (GC-8 home `verification/`, packaging booked as an ORCHESTRATOR
-item at fleet close): `chapD_frameC` (D.67's p = 5 tables), `chapD_f4joint` + `chapD_xframe`
+item at fleet close): `chapD_frameC` (D.67's p = 5 tables **incl. the `s = 5` extension and the
+four orientation-table legs** — A-D.1), `chapD_f4joint` + `chapD_xframe`
 (the inherited T1 frames, PARI legs), `chapD_frm3_slack` (T4's measured configurations),
-`chapD_t1_countermodels` (checks 8–9's mock reads).
+`chapD_t1_countermodels` (checks 8–9's mock reads), **`chapD_frameh2`** *[NEW at A-D.1: the
+`h > 1` separator frame's four tables and the `aexp ≠ qexp` separation — the Python mirror of
+D.66 leg 5]*. **All five/six are still OWED** (the stage-0e gate executed the Lean side only);
+this is an orchestrator item, not a fleet-agent item.
 
 ---
 
 ## 14. FLAGGED FOR THE CODEX CROSS-READ (the orchestrator queue)
 
 The chapter is single-arm-authored (Fable, this session); D-H13's debt covers all of it.
-Ordered by cost of a wrong answer:
+Ordered by cost of a wrong answer.
+
+**A-D.1 STATUS PASS (2026-08-16).** The stage-0e stub gate discharged the MECHANICAL half of
+items 1, 5 and 8 and ANSWERED item 2(iii) — in the refuting direction. Items 3, 4, 6, 7, 9, 10,
+11 are untouched and still owed to a decorrelated (codex) read; item 12 is superseded by A-D.1's
+own recount. **What the gate cannot do for any item: read the specs.** Every byte-check below
+stands.
 
 1. **THE ϑ TABLE (D.06) against the four specs.** Byte-check every row: the reference
    display and the five-row table against `spec/EFF-GENTOW2.md` L1059–1075 (records `.25`,
    `.41`, `.42`); row 2 against `EFF.T1.14`'s `(C3-Theta)`; row 3 against `EFF.T3.04/.19`;
    row 4 against `EFF-GENTOW2.md:1072` (the GENTOW5-A1 RECIPROCAL row — the exact pair
    append #54 names); row 5's verification hashes; the B-law block against
-   `EFF.GENTOW2.34`'s orientation record. **A sign error here is caught by no battery** —
-   this read is the table's only decorrelated check before C/E/F consume the anchor.
+   `EFF.GENTOW2.34`'s orientation record. ~~**A sign error here is caught by no battery**~~
+   *[A-D.1: the INTERNAL-CONSISTENCY half is now battery-guarded — the four rows plus the B-law
+   direction block plus the top-slot anchor were checked symbolically row by row and then
+   EXECUTED at FRAME-C (D.67 leg 4), verdict MUTUALLY CONSISTENT, no sign error found. What
+   remains — and it is the whole of this item — is whether each row is a faithful
+   TRANSCRIPTION of its source display. A row that is internally consistent and wrongly
+   transcribed passes every gate in this chapter.]* This read is still the table's only
+   decorrelated check before C/E/F consume the anchor.
 2. **DECISION D-1's packaging delta (D.07/D.62, honesty D-H3).** (i) Is `res : ker v →* Kˣ`
    on the WHOLE kernel consumed anywhere beyond the corpus's sitewise clauses in a way that
    could not be instantiated at `i = 2` (check against `EFF.GENTOW2.42`'s letter group)?
    (ii) Does the `Kˣ` codomain silently strengthen `(C3-read-codomain)` (which places values
    in `K_i`, with nonzero-ness a separate clause)? For value-zero residues the instances
-   give units — verify no consumer needs a possibly-zero value-zero residue. (iii) D.62's
+   give units — verify no consumer needs a possibly-zero value-zero residue. (iii) ~~D.62's
    arena-existence rendering of `(H-VARTHETA-RES)_i` vs the ledger-strength sitewise clause
-   — confirm chapter I's row will state both forms per D.62's note.
+   — confirm chapter I's row will state both forms per D.62's note.~~ **ANSWERED AT A-D.1,
+   IN THE REFUTING DIRECTION (defect D-D12, stop-the-line):** the arena-existence rendering is
+   **VACUOUS** — machine-checked, `HVarthetaRes G K N v ↔ ∀ k, v (N.n k) = ofAdd k`, inhabited
+   by the trivial hom. So there are not "two forms of one hypothesis" to state; there is a
+   carrier that says nothing. See §9's cross-reference stub; the re-sign belongs to the
+   Display-A carrier adjudication unit (**DECISION D-2 / amendment A-D.2**, Lean side landed at
+   commit `d420f112`), so as far as A-D.1 is concerned **item 2(iii) is CLOSED-AS-REFUTED and
+   re-opened under A-D.2's carrier** — a cross-read of the NEW carrier is A-D.2's item to file,
+   not this one. (i) and (ii) remain open and are unaffected — they concern D.07 used as a
+   theorem hypothesis, where the packaging delta is real and in the safe direction.
 3. **D.29's zero-read absorption** (FAITHFULNESS (i)): confirm `(C3-zero-read)` is genuinely
    consumed nowhere as a field — grep the four specs for zero-slice reads feeding a D node.
 4. **D.46's `grΔ` collapse:** confirm no T4 unit consumes `ShC_j` or `C_j` SEPARATELY from
@@ -4196,6 +4270,16 @@ Ordered by cost of a wrong answer:
    `k < 0` (T1's heights are `ℤ`) and at `h > e₁`, against `EFF.T1.01`'s normalization; and
    the D.25 ⚠ (`hh : 0 < h` needed by the integrality `omega`?) — `EFF.T1.01` displays
    `h ≥ 1`, so carrying `hh` is faithful, but confirm no consumer needs `h = 0`.
+   *[A-D.1, PARTLY DISCHARGED — executed, not merely argued: `ZMod.val` returns the nonnegative
+   representative and `Int./`,`%` are `ediv`/`emod` at the pin, so `iexp`/`aexp`/`qexp` and both
+   carry laws hold at every sign; the tables run `k = −3…6` at three frames (D.65, D.66 legs 1
+   and 5). Consequence recorded as **D-D13**: D.21's `hu : 0 ≤ u₂` is dead weight. `hh : 0 < h`
+   is CARRIED at D.26/D.28 as the ⚠ asked. **Still owed to the read: `h > e₁`** — no gate frame
+   exercises it (all four have `h < e₁`). It is now cheap to execute (`iexp_eq_of_inv` needs only
+   a `c` with `(h : ZMod e₁) * c = 1`, e.g. `e₁ = 3, h = 5, c = 2`), and the substantive question
+   is not decidability but faithfulness: `iexp` sees `h` only MOD `e₁`, while `aexp`, `qexp` and
+   `Wfloor` use the unreduced `h`, so the read must confirm that this is what `EFF.T1.01`'s
+   normalization intends when `h > e₁`.]*
 6. **The point-free C5/C6 discipline** (§4 design note): grep T1's A1/A6 consumers
    (GENHN-LIFT, GENTOW-6.3) for whether any consumes the `ξ`-evaluation form FROM T1
    (rather than from its own tower carrier) — if one does, D.26's ⚠ interface must move
@@ -4209,6 +4293,16 @@ Ordered by cost of a wrong answer:
    `(1,1,ω,ω)`/`(ω,ω,ω²)`/`(ω,ω²,1)`; the X-frame's `(1,1,2,2,1)`; FRAME-C's
    `U = (1,3,2,1,4)` vs `ϑ = (1,1,2,2,4)` with `w = 3`; `thresholdTheta 3 3 1 = (10,7,4)`)
    — the wrong-expected-value class the stub gate cannot catch.
+   *[A-D.1, MOSTLY DISCHARGED: every value above was recomputed by hand and then EXECUTED; all
+   reproduce. The recomputation is what found **D-D9** — F4-JOINT's three `μ = 3` vectors are
+   listed in ascending `s`, i.e. DESCENDING slot, which the blueprint never said; in slot order
+   the committed entries are wrong (`Γ` is `(ω,ω,1)`, `u(β)` is `(ω²,ω,ω)`). **What a codex read
+   still owes here is the one thing recomputation cannot settle: whether the committed values
+   are the SPEC's** — `EFF.T1.34`'s `μ = 3` row and `EFF.T3.29`'s FRAME-C tables, byte-checked,
+   including which index order the spec itself uses. Also newly in scope: FRAME-C's `s = 5`
+   extension (`ϑ₅ = Θ₅ = 4`, D-F2) and FRAME-H2's four tables (D-F1), neither of which has a
+   spec row to check against — they are amendment-authored and were verified twice
+   (numerically, then at the pin).]*
 9. **D.57's conjunct-extraction reading of `(WF-lawᵢ)`:** confirm against `EFF.T5.14/.15`
    that the implication's entire content at carrier granularity is last-conjunct extraction
    (the alternative — that T5 intends real work inside the arrow — would make D.57 an
@@ -4216,27 +4310,326 @@ Ordered by cost of a wrong answer:
 10. **The §11 TSV** (`spec/gen_dag_d.py`): spot-check the hand-audited edge lists against
     this file's DEPENDS/SOURCE fields (the generator is committed for exactly this
     re-derivation); verify the seven GENTOW2-EXT mitigation rows carry the right contiguous
-    IDs in their evidence columns.
+    IDs in their evidence columns. *[A-D.1: the generator now also carries an `intra_note`
+    table — the five edges A-D.1 added and the re-annotated `D.17 → D.13`; the spot-check should
+    include them, and the DEPENDS fields they came from are the re-signed ones.]*
 11. **D.34's mathlib route note:** confirm the `AlgEquiv`/`Separable.map` surface exists at
     the v4.31.0 pin before the fleet fires D.34 (the B §14 item-6 class: a missing surface
     silently degrades three consumers — D.41, D.58, and F's routing faces).
 12. **The A-1 recount** (§2 table, kind census, graph shape) — mechanical, against the
-    committed `### NODE` headings and the TSV.
+    committed `### NODE` headings and the TSV. *[A-D.1: SUPERSEDED — recounted mechanically
+    against the elaborated stub file and the regenerated TSV (§12's inventory: 5 structures / 30
+    defs / 63 theorem-shaped = 98 signed declarations; §2 + §11's graph shape: 167 intra edges,
+    layer widths `10,9,13,6,8,6,6,5,5`, acyclic, critical path 9). The A-1 figures it asked about
+    were wrong in two places, both now corrected: the def inventory omitted `varpiSection`
+    (**D-D10(i)**) and the theorem estimate "≈ 48" undercounts by 15 (**D-D10(ii)**). What is
+    left of this item is a re-audit of the KIND census (18 def / 10 def+lemma / 19 lemma / 8
+    theorem / 2 table / 5 interface / 2 record / 4 gate = 68), which A-D.1 did not recount.]*
+13. *[NEW, A-D.1 — the item this round creates]* **The A-D.1 additions themselves, none of which
+    has a decorrelated read.** (a) **FRAME-H2** (D.66 leg 5): its frame data, its four tables and
+    the `aexp ≠ qexp` separation are authored here, not inherited — verify the frame is
+    admissible (`Nat.Coprime 2 3`, `h = 2 > 1`, `i₀ = 2`) and that scoring `aexp` against `qexp`
+    at `h > 1` is the right response to D-F1 rather than a redundant frame. (b) The **`Θ`/`U`-as-
+    literal-data** discipline (D-D1/SD-7): confirm that committing the inverse-orientation table
+    and certifying it only by the involution does not weaken any gate — in particular that no
+    leg now reads its expected value out of the same data it is meant to test. (c) The
+    **discrete-log 𝔽₄ model** (SD-6): confirm `⟨ω⟩ ≅ (ZMod 3, +)` carries D.65 legs 2–4
+    faithfully and that all four planted teeth still have kill sites in the additive model.
+    (d) The **five new DAG edges** and the D.17→D.13 definitional re-annotation.
 
-**Queue census: 12 items.** Items 1, 2, 8 are where a wrong answer costs the most (the
-sign discipline, the packaging faithfulness, and the gates' expected values).
+**Queue census: 13 items** *[was 12; A-D.1 adds item 13 and supersedes item 12]*. Items 1, 2, 8
+are where a wrong answer costs the most (the sign discipline, the packaging faithfulness, and the
+gates' expected values) — **and after A-D.1 the sharpest single item is the one the gate cannot
+touch: item 1's byte-check, since the table is now known to be internally consistent, which is
+exactly the state in which a mis-transcribed row survives everything.**
 
 ---
 
 *END OF CHAPTER D BLUEPRINT — 68 nodes (18 def / 10 def+lemma / 19 lemma / 8 theorem /
-2 table / 5 interface / 2 record / 4 gate), ≈ 82 signable declarations (5 structures + 29
-defs + ≈ 48 theorem stubs), 337 DAG edges (dangling-check PASS; the checker's global FAIL is
+2 table / 5 interface / 2 record / 4 gate), **98 signed declarations** (5 structures + 30 defs
++ 63 theorem-shaped rows) **plus A-D.1's 2 new def-class names and 9 proved helpers**
+*[A-1's "≈ 82 (… 29 defs + ≈ 48 theorem stubs)" is superseded — defect D-D10]*, **342 DAG
+edges** *[A-1: 337]* (dangling-check PASS; the checker's global FAIL is
 two BP.C.* SCCs, not chapter D's), 181 source units covered (`EFF-T1` 55 / `EFF-T3` 36 /
 `EFF-T4` 45 / `EFF-T5` 45) with battery/record units disposed in §13 rather than transcribed
 as nodes (D-H12). THE ϑ FOUR-WAY ORIENTATION TABLE is node D.06, anchor `D-THETA-TABLE`
-(GC-14 discharged); the C7 supply interface is D.36, anchor `D-C7-TABLE`. JD0-BOX-2: zero
-T-unit cites → chapter I (D-H8). CODEX CROSS-READ OWED — the queue is §14's 12 items.*
+(GC-14 discharged — **and, since A-D.1, EXECUTABLE: the append-#54 trap has a battery**); the
+C7 supply interface is D.36, anchor `D-C7-TABLE`. JD0-BOX-2: zero
+T-unit cites → chapter I (D-H8). CODEX CROSS-READ OWED — the queue is §14's **13** items.
+**⛔ ONE STOP-THE-LINE ITEM, HANDED OVER: D-D12** — D.62's `(H-VARTHETA-RES)_i` carrier is vacuous
+(machine-checked). Its re-sign is **DECISION D-2 / amendment A-D.2**, the Display-A carrier
+adjudication unit's: Lean side landed (`d420f112`), blueprint block owed by that unit. No chapter
+may consume D.62/D.63 as a strength claim from THIS text until A-D.2's block lands (§9's stub).*
 
-<!-- RESUME: CHAPTER COMPLETE — §§0–2 (skeleton, 56989ae9), §3 (b21567a2 + d54e7b5f, TABLE at D.06), §4 (c6093e8b + 2854ff1e), §5 (5ae2ba11), §6 (0bf7309c), §7 (f2885701), §§8–9 (884bdb97), §10 (9dbd382c), TSV (85f2bce5), §§11–14 + A-1 (this commit). Nothing owed by the D composer except the codex cross-read (orchestrator queue §14). -->
+<!-- RESUME: CHAPTER COMPLETE + AMENDED — §§0–2 (skeleton, 56989ae9), §3 (b21567a2 + d54e7b5f, TABLE at D.06), §4 (c6093e8b + 2854ff1e), §5 (5ae2ba11), §6 (0bf7309c), §7 (f2885701), §§8–9 (884bdb97), §10 (9dbd382c), TSV (85f2bce5), §§11–14 + A-1 (composition close). AMENDMENT A-D.1 (2026-08-16, stub-gate defect-repair round, commits 0cf946be + 6f8161a7 + this one): defects D-D1..D-D11/D-D13/D-D14 repaired in place, findings D-F1..D-F3 imported as §10 amendments (FRAME-H2 added as D.66 leg 5; FRAME-C extended to s = 5; the distinctness leg pinned to t = 1/4), D.06's TEETH row re-signed (the trap now has an executable battery), §§11–14 recounted, DAG 337 -> 342 rows. Owed by the D composer: nothing. Owed elsewhere: (i) D-D12's re-sign of D.62/D.63 — Display-A carrier adjudication unit, amendment **A-D.2 / DECISION D-2**: Lean side LANDED at commit d420f112 (sitewise ambient-residue carrier; old form voided as HVarthetaResVoided), blueprint block + countermodel owed by that unit — A-D.2 governs D.62/D.63 wherever it and A-D.1 disagree; (ii) the codex cross-read, §14's 13 items (1, 2(i)(ii), 3, 4, 6, 7, 9, 10, 11, 12's kind census, 13); (iii) the retained Python/PARI regressions incl. the new `chapD_frameh2`; (iv) the orchestrator's shared DAG rebuild (§11 item 5). -->
+
+### AMENDMENTS (2026-08-16, stub-gate defect-repair round — the chapter-G §A- precedent)
+
+**A-D.1 — THE STUB-GATE REPAIR ROUND (defects D-D1…D-D14 and findings D-F1…D-F3 of the stage-0e
+gate, `leanspec/Leanspec/ChapD.lean`, commits bdd93c33 + a63cffc2).** The stage-0e stub gate
+landed every signable chapter-D declaration in `leanspec/Leanspec/ChapD.lean` (namespace
+`LeanspecD`, 1532 lines: 5 structures + 30 blueprint `def`s with REAL bodies + 63 `axiom` stubs
+at the signed types + 11 proved helpers/witnesses + **40 EXECUTED `decide` gates**;
+`lake build Leanspec.ChapD` green, 0 errors, 0 warnings, 0 `sorry`, no `native_decide`,
+`autoImplicit`/`relaxedAutoImplicit` off) and recorded **fourteen blueprint defects D-D1…D-D14**
+plus **three findings about the gate frames themselves, D-F1…D-F3**, in its file header. Per §12
+rule 5 / CHAP-H §15 rule 5 the stub file is never patched silently and the blueprint is versioned
+by dated append: **THIS block is that append, and the gate file's header is its ground truth.**
+Every repaired node carries a `[repaired: A-D.1/D-Dn]`, `[re-signed: …]` or `[signed: …]` tag in
+place; **the repairs ELABORATE at our pin and the originals do not.**
+
+**Authority.** Standing statement-change authority (Asvin, 2026-08-05): every repair below is an
+honest correction of text that failed to elaborate, mis-named the landed API, or left an
+indexing/coverage fact unstated; **none weakens a statement**, and none introduces an axiom or a
+contradiction. Two additions are NOT repairs and are declared as such: the gate frame **FRAME-H2**
+(§10, D.66 leg 5 — authored here in response to finding D-F1) and the **five new public names**
+(`levelOneHeight`, `GaugeArena.chiK`, `iexp_one`, `iexp_eq_of_inv`, and — as a rename of the
+non-existent `tauEl_mem_ker` — `tau_mem_ker`), each with a GC-6.5 exception scoped to exactly
+that name. **One defect is deliberately NOT repaired here: D-D12** (see (VIII)).
+
+**(I) THE GATE PROGRAMME — D-D1, and the two decisions it forces (SD-6, SD-7).** *Class:
+definition not computable for the gate it is gated by.*
+
+* **D-D1 — the §10 gate lines DO NOT RUN as written (hard, and the highest-traffic defect in the
+  chapter).** `iexp` goes through `(h : ZMod e₁)⁻¹`; `ZMod.inv` routes through
+  `Nat.gcdA`/`Nat.xgcd`, which do not kernel-reduce. Even `((1 : ℕ) : ZMod 2)⁻¹ = 1` is not
+  `decide`-able at the v4.31.0 pin, so **every `:= by decide` line of D.65/D.66/D.67 fails, and so
+  does every `Θ_s = ϑ_s⁻¹` spelling.** Repair, stub-side and now blueprint-side, **with no
+  expected value changed**: (a) D.13 signs a PROVED reducer `iexp_one : iexp e₁ 1 k =
+  ((k : ZMod e₁)).val` and every gate row becomes `simp only [<local defs>, iexp_one]; decide`;
+  (b) `Θ` (and FRAME-C's `U`) are committed as **literal data** with the executed involution
+  `Θ_s·ϑ_s = 1` as their certificate (**SD-7**) — which is also what keeps the two runner
+  obligations genuine checks rather than unfoldings; (c) field inverses are stated
+  multiplicatively (`(2 : ZMod 5) * 3 = 1` for `δ⁻¹ = 3`). The rule is written into §10 as the
+  **GC-11 gate-writing rider** and into §12 rule 3: *the fleet must not write the landed gates
+  with a bare `decide`.* D.13 carries the defect at its source, and A-D.1 adds the general
+  reducer `iexp_eq_of_inv` for the `h > 1` frame of (VI).
+* **SD-6, the `𝔽₄` carrier — §10's ⚠ DECIDED.** `GaloisField 2 2` and
+  `AdjoinRoot (X²+X+1 : (ZMod 2)[X])` are quotient constructions with no computable
+  `DecidableEq` at the pin, so **no `decide` runs in either** and D.65's legs 2–4 are
+  unexecutable in both. Signed carrier: the **discrete-log model** — `ω` has order 3 and every
+  quantity in legs 2–4 is a power of `ω`, so `⟨ω⟩ ≅ (ZMod 3, +)` carries them faithfully
+  (products → sums, each expected value → an exponent, `ω^a = 1 ↔ a = 0` preserving all four
+  planted-teeth kills). `q = 3` and `p = 5` need no such move.
+
+**(II) THE DEF LAYER — D-D2 and D-D3: two nodes were signed with no body.** *Class: def with no
+body (the ChapG D2 / ChapB B-D2 / ChapE E-D5 class).* Both land REAL above, and both cost a new
+public name, which is the honest price of §12 rule 2:
+
+* **D-D2 — D.17 `levelOneArena`.** Landed real (height hom, kernel-divisibility lemma, and
+  `res = η^{i/e₁}` as a genuine `MonoidHom`), which required **`levelOneHeight`** (SD-2) and the
+  proved **`levelOneHeight_ker_dvd`**. Two consequences beyond the body: (a) the CAST slip
+  `n k := ofAdd (iexp …, aexp …)` needs `(iexp … : ℤ)` — `iexp` is `ℕ`; (b) **the DAG did not
+  record the dependency's character** — `exact_height` is discharged only from D.13's
+  `iexp_aexp_spec`, so `levelOneArena`'s **axiom footprint carries it** (`#print axioms` shows
+  `iexp_aexp_spec`). That is a DEFINITIONAL dependency `D.17 → D.13`, which §11's census listed
+  as a plain lemma dependency; it is re-annotated in the TSV, and it means **D.13 must LAND
+  before D.17**, not merely be cited by it.
+* **D-D3 — D.39 `compData`, and D.40's explicitly schematic signature.** Landed real; required
+  **`GaugeArena.chiK`** (the blueprint's own `chiK`, used unquoted in D.40's
+  `(chiK-of-H₀-term)`; §12 rule 5 left its spelling to stub time and it is now signed) plus the
+  proved **`GaugeArena.rho_mem_ker`**. D.40's two legs are spelled against those names above.
+  Same round, same node: `hNhat`/`hA` need their binder types written and `t * q` needs
+  `(t : ℕ) * q`.
+
+**(III) BINDERS, API NAMES, DECIDABILITY, ELISIONS — D-D4…D-D7** (mechanical; the intended
+statement was never in doubt, and each would have cost a fleet agent a debugging cycle):
+
+* **D-D4 — ENV-D4's `{π : O}` cannot be implicit: `π` occurs only in `liftC6`'s BODY.** Every
+  call site (`liftC6 … e₁ h σ M l` at D.25 clauses 2–4, D.26, D.28) would leave an unsolvable
+  implicit-argument metavariable — Lean cannot invent the uniformizer. Made **EXPLICIT and
+  first** at D.24/D.25/D.26/D.28, matching the landed convention
+  `Uniformity.Density.Leaf.digAt (π : O)` (B.21). *Class: **the B.42 lesson recurring at
+  DEFINITION level** — a binder that only the body mentions must be in the binder list.* ENV-D4
+  itself is left byte-unchanged (it is CHAP-B's ENV-A′ verbatim by contract); its `{π : O}` is
+  simply not the binder for this chapter's def-class nodes. `f₁` stays implicit in `liftC6`
+  (determined by `l`) and explicit in `gammaCoord`, as the original text writes them.
+* **D-D5 — D.28's `Basis` DOES NOT EXIST at the pin.** The constant is `Module.Basis`
+  (`Module.Basis (Fin f₁) (ResidueField O) K₁`), and `Basis.repr` is `Module.Basis.repr`.
+  *Class: stale API name — the E-D1 class, training-data smell.*
+* **D-D6 — D.25b clause 3's `Finset.filter (fun r => l r ≠ 0)` has no `DecidablePred`** over an
+  abstract residue field. Signed default: the declaration sits inside
+  `section ClassicalSupport / open scoped Classical` (SD-5); the membership formulation
+  `∀ j, j ∈ support ↔ ∃ r, l r ≠ 0 ∧ j = …` is recorded as the admissible alternative. *Class:
+  missing decidability.*
+* **D-D7 — D.28's signature has FOUR type slips under its `…` elisions**, all repaired above:
+  `Wfloor` takes `u₂ : ℤ` where the node binds `ℕ`; `t : Fin f₂` is fed to `Wfloor`'s `ℕ` and to
+  `f₂ - t`; `b.repr (…)` is a `Finsupp` where `liftC6` wants `Fin f₁ → ResidueField O` (written
+  `fun r => b.repr (…) r`); and the `hσ`/`hπ`/`he`/`hh`/`hf`/`hcop` block was elided (expanded
+  from the node's own STATEMENT). *Class: elision + spelling; no strength change.*
+
+**(IV) STATABILITY, INDEXING, AND THREE CONTENT NOTES — D-D8, D-D9, D-D11, D-D13, D-D14.**
+
+* **D-D8 — D.19's residue corollary and D.21 are UNSTATABLE if `levelOneArena` is opaque.** Both
+  apply `(levelOneArena …).res` to a subtype element, whose membership proof mentions
+  `(levelOneArena …).v`. With D-D2's real body plus the proved `chi_varpi_mem_ker` (SD-3) both
+  are statable exactly as signed. **Flag for the fleet, now in D.19's block: landing D.17 as an
+  `axiom` would make `res_chi_varpi` and `levelOne_rho` unstatable without inventing extra
+  membership hypotheses.** Second-order consequence: D.21's DEPENDS omitted D.17 although its
+  CONCLUSION applies the arena — an undeclared statement-level edge, added in §11.
+* **D-D9 — D.65 leg 3's three vectors are listed in ASCENDING `s` (= DESCENDING slot `t`), and
+  the blueprint never said so.** Read in slot order the committed entries are wrong: `Γ` is
+  `(ω, ω, 1)` and `u(β)` is `(ω², ω, ω)`. The convention is now STATED at the leg, and the gate
+  scores the committed order. *Class: unstated indexing convention — the wrong-but-well-typed
+  class §12 rule 3 warns a stub gate cannot catch mechanically; **found by recomputing the
+  values, then executed**, which is why §12 rule 3 now says recomputation is not optional.*
+* **D-D11 — D.41's clause 1 is `rfl` and carries no content**, so `t3_route`'s informative half
+  is the separability iff plus its two siblings. Related ambiguity resolved in the same breath:
+  the blueprint's `(w⁻¹ : K)` at D.34/D.41 is ambiguous between `((w : K))⁻¹` and
+  `((w⁻¹ : Kˣ) : K)`; **the `Kˣ`-inverse reading is signed** (they are equal, and it makes D.41
+  clause 1 definitional and keeps the term unit-valued).
+* **D-D13 (minor) — D.21's `hu : 0 ≤ u₂` is unnecessary.** `Int./` and `%` are `ediv`/`emod` at
+  the pin, so the two identities hold at every sign (executed at `k < 0`). Signed as given
+  (faithful to `EFF.T1.06`), marked dead weight. This also answers §14 item 5's negative-height
+  question, recorded at D.13.
+* **D-D14 (minor) — D.29's `read_n` is derivable from `ladder_mult` at `s = 1`.** Both are
+  separate corpus clauses (`(C3-ladder-unit)`, `(C3-ladder-multiplicativity)`) so both stay
+  signed; an instance need only supply one.
+
+**(V) CENSUS CORRECTIONS — D-D10** (both figures of §12's inventory were wrong; §§12–13/§14 and
+the closing paragraph now count against the corrected ones):
+
+| what | committed | corrected | why |
+|---|---:|---:|---|
+| blueprint `def`s | 29 (A-1) | **30** | the inventory OMITTED `varpiSection`, D.19's sibling def |
+| theorem-shaped rows | "≈ 48" | **63** | expanding the declared siblings per each node's STATEMENT text |
+| signed declarations | "≈ 82" | **98** | 5 structures + 30 defs + 63 theorem-shaped |
+| new public names (A-D.1) | — | **+2 defs, +9 proved helpers** | the names D.17/D.39's bodies and D.19/D.21's statements cannot do without, plus the two gate reducers |
+
+**(VI) THE BATTERY FINDINGS, IMPORTED AS §10 AMENDMENTS — D-F1, D-F2, D-F3.** These are **not
+blueprint defects**: the nodes are right and the FRAMES are inadequate, which is precisely the
+class GC-8 exists to surface. All three repairs are executed.
+
+* **D-F1 — the X frame cannot separate `aexp` from `qexp`, so nothing in chapter D scored D.15.**
+  At `h = 1`, `i₀ = 1` and `qexp e₁ 1 k = (k − iexp k)/e₁ = aexp e₁ 1 k` **identically**; D.66's
+  leg-1 tables score the same function twice (both `[-1,-1,0,0,1,1,2,2,3]`) and an `aexp`/`qexp`
+  confusion survives them. **Repair: FRAME-H2, signed as D.66 leg 5** — `e₁ = 3, h = 2`
+  (coprime), hence `2⁻¹ = 2` in `ZMod 3` and `i₀ = 2 ≠ 1`; optional field leg over `𝔽₇` with
+  `η = 2` (order 3) at `u₂ = 1`. It scores: `iexp 3 2` on `k = −3…6` = `(0,2,1,0,2,1,0,2,1,0)`;
+  `aexp` = `(−1,−2,−1,0,−1,0,1,0,1,2)`; `qexp` = `(−2,−2,−1,0,0,1,2,2,3,4)`; **`aexp ≠ qexp` at
+  every `k ∈ {1,…,6}`** (they agree only at `k ∈ {−2,−1,0}`); `(C2-wrap)` with `wrap ≤ 1` and
+  `(C5-carry)` on `a,b ∈ {−2,…,3}` where `iexp` is genuinely three-valued; `Wfloor 3 2 1 4 =
+  (2,2,1,0)`, the chapter's only `Wfloor` table with `i(u₂) ≠ 1`; and the `𝔽₇` telescope
+  `ϑ = (1,1,2,4,4,1)` with committed `Θ = (1,1,4,2,2,1)` certified by the involution. **Route
+  verified, not assumed:** the frame needs a reducer for `h ≠ 1`, so A-D.1 signs
+  `iexp_eq_of_inv (c : ZMod e₁) (hc : (h : ZMod e₁) * c = 1)` at D.13 — `ZMod.inv_eq_of_mul_eq_one`
+  exists at the pin, and all fifteen FRAME-H2 rows were elaborated against the stub file's own
+  definitions with **every `decide` firing**. Values were computed twice (numerically, then in
+  Lean) before signing.
+* **D-F2 — FRAME-C's committed `ϑ`/`U` run `s = 0…4`, but the D.06 table's `ϑ_{G2}(t) = Θ(f₃−t)`
+  at the BOTTOM slot `t = 0` reads `s = f₃ = 5`** — one step beyond the committed range, so the
+  battery as declared **does not cover the bottom slot**. Repair, adopted from the gate: extend
+  by the ASSEMBLED formula (never the endpoint formula) — `ϑ₅ = 2^{⌊5/2⌋} = 4`, `Θ₅ = 4`,
+  executed; the involution is scored on `s = 0…5` and the committed `Θ` table has six entries
+  `(1,1,3,3,4,4)`.
+* **D-F3 — FRAME-C has `ϑ₂ = ϑ₃ = 2`** (both floors `⌊s/2⌋` equal 1), hence `Θ₂ = Θ₃ = 3`, so
+  **an index-shift mutant SURVIVES at the middle slots**. Repair: the orientation-distinctness
+  leg is pinned to **`t = 1` or `t = 4`**, and `Θ₂ = Θ₃` is executed as the standing warning. *A
+  fleet agent scoring only the middle of the table would miss the very mutant the table exists
+  to catch* — the rule is generalised into §12 rule 6(iii): score a distinctness check only
+  where the telescope is injective.
+
+**(VII) THE ϑ TABLE: THE APPEND-#54 TRAP NOW HAS A BATTERY** (D.06's TEETH row, re-signed; §13
+gains a row). Append #54's premise for THIS table is superseded: the four rows are arithmetic at
+FRAME-C (`f₃ = 5`, every quantity a concrete `𝔽₅`-unit), executed as five `decide` legs — the
+involution on `s = 0…5`, the top-slot anchor `ϑ(f₃−1) = 1`, **row 4's reciprocal relation
+`ϑ_{G2}(t)·vartheta_{f₃−t} = 1`** (the exact GENTOW2/GENTOW5-A1 pair append #54 names), the
+numerical distinctness of the two orientations, and the non-identity of the reflection. **The two
+NEW teeth, quoted from the gate's header:** *"the wrong-orientation B-law (`U(s) = ϑ_s·w^s`) now
+FAILS at `s = 2`, and the orientation swap FAILS at `t = 1` and `t = 4`."* **Verdict on the table
+itself, also quoted:** *"the four rows plus the B-law direction block plus the top-slot anchor are
+MUTUALLY CONSISTENT"* — checked symbolically row by row, then executed; **no sign error found.**
+⚠ What this does NOT discharge: whether each row is a faithful TRANSCRIPTION of its source
+display (§14 item 1). Internal consistency is exactly the state in which a mis-transcribed row
+survives every gate, so item 1 is now the chapter's sharpest open read.
+
+**(VIII) D-D12 — CROSS-REFERENCE ONLY; THE RE-SIGN IS NOT THIS AMENDMENT'S.** The gate's
+stop-the-line finding — `HVarthetaRes G K N v := ∃ A : GaugeArena G K N, A.v = v` is **VACUOUS**,
+machine-checked (`hvarthetaRes_iff` proves it equivalent to `∀ k, v (N.n k) = ofAdd k`; the
+trivial hom `1 : ker v →* Kˣ` inhabits it because `GaugeArena` has no field tying `res` to an
+ambient residue map) — is recorded in **§9's boxed cross-reference stub** and in §14 item 2(iii),
+and **D.62/D.63's committed text is left byte-unchanged here.** A separate **Display-A carrier
+adjudication unit** owns the DECISION block and the re-signed nodes; the gate's (non-applied)
+repair direction is forwarded verbatim in the stub. **That unit's re-sign is amendment A-D.2
+(DECISION D-2) and its Lean side landed while this round was composing** (commit `d420f112`:
+sitewise ambient-residue carrier, the old existential form named-and-voided as
+`HVarthetaResVoided`, D-H3's direction restored as a proved lemma; its blueprint block and
+non-triviality countermodel follow in its own commits). *A-D.1 neither adopts nor contests
+DECISION D-2 — it records the refutation, cedes the re-sign, and points at A-D.2. Where the two
+appends disagree about D.62/D.63, **A-D.2 governs**.*
+
+**(IX) THE DAG DELTA** (`spec/DAG_BLUEPRINT_D.tsv` regenerated by `spec/gen_dag_d.py`, whose
+`intra_note` table now carries the annotations so a re-run reproduces them): **337 → 342 rows,
+intra 162 → 167.** One edge re-annotated — `D.17 → D.13`, as the DEFINITIONAL/footprint
+dependency of D-D2. Five added, each from a re-signed DEPENDS field: **`D.21 → D.17`** (was
+UNDECLARED — D-D8's statability), **`D.39 → D.08`** (the real `compData` body applies
+`A.mem_ker_div`), **`D.66 → D.16`** (FRAME-H2 scores a `Wfloor` table), **`D.66 → D.27`** (leg
+1's binary-carry grid), **`D.67 → D.06`** (leg 4 IS the table's arithmetic). Graph re-checked by
+an independent depth pass: **still ACYCLIC, critical path still 9 nodes**, layer widths
+`10,9,13,7,8,6,6,4,5` → **`10,9,13,6,8,6,6,5,5`** (D.39/D.40/D.41/D.43 each one layer deeper),
+the same ten nodes fireable. Shared outputs (`DAG.tsv`, `DAG_NODES.tsv`, `dag_check_output.txt`)
+left at HEAD per the scoped-adds discipline — §11 orchestrator item 5.
+
+**(X) DISPOSITION TABLE — every defect and finding, one row each.**
+
+| item | class | disposition at A-D.1 | where |
+|---|---|---|---|
+| **D-D1** | not computable for its own gate | **REPAIRED** — `iexp_one` signed at D.13; reduce-then-decide rider in §10 + §12 rule 3; `Θ`/`U` as literal data (SD-7); no expected value changed | D.13, §10 rider, D.65–D.67, §12 r3 |
+| **D-D2** | def with no body | **REPAIRED** — real body + `levelOneHeight` + `levelOneHeight_ker_dvd`; definitional D.13-dependency recorded | D.17, §11, D.68(iv) |
+| **D-D3** | elision the stub must resolve | **REPAIRED** — real body + `GaugeArena.chiK` + `rho_mem_ker`; D.40's legs spelled | D.39, D.40 |
+| **D-D4** | binder must be explicit (B.42 class) | **REPAIRED** — `(π : O)` explicit and first; ENV-D4 byte-unchanged | D.24, D.25, D.26, D.28 |
+| **D-D5** | stale API name | **REPAIRED** — `Module.Basis`, `Module.Basis.repr` | D.28 |
+| **D-D6** | missing decidability | **REPAIRED** — `open scoped Classical` signed; membership form recorded as alternative | D.25 |
+| **D-D7** | elision + spelling (4 slips) | **REPAIRED** — all four spelled; no strength change | D.28 |
+| **D-D8** | statability | **REPAIRED** — `chi_varpi_mem_ker` signed; fleet flag written; missing edge added | D.19, D.21, §11 |
+| **D-D9** | unstated indexing convention | **REPAIRED** — ascending-`s` STATED, slot-order values given | D.65 leg 3 |
+| **D-D10** | census slips (2) | **REPAIRED** — recounted: 30 defs / 63 theorem rows / 98 declarations | §12, §14 item 12, closing ¶ |
+| **D-D11** | contentless clause + ambiguous spelling | **RECORDED + RESOLVED** — clause 1 marked `rfl`; `Kˣ`-inverse reading signed | D.34, D.41 |
+| **D-D12** | **refuted statement (vacuous carrier)** | **NOT REPAIRED HERE — cross-reference stub only; owned by the Display-A carrier adjudication unit; STOP-THE-LINE for chapter I** | §9 stub, §14 item 2(iii) |
+| **D-D13** | dead-weight hypothesis (minor) | **RECORDED** — signed as given; §14 item 5 answered | D.21, D.13 |
+| **D-D14** | redundant field (minor) | **RECORDED** — both fields stay signed | D.29 |
+| **D-F1** | frame cannot score a node | **REPAIRED by ADDING A FRAME** — FRAME-H2, D.66 leg 5, executed; new reducer `iexp_eq_of_inv` | D.15, D.66, §12 r6, §13 |
+| **D-F2** | battery one step too short | **REPAIRED** — FRAME-C extended to `s = 5` by the assembled formula | D.67 leg 1, D.06 |
+| **D-F3** | mutant survives at middle slots | **REPAIRED** — distinctness pinned to `t = 1`/`t = 4`; `Θ₂ = Θ₃` executed as the warning | D.67 leg 4, D.06 TEETH |
+
+**In-place tag index** (every node this amendment touched): **D.06** (TEETH re-signed + verdict),
+**D.07** (docstring: D.62 numbering + D-D12 pointer), **D.08** (four membership names, SD-1),
+**D.13** (`iexp_one`, `iexp_eq_of_inv`, the D-D1 ⚠, the negative-height answer), **D.15** (D-F1),
+**D.17** (real bodies, D-D2), **D.19** (siblings + statability fence), **D.21** (spelled
+membership, DEPENDS + D-D13), **D.24** (D-D4), **D.25** (D-D4 + D-D6, four sibling names),
+**D.26** (D-D4), **D.28** (D-D4/D-D5/D-D7 + the two sibling lemmas), **D.29** (D-D14 + docstring
+IDs), **D.34** (D-D11 spelling), **D.35** (gate reference corrected to D.65 leg 4), **D.39**
+(real body, D-D3), **D.40** (legs spelled), **D.41** (D-D11), **§9** (D-D12 stub), **D.65**
+(rows + D-D9), **D.66** (rows + leg 5), **D.67** (rows + legs 1/4, D-F2/D-F3), **D.68** (census
+(iv)+(v)), **§2/§11** (graph shape), **§12** (inventory + rules 1–6), **§13** (three rows + the
+riders + regressions), **§14** (status pass, items 1/2/5/8/10/12 + new item 13), closing ¶ and
+RESUME.
+
+**Rider R-1 — the stale GATE node IDs are corrected in place (24 lines).** The chapter's TEETH
+and prose rows still cited the pre-A-1 gate numbering `D.70–D.73`; §10's gates are `D.65–D.68`.
+Mapping applied: `D.70 → D.65` (F4-JOINT), `D.71 → D.66` (X frame), `D.72 → D.67` (FRAME-C),
+`D.73 → D.68` (census). A-1's own historical sentence ("the §2 pre-composition plan said … §10 =
+D.70–D.73") is deliberately left byte-unchanged, and one attribution was corrected rather than
+mapped: D.35's `(WF-psi)` instance is executed at **D.65 leg 4**, not at FRAME-C.
+
+**Rider R-2 — the residual pre-A-1 CARRIER IDs are NOT swept (orchestrator item).** §§0–1 and a
+few prose rows still cite carriers by their pre-A-1 numbers (e.g. D-H3/D-H5/D-H10's "D.67" for
+`(H-VARTHETA-RES)_i` = **D.62**, "D.68" for the combined conjunct = **D.63**, "D.60" for
+`𝒲_{≤i}` = **D.55**, "D.65" for WF-chain = **D.60**, and D.69 for the routing record = **D.64**),
+which A-1 explicitly left standing ("everything else in §§0–1 stands as committed"). A-D.1
+corrected only the two occurrences that ship as LANDED TEXT — the SIGNATURE docstrings of **D.07**
+and **D.29** — because a stale ID inside a docstring reaches `leanfinal`. **A full renumbering
+audit of §§0–1 is a separate mechanical pass and is flagged for the orchestrator**, with one
+caution: it interacts with D-D12's re-sign, which will rewrite D.62/D.63's text anyway.
+
+**What A-D.1 does NOT change.** No node's STATEMENT is weakened; no `axiom` is added anywhere; no
+`[supplied-by: chapter C]` row is axiomatized or resolved; the five GC-13 interface nodes and the
+two `record` nodes still declare nothing; ENV-D1…ENV-D5 are byte-unchanged; the honesty block
+D-H1…D-H13 is byte-unchanged (its numbering riders are R-2's); D.62/D.63 are byte-unchanged
+(VIII); and `leanspec/Leanspec/ChapD.lean` is not touched by this unit — it is the ground truth
+this append transcribes, and `lake build Leanspec.ChapD` was re-run green after the append
+(text-alignment-only change).
+
+---
 
 <!-- CHAP-D APPEND POINT — do not remove; sections are appended here in order -->
