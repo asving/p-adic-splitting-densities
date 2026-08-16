@@ -779,6 +779,109 @@ theorem pow_level_succ_dvd_coeff_recentre_swap {π : O} (hπ : Irreducible π) {
 
 end Gauss
 
+/-! ## 6. State-level transport of the content and of the child events (C4) -/
+
+section Transport
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+/-- **The content transports across a deep frame congruence.**  If the frames of two non-drain
+states agree ONE DIGIT past the first state's content at some centre, the second state has the
+same content at that slope. -/
+theorem betaContent_eq_of_frame_congr {π : O} (hπ : Irreducible π) {m N : ℕ} (hm : 1 ≤ m)
+    (hN : 1 ≤ N) {c c' : ClusterState O m N} (h0 : ¬ IsDrainState c) (h0' : ¬ IsDrainState c')
+    {a a' : Fin m → O} (ha : proj O m N a = c.1) (ha' : proj O m N a' = c'.1) (k : ℕ) (w : O)
+    (hcong : ∀ j, π ^ (betaContent c k + 1) ∣
+      (((monicPoly a').comp (C (π ^ k) * (X + C w)))
+        - ((monicPoly a).comp (C (π ^ k) * (X + C w)))).coeff j) :
+    betaContent c' k = betaContent c k := by
+  have hsum : ∀ j, ((monicPoly a').comp (C (π ^ k) * (X + C w))).coeff j
+      = ((monicPoly a).comp (C (π ^ k) * (X + C w))).coeff j
+        + (((monicPoly a').comp (C (π ^ k) * (X + C w)))
+            - ((monicPoly a).comp (C (π ^ k) * (X + C w)))).coeff j := by
+    intro j; rw [coeff_sub]; ring
+  refine betaContent_eq_of_recentre_exact hπ hm hN c' h0' k ha' w ?_ ?_
+  · intro j
+    rw [hsum j]
+    exact dvd_add (pow_content_dvd_coeff_recentre hπ c k ha w j)
+      ((pow_dvd_pow π (Nat.le_succ _)).trans (hcong j))
+  · intro hall
+    refine not_pow_content_succ_dvd_coeff_recentre hπ hm hN c h0 k ha w ?_
+    intro j
+    have hback : ((monicPoly a).comp (C (π ^ k) * (X + C w))).coeff j
+        = ((monicPoly a').comp (C (π ^ k) * (X + C w))).coeff j
+          - (((monicPoly a').comp (C (π ^ k) * (X + C w)))
+              - ((monicPoly a).comp (C (π ^ k) * (X + C w)))).coeff j := by
+      rw [coeff_sub]; ring
+    rw [hback]
+    exact dvd_sub (hall j) (hcong j)
+
+/-- **A child event transports across a deep frame congruence** — at every centre of the slope,
+one digit past the content.  All three of H.109's clauses are read at or below level
+`D + 1`, so a difference divisible by `π ^ (D + 1)` moves none of them. -/
+theorem hasChildAt_of_frame_congr {π : O} (hπ : Irreducible π) {m N : ℕ} (hm : 1 ≤ m)
+    (hN : 1 ≤ N) {c c' : ClusterState O m N} (h0 : ¬ IsDrainState c) (h0' : ¬ IsDrainState c')
+    {a a' : Fin m → O} (ha : proj O m N a = c.1) (ha' : proj O m N a' = c'.1) (k : ℕ)
+    (hcong : ∀ (w : O) (j : ℕ), π ^ (betaContent c k + 1) ∣
+      (((monicPoly a').comp (C (π ^ k) * (X + C w)))
+        - ((monicPoly a).comp (C (π ^ k) * (X + C w)))).coeff j)
+    {μ : ℕ} {z : ResidueField O} (h : HasChildAt π c μ k z) :
+    HasChildAt π c' μ k z := by
+  obtain ⟨hμ, hk, hz, hall⟩ := h
+  have hD := betaContent_eq_of_frame_congr hπ hm hN h0 h0' ha ha' k 0 (hcong 0)
+  obtain ⟨c1, c2, c3⟩ := hall a (resSect O z) ha (residue_resSect O z)
+  have hsum : ∀ j, ((monicPoly a').comp (C (π ^ k) * (X + C (resSect O z)))).coeff j
+      = ((monicPoly a).comp (C (π ^ k) * (X + C (resSect O z)))).coeff j
+        + (((monicPoly a').comp (C (π ^ k) * (X + C (resSect O z))))
+            - ((monicPoly a).comp (C (π ^ k) * (X + C (resSect O z))))).coeff j := by
+    intro j; rw [coeff_sub]; ring
+  refine hasChildAt_of_exists hπ hN h0' hμ hk hz a' (resSect O z) ha'
+    (residue_resSect O z) ?_ ?_ ?_
+  · intro j
+    rw [hD, hsum j]
+    exact dvd_add (c1 j) ((pow_dvd_pow π (Nat.le_succ _)).trans (hcong (resSect O z) j))
+  · intro j hj
+    rw [hD, hsum j]
+    exact dvd_add (c2 j hj) (hcong (resSect O z) j)
+  · rw [hD]
+    intro hdvd
+    refine c3 ?_
+    have hback : ((monicPoly a).comp (C (π ^ k) * (X + C (resSect O z)))).coeff μ
+        = ((monicPoly a').comp (C (π ^ k) * (X + C (resSect O z)))).coeff μ
+          - (((monicPoly a').comp (C (π ^ k) * (X + C (resSect O z))))
+              - ((monicPoly a).comp (C (π ^ k) * (X + C (resSect O z))))).coeff μ := by
+      rw [coeff_sub]; ring
+    rw [hback]
+    exact dvd_sub hdvd (hcong (resSect O z) μ)
+
+/-- **The child events at a slope are the SAME** on both sides of a deep frame congruence — the
+`↔` form, which is what the genre-exactness clause of H.116b consumes. -/
+theorem hasChildAt_iff_of_frame_congr {π : O} (hπ : Irreducible π) {m N : ℕ} (hm : 1 ≤ m)
+    (hN : 1 ≤ N) {c c' : ClusterState O m N} (h0 : ¬ IsDrainState c) (h0' : ¬ IsDrainState c')
+    {a a' : Fin m → O} (ha : proj O m N a = c.1) (ha' : proj O m N a' = c'.1) (k : ℕ)
+    (hcong : ∀ (w : O) (j : ℕ), π ^ (betaContent c k + 1) ∣
+      (((monicPoly a').comp (C (π ^ k) * (X + C w)))
+        - ((monicPoly a).comp (C (π ^ k) * (X + C w)))).coeff j)
+    (μ : ℕ) (z : ResidueField O) :
+    HasChildAt π c' μ k z ↔ HasChildAt π c μ k z := by
+  have hD := betaContent_eq_of_frame_congr hπ hm hN h0 h0' ha ha' k 0 (hcong 0)
+  have hback : ∀ (w : O) (j : ℕ), π ^ (betaContent c' k + 1) ∣
+      (((monicPoly a).comp (C (π ^ k) * (X + C w)))
+        - ((monicPoly a').comp (C (π ^ k) * (X + C w)))).coeff j := by
+    intro w j
+    rw [hD]
+    have hneg : (((monicPoly a).comp (C (π ^ k) * (X + C w)))
+        - ((monicPoly a').comp (C (π ^ k) * (X + C w)))).coeff j
+        = -((((monicPoly a').comp (C (π ^ k) * (X + C w)))
+            - ((monicPoly a).comp (C (π ^ k) * (X + C w)))).coeff j) := by
+      rw [coeff_sub, coeff_sub]; ring
+    rw [hneg]
+    exact dvd_neg.2 (hcong w j)
+  exact ⟨fun hc' => hasChildAt_of_frame_congr hπ hm hN h0' h0 ha' ha k hback hc',
+    fun hc => hasChildAt_of_frame_congr hπ hm hN h0 h0' ha ha' k hcong hc⟩
+
+end Transport
+
 end Uniformity.Density.Induction
 
 /-! ## Axiom footprint (stages 1–2: §1–§3) -/
@@ -797,5 +900,14 @@ section AxCheck
 #print axioms Uniformity.Density.Induction.pow_min_succ_dvd_coeff_recentre_alphaParent_sub
 #print axioms Uniformity.Density.Induction.coeff_zero_recentre_alphaParent_not_dvd
 #print axioms Uniformity.Density.Induction.exists_peel
+#print axioms Uniformity.Density.Induction.pow_add_dvd_coeff_mul
+#print axioms Uniformity.Density.Induction.not_pow_add_succ_dvd_coeff_mul
+#print axioms Uniformity.Density.Induction.recentre_alphaParent_own
+#print axioms Uniformity.Density.Induction.not_pow_min_succ_dvd_coeff_recentre_alphaParent
+#print axioms Uniformity.Density.Induction.level_recentre_mul_alphaParent
+#print axioms Uniformity.Density.Induction.pow_level_succ_dvd_coeff_recentre_swap
+#print axioms Uniformity.Density.Induction.betaContent_eq_of_frame_congr
+#print axioms Uniformity.Density.Induction.hasChildAt_of_frame_congr
+#print axioms Uniformity.Density.Induction.hasChildAt_iff_of_frame_congr
 
 end AxCheck
