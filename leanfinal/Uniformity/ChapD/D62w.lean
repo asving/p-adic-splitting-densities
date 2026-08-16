@@ -5,7 +5,9 @@ Authors: Asvin G
 -/
 import Uniformity.ChapD.D05
 import Uniformity.ChapD.D17
+import Uniformity.ChapD.D55
 import Uniformity.ChapD.D62
+import Uniformity.ChapD.D63
 
 /-!
 # Uniformity.ChapD.D62w — the deep-twist witness layer (unit OM-8)
@@ -46,9 +48,11 @@ per CHAP-I I.10's dated note). Five layers (1, 2, 3, 3′, 4), all PROVED, Lean-
    `i = 2` transcription — `EFF.GENTOW2.42`'s γ-calculus ("the value-0 Laurent monomials
    `x^i π^a Φ′^b` form exactly the group `⟨γ₁, γ₂⟩`") at exponent level, same descent, two
    letters.
-4. **The `𝒲` interleaved-induction skeleton** (`Wle`, `wle_two`, `wle_of_interleaved`): the
-   HYP.63 closure argument, abstractly. `Wle W n := ∀ q ∈ [3, n], W q` (byte-matching the
-   leanspec D.55 carrier); `wle_two` is PROVED (the empty base — an `axiom` in leanspec);
+4. **The `𝒲` interleaved-induction skeleton** (`wle_two`, `wle_of_interleaved`): the
+   HYP.63 closure argument, abstractly. `Wle W n := ∀ q ∈ [3, n], W q` is IMPORTED from its
+   signed landing site D.55, not re-declared here (stub-gate finding I-D1); likewise Display
+   A's conjunct `VarthetaWConjunct` is imported from D.63. `wle_two` is PROVED here (the
+   empty base — an `axiom` in leanspec);
    `wle_of_interleaved` PROVES: given the base `B 2` (the landed GENTOW2 clause (b) at
    index 2), the step `∀ i ≥ 3, Wle W (i−1) → B (i−1) → W i` (the WI companion's lemma, whose
    S3 census consumes clause (b) at index `i−1` = its C-5), and the chain
@@ -364,9 +368,10 @@ theorem hvarthetaRes_deep2 {K L : Type*} [Field K] [Field L] [Algebra K L]
 
 /-! ## 4. The `𝒲_{≤i}` interleaved-induction skeleton (HYP.63's closure shape) -/
 
-/-- `𝒲_{≤i}`, abstract (byte-matching the leanspec D.55 carrier): `W q` for every
-`q ∈ [3, i]`. -/
-def Wle (W : ℕ → Prop) (i : ℕ) : Prop := ∀ q, 3 ≤ q → q ≤ i → W q
+/- `𝒲_{≤i}` is NOT re-declared here: the signed landing site is `D.55`
+(`Uniformity.ChapD.D55`, `Uniformity.Density.Gauge.Wle`), imported above. The definition this
+file previously carried was byte-identical to it; the duplicate was a hard environment error for
+any importer that saw both this file and D.55 (stub-gate finding I-D1). -/
 
 /-- The empty base `𝒲_{≤2}` — PROVED (an `axiom` stub in leanspec): no `q` satisfies
 `3 ≤ q ≤ 2`. -/
@@ -408,8 +413,10 @@ theorem wle_of_interleaved (W B : ℕ → Prop) (base : B 2)
   · exact fun q h3 hq => absurd (h3.trans hq) (by omega)
   · exact (main n hge).1
 
-/-- Display A's `∀ i ≥ 3` conjunct, assembled (D.63's signature, byte-matching leanspec). -/
-def VarthetaWConjunct (HVR W : ℕ → Prop) (i : ℕ) : Prop := HVR i ∧ Wle W i
+/- Display A's `∀ i ≥ 3` conjunct is NOT re-declared here either: the signed landing site is
+`D.63` (`Uniformity.ChapD.D63`, `Uniformity.Density.Gauge.VarthetaWConjunct`), imported above,
+and it carries the A-D.2 consumption fence. The definition this file previously held was
+byte-identical to it (stub-gate finding I-D1). -/
 
 /-! ## 5. The general-depth structural core (every `i`, abstract)
 
