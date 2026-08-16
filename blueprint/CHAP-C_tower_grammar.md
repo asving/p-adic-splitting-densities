@@ -9318,4 +9318,52 @@ they are PROVED); the law they serve keeps its own battery
 
 ---
 
+## A-C.5 BOOKKEEPING — where each item's record lives, and what is owed
+
+**Records.** Items 1 and 4 are node sections above (C.109-i … C.109-v; C.129). Item 2 is the
+consumer sweep above plus the A-C.5 banners at NODES C.13, C.14 and C.47. Items 3 and 5 are
+recorded AT their nodes, because both are re-signs in place: item 3 at NODE C.113's A-C.5
+banner and SIGNATURE (clause (i) only; clause (ii) untouched), item 5 at NODE C.128's
+GEOGRAPHY PIN, SIGNATURE adjudication and STUB REPAIR FLAG.
+
+**Census.** Nodes 131 → **137** (+C.109-i, -ii, -iii, -iv, -v, +C.129). Re-signed in place
+and NOT counted again: C.109 (assembly, byte-unchanged), C.113(i), C.128, C.13 (clause 5);
+byte-unchanged but re-read: C.14, C.47.
+
+**DAG.** `spec/DAG_BLUEPRINT_C.tsv` gains 39 rows (2 for C.113's repaired clause, 2 for
+C.13 → C.22 + the `EFF.HE6.15` source edge, 7 for C.129 and its two consumers, 28 for the
+C.109 split). Re-verified ACYCLIC by Kahn over the 133 C-internal nodes after each batch —
+and one designed edge was CHANGED to keep it so: C.129's clause (b) reads `reass`, whose
+landed carrier happens to sit in `C127.lean`, but the OBJECT is C.71's, so the row is
+`C.129 → C.71`; the naive `C.129 → C.127` would have closed a cycle against
+`C.127 → C.129`.
+
+**Certification legs, all run BEFORE the corresponding signature.**
+
+| item | leg | result |
+|---|---|---|
+| 1 | `verification/c109_ac5_sweep_check.py` (+ retained output) | 124 checks, exit 0; 4 teeth, 2 recorded blind at `q = 2` |
+| 2 | `leanfinal/Uniformity/ChapC/C47_RESIGN_CERT.lean.txt` | 3 theorems, sorry-free, Lean-core |
+| 3 | `leanfinal/Uniformity/ChapC/C113_REFUTATION.lean.txt` (re-run) | frozen form FALSE + repaired form PROVED, Lean-core |
+| 4 | `leanfinal/Uniformity/ChapC/C129_CERT.lean.txt` | all five clauses + helper PROVED, Lean-core |
+| 5 | `verification/openmath/bs2_lawbs2_cert.py` (re-run) | GREEN 666/0, 6/6 teeth, BS2-STUBGAP's 16 rows |
+
+`lake build Leanspec.ChapC` GREEN (9080 jobs) after every item; zero `sorry`.
+
+**OWED, and deliberately not done here.** (a) FU-1 … FU-4 (item 2's landed-code changes and
+the A-C.6 coordination check) — landed consumers do not get silent edits. (b) The five
+C.109 layers and C.129 are signatures, not proofs; C.129's are already proved in the record,
+so its fleet unit is transcription. (c) The A-C.3 leanspec RETIREMENT sweep (its §VIII
+designed list, booked to A-C.5) is NOT executed: it is a mechanical pass over ~20 landed
+declarations, orthogonal to these five repairs, and folding it in would have made this
+amendment unreviewable. It stays booked, with A-C.3's `DO NOT TRANSCRIBE` flags in force.
+(d) `docs/PROJECT_STATE.md` is untouched by this unit (append written by the orchestrator).
+
+**Attribution disclosure.** The C.129 leanspec hunk (`AC5SlotHeights`) was swept into the
+concurrent A-C.6 unit's commit `958cc39b` by its `git add`; the content is intact and
+identical to what this amendment signs, only the commit attribution is stacked. Recorded,
+not fixed — the same convention as append #79's disclosure of the reverse case.
+
+---
+
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
