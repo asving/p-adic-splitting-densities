@@ -95,9 +95,16 @@ import Uniformity.ChapH.H94
 import Uniformity.ChapH.H95
 import Uniformity.ChapH.H96
 import Uniformity.ChapH.H97
+import Uniformity.ChapH.H97r1
+import Uniformity.ChapH.H97r2
+import Uniformity.ChapH.H97r3
+import Uniformity.ChapH.H97r4
+import Uniformity.ChapH.H97b
 import Uniformity.ChapH.H98
 import Uniformity.ChapH.H99
 import Uniformity.ChapH.H09w
 
 /-! Chapter H roll-up — COMPLETE: 99/99 nodes landed 2026-08-15. -/
 /-! Plus `H09w`: the H.09 `StageInterface` non-vacuity witnesses (finding R3, §16 item 14). -/
+/-! Plus `H97r1`–`H97r4`, `H97b` (unit OM-1, 2026-08-16): the `n = 3` rate support chain and
+`package_three` — `InductionPackage 3` unconditional, `(K, B, c) = (1, 0, 3)`. -/
