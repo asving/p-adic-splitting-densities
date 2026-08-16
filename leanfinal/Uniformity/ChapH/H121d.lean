@@ -10,8 +10,80 @@ import Uniformity.ChapG.G14
 /-!
 # Uniformity.ChapH.H121d — the content-weighted β census
 
-**Chapter H, NODE H.121d** [theorem] (AMENDMENT A-H.6 §5).  Placeholder header; filled at the
-end of the unit.
+**Chapter H, NODE H.121d** [theorem] (`blueprint/CHAP-H_general_induction.md`, AMENDMENT A-H.6
+§5 — the node this amendment adds, replacing the committed step 3's unquantified *"genre
+bookkeeping (slopes × windows ≤ polynomial in `N`)"*, which is exactly what finding F-H17.2
+killed).  The PRICING step of H.121 clause (iii):
+
+    Σ_{c : β state at window N}  Q^(betaContent c k(c))   ≤   (1/3) · Q^(m(N−1)) .
+
+Stated (per the frozen signature) as a sum over the content `D` of the number of β states
+admitting SOME child of content `D` — an upper bound on the amendment's per-state sum, so the
+form proved here is the stronger one.
+
+## The proof, and how it differs from the amendment's sketch
+
+A-H.6 §5's sketch prices the census by the EXHAUSTIVE β polygon classification at `m = 3`
+(shapes A/B/C, closed value `Q/(Q²+Q+1) ≤ 2/7`).  This file proves the signed bound by a
+CHEAPER route that needs no polygon classification at all — only the child event's own
+divisibility clauses, read on the three coefficient digits:
+
+1. **§3.** At `m = 3` a β child has multiplicity `μ = 2` (H.118's `betaChild_mult_lt`, plus
+   H.109's `2 ≤ μ`).  Write `W := π^k·w` for the centre (any lift `w` of `z`; `HasChildAt`
+   quantifies over ALL lifts, which is what lets one `w` serve a whole cell).  The recentred
+   coefficients factor as `b_j = π^(jk)·t_j` with `t₂ = a₂ + 3W`, `t₁ = a₁ + 2a₂W + 3W²`,
+   `t₀ = a₀ + a₁W + a₂W² + W³` (§2), so the event `π^D ∣ b₂`, `π^(D+1) ∤ b₂`,
+   `π^(D+1) ∣ b₁`, `π^(D+1) ∣ b₀` becomes
+   `v(t₂) = D − 2k` EXACTLY, `π^(D+1−k) ∣ t₁`, `π^(D+1) ∣ t₀`.
+2. **The structural constraint `D ≥ 2k + 1`** falls out of the same clause: `a₂ ∈ 𝔪` and
+   `π ∣ W` give `v(b₂) ≥ 2k + 1`, while `π^(D+1) ∤ b₂` gives `v(b₂) ≤ D`.  (This is what
+   replaces the polygon case list: it is the only relation between `D` and `k` the count
+   needs.)
+3. **§4.** The three conditions are TRIANGULAR, so `c ↦ (t₂, t₁, t₀)` is injective and lands
+   in `exactSet(D−2k) × dvdSet(D+1−k) × dvdSet(D+1)`; ChapG's G.14 counts give the cell
+   `(Q−1)·Q^(N−(D−2k)−1) · Q^(N−(D+1−k)) · Q^(N−(D+1)) = (Q−1)·Q^(3(N−1))·Q^(3k)·Q^(−3D)`.
+4. **§1.** Summing over the `Q − 1` centres and over `1 ≤ k`, `2k + 1 ≤ D` and weighting by
+   `Q^D` gives `Σ (Q−1)²Q^(3k)Q^(−2D) = 1/(Q+1) ≤ 1/3`.
+
+`1/(Q+1)` is the constant this route certifies; the SHARP value is A-H.6's `Q/(Q²+Q+1) ≤ 2/7`
+(the two agree in order and the crude one is TIGHT at `Q = 2`, where it equals the signed
+`1/3` exactly).  Both are `≤ 1/3`, so the signed literal is proved with the margin the
+amendment intended, and no unsigned support lemma and no new axiom were needed.
+
+At `m = 2` the β set is EMPTY (H.118's `betaChild_mult_lt` plus `2 ≤ μ` would need
+`2 ≤ μ < 2`) and every summand is `0` — the same emptiness `H122m2.not_isBetaState_two`
+records, re-derived here from H.118 as the signed DEPENDS prescribes (this file does NOT
+import the `m = 2` H.122 leg).
+
+⚠ **Why `Q − 1` twice.**  The bound `1/3` is TIGHT at `Q = 2`: relaxing the centre count from
+`Q − 1` to `Q`, or the top digit's EXACT-valuation count `(Q−1)Q^r` to the merely-divisible
+`Q^(r+1)`, each pushes the total to `2/3 > 1/3`.  Both refinements are therefore load-bearing.
+
+⚠ **S-1 fence.**  Everything here is the CONSERVATIVE cluster carrier (`u_{m,1}`'s bucket
+census), never the semantic `undecidedCount` (finding F-2).
+
+DEPENDS: H.106 (`ClusterState`), H.107/H.108 (`betaContent`, `betaContent_le`,
+`IsDrainState`), H.109 (`HasChildAt`), H.110/H.111 (`IsBetaState`), H.112
+(`exists_proj_eq`, `residue_surj`, `one_le_window_of_not_drain`, `mult_le_of_hasChildAt` via
+H.118), H.114 (`instFiniteClusterState`), H.118 (`betaChild_mult_lt`) · ChapG G.14
+(`dvdSet`, `exactSet`, `card_dvdSet`, `card_exactSet_add`) · landed `monicPoly`, `proj`,
+`residueCard`, `two_le_residueCard`, `mem_maximalIdeal_pow_iff_dvd`.
+
+**ENVIRONMENT — ENV-H17** + `[Finite (ResidueField O)]` + `[IsAdicComplete (maximalIdeal O) O]`
++ `π` explicit, every binder INLINE; `(O : Type)` in the signed statement (the universe the
+H.121/H.122 stubs pin).  `hN` is part of the FROZEN signature and is not consumed (the bound
+is trivially true at `N = 0`, where the sum is empty).
+
+## TEETH (GC-8)
+
+`verification/AH6_beta_envelope_check.py` (54/54, exit 0, re-run 2026-08-16 at landing):
+check `C4` (the finite-`N` census never exceeds `Q/(Q²+Q+1)`, `q ∈ {2,3}`, `N ≤ 40`, exact),
+`D1–D4` (the closed form, per polygon shape) and `D5` (`Q`-monotonicity to `Q = 199`).  §6
+reproduces the two constant comparisons this file's proof actually turns on.
+
+## Status
+
+Sorry-free, axiom-free (Lean core only); footprint printed at the end of the file.
 -/
 
 set_option linter.style.longLine false
@@ -513,4 +585,210 @@ private theorem card_bucket_le {π : O} (hπ : Irreducible π) {N D : ℕ} (hDN 
 
 end Count
 
+/-! ## 5. NODE H.121d — the content-weighted β census -/
+
+section Census
+
+/-- **H.121d [A-H.6 §5].**  *The pricing step of the β leg.*  At `2 ≤ m ≤ 3`, weighting each
+β state by `Q^D` at its own child content `D = betaContent c k` costs at most a third of the
+state census:
+
+    Σ_{c : β state at window N} Q^(betaContent c k(c))  ≤  (1/3)·Q^(m(N−1)).
+
+At `m = 2` the β set is EMPTY (H.118's `betaChild_mult_lt` plus H.109's `2 ≤ μ` would need
+`2 ≤ μ < 2`), so every summand is `0`.  At `m = 3` the child multiplicity is `μ = 2` and the
+cell count is the triangular digit count of §§3–4; the resulting double sum is §1's, with
+closed value `1/(Q+1) ≤ 1/3`.
+
+The `Finset.range N` range is exact: `betaContent c k ≤ N − 1` on non-drain states (H.108's
+`betaContent_le`) and β states are non-drain. -/
+theorem beta_content_census {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m : ℕ} (hm : 2 ≤ m) (hm3 : m ≤ 3) (N : ℕ) (hN : 1 ≤ N) :
+    ∑ D ∈ Finset.range N,
+        (Nat.card {c : ClusterState O m N //
+            IsBetaState π c ∧ ∃ (μ k : ℕ) (z : ResidueField O),
+              HasChildAt π c μ k z ∧ betaContent c k = D} : ℝ)
+          * (residueCard O : ℝ) ^ D
+      ≤ (1 / 3 : ℝ) * (residueCard O : ℝ) ^ (m * (N - 1)) := by
+  classical
+  have hQ2 : 2 ≤ residueCard O := two_le_residueCard O
+  have hQR : (2:ℝ) ≤ (residueCard O : ℝ) := by exact_mod_cast hQ2
+  have hQ0 : (0:ℝ) < (residueCard O : ℝ) := by linarith
+  have hcast1 : ((residueCard O - 1 : ℕ) : ℝ) = (residueCard O : ℝ) - 1 := by
+    have h1 : (1:ℕ) ≤ residueCard O := residueCard_pos O
+    push_cast [Nat.cast_sub h1]
+    ring
+  interval_cases m
+  · -- `m = 2`: the β bucket is empty, so every summand vanishes
+    have hzero : ∀ D : ℕ, Nat.card {c : ClusterState O 2 N //
+        IsBetaState π c ∧ ∃ (μ k : ℕ) (z : ResidueField O),
+          HasChildAt π c μ k z ∧ betaContent c k = D} = 0 := by
+      intro D
+      have hempty : IsEmpty {c : ClusterState O 2 N //
+          IsBetaState π c ∧ ∃ (μ k : ℕ) (z : ResidueField O),
+            HasChildAt π c μ k z ∧ betaContent c k = D} := by
+        constructor
+        rintro ⟨c, hβ, μ, k, z, hch, -⟩
+        have h1 : μ < 2 := betaChild_mult_lt hβ hch
+        have h2 : 2 ≤ μ := hch.1
+        omega
+      exact Nat.card_of_isEmpty
+    simp only [hzero, Nat.cast_zero, zero_mul, Finset.sum_const_zero]
+    positivity
+  · -- `m = 3`: the census proper
+    have hterm : ∀ k D : ℕ, 1 ≤ k → 2 * k + 1 ≤ D → D + 1 ≤ N →
+        ((residueCard O : ℝ) - 1) * (((residueCard O : ℝ) - 1)
+            * (residueCard O : ℝ) ^ (N - (D - 2 * k) - 1)
+            * (residueCard O : ℝ) ^ (N - (D + 1 - k))
+            * (residueCard O : ℝ) ^ (N - (D + 1))) * (residueCard O : ℝ) ^ D
+          = ((residueCard O : ℝ) - 1) ^ 2 * (residueCard O : ℝ) ^ (3 * k)
+              * ((residueCard O : ℝ) ^ (2 * D))⁻¹ * (residueCard O : ℝ) ^ (3 * (N - 1)) := by
+      intro k D hk hkD hDN
+      have hid : (N - (D - 2 * k) - 1) + (N - (D + 1 - k)) + (N - (D + 1)) + D + 2 * D
+          = 3 * (N - 1) + 3 * k := by omega
+      have hcomb : (residueCard O : ℝ) ^ (N - (D - 2 * k) - 1)
+            * (residueCard O : ℝ) ^ (N - (D + 1 - k))
+            * (residueCard O : ℝ) ^ (N - (D + 1)) * (residueCard O : ℝ) ^ D
+          = (residueCard O : ℝ) ^ (3 * (N - 1)) * (residueCard O : ℝ) ^ (3 * k)
+              * ((residueCard O : ℝ) ^ (2 * D))⁻¹ := by
+        rw [eq_comm, mul_inv_eq_iff_eq_mul₀ (ne_of_gt (pow_pos hQ0 (2 * D))), ← pow_add,
+          ← pow_add, ← pow_add, ← pow_add, ← pow_add]
+        congr 1
+        omega
+      calc ((residueCard O : ℝ) - 1) * (((residueCard O : ℝ) - 1)
+              * (residueCard O : ℝ) ^ (N - (D - 2 * k) - 1)
+              * (residueCard O : ℝ) ^ (N - (D + 1 - k))
+              * (residueCard O : ℝ) ^ (N - (D + 1))) * (residueCard O : ℝ) ^ D
+          = ((residueCard O : ℝ) - 1) ^ 2
+              * ((residueCard O : ℝ) ^ (N - (D - 2 * k) - 1)
+                * (residueCard O : ℝ) ^ (N - (D + 1 - k))
+                * (residueCard O : ℝ) ^ (N - (D + 1)) * (residueCard O : ℝ) ^ D) := by ring
+        _ = ((residueCard O : ℝ) - 1) ^ 2 * (residueCard O : ℝ) ^ (3 * k)
+              * ((residueCard O : ℝ) ^ (2 * D))⁻¹ * (residueCard O : ℝ) ^ (3 * (N - 1)) := by
+            rw [hcomb]; ring
+    -- the per-bucket bound, in ℝ
+    have hbucket : ∀ D ∈ Finset.range N,
+        (Nat.card {c : ClusterState O 3 N //
+            IsBetaState π c ∧ ∃ (μ k : ℕ) (z : ResidueField O),
+              HasChildAt π c μ k z ∧ betaContent c k = D} : ℝ) * (residueCard O : ℝ) ^ D
+          ≤ ∑ k ∈ (Finset.Ico 1 N).filter (fun k => 2 * k + 1 ≤ D),
+              ((residueCard O : ℝ) - 1) ^ 2 * (residueCard O : ℝ) ^ (3 * k)
+                * ((residueCard O : ℝ) ^ (2 * D))⁻¹ * (residueCard O : ℝ) ^ (3 * (N - 1)) := by
+      intro D hD
+      rw [Finset.mem_range] at hD
+      have hDN : D + 1 ≤ N := hD
+      have hnat := card_bucket_le hπ hDN
+      have hreal : (Nat.card {c : ClusterState O 3 N //
+          IsBetaState π c ∧ ∃ (μ k : ℕ) (z : ResidueField O),
+            HasChildAt π c μ k z ∧ betaContent c k = D} : ℝ)
+          ≤ ∑ k ∈ (Finset.Ico 1 N).filter (fun k => 2 * k + 1 ≤ D),
+              ((residueCard O : ℝ) - 1) * (((residueCard O : ℝ) - 1)
+                * (residueCard O : ℝ) ^ (N - (D - 2 * k) - 1)
+                * (residueCard O : ℝ) ^ (N - (D + 1 - k))
+                * (residueCard O : ℝ) ^ (N - (D + 1))) := by
+        have := (Nat.cast_le (α := ℝ)).2 hnat
+        refine le_trans this (le_of_eq ?_)
+        rw [Nat.cast_sum]
+        refine Finset.sum_congr rfl fun k _ => ?_
+        push_cast [hcast1]
+        ring
+      calc (Nat.card {c : ClusterState O 3 N //
+            IsBetaState π c ∧ ∃ (μ k : ℕ) (z : ResidueField O),
+              HasChildAt π c μ k z ∧ betaContent c k = D} : ℝ) * (residueCard O : ℝ) ^ D
+          ≤ (∑ k ∈ (Finset.Ico 1 N).filter (fun k => 2 * k + 1 ≤ D),
+              ((residueCard O : ℝ) - 1) * (((residueCard O : ℝ) - 1)
+                * (residueCard O : ℝ) ^ (N - (D - 2 * k) - 1)
+                * (residueCard O : ℝ) ^ (N - (D + 1 - k))
+                * (residueCard O : ℝ) ^ (N - (D + 1)))) * (residueCard O : ℝ) ^ D :=
+            mul_le_mul_of_nonneg_right hreal (by positivity)
+        _ = ∑ k ∈ (Finset.Ico 1 N).filter (fun k => 2 * k + 1 ≤ D),
+              (((residueCard O : ℝ) - 1) * (((residueCard O : ℝ) - 1)
+                * (residueCard O : ℝ) ^ (N - (D - 2 * k) - 1)
+                * (residueCard O : ℝ) ^ (N - (D + 1 - k))
+                * (residueCard O : ℝ) ^ (N - (D + 1))) * (residueCard O : ℝ) ^ D) := by
+            rw [Finset.sum_mul]
+        _ = ∑ k ∈ (Finset.Ico 1 N).filter (fun k => 2 * k + 1 ≤ D),
+              ((residueCard O : ℝ) - 1) ^ 2 * (residueCard O : ℝ) ^ (3 * k)
+                * ((residueCard O : ℝ) ^ (2 * D))⁻¹
+                * (residueCard O : ℝ) ^ (3 * (N - 1)) := by
+            refine Finset.sum_congr rfl fun k hk => ?_
+            rw [Finset.mem_filter, Finset.mem_Ico] at hk
+            exact hterm k D hk.1.1 hk.2 hDN
+    -- the swap and the geometric estimate
+    have hswap := Finset.sum_comm' (s := Finset.range N)
+      (t := fun D => (Finset.Ico 1 N).filter (fun k => 2 * k + 1 ≤ D))
+      (t' := Finset.Ico 1 N)
+      (s' := fun k => (Finset.range N).filter (fun D => 2 * k + 1 ≤ D))
+      (f := fun D k => ((residueCard O : ℝ) - 1) ^ 2 * (residueCard O : ℝ) ^ (3 * k)
+        * ((residueCard O : ℝ) ^ (2 * D))⁻¹ * (residueCard O : ℝ) ^ (3 * (N - 1)))
+      (by
+        intro D k
+        simp only [Finset.mem_filter, Finset.mem_range, Finset.mem_Ico]
+        constructor
+        · rintro ⟨hD, ⟨hk1, hk2⟩, hkD⟩
+          exact ⟨⟨hD, hkD⟩, hk1, hk2⟩
+        · rintro ⟨⟨hD, hkD⟩, hk1, hk2⟩
+          exact ⟨hD, ⟨hk1, hk2⟩, hkD⟩)
+    have hfil : ∀ k : ℕ, (Finset.range N).filter (fun D => 2 * k + 1 ≤ D)
+        = Finset.Ico (2 * k + 1) N := by
+      intro k
+      ext D
+      simp only [Finset.mem_filter, Finset.mem_range, Finset.mem_Ico]
+      omega
+    calc ∑ D ∈ Finset.range N,
+          (Nat.card {c : ClusterState O 3 N //
+            IsBetaState π c ∧ ∃ (μ k : ℕ) (z : ResidueField O),
+              HasChildAt π c μ k z ∧ betaContent c k = D} : ℝ) * (residueCard O : ℝ) ^ D
+        ≤ ∑ D ∈ Finset.range N, ∑ k ∈ (Finset.Ico 1 N).filter (fun k => 2 * k + 1 ≤ D),
+            ((residueCard O : ℝ) - 1) ^ 2 * (residueCard O : ℝ) ^ (3 * k)
+              * ((residueCard O : ℝ) ^ (2 * D))⁻¹ * (residueCard O : ℝ) ^ (3 * (N - 1)) :=
+          Finset.sum_le_sum hbucket
+      _ = ∑ k ∈ Finset.Ico 1 N, ∑ D ∈ (Finset.range N).filter (fun D => 2 * k + 1 ≤ D),
+            ((residueCard O : ℝ) - 1) ^ 2 * (residueCard O : ℝ) ^ (3 * k)
+              * ((residueCard O : ℝ) ^ (2 * D))⁻¹ * (residueCard O : ℝ) ^ (3 * (N - 1)) := hswap
+      _ = (∑ k ∈ Finset.Ico 1 N, ∑ D ∈ Finset.Ico (2 * k + 1) N,
+            ((residueCard O : ℝ) - 1) ^ 2 * (residueCard O : ℝ) ^ (3 * k)
+              * ((residueCard O : ℝ) ^ (2 * D))⁻¹) * (residueCard O : ℝ) ^ (3 * (N - 1)) := by
+          rw [Finset.sum_mul]
+          refine Finset.sum_congr rfl fun k _ => ?_
+          rw [Finset.sum_mul, hfil k]
+      _ ≤ (1 / 3 : ℝ) * (residueCard O : ℝ) ^ (3 * (N - 1)) :=
+          mul_le_mul_of_nonneg_right (census_geom_le (residueCard O) hQ2 N) (by positivity)
+
+end Census
+
 end Uniformity.Density.Induction
+
+/-! ## 6. TEETH — the two constants, pinned
+
+The battery's `D5` says the SHARP census value `Q/(Q²+Q+1)` is maximized at `Q = 2` with value
+`2/7`; this file's route certifies the CRUDER `1/(Q+1)`, maximized at `Q = 2` with value `1/3`
+— exactly the signed literal, i.e. the proof has zero slack at `q = 2` and the sharp value has
+the `2/7 < 1/3` margin A-H.6 measured.  Both comparisons are integer identities, transcribed
+here in the additive form (`3·num ≤ den`) so they hold verbatim in every characteristic. -/
+
+section NumericGate
+
+-- `Q/(Q² + Q + 1) ≤ 1/3` (A-H.6's SHARP value, checks `C4`/`D1–D5`)
+#guard ([2, 3, 5, 7, 11, 199] : List ℕ).all fun q => 3 * q ≤ q ^ 2 + q + 1
+
+-- `1/(Q + 1) ≤ 1/3` (THIS file's certified value, tight at `q = 2`)
+#guard ([2, 3, 5, 7, 11, 199] : List ℕ).all fun q => 3 ≤ q + 1
+
+-- the two are ordered `sharp ≤ crude ≤ 1/3`: `Q(Q+1) ≤ Q² + Q + 1`
+#guard ([2, 3, 5, 7, 11, 199] : List ℕ).all fun q => q * (q + 1) ≤ q ^ 2 + q + 1
+
+-- the defeat the `Q − 1` factors avert: relaxing EITHER to `Q` gives `Q/(Q² − 1)`, which at
+-- `q = 2` is `2/3 > 1/3` (`3 * 2 > 4 - 1`)
+#guard !(3 * 2 ≤ 2 ^ 2 - 1)
+
+end NumericGate
+
+/-! ## 7. Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Induction.beta_content_census
+
+end AxCheck
