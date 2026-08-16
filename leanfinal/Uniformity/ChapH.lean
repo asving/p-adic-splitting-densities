@@ -89,6 +89,7 @@ import Uniformity.ChapH.H86
 import Uniformity.ChapH.H87
 import Uniformity.ChapH.H88
 import Uniformity.ChapH.H89
+import Uniformity.ChapH.H89w
 import Uniformity.ChapH.H90
 import Uniformity.ChapH.H91
 import Uniformity.ChapH.H92
