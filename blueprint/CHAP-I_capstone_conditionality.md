@@ -219,6 +219,12 @@ are consumed by committed H only at the (c) congruence bound (H.51). Orchestrato
 I.22 — provenance/resolution/audit rows, no Lean files). Plus the §3 table (154 rows), the
 §4.3 reconciliation, and the closing sections.
 
+*[A-I.1 rider, 2026-08-16: **27 nodes**. The amendment adds two `def` nodes — **I.10a**
+`CanonicalLadderConfig` and **I.10b** `CanonicalDeepTwistConfig`, the arising-configuration
+sockets that guard I.10's two ladder fields (GC-13(c) placeholders, bodies owed at chapter C's
+freeze). They live in §4 with I.10, share its Lean file, and need DAG rows at the
+orchestrator's next `dag_build` run.]*
+
 | § | nodes | content |
 |---|---|---|
 | 3 | (table) | THE LEDGER DISPOSITION TABLE: all 154 rows → {DISCHARGED-BY, DISCHARGE-NODE-HERE, CITE, OPEN-MATH, NOT-ON-CAPSTONE-PATH} |
