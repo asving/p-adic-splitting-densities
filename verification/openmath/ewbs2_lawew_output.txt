@@ -1,0 +1,31 @@
+== EWBS2 LAW E-W proof-display certification ==
+  -- W1: p=2 D'=3 i2=1 m=3 u2=10 delta=7 mu2=2 omega=1
+     10 crossing rows dict-checked
+  -- W2: p=3 D'=3 i2=1 m=3 u2=10 delta=7 mu2=2 omega=1
+     20 crossing rows dict-checked
+  -- W5o: p=5 D'=3 i2=1 m=3 u2=10 delta=7 mu2=2 omega=2
+     20 crossing rows dict-checked
+  -- V1p2: p=2 D'=4 i2=1 m=4 u2=5 delta=1 mu2=2 omega=1
+     13 crossing rows dict-checked
+  -- V1p3: p=3 D'=4 i2=1 m=4 u2=5 delta=1 mu2=2 omega=1
+     26 crossing rows dict-checked
+  -- V1p2m3: p=2 D'=4 i2=1 m=4 u2=5 delta=1 mu2=3 omega=1
+     13 crossing rows dict-checked
+  -- V1p3m3: p=3 D'=4 i2=1 m=4 u2=5 delta=1 mu2=3 omega=1
+     26 crossing rows dict-checked
+  -- V2p2: p=2 D'=5 i2=2 m=5 u2=7 delta=2 mu2=2 omega=1
+     32 crossing rows dict-checked
+  -- V2p3: p=3 D'=5 i2=2 m=5 u2=7 delta=2 mu2=2 omega=1
+     64 crossing rows dict-checked
+  -- V3p2: p=2 D'=6 i2=2 m=3 u2=8 delta=2 mu2=2 omega=1
+     19 crossing rows dict-checked
+  -- V3p3: p=3 D'=6 i2=2 m=3 u2=8 delta=2 mu2=2 omega=1
+     38 crossing rows dict-checked
+     V1p2m3 j'=2 MEASURED: pin = theta + excess at 44/46 NONEMPTY coordinates; deviations (a,b,al,c,j,pin,pred): [(3, 0, 5, 1, 2, 28, 24), (3, 0, 6, 1, 2, 32, 28)]
+     V1p3m3 j'=2 MEASURED: pin = theta + excess at 92/92 NONEMPTY coordinates
+
+TOTAL CROSSING ROWS (dict-exact): 281
+CHECKS: 2794, VIOLATIONS: 0
+TALLY: {'DUAL': 11, 'EW-PURE': 11, 'EW-NOX': 1465, 'EW-R': 281, 'EW-Q': 281, 'EW-PIN': 522, 'EW-TIGHT': 40, 'EW-HI': 39, 'EW3-FLOOR': 138, 'EW-MERGE': 1, 'TEETH': 5}
+KILLS: {'T-EW-DELTA': 1, 'T-EW-J0': 1, 'T-EW-SIGN': 1, 'T-EW-WRAP': 1, 'T-EW-COLLIDE': 1}
+VERDICT: GREEN
