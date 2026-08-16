@@ -152,60 +152,6 @@ variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π :
 
 /-! ### Private helpers -/
 
-private theorem isKey_X : IsKey (Polynomial.X : Polynomial O) where
-  monic := Polynomial.monic_X
-  pos := by simp
-  irred := by
-    rw [Polynomial.map_X]
-    exact Polynomial.irreducible_X
-
-noncomputable local instance instFieldResFieldX :
-    Field (resField (Polynomial.X : Polynomial O)) :=
-  instFieldResField isKey_X
-
-private theorem frameRes_ne_zero (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) :
-    F.frameRes H₀ hpin ≠ 0 :=
-  (F.hresirr H₀ hpin).1.ne_zero
-
-/-- The letter power basis of the stage field over `resField X`. -/
-private noncomputable def stagePB (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) :
-    PowerBasis (resField (Polynomial.X : Polynomial O)) (F.stageField H₀ hpin) :=
-  AdjoinRoot.powerBasis (frameRes_ne_zero F H₀ hpin)
-
-/-- The `s`-th letter-basis coordinate of a stage-field element, in `ResidueField O`. -/
-private noncomputable def stageDigit (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀)
-    (c : F.stageField H₀ hpin) (s : ℕ) : ResidueField O :=
-  (resFieldXEquiv O).symm
-    (if h : s < (stagePB F H₀ hpin).dim then (stagePB F H₀ hpin).basis.repr c ⟨s, h⟩ else 0)
-
-/-- The digits reconstruct the element: `c = Σ_{s < f₁} digit_s · η^s`. -/
-private theorem sum_stageDigit (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀)
-    (c : F.stageField H₀ hpin) :
-    ∑ s ∈ Finset.range F.f₁,
-        algebraMap (resField (Polynomial.X : Polynomial O)) (F.stageField H₀ hpin)
-          (algebraMap (ResidueField O) (resField (Polynomial.X : Polynomial O))
-            (stageDigit F H₀ hpin c s)) * F.stageLetter H₀ hpin ^ s = c := by
-  have hdim : (stagePB F H₀ hpin).dim = F.f₁ := by
-    rw [stagePB, AdjoinRoot.powerBasis_dim]; exact (F.hresirr H₀ hpin).2
-  have hgen : (stagePB F H₀ hpin).gen = F.stageLetter H₀ hpin := by
-    rw [stagePB, AdjoinRoot.powerBasis_gen, KeyFrame.stageLetter]
-  have hsum := (stagePB F H₀ hpin).basis.sum_repr c
-  rw [← hdim]
-  rw [← Fin.sum_univ_eq_sum_range
-    (fun s => algebraMap (resField (Polynomial.X : Polynomial O)) (F.stageField H₀ hpin)
-      (algebraMap (ResidueField O) (resField (Polynomial.X : Polynomial O))
-        (stageDigit F H₀ hpin c s)) * F.stageLetter H₀ hpin ^ s) (stagePB F H₀ hpin).dim]
-  have key : ∀ y : resField (Polynomial.X : Polynomial O),
-      algebraMap (ResidueField O) (resField (Polynomial.X : Polynomial O))
-        ((resFieldXEquiv O).symm y) = y := by
-    intro y
-    change (AdjoinRoot.of ((Polynomial.X : Polynomial O).map (residue O)))
-        ((resFieldXEquiv O).symm y) = y
-    rw [← resFieldXEquiv_coe]
-    exact (resFieldXEquiv O).apply_symm_apply y
-  refine Eq.trans (Finset.sum_congr rfl fun i _ => ?_) hsum
-  rw [PowerBasis.coe_basis, hgen, Algebra.smul_def, stageDigit, dif_pos i.2, key]
-
 private theorem isUnit_of_residue_ne_zero {x : O} (hx : residue O x ≠ 0) : IsUnit x := by
   rw [Ne, IsLocalRing.residue_eq_zero_iff] at hx
   exact IsLocalRing.notMem_maximalIdeal.mp hx
@@ -389,21 +335,21 @@ theorem KeyFrame.exists_slotRes_preimage (F : KeyFrame O π) (hπ : Irreducible 
     have hsub : (F.e₁ * F.f₁ - 1) * F.h ≤ (F.e₁ * F.f₁) * F.h :=
       Nat.mul_le_mul_right _ (Nat.sub_le _ _)
     omega
-  have hex : ∃ s, s < F.f₁ ∧ stageDigit F H₀ hpin c s ≠ 0 := by
+  have hex : ∃ s, s < F.f₁ ∧ F.stageCoord H₀ hpin c s ≠ 0 := by
     by_contra hall
-    refine hc (Eq.trans (sum_stageDigit F H₀ hpin c).symm ?_)
+    refine hc (Eq.trans (F.sum_stageCoord H₀ hpin c).symm ?_)
     refine Finset.sum_eq_zero fun s hs => ?_
-    have hzero : stageDigit F H₀ hpin c s = 0 := by
+    have hzero : F.stageCoord H₀ hpin c s = 0 := by
       by_contra hd
       exact hall ⟨s, Finset.mem_range.mp hs, hd⟩
     rw [hzero, map_zero, map_zero, zero_mul]
   obtain ⟨s₀, hs₀, hd₀⟩ := hex
   refine ⟨F.stageLiftIA (π := π) (F.slotIdx M) a
-    (fun s => resLift (stageDigit F H₀ hpin c s)), natDegree_stageLiftIA_lt F hi _, ?_, ?_⟩
+    (fun s => resLift (F.stageCoord H₀ hpin c s)), natDegree_stageLiftIA_lt F hi _, ?_, ?_⟩
   · refine stageHeight_stageLiftIA F hπ hMa hsa _ hs₀ ?_
     exact isUnit_of_residue_ne_zero (by rw [resLift_spec]; exact hd₀)
   · rw [slotRes_stageLiftIA F hπ H₀ hpin hMa hfull hsa]
-    refine Eq.trans (Finset.sum_congr rfl fun s _ => ?_) (sum_stageDigit F H₀ hpin c)
+    refine Eq.trans (Finset.sum_congr rfl fun s _ => ?_) (F.sum_stageCoord H₀ hpin c)
     rw [resLift_spec]
 
 /-! ### The signed declaration -/
