@@ -2451,7 +2451,9 @@ one-liner.**
 `Nat.Coprime u ℓ`, and `g, h` monic `(u,ℓ)`-pure and `(u,ℓ)`-coprime with residual polynomials
 `G, H` of degrees `a, b`. Let `e ∈ O[X]` with `e.natDegree < (a + b) * ℓ * m` (the degree of `g*h`)
 and `suppVal φ e u ℓ ≥ c` for a given `c`. Then there exist `U, V ∈ O[X]` with
-`U.natDegree < g.natDegree`, `V.natDegree < h.natDegree`,
+`U.degree < g.degree`, `V.degree < h.degree` *(in `WithBot ℕ` — [repaired: A-F.8]; the previous
+`natDegree` form is machine-REFUTED at the degenerate divisor `g = 1`, which the `degree` form
+serves with `U = 0` of degree `⊥`, exactly as B.38 and the landed ungraded template do)*,
 `suppVal φ U u ℓ ≥ c - suppVal φ h u ℓ`, `suppVal φ V u ℓ ≥ c - suppVal φ g u ℓ`, and
 
 ```
@@ -2467,6 +2469,12 @@ namespace Uniformity.Density.Leaf
 -- `GradedCoprime` holds because `resPoly X` is a unit constant, and no `U, V` exist). Without
 -- the divisibilities, `e.natDegree < (g*h).natDegree` does NOT bound the abscissa range of `E`
 -- by `a + b` (step 1), because `deg g = ℓ·m·(sideDeg g)` fails for truncation-pure `g`.
+-- [repaired: A-F.8] the two conclusion bounds re-stated in `degree` (`WithBot ℕ`): the A-F.6
+-- form is machine-REFUTED (wave-11 witness `B39_REFUTATION.lean.txt`, compiled at the pin —
+-- `g = 1`, `h = φ + C π`, `e = 0`, `c = 0` at ANY DVR/key satisfies every hypothesis, and
+-- `U.natDegree < (1 : O[X]).natDegree = 0` is `False` in `ℕ`). The `degree` form is B.38's own
+-- shape and the landed template's (`exists_eq_add_mul_of_degree_lt`); the degenerate divisor
+-- is served by `U = 0` (`degree ⊥`). Adjudicated R1 over R2 (added positivity) — see A-F.8.
 theorem exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h : Polynomial O}
     (hg : g.Monic) (hh : h.Monic)
@@ -2474,7 +2482,7 @@ theorem exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : Is
     (hgh : GradedCoprime π φ u ℓ g h)
     {c : ℕ} {e : Polynomial O} (hdeg : e.natDegree < (g * h).natDegree)
     (he : ((c : ℕ) : ℕ∞) ≤ suppVal φ e u ℓ) :
-    ∃ U V : Polynomial O, U.natDegree < g.natDegree ∧ V.natDegree < h.natDegree ∧
+    ∃ U V : Polynomial O, U.degree < g.degree ∧ V.degree < h.degree ∧
       ((c + 1 : ℕ) : ℕ∞) ≤ suppVal φ (e - (h * U + g * V)) u ℓ
 ```
 
@@ -2498,7 +2506,10 @@ theorem exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : Is
 4. `e - (h*U + g*V)` has residual polynomial `E - (H*U₀ + G*V₀) = 0` at weight `c`, hence by B.30's
    `resCoeff_eq_zero_iff` (contrapositive) its support value at `(u,ℓ)` is `> c`, i.e. `≥ c + 1`.
 5. The degree bounds on `U, V` follow from step 3's construction: `U` has abscissa range `< a`, so
-   degree `< a * ℓ * m = g.natDegree`.
+   degree `< a * ℓ * m = g.natDegree`. [repaired: A-F.8] Both cases of the `degree`-form bound are
+   what the construction delivers: at `a = 0` step 3's sum is empty and `U = 0` (`degree ⊥ <
+   g.degree`); at `a ≥ 1`, `U ≠ 0` has `U.degree = U.natDegree < g.natDegree = g.degree` (`g`
+   monic).
 
 **SIZE.** 70 lines. **SPLIT MANDATED → 2**: `B39a.lean` = step 3 (the residual-to-`O[X]` lift with its
 weight bookkeeping — reusable, so its extraction is a **RE-PLAN request**, orchestrator books it as
@@ -2631,7 +2642,11 @@ each step below names the landed step it mirrors.
    (landed `degree_sub_lt_of_monic_of_natDegree_eq`).
 3. **The iteration.** Define `g_{k+1} := g_k + V_k`, `h_{k+1} := h_k + U_k` from B.39 applied to
    `e_k := f - g_k h_k` at weight `c_k := suppVal φ f u ℓ + k + 1`; the degree bounds keep
-   `g_k` monic of fixed degree. Then `e_{k+1} = e_k - (h_k U_k + g_k V_k) - U_k V_k` and both
+   `g_k` monic of fixed degree. [A-F.8 route note: B.39's bounds are now `degree`-stated
+   (`WithBot ℕ`), which is exactly what the monicity step consumes — `Monic.add_of_left` +
+   `degree_add_eq_left_of_degree_lt` keep each iterate monic of fixed `natDegree`, so B.40's
+   `natDegree < d` inputs in step 4 are unchanged; a zero correction term (`degree ⊥`) is the
+   no-op step.] Then `e_{k+1} = e_k - (h_k U_k + g_k V_k) - U_k V_k` and both
    correction terms have support value `≥ c_k + 1` (the cross term by B.33). (Landed step:
    `exists_solve_step`'s loop.)
 4. **The limit.** B.40 applied to `(g_k)` and to `(h_k)` gives monic `g, h` of the right degrees with
@@ -7132,5 +7147,175 @@ and the bridge is coefficientwise:
   this amendment. §14 items 9 (RESOLVED-FIRED) and 10 (B.44′ half CLOSED-REFUTED) annotated;
   the dangling "DVR by B.59's step 1" citation in §7's fallback note repaired to the landed
   `Quarry/AdjoinRootDVR.lean` backport.
+
+**A-F.8 — B.39's A-F.6 RE-SIGN MACHINE-REFUTED AGAIN AND RE-SIGNED (the Bézout bounds move to
+`degree`; wave-11 adjudication, 2026-08-16).**
+
+**(I) The refutation, confirmed.** Wave-11 return on B.39: the A-F.6 re-signed signature (the
+frozen form displayed at NODE B.39 before this amendment, conclusion
+`∃ U V, U.natDegree < g.natDegree ∧ V.natDegree < h.natDegree ∧ …`) is REFUTED by the committed
+compiled witness `leanfinal/Uniformity/ChapB/B39_REFUTATION.lean.txt`
+(`b39_signature_refuted`; re-verified during this adjudication: compiles clean at the pin,
+sorry-free, Lean-core axioms only). At **any** DVR, **any** uniformizer, **any** key, at
+`u = ℓ = 1`: `g := 1`, `h := φ + C π`, `e := 0`, `c := 0` satisfies every hypothesis —
+`hgd` is `φ.natDegree ∣ 0`; `IsPure φ 1 1 1` holds (the polygon of `1` is the single point
+`(0,0)` and `IsPure`'s right endpoint is the truncated `0 / m = 0`); `GradedCoprime` is free
+(`resPoly … 1 … = 1`, `isCoprime_one_left`); `h` is genuinely `(1,1)`-pure of degree `m` — while
+the conclusion demands `U.natDegree < (1 : O[X]).natDegree = 0`, i.e. `False` in `ℕ`. **Root
+cause: a `degree`-to-`natDegree` transcription slip** — "no `U` at all" is expressible in the
+`degree` order (`⊥`) but not in `ℕ`. Nothing else in the A-F.6 repair is impugned: `hu`/`hgd`/
+`hhd` are exactly what the landed B.35 carry estimate consumes, and the residual-Bézout +
+`resLift` route is untouched.
+
+**(II) The adjudication: R1 (restate in `degree`) SIGNED; R2 (add positivity) REJECTED.** The
+refuter's two candidates, adjudicated against the SOURCE and the sole consumers:
+
+* **R1 (signed):** conclusion bounds become `U.degree < g.degree ∧ V.degree < h.degree`
+  (`WithBot ℕ`). *Source-conformant:* B.39's own field-level input B.38
+  (`exists_solve_resField`, LANDED as `Uniformity.Hensel.exists_solve_field`,
+  `HenselFactorization.lean:133`) states its bounds as `u.degree < (g₀.natDegree : WithBot ℕ)`,
+  and the landed ungraded template of the same solve step,
+  `Uniformity.Hensel.exists_eq_add_mul_of_degree_lt` (`HenselFactorization.lean:583`), states
+  `u.degree < (g₀.natDegree : WithBot ℕ) ∧ v.degree < (h₀.natDegree : WithBot ℕ)` — B.39 was the
+  chain's lone `natDegree`-bound statement. *Degenerate case now true and delivered:* at
+  `sideDeg g = 0`, B.38 returns `U₀ = 0` (degree `< 0` forces it) and puts the whole solve into
+  `V₀`; step 3's lift of the empty sum is `U = 0` with `degree ⊥ < g.degree`. *Consumer check
+  (B.41, B.43 — the only DEPENDS-consumers):* B.41's step-3 iteration consumes the bounds
+  exactly through `Monic.add_of_left` + `degree_add_eq_left_of_degree_lt`, for which the
+  `degree` form is the native shape; iterates stay monic of fixed `natDegree`, so B.40's
+  `natDegree < d` inputs are unchanged — **R1 does not break B.41's degree bookkeeping** (route
+  note added at B.41 step 3). B.43 consumes B.39 only through the same iteration shape and has
+  no consumers of its own (A-F.6 table).
+* **R2 (rejected):** add `(hgpos : 0 < g.natDegree) (hhpos : 0 < h.natDegree)`. The wave-11
+  audit's claim that R2 does not propagate to B.41's signature was VERIFIED: B.41 can split the
+  trivial residual factors first — at `G = 1` the factorization is `f = 1 · f` with
+  `GradedCoprime π φ u ℓ 1 f` free (`resPoly` of `1` is `1`, `isCoprime_one_left`; `IsPure φ 1
+  u ℓ` as in (I)), symmetrically at `H = 1` — so R2's hypotheses are derivable at every
+  iteration call site *after* that split. Rejected anyway: (i) it puts a case split into B.41's
+  proof that R1 makes unnecessary; (ii) it shrinks B.39 below its own source templates, whose
+  degenerate case is true; (iii) the degenerate case is genuinely used (B.38 already serves it).
+
+**(III) Where applied.** NODE B.39: STATEMENT, SIGNATURE (conclusion only — hypotheses
+byte-unchanged from A-F.6), PROOF step 5; NODE B.41: step-3 route note (no signature change);
+stub re-sign in `leanspec/Leanspec/ChapB.lean` (tagged `[repaired: A-F.8]`), RE-SIGN LOG updated.
+Refuted original + witness preserved verbatim: the original is displayed in (I) via the witness
+file's header, and `B39_REFUTATION.lean.txt` is KEPT as committed provenance (the
+`B59_REFUTATION` convention). B.39 is unfired in `leanfinal`, so no landed proof moves and no
+capstone footprint is touched. Authority: standing statement-change authority (2026-08-05); the
+change replaces a refuted conclusion by the source-conformant bound the proof already delivers.
+
+---
+
+**A-F.9 — B.42 GAINS THE CLASSICAL STANDING HYPOTHESIS `dev φ f 0 ≠ 0` (the `φ`-part peel);
+conclusion strengthened for the consumers; the same missing hypothesis found and repaired in
+B.71/B.72/B.79a (wave-11 adjudication, 2026-08-16).**
+
+**(I) The refutation, confirmed.** Wave-11 return on B.42: the A-F.6 re-signed
+(conclusion-strengthened) signature is REFUTED by the committed compiled witness
+`leanfinal/Uniformity/ChapB/B42_REFUTATION.lean.txt` (`sideSet_key_self` +
+`b42_signature_refuted`; re-verified during this adjudication: compiles clean at the pin,
+sorry-free, Lean-core axioms only). Witness `f := φ`, `μ := 1` at **any** DVR and **any** key:
+`hres` is `pow_one`, and the key's own `φ`-adic polygon is the single point `(1,0)`
+(`dev φ φ 0 = φ %ₘ φ = 0`), so `sideSet φ φ u ℓ = {1}` for every `u` and every `ℓ > 0` —
+cardinality one. The conclusion's `↔`-clause then forces `s = ∅` and clause 4 reads `φ = 1`,
+contradicting `0 < φ.natDegree`.
+
+**(II) The missing hypothesis, verified against the SOURCE.** The repair adds
+`(h0 : dev φ f 0 ≠ 0)` — equivalently `¬ φ ∣ f` (`modByMonic_eq_zero_iff_dvd`), equivalently
+`npHgt φ f 0 ≠ ⊤`. This is the classical theorem of the polygon's standing scope, and the corpus
+states the `φ`-part peel explicitly:
+
+* **[GN15] Thm 2.3** (the chapter's NS-1/NS-2 base citation), verbatim from
+  `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-2: *"every monic polynomial `g ∈ O_v[x]`
+  factorizes into a product of monic polynomials in `O_v[x]`:
+  `g = g₀ · φ^{ord_φ(g)} · ∏_{(λ,ψ)} g_{λ,ψ}`"* — **the factor `φ^{ord_φ(g)}` is peeled
+  before the polygon pieces**; the sides cut out only the part of `g` prime to `φ`. B.42's
+  transcription silently set `ord_φ(f) = 0`, i.e. assumed exactly `h0`.
+* **GMN Thm 1.15** (`docs/GMN_citations.md` §1) factors *"`f_φ = F_1 … F_g`"* — `f_φ`, the
+  finite-slope principal-part factor, **not** `f`; under `f̄ = φ̄^μ` one has `f = f_φ` iff the
+  polygon spans abscissae `0..μ`, i.e. iff `h0`. The node's former "Thm 1.15 verbatim" claim
+  missed the `f_φ ≠ f` delta; the SOURCE field is annotated.
+* **The corpus's own standing form:** `spec/EFF-HE3.md` `.13` (DEFINITION 1, byte-frozen)
+  audits its bookkeeping by *"summing over sides gives `Σ_λ L_λ = μ` ✓ (the polygon spans
+  abscissae `0..μ`)"* — the span-from-0 presupposition — and `spec/EFF-W12.md`'s branch reads
+  all carry the window-visibility hypothesis (*"visibility `u₀ ≤ N−1`"*, i.e. a finite left
+  height). The chapter already uses the predicate verbatim: B.76's `exists_visible` takes
+  `(h0 : dev φ f 0 ≠ 0)`, and **B.81 already carries the per-block form**
+  `(hnz : ∀ i ∈ s, dev (φ i) (g i) 0 ≠ 0)` — the repair aligns B.42 with the chapter's own §9
+  standing hypothesis.
+
+**(III) The repaired statement is TRUE at the source level — route verified end to end, and the
+declared-unsettled step 5 is SETTLED.** With `h0` (and `hres`, `hμ`): `dev φ f j ≡ 0 mod π` for
+`j < μ` gives `1 ≤ H₀ := npHgt φ f 0 < ⊤`, and the polygon is the lower convex hull of the
+finite-height support points, running `(0, H₀)` to `(μ, 0)` (B.13's terminal point) — so at
+least one side exists, every side has strictly negative slope (step 2, unchanged), the slopes
+are the coprime pairs with two-element sides, and `Σ_i ℓ_i d_i = μ` — the degree bookkeeping
+`Σ (F p).natDegree = m·μ = f.natDegree` closes **because the hull starts at abscissa 0**, which
+is `h0`'s exact content (without it the sides span `k..μ` and the factorization drops degree
+`m·k` — the refuted defect). Per proof step at the repaired hypotheses: step 1's "leftmost
+height finite" is now justified by `h0` (it was unjustified before — `hres` alone does not give
+it, witness `f = φ`; PROOF-field parenthetical corrected in place); step 2 unchanged; step 3's
+base is B.34 with all new conclusion clauses checked (`F := f`: `h0` itself, `0 < deg f = m·μ`);
+step 5's B.41 call is fed `hH₀` by `h0` at the top level; step 6's recursion gets `dev φ h 0 ≠
+0` for the cofactor **from B.41's own conclusion** (`GradedCoprime`'s `npHgt φ h 0 = (Hh : ℕ∞)`
+pin), and `h̄ = φ̄^{μ − ℓ₁d₁}` with `μ − ℓ₁d₁ > 0` while `s` has ≥ 2 elements; step 7 unchanged.
+**Step 5's sub-claim ("the steepest side starts at abscissa 0") is TRUE under `h0`, with
+proof** (now displayed at the node's ⚠, upgrading it from declared-unsettled): let
+`σ* := max_{j > 0, npHgt φ f j < ⊤} (H₀ − h_j)/j` (a finite nonempty max — `j = μ` qualifies),
+attained at `j*`, and let `(u*, ℓ*)` be `σ*` in lowest terms. Then for every support `j > 0`:
+`ℓ*·h_j + u*·j ≥ ℓ*·H₀` ⟺ `σ* ≥ (H₀ − h_j)/j` ✓, with equality at `j*` — so `0` and `j*` both
+lie on the `(u*,ℓ*)`-side: `card ≥ 2`, `(u*,ℓ*) ∈ s`, `sideMin = 0`. And no `(u,ℓ) ∈ s` is
+steeper: a two-point side at `u/ℓ > σ*` with leftmost point `j` gives, at `j > 0`,
+`(H₀ − h_j)/j ≥ u/ℓ > σ*` (weight of `0` at least the side's), contradicting maximality; at
+`j = 0`, its second point `j′ > 0` has `(H₀ − h_{j′})/j′ = u/ℓ > σ*`, same contradiction. ∎
+So the steepest member of `s` is `(u*, ℓ*)` and its side starts at abscissa 0. The helper
+remains mandated as a private lemma of `B42b.lean`; §14 item 2 is annotated RESOLVED-BY-PROOF
+(the cross-reader's residual duty is checking the transcription, not finding the argument).
+
+**(IV) The conclusion strengthening (proof-free, for the consumers).** Clause 3 now also
+records, per `p ∈ s`: `dev φ (F p) 0 ≠ 0` and `0 < (F p).natDegree`. Both are what the proof
+already delivers (B.41's `GradedCoprime` output pins `npHgt φ g 0` finite; the peeled degrees
+are `ℓ·m·d` with `d ≥ 1`) — the A-F.6 strengthening precedent, completing its own promise
+("both free at B.63"): at B.63's step-2 call sites these discharge B.48's `hH₀` (via
+`npHgt_eq_top_iff` + the `ℕ∞` dichotomy), its `hne` (B.18's `sideSet_nonempty` at the recorded
+divisibility), and its `hd` (`0 < sideDeg` from `0 < natDegree = ℓ·m·sideDeg`, the landed B35b
+`sideDeg_of_pure` at clause 3's divisibility).
+
+**(V) The consumer audit (every DEPENDS naming B.42), and the threading.**
+
+| consumer | own signature exposed at `f = φ`? | repair | `h0` at its call sites |
+|---|---|---|---|
+| B.63 `typeOf_of_separable_residuals` | **NO** (conclusion satisfiable at `f = φ`: `T = {((v,1), ψ_lin)}`, `F := φ`) — but its ROUTE called B.42 without `h0` | **signature UNCHANGED**; PROOF gains **step 0, the `φ`-part peel**: write `f = φ^k · f'` (`k := ord_φ f`, effective via `dev φ f 0 = 0 ↔ φ ∣ f` + degree recursion; `f'` monic, `f̄' = φ̄^{μ−k}` by cancellation in `(ResidueField O)[X]`, `dev φ f' 0 ≠ 0` by maximality), compute `typeOf φ = ⟨{(1, m)}⟩` by landed CN-21 `typeOf_inert_of_irreducible_map` (`Density/InertLeaf.lean:179`, general degree — `hφ.irred` is its hypothesis), sum by landed `typeOf_mul`/B.63a, run steps 1–2 on `f'`, enlarge `T` by `k` fresh tags `((v_j, 1), ψ_lin)` (fresh first coordinates above `T₁`'s finite bound; each maps to `(1, m)`); at `k = μ`, `f' = 1` and `T` is the tags alone | n/a — the peel makes it self-supplying |
+| B.48 `exists_residual_dissection` | **NO — IMMUNE**: its own `hH₀ : npHgt φ f 0 = (H₀ : ℕ∞)` forces `dev φ f 0 ≠ 0` (`npHgt_eq_top_iff`), the same immunity as B.41's | none (signature + route unchanged; its recursion's cofactors carry the pin via B.41's `GradedCoprime` output) | already in its hypotheses |
+| B.41 `exists_graded_factorization` | **NO — IMMUNE** (verified, as the wave-11 audit claimed): `hH₀` forces `dev φ f 0 ≠ 0` | none | already in its hypotheses |
+| B.66/B.66a (`order1Type`, `slopeFinset` characterisation) | def + membership read only B.42's `↔`-clause, which is unchanged | none | n/a |
+| B.72 `degree_order1Type` | **YES — REFUTED at the canonical reading**: at `g = φ`, `hres` is `pow_one`, `hsep` vacuous, and the committed `sideSet_key_self` + the B-D4 membership pin force `slopeFinset π φ φ = ∅`, so `(order1Type π φ φ).degree = 0 ≠ m` | `+ (h0 : dev φ g 0 ≠ 0)` — its step 3 IS the length identity `Σ ℓ_S d_S = μ`, exactly (III)'s `h0`-gated bookkeeping | consumers B.80/B.81 supply it per block (`hvis` via B.76(ii); `hnz` verbatim) |
+| B.79a `typeOf_eq_order1Type` | **YES — REFUTED at the canonical reading**: at `g = φ`, `hterm` holds (no two-point side), `hperim` dischargeable (`φ`'s monic divisors are `1, φ` — a proper monic split would factor the irreducible `φ̄`; both fail the `c • ψ` premise, their residuals being constants), and the conclusion forces `⟨{(1, m)}⟩ = ⟨0⟩` | `+ (h0 : dev φ g 0 ≠ 0)`; also needed for step 2's tie of B.63's `T` to the canonical finsets (with `h0`, B.63's peel is trivial and `T` is polygon-only) | B.79b: from `hvis` + `visible_congr` (B.76(iv)) then B.76(ii); B.80: per-block `hvis`; B.81: `hnz` verbatim |
+| B.79b `typeOf_congr_of_certificate` | **NO — IMMUNE**: `hvis : Visible π φ g N` gives `npHgt φ g 0 < N` (B.76(ii)), hence `h0` | none | already in its hypotheses |
+| B.71 `typeOf_order1` | **YES — REFUTED at the canonical reading**: singleton `s`, `g i₀ = φ i₀`, `a i₀ = 1` — every hypothesis holds and the conclusion forces `{(1, m)} = 0` | `+ (hnz : ∀ i ∈ s, dev (φ i) (g i) 0 ≠ 0)` — **byte-identical to B.81's existing clause** | B.80's `hvis` per block; B.81's `hnz` verbatim |
+| B.80 / B.81 / B.82 | **NO — IMMUNE** (`hvis` per block / `hnz` / `hvis`) — §9 already carried the standing hypothesis | none | already in their hypotheses |
+
+Classification note: B.71/B.72/B.79a involve `order1Type`, which is unfired in `leanfinal`, so
+no compiled witness against landed definitions is possible; they are refuted **modulo the B-D4
+interpretive membership axioms** (`mem_slopeFinset` — NOT-CONTRACT text, but the booked
+canonical reading, which is B.42's own `↔`-clause). The load-bearing computation
+(`sideSet φ φ u ℓ = {1}`) IS machine-checked — the committed `sideSet_key_self` of
+`B42_REFUTATION.lean.txt`; the rest is the one-step `Multiset.bind` over the forced-empty
+finset. Gate impact: NONE — the §10 gates consume B.80/B.82-class certificates (both immune),
+and B.72 is cited by the gates only as the arithmetic law their `#eval` block checks numerically.
+
+**(VI) Where applied.** Signature + tags at NODES B.42 (hypothesis `h0`, clause 3
+strengthened), B.71 (`hnz`), B.72 (`h0`), B.79a (`h0`); PROOF-field updates at B.42 (step 1's
+finiteness parenthetical; the step-5 ⚠ upgraded to settled-with-proof), B.63 (new step 0, the
+`φ`-part peel; DEPENDS extended by landed CN-21 `typeOf_inert_of_irreducible_map`); SOURCE
+annotation at B.42; §14 item 2 annotated. Stub re-signs in `leanspec/Leanspec/ChapB.lean`
+(tagged `[repaired: A-F.9]`), RE-SIGN LOG updated. Refuted original + witness preserved
+verbatim (`B42_REFUTATION.lean.txt` KEPT as committed provenance; the refuted signature is
+displayed in its header). None of the five touched nodes is landed in `leanfinal`, so no landed
+proof is invalidated and no capstone footprint moves. Authority: standing statement-change
+authority (2026-08-05); every change is an added hypothesis on a refuted statement, a
+conclusion strengthening the proof already delivers, or a route addition.
+
+---
 
 <!-- CHAP-B APPEND POINT — do not remove; sections are appended here in order -->
