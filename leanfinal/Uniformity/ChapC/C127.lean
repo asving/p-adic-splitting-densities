@@ -43,8 +43,7 @@ representative).  LAW E-W says where they agree and, when they do not, by exactl
 
 * `lawEW_faithful_of_nox` — **clause (a)**, PROVED here, at the blueprint's own member class
   (`j′ ≤ 1`; see the fence note below).
-* `lawEW_faithful_high` — **clause (b) at `j ≥ 2`**: not in this checkpoint (the crossing
-  layer lands in the next commit of this unit).
+* `lawEW_faithful_high` — **clause (b) at `j ≥ 2`**, PROVED here.
 * `lawEW_pin` — **clause (b) at `j ≤ 1`**, the boundary identity
   `dv2Hgt (Δ_j) = gridWeight T α a b (1−j) + T.margin`.  **NOT landed** (see
   `notes/C127_PIN_BLOCKED_2026-08-16.md` for the exact gap: the §3 Step 3 telescoping census
@@ -117,7 +116,9 @@ control rows, battery cross-check 36/36).
 
 ## Status
 
-Sorry-free, axiom-free (Lean core only).  Checkpoint 1 of this unit: clause (a) only.
+Sorry-free, axiom-free (Lean core only).  Two of the node's three signed statements are
+landed; `lawEW_pin` is BLOCKED, with the exact gap recorded in
+`notes/C127_PIN_BLOCKED_2026-08-16.md`.
 -/
 
 namespace Uniformity.Density.Tower
@@ -674,6 +675,202 @@ theorem lawEW_faithful_of_nox {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H�
     · exact reass_zero F
   rw [hshadow, hhonest]
 
+
+/-! ### Clause (b) at the high coordinates — the crossing seed cannot reach `j ≥ 2` -/
+
+-- Frozen signature (A-C.4), binder for binder.  Not consumed at this clause: `hπ`, `hh`,
+-- `hc₂`, `hc₀`, `hv₀`, `hc`, `hu₂` — the unit status of the coefficients and the second
+-- on-side relation are read only by the pin clause, which weighs the slots.  Consumed here
+-- and NOT at clause (a): `hkey` (the wrap `x^{D′} = Φ′ + πω`, which is what turns the
+-- over-grid coefficient `E′P` into the seed) and `hcross`.
+set_option linter.unusedVariables false in
+/-- **NODE C.127 clause (b), high coordinates.**  A crossing entry at `j′ = 1`
+(`a + i₂ ≥ D′`) leaves every coordinate `j ≥ 2` faithful: the seed born by the wrap has
+`Z`-degree `b + m ≤ 2m − 1`, so one division by the transported key exhausts it and the
+chain is empty from coordinate `2` up, exactly where the honest ledger is empty too. -/
+theorem lawEW_faithful_high {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) [Finite (ResidueField O)]
+    (hh : F.h = 1) (hf₁ : F.f₁ = 1) (he₂ : T.e₂ = 1)
+    {ω : O} (hω : IsUnit ω)
+    (hkey : F.key = Polynomial.X ^ F.e₁ - Polynomial.C (π * ω))
+    {i₂ v₂ v₀ : ℕ} (hi₂ : 1 ≤ i₂) {c₂ c₀ : O} (hc₂ : IsUnit c₂) (hc₀ : IsUnit c₀)
+    (hcomp : composedKey T
+      = F.key ^ T.f₂
+        + Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂ * F.key ^ (T.f₂ - 1)
+        + Polynomial.C (c₀ * π ^ v₀))
+    (hu₂ : T.u₂ = F.e₁ * v₂ + i₂) (hv₀ : F.e₁ * v₀ = T.f₂ * T.u₂)
+    {μ₂ : ℕ} (hμ₂ : 2 ≤ μ₂) (hgrid : μ₂ * i₂ < F.e₁)
+    {c : O} (hc : IsUnit c) (α a b : ℕ) (ha : a < F.e₁) (hb : b < T.f₂)
+    {f : Polynomial O}
+    (hf : f = composedKey T ^ μ₂
+      + Polynomial.C (c * π ^ α) * Polynomial.X ^ a * F.key ^ b
+        * composedKey T)
+    (hcross : F.e₁ ≤ a + i₂) {j : ℕ} (hj2 : 2 ≤ j) (hj : j < μ₂) :
+    shadowDev T f j = dev (composedKey T) f j := by
+  haveI : Nontrivial (AdjoinRoot F.key) := F.nontrivial_adjoinRoot
+  have hkeydeg : F.key.natDegree = F.e₁ := by rw [F.hdeg, hf₁, mul_one]
+  have hf₂ : 2 ≤ T.f₂ := by have h := T.hcomp; rw [he₂, one_mul] at h; exact h
+  have hi₂lt : i₂ < F.e₁ := lt_of_le_of_lt (Nat.le_mul_of_pos_left i₂ (by omega)) hgrid
+  obtain ⟨k, hk⟩ : ∃ k, T.f₂ = k + 1 := ⟨T.f₂ - 1, by omega⟩
+  set Pp : Polynomial O := Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂ with hPp
+  set c0p : Polynomial O := Polynomial.C (c₀ * π ^ v₀) with hc0p
+  set Ep : Polynomial O := Polynomial.C (c * π ^ α) * Polynomial.X ^ a with hEp
+  set s : ℕ := a + i₂ - F.e₁ with hsdef
+  set gp : Polynomial O := Polynomial.C (c * π ^ α * (c₂ * π ^ v₂)) * Polynomial.X ^ s with hgp
+  set Kp : Polynomial (Polynomial O) := trinomialY Pp c0p T.f₂ with hKp
+  set Ent : Polynomial (Polynomial O) :=
+    Polynomial.C (Ep + gp) * Polynomial.X ^ (b + T.f₂)
+      + Polynomial.C (gp * Polynomial.C (π * ω)) * Polynomial.X ^ (b + T.f₂ - 1)
+      + Polynomial.C (Ep * c0p) * Polynomial.X ^ b with hEnt
+  set Ap : Polynomial (Polynomial O) := Kp ^ μ₂ + Ent with hAp
+  -- one-variable degrees
+  have hPpdeg : Pp.natDegree ≤ i₂ := by
+    rw [hPp]
+    refine le_trans natDegree_mul_le ?_
+    rw [natDegree_C, natDegree_X_pow, Nat.zero_add]
+  have hc0pdeg : c0p.natDegree ≤ i₂ := by rw [hc0p, natDegree_C]; exact Nat.zero_le _
+  have hEpdeg : Ep.natDegree ≤ a := by
+    rw [hEp]
+    refine le_trans natDegree_mul_le ?_
+    rw [natDegree_C, natDegree_X_pow, Nat.zero_add]
+  have hgpdeg : gp.natDegree ≤ s := by
+    rw [hgp]
+    refine le_trans natDegree_mul_le ?_
+    rw [natDegree_C, natDegree_X_pow, Nat.zero_add]
+  have hslt : s < F.e₁ := by rw [hsdef]; omega
+  -- the wrap: `E′·P = g·x^{D′} = g·(Φ′ + πω)` — the birth of the seed (§3 Step 1)
+  have hkeyX : F.key + Polynomial.C (π * ω) = (Polynomial.X : Polynomial O) ^ F.e₁ := by
+    rw [hkey]; ring
+  have hsadd : s + F.e₁ = a + i₂ := by rw [hsdef]; omega
+  have hEpPp : Ep * Pp = gp * (F.key + Polynomial.C (π * ω)) := by
+    have hx : (Polynomial.X : Polynomial O) ^ s * Polynomial.X ^ F.e₁
+        = Polynomial.X ^ a * Polynomial.X ^ i₂ := by
+      rw [← pow_add, ← pow_add, hsadd]
+    rw [hkeyX, hEp, hPp, hgp]
+    calc Polynomial.C (c * π ^ α) * Polynomial.X ^ a
+          * (Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂)
+        = Polynomial.C (c * π ^ α) * Polynomial.C (c₂ * π ^ v₂)
+            * (Polynomial.X ^ a * Polynomial.X ^ i₂) := by ring
+      _ = Polynomial.C (c * π ^ α * (c₂ * π ^ v₂))
+            * (Polynomial.X ^ s * Polynomial.X ^ F.e₁) := by
+          rw [hx, ← Polynomial.C_mul]
+      _ = Polynomial.C (c * π ^ α * (c₂ * π ^ v₂)) * Polynomial.X ^ s
+            * Polynomial.X ^ F.e₁ := by ring
+  -- both two-variable data are in-grid
+  have hKgridN : ∀ i, (Kp.coeff i).natDegree ≤ i₂ := by
+    rw [hKp]; exact trinomialY_coeff_natDegree_le hPpdeg hc0pdeg
+  have hKgrid : ∀ i, (Kp.coeff i).degree < F.key.degree :=
+    degree_coeff_lt_of_natDegree_le F hKgridN (by rw [hkeydeg]; exact hi₂lt)
+  have hdlt : max (μ₂ * i₂) (max a s) < F.e₁ := max_lt hgrid (max_lt ha hslt)
+  have hEntN : ∀ i, (Ent.coeff i).natDegree ≤ max a s := by
+    rw [hEnt]
+    refine natDegree_coeff_add_le (natDegree_coeff_add_le ?_ ?_) ?_
+    · refine fun i => le_trans (natDegree_coeff_C_mul_X_pow_le _ _ i) ?_
+      exact le_trans (natDegree_add_le _ _) (max_le_max hEpdeg hgpdeg)
+    · refine fun i => le_trans (natDegree_coeff_C_mul_X_pow_le _ _ i) ?_
+      refine le_trans natDegree_mul_le ?_
+      rw [natDegree_C, Nat.add_zero]
+      exact le_trans hgpdeg (le_max_right _ _)
+    · refine fun i => le_trans (natDegree_coeff_C_mul_X_pow_le _ _ i) ?_
+      refine le_trans natDegree_mul_le ?_
+      rw [hc0p, natDegree_C, Nat.add_zero]
+      exact le_trans hEpdeg (le_max_left _ _)
+  have hAgridN : ∀ i, (Ap.coeff i).natDegree ≤ max (μ₂ * i₂) (max a s) := by
+    rw [hAp]
+    refine natDegree_coeff_add_le ?_ ?_
+    · exact fun i => le_trans (natDegree_coeff_pow_le hKgridN μ₂ i) (le_max_left _ _)
+    · exact fun i => le_trans (hEntN i) (le_max_right _ _)
+  have hAgrid : ∀ i, (Ap.coeff i).degree < F.key.degree :=
+    degree_coeff_lt_of_natDegree_le F hAgridN (by rw [hkeydeg]; exact hdlt)
+  -- the two evaluations: the crossing presentation IS the development (§3 Step 1)
+  have hKe : Polynomial.eval F.key Kp = composedKey T := by
+    rw [hKp, trinomialY_eval, hcomp]
+  have hcomp' : composedKey T = F.key ^ T.f₂ + (Pp * F.key ^ (T.f₂ - 1) + c0p) := by
+    rw [hcomp]; ring
+  have hEnte : Polynomial.eval F.key Ent = Ep * F.key ^ b * composedKey T := by
+    rw [hEnt, hcomp']
+    simp only [eval_add, eval_mul, eval_pow, eval_C, eval_X]
+    have e1 : b + T.f₂ - 1 = b + k := by omega
+    have e2 : b + T.f₂ = b + k + 1 := by omega
+    have e3 : T.f₂ - 1 = k := by omega
+    have e4 : T.f₂ = k + 1 := hk
+    rw [e1, e2, e3, e4]
+    linear_combination (-(F.key ^ (b + k))) * hEpPp
+  have hAe : Polynomial.eval F.key Ap = f := by
+    rw [hAp]
+    simp only [eval_add, eval_pow, hKe, hEnte]
+    rw [hf]
+  -- the level-2 key is monic of degree `D₂`, and the entry is one development slot
+  have hpowmonic : (F.key ^ T.f₂).Monic := F.hmonic.pow _
+  have hpowdeg : (F.key ^ T.f₂).natDegree = T.f₂ * F.e₁ := by rw [natDegree_pow, hkeydeg]
+  have hstep : (T.f₂ - 1) * F.e₁ + F.e₁ = T.f₂ * F.e₁ := by rw [hk]; simp; ring
+  have hrestN : (Pp * F.key ^ (T.f₂ - 1) + c0p).natDegree < T.f₂ * F.e₁ := by
+    refine lt_of_le_of_lt (natDegree_add_le _ _) (max_lt ?_ ?_)
+    · calc (Pp * F.key ^ (T.f₂ - 1)).natDegree
+          ≤ Pp.natDegree + (F.key ^ (T.f₂ - 1)).natDegree := natDegree_mul_le
+        _ ≤ i₂ + (T.f₂ - 1) * F.e₁ := by
+            refine Nat.add_le_add hPpdeg ?_
+            rw [natDegree_pow, hkeydeg]
+        _ < T.f₂ * F.e₁ := by omega
+    · rw [hc0p]
+      simp only [natDegree_C]
+      calc 0 < F.e₁ := F.he₁
+        _ ≤ T.f₂ * F.e₁ := Nat.le_mul_of_pos_left _ (by omega)
+  have hrest : (Pp * F.key ^ (T.f₂ - 1) + c0p).degree < (F.key ^ T.f₂).degree :=
+    degree_lt_degree (by rw [hpowdeg]; exact hrestN)
+  have hΦmonic : (composedKey T).Monic := by rw [hcomp']; exact hpowmonic.add_of_left hrest
+  have hΦdeg : (composedKey T).natDegree = T.f₂ * F.e₁ := by
+    rw [hcomp']
+    refine natDegree_eq_of_degree_eq_some ?_
+    rw [degree_add_eq_left_of_degree_lt hrest, degree_eq_natDegree hpowmonic.ne_zero, hpowdeg]
+  have hEntryN : (Ep * F.key ^ b).natDegree < T.f₂ * F.e₁ := by
+    have h1 : (Ep * F.key ^ b).natDegree ≤ a + b * F.e₁ := by
+      calc (Ep * F.key ^ b).natDegree ≤ Ep.natDegree + (F.key ^ b).natDegree := natDegree_mul_le
+        _ ≤ a + b * F.e₁ := by
+            refine Nat.add_le_add hEpdeg ?_
+            rw [natDegree_pow, hkeydeg]
+    have h2 : (b + 1) * F.e₁ ≤ T.f₂ * F.e₁ := Nat.mul_le_mul_right _ hb
+    have h3 : (b + 1) * F.e₁ = b * F.e₁ + F.e₁ := by ring
+    omega
+  have hEntry : (Ep * F.key ^ b).degree < (composedKey T).degree :=
+    degree_lt_degree (by rw [hΦdeg]; exact hEntryN)
+  -- the honest ledger is empty at `j ≥ 2`
+  have hhonest : dev (composedKey T) f j = 0 := by
+    rw [← devQ_eq_dev]
+    have hfshape : f = composedKey T ^ μ₂ + (Ep * F.key ^ b) * composedKey T ^ 1 := by
+      rw [hf]; ring
+    rw [hfshape, devQ_pow_add_entry hΦmonic hEntry hj, if_neg (by omega)]
+  -- the shadow ledger is empty at `j ≥ 2`: the seed is exhausted by ONE division
+  have hKbar := trinomialY_map_monic (AdjoinRoot.mk F.key) Pp c0p hf₂
+  have hshadow : shadowDev T f j = 0 := by
+    rw [shadowDev_of_ingrid T hKgrid hAgrid hKe hAe, hAp]
+    have hmapA : (Kp ^ μ₂ + Ent).map (AdjoinRoot.mk F.key)
+        = (Kp.map (AdjoinRoot.mk F.key)) ^ μ₂ + Ent.map (AdjoinRoot.mk F.key) := by
+      simp only [Polynomial.map_add, Polynomial.map_pow]
+    rw [hmapA, hKp, devQ_add hKbar.1]
+    have h1 : devQ ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key))
+        (((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key)) ^ μ₂) j = 0 := by
+      have hone : ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key)) ^ μ₂
+          = 1 * ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key)) ^ μ₂ := by ring
+      rw [hone]
+      exact devQ_mul_pow_of_lt hKbar.1 μ₂ 1 j hj
+    have hEntdeg : (Ent.map (AdjoinRoot.mk F.key)).natDegree ≤ b + T.f₂ := by
+      refine le_trans (natDegree_map_le) ?_
+      rw [hEnt]
+      refine le_trans (natDegree_add_le _ _) (max_le (le_trans (natDegree_add_le _ _)
+        (max_le ?_ ?_)) ?_)
+      · exact le_trans (natDegree_C_mul_le _ _) (by rw [natDegree_X_pow])
+      · exact le_trans (natDegree_C_mul_le _ _) (by rw [natDegree_X_pow]; omega)
+      · exact le_trans (natDegree_C_mul_le _ _) (by rw [natDegree_X_pow]; omega)
+    have h2 : devQ ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key))
+        (Ent.map (AdjoinRoot.mk F.key)) j = 0 := by
+      refine devQ_eq_zero_of_lt hKbar.1 _ j ?_
+      rw [hKbar.2]
+      have h2f : 2 * T.f₂ ≤ j * T.f₂ := Nat.mul_le_mul_right _ hj2
+      omega
+    rw [h1, h2, add_zero, reass_zero]
+  rw [hshadow, hhonest]
+
 end LawEW
 
 end Uniformity.Density.Tower
@@ -700,5 +897,6 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.trinomialY
 #print axioms Uniformity.Density.Tower.trinomialY_map_monic
 #print axioms Uniformity.Density.Tower.lawEW_faithful_of_nox
+#print axioms Uniformity.Density.Tower.lawEW_faithful_high
 
 end AxCheck
