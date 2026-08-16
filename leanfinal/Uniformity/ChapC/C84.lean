@@ -18,8 +18,17 @@ carrier: the level-`i` weight `wt_i`, the flavor monomials `M_{r,t}(m)` at the `
 CORRECTED display (the base **re-solves per flavor**), and the digit lift `lift_i(c; m)` built
 from them.
 
-**STAGE 1 of this file's landing** carries `towerWeight` and `flavorMonomial`; `towerLift` and its
-digit read follow in the same node (see the Status section for what is in the file *now*).
+**Five declarations**: the three signed ones (`DeepTower.towerWeight`,
+`DeepTower.flavorMonomial`, `DeepTower.towerLift`) plus the two the lift's body needs —
+`flavorIdx` (the multi-index transport `Fin (i−1) → ℕ` ↦ `ℕ → ℕ`) and `DeepTower.deepDigit` (the
+iterated `K_{i−1}`-expansion digit read). The twin carries `towerLift` as an **axiom constant**
+with the body declared "the fleet's" (the C.45/C.97 rule); it is a **real definition** here, and
+`deepDigit` is what makes it one.
+
+* `towerWeight W i v a J` — `wt_i`, the level-`i` weight of exponent data.
+* `flavorMonomial W key i r t m` — `M_{r,t}(m)`, the base-re-solved flavor monomial.
+* `flavorIdx i t` / `deepDigit W i s t r` — the multi-index form, and the digit `d_{r,t}`.
+* `towerLift W key i m s` — `lift_i(s; m) = Σ_{r,t} d_{r,t}·M_{r,t}(m)`.
 
 ## The displays
 
@@ -60,6 +69,23 @@ flavor solves its own class equation.
 3. **`towerNorm` is junk-defaulting** (C.83's `towerSolve`, `List.find?`-with-`getD 0`, iterated),
    so every exponent read here inherits that junk off the perimeter, exactly as `n2Exp` does at
    depth 2.
+4. **`towerLift`'s digits are the STRAIGHT expansion digits; the inverse twist rides on the
+   argument.** `EFF.GENTOW5.17` glosses `d_{r,t}` as the *inverse-twisted* `K_{i−1}`-expansion
+   digits of `c`, and the twist is load-bearing (HE7-T-BADTWIST), but no landed chapter-C object
+   supplies `ϑ` — C.85's `theta_dictionary` is an unlanded existence statement and GC-14 defers
+   the orientation to chapter D's `[ϑ-TABLE]`. The determination taken here (and flagged at the
+   declaration): the twist is the CONSUMER's, i.e. `s` is the already-twisted element. This is
+   forced by consistency with the landed `i = 2` instance — C.56a's `k2DigitLift` reads
+   `k2Coord`/`stageCoord` untwisted, and this node's own companion demands
+   `towerLift`-at-depth-2 `= k2DigitLift`. If the fleet rules otherwise, both nodes change
+   together.
+5. **The digit read is a power-basis coordinate at every rung** (`deepDigit`), not a
+   `Classical.choice` preimage: the discipline the 2026-08-16 repairs installed at C.14a's
+   `stageCoord` and C.56a's `k2Coord`, iterated up the chain. What is NOT yet available at depth
+   `≥ 3` is the reconstruction identity (`sum_stageCoord`/`sum_k2Coord`'s analogue), because the
+   `DeepTower` carrier's rungs are abstract fields tied to `AdjoinRoot (ψ_j)` only by a `RingEquiv`
+   (C.83's GC-7 fallback), so `Basis.sum_repr` reassembles the transported element and the
+   transport back is the companion's business, not this body's.
 
 ## Divergences from the blueprint text, recorded
 
@@ -69,6 +95,24 @@ flavor solves its own class equation.
 * **`let` in the signed bodies is kept.** The twin writes `flavorMonomial` with two `let`s
   (`Δ`, `p`); they are transcribed rather than inlined, so the body is byte-comparable to the
   signed text.
+* **`towerLift` is a definition, not an axiom.** The twin stub-carries it as an axiom constant
+  and says so explicitly ("the variable-length multi-index digit iteration is the fleet's body");
+  the C.45 precedent (`towerLabelEquiv`, stub-carried, landed as a real `noncomputable def`) is
+  followed. Its **signature is byte-identical to the stub's**.
+* **Two helper declarations are added** (`flavorIdx`, `deepDigit`) because the signed body cannot
+  be written without them: the display's multi-index is a bounded `(i−1)`-tuple and its digit is
+  an iterated basis coordinate. Both are public, since a companion theorem must be able to name
+  them (the C.14a `resLift` precedent: `private` is not importable, and these have consumers in
+  other files by construction).
+* **The depth-2 reconciliation companion is `towerLift T.deepTower … = k2DigitLift`, and it is
+  NOT statable yet**: `TowerDatum.deepTower` — the concrete depth-2 chain — is an axiom constant
+  of §10 (C.99 region, `leanspec/Leanspec/ChapC.lean:2150`) with no landed file, so the two sides
+  cannot be typed against one another. What IS statable is the **exponent-level half**: at
+  `i = 2`, over any `DeepTower`
+  whose rung data matches a `TowerDatum`, `flavorMonomial` is exactly the monomial factor of
+  C.56a's `k2DigitLift` summand. That is where all the index arithmetic lives (the offset
+  `Δ(r,t)`, the `n̂₂`-solve, and both exponent shifts), so the residual gap in the companion is
+  only the digit map's transport along `deepTower`'s field identification.
 
 **DEPENDS.** C.83 (`DeepTower`, `ehat`, `Econst`, `towerNorm`, `towerSolve`) · C.14a
 (`KeyFrame.Pin`, `stageCoord`, `resLift`) · C.56a (`k2DigitLift` — the `i = 2` instance this
@@ -90,8 +134,11 @@ local substitutes are the unfolding checks at the foot of the file.
 
 ## Status
 
-Sorry-free, axiom-free (Lean core only). **Partial node: `towerWeight` and `flavorMonomial`
-landed; `towerLift` pending in this same file.**
+Sorry-free, axiom-free (Lean core only). All three signed declarations landed, `towerLift` as a
+real definition. **Booked, not landed** (recorded so no reader mistakes their absence for a
+claim): the exact-height and `wt`-companions, the range clauses (`i₀′ + e_1 r < D_1`,
+`b_j′ + e_{j+1} t_j < l_{j+1}`), and the full depth-2 reconciliation to C.56a's `k2DigitLift`
+(blocked on §10's `TowerDatum.deepTower`, see the divergences).
 -/
 
 namespace Uniformity.Density.Tower
@@ -145,6 +192,82 @@ noncomputable def DeepTower.flavorMonomial {F : KeyFrame O π} {H₀ : ℕ} {hpi
   Polynomial.C (π ^ p.1) * Polynomial.X ^ (p.2.1 + F.e₁ * rr)
     * ∏ j : Fin (i - 1), (key (j.1 + 1)) ^ (p.2.2 j + W.e (j + 2) * t (j + 1))
 
+/-! ### The digit read, and the lift itself -/
+
+/-- The multi-index of the display, `t = (t₁ … t_{i−1})`, in the `ℕ → ℕ` form
+`flavorMonomial` and `deepDigit` read it at: `flavorIdx i t j = t_j` for `1 ≤ j ≤ i−1`, and `0`
+off that range (no display position reads `t_0` or `t_j` for `j ≥ i`).
+
+`towerLift` sums over `Fin (i−1) → ℕ` — the honest finite index type, one entry per intermediate
+rung — and this is the transport to the `ℕ`-indexed form the two signed bodies were signed at. -/
+def flavorIdx (i : ℕ) (t : Fin (i - 1) → ℕ) : ℕ → ℕ :=
+  fun j => if h : 1 ≤ j ∧ j - 1 < i - 1 then t ⟨j - 1, h.2⟩ else 0
+
+/-- The **iterated digit read**: the `K_{i−1}`-expansion digit of `s ∈ K_i` at the flavor
+`(r, t)`, i.e. the coefficient of `η^r·β_1^{t_1}⋯β_{i−1}^{t_{i−1}}` in the residue field.
+
+The recursion descends the chain one rung at a time. At level `i+2` it transports `s` along
+C.83's iterate witness `step (i+1) : K_{i+2} ≃+* AdjoinRoot (ψ_{i+1})` and reads the
+`t_{i+1}`-coordinate in the **monic power basis** of `ψ_{i+1}` over `K_{i+1}` (dimension
+`f_{i+2}`, by C.83's `hψ`), landing in `K_{i+1}`; at level `1` it transports along `base` to the
+frame's stage field and takes C.14a's `stageCoord` digit at `r`.
+
+**Both reads are power-basis coordinates, hence invariants of `s`** — this is the discipline the
+2026-08-16 repairs installed at C.14a's `stageCoord` and C.56a's `k2Coord`, applied at every rung:
+a `Classical.choice` preimage read would carry no degree bound and could not be pinned by any
+residue equation. Three junk branches, all total by `Classical.propDecidable` and none reachable
+from a consumer inside the perimeter: level `0` (no such digit), a rung outside the chain
+(`i + 1 < r` fails, where `step` and monicity are unavailable), and an out-of-range coordinate
+(`t_{i+1} ≥ f_{i+2} = dim`, which `towerLift`'s index Finset excludes). -/
+noncomputable def DeepTower.deepDigit {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) :
+    (i : ℕ) → W.fld i → (ℕ → ℕ) → ℕ → IsLocalRing.ResidueField O
+  | 0, _, _, _ => 0
+  | 1, s, _, rr => F.stageCoord H₀ hpin (W.base s) rr
+  | i + 2, s, t, rr =>
+      @dite _ (i + 1 < r) (Classical.propDecidable _)
+        (fun h =>
+          let hmon : (W.ψ (i + 1)).Monic := (W.hψ (i + 1) (Nat.le_add_left 1 i) h).1
+          let pb := AdjoinRoot.powerBasis' hmon
+          let s' : AdjoinRoot (W.ψ (i + 1)) := W.step (i + 1) (Nat.le_add_left 1 i) h s
+          W.deepDigit (i + 1)
+            (if ht : t (i + 1) < pb.dim then pb.basis.repr s' ⟨t (i + 1), ht⟩ else 0) t rr)
+        (fun _ => 0)
+
+/-- **C.84(iii) — the level-`i` digit lift** `lift_i(c; m) = Σ_{r,t} d_{r,t}·M_{r,t}(m)`
+(`EFF.GENTOW5.17`'s S12.2 TERMINAL display), with `d_{r,t}` the iterated expansion digits
+(`deepDigit`) lifted to `O` by C.14a's residue section `resLift`, and `M_{r,t}(m)` the
+per-flavor-re-solved monomials (`flavorMonomial`).
+
+The index ranges are the display's: `r < f₁` and `t_j < f_{j+1}` for `1 ≤ j ≤ i−1` (a
+`Fin (i−1) → ℕ` bounded by `f_{j+1}`, transported by `flavorIdx`). At `i ≤ 1` the multi-index
+type is `Fin 0 → ℕ`, a singleton, so the inner sum is the single flavor `t = 0` — the depth-1
+degenerate case, where the display is the frame's own lift.
+
+⚠ **Validity is conditional and is NOT expressed by the body.** S12.2's display holds
+`m`-uniformly only above the PRECEDING rung's threshold, `m > bound_i` (**not** `bound_{i+1}`;
+the S11.4 bracket is DEAD). Below it a flavor can be absent and `flavorMonomial`'s
+`ℕ`-subtraction returns junk instead (trust-boundary note 2). Consumers carry `m > bound_i`.
+
+⚠ **The inverse twist rides on the ARGUMENT, not on this body.** `EFF.GENTOW5.17`'s derivation
+sentence calls `d_{r,t}` the *inverse-twisted* `K_{i−1}`-expansion digits of `c` (the flavor
+residues are the fixed `τ_i`-cocycle letter units, and the twist by `ϑ_t` is load-bearing, not
+cosmetic — HE7-T-BADTWIST). No landed chapter-C object supplies `ϑ`: C.85's `theta_dictionary` is
+an existence statement (and unlanded), and GC-14 defers the orientation to chapter D's
+`[ϑ-TABLE]`. This body therefore reads the **straight** expansion digits, and the twist is the
+consumer's — the element passed as `s` is the already-inverse-twisted one. That is exactly the
+convention C.56a's landed `k2DigitLift` fixes at `i = 2` (it reads `k2Coord`/`stageCoord` with no
+twist), and it is what this node's own reconciliation companion (`towerLift`-at-depth-2 =
+`k2DigitLift`) requires. **Flagged for review**: if the fleet later rules that `ϑ` belongs inside
+the lift, THIS body and C.56a's must change together. -/
+noncomputable def DeepTower.towerLift {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (key : ℕ → Polynomial O) (i m : ℕ)
+    (s : W.fld i) : Polynomial O :=
+  ∑ rr ∈ Finset.range (W.f 1),
+    ∑ t ∈ Fintype.piFinset fun j : Fin (i - 1) => Finset.range (W.f (j.1 + 2)),
+      Polynomial.C (resLift (W.deepDigit i s (flavorIdx i t) rr))
+        * W.flavorMonomial key i rr (flavorIdx i t) m
+
 end Uniformity.Density.Tower
 
 /-! ## Axiom footprint -/
@@ -153,5 +276,8 @@ section AxCheck
 
 #print axioms Uniformity.Density.Tower.DeepTower.towerWeight
 #print axioms Uniformity.Density.Tower.DeepTower.flavorMonomial
+#print axioms Uniformity.Density.Tower.flavorIdx
+#print axioms Uniformity.Density.Tower.DeepTower.deepDigit
+#print axioms Uniformity.Density.Tower.DeepTower.towerLift
 
 end AxCheck
