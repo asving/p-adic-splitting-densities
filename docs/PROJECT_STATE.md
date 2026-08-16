@@ -5874,3 +5874,46 @@ C.109-i..iii) and A-C.6's finishing pass wiped by a burst,
 both queued on the running backoff timer. Codex cross-read
 queue (Tuesday) grew: A-H.7 §3/§5/§7-step-4, A-C.5's item-2
 adjudication, A-E.6's demotion decision.
+
+**2026-08-16 DATED APPEND #81 — CHAPTER F CLOSES (30/30); THE
+CHAPTER-I STUB GATE COMPOSES GREEN AND CATCHES NINE DEFECTS
+PRE-FLEET — including a leanfinal duplicate that makes chapter I
+unlandable at HEAD, and the finding that Display A's ladder
+field as signed is exactly OM-8's proven-undischargeable
+ρ-regime.** (1) CHAPTER F: waves 1-2 landed all 18 remaining
+nodes, zero blocks (F.28 WeldObligations + F.27 WeldSupply are
+the handoff records to chapter I; both gates EXECUTED at q=2
+AND q=3; the WELD-ZERO fence respected throughout). Fifth
+chapter surface complete. (2) THE I STUB GATE
+(Leanspec/ChapI.lean, 1051 lines, 9051 jobs green): 25 nodes,
+ZERO axiom stubs — I.15–I.18 (the assembly incl.
+uniformity_of_capstoneHypotheses) landed as REAL theorems at
+stub time; I.10 CapstoneHypotheses at the signed ten-field
+list, universe-polymorphic; NEW enforcement — #axiom_core /
+#axiom_reg elab commands that FAIL THE BUILD on any footprint
+outside core + the signed registry, guarding 67 capstone-facing
+constants (all Lean-core). (3) THE DEFECT LOG (the gate's
+purpose): I-D1 STOP-THE-LINE — D62w re-declares Wle/
+VarthetaWConjunct (vs D55/D63), so root+carrier imports
+hard-error; REPAIR RUNNING. I-D2 — the ChapE/ChapF roll-ups
+predate today's landings and hide every Display-A carrier;
+cured at layer close #15 AFTER I-D1. I-D3 — I.10's ladder field
+underapplied by eight arguments AND its ∀ρ reading is
+undischargeable (OM-8's ρ-defeat); honest cure binds chapter
+C's canonical residue data. I-D4 — the 𝒲_{≤i} half of Display
+A's ∀i≥3 conjunct HAS NO FIELD (E.24 carries ϑ only; landed
+E.63 DeepTwistConjunct carries both halves — the cure). I-D5/
+I-D6/I-D9 — elaboration + the resolution pass pointed at the
+REFUTED old C.94 + a provably-vacuous admissibility clause.
+A-I.1 RUNNING (adjudicate + re-sign; field-list changes
+FLAGGED owner-facing; UniformityStatement untouchable).
+(4) Also: H.116b1 LANDED (exists_peel_finset, Σμ_p ≤ m as a
+conclusion) and H.116b2 LANDED (plantedPoly_genre) — the
+b-chain is at b3 + b4(research); C.109-i/-ii landed; A-C.6's
+C.66 AND C.94 redraft certifications compiling (self-loop
+provably impossible, real-base inhabitation). (5) QUEUE: layer
+close #15 after I-D1 (regen ALL roll-ups, full build, strict
+sweep now ENFORCED by the new elab guards); the owner's next
+visit reads: the A-C.6 signature blocks (cites), the A-I.1
+field-list changes, HYP.142's bucket one-liner, and the
+B-BOX-1 nod that closes H.123.
