@@ -33,6 +33,30 @@ in `Uniformity.Density.Weld` (GC-6.2).
 **CODEX CROSS-READ OWED** (queued post-Tuesday per the budget regime; a Fable-max
 fresh-context read may discharge the obligation earlier per Part IV item 6's precedent).
 
+> **AMENDMENT BANNER 2026-08-16 — THE STAGE-0e STUB GATE HAS RUN, AND SIX DEFECTS ARE REPAIRED IN
+> PLACE.** `leanspec/Leanspec/ChapF.lean` (commits `1905bb6b` / `3212150a`; green: **41 signed
+> declarations**, 50 executed gate `example`s + 6 in-instance `decide`s at `q = 2` AND `q = 3`,
+> zero `sorry`, zero `native_decide`, `autoImplicit` off) recorded **F-D1…F-D6** in its header.
+> Every repair is tagged `[repaired: A-W.1/F-D<n>]` at the passage it touches, and the record —
+> findings, verbatim originals, evidence — is **AMENDMENT A-W.1** at the end of this file.
+> Load-bearing beyond spelling: **F-D3** adds the `One`/`Pow` instances F.10's `^` needs **with
+> the inverse taken in `Kˣ`, not in `K`** (with the `K`-side spelling the executed `q = 3` gate
+> leg cannot `decide`); **F-D4** gives F.22's injectivity helper a signed type (machine-checked at
+> this amendment, `e ≠ 0` shown necessary); **F-D5/F-D6** replace five §10 gate FORMS
+> (noncomputable `finrank`/`Nat.card`, non-reducing `orderOf` and `Inv (ZMod n)`, set-level
+> images, the unregistered `Fact (Nat.Prime 5)`) and make the table-built `F₄`/`F₉` — not
+> `AdjoinRoot` — the gate's field constructions of record. Read A-W.1 before consuming F.08,
+> F.09, F.10, F.12, F.14, F.15, F.16, F.17, F.22, F.27, F.29 or F.30.
+>
+> **AMENDMENT-SERIES NAME, DECLARED ONCE.** This chapter's series is **`A-W.<n>`** ("W" for
+> *weld*), **not** `A-F.<n>`: chapter B's amendment series already occupies `A-F.<n>`
+> (`A-F.3`, `A-F.5`, `A-F.6`, `A-F.7`, `A-F.10` in `blueprint/CHAP-B_leaf_layer.md`, where the
+> "F" means *finisher*, not *chapter F*), so an `A-F.1` here would collide across files in exactly
+> the `grep '\[repaired: A-'` the fleet uses to find repairs. Defect IDs keep the chapter letter
+> (`F-D<n>`, as the stub gate's header spells them); the amendment tag is `A-W.<n>/F-D<n>`. The
+> sibling series for reference: `A-E.<n>` (chapter E), `A-H.<n>` (chapter H), `A-1` (chapter D),
+> undated `§A-<n>` blocks (chapter G).
+
 ---
 
 ## 0. How to read this chapter
@@ -275,6 +299,22 @@ GRTJB/GRTJC structural mass consumed by the two surviving conjuncts enters as
 nodes — transcribing them as nodes would re-create the out-of-cone build the census exists
 to prevent. **Split-mandated:** F.10 → 2 files; split candidates F.03, F.09. **Fleet
 planning figure: ≈ 31–33 Lean files.**
+
+**DECLARATION census, LANDED at the stage-0e gate** *[added: A-W.1/F-D5 bookkeeping;
+`leanspec/Leanspec/ChapF.lean`, mechanically counted]*: the 30 nodes carry **41 signed
+declarations** = **8 `structure`** (`ValueDictSite` F.04, `JD0SiteStrike` F.05, `CarryCocycle`
+F.07, `CarrySite` F.11, `LedgerJunction` F.14, `WeldMPkg` F.24, `WeldSupply` F.27,
+`WeldObligations` F.28) + **18 `def`** (`gaugeCobdry`, `slotScale` F.01; `slotScaleEquiv` F.02;
+`resTwist` F.03; `JD0Box2` F.04; `TwistedAlgebra`, `single` F.08; `GenhnBox2` F.11;
+`W1Transport` F.12; `SigmaLedgerLaw` F.17; `xiChar` F.18; `JAResLaw` F.19; `JAGridLaw` F.20;
+`XiWSatisfies` F.21; `jbShear`, `JBVtxFace` F.22; `gaugeBdry` F.25; `DmultW` F.26) + **15
+theorem-shaped rows over 11 nodes** (F.02 ×1, F.03 ×3, F.06, F.09, F.10 ×2, F.13, F.15, F.16,
+F.18, F.23 ×2, F.25 — `axiom`s at the exact signed types in the stub, theorems at landing).
+**Plus, below the contract line:** F.08's **5** instances (`Mul`, `AddCommGroup`, `Module K`, and
+F-D3's `One`/`Pow`) and F.22's `jbShear_injective` (added at A-W.1/F-D4), which the fleet lands
+but which are not one-public-declaration-per-node rows. Nodes with no declaration of their own:
+F.29/F.30 (gates — their contract is the executed check list) and the two §7 DECISIONs D-F1/D-F2
+(DAG rulings, not Lean objects).
 
 **Graph shape** (from `spec/DAG_BLUEPRINT_F.tsv`, computed mechanically from the DEPENDS
 fields): **114 rows over the 30 nodes; intra-chapter proof-dep graph ACYCLIC, 6 layers,
@@ -736,7 +776,9 @@ instances fire at F.29's gate.
 **STATEMENT.** *The twisted group algebra `K^c[ℤ/E]` (W-9 clause (iii)'s object).* For a
 carry cocycle `cc`: the carrier `ZMod E → K` with the `c`-twisted convolution
 `(f ⋆ g) t = Σ_{a+b=t} c a b · f a · g b`. One public definition; the `Mul`/`One` instances
-and helper lemmas live below it in the same file (GC-6.5's helper clause).
+and helper lemmas live below it in the same file (GC-6.5's helper clause) — **six helpers, not
+four** *[repaired: A-W.1/F-D3: the committed list omitted the `One`/`Pow` pair that F.10's `^`
+resolves through]*.
 
 **SIGNATURE.**
 ```lean
@@ -753,13 +795,29 @@ def TwistedAlgebra {E : ℕ} [NeZero E] {K : Type*} [Field K]
 --   def single (a : ZMod E) (x : K) : TwistedAlgebra cc
 --   instance : AddCommGroup (TwistedAlgebra cc) := Pi.addCommGroup
 --   instance : Module K (TwistedAlgebra cc) := Pi.module _ _ _
+-- [repaired: A-W.1/F-D3] the two helpers F.10's `^` needs, and the committed list omitted;
+-- bodies are F.09's own prose ("`single 0 (cc.c 0 0)⁻¹` is a two-sided unit"), executed:
+--   instance : One (TwistedAlgebra cc) := ⟨single 0 (((cc.c 0 0)⁻¹ : Kˣ) : K)⟩
+--   instance : Pow (TwistedAlgebra cc) ℕ := ⟨fun f n => npowRec n f⟩
 ```
 
-**DEPENDS.** F.07; mathlib `Finset.sum` over `ZMod E` (`Fintype (ZMod E)` via `NeZero E`).
+**⚠ SIGNATURE NOTE — THE UNIT'S INVERSE IS TAKEN IN `Kˣ`, NEVER IN `K`** *[added:
+A-W.1/F-D3; this is the gate's load-bearing subtlety, not a spelling preference]*. The `One`
+body must form the inverse in the UNIT GROUP and coerce afterwards,
+`(((cc.c 0 0)⁻¹ : Kˣ) : K)` — **not** `((cc.c 0 0 : K))⁻¹`. Machine-checked reason (the executed
+`q = 3` leg of F.29 check 4): mathlib's `Inv (ZMod n)` is `Nat.gcdA`-based well-founded
+recursion, so a `K`-side inverse does **not** kernel-reduce and the `decide` gate on
+`(single 1 1)^2 = ζ • single 0 1` dies at `K = ZMod 3`; `Kˣ`'s `Inv` is projection to the stored
+`inv` field and reduces. Same wall as F-D5(iv). A fleet agent landing a full `Monoid`/`Ring`
+instance instead (the natural target once F.09 is proved) inherits the constraint on its `one`,
+and `Pow` must agree with `npowRec` (Monoid's default `npow`) or F.10(b)'s statement moves.
+
+**DEPENDS.** F.07; mathlib `Finset.sum` over `ZMod E` (`Fintype (ZMod E)` via `NeZero E`),
+`npowRec` *[added: A-W.1/F-D3]*.
 
 **PROOF.** definitional.
 
-**SIZE.** 20 lines (with helpers).
+**SIZE.** 26 lines (with all six helpers) *[repaired: A-W.1/F-D3 — was 20]*.
 
 **SOURCE.** `EFF.GRTJC.89` clause (iii) ("𝒜(T) is the twisted group algebra K^{c}[ℤ/E] of
 the abscissa-coset group over the carry cocycle"); the clause's consumer reading from the
@@ -795,8 +853,16 @@ theorem TwistedAlgebra.mul_assoc {E : ℕ} [NeZero E] {K : Type*} [Field K]
     f * g * h = f * (g * h)
 ```
 
-**DEPENDS.** F.07, F.08; mathlib `Finset.sum_comm`, `Finset.sum_bij` (re-indexing the double
-convolution sum), `Finset.mul_sum`.
+**⚠ SIGNATURE NOTE — THE SIGNED CONTRACT IS ASSOCIATIVITY ONLY** *[added: A-W.1/F-D3 rider; the
+E-D13 precedent — recorded so the gap is not read as a transcription loss]*. The STATEMENT's
+second half ("`single 0 (cc.c 0 0)⁻¹` is a two-sided unit") has **no conjunct in the signature**;
+it is carried by F.08's `One` instance, whose body IS that element *[A-W.1/F-D3, with the `Kˣ`
+inverse]*. A landing agent that wants the unit claim in theorem form adds `one_mul`/`mul_one`
+below the contract line in F.08's file (helpers, GC-6.5), not a second public declaration here;
+nothing in the chapter consumes them — F.10(b) needs `Pow`, not a `Monoid`.
+
+**DEPENDS.** F.07, F.08 (including F-D3's `One`); mathlib `Finset.sum_comm`, `Finset.sum_bij`
+(re-indexing the double convolution sum), `Finset.mul_sum`.
 
 **PROOF.** 1. Expand both sides to double sums over `(a, b)` with `a + b + d = t`
 (computation). 2. Re-index by `Finset.sum_bij` (the pairing `(a+b, d) ↔ (a, b+d)`).
@@ -846,8 +912,18 @@ theorem TwistedAlgebra.pow_card_single {E : ℕ} [NeZero E] {K : Type*} [Field K
       = (∏ k ∈ Finset.Ico 1 E, (cc.c 1 (k : ZMod E) : K)) • single 0 1
 ```
 
-**DEPENDS.** F.07, F.08, F.09; mathlib `Module.finrank_pi` (`finrank K (ZMod E → K) =
-card (ZMod E)`), `ZMod.card`, `Finset.prod_Ico_succ_top` (the orbit-product induction).
+**⚠ SIGNATURE NOTE — WHAT `^` RESOLVES THROUGH** *[added: A-W.1/F-D3]*. `(single 1 1 :
+TwistedAlgebra cc) ^ E` needs `Pow (TwistedAlgebra cc) ℕ`, hence (through `npowRec`) a `One`;
+both are F.08's helpers **as of A-W.1** and were absent from the committed helper list — the
+committed F.10 signature did not elaborate. With F-D3's bodies (`npowRec`, and `One` = F.09's
+two-sided unit with the inverse formed in `Kˣ`) the statement's CONTENT is unchanged: `npowRec`
+is the `npow` any later `Monoid` instance carries. The `single 0 1` normalization on the
+right-hand side is untouched and remains a statement fence.
+
+**DEPENDS.** F.07, F.08 (`single`, `Mul`, `Module`, and F-D3's `One`/`Pow` — *[added:
+A-W.1/F-D3]*), F.09; mathlib `Module.finrank_pi` (`finrank K (ZMod E → K) =
+card (ZMod E)`), `ZMod.card`, `Finset.prod_Ico_succ_top` (the orbit-product induction),
+`npowRec`.
 
 **PROOF.** 1. (a): the carrier is `ZMod E → K`; `finrank = Fintype.card (ZMod E) = E` —
 mathlib. 2. (b): induction on `k ≤ E`: `v ^ (k+1) = v * v ^ k`; the convolution of two
@@ -967,8 +1043,23 @@ obligation; chapter I's field, riding under `GenhnBox2`. Abstract shape: the two
 families and the unit system are site data. -/
 def W1Transport {K : Type*} [Field K] {ι : Type*}
     (Rharness RGMN : ι → K) : Prop :=
-  ∃ c : ι → Kˣ, ∀ λ, Rharness λ = (c λ : K) * RGMN λ
+  -- [repaired: A-W.1/F-D2] was `∀ λ, Rharness λ = (c λ : K) * RGMN λ`: `λ` is the lambda
+  -- keyword, a hard parse error. The type is IDENTICAL (binder names are not part of it).
+  ∃ c : ι → Kˣ, ∀ l, Rharness l = (c l : K) * RGMN l
 ```
+
+**⚠ BINDER SPELLING — DECLARED ONCE FOR THE WHOLE CHAPTER** *[added: A-W.1/F-D2]*. At our pin
+`λ` is the lambda keyword, so `∀ λ, …` fails with *"unexpected token 'λ'; expected '(', '[', '_',
+'{', '⦃' or identifier"* — the same family as CHAP-E's E-D3 (`hλ`) and this chapter's F-D1 (`Σ`).
+**Chapter rule:** no binder, hypothesis or field name may carry a non-`isLetterLike` Greek token
+(`λ`, `Σ`, `Π`); Greek stays in prose and in display mathematics. **The choice, recorded:** this
+node's binder is **`l`** — the form the stage-0e gate executed, and the reading is a bare index of
+the abstract `ι`, not the source's slope letter. F.26's `∀ lam mu : Λ` stays **byte-unchanged**:
+it was already legal, and there the two binders transliterate the source's λ/μ *line pair*, where
+`lam`/`mu` reads better than `l`/`m`. Both spellings are legal and **binder names are not part of
+the type**, so a landing agent may spell this node's binder `lam` and is not BLOCKED either way;
+`λ` itself is never legal. (The two nodes were internally inconsistent as committed — F.26 avoided
+the trap that F.12 walked into; the inconsistency is now a declared convention with a reason.)
 
 **DEPENDS.** none (shape only). The FGMN-side objects are gate-(b) literature-cite content
 (`(IN-3)`, F.26's provenance); the harness side is GRTJC-internal.
@@ -1063,10 +1154,11 @@ it reads the brief's packaging instruction against the note's actual content, pe
 ### NODE F.14 [def] [fresh]
 
 **STATEMENT.** *The abstract ledger junction.* Over a field `K` (the level-`m` residue
-algebra, abstracted): a **ledger junction** consists of a coordinate map `Σ : K → K`, a slot
+algebra, abstracted): a **ledger junction** consists of a coordinate map `Σ : K → K` (**Lean field
+name `sigmaMap`** — *[repaired: A-W.1/F-D1: `Σmap` is not a legal identifier at the pin]*), a slot
 family of constants `u : ι → Kˣ` (slot-constant — the point of SL-1), and per-slot print and
 read maps `Prnt, read : ι → α → K` (with `α` the abstract object type), subject to the
-hypothesis field `hledger : ∀ j a, Prnt j a = (u j : K) * Σ (read j a)` — THEOREM SL-1's
+hypothesis field `hledger : ∀ j a, Prnt j a = (u j : K) * sigmaMap (read j a)` — THEOREM SL-1's
 `(Σ-LEDGER)` display as a structure, at the abstraction level where its corollaries are
 provable. Properties of `Σ` (multiplicativity = the `(EC-q)` automorphism law; injectivity +
 `Σ 1 = 1` for the SL-C2 economy) enter as hypotheses of the consuming lemmas, never as
@@ -1079,12 +1171,23 @@ namespace Uniformity.Density.Weld
 /-- An abstract ledger junction (`EFF.SIGMALAW.05`'s `(Σ-LEDGER)` as a structure):
 prints = slot constant × Σ of reads. -/
 structure LedgerJunction (K : Type*) [Field K] (ι α : Type*) where
-  Σmap : K → K
+  -- [repaired: A-W.1/F-D1] field renamed `Σmap` → `sigmaMap`: `Σ` (U+03A3) is EXCLUDED from
+  -- `isLetterLike` at Lean 4.31 (it is the Sigma-type token), so `Σmap : K → K` fails with
+  -- "unexpected token 'Σ'; expected command". A FIELD name is part of the contract — this is
+  -- the spelling the fleet must land, and the signed one cannot be landed at all.
+  sigmaMap : K → K
   u : ι → Kˣ
   Prnt : ι → α → K
   read : ι → α → K
-  hledger : ∀ j a, Prnt j a = (u j : K) * Σmap (read j a)
+  hledger : ∀ j a, Prnt j a = (u j : K) * sigmaMap (read j a)
 ```
+
+**⚠ CONTRACT NOTE — THE RESPELLED FIELD NAME IS PART OF THE TYPE** *[added: A-W.1/F-D1]*. Two of
+F-D1's five renames touch FIELD names (`LedgerJunction.sigmaMap` here, `WeldSupply.hSigma` at
+F.27) and therefore change the projections every consumer writes (`J.sigmaMap`, `W.hSigma`);
+the other three (F.15's `hSigmax`/`hSigmarho`, F.16's `sigmaMap` binder) are binder names and
+carry no type content. Every use site in §6 and §9 is threaded. The `Σ` of the source's
+`(Σ-LEDGER)` display stays `Σ` in prose and in the display — only Lean identifiers move.
 
 **DEPENDS.** none.
 
@@ -1111,10 +1214,12 @@ is F.17's, not this structure's.
 
 **STATEMENT.** *SL-C1's core: the slot constant cancels and `δ = ρ/Σ(ρ)`.* Let `J` be a
 ledger junction, `j` a slot, and `C, P : α` two objects with reads `x := J.read j C ≠ 0` and
-`J.read j P = ρ · x` for a unit `ρ : Kˣ`. Assume `Σmap` is multiplicative on the pair
-(`hmul : J.Σmap (ρ * x) = J.Σmap ρ * J.Σmap x` — supplied at instances by the `(EC-q)`
-automorphism law) and `J.Σmap x ≠ 0`, `J.Σmap ρ ≠ 0`. Then the ledger ratio
-`δ_j := (Prnt j C · (ρ·x)) / (Prnt j P · x)` equals `ρ / Σmap ρ` — E10 #5's four-line
+`J.read j P = ρ · x` for a unit `ρ : Kˣ`. Assume `sigmaMap` is multiplicative on the pair
+(`hmul : J.sigmaMap (ρ * x) = J.sigmaMap ρ * J.sigmaMap x` — supplied at instances by the
+`(EC-q)` automorphism law) and `J.sigmaMap x ≠ 0`, `J.sigmaMap ρ ≠ 0` *[repaired: A-W.1/F-D1
+throughout this node — `Σmap` → `sigmaMap`, `hΣx`/`hΣρ` → `hSigmax`/`hSigmarho`]*. Then the
+ledger ratio `δ_j := (Prnt j C · (ρ·x)) / (Prnt j P · x)` equals `ρ / sigmaMap ρ` — E10 #5's
+four-line
 derivation, transcribed: by `hledger` both prints factor through `u j`, which cancels
 ("which is the point of its being slot-constant"), leaving `(ρ·x/x)·Σ(x)/Σ(ρx) = ρ/Σ(ρ)`.
 
@@ -1125,17 +1230,21 @@ namespace Uniformity.Density.Weld
 theorem LedgerJunction.delta_eq {K : Type*} [Field K] {ι α : Type*}
     (J : LedgerJunction K ι α) (j : ι) (C P : α) (ρ : Kˣ)
     (hx : J.read j C ≠ 0) (hP : J.read j P = (ρ : K) * J.read j C)
-    (hmul : J.Σmap ((ρ : K) * J.read j C) = J.Σmap (ρ : K) * J.Σmap (J.read j C))
-    (hΣx : J.Σmap (J.read j C) ≠ 0) (hΣρ : J.Σmap (ρ : K) ≠ 0) :
+    -- [repaired: A-W.1/F-D1] `J.Σmap` → `J.sigmaMap` (F.14's field), and the two hypothesis
+    -- binders `hΣx`/`hΣρ` → `hSigmax`/`hSigmarho` ("unexpected token 'Σ'; expected ')'").
+    (hmul : J.sigmaMap ((ρ : K) * J.read j C)
+      = J.sigmaMap (ρ : K) * J.sigmaMap (J.read j C))
+    (hSigmax : J.sigmaMap (J.read j C) ≠ 0) (hSigmarho : J.sigmaMap (ρ : K) ≠ 0) :
     (J.Prnt j C * ((ρ : K) * J.read j C)) / (J.Prnt j P * J.read j C)
-      = (ρ : K) / J.Σmap (ρ : K)
+      = (ρ : K) / J.sigmaMap (ρ : K)
 ```
 
 **DEPENDS.** F.14; mathlib `div_eq_div_iff`, `mul_comm`/`mul_assoc` (field algebra),
 `Units.ne_zero`.
 
 **PROOF.** 1. Rewrite both prints by `hledger` and `hP`. 2. `u j` cancels (unit, both
-occurrences). 3. Rewrite `Σ(ρx)` by `hmul`; `field_simp` closes. Each step ≤ 3 tactics.
+occurrences). 3. Rewrite `sigmaMap (ρx)` by `hmul`; `field_simp` closes (the two non-vanishing
+hypotheses enter as `hSigmax`/`hSigmarho`). Each step ≤ 3 tactics.
 
 **SIZE.** 26 lines.
 
@@ -1175,13 +1284,15 @@ states it.
 namespace Uniformity.Density.Weld
 
 theorem unit_eq_one_of_sigma_eq_one {K : Type*} [Field K]
-    {Σmap : K → K} (hinj : Function.Injective Σmap) (h1 : Σmap 1 = 1)
-    (ρ : Kˣ) (hρ : Σmap (ρ : K) = 1) : (ρ : K) = 1
+    -- [repaired: A-W.1/F-D1] implicit binder `{Σmap : K → K}` → `{sigmaMap : K → K}`; a binder
+    -- name, so no type content moves (but named-argument call sites must use the new spelling).
+    {sigmaMap : K → K} (hinj : Function.Injective sigmaMap) (h1 : sigmaMap 1 = 1)
+    (ρ : Kˣ) (hρ : sigmaMap (ρ : K) = 1) : (ρ : K) = 1
 ```
 
 **DEPENDS.** none (mathlib `Function.Injective`).
 
-**PROOF.** 1. `Σmap ρ = Σmap 1` from `hρ` and `h1`. 2. `hinj` closes. Two steps.
+**PROOF.** 1. `sigmaMap ρ = sigmaMap 1` from `hρ` and `h1`. 2. `hinj` closes. Two steps.
 
 **SIZE.** 8 lines.
 
@@ -1227,16 +1338,32 @@ namespace Uniformity.Density.Weld
 
 /-- SL-1's Σ-properties package: what the corollaries consume from the corpus theorem.
 The corpus discharge (ACCEPTED 2/2) lands at the C-side junction instance —
-BLOCKED: GC-13 (chapter C level carriers); stub as axiom with header per §12. -/
+BLOCKED: GC-13 (chapter C level carriers). -/
+-- [repaired: A-W.1 bookkeeping] the docstring's trailing "stub as axiom with header per §12"
+-- is STRUCK: this carrier is a real `def` (§12(b), and the gate landed it as one); it is the
+-- C-side INSTANCE that is blocked-until-resolution and never stubbed as provable.
 def SigmaLedgerLaw {K : Type*} [Field K] {ι α : Type*}
     (J : LedgerJunction K ι α) : Prop :=
-  Function.Injective J.Σmap ∧ J.Σmap 1 = 1 ∧
-    ∀ x y, J.Σmap (x * y) = J.Σmap x * J.Σmap y
+  -- [repaired: A-W.1/F-D1] `J.Σmap` → `J.sigmaMap` (three occurrences; F.14's field name)
+  Function.Injective J.sigmaMap ∧ J.sigmaMap 1 = 1 ∧
+    ∀ x y, J.sigmaMap (x * y) = J.sigmaMap x * J.sigmaMap y
 ```
 
 **DEPENDS.** F.14; `EFF.SIGMALAW.03/.04/.05/.06/.07 [supplied-by: chapter C]` for the
-concrete junction instance (GC-13(c)); E's `ladderSigma`/`ladderSigma_degree` by GC-13(b)
-node ID where a σ-face consumes the law (D-F3).
+concrete junction instance (GC-13(c)). **E's dictionary, UPGRADED to GC-13(a) landed
+declaration names** *[repaired: A-W.1 cross-chapter note 1, verified at the stage-0e gate
+2026-08-16]*: E.45/E.46 have LANDED in `leanfinal` (`Uniformity/ChapE/E45.lean`, `E46.lean`), so
+the committed GC-13(b)-by-node-ID entry becomes the two landed names
+`Uniformity.Density.Ladder.ladderSigma` and `Uniformity.Density.Ladder.ladderSigma_degree`
+(E46 also lands `ladderSigma_degree_eq_deg`, the conditional block-degree form — not consumed
+here). Per D-F3 **no F SIGNATURE references either name** — SIGMALAW has no σ-valued output, so a
+Lean dependency would be manufactured; the upgrade is a citation-form upgrade only.
+**Wiring caveat (the ORCHESTRATOR's item, not an F defect):** `ladderSigma` is reachable from
+`import Uniformity`, but `ladderSigma_degree` is **not** — `E46.lean` is imported only by
+`E47.lean` and `Uniformity/ChapE.lean`'s roll-up lists `E01, E07, E25, E26, E34, E45` only, so the
+GC-4 degree-conservation leg sits outside the root import graph at HEAD (the gate's `#check` on it
+is commented out for exactly that reason). Any F consumer that ever needs the name by import waits
+on the ChapE roll-up.
 
 **PROOF.** definitional (the carrier `Prop`; the corpus theorem is its instance-level
 discharge, ACCEPTED — the instance obligation is booked in §12 as blocked-until-resolution).
@@ -1523,14 +1650,32 @@ def jbShear (e h : ℤ) : ℤ × ℤ → ℤ × ℤ := fun p => (p.1, e * p.2 + 
 print vertex set (`EFF.GRTJB.102`). ACCEPTED 2/2; instances are site data. -/
 def JBVtxFace (e h : ℤ) (harnessVtx printVtx : Set (ℤ × ℤ)) : Prop :=
   jbShear e h '' harnessVtx = printVtx
+
+-- [added: A-W.1/F-D4] the below-the-line helper, NOW SIGNED (it was prose-only, so the stub
+-- stage had no type to land and signed nothing — the gate used pointwise images instead).
+-- Machine-checked at this amendment (elaborates AND proves at the pin; see A-W.1/F-D4).
+theorem jbShear_injective {e h : ℤ} (he : e ≠ 0) :
+    Function.Injective (jbShear e h)
 ```
 
-**DEPENDS.** none.
+**⚠ HELPER NOTE — WHY THE HYPOTHESIS IS `e ≠ 0` AND WHAT THE HELPER IS FOR** *[added:
+A-W.1/F-D4]*. `e ≠ 0` is necessary, not defensive: at `e = 0` the shear collapses the u-coordinate
+(`jbShear 0 1 (0,0) = jbShear 0 1 (0,1) = (0,0)`), machine-checked at this amendment as a negative
+control. The helper's consumers are set-level: `JBVtxFace` is an image equality, and injectivity is
+what lets a consumer transport a vertex COUNT across the shear (and recover the harness vertex from
+its print image). It stays **below the contract line** in F.22's file (GC-6.5 helper clause), so
+F.22 keeps one public declaration pair; the corpus frames have `e = e_q ≥ 1`, so the hypothesis is
+free at every intended site.
 
-**PROOF.** definitional; `jbShear` injectivity (`e ≠ 0`) is a below-the-line helper lemma
-the gate uses.
+**DEPENDS.** none (mathlib `Function.Injective`, `mul_left_cancel₀`, `Prod.ext`).
 
-**SIZE.** 14 lines.
+**PROOF.** `jbShear`/`JBVtxFace`: definitional. `jbShear_injective` *[added: A-W.1/F-D4 —
+this proof was run at the amendment, not merely sketched]*: `intro p q hpq`;
+`simp only [jbShear, Prod.mk.injEq] at hpq` splits it into `p.1 = q.1` and
+`e * p.2 + h * p.1 = e * q.2 + h * q.1`; rewrite the first into the second and `linarith` gives
+`e * p.2 = e * q.2`; `mul_left_cancel₀ he` then `Prod.ext`. 6 tactic lines.
+
+**SIZE.** 22 lines *[repaired: A-W.1/F-D4 — was 14, before the helper was signed]*.
 
 **SOURCE.** `EFF.GRTJB.86` (the two frames and the shear), `.89/.90` (JB-DEV (i)/(ii)),
 `.100–.105` (JB-VTX (a)–(e); E-3's abscissa-run correction at `.172` carried: no ambient-
@@ -1817,7 +1962,9 @@ namespace Uniformity.Density.Weld
 structure WeldSupply (E : ℕ) [NeZero E] (K : Type*) [Field K] (ι α : Type*) where
   cc : CarryCocycle E K
   J : LedgerJunction K ι α
-  hΣ : SigmaLedgerLaw J
+  -- [repaired: A-W.1/F-D1] field renamed `hΣ` → `hSigma` (illegal identifier at the pin). A
+  -- FIELD name, so this is contract content: consumers write `W.hSigma`.
+  hSigma : SigmaLedgerLaw J
 ```
 
 **DEPENDS.** F.07, F.14, F.17.
@@ -1829,8 +1976,8 @@ structure WeldSupply (E : ℕ) [NeZero E] (K : Type*) [Field K] (ι α : Type*) 
 **SOURCE.** assembly node (no corpus unit — the record packages §§5–7's named supply; the
 CHAP-E §2 "terminal supply" pattern).
 
-**FAITHFULNESS.** `hΣ` is the one carried field (F.17's C-side discharge pending GC-13);
-the rest instantiates from proved nodes.
+**FAITHFULNESS.** `hSigma` *[repaired: A-W.1/F-D1 — was `hΣ`]* is the one carried field (F.17's
+C-side discharge pending GC-13); the rest instantiates from proved nodes.
 
 **TEETH.** none (packaging); the members' teeth are their own.
 
@@ -1900,11 +2047,41 @@ The gates therefore run character content at `q = 2` on **F₄** (units of order
 non-involution) and at `q = 3` on **F₉** (units of order 4/8 — non-involution) or `F₃`/`F₅`
 where the check is order-2-safe, and include the explicit `F₂`-triviality and
 involution-instance checks as NEGATIVE controls. `e > 1 ∧ f > 1`: `E = 2` (the coset group,
-e-side) with `K = F₄` over `F₂` and `K = F₉` over `F₃` (f = 2 both). Field constructions
-for the stub stage: `F₄ := AdjoinRoot (X² + X + 1 : (ZMod 2)[X])`, `F₉ := AdjoinRoot
-(X² + 1 : (ZMod 3)[X])` — fragile signatures (§12(a)); if `DecidableEq`/`Fintype` instances
-resist `decide`, the pre-authorized fallback is a private table-built field instance below
-the gate in the same file (never `native_decide` — the axiom census forbids it).
+e-side) with `K = F₄` over `F₂` and `K = F₉` over `F₃` (f = 2 both).
+
+**Field constructions — THE FALLBACK FIRED; the table-built fields are the form of record**
+*[repaired: A-W.1/F-D6, executed 2026-08-16]*. ~~`F₄ := AdjoinRoot (X² + X + 1 : (ZMod 2)[X])`,
+`F₉ := AdjoinRoot (X² + 1 : (ZMod 3)[X])`~~ carry **no** `DecidableEq`/`Fintype` instance
+(`AdjoinRoot` is a quotient of a polynomial ring), so **no `decide` gate can fire on them at all**
+— this is not a "resists" case, it is a hard absence. Under this section's own pre-authorization
+the gate uses private **table-built** fields below the gate in the same file, and those are what
+the fleet lands:
+
+* `F4 := ZMod 2 × ZMod 2` with `θ² = θ + 1`, i.e. `(x₁,x₂)·(y₁,y₂) = (x₁y₁ + x₂y₂,
+  x₁y₂ + x₂y₁ + x₂y₂)`; `CommRing` field-by-field `by decide`; `Field` on the explicit inverse
+  `x⁻¹ = x^(q−2) = x²`. Generator `ω := θ = (0,1)`, order 3 (non-involution).
+* `F9 := ZMod 3 × ZMod 3` with `θ² = −1`, i.e. `(x₁,x₂)·(y₁,y₂) = (x₁y₁ − x₂y₂,
+  x₁y₂ + x₂y₁)`; same `CommRing`/`Field` pattern, `x⁻¹ = x⁷`. Generator `i := θ = (0,1)`,
+  order 4 (non-involution).
+
+`native_decide` appears NOWHERE (axiom census). The `AdjoinRoot` spellings stay recorded as the
+mathematical identification of the two fields (and are what a *proof* about `F₄`/`F₉` would use);
+they are not gate carriers.
+
+**⚠ GATE-FORM RIDER (GC-11), STANDING FOR THIS CHAPTER** *[added: A-W.1/F-D5]*. Five §10 legs are
+not `decide`-able as displayed. The substitution table below is **binding**: a gate agent lands the
+right-hand form, and the pinned VALUES are unchanged (all were reproduced at the stage-0e gate).
+
+| # | displayed form | why it fails at the pin | executed form (land this) |
+|---|---|---|---|
+| (i) | `Module.finrank K (TwistedAlgebra cc)`, `Nat.card (TwistedAlgebra cc)` | `finrank`/`Nat.card` are noncomputable | `show` through the def's own carrier `ZMod E → K`, then `simp` (finrank) resp. `rw [Nat.card_eq_fintype_card]; decide` |
+| (ii) | `orderOf z = 4` | `orderOf` does not kernel-reduce | the power certificate `z ^ 4 = 1 ∧ z ^ 2 ≠ 1` (order ∣ 4, ≠ 1, ≠ 2 ⟹ 4) |
+| (iii) | set-level images `slotScale u '' S = S`, `jbShear e h '' V = V'` | `Set` image equality is not decidable | pointwise on the named finite witnesses (the arithmetic content §10 pins) |
+| (iv) | `(2 : ZMod 5)⁻¹ = 3` | mathlib's `Inv (ZMod n)` is `Nat.gcdA`-based (well-founded recursion) | the UNITS inverse `((z5⁻¹ : (ZMod 5)ˣ) : ZMod 5) = 3` **plus** the inverse-pair product `(2 : ZMod 5) * 3 = 1` |
+| (v) | any `F₅` instance of a `[Field K]`-based node | `Field (ZMod 5)` needs `Fact (Nat.Prime 5)`, which mathlib does **not** register (only 2 and 3) | declare `instance : Fact (Nat.Prime 5) := ⟨by norm_num⟩` beside the gate; every `F₅` example owes this line |
+
+Item (iv) is the same reduction wall as F.08's `One` instance (F-D3): inverses that must reduce are
+taken in `Kˣ`.
 
 ### NODE F.29 [gate] [fresh]
 
@@ -1914,10 +2091,17 @@ the gate in the same file (never `native_decide` — the axiom census forbids it
    the integer identity — at `(K, ζ) = (F₄, ω)` (`ω` a generator, order 3 — nontrivial
    cocycle at `q = 2`) AND `(K, ζ) = (F₃, 2)` (`q = 3`);
 2. `Nat.card (TwistedAlgebra cc) = 16` at `F₄` (`= 4²`) and `= 9` at `F₃` (`= 3²`) — F.13's
-   identity, instance-level;
-3. `Module.finrank K (TwistedAlgebra cc) = 2` both — F.10(a);
+   identity, instance-level — **executed in gate form (i)**: `show` through the carrier
+   `ZMod 2 → K`, `Fintype.card` by `decide`, then `Nat.card_eq_fintype_card`
+   *[repaired: A-W.1/F-D5(i)]*;
+3. `Module.finrank K (TwistedAlgebra cc) = 2` both — F.10(a) — **executed in gate form (i)**: a
+   `show`-through-the-carrier `simp` leg, NOT `decide` (`finrank` is noncomputable)
+   *[repaired: A-W.1/F-D5(i)]*;
 4. `(single 1 1)² = ζ • single 0 1` both — F.10(b) with the orbit product
-   `∏_{k=1}^{1} c(1,k) = c(1,1) = ζ`: expected `ω` at `F₄`, `2` at `F₃`;
+   `∏_{k=1}^{1} c(1,k) = c(1,1) = ζ`: expected `ω` at `F₄`, `2` at `F₃`; **executed pointwise**
+   (`∀ t : ZMod 2, ((single 1 1)^2) t = ((ζ : K) • single 0 1) t`) so `decide` applies without
+   `funext`, and this is the leg that forces F-D3's `Kˣ` inverse in `One`
+   *[repaired: A-W.1/F-D5(i)+F-D3]*;
 5. the `E = 3` integer-carry instance: the `{0,1}` table `δ a b = if a.val + b.val ≥ 3 then
    1 else 0` on `ZMod 3` satisfies the integer cocycle identity (27 triples, `decide`) —
    the carry shadow at odd `E`;
@@ -1930,14 +2114,21 @@ the gate in the same file (never `native_decide` — the axiom census forbids it
 namespace Uniformity.Density.Weld
 -- one #eval/decide block per check, leancheck N3Cert idiom; expected values in comments,
 -- e.g.  example : (twistGate_F4.pow2_value = genF4) := by decide
+-- [repaired: A-W.1/F-D5] the executed shape: the two `CarryCocycle` gate instances carry
+-- checks 1 as their PROOF FIELDS (`cocycle := by decide`, `δ_le_one := by decide`,
+-- `δ_cocycle := by decide` — 3 fields × 2 primes = the 6 in-instance `decide`s), and every
+-- other leg is an `example` in the substituted form of the §10 gate-form rider.
 ```
 
 **DEPENDS.** F.07, F.08, F.10, F.13.
 
 **PROOF.** `decide`/`norm_num` per check (stub stage (c) executes BEFORE axiom stubs sign —
-GC-6.6).
+GC-6.6), in the §10 rider's substituted forms where the displayed form is not decidable.
 
-**SIZE.** ≤ 40 lines + the private field-table helper if needed.
+**SIZE.** ≤ 40 lines of checks **plus ~110 lines of table-built field helpers shared with F.30**
+(the two fields with their `DecidableEq`/`Fintype`/`CommRing`/`Field` instances and generators)
+*[repaired: A-W.1/F-D6 — the committed box said "the private field-table helper if needed"; it was
+needed, and it is the bulk of the gate file]*.
 
 **SOURCE.** GC-11; `EFF.GRTJC.89`'s JC7 battery shape (cocycle + carry + E-fold chain,
 "two ways") — these are its smallest Lean-executable instances.
@@ -1950,41 +2141,63 @@ GC-6.6).
 
 ### NODE F.30 [gate] [fresh]
 
-**STATEMENT.** *The character/fence/ledger gate.* By `decide`/`norm_num`:
+**STATEMENT.** *The character/fence/ledger gate.* By `decide`/`norm_num`, in the §10 gate-form
+rider's substituted spellings *[repaired: A-W.1/F-D5 throughout this node]*:
 1. **WM-FENCE instances (F.23):** the source's own `F₅` witness — `orderOf (2 : (ZMod 5)ˣ)
-   = 4`, `¬(4 ∣ 1)`, and the character value `(2 : ZMod 5)⁻¹ = 3 ≠ 1`; a `q = 2` pair at
-   `F₄` (`z = ω`, `orderOf = 3`: fails at `A = 1`, holds at `A = 3`); a `q = 3` pair at
-   `F₃` (`z = 2`, `orderOf = 2`: fails at `A = 1`, holds at `A = 2`);
+   = 4` **executed as the power certificate `z5 ^ 4 = 1 ∧ z5 ^ 2 ≠ 1` (+ `z5 ≠ 1`)**, form (ii);
+   `¬((4 : ℤ) ∣ 1)`; and the character value `(2 : ZMod 5)⁻¹ = 3 ≠ 1` **executed as the units
+   inverse `((z5⁻¹ : (ZMod 5)ˣ) : ZMod 5) = 3` plus the pair product `(2 : ZMod 5) * 3 = 1`**,
+   form (iv). The witness needs the local `Fact (Nat.Prime 5)` instance, form (v). Then a `q = 2`
+   pair at `F₄` (`z = ω`, order 3: fails at `A = 1`, holds at `A = 3`) and a `q = 3` pair at
+   `F₃` (`z = 2 = −1`, order 2: fails at `A = 1`, holds at `A = 2`);
 2. **`xiChar` instances (F.18):** `xiChar 1 0 (2 : (ZMod 5)ˣ) 2 1 = (2²)⁻¹ = 4` (the
    `ξ₂ = θ₂⁻¹` degeneration, concrete); a NON-involution instance at each prime — `q = 2`:
    `χ = ω, γ = 1, z = ω` over `F₄` (order-3 character; expected value computed at stub
    time and pinned in the file); `q = 3`: `χ = i, γ = 1, z = i` over `F₉` with `i² = −1`
    (order-4 character) — the separator-style instances SL-INVREC's lesson demands;
 3. **slotScale counts (F.02):** over `Γ = Fin 1`, `K = F₃`: the stratum `S = {v | v 0 = 0}`
-   satisfies `slotScale u '' S = S` for both units and `Nat.card ↥S = 1`; NEGATIVE control
-   (the JD0-T-NONCHAR failure mode): the additive shift `v ↦ v + 1` maps `S` to
-   `{v | v 0 = 1} ≠ S` — the perimeter boundary displayed executably;
+   satisfies `slotScale u '' S = S` for both units and `Nat.card ↥S = 1` — **executed pointwise**
+   (`∀ u v, v 0 = 0 → slotScale u v 0 = 0`) plus `Fintype.card {v // v 0 = 0} = 1`, form (iii);
+   NEGATIVE control (the JD0-T-NONCHAR failure mode): the additive shift `v ↦ v + 1` maps `S` to
+   `{v | v 0 = 1} ≠ S` — executed as `((0 : Fin 1 → ZMod 3) + 1) 0 ≠ 0`, the perimeter boundary
+   displayed executably;
 4. **`F₂` degeneracy (F.06):** `slotScale u = id` for every `u` over `K = F₂`, `decide`;
 5. **the torsor witness (F.25):** over `E = 2`, `K = F₅`: `η ν = (−1)^ν` is a nontrivial
    character (`η 1 = 4 ≠ 1`) and `gaugeBdry (fun _ => 1) = gaugeBdry η` — `μ₂(F₅)`
    nontrivial, uniqueness dead at the smallest interesting instance;
 6. **JB shear (F.22):** `jbShear 2 1` maps the concrete harness vertex pair
    `{(0,0), (2,1)}` to `{(0,0), (2,4)}` — an `e = 2, h = 1` instance, plus a `q = 3`-side
-   instance `jbShear 3 2` on the same pair (`{(0,0), (2,7)}`).
+   instance `jbShear 3 2` on the same pair (`{(0,0), (2,7)}`) — **executed as the four pointwise
+   image values**, form (iii) (`jbShear 2 1 (0,0) = (0,0)`, `jbShear 2 1 (2,1) = (2,4)`, and the
+   `e = 3, h = 2` pair), which is exactly the arithmetic this leg pins.
 All six checks carry their expected values IN the file; a mismatch at stub stage is a
-stop-the-line blueprint defect, not a thing to patch silently.
+stop-the-line blueprint defect, not a thing to patch silently. **A gate-FORM substitution from
+§10's rider is not a mismatch** *[added: A-W.1/F-D5]* — every value above was reproduced at the
+stage-0e gate; what moved is the spelling that makes the kernel reduce.
+
+**Additional executed legs, folded in at the stage-0e gate** *[added: A-W.1/F-D5]*: the
+involution/non-involution SEPARATOR pair SL-INVREC's lesson demands, made executable — on `z² = 1`
+the character and its inverse coincide (`((-1 : (ZMod 3)ˣ)^1)⁻¹ = (-1)^1`), while at order 3/4 they
+separate (`(ω^1)⁻¹ ≠ ω^1` at `F₄`, `(i^1)⁻¹ ≠ i^1` at `F₉`); and the `xiChar` non-involution values
+pinned at both primes (`xiChar ω 1 ω 1 2 = ω² = (1,1)` at `F₄`; `xiChar i 1 i 1 2 = i³ = (0,2)` at
+`F₉`).
 
 **SIGNATURE.**
 ```lean
 namespace Uniformity.Density.Weld
 -- decide/norm_num blocks; leancheck N3Cert idiom (expected values pinned in-file).
+-- [added: A-W.1/F-D5(v)] the gate-local `instance : Fact (Nat.Prime 5) := ⟨by norm_num⟩` and
+-- the unit witness `def z5 : (ZMod 5)ˣ := ⟨2, 3, by decide, by decide⟩` sit here; the `F₄`/`F₉`
+-- table-built fields are shared with F.29 (§10's construction block).
 ```
 
-**DEPENDS.** F.02, F.06, F.18, F.22, F.23, F.25.
+**DEPENDS.** F.02, F.06, F.18, F.22, F.23, F.25 (and F.22's `jbShear_injective` is NOT needed —
+the leg is pointwise; see A-W.1/F-D4).
 
-**PROOF.** `decide`/`norm_num` per check.
+**PROOF.** `decide`/`norm_num` per check, in §10's substituted forms.
 
-**SIZE.** ≤ 40 lines.
+**SIZE.** ≤ 40 lines of checks (the shared field tables are counted at F.29)
+*[repaired: A-W.1/F-D6]*.
 
 **SOURCE.** GC-11; `EFF.WELDMASTER.25` (the F₅ witness, re-derived in the spec and here);
 `EFF.SIGMALAW.02` (the ξ₂ = θ₂⁻¹ audit); `EFF.JD0.22` BOX-5 (the F₂ census) + the NONCHAR
@@ -2028,8 +2241,16 @@ the merged outputs).
 * **Into H (committed node IDs):** `BP.F.13 → BP.H.87`, `BP.F.13 → BP.H.61` — the two
   type-preservation-replacing theorems, cited as interfaces (honesty F-3). No other H node
   is touched (F consumes nothing of H §8 — that entry point is B/E's).
-* **Into E (committed node IDs, D-F3):** `BP.F.17 → BP.E.45`, `BP.F.17 → BP.E.46`
-  (`ladderSigma` + degree conservation — the σ-law faces' GC-4 consumption).
+* **Into E (D-F3) — UPGRADED from committed node IDs to GC-13(a) LANDED NAMES** *[repaired:
+  A-W.1, cross-chapter note 1, verified 2026-08-16]*: `BP.F.17 → BP.E.45`, `BP.F.17 → BP.E.46`
+  now resolve to `Uniformity.Density.Ladder.ladderSigma` (`leanfinal/Uniformity/ChapE/E45.lean`)
+  and `Uniformity.Density.Ladder.ladderSigma_degree` (`E46.lean`) — both LANDED. The edges stay
+  annotation-only (D-F3: no F SIGNATURE references either name). **Orchestrator wiring item
+  (already known, restated here because F's gate found it):** `ladderSigma_degree` is NOT in the
+  `Uniformity` root import graph at HEAD — `E46.lean` is imported only by `E47.lean`, and
+  `Uniformity/ChapE.lean` rolls up `E01, E07, E25, E26, E34, E45` only. `ladderSigma` IS reachable.
+  Not an F defect and not F's to fix; it becomes one only if a later F node consumes the degree leg
+  by import.
 * **Into C (GC-13(c) placeholders — the orchestrator's resolution list):**
   `EFF.SIGMALAW.03 [supplied-by: chapter C]` (F.17 — the level-`m` residue-algebra
   carriers); `EFF.GRTW2.29 [supplied-by: chapter C]` (F.24 — M4's W2-C3 fenced-scope
@@ -2067,6 +2288,16 @@ one line each, at the level F's DEPENDS fields touch them:
 
 ## 12. LEANSPEC STUB LIST (stage 0e)
 
+> **STATUS: EXECUTED 2026-08-16** *[added: A-W.1]*. `leanspec/Leanspec/ChapF.lean` (commits
+> `1905bb6b` / `3212150a`) is green: **41 signed declarations** (8 `structure` + 18 `def` real
+> bodies + 15 `axiom` stubs at the exact signed types), F.08's 5 below-the-line instances, both §10
+> gates EXECUTED at `q = 2` AND `q = 3` (50 `example`s + 6 in-instance `decide`s), zero `sorry`,
+> zero `native_decide`, `autoImplicit`/`relaxedAutoImplicit` off, and three `Iff.rfl` PINS on the
+> Display-A carriers' unfoldings (`JD0Box2`, `GenhnBox2`, `W1Transport`) — a standing gate that the
+> carriers chapter I consumes cannot drift. Six defects (F-D1…F-D6) came back and are repaired in
+> AMENDMENT A-W.1. The lists below are corrected to what landed; the counts in §2's declaration
+> census are the authority.
+
 Per GC-6.6: file `leanspec/Leanspec/ChapF.lean`, wrapped in `namespace LeanspecF` (never
 re-declaring contract names in `Uniformity.*`; ChapG's retire-to-examples is the recorded
 alternative). Gate order (CHAP-H §15 / GC-6.6(c)): (a) elaborate the FRAGILE signatures
@@ -2075,38 +2306,73 @@ first; (b) land the `def` bodies real; (c) EXECUTE the §10 numeric gates at `q 
 
 **(a) Fragile-signature list (elaborate first, in this order):**
 1. F.08 `TwistedAlgebra` (the `Type _` wrapper + the twisted `Mul`/`AddCommGroup`/`Module`
-   instances — instance leakage onto plain `ZMod E → K` is the failure mode to catch);
+   instances — instance leakage onto plain `ZMod E → K` is the failure mode to catch) **and
+   F-D3's `One`/`Pow` pair, whose `One` body must invert in `Kˣ`** *[added: A-W.1/F-D3 — the
+   committed list's four helpers do not carry F.10's `^`]*;
 2. F.10 (`Module.finrank` through the def wrapper; the `single`/`•` spelling — the
    `single 0 1` normalization fence is a statement fence, not adjustable);
 3. F.28 (`structure … : Prop where` — the Prop-valued structure syntax with three index
    types as parameters);
 4. F.26 (`DmultW`'s quantifier order: `∃ ω` BETWEEN the line pair and `(f, g)` — a
    type-checked commute of the quantifiers is a blueprint defect, return BLOCKED);
-5. F.29/F.30's concrete field instances (`F₄ := AdjoinRoot (X² + X + 1)`,
-   `F₉ := AdjoinRoot (X² + 1)` — `DecidableEq`/`Fintype` for `decide`; the pre-authorized
-   fallback is a private table-built instance below the gate; `native_decide` FORBIDDEN);
+5. F.29/F.30's concrete field instances — **RESOLVED: the table-built `F4`/`F9` of §10 are the
+   form of record** *[repaired: A-W.1/F-D6]*. ~~`F₄ := AdjoinRoot (X² + X + 1)`,
+   `F₉ := AdjoinRoot (X² + 1)`~~ carry no `DecidableEq`/`Fintype` at all, so the pre-authorized
+   private table-built fields fired (`ZMod 2 × ZMod 2` with `θ² = θ + 1`; `ZMod 3 × ZMod 3` with
+   `θ² = −1`; `CommRing` by `decide`, `Field` on `x⁻¹ = x^(q−2)`); `native_decide` FORBIDDEN and
+   absent. Also owed at any `F₅` example: `instance : Fact (Nat.Prime 5)` (F-D5(v));
 6. F.15 (the multiplied-form `δ_j` normalization — do not "simplify" to a division tower);
 7. F.03 (`resTwist`'s `noncomputable` marker vs the gate's need for evaluable instances —
    gates use `eval`-level checks, not `decide` on `resTwist` itself, if it resists).
 
 **(b) Def bodies (land real, topological order per the TSV):** F.01, F.07, F.14, F.05,
 F.08, F.18 (def half), F.20, F.21 (needs F.03's def only), F.22, F.25 (def half), F.04,
-F.11, F.12, F.26, F.24, F.17, F.27, F.28.
+F.11, F.12, F.26, F.24, F.17, F.27, F.28 — **plus the three the committed list dropped**
+*[repaired: A-W.1 census correction, found by diffing this list against the 26 real bodies the
+gate landed]*: **F.02's def half** (`slotScaleEquiv`, whose two `simp [slotScale]` proof fields
+elaborate as signed), **F.03's def half** (`resTwist`, `noncomputable` — F.03 appeared only in (d),
+and F.21's parenthetical "needs F.03's def only" was the sole trace of it), and **F.19**
+(`JAResLaw`, absent from every §12 list). Total real bodies: **26** = 8 `structure` + 18 `def`
+(§2's declaration census).
 
-**(c) Numeric gates:** F.29, F.30 — all `decide`/`norm_num`; expected values pinned in this
-file (§10): card 16/9, finrank 2, `v² = ζ•single 0 1` with ζ = ω resp. 2, the F₅ fence
-witness (`orderOf 2 = 4`, `χ₁ = 3`), `ξ₂ = θ₂⁻¹ = 4` at F₅, the F₂ triviality control, the
-NONCHAR shift control, the μ₂(F₅) torsor witness, the two `jbShear` images.
+**(c) Numeric gates:** F.29, F.30 — all `decide`/`norm_num` **in §10's gate-form rider
+spellings** *[repaired: A-W.1/F-D5]*; expected values pinned in this file (§10): card 16/9,
+finrank 2, `v² = ζ•single 0 1` with ζ = ω resp. 2, the F₅ fence witness (`orderOf 2 = 4` as the
+power certificate, `χ₁ = 3` as the units inverse + pair product), `ξ₂ = θ₂⁻¹ = 4` at F₅, the F₂
+triviality control, the NONCHAR shift control, the μ₂(F₅) torsor witness, the two `jbShear`
+images, and the involution/non-involution separator pair. **Standing rule:** a leg that lands in
+the rider's substituted form has NOT weakened the gate; a leg that lands with a different VALUE is
+stop-the-line.
 
-**(d) Axiom stubs:** F.02, F.03, F.06, F.09, F.10, F.13, F.15, F.16, F.18 (lemma half),
-F.23, F.25 (lemma half).
+**(d) Axiom stubs (15 theorem-shaped rows over 11 nodes):** F.02 (×1, `card_image_slotScale`),
+F.03 (×3), F.06, F.09, F.10 (×2 — the split-mandated pair), F.13, F.15, F.16, F.18 (lemma half),
+F.23 (×2), F.25 (lemma half) *[repaired: A-W.1 census correction — the multiplicities are now
+displayed; the committed list read as 11 stubs]*. **Not stubbed, and not owed a stub:** F.22's
+`jbShear_injective` (added at A-W.1/F-D4 after the gate ran, so the 0e diff for F.22 will show one
+extra declaration at landing — expected, recorded here so it is not read as drift).
 
 **BLOCKED-UNTIL-RESOLUTION (do NOT stub as provable):** the two GC-13 instance obligations
 — F.17's C-side `SigmaLedgerLaw` discharge (`EFF.SIGMALAW.03 [supplied-by: chapter C]`) and
 F.24's M4 instance (`EFF.GRTW2.29 [supplied-by: chapter C]`). The carrier DECLARATIONS
 (F.17, F.24) elaborate and land in (b); only their instance nodes wait for the
 orchestrator's resolution pass. F.11/F.12's site instances likewise wait on H/C landings but
-create no stub obligation (they are type-parameterized).
+create no stub obligation (they are type-parameterized). *[A-W.1: confirmed at the gate — both
+carriers elaborate, neither instance is stubbed.]*
+
+**RULES FOR THE STUB-LANDING AGENT (this chapter's, after the 0e gate)** *[added: A-W.1]*:
+
+1. **No `Σ`, `Π` or `λ` in any identifier** (F-D1/F-D2). At Lean 4.31 `Σ` and `Π` are excluded
+   from `isLetterLike` and `λ` is the lambda keyword; the ASCII spellings are the contract:
+   `sigmaMap`, `hSigma`, `hSigmax`, `hSigmarho`, and `l` (or `lam`/`mu` in a line pair) for
+   bound indices. Greek stays in prose and display mathematics. A landing agent that finds a
+   Greek-token identifier anywhere in a chapter-F SIGNATURE has found a blueprint defect, not a
+   licence to invent a spelling: the four cured names above are the sanctioned list.
+2. **Inverses that a gate must reduce are taken in `Kˣ`** (F-D3/F-D5(iv)) — `Inv (ZMod n)` is
+   well-founded-recursive and does not kernel-reduce.
+3. **Gate legs land in §10's rider forms** (F-D5); `native_decide` is forbidden anywhere in the
+   chapter (F-D6); the table-built `F4`/`F9` are the gate's fields.
+4. **`One`/`Pow` on `TwistedAlgebra` are part of F.08's contract** (F-D3), and `Pow` must be
+   `npowRec` — a later `Monoid` instance must agree, or F.10(b)'s statement moves.
 
 ---
 
@@ -2325,13 +2591,21 @@ Display-A footprint check. ✓
    §9 annotations).
 6. **F.10's `single 0 1` normalization fence** (the unit of the twisted algebra is
    `single 0 (c 0 0)⁻¹`, not `single 0 1`) — verify the power-basis statement's `•`-form is
-   the right contract and the stub stage does not normalize `cc`.
+   the right contract and the stub stage does not normalize `cc`. *[A-W.1/F-D3: PARTLY ANSWERED —
+   the gate did not normalize `cc`, the `•`-form elaborates and its `E = 2` value was reproduced at
+   both primes, and the unit is now a signed `One` instance (inverse in `Kˣ`). What is still owed
+   to the cross-read: whether the unit claim belongs in F.09's SIGNATURE rather than only in its
+   prose.]*
 7. **F.26's quantifier order** (`∃ ω` between the line pair and `(f, g)`) — the spec's own
    trap; also verify the gate-(b) cite tag (`FGMN Thm 4.2` via `(IN-3)`) is the right
    citation target at HEAD (Annex #6 re-based the derivation).
 8. **The gate field constructions** (F₄/F₉ via `AdjoinRoot`; table fallback;
    `native_decide` forbidden) — and the involution/`F₂` negative controls' adequacy against
-   honesty F-9.
+   honesty F-9. *[A-W.1/F-D6: ANSWERED on the construction half — `AdjoinRoot` carries no
+   `DecidableEq`/`Fintype`, the pre-authorized table fallback fired, `native_decide` is absent, and
+   the executed controls are the `F₂` unit-group triviality, the NONCHAR additive shift, and an
+   involution/non-involution separator pair at `F₃`/`F₄`/`F₉`. The adequacy JUDGEMENT (are these the
+   right controls?) is still the cross-read's.]*
 9. **§8's pre-authorized WELD-ZERO amendment path** — verify it does not overstep the 0b
    fold's authority (the amendment fires only after the ledger books the arc).
 10. **ORCHESTRATOR + C composer: the two `BP.C.*` SCCs at HEAD** (`{BP.C.56, .84, .85,
@@ -2347,7 +2621,17 @@ Display-A footprint check. ✓
     source's `ξ^{−deg R}·R(ξ·y)`; monic-form death of the overall unit) — re-derive the
     leading-coefficient computation independently.
 14. **The §2 kind census and file figure** (8/8/2/1/9/2 = 30; ≈ 31–33 files after the F.10
-    split) — recount at stub time.
+    split) — recount at stub time. *[A-W.1: DONE. The node kinds recount correctly (30); the
+    DECLARATION census landed at **41** (8 structures + 18 defs + 15 theorem-shaped rows) and is now
+    displayed at §2, and §12's lists were corrected against it — three real bodies (F.02's
+    `slotScaleEquiv`, F.03's `resTwist`, F.19's `JAResLaw`) had been dropped from §12(b). File
+    figure unchanged.]*
+15. **ORCHESTRATOR — the E-side wiring, from F's gate** *[added: A-W.1, cross-chapter note]*:
+    (a) F.17's DEPENDS is upgraded to the GC-13(a) landed names
+    `Uniformity.Density.Ladder.ladderSigma` / `…ladderSigma_degree` (E.45/E.46 have landed);
+    (b) `ladderSigma_degree` is outside the `Uniformity` root import graph at HEAD (`ChapE.lean`
+    rolls up E01/E07/E25/E26/E34/E45 only; E46 is imported only by E47) — a known roll-up item,
+    the orchestrator's, not F's, and harmless to F because D-F3 puts no E name in an F signature.
 
 ---
 
@@ -2360,9 +2644,233 @@ HEAD; the two GRTW2↔LIFTCORNER mutual-recon SCCs are DECIDED (D-F1/D-F2); WELD
 of record: clean-pass 1 of 2, pass 2 Fable-max IN FLIGHT, nothing consumed from it.
 CODEX CROSS-READ OWED (§14 is the queue).
 
+**Stage-0e stub gate: RUN AND GREEN (2026-08-16)** *[added: A-W.1]* — 41 declarations, both §10
+gates executed at `q = 2` AND `q = 3`, three Display-A carrier PINS, six defects F-D1…F-D6
+repaired here by AMENDMENT A-W.1 (below).
+
 <!-- RESUME: CHAPTER COMPLETE. Remaining external actions: (i) orchestrator dag_build re-run
 (merges DAG_BLUEPRINT_F.tsv; re-classes the two adjudicated reverse edges; books the BP.C
-SCC flag); (ii) cross-read per §14; (iii) leanspec stub stage per §12; (iv) the §8 WELD-ZERO
+SCC flag); (ii) cross-read per §14; (iii) leanspec stub stage per §12 — DONE at stage 0e
+(2026-08-16, commits 1905bb6b/3212150a); its six defects are repaired in AMENDMENT A-W.1, and the
+orchestrator still owes `import Leanspec.ChapF` in `leanspec/Leanspec.lean`; (iv) the §8 WELD-ZERO
 amendment fires only after the ledger books the arc. -->
+
+## AMENDMENT A-W.1 (2026-08-16, dated append) — THE STAGE-0e STUB-GATE DEFECT LIST, REPAIRED
+
+**Provenance.** The chapter-F stub gate `leanspec/Leanspec/ChapF.lean` (commits `1905bb6b`
+stage (a)/(b)/(d) + `3212150a` stage (c) and the carrier pins; `lake build Leanspec.ChapF` green:
+41 signed declarations, 50 executed gate `example`s + 6 in-instance `decide`s at `q = 2` AND
+`q = 3`, zero `sorry`, zero `native_decide`) recorded **six defects, F-D1…F-D6** in its header. Per
+§12 / CHAP-H §15 rule 5, elaboration-level defects are cured minimally stub-side and repaired
+blueprint-side here; **the stub's cures are ground truth for this amendment** — where the two could
+differ, the landed spelling won.
+
+**Series name.** `A-W.<n>`, "W" for weld — declared with its reason in the header banner
+(`A-F.<n>` is chapter B's finisher series; a second `A-F.1` would collide in the fleet's grep).
+
+**Convention of this block** (CHAP-E's A-E.1 convention, itself CHAP-H's A-H.1): node text IS
+repaired in place, each repaired passage tagged `[repaired: A-W.1/F-D<n>]` or `[added: …]`;
+superseded text stays visible as a strikethrough or a quoted original; this block records, per
+defect, the finding, the defective ORIGINAL, the repair and the evidence. Nothing is deleted.
+
+**Where the two files now differ.** In exactly one place: F.22's `jbShear_injective`, signed here at
+F-D4 *after* the gate ran, has no stub. Everything else in the blueprint now matches the landed
+forms byte-for-byte in the identifiers and in the gate spellings. (The blueprint additionally
+carries F-D4/F-D5/F-D6 as *rules*; the stub carries them as *executed code*.)
+
+### A-W.1/F-D1 — `Σmap` / `hΣ` / `hΣx` / `hΣρ` ARE NOT LEGAL LEAN IDENTIFIERS (hard parse error)
+
+**The finding.** At the Lean 4.31 pin `Σ` (U+03A3) is explicitly EXCLUDED from `isLetterLike` (as
+is `Π`) because it is the Sigma-type token. The gate's two probes:
+`structure P (K) [Field K] where Σmap : K → K` → *"unexpected token 'Σ'; expected command"*;
+`(hΣx : …)` → *"unexpected token 'Σ'; expected ')'"*. Five identifiers were affected, over five
+nodes. *Class: illegal identifier — the same family as CHAP-E's E-D3 (`hλ`).*
+
+**The defective originals** (committed SIGNATUREs, preserved):
+
+    structure LedgerJunction (K : Type*) [Field K] (ι α : Type*) where
+      Σmap : K → K                                              -- F.14, a FIELD
+      …
+      hledger : ∀ j a, Prnt j a = (u j : K) * Σmap (read j a)
+
+    (hΣx : J.Σmap (J.read j C) ≠ 0) (hΣρ : J.Σmap (ρ : K) ≠ 0)  -- F.15, two BINDERS
+
+    {Σmap : K → K} (hinj : Function.Injective Σmap) …            -- F.16, a BINDER
+
+    Function.Injective J.Σmap ∧ J.Σmap 1 = 1 ∧ …                 -- F.17, three USES
+
+    hΣ : SigmaLedgerLaw J                                        -- F.27, a FIELD
+
+**The repair.** `Σmap → sigmaMap`, `hΣ → hSigma`, `hΣx → hSigmax`, `hΣρ → hSigmarho`, threaded at
+F.14 (field + `hledger`), F.15 (signature + STATEMENT prose + PROOF), F.16 (binder + PROOF), F.17
+(the three projections in `SigmaLedgerLaw`'s body) and F.27 (field + FAITHFULNESS).
+
+**What is and is not contract content.** Two of the five are FIELD names —
+`LedgerJunction.sigmaMap` and `WeldSupply.hSigma` — and field names are part of the type: every
+consumer's projection changes, and **the signed spellings cannot be landed at all**. The other
+three are binder names, which carry no type content (they matter only to named-argument call
+sites). The source's `Σ` is untouched in prose and in the `(Σ-LEDGER)` display.
+
+**Standing rule** (now §12's rule 1): no chapter-F identifier may carry `Σ`, `Π` or `λ`.
+
+### A-W.1/F-D2 — F.12's `∀ λ, …` IS A HARD PARSE ERROR, AND THE CHAPTER WAS INTERNALLY INCONSISTENT
+
+**The finding.** `W1Transport`'s bound variable was spelled `λ`, the lambda keyword:
+*"unexpected token 'λ'; expected '(', '[', '_', '{', '⦃' or identifier"*. The chapter's own F.26
+avoids the trap (`∀ lam mu : Λ`), so the two nodes disagreed. *Class: illegal identifier.*
+
+**The defective original:** `∃ c : ι → Kˣ, ∀ λ, Rharness λ = (c λ : K) * RGMN λ`.
+
+**The repair, and the convention choice recorded.** `∀ l` — the gate's executed form — with a
+chapter-wide binder rule stated at F.12: Greek tokens never appear in identifiers; **`l`** for a
+bare abstract index (F.12's `ι` is exactly that), **`lam`/`mu`** where the binders transliterate a
+λ/μ *pair* from the source (F.26, which stays byte-unchanged). Both are legal, binder names are not
+part of the type, so **the Display-A sub-residue carrier is unaffected** and a landing agent may
+spell F.12's binder `lam` without being BLOCKED. The alternative — unifying on `lam` everywhere —
+was rejected only because it would move a form the gate already executed and pinned by `Iff.rfl`.
+
+### A-W.1/F-D3 — F.10's `^` HAD NO SIGNED INSTANCE; `One`/`Pow` ADDED, AND **THE INVERSE IS TAKEN IN `Kˣ`**
+
+**The finding.** F.08 signed exactly four below-the-line helpers (`Mul`, `single`, `AddCommGroup`,
+`Module K`). F.10's `pow_card_single` writes `(single 1 1 : TwistedAlgebra cc) ^ E`, which needs
+`Pow (TwistedAlgebra cc) ℕ` and hence (via `npowRec`) a `One`. **The committed F.10 signature did
+not elaborate.** *Class: missing declaration in a signed helper list.*
+
+**The repair** (the gate's, adopted verbatim; bodies are F.09's own prose — "`single 0 (cc.c 0 0)⁻¹`
+is a two-sided unit"):
+
+    instance : One (TwistedAlgebra cc) := ⟨single 0 (((cc.c 0 0)⁻¹ : Kˣ) : K)⟩
+    instance : Pow (TwistedAlgebra cc) ℕ := ⟨fun f n => npowRec n f⟩
+
+**THE LOAD-BEARING SUBTLETY, RECORDED LOUDLY.** The inverse must be formed **in `Kˣ` and coerced**,
+`(((cc.c 0 0)⁻¹ : Kˣ) : K)` — **never** `((cc.c 0 0 : K))⁻¹`. With the `K`-side spelling the
+executed `q = 3` leg of F.29 check 4 (`(single 1 1)² = ζ • single 0 1` at `K = ZMod 3`) **does not
+`decide`**: mathlib's `Inv (ZMod n)` is `Nat.gcdA`-based well-founded recursion and does not
+kernel-reduce, whereas `Kˣ`'s `Inv` is projection to the stored `inv` field. This is the same wall
+as F-D5(iv), and it is why the two look like a spelling choice and are not one: the `K`-side
+spelling costs the chapter a gate leg at `q = 3` — i.e. GC-11 compliance.
+
+**Content unchanged.** `npowRec` is the `npow` any later `Monoid` instance carries, so F.10(b)'s
+statement means what it meant; the `single 0 1` normalization fence on the right-hand side is
+untouched. **What the fleet owes:** these two instances, or a full `Monoid`/`Ring` instance (the
+natural target once F.09 is proved) whose `one` inverts in `Kˣ` and whose `npow` is `npowRec`.
+
+**Rider (E-D13-class, no repair).** F.09's STATEMENT asserts the two-sided-unit fact but its
+SIGNATURE signs only `mul_assoc`; the unit claim is carried by the `One` instance, not by a
+theorem. Recorded at F.09 as a SIGNATURE NOTE and flagged to the cross-read (§14 item 6); no
+declaration added, because nothing in the chapter consumes `one_mul`/`mul_one`.
+
+### A-W.1/F-D4 — F.22's INJECTIVITY HELPER WAS PROSE-ONLY; NOW SIGNED (machine-checked here)
+
+**The finding.** "`jbShear` injectivity (`e ≠ 0`) is a below-the-line helper lemma the gate uses"
+sat in F.22's PROOF field with no SIGNATURE block, so the stub stage had **no type to land** — the
+gate signed nothing and ran F.30 leg 6 on pointwise image values instead (which is what §10's own
+leg pins). *Class: unsigned helper.* Nothing was wrong mathematically; the contract was incomplete.
+
+**The repair — a real SIGNATURE block at F.22, machine-checked at this amendment:**
+
+    theorem jbShear_injective {e h : ℤ} (he : e ≠ 0) :
+        Function.Injective (jbShear e h)
+
+**Evidence (run at the pin, `lake env lean` against the leanspec environment, clean).** The
+signature elaborates AND the statement is proved: `intro p q hpq`;
+`simp only [jbShear, Prod.mk.injEq] at hpq` splits the goal into `p.1 = q.1` and
+`e * p.2 + h * p.1 = e * q.2 + h * q.1`; rewriting the first into the second and `linarith` give
+`e * p.2 = e * q.2`; `mul_left_cancel₀ he` and `Prod.ext` close it. **The hypothesis is necessary,
+also machine-checked:** `¬ Function.Injective (jbShear 0 1)`, witnessed by
+`jbShear 0 1 (0,0) = jbShear 0 1 (0,1)`. The corpus frames have `e = e_q ≥ 1`, so `e ≠ 0` is free
+at every intended site.
+
+**Bookkeeping.** This is the amendment's one blueprint-side ADDITION: the landed side will carry
+one declaration more than the 0e stub for F.22 (recorded at §12(d) so the diff is not read as
+drift). It stays below the contract line, so F.22 keeps its one-public-declaration status.
+
+### A-W.1/F-D5 — FIVE §10 LEGS ARE NOT `decide`-ABLE AS DISPLAYED; THE GATE-FORM TABLE IS NOW BINDING
+
+**The finding, and what it is not.** Every expected VALUE of §10 was reproduced at both primes;
+what failed was the *spelling*. Five distinct reduction walls at our pin:
+
+| # | displayed | wall | executed |
+|---|---|---|---|
+| (i) | `Module.finrank`, `Nat.card` on `TwistedAlgebra` | both noncomputable | `show` through the carrier `ZMod E → K`; `simp` for `finrank`, `Nat.card_eq_fintype_card` + `decide` for `Nat.card` |
+| (ii) | `orderOf z = 4` | `orderOf` does not kernel-reduce | `z ^ 4 = 1 ∧ z ^ 2 ≠ 1` (order ∣ 4, ≠ 1, ≠ 2 ⟹ 4) |
+| (iii) | `slotScale u '' S = S`, `jbShear e h '' V = V'` | `Set` image equality is not decidable | pointwise on the named finite witnesses |
+| (iv) | `(2 : ZMod 5)⁻¹ = 3` | `Inv (ZMod n)` is `Nat.gcdA`-based (WF recursion) | `((z5⁻¹ : (ZMod 5)ˣ) : ZMod 5) = 3` **+** `(2 : ZMod 5) * 3 = 1` |
+| (v) | any `F₅` instance at a `[Field K]` node | `Fact (Nat.Prime 5)` is unregistered in mathlib (only 2, 3) | declare `instance : Fact (Nat.Prime 5) := ⟨by norm_num⟩` beside the gate |
+
+**The repair.** The table is transcribed into §10 as a **standing GC-11 gate-form rider** (binding
+on gate agents), the affected F.29/F.30 legs are re-displayed in their executed forms, and §12(c)
+gains the rule that a rider-form substitution is not a mismatch while a VALUE change is
+stop-the-line. *Class: gate-form — no statement of any node moved.* Note (iv)'s connection to
+F-D3: inverses that must reduce are taken in `Kˣ`, and that is now a chapter rule (§12 rule 2).
+
+### A-W.1/F-D6 — THE `AdjoinRoot` GATE FIELDS CANNOT CARRY A `decide`; THE PRE-AUTHORIZED TABLE FALLBACK IS NOW THE FORM OF RECORD
+
+**The finding.** `F₄ := AdjoinRoot (X² + X + 1 : (ZMod 2)[X])` and
+`F₉ := AdjoinRoot (X² + 1 : (ZMod 3)[X])` have **no** `DecidableEq`/`Fintype` instance (AdjoinRoot
+is a quotient of a polynomial ring). §10's committed text said "*if* `DecidableEq`/`Fintype`
+instances resist `decide`" — the truthful statement is that they are absent, so no `decide` gate
+can fire on those carriers at all.
+
+**The repair.** §10's own pre-authorization ("a private table-built field instance below the gate in
+the same file") is promoted to the form of record and spelled out: `F4 = ZMod 2 × ZMod 2` with
+`θ² = θ + 1`, `F9 = ZMod 3 × ZMod 3` with `θ² = −1`, each with `CommRing` proved field-by-field by
+`decide` and `Field` built on the explicit inverse `x⁻¹ = x^(q−2)`; generators `ω = θ` (order 3) and
+`i = θ` (order 4), both non-involutions, which is what the arena note's coincidence trap demands.
+**`native_decide` appears nowhere in the gate file** (axiom census). The `AdjoinRoot` spellings stay
+recorded as the mathematical identification of the two fields — a *proof* about `F₄`/`F₉` would use
+them; a *gate* cannot. F.29's SIZE box is corrected (the shared field tables are ~110 lines, larger
+than the check block they serve). *Class: gate-form; the fallback the blueprint itself authorized.*
+
+### A-W.1 — CENSUS AND CROSS-CHAPTER BOOKKEEPING
+
+**(1) The declaration census (new, at §2).** 41 signed declarations = 8 `structure` + 18 `def` + 15
+theorem-shaped rows over 11 nodes, plus F.08's 5 below-the-line instances and (new) F.22's
+`jbShear_injective`. §14 item 14 is thereby answered.
+
+**(2) Three real bodies were missing from §12(b)** — `slotScaleEquiv` (F.02's def half), `resTwist`
+(F.03's def half, whose only trace was F.21's parenthetical "needs F.03's def only") and `JAResLaw`
+(F.19, absent from every §12 list). The gate landed all three, which is how the gap surfaced: the
+committed list named 18 nodes carrying 23 declarations against 26 landed bodies. Corrected in place;
+§12(d) now also displays the stub multiplicities (15 rows, not 11).
+
+**(3) F.17's docstring** carried "stub as axiom with header per §12" while §12(b) lands the carrier
+as a real `def` (as the gate did). Struck: the carrier is a `def`; the C-side INSTANCE is what is
+blocked-until-resolution.
+
+**(4) Cross-chapter note 1 — E.45/E.46 have LANDED, so F.17's DEPENDS upgrades to GC-13(a) names**
+(`Uniformity.Density.Ladder.ladderSigma`, `…ladderSigma_degree`; E46 also lands
+`ladderSigma_degree_eq_deg`). Recorded at F.17 and in §11's "Into E" bullet. Per **D-F3 no F
+SIGNATURE references either name**, so this is a citation-form upgrade with no Lean dependency
+created.
+
+**(5) Cross-chapter note 2 — the ORCHESTRATOR's roll-up item (already known, restated).**
+`ladderSigma_degree` is NOT reachable from `import Uniformity` at HEAD: `E46.lean` is imported only
+by `E47.lean`, and `Uniformity/ChapE.lean` rolls up `E01, E07, E25, E26, E34, E45` only.
+`ladderSigma` IS reachable (the gate's `#check` prints its type). Filed as §14 item 15; not an F
+defect, and harmless to F under D-F3.
+
+### A-W.1 — WHAT THIS AMENDMENT DID NOT TOUCH
+
+* `leanspec/Leanspec/ChapF.lean` — the gate's file; not edited here (§12 rule / CHAP-H §15 rule 5).
+  No cross-file edit of any kind was made; `leanfinal` and `leancheck` are untouched.
+* **No node's mathematical strength.** F-D1/F-D2 are identifier spellings; F-D3 adds the instances a
+  signed statement already presupposed (with `npowRec`, so the statement's content is fixed);
+  F-D4 signs a helper whose statement was already asserted in prose and is now machine-proved;
+  F-D5/F-D6 move gate spellings only, with every pinned value reproduced. **No hypothesis was added
+  to or removed from any theorem-shaped row**, and no carrier's body moved by so much as a
+  quantifier — the gate's three `Iff.rfl` pins on `JD0Box2`, `GenhnBox2` and `W1Transport` are the
+  machine check of exactly that.
+* The two GC-13 BLOCKED-UNTIL-RESOLUTION instance obligations (F.17's C-side discharge, F.24's M4
+  instance) — still awaiting the orchestrator's resolution pass; A-W.1 stubs neither.
+* §3's out-of-cone census, §7's DECISIONs D-F1/D-F2/D-F3, §8's WELD-ZERO status, §13's unit
+  disposition census — unchanged (the disposition vocabulary and every row's verdict stand).
+* The DAG (`spec/DAG_BLUEPRINT_F.tsv`): **no edge changes.** Every repair is intra-node; the one
+  DEPENDS wording that moved (F.17's E-side citation form) is the same two edges `BP.F.17 → BP.E.45`
+  / `BP.F.17 → BP.E.46` at GC-13(a) instead of GC-13(b) precision, and F.22's new helper is
+  below-the-line (no node-level row). F still introduces zero SCCs.
+* Chapter I's consumption surface: unchanged in content, but note that two FIELD names it will
+  project are respelled (`LedgerJunction.sigmaMap`, `WeldSupply.hSigma`) — F-D1's one contract
+  consequence.
 
 <!-- SENTINEL: BP-F END OF FILE -->

@@ -57,18 +57,22 @@ extraction of every PART-1 cell, both rings:
     Dpred = min(min(RB.val(a[j]), W) + j * k if j < m else j * k for j in range(m + 1))
 ```
 
-and asserts three things about it: `assert D == Dpred` (**`P1(f)` beta genre composition**, the
-content identity — the reader's `Dpred` is computable from the class alone), `assert M >= 1`
-for `M = W - D` (**`P1(e)` recursion identity**'s precondition — this IS `betaContent_le`), and
-on the ALPHA branch `assert D == m * k and Dpred == m * k`.
+The reader `_read_cluster_work` then asserts three things about it, on every state it visits, so
+the blueprint's named PART-1 checks (**`P1(e)` recursion identity**, **`P1(f)` beta genre
+composition**) all consume them: `assert D == Dpred` on the BETA branch (the content identity —
+the reader's uncapped `min` over the recentred coefficients agrees with the class-computable
+`Dpred`), `assert M >= 1` for `M = W - D` (the child window is non-degenerate — this IS
+`betaContent_le`), and on the ALPHA branch `assert D == m * k and Dpred == m * k`.
 
 `Dpred`'s displayed formula is `betaContent`'s body verbatim under `resOrd = min ∘ (val, W)`
-(H.107 is that identification).  GC-8 disposition: **Lean theorems** for the two structural
-assertions — `betaContent_le` (the `M ≥ 1` precondition) and the ALPHA identity, recorded as
-the `example` of §4 — plus a kernel `#guard` block in §5 that re-runs the bound exhaustively
-over the capped-valuation grids of the battery's own `part1` plan (`m ∈ {2,3,4}`), which is a
-genuine re-execution of the lemma's content, `q` playing no role in this pure-valuation
-arithmetic.  The ring-level enumeration stays the executable regression.
+(H.107's `resOrd_ge_iff` is that identification).  GC-8 disposition: **Lean theorems** for the
+two class-level assertions — `betaContent_le` (the `M ≥ 1` guarantee) and the ALPHA identity's
+`Dpred == m * k` half, recorded as the `example` of §4; the remaining `D == Dpred` half is a
+statement about the recentred expansion, i.e. H.109's business, not this node's.  Plus a kernel
+`#guard` block in §5 that re-runs both proved assertions exhaustively over the
+capped-valuation grids of the battery's own `part1` shapes (`m ∈ {2, 3, 4}`) — a genuine
+re-execution of the lemma's content, `q` playing no role in this pure-valuation arithmetic.
+The ring-level enumeration stays the executable regression.
 
 ## Status
 
