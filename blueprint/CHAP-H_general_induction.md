@@ -6994,11 +6994,418 @@ DEPENDS, PROOF, SIZE note, the step-4 ⚠ flag), §16 item 13, `spec/DAG_BLUEPRI
 honest corrections of a machine-refuted signature under the standing statement-change authority;
 the refuted original and both refutations are preserved above.*
 
+---
 
+## §17 — THE T-1 COMPLETION LAYER (nodes H.100–H.124) — dated extension, 2026-08-16
 
+**Provenance.** Unit **T-1 BLUEPRINT-CONVERSION** (fable-max, 2026-08-16), under the owner's
+STANDING COMPLETION MANDATE (`docs/PROJECT_STATE.md` DATED APPEND **#66**: *"Once the math
+lands, continue with the conversion to a blueprint followed by formalization … Don't stop
+until we get there"*). The mathematics converted here is unit **OM-2**'s certified reduction
+of `GENIND.B`'s inductive step (`docs/openmath-campaign/OM-2_genind-b_2026-08-16.md`: the
+30-row outline, the three genuinely-new theorem families N-1/N-2/N-3 of its §4 sketch, and
+the battery `verification/openmath/OM2_genindb_battery.py`, **612/612 checks**, exact
+rationals, exhaustive cells, `q ∈ {2,3}`, BOTH characteristics). This section is a **dated
+extension**: nothing in §§0–16 or the amendments A-H.1/A-H.2 is edited; the node index/census
+of §2 gains one dated line pointing here.
 
+**What this section is, and is not.** OM-2's structural observation S-0: the entire
+Lean-facing content of the terminal open item T-1 (CHAP-I §3.9) is the RATE clause of
+`InductionPackage n` — the menu clause is landed at every degree (`exists_coveringMenu`,
+CN-22). The 25 nodes below are the owner-less surface OM-2 identified: **N-1** the level-0
+class transport (H.100–H.105), **N-2** the cluster event grammar over `O` (H.106–H.117),
+**N-3** the `RecursionLegs` instantiation with the S-1 bridge and the terminal composed
+reduction (H.118–H.124). **The H.98 fence stands verbatim**: no node here claims
+`THEOREM GENIND.B`; H.124 is the reduction *as a conditional*, its full-cluster hypothesis
+carried, never discharged beyond the `m ≤ 3, d = 1` layer that H.106–H.123 supply. The
+composite-stage clauses remain OPEN per genre exactly as `GENIND-BOX-1` prices them.
 
+### 17.0 Conventions of this section
 
+**ENV-H17 (the section's single environment).** ENV-H3's arena with **every binder written
+INLINE** — the B.42 landing rule (`leanfinal/Uniformity/ChapB/B42.lean`, "The completeness
+binder" section, 2026-08-16): *a hypothesis that the statement's truth depends on is never
+left to section auto-inclusion; it is written in the binder list, where a diff can see it and
+a careless edit cannot silently drop it.* At the 4.31 pin section-variable auto-inclusion is
+usage-based and import-set-dependent, so §17 declares NO section variables at all. The
+standard telescope, minimally bound per node (GC-6.4):
 
+```lean
+{O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+-- plus, exactly where the node needs them:
+[Finite (IsLocalRing.ResidueField O)]              -- counting / residueCard nodes
+[IsAdicComplete (IsLocalRing.maximalIdeal O) O]    -- Hensel-consuming nodes
+{π : O} (hπ : Irreducible π)                       -- recentring / residual nodes (ENV-H2′)
+```
 
+**Namespaces (GC-6.2).** All new definitions and the theorems about them land in
+`Uniformity.Density.Induction`; the two capstone-facing declarations of H.124
+(`FullClusterRateBound`, `inductionPackage_of_clusterRates`) land in `Uniformity.Density`
+beside the landed `InductionPackage`. One Lean file per node, `ChapH/H<nnn>.lean`.
 
+**Signature verification (this unit, executed).** Every SIGNATURE below is elaborated in
+`leanspec/Leanspec/ChapH.lean`'s new `LeanspecH17` blocks (appended 2026-08-16, per that
+file's lifecycle header; `lake build Leanspec.ChapH` green): **52 declarations — 14 real
+`def` bodies + 1 real `inductive` + 2 opaque definitional carriers (`alphaChild`,
+`betaChild`; axiom-form, real bodies owed at the §17 0e gate — recorded deviation) + 35
+theorem-shaped unsigned `axiom` stubs.** The §17 **0e gate is NOT closed** by this unit: stub
+SIGNING, the two heavy `def` bodies, and the numeric `#eval` gates are the fleet-stage
+obligations (GC-6.6 gate order applies when the §17 fleet fires).
+
+**TEETH convention.** Each node's TEETH names the specific checks of
+`verification/openmath/OM2_genindb_battery.py` (RESULTS run 2026-08-16, 612/612; log
+`verification/openmath/logs/OM2_full_20260816_*.log`) that certify its content, with the
+GC-8 disposition "**Lean theorem** at this node once landed; **executable regression
+retained** meanwhile". A finite battery at `q ∈ {2,3}` licenses nothing (OM-2 §3's scope
+box); what it certifies is that each STATEMENT below survived the A-H.2-class attacks
+(CC-1/CC-2/CC-3) that killed its predecessors.
+
+**THE TWO STANDING FENCES (from OM-2's findings, both REFUTED-with-repair).**
+
+* **F-1 (the per-type census trap).** The per-TYPE census of a level-0 product does NOT
+  compose freely: `split ⊎ inert = inert ⊎ split` (4 factor combinations, 3 frame types —
+  battery P4). Every composition statement below is phrased on the DECIDED/UNDECIDED
+  PREDICATE (H.104) or as a census over combinations; a transcription upgrading H.103's
+  σ-additive ⟸ direction to a per-type iff is **REFUTED** and must be returned as a defect.
+* **F-2 / S-1 (the two complements).** The CONSERVATIVE complement (H.118's reader: exits
+  undecided on `v(a₀) ≥ N` and on every CS event) STRICTLY exceeds the SEMANTIC undecided
+  set (`UndecidedAt`) from `(n, N) = (2, 3)` on — witnesses machine-checked and hand-proved
+  (OM-2 F-2: reader 12 vs landed `undecidedCount_two_eq` value `q^N = 8` at `q = 2, N = 3`).
+  The bridge H.123 is an **INEQUALITY**; any node identifying `uCluster`-assembled counts
+  with `undecidedCount`/`undecidedSet` is REFUTED on those witnesses. (§16 item 6 fenced a
+  different pair — full-space vs cluster; this is the conservative-vs-semantic axis.)
+
+**SUPPLIER GATES a §17 fleet agent must respect** (unchanged rows; consuming them is
+declaring conditionality, discharging them is out of scope):
+
+| gate | where it binds in §17 | return |
+|---|---|---|
+| `HYP.36` (`(CS-1Q)` per genre) | any attempt to DRAIN the CS bucket (H.110's states) at an embedded/mixed genre | `BLOCKED: HYP.36` |
+| `HYP.81` (`μ ≥ 3` σ-decision), `HYP.82` (`n ≥ 8` tower) | any full-cluster discharge of H.124's hypothesis at `m ≥ 4` | `BLOCKED: HYP.81/82` |
+| `B-BOX-1` (`ℓ ≥ 2 ∧ d ≥ 2` leaves) | any `d ≥ 2` analogue of the H.106 carrier's leaf reads | `BLOCKED: B-BOX-1` |
+| **B.42** `[cite:GN15 Thm 2.3 + FGMN Thm 6.6]` — **LANDED AND OWNER-SIGNED (gate (b), #66)** | H.123's bridge-a (reader-decided ⟹ `DecidedAt`) | **CONSUMABLE, footprint-visibly**: every consumer's `#print axioms` will and should show `exists_slope_factorization`; never launder it |
+| HYP.24/25/26/35 (the VALUE track) | the pieces' σ-values, menu weights, exactness | out of §17's scope (TRACK V; OM-2 §2) |
+
+**DECISION D-H17.1 (the CS-pessimistic conservative reader).** H.118's reader marks every CS
+state UNDECIDED at depth 0. This is the honest conservative reading (the stage laws are
+`StageInterface` FIELDS, ledger-gated, with no teeth anywhere — honesty H-2/H-5); the stage
+improvement of the CS mass is a future gated CONSUMER of H.72 + `StageInterface`, never part
+of the reader's definition. Consequence: H.121/H.122 are stated at `2 ≤ m ≤ 3`, where the CS
+bucket is EMPTY (H.117, battery P1(g)) — exactly the battery's certified scope.
+
+**DECISION D-H17.2 (window-explicit `betaChild`).** The β-extraction map takes its target
+window as an EXPLICIT argument (`betaChild π c h M`), with the genuine child at
+`M = N − betaContent c k` pinned by its spec clause. Reason: genre-level statements (H.116's
+fibration) quantify over child tuples at windows given by genre DATA, and a window baked into
+the type forces dependent-index casts (`HEq`) across propositionally-equal indices — the
+exact failure shape A-H.1/D7 hit at `RecursionLegs`.
+
+**DECISION D-H17.3 (event carriers: recentring divisibilities, not a second polygon).**
+The α/β child events (H.109) are characterized through the corpus's own recentring
+`x ↦ π^k(y + ẑ)` as π-divisibility patterns of the recentred coefficients at the capped
+content — self-contained, no residual-polynomial carrier needed (a `(k, z)`-child with
+`z ≠ 0` and multiplicity `μ ≥ 2` exists iff those divisibilities hold; off-side slopes are
+automatically excluded because a single-point support gives no nonzero repeated root). Only
+the CS discriminator (H.110) consults a residual polynomial, and it routes through chapter
+B's LANDED polygon API (`npHgt`/`sideSet`/`sideMin`/`resPoly` at the order-1 key `φ = X`,
+`H₀` pinned at `sideMin` per GC-1) on an arbitrary lift, with lift-independence supplied by
+the visible-polygon principle (every side line of a non-drain state lies strictly below the
+window, so every consulted digit is class-determined — the PROOF fields of H.110/H.112 carry
+the convexity argument). GC-2 is respected: no new polygon type is declared anywhere in §17.
+
+**FINDING F-H17.1 (new at conversion, A-H.2-class, statement-level) + PROPOSED-AMENDMENT
+PA-H17.1 (owner of record: the orchestrator; applies to node H.71).** The landed
+`RecursionLegs` fixes the α-multiplicity range `n₀ : ℕ` as a structure FIELD, while on true
+cluster data the realized range is WINDOW-DEPENDENT (`k` up to `(N−1)/m`, unbounded in `N`,
+with strictly positive α(k)-undecided mass at every realized `k` — the child space always
+contains the drain state, so `u ≥ 1`). Consequences, stated exactly:
+* the CLEAN instantiation (`alpha` := the full α-bucket mass) FAILS `halpha` at every
+  `N > m·n₀ + m` for every fixed `n₀` — the RHS misses the realized `k > n₀` terms;
+* H.71 as landed is **NOT refuted**: the structure stays inhabitable by TAIL-FOLDING (the
+  `k > n₀` α-mass into the `beta` leg — on true data the folded `hbeta` field is TRUE), but
+  its only visible proof consumes the species at lower windows, i.e. the hypothesis package
+  can no longer be instantiated AHEAD of the theorem it feeds — a proof-route circularity,
+  not a falsity;
+* **PA-H17.1**: replace `halpha`'s range `Finset.range n₀ with m * (k + 1) < N` by the
+  unbounded windowed range `Finset.range N with m * (k + 1) < N` and retire the fields
+  `n₀`/`hdesc` (descent is the window filter itself). `rate_close`'s landed proof survives:
+  H.30's geometric bound is a PARTIAL-sum bound valid for any range, the descent witness is
+  the filter, and neither `B = m + B' + 1` nor `c = c' + 1` mentions `n₀`. Sanctioned by the
+  A-H.2 precedent (structure replacement under a no-consumer re-grep; re-run at this unit:
+  `rate_close`/`RecursionLegs` still have NO mathematical consumer). Until PA-H17.1 is
+  applied, H.122's PROOF field carries the induction locally at the windowed range; H.121's
+  α-leg (clause ii) is stated at the TRUE range either way.
+
+### 17.1 N-1 — the level-0 class transport (H.100–H.105)
+
+OM-2 §1 Step 1 (rows 1b, 1e) and Step 4h's (bridge-b); certified §3.1, battery PART 2 + the
+CC-1 defeat scan (PART 4). The corpus sentence transcribed (quoted at `EFF.GENIND.54` from
+`W12-S2.1`): the degree-`n` problem is the disjoint union over level-0 configurations of
+products of cluster systems and simple branches; drains compose by "some factor drains".
+
+---
+
+### NODE H.100 [def+lemma] [fresh]
+
+**STATEMENT.** *The level-0 stratum.* For a monic residue polynomial `g` over the residue
+field, `levelZeroStratum O n N g` is the set of level-`N` classes ALL of whose monic lifts
+reduce to `g` (∀-lift form). Lemma half: at `1 ≤ N` the reduction is class-determined
+(coefficients agree mod `𝔪^N ⊆ 𝔪`), so membership is equivalent to the ∃-lift reading.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+def levelZeroStratum (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (n N : ℕ) (g : Polynomial (ResidueField O)) : Set (Coeff O n N) :=
+  {c | ∀ a : Fin n → O, proj O n N a = c → (monicPoly a).map (residue O) = g}
+
+theorem mem_levelZeroStratum_iff {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {n N : ℕ} (hN : 1 ≤ N)
+    (g : Polynomial (ResidueField O)) (c : Coeff O n N) :
+    c ∈ levelZeroStratum O n N g ↔
+      ∃ a : Fin n → O, proj O n N a = c ∧ (monicPoly a).map (residue O) = g
+```
+
+**DEPENDS.** landed `Coeff`, `proj`, `proj_surjective`, `monicPoly`, `residue`.
+
+**PROOF.** 1. (→) `proj_surjective` supplies a lift; apply the ∀-clause. 2. (←) two lifts of
+`c` differ coefficientwise by elements of `𝔪^N ⊆ 𝔪` (`hN`, `Ideal.pow_le_self`), so their
+`monicPoly`s have equal image under `map (residue O)` (`Polynomial.map` + `RingHom.ker`
+argument, coefficientwise). 3. definitional unfold both ways.
+
+**SIZE.** 30 lines. **SOURCE.** OM-2 §4 sketch N1.1 + §3.1 N-1a's stratum object;
+`EFF.GENIND.54` (the level-0 configuration decomposition). **TEETH.** battery
+`P2 total classes` + `P2(i,ii) stratum counts` (12 cells × 2 rings, exhaustive) → Lean
+theorem here once landed; executable regression retained. **ENVIRONMENT.** ENV-H17 (no
+Finite, no completeness).
+
+---
+
+### NODE H.101 [def+lemma] [fresh]
+
+**STATEMENT.** *Class multiplication.* `mulClass c₁ c₂` is the coefficient class of the
+product of the monic polynomials the classes present, computed ENTIRELY in `(Res O N)[X]` —
+no lift consulted. Lemma half: it computes the class of a product of monic lifts.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+noncomputable def mulClass {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {n₁ n₂ N : ℕ} (c₁ : Coeff O n₁ N) (c₂ : Coeff O n₂ N) : Coeff O (n₁ + n₂) N :=
+  fun i =>
+    ((X ^ n₁ + ∑ j : Fin n₁, Polynomial.C (c₁ j) * X ^ (j : ℕ)) *
+      (X ^ n₂ + ∑ j : Fin n₂, Polynomial.C (c₂ j) * X ^ (j : ℕ))).coeff (i : ℕ)
+
+theorem mulClass_proj {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {n₁ n₂ N : ℕ} (a₁ : Fin n₁ → O) (a₂ : Fin n₂ → O) :
+    proj O (n₁ + n₂) N (fun i => (monicPoly a₁ * monicPoly a₂).coeff (i : ℕ))
+      = mulClass (proj O n₁ N a₁) (proj O n₂ N a₂)
+```
+
+**DEPENDS.** landed `monicPoly`, `proj`, `Coeff`; mathlib `Polynomial.coeff_map`,
+`Polynomial.map_mul`, `Polynomial.map_pow`, `Polynomial.map_sum`.
+
+**PROOF.** 1. `Ideal.Quotient.mk (𝔪^N)` induces `Polynomial.map`; `(monicPoly a).map mk =
+X^n + Σ C (mk (a j)) X^j` (computation: `monicPoly`'s body is a `map`-stable display).
+2. `map_mul` + `coeff_map` termwise; `rfl`-close per coefficient index.
+
+**SIZE.** 25 lines. **SOURCE.** OM-2 §3.1 N-1a ("realized by (lift, factor, reduce) and
+inverted by multiplication"); `EFF.GENIND.54`. **TEETH.** battery `P2(i,ii)` roundtrip assert
+(the Codex-pass finding-4 repair: product-and-compare executed) → Lean theorem here.
+**ENVIRONMENT.** ENV-H17.
+
+---
+
+### NODE H.102 [theorem] [fresh]
+
+**STATEMENT.** *The Hensel class bijection + count identity (N-1a).* Over coprime monic
+residue factors `g₁, g₂` of degrees `n₁, n₂`, the map `(c₁, c₂) ↦ mulClass c₁ c₂` is a
+bijection of `levelZeroStratum g₁ × levelZeroStratum g₂` onto
+`levelZeroStratum (g₁ * g₂)` — with NO precision loss (the level-0 resultant of coprime
+residue factors is a unit, so factor classes are determined exactly mod `𝔪^N`). Count
+corollary: the stratum census multiplies. The `r`-factor form follows by peeling one factor
+at a time (the cofactor product stays coprime); no separate node is opened for it — H.124's
+PROOF field performs the peel.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem bijOn_mulClass {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] {n₁ n₂ N : ℕ} (hN : 1 ≤ N)
+    {g₁ g₂ : Polynomial (ResidueField O)} (hg₁ : g₁.Monic) (hg₂ : g₂.Monic)
+    (hd₁ : g₁.natDegree = n₁) (hd₂ : g₂.natDegree = n₂) (hcop : IsCoprime g₁ g₂) :
+    Set.BijOn (fun p : Coeff O n₁ N × Coeff O n₂ N => mulClass p.1 p.2)
+      ((levelZeroStratum O n₁ N g₁) ×ˢ (levelZeroStratum O n₂ N g₂))
+      (levelZeroStratum O (n₁ + n₂) N (g₁ * g₂))
+
+theorem card_levelZeroStratum_mul {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O]
+    {n₁ n₂ N : ℕ} (hN : 1 ≤ N)
+    {g₁ g₂ : Polynomial (ResidueField O)} (hg₁ : g₁.Monic) (hg₂ : g₂.Monic)
+    (hd₁ : g₁.natDegree = n₁) (hd₂ : g₂.natDegree = n₂) (hcop : IsCoprime g₁ g₂) :
+    Nat.card (levelZeroStratum O (n₁ + n₂) N (g₁ * g₂))
+      = Nat.card (levelZeroStratum O n₁ N g₁) * Nat.card (levelZeroStratum O n₂ N g₂)
+```
+
+**DEPENDS.** H.100, H.101 · landed `Uniformity.Hensel.exists_monic_factorization_finset`
+(HYP.03's discharger), `monic_factorization_unique`, `isCoprime_of_map_eq`,
+`exists_monicPoly_eq` · mathlib `Nat.card_prod`, `Set.BijOn` API.
+
+**PROOF.** 1. MapsTo: H.101's `mulClass_proj` + `mem_levelZeroStratum_iff` (any lift of the
+product class factors — Hensel on a lift — and its reduction is `g₁ g₂`). 2. SurjOn: pick a
+lift `a` of `c ∈ stratum (g₁ g₂)` (H.100 lemma half); `exists_monic_factorization_finset` on
+the two-element index splits `monicPoly a = f₁ * f₂` with `f̄ᵢ = gᵢ`; the factor classes land
+in the factor strata and `mulClass` them to `c` via H.101. 3. InjOn — **the no-precision-loss
+clause, the genuinely new step**: two factorizations of the same class mod `𝔪^N` agree mod
+`𝔪^N` factorwise. Route: lift the two class-pairs, Hensel-correct one pair against the other
+level by level (the coprime-resultant unit inverts the correction at every level `≤ N` —
+`isCoprime_of_map_eq` supplies the Bézout data); alternatively the `monic_factorization_unique`
+argument replayed mod `𝔪^N`. A failed transcription here must return the precise level at
+which correction fails, not weaken to `𝔪^{N−C}`. 4. Count: `Nat.card` along the bijection +
+`Nat.card_prod`.
+
+**SIZE.** 45 lines + private helpers; split candidate H.102a (InjOn) if step 3 exceeds it.
+**SOURCE.** OM-2 §3.1 N-1a (displayed statement, "with NO precision loss (the level-0
+resultants are units)"); `EFF.GENIND.54`. **TEETH.** battery `P2(i,ii) stratum counts +
+Hensel class bijection` (distinct factor-tuple count = predicted product, roundtrip exact;
+12 cells × 2 rings) + `P2(vii)` both-ring census equality → Lean theorem here.
+**ENVIRONMENT.** ENV-H17 + `[IsAdicComplete]` (the intended route is the landed complete-`O`
+Hensel; a completeness-free finite-level route exists — successive approximation — and
+dropping the binder is a recorded strengthening OPTION, forced by no consumer: every §17
+consumer is ENV-H3).
+
+---
+
+### NODE H.103 [lemma] [fresh]
+
+**STATEMENT.** *σ-additive assembly (the ⟸ direction only).* Decided factor classes
+assemble: if `c₁` is decided at `σ₁` and `c₂` at `σ₂`, the product class is decided at the
+multiset sum `⟨σ₁.data + σ₂.data⟩`.
+
+**⚠ THE F-1 FENCE.** The per-type ⟹ direction is FALSE: distinct factor-type pairs collide
+in the frame type (`split ⊎ inert = inert ⊎ split`; battery P4's exhibit). No iff is stated
+at the σ level; the predicate-level iff is H.104. A transcription strengthening this node to
+`DecidedAt ⟨σ₁.data + σ₂.data⟩ (mulClass c₁ c₂) ↔ DecidedAt σ₁ c₁ ∧ DecidedAt σ₂ c₂` is
+**REFUTED** on the collision witnesses.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem decidedAt_mulClass {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] {n₁ n₂ N : ℕ} (hN : 1 ≤ N)
+    {g₁ g₂ : Polynomial (ResidueField O)} (hg₁ : g₁.Monic) (hg₂ : g₂.Monic)
+    (hd₁ : g₁.natDegree = n₁) (hd₂ : g₂.natDegree = n₂) (hcop : IsCoprime g₁ g₂)
+    {c₁ : Coeff O n₁ N} {c₂ : Coeff O n₂ N}
+    (hc₁ : c₁ ∈ levelZeroStratum O n₁ N g₁) (hc₂ : c₂ ∈ levelZeroStratum O n₂ N g₂)
+    {σ₁ σ₂ : FactorizationType}
+    (h₁ : DecidedAt O n₁ σ₁ N c₁) (h₂ : DecidedAt O n₂ σ₂ N c₂) :
+    DecidedAt O (n₁ + n₂) ⟨σ₁.data + σ₂.data⟩ N (mulClass c₁ c₂)
+```
+
+**DEPENDS.** H.100, H.101, H.102 · landed `typeOf_mul`, `DecidedAt`, `typeOf_data`,
+`FactorizationType.ext`.
+
+**PROOF.** 1. Fix a lift `b` of `mulClass c₁ c₂`; Hensel-split `monicPoly b = f₁ * f₂` along
+`(g₁, g₂)` (as in H.102 step 2). 2. The factor classes equal `(c₁, c₂)` — H.102's InjOn (the
+split's classes multiply to `mulClass c₁ c₂`, and so does `(c₁, c₂)`). 3. `typeOf (monicPoly
+b) = ⟨(typeOf f₁).data + (typeOf f₂).data⟩` by landed `typeOf_mul`; each summand is `σᵢ` by
+`h₁/h₂` at the factor lifts (`exists_monicPoly_eq` to present `fᵢ` as `monicPoly` of a
+vector). 4. `FactorizationType.ext`.
+
+**SIZE.** 30 lines. **SOURCE.** OM-2 §1 row 3c (`typeOf_mul` + composition mechanism); OM-2
+F-1 (the fence); `EFF.GENIND.54`. **TEETH.** battery `P2(iv) oracle σ-tie on reader-DECIDED`
+(12 tie checks, 0 mismatches, PARI `factorpadic` at `ℤ_2`/`ℤ_3`) + `P4 F-1 exhibit` (the
+fence's witness) → Lean theorem here. **ENVIRONMENT.** ENV-H17 + `[IsAdicComplete]`.
+
+---
+
+### NODE H.104 [theorem] [fresh]
+
+**STATEMENT.** *The drain/decidedness composition on the PREDICATE (N-1b).* Within a coprime
+product stratum, the product class is (semantically) undecided **iff** some factor class is.
+The ⟸ direction is CC-1's one-line mechanism: two lifts of a factor with distinct types stay
+distinct after multiplying by a fixed cofactor lift — `Multiset.add_right_cancel` on
+`typeOf_mul`'s sums. The ⟹ direction is H.103 applied contrapositively (both factors decided
+⟹ product decided).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem undecidedAt_mulClass_iff {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O]
+    {n₁ n₂ N : ℕ} (hN : 1 ≤ N)
+    {g₁ g₂ : Polynomial (ResidueField O)} (hg₁ : g₁.Monic) (hg₂ : g₂.Monic)
+    (hd₁ : g₁.natDegree = n₁) (hd₂ : g₂.natDegree = n₂) (hcop : IsCoprime g₁ g₂)
+    {c₁ : Coeff O n₁ N} {c₂ : Coeff O n₂ N}
+    (hc₁ : c₁ ∈ levelZeroStratum O n₁ N g₁) (hc₂ : c₂ ∈ levelZeroStratum O n₂ N g₂) :
+    UndecidedAt O (n₁ + n₂) N (mulClass c₁ c₂)
+      ↔ UndecidedAt O n₁ N c₁ ∨ UndecidedAt O n₂ N c₂
+```
+
+**DEPENDS.** H.102, H.103 · landed `UndecidedAt`, `DecidedAt`, `typeOf_mul` · mathlib
+`Multiset.add_right_cancel` (CC-1's lemma), `Multiset.add_left_cancel`.
+
+**PROOF.** 1. (←, say `c₁` undecided) `c₁` has two lifts of distinct types `τ ≠ τ'`
+(`UndecidedAt` = no σ covers all lifts, and lifts exist by `proj_surjective`, so some two
+lifts disagree); fix a lift `f₂` of `c₂`; the two products are lifts of `mulClass c₁ c₂`
+(H.101) with types `⟨τ.data + (typeOf f₂).data⟩ ≠ ⟨τ'.data + (typeOf f₂).data⟩` by
+`Multiset.add_right_cancel` — two lifts of distinct types is exactly `UndecidedAt` for the
+product. 2. (→, contrapositive) both factors decided at some `σ₁, σ₂` (a non-undecided class
+with lifts is decided at the type of any lift); H.103 assembles; a decided class with lifts
+is not undecided. 3. The stratum hypotheses feed H.102/H.103's Hensel legs.
+
+**SIZE.** 35 lines. **SOURCE.** OM-2 §3.1 N-1b (displayed statement) + CC-1 (the
+infeasibility-is-the-lemma record: *"the future Lean node is one `Multiset.add_right_cancel`
+application, PROVIDED all combinations are realized, which is N-1a's bijection"*);
+`EFF.GENIND.54` ("drains compose by *some factor drains*" — the safe form). **TEETH.**
+battery `P4 CC-1: no defeat of decided-composition (deg ≤ 3 exhaustive)` (zero solutions;
+2-element pairs suffice by the recorded restriction argument) + `P2(iii)` → Lean theorem
+here. **ENVIRONMENT.** ENV-H17 + `[IsAdicComplete]`.
+
+---
+
+### NODE H.105 [theorem] [fresh]
+
+**STATEMENT.** *The per-stratum undecided count (N-1c's per-stratum binary form).* Within a
+coprime product stratum the SEMANTIC undecided census composes EXACTLY:
+`#undec(stratum₁₂) = T₁·T₂ − (T₁ − u₁)(T₂ − u₂)`, written subtraction-safely with
+decided-within-stratum complements (`stratum \ undecidedSet`).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem card_undecided_mulClass {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [Finite (ResidueField O)]
+    [IsAdicComplete (maximalIdeal O) O] {n₁ n₂ N : ℕ} (hN : 1 ≤ N)
+    {g₁ g₂ : Polynomial (ResidueField O)} (hg₁ : g₁.Monic) (hg₂ : g₂.Monic)
+    (hd₁ : g₁.natDegree = n₁) (hd₂ : g₂.natDegree = n₂) (hcop : IsCoprime g₁ g₂) :
+    Nat.card
+        ((undecidedSet O (n₁ + n₂) N ∩ levelZeroStratum O (n₁ + n₂) N (g₁ * g₂) :
+          Set (Coeff O (n₁ + n₂) N)))
+      = Nat.card (levelZeroStratum O n₁ N g₁) * Nat.card (levelZeroStratum O n₂ N g₂)
+        - Nat.card ((levelZeroStratum O n₁ N g₁ \ undecidedSet O n₁ N : Set (Coeff O n₁ N)))
+          * Nat.card ((levelZeroStratum O n₂ N g₂ \ undecidedSet O n₂ N : Set (Coeff O n₂ N)))
+```
+
+**DEPENDS.** H.102, H.104 · landed `undecidedSet` · mathlib `Nat.card_prod`, finite-set
+complement counting.
+
+**PROOF.** 1. Transport `undecidedSet ∩ stratum` along H.102's bijection; H.104 identifies
+its preimage as `(stratum₁ × stratum₂) \ (decided₁ × decided₂)` (not-both-decided).
+2. Complement count in a product of finite sets: `|A×B| − |A₀×B₀| = |A||B| − |A₀||B₀|` with
+`A₀ ⊆ A, B₀ ⊆ B`. 3. `Finite (Coeff …)` instances make every `Nat.card` finite; the outer
+ℕ-subtraction is exact because `A₀×B₀ ⊆ A×B`.
+
+**SIZE.** 30 lines. **SOURCE.** OM-2 §3.1 N-1b's consequence display
+(`undecided(stratum) = census × [Π T_i − Π(T_i − u_i)]`, binary instance) + 4h (bridge-b);
+`EFF.GENIND.54`. **TEETH.** battery `P2(iii) stratum undecided = census*(ΠT − Π(T−u))`
+(exhaustive per stratum, child tables computed INDEPENDENTLY at their own windows; 12 cells ×
+2 rings) → Lean theorem here. The RATE consumer's union bound `ΠT − Π(T−u) ≤ Σ u_l Π T_j` is
+landed H.63 and is fired at H.124, not here. **ENVIRONMENT.** ENV-H17 + `[Finite]` +
+`[IsAdicComplete]`.
