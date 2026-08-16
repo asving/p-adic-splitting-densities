@@ -11,8 +11,113 @@ import Uniformity.ChapC.C25
 # Uniformity.ChapC.C26 — `R_λ` has degree `d` and nonzero constant term
 
 **Chapter C, NODE C.26** [lemma] [fresh] (`blueprint/CHAP-C_tower_grammar.md` §4, the
-slot-exactness layer; the A-C.1 amendment set governs). **ENV-C1′** (`hπ` explicit). Two signed
-declarations — B.30 replayed one level up, at C.25's `dv`-carrier.
+slot-exactness layer; the A-C.1 amendment set governs). **ENV-C1′** = ENV-C1 + `hπ` explicit
+(finiteness of the residue field is *not* bound: nothing here counts residues). Two signed
+declarations — B.30's level-1 route replayed one level up, at C.25's `dv`-carrier.
+
+C.25 defines the level residual polynomial `R_λ ∈ K[Z]`, `K = F.stageField H₀ hpin`, as the
+coefficient list
+
+`R_λ = Σ_{t ≤ d} C (twistRead F H₀ hpin (M₀ − tu) (dev F.key f (j₁ + tℓ))) · Z^t`,
+
+with `j₁ := dvSideMin F f u ℓ hne₂` the side's left endpoint, `d := dvSideDeg F f u ℓ hne₂` its
+residual degree, and `M₀` the pinned height at `j₁`. **C.25 is a definition and asserts nothing.**
+This node is where the shape is certified:
+
+* `dvResPoly_coeff_eq_zero_iff` — clause (i): for `t ≤ d`, the `t`-th coefficient vanishes **iff**
+  the lattice abscissa `j₁ + ℓt` is *off* the side (`¬ DvOnSide F f u ℓ (j₁ + ℓ * t)`);
+* `natDegree_dvResPoly` — clauses (ii)/(iii): `natDegree R_λ = d` and `R_λ.coeff 0 ≠ 0`, i.e.
+  `EFF.HE6.11`'s "so `R_λ` has degree `d` and `R_λ(0) ≠ 0`".
+
+Both endpoint clauses fall out of (i) because the endpoints `j₁` and `j₁ + ℓd = dvSideMax` are
+*members* of `dvSideSet` (`Finset.min'_mem` / `Finset.max'_mem`), hence on-side by construction.
+
+## The proof, in the blueprint's two steps
+
+**Step 1 — the side line (private `dv_side_line`).** Everything geometric is packaged in one
+private lemma: for `t ≤ d`,
+
+* `(M₀ − ut : ℕ) ≤ dvHgt F f (j₁ + ℓt)` — the abscissa's true height is never *below* the side
+  line; and
+* `DvOnSide F f u ℓ (j₁ + ℓt) ↔ dvHgt F f (j₁ + ℓt) = ((M₀ − ut : ℕ) : ℕ∞)` — it lies *on* the
+  side exactly when the height meets the line.
+
+The derivation is pure line arithmetic in `ℕ`, done after descending out of `ℕ∞`. `DvOnSide` is
+C.07(a)'s equation `dvSupp = ℓ • dvHgt + u * j` (plus finiteness of the height), so any two
+on-side abscissae satisfy `ℓH + uj = ℓH′ + uj′` (private `dvOnSide_nat_eq'`). Applying that to the
+two endpoints, with C.08's `dvSideLen_eq` supplying `dvSideMax = j₁ + ℓd` (private
+`dvSideMax_eq'`, the only consumer of `Nat.Coprime u ℓ`; `0 < ℓ` is used there and again for the
+two `ℕ`-cancellations below), gives
+`M₀ = H_d + ud`, hence `ut ≤ M₀` for every `t ≤ d`: **the `ℕ`-truncated subtraction in C.25's body
+never truncates on the intended range.** The inequality half is then the `Finset.inf` bound
+`dvSupp ≤ ℓ • dvHgt (j₁ + ℓt) + u(j₁ + ℓt)` (private `dvSupp_le'`, legal because
+`j₁ + ℓt ≤ dvSideMax ≤ f.natDegree`), cancelled by `hℓ` down to `M₀ ≤ p + ut`; the `iff` half is
+the same cancellation run as an equality. The `dvHgt = ⊤` case (the abscissa's development
+coefficient is `0`) is discharged first: `⊤` is above everything and `DvOnSide`'s second conjunct
+explicitly excludes it.
+
+**Step 2 — reading the coefficient.** `Uniformity.Hensel.coeff_sum_range_C_mul_X_pow` extracts the
+`t`-th coefficient of C.25's sum as `twistRead F H₀ hpin (M₀ − ut) (dev F.key f (j₁ + ℓt))` for
+`t ≤ d` (and `0` for `t > d`, which is the degree bound in `natDegree_dvResPoly`). The ϖ-twist
+`η⁻¹ ^ twistExp k` is a **unit** — C.19's stage letter is nonzero — so `twistRead = 0 ↔ slotRes = 0`
+(private `twistRead_eq_zero_iff`) and the whole question reduces to C.21's normalized slot residue:
+
+* **on-side ⇒ nonzero.** The height is *exactly* `M₀ − ut` by step 1, so C.23's slot lemma
+  (`KeyFrame.slotRes_ne_zero`, the attained-height nonvanishing half) applies. Its degree
+  hypothesis `deg (dev F.key f j) < e₁f₁ = D′` is B.03's `degree_dev_lt` at C.01's `hdeg`
+  (private `natDegree_dev_lt`).
+* **off-side ⇒ zero.** Then step 1 upgrades `≤` to `<`: the true height sits **strictly above**
+  the side line, so every window slot's digit index `(k − (slotIdx k + e₁t)h)/e₁` undershoots that
+  coefficient's valuation, `π^{index+1}` divides it, and B.22's `digAt_eq_zero_iff` makes every
+  digit — hence the whole normalized sum — vanish (private `slotRes_eq_zero_of_lt`). This is
+  B.24's junk-`0` discipline doing exactly the work C.25's docstring promised it would.
+
+## Divergences and private helpers (none is a blueprint node; GC-6.5)
+
+* **`isKey_X` re-declared `private`.** The D9 cure, as at C.04/C.12/C.19/C.21/C.23/C.44: private
+  declarations are not importable, and this is what names the base `Field (resField X)` instance
+  without which `K` has no field structure. Retires to a public copy at the RE-PLAN item, not
+  silently.
+* **`slotRes_eq_zero_of_lt`** is C.23's *missing* half — the vanishing direction of the slot
+  lemma, stated for a strictly-undershooting index rather than an attained one. It is proved here
+  rather than backported into C.23 because C.23's signature is signed and this is the only
+  consumer; if a second consumer appears it should be hoisted (a RE-PLAN item).
+* **`slotDigit_index_spec'`** is the arithmetic identity `e₁·((k − ih)/e₁) + ih = k` for
+  `i = slotIdx k + e₁t` in the window — C.17's window membership plus C.16's class congruence,
+  re-derived locally because C.21 keeps its copy private.
+* **`pow_dvd_of_le_addVal`, `dvOnSide_of_mem'`, `le_natDegree_of_mem_dvSideSet`,
+  `dvOnSide_iff_nat`, `dvSupp_le'`** are one-line `ℕ∞`/`Finset` bureaucracy with no mathematical
+  content.
+
+## What is NOT claimed here
+
+Nothing ties `R_λ`'s roots to factors of `f`: the `EFF.HE6.11` gloss "`Z` is the class of
+`y^ℓ/ϖ^u`" stays documentation (C.25's ⚠ FAITHFULNESS clause 1). The semantic tie is C.27 plus
+the §5 laws. What this node licenses downstream is exactly the *shape* facts — degree `d`, unit
+constant term, and the vanishing criterion — which is what C.29/C.33/C.61/C.66 and the §13 frame
+audit consume.
+
+**DEPENDS.** C.07 (`dvSideSet`, `dvSideMin`, `dvSideMax`, `dvSideDeg`) · C.08 (`dvSideLen_eq`, the
+spacing) · C.19 (`stageLetter_ne_zero`, the twist unit) · C.20/C.21 (`slotRes` and its class
+bookkeeping, through C.23) · C.22 (`twistRead`) ·
+C.23 (`KeyFrame.slotRes_ne_zero`) · C.25 (`dvResPoly`, the object) · B.03 (`degree_dev_lt`) ·
+B.08/B.15 (`addVal`) · B.22/B.24 (`digAt`, `digAt_eq_zero_iff`) — by committed node ID (GC-13(b)).
+The three imports are `Uniformity.ChapC.C08`, `Uniformity.ChapC.C23`, `Uniformity.ChapC.C25`, which
+between them pull the whole §3/§4 chain.
+
+**PROOF.** Blueprint steps 1–2, as narrated above; the blueprint's "endpoints are on-side by
+definition of min'/max'" is `Finset.min'_mem` / `Finset.max'_mem` and its "(iii) follows" is
+`Polynomial.natDegree_eq_of_le_of_coeff_ne_zero`.
+
+SOURCE: `EFF.HE6.11` ("So `R_λ` has degree `d` and `R_λ(0) ≠ 0`"); B.30 (the level-1 twin whose
+route is replayed).
+
+**TEETH.** `W12-SHAPE`-family at level 1 is B.30's; the level-2 shape is guarded by blueprint
+§13's frame audit (`R_λ = r²` with `r` quadratic at the `EFF.HE6R1.18` frame → the `q = 2` /
+`q = 3` gate instances), which fires against these two declarations.
+
+ENVIRONMENT: ENV-C1′ (`hπ` explicit — consumed twice: through `digAt_eq_zero_iff` in the vanishing
+half, and through C.23 in the nonvanishing half).
 
 ## Status
 
