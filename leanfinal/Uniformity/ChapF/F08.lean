@@ -85,6 +85,12 @@ theorem one_def : (1 : TwistedAlgebra cc) = single 0 (((cc.c 0 0)⁻¹ : Kˣ) : 
 opaque, so `Pi.smul_apply` cannot fire on it). -/
 theorem smul_apply (r : K) (f : TwistedAlgebra cc) (t : ZMod E) : (r • f) t = r * f t := rfl
 
+/-- [A-W.2, below the contract line] `single` is injective in its coefficient. -/
+theorem single_injective (i : ZMod E) {x y : K}
+    (h : (single i x : TwistedAlgebra cc) = single i y) : x = y := by
+  have h2 := congrArg (fun f : TwistedAlgebra cc => f i) h
+  simpa [single] using h2
+
 /-- [A-W.2, below the contract line; blueprint F.10 PROOF step 2's helper] The convolution
 of two `single`s: `single a x ⋆ single b y = single (a+b) (c a b · x · y)`. -/
 theorem single_mul_single (a b : ZMod E) (x y : K) :
