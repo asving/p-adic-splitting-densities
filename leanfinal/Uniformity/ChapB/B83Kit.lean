@@ -516,6 +516,38 @@ theorem slope_bounds_of_le {φ : Polynomial O} (hφ : IsKey φ) {f : Polynomial 
 
 end Arena
 
+/-! ## 4. The concrete-bundle helpers (`φ = X`, and `ℤ_[p]` arithmetic)
+
+`isKey_X` is the `φ = X` half of the B.15 dictionary the `μ ≥ 2` instances use; the `Padic`
+section reduces every divisibility/valuation obligation over `ℤ_[p]` to ordinary integer
+arithmetic through mathlib's `PadicInt.pow_p_dvd_int_iff`, so `norm_num` can discharge it. -/
+
+theorem isKey_X {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] :
+    IsKey (X : Polynomial O) := by
+  refine ⟨Polynomial.monic_X, by rw [Polynomial.natDegree_X]; norm_num, ?_⟩
+  rw [Polynomial.map_X]
+  exact Polynomial.irreducible_X
+
+section Padic
+variable {p : ℕ} [Fact p.Prime]
+
+theorem irreducible_padic : Irreducible ((p : ℕ) : ℤ_[p]) := (PadicInt.prime_p).irreducible
+
+theorem padic_not_dvd {k : ℕ} {x : ℤ_[p]} {a : ℤ} (hx : x = ((a : ℤ) : ℤ_[p]))
+    (h : ¬ ((p : ℤ) ^ k ∣ a)) : ¬ ((p : ℕ) : ℤ_[p]) ^ k ∣ x := by
+  rw [hx, PadicInt.pow_p_dvd_int_iff]
+  simpa using h
+
+theorem padic_addVal {k : ℕ} {x : ℤ_[p]} {a : ℤ} (hx : x = ((a : ℤ) : ℤ_[p]))
+    (h1 : (p : ℤ) ^ k ∣ a) (h2 : ¬ ((p : ℤ) ^ (k + 1) ∣ a)) :
+    addVal ℤ_[p] x = (k : ℕ∞) := by
+  refine Uniformity.Density.addVal_eq_of_dvd_not_dvd irreducible_padic ?_ (padic_not_dvd hx h2)
+  rw [hx, PadicInt.pow_p_dvd_int_iff]
+  simpa using h1
+
+
+end Padic
+
 end Uniformity.Density.Leaf.GateKit
 
 /-! ## Axiom footprint -/
@@ -526,5 +558,6 @@ section AxCheck
 #print axioms Uniformity.Density.Leaf.GateKit.order1Type_of_sideDeg_one
 #print axioms Uniformity.Density.Leaf.GateKit.polygon_read
 #print axioms Uniformity.Density.Leaf.GateKit.dev_four
+#print axioms Uniformity.Density.Leaf.GateKit.padic_addVal
 #print axioms Uniformity.Density.Leaf.GateKit.perim_degree_bound
 end AxCheck
