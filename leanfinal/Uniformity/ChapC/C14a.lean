@@ -14,11 +14,12 @@ import Uniformity.ChapH.H54
 
 **Chapter C, NODE C.14a** [def] [fresh] [signed: A-C.1(b)] (`blueprint/CHAP-C_tower_grammar.md`
 §3, the level frame; the A-C.1 amendment set governs; the **`stageCoord` REPAIR of 2026-08-16**
-is in force — see the trust-boundary section). **ENV-C1 + `[Finite (ResidueField O)]`** (the
-latter only on the declarations that read `Q = residueCard O`). **Twelve public declarations**:
-the eight of the first landing (`stageCoord` among them, rebuilt by the repair) plus the four the
-repair added — `stagePB`, `stagePB_dim`, `stagePB_gen`, `sum_stageCoord` — and two private
-helpers (`isKey_X`, `frameRes_ne_zero`).
+is in force, and so is the **`resLift` ZERO-GUARD REPAIR of 2026-08-16** — see the trust-boundary
+section). **ENV-C1 + `[Finite (ResidueField O)]`** (the latter only on the declarations that read
+`Q = residueCard O`). **Thirteen public declarations**: the eight of the first landing
+(`stageCoord` among them, rebuilt by the `stageCoord` repair) plus the four that repair added —
+`stagePB`, `stagePB_dim`, `stagePB_gen`, `sum_stageCoord` — plus `resLift_zero`, which the
+zero-guard repair added; and two private helpers (`isKey_X`, `frameRes_ne_zero`).
 
 This is the **one door** through which chapter C consumes chapter H's §8 lift layer (GC-5 / H-14).
 It exists because of stub-gate defect **D19**: chapter C's carrier `KeyFrame` (C.01) and chapter
@@ -32,7 +33,8 @@ key's display is written in — was not constructible from anything landed.
   `(Q, e₁, f₁, μ, h) := (residueCard O, F.e₁, F.f₁, 2, F.h)`.
 * `KeyFrame.stageLiftIA F i a lift` — H.54's own summand shape over the frame's numerals, TOTAL.
 * `stageLiftIA_eq_stageLift'` — the `rfl`-grade reconciliation of the two.
-* `resLift` — a choice-section of the residue map `O → ResidueField O`.
+* `resLift` (+ `resLift_spec`, `resLift_zero`) — a choice-section of the residue map
+  `O → ResidueField O`, **guarded at zero** (repair of 2026-08-16).
 * `KeyFrame.stagePB` (+ `stagePB_dim`, `stagePB_gen`) — the letter power basis `{η^s}_{s < f₁}`
   of `K = AdjoinRoot ψ` over `resField X`, from `AdjoinRoot.powerBasis`.
 * `KeyFrame.stageCoord` / `KeyFrame.stageLiftO` — the element-at-height-`M` form that C.43's
@@ -121,10 +123,27 @@ consumer must know:
    private `isKey_X` (the D9 copy pattern; see the divergence note below). The instance is
    `local`, so nothing about it escapes the file.
 
-`resLift` is genuinely a section, of `IsLocalRing.residue`, and satisfies
-`residue (resLift x) = x` by `Exists.choose_spec` — the only property of it anyone should use.
-It is a *choice of preimage in `O` of a residue*, where a canonical one does not exist; that is
-unlike the old `stageCoord`, whose canonical read did exist and is now taken.
+`resLift` is genuinely a section, of `IsLocalRing.residue`: it is a *choice of preimage in `O` of
+a residue*, where a canonical one does not exist in general — unlike the old `stageCoord`, whose
+canonical read did exist and is now taken. But **at `0` a canonical preimage does exist**, and
+the second repair takes it.
+
+**⚠ DEFINITIONAL REPAIR (the `resLift` ZERO GUARD), 2026-08-16.** `resLift` is now
+`if x = 0 then 0 else (residue_surjective x).choose`, not the bare `.choose`. Consumers now have
+TWO facts, `resLift_spec : residue (resLift x) = x` (statement byte-unchanged; proof gains a
+`by_cases`) and `resLift_zero : resLift 0 = 0`; the choice itself remains junk. The defect the
+guard cures was found and machine-isolated by C.47 (`ChapC/C47.lean`, commit `da950c29`): C.13
+conjunct 5's zero-slot branch `L.r.coeff t = 0 → dev Φ′ Φ₂ (e₂t) = 0` is EQUIVALENT, at C.43's
+unguarded composed-key display, to `resLift (0 : ResidueField O) = 0`, and `Classical.choose` is
+opaque — its value is a function of the proposition alone, and `∃ a, residue O a = 0` names no
+witness, so the equation was independent of the whole corpus (not false, not provable). The
+guard is not an invention: `EFF.HE6.14`'s DEFINITION HE6-1 writes `B_t := 0` when `c_t = 0`, and
+both of `resLift`'s guarding neighbours already spell the convention out by hand (C.14's
+`exists_testKey`, C.24's `if c t = 0 then 0 else resLift (c t)`). It is taken here, once, so no
+consumer has to. **Blast radius, re-verified at the repair:** every consumer — C.14, C.24, C.46,
+C.56a, C.84, C.47 — reads `resLift` only through `resLift_spec` or writes it into a def body, so
+all six rebuild unchanged; C.47 then lands `composedKey_isTestKey` WHOLE at its byte-unchanged
+A-C.1 signature.
 
 ## Divergences from the blueprint text, recorded
 
@@ -240,18 +259,41 @@ theorem stageLiftIA_eq_stageLift' (F : KeyFrame O π) [Finite (ResidueField O)]
 
 /-! ## (iv) the element-at-height form -/
 
-/-- A choice-section of the residue map `O → ResidueField O`; its one property is
-`residue (resLift x) = x` (`resLift_spec`).
+open scoped Classical in
+/-- A choice-section of the residue map `O → ResidueField O`, **guarded at zero**; its two
+properties are `residue (resLift x) = x` (`resLift_spec`) and `resLift 0 = 0` (`resLift_zero`).
 
 **Public, against the blueprint's "private helper" prose:** C.56a's `k2DigitLift` writes it into
-a body in another file, and `private` is not importable. -/
+a body in another file, and `private` is not importable.
+
+**⚠ THE ZERO GUARD — DEFINITIONAL REPAIR, 2026-08-16 (the C.47 repair; see the module
+docstring).** The first landing was the bare `(residue_surjective x).choose`. `Classical.choose`
+is OPAQUE: its value is a function of the *proposition* alone, and `∃ a, residue O a = 0` names
+no witness, so `resLift 0 = 0` was neither provable nor refutable — while `resLift_spec` at
+`x = 0` says only `resLift 0 ∈ maximalIdeal O`, a NONZERO ideal in a DVR. C.47 machine-reduced
+C.13 conjunct 5's zero-slot branch (`L.r.coeff t = 0 → dev Φ′ Φ₂ (e₂t) = 0`) to exactly that
+equation (`composedKey_zero_slot_iff`, via `stageLiftO_zero_iff`), which is why the node was
+BLOCKED. The guard is the convention C.24 already writes by hand
+(`if c t = 0 then 0 else resLift (c t)`) and the one `EFF.HE6.14`'s DEFINITION HE6-1 states in
+the source (`B_t := 0` when `c_t = 0`); it is now taken once, here, so that no consumer has to
+write it. `resLift_spec`'s STATEMENT is byte-unchanged — only its proof gains a `by_cases`. -/
 noncomputable def resLift (x : ResidueField O) : O :=
-  (IsLocalRing.residue_surjective (R := O) x).choose
+  if x = 0 then 0 else (IsLocalRing.residue_surjective (R := O) x).choose
 
 /-- `resLift` is a section: `residue (resLift x) = x`. The only fact about it any consumer may
 use — the choice itself is junk. -/
-theorem resLift_spec (x : ResidueField O) : IsLocalRing.residue O (resLift x) = x :=
-  (IsLocalRing.residue_surjective (R := O) x).choose_spec
+theorem resLift_spec (x : ResidueField O) : IsLocalRing.residue O (resLift x) = x := by
+  rw [resLift]
+  by_cases hx : x = 0
+  · rw [if_pos hx, map_zero, hx]
+  · rw [if_neg hx]
+    exact (IsLocalRing.residue_surjective (R := O) x).choose_spec
+
+/-- **The zero guard, as a lemma.** `resLift 0 = 0` by `if_pos rfl`. Together with `resLift_spec`
+this is everything a consumer may know about `resLift`; it is what unblocks C.47's zero-slot
+branch (C.13 conjunct 5's `L.r.coeff t = 0 → dev Φ′ Φ₂ (e₂t) = 0`). -/
+theorem resLift_zero : resLift (0 : ResidueField O) = 0 := by
+  rw [resLift, if_pos rfl]
 
 /-! ### The letter power basis, and the digit read on it
 
@@ -394,6 +436,7 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.stageLiftIA_eq_stageLift'
 #print axioms Uniformity.Density.Tower.resLift
 #print axioms Uniformity.Density.Tower.resLift_spec
+#print axioms Uniformity.Density.Tower.resLift_zero
 #print axioms Uniformity.Density.Tower.KeyFrame.stagePB
 #print axioms Uniformity.Density.Tower.KeyFrame.stagePB_dim
 #print axioms Uniformity.Density.Tower.KeyFrame.stagePB_gen
