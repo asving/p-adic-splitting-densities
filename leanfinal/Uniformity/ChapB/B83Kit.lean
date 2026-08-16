@@ -3,6 +3,9 @@ Copyright (c) 2026 Asvin G. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
+import Uniformity.ChapB.B04
+import Uniformity.ChapB.B06
+import Uniformity.ChapB.B08
 import Uniformity.ChapB.B30
 import Uniformity.ChapB.B34
 import Uniformity.ChapB.B35b
@@ -10,6 +13,7 @@ import Uniformity.ChapB.B66
 import Uniformity.ChapB.B66a
 import Uniformity.ChapB.B73
 import Uniformity.ChapB.B75
+import Uniformity.Density.Drainage
 import Uniformity.Density.LocalData
 
 /-!
@@ -69,6 +73,7 @@ set_option linter.style.longLine false
 namespace Uniformity.Density.Leaf.GateKit
 
 open Polynomial IsLocalRing Uniformity.Density.Leaf Uniformity.Hensel
+  IsDiscreteValuationRing
 
 /-! ## 1. Two field-level helpers -/
 
@@ -336,6 +341,179 @@ theorem perim_degree_bound (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsK
     _ = gS.natDegree := by rw [hpure', hSdeg]
     _ ≤ f.natDegree := hle
 
+
+/-! ## 3. The instance-evaluation kit — heights, developments, and the polygon read
+
+These are the pieces the ten gate files use to *evaluate* the chapter's vocabulary on a
+concrete coefficient vector: exhibited `φ`-adic developments (B.06's `dev_unique`, packaged at
+the two/three/four-term shapes the §10 instances need — `μ ≤ 3` throughout), the constant-height
+read, and the `ℕ`-valued polygon read that turns `suppVal`/`sideSet` into ordinary natural-number
+arithmetic once the finite heights are known. -/
+
+theorem gaussVal_C (a : O) : gaussVal (Polynomial.C a) = addVal O a := by
+  rw [gaussVal]; simp
+
+theorem addVal_one (hπ : Irreducible π) : addVal O (1 : O) = 0 := by
+  refine Uniformity.Density.addVal_eq_of_dvd_not_dvd hπ (by simp) ?_
+  intro h
+  exact hπ.not_isUnit (isUnit_of_dvd_one (by simpa using h))
+
+theorem one_le_natDegree_of_monic_irreducible {R : Type*} [CommRing R] [Nontrivial R]
+    {ψ : Polynomial R} (hm : ψ.Monic) (hi : Irreducible ψ) : 1 ≤ ψ.natDegree := by
+  by_contra h
+  have h0 : ψ.natDegree = 0 := by omega
+  rw [Polynomial.eq_one_of_monic_natDegree_zero hm h0] at hi
+  exact not_irreducible_one hi
+
+/-- A two-term `φ`-adic development, exhibited. -/
+theorem dev_two {φ : Polynomial O} (hφ : φ.Monic) (hd : 0 < φ.natDegree)
+    {f a₀ a₁ : Polynomial O} (h0 : a₀.degree < φ.degree) (h1 : a₁.degree < φ.degree)
+    (hsum : f = a₀ + a₁ * φ) : dev φ f 0 = a₀ ∧ dev φ f 1 = a₁ := by
+  have hbot : (0 : Polynomial O).degree < φ.degree := by
+    rw [Polynomial.degree_zero]
+    exact bot_lt_iff_ne_bot.2 fun h => hφ.ne_zero (Polynomial.degree_eq_bot.1 h)
+  have hdeg : ∀ j, ((fun j : ℕ => if j = 0 then a₀ else if j = 1 then a₁ else 0) j).degree
+      < φ.degree := by
+    intro j
+    match j with
+    | 0 => simpa using h0
+    | 1 => simpa using h1
+    | (n + 2) => simpa using hbot
+  have hs : ∑ j ∈ Finset.range 2,
+      (fun j : ℕ => if j = 0 then a₀ else if j = 1 then a₁ else 0) j * φ ^ j = f := by
+    rw [Finset.sum_range_succ, Finset.sum_range_succ, Finset.sum_range_zero]
+    simp only [reduceIte, pow_zero, pow_one, mul_one, zero_add]
+    exact hsum.symm
+  have h := dev_unique hφ hd hdeg hs
+  exact ⟨(h 0 (by norm_num)).symm, (h 1 (by norm_num)).symm⟩
+
+/-- A three-term `φ`-adic development, exhibited. -/
+theorem dev_three {φ : Polynomial O} (hφ : φ.Monic) (hd : 0 < φ.natDegree)
+    {f a₀ a₁ a₂ : Polynomial O} (h0 : a₀.degree < φ.degree) (h1 : a₁.degree < φ.degree)
+    (h2 : a₂.degree < φ.degree) (hsum : f = a₀ + a₁ * φ + a₂ * φ ^ 2) :
+    dev φ f 0 = a₀ ∧ dev φ f 1 = a₁ ∧ dev φ f 2 = a₂ := by
+  have hbot : (0 : Polynomial O).degree < φ.degree := by
+    rw [Polynomial.degree_zero]
+    exact bot_lt_iff_ne_bot.2 fun h => hφ.ne_zero (Polynomial.degree_eq_bot.1 h)
+  have hdeg : ∀ j, ((fun j : ℕ => if j = 0 then a₀ else if j = 1 then a₁
+      else if j = 2 then a₂ else 0) j).degree < φ.degree := by
+    intro j
+    match j with
+    | 0 => simpa using h0
+    | 1 => simpa using h1
+    | 2 => simpa using h2
+    | (n + 3) => simpa using hbot
+  have hs : ∑ j ∈ Finset.range 3,
+      (fun j : ℕ => if j = 0 then a₀ else if j = 1 then a₁
+        else if j = 2 then a₂ else 0) j * φ ^ j = f := by
+    rw [Finset.sum_range_succ, Finset.sum_range_succ, Finset.sum_range_succ,
+      Finset.sum_range_zero]
+    simp only [reduceIte, pow_zero, pow_one, mul_one, zero_add]
+    exact hsum.symm
+  have h := dev_unique hφ hd hdeg hs
+  exact ⟨(h 0 (by norm_num)).symm, (h 1 (by norm_num)).symm, (h 2 (by norm_num)).symm⟩
+
+/-- A four-term `φ`-adic development, exhibited. -/
+theorem dev_four {φ : Polynomial O} (hφ : φ.Monic) (hd : 0 < φ.natDegree)
+    {f a₀ a₁ a₂ a₃ : Polynomial O} (h0 : a₀.degree < φ.degree) (h1 : a₁.degree < φ.degree)
+    (h2 : a₂.degree < φ.degree) (h3 : a₃.degree < φ.degree)
+    (hsum : f = a₀ + a₁ * φ + a₂ * φ ^ 2 + a₃ * φ ^ 3) :
+    dev φ f 0 = a₀ ∧ dev φ f 1 = a₁ ∧ dev φ f 2 = a₂ ∧ dev φ f 3 = a₃ := by
+  have hbot : (0 : Polynomial O).degree < φ.degree := by
+    rw [Polynomial.degree_zero]
+    exact bot_lt_iff_ne_bot.2 fun h => hφ.ne_zero (Polynomial.degree_eq_bot.1 h)
+  have hdeg : ∀ j, ((fun j : ℕ => if j = 0 then a₀ else if j = 1 then a₁
+      else if j = 2 then a₂ else if j = 3 then a₃ else 0) j).degree < φ.degree := by
+    intro j
+    match j with
+    | 0 => simpa using h0
+    | 1 => simpa using h1
+    | 2 => simpa using h2
+    | 3 => simpa using h3
+    | (n + 4) => simpa using hbot
+  have hs : ∑ j ∈ Finset.range 4,
+      (fun j : ℕ => if j = 0 then a₀ else if j = 1 then a₁
+        else if j = 2 then a₂ else if j = 3 then a₃ else 0) j * φ ^ j = f := by
+    rw [Finset.sum_range_succ, Finset.sum_range_succ, Finset.sum_range_succ,
+      Finset.sum_range_succ, Finset.sum_range_zero]
+    simp only [reduceIte, pow_zero, pow_one, mul_one, zero_add]
+    exact hsum.symm
+  have h := dev_unique hφ hd hdeg hs
+  exact ⟨(h 0 (by norm_num)).symm, (h 1 (by norm_num)).symm, (h 2 (by norm_num)).symm,
+    (h 3 (by norm_num)).symm⟩
+
+/-- Past the development range the height is `⊤`. -/
+theorem npHgt_eq_top_of_lt {φ : Polynomial O} (hφ : φ.Monic) (hd : 0 < φ.natDegree)
+    (f : Polynomial O) {j : ℕ} (h : f.natDegree < j * φ.natDegree) : npHgt φ f j = ⊤ := by
+  rw [npHgt, dev_eq_zero_of_lt hφ hd f j h]
+  exact gaussVal_eq_top_iff.2 rfl
+
+private theorem cast_weight (ℓ k u j : ℕ) :
+    ℓ • ((k : ℕ) : ℕ∞) + ((u * j : ℕ) : ℕ∞) = ((ℓ * k + u * j : ℕ) : ℕ∞) := by
+  push_cast [nsmul_eq_mul]
+  ring
+
+/-- **The polygon read, in `ℕ`.** `H` lists the finite heights at abscissae `0 … m`; every
+abscissa past `m` has height `⊤`. `M` is the cleared support value, certified by the two
+`ℕ`-side conditions. -/
+theorem polygon_read {φ f : Polynomial O} {n m : ℕ} (hn : f.natDegree = n) (hm : m ≤ n)
+    {H : ℕ → ℕ} (hfin : ∀ j, j ≤ m → npHgt φ f j = (H j : ℕ∞))
+    (htop : ∀ j, m < j → npHgt φ f j = ⊤)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) {M : ℕ}
+    (hMle : ∀ j, j ≤ m → M ≤ ℓ * H j + u * j) (hMmem : ∃ j, j ≤ m ∧ ℓ * H j + u * j = M) :
+    suppVal φ f u ℓ = (M : ℕ∞) ∧
+      ∀ j, (j ∈ sideSet φ f u ℓ ↔ (j ≤ m ∧ ℓ * H j + u * j = M)) := by
+  have htoptm : ∀ j, m < j → ℓ • npHgt φ f j + ((u * j : ℕ) : ℕ∞) = ⊤ := by
+    intro j hj
+    rw [htop j hj]
+    simp [nsmul_eq_mul, hℓ.ne']
+  have hsupp : suppVal φ f u ℓ = (M : ℕ∞) := by
+    rw [suppVal]
+    refine le_antisymm ?_ ?_
+    · obtain ⟨j₀, hj₀m, hj₀⟩ := hMmem
+      refine le_trans (Finset.inf_le (b := j₀) (Finset.mem_range.2 (by omega))) ?_
+      rw [hfin j₀ hj₀m, cast_weight, hj₀]
+    · refine Finset.le_inf ?_
+      intro j _
+      by_cases hjm : j ≤ m
+      · rw [hfin j hjm, cast_weight]
+        exact_mod_cast hMle j hjm
+      · rw [htoptm j (by omega)]; exact le_top
+  refine ⟨hsupp, fun j => ?_⟩
+  rw [mem_sideSet_iff]
+  constructor
+  · rintro ⟨hjlt, hon⟩
+    rw [OnSide, hsupp] at hon
+    by_cases hjm : j ≤ m
+    · refine ⟨hjm, ?_⟩
+      rw [hfin j hjm, cast_weight] at hon
+      exact_mod_cast hon
+    · rw [htoptm j (by omega)] at hon
+      exact absurd hon (by simp)
+  · rintro ⟨hjm, hval⟩
+    refine ⟨by omega, ?_⟩
+    rw [OnSide, hsupp, hfin j hjm, cast_weight, hval]
+
+theorem sideMin_eq {φ f : Polynomial O} {u ℓ : ℕ} (hne : (sideSet φ f u ℓ).Nonempty) {a : ℕ}
+    (hmem : a ∈ sideSet φ f u ℓ) (hle : ∀ j ∈ sideSet φ f u ℓ, a ≤ j) :
+    sideMin φ f u ℓ hne = a :=
+  le_antisymm (Finset.min'_le _ a hmem) (Finset.le_min' _ _ _ hle)
+
+theorem sideMax_eq' {φ f : Polynomial O} {u ℓ : ℕ} (hne : (sideSet φ f u ℓ).Nonempty) {b : ℕ}
+    (hmem : b ∈ sideSet φ f u ℓ) (hle : ∀ j ∈ sideSet φ f u ℓ, j ≤ b) :
+    sideMax φ f u ℓ hne = b :=
+  le_antisymm (Finset.max'_le _ _ _ hle) (Finset.le_max' _ _ hmem)
+
+/-- The height sup bound that feeds `slope_bounds`. -/
+theorem slope_bounds_of_le {φ : Polynomial O} (hφ : IsKey φ) {f : Polynomial O} (hf : f.Monic)
+    {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree) {u ℓ B : ℕ} (hℓ : 0 < ℓ)
+    (hcop : Nat.Coprime u ℓ) (hcard : 1 < (sideSet φ f u ℓ).card)
+    (hB : ∀ j, j ≤ f.natDegree → (npHgt φ f j).toNat ≤ B) :
+    ℓ ≤ f.natDegree ∧ u ≤ B := by
+  obtain ⟨h1, h2⟩ := slope_bounds hφ hf hdeg hℓ hcop hcard
+  exact ⟨h1, le_trans h2 (Finset.sup_le fun j hj => hB j (by
+    have := Finset.mem_range.1 hj; omega))⟩
+
 end Arena
 
 end Uniformity.Density.Leaf.GateKit
@@ -346,5 +524,7 @@ section AxCheck
 #print axioms Uniformity.Density.Leaf.GateKit.slope_bounds
 #print axioms Uniformity.Density.Leaf.GateKit.not_needsDescent_of_sideDeg_one
 #print axioms Uniformity.Density.Leaf.GateKit.order1Type_of_sideDeg_one
+#print axioms Uniformity.Density.Leaf.GateKit.polygon_read
+#print axioms Uniformity.Density.Leaf.GateKit.dev_four
 #print axioms Uniformity.Density.Leaf.GateKit.perim_degree_bound
 end AxCheck
