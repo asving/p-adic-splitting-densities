@@ -552,6 +552,10 @@ chapter C's descent-history carrier by name; C is committed but its §5 Lean typ
 stage. Per CHAP-E's precedent (its four `True`-placeholder nodes, E §14 item 11) this node is
 **BLOCKED-UNTIL-RESOLUTION: the fleet must not fire on it while the placeholder body reads
 `True`** — the orchestrator's stub-resolution pass types it. It is listed so in §11.
+*[A-C.1 rider, 2026-08-16: the wait is OVER — C's §5 carriers landed (`DescentState`,
+`DescentStep`, `NS7TerminationStatement`, amendment A-C.1 at CHAP-C NODE C.94), and the typed
+body is `NS7TerminationStatement`'s matrix; see this file's 2026-08-16 A-C.1 addendum. The
+placeholder may be resolved at the next stub-resolution pass.]*
 
 **DEPENDS.** C §5's level-datum/descent types [C committed; exact names at stub time] · C.94
 (the discharging cite). **PROOF.** definitional. **SIZE.** 14 lines.
@@ -1584,6 +1588,44 @@ theorem exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (h
 
 This addendum adds no new ledger row; it is cross-referenced from CHAP-B's NODE B.42, amendment
 A-F.10, and honesty item H-14.
+
+### DATED ADDENDUM (2026-08-16, CHAP-C A-C.1 — THE THREE C-SIDE GATE-(b) STATEMENTS NOW EXIST;
+the "on file" overstatement corrected)
+
+**Correction of record (the stub gate's D23).** `PROJECT_STATE.md` append #66 (2026-08-16)
+stated that the three chapter-C cites' *"exact statements + faithfulness entries are on file
+(CHAP-I §3 + addendum) for individual inspection at will"*. **At the time of writing that was
+true of B.42's cite and of no other** — this file's 2026-08-16 addendum carried THE EXACT LEAN
+STATEMENT for `LeanspecB.exists_slope_factorization` only, while C.66/C.92/C.94's own STATEMENT
+fields all read "Exact Lean statement drafted at stub stage". The overstatement is hereby
+corrected **and cured**: amendment **A-C.1** (2026-08-16, `blueprint/CHAP-C_tower_grammar.md`
+A-§ block + per-node blocks) drafted and elaborated all three. The gate-(b) signature queue is
+now FOUR statements deep, each with an elaborated leanspec twin:
+
+| cite | Lean statement (in `leanspec/Leanspec/ChapC.lean`, blueprint block at the node) | published locus (A-3-verified) | status |
+|---|---|---|---|
+| B.42 `[cite:GN15 Thm 2.3 + FGMN Thm 6.6]` | `LeanspecB.exists_slope_factorization` (this file, above) | Contemp. Math. 637 (2015) 207–241, Thm 2.3 + J. Algebra 427 (2015) Thm 6.6 [predicted 6.5 in print] | statement drafted + audited; owner signs |
+| C.66 `[cite:FGMN]` | `fgmn_residual_mul` (CHAP-C NODE C.66) | J. Algebra 427 (2015) 30–75: **Thm 2.8 + Cor 4.12(3) + Cor 4.9(3)** | SIGNED-AT-CATEGORY (append #66), **statement-UNINSPECTED** — three drafting decisions flagged at the node |
+| C.92 `[cite:FGMN-chain]` | `FGMNCalculus` (class, one field per consumed clause) + `fgmn_calculus_exists` (CHAP-C NODE C.92) | J. Algebra 427: **Lemma 1.8, Cor 1.10, Lemma 5.2(2), Prop 5.6 + eq (11), Cor 4.12(1)/(3), Cor 4.9(3), Thm 6.2, Cor 6.3** | SIGNED-AT-CATEGORY, **statement-UNINSPECTED** — four drafting flags + TWO booked residual fields (C.90(b)'s Cor 6.3 leg; C.102's letter reads) at the node |
+| C.94 `[cite:AGNPRW]` | `DescentState`/`DescentStep` + `NS7TerminationStatement` + `agnprw_termination` (CHAP-C NODE C.94) | Found. Comput. Math. **25 (2025), no. 2, 631–681**: **Thm 5.6** (the repo's "Thm 5.2" is the arXiv-v1 number and COLLIDES with a different published theorem — audit §3) | SIGNED-AT-CATEGORY, **statement-UNINSPECTED** — four drafting decisions flagged at the node |
+
+**Faithfulness entries:** each node's block carries the drafting-decision list and the
+A-3-corrected numbering inline; the full `docs/AXIOM_FAITHFULNESS.md` entries are owed at
+fleet landing time (the axioms live in `leanspec`, not `leanfinal`, until then) — the entry
+drafts ARE the node blocks. Audit A-3's pre-signing numbering check is DONE for all three
+(this was HYP.17's row); the residual print-reads (audit §7.1/§7.2) remain the owner's
+two-minute closing checks.
+
+**I.01 UNBLOCKED (the D24 deadlock, broken on the C side).** `I.01`'s `NS7Termination` was
+committed with a literal `True` placeholder body, `BLOCKED-UNTIL-RESOLUTION`, waiting on "C's
+committed §5 carriers at stub time". Those carriers now exist (A-C.1: `DescentState`,
+`DescentStep`, both typed against C's §5 layer — `HasLabel`, `IsTestKey`, `LevelDatum`), and
+the typed body is exactly `Uniformity.Density.Tower.NS7TerminationStatement`'s matrix: **the
+orchestrator's stub-resolution pass may now type I.01's body** (either
+`NS7Termination := NS7TerminationStatement` — the bundle quantifier is the statement's own —
+or its unfolding under I.01's frozen name/kind). Display A's line-1 conjunct stops being
+vacuous in Lean at that pass; `I.25`'s registry expectation (`agnprw_termination` on C.94's
+consumers) is now declarable.
 
 <!-- SENTINEL: BP-I END OF FILE -->
 
