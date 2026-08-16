@@ -108,6 +108,9 @@ adjusted silently.
   direction (owner's, not applied): state `HVarthetaRes` against a GIVEN ambient residue datum
   and require the arena's `res` to agree with it on the ϑ-quotients, or state the sitewise
   clause directly. Needs a DECISION block in CHAP-D §9 and a re-signed D.62/D.63.
+  **[EXECUTED at A-D.2, 2026-08-16 — see the RE-SIGN LOG below: DECISION D-2 picks the
+  sitewise form; D.62 re-signed, the committed form kept as `HVarthetaResVoided` with the
+  witnesses re-pointed at it.]**
 * **D-D1 — the §10 gate lines DO NOT RUN as written: `iexp` is not `decide`-reducible (hard).**
   `iexp` goes through `(h : ZMod e₁)⁻¹`; `ZMod.inv` routes through `Nat.gcdA`/`Nat.xgcd`, which
   do not kernel-reduce. Even `((1 : ℕ) : ZMod 2)⁻¹ = 1` is not `decide`-able at the pin, so
@@ -181,6 +184,22 @@ adjusted silently.
 * **D-D14 (minor) — D.29's `read_n` field is derivable from `ladder_mult` at `s = 1`.** Both
   are separate corpus clauses (`(C3-ladder-unit)`, `(C3-ladder-multiplicativity)`), so both are
   signed, but a `ReadBundle` instance need only supply one.
+
+## RE-SIGN LOG (post-0e, blueprint-authorized amendments)
+
+* **A-D.2 (2026-08-16, Display-A carrier adjudication — executes D-D12's owed re-sign).**
+  **D.62 `HVarthetaRes` RE-SIGNED at the sitewise ambient-residue form** (blueprint DECISION
+  D-2: `EFF.T1.09`'s display verbatim — the ambient residue of every ϑ-quotient lands in the
+  level field, as a unit); the committed existential form is KEPT, named-and-voided, as
+  `HVarthetaResVoided`, with the two D-D12 witnesses re-pointed at it
+  (`hvarthetaResVoided_of_exact_height`/`hvarthetaResVoided_iff`). New PROVED theorem
+  `hvarthetaRes_of_arena_agree` restores D-H3's "formally stronger" claim honestly (an
+  ambient-agreeing arena discharges the sitewise clause). **D.63 `VarthetaWConjunct`:
+  signature byte-unchanged; consumption re-signed** — `HVR` instantiates at the A-D.2 form
+  only. Census deltas: `def` 30 → 31 (`HVarthetaResVoided`), proved `theorem` 11 → 12
+  (`hvarthetaRes_of_arena_agree`; the 2 D-D12 witnesses renamed). Non-triviality
+  countermodel: `verification/om4_resign_nontriviality.lean`. Full record: CHAP-D DECISION
+  D-2 + amendment A-D.2 (§9 dated append).
 
 ## FINDINGS about the gate frames themselves (not blueprint defects — battery coverage)
 
@@ -1077,55 +1096,102 @@ avatar fences (`EFF.T5.07/.09/.10/.16/.28`; `HYP.63/.66/.99/.100`) — NO Lean d
 The avatar fence: `w_i` is NOT a normalized uniformizer avatar (LW3: `w_av = 2 ≠ w₃ = 1`). -/
 -- (no declaration)
 
-/-! ## §9 — THE `(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}` CARRIERS (D.62–D.64) -/
+/-! ## §9 — THE `(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}` CARRIERS (D.62–D.64)
 
-/-- **D.62** [def] The Lean carrier of `(H-VARTHETA-RES)_i` (`EFF.T1.09` R9-2 fence;
-DECISION D-1 packaging). STRENGTH DELTA, disclosed: the arena form asserts the residue hom
-on the whole value-zero subgroup; the corpus's clause asserts it at the ϑ-quotients only.
-The delta is in the SAFE direction (a stronger carried hypothesis claims less), but chapter
-I's ledger row must state the corpus form as the ledger-strength content and THIS name as
-the Lean-consumed form. -/
-def HVarthetaRes (G : Type*) [CommGroup G] (K : Type*) [Field K]
+**RE-SIGN LOG (A-D.2, 2026-08-16 — the Display-A carrier adjudication unit; executes
+D-D12's owed re-sign per blueprint DECISION D-2).** D-D12 (header) machine-refuted the
+committed D.62 (`∃ A : GaugeArena G K N, A.v = v`) as VACUOUS: the trivial hom
+`1 : ker v →* Kˣ` inhabits it, making it equivalent to the exact-height fact.  D-D12's
+repair fork was: (α) an ambient residue datum on the arena, or (β) the sitewise ϑ-clause
+directly.  **DECISION D-2 picks (β), the sitewise form against a GIVEN ambient residue
+datum** — it is the source display verbatim (`EFF.T1.09`:
+"`(H-VARTHETA-RES)_i : res(n̂_i(u_{i+1})^s / n̂_i(su_{i+1})) ∈ K_i (s ≥ 0)`", with
+`K_iˣ`-membership the supplier-dependent content per its CONDITIONALITY line and
+`EFF.T5.10`), it leaves D.07 untouched (per A-D.1's D-D12 note: "This structure itself is
+unaffected"), and D-H3's "formally stronger" claim is restored as the PROVED theorem
+`hvarthetaRes_of_arena_agree` below (an ambient-agreeing arena discharges the sitewise
+clause).  The voided existential form is KEPT under the name `HVarthetaResVoided` with its
+two D-D12 witnesses, so the refutation record stays machine-checked.  Non-triviality
+countermodel for the re-signed form: `verification/om4_resign_nontriviality.lean` (an
+exact-height instance with an ambient datum whose ϑ-residue is NOT in the level field —
+the old `⟨v, hv, 1⟩` recipe is not replayable).  Blueprint authority: CHAP-D DECISION D-2 +
+amendment A-D.2 (§9 dated append). -/
+
+/-- **D.62-VOID** [def, NAMED-AND-VOIDED at A-D.2] The committed D.62 carrier, byte-identical
+under the voided name: REFUTED as a carrier (D-D12) — `hvarthetaResVoided_iff` below proves
+it equivalent to the exact-height fact, so it tracks no `(H-VARTHETA-RES)_i` conditionality.
+NEVER to be consumed by chapters E/I; kept solely as the machine-checked refutation record. -/
+def HVarthetaResVoided (G : Type*) [CommGroup G] (K : Type*) [Field K]
     (N : NormSection G) (v : G →* Multiplicative ℤ) : Prop :=
   ∃ A : GaugeArena G K N, A.v = v
 
-/-- **D.63** [def] Display A's `∀ i ≥ 3` conjunct, assembled (`EFF.T1.09` + `EFF.T3.22` +
-`EFF.T5.10/.13`). Per the Part V owner ruling its terminal disposition in chapter I is
-DISCHARGE NODE or LITERATURE CITE; this chapter only supplies the carrier. -/
+/-- **D.62** [def, RE-SIGNED at A-D.2 / DECISION D-2] The Lean carrier of
+`(H-VARTHETA-RES)_i` (`EFF.T1.09` R9-2 fence), SITEWISE against a GIVEN ambient residue
+datum: over the level's height data `(N, v)` and an ambient residue homomorphism
+`ρ : ker v →* Lˣ` (`L` the ambient residue field, `K = K_i` the level field embedded in it),
+every ϑ-quotient `n̂(q)^s/n̂(sq)` has value zero AND its ambient residue lands in `K_iˣ`
+(as a unit: the witness `u : Kˣ`).  `q` is the level's fixed use-height `u_{i+1}` — a
+parameter, exactly source scope.  The membership conjunct is exact-height arithmetic
+(unconditional at any arena instance, D.08's `varthetaEl_mem_ker`); the supplier-dependent
+content is the `K`-membership clause, exactly `EFF.T1.09`'s display.  Consumed by E (ladder
+displays at `i ≥ 3`) and I (Display A's `∀ i ≥ 3` conjunct, via D.63) — at THIS form only;
+the pre-A-D.2 existential form is `HVarthetaResVoided` and is VOID. -/
+def HVarthetaRes (G : Type*) [CommGroup G] (K : Type*) [Field K] (L : Type*) [Field L]
+    [Algebra K L] (N : NormSection G) (v : G →* Multiplicative ℤ)
+    (ρ : MonoidHom.ker v →* Lˣ) (q : ℤ) : Prop :=
+  ∀ s : ℕ, ∃ (h : N.varthetaEl q s ∈ MonoidHom.ker v) (u : Kˣ),
+    ((ρ ⟨N.varthetaEl q s, h⟩ : Lˣ) : L) = algebraMap K L (u : K)
+
+/-- **D.62** [lemma, PROVED at A-D.2] The D-H3 direction, restored honestly: a gauge arena
+whose `res` AGREES with the ambient residue datum (through the level-field embedding)
+discharges the sitewise carrier.  This is the exact sense in which D.07-as-theorem-hypothesis
+is "formally stronger than the sitewise clauses" — the agreement leg is what the voided
+existential form lacked. -/
+theorem hvarthetaRes_of_arena_agree {G : Type*} [CommGroup G] {K : Type*} [Field K]
+    {L : Type*} [Field L] [Algebra K L] {N : NormSection G} (A : GaugeArena G K N)
+    (ρ : MonoidHom.ker A.v →* Lˣ)
+    (hagree : ∀ x : MonoidHom.ker A.v, ((ρ x : Lˣ) : L) = algebraMap K L ((A.res x : Kˣ) : K))
+    (q : ℤ) : HVarthetaRes G K L N A.v ρ q :=
+  fun s => ⟨A.varthetaEl_mem_ker q s, A.res ⟨N.varthetaEl q s, A.varthetaEl_mem_ker q s⟩,
+    hagree _⟩
+
+/-- **D.63** [def, consumption re-signed at A-D.2 — signature byte-unchanged] Display A's
+`∀ i ≥ 3` conjunct, assembled (`EFF.T1.09` + `EFF.T3.22` + `EFF.T5.10/.13`). Per the Part V
+owner ruling its terminal disposition in chapter I is DISCHARGE NODE or LITERATURE CITE;
+this chapter only supplies the carrier.  CONSUMPTION FENCE (A-D.2): `HVR` must be
+instantiated at the RE-SIGNED sitewise `HVarthetaRes` over the level-`i` ambient residue
+datum (instantiations chapter C's); the pre-A-D.2 instantiation through the voided
+existential form degenerates to `Wle` plus an exact-height fact (D-D12) and is VOID. -/
 def VarthetaWConjunct (HVR W : ℕ → Prop) (i : ℕ) : Prop := HVR i ∧ Wle W i
 
-/-! ### DEFECT WITNESS D-D12 — D.62's carrier is VACUOUS (machine-checked below)
+/-! ### DEFECT WITNESS D-D12 — the VOIDED D.62 carrier is VACUOUS (machine-checked below)
 
-`HVarthetaRes` (D.62) renders `(H-VARTHETA-RES)_i` — a Display-A `∀ i ≥ 3` conjunct — as
-"an arena over the level's height data EXISTS". But `GaugeArena` has NO field tying its `res`
-to any ambient residue map, so the **trivial** homomorphism `1 : ker v →* Kˣ` already inhabits
-it. The two theorems below are PROVED (not stubs): the carrier is EQUIVALENT to the
-height-homomorphism being exact on `N`, and says nothing whatever about `ϑ_{i,s}` landing in
-`K_iˣ`.
+`HVarthetaResVoided` (the committed D.62, named-and-voided at A-D.2) renders
+`(H-VARTHETA-RES)_i` — a Display-A `∀ i ≥ 3` conjunct — as "an arena over the level's
+height data EXISTS". But `GaugeArena` has NO field tying its `res` to any ambient residue
+map, so the **trivial** homomorphism `1 : ker v →* Kˣ` already inhabits it. The two
+theorems below are PROVED (not stubs): the voided carrier is EQUIVALENT to the
+height-homomorphism being exact on `N`, and says nothing whatever about `ϑ_{i,s}` landing
+in `K_iˣ`.
 
-Consequence: as written, chapter I would carry a Display-A conjunct that is discharged by
-`⟨v, hv, 1⟩`, and D.63's `VarthetaWConjunct` would degenerate to `Wle` plus an exact-height
-fact. D-H3's claim that the packaging is "formally STRONGER than the sitewise clauses" holds
-for D.07 used as a THEOREM HYPOTHESIS (the §3/§5/§6 theorems are true for any `res`), but is
-FALSE in the existential direction D.62 uses. §14 item 2(iii) asked exactly this question;
-this is the answer.
+Consequence: as committed, chapter I would have carried a Display-A conjunct discharged by
+`⟨v, hv, 1⟩`, and D.63's `VarthetaWConjunct` would have degenerated to `Wle` plus an
+exact-height fact. D-H3's claim that the packaging is "formally STRONGER than the sitewise
+clauses" holds for D.07 used as a THEOREM HYPOTHESIS (the §3/§5/§6 theorems are true for
+any `res`), but is FALSE in the existential direction the committed D.62 used. §14 item
+2(iii) asked exactly this question; this is the answer.  THE REPAIR IS EXECUTED at the
+re-signed D.62 above (DECISION D-2 / amendment A-D.2). -/
 
-REPAIR DIRECTION (blueprint-owner's, not patched here): `HVarthetaRes` must be stated against
-a GIVEN ambient residue datum — e.g. quantify over an ambient partial residue function and
-require the arena's `res` to agree with it on the ϑ-quotients, or state the sitewise clause
-`∀ s, ∃ u : K_iˣ, ambientRes (varthetaEl q s) = u` directly. Either way the fix is a DECISION
-block in CHAP-D §9 plus a re-signed D.62/D.63, not a stub-side edit. -/
-
-theorem hvarthetaRes_of_exact_height {G : Type*} [CommGroup G] (K : Type*) [Field K]
+theorem hvarthetaResVoided_of_exact_height {G : Type*} [CommGroup G] (K : Type*) [Field K]
     (N : NormSection G) (v : G →* Multiplicative ℤ)
     (hv : ∀ k : ℤ, v (N.n k) = Multiplicative.ofAdd k) :
-    HVarthetaRes G K N v :=
+    HVarthetaResVoided G K N v :=
   ⟨{ v := v, exact_height := hv, res := 1 }, rfl⟩
 
-theorem hvarthetaRes_iff {G : Type*} [CommGroup G] (K : Type*) [Field K]
+theorem hvarthetaResVoided_iff {G : Type*} [CommGroup G] (K : Type*) [Field K]
     (N : NormSection G) (v : G →* Multiplicative ℤ) :
-    HVarthetaRes G K N v ↔ ∀ k : ℤ, v (N.n k) = Multiplicative.ofAdd k := by
-  refine ⟨fun ⟨A, hA⟩ k => ?_, hvarthetaRes_of_exact_height K N v⟩
+    HVarthetaResVoided G K N v ↔ ∀ k : ℤ, v (N.n k) = Multiplicative.ofAdd k := by
+  refine ⟨fun ⟨A, hA⟩ k => ?_, hvarthetaResVoided_of_exact_height K N v⟩
   rw [← hA]; exact A.exact_height k
 
 /-! **D.64** [record] OPEN-CALL and orphan routing — the chapter's residual-obligation
@@ -1516,6 +1582,8 @@ section Census
 #print axioms LeanspecD.WfIndex
 #print axioms LeanspecD.WfChain
 #print axioms LeanspecD.HVarthetaRes
+#print axioms LeanspecD.HVarthetaResVoided        -- A-D.2: the named-and-voided shadow
+#print axioms LeanspecD.hvarthetaRes_of_arena_agree
 #print axioms LeanspecD.VarthetaWConjunct
 
 -- (iii) non-vacuity: the six carriers Display A / chapters E and I consume BY NAME,
