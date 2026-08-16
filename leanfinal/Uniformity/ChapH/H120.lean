@@ -52,9 +52,10 @@ the H.118 derivation, not the one-line contrapositive H.70 enjoys.
 3. **Counting** (`uClusterNorm_antitone`) — the fibres of `coeffFactor` are equicardinal
    (`card_preimage_coeffFactor`), which is exactly H.70's bookkeeping step.  The state
    subtype is transported to a `Set (Coeff O m N)` first (`clusterUndecidedSet`), because the
-   landed fibre count lives on the full coefficient box; the transport is legitimate because
-   being a cluster state is itself a property of the level-`1` truncation, hence stable under
-   `coeffFactor` in BOTH directions.
+   landed fibre count lives on the full coefficient box; `card_clusterUndecidedSet` proves the
+   two presentations have the same count, and only the CONTAINMENT
+   (`clusterUndecidedSet_subset`) is consumed after that, so no claim about the shape of the
+   full fibre is needed.
 
 ## ⚠ The S-1 fence
 
