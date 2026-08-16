@@ -35,12 +35,22 @@ import Uniformity.ChapB.B32b
 import Uniformity.ChapB.B32c
 import Uniformity.ChapB.B33
 import Uniformity.ChapB.B34
+import Uniformity.ChapB.B35a
+import Uniformity.ChapB.B35b
+import Uniformity.ChapB.B35c
+import Uniformity.ChapB.B35d
 import Uniformity.ChapB.B36
+import Uniformity.ChapB.B37
+import Uniformity.ChapB.B39a
+import Uniformity.ChapB.B39b
 import Uniformity.ChapB.B40
+import Uniformity.ChapB.B41a
+import Uniformity.ChapB.B41b
 import Uniformity.ChapB.B44
 import Uniformity.ChapB.B45
 import Uniformity.ChapB.B46
 import Uniformity.ChapB.B47
+import Uniformity.ChapB.B48
 import Uniformity.ChapB.B49
 import Uniformity.ChapB.B50
 import Uniformity.ChapB.B51
@@ -48,15 +58,21 @@ import Uniformity.ChapB.B52
 import Uniformity.ChapB.B53a
 import Uniformity.ChapB.B53b
 import Uniformity.ChapB.B53c
+import Uniformity.ChapB.B54
 import Uniformity.ChapB.B56
+import Uniformity.ChapB.B57
+import Uniformity.ChapB.B59a
+import Uniformity.ChapB.B59b
+import Uniformity.ChapB.B60
 import Uniformity.ChapB.B64
 import Uniformity.ChapB.B69
 import Uniformity.ChapB.B70
 import Uniformity.ChapB.B73
+import Uniformity.ChapB.B74
 import Uniformity.ChapB.B75
 import Uniformity.ChapB.B76
 import Uniformity.ChapB.B77a
 import Uniformity.ChapB.B77b
 import Uniformity.ChapB.B78
 
-/-! Chapter B roll-up — 54/86 base nodes landed (waves 1-9). -/
+/-! Chapter B roll-up — 65/86 base nodes landed (waves 1-12). B.42 route-blocked (vertex split, architecture decision pending). Refutation records are .lean.txt files, deliberately outside the build. -/
