@@ -448,6 +448,63 @@ theorem composedKey_trinomial {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H�
   simp only [entryCoef, neg_mul, Polynomial.C_neg]
   ring
 
+/-! ### The entry coefficients are units
+
+The census reads the entries as `ĉ₂π^{v₂}` and `ĉ₀π^{v₀}` with `ĉ₂, ĉ₀ ∈ O^×` — the note's
+(G2).  At the Lean carrier that is a THEOREM, not a hypothesis: the entry digit is a nonzero
+element of the residue field (the stage field is a field, `η ≠ 0` by C.19, and `ψ₂`'s
+coefficient is nonzero by hypothesis / by C.42's `hψ0`), and `resLift` of a nonzero residue is
+outside the maximal ideal. -/
+
+/-- **D9 (cured).**  The order-0 key `X` is an order-1 key; the private-copy pattern
+(C.04/C.12/C.19/C.21/C.22/C.44/C.46 each carry one), because `private` does not export. -/
+private theorem isKey_X : IsKey (Polynomial.X : Polynomial O) where
+  monic := Polynomial.monic_X
+  pos := by simp
+  irred := by
+    rw [Polynomial.map_X]
+    exact Polynomial.irreducible_X
+
+/-- The `Field` structure on the stage field `K` — C.04's private copy (a `@[reducible]`
+`def`, not an `instance`, for B.25(b)'s reason). -/
+@[reducible] private noncomputable def fieldStageField (F : KeyFrame O π) (H₀ : ℕ)
+    (hpin : F.Pin H₀) : Field (F.stageField H₀ hpin) :=
+  letI : Field (resField (Polynomial.X : Polynomial O)) := instFieldResField isKey_X
+  haveI : Fact (Irreducible (F.frameRes H₀ hpin)) := ⟨(F.hresirr H₀ hpin).1⟩
+  AdjoinRoot.instField
+
+/-- C.14's private helper, re-derived: a nonzero residue lifts to a unit. -/
+private theorem isUnit_of_residue_ne_zero {x : O} (hx : IsLocalRing.residue O x ≠ 0) :
+    IsUnit x := by
+  rw [Ne, IsLocalRing.residue_eq_zero_iff] at hx
+  exact IsLocalRing.notMem_maximalIdeal.mp hx
+
+/-- At `f₁ = 1` the single letter-basis digit detects nonvanishing: `stageCoord c 0 = 0` would
+make C.14a's reconstruction identity `sum_stageCoord` read `c = 0`. -/
+theorem stageCoord_ne_zero_of_f1 (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) (hf₁ : F.f₁ = 1)
+    {c : F.stageField H₀ hpin} (hc : c ≠ 0) : F.stageCoord H₀ hpin c 0 ≠ 0 := by
+  intro h0
+  refine hc ?_
+  have hsum := F.sum_stageCoord H₀ hpin c
+  rw [hf₁, Finset.sum_range_one, h0] at hsum
+  simpa using hsum.symm
+
+/-- **Part 3(d)** — the entry coefficients are UNITS, whenever the corresponding `ψ₂`-digit is
+nonzero (which C.42's `hψ0` gives at `t = 0` and the signed `hψt` gives at `t = t*`).  This is
+the note's (G2) `ĉ₂, ĉ₀ ∈ O^×`, discharged rather than assumed. -/
+theorem isUnit_entryCoef {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hf₁ : F.f₁ = 1) {t : ℕ}
+    (ht : T.ψ₂.coeff t ≠ 0) : IsUnit (entryCoef T t) := by
+  letI : Field (F.stageField H₀ hpin) := fieldStageField F H₀ hpin
+  have hne : (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ wrapExp T t) ≠ 0 :=
+    mul_ne_zero (neg_ne_zero.mpr ht)
+      (pow_ne_zero _ (F.stageLetter_ne_zero hπ H₀ hpin))
+  have hcoord := stageCoord_ne_zero_of_f1 F H₀ hpin hf₁ hne
+  rw [entryCoef]
+  refine IsUnit.neg (isUnit_of_residue_ne_zero ?_)
+  rw [resLift_spec]
+  exact hcoord
+
 end Trinomial
 
 end Uniformity.Density.Tower
@@ -469,5 +526,7 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.entryCoef
 #print axioms Uniformity.Density.Tower.onSide_of_slot_one
 #print axioms Uniformity.Density.Tower.composedKey_trinomial
+#print axioms Uniformity.Density.Tower.stageCoord_ne_zero_of_f1
+#print axioms Uniformity.Density.Tower.isUnit_entryCoef
 
 end AxCheck
