@@ -1,0 +1,166 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapC.C14a
+import Uniformity.ChapC.C83
+
+/-!
+# VACUITY RECORD for the frozen A-C.1 statement of NODE C.92
+(`FGMNCalculus` + `fgmn_calculus_exists`, `[cite:FGMN-chain]`)
+
+**This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` /
+`C113_REFUTATION.lean.txt` convention: kept as `.lean.txt` so no build picks it up).
+To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapC/C92_VACUITY.lean.txt /tmp/c92_vacuity.lean
+cd leanfinal && lake env lean /tmp/c92_vacuity.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only,
+2026-08-16 (GATE-(b) CITE LANDING unit).
+
+## Verdict: the C.92 landing is BLOCKED. The axiom carries NO cited content.
+
+The gate-(b) cite of NODE C.92 was to land as the class `FGMNCalculus` plus
+
+```lean
+axiom fgmn_calculus_exists {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (he' : 0 < e') (hf' : 0 < f')
+    (hcop : Nat.Coprime u' e') (hfloor : e' * W.Econst r < u') :
+    Nonempty (FGMNCalculus W e' f' u')
+```
+
+(`leanspec/Leanspec/ChapC.lean` L1261-1322; blueprint NODE C.92, `C.126`'s census name).
+
+**This is not unsound — it is worse than unsound for a literature cite: it is a THEOREM of
+Lean core.** `fgmn_calculus_exists_IS_A_THEOREM` below proves the exact conclusion, under the
+exact binders, with no axiom at all. So declaring it as a gate-(b) `axiom` would put a name on
+the trusted-base allowlist and into every downstream `#print axioms` footprint while importing
+**zero** mathematical content from [FGMN].
+
+## The junk instance, exactly
+
+Every truth-bearing field of `FGMNCalculus` can be satisfied by trivial data:
+
+| field | junk value | why the laws hold |
+|---|---|---|
+| `ExactGrade` | `fun _ _ => False` | makes `Rgr_mul`, `Rgr_ne_zero` and the `Rres_recipe` hypothesis vacuous |
+| `Rgr`, `letterZ` | `fun _ _ => 0`, `fun _ => 0` | never constrained |
+| `Rres` | `fun _ => 1` | `Rres_keyAt` is `rfl`; `Irreducible (1 : Polynomial _)` is FALSE, so `KP_criterion` is vacuous; `Rres g ≠ Rres g'` is FALSE, so `nuEquiv_ne_of_Rres` is vacuous |
+| `KP`, `nuEquiv` | `fun _ => False`, `fun _ _ => False` | `KP_irred` vacuous |
+| `keyAt` | `fun i => if i = 1 then F.key else X ^ W.Dcum i` | `keyAt_one` by `simp`; `keyAt_deg` from `F.hdeg` + `W.he1`/`W.hf1` at `i = 1` and `natDegree_X_pow` otherwise |
+
+`Rres_recipe` is the only field that needs a hypothesis at all, and it needs only
+`hf' : 0 < f'` (the hypothesis `∀ t, t < f' → ExactGrade ((f' - t) * u') (khat t)` is
+unsatisfiable at `t = 0`). **`he'`, `hcop` and `hfloor` are not used anywhere** — the Lean
+linter flags all three as unreferenced in the proof below, i.e. three of the axiom's four side
+conditions are inert.
+
+Root cause: the class pins **nothing** to the chapter's own carriers. `ExactGrade`, `Rgr`,
+`Rres`, `KP`, `nuEquiv`, `letterZ` are all fields, none tied by any field-law to `dvHgt`,
+`dvResPoly`, `digAt`, `DeepTower.deepDigit` or any other landed definition, so any consumer
+that obtains its interface from `fgmn_calculus_exists` is running on data that may be junk, and
+whatever it proves it would have to prove for the junk instance too.
+
+## Repair direction (NOT applied here — the statement is frozen and owner-signed at category)
+
+Two coherent options, both STATEMENT CHANGES that must go back through gate (b):
+
+1. **Drop the existence axiom; keep the class as a hypothesis only.** The node's own docstring
+   already allows this (*"consumers may also take `[FGMNCalculus W e' f' u']` hypothesis-form"*).
+   Then the conditionality is honest and visible in every consumer's signature, and nothing goes
+   on the axiom allowlist. `C.126`'s census row must then be retired, not renamed.
+2. **Anchor the interface.** Add field-laws tying at least `Rgr` and `ExactGrade` to the landed
+   `dv`-layer (e.g. `ExactGrade β g ↔ dvHgt …`-style pins, and `Rgr` agreeing with `twistRead`
+   at `r = 1` through `W.base`), so that `Nonempty (FGMNCalculus …)` becomes a genuine
+   assertion. Only then is an existence axiom worth its footprint.
+
+## What is NOT claimed
+
+That the cited clauses are false. [FGMN] (J. Algebra **427** (2015) 30-75: Lemma 1.8, Cor 1.10,
+Lemma 5.2(2), Prop 5.6 + eq (11), Cor 4.12(1)/(3), Cor 4.9(3), Thm 6.2, Cor 6.3 — the
+A-3-corrected published numbers) proves real theorems. What is recorded here is that **this
+packaging of them asserts nothing**.
+
+## Status
+
+Evidence file. No `sorry`. Lean-core axioms only. Adds nothing to the build.
+-/
+
+namespace Uniformity.Density.Tower.C92Vacuity
+
+open Polynomial Uniformity.Density.Leaf Uniformity.Density.Tower
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-- C.92's class, transcribed from `leanspec/Leanspec/ChapC.lean` lines 1261-1314. -/
+class FGMNCalculus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) where
+  keyAt : ℕ → Polynomial O
+  keyAt_one : keyAt 1 = F.key
+  keyAt_deg : ∀ i, 1 ≤ i → i ≤ r → (keyAt i).natDegree = W.Dcum i
+  ExactGrade : ℕ → Polynomial O → Prop
+  Rgr : ℕ → Polynomial O → W.fld r
+  Rres : Polynomial O → Polynomial (W.fld r)
+  KP : Polynomial O → Prop
+  nuEquiv : Polynomial O → Polynomial O → Prop
+  letterZ : ℕ → W.fld r
+  Rgr_mul : ∀ β β' (g g' : Polynomial O), ExactGrade β g → ExactGrade β' g' →
+    ExactGrade (β + β') (g * g') ∧ Rgr (β + β') (g * g') = Rgr β g * Rgr β' g'
+  Rgr_ne_zero : ∀ β (g : Polynomial O), ExactGrade β g → g ≠ 0 → Rgr β g ≠ 0
+  Rres_recipe : ∀ (khat : ℕ → Polynomial O),
+    (∀ t, t < f' → ExactGrade ((f' - t) * u') (khat t)) →
+    (∀ t, t < f' → (khat t).natDegree < (keyAt r).natDegree) →
+    Rres ((keyAt r) ^ (e' * f') - ∑ t ∈ Finset.range f', khat t * (keyAt r) ^ (e' * t))
+      = Polynomial.X ^ f'
+        - ∑ t ∈ Finset.range f',
+            Polynomial.C (Rgr ((f' - t) * u') (khat t)) * Polynomial.X ^ t
+  KP_criterion : ∀ (g : Polynomial O), g.Monic →
+    g.natDegree = e' * f' * (keyAt r).natDegree →
+    Irreducible (Rres g) → (Rres g).natDegree = f' → KP g
+  KP_irred : ∀ (g : Polynomial O), KP g → g.Monic → Irreducible g
+  Rres_keyAt : Rres (keyAt r) = 1
+  nuEquiv_ne_of_Rres : ∀ (g g' : Polynomial O), KP g → KP g' →
+    Rres g ≠ Rres g' → ¬ nuEquiv g g'
+
+/-! ### The junk instance: the class is realized by Lean-core data, with NO cited content. -/
+
+theorem fgmn_calculus_exists_IS_A_THEOREM {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (he' : 0 < e') (hf' : 0 < f')
+    (hcop : Nat.Coprime u' e') (hfloor : e' * W.Econst r < u') :
+    Nonempty (FGMNCalculus W e' f' u') := by
+  refine ⟨{
+    keyAt := fun i => if i = 1 then F.key else Polynomial.X ^ (W.Dcum i)
+    keyAt_one := by simp
+    keyAt_deg := ?_
+    ExactGrade := fun _ _ => False
+    Rgr := fun _ _ => 0
+    Rres := fun _ => 1
+    KP := fun _ => False
+    nuEquiv := fun _ _ => False
+    letterZ := fun _ => 0
+    Rgr_mul := fun _ _ _ _ h _ => h.elim
+    Rgr_ne_zero := fun _ _ h _ => h.elim
+    Rres_recipe := fun _ h1 _ => (h1 0 hf').elim
+    KP_criterion := fun _ _ _ hirr _ => (not_irreducible_one hirr).elim
+    KP_irred := fun _ h _ => h.elim
+    Rres_keyAt := rfl
+    nuEquiv_ne_of_Rres := fun _ _ h _ _ => h.elim }⟩
+  intro i h1 h2
+  rcases eq_or_ne i 1 with rfl | hne
+  · show (F.key).natDegree = _
+    rw [F.hdeg, DeepTower.Dcum, Finset.Icc_self, Finset.prod_singleton, W.he1, W.hf1]
+  · simp only [if_neg hne, Polynomial.natDegree_X_pow]
+
+end Uniformity.Density.Tower.C92Vacuity
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Tower.C92Vacuity.fgmn_calculus_exists_IS_A_THEOREM
+
+end AxCheck
