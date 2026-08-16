@@ -5826,3 +5826,51 @@ HYP.79 cascade half PROVED); A-C.3 re-signed C.114 in leanspec
 TYPED at the chapter-D carriers; E.51 blocked on a C anchor);
 attribution mix disclosure: BS2's 1e35c199 swept some A-C.3
 blueprint hunks (content intact, history stacked, no fix).
+
+**2026-08-16 DATED APPEND #80 — CHAPTER E EFFECTIVELY COMPLETE
+(65/67; the two holds are C-supplier-gated); A-C.5 AND A-H.7
+SIGNED; A-E.6 DEMOTES A WOULD-BE-CONTRADICTION; THE CHAPTER-F
+FLEET AND THE CHAPTER-I STUB GATE ARE LAUNCHED — the capstone
+chapter enters the pipeline.** (1) E endgame: E.64 (PROVED,
+axioms = [propext] alone), E.65 (the q=2 n=8 gate EXECUTED, 30
+examples, E.60's clause fired in contradiction form), E.23 (the
+obligation record with a 20-supplier declaration-existence check
+— all present except E.57, honestly rowed OPEN). Chapter E:
+complete except E.51 + E.57, both RESCHEDULE on chapter C's
+C.63/C.69 partition-anchor chain. (2) A-E.6 (E.57): adjudicated
+from EFF.HE7.96 verbatim — the conclusion re-signed at
+Nonempty (BlockSuite I) per the A-E.2 standard; non-triviality
+machine-certified (a concrete I3 where it is FALSE); NEW
+stop-the-line: the re-signed statement is FALSE at the UNTYPED
+GC-13 socket (machine-checked), so the leanspec stub was DEMOTED
+from axiom to the named def BlockSplitTarget — declaring it
+would have put a contradiction in Leanspec.ChapE (zero
+consumers; census −1 axiom / +1 def). (3) A-C.5 SIGNED, all
+five items (see the amendment): the C.109 five-layer split with
+a pre-signing dictionary fix (naive sideSet = nodeSideSet FALSE
+at a machine witness — signed as containment + endpoints +
+degree + left height); C.13 clause 5 re-signed at the ϖ-read
+(the C.47 refutation repaired UPSTREAM, both downstream
+signatures byte-unchanged, consumers verified untouched,
+follow-ups FU-1..4 booked); C.113(i) at the proved repair;
+NODE C.129 signed with ALL FIVE clauses proved first; C.128
+narrowed to the proved geography pin. Census 131 → 137.
+(4) A-H.7 SIGNED: H.116b re-split into b1–b4 under a
+byte-unchanged assembly; certify-first found the old gauge
+cells were NOT genre cells (new real-genre block, 65/65),
+forced hQroot into b2, and caught a DAG cycle pre-landing;
+Σμ_p ≤ m adjudicated as b2's conclusion (edge order REVERSED:
+b2→b1→b3→b4); the replant route FENCED verbatim; b4's Smith-
+normal-form layer flagged GENUINE RESEARCH (not wave-sized).
+The b2→b1→b3 chain is RUNNING (with the sanctioned H116bR
+roll-up import). (5) LAUNCHED: chapter-F fleet wave 1 (12
+frontier weld nodes, WELD-ZERO fence in every charge) and THE
+CHAPTER-I STUB GATE (Leanspec/ChapI.lean at the signed
+blueprint: Display-A block typed ONLY against the landed A-E.2/
+A-D.2 carriers, voided shadows fenced, ns7/fgmn fields against
+the A-C.6 REDRAFTS marked cite-conditional, defects recorded
+not fixed). (6) Storm state: C wave 12 (FU chain + C.129 +
+C.109-i..iii) and A-C.6's finishing pass wiped by a burst,
+both queued on the running backoff timer. Codex cross-read
+queue (Tuesday) grew: A-H.7 §3/§5/§7-step-4, A-C.5's item-2
+adjudication, A-E.6's demotion decision.
