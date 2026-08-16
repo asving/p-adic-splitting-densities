@@ -30,6 +30,10 @@ import Uniformity.ChapG
 import Uniformity.ChapG.G78
 import Uniformity.ChapH
 import Uniformity.ChapB
+-- Chapter B's census gate (NODE B.86). Like G.78 it imports its chapter's roll-up, so it cannot
+-- be one of the roll-up's own imports; it is wired here instead, inside plain `lake build`.
+import Uniformity.ChapB.B86
 import Uniformity.ChapE
 import Uniformity.ChapC
 import Uniformity.ChapD
+import Uniformity.ChapF

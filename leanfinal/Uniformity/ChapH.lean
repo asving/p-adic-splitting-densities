@@ -117,5 +117,11 @@ import Uniformity.ChapH.H110
 import Uniformity.ChapH.H111
 import Uniformity.ChapH.H112
 import Uniformity.ChapH.H113
-
-/-! ChapH roll-up — regenerated at fleet layer close 13. -/
+import Uniformity.ChapH.H114
+import Uniformity.ChapH.H115
+import Uniformity.ChapH.H115b
+import Uniformity.ChapH.H115c
+import Uniformity.ChapH.H116
+import Uniformity.ChapH.H116h
+import Uniformity.ChapH.H117
+import Uniformity.ChapH.H118

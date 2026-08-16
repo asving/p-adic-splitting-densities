@@ -106,9 +106,3 @@ import Uniformity.ChapB.B84d
 import Uniformity.ChapB.B85a
 import Uniformity.ChapB.B85b
 import Uniformity.ChapB.BBox1CiteStatement
-
-/-! ChapB roll-up — regenerated at §10 close (B.83–B.86), 2026-08-16.
-
-Every chapter-B module, including §8/§9's certificate layer (B.79a/b, B.80, B.81, B.82), the
-§10 gate instances (B.83a–d, B.84a–d, B.85a/b) and their booked shared evaluation kit
-(`B83Kit`). `B.86` (the census block) imports this file and nothing else. -/
