@@ -7,6 +7,7 @@ import Uniformity.ChapC.C71
 import Uniformity.ChapC.C50
 import Uniformity.ChapC.C44
 import Uniformity.ChapC.C11
+import Uniformity.ChapC.C129
 import Uniformity.ChapB.B06
 import Uniformity.ChapB.B04
 import Uniformity.ChapB.B35a
@@ -414,6 +415,39 @@ theorem reass_map_C_mul_X_pow (F : KeyFrame O π) (E : Polynomial O) (b : ℕ)
     (hE : E.degree < F.key.degree) :
     reass F (Polynomial.C (AdjoinRoot.mk F.key E) * Polynomial.X ^ b) = E * F.key ^ b := by
   rw [reass_C_mul_X_pow, AdjoinRoot.modByMonicHom_mk, (modByMonic_eq_self_iff F.hmonic).2 hE]
+
+/-- **NODE C.129, clause (b)** (the C127 record's piece 2) — *the `Φ′`-digits of a REASSEMBLY
+are the canonical representatives of its coefficients.*  Landed HERE rather than in
+`Uniformity/ChapC/C129.lean` because it reads `reass`, whose carrier is this module: a
+`C129 → C127` import would cycle against this file's own `C129` import (see C129's header and
+the blueprint's DAG adjudication `C.129 → C.71`).  Its frame-generic helper
+`degree_modByMonicHom_lt` is in `C129.lean`. -/
+theorem dev_reass (F : KeyFrame O π) (S : Polynomial (AdjoinRoot F.key)) (b : ℕ) :
+    dev F.key (reass F S) b = AdjoinRoot.modByMonicHom F.hmonic (S.coeff b) := by
+  classical
+  set N := S.natDegree + 1 with hN
+  set Ap : Polynomial (Polynomial O) :=
+    ∑ i ∈ Finset.range N,
+      Polynomial.C (AdjoinRoot.modByMonicHom F.hmonic (S.coeff i)) * Polynomial.X ^ i with hAp
+  have hcoeff : ∀ i, Ap.coeff i = AdjoinRoot.modByMonicHom F.hmonic (S.coeff i) := by
+    intro i
+    rw [hAp, finsetSum_coeff]
+    simp only [coeff_C_mul, coeff_X_pow, mul_ite, mul_one, mul_zero]
+    rw [Finset.sum_ite_eq (Finset.range N) i
+      (fun i' => AdjoinRoot.modByMonicHom F.hmonic (S.coeff i'))]
+    by_cases hi : i ∈ Finset.range N
+    · rw [if_pos hi]
+    · rw [if_neg hi]
+      rw [Finset.mem_range, not_lt] at hi
+      rw [coeff_eq_zero_of_natDegree_lt (by omega), map_zero]
+  have heval : Polynomial.eval F.key Ap = reass F S := by
+    rw [hAp, reass_eq_sum_range F S (N := N) (by omega)]
+    simp [eval_finsetSum]
+  have hdeg : ∀ i, (Ap.coeff i).degree < F.key.degree := by
+    intro i
+    rw [hcoeff i]
+    exact degree_modByMonicHom_lt F _
+  rw [← heval, dev_eval_eq_coeff F hdeg b, hcoeff b]
 
 /-! ### The coefficient-degree toolkit (the in-grid bookkeeping of (F5)) -/
 
@@ -1313,6 +1347,7 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.dev_eval_eq_coeff
 #print axioms Uniformity.Density.Tower.biRead_eval_eq_map
 #print axioms Uniformity.Density.Tower.reass
+#print axioms Uniformity.Density.Tower.dev_reass
 #print axioms Uniformity.Density.Tower.shadowDev_eq_reass
 #print axioms Uniformity.Density.Tower.shadowDev_of_ingrid
 #print axioms Uniformity.Density.Tower.reass_map_C_mul_X_pow
