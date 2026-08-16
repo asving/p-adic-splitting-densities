@@ -470,4 +470,150 @@ are executable now**, which is exactly what makes I.10's `True` fields a defect 
 than a wait. The conjuncts themselves are UNCHANGED: CARRY, and the OM-9 `w1` note (a typed
 instantiation discharges NOTHING of HYP.139) travels with them. -/
 
-end LeanspecI
+/-! ### NODE I.10 [structure] — **THE CAPSTONE HYPOTHESIS STRUCTURE** (Display A, made formal).
+Lands `Uniformity.Density.CapstoneHypotheses`. ENV-I1.
+
+⚠⚠ **THIS DECLARATION IS AN ELABORATION GATE, NOT A SIGNATURE — defect I-D7.** The blueprint's
+§11 blocked table says, verbatim, *"a signed I.10 stub with `True` fields is a false
+conditionality claim; forbidden"*, and I.10's own SIGNATURE block nevertheless signs
+`jd0 : True` and `genhnBox2 : 6 ≤ n → True`. The structure is landed here at the SIGNED types so
+that the eight non-placeholder fields are type-checked against the landed corpus (which is what
+found I-D3, I-D4, I-D5 and I-D9); **no fleet agent may fire on I.10 until the owner re-signs the
+field list.** Since OM-9 the two `True` fields have real binding targets (F.04/F.11/F.12) — the
+gate below elaborates them — so the placeholders are STALE, not merely blocked.
+
+⚠ **STUB-SIDE REPAIR ON THE `ladder` FIELD (defect I-D3).** The signed `Ladder.LadderSupply C B`
+is underapplied by eight arguments against the landed E.24; the level data
+`(G, Kt, L, N, v, ρ, q)` is quantified inside the field here and the six universes are spelled
+explicitly (E-12). Recorded consequence: a `∀ ρ` binder is precisely OM-8's ρ-defeat regime, so
+the field as repaired is **undischargeable**; the honest cure is a gate-(a) field-list change
+binding chapter C's canonical residue data.
+
+⚠ **QUANTIFIER DISCLOSURE, transcribed.** Display A assumes the ladder suite "uniformly in `O`";
+E's carriers are instance-level. The field quantifies over ALL instantiations — the strongest
+uniform reading. Weakening it to the instantiations arising from degree-`n` inputs weakens a
+hypothesis, hence STRENGTHENS the theorem, and is still a gate-(a) event because the field list
+IS the public conditionality.
+
+⚠ **KIND NOTE [F7], transcribed.** H.95's `InductionPackage` is a `def`-Prop existential; this
+carrier is a `structure` and does NOT claim to mirror H.95's kind. -/
+
+/-- **Display A** (`spec/HYPOTHESIS_LEDGER.md`, FROZEN v5), one field per conjunct, at ledger
+strength, degree-indexed where the display is. Field-list changes are owner gate-(a) events
+(CONVENTIONS Part V).
+
+Consumption rules in force (I.10's 2026-08-16 dated note): `ladder`'s `.lb1`/`.mp1` projections
+are the **A-E.2** forms (`Nonempty (BlockSuite I)` / `Nonempty (MidPeelEmission B B')`), consumed
+universe-polymorphically in `uW`; `.vartheta` is E.61's typed socket at chapter D's **A-D.2**
+sitewise `HVarthetaRes`. The voided shadows (`OM4Shadow.*`, `HVarthetaResVoided`) are FENCED.
+
+⚠ The `AllOInterfaces` conjunct is NOT a field — §4.3's signed reconciliation (honesty I-10).
+⚠ The `𝒲_{≤i}` half of the `∀ i ≥ 3` conjunct has NO field (defect I-D4).
+⚠ `jd0`/`genhnBox2` are the FORBIDDEN-TO-SIGN placeholders (defect I-D7); `w1` has no field at
+all (defect I-D8). -/
+structure CapstoneHypotheses (n : ℕ) : Prop where
+  ns7 : NS7Termination
+  ladder : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
+      (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+      -- ⚠ I-D3's stub-side repair: the level data E.24 actually takes, quantified here.
+      (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+      [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+      (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
+      Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q
+  a0 : DecidedSliceAt n
+  a1 : MenuLawAt n
+  a2 : DrainageAt n
+  jd0 : True                            -- ⚠ LATE-BINDING F (I.08); defect I-D7
+  genhnBox2 : 6 ≤ n → True              -- ⚠ LATE-BINDING F (I.09); defects I-D7, I-D8
+  windowPinning : WindowPinningAt n
+  genhnHE : 6 ≤ n → GenhnHEAt n
+  genhnTow1 : 8 ≤ n → GenhnTow1At n
+
+/-! ## §4 GATE (executed; not blueprint declarations)
+
+Nine checks. Each is something this section could get wrong silently, and three of them are the
+machine evidence behind defects I-D4, I-D7 and I-D9. -/
+
+section GateFour
+
+-- (1) I.04: `A2_n`'s carrier is the LANDED `DrainageAt`, and I.10's `a2` field binds that name.
+example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n) : DrainageAt n := h.a2
+
+-- (2) the A-E.2 `(LB1)` consumption pattern, universe-polymorphic in `uW`: from the `ladder`
+-- field at a triggering interface, the FULL S1.7A block suite. Had `lb1` been left at the
+-- machine-refuted shadow (product identity + degree sum only), this would not typecheck.
+example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
+    (K : Type) [Field K] (C : Ladder.SlotCarrier ℤ K) (B : Ladder.BlockData C)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+    (I : Ladder.RungInterface.{0, 0, uW} C B) (hmulti : 1 < I.sides.card) :
+    Nonempty (Ladder.BlockSuite I) :=
+  (h.ladder ℤ K C B G Kt L N v ρ q).lb1 I (Or.inl hmulti)
+
+-- (3) the A-E.2 `(MP1)` consumption pattern: at a legal recentering, the FULL items-2–5 record.
+example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
+    (K : Type) [Field K] (C : Ladder.SlotCarrier ℤ K) (B : Ladder.BlockData C)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+    (Λ : Polynomial ℤ) (hΛ : Λ ≠ 0) (hdeg : Λ.natDegree < C.D) (B' : Ladder.BlockData C)
+    (hB' : B'.Φ = B.Φ - Λ) (hdvd : B'.Φ ∣ B.F) :
+    Nonempty (Ladder.MidPeelEmission.{0, 0, uW} B B') :=
+  (h.ladder ℤ K C B G Kt L N v ρ q).mp1 Λ hΛ hdeg B' hB' hdvd
+
+-- (4) the A-D.2 `(H-VARTHETA-RES)_i` consumption pattern: chapter D's SITEWISE carrier at the
+-- level-`i` data. Typing this against the voided existential would fail.
+example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
+    (K : Type) [Field K] (C : Ladder.SlotCarrier ℤ K) (B : Ladder.BlockData C)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (i : ℕ) (hi : 3 ≤ i) :
+    Gauge.HVarthetaRes G Kt L N (v i) (ρ i) (q i) :=
+  ((h.ladder ℤ K C B G Kt L N v ρ q).vartheta i hi).supplied
+
+-- (5) **DEFECT I-D4, machine-exhibited.** The landed declaration that carries BOTH halves of the
+-- `∀ i ≥ 3` conjunct at the typed sockets is E.63's `DeepTwistConjunct`; the `ladder` field
+-- delivers only its first component, and the `𝒲` component has no field in I.10 at all. The
+-- `#check` records the object the fleet must re-sign against.
+#check @Uniformity.Density.Ladder.DeepTwistConjunct
+example {G : Type uG} [CommGroup G] {K : Type uKt} [Field K] {L : Type uL} [Field L]
+    [Algebra K L] {N : Gauge.NormSection G} (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+    (A : ℕ → Gauge.GaugeArena G K N) (R : ℕ → G → K) (w : ℕ → Kˣ)
+    (H : Ladder.DeepTwistConjunct v ρ q A R w) (i : ℕ) (hi : 3 ≤ i) :
+    Gauge.HVarthetaRes G K L N (v i) (ρ i) (q i) ∧ Ladder.WFrame A q R w i :=
+  ⟨(H i hi).1.supplied, (H i hi).2⟩
+
+-- (6) **DEFECT I-D7 / items L-1 and L-2, machine-exhibited.** The `True` fields' binding targets
+-- are landed and type at chapter I's consumption shape RIGHT NOW.
+example : Prop :=
+  ∀ (Γ K : Type) [AddCommGroup Γ] [Field K] (site : Weld.ValueDictSite Γ K), Weld.JD0Box2 site
+example : Prop := ∀ (K : Type) [Field K] (s : Weld.CarrySite K), Weld.GenhnBox2 s
+example : Prop := ∀ (K ι : Type) [Field K] (Rh RG : ι → K), Weld.W1Transport Rh RG
+
+-- (7) **DEFECT I-D9, machine-PROVED: I.03's `(A1)`-admissibility clause is VACUOUS.** The shape
+-- clause is one-directional, so `r = 0, F = []` satisfies it for every `S`, and `MenuLawAt` is
+-- EQUAL to its bare menu clause. This is the OM-4 FINDING-0 genre and is NOT what I.03's own ⚠
+-- SIGNATURE NOTE discloses.
+example (n : ℕ) : MenuLawAt n ↔
+    ∃ S : Finset FactorizationType, (∀ σ ∈ S, σ.degree = n) ∧
+      ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+        [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
+        CoveringMenu O n S := by
+  constructor
+  · rintro ⟨_, _, S, _, hdeg, hmenu⟩
+    exact ⟨S, hdeg, hmenu⟩
+  · rintro ⟨S, hdeg, hmenu⟩
+    exact ⟨0, ([] : List (Induction.A1Cell 0)), S, by intro C hC; simp at hC, hdeg, hmenu⟩
+
+-- (8) I.07's partially-typed census leg: C.93 clause (i), the `n = D_r·μ_r ≥ 2^{r+1}` threshold
+-- the whole HYP.82 census rests on, is LANDED and reachable.
+#check @Uniformity.Density.Tower.tower_first_live
+
+-- (9) the FENCE, stated as a type: `NS7Termination`'s signed body is the placeholder, and this
+-- is the ONE machine-visible fact about it. Anything stronger would be a resolution, which
+-- defect I-D6 forbids until the C.94 REDRAFT is signed.
+example : NS7Termination := fun _ => trivial
+
+end GateFour
