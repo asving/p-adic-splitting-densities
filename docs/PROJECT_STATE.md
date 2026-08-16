@@ -5320,3 +5320,48 @@ axiom), C.66/C.92 FGMN battery, C.94 AGNPRW Thm 5.6,
 recentered_key_emission (OM-4) — all category-signed per #66,
 exact statements + faithfulness entries on file in CHAP-I,
 individual inspection at will; A-3 browser riders still open.
+
+**2026-08-16 DATED APPEND #71 — THE DISPLAY-A CARRIER ADJUDICATION
+LANDS: BOTH REFUTED CONJUNCT CARRIERS RE-SIGNED (A-E.2 + A-D.2),
+CHAPTER I's CONSUMPTION RULE WRITTEN, NON-TRIVIALITY MACHINE-
+CERTIFIED; the I.10 fence is LIFTED at the re-signed forms.**
+(1) A-E.2 (CHAP-E + leanspec §6): E.39/E.40 re-signed at the full
+contentful records — LB1Carrier now concludes Nonempty (BlockSuite
+I) (one field per S1.7A display: product identity, pairwise-
+coprimality + degree-sum partition shadow, single-side hulls, pure
+residuals with OWN exponent k≥1 (the k≠m fence of EFF.T2.17
+honored), classCount compatibility both directions, inherited
+threshold + per-block RungInterface continuation); MP1Carrier now
+concludes Nonempty (MidPeelEmission B B') (EFF.T2.23 items 2–5;
+item 5 = Φ″-irreducibility + the single-orbit emission surface,
+THE cite-consuming clause for recentered_key_emission). Names,
+binders, triggers byte-preserved; E.44/E.24 field lists unchanged.
+The committed shadows are archived verbatim (OM4Shadow.*Voided in
+verification/om4_shadow_vacuity.lean, still proved trivially —
+the permanent lower bound on carrier strength). One source-cite
+slip corrected: OM-4 §1.1's continuation-data display is EFF.T2.28
+(merged numbering), not .75. (2) A-D.2 (CHAP-D DECISION D-2 +
+leanspec §9): D.62 re-signed SITEWISE against a GIVEN ambient
+residue datum (EFF.T1.09's display verbatim, q = the level's fixed
+use-height, K_i-unit witness through [Algebra K L]); the committed
+existential form named-and-voided as HVarthetaResVoided (provably
+= the exact-height fact, D-D12); D-H3's strength claim restored as
+the PROVED hvarthetaRes_of_arena_agree; D.63 signature unchanged,
+consumption fenced. D.07 untouched. (3) NON-TRIVIALITY CERTIFIED
+(verification/om4_resign_nontriviality.lean, all Lean-core): each
+re-signed carrier is FALSE at a concrete instance — LB1 at a real
+SlotCarrier ℤ ℚ with F = X²+X+1 and a two-side trigger (forces a
+monic-linear ℤ-factorization that doesn't exist); MP1 at key X²,
+F = X⁴−5X²+4, Λ = 4 (peeled key X²−4 reducible — hirr
+unsatisfiable); (H-VARTHETA-RES) at an exact-height instance whose
+ambient datum sends the s = 2 ϑ-quotient to −i ∉ ℚ (the old
+⟨v,hv,1⟩ recipe provably cannot replay, while the voided form
+still trivializes at the same instance — the contrast is machine-
+visible). (4) CHAPTER I: dated note at NODE I.10 — LB1∧MP1
+consumed at the A-E.2 forms ONLY, universe-polymorphically (E-12);
+(H-VARTHETA-RES)∧𝒲 at the A-D.2 form ONLY; E.61's GC-13/GC-14
+socket typing bound to the A-D.2 carrier; all voided shadows
+fenced for every consumer/discharge; OM-4 addendum FINDING 0
+annotated EXECUTED. Builds green: lake build Leanspec.ChapE /
+Leanspec.ChapD; lake env lean on both verification files. Commits:
+d420f112, 823e7885, 38b56472, d53d2557, a575813f (+ this append).
