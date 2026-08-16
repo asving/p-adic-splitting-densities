@@ -1,5 +1,22 @@
 # RESCHEDULE record — NODE C.56a (`k2DigitLift`), Chapter-C fleet wave 6, agent 2
 
+> **SUPERSEDED 2026-08-16 (wave 8, agent 1).** The blocker cleared: NODE C.14a landed at
+> `leanfinal/Uniformity/ChapC/C14a.lean` (commit `4e2ff066`) carrying the public
+> `KeyFrame.stageCoord`, and **C.56a is now LANDED** at
+> `leanfinal/Uniformity/ChapC/C56a.lean` — three signed declarations (`k2Coord`, `n2Exp`,
+> `k2DigitLift`), bodies byte-identical to the A-C.1 SIGNATURE, sorry-free, `#print axioms`
+> Lean-core only, `lake build Uniformity.ChapC.C56a` green.
+>
+> One prediction below needs correcting for the record: the note expected `resLift` to need a
+> D9-pattern local copy, since the blueprint calls it "a private helper of this file". C.14a
+> landed `resLift` **public**, explicitly citing C.56a's signature as the reason, so no local
+> copy was made — one would have been a duplicate declaration at the same fully-qualified name.
+>
+> The downstream list at the bottom (C.56, C.84/C.85, C.62) is likewise unblocked as far as
+> `k2DigitLift` is concerned; each still has its own other dependencies to pre-check.
+>
+> The rest of this file is the historical BLOCKED record, kept verbatim.
+
 **Date.** 2026-08-16. **Verdict.** BLOCKED — dependency not landed. **Not weakened, not
 attempted with a stand-in.**
 
