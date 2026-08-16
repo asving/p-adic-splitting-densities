@@ -7,6 +7,7 @@ import Uniformity.ChapH.H06
 import Uniformity.ChapH.H07
 import Uniformity.ChapH.H08
 import Uniformity.ChapH.H09
+import Uniformity.ChapH.H09w
 import Uniformity.ChapH.H10
 import Uniformity.ChapH.H11
 import Uniformity.ChapH.H12
@@ -61,6 +62,7 @@ import Uniformity.ChapH.H60
 import Uniformity.ChapH.H61
 import Uniformity.ChapH.H62
 import Uniformity.ChapH.H63
+import Uniformity.ChapH.H63w
 import Uniformity.ChapH.H64
 import Uniformity.ChapH.H65
 import Uniformity.ChapH.H66
@@ -92,25 +94,24 @@ import Uniformity.ChapH.H91
 import Uniformity.ChapH.H92
 import Uniformity.ChapH.H93
 import Uniformity.ChapH.H94
+import Uniformity.ChapH.H94w
 import Uniformity.ChapH.H95
 import Uniformity.ChapH.H96
 import Uniformity.ChapH.H97
-import Uniformity.ChapH.H97r1
-import Uniformity.ChapH.H97r2
-import Uniformity.ChapH.H97r3
-import Uniformity.ChapH.H97r4
 import Uniformity.ChapH.H97b
 import Uniformity.ChapH.H98
 import Uniformity.ChapH.H99
-import Uniformity.ChapH.H09w
-import Uniformity.ChapH.H63w
-import Uniformity.ChapH.H94w
+import Uniformity.ChapH.H100
+import Uniformity.ChapH.H101
+import Uniformity.ChapH.H102
+import Uniformity.ChapH.H103
+import Uniformity.ChapH.H104
+import Uniformity.ChapH.H105
+import Uniformity.ChapH.H106
+import Uniformity.ChapH.H107
+import Uniformity.ChapH.H108
+import Uniformity.ChapH.H109
+import Uniformity.ChapH.H110
+import Uniformity.ChapH.H111
 
-/-! Chapter H roll-up — COMPLETE: 99/99 nodes landed 2026-08-15. -/
-/-! Plus `H09w`: the H.09 `StageInterface` non-vacuity witnesses (finding R3, §16 item 14). -/
-/-! Plus `H97r1`–`H97r4`, `H97b` (unit OM-1, 2026-08-16): the `n = 3` rate support chain and
-`package_three` — `InductionPackage 3` unconditional, `(K, B, c) = (1, 0, 3)`. -/
-/-! Plus `H63w`, `H94w` (unit OM-3, 2026-08-16): the (CS-EXACT)-side inclusion–exclusion
-IDENTITY at every `r` (H.63 is the bound direction), and the set-level 2SIDED dominance split
-with the `r = 1` general-coefficient trichotomy (H.94(iii) is the form transport; §16 item 6's
-general split stays OPEN in Lean — math proof at the OM-3 unit note §A). -/
+/-! Chapter H roll-up — 99/99 + witnesses + §17 waves 1-2 (H.100-H.111). -/

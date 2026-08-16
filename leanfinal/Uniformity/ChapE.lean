@@ -1,8 +1,35 @@
 import Uniformity.ChapE.E01
+import Uniformity.ChapE.E02
+import Uniformity.ChapE.E03
+import Uniformity.ChapE.E04
+import Uniformity.ChapE.E05
 import Uniformity.ChapE.E07
+import Uniformity.ChapE.E08
+import Uniformity.ChapE.E09
+import Uniformity.ChapE.E10
+import Uniformity.ChapE.E11
+import Uniformity.ChapE.E12
+import Uniformity.ChapE.E13
+import Uniformity.ChapE.E17
+import Uniformity.ChapE.E18
 import Uniformity.ChapE.E25
 import Uniformity.ChapE.E26
+import Uniformity.ChapE.E27
+import Uniformity.ChapE.E28
+import Uniformity.ChapE.E30
+import Uniformity.ChapE.E32
 import Uniformity.ChapE.E34
+import Uniformity.ChapE.E35
+import Uniformity.ChapE.E36
+import Uniformity.ChapE.E43
 import Uniformity.ChapE.E45
+import Uniformity.ChapE.E46
+import Uniformity.ChapE.E47
+import Uniformity.ChapE.E48
+import Uniformity.ChapE.E49
+import Uniformity.ChapE.E50
+import Uniformity.ChapE.E53
+import Uniformity.ChapE.E54
+import Uniformity.ChapE.E59
 
-/-! Chapter E roll-up — fleet wave 1 in flight. -/
+/-! Chapter E roll-up — 32/68 landed (waves 1-3). -/
