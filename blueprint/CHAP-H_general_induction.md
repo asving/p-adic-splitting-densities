@@ -459,6 +459,7 @@ Six things, and they are the chapter's actual mathematical content:
 | 17 | H.100–H.124 | *[dated extension 2026-08-16, unit T-1/OM-2]* **THE T-1 COMPLETION LAYER**: N-1 level-0 class transport (H.100–H.105) · N-2 cluster event grammar over `O` (H.106–H.117) · N-3 conservative verdict, `RecursionLegs` legs, the S-1 bridge, the composed reduction (H.118–H.124) |
 | A-H.5 | H.114, H.115, H.116 | *[dated append 2026-08-16, unit T-1 wave 3]* **THE CENTRE-SHIFT RE-SIGN**: clause (i) of `alphaChild_spec`/`betaChild_spec` REFUTED (∀-lift-pair quantifier); DECISION D-H17.3 pins the centre in the def, requantifies clause (i) at the canonical centre, and closes both opaque-carrier deviations. Carries LESSON L-BATT (GC-candidate) |
 | A-H.6 | H.121 (iii), H.122, **+H.121d**, **+H.30b** | *[dated append 2026-08-16, unit A-H.6]* **THE β-ENVELOPE RE-SIGN (F-H17.2's repair)**: clause (iii) re-signed at `(K′,B′,c′) = (1/3, 1, 1)` — `#(β∧undec)(N) ≤ (1/3)·N·Q^{m(N−1)}·Q^{−(N−1)}` — a STRENGTHENING (it implies the frozen envelope at every `N`); the finding's own repair candidate `(m−1)·Q^{−(N−1)}` is **REFUTED** (`q = 2` first failure `N = 32`); two nodes added — H.121d (the content-weighted β census, the priced non-circular pricing step) and H.30b (the α-geometric sum at `c ≥ 2`); H.122's `rate_close` route is **CLOSED as refuted**, the local replay is signed with its closing arithmetic. `verification/AH6_beta_envelope_check.py` |
+| A-H.7 | H.116 (clause ii), **+H.116b1**, **+H.116b2**, **+H.116b3**, **+H.116b4** | *[dated append 2026-08-16, unit A-H.7]* **THE H.116b RE-SPLIT**: `betaExtract_fiber_card` (BYTE-UNCHANGED) becomes an ASSEMBLY node over four new sub-nodes — the `Finset`-indexed multi-child peel with `Σ μ_p ≤ m` as a CONCLUSION (§3 adjudicates: NOT from H.108, it is paid for by the peel induction, so the DAG edge is b2 → b1), multiplicity-ADDS and the genre of a planted product (signed with the `hQroot` condition check `(e2)` forced), the `¬ IsCSState` transport, and THE COUNT at the **GAUGE-RESULTANT** route (uniform PAIR-space presentation multiplicity; `v(Res) = μμ'min(k,k')` b-independent). **FENCE A-H.7/F1: the peel-shift-REPLANT route is CLOSED** (D3/E3/surjectivity, machine-refuted, quoted verbatim in §1.2) — no agent re-attempts it. `verification/openmath/OM2_h116b_gauge_resultant.py` extended 39/39 → **65/65** |
 
 **Kind census** (mechanically counted over this file's `### NODE` headings): 15 `def`, 62 `lemma`,
 18 `theorem`, 3 `def+lemma`, 1 `gate` — **99 nodes**. Three of the `def` nodes carry a `structure`
@@ -8000,7 +8001,11 @@ recentring factors EXACTLY as `π^D · (monicPoly b · H′)` with `b` (degree `
 in `𝔪`) a lift of the child and `H′` the cofactor — the Hensel split of the content-divided
 frame along `X^μ ×` (unit-constant cofactor); (ii) per GENRE (fixed child set `L`, fixed
 windows via `D`), the JOINT child map has EQUICARDINAL fibres — the mechanism behind the
-battery's per-genre composed count `census_g · [Π T_l − Π(T_l − u_l)]`.
+battery's per-genre composed count `census_g · [Π T_l − Π(T_l − u_l)]`. **[RE-SPLIT: A-H.7 —
+clause (ii) (`H.116b`) is now an ASSEMBLY node over the four sub-nodes H.116b1–H.116b4; the
+SIGNATURE below is BYTE-UNCHANGED, and the peel-shift-REPLANT route to it is CLOSED, FENCE
+A-H.7/F1. Machinery already landed: `leanfinal/Uniformity/ChapH/H116bR.lean`, 20 declarations,
+Lean-core. Block record: `leanfinal/notes/BLOCKED_H116b_2026-08-16.md`.]**
 
 **SIGNATURE.**
 ```lean
@@ -8056,7 +8061,17 @@ theorem betaExtract_fiber_card {O : Type*} [CommRing O] [IsDomain O]
 the coprime pair `(X^μ, cofactor)`), H.108, H.109, H.111, H.112 · **H.115 (A-H.5 §1's
 canonical lift pair `resSect`/`classSect`/`recFrame`, landed at the head of `H115.lean`;
 DEF-DEPENDENCY, added: A-H.5)** · H.60 (unit pivots, the
-fibre mechanism) · landed `exists_monic_factorization_finset`.
+fibre mechanism) · landed `exists_monic_factorization_finset` · *[added A-H.7, clause (ii)
+only]* **H.116b1** (`exists_peel_finset`, `peel_cofactor_inherits`), **H.116b2**
+(`coeff_level_mul_trailing`, `plantedPoly_genre`), **H.116b3**
+(`not_isCSState_plantedPoly_swap`), **H.116b4** (`planted_presentation_card`) · *[added A-H.7]*
+**H.106** (`card_clusterState`, the coset count of §8 step 3) · *[added A-H.7]* the twenty
+LANDED declarations of `leanfinal/Uniformity/ChapH/H116bR.lean` (`exists_peel`,
+`not_pow_add_succ_dvd_coeff_mul`, `not_pow_min_succ_dvd_coeff_recentre_alphaParent`,
+`coeff_zero_recentre_alphaParent_not_dvd`, `recentre_alphaParent_own`,
+`level_recentre_mul_alphaParent`, `pow_level_succ_dvd_coeff_recentre_swap`,
+`betaContent_eq_of_frame_congr`, `hasChildAt_iff_of_frame_congr`, …), consumed through the
+sub-nodes.
 
 **PROOF.** 1. [re-derived: A-H.5] (def body, LANDED not owed) the body is the DESCRIPTION
 displayed in the signature: the unique `d : ClusterState O μ M` whose lift exhibits the pinned
@@ -8079,12 +8094,20 @@ lifts of one class give divided frames agreeing at window `N − D` (H.109's
 equal frame classes to equal child classes — this is the "well-defined on the class" step the
 committed PROOF already had, and it is sound. What it never covered, and what A-H.5 removes, is
 the CENTRE direction: H.109's `pow_succ_dvd_coeff_shift` gives `π^{D+1}`, ONE digit, and the
-child is read at `N − D ≥ 2`. 3. (ii) the fibre over `t` is (ghost digits above each child's
-window) × (the frame sector outside the children — pieces and off-frame digits), both
-independent of `t`: unit-pivot triangularity per child (H.60, as at H.115 step 3) plus the
-product structure of the digit filtration. Equicardinality follows WITHOUT computing `F` —
+child is read at `N − D ≥ 2`. 3. (ii) **[RE-WRITTEN: A-H.7 §8 — the ASSEMBLY over H.116b1–b4.
+The committed step-3 text is preserved verbatim in A-H.7 §1.1 and is SUPERSEDED: its "product
+structure of the digit filtration" is exactly what the battery's check D3 REFUTES in
+multi-child same-slope genres, where the two planted sub-lattices carry a genuine syzygy and
+the filtration does NOT split as a product.]** Degenerate `(L, D)` give `F = 0` outright (four
+cases, A-H.7 §8). Otherwise set `r := m − Σ_p μ_p` (H.116b1's degree-sum bound) and let `𝒬` be
+the `t`-FREE set of admissible cofactors (non-drain, child-free, ROOT-free at `L`'s frames —
+H.116b2 (ii)'s hypotheses). SOUNDNESS of the planting is H.116b2 (ii) + H.116b3; SURJECTIVITY
+is H.116b1; and H.116b4's uniform presentation multiplicity `G` closes
+`G·#fibre(t) = (∏_p Q^{μ_p·D p})·Nat.card 𝒬`, whose right-hand side does not mention `t`.
+Equicardinality follows WITHOUT computing `F` —
 deliberately `∃ F` only: the genre census `census_g` is TRACK V (HYP.26's menu weights) and
-is not owed here. **[A-H.5] (ii) is a statement about the PINNED map**, and only the pinning
+is not owed here (`G` and `Nat.card 𝒬` are left uncomputed, which is what preserves that).
+**[A-H.5] (ii) is a statement about the PINNED map**, and only the pinning
 makes it plausible: H.60's unit-pivot triangularity is a property of the canonical-centre digit
 transform, so a body that selected its centre from an existential would have fibres that are an
 uncontrolled reshuffling of the canonical ones and no route to equicardinality (A-H.5 §5). 4.
@@ -8092,6 +8115,12 @@ Child-window positivity `1 ≤ N − D p` at the genuine windows is
 H.108's lemma half.
 
 **SIZE.** 55 lines + helpers; SPLIT MANDATED: H.116a (def + spec), H.116b (fibration).
+*[UPDATED A-H.7]* **H.116a is LANDED** (`betaChild` + `betaChild_spec`). **H.116b is RE-SPLIT
+FURTHER** into H.116b1 (90 lines), H.116b2 (75), H.116b3 (60), H.116b4 (120 + a Smith-normal-form
+helper, and the ONE research step of the four) and the 70-line ASSEMBLY that is H.116b itself —
+A-H.7 §§4–8. Land them in the DAG order **b2 → b1 → b3 → b4 → assembly** (the b2 → b1 edge is
+adjudicated at A-H.7 §3, and reverses the block record's listing order). Do NOT assign H.116b4
+before b1–b3 land, and do NOT assign it to the replant route (FENCE A-H.7/F1).
 **SOURCE.** OM-2 §3.2 N-2c (displayed: capped windows, constant fibre; the verdict half
 lands at H.118/H.119); `EFF.GENIND.10` (the β-fibration), `EFF.GENIND.24` (the
 `[r3]`-capped window with its THREE-layer correction history — a transcription must not
@@ -9530,3 +9559,684 @@ append, as are H.121 clauses (i)/(ii) and H.122's signed statement. FINDING F-H1
 DISCHARGED at the statement level; its CANDIDATE-0 is refuted and preserved (§1d). CODEX/
 decorrelated CROSS-READ OWED on the re-signed clause (iii), on H.121d's three-case exhaustion,
 and on §4's closing arithmetic.*
+
+---
+
+## AMENDMENT A-H.7 (2026-08-16, dated append; unit A-H.7) — NODE H.116b RE-SPLIT INTO FOUR
+## SUB-NODES; THE COUNT SIGNED AT THE GAUGE-RESULTANT ROUTE; THE PEEL-SHIFT-REPLANT ROUTE
+## CLOSED, PERMANENTLY
+
+**Provenance.** The BLOCKED record `leanfinal/notes/BLOCKED_H116b_2026-08-16.md` (commit
+`624411ce`) reported H.116b **BLOCKED — not weakened, no stand-in, no re-sign**: the node is
+TRUE (measured exhaustively) but its remaining content is four node-sized jobs, one of which is
+a counting mechanism whose naive form the project's own battery REFUTED. The record recommended
+a re-split and deferred the call. **This amendment makes that call**: it signs the four
+sub-nodes with exact Lean signatures, adjudicates the one open mathematical question the record
+left (where the degree-sum bound `Σ_p μ_p ≤ m` comes from), demotes H.116b to an ASSEMBLY node,
+and fences the closed route so no future agent re-attempts it.
+
+**H.116 clause (ii)'s signed statement — `betaExtract_fiber_card` — is BYTE-UNCHANGED.** Nothing
+here weakens it; the four sub-nodes are new obligations *below* it, not a substitute for it.
+
+Two executable artifacts decide the adjudication:
+
+* `verification/openmath/OM2_h116b_replant_cert.py` (**68/68**, both rings, exhaustive where the
+  cell allows) — the REFUTATIONS, quoted verbatim in §1.2, and the fact that the statement is
+  true (checks A, E2).
+* `verification/openmath/OM2_h116b_gauge_resultant.py` — **EXTENDED BY THIS UNIT from 39/39 to
+  65/65** (exit 0, exact `Z/q^N`), block `(d)`–`(h)`. Certify-before-sign: every leg of the
+  route signed at §7 that block `(a)`–`(c)` did not already cover was added to the battery
+  BEFORE the signature was written, and one of the additions produced a coverage finding
+  against the pre-existing block (§2.1).
+
+⚠ S-1 throughout: every count named here is the CONSERVATIVE complement `u_{m,1}`, never the
+semantic `undecidedCount` (finding F-2).
+
+---
+
+### §1. The frozen originals (preserved verbatim; nothing here is deleted)
+
+#### §1.1 H.116 clause (ii), as committed and as it stays
+
+```lean
+theorem betaExtract_fiber_card {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [Finite (ResidueField O)]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m N : ℕ}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (L : Finset (ℕ × ℕ × ResidueField O)) (hL : L.Nonempty)
+    (D : ℕ × ℕ × ResidueField O → ℕ) :
+    ∃ F : ℕ, ∀ t : ∀ p ∈ L, ClusterState O p.1 (N - D p),
+      Nat.card {c : ClusterState O m N |
+        IsBetaState π c ∧
+        (∀ p : ℕ × ℕ × ResidueField O, HasChildAt π c p.1 p.2.1 p.2.2 ↔ p ∈ L) ∧
+        (∀ p ∈ L, betaContent c p.2.1 = D p) ∧
+        (∀ (p : ℕ × ℕ × ResidueField O) (hp : p ∈ L)
+            (hc : HasChildAt π c p.1 p.2.1 p.2.2),
+          betaChild π c hc (N - D p) = t p hp)} = F
+```
+
+The committed PROOF step 3 read: *"(ii) the fibre over `t` is (ghost digits above each child's
+window) × (the frame sector outside the children — pieces and off-frame digits), both
+independent of `t`: unit-pivot triangularity per child (H.60, as at H.115 step 3) plus the
+product structure of the digit filtration. Equicardinality follows WITHOUT computing `F` —
+deliberately `∃ F` only."* That text is **superseded** for clause (ii) by §8 below: the
+"product structure of the digit filtration" is exactly what the battery's check **D3** refutes
+in multi-child same-slope genres, where the two planted sub-lattices carry a genuine syzygy and
+the digit filtration does NOT split as a product. Clause (i) and the def half are untouched.
+
+#### §1.2 The CLOSED route — the refutations, verbatim, and the fence
+
+The obvious route to the count is: build `R_{t→t'} : fibre(t) → fibre(t')` by
+peel-shift-replant and show it bijective. **That route is CLOSED.** From
+`verification/openmath/OM2_h116b_replant_cert.py`'s own FINDINGS block, verbatim:
+
+> `(-) D2 (REFUTED, expected-negative): the replant class DEPENDS on the choice of lift of`
+> `the target difference (t'_p - t_p) beyond its class: Delta and Delta + pi^{N-D}*u give`
+> `DIFFERENT output classes.  So the Lean construction must pin Delta by a FIXED section;`
+> `there is no canonical-free re-planting.`
+>
+> `(-) D3 (REFUTED, expected-negative): "presentation stability" FAILS in multi-child`
+> `same-slope genres: two exact planted presentations of the SAME class, shifted by the`
+> `SAME Delta, can give DIFFERENT classes (witness: rigid-K same-slope cell; the two`
+> `same-slope planted sub-lattices carry a genuine syzygy, gauge group of size q^4 in the`
+> `census cell).  Consequence: injectivity of the replant map does NOT follow from the`
+> `naive stability argument; the counting must go through the raw parameter space`
+> `(presentations) with constant presentation-multiplicity, or another mechanism.`
+>
+> `(-) E3 (expected-negative, recorded): the round trip replant(t->t');replant(t'->t) is NOT`
+> `the identity in Zq (section carries) — mutual injections/bijections must not be built`
+> `from a round-trip identity.`
+>
+> `(+) D1: single-child presentation stability HOLDS on all SINGLE-child genres tested,`
+> `including k = 2, 3 children at nontrivial windows (constructed cells).`
+
+and from `leanfinal/notes/BLOCKED_H116b_2026-08-16.md` §4d, verbatim:
+
+> `Surjectivity of R (which would suffice — two surjections between finite sets force`
+> `equicardinality) fails for the same reason: recovering a preimage requires peeling the`
+> `canonical lift of the shifted state, and that peel differs from the shifted peel by exactly`
+> `the amount D3 exhibits. Confirmed closed. Assign no more agents to the replant route.`
+
+**⚠ FENCE A-H.7/F1 (standing).** No node signed by this amendment builds a map between fibres.
+An agent that proposes to prove H.116b, H.116b4 or `betaExtract_fiber_card_single` by
+constructing `R_{t→t'}` — as a bijection, as an injection, as a surjection, or as one half of a
+round trip — must return this fence, not a proof and not a weakened statement. The single
+exception D1 records is the `|L| = 1` case, and §9 says what it is and is not worth.
+
+---
+
+### §2. The certification (`OM2_h116b_gauge_resultant.py`, 39/39 → **65/65**, exit 0)
+
+Block `(a)`–`(c)` (pre-existing, this unit did not touch it) certifies: the planting map at a
+FIXED cofactor is uniformly many-to-one with multiplicity `(per-child ghost) × q^γ`, `γ`
+cofactor-independent; the pairwise resultant law
+`v(Res(P_p, P_{p'})) = μ_p·μ_{p'}·min(k_p, k_{p'})` is **b-INDEPENDENT**; and the child fibres
+come out equicardinal with no replant map.
+
+#### §2.1 FINDING A-H.7/C1 — block (a)'s cells are NOT genre cells
+
+Two defects of coverage, both mechanical, both now repaired:
+
+1. **`μ = 1` is not a child.** `HasChildAt` carries `2 ≤ μ` (H.109). Five of block (a)'s seven
+   cells use `μ = 1` children, which are not child events at all — they exercise the planting
+   map, not the genre.
+2. **Every one of block (a)'s planted products is a DRAIN state.** `v(∏_p P_p(0)) = Σ_p k_p μ_p`
+   exactly (the planted factor's constant term is `π^{kμ}·(unit)`), so the product is non-drain
+   only when `Σ_p k_p μ_p + v(Q(0)) ≤ N − 1`. At every cell of block (a) that sum is `≥ N`.
+   `IsBetaState`'s first conjunct excludes drain states, so no cell of block (a) meets the
+   genre.
+
+The smallest cell that is simultaneously **multi-child** (`μ_p ≥ 2`), **non-drain**, and carries
+a **non-trivial child read** (`N − D_p ≥ 2`) is `q = 3, N = 6, m = 4, L = {(2,1,1),(2,1,2)}`,
+`K = 1` — exactly the same-slope census cell that `OM2_h116b_replant_cert.py`'s check **E2**
+resolves. Block `(d)`–`(h)` runs it.
+
+#### §2.2 Block (d)–(h), added by this unit — the legs of §7's route
+
+Block `(a)`–`(c)` holds the COFACTOR FIXED and varies only the child lifts. The accounting
+H.116b actually needs runs over the **PAIR space** (one presentation per child, one cofactor
+presentation), so what has to be constant is the PAIR multiplicity **over the genre** — and
+nothing in `(a)`–`(c)` excludes two DIFFERENT cofactors presenting the same class, which would
+make the multiplicity vary from class to class and break the division. Three further legs were
+equally load-bearing and equally unmeasured. All five are now checked:
+
+| check | claim | headline measurement |
+|---|---|---|
+| `(d)` | the **PAIR** presentation multiplicity is CONSTANT on the genre | `4 782 969` presentations → `59 049` classes, multiplicity `81` at EVERY class (D3 cell) |
+| `(e)` | the **GENRE** of a planted product is a function of the COFACTOR ALONE | `243` cofactors × `8` b-samples, one genre each |
+| `(e2)` | the ADMISSIBLE cofactors are characterized b-freely: non-drain **+** child-free **+** ROOT-free at `L`'s frames | `4/16`, `45/81`, `704/1024`, `162/729` admissible, matching the predicate exactly |
+| `(f)` | the child **READS** are a function of the CLASS | `59 049` classes, one read each (D3 cell) |
+| `(g)` | genre `=` (predicted # of child reads) × EQUICARDINAL fibres | `81 reads × 729 = 59 049` (D3 cell), `4 × 8 = 32`, `9 × 135 = 1215` |
+| `(h)` | the planted image **IS** the genre, exactly (soundness AND surjectivity) | `32` of `4096` states, exhaustive at `q = 2, N = 5, m = 3` |
+
+`(g)` at the D3 cell reproduces check **E2** of the replant battery *on the nose* — `81` fibres
+of `729` — from a completely different computation (presentation counting, no replant map). That
+agreement is the strongest single piece of evidence the route has.
+
+**`(e2)` is the one that changed a signature.** The admissibility predicate needs THREE
+conditions, and the third is **not** implied by the second: a cofactor with a SIMPLE root at
+`(k_p, z_p)` (`ord₀ = 1`, hence no child of its own) pushes the product's multiplicity there to
+`μ_p + 1` and moves the product out of the genre. H.116b2 (ii) is signed with `hQroot` because
+of this measurement; without it the node would be FALSE.
+
+---
+
+### §3. Adjudication I — where the degree-sum bound `Σ_p μ_p ≤ m` comes from
+
+The block record flagged this as the open question of the re-split: *"its degree bookkeeping
+(`Σ_p μ_p ≤ m`) is not available from H.108's cap alone; §4's `μ ≤ m` argument does not
+iterate."* **VERDICT: the record is right that H.108 does not supply it, and the bound is a
+CONCLUSION of the peel induction itself, paid for by the "cofactor inherits" clause. It is not
+signed as a hypothesis, and no consumer discharges it.**
+
+* **Why H.108 cannot supply it.** The landed argument is `mul_le_betaContent`
+  (`k·μ ≤ betaContent c k`, H116bR §2) plus `betaContent_le_mul` (`betaContent c k ≤ m·k`,
+  H.108), giving `k_p μ_p ≤ m k_p` and so `μ_p ≤ m` for EACH `p` separately. Summing over `L`
+  gives `Σ_p μ_p ≤ |L|·m`, which is useless. There is no interaction between distinct slopes in
+  H.108's infimum.
+* **What does supply it.** The peel induction: peel `p₀` (the landed `exists_peel`), observe
+  that the cofactor's state `c'` — of degree `m − μ_{p₀}` — carries the remaining children
+  (H.116b1 clause (ii), whose mechanism is H.116b2's multiplicity-additivity plus the landed
+  unit-constant lemma at foreign frames), and recurse. Each recursion consumes `μ_p` of the
+  degree budget, so the sum is bounded by `m` at the end. **This makes the DAG edge
+  `H.116b2 → H.116b1`, the REVERSE of the block record's listing order** — the record listed
+  the peel first because it is the bigger object, but it is the consumer, not the supplier.
+* **The alternative, recorded and NOT signed.** The bound is also the root-count statement — a
+  `(μ_p, k_p, z_p)`-child is `μ_p` roots of valuation `k_p` and scaled residue `z_p`, distinct
+  `p` give disjoint root sets, and a degree-`m` polynomial has `m` roots. In polygon clothing:
+  `Σ_{z} (mult of z in the slope-k residual) ≤ ℓ_k` and `Σ_k ℓ_k ≤ m`. That route needs the
+  ChapB polygon API and a splitting-field or hull argument; it is strictly heavier than the peel
+  induction and buys nothing the peel does not already owe. Recorded so nobody re-derives it as
+  a discovery.
+
+---
+
+### §4. NEW NODE H.116b1 [theorem] [fresh] — the multi-child peel
+
+**STATEMENT.** *(i) THE MULTI-CHILD PEEL.* Every monic lift of a non-drain state whose child set
+contains `L` factors EXACTLY in `O[X]` as a `Finset`-indexed product of planted factors at the
+pinned centres times a monic cofactor, with each `b_p` a lift of the `betaChild` class at `p`'s
+own genuine window — **and `Σ_p μ_p ≤ m` is a conclusion** (§3).
+*(ii) THE COFACTOR INHERITS THE REMAINING CHILDREN.* After peeling one child, the cofactor's
+class is again non-drain, its content at any other slope is the parent's less the planted floor
+`μ·min(k, k')`, it carries the same child event at every foreign frame, and it READS the same
+child there at the parent's window.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+-- The shared carrier (A-H.7 §1 of the leanspec block; lands with this node).
+noncomputable def plantedPoly {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {N r : ℕ} (L : Finset (ℕ × ℕ × ResidueField O))
+    (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
+    (Qc : ClusterState O r N) : Polynomial O :=
+  (∏ p ∈ L.attach, alphaParent π (classSect O p.1.1 N (bb p).1) p.1.2.1 (resSect O p.1.2.2))
+    * monicPoly (classSect O r N Qc.1)
+
+theorem exists_peel_finset {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m N : ℕ}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (c : ClusterState O m N) (h0 : ¬ IsDrainState c)
+    (L : Finset (ℕ × ℕ × ResidueField O))
+    (hL : ∀ p ∈ L, HasChildAt π c p.1 p.2.1 p.2.2)
+    (a : Fin m → O) (ha : proj O m N a = c.1) :
+    (∑ p ∈ L, p.1) ≤ m ∧
+      ∃ (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, Fin p.1.1 → O)
+        (Q : Polynomial O),
+        (∀ p i, bb p i ∈ maximalIdeal O) ∧ Q.Monic ∧
+        Q.natDegree = m - ∑ p ∈ L, p.1 ∧
+        monicPoly a
+            = (∏ p ∈ L.attach, alphaParent π (bb p) p.1.2.1 (resSect O p.1.2.2)) * Q ∧
+        ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L},
+          proj O p.1.1 (N - betaContent c p.1.2.1) (bb p)
+            = (betaChild π c (hL p.1 p.2) (N - betaContent c p.1.2.1)).1
+
+theorem peel_cofactor_inherits {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m N μ k : ℕ} {z : ResidueField O} (hm : 2 ≤ m) (hN : 1 ≤ N)
+    (c : ClusterState O m N) (h0 : ¬ IsDrainState c) (h : HasChildAt π c μ k z)
+    {b : Fin μ → O} (hb : ∀ i, b i ∈ maximalIdeal O) {Q : Polynomial O}
+    (hQ : Q.Monic) (hQdeg : Q.natDegree = m - μ)
+    {a : Fin m → O} (ha : proj O m N a = c.1)
+    (hfac : monicPoly a = alphaParent π b k (resSect O z) * Q)
+    (c' : ClusterState O (m - μ) N)
+    (hc' : proj O (m - μ) N (fun i : Fin (m - μ) => Q.coeff (i : ℕ)) = c'.1)
+    {μ' k' : ℕ} {z' : ResidueField O} (hne : ¬ (k' = k ∧ z' = z))
+    (h' : HasChildAt π c μ' k' z') :
+    ¬ IsDrainState c' ∧ betaContent c k' = μ * min k k' + betaContent c' k' ∧
+      ∃ h'' : HasChildAt π c' μ' k' z',
+        betaChild π c' h'' (N - betaContent c k') = betaChild π c h' (N - betaContent c k')
+```
+
+**DEPENDS.** **H.116b2** (clause (i) — the multiplicity-additivity that clause (ii) runs on;
+see §3 for why the edge points this way) · H.116 (clause (i) `betaChild_spec`, the def half) ·
+H.115b (`alphaParent` and its profile lemmas) · H.115c (`comp_recentre_injective`) · H.108,
+H.109, H.102 (the coprime split's `InjOn`, for the read clause) · **landed in
+`leanfinal/Uniformity/ChapH/H116bR.lean`**: `exists_peel` (§4), `level_recentre_mul_alphaParent`,
+`recentre_alphaParent_own`, `not_pow_min_succ_dvd_coeff_recentre_alphaParent`,
+`coeff_zero_recentre_alphaParent_not_dvd`, `betaContent_eq_of_recentre_exact`,
+`mul_le_betaContent`, `alphaParent_map_residue` · landed `monicPoly_map_residue` ·
+mathlib `Finset.induction_on`, `Finset.prod_insert`.
+
+**PROOF (clause i).** Induction on `L` with `Finset.induction_on`.
+1. **Base `L = ∅`.** Empty product is `1`, `Q := monicPoly a`, `Σ = 0 ≤ m`, read clause vacuous.
+2. **Step `L = insert p₀ L'`.** Apply the landed `exists_peel` at `p₀`:
+   `monicPoly a = alphaParent π b₀ k₀ (resSect O z₀) * Q₀` with `Q₀` monic of degree `m − μ₀` and
+   `proj b₀` the `betaChild` class at `p₀`. `μ₀ ≤ m` is `exists_peel`'s own bookkeeping.
+3. **The cofactor is a cluster lift.** `monicPoly a` reduces to `X^m` (landed
+   `monicPoly_map_residue`) and `alphaParent` to `X^{μ₀}` (landed `alphaParent_map_residue`);
+   `(ResidueField O)[X]` is a domain, so `Q₀` reduces to `X^{m−μ₀}`, i.e. `a' := fun i =>
+   Q₀.coeff i` is `𝔪`-valued and `monicPoly a' = Q₀`. Set `c' := ⟨proj O (m−μ₀) N a', _⟩`.
+4. **Inherit.** Clause (ii) at each `p ∈ L'` (its `hne` holds because `HasChildAt` determines
+   `μ` from `(k, z)`, so two distinct members of `L` differ in `(k, z)`).
+5. **The recursion is legal.** If `L'` is nonempty, any `p ∈ L'` has `2 ≤ μ_p` (H.109) and
+   `μ_p ≤ m − μ₀` (step 2's argument re-run at `c'`), so `2 ≤ m − μ₀`; and `c'` is non-drain by
+   clause (ii). If `m − μ₀ < 2` with `L'` nonempty the hypotheses are contradictory and the
+   branch is vacuous.
+6. **Close.** The induction hypothesis at `(c', L')` gives `Σ_{L'} μ_p ≤ m − μ₀`, hence
+   `Σ_L μ_p ≤ m`; multiply the two factorizations; the reads at `L'` transport back through
+   clause (ii)'s last conjunct.
+
+**PROOF (clause ii).**
+1. **Non-drain.** Constant coefficients multiply and
+   `(alphaParent π b k ŵ).coeff 0 = π^{kμ}·(unit)`, so `π^N ∤ (monicPoly a).coeff 0` forces
+   `π^N ∤ Q.coeff 0`.
+2. **Content.** The landed `level_recentre_mul_alphaParent` at `(k', resSect O z')` gives the
+   product's exact level as `μ·min(k,k') + e` with `e` the cofactor's exact level; the landed
+   `betaContent_eq_of_recentre_exact` identifies `e = betaContent c' k'` and the total with
+   `betaContent c k'`.
+3. **Child event.** H.109's three clauses at `c'` are read off H.116b2 (i) applied to
+   `alphaParent π b k ŵ · Q` with first-unit abscissae `0` (the planted factor at a FOREIGN
+   frame — the landed `coeff_zero_recentre_alphaParent_not_dvd`, which is where `hne` is spent)
+   and `μ'`; `hasChildAt_of_exists` (H.109) upgrades from the one lift pair.
+4. **Read.** The planted factor's divided frame at `(k', z')` is a UNIT (step 3), so the
+   `X^{μ'}` Hensel factor of the divided frame is the same on both sides; H.102's `InjOn` on the
+   coprime split makes the two descriptions select the same class, and truncation to the
+   SHALLOWER window `N − betaContent c k' ≤ N − betaContent c' k'` commutes with it.
+
+**SIZE.** 90 lines (clause (i) 45, clause (ii) 45). **SPLIT CANDIDATE:** clause (ii) may land
+first, in `H116bR.lean` §7, since it is pure frame arithmetic plus one H.102 citation.
+**SOURCE.** A-H.7 §4; block record §4a; certification steps C2/C4.
+**TEETH.** `OM2_h116b_replant_cert.py` check **B** (exact factorization, margin ≥ N+3 at every
+tested lift) and check **A** (per-`(L,D)`-with-`z` fibres, ONTO) → Lean theorem here; the
+degree-sum bound is exercised implicitly by every genre the batteries enumerate.
+**ENVIRONMENT.** ENV-H17 + `[IsAdicComplete]` + `π` explicit, every binder INLINE.
+
+---
+
+### §5. NEW NODE H.116b2 [theorem] [fresh] — multiplicity adds, and the genre of a planted product
+
+**STATEMENT.** *(i) MULTIPLICITY ADDS.* If `π^s` is the exact coefficient level of `P₁` with its
+first unit at abscissa `μ₁`, and `π^t` the exact level of `P₂` with its first unit at `μ₂`, then
+`π^{s+t}` is the exact level of `P₁P₂` and its first unit sits at `μ₁ + μ₂`.
+*(ii) THE GENRE OF A PLANTED PRODUCT.* Under three b-FREE conditions on the cofactor — the
+product is non-drain, the cofactor carries no child of its own, and the cofactor is ROOT-FREE at
+every frame of `L` — the planted product's child set is EXACTLY `L`, its content at each child
+slope is the planted floor plus the cofactor's content, and its child read at `p` is the
+presentation `bb p` truncated to the genuine window.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem coeff_level_mul_trailing {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {s t μ₁ μ₂ : ℕ}
+    {P₁ P₂ : Polynomial O}
+    (h1 : ∀ j, π ^ s ∣ P₁.coeff j) (h1' : ∀ j < μ₁, π ^ (s + 1) ∣ P₁.coeff j)
+    (h1'' : ¬ π ^ (s + 1) ∣ P₁.coeff μ₁)
+    (h2 : ∀ j, π ^ t ∣ P₂.coeff j) (h2' : ∀ j < μ₂, π ^ (t + 1) ∣ P₂.coeff j)
+    (h2'' : ¬ π ^ (t + 1) ∣ P₂.coeff μ₂) :
+    (∀ j, π ^ (s + t) ∣ (P₁ * P₂).coeff j) ∧
+      (∀ j < μ₁ + μ₂, π ^ (s + t + 1) ∣ (P₁ * P₂).coeff j) ∧
+      ¬ π ^ (s + t + 1) ∣ (P₁ * P₂).coeff (μ₁ + μ₂)
+
+theorem plantedPoly_genre {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m N r : ℕ}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (L : Finset (ℕ × ℕ × ResidueField O))
+    (hLchild : ∀ p ∈ L, 2 ≤ p.1 ∧ 1 ≤ p.2.1 ∧ p.2.2 ≠ 0)
+    (hLsep : ∀ p ∈ L, ∀ p' ∈ L, p.2 = p'.2 → p = p')
+    (hdeg : (∑ p ∈ L, p.1) + r = m)
+    (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
+    (Qc : ClusterState O r N)
+    (hQchild : ∀ (ν k' : ℕ) (y : ResidueField O), ¬ HasChildAt π Qc ν k' y)
+    (hQroot : ∀ p ∈ L, ∀ aQ : Fin r → O, proj O r N aQ = Qc.1 →
+      ¬ π ^ (betaContent Qc p.2.1 + 1) ∣
+        ((monicPoly aQ).comp (C (π ^ p.2.1) * (X + C (resSect O p.2.2)))).coeff 0)
+    (c : ClusterState O m N)
+    (hc : proj O m N (fun i : Fin m => (plantedPoly π L bb Qc).coeff (i : ℕ)) = c.1)
+    (h0 : ¬ IsDrainState c) :
+    (∀ p : ℕ × ℕ × ResidueField O, HasChildAt π c p.1 p.2.1 p.2.2 ↔ p ∈ L) ∧
+      (∀ p ∈ L, betaContent c p.2.1
+          = (∑ p' ∈ L, p'.1 * min p'.2.1 p.2.1) + betaContent Qc p.2.1) ∧
+      (∀ (p : {x : ℕ × ℕ × ResidueField O // x ∈ L})
+          (hcp : HasChildAt π c p.1.1 p.1.2.1 p.1.2.2),
+        (betaChild π c hcp (N - betaContent c p.1.2.1)).1
+          = proj O p.1.1 (N - betaContent c p.1.2.1) (classSect O p.1.1 N (bb p).1))
+```
+
+**DEPENDS.** H.107, H.108, H.109, H.102 (the coprime split, for the read clause) · H.115
+(`resSect`/`classSect`), H.115b (`alphaParent`) · **landed in `H116bR.lean`**:
+`not_pow_add_succ_dvd_coeff_mul` (§5, the CONTENT half of clause (i)),
+`pow_add_dvd_coeff_mul`, `not_pow_min_succ_dvd_coeff_recentre_alphaParent`,
+`recentre_alphaParent_own`, `coeff_zero_recentre_alphaParent_not_dvd`,
+`pow_min_dvd_coeff_recentre_alphaParent`, `pow_dvd_coeff_recentre_iff`,
+`betaContent_eq_of_recentre_exact` · mathlib `Polynomial.natTrailingDegree_mul`,
+`Polynomial.C_dvd_iff_dvd_coeff`, `Finset.prod_induction` / `Finset.prod_insert`.
+
+**PROOF (clause i).** Divide the exact levels out: `P_i = C(π^{s_i})·P_i'` (mathlib
+`C_dvd_iff_dvd_coeff`), and `P_i'.map (residue O) ≠ 0` with
+`natTrailingDegree (P_i'.map (residue O)) = μ_i` — the `h_i'`/`h_i''` pair says exactly that the
+divided reduction vanishes below `μ_i` and is nonzero at `μ_i`. `(ResidueField O)[X]` is a
+domain, so `natTrailingDegree` is additive on nonzero polynomials
+(`Polynomial.natTrailingDegree_mul`), and `(P₁'P₂').map (residue O) ≠ 0`. Read back through
+`C_dvd_iff_dvd_coeff` in the other direction. **The landed
+`not_pow_add_succ_dvd_coeff_mul` is precisely the `μ₁ = μ₂ = 0` case and its `hres` helper is
+the division step verbatim** — this node generalizes it from the content to the multiplicity.
+
+**PROOF (clause ii).**
+1. `mul_comp` splits the recentring over the product: the frame of `plantedPoly` at `(k', ŵ')`
+   is `∏_p (frame of P_p) · (frame of monicPoly a_Q)`.
+2. Each planted factor's frame at `(k', ŵ')` has exact level `μ_p·min(k_p,k')` (landed
+   `not_pow_min_succ_dvd_coeff_recentre_alphaParent`) and first-unit abscissa `0` at a FOREIGN
+   frame (landed `coeff_zero_recentre_alphaParent_not_dvd`), `μ_p` at its OWN slope-and-centre
+   (landed `recentre_alphaParent_own`: the frame is `C(π^{μk}) ·` a MONIC degree-`μ`
+   recentred child development, whose first unit is its monic top at abscissa `μ`).
+3. Iterate clause (i) along `L.attach`: the product's exact level at `(k', z')` is
+   `Σ_p μ_p·min(k_p,k') + e_Q`, and its first-unit abscissa is
+   `Σ_{p : (k_p,z_p) = (k',z')} μ_p + ord₀(Q at (k',z'))`. `hLsep` collapses the first sum to a
+   single term or to none.
+4. **At `p ∈ L`:** abscissa `= μ_p + 0 = μ_p` by `hQroot`; `hasChildAt_of_exists` (H.109) gives
+   the child from the one canonical lift pair, and step 3's level identity is the content clause
+   (via `betaContent_eq_of_recentre_exact`).
+5. **At `(k', z') ∉ L`:** abscissa `= 0 + ord₀(Q) ≤ 1`, since `hQchild` forbids `≥ 2`. `HasChildAt`
+   needs `2 ≤ μ`, so no child. Together with 4 this is the `↔`.
+6. **Read.** The divided frame at `p` is (unit) × (recentred `monicPoly` of `bb p`'s lift) ×
+   (unit), so the description in `betaChild`'s body picks that monic degree-`μ_p` factor;
+   H.102's uniqueness at the fixed pinned centre pins the class, and truncation to
+   `N − betaContent c k_p` is `proj` at that window.
+
+**⚠ `hQroot` IS NOT IMPLIED BY `hQchild`.** See §2.2: a cofactor with a SIMPLE root at
+`(k_p, z_p)` has no child of its own but raises the product's multiplicity to `μ_p + 1`.
+Dropping `hQroot` makes this node FALSE. Certified by check `(e2)`, whose measured admissible
+sets are strictly smaller than the child-free sets at every cell.
+
+**SIZE.** 75 lines (clause (i) 25, clause (ii) 50). **SPLIT CANDIDATE:** clause (i) alone, into
+`H116bR.lean` §5 next to its content-only ancestor.
+**SOURCE.** A-H.7 §5; block record §4b; certification step C1/C4.
+**TEETH.** `OM2_h116b_replant_cert.py` check **F** (the three-case planted profile, unit
+constants) and check **C** (the child set stays EXACTLY `L`, contents unchanged);
+`OM2_h116b_gauge_resultant.py` checks `(e)`, `(e2)`, `(h)` → Lean theorem here.
+**ENVIRONMENT.** ENV-H17 + `[IsAdicComplete]` (clause (ii) only) + `π` explicit.
+
+---
+
+### §6. NEW NODE H.116b3 [theorem] [fresh] — the `¬ IsCSState` transport
+
+**STATEMENT.** Swapping the child presentations of a planted product while keeping the cofactor
+cannot create a composite-stage event. This is `IsBetaState`'s second conjunct, and it is the
+only geometric leg of the four: it needs the ChapB polygon API (`sideSet`, `sideMin`, `npHgt`,
+`resPoly`), which `H116bR.lean` deliberately does not import.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem not_isCSState_plantedPoly_swap {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m N r : ℕ} (hm : 2 ≤ m) (hN : 1 ≤ N)
+    (L : Finset (ℕ × ℕ × ResidueField O))
+    (hLchild : ∀ p ∈ L, 2 ≤ p.1 ∧ 1 ≤ p.2.1 ∧ p.2.2 ≠ 0)
+    (hdeg : (∑ p ∈ L, p.1) + r = m)
+    (bb bb' : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
+    (Qc : ClusterState O r N) (c c' : ClusterState O m N)
+    (hc : proj O m N (fun i : Fin m => (plantedPoly π L bb Qc).coeff (i : ℕ)) = c.1)
+    (hc' : proj O m N (fun i : Fin m => (plantedPoly π L bb' Qc).coeff (i : ℕ)) = c'.1)
+    (h0 : ¬ IsDrainState c) (h0' : ¬ IsDrainState c') (hcs : ¬ IsCSState π c) :
+    ¬ IsCSState π c'
+```
+
+**DEPENDS.** H.110 (`IsCSState`), H.115b (`not_isCSState_of_alphaParent` — the α-side TEMPLATE —
+and `alphaParent_npHgt_zero`, `alphaParent_npHgt_ge`, `alphaParent_npHgt_natDegree`,
+`alphaParent_coeff`) · chapter B's polygon API `sideSet`, `sideMin`, `npHgt`, `resPoly`,
+`OnSide`, `suppVal` · **landed in `H116bR.lean`**:
+`pow_min_succ_dvd_coeff_recentre_alphaParent_sub`.
+
+**PROOF.**
+1. **The difference is one digit above the polygon, coefficientwise.**
+   `δ := plantedPoly bb' Qc − plantedPoly bb Qc = (∏_p P(b'_p) − ∏_p P(b_p))·Q`. Telescope the
+   product difference over `L.attach`; every summand carries one factor
+   `alphaParent π b'_p k_p ẑ_p − alphaParent π b_p k_p ẑ_p`, whose `j`-th coefficient is
+   `(alphaFrame' − alphaFrame)_j · π^{k_p(μ_p − j)}` with the bracket in `𝔪` (landed
+   `alphaParent_coeff`; the two presentations are congruent mod `𝔪` because for `1 ≤ N` EVERY
+   lift of a `ClusterState` is `𝔪`-valued). So the summand's Newton polygon lies at least `1`
+   above `P(b_p)`'s at every abscissa, hence `v(δ_j) ≥ 1 + npHgt(monicPoly a)(j)` for all `j`.
+2. **Hence the polygon and every side residual are unchanged.** At an abscissa ON the hull,
+   `v(f_j) = npHgt(f)(j) < v(δ_j)`, so `v(f_j + δ_j) = v(f_j)` and the leading term is
+   unchanged; at an abscissa above the hull, `v(f_j + δ_j) ≥ min > npHgt`, so it stays above.
+   Therefore `sideSet`, `sideMin`, `npHgt` and `resPoly` agree for `c` and `c'` at every
+   `(u, ℓ)`, and `IsCSState`'s witness transports across the swap in both directions.
+3. The `∀ a`-lift form of `IsCSState` is handled as in H.115b's template: it suffices to run the
+   argument at the canonical lift pair and cite H.109's `pow_dvd_coeff_comp_sub` for the class
+   transport of the consulted digits.
+
+**⚠ WHAT THIS DOES AND DOES NOT GIVE.** It is a TRANSPORT, not a determination: it moves
+`¬ IsCSState` along a swap of the child presentations at a FIXED cofactor. The assembly (§8)
+seeds each cofactor slice with a genuine genre member — supplied by the peel, H.116b1 — and
+transports from there. An agent that needs `¬ IsCSState` for a cofactor slice containing no
+genre member does not need it: that slice is not in `𝒬`.
+
+**SIZE.** 60 lines. **SOURCE.** A-H.7 §6; block record §4c.
+**TEETH.** `OM2_h116b_replant_cert.py` check **G** — *"replant difference strictly above the
+polygon"*, measured at every `(u, ℓ)` on every enumerable cell → Lean theorem here.
+**ENVIRONMENT.** ENV-H17 + `[IsAdicComplete]` + `π` explicit; **imports chapter B** (the only
+node of the four that does).
+
+---
+
+### §7. NEW NODE H.116b4 [theorem] [fresh] — THE COUNT, at the gauge-resultant route
+
+**STATEMENT.** Over the genre, the planting map from the PAIR space — one presentation per
+child, one cofactor presentation — to the state space is UNIFORMLY many-to-one: every genre
+class has the SAME number `G` of planted presentations, `G` depending on `(L, r, N)` and not on
+the class. **This is the counting mechanism; the route that builds a map between fibres is
+CLOSED (§1.2), and nothing here builds one.**
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem planted_presentation_card {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [Finite (ResidueField O)]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m N r : ℕ}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (L : Finset (ℕ × ℕ × ResidueField O)) (hL : L.Nonempty)
+    (hdeg : (∑ p ∈ L, p.1) + r = m) (D : ℕ × ℕ × ResidueField O → ℕ) :
+    ∃ G : ℕ, 0 < G ∧
+      ∀ c : ClusterState O m N, IsBetaState π c →
+        (∀ p : ℕ × ℕ × ResidueField O, HasChildAt π c p.1 p.2.1 p.2.2 ↔ p ∈ L) →
+        (∀ p ∈ L, betaContent c p.2.1 = D p) →
+        Nat.card {x : (∀ p : {y : ℕ × ℕ × ResidueField O // y ∈ L},
+                ClusterState O p.1.1 N) × ClusterState O r N //
+            proj O m N (fun i : Fin m => (plantedPoly π L x.1 x.2).coeff (i : ℕ)) = c.1}
+          = G
+```
+
+The presentation index is `{y // y ∈ L}` (not `∀ p ∈ L`) deliberately: it is a `Fintype`, which
+is what makes the counted type finite and `Nat.card` meaningful.
+
+**DEPENDS.** **H.116b1** (the peel — it is what makes `0 < G`: the presentation set of a genre
+member is nonempty) · **H.116b2** · H.106 (`card_clusterState`), H.60 (the unit-pivot coset
+count) · H.115b (`alphaParent_coeff` — the planted lattice), H.115c
+(`comp_recentre_injective`) · mathlib `Polynomial.resultant` / `Matrix.det` for the Sylvester
+lattice, `Nat.card_eq_of_bijective`, Smith-normal-form over a DVR
+(`Module.Finite` + `IsPrincipalIdealRing`).
+
+**PROOF (route sketch, derived from the battery structure — the ONE research step of the four).**
+1. **`0 < G`.** By H.116b1 every genre class is a planted product, so its presentation set is
+   inhabited; combined with the uniformity below, `G ≥ 1`.
+2. **The cofactor is not an independent coordinate.** For fixed `bb`, the cofactor is determined
+   by `bb` and the class: `∏_p P(b_p)` is monic, so `Q = monicPoly a /ₘ ∏_p P(b_p)` in `O[X]`
+   and its class is determined. Hence the presentation set of `c` is in bijection with
+   `{bb : ∏_p P(bb_p) divides monicPoly a EXACTLY, with monic 𝔪-cofactor}`, and the whole
+   problem is: **is the number of `bb` that "fit" the same for every class of the genre?**
+3. **Layer 1 — the per-child GHOST (a coset count, not a research step).** `b ↦ alphaParent π b
+   k ŵ` has `j`-th coefficient `(alphaFrame b ŵ)_j · π^{k(μ−j)}` (landed `alphaParent_coeff`), so
+   its class mod `π^N` factors through `b` modulo an explicit `π`-power lattice: `b_i` is read
+   only to precision `N − k(μ − i)`. The fibres are cosets of a fixed subgroup, hence all of the
+   same size `ghost_p`, independent of the image. Certified as the "single-child ghost CONSTANT"
+   leg of block (a) and re-measured in every cell of block (d).
+4. **Layer 2 — the GAUGE between the planted sub-lattices (the research step).** At the image
+   level the remaining question is: given the product `∏_p P_p mod π^N`, how many tuples
+   `(P_p)` of planted factors produce it? The perturbations that preserve the product are the
+   kernel of `(δ_p) ↦ Σ_p δ_p·∏_{p'≠p} P_{p'} mod π^N` restricted to the planted perturbation
+   lattice — a Sylvester-type lattice whose elementary-divisor valuations are governed by the
+   pairwise resultants. **The certified content is that those valuations are GENRE-DETERMINED:**
+   `v(Res(P_p, P_{p'})) = μ_p·μ_{p'}·min(k_p, k_{p'})`, b-INDEPENDENT (check `(c)`). Root-side:
+   `P_p` has `μ_p` roots of valuation `k_p` and scaled residue `z_p`; for `p ≠ p'` every root
+   pair has `v(α − β) = min(k_p, k_p')` — forced by the distinct slopes when they differ and by
+   the distinct residues when they agree. So the gauge never sees the child's deep digits, and
+   its index is the same at every class of the genre. In Lean: Smith normal form of the
+   Sylvester matrix over the DVR `O`, with the elementary divisors read off the resultant.
+5. **Multiply.** `G = (∏_p ghost_p) · (image-level gauge index)`, both genre-determined.
+
+**⚠ THIS IS NOT A TRANSCRIPTION.** Step 4 is a genuine research step. Its statement is certified
+exactly (check `(d)`: constant multiplicity at every class of every genre cell tested, including
+the same-slope shape that broke D3, `4 782 969` presentations → `59 049` classes at multiplicity
+`81`), but no proof of it exists in the corpus. **Do not assign this node before H.116b1–H.116b3
+land**, and do not accept a proof of it that routes through a map between fibres (§1.2).
+
+**SIZE.** 120 lines + the Smith-normal-form helper. **SPLIT CANDIDATE (likely necessary):**
+b4-i the per-child ghost coset count (layer 1, mechanical), b4-ii the gauge index (layer 2, the
+research step).
+**SOURCE.** A-H.7 §7; block record §4d; `OM2_h116b_gauge_resultant.py`'s own claim header.
+**TEETH.** `OM2_h116b_gauge_resultant.py` checks `(a)`, `(c)`, `(d)`, `(f)`, `(g)`, `(h)`
+(65/65) → Lean theorem here; check `(g)` at the D3 cell reproduces the replant battery's E2
+split `81 × 729` from a decorrelated computation.
+**ENVIRONMENT.** ENV-H17 + `[Finite (ResidueField O)]` + `[IsAdicComplete]` + `π` explicit.
+
+---
+
+### §8. H.116b becomes the ASSEMBLY node — the accounting, step by step
+
+H.116 clause (ii) is now proved from b1–b4 with no new mathematics. Fix `(L, D)`.
+
+**Degenerate `(L, D)` — `F = 0`, no sub-node consulted.** The genre set is EMPTY for every `t`,
+so `F := 0` discharges the statement, in each of these cases (block record §2, plus one more
+this amendment adds):
+* some `p ∈ L` violates `2 ≤ μ_p ∧ 1 ≤ k_p ∧ z_p ≠ 0` — `HasChildAt`'s def half forbids it;
+* two members of `L` share `(k, z)` — for a fixed `(k, z)` the multiplicity is unique
+  (`HasChildAt`'s second and third clauses);
+* `D` is inconsistent (two `p ∈ L` with the same `k` but `D p ≠ D p'`);
+* **[added A-H.7]** some `μ_p = m` — then the state is α, not β, and `IsBetaState`'s fourth
+  conjunct `¬ ∃ k z, HasChildAt π c m k z` fails. (`Σ_p μ_p ≤ m` from H.116b1 makes this the
+  only way a child can reach full multiplicity, and only at `|L| = 1`.)
+
+**Non-degenerate `(L, D)`.** Set `r := m − Σ_p μ_p ≥ 0` (H.116b1) and
+
+    𝒬 := { Qc : ClusterState O r N | non-drain in the product ∧ child-free ∧ root-free at L },
+
+a `t`-FREE finite set (exactly H.116b2 (ii)'s three cofactor hypotheses; classical decidability,
+counted by `Nat.card`).
+
+1. **SOUNDNESS.** For `Qc ∈ 𝒬` and any `bb`, the planted product lies in the genre: the child
+   set, contents and reads are H.116b2 (ii); `¬ IsCSState` is H.116b3, seeded at the cofactor
+   slice by the peel of any genre member; `¬ ∃ k z, HasChildAt π c m k z` because every
+   `μ_p < m` (degenerate case 4 is excluded).
+2. **SURJECTIVITY.** Every genre member IS a planted product with those reads: H.116b1 clause
+   (i) supplies the factorization and the read identification, and its cofactor lies in `𝒬` —
+   read off H.116b2 (ii) run backwards at that member.
+3. **THE COUNT.** By H.116b4 every genre class has exactly `G > 0` presentations, and by
+   H.116b2 (ii)'s read clause all `G` of them carry the SAME reads. Hence
+
+       G · #fibre(t)  =  #{ (bb, Qc) : Qc ∈ 𝒬, reads(bb) = t }
+                      =  (∏_{p ∈ L} Q^{μ_p · D p}) · Nat.card 𝒬 ,
+
+   the coset count being `Nat.card {b : ClusterState O μ_p N | truncation to N − D p = t p}
+   = Q^{μ_p·D p}` from H.106's `card_clusterState` (`D p ≤ N − 1` on non-drain states, H.108, so
+   the window is `≥ 1`).
+4. **CONCLUDE.** `F := (∏_p Q^{μ_p·D p})·Nat.card 𝒬 / G`, manifestly independent of `t`. ∎
+   Note the display also PROVES the onto half the frozen statement demands: the right-hand side
+   is positive whenever `𝒬 ≠ ∅`, so no fibre of a nonempty genre is empty. And `F` is still not
+   COMPUTED — `G` and `Nat.card 𝒬` are left as they are, so TRACK V's `census_g` remains not
+   owed, exactly as the frozen `∃ F` intends.
+
+**SIZE (assembly only).** 70 lines. **TEETH.** `OM2_h116b_replant_cert.py` checks **A** and
+**E2**; `OM2_h116b_gauge_resultant.py` checks `(g)` and `(h)` — `(h)` is the machine form of
+steps 1+2 (*"the planted image IS the genre, exactly"*), `(g)` of step 3.
+
+---
+
+### §9. The OPTIONAL node H.116b0 — the single-child variant, RECORDED, NOT SCHEDULED
+
+D1 says presentation stability HOLDS on single-child genres, so at `|L| = 1` the replant route
+is NOT closed and the variant below follows from what is already landed (`exists_peel` §4 +
+the frame-congruence transport §6 of `H116bR.lean`) plus H.116b3. An owner may elect it:
+
+```lean
+theorem betaExtract_fiber_card_single {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [Finite (ResidueField O)]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m N μ k : ℕ}
+    {z : ResidueField O} (hm : 2 ≤ m) (hN : 1 ≤ N) (D : ℕ) :
+    ∃ F : ℕ, ∀ t : ClusterState O μ (N - D),
+      Nat.card {c : ClusterState O m N |
+        IsBetaState π c ∧
+        (∀ p : ℕ × ℕ × ResidueField O,
+            HasChildAt π c p.1 p.2.1 p.2.2 ↔ p = (μ, k, z)) ∧
+        betaContent c k = D ∧
+        ∀ hc : HasChildAt π c μ k z, betaChild π c hc (N - D) = t} = F
+```
+
+**IT IS NOT SCHEDULED, AND IT HAS NO LEANSPEC STUB AND NO DAG ROWS**, for two reasons, both
+carried from the block record and both re-checked here:
+
+* **It does not close H.121c at `m = 3` by itself.** At `m = 3` every child has `μ_p = 2` on the
+  nose (`HasChildAt` gives `2 ≤ μ`, H.118's landed `betaChild_mult_lt` gives `μ < m`), so
+  `|L| = 1` FOLLOWS — *but only from the degree-sum bound `Σ_p μ_p ≤ m`*, which is H.116b1's
+  conclusion (§3). Electing b0 therefore does not avoid b1; it only avoids b4.
+* **It still needs H.116b3**, which is common to both routes.
+
+Add the stub and the DAG rows only if an owner elects the route; until then this section is the
+whole record of it.
+
+---
+
+### §10. What this amendment does NOT do
+
+It does **not** change `betaExtract_fiber_card` (byte-unchanged, §1.1) or any other signed
+statement; it does **not** prove H.116b1, H.116b2, H.116b3, H.116b4 or H.116b (all fresh); it
+does **not** unblock H.121c — that node stays RESCHEDULED behind H.116b (now behind b1–b4) and
+behind H.121d, and A-H.6 §3's adjudication of its other two dependencies is unchanged; it does
+**not** touch H.116 clause (i) or the def half (both A-H.5's, both landed as
+`betaChild_spec`); it does **not** retire `H116bR.lean`'s twenty landed declarations — every one
+of them is cited by name in a DEPENDS field above; it does **not** re-open A-H.5's centre
+pinning; it declares **no** new axiom; and it introduces exactly **one** new definitional
+carrier, `plantedPoly`, whose body is a product of landed definitions.
+
+**⚠ ONE BOOKKEEPING ITEM OWED, not fixed here.**
+`leanfinal/Uniformity/ChapH/H116bR.lean` is **not** imported by
+`leanfinal/Uniformity/ChapH.lean`, so plain `lake build` does not cover it (it builds only under
+the explicit module target `lake build Uniformity.ChapH.H116bR`). Whoever lands H.116b1 should
+add the roll-up import in the same commit; this unit left `ChapH.lean` alone because concurrent
+chapter-H units share it.
+
+### Bookkeeping installed by this amendment
+
+1. **`blueprint/CHAP-H_general_induction.md`** — the §2 amendment banner (row A-H.7); NODE H.116
+   (clause (ii) STATEMENT note, DEPENDS, SIZE/SPLIT, PROOF step 3 pointer); this amendment block,
+   carrying the frozen original verbatim (§1.1), the closed route verbatim (§1.2) and the four
+   new nodes in full (§§4–7).
+2. **`leanspec/Leanspec/ChapH.lean`** — `LeanspecH17`: one `def` (`plantedPoly`) and six stubs
+   (`exists_peel_finset`, `peel_cofactor_inherits`, `coeff_level_mul_trailing`,
+   `plantedPoly_genre`, `not_isCSState_plantedPoly_swap`, `planted_presentation_card`).
+   `lake build Leanspec.ChapH` green (9080 jobs, exit 0).
+3. **`spec/DAG_BLUEPRINT_H.tsv`** — the four `BP.H.116 → BP.H.116bN` rows plus the sub-nodes'
+   own DEPENDS rows, including the adjudicated edge `BP.H.116b1 → BP.H.116b2` (§3).
+4. **`verification/openmath/OM2_h116b_gauge_resultant.py`** — block `(d)`–`(h)` added,
+   **39/39 → 65/65**, exit 0; named in the TEETH of H.116b2, H.116b4 and the §8 assembly.
+5. **`leanfinal/notes/RESCHEDULE_H121c_H122_2026-08-16.md`** — dated pointer to A-H.7.
+
+*END OF AMENDMENT A-H.7 (2026-08-16). Touched nodes: H.116 (clause (ii) DEPENDS/PROOF/SIZE only;
+the SIGNATURE is byte-unchanged) and the four nodes added here (H.116b1, H.116b2, H.116b3,
+H.116b4), plus the recorded-not-scheduled H.116b0. Sections §§0–16 and
+A-H.1/A-H.2/A-H.3/A-H.4/A-H.5/A-H.6 are byte-unchanged by this append, as are H.116's def half
+and clause (i). FENCE A-H.7/F1 (the peel-shift-replant route is CLOSED) is standing and
+unconditional. CODEX/decorrelated CROSS-READ OWED on §3's adjudication of the degree-sum bound,
+on §5's `hQroot` necessity argument, and on §7 step 4's Smith-normal-form route.*
