@@ -295,7 +295,101 @@ level datum. -/
 theorem exists_testKey {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     [Finite (ResidueField O)] (hπ : Irreducible π) (hh : 1 ≤ F.h) :
     ∃ Ψ : Polynomial O, IsTestKey L Ψ := by
-  sorry
+  classical
+  set d := L.r.natDegree with hddef
+  set D := F.e₁ * F.f₁ with hDdef
+  have hD : 0 < D := Nat.mul_pos F.he₁ F.hf₁
+  have hd : 0 < d := L.hrdeg
+  have hℓ : 0 < L.ℓ := L.hℓ
+  have hkeydeg : F.key.natDegree = D := F.hdeg
+  have hkeypos : 0 < F.key.natDegree := by rw [hkeydeg]; exact hD
+  -- Step 1: fullness. `(d − t)u ≥ u > ℓ·D′·h ≥ D′·h` for every `t < d` (`L.hκ`).
+  have hbig : ∀ t, t < d → D * F.h < (d - t) * L.u := by
+    intro t ht
+    have h1 : L.ℓ * D * F.h < L.u := L.hκ
+    have hassoc : L.ℓ * D * F.h = L.ℓ * (D * F.h) := by ring
+    have h2 : D * F.h ≤ L.ℓ * (D * F.h) := Nat.le_mul_of_pos_left _ hℓ
+    have h4 : L.u ≤ (d - t) * L.u := Nat.le_mul_of_pos_left _ (by omega)
+    omega
+  -- Steps 2–3: the lift family, uniformly (no `D′` case split; see the module docstring).
+  have hlift : ∀ t : ℕ, ∃ Bt : Polynomial O,
+      Bt.natDegree < D ∧ (L.r.coeff t = 0 → Bt = 0) ∧
+      (t < d → L.r.coeff t ≠ 0 →
+        F.stageHeight Bt = (((d - t) * L.u : ℕ) : ℕ∞) ∧
+        F.slotRes H₀ hpin ((d - t) * L.u) Bt = L.r.coeff t) := by
+    intro t
+    by_cases hc : L.r.coeff t = 0
+    · exact ⟨0, by simpa using hD, fun _ => rfl, fun _ hne => absurd hc hne⟩
+    · by_cases ht : t < d
+      · obtain ⟨Bt, hB1, hB2, hB3⟩ :=
+          F.exists_slotRes_preimage hπ H₀ hpin (M := (d - t) * L.u) (hbig t ht) hc
+        exact ⟨Bt, hB1, fun h => absurd h hc, fun _ _ => ⟨hB2, hB3⟩⟩
+      · exact ⟨0, by simpa using hD, fun _ => rfl, fun h => absurd h ht⟩
+  choose B hBdeg hBzero hBspec using hlift
+  -- Step 4: the displayed sum, read as a `Φ′`-development (B.06).
+  set a : ℕ → Polynomial O := fun j =>
+    if j = L.ℓ * d then 1 else if L.ℓ ∣ j then B (j / L.ℓ) else 0 with hadef
+  set Ψ : Polynomial O := ∑ j ∈ Finset.range (L.ℓ * d + 1), a j * F.key ^ j with hΨdef
+  have hatop : a (L.ℓ * d) = 1 := by simp only [hadef, if_pos rfl]
+  have hanat : ∀ j, (a j).natDegree < D := by
+    intro j
+    simp only [hadef]
+    by_cases h1 : j = L.ℓ * d
+    · simp only [if_pos h1, Polynomial.natDegree_one]; exact hD
+    · rw [if_neg h1]
+      by_cases h2 : L.ℓ ∣ j
+      · simpa only [if_pos h2] using hBdeg (j / L.ℓ)
+      · simp only [if_neg h2, Polynomial.natDegree_zero]; exact hD
+  have hadeg : ∀ j, (a j).degree < F.key.degree := fun j =>
+    Polynomial.degree_lt_degree (by rw [hkeydeg]; exact hanat j)
+  have hdev : ∀ j < L.ℓ * d + 1, a j = dev F.key Ψ j :=
+    dev_unique F.hmonic hkeypos hadeg rfl
+  -- the top term dominates the tail, whence monicity and the degree
+  have hsplit : Ψ = (∑ j ∈ Finset.range (L.ℓ * d), a j * F.key ^ j) + F.key ^ (L.ℓ * d) := by
+    rw [hΨdef, Finset.sum_range_succ, hatop, one_mul]
+  have hpownat : (F.key ^ (L.ℓ * d)).natDegree = L.ℓ * d * D := by
+    rw [Polynomial.natDegree_pow, hkeydeg]
+  have htailnat : (∑ j ∈ Finset.range (L.ℓ * d), a j * F.key ^ j).natDegree
+      ≤ L.ℓ * d * D - 1 := by
+    refine Polynomial.natDegree_sum_le_of_forall_le _ _ fun j hj => ?_
+    have hj' : j < L.ℓ * d := Finset.mem_range.mp hj
+    have h1 : (a j * F.key ^ j).natDegree ≤ (a j).natDegree + j * D := by
+      refine le_trans Polynomial.natDegree_mul_le ?_
+      rw [Polynomial.natDegree_pow, hkeydeg]
+    have h2 := hanat j
+    have h3 : (j + 1) * D ≤ L.ℓ * d * D := Nat.mul_le_mul_right D hj'
+    have h4 : (j + 1) * D = j * D + D := by ring
+    omega
+  have htaildeg : (∑ j ∈ Finset.range (L.ℓ * d), a j * F.key ^ j).degree
+      < (F.key ^ (L.ℓ * d)).degree := by
+    refine Polynomial.degree_lt_degree ?_
+    rw [hpownat]
+    have hpos : 0 < L.ℓ * d * D := Nat.mul_pos (Nat.mul_pos hℓ hd) hD
+    omega
+  have hmonic : Ψ.Monic := by
+    rw [hsplit]
+    exact (F.hmonic.pow (L.ℓ * d)).add_of_right htaildeg
+  have hnatΨ : Ψ.natDegree = L.keyDeg₂ := by
+    have hdegeq : Ψ.degree = (F.key ^ (L.ℓ * d)).degree := by
+      rw [hsplit]
+      exact Polynomial.degree_add_eq_right_of_degree_lt htaildeg
+    rw [Polynomial.natDegree_eq_of_degree_eq hdegeq, hpownat, LevelDatum.keyDeg₂, ← hDdef,
+      ← hddef]
+    ring
+  refine ⟨Ψ, hmonic, hnatΨ, ?_, ?_, ?_⟩
+  · rw [← hdev _ (Nat.lt_succ_self _), hatop]
+  · intro b hb hnd
+    rw [← hddef] at hb
+    rw [← hdev b (by omega)]
+    simp only [hadef, if_neg (Nat.ne_of_lt hb), if_neg hnd]
+  · intro t ht
+    rw [← hddef] at ht
+    have hlt : L.ℓ * t < L.ℓ * d := (Nat.mul_lt_mul_left hℓ).mpr ht
+    have hjt : a (L.ℓ * t) = B t := by
+      simp only [hadef, if_neg (Nat.ne_of_lt hlt), if_pos (Dvd.intro t rfl),
+        Nat.mul_div_cancel_left t hℓ]
+    have hdt : dev F.key Ψ (L.ℓ * t) = B t := by rw [← hdev _ (by omega), hjt]
+    exact ⟨fun hc => by rw [hdt, hBzero t hc], fun hc => by rw [hdt]; exact hBspec t ht hc⟩
 
 end Uniformity.Density.Tower
 
