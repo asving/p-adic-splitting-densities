@@ -8381,11 +8381,13 @@ theorem beta_content_census {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValu
 ```
 
 **DEPENDS.** H.111, H.113 (head = drain, exact), H.114/H.115 (α aggregation), H.116 (β
-fibration), H.117 (CS empty at `m ≤ 3`), H.118, H.119 · H.63 (`prod_sub_prod_le_sum`),
-H.67 (`rate_growing`), H.68 (`rate_bounded`) · H.13 · *[added A-H.6, clause (iii) only]*
-**H.121d** (`beta_content_census`) and **H.28** (the `μ = 2` ground rate; equivalently the
-landed `uClusterNorm_rateSpecies_two` of `ChapH/H122m2.lean`). H.67/H.68 are NO LONGER
-consumed by clause (iii) — the A-H.6 route prices the envelope directly (see A-H.6 §3).
+fibration), H.117 (CS empty at `m ≤ 3`), H.118, H.119 · H.63 (`prod_sub_prod_le_sum`) ·
+H.13 · *[added A-H.6, clause (iii) only]* **H.121d** (`beta_content_census`) and **H.28**
+(the `μ = 2` ground rate; equivalently the landed `uClusterNorm_rateSpecies_two` of
+`ChapH/H122m2.lean`).
+*[REMOVED by A-H.6:* ~~H.67 (`rate_growing`), H.68 (`rate_bounded`)~~ — they were consumed
+only by the committed clause-(iii) pricing, which A-H.6 §3 replaces by an explicit finite sum;
+the DAG rows `BP.H.121 → BP.H.67`/`BP.H.68` are deleted.*]*
 
 **PROOF.** 1. (i) H.111's partition restricted to the undecided set: drain ⊆ undecided
 (constructor), CS empty (H.117 (i) + `m ≤ 3`), DEC ∩ undecided = ∅ (H.119 (ii): no disjunct
