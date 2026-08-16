@@ -169,7 +169,18 @@ variable [IsAdicComplete (maximalIdeal O) O]
 
 /-- **B.41 — the graded factorization (the engine).** A coprime factorization of the residual
 polynomial of a monic `(u,ℓ)`-pure `f` of `φ.natDegree`-divisible degree lifts to a
-factorization of `f` into monic `(u,ℓ)`-pure, `(u,ℓ)`-coprime factors of the pinned degrees. -/
+factorization of `f` into monic `(u,ℓ)`-pure, `(u,ℓ)`-coprime factors of the pinned degrees.
+
+**Conclusion STRENGTHENED beyond the frozen stub** (hypotheses byte-unchanged; the standing
+statement-change authority's conclusion-strengthening precedent, A-F.6/A-F.9): the last four
+clauses record the two factors' left heights and, per factor, that its residual polynomial is
+the prescribed one — `resPoly … g … = G` and `resPoly … h … = H`, not merely coprime. The
+proof delivers them (they are the iteration invariant, transported to the limit by the
+perturbation law), and **B.48 cannot be proved without them**: from `GradedCoprime` alone the
+identity of the peeled factor's residual polynomial is lost — `G * H = resPoly g * resPoly h`
+with all four monic and the degrees matching does NOT force `resPoly g = G` (two distinct
+irreducible factors of the same degree with the same exponent are interchangeable), so B.48's
+`Finset` recursion has nothing to recurse on. -/
 theorem exists_graded_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {f : Polynomial O}
     (hf : f.Monic) (hfd : φ.natDegree ∣ f.natDegree)
@@ -181,7 +192,11 @@ theorem exists_graded_factorization (hπ : Irreducible π) {φ : Polynomial O} (
     ∃ g h : Polynomial O, g.Monic ∧ h.Monic ∧ f = g * h ∧
       g.natDegree = ℓ * φ.natDegree * G.natDegree ∧
       h.natDegree = ℓ * φ.natDegree * H.natDegree ∧
-      IsPure φ g u ℓ ∧ IsPure φ h u ℓ ∧ GradedCoprime π φ u ℓ g h := by
+      IsPure φ g u ℓ ∧ IsPure φ h u ℓ ∧ GradedCoprime π φ u ℓ g h ∧
+      npHgt φ g 0 = ((u * G.natDegree : ℕ) : ℕ∞) ∧
+      npHgt φ h 0 = ((u * H.natDegree : ℕ) : ℕ∞) ∧
+      (∀ hg' : (sideSet φ g u ℓ).Nonempty, resPoly π φ g u ℓ hg' (u * G.natDegree) = G) ∧
+      (∀ hh' : (sideSet φ h u ℓ).Nonempty, resPoly π φ h u ℓ hh' (u * H.natDegree) = H) := by
   classical
   letI : Field (resField φ) := instFieldResField hφ
   set a := G.natDegree with hadef
@@ -234,23 +249,45 @@ theorem exists_graded_factorization (hπ : Irreducible π) {φ : Polynomial O} (
   have hone : (sideSet φ (1 : Polynomial O) u ℓ).Nonempty :=
     sideSet_nonempty_gen φ (1 : Polynomial O) u ℓ
   rcases Nat.eq_zero_or_pos a with ha0 | hapos
-  · refine ⟨1, f, monic_one, hf, (one_mul f).symm, ?_, ?_,
+  · have hG1 : G = 1 :=
+      Polynomial.eq_one_of_monic_natDegree_zero hG (hadef.symm.trans ha0)
+    have hbH₀ : u * b = H₀ := by rw [hH₀d, hddab, ha0, Nat.zero_add]
+    refine ⟨1, f, monic_one, hf, (one_mul f).symm, ?_, ?_,
       isPure_one hφ.monic hφ.pos hℓ, hpure,
       ⟨0, H₀, hone, hne, npHgt_one hφ.monic hφ.pos, hH₀,
-        isPure_one hφ.monic hφ.pos hℓ, hpure, ?_⟩⟩
+        isPure_one hφ.monic hφ.pos hℓ, hpure, ?_⟩, ?_, ?_, ?_, ?_⟩
     · rw [Polynomial.natDegree_one, ha0, Nat.mul_zero]
     · rw [hfdegd, hddab, ha0, Nat.zero_add]; ring
     · rw [resPoly_one hπ hφ.monic hφ.pos]
       exact isCoprime_one_left
+    · rw [ha0, Nat.mul_zero]
+      simpa using npHgt_one (φ := φ) hφ.monic hφ.pos
+    · rw [hbH₀]; exact hH₀
+    · intro hg'
+      rw [ha0, Nat.mul_zero, resPoly_one hπ hφ.monic hφ.pos, hG1]
+    · intro hh'
+      have hirr : resPoly π φ f u ℓ hh' H₀ = resPoly π φ f u ℓ hne H₀ := rfl
+      rw [hbH₀, hirr, hresf, hG1, one_mul]
   rcases Nat.eq_zero_or_pos b with hb0 | hbpos
-  · refine ⟨f, 1, hf, monic_one, (mul_one f).symm, ?_, ?_, hpure,
+  · have hH1 : H = 1 :=
+      Polynomial.eq_one_of_monic_natDegree_zero hH (hbdef.symm.trans hb0)
+    have haH₀ : u * a = H₀ := by rw [hH₀d, hddab, hb0, Nat.add_zero]
+    refine ⟨f, 1, hf, monic_one, (mul_one f).symm, ?_, ?_, hpure,
       isPure_one hφ.monic hφ.pos hℓ,
       ⟨H₀, 0, hne, hone, hH₀, npHgt_one hφ.monic hφ.pos, hpure,
-        isPure_one hφ.monic hφ.pos hℓ, ?_⟩⟩
+        isPure_one hφ.monic hφ.pos hℓ, ?_⟩, ?_, ?_, ?_, ?_⟩
     · rw [hfdegd, hddab, hb0, Nat.add_zero]; ring
     · rw [Polynomial.natDegree_one, hb0, Nat.mul_zero]
     · rw [resPoly_one hπ hφ.monic hφ.pos]
       exact isCoprime_one_right
+    · rw [haH₀]; exact hH₀
+    · rw [hb0, Nat.mul_zero]
+      simpa using npHgt_one (φ := φ) hφ.monic hφ.pos
+    · intro hg'
+      have hirr : resPoly π φ f u ℓ hg' H₀ = resPoly π φ f u ℓ hne H₀ := rfl
+      rw [haH₀, hirr, hresf, hH1, mul_one]
+    · intro hh'
+      rw [hb0, Nat.mul_zero, resPoly_one hπ hφ.monic hφ.pos, hH1]
   -- ## the main case: both residual factors have positive degree
   set Sf := u * (ℓ * dd) with hSfdef
   have hfsupp : suppVal φ f u ℓ = ((Sf : ℕ) : ℕ∞) :=
@@ -586,7 +623,9 @@ theorem exists_graded_factorization (hπ : Irreducible π) {φ : Polynomial O} (
       (eq_zero_of_suppVal_eq_top hφ.monic hφ.pos (eq_top_of_forall_natCast_le hall))
   -- ## the contract
   refine ⟨g, h, hgm, hhm, hfgh, by rw [hgdeg]; ring, by rw [hhdeg]; ring, hgp, hhp,
-    ⟨u * a, u * b, hgne, hhne, hgH, hhH, hgp, hhp, ?_⟩⟩
+    ⟨u * a, u * b, hgne, hhne, hgH, hhH, hgp, hhp, ?_⟩, hgH, hhH,
+    fun hg' => (hgres hg').trans (hk1res hk1ne),
+    fun hh' => (hhres hh').trans (hk2res hk2ne)⟩
   rw [hgres hgne, hhres hhne, hk1res hk1ne, hk2res hk2ne]
   exact hGH
 
