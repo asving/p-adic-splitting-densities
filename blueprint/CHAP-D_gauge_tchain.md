@@ -3907,10 +3907,12 @@ D.62, D.63) at their stated types.
   blueprint itself creates**: `levelOneArena` (D.17) consumes D.13's `iexp_aexp_spec` for its
   `exact_height` field (defect D-D2), so at stub stage `#print axioms levelOneArena` prints
   `iexp_aexp_spec`, and landed it prints Lean core only once D.13 is proved. **Any OTHER axiom in
-  the def layer is a stop-the-line event.** The census as run prints **36** names: the **30**
-  blueprint `def`s (incl. `varpiSection` — D-D10(i)) + the **2** new def-class names of A-D.1
-  (`levelOneHeight`, `GaugeArena.chiK`) + the **4** proved helpers the def bodies and signatures
-  need (`iexp_one`, `levelOneHeight_ker_dvd`, `chi_varpi_mem_ker`, `GaugeArena.rho_mem_ker`).
+  the def layer is a stop-the-line event.** The stub-stage census as RUN prints **36** names: the
+  **30** blueprint `def`s (incl. `varpiSection` — D-D10(i)) + the **2** new def-class names of
+  A-D.1 (`levelOneHeight`, `GaugeArena.chiK`) + the **4** proved helpers the def bodies and
+  signatures need (`iexp_one`, `levelOneHeight_ker_dvd`, `chi_varpi_mem_ker`,
+  `GaugeArena.rho_mem_ker`). The LANDED census prints **37** — A-D.1's second gate reducer
+  `iexp_eq_of_inv` (D.13, for FRAME-H2) joins them.
 * **(v) INHABITATION, executed** (the gates score arithmetic; they cannot score whether a SCHEMA
   is inhabited, and an empty structure makes its theorems vacuous). Two witnesses, both green at
   the stub gate: `BoundaryReadPort` is inhabited for EVERY arena/step/exponent/unit — and the
@@ -4054,6 +4056,12 @@ spec/dag_check.py`, six blueprint files merged: G/H/B/C/D/E):
 4. **The shared-output rebuild**: `DAG.tsv`/`DAG_NODES.tsv`/`dag_check_output.txt` were left
    at HEAD by this composer (scoped adds); one rebuild after all three parallel chapters
    commit.
+5. *[A-D.1, 2026-08-16]* **The A-D.1 edge delta is IN `DAG_BLUEPRINT_D.tsv` but NOT yet in the
+   merged graph.** `spec/gen_dag_d.py` was re-run (342 rows, 167 intra; the generator carries the
+   five added edges and the re-annotated `D.17 → D.13` in its `intra_note` table, so a future
+   regeneration reproduces them). The shared outputs were again left at HEAD, and the
+   independent depth pass was re-run by hand: **acyclic, critical path 9 nodes, layer widths
+   `10, 9, 13, 6, 8, 6, 6, 5, 5`, the same 10 nodes fireable**. Item 4's rebuild absorbs this.
 
 ---
 
@@ -4065,19 +4073,22 @@ spec/dag_check.py`, six blueprint files merged: G/H/B/C/D/E):
 taken — greppability by contract name wins). The 0e type-diff runs per declaration against
 the fully-qualified `leanfinal` twin in `Uniformity.Density.Gauge`.
 
-**Stub inventory (counted over this file's SIGNATURE blocks; the stub agent recounts
-mechanically):**
+**Stub inventory** *[RECOUNTED MECHANICALLY at A-D.1/D-D10 against the elaborated stub file —
+the ≈ figures below were both wrong; the exact ones are now available and are the contract]*:
 
-| what | ≈ count | lands as |
+| what | count | lands as |
 |---|---:|---|
-| `structure` | 4 | **real bodies** (`NormSection`, `GaugeArena`, `ReadBundle`, `BoundaryReadPort`) + 1 more (`CertFrame`) = **5** |
-| `def` / `noncomputable def` | 28 | **real bodies** (`tau`, `varthetaEl`, `thetaEl`, `vartheta`, `theta`, `varthetaG2`, `chi`, `iexp`, `aexp`, `wrap`, `qexp`, `Wfloor`, `levelOneSection`, `levelOneArena`, `liftC6`, `gammaCoord`, `correctedKey`, `wtwist`, `compData`, `GentowW`, `thresholdTheta`, `nuIdx`, `omega`, `Touched`, `Wle`, `WfIndex`, `WfChain`, `HVarthetaRes`, `VarthetaWConjunct` — 29 with the A-1 recount) |
-| `theorem` | ≈ 48 | **`axiom` stubs** (every public theorem/sibling named in §§3–9's SIGNATURE blocks, incl. the declared siblings: endpoint pairs, membership lemmas promoted to public, split targets) |
-| gate blocks | 4 | D.65–D.67's `decide` legs land as EXECUTED `example`s (not axioms); D.68 lands whole (a census file has nothing to stub) |
+| `structure` | **5** | **real bodies** (`NormSection`, `GaugeArena`, `ReadBundle`, `BoundaryReadPort`, `CertFrame`) |
+| `def` / `noncomputable def`, blueprint | **30** *[A-1 said 29; A-D.1/D-D10(i): the inventory OMITTED `varpiSection` (D.19's sibling def)]* | **real bodies** (`tau`, `varthetaEl`, `thetaEl`, `vartheta`, `theta`, `varthetaG2`, `chi`, `iexp`, `aexp`, `wrap`, `qexp`, `Wfloor`, `levelOneSection`, **`varpiSection`**, `levelOneArena`, `liftC6`, `gammaCoord`, `correctedKey`, `wtwist`, `compData`, `GentowW`, `thresholdTheta`, `nuIdx`, `omega`, `Touched`, `Wle`, `WfIndex`, `WfChain`, `HVarthetaRes`, `VarthetaWConjunct`) |
+| `def`, NEW public names of A-D.1 | **2** | `levelOneHeight` (D.17, note SD-2) and `GaugeArena.chiK` (D.39/D.40, note SD-3) — the names D.17's and D.39's bodies cannot be written without; §12 rule 5 left `chiK`'s spelling to stub time and it is now signed |
+| `theorem`, PROVED (never `axiom`s) | **9** | the four D.08 kernel-membership helpers (`mem_ker_div`, `varthetaEl_mem_ker`, `thetaEl_mem_ker`, `tau_mem_ker` — note SD-1), `iexp_one` and `iexp_eq_of_inv` (D.13, the gate reducers), `levelOneHeight_ker_dvd` (D.17), `chi_varpi_mem_ker` (D.19), `GaugeArena.rho_mem_ker` (D.39) — **an `axiom` in any of these would put a stub inside a `def` body or make a signature unstatable** |
+| `theorem`-shaped rows | **63** *[A-1 said "≈ 48"; A-D.1/D-D10(ii): expanding the declared siblings per each node's STATEMENT text gives 63]* | **`axiom` stubs** at the signed types (stub stage only); §13/§14 count against 63 |
+| gate blocks | 4 | D.65–D.67's legs land as EXECUTED `example`s (not axioms) — **40 of them at the stub gate**, plus leg 5/FRAME-H2's rows added by A-D.1; D.68 lands whole (a census file has nothing to stub) |
 
-Interface/record/table nodes (D.06's table prose, D.36, D.42, D.43, D.53, D.54, D.56, D.61,
-D.64) contribute **no stubs** — they declare no Lean name except D.06's
-`thetaEl_mul_varthetaEl` and D.10's `varthetaG2`, already counted.
+**98 signed blueprint declarations** (5 structures + 30 defs + 63 theorem-shaped), plus the 2 new
+def-class names and the 9 proved helpers of A-D.1. Interface/record/table nodes (D.06's table
+prose, D.36, D.42, D.43, D.53, D.54, D.56, D.61, D.64) contribute **no stubs** — they declare no
+Lean name except D.06's `thetaEl_mul_varthetaEl` and D.10's `varthetaG2`, already counted.
 
 **Rules for the stub-landing agent.**
 1. **Elaborate the fragile signatures FIRST:** D.17 (`levelOneArena` — `GaugeArena` fields
