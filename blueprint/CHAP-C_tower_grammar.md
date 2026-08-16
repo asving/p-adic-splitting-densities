@@ -1007,15 +1007,48 @@ here. Flagged to §16.
 
 ### NODE C.13 [def] [fresh]
 
+> ⚠ **[CLAUSE 5 RE-SIGNED: A-C.5, 2026-08-16 — the residue read is C.22's ϖ-read
+> `twistRead`, not C.21's untwisted `slotRes`. This is the repair of the C.47 refutation,
+> applied at its true site.]** `leanfinal/Uniformity/ChapC/C47_REFUTATION.lean.txt`
+> machine-refutes NODE C.47 as frozen: C.13 clause 5 demanded `slotRes M (dev Ψ (ℓt)) = r̃_t`
+> while landed C.46 proves `twistRead M (dev Φ′ Φ₂ (e₂t)) = r̃_t`, so C.47 held **iff** the
+> letter collapsed, `η^{q((f₂−t)u₂)} = 1` — false at the record's `(2,2,3)`/ℤ₃ numerals
+> (`Φ′ = x⁴ + 3⁶`, `η² = −1`, `q(27) = 13`, `η^{13} ∈ {η, −η} ≠ 1` in `F₉`). **THE SOURCE
+> DECIDES, and it decides against the frozen clause:** `EFF.HE6.14` (DEFINITION HE6-1,
+> verbatim) writes the family's residue condition as `res(B_t(θ)/ϖ(θ)^{(d−t)u}) = c_t` —
+> division by `ϖ^k`, which is precisely `twistRead` (`EFF.HE6.13`'s RIDER together with
+> `EFF.HE6.15`'s `[r2]` sign correction: the ϖ-read residue is the `n(k)`-read residue times
+> `res(n(k)/ϖ^k) = η^{−q}`). The frozen clause's defence — `EFF.HE6.13`'s NON-PROPAGATION
+> route (1) — is a category slip: that inventory certifies only the **twist-blind** clauses
+> (`K^×`-fullness, since `η^{−q}·K^× = K^×`, and `T(k) = ∅`), which make the lift EXIST under
+> either read; it says nothing about the VALUE, and clause 5 pins a value. So the ϖ-read is
+> the faithful transcription and the untwisted one was the outlier — exactly as C.22's own
+> node text says ("All corpus residual polynomials read through THIS, never through the bare
+> `n(k)`-read C.21"). **CERTIFICATION (before signing, the A-C.3 standard):**
+> `leanfinal/Uniformity/ChapC/C47_RESIGN_CERT.lean.txt`, sorry-free, Lean-core — (CERT 2) the
+> re-signed clause at the composed key IS landed C.46, so C.47's residue half is DISCHARGED
+> rather than relocated; (CERT 3) the re-signed predicate is NOT vacuous, `exists_testKey`
+> still holds, by C.14's landed proof with exactly ONE line changed; (CERT 1) that line is
+> the new fullness lemma `KeyFrame.exists_twistRead_preimage`, which lifts `η^{q(M)}·c`
+> (nonzero because `η ≠ 0`, C.19) and returns `twistRead = c`. **REJECTED, with reasons:**
+> re-signing C.43 to un-wrap the composed key (discards the corpus's wrap correction
+> `EFF.HETOW.13`/`.16`, whose whole point is the ϖ-read cancellation); hypothesizing the
+> collapse (dishonest — false at the numerals, vacuously true at the `f₁ = 1, q = 2` legs the
+> corpus tested); and a separate level-2 predicate `IsTestKey₂` for §6 only (duplicates a
+> definition and splits its consumers — the anti-pattern A-C.3's D3 audit flagged; C.13's own
+> text already claims to BE the transcription of `EFF.HE6.14`, so the cure belongs here).
+
 **STATEMENT.** *What it is to be a level-2 test key.* `IsTestKey L Ψ : Prop` holds iff `Ψ` is
 monic with `Ψ.natDegree = L.keyDeg₂`, and the `Φ′`-development of `Ψ` transcribes DEFINITION
 HE6-1's construction output: writing `d := L.r.natDegree`, (i) `dev F.key Ψ (L.ℓ * d) = 1`
 (top), (ii) `dev F.key Ψ b = 0` for `b < L.ℓ * d` **not** a multiple of `L.ℓ`, (iii) for
 `t < d` with `L.r.coeff t ≠ 0`: `F.stageHeight (dev F.key Ψ (L.ℓ * t)) = ((d − t) * L.u : ℕ∞)`
-and the slot-residue read of that coefficient equals `L.r.coeff t` (read through C.03's
-carriers at the `n(k)`-normalizer; the ϖ-read coset factor `η^{−q(k)}` is absorbed because
-every height here sits in the fullness regime — `EFF.HE6.13`'s NON-PROPAGATION route (1));
-(iv) `dev F.key Ψ (L.ℓ * t) = 0` when `L.r.coeff t = 0`.
+and the slot-residue read of that coefficient equals `L.r.coeff t` (**[A-C.5]** read through
+C.22's ϖ-read `twistRead` — `EFF.HE6.14`'s own display divides by `ϖ^{(d−t)u}`; the retired
+reading through C.21's `n(k)`-normalizer, defended by "the coset factor `η^{−q(k)}` is
+absorbed in the fullness regime", is what made C.47 false: fullness is twist-blind for the
+SET of realizable residues, not for the VALUE this clause pins); (iv)
+`dev F.key Ψ (L.ℓ * t) = 0` when `L.r.coeff t = 0`.
 
 **SIGNATURE.**
 ```lean
@@ -1032,17 +1065,21 @@ def IsTestKey {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (L.r.coeff t = 0 → dev F.key Ψ (L.ℓ * t) = 0) ∧
     (L.r.coeff t ≠ 0 →
       F.stageHeight (dev F.key Ψ (L.ℓ * t)) = (((L.r.natDegree − t) * L.u : ℕ) : ℕ∞) ∧
-      slotRes F H₀ hpin ((L.r.natDegree − t) * L.u) (dev F.key Ψ (L.ℓ * t)) = L.r.coeff t))
+      -- [A-C.5] the ϖ-read (C.22), not the bare n(k)-read (C.21)
+      F.twistRead H₀ hpin ((L.r.natDegree − t) * L.u) (dev F.key Ψ (L.ℓ * t))
+        = L.r.coeff t))
 ```
 
-where `slotRes` is §4's normalized slot-residue read (C.21) — the A3 F-1 TERMINAL form
-`γ_k(A) = Σ_t res(a_{i₀+e₁t}·π^{−(k−(i₀+e₁t)h)/e₁})·η^t` packaged over C.03's carriers.
+where `twistRead F H₀ hpin k A = η⁻¹^{q(k)}·slotRes F H₀ hpin k A` is §4's ϖ-read (C.22) of
+the A3 F-1 TERMINAL slot residue `γ_k(A) = Σ_t res(a_{i₀+e₁t}·π^{−(k−(i₀+e₁t)h)/e₁})·η^t`
+(C.21), both packaged over C.03's carriers.
 
-**⚠ ORDERING NOTE.** `slotRes` (C.21) is a §4 object consumed here; the DAG order is
-C.21 → C.13. The index places C.13 in §3 because it is frame data; the fleet fires it after
-§4's C.21 lands.
+**⚠ ORDERING NOTE.** `slotRes` (C.21) and `twistRead` (C.22) are §4 objects consumed here;
+the DAG order is C.21 → C.22 → C.13. The index places C.13 in §3 because it is frame data;
+the fleet fires it after §4's C.21/C.22 land.
 
-**DEPENDS.** C.01 · C.02 · C.09 · C.21 (§4's normalized slot residue) · B.02.
+**DEPENDS.** C.01 · C.02 · C.09 · C.21 (§4's normalized slot residue) · **[A-C.5]** C.22
+(the ϖ-read that clause 5 now takes) · B.02.
 
 **PROOF.** definitional.
 
@@ -1094,6 +1131,18 @@ misplaced trace of the proof's INTERNAL split (restoring it would kill the proof
 and leave `h = 0 ∧ D′ ≥ 2` inside the statement and uncovered) — it is superseded by the
 `1 ≤ F.h` reading above. Step 2's `GenreDatum` plumbing is now NODE C.14a (below), the §15
 RE-PLAN booking ("the `stageLiftO` GenreDatum packaging — merge into ONE helper") executed.
+
+**⚠ WITNESS CHANGE [A-C.5, 2026-08-16 — the SIGNATURE is byte-unchanged].** C.13 clause 5 is
+re-signed at the ϖ-read, so `IsTestKey` means something new and the CONSTRUCTION must follow:
+the lift target at height `M = (d−t)u` is now `η^{q(M)}·c_t` rather than `c_t` (then
+`twistRead M B_t = η^{−q(M)}·slotRes M B_t = c_t`). It is legal for the same reason the old
+target was — `η^{q(M)}·c_t ≠ 0` when `c_t ≠ 0`, since `η ≠ 0` (C.19's `stageLetter_ne_zero`),
+and fullness supplies every nonzero value at these heights. **This is literally one line of
+the landed proof** (the `exists_slotRes_preimage` call becomes an `exists_twistRead_preimage`
+call), and the changed proof is machine-checked:
+`leanfinal/Uniformity/ChapC/C47_RESIGN_CERT.lean.txt` (`exists_testKey_resigned`, CERT 3 —
+C.14's landed proof verbatim with that one line swapped; the new fullness lemma is CERT 1).
+So the re-signed C.13 is certified NON-VACUOUS, not assumed to be.
 
 ---
 
@@ -2972,6 +3021,21 @@ node) + regression; the naive-key `(Z+1)²` degeneration → §13's contrast row
 ---
 
 ### NODE C.47 [theorem] [fresh]
+
+> ⚠ **[REPAIRED UPSTREAM: A-C.5, 2026-08-16 — this node's SIGNATURE is byte-unchanged; the
+> defect was C.13's, and it is fixed there.]** As frozen at A-C.1 this node is machine-REFUTED
+> (`leanfinal/Uniformity/ChapC/C47_REFUTATION.lean.txt`): not provable at these binders and
+> FALSE at explicit legal numerals, because C.13 clause 5 read the untwisted `slotRes` while
+> C.43's composed key was built for C.22's ϖ-read (which is what landed C.46 states) — so
+> the statement forced `η^{q((f₂−t)u₂)} = 1`, killed at `(e₁,f₁,h) = (2,2,3)` over `ℤ₃`.
+> A-C.5 adjudicated the READ MISMATCH against `EFF.HE6.14`, which writes the source's residue
+> condition in the ϖ-read, and repaired C.13 (see that node's A-C.5 banner). Under the
+> re-signed `IsTestKey` **nothing here changes and the node becomes provable**: its residue
+> half is literally C.46 (machine-checked as `composedKey_twistRead_clause`,
+> `leanfinal/Uniformity/ChapC/C47_RESIGN_CERT.lean.txt`), and what remains is the four shape
+> clauses — monic, `natDegree = keyDeg₂`, top digit `1`, off-lattice digits `0` — which the
+> refutation record explicitly does not question. The refutation record stands as the
+> permanent evidence for why the frozen pairing was wrong; it is not superseded.
 
 **STATEMENT.** *HETOW-2 at the (LIFT)-form: the composed key IS a test key, `w = 0`.*
 `IsTestKey (T.levelDatum) (composedKey T)` — monic of degree `D₂ = keyDeg₂`, top/off-lattice/
@@ -8852,7 +8916,55 @@ A-C.6 (concurrent) the cite REDRAFT unit (C.66/C.92/C.94), which touches disjoin
 | 5 | C.128 narrowing to the geography pin | SIGNED (`he₁ : F.e₁ = 2`, `hf₂ : T.f₂ = 2`) | `verification/openmath/bs2_lawbs2_cert.py` re-run GREEN 666/0, 6/6 teeth |
 
 **Census effect:** nodes 131 → **137** (+C.109-i, -ii, -iii, -iv, -v, +C.129). No committed
-node is deleted; C.109, C.113(i), C.128 are re-signed in place.
+node is deleted; C.109, C.113(i), C.128 are re-signed in place; C.13's clause 5 is re-signed
+and C.47/C.14's signatures are byte-unchanged.
+
+---
+
+## A-C.5 ITEM 2 — the C.47 consumer sweep, and the follow-ups it books
+
+The re-sign changes the MEANING of `IsTestKey` (a landed `def`) while leaving the signatures
+of C.14 and C.47 byte-identical. So the question the refutation record asks — *"Consumers to
+re-check under any repair: C.48(c), C.49, C.52, C.56a, C.83's §12 certificates — every node
+whose DEPENDS list names C.47"* — is answered here by LANDEDNESS, not by opinion.
+
+| consumer | landed in `leanfinal`? | does its landed form consume the defective clause? | action |
+|---|---|---|---|
+| C.48 (incl. clause (c), the C.47 → C.40 chain) | **no** | — | none; it will be written against the re-signed predicate |
+| C.49 | **no** | — | none |
+| C.52 | **no** | — | none |
+| C.56 (DAG names C.47) | **no** | — | none |
+| C.76 (DAG names C.47) | **no** | — | none |
+| **C.56a** | **yes** (`C56a.lean`) | **NO** — `grep` for `IsTestKey`/`slotRes`/`twistRead`/`composedKey` in the landed file is EMPTY; it imports C.14a/C.42/C.44/C.83 only | none |
+| **C.83** | **yes** (`C83.lean`) | **NO** — same grep, empty; imports C.03/C.15 | none |
+| C.13, C.14 (the sites themselves) | **yes** | **YES** — C.13 IS the def; C.14's proof calls the untwisted lift lemma | **FU-1, FU-2** below |
+
+Across all of `leanfinal`, `IsTestKey` occurs in exactly three files: `C13.lean` (the def),
+`C14.lean` (existence), `C43.lean` (a docstring mention only). **No landed consumer outside
+the two sites reads the defective clause**, so the blast radius of the re-sign is two files.
+
+**FU-1 (landed code, NOT done here).** `leanfinal/Uniformity/ChapC/C13.lean`: clause 5's
+residue conjunct → `F.twistRead H₀ hpin ((L.r.natDegree - t) * L.u) (dev F.key Ψ (L.ℓ * t))
+= L.r.coeff t`; import `Uniformity.ChapC.C22`; and REPLACE the docstring section "Why the
+residue clause is the `n(k)`-read and not the ϖ-read" — its argument (fullness makes the
+coset factor invisible) is the defect's rationale and must not survive as a comment
+(wrong comments self-reinforce).
+
+**FU-2 (landed code, NOT done here).** `leanfinal/Uniformity/ChapC/C14.lean`: add the
+fullness lemma `KeyFrame.exists_twistRead_preimage` (proof ready, CERT 1 of
+`C47_RESIGN_CERT.lean.txt`) and swap the single lift call inside `exists_testKey` (CERT 3 is
+the resulting proof, already machine-checked end to end).
+
+**FU-3 (unlanded node).** C.47 lands as a corollary: C.46 for the residue half + the four
+shape clauses. No signature change is needed — that is the point of repairing upstream.
+
+**FU-4 (coordination, A-C.6).** The concurrent A-C.6 cite-redraft introduced
+`DescentStepR` in `leanspec`, whose `jump` constructor reads `IsTestKey L s'.key`. It
+inherits the re-signed predicate automatically (it uses the name), but A-C.6's redraft
+certification (`verification/ac6_cite_redraft_check.py`) was run against the OLD reading and
+should be re-confirmed to be read-independent — its clauses are about self-loops, side
+content and slope increase, none of which touch the residue read, so the expected outcome is
+"unchanged"; it is booked because "expected" is not "checked".
 
 ---
 

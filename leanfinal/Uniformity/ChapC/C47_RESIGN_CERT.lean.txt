@@ -1,0 +1,238 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapC.C13
+import Uniformity.ChapC.C14
+import Uniformity.ChapC.C46
+
+/-!
+# CERTIFICATION of the A-C.5 re-sign of NODE C.47 (and of C.13 clause 5, C.14)
+
+**This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` convention: kept as
+`.lean.txt` so no build picks it up).  To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapC/C47_RESIGN_CERT.lean.txt /tmp/c47_resign.lean
+cd leanfinal && lake env lean /tmp/c47_resign.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only,
+2026-08-16 (amendment A-C.5, item 2).
+
+## What this certifies, and why it was needed
+
+`leanfinal/Uniformity/ChapC/C47_REFUTATION.lean.txt` machine-refutes the frozen C.47
+(`composedKey_isTestKey`): C.13 clause 5 reads slot residues with C.21's UNTWISTED `γ_k`
+(`slotRes`) while C.43's composed key was built so that its slot residues match the label
+under C.22's ϖ-read `γ_k·η^{−q(k)}` (`twistRead`, = landed C.46).  So the frozen statement
+forces `η^{q((f₂−t)u₂)} = 1`, false at the record's `(2,2,3)`/ℤ₃ numerals (`η^{13} ≠ 1` in
+`F₉`).  The record lists three re-sign options and calls option 1 — the ϖ-read residue
+clause — the faithful one.  **A-C.5 adjudicated option 1 from the sources and signs it.**
+The three legs below are the certification the A-C.3 standard demands, because the re-signed
+C.13 clause is a NEW statement:
+
+* **CERT 1 `KeyFrame.exists_twistRead_preimage`** — the ϖ-read analogue of C.14's landed
+  fullness lemma `exists_slotRes_preimage`.  This IS "the one-line change to the lift
+  argument": the witness lifts `η^{q(M)}·c` (nonzero, since `η ≠ 0` by C.19's
+  `stageLetter_ne_zero`), and `twistRead = η^{−q}·slotRes` then returns `c`.
+* **CERT 2 `composedKey_twistRead_clause`** — the re-signed residue clause, AT THE COMPOSED
+  KEY, is literally landed C.46 (`composedKey_slot_residue`).  This is why the re-sign
+  DISCHARGES C.47's residue half instead of merely relocating it: under option 1, C.47 is a
+  corollary of C.46 plus the four shape clauses (monic; `natDegree`; top digit; off-lattice
+  digits), none of which the refutation record puts in question.
+* **CERT 3 `exists_testKey_resigned`** — the re-signed C.13 is NOT vacuous: test keys still
+  exist.  The proof is C.14's landed proof copied verbatim with exactly ONE line changed
+  (the lift call), which is the precise sense in which the record's "a one-line change to
+  the lift argument, and C.14's proof structure is unaffected" is true.
+
+## The source adjudication (why option 1, not merely "an option")
+
+`EFF.HE6.14` (DEFINITION HE6-1, verbatim) writes the family's residue condition as
+`res(B_t(θ)/ϖ(θ)^{(d−t)u}) = c_t` — division by **ϖ^k**, i.e. the ϖ-read, i.e. C.22's
+`twistRead` (by `EFF.HE6.13`'s RIDER and `EFF.HE6.15`'s `[r2]` sign correction: the ϖ-read
+residue is the `n(k)`-read residue times `res(n(k)/ϖ^k) = η^{−q}`).  C.13's landed docstring
+defends the untwisted read by citing `EFF.HE6.13`'s NON-PROPAGATION route (1); that route
+says the eight traced consumers use only the **twist-blind** clauses — `K^×`-fullness
+(`η^{−q}·K^× = K^×`) or `T(k) = ∅`.  Fullness is what makes the lift EXIST under either
+read; it does NOT make the two reads give the same VALUE, and clause 5 pins a value.  So
+the untwisted clause is the unfaithful transcription, and the ϖ-read one is what the source
+literally says.  Options 2 (un-wrap C.43) and 3 (hypothesize the collapse) are rejected in
+the record itself — 2 discards the corpus's wrap correction (`EFF.HETOW.13`/`.16`), 3 is
+dishonest (false at the numerals, true at the `f₁ = 1, q = 2` legs).  A fourth possibility
+the record floats inside option 1 — a separate level-2 predicate `IsTestKey₂` for §6 only —
+is NOT taken: it duplicates a definition and splits its consumers, which is the duplication
+anti-pattern A-C.3's D3 audit flagged, and C.13's own docstring already declares clause 5 to
+BE the transcription of `EFF.HE6.14`, so the cure belongs in C.13.
+
+## Status
+
+Sorry-free, Lean-core axioms only.  `IsTestKey'` below is the re-signed C.13 predicate
+(clause 5's residue conjunct through `twistRead`; the other four conjuncts byte-identical).
+-/
+
+set_option linter.style.longLine false
+
+namespace Uniformity.Density.Tower
+
+open Uniformity.Density.Leaf IsLocalRing Polynomial
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+private theorem isKey_X : IsKey (Polynomial.X : Polynomial O) where
+  monic := Polynomial.monic_X
+  pos := by simp
+  irred := by
+    simpa using (Polynomial.irreducible_X (R := IsLocalRing.ResidueField O))
+
+/-- The A-C.5 re-signed C.13 (clause 5's residue read is C.22's ϖ-read). -/
+def IsTestKey' {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ : Polynomial O) : Prop :=
+  Ψ.Monic ∧ Ψ.natDegree = L.keyDeg₂ ∧
+  dev F.key Ψ (L.ℓ * L.r.natDegree) = 1 ∧
+  (∀ b < L.ℓ * L.r.natDegree, ¬ L.ℓ ∣ b → dev F.key Ψ b = 0) ∧
+  (∀ t < L.r.natDegree,
+    (L.r.coeff t = 0 → dev F.key Ψ (L.ℓ * t) = 0) ∧
+    (L.r.coeff t ≠ 0 →
+      F.stageHeight (dev F.key Ψ (L.ℓ * t)) = (((L.r.natDegree - t) * L.u : ℕ) : ℕ∞) ∧
+      F.twistRead H₀ hpin ((L.r.natDegree - t) * L.u) (dev F.key Ψ (L.ℓ * t)) = L.r.coeff t))
+
+/-- **CERT 1 — the one-line change to C.14's lift step, machine-checked.** -/
+theorem KeyFrame.exists_twistRead_preimage (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : F.Pin H₀) [Finite (ResidueField O)] {M : ℕ} (hM : F.e₁ * F.f₁ * F.h < M)
+    {c : F.stageField H₀ hpin} (hc : c ≠ 0) :
+    ∃ B : Polynomial O, B.natDegree < F.e₁ * F.f₁ ∧ F.stageHeight B = (M : ℕ∞) ∧
+      F.twistRead H₀ hpin M B = c := by
+  classical
+  letI : Field (resField (Polynomial.X : Polynomial O)) := instFieldResField isKey_X
+  haveI : Fact (Irreducible (F.frameRes H₀ hpin)) := ⟨(F.hresirr H₀ hpin).1⟩
+  set η : F.stageField H₀ hpin := F.stageLetter H₀ hpin with hη_def
+  have hη : η ≠ 0 := F.stageLetter_ne_zero hπ H₀ hpin
+  -- the witness value is the OLD target twisted by `η^{q(M)}` — nonzero, so the landed
+  -- fullness lemma applies unchanged
+  have htarget : η ^ (F.twistExp M) * c ≠ 0 := mul_ne_zero (pow_ne_zero _ hη) hc
+  obtain ⟨B, hB1, hB2, hB3⟩ := F.exists_slotRes_preimage hπ H₀ hpin hM htarget
+  refine ⟨B, hB1, hB2, ?_⟩
+  rw [KeyFrame.twistRead, hB3, ← hη_def, inv_pow]
+  field_simp
+
+/-- **CERT 2 — the re-signed residue clause AT THE COMPOSED KEY IS landed C.46.** -/
+theorem composedKey_twistRead_clause {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h) {t : ℕ} (ht : t < T.f₂) :
+    F.twistRead H₀ hpin ((T.f₂ - t) * T.u₂) (dev F.key (composedKey T) (T.e₂ * t))
+      = (towerLabel T).coeff t :=
+  composedKey_slot_residue T hπ hh ht
+
+set_option linter.unusedVariables false in
+/-- **CERT 3 — the re-signed C.14: test keys still EXIST at the ϖ-read clause.**
+C.14's landed proof, verbatim, with exactly one line changed (the lift call). -/
+theorem exists_testKey_resigned {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    [Finite (ResidueField O)] (hπ : Irreducible π) (hh : 1 ≤ F.h) :
+    ∃ Ψ : Polynomial O, IsTestKey' L Ψ := by
+  classical
+  set d := L.r.natDegree with hddef
+  set D := F.e₁ * F.f₁ with hDdef
+  have hD : 0 < D := Nat.mul_pos F.he₁ F.hf₁
+  have hd : 0 < d := L.hrdeg
+  have hℓ : 0 < L.ℓ := L.hℓ
+  have hkeydeg : F.key.natDegree = D := F.hdeg
+  have hkeypos : 0 < F.key.natDegree := by rw [hkeydeg]; exact hD
+  -- Step 1: fullness. `(d − t)u ≥ u > ℓ·D′·h ≥ D′·h` for every `t < d` (`L.hκ`).
+  have hbig : ∀ t, t < d → D * F.h < (d - t) * L.u := by
+    intro t ht
+    have h1 : L.ℓ * D * F.h < L.u := L.hκ
+    have hassoc : L.ℓ * D * F.h = L.ℓ * (D * F.h) := by ring
+    have h2 : D * F.h ≤ L.ℓ * (D * F.h) := Nat.le_mul_of_pos_left _ hℓ
+    have h4 : L.u ≤ (d - t) * L.u := Nat.le_mul_of_pos_left _ (by omega)
+    omega
+  -- Steps 2–3: the lift family, uniformly (no `D′` case split; see the module docstring).
+  have hlift : ∀ t : ℕ, ∃ Bt : Polynomial O,
+      Bt.natDegree < D ∧ (L.r.coeff t = 0 → Bt = 0) ∧
+      (t < d → L.r.coeff t ≠ 0 →
+        F.stageHeight Bt = (((d - t) * L.u : ℕ) : ℕ∞) ∧
+        F.twistRead H₀ hpin ((d - t) * L.u) Bt = L.r.coeff t) := by
+    intro t
+    by_cases hc : L.r.coeff t = 0
+    · exact ⟨0, by simpa using hD, fun _ => rfl, fun _ hne => absurd hc hne⟩
+    · by_cases ht : t < d
+      · obtain ⟨Bt, hB1, hB2, hB3⟩ :=
+          F.exists_twistRead_preimage hπ H₀ hpin (M := (d - t) * L.u) (hbig t ht) hc
+        exact ⟨Bt, hB1, fun h => absurd h hc, fun _ _ => ⟨hB2, hB3⟩⟩
+      · exact ⟨0, by simpa using hD, fun _ => rfl, fun h => absurd h ht⟩
+  choose B hBdeg hBzero hBspec using hlift
+  -- Step 4: the displayed sum, read as a `Φ′`-development (B.06).
+  set a : ℕ → Polynomial O := fun j =>
+    if j = L.ℓ * d then 1 else if L.ℓ ∣ j then B (j / L.ℓ) else 0 with hadef
+  set Ψ : Polynomial O := ∑ j ∈ Finset.range (L.ℓ * d + 1), a j * F.key ^ j with hΨdef
+  have hatop : a (L.ℓ * d) = 1 := by simp only [hadef, if_pos rfl]
+  have hanat : ∀ j, (a j).natDegree < D := by
+    intro j
+    simp only [hadef]
+    by_cases h1 : j = L.ℓ * d
+    · simp only [if_pos h1, Polynomial.natDegree_one]; exact hD
+    · rw [if_neg h1]
+      by_cases h2 : L.ℓ ∣ j
+      · simpa only [if_pos h2] using hBdeg (j / L.ℓ)
+      · simp only [if_neg h2, Polynomial.natDegree_zero]; exact hD
+  have hadeg : ∀ j, (a j).degree < F.key.degree := fun j =>
+    Polynomial.degree_lt_degree (by rw [hkeydeg]; exact hanat j)
+  have hdev : ∀ j < L.ℓ * d + 1, a j = dev F.key Ψ j :=
+    dev_unique F.hmonic hkeypos hadeg rfl
+  -- the top term dominates the tail, whence monicity and the degree
+  have hsplit : Ψ = (∑ j ∈ Finset.range (L.ℓ * d), a j * F.key ^ j) + F.key ^ (L.ℓ * d) := by
+    rw [hΨdef, Finset.sum_range_succ, hatop, one_mul]
+  have hpownat : (F.key ^ (L.ℓ * d)).natDegree = L.ℓ * d * D := by
+    rw [Polynomial.natDegree_pow, hkeydeg]
+  have htailnat : (∑ j ∈ Finset.range (L.ℓ * d), a j * F.key ^ j).natDegree
+      ≤ L.ℓ * d * D - 1 := by
+    refine Polynomial.natDegree_sum_le_of_forall_le _ _ fun j hj => ?_
+    have hj' : j < L.ℓ * d := Finset.mem_range.mp hj
+    have h1 : (a j * F.key ^ j).natDegree ≤ (a j).natDegree + j * D := by
+      refine le_trans Polynomial.natDegree_mul_le ?_
+      rw [Polynomial.natDegree_pow, hkeydeg]
+    have h2 := hanat j
+    have h3 : (j + 1) * D ≤ L.ℓ * d * D := Nat.mul_le_mul_right D hj'
+    have h4 : (j + 1) * D = j * D + D := by ring
+    omega
+  have htaildeg : (∑ j ∈ Finset.range (L.ℓ * d), a j * F.key ^ j).degree
+      < (F.key ^ (L.ℓ * d)).degree := by
+    refine Polynomial.degree_lt_degree ?_
+    rw [hpownat]
+    have hpos : 0 < L.ℓ * d * D := Nat.mul_pos (Nat.mul_pos hℓ hd) hD
+    omega
+  have hmonic : Ψ.Monic := by
+    rw [hsplit]
+    exact (F.hmonic.pow (L.ℓ * d)).add_of_right htaildeg
+  have hnatΨ : Ψ.natDegree = L.keyDeg₂ := by
+    have hdegeq : Ψ.degree = (F.key ^ (L.ℓ * d)).degree := by
+      rw [hsplit]
+      exact Polynomial.degree_add_eq_right_of_degree_lt htaildeg
+    rw [Polynomial.natDegree_eq_of_degree_eq hdegeq, hpownat, LevelDatum.keyDeg₂, ← hDdef,
+      ← hddef]
+    ring
+  refine ⟨Ψ, hmonic, hnatΨ, ?_, ?_, ?_⟩
+  · rw [← hdev _ (Nat.lt_succ_self _), hatop]
+  · intro b hb hnd
+    rw [← hddef] at hb
+    rw [← hdev b (by omega)]
+    simp only [hadef, if_neg (Nat.ne_of_lt hb), if_neg hnd]
+  · intro t ht
+    rw [← hddef] at ht
+    have hlt : L.ℓ * t < L.ℓ * d := (Nat.mul_lt_mul_left hℓ).mpr ht
+    have hjt : a (L.ℓ * t) = B t := by
+      simp only [hadef, if_neg (Nat.ne_of_lt hlt), if_pos (Dvd.intro t rfl),
+        Nat.mul_div_cancel_left t hℓ]
+    have hdt : dev F.key Ψ (L.ℓ * t) = B t := by rw [← hdev _ (by omega), hjt]
+    exact ⟨fun hc => by rw [hdt, hBzero t hc], fun hc => by rw [hdt]; exact hBspec t ht hc⟩
+
+
+end Uniformity.Density.Tower
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+#print axioms Uniformity.Density.Tower.KeyFrame.exists_twistRead_preimage
+#print axioms Uniformity.Density.Tower.composedKey_twistRead_clause
+#print axioms Uniformity.Density.Tower.exists_testKey_resigned
+end AxCheck

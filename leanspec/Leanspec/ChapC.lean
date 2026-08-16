@@ -675,9 +675,35 @@ axiom KeyFrame.slotRes_image (F : KeyFrame O π) (hπ : Irreducible π)
                 (algebraMap (ResidueField O) (resField (Polynomial.X : Polynomial O)) (c t))
               * F.stageLetter H₀ hpin ^ t}
 
-/-! ### NODE C.13 [def] — `IsTestKey` (HOISTED into §4; blueprint's own ⚠ ORDERING NOTE) -/
+/-! ### NODE C.13 [def] — `IsTestKey` (HOISTED into §4; blueprint's own ⚠ ORDERING NOTE)
 
-/-- `Ψ_{κ,r}`-hood: the slot-pinned shape of `EFF.HE6.14`'s enlarged test family. -/
+**CLAUSE 5 RE-SIGNED: A-C.5, 2026-08-16 — the residue read is C.22's ϖ-read `twistRead`,
+not C.21's untwisted `slotRes`.** The frozen pair (C.13 clause 5 untwisted, C.43's composed
+key built for the ϖ-read) makes NODE C.47 FALSE: `C47_REFUTATION.lean.txt` derives
+`IsTestKey (T.levelDatum hπ) (composedKey T) → η ^ F.twistExp (T.f₂ * T.u₂) = 1` and kills
+it at `(e₁,f₁,h) = (2,2,3)` over `ℤ₃` (`Φ′ = x⁴ + 3⁶`, `η² = −1`, `q(27) = 13`, `η^{13} ≠ 1`
+in `F₉`). **The source decides which side is wrong:** `EFF.HE6.14` (DEFINITION HE6-1,
+verbatim) writes the family's residue condition as `res(B_t(θ)/ϖ(θ)^{(d−t)u}) = c_t` —
+division by `ϖ^k`, i.e. exactly `twistRead` (`EFF.HE6.13`'s RIDER + `EFF.HE6.15`'s `[r2]`
+sign correction: ϖ-read = `n(k)`-read × `η^{−q}`). The retired docstring defended the
+untwisted read by `EFF.HE6.13`'s NON-PROPAGATION route (1); that inventory covers only the
+TWIST-BLIND clauses (`K^×`-fullness, `T(k) = ∅`), which make the lift EXIST under either
+read but do NOT make the two reads give the same VALUE — and clause 5 pins a value.
+**Certification (before signing):** `leanfinal/Uniformity/ChapC/C47_RESIGN_CERT.lean.txt`,
+Lean-core: the re-signed clause AT THE COMPOSED KEY *is* landed C.46
+(`composedKey_slot_residue`), and the re-signed predicate is NOT vacuous — test keys still
+exist (`exists_testKey_resigned`, C.14's landed proof with exactly one line changed: the
+witness now lifts `η^{q((d−t)u)}·c_t`, supplied by the certified
+`KeyFrame.exists_twistRead_preimage`). REJECTED: un-wrapping C.43 (discards the corpus's
+wrap correction `EFF.HETOW.13`/`.16`), hypothesizing the collapse (dishonest — false at the
+numerals), and a separate `IsTestKey₂` for §6 (duplicates a definition and splits its
+consumers — A-C.3's D3 anti-pattern). **LANDED-CODE FOLLOW-UPS (not done here, by rule):**
+`leanfinal`'s C.13 def and C.14 proof both need the change; FU-1/FU-2 in the blueprint's
+A-C.5 record. -/
+
+/-- `Ψ_{κ,r}`-hood: the slot-pinned shape of `EFF.HE6.14`'s enlarged test family.
+[A-C.5: clause 5's residue conjunct reads through `twistRead` (the ϖ-read of the source's
+own display); the other four conjuncts are byte-identical to the A-C.1 signing.] -/
 def IsTestKey {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (Ψ : Polynomial O) : Prop :=
   Ψ.Monic ∧ Ψ.natDegree = L.keyDeg₂ ∧
@@ -687,7 +713,8 @@ def IsTestKey {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (L.r.coeff t = 0 → dev F.key Ψ (L.ℓ * t) = 0) ∧
     (L.r.coeff t ≠ 0 →
       F.stageHeight (dev F.key Ψ (L.ℓ * t)) = (((L.r.natDegree - t) * L.u : ℕ) : ℕ∞) ∧
-      F.slotRes H₀ hpin ((L.r.natDegree - t) * L.u) (dev F.key Ψ (L.ℓ * t)) = L.r.coeff t))
+      F.twistRead H₀ hpin ((L.r.natDegree - t) * L.u) (dev F.key Ψ (L.ℓ * t))
+        = L.r.coeff t))
 
 /-! ### NODE C.14 [lemma] — existence of a test key
 
@@ -701,6 +728,13 @@ frame admitted for C.05 alone; no chapter-C consumer fires a test key on it. (Th
 field's "`2 ≤ F.e₁ * F.f₁`" clause was the misplaced trace of the proof's internal split —
 restoring IT would kill the proof's own step 3 and leave `h = 0 ∧ D′ ≥ 2` uncovered.) -/
 
+/-- [A-C.5, 2026-08-16: the SIGNATURE is byte-unchanged, but `IsTestKey` is now the ϖ-read
+predicate, so the WITNESS changes — the lift target at height `(d−t)u` is `η^{q((d−t)u)}·c_t`
+instead of `c_t`.  This is one line of C.14's landed proof (the lift call), and the changed
+proof is machine-checked in `leanfinal/Uniformity/ChapC/C47_RESIGN_CERT.lean.txt`
+(`exists_testKey_resigned`, with the new fullness lemma
+`KeyFrame.exists_twistRead_preimage`).  The re-signed predicate is therefore certified
+NON-VACUOUS before signing.] -/
 axiom exists_testKey {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     [Finite (ResidueField O)] (hπ : Irreducible π) (hh : 1 ≤ F.h) :
     ∃ Ψ : Polynomial O, IsTestKey L Ψ
@@ -1879,7 +1913,20 @@ axiom composedKey_slot_residue {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H�
     F.twistRead H₀ hpin ((T.f₂ - t) * T.u₂) (dev F.key (composedKey T) (T.e₂ * t))
       = (towerLabel T).coeff t
 
-/-! ### NODE C.47 [theorem] — HETOW-2 at the (LIFT)-form, `w = 0` [signed: A-C.1] -/
+/-! ### NODE C.47 [theorem] — HETOW-2 at the (LIFT)-form, `w = 0` [signed: A-C.1;
+**REPAIRED UPSTREAM: A-C.5, 2026-08-16 — this signature is byte-unchanged**].
+
+As frozen, C.47 was machine-REFUTED (`leanfinal/Uniformity/ChapC/C47_REFUTATION.lean.txt`):
+not provable at these binders and false at explicit legal numerals, because C.13 clause 5
+read the UNTWISTED residue while C.43's composed key was built for the ϖ-read.  A-C.5
+adjudicated the mismatch to C.13 (the source, `EFF.HE6.14`, writes the ϖ-read) and repaired
+it THERE, which is why nothing changes here: under the re-signed `IsTestKey`, C.47's residue
+half is literally landed C.46 (`composedKey_slot_residue`; machine-checked as
+`composedKey_twistRead_clause` in `C47_RESIGN_CERT.lean.txt`), and the remaining obligation
+is the four shape clauses — monic, `natDegree = keyDeg₂`, top digit `1`, off-lattice digits
+`0` — which the refutation record explicitly leaves untouched.  The `f₁ ≥ 2` reach that the
+node's TEETH row advertises (and that the corpus could only claim PROOF-ONLY, HETOW-BOX-3)
+is exactly what the frozen form broke and the re-sign restores. -/
 
 axiom composedKey_isTestKey {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
