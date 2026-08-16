@@ -290,12 +290,14 @@ liftable by the Q4 policy) and `HYP.12` (the `(e,f)` ordering convention, same d
 `inertiaDegOf` is a gcd over the **order** `AdjoinRoot g`, not over the maximal order, and this
 chapter never assumes the two agree.
 
-**H-8 — what stays cited nowhere.** In Lean there are no citations. The three Ore/GMN facts the
-corpus consumes by citation become nodes here, and this is the dictionary:
+**H-8 — what stays cited nowhere** *[amended: A-F.10 — with ONE exception, NS-1, which stays a
+citation: a gate-(b) axiom import, disclosed at H-14]*. In Lean there are no citations. The
+three Ore/GMN facts the corpus consumes by citation become nodes here, and this is the
+dictionary:
 
 | corpus citation | corpus site | this chapter |
 |---|---|---|
-| Ore's theorem of the polygon, order 1 (GMN Thm 1.15) = NS-1 | `EFF.W12.09`, `.27`, `.46`; `EFF.HE3.03` | **B.42** (proved) |
+| Ore's theorem of the polygon, order 1 (GMN Thm 1.15) = NS-1 | `EFF.W12.09`, `.27`, `.46`; `EFF.HE3.03` | **B.42** (*[repaired: A-F.10]* — gate-(b) CITE `[cite:GN15 Thm 2.3]`, owner signature pending; was "(proved)", but the signed route is machine-checked unreachable and the vertex-split mechanism has no corpus proof — see amendment A-F.10 and H-14) |
 | Ore's theorem of the residual polynomial + leaf dichotomy with explicit `(e,f)` (GMN Thm 1.19 + Cor 1.20) = NS-2 | `EFF.W12.27` verbatim ("classical, cited not re-proved"), `EFF.HE3.26`, `EFF.HE6.32` | **B.48** + **B.58** (proved; B.58 conditional on `B-BOX-1` at `d ≥ 2`) |
 | the descent trigger (GMN Lemma 3.11(3)) = NS-6, ledger `HYP.14` | `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-6 + §3 F-1 | **B.63** (⇐) + **B.64** (⇒) |
 | fact (I): the order-1 residual field is finite of degree `m` = NS-4 | `docs/GMN_citations.md` §0 | **B.22**, **B.23** |
@@ -368,6 +370,26 @@ wraps every declaration in `namespace LeanspecB` (§12), so the collision count 
 structurally zero and the 0e type diff is run per declaration against the fully-qualified
 `leanfinal` twin.
 
+**H-14 — the side dissection is a gate-(b) LITERATURE CITE, and here is exactly who inherits it
+(added at A-F.10, 2026-08-16).** NODE B.42 (`exists_slope_factorization`, the order-1 theorem of
+the polygon = NS-1) is `[cite:GN15 Thm 2.3]`: it will land in `leanfinal` as a signed `axiom`
+(published source [GN15] Thm 2.3 / GMN Thm 1.15, COVERS-ALL-O per
+`docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-1/NS-2), after the owner's per-cite signature —
+the queue entry with the exact Lean statement and the faithfulness draft is CHAP-I §3's dated
+addendum of 2026-08-16. Its statement is NOT proved in this repo; the signed route was
+machine-checked impossible (`B42_ROUTE_BLOCKED.lean.txt`) and the missing vertex-split mechanism
+has no corpus proof at general keys (amendment A-F.10 (I)–(II)). **Cite-conditionality is
+inherited by every node whose DEPENDS reaches B.42**: B.63, B.65, B.66/B.66a, B.71, B.72,
+B.79a/B.79b, B.80, B.81, B.82 and the §10 gates B.83–B.86 — the chapter's entire §8/§9/§10
+upper layer — in addition to (never instead of) the disclosed `B-BOX-1`/`hperim` conditionality
+of H-7. The inheritance is mechanically visible: the cite axiom appears by name in every
+downstream `#print axioms` footprint at B.86 part (i). What is NOT conditional: everything at or
+below §§3–7 that does not read B.42 — in particular the LANDED B.41/B.48 (the graded engine and
+the residual dissection carry their own `hpure` and are proved), B.44, B.59/B.60, and B.42a (the
+dictionary lemma, proved). A future fresh proof of the general-key vertex split (the obstruction
+record's "missing mechanism" display; `B-BOX-1`-tier own design) retires the cite and this
+block with it.
+
 ---
 
 ## 2. NODE INDEX
@@ -388,8 +410,10 @@ structurally zero and the 0e type diff is run per declaration against the fully-
 declarations are consumed by name across the DEPENDS fields, of which 20 are DAG nodes
 (`lean:*`) and 21 are landed declarations with no DAG node of their own.
 **Split-mandated nodes** (the fleet will see more than 86 units of work): B.13 → 2, B.32 → 3,
-B.42 → 4, B.44 → 3, B.48 → 3, B.55 → 2, B.56 → 4, B.79 → 2, plus the split *candidates* flagged at
+~~B.42 → 4~~ *[A-F.10: retired — B.42 is a gate-(b) cite; `B42a.lean` re-purposed for the new
+NODE B.42a]*, B.44 → 3, B.48 → 3, B.55 → 2, B.56 → 4, B.79 → 2, plus the split *candidates* flagged at
 B.05, B.17, B.20, B.30, B.40, B.58, B.70, B.81. Planning figure for the fleet: **≈ 110 Lean files.**
+*[A-F.10: node count 86 → 87 (B.42a added, a lemma with committed compiled proof).]*
 
 **Graph shape** (computed from the DEPENDS fields, `spec/DAG_BLUEPRINT_B.tsv`): 214 intra-chapter
 edges, **acyclic**, **critical path 16**, layer widths
@@ -398,7 +422,10 @@ depend only on landed API or on nothing). The critical path runs
 `B.02 → B.05 → B.08 → B.12 → B.16 → B.26 → B.32 → B.38 → B.42 → B.48 → B.51 → B.55 → B.58 → B.63
 → B.79 → B.82`, i.e. development → polygon → residual → product law → dissections → `(e,f)` → NS-6
 → decidedness. **B.42 (the theorem of the polygon) and B.56 (`B-BOX-1`'s repair) are the chapter's
-two schedule risks**, and B.42 sits on the critical path.
+two schedule risks**, and B.42 sits on the critical path. *[A-F.10: the B.42 risk FIRED — the
+signed route is machine-checked unreachable — and is RESOLVED by the gate-(b) cite; the critical
+path's B.42 edge is now the owner's per-cite signature (CHAP-I §3 queue), not a proof. B.56
+remains the one schedule risk.]*
 
 ---
 
@@ -2365,6 +2392,21 @@ graded case is the chapter's largest cluster and the fleet should be sized for �
 B.37–B.43.** Every one of those landed lemmas is `sorry`-free with a Lean-core footprint, so the
 template is known to close; what is new is the graded weight bookkeeping.
 
+**[amended: A-F.10 — THE DECISION'S SCOPE IS HALVED: the engine proves ONE dissection, not
+two.]** The graded engine (B.37–B.41, LANDED) serves the **residual** dissection (B.48, LANDED)
+and the pure-case factorization exactly as designed. But its use for the **side** dissection —
+B.42's inductive peel — is machine-checked IMPOSSIBLE (committed obstruction record
+`leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt`): B.41's `hpure` cannot hold in the
+multi-side inductive case (purity forces a one-sided polygon, B.42a), and the `hprod` degree
+arithmetic of the prescribed peel is unsatisfiable. The side dissection needs a **graded Hensel
+at a VERTEX** (Weierstrass-type; coprimality monomial-vs-unit, not `GradedCoprime`), which no
+corpus proof supplies at general keys (the naive extraction is A-F.7's CLOSED-REFUTED B.44′).
+Under Part V gate (b), B.42 is therefore a LITERATURE CITE (`[cite:GN15 Thm 2.3]`) — see
+amendment A-F.10 for the decision matrix (the three alternatives above were rejected for the
+side dissection; the cite replaces them, and alternative 2's analysis stands as the reason a
+base-change repair is not attempted). The rejected-alternatives analysis and the template
+mapping remain in force for B.37–B.41/B.43/B.48.
+
 ---
 
 ### NODE B.37 [def] [fresh]
@@ -2684,7 +2726,15 @@ bijection") → **Lean theorem** (the product identity is step 4).
 
 ---
 
-### NODE B.42 [theorem] [fresh]
+### NODE B.42 [theorem] [cite:GN15 Thm 2.3]
+
+*[repaired: A-F.10 — retagged `[fresh]` → `[cite:GN15 Thm 2.3]` (Part V gate (b), owner-signed
+per cite): the signed proof route is machine-checked UNREACHABLE (committed obstruction record
+`leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt` — B.41's `hpure` is unavailable exactly
+in the inductive case, and step 5's degree arithmetic is unsatisfiable), no corpus proof of the
+missing vertex-split mechanism exists at general keys (A-F.7's B.44′ is CLOSED-REFUTED), and the
+statement is a published theorem at COVERS-ALL-O scope. Conclusion gains clause 6 (the residual
+tie), the cited theorem's own third clause. Full record: amendment A-F.10.]*
 
 **STATEMENT.** *THE THEOREM OF THE POLYGON at order 1 (NS-1).* Over the complete bundle, let `φ` be
 an order-1 key and `f` monic with `f.map (residue O) = (φ.map (residue O)) ^ μ`, `0 < μ`, **and
@@ -2699,7 +2749,11 @@ distinct** slopes (`u_i * ℓ_j ≠ u_j * ℓ_i` for `i ≠ j`) and monic `f_i` 
   *([repaired: A-F.9] — recorded for the consumers; the proof delivers both)*;
 * `Σ (f_i).natDegree = f.natDegree`;
 * the slopes `(u_i, ℓ_i)` are exactly the slopes of `f`'s `φ`-adic polygon, i.e. exactly the coprime
-  pairs whose `sideSet φ f u ℓ` has at least two elements.
+  pairs whose `sideSet φ f u ℓ` has at least two elements;
+* *([repaired: A-F.10] — the residual tie, the cited theorem's own third clause)* for each `i`,
+  `R_{λ_i}(f_i) ∼ R_{λ_i}(f)`: the piece's residual polynomial equals `f`'s at the shared slope up
+  to a unit of `resField φ` (GMN Thm 1.15's `R_{λ_i}(F_i) ∼ R_{λ_i}(f)`; what B.63 step 2's `hsep`
+  transport consumes).
 
 **SIGNATURE.**
 ```lean
@@ -2719,6 +2773,12 @@ namespace Uniformity.Density.Leaf
 -- `GradedCoprime` output pins the factors' left heights finite) and `0 < (F p).natDegree`
 -- (the peeled degrees are `ℓ·m·d`, `d ≥ 1`) — proof-free, and together with A-F.6's clauses
 -- they discharge B.48's `hH₀`/`hne`/`hd` at B.63's call sites. See amendment A-F.9.
+-- [repaired: A-F.10] this declaration is now a GATE-(b) LITERATURE IMPORT ([GN15] Thm 2.3 /
+-- GMN Thm 1.15; lands in `leanfinal` as a signed `axiom`, owner signature pending — CHAP-I §3
+-- queue). Hypotheses byte-unchanged; conclusion gains clause 6, the residual tie
+-- `R_λ(F p) ∼ R_λ(f)` (the cited theorem's own third clause — B.63 step 2 consumes it, and
+-- under the cite it cannot be re-derived from a construction). Clause 6 is the one clause
+-- never refutation-tested: flagged FIRST for the gate-(b) fresh-context audit.
 theorem exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
@@ -2731,106 +2791,147 @@ theorem exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (h
         dev φ (F p) 0 ≠ 0 ∧ 0 < (F p).natDegree) ∧
       f = ∏ p ∈ s, F p ∧
       (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
-        (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s))
+        (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s)) ∧
+      -- [repaired: A-F.10] clause 6, the residual tie (GMN Thm 1.15's third clause)
+      (∀ p ∈ s, ∀ (hne : (sideSet φ f p.1 p.2).Nonempty)
+        (hne' : (sideSet φ (F p) p.1 p.2).Nonempty) (H₀ H₀' : ℕ),
+        npHgt φ f (sideMin φ f p.1 p.2 hne) = (H₀ : ℕ∞) →
+        npHgt φ (F p) (sideMin φ (F p) p.1 p.2 hne') = (H₀' : ℕ∞) →
+        ∃ c : (resField φ)ˣ,
+          resPoly π φ f p.1 p.2 hne H₀ =
+            Polynomial.C (c : resField φ) * resPoly π φ (F p) p.1 p.2 hne' H₀')
 ```
 
-**DEPENDS.** B.13 · B.16 · B.17 · B.18 · B.19 · B.20 · B.30 · B.34 · B.35 · B.41 ·
-landed `Uniformity.Hensel.exists_monic_factorization_finset` (as the shape to mirror for the
-`Finset` induction).
+**DEPENDS.** *[repaired: A-F.10 — a cite node depends only on its statement's definitional
+suppliers]* B.02 (`dev`) · B.11 (`npHgt`) · B.16 (`sideSet`) · B.20 (`sideMin`) · B.29
+(`resPoly`) · B.34 (`IsPure`) · B.25a (`resField`). *(The pre-A-F.10 proof-route DEPENDS —
+B.13 · B.17 · B.18 · B.19 · B.30 · B.35 · B.41 · the landed `Finset` Hensel shape — are retired
+with the route; B.41 remains a supplier of B.48 only.)*
 
-**PROOF.**
-1. **The slope set is finite and bounded.** Every slope `(u,ℓ)` of `f` has `ℓ ≤ μ` (B.20:
-   `ℓ ∣ sideLen ≤ μ`) and `u ≤ ℓ * npHgt φ f 0` (the leftmost height, **finite by `h0`** —
-   [repaired: A-F.9]: the former parenthetical credited "B.18 and `hres`", but `hres` alone
-   does NOT give finiteness at abscissa 0, witness `f = φ`; `hres` gives `npHgt φ f j ≥ 1` for
-   `j < μ`, so `1 ≤ H₀ < ⊤`). So the slopes live in a fixed
-   `Finset.range × Finset.range`, and `s` is a `Finset.filter` of it.
-2. **`hres` forces every slope positive.** `f̄ = φ̄^μ` says `dev φ f j ≡ 0 mod π` for `j < μ`
-   (a private helper: reduce the development mod `π` and use B.06's uniqueness in
-   `(ResidueField O)[X]`), so `npHgt φ f j ≥ 1` for `j < μ`, so `suppVal φ f u ℓ` is attained at
-   `j = μ` only when `u = 0`; hence every side with two elements has `u ≥ 1`. [A-F.6: this step is
-   also what discharges the conclusion's new `0 < p.1` clause, and it is where the repaired B.41's
-   `hu` comes from at this node's own call sites; `hres` gives `f.natDegree = m·μ` (degrees of both
-   sides), which supplies B.41's new `hfd` — both new hypotheses are derivable here, no signature
-   change to THIS node's hypothesis list.]
-3. **Strong induction on `μ`.** If `s` has at most one element, `f` is already pure (B.34) and the
-   family is `{f}`; done. [A-F.9: the base discharges the strengthened clauses at `F := f` —
-   `dev φ f 0 ≠ 0` is `h0` itself and `0 < f.natDegree = m·μ` from `hres`; and with `h0` the
-   hull from `(0, H₀)` to `(μ, 0)` has at least one edge, so `s ≠ ∅` here.]
-4. Otherwise pick two distinct slopes and, by B.19, the abscissa `i` they share (the vertex). Choose a
-   coprime pair `(w, t)` with slope strictly between them (rational sampling: the interval is
-   nonempty in `ℚ`, and `Nat.Coprime`-normalising a mediant gives the pair — a private helper
-   `exists_coprime_between`). At `(w,t)` the support value is attained **only at `i`** (B.19 plus
-   convexity of the `inf` in the slope — the private helper `onSide_unique_of_between`).
-5. **Apply B.41 at the slope `(w,t)`** with `G := Y^{i'}` and `H :=` the remaining factor of
-   `resPoly π φ f w t`, where `i'` is `i`'s position on the `(w,t)`-side. Because the support value is
-   attained only at `i`, the residual polynomial at `(w,t)` is `C c * Y^{i'}` for a unit `c`, so the
-   coprime split to feed B.41 is **not** available in that form — instead apply B.41 at a slope
-   `(w,t)` chosen so that the residual polynomial has **two** coprime factors, namely
-   `Y^{i'}` and `(the part of degree ≥ 1 with nonzero constant term)`. **This is the step that needs
-   the mediant chosen ON a vertex rather than strictly between:** take `(w,t)` to be one of the two
-   slopes met at `i` — say the steeper one `(u₁,ℓ₁)` — whose residual polynomial `R₁` has degree
-   `d₁ ≥ 1` and nonzero constant term (B.30), and split `R₁ = Y^0 * R₁`… **RESOLVED as follows**: the
-   correct split is at the *steepest* slope. Let `(u₁,ℓ₁)` be the slope with the largest value of
-   `u/ℓ` in `s` (`Finset.max'` on the mediant order — private helper). Its side spans
-   `[j₁, j₁ + ℓ₁ d₁]` with `j₁ = 0` (the steepest side starts at abscissa `0`, since heights left of
-   it would violate the `inf`). The residual polynomial at `(u₁,ℓ₁)` for the **whole** `f` has degree
-   `d₁` and nonzero constant term; the rest of the polygon contributes the monomial factor. So take
-   `G := resPoly π φ f u₁ ℓ₁` (degree `d₁`, nonzero constant term, hence coprime to `Y`) and
-   `H := Y^{μ/ℓ₁ - d₁}`, which are coprime because `G.coeff 0 ≠ 0`
-   (`IsCoprime` with a power of `Y` ⟺ nonzero constant term — private helper
-   `isCoprime_X_pow_iff`). B.41 then peels off the steepest side.
-6. The peeled factor `g` has degree `ℓ₁ m d₁ < f.natDegree` (strictly, since `s` has ≥ 2 elements), and
-   the cofactor `h` has `h̄ = φ̄^{μ - ℓ₁ d₁}` (B.35 and step 2), with polygon the remaining sides
-   (B.35's `suppVal` additivity, which pins the cofactor's support values). Apply the induction
-   hypothesis to `h`. [A-F.9: the recursive call's `h0` — and the strengthened clauses for the
-   peeled `g` — come **from B.41's own conclusion**: `GradedCoprime π φ u ℓ g h` pins
-   `npHgt φ g 0` and `npHgt φ h 0` finite (`dev ≠ 0` via `npHgt_eq_top_iff`), and the pinned
-   degrees `ℓ·m·d` with `d ≥ 1` give positivity; `μ − ℓ₁d₁ > 0` while `s` has ≥ 2 elements, so
-   the recursion's `hμ` holds.]
-7. The last conclusion (the slope set is exactly the set of `(u,ℓ)` with a two-element side) is B.35
-   run in the other direction: the product's support value at any `(u,ℓ)` is the sum of the factors',
-   and a two-element side of the product forces one of a factor.
+**PROOF.** **RETIRED at A-F.10 — the signed route is machine-checked UNREACHABLE.** The
+pre-A-F.10 PROOF field (7 steps; git history at this node, and the load-bearing parts quoted in
+the obstruction record) instructed "apply B.41 at the steepest slope to peel the steepest side".
+The committed evidence file `leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt` (compiles at
+the pin against the LANDED §3–§5 definitions, sorry-free, Lean-core axioms) proves:
 
-**SIZE.** 180 lines. **SPLIT MANDATED → 4**: `B42a.lean` = the three private helpers
-(`exists_coprime_between`, `isCoprime_X_pow_iff`, and the steepest-slope selection);
-`B42b.lean` = steps 1–2 (the slope set is a finite `Finset` and every slope is positive);
-`B42c.lean` = step 5 (the peel at the steepest slope, the only place B.41 is called);
-`B42d.lean` = steps 3, 6–7 (the induction and the contract).
+* `card_sideSet_le_one_of_isPure` / `b42_route_blocked` — in the inductive case (two two-point
+  sides at distinct slopes) `f` is `(w,t)`-pure for NO slope, so B.41's `hpure` is unavailable
+  at any slope whatsoever (Defect 1); and
+* step 5's `hprod` is degree-unsatisfiable whenever `ℓ₁d₁ < μ` (Defect 2, arithmetic).
 
-**⚠ THIS NODE IS THE CHAPTER'S CRITICAL-PATH RISK — STEP 5's SUB-CLAIM, FORMERLY DECLARED
-UNSETTLED, IS SETTLED UNDER `h0` (A-F.9).** The STATEMENT is `docs/GMN_citations.md` Thm 1.15 at
-order 1 (`COVERS-ALL-O` by `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-1) — *[re-scoped:
-A-F.9]* with the caveat that Thm 1.15 factors `f_φ` (the finite-slope principal-part factor),
-not `f`; `f = f_φ` is exactly the new hypothesis `h0`, and without `h0` the node's old
-"verbatim" claim was FALSE at `f = φ` (the wave-11 refutation). The geometric claim **"the
-steepest side starts at abscissa 0"** is TRUE under `h0`, with proof *(settled at A-F.9;
-formerly unproved here)*: let `σ* := max{(H₀ − h_j)/j : j > 0, npHgt φ f j = h_j < ⊤}` — a
-nonempty finite maximum (`j = μ` qualifies; `H₀ < ⊤` is `h0`), attained at `j*`, with lowest
-terms `(u*, ℓ*)`. For every support `j > 0`: `ℓ*h_j + u*j ≥ ℓ*H₀ ⟺ σ* ≥ (H₀ − h_j)/j`, true by
-maximality, with equality at `j*` — so `0` and `j*` both minimize the `(u*,ℓ*)`-weight:
-`(u*,ℓ*) ∈ s` and its `sideMin = 0`. No `(u,ℓ) ∈ s` is steeper: a two-point side at
-`u/ℓ > σ*` with leftmost point `j > 0` gives `(H₀ − h_j)/j ≥ u/ℓ > σ*` (the weight of `0` is at
-least the side's), contradicting maximality; with leftmost point `j = 0`, its second point
-`j′ > 0` gives `(H₀ − h_{j′})/j′ = u/ℓ > σ*`, the same contradiction. ∎ So the steepest member
-of `s` is `(u*, ℓ*)`, its side starts at abscissa `0`, and step 5's split is well-posed. It is
-still to be added as a private helper of `B42b.lean` (the argument above is its proof script);
-a fleet agent that cannot land it must return `BLOCKED` quoting which step of the displayed
-argument fails. **§14 item 2 (annotated RESOLVED-BY-PROOF at A-F.9).**
+The missing mechanism (graded Hensel at a VERTEX — Weierstrass-type, factors pure at DIFFERENT
+slopes) has no corpus proof at general keys (A-F.10 (II)(i); the naive extraction is A-F.7's
+CLOSED-REFUTED B.44′). **What survives of the route** (obstruction record, "what survives"):
+steps 1–2 (slope finiteness/positivity from `h0` + `hres`) and step 3's base case are sound;
+the pure ⟺ one-sided dictionary lands as NODE B.42a below; A-F.9's `σ*` argument (the steepest
+side starts at abscissa 0) is unimpugned. None is needed by the import.
 
-**SOURCE.** `docs/GMN_citations.md` Thm 1.15 (order-1 theorem of the polygon — it factors `f_φ`,
-the prime-to-`φ` part; see the ⚠ re-scope, A-F.9);
+**IMPORT ROUTE (gate (b)).** This node lands in `leanfinal` as a signed `axiom` carrying the
+statement above, after the owner signs the cite (Part V gate (b): published-source citation +
+faithfulness entry + fresh-context audit + signature — queued at
+`blueprint/CHAP-I_capstone_conditionality.md` §3's dated addendum of 2026-08-16, where the
+exact Lean statement and the faithfulness entry draft live). Cited display: **[GN15] Thm 2.3**
+(`g = g₀ · φ^{ord_φ(g)} · ∏_{(λ,ψ)} g_{λ,ψ}` with degree laws and leaf clause, arbitrary
+discrete valued field — COVERS-ALL-O per NS-1/NS-2), per-slope grouping and the factor-side +
+residual-tie clauses per **GMN Thm 1.15** (`f_φ = F_1…F_g`, `N_φ(F_i)` one-sided of slope
+`λ_i`, `R_{λ_i}(F_i) ∼ R_{λ_i}(f)`), general-scope legs [AGNPRW] Thm 4.4 and the NS-9 product
+theorem. Clause-by-clause transcription fidelity was source-verified at A-F.9 (III) for clauses
+1–5; clause 6 is newly transcribed (A-F.10 (IV)) and is the audit's first target. Retirement
+route (a future fresh proof retires the cite): the obstruction record's "missing mechanism"
+display — the general-key vertex split, `B-BOX-1`-tier own design.
+
+**SIZE.** n/a (cite import; the leanspec stub is the signable artifact). *[repaired: A-F.10 —
+the former `SPLIT MANDATED → 4` (`B42a`–`B42d.lean`) is retired with the route; the `B42a.lean`
+name is re-purposed by NODE B.42a below.]*
+
+**⚠ FORMERLY THE CHAPTER'S CRITICAL-PATH RISK — RESOLVED at A-F.10 by the gate-(b) import (the
+risk fired: the route was impossible, not merely hard).** The STATEMENT is
+`docs/GMN_citations.md` Thm 1.15 at order 1 (`COVERS-ALL-O` by
+`docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-1) — *[re-scoped: A-F.9]* with the caveat that
+Thm 1.15 factors `f_φ` (the finite-slope principal-part factor), not `f`; `f = f_φ` is exactly
+the hypothesis `h0`, and without `h0` the node's old "verbatim" claim was FALSE at `f = φ`
+(the wave-11 refutation). A-F.9's settled geometric sub-claim ("the steepest side starts at
+abscissa 0", the `σ*`-maximum proof, displayed in full at amendment A-F.9 (III)) is unimpugned
+by the route block and survives as recorded mathematics — no longer a mandated helper, since
+the route that consumed it is retired. **§14 item 2 (annotated RESOLVED-BY-PROOF at A-F.9;
+the transcription-checking residue folds into A-F.10's gate-(b) fresh-context audit).**
+
+**SOURCE.** *[A-F.10: no longer provenance only — the CITED IMPORT, gate (b).]*
+`docs/GMN_citations.md` Thm 1.15 (order-1 theorem of the polygon — it factors `f_φ`,
+the prime-to-`φ` part; see the ⚠ re-scope, A-F.9; its third clause `R_{λ_i}(F_i) ∼ R_{λ_i}(f)`
+is clause 6);
 `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-1 ([AGNPRW] Thm 4.4 / [GN15] Thm 2.3,
 `COVERS-ALL-O` — [GN15] Thm 2.3's display `g = g₀ · φ^{ord_φ(g)} · ∏ g_{λ,ψ}` is the explicit
-`φ`-part peel that `h0` transcribes, quoted verbatim at NS-2);
-`EFF.W12.09`, `.27`, `.46` (the corpus's three citation sites); `EFF.HE3.13` (whose bookkeeping
+`φ`-part peel that `h0` transcribes, quoted verbatim at NS-2) and NS-9 ([FGMN] Thm 2.8 /
+[AGNPRW] Thm 4.6 + Cor 2.9 — clause 6's general-scope leg via residual multiplicativity);
+`EFF.W12.09`, `.27`, `.46` (the corpus's three citation sites — `.27` verbatim: "classical,
+cited not re-proved"); `EFF.HE3.13` (whose bookkeeping
 audit "the polygon spans abscissae `0..μ`" presupposes exactly `h0`).
 
-**TEETH.** `W12-SHAPE` (`EFF.W12.54`, 0/164 over 23 rows, **both directions** — the completeness
-half is exactly this node's last conclusion) → **Lean theorem**; `HE6-SEP`
-(`EFF.HE6.49`, 4,232 strict-excess certificates) → **executable regression** retained.
+**TEETH.** *[repaired: A-F.10 — re-disposed: a "Lean theorem" disposition is impossible at an
+axiom, and the batteries now corroborate the import rather than follow from it.]*
+`W12-SHAPE` (`EFF.W12.54`, 0/164 over 23 rows, **both directions** — the completeness
+half is exactly this node's `↔`-clause) → **executable regression retained, as cite
+corroboration**; `HE6-SEP` (`EFF.HE6.49`, 4,232 strict-excess certificates) → **executable
+regression** retained.
 
 **ENVIRONMENT.** ENV-C.
+
+---
+
+### NODE B.42a [lemma] [fresh]
+
+*[booked at amendment A-F.10; compiled proof committed in
+`leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt` — the fleet lands it by transcription
+into `B42a.lean` (name re-purposed from B.42's retired split table).]*
+
+**STATEMENT.** *The pure ⟺ one-sided dictionary, machine-checked direction.* A `(w,t)`-pure
+monic `f` of degree `μ·m` has a **one-point** side at every slope `(u,ℓ)` genuinely different
+from `(w,t)` (`u·t ≠ w·ℓ`): purity forces a single-sided polygon. Note what is *not* assumed:
+no `hπ`, no coprimality of either pair, no completeness, no residue finiteness — four lines of
+weight arithmetic per case (ENV-A).
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Leaf
+
+/-- A `(w,t)`-pure monic `f` of degree `μ·m` has a one-point side at every other slope. -/
+theorem card_sideSet_le_one_of_isPure {φ : Polynomial O} (hφ : IsKey φ)
+    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree)
+    {w t : ℕ} (ht : 0 < t) (hpure : IsPure φ f w t)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hslope : u * t ≠ w * ℓ) :
+    (sideSet φ f u ℓ).card ≤ 1
+```
+
+**DEPENDS.** B.11 (`npHgt`) · B.13 · B.14 (`suppVal`) · B.16 (`sideSet`) · B.34 (`IsPure`) ·
+the on-side weight lemmas of §3 (landed; exactly the imports of the committed proof:
+B.04/B.12/B.13b/B.17/B.18/B.20/B.34/B.39a's helper layer).
+
+**PROOF.** Transcribe the committed, compiled proof from the obstruction record (its
+`#print axioms` is Lean-core): purity pins `t·H₀ = w·μ` (the pure slope is the CHORD slope);
+for two on-side points at `(u,ℓ)`, multiply the on-side identity by `t` and the purity bound by
+`ℓ`, add, cancel the common `ℓ·t·H` monomial, and divide by the positive abscissa gap — the
+steeper case (`u·t > w·ℓ`) is decided at the RIGHT on-side point (`0 < j'`), the shallower at
+the LEFT one (`j < μ`), `linarith` closes both.
+
+**SIZE.** 80 lines (transcription; includes the private `le_of_npHgt_ne_top`).
+
+**ROLES.** (i) THE OBSTRUCTION that retired B.42's proof route (its corollary
+`b42_route_blocked` — in the inductive case no purity slope exists — may be landed alongside as
+a private corollary or left in the record); (ii) the base-case-exhaustiveness lemma ("at most
+one two-point side ⟹ pure covers everything else") for any future fresh proof that retires the
+B.42 cite; (iii) Lean-side coherence corroboration of the B.42 import (clause-3 purity +
+clause-5 `↔` cohere with it: each imported factor has one-point sides away from its own slope).
+
+**SOURCE.** `leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt` (committed, compiles at the
+pin); the classical fact is implicit in GMN §1's one-sided polygon calculus (no displayed
+theorem — this direction is chapter-fresh mathematics, proved, not cited).
+
+**TEETH.** signed non-applicable (an internal dictionary lemma); OPTIONAL booked check — derive
+B.44's landed `m = ℓ = 1` instance from the B.42 axiom (the retargeted B.44 decorrelation
+clause, A-F.10 (IV)).
+
+**ENVIRONMENT.** ENV-A.
 
 ---
 
@@ -4195,8 +4296,13 @@ and is written out in full in the leanspec stub — see §12 item 4.)*
    `0 < (f_i).natDegree` clause via the landed B35b `sideDeg_of_pure` (`deg = ℓ·m·sideDeg`).
    `hsep` for `f_i` from `hsep` for `f` is this step's PRE-EXISTING obligation (GMN Thm 1.15's
    own clause `R_{λ_i}(F_i) ∼ R_{λ_i}(f)`, implicit in the committed route before A-F.9 and
-   unchanged by it — the fleet derives it from the step-1 construction, where B.41's `hprod`
-   hands each piece its residual); the peel of step 0 transports `hsep` from `f` to `f'`
+   unchanged by it) — *[repaired: A-F.10: the obligation is now DISCHARGED BY B.42's clause 6
+   (the residual tie, imported with the cite): `Separable` transports across `= C c * ·` by
+   `Polynomial.Separable.map`-free unit arithmetic (a unit times a separable polynomial is
+   separable). The former instruction "the fleet derives it from the step-1 construction, where
+   B.41's `hprod` hands each piece its residual" is void — under the cite there is no
+   construction to re-open, which is exactly why clause 6 was added (A-F.10 (IV))]*; the peel
+   of step 0 transports `hsep` from `f` to `f'`
    trivially, since `dev φ (φ^k·f') j = dev φ f' (j−k)` (B.06 uniqueness) shifts the polygon
    whole: same sides, same residuals.]*
 3. Each piece is a leaf: B.58 if `ψ.natDegree = 1`, B.60 if `ℓ_i = 1 ∧ φ.natDegree = 1`
@@ -6895,7 +7001,7 @@ roll-up gate whose index this table is).
 
 | battery family | source | nodes carrying it | disposition in this chapter |
 |---|---|---|---|
-| `W12-SHAPE` (0/164, both directions) | `EFF.W12.24`/`.27` | B.02, B.11, B.13, B.16, B.20, B.24, B.29, B.30, B.42, B.57, B.63, B.65, B.71, B.83 | **Lean theorem** at the dissection/NS-6/leaf-law nodes (B.42, B.63, B.65, B.71) and the gates; **signed non-applicability** at the definitional §3 rows |
+| `W12-SHAPE` (0/164, both directions) | `EFF.W12.24`/`.27` | B.02, B.11, B.13, B.16, B.20, B.24, B.29, B.30, B.42, B.57, B.63, B.65, B.71, B.83 | **Lean theorem** at the NS-6/leaf-law nodes (B.63, B.65, B.71) and the gates *[repaired: A-F.10 — at B.42, now a gate-(b) axiom, the disposition is **executable regression retained, as cite corroboration**: a battery cannot be a theorem OF an axiom, only evidence FOR it]*; **signed non-applicability** at the definitional §3 rows |
 | `W12-ORACLE` (`[IND]`, 0 bad / 41,923) | `EFF.W12.56` | B.48, B.58, B.60, B.63, B.71, B.80, B.82, B.83, B.85 | **executable regression retained** everywhere — PARI stays the independent engine; D-4(a) scope note at B.80 (the oracle cannot score `disc = 0` lifts; the Lean theorem covers them) |
 | `W12-BLOCK` / `W12-LVL0` / `W12-L1X` / `W12-CENSUS4` / `W12-T-SIGMA` | `EFF.W12.21`/`.22`/`.25`/`.28` | B.05, B.26, B.32, B.41, B.44, B.45, B.67, B.68, B.70, B.78, B.80 | **Lean theorem** (the block/peel/transport laws are proved here; `W12-T-SIGMA` becomes B.80 itself); parser legs stay **executable regression** |
 | `HE-SIG` (947 PARI jobs, 0 bad, all 5 `μ = 3` stage types) | `EFF.HE3.52` | B.29, B.47, B.48, B.52, B.55, B.58–B.60, B.63, B.71, B.79, B.82, B.83 | **Lean theorem inside D-3's perimeter, executable regression retained outside it** (`hperim` carried) — the GC-8 rider-(i) re-scoping, stated per node |
@@ -6918,6 +7024,9 @@ no-teeth reconciliation**: the rows with no Lean theorem anywhere are exactly `B
 disclosures (§11's structural edges), and order-1-ness itself (`hterm`; the recursion is
 chapter C's) — which is precisely the conditionality B.82's FULL-GENERALITY note declares.
 Nothing else in the chapter is guarded by a battery without also being a proof obligation.
+*[amended: A-F.10 — one addition to that census: the NS-1 side dissection itself (B.42, now a
+gate-(b) cite, H-14) is guarded by retained batteries as CORROBORATION and proved nowhere
+in-repo by design; its conditionality is the owner-signed import, not a battery.]*
 
 **Where the retained regressions live.** Per GC-8 the landed home is `verification/` (chapter
 G's G.30 precedent). The 46 retained rows currently run inside the corpus notes' PARI/battery
@@ -6954,7 +7063,10 @@ cross-read debt covers all of it. **Items 1–13 are the committed text's own fo
    TRUE under B.42's new `h0` hypothesis and its proof (the `σ*`-maximum argument) is now
    displayed at B.42's ⚠; without `h0` the whole node was refuted (`f = φ`) — the wave-11
    witness `B42_REFUTATION.lean.txt`. The cross-reader's residual duty is transcription
-   checking; the class-size half of this item is unchanged.]*
+   checking; the class-size half of this item is unchanged.]* *[A-F.10: B.42 is now a gate-(b)
+   cite — the transcription-checking duty transfers to the cite's fresh-context audit (CHAP-I
+   §3 queue, 2026-08-16 addendum); the `B42b.lean` helper mandate is retired with the route;
+   the class-size half is still unchanged.]*
 3. **The vacuous-ceiling simplification claim (B.15/B.16, L1160 vicinity).** The corpus's third
    vertex clause ("every point weakly above the polygon") becomes definitionally vacuous under
    the `suppVal`-as-`inf` representation, *claimed as a real simplification*. Check: is the
