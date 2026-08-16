@@ -1,0 +1,232 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapC.C13
+import Uniformity.ChapC.C46
+
+/-!
+# REFUTATION of the frozen A-C.1 signature of NODE C.47 (`composedKey_isTestKey`)
+
+**This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` /
+`C111_C114_REFUTATION.lean.txt` convention: kept as `.lean.txt` so no build picks it up).
+To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapC/C47_REFUTATION.lean.txt /tmp/c47_refutation.lean
+cd leanfinal && lake env lean /tmp/c47_refutation.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only,
+2026-08-16, against landed C.13/C.22/C.43/C.44/C.46.
+
+## What is refuted
+
+The frozen signature of NODE C.47 (`blueprint/CHAP-C_tower_grammar.md` §6;
+`leanspec/Leanspec/ChapC.lean`, `axiom composedKey_isTestKey`):
+
+```lean
+theorem composedKey_isTestKey (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] : IsTestKey (T.levelDatum hπ) (composedKey T)
+```
+
+**It is not provable at these binders, and it is false at explicit legal numerals.** The defect
+is a READ MISMATCH between two landed, signed nodes — C.13's test-key predicate reads slot
+residues with C.21's *untwisted* `γ_k` (`slotRes`), while C.43's composed key was built so that
+its slot residues match the label under C.22's *ϖ-read* `γ_k·η^{−q(k)}` (`twistRead`), which is
+exactly what landed C.46 states.
+
+### The two landed values, side by side (`t < f₂`, height `M = (f₂−t)u₂`, slot `e₂t`)
+
+* **C.46 (landed, proved):** `twistRead M (dev Φ′ Φ₂ (e₂t)) = (towerLabel T).coeff t`, i.e.
+  `slotRes M (dev Φ′ Φ₂ (e₂t)) = η^{q(M)} · r̃_t` — the theorem `composedKey_slotRes_eq` below
+  is that restatement, machine-checked.
+  (Unwound: `slotRes = ψ₂_t·η^{W(t)}` with `W(t) = wrapExp T t`, and `r̃_t = ψ₂_t·η^{−(f₂−t)Q}`,
+  the two differing by `η^{W(t)+(f₂−t)Q} = η^{q((f₂−t)u₂)}` — C.41(ii)'s split.)
+* **C.13 clause 5 (landed) demands:** `slotRes M (dev Ψ (ℓt)) = L.r.coeff t`, i.e. `r̃_t` with
+  NO `η^{q(M)}` factor.
+
+So `IsTestKey (T.levelDatum hπ) (composedKey T)` holds **iff** the letter collapses,
+`η^{q((f₂−t)u₂)} = 1`, at every `t < f₂` with `ψ₂_t ≠ 0`. The `t = 0` instance is unconditional
+(`r̃(0) ≠ 0` is `towerLabel_spec`'s fourth clause), which is what
+`c47_frozen_forces_letter_collapse` below extracts:
+
+```
+IsTestKey (T.levelDatum hπ) (composedKey T)  →  η ^ F.twistExp (T.f₂ * T.u₂) = 1
+```
+
+### Why the collapse is false (the counterexample row)
+
+Nothing in `KeyFrame`/`TowerDatum` pins the letter's multiplicative order — C.22's own node text
+says so verbatim, when it rejects the positive-power form of the twist: *"it presumes `η^{f₁} = 1`,
+which is false in `K` (the letter is not a root of unity of that order — `η` generates `K` over
+`resField X`, and its multiplicative order is `|K^×|`-divisible data the frame does not pin)."*
+
+Explicit numerals, on C.22's own MANDATORY gate frame `(e₁, f₁, h) = (2, 2, 3)` over `ℤ₃`:
+
+* **Frame.** `Φ′ = x⁴ + 3⁶` over `ℤ₃`: the `X`-adic polygon is the single side from `(0, 6)` to
+  `(4, 0)` (slope `3/2`, so `e₁ = 2`, `h = 3`, `D′ = e₁f₁ = 4`), lattice points at abscissae
+  `0, 2, 4` with residual `T² + 1`, irreducible over `F₃` (`−1` is a non-square mod `3`) — hence
+  `f₁ = 2`, `K = F₉`, and `η = AdjoinRoot.root (T²+1)` has `η² = −1`, `ord η = 4`.
+  (Single side + irreducible residual ⟹ `Φ′` irreducible: the frame's `hirr`/`hpure`/`hresirr`
+  are all discharged by the same route C.97 uses for `x² − 2`.)
+* **Tower datum.** `(e₂, f₂, u₂, ψ₂) = (2, 1, 27, Z − 1)`. Legal: node floor
+  `e₂·D′·h = 2·4·3 = 24 < 27`, `gcd(27, 2) = 1`, `2 ≤ e₂f₂`, `ψ₂` monic irreducible of degree
+  `f₂ = 1` with `ψ₂(0) = −1 ≠ 0`. (The arithmetic is `#decide`d below.)
+* **The forced identity.** `i₀ = slotIdx 1 = 1`, `slotIdx 27 = 1`, so `q(27) = (27−1)/2 = 13`
+  (`twistExp_27_of_e2_h3` below, proved for ANY frame with `e₁ = 2, h = 3`), and C.47 would force
+  `η^13 = 1` (`c47_frozen_forces_eta_pow_13` below). But `η^13 = η^{13 mod 4} = η ∉ F₃`. **False.**
+
+  The last step needs only `η ∉ F₃` and `ord η ∣ 8`, so it survives any other legal residual of
+  degree `2`: `ord η ∈ {4, 8}` gives `η^13 ∈ {η, −η}`, and neither is `1`.
+
+### Why the corpus never saw it
+
+Both machine legs of HETOW-2 are `f₁ = 1` frames at `q = 2` (the blueprint's own TEETH row, and
+C.97's `s2Frame`): there `K = F₂`, so `η = 1` and the collapse is automatic. The `f₁ ≥ 2` reach —
+the part the node's TEETH row advertises as *"Lean theorem at every `f₁` (this node's proof is
+uniform)"*, discharging what the corpus could only claim PROOF-ONLY (HETOW-BOX-3) — is exactly
+where the frozen statement breaks.
+
+## What is NOT refuted (the positive content is intact)
+
+* C.46 is untouched and is the true residue clause; `composedKey_slotRes_eq` below is its
+  `slotRes`-side restatement, which is what a re-signed C.47 should consume.
+* The other four C.13 conjuncts (monic; `natDegree = keyDeg₂`; top digit `1`; off-lattice digits
+  `0`) and the height half of clause 5 are NOT in question here — this file makes no claim about
+  them either way (they were not proved, since the node is blocked at the residue clause).
+
+## The re-sign options (for the amendment author; NOT a fleet-time choice)
+
+1. **ϖ-read the test-key predicate (faithful).** C.22's node text is categorical: *"All corpus
+   residual polynomials (`R_λ`, C.25) read through THIS, never through the bare `n(k)`-read
+   C.21."* So clause 5 of C.13 is the outlier, and the repair is a `twistRead` residue clause —
+   either by re-signing C.13 (then C.14's witness lifts `c_t·η^{q((d−t)u)}` instead of `c_t`, a
+   one-line change to the lift argument, and C.14's proof structure is unaffected) or by a
+   level-2 predicate `IsTestKey₂` used by §6 only. Under this option C.47 becomes a corollary of
+   C.46 plus the four shape clauses.
+2. **Un-wrap the composed key (NOT recommended).** Re-sign C.43 to lift `−ψ₂_t·η^{−(f₂−t)Q}`
+   (i.e. `r̃_t` itself). Then C.13 holds verbatim, but C.46's ϖ-read statement changes and the
+   corpus's wrap correction (`EFF.HETOW.13`/`.16`, whose whole point is the ϖ-read cancellation
+   `η^{W(t)}·η^{−Q((f₂−t)u₂)} = η^{−(f₂−t)Q}`) is discarded — a divergence from the source.
+3. **Hypothesize the collapse (dishonest).** Adding `η^{q((f₂−t)u₂)} = 1` as a hypothesis would
+   make C.47 provable and vacuous-ish (it is false at the numerals above and true at the
+   `f₁ = 1, q = 2` legs); recorded only to be rejected.
+
+**Consumers to re-check under any repair:** C.48(c) (the C.47 → C.40 chain), C.49, C.52, C.56a,
+C.83's §12 certificates — every node whose DEPENDS list names C.47.
+
+## Status
+
+Sorry-free, Lean-core axioms only. Machine-checked: the obstruction implication, its `(2,2,3)`
+instantiation, the frame arithmetic `q(27) = 13`, the datum-legality numerals. Hand legs (stated,
+not formalized): the existence of the frame `x⁴ + 3⁶` over `ℤ₃` with those invariants, and
+`η^13 ≠ 1` in `F₉`.
+-/
+
+set_option linter.style.longLine false
+
+namespace Uniformity.Density.Tower
+
+open Uniformity.Density.Leaf IsLocalRing
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-- **D9 (cured).** The order-0 key `X` is an order-1 key; the private-copy pattern
+(C.04/C.12/C.19/C.21/C.22/C.44/C.46 each carry one), because `private` does not export. -/
+private theorem isKey_X : IsKey (Polynomial.X : Polynomial O) where
+  monic := Polynomial.monic_X
+  pos := by simp
+  irred := by
+    rw [Polynomial.map_X]
+    exact Polynomial.irreducible_X
+
+/-- **What the composed key's slot residue ACTUALLY is.** C.46's ϖ-read value, un-twisted:
+`slotRes ((f₂−t)u₂) (dev Φ′ Φ₂ (e₂t)) = η^{q((f₂−t)u₂)} · r̃_t`. C.13's clause 5 asks for `r̃_t`
+on the nose, so the two agree exactly on the locus `η^{q((f₂−t)u₂)} = 1`. -/
+theorem composedKey_slotRes_eq {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    {t : ℕ} (ht : t < T.f₂) :
+    F.slotRes H₀ hpin ((T.f₂ - t) * T.u₂) (dev F.key (composedKey T) (T.e₂ * t))
+      = F.stageLetter H₀ hpin ^ F.twistExp ((T.f₂ - t) * T.u₂) * (towerLabel T).coeff t := by
+  letI : Field (resField (Polynomial.X : Polynomial O)) := instFieldResField isKey_X
+  haveI : Fact (Irreducible (F.frameRes H₀ hpin)) := ⟨(F.hresirr H₀ hpin).1⟩
+  have hη : F.stageLetter H₀ hpin ≠ 0 := F.stageLetter_ne_zero hπ H₀ hpin
+  have h46 := composedKey_slot_residue T hπ hh ht
+  rw [KeyFrame.twistRead] at h46
+  rw [← h46, ← mul_assoc, ← mul_pow, mul_inv_cancel₀ hη, one_pow, one_mul]
+
+/-- **THE OBSTRUCTION.** The frozen C.47 signature forces the letter collapse `η^{q(f₂u₂)} = 1`
+— at EVERY frame and EVERY tower datum, from the `t = 0` clause alone (`r̃(0) ≠ 0` is
+`towerLabel_spec`'s fourth clause). Nothing in the binders supplies it. -/
+theorem c47_frozen_forces_letter_collapse {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)]
+    (hTK : IsTestKey (T.levelDatum hπ) (composedKey T)) :
+    F.stageLetter H₀ hpin ^ F.twistExp (T.f₂ * T.u₂) = 1 := by
+  letI : Field (resField (Polynomial.X : Polynomial O)) := instFieldResField isKey_X
+  haveI : Fact (Irreducible (F.frameRes H₀ hpin)) := ⟨(F.hresirr H₀ hpin).1⟩
+  obtain ⟨-, -, -, -, hslot⟩ := hTK
+  have hdeg : (towerLabel T).natDegree = T.f₂ := (towerLabel_spec T hπ).2.2.1
+  have hc0 : (towerLabel T).coeff 0 ≠ 0 := (towerLabel_spec T hπ).2.2.2
+  have h0lt : 0 < (T.levelDatum hπ).r.natDegree := by
+    show 0 < (towerLabel T).natDegree
+    rw [hdeg]; exact T.hf₂
+  obtain ⟨-, hres⟩ := (hslot 0 h0lt).2 hc0
+  have hres' : F.slotRes H₀ hpin (T.f₂ * T.u₂) (dev F.key (composedKey T) (T.e₂ * 0))
+      = (towerLabel T).coeff 0 := by
+    have hidx : ((T.levelDatum hπ).r.natDegree - 0) = T.f₂ := by
+      show ((towerLabel T).natDegree - 0) = T.f₂
+      rw [hdeg, Nat.sub_zero]
+    rw [hidx] at hres
+    exact hres
+  have h46 := composedKey_slotRes_eq T hπ hh (t := 0) T.hf₂
+  rw [Nat.sub_zero] at h46
+  have hkey : F.stageLetter H₀ hpin ^ F.twistExp (T.f₂ * T.u₂) * (towerLabel T).coeff 0
+      = 1 * (towerLabel T).coeff 0 := by
+    rw [one_mul, ← h46, hres']
+  exact mul_right_cancel₀ hc0 hkey
+
+/-! ### The numeric leg: C.22's MANDATORY `(e₁, f₁, h) = (2, 2, 3)` gate frame -/
+
+/-- At any frame with `e₁ = 2`, `h = 3`: `i₀ = 1`, `i(27) = 1`, hence `q(27) = 13`.
+(The gate's numeric mirrors `slotIdxN 2 3 1 = 1`, `twistExpN 2 3 3 = 1` are the same arithmetic
+at `k = 3`; this is the `k = 27` row, proved at the frame rather than at the mirror.) -/
+theorem twistExp_27_of_e2_h3 (F : KeyFrame O π) (he : F.e₁ = 2) (hh3 : F.h = 3) :
+    F.twistExp 27 = 13 := by
+  have h1 : F.slotIdx 1 = 1 :=
+    (F.slotIdx_unique (k := 1) (i := 1) (by omega) (by rw [hh3, he]; decide)).symm
+  have h27 : F.slotIdx 27 = 1 :=
+    (F.slotIdx_unique (k := 27) (i := 1) (by omega) (by rw [hh3, he]; decide)).symm
+  rw [KeyFrame.twistExp, h1, h27, he]
+
+/-- **THE COUNTEREXAMPLE ROW.** At the `(2,2,3)` frame (`Φ′ = x⁴ + 3⁶` over `ℤ₃`, `K = F₉`,
+`η² = −1`) with the legal tower datum `(e₂, f₂, u₂, ψ₂) = (2, 1, 27, Z − 1)`, the frozen C.47
+forces `η^13 = 1`. That is false: `ord η = 4`, so `η^13 = η ∉ F₃`. -/
+theorem c47_frozen_forces_eta_pow_13 {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (he : F.e₁ = 2) (hh3 : F.h = 3) (T : TowerDatum F H₀ hpin) (hf₂ : T.f₂ = 1)
+    (hu₂ : T.u₂ = 27) (hπ : Irreducible π) (hh : 1 ≤ F.h) [Finite (ResidueField O)]
+    (hTK : IsTestKey (T.levelDatum hπ) (composedKey T)) :
+    F.stageLetter H₀ hpin ^ 13 = 1 := by
+  have hcol := c47_frozen_forces_letter_collapse T hπ hh hTK
+  rw [hf₂, hu₂, one_mul, twistExp_27_of_e2_h3 F he hh3] at hcol
+  exact hcol
+
+/-- the counterexample datum's numerals ARE legal `TowerDatum` data: node floor
+`e₂·D′·h = 2·(2·2)·3 = 24 < 27 = u₂`, `Nat.Coprime u₂ e₂`, and the nondegeneracy fence
+`2 ≤ e₂f₂`. -/
+example : 2 * (2 * 2) * 3 < 27 ∧ Nat.Coprime 27 2 ∧ 2 ≤ 2 * 1 := by decide
+
+end Uniformity.Density.Tower
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Tower.composedKey_slotRes_eq
+#print axioms Uniformity.Density.Tower.c47_frozen_forces_letter_collapse
+#print axioms Uniformity.Density.Tower.twistExp_27_of_e2_h3
+#print axioms Uniformity.Density.Tower.c47_frozen_forces_eta_pow_13
+
+end AxCheck
