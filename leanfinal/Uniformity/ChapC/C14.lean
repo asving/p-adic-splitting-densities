@@ -106,27 +106,45 @@ reconstruction identity that `stageCoord` lacks). Downstream consumers of `stage
 `composedKey`, C.56a's `k2DigitLift`) inherit the defect and should be re-pointed at a
 power-basis digit read; recorded here for the fleet, out of this node's scope.
 
+### ✔ REPAIRED 2026-08-16 (the finding above is kept verbatim; this is its disposition)
+
+C.14a's `KeyFrame.stageCoord` was **redefined** on `AdjoinRoot.powerBasis`, exactly as the finding
+prescribes: the private `stagePB` / `stageDigit` / `sum_stageDigit` that this file carried are now
+public C.14a declarations — `KeyFrame.stagePB` (+ `stagePB_dim`, `stagePB_gen`),
+`KeyFrame.stageCoord` (signature byte-unchanged, body rebuilt) and `KeyFrame.sum_stageCoord` (the
+reconstruction identity). This node's construction is unchanged in substance; it now *cites* the
+hoisted machinery instead of privately duplicating it, so `exists_slotRes_preimage` reads
+`F.stageCoord H₀ hpin c s` and closes on `F.sum_stageCoord H₀ hpin c`. With the power-basis read
+gone from this file, so are its `isKey_X` and the `Field (resField X)` local instance: nothing
+left here needs one. `stageLiftO` (hence C.43's `composedKey` and C.56a's `k2DigitLift`) is
+pinnable at last, by the residue clause the finding names. **Still open, and NOT touched by this
+repair:** C.56a's `k2Coord` has the same defect one level up — it reads
+`((AdjoinRoot.mk_surjective s).choose).coeff t` for the `K₂`-over-`K` digits — and wants the same
+cure at `towerLabel T`'s power basis.
+
 ## Private helpers (none is a blueprint node; GC-6.5)
 
-* **`isKey_X`** — the D9 cure again (C.04/C.12/C.19/C.21/C.23/C.26/C.44 each carry a copy):
-  private declarations do not export, and this is what names the `Field (resField X)` instance
-  that `AdjoinRoot.powerBasis` needs.
-* **`stagePB` / `stageDigit` / `sum_stageDigit`** — the letter power basis, its coordinate read
-  in `ResidueField O` (through B.59a's `resFieldXEquiv`), and the reconstruction
-  `c = Σ_{s < f₁} digit_s·η^s`. Hoist candidates when the `stageCoord` defect above is repaired.
+* ~~**`isKey_X`**~~ and ~~**`stagePB` / `stageDigit` / `sum_stageDigit`**~~ — the letter power
+  basis, its coordinate read in `ResidueField O` (through B.59a's `resFieldXEquiv`), the
+  reconstruction `c = Σ_{s < f₁} digit_s·η^s`, and the `Field (resField X)` instance
+  `AdjoinRoot.powerBasis` needs. **HOISTED to C.14a by the 2026-08-16 repair** and deleted here;
+  this file now consumes `F.stageCoord` / `F.sum_stageCoord` and needs no `Field` instance.
 * **`slot_eq`, `coeff_stageLiftIA_mem`, `coeff_stageLiftIA_not_mem`, `natDegree_stageLiftIA_lt`,
   `cost_stageLiftIA`, `stageHeight_stageLiftIA`, `slotRes_stageLiftIA`** — the frame readings of
   H.55(i)–(iii)/H.56 described in divergence (a).
-* **`isUnit_of_residue_ne_zero`, `addVal_mul_pow`, `frameRes_ne_zero`** — bureaucracy.
+* **`isUnit_of_residue_ne_zero`, `addVal_mul_pow`** — bureaucracy (`frameRes_ne_zero` went to
+  C.14a with the power-basis cluster).
 
 **DEPENDS.** C.01 (`KeyFrame`) · C.02 (`stageHeight`) · C.03 (`frameRes`, `stageField`) ·
 C.09 (`LevelDatum`, `keyDeg₂`) · C.13 (`IsTestKey`) · C.14a (`Pin`, `stageLiftIA`, `resLift`,
-`resLift_spec`) · C.15/C.16 (`slotIdx`, `slotIdx_spec`) · C.17 (`slotWindow`) ·
+`resLift_spec`, and — since the 2026-08-16 repair — `stageCoord`, `sum_stageCoord`) ·
+C.15/C.16 (`slotIdx`, `slotIdx_spec`) · C.17 (`slotWindow`) ·
 C.18 (`slotWindow_full_of_le`) · C.19 (`stageLetter`) · C.21 (`slotRes`) ·
-B.02 (`dev`) · B.06 (`dev_unique`) · B.22 (`digAt_eq`) · B.59a (`resFieldXEquiv`,
-`resFieldXEquiv_coe`) — all by committed node ID (GC-13(b)). H.54 enters as the *shape* of
-C.14a's `stageLiftIA`; H.55/H.56 are not cited, per divergence (a). Mathlib:
-`AdjoinRoot.powerBasis`, `PowerBasis.coe_basis`, `Basis.sum_repr`.
+B.02 (`dev`) · B.06 (`dev_unique`) · B.22 (`digAt_eq`) — all by committed node ID (GC-13(b)).
+H.54 enters as the *shape* of C.14a's `stageLiftIA`; H.55/H.56 are not cited, per divergence (a).
+The `AdjoinRoot.powerBasis` / `PowerBasis.coe_basis` / `Basis.sum_repr` mathlib cluster, and
+B.59a's `resFieldXEquiv`/`resFieldXEquiv_coe`, are now reached through C.14a rather than used
+directly here.
 
 SOURCE: `EFF.HE6.14` (DEFINITION HE6-1's construction and its audit, verbatim); `EFF.HE6.13`
 (LEMMA HE6-1L's fullness clause, which licenses step 1); `EFF.HE6.08` (the `1 ≤ h` frame, whence

@@ -40,13 +40,25 @@ offset `Δ(r, t)`, so each summand solves its own class equation.
 
 ## Trust-boundary notes (⚠ new definitions, flagged for human review)
 
-Both coordinate reads are **sections, not invariants**, and both are **junk-total**:
+`k2Coord` is a **section, not an invariant**, and both it and `n2Exp` are **junk-total**:
 
 1. `k2Coord` reads `((AdjoinRoot.mk_surjective s).choose).coeff t`. Different preimages of the
    same class differ by a multiple of `towerLabel T`, so the value is not determined by `s` alone
-   at `t ≥ f₂`, and the `choose` is not guaranteed to have degree `< f₂`. Exactly C.14a's
-   `stageCoord` situation one level up; the same discipline applies — no downstream statement may
-   assert an equation about `k2Coord` in isolation. `k2DigitLift` reads it only for `t < T.f₂`.
+   at `t ≥ f₂`, and the `choose` is not guaranteed to have degree `< f₂`. No downstream statement
+   may assert an equation about `k2Coord` in isolation. `k2DigitLift` reads it only for
+   `t < T.f₂`.
+
+   **⚠ OPEN DEFECT, inherited from what C.14a's `stageCoord` used to be.** This was "exactly
+   C.14a's `stageCoord` situation one level up" — and that one turned out to be a defect, not a
+   convention: C.14's audit (`ChapC/C14.lean`, the ⚠ DEFECT section) showed that an opaque
+   `Classical.choice` representative has no degree bound, so the reconstruction identity
+   `Σ_{t < f₂} k2Coord(s,t)·β^t = s` is neither provable nor refutable, and no residue clause
+   about the resulting lift can pin it either. C.14a's read was **repaired on 2026-08-16** — it is
+   now the `AdjoinRoot.powerBasis` coordinate (`KeyFrame.stagePB`), with the reconstruction
+   identity landed as `KeyFrame.sum_stageCoord` — so the `F.stageCoord …` factor of the digit
+   below is now honest. `k2Coord` is **not** yet: it wants the same cure at `towerLabel T`'s power
+   basis over `K = F.stageField H₀ hpin`. Recorded for the fleet; out of this node's scope, and
+   nothing landed asserts an equation about `k2Coord`.
 2. `n2Exp` is built from two junk-`0`-defaulting solves (C.15's `slotIdx`, C.83's `towerSolve`,
    both `List.find?`-with-`getD 0`). It returns the intended `(a₀, i, b)` exactly when the class
    equation `e₁e₂a₀ + ie₂h + bu₂ = m` is solvable; `T.hcop`/`F.hcop` guarantee solvability of the

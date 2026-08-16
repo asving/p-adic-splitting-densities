@@ -13,9 +13,12 @@ import Uniformity.ChapH.H54
 # Uniformity.ChapC.C14a — the H §8 carrier bridge: `genreDatum`, `stageLiftIA`, `stageLiftO`
 
 **Chapter C, NODE C.14a** [def] [fresh] [signed: A-C.1(b)] (`blueprint/CHAP-C_tower_grammar.md`
-§3, the level frame; the A-C.1 amendment set governs). **ENV-C1 + `[Finite (ResidueField O)]`**
-(the latter only on the declarations that read `Q = residueCard O`). Six declarations, all
-definitional; the single theorem is `rfl`.
+§3, the level frame; the A-C.1 amendment set governs; the **`stageCoord` REPAIR of 2026-08-16**
+is in force — see the trust-boundary section). **ENV-C1 + `[Finite (ResidueField O)]`** (the
+latter only on the declarations that read `Q = residueCard O`). **Twelve public declarations**:
+the eight of the first landing (`stageCoord` among them, rebuilt by the repair) plus the four the
+repair added — `stagePB`, `stagePB_dim`, `stagePB_gen`, `sum_stageCoord` — and two private
+helpers (`isKey_X`, `frameRes_ne_zero`).
 
 This is the **one door** through which chapter C consumes chapter H's §8 lift layer (GC-5 / H-14).
 It exists because of stub-gate defect **D19**: chapter C's carrier `KeyFrame` (C.01) and chapter
@@ -30,8 +33,11 @@ key's display is written in — was not constructible from anything landed.
 * `KeyFrame.stageLiftIA F i a lift` — H.54's own summand shape over the frame's numerals, TOTAL.
 * `stageLiftIA_eq_stageLift'` — the `rfl`-grade reconciliation of the two.
 * `resLift` — a choice-section of the residue map `O → ResidueField O`.
+* `KeyFrame.stagePB` (+ `stagePB_dim`, `stagePB_gen`) — the letter power basis `{η^s}_{s < f₁}`
+  of `K = AdjoinRoot ψ` over `resField X`, from `AdjoinRoot.powerBasis`.
 * `KeyFrame.stageCoord` / `KeyFrame.stageLiftO` — the element-at-height-`M` form that C.43's
-  display (and C.56a's `k2DigitLift`) consume.
+  display (and C.56a's `k2DigitLift`) consume, with `KeyFrame.sum_stageCoord` the reconstruction
+  identity `c = Σ_{s < f₁} coord_s·η^s` that pins the digit read.
 
 ## What the mismatch was, and how the bridge closes it without touching chapter H
 
@@ -81,23 +87,44 @@ junk, exactly as `slotIdx` is junk there — the totality convention of the whol
 
 ## Trust-boundary notes on `stageCoord` (⚠ new definitions, flagged for human review)
 
+**⚠ DEFINITIONAL REPAIR, 2026-08-16.** The first landing of this node read the digits off a
+chosen `AdjoinRoot.mk`-preimage, `(AdjoinRoot.mk_surjective c).choose`. **That definition was
+defective and has been replaced**; the defect, found by C.14's audit (`ChapC/C14.lean`, commit
+`b93ad3a7`) and quoted there in full, was: `Classical.choice` supplies an OPAQUE representative
+with no degree bound, so the reconstruction identity `Σ_{s < f₁} stageCoord(c,s)·η^s = c` was
+neither provable nor refutable — and that identity is exactly what the residue clause
+`slotRes M (stageLiftO M c) = c` reduces to, i.e. the only equation that can pin `stageLiftO`.
+The first landing's promise that consumers would pin the read "through a residue equation
+asserted of the resulting lift" could therefore not be kept by anyone. The repair is not
+available downstream: the definition itself had to change. **Signatures of `stageCoord` and
+`stageLiftO` are byte-unchanged; their bodies and their guarantee are not.**
+
 `stageCoord F H₀ hpin c s` is the `s`-th `F_Q`-digit of a stage-field element `c` in the letter
-basis `{η^s}`. `F.stageField H₀ hpin` is `AdjoinRoot (F.frameRes H₀ hpin)` (C.03), so `c` is a
-class of polynomials over `resField X`; the digit is read off **a chosen representative**
-(`(AdjoinRoot.mk_surjective c).choose`) and transported to `ResidueField O` along B.59a's landed
-`resFieldXEquiv : ResidueField O ≃+* resField X`. Two consequences a consumer must know:
+basis `{η^s}`. `F.stageField H₀ hpin` is `AdjoinRoot (F.frameRes H₀ hpin)` (C.03), a
+`resField X`-algebra of dimension `f₁ = deg ψ` (`KeyFrame.hresirr`); the digit is now the
+coordinate of `c` in the **power basis** `F.stagePB H₀ hpin := AdjoinRoot.powerBasis` — generated
+by C.19's stage letter `η` (`stagePB_gen`), of dimension `f₁` (`stagePB_dim`) — transported to
+`ResidueField O` along B.59a's landed `resFieldXEquiv : ResidueField O ≃+* resField X`. What a
+consumer must know:
 
-1. **Representative-dependence.** Different representatives of the same class differ by a
-   multiple of `frameRes`, so `stageCoord` is NOT determined by `c` alone at `s ≥ f₁`, nor is the
-   `choose` guaranteed to have degree `< f₁`. It is a *section*, not an invariant. Every
-   downstream statement pins it the way H.56 does — through a residue equation asserted of the
-   resulting lift — never by an equation about `stageCoord` in isolation.
-2. **Junk outside the basis range.** `stageLiftO` reads `stageCoord … s` only for `s < F.f₁`
-   (the `Finset.range F.f₁` of `stageLiftIA`), which is the basis range; values at larger `s`
-   never enter.
+1. **It is an invariant of `c`, not a section.** A basis coordinate is determined by the element,
+   and the reconstruction identity is landed here as **`KeyFrame.sum_stageCoord`**:
+   `Σ_{s < f₁} ι(coord_s)·η^s = c`, with `ι` the two algebra maps
+   `ResidueField O → resField X → K`. This is the pin the old read lacked; C.14's
+   `exists_slotRes_preimage` is the first consumer to use it, and it is what makes the residue
+   clause about `stageLiftO` provable at all.
+2. **Outside the basis range the read is the `else 0` branch.** `stageCoord … s` for
+   `s ≥ f₁ = (F.stagePB H₀ hpin).dim` takes the `dif`'s zero branch (transported by
+   `(resFieldXEquiv O).symm`, a ring equivalence). `stageLiftO` reads `stageCoord … s` only for
+   `s < F.f₁` — the `Finset.range F.f₁` of `stageLiftIA` — so that branch never enters the lift.
+3. **`stagePB` needs a `Field (resField X)`**, supplied by B.25's `instFieldResField` keyed on the
+   private `isKey_X` (the D9 copy pattern; see the divergence note below). The instance is
+   `local`, so nothing about it escapes the file.
 
-`resLift` is likewise a section, of `IsLocalRing.residue`, and satisfies
+`resLift` is genuinely a section, of `IsLocalRing.residue`, and satisfies
 `residue (resLift x) = x` by `Exists.choose_spec` — the only property of it anyone should use.
+It is a *choice of preimage in `O` of a residue*, where a canonical one does not exist; that is
+unlike the old `stageCoord`, whose canonical read did exist and is now taken.
 
 ## Divergences from the blueprint text, recorded
 
@@ -109,19 +136,30 @@ class of polynomials over `resField X`; the digit is read off **a chosen represe
 * **`KeyFrame.Pin` is landed here**, per A-C.1(c), and is *not* retrofitted into C.03/C.09/C.19/
   C.21/C.22/C.42/C.44/C.45, which already spell the proposition out. Both spellings are the same
   `Prop` and interconvert by `id`; the retrofit is a mechanical RE-PLAN item, not this node's.
-* **`isKey_X` is NOT landed here.** C.44's file note anticipates "when C.14a lands a public
-  `isKey_X`"; the blueprint's C.14a SIGNATURE block declares no such thing, and this node does not
-  need it (`stageCoord` uses only the `CommRing` structure on `AdjoinRoot`, never a `Field`).
-  The four private copies stay where they are; retiring them remains an unassigned RE-PLAN item.
+* **`isKey_X` is landed here PRIVATE, not public.** C.44's file note anticipates "when C.14a
+  lands a public `isKey_X`"; the blueprint's C.14a SIGNATURE block declares no such thing, so the
+  repair takes the D9 copy pattern (as C.04/C.12/C.19/C.21/C.22/C.44 do) rather than widen the
+  signed signature. It is needed now: the repaired `stageCoord` reads `AdjoinRoot.powerBasis`,
+  which demands `Field (resField X)`, where the first landing used only the `CommRing` structure.
+  The other private copies stay where they are; publishing one and retiring the rest remains an
+  unassigned RE-PLAN item. **C.14's copy is gone** — it had one solely for the private machinery
+  hoisted here, and now needs no `Field` instance at all.
 
-**DEPENDS.** C.01 (`KeyFrame`) · C.03 (`frameRes`, `stageField`) · C.15 (`slotIdx`) ·
-H.01 (`GenreDatum`) · H.54 (`stageLift'`) — all by committed node ID (GC-13(b)); the consuming
-height/residue clauses enter through H.55/H.56 at the consumers, never here. Landed
-`two_le_residueCard` (`Uniformity/Density/LocalData.lean`), `resFieldXEquiv` (B.59a's auxiliary).
-Mathlib: `AdjoinRoot.mk_surjective`, `IsLocalRing.residue_surjective`.
+**DEPENDS.** C.01 (`KeyFrame`, `hresirr`) · C.03 (`frameRes`, `stageField`) · C.15 (`slotIdx`) ·
+C.19 (`stageLetter`, the power basis generator — **added by the 2026-08-16 repair**; the import
+is acyclic, C.19's own closure is C.03/B.25/B.30/B.35b) · H.01 (`GenreDatum`) ·
+H.54 (`stageLift'`) — all by committed node ID (GC-13(b)); the consuming height/residue clauses
+enter through H.55/H.56 at the consumers, never here. Landed `two_le_residueCard`
+(`Uniformity/Density/LocalData.lean`), `resFieldXEquiv`/`resFieldXEquiv_coe` (B.59a's auxiliary),
+`instFieldResField` (B.25(b)), `IsKey` (B.01). Mathlib: `AdjoinRoot.powerBasis`,
+`AdjoinRoot.powerBasis_dim`, `AdjoinRoot.powerBasis_gen`, `PowerBasis.coe_basis`,
+`Basis.sum_repr`, `Fin.sum_univ_eq_sum_range`, `IsLocalRing.residue_surjective`.
 
-**PROOF.** Definitional; `stageLiftIA_eq_stageLift'` is `rfl` (structure projections of a
-constructor application reduce).
+**PROOF.** Definitional, except: `stageLiftIA_eq_stageLift'` is `rfl` (structure projections of a
+constructor application reduce); `stagePB_dim`/`stagePB_gen` are the two `AdjoinRoot.powerBasis`
+projections against `F.hresirr`; and `sum_stageCoord` is `Basis.sum_repr` re-indexed from
+`Fin dim` to `Finset.range f₁` along `stagePB_dim`, with `resFieldXEquiv_coe` identifying the
+`ResidueField O → resField X` algebra map with the equivalence.
 
 SOURCE: `EFF.HE6.08` (the `1 ≤ h` frame hypothesis); `EFF.GENHN.07` clause (i) (the `2 ≤ e₁f₁`
 clause, via H.01); `EFF.GENHN.81` (`LEMMA GENHN-LIFT`, the lift whose shape `stageLiftIA`
@@ -131,7 +169,10 @@ recommendation D4 (the adjudication record).
 **TEETH.** Signed non-applicable (an adapter; its consumers' teeth fire at C.14, C.43 and §13).
 The local substitute is the `rfl` reconciliation itself, which pins that `stageLift'` reads
 exactly `(f₁, e₁, h)` — a transposed field or a `μ`-read would break it — plus the two
-`example`s below fixing `f₁ = 1, 2`.
+`example`s below fixing `f₁ = 1, 2`. **The repair adds a real one**: `sum_stageCoord` bites on
+`stageCoord` — it is the clause the old preimage read could not be *proved* to satisfy (the
+`choose` carries no degree bound), so a regression to any unpinned read would break it — and
+C.14's `exists_slotRes_preimage` (landed, machine-checked) is it firing at a consumer.
 
 ENVIRONMENT: ENV-C1 + `[Finite (ResidueField O)]` on the `Q`-reading declarations.
 
