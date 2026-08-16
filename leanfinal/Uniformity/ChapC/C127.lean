@@ -53,11 +53,11 @@ representative).  LAW E-W says where they agree and, when they do not, by exactl
   `Δ₁ = reass (seedQuot P̄ ḡ b)` and `Δ₀ = reass (seedRem P̄ c̄₀ ḡ m b)` (the note's
   `Δ₁ = red(q)`, `Δ₀ = red(r)`).  `lawEW_pin` is the `dv2Hgt` of these two polynomials.
 * `lawEW_pin` — **clause (b) at `j ≤ 1`**, the boundary identity
-  `dv2Hgt (Δ_j) = gridWeight T α a b (1−j) + T.margin`.  **NOT landed** (see
-  `notes/C127_PIN_BLOCKED_2026-08-16.md` for the exact gap: the §3 Step 3 telescoping census
-  is available from the machinery here, but the Step 4 slot-height computation needs a
-  `stageHeight`-of-a-monomial layer plus the `b = m−1` collision analysis, neither of which
-  exists in the landed corpus).
+  `dv2Hgt (Δ_j) = gridWeight T α a b (1−j) + T.margin`.  **LANDED** (2026-08-16, Chapter-C wave
+  12), stub signature exactly, on top of NODE C.129's slot-height calculus (imported) plus this
+  file's Part 5.  The record `notes/C127_PIN_BLOCKED_2026-08-16.md` is SUPERSEDED: its pieces
+  1–5 are C.129, and its piece 6 (the `b = m−1` collision) turned out not to need the merged
+  unit at all — see the section header above `lawEW_pin`.
 
 ## ⚠ SCOPE FENCE REPAIR (A-C.4, clause (a)): the `j′ ≤ 1` hypothesis is NOT in the stub
 
@@ -100,18 +100,21 @@ the in-grid locus (`reass_map_C_mul_X_pow`).
 
 ## Trust boundary
 
-Nine of the twelve declarations below are new supporting lemmas (the generic `devQ` API, the
-`biRead`/`reass` toolkit, the coefficient-degree bookkeeping); none of them restates a
-committed node, and each is a lemma ABOUT the landed C.71/B.02 definitions, never a new
-reading of them.  The two signed statements are the stub's, binder for binder, up to the
-documented `hjp` fence.
+All but the signed statements are new supporting lemmas (the generic `devQ` API, the
+`biRead`/`reass` toolkit, the coefficient-degree bookkeeping, the census slot dictionaries and
+Part 5's slot-height layer); none of them restates a committed node, and each is a lemma ABOUT
+the landed C.71/B.02/C.02 definitions, never a new reading of them.  The three signed
+statements are the stub's, binder for binder, up to the documented `hjp` fence on clause (a).
 
 **DEPENDS.** C.11 (`dv2Hgt`, imported for the pin clause's statement context) · C.42/C.43
 (`TowerDatum`, `composedKey`) · C.44 (`levelDatum`) · C.50 (`slotOffset`/`gridWeight`) ·
-C.71 (`shadowDev`, `devQ`, `biRead`, `margin`) · B.02/B.03/B.04/B.05/B.06 (`dev` and its
-uniqueness) · B.32a/B.35a (`dev` additivity and shift).
+C.71 (`shadowDev`, `devQ`, `biRead`, `margin`) · **C.129** (`binomKey_mod_monomial`,
+`stageHeight_C_mul_X_pow`, `gaussVal_C_unit_mul_pow`, `inf_eq_of_attained`, and this file's own
+clause (b) `dev_reass`) · C.02 (`stageHeight_eq_inf`) · C.06 (`dvHgt`/`dvSupp`) ·
+B.02/B.03/B.04/B.05/B.06 (`dev` and its uniqueness) · B.32a/B.35a (`dev` additivity and shift,
+`min_gaussVal_le_gaussVal_add`).
 
-**SIZE.** ~40 + ~30 lines signed (the two landed clauses) over ~330 lines of new API.
+**SIZE.** ~40 + ~30 + ~200 lines signed (the three clauses) over ~500 lines of new API.
 
 **SOURCE.** `lean/notes/openmath/LAWEW_PROOF_2026-08-16.md` §0–§3; OM-10 §2.4 (LEG E).
 
@@ -124,9 +127,10 @@ control rows, battery cross-check 36/36).
 
 ## Status
 
-Sorry-free, axiom-free (Lean core only).  Two of the node's three signed statements are
-landed; `lawEW_pin` is BLOCKED, with the exact gap recorded in
-`notes/C127_PIN_BLOCKED_2026-08-16.md`.
+Sorry-free, axiom-free (Lean core only).  **All three of the node's signed statements are
+landed** (`lawEW_pin` closed 2026-08-16, wave 12; the earlier
+`notes/C127_PIN_BLOCKED_2026-08-16.md` record is superseded — see
+`notes/C127_PIN_LANDED_2026-08-16.md`).
 -/
 
 namespace Uniformity.Density.Tower
@@ -628,7 +632,177 @@ theorem devQ_seed [Nontrivial R] (P c0 g : R) {m b : ℕ} (hb : b < m)
       exact lt_of_le_of_lt (seedRem_natDegree_le P c0 g hb) (by omega)
     rw [h1, h2, add_zero]
 
+/-! ### The census slot dictionaries (§3 Step 4's "each displayed term is a single monomial")
+
+The two census polynomials are `Y`-monomial sums with pairwise distinct `Y`-powers; these two
+lemmas read off the coefficient at an arbitrary `Y`-power, which is what the height evaluation
+(`lawEW_pin`) consumes one slot at a time.  In `seedRem` the two families are kept as an
+explicit SUM: they collide exactly at `b′ = m − 1 = b`, and the pin's lower bound handles the
+collision through the ultrametric inequality rather than by evaluating the merged unit. -/
+
+theorem seedQuot_coeff (P g : R) (b b' : ℕ) :
+    (seedQuot P g b).coeff b'
+      = if b' ≤ b then (-1 : R) ^ (b - b') * g * P ^ (b - b') else 0 := by
+  classical
+  rw [seedQuot, finsetSum_coeff]
+  simp only [coeff_C_mul, coeff_X_pow, mul_ite, mul_one, mul_zero]
+  by_cases hb' : b' ≤ b
+  · rw [if_pos hb', Finset.sum_eq_single (b - b')]
+    · rw [if_pos (by omega)]
+    · intro k hk hne
+      rw [Finset.mem_range] at hk
+      exact if_neg (by omega)
+    · intro h
+      exact absurd (Finset.mem_range.mpr (by omega)) h
+  · rw [if_neg hb']
+    refine Finset.sum_eq_zero fun k hk => ?_
+    rw [Finset.mem_range] at hk
+    exact if_neg (by omega)
+
+theorem seedRem_coeff (P c0 g : R) (m b b' : ℕ) :
+    (seedRem P c0 g m b).coeff b'
+      = (if b' = m - 1 then (-1 : R) ^ (b + 1) * g * P ^ (b + 1) else 0)
+        + (if b' ≤ b then (-1 : R) ^ (b - b' + 1) * g * P ^ (b - b') * c0 else 0) := by
+  classical
+  rw [seedRem, coeff_add, coeff_C_mul, coeff_X_pow, finsetSum_coeff]
+  congr 1
+  · split <;> simp_all
+  · simp only [coeff_C_mul, coeff_X_pow, mul_ite, mul_one, mul_zero]
+    by_cases hb' : b' ≤ b
+    · rw [if_pos hb', Finset.sum_eq_single (b - b')]
+      · rw [if_pos (by omega)]
+      · intro k hk hne
+        rw [Finset.mem_range] at hk
+        exact if_neg (by omega)
+      · intro h
+        exact absurd (Finset.mem_range.mpr (by omega)) h
+    · rw [if_neg hb']
+      refine Finset.sum_eq_zero fun k hk => ?_
+      rw [Finset.mem_range] at hk
+      exact if_neg (by omega)
+
 end Census
+
+/-! ## Part 5 — the slot-height layer: `dv` of a monomial class, and `inf`-evaluation
+
+The four lemmas below are what the C.129 calculus (`binomKey_mod_monomial`,
+`stageHeight_C_mul_X_pow`, `gaussVal_C_unit_mul_pow`, `inf_eq_of_attained`) still needs in
+order to be applied *inside* a level-2 support `dvSupp`:
+
+* `KeyFrame.stageHeight_zero` — the absent slot is `⊤`, so it never constrains an `inf`;
+* `KeyFrame.stageHeight_eq_inf_range` — the inner `inf` may be taken over any range past the
+  degree (the range in `stageHeight_eq_inf` is `A`-dependent, which blocks comparing two
+  polynomials slot by slot);
+* `KeyFrame.min_stageHeight_le_add` — the ultrametric inequality for `dv`, the ONLY thing the
+  pin needs about the `b = m − 1` collision of the note's *Non-collision* paragraph: the merged
+  digit sits at height `≥` the common height of its two summands (it may rise, or vanish);
+* `stageHeight_rep_monomial` — the slot dictionary itself: at a binomial key the canonical
+  representative of the class of `u·π^n·x^N` has stage height exactly `e₁n + N`, the wrap
+  `x^{D′} ≡ πω` trading each eaten `x^{D′}` for one `π`.  The `div`/`mod` split cancels, which
+  is why no `⌊N/D′⌋` survives in the answer.
+* `dvSupp_eq_of_slots` — the level-2 `inf` at `ℓ = 1`: a common lower bound over ALL slots plus
+  attainment at the coordinate-`0` slot (always in range, whatever the degree). -/
+
+section SlotHeights
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+private theorem nsmul_top_pos {n : ℕ} (hn : 0 < n) : n • (⊤ : ℕ∞) = ⊤ := by
+  simp [nsmul_eq_mul, Nat.cast_ne_zero.mpr hn.ne']
+
+/-- An absent slot has height `⊤` (`F.he₁` is what stops `e₁ • ⊤` from collapsing). -/
+theorem KeyFrame.stageHeight_zero (F : KeyFrame O π) : F.stageHeight (0 : Polynomial O) = ⊤ := by
+  rw [KeyFrame.stageHeight_eq_inf]
+  simp only [Polynomial.natDegree_zero, Polynomial.coeff_zero, map_zero]
+  rw [show gaussVal (0 : Polynomial O) = ⊤ from gaussVal_eq_top_iff.mpr rfl, nsmul_top_pos F.he₁]
+  simp
+
+/-- C.02's `stageHeight_eq_inf` over ANY range past the degree: the extra terms are `⊤`. -/
+theorem KeyFrame.stageHeight_eq_inf_range (F : KeyFrame O π) (A : Polynomial O) {N : ℕ}
+    (hN : A.natDegree ≤ N) :
+    F.stageHeight A
+      = (Finset.range (N + 1)).inf
+          (fun i => F.e₁ • gaussVal (Polynomial.C (A.coeff i)) + (F.h * i : ℕ∞)) := by
+  rw [KeyFrame.stageHeight_eq_inf]
+  refine le_antisymm (Finset.le_inf ?_) (Finset.le_inf ?_)
+  · intro i hi
+    rw [Finset.mem_range] at hi
+    by_cases hle : i ≤ A.natDegree
+    · exact Finset.inf_le (Finset.mem_range.2 (by omega))
+    · rw [A.coeff_eq_zero_of_natDegree_lt (by omega), Polynomial.C_0,
+        show gaussVal (0 : Polynomial O) = ⊤ from gaussVal_eq_top_iff.mpr rfl,
+        nsmul_top_pos F.he₁]
+      simp
+  · intro i hi
+    rw [Finset.mem_range] at hi
+    exact Finset.inf_le (Finset.mem_range.2 (by omega))
+
+/-- **The stage height is ultrametric.**  `min (dv A) (dv B) ≤ dv (A + B)` — B.32a's
+`min_gaussVal_le_gaussVal_add` transported through the `inf` shape of `dv`. -/
+theorem KeyFrame.min_stageHeight_le_add (F : KeyFrame O π) (A B : Polynomial O) :
+    min (F.stageHeight A) (F.stageHeight B) ≤ F.stageHeight (A + B) := by
+  rw [F.stageHeight_eq_inf_range A (le_max_left A.natDegree B.natDegree),
+    F.stageHeight_eq_inf_range B (le_max_right A.natDegree B.natDegree),
+    F.stageHeight_eq_inf_range (A + B)
+      (le_trans (Polynomial.natDegree_add_le A B) (le_refl _))]
+  refine Finset.le_inf fun i hi => ?_
+  have hg : min (gaussVal (Polynomial.C (A.coeff i))) (gaussVal (Polynomial.C (B.coeff i)))
+      ≤ gaussVal (Polynomial.C ((A + B).coeff i)) := by
+    rw [Polynomial.coeff_add, Polynomial.C_add]
+    exact min_gaussVal_le_gaussVal_add _ _
+  rcases le_total (gaussVal (Polynomial.C (A.coeff i))) (gaussVal (Polynomial.C (B.coeff i)))
+    with hle | hle
+  · rw [min_eq_left hle] at hg
+    refine le_trans (min_le_left _ _) (le_trans (Finset.inf_le hi) ?_)
+    gcongr
+  · rw [min_eq_right hle] at hg
+    refine le_trans (min_le_right _ _) (le_trans (Finset.inf_le hi) ?_)
+    gcongr
+
+/-- **The slot dictionary** (the note's §3 Step 4, as a Lean identity).  At a binomial key
+`Φ′ = x^{e₁} − πω` the canonical representative of the class of the monomial `u·π^n·x^N`
+(`u` a unit, `N` ARBITRARY — over-grid allowed) has stage height exactly `e₁·n + N`: the wrap
+`x^{e₁} ≡ πω` converts each eaten `x^{e₁}` into one `π`, so the `⌊N/e₁⌋` bookkeeping cancels
+against `N mod e₁` and never appears in the answer. -/
+theorem stageHeight_rep_monomial (F : KeyFrame O π) (hπ : Irreducible π) (hh : F.h = 1)
+    {ω : O} (hω : IsUnit ω) (hkey : F.key = Polynomial.X ^ F.e₁ - Polynomial.C (π * ω))
+    {u : O} (hu : IsUnit u) (n N : ℕ) :
+    F.stageHeight (AdjoinRoot.modByMonicHom F.hmonic
+        (AdjoinRoot.mk F.key (Polynomial.C (u * π ^ n) * Polynomial.X ^ N)))
+      = ((F.e₁ * n + N : ℕ) : ℕ∞) := by
+  rw [AdjoinRoot.modByMonicHom_mk]
+  have hmod : (Polynomial.C (u * π ^ n) * Polynomial.X ^ N) %ₘ F.key
+      = Polynomial.C ((u * π ^ n) * (π * ω) ^ (N / F.e₁)) * Polynomial.X ^ (N % F.e₁) := by
+    rw [hkey]
+    exact binomKey_mod_monomial F.he₁ (π * ω) (u * π ^ n) N
+  rw [hmod, stageHeight_C_mul_X_pow]
+  have hval : (u * π ^ n) * (π * ω) ^ (N / F.e₁)
+      = (u * ω ^ (N / F.e₁)) * π ^ (n + N / F.e₁) := by ring
+  rw [hval, gaussVal_C_unit_mul_pow hπ (hu.mul (hω.pow _)), hh]
+  have hsm : F.e₁ • ((n + N / F.e₁ : ℕ) : ℕ∞) = ((F.e₁ * (n + N / F.e₁) : ℕ) : ℕ∞) := by
+    simp [nsmul_eq_mul, mul_add]
+  rw [hsm, ← Nat.cast_add]
+  congr 1
+  have hdm : F.e₁ * (N / F.e₁) + N % F.e₁ = N := Nat.div_add_mod N F.e₁
+  calc F.e₁ * (n + N / F.e₁) + 1 * (N % F.e₁)
+      = F.e₁ * n + (F.e₁ * (N / F.e₁) + N % F.e₁) := by ring
+    _ = F.e₁ * n + N := by rw [hdm]
+
+/-- **The level-2 `inf`, evaluated** (at `ℓ = 1`): every slot at or above `M`, the
+coordinate-`0` slot exactly `M`.  Coordinate `0` is in range whatever `A` is, which is why the
+consuming proof always picks it as the attaining index. -/
+theorem dvSupp_eq_of_slots (F : KeyFrame O π) {A : Polynomial O} {u M : ℕ}
+    (hlb : ∀ b' : ℕ, (M : ℕ∞) ≤ F.stageHeight (dev F.key A b') + (u * b' : ℕ∞))
+    (hat : F.stageHeight (dev F.key A 0) = (M : ℕ∞)) :
+    dvSupp F A u 1 = (M : ℕ∞) := by
+  rw [dvSupp]
+  refine inf_eq_of_attained (fun b' _ => ?_) (Finset.mem_range.mpr (Nat.succ_pos _)) ?_
+  · simp only [one_nsmul, dvHgt]
+    exact hlb b'
+  · simp only [one_nsmul, dvHgt, hat]
+    simp
+
+end SlotHeights
 
 /-! ## Part 3 — the trinomial single-crossing frame -/
 
@@ -1327,6 +1501,234 @@ theorem lawEW_discrepancy_eq_census {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.P
   · rw [hsh1, hhon1]; ring
   · rw [hsh0, hhon0, sub_zero]
 
+
+/-! ### Clause (b) at the low coordinates — the boundary identity (§3 Steps 4–5)
+
+The last two steps of the note.  `lawEW_discrepancy_eq_census` (above) gives the two
+discrepancies as reassembled census polynomials; Part 5's slot dictionary turns each census
+monomial into a height, and every slot of a coordinate comes out at the SAME height —
+`H_C + δ` at coordinate `1`, `H_C + E₂ + δ` at coordinate `0` — so the `inf` is attained at the
+coordinate-`0` slot and equals it.
+
+The note's *Non-collision* paragraph (the record's piece 6, `b = m − 1`) is discharged WITHOUT
+evaluating the merged unit `(−1)^m ĉ₂^m ω^{m i₂/D′} − ĉ₀`: the two colliding deposits have the
+SAME height, so `KeyFrame.min_stageHeight_le_add` already gives the lower bound `≥ H_C + E₂ + δ`
+at that slot, and the attainment is read off the coordinate-`0` slot, which the `P`-chain
+deposit never reaches (`m − 1 ≥ 1` from `T.hcomp`).  That is why the pin is exact even at the
+degraded collision — the merged slot may rise or vanish and the answer does not move. -/
+
+set_option linter.unusedVariables false in
+theorem lawEW_pin {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) [Finite (ResidueField O)]
+    (hh : F.h = 1) (hf₁ : F.f₁ = 1) (he₂ : T.e₂ = 1)
+    {ω : O} (hω : IsUnit ω)
+    (hkey : F.key = Polynomial.X ^ F.e₁ - Polynomial.C (π * ω))
+    {i₂ v₂ v₀ : ℕ} (hi₂ : 1 ≤ i₂) {c₂ c₀ : O} (hc₂ : IsUnit c₂) (hc₀ : IsUnit c₀)
+    (hcomp : composedKey T
+      = F.key ^ T.f₂
+        + Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂ * F.key ^ (T.f₂ - 1)
+        + Polynomial.C (c₀ * π ^ v₀))
+    (hu₂ : T.u₂ = F.e₁ * v₂ + i₂) (hv₀ : F.e₁ * v₀ = T.f₂ * T.u₂)
+    {μ₂ : ℕ} (hμ₂ : 2 ≤ μ₂) (hgrid : μ₂ * i₂ < F.e₁)
+    {c : O} (hc : IsUnit c) (α a b : ℕ) (ha : a < F.e₁) (hb : b < T.f₂)
+    {f : Polynomial O}
+    (hf : f = composedKey T ^ μ₂
+      + Polynomial.C (c * π ^ α) * Polynomial.X ^ a * F.key ^ b
+        * composedKey T)
+    (hcross : F.e₁ ≤ a + i₂) {j : ℕ} (hj : j ≤ 1) :
+    dv2Hgt (T.levelDatum hπ) (shadowDev T f j - dev (composedKey T) f j)
+      = ((gridWeight T α a b (1 - j) + T.margin : ℕ) : ℕ∞) := by
+  classical
+  obtain ⟨hΔ1, hΔ0⟩ := lawEW_discrepancy_eq_census T hπ hh hf₁ he₂ hω hkey hi₂ hc₂ hc₀ hcomp
+    hu₂ hv₀ hμ₂ hgrid hc α a b ha hb hf hcross
+  have hf₂ : 2 ≤ T.f₂ := by have h := T.hcomp; rw [he₂, one_mul] at h; exact h
+  have hfl : F.e₁ < T.u₂ := by
+    have h := T.hfloor; simp only [he₂, hf₁, hh, one_mul, mul_one] at h; exact h
+  have hmg : T.margin + F.e₁ = T.u₂ := by
+    simp only [TowerDatum.margin, he₂, hf₁, hh, one_mul, mul_one]; omega
+  have hE₂ : T.E₂ = T.f₂ * T.u₂ := by simp only [TowerDatum.E₂, he₂, one_mul]
+  have hEv : T.E₂ = F.e₁ * v₀ := by rw [hE₂, ← hv₀]
+  have hgw0 : gridWeight T α a b 0 = F.e₁ * α + a + b * T.u₂ := by
+    simp only [gridWeight, slotOffset, he₂, hh]; ring
+  have hgw1 : gridWeight T α a b 1 = F.e₁ * α + a + b * T.u₂ + T.E₂ := by
+    simp only [gridWeight, slotOffset, he₂, hh]; ring
+  obtain ⟨s, hsa⟩ : ∃ s : ℕ, s + F.e₁ = a + i₂ := ⟨a + i₂ - F.e₁, by omega⟩
+  rw [show a + i₂ - F.e₁ = s from by omega] at hΔ1 hΔ0
+  set Pb : AdjoinRoot F.key :=
+    AdjoinRoot.mk F.key (Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂) with hPb
+  set gb : AdjoinRoot F.key :=
+    AdjoinRoot.mk F.key (Polynomial.C (c * π ^ α * (c₂ * π ^ v₂)) * Polynomial.X ^ s) with hgb
+  set cb : AdjoinRoot F.key := AdjoinRoot.mk F.key (Polynomial.C (c₀ * π ^ v₀)) with hcb
+  -- the slot dictionary
+  have hmkQ : ∀ k : ℕ, (-1 : AdjoinRoot F.key) ^ k * gb * Pb ^ k
+      = AdjoinRoot.mk F.key
+          (Polynomial.C (((-1 : O) ^ k * (c * c₂ ^ (k + 1))) * π ^ (α + (k + 1) * v₂))
+            * Polynomial.X ^ (s + k * i₂)) := by
+    intro k
+    have hp : (-1 : Polynomial O) ^ k
+          * (Polynomial.C (c * π ^ α * (c₂ * π ^ v₂)) * Polynomial.X ^ s)
+          * (Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂) ^ k
+        = Polynomial.C (((-1 : O) ^ k * (c * c₂ ^ (k + 1))) * π ^ (α + (k + 1) * v₂))
+            * Polynomial.X ^ (s + k * i₂) := by
+      rw [show (-1 : Polynomial O) = Polynomial.C (-1 : O) by simp]
+      simp only [Polynomial.C_mul, Polynomial.C_pow]
+      ring
+    rw [← hp, hgb, hPb]
+    simp only [map_mul, map_pow, map_neg, map_one]
+  have hmkR : ∀ k : ℕ, (-1 : AdjoinRoot F.key) ^ (k + 1) * gb * Pb ^ k * cb
+      = AdjoinRoot.mk F.key
+          (Polynomial.C (((-1 : O) ^ (k + 1) * (c * c₂ ^ (k + 1) * c₀))
+              * π ^ (α + (k + 1) * v₂ + v₀))
+            * Polynomial.X ^ (s + k * i₂)) := by
+    intro k
+    have hp : (-1 : Polynomial O) ^ (k + 1)
+          * (Polynomial.C (c * π ^ α * (c₂ * π ^ v₂)) * Polynomial.X ^ s)
+          * (Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂) ^ k
+          * Polynomial.C (c₀ * π ^ v₀)
+        = Polynomial.C (((-1 : O) ^ (k + 1) * (c * c₂ ^ (k + 1) * c₀))
+              * π ^ (α + (k + 1) * v₂ + v₀))
+            * Polynomial.X ^ (s + k * i₂) := by
+      rw [show (-1 : Polynomial O) = Polynomial.C (-1 : O) by simp]
+      simp only [Polynomial.C_mul, Polynomial.C_pow]
+      ring
+    rw [← hp, hgb, hPb, hcb]
+    simp only [map_mul, map_pow, map_neg, map_one]
+  have hunitQ : ∀ k : ℕ, IsUnit ((-1 : O) ^ k * (c * c₂ ^ (k + 1))) :=
+    fun k => ((isUnit_one.neg).pow k).mul (hc.mul (hc₂.pow _))
+  have hunitR : ∀ k : ℕ, IsUnit ((-1 : O) ^ (k + 1) * (c * c₂ ^ (k + 1) * c₀)) :=
+    fun k => ((isUnit_one.neg).pow (k + 1)).mul ((hc.mul (hc₂.pow _)).mul hc₀)
+  -- the slot height in closed form
+  have hslotval : ∀ k : ℕ, F.e₁ * (α + (k + 1) * v₂) + (s + k * i₂)
+      = F.e₁ * α + a + T.margin + k * T.u₂ := by
+    intro k
+    have A : (T.u₂ : ℤ) = (F.e₁ : ℤ) * v₂ + i₂ := by exact_mod_cast hu₂
+    have B : (s : ℤ) + (F.e₁ : ℤ) = (a : ℤ) + (i₂ : ℤ) := by exact_mod_cast hsa
+    have Cc : (T.margin : ℤ) + (F.e₁ : ℤ) = (T.u₂ : ℤ) := by exact_mod_cast hmg
+    have hZ : ((F.e₁ * (α + (k + 1) * v₂) + (s + k * i₂) : ℕ) : ℤ)
+        = ((F.e₁ * α + a + T.margin + k * T.u₂ : ℕ) : ℤ) := by
+      push_cast
+      linear_combination (-(k : ℤ) - 1) * A + B - Cc
+    exact_mod_cast hZ
+  have hjj : j = 0 ∨ j = 1 := by omega
+  rcases hjj with rfl | rfl
+  · -- coordinate 0
+    rw [hΔ0]
+    show dvSupp F _ (T.levelDatum hπ).u (T.levelDatum hπ).ℓ = _
+    have hLu : (T.levelDatum hπ).u = T.u₂ := rfl
+    have hLl : (T.levelDatum hπ).ℓ = T.e₂ := rfl
+    rw [hLu, hLl, he₂, show (1 : ℕ) - 0 = 1 from rfl, hgw1]
+    have hdev0 : ∀ b' : ℕ, dev F.key (reass F (seedRem Pb cb gb T.f₂ b)) b'
+        = AdjoinRoot.modByMonicHom F.hmonic
+            (if b' = T.f₂ - 1 then (-1 : AdjoinRoot F.key) ^ (b + 1) * gb * Pb ^ (b + 1) else 0)
+          + AdjoinRoot.modByMonicHom F.hmonic
+            (if b' ≤ b then (-1 : AdjoinRoot F.key) ^ (b - b' + 1) * gb * Pb ^ (b - b') * cb
+              else 0) := by
+      intro b'
+      rw [dev_reass, seedRem_coeff, map_add]
+    refine dvSupp_eq_of_slots F (M := F.e₁ * α + a + b * T.u₂ + T.E₂ + T.margin) ?_ ?_
+    · intro b'
+      rw [hdev0 b']
+      refine le_trans ?_ (add_le_add (F.min_stageHeight_le_add _ _) (le_refl _))
+      have hb1 : ((F.e₁ * α + a + b * T.u₂ + T.E₂ + T.margin : ℕ) : ℕ∞)
+          ≤ F.stageHeight (AdjoinRoot.modByMonicHom F.hmonic
+              (if b' = T.f₂ - 1 then (-1 : AdjoinRoot F.key) ^ (b + 1) * gb * Pb ^ (b + 1)
+                else 0)) + (T.u₂ * b' : ℕ∞) := by
+        by_cases hbf : b' = T.f₂ - 1
+        · rw [if_pos hbf, hmkQ (b + 1),
+            stageHeight_rep_monomial F hπ hh hω hkey (hunitQ (b + 1)) _ _,
+            ← Nat.cast_mul, ← Nat.cast_add]
+          have hval : F.e₁ * (α + (b + 1 + 1) * v₂) + (s + (b + 1) * i₂) + T.u₂ * b'
+              = F.e₁ * α + a + b * T.u₂ + T.E₂ + T.margin := by
+            have h1 : T.f₂ - 1 + 1 = T.f₂ := by omega
+            have hstep : (b + 1) * T.u₂ + T.u₂ * b' = b * T.u₂ + T.f₂ * T.u₂ := by
+              rw [hbf]
+              calc (b + 1) * T.u₂ + T.u₂ * (T.f₂ - 1)
+                  = b * T.u₂ + (T.f₂ - 1 + 1) * T.u₂ := by ring
+                _ = b * T.u₂ + T.f₂ * T.u₂ := by rw [h1]
+            calc F.e₁ * (α + (b + 1 + 1) * v₂) + (s + (b + 1) * i₂) + T.u₂ * b'
+                = (F.e₁ * α + a + T.margin + (b + 1) * T.u₂) + T.u₂ * b' := by
+                  rw [hslotval (b + 1)]
+              _ = F.e₁ * α + a + T.margin + ((b + 1) * T.u₂ + T.u₂ * b') := by ring
+              _ = F.e₁ * α + a + T.margin + (b * T.u₂ + T.f₂ * T.u₂) := by rw [hstep]
+              _ = F.e₁ * α + a + b * T.u₂ + T.f₂ * T.u₂ + T.margin := by ring
+              _ = F.e₁ * α + a + b * T.u₂ + T.E₂ + T.margin := by rw [hE₂]
+          rw [hval]
+        · rw [if_neg hbf, map_zero, F.stageHeight_zero]
+          simp
+      have hb2 : ((F.e₁ * α + a + b * T.u₂ + T.E₂ + T.margin : ℕ) : ℕ∞)
+          ≤ F.stageHeight (AdjoinRoot.modByMonicHom F.hmonic
+              (if b' ≤ b then (-1 : AdjoinRoot F.key) ^ (b - b' + 1) * gb * Pb ^ (b - b') * cb
+                else 0)) + (T.u₂ * b' : ℕ∞) := by
+        by_cases hbb : b' ≤ b
+        · rw [if_pos hbb, hmkR (b - b'),
+            stageHeight_rep_monomial F hπ hh hω hkey (hunitR (b - b')) _ _,
+            ← Nat.cast_mul, ← Nat.cast_add]
+          have hval : F.e₁ * (α + (b - b' + 1) * v₂ + v₀) + (s + (b - b') * i₂) + T.u₂ * b'
+              = F.e₁ * α + a + b * T.u₂ + T.E₂ + T.margin := by
+            have hbb' : b - b' + b' = b := by omega
+            calc F.e₁ * (α + (b - b' + 1) * v₂ + v₀) + (s + (b - b') * i₂) + T.u₂ * b'
+                = (F.e₁ * (α + (b - b' + 1) * v₂) + (s + (b - b') * i₂))
+                    + F.e₁ * v₀ + T.u₂ * b' := by ring
+              _ = (F.e₁ * α + a + T.margin + (b - b') * T.u₂) + F.e₁ * v₀ + T.u₂ * b' := by
+                  rw [hslotval (b - b')]
+              _ = F.e₁ * α + a + T.margin + (b - b' + b') * T.u₂ + F.e₁ * v₀ := by ring
+              _ = F.e₁ * α + a + T.margin + b * T.u₂ + F.e₁ * v₀ := by rw [hbb']
+              _ = F.e₁ * α + a + b * T.u₂ + T.E₂ + T.margin := by rw [hEv]; ring
+          rw [hval]
+        · rw [if_neg hbb, map_zero, F.stageHeight_zero]
+          simp
+      rcases min_choice
+        (F.stageHeight (AdjoinRoot.modByMonicHom F.hmonic
+          (if b' = T.f₂ - 1 then (-1 : AdjoinRoot F.key) ^ (b + 1) * gb * Pb ^ (b + 1) else 0)))
+        (F.stageHeight (AdjoinRoot.modByMonicHom F.hmonic
+          (if b' ≤ b then (-1 : AdjoinRoot F.key) ^ (b - b' + 1) * gb * Pb ^ (b - b') * cb
+            else 0))) with hmin | hmin <;> rw [hmin]
+      · exact hb1
+      · exact hb2
+    · rw [hdev0 0, if_neg (by omega : ¬ (0 = T.f₂ - 1)), map_zero, zero_add,
+        if_pos (Nat.zero_le b), Nat.sub_zero, hmkR b,
+        stageHeight_rep_monomial F hπ hh hω hkey (hunitR b) _ _]
+      congr 1
+      calc F.e₁ * (α + (b + 1) * v₂ + v₀) + (s + b * i₂)
+          = (F.e₁ * (α + (b + 1) * v₂) + (s + b * i₂)) + F.e₁ * v₀ := by ring
+        _ = (F.e₁ * α + a + T.margin + b * T.u₂) + F.e₁ * v₀ := by rw [hslotval b]
+        _ = F.e₁ * α + a + b * T.u₂ + T.E₂ + T.margin := by rw [hEv]; ring
+  · -- coordinate 1
+    rw [hΔ1]
+    show dvSupp F _ (T.levelDatum hπ).u (T.levelDatum hπ).ℓ = _
+    have hLu : (T.levelDatum hπ).u = T.u₂ := rfl
+    have hLl : (T.levelDatum hπ).ℓ = T.e₂ := rfl
+    rw [hLu, hLl, he₂, show (1 : ℕ) - 1 = 0 from rfl, hgw0]
+    have hdev1 : ∀ b' : ℕ, dev F.key (reass F (seedQuot Pb gb b)) b'
+        = AdjoinRoot.modByMonicHom F.hmonic
+            (if b' ≤ b then (-1 : AdjoinRoot F.key) ^ (b - b') * gb * Pb ^ (b - b') else 0) := by
+      intro b'
+      rw [dev_reass, seedQuot_coeff]
+    refine dvSupp_eq_of_slots F (M := F.e₁ * α + a + b * T.u₂ + T.margin) ?_ ?_
+    · intro b'
+      rw [hdev1 b']
+      by_cases hbb : b' ≤ b
+      · rw [if_pos hbb, hmkQ (b - b'),
+          stageHeight_rep_monomial F hπ hh hω hkey (hunitQ (b - b')) _ _,
+          ← Nat.cast_mul, ← Nat.cast_add]
+        have hval : F.e₁ * (α + (b - b' + 1) * v₂) + (s + (b - b') * i₂) + T.u₂ * b'
+            = F.e₁ * α + a + b * T.u₂ + T.margin := by
+          have hbb' : b - b' + b' = b := by omega
+          calc F.e₁ * (α + (b - b' + 1) * v₂) + (s + (b - b') * i₂) + T.u₂ * b'
+              = (F.e₁ * α + a + T.margin + (b - b') * T.u₂) + T.u₂ * b' := by
+                rw [hslotval (b - b')]
+            _ = F.e₁ * α + a + T.margin + (b - b' + b') * T.u₂ := by ring
+            _ = F.e₁ * α + a + b * T.u₂ + T.margin := by rw [hbb']; ring
+        rw [hval]
+      · rw [if_neg hbb, map_zero, F.stageHeight_zero]
+        simp
+    · rw [hdev1 0, if_pos (Nat.zero_le b), Nat.sub_zero, hmkQ b,
+        stageHeight_rep_monomial F hπ hh hω hkey (hunitQ b) _ _]
+      congr 1
+      calc F.e₁ * (α + (b + 1) * v₂) + (s + b * i₂)
+          = F.e₁ * α + a + T.margin + b * T.u₂ := hslotval b
+        _ = F.e₁ * α + a + b * T.u₂ + T.margin := by ring
+
 end LawEW
 
 end Uniformity.Density.Tower
@@ -1359,6 +1761,14 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.seedRem
 #print axioms Uniformity.Density.Tower.seed_division_census
 #print axioms Uniformity.Density.Tower.devQ_seed
+#print axioms Uniformity.Density.Tower.seedQuot_coeff
+#print axioms Uniformity.Density.Tower.seedRem_coeff
+#print axioms Uniformity.Density.Tower.KeyFrame.stageHeight_zero
+#print axioms Uniformity.Density.Tower.KeyFrame.stageHeight_eq_inf_range
+#print axioms Uniformity.Density.Tower.KeyFrame.min_stageHeight_le_add
+#print axioms Uniformity.Density.Tower.stageHeight_rep_monomial
+#print axioms Uniformity.Density.Tower.dvSupp_eq_of_slots
 #print axioms Uniformity.Density.Tower.lawEW_discrepancy_eq_census
+#print axioms Uniformity.Density.Tower.lawEW_pin
 
 end AxCheck
