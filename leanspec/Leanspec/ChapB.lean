@@ -84,6 +84,21 @@ The §10 gates bind nothing: they are concrete `ℤ_[2]` / `ℤ_[3]` instances.
   in the obstruction record). Consumer stubs UNCHANGED (the A-F.6/A-F.9 strengthened clauses +
   clause 6 carry everything B.63/B.66a/B.72/B.79a read). Full record: blueprint amendment
   A-F.10 + CHAP-B honesty item H-14 (the cite-conditionality inheritance list).
+* **A-F.10 CLOSURE — SIGNED-AND-LANDED (2026-08-16).** The owner SIGNED gate (b) for B.42's cite
+  on 2026-08-16 (`docs/PROJECT_STATE.md` DATED APPEND #66; sources co-primary **[GN15] Thm 2.3 +
+  [FGMN] Thm 6.6**, the second one load-bearing because [GN15]'s `φ ≁_{µ₀} x` excludes the
+  Eisenstein keys), and the import landed the same day as
+  `Uniformity.Density.Leaf.exists_slope_factorization` in
+  `leanfinal/Uniformity/ChapB/B42.lean` — the repo's **first** owner-signed gate-(b) literature
+  axiom; `leanfinal/README.md`'s charter line was amended in the same landing. **B.42a** landed
+  alongside it as a real theorem (`leanfinal/Uniformity/ChapB/B42a.lean`, Lean-core footprint),
+  lifted verbatim from the obstruction record. **Both stubs above are consequently RETIRED to
+  the example-diff form** (axiom count 117 → 115; the two `example`s are now standing type gates
+  on `lake build Leanspec`). Landing-time finding, recorded at both sites: this stub's
+  section-inherited `[IsAdicComplete (maximalIdeal O) O]` is LOAD-BEARING — the statement is
+  FALSE over a non-complete DVR (witness `f = X² + 5X + 250` over `ℤ₍₅₎`, in B42.lean's header) —
+  and Lean 4.31's instance auto-inclusion is usage-based and IMPORT-SET-dependent, so the landed
+  axiom carries that binder inline rather than by section inheritance.
 
 ## THE DEFECT LIST (stage-0e gate, 2026-08-15)
 
@@ -728,20 +743,45 @@ axiom exists_graded_factorization (hπ : Irreducible π) {φ : Polynomial O} (h�
 
 /-- **B.42a** [lemma] ENV-A. **[booked: A-F.10]** — the pure ⟺ one-sided dictionary,
 machine-checked direction: a `(w,t)`-pure monic `f` of degree `μ·m` has a ONE-POINT side at
-every genuinely different slope. Compiled proof committed in
-`leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt` (Lean-core footprint); it is the
-obstruction that retired B.42's proof route (B.41's `hpure` is unavailable in the inductive
-case), the base-case-exhaustiveness lemma of any future retirement proof, and the coherence
-corroboration of the B.42 cite. -/
-axiom card_sideSet_le_one_of_isPure {φ : Polynomial O} (hφ : IsKey φ)
-    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree)
-    {w t : ℕ} (ht : 0 < t) (hpure : IsPure φ f w t)
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hslope : u * t ≠ w * ℓ) :
-    (sideSet φ f u ℓ).card ≤ 1
+every genuinely different slope. It is the obstruction that retired B.42's proof route (B.41's
+`hpure` is unavailable in the inductive case), the base-case-exhaustiveness lemma of any future
+retirement proof, and the coherence corroboration of the B.42 cite.
 
-/-- **B.42** [theorem] ENV-C — **[cite:GN15 Thm 2.3], gate (b) (A-F.10)**: this contract is a
-LITERATURE IMPORT, to land in `leanfinal` as a signed `axiom` after the owner's per-cite
-signature (queue: CHAP-I §3, dated addendum 2026-08-16, with the faithfulness entry draft).
+**0e RETIREMENT (2026-08-16): LANDED.** The compiled proof committed in
+`leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt` was lifted verbatim into the node file
+`leanfinal/Uniformity/ChapB/B42a.lean` at the B.42 axiom landing — a real **THEOREM**, sorry-free,
+`#print axioms = [propext, Classical.choice, Quot.sound]`. The `axiom` stub is therefore replaced
+by the retirement-form type diff below, against the landed twin
+`Uniformity.Density.Leaf.card_sideSet_le_one_of_isPure` (written `Leaf.…`: `Uniformity.Density`
+is `open`ed at the top of this namespace, and the short form cannot be confused with `LeanspecB`'s
+own definitional copies, which are distinct constants). -/
+example {φ : Polynomial O} (hφ : Leaf.IsKey φ)
+    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree)
+    {w t : ℕ} (ht : 0 < t) (hpure : Leaf.IsPure φ f w t)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hslope : u * t ≠ w * ℓ) :
+    (Leaf.sideSet φ f u ℓ).card ≤ 1 :=
+  Leaf.card_sideSet_le_one_of_isPure (hφ := hφ) (hf := hf) (μ := μ) (hdeg := hdeg)
+    (ht := ht) (hpure := hpure) (hℓ := hℓ) (hslope := hslope)
+
+/-- **B.42** [theorem] ENV-C — **[cite:GN15 Thm 2.3 + FGMN Thm 6.6], gate (b) (A-F.10)**: this
+contract is a LITERATURE IMPORT.
+
+**0e RETIREMENT (2026-08-16): SIGNED-AND-LANDED.** The owner signed gate (b) for this cite on
+2026-08-16 (`docs/PROJECT_STATE.md` DATED APPEND #66; the exact statement below and both sources
+were displayed in full immediately before the approval), and the import landed the same day as
+the signed `axiom` `Uniformity.Density.Leaf.exists_slope_factorization`
+(`leanfinal/Uniformity/ChapB/B42.lean`, whose header is the permanent in-code record: sources,
+signature event, faithfulness-entry pointer, route block, clause-6 flag). The `axiom` stub here
+is therefore replaced by the retirement-form type diff below — from now on a drift between this
+signed interface and the landed axiom is a hard error on `lake build Leanspec`.
+**Landing-time finding, recorded:** the completeness instance
+`[IsAdicComplete (maximalIdeal O) O]` that this stub picks up by section auto-inclusion is
+LOAD-BEARING (without it the statement is false — see B42.lean's witness over `ℤ₍₅₎`), and at
+the 4.31 pin auto-inclusion is usage-based and import-set-dependent, so the landed axiom writes
+that binder INLINE. The diff below asserts it explicitly for the same reason.
+
+Pre-signature record (kept, past tense): this contract was queued at CHAP-I §3's dated addendum
+2026-08-16 with the faithfulness entry draft.
 The signed proof route is machine-checked UNREACHABLE
 (`leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt`: purity forces a one-sided polygon, so
 B.41's `hpure` cannot hold in the inductive case; independently the step-5 `hprod` degree
@@ -763,26 +803,29 @@ B.48's `hH₀`/`hne`/`hd` at B.63. **[repaired: A-F.10]** — clause 6 added, th
 `R_λ(F p) ∼ R_λ(f)` (the cited theorem's own third clause; B.63 step 2 consumes it, and under
 the cite it cannot be re-derived from a construction). Clause 6 is the one clause never
 refutation-tested: flagged FIRST for the gate-(b) fresh-context audit. -/
-axiom exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+example [IsAdicComplete (maximalIdeal O) O]
+    (hπ : Irreducible π) {φ : Polynomial O} (hφ : Leaf.IsKey φ)
     {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
-    (h0 : dev φ f 0 ≠ 0) :
+    (h0 : Leaf.dev φ f 0 ≠ 0) :
     ∃ (s : Finset (ℕ × ℕ)) (F : ℕ × ℕ → Polynomial O),
       (∀ p ∈ s, 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2) ∧
       (∀ p ∈ s, ∀ q ∈ s, p ≠ q → p.1 * q.2 ≠ q.1 * p.2) ∧
-      (∀ p ∈ s, (F p).Monic ∧ IsPure φ (F p) p.1 p.2 ∧
+      (∀ p ∈ s, (F p).Monic ∧ Leaf.IsPure φ (F p) p.1 p.2 ∧
         φ.natDegree ∣ (F p).natDegree ∧
-        dev φ (F p) 0 ≠ 0 ∧ 0 < (F p).natDegree) ∧
+        Leaf.dev φ (F p) 0 ≠ 0 ∧ 0 < (F p).natDegree) ∧
       f = ∏ p ∈ s, F p ∧
       (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
-        (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s)) ∧
-      (∀ p ∈ s, ∀ (hne : (sideSet φ f p.1 p.2).Nonempty)
-        (hne' : (sideSet φ (F p) p.1 p.2).Nonempty) (H₀ H₀' : ℕ),
-        npHgt φ f (sideMin φ f p.1 p.2 hne) = (H₀ : ℕ∞) →
-        npHgt φ (F p) (sideMin φ (F p) p.1 p.2 hne') = (H₀' : ℕ∞) →
-        ∃ c : (resField φ)ˣ,
-          resPoly π φ f p.1 p.2 hne H₀ =
-            Polynomial.C (c : resField φ) * resPoly π φ (F p) p.1 p.2 hne' H₀')
+        (1 < (Leaf.sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s)) ∧
+      (∀ p ∈ s, ∀ (hne : (Leaf.sideSet φ f p.1 p.2).Nonempty)
+        (hne' : (Leaf.sideSet φ (F p) p.1 p.2).Nonempty) (H₀ H₀' : ℕ),
+        Leaf.npHgt φ f (Leaf.sideMin φ f p.1 p.2 hne) = (H₀ : ℕ∞) →
+        Leaf.npHgt φ (F p) (Leaf.sideMin φ (F p) p.1 p.2 hne') = (H₀' : ℕ∞) →
+        ∃ c : (Leaf.resField φ)ˣ,
+          Leaf.resPoly π φ f p.1 p.2 hne H₀ =
+            Polynomial.C (c : Leaf.resField φ) * Leaf.resPoly π φ (F p) p.1 p.2 hne' H₀') :=
+  Leaf.exists_slope_factorization (hπ := hπ) (hφ := hφ) (hf := hf) (hμ := hμ)
+    (hres := hres) (h0 := h0)
 
 /-- **B.43** [lemma] ENV-C. **[repaired: A-F.6]** — `(hu)`, the four divisibilities and the
 purity of `g'`, `h'` added: the node's own STATEMENT ("under B.41's hypotheses"; "g, g' pure …
