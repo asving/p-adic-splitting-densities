@@ -103,8 +103,14 @@ import Uniformity.ChapH.H97b
 import Uniformity.ChapH.H98
 import Uniformity.ChapH.H99
 import Uniformity.ChapH.H09w
+import Uniformity.ChapH.H63w
+import Uniformity.ChapH.H94w
 
 /-! Chapter H roll-up — COMPLETE: 99/99 nodes landed 2026-08-15. -/
 /-! Plus `H09w`: the H.09 `StageInterface` non-vacuity witnesses (finding R3, §16 item 14). -/
 /-! Plus `H97r1`–`H97r4`, `H97b` (unit OM-1, 2026-08-16): the `n = 3` rate support chain and
 `package_three` — `InductionPackage 3` unconditional, `(K, B, c) = (1, 0, 3)`. -/
+/-! Plus `H63w`, `H94w` (unit OM-3, 2026-08-16): the (CS-EXACT)-side inclusion–exclusion
+IDENTITY at every `r` (H.63 is the bound direction), and the set-level 2SIDED dominance split
+with the `r = 1` general-coefficient trichotomy (H.94(iii) is the form transport; §16 item 6's
+general split stays OPEN in Lean — math proof at the OM-3 unit note §A). -/
