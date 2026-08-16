@@ -617,3 +617,165 @@ example (n : ℕ) : MenuLawAt n ↔
 example : NS7Termination := fun _ => trivial
 
 end GateFour
+
+/-! ## §4.3 — NODE I.11 [note] — THE `AllOInterfaces` RECONCILIATION (NO LEAN FILE)
+
+Honesty I-10: in Lean, all-`O` generality is not an assumption but the statement form itself, so
+Display A's final conjunct is a **signed structural disposition**, not a field — "the informal
+corpus's uses are characteristic-general" is not a statable `Prop`. The 14 names terminate as:
+GENIND-1 (HYP.121) ∀`O`-free by form, H.93/H.94; RMG (122), GRB (124), ITER-LAW (125) out of cut
+(`EXT:` notes, no import to generalize); ILN (123) consumers out of cone, residual rides
+HYP.148's ∀`O` carrier; W/J (126), DU (127), W-10 (128) consumers out of cone / pricing-only;
+J-D0 (129) the ∀`O` binder of F's carrier statement — **now landed and checkable**, see §4 gate
+check (6); L2core (130), HUMAN_PROOF (131), local-integrals (132) quarry-side / Q7 route
+exclusion; CONV (133) `leanfinal` is monic-native; GENHN-count (134) H §7's ∀`O` statements at
+`μ = 2`. GC-8's rider-(iii) sanity check passes for these 14 — but see **defect I-D4**: the
+rider-(iii) summary sentence in §12 ("nothing else on the frozen display lacks a carrier ✓") is
+false as of this gate, because `𝒲_{≤i}` lacks one.
+
+## §5 — THE COND RESOLUTIONS (I.12–I.14, all [note], NO LEAN FILES)
+
+* **I.12 — `COND:A2_n` RESOLVED.** `A2_n` IS ledger row HYP.27's content and its carrier is
+  LANDED: `Uniformity.Density.DrainageAt n`. `n = 1, 2` PROVED (`drainage_one`, `drainage_two`);
+  `n = 3` open (HYP.08/09 frontier); `n ≥ 4` open via H.98 ⇐ `InductionPackage`. The 0c matcher
+  missed it on a name-form technicality ("`A2` drainage", no `_n`).
+* **I.13 — `COND:A1_n` RESOLVED.** `A1_n` IS HYP.26's content; its carrier is I.03 (`MenuLawAt`),
+  typed against H.93's landed `A1Cell`/`A1Family`. ⚠ This resolution is weaker than it reads:
+  defect I-D9 shows the `A1Family` leg of `MenuLawAt` is vacuous, so what I.13 actually resolves
+  today is the MENU clause, not the `(A1)`-admissible SHAPE.
+* **I.14 — `COND:H-e)-window-pinning` RESOLVED.** The conjunct IS HYP.24's pinning half (the v4
+  SUPPLIER RE-SOURCED block is the authority: `LEMMA GENHN-3` + GENIND-2's consulted-height
+  bound, NOT the off-route `(H-a)`/`(H-b)` leg). Carriers: I.05 + H.89 (`e₁ = 2`) +
+  `StageInterface.hwin` (carried, per-genre). Supplier gap narrowed by OM-6's landed `H89w.lean`
+  and NOT closed (`hwin` undischarged) — orchestrator item O-2 is DISCHARGED as an orchestration
+  item, the mathematics is not.
+
+## §6 — THE ASSEMBLY (I.15–I.20)
+
+Section contract, transcribed: everything here is bookkeeping (honesty I-1) — projections of
+I.10 and applications of landed `UniformityStatement.ofDecided` / `totalMassOne_of_drainage` and
+committed `uniformity_of_package` (H.98). **No theorem in this section makes the capstone less
+conditional; each makes the conditionality machine-readable.** Per blueprint §11 these four land
+REAL, not as `axiom`s — their proofs are projections and one term application. -/
+
+/-- **I.15** — the drainage projection. -/
+theorem drainage_of_capstoneHypotheses
+    (h : ∀ n, CapstoneHypotheses.{uW, uG, uKt, uL} n) : ∀ n, DrainageAt n :=
+  fun n => (h n).a2
+
+/-- **I.16** — the decided-target projection. The content: the `a0` fields ARE the degree-slices
+of the decided target, so re-indexing is the whole proof. This is where the count layer's
+openness is made visible — nobody can supply `∀ n, CapstoneHypotheses n` today precisely because
+`a0`/`a1` are open at `n ≥ 3`.
+
+The one-line `exact` closes because I.02's body was COPIED from the landed target's body rather
+than re-typed; the `Iff.rfl` pin in the §6 gate is the standing regression on that copy. -/
+theorem decided_of_capstoneHypotheses
+    (h : ∀ n, CapstoneHypotheses.{uW, uG, uKt, uL} n) : UniformityStatementDecided := by
+  intro n _hn σ hσ
+  exact (h n).a0 σ hσ
+
+/-- **I.17 — THE HONEST CAPSTONE ASSEMBLY.** `UniformityStatement` follows from the ledger's
+frozen hypothesis block and nothing else. What remains open is exactly the block's fields: see
+the chapter-I disposition table (§3, 36 OPEN-MATH rows + the gate-(b) cites).
+
+**This proves no mathematics** (honesty I-1). Its value is the footprint: every open input is a
+HYPOTHESIS, never an axiom, so this declaration's `#print axioms` is Lean-core — printed at
+gate I.24. -/
+theorem uniformity_of_capstoneHypotheses
+    (h : ∀ n, CapstoneHypotheses.{uW, uG, uKt, uL} n) : UniformityStatement :=
+  UniformityStatement.ofDecided (drainage_of_capstoneHypotheses h)
+    (decided_of_capstoneHypotheses h)
+
+/-- **I.18** — `TotalMassOne`, not double-counted: from the same structure, via the `a2` fields
+and landed `totalMassOne_of_drainage` ONLY (honesty I-4 — the mass law is the drainage leg
+wearing a different hat and gets no field of its own). -/
+theorem totalMassOne_of_capstoneHypotheses
+    (h : ∀ n, CapstoneHypotheses.{uW, uG, uKt, uL} n) : TotalMassOne :=
+  totalMassOne_of_drainage (drainage_of_capstoneHypotheses h)
+
+/-! ### §6 GATE (executed) -/
+
+section GateSix
+
+-- (1) **THE LITERAL-SLICE PIN (I.02 ⟷ the landed target).** `UniformityStatementDecided` IS
+-- `∀ n, 0 < n → DecidedSliceAt n`, on the nose. This `Iff.rfl` fails the build the moment either
+-- body drifts by so much as an instance order — the standing regression behind I.16's `exact`.
+example : UniformityStatementDecided ↔ ∀ n : ℕ, 0 < n → DecidedSliceAt n := Iff.rfl
+
+-- (2) **DEFECT I-D10, machine-visible in the same pin.** The landed target guards its body with
+-- `0 < n`; `CapstoneHypotheses n`'s `a0` does not, so `∀ n, CapstoneHypotheses n` demands
+-- `DecidedSliceAt 0` — a law the capstone never asks for. (`a2`'s `DrainageAt 0` IS required:
+-- landed `ofDecided` takes `∀ n, DrainageAt n`, as the `#check` records.)
+#check @Uniformity.Density.UniformityStatement.ofDecided
+
+-- (3) **NODE I.19 [note] — THE PACKAGE ROUTE, consumed by name and NOT re-exported.** CHAP-H's
+-- committed pair is landed; the one-public-declaration discipline forbids a verbatim re-export
+-- (that adds a name, not content), so the note is a `#check`. `package_two` is UNCONDITIONAL
+-- (H.96, a chapter-G payoff); `package_three_of_rate` is H.97's ADOPTED form —
+-- `package_three_of_drainage` is DECLARED UNPROVABLE by H.97's own ⚠ and must not be assigned.
+-- ⚠ THE GENIND.B FENCE APPLIES IN FULL (honesty I-2): no node here or anywhere composes
+-- `InductionPackage n` for `n ≥ 4`.
+#check @Uniformity.Density.drainage_of_package
+#check @Uniformity.Density.uniformity_of_package
+#check @Uniformity.Density.package_two
+#check @Uniformity.Density.package_three_of_rate
+
+end GateSix
+
+/-! ### NODE I.20 [note] — THE STAGE DISPLAY (NO LEAN FILE)
+
+The honest "capstone modulo …" statement at each stage, for the record and for §12's teeth.
+
+| stage | fires | modulo (named) |
+|---|---|---|
+| **S0 — today, landed** | `n = 1` drainage + total mass; `n = 2` drainage, total mass, the exact densities, THE CAPSTONE SLICE; the `q = 2, 3` instances | nothing — unconditional, Lean-core |
+| **S1 — chapters B–H land** | leaf layer, schema, rate calculus, `package_two`, the σ-μ2 chain, order-1 count laws | the gate-(b) cites where consumed (B.42 signed; C.66/C.94 REDRAFTED, unsigned; C.92 RETIRED) |
+| **S2 — the `n = 3` frontier closes** | `DrainageAt 3` (H.97 + H.98), cubic total mass unconditionally | `hrate₃` (HYP.08) + the cubic value layer (HYP.11/28/29) |
+| **S3 — the open surface** | `UniformityStatement` via I.17 | **exactly the §4 field list** — i.e. §3's 36 OPEN-MATH rows + the CITEs, and nothing else |
+
+**No stage claims more than its row.** ⚠ The S3 row's "and nothing else" claim is checkable and
+this gate finds it SHORT by one conjunct: `𝒲_{≤i}` (HYP.63) is on the display and has no field
+(defect I-D4), so "exactly the §4 field list" is at present a smaller set than Display A. The
+sentence a report may use must therefore be qualified until the field list is re-signed.
+
+## §7 — THE `typeOf` FAITHFULNESS BRIDGE AND THE CORE-SET AUDIT LEDGER (I.21–I.22)
+
+### NODE I.21 [def] — `TypeOfFaithful`, the trust-boundary bridge statement.
+Lands `Uniformity.Density.TypeOfFaithful`. ENV-I1.
+
+⚠ BLOCKED-UNTIL-RESOLUTION (defect I-D12), and STILL BLOCKED at HEAD: typing the body needs the
+factor-field valuation-ring carrier — the object B.56's OPTIONAL repair route would build — and
+it does not exist in the tree. OM-5 §3.1 sharpens why: at every `d ≥ 2` leaf the order
+`AdjoinRoot g` has residue field of degree `m < m·d`, hence is never a DVR, so that region lies
+entirely OFF the monogenic-maximal locus the landed `Density/TypeOfFaithful.lean` reaches. -/
+
+-- The signed body is the bare `True` placeholder (the node is BLOCKED-UNTIL-RESOLUTION);
+-- nothing about the two APIs is asserted, which is the point of GC-3's KEPT-APART rule.
+/-- **THE TRUST BOUNDARY, NAMED** (ledger HYP.01 [CORE-SET] + HYP.105; GC-3's kept-apart rule):
+`typeOf`'s gcd multiset (over the ORDER `AdjoinRoot g`) agrees on the `disc ≠ 0` locus with the
+ideal-theoretic `(e, f)` multiset (over the maximal order/DVR), in the primed rank-form
+generation. **NO chapter may silently identify the two APIs** (GC-3); a node needing the
+identification hypothesizes THIS name or returns `BLOCKED: HYP.01`.
+
+⚠ STUB-STAGE BODY (BLOCKED-UNTIL-RESOLUTION): the real body quantifies over the bundle and monic
+`f` with `disc f ≠ 0`, and equates `(typeOf f).data` with the maximal-order multiset via
+`Ideal.ramificationIdx'`/`inertiaDeg'`. FROZEN HERE: name, locus, both APIs by name. -/
+def TypeOfFaithful : Prop :=
+  True
+
+/-! ### NODE I.22 [note] — THE CORE-SET AUDIT LEDGER A-1 … A-7 (NO LEAN FILE)
+
+Under Part V item 2, cite/def-faithfulness rows stay gate-(b)-adjacent HUMAN reads; the rest are
+absorbed into the standing fresh-eyes cadence. **No audit row is a fleet node.**
+
+| id | row(s) | object | class | when |
+|---|---|---|---|---|
+| A-1 | HYP.01, HYP.105 | `typeOf` faithfulness — review I.21's statement against the classical `(e,f)` multiset | gate-(b)-adjacent, human | before any node hypothesizes `TypeOfFaithful` |
+| A-2 | HYP.12 | `(e,f)` ordering/multiset normalization vs the classical convention | rides A-4 | with A-4 |
+| A-3 | HYP.17 | [AGNPRW]/[GN15]/[FGMN]/Kuhlmann publisher numbering | gate-(b)-adjacent (cite) | **DONE for all three C-side cites** (A-C.1/A-C.6); residual print-reads are the owner's closing checks |
+| A-4 | HYP.98 | the core set: the types, `UniformityStatement`, the two densities, the cites, changed-definition faithfulness paragraphs | RECURRING fresh-eyes | at chapter milestones; **next at this gate's findings** |
+| A-5 | HYP.111 (def half) | what `decidedDensity` counts | rides A-4 | with A-4 |
+| A-6 | (I.10) | the field list of `CapstoneHypotheses` vs frozen Display A — one-to-one, nothing added, nothing dropped | fresh-eyes, decorrelated arm | **FIRES NOW: this gate finds it NOT one-to-one — I-D4 (`𝒲` dropped), I-D7/I-D8 (`jd0`/`genhnBox2` placeholders, no `w1`), I-D9 (`a1` vacuous), I-D10 (`a0` over-demanded at n = 0)** |
+| A-7 | HYP.91 | OB-a…OB-d representation vs CHAP-H's committed text | bounded, one pass | at the H stub stage |
+-/
