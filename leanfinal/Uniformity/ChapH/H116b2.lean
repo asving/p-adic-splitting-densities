@@ -379,9 +379,145 @@ theorem isCoprime_X_pow_of_coeff_zero_ne_zero {u : Polynomial (ResidueField O)}
 
 end OwnFrame
 
+/-! ## 4. The exact frame profile of a PLANTED PRODUCT -/
+
+section Profile
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+omit [IsDomain O] [IsDiscreteValuationRing O] in
+/-- Two exact first-unit abscissae at the same level coincide. -/
+theorem abscissa_unique {π : O} {D ν A : ℕ} {F : Polynomial O}
+    (h1 : ∀ j < ν, π ^ (D + 1) ∣ F.coeff j) (h2 : ¬ π ^ (D + 1) ∣ F.coeff ν)
+    (h3 : ∀ j < A, π ^ (D + 1) ∣ F.coeff j) (h4 : ¬ π ^ (D + 1) ∣ F.coeff A) : ν = A := by
+  rcases lt_trichotomy ν A with h | h | h
+  · exact absurd (h3 ν h) h2
+  · exact h
+  · exact absurd (h1 A h) h4
+
+/-- **The COFACTOR's frame abscissa**, packaged with the child event it would witness.  The
+`2 ≤ A → HasChildAt` clause is what turns the cofactor's child-freeness (`hQchild`) into the
+statement that a planted product has NO child at a frame outside `L`.  The degenerate `r = 0`
+cofactor (`monicPoly = 1`, content `0`) sits at abscissa `0`, so the clause is vacuous there —
+which is why no `¬ IsDrainState Qc` hypothesis is needed. -/
+theorem exists_cofactor_abscissa {π : O} (hπ : Irreducible π) {r N : ℕ} (hN : 1 ≤ N)
+    (Qc : ClusterState O r N) (hQnd : r = 0 ∨ ¬ IsDrainState Qc)
+    {k' : ℕ} (hk' : 1 ≤ k') {z' : ResidueField O} (hz' : z' ≠ 0) :
+    ∃ A : ℕ,
+      (∀ j < A, π ^ (betaContent Qc k' + 1) ∣
+        ((monicPoly (classSect O r N Qc.1)).comp
+          (C (π ^ k') * (X + C (resSect O z')))).coeff j) ∧
+      (¬ π ^ (betaContent Qc k' + 1) ∣
+        ((monicPoly (classSect O r N Qc.1)).comp
+          (C (π ^ k') * (X + C (resSect O z')))).coeff A) ∧
+      (2 ≤ A → HasChildAt π Qc A k' z') := by
+  classical
+  rcases hQnd with rfl | hnd
+  · -- the degenerate cofactor: `monicPoly = 1`, content `0`, abscissa `0`
+    refine ⟨0, fun j hj => absurd hj (by omega), ?_, fun h2 => absurd h2 (by omega)⟩
+    have hQ0 : betaContent Qc k' = 0 := by
+      have h := betaContent_le_mul Qc k'
+      omega
+    have hmp : monicPoly (classSect O 0 N Qc.1) = 1 := by
+      rw [monicPoly]; simp
+    rw [hQ0, hmp, Polynomial.one_comp, Polynomial.coeff_one, if_pos rfl, zero_add, pow_one]
+    exact fun hcon => hπ.not_isUnit (isUnit_of_dvd_one hcon)
+  · have hr : 1 ≤ r := by
+      by_contra hcon
+      exact hnd (isDrainState_of_eq_zero (by omega) Qc)
+    have hex : ∃ j, ¬ π ^ (betaContent Qc k' + 1) ∣
+        ((monicPoly (classSect O r N Qc.1)).comp
+          (C (π ^ k') * (X + C (resSect O z')))).coeff j :=
+      not_forall.1 (not_pow_content_succ_dvd_coeff_recentre hπ hr hN Qc hnd k'
+        (proj_classSect O r N Qc.1) (resSect O z'))
+    refine ⟨Nat.find hex, fun j hj => not_not.1 (Nat.find_min hex hj), Nat.find_spec hex,
+      fun h2 => ?_⟩
+    exact hasChildAt_of_exists hπ hN hnd h2 hk' hz' (classSect O r N Qc.1) (resSect O z')
+      (proj_classSect O r N Qc.1) (residue_resSect O z')
+      (pow_content_dvd_coeff_recentre hπ Qc k' (proj_classSect O r N Qc.1) (resSect O z'))
+      (fun j hj => not_not.1 (Nat.find_min hex hj)) (Nat.find_spec hex)
+
+/-- **The exact frame profile of a planted product** (A-H.7 §5 clause (ii), steps 1–3).  At an
+arbitrary frame `(k', w')` with `residue w' = z' ≠ 0`, the planted product's frame has EXACT
+level `Σ_p μ_p · min(k_p, k') + betaContent Qc k'` and its first unit sits at abscissa
+`Σ_p μ'_p + A`, where `μ'_p` is `μ_p` at `p`'s OWN frame and `0` at every foreign frame
+(hypotheses `hown`/`hfor`) and `A` is the cofactor's abscissa.
+
+The abscissa function `μ'` is passed in rather than written with an `if`, so that the statement
+carries no decidability instance; the two evaluation hypotheses pin it completely. -/
+theorem plantedPoly_frame_profile {π : O} (hπ : Irreducible π) {N r : ℕ} (hN : 1 ≤ N)
+    (L : Finset (ℕ × ℕ × ResidueField O))
+    (hLchild : ∀ p ∈ L, 2 ≤ p.1 ∧ 1 ≤ p.2.1 ∧ p.2.2 ≠ 0)
+    (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
+    (Qc : ClusterState O r N)
+    {k' : ℕ} {z' : ResidueField O} (hz' : z' ≠ 0) {w' : O} (hw' : residue O w' = z')
+    (μ' : {x : ℕ × ℕ × ResidueField O // x ∈ L} → ℕ)
+    (hown : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L},
+      p.1.2.1 = k' → p.1.2.2 = z' → μ' p = p.1.1)
+    (hfor : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L},
+      ¬ (p.1.2.1 = k' ∧ p.1.2.2 = z') → μ' p = 0)
+    (A : ℕ)
+    (hA1 : ∀ j < A, π ^ (betaContent Qc k' + 1) ∣
+      ((monicPoly (classSect O r N Qc.1)).comp (C (π ^ k') * (X + C w'))).coeff j)
+    (hA2 : ¬ π ^ (betaContent Qc k' + 1) ∣
+      ((monicPoly (classSect O r N Qc.1)).comp (C (π ^ k') * (X + C w'))).coeff A) :
+    (∀ j, π ^ ((∑ p ∈ L, p.1 * min p.2.1 k') + betaContent Qc k') ∣
+        ((plantedPoly π L bb Qc).comp (C (π ^ k') * (X + C w'))).coeff j) ∧
+      (∀ j < (∑ p ∈ L.attach, μ' p) + A,
+        π ^ ((∑ p ∈ L, p.1 * min p.2.1 k') + betaContent Qc k' + 1) ∣
+          ((plantedPoly π L bb Qc).comp (C (π ^ k') * (X + C w'))).coeff j) ∧
+      ¬ π ^ ((∑ p ∈ L, p.1 * min p.2.1 k') + betaContent Qc k' + 1) ∣
+          ((plantedPoly π L bb Qc).comp (C (π ^ k') * (X + C w'))).coeff
+            ((∑ p ∈ L.attach, μ' p) + A) := by
+  classical
+  have hb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L},
+      ∀ i, classSect O p.1.1 N (bb p).1 i ∈ maximalIdeal O :=
+    fun p i => mem_maximalIdeal_classSect hN (bb p) i
+  set F : {x : ℕ × ℕ × ResidueField O // x ∈ L} → Polynomial O :=
+    fun p => (alphaParent π (classSect O p.1.1 N (bb p).1) p.1.2.1
+      (resSect O p.1.2.2)).comp (C (π ^ k') * (X + C w')) with hFdef
+  have h1 : ∀ p ∈ L.attach, ∀ j, π ^ (p.1.1 * min p.1.2.1 k') ∣ (F p).coeff j :=
+    fun p _ j => pow_min_dvd_coeff_recentre_alphaParent _ _ _ _ _ j
+  have h2 : ∀ p ∈ L.attach, ∀ j < μ' p,
+      π ^ (p.1.1 * min p.1.2.1 k' + 1) ∣ (F p).coeff j := by
+    intro p _ j hj
+    by_cases hcase : p.1.2.1 = k' ∧ p.1.2.2 = z'
+    · obtain ⟨hk, hzz⟩ := hcase
+      rw [hown p hk hzz] at hj
+      subst hk
+      rw [Nat.min_self]
+      exact (planted_frame_own hπ (hb p) (residue_resSect O p.1.2.2)
+        (hw'.trans hzz.symm)).1 j hj
+    · rw [hfor p hcase] at hj
+      omega
+  have h3 : ∀ p ∈ L.attach, ¬ π ^ (p.1.1 * min p.1.2.1 k' + 1) ∣ (F p).coeff (μ' p) := by
+    intro p _
+    by_cases hcase : p.1.2.1 = k' ∧ p.1.2.2 = z'
+    · obtain ⟨hk, hzz⟩ := hcase
+      rw [hown p hk hzz]
+      subst hk
+      rw [Nat.min_self]
+      exact (planted_frame_own hπ (hb p) (residue_resSect O p.1.2.2)
+        (hw'.trans hzz.symm)).2
+    · rw [hfor p hcase]
+      exact coeff_zero_recentre_alphaParent_not_dvd hπ (hb p)
+        (residue_resSect O p.1.2.2) (hLchild p.1 p.2).2.2 hw' hz'
+        (fun hcon => hcase ⟨hcon.1.symm, hcon.2.symm⟩)
+  obtain ⟨g1, g2, g3⟩ :=
+    coeff_level_prod_trailing hπ L.attach F (fun p => p.1.1 * min p.1.2.1 k') μ' h1 h2 h3
+  have hQ1 := pow_content_dvd_coeff_recentre hπ Qc k' (proj_classSect O r N Qc.1) w'
+  have hkey := coeff_level_mul_trailing hπ g1 g2 g3 hQ1 hA1 hA2
+  have hsum : (∑ p ∈ L.attach, p.1.1 * min p.1.2.1 k') = ∑ p ∈ L, p.1 * min p.2.1 k' :=
+    Finset.sum_attach L (fun q => q.1 * min q.2.1 k')
+  rw [hsum] at hkey
+  rw [plantedPoly_comp]
+  exact hkey
+
+end Profile
+
 end Uniformity.Density.Induction
 
-/-! ## Axiom footprint (§1–§3) -/
+/-! ## Axiom footprint (§1–§4) -/
 
 section AxCheck
 
@@ -396,5 +532,8 @@ section AxCheck
 #print axioms Uniformity.Density.Induction.plantedPoly_comp
 #print axioms Uniformity.Density.Induction.planted_frame_own
 #print axioms Uniformity.Density.Induction.isCoprime_X_pow_of_coeff_zero_ne_zero
+#print axioms Uniformity.Density.Induction.abscissa_unique
+#print axioms Uniformity.Density.Induction.exists_cofactor_abscissa
+#print axioms Uniformity.Density.Induction.plantedPoly_frame_profile
 
 end AxCheck
