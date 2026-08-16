@@ -4144,7 +4144,7 @@ and constructed PARI-valid keys refute it on both axes — `e₁ = 4` (`Φ′ = 
 false while the RHS holds at `μ₂ ∈ {3,4}`) and `e₁ = 3` (`Φ′ = x³ − 13`/ℤ₁₃,
 `ĉ₀ = 2`, PARI `(3,2)`: the top census is the single unit-DEPENDENT merged digit
 `(b₃ĉ₂² + μ₂(μ₂−1)ĉ₀)ĉ₂π^{3v₂} = 13⁴`, dead, while `13 ∤ b₂ = 3`). Machine record:
-`verification/openmath/bs2_lawbs2_cert.py`, BS2-STUBGAP (GREEN 662/0). **Do NOT
+`verification/openmath/bs2_lawbs2_cert.py`, BS2-STUBGAP (GREEN 666/0). **Do NOT
 consume this axiom.** The fleet's promotion path: add `he₁ : F.e₁ = 2` and
 `hf₂ : T.f₂ = 2` (all other binders verbatim); the narrowed statement is PROVED at
 corpus grade in `lean/notes/openmath/LAWBS2_PROOF_2026-08-16.md` (it covers `μ₂ ≥ 2`,

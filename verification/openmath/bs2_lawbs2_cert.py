@@ -518,6 +518,14 @@ def main():
     sigs = gp_sig_batch([(PHI2, 5, 'p32')])
     chk('PROBE', sigs['p32'] == ((2, 3),),
         'P32 key PARI (e,f): %s' % (sigs['p32'],))
+    # frozen measured records (the note's Sec 7.3 claims, machine-backed):
+    # slot dicts, the number of slots, and the Theta-carrier locations.
+    p32_frozen = {
+        3: ({(0, 0): 40625, (0, 2): 75, (1, 1): -625},
+            {(0, 0), (0, 2)}),
+        4: ({(0, 0): 118750, (0, 1): 625, (0, 2): 150, (1, 0): -9375,
+             (1, 1): -1750}, {(0, 0), (0, 2), (1, 1)}),
+    }
     for mu2 in (3, 4):
         fr = mkframe('P32m%d' % mu2, 5, PHI1, 1, 2, 1, 3, mu2, 3, PHI2)
         f = ppow(fr.PHI2, mu2)
@@ -531,6 +539,14 @@ def main():
         got = fr.slotdict(sh[js])
         pn = fr.pin(sh[js])
         att = (pn == fr.theta(js))
+        dict_want, carriers_want = p32_frozen[mu2]
+        chk('PROBE', got == dict_want,
+            '%s frozen dict: got %s want %s' % (fr.name, got, dict_want))
+        carriers = {s for s, v in got.items()
+                    if fr.ee * vp(v, fr.p) + fr.w(*s) == fr.theta(js)}
+        chk('PROBE', carriers == carriers_want and att,
+            '%s Theta-carriers: got %s want %s (att %s)'
+            % (fr.name, sorted(carriers), sorted(carriers_want), att))
         print('  %s: j*=%d pin=%s theta=%d att=%s pair-or-triple=%s '
               'dict=%s'
               % (fr.name, js, pn, fr.theta(js), att, law_want(fr),

@@ -6646,6 +6646,19 @@ DESCRIPTIVE, verbatim gate); PA-3(i) (the czar assignment this section discharge
 > `leanfinal/Uniformity/ChapC/C109_REFUTATION.lean.txt`, `C111_C114_REFUTATION.lean.txt`.
 > Full record: the A-§ block, entry **A-C.2**.
 
+> ⚠ **[AMENDED: A-C.3, 2026-08-16 — the C.114 realizes-refinement RE-SIGN; the A-C.2 block
+> is LIFTED.]** `ht_branch`/`ht_global` are back, at the refined stratum, with A-C.2's
+> designed clause list itself REPAIRED in two places by the certification that ran first
+> (`verification/c114_ac3_stratum_check.py`, 63 checks, exit 0): **D5** the recentring must
+> be by a member of a system of representatives (the designed `s`-pin alone lets `∃ K` roam
+> the lifts and over-counts: 324 vs 216), and **D6** `EFF.W12.85`'s per-node nonnegativity
+> is FALSE at multi-child nodes, so `hnode` is CARRIED (C.111's rider records the
+> corpus-side gap; the same rider corrects A-C.2's "discharged by the fleet's bijection"
+> reading). Certified regime: depth ≤ 2 chains and depth-0 nodes at `q = 2,3`, plus the
+> two-branch global law; the multi-child regime under `hnode` is CERTIFIED-OPEN. Machine
+> separation of the A-C.2 refutation geometries: `leanspec/C114_AC3_SEPARATION.lean.txt`.
+> Full record: the A-§ block, entry **A-C.3**.
+
 > **Design note.** `EFF.W12.83`–`.87` at exactly corpus strength (C-H7): per-member at
 > explicit `N` (GC-9.3 — no uniform-`N` law), σ through `monicFactors` at every-lift
 > strength where the corpus certifies "for every disc-nonzero lift" (the GC-9.1 divergence,
@@ -7029,6 +7042,28 @@ realized nodes, and keeps the telescope over the parent map as this node's conte
 DROPPED as dead weight (the A-F.12 minimality rule: never instantiable content). The
 multiplication-bijection engine and the set-level fiber assembly remain the BOOKED
 B.37–B.40 weighted-grading RE-PLAN (the node's own DEPENDS expected it) — recorded].
+
+> ⚠ **A-C.3 RIDER (2026-08-16) — FINDING D6: `hnode` IS NOT DISCHARGEABLE IN GENERAL, so
+> A-C.2's "discharged by the fleet's bijection at realized nodes" is CORRECTED to a scope
+> condition.** On the corpus's OWN `B_v`/`D_u` definitions, a node whose repeated-linear
+> children EXHAUST it (`Σ_u m_u = m_v`) with `r ≥ 2` children satisfies, at a one-sided
+> node of slope `s`,
+> `B_v(N) − Σ_u D_u(N) = −s·(m_v² − Σ_u m_u²)/2 < 0` for **every** `N`
+> (certified at four shapes; the `B_v` side is brute-force confirmed — the `q = 3`,
+> `m = 4`, slope-1 root cell has exactly `3^6 = 729` members at `N = 5`, matching
+> `B = 6`, while each child's ambient conservative cell has `3^5 = 243`, so
+> `#E_v = #U_v · 243²` is arithmetically impossible). Such nodes are REALIZABLE (the
+> A-C.3 certification enumerates them: true counts 243, 486, 128 against the formula's
+> 9, 108, 32), so `EFF.W12.85`'s *"In particular, the exponent is a nonnegative integer;
+> divisibility … is a consequence of the bijection, not an assumption"* is FALSE as
+> stated, and its step-3 fiber decomposition fails there. Consequences: (i) `hnode` at
+> C.111 and at C.114 is a genuine SCOPE hypothesis — a fleet unit that "discharges" it
+> from the bijection would be proving something false; (ii) the corpus-side gap is
+> recorded for chapter I / the source ledger, NOT patched here (no node invents a
+> corrected fiber law); (iii) every corpus instance actually exercised
+> (`EFF.W12.87`'s consumer sweep: W12-L0, W12-L1, the cubic consumers, the discharge
+> instance) has at most ONE child per node, which is exactly why the defect was never
+> hit — `B_root = D_child` there, the `#U_v = 1` boundary case.
 ```lean
 namespace Uniformity.Density.Tower
 
@@ -7186,25 +7221,30 @@ B.55/B.58").
 
 ### NODE C.114 [theorem] [fresh] — **TERMINAL SUPPLY: THE COUNT LAW**
 
-> ⚠ **[BLOCKED: A-C.2, 2026-08-16 — the two count axioms are WITHDRAWN from the leanspec
-> bank; the node awaits the realizes-refinement re-sign (A-C.3 target).]** As frozen, BOTH
-> `ht_branch` and `ht_global` are machine-refuted
-> (`leanfinal/Uniformity/ChapC/C111_C114_REFUTATION.lean.txt`): the stratum reads NONE of
+> ⚠ **[RE-SIGNED: A-C.3, 2026-08-16 — the realizes-refinement. The A-C.2 BLOCK is LIFTED:
+> both count axioms are back in the leanspec bank, at a signature whose certification leg
+> ran BEFORE the signing (`verification/c114_ac3_stratum_check.py`, 63 checks, exit 0).]**
+> As frozen at A-C.1, BOTH `ht_branch` and `ht_global` were machine-refuted
+> (`leanfinal/Uniformity/ChapC/C111_C114_REFUTATION.lean.txt`): the stratum read NONE of
 > `kappa`, `kappa0`, `s`, the non-root `sideType`s, nor the child-completeness of the
 > tree, while the formulas read all of them — one-node κ-separated trees (and the empty
-> shape at `κ₀`) give equinumerous strata with formula values `1` vs `2`. The A-C.1
-> signature note below had already BOOKED "the per-node residual-type/side-tag
-> refinements" to the fleet; the A-C.2 audit shows the booking is SIGNATURE-critical, not
-> proof-side. The A-C.2 record carries the designed clause list for the re-sign (per-node
-> `HTNode.WF`; per-node cell membership `G i ∈ htCell π (K i) (node i)`, subsuming the
-> polygon pins and pinning the types; the `s`-pin
-> `gaussVal (K i − K (t.parent i)) = (s_i : ℕ∞)`; sibling distinctness on a side;
-> child-count = the side type's repeated-linear count; the `(HT-orbit)` κ-rule at tree
-> level). `htRealizes`' polygon pin clause is separately re-signed NOW to the hull form
-> (C.108's D3 fix, mechanical), so downstream re-signs build on the faithful carrier. The
-> withdrawn signatures are preserved verbatim in the refutation record (`C114BranchFrozen`,
-> `C114GlobalFrozen`). Downstream consumers of the supply (chapter H's entry-law audits,
-> chapter I's count-side conditionality, §13's gates on `ht_branch`) inherit the BLOCK.
+> shape at `κ₀`) gave equinumerous strata with formula values `1` vs `2`. A-C.2 withdrew
+> them and DESIGNED a clause list. **A-C.3's certification found the designed list itself
+> insufficient, in two independent ways** (full record in the A-§ block, entry A-C.3):
+> **D5** — the designed `s`-pin `gaussVal (K i − K (parent i)) = s_i` leaves the LIFT of
+> the residual root free above digit `s_i`, and `∃ K` then ranges over the lifts; the
+> corpus fixes one (`EFF.W12.84` step 2's *"Choose a lift `z̃`"*) and its
+> lift-independence is a claim about the COUNT, not the SET (the child's own polygon is
+> not invariant under a shift of valuation `s_i+1`). Measured: stratum 324 vs formula 216
+> at the q = 3 depth-2 chain. CURED by `IsRepSystem` — the key difference is `π^{s_i}`
+> times a member of a system of representatives; certified independent of the system, and
+> it IMPLIES the designed `s`-pin (`repRecentring_gaussVal`, machine-checked), which is
+> therefore not carried separately. **D6** — `EFF.W12.85`'s per-node nonnegativity is
+> FALSE at multi-child nodes (see the C.111 rider), so it is CARRIED here as `hnode`
+> (`t.NodeExponent N`), never derived. Separation of the two refutation geometries is
+> machine-checked in `leanspec/C114_AC3_SEPARATION.lean.txt`. Downstream consumers
+> (chapter H's entry-law audits, chapter I's count-side conditionality, §13's gates on
+> `ht_branch`) are UNBLOCKED, at the certified regime stated below.
 
 **STATEMENT.** *`(HT-branch)` and `(HT-global)` — the all-degree order-1 count law
 (= THEOREM W-12.A's effective statement).* Iterating C.112 over the finite tree
@@ -7220,50 +7260,130 @@ identities over `Coeff O n N`. Supplied to: chapter H's entry-law audits (CHAP-B
 routing — "counting level-`N` cells is chapters C/H's object … together with
 `LEMMA W12-HT`"), chapter I's count-side conditionality, and this chapter's §13 gates.
 
-**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; split → 2. The
-realization stratum is carried by the NEW `htRealizes` predicate (cluster factors `G` and
-recentered keys `K` per node: monic, degree `m_v·deg K_i`, exact `Pceil` pins, child
-clusters dividing parents, keys same-degree recenterings); the per-node residual-type/
-side-tag REFINEMENTS of the stratum are BOOKED as the fleet's realizes-refinement (they
-ride `htCell`, whose clauses the root already carries in `ht_branch`). `ht_global`'s branch
-instances (`IsDomain`/UFD/`Finite` on each `resField (Φb i)`) enter as explicit argument
-functions — all derivable from `hkeys`.]
+**CERTIFIED REGIME (read before consuming).** The re-signed axioms are certified by exact
+brute force at: depth 0 (`q = 2,3`; `m = 1,2`), depth-1 chains (`q = 2,3`; `m = 2,3`,
+including the corpus's own W12-L0 recovery row `(q−1)·(q−1)(q−2)/2·q^{2N−8}`), depth-2
+chains (`q = 2,3`), and the two-branch global law at `κ₀ ∈ {1,2}` — every instance exact,
+`stratum = formula`. The multi-child regime is **CERTIFIED-OPEN**: under `hnode` it needs
+`Σ_u m_u < m_v` and a window `N` far beyond brute-force range (the smallest such tree at
+`q = 3` needs `N ≥ 10` and a root cell of size `3^24`), and WITHOUT `hnode` it is measurably
+FALSE (finding D6). Consumers must not read the axioms as certified there.
+
+**SIGNATURE** [signed: A-C.1; **re-signed: A-C.3, 2026-08-16** — the realizes-refinement,
+elaborated in `leanspec/Leanspec/ChapC.lean`; split → 2 count axioms + the tree-coherence
+carriers. Every truth-bearing condition is an INLINE binder (the B.42 lesson: no section
+auto-inclusion, no bundle). **DECISION D-C.3-CARRIER:** the seven tree predicates and
+`IsRepSystem` are ANNEXED to this node rather than made a node of their own — unlike A-C.2's
+C.109a (≥ 3 consumers, independent B-layer character), these have exactly two consumers,
+both here, and no independent statement content. `ht_global`'s branch instances
+(`IsDomain`/UFD/`Finite` on each `resField (Φb i)`) stay explicit argument functions.]
 ```lean
 namespace Uniformity.Density.Tower
 
-def htRealizes (Φ f : Polynomial O) (t : HTTree) : Prop :=   -- [re-signed: A-C.2, pin → hull form]
-  ∃ (G K : ℕ → Polynomial O), K 0 = Φ ∧ G 0 = f ∧
-    ∀ i, i < t.nodes.length →
-      (G i).Monic ∧
-      (G i).natDegree = (t.nodes.getD i HTNode.default0).m * (K i).natDegree ∧
-      (∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
-        ((t.nodes.getD i HTNode.default0).Pceil j : ℕ∞) ≤ npHgt (K i) (G i) j) ∧
-      (∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
-        (t.nodes.getD i HTNode.default0).IsVertex j →
-        npHgt (K i) (G i) j = ((t.nodes.getD i HTNode.default0).Pceil j : ℕ∞)) ∧
-      (0 < i → G i ∣ G (t.parent i) ∧
-        (K i).natDegree = (K (t.parent i)).natDegree ∧
-        (K i - K (t.parent i)).natDegree < (K i).natDegree)
+-- [A-C.3] the tree-coherence carriers.  Full bodies at the leanspec twin (byte-fixed
+-- there); the load-bearing content of each, with its source, is:
+--   HTTree.IsDesc / HTTree.children / HTTree.SameHist  — the COMPLETE HISTORY comparison
+--     (subtree isomorphism, first-order: no nested-inductive history carrier needed)
+--   HTTree.KappaRule i   -- (HT-orbit) at tree level, DIVISION-FREE (C.112's precedent):
+--     κ_v · ∏_H (r_{v,H})! = ∏_{(S,a)} (r_{v,S,a})!        [EFF.W12.83]
+--   HTShape.Kappa0Rule   -- the same at level 0                [EFF.W12.83]
+--   HTShape.IsSlotAssign -- the letter-free shape's slot ∃ (what κ₀ counts)
+--   HTTree.NodeWF / .Conservative / .ChildComplete / .OrderOne / .WindowVisible
+--   HTTree.NodeExponent N -- hnode, CARRIED not derived              [D6, EFF.W12.85]
+--   IsRepSystem R d       -- "Choose a lift z̃"                      [D5, EFF.W12.84]
 
--- [A-C.2] `theorem ht_branch` / `theorem ht_global` WITHDRAWN — machine-refuted as frozen
--- (`C111_C114_REFUTATION.lean.txt`); re-sign pending the realizes-refinement (A-C.3).
--- The withdrawn binder lists are preserved verbatim in the refutation record.
+def htRealizes (π : O) (Φ f : Polynomial O) (t : HTTree) (R : Set (Polynomial O)) : Prop :=
+  ∃ (G K : ℕ → Polynomial O)
+    (instD : ∀ i, IsDomain (resField (K i)))
+    (instU : ∀ i, UniqueFactorizationMonoid (resField (K i))),
+    K 0 = Φ ∧ G 0 = f ∧
+    (∀ i, i < t.nodes.length → IsKey (K i)) ∧
+    (∀ i, i < t.nodes.length →
+      letI := instD i
+      letI := instU i
+      G i ∈ htCell π (K i) (t.nodes.getD i HTNode.default0)) ∧      -- subsumes the pins
+    (∀ i, 0 < i → i < t.nodes.length →
+      G i ∣ G (t.parent i) ∧
+      (K i).natDegree = (K (t.parent i)).natDegree ∧
+      (K i - K (t.parent i)).natDegree < (K i).natDegree ∧
+      ∃ z ∈ R, gaussVal z = 0 ∧                                     -- [D5] the lift
+        K (t.parent i) - K i
+          = Polynomial.C (π ^ (t.nodes.getD i HTNode.default0).s) * z) ∧
+    (∀ i i', 0 < i → 0 < i' → i < t.nodes.length → i' < t.nodes.length → i ≠ i' →
+      t.parent i = t.parent i' →
+      (t.nodes.getD i HTNode.default0).s = (t.nodes.getD i' HTNode.default0).s →
+      gaussVal (K i - K i') = ((t.nodes.getD i HTNode.default0).s : ℕ∞))  -- siblings
+
+theorem ht_branch [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (hπ : Irreducible π) {Φ : Polynomial O} (hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)] [Finite (resField Φ)]
+    (R : Set (Polynomial O)) (hR : IsRepSystem R Φ.natDegree)
+    (t : HTTree) (N : ℕ) (hroot : 0 < t.nodes.length)
+    (hwf : t.WF) (hnodewf : t.NodeWF) (hcons : t.Conservative)
+    (hcompl : t.ChildComplete) (hfence : t.OrderOne) (hvis : t.WindowVisible N)
+    (hkappa : ∀ i, i < t.nodes.length → t.KappaRule i)
+    (hnode : t.NodeExponent N) :
+    Nat.card {c : Coeff O ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) N //
+        ∃ a : Fin ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) → O,
+          proj O ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) N a = c ∧
+          htRealizes π Φ (monicPoly a) t R}
+      = htBranchCount (Nat.card (resField Φ))
+          (fun lam => sideCensus (resField Φ) lam) t N
+
+theorem ht_global [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (hπ : Irreducible π)
+    (S : HTShape) (Φb : ℕ → Polynomial O) (n N : ℕ)
+    (hn : n = …)                                     -- (as at A-C.1, verbatim)
+    (hkeys : ∀ i, i < S.branches.length → IsKey (Φb i) ∧ (Φb i).natDegree = d_i)
+    (hdistinct : ∀ i j, i < S.branches.length → j < S.branches.length → i ≠ j →
+        (Φb i).map (IsLocalRing.residue O) ≠ (Φb j).map (IsLocalRing.residue O))
+    (R : ℕ → Set (Polynomial O))
+    (hR : ∀ i, i < S.branches.length → IsRepSystem (R i) (Φb i).natDegree)
+    (hbr : ∀ i, i < S.branches.length → (the eight branch-tree clauses at tree_i))
+    (hkappa0 : S.Kappa0Rule)
+    (instD instU instFin : …) :
+    Nat.card {c : Coeff O n N // ∃ a : Fin n → O, proj O n N a = c ∧
+        ∃ σ : ℕ → ℕ, S.IsSlotAssign σ ∧                 -- the letter-free assignment
+        ∃ G : ℕ → Polynomial O,
+          monicPoly a = ∏ i ∈ Finset.range S.branches.length, G i ∧
+          ∀ i, i < S.branches.length → (G i).Monic ∧
+            (G i).map (IsLocalRing.residue O)
+              = ((Φb i).map (IsLocalRing.residue O)) ^ m_{σ i} ∧
+            (m_{σ i} = 1 ∨ htRealizes π (Φb i) (G i) tree_{σ i} (R i))}
+      = htGlobalCount S (residueCard O) (fun i lam => sideCensus (resField (Φb i)) lam) N
 ```
+(the `…` elisions are byte-fixed at the leanspec twin, which is the contract; the elided
+text is unchanged from the A-C.1 signature preserved in `C111_C114_REFUTATION.lean.txt`.)
 
-**DEPENDS.** C.107–C.113.
+**DEPENDS.** C.107–C.113 (+ C.109a through C.109).
 
 **PROOF.** telescope over the tree (every non-root occurs once as a child — `−D_v` once;
 every node contributes `B_v`, censuses, `κ_v` once); level 0 by the branch-independence
-(B.48's coprime dissection at level 0) + the assignment count.
+(B.48's coprime dissection at level 0) + the assignment count. **A-C.3 rider on the route:**
+the corpus's step-3 fiber decomposition is the step D6 refutes at multi-child nodes; under
+`hnode` the fleet must still supply it, and the honest reading of `hnode` is a SCOPE
+condition, not a lemma to be discharged (C.111's rider).
 
-**SIZE.** 2 × ~30 lines.
+**SIZE.** 2 × ~40 lines (+ the carriers, ~60).
 
-**SOURCE.** `EFF.W12.83` (the displays, verbatim); `.86` step 6; `.87` ("W-12.A regains
-full order-1 coverage: its controlling formula is (HT-global) … the former display is the
-depth-zero specialization").
+**SOURCE.** `EFF.W12.83` (the displays, verbatim; the κ/κ₀ factorial rules; "the actual
+DISTINCT irreducibles `P̄_i`"; "children are precisely the repeated linear factors … on
+`e = 1` sides"; the order-≥2 fence); `.84` step 2 (**[A-C.3/D5]** *"Choose a lift `z̃`, put
+`Ψ = Φ − z̃π^k`"*, verbatim); `.85` steps 3–4 (**[A-C.3/D6]** the nonnegativity claim —
+REFUTED at multi-child nodes, hence carried; step 4's "its repeated roots are distinguished
+by their values" for sibling distinctness); `.86` step 6; `.87` ("W-12.A regains full
+order-1 coverage …").
 
 **TEETH.** the N1 certificate (1,196 per-key comparisons, 0 mismatches) → **executable
-regression** retained; GC-11 extra-force gates at §13 (C.116's disposition).
+regression** retained; GC-11 extra-force gates at §13 (C.116's disposition);
+**[A-C.3]** `verification/c114_ac3_stratum_check.py` (63 checks, exit 0) → **executable
+regression**: per-clause teeth kill for `WF`, `Conservative`, `ChildComplete`, `KappaRule`,
+`WindowVisible`, `NodeExponent`, `IsRepSystem`, the non-root side-type pin, the slot-`∃`,
+`Kappa0Rule` and `hdistinct`; the `s`-pin is SUBSUMED by `IsRepSystem` (machine-checked)
+and sibling distinctness is subsumed in the reachable geometries by the parent's side-type
+pin (both REPORTED as flagged, not silently kept); `OrderOne` is a SCOPE fence with no
+truth tooth in the grid — flagged. Machine separation:
+`leanspec/C114_AC3_SEPARATION.lean.txt`.
 
 **ENVIRONMENT.** ENV-C3.
 
@@ -7335,6 +7455,15 @@ comments on `kappa`/`sideType`, per the Phase-B consumer contract).
 **[UPDATED: A-C.2** — the manifest gains `#check @HTNode.WF` (well-formedness is now
 MANDATORY on every count law) and loses `#check @ht_branch`/`@ht_global` (WITHDRAWN at
 C.114's block; the lines are replaced by the withdrawal comment).]
+**[UPDATED: A-C.3, 2026-08-16** — `#check @ht_branch`/`@ht_global` RESTORED (re-signed),
+and the Phase-B consumer contract of clause (ii) is EXTENDED: a history-resolved order-1
+menu entry must now also implement the RULES that pin the two orbit tags and the history
+data, so the manifest gains `#check @HTTree.KappaRule`, `@HTShape.Kappa0Rule`,
+`@HTTree.SameHist`, `@HTTree.ChildComplete`, `@HTTree.NodeExponent` and `@IsRepSystem`.
+Reason, stated for the transcriber: `kappa`/`kappa0` were FREE data fields and that freedom
+is exactly the A-C.2 refutation; `NodeExponent` is a SUPPLY obligation of the menu entry,
+not a derivable fact (finding D6); `IsRepSystem` makes the recentring lift DATA (finding
+D5). Retaining the tags without their rules is no longer contract-compliant.]
 
 **DEPENDS.** C.108 · C.114.
 
@@ -8271,7 +8400,11 @@ proof note, verifier-passed, every display machine-certified bit-exact). C.128 i
 at a CERTIFIED-OPEN source (OM-10 §2.2, 7/7 frames, two primes) — it is a LAW CANDIDATE
 whose Lean proof would be new mathematics; the fleet may prove it or leave it standing
 as the chapter's honest conditional, but MUST NOT widen it (its TEETH row records a
-refuted wider candidate).
+refuted wider candidate). *[UPDATE 2026-08-16, unit C.128: the asymmetry is closed —
+C.128 is now PROVED at its geography pin (`e₁ = f₂ = 2`, the entire certified surface;
+`lean/notes/openmath/LAWBS2_PROOF_2026-08-16.md`), and the UN-pinned stub reading is
+REFUTED on two constructed `D′`-axes — see the node's GEOGRAPHY PIN and STUB REPAIR
+FLAG.]*
 
 ---
 
@@ -8327,7 +8460,7 @@ the statement over `j′`.
 
 ---
 
-### NODE C.128 [law-candidate] [fresh] [signed: A-C.4] — **LAW B-S2: the P-BINOM cascade pair-or-triple attainment law**
+### NODE C.128 [theorem] [fresh] [signed: A-C.4; PROVED 2026-08-16 at the pinned geography, unit C.128] — **LAW B-S2: the P-BINOM cascade pair-or-triple attainment law**
 
 **STATEMENT.** At the cascade geography — `e₂(f₂ − t*) = 1` with `ψ₂.coeff t* ≠ 0` and
 the `t*`-entry carrying `x`-power exactly 1 (`slotIdx ((f₂ − t*)·u₂) = 1`), `f₁ = 1`,
@@ -8335,11 +8468,28 @@ the `t*`-entry carrying `x`-power exactly 1 (`slotIdx ((f₂ − t*)·u₂) = 1`
 (`TouchCert` at `j* = (μ₂ − 2) + (2e₂t* + 1)/(e₂f₂)`) **iff**
 `p ∤ binom(μ₂,2)` **or** `p ∤ binom(μ₂,3)` (`p = ringChar` of the residue field): the
 height-`Θ_{j*}` graded layer is carried by the PAIR and TRIPLE diagonal slots only.
+**[GEOGRAPHY PIN — 2026-08-16, unit C.128: `e₁ = 2` AND `f₂ = 2` are REQUIRED
+hypotheses.** The un-pinned reading (`D′`, `f₂` free, as in the elaborated stub) is
+REFUTED by two constructed key families: `D′ = 4` (`Φ′ = x⁴ − 5`/ℤ₅, PARI `(4,2)`: the
+top band is EMPTY — no wrap seed climbs 1 `Y`-power per 4 `x`-powers — so `TouchCert`
+fails while the RHS holds at `μ₂ ∈ {3,4}`) and `D′ = 3` (`Φ′ = x³ − 13`/ℤ₁₃, `ĉ₀ = 2`,
+PARI `(3,2)`: the census is the SINGLE unit-DEPENDENT merged digit
+`(b₃ĉ₂² + μ₂(μ₂−1)ĉ₀)ĉ₂π^{3v₂}`, dead at `(1 + 12)·13³ = 13⁴` while `13 ∤ b₂ = 3`).
+Machine: `verification/openmath/bs2_lawbs2_cert.py` BS2-STUBGAP, 16 hard rows. The
+pinned geography contains the ENTIRE certified surface. The `(1,0)` slot digit is the
+MIXED integer `M = b₃ − (μ₂−1)b₂`, congruent to `b₃` exactly when `p ∣ b₂` — the
+pair-or-triple reading is verdict-exact, not slot-exact.]**
 
-**GRADE.** CERTIFIED-OPEN (OM-10 §2.2: 7/7 — B3/B4/B5 at `q = 2`, BP3/BP4/BP5/BP6 at
-`q = 3`; BP3 reproduces the GENTOW6_PROOF r1 bracket record bit-exactly). NOT proved;
-NOT consumed by any committed node; the fleet's cite-vs-prove choice per the 2026-08-15
-sign-off scope.
+**GRADE.** **PROVED at the pinned geography** (`e₂ = 1`, `e₁ = f₂ = 2`; any complete
+DVR, any one-sided degree-2 key including non-binomial `κ₁ ≠ 0`, any on-side units, any
+odd `h`, `μ₂ ≥ 2`): `lean/notes/openmath/LAWBS2_PROOF_2026-08-16.md`, every display
+machine-certified BEFORE composition (`bs2_lawbs2_cert.py` GREEN 666/0, 6/6 teeth,
+47 binomial + 6 `κ₁ ≠ 0` frames bit-exact, incl. BP9/F5m5/F5m6 — the first `p = 3` and
+`p = 5` non-attainment rows). *Historical (superseded): signed 2026-08-16 as
+CERTIFIED-OPEN at OM-10 §2.2's 7/7 (B3/B4/B5 at `q = 2`, BP3–BP6 at `q = 3`; BP3
+reproduces the GENTOW6_PROOF r1 bracket record bit-exactly).* The `f₂ ≥ 3` slice
+remains measured-open (P32 probe: structurally different Θ-layer census, verdicts
+agreeing on the probe rows); the lower-coordinate rider of HYP.79 remains open.
 
 **SIGNATURE** [signed: A-C.3 — elaborated in `leanspec/Leanspec/ChapC.lean`, section
 `AC4Laws`]. One axiom-stub: `lawBS2_pair_or_triple`, stated as a `TouchCert` iff — the
@@ -8347,15 +8497,26 @@ attainment predicate is C.74's existing definition, no new carrier.
 
 **DEPENDS.** C.15 (`slotIdx`) · C.42/C.43 · C.44 · C.71 · C.74 (`TouchCert`).
 
-**PROOF.** open (law candidate). The certified route: the k-diagonal extraction
-branches at the `e₂(f₂ − t*) = 1` geography carry digits `~ binom(μ₂,k)`; the measured
-tables kill every `k ≥ 4` branch (see TEETH); a proof must show the `k ≥ 4` branches
-land strictly above the floor in general — the LAW E-W seed calculus (C.127's Step 3
-census) is the expected instrument, one Φ₂-division deeper.
+**PROOF.** transcribe `lean/notes/openmath/LAWBS2_PROOF_2026-08-16.md` (PROVED at the
+geography pin; adversarially verified — see the note's header): the pure power's
+development identity births one wrap seed per over-grid diagonal per `Φ′`-depth
+(C.127's Step 1 run on the power's own multinomial expansion); the weight grading makes
+depth-`j` seeds sit at layer `μ₂E₂ + jδ`; the top-band chain lemma
+(`R_{μ₂−1}(Y^{2μ₂−2}) = 1`, `R_{μ₂−1}(Y^{2μ₂−1}) = Y − (μ₂−1)P`, zero below) filters
+the census to exactly PAIR (`l = 2`, depth 1), TRIPLE (`l = 3`, depth 1), QUAD (`l = 4`,
+depth 2 — the B4 mechanism, see TEETH); the exact dict `{(0,1): b₂ĉ₂²π^{2v₂}, (1,0):
+Mĉ₂³π^{3v₂}, (0,0): b₄ĉ₂⁴π^{4v₂} − κ₁b₃ĉ₂³π^{3v₂}}` plus the on-side height arithmetic
+give the iff; the congruence swap `p ∣ b₂ ⇒ M ≡ b₃ (mod p)` converts to the
+pair-or-triple form. Lean route: C.127's landed `devQ` API covers the chain layer; the
+weight calculus is BLOCKED on the same missing `stageHeight`-of-a-monomial layer as
+`lawEW_pin` (`leanfinal/notes/C127_PIN_BLOCKED_2026-08-16.md`) — the two nodes share
+their Lean bottleneck.
 
-**SIZE.** statement 12 lines; proof unsized (open).
+**SIZE.** statement 12 lines + the pin; note proof ~1 page; Lean unsized (blocked as
+above).
 
-**SOURCE.** OM-10 §2.2 (LEG B, `om10_cert.py` B-LAW 7/7); upstream THEOREM
+**SOURCE.** `lean/notes/openmath/LAWBS2_PROOF_2026-08-16.md` (the theorem + §9's
+certification record); OM-10 §2.2 (LEG B, `om10_cert.py` B-LAW 7/7); upstream THEOREM
 GENTOW-6.5(a)/(b) at the BOXES note's 0/2 grade.
 
 **TEETH** (preserved VERBATIM from OM-10 §2.2, per the conversion unit's charge):
@@ -8366,6 +8527,28 @@ GENTOW-6.5(a)/(b) at the BOXES note's 0/2 grade.
 Plus the OM-10 LEG B teeth T-B-COEF (the `μ₂`-for-`binom` mutant) and T-B-ALLM (the
 always-attains mutant, killed at all 5 `p ∣ binom` frames). Any fleet proof attempt
 that derives an "any-k" statement has re-proved a REFUTED claim and must stop.
+**[MECHANISM — 2026-08-16, unit C.128: the refutation is EXPLAINED, not just recorded.**
+The `l`-diagonal must climb `l − 2` `Y`-powers to reach the top band; each wrap converts
+two `x`-powers into one `Y`-power, so `⌊l/2⌋ ≥ l − 2` ⟺ `l ≤ 4`: `k ≥ 5` diagonals
+NEVER appear at the top coordinate (measured: no trace at any height), and the `k = 4`
+diagonal reaches ONLY at full wrap depth 2, i.e. at layer `μ₂E₂ + 2δ` — slot height
+`Θ + δ + ee·v(b₄)`, strictly above the floor EVEN WHEN `b₄` is a unit. B4's measured
+`pin = 8 = Θ + 1` IS the quad's depth-2 layer at `δ = 1` (its `(0,0)` slot value is the
+unit digit `16`). The floor-loss is paid in WRAP DEPTH, not digit valuation. New teeth:
+T-BS2-QUAD (any-k mutant killed at B4/B5/F5m6 + the B4 pinpoint), T-BS2-WDEPTH
+(depth-blind weight mutant), T-BS2-MIX (naive-`b₃` digit: `−27` vs measured `135` at
+BP3), T-BS2-SIGN, T-BS2-OMEGA (the top census is `ω`-free, a lower coordinate is not),
+T-BS2-TAU (the binomial dict fails at every `κ₁ ≠ 0` key; the refined `(0,0)` display
+is exact).]**
+
+**STUB REPAIR FLAG (2026-08-16, unit C.128 — flagged, NOT executed).** The elaborated
+stub `lawBS2_pair_or_triple` (leanspec `AC4Laws`) leaves `F.e₁` and `T.f₂` free and is
+therefore FALSE as stated (the STATEMENT's geography-pin refutations, BS2-STUBGAP). The
+promotion path for the C fleet: add `he₁ : F.e₁ = 2` and `hf₂ : T.f₂ = 2`, every other
+binder verbatim (`hslot` stays — an `x`-free `t*`-entry makes the pure power in-grid and
+the shadow empty; `hμ₂ : 3 ≤ μ₂` may stay although the proof covers `μ₂ = 2`). Same
+failure genre as C.127's landed `j′ ≤ 1` scope-fence repair, caught here BEFORE
+transcription.
 
 **ENVIRONMENT.** ENV-C1.
 

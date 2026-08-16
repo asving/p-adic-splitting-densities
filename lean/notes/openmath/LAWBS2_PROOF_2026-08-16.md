@@ -16,7 +16,7 @@ census. Every display below was certified BEFORE this note was composed — the 
 top-coordinate slot dictionary, bit-exact on 47 binomial-key frames at `μ₂ = 2..9`,
 `p ∈ {2,3,5}`, `h ∈ {1,3}`, `ω ∈ {1,2}`, unit/sign sweeps, plus 6 non-binomial (`κ₁ ≠ 0`)
 frames with the refined display bit-exact — strictly beyond OM-10's sweep
-(`verification/openmath/bs2_lawbs2_cert.py`, GREEN 656/0, 6/6 teeth; §9).
+(`verification/openmath/bs2_lawbs2_cert.py`, GREEN 666/0, 6/6 teeth; §9).
 
 **Status: THEOREM (proved below) at the scope of §0 — `D′ = 2`, `f₂ = 2`, which contains
 the ENTIRE certified surface.** What it converts: HYP.79's cascade half and NODE C.128
@@ -89,9 +89,12 @@ the pure power is `H_{μ₂} = 1`, `H_j = 0` (`j < μ₂`), the discrepancy at `
 > (a slot is absent iff its displayed value is `0`; at the binomial subclass `κ₁ = 0`
 > the `(0,0)` slot is the pure quad digit, present iff `μ₂ ≥ 4`).
 >
-> **(ii) Heights.** `ht(0,1) = Θ_{j*} + ee·v(b₂)`, `ht(1,0) = Θ_{j*} + ee·v(M)`, and
-> `ht(0,0) ≥ Θ_{j*} + min(δ, 2v(κ₁) − h) ≥ Θ_{j*} + 1` — the `(0,0)` slot NEVER touches
-> the floor.
+> **(ii) Heights (of each PRESENT slot).** Whenever the respective displayed value is
+> nonzero — automatic for `(0,1)` and `(1,0)` in mixed characteristic (`b₂ ≠ 0 ≠ M` in
+> `ℤ` for `μ₂ ≥ 2`); in equal characteristic `p ∣ digit` makes the slot ABSENT instead,
+> with the same verdict in (iii) — `ht(0,1) = Θ_{j*} + ee·v(b₂)`,
+> `ht(1,0) = Θ_{j*} + ee·v(M)`, and `ht(0,0) ≥ Θ_{j*} + min(δ, 2v(κ₁) − h) ≥ Θ_{j*} + 1`:
+> a present `(0,0)` slot NEVER touches the floor (and an absent one a fortiori).
 >
 > **(iii) The law.** `pin(Δ_{μ₂−1}) = Θ_{j*}` ⟺ `p ∤ b₂ ∨ p ∤ M` ⟺
 > `p ∤ binom(μ₂,2) ∨ p ∤ binom(μ₂,3)` — i.e. `TouchCert T hπ μ₂ (μ₂−1)` iff the
@@ -289,9 +292,13 @@ Heights (Theorem (ii)), using `4v₂ + u₂ = 3u₂ − 2h = Θ_{j*}` and `6v₂
   when they collide, so in all cases
   `ht(0,0) ≥ Θ_{j*} + min(δ + 2v(b₄), (2v(κ₁) − h) + 2v(b₃)) ≥ Θ_{j*} + min(δ, 2v(κ₁) − h)
   ≥ Θ_{j*} + 1`, using `δ ≥ 1` (G4) and `2v(κ₁) − h ≥ 1` (G1). ∎
-  [Machine: binomial heights BS2-HT 124; `κ₁ ≠ 0` heights BS2-TAUH 6 (the min-formula,
-  equality on every measured row) + BS2-TAUG (every non-floor slot `≥ Θ + 1`) +
-  BS2-TAUR (the exact `(0,0)` value, from which the height is arithmetic).]
+  [Machine: binomial heights BS2-HT 124; `κ₁ ≠ 0` heights BS2-TAUH 6 — equality with
+  the min on every row whose two deposit valuations DIFFER, and the `≥ Θ + 1` bound on
+  the collision rows, where the height is `≥` the min and can strictly rise (measured:
+  T3m4 and T3m5 both collide at common deposit valuation `4`; T3m4's merged
+  `−243 = −3⁵` jumps a grade, T3m5's `−405 = −3⁴·5` stays at the min) — + BS2-TAUG
+  (every non-floor slot `≥ Θ + 1`) + BS2-TAUR (the exact `(0,0)` value, from which the
+  height is arithmetic).]
 
 **The law (Theorem (iii)).** `pin(Δ_{μ₂−1}) = Θ_{j*}` iff some slot sits at exactly
 `Θ_{j*}`; by (ii) only `(0,1)` and `(1,0)` can, and they do iff `v(b₂) = 0` resp.
@@ -385,12 +392,15 @@ kept in the battery's comments as the reason the refutation needed `p = 13`).
 
 **7.3 `f₂ = 3` at `D′ = 2` (frame P32: `Φ′ = x² − 5`, `Φ₂ = Φ′³ + 5xΦ′² + 5⁴x`, PARI
 `(2,3)`) — measured-open, structurally different.** Here `c₀` carries `x`
-(`slotIdx(3u₂) = 1`), and the measured top census at `μ₂ = 4` has FIVE slots including
-`Θ`-layer carriers at `(0,2)` (the pair digit, one `Y`-power up) AND at `(0,0)` (a
-`P·c₀`-cross family, `v = 5` at height `Θ`) — carriers the `f₂ = 2` law does not have.
-The verdicts AGREE with pair-or-triple on the two probe rows (`μ₂ = 3, 4`, both attain
-via the pair); no refutation is claimed, and no proof either: the `f₂ ≥ 3` slice is OPEN
-with a genuinely different Θ-layer census. [Machine: PROBE + printed dicts.]
+(`slotIdx(3u₂) = 1`), and the measured (frozen) top census has `Θ`-layer carriers the
+`f₂ = 2` law does not have: at `μ₂ = 3`, carriers `{(0,0), (0,2)}` — the `(0,2)` slot
+is the pair digit `75 = b₂·5²` one `Y`-power up, the `(0,0)` slot is a `P·c₀`-cross
+family value `40625 = 5⁵·13`; at `μ₂ = 4`, FIVE slots with THREE carriers
+`{(0,0), (0,2), (1,1)}` (`118750 = 2·5⁵·19`, `150 = b₂·5²`, `−1750 = −2·5³·7`). The
+verdicts AGREE with pair-or-triple on the two probe rows (both attain, the pair digit
+among the carriers); no refutation is claimed, and no proof either: the `f₂ ≥ 3` slice
+is OPEN with a genuinely different Θ-layer census. [Machine: PROBE 5 — key validity,
+the frozen dicts, and the carrier locations, hard-checked.]
 
 ---
 
@@ -445,16 +455,18 @@ is proved, at its certified geography.
 * `verification/openmath/om10_cert.py` LEG B (OM-10, committed): B-LAW 7/7, B-FLOOR,
   B-TOP, teeth T-B-COEF, T-B-ALLM; the sealed anchors.
 * `verification/openmath/bs2_lawbs2_cert.py` → `bs2_lawbs2_output.txt` (this unit):
-  **GREEN, 662 checks, 0 violations, 6/6 teeth killed** (script md5 `a6836f65…`, output
-  md5 `6014c118…`). Composition: BS2-ANCH 8 (om10 frame ties + BP3's sealed
+  **GREEN, 666 checks, 0 violations, 6/6 teeth killed** (script md5 `dae0e27c…`, output
+  md5 `59b479b2…`). Composition: BS2-ANCH 8 (om10 frame ties + BP3's sealed
   `{(0,1): 27, (1,0): 135}`); DUAL 61; BS2-STUBJ 47; BS2-FLOOR 262; **BS2-DICT 47**
   (the §4 dict bit-exact: B2–B8, BP2–BP9, F5m3–8, F5om3–5, H3m3–5 (`h = 3`,
   `Φ′ = x² − 8`), V2m3–4 (`v₂ = 2`), 18 unit-sweep frames — including BP9, F5m5, F5m6:
   the FIRST `p = 3` and `p = 5` non-attainment rows); BS2-HT 124 (binomial heights);
   BS2-LAW 53; BS2-SWAP 1 (integer grid `μ₂ ≤ 3000`, `p ≤ 199`); BS2-TAUG 18 +
   BS2-TAUR 12 + BS2-TAUH 6 (`κ₁ ≠ 0` frames T2m3–5, T3m3–5: Θ-layer graded-exact, the
-  full refined dict bit-exact, and the `(0,0)` height min-formula with equality);
-  BS2-STUBGAP 16 (P4 + D3 axes, PARI-validated); PROBE 1 (P32).
+  full refined dict bit-exact, and the `(0,0)` height min-formula — equality on the
+  valuation-distinct rows, `≥ Θ + 1` on the collision rows per §5); BS2-STUBGAP 16
+  (P4 + D3 axes, PARI-validated); PROBE 5 (P32: key validity + frozen dicts +
+  Θ-carrier locations).
 * Teeth: T-BS2-QUAD (the REFUTED any-k law fails at B4/B5/F5m6; B4's `(0,0)` pinpointed
   as unit `16` at `Θ+δ`), T-BS2-WDEPTH (depth-blind weight mutant), T-BS2-MIX (the
   naive-`b₃` digit, `−27` vs measured `135` at BP3), T-BS2-SIGN (`ĉ₂ ↦ −ĉ₂` flips
