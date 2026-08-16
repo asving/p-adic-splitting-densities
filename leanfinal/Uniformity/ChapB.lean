@@ -69,12 +69,16 @@ import Uniformity.ChapB.B59a
 import Uniformity.ChapB.B59b
 import Uniformity.ChapB.B60
 import Uniformity.ChapB.B61
+import Uniformity.ChapB.B63
 import Uniformity.ChapB.B63a
 import Uniformity.ChapB.B64
+import Uniformity.ChapB.B65
 import Uniformity.ChapB.B66
 import Uniformity.ChapB.B66a
+import Uniformity.ChapB.B67
 import Uniformity.ChapB.B69
 import Uniformity.ChapB.B70
+import Uniformity.ChapB.B72
 import Uniformity.ChapB.B73
 import Uniformity.ChapB.B74
 import Uniformity.ChapB.B75
@@ -83,4 +87,4 @@ import Uniformity.ChapB.B77a
 import Uniformity.ChapB.B77b
 import Uniformity.ChapB.B78
 
-/-! Chapter B roll-up — 74/86 base nodes landed (waves 1-14). §8-10 fan open behind the signed B.42 axiom. -/
+/-! ChapB roll-up — regenerated at fleet layer close 12. -/

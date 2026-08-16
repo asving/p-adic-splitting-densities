@@ -32,4 +32,4 @@ import Uniformity.ChapE.E53
 import Uniformity.ChapE.E54
 import Uniformity.ChapE.E59
 
-/-! Chapter E roll-up — 32/68 landed (waves 1-3). -/
+/-! ChapE roll-up — regenerated at fleet layer close 12. -/

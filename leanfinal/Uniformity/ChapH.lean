@@ -115,4 +115,4 @@ import Uniformity.ChapH.H109
 import Uniformity.ChapH.H110
 import Uniformity.ChapH.H111
 
-/-! Chapter H roll-up — 99/99 + witnesses + §17 waves 1-2 (H.100-H.111). -/
+/-! ChapH roll-up — regenerated at fleet layer close 12. -/
