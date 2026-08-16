@@ -9502,9 +9502,12 @@ disturb the S-1 fence (H.123) or any `GENIND-BOX-1`/H.98 gate; and it declares *
 2. **`leanspec/Leanspec/ChapH.lean`** — `LeanspecH17`: `uCluster_beta_leg` re-signed;
    `beta_content_census` (H.121d) and `alpha_geom_partial_le_third` (H.30b) added as stubs.
    `lake build Leanspec.ChapH` green.
-3. **`spec/DAG_BLUEPRINT_H.tsv`** — rows added for `BP.H.121d` and `BP.H.30b` and their
-   consumers; `BP.H.122 → BP.H.71` REMOVED (the route is closed), `BP.H.121 → BP.H.67` and
-   `BP.H.121 → BP.H.68` REMOVED (no longer consumed).
+3. **`spec/DAG_BLUEPRINT_H.tsv`** — **13 rows added, 3 removed** (file 486 → 496 lines).
+   Added: `BP.H.121 → BP.H.121d`, `BP.H.121 → BP.H.28`; the eight `BP.H.121d → …` DEPENDS rows
+   (H.106, H.108, H.109, H.110, H.111, H.112, H.117, H.118); `BP.H.122 → BP.H.30b`,
+   `BP.H.122 → BP.H.113`; and `BP.H.30b → BP.H.30` (the only added row outside §17's block).
+   Removed: `BP.H.122 → BP.H.71` (the route is closed), `BP.H.121 → BP.H.67` and
+   `BP.H.121 → BP.H.68` (no longer consumed by any clause). §17's own row count: 127 → 136.
 4. **`verification/AH6_beta_envelope_check.py`** — new, retained as a standing regression
    (exit 0 = CANDIDATE-0 stays refuted AND the re-signed envelope stays true); named in the
    TEETH of H.121 (iii), H.121d and H.30b.
