@@ -13,7 +13,7 @@ import Uniformity.ChapD.D62
 **D.62-adjacent appendix file** (the H09w/H73w/H89w precedent), landed by unit OM-8
 (`docs/openmath-campaign/OM-8_deep-twist_2026-08-16.md`; ledger rows HYP.57/HYP.63 — Display
 A's `∀ i ≥ 3 ((H-VARTHETA-RES)_i ∧ 𝒲_{≤i})` conjunct, consumed at the A-D.2 sitewise form
-per CHAP-I I.10's dated note). Four layers, all PROVED, Lean-core only:
+per CHAP-I I.10's dated note). Five layers (1, 2, 3, 3′, 4), all PROVED, Lean-core only:
 
 1. **The ϑ→τ reduction** (`hvarthetaRes_of_tau_letters`): the sitewise carrier at ANY datum
    `(N, v, ρ, q)` follows from the τ-letter law — every cocycle value `τ(sq, q)` has value
@@ -42,6 +42,10 @@ per CHAP-I I.10's dated note). Four layers, all PROVED, Lean-core only:
    the three letter-memberships that the corpus's node-point read supplies (`β_j` a
    `ψ_{j+1}`-root ∈ `K_{j+1}ˣ ⊆ K₃ˣ`; numerically certified at both characteristics,
    `verification/om8_vartheta_deep.py` LEGs B/C).
+3′. **The depth-2 model** (`deep2Section` + `deep2_tau_descent` + `hvarthetaRes_deep2`): the
+   `i = 2` transcription — `EFF.GENTOW2.42`'s γ-calculus ("the value-0 Laurent monomials
+   `x^i π^a Φ′^b` form exactly the group `⟨γ₁, γ₂⟩`") at exponent level, same descent, two
+   letters.
 4. **The `𝒲` interleaved-induction skeleton** (`Wle`, `wle_two`, `wle_of_interleaved`): the
    HYP.63 closure argument, abstractly. `Wle W n := ∀ q ∈ [3, n], W q` (byte-matching the
    leanspec D.55 carrier); `wle_two` is PROVED (the empty base — an `axiom` in leanspec);
@@ -255,6 +259,108 @@ theorem hvarthetaRes_deep3 {K L : Type*} [Field K] [Field L] [Algebra K L]
     hu1, hu2, hu3, Units.val_mul, Units.val_mul, Units.val_zpow_eq_zpow_val,
     Units.val_zpow_eq_zpow_val, Units.val_zpow_eq_zpow_val, map_mul, map_mul,
     map_zpow₀, map_zpow₀, map_zpow₀]
+
+/-! ## 3′. The depth-2 letter-lattice model (the `i = 2` transcription)
+
+`EFF.GENTOW2.42`'s γ-calculus, exponent level: "the value-0 Laurent monomials `x^i π^a Φ′^b`
+form exactly the group `⟨γ₁, γ₂⟩`" — the depth-2 instance of the same descent, on the
+GENTOW2/LW3 sub-chain (`e = (2,2)`, `h = 1`, `u = (1,5)`; `dv₂`-coefficients `(4, 2, 5)` on
+`(π, x, Φ₁)`). This is the `i = 2` corpus proof's lattice core, transcribed. -/
+
+/-- The depth-2 exponent group: `(a, i₀, b₁)` = the exponents of `(π, x, Φ₁)`. -/
+abbrev Deep2 := Multiplicative (ℤ × ℤ × ℤ)
+
+/-- The `dv₂` height homomorphism: `4a + 2i₀ + 5b₁`. -/
+def deep2Height : Deep2 →* Multiplicative ℤ where
+  toFun g := Multiplicative.ofAdd
+    (4 * (Multiplicative.toAdd g).1 + 2 * (Multiplicative.toAdd g).2.1
+      + 5 * (Multiplicative.toAdd g).2.2)
+  map_one' := by simp
+  map_mul' x y := by
+    simp only [toAdd_mul, Prod.fst_add, Prod.snd_add, ← ofAdd_add]
+    ring_nf
+
+/-- `b₁(k)` at depth 2 (`u₂ = 5` odd, `e₂ = 2`). -/
+def d2b1 (k : ℤ) : ℤ := k % 2
+/-- the level-1 residual height at depth 2. -/
+def d2m1 (k : ℤ) : ℤ := (k - 5 * d2b1 k) / 2
+/-- `i₀(k)` at depth 2. -/
+def d2i0 (k : ℤ) : ℤ := d2m1 k % 2
+/-- `a(k)` at depth 2. -/
+def d2a (k : ℤ) : ℤ := (d2m1 k - d2i0 k) / 2
+
+/-- The depth-2 exact-height identity `4a(k) + 2i₀(k) + 5b₁(k) = k`. -/
+theorem d2_height_id (k : ℤ) : 4 * d2a k + 2 * d2i0 k + 5 * d2b1 k = k := by
+  simp only [d2a, d2i0, d2m1, d2b1]
+  omega
+
+/-- The depth-2 tower normalizer section (`n̂₂`, greedy exponents — GENTOW-1 S3's `n̂₂`). -/
+def deep2Section : NormSection Deep2 where
+  n k := Multiplicative.ofAdd (d2a k, d2i0 k, d2b1 k)
+  n_zero := by
+    have : d2a 0 = 0 ∧ d2i0 0 = 0 ∧ d2b1 0 = 0 := by
+      simp only [d2a, d2i0, d2m1, d2b1]; omega
+    simp [this.1, this.2.1, this.2.2]
+
+/-- Letter `γ₁ = x²/π` at depth 2. -/
+def d2g1 : Deep2 := Multiplicative.ofAdd (-1, 2, 0)
+/-- Letter `γ₂ = Φ₁²/(π²x)` at depth 2 (`EFF.GENTOW2.42`'s second generator). -/
+def d2g2 : Deep2 := Multiplicative.ofAdd (-2, -1, 2)
+
+theorem d2g1_mem : d2g1 ∈ MonoidHom.ker deep2Height := by
+  rw [MonoidHom.mem_ker]; rfl
+theorem d2g2_mem : d2g2 ∈ MonoidHom.ker deep2Height := by
+  rw [MonoidHom.mem_ker]; rfl
+
+/-- **The depth-2 lattice factorization** (GENTOW2-B″'s γ-calculus core, PROVED): every
+`τ₂(a,b)` is an exact `ℤ`-monomial in `γ₁, γ₂`. -/
+theorem deep2_tau_descent (a b : ℤ) :
+    ∃ c1 c2 : ℤ, deep2Section.tau a b = d2g1 ^ c1 * d2g2 ^ c2 := by
+  have ha := d2_height_id a
+  have hb := d2_height_id b
+  have hab := d2_height_id (a + b)
+  set w1 := d2a a + d2a b - d2a (a + b) with hw1
+  set w2 := d2i0 a + d2i0 b - d2i0 (a + b) with hw2
+  set w3 := d2b1 a + d2b1 b - d2b1 (a + b) with hw3
+  refine ⟨(w2 + w3 / 2) / 2, w3 / 2, ?_⟩
+  have hzero : 4 * w1 + 2 * w2 + 5 * w3 = 0 := by
+    simp only [hw1, hw2, hw3]; omega
+  apply Multiplicative.toAdd.injective
+  simp only [NormSection.tau, deep2Section, toAdd_mul, toAdd_inv, toAdd_zpow, toAdd_ofAdd,
+    d2g1, d2g2, Prod.ext_iff, Prod.fst_add, Prod.snd_add, Prod.fst_neg, Prod.snd_neg,
+    Prod.smul_fst, Prod.smul_snd, smul_eq_mul]
+  refine ⟨by omega, by omega, by omega⟩
+
+theorem deep2_tau_mem_ker (a b : ℤ) :
+    deep2Section.tau a b ∈ MonoidHom.ker deep2Height := by
+  obtain ⟨c1, c2, hc⟩ := deep2_tau_descent a b
+  rw [hc]
+  exact mul_mem (zpow_mem d2g1_mem c1) (zpow_mem d2g2_mem c2)
+
+/-- **`(H-VARTHETA-RES)₂`, reduced to the two letter-memberships** — the `i = 2` slice of
+`EFF.T1.09` at exponent level (the corpus's GENTOW2-B″ discharge supplies both letters as
+`η, z₂ ∈ K₂ˣ`). -/
+theorem hvarthetaRes_deep2 {K L : Type*} [Field K] [Field L] [Algebra K L]
+    (ρ : MonoidHom.ker deep2Height →* Lˣ)
+    (h1 : ∃ u : Kˣ, ((ρ ⟨d2g1, d2g1_mem⟩ : Lˣ) : L) = algebraMap K L (u : K))
+    (h2 : ∃ u : Kˣ, ((ρ ⟨d2g2, d2g2_mem⟩ : Lˣ) : L) = algebraMap K L (u : K))
+    (q : ℤ) :
+    HVarthetaRes Deep2 K L deep2Section deep2Height ρ q := by
+  obtain ⟨u1, hu1⟩ := h1
+  obtain ⟨u2, hu2⟩ := h2
+  refine hvarthetaRes_of_tau_letters deep2Height ρ q
+    (fun s => deep2_tau_mem_ker ((s : ℤ) * q) q) (fun s => ?_)
+  obtain ⟨c1, c2, hc⟩ := deep2_tau_descent ((s : ℤ) * q) q
+  refine ⟨u1 ^ c1 * u2 ^ c2, ?_⟩
+  have hsub : (⟨deep2Section.tau ((s : ℤ) * q) q,
+        deep2_tau_mem_ker ((s : ℤ) * q) q⟩ : MonoidHom.ker deep2Height)
+      = ⟨d2g1, d2g1_mem⟩ ^ c1 * ⟨d2g2, d2g2_mem⟩ ^ c2 := by
+    apply Subtype.ext
+    push_cast
+    exact hc
+  rw [hsub, map_mul, map_zpow, map_zpow, Units.val_mul,
+    Units.val_zpow_eq_zpow_val, Units.val_zpow_eq_zpow_val, hu1, hu2, Units.val_mul,
+    Units.val_zpow_eq_zpow_val, Units.val_zpow_eq_zpow_val, map_mul, map_zpow₀, map_zpow₀]
 
 /-! ## 4. The `𝒲_{≤i}` interleaved-induction skeleton (HYP.63's closure shape) -/
 
