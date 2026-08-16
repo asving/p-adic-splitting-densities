@@ -5246,3 +5246,40 @@ no interface field added.  Footprints: H63w/H94w Lean-core only;
 roll-up build green (8714 jobs).  Commits: skeleton `98d061d4`,
 legs `71a7c838`/`0a1e8f56`/`141f034d`/`e81a4f5b`/`8b043eec`/
 `87064f6c`, Lean `bdcdaf06`, note `76a60e33`.
+
+**2026-08-16 DATED APPEND #69 — GENIND.B IS NO LONGER NODE-LESS:
+THE T-1 COMPLETION LAYER (CHAP-H §17, H.100–H.124) IS SIGNED AND
+ITS FLEET IS FIRING; OM-4 CLOSES THE σ-LADDER PAIR'S ADJUDICATION;
+ONE VACUITY CATCH (FINDING 0).** (1) The T-1 conversion unit turned
+OM-2's certified skeleton into 25 signed nodes: §17.1 the level-0
+class transport (H.100–H.105), §17.2 the cluster event grammar over
+O (H.106–H.117), §17.3 the verdict/legs/bridge/reduction
+(H.118–H.124, incl. H.123 THE S-1 BRIDGE as an inequality with the
+F-2 witnesses quoted as a refutation obligation on any equality
+form, and H.124's composed conditional restating the H.98 fence).
+52/52 signatures elaborate (LeanspecH17, green); DAG merge 249
+nodes/484 edges ACYCLIC; CHAP-I's T-1 row re-dispositioned
+REDUCED-TO §17 with named residuals (stage legs m≥4, HYP.81/82,
+B-BOX-1, the W12 debt D-1, TRACK-V value rows). PA-H17.1 booked:
+the landed RecursionLegs' fixed n₀ retires for the window-filtered
+range (no consumers; A-H.2 precedent) — owed before H.121. Fleet
+wave 1 (H.100/H.101/H.106/H.107) FIRING. (2) OM-4 verdicts: (LB1)
+REDUCES-TO the C-completion's signed C.33/C.34 (contingent
+r=1-cite fallback drafted, recommended merged with B.42's queued
+event); (MP1) item 5 = the gate-(b) queue's FOURTH cite
+(recentered_key_emission — [GN15] Thm 2.3 + GMN Thm 2.11, drafted
+at the B.42 standard; category-signed per #66, riders open); items
+2–4 REDUCE. Certifications sharp at the boundary (the WINDOW floor
+exactly load-bearing). (3) FINDING 0 (stop-the-line, machine-
+checked): the landed E.39/E.40/E.44 carrier shadows are TRIVIALLY
+PROVABLE — the Display-A conjunct LB1∧MP1 has no honest Lean
+carrier as landed; chapter I must not transcribe LadderObligations
+until chapter E's carriers strengthen to the full BlockSuite/
+emission records (an honest strengthening, orchestrator authority,
+charted for E's amendment round; verification/om4_shadow_vacuity
+.lean is the standing witness). (4) OPS: the day's hardest storm
+(~40 min) wiped six workflow bundles + two gates; zero mathematics
+lost (committed increments); coordinated-restart-on-timer worked;
+the sweep-scoped-adds hazard fired twice across concurrent units —
+the fleet charge template now carries the reminder. OM roster:
+1/2/3/4 DONE, 5 running, 6–10 queued.
