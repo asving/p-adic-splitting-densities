@@ -7151,6 +7151,10 @@ contains the drain state, so `u ≥ 1`). Consequences, stated exactly:
   `rate_close`/`RecursionLegs` still have NO mathematical consumer). Until PA-H17.1 is
   applied, H.122's PROOF field carries the induction locally at the windowed range; H.121's
   α-leg (clause ii) is stated at the TRUE range either way.
+  **⚠ SUPERSEDED IN PART BY A-H.6:** PA-H17.1 is NO LONGER a prerequisite of H.122, and
+  `rate_close` is no longer H.122's route at all — it cannot reach `(1,1,1)` at any legs
+  (A-H.6 §4). PA-H17.1 remains a live repair of `RecursionLegs`/`rate_close` in their own
+  right (F-H17.1); it is simply off H.122's critical path.
 
 ### 17.1 N-1 — the level-0 class transport (H.100–H.105)
 
@@ -8672,8 +8676,9 @@ F-1 (per-type census), F-2 (conservative = semantic), and A-H.2's (α-0)/(α-rat
 Scratch-elaborated declarations: **52** (14 real `def` + 1 real `inductive` + 2 opaque
 owed-body defs + 35 theorem-shaped) → **59 after A-H.5** (20 real `def` + 1 real `inductive` +
 3 proved theorems + 35 theorem-shaped; no opaque carriers left).
-Split-mandated: H.115 → 3, H.116 → 2, H.121 → 3, H.123 → 3,
-H.124 → 3; fleet planning figure **≈ 35 Lean files** for the section. Graph shape:
+Split-mandated: H.115 → 3, H.116 → 2, H.121 → 3 (**→ 4 after A-H.6**: H.121d), H.123 → 3,
+H.124 → 3; fleet planning figure **≈ 35 Lean files** for the section (**≈ 37 after A-H.6**:
+H.121d and H.30b). Graph shape:
 critical path (a longest dependency chain, 9 edges) H.122 → H.121 → H.119 → H.118 →
 H.115 → H.112 → H.111 → H.109 → H.108 → H.107; layer-0 (fireable immediately): H.100,
 H.101, H.106, H.107.
@@ -8684,13 +8689,14 @@ two opaque-def deviations — both CLOSED by A-H.5); (ii) `spec/DAG_BLUEPRINT_H.
 rows above, **127 after A-H.5**; (iii)
 `blueprint/CHAP-I_capstone_conditionality.md` §3.9 — the T-1 row's dated REDUCED-TO
 annotation (H.100–H.124 + the named residual rows); (iv) this file's §2 census — one dated
-line. Nothing else is touched; §§0–16 and A-H.1/A-H.2 are byte-unchanged.
+line. **A-H.6 adds 13 DAG rows and removes 3 (127 → 137), and adds two nodes (H.121d, H.30b).** Nothing else is touched; §§0–16 and A-H.1/A-H.2 are byte-unchanged.
 
 **Fleet firing order (recommendation).** Wave 1: H.100/H.101/H.106/H.107 (+ H.108 behind
 H.106/107). Wave 2: H.102 (the InjOn is the section's hardest N-1 hole — HARDEST-FIRST),
 H.109 (the triangular-expansion helper unblocks H.115/H.116), H.110–H.113. Wave 3:
-H.114–H.117 + PA-H17.1's adjudication (before H.122). Wave 4: H.118–H.121. Wave 5:
-H.122–H.124. The B.42-consuming node H.123 should fire only after its footprint
+H.114–H.117 (PA-H17.1's adjudication is CLOSED by A-H.6 and is no longer gated on H.122).
+Wave 4: H.118–H.121 (**H.121d and H.30b fire here, both layer-0-ish and independent; H.121c
+is behind BOTH H.116b and H.121d**). Wave 5: H.122–H.124. The B.42-consuming node H.123 should fire only after its footprint
 expectation is booked in the roll-up's axiom census (H.99's pattern: its `#print axioms`
 row must EXPECT the axiom).
 
