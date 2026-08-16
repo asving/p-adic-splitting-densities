@@ -16,8 +16,7 @@ the corpus-grade note `lean/notes/openmath/LAWBS2_PROOF_2026-08-16.md` (PROVED a
 geography; 4 adversarial passes CLEAN; battery `verification/openmath/bs2_lawbs2_cert.py` GREEN
 666/0, 6/6 teeth).
 
-**THIS FILE IS A PARTIAL LANDING (in progress: Parts 1–2 are in the file, Part 3 is being
-written).**  The capstone `lawBS2_pair_or_triple` is NOT landed here.
+**THIS FILE IS A PARTIAL LANDING.**  The capstone `lawBS2_pair_or_triple` is NOT landed here.
 What is landed are three of the node's four named ingredient pieces, each stated and proved in
 full; the census that welds them is BLOCKED, with the piece boundary named in the section
 "What is BLOCKED" below and in `leanfinal/notes/C128_PARTIAL_2026-08-16.md`.
@@ -334,6 +333,123 @@ theorem devQ_triKey_X_pow_odd (P c0 : R) :
 
 end TrinomialChain
 
+/-! ## Part 3 — the trinomial shape of the composed key (the node's missing `hcomp`)
+
+C.127's three clauses are handed the shape
+`Φ₂ = Φ′^{f₂} + C(c₂π^{v₂})x^{i₂}Φ′^{f₂−1} + C(c₀π^{v₀})` as a HYPOTHESIS, which is what makes
+that node D19-safe (it never touches `stageLiftO`).  C.128's signed binder list has no such
+hypothesis: the shape has to come out of C.43's body,
+
+```
+Φ₂ = Φ′^{e₂f₂} − Σ_{t<f₂} L_{(f₂−t)u₂}(c_t·η^{W(t)}) · Φ′^{e₂t},   c_t = −(ψ₂.coeff t),
+```
+
+through C.14a's `stageLiftO`.  Three steps:
+
+* `stageLiftO_of_f1` — at `f₁ = 1` the lift `L_M(c)` collapses to the single monomial
+  `C(resLift(coord₀ c)·π^{(M − i(M)h)/e₁})·x^{i(M)}` (C.14a's `stageLiftIA` has exactly `f₁`
+  summands);
+* `KeyFrame.slotIdx_mul_left` — `i(e₁·k) = 0`: a height that is a multiple of `e₁` sits at the
+  `x`-free slot.  At `f₂ = 2` the CONSTANT entry has height `2u₂ = e₁u₂`, so this is what makes
+  it `x`-free — the note's (G3) remark "at `D′ = 2` the `x`-freeness of `c₀` is automatic";
+* `composedKey_trinomial` — the two together, at the pinned geography
+  (`e₁ = 2`, `f₁ = 1`, `f₂ = 2`, `e₂ = 1`, `hslot : i(u₂) = 1`), give the C.127 shape with
+  `i₂ = 1`, `v₂ = (u₂ − h)/2`, `v₀ = u₂`; `onSide_of_slot_one` is the note's (G3) height
+  arithmetic `u₂ = e₁v₂ + i₂` and `e₁v₀ = f₂u₂`, which the Lean carrier makes automatic rather
+  than hypothetical.
+
+`entryCoef T t` names the entry coefficient so that no information is lost to an existential:
+`isUnit_entryCoef` is its unit status, which the census consumes. -/
+
+section Trinomial
+
+open IsLocalRing
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-- **Part 3(a)** — at `f₁ = 1` every `stageLiftO` entry is a single monomial: C.14a's
+`stageLiftIA` sums `f₁` terms, so one survives, at slot `i(M) = F.slotIdx M` and `π`-exponent
+`(M − i(M)h)/e₁`. -/
+theorem stageLiftO_of_f1 (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) (hf₁ : F.f₁ = 1)
+    (M : ℕ) (c : F.stageField H₀ hpin) :
+    F.stageLiftO H₀ hpin M c
+      = Polynomial.C (resLift (F.stageCoord H₀ hpin c 0)
+            * π ^ ((M - F.slotIdx M * F.h) / F.e₁))
+        * Polynomial.X ^ F.slotIdx M := by
+  rw [KeyFrame.stageLiftO, KeyFrame.stageLiftIA, hf₁, Finset.sum_range_one]
+  simp
+
+/-- **Part 3(b)** — a height divisible by `e₁` sits at the `x`-free slot: `i(e₁·k) = 0`.
+(`slotIdx` solves `i·h ≡ M [MOD e₁]` with `i < e₁`; at `M = e₁k` the solution `i = 0` is
+available, and C.16's uniqueness identifies it with the search value.) -/
+theorem KeyFrame.slotIdx_mul_left (F : KeyFrame O π) (k : ℕ) : F.slotIdx (F.e₁ * k) = 0 :=
+  (F.slotIdx_unique (i := 0) F.he₁ (by simp [Nat.ModEq, Nat.mul_mod_right])).symm
+
+/-- **Part 3 — the entry coefficient.**  The `t`-th coefficient of C.43's composed-key display
+at `f₁ = 1`, i.e. the `O`-lift of the single letter-basis digit of `c_t·η^{W(t)}`, with the
+display's leading minus already absorbed.  (`resLift` is C.14a's zero-guarded section of the
+residue map; the outer `-` is the display's own sign, so that `composedKey_trinomial` reads
+`Φ′² + C(ĉ₂π^{v₂})x + C(ĉ₀π^{v₀})` with PLUS signs, as C.127's `hcomp` does.) -/
+noncomputable def entryCoef {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (t : ℕ) : O :=
+  - resLift (F.stageCoord H₀ hpin
+      (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ wrapExp T t) 0)
+
+/-- **Part 3(c) — the note's (G3), and it is not a hypothesis.**  At the pinned geography the
+two on-side relations `u₂ = e₁·v₂ + i₂` (with `i₂ = 1`, `v₂ = (u₂ − h)/2`) and
+`e₁·v₀ = f₂·u₂` (with `v₀ = u₂`) hold outright: the first because `hslot` forces `h ≡ u₂` mod
+`2` and C.42's node floor `hfloor` forces `2h < u₂`, so the `ℕ`-division is exact; the second
+by arithmetic. -/
+theorem onSide_of_slot_one {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hf₁ : F.f₁ = 1) (he₁ : F.e₁ = 2) (hf₂ : T.f₂ = 2)
+    (he₂ : T.e₂ = 1) (hslot : F.slotIdx T.u₂ = 1) :
+    T.u₂ = F.e₁ * ((T.u₂ - F.h) / 2) + 1 * F.h ∧ F.e₁ * T.u₂ = T.f₂ * T.u₂ := by
+  have hcong : F.slotIdx T.u₂ * F.h ≡ T.u₂ [MOD F.e₁] := (F.slotIdx_spec T.u₂).2
+  rw [hslot, one_mul, he₁] at hcong
+  have hfl : 2 * F.h < T.u₂ := by
+    have h := T.hfloor
+    rw [he₂, he₁, hf₁, one_mul, mul_one] at h
+    exact h
+  have hmod : F.h % 2 = T.u₂ % 2 := hcong
+  refine ⟨?_, by rw [he₁, hf₂]⟩
+  rw [he₁]
+  omega
+
+/-- **Part 3(c) — THE TRINOMIAL SHAPE.**  At the pinned geography (`e₁ = 2`, `f₁ = 1`,
+`f₂ = 2`, `e₂ = 1`, and the signed `hslot : i(u₂) = 1`) C.43's composed key IS C.127's `hcomp`
+shape with `i₂ = 1`:
+
+```
+Φ₂ = Φ′² + C(ĉ₂·π^{(u₂−h)/2})·x·Φ′ + C(ĉ₀·π^{u₂}).
+```
+
+Nothing is assumed about the entries: they are C.43's own `stageLiftO` monomials, read by
+`stageLiftO_of_f1`, at the slots `KeyFrame.slotIdx_mul_left` and `hslot` compute. -/
+theorem composedKey_trinomial {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hf₁ : F.f₁ = 1) (he₁ : F.e₁ = 2) (hf₂ : T.f₂ = 2)
+    (he₂ : T.e₂ = 1) (hslot : F.slotIdx T.u₂ = 1) :
+    composedKey T
+      = F.key ^ 2
+        + Polynomial.C (entryCoef T 1 * π ^ ((T.u₂ - F.h) / 2)) * Polynomial.X ^ 1 * F.key
+        + Polynomial.C (entryCoef T 0 * π ^ T.u₂) := by
+  have hslot0 : F.slotIdx (2 * T.u₂) = 0 := by
+    have := F.slotIdx_mul_left T.u₂
+    rw [he₁] at this
+    exact this
+  have hexp0 : (2 * T.u₂ - F.slotIdx (2 * T.u₂) * F.h) / F.e₁ = T.u₂ := by
+    rw [hslot0, he₁]
+    simp
+  have hexp1 : (T.u₂ - F.slotIdx T.u₂ * F.h) / F.e₁ = (T.u₂ - F.h) / 2 := by
+    rw [hslot, he₁, one_mul]
+  rw [composedKey, hf₂, he₂, Finset.sum_range_succ, Finset.sum_range_one]
+  simp only [Nat.sub_zero, show (2 : ℕ) - 1 = 1 from rfl, one_mul, mul_one, pow_zero, pow_one]
+  rw [stageLiftO_of_f1 F H₀ hpin hf₁, stageLiftO_of_f1 F H₀ hpin hf₁, hexp0, hexp1, hslot0,
+    hslot, pow_zero, mul_one]
+  simp only [entryCoef, neg_mul, Polynomial.C_neg]
+  ring
+
+end Trinomial
+
 end Uniformity.Density.Tower
 
 /-! ## Axiom footprint -/
@@ -348,5 +464,10 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.devQ_triKey_eq_zero_of_natDegree_lt
 #print axioms Uniformity.Density.Tower.devQ_triKey_X_pow_even
 #print axioms Uniformity.Density.Tower.devQ_triKey_X_pow_odd
+#print axioms Uniformity.Density.Tower.stageLiftO_of_f1
+#print axioms Uniformity.Density.Tower.KeyFrame.slotIdx_mul_left
+#print axioms Uniformity.Density.Tower.entryCoef
+#print axioms Uniformity.Density.Tower.onSide_of_slot_one
+#print axioms Uniformity.Density.Tower.composedKey_trinomial
 
 end AxCheck
