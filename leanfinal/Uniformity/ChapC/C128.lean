@@ -617,6 +617,7 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.triKey
 #print axioms Uniformity.Density.Tower.triKey_monic
 #print axioms Uniformity.Density.Tower.triKey_natDegree
+#print axioms Uniformity.Density.Tower.triKey_degree
 #print axioms Uniformity.Density.Tower.devQ_C_mul
 #print axioms Uniformity.Density.Tower.devQ_triKey_eq_zero_of_natDegree_lt
 #print axioms Uniformity.Density.Tower.devQ_triKey_X_pow_even
