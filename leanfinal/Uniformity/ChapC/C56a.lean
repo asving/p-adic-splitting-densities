@@ -12,8 +12,11 @@ import Uniformity.ChapC.C83
 # Uniformity.ChapC.C56a — `k2Coord`, `n2Exp`, `k2DigitLift`: the base-resolved K₂-digit lift
 
 **Chapter C, NODE C.56a** [def] [fresh] [signed: A-C.1] (`blueprint/CHAP-C_tower_grammar.md` §8,
-lines 3455–3516; twin `leanspec/Leanspec/ChapC.lean:1827-1855`). **ENV-C1.** Three declarations,
-all definitional; no theorem.
+lines 3455–3516; twin `leanspec/Leanspec/ChapC.lean:1827-1855`; the **`k2Coord` REPAIR of
+2026-08-16** is in force — see the trust-boundary section). **ENV-C1.** **Seven public
+declarations**: the three signed ones (`k2Coord`, `n2Exp`, `k2DigitLift`, the last two definitional
+and `k2Coord` rebuilt by the repair) plus the four the repair added — `k2PB`, `k2PB_dim`,
+`k2PB_gen`, `sum_k2Coord`, of which the last three are theorems.
 
 The node was split out of C.56 by the **A-7 SCC repair** — C.84's `DeepTower` lift entry pointed
 at the pre-split parent *theorem* node, closing a cycle — so `k2DigitLift` now has its own node
@@ -27,8 +30,13 @@ lift(s; m) := Σ_{r<f₁} Σ_{t<f₂} d_{r,t} · n̂₂(m − Δ(r,t)) · x^{e�
 Δ(r,t) := e₁e₂h·r + e₂u₂·t,      n̂₂(m) = π^{a₀} x^i Φ′^b  (i < e₁, b < e₂).
 ```
 
+* `k2PB T hmon` (+ `k2PB_dim`, `k2PB_gen`) — the tower power basis `{β^t}_{t < f₂}` of
+  `K₂ = AdjoinRoot (towerLabel T)` over `K = F.stageField H₀ hpin`, from
+  `AdjoinRoot.powerBasis'` at the monic label. **Added by the 2026-08-16 repair.**
 * `k2Coord T s t` — the `t`-th `K`-coordinate of `s ∈ K₂ = AdjoinRoot (towerLabel T)` in the
-  `β`-basis, read off a chosen `AdjoinRoot.mk`-preimage.
+  `β`-basis, read off `k2PB` (an invariant of `s`; **REPAIRED 2026-08-16**, it used to read a
+  chosen `AdjoinRoot.mk`-preimage), with `sum_k2Coord` the reconstruction identity
+  `Σ_{t < f₂} coord_t·β^t = s` that pins it.
 * `n2Exp T m` — the two-step `n̂₂`-solve returning `(a₀, i, b)`: C.83's `towerSolve` at `(u₂, e₂)`
   for `b`, then C.15's `slotIdx` on the reduced height `m' = (m − b·u₂)/e₂` for `(i, a₀)`.
 * `k2DigitLift T s m` — the display itself, with the base RE-SOLVED per flavor `(r, t)`.
@@ -40,25 +48,51 @@ offset `Δ(r, t)`, so each summand solves its own class equation.
 
 ## Trust-boundary notes (⚠ new definitions, flagged for human review)
 
-`k2Coord` is a **section, not an invariant**, and both it and `n2Exp` are **junk-total**:
+`k2Coord` **was** a section, not an invariant; since the 2026-08-16 repair it **is** an invariant
+(a power-basis coordinate, pinned by `sum_k2Coord`), junk only on two branches no pinned consumer
+reaches. `n2Exp` remains **junk-total**:
 
-1. `k2Coord` reads `((AdjoinRoot.mk_surjective s).choose).coeff t`. Different preimages of the
-   same class differ by a multiple of `towerLabel T`, so the value is not determined by `s` alone
-   at `t ≥ f₂`, and the `choose` is not guaranteed to have degree `< f₂`. No downstream statement
-   may assert an equation about `k2Coord` in isolation. `k2DigitLift` reads it only for
-   `t < T.f₂`.
+1. **`k2Coord` — the ⚠ flag as it was raised, kept verbatim, and its disposition.** The first
+   landing's trust-boundary note read:
 
-   **⚠ OPEN DEFECT, inherited from what C.14a's `stageCoord` used to be.** This was "exactly
-   C.14a's `stageCoord` situation one level up" — and that one turned out to be a defect, not a
-   convention: C.14's audit (`ChapC/C14.lean`, the ⚠ DEFECT section) showed that an opaque
-   `Classical.choice` representative has no degree bound, so the reconstruction identity
-   `Σ_{t < f₂} k2Coord(s,t)·β^t = s` is neither provable nor refutable, and no residue clause
-   about the resulting lift can pin it either. C.14a's read was **repaired on 2026-08-16** — it is
-   now the `AdjoinRoot.powerBasis` coordinate (`KeyFrame.stagePB`), with the reconstruction
-   identity landed as `KeyFrame.sum_stageCoord` — so the `F.stageCoord …` factor of the digit
-   below is now honest. `k2Coord` is **not** yet: it wants the same cure at `towerLabel T`'s power
-   basis over `K = F.stageField H₀ hpin`. Recorded for the fleet; out of this node's scope, and
-   nothing landed asserts an equation about `k2Coord`.
+   > `k2Coord` reads `((AdjoinRoot.mk_surjective s).choose).coeff t`. Different preimages of the
+   > same class differ by a multiple of `towerLabel T`, so the value is not determined by `s` alone
+   > at `t ≥ f₂`, and the `choose` is not guaranteed to have degree `< f₂`. No downstream statement
+   > may assert an equation about `k2Coord` in isolation. `k2DigitLift` reads it only for
+   > `t < T.f₂`.
+   >
+   > **⚠ OPEN DEFECT, inherited from what C.14a's `stageCoord` used to be.** This was "exactly
+   > C.14a's `stageCoord` situation one level up" — and that one turned out to be a defect, not a
+   > convention: C.14's audit (`ChapC/C14.lean`, the ⚠ DEFECT section) showed that an opaque
+   > `Classical.choice` representative has no degree bound, so the reconstruction identity
+   > `Σ_{t < f₂} k2Coord(s,t)·β^t = s` is neither provable nor refutable, and no residue clause
+   > about the resulting lift can pin it either. C.14a's read was **repaired on 2026-08-16** — it is
+   > now the `AdjoinRoot.powerBasis` coordinate (`KeyFrame.stagePB`), with the reconstruction
+   > identity landed as `KeyFrame.sum_stageCoord` — so the `F.stageCoord …` factor of the digit
+   > below is now honest. `k2Coord` is **not** yet: it wants the same cure at `towerLabel T`'s power
+   > basis over `K = F.stageField H₀ hpin`. Recorded for the fleet; out of this node's scope, and
+   > nothing landed asserts an equation about `k2Coord`.
+
+   **✔ REPAIRED 2026-08-16 (the quoted note is the finding; this is its disposition).** `k2Coord`
+   was **redefined** on the cure the finding names — `towerLabel T`'s power basis over
+   `K = F.stageField H₀ hpin`. The new `k2PB` is `AdjoinRoot.powerBasis'` at the monic label
+   (`k2PB_dim = T.f₂` and `k2PB_gen = β = AdjoinRoot.root (towerLabel T)`, both against C.44's
+   `towerLabel_spec`), `k2Coord`'s body is its basis coordinate, and **the pin is
+   `sum_k2Coord`**: `Σ_{t < f₂} algebraMap(k2Coord T s t)·β^t = s`, the identity the preimage read
+   could not be proved to satisfy. The value is now determined by `s` alone at every `t`, so the
+   quoted prohibition ("no downstream statement may assert an equation about `k2Coord` in
+   isolation") is **lifted**: `sum_k2Coord` is exactly such an equation, and C.56's `deg lift < D₂`
+   clause plus C.84/C.85's lift entries may now pin `k2DigitLift` through it.
+   **Signatures of `k2Coord`, `n2Exp` and `k2DigitLift` are byte-unchanged**; `k2Coord`'s body and
+   its guarantee are not. Two junk branches remain, neither reachable from a pinned consumer:
+   `t ≥ (k2PB T hmon).dim = f₂` (`k2DigitLift` sums only over `t < T.f₂`), and the **non-monic
+   locus** of `towerLabel T`, where no power basis exists at all — monicity is C.44's
+   `(towerLabel_spec T hπ).1` and is unavailable without `Irreducible π` (the label's leading
+   coefficient is a power of C.19's stage letter `η`), so the `dite` is made total by
+   `Classical.propDecidable` and returns `0` there. Unlike C.14a's repair, this one introduces
+   **no new instance**: `AdjoinRoot.powerBasis'` runs over the ambient `CommRing`, so no
+   `Field (F.stageField …)` and no `Fact (Irreducible …)` enter, and the instances carried by
+   `AdjoinRoot (towerLabel T)` are untouched.
 2. `n2Exp` is built from two junk-`0`-defaulting solves (C.15's `slotIdx`, C.83's `towerSolve`,
    both `List.find?`-with-`getD 0`). It returns the intended `(a₀, i, b)` exactly when the class
    equation `e₁e₂a₀ + ie₂h + bu₂ = m` is solvable; `T.hcop`/`F.hcop` guarantee solvability of the
@@ -86,14 +120,23 @@ file: it is a clause of C.56(i), where the range facts are available.
   two are the same `Prop` and `TowerDatum F H₀ hpin` accepts either; this file matches the
   SIGNATURE.
 
-**DEPENDS.** C.01 (`KeyFrame`) · C.03 (`stageField`) · C.14a (`Pin`, `stageCoord`, `resLift`) ·
-C.15/C.16 (`slotIdx` and its spec, the latter at the consumers) · C.28 (the class-solve pattern) ·
-C.42 (`TowerDatum`) · C.44 (`towerLabel`) · C.83 (`towerSolve`) — all by committed node ID.
-H.51/H.52 (two-step class separation) and H.54–H.56 (base-level digit realization, per C-H5)
-are the *supply* for the consumers' spec clauses, not for these bodies.
+**DEPENDS.** C.01 (`KeyFrame`) · C.03 (`stageField`) · C.14a (`Pin`, `stageCoord` — its
+post-repair power-basis read — and `resLift`) · C.15/C.16 (`slotIdx` and its spec, the latter at
+the consumers) · C.28 (the class-solve pattern) · C.42 (`TowerDatum`) · C.44 (`towerLabel`, and —
+since the 2026-08-16 repair — `towerLabel_spec`, for the label's monicity and its degree `f₂`) ·
+C.83 (`towerSolve`) — all by committed node ID. No import changed at the repair: C.44 was already
+one. H.51/H.52 (two-step class separation) and H.54–H.56 (base-level digit realization, per C-H5)
+are the *supply* for the consumers' spec clauses, not for these bodies. Mathlib, all four new
+declarations: `AdjoinRoot.powerBasis'`, `AdjoinRoot.powerBasis'_dim`, `AdjoinRoot.powerBasis'_gen`,
+`PowerBasis.coe_basis`, `Basis.sum_repr`, `Algebra.smul_def`, `Fin.sum_univ_eq_sum_range`,
+`Classical.propDecidable`.
 
-**PROOF.** Definitional. The range / `a₀ ≥ 0` arithmetic (`omega` from `T.hfloor`) belongs to the
-consuming nodes, as recorded above.
+**PROOF.** Definitional for `k2PB`, `k2Coord`, `n2Exp`, `k2DigitLift`. `k2PB_dim`/`k2PB_gen` are
+the two `AdjoinRoot.powerBasis'` projections against `(towerLabel_spec T hπ).2.2.1`; `sum_k2Coord`
+is `Basis.sum_repr` re-indexed from `Fin dim` to `Finset.range f₂` along `k2PB_dim`, with
+`Algebra.smul_def` turning the module scalar action into the `algebraMap` product and `dif_pos`
+twice discharging `k2Coord`'s two junk branches. The range / `a₀ ≥ 0` arithmetic (`omega` from
+`T.hfloor`) belongs to the consuming nodes, as recorded above.
 
 **SOURCE.** `EFF.GENTOW1.27` (the setting + the `.62` TERMINAL lift display, verbatim; the
 `a₀ ≥ 0` audit); `EFF.GENTOW1.53`-region and `EFF.GENTOW5.17` (the S3 correction's provenance and
@@ -109,6 +152,11 @@ would pin about the *shape*: that `Δ(r, t) = e₁e₂h·r + e₂u₂·t` (so `�
 carries its own offset), and that `r` indexes the `β`-digit read (`stageCoord`) while `t` indexes
 the `K₂`-coordinate (`k2Coord`) — an `r ↔ t` transposition, or an `e₁ ↔ e₂` swap in the exponent
 offsets, cannot survive them.
+
+**The repair adds a real tooth**, exactly as C.14a's did: `sum_k2Coord` bites on `k2Coord` — it is
+the clause the preimage read could not be *proved* to satisfy (`Classical.choice` carries no degree
+bound), so a regression to any unpinned read breaks it — and it fixes the basis (`β`, `f₂` terms)
+against which the digits are taken.
 
 **ENVIRONMENT.** ENV-C1.
 
@@ -224,7 +272,12 @@ lift(s; m) = Σ_{r<f₁} Σ_{t<f₂} d_{r,t} · n̂₂(m − Δ(r,t)) · x^{e₁
 ```
 
 The digit `d_{r,t}` is `resLift (stageCoord (k2Coord T s t) r)` — the `K₂`-coordinate at `t`, its
-`F_Q`-digit at `r`, lifted to `O` by C.14a's residue section. The base **RE-SOLVES per flavor**:
+`F_Q`-digit at `r`, lifted to `O` by C.14a's residue section. **Since the two repairs of
+2026-08-16 both reads are power-basis coordinates** — `k2Coord` on `k2PB` (pinned by
+`sum_k2Coord`), `stageCoord` on C.14a's `stagePB` (pinned by `KeyFrame.sum_stageCoord`) — so the
+digit is an invariant of `s` and the only remaining choice in this display is `resLift`'s
+(a genuine section of `IsLocalRing.residue`, where no canonical preimage exists). The base
+**RE-SOLVES per flavor**:
 `n2Exp` is applied to the shifted height `m − Δ(r, t)`, not to a fixed `m`. The frozen fixed-base
 variant is DEAD (its compensating `π`-exponent is non-integral at seam-live heights — FR-A's
 `11/2 ∉ ℤ`). -/
