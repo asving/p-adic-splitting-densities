@@ -2687,12 +2687,16 @@ bijection") → **Lean theorem** (the product identity is step 4).
 ### NODE B.42 [theorem] [fresh]
 
 **STATEMENT.** *THE THEOREM OF THE POLYGON at order 1 (NS-1).* Over the complete bundle, let `φ` be
-an order-1 key and `f` monic with `f.map (residue O) = (φ.map (residue O)) ^ μ` and `0 < μ`. Then
-there is a finite family of coprime slope pairs `(u_i, ℓ_i)` with **pairwise distinct** slopes
-(`u_i * ℓ_j ≠ u_j * ℓ_i` for `i ≠ j`) and monic `f_i` with
+an order-1 key and `f` monic with `f.map (residue O) = (φ.map (residue O)) ^ μ`, `0 < μ`, **and
+`dev φ f 0 ≠ 0`** *([repaired: A-F.9] — the classical standing hypothesis `φ ∤ f`: the sides of
+`N⁻(f)` cut out the factorisation of the part of `f` prime to `φ`, and [GN15] Thm 2.3 peels
+`φ^{ord_φ(f)}` explicitly before the polygon pieces; without it the statement is machine-REFUTED
+at `f = φ`)*. Then there is a finite family of coprime slope pairs `(u_i, ℓ_i)` with **pairwise
+distinct** slopes (`u_i * ℓ_j ≠ u_j * ℓ_i` for `i ≠ j`) and monic `f_i` with
 
 * `f = ∏ f_i`;
-* each `f_i` is `(u_i, ℓ_i)`-pure;
+* each `f_i` is `(u_i, ℓ_i)`-pure, with `dev φ f_i 0 ≠ 0` and `0 < (f_i).natDegree`
+  *([repaired: A-F.9] — recorded for the consumers; the proof delivers both)*;
 * `Σ (f_i).natDegree = f.natDegree`;
 * the slopes `(u_i, ℓ_i)` are exactly the slopes of `f`'s `φ`-adic polygon, i.e. exactly the coprime
   pairs whose `sideSet φ f u ℓ` has at least two elements.
@@ -2706,14 +2710,25 @@ namespace Uniformity.Density.Leaf
 -- records `φ.natDegree ∣ (F p).natDegree` (B.41's conclusion pins the factor degrees at
 -- `ℓ·m·d`). Both additions are what the repaired B.48 needs at its B.63 call site (`hu`,
 -- `hfd`); without them the A-F.6 repair would not be call-site free downstream.
+-- [repaired: A-F.9] `(h0 : dev φ f 0 ≠ 0)` added — the A-F.6 form is machine-REFUTED
+-- (wave-11 witness `B42_REFUTATION.lean.txt`, compiled at the pin: `f = φ`, `μ = 1` at ANY
+-- DVR/key — the key's own polygon is the single point `(1,0)`, `sideSet φ φ u ℓ = {1}`, so
+-- the `↔`-clause forces `s = ∅` and clause 4 reads `φ = 1`). `h0` is the classical `φ ∤ f`
+-- ([GN15] Thm 2.3's explicit `φ^{ord_φ(g)}` peel; B.76's `exists_visible` and B.81's `hnz`
+-- already carry the predicate). Clause 3 further records `dev φ (F p) 0 ≠ 0` (B.41's
+-- `GradedCoprime` output pins the factors' left heights finite) and `0 < (F p).natDegree`
+-- (the peeled degrees are `ℓ·m·d`, `d ≥ 1`) — proof-free, and together with A-F.6's clauses
+-- they discharge B.48's `hH₀`/`hne`/`hd` at B.63's call sites. See amendment A-F.9.
 theorem exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
-    (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ) :
+    (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (h0 : dev φ f 0 ≠ 0) :
     ∃ (s : Finset (ℕ × ℕ)) (F : ℕ × ℕ → Polynomial O),
       (∀ p ∈ s, 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2) ∧
       (∀ p ∈ s, ∀ q ∈ s, p ≠ q → p.1 * q.2 ≠ q.1 * p.2) ∧
       (∀ p ∈ s, (F p).Monic ∧ IsPure φ (F p) p.1 p.2 ∧
-        φ.natDegree ∣ (F p).natDegree) ∧
+        φ.natDegree ∣ (F p).natDegree ∧
+        dev φ (F p) 0 ≠ 0 ∧ 0 < (F p).natDegree) ∧
       f = ∏ p ∈ s, F p ∧
       (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
         (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s))
@@ -2725,8 +2740,10 @@ landed `Uniformity.Hensel.exists_monic_factorization_finset` (as the shape to mi
 
 **PROOF.**
 1. **The slope set is finite and bounded.** Every slope `(u,ℓ)` of `f` has `ℓ ≤ μ` (B.20:
-   `ℓ ∣ sideLen ≤ μ`) and `u ≤ ℓ * npHgt φ f 0` (the leftmost height, finite by B.18 and `hres`,
-   which forces `npHgt φ f j ≥ 1` for `j < μ`). So the slopes live in a fixed
+   `ℓ ∣ sideLen ≤ μ`) and `u ≤ ℓ * npHgt φ f 0` (the leftmost height, **finite by `h0`** —
+   [repaired: A-F.9]: the former parenthetical credited "B.18 and `hres`", but `hres` alone
+   does NOT give finiteness at abscissa 0, witness `f = φ`; `hres` gives `npHgt φ f j ≥ 1` for
+   `j < μ`, so `1 ≤ H₀ < ⊤`). So the slopes live in a fixed
    `Finset.range × Finset.range`, and `s` is a `Finset.filter` of it.
 2. **`hres` forces every slope positive.** `f̄ = φ̄^μ` says `dev φ f j ≡ 0 mod π` for `j < μ`
    (a private helper: reduce the development mod `π` and use B.06's uniqueness in
@@ -2737,7 +2754,9 @@ landed `Uniformity.Hensel.exists_monic_factorization_finset` (as the shape to mi
    sides), which supplies B.41's new `hfd` — both new hypotheses are derivable here, no signature
    change to THIS node's hypothesis list.]
 3. **Strong induction on `μ`.** If `s` has at most one element, `f` is already pure (B.34) and the
-   family is `{f}`; done.
+   family is `{f}`; done. [A-F.9: the base discharges the strengthened clauses at `F := f` —
+   `dev φ f 0 ≠ 0` is `h0` itself and `0 < f.natDegree = m·μ` from `hres`; and with `h0` the
+   hull from `(0, H₀)` to `(μ, 0)` has at least one edge, so `s ≠ ∅` here.]
 4. Otherwise pick two distinct slopes and, by B.19, the abscissa `i` they share (the vertex). Choose a
    coprime pair `(w, t)` with slope strictly between them (rational sampling: the interval is
    nonempty in `ℚ`, and `Nat.Coprime`-normalising a mediant gives the pair — a private helper
@@ -2764,7 +2783,11 @@ landed `Uniformity.Hensel.exists_monic_factorization_finset` (as the shape to mi
 6. The peeled factor `g` has degree `ℓ₁ m d₁ < f.natDegree` (strictly, since `s` has ≥ 2 elements), and
    the cofactor `h` has `h̄ = φ̄^{μ - ℓ₁ d₁}` (B.35 and step 2), with polygon the remaining sides
    (B.35's `suppVal` additivity, which pins the cofactor's support values). Apply the induction
-   hypothesis to `h`.
+   hypothesis to `h`. [A-F.9: the recursive call's `h0` — and the strengthened clauses for the
+   peeled `g` — come **from B.41's own conclusion**: `GradedCoprime π φ u ℓ g h` pins
+   `npHgt φ g 0` and `npHgt φ h 0` finite (`dev ≠ 0` via `npHgt_eq_top_iff`), and the pinned
+   degrees `ℓ·m·d` with `d ≥ 1` give positivity; `μ − ℓ₁d₁ > 0` while `s` has ≥ 2 elements, so
+   the recursion's `hμ` holds.]
 7. The last conclusion (the slope set is exactly the set of `(u,ℓ)` with a two-element side) is B.35
    run in the other direction: the product's support value at any `(u,ℓ)` is the sum of the factors',
    and a two-element side of the product forces one of a factor.
@@ -2775,20 +2798,33 @@ landed `Uniformity.Hensel.exists_monic_factorization_finset` (as the shape to mi
 `B42c.lean` = step 5 (the peel at the steepest slope, the only place B.41 is called);
 `B42d.lean` = steps 3, 6–7 (the induction and the contract).
 
-**⚠ THIS NODE IS THE CHAPTER'S CRITICAL-PATH RISK AND ITS STEP 5 IS DECLARED UNSETTLED.** The
-STATEMENT is certain — it is `docs/GMN_citations.md` Thm 1.15 verbatim at order 1, `COVERS-ALL-O` by
-`docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-1 — but the *route* went through two candidate splits
-above before settling on "peel the steepest side", and the settled version rests on the unproved
-geometric claim **"the steepest side starts at abscissa 0"**. That claim is true (a side steeper than
-all others must contain the leftmost support point, or the `inf` at its slope would be attained
-further right) but it is not among the nodes below, and it must be added as a private helper of
-`B42b.lean`. **A cross-reader should not accept step 5 without checking it**, and a fleet agent that
-cannot prove it must return `BLOCKED` with the counterexample attempt rather than re-cut the route.
-**§14 item 2.**
+**⚠ THIS NODE IS THE CHAPTER'S CRITICAL-PATH RISK — STEP 5's SUB-CLAIM, FORMERLY DECLARED
+UNSETTLED, IS SETTLED UNDER `h0` (A-F.9).** The STATEMENT is `docs/GMN_citations.md` Thm 1.15 at
+order 1 (`COVERS-ALL-O` by `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-1) — *[re-scoped:
+A-F.9]* with the caveat that Thm 1.15 factors `f_φ` (the finite-slope principal-part factor),
+not `f`; `f = f_φ` is exactly the new hypothesis `h0`, and without `h0` the node's old
+"verbatim" claim was FALSE at `f = φ` (the wave-11 refutation). The geometric claim **"the
+steepest side starts at abscissa 0"** is TRUE under `h0`, with proof *(settled at A-F.9;
+formerly unproved here)*: let `σ* := max{(H₀ − h_j)/j : j > 0, npHgt φ f j = h_j < ⊤}` — a
+nonempty finite maximum (`j = μ` qualifies; `H₀ < ⊤` is `h0`), attained at `j*`, with lowest
+terms `(u*, ℓ*)`. For every support `j > 0`: `ℓ*h_j + u*j ≥ ℓ*H₀ ⟺ σ* ≥ (H₀ − h_j)/j`, true by
+maximality, with equality at `j*` — so `0` and `j*` both minimize the `(u*,ℓ*)`-weight:
+`(u*,ℓ*) ∈ s` and its `sideMin = 0`. No `(u,ℓ) ∈ s` is steeper: a two-point side at
+`u/ℓ > σ*` with leftmost point `j > 0` gives `(H₀ − h_j)/j ≥ u/ℓ > σ*` (the weight of `0` is at
+least the side's), contradicting maximality; with leftmost point `j = 0`, its second point
+`j′ > 0` gives `(H₀ − h_{j′})/j′ = u/ℓ > σ*`, the same contradiction. ∎ So the steepest member
+of `s` is `(u*, ℓ*)`, its side starts at abscissa `0`, and step 5's split is well-posed. It is
+still to be added as a private helper of `B42b.lean` (the argument above is its proof script);
+a fleet agent that cannot land it must return `BLOCKED` quoting which step of the displayed
+argument fails. **§14 item 2 (annotated RESOLVED-BY-PROOF at A-F.9).**
 
-**SOURCE.** `docs/GMN_citations.md` Thm 1.15 (order-1 theorem of the polygon);
-`docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-1 ([AGNPRW] Thm 4.4 / [GN15] Thm 2.3, `COVERS-ALL-O`);
-`EFF.W12.09`, `.27`, `.46` (the corpus's three citation sites); `EFF.HE3.13`.
+**SOURCE.** `docs/GMN_citations.md` Thm 1.15 (order-1 theorem of the polygon — it factors `f_φ`,
+the prime-to-`φ` part; see the ⚠ re-scope, A-F.9);
+`docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-1 ([AGNPRW] Thm 4.4 / [GN15] Thm 2.3,
+`COVERS-ALL-O` — [GN15] Thm 2.3's display `g = g₀ · φ^{ord_φ(g)} · ∏ g_{λ,ψ}` is the explicit
+`φ`-part peel that `h0` transcribes, quoted verbatim at NS-2);
+`EFF.W12.09`, `.27`, `.46` (the corpus's three citation sites); `EFF.HE3.13` (whose bookkeeping
+audit "the polygon spans abscissae `0..μ`" presupposes exactly `h0`).
 
 **TEETH.** `W12-SHAPE` (`EFF.W12.54`, 0/164 over 23 rows, **both directions** — the completeness
 half is exactly this node's last conclusion) → **Lean theorem**; `HE6-SEP`
@@ -4132,12 +4168,37 @@ and is written out in full in the leanspec stub — see §12 item 4.)*
 
 **DEPENDS.** B.27 · B.42 · B.45 · B.48 · B.58 · B.60 · B.61 · landed
 `Uniformity.Density.typeOf_mul` (`TypeOfAlgebra.lean:58`), `monicFactors_mul` (`:46`),
-`FactorizationType.degree_mk_add` (`:72`).
+`FactorizationType.degree_mk_add` (`:72`) · *[A-F.9]* landed CN-21
+`Uniformity.Density.typeOf_inert_of_irreducible_map` (`Density/InertLeaf.lean:179`) · mathlib
+`Polynomial.modByMonic_eq_zero_iff_dvd` (step 0's effectivity).
 
 **PROOF.**
-1. B.42 splits `f` into `(u_i,ℓ_i)`-pure pieces `f_i`, one per slope.
+0. *[repaired: A-F.9 — the `φ`-part peel; SIGNATURE byte-unchanged.]* B.42 now carries the
+   classical standing hypothesis `dev φ f 0 ≠ 0`, which THIS node's hypotheses do not give
+   (`hres` holds at `f = φ^k·f'` for any `k`), so peel first: write `f = φ^k · f'` with
+   `k := ord_φ f` maximal (effective by `dev φ f 0 = 0 ↔ φ ∣ f` and degree recursion; each
+   quotient is monic since `φ` is), so `dev φ f' 0 ≠ 0` and `f̄' = φ̄^{μ−k}` (cancellation in
+   the domain `(ResidueField O)[X]`). `typeOf φ = ⟨{(1, m)}⟩` by landed CN-21
+   `typeOf_inert_of_irreducible_map` (`hφ.irred`, `hφ.pos`); `typeOf f = k • that + typeOf f'`
+   by landed `typeOf_mul` iterated (all factors monic). Enlarge the final `T` by `k` fresh tags
+   `((v_j, 1), ψ_lin)` — first coordinates chosen above `T₁`'s finite bound, each mapping to
+   `(1, m·1) = (1, m)`, with `F` sending each tag to `φ` (classical `if`-split) — and at
+   `k = μ`, `f' = 1` and `T` is the tags alone. Steps 1–4 below run on `f'` (if `k < μ`; its
+   `hμ` is `0 < μ − k`).
+1. B.42 splits `f'` into `(u_i,ℓ_i)`-pure pieces `f_i`, one per slope (its `h0` is step 0's
+   maximality).
 2. B.48 splits each `f_i` according to its residual factorization; `hsep` and B.45 make every
    multiplicity `1`, so each piece has residual a unit times a single irreducible `ψ`.
+   *[A-F.9: B.48's `hu`/`hfd` come from B.42's A-F.6 clauses as before; its `hH₀` from the new
+   `dev φ f_i 0 ≠ 0` clause (`npHgt_eq_top_iff` + the `ℕ∞` dichotomy), its `hne` from B.18's
+   `sideSet_nonempty` at the recorded divisibility, and its `hd` from the new
+   `0 < (f_i).natDegree` clause via the landed B35b `sideDeg_of_pure` (`deg = ℓ·m·sideDeg`).
+   `hsep` for `f_i` from `hsep` for `f` is this step's PRE-EXISTING obligation (GMN Thm 1.15's
+   own clause `R_{λ_i}(F_i) ∼ R_{λ_i}(f)`, implicit in the committed route before A-F.9 and
+   unchanged by it — the fleet derives it from the step-1 construction, where B.41's `hprod`
+   hands each piece its residual); the peel of step 0 transports `hsep` from `f` to `f'`
+   trivially, since `dev φ (φ^k·f') j = dev φ f' (j−k)` (B.06 uniqueness) shifts the polygon
+   whole: same sides, same residuals.]*
 3. Each piece is a leaf: B.58 if `ψ.natDegree = 1`, B.60 if `ℓ_i = 1 ∧ φ.natDegree = 1`
    [repaired: A-F.7 — B.60 is re-signed at the linear key], B.61 under `B-BOX-1`
    otherwise. Its `typeOf` is `⟨{(ℓ_i, m·ψ.natDegree)}⟩`.
@@ -4563,6 +4624,11 @@ namespace Uniformity.Density.Leaf
 -- `g : ι → Polynomial O` enters as hypotheses (`hgmon`/`hgprod`/`hgres`), NOT over B.67's
 -- existential (whose witness a signature cannot bind); `hsep`/`hperim` are §12 item 4's
 -- dictionary clauses at the per-block instantiation `(φ, f) := (φ i, g i)`
+-- [repaired: A-F.9] `(hnz : ∀ i ∈ s, dev (φ i) (g i) 0 ≠ 0)` added — byte-identical to
+-- B.81's existing clause. Without it the statement is refuted at the canonical B-D4 reading
+-- by the singleton block `g i₀ = φ i₀`, `a i₀ = 1` (the conclusion forces `{(1, m)} = 0`);
+-- with it each block's `order1Type` reads the whole block. Free at both consumers: B.80's
+-- per-block `hvis` (via B.76(ii)) and B.81's `hnz` verbatim. See amendment A-F.9.
 theorem typeOf_order1 (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic) (hd : 0 < f.natDegree)
     {ι : Type*} [DecidableEq ι] {s : Finset ι} {φ : ι → Polynomial O} {a : ι → ℕ}
     (hkey : ∀ i ∈ s, IsKey (φ i))
@@ -4573,6 +4639,7 @@ theorem typeOf_order1 (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic) (
     {g : ι → Polynomial O} (hgmon : ∀ i ∈ s, (g i).Monic) (hgprod : f = ∏ i ∈ s, g i)
     (hgres : ∀ i ∈ s, (g i).map (IsLocalRing.residue O)
       = ((φ i).map (IsLocalRing.residue O)) ^ (a i))
+    (hnz : ∀ i ∈ s, dev (φ i) (g i) 0 ≠ 0)
     (hsep : ∀ i ∈ s, ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
       ∀ h : (sideSet (φ i) (g i) u ℓ).Nonempty, 1 < (sideSet (φ i) (g i) u ℓ).card →
         ∀ H₀ : ℕ, npHgt (φ i) (g i) (sideMin (φ i) (g i) u ℓ h) = (H₀ : ℕ∞) →
@@ -4627,9 +4694,14 @@ residuals are separable; and `(typeOf f).degree = f.natDegree` (landed) is consi
 namespace Uniformity.Density.Leaf
 
 -- [repaired: A-F.3/B-D10] `(hsep : …)` expanded to B.63's `hsep` clause at `(φ, g)` (§12 item 4(b))
+-- [repaired: A-F.9] `(h0 : dev φ g 0 ≠ 0)` added — refuted at the canonical B-D4 reading by
+-- `g = φ` (`slopeFinset π φ φ = ∅` by the committed `sideSet_key_self`, so the left side is
+-- `0 ≠ m`). Step 3 IS the `h0`-gated length identity `Σ ℓ_S d_S = μ`. Free at the consumers:
+-- B.80's per-block `hvis` (B.76(ii)), B.81's `hnz`. See amendment A-F.9.
 theorem degree_order1Type (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {g : Polynomial O} (hg : g.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (h0 : dev φ g 0 ≠ 0)
     (hsep : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ∀ h : (sideSet φ g u ℓ).Nonempty,
       1 < (sideSet φ g u ℓ).card → ∀ H₀ : ℕ, npHgt φ g (sideMin φ g u ℓ h) = (H₀ : ℕ∞) →
         (resPoly π φ g u ℓ h H₀).Separable) :
@@ -5190,7 +5262,8 @@ uniformity; **no completeness** — see the STATEMENT's last paragraph).
 
 **STATEMENT.** *The block certificate — R8-1's order-1 certificate, in two halves.* Over the
 complete bundle, let `φ` be an order-1 key with `m = φ.natDegree`, and `g` monic with
-`g.map (residue O) = (φ.map (residue O))^μ`, `0 < μ`. Assume
+`g.map (residue O) = (φ.map (residue O))^μ`, `0 < μ`, **and `dev φ g 0 ≠ 0`** *([repaired:
+A-F.9] — half (a) only; half (b) derives it from `hvis`, B.76(ii), and is unchanged)*. Assume
 
 * **(clause 1 of `EFF.HE3.67`)** `hterm : ¬ NeedsDescent π φ g` — every (terminal) residual
   polynomial of every slope of `g` is separable (B.73; at order 1 every residual is terminal);
@@ -5212,9 +5285,15 @@ typeOf g' = order1Type π φ g   (=  typeOf g).
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [repaired: A-F.9] `(h0 : dev φ g 0 ≠ 0)` added to half (a) — refuted at the canonical B-D4
+-- reading by `g = φ` (`hterm` holds, `hperim` dischargeable, and the conclusion forces
+-- `⟨{(1, m)}⟩ = ⟨0⟩`); also what ties B.63's `T` to the canonical finsets in step 2 (with
+-- `h0`, B.63's peel is trivial and `T` is polygon-only). Half (b) is IMMUNE (`hvis` gives
+-- `h0` via B.76(ii)) and supplies (a)'s `h0` at `g'` via B.76(iv) then B.76(ii).
 theorem typeOf_eq_order1Type (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {g : Polynomial O} (hg : g.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (h0 : dev φ g 0 ≠ 0)
     (hterm : ¬ NeedsDescent π φ g)
     (hperim : ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField φ), …) :
     typeOf g = order1Type π φ g
@@ -6773,6 +6852,21 @@ B.73's FAITHFULNESS).
    binding it can never be enforced by elaboration failure. The check survives as a REVIEW
    item against each node's ENVIRONMENT field (§0.1's rewritten ⚠); the completeness half is
    real (25 stubs genuinely carry `[IsAdicComplete …]`).]*
+
+   **⚠ THE `omit` RIDER FOR LANDED TWINS (wave-11 fleet finding, recorded at the A-F.8/A-F.9
+   adjudication, 2026-08-16).** The 0e type diff compares the landed `leanfinal` twin against
+   the stub's *elaborated* type, and the two trim section instances differently: the stub
+   (an `axiom`) drops what its statement does not use, while a landed `theorem` inside the
+   twin's ENV-C `variable` block keeps them unless told otherwise. The fleet's standing fix is
+   an `omit` header on the landed declaration (the pattern already used by the landed
+   B59b/B60). Known instances, checked by the wave-11 agents against the frozen stub types
+   and inherited by every future fleet agent on these nodes:
+   * **B.48** — its stub carries NEITHER instance: the landed file needs
+     `omit [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)] in`.
+   * **B.57** — its stub carries `[IsAdicComplete …]` but not finiteness: the landed file
+     needs `omit [Finite (ResidueField O)] in`.
+   A landed twin whose elaborated type still disagrees with the stub after the `omit` is a
+   stub-stage blueprint defect per rule 5, not something to patch in `leanspec`.
 8. **Gate order (GC-6.6(c), mandatory):** (a) elaborate the rule-6 fragile signatures; (b) land
    the 22 `def`-class bodies ([repaired: A-F.3/B-D2] — was "25"); (c) **execute B.86's
    `decide`/`#eval` arithmetic block at `q = 2` AND `q = 3`** against the commented expected
@@ -6856,7 +6950,11 @@ cross-read debt covers all of it. **Items 1–13 are the committed text's own fo
    leftmost-support-point containment, L2684 vicinity) — *"a cross-reader should not accept
    step 5 without checking it."* Verify the helper's statement is actually provable and that
    nothing downstream silently expects the class-size count (H-2's consequence: block-length
-   consumers must go to chapter C).
+   consumers must go to chapter C). *[RESOLVED-BY-PROOF at A-F.9 (2026-08-16): the helper is
+   TRUE under B.42's new `h0` hypothesis and its proof (the `σ*`-maximum argument) is now
+   displayed at B.42's ⚠; without `h0` the whole node was refuted (`f = φ`) — the wave-11
+   witness `B42_REFUTATION.lean.txt`. The cross-reader's residual duty is transcription
+   checking; the class-size half of this item is unchanged.]*
 3. **The vacuous-ceiling simplification claim (B.15/B.16, L1160 vicinity).** The corpus's third
    vertex clause ("every point weakly above the polygon") becomes definitionally vacuous under
    the `suppVal`-as-`inf` representation, *claimed as a real simplification*. Check: is the
