@@ -30,3 +30,4 @@ import Uniformity.ChapG
 import Uniformity.ChapG.G78
 import Uniformity.ChapH
 import Uniformity.ChapB
+import Uniformity.ChapE
