@@ -135,6 +135,73 @@ theorem alphaParent_recentre (π : O) {m : ℕ} (b : Fin m → O) (k : ℕ) (ŵ 
     _ = C (π ^ (m * k)) * monicPoly b := by
         rw [mul_comp, C_comp, hinner, ← pow_mul, Nat.mul_comm k m]
 
+/-! ## 2. The parent's reduction and its valuation profile -/
+
+/-- **The reduction of the parent frame.**  With every child coordinate in `𝔪` the child's
+development reduces to `Y ^ m`, so the un-scaled parent frame reduces to `(Y − z) ^ m` — the
+α residual polynomial, before any polygon apparatus is invoked. -/
+theorem alphaFrame_map_residue {m : ℕ} {b : Fin m → O} (hb : ∀ i, b i ∈ maximalIdeal O)
+    (ŵ : O) :
+    (alphaFrame b ŵ).map (residue O) = (X - C (residue O ŵ)) ^ m := by
+  have hmb : (monicPoly b).map (residue O) = (X : Polynomial (ResidueField O)) ^ m := by
+    rw [monicPoly, Polynomial.map_add, Polynomial.map_pow, map_X, Polynomial.map_sum]
+    have hz : ∀ i : Fin m, (C (b i) * X ^ (i : ℕ)).map (residue O) = 0 := by
+      intro i
+      have : residue O (b i) = 0 := Ideal.Quotient.eq_zero_iff_mem.2 (hb i)
+      rw [Polynomial.map_mul, map_C, Polynomial.map_pow, map_X, this, map_zero, zero_mul]
+    rw [Finset.sum_congr rfl (fun i _ => hz i), Finset.sum_const_zero, add_zero]
+  rw [alphaFrame, Polynomial.map_comp, hmb, Polynomial.map_sub, map_X, map_C, pow_comp, X_comp]
+
+/-- **The parent frame's constant coefficient is a UNIT** — this is where `z ≠ 0` enters.  Its
+reduction is `(−z) ^ m`. -/
+theorem alphaFrame_coeff_zero_not_dvd {π : O} (hπ : Irreducible π) {m : ℕ}
+    {b : Fin m → O} (hb : ∀ i, b i ∈ maximalIdeal O) {z : ResidueField O} (hz : z ≠ 0)
+    {ŵ : O} (hŵ : residue O ŵ = z) : ¬ π ∣ (alphaFrame b ŵ).coeff 0 := by
+  intro hdvd
+  have hmem : (alphaFrame b ŵ).coeff 0 ∈ maximalIdeal O := by
+    have := (mem_maximalIdeal_pow_iff_dvd_of_irr hπ 1 ((alphaFrame b ŵ).coeff 0)).2
+      (by rwa [pow_one])
+    rwa [pow_one] at this
+  have h0 : residue O ((alphaFrame b ŵ).coeff 0) = 0 := Ideal.Quotient.eq_zero_iff_mem.2 hmem
+  have hmap : residue O ((alphaFrame b ŵ).coeff 0) = (-z) ^ m := by
+    rw [← coeff_map, alphaFrame_map_residue hb ŵ, hŵ, coeff_zero_eq_eval_zero]
+    simp
+  rw [hmap] at h0
+  exact hz (neg_eq_zero.1 (pow_eq_zero_iff' .. |>.1 h0).1)
+
+/-- The parent's polygon point at abscissa `j` sits on or above the line of slope `−k` through
+`(m, 0)`. -/
+theorem alphaParent_npHgt_ge {π : O} (hπ : Irreducible π) {m : ℕ} (b : Fin m → O) (k : ℕ)
+    (ŵ : O) (j : ℕ) :
+    (((m - j) * k : ℕ) : ℕ∞) ≤ npHgt X (alphaParent π b k ŵ) j := by
+  rw [npHgt_X, ← Uniformity.Hensel.pow_dvd_iff_le_addVal hπ, alphaParent_coeff]
+  exact Dvd.dvd.mul_left (dvd_of_eq (by rw [← pow_mul, Nat.mul_comm k (m - j)])) _
+
+/-- The parent's polygon point at abscissa `0` is EXACTLY `(0, m k)`. -/
+theorem alphaParent_npHgt_zero {π : O} (hπ : Irreducible π) {m : ℕ} {b : Fin m → O}
+    (hb : ∀ i, b i ∈ maximalIdeal O) {z : ResidueField O} (hz : z ≠ 0) (k : ℕ) {ŵ : O}
+    (hŵ : residue O ŵ = z) :
+    npHgt X (alphaParent π b k ŵ) 0 = ((m * k : ℕ) : ℕ∞) := by
+  have hco : (alphaParent π b k ŵ).coeff 0 = (alphaFrame b ŵ).coeff 0 * π ^ (m * k) := by
+    rw [alphaParent_coeff, Nat.sub_zero, ← pow_mul, Nat.mul_comm k m]
+  have hunit : IsDiscreteValuationRing.addVal O ((alphaFrame b ŵ).coeff 0) = 0 := by
+    by_contra hne
+    refine alphaFrame_coeff_zero_not_dvd hπ hb hz hŵ ?_
+    have h1 : ((1 : ℕ) : ℕ∞) ≤ IsDiscreteValuationRing.addVal O ((alphaFrame b ŵ).coeff 0) := by
+      exact_mod_cast Order.one_le_iff_ne_zero.2 hne
+    have h2 := (Uniformity.Hensel.pow_dvd_iff_le_addVal hπ
+      (a := (alphaFrame b ŵ).coeff 0) (n := 1)).2 h1
+    rwa [pow_one] at h2
+  rw [npHgt_X, hco, AddValuation.map_mul, hunit, zero_add, hπ.addVal_pow]
+
+/-- The parent's polygon point at abscissa `m` is EXACTLY `(m, 0)` — the monic top. -/
+theorem alphaParent_npHgt_natDegree (π : O) {m : ℕ} (b : Fin m → O) (k : ℕ) (ŵ : O) :
+    npHgt X (alphaParent π b k ŵ) m = 0 := by
+  have h1 : (alphaParent π b k ŵ).coeff m = 1 := by
+    have := (alphaParent_monic π b k ŵ).coeff_natDegree
+    rwa [alphaParent_natDegree] at this
+  rw [npHgt_X, h1, AddValuation.map_one]
+
 end Parent
 
 end Uniformity.Density.Induction
