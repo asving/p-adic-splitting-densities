@@ -1,0 +1,215 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapB.B04
+import Uniformity.ChapB.B18
+import Uniformity.ChapB.B30
+import Uniformity.ChapB.B34
+import Uniformity.ChapB.B37
+
+
+/-!
+# REFUTATION of the frozen signature of chapter-B NODE B.39 (post-A-F.6)
+
+**This file is evidence, not a node.**  It is kept as `.lean.txt` (the repo's
+`lean/quarantine/*.lean.txt` convention for documented dead ends, followed at
+`B59_REFUTATION.lean.txt`) so that it is never picked up by `Uniformity/ChapB.lean` or by a
+build.  To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapB/B39_REFUTATION.lean.txt /tmp/b39_counter.lean
+cd leanfinal && lake env lean /tmp/b39_counter.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only, 2026-08-16.
+
+## What is refuted
+
+`leanspec/Leanspec/ChapB.lean`, **B.39** `exists_graded_solve`, **as re-signed by amendment
+A-F.6** (commit 43edcc3d; blueprint `CHAP-B_leaf_layer.md` NODE B.39):
+
+```lean
+axiom exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h : Polynomial O}
+    (hg : g.Monic) (hh : h.Monic)
+    (hgd : φ.natDegree ∣ g.natDegree) (hhd : φ.natDegree ∣ h.natDegree)
+    (hgh : GradedCoprime π φ u ℓ g h)
+    {c : ℕ} {e : Polynomial O} (hdeg : e.natDegree < (g * h).natDegree)
+    (he : ((c : ℕ) : ℕ∞) ≤ suppVal φ e u ℓ) :
+    ∃ U V : Polynomial O, U.natDegree < g.natDegree ∧ V.natDegree < h.natDegree ∧
+      ((c + 1 : ℕ) : ℕ∞) ≤ suppVal φ (e - (h * U + g * V)) u ℓ
+```
+
+The theorem below produces, at **any** DVR `O` with **any** uniformizer `π` and **any** key `φ`,
+at `u = ℓ = 1` (so `hu`, `hℓ`, `hcop` all hold), a witness satisfying every hypothesis whose
+conclusion is **unsatisfiable**:
+
+* `g := 1`, `h := φ + C π`, `e := 0`, `c := 0`.
+
+## Why it happens
+
+The A-F.6 repair added `hgd`/`hhd` to exclude the `g = h = X` class, but `g = 1` passes both
+(`φ.natDegree ∣ 0`) and is admitted by every other hypothesis:
+
+1. `IsPure φ 1 u ℓ` **holds**: the polygon of `1` is the single point `(0,0)`, so
+   `suppVal φ 1 u ℓ = 0` and both `IsPure` clauses are `OnSide φ 1 u ℓ 0` (the right endpoint is
+   `(1 : O[X]).natDegree / φ.natDegree = 0`).
+2. `resPoly π φ 1 u ℓ hg' 0 = 1`, so `IsCoprime` against **any** residual polynomial holds
+   (`isCoprime_one_left`) — `GradedCoprime π φ u ℓ 1 h` costs nothing.
+3. `h := φ + C π` is a genuine slope-`(1,1)` pure polynomial (`dev φ h 0 = C π` of height `1`,
+   `dev φ h 1 = 1` of height `0`, `suppVal φ h 1 1 = 1`), of degree `φ.natDegree`, so `hhd` and
+   `hdeg` (`0 < (1 * h).natDegree`) hold.
+4. But the conclusion asks for `U.natDegree < (1 : O[X]).natDegree = 0`, which is `False` in `ℕ`.
+
+**The root cause is a `degree`-to-`natDegree` transcription slip.**  The landed template and the
+node's own field-level input B.38 (`exists_solve_resField`) state the Bézout degree bounds in
+`WithBot ℕ`: `U.degree < (G.natDegree : WithBot ℕ)`.  With `degree`, the degenerate case is fine —
+`(0 : O[X]).degree = ⊥ < 0 = (1 : O[X]).degree` — and `U = V = 0` discharges it.  With
+`natDegree`, "no `U` at all" is expressible only as `False`.
+
+## The two candidate repairs (neither signed here)
+
+* **(R1)** state the bounds in `WithBot ℕ`, i.e. `U.degree < g.degree ∧ V.degree < h.degree`
+  (B.38's own shape, and the shape of the landed ungraded template
+  `Uniformity.Hensel.exists_eq_add_mul_of_degree_lt`); or
+* **(R2)** add `(hgpos : 0 < g.natDegree) (hhpos : 0 < h.natDegree)` — equivalently positivity of
+  the two residual degrees `sideDeg`.  These are free at B.41's call sites **after** B.41's proof
+  splits off the trivial cases `G.natDegree = 0` and `H.natDegree = 0` (where the factorisation is
+  `f = 1 · f` and no iteration is needed), so R2 does not propagate to B.41's own signature.
+
+Nothing else in the A-F.6 repair of this node is affected: the `hu`/`hgd`/`hhd` hypotheses are
+still needed (they are what the graded carry estimate of B.35/B35b consumes), and the route
+(residual Bézout + `resLift`) is untouched.  The defect is only in the shape of the two degree
+bounds in the conclusion.
+-/
+namespace Uniformity.Density.Leaf
+
+open IsLocalRing Polynomial
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+-- `hπ : Irreducible π` is B.39's own hypothesis; it is consumed only to evaluate
+-- `gaussVal (C π) = 1` in the witness `h = φ + C π`.
+theorem b39_signature_refuted (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ) :
+    ∃ g h : Polynomial O, g.Monic ∧ h.Monic ∧
+      φ.natDegree ∣ g.natDegree ∧ φ.natDegree ∣ h.natDegree ∧
+      GradedCoprime π φ 1 1 g h ∧
+      ∃ (e : Polynomial O) (c : ℕ), e.natDegree < (g * h).natDegree ∧
+        ((c : ℕ) : ℕ∞) ≤ suppVal φ e 1 1 ∧
+        ¬ ∃ U V : Polynomial O, U.natDegree < g.natDegree ∧ V.natDegree < h.natDegree ∧
+            ((c + 1 : ℕ) : ℕ∞) ≤ suppVal φ (e - (h * U + g * V)) 1 1 := by
+  classical
+  have hdφ : 0 < φ.natDegree := hφ.pos
+  have hdegφ : (0 : WithBot ℕ) < φ.degree := Polynomial.natDegree_pos_iff_degree_pos.1 hdφ
+  have hCπ : (Polynomial.C π).degree < φ.degree := lt_of_le_of_lt Polynomial.degree_C_le hdegφ
+  have hone : (1 : Polynomial O).degree < φ.degree := by
+    rw [Polynomial.degree_one]; exact hdegφ
+  -- ## the Gauss valuations of the two constants
+  have hgv1 : gaussVal (1 : Polynomial O) = 0 := by
+    rw [gaussVal, Polynomial.natDegree_one, Finset.range_one, Finset.inf_singleton,
+      Polynomial.coeff_one_zero, AddValuation.map_one]
+  have hgvπ : gaussVal (Polynomial.C π) = (1 : ℕ∞) := by
+    rw [gaussVal, Polynomial.natDegree_C, Finset.range_one, Finset.inf_singleton,
+      Polynomial.coeff_C_zero, IsDiscreteValuationRing.addVal_uniformizer hπ]
+  -- ## `g = 1` : the polygon is the single point `(0,0)`
+  have hdev1_0 : dev φ (1 : Polynomial O) 0 = 1 :=
+    (Polynomial.modByMonic_eq_self_iff hφ.monic).2 hone
+  have hnpg : npHgt φ (1 : Polynomial O) 0 = 0 := by rw [npHgt, hdev1_0, hgv1]
+  have hsuppg : suppVal φ (1 : Polynomial O) 1 1 = 0 := by
+    refine le_antisymm ?_ zero_le
+    rw [suppVal]
+    refine le_trans (Finset.inf_le (Finset.mem_range.2 (Nat.succ_pos _))) ?_
+    rw [hnpg]
+    simp
+  have hong : OnSide φ (1 : Polynomial O) 1 1 0 := by
+    show (1 : ℕ) • npHgt φ (1 : Polynomial O) 0 + ((1 * 0 : ℕ) : ℕ∞)
+      = suppVal φ (1 : Polynomial O) 1 1
+    rw [hnpg, hsuppg]
+    simp
+  have hpureg : IsPure φ (1 : Polynomial O) 1 1 := by
+    refine ⟨hong, ?_⟩
+    rw [Polynomial.natDegree_one, Nat.zero_div]
+    exact hong
+  have hg' : (sideSet φ (1 : Polynomial O) 1 1).Nonempty :=
+    sideSet_nonempty hφ.monic hdφ monic_one (μ := 0) (by simp) 1 1
+  -- ## `h = φ + π` : a genuine slope-`(1,1)` side of residual degree 1
+  have hhmonic : (φ + Polynomial.C π).Monic := hφ.monic.add_of_left hCπ
+  have hhdeg : (φ + Polynomial.C π).natDegree = φ.natDegree :=
+    Polynomial.natDegree_eq_of_degree_eq (Polynomial.degree_add_eq_left_of_degree_lt hCπ)
+  have hdivmod := Polynomial.div_modByMonic_unique (f := φ + Polynomial.C π) 1
+    (Polynomial.C π) hφ.monic ⟨by ring, hCπ⟩
+  have hdevh0 : dev φ (φ + Polynomial.C π) 0 = Polynomial.C π := hdivmod.2
+  have hdevh1 : dev φ (φ + Polynomial.C π) 1 = 1 := by
+    rw [dev, hdivmod.1, dev]
+    exact (Polynomial.modByMonic_eq_self_iff hφ.monic).2 hone
+  have hnph0 : npHgt φ (φ + Polynomial.C π) 0 = (1 : ℕ∞) := by rw [npHgt, hdevh0, hgvπ]
+  have hnph1 : npHgt φ (φ + Polynomial.C π) 1 = 0 := by rw [npHgt, hdevh1, hgv1]
+  have hsupph : suppVal φ (φ + Polynomial.C π) 1 1 = (1 : ℕ∞) := by
+    rw [suppVal]
+    refine le_antisymm ?_ (Finset.le_inf fun j hj => ?_)
+    · refine le_trans (Finset.inf_le (Finset.mem_range.2 (Nat.succ_pos _))) ?_
+      rw [hnph0]
+      simp
+    · match j with
+      | 0 => rw [hnph0]; simp
+      | (j + 1) =>
+        refine le_trans ?_ (le_add_self (a := ((1 * (j + 1) : ℕ) : ℕ∞)))
+        exact_mod_cast (by omega : 1 ≤ 1 * (j + 1))
+  have honh : OnSide φ (φ + Polynomial.C π) 1 1 0 := by
+    show (1 : ℕ) • npHgt φ (φ + Polynomial.C π) 0 + ((1 * 0 : ℕ) : ℕ∞)
+      = suppVal φ (φ + Polynomial.C π) 1 1
+    rw [hnph0, hsupph]
+    simp
+  have hpureh : IsPure φ (φ + Polynomial.C π) 1 1 := by
+    refine ⟨honh, ?_⟩
+    rw [hhdeg, Nat.div_self hdφ]
+    show (1 : ℕ) • npHgt φ (φ + Polynomial.C π) 1 + ((1 * 1 : ℕ) : ℕ∞)
+      = suppVal φ (φ + Polynomial.C π) 1 1
+    rw [hnph1, hsupph]
+    simp
+  have hh' : (sideSet φ (φ + Polynomial.C π) 1 1).Nonempty :=
+    sideSet_nonempty hφ.monic hdφ hhmonic (μ := 1) (by rw [hhdeg, one_mul]) 1 1
+  -- ## the residual polynomial of `g = 1` is `1`, so it is coprime to everything
+  have hsubg : ∀ j ∈ sideSet φ (1 : Polynomial O) 1 1, j = 0 := by
+    intro j hj
+    have hj' : j ∈ Finset.filter (OnSide φ (1 : Polynomial O) 1 1)
+        (Finset.range ((1 : Polynomial O).natDegree + 1)) := hj
+    have hjr := Finset.mem_range.1 (Finset.mem_filter.1 hj').1
+    rw [Polynomial.natDegree_one] at hjr
+    omega
+  have hmaxg : sideMax φ (1 : Polynomial O) 1 1 hg' = 0 :=
+    Nat.le_zero.1 (Finset.max'_le _ _ _ fun y hy => Nat.le_of_eq (hsubg y hy))
+  have hming : sideMin φ (1 : Polynomial O) 1 1 hg' = 0 :=
+    Nat.le_zero.1 (hmaxg ▸ Finset.min'_le _ _ (Finset.max'_mem _ hg'))
+  have hsdg : sideDeg φ (1 : Polynomial O) 1 1 hg' = 0 := by
+    rw [sideDeg, hming, hmaxg]
+  have hresg : resPoly π φ (1 : Polynomial O) 1 1 hg' 0 = 1 := by
+    rw [resPoly, hsdg, Finset.range_one, Finset.sum_singleton, pow_zero, mul_one, resCoeff,
+      hming]
+    have hz : resMk π φ (0 - 1 * 0) (dev φ (1 : Polynomial O) (0 + 1 * 0)) = 1 := by
+      rw [Nat.mul_zero, Nat.sub_zero, Nat.add_zero, hdev1_0, resMk,
+        digPoly_eq_map hπ (a := (1 : Polynomial O)) (b := 1) (by simp), Polynomial.map_one,
+        map_one]
+    rw [hz, Polynomial.C_1]
+  -- ## the hypotheses of B.39 all hold
+  refine ⟨1, φ + Polynomial.C π, monic_one, hhmonic, ?_, ?_, ?_, 0, 0, ?_, ?_, ?_⟩
+  · rw [Polynomial.natDegree_one]; exact dvd_zero _
+  · rw [hhdeg]
+  · exact ⟨0, 1, hg', hh', by rw [hnpg]; simp, by rw [hnph0]; simp, hpureg, hpureh,
+      by rw [hresg]; exact isCoprime_one_left⟩
+  · rw [Polynomial.natDegree_zero, one_mul, hhdeg]; exact hdφ
+  · simp
+  -- ## but the conclusion is unsatisfiable: `U.natDegree < (1 : O[X]).natDegree = 0`
+  · rintro ⟨U, V, hU, -⟩
+    rw [Polynomial.natDegree_one] at hU
+    omega
+
+end Uniformity.Density.Leaf
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+#print axioms Uniformity.Density.Leaf.b39_signature_refuted
+end AxCheck
