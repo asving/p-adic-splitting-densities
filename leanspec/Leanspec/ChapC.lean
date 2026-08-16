@@ -2305,7 +2305,28 @@ A-C.1 determinations (per node in the blueprint): the tree is INDEX-ENCODED (`no
 set as a `Finset (ℕ × ℕ)` with a `sideType` function, and its orbit factor `kappa` as DATA
 (the factorial computation rule is the corpus's, recorded; C.116's manifest keeps the
 tags); the branch/global count FORMULAS land as arithmetic defs (`htBranchCount`,
-`htGlobalCount`) and the count laws tie the realization strata to them. -/
+`htGlobalCount`) and the count laws tie the realization strata to them.
+
+**[re-signed: A-C.2, 2026-08-16 — the defect-repair amendment on the wave refutation
+`leanfinal/Uniformity/ChapC/C109_REFUTATION.lean.txt`].**  The A-C.1 transcription made
+`L`, `sides`, the pin clause, and the arithmetic-shadow inequality FREE where the corpus
+determines them; four repairs, all source-adjudicated (`EFF.W12.23`/`.24`/`.83`), all
+certified (`verification/c109_ac2_cell_check.py`, 127 checks) and machine-refuted where
+frozen (`C109_REFUTATION.lean.txt`, `C111_C114_REFUTATION.lean.txt`):
+(1) C.108 gains the node polygon reads (`OnHull`/`IsVertex`/`NodeOnSide`/`nodeSideSet`/
+`IsSide`/`nodeSideDeg`) and the well-formedness predicate `HTNode.WF`; `htCell`'s polygon
+pin is re-signed to `EFF.W12.23`'s three-way law (`≥ Pceil` everywhere, `=` at vertices).
+(2) C.109 takes `(hwf : v.WF)` inline; NEW node C.109a `dev_box_bridge` (the level-`N`
+development ↔ coefficient-box bridge, the refutation record's named cost).
+(3) C.111 is re-signed to the honest telescope: the corpus's PER-NODE inequality
+(`EFF.W12.85`'s `#U_v = Q^{B_v−ΣD_u}` shadow) becomes the hypothesis `hnode`; `hvis`
+dropped as dead weight.
+(4) C.114's `htRealizes` pin re-signed like `htCell`'s; its two count axioms `ht_branch`/
+`ht_global` are WITHDRAWN (refutable as frozen — the stratum reads none of `kappa`,
+`kappa0`, `s`, non-root `sideType`s, nor child-completeness) and the node is BLOCKED
+pending the realizes-refinement re-sign (A-C.3 target; clause list in the amendment).
+C.110/C.112/C.113/C.115 audited: no re-sign (C.112 carries its inequality as the
+hypothesis `hBD`; C.115 is formula-level, true for arbitrary `v`). -/
 
 /-! ### NODE C.107 [def] — the residual censuses [signed: A-C.1] -/
 
@@ -2358,6 +2379,53 @@ def HTNode.B (v : HTNode) (N : ℕ) : ℕ :=
 def HTNode.D (v : HTNode) (N : ℕ) : ℕ :=
   ∑ j ∈ Finset.range v.m, (N - ((v.m - j) * v.s + 1))
 
+/- [A-C.2] the node polygon read off `Pceil` (chord tests, ℚ-free).  The lower convex hull
+of the ceiled points `{(j, ⌈P(j)⌉) : j ≤ m}` IS the polygon `P`, so all reads are
+ℕ-arithmetic on `Pceil`; certified against direct rational hull geometry
+(`verification/c109_ac2_cell_check.py`, the `[ENC]` leg). -/
+
+/-- [A-C.2] `(j, ⌈P_v(j)⌉)` lies on the hull: on/below every bracketing chord.  Under
+`HTNode.WF` this is the corpus's "`P_v(j) ∈ ℤ`" (the integral boundary positions). -/
+def HTNode.OnHull (v : HTNode) (j : ℕ) : Prop :=
+  ∀ i k : ℕ, i ≤ j → j ≤ k → k ≤ v.m →
+    (k - i) * v.Pceil j ≤ (k - j) * v.Pceil i + (j - i) * v.Pceil k
+
+/-- [A-C.2] `(j, ⌈P_v(j)⌉)` is a VERTEX: strictly below every properly bracketing chord
+(endpoints vacuously vertices; `IsVertex → OnHull`). -/
+def HTNode.IsVertex (v : HTNode) (j : ℕ) : Prop :=
+  ∀ i k : ℕ, i < j → j < k → k ≤ v.m →
+    (k - i) * v.Pceil j < (k - j) * v.Pceil i + (j - i) * v.Pceil k
+
+/-- [A-C.2] B.16's `OnSide` at the node data: `j` attains the `(u, ℓ)`-support minimum. -/
+def HTNode.NodeOnSide (v : HTNode) (u ℓ j : ℕ) : Prop :=
+  ∀ i : ℕ, i ≤ v.m → ℓ * v.Pceil j + u * j ≤ ℓ * v.Pceil i + u * i
+
+/-- [A-C.2] B.16's `sideSet` at the node data: for a genuine side, its lattice abscissae. -/
+noncomputable def HTNode.nodeSideSet (v : HTNode) (u ℓ : ℕ) : Finset ℕ :=
+  open Classical in (Finset.range (v.m + 1)).filter (v.NodeOnSide u ℓ)
+
+/-- [A-C.2] `(u, ℓ)` is a genuine side: cleared slope pair, support set of `≥ 2` points. -/
+def HTNode.IsSide (v : HTNode) (u ℓ : ℕ) : Prop :=
+  0 < ℓ ∧ Nat.Coprime u ℓ ∧ 2 ≤ (v.nodeSideSet u ℓ).card
+
+/-- [A-C.2] B.20's `sideDeg` at the node data: `(sideMax − sideMin)/ℓ`, junk `0` off. -/
+noncomputable def HTNode.nodeSideDeg (v : HTNode) (u ℓ : ℕ) : ℕ :=
+  ((v.nodeSideSet u ℓ).max.getD 0 - (v.nodeSideSet u ℓ).min.getD 0) / ℓ
+
+open Classical in
+/-- [A-C.2] **node well-formedness** — the corpus's implicit coherence of the node datum
+(`EFF.W12.83`'s `L_v = #{j < m_v : P_v(j) ∈ ℤ}` display; the census product over the sides
+OF THE POLYGON): (i) monic top; (ii) ceiled-consistency (`Pceil` is pointwise the ceiling
+of its own hull); (iii) the `L` law; (iv) the sides law; (v) the side-type degree law.
+Every §11 count law takes it INLINE (the frozen C.109 without it is machine-refuted). -/
+def HTNode.WF (v : HTNode) : Prop :=
+  v.Pceil v.m = 0 ∧
+  (∀ i j k : ℕ, i ≤ j → j ≤ k → k ≤ v.m → i < k →
+    (k - i) * v.Pceil j < (k - j) * v.Pceil i + (j - i) * v.Pceil k + (k - i)) ∧
+  v.L = ((Finset.range v.m).filter v.OnHull).card ∧
+  (∀ u ℓ : ℕ, ((u, ℓ) ∈ v.sides ↔ v.IsSide u ℓ)) ∧
+  (∀ u ℓ : ℕ, (u, ℓ) ∈ v.sides → (v.sideType u ℓ).degree = v.nodeSideDeg u ℓ)
+
 /-- the index-encoded finite tree: node `0` is the root; `parent i < i` is well-formedness. -/
 structure HTTree where
   nodes : List HTNode
@@ -2373,12 +2441,16 @@ def conservativeCell (m s : ℕ) : Set (ℕ → ℕ∞) :=
 /-- the exact node cell on members: pinned polygon + prescribed per-side residual types.
 (`π` explicit — it appears only in the membership predicate; the domain/UFD instances on
 `resField Φ` are derivable from `IsKey Φ` via `instFieldResField` at every consumer, taken
-as binders here.) -/
+as binders here.)  [re-signed: A-C.2 — the polygon pin is `EFF.W12.23`'s three-way law in
+ceiled form: `≥ Pceil` at every `j ≤ m`, equality exactly at the hull VERTICES; the retired
+equality-everywhere pin was strictly smaller than the corpus cell at every non-vertex
+position (certified: mutation M3 of `verification/c109_ac2_cell_check.py`).] -/
 def htCell (π : O) (Φ : Polynomial O) [IsDomain (resField Φ)]
     [UniqueFactorizationMonoid (resField Φ)] (v : HTNode) :
     Set (Polynomial O) :=
   {f | f.Monic ∧ f.natDegree = v.m * Φ.natDegree ∧
-    (∀ j, j ≤ v.m → npHgt Φ f j = (v.Pceil j : ℕ∞)) ∧
+    (∀ j, j ≤ v.m → (v.Pceil j : ℕ∞) ≤ npHgt Φ f j) ∧
+    (∀ j, j ≤ v.m → v.IsVertex j → npHgt Φ f j = (v.Pceil j : ℕ∞)) ∧
     ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → (u, ℓ) ∈ v.sides →
       ∀ (hne : (sideSet Φ f u ℓ).Nonempty) (H₀ : ℕ),
         npHgt Φ f (sideMin Φ f u ℓ hne) = (H₀ : ℕ∞) →
@@ -2411,14 +2483,33 @@ noncomputable def htGlobalCount (S : HTShape) (q : ℕ)
         if b.2.1 = 1 then q ^ (b.1 * (N - 1))
         else htBranchCount (q ^ b.1) (census i) b.2.2 N)).prod
 
-/-! ### NODE C.109 [lemma] — Step 1: the exact node cell [signed: A-C.1] -/
+/-! ### NODE C.109a [lemma] — the level-`N` development ↔ coefficient-box bridge
+[signed: A-C.2 — NEW node; the refutation record's named cost: "formalizing it needs the
+level-`N` development↔coefficient-box bridge (`Coeff O (m·d) N ≃ Fin m → Coeff O d N`
+through `dev`, well defined by B.10), which does not exist in `leanfinal` yet and is the
+real cost of C.109"].  The `∃`-form pins the equivalence componentwise THROUGH `dev` at an
+arbitrary lift, so level-`N` well-definedness of the development (B.10's content) is part
+of the claim, not an assumption. -/
+
+axiom dev_box_bridge {Φ : Polynomial O} (hΦm : Φ.Monic) (hΦd : 0 < Φ.natDegree)
+    (m N : ℕ) :
+    ∃ E : Coeff O (m * Φ.natDegree) N ≃ (Fin m → Coeff O Φ.natDegree N),
+      ∀ (a : Fin (m * Φ.natDegree) → O) (j : Fin m) (i : Fin Φ.natDegree),
+        E (proj O (m * Φ.natDegree) N a) j i
+          = Ideal.Quotient.mk ((IsLocalRing.maximalIdeal O) ^ N)
+              ((dev Φ (monicPoly a) (j : ℕ)).coeff (i : ℕ))
+
+/-! ### NODE C.109 [lemma] — Step 1: the exact node cell [re-signed: A-C.2 — gains
+`(hwf : v.WF)`; the frozen form (no `hwf`) is machine-refuted at
+`leanfinal/Uniformity/ChapC/C109_REFUTATION.lean.txt`; the re-signed law is certified at
+13 exact-count instances, `verification/c109_ac2_cell_check.py`] -/
 
 axiom ht_node_cell_card (hπ : Irreducible π)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
     {Φ : Polynomial O} (hΦ : IsKey Φ)
     [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
     [Finite (resField Φ)]  -- all derivable from hΦ; binders for elaboration
-    (v : HTNode) (N : ℕ)
+    (v : HTNode) (hwf : v.WF) (N : ℕ)
     (hvis : ∀ j, j ≤ v.m → v.Pceil j < N) :
     Nat.card {c : Coeff O (v.m * Φ.natDegree) N //
         ∃ a : Fin (v.m * Φ.natDegree) → O,
@@ -2448,14 +2539,22 @@ axiom ht_transfer_residual_iff (hπ : Irreducible π)
           = (Polynomial.X - Polynomial.C (algebraMap (ResidueField O) (resField Φ)
               (digAt π 0 z))) ^ a
 
-/-! ### NODE C.111 [theorem] — Step 3: the fiber [signed: A-C.1 AT THE ARITHMETIC SHADOW:
-exponent nonnegativity; the multiplication-bijection engine is the booked B.37–B.40
-weighted-grading RE-PLAN — recorded] -/
+/-! ### NODE C.111 [theorem] — Step 3: the fiber [re-signed: A-C.2 AT THE ARITHMETIC
+SHADOW: the frozen form (hypotheses `hwf` + `hvis` only) is machine-refuted
+(`C111_C114_REFUTATION.lean.txt`: nothing ties a child's `s` to its placement) and even
+per-node `HTNode.WF` cannot rescue it (numeric leg [C111] of the certification).  The
+corpus derives nonnegativity PER NODE from the fiber bijection (`EFF.W12.85`:
+`#U_v(𝐑) = Q^{B_v(N)−Σ_u D_u(N)}`, "the exponent is a nonnegative integer"), so the honest
+arithmetic shadow carries the per-node inequality as the hypothesis `hnode` — discharged by
+the fleet's bijection at realized nodes — and keeps the telescope as the node's content.
+`hvis` dropped as dead weight (the A-F.12 minimality rule); the multiplication-bijection
+engine remains the booked B.37–B.40 weighted-grading RE-PLAN — recorded] -/
 
 axiom ht_fiber_exponent_nonneg (t : HTTree) (hwf : t.WF) (N : ℕ)
-    (hvis : ∀ i, i < t.nodes.length →
-      ∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
-        (t.nodes.getD i HTNode.default0).Pceil j < N) :
+    (hnode : ∀ i, i < t.nodes.length →
+      ((((List.range t.nodes.length).drop 1).filter (fun u => t.parent u == i)).map
+        (fun u => (t.nodes.getD u HTNode.default0).D N)).sum
+        ≤ (t.nodes.getD i HTNode.default0).B N) :
     (((List.range t.nodes.length).drop 1).map
         (fun i => (t.nodes.getD i HTNode.default0).D N)).sum
       ≤ ((List.range t.nodes.length).map
@@ -2499,63 +2598,46 @@ axiom ht_leaf_certified (hπ : Irreducible π)
       ((∀ g' ∈ monicFactors gr, (φ.natDegree * r.natDegree) ∣ inertiaDegOf g') →
         typeOf gr = ⟨{(ℓ, φ.natDegree * r.natDegree)}⟩ ∧ Irreducible gr)
 
-/-! ### NODE C.114 [theorem] — `(HT-branch)` + `(HT-global)` [signed: A-C.1; the strata via
-the `htRealizes` carrier; the per-node residual-type/side-tag refinements ride `htCell` and
-are BOOKED as the fleet's realizes-refinement — recorded at the node] -/
+/-! ### NODE C.114 [theorem] — `(HT-branch)` + `(HT-global)` [BLOCKED: A-C.2 — the two
+count axioms are WITHDRAWN; `htRealizes`' pin clause re-signed (the C.108 D3 fix)].
+
+The A-C.1 signature note had BOOKED "the per-node residual-type/side-tag refinements ride
+`htCell`" to the fleet.  The A-C.2 audit shows the booking is SIGNATURE-critical, not
+proof-side: as frozen, the stratum reads none of `kappa`, `kappa0`, `s`, the non-root
+`sideType`s, nor the child-completeness of the tree, all of which `htBranchCount`/
+`htGlobalCount` read — both axioms are machine-refuted
+(`leanfinal/Uniformity/ChapC/C111_C114_REFUTATION.lean.txt`: `c114_branch_frozen_false`,
+`c114_global_frozen_false`), so they cannot stand in this file (a refutable axiom is a live
+inconsistency).  They are withdrawn pending the realizes-refinement re-sign (A-C.3 target);
+the amendment records the designed clause list: per-node `HTNode.WF`; per-node cell
+membership `G i ∈ htCell π (K i) (node i)` (subsumes the polygon pins and pins the types);
+the `s`-pin `gaussVal (K i − K (t.parent i)) = (s_i : ℕ∞)`; sibling distinctness on a side;
+child-count = the side type's repeated-linear count (completeness at the data level); and
+the `(HT-orbit)` κ-rule at tree level.  The withdrawn signatures are preserved verbatim in
+the refutation record (`C114BranchFrozen`, `C114GlobalFrozen`). -/
 
 /-- `f` realizes the tree `t` at the key `Φ`: cluster factors and recentered keys per node,
-child clusters dividing their parents. -/
+child clusters dividing their parents.  [re-signed: A-C.2 — the polygon pin clause takes
+the same hull form as `htCell`'s (defect D3): `≥ Pceil` everywhere, equality at vertices.
+The realizes-refinement (see the node note above) will extend this carrier; the pin fix is
+recorded now so downstream re-signs build on the faithful form.] -/
 def htRealizes (Φ f : Polynomial O) (t : HTTree) : Prop :=
   ∃ (G K : ℕ → Polynomial O), K 0 = Φ ∧ G 0 = f ∧
     ∀ i, i < t.nodes.length →
       (G i).Monic ∧
       (G i).natDegree = (t.nodes.getD i HTNode.default0).m * (K i).natDegree ∧
       (∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+        ((t.nodes.getD i HTNode.default0).Pceil j : ℕ∞) ≤ npHgt (K i) (G i) j) ∧
+      (∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+        (t.nodes.getD i HTNode.default0).IsVertex j →
         npHgt (K i) (G i) j = ((t.nodes.getD i HTNode.default0).Pceil j : ℕ∞)) ∧
       (0 < i → G i ∣ G (t.parent i) ∧
         (K i).natDegree = (K (t.parent i)).natDegree ∧
         (K i - K (t.parent i)).natDegree < (K i).natDegree)
 
-axiom ht_branch (hπ : Irreducible π)
-    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
-    {Φ : Polynomial O} (hΦ : IsKey Φ)
-    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
-    [Finite (resField Φ)]
-    (t : HTTree) (hwf : t.WF)
-    (hroot : 0 < t.nodes.length) (N : ℕ)
-    (hvis : ∀ i, i < t.nodes.length →
-      ∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
-        (t.nodes.getD i HTNode.default0).Pceil j < N) :
-    Nat.card {c : Coeff O ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) N //
-        ∃ a : Fin ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) → O,
-          proj O ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) N a = c ∧
-          monicPoly a ∈ htCell π Φ (t.nodes.getD 0 HTNode.default0) ∧
-          htRealizes Φ (monicPoly a) t}
-      = htBranchCount (Nat.card (resField Φ))
-          (fun lam => sideCensus (resField Φ) lam) t N
-
-axiom ht_global (hπ : Irreducible π)
-    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
-    (S : HTShape) (Φb : ℕ → Polynomial O) (n N : ℕ)
-    (hn : n = ((List.range S.branches.length).map
-      (fun i => (S.branches.getD i (0, 0, default)).1
-        * (S.branches.getD i (0, 0, default)).2.1)).sum)
-    (hkeys : ∀ i, i < S.branches.length → IsKey (Φb i) ∧
-      (Φb i).natDegree = (S.branches.getD i (0, 0, default)).1)
-    (instD : ∀ i, IsDomain (resField (Φb i)))
-    (instU : ∀ i, UniqueFactorizationMonoid (resField (Φb i)))
-    (instFin : ∀ i, Finite (resField (Φb i))) :
-    Nat.card {c : Coeff O n N // ∃ a : Fin n → O, proj O n N a = c ∧
-        ∃ G : ℕ → Polynomial O,
-          monicPoly a = ∏ i ∈ Finset.range S.branches.length, G i ∧
-          ∀ i, i < S.branches.length → (G i).Monic ∧
-            (G i).map (IsLocalRing.residue O)
-              = ((Φb i).map (IsLocalRing.residue O))
-                  ^ (S.branches.getD i (0, 0, default)).2.1 ∧
-            ((S.branches.getD i (0, 0, default)).2.1 = 1 ∨
-              htRealizes (Φb i) (G i) (S.branches.getD i (0, 0, default)).2.2)}
-      = htGlobalCount S (residueCard O)
-          (fun i lam => @sideCensus (resField (Φb i)) _ (instD i) (instU i) (instFin i) lam) N
+-- [A-C.2] `axiom ht_branch` and `axiom ht_global` WITHDRAWN here (machine-refuted as
+-- frozen; see the node note above and `C111_C114_REFUTATION.lean.txt`).  Node C.114 is
+-- BLOCKED pending the realizes-refinement re-sign (A-C.3).
 
 /-! ### NODE C.115 [lemma] — specializations [signed: A-C.1 at the depth-zero clause; the
 obstruction-instance and L0-shape values are §13's executed `htSpot` rows (the D15 block)] -/
@@ -2571,10 +2653,11 @@ section C116Manifest
 #check @HTNode.D          -- the clipped history quantity (the C.53 discipline)
 #check @HTNode.kappa      -- the side-tagged orbit factor: A MANDATORY TAG (Phase-B contract)
 #check @HTNode.sideType   -- side tags: MANDATORY (roots on different sides never permute)
+#check @HTNode.WF         -- [A-C.2] node well-formedness: MANDATORY on every count law
 #check @htBranchCount
 #check @htGlobalCount
-#check @ht_branch
-#check @ht_global
+-- [A-C.2] `#check @ht_branch` / `#check @ht_global` removed: the two axioms are WITHDRAWN
+-- (machine-refuted as frozen); see NODE C.114's note and C111_C114_REFUTATION.lean.txt.
 end C116Manifest
 
 /-! ## A-C.1 §12 — LEVEL-`N` TOWER CERTIFICATES (C.117–C.122) -/
