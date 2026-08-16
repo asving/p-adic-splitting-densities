@@ -534,6 +534,89 @@ theorem coeff_zero_recentre_alphaParent_not_dvd {π : O} (hπ : Irreducible π) 
 
 end Planted
 
+/-! ## 4. The exact peel (C2) -/
+
+section Peel
+
+/-- **The exact peel (C2).**  Every monic lift of a non-drain state carrying a `(μ, k, z)`-child
+factors EXACTLY, in `O[X]` and with no `π`-power in front, as the PLANTED factor at the pinned
+centre times a monic cofactor:
+
+`monicPoly a = alphaParent π b k (resSect O z) * Q`,
+
+with `b` the child lift H.116 clause (i) produces — so `proj b` IS the `betaChild` class — and
+`Q` monic of degree `m − μ`.
+
+This upgrades clause (i)'s FRAME identity (an equation after recentring, carrying an explicit
+`C (π ^ D)`) to a factorization of the lift itself.  Mechanism: divide `monicPoly a` by the
+monic planted factor; the remainder's frame is a multiple of the child's development
+`monicPoly b` (degree `μ`) but has degree `< μ`, so it vanishes, and the recentring is
+injective. -/
+theorem exists_peel {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π)
+    {m N μ k : ℕ} {z : ResidueField O} (hm : 2 ≤ m) (hN : 1 ≤ N)
+    (c : ClusterState O m N) (h : HasChildAt π c μ k z) (h0 : ¬ IsDrainState c)
+    (a : Fin m → O) (ha : proj O m N a = c.1) :
+    ∃ (b : Fin μ → O) (Q : Polynomial O), (∀ i, b i ∈ maximalIdeal O) ∧
+      Q.Monic ∧ Q.natDegree = m - μ ∧
+      monicPoly a = alphaParent π b k (resSect O z) * Q ∧
+      proj O μ (N - betaContent c k) b
+        = (betaChild π c h (N - betaContent c k)).1 := by
+  classical
+  have hπ0 : π ≠ 0 := hπ.ne_zero
+  have hμ2 : 2 ≤ μ := h.1
+  have hk1 : 1 ≤ k := h.2.1
+  -- the child degree sits under the parent degree (H.108's cap through `mul_le_betaContent`)
+  have hμm : μ ≤ m := by
+    have h1 := mul_le_betaContent h
+    have h2 := betaContent_le_mul c k
+    have h3 : k * μ ≤ k * m := by rw [Nat.mul_comm k m]; omega
+    exact Nat.le_of_mul_le_mul_left h3 hk1
+  obtain ⟨b, H', hbmem, hbeq, hbproj⟩ := betaChild_spec hπ hm hN c h h0 a ha
+  set P := alphaParent π b k (resSect O z) with hPdef
+  set Q := monicPoly a /ₘ P with hQdef
+  set R := monicPoly a %ₘ P with hRdef
+  have hPmonic : P.Monic := alphaParent_monic π b k _
+  have hPdeg : P.natDegree = μ := alphaParent_natDegree π b k _
+  have hdiv : R + P * Q = monicPoly a := modByMonic_add_div (monicPoly a) P
+  have hSdeg : (C (π ^ k) * (X + C (resSect O z)) : Polynomial O).natDegree ≤ 1 := by
+    refine le_trans natDegree_mul_le ?_
+    rw [natDegree_C, natDegree_X_add_C]
+  have hRdeg : R.natDegree < μ := by
+    by_cases hR0 : R = 0
+    · rw [hR0, natDegree_zero]; omega
+    · have hlt := degree_modByMonic_lt (monicPoly a) hPmonic
+      rw [Polynomial.degree_eq_natDegree hPmonic.ne_zero, hPdeg, ← hRdef] at hlt
+      exact (Polynomial.natDegree_lt_iff_degree_lt hR0).2 hlt
+  -- the remainder's frame is a multiple of the child's development
+  have hRcompdvd : monicPoly b ∣ R.comp (C (π ^ k) * (X + C (resSect O z))) := by
+    refine ⟨C (π ^ betaContent c k) * H'
+      - C (π ^ (μ * k)) * (Q.comp (C (π ^ k) * (X + C (resSect O z)))), ?_⟩
+    have hcomp := congrArg (fun p : Polynomial O =>
+      p.comp (C (π ^ k) * (X + C (resSect O z)))) hdiv
+    simp only [add_comp, mul_comp] at hcomp
+    rw [hPdef, alphaParent_recentre, hbeq] at hcomp
+    linear_combination (norm := ring_nf) hcomp
+  have hRcomp0 : R.comp (C (π ^ k) * (X + C (resSect O z))) = 0 := by
+    refine eq_zero_of_dvd_of_natDegree_lt hRcompdvd ?_
+    rw [monicPoly_natDegree]
+    refine lt_of_le_of_lt natDegree_comp_le ?_
+    calc R.natDegree * (C (π ^ k) * (X + C (resSect O z)) : Polynomial O).natDegree
+        ≤ R.natDegree * 1 := Nat.mul_le_mul_left _ hSdeg
+      _ < μ := by rw [Nat.mul_one]; exact hRdeg
+  have hR0 : R = 0 := by
+    refine comp_recentre_injective (pow_ne_zero k hπ0) (resSect O z) ?_
+    rw [hRcomp0, zero_comp]
+  have hfac : monicPoly a = P * Q := by rw [← hdiv, hR0, zero_add]
+  have hQmonic : Q.Monic := hPmonic.of_mul_monic_left (by rw [← hfac]; exact monicPoly_monic a)
+  have hQdeg : Q.natDegree = m - μ := by
+    have hd := congrArg Polynomial.natDegree hfac
+    rw [monicPoly_natDegree, natDegree_mul hPmonic.ne_zero hQmonic.ne_zero, hPdeg] at hd
+    omega
+  exact ⟨b, Q, hbmem, hQmonic, hQdeg, hfac, hbproj⟩
+
+end Peel
+
 end Uniformity.Density.Induction
 
 /-! ## Axiom footprint (stages 1–2: §1–§3) -/
@@ -551,5 +634,6 @@ section AxCheck
 #print axioms Uniformity.Density.Induction.pow_min_dvd_coeff_recentre_alphaParent
 #print axioms Uniformity.Density.Induction.pow_min_succ_dvd_coeff_recentre_alphaParent_sub
 #print axioms Uniformity.Density.Induction.coeff_zero_recentre_alphaParent_not_dvd
+#print axioms Uniformity.Density.Induction.exists_peel
 
 end AxCheck
