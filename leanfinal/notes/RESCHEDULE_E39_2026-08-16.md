@@ -1,7 +1,16 @@
 # RESCHEDULE record — NODE E.39 (`LB1Carrier`), Chapter-E fleet wave 4, agent 3
 
-**Date.** 2026-08-16. **Verdict.** BLOCKED — one SIGNATURE-referenced definition not landed.
-**Pre-check only; the carrier was not attempted, not weakened, no partial declaration committed.**
+> **RESOLVED SAME SESSION — E.39 IS LANDED.** The blocking dependency **E.14 landed at commit
+> `5749eb93`** (a sibling agent) minutes after this record was written, and **E.39 landed at
+> `33786ddf`** (`leanfinal/Uniformity/ChapE/E39.lean`, `lake build Uniformity.ChapE.E39` green,
+> `LB1Carrier` Lean-core). The record is kept, not deleted: its dependency analysis is the reason
+> `BlockSuite` lives in its own module (`E39a.lean`) rather than inside `E39.lean`, and the
+> "adjacent scheduling consequence" section below still holds for **E.41** and **E.44**. Read the
+> rest as of the moment of the pre-check.
+
+**Date.** 2026-08-16. **Verdict.** BLOCKED at pre-check — one SIGNATURE-referenced definition not
+landed *at that time*. **The carrier was not attempted, not weakened, no partial declaration
+committed** while the dependency was missing.
 
 This agent's two other assignments LANDED this session:
 
@@ -74,3 +83,14 @@ E.44 (`LadderObligations`, whose field list is `lb1 : LB1Carrier … , mp1 : MP1
 E.14 → E.39. E.41 (`clause12_lb1_free`) also reads `I.SepSide` in its hypotheses and is blocked on
 E.14 for the same reason — scheduling E.14 unblocks three nodes at once (E.39, E.41, and, with
 E.39, E.44).
+
+**Post-resolution status of that paragraph (2026-08-16, after `5749eb93` + `33786ddf`).**
+E.14 and E.39 are landed, so:
+
+* **E.44 is UNBLOCKED on both fields** — `lb1 : LB1Carrier.{uO, uK, uW} C B` from
+  `Uniformity.ChapE.E39` and `mp1 : MP1Carrier.{uO, uK, uW} C B` from `Uniformity.ChapE.E40`.
+  Its A-E.2 re-sign is *semantic, through the carriers*: the field list is byte-unchanged, and it
+  is strengthened only because the two carriers are. Whoever lands it imports E.39 and E.40 and
+  re-declares neither.
+* **E.41 is UNBLOCKED** — `RungInterface.SepSide` is landed at `E14.lean:89`; E.41's other
+  reference (E.16, `he7a_clause12`) still needs its own pre-check.
