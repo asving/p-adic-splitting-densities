@@ -8531,3 +8531,67 @@ rows, 1 finding (F-H17.1) + 1 proposed amendment (PA-H17.1, owner: orchestrator)
 standing fences carried (F-1, F-2/S-1). The H.98 fence stands: GENIND.B remains a
 reduction; H.124 is its composed conditional form, hypothesis visible. CODEX/decorrelated
 CROSS-READ OWED, like every same-family blueprint artifact of this campaign.*
+
+---
+
+## AMENDMENT A-H.3 (2026-08-16, dated append; unit OM-6) — THE GENHN-3 GENERAL-CONSULTATION
+## APPENDIX `H89w.lean`: ORCHESTRATOR ITEM O-2 BOOKED
+
+**Provenance.** CHAP-I's honesty item I-11(ii) + orchestrator item O-2: *"book the `LEMMA
+GENHN-3` cap/consultation transcription (`EFF.GENHN.29` beyond the (c) bound H.51 consumes) —
+the general window-pinning supplier; candidate: an H-appendix node next to H.89."* This
+amendment books it at exactly that candidate home, as an **H.89-adjacent appendix file** (the
+H09w precedent: header contract, no blueprint node number), landed
+`leanfinal/Uniformity/ChapH/H89w.lean` (17 declarations, sorry-free, Lean-core footprints
+only; registered in the `ChapH.lean` roll-up; full build green, 8,569 jobs). Unit record with
+per-clause certifications: `docs/openmath-campaign/OM-6_window-pinning_2026-08-16.md`; numeric
+leg `verification/om6_window_pinning_check.py` (26/26 exact checks, both primes, both
+characteristics, constructed-counterexample attacks).
+
+**What lands (per GENHN-3 clause, `EFF.GENHN.29` at its rider-corrected TERMINAL wording).**
+* **(c) general `e₁`**: `consulted_le_cap` + `cap_le_string_end` (the two displayed
+  inequalities, verbatim scope) + `consulted_inside_string` (the "inside the string"
+  conclusion, OCCUPIED form). H.51's (c)-bound consumption and H.89's `e₁ = 2` shadow are
+  thereby joined by the general statement.
+* **(b) general `e₁`**: `string_end_le`/`string_end_mem`/`string_ends_ragged` +
+  `bandCard` (`= min(⌊ih/e₁⌋, N)` — H.46's `raggedBand_card` generalized; gate ties the
+  genre-E value `t`).
+* **(a) interior** (R4 F-1 rider form): `out_window_dv_ge` + `interior_min_stable` (the
+  SUFFICIENT criterion) + `no_tie_at_cap` (coprimality load-bearing) + `cap_undercuts` (the
+  instability witness pair).
+* **(a) band, `f₁ ≥ 2`** (`[r2]`/CAP-GEN arithmetic layer): `compVis` + interior/band/beyond
+  laws + the committed `(1,3,2)` instance numbers through H.44's `pinCensus`
+  (`3·2¹³ + 2¹³ = 2¹⁵`, `7·2¹⁸ + 2¹⁸ = 2²¹`, machine-checked).
+* **(d)**: `recenter_descends` (the update descends to `R⧸I` for every commutative ring —
+  both ring types in one statement) + `recenter_coeff_hasse` (the Hasse-derivative
+  triangularity display).
+
+**FINDING F-OM6.1 (scope pin, machine-refuted reading — recorded, source NOT edited).** The
+(c) display's closing *"— inside the string"* is FALSE without an occupancy pin: at
+`(e₁, h, m) = (3, 2, 1)` the congruence and cap hypotheses hold with `i(m) = 2`, but `m` is
+not an occupied class-2 height (`a(m) = −1`). This is the SAME defect family
+`EFF.GENHN.28`'s second conditionality records for the normalizer display (its witness
+`(3, 1, 2, 1)`), there governed by the post-D2b `D′h < m` scope pin. Machine witness:
+`unoccupied_height_witness` (Lean) + CERT-1 ATTACK (script). The two displayed INEQUALITIES
+survive the attack and are landed verbatim; the membership conclusion is landed only in the
+occupied form. GENHN's frozen text is untouched (the WZ-BOX-7 discipline: disclose, don't
+edit).
+
+**Fences carried unchanged (nothing weakened, nothing discharged).**
+(i) `StageInterface.hwin` stays HYP.36 CARRY per GC-5's table — H89w adds no instance, no
+field, no discharge. (ii) H.89 stays `(OB-a)`'s discharge at `e₁ = 2` and only there: H89w
+generalizes the HEIGHT ARITHMETIC, not the per-genre read ledger; the `(OB-a)` disclosure at
+general stages (§16 item 3) is still carried. (iii) `GENHN-CAP-GEN`'s three-clause reader
+rule still has NO node — §16 item 3's decision ("the reader is not formalized") is upheld:
+H89w lands the rule's arithmetic substrate (comp geometry, census, min-stability, no-tie,
+descent), and the dictionary-constancy/completion-test clauses remain math-language
+(CERTIFIED-OPEN, OM-6 §3). (iv) GENHN-2's residue F_Q-independence is consumed as the corpus
+consumes it, not re-proved.
+
+**Ledger effect.** HYP.24 (pinning half): disposition UNCHANGED (CARRY), gap narrowed — dated
+ARC NOTE added to the row. HYP.36: untouched. CHAP-I I.05/I.14: untouched (stub-stage;
+I.05's future real body now has concrete general clauses to bind to — noted for the I
+composer). D.62/D.63 (concurrent Display-A re-signing): no contact, H89w imports ChapH
+modules only.
+
+*Sections §§0–17 and A-H.1/A-H.2 are byte-unchanged by this append.*

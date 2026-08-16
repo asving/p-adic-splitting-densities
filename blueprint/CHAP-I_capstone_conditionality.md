@@ -1922,6 +1922,24 @@ general-order [GN15]/[FGMN] signature event could cover B.42, OM-4's item 5, the
 C.33, AND this cite's ingredient (A), leaving only the (B)/(C) glue legs as this cite's own
 increment. Owner signs per cite; the HYP.17/A-3 numbering discipline applies throughout.
 
+### DATED ADDENDUM (2026-08-16, OM-6 — ORCHESTRATOR ITEM O-2 BOOKED: the `LEMMA GENHN-3` cap/consultation transcription)
+
+*(OM-6 unit, ledger row HYP.24; full record `docs/openmath-campaign/OM-6_window-pinning_2026-08-16.md`;
+numeric leg `verification/om6_window_pinning_check.py`, 26/26.)* §9.3's item **O-2** is
+DISCHARGED at exactly its named candidate home: `leanfinal/Uniformity/ChapH/H89w.lean`, an
+H.89-adjacent appendix file (H09w precedent), registered by CHAP-H AMENDMENT A-H.3 —
+`EFF.GENHN.29`'s clauses (b)/(c) at general `e₁`, (a)'s rider-corrected interior criterion
+with the no-tie/undercut pair, the `[r2]`/CAP-GEN band-census arithmetic (tied to H.44's
+`pinCensus` at the committed `(1,3,2)` instances), and (d)'s update-map descent (both ring
+types); 17 declarations, sorry-free, Lean-core only. One finding (F-OM6.1, A-H.3): the (c)
+display's "inside the string" requires an occupancy scope pin — machine-refuted unpinned at
+`(e₁,h,m) = (3,2,1)`, landed in the occupied form, source not edited. **I.14's resolution
+is unchanged**: the pinning conjunct is still HYP.24's pinning half, still CARRY — H89w
+narrows the SUPPLIER gap (I-11(ii)), it does not discharge `hwin` (HYP.36, GC-5) and it
+does not formalize `GENHN-CAP-GEN`'s reader rule (CHAP-H §16 item 3 upheld). I.05's stub
+body gains concrete general clauses to bind to at resolution time; I.05/I.14's text is
+untouched. This addendum adds no new ledger row.
+
 <!-- SENTINEL: BP-I END OF FILE -->
 
 
