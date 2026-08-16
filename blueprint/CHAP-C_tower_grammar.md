@@ -2764,23 +2764,25 @@ display verbatim; the gauge-naive `lift(c_t)` (no `η^{W(t)}`) is DEAD (`EFF.HET
 counter-instance: frame X, naive key `Φ′² + 3xΦ′ + 54` has `σ = {(4,1)}`, corrected
 `… + 108` has `σ = {(2,2)}` — the two differ by exactly `η^{W(0)} = 2`).
 
-**SIGNATURE.**
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; D19 RESOLVED:
+`stageLiftO` is NODE C.14a's shared packaging (the RE-PLAN merge executed), so the def is
+TOTAL — the corpus preconditions (`1 ≤ h`, `2 ≤ e₁f₁`) sit on the height/residue THEOREMS
+(C.46/C.47), which consume H.55/H.56 through C.14a's reconciliation].
 ```lean
 namespace Uniformity.Density.Tower
 
-noncomputable def composedKey {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) :
-    Polynomial O :=
+def wrapExp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} (T : TowerDatum F H₀ hpin)
+    (t : ℕ) : ℕ :=
+  (T.f₂ - t) * F.slotIdx T.u₂ / F.e₁
+
+noncomputable def composedKey {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) : Polynomial O :=
   F.key ^ (T.e₂ * T.f₂)
     - (Finset.range T.f₂).sum fun t =>
-        stageLiftO F ((T.f₂ - t) * T.u₂)
-            (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp F T t))
+        F.stageLiftO H₀ hpin ((T.f₂ - t) * T.u₂)
+            (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp T t))
           * F.key ^ (T.e₂ * t)
 ```
-
-(`stageLiftO` is this node's private packaging of H.54's `stageLift'` through the
-`GenreDatum` plumbing of C.14 step 2 — RE-PLAN to a shared node if C.14's own packaging
-lands first, which it should: the orchestrator merges the two; `wrapExp F T t` abbreviates
-`(T.f₂ − t) * F.slotIdx T.u₂ / F.e₁`.)
 
 **DEPENDS.** C.15 · C.19 · C.41 · C.42 · **H.54–H.56** (via the C.14 packaging).
 
@@ -2812,21 +2814,31 @@ substitution transfers), so **`⟨T.u₂, T.e₂, towerLabel T⟩` is a `LevelDa
 (C.09's fields all discharged: the node floor gives `hκ` since `e₂D′h < u₂`) — the bridge
 datum every §5 object reads at.
 
-**SIGNATURE.**
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; `towerLabel`'s
+body is the EXPLICIT form `η^{−Qf₂}·ψ₂(η^Q Z)` (the two corpus presentations coincide,
+`EFF.HETOW.16`(a)), with the `Field`/`Fact` instances by the C.22 `letI` pattern].
 ```lean
 namespace Uniformity.Density.Tower
 
-noncomputable def towerLabel {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) :
-    Polynomial (F.stageField H₀ hpin) := …
+noncomputable def towerLabel {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) : Polynomial (F.stageField H₀ hpin) :=
+  letI : Field (resField (Polynomial.X : Polynomial O)) := instFieldResField isKey_X
+  letI : Fact (Irreducible (F.frameRes H₀ hpin)) := ⟨(F.hresirr H₀ hpin).1⟩
+  Polynomial.C ((F.stageLetter H₀ hpin)⁻¹ ^ (F.twistExp T.u₂ * T.f₂))
+    * T.ψ₂.comp (Polynomial.C ((F.stageLetter H₀ hpin) ^ F.twistExp T.u₂) * Polynomial.X)
 
-theorem towerLabel_spec {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
-    (hπ : Irreducible π) :
+theorem towerLabel_spec {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) :
     (towerLabel T).Monic ∧ Irreducible (towerLabel T) ∧
     (towerLabel T).natDegree = T.f₂ ∧ (towerLabel T).coeff 0 ≠ 0
 
-noncomputable def TowerDatum.levelDatum … : LevelDatum F H₀ hpin :=
-  ⟨T.u₂, T.e₂, towerLabel T, …⟩
+noncomputable def TowerDatum.levelDatum {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) : LevelDatum F H₀ hpin :=
+  ⟨T.u₂, T.e₂, towerLabel T, T.he₂, T.hcop, T.hfloor, (towerLabel_spec T hπ).1,
+   (towerLabel_spec T hπ).2.1, (towerLabel_spec T hπ).2.2.2,
+   by rw [(towerLabel_spec T hπ).2.2.1]; exact T.hf₂⟩
 ```
+(`levelDatum` gains the `hπ` argument its `spec`-fields need; `hκ` is EXACTLY `T.hfloor`.)
 
 **DEPENDS.** C.09 · C.19 · C.42 · C.15.
 
@@ -2856,12 +2868,14 @@ pointwise `β_{x₀} = η_{x₀}^{−Q}·η₂(x₀)`, recast as the canonical i
 root equivalence is the K-affine substitution `Z ↦ η^{Q}Z`", which the corpus itself flags
 POINTWISE-hence-wrap-free).
 
-**SIGNATURE.**
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; def-kind node
+with a theorem-grade body, stub-carried as an axiom constant — the fleet lands the
+`AdjoinRoot`-equiv construction].
 ```lean
 namespace Uniformity.Density.Tower
 
-noncomputable def towerLabelEquiv {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
-    (hπ : Irreducible π) :
+noncomputable def towerLabelEquiv {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) :
     AdjoinRoot (towerLabel T) ≃ₐ[F.stageField H₀ hpin] AdjoinRoot T.ψ₂
 ```
 
@@ -2892,12 +2906,14 @@ the gauge-naive key the residue is `−c_t·η^{−(f₂−t)Q−W(t)}` instead 
 polynomial need not be irreducible (frame X: `(Z+1)²`) — transcribed as the refutation
 record, not a node.
 
-**SIGNATURE.**
+**SIGNATURE** [re-signed: A-C.1 — gains `(hh : 1 ≤ F.h)`, the C.14a corpus perimeter: the
+proof consumes H.56 through the reconciliation].
 ```lean
 namespace Uniformity.Density.Tower
 
-theorem composedKey_slot_residue {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
-    (hπ : Irreducible π) {t : ℕ} (ht : t < T.f₂) :
+theorem composedKey_slot_residue {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    {t : ℕ} (ht : t < T.f₂) :
     F.twistRead H₀ hpin ((T.f₂ - t) * T.u₂) (dev F.key (composedKey T) (T.e₂ * t))
       = (towerLabel T).coeff t
 ```
@@ -2934,13 +2950,15 @@ presentations, `dv₂(w) > T₂`) is NOT transcribed: C-A(i) withdrew its exempl
 re-scoped its licence to exactly this `w = 0` form, and no consumer reads the other branch
 (T2's r12 derives the degree conjunct master-side).
 
-**SIGNATURE.**
+**SIGNATURE** [re-signed: A-C.1 — gains `(hh : 1 ≤ F.h)` (the C.14a perimeter; H.55's leg)
+and `levelDatum`'s new `hπ` argument].
 ```lean
 namespace Uniformity.Density.Tower
 
-theorem composedKey_isTestKey {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
-    (hπ : Irreducible π) [Finite (ResidueField O)] :
-    IsTestKey (T.levelDatum) (composedKey T)
+theorem composedKey_isTestKey {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] :
+    IsTestKey (T.levelDatum hπ) (composedKey T)
 ```
 
 **DEPENDS.** C.13 · C.14 (packaging) · C.42 · C.43 · C.44 · C.46 · H.55 (degree `< D′`,
@@ -2979,14 +2997,22 @@ everything: `blockFactor (T.levelDatum) f … = f` and `mult₂ … = μ₁ / (e
 factor with `typeOf = ⟨{(e₁e₂, f₁f₂)}⟩` (C.40's conditionality inherited), continuing at
 `mult₂ − 1`.
 
-**SIGNATURE** (shape).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; clauses (a)+(b)
+signed, clause (c) is the C.47 → C.40 chain (a fleet-time re-export, recorded); the full-side
+hypothesis written out as the 𝒯-membership clauses].
 ```lean
 namespace Uniformity.Density.Tower
 
-theorem fullSide_block {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
-    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    {f : Polynomial O} (hf : f.Monic) (hfull : …) … :
-    dvHgt F f 0 ≠ ⊤ ∧ ¬ F.key ∣ f ∧ blockFactor (T.levelDatum) f … = f ∧ …
+theorem fullSide_block {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {f : Polynomial O} (hf : f.Monic) (hsq : Squarefree f) {μ₂ : ℕ} (hμ₂ : 0 < μ₂)
+    (hdeg : f.natDegree = μ₂ * T.D₂) (hpure : IsDvPure F f T.u₂ T.e₂)
+    (hres : ∀ (hne : (dvSideSet F f T.u₂ T.e₂).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F f (dvSideMin F f T.u₂ T.e₂ hne) = (M₀ : ℕ∞)),
+      dvResPoly F H₀ hpin f T.u₂ T.e₂ hne M₀ hp = (towerLabel T) ^ μ₂) :
+    dvHgt F f 0 ≠ ⊤ ∧ ¬ F.key ∣ f ∧
+    blockFactor (T.levelDatum hπ) f = f ∧ mult₂ (T.levelDatum hπ) f = μ₂
 ```
 
 **DEPENDS.** C.29 · C.34 · C.35 · C.40 · C.44 · C.47.
@@ -3032,17 +3058,35 @@ duplicates it). (iv) Termination: the tower entry is one jump with descent facto
 jump, `mult₂ = 3`, no second jump — wrap-immune (the acceptance record's positive scope
 finding: the wrap correction moves unit factors only).
 
-**SIGNATURE** (shape — three public theorems in one file is over-budget: **split-mandated
-C.49 → 3**: dictionary / μ₂-exclusions / termination instance).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; three public
+theorems, **split-mandated C.49 → 3**; the dictionary's box hypotheses sit INSIDE the
+conclusion's conditional (the factor `g` must be bound first)].
 ```lean
 namespace Uniformity.Density.Tower
 
-theorem composed_dictionary {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) … :
-    … typeOf-entry (F.e₁ * T.e₂ * ℓ₃, F.f₁ * T.f₂ * r₂.natDegree) …
+theorem composed_dictionary {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ : ℕ} {f : Polynomial O} (hf : f ∈ towerLocus T μ₂) (hsq : Squarefree f)
+    {u₃ ℓ₃ : ℕ} (hℓ₃ : 0 < ℓ₃) (hcop₃ : Nat.Coprime u₃ ℓ₃) (hfloor₃ : ℓ₃ * T.E₂ < u₃)
+    (hne₃ : (dv2SideSet (T.levelDatum hπ) (composedKey T) f u₃ ℓ₃).Nonempty)
+    (hsep : (dv2ResPoly (T.levelDatum hπ) (composedKey T) f u₃ ℓ₃ hne₃).Separable)
+    {r₂ : Polynomial (AdjoinRoot (towerLabel T))} (hr₂m : r₂.Monic) (hr₂i : Irreducible r₂)
+    (hdvd : r₂ ∣ dv2ResPoly (T.levelDatum hπ) (composedKey T) f u₃ ℓ₃ hne₃) :
+    ∃ g : Polynomial O, g.Monic ∧ g ∣ f ∧
+      g.natDegree = (F.e₁ * T.e₂ * ℓ₃) * (F.f₁ * T.f₂ * r₂.natDegree) ∧
+      ((∀ g' ∈ monicFactors g, CBox1Side (T.levelDatum hπ) g') →
+       (∀ g' ∈ monicFactors g, (F.f₁ * T.f₂ * r₂.natDegree) ∣ inertiaDegOf g') →
+        typeOf g = ⟨{(F.e₁ * T.e₂ * ℓ₃, F.f₁ * T.f₂ * r₂.natDegree)}⟩ ∧ Irreducible g)
 
-theorem level3_dead_at_mult2_three … : …
-theorem tower_termination_instance … : …
+theorem level3_dead_at_mult2_three (mr ℓ₃ d₃ L μ₂ : ℕ) (hμ : μ₂ = 3) (hm : 2 ≤ mr)
+    (hjump : 2 ≤ ℓ₃ * d₃) (hL : mr * (ℓ₃ * d₃) ≤ L) (hLμ : L ≤ μ₂) : False
+
+theorem tower_termination_instance (J : ℕ) (a : Fin (J + 1) → ℕ) (ha0 : a 0 ≤ 6)
+    (hfloor : ∀ j, 4 ≤ a j) (hdrop : ∀ j : Fin J, 2 * a j.succ ≤ a j.castSucc) : J = 0
 ```
+(the α-refine sub-branch of (ii) is C.56/C.57's layer, entered by name; the HE7-8
+finiteness placeholder stays E's, per the DEPENDS.)
 
 **DEPENDS.** C.31 · C.32 · C.48 · C.61/C.62 (§7 — the iterated `(e,f)` read) · C.56/C.57 ·
 GC-13 placeholder `EFF.HE7.<nn> — LEMMA HE7-8 [supplied-by: chapter E]`.
@@ -3119,19 +3163,22 @@ residual equal to `ψ₂^{μ₂}` under C.44's translation (twist-coherent norma
 statement is scoped to `𝒯` — the FULL-side fence (`EFF.GENTOW1.14`'s own repetition at
 `.46`); partial sides are §8's (GENTOW4).
 
-**SIGNATURE.**
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`]. **A-C.1
+determination (a caught defect, C-H12 class):** the residual EXPONENT is **`μ₂`** — the
+committed display's `e₂f₂μ₂/e₂ = f₂μ₂` is the residual's DEGREE (`deg r̃ = f₂`, side degree
+`f₂μ₂`), not its exponent; the two coincide exactly at `f₂ = 1`, the coincidence regime.
+Fixed against C.26's degree lemma as the parenthetical mandated. Pins ∀-quantified (they
+exist by purity):
 ```lean
 namespace Uniformity.Density.Tower
 
-def towerLocus {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) (μ₂ : ℕ) :
-    Set (Polynomial O) :=
+def towerLocus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (μ₂ : ℕ) : Set (Polynomial O) :=
   {f | f.Monic ∧ f.natDegree = μ₂ * T.D₂ ∧ IsDvPure F f T.u₂ T.e₂ ∧
-       ∃ hne₂ M₀ hpin₂, dvResPoly F H₀ hpin f T.u₂ T.e₂ hne₂ M₀ hpin₂
-         = (towerLabel T) ^ (T.e₂ * T.f₂ * μ₂ / T.e₂) …}
+    ∀ (hne : (dvSideSet F f T.u₂ T.e₂).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F f (dvSideMin F f T.u₂ T.e₂ hne) = (M₀ : ℕ∞)),
+      dvResPoly F H₀ hpin f T.u₂ T.e₂ hne M₀ hp = (towerLabel T) ^ μ₂}
 ```
-
-(the residual exponent bookkeeping — `ψ₂^{μ₂}` at the `r̃`-carrier with side degree
-`f₂μ₂` — is fixed at stub stage against C.26's degree lemma; the SPEC is `.14`'s display.)
 
 **DEPENDS.** C.25 · C.29 · C.42 · C.44.
 
@@ -3162,8 +3209,31 @@ spine: Step 0 (weight monotonicity of the two carries — x-carry priced by the 
 C.47's test-key hood + graded multiplicativity), Step 2 (⟸ realizability with the
 outer-grammar chain `u₂ + (μ₁−1)e₂D′h + 1 > μ₁e₂D′h`), Step 3 (⟹ + fibration prep).
 
-**SIGNATURE** (shape). `theorem towerLocus_iff_budget …` with the floor function
-`budgetFloor T j a b : ℕ` as a companion def (consumed by C.53's count and §11).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the raw digit
+coordinates are the x-coefficients of the two-key development (C.53's triangularity note
+made the reading), so the budget clause reads `addVal` floors on
+`(dev F.key (dev (composedKey T) f j) b).coeff a`].
+```lean
+namespace Uniformity.Density.Tower
+
+def budgetFloor {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (μ₂ j a b : ℕ) : ℕ :=
+  let w := slotOffset T a b
+  let tgt := (μ₂ - j) * T.E₂ - w
+  let d := F.e₁ * T.e₂
+  if (μ₂ - j) * T.E₂ < w then 0
+  else (tgt + d - 1) / d + (if tgt % d == 0 then 1 else 0)
+
+theorem towerLocus_iff_budget {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)]
+    {μ₂ : ℕ} (hμ₂ : 0 < μ₂) {f : Polynomial O} (hf : f.Monic)
+    (hdeg : f.natDegree = μ₂ * T.D₂) :
+    f ∈ towerLocus T μ₂
+      ↔ ∀ j a b : ℕ, j < μ₂ → a < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
+          (budgetFloor T μ₂ j a b : ℕ∞)
+            ≤ addVal O ((dev F.key (dev (composedKey T) f j) b).coeff a)
+```
 
 **⚠ HEAVY NODE — split-mandated: C.52 → 3** (Step 0; Steps 1–2; Step 3). Step 0 is
 value-blind (wrap-immunity leg 1: “lift(c_t·η^{W(t)}) and lift(c_t) sit at the same
@@ -3198,8 +3268,26 @@ mutant floors machine-dead) → retained.
 the free-`O`-digit count is **`Σ_{j,a,b} max(0, N − budgetFloor T j a b)`** — the CLIP; the
 sealed unclipped `Σ (N − floor)` "is false whenever `N < floor` at some slot" and is DEAD.
 
-**SIGNATURE** (shape). `theorem towerLocus_fibration …` + companion
-`def towerFreeCount T μ₂ N : ℕ := Σ max(0, N − floor)` (the §11 count layer's input).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the CLIP
+`max(0, ·)` is ℕ-subtraction, definitionally; the fibration is signed as the class-count
+identity over `Coeff`-classes].
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def towerFreeCount {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (μ₂ N : ℕ) : ℕ :=
+  ∑ j ∈ Finset.range μ₂, ∑ a ∈ Finset.range (F.e₁ * F.f₁),
+    ∑ b ∈ Finset.range (T.e₂ * T.f₂), (N - budgetFloor T μ₂ j a b)
+
+theorem towerLocus_fibration {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (μ₂ N : ℕ) (hμ₂ : 0 < μ₂) :
+    Nat.card {c : Coeff O (μ₂ * T.D₂) N //
+        ∃ a : Fin (μ₂ * T.D₂) → O,
+          proj O (μ₂ * T.D₂) N a = c ∧ monicPoly a ∈ towerLocus T μ₂}
+      = residueCard O ^ towerFreeCount T μ₂ N
+```
 
 **DEPENDS.** C.52 (Step 3's triangularity: `c_{j,a,b}` = the coefficient at degree
 `jD₂ + bD′ + a` plus an `Ô`-combination of strictly higher-degree coefficients — unipotent
@@ -3234,8 +3322,32 @@ gcd's from the frame data);
 "`dv₂(Φ₂(x₀)) > E₂` at every root", C.27's carrier ("need not be an integer on `𝒯` — the
 strict inequality IS the statement", transcribed as the cleared strict inequality).
 
-**SIGNATURE** (shape). Two public theorems, one file (`towerLocus_node_floor`,
-`towerLocus_field_floor`); the CRT realizability as a third companion.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; three
+declarations: the floor, the CRT realizability (`_sharp`), the norm-form field floor].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem towerLocus_node_floor {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)]
+    {μ₂ : ℕ} {f : Polynomial O} (hf : f ∈ towerLocus T μ₂) {j : ℕ} (hj : j < μ₂) :
+    (((μ₂ - j) * T.E₂ + 1 : ℕ) : ℕ∞) ≤ dv2Pin (T.levelDatum hπ) (composedKey T) f j
+
+theorem towerLocus_node_floor_sharp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ : ℕ} (hμ₂ : 0 < μ₂) {j : ℕ} (hj : j < μ₂) :
+    ∃ f ∈ towerLocus T μ₂,
+      dv2Pin (T.levelDatum hπ) (composedKey T) f j = (((μ₂ - j) * T.E₂ + 1 : ℕ) : ℕ∞)
+
+theorem towerLocus_field_floor {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ : ℕ} {f : Polynomial O} (hf : f ∈ towerLocus T μ₂)
+    {g : Polynomial O} (hg : g.Monic) (hirr : Irreducible g) (hdvd : g ∣ f) :
+    ((g.natDegree * T.E₂ : ℕ) : ℕ∞)
+      < (F.e₁ * T.e₂) • addVal O (Algebra.norm O (AdjoinRoot.mk g (composedKey T)))
+```
 
 **DEPENDS.** C.11 · C.27's carrier idiom · C.43 · C.46 · C.52 · H.51/H.52 (the CRT's
 class-separation legs) · C.23 (the residue nonvanishing feeding (d)'s ψ₂-cancellation).
@@ -3277,20 +3389,18 @@ representation (the argmin's two-point slopes are all `> E₂` directly from the
 routes here** (`EFF-GENTOW5` FP-4 fence 2: GENTOW5 "cites it AS IN-FLIGHT and does not
 re-derive it") — the supply lands HERE, and §9's third-stage nodes consume THIS node by ID.
 
-**SIGNATURE.**
+**SIGNATURE** [re-signed: A-C.1 — the D3-class unbound `μ₂` bound, `levelDatum`'s `hπ`
+threaded, `dv2SideSet` now NODE C.38a's (the RE-PLAN executed at §5)].
 ```lean
 namespace Uniformity.Density.Tower
 
-theorem towerLocus_depth3_floor {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
+theorem towerLocus_depth3_floor {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) {μ₂ : ℕ}
     {f : Polynomial O} (hf : f ∈ towerLocus T μ₂) {u₃ ℓ₃ : ℕ} (hℓ₃ : 0 < ℓ₃)
     (hcop : Nat.Coprime u₃ ℓ₃)
-    (hne : (dv2SideSet (T.levelDatum) (composedKey T) f u₃ ℓ₃).Nonempty) :
+    (hne : (dv2SideSet (T.levelDatum hπ) (composedKey T) f u₃ ℓ₃).Nonempty) :
     ℓ₃ * T.E₂ < u₃
 ```
-
-(`dv2SideSet` — the level-2 argmin Finset, C.11's `dv2Supp` filtered as in C.07 — is the
-RE-PLAN'd `dv2ResPoly`-cluster's sibling; the orchestrator books both as one helper node
-C.38a if the stub stage prefers.)
 
 **DEPENDS.** C.11 · C.50 · C.54(c).
 
@@ -3325,15 +3435,35 @@ unique per class mod `e₁e₂`, `a₀ ≥ 0` at `m > E₂` — the audited ineq
 The frozen fixed-base display is DEAD (its compensating `π`-exponent goes non-integer at
 seam-live heights — the FR-A machine counter-instance `11/2 ∉ ℤ`).
 
-**SIGNATURE** (shape).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; real body: the
+two-step `n̂₂`-solve `n2Exp` (C.15/C.16's pattern at `(u₂, e₂)` composed with the frame
+solve) + the canonical-representative digit reads (`k2Coord` over the `β`-basis, C.14a's
+`stageCoord` over the `η`-basis); the inverse-twist normalization is PINNED by the
+exact-height/`deg < D₂` companions at fleet time — determination recorded].
 ```lean
 namespace Uniformity.Density.Tower
 
-noncomputable def k2DigitLift {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
-    (s : AdjoinRoot (towerLabel T)) (m : ℕ) : Polynomial O := …
+noncomputable def k2Coord {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (s : AdjoinRoot (towerLabel T)) (t : ℕ) :
+    F.stageField H₀ hpin :=
+  (((AdjoinRoot.mk_surjective s).choose).coeff t)
+
+noncomputable def n2Exp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (m : ℕ) : ℕ × ℕ × ℕ :=
+  let b := towerSolve T.u₂ T.e₂ m
+  let m' := (m - b * T.u₂) / T.e₂
+  ((m' - F.slotIdx m' * F.h) / F.e₁, F.slotIdx m', b)
+
+noncomputable def k2DigitLift {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (s : AdjoinRoot (towerLabel T)) (m : ℕ) : Polynomial O :=
+  ∑ r ∈ Finset.range F.f₁, ∑ t ∈ Finset.range T.f₂,
+    Polynomial.C
+        (resLift (F.stageCoord H₀ hpin (k2Coord T s t) r)
+          * π ^ (n2Exp T (m - (F.e₁ * T.e₂ * F.h * r + T.e₂ * T.u₂ * t))).1)
+      * Polynomial.X
+          ^ ((n2Exp T (m - (F.e₁ * T.e₂ * F.h * r + T.e₂ * T.u₂ * t))).2.1 + F.e₁ * r)
+      * F.key ^ ((n2Exp T (m - (F.e₁ * T.e₂ * F.h * r + T.e₂ * T.u₂ * t))).2.2 + T.e₂ * t)
 ```
-(+ the exact-height and `deg < D₂` companions; the `n̂₂`-solve is C.15/C.16's pattern at
-the pair `(u₂, e₂)` composed with the frame solve.)
 
 **DEPENDS.** C.15/C.16 · C.28 · C.42 · C.44 · C.50 · H.51/H.52 (the two-step class
 separation) · H.54–H.56 (the base-level digit realization, per C-H5).
@@ -3369,8 +3499,36 @@ pointwise-elementary (actual re-division — the battery's 8 rows); at general `
 consumes the composed graded frame: **DEPENDS on §9's C.85 (GENTOW5's S1.5 graded frame —
 the retirement of GENTOW-BOX-1)**, and fires only after it.
 
-**SIGNATURE** (shape). Two public theorems (`refine_invariants`, `refine_kills`) — **split-
-mandated C.56 → 2**; the lift `def` is C.56a's (A-7 repair — no longer a companion here).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; two public
+theorems, **split-mandated C.56 → 2**; the α-event is carried by the C.38a residual read at
+the integer side `(lam, 1)` (⚠ Lean naming: the slope letter is `lam` — `λ` is reserved)].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem refine_invariants {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ : ℕ} {f : Polynomial O} (hf : f ∈ towerLocus T μ₂)
+    {lam : ℕ} (hslope : T.E₂ < lam) {s : AdjoinRoot (towerLabel T)} (hs : s ≠ 0)
+    (hne : (dv2SideSet (T.levelDatum hπ) (composedKey T) f lam 1).Nonempty)
+    (hres : dv2ResPoly (T.levelDatum hπ) (composedKey T) f lam 1 hne
+      = (Polynomial.X - Polynomial.C s) ^ μ₂) :
+    (composedKey T - k2DigitLift T s lam).Monic ∧
+    (composedKey T - k2DigitLift T s lam).natDegree = T.D₂ ∧
+    IsTestKey (T.levelDatum hπ) (composedKey T - k2DigitLift T s lam)
+
+theorem refine_kills {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ : ℕ} {f : Polynomial O} (hf : f ∈ towerLocus T μ₂)
+    {lam : ℕ} (hslope : T.E₂ < lam) {s : AdjoinRoot (towerLabel T)} (hs : s ≠ 0)
+    (hne : (dv2SideSet (T.levelDatum hπ) (composedKey T) f lam 1).Nonempty)
+    (hres : dv2ResPoly (T.levelDatum hπ) (composedKey T) f lam 1 hne
+      = (Polynomial.X - Polynomial.C s) ^ μ₂)
+    {j : ℕ} (hj : j < μ₂) :
+    (((μ₂ - j) * lam : ℕ) : ℕ∞)
+      < dv2Pin (T.levelDatum hπ) (composedKey T - k2DigitLift T s lam) f j
+```
 
 **DEPENDS.** C.28 (cocycle units enter the residual assembly IDENTICALLY — layer 1's
 mechanism) · C.43 · C.47 · C.50 · C.52 · C.56a (the lift) · C.85 (§9, general-`μ₂` leg
@@ -3412,8 +3570,51 @@ residue `binom(μ₂,j)·(−s̄)^{μ₂−j}` (coherent normalization, wrap uni
 `j = 1` pin vanishes (`2s = 0`) and the event is carried by `p₀ = 2λ` alone; at `q = 3`
 both pins show. Heights transport by `dv₂ = e₂·dv`; residues by the `η₂`-dictionary.
 
-**SIGNATURE** (shape). `refine_bijection` (with `DOM_N`/`COD_N` as companion defs) +
-`refine_transported_event` — **split-mandated C.57 → 2**.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; `DOM_N`/`COD_N`
+land as the named strata `refineDom`/`refineCod` (R2b's completed inventory), the bijection
+as the `Nat.card` identity; the triangularity/inverse-limit legs are the fleet's proof
+content. (iv)'s residue clause reads through C.38a's coherent `dv2Res`; the char split
+enters as `¬ ringChar (ResidueField O) ∣ binom(μ₂, j)`].
+```lean
+namespace Uniformity.Density.Tower
+
+def refineDom {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (μ₂ N lam : ℕ)
+    (s : AdjoinRoot (towerLabel T)) : Set (Coeff O (μ₂ * T.D₂) N) :=
+  {c | ∃ a : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N a = c ∧
+    monicPoly a ∈ towerLocus T μ₂ ∧
+    ∃ hne : (dv2SideSet (T.levelDatum hπ) (composedKey T) (monicPoly a) lam 1).Nonempty,
+      dv2ResPoly (T.levelDatum hπ) (composedKey T) (monicPoly a) lam 1 hne
+        = (Polynomial.X - Polynomial.C s) ^ μ₂}
+
+def refineCod {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (μ₂ N lam : ℕ)
+    (s : AdjoinRoot (towerLabel T)) : Set (Coeff O (μ₂ * T.D₂) N) :=
+  {c | ∃ a : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N a = c ∧
+    monicPoly a ∈ towerLocus T μ₂ ∧
+    ∀ j < μ₂, (((μ₂ - j) * lam : ℕ) : ℕ∞)
+      < dv2Pin (T.levelDatum hπ) (composedKey T - k2DigitLift T s lam) (monicPoly a) j}
+
+theorem refine_bijection {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (μ₂ N lam : ℕ) (hμ₂ : 0 < μ₂) (hslope : T.E₂ < lam)
+    (s : AdjoinRoot (towerLabel T)) (hs : s ≠ 0) :
+    Nat.card (refineDom T hπ μ₂ N lam s) = Nat.card (refineCod T hπ μ₂ N lam s)
+
+theorem refine_transported_event {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ lam : ℕ} (hslope : T.E₂ < lam) {s : AdjoinRoot (towerLabel T)} (hs : s ≠ 0)
+    {g : Polynomial O} (hg : g ∈ towerLocus T μ₂)
+    (hkills : ∀ j < μ₂, (((μ₂ - j) * lam : ℕ) : ℕ∞)
+      < dv2Pin (T.levelDatum hπ) (composedKey T - k2DigitLift T s lam) g j)
+    {j : ℕ} (hj : j < μ₂)
+    (hbin : ¬ (ringChar (ResidueField O) ∣ Nat.choose μ₂ j)) :
+    dv2Pin (T.levelDatum hπ) (composedKey T) g j = (((μ₂ - j) * lam : ℕ) : ℕ∞) ∧
+    dv2Res (T.levelDatum hπ) (dev (composedKey T) g j)
+      = (Nat.choose μ₂ j : AdjoinRoot (towerLabel T)) * (- s) ^ (μ₂ - j)
+```
 
 **DEPENDS.** C.53 · C.56 · landed `Finset.card` bijection lemmas; (iv): binomial expansion
 + C.11's height comparison (`(μ₂−i)λ + (i−j)λ = (μ₂−j)λ` — the audited cancellation).
@@ -3464,9 +3665,30 @@ heights `< e₁e₂N` is a function of the window data; the budget/count display
 window **at the CLIPPED display** (R2a's consumer re-scope, verbatim: "exact as sealed for
 `N ≥ max floor`").
 
-**SIGNATURE** (shape). Five public statements — **split-mandated C.58 → 3** ((a); (b)+(c);
-(d)+(e)). (a)'s BAND 2 consumes H.53's independence at the `(K, K₂)` tower basis
-(`{η^r η₂^t}` — GENHN-2″'s mechanism, instantiated through C.12/C.19).
+**SIGNATURE** [signed: A-C.1 AT THE CONSUMED CORE — BAND 1's stability (`window_band1`) and
+the consultation congruence (`window_consultation`); clauses (b)/(d)/(e) and BAND 2/3 are
+BOOKED fleet-time companions riding C.53's unipotence + H.53 (recorded here; split-mandated
+C.58 → 3 stands, the three files being (a)-core / (b)+(c) / (d)+(e))]. (a)'s BAND 2 consumes
+H.53's independence at the `(K, K₂)` tower basis (`{η^r η₂^t}` — GENHN-2″'s mechanism,
+instantiated through C.12/C.19).
+```lean
+namespace Uniformity.Density.Tower
+
+theorem window_band1 {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ N : ℕ} {a a' : Fin (μ₂ * T.D₂) → O}
+    (hc : proj O (μ₂ * T.D₂) N a = proj O (μ₂ * T.D₂) N a')
+    (ha : monicPoly a ∈ towerLocus T μ₂) {j m : ℕ} (hj : j < μ₂)
+    (hm : dv2Pin (T.levelDatum hπ) (composedKey T) (monicPoly a) j = (m : ℕ∞))
+    (hband : m < F.e₁ * T.e₂ * N) :
+    dv2Pin (T.levelDatum hπ) (composedKey T) (monicPoly a') j = (m : ℕ∞) ∧
+    dv2Res (T.levelDatum hπ) (dev (composedKey T) (monicPoly a') j)
+      = dv2Res (T.levelDatum hπ) (dev (composedKey T) (monicPoly a) j)
+
+theorem window_consultation (d N m w : ℕ) (hd : 0 < d) (hw : w < d) (hm : m < d * N)
+    (hcong : m % d = w % d) : m ≤ d * (N - 1) + w
+```
 
 **DEPENDS.** C.11 · C.12 · C.19 · C.50 · C.52 · C.53 · C.56(d-layer) · H.53.
 
@@ -3626,17 +3848,24 @@ and `f₁d_r ∣ f'` (`hbox`), so `e'f' ≥ (e₁ℓ)(f₁d_r) = deg g`; landed 
 `Σ e'f' = deg g` and `efPair_pos_of_mem` bounds each below — a multiset of entries each
 `≥ deg g` summing to `deg g` is the singleton.
 
-**SIGNATURE.**
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`]. **The `hm1`
+design hole RESOLVED without reshaping C.29's committed `HasLabel`:** the multiplicity-1
+clause is signed as the EXACT-RESIDUAL hypothesis (`dvResPoly … = L.r`, ∀-pinned) — with
+`hlab` it forces `HasLabel`'s inner `m = 1` and `deg g = keyDeg₂` through C.26's degree law,
+which is precisely the reading the node's own PROOF consumes. D11 cured in-statement.
 ```lean
 namespace Uniformity.Density.Tower
 
 theorem tier1_typeOf {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     [Finite (ResidueField O)]
-    {g : Polynomial O} (hlab : HasLabel L g) (hm1 : …multiplicity-1 clause…)
+    {g : Polynomial O} (hlab : HasLabel L g)
+    (hm1 : ∀ (hne : (dvSideSet F g L.u L.ℓ).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞)),
+      dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp = L.r)
     (hx : IsPure Polynomial.X g F.h F.e₁)
     (hbox : ∀ g' ∈ monicFactors g, CBox1Side L g') :
-    typeOf g = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}, by …⟩ ∧ Irreducible g
+    typeOf g = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}⟩ ∧ Irreducible g
 ```
 
 **DEPENDS.** C.10 (`keyDeg₂_regroup`) · C.26 · C.29 · C.33/C.34 (label heredity to factors)
@@ -3676,9 +3905,37 @@ multiplicity 1), with the iterated hypotheses (`CBox1Side` at both levels + the 
 ramified leg by C.59's route at the level-2 value data):
 `typeOf g = ⟨{(F.e₁ * T.e₂ * ℓ₃, F.f₁ * T.f₂ * r₂.natDegree)}⟩` and `g` irreducible.
 
-**SIGNATURE** (shape). `theorem tier1_typeOf_composed …` — the hypothesis bundle is a
-structure `ComposedLabel` (private to this file unless E requests it by RE-PLAN; expected:
-E's ladder rungs will — book it).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the hypothesis
+bundle IS the booked `ComposedLabel` structure (E's expected request pre-honored); the
+"CBox1Side at both levels" is `hbox1` (level 2, per factor) + `hbox2` (the level-3 residue
+leg, per factor, written out — the composed `f`-divisibility)].
+```lean
+namespace Uniformity.Density.Tower
+
+structure ComposedLabel {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (g : Polynomial O) : Type _ where
+  u₃ : ℕ
+  ℓ₃ : ℕ
+  r₂ : Polynomial (AdjoinRoot (towerLabel T))
+  hℓ₃ : 0 < ℓ₃
+  hcop : Nat.Coprime u₃ ℓ₃
+  hfloor : ℓ₃ * T.E₂ < u₃
+  hr₂ : r₂.Monic ∧ Irreducible r₂ ∧ 0 < r₂.natDegree ∧ r₂.coeff 0 ≠ 0
+  hgmonic : g.Monic
+  hgdeg : g.natDegree = (F.e₁ * T.e₂ * ℓ₃) * (F.f₁ * T.f₂ * r₂.natDegree)
+  hpure1 : IsDvPure F g T.u₂ T.e₂
+  hxpure : IsPure Polynomial.X g F.h F.e₁
+  hne₂ : (dv2SideSet (T.levelDatum hπ) (composedKey T) g u₃ ℓ₃).Nonempty
+  hres₂ : dv2ResPoly (T.levelDatum hπ) (composedKey T) g u₃ ℓ₃ hne₂ = r₂
+
+theorem tier1_typeOf_composed {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {g : Polynomial O} (C : ComposedLabel T hπ g)
+    (hbox1 : ∀ g' ∈ monicFactors g, CBox1Side (T.levelDatum hπ) g')
+    (hbox2 : ∀ g' ∈ monicFactors g, (F.f₁ * T.f₂ * C.r₂.natDegree) ∣ inertiaDegOf g') :
+    typeOf g = ⟨{(F.e₁ * T.e₂ * C.ℓ₃, F.f₁ * T.f₂ * C.r₂.natDegree)}⟩ ∧ Irreducible g
+```
 
 **DEPENDS.** C.11 · C.12 · C.44/C.45 · C.59 (route, at level-2 data) · C.60 (both levels) ·
 C.61 (the level-2 step) · landed engine as C.61.
@@ -3716,8 +3973,31 @@ boxed; and each `S_{λ,r}` is the root set of a single monic irreducible factor 
 `O` with `e = e₁ℓ, f = f₁·deg r`" (`EFF.HE6.18`, verbatim — the root-set clause carried as
 the docstring gloss, the factor clause carried as the theorem).
 
-**SIGNATURE** (shape). `theorem classSize_separable …` returning the finset-indexed
-factorization with the two per-`r` clauses.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the per-`r`
+`C-BOX-1` hypotheses sit inside the conclusion's conditional (each factor's box is about
+ITS `r`, so `CBox1Side L` — keyed to `L.r` — is written out per factor)].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem classSize_separable {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (ResidueField O)]
+    {g : Polynomial O} (hg : g.Monic) (hpure : IsDvPure F g L.u L.ℓ)
+    (hx : IsPure Polynomial.X g F.h F.e₁)
+    (hne : (dvSideSet F g L.u L.ℓ).Nonempty) {M₀ : ℕ}
+    (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞))
+    (hsep : (dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp).Separable) :
+    ∃ (s : Finset (Polynomial (F.stageField H₀ hpin)))
+      (Fac : Polynomial (F.stageField H₀ hpin) → Polynomial O),
+      (∀ r ∈ s, r.Monic ∧ Irreducible r ∧ r ∣ dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp) ∧
+      (∀ r : Polynomial (F.stageField H₀ hpin), r.Monic → Irreducible r →
+        r ∣ dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp → r ∈ s) ∧
+      g = ∏ r ∈ s, Fac r ∧
+      ∀ r ∈ s, (Fac r).Monic ∧
+        (Fac r).natDegree = (F.e₁ * F.f₁) * L.ℓ * r.natDegree ∧
+        ((∀ g' ∈ monicFactors (Fac r), (F.f₁ * r.natDegree) ∣ inertiaDegOf g') →
+          typeOf (Fac r) = ⟨{(F.e₁ * L.ℓ, F.f₁ * r.natDegree)}⟩ ∧ Irreducible (Fac r))
+```
 
 **DEPENDS.** C.26 · C.33 · C.34 · C.61 (+ its hypothesis bundle) · B.26/B.27's
 separability API shape (`irreducible_separable` — the residue-field separability toolkit at
@@ -3753,8 +4033,27 @@ sets shifted by `c_g`). This is `|S_{λ,r}| = D″·μ₂` "computable from `f`"
 `LEMMA HE6R1-2(b)`'s deliverable, the READ form (HE7-BOX-4 superseded "in read form" and
 no more — `EFF.HE6R1.21`'s qualification carried verbatim).
 
-**SIGNATURE** (shape). `theorem blockDeg_eq …` + `theorem mult₂_readable …` (two public
-statements, one file).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; "computable
+from `f`" signed as the argmin-DATA equality (`dv2SideMin`/`dv2SideDeg` of `f` = of `f_S`),
+the shifted-argmin content of C.37 in consumable form].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem blockDeg_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hctx : BlockContext L f) :
+    (blockFactor L f).natDegree = L.keyDeg₂ * mult₂ L f
+
+theorem mult₂_readable {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
+    (hnd : ¬ Ψ ∣ blockFactor L f)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂)
+    (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty)
+    (hne' : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty) :
+    dv2SideMin L Ψ f u₂ ℓ₂ hne = dv2SideMin L Ψ (blockFactor L f) u₂ ℓ₂ hne' ∧
+    dv2SideDeg L Ψ f u₂ ℓ₂ hne = dv2SideDeg L Ψ (blockFactor L f) u₂ ℓ₂ hne'
+```
 
 **DEPENDS.** C.35 · C.36 · C.37 · C.65.
 
@@ -3783,8 +4082,23 @@ the above-seam sides of `dv2Supp L Ψ f_S` span abscissas `0 … mult₂` exactl
 (the peel convention); here the `j = 0` level-2 pin is finite exactly because `Ψ ∤ f_S` —
 FINDING HE6R1-F2's repaired hypothesis doing its job.)
 
-**SIGNATURE** (shape). `theorem dv2_length_sum …` (side-enumeration plumbing per C.55's
-`dv2SideSet` helper).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`, AT THE SPAN
+FORM: `j = 0` pin finite (the repaired-hypothesis content), top pin `(mult₂, 0)`, every
+above-seam side inside `[0, mult₂]`; the summed `Σ dv2SideLen = mult₂` is the fleet's
+argmin-partition corollary — recorded].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem dv2_length_sum {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
+    (hnd : ¬ Ψ ∣ blockFactor L f) :
+    dv2Pin L Ψ (blockFactor L f) 0 ≠ ⊤ ∧
+    dv2Pin L Ψ (blockFactor L f) (mult₂ L f) = (0 : ℕ∞) ∧
+    ∀ u₂ ℓ₂ : ℕ, 0 < ℓ₂ → ℓ₂ * L.seam < u₂ →
+      ∀ hne : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty,
+        dv2SideMax L Ψ (blockFactor L f) u₂ ℓ₂ hne ≤ mult₂ L f
+```
 
 **DEPENDS.** C.11 · C.36 · C.37 · C.38a (the `dv2SideSet` helper) · C.13.
 
@@ -3917,10 +4231,30 @@ the degree clause — the slope-uniqueness argument at the factor, closure-free)
 cite (C.66); (III) the UFD match `k_r = m_r` in `K[Z]` (scalar-robust: units absorb into
 `γ*`, which is why the tie survives η ≠ 1 exposure).
 
-**SIGNATURE** (shape). `theorem multiplicity_tie …` — hypotheses include C.66's axiom by
-name; the conditionality is IN the axiom dependency, visible to `#print axioms` (the
-honest carrier: a consumer sees `[cite:FGMN]` in the footprint, exactly as the ledger
-wants).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the PROOF
+consumes C.66's `fgmn_residual_mul` by name, so the landed footprint carries `[cite:FGMN]`
+(the honest carrier: a consumer sees it in `#print axioms`, exactly as the ledger wants);
+the multiplicity `m` enters as the exact-power hypothesis pair].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem multiplicity_tie {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hctx : BlockContext L f) {m : ℕ} (hm : 0 < m)
+    (hmult : ∀ (hne : (dvSideSet F f L.u L.ℓ).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F f (dvSideMin F f L.u L.ℓ hne) = (M₀ : ℕ∞)),
+      L.r ^ m ∣ dvResPoly F H₀ hpin f L.u L.ℓ hne M₀ hp ∧
+      ¬ L.r ^ (m + 1) ∣ dvResPoly F H₀ hpin f L.u L.ℓ hne M₀ hp) :
+    (blockFactor L f).natDegree = (F.e₁ * F.f₁) * L.ℓ * (L.r.natDegree * m) ∧
+    mult₂ L f = m ∧
+    IsDvPure F (blockFactor L f) L.u L.ℓ ∧
+    ∀ (hne : (dvSideSet F (blockFactor L f) L.u L.ℓ).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F (blockFactor L f)
+        (dvSideMin F (blockFactor L f) L.u L.ℓ hne) = (M₀ : ℕ∞)),
+      dvResPoly F H₀ hpin (blockFactor L f) L.u L.ℓ hne M₀ hp = L.r ^ m
+```
+(`μ₂*(r) = m_r` is the `mult₂ L f = m` clause; the residual-EXACTLY-`r^m` clause is the
+"monic, unit-free" content — Step III's UFD match landing in the statement.)
 
 **DEPENDS.** C.26 · C.33 · C.34 · C.35 · C.66 · landed UFD facts for `K[Z]`.
 
@@ -3952,7 +4286,19 @@ abscissas** — the equality leg riding C.38/C.39's residual-scalar display (a u
 cannot create or destroy an interior pin), exactly the m-i completion: “(b) alone gives an
 INEQUALITY at on-hull points; equality at side-interior abscissas rides (c)”.
 
-**SIGNATURE** (shape). `theorem dv2Pin_translation_interior …`.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem dv2Pin_translation_interior {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
+    (hnd : ¬ Ψ ∣ blockFactor L f)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂)
+    (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) {j : ℕ}
+    (hj1 : dv2SideMin L Ψ f u₂ ℓ₂ hne < j) (hj2 : j < dv2SideMax L Ψ f u₂ ℓ₂ hne) :
+    dv2Pin L Ψ f j = dv2Pin L Ψ (blockFactor L f) j + (complementConst L f : ℕ∞)
+```
 
 **DEPENDS.** C.37 · C.38 · C.39.
 
@@ -3985,8 +4331,25 @@ anchors ([F1] resolution: they resolve HERE), chapter D's T1 battery check 10, a
 chapter F's faces have ONE name to cite, with the conditionality readable off the
 hypothesis list and the axiom footprint.
 
-**SIGNATURE** (shape). `theorem classSize_supply …` (the bundle; the three clauses may be
-`And`-packed or a small structure — stub-stage choice; the NAME is the contract).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; stub-stage
+choice EXERCISED: a Prop-structure `ClassSizeSupplyData` with three clause fields quoting
+the suppliers' statements (hypotheses displayed per clause), + the one named theorem —
+"the NAME is the contract"].
+```lean
+namespace Uniformity.Density.Tower
+
+structure ClassSizeSupplyData {F : KeyFrame O π} {H₀ hpin}
+    (L : LevelDatum F H₀ hpin) : Prop where
+  separable_side : … -- C.63's statement, quantified (full text in the leanspec twin)
+  read_form : …      -- C.64's blockDeg_eq statement
+  mixed_tie : …      -- C.67's mult₂ L f = m clause
+
+theorem classSize_supply {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin) :
+    ClassSizeSupplyData L
+```
+(the three field texts are byte-fixed in `leanspec/Leanspec/ChapC.lean`'s
+`ClassSizeSupplyData` — quoted there in full; the display above elides them ONLY because
+they repeat C.63/C.64/C.67's signed blocks verbatim.)
 
 **DEPENDS.** C.63 · C.64 · C.65 · C.67.
 
@@ -4011,7 +4374,20 @@ context at a side `(u, ℓ)` with residual `R = ∏ r^{m_r}`:
 `Σ_r deg f_{κ,r} = D′·dvSideLen` — the `(SEP)`-free per-side degree conservation
 (LEMMA HE6-3(b)'s consumed content, supplied to C.31(iv) and to the §11 count layer).
 
-**SIGNATURE** (shape). `theorem side_degree_conservation …`.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`, at the per-side
+core `L_λ = ℓ·deg R` (the consumed `(SEP)`-free conservation); the `Σ_r` decomposition rides
+C.67, recorded].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem side_degree_conservation (F : KeyFrame O π) (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] {H₀ : ℕ} (hpin : F.Pin H₀)
+    {f : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+    (hf : f.Monic) (hpure : IsDvPure F f u ℓ)
+    (hne : (dvSideSet F f u ℓ).Nonempty) {M₀ : ℕ}
+    (hp : dvHgt F f (dvSideMin F f u ℓ hne) = (M₀ : ℕ∞)) :
+    dvSideLen F f u ℓ hne = ℓ * (dvResPoly F H₀ hpin f u ℓ hne M₀ hp).natDegree
+```
 
 **DEPENDS.** C.08 · C.26 · C.33 · C.67 (mixed sides) or C.63 (separable) — stated once via
 C.67's general form.
@@ -6646,5 +7022,20 @@ increment:
   Found. Comput. Math. 25 (2025) no. 2, 631–681). Statement-UNINSPECTED under append #66;
   queued with the others. CHAP-I's `I.01` can now be typed against
   `NS7TerminationStatement` (recorded in CHAP-I's addendum).
+* **A-C.1(g) — §6 tail + §7 signed (C.43–C.58, C.61–C.70).** Determinations at the nodes:
+  C.43 through C.14a's `stageLiftO` (D19 executed); C.44's `towerLabel` in the explicit
+  `η^{−Qf₂}ψ₂(η^QZ)` form, `levelDatum` gains `hπ`; C.45 stub-carried as an axiom constant;
+  C.46/C.47/C.48/C.52–C.54/C.56–C.58 and the composed dictionary gain `(hh : 1 ≤ F.h)` (the
+  C.14a perimeter); **C.51's residual exponent corrected `e₂f₂μ₂/e₂ → μ₂`** (a caught
+  C-H12-class degree/exponent slip, determination at the node); C.56/C.57's slope letter is
+  `lam` in Lean (`λ` reserved); C.57's `DOM_N`/`COD_N` land as `refineDom`/`refineCod`;
+  C.58 signed at the consumed core (BAND 1 + consultation), clauses (b)/(d)/(e) booked;
+  C.61's `hm1` resolved as the exact-residual hypothesis (no reshaping of C.29); C.62's
+  `ComposedLabel` structure landed (E's expected RE-PLAN pre-honored); C.63's per-`r` boxes
+  written out; C.64 as argmin-data equality; C.65 at the span form (summed form booked);
+  C.67 with the exact-power multiplicity pair and the `[cite:FGMN]`-footprint note; C.69 as
+  the Prop-structure bundle `ClassSizeSupplyData` + `classSize_supply` (stub-stage choice
+  exercised); C.70 at the per-side core. **C.82's DEPENDS names "C.89 (§9's 𝒯-free cap)" —
+  the cap lemma is C.95; recorded as a DEPENDS-field slip (the 6.2C(d) supplier is C.95).**
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
