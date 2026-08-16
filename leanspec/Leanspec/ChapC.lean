@@ -4135,7 +4135,24 @@ axiom lawEW_pin {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
 
 CERTIFIED-OPEN (OM-10 §2.2, 7/7 at μ₂ = 3..6 over q = 2 and q = 3); the naive
 "any in-band k-diagonal" candidate is REFUTED at B4 and MUST NOT be signed
-(`binom(4,4) = 1` is a unit yet `pin(ShC_3) = 8 = Θ + 1`). -/
+(`binom(4,4) = 1` is a unit yet `pin(ShC_3) = 8 = Θ + 1`).
+
+⚠ **SCOPE-FENCE WARNING (2026-08-16, unit C.128 — flag only, repair NOT executed
+here).** The axiom below is **FALSE AS STATED**: it leaves `F.e₁` and `T.f₂` free,
+and constructed PARI-valid keys refute it on both axes — `e₁ = 4` (`Φ′ = x⁴ − 5`/ℤ₅,
+`Φ₂ = Φ′² + 5xΦ′ + 25x²`, PARI `(4,2)`: the top coordinate is EMPTY, `TouchCert`
+false while the RHS holds at `μ₂ ∈ {3,4}`) and `e₁ = 3` (`Φ′ = x³ − 13`/ℤ₁₃,
+`ĉ₀ = 2`, PARI `(3,2)`: the top census is the single unit-DEPENDENT merged digit
+`(b₃ĉ₂² + μ₂(μ₂−1)ĉ₀)ĉ₂π^{3v₂} = 13⁴`, dead, while `13 ∤ b₂ = 3`). Machine record:
+`verification/openmath/bs2_lawbs2_cert.py`, BS2-STUBGAP (GREEN 662/0). **Do NOT
+consume this axiom.** The fleet's promotion path: add `he₁ : F.e₁ = 2` and
+`hf₂ : T.f₂ = 2` (all other binders verbatim); the narrowed statement is PROVED at
+corpus grade in `lean/notes/openmath/LAWBS2_PROOF_2026-08-16.md` (it covers `μ₂ ≥ 2`,
+non-binomial one-sided keys, any odd `h`); its Lean transcription shares C.127's
+`lawEW_pin` bottleneck (the `stageHeight`-of-a-monomial layer, see
+`leanfinal/notes/C127_PIN_BLOCKED_2026-08-16.md`). Same failure genre as C.127's
+landed `j′ ≤ 1` scope-fence repair. Blueprint record: NODE C.128's GEOGRAPHY PIN and
+STUB REPAIR FLAG (A-C.4 section). -/
 
 /-- C.128: at the cascade geography (`e₂(f₂ − t*) = 1`, the `t*`-entry carrying
 `x`-power exactly 1), the pure power attains its top-coordinate floor iff the residue
