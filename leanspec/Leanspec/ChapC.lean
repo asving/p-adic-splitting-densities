@@ -759,7 +759,21 @@ noncomputable def resLift (x : ResidueField O) : O :=
 
 /-- The stage coordinate read: the `F_Q`-digits of a stage-field element in the letter basis
 `{η^s}`, through a chosen `AdjoinRoot.mk`-preimage (junk-stable: consumers pin it only
-through H.56-shaped residue clauses). -/
+through H.56-shaped residue clauses).
+
+⚠ **[DEFECT, D3-pattern audit A-C.3, 2026-08-16 — THE BODY BELOW IS THE REFUTED ONE. DO NOT
+TRANSCRIBE IT.]** The `Exists.choose` preimage is an OPAQUE representative with no degree
+bound, so the reconstruction identity `Σ_{s<f₁} coord_s·η^s = c` is neither provable nor
+refutable and `stageLiftO` (below) cannot be pinned by any consumer.  This was found by
+C.14's audit (commit `b93ad3a7`) and REPAIRED in `leanfinal` at
+`Uniformity/ChapC/C14a.lean` (commit `c2831103`): `stageCoord` reads the
+`AdjoinRoot.powerBasis` coordinate (`KeyFrame.stagePB`, `stagePB_dim = f₁`,
+`stagePB_gen = η`), an INVARIANT of `c`, and the identity lands as
+`KeyFrame.sum_stageCoord`.  The public SIGNATURE is byte-unchanged, which is why this stub
+still type-checks; only the body is wrong.  The stub is not re-bodied here because
+`LeanspecC.KeyFrame` is a duplicate of the landed `Uniformity.Density.Tower.KeyFrame` and
+the correct cure is the documented LIFECYCLE RETIREMENT of the whole landed §3 layer —
+booked to A-C.5 (see the A-§ block, entry A-C.3 §(VIII)). -/
 noncomputable def KeyFrame.stageCoord (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀)
     (c : F.stageField H₀ hpin) (s : ℕ) : ResidueField O :=
   (resFieldXEquiv O).symm (((AdjoinRoot.mk_surjective c).choose).coeff s)
@@ -1829,7 +1843,18 @@ coordinates are the canonical-representative reads (choice), the inverse-twist n
 pinned by the exact-height/residue companions at fleet time — determination recorded] -/
 
 /-- the `K`-coordinate of a `K₂`-element in the `β`-basis (choice on the `AdjoinRoot`
-representative; junk-stable). -/
+representative; junk-stable).
+
+⚠ **[DEFECT, D3-pattern audit A-C.3, 2026-08-16 — THE BODY BELOW IS THE REFUTED ONE. DO NOT
+TRANSCRIBE IT.]** Exactly C.14a's `stageCoord` defect one level up: the `Exists.choose`
+preimage has no degree bound, so `Σ_{t<f₂} k2Coord(s,t)·β^t = s` is neither provable nor
+refutable and `k2DigitLift` cannot be pinned by any consumer.  REPAIRED in `leanfinal` at
+`Uniformity/ChapC/C56a.lean` (commit `2e133686`): `k2Coord` is the power-basis coordinate
+of the monic `towerLabel T` over `K` (`k2PB = AdjoinRoot.powerBasis'`, `k2PB_dim = f₂`,
+`k2PB_gen = β`), with the identity `sum_k2Coord`; two junk branches (`t ≥ dim`, the
+non-monic locus), neither reachable from a pinned consumer.  Public SIGNATURE
+byte-unchanged.  Not re-bodied here for the same reason as `stageCoord` — the cure is the
+lifecycle retirement of the landed layer, booked to A-C.5. -/
 noncomputable def k2Coord {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (T : TowerDatum F H₀ hpin) (s : AdjoinRoot (towerLabel T)) (t : ℕ) :
     F.stageField H₀ hpin :=
