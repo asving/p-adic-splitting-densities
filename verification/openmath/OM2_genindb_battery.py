@@ -630,14 +630,21 @@ def run_cell(ringkind, q, m, W):
         if W - m * k >= 1 and k not in alpha_by_k and m * k <= W - 1:
             ok_c = False        # every admissible k must be realized
     check(f"P1(c) alpha locus law + window [{cell}]", ok_c, str(alpha_by_k))
-    # (d) alpha ghost fibres constant Q^{k c(m)}, onto
+    # (d) alpha ghost fibres constant Q^{k c(m)}, onto; [codex pass, finding 6] every
+    # (k, z)-slice with z in F_q^x must occur, with the exact per-slice total
     ok_d = True
     for (k, z), fib in alpha_fibers.items():
         M = W - m * k
         want = Q ** (k * clusterC(m))
         if set(fib.values()) != {want}: ok_d = False
         if len(fib) != Q ** (m * (M - 1)): ok_d = False   # onto the full reduced window space
-    check(f"P1(d) alpha fibres exact+onto [{cell}]", ok_d)
+    for k in alpha_by_k:
+        slice_keys = {(k, z) for z in range(1, q)}
+        if not slice_keys.issubset(alpha_fibers.keys()): ok_d = False
+        for z in range(1, q):
+            tot_slice = sum(alpha_fibers[(k, z)].values())
+            if tot_slice != Q ** (m * (W - 1) - k * m * (m + 1) // 2): ok_d = False
+    check(f"P1(d) alpha fibres exact+onto, all (k,z) slices [{cell}]", ok_d)
     # (e) recursion identity: undec = drain + sum_k (Q-1)Q^{k c(m)} u(W-mk) + beta-undec + CS
     upart = {}
     def u_of(mu, M):
@@ -747,6 +754,12 @@ def frame_read(ringkind, q, cls, n, N):
         # make k2 monic-canonical: it is monic since rem and h are
         rem = k2
     assert len(rem) - 1 == 0
+    # [codex pass, finding 4] the explicit ROUNDTRIP: the product of the extracted factor
+    # classes must reproduce the frame class mod pi^N.
+    prod = [RB.from_int(1)]
+    for (_, _, g) in parts:
+        prod = rpoly_mul(RB, prod, g)
+    assert all(RB.trunc(x, N) == RB.trunc(y, N) for x, y in zip(prod, f)), "roundtrip failed"
     verdict_undec = False
     sigma = []
     facts = []
@@ -841,6 +854,7 @@ def part2():
     rng = random.Random(20260816)
     for n, q, Ns in plan:
         for N in Ns:
+            ring_summary = {}
             for ringkind in ('Zq', 'Fqt'):
                 prec = N * (n + 2) + 6
                 RB = Ring(ringkind, q, prec)
@@ -858,6 +872,9 @@ def part2():
                     if v[0] == 'U': strata[config][1] += 1
                     tup_seen.setdefault(config, set()).add(facts)
                 cell = f"{ringkind} q={q} n={n} N={N}"
+                # [codex pass, finding 5] per-cell census summary for the both-ring comparison
+                ring_summary[ringkind] = tuple(sorted(
+                    (config, cnt, und) for config, (cnt, und) in strata.items()))
                 check(f"P2 total classes [{cell}]", total == q ** (n * N))
                 # (i)+(ii): per residue-config the factor-tuple map is a bijection onto the
                 # predicted product of factor class spaces
@@ -964,6 +981,25 @@ def part2():
                             if seen != {((1, 1), (2, 1))}: ok_f2 = False
                         check(f"P2(vi) F-2 over-drain witnesses at (3,2,2): 4 classes, "
                               f"single type ((1,1),(2,1))", ok_f2)
+                        # [codex pass, finding 12] make "exactly 4" rigorous: every OTHER
+                        # reader-UNDECIDED class at (3,2,2) has a rigorous two-type witness
+                        # (two explicit lifts with distinct oracle types).
+                        ok_rest = True
+                        for cls in und_items:
+                            if tuple(cls) in [tuple(k) for k in known]: continue
+                            seen = set()
+                            for ds in itertools.product(range(8), repeat=3):
+                                lift = [int(cls[i]) + q ** N * ds[i] for i in range(3)] + [1]
+                                seen.add(tuple(sorted(tuple(x)
+                                          for x in oracle.full_type(lift, q, prec=40))))
+                                if len(seen) >= 2: break
+                            if len(seen) < 2: ok_rest = False
+                        check("P2(vi) F-2 exactness: the other 12 reader-UNDECIDED classes "
+                              "at (3,2,2) all have two-type witnesses", ok_rest)
+            # [codex pass, finding 5] both-characteristics equality of the PART-2 census
+            if 'Zq' in ring_summary and 'Fqt' in ring_summary:
+                check(f"P2(vii) both-characteristics census equality [q={q} n={n} N={N}]",
+                      ring_summary['Zq'] == ring_summary['Fqt'])
 
 # ----------------------------------------------------------------------------------
 # PART 3 — the RecursionLegs instantiation on TRUE data (N-3 + CC-3)
@@ -1018,14 +1054,23 @@ def part3():
         boundary_hit = any(W % m == 0 and W // m >= 1 for W in u)
         check(f"P3 CC-3(i) unwindowed form would read u(0) at some tested W [q={q} m={m}]",
               boundary_hit)
-        # hbeta: find minimal K' at (B', c') = (0, 1): beta <= K' N^m Q^{-(N-1)} ... record
+        # hbeta at (B', c') = (0, 1): beta <= K' * N^(m+0) * (Q^(N - 1 - 1))^{-1}, with the
+        # exponent in Lean's TRUNCATED ℕ-subtraction [codex pass, finding 9: max(W-2, 0)]
         needK = Fraction(0)
         for W in u:
-            bound_unit = Fraction(W ** m, Q ** (W - 2)) if W >= 2 else Fraction(W ** m) * Q
-            if bound_unit:
-                needK = max(needK, betah[W] / bound_unit)
+            bound_unit = Fraction(W ** m, Q ** max(W - 2, 0))
+            needK = max(needK, betah[W] / bound_unit)
         check(f"P3 hbeta with (B',c')=(0,1), K'={float(needK):.4f} <= 1 [q={q} m={m}]",
               needK <= 1, f"K'={needK}")
+        # hdesc + the n₀ choice [codex pass, finding 8]: with n₀ := Nmax, for every tested
+        # 1 <= N <= Nmax and k < n₀ with 1 <= m(k+1):  N - m(k+1) < N in ℕ-truncation; and
+        # n₀ covers every realized multiplicity (the windowed filter cuts at m(k+1) < N).
+        n0 = Nmax
+        ok = all(max(W - m * (k + 1), 0) < W
+                 for W in range(1, Nmax + 1) for k in range(n0) if m * (k + 1) >= 1)
+        ok = ok and all(m * kk <= Nmax - 1 and kk <= n0 for W in u
+                        for kk in range(1, (W - 1) // m + 1))
+        check(f"P3 hdesc + n₀ coverage (n₀ = {n0}) [q={q} m={m}]", ok)
         # species conclusion: RateSpecies Q K B c with (1,1,1) — u(N)/Q^{m(N-1)} <= N Q^{-(N-1)}
         ok = all(uh[W] <= Fraction(W, Q ** (W - 1)) for W in u)
         check(f"P3 RateSpecies (K,B,c)=(1,1,1) on true data [q={q} m={m}]", ok)
