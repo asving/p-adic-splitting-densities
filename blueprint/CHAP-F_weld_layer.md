@@ -48,6 +48,13 @@ fresh-context read may discharge the obligation earlier per Part IV item 6's pre
 > `AdjoinRoot` — the gate's field constructions of record. Read A-W.1 before consuming F.08,
 > F.09, F.10, F.12, F.14, F.15, F.16, F.17, F.22, F.27, F.29 or F.30.
 >
+> **AMENDMENT A-W.2 (2026-08-16, unit OM-9) — §4 AND §5 ARE LANDED IN `leanfinal`.** Sixteen
+> files (`Uniformity/ChapF/F01…F13` + witness appendices `F04w`/`F12w`): the two Display-A
+> carriers and the W-1 carrier at gate signatures, 9 of the 15 `axiom` stubs PROVED (F.02,
+> F.03 ×3, F.06, F.09, F.10 ×2, F.13), the perimeter-consistency and W-1 transport witness
+> layers, and one fresh certified theorem (`CarryCocycle.c_comm`: every carry cocycle is
+> symmetric). All Lean-core; WELD-ZERO untouched. Record at the end of this file.
+>
 > **AMENDMENT-SERIES NAME, DECLARED ONCE.** This chapter's series is **`A-W.<n>`** ("W" for
 > *weld*), **not** `A-F.<n>`: chapter B's amendment series already occupies `A-F.<n>`
 > (`A-F.3`, `A-F.5`, `A-F.6`, `A-F.7`, `A-F.10` in `blueprint/CHAP-B_leaf_layer.md`, where the
@@ -2882,5 +2889,91 @@ defect, and harmless to F under D-F3.
 * Chapter I's consumption surface: unchanged in content, but note that two FIELD names it will
   project are respelled (`LedgerJunction.sigmaMap`, `WeldSupply.hSigma`) — F-D1's one contract
   consequence.
+
+## AMENDMENT A-W.2 (2026-08-16, dated append, unit OM-9) — FIRST `leanfinal` LANDINGS:
+## §4 + §5 COMPLETE (F.01–F.13), TWO WITNESS APPENDICES, THE STUBS OF 9 THEOREM ROWS PROVED
+
+**What landed** (unit OM-9, the OPEN-MATH campaign's weld-conjunct unit — rows HYP.74 and
+HYP.148+139; certified BEFORE proving by `verification/openmath/om9_weld_cert.py`, 95 GREEN /
+0 RED, 8/8 planted mutants caught, both primes, with the F₂/involution negative controls of
+§10's arena note carried to every new leg). Sixteen files in `leanfinal/Uniformity/ChapF/`,
+each byte-identical to the stage-0e gate's signed signatures (A-W.1 spellings), all built
+green, **every proved declaration Lean-core** (`#print axioms` ⊆ {propext, Classical.choice,
+Quot.sound}; zero `sorry`, zero new axioms):
+
+* **Node files, definitional:** `F01` (`gaugeCobdry`/`slotScale`), `F04` (`ValueDictSite`/
+  `JD0Box2`), `F05` (`JD0SiteStrike`), `F07` (`CarryCocycle`), `F08` (`TwistedAlgebra`/
+  `single` + the six A-W.1 instances), `F11` (`CarrySite`/`GenhnBox2`), `F12`
+  (`W1Transport`, F-D2 spelling). **The two Display-A carriers and the W-1 sub-residue
+  carrier now exist as landed declarations** — chapter I's §9 items L-1/L-2 can bind real
+  names at F's freeze.
+* **Theorem rows, stubs → PROVED (9 of the 15 `axiom` stubs):** F.02
+  (`card_image_slotScale`), F.03 (×3: `natDegree_resTwist`, `monic_resTwist`,
+  `isRoot_resTwist`), F.06 (`slotScale_eq_id_of_card_two`), F.09
+  (`TwistedAlgebra.mul_assoc` — via the `conv_assoc_aux` double-sum re-indexing, the
+  sanctioned F.09a split, `(s,a) ↦ (a, s−a)` + one cocycle instance per term), F.10a
+  (`finrank_eq`), F.10b (`pow_card_single` — the SIGNED `∏ c 1 k` orbit product, reached
+  from `npowRec`'s right recursion through `c_one_comm`, no `Monoid` instance needed),
+  F.13 (`nat_card`). Remaining stubs (F.15, F.16, F.18's lemma half, F.23 ×2, F.25's lemma
+  half) are §6/§7 fleet work, untouched.
+* **Witness appendices (H09w/H89w/H73w precedent, not blueprint nodes):** `F04w.lean` —
+  `IsGaugeCocycle` + `IsGaugeCocycle.mul` + `gaugeCobdry_isCocycle` (the perimeter's
+  CONSISTENCY: the ledger leg `c ↦ c·∂u` preserves the 2-cocycle class — the four-line
+  action is well-posed on exactly F.07's class) + `gaugeCobdry_gaugeCobdry` (the action
+  law) + `JD0SiteStrike.jd0Box2` (**HYP.74's fold route, site-independent half**: a strike
+  with its ledger leg witnesses `JD0Box2`; the seven per-site instances stay GC-13-gated).
+  `F12w.lean` — `w1Transport_iff_slotScale` (the W-1 carrier IS an orbit of F.01's action),
+  **`w1Transport_iff_zero_iff`** (over a field the carrier ⟺ equal vanishing loci — the
+  F.12 FAITHFULNESS disclosure as a machine-checked theorem; see the honesty note below),
+  `w1Transport_refl/symm/trans`, `w1Transport_of_ne_zero`, `lineCobdry` +
+  `lineCobdry_cocycle` + `lineCobdry_eq_one_iff` (the `(DMULT-w)` ω = c_{λ+μ}/(c_λc_μ)
+  mechanism: always a 2-cocycle; ≡ 1 iff the system is a homomorphism — "nothing gives
+  ω ≡ 1" with its `ω ≠ 1` witness by `decide`).
+* **Below-the-contract-line helpers added (disclosed per GC-6.5; the F.09-note and F.10
+  PROOF prose pre-authorize the unit laws and `single_mul_single`):** F.07:
+  `CarryCocycle.c_zero_left/c_zero_right` (degenerate rows constant) and
+  `CarryCocycle.c_one_comm` (`c 1 k = c k 1`, the telescoped ratio argument). F.08:
+  `mul_apply`, `single_apply`, `one_def`, `smul_apply`, `single_injective`,
+  `single_mul_single`, `TwistedAlgebra.one_mul`/`mul_one` (F.09's STATEMENT half — the
+  two-sided unit — in theorem form, via the `c_zero` lemmas). F.10b: private
+  `pow_succ_def`/`pow_single_aux`/`pow_add_aux`, plus one PUBLIC fresh theorem:
+
+**`CarryCocycle.c_comm` (F.10b, A-W.2's one fresh mathematical addition): EVERY carry
+cocycle over `ZMod E` is symmetric, `c a b = c b a`.** Certified first (om9_weld_cert.py
+LEG C3: every enumerated cocycle at `E ∈ {2,3,4}`, `|Kˣ| ∈ {2,3,4}`; the `|Z²| = |Kˣ|^E`
+count law confirmed exactly), then proved: the coefficient extraction of
+`v^{m+n} = v^m · v^n` at ℕ-lifts is manifestly symmetric, degenerate rows by `c_zero_*`.
+This is JC-F1's cyclic presentation echoed abstractly (the twisted algebra is generated by
+`v`, hence commutative) and does NOT contradict any fence — JC-BOX-5's REVIEW-OWED guard is
+about the anchor-INDEXED presentation, which no landed statement mentions.
+
+**Two linter silencings at signed spellings (not contract changes):** F.11's
+`∃ (h : NeZero s.E)` binder and F.08's phantom `cc` binder each carry a
+`set_option linter.unusedVariables false in` — the signed signatures land byte-identical.
+One DEPENDS realization: `F10b.lean` imports `F09` (the blueprint's F.10 DEPENDS row
+already lists F.09).
+
+**HONESTY NOTE — what `w1Transport_iff_zero_iff` means for HYP.139 (and does not).** The
+theorem makes precise that F.12's carrier is the transport's SIGNATURE only: at the carrier
+vocabulary, existence of the line-wise unit system is DECIDED by vanishing loci, so chapter
+I's `w1` field is formally dischargeable at any site with pointwise-nonvanishing residual
+families (`w1Transport_of_ne_zero`). **That would NOT discharge HYP.139**: the MATH content
+(TR-3′-GEN's compatible dictionary at general order — the ω-coboundary's compatibility with
+the march-level dictionary, not bare existence) lives in the site instantiation. HYP.139
+stays MATH at full strength; the ledger row carries a matching ARC NOTE. Chapter I should
+treat the `w1` field per this note (flagged in the CHAP-I addendum of 2026-08-16, unit
+OM-9).
+
+**A-W.2 — WHAT THIS AMENDMENT DID NOT TOUCH.** The WELD-ZERO arc (honesty F-2): untouched,
+unconsumed, unanticipated — HYP.148 CARRY / HYP.139 MATH / HYP.149 IN-PROGRESS at
+clean-pass 1 of 2, all at full strength; §8 stands verbatim. No carrier gained or lost a
+quantifier (the landed bodies are the gate's `Iff.rfl`-pinned bodies). §6/§7/§9/§10 nodes
+(F.14–F.30): not landed here — fleet work. The chapter roll-up `Uniformity/ChapF.lean` and
+the `Uniformity.lean` root line: NOT created (OM-7's C.93 precedent — left to the
+orchestrator/fleet's roll-up pass; until then the modules build as explicit targets,
+`lake build Uniformity.ChapF.F<nn>`). `leanspec/Leanspec/ChapF.lean`: not edited; stub
+retirement to the `example : <type> := <name>` diff form for the 9 proved rows + 20 landed
+definitional declarations is the orchestrator's lifecycle action (its RESUME item (iii)).
+Unit record: `docs/openmath-campaign/OM-9_weld_2026-08-16.md`.
 
 <!-- SENTINEL: BP-F END OF FILE -->
