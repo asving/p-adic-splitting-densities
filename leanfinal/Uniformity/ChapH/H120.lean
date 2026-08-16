@@ -315,4 +315,177 @@ theorem isCSState_of_isCSState_clusterTrunc {π : O} {m T W : ℕ} (h : T ≤ W)
 
 end CS
 
+/-! ## 3. The child events under truncation
+
+On the non-drain branch the capped content is unchanged, so the `∀`-lift clauses of H.109
+transport from ONE class lift (H.109's `hasChildAt_of_exists`), in both directions.  The
+backward direction is needed only at FULL multiplicity, and there the content equality is
+automatic: a full child pins `D = m k` at whichever window it is read. -/
+
+section Events
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)]
+
+/-- **A child event re-fires at the smaller window** (non-drain branch): same `(μ, k, z)`, same
+capped content, and the `∀`-lift clauses come from the pinned class lift. -/
+theorem hasChildAt_clusterTrunc {π : O} (hπ : Irreducible π) {m T W μ k : ℕ}
+    {z : ResidueField O} (h : T ≤ W) (hm : 0 < m) {c : ClusterState O m W}
+    (h0 : ¬ IsDrainState (clusterTrunc h c)) (hch : HasChildAt π c μ k z) :
+    HasChildAt π (clusterTrunc h c) μ k z := by
+  obtain ⟨hμ, hk, hz, hall⟩ := hch
+  have hT : 1 ≤ T := one_le_window_of_not_drain _ h0
+  have hDeq : betaContent (clusterTrunc h c) k = betaContent c k :=
+    betaContent_clusterTrunc_eq h c k (betaContent_lt_of_not_isDrainState_clusterTrunc h hm h0 k)
+  have haW : proj O m W (classSect O m W c.1) = c.1 := proj_classSect O m W c.1
+  have haT : proj O m T (classSect O m W c.1) = (clusterTrunc h c).1 := proj_clusterTrunc h c haW
+  obtain ⟨c1, c2, c3⟩ := hall (classSect O m W c.1) (resSect O z) haW (residue_resSect O z)
+  refine hasChildAt_of_exists hπ hT h0 hμ hk hz (classSect O m W c.1) (resSect O z) haT
+    (residue_resSect O z) ?_ ?_ ?_ <;> rw [hDeq]
+  · exact c1
+  · exact c2
+  · exact c3
+
+/-- **Truncation creates no FULL-multiplicity child.**  A full child at the small window forces
+the capped content to be `m * k` there, hence also at the large window (the content only drops
+under truncation, and `m * k` is its monic-top bound), and then every `W`-lift pair is covered
+by the small window's own `∀`-lift clause.  This is what keeps a β state β under truncation. -/
+theorem hasChildAt_full_of_clusterTrunc {π : O} (hπ : Irreducible π) {m T W k : ℕ}
+    {z : ResidueField O} (h : T ≤ W) {c : ClusterState O m W}
+    (h0 : ¬ IsDrainState (clusterTrunc h c)) (hch : HasChildAt π (clusterTrunc h c) m k z) :
+    HasChildAt π c m k z := by
+  obtain ⟨hμ, hk, hz, hall⟩ := hch
+  have hπ0 : π ≠ 0 := hπ.ne_zero
+  have h0W : ¬ IsDrainState c := not_isDrainState_of_not_isDrainState_clusterTrunc h h0
+  have hW : 1 ≤ W := one_le_window_of_not_drain _ h0W
+  have haW : proj O m W (classSect O m W c.1) = c.1 := proj_classSect O m W c.1
+  have haT : proj O m T (classSect O m W c.1) = (clusterTrunc h c).1 := proj_clusterTrunc h c haW
+  obtain ⟨c1, c2, c3⟩ := hall (classSect O m W c.1) (resSect O z) haT (residue_resSect O z)
+  -- the content is `m * k` at BOTH windows
+  have hge : m * k ≤ betaContent (clusterTrunc h c) k := by
+    by_contra hlt
+    refine c3 ?_
+    rw [coeff_recentre_top hπ0 (classSect O m W c.1) k (resSect O z), ← pow_mul,
+      Nat.mul_comm k m]
+    exact pow_dvd_pow π (by omega)
+  have hle := betaContent_clusterTrunc_le h c k
+  have hmul := betaContent_le_mul c k
+  have hDeq : betaContent (clusterTrunc h c) k = betaContent c k := by omega
+  refine hasChildAt_of_exists hπ hW h0W hμ hk hz (classSect O m W c.1) (resSect O z) haW
+    (residue_resSect O z) ?_ ?_ ?_ <;> rw [← hDeq]
+  · exact c1
+  · exact c2
+  · exact c3
+
+/-- **α re-fires at the smaller window** (non-drain branch). -/
+theorem isAlphaState_clusterTrunc {π : O} (hπ : Irreducible π) {m T W k : ℕ}
+    {z : ResidueField O} (h : T ≤ W) (hm : 0 < m) {c : ClusterState O m W}
+    (h0 : ¬ IsDrainState (clusterTrunc h c)) (hα : IsAlphaState π c k z) :
+    IsAlphaState π (clusterTrunc h c) k z :=
+  ⟨h0, fun hcs => hα.2.1 (isCSState_of_isCSState_clusterTrunc h hα.1 hcs),
+    hasChildAt_clusterTrunc hπ h hm h0 hα.2.2⟩
+
+/-- **β re-fires at the smaller window** (non-drain branch): the witnessed child transports
+forward, and no full-multiplicity child appears (`hasChildAt_full_of_clusterTrunc`). -/
+theorem isBetaState_clusterTrunc {π : O} (hπ : Irreducible π) {m T W μ k : ℕ}
+    {z : ResidueField O} (h : T ≤ W) (hm : 0 < m) {c : ClusterState O m W}
+    (h0 : ¬ IsDrainState (clusterTrunc h c)) (hβ : IsBetaState π c)
+    (hch : HasChildAt π c μ k z) : IsBetaState π (clusterTrunc h c) := by
+  refine ⟨h0, fun hcs => hβ.2.1 (isCSState_of_isCSState_clusterTrunc h hβ.1 hcs),
+    ⟨μ, k, z, hasChildAt_clusterTrunc hπ h hm h0 hch⟩, ?_⟩
+  rintro ⟨k', z', hfull⟩
+  exact hβ.2.2.2 ⟨k', z', hasChildAt_full_of_clusterTrunc hπ h h0 hfull⟩
+
+/-! ### The extracted children commute with truncation -/
+
+/-- **The α child commutes with truncation.**  Both children are the monic development of the
+SAME divided frame — the α extraction is a division formula, so the two digit vectors are
+equal on the nose and only their windows differ. -/
+theorem alphaChild_clusterTrunc {π : O} (hπ : Irreducible π) {m T W k : ℕ}
+    {z : ResidueField O} (h : T ≤ W) (hm : 2 ≤ m) {c : ClusterState O m W}
+    (h0 : ¬ IsDrainState (clusterTrunc h c)) (hα : IsAlphaState π c k z)
+    (hα' : IsAlphaState π (clusterTrunc h c) k z) (hMM : T - m * k ≤ W - m * k) :
+    alphaChild π (clusterTrunc h c) hα' = clusterTrunc hMM (alphaChild π c hα) := by
+  have hπ0 : π ≠ 0 := hπ.ne_zero
+  have hT : 1 ≤ T := one_le_window_of_not_drain _ h0
+  have hW : 1 ≤ W := one_le_window_of_not_drain _ hα.1
+  have haW : proj O m W (classSect O m W c.1) = c.1 := proj_classSect O m W c.1
+  have haT : proj O m T (classSect O m W c.1) = (clusterTrunc h c).1 := proj_clusterTrunc h c haW
+  obtain ⟨bW, -, hbWeq, hbWproj⟩ := alphaChild_spec hπ hm hW c hα _ haW
+  obtain ⟨bT, -, hbTeq, hbTproj⟩ :=
+    alphaChild_spec hπ hm hT (clusterTrunc h c) hα' _ haT
+  -- the two monic developments factor the SAME frame, so they are equal
+  have hCne : (Polynomial.C (π ^ (m * k)) : Polynomial O) ≠ 0 :=
+    Polynomial.C_ne_zero.2 (pow_ne_zero _ hπ0)
+  have hmono : monicPoly bW = monicPoly bT := mul_left_cancel₀ hCne (hbWeq.symm.trans hbTeq)
+  have hb : bW = bT := by
+    refine funext fun i => ?_
+    rw [← monicPoly_coeff_lt bW i.isLt, hmono, monicPoly_coeff_lt bT i.isLt]
+  refine Subtype.ext ?_
+  rw [← hbTproj, ← hb,
+    show (clusterTrunc hMM (alphaChild π c hα)).1
+      = coeffFactor m hMM (alphaChild π c hα).1 from rfl, ← hbWproj, coeffFactor_proj]
+
+/-- **The β child commutes with truncation.**  Both children are monic degree-`μ` left factors
+of the SAME divided frame at the SAME pinned centre, so H.116's fixed-centre uniqueness
+(`monicFactor_congr_of_pow_dvd_sub`) identifies them at the small child window. -/
+theorem betaChild_clusterTrunc {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π)
+    {m T W μ k : ℕ} {z : ResidueField O} (h : T ≤ W) (hm : 2 ≤ m) {c : ClusterState O m W}
+    (h0 : ¬ IsDrainState (clusterTrunc h c)) (hch : HasChildAt π c μ k z)
+    (hch' : HasChildAt π (clusterTrunc h c) μ k z)
+    (hMM : T - betaContent (clusterTrunc h c) k ≤ W - betaContent c k) :
+    betaChild π (clusterTrunc h c) hch' (T - betaContent (clusterTrunc h c) k)
+      = clusterTrunc hMM (betaChild π c hch (W - betaContent c k)) := by
+  have hπ0 : π ≠ 0 := hπ.ne_zero
+  have hm0 : 0 < m := by omega
+  have h0W : ¬ IsDrainState c := not_isDrainState_of_not_isDrainState_clusterTrunc h h0
+  have hT : 1 ≤ T := one_le_window_of_not_drain _ h0
+  have hW : 1 ≤ W := one_le_window_of_not_drain _ h0W
+  have hDeq : betaContent (clusterTrunc h c) k = betaContent c k :=
+    betaContent_clusterTrunc_eq h c k (betaContent_lt_of_not_isDrainState_clusterTrunc h hm0 h0 k)
+  have haW : proj O m W (classSect O m W c.1) = c.1 := proj_classSect O m W c.1
+  have haT : proj O m T (classSect O m W c.1) = (clusterTrunc h c).1 := proj_clusterTrunc h c haW
+  obtain ⟨bW, HW, hbWmem, hbWeq, hbWproj⟩ := betaChild_spec hπ hm hW c hch h0W _ haW
+  obtain ⟨bT, HT, hbTmem, hbTeq, hbTproj⟩ :=
+    betaChild_spec hπ hm hT (clusterTrunc h c) hch' h0 _ haT
+  rw [hDeq] at hbTeq
+  -- the two factorizations are of the same divided frame
+  have hCne : (Polynomial.C (π ^ betaContent c k) : Polynomial O) ≠ 0 :=
+    Polynomial.C_ne_zero.2 (pow_ne_zero _ hπ0)
+  have hprod : monicPoly bW * HW = monicPoly bT * HT :=
+    mul_left_cancel₀ hCne (hbWeq.symm.trans hbTeq)
+  -- the `W`-cofactor is residually coprime to `X ^ μ` (H.116's residue split, re-read)
+  have hcop : IsCoprime (X ^ μ : Polynomial (ResidueField O)) (HW.map (residue O)) := by
+    obtain ⟨G, hGeq, hGlt, hGtop⟩ :=
+      exists_dividedFrame_at hπ c hch (classSect O m W c.1) haW
+    obtain ⟨v, hv, -, hvcop⟩ := exists_residue_split hGlt hGtop
+    have hGprod : G = monicPoly bW * HW := mul_left_cancel₀ hCne (hGeq.symm.trans hbWeq)
+    have hXne : (X : Polynomial (ResidueField O)) ^ μ ≠ 0 := pow_ne_zero _ X_ne_zero
+    have hmapv : (X : Polynomial (ResidueField O)) ^ μ * (HW.map (residue O))
+        = (X : Polynomial (ResidueField O)) ^ μ * v := by
+      rw [← hv, hGprod, Polynomial.map_mul, monicPoly_map_residue hbWmem]
+    rw [mul_left_cancel₀ hXne hmapv]
+    exact hvcop
+  -- fixed-centre uniqueness at the SMALL child window
+  have hs : ∀ j, π ^ (T - betaContent c k) ∣
+      (monicPoly bW * HW - monicPoly bT * HT).coeff j := by
+    intro j
+    rw [hprod, sub_self, Polynomial.coeff_zero]
+    exact dvd_zero _
+  have huniq := monicFactor_congr_of_pow_dvd_sub hπ (monicPoly_monic bW) (monicPoly_monic bT)
+    (monicPoly_natDegree bW) (monicPoly_natDegree bT) (monicPoly_map_residue hbTmem) hcop hs
+  refine Subtype.ext ?_
+  rw [← hbTproj,
+    show (clusterTrunc hMM (betaChild π c hch (W - betaContent c k))).1
+      = coeffFactor μ hMM (betaChild π c hch (W - betaContent c k)).1 from rfl,
+    ← hbWproj, coeffFactor_proj, hDeq]
+  refine funext fun i => ?_
+  refine Ideal.Quotient.eq.2 ((mem_maximalIdeal_pow_iff_dvd_of_irr hπ _ _).2 ?_)
+  have h3 := huniq (i : ℕ)
+  rw [Polynomial.coeff_sub, monicPoly_coeff_lt bW i.isLt, monicPoly_coeff_lt bT i.isLt] at h3
+  exact (dvd_sub_comm).1 (by simpa using h3)
+
+end Events
+
 end Uniformity.Density.Induction
