@@ -45,8 +45,9 @@ characteristic `p` misses `binom(μ₂,2)` or misses `binom(μ₂,3)`.
   `Φ′`-adic basis, which is how an over-grid `x`-power becomes `Φ′`-powers.  `key_eq_triKey`
   (Part 3) is what makes them apply to the frame key.
 * **Part 3 — the trinomial shape of the composed key** (`stageLiftO_of_f1`,
-  `KeyFrame.slotIdx_mul_left`, `composedKey_trinomial`, `isUnit_entryCoef`, `key_eq_triKey`).  C.127's three clauses were HANDED the
-  shape `Φ₂ = Φ′^{f₂} + C(c₂π^{v₂})x^{i₂}Φ′^{f₂−1} + C(c₀π^{v₀})` as a hypothesis (`hcomp`),
+  `KeyFrame.slotIdx_mul_left`, `composedKey_trinomial`, `isUnit_entryCoef`, `key_eq_triKey`).
+  C.127's three clauses were HANDED the shape
+  `Φ₂ = Φ′^{f₂} + C(c₂π^{v₂})x^{i₂}Φ′^{f₂−1} + C(c₀π^{v₀})` as a hypothesis (`hcomp`),
   which is what made that node D19-safe.  C.128's signed binder list has no such hypothesis, so
   the shape must be DERIVED from C.43's body — through C.14a's `stageLiftO` — and that
   derivation is Part 3.  At `f₁ = 1` every `stageLiftO` entry is a single monomial
@@ -258,7 +259,7 @@ theorem devQ_C_mul [Nontrivial R] {Ψ : Polynomial R} (hΨ : Ψ.Monic) (c : R) :
   induction j generalizing g with
   | zero => exact (hstep g).2
   | succ j ih =>
-      show devQ Ψ ((Polynomial.C c * g) /ₘ Ψ) j = _
+      change devQ Ψ ((Polynomial.C c * g) /ₘ Ψ) j = _
       rw [(hstep g).1]
       exact ih _
 
@@ -280,7 +281,7 @@ theorem devQ_triKey_X_pow_even (P c0 : R) :
   intro n
   induction n with
   | zero =>
-      show ((Polynomial.X : Polynomial R) ^ 0) %ₘ triKey P c0 = 1
+      change ((Polynomial.X : Polynomial R) ^ 0) %ₘ triKey P c0 = 1
       rw [pow_zero]
       refine (modByMonic_eq_self_iff (triKey_monic P c0)).2 ?_
       rw [degree_one, triKey_degree]
@@ -322,7 +323,7 @@ theorem devQ_triKey_X_pow_odd (P c0 : R) :
   intro n
   induction n with
   | zero =>
-      show ((Polynomial.X : Polynomial R) ^ 1) %ₘ triKey P c0 = _
+      change ((Polynomial.X : Polynomial R) ^ 1) %ₘ triKey P c0 = _
       rw [pow_one]
       have hlt : (Polynomial.X : Polynomial R).degree < (triKey P c0).degree := by
         rw [degree_X, triKey_degree]
