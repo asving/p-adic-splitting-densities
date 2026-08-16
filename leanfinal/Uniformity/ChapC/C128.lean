@@ -40,8 +40,12 @@ characteristic `p` misses `binom(μ₂,2)` or misses `binom(μ₂,3)`.
   the top-band filter of the note's §4: it is what kills every seed whose `Y`-power falls short
   of `2μ₂ − 2`, and it is what produces the PAIR branch's quotient cross-term `−(μ₂−1)P` — the
   reason the `(1,0)` slot carries the MIXED integer `M = b₃ − (μ₂−1)b₂` and not `b₃`.
+  Part 2 also lands **the degree-2 wrap dictionary** (`X_sq_eq_triKey_sub`,
+  `X_cube_eq_triKey`, `X_four_eq_triKey`): the note's §4 displays for `x²`, `x³`, `x⁴` in the
+  `Φ′`-adic basis, which is how an over-grid `x`-power becomes `Φ′`-powers.  `key_eq_triKey`
+  (Part 3) is what makes them apply to the frame key.
 * **Part 3 — the trinomial shape of the composed key** (`stageLiftO_of_f1`,
-  `KeyFrame.slotIdx_mul_left`, `composedKey_trinomial`).  C.127's three clauses were HANDED the
+  `KeyFrame.slotIdx_mul_left`, `composedKey_trinomial`, `isUnit_entryCoef`, `key_eq_triKey`).  C.127's three clauses were HANDED the
   shape `Φ₂ = Φ′^{f₂} + C(c₂π^{v₂})x^{i₂}Φ′^{f₂−1} + C(c₀π^{v₀})` as a hypothesis (`hcomp`),
   which is what made that node D19-safe.  C.128's signed binder list has no such hypothesis, so
   the shape must be DERIVED from C.43's body — through C.14a's `stageLiftO` — and that
@@ -57,10 +61,11 @@ characteristic `p` misses `binom(μ₂,2)` or misses `binom(μ₂,3)`.
 The remaining two pieces are the note's §2–§4 and they are a node's worth of work each:
 
 1. **the wrap-seed sum (§2) and the weight calculus (§3)** — the multinomial expansion
-   `K^{μ₂} = Σ_{k+l+r=μ₂} C(μ₂;k,l,r)P^lc₀^rY^{2k+l}`, the degree-2 wrap dictionary
-   (`x² = Φ′ + (π^hω − κ₁x)`, `x³ = (x−κ₁)Φ′ + …`, `x⁴ = Φ′² + (2π^hω + κ₁² − 2κ₁x)Φ′ + …`),
-   and LEMMA 3(3a)–(3d)'s statement that wrap depth `j` sits exactly `jδ` above the pure
-   power's own weight `μ₂E₂`.  Nothing landed carries a weight grading of this kind:
+   `K^{μ₂} = Σ_{k+l+r=μ₂} C(μ₂;k,l,r)P^lc₀^rY^{2k+l}` and LEMMA 3(3a)–(3d)'s statement that
+   wrap depth `j` sits exactly `jδ` above the pure power's own weight `μ₂E₂`.  (The dictionary
+   the expansion is developed against — `x²`, `x³`, `x⁴` in the `Φ′`-adic basis — IS landed,
+   in Part 2; what is missing is the expansion itself and the grading.)  Nothing landed
+   carries a weight grading of this kind:
    C.127's `shadowDev_of_ingrid` explicitly does NOT apply (the pure power is OVER-grid, which
    is the whole content of the law), and C.129's `binomKey_mod_monomial` is stated at the
    BINOMIAL key `X^D − C w` and cannot be reused at the one-sided non-binomial `Φ′` this node
@@ -196,6 +201,42 @@ theorem X_sq_eq_triKey_sub (P c0 : R) :
     (Polynomial.X : Polynomial R) ^ 2
       = triKey P c0 - (Polynomial.C P * Polynomial.X + Polynomial.C c0) := by
   rw [triKey]; ring
+
+/-! ### The degree-2 wrap dictionary (the note's §4 displays)
+
+The same shape `Y² + P·Y + c₀` is BOTH the level-2 key `K` (the chain above) and, at the pinned
+geography `e₁ = 2`, `f₁ = 1`, the level-1 key `Φ′ = x² + κ₁x − π^hω` (`triKey κ₁ (−π^hω)`).  The
+three identities below are the note's §4 wrap dictionary at the second reading: they express
+`x²`, `x³`, `x⁴` in the `Φ′`-adic basis, which is how an over-grid `x`-power turns into `Φ′`
+(i.e. `Y`) powers.  `X_sq_eq_triKey_sub` above is the `x²` row; these are the `x³` and `x⁴`
+rows, in the exact form the census consumes (the `Φ′`-coefficient of `x³` is `x − κ₁`, which is
+the ONLY `κ₁`-decorated top-band content, and the `Φ′²`-coefficient of `x⁴` is exactly `1`).
+
+Both are ring identities — no monicity, no degree hypothesis, any commutative ring. -/
+
+/-- **the `x³` row** of the wrap dictionary: `x³ = (x − κ₁)·Φ′ + ((κ₁² − κ₀)x + κ₁κ₀)` at
+`Φ′ = x² + κ₁x + κ₀`.  (The note writes it at `κ₀ = −π^hω`:
+`x³ = (x − κ₁)Φ′ + ((π^hω + κ₁²)x − κ₁π^hω)`.)  The depth-1 `Φ′`-coefficient `x − κ₁` is the
+TRIPLE branch's input, and its `−κ₁` is the note's only `κ₁`-decorated top-band deposit. -/
+theorem X_cube_eq_triKey (a b : R) :
+    (Polynomial.X : Polynomial R) ^ 3
+      = (Polynomial.X - Polynomial.C a) * triKey a b
+        + (Polynomial.C (a ^ 2 - b) * Polynomial.X + Polynomial.C (a * b)) := by
+  simp only [triKey, Polynomial.C_sub, Polynomial.C_pow, Polynomial.C_mul]
+  ring
+
+/-- **the `x⁴` row** of the wrap dictionary:
+`x⁴ = Φ′² + ((κ₁² − 2κ₀) − 2κ₁x)·Φ′ + ((2κ₁κ₀ − κ₁³)x + (κ₀² − κ₁²κ₀))`.  The leading
+coefficient is exactly `1` — the QUAD branch's depth-2 input, and the reason the quad deposit
+is `ω`-free and `κ₁`-free at the top band. -/
+theorem X_four_eq_triKey (a b : R) :
+    (Polynomial.X : Polynomial R) ^ 4
+      = triKey a b ^ 2
+        + (Polynomial.C (a ^ 2 - 2 * b) - Polynomial.C (2 * a) * Polynomial.X) * triKey a b
+        + (Polynomial.C (2 * a * b - a ^ 3) * Polynomial.X
+            + Polynomial.C (b ^ 2 - a ^ 2 * b)) := by
+  simp only [triKey, Polynomial.C_sub, Polynomial.C_pow, Polynomial.C_mul, Polynomial.C_ofNat]
+  ring
 
 /-- Scalars pass through the development: `devQ Ψ (C c · g) j = C c · devQ Ψ g j` at a monic
 `Ψ`.  (Needed for the PAIR branch, whose surviving deposit is `P` times a pure power.) -/
@@ -448,6 +489,25 @@ theorem composedKey_trinomial {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H�
   simp only [entryCoef, neg_mul, Polynomial.C_neg]
   ring
 
+/-- **Part 3(e) — the wrap dictionary applies to the frame key.**  At the pinned geography the
+level-1 key is a degree-2 monic, hence literally a `triKey`: `Φ′ = x² + κ₁x + κ₀` with
+`κ₁ = Φ′.coeff 1`, `κ₀ = Φ′.coeff 0` (the note's (G1) at `κ₀ = −π^hω`; the BINOMIAL subclass is
+`κ₁ = 0`, and the law is proved for the whole one-sided class, so no binomial hypothesis is
+taken).  This is what lets `X_sq_eq_triKey_sub` / `X_cube_eq_triKey` / `X_four_eq_triKey` be
+read as the `Φ′`-adic wrap dictionary. -/
+theorem key_eq_triKey (F : KeyFrame O π) (he₁ : F.e₁ = 2) (hf₁ : F.f₁ = 1) :
+    F.key = triKey (F.key.coeff 1) (F.key.coeff 0) := by
+  have hdeg : F.key.natDegree = 2 := by rw [F.hdeg, he₁, hf₁]
+  have h2 : F.key.coeff 2 = 1 := by
+    have hm := F.hmonic
+    rw [Polynomial.Monic, Polynomial.leadingCoeff, hdeg] at hm
+    exact hm
+  have h := Polynomial.as_sum_range_C_mul_X_pow F.key
+  rw [hdeg, Finset.sum_range_succ, Finset.sum_range_succ, Finset.sum_range_one, h2] at h
+  conv_lhs => rw [h]
+  rw [triKey, Polynomial.C_1]
+  ring
+
 /-! ### The entry coefficients are units
 
 The census reads the entries as `ĉ₂π^{v₂}` and `ĉ₀π^{v₀}` with `ĉ₂, ĉ₀ ∈ O^×` — the note's
@@ -509,6 +569,45 @@ end Trinomial
 
 end Uniformity.Density.Tower
 
+/-! ## Unfolding checks
+
+`example`s, not declarations: the local pins on the two chain values at the first two
+coordinates.  A `Y − nP ↦ Y + nP` sign flip, an off-by-one in the coordinate index, or a
+`2n ↔ 2n+1` transposition of the two cases cannot survive them. -/
+
+section UnfoldingChecks
+
+open Uniformity.Density.Tower Polynomial
+
+variable {R : Type*} [CommRing R] [Nontrivial R]
+
+/-- `R₁(Y²) = 1`. -/
+example (P c0 : R) : devQ (triKey P c0) ((Polynomial.X : Polynomial R) ^ 2) 1 = 1 := by
+  simpa using devQ_triKey_X_pow_even P c0 1
+
+/-- `R₁(Y³) = Y − P` — one wrap, one `−P`. -/
+example (P c0 : R) :
+    devQ (triKey P c0) ((Polynomial.X : Polynomial R) ^ 3) 1
+      = Polynomial.X - Polynomial.C P := by
+  simpa using devQ_triKey_X_pow_odd P c0 1
+
+/-- `R₂(Y⁴) = 1`. -/
+example (P c0 : R) : devQ (triKey P c0) ((Polynomial.X : Polynomial R) ^ 4) 2 = 1 := by
+  simpa using devQ_triKey_X_pow_even P c0 2
+
+/-- `R₂(Y⁵) = Y − 2P` — the cross-term accumulates one `−P` per wrap. -/
+example (P c0 : R) :
+    devQ (triKey P c0) ((Polynomial.X : Polynomial R) ^ 5) 2
+      = Polynomial.X - Polynomial.C (2 * P) := by
+  simpa using devQ_triKey_X_pow_odd P c0 2
+
+/-- `R₁(Y) = Y`: below the band the coordinate is the dividend itself, not `0` — the boundary
+row of LEMMA 4(a), whose hypothesis is `natDegree < 2n` and not `≤`. -/
+example (P c0 : R) : devQ (triKey P c0) (Polynomial.X : Polynomial R) 0 = Polynomial.X := by
+  simpa using devQ_triKey_X_pow_odd P c0 0
+
+end UnfoldingChecks
+
 /-! ## Axiom footprint -/
 
 section AxCheck
@@ -528,5 +627,9 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.composedKey_trinomial
 #print axioms Uniformity.Density.Tower.stageCoord_ne_zero_of_f1
 #print axioms Uniformity.Density.Tower.isUnit_entryCoef
+#print axioms Uniformity.Density.Tower.X_sq_eq_triKey_sub
+#print axioms Uniformity.Density.Tower.X_cube_eq_triKey
+#print axioms Uniformity.Density.Tower.X_four_eq_triKey
+#print axioms Uniformity.Density.Tower.key_eq_triKey
 
 end AxCheck
