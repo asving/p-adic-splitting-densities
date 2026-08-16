@@ -181,17 +181,15 @@ is left broken-in-comment with the diagnosis, never silently repaired.
   numbers)"; the displayed numbers exist only inside prose sentences. What IS runnable is executed
   in the NUMERIC section at the bottom of this file, and one of the blueprint's displayed numbers
   is WRONG — see **D15**.
-* **D15 — `C.123`'s HT SPOT VALUE AT `q = 2` IS MIS-STATED (arithmetic error in a gate's own
-  expected value; machine-checked below).** The gate says: *"HT spot values at `q = 2`
-  (`(q−1)((q−1)(q−2)/2)q^{2N−8}` at `q = 2` = 0 — the degenerate census, itself a check)"*. The
-  claimed value 0 is right, but for a reason the parenthetical gets wrong at the OTHER prime it is
-  paired with: at `q = 3` the same expression is `2 · ((2·1)/2) · 3^{2N−8} = 2·3^{2N−8}`, and
-  `C.124` describes that as *"the obstruction instance `2·1/2·q^{2N−8}`-family values"* — `2·1/2`
-  is `1` in ℕ (and in ℚ), not `2`. The two gate texts disagree with each other by a factor of 2 on
-  the same family. Both readings are executed below (`htSpot`, `htSpotAlt`) and neither is
-  derivable from any signed node, because §11 has no signatures (D1). **Classification: suspected
-  wrong statement in a gate's expected-value text; cheap counterexample = the two texts' own
-  numbers at `q = 3`.**
+* **D15 — THE TWO GATES' HT SPOT VALUES ARE AMBIGUOUS AND ADMIT READINGS THAT DIFFER BY A FACTOR
+  OF `q − 1` (underspecified expected value; both readings executed below).** `C.123` writes the
+  family as `(q−1)((q−1)(q−2)/2)q^{2N−8}` and `C.124` writes it as `2·1/2·q^{2N−8}`. If `2·1/2` is
+  the middle factor `(q−1)(q−2)/2` at `q = 3` the two agree (`2·3^{2N−8}`); if it is the whole
+  coefficient they differ by `q − 1 = 2` (`3^{2N−8}`). At `q = 2` both are `0`, so the two-prime
+  rule does not disambiguate — the very degeneracy `C.123` calls "the degenerate census, itself a
+  check" is what hides the ambiguity. Executed below as `htSpot` / `htSpotAlt`, with the values at
+  `N = 4,5,6,7` printed. Neither is derivable from a signed node, because §11 has none (D1).
+  **Classification: underspecified gate expected-value; resolvable only against `EFF.W12.87`.**
 * **D16 — `C.125` DOCUMENTS ITS OWN FAILURE TO MEET GC-11 AND THE BLUEPRINT RECORDS IT AS A
   FINDING RATHER THAN A DEFECT (statement-level; NOT repaired).** The node's STATEMENT field
   contains a live, unedited composition-time derivation ("**⚠ honesty check executed at
@@ -211,6 +209,50 @@ is left broken-in-comment with the diagnosis, never silently repaired.
   here. Signed at the written type, which is what the gate can check; the `ℕ`-division `μ / ℓ`
   makes `hfS` WEAKER than the intended `deg f_S ≤ D′·L_λ` whenever `ℓ ∤ μ`, and that is a silent
   truncation of exactly the kind GC-9's counterexample discipline exists for.
+
+* **D18 — THREE SIGNED `def`s ARE MISSING `noncomputable` (elaboration failure; CURED
+  stub-side).** `C.03`'s `KeyFrame.stageCard` (`residueCard` is `noncomputable`), and `C.09`'s
+  `LevelDatum.keyDeg₂` and `LevelDatum.seam` (both read `L.r.natDegree`, which goes through
+  `AdjoinRoot.instCommRing`). All three are declared `def` in the blueprint and all three fail to
+  compile as such at the pin. Benign, but they are the kind of thing the fleet re-discovers 27
+  times if the blueprint is not repaired.
+* **D19 — `C.43`'s `stageLiftO` CANNOT BE BUILT FROM `KeyFrame` + H.54, SO THE H §8 INTERFACE —
+  THE ONLY CHAPTER-H CONTENT CHAPTER C IS PERMITTED TO CONSUME (GC-5 / H-14) — IS NOT REACHABLE
+  FROM CHAPTER C's OWN CARRIER (missing-dep, structural; NOT curable stub-side).** Full diagnosis
+  at the `C.43` comment below. In one line: landed `GenreDatum` (H.01) requires `hQ : 2 ≤ Q`,
+  `hh : 1 ≤ h`, `hkey : 2 ≤ e₁*f₁`, `hmul : 2 ≤ μ`; `KeyFrame` (C.01) has no `Q`, no `μ`, no
+  `2 ≤ e₁*f₁`, and deliberately ADMITS `h = 0`. The blueprint's ⚠ at C.14 step 2 worries about the
+  wrong half of this (it asks whether `stageLift'` reads `G.μ` — it does not, `ChapH/H54.lean:76`,
+  so that half is DISCHARGED by this gate); the live obstruction is `hh`/`hkey`/`hQ`.
+* **D20 — `C.14`'s PROOF ROUTE HAS AN UNCOVERED CASE, AND ITS SIGNATURE OMITS THE HYPOTHESIS ITS
+  OWN STATEMENT DECLARES (proof-route gap + statement/signature mismatch; found via D19).**
+  C.14's STATEMENT reads *"For every level datum `L` over `F` **with `2 ≤ F.e₁ * F.f₁`**"*; the
+  SIGNATURE carries no such hypothesis (it is signed for every frame). The PROOF then splits
+  `2 ≤ D′` (step 2, via the `GenreDatum` of D19, which needs `1 ≤ F.h`) against `D′ = 1` (step 3,
+  elementary). **The case `F.h = 0 ∧ 2 ≤ F.e₁·F.f₁` falls through both** — and it is live, not
+  vacuous: `KeyFrame.hcop : Nat.Coprime h e₁` forces `e₁ = 1` at `h = 0`, leaving `D′ = f₁`
+  unconstrained. Either the signature gains `1 ≤ F.h` (which would break C.05, the node whose sake
+  `h = 0` was admitted for) or step 3 must cover `h = 0` at every `D′`.
+* **D21 — `C.31`'s THIRD CLAUSE `jump_drop` IS FALSE AS SIGNED (REFUTED, machine-checked;
+  signed here anyway so the refutation is executable, per the CHAP-H `D8`/`G.23a` precedent of
+  recording rather than silently repairing).** At
+  `(D, ℓ, d_r, μ, μ₂, deg f_S) = (1, 1, 1, 1, 1, 1)` every hypothesis holds — `0 < 1` three times,
+  `1·(1·1·1) = 1`, `1 ≤ 1·(1·(1/1)) = 1`, `1·1·2 = 2 ≤ 2·1` — and the conclusion is `2·1 ≤ 1`.
+  **168 counterexamples** on the box `D, ℓ, d_r ∈ [1,4] × μ, μ₂ ∈ [0,12]` (counted below), so it
+  is not a corner. *The diagnosis:* the hypothesis `hL : ℓ * dr * 2 ≤ 2 * μ` says `ℓ·d_r ≤ μ`,
+  which is an UPPER bound on the jump, where the argument needs the LOWER bound `2 ≤ ℓ·d_r` —
+  the very hypothesis the sibling clause `jump_floor` carries as `hjump` and this one drops (the
+  same shape as CHAP-H's D8, where three of four siblings carried the guard). **Repair, checked:
+  replace `hL` by `hjump : 2 ≤ ℓ * dr`** — zero counterexamples on the larger box
+  `D, ℓ, d_r ∈ [1,5] × μ, μ₂ ∈ [0,24]`, and the proof is then immediate
+  (`μ₂·ℓ·d_r ≤ μ` from `hμ₂`+`hfS`, then `2μ₂ ≤ μ₂·ℓ·d_r`). The blueprint's own SPEC line for the
+  node — *"the chain `μ₂ ≤ deg R_λ/d_r ≤ μ/(ℓd_r)`"* — is the repaired statement, so this is a
+  transcription slip, not a mathematical error in the source.
+* **D22 — C-H12's COINCIDENCE-REGIME TRAP IS LIVE IN THE ONE BUDGET TABLE THE GATE CAN EVALUATE.**
+  C.52's floor display, evaluated at C.123's and C.124's own frames with `w(a,b) = 0`, gives the
+  IDENTICAL row `[7,5,3,1]` at both — so a gate row that checked only `w = 0` would be blind to
+  the frame, at both primes. At `w = 5` they separate (`[5,3,1,0]` vs `[6,4,2,0]`). Recorded
+  because §13's gate text names sixteen budget-table entries without saying at which `w`.
 
 ## Numeric content EXECUTED at this gate (GC-11 / §15 gate order (c))
 
@@ -253,7 +295,7 @@ Landed in the repaired order C.01 → C.02 → C.03 → C.04 → **C.06 → C.07
 
 /-! ### NODE C.01 [def] — `KeyFrame` (real body; lands in `Uniformity.Density.Tower`) -/
 
-/-- The stage key frame `(e₁, f₁, h; Φ′)` of `EFF.HE6.08`: `Φ′` monic irreducible of degree
+/-! The stage key frame `(e₁, f₁, h; Φ′)` of `EFF.HE6.08`: `Φ′` monic irreducible of degree
 `D′ = e₁f₁`, one-sided of slope `h/e₁` over the order-0 key `X`, with irreducible residual
 read `ψ` of degree `f₁`.  The valuation normalization is `dv := e₁·v` (C.02). -/
 structure KeyFrame (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
@@ -449,5 +491,881 @@ abbrev level2Field {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin) 
 axiom card_level2Field {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     [Finite (ResidueField O)] (hπ : Irreducible π) :
     Nat.card (level2Field L) = residueCard O ^ (F.f₁ * L.r.natDegree)
+
+/-! # §4 — THE GAUGE LAYER: NORMALIZERS, THE LETTER, THE COCYCLE (C.15–C.28)
+
+Landed order: C.15 … C.24, then **C.13/C.14** (hoisted here per the blueprint's own ⚠ ORDERING
+NOTE, defect D12(ii)), then C.25, C.26, **C.29** (hoisted, defect D12(iii)), C.27, C.28. -/
+
+/-- **STUB-SIDE HELPER (D9), not a blueprint node.** `resField Polynomial.X` is a `Field` — but
+nothing in `leanfinal` says so, because B.25's `instFieldResField` is keyed on `IsKey φ` and no
+node anywhere proves `IsKey Polynomial.X`. Chapter C needs it: `C.22`'s `twistRead` inverts an
+element of `stageField = AdjoinRoot (frameRes …)`, and `AdjoinRoot.instField` demands a `Field`
+on the BASE `resField Polynomial.X` as well as `Fact (Irreducible (frameRes …))`. Neither is in
+scope at the signed signature. Proved here so the cure for D9 is exhibitable. -/
+theorem isKey_X : IsKey (Polynomial.X : Polynomial O) where
+  monic := Polynomial.monic_X
+  pos := by simp
+  irred := by
+    rw [Polynomial.map_X]
+    exact Polynomial.irreducible_X
+
+/-! ### NODE C.15 [def] — `slotIdx`, `twistExp`
+
+**D6 (cured, with a different body).** The blueprint writes
+`noncomputable def KeyFrame.slotIdx F k := Nat.find (F.slotIdx_exists k)`; `slotIdx_exists` is
+declared in no node of the chapter. The total, computable, junk-`0`-defaulting body below agrees
+with the intended value exactly when the intended value exists, which `F.hcop` guarantees. -/
+
+def KeyFrame.slotIdx (F : KeyFrame O π) (k : ℕ) : ℕ :=
+  ((List.range F.e₁).find? (fun i => (i * F.h) % F.e₁ == k % F.e₁)).getD 0
+
+/-- `q(k)`: the ϖ-vs-`n(k)` twist exponent, `i₀·k = i(k) + q(k)·e₁` (`EFF.HE6.13` RIDER). -/
+def KeyFrame.twistExp (F : KeyFrame O π) (k : ℕ) : ℕ :=
+  (F.slotIdx 1 * k - F.slotIdx k) / F.e₁
+
+/-! ### NODE C.16 [lemma] — the `slotIdx` characterization -/
+
+axiom KeyFrame.slotIdx_spec (F : KeyFrame O π) (k : ℕ) :
+    F.slotIdx k < F.e₁ ∧ F.slotIdx k * F.h ≡ k [MOD F.e₁]
+
+axiom KeyFrame.slotIdx_unique (F : KeyFrame O π) {k i : ℕ} (hi : i < F.e₁)
+    (hcong : i * F.h ≡ k [MOD F.e₁]) : i = F.slotIdx k
+
+axiom KeyFrame.twistExp_spec (F : KeyFrame O π) (k : ℕ) :
+    F.slotIdx 1 * k = F.slotIdx k + F.e₁ * F.twistExp k
+
+/-! ### NODE C.17 [def] — the slot window `T(k)` -/
+
+/-- `T(k) := {t < f₁ : k ≥ (i₀(k) + e₁t)h}` (`EFF.HE6.13`). -/
+def KeyFrame.slotWindow (F : KeyFrame O π) (k : ℕ) : Finset ℕ :=
+  (Finset.range F.f₁).filter (fun t => (F.slotIdx k + F.e₁ * t) * F.h ≤ k)
+
+/-! ### NODE C.18 [lemma] — fullness of the slot window -/
+
+axiom KeyFrame.slotWindow_full_iff (F : KeyFrame O π) (hf : 0 < F.f₁) (k : ℕ) :
+    F.slotWindow k = Finset.range F.f₁
+      ↔ (F.slotIdx k + F.e₁ * (F.f₁ - 1)) * F.h ≤ k
+
+axiom KeyFrame.slotWindow_full_of_le (F : KeyFrame O π) (k : ℕ)
+    (hk : (F.e₁ * F.f₁ - 1) * F.h ≤ k) : F.slotWindow k = Finset.range F.f₁
+
+/-! ### NODE C.19 [def+lemma] — the letter `η` (D4: `(hpin : _)` written out) -/
+
+noncomputable def KeyFrame.stageLetter (F : KeyFrame O π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞)) :
+    F.stageField H₀ hpin :=
+  AdjoinRoot.root (F.frameRes H₀ hpin)
+
+axiom KeyFrame.stageLetter_ne_zero (F : KeyFrame O π) (hπ : Irreducible π)
+    (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞)) :
+    F.stageLetter H₀ hpin ≠ 0
+
+/-! ### NODE C.20 [lemma] — class separation of stage heights -/
+
+axiom KeyFrame.stageHeight_class (F : KeyFrame O π) {A : Polynomial O} {i k : ℕ}
+    (hi : i ≤ A.natDegree) (hval : F.e₁ • addVal O (A.coeff i) + (i * F.h : ℕ∞) = (k : ℕ∞)) :
+    i * F.h ≡ k [MOD F.e₁]
+
+axiom KeyFrame.stageHeight_unattained (F : KeyFrame O π) {A : Polynomial O} {k : ℕ}
+    (hA : A.natDegree < F.e₁ * F.f₁) (hwin : F.slotWindow k = ∅) :
+    F.stageHeight A ≠ (k : ℕ∞)
+
+/-! ### NODE C.21 [def] — the normalized slot residue `γ_k`
+
+**D8 (cured).** The blueprint writes `algebraMap _ _ (digAt …)`, which asks for an
+`Algebra (ResidueField O) (stageField …)` instance that does not exist (mathlib composes no
+`Algebra` chains). The composite of the two landed quotient maps is written out. -/
+
+/-- A3 F-1's normalized slot residue
+`γ_k(A) = Σ_t res(a_{i+e₁t}·π^{−(k−(i+e₁t)h)/e₁})·η^t` (`EFF.HE6.58`, TERMINAL layer of the
+`HE6-SLOT-SEAM` chain — the frozen bare-`γ` display is DEAD, C-H8). -/
+noncomputable def KeyFrame.slotRes (F : KeyFrame O π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    (k : ℕ) (A : Polynomial O) : F.stageField H₀ hpin :=
+  (F.slotWindow k).sum fun t =>
+    algebraMap (resField (Polynomial.X : Polynomial O)) (F.stageField H₀ hpin)
+        (algebraMap (ResidueField O) (resField (Polynomial.X : Polynomial O))
+          (digAt π ((k - (F.slotIdx k + F.e₁ * t) * F.h) / F.e₁)
+            (A.coeff (F.slotIdx k + F.e₁ * t))))
+      * (F.stageLetter H₀ hpin) ^ t
+
+/-! ### NODE C.22 [def] — the ϖ-read residue (D9: `letI` supplies the two missing instances) -/
+
+/-- The ϖ-read residue `γ_k(A)·η^{−q(k)}` (`EFF.HE6.15` [r2]-corrected sign; `EFF.HE6.58`
+TERMINAL).  All corpus residual polynomials (`R_λ`, C.25) read through THIS. -/
+noncomputable def KeyFrame.twistRead (F : KeyFrame O π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    (k : ℕ) (A : Polynomial O) : F.stageField H₀ hpin :=
+  letI : Field (resField (Polynomial.X : Polynomial O)) := instFieldResField isKey_X
+  letI : Fact (Irreducible (F.frameRes H₀ hpin)) := ⟨(F.hresirr H₀ hpin).1⟩
+  (F.stageLetter H₀ hpin)⁻¹ ^ (F.twistExp k) * F.slotRes H₀ hpin k A
+
+/-! ### NODE C.23 [lemma] — nonvanishing of the slot residue at an attained height -/
+
+axiom KeyFrame.slotRes_ne_zero (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    {A : Polynomial O} {k : ℕ} (hA : A.natDegree < F.e₁ * F.f₁)
+    (hht : F.stageHeight A = (k : ℕ∞)) :
+    F.slotRes H₀ hpin k A ≠ 0
+
+/-! ### NODE C.24 [theorem] — the image of the slot-residue read (split-mandated → 2) -/
+
+axiom KeyFrame.slotRes_image (F : KeyFrame O π) (hπ : Irreducible π)
+    [Finite (ResidueField O)] (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    (k : ℕ) :
+    (Set.image (F.slotRes H₀ hpin k)
+        {A : Polynomial O | A.natDegree < F.e₁ * F.f₁ ∧ F.stageHeight A = (k : ℕ∞)})
+      = {x | ∃ c : ℕ → ResidueField O, (∃ t ∈ F.slotWindow k, c t ≠ 0) ∧
+          x = (F.slotWindow k).sum fun t =>
+            algebraMap (resField (Polynomial.X : Polynomial O)) (F.stageField H₀ hpin)
+                (algebraMap (ResidueField O) (resField (Polynomial.X : Polynomial O)) (c t))
+              * F.stageLetter H₀ hpin ^ t}
+
+/-! ### NODE C.13 [def] — `IsTestKey` (HOISTED into §4; blueprint's own ⚠ ORDERING NOTE) -/
+
+/-- `Ψ_{κ,r}`-hood: the slot-pinned shape of `EFF.HE6.14`'s enlarged test family. -/
+def IsTestKey {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ : Polynomial O) : Prop :=
+  Ψ.Monic ∧ Ψ.natDegree = L.keyDeg₂ ∧
+  dev F.key Ψ (L.ℓ * L.r.natDegree) = 1 ∧
+  (∀ b < L.ℓ * L.r.natDegree, ¬ L.ℓ ∣ b → dev F.key Ψ b = 0) ∧
+  (∀ t < L.r.natDegree,
+    (L.r.coeff t = 0 → dev F.key Ψ (L.ℓ * t) = 0) ∧
+    (L.r.coeff t ≠ 0 →
+      F.stageHeight (dev F.key Ψ (L.ℓ * t)) = (((L.r.natDegree - t) * L.u : ℕ) : ℕ∞) ∧
+      F.slotRes H₀ hpin ((L.r.natDegree - t) * L.u) (dev F.key Ψ (L.ℓ * t)) = L.r.coeff t))
+
+/-! ### NODE C.14 [lemma] — existence of a test key -/
+
+axiom exists_testKey {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    [Finite (ResidueField O)] (hπ : Irreducible π) :
+    ∃ Ψ : Polynomial O, IsTestKey L Ψ
+
+/-! ### NODE C.25 [def] — the level residual polynomial `R_λ` (D4 cured) -/
+
+/-- `R_λ(Z) := Σ_t res(A_{j₁+tℓ}(θ)/ϖ(θ)^{m₁−tu})·Z^t ∈ K[Z]` (`EFF.HE6.11`), through the
+C.22 ϖ-read at the GC-1 `sideMin` pin. -/
+noncomputable def dvResPoly (F : KeyFrame O π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    (f : Polynomial O) (u ℓ : ℕ) (hne₂ : (dvSideSet F f u ℓ).Nonempty) (M₀ : ℕ)
+    (hpin₂ : dvHgt F f (dvSideMin F f u ℓ hne₂) = (M₀ : ℕ∞)) :
+    Polynomial (F.stageField H₀ hpin) :=
+  ((Finset.range (dvSideDeg F f u ℓ hne₂ + 1)).sum fun t =>
+    Polynomial.C (F.twistRead H₀ hpin (M₀ - t * u) (dev F.key f (dvSideMin F f u ℓ hne₂ + t * ℓ)))
+      * Polynomial.X ^ t)
+
+/-! ### NODE C.26 [lemma] — correctness of `dvResPoly`
+
+**D2 (cured).** The second signature is written `theorem natDegree_dvResPoly (…same…)`; the
+binder list of the first is reproduced, which is the only reading of "same". -/
+
+axiom dvResPoly_coeff_eq_zero_iff (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    {f : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+    (hne₂ : (dvSideSet F f u ℓ).Nonempty) {M₀ : ℕ}
+    (hpin₂ : dvHgt F f (dvSideMin F f u ℓ hne₂) = (M₀ : ℕ∞)) {t : ℕ}
+    (ht : t ≤ dvSideDeg F f u ℓ hne₂) :
+    (dvResPoly F H₀ hpin f u ℓ hne₂ M₀ hpin₂).coeff t = 0
+      ↔ ¬ DvOnSide F f u ℓ (dvSideMin F f u ℓ hne₂ + ℓ * t)
+
+axiom natDegree_dvResPoly (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    {f : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+    (hne₂ : (dvSideSet F f u ℓ).Nonempty) {M₀ : ℕ}
+    (hpin₂ : dvHgt F f (dvSideMin F f u ℓ hne₂) = (M₀ : ℕ∞)) :
+    (dvResPoly F H₀ hpin f u ℓ hne₂ M₀ hpin₂).natDegree = dvSideDeg F f u ℓ hne₂ ∧
+    (dvResPoly F H₀ hpin f u ℓ hne₂ M₀ hpin₂).coeff 0 ≠ 0
+
+/-! ### NODE C.29 [def] — `IsDvPure`, `HasLabel` (HOISTED into §4, defect D12(iii):
+`C.27` takes `hg : HasLabel L g`, and `HasLabel` is a §5 node) -/
+
+def IsDvPure (F : KeyFrame O π) (g : Polynomial O) (u ℓ : ℕ) : Prop :=
+  0 ∈ dvSideSet F g u ℓ ∧ g.natDegree / (F.e₁ * F.f₁) ∈ dvSideSet F g u ℓ
+
+def HasLabel {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (g : Polynomial O) : Prop :=
+  g.Monic ∧ 0 < g.natDegree ∧ IsDvPure F g L.u L.ℓ ∧
+  ∃ (hne₂ : (dvSideSet F g L.u L.ℓ).Nonempty) (M₀ : ℕ)
+    (hpin₂ : dvHgt F g (dvSideMin F g L.u L.ℓ hne₂) = (M₀ : ℕ∞)) (m : ℕ),
+    0 < m ∧ dvResPoly F H₀ hpin g L.u L.ℓ hne₂ M₀ hpin₂ = L.r ^ m
+
+/-! ### NODE C.27 [theorem] — `(SLOT₂)` exactness (split-mandated → 3; §15's heavy node)
+
+**D10 (cured).** `(addVal O …).get!` → `ENat.toNat`: `ℕ∞ = ENat` carries no `get!`. -/
+
+axiom slot2_exact {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [Finite (ResidueField O)]
+    {g : Polynomial O} (hg : HasLabel L g) {C : Polynomial O}
+    (hC : C.natDegree < L.keyDeg₂) (hC0 : dv2Hgt L C ≠ ⊤) :
+    ∃ v : ℕ, dv2Hgt L C = (v : ℕ∞) ∧
+      (F.e₁ * L.ℓ) * (addVal O (Algebra.norm O (AdjoinRoot.mk g C))).toNat = g.natDegree * v
+
+/-! ### NODE C.28 [def+lemma] — the shift and the level-2 cocycle
+
+**D2 (cured, binder+body).** `LevelDatum.shift … : ℕ := …` with the body given only in a trailing
+comment ("the unique `β < ℓ` with `β·u ≡ m (mod ℓ)`; C.15's pattern at `(u, ℓ)`"). Landed with
+C.15's own total, junk-`0`-defaulting body at the pair `(u, ℓ)` — the unique reading. -/
+
+def LevelDatum.shift {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (m : ℕ) : ℕ :=
+  ((List.range L.ℓ).find? (fun b => (b * L.u) % L.ℓ == m % L.ℓ)).getD 0
+
+def LevelDatum.cocycle {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (a b : ℕ) : ℕ := (L.shift a + L.shift b - L.shift (a + b)) / L.ℓ
+
+axiom LevelDatum.cocycle_mem {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (a b : ℕ) : L.ℓ * L.cocycle a b = L.shift a + L.shift b - L.shift (a + b)
+      ∧ L.cocycle a b ≤ 1
+
+axiom LevelDatum.cocycle_eq_zero_of_ell_one {F : KeyFrame O π} {H₀ hpin}
+    (L : LevelDatum F H₀ hpin) (hℓ : L.ℓ = 1) (a b : ℕ) :
+    L.shift a = 0 ∧ L.cocycle a b = 0
+
+/-! # §5 — THE DESCENT GRAMMAR (C.29–C.40)
+
+`C.29` is above (D12(iii)). `C.30`–`C.32` are ENV-C5 arithmetic and land in full. **`C.33`–`C.40`
+are UNSIGNABLE**: every one of them has `…` where a hypothesis, an existential witness, or a
+definition body must stand (defect D2), and `C.35`'s `blockFactor`/`mult₂` — the objects
+`C.36`–`C.40` are all statements ABOUT — have `:= …` for a body. They are recorded
+broken-in-comment below with their blueprint text verbatim. -/
+
+/-! ### NODE C.30 [lemma] — the descent trichotomy -/
+
+axiom descent_trichotomy (mr ℓ dr : ℕ) (hm : 1 ≤ mr) (hℓ : 0 < ℓ) (hd : 1 ≤ dr) :
+    (mr = 1 ∧ ¬(mr ≥ 2 ∧ ℓ = 1 ∧ dr = 1) ∧ ¬(mr ≥ 2 ∧ 2 ≤ ℓ * dr)) ∨
+    (mr ≥ 2 ∧ ℓ = 1 ∧ dr = 1 ∧ ¬(2 ≤ ℓ * dr) ∧ mr ≠ 1) ∨
+    (mr ≥ 2 ∧ 2 ≤ ℓ * dr ∧ ¬(ℓ = 1 ∧ dr = 1) ∧ mr ≠ 1)
+
+/-! ### NODE C.31 [lemma] — the jump floor, the first bite, the jump drop -/
+
+axiom jump_floor (mr ℓ dr L μ : ℕ) (hm : 2 ≤ mr) (hjump : 2 ≤ ℓ * dr)
+    (hL : mr * (ℓ * dr) ≤ L) (hLμ : L ≤ μ) : 4 ≤ L ∧ 4 ≤ μ
+
+axiom first_bite (D μ n : ℕ) (hD : 2 ≤ D) (hμ : 4 ≤ μ) (hn : n = D * μ) : 8 ≤ n
+
+-- D17: the blueprint's own parenthetical says "the exact hypothesis plumbing of `jump_drop` is
+-- fixed at stub stage against C.33/C.35's outputs" — C.33 and C.35 are UNSIGNABLE (D2), so it
+-- cannot be. Signed at the written type. `hfS`'s `μ / ℓ` is ℕ-division: at `ℓ ∤ μ` the hypothesis
+-- is strictly WEAKER than the intended `deg f_S ≤ D′·L_λ`, a silent truncation.
+axiom jump_drop (D ℓ dr μ μ₂ dfS : ℕ) (hD : 0 < D) (hℓ : 0 < ℓ) (hd : 0 < dr)
+    (hμ₂ : μ₂ * (D * ℓ * dr) = dfS) (hfS : dfS ≤ D * (ℓ * (μ / ℓ)))
+    (hL : ℓ * dr * 2 ≤ 2 * μ) : 2 * μ₂ ≤ μ
+
+/-! ### NODE C.32 [theorem] — the three-clause jump-count bound (`EFF.HE6R1.47`) -/
+
+axiom jump_count_bound {J μ : ℕ} (a : Fin (J + 1) → ℕ) (ha0 : a 0 ≤ μ)
+    (hfloor : ∀ j, 4 ≤ a j) (hdrop : ∀ j : Fin J, 2 * a j.succ ≤ a j.castSucc) :
+    2 ^ (J + 2) ≤ 2 * μ
+
+/-! ### NODES C.33–C.40 — **UNSIGNABLE (D2)**; blueprint text verbatim, diagnosis attached.
+
+```lean
+-- C.33 [theorem]  **SIGNATURE** (shape; the stub fixes the side-indexing plumbing).
+theorem exists_dv_slope_dissection (F : KeyFrame O π) (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hf : f.Monic) (hkey : ¬ F.key ∣ f) … :
+    ∃ …, f = … ∧ (∀ i, IsDvPure F (f_i) (u_i) (ℓ_i)) ∧
+      (∀ i, (f_i).natDegree = (F.e₁ * F.f₁) * ℓ_i * dvSideDeg F f (u_i) (ℓ_i) _) ∧ …
+```
+DIAGNOSIS. The existential's WITNESS TYPE is the whole content of the node (B.41/B.42's landed
+level-1 twins index the dissection by a `Finset` of slopes with a product formula; which of those
+shapes C.33 takes decides C.34–C.40's every statement). `f_i`, `u_i`, `ℓ_i` are free identifiers.
+Not signable; not guessable. **`C.33` is one of §14's three named schedule risks and it has no
+type.**
+
+```lean
+-- C.34 [theorem]  **SIGNATURE** (shape).
+theorem exists_dv_residual_dissection (F : KeyFrame O π) (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] {H₀ hpin}
+    {g : Polynomial O} (hg : g.Monic) {u ℓ : ℕ} (hpure : IsDvPure F g u ℓ) … :
+    ∃ fS g', g = fS * g' ∧ HasLabel (L) fS ∧ … ∧ ¬ L.r ∣ dvResPoly F H₀ hpin g' u ℓ … …
+```
+DIAGNOSIS. `L` is used but never bound (there is no `L : LevelDatum F H₀ hpin` binder), and the
+`dvResPoly` call is missing its `hne₂ M₀ hpin₂` arguments. Even after adding `(L : LevelDatum …)`
+the statement does not typecheck, because `dvResPoly … g' u ℓ` needs a side-nonemptiness proof for
+`g'`, which is part of the conclusion, not available in the statement — a genuine
+dependent-plumbing problem the node must solve, not a transcription slip.
+
+```lean
+-- C.35 [def]
+noncomputable def blockFactor {F} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) (h : …C.33/C.34 context…) : Polynomial O := …
+noncomputable def mult₂ … (h : …) : ℕ := (blockFactor L f h).natDegree / L.keyDeg₂
+```
+DIAGNOSIS. Body elided AND the context parameter `h` is elided. `blockFactor` is the object of
+`C.36`, `C.37`, `C.38`, `C.39`, `C.40`, `C.48`, and §7's whole Tier-1 chain — **eight downstream
+nodes hang off a definition with no body and no argument list.** This is the single highest-value
+missing signature in the signed half of the chapter.
+
+-- C.36, C.37, C.38, C.39: statements about `blockFactor`/`complementConst`/`γg`/`pinHeight`,
+-- all four with `(hctx : …)` and three of them with `…` inside the CONCLUSION. `complementConst`,
+-- `γg`, `pinHeight`, `dv2ResPoly` and `dv2SideSet` are consumed by name and DECLARED NOWHERE
+-- (§15 books them as RE-PLAN helpers, which is a scheduling note, not a signature).
+
+```lean
+-- C.40 [theorem]
+theorem level2_peel {F} {H₀ hpin} (L : LevelDatum F H₀ hpin) (hπ : Irreducible π)
+    [IsAdicComplete …] [Finite (ResidueField O)]
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : …) (hdvd : Ψ ∣ blockFactor L f hctx)
+    (hbox : CBox1Side L Ψ) :
+    typeOf Ψ = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}, …⟩ ∧ Irreducible Ψ ∧ …
+```
+DIAGNOSIS (two, one of them a TYPE ERROR independent of the ellipses): (a) `hctx : …` and the
+`blockFactor` dependence (D2); (b) **`⟨{(…)}, …⟩` over-applies `FactorizationType`, which has
+exactly one field** — defect D11, machine-witnessed immediately below. -/
+
+/-- **D11, machine-witnessed.** `FactorizationType` has ONE field, so the two-component anonymous
+constructor of C.40/C.61 cannot elaborate; the one-component form does. (Uncomment the second
+`example` to see the hard error.) -/
+example (e f : ℕ) : FactorizationType := ⟨{(e, f)}⟩
+-- example (e f : ℕ) : FactorizationType := ⟨{(e, f)}, trivial⟩   -- ERROR at the pin
+
+/-! # §6 — COMPOSED KEYS AND THE TOWER BRIDGES (C.41–C.58)
+
+Signable: `C.41`, `C.42`, `C.50`. Everything else in §6 either depends on `C.43`'s undeclared
+`stageLiftO` (defect D19) or on `C.44`'s bodyless `towerLabel`, or has no signature at all
+(`C.52`–`C.54`, `C.56`–`C.58`; defect D1). -/
+
+/-! ### NODE C.41 [lemma] — additivity of the slot index and the twist exponent -/
+
+axiom KeyFrame.slotIdx_add (F : KeyFrame O π) (a b : ℕ) :
+    F.slotIdx a + F.slotIdx b
+      = F.slotIdx (a + b) + F.e₁ * ((F.slotIdx a + F.slotIdx b) / F.e₁) ∧
+    (F.slotIdx a + F.slotIdx b) / F.e₁ ≤ 1
+
+axiom KeyFrame.twistExp_add (F : KeyFrame O π) (a b : ℕ) :
+    F.twistExp (a + b)
+      = F.twistExp a + F.twistExp b + (F.slotIdx a + F.slotIdx b) / F.e₁
+
+axiom KeyFrame.twistExp_nsmul (F : KeyFrame O π) (u₂ f₂ t : ℕ) (ht : t < f₂) :
+    F.twistExp ((f₂ - t) * u₂)
+      = (f₂ - t) * F.twistExp u₂ + (f₂ - t) * F.slotIdx u₂ / F.e₁
+
+/-! ### NODE C.42 [def] — `TowerDatum` (D4 + D2: `(hpin : _)` and the two `…` binder lists) -/
+
+structure TowerDatum (F : KeyFrame O π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    where
+  e₂ : ℕ
+  f₂ : ℕ
+  u₂ : ℕ
+  ψ₂ : Polynomial (F.stageField H₀ hpin)
+  he₂ : 0 < e₂
+  hf₂ : 0 < f₂
+  hcomp : 2 ≤ e₂ * f₂
+  hcop : Nat.Coprime u₂ e₂
+  hfloor : e₂ * (F.e₁ * F.f₁) * F.h < u₂
+  hψmonic : ψ₂.Monic
+  hψirr : Irreducible ψ₂
+  hψdeg : ψ₂.natDegree = f₂
+  hψ0 : ψ₂.coeff 0 ≠ 0
+
+/-- `D₂ = D′·e₂f₂`.  Binder list supplied (blueprint writes `def TowerDatum.D₂ … : ℕ`). -/
+def TowerDatum.D₂ {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) : ℕ :=
+  (F.e₁ * F.f₁) * (T.e₂ * T.f₂)
+
+/-- `E₂ = e₂f₂u₂`.  Binder list supplied. -/
+def TowerDatum.E₂ {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) : ℕ :=
+  T.e₂ * T.f₂ * T.u₂
+
+/-! ### NODE C.43 [def] — **UNSIGNABLE (D19)**; the composed key.
+
+```lean
+noncomputable def composedKey {F} {H₀ hpin} (T : TowerDatum F H₀ hpin) : Polynomial O :=
+  F.key ^ (T.e₂ * T.f₂)
+    - (Finset.range T.f₂).sum fun t =>
+        stageLiftO F ((T.f₂ - t) * T.u₂)
+            (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp F T t))
+          * F.key ^ (T.e₂ * t)
+```
+DIAGNOSIS (**D19 — the H §8 interface cannot be instantiated from chapter C's own carrier**).
+`stageLiftO` and `wrapExp` are declared in no node; the trailing prose says `stageLiftO` is "this
+node's private packaging of H.54's `stageLift'` through the `GenreDatum` plumbing of C.14 step 2",
+and §15 books the merge as a RE-PLAN. But that packaging is IMPOSSIBLE as specified, and the
+obstruction is type-level:
+
+`Uniformity.Density.Induction.GenreDatum` (H.01, landed, `ChapH/H01.lean:38`) has proof fields
+`hQ : 2 ≤ Q`, `he₁ : 1 ≤ e₁`, **`hh : 1 ≤ h`**, **`hkey : 2 ≤ e₁ * f₁`**, **`hmul : 2 ≤ μ`**,
+`hcop : Nat.Coprime h e₁`. A `KeyFrame` (C.01) supplies `0 < e₁`, `0 < f₁`, `Nat.Coprime h e₁` and
+NOTHING ELSE — it deliberately ADMITS `h = 0` (C.01's own docstring: "the DEGENERATE frame,
+admitted so that C.05's level-1 reconciliation is definitional"), it does not require
+`2 ≤ e₁ * f₁`, and it has no `μ` and no `Q` field at all. So:
+* at `F.h = 0` the `GenreDatum` **does not exist**, and `stageLift'` is unavailable;
+* C.14's PROOF step 2 builds exactly this datum (`G := ⟨residueCard O, F.e₁, F.f₁, 2, F.h, …⟩`)
+  and its step 3 fallback covers only `D′ = 1` — so the case **`F.h = 0 ∧ 2 ≤ F.e₁ * F.f₁`
+  (live: `hcop` forces `e₁ = 1`, and `f₁ ≥ 2` is unconstrained) has NO proof route in the
+  blueprint**. That is defect **D20**, found here and not flagged anywhere in CHAP-C.
+The `μ`-dummy the blueprint worries about IS safe (`stageLift'`'s body, `ChapH/H54.lean:76`, reads
+only `G.f₁`, `G.h`, `G.e₁`) — that half of the ⚠ is discharged by this gate.
+
+### NODES C.44–C.49, C.51, C.55, C.56a — **UNSIGNABLE**.
+`C.44` (`towerLabel … := …`, body elided) blocks `C.45`, `C.46`, `C.47`, `C.51`, `C.55`;
+`C.48`/`C.49` are `**SIGNATURE** (shape)` with `…` in the conclusion (`C.49` writes three
+theorem headers whose statements are all literally `… : …`); `C.56a` is `:= …`. `C.55`
+additionally has an unbound `μ₂` (D3 class) and consumes `dv2SideSet`, declared nowhere. -/
+
+/-! ### NODE C.50 [def+lemma] — the composed grid weight (D2: two `…` binder lists supplied) -/
+
+def slotOffset {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) (a b : ℕ) : ℕ :=
+  a * (T.e₂ * F.h) + b * T.u₂
+
+def gridWeight {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) (v a b j : ℕ) : ℕ :=
+  (F.e₁ * T.e₂) * v + slotOffset T a b + j * T.E₂
+
+axiom E₂_gt_xfloor {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) :
+    T.D₂ * (T.e₂ * F.h) < T.E₂
+
+/-! # §7 — CLASS SIZE AND BLOCK LENGTH (C.59–C.70)
+
+Signable: `C.59`, `C.60`. `C.61` is unsignable (D2 + D11); `C.62`–`C.70` have no signature (D1),
+which includes **`C.66`, the chapter's gate-(b) [cite:FGMN] node**, and **`C.69`, the bundled
+TERMINAL SUPPLY statement A-3 tells consumers to cite first**. -/
+
+/-! ### NODE C.59 [lemma] — the ramified divisibility leg (unconditional; Tier 1's first half) -/
+
+axiom ramLeg_dvd {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {g : Polynomial O} (hg : g.Monic) (hirr : Irreducible g) (hlab : HasLabel L g)
+    (hx : IsPure Polynomial.X g F.h F.e₁) :
+    (F.e₁ * L.ℓ) ∣ ramIndexOf g
+
+/-! ### NODE C.60 [def+lemma] — `C-BOX-1`, the chapter's one carried hypothesis -/
+
+/-- `C-BOX-1`: the level-2 residue-degree lower bound, carried as an explicit hypothesis
+(DECISION C-D1; the `B-BOX-1` analogue — CHAP-B H-7's shape one level up). -/
+def CBox1Side {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (g : Polynomial O) : Prop :=
+  (F.f₁ * L.r.natDegree) ∣ inertiaDegOf g
+
+axiom cbox1_of_deg_one {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (g : Polynomial O) (h1 : F.f₁ * L.r.natDegree = 1) : CBox1Side L g
+
+/-! ### NODE C.61 [theorem] — **UNSIGNABLE (D2 + D11)**; Tier 1's assembled law.
+
+```lean
+theorem tier1_typeOf {F} {H₀ hpin} (L : LevelDatum F H₀ hpin) (hπ : Irreducible π)
+    [IsAdicComplete …] [Finite (ResidueField O)]
+    {g : Polynomial O} (hlab : HasLabel L g) (hm1 : …multiplicity-1 clause…)
+    (hx : IsPure Polynomial.X g F.h F.e₁)
+    (hbox : ∀ g' ∈ monicFactors g, CBox1Side L g') :
+    typeOf g = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}, by …⟩ ∧ Irreducible g
+```
+DIAGNOSIS. (a) `hm1 : …multiplicity-1 clause…` is the node's load-bearing hypothesis and is not
+written. The unique candidate reading — that `HasLabel`'s existential `m` equals `1` — is NOT
+expressible as a hypothesis about `g` as `HasLabel` is currently phrased (the `m` is bound INSIDE
+the existential, C.29), so the reading requires re-shaping `HasLabel` or adding a `mult₂`-style
+projection. That is a real design hole, not a transcription slip. (b) `⟨…, by …⟩` over-applies
+`FactorizationType` (D11). (c) This is the node §2's TERMINAL SUPPLY table advertises to CHAP-B
+H-2's downstream consumers, to chapter E's `.30`/`.32` anchors, to chapter D's T1 battery check 10
+and to chapter F's weld faces. It has no type. -/
+
+/-! # §8 — THE SHADOW-READ LAYER (C.71–C.82); only `C.71`'s two arithmetic companions are signed. -/
+
+/-! ### NODE C.71 [def] — `shadowDev` is UNSIGNABLE (`:= …`); `margin`/`theta` land. -/
+
+def TowerDatum.margin {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) : ℕ :=
+  T.u₂ - T.e₂ * ((F.e₁ * F.f₁) * F.h)
+
+def TowerDatum.theta {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
+    (μ₂ j : ℕ) : ℕ := (μ₂ - j) * T.E₂ + T.margin
+
+/-! # §§9–13 — THE THIRD STAGE, THE GENTOW2 SUPPLY LAYER, THE HT COUNT LAYER, THE LEVEL-`N`
+CERTIFICATES, AND THE GATES (C.83–C.126)
+
+**NOTHING IN THESE FIVE SECTIONS HAS A LEAN SIGNATURE (defect D1).** Forty-four consecutive
+nodes, including every one of the chapter's remaining TERMINAL SUPPLY statements — `C.89` (the
+`𝒲` hypothesis family, a named Display-A conjunct), `C.97` (the S2 tower witness that chapter D's
+T1 battery check 10 instantiates), `C.99`/`C.100` (GENTOW2's `B″`/`B′`, routed to chapters D and F
+by GC-13), `C.107`–`C.110` and `C.114` (the HT count laws, chapter H's supplier of record and
+chapter I's count-side conditionality) — and all four gates.
+
+`C.83`'s `DeepTower` and `C.92`'s `FGMNCalculus` are named in §15's own "elaborate the fragile
+signatures FIRST" list; neither exists. `C.126`'s axiom census names `fgmn_calculus_exists` as a
+declared gate-(b) axiom; it cannot be declared, because `FGMNCalculus` has no field list anywhere
+(the §10 design note lists the fields by CITED CLAUSE NAME — `[Q1]…[Q10]`, Prop 1.15, Def 1.8's
+expansion-minimum, Cor 4.4, Thm 4.8, Lemma 3.17, Prop 1.9, Def 3.12's `γ_i`-letters — and gives no
+type for any of them).
+
+## THE THREE `[cite:]` NODES (C.66, C.92, C.94) — gate (b)
+
+`PROJECT_STATE.md` append #66 (2026-08-16) signs these "at category level" and records that
+"their exact statements + faithfulness entries are on file (CHAP-I §3 + addendum) for individual
+inspection at will". **That is true of `B.42`'s cite and of no other** (defect D23): CHAP-I's
+addendum carries `THE EXACT LEAN STATEMENT to be signed` for
+`LeanspecB.exists_slope_factorization` only, while all three C-cites say, in their own STATEMENT
+fields, *"Exact Lean statement drafted at stub stage; Asvin signs"* — i.e. the blueprint delegates
+the authorship of a literature-cite statement to this gate. They are also the only three nodes in
+the chapter with **no `**SIGNATURE**` field at all**.
+
+Disposition here, one per node:
+* **C.66 — DRAFTED below** as `fgmn_residual_mul`, against C.25's `dvResPoly` carrier, at exactly
+  the multiplicativity clause the prose fixes and no wider (the ⚠ SCOPE FENCE: never `w`'s closed
+  form). It is landed as an `axiom` because append #66 signs the MECHANISM and the CATEGORY; **the
+  STATEMENT below has never been shown to the owner and is this gate's own drafting**, so it is
+  gate-(b)-SIGNED-AT-CATEGORY, statement-UNINSPECTED. Flagged for the owner.
+* **C.92 — NOT DRAFTABLE.** Six clause families over `FGMNCalculus`, a structure with no field
+  types; two of its clauses are stated against `C.83`'s `DeepTower`, which does not exist.
+* **C.94 — NOT DRAFTABLE, and the obstruction is a CROSS-CHAPTER DEADLOCK (defect D24).** The
+  statement must quantify over "every descent history of §5's grammar on a fixed `f`", and §5's
+  descent objects (`C.33`'s dissection, `C.35`'s `blockFactor`) have no signature (D2). Chapter I
+  has the mirror hole: `I.01`'s `NS7Termination` is landed in CHAP-I with a literal
+  `True` placeholder body and marked `BLOCKED-UNTIL-RESOLUTION`, with the note *"the body is typed
+  against C's committed §5 carriers at stub time"*. **Both sides wait for the other; the stub
+  stage was the appointed meeting point and neither arrived.** This is the single most consequential
+  finding of this gate after D1, because `NS7` is Display A's line 1.
+-/
+
+/-! ### NODE C.66 [cite] [cite:FGMN] — **STUB-SIDE DRAFT, statement not owner-inspected**
+
+Cited: FGMN (Fernández–Guàrdia–Montes–Nart, *Residual ideals of MacLane valuations*),
+**J. Algebra 427 (2015) 30–75**, DOI 10.1016/j.jalgebra.2014.12.022 — **Thm 2.8 + Cor 4.12(3) +
+Cor 4.9(3)** (the A-3-corrected published numbers of
+`docs/CITE_NUMBERING_AUDIT_2026-08-16.md`; the blueprint's own SOURCE line still carries the
+arXiv-v3 numbers `Cor 4.7(3)`/`Cor 4.4(4)` in its first paragraph and corrects them only in the
+A-3 rider below it — a fleet agent reading top-down gets the wrong numbers).
+
+SCOPE FENCE (transcribed): exactly the multiplicativity clause Step II of `LEMMA GENTOW-6.1`
+consumes — never the full FGMN machinery, never `w`'s closed form.
+
+⚠ THE DRAFTING DECISIONS THE OWNER MUST INSPECT, since the blueprint fixes none of them:
+(1) the "fixed `K^×`-scalar" is rendered as an existential unit `c` in `stageField`, not as a
+named function of the data (the corpus does not name it, and C-H10 forbids claiming a closed form);
+(2) the two factors and the product are read at the SAME `(u, ℓ)` with three separate
+nonemptiness/pin witnesses, because `dvResPoly` takes them as arguments and no lemma of the
+chapter relates the three (that relation is `dvResPoly_mul_of_pure`, the RE-PLAN'd B.35 twin §15
+books and no node states);
+(3) purity of both factors at the common side is hypothesized (`IsDvPure`), which is the "common
+side data" of the prose. -/
+
+axiom fgmn_residual_mul (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    {g g' : Polynomial O} (hg : g.Monic) (hg' : g'.Monic) {u ℓ : ℕ} (hℓ : 0 < ℓ)
+    (hcop : Nat.Coprime u ℓ)
+    (hpg : IsDvPure F g u ℓ) (hpg' : IsDvPure F g' u ℓ)
+    (hne : (dvSideSet F g u ℓ).Nonempty) (hne' : (dvSideSet F g' u ℓ).Nonempty)
+    (hne'' : (dvSideSet F (g * g') u ℓ).Nonempty)
+    {M₀ M₀' M₀'' : ℕ}
+    (hp : dvHgt F g (dvSideMin F g u ℓ hne) = (M₀ : ℕ∞))
+    (hp' : dvHgt F g' (dvSideMin F g' u ℓ hne') = (M₀' : ℕ∞))
+    (hp'' : dvHgt F (g * g') (dvSideMin F (g * g') u ℓ hne'') = (M₀'' : ℕ∞)) :
+    ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
+      dvResPoly F H₀ hpin (g * g') u ℓ hne'' M₀'' hp''
+        = Polynomial.C c
+            * (dvResPoly F H₀ hpin g u ℓ hne M₀ hp * dvResPoly F H₀ hpin g' u ℓ hne' M₀' hp')
+
+/-! # NUMERIC CONTENT EXECUTED AT THIS GATE (GC-11 / CHAP-C §15 gate order (c))
+
+Chapter C's signed layer is almost entirely `Polynomial O`-valued and `noncomputable`, and §13's
+four gate nodes have NO Lean and no machine-form expected-value table (defect D14), so what is
+executable is the ARITHMETIC layer. Everything below is a `#guard`, which FAILS THE BUILD if the
+proposition evaluates to `false`, and everything with a `q` runs at `q = 2` **and** `q = 3`.
+
+The mirrors `slotIdxN`/`twistExpN`/`slotWindowN`/`shiftN`/`cocycleN` are byte-for-byte the bodies
+of C.15/C.17/C.28 with the `KeyFrame`/`LevelDatum` wrapper stripped (which is legitimate exactly
+because of defect D7 — those nodes use nothing of the frame but `e₁`, `f₁`, `h`). They are NOT
+blueprint declarations. -/
+
+section NumericGate
+
+def slotIdxN (e₁ h k : ℕ) : ℕ :=
+  ((List.range e₁).find? (fun i => (i * h) % e₁ == k % e₁)).getD 0
+
+def twistExpN (e₁ h k : ℕ) : ℕ := (slotIdxN e₁ h 1 * k - slotIdxN e₁ h k) / e₁
+
+def slotWindowN (e₁ f₁ h k : ℕ) : List ℕ :=
+  (List.range f₁).filter (fun t => decide ((slotIdxN e₁ h k + e₁ * t) * h ≤ k))
+
+def shiftN (u l m : ℕ) : ℕ := ((List.range l).find? (fun b => (b * u) % l == m % l)).getD 0
+
+def cocycleN (u l a b : ℕ) : ℕ := (shiftN u l a + shiftN u l b - shiftN u l (a + b)) / l
+
+/-! ### C.16 — `slotIdx_spec` + `twistExp_spec`, over every coprime frame with `e₁ ≤ 8`,
+`h ≤ 12`, `k ≤ 40` (both primes and well beyond; the `q`-independence of `q(k)` that C.22's
+FAITHFULNESS block asserts is exactly why this grid is `π`-free). -/
+
+def c16_grid : Bool := Id.run do
+  let mut ok := true
+  for e₁ in [1:9] do
+    for h in [0:13] do
+      if Nat.gcd h e₁ == 1 then
+        for k in [0:41] do
+          let i := slotIdxN e₁ h k
+          if !(i < e₁ && (i * h) % e₁ == k % e₁) then ok := false
+          if !(slotIdxN e₁ h 1 * k == i + e₁ * twistExpN e₁ h k) then ok := false
+  return ok
+
+#guard c16_grid
+
+/-! ### C.18(b) — `slotWindow_full_of_le` over the same box. -/
+
+def c18_grid : Bool := Id.run do
+  let mut ok := true
+  for e₁ in [1:7] do
+    for f₁ in [1:5] do
+      for h in [0:9] do
+        if Nat.gcd h e₁ == 1 then
+          for k in [0:80] do
+            if (e₁ * f₁ - 1) * h ≤ k then
+              if (slotWindowN e₁ f₁ h k).length != f₁ then ok := false
+  return ok
+
+#guard c18_grid
+
+/-! ### C.22's MANDATORY `(2,2,3)` twist witness (`q = 3` half of the char split).
+The node's FAITHFULNESS block: *"`k = 3, A = x` gives `γ = 1`, `q(3) = 1`,
+`twistRead = η^{−1} = 2η` in `F₉` over `ℤ₃` — the `[r1]` `+q` reading predicts `η` and is
+refuted"*, and the RIDER that `q(k)` is `π`-independent, so the same numbers hold over `ℤ₂`. -/
+
+#guard slotIdxN 2 3 1 == 1          -- i₀ = 1
+#guard slotIdxN 2 3 3 == 1          -- i(3) = 1
+#guard twistExpN 2 3 3 == 1         -- q(3) = 1  (the `[r2]` exponent; `[r1]`'s `+q` differs)
+#guard slotWindowN 2 2 3 3 == [0]   -- T(3) = {0}
+
+/-- `F₉ = F₃[T]/(T² − 2)` as `(a, b) ↦ a + bη`: the arithmetic that makes `η⁻¹ = 2η`. -/
+abbrev F9 := ZMod 3 × ZMod 3
+
+def f9mul (x y : F9) : F9 := (x.1 * y.1 + 2 * (x.2 * y.2), x.1 * y.2 + x.2 * y.1)
+
+#guard f9mul (0, 2) (0, 1) == (1, 0)   -- (2η) · η = 2η² = 4 = 1, i.e. η⁻¹ = 2η
+
+/-! ### `q = 2` companions of the same witness (GC-11's two-prime clause at the level the stub
+can reach): C.22's own `(2,2,1)`-frame row and C.125(i)'s wild frame `(e₁,f₁,h) = (2,1,1)`,
+`Φ′ = x² − 2` over `ℤ₂` (`2 ∣ e₁`, genuinely wild). -/
+
+#guard slotIdxN 2 1 1 == 1
+#guard twistExpN 2 1 1 == 0      -- q(1) = 0 in the (2,·,1) frame
+#guard twistExpN 2 1 3 == 1      -- ⚠ but q(3) = 1: `q(k) = 0` is NOT identical on that frame
+#guard slotWindowN 2 1 1 1 == [0]
+
+/-! C.125(ii)'s honest wild `q = 3` row: the `(3,1,2)` frame (`e₁ = 3 = p`, `Φ′ = x³ − 3`). -/
+
+#guard slotIdxN 3 2 1 == 2
+#guard slotIdxN 3 2 2 == 1
+#guard twistExpN 3 2 2 == 1
+#guard slotWindowN 3 1 2 4 == [0]
+
+/-! ### C.28 — `cocycle_mem` (`ℓ·c₁(a,b) = s(a)+s(b)−s(a+b)` and `c₁ ≤ 1`) over every coprime
+`(u, ℓ)` with `ℓ ≤ 9`, `u ≤ 20`, `a, b ≤ 12`; plus the NEGATIVE control showing `hcop` is
+load-bearing (the corpus's `HE6-T-BADKEY` tooth, C.09's FAITHFULNESS note). -/
+
+def c28_grid : Bool := Id.run do
+  let mut ok := true
+  for l in [1:10] do
+    for u in [0:21] do
+      if Nat.gcd u l == 1 then
+        for a in [0:13] do
+          for b in [0:13] do
+            let c := cocycleN u l a b
+            if !(l * c == shiftN u l a + shiftN u l b - shiftN u l (a + b)) then ok := false
+            if !(c ≤ 1) then ok := false
+  return ok
+
+#guard c28_grid
+
+/-! Negative control: drop coprimality and the cocycle identity fails. `(u, ℓ) = (2, 4)`,
+`a = b = 1`: `s(1) = 0` (junk — no `β` with `2β ≡ 1 mod 4`), `s(2) = 1`, so
+`s(1)+s(1)−s(2) = 0 - 1 = 0` in ℕ while `ℓ·c₁ = 4·0 = 0` — the identity survives by ℕ-truncation
+but `s` is junk; the honest witness is that `s` is not additive: -/
+#guard shiftN 2 4 1 == 0 && shiftN 2 4 2 == 1 && (2 * 1) % 4 != 1 % 4
+
+/-! ### C.30 — the descent trichotomy, decided over `mr, ℓ, dr ≤ 8`. -/
+
+def c30_grid : Bool := Id.run do
+  let mut ok := true
+  for mr in [1:9] do
+    for l in [1:9] do
+      for dr in [1:9] do
+        let c1 := mr == 1
+        let c2 := mr ≥ 2 && l == 1 && dr == 1
+        let c3 := mr ≥ 2 && 2 ≤ l * dr
+        if !((c1 && !c2 && !c3) || (c2 && !(2 ≤ l*dr) && mr != 1)
+              || (c3 && !(l == 1 && dr == 1) && mr != 1)) then ok := false
+  return ok
+
+#guard c30_grid
+
+/-! ### C.31 — `jump_floor` and `first_bite` hold on their boxes; **`jump_drop` IS FALSE AS
+SIGNED** (defect D21). -/
+
+def c31_floor_grid : Bool := Id.run do
+  let mut ok := true
+  for mr in [2:9] do
+    for l in [1:7] do
+      for dr in [1:7] do
+        if 2 ≤ l * dr then
+          for L in [0:60] do
+            for mu in [0:60] do
+              if mr * (l * dr) ≤ L && L ≤ mu then
+                if !(4 ≤ L && 4 ≤ mu) then ok := false
+  return ok
+
+#guard c31_floor_grid
+
+/-! C.31's third clause exactly as signed, as a decidable predicate: all hypotheses true and the
+conclusion false. -/
+def jumpDropAsSigned (D l dr mu mu2 dfS : ℕ) : Bool :=
+  decide (0 < D) && decide (0 < l) && decide (0 < dr) &&
+  decide (mu2 * (D * l * dr) = dfS) && decide (dfS ≤ D * (l * (mu / l))) &&
+  decide (l * dr * 2 ≤ 2 * mu) && !decide (2 * mu2 ≤ mu)
+
+/-! **D21, the refutation.** `(D, ℓ, d_r, μ, μ₂, deg f_S) = (1, 1, 1, 1, 1, 1)`: every hypothesis
+holds (`1·(1·1·1) = 1`; `1 ≤ 1·(1·(1/1)) = 1`; `1·1·2 = 2 ≤ 2·1`) and the conclusion is
+`2 ≤ 1`. -/
+#guard jumpDropAsSigned 1 1 1 1 1 1
+
+def jumpDropCounterCount : ℕ := Id.run do
+  let mut n := 0
+  for D in [1:5] do
+    for l in [1:5] do
+      for dr in [1:5] do
+        for mu in [0:13] do
+          for mu2 in [0:13] do
+            if jumpDropAsSigned D l dr mu mu2 (mu2 * (D * l * dr)) then n := n + 1
+  return n
+
+/-! 168 counterexamples in `D, ℓ, d_r ∈ [1,4] × μ, μ₂ ∈ [0,12]` — not a corner case. -/
+#guard jumpDropCounterCount == 168
+
+/-! The repair: replace `hL : ℓ·d_r·2 ≤ 2μ` (which says `ℓ d_r ≤ μ`) by the JUMP hypothesis
+`2 ≤ ℓ·d_r` that the sibling `jump_floor` carries and this clause drops. -/
+def jumpDropRepaired (D l dr mu mu2 dfS : ℕ) : Bool :=
+  decide (0 < D) && decide (0 < l) && decide (0 < dr) && decide (2 ≤ l * dr) &&
+  decide (mu2 * (D * l * dr) = dfS) && decide (dfS ≤ D * (l * (mu / l))) &&
+  !decide (2 * mu2 ≤ mu)
+
+def jumpDropRepairedCount : ℕ := Id.run do
+  let mut n := 0
+  for D in [1:6] do
+    for l in [1:6] do
+      for dr in [1:6] do
+        for mu in [0:25] do
+          for mu2 in [0:25] do
+            if jumpDropRepaired D l dr mu mu2 (mu2 * (D * l * dr)) then n := n + 1
+  return n
+
+#guard jumpDropRepairedCount == 0
+
+/-! ### C.32 — `jump_count_bound` on explicit chains, `J ≤ 4`, values `≤ 200`. -/
+
+def c32_check (a : List ℕ) : Bool :=
+  let J := a.length - 1
+  let floors := a.all (fun x => decide (4 ≤ x))
+  let drops := (List.range J).all (fun j => decide (2 * a[j+1]! ≤ a[j]!))
+  !(floors && drops) || decide (2 ^ (J + 2) ≤ 2 * a[0]!)
+
+#guard [[4], [8,4], [16,8,4], [32,16,8,4], [64,32,16,8,4], [100,40,15,7,4],
+        [200,99,44,20,9], [5,4], [9,4], [4,4]].all c32_check
+
+/-! ### C.42 / C.50 — `E₂_gt_xfloor` follows from `TowerDatum.hfloor`, checked on the box
+`e₁,f₁,e₂,f₂ ≤ 5`, `h ≤ 5`, `u₂ ≤ 200`. -/
+
+def c50_grid : Bool := Id.run do
+  let mut ok := true
+  for e₁ in [1:6] do
+    for f₁ in [1:6] do
+      for h in [0:6] do
+        for e₂ in [1:6] do
+          for f₂ in [1:6] do
+            for u₂ in [0:201] do
+              if e₂ * (e₁ * f₁) * h < u₂ then
+                let D₂ := (e₁ * f₁) * (e₂ * f₂)
+                let E₂ := e₂ * f₂ * u₂
+                if !(D₂ * (e₂ * h) < E₂) then ok := false
+  return ok
+
+#guard c50_grid
+
+/-! ### C.52's budget display and C.53's CLIP (C-H8's R2a TERMINAL form).
+
+There is no signature for either node (D1), so the floor is transcribed from C.52's STATEMENT
+display: `⌈((μ₂−j)E₂ − w(a,b)) / (e₁e₂)⌉ + [pin]`, `[pin] = 1` iff `e₁e₂ ∣ (μ₂−j)E₂ − w(a,b) ≥ 0`.
+What is checkable here is the R2a lesson itself: the UNCLIPPED count `Σ (N − floor)` and the
+CLIPPED count `Σ max(0, N − floor)` DIVERGE as soon as some floor exceeds `N`, which is exactly
+the sealed-form failure C.53 records ("false whenever `N < floor` at some slot"). -/
+
+def budgetFloor (e₁ e₂ E₂ μ₂ j w : ℕ) : ℕ :=
+  let tgt := μ₂ * E₂ - j * E₂ - w
+  let d := e₁ * e₂
+  if (μ₂ - j) * E₂ < w then 0
+  else (tgt + d - 1) / d + (if tgt % d == 0 then 1 else 0)
+
+/-- `q`-free, but the two gate primes enter through `E₂ = e₂f₂u₂` at the two witnesses. -/
+def clipDivergesAt (floors : List ℕ) (N : ℕ) : Bool :=
+  let clipped := (floors.map (fun f => max 0 (N - f))).sum
+  let naive := (floors.map (fun f => N - f)).sum   -- ℕ-truncated: agrees with clipped
+  let signedNaive : Int := (floors.map (fun f => (N : Int) - (f : Int))).sum
+  decide (clipped == naive) && decide ((clipped : Int) != signedNaive)
+
+/-! R2a's counter-instance made concrete: floors `[2, 9]` at `N = 4`. The clipped count is `2`;
+the sealed unclipped count over ℤ is `2 + (4 − 9) = −3`. -/
+#guard clipDivergesAt [2, 9] 4
+#guard ((([2,9] : List ℕ).map (fun f => max 0 (4 - f))).sum == 2)
+
+/-! The budget floor at C.123/C.124's two frames, printed for the fleet (no blueprint value to
+diff against — defect D14). -/
+#eval (List.range 4).map (fun j => budgetFloor 2 2 8 3 j 0)
+#eval (List.range 4).map (fun j => budgetFloor 3 2 12 3 j 0)
+-- ⚠ C-H12's coincidence regime, live right here: at `w = 0` the two frames give the SAME row
+-- `[7,5,3,1]`, so a gate that checked only `w = 0` would be blind to the frame. At `w = 5` they
+-- separate (`[5,3,1,0]` vs `[6,4,2,0]`). This is the G.23 lesson at chapter C's own budget table.
+#eval (List.range 4).map (fun j => budgetFloor 2 2 8 3 j 5)
+#eval (List.range 4).map (fun j => budgetFloor 3 2 12 3 j 5)
+
+/-! ### C.55 — the depth-3 floor in cleared form: pins `p_j ≥ (μ₂−j)E₂ + 1` with right endpoint
+`(μ₂, 0)` force every two-point slope `u₃/ℓ₃ > E₂`, i.e. `ℓ₃·E₂ < u₃`. Checked directly on the
+pin lattice for `μ₂ ≤ 8`, `E₂ ≤ 30`. -/
+
+def c55_grid : Bool := Id.run do
+  let mut ok := true
+  for μ₂ in [1:9] do
+    for E₂ in [1:31] do
+      for j in [0:μ₂] do
+        -- the two-point slope from `(j, (μ₂−j)E₂+1)` to `(μ₂, 0)`, cleared
+        let l₃ := μ₂ - j
+        let u₃ := (μ₂ - j) * E₂ + 1
+        if !(l₃ * E₂ < u₃) then ok := false
+  return ok
+
+#guard c55_grid
+
+/-! ### The HT spot values of C.123/C.124 (defect D15: the two gate texts give readings that
+differ by a factor of `q − 1`). Both are executed; neither is derivable from a signed node,
+because §11 has no signatures. -/
+
+def htSpot (q N : ℕ) : ℕ := (q - 1) * ((q - 1) * (q - 2) / 2) * q ^ (2 * N - 8)
+def htSpotAlt (q N : ℕ) : ℕ := ((q - 1) * (q - 2) / 2) * q ^ (2 * N - 8)
+
+/-! C.123's own claim: the `q = 2` value is `0` at every `N` (the degenerate census). -/
+#guard (List.range 12).all (fun N => htSpot 2 N == 0)
+#guard (List.range 12).all (fun N => htSpotAlt 2 N == 0)
+/-! At `q = 3` the two readings differ by exactly the factor `q − 1 = 2`. -/
+#guard htSpot 3 6 == 2 * 3 ^ 4
+#guard htSpotAlt 3 6 == 3 ^ 4
+#eval (List.range 4).map (fun i => (htSpot 2 (4 + i), htSpot 3 (4 + i), htSpotAlt 3 (4 + i)))
+
+/-! ### C.10's dictionary arithmetic (`D″ = D′ℓd_r = (e₁ℓ)(f₁d_r)`, `4 ≤ D″` under the jump)
+and C.31's `first_bite`, both decided on their boxes — the two `omega`-grade facts the fleet
+will otherwise re-derive. -/
+
+def c10_grid : Bool := Id.run do
+  let mut ok := true
+  for e₁ in [1:7] do
+    for f₁ in [1:7] do
+      for l in [1:7] do
+        for dr in [1:7] do
+          if !((e₁ * f₁) * l * dr == (e₁ * l) * (f₁ * dr)) then ok := false
+          if 2 ≤ e₁ * f₁ && 2 ≤ l * dr then
+            if !(4 ≤ (e₁ * f₁) * l * dr) then ok := false
+  return ok
+
+#guard c10_grid
+
+#guard (List.range 20).all (fun D => (List.range 20).all (fun mu =>
+  !(2 ≤ D && 4 ≤ mu) || 8 ≤ D * mu))
+
+end NumericGate
 
 end LeanspecC
