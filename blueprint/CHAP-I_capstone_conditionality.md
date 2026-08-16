@@ -30,6 +30,15 @@ assigns I **no sub-namespace**; new defs are capstone-conditionality carriers ab
 objects).
 **Authored:** 2026-08-15, chapter-I composer (Fable arm, parallel-author fleet per CONVENTIONS
 Part V). **CODEX CROSS-READ OWED** (§13 is the queue).
+**⚠ READ AMENDMENT A-I.1 (2026-08-16, at the end of this file) BEFORE CONSUMING ANY NODE.** It
+adjudicates the stage-0e stub gate's blueprint-side defects and RE-SIGNS three of them: NODE
+I.10's field list (the `ladder` field's application and its arising-configuration binding; a NEW
+`deepTwist` field for the `𝒲_{≤i}` conjunct that had no carrier; NEW socket nodes I.10a/I.10b),
+NODE I.03's `(A1)` clause (which was provably vacuous as signed), and NODE I.01's resolution
+instruction (which pointed at a machine-REFUTED statement). It also records defect **I-D13**:
+as signed, the Display-A carrier fields are REFUTABLE, so the capstone hypothesis block is
+contradictory until chapter C types the two sockets — **no positive conditional claim may be
+made from I.17 until then.**
 
 ---
 
@@ -1550,9 +1559,17 @@ the honest form of this row.*
    `B-BOX-1` and that the recursion context supplies B.42's polygon hypotheses.
 4. **I.03's under-statement** (the exact-weights clause carried by the count layer, not the
    menu carrier): confirm no consumer reads `MenuLawAt` as carrying weight-correctness.
+   *[A-I.1 rider: the cross-read must now also check the SECOND under-statement this item
+   missed — the shape clause was one-directional and therefore VACUOUS (I-D9), re-signed at the
+   enumeration. The weight-correctness question is unchanged and still owed.]*
 5. **I.10's `ladder` field quantifier** (ALL instantiations vs degree-`n`-arising ones): the
    strongest uniform reading was chosen; check Display A's "assume uniformly in O" preamble
    licenses it and that E.24's carrier types admit the quantification as written.
+   *[A-I.1 rider: ANSWERED, in the negative, with machine evidence. E.24's carrier types do NOT
+   admit the quantification as written (underapplied by eight arguments, I-D3), and the "ALL
+   instantiations" reading is REFUTABLE (I-D13), not merely strong. The signed reading is the
+   arising one, at sockets I.10a/I.10b. What the cross-read should now check is the SOCKETS'
+   eventual bodies against the NON-SWALLOWING fence.]*
 6. **The NOT-ON-CAPSTONE-PATH treatment of HYP.78/79** (kept OPEN-MATH at `n ≥ 8`
    conservatively) **and HYP.80** (likewise) — an audit could sign all three fully out; this
    chapter chose the conservative reading. Either answer changes only the `n ≥ 8` box family's
@@ -1564,6 +1581,10 @@ the honest form of this row.*
    2 says `spec/AXCHK.lean`; the deviation is recorded; orchestrator may override.
 9. **The stage display (I.20)** — the S3 row's "and nothing else" claim is checkable: it must
    equal §3's OPEN-MATH ∪ CITE census exactly.
+   *[A-I.1 rider: CHECKED and FAILED twice at the 0e gate — short by the `𝒲_{≤i}` conjunct
+   (I-D4) and calling I.17 an equivalence when it is one implication. Both struck-and-corrected
+   at NODE I.20; the corrected S3 row adds chapter I's own two untyped sockets to the modulo
+   list, which are NOT one of §3's rows.]*
 10. **The late-binding resolution pass (§9, L-1..L-3)** is owed at D/F freeze — the recorded
     orchestrator item; this chapter is INCOMPLETE by design until it runs (and says so).
 
@@ -1578,9 +1599,18 @@ the orchestrator's merge run); leanspec stub list with its blocked set (§11); T
 (§12); cross-read queue (§13, 10 items). LATE-BINDING section §9 is explicitly open until
 chapters D and F freeze (items L-1/L-2/L-3). CODEX CROSS-READ OWED.
 
-<!-- RESUME: CHAPTER COMPLETE. Remaining external actions: (i) L-1/L-2/L-3 at D/F freeze;
-(ii) orchestrator items O-1..O-5 (§9.3); (iii) cross-read per §13; (iv) leanspec stub stage
-per §11; (v) orchestrator dag_build merge re-run. -->
+*[A-I.1 rider, 2026-08-16: the count is now **27 nodes** — I.10a and I.10b are added by the
+amendment — and the stub stage HAS RUN (`leanspec/Leanspec/ChapI.lean`, green), which is what
+produced the defect list A-I.1 adjudicates. §9's L-1/L-2 triggers are re-pointed there, and
+three node blocks (I.01, I.03, I.10) carry struck-and-re-signed text.]*
+
+<!-- RESUME: CHAPTER COMPLETE, THEN AMENDED (A-I.1, 2026-08-16 — read it first). Remaining
+external actions: (i) chapter C types sockets I.10a/I.10b (lifts defect I-D13, the contradictory
+block); (ii) the weld site-supply socket, then L-1/L-2 (three fields: jd0, genhnBox2, w1);
+(iii) L-3 at D freeze; (iv) orchestrator items O-1..O-5 (§9.3; O-1/O-2 discharged at OM-7/OM-6,
+O-4 moot at A-C.6); (v) cross-read per §13, with A-I.1's riders on items 4/5/9; (vi) the owner's
+gate-(a) read of A-I.1's field-list change and gate-(b) signature on the C.94/C.66 REDRAFTS;
+(vii) orchestrator dag_build merge re-run (I.10a/I.10b need DAG rows). -->
 
 ---
 
@@ -2515,6 +2545,43 @@ amendment): make H.93's `A1Family` an `abbrev`, or land a
 `Membership (A1Cell r) (A1Family r)` instance. **If the root cure lands, this amendment's
 `@id` spelling reverts to the plain `∀ C ∈ F` with no other change** — the statement is the
 same either way, which is why this defect is an elaboration repair and not a strength event.
+
+---
+
+### A-I.1's OWNER-FACING FLAG LIST (read at the next visit; nothing here waits on it)
+
+| # | what changed | why it is not a weakening | where |
+|---|---|---|---|
+| **1** | **I.10's FIELD LIST: the `ladder` field is guarded by a new socket (I.10a), and a NEW field `deepTwist` is added (guarded by I.10b).** This is the public conditionality display — CONVENTIONS Part V gate (a). | No conjunct dropped; ONE conjunct ADDED (`𝒲_{≤i}`, which had no carrier at all); the conclusion `UniformityStatement` untouched; and the guard is proved to change nothing while the sockets read `True`. The eventual narrowing (when chapter C types them) restricts a HYPOTHESIS, i.e. strengthens the theorem — the direction the blueprint's own quantifier disclosure already contemplated. | §I-D3, §I-D4; signature block at NODE I.10 |
+| **2** | **Two NEW nodes, I.10a/I.10b** (`CanonicalLadderConfig`, `CanonicalDeepTwistConfig`), GC-13(c) sockets with `True` bodies owed at chapter C's freeze. | They are the binding site the field list previously lacked; their `True` bodies make the guarded fields equivalent to the unguarded ones today (machine-proved), so signing them moves no strength. | §I-D3; NODE I.10's block |
+| **3** | **I.03 (`MenuLawAt`) is RE-SIGNED** with a second clause (the σ-label enumeration). | Strictly stronger: re-signed ⟹ voided is proved, and the empty-family witness that satisfied the old clause is proved to fail the new one. | §I-D9 |
+| **4** | **The stop-the-line disclosure (I-D13)**: as of today the capstone hypothesis block is CONTRADICTORY, so I.15–I.18 fire from `False` and no positive conditional claim may be made from I.17. | Not a change — a DISCLOSURE of what the signed statements already meant. The repair is chapter C's socket typing. | §I-D13; NODE I.20's corrected report sentence |
+| **5** | **`UniformityStatement` is untouched** (gate (a)'s main statement), and no literature cite was imported or signed (gate (b)); I.01's cite instruction was re-pointed at an already-drafted REDRAFT that still awaits the owner's signature. | — | §I-D6 |
+
+---
+
+### A-I.1's CLOSING STATE (what the next agent inherits)
+
+**Signed by this amendment:** the `ladder` field's repaired application + arising binding (I-D3);
+the `deepTwist` field (I-D4); NODES I.10a/I.10b (new); I.03's enumeration clause + `@id`
+membership (I-D9, I-D5); I.01's re-pointed resolution instruction (I-D6). **Ruled, not signed:**
+I-D7/I-D8 (weld placeholders stay; `w1` is a named debt; L-1/L-2 re-triggered). **Disclosed:**
+I-D13. **Untouched:** `UniformityStatement`; every ledger row's disposition (no row moved
+bucket, none was discharged); the tame/cite queue; WELD-ZERO (I-7 licenses nothing, still).
+
+**Machine state:** `leanspec/Leanspec/ChapI.lean` carries every signed form, elaborated —
+`lake build Leanspec.ChapI` green, zero `sorry`, zero `native_decide`, 70 enforced `#axiom_core`
+guards, all Lean-core. The §4 gate now runs 14 checks, five of them A-I.1's certifications: the
+I-D13 transport (`¬` the 0e field type, and `¬ CapstoneHypotheses n`), the never-weaken `↔`, the
+I.10b→I.10a refinement, the I-D9 pair (empty family fails the new clause; new ⟹ voided), and
+the weld-shape refutation behind the I-D7/I-D8 ruling.
+
+**The next three moves, in dependency order:** (1) chapter C types I.10a/I.10b under the
+NON-SWALLOWING fence — this is what lifts I-D13; (2) the weld site-supply socket, then L-1/L-2
+bind `jd0`/`genhnBox2`/`w1`; (3) the owner's gate-(b) signature on the C.94 REDRAFT, after which
+I.01 resolves and gate I.25 gains its first `#axiom_reg` entry. Defects I-D1/I-D2 (`leanfinal`
+duplicate declarations and roll-up gaps) remain the precondition for landing chapter I at all,
+and are cured on the `leanfinal` side, not here.
 
 <!-- SENTINEL: BP-I END OF FILE -->
 
