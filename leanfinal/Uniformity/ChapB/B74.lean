@@ -345,7 +345,9 @@ footprint change).** Blueprint amendment A-F.11's action item for B.79 step 3 as
 consume the HE-T-CAP window chain *by name* rather than re-derive it (§0.2's private-copy ban);
 the item names the inner `suppVal_lt_of_vis`, but this outer lemma **is** the guard the consumer
 needs (`H₀ < N` at the `sideMin` pin, which is exactly `resPoly_congr`'s `hH₀`), so promoting it
-saves the consumer the ten-line chain as well. Consumed by `B79bTransport.order1Type_congr`. -/
+saves the consumer the ten-line chain as well. Consumed by `B66c.order1Type_congr` *(pointer updated
+at amendment A-F.12: the placeholder `B79bTransport.lean` was retired when that leg was booked as the
+B.66-adjacent helper `Uniformity.ChapB.B66c`)*. -/
 theorem H₀_lt_of_visible (hπ : Irreducible π) {φ : Polynomial O} {N : ℕ}
     {f : Polynomial O} (hvis : Visible π φ f N) {u ℓ : ℕ} (hℓ : 0 < ℓ)
     (h : (sideSet φ f u ℓ).Nonempty) {H₀ : ℕ}
