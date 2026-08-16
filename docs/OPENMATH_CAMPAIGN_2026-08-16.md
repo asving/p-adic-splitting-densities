@@ -18,8 +18,8 @@ queue. Unit notes land in `docs/openmath-campaign/OM-<k>_<slug>_2026-08-16.md`; 
 | OM-1 | the n=3 rate (hrate₃ → `package_three`) | HYP.08/09/11/28/29 | **DONE** — `package_three` UNCONDITIONAL, (K,B,c)=(1,0,3), Lean-core; HYP.08 strengthened-discharged, HYP.09 discharged; NEW sharp peel branch (S5); P(1)/P(2)/P(3) all theorems |
 | OM-2 | GENIND.B, the inductive step — OUTLINE+CERTIFY ONLY | T-1 | **DONE** — 30 rows: 12 landed / 10 reduce / 8 NEW in 3 families (N-1/N-2/N-3), ~15-node sketch, 612/612 certified, S-1 bridge-is-inequality fact; conversion unit chartered |
 | OM-3 | the count layer (CS-1/2/EXACT/1Q; A0/A1 per degree) | HYP.23/25/26/30/32/33/35/36/88 | **DONE** — dominance split PROVED (was OPEN), κ(T) a theorem, HYP.88 residue proved, (CS-2) real-count teeth, A0 oracle 0/19758; H63w/H94w landed |
-| OM-4 | the σ-ladder pair (LB1)/(MP1) | HYP.41/42 | **RUNNING** (wave 2) |
-| OM-5 | B-BOX-1 (the level-2 class-size residue leg) | CHAP-B H-2 residue; CHAP-I addendum routes | queued |
+| OM-4 | the σ-ladder pair (LB1)/(MP1) | HYP.41/42 | **DONE** — LB1 REDUCES-TO C.33/C.34; MP1 item 5 = cite #4 (recentered_key_emission, GN15+GMN, drafted); FINDING 0: landed E.39/E.40/E.44 shadows VACUOUS — E carrier strengthening owed before chapter I consumes them |
+| OM-5 | B-BOX-1 (the level-2 class-size residue leg) | CHAP-B H-2 residue; CHAP-I addendum routes | **RUNNING** (wave 2) |
 | OM-6 | window pinning + the EFF.GENHN.29 transcription gap | HYP.24 | queued |
 | OM-7 | GENHN-HE(μ=3) + TOW-1 (incl. the no-owner finding) | HYP.81/82 | queued |
 | OM-8 | the deep-twist ∀i≥3 conjunct | HYP.57/63 | queued |
