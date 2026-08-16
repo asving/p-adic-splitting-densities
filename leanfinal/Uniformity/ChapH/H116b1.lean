@@ -370,4 +370,272 @@ theorem peel_cofactor_inherits {π : O} (hπ : Irreducible π) {m N μ k : ℕ}
 
 end Inherit
 
+/-! ## 2. H.116b1 (clause i) — THE MULTI-CHILD PEEL -/
+
+section Peel
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+/-- **A child's multiplicity is determined by its frame.**  Two child events at the SAME
+`(k, z)` have the same multiplicity: both abscissae are the exact first-unit abscissa of the
+frame at the pinned lift pair. -/
+theorem hasChildAt_mult_unique {π : O} {m N μ ν k : ℕ} {z : ResidueField O}
+    {c : ClusterState O m N} (h1 : HasChildAt π c μ k z) (h2 : HasChildAt π c ν k z) :
+    μ = ν := by
+  obtain ⟨-, u2, u3⟩ := h1.2.2.2 (classSect O m N c.1) (resSect O z)
+    (proj_classSect O m N c.1) (residue_resSect O z)
+  obtain ⟨-, v2, v3⟩ := h2.2.2.2 (classSect O m N c.1) (resSect O z)
+    (proj_classSect O m N c.1) (residue_resSect O z)
+  exact abscissa_unique u2 u3 v2 v3
+
+variable [IsAdicComplete (maximalIdeal O) O]
+
+/-- **The peel induction, in extendable form.**  Everything the recursion moves — the degree
+`m`, the state `c`, the lift `a` — is universally quantified, and the child presentations are
+carried as a single `ℕ`-indexed family `β` (restricted to `Fin p.1` at use sites) so that the
+`insert` step never has to transport a dependent function type.
+
+The non-drain and `2 ≤ m` hypotheses are conditioned on `L.Nonempty`: the empty peel needs
+neither, and that is exactly what lets the last recursion step (down to `L' = ∅`) go through
+without a separate branch. -/
+theorem exists_peel_finset_aux {π : O} (hπ : Irreducible π) {N : ℕ} (hN : 1 ≤ N)
+    (L : Finset (ℕ × ℕ × ResidueField O)) :
+    ∀ (m : ℕ) (c : ClusterState O m N) (a : Fin m → O), proj O m N a = c.1 →
+      (∀ p ∈ L, HasChildAt π c p.1 p.2.1 p.2.2) →
+      (L.Nonempty → 2 ≤ m) → (L.Nonempty → ¬ IsDrainState c) →
+      ∃ (β : (ℕ × ℕ × ResidueField O) → ℕ → O) (Q : Polynomial O),
+        (∀ p ∈ L, ∀ i : Fin p.1, β p (i : ℕ) ∈ maximalIdeal O) ∧
+        Q.Monic ∧
+        (∑ p ∈ L, p.1) ≤ m ∧
+        Q.natDegree = m - ∑ p ∈ L, p.1 ∧
+        monicPoly a = (∏ p ∈ L, alphaParent π (fun i : Fin p.1 => β p (i : ℕ)) p.2.1
+            (resSect O p.2.2)) * Q ∧
+        ∀ p ∈ L, ∀ hp : HasChildAt π c p.1 p.2.1 p.2.2,
+          proj O p.1 (N - betaContent c p.2.1) (fun i : Fin p.1 => β p (i : ℕ))
+            = (betaChild π c hp (N - betaContent c p.2.1)).1 := by
+  classical
+  induction L using Finset.induction_on with
+  | empty =>
+    intro m c a ha _ _ _
+    refine ⟨fun _ _ => 0, monicPoly a, by simp, monicPoly_monic a, by simp, ?_, by simp, by simp⟩
+    rw [Finset.sum_empty, Nat.sub_zero, monicPoly_natDegree]
+  | insert q L' hq ih =>
+    intro m c a ha hL hm2 h0
+    have hqmem : q ∈ insert q L' := Finset.mem_insert_self q L'
+    have hq' : HasChildAt π c q.1 q.2.1 q.2.2 := hL q hqmem
+    have hm : 2 ≤ m := hm2 ⟨q, hqmem⟩
+    have h0c : ¬ IsDrainState c := h0 ⟨q, hqmem⟩
+    have hμm : q.1 ≤ m := mult_le_of_hasChildAt hq'
+    obtain ⟨b, Q₀, hbmem, hQ₀monic, hQ₀deg, hfac, hbproj⟩ :=
+      exists_peel hπ hm hN c hq' h0c a ha
+    -- the cofactor's coefficient vector is `𝔪`-valued: it reduces to `X ^ (m − μ_q)`
+    have ham : ∀ i, a i ∈ maximalIdeal O := mem_maximalIdeal_of_proj hN c ha
+    have hQ₀res : Q₀.map (residue O) = X ^ (m - q.1) := by
+      have hmul : (X : Polynomial (ResidueField O)) ^ m
+          = X ^ q.1 * Q₀.map (residue O) := by
+        have hx := congrArg (fun f : Polynomial O => f.map (residue O)) hfac
+        simp only [Polynomial.map_mul] at hx
+        rw [monicPoly_map_residue ham, alphaParent_map_residue hπ b hq'.2.1 _] at hx
+        exact hx
+      refine mul_left_cancel₀ (pow_ne_zero q.1 (X_ne_zero (R := ResidueField O))) ?_
+      rw [← hmul, ← pow_add]
+      congr 1
+      omega
+    have hQ₀mem : ∀ i : Fin (m - q.1), Q₀.coeff (i : ℕ) ∈ maximalIdeal O := by
+      intro i
+      refine Ideal.Quotient.eq_zero_iff_mem.1 ?_
+      have hx := congrArg (fun f : Polynomial (ResidueField O) => f.coeff (i : ℕ)) hQ₀res
+      simp only [coeff_map, coeff_X_pow, if_neg (Nat.ne_of_lt i.isLt)] at hx
+      exact hx
+    refine
+      let c' : ClusterState O (m - q.1) N :=
+        ⟨proj O (m - q.1) N (fun i : Fin (m - q.1) => Q₀.coeff (i : ℕ)),
+          fun i => Ideal.mem_map_of_mem _ (hQ₀mem i)⟩
+      ?_
+    have hc' : proj O (m - q.1) N (fun i : Fin (m - q.1) => Q₀.coeff (i : ℕ)) = c'.1 := rfl
+    -- the members of `L'` sit at frames FOREIGN to `q` (the multiplicity is frame-determined)
+    have hnep : ∀ p ∈ L', ¬ (p.2.1 = q.2.1 ∧ p.2.2 = q.2.2) := by
+      intro p hpL hcon
+      refine hq ?_
+      have hq'' : HasChildAt π c q.1 p.2.1 p.2.2 := by rw [hcon.1, hcon.2]; exact hq'
+      have hpq : p.1 = q.1 :=
+        hasChildAt_mult_unique (hL p (Finset.mem_insert_of_mem hpL)) hq''
+      have hpq' : p = q := by
+        rw [show p = (p.1, p.2.1, p.2.2) from rfl, show q = (q.1, q.2.1, q.2.2) from rfl,
+          hpq, hcon.1, hcon.2]
+      exact hpq' ▸ hpL
+    -- clause (ii) at every member of `L'`
+    have hstep : ∀ p ∈ L', ∀ hp : HasChildAt π c p.1 p.2.1 p.2.2,
+        ¬ IsDrainState c' ∧ betaContent c' p.2.1 ≤ betaContent c p.2.1 ∧
+        ∃ h'' : HasChildAt π c' p.1 p.2.1 p.2.2,
+          betaChild π c' h'' (N - betaContent c p.2.1)
+            = betaChild π c hp (N - betaContent c p.2.1) := by
+      intro p hpL hp
+      obtain ⟨d1, d2, d3⟩ := peel_cofactor_inherits hπ hm hN c h0c hq' hbmem hQ₀monic hQ₀deg
+        ha hfac c' hc' (hnep p hpL) hp
+      exact ⟨d1, by omega, d3⟩
+    have h0' : L'.Nonempty → ¬ IsDrainState c' := by
+      rintro ⟨p, hpL⟩
+      exact (hstep p hpL (hL p (Finset.mem_insert_of_mem hpL))).1
+    have hL' : ∀ p ∈ L', HasChildAt π c' p.1 p.2.1 p.2.2 := fun p hpL =>
+      (hstep p hpL (hL p (Finset.mem_insert_of_mem hpL))).2.2.choose
+    have hm2' : L'.Nonempty → 2 ≤ m - q.1 := by
+      rintro ⟨p, hpL⟩
+      have hch := hL' p hpL
+      have h2p : 2 ≤ p.1 := hch.1
+      have hple := mult_le_of_hasChildAt hch
+      omega
+    obtain ⟨β', Q₁, hβ'mem, hQ₁m, hsum', hQ₁d, hfac', hihr⟩ :=
+      ih (m - q.1) c' (fun i : Fin (m - q.1) => Q₀.coeff (i : ℕ)) hc' hL' hm2' h0'
+    -- the extended presentation family
+    have hbres : (fun i : Fin q.1 => (if h : (i : ℕ) < q.1 then b ⟨(i : ℕ), h⟩ else 0)) = b := by
+      funext i
+      rw [dif_pos i.isLt]
+    refine ⟨Function.update β' q (fun i => if h : i < q.1 then b ⟨i, h⟩ else 0),
+      Q₁, ?_, hQ₁m, ?_, ?_, ?_, ?_⟩
+    · -- `𝔪`-membership
+      intro p hpins i
+      by_cases hpq : p = q
+      · subst hpq
+        rw [Function.update_self, dif_pos i.isLt]
+        exact hbmem _
+      · rw [Function.update_of_ne hpq]
+        exact hβ'mem p ((Finset.mem_insert.1 hpins).resolve_left hpq) i
+    · -- the degree-sum bound: `μ_q` plus the cofactor's own budget
+      rw [Finset.sum_insert hq]
+      omega
+    · -- the cofactor's degree
+      rw [Finset.sum_insert hq]
+      have h1 : Q₀.natDegree = m - q.1 := hQ₀deg
+      omega
+    · -- the factorization
+      have hQ₀eq : monicPoly (fun i : Fin (m - q.1) => Q₀.coeff (i : ℕ)) = Q₀ :=
+        monicPoly_coeff_self hQ₀monic hQ₀deg
+      rw [Finset.prod_insert hq, hfac, Function.update_self, hbres, mul_assoc]
+      congr 1
+      rw [← hQ₀eq, hfac']
+      congr 1
+      refine Finset.prod_congr rfl fun p hpL => ?_
+      rw [Function.update_of_ne (show p ≠ q from fun hcon => hq (hcon ▸ hpL))]
+    · -- the reads
+      intro p hpins hp
+      by_cases hpq : p = q
+      · subst hpq
+        rw [Function.update_self, hbres]
+        exact hbproj
+      · have hpL : p ∈ L' := (Finset.mem_insert.1 hpins).resolve_left hpq
+        obtain ⟨-, hDle, h'', hbc⟩ := hstep p hpL hp
+        obtain ⟨bq2, Hq2, -, -, -, hwin⟩ :=
+          exists_betaChild_lift hπ (hm2' ⟨p, hpL⟩) hN h'' (h0' ⟨p, hpL⟩) hc'
+        have e1 : proj O p.1 (N - betaContent c' p.2.1)
+            (fun i : Fin p.1 => β' p (i : ℕ))
+              = proj O p.1 (N - betaContent c' p.2.1) bq2 := by
+          rw [hihr p hpL h'', hwin _ le_rfl]
+        have e2 : proj O p.1 (N - betaContent c p.2.1)
+            (fun i : Fin p.1 => β' p (i : ℕ))
+              = proj O p.1 (N - betaContent c p.2.1) bq2 :=
+          proj_eq_of_window_le hπ (by omega) e1
+        rw [Function.update_of_ne hpq, e2,
+          ← hwin (N - betaContent c p.2.1) (by omega), hbc]
+
+/-- **H.116b1 (clause i) [A-H.7 §4].  THE MULTI-CHILD PEEL.**  Every monic lift of a non-drain
+state whose child set CONTAINS `L` factors EXACTLY in `O[X]` as a `Finset`-indexed product of
+planted factors at the pinned centres times a monic cofactor, with each `bb p` a lift of the
+`betaChild` class at `p`'s own genuine window — **and `Σ_p μ_p ≤ m` is a CONCLUSION.**
+
+A-H.7 §3's adjudication, in one line: `mul_le_betaContent` + `betaContent_le_mul` give
+`μ_p ≤ m` for EACH `p` separately (`mult_le_of_hasChildAt`), whose sum is the useless
+`|L| · m`; what supplies the bound is THIS induction, each of whose steps consumes `μ_p` of
+the degree budget and hands the rest to the cofactor (clause (ii), whose mechanism is
+H.116b2). -/
+theorem exists_peel_finset {π : O} (hπ : Irreducible π) {m N : ℕ}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (c : ClusterState O m N) (h0 : ¬ IsDrainState c)
+    (L : Finset (ℕ × ℕ × ResidueField O))
+    (hL : ∀ p ∈ L, HasChildAt π c p.1 p.2.1 p.2.2)
+    (a : Fin m → O) (ha : proj O m N a = c.1) :
+    (∑ p ∈ L, p.1) ≤ m ∧
+      ∃ (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, Fin p.1.1 → O)
+        (Q : Polynomial O),
+        (∀ p i, bb p i ∈ maximalIdeal O) ∧ Q.Monic ∧
+        Q.natDegree = m - ∑ p ∈ L, p.1 ∧
+        monicPoly a
+            = (∏ p ∈ L.attach, alphaParent π (bb p) p.1.2.1 (resSect O p.1.2.2)) * Q ∧
+        ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L},
+          proj O p.1.1 (N - betaContent c p.1.2.1) (bb p)
+            = (betaChild π c (hL p.1 p.2) (N - betaContent c p.1.2.1)).1 := by
+  obtain ⟨β, Q, hβ, hQm, hsum, hQd, hfac, hread⟩ :=
+    exists_peel_finset_aux hπ hN L m c a ha hL (fun _ => hm) (fun _ => h0)
+  refine ⟨hsum, fun p => fun i : Fin p.1.1 => β p.1 (i : ℕ), Q,
+    fun p i => hβ p.1 p.2 i, hQm, hQd, ?_, fun p => hread p.1 p.2 (hL p.1 p.2)⟩
+  rw [hfac]
+  congr 1
+  exact (Finset.prod_attach L (fun x => alphaParent π (fun i : Fin x.1 => β x (i : ℕ)) x.2.1
+    (resSect O x.2.2))).symm
+
+end Peel
+
 end Uniformity.Density.Induction
+
+/-! ## 3. Statement pins — the two signed theorems, verbatim
+
+Re-typed from `leanspec/Leanspec/ChapH.lean` (`LeanspecH17`, A-H.7 §4) with the section
+`variable`s spelled out, and discharged by the landed declarations.  A drift in any binder,
+implicit/explicit marker, or hypothesis would break these. -/
+
+section Pins
+
+open Uniformity.Density Uniformity.Density.Induction Polynomial IsLocalRing
+
+/-- H.116b1 clause (i), verbatim. -/
+example {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m N : ℕ}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (c : ClusterState O m N) (h0 : ¬ IsDrainState c)
+    (L : Finset (ℕ × ℕ × ResidueField O))
+    (hL : ∀ p ∈ L, HasChildAt π c p.1 p.2.1 p.2.2)
+    (a : Fin m → O) (ha : proj O m N a = c.1) :
+    (∑ p ∈ L, p.1) ≤ m ∧
+      ∃ (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, Fin p.1.1 → O)
+        (Q : Polynomial O),
+        (∀ p i, bb p i ∈ maximalIdeal O) ∧ Q.Monic ∧
+        Q.natDegree = m - ∑ p ∈ L, p.1 ∧
+        monicPoly a
+            = (∏ p ∈ L.attach, alphaParent π (bb p) p.1.2.1 (resSect O p.1.2.2)) * Q ∧
+        ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L},
+          proj O p.1.1 (N - betaContent c p.1.2.1) (bb p)
+            = (betaChild π c (hL p.1 p.2) (N - betaContent c p.1.2.1)).1 :=
+  exists_peel_finset hπ hm hN c h0 L hL a ha
+
+/-- H.116b1 clause (ii), verbatim. -/
+example {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m N μ k : ℕ} {z : ResidueField O} (hm : 2 ≤ m) (hN : 1 ≤ N)
+    (c : ClusterState O m N) (h0 : ¬ IsDrainState c) (h : HasChildAt π c μ k z)
+    {b : Fin μ → O} (hb : ∀ i, b i ∈ maximalIdeal O) {Q : Polynomial O}
+    (hQ : Q.Monic) (hQdeg : Q.natDegree = m - μ)
+    {a : Fin m → O} (ha : proj O m N a = c.1)
+    (hfac : monicPoly a = alphaParent π b k (resSect O z) * Q)
+    (c' : ClusterState O (m - μ) N)
+    (hc' : proj O (m - μ) N (fun i : Fin (m - μ) => Q.coeff (i : ℕ)) = c'.1)
+    {μ' k' : ℕ} {z' : ResidueField O} (hne : ¬ (k' = k ∧ z' = z))
+    (h' : HasChildAt π c μ' k' z') :
+    ¬ IsDrainState c' ∧ betaContent c k' = μ * min k k' + betaContent c' k' ∧
+      ∃ h'' : HasChildAt π c' μ' k' z',
+        betaChild π c' h'' (N - betaContent c k') = betaChild π c h' (N - betaContent c k') :=
+  peel_cofactor_inherits hπ hm hN c h0 h hb hQ hQdeg ha hfac c' hc' hne h'
+
+end Pins
+
+/-! ## Axiom footprint (§0–§2) -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Induction.proj_eq_of_window_le
+#print axioms Uniformity.Density.Induction.cofactor_coeff_zero_ne_zero
+#print axioms Uniformity.Density.Induction.betaChild_proj_eq_of_factor
+#print axioms Uniformity.Density.Induction.exists_betaChild_lift
+#print axioms Uniformity.Density.Induction.peel_cofactor_inherits
+#print axioms Uniformity.Density.Induction.hasChildAt_mult_unique
+#print axioms Uniformity.Density.Induction.exists_peel_finset_aux
+#print axioms Uniformity.Density.Induction.exists_peel_finset
+
+end AxCheck

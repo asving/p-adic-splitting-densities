@@ -123,5 +123,8 @@ import Uniformity.ChapH.H115b
 import Uniformity.ChapH.H115c
 import Uniformity.ChapH.H116
 import Uniformity.ChapH.H116h
+import Uniformity.ChapH.H116bR
+import Uniformity.ChapH.H116b2
+import Uniformity.ChapH.H116b1
 import Uniformity.ChapH.H117
 import Uniformity.ChapH.H118
