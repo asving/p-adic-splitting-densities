@@ -76,6 +76,23 @@ read may discharge the obligation earlier per Part IV item 6's precedent).
 > location is now a conclusion (`attainer_in_class`), exactly as STATEMENT clause (i) promises.
 > Read A-E.4 before consuming E.29 (E.23's instance row and E.31's readout are its consumers).
 
+> **AMENDMENT BANNER 2026-08-16 (fourth) — E.55's SIGNED THEOREM WAS FALSE AND IS RE-SIGNED WITH
+> TWO FRAME DATA RESTORED.** The landing wave refuted `refine_chain_finite` at its committed type
+> TWICE, with independent machine-checked counterexamples in
+> `leanfinal/Uniformity/ChapE/E55.lean` (both over `(ZMod 2)⟦T⟧` with the fully-discharged `D = 1`
+> carrier `coeffZeroCarrier`): (1) `refine_chain_finite_false` — the committed signature puts NO
+> degree bound on the development coefficients `A j m`, while `hcoeff` converts heights into
+> coefficient valuations only below `C.D`, so `A j 0 = x² + x + T^{2j}` meets every floor with its
+> constant coefficient while its `x²`-part carries the whole discrepancy; (2)
+> `refine_chain_finite_boundedDev_false` — even with that patched, nothing bounds `deg Ψ` below, so
+> `Ψ = 0`, `F = 1` makes `(Ψ − W)^{μ₂}` a unit's power, which IS squarefree. **AMENDMENT A-E.5**
+> (end of file) re-signs E.55 with exactly two added binders — `hkey : C.D ≤ Ψ.natDegree` after
+> `hsq`, and `hAdeg : ∀ j m, (A j m).natDegree < C.D` after `A` — every other binder and the
+> conclusion byte-unchanged. Both are SOURCE data the stub dropped (`EFF.HE7.44`(c)(6) and
+> `DEFINITION HE7-1`, quoted in A-E.5); both are NECESSARY, machine-checked (each counterexample
+> satisfies the OTHER binder). PROVED, and the signed name is landed. Read A-E.5 before consuming
+> E.55 (its consumer E.52 takes termination as a hypothesis and does not move).
+
 ---
 
 ## 0. How to read this chapter
@@ -3776,10 +3793,19 @@ the E-side shell is a **Lean theorem** (thin by design).
 
 ### NODE E.55 [theorem] [fresh] — **HARD NODE**
 
+**⚠ RE-SIGNED BY AMENDMENT A-E.5 (2026-08-16) — READ IT WITH THIS NODE.** The committed signature
+was machine-refuted TWICE (defect E-D14: no degree bound on the development coefficients `A j m`;
+no lower bound on `deg Ψ`); the signed form below carries the two restored frame data `hkey` and
+`hAdeg`, everything else byte-unchanged, and is PROVED in `leanfinal/Uniformity/ChapE/E55.lean`.
+
 **STATEMENT.** *α-refine chains are finite (LEMMA HE7-8, (REF-TERM), characteristic-free).*
 Over the carrier with the coefficient link (see hypotheses): suppose an INFINITE chain of
-α-refines — keys `Ψ^{(0)} = Ψ`, `Ψ^{(j+1)} = Ψ^{(j)} − w_j` with `deg w_j < D″`,
+α-refines — keys `Ψ^{(0)} = Ψ` *[re-signed: A-E.5 — `Ψ` is THE KEY, so `deg Ψ ≥ D″`
+(`DEFINITION HE7-1`: monic of degree `D″`); the committed signature omitted this and was FALSE]*,
+`Ψ^{(j+1)} = Ψ^{(j)} − w_j` with `deg w_j < D″`,
 `hgt w_j = λ^{(j)}` STRICTLY increasing integers, each step at a node whose development
+*[re-signed: A-E.5 — a development IN POWERS OF THE KEY, so `deg A_m^{(j)} < D″`
+(`EFF.HE7.44`(c)(6)); likewise omitted, and likewise fatal]*
 satisfies the single-side floor `hgt (A_m^{(j)}) ≥ (μ₂ − m)·λ^{(j)}` for every `m < μ₂` — and
 `μ₂ ≥ 2`. Then `F = (Ψ − W)^{μ₂}` for the π-adic limit `W` of the partial sums, so `F` is not
 squarefree over the fraction field — contradiction. Hence every α-refine chain is finite. "The
@@ -3799,11 +3825,22 @@ theorem refine_chain_finite {O : Type*} [CommRing O] [IsDomain O]
     -- (hOcoeff abbreviates the O-valuation read into WithTop ℤ; see NOTE)
     {F Ψ : Polynomial O} {μ₂ : ℕ} (hμ : 2 ≤ μ₂)
     (hsq : Squarefree (F.map (algebraMap O (FractionRing O))))
+    -- [re-signed: A-E.5] ADDED.  `Ψ` is the key, monic of degree `D″ = C.D`
+    -- (`DEFINITION HE7-1`; preserved along the chain by `EFF.HE7.44`).  Without it `Ψ` may be
+    -- constant, `(Ψ − W)^{μ₂}` a unit's power, and the committed statement is FALSE
+    -- (`refine_chain_finite_boundedDev_false`).  Only the `≤` half is taken.
+    (hkey : C.D ≤ Ψ.natDegree)
     (w : ℕ → Polynomial O) (lam : ℕ → ℤ)
     (hdeg : ∀ j, (w j).natDegree < C.D * μ₂)     -- deg < D″; see NOTE on D″
     (hh : ∀ j, C.hgt (w j) = (lam j : WithTop ℤ))
     (hmono : StrictMono lam)
     (A : ℕ → ℕ → Polynomial O)
+    -- [re-signed: A-E.5] ADDED.  The `A j m` are the development coefficients IN POWERS OF THE
+    -- KEY, hence of degree `< D″` (`EFF.HE7.44`(c)(6)) — which is exactly `(SLOT₂)`'s own
+    -- hypothesis (`EFF.HE7.11`: "Let C ∈ O[x] with deg C < D″"), and exactly the side condition
+    -- `hcoeff` carries.  Without it the floors constrain nothing above the carrier's window and
+    -- the committed statement is FALSE (`refine_chain_finite_false`).
+    (hAdeg : ∀ j m, (A j m).natDegree < C.D)
     (hdev : ∀ j, F = (Ψ - ∑ i ∈ Finset.range j, w i) ^ μ₂
       + ∑ m ∈ Finset.range μ₂, A j m * (Ψ - ∑ i ∈ Finset.range j, w i) ^ m)
     (hfloor : ∀ j, ∀ m < μ₂, ((μ₂ - m : ℕ) : ℤ) * lam j ≤ … )  -- cleared floor; NOTE
@@ -3821,8 +3858,22 @@ made explicit at stub time. (c) `hfloor`'s right side is `hgt (A j m)` cleared i
 `((μ₂ - m : ℕ) : ℤ) • (lam j) ≤ C.hgt (A j m)`-shaped. None of the three calls changes the
 theorem's strength; each is flagged in §12.
 
+**⚠ THE SIGNATURE NOTE'S BLIND SPOT, RECORDED** *[added: A-E.5]*. All three spelling calls above
+are about how to WRITE hypotheses this node already had. The defect was a hypothesis this node
+never had: the frame data `deg A_m < D″` and `deg Ψ = D″` are carried in the source by the WORDS
+"development in powers of the key" and "key", and a signature that names `A` as a bare
+`ℕ → ℕ → Polynomial O` and `Ψ` as a bare `Polynomial O` silently drops both. Neither the stub gate
+nor the TEETH could see it — the statement elaborates cleanly and the numerics never generate an
+over-degree `A_m`. **Transferable rule: when a signature replaces a named object of the source
+(the key, its development) by a bare function or polynomial, the object's defining degree/shape
+data are hypotheses, and their absence is a defect.**
+
 **DEPENDS.** E.10 (heights), E.38 (`slot_fold` for the partial sums' heights) · mathlib
 `IsAdicComplete`, `Polynomial.coeff` limits, `Squarefree`.
+*[added: A-E.5 — the landed proof does NOT use E.38: the increments' coefficients are handled one
+at a time through `hcoeff`, never folded. The edge is removable; it is RETAINED here and in
+`spec/DAG_BLUEPRINT_E.tsv` (no edge changes at this amendment), recorded so the §12 census and a
+future DAG pass are not surprised.]*
 
 **PROOF (the corpus's, in Lean steps).**
 1. Partial sums `W_j` converge coefficientwise: for each coefficient index `i`, the tail
@@ -3831,16 +3882,27 @@ theorem's strength; each is flagged in §12.
    `maximalIdeal`-adic topology; `IsAdicComplete` gives limits; assemble `W` (degree `< D″`,
    coefficientwise).
 2. The floors force `A j m → 0` coefficientwise (same mechanism through `hfloor`).
+   *[re-signed: A-E.5 — and this is where `hAdeg` is consumed: "same mechanism" IS `hcoeff`, whose
+   hypothesis is `natDegree < C.D`. Steps 1–2 use `hAdeg` and NOT `hkey`.]*
 3. Pass to the limit in `hdev` at each fixed polynomial coefficient (all sums are finite in
    each coefficient): `F = (Ψ − W)^{μ₂}`.
 4. `μ₂ ≥ 2` makes `(Ψ − W)^{μ₂}`'s image not squarefree
    (`Squarefree` fails on `p^k, k ≥ 2, p` nonunit — mathlib `Squarefree.pow`-contrapositive /
    `sq_dvd`); contradiction with `hsq`.
+   *[re-signed: A-E.5 — "`p` nonunit" is the load-bearing side condition the committed statement
+   could not supply, and `hkey` is what supplies it: `deg W < C.D ≤ deg Ψ` gives
+   `deg (Ψ − W) = deg Ψ ≥ C.D > 0`, so the image has positive degree in the fraction field and is
+   not a unit. Step 4 uses `hkey` and no other added datum.]*
 
 **SIZE.** 60 lines. **SPLIT-MANDATED ×3:** `E55a` (step 1, the coefficientwise completeness
 limit — reusable), `E55b` (step 3, the limit-passing in a polynomial identity), `E55` (the
 assembly + step 4). This is the chapter's hardest genuinely-provable node; claim it early
 (the CHAP-H H.60/H.70 scheduling lesson).
+*[landed: A-E.5 — as TWO files, not three. `E55a.lean` carries steps 1 AND 3 (`exists_limit_key`:
+the limit-passing cannot be stated without the limit it passes to, so splitting them would have
+forced a bespoke intermediate statement), `E55.lean` carries step 4 + assembly + the two
+refutations. `E55b` has no file. Recorded so §12's declaration census is not surprised.
+`exists_limit_key` needs `hAdeg` but NEITHER `hkey` NOR `2 ≤ μ₂`.]*
 
 **SOURCE.** `EFF.HE7.53` (LEMMA HE7-8, statement + proof verbatim — the convergence argument
 is the source's own: "dv₂(A) → ∞ forces the Φ′-development coefficients of A, hence its
@@ -4624,7 +4686,11 @@ land; the 0e type diff for E.07/E.60 is EXPECTED to differ and the blueprint is 
    the leanspec stub is re-signed at the attained-value `hatt` at E.29's landing, per the same
    "re-signed when their nodes land" rule that governs E.07/E.60]*;
 5. E.55 `refine_chain_finite` (the `hcoeff`/`hOcoeff`/`hfloor` spellings — three stub-stage
-   calls, none strength-changing) — executed, no strength change;
+   calls, none strength-changing) — executed, no strength change; *[re-signed: A-E.5 — but the
+   gate's clean bill covered only the SPELLINGS. E.55's committed hypothesis SET was FALSE
+   (E-D14, two independent machine-checked counterexamples), and the stub is re-signed at E.55's
+   landing with `hkey` and `hAdeg` added, per the same "re-signed when their nodes land" rule
+   that governs E.07/E.29/E.60]*;
 6. E.45/E.49 (the `FactorizationType` anonymous-constructor compatibility — 0e type-diff
    against the landed twin) — **the constructor is compatible; the NAME was wrong (E-D8):
    `Uniformity.FactorizationType`**;
@@ -4931,6 +4997,13 @@ its committed type (the truncating `ℕ`-division in `hatt` admits an out-of-cla
 re-signed with `hatt` at the ATTAINED VALUE; conclusion and every other binder byte-unchanged,
 PROVED, class location derived. No consumer signature moves (E.31 supplies the new `hatt` from
 its own construction).
+**LANDING-WAVE RE-SIGN 2026-08-16: AMENDMENT A-E.5** — E.55's `refine_chain_finite` was refuted at
+its committed type TWICE (no degree bound on the development coefficients `A j m`; no lower bound
+on `deg Ψ`) and is re-signed with `hkey : C.D ≤ Ψ.natDegree` and
+`hAdeg : ∀ j m, (A j m).natDegree < C.D` added — both SOURCE frame data, both machine-checked
+NECESSARY and independent; conclusion and every other binder byte-unchanged, PROVED, signed name
+landed. No consumer signature moves (E.52 takes termination as its `hterm` hypothesis). Landed as
+two files (`E55a` + `E55`), not the mandated three.
 
 <!-- RESUME: CHAPTER COMPLETE; STAGE-0e GATE CLOSED AND REPAIRED (amendment A-E.1, 2026-08-16).
 Remaining external actions: (i) orchestrator GC-13/GC-14 resolution pass (types the four
@@ -5655,5 +5728,178 @@ reader does not "simplify" the signature by deleting them.
   to lose. Against candidate 2 the adopted form is the weaker-hypothesis (stronger) statement: it
   assumes attainment of the value and PROVES the class location, where candidate 2 assumes the
   class location. Nothing else in the chapter is weakened; no consumer's hypotheses change.
+
+## AMENDMENT A-E.5 (2026-08-16, dated append) — E.55 `refine_chain_finite`: REFUTED TWICE AT THE COMMITTED TYPE; RE-SIGNED WITH THE TWO FRAME DATA RESTORED
+
+**Provenance.** The chapter-E landing wave, landing node E.55 in
+`leanfinal/Uniformity/ChapE/E55.lean` (defect **E-D14**, queue note
+`leanfinal/notes/E55_DEFECT_E-D14_2026-08-16.md`, commits `e50bfa0c` (E55a) / `a7d2363a` /
+`4429a2d2`), **refuted the node's signed theorem at its committed type with TWO independent
+machine-checked counterexamples**, WITHHELD the refuted name from the environment (the H.71 /
+E.36 / E.29 discipline: nothing false is ever declared), and landed the corpus's lemma PROVED
+under a non-signed name. This block is the adjudication: the signed contract gains exactly the two
+binders the refutations demand, and the signed name now lands over it. Same convention as
+A-E.1/A-E.3/A-E.4 — node text repaired in place with `[re-signed: A-E.5]` / `[added: A-E.5]` tags,
+superseded text stays visible, nothing deleted.
+
+**The refuted original** (the committed SIGNATURE as the stage-0e stub spelled it — the blueprint
+display's three elisions resolved, which is the form `leanspec/Leanspec/ChapE.lean` carried until
+this amendment; it is reproduced here because the refutations are refutations OF IT):
+
+    theorem refine_chain_finite {O : Type*} [CommRing O] [IsDomain O]
+        [IsDiscreteValuationRing O] [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+        {K : Type*} [Field K] (C : SlotCarrier O K)
+        (hcoeff : ∀ (A : Polynomial O) (v : ℤ), A.natDegree < C.D →
+          (v : WithTop ℤ) ≤ C.hgt A → ∀ i,
+            (v : WithTop ℤ) ≤ (IsDiscreteValuationRing.addVal O (A.coeff i)).map
+              (fun n : ℕ => (n : ℤ)))
+        {F Ψ : Polynomial O} {μ₂ : ℕ} (hμ : 2 ≤ μ₂)
+        (hsq : Squarefree (F.map (algebraMap O (FractionRing O))))
+        (w : ℕ → Polynomial O) (lam : ℕ → ℤ)
+        (hdeg : ∀ j, (w j).natDegree < C.D)
+        (hh : ∀ j, C.hgt (w j) = (lam j : WithTop ℤ))
+        (hmono : StrictMono lam)
+        (A : ℕ → ℕ → Polynomial O)
+        (hdev : ∀ j, F = (Ψ - ∑ i ∈ Finset.range j, w i) ^ μ₂
+          + ∑ m ∈ Finset.range μ₂, A j m * (Ψ - ∑ i ∈ Finset.range j, w i) ^ m)
+        (hfloor : ∀ j, ∀ m < μ₂,
+          (((((μ₂ - m : ℕ) : ℤ) * lam j : ℤ)) : WithTop ℤ) ≤ C.hgt (A j m)) :
+        False
+
+### The two refutations (the wave's, preserved; machine-checked legs named)
+
+**The shared frame.** `O = CexRing = (ZMod 2)⟦T⟧` — a complete DVR of characteristic 2, chosen
+because mathlib supplies ALL FOUR instances the committed binders demand (`CommRing`, `IsDomain`,
+`IsDiscreteValuationRing`, `IsAdicComplete (maximalIdeal ·) ·`), so neither refutation is vacuous
+for want of a model. `K = ZMod 2`. `C = coeffZeroCarrier CexRing` — the `D = 1` slot carrier with
+`hgt A := addVal (A.coeff 0)` read into `WithTop ℤ` and `dig A := [A.coeff 0 ≠ 0]`; **every**
+`SlotCarrier` field is discharged in the file. Increments `w i = T^i(1 + T)`, of height exactly
+`λ_i = i` (`cex_hh`), degree `0 < 1 = C.D`, slopes `cexSlope i = i` strictly increasing. Both
+refutations are stated at `Type` rather than the signed `Type*`, which is the STRONGER claim (the
+universe-polymorphic form instantiates at `Type`). Lean-core axioms only.
+
+1. **`refine_chain_finite_false` — the committed statement, FALSE.** Take `Ψ = x`, `F = x + 1`
+   (degree 1, hence squarefree over `FractionRing`), `μ₂ = 2`, and
+   `A j 0 = x² + x + T^{2j}`, `A j 1 = 0`. The development identity holds for EVERY `j`
+   (`cex_hdev`: `x + 1 = (x − (1 + T^j))² + (x² + x + T^{2j})`, char 2), and the floors are met —
+   with EQUALITY at `m = 0`, since `hgt (A j 0)` reads the constant coefficient `T^{2j}`, of
+   height `2j = (μ₂ − 0)·λ_j`. Every committed hypothesis holds; `False` does not.
+2. **`refine_chain_finite_boundedDev_false` — patching hole 1 alone is STILL false.** Same
+   carrier and increments, `Ψ = 0`, `F = 1`, `A j 0 = T^{2j}` (a constant, so the added
+   `hAdeg` HOLDS), `A j 1 = 0`. Development: `1 = (0 − (1 + T^j))² + T^{2j}`.
+
+### Where the committed statement broke (the diagnosis)
+
+**Hole 1.** `hcoeff` — the carrier's coefficient link, and the ONLY bridge from heights to `O`-
+coefficient valuations — is guarded by `A.natDegree < C.D`. The committed signature lets the
+development coefficients `A j m` have ANY degree. A carrier whose `hgt` reads a bounded window of
+coefficients (and `coeffZeroCarrier` is a legitimate one) therefore lets `A j m` hide an
+arbitrarily large part ABOVE the window: the floors are satisfied by the visible part while the
+hidden part carries the whole discrepancy, the partial sums need not converge to anything, and `F`
+need not be a `μ₂`-th power.
+
+**Hole 2.** Nothing bounds `deg Ψ` from below, so `Ψ − W` may be a UNIT in the fraction field —
+and a unit's `μ₂`-th power IS squarefree. Step 4 then has nothing to contradict. The corpus's
+"`Squarefree` fails on `p^k`" needs `p` a nonunit, and that side condition is exactly what the
+key's degree supplies.
+
+Both are **signature defects, not mathematical ones**: the corpus proof goes through unchanged
+once the data are restored. And both were invisible to every gate we run — the statement
+ELABORATES cleanly (so the stage-0e stub gate passes it), and the TEETH (Q1's 42 one-step refines,
+PE2's 2-step chains, `he7annex_supp.py` P4's 48/48 wrong-continuation cycles) sample real reads,
+whose `A_m` are development coefficients by construction, so they never produce the pathological
+input. **The general lesson is recorded at the node** (§8, the SIGNATURE-NOTE blind-spot box):
+when a signature replaces a NAMED object of the source — here "the key" and "its development" — by
+a bare `Polynomial O` / `ℕ → ℕ → Polynomial O`, that object's defining degree data become
+hypotheses, and their absence is a defect.
+
+### The source decides, and it supplies both binders verbatim
+
+**`hAdeg : ∀ j m, (A j m).natDegree < C.D`.** `EFF.HE7.53`'s own proof invokes `(SLOT₂)` on the
+development coefficients (verbatim):
+
+> “Now dv₂(A) → ∞ forces the Φ′-development coefficients of A, hence its O-coefficients, to
+> converge π-adically to 0 (**by (SLOT₂)**: dv₂(A) = min_s(ℓ dv(c_s) + su), so every dv(c_s) → ∞,
+> so every v of every O-coefficient → ∞).”
+
+and `(SLOT₂)` (`EFF.HE7.11`) is stated WITH the degree bound as its first hypothesis (verbatim):
+
+> “**(SLOT₂) [PROVED, §S3].** Let C ∈ O[x] with **deg C < D″** and let C = Σ_{s<ℓd_r} c_s·Φ′^{s}
+> (deg c_s < D′) be its Φ′-development. Then at **every** level-2 point ξ, dv₂(C(ξ)) =
+> min_{s<ℓd_r} ( ℓ·dv(c_s) + s·u ) EXACTLY,”
+
+while the `A_m` satisfy it by construction — `EFF.HE7.44` (LEMMA HE7-12) clause (c), transfer
+item (6), verbatim:
+
+> “(6) LEMMA HE7-7′/COROLLARY HE7-7″: the developments in powers of the monic degree-D″ polynomial
+> Ψ^{(w)} have **coefficients of degree < D″**, so (SLOT₂) applies to them; the congruence argument
+> uses gcd(u₂, ℓ₂) = 1 only.”
+
+In Lean, `hcoeff` IS the transcription of that `(SLOT₂)` implication, and it carries the same
+`natDegree < C.D` side condition; `hAdeg` is `deg A_m^{(2,j)} < D″` at `C.D = D″`. **The committed
+signature asserted `hcoeff` and then applied it, through `hfloor`, to objects it had not required
+to satisfy `hcoeff`'s hypothesis. That is the whole of hole 1.**
+
+**`hkey : C.D ≤ Ψ.natDegree`.** The key's degree is part of its definition — `DEFINITION HE7-1`
+(`EFF.HE7.06`), verbatim:
+
+> “* **the order-2 key** Ψ := Ψ_{λ,r} of DEFINITION HE6-1, **monic of degree D″ := D′ℓd_r**;
+> *never assumed irreducible*;”
+
+and it is preserved along a refine chain — `EFF.HE7.44`, verbatim: “*Put Ψ^{(w)} := Ψ − w, **monic
+of degree D″***”, restated inside that lemma's item (11) as “*deg Ψ^{(w)} = D″*”. `C.D` is the
+carrier's `D`, documented at E.10 as “*the current key degree `D > 0`*”, so the source datum is
+`Ψ.natDegree = C.D`; **the binder takes only the `≤` half** — all step 4 consumes — and is
+therefore strictly weaker than the source's equality and cannot over-assume.
+
+### Necessity and independence — machine-checked, not argued
+
+Neither binder is removable, and neither is a shadow of the other:
+
+* refutation 1 **satisfies `hkey`** — its `Ψ = x` has `natDegree 1 = C.D`, checked in-file as its
+  own `example : (coeffZeroCarrier CexRing).D ≤ ((X : Polynomial CexRing)).natDegree` — so the
+  committed statement is false even for callers who could supply `hkey`;
+* refutation 2 **satisfies `hAdeg`** — the hypothesis appears IN the refuted ∀-statement, so its
+  discharge (`cex_hAdeg'`) is part of the machine-checked refutation itself.
+
+So the repaired hypothesis set is minimal in the only sense available: drop either added binder and
+a machine-checked counterexample to the remainder is already in the environment.
+
+### Consumers: nothing moves
+
+* **E.52 `he7a_prime_schema`** takes termination as its own hypothesis `hterm`; unaffected.
+* **E.56** (`same_digit_rises` + `chain_invariant`, landed the same day at its committed
+  signatures) is the supplier of `hmono` — exactly what the repaired E.55 consumes; unaffected.
+* **§14 cross-read item 6** (the HE7-12/HE7-13 mutual induction) is unaffected.
+* **`(SEC-RANK)`'s row in §9's obligation table** (E.55 in well-foundedness form, `EFF.T2.26` /
+  `EFF.T2.52`) reads the node's conclusion, which is byte-unchanged.
+* **DAG.** No edge changes at this amendment. Recorded for a future pass: the landed proof does not
+  use E.38 (`slot_fold`) — the increments' coefficients are handled one at a time through `hcoeff`
+  — so `BP.E.55 → BP.E.38` is a removable proof-dep edge. The node's DEPENDS field carries the same
+  note.
+
+### Evidence and disposition
+
+* **Landed:** `leanfinal/Uniformity/ChapE/E55.lean` — `refine_chain_finite` (the SIGNED NAME, at
+  the A-E.5 type), `refine_chain_finite_of_key` (the same statement under its adjudication-era
+  name, carrying the proof), `refine_chain_finite_false` and
+  `refine_chain_finite_boundedDev_false` (kept as provenance), plus the refuting instance data
+  (`coeffZeroCarrier` and its discharged laws, `cexIncr`, `cexSlope`, `cexDev`, `cexDev'`).
+  `lake build Uniformity.ChapE.E55` green, zero `sorry`,
+  `#print axioms` = `[propext, Classical.choice, Quot.sound]` for all five printed declarations.
+* **Landed (the split's first piece):** `leanfinal/Uniformity/ChapE/E55a.lean` —
+  `exists_limit_key`, PROVED, which needs `hAdeg` but NEITHER `hkey` NOR `2 ≤ μ₂`. Steps 1 and 3
+  of the corpus proof; `E55b` has no file (see the node's SIZE field).
+* **Re-signed:** `leanspec/Leanspec/ChapE.lean`'s `refine_chain_finite` stub, at the A-E.5 type,
+  with the committed form preserved in its docstring and an entry in that file's RE-SIGN LOG;
+  `lake build Leanspec.ChapE` green.
+* **Not touched:** every other node and stub; the DAG (no edge changes); the node's ENVIRONMENT
+  (ENV-E2 + `[IsAdicComplete (maximalIdeal O) O]`); the conclusion (`False`) and every other
+  binder, byte-for-byte, in the committed order; the three stage-0e spelling calls, which stand.
+* **Strength ledger:** the committed statement was FALSE, so it had no strength to lose; against it
+  the signed form is the only honest reading. Against the SOURCE the signed form is WEAKER in
+  hypothesis than the frame it transcribes (`C.D ≤ Ψ.natDegree` where the source has equality), so
+  every instance the corpus can produce satisfies it. Nothing else in the chapter is weakened; no
+  consumer's hypotheses change.
 
 <!-- SENTINEL: BP-E END OF FILE -->
