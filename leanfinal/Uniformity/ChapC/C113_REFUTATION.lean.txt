@@ -1,0 +1,234 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapB.B13b
+import Uniformity.ChapB.B16
+import Uniformity.ChapB.B39b
+
+/-!
+# REFUTATION of the frozen A-C.1 signature of NODE C.113, clause (i) (`ht_depth_increase`)
+
+**This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` /
+`C111_C114_REFUTATION.lean.txt` convention: kept as `.lean.txt` so no build picks it up).
+To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapC/C113_REFUTATION.lean.txt /tmp/c113_counter.lean
+cd leanfinal && lake env lean /tmp/c113_counter.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only,
+2026-08-16 (Chapter-C fleet wave 11, agent 2).
+
+## What is refuted
+
+`ht_depth_increase`, the FIRST of the two declarations of NODE C.113's `[signed: A-C.1;
+split → 2]` signature (`blueprint/CHAP-C_tower_grammar.md` §11;
+`leanspec/Leanspec/ChapC.lean`), as frozen:
+
+```lean
+theorem ht_depth_increase {Φ : Polynomial O} (hΦ : IsKey Φ) {G : Polynomial O} {m s : ℕ}
+    (hm : 0 < m) (hpins : ∀ j < m, (((m - j) * s + 1 : ℕ) : ℕ∞) ≤ npHgt Φ G j)
+    (htop : npHgt Φ G m = (0 : ℕ∞))
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hne : (sideSet Φ G u ℓ).Nonempty) :
+    ℓ * s < u
+```
+
+**It is FALSE.**  The defect is that `hne` is a VACUOUS hypothesis, and the repo already
+contains the proof that it is: `sideSet_nonempty_gen` (landed, `Uniformity/ChapB/B39b.lean:679`)
+says
+
+```lean
+theorem sideSet_nonempty_gen (φ f : Polynomial O) (u ℓ : ℕ) : (sideSet φ f u ℓ).Nonempty
+```
+
+— UNCONDITIONALLY, for every `φ`, `f`, `u`, `ℓ`.  `suppVal` is an `inf` over the nonempty range
+`Finset.range (f.natDegree + 1)`, hence attained, and `sideSet` collects the attaining
+abscissae; so "the `(u,ℓ)`-side is nonempty" carries no information whatever.  (B.18's landed
+`sideSet_nonempty` says the same thing and its own docstring says so in as many words: *"the
+four signed hypotheses … are not consumed: attainment of an `inf` over the nonempty range … is
+unconditional"*.)
+
+Stripped of `hne`, the frozen statement asserts `ℓ * s < u` for EVERY direction `(u, ℓ)` with
+`ℓ > 0` — including directions that support the polygon only at its top vertex.  It therefore
+fails at the smallest possible witness.
+
+## The counterexample
+
+`Φ = G = X` over any DVR `O`, with `m = 1`, `s = 1`, `u = 1`, `ℓ = 1`:
+
+* `IsKey X` — the standing D9 private copy (`isKey_X`, as in C.04/C.12/C.19/C.22/C.44);
+* `hpins` at the only index `j = 0`: `dev X X 0 = X %ₘ X = 0`, so `npHgt X X 0 = ⊤`, and
+  `((1 − 0)·1 + 1 : ℕ) = 2 ≤ ⊤`;
+* `htop`: `npHgt X X 1 = 0` by the landed `npHgt_top` (B.13b), since `X` is monic of degree
+  `1 = 1 · deg X`;
+* `hℓ`: `0 < 1`;
+* `hne`: `sideSet_nonempty_gen`.
+
+Conclusion demanded: `ℓ * s = 1 < 1 = u`.  False.
+
+**The two hypotheses a reader would reach for first do NOT repair it.**  This witness has
+`0 < u` and `Nat.Coprime u ℓ` (both `= 1`), so adding positivity of `u`, or coprimality of
+`(u, ℓ)`, or both, leaves the statement false.  The polygon here is the single point `(1, 0)`
+(abscissa `0` carries no development coefficient at all), so EVERY direction's support set is
+the singleton `{1}` — the top vertex — and no direction is a genuine side.
+
+## The designed repair (PROVED below)
+
+The blueprint's own intent is the convexity leg *"every attained side slope of a
+conservative-cell member is `> s`"* — a statement about a genuine SIDE, i.e. one with a support
+point strictly below the top abscissa `m`.  Making exactly that explicit repairs the statement,
+and `ht_depth_increase_repaired` below proves the repaired form:
+
+* replace `hne : (sideSet Φ G u ℓ).Nonempty` by a NAMED support point below the top,
+  `{j : ℕ} (hj : j ∈ sideSet Φ G u ℓ) (hjm : j < m)`;
+* add the chapter's standing full-degree hypothesis `hdeg : G.natDegree = m * Φ.natDegree`
+  (already carried by `htCell` (C.108) and by C.110's `hGdeg`), which is what puts the top
+  abscissa `m` inside the index range of the `inf` defining `suppVal`.
+
+The proof is four lines of content: `suppVal ≤ (value at m) = u·m` by `Finset.inf_le` and
+`htop`; the on-side equation at `j` turns that into `ℓ·((m−j)s + 1) + u·j ≤ u·m` in `ℕ`; and
+with `d = m − j ≥ 1` that is `ℓ·s·d + ℓ ≤ u·d`, hence `ℓ·s·d < u·d`, hence `ℓ·s < u`.  Note
+`hm : 0 < m` becomes redundant under the repair (it follows from `hjm : j < m`); it is kept in
+the signature below for a minimal diff against the frozen form.
+
+**Not proved here, and left to the re-sign:** the alternative fence `2 ≤ (sideSet Φ G u ℓ).card`
+(C.108's `IsSide` genuineness) should also imply the repaired hypothesis, since under `hdeg` no
+abscissa above `m` carries a development coefficient, so every support point of a finite
+support value is `≤ m` and two of them cannot both be `m`.  That implication needs the
+"development vanishes above the top" lemma and is NOT established in this file — a re-sign that
+prefers the `card` form must supply it.
+
+## Consequence for the node
+
+NODE C.113 clause (i) is **BLOCKED** as frozen: a refuted signature must not be landed, and it
+must not be landed in a weakened form either.  Clause (ii) (`ht_leaf_certified`) is untouched by
+this file and is not assessed here.  The re-sign belongs to the amendment stream that owns
+`blueprint/` and `leanspec/` (A-C.3's target class, the same treatment C.109 and C.111 received
+at A-C.2); this agent touched only `leanfinal/`.
+-/
+
+set_option linter.style.longLine false
+
+namespace Uniformity.Density.Tower
+
+open Uniformity Uniformity.Density Uniformity.Density.Leaf Polynomial
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+/-! ## 1. The frozen clause (i), packaged -/
+
+/-- The frozen C.113 clause-(i) signature (`ht_depth_increase`), as a `Prop`. -/
+def C113Clause1Frozen (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] : Prop :=
+  ∀ (Φ : Polynomial O), IsKey Φ → ∀ (G : Polynomial O) (m s : ℕ), 0 < m →
+    (∀ j < m, (((m - j) * s + 1 : ℕ) : ℕ∞) ≤ npHgt Φ G j) →
+    npHgt Φ G m = (0 : ℕ∞) → ∀ u ℓ : ℕ, 0 < ℓ →
+    (sideSet Φ G u ℓ).Nonempty → ℓ * s < u
+
+/-! ## 2. The witness `Φ = G = X` -/
+
+/-- **D9 private copy.** The order-0 key `X` is an order-1 key in B.01's sense (C.04's copy;
+private declarations are not importable, hence re-declared). -/
+private theorem isKey_X : IsKey (Polynomial.X : Polynomial O) where
+  monic := Polynomial.monic_X
+  pos := by simp
+  irred := by
+    rw [Polynomial.map_X]
+    exact Polynomial.irreducible_X
+
+set_option linter.unusedSectionVars false in
+/-- `X`'s own `X`-adic development has no constant coefficient. -/
+private theorem dev_X_X_zero : dev (X : Polynomial O) X 0 = 0 := by
+  show (X : Polynomial O) %ₘ X = 0
+  exact Polynomial.modByMonic_self Polynomial.monic_X
+
+/-- so abscissa `0` carries no polygon point at all. -/
+private theorem npHgt_X_X_zero : npHgt (X : Polynomial O) X 0 = ⊤ :=
+  gaussVal_eq_top_iff.2 dev_X_X_zero
+
+/-- and the top abscissa `1` sits at height `0` (B.13b's `npHgt_top`). -/
+private theorem npHgt_X_X_one : npHgt (X : Polynomial O) X 1 = 0 :=
+  npHgt_top Polynomial.monic_X (by simp) Polynomial.monic_X (by simp)
+
+/-! ## 3. The refutation -/
+
+/-- **C.113 clause (i) as frozen is false.**  `Φ = G = X`, `m = s = u = ℓ = 1`: every hypothesis
+holds (`hne` free, by the landed unconditional `sideSet_nonempty_gen`) and the conclusion demands
+`1 < 1`.  The witness has `0 < u` and `Nat.Coprime u ℓ`, so neither of those extra hypotheses
+would repair the signature. -/
+theorem c113_clause1_frozen_false (H : C113Clause1Frozen O) : False := by
+  have hbad : 1 * 1 < 1 :=
+    H X isKey_X X 1 1 Nat.one_pos
+      (by
+        intro j hj
+        interval_cases j
+        simp [npHgt_X_X_zero])
+      npHgt_X_X_one 1 1 Nat.one_pos (sideSet_nonempty_gen _ _ _ _)
+  omega
+
+/-! ## 4. The designed repair, proved -/
+
+-- `hm : 0 < m` is redundant under the repair (it follows from `hjm : j < m`); kept for a
+-- minimal diff against the frozen signature.
+set_option linter.unusedVariables false in
+/-- **The repaired clause (i).**  With the genuine-side fence made explicit — a NAMED support
+point `j` of the `(u,ℓ)`-direction strictly below the top abscissa `m` — and the chapter's
+standing full-degree hypothesis `hdeg : G.natDegree = m * Φ.natDegree`, the depth-increase
+inequality `ℓ * s < u` holds.
+
+This is the statement the blueprint's clause (i) intends ("every attained side slope of a
+conservative-cell member is `> s`"), and it is what the A-C.3 re-sign can adopt verbatim. -/
+theorem ht_depth_increase_repaired {Φ : Polynomial O} (hΦ : IsKey Φ) {G : Polynomial O}
+    {m s : ℕ} (hm : 0 < m) (hdeg : G.natDegree = m * Φ.natDegree)
+    (hpins : ∀ j < m, (((m - j) * s + 1 : ℕ) : ℕ∞) ≤ npHgt Φ G j)
+    (htop : npHgt Φ G m = (0 : ℕ∞))
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) {j : ℕ} (hj : j ∈ sideSet Φ G u ℓ) (hjm : j < m) :
+    ℓ * s < u := by
+  classical
+  -- the top abscissa is inside the index range of the `inf` defining `suppVal`
+  have hmle : m ≤ G.natDegree := by
+    rw [hdeg]; exact Nat.le_mul_of_pos_right _ hΦ.pos
+  have hmem : m ∈ Finset.range (G.natDegree + 1) := Finset.mem_range.2 (by omega)
+  -- so the support value is at most the value at the top, which `htop` makes `u * m`
+  have hle : suppVal Φ G u ℓ ≤ ((u * m : ℕ) : ℕ∞) := by
+    have h := Finset.inf_le (f := fun k => ℓ • npHgt Φ G k + ((u * k : ℕ) : ℕ∞)) hmem
+    simpa [suppVal, htop] using h
+  have hjon : OnSide Φ G u ℓ j := (Finset.mem_filter.mp hj).2
+  set K : ℕ := (m - j) * s + 1 with hK
+  have hpin : ((K : ℕ) : ℕ∞) ≤ npHgt Φ G j := hpins j hjm
+  have hstep : ((ℓ * K : ℕ) : ℕ∞) ≤ ℓ • npHgt Φ G j := by
+    rw [Nat.cast_mul, nsmul_eq_mul]
+    gcongr
+  have hchain : ((ℓ * K : ℕ) : ℕ∞) + ((u * j : ℕ) : ℕ∞) ≤ ((u * m : ℕ) : ℕ∞) := by
+    have h1 : ((ℓ * K : ℕ) : ℕ∞) + ((u * j : ℕ) : ℕ∞)
+        ≤ ℓ • npHgt Φ G j + ((u * j : ℕ) : ℕ∞) :=
+      add_le_add_left hstep (((u * j : ℕ) : ℕ∞))
+    rw [hjon] at h1
+    exact le_trans h1 hle
+  -- everything in sight is finite, so the inequality descends to `ℕ`
+  have hnat : ℓ * K + u * j ≤ u * m := by
+    have hc : ((ℓ * K + u * j : ℕ) : ℕ∞) ≤ ((u * m : ℕ) : ℕ∞) := by
+      rw [Nat.cast_add]; exact hchain
+    exact_mod_cast hc
+  have hsplit : u * m = u * j + u * (m - j) := by
+    rw [← Nat.mul_add]; congr 1; omega
+  have h2 : ℓ * K ≤ u * (m - j) := by
+    rw [hsplit, Nat.add_comm (u * j) (u * (m - j))] at hnat
+    exact Nat.add_le_add_iff_right.mp hnat
+  -- `ℓ·((m−j)s + 1) = ℓ·s·(m−j) + ℓ`, and `ℓ > 0` makes the inequality strict
+  have heq : ℓ * K = ℓ * s * (m - j) + ℓ := by rw [hK]; ring
+  rw [heq] at h2
+  exact Nat.lt_of_mul_lt_mul_right (lt_of_lt_of_le (Nat.lt_add_of_pos_right hℓ) h2)
+
+end Uniformity.Density.Tower
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Tower.c113_clause1_frozen_false
+#print axioms Uniformity.Density.Tower.ht_depth_increase_repaired
+
+end AxCheck
