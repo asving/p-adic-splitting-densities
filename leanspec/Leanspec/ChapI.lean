@@ -571,10 +571,19 @@ file of their own. **At HEAD their binding targets are LANDED** (OM-9, 2026-08-1
 amendment A-W.2): `Uniformity.Density.Weld.JD0Box2` (F.04) with the strike ledger
 `JD0SiteStrike` and the proved fold half `JD0SiteStrike.jd0Box2`; `Weld.GenhnBox2` (F.11, clause
 (iv) structurally absent, the `μ ≥ 3` guard inside the `Prop`); `Weld.W1Transport` (F.12). The §4
-gate below elaborates all three at chapter I's consumption shape — so §9's items **L-1 and L-2
+gate below elaborates all three at chapter I's consumption shape — so §9's items ~~**L-1 and L-2
 are executable now**, which is exactly what makes I.10's `True` fields a defect (I-D7) rather
-than a wait. The conjuncts themselves are UNCHANGED: CARRY, and the OM-9 `w1` note (a typed
-instantiation discharges NOTHING of HYP.139) travels with them. -/
+than a wait~~.
+
+⛔ **STRUCK BY A-I.1 (I-D7/I-D8): L-1 and L-2 are NOT executable.** "Elaborates" is not
+"bindable": the shapes gate item (6) exhibits quantify over ALL sites, and gate item (13) PROVES
+one of them FALSE (`¬ ∀ (K ι) (Rh RG), W1Transport Rh RG`, at `Fin 1`/`ZMod 3`). A field at that
+shape would make the hypothesis block contradictory a second time, so the placeholders STAY and
+L-1/L-2's trigger is re-pointed at a weld site-supply socket (the I.10a pattern). The missing
+`w1` field is registered as a NAMED DEBT, to be bound with the other two.
+
+The conjuncts themselves are UNCHANGED: CARRY, and the OM-9 `w1` note (a typed instantiation
+discharges NOTHING of HYP.139) travels with them. -/
 
 /-! ### NODES I.10a / I.10b [def] [NEW at AMENDMENT A-I.1] — THE ARISING-CONFIGURATION SOCKETS
 
@@ -648,8 +657,12 @@ conditionality claim; forbidden"*, and I.10's own SIGNATURE block nevertheless s
 `jd0 : True` and `genhnBox2 : 6 ≤ n → True`. The structure is landed here at the SIGNED types so
 that the eight non-placeholder fields are type-checked against the landed corpus (which is what
 found I-D3, I-D4, I-D5 and I-D9); **no fleet agent may fire on I.10 until the owner re-signs the
-field list.** Since OM-9 the two `True` fields have real binding targets (F.04/F.11/F.12) — the
-gate below elaborates them — so the placeholders are STALE, not merely blocked.
+field list.** ~~Since OM-9 the two `True` fields have real binding targets (F.04/F.11/F.12) — the
+gate below elaborates them — so the placeholders are STALE, not merely blocked.~~ ⛔ **A-I.1
+corrects this**: the targets are landed but not BINDABLE at the exhibited shapes (gate item (13)
+refutes one of them), so the placeholders are blocked after all — on the weld site-supply socket,
+not on chapter F. And the defect that now dominates I.10 is I-D13, not I-D7: the eight
+NON-placeholder fields are the ones that make the block contradictory.
 
 ⚠ **THE `ladder` FIELD, RE-SIGNED AT AMENDMENT A-I.1 (defects I-D3 and I-D13).** Two halves:
 (i) the MECHANICAL half — the 0e gate found the signed `Ladder.LadderSupply C B` underapplied by
