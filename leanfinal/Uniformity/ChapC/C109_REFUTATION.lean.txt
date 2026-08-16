@@ -1,0 +1,179 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapB.B26
+import Uniformity.ChapC.C108
+
+/-!
+# REFUTATION of the frozen signature of chapter-C NODE C.109
+
+**This file is evidence, not a node.**  It is kept as `.lean.txt` (the repo's
+`lean/quarantine/*.lean.txt` convention for documented dead ends, followed at
+`leanfinal/Uniformity/ChapB/B39_REFUTATION.lean.txt`) so that it is never picked up by
+`Uniformity/ChapC.lean` or by a build.  To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapC/C109_REFUTATION.lean.txt /tmp/c109_counter.lean
+cd leanfinal && lake env lean /tmp/c109_counter.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only
+(`propext, Classical.choice, Quot.sound`), 2026-08-16.
+
+## What is refuted
+
+`leanspec/Leanspec/ChapC.lean`, **C.109** `ht_node_cell_card` (blueprint
+`CHAP-C_tower_grammar.md` NODE C.109, `[signed: A-C.1]`):
+
+```lean
+axiom ht_node_cell_card (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {Φ : Polynomial O} (hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
+    [Finite (resField Φ)]
+    (v : HTNode) (N : ℕ)
+    (hvis : ∀ j, j ≤ v.m → v.Pceil j < N) :
+    Nat.card {c : Coeff O (v.m * Φ.natDegree) N //
+        ∃ a : Fin (v.m * Φ.natDegree) → O,
+          proj O (v.m * Φ.natDegree) N a = c ∧ monicPoly a ∈ htCell π Φ v}
+      = Nat.card (resField Φ) ^ v.B N
+        * ∏ p ∈ v.sides, sideCensus (resField Φ) (v.sideType p.1 p.2)
+```
+
+The theorem `c109_frozen_false` below derives `False` from it at **any** complete DVR `O`
+with finite residue field, **any** uniformizer `π`, and **any** key `Φ` — i.e. the frozen
+statement fails in every model of its own binders, not merely in some exotic one.
+
+## Why it happens — the one-line diagnosis
+
+`htCell π Φ v` reads only `v.m`, `v.Pceil`, `v.sides`, `v.sideType` (C.108, verbatim):
+
+```lean
+def htCell (π : O) (Φ : Polynomial O) [IsDomain (resField Φ)]
+    [UniqueFactorizationMonoid (resField Φ)] (v : HTNode) : Set (Polynomial O) :=
+  {f | f.Monic ∧ f.natDegree = v.m * Φ.natDegree ∧
+    (∀ j, j ≤ v.m → npHgt Φ f j = (v.Pceil j : ℕ∞)) ∧
+    ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → (u, ℓ) ∈ v.sides → …}
+```
+
+It does **not** read `v.L`.  The right-hand side does: `v.B N = v.m * N − Σ_{j<m} v.Pceil j
+− v.L`.  So the two nodes
+
+* `vL 0 = ⟨m := 1, s := 0, Pceil := 0, L := 0, sides := ∅, sideType := ⟨0⟩, kappa := 1⟩`
+* `vL 1 = ⟨m := 1, s := 0, Pceil := 0, L := 1, sides := ∅, sideType := ⟨0⟩, kappa := 1⟩`
+
+have **the same left-hand side by `rfl`** (the counted subtype is literally the same type:
+`(vL 0).m = (vL 1).m = 1` and `htCell π Φ (vL 0) = htCell π Φ (vL 1)` definitionally) and
+right-hand sides `Q ^ 2 · 1` and `Q ^ 1 · 1` at `N = 2`, where `Q = Nat.card (resField Φ)`.
+The `hvis` side condition holds for both (`Pceil ≡ 0 < 2`).  Hence `Q ^ 2 = Q ^ 1`, while
+`Q = q ^ Φ.natDegree ≥ 2` by B.26's `card_resField` plus `two_le_residueCard` and
+`IsKey.pos`.  Contradiction.
+
+## The missing hypothesis (what a re-signature has to add)
+
+The blueprint's prose is correct and the Lean encoding lost it: *"each of the `L_v` integral
+boundary positions prices one digit by the residual"* — `L_v` is **determined by** `(m_v,
+P_v, sides_v)`, it is not free data.  `HTNode` carries `L` as an unconstrained field and
+C.109 quantifies over all `v : HTNode`, so the count law is asserted for nodes whose `L` is
+arithmetically inconsistent with their own polygon.  Any repair must add a
+well-formedness predicate — `HTNode.Consistent v : v.L = (the integral-boundary count of
+`v.Pceil` along `v.sides`)`, together with `v.sides = (the side set of the polygon pinned by
+`v.Pceil`)` — and take it as a hypothesis of the count law.  Note this also affects
+C.114/C.115, which consume `htBranchCount` over arbitrary `HTTree`s.
+
+## A second, deeper failure — recorded, NOT formalized here
+
+Pinning `L` numerically is *not enough*: `sides` must also be forced to be the genuine side
+set of the pinned polygon.  Take `m = 1`, `Pceil 0 = 2`, `Pceil 1 = 0`, `sides = ∅`, `N ≥ 4`.
+Then `f = monicPoly a` has `f /ₘ Φ = 1` and `f %ₘ Φ = f − Φ`, so the cell condition is
+exactly `gaussVal (f − Φ) = 2`; as `a` ranges over `Fin d → O` (`d = Φ.natDegree`), `f − Φ`
+ranges over all polynomials of degree `< d`.  Counting level-`N` classes:
+
+  LHS = Q^(N−2) − Q^(N−3) = Q^(N−3)·(Q−1),   RHS = Q^(N−2−L).
+
+`Q^(N−3)(Q−1)` is a power of `Q` only when `Q = 2` (`L = 1`).  So for every residual
+cardinality `Q ≥ 3` **no** value of `L` repairs this instance — the empty `sides` is the
+real defect there, and the census factor is load-bearing.  This paragraph is arithmetic,
+not machine-checked: formalizing it needs the level-`N` development↔coefficient-box bridge
+(`Coeff O (m·d) N ≃ Fin m → Coeff O d N` through `dev`, well defined by B.10), which does
+not exist in `leanfinal` yet and is the real cost of C.109.
+
+## Consequence for the node
+
+C.109 is **BLOCKED**, not weakened: the statement is frozen `[signed: A-C.1]` and is false,
+so it cannot be landed and must be re-signed by the blueprint author with the
+well-formedness hypothesis above.  C.110 is unaffected (it never mentions `HTNode`).
+-/
+
+set_option linter.style.longLine false
+
+namespace Uniformity.Density.Tower
+
+open Uniformity Uniformity.Density Uniformity.Density.Leaf IsLocalRing Polynomial
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+/-- The frozen C.109 signature (`leanspec/Leanspec/ChapC.lean`, `ht_node_cell_card`),
+packaged as a `Prop` over a fixed local base.  Every binder is the frozen one; only the
+implicit `{Φ}` is made explicit, which cannot change provability. -/
+def C109Frozen (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)] : Prop :=
+  ∀ (π : O), Irreducible π → ∀ (Φ : Polynomial O), IsKey Φ →
+    ∀ [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)] [Finite (resField Φ)]
+      (v : HTNode) (N : ℕ), (∀ j, j ≤ v.m → v.Pceil j < N) →
+      Nat.card {c : Coeff O (v.m * Φ.natDegree) N //
+          ∃ a : Fin (v.m * Φ.natDegree) → O,
+            proj O (v.m * Φ.natDegree) N a = c ∧ monicPoly a ∈ htCell π Φ v}
+        = Nat.card (resField Φ) ^ v.B N
+          * ∏ p ∈ v.sides, sideCensus (resField Φ) (v.sideType p.1 p.2)
+
+/-- the separating two-node family: identical in every field `htCell` reads, differing only
+in the field it does not read (`L`). -/
+def vL (L : ℕ) : HTNode := ⟨1, 0, fun _ => 0, L, ∅, fun _ _ => ⟨0⟩, 1⟩
+
+set_option linter.overlappingInstances false in
+/-- **The refutation.**  At any complete DVR with finite residue field, any uniformizer and
+any key, the frozen C.109 statement is contradictory. -/
+theorem c109_frozen_false [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
+    {π : O} (hπ : Irreducible π) {Φ : Polynomial O} (hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)] [Finite (resField Φ)]
+    (H : C109Frozen O) : False := by
+  classical
+  have hvis : ∀ (L : ℕ), ∀ j, j ≤ (vL L).m → (vL L).Pceil j < 2 := by
+    intro L j _; norm_num [vL]
+  have h0 := H π hπ Φ hΦ (vL 0) 2 (hvis 0)
+  have h1 := H π hπ Φ hΦ (vL 1) 2 (hvis 1)
+  -- the two counted subtypes are the SAME type: `htCell` never reads `L`
+  have hkey : Nat.card (resField Φ) ^ (vL 0).B 2
+        * ∏ p ∈ (vL 0).sides, sideCensus (resField Φ) ((vL 0).sideType p.1 p.2)
+      = Nat.card (resField Φ) ^ (vL 1).B 2
+        * ∏ p ∈ (vL 1).sides, sideCensus (resField Φ) ((vL 1).sideType p.1 p.2) :=
+    h0.symm.trans h1
+  have hB0 : (vL 0).B 2 = 2 := by simp [vL, HTNode.B]
+  have hB1 : (vL 1).B 2 = 1 := by simp [vL, HTNode.B]
+  have hs : (vL 0).sides = (∅ : Finset (ℕ × ℕ)) := rfl
+  have hs' : (vL 1).sides = (∅ : Finset (ℕ × ℕ)) := rfl
+  rw [hB0, hB1, hs, hs'] at hkey
+  simp only [Finset.prod_empty, mul_one, pow_one] at hkey
+  have hQ : 2 ≤ Nat.card (resField Φ) := by
+    rw [card_resField hΦ]
+    calc (2 : ℕ) = 2 ^ 1 := by norm_num
+    _ ≤ residueCard O ^ 1 := Nat.pow_le_pow_left (two_le_residueCard O) 1
+    _ ≤ residueCard O ^ Φ.natDegree :=
+        Nat.pow_le_pow_right (residueCard_pos O) hΦ.pos
+  have hpow : Nat.card (resField Φ) ^ 2 = Nat.card (resField Φ) ^ 1 := by
+    rw [pow_one]; exact hkey
+  have h21 : (2 : ℕ) = 1 := Nat.pow_right_injective hQ hpow
+  exact absurd h21 (by norm_num)
+
+end Uniformity.Density.Tower
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Tower.c109_frozen_false
+
+end AxCheck
