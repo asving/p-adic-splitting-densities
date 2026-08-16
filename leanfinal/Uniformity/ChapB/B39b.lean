@@ -704,7 +704,14 @@ theorem resMk_neg (hπ : Irreducible π) {φ : Polynomial O} {K : ℕ} {z : Poly
 is at least `c`, where `c` is at least the weight of `g*h`: there are corrections `U`, `V` inside
 the degree windows of `g`, `h` with `suppVal φ (e − (h*U + g*V)) u ℓ ≥ c + 1`.
 
-**`hc` is the A-F.10 repair**: without it the statement is false (`B39_REFUTATION_2.lean.txt`). -/
+**`hc` is the A-F.10 repair**: without it the statement is false (`B39_REFUTATION_2.lean.txt`).
+
+**The conclusion also records the two SPLIT weights** `c ≤ suppVal φ h u ℓ + suppVal φ U u ℓ` and
+`c ≤ suppVal φ g u ℓ + suppVal φ V u ℓ` — proof-free (the proof establishes them on the way to the
+product bounds `c ≤ suppVal φ (h*U) u ℓ`, `c ≤ suppVal φ (g*V) u ℓ`, which are what the error
+estimate consumes). They are load-bearing at B.41: its perturbation law `pure_add_of_lt` needs a
+weight bound on `U` **alone**, and superadditivity of `suppVal` makes the product bound useless for
+that; the split form gives `suppVal φ U u ℓ ≥ c − suppVal φ h u ℓ` by cancellation in `ℕ∞`. -/
 theorem exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h : Polynomial O}
     (hg : g.Monic) (hh : h.Monic)
@@ -714,6 +721,8 @@ theorem exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : Is
     (hc : suppVal φ (g * h) u ℓ ≤ ((c : ℕ) : ℕ∞))
     (he : ((c : ℕ) : ℕ∞) ≤ suppVal φ e u ℓ) :
     ∃ U V : Polynomial O, U.degree < g.degree ∧ V.degree < h.degree ∧
+      ((c : ℕ) : ℕ∞) ≤ suppVal φ h u ℓ + suppVal φ U u ℓ ∧
+      ((c : ℕ) : ℕ∞) ≤ suppVal φ g u ℓ + suppVal φ V u ℓ ∧
       ((c + 1 : ℕ) : ℕ∞) ≤ suppVal φ (e - (h * U + g * V)) u ℓ := by
   classical
   letI : Field (resField φ) := instFieldResField hφ
@@ -873,8 +882,7 @@ theorem exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : Is
     rw [Polynomial.degree_eq_natDegree hh.ne_zero, hhdeg]
     exact degree_resLift_lt hφ.monic hφ.pos hℓ repV hrepVdeg hrlt
   -- ## the two correction terms carry weight `c`
-  have hcU : ((c : ℕ) : ℕ∞) ≤ suppVal φ (h * U) u ℓ := by
-    refine le_trans ?_ (suppVal_add_le_suppVal_mul hπ hφ.monic hφ.pos hℓ u h U)
+  have hUw : ((c : ℕ) : ℕ∞) ≤ suppVal φ h u ℓ + suppVal φ U u ℓ := by
     have h2 : ((ℓ * HU + u * r : ℕ) : ℕ∞) ≤ suppVal φ U u ℓ :=
       le_suppVal_resLift hπ hφ.monic hφ.pos hℓ repU hslotsU
     rw [hhsupp]
@@ -886,8 +894,9 @@ theorem exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : Is
     calc ((c : ℕ) : ℕ∞) ≤ ((u * (ℓ * b) + (ℓ * HU + u * r) : ℕ) : ℕ∞) := by exact_mod_cast harith
       _ = ((u * (ℓ * b) : ℕ) : ℕ∞) + ((ℓ * HU + u * r : ℕ) : ℕ∞) := by push_cast; ring
       _ ≤ ((u * (ℓ * b) : ℕ) : ℕ∞) + suppVal φ U u ℓ := add_le_add le_rfl h2
-  have hcV : ((c : ℕ) : ℕ∞) ≤ suppVal φ (g * V) u ℓ := by
-    refine le_trans ?_ (suppVal_add_le_suppVal_mul hπ hφ.monic hφ.pos hℓ u g V)
+  have hcU : ((c : ℕ) : ℕ∞) ≤ suppVal φ (h * U) u ℓ :=
+    le_trans hUw (suppVal_add_le_suppVal_mul hπ hφ.monic hφ.pos hℓ u h U)
+  have hVw : ((c : ℕ) : ℕ∞) ≤ suppVal φ g u ℓ + suppVal φ V u ℓ := by
     have h2 : ((ℓ * HV + u * r : ℕ) : ℕ∞) ≤ suppVal φ V u ℓ :=
       le_suppVal_resLift hπ hφ.monic hφ.pos hℓ repV hslotsV
     rw [hgsupp]
@@ -899,6 +908,8 @@ theorem exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : Is
     calc ((c : ℕ) : ℕ∞) ≤ ((u * (ℓ * a) + (ℓ * HV + u * r) : ℕ) : ℕ∞) := by exact_mod_cast harith
       _ = ((u * (ℓ * a) : ℕ) : ℕ∞) + ((ℓ * HV + u * r : ℕ) : ℕ∞) := by push_cast; ring
       _ ≤ ((u * (ℓ * a) : ℕ) : ℕ∞) + suppVal φ V u ℓ := add_le_add le_rfl h2
+  have hcV : ((c : ℕ) : ℕ∞) ≤ suppVal φ (g * V) u ℓ :=
+    le_trans hVw (suppVal_add_le_suppVal_mul hπ hφ.monic hφ.pos hℓ u g V)
   -- ## the two line-digit identities
   have hLDU : ∀ t : ℕ, u * t ≤ Hs →
       resMk π φ (Hs - u * t) (dev φ (h * U) (r + ℓ * t)) = (U₀ * H).coeff t := by
@@ -939,7 +950,7 @@ theorem exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : Is
       rw [← hVdef] at this
       exact this
   -- ## the error's weight
-  refine ⟨U, V, hUdegree, hVdegree, ?_⟩
+  refine ⟨U, V, hUdegree, hVdegree, hUw, hVw, ?_⟩
   have hlineS : ((ℓ * Hs + u * r : ℕ) : ℕ∞) ≤ suppVal φ e u ℓ := by rw [hline]; exact he
   have hlineU : ((ℓ * Hs + u * r : ℕ) : ℕ∞) ≤ suppVal φ (h * U) u ℓ := by rw [hline]; exact hcU
   have hlineV : ((ℓ * Hs + u * r : ℕ) : ℕ∞) ≤ suppVal φ (g * V) u ℓ := by rw [hline]; exact hcV
