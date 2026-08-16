@@ -2666,7 +2666,12 @@ of a `ClusterState` automatically has coefficients in `𝔪` (the class lies in 
 and `𝔪 ^ N ⊆ 𝔪`), so `classSect` needs no `𝔪`-respecting refinement, and `alphaParent`'s
 coefficients depend on the lift only through its class mod `π ^ N`. The dependent index
 `{x // x ∈ L}` (rather than `∀ p ∈ L`) is deliberate: it is a `Fintype`, which is what makes
-the presentation space of H.116b4 finite. -/
+the presentation space of H.116b4 finite.
+
+LANDING SITE: **H.116b2** (the first sub-node in DAG order and the carrier's first consumer;
+H.116b1 does NOT use it — it factors a LIFT, so its product runs over lift families). It is
+written here, before the b1 stubs, only for readability. Namespace
+`Uniformity.Density.Induction`. -/
 noncomputable def plantedPoly {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     (π : O) {N r : ℕ} (L : Finset (ℕ × ℕ × ResidueField O))
     (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)

@@ -9765,13 +9765,8 @@ child there at the parent's window.
 ```lean
 namespace Uniformity.Density.Induction
 
--- The shared carrier (A-H.7 §1 of the leanspec block; lands with this node).
-noncomputable def plantedPoly {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
-    (π : O) {N r : ℕ} (L : Finset (ℕ × ℕ × ResidueField O))
-    (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
-    (Qc : ClusterState O r N) : Polynomial O :=
-  (∏ p ∈ L.attach, alphaParent π (classSect O p.1.1 N (bb p).1) p.1.2.1 (resSect O p.1.2.2))
-    * monicPoly (classSect O r N Qc.1)
+-- Note: this node does NOT use the shared carrier `plantedPoly` (§5) — it factors a LIFT, so
+-- the product is over lift families, not class families.  `plantedPoly` lands with H.116b2.
 
 theorem exists_peel_finset {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m N : ℕ}
@@ -9807,8 +9802,9 @@ theorem peel_cofactor_inherits {O : Type*} [CommRing O] [IsDomain O]
         betaChild π c' h'' (N - betaContent c k') = betaChild π c h' (N - betaContent c k')
 ```
 
-**DEPENDS.** **H.116b2** (clause (i) — the multiplicity-additivity that clause (ii) runs on;
-see §3 for why the edge points this way) · H.116 (clause (i) `betaChild_spec`, the def half) ·
+**DEPENDS.** **H.116b2** (clause (i) ONLY — the multiplicity-additivity that clause (ii) runs
+on; see §3 for why the edge points this way; the carrier `plantedPoly` is NOT consumed here) ·
+H.116 (clause (i) `betaChild_spec`, the def half) · H.115 (`resSect`/`classSect`) ·
 H.115b (`alphaParent` and its profile lemmas) · H.115c (`comp_recentre_injective`) · H.108,
 H.109, H.102 (the coprime split's `InjOn`, for the read clause) · **landed in
 `leanfinal/Uniformity/ChapH/H116bR.lean`**: `exists_peel` (§4), `level_recentre_mul_alphaParent`,
@@ -9878,6 +9874,19 @@ presentation `bb p` truncated to the genuine window.
 ```lean
 namespace Uniformity.Density.Induction
 
+-- The SHARED CARRIER of §§5–8, landing with THIS node (the first in DAG order, and the first
+-- consumer).  Presentations are indexed by CLASSES, not lifts, and that is sound: for `1 ≤ N`
+-- every lift of a `ClusterState` is automatically `𝔪`-valued (the class lies in the image of
+-- `𝔪` and `𝔪^N ⊆ 𝔪`), so `classSect` needs no `𝔪`-respecting refinement.  The dependent index
+-- `{x // x ∈ L}` rather than `∀ p ∈ L` is deliberate: it is a `Fintype`, which is what makes
+-- H.116b4's presentation space finite and `Nat.card` meaningful there.
+noncomputable def plantedPoly {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {N r : ℕ} (L : Finset (ℕ × ℕ × ResidueField O))
+    (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
+    (Qc : ClusterState O r N) : Polynomial O :=
+  (∏ p ∈ L.attach, alphaParent π (classSect O p.1.1 N (bb p).1) p.1.2.1 (resSect O p.1.2.2))
+    * monicPoly (classSect O r N Qc.1)
+
 theorem coeff_level_mul_trailing {O : Type*} [CommRing O] [IsDomain O]
     [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {s t μ₁ μ₂ : ℕ}
     {P₁ P₂ : Polynomial O}
@@ -9914,7 +9923,8 @@ theorem plantedPoly_genre {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValua
 ```
 
 **DEPENDS.** H.107, H.108, H.109, H.102 (the coprime split, for the read clause) · H.115
-(`resSect`/`classSect`), H.115b (`alphaParent`) · **landed in `H116bR.lean`**:
+(`resSect`/`classSect` — DEF-DEPENDENCY of the carrier `plantedPoly`, which lands here),
+H.115b (`alphaParent`) · **landed in `H116bR.lean`**:
 `not_pow_add_succ_dvd_coeff_mul` (§5, the CONTENT half of clause (i)),
 `pow_add_dvd_coeff_mul`, `not_pow_min_succ_dvd_coeff_recentre_alphaParent`,
 `recentre_alphaParent_own`, `coeff_zero_recentre_alphaParent_not_dvd`,
@@ -9994,7 +10004,8 @@ theorem not_isCSState_plantedPoly_swap {O : Type*} [CommRing O] [IsDomain O]
     ¬ IsCSState π c'
 ```
 
-**DEPENDS.** H.110 (`IsCSState`), H.115b (`not_isCSState_of_alphaParent` — the α-side TEMPLATE —
+**DEPENDS.** **H.116b2** (the shared carrier `plantedPoly`; no theorem of b2 is consumed) ·
+H.109 · H.110 (`IsCSState`), H.115b (`not_isCSState_of_alphaParent` — the α-side TEMPLATE —
 and `alphaParent_npHgt_zero`, `alphaParent_npHgt_ge`, `alphaParent_npHgt_natDegree`,
 `alphaParent_coeff`) · chapter B's polygon API `sideSet`, `sideMin`, `npHgt`, `resPoly`,
 `OnSide`, `suppVal` · **landed in `H116bR.lean`**:
@@ -10223,12 +10234,20 @@ chapter-H units share it.
    (clause (ii) STATEMENT note, DEPENDS, SIZE/SPLIT, PROOF step 3 pointer); this amendment block,
    carrying the frozen original verbatim (§1.1), the closed route verbatim (§1.2) and the four
    new nodes in full (§§4–7).
-2. **`leanspec/Leanspec/ChapH.lean`** — `LeanspecH17`: one `def` (`plantedPoly`) and six stubs
+2. **`leanspec/Leanspec/ChapH.lean`** — `LeanspecH17`: one `def` (`plantedPoly`, whose LANDING
+   SITE is H.116b2 — it is written before the b1 stubs there only for readability) and six stubs
    (`exists_peel_finset`, `peel_cofactor_inherits`, `coeff_level_mul_trailing`,
    `plantedPoly_genre`, `not_isCSState_plantedPoly_swap`, `planted_presentation_card`).
    `lake build Leanspec.ChapH` green (9080 jobs, exit 0).
-3. **`spec/DAG_BLUEPRINT_H.tsv`** — the four `BP.H.116 → BP.H.116bN` rows plus the sub-nodes'
-   own DEPENDS rows, including the adjudicated edge `BP.H.116b1 → BP.H.116b2` (§3).
+3. **`spec/DAG_BLUEPRINT_H.tsv`** — **24 rows added, none removed** (file 496 → 520 lines;
+   §17's own row count 136 → 160). Added: the four `BP.H.116 → BP.H.116bN` rows and
+   `BP.H.116 → BP.H.106` (the assembly's coset count); six `BP.H.116b1 → …`, five
+   `BP.H.116b2 → …`, three `BP.H.116b3 → …` and five `BP.H.116b4 → …`. The load-bearing one is
+   **`BP.H.116b1 → BP.H.116b2`**, the edge §3 adjudicates — it reverses the block record's
+   listing order, and the graph is acyclic because H.116b1 consumes b2's clause (i) only, never
+   the carrier `plantedPoly` (which lands with b2 and is what b3/b4 take from it). Chapter B's
+   polygon API is cited by LANDED name in H.116b3's DEPENDS, with no TSV row, exactly as at
+   H.110.
 4. **`verification/openmath/OM2_h116b_gauge_resultant.py`** — block `(d)`–`(h)` added,
    **39/39 → 65/65**, exit 0; named in the TEETH of H.116b2, H.116b4 and the §8 assembly.
 5. **`leanfinal/notes/RESCHEDULE_H121c_H122_2026-08-16.md`** — dated pointer to A-H.7.
