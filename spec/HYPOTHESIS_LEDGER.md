@@ -566,12 +566,16 @@ CONSUMED BY: **RE-HOMED off `[H-c]` (COR-WFA-08).** Not a weld-face residue and 
 CLASS: hypothesis-box
 PROPOSED DISPOSITION: MATH — retained. The audit re-homes the consumer and does NOT settle reachability: as a *weld-face* residue it is NOT-REACHED, but it may be in-cone as a *tower-leg* residue under HYP.82/HYP.144, which is a different audit. Question-2 scheduling no longer gates it.
 
+**ARC NOTE (2026-08-16, unit OM-10).** The f₁ ≥ 2 face gets its FIRST machine contact: `verification/openmath/om10_cert.py` LEG C (569/0 battery, 9/9 teeth overall) measures 6 f₁ = 2 frames over 3 keys (D′ ∈ {2, 4}, incl. BOX-4's sealed key x⁴+2x²+4 one μ₂ up AND the η ≠ 1 gauge frame x²−18/ℤ₃ — the axis GENTOW4-r1 flagged machine-blind) — the naive 6.5 displays (ceiling, certificate slot, v_p = 2a_{t*} + v_p(binom(μ₂,2)), attainment iff p ∤ binom(μ₂,2)) survive VERBATIM at the measured t* = 0, f₂ = 1 geographies. Disposition UNCHANGED: MATH — residue = the 6.3′ full-exposure theorem, the t* > 0 / f₂ ≥ 2 compound geographies (unmeasured), and the j < j* classification. Unit record: `docs/openmath-campaign/OM-10_n8-boxes_2026-08-16.md`.
+
 HYP.68  `GENTOW6-BOX-2`
 WHERE: T4 §S7; upstream GENTOW6.
 STATEMENT: Product-measure count is open already at FULL sides; budget half is proved and only ledger/count half remains.
 CONSUMED BY: **RE-HOMED off `[H-c]` (COR-WFA-09).** Zero weld-layer content. GENTOW6 L616–619 (re-verified at L616, L618): “GENTOW6-BOX-2 (the count LEDGER at partial sides) … open already at FULL sides (GENTOW-1’s count-law remark)”. The consumer, if any, is **the tower count layer**, not `[H-c]` — it belongs beside HYP.144’s GENTOW4-BOX-2 open COUNT layer, which is the same μ≥3 count-layer obligation family as HYP.139 and HYP.142.
 CLASS: hypothesis-box
 PROPOSED DISPOSITION: MATH — retained; consumer re-homed, reachability as a tower-leg residue not settled by this audit.
+
+**ARC NOTE (2026-08-16, unit OM-10).** REDUCES-TO(GENTOW-6.6): the row's STATEMENT predates the GENTOW6_BOXES append — THEOREM GENTOW-6.6(a)–(d) (BOXES S7, 0/2 grade) delivers exactly the asked pricing (Sylvester-Jacobian, window ledger with q^{−c_J}), and its own record serves the full-side clause (one-class ledger = GENTOW-1(b) + R2a verbatim, ACCEPTED 2/2). This unit adds the FIRST direct window-enumeration checks of 6.6(c)'s identity + the q^c fiber clause + the two-class separation mechanism (om10_cert LEG D, c ± 1 teeth killed). Disposition UNCHANGED: MATH — residual = 6.6's hostile arc (process) + the aggregation seam (GENH5-DENS geography, outside this row per 6.6 fence (i)). Unit record: `docs/openmath-campaign/OM-10_n8-boxes_2026-08-16.md`.
 
 HYP.69  `GENTOW6-BOX-3`
 WHERE: T4 §S7; upstream GENTOW6.
@@ -580,6 +584,8 @@ CONSUMED BY: **RE-HOMED off “W12 value partition” (COR-WFA-10).** Zero weld-
 CLASS: hypothesis-box
 PROPOSED DISPOSITION: MATH — retained; consumer re-homed, reachability not settled by this audit.
 
+**ARC NOTE (2026-08-16, unit OM-10).** Narrowed to exactly HYP.78's surface: the key-power half (THEOREM GENTOW-6.7's χ-criterion) and the exactly-Θ member half (LEMMA 6.7E) are closed at source; this unit re-verifies the χ-dichotomy at TWO fresh regime-3 genres — the first p = 5 row ever (R5: χ = 2c̄₀c̄₁ ≠ 0, pin = Θ exactly) vs R2 (p = 2: χ = 0, pin > Θ) — with the new tooth T-E-CHI (the mutant χ without the (2−δ) factor predicts attainment at R2 and is killed: the multiplicity factor is load-bearing at p = 2). Disposition UNCHANGED: MATH — remaining surface = the above-floor member half (= HYP.78) + the μ₂ ≥ 3 lower coordinates (HYP.79's rider); nothing else. Unit record: `docs/openmath-campaign/OM-10_n8-boxes_2026-08-16.md`.
+
 HYP.70  `GENTOW6-BOX-4` residue
 WHERE: T4 §S7 L533–535/L2105–2109; `GENTOW6_PROOF_2026-08-09.md` L1249–1255.
 STATEMENT: Sealed-row ask is DISCHARGED at HEAD, GREEN 265/0 at four x-ful rows including f₁=2; only theorem-grade all-f₁≥2 widening remains unsealed.
@@ -587,12 +593,16 @@ CONSUMED BY: a widened theorem, not the discharged box.
 CLASS: theorem-strength-residue
 PROPOSED DISPOSITION: MATH — no OPEN-CALL; keep battery discharge distinct from widening.
 
+**ARC NOTE (2026-08-16, unit OM-10).** REDUCES-TO(ANNEX 6.3′'s full-exposure calculation) — the single theorem-grade residual behind this row, HYP.67's face, and HYP.80. Widening EVIDENCE added: one sealed BOX-4 row reproduced in a fresh implementation (F423m2: certificate 256, pin 47 = Θ₀, bit-equal to the sealed record) + TWO new x-ful f₁ = 2 rows at a NEW key shape (D′ = 2, e₁ = 1: x²+2x+4/ℚ₂ and x²−18/ℚ₃) GREEN at the same wants. Disposition UNCHANGED: MATH — the theorem-grade all-f₁ ≥ 2 statement remains exactly the 6.3′ calculation; battery discharge stays distinct from widening, as the row demands. Unit record: `docs/openmath-campaign/OM-10_n8-boxes_2026-08-16.md`.
+
 HYP.71  `GENTOW3-BOX-1`
 WHERE: T4 §S7; upstream GENTOW3.
 STATEMENT: Neither genre-general nonvanishing nor battery witnesses for entry-driven overflow with self-power below D′ are delivered.
 CONSUMED BY: **RE-HOMED off `[H-c]` (COR-WFA-11).** Zero weld-layer content — it is the attainment/non-cancellation certificate. Real home: **GENTOW-6.3 / CERT-TOP**, not `[H-c]`. GENTOW3 L449–456 (re-verified at L455): “a genre-general non-vanishing proof, and battery witnesses for entry-digit-driven overflows … are NOT delivered.” T4 §S7 L537 (re-verified): the original genre-general non-cancellation ask “is replaced, not magically solved, by the explicit witness ω_j”.
 CLASS: hypothesis-box
 PROPOSED DISPOSITION: MATH — retained; consumer re-homed. Read with HYP.112’s fence: a candidate implies neither ω_j≠0, touched j, nor threshold attainment.
+
+**ARC NOTE (2026-08-16, unit OM-10).** Conjunct (b) — the battery witnesses for entry-driven overflow where the key self-power stays below D′ — is **REFUTED(+repair) at the measured geography**: at all-key-pairs-in-grid genres (W1 = ℚ₂/x³−2 and W2 = ℚ₃/x³−3, Φ2 = Φ′³ + p³xΦ′² + ĉ₀p¹⁰, irreducible cubic residuals; the pure power's shadow is EMPTY, so attainment could only be entry-driven) the witnesses are INFEASIBLE: **LAW E-W** (certified hard 54/54 crossing reads, both primes) gives mindiff_j = Θ_j + (entry height − side height), and the locus floor is strict, so every in-locus member sits ≥ Θ + 1 — measured min gap = 1 over the exhaustive in-budget sweep (single- and two-entry, unit-c independence GREEN). Tooth T-E-BOUND: the ON-side entry (off-locus by exactly the boundary) attains Θ at every coordinate — the law is TIGHT; the obstruction is the locus fence, not slack in Θ. REPAIR (dated, source statements untouched): read GENTOW-3(iv)'s sharpness as scoped to certificate-carrying geographies (CERT-TOP regimes + the pair-or-triple positive cases at HYP.79's ARC NOTE); at all-in-grid genres Θ is strictly slack by the locus margin. Conjunct (a) (genre-general nonvanishing / ω_j-vanishing outside CERT-TOP) UNTOUCHED and open; HYP.112's fence restated. LAW E-W's ledger proof = a named open (one page at the K2-division bookkeeping). Disposition UNCHANGED: MATH. Unit record: `docs/openmath-campaign/OM-10_n8-boxes_2026-08-16.md`.
 
 HYP.72  disc≠0 downstream fence
 WHERE: `T4_CERTIFICATE_WITNESS_2026-08-12.md`, L1827–1860.
@@ -645,6 +655,8 @@ CONSUMED BY: drainage/value decomposition.
 CLASS: named-obligation
 PROPOSED DISPOSITION: MATH — pending RCT hard unit; no OPEN-CALL/HYP.73 dependency.
 
+**ARC NOTE (2026-08-16, unit OM-10).** Narrowed and LOCALIZED. At the single-crossing all-in-grid geography the above-floor membership classification is COMPLETE and linear: LAW E-W (see HYP.71's ARC NOTE) IS the classification — a member diverges iff its entry ledger has a crossing monomial, at height Θ + (entry excess), linearly in the total entry digit (two-entry linearity + unit-c independence measured GREEN at W2). The S8.1 obstruction (a measured diverge-vs-not pair inside ONE genre) is reproduced FRESH at W1 and W2 (crossing vs non-crossing entries). What stays the census's hard-unit is exactly the multi-crossing / free-digit-mixing geography — the obstruction now has a named location. Disposition UNCHANGED: MATH. Unit record: `docs/openmath-campaign/OM-10_n8-boxes_2026-08-16.md`.
+
 HYP.79  `P-BINOM`
 WHERE: census S-2.
 STATEMENT: If p divides binom(m,2), floor attainment and lower-coordinate cases are classified.
@@ -652,12 +664,16 @@ CONSUMED BY: compound value branch.
 CLASS: named-obligation
 PROPOSED DISPOSITION: MATH — rider on HYP.78; no OPEN-CALL.
 
+**ARC NOTE (2026-08-16, unit OM-10).** Two certified laws (om10_cert LEG B; fresh dual-route implementation tied to the sealed instrument by 6 bit-exact anchors): (1) SINGLE-SLOT geography (f₂ = 1, t* = 0): the top coordinate carries only the certificate slot with v_p = 2a_{t*} + v_p(binom(μ₂,2)) — floor attainment iff p ∤ binom(μ₂,2), certified 9/9 frames incl. three fresh (X5, P36, P38 — the first μ₂ ∈ {6, 8} rows); corollary-shape derivation from 6.5(a)/(b) at the BOXES note's grade. (2) CASCADE geography (e₂(f₂−t*) = 1, the BP3 genre): **LAW B-S2** — the Θ-graded top layer is the PAIR slot (~binom(μ₂,2)) and the TRIPLE slot (~binom(μ₂,3)) ONLY; attainment ⟺ p ∤ binom(μ₂,2) ∨ p ∤ binom(μ₂,3), certified 7/7 at both primes, μ₂ ≤ 6. The naive "any in-band k-diagonal" candidate is **REFUTED at B4/B5** (binom(4,4) = 1 a unit yet pin = Θ+1 — k ≥ 4 branches land strictly above; refutation kept). Lower-coordinate cases at p ∣ binom stay open. Disposition UNCHANGED: MATH. Unit record: `docs/openmath-campaign/OM-10_n8-boxes_2026-08-16.md`.
+
 HYP.80  `COMPOUND-6.5′`
 WHERE: census S-3.
 STATEMENT: f₁≥2, μ₂≥3 compound case has required classification and measure law.
 CONSUMED BY: compound genre under [H-c].
 CLASS: named-obligation
 PROPOSED DISPOSITION: MATH — proof+machine unit; no OPEN-CALL/HYP.73 dependency.
+
+**ARC NOTE (2026-08-16, unit OM-10).** The census S-3 "machine-uncontacted" clause is DISCHARGED: the f₁ ≥ 2 × μ₂ ≥ 3 compound now has 3 GREEN μ₂ = 3 frames (om10_cert LEG C) including BOX-4's own sealed key one μ₂ up (F423m3 = x⁴+2x²+4/ℚ₂, Φ2 = Φ′²−16x³, μ₂ = 3: certificate 768 = 2⁸·3 at slot (2,1) attaining Θ₁ = 47 EXACTLY) — precisely the census's "extend the BOX-4 sealed battery one μ₂ up". The naive 6.5 laws survive verbatim on the measured slice (t* = 0, f₂ = 1). Disposition UNCHANGED: MATH — the classification + measure law at theorem grade stays open (= HYP.67's f₁ ≥ 2 face; the 6.3′ full-exposure calculation). Unit record: `docs/openmath-campaign/OM-10_n8-boxes_2026-08-16.md`.
 
 ### Completeness additions from the adjudication
 
@@ -1164,6 +1180,8 @@ CONSUMED BY: GENHN count laws at f₁≥2, hence the n≥8 leg (HYP.82) and the 
 CLASS: corpus-consistency-item
 PROPOSED DISPOSITION: NODE — reconcile the two records and say which governs; escalates to MATH if the HE6R1 reading governs, since that reading owes a new count lemma. (v3 delta item 8.)
 
+**ARC NOTE (2026-08-16, unit OM-10).** **RECONCILED — no escalation to MATH.** The two records AGREE at HEAD: HE6R1's "requires a new lemma" record (R7 finding 2 / A4 adjudication) is the DEMAND, and its own tail SCHEDULES the fulfilling unit ("the count re-run on the corrected node floor … is hereby a scheduled proof unit … it simultaneously settles GENHN-ERR-1 and restores the completion statement's … clause with no wording change"); GENHN's dated proof completion (2026-08-12, LEMMA GENHN-COUNT-RERUN + the genhn_f2_count_check.py certificate + orchestrator verification) IS that unit's landing, and its consumer sweep item 5 restores HE6R1's completion clause exactly as scheduled. So **the GENHN record governs BECAUSE the HE6R1 record's demand is satisfied by it**; the owed lemma EXISTS. This unit additionally (i) PERFORMS the residual GENHN L2624 named ("a final transcription-confirmation rides the next queue"): the transcribed block matches `runs/cert4/P2_genhn_count_output.log` VERBATIM (whitespace-normalized, 9,431 chars); (ii) lands the decorrelated machine leg `verification/openmath/om10_f9_count.py` — the corrected-node (2,K)-law at K = F₉, the FIRST odd-characteristic f₁ = 2 count contact: measured = predicted on all 23 keys of the exhaustive 43,046,721-member cap-7 window, with each ALPHA(κ,s) slice splitting RAM 52,488 / UND 6,561 (the exact clause whose sealed S-node version was refuted at F₄), teeth T-F9-SEAL/T-F9-Q/T-F9-SNODE killed. Remaining residual (on the LEMMA, not on this row's ask): its own process grade (no 2-clean hostile arc on record), riding GENHN's record. Unit record: `docs/openmath-campaign/OM-10_n8-boxes_2026-08-16.md`.
+
 HYP.143  `HE3-BOX-6` ramified branch (ii)
 WHERE: `lean/notes/openmath/HE3_PROOF_2026-08-08.md` L1334–1361, L1694.
 STATEMENT: “**HE3-BOX-6 (THE ONE SURVIVING GAP** — found by this unit’s own review, before any hostile pass; it localizes to μ≥4, so μ=3 is unconditional).” LEMMA HE3-4 branch (ii) has no test key at a non-integer dv height, and the substitute ramified base change O ↝ O[Π]/(Π^ℓ−π) is “stated too cheaply: **Φ′ need not remain irreducible over O₂**”, so the SLOT LEMMA and HE3-1’s norm computation are unavailable there. Post-R8: “**Only the ramified branch (ii) remains in HE3-BOX-6.**” The repair route (higher-degree test polynomials at fractional heights, i.e. the higher-order Montes construction) is “IDENTIFIED REPAIR ROUTE (**not executed here**)”.
@@ -1171,12 +1189,16 @@ CONSUMED BY: COROLLARY HE3.B for μ≥4, i.e. degree n ≥ e₁f₁μ ≥ 8 — 
 CLASS: hypothesis-box
 PROPOSED DISPOSITION: MATH — named repair route, not executed. Supplier-side only: it refines HYP.81 rather than adding a conjunct. (v3 delta item 9.)
 
+**ARC NOTE (2026-08-16, unit OM-10).** Branch (ii) gets its FIRST machine contact ever (it was "machine-unreachable at μ = 3, first live at μ = 4", HE3-BOX-5 priority 1, no μ ≥ 4 row on record): om10_cert LEG A constructs the box's exact geography — decided-leaf stage polygons with ONE fractional side λ = 5/2 (ℓ = 2), length 4, separable degree-2 residual — in ALL FOUR cells {two linear labels} × {irreducible quadratic} × {(e₁,f₁) = (2,1), (1,2)}, mixed AND equal characteristic (41 rows: constructed + 35-member perturbation sweep + PARI decorrelation + elementary value-group/residue-forcing certificates). **The class-size law |S_r| = D′ℓd holds on every row, and the box's displayed failure mode ("one class empty while the other carries two Galois orbits") is EXCLUDED on every row** (resultant label census: both labels nonempty on all 35 sweep members; tooth T-A-EMPTY proves the census can see emptiness). The IDENTIFIED REPAIR ROUTE's instruments are CERTIFIED working: the higher-degree test polynomials Ψ_{s,κ} = Φ′^ℓ − (letters) separate labels exactly (A-S3), their own polygons are single-sided anchors at the key valuation (A-S4, 8/8 — so HE3-0's entry situation holds at Ψ's roots), and the κ-slope count inversion reads |S_s| exactly (A-S5) — on exact products AND perturbed members. Tooth T-A-DPRIME kills the mutant law |S_r| = D′d (the ℓ-rescale forgotten). Disposition UNCHANGED: MATH — nothing is proved at μ ≥ 4; HE3.B's conditionality is exactly as before. The residual, sharpened: prove the slot lemma at Ψ's roots (HE6-0″'s degree-D′ℓ analogue) + the test-side evaluation display; every displayed step of that route now has a measured instance saying it computes what it should. Unit record: `docs/openmath-campaign/OM-10_n8-boxes_2026-08-16.md`.
+
 HYP.144  `GENTOW4-BOX-1/-2/-4`
 WHERE: `lean/notes/openmath/GENTOW4_PROOF_2026-08-09.md` L577–584, L585–590, L614–618.
 STATEMENT: BOX-1 (mixed-side multiplicity tie) — the tie mu2*(r) = m_r “is UNPROVED here (S4; Ore-II/FGMN Lemma 2.17 content — a faithful-cite unit in GENTOW2’s pattern would retire it)”; READ and σ are unaffected, what is lost is the level-1 prediction of block length. BOX-2 (partial-side entry budgets) — the budget fibration is proved only on the FULL-side locus 𝒯; “the item-(4) **COUNT layer stays open**”. BOX-4 (grade) — “**0/2 attempt**, composed this session, no hostile arc”, over a conditionality stack including HETOW-1/2 (HETOW 0/2) and the HE6R1 0/2-grade annex stack.
 CONSUMED BY: partial-side count laws feeding the same μ≥3 count layer as HYP.139 and HYP.142.
 CLASS: hypothesis-box
 PROPOSED DISPOSITION: MATH — BOX-2’s open COUNT layer is the binding residue; BOX-1 is retirable by a faithful-cite unit; BOX-4 is a standing grade cap on all three. (v3 delta item 10.)
+
+**ARC NOTE (2026-08-16, unit OM-10; BOX-2 ONLY — BOX-1/BOX-4 untouched, CHAP-I's split governs: BOX-1 DISCHARGED-BY C.67 cite-conditionally, BOX-4 NOT-ON-CAPSTONE-PATH).** BOX-2's partial-side COUNT layer **REDUCES-TO(GENTOW-6.6(d) + its [r2] iteration clause)**: the locus shape "products of class boxes × sibling data" is exactly 6.6(d)'s two-class instantiation iterated pairwise (the [r2] per-step (H1)-from-(b) re-establishment + the [rider] N₀-domination line), with constants summing per class pair. This unit certifies the mechanism in miniature (om10_cert LEG D: the two-class residual-separation shape's ledger identity enumerated GREEN with c ± 1 teeth; the c_J closed form μ₂*m′D₂E₂/(e₁e₂) = μ₂*m′f₁f₂²e₂u₂ grid-checked 648 tuples). Named residual: the (H1)/(H2)/(H3) instantiation at GENTOW4's ACTUAL class boxes + sibling data (per-genre; the separation constants via 6.6a's evaluation argument) — not executed at a real GENTOW4 frame; plus 6.6's own 0/2 grade. Disposition UNCHANGED: MATH. Unit record: `docs/openmath-campaign/OM-10_n8-boxes_2026-08-16.md`.
 
 HYP.145  GENTOW2 S6.1 rows 23–24
 WHERE: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md` L1342; `GENTOW5_WI_2026-08-10.md` L480.
