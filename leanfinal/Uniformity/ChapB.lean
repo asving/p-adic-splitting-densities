@@ -75,9 +75,12 @@ import Uniformity.ChapB.B64
 import Uniformity.ChapB.B65
 import Uniformity.ChapB.B66
 import Uniformity.ChapB.B66a
+import Uniformity.ChapB.B66c
 import Uniformity.ChapB.B67
+import Uniformity.ChapB.B68
 import Uniformity.ChapB.B69
 import Uniformity.ChapB.B70
+import Uniformity.ChapB.B71
 import Uniformity.ChapB.B72
 import Uniformity.ChapB.B73
 import Uniformity.ChapB.B74
@@ -86,5 +89,26 @@ import Uniformity.ChapB.B76
 import Uniformity.ChapB.B77a
 import Uniformity.ChapB.B77b
 import Uniformity.ChapB.B78
+import Uniformity.ChapB.B79a
+import Uniformity.ChapB.B79b
+import Uniformity.ChapB.B80
+import Uniformity.ChapB.B81
+import Uniformity.ChapB.B82
+import Uniformity.ChapB.B83Kit
+import Uniformity.ChapB.B83a
+import Uniformity.ChapB.B83b
+import Uniformity.ChapB.B83c
+import Uniformity.ChapB.B83d
+import Uniformity.ChapB.B84a
+import Uniformity.ChapB.B84b
+import Uniformity.ChapB.B84c
+import Uniformity.ChapB.B84d
+import Uniformity.ChapB.B85a
+import Uniformity.ChapB.B85b
+import Uniformity.ChapB.BBox1CiteStatement
 
-/-! ChapB roll-up — regenerated at fleet layer close 12. -/
+/-! ChapB roll-up — regenerated at §10 close (B.83–B.86), 2026-08-16.
+
+Every chapter-B module, including §8/§9's certificate layer (B.79a/b, B.80, B.81, B.82), the
+§10 gate instances (B.83a–d, B.84a–d, B.85a/b) and their booked shared evaluation kit
+(`B83Kit`). `B.86` (the census block) imports this file and nothing else. -/
