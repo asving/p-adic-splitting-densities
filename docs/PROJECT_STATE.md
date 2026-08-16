@@ -5365,3 +5365,52 @@ fenced for every consumer/discharge; OM-4 addendum FINDING 0
 annotated EXECUTED. Builds green: lake build Leanspec.ChapE /
 Leanspec.ChapD; lake env lean on both verification files. Commits:
 d420f112, 823e7885, 38b56472, d53d2557, a575813f (+ this append).
+
+**2026-08-16 DATED APPEND #72 — A-F.12 EXECUTED: THE PERIMETER
+CLAUSE IS PER-MEMBER; B.79b/B.80/B.81/B.82 RE-SIGNED OVER THE
+WINDOW CLASS, THE order1Type_congr HELPER LANDED (B66c), AND THE
+B ENDGAME WAVE IS FIRING AT THE NEW FORMS.** (1) Source verdict
+(the charge's gate): EFF.W12.27 §S2.3's own sentence separates
+the scopes — the READ DATA ("all data the read consumes sit at
+heights ≤ N−1, so every lift of the window class shares them")
+transports via B.76–B.78, while Ore's (e,f) factorization is
+asserted of EACH LIFT, one application per lift (EFF.W12.86 step
+5 confirms: "for every disc-nonzero lift"). hterm/hvis are
+per-history (R8-1, DEFINITION 2) and stay at the representative;
+hperim CANNOT transport. The defect's textual origin — §12 item
+4(a)'s half-sentence "…and what B.77 transports" — is struck;
+D-4(b)'s "the theorem transports them" re-scoped to the read
+data (that was the false decision clause). (2) Re-signs: B.79b's
+hperim moved after the lift's binders, at gS ∣ g′ (inner binder
+g″); B.80 carries the new window-class closure (4a″) — ∀ gT
+monic, degree-matched, π^N-congruent coefficientwise, the
+perimeter holds with gS ∣ gT — whose three guards are exactly
+what its steps 3–4 produce; B.81's closure level-quantified
+under a Visible guard (unguarded, the N=0 instance collapses
+onto every monic of the block's degree — the one judgment call,
+flagged for fresh eyes); B.82's closure at (φ, monicPoly a, N).
+Reflexivity makes each closure IMPLY the frozen clause: no
+consumer loses, nothing weakened. B.63/B.71/B.79a byte-unchanged.
+Gates B.83–B.85 stay B-BOX-1-free; one new ~15-line discharge
+step each (perimeter closed uniformly via ℓ·deg φ·deg ψ =
+deg gS ≤ n, from B.30 + landed B.35b + natDegree_le_of_dvd),
+arithmetic hand-checked per instance; §14 items 14/15(iv) own
+the independent recomputation — the new contract text is tested
+by no landed proof yet (honest flag). (3) LANDED:
+ChapB/B66c.lean = order1Type_congr, sorry-free, Lean-core
+footprint, imports trimmed so the B.42 cite is OFF its import
+path; B79bTransport.lean retired (analysis preserved in A-F.12
+(I)–(II)/(VI)). Builds green: B66c (8608 jobs), B74,
+Leanspec.ChapB (8979 jobs). Commits: b50f7286, 72f5860d,
+ff558f7b, 73867366. (4) FIRING: B wave 17 (opus chain, workflow
+wf_52093f2c-45e) = B.79b→B.80→B.81→B.82 at the A-F.12 forms,
+with the banked (VI) skeleton for B.79b; then gates B.83–B.86.
+(5) Concurrent state at this append: A-H.5 committed both its
+re-signs (b5d1c2d2 blueprint, eeb505a2 leanspec — centre pinned
+in the def, clause (i) re-signed), agent finalizing; D wave 5
+has landed D.09/D.10/D.21/D.26/D.50/D.51 (ChapD 44 node files);
+C wave 6 landed C.13/C.44 (ChapC 33); OM-8's instrument sealed
+(f3f02caf), run in progress; OM-9 has begun landing CHAPTER F
+ITSELF — F.04/F.11 (Display-A carriers) + F.12 (W-1 carrier) at
+gate signatures, F.02/F.03/F.06 stubs PROVED, F.07 + A-W.2
+lemmas (badbb9cb).
