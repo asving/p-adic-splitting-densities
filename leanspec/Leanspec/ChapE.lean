@@ -3,11 +3,192 @@ import Uniformity
 /-!
 # Chapter E — THE σ-LADDER: the leanspec interface (design stage 0e)
 
-Every SIGNATURE of `blueprint/CHAP-E_sigma_ladder.md` (68 nodes E.01–E.68), landed in the
-isolated `leanspec` environment **before** the chapter-E fleet fires, in the blueprint's node
-order.
+Every SIGNATURE of `blueprint/CHAP-E_sigma_ladder.md` (68 nodes E.01–E.68; T2's master suite,
+the HE7 rung machinery and the ladder's σ dictionary), landed in the isolated `leanspec`
+environment **before** the chapter-E fleet fires, in the blueprint's node order — with the one
+mandated re-order §12 records: **E.24 (`HE7APackage`, `LadderSupply`) lands after §6/§9**,
+because its fields forward-reference E.39/E.40/E.61.
 
-**WORK IN PROGRESS — this header is completed by the stub gate's closing pass.**
+**STATE: OPEN (stage-0e gate executed 2026-08-16).** Chapter E has landed nothing in
+`leanfinal` (`grep` for `Density.Ladder` / `RungDatum` / `SlotCarrier` / `ladderSigma` over
+`leanfinal/Uniformity/`: zero hits), so every theorem-shaped stub is in the UNLANDED state of
+`Leanspec.lean`'s stub lifecycle — an `axiom` at the exact signed type. Nothing is retired;
+there is no name collision with `Uniformity.*`; the 0e type diff against the landed twins runs
+per declaration as the fleet lands them.
+
+**Wrapper choice, declared per GC-6.6:** wrapper `namespace LeanspecE` (the CHAP-B route), NOT
+the ChapG retire-to-examples route — the blueprint's own §0.2/§12 instruct `LeanspecE`, and a
+wrapped namespace keeps the stubs greppable by contract name. Consequently the blueprint's
+`namespace Uniformity.Density.Ladder` / `namespace Uniformity.Density` headers in the SIGNATURE
+blocks are DROPPED here and every declaration is flat inside `LeanspecE`; the landed-side
+namespace assignment (definitions → `Uniformity.Density.Ladder`; E.48, the one theorem about
+landed objects → `Uniformity.Density`) is what the fleet must land.
+
+**This file is never imported by `leanfinal` or `leancheck`.** It carries `axiom`s by design; it
+is an interface contract, not mathematics. Nothing here is proved. `sorry` appears nowhere; the
+file elaborates with `autoImplicit`/`relaxedAutoImplicit` **off**.
+
+## Census (mechanical, `grep` over this file)
+
+| kind | count | note |
+|---|---:|---|
+| `structure` (real bodies) | **10** | `RungDatum`, `LadderData`, `SlotCarrier`, `BlockData`, `RungInterface`, `LadderObligations`, `LadderLeaf`, `VarthetaRes`, `WFrame`, `LadderSupply` |
+| `inductive` (real bodies) | **2** | `ContCase` (E.17), `Mu2Row` (E.49) |
+| `def` / `noncomputable def` (real bodies) | **27** | §12(b)'s def layer, incl. `sExp`/`mExp`/`ladderSuppVal`/`devHgt` noncomputable |
+| `axiom` stubs of theorem-shaped rows | **69** | one per signed theorem/lemma display |
+| `axiom` standing in for a body-less def-class row | **1** | `ladderState_wf` (E.19) — defect **E-D5** |
+| gate-local data `def`s (not blueprint declarations) | **3** | `gateBase65`, `gateRung65`, `gateLadder65` (§10's frames) |
+| gate `example`s, all executed | **58** | §10, E.65–E.68 |
+
+**109 signed blueprint declarations** (10 + 2 + 27 + 70). Nodes with NO declaration: **E.22** and
+**E.23**, the two instance-records, which the blueprint itself signs as tables ("SIGNATURE: none")
+— their stub-stage obligation is the B-citation check, executed below.
+
+## Gate order (GC-6.6(c)/CHAP-H §15) as actually run
+
+(a) the seven FRAGILE signatures of §12(a) first — E.10, E.11 (+`ladderSuppVal`), E.12 (the
+`W : Type*` universe), E.29 (the elided guard), E.55 (three spelling calls), E.45/E.49 (the
+`FactorizationType` constructor), E.48 (`typeOf_mul`'s side conditions); (b) the `def` bodies;
+(c) **the §10 numeric gates EXECUTED at `q = 2` AND `q = 3`** — 58 `decide`/`rfl` checks, every
+expected value in §10 reproduced, plus an exhaustive small-range falsification sweep in Python
+over every arithmetic node (E.07, E.08, E.09, E.15, E.25, E.28, E.30, E.51, E.59, E.60, E.64):
+**no counterexample** (ranges: rung parameters ≤ 7, heights/`k` ≤ 40, chains ≤ 5 rungs, `μ` ≤ 32);
+(d) the `axiom` stubs. Executed-gate values: base rung `(2,1,1,0)` → `bound₁ = 1`; level-2 rung
+`(2,1,5,2)` → `nextT = 10`, `bound₂ = 7`; `degAt = 2, 4` (`D′`, `D″`); the five Q3 frames →
+`7, 17, 27, 73, 58` (all five reproduced); the μ₂ = 2 alphabet `{(8,1)}, {(4,2)}, {(4,1),(4,1)}`
+each of degree 8; the `q = 3` frames `(3,1,2)` (`T(1) = ∅`, `bound₁ = 4`) and the NON-coincidence
+seam `(2,2,3)` at `k = 10, 11 > (D′−1)h = 9` (both `T(k)` full, seam exponents integral), plus a
+proper-`T` witness at `k = 3`; the `e > 1 ∧ f > 1` witness `(4,2)` of degree 8.
+
+## THE DEFECT LIST (stage-0e gate, 2026-08-16)
+
+Recorded here and in the 0e report; **NOT repaired in the blueprint** (§12 rule / CHAP-H §15
+rule 5: elaboration failures in a stub are blueprint defects, versioned by dated append in the
+blueprint, never patched in `leanspec`). Every stub-side adjustment made to get the file to
+elaborate is listed; nothing was adjusted silently.
+
+* **E-D1 — E.05: `List.get?` DOES NOT EXIST at the pin (hard error).** The signed bodies of
+  `LadderData.degAt`/`boundAt` (and E.05's DEPENDS line) name `List.get?`; at `v4.31.0` +
+  our mathlib the constant is gone ("The environment does not contain `List.get?`"). *Class:
+  stale-API name (training-data smell).* **Stub-side repair:** `Λ.rungs[i]?`
+  (`List.getElem?`), same `Option RungDatum` semantics, `getD` defaults unchanged.
+* **E-D2 — E.05: `List.Chain` is DEPRECATED at the pin, with a changed type.** `List.Chain R a l`
+  still elaborates (warning), but upstream's replacement is `List.IsChain R l` — no head
+  argument — and `List.Chain.cons`/`.nil` are likewise deprecated/retyped
+  (`IsChain.cons_cons`, `IsChain.singleton`). The signed form is KEPT here (it is still valid);
+  the fleet should land `List.IsChain rungFollows (base :: rungs)`. *Class: deprecated API.*
+* **E-D3 — E.38: the hypothesis name `hλ` is not a legal Lean identifier (hard parse error,
+  "unexpected token 'λ'").** Renamed `hlam` in `offdisk_positivity`. *Class: syntax.*
+* **E-D4 — E.29: the signed display carries an unelaborable hole and two cast slips.** `if h : _`
+  is a metavariable-typed guard; the node's own SIGNATURE NOTE licenses the stub to fix the
+  spelling, so it is written `s₀ + ℓ*t < slotCount ∧ c (s₀ + ℓ*t) ≠ 0` — which is NOT decidable
+  (`Polynomial O` equality), so the node needs `open scoped Classical` (recorded: the fleet's
+  landed form must either carry that or use a `dite`-free formulation). `hatt`'s right-hand side
+  is ascribed `: ℤ` against a `WithTop ℤ` equation (coercion supplied). *Class: elision +
+  spelling; no strength change.*
+* **E-D5 — E.19's `ladderState_wf` is a DATA declaration with no body.** The SIGNATURE is
+  `instance ladderState_wf … : WellFoundedRelation (LadderState W)` and stops at the type; §12(b)
+  does not list it among the def bodies either. Landed as an `axiom` (the ChapG D2 / ChapB B-D2
+  precedent; note an `axiom` cannot carry `instance`, ChapB B-D3). **Consequence the fleet must
+  respect:** while the relation is opaque, E.19's three `rank_decreases_*` lemmas and E.20's
+  engine are UNPROVABLE — they speak about an unspecified relation — so the real body (the
+  `Prod.Lex` well-foundedness instance) must land FIRST. *Class: def with no body.*
+* **E-D6 — the `RungInterface` universe parameter is uninferable in every declaration that
+  QUANTIFIES over an interface: HARD ERROR at E.39, E.40, E.44 and E.24.** E.12's `W : Type*`
+  field (correctly, per its SPLIT note) makes `RungInterface` universe-polymorphic in the rank
+  carrier; but `LB1Carrier`/`MP1Carrier`/`HE7APackage` are `Prop`-valued, so that universe occurs
+  only in the BODY, where auto-binding does not reach: *"Failed to infer universe levels in type
+  of binder `I`"*, *"declaration `MP1Carrier` contains universe level metavariables"*.
+  **Stub-side repair:** an explicit `universe uW`, with those five declarations written at
+  `RungInterface.{uO, uK, uW}`. **This is the universe issue E.12's SPLIT note asked to be
+  flagged rather than fixed by `W := ℕ`, and it has a statement-strength tail the orchestrator
+  must rule on:** `LB1Carrier.{…, uW}` quantifies only over interfaces whose rank carrier lives
+  in universe `uW` (Lean cannot quantify over all universes inside one `Prop`), so chapter I must
+  consume the carriers universe-polymorphically, or the Display-A conjuncts are universe-scoped.
+* **E-D7 — E.68's third Q3 frame `(2,2,1,2,2,7)` is NOT a legal level-2 rung** (machine-checked
+  below: `¬ (2*4 < 7)`). E.01's node condition is `ℓ*T < u`; at this frame's corpus threshold
+  `T₂ = D′h = e₁f₁h = 4` that reads `8 < 7`, i.e. `λ = u/ℓ = 3.5 ≤ D′h = 4` violates DEFINITION
+  HE7-1's `λ > D′h` as E.01 transcribes it. The THRESHOLD VALUE is unaffected (`nextBound` never
+  reads `T`), so the gate checks `27` twice — at a legal `T = 3` and formula-directly — and the
+  other four frames build as genuine `RungDatum`s at `T₂ = D′h` (`2, 2, 6, 2`). *Reading:* either
+  the Q3 sharpness frames are enumeration frames outside DEFINITION HE7-1's scope (likeliest —
+  `EFF.HE7.23`'s TEETH table is about reachable-height thresholds), or `hnode` is stronger than
+  the chapter's own gate data. Either way: **a consumer that builds a `RungDatum` from a Q3 frame
+  must check the node condition first.**
+* **E-D8 — the landed σ carrier is `Uniformity.FactorizationType`, NOT
+  `Uniformity.Density.FactorizationType`** (as E.45, E.49 and §0.3's name list write it; that
+  name does not resolve). `FactorizationType`, `.degree`, `.ext`, `.degree_mk_add` live directly
+  in `Uniformity` (`Uniformity/Density/LocalData.lean:43`); `typeOf`, `typeOf_degree`,
+  `monicFactors`, `typeOf_mul` are in `Uniformity.Density`. The same wrong name appears in a
+  landed docstring (`Uniformity/ChapG/G52.lean:14`). *Class: wrong fully-qualified name.*
+* **E-D9 — E.48's signed conclusion DOES NOT ELABORATE: there is no `Add`/`Zero` on
+  `FactorizationType`.** `(l.map typeOf).sum` fails with "failed to synthesize `Add
+  FactorizationType`", and the landed module says the absence is deliberate: `typeOf_mul` is
+  "stated on `.data`, not on any addition structure for `FactorizationType`, so it survives
+  verbatim if such structure is later added" (`Uniformity/Density/TypeOfAlgebra.lean`). **§12(a)7
+  executed:** the landed `typeOf_mul`'s side conditions are **monicity only** (`hf : f.Monic`,
+  `hg : g.Monic`) — no coprimality, no root-set disjointness — so the signed `hcond : True` slot
+  resolves to NOTHING and is dropped, and §14 item 9's worry ("can the ladder's blocks supply
+  them?") is answered: there is nothing to supply. Signed here at the `.data` shape.
+* **E-D10 — no gate can `decide` an equation between σ-values:** `FactorizationType`'s
+  `DecidableEq` is `Classical.decEq` (noncomputable), so `decide` gets stuck on
+  `Classical.choice`. E.67's `ladderSigma_prepend` spot check therefore runs on `.data`
+  (`Multiset (ℕ × ℕ)` has a real instance); degrees and `Option`-valued dictionary rows are
+  unaffected (`rfl` / ℕ-equality). *Class: gate-spelling constraint, binding on E.65–E.68 and on
+  any future executable σ gate.*
+* **E-D11 — E.60 clause 3 is VACUOUS under the node's own hypothesis set (machine-checked).**
+  `(μ 0 ≤ 7 → ∀ i, 1 ≤ i → i ≤ J → μ i ≤ 3)` sits under `h4 : ∀ i ≤ J, 4 ≤ μ i`; for `1 ≤ i ≤ J`
+  the halving `2 * μ 1 ≤ μ 0 ≤ 7` gives `μ 1 ≤ 3`, contradicting `h4 1`. An exhaustive sweep
+  (`μ` values ≤ 32, `J ≤ 4`) finds **zero** hypothesis-satisfying sequences with `μ 0 ≤ 7` and
+  `J ≥ 1`: the clause is provable but says nothing. The intended content (`EFF.HE7.16`(i): at
+  `μ₀ ≤ 7` a jump TARGET has `μ₂ ≤ ⌊7/2⌋ = 3`) must not impose the `4 ≤ μ i` floor on the target
+  index. Milder, same class: clause 2 (`μ 0 = 4 → J ≤ 1`) is slack — the hypotheses force `J = 0`
+  (sweep: the only admissible `J` at `μ₀ = 4`). *Class: wrong-but-well-typed (the class §15 warns
+  a stub gate cannot catch mechanically — found by reading, then confirmed by sweep).*
+* **E-D12 — two census slips in the blueprint's own bookkeeping.** (i) §12(b)'s def-body list
+  names **E.34**, which has NO def (its SIGNATURE is two theorems, `unit_mul_bijOn`/
+  `unit_mul_zero`), and omits E.19's body-less `ladderState_wf`. (ii) §2's kind census says "nine
+  nodes carry a `structure` … and two an `inductive` (E.17 `ContCase`, E.45 is a plain structure
+  `LadderLeaf`, E.49 `Mu2Row`)" — `LadderLeaf` is listed under the inductives while being a
+  structure, so the true split is **10 structures / 2 inductives**. §13/§14 should count against
+  the corrected figures.
+* **E-D13 (minor) — E.18's STATEMENT clause (iii) (`ν = 1 ⟹ G′ = 1`) is absent from its
+  SIGNATURE.** No repair needed: it follows from the signed conclusion (monic of `natDegree
+  D*(1-1) = 0` is `1`), but the fleet should know the signed contract is (i)+(ii) only.
+
+## BLOCKED-UNTIL-RESOLUTION (§12; do NOT fire the fleet on these)
+
+`E.51` (`hpeel : True`), `E.57` (`hpart : True`), `E.61`/`E.62` (`supplied : True`) are signed
+with their `True` placeholders **verbatim as the blueprint prescribes** and carry a
+`-- BLOCKED: GC-13 resolution` header at the declaration; the orchestrator's GC-13/GC-14
+resolution pass types them (against chapter C's HE6R1-3 emission record, C's partition record,
+C's letter layer and chapter D's ϑ table respectively). **E.52 is explicitly NOT blocked** (it
+consumes E.51's row only through `mu2Sigma`). Proving E.51 or E.57 while the placeholder is
+`True` would be vacuous.
+
+## Cross-chapter checks executed here (the E.22/E.23 obligation, and the GC-5 fence)
+
+* **E.22's B-node citations all exist in the committed CHAP-B blueprint**, at the kinds cited:
+  B.16 [def], B.17–B.19 [lemma], B.20/B.21 [def], B.22 [lemma], B.28/B.29 [def], B.30 [lemma],
+  B.51 [lemma], B.58 [theorem], B.63 [theorem], B.73 [def], B.74 [lemma], B.77 [lemma],
+  B.79/B.80 [theorem], B.81 [lemma], B.82 [theorem]. (Note the live CHAP-B re-sign log A-F.6…
+  A-F.10 has moved several of those signatures since; E.22 cites them by node ID, so the rows
+  survive, but the instance-supplier reading must be re-checked when B freezes.)
+* **The GC-5 "H §8 only" fence holds structurally in this file:** no `Uniformity.Density.
+  Induction` name occurs in any chapter-E signature (E's three H consumptions — H.51 at E.25/
+  E.28, H.53 at E.27 — are proof-level, so nothing outside H.51–H.58 can leak in). All fourteen
+  landed declarations E's §0.3 names from H.51–H.58 were verified present in
+  `leanfinal/Uniformity/ChapH/H51.lean … H58.lean` (incl. `stageLift'`; `normIdx` is not
+  consumed, per H.54's withdrawal).
+* **Owed, not done here (outside this gate's file ownership):** §13.4's four retained
+  regressions `verification/chapE_gate_q2.py`, `chapE_gate_q3_seam.py`, `chapE_gate_ef.py`,
+  `chapE_gate_thresholds.py` — the Lean-side gates below are executed, their Python mirrors are
+  an orchestrator item.
+
+<!-- RESUME: chapter-E stub gate COMPLETE — all 68 nodes signed (109 declarations), §10 gates
+executed, defect list E-D1…E-D13 recorded. Next: (i) blueprint dated append for the defects;
+(ii) orchestrator GC-13/GC-14 resolution pass types E.51/E.57/E.61/E.62; (iii) the E-D6
+universe ruling for chapter I; (iv) `verification/chapE_gate_*.py` mirrors. -->
 -/
 
 set_option autoImplicit false
@@ -832,5 +1013,145 @@ structure LadderSupply {O : Type uO} [CommRing O] {K : Type uK} [Field K]
   lb1 : LB1Carrier.{uO, uK, uW} C B           -- E.39
   mp1 : MP1Carrier.{uO, uK, uW} C B           -- E.40
   vartheta : ∀ i ≥ 3, VarthetaRes i           -- E.61 (with E.62's 𝒲 conjunct at I)
+
+/-! ## §10 — GATES (E.65–E.68), EXECUTED (GC-11: `q = 2` AND `q = 3`)
+
+Every check below is a Lean-side `decide`/`rfl` on the landed `def` bodies, run at the stub
+stage per GC-6.6(c). Expected values are the blueprint's own recomputations. -/
+
+section Gates
+
+/-! ### E.65 [gate] `q = 2`: the n = 8 frame end-to-end (`EFF.HE7.57`). -/
+
+/-- the base rung `(e₁,f₁,h,0) = (2,1,1,0)`. -/
+def gateBase65 : RungDatum :=
+  RungDatum.mk 2 1 1 0 (by norm_num) (by norm_num) (by decide) (by norm_num)
+
+/-- the level-2 rung `(ℓ,d_r,u,T₂) = (2,1,5,2)`, `T₂ = D′h = 2`. -/
+def gateRung65 : RungDatum :=
+  RungDatum.mk 2 1 5 2 (by norm_num) (by norm_num) (by decide) (by norm_num)
+
+/-- the n = 8 ladder: base + the one level-2 rung (the chain condition `T₂ = base.nextT`). -/
+def gateLadder65 : LadderData where
+  base := gateBase65
+  rungs := [gateRung65]
+  hbase := rfl
+  hchain := List.Chain.cons rfl List.Chain.nil
+
+example : gateBase65.slotCount = 2 := by decide            -- D′ = e₁f₁ = 2
+example : gateBase65.nextT = 2 := by decide                -- T₂ = D′h = 2
+example : gateBase65.nextBound 0 = 1 := by decide          -- bound₁ = (D′−1)h = 1
+example : gateRung65.nextT = 10 := by decide               -- L·u = 2·1·5 = 10
+example : gateRung65.nextBound 1 = 7 := by decide          -- bound₂ = 7
+example : gateLadder65.degAt 1 0 = 2 := by decide          -- D′ = 2
+example : gateLadder65.degAt 1 1 = 4 := by decide          -- D″ = D′·ℓd_r = 4
+example : gateLadder65.boundAt 0 = 1 := by decide
+example : gateLadder65.boundAt 1 = 7 := by decide
+
+-- the μ₂ = 2 dictionary: the three decided values and their degree 8
+example : mu2Sigma .oneSideHalf = some ⟨{(8, 1)}⟩ := rfl
+example : mu2Sigma .oneSideInert = some ⟨{(4, 2)}⟩ := rfl
+example : mu2Sigma .oneSideSplit = some ⟨{(4, 1), (4, 1)}⟩ := rfl
+example : mu2Sigma .twoSides = some ⟨{(4, 1), (4, 1)}⟩ := rfl
+example : mu2Sigma .refineRow = none := rfl
+example : mu2Sigma .peelRow = some ⟨{(4, 1), (4, 1)}⟩ := rfl
+example : (⟨{(8, 1)}⟩ : Uniformity.FactorizationType).degree = 8 := by decide
+example : (⟨{(4, 2)}⟩ : Uniformity.FactorizationType).degree = 8 := by decide
+example : (⟨{(4, 1), (4, 1)}⟩ : Uniformity.FactorizationType).degree = 8 := by decide
+
+-- the jump bounds at μ₀ = 4 (E.60's clauses, checked numerically on the bounded range)
+example : ∀ J ≤ 8, 2 ^ (J + 1) ≤ 4 → J ≤ 1 := by decide
+example : ∀ m ≤ 8, 2 * m ≤ 4 → m ≤ 2 := by decide
+
+/-! ### E.66 [gate] `q = 3` AND the non-coincidence seam witness (honesty E-6). -/
+
+-- (i) q = 3, the `(e₁,f₁,h) = (3,1,2)` frame of FINDING HE7-F1: height k = 1 is UNATTAINED
+--     (`i₀(1) = 2` solves `2i₀ ≡ 1 mod 3`; `i₀h = 4 > 1`).
+example : (2 * 2) % 3 = 1 % 3 := by decide                 -- i₀ = 2 is the class index at k = 1
+example : reachSet 3 2 1 2 1 = ∅ := by decide
+example : (RungDatum.mk 3 1 2 0 (by norm_num) (by norm_num) (by decide)
+    (by norm_num)).nextBound 0 = 4 := by decide            -- bound₁ = (3·1−1)·2 = 4
+-- the attainable heights `{3a + 2i}` spot check: 1 ∉ , 2 ∈ , 3 ∈ , 4 ∈ , 5 ∈
+example : ¬ ∃ a < 3, ∃ i < 3, 3 * a + 2 * i = 1 := by decide
+example : ∃ a < 3, ∃ i < 3, 3 * a + 2 * i = 2 := by decide
+example : ∃ a < 3, ∃ i < 3, 3 * a + 2 * i = 5 := by decide
+
+-- (ii) the NON-coincidence regime at `(e₁,f₁,h) = (2,2,3)`: `(D′−1)h = 9`, so `k = 10, 11`
+--      sit strictly past the coincidence bound (HYP.151's witness frame).
+example : (2 * 2 - 1) * 3 = 9 := by decide                 -- (D′−1)h = 9
+example : (0 * 3) % 2 = 10 % 2 := by decide                -- i₀(10) = 0
+example : (1 * 3) % 2 = 11 % 2 := by decide                -- i₀(11) = 1
+example : reachSet 2 3 2 0 10 = Finset.univ := by decide   -- T(10) full
+example : reachSet 2 3 2 1 11 = Finset.univ := by decide   -- T(11) full
+-- seam-exponent integrality at the two non-coincidence heights (`e ∣ k − (i₀+et)h`)
+example : (2 : ℕ) ∣ 10 - (0 + 2 * 0) * 3 := by decide
+example : (2 : ℕ) ∣ 10 - (0 + 2 * 1) * 3 := by decide
+example : (2 : ℕ) ∣ 11 - (1 + 2 * 0) * 3 := by decide
+example : (2 : ℕ) ∣ 11 - (1 + 2 * 1) * 3 := by decide
+-- and a q(k) ≠ 0-side witness the sealed teeth lacked: a PROPER (nonempty, non-full) reach
+-- set at the same frame — `T(3) = {0}` at `i₀(3) = 1`
+example : (1 * 3) % 2 = 3 % 2 := by decide
+example : reachSet 2 3 2 1 3 ≠ Finset.univ := by decide
+example : reachSet 2 3 2 1 3 ≠ ∅ := by decide
+
+/-! ### E.67 [gate] the `e > 1 ∧ f > 1` witness (GC-11's simultaneous witness). -/
+
+example : (LadderLeaf.mk [(2, 1)] (1, 2)).ef 2 1 = (4, 2) := by decide
+example : (ladderSigma 2 1 {LadderLeaf.mk [(2, 1)] (1, 2)}).degree = 8 := by decide
+-- the prepend/associativity spot check (E.47's law at the same data)
+example : (LadderLeaf.prepend (2, 1) (LadderLeaf.mk [] (1, 2))).ef 1 1
+    = (LadderLeaf.mk [] (1, 2)).ef (1 * 2) (1 * 1) := by decide
+-- (compared on `.data`: `FactorizationType`'s own `DecidableEq` is `Classical.decEq`, so
+-- `decide` cannot reduce an equation between σ-values themselves — see defect E-D10)
+example : (ladderSigma 2 1 (({LadderLeaf.mk [] (1, 2)} : Multiset LadderLeaf).map
+      (LadderLeaf.prepend (2, 1)))).data
+    = (ladderSigma (2 * 2) (1 * 1) {LadderLeaf.mk [] (1, 2)}).data := by decide
+-- E.15's `ef_forcing` fired at the witness `(a,b) = (4,2)`, `e·f = 8`
+example : (4 : ℕ) = 4 ∧ (2 : ℕ) = 2 :=
+  ef_forcing (by norm_num) (by norm_num) dvd_rfl dvd_rfl (by norm_num)
+
+/-! ### E.68 [gate] the five-frame threshold regression (Q3's table as `decide`s). -/
+
+-- frame 1 `(2,1,1,2,1,5)`: bound₁ = 1, bound₂ = 7
+example : (RungDatum.mk 2 1 5 2 (by norm_num) (by norm_num) (by decide)
+    (by norm_num)).nextBound 1 = 7 := by decide
+-- frame 2 `(2,1,1,2,2,5)`: bound₁ = 1, bound₂ = 17
+example : (RungDatum.mk 2 2 5 2 (by norm_num) (by norm_num) (by decide)
+    (by norm_num)).nextBound 1 = 17 := by decide
+-- frame 3 `(2,2,1,2,2,7)`: bound₁ = 3, bound₂ = 27.  **DEFECT E-D7**: this frame's level-2
+-- rung is NOT constructible at its corpus threshold `T₂ = D′h = 4` — E.01's node condition
+-- `ℓ*T < u` reads `8 < 7`, which is FALSE (λ = u/ℓ = 3.5 ≤ D′h = 4).  The threshold VALUE is
+-- still checked, at a legal `T` (the recursion does not read `T`) AND formula-directly.
+example : ¬ (2 * 4 < 7) := by decide                        -- the node condition fails
+example : (RungDatum.mk 2 2 7 3 (by norm_num) (by norm_num) (by decide)
+    (by norm_num)).nextBound 3 = 27 := by decide
+example : (2 * 2 - 1) * 7 + 2 * ((2 * 2 - 1) * 1) = 27 := by decide
+-- frame 4 `(3,1,2,2,3,13)`: bound₁ = 4, bound₂ = 73
+example : (RungDatum.mk 2 3 13 6 (by norm_num) (by norm_num) (by decide)
+    (by norm_num)).nextBound 4 = 73 := by decide
+-- frame 5 `(1,2,1,3,2,11)`: bound₁ = 1, bound₂ = 58
+example : (RungDatum.mk 3 2 11 2 (by norm_num) (by norm_num) (by decide)
+    (by norm_num)).nextBound 1 = 58 := by decide
+-- the four base rungs' bound₁ = (e₁f₁−1)h  (frames 1/2, 3, 4, 5)
+example : (RungDatum.mk 2 1 1 0 (by norm_num) (by norm_num) (by decide)
+    (by norm_num)).nextBound 0 = 1 := by decide
+example : (RungDatum.mk 2 2 1 0 (by norm_num) (by norm_num) (by decide)
+    (by norm_num)).nextBound 0 = 3 := by decide
+example : (RungDatum.mk 3 1 2 0 (by norm_num) (by norm_num) (by decide)
+    (by norm_num)).nextBound 0 = 4 := by decide
+example : (RungDatum.mk 1 2 1 0 (by norm_num) (by norm_num) (by decide)
+    (by norm_num)).nextBound 0 = 1 := by decide
+-- E.08's `(‡₂) ⟹ (†₂)` fired boundary-exact at the frame-2 rung `(2,2,5,2)`, `b = 1`,
+-- `k = 17`, `s₀ = 1`, `m₀ = 6`: the hypothesis `(4−1)·5 + 2·1 = 17 ≤ 17` and the
+-- conclusion `(2−1)·5 + 1 = 6 ≤ 6` are both exact.
+example : (2 : ℕ) * 6 + 1 * 5 = 17 := by decide
+example : ((2 * 2 : ℕ) - 1) * 5 + 2 * 1 = 17 := by decide
+example : ((2 : ℕ) - 1) * 5 + 1 = 6 := by decide
+example : (2 - 1) * 5 + 1 ≤ 6 :=
+  lift_threshold_step (RungDatum.mk 2 2 5 2 (by norm_num) (by norm_num) (by decide)
+    (by norm_num)) (b := 1) (k := 17) (m₀ := 6) (s₀ := 1)
+    (by decide) (by decide) (by decide)
+
+end Gates
 
 end LeanspecE
