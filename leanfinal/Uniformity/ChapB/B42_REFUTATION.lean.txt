@@ -1,0 +1,189 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapB.B01
+import Uniformity.ChapB.B04
+import Uniformity.ChapB.B12
+import Uniformity.ChapB.B18
+import Uniformity.ChapB.B34
+
+
+/-!
+# REFUTATION of the frozen signature of chapter-B NODE B.42 (post-A-F.6)
+
+**This file is evidence, not a node.**  Kept as `.lean.txt` (the `B59_REFUTATION.lean.txt`
+convention) so that it is never picked up by `Uniformity/ChapB.lean` or by a build.  To re-run:
+
+```
+cp leanfinal/Uniformity/ChapB/B42_REFUTATION.lean.txt /tmp/b42_counter.lean
+cd leanfinal && lake env lean /tmp/b42_counter.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only, 2026-08-16.
+
+## What is refuted
+
+`leanspec/Leanspec/ChapB.lean`, **B.42** `exists_slope_factorization`, **as re-signed
+(conclusion STRENGTHENED) by amendment A-F.6** (commit 43edcc3d; blueprint NODE B.42):
+
+```lean
+axiom exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
+    (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ) :
+    ∃ (s : Finset (ℕ × ℕ)) (F : ℕ × ℕ → Polynomial O),
+      (∀ p ∈ s, 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2) ∧
+      (∀ p ∈ s, ∀ q ∈ s, p ≠ q → p.1 * q.2 ≠ q.1 * p.2) ∧
+      (∀ p ∈ s, (F p).Monic ∧ IsPure φ (F p) p.1 p.2 ∧ φ.natDegree ∣ (F p).natDegree) ∧
+      f = ∏ p ∈ s, F p ∧
+      (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s))
+```
+
+The witness is `f := φ`, `μ := 1`, at **any** DVR and **any** key: `hf`, `hμ` and `hres` hold
+(`hres` is `pow_one`), and the conclusion is unsatisfiable.
+
+## Why it happens
+
+The key's own `φ`-adic polygon is the single point `(1, 0)`: `dev φ φ 0 = φ %ₘ φ = 0` (so
+`npHgt φ φ 0 = ⊤`), `dev φ φ 1 = 1` (height `0`), and `dev φ φ j = 0` for `j ≥ 2`.  Hence for
+every `u` and every `ℓ > 0`
+
+```
+suppVal φ φ u ℓ = u        and        sideSet φ φ u ℓ = {1}        (`sideSet_key_self`)
+```
+
+— cardinality **one**.  The last conclusion clause is an `↔`, so it forces every `p ∈ s` to have
+a two-element side; combined with clause 1 (`0 < p.2`, `Nat.Coprime p.1 p.2`) it forces `s = ∅`,
+and then clause 4 reads `φ = ∏ p ∈ ∅, F p = 1`, contradicting `0 < φ.natDegree`.
+
+**The missing hypothesis is that the polygon reaches abscissa `0`**, i.e. `dev φ f 0 ≠ 0`
+(equivalently `¬ φ ∣ f`, equivalently `npHgt φ f 0 ≠ ⊤`).  That is the standing hypothesis of the
+classical theorem of the polygon: the sides of `N⁻(f)` cut out the factorisation of the part of `f`
+that is *prime to `φ`*, and `f = φ^k · f'` needs the `φ`-part peeled first.  The chapter already
+uses this predicate elsewhere — B.76's `exists_visible` takes `(h0 : dev φ f 0 ≠ 0)` verbatim, and
+B.41 (the engine this node drives) is immune because its own `hH₀ : npHgt φ f 0 = (H₀ : ℕ∞)`
+already forces `dev φ f 0 ≠ 0`.
+
+## The candidate repair (not signed here)
+
+Add `(h0 : dev φ f 0 ≠ 0)` to B.42's hypothesis list.  With it the polygon runs from `(0, H₀)`
+with `1 ≤ H₀ < ⊤` (`hres` puts `π ∣ dev φ f j` for `j < μ`) to the terminal point `(μ, 0)`
+(B.13), so at least one side of strictly negative slope exists, `s ≠ ∅`, and the degree bookkeeping
+`Σ_{p ∈ s} (F p).natDegree = f.natDegree` is consistent.  **This file does not claim the repaired
+statement is true** — it only pins the defect and the missing hypothesis.  Note that the repair
+must also be threaded to B.42's consumers (B.48, then B.63), which is exactly where the A-F.6
+audit threaded `hu`/`hfd`; `dev φ f 0 ≠ 0` is available at those call sites for the same reason
+(the recursion's factors carry finite left heights).
+-/
+namespace Uniformity.Density.Leaf
+
+open IsLocalRing Polynomial
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-- The `φ`-adic polygon of the key itself is the single point `(1, 0)`: at `u`, `ℓ` with
+`0 < ℓ` the side is `{1}`, of cardinality one. -/
+theorem sideSet_key_self {φ : Polynomial O} (hφ : IsKey φ) {u ℓ : ℕ} (hℓ : 0 < ℓ) :
+    sideSet φ φ u ℓ = {1} := by
+  classical
+  have hdφ : 0 < φ.natDegree := hφ.pos
+  have hone : (1 : Polynomial O).degree < φ.degree := by
+    rw [Polynomial.degree_one]
+    exact Polynomial.natDegree_pos_iff_degree_pos.1 hdφ
+  -- the development of the key: `0` at abscissa `0`, `1` at abscissa `1`, `0` beyond
+  have hdev0 : dev φ φ 0 = 0 := (Polynomial.modByMonic_eq_zero_iff_dvd hφ.monic).2 dvd_rfl
+  have hdiv : φ /ₘ φ = 1 := by
+    have := Polynomial.mul_divByMonic_cancel_left (1 : Polynomial O) hφ.monic
+    rwa [mul_one] at this
+  have hdev1 : dev φ φ 1 = 1 := by
+    rw [dev, hdiv, dev]
+    exact (Polynomial.modByMonic_eq_self_iff hφ.monic).2 hone
+  have hdevj : ∀ j, 2 ≤ j → dev φ φ j = 0 := by
+    intro j hj
+    refine dev_eq_zero_of_lt hφ.monic hdφ φ j ?_
+    calc φ.natDegree = 1 * φ.natDegree := by ring
+      _ < j * φ.natDegree := mul_lt_mul_of_pos_right (by omega) hdφ
+  have hnp0 : npHgt φ φ 0 = ⊤ := npHgt_eq_top_iff.2 hdev0
+  have hnp1 : npHgt φ φ 1 = 0 := by
+    rw [npHgt, hdev1, gaussVal, Polynomial.natDegree_one, Finset.range_one,
+      Finset.inf_singleton, Polynomial.coeff_one_zero, AddValuation.map_one]
+  have hnpj : ∀ j, 2 ≤ j → npHgt φ φ j = ⊤ := fun j hj => npHgt_eq_top_iff.2 (hdevj j hj)
+  have hmem1 : (1 : ℕ) ∈ Finset.range (φ.natDegree + 1) := Finset.mem_range.2 (by omega)
+  -- the weight at every abscissa other than `1` is `⊤`
+  have hwt : ∀ j, j ≠ 1 → ℓ • npHgt φ φ j + ((u * j : ℕ) : ℕ∞) = ⊤ := by
+    intro j hj
+    have hT : npHgt φ φ j = ⊤ := by
+      match j with
+      | 0 => exact hnp0
+      | 1 => exact absurd rfl hj
+      | (j + 2) => exact hnpj (j + 2) (by omega)
+    rw [hT]
+    simp [nsmul_eq_mul, hℓ.ne']
+  -- hence the cleared support value is `u`, attained only at `j = 1`
+  have hsupp : suppVal φ φ u ℓ = ((u : ℕ) : ℕ∞) := by
+    rw [suppVal]
+    refine le_antisymm ?_ (Finset.le_inf fun j hj => ?_)
+    · refine le_trans (Finset.inf_le hmem1) ?_
+      rw [hnp1]
+      simp
+    · rcases eq_or_ne j 1 with rfl | hj1
+      · rw [hnp1]; simp
+      · rw [hwt j hj1]; exact le_top
+  refine Finset.ext fun j => ⟨fun hj => ?_, fun hj => ?_⟩
+  · have hj' : j ∈ Finset.filter (OnSide φ φ u ℓ) (Finset.range (φ.natDegree + 1)) := hj
+    obtain ⟨-, hon⟩ := Finset.mem_filter.1 hj'
+    rw [Finset.mem_singleton]
+    by_contra hj1
+    have hon' : ℓ • npHgt φ φ j + ((u * j : ℕ) : ℕ∞) = suppVal φ φ u ℓ := hon
+    rw [hwt j hj1, hsupp] at hon'
+    exact (ENat.coe_ne_top u) hon'.symm
+  · rw [Finset.mem_singleton] at hj
+    subst hj
+    have hon : OnSide φ φ u ℓ 1 := by
+      show ℓ • npHgt φ φ 1 + ((u * 1 : ℕ) : ℕ∞) = suppVal φ φ u ℓ
+      rw [hnp1, hsupp]
+      simp
+    exact Finset.mem_filter.2 ⟨hmem1, hon⟩
+
+-- `hπ : Irreducible π` is B.42's own hypothesis; it is kept so that the statement below carries
+-- B.42's literal hypothesis list, and is deliberately unused.
+set_option linter.unusedVariables false in
+/-- **The frozen signature of B.42 is refuted at `f = φ`, `μ = 1`.**  Every hypothesis holds, and
+the conclusion is unsatisfiable: the key's own polygon has no side with two points, so the last
+conclusion clause forces `s = ∅`, whence `f = 1` — contradicting `0 < φ.natDegree`. -/
+theorem b42_signature_refuted (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ) :
+    φ.Monic ∧ (0 : ℕ) < 1 ∧
+      φ.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ 1 ∧
+      ¬ ∃ (s : Finset (ℕ × ℕ)) (F : ℕ × ℕ → Polynomial O),
+        (∀ p ∈ s, 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2) ∧
+        (∀ p ∈ s, ∀ q ∈ s, p ≠ q → p.1 * q.2 ≠ q.1 * p.2) ∧
+        (∀ p ∈ s, (F p).Monic ∧ IsPure φ (F p) p.1 p.2 ∧
+          φ.natDegree ∣ (F p).natDegree) ∧
+        φ = ∏ p ∈ s, F p ∧
+        (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
+          (1 < (sideSet φ φ u ℓ).card ↔ (u, ℓ) ∈ s)) := by
+  classical
+  refine ⟨hφ.monic, Nat.one_pos, (pow_one _).symm, ?_⟩
+  rintro ⟨s, F, hpos, -, -, hprod, hlast⟩
+  -- no coprime pair with `0 < ℓ` has a two-element side, so `s` is empty
+  have hempty : s = ∅ := by
+    refine Finset.eq_empty_of_forall_notMem fun p hp => ?_
+    obtain ⟨hp1, hp2, hcop⟩ := hpos p hp
+    have hcard : 1 < (sideSet φ φ p.1 p.2).card :=
+      (hlast p.1 p.2 hp2 hcop).2 (by simpa using hp)
+    rw [sideSet_key_self hφ hp2, Finset.card_singleton] at hcard
+    omega
+  rw [hempty, Finset.prod_empty] at hprod
+  have hd : 0 < φ.natDegree := hφ.pos
+  have h0 : φ.natDegree = 0 := by rw [hprod, Polynomial.natDegree_one]
+  omega
+
+end Uniformity.Density.Leaf
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+#print axioms Uniformity.Density.Leaf.sideSet_key_self
+#print axioms Uniformity.Density.Leaf.b42_signature_refuted
+end AxCheck
