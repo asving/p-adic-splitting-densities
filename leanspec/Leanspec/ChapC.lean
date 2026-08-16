@@ -1473,6 +1473,91 @@ def vPhi2_at_zeta : ℚ := (4 + vPhi1_at_zeta) / 2 -- Φ₂(ζ)² = 16Φ′(ζ)
 #guard 21 > 2 * 10
 #guard 2 * 21 / 2 == 21
 
+/-! ### C.16(b), C.18(a), C.41 — the remaining decidable signed statements, grid-verified.
+All four pass; no defect. Together with `c16_grid`/`c18_grid`/`c28_grid`/`c30_grid`/
+`c31_floor_grid`/`c50_grid`/`c55_grid`/`c10_grid` above, **every arithmetic-layer axiom of the
+signed half of chapter C has been machine-tested on a grid, and exactly one of them is false
+(`jump_drop`, D21).** -/
+
+def c16_unique_grid : Bool := Id.run do
+  let mut ok := true
+  for e₁ in [1:9] do
+    for h in [0:13] do
+      if Nat.gcd h e₁ == 1 then
+        for k in [0:41] do
+          for i in [0:e₁] do
+            if (i * h) % e₁ == k % e₁ then
+              if i != slotIdxN e₁ h k then ok := false
+  return ok
+
+#guard c16_unique_grid
+
+def c18_iff_grid : Bool := Id.run do
+  let mut ok := true
+  for e₁ in [1:7] do
+    for f₁ in [1:6] do
+      for h in [0:9] do
+        if Nat.gcd h e₁ == 1 then
+          for k in [0:80] do
+            let full := (slotWindowN e₁ f₁ h k).length == f₁
+            if full != decide ((slotIdxN e₁ h k + e₁ * (f₁ - 1)) * h ≤ k) then ok := false
+  return ok
+
+#guard c18_iff_grid
+
+def c41_grid : Bool := Id.run do
+  let mut ok := true
+  for e₁ in [1:9] do
+    for h in [0:13] do
+      if Nat.gcd h e₁ == 1 then
+        for a in [0:25] do
+          for b in [0:25] do
+            let sa := slotIdxN e₁ h a
+            let sb := slotIdxN e₁ h b
+            if !(sa + sb == slotIdxN e₁ h (a + b) + e₁ * ((sa + sb) / e₁)) then ok := false
+            if !((sa + sb) / e₁ ≤ 1) then ok := false
+            if !(twistExpN e₁ h (a + b)
+                  == twistExpN e₁ h a + twistExpN e₁ h b + (sa + sb) / e₁) then ok := false
+  return ok
+
+#guard c41_grid
+
+def c41_nsmul_grid : Bool := Id.run do
+  let mut ok := true
+  for e₁ in [1:8] do
+    for h in [0:11] do
+      if Nat.gcd h e₁ == 1 then
+        for f₂ in [1:9] do
+          for t in [0:f₂] do
+            for u₂ in [0:15] do
+              if !(twistExpN e₁ h ((f₂ - t) * u₂)
+                    == (f₂ - t) * twistExpN e₁ h u₂
+                        + (f₂ - t) * slotIdxN e₁ h u₂ / e₁) then ok := false
+  return ok
+
+#guard c41_nsmul_grid
+
 end NumericGate
 
 end LeanspecC
+
+/-
+RESUME (chapter-C leanspec stub gate, 2026-08-16): COMPLETE for everything the blueprint signs.
+82 declarations landed (39 axiom / 3 structure / 2 abbrev / 36 def / 1 theorem / 1 example) +
+a 47-`#guard` numeric gate, all passing; `lake build Leanspec.ChapC` green; zero `sorry`.
+NOT landed, and not landable: the 70 unsigned nodes of D1 and the 19 ellipsis-bearing ones of D2
+(dispositions per node in the section comments above). The file is NOT wired into
+`leanspec/Leanspec.lean` — the orchestrator owns that line.
+
+NEXT ACTIONS, in the order they unblock the fleet:
+ 1. CHAP-C amendment for D21 (`jump_drop`: replace `hL` by `hjump : 2 ≤ ℓ * d_r`) — a false
+    signed statement, stop-the-line class.
+ 2. CHAP-C must SIGN §§6(tail)–13. Until then no fleet agent can fire on C.52–C.126, and §15's
+    own gate order (a)–(d) is unsatisfiable (it names five fragile signatures that do not exist).
+ 3. D19/D20: decide whether `KeyFrame` gains the `GenreDatum` side conditions (`1 ≤ h`,
+    `2 ≤ e₁f₁`, a `Q`), or whether C.14/C.43 route around H §8. This is a GC-5 RE-PLAN.
+ 4. D24: break the `C.94` ⇄ `I.01` deadlock (Display A line 1 is currently vacuous in Lean).
+ 5. D11/D18/D3/D4/D5/D6/D8/D9/D10 are mechanical blueprint repairs; the cures are in this file.
+ 6. Owner: the `C.66` statement below is this gate's drafting, not a transcription — gate (b)
+    statement inspection is owed (D23), and `C.92`/`C.94` have no statement to inspect at all.
+-/
