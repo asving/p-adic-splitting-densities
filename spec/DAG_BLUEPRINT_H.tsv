@@ -447,20 +447,21 @@ BP.H.121	BP.H.116	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	sourc
 BP.H.121	BP.H.117	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121 DEPENDS
 BP.H.121	BP.H.119	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121 DEPENDS
 BP.H.121	BP.H.63	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121 DEPENDS
-BP.H.121	BP.H.67	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121 DEPENDS
-BP.H.121	BP.H.68	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121 DEPENDS
 BP.H.121	EFF.GENIND.45	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121 SOURCE (transcription)
 BP.H.121	EFF.GENIND.152	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121 SOURCE (transcription)
 BP.H.121	EFF.GENIND.153	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121 SOURCE (transcription)
+BP.H.121	BP.H.121d	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121 DEPENDS (A-H.6: clause (iii) prices through the content-weighted beta census)
+BP.H.121	BP.H.28	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121 DEPENDS (A-H.6: clause (iii)'s mu=2 child rate; the non-circular ground instance, NOT H.122)
 BP.H.122	BP.H.119	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.122 DEPENDS
 BP.H.122	BP.H.120	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.122 DEPENDS
 BP.H.122	BP.H.121	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.122 DEPENDS
 BP.H.122	BP.H.30	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.122 DEPENDS
 BP.H.122	BP.H.65	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.122 DEPENDS
 BP.H.122	BP.H.66	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.122 DEPENDS
-BP.H.122	BP.H.71	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.122 DEPENDS
 BP.H.122	EFF.GENIND.150	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.122 SOURCE (transcription)
 BP.H.122	EFF.GENIND.153	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.122 SOURCE (transcription)
+BP.H.122	BP.H.30b	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.122 DEPENDS (A-H.6: the m=3 alpha leg needs the c>=2 sharpening; H.30 alone does not close)
+BP.H.122	BP.H.113	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.122 DEPENDS (A-H.6: the head leg is H.113 EXACT in the local replay)
 BP.H.123	BP.H.100	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.123 DEPENDS
 BP.H.123	BP.H.118	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.123 DEPENDS
 BP.H.123	BP.H.119	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.123 DEPENDS
@@ -484,3 +485,12 @@ BP.H.124	EFF.GENIND.60	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	s
 BP.H.124	HYP.36	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 structural: FullClusterRateBound at m>=4 rides the CS stage rows (HYP.36 CARRY)
 BP.H.124	HYP.81	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 structural: the mu>=3 sigma-decision leg of the carried hypothesis (first live n=6)
 BP.H.124	HYP.82	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 structural: the n>=8 tower leg of the carried hypothesis (GENHN-TOW-1)
+BP.H.121d	BP.H.106	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121d DEPENDS (A-H.6)
+BP.H.121d	BP.H.108	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121d DEPENDS (A-H.6)
+BP.H.121d	BP.H.109	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121d DEPENDS (A-H.6)
+BP.H.121d	BP.H.110	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121d DEPENDS (A-H.6)
+BP.H.121d	BP.H.111	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121d DEPENDS (A-H.6)
+BP.H.121d	BP.H.112	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121d DEPENDS (A-H.6)
+BP.H.121d	BP.H.117	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121d DEPENDS (A-H.6)
+BP.H.121d	BP.H.118	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.121d DEPENDS (A-H.6: betaChild_mult_lt gives the empty m=2 case)
+BP.H.30b	BP.H.30	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H NODE H.30b DEPENDS (A-H.6: same skeleton, sharpened at c>=2)

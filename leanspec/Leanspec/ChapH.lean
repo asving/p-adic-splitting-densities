@@ -2761,24 +2761,76 @@ axiom uCluster_alpha_leg {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuati
       = ∑ k ∈ (Finset.range N).filter (fun k => 1 ≤ k ∧ m * k ≤ N - 1),
           (residueCard O - 1) * residueCard O ^ (k * clusterC m) * uCluster O π m (N - m * k)
 
-/-- **H.121 (clause iii, the β leg — hbeta at `(K', B', c') = (1, 0, 1)`).** Certified shape:
-the battery measures `K' ≤ 0.0004` at this envelope (`m ∈ {2,3}`, both rings), so `K' = 1` is
-safe; the proof route is the degree-descent (children have degree `< m`) through H.63/H.67/
-H.68. Stated unnormalized. -/
+/-- **H.121 (clause iii, the β leg — hbeta at `(K', B', c') = (1/3, 1, 1)`) [RE-SIGNED: A-H.6].**
+Stated unnormalized. The proof route is the degree-descent (children have degree `< m`) through
+H.116 (ii)'s fibration, H.63's union bound, the `μ = 2` ground rate (H.28, equivalently the
+landed `uClusterNorm_rateSpecies_two`), and **H.121d**'s content-weighted β census.
+
+⚠ **The frozen envelope, preserved (A-H.6 §1a)** — TRUE but SUPERSEDED, and it can never
+certify H.122 (FINDING F-H17.2):
+
+    ≤ (N : ℝ) ^ m * (residueCard O : ℝ) ^ (m * (N - 1)) * ((residueCard O : ℝ) ^ (N - 2))⁻¹
+
+The re-signed envelope IMPLIES it at every `N ≥ 1`, so this is a STRENGTHENING; H.122 is its
+only consumer anywhere in the corpus. The finding's own repair candidate
+`β̂(N) ≤ (m−1)·Q^{−(N−1)}` (no polynomial factor) is **REFUTED** — first failure at
+`q = 2, N = 32` and `q = 3, N = 30`; the true β mass is `Θ(N·Q^{−(N−1)})`. Certificate:
+`verification/AH6_beta_envelope_check.py` (54/54, exit 0), margin `> 4.3×` at every tested
+cell. -/
 axiom uCluster_beta_leg {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] {π : O}
     (hπ : Irreducible π) {m : ℕ} (hm : 2 ≤ m) (hm3 : m ≤ 3) (N : ℕ) (hN : 1 ≤ N) :
     (Nat.card {c : ClusterState O m N //
         IsBetaState π c ∧ ClusterUndecided O π m N c} : ℝ)
-      ≤ (N : ℝ) ^ m * (residueCard O : ℝ) ^ (m * (N - 1))
-          * ((residueCard O : ℝ) ^ (N - 2))⁻¹
+      ≤ (1 / 3 : ℝ) * (N : ℝ) * (residueCard O : ℝ) ^ (m * (N - 1))
+          * ((residueCard O : ℝ) ^ (N - 1))⁻¹
+
+/-- **H.121d [NEW NODE: A-H.6].** The CONTENT-WEIGHTED β CENSUS — the pricing step that turns
+H.116 (ii)'s fibration plus the `μ = 2` child rate into clause (iii)'s LINEAR envelope.
+Weighting each β state by `Q^D` at its own child content `D = betaContent c k` costs at most a
+third of the state census. Certified sharp value `Q/(Q²+Q+1) ≤ 2/7 < 1/3` (A-H.6 §2.2, checks
+`C4`/`D1–D5`), from the three β polygon shapes at `m = 3`; at `m = 2` the β set is empty and
+every summand is `0`. The range `Finset.range N` is exact: `betaContent c k ≤ N − 1` on
+non-drain states (H.108's `betaContent_le`), and β states are non-drain. -/
+axiom beta_content_census {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m : ℕ} (hm : 2 ≤ m) (hm3 : m ≤ 3) (N : ℕ) (hN : 1 ≤ N) :
+    ∑ D ∈ Finset.range N,
+        (Nat.card {c : ClusterState O m N //
+            IsBetaState π c ∧ ∃ (μ k : ℕ) (z : ResidueField O),
+              HasChildAt π c μ k z ∧ betaContent c k = D} : ℝ)
+          * (residueCard O : ℝ) ^ D
+      ≤ (1 / 3 : ℝ) * (residueCard O : ℝ) ^ (m * (N - 1))
+
+/-- **H.30b [NEW NODE: A-H.6].** H.30 sharpened where the slope has room: at `c ≥ 2` the
+α-geometric sum is `≤ 1/3` (true value `(Q−1)/(Q^c − 1) ≤ 1/(Q+1)`; `1/3` is TIGHT at
+`(Q,c) = (2,2)`). H.122's `m = 3` leg needs this — H.30's `Σ ≤ 1`, tight at `c = 1`, does NOT
+close the induction once the β term is linear in `N`. H.30 is NOT retired: the `m = 2` leg
+fires at `clusterC 2 = 1`, where `1` is the true value. LANDING SITE: alongside H.30 in
+`leanfinal/Uniformity/ChapH/H30.lean`; namespace `Uniformity.Density.Induction`. -/
+axiom alpha_geom_partial_le_third (Q c : ℕ) (hQ : 2 ≤ Q) (hc : 2 ≤ c) (n : ℕ) :
+    ∑ k ∈ Finset.range n, ((Q : ℝ) - 1) * ((Q : ℝ) ^ (c * (k + 1)))⁻¹ ≤ 1 / 3
 
 /-! ### H.122 — the cluster rate species -/
 
 /-- **H.122.** The conservative cluster complement has the `(A2-RATE)` species at
 `(K, B, c) = (1, 1, 1)` for `2 ≤ m ≤ 3` — `EFF.GENIND.150`'s ground sharpness, certified on
-true data (battery P3). Proof route: H.121's legs closed by the H.71 lexicographic induction
-at the UNBOUNDED windowed α-range (PA-H17.1), constants via H.30/H.66. -/
+true data (battery P3). **STATEMENT BYTE-UNCHANGED; ROUTE RE-SIGNED (A-H.6 §4).**
+
+`rate_close` (H.71) is **REFUTED as a route to these constants**: at any legs it returns
+`RateSpecies Q (1+K') (m+B'+1) (c'+1)` (so `B ≥ m+1 ≥ 3`, `c ≥ 2`) and H.66's
+`RateSpecies.mono` moves constants UPWARD only — `(1,1,1)` is unreachable through it, before
+or after PA-H17.1 (which repairs the RANGE, F-H17.1, not the constants). The SIGNED route is
+the local replay, split on `m`:
+* `m = 2` — LANDED unconditionally as `uClusterNorm_rateSpecies_two`
+  (`leanfinal/Uniformity/ChapH/H122m2.lean`): the β bucket is EMPTY, so `û(N) ≤ (N−1)Q^{−(N−1)}`;
+* `m = 3` — strong induction: `û(N) ≤ [1 + (N−3)⁺/3 + N/3]·Q^{−(N−1)} ≤ N·Q^{−(N−1)}`, from
+  H.113 (head, exact) + H.121 (ii) with **H.30b** at `clusterC 3 = 3 ≥ 2` (α) + the re-signed
+  H.121 (iii) (β).
+
+⚠ FENCE: clause (iii)'s `(1/3)N` term does NOT close `m = 2` (H.30 is tight at `clusterC 2 = 1`,
+and `1 + (N−2) + N/3 ≤ N` fails from `N = 4`). One uniform `2 ≤ m ≤ 3` induction through
+clause (iii) is impossible; the `m = 2` leg must use the EMPTY β bucket. -/
 axiom uClusterNorm_rateSpecies {O : Type} [CommRing O] [IsDomain O]
     [IsDiscreteValuationRing O] [Finite (ResidueField O)]
     [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m : ℕ}
