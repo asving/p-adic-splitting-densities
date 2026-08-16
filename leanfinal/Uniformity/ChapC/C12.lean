@@ -132,7 +132,7 @@ open Uniformity.Density.Leaf IsLocalRing
 
 variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
 
-/-! ### Private helpers (stub-gate defect **D9**; C.04's copies, re-declared — see the note above) -/
+/-! ### Private helpers (stub-gate defect **D9**; C.04's copies, re-declared — see above) -/
 
 /-- **D9 (cured).** The order-0 key `X` is an order-1 key in B.01's sense. C.04's private copy,
 re-declared because private declarations are not importable. -/

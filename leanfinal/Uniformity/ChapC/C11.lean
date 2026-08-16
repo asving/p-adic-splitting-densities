@@ -7,7 +7,7 @@ import Uniformity.ChapC.C06
 import Uniformity.ChapC.C09
 
 /-!
-# Uniformity.ChapC.C11 — `dv2Hgt`, `dv2Pin`, `dv2Supp`: the level-2 heights, i.e. THE tower recursion
+# Uniformity.ChapC.C11 — `dv2Hgt`, `dv2Pin`, `dv2Supp`: the level-2 heights (THE tower recursion)
 
 **Chapter C, NODE C.11** [def] [fresh] (`blueprint/CHAP-C_tower_grammar.md` §3, the level frame
 and the level dictionary; the A-C.1 amendment set governs). ENV-C1. Three signed declarations,

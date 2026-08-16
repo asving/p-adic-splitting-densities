@@ -92,7 +92,7 @@ thresholds that land here:
 * `(e₁, f₁, h) = (3, 1, 2)`, `k = 1` (C.17's empty-window row): `slotIdx 1 = 2` (as `2·2 % 3 = 1`),
   so (i)'s threshold reads `(2 + 3·0)·2 = 4 ≤ 1` — false, and indeed `T(1) = ∅ ≠ range 1`. (ii)'s
   bound reads `(3·1 − 1)·2 = 4 ≤ 1` — also false, so (ii) is silent here, as it must be. **The
-  same frame at `k = 0` separates the two clauses**, which is the check worth having: `slotIdx 0 = 0`,
+  same frame at `k = 0` separates the two clauses**, the check worth having: `slotIdx 0 = 0`,
   so (i) reads `0 ≤ 0` — true, and `T(0) = {0} = range 1` is full; (ii)'s uniform bound still reads
   `4 ≤ 0` — false. So (ii) is *strictly* sufficient-only, exactly as its statement claims, and (i)
   is not a repackaging of it.
