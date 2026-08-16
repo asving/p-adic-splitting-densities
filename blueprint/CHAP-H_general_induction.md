@@ -8595,3 +8595,59 @@ composer). D.62/D.63 (concurrent Display-A re-signing): no contact, H89w imports
 modules only.
 
 *Sections §§0–17 and A-H.1/A-H.2 are byte-unchanged by this append.*
+
+---
+
+## AMENDMENT A-H.4 (2026-08-16, dated append; unit OM-7) — THE `μ = 3` STAGE-σ DICTIONARY
+## APPENDIX `H73w.lean`: ORCHESTRATOR ITEM O-1 BOOKED (`[GENHN-HE(μ = 3)]`'s TRANSCRIPTION OWNER)
+
+**Provenance.** CHAP-I's honesty item I-11(i) + orchestrator item O-1: *"book the
+`[GENHN-HE(μ = 3)]` transcription (THEOREM HE3.A at `μ = 3`, first-live `n = 6, 7` —
+corpus-unconditional, NO owner in any committed chapter)"* — the missing owner CHAP-I's §3.7
+row HYP.81 records. This amendment books it as an **H.73-adjacent appendix file** (the
+H09w/H89w precedent: header contract, no blueprint node number), landed
+`leanfinal/Uniformity/ChapH/H73w.lean` (sorry-free; footprints Lean-core, several
+declarations axiom-FREE; registered in the `ChapH.lean` roll-up; build green, 8,565 jobs).
+Unit record with per-step certifications:
+`docs/openmath-campaign/OM-7_genhn-he-tow_2026-08-16.md`; numeric leg
+`verification/openmath/om7_cert.py` (97 rows, VERDICT GREEN, 6/6 planted teeth fired — the
+FIRST embedded `n = 7` rows and the first equal-characteristic `μ = 3` rows anywhere in the
+HE3 orbit, plus the first `f₁ ≥ 2` frame at `D′ = 4` and the first `h = 3` frame).
+
+**What lands (source: `EFF.HE3.16`/`EFF.HE3.17`, the v3 ledger scope split).**
+* **the transport** `heTransport` — HE3.A's re-basing `(e, f) ↦ (e₁e, f₁f)` on stage-type
+  multisets, with its degree law `heTransport_degree` (`= keyDeg · stageMass`);
+* **the `μ = 3` dictionary** `StageLeaf3`/`stageType3`/`stageSigma3` — the five decided
+  types `{(3,1)}, {(1,3)}, {(1,1),(2,1)}, {(1,1),(1,2)}, {(1,1)³}` and their σ-blocks,
+  with degree conservation `stageSigma3_degree` (the H.74 analogue, block degree `3·keyDeg`);
+* **five-type exhaustiveness** `stageType3_complete` — positive pairs, stage mass 3 ⟹ one
+  of the five (no sixth shape; proved by multiset induction, not by enumeration axiom);
+* **the μ = 2 consistency theorem** `stageSigma_eq_heTransport` — H.73's landed `stageSigma`
+  IS the transport at the three `μ = 2` types (`EFF.HE3.03`'s no-circularity cross-check as
+  a theorem: one law, two multiplicities);
+* **the HE3.B unconditionality arithmetic** — `no_stageCS_below_four` +
+  `composite_stage_free_mu3` (GENIND.A(IV): stage-CS events force `μ ≥ 4`, so `μ ≤ 3` is
+  composite-stage-free), `stageCS_strict_descent` (`μ′ ≤ μ/2`), `branch_ii_needs_mu_four`
+  (HE3-BOX-6 branch (ii) unreachable below `μ = 4`), `mu3_first_live` (`n = D′μ ≥ 6`, sharp
+  at `genreE3`), `mu4_lives_at_eight` (the conditional region starts at `n = 8`).
+
+**The trust boundary is H.73's own, verbatim standard.** *"The σ decision itself is carried
+by the executable regression …, not by this file"*: H73w transcribes the dictionary, the
+transport and the arithmetic; the ANALYTIC σ-decision content (that a decided leaf's lifts
+take the dictionary value) stays with the corpus proof (HE3 §S3–S6) and its machine teeth
+(HE-SIG 947 jobs; om7_cert 97 rows). Nothing in H73w asserts any particular polynomial has
+any particular σ.
+
+**Fences carried unchanged (nothing weakened, nothing discharged).**
+(i) **HYP.81 stays CARRY** as a Display-A conjunct: its `μ = 3` slice now has a named owner
+and fresh teeth; its `μ ≥ 4` slice rides HE3-BOX-6 branch (ii) = HYP.143 (OM-10's family),
+untouched here. (ii) **Chapter E's trap E-3 is unaffected**: E still carries
+`hσ₃`/`BLOCKED: HYP.81` and never decides a `μ ≥ 3` σ; what changes is that CHAP-I's I.06
+carrier now has a transcription owner for the `μ = 3` slice to cite. (iii) **The `D′ = 1`
+leg** (LEMMA HE3-4D1, R8-3 — needed by HE3.B's "every `n ≤ 7`") is outside `GenreDatum`'s
+grammar (H.01 `hkey`: *"else the event is order-1 α/β"*) and is NOT transcribed — the
+order-1 layer owns it; recorded here so no reader mistakes H73w for covering it.
+(iv) `stageSigma3` is σ-valued relative to the ambient, like H.73: tower composition stays
+H.78's `composedSigma`.
+
+*Sections §§0–17 and A-H.1/A-H.2/A-H.3 are byte-unchanged by this append.*

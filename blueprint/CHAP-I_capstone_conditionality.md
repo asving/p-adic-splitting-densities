@@ -1981,6 +1981,47 @@ does not formalize `GENHN-CAP-GEN`'s reader rule (CHAP-H §16 item 3 upheld). I.
 body gains concrete general clauses to bind to at resolution time; I.05/I.14's text is
 untouched. This addendum adds no new ledger row.
 
+---
+
+## ADDENDUM (2026-08-16, unit OM-7) — ORCHESTRATOR ITEM O-1 DISCHARGED: `[GENHN-HE(μ = 3)]`
+## HAS A TRANSCRIPTION OWNER; HYP.82's THRESHOLD NODE PROVED
+
+**O-1 (honesty I-11(i)) is BOOKED.** The `[GENHN-HE(μ = 3)]` transcription (THEOREM HE3.A at
+μ = 3, first-live `n = 6, 7`, corpus-unconditional, previously NO owner in any committed
+chapter) now lives at `leanfinal/Uniformity/ChapH/H73w.lean` — an H.73-adjacent appendix
+file (H09w/H89w precedent), registered by CHAP-H AMENDMENT A-H.4. Owner-home adjudication
+(the §8 candidates): a chapter-E instance section violates E's trap E-3 (E never
+proves/transcribes μ ≥ 3 σ-decision content); a chapter-B appendix or C-side node is
+wrong-scoped (B owns order-1 leaves; C owns `n ≥ 8` towers; the μ = 3 slice is the
+`n = 6, 7` composite-stage case, i.e. H's stage grammar); the H.73-adjacent home types
+completely against landed H.01/H.02/H.73/H.74 vocabulary. Landed content: the HE3.A
+transport `(e, f) ↦ (e₁e, f₁f)` with its degree law; the five-type μ = 3 dictionary with
+degree conservation (the H.74 analogue); five-type EXHAUSTIVENESS; the μ = 2 consistency
+theorem (H.73's `stageSigma` = the transport's μ = 2 shadow — the no-circularity
+cross-check as a theorem); HE3.B's unconditionality arithmetic (stage-CS ⟹ μ ≥ 4, strict
+descent, branch-(ii) ⟹ μ ≥ 4, first-live `n = 6` sharp / `μ ≥ 4` at `n ≥ 8`). Trust
+boundary = H.73's own standard verbatim: the σ-DECISION analytics stay corpus-side, toothed
+by `verification/openmath/om7_cert.py` (97 rows GREEN, 6/6 planted mutants: the FIRST
+embedded `n = 7` rows — closing `EFF.HE3` source defect 9 — the first equal-characteristic
+μ = 3 rows — closing HE3-BOX-4b's ℤ_p-only gap — the first `f₁ ≥ 2` frame at `D′ = 4`, and
+the first `h = 3` frame) plus HE-SIG (947). **I.06's row updates**: its docstring's
+"transcription owner UNASSIGNED (orchestrator O-1)" is resolved to H73w at chapter I's next
+edit pass; the stub body and the BLOCKED-consumer discipline are UNCHANGED — `μ ≥ 4` still
+rides HYP.143 (E trap (iii)/GC-5 untouched), and the Display-A conjunct stays on the §4/S3
+open surface as a carried hypothesis. This addendum discharges an ORCHESTRATION item, not
+a conjunct.
+
+**I.07-adjacent**: NODE C.93's clause (i) — the threshold `n = D_r·μ_r ≥ 2^{r+1}` the
+HYP.82 census rests on — is PROVED at the A-C.1-signed signature verbatim
+(`leanfinal/Uniformity/ChapC/C93.lean`, `tower_first_live` + sharpness; Lean-core; wired
+into the ChapC roll-up by the fleet's layer-close-13 regeneration, commit `da716fae`). Census disposition
+re-verified at HEAD (C-H4's table; depth ≥ 4 claimed by no node); the open remainder
+(HYP.67–71/78–80/142/143/144-BOX-2) verified `n ≥ 8`-scoped row-by-row — nothing leaks
+below the `if n ≥ 8` conjunct. HYP.82 stays CARRY.
+
+Unit record: `docs/openmath-campaign/OM-7_genhn-he-tow_2026-08-16.md`; ledger ARC NOTEs at
+HYP.81/HYP.82 (dispositions unchanged). This addendum adds no new ledger row.
+
 <!-- SENTINEL: BP-I END OF FILE -->
 
 
