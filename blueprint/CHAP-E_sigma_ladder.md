@@ -91,11 +91,21 @@ appears only where a node counts or names `Res`/`Coeff`/`residueCard`/`DecidedAt
 
 ### 0.3 Names that already exist and must not be redefined
 
-**From `Uniformity.Density` (chapter A, the landed kernel).** Consumed by name:
-`FactorizationType`, `FactorizationType.degree`, `FactorizationType.degree_mk_add`, `typeOf`,
-`typeOf_degree`, `typeOf_mul`, `monicFactors`, `efPair`, `ramIndexOf`, `inertiaDegOf`,
-`Coeff`, `Res`, `proj`, `residueCard`, `two_le_residueCard`, `DecidedAt`, `decidedAt_of_congr`,
-`UniformityStatement`, `UniformityStatement.ofDecided`, `DrainageAt`.
+**From chapter A's landed kernel — IN TWO NAMESPACES** *[repaired: A-E.1/E-D8 — the committed
+list put every name under `Uniformity.Density`; four of them live one namespace UP, and
+`Uniformity.Density.FactorizationType` does not resolve]*. Consumed by name:
+
+* **in `Uniformity`** (`Uniformity/Density/LocalData.lean:43`, `Density/TypeOfAlgebra.lean:72`):
+  `FactorizationType`, `FactorizationType.data`, `FactorizationType.degree`,
+  `FactorizationType.ext`, `FactorizationType.degree_mk_add`;
+* **in `Uniformity.Density`:** `typeOf`, `typeOf_degree`, `typeOf_mul`, `monicFactors`,
+  `efPair`, `ramIndexOf`, `inertiaDegOf`, `Coeff`, `Res`, `proj`, `residueCard`,
+  `two_le_residueCard`, `DecidedAt`, `decidedAt_of_congr`, `UniformityStatement`,
+  `UniformityStatement.ofDecided`, `DrainageAt`.
+
+Inside `namespace Uniformity.Density.Ladder` the short name `FactorizationType` resolves (the
+ambient `Uniformity` prefix is open), but every FULLY-QUALIFIED mention in a signature must use
+`Uniformity.FactorizationType`.
 
 **From `Uniformity.Density.Induction` (CHAP-H §8, the sanctioned slice H.51–H.58 ONLY).**
 `class_sep`, `class_sep_bij` (H.51); `slot_height_injective`, `slot_min_unique` (H.52);
@@ -133,7 +143,8 @@ The terminal supply — what H's §11 dictionary and the drainage recursions con
 named prominently in §2 and §7: the **ladder transport laws** (`ladderSigma` + its degree
 conservation `ladderSigma_degree`, the rung-composition law `rungStep_sigma`) and the
 **stage-transport carriers** (`RungInterface` instances). GC-4 binds every σ output: every
-σ-valued thing in this chapter is a `Uniformity.Density.FactorizationType` produced by a named
+σ-valued thing in this chapter is a `Uniformity.FactorizationType` *[repaired: A-E.1/E-D8 — the
+landed carrier sits in `Uniformity`, NOT `Uniformity.Density`]* produced by a named
 dictionary function shipping a degree-conservation lemma.
 
 ---
@@ -513,26 +524,36 @@ structure LadderData where
   base : RungDatum
   rungs : List RungDatum
   hbase : base.T = 0
-  hchain : List.Chain rungFollows base rungs
+  -- [repaired: A-E.1/E-D2] was `List.Chain rungFollows base rungs`: `List.Chain` is DEPRECATED
+  -- at our pin and its replacement has a different type (no head argument).  The two forms are
+  -- DEFINITIONALLY equal (`List.Chain R a l` reduces to `List.IsChain R (a :: l)`; machine-checked
+  -- at the amendment by `exact?` returning `Eq.to_iff rfl`), so this is a spelling change only.
+  hchain : List.IsChain rungFollows (base :: rungs)
 
 /-- The key degree at level `i+1` (`D₀` the seed; `D_{i+1} = D_i·L_i`). -/
 def LadderData.degAt (Λ : LadderData) (D₀ : ℕ) : ℕ → ℕ
   | 0 => D₀ * Λ.base.slotCount
-  | (i+1) => Λ.degAt D₀ i * ((Λ.rungs.get? i).map RungDatum.slotCount |>.getD 1)
+  -- [repaired: A-E.1/E-D1] was `(Λ.rungs.get? i)`: `List.get?` DOES NOT EXIST at our pin.
+  | (i+1) => Λ.degAt D₀ i * ((Λ.rungs[i]?).map RungDatum.slotCount |>.getD 1)
 
 /-- The (LIFT) threshold at level `i+1` (`EFF.HE7.23`). -/
 def LadderData.boundAt (Λ : LadderData) : ℕ → ℕ
   | 0 => Λ.base.nextBound 0
-  | (i+1) => ((Λ.rungs.get? i).getD Λ.base).nextBound (Λ.boundAt i)
+  -- [repaired: A-E.1/E-D1] was `(Λ.rungs.get? i)`
+  | (i+1) => ((Λ.rungs[i]?).getD Λ.base).nextBound (Λ.boundAt i)
 ```
 
-**⚠ SIGNATURE NOTE.** The `get?`/`getD` spelling is a contract for TOTALITY, not elegance; a
-fleet agent may land the recursion as a `List.foldl` over `rungs.take i` with a proved
-equivalence, provided `degAt`/`boundAt` keep these names and types. The `getD 1`/`getD Λ.base`
-defaults are never consulted at in-range indices (the consumers all carry `i < rungs.length`
-hypotheses); an out-of-range read is not a corpus configuration.
+**⚠ SIGNATURE NOTE.** *[repaired: A-E.1/E-D1 — the spelling is `l[i]?`, not `get?`]* The
+`l[i]?`/`getD` spelling is a contract for TOTALITY, not elegance; a fleet agent may land the
+recursion as a `List.foldl` over `rungs.take i` with a proved equivalence, provided
+`degAt`/`boundAt` keep these names and types. The `getD 1`/`getD Λ.base` defaults are never
+consulted at in-range indices (the consumers all carry `i < rungs.length` hypotheses); an
+out-of-range read is not a corpus configuration.
 
-**DEPENDS.** E.01, E.02 · mathlib `List.Chain`, `List.get?`.
+**DEPENDS.** E.01, E.02 · mathlib `List.IsChain` (+ its constructors `List.IsChain.cons_cons`,
+`List.IsChain.singleton` — the gate frames of E.65/E.68 build through them), the `l[i]?`
+`getElem?` notation *[repaired: A-E.1/E-D1+E-D2 — was "`List.Chain`, `List.get?`"; neither name
+is usable at the pin: `List.get?` is gone and `List.Chain` is deprecated with a changed type]*.
 
 **PROOF.** definitional.
 
@@ -572,7 +593,8 @@ theorem LadderData.degAt_eq_prod (Λ : LadderData) (D₀ : ℕ) (i : ℕ)
 
 **PROOF.**
 1. Induction on `i`. Base: `degAt D₀ 0 = D₀ * base.slotCount` and the list is `[base]` ✓.
-2. Step: `take (i+1) = take i ++ [rungs.get i]` (in range by `hi`); `List.prod_append` and the
+2. Step: `take (i+1) = take i ++ [Λ.rungs[i]]` (in range by `hi`; *[repaired: A-E.1/E-D1 — the
+   `get`-family spelling is the `l[i]` notation at our pin]*); `List.prod_append` and the
    recursion's multiplier agree; `ring`-normalize the association.
 
 **SIZE.** 16 lines.
@@ -1353,6 +1375,12 @@ theorem midPeel {O : Type*} [CommRing O] [IsDomain O] {G Φ : Polynomial O} {D �
         (Φ.map (algebraMap O (FractionRing O)))
 ```
 
+**⚠ SIGNATURE NOTE — THE SIGNED CONTRACT IS (i)+(ii) ONLY** *[added: A-E.1/E-D13]*. STATEMENT
+clause (iii) (`ν = 1 ⟹ G′ = 1`) has NO conjunct in the SIGNATURE above and none is added: it
+FOLLOWS from the signed conclusion (a monic polynomial of `natDegree D*(1−1) = 0` is `1`,
+`Polynomial.Monic.natDegree_eq_zero`), so a consumer needing it derives it in one line rather
+than receiving it. Recorded so no fleet agent reads the missing conjunct as a transcription loss.
+
 **DEPENDS.** E.11 (the coprimality spelling) · mathlib `Polynomial.Monic.dvd` factor API
 (`Polynomial.eq_of_monic_of_associated`, `Squarefree`, `EuclideanDomain.gcd` over the fraction
 field), `Polynomial.Monic.natDegree_mul`.
@@ -1413,8 +1441,19 @@ namespace Uniformity.Density.Ladder
 /-- The `(RANK)` state: `(deg, μ, σ)` ordered lexicographically (`EFF.T2.27`). -/
 def LadderState (W : Type*) := ℕ ×ₗ (ℕ ×ₗ W)
 
+-- [repaired: A-E.1/E-D5] **DATA ROW — A BODY IS OWED, AND IT IS DISPLAYED HERE.**  The committed
+-- block stopped at the type, so this row is a def-class declaration with no body; §12(b) did not
+-- list it either.  The stub gate could only land it as an `axiom` (an `axiom` cannot carry
+-- `instance`), which makes the relation OPAQUE — and with an opaque relation the three
+-- `rank_decreases_*` lemmas below and E.20's engine are UNPROVABLE (they speak about an
+-- unspecified relation).  The fleet lands THIS body FIRST, before E.20 (§12 ordering note):
 instance ladderState_wf {W : Type*} (r : WellFoundedRelation W) :
-    WellFoundedRelation (LadderState W)
+    WellFoundedRelation (LadderState W) :=
+  letI := r; (inferInstance : WellFoundedRelation (ℕ ×ₗ (ℕ ×ₗ W)))
+  -- machine-checked to elaborate at our pin (amendment A-E.1/E-D5 probe): mathlib's `×ₗ`
+  -- `WellFoundedRelation` instance is found twice, so the `Prod.Lex` body is one line.  A fleet
+  -- agent may instead write the `Prod.Lex`/`Prod.lex_wf` pair explicitly — but the relation must
+  -- be TRANSPARENT enough for the three lemmas below to be provable.
 
 theorem rank_decreases_of_deg_lt {W : Type*} (r : WellFoundedRelation W)
     {s s' : LadderState W} (h : s'.1 < s.1) : (ladderState_wf r).rel s' s
@@ -1433,9 +1472,13 @@ theorem rank_decreases_of_sec {W : Type*} (r : WellFoundedRelation W)
 
 **PROOF.**
 1. Instance: `Prod.Lex` of well-founded relations is well-founded (mathlib
-   `WellFounded.prod_lex`, twice).
+   `WellFounded.prod_lex`, twice) — *[repaired: A-E.1/E-D5: at our pin the instance is found by
+   `inferInstance` after `letI := r`; the body is in the SIGNATURE above and is OWED, not
+   optional]*.
 2. The three decrease lemmas: constructors of `Prod.Lex` (left / right-left / right-right),
-   after rewriting the equal components.
+   after rewriting the equal components. *[A-E.1/E-D5: these three are provable ONLY against the
+   real body — an `axiom`-stubbed relation makes them unprovable, which is exactly why the
+   ordering note in §12 puts the body before E.20.]*
 
 **SIZE.** 24 lines.
 
@@ -1940,6 +1983,11 @@ developments, given E.10's laws one level down.
 **SIGNATURE.**
 ```lean
 namespace Uniformity.Density.Ladder
+-- [repaired: A-E.1/E-D4] `open scoped Classical` is REQUIRED for this node: the in-class guard
+-- spelled out below decides `c s ≠ 0` for `c s : Polynomial O`, which has no `Decidable`
+-- instance.  A landed form must either carry this `open scoped Classical` (scoped to the
+-- declaration, as the gate does with a `section`) or be re-written `dite`-free.
+open scoped Classical
 
 /-- The twisted slot specification (R1-b): the value/residue read of a slot family at the
 next level, as data + laws. `η` generates `K'` over `K` with minpoly degree `g`. -/
@@ -1954,9 +2002,17 @@ theorem twisted_slot_spec {O : Type*} [CommRing O] {K K' : Type*} [Field K] [Fie
     {k m₀ s₀ : ℕ} (hs₀ : s₀ < R.ℓ) (hk : R.ℓ * m₀ + s₀ * R.u = k)
     (hmin : ∀ s < R.slotCount, c s ≠ 0 → ∀ v : ℤ, C.hgt (c s) = (v : WithTop ℤ) →
       (k : ℤ) ≤ R.ℓ * v + s * R.u)
+    -- [repaired: A-E.1/E-D4] two cast slips: the right-hand side was ascribed `: ℤ` against a
+    -- `WithTop ℤ`-valued equation, and `R.u` (a `ℕ`) was multiplied into an `ℤ` expression.
     (hatt : ∃ s < R.slotCount, c s ≠ 0 ∧
-      C.hgt (c s) = ((m₀ : ℤ) - (((s - s₀) / R.ℓ : ℕ) : ℤ) * R.u : ℤ)) :
-    seamSumT (fun t => if h : _ then C.dig (c (s₀ + R.ℓ * t)) else 0) ϑ η ≠ 0
+      C.hgt (c s) = (((m₀ : ℤ) - (((s - s₀) / R.ℓ : ℕ) : ℤ) * (R.u : ℤ)) : WithTop ℤ)) :
+    -- [repaired: A-E.1/E-D4] the elided `if h : _` was a metavariable-typed guard (unelaborable);
+    -- the node's own SIGNATURE NOTE licensed the stub to fix the spelling, and this IS that
+    -- spelling — the in-class guard written out, with `t`'s `ℕ`-coercions explicit.  No strength
+    -- change: the `else 0` branch is the off-attainer value the NOTE already prescribed.
+    seamSumT (fun t : Fin R.g =>
+        if s₀ + R.ℓ * (t : ℕ) < R.slotCount ∧ c (s₀ + R.ℓ * (t : ℕ)) ≠ 0
+          then C.dig (c (s₀ + R.ℓ * (t : ℕ))) else 0) ϑ η ≠ 0
     -- (the full spec bundles the class location E.28(ii) and the attainment
     --  criterion E.28(iii); see the SIGNATURE NOTE)
 ```
@@ -1966,9 +2022,12 @@ formalization-trivial decomposition: (a) E.28 locates the class and characterize
 (b) the `γ`-vector is `dig ∘ c` on the class (zero off-attainers by E.10's `dig`-laws); (c)
 E.27 kills cancellation. The fleet lands the node as a `structure`-valued spec
 (`TwistedSlotRead`: fields `k, s₀, γ, hclass, hattain, hkill`) if the flat theorem fights
-elaboration — RE-PLAN with the orchestrator booking `E29a`, per GC-5. The `if h : _` in the
+elaboration — RE-PLAN with the orchestrator booking `E29a`, per GC-5. ~~The `if h : _` in the
 display abbreviates the in-class guard `s₀ + ℓt < L ∧ c (s₀+ℓt) ≠ 0`; the stub stage fixes the
-exact spelling.
+exact spelling.~~ *[repaired: A-E.1/E-D4 — the stub stage DID fix it, and the fixed spelling is
+now displayed above: `if s₀ + R.ℓ * (t : ℕ) < R.slotCount ∧ c (s₀ + R.ℓ * (t : ℕ)) ≠ 0 then …
+else 0`, under `open scoped Classical`. A `dite`-free landed form is permitted; a landed form
+that silently drops the guard is not.]*
 
 **DEPENDS.** E.10, E.26, E.27, E.28 · H.53 (through E.27).
 
@@ -1995,7 +2054,8 @@ the split E.10's FAITHFULNESS note declares. The clause-(c) arbitrary-ξ inequal
 (level 3, 79/79) → the schema becomes a **Lean theorem**; the `g₂ = 1` disclosure rides E.27's
 TEETH note.
 
-**ENVIRONMENT.** ENV-E2 + ENV-E3 (mixed: `O`-polynomials, two stage fields).
+**ENVIRONMENT.** ENV-E2 + ENV-E3 (mixed: `O`-polynomials, two stage fields) *[repaired:
+A-E.1/E-D4 — plus `open scoped Classical`, declaration-scoped]*.
 
 ---
 
@@ -2515,7 +2575,9 @@ theorem slot_fold {O : Type*} [CommRing O] {K : Type*} [Field K]
       C.hgt ws.sum = (ws.map C.hgt).foldr min ⊤
 
 theorem offdisk_positivity {ν T₂ ℓ D' h lam ε₀ ε₁ : ℤ}
-    (hν : T₂ < ν) (hλ : D' * h < lam) (hℓ : 1 ≤ ℓ) (hD : 1 ≤ D')
+    -- [repaired: A-E.1/E-D3] hypothesis renamed `hλ` → `hlam`: `hλ` is NOT a legal Lean
+    -- identifier (hard parse error at the gate, "unexpected token 'λ'").
+    (hν : T₂ < ν) (hlam : D' * h < lam) (hℓ : 1 ≤ ℓ) (hD : 1 ≤ D')
     (hε₀ : 0 ≤ ε₀) (hε₁ : 0 ≤ ε₁)
     (hcase : (0 < ε₀ ∧ ε₁ = ℓ * (lam - D' * h) + ℓ * D' * ε₀) ∨ ε₀ = 0) :
     0 < (ν - T₂) + ε₁ - ℓ * (D' - 1) * ε₀
@@ -2869,7 +2931,7 @@ field list as ground truth for the `(LB1)`/`(MP1)` Display-A conjuncts.
 > recursions, and chapter F's σ-law faces consume from E: `ladderSigma` + `ladderSigma_degree`
 > (E.45/E.46), the rung transport law `rungStep_sigma` (E.48), and the μ₂ = 2 dictionary with
 > its three-letter alphabet (E.49–E.52). GC-4 binds: every σ output is a
-> `Uniformity.Density.FactorizationType`, produced by a NAMED dictionary function with a
+> `Uniformity.FactorizationType` *[repaired: A-E.1/E-D8]*, produced by a NAMED dictionary function with a
 > degree-conservation lemma; inductive leaf labels are dictionary DOMAINS only. Ordering /
 > multiset normalization is `HYP.12` [CORE-SET] — no node here re-decides it; everything is
 > stated against the landed `FactorizationType` API.
@@ -2904,7 +2966,9 @@ def LadderLeaf.ef (l : LadderLeaf) (e₀ f₀ : ℕ) : ℕ × ℕ :=
 
 /-- **The σ dictionary** (GC-4): ladder leaves → the landed factorization type. -/
 def ladderSigma (e₀ f₀ : ℕ) (leaves : Multiset LadderLeaf) :
-    Uniformity.Density.FactorizationType :=
+    -- [repaired: A-E.1/E-D8] the landed carrier is `Uniformity.FactorizationType`; the
+    -- `Uniformity.Density.FactorizationType` spelling DOES NOT RESOLVE.
+    Uniformity.FactorizationType :=
   ⟨leaves.map fun l => l.ef e₀ f₀⟩
 ```
 
@@ -2914,7 +2978,8 @@ type's constructor is not the raw multiset (e.g. carries an invariant field), th
 adapts THROUGH the landed API (`FactorizationType.ext`), never by a parallel type. `LadderLeaf`
 is an allowed dictionary DOMAIN (decidable, inductive-free record).
 
-**DEPENDS.** none E-internal · landed `Uniformity.Density.FactorizationType`.
+**DEPENDS.** none E-internal · landed `Uniformity.FactorizationType` *[repaired: A-E.1/E-D8]*
+(`Uniformity/Density/LocalData.lean:43`).
 
 **PROOF.** definitional. **SIZE.** 20 lines.
 
@@ -3015,7 +3080,9 @@ evidence; the law is a **Lean theorem**.
 
 **STATEMENT.** *The rung σ-transport law (σ is multiplicative over the block split).* For
 monic `F = Π blocks` over `O` (the `(SIDE-PROD)`/`(LABEL-PROD)`/`(BOUNDARY-PROD)` situations):
-`typeOf F = Σ_blocks typeOf block` — via the LANDED product law `typeOf_mul` (chapter A
+`(typeOf F).data = Σ_blocks (typeOf block).data` *[repaired: A-E.1/E-D9 — stated on `.data`; the
+committed `typeOf F = Σ typeOf block` presupposes an `Add FactorizationType` that deliberately
+does not exist]* — via the LANDED product law `typeOf_mul` (chapter A
 kernel), iterated over the list. Combined with the dictionary: if each block's read emits
 `ladderSigma`-leaves matching its `typeOf` (the instance hypothesis), the whole state's σ is
 the multiset SUM of the blocks' σ — the transport law the drainage recursions and H §11's
@@ -3026,21 +3093,40 @@ the multiset SUM of the blocks' σ — the transport law the drainage recursions
 namespace Uniformity.Density
 -- (a theorem about landed objects: lives in the owning namespace, GC-6.2)
 
+-- [repaired: A-E.1/E-D9] RE-SIGNED at the `.data` shape, and `hcond : True` DROPPED.
+-- The committed conclusion `typeOf l.prod = (l.map typeOf).sum` DOES NOT ELABORATE: there is no
+-- `Add`/`Zero` on `FactorizationType` ("failed to synthesize `Add FactorizationType`"), and the
+-- landed module says the absence is deliberate — `typeOf_mul` is "stated on `.data`, not on any
+-- addition structure for `FactorizationType`, so it survives verbatim if such structure is later
+-- added" (`Uniformity/Density/TypeOfAlgebra.lean`).  The landed side conditions are MONICITY
+-- ONLY, so `hcond` stands for nothing and is removed rather than filled.
 theorem typeOf_list_prod {O : Type*} [CommRing O] [IsDomain O]
     [IsDiscreteValuationRing O] (l : List (Polynomial O))
-    (hm : ∀ g ∈ l, Polynomial.Monic g) (hcond : True) :
-    -- hcond placeholder: typeOf_mul's actual side conditions (coprimality/monicity),
-    -- to be instantiated VERBATIM from the landed typeOf_mul signature at stub time
-    typeOf l.prod = (l.map typeOf).sum
+    (hm : ∀ g ∈ l, Polynomial.Monic g) :
+    (typeOf l.prod).data = (l.map fun g => (typeOf g).data).sum
 ```
 
-**⚠ SIGNATURE NOTE (the landed side-condition is the contract).** The landed `typeOf_mul`'s
-exact hypotheses (monicity; possibly coprimality of the factors' reductions or root-set
-disjointness) BIND this node: the stub stage copies them verbatim into `hcond`'s place; the
-blueprint freezes the SHAPE (`typeOf` of a monic product = sum). If `typeOf_mul` requires
-coprimality that the ladder's blocks supply only through their disjoint root sets (carrier
-content), the node takes that as an explicit hypothesis and E.23 routes it — never a silent
-strengthening of the landed lemma. Flagged for the stub stage's 0e type-diff.
+**⚠ SIGNATURE NOTE (the landed side-condition is the contract) — ANSWERED AT THE 0e GATE**
+*[repaired: A-E.1/E-D9]*. ~~The landed `typeOf_mul`'s exact hypotheses (monicity; possibly
+coprimality of the factors' reductions or root-set disjointness) BIND this node: the stub stage
+copies them verbatim into `hcond`'s place; the blueprint freezes the SHAPE (`typeOf` of a monic
+product = sum). If `typeOf_mul` requires coprimality that the ladder's blocks supply only through
+their disjoint root sets (carrier content), the node takes that as an explicit hypothesis and
+E.23 routes it — never a silent strengthening of the landed lemma. Flagged for the stub stage's
+0e type-diff.~~ The type-diff was executed. The landed lemma is
+
+```lean
+theorem typeOf_mul {f g : Polynomial O} (hf : f.Monic) (hg : g.Monic) :
+    (typeOf (f * g)).data = (typeOf f).data + (typeOf g).data
+```
+
+(`Uniformity/Density/TypeOfAlgebra.lean:60`) — **monicity only: no coprimality, no root-set
+disjointness**. So (a) the `hcond : True` slot resolves to NOTHING and is dropped; (b) §14
+item 9's worry ("can the ladder's blocks supply them?") is ANSWERED: there is nothing to supply,
+and E.23 routes no side condition for this node; (c) the conclusion is stated on `.data`, which
+is where the landed law lives — a fleet agent must NOT introduce `Add FactorizationType` to
+restore the committed shape (the landed module's own REJECTED-R14 entry forbids it). Degree
+bookkeeping travels through `Uniformity.FactorizationType.degree_mk_add` on `⟨σ.data + τ.data⟩`.
 
 **DEPENDS.** landed `typeOf_mul`, `monicFactors_mul` · E.45 (the dictionary this feeds).
 
@@ -3085,7 +3171,8 @@ inductive Mu2Row
   deriving DecidableEq
 
 /-- The decided-row σ values at the n = 8 frame. -/
-def mu2Sigma : Mu2Row → Option Uniformity.Density.FactorizationType
+-- [repaired: A-E.1/E-D8] `Uniformity.FactorizationType`, not `Uniformity.Density.…`
+def mu2Sigma : Mu2Row → Option Uniformity.FactorizationType
   | .oneSideHalf  => some ⟨{(8, 1)}⟩
   | .oneSideInert => some ⟨{(4, 2)}⟩
   | .oneSideSplit => some ⟨{(4, 1), (4, 1)}⟩
@@ -3895,8 +3982,11 @@ non-vacuity of the threshold; the theorem is the necessary direction only.
 ```lean
 namespace Uniformity.Density.Ladder
 -- E65 gate: #eval / example-decide block at q = 2 (the n = 8 frame).
-example : (RungDatum.mk 2 1 5 2 (by norm_num) (by norm_num) (by norm_num)
+example : (RungDatum.mk 2 1 5 2 (by norm_num) (by norm_num) (by decide)
     (by norm_num)).nextBound 1 = 7 := by decide
+-- the degAt/boundAt checks need the ladder itself; [repaired: A-E.1/E-D2] its chain field is
+-- built through the `IsChain` constructors (the deprecated `List.Chain.cons`/`.nil` are retyped):
+--   hchain := List.IsChain.cons_cons rfl (List.IsChain.singleton _)
 -- + the mu2Sigma degree/alphabet decides, + degAt/nextT evaluations per the STATEMENT
 ```
 
@@ -3963,19 +4053,37 @@ is `(e, f) = (4, 2)` — both `> 1` — and a level-2 frame with `d_r = 2` gives
 `(4, 2)`. Checks: `LadderLeaf.ef`: leaf `⟨[(2,1)], (1,2)⟩` at base `(2,1)` evaluates to
 `(2·2·1, 1·1·2) = (4, 2)` ✓; `ladderSigma_degree` on `{that leaf}` = `4·2 = 8` ✓;
 `ef_forcing` fires at `(a,b) = (4,2)`, `e*f = 8` ✓; `ladderSigma_prepend` at the same data
-(associativity spot check). GC-11's simultaneous-witness requirement is met INSIDE the
+(associativity spot check — *[repaired: A-E.1/E-D10]* compared on `.data`, never on the
+σ-values themselves). GC-11's simultaneous-witness requirement is met INSIDE the
 certified perimeter (the n = 8 box's row 2 is a real member class — Q1's battery contains
 {(4,2)} members).
 
 **SIGNATURE.**
 ```lean
 namespace Uniformity.Density.Ladder
--- E67 gate:
+-- E67 gate (as EXECUTED at the stage-0e gate; [repaired: A-E.1/E-D10] the σ-equation is
+-- compared on `.data` — see the ⚠ GC-11 GATE-SPELLING RIDER below):
 example : (LadderLeaf.mk [(2,1)] (1,2)).ef 2 1 = (4, 2) := by decide
-example : (ladderSigma 2 1 {LadderLeaf.mk [(2,1)] (1,2)}).degree = 8 := by
-  simp [ladderSigma_degree]  -- + decide on the map/sum
--- + ef_forcing instance; + prepend spot check
+example : (ladderSigma 2 1 {LadderLeaf.mk [(2,1)] (1,2)}).degree = 8 := by decide
+example : (LadderLeaf.prepend (2, 1) (LadderLeaf.mk [] (1, 2))).ef 1 1
+    = (LadderLeaf.mk [] (1, 2)).ef (1 * 2) (1 * 1) := by decide
+-- E.47's law at the same data, on `.data` (NOT on the σ-values themselves):
+example : (ladderSigma 2 1 (({LadderLeaf.mk [] (1, 2)} : Multiset LadderLeaf).map
+      (LadderLeaf.prepend (2, 1)))).data
+    = (ladderSigma (2 * 2) (1 * 1) {LadderLeaf.mk [] (1, 2)}).data := by decide
+-- + the ef_forcing instance at (a,b) = (4,2), e*f = 8
 ```
+
+**⚠ GC-11 GATE-SPELLING RIDER (binding on every executable σ gate)** *[added: A-E.1/E-D10]*.
+**No gate can `decide` an equation between σ-VALUES.** `Uniformity.FactorizationType`'s
+`DecidableEq` is `Classical.decEq` (noncomputable, `Uniformity/Density/LocalData.lean`), so
+`decide` gets stuck on `Classical.choice`. Every executable check of a σ identity — here E.47's
+`ladderSigma_prepend` spot check, and any gate a later amendment adds — is therefore stated on
+`.data` (`Multiset (ℕ × ℕ)` has a real instance). **Unaffected and still directly decidable:**
+degrees (`FactorizationType.degree`, ℕ-valued) and `Option`-valued dictionary rows
+(`mu2Sigma … = some ⟨…⟩` by `rfl`). This is the chapter's analogue of CHAP-B §12's
+stub-landing rules: a gate that `decide`s a bare σ-equation is a stub-stage defect, not a
+tactic-choice problem.
 
 **DEPENDS.** E.15, E.45, E.46, E.47, E.49.
 
@@ -3999,7 +4107,25 @@ against the spec's recorded thresholds: `(2,1,1,2,1,5) → 7`; `(2,1,1,2,2,5) �
 `(2,2,1,2,2,7) → 27`; `(3,1,2,2,3,13) → 73`; `(1,2,1,3,2,11) → 58`. Recomputed fresh here:
 `bound₁ = (e₁f₁−1)h` = `1, 1, 3, 4, 1`; `bound₂ = (ℓd_r−1)u + ℓ·bound₁` =
 `(2−1)5+2 = 7 ✓, (4−1)5+2 = 17 ✓, (4−1)7+2·3 = 27 ✓, (6−1)13+2·4 = 73 ✓, (6−1)11+3·1 = 58 ✓`.
-**All five recomputations match the spec's table exactly.** Plus the E.08 implication fired at
+**All five recomputations match the spec's table exactly.**
+
+**⚠ FRAME 3 IS NOT A LEGAL RUNG AT ITS CORPUS THRESHOLD — THE GATE ROW IS SPLIT IN TWO**
+*[repaired: A-E.1/E-D7]*. Frame 3 `(2,2,1,2,2,7)` has `D′h = e₁f₁h = 4`, so its level-2 rung
+would carry `T₂ = 4` — and E.01's node condition `hnode : ℓ * T < u` then reads `2*4 = 8 < 7`,
+which is FALSE (machine-checked at the gate: `example : ¬ (2 * 4 < 7) := by decide`). In corpus
+letters: `λ = u/ℓ = 3.5 ≤ D′h = 4` violates DEFINITION HE7-1's `λ > D′h` as E.01 transcribes it,
+so **no `RungDatum` exists at that frame's own threshold**. The THRESHOLD VALUE is unaffected —
+`nextBound` never reads `T` — so this row is checked TWICE: once at a legal `T` (`T = 3`, where
+`2*3 = 6 < 7` holds) and once formula-directly, both giving `27`. The other four frames build as
+genuine `RungDatum`s at `T₂ = D′h` (`2, 2, 6, 2`). *Reading (the gate's, adopted):* the Q3
+sharpness frames are ENUMERATION frames outside DEFINITION HE7-1's scope (`EFF.HE7.23`'s TEETH
+table is about reachable-height thresholds), OR `hnode` is stronger than the chapter's own gate
+data — the chapter does not need to decide which, because no node consumes frame 3 as a rung.
+**Binding consequence for consumers:** anything that builds a `RungDatum` from a Q3 frame must
+check `ℓ * T < u` first; a `sorry`-free `RungDatum.mk` at frame 3's corpus threshold is
+impossible, not merely awkward.
+
+Plus the E.08 implication fired at
 one frame (`(‡₂) ⟹ (†₂)` at `(2,2,5)`-rung, `b = 1`: `k = 17` gives `m₀ ≥ (2−1)·5 + 1 = 6` —
 check `2m₀ + s₀·5 = 17, s₀ = 1 ⟹ m₀ = 6 ≥ 6` ✓ boundary-exact).
 
@@ -4007,9 +4133,17 @@ check `2m₀ + s₀·5 = 17, s₀ = 1 ⟹ m₀ = 6 ≥ 6` ✓ boundary-exact).
 ```lean
 namespace Uniformity.Density.Ladder
 -- E68 gate: the five-frame threshold table as decides on nextBound/boundAt.
-example : (RungDatum.mk 2 2 5 2 (by norm_num) (by norm_num) (by norm_num)
+-- (`RungDatum.mk`'s four proof arguments are `hℓ, hg, hcop, hnode`; the gate discharges the
+--  coprimality one with `decide`, the other three with `norm_num`.)
+example : (RungDatum.mk 2 2 5 2 (by norm_num) (by norm_num) (by decide)
     (by norm_num)).nextBound 1 = 17 := by decide
--- … (all five frames; boundary-exact lift_threshold_step instance)
+-- frame 3 — [repaired: A-E.1/E-D7] SPLIT IN TWO: the node condition fails at T₂ = D′h = 4, so
+-- the value is checked at a legal T and formula-directly instead of at an illegal rung.
+example : ¬ (2 * 4 < 7) := by decide                     -- `hnode` fails at T₂ = 4
+example : (RungDatum.mk 2 2 7 3 (by norm_num) (by norm_num) (by decide)
+    (by norm_num)).nextBound 3 = 27 := by decide         -- same value at a LEGAL T = 3
+example : (2 * 2 - 1) * 7 + 2 * ((2 * 2 - 1) * 1) = 27 := by decide   -- formula-direct
+-- … (the remaining frames; the four base rungs' bound₁; boundary-exact lift_threshold_step)
 ```
 
 **DEPENDS.** E.02, E.05, E.08.

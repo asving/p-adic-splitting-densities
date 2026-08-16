@@ -11,8 +11,10 @@ import Uniformity.Density.QuadCert
 **Chapter G, NODE G.52** (`blueprint/CHAP-G_base_cases_menus.md` §8). The five degree-3
 splitting types, with their degrees and pairwise distinctness.
 
-DEPENDS: landed `Uniformity.Density.FactorizationType`,
-`Uniformity.Density.FactorizationType.degree`.
+DEPENDS: landed `Uniformity.FactorizationType`, `Uniformity.FactorizationType.degree`.
+(Docstring FQN corrected 2026-08-16, CHAP-E amendment A-E.1/E-D8: the carrier lives in
+`Uniformity`, not `Uniformity.Density` — `Uniformity/Density/LocalData.lean:43`. Comment only;
+no statement, proof or import is touched.)
 
 ✅ **BLUEPRINT DEFECT D3 CURED** (AMENDMENT 2026-08-15 §A-6). The blueprint's original SIGNATURE
 for the ten pairwise inequalities was the literal placeholder `theorem c3_pairwise_ne :
