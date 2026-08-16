@@ -5770,3 +5770,59 @@ Commits a37119a1, 557ec871, 26c6b611, 8501af6e, a7ee42c2,
 7d24c1a3, c08b1ac2, a030ee1a (+ the four blueprint hunks swept
 into 1e35c199 by a concurrent unit's `git add` — content intact,
 attribution not).
+
+**2026-08-16 DATED APPEND #79 — THE GATE-(b) LANDING CATCHES ALL
+THREE DRAFTED CITE AXIOMS DEFECTIVE, PRE-DECLARATION: C.66 and
+C.94 MACHINE-REFUTED ABSOLUTELY, C.92 CONTENT-FREE. The trusted
+base is UNCHANGED (nothing declared; sweep allowlist still core +
+exists_slope_factorization). All three repairs are statement
+changes that RE-ENTER GATE (b).** (1) C.66 fgmn_residual_mul:
+refuted at the LANDED s2Frame over ℤ₂ — IsDvPure is VACUOUS
+below degree D′ (ℕ-division floors to 0), and the draft omits
+the source's degree law (e₁f₁ ∣ deg g, 0 < deg g — the binders
+B.42 clause 3 itself carries); the conclusion forces 1 = 0 in a
+field. Record: C66_REFUTATION.lean.txt (Absolute, Lean-core).
+(2) C.94 agnprw_termination: refuted absolutely — DescentStep
+admits the SELF-LOOP s′ = s (natDegree 0 = 0 degenerates the
+key-drop clause) and BOTH side-nonemptiness clauses are vacuous
+because sideSet is ALWAYS nonempty (B39b's own
+sideSet_nonempty_gen — the THIRD occurrence of this A-C.1 defect
+class, after C.113(i) and C.111); the constant history on X is
+an infinite chain, so NS7TerminationStatement ⟹ False — Display
+A's line 1 would have been a false Prop. Record:
+C94_REFUTATION.lean.txt. (3) C.92 fgmn_calculus_exists: NOT
+unsound but PROVED IN LEAN CORE by a junk instance (three of its
+four side conditions inert) — as a cite it would put a name on
+the trusted base importing ZERO [FGMN] content. Record:
+C92_VACUITY.lean.txt (fgmn_calculus_exists_IS_A_THEOREM).
+(4) PROCESS NOTE: the axiom policy's landing gate (B.42
+precedent: inline binders + non-vacuity/consistency probes
+BEFORE declaration) is what caught these — the count of false
+axioms caught pre-landing now stands at FIVE. (5) CHARTERED:
+A-C.6, the cite-REDRAFT unit — corrected statements from the
+sources (C.66: + degree law + the above-floor fence for owner
+inspection; C.94: self-loop exclusion + two-point-side content
+clauses per B.42 clause 5 + C.33's hslopes; C.92: DECISION
+hypothesis-form vs field-law-anchored interface), certified by
+running THE SAME refutation programs against the redrafts (must
+fail to refute) + satisfiability instances; leanspec re-signs
+marked REDRAFT — AWAITING OWNER GATE-(b) SIGNATURE; NO axiom
+landed without it. OWNER-FACING: the gate-(b) queue is now
+{B.42 landed-signed} + {C.66/C.92/C.94 redrafts awaiting exact-
+statement signature} + {recentered_key_emission drafted} +
+{B-BOX-1 composite HELD}. The C.92-gated §10 chain (C.99–C.104,
+~8 nodes) stays blocked until redraft + signature + landing.
+(6) Also this hour: A-H.6 SIGNED (the sharp beta law
+K·N·Q^−(N−1), K=1/3, provable constant Q/(Q²+Q+1); my candidate
+envelope ALSO refuted at N=32 — certify-first working; H.122
+byte-unchanged with a working route; rate_close retired
+REFUTED; new nodes H.30b/H.121d; census obstruction dissolved —
+F_g cancels); C.128 LAW B-S2 PROVED at the e₁=f₂=2 pin (666/0,
+4-pass Codex CLEAN, B4 mechanism explained, stub-as-stated
+refuted on D′∈{3,4} axes → narrowing binders join A-C.5;
+HYP.79 cascade half PROVED); A-C.3 re-signed C.114 in leanspec
+(separation record Lean-core green); E waves 5–6 (E.15/20/31/
+37/38/38a/44/61/62 + E.16/21/24/68 landing; sockets E.61/E.62
+TYPED at the chapter-D carriers; E.51 blocked on a C anchor);
+attribution mix disclosure: BS2's 1e35c199 swept some A-C.3
+blueprint hunks (content intact, history stacked, no fix).
