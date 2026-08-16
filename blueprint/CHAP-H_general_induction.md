@@ -8689,7 +8689,7 @@ two opaque-def deviations — both CLOSED by A-H.5); (ii) `spec/DAG_BLUEPRINT_H.
 rows above, **127 after A-H.5**; (iii)
 `blueprint/CHAP-I_capstone_conditionality.md` §3.9 — the T-1 row's dated REDUCED-TO
 annotation (H.100–H.124 + the named residual rows); (iv) this file's §2 census — one dated
-line. **A-H.6 adds 13 DAG rows and removes 3 (127 → 137), and adds two nodes (H.121d, H.30b).** Nothing else is touched; §§0–16 and A-H.1/A-H.2 are byte-unchanged.
+line. **A-H.6 adds 13 DAG rows (12 inside this section's block + `BP.H.30b → BP.H.30`, which belongs to §6) and removes 3, so this section's count is 127 → 136; two nodes are added (H.121d in §17, H.30b in §6).** Nothing else is touched; §§0–16 and A-H.1/A-H.2 are byte-unchanged.
 
 **Fleet firing order (recommendation).** Wave 1: H.100/H.101/H.106/H.107 (+ H.108 behind
 H.106/107). Wave 2: H.102 (the InjOn is the section's hardest N-1 hole — HARDEST-FIRST),
