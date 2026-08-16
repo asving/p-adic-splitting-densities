@@ -354,6 +354,39 @@ def merge_check(fr):
         % (fr.name, amin))
 
 
+def two_slot_check(fr):
+    """COROLLARY (multi-crossing, unequal excess): two crossing entries at
+    DISTINCT slots with DIFFERENT excesses: Delta = dict-sum of the two
+    single-entry laws, and the pin = theta + min(excess).  (The equal-
+    excess tie stays the named open.)  Fresh frame (V2p3)."""
+    jp = 1
+    a1, b1 = fr.Dp - 1, 0
+    a2, b2 = fr.Dp - 2, 1
+    al1 = ((fr.mu2 - jp) * fr.E2 - (a1 + fr.u2 * b1)) // fr.ee + 1
+    al2 = ((fr.mu2 - jp) * fr.E2 - (a2 + fr.u2 * b2)) // fr.ee + 3
+    C1 = pmul([fr.p ** al1], pmul(ppow([0, 1], a1), ppow(fr.PHI1, b1)))
+    C2 = pmul([fr.p ** al2], pmul(ppow([0, 1], a2), ppow(fr.PHI1, b2)))
+    memb = padd(ppow(fr.PHI2, fr.mu2), pmul(padd(C1, C2), ppow(fr.PHI2, jp)))
+    mds = measured_deltas(fr, memb)
+    r1, q1 = predicted_deltas(fr, jp, a1, b1, al1, 1)
+    r2, q2 = predicted_deltas(fr, jp, a2, b2, al2, 1)
+    e1 = fr.ee * al1 + a1 + fr.u2 * b1 - (fr.mu2 - jp) * fr.E2
+    e2 = fr.ee * al2 + a2 + fr.u2 * b2 - (fr.mu2 - jp) * fr.E2
+    assert e1 != e2
+    rsum, qsum = dict(r1), dict(q1)
+    for d, dd in ((rsum, r2), (qsum, q2)):
+        for k, v in dd.items():
+            dict_add(d, v, k[0], k[1])
+    chk('EW-2SLOT', mds[jp] == qsum and mds[jp - 1] == rsum,
+        '%s two-slot member != dict-sum of the single-entry laws'
+        % fr.name)
+    chk('EW-2SLOT',
+        pin_of(fr, mds[0]) == fr.theta(0) + min(e1, e2)
+        and pin_of(fr, mds[1]) == fr.theta(1) + min(e1, e2),
+        '%s two-slot pins != theta + min excess (%d, %d)'
+        % (fr.name, e1, e2))
+
+
 # ----------------------------------------------------------------------
 # main
 # ----------------------------------------------------------------------
@@ -378,6 +411,7 @@ def main():
     for fr in (V1p2m3, V1p3m3):
         measure_jp2(fr)
     merge_check(V3p3)
+    two_slot_check(V2p3)
     teeth(W1, W5o, V3p3)
     print()
     print('TOTAL CROSSING ROWS (dict-exact): %d' % total)
