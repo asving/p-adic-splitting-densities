@@ -224,6 +224,29 @@ are transcribed (the WZ-BOX-7 lesson — side with conclusions).
 
 **E-11 — codex cross-read status: OWED.** Flagged items aggregated in §14.
 
+**E-12 — THE DISPLAY-A CONJUNCT CARRIERS ARE UNIVERSE-SCOPED, AND CHAPTER I MUST CONSUME THEM
+UNIVERSE-POLYMORPHICALLY.** *[added: A-E.1/E-D6, 2026-08-16 — the stage-0e gate's ruling item.]*
+E.12's `RungInterface` carries the `(SEC-RANK)` rank carrier `W` as a genuine `Type*` field
+(`EFF.T2.26`: `W_𝒞` merely well-founded, "an instance may discharge it either way" — so `W` is
+NOT collapsed to `ℕ`). Its universe `uW` therefore appears in **three** of the chapter's exported
+`Prop`s — `LB1Carrier` (E.39), `MP1Carrier` (E.40), `HE7APackage` (E.24), and hence in the two
+records `LadderObligations` (E.44) and `LadderSupply` (E.24) — and Lean cannot quantify over
+universes *inside* a `Prop`. Read exactly:
+
+* `LB1Carrier.{uO, uK, uW} C B` says the `EFF.T2.18` block suite exists for every rung interface
+  **whose rank carrier lives in universe `uW`** — one universe at a time, not all at once. Same
+  for `MP1Carrier` and `HE7APackage`.
+* **Nothing about the obligations' mathematical strength moved**: at any fixed `uW` the statement
+  is the source's, verbatim; the alternative "fix" (`W := ℕ`) WOULD have moved it and was
+  refused.
+* **The bill lands in chapter I.** Its Display-A hypothesis block must either quantify the
+  universe at field level (`∀ {uW}, LadderSupply.{uO, uK, uW} C B` — legal there) or instantiate
+  at the capstone instance's own `uW` **and record that choice**. An unrecorded implicit choice
+  is a conditionality leak: the capstone would then be conditional on a carrier suite for one
+  unnamed universe.
+* Before this repair the four declarations did not elaborate at all (hard errors at the gate), so
+  no earlier text can be read as having committed to a different reading.
+
 *(Amendments to this block as composition proceeds are dated in place.)*
 
 ---
@@ -619,9 +642,11 @@ pure ℕ-arithmetic:
 `ℓ·d_r ≥ 2`, both branches: `ℓ ≥ 2, d_r ≥ 1` and `ℓ = 1, d_r ≥ 2`);
 (ii) **the halving**: if `2 ≤ p` and `μ₂ * p ≤ μ` then `2 * μ₂ ≤ μ` (the corpus's
 `μ₂ ≤ μ/(ℓd_r) ≤ μ/2`, cleared of division);
-(iii) **the jump count**: for `μ : ℕ → ℕ` with `4 ≤ μ i` for all `i ≤ J` and
-`2 * μ (i+1) ≤ μ i` for all `i < J`: `2 ^ (J + 1) ≤ μ 0` — the cleared form of
-`J ≤ log₂ μ − 1` (`EFF.HE7.15`).
+(iii) **the jump count**: for `μ : ℕ → ℕ` with `J ≥ 1`, `4 ≤ μ i` **for all `i < J` — the JUMP
+STARTS, not the final target** — and `2 * μ (i+1) ≤ μ i` for all `i < J`: `2 ^ (J + 1) ≤ μ 0` —
+the cleared form of `J ≤ log₂ μ − 1` (`EFF.HE7.15`). *[repaired: A-E.1/E-D11 — the committed
+floor `∀ i ≤ J` put the `4 ≤` bound on the jump TARGET as well, which the source does not do and
+which makes the corpus's own configurations inadmissible; see the amendment.]*
 
 **SIGNATURE.**
 ```lean
@@ -631,8 +656,10 @@ theorem jump_floor {m p : ℕ} (hm : 2 ≤ m) (hp : 2 ≤ p) : 4 ≤ m * p
 
 theorem jump_halving {μ μ₂ p : ℕ} (hp : 2 ≤ p) (h : μ₂ * p ≤ μ) : 2 * μ₂ ≤ μ
 
-theorem jump_count_bound (μ : ℕ → ℕ) (J : ℕ)
-    (h4 : ∀ i ≤ J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
+-- [repaired: A-E.1/E-D11] `h4` ranges over `i < J` (the jump STARTS), and the conclusion is
+-- guarded by `1 ≤ J`: with no jump there is nothing to bound and `2 ≤ μ 0` is not a corpus claim.
+theorem jump_count_bound (μ : ℕ → ℕ) (J : ℕ) (hJ : 1 ≤ J)
+    (h4 : ∀ i < J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
     2 ^ (J + 1) ≤ μ 0
 ```
 
@@ -640,9 +667,11 @@ theorem jump_count_bound (μ : ℕ → ℕ) (J : ℕ)
 
 **PROOF.**
 1. (i): `4 = 2*2 ≤ m*p` by `Nat.mul_le_mul`. (ii): `2*μ₂ ≤ p*μ₂ = μ₂*p ≤ μ`.
-2. (iii): induction on `J`. Base `J = 0`: `2^1 = 2 ≤ 4 ≤ μ 0`. Step: apply the inductive
-   hypothesis to `i ↦ μ (i+1)` at `J`, getting `2^(J+1) ≤ μ 1`; then
-   `2^(J+2) = 2·2^(J+1) ≤ 2·μ 1 ≤ μ 0` by `hh 0`.
+2. (iii) *[re-derived: A-E.1/E-D11 for the corrected hypothesis]*: induction on `J`, started at
+   `J = 1`. Base `J = 1`: `2^2 = 4 ≤ μ 0` by `h4 0` (`0 < 1`). Step `J ↦ J+1` (`J ≥ 1`): apply
+   the inductive hypothesis to `i ↦ μ (i+1)` at `J` — its floors are `h4 (i+1)` for `i < J`
+   (legal since `i+1 < J+1`) and its halvings `hh (i+1)` — getting `2^(J+1) ≤ μ 1`; then
+   `2^(J+2) = 2·2^(J+1) ≤ 2·μ 1 ≤ μ 0` by `hh 0` (`0 < J+1`).
 
 **SIZE.** 20 lines.
 
@@ -651,6 +680,20 @@ theorem jump_count_bound (μ : ℕ → ℕ) (J : ℕ)
 then `μ_i ≥ 4` for `i ≤ J` and `μ_J ≤ μ/2^{J−1}`, so `4 ≤ μ/2^{J−1}`, i.e. `J ≤ log₂ μ − 1`";
 the `[r1]` widening rider: "both displays only ever use the product `ℓ·d_r ≥ 2`"); `EFF.HE7.14`
 (the non-propagation arithmetic `L_{λ₂} ≥ m₂·(ℓ₂ deg r₂) ≥ 4` hence `μ₂ ≥ 4`).
+
+**⚠ THE INDEX TRANSLATION, SPELLED OUT** *[added: A-E.1/E-D11 — this is where the defect
+entered]*. The source is 1-based over LEVELS and its `J` jumps sit at levels `1..J`; ours is
+0-based over the sequence `μ i`. The dictionary is `μ i := μ_{i+1}` (so `μ 0 = μ`, the level-1
+mass). A jump at source level `i+1` takes `μ i` to `μ (i+1)`, so:
+* the source's floor — *"a node REQUIRING a level jump … satisfies `μ ≥ 4`"*, i.e. `μ_i ≥ 4` for
+  the jump-hosting levels `i = 1..J` — becomes `4 ≤ μ i` for `i = 0..J−1`, i.e. **`∀ i < J`**;
+* the source's halving `μ₂ ≤ μ/(ℓd_r) ≤ μ/2` at each jump becomes `2 * μ (i+1) ≤ μ i` for
+  `i < J` (same range);
+* the source's own chain *"`μ_J ≤ μ/2^{J−1}`, so `4 ≤ μ/2^{J−1}`"* is exactly
+  `4 ≤ μ (J−1) ≤ μ 0 / 2^{J−1}`, i.e. `2^{J+1} ≤ μ 0` — and it is stated for `J ≥ 1`, which is
+  why (iii) carries `hJ`.
+The **final target** `μ J` carries NO floor unless it, too, hosts a jump. Writing the floor as
+`∀ i ≤ J` (the committed form) imposes `4 ≤ μ J` and is what made E.60's clause 3 vacuous.
 
 **⚠ THE n = 16 SENTENCE CARRIES ANNEX R R3's RIDER AND E TRANSCRIBES ONLY THE NECESSARY
 DIRECTION.** `EFF.HE7.15`'s closing existential ("The first n at which a level-3 object can be
@@ -994,6 +1037,16 @@ strength (`EFF.T2.39`):
 ```lean
 namespace Uniformity.Density.Ladder
 
+-- [repaired: A-E.1/E-D6] THE THREE UNIVERSES ARE NAMED HERE, ONCE, FOR THE WHOLE CHAPTER.
+-- `RungInterface` is universe-polymorphic in three parameters, IN THIS ORDER:
+--   `uO` — the ring `O`; `uK` — the field `K`; `uW` — the `(SEC-RANK)` rank carrier `W`.
+-- The first two are inferable at every use site (they occur in `C`/`B`); `uW` occurs ONLY in
+-- the structure's own body, so ANY declaration that QUANTIFIES over a `RungInterface` inside a
+-- `Prop` must bind `uW` explicitly and write `RungInterface.{uO, uK, uW}` — otherwise Lean
+-- reports "Failed to infer universe levels in type of binder `I`" / "contains universe level
+-- metavariables" (hard errors at E.24, E.39, E.40, E.44 before this repair).
+universe uO uK uW
+
 /-- The **rung interface**: T2's carrier hypothesis suite as fields (`EFF.T2.39`'s five
 quantitative families + the side/residual numerical shadow). σ-valued outputs NEVER live
 here (GC-4: they exit through §7's dictionary). -/
@@ -1022,10 +1075,18 @@ structure RungInterface {O : Type*} [CommRing O] {K : Type*} [Field K]
       ((linFac p).map (classCount p)).sum
         + ((hiFac p).map (classCountHi p)).sum = rootCount p
   /-- root-preserving continuation: the `(SEC-RANK)` carrier (`EFF.T2.26`). -/
-  W : Type*
+  W : Type*        -- this field's universe IS `uW` (third parameter; see the note above)
   wf : WellFoundedRelation W
   σRank : W                                                     -- the state's rank
 ```
+
+*[A-E.1/E-D6 — spelling latitude, machine-checked.* Writing the header fully explicitly,
+`structure RungInterface {O : Type uO} [CommRing O] {K : Type uK} [Field K] … where … W : Type uW`,
+elaborates to the **identical** signature and the identical parameter order (probe run at the
+amendment: both forms print
+`{O : Type u_1} → [CommRing O] → {K : Type u_2} → [Field K] → (C : Carrier O K) → Blk C → Type (u_3 + 1)`).
+The fleet may land either; what is FROZEN is the order `⟨O, K, W⟩`, because §6/§9's carriers
+instantiate it positionally as `.{uO, uK, uW}`.]*
 
 **⚠ DECISION D-E3 ((ACCOUNT) is carried at its consumed jump form).** `EFF.T2.16`'s integral
 `(ACCOUNT)` (`Σ_ρ min(w_ρ, κ) = D Σ_λ L_λ min(λ, κ)` for `κ > T`) is consumed by the master
@@ -1051,9 +1112,20 @@ minimal binding (GC-6.4).
 
 **PROOF.** definitional. **SIZE.** 55 lines. **SPLIT-MANDATED:** land as `E12` (fields 1–5,
 counts) + `E12a` (the continuation/rank fields) if elaboration or universe plumbing on `W`
-fights; `W`'s universe is the structure's second parameter — flag any universe issue to the
-orchestrator rather than fixing `W := ℕ` (`EFF.T2.52`: well-foundedness form, "an instance may
-discharge it either way"; `ℕ`-valued would silently strengthen).
+fights; ~~`W`'s universe is the structure's second parameter~~ *[repaired: A-E.1/E-D6 — it is
+the THIRD]* — flag any universe issue to the orchestrator rather than fixing `W := ℕ`
+(`EFF.T2.52`: well-foundedness form, "an instance may discharge it either way"; `ℕ`-valued would
+silently strengthen).
+
+**⚠ THE UNIVERSE FLAG THIS NOTE ASKED FOR HAS FIRED** *[added: A-E.1/E-D6]*. The stage-0e gate
+hit HARD ERRORS at E.24, E.39, E.40 and E.44 — every declaration that quantifies over a
+`RungInterface` inside a `Prop`. The instruction "flag it, never fix `W := ℕ`" was followed: the
+fix is the explicit `universe uW` above, **not** a rank-carrier collapse, so nothing about
+`(SEC-RANK)`'s strength moved. What DID move is a scoping fact the orchestrator must rule on,
+recorded at honesty **E-12**: `LB1Carrier.{uO, uK, uW}` quantifies only over interfaces whose
+rank carrier lives in universe `uW` (Lean cannot quantify over all universes inside one `Prop`),
+so the Display-A conjunct carriers are universe-SCOPED and chapter I must consume them
+universe-polymorphically.
 
 **SOURCE.** `EFF.T2.12` (`(RES-FACT)`/`(RES-DEG)`); `EFF.T2.15` (the seven test-package
 clauses — clauses 3/4/5/6 are the `hnonempty`/`hexhaust`/`hforce` shadows; clauses 1/2/7 are
@@ -1727,22 +1799,24 @@ block" plus the two obligations and the indexed deep-twist carriers:
 **SIGNATURE.**
 ```lean
 namespace Uniformity.Density.Ladder
+universe uO uK uW        -- [repaired: A-E.1/E-D6]
 
 /-- Display A's `HE7A[…]` conjunct: the σ-ladder carrier suite holds for the block —
 packaged for chapter I's hypothesis structure. The five clause families are the FIELDS of
 `RungInterface` (E.12); `(LB1)`/`(MP1)` are §6's carriers; the `∀ i ≥ 3` deep-twist and
 w-frame carriers are §9's. -/
-def HE7APackage {O : Type*} [CommRing O] {K : Type*} [Field K]
+def HE7APackage {O : Type uO} [CommRing O] {K : Type uK} [Field K]
     (C : SlotCarrier O K) (B : BlockData C) : Prop :=
-  Nonempty (RungInterface C B)
+  -- [repaired: A-E.1/E-D6] `Nonempty (RungInterface C B)` alone leaves `uW` a metavariable
+  Nonempty (RungInterface.{uO, uK, uW} C B)
 
 /-- The full chapter-E supply to chapter I: the package at every rung of a ladder,
 plus the carried obligations. -/
-structure LadderSupply {O : Type*} [CommRing O] {K : Type*} [Field K]
+structure LadderSupply {O : Type uO} [CommRing O] {K : Type uK} [Field K]
     (C : SlotCarrier O K) (B : BlockData C) : Prop where
-  package : HE7APackage C B
-  lb1 : LB1Carrier C B           -- E.39
-  mp1 : MP1Carrier C B           -- E.40
+  package : HE7APackage.{uO, uK, uW} C B
+  lb1 : LB1Carrier.{uO, uK, uW} C B    -- E.39
+  mp1 : MP1Carrier.{uO, uK, uW} C B    -- E.40
   vartheta : ∀ i ≥ 3, VarthetaRes i    -- E.61 (with E.62's 𝒲 conjunct at I)
 ```
 
@@ -1751,6 +1825,21 @@ structure LadderSupply {O : Type*} [CommRing O] {K : Type*} [Field K]
 DAG (§11) carries the true topological order: E.39, E.40, E.61, E.62 precede E.24). Chapter I
 consumes `HE7APackage` and `LadderSupply` BY NAME; any change to their field list is a
 capstone-conditionality change and goes through the owner gate (Part V (a)).
+
+**⚠ POINTER FOR CHAPTER I — THE CARRIERS ARE UNIVERSE-SCOPED** *[added: A-E.1/E-D6]*. Both names
+chapter I consumes are universe-polymorphic in **three** parameters, `HE7APackage.{uO, uK, uW}`
+and `LadderSupply.{uO, uK, uW}`, and the third one is NOT inferable from the arguments `(C, B)`:
+it is the universe of `RungInterface`'s `(SEC-RANK)` rank carrier `W`, which occurs only inside
+the `Prop`. Consequences chapter I must honour, in order of preference:
+1. **preferred** — carry the conjunct universe-polymorphically, i.e. the Display-A field is
+   `∀ {uW}, LadderSupply.{uO, uK, uW} C B` (a `Prop`-valued `∀` over universes is legal at the
+   FIELD level, illegal inside one `Prop`); or
+2. **acceptable, if recorded** — instantiate at the single `uW` the capstone's own instance uses
+   and write that choice into chapter I's hypothesis block as a declared scope.
+**Not acceptable:** silently letting Lean pick, or collapsing `W := ℕ` to make the parameter go
+away — `EFF.T2.52` licenses "an instance may discharge it either way", so an `ℕ`-valued rank
+carrier is a strength change (E.12's own SPLIT note forbade it, and this amendment did not do
+it). Honesty **E-12** carries the same statement chapter-side.
 
 **DEPENDS.** E.12, E.39, E.40, E.61 (forward, see note).
 
@@ -2651,19 +2740,32 @@ block family realizing `(SIDE-PROD)`/`(LABEL-PROD)`/`(LABEL-DEV)`/`(LABEL-PURE)`
 **SIGNATURE.**
 ```lean
 namespace Uniformity.Density.Ladder
+universe uO uK uW        -- [repaired: A-E.1/E-D6] E.12's three, bound explicitly
 
 /-- `(LB1)` (`EFF.T2.18`): the level-one clause-4 block suite exists. OPEN — a named
 capstone hypothesis; no chapter-E node proves it; chapter I carries it (Part V gate (b) or
 a discharge node). -/
-def LB1Carrier {O : Type*} [CommRing O] {K : Type*} [Field K]
+def LB1Carrier {O : Type uO} [CommRing O] {K : Type uK} [Field K]
     (C : SlotCarrier O K) (B : BlockData C) : Prop :=
-  ∀ I : RungInterface C B,
+  -- [repaired: A-E.1/E-D6] `uW` occurs only INSIDE this `Prop`, where auto-binding does not
+  -- reach: the committed `∀ I : RungInterface C B` is a HARD ERROR ("Failed to infer universe
+  -- levels in type of binder `I`").  Both interface mentions are instantiated explicitly.
+  ∀ I : RungInterface.{uO, uK, uW} C B,
     (1 < I.sides.card ∨ ∃ p ∈ I.sides, ¬ I.SepSide p) →
-    ∃ blocks : List (Σ B' : BlockData C, RungInterface C B'),
+    ∃ blocks : List (Σ B' : BlockData C, RungInterface.{uO, uK, uW} C B'),
       B.F = (blocks.map fun x => x.1.F).prod ∧
       (blocks.map fun x => x.1.F.natDegree).sum = B.F.natDegree
       -- + the per-block pure-residual and length clauses; see the NOTE
 ```
+
+**⚠ UNIVERSE SCOPE, DECLARED** *[added: A-E.1/E-D6]*. `LB1Carrier.{uO, uK, uW}` asserts the
+block-suite existence **for the interfaces whose rank carrier `W` lives in universe `uW`** — not
+for all interfaces at once (Lean cannot quantify over universes inside a `Prop`). This is a
+scoping fact, not a strength change: at every instantiation the consumer chooses `uW`, and the
+obligation is exactly `EFF.T2.18`'s at that choice. Chapter I must therefore consume the carrier
+universe-polymorphically (its hypothesis field is `∀ {uW}, LB1Carrier.{…, uW} C B`, or the field
+is instantiated at the one `uW` the capstone's instance uses and that choice is recorded). See
+honesty **E-12**.
 
 **⚠ SIGNATURE NOTE.** The displayed conjunction abbreviates the full S1.7A clause list
 (`(LABEL-PURE)`: each block's shadow has ONE factor with `k = L_C/(ℓ·deg r)`; `(LABEL-OWN)`
@@ -2704,20 +2806,26 @@ Schema form: after E.18's peel identity at a recentered key `Φ″`, the existen
 **SIGNATURE.**
 ```lean
 namespace Uniformity.Density.Ladder
+universe uO uK uW        -- [repaired: A-E.1/E-D6]
 
 /-- `(MP1)` (`EFF.T2.23`): the level-one mid-chain-peel input suite at a RECENTERED key.
 OPEN — a named capstone hypothesis; carried to chapter I. The ORIGINAL-key peel is NOT
 this obligation (it is supplied by HE6-PEEL-CONVENTION, a chapter-C row at E.22). -/
-def MP1Carrier {O : Type*} [CommRing O] {K : Type*} [Field K]
+def MP1Carrier {O : Type uO} [CommRing O] {K : Type uK} [Field K]
     (C : SlotCarrier O K) (B : BlockData C) : Prop :=
   ∀ (Λ : Polynomial O),                        -- the recentering increment
     Λ ≠ 0 → Λ.natDegree < C.D →
     ∀ (B' : BlockData C),                      -- the quotient block at key Φ − Λ
       B'.Φ = B.Φ - Λ → B'.Φ ∣ B.F →
-      Nonempty (RungInterface C B') ∧
+      -- [repaired: A-E.1/E-D6] explicit `.{uO, uK, uW}` (hard error without it)
+      Nonempty (RungInterface.{uO, uK, uW} C B') ∧
       -- item 5: the peeled key's certified (e,f) emission
       ∃ e f : ℕ, e * f = C.D ∧ C.eC ∣ e ∧ C.fC ∣ f
 ```
+
+**⚠ UNIVERSE SCOPE, DECLARED** *[added: A-E.1/E-D6]*. As at E.39: `MP1Carrier.{uO, uK, uW}` is
+the `EFF.T2.23` obligation **for the interfaces whose rank carrier lives in `uW`**; chapter I
+consumes it universe-polymorphically or records its `uW` choice (honesty **E-12**).
 
 **⚠ SIGNATURE NOTE.** Item 5's emission clause is stated in the numerical shadow (D-E2); the
 "certified orbit decomposition" at instances requires `Φ″` irreducible — "asserted nowhere and
@@ -2904,13 +3012,20 @@ carrier hypotheses that fence nothing ("the acceptance record states it 'fences 
 **SIGNATURE.**
 ```lean
 namespace Uniformity.Density.Ladder
+universe uO uK uW        -- [repaired: A-E.1/E-D6]
 
 /-- The chapter-E obligations record: what chapter I receives from the σ-ladder. -/
-structure LadderObligations {O : Type*} [CommRing O] {K : Type*} [Field K]
+structure LadderObligations {O : Type uO} [CommRing O] {K : Type uK} [Field K]
     (C : SlotCarrier O K) (B : BlockData C) : Prop where
-  lb1 : LB1Carrier C B
-  mp1 : MP1Carrier C B
+  -- [repaired: A-E.1/E-D6] both carriers instantiated at the record's own `uW`
+  lb1 : LB1Carrier.{uO, uK, uW} C B
+  mp1 : MP1Carrier.{uO, uK, uW} C B
 ```
+
+*[A-E.1/E-D6: the record is therefore itself universe-scoped —
+`LadderObligations.{uO, uK, uW}` bundles the two obligations AT ONE `uW`. Chapter I's
+row-disposition census consumes this field list as ground truth (TEETH below); it must consume
+the universe parameter with it. Honesty **E-12**.]*
 
 **DEPENDS.** E.39, E.40. **PROOF.** definitional. **SIZE.** 8 lines.
 
@@ -3767,9 +3882,11 @@ non-propagation display).
 ### NODE E.60 [theorem] [fresh]
 
 **STATEMENT.** *THEOREM HE7.C, schema form (the ladder is finite at every degree).* Packaging
-of E.07 + E.55: in any read history, (i) every level jump sits at a state with `μ ≥ 4`
-(E.59/E.07(i) with clause (1)'s `Σ len = μ`); (ii) the jump target's mass halves
-(E.07(ii)/E.17(ii)); (iii) hence the jump count satisfies `2^(J+1) ≤ μ₀` (E.07(iii)) — the
+of E.07 + E.55: in any read history, (i) every level jump sits at a state with `μ ≥ 4` — **the
+state the jump STARTS from, not the one it opens** *[repaired: A-E.1/E-D11]* — (E.59/E.07(i)
+with clause (1)'s `Σ len = μ`); (ii) the jump target's mass halves
+(E.07(ii)/E.17(ii)); (iii) hence, at `J ≥ 1`, the jump count satisfies `2^(J+1) ≤ μ₀`
+(E.07(iii)) — the
 cleared `J ≤ log₂ μ − 1 ≤ log₂ n − 2`; (iv) interleaved α-refines are finite (E.55); every
 other step strictly decreases μ (E.17/E.18) — so the read tree is finite. Corollary instances,
 as separate small clauses: at `μ₀ = 4` (`n = 8`, `D′ = 2`): `J ≤ 1` and the one jump lands at
@@ -3781,20 +3898,58 @@ in R3's rider form ONLY**: `J ≥ 2 → μ₀ ≥ 8` (necessary direction; E.64 
 ```lean
 namespace Uniformity.Density.Ladder
 
+-- [repaired: A-E.1/E-D11] `h4` ranges over `i < J` — the JUMP STARTS — and clause 1 is guarded
+-- by `1 ≤ J`.  THE COMMITTED SIGNATURE, preserved verbatim (it is the one leanspec still carries):
+--
+--     theorem ladder_finite_bounds (μ : ℕ → ℕ) (J : ℕ)
+--         (h4 : ∀ i ≤ J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
+--         2 ^ (J + 1) ≤ μ 0 ∧ (μ 0 = 4 → J ≤ 1) ∧ (μ 0 ≤ 7 → ∀ i, 1 ≤ i → i ≤ J → μ i ≤ 3)
+--         ∧ (2 ≤ J → 8 ≤ μ 0)
+--
+-- Under it clause 3 is VACUOUS and clause 2 is slack, and the corpus's own n = 8 / μ ≤ 7 /
+-- n = 16 configurations are all INADMISSIBLE (amendment A-E.1/E-D11, sweep + witness table).
 theorem ladder_finite_bounds (μ : ℕ → ℕ) (J : ℕ)
-    (h4 : ∀ i ≤ J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
-    2 ^ (J + 1) ≤ μ 0 ∧ (μ 0 = 4 → J ≤ 1) ∧ (μ 0 ≤ 7 → ∀ i, 1 ≤ i → i ≤ J → μ i ≤ 3)
+    (h4 : ∀ i < J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
+    (1 ≤ J → 2 ^ (J + 1) ≤ μ 0) ∧ (μ 0 = 4 → J ≤ 1)
+    ∧ (μ 0 ≤ 7 → ∀ i, 1 ≤ i → i ≤ J → μ i ≤ 3)
     ∧ (2 ≤ J → 8 ≤ μ 0)
 ```
+
+**⚠ WHY THE HYPOTHESIS MOVED, AND WHAT IT COSTS** *[added: A-E.1/E-D11]*. `EFF.HE7.15` puts the
+`4 ≤` floor on the node that REQUIRES the jump — *"A node requiring a level jump … satisfies
+μ ≥ 4, and the level-2 problem it opens has μ₂ ≤ μ/(ℓ·d_r) ≤ μ/2"* — never on the target it
+opens; E.07's index-translation note derives `∀ i < J` from that sentence. Effects, all verified
+by exhaustive sweep (`μ ≤ 64`, `J ≤ 5`; 24,576 admissible sequences, zero counterexamples to any
+clause):
+* **clause 3 becomes live**: it now has 14 hypothesis-satisfying configurations in the sweep box
+  at `μ 0 ≤ 7, J ≥ 1` (under the committed form: **zero** — the clause was provable and said
+  nothing);
+* **clause 2 becomes tight**: `μ 0 = 4, J = 1` is admissible (μ = (4,2) — the n = 8 frame), so
+  `J ≤ 1` is the exact bound, not a slack statement about a forced `J = 0`;
+* **clause 1 needs the `1 ≤ J` guard**: with no jump the hypotheses are empty and `2 ≤ μ 0` does
+  not follow (a terminal `μ 0 = 1` leaf is a corpus configuration; the sweep finds exactly the
+  two counterexamples `μ 0 ∈ {0,1}` at `J = 0`, and none at `J ≥ 1`);
+* **clause 4 is unchanged and now realizable**: `μ = (8,4,2)`, `J = 2` — ANNEX R R1.3's
+  constructed `n = 16` two-jump family — satisfies the hypotheses. Under the committed form it
+  did NOT (it would have needed `4 ≤ μ 2 ≤ 2`), i.e. the machine-exhibited family contradicted
+  the signed hypothesis set. That is the decisive check.
+No hypothesis is ADDED that the source lacks and no conclusion is weakened except at `J = 0`,
+where the source claims nothing.
 
 **DEPENDS.** E.07, E.17, E.55 (the α-refine leg, cited in the packaging comment — the
 theorem's statement is pure arithmetic; the READ-finiteness composition is E.20's engine with
 E.55 discharging the within-level `W`).
 
-**PROOF.**
-1. First clause: E.07(iii). Second: `2^(J+1) ≤ 4` forces `J + 1 ≤ 2`. Third: halving from
-   `μ 0 ≤ 7` gives `μ 1 ≤ 3` (2μ₁ ≤ 7 ⟹ μ₁ ≤ 3), and inductively `μ i ≤ 3` for `i ≥ 1`.
-   Fourth: `2^3 ≤ μ 0`. `omega` + `Nat.pow` lemmas throughout.
+**PROOF.** *[re-derived: A-E.1/E-D11 against the corrected hypothesis set]*
+1. Clause 1: E.07(iii) at `hJ` (same hypotheses, same guard).
+2. Clause 2: if `J ≥ 2` then clause 1 gives `2^(J+1) ≤ μ 0 = 4`, so `J + 1 ≤ 2` — contradiction;
+   hence `J ≤ 1`. (`J ≤ 1` is now exact: `μ = (4,2)` realizes `J = 1`.)
+3. Clause 3: for `1 ≤ i ≤ J`, the chain `μ (i−1) ≤ … ≤ μ 0 ≤ 7` (each `hh` step gives
+   `μ (j+1) ≤ 2·μ (j+1) ≤ μ j`) plus `hh (i−1) : 2 * μ i ≤ μ (i−1) ≤ 7` gives `μ i ≤ 3` by
+   `omega`. **No induction on the floor is used** — the floor plays no part in this clause, which
+   is precisely why imposing it on the target killed the clause.
+4. Clause 4: clause 1 at `J ≥ 2` gives `8 = 2^3 ≤ 2^(J+1) ≤ μ 0`.
+`omega` + `Nat.pow` lemmas throughout.
 
 **SIZE.** 18 lines.
 
