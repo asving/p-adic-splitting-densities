@@ -227,6 +227,25 @@ amendments are adjudicated, per §12's "those stubs are re-signed when their nod
   its own `hterm`, and E.56 (landed at its committed signatures) supplies the `hmono` this node
   consumes. `E55a.exists_limit_key` (the split's first piece, PROVED) needs `hAdeg` but neither
   `hkey` nor `2 ≤ μ₂`; there is no `E55b`. Full record: blueprint amendment A-E.5.
+* **A-E.6 (2026-08-16, E.57 vacuity adjudication — the RE-SIGN unit).** **E.57 `block_split`
+  RE-SIGNED at the full per-block record and DEMOTED from `axiom` to the named target `Prop`
+  `BlockSplitTarget`.** The committed conclusion (`∃ blocks : List (Polynomial O), B.F =
+  blocks.prod ∧ (blocks.map natDegree).sum = B.F.natDegree`) was machine-refuted VACUOUS —
+  `leanfinal/Uniformity/ChapE/E57_VACUITY.lean.txt` proves it outright for an ARBITRARY
+  polynomial over an arbitrary `CommRing`, with no carrier, block or interface in scope, and
+  proves that for `∀ P : Prop` the same shape with `hpart : P` is provable by ignoring `hpart`
+  (so no typing of the socket could have added strength). The re-signed conclusion is
+  `Nonempty (BlockSuite I)` — E.39a's record, INSTANTIATED here rather than hypothesized, which
+  is what E.57's own SIGNATURE NOTE always said the full contract was. Binder names, order and
+  statements are byte-preserved; the `Type*`s are respelled at the explicit `uO`/`uK`/`uW`.
+  **The demotion is forced, and is the honest half of the amendment:**
+  `verification/om4_resign_nontriviality.lean` Part 4 exhibits a legal instance
+  (`O = ℤ`, `K = ℚ`, `D = 1`, key `X + 1`, `F = X²`, one side, two unit-weight linear classes)
+  at which `hblocks`, `hblocksHi` and `hpart : True` ALL HOLD and `Nonempty (BlockSuite I)`
+  FAILS (`e57_resigned_false_at_untyped_socket`) — `hdisj` would need two coprime degree-1
+  factors of `X²`. So at the untyped socket the re-signed node is not merely unproved but
+  FALSE, and asserting it as an `axiom` would put a contradiction in this file. Census delta:
+  −1 `axiom`, +1 `def`. Full record: blueprint amendment A-E.6.
 
 ## BLOCKED-UNTIL-RESOLUTION (§12; do NOT fire the fleet on these)
 
@@ -236,7 +255,11 @@ with their `True` placeholders **verbatim as the blueprint prescribes** and carr
 resolution pass types them (against chapter C's HE6R1-3 emission record, C's partition record,
 C's letter layer and chapter D's ϑ table respectively). **E.52 is explicitly NOT blocked** (it
 consumes E.51's row only through `mu2Sigma`). Proving E.51 or E.57 while the placeholder is
-`True` would be vacuous.
+`True` would be vacuous. **[A-E.6, 2026-08-16] For E.57 the fence is now sharper
+than "vacuous": at its re-signed conclusion the placeholder makes the statement FALSE (Part 4
+of `verification/om4_resign_nontriviality.lean`), which is why E.57 alone of the four is
+recorded as a `def`-named target rather than an `axiom`. E.51/E.61/E.62 are untouched by A-E.6
+and have NOT been audited for the same disease — that audit is owed.**
 
 ## Cross-chapter checks executed here (the E.22/E.23 obligation, and the GC-5 fence)
 
@@ -1202,11 +1225,36 @@ axiom chain_invariant {O : Type*} [CommRing O] {K : Type*} [Field K]
     (hstep : ∀ j, lam j < lam (j + 1))   -- supplied per step by the refined read
     : StrictMono lam ∧ ∀ i j, i < j → C.hgt (w i) ≠ C.hgt (w j)
 
+/-! ### A-E.6 RE-SIGN NOTE (2026-08-16) — NODE E.57
+
+Two machine-checked facts, in the order that forced the amendment.
+
+1. **The committed conclusion was VACUOUS.** `leanfinal/Uniformity/ChapE/E57_VACUITY.lean.txt`
+   proves the committed signature byte-for-byte (`block_split_IS_A_THEOREM`, all three
+   hypotheses flagged unreferenced by the linter), the same conclusion for an arbitrary
+   polynomial over an arbitrary `CommRing` with no interface in scope
+   (`block_split_conclusion_from_nothing`), and the shape at an arbitrary `hpart : P`
+   (`socket_typing_is_orthogonal`). Cure, per the A-E.2 precedent: re-sign at the per-block
+   record. E.57's SIGNATURE NOTE had already disclosed that the displayed layer was partial —
+   *"the conclusion shape displayed is the PRODUCT/EXHAUSTION layer; the full contract adds,
+   per block, the single-side and pure-residual interface clauses of (ii)–(iv) as a
+   `BlockSuite` record (the E.39 note's structure, INSTANTIATED here rather than
+   hypothesized)"*.
+
+2. **The re-signed statement is FALSE at `hpart : True`.**
+   `verification/om4_resign_nontriviality.lean` Part 4: `e57_resigned_not_trivial` (the
+   conclusion fails at a legal `SlotCarrier ℤ ℚ` instance — non-triviality in the A-E.2
+   standard) and `e57_resigned_false_at_untyped_socket` (at that same instance `hblocks`,
+   `hblocksHi` and `hpart` all hold). So the declaration below is a `def`-named target, not an
+   `axiom`; GC-13's typing of `hpart` against C.63 `classSize_separable` / C.69
+   `classSize_supply` is what earns the assertion, and is also what LANDING waits on
+   (`leanfinal/notes/RESCHEDULE_E57_2026-08-16.md`). -/
+
 -- BLOCKED: GC-13 resolution (§12 BLOCKED-UNTIL-RESOLUTION; `hpart : True` placeholder —
 -- the product/disjointness carrier leg, typed against chapter C's partition record at freeze.
 -- The fleet must NOT fire on E.57 before that pass.)
 -- ⚠ RE-SIGNED at A-E.6 (2026-08-16), AND DEMOTED FROM `axiom` TO A NAMED TARGET `Prop`.
--- Two machine-checked facts forced both halves; see the §8 A-E.6 RE-SIGN NOTE below.
+-- Two machine-checked facts forced both halves; see the §8 A-E.6 RE-SIGN NOTE just above.
 set_option linter.unusedVariables false in
 /-- **E.57** [theorem, HARD] The mixed-node block split (ANNEX-LEMMA HE7-13′(a), schema
 form) — the PROVED level-≥2 counterpart of `(LB1)`.  **RE-SIGNED at A-E.6**: the conclusion
