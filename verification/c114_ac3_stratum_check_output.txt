@@ -1,0 +1,89 @@
+==============================================================================
+A-C.3 certification: the re-signed C.114 count laws, stratum vs formula
+==============================================================================
+
+-- [LAW] depth-0 trees (the C.109 cell, now inside the tree statement)
+[PASS] depth0 q=2 m=2 irreducible-quadratic residual: clause list clean  (failing=[])
+[PASS] LAW depth0 q=2 m=2 irreducible-quadratic residual  (formula=32 stratum=32 q=2 N=5)
+[PASS] depth0 q=2 m=1 steep side: clause list clean  (failing=[])
+[PASS] LAW depth0 q=2 m=1 steep side  (formula=4 stratum=4 q=2 N=5)
+[PASS] depth0 q=3 m=2 irreducible-quadratic residual: clause list clean  (failing=[])
+[PASS] LAW depth0 q=3 m=2 irreducible-quadratic residual  (formula=729 stratum=729 q=3 N=5)
+[PASS] depth0 q=3 m=1 steep side: clause list clean  (failing=[])
+[PASS] LAW depth0 q=3 m=1 steep side  (formula=18 stratum=18 q=3 N=5)
+
+-- [LAW] depth-1 chains (one unfractured child; the corpus's own W12-L0 recovery instance is the q=3 split-residual row)
+[PASS] chain1 q=2 leaf-type=((2, 1),): clause list clean  (failing=[])
+[PASS] LAW chain1 q=2 leaf-type=((2, 1),)  (formula=4 stratum=4 q=2 N=5)
+[PASS] chain1 q=3 leaf-type=((2, 1),): clause list clean  (failing=[])
+[PASS] LAW chain1 q=3 leaf-type=((2, 1),)  (formula=54 stratum=54 q=3 N=5)
+[PASS] chain1 q=3 leaf-type=((1, 1), (1, 1)): clause list clean  (failing=[])
+[PASS] LAW chain1 q=3 leaf-type=((1, 1), (1, 1))  (formula=18 stratum=18 q=3 N=5)
+[PASS] chain1 q=2 m=3 (triple root, mixed leaf type): clause list clean  (failing=[])
+[PASS] LAW chain1 q=2 m=3 (triple root, mixed leaf type)  (formula=64 stratum=64 q=2 N=7)
+
+-- [LAW] depth-2 chains
+[PASS] chain2 q=2: clause list clean  (failing=[])
+[PASS] LAW chain2 q=2  (formula=8 stratum=8 q=2 N=6)
+[PASS] chain2 q=3: clause list clean  (failing=[])
+[PASS] LAW chain2 q=3  (formula=216 stratum=216 q=3 N=6)
+
+-- [REP-INDEP] the count does not depend on the representative system (the corpus's lift-independence claim, certified)
+[PASS] REP-INDEP chain2 q=3: four representative systems agree with the formula  (formula=216 strata=[216, 216, 216, 216])
+[PASS] REP ⟹ the A-C.2 s-pin: every representative recentring has gaussVal = s
+
+-- [GLOBAL] two-branch shapes at distinct branch residues (q=2)
+[PASS] GLOBAL kappa0=1 (equal histories): κ₀-rule holds
+[PASS] GLOBAL kappa0=1 (equal histories)  (formula=64 stratum=64)
+[PASS] GLOBAL kappa0=2 (distinct histories): κ₀-rule holds
+[PASS] GLOBAL kappa0=2 (distinct histories)  (formula=512 stratum=512)
+
+-- [SEP] the A-C.2 refutation geometries are separated by the clause list
+[PASS] SEP kappa-separated one-node tree vK(1): clause list CLEAN  (failing=[])
+[PASS] SEP kappa-separated one-node tree vK(2): the κ-rule REJECTS it  (failing=['KAPPA'])
+[PASS] SEP vK(1) (the geometry the re-sign DOES speak about): clause list clean  (failing=[])
+[PASS] LAW SEP vK(1) (the geometry the re-sign DOES speak about)  (formula=1 stratum=1 q=2 N=3)
+[PASS] SEP kappa0-separated empty shape ⟨[],1⟩: the κ₀-rule holds
+[PASS] SEP kappa0-separated empty shape ⟨[],2⟩: the κ₀-rule REJECTS it
+[PASS] SEP empty shape ⟨[],1⟩: formula = stratum = 1
+
+-- [D6] FINDING: EFF.W12.85's per-node nonnegativity is FALSE at nodes
+         whose repeated-linear children EXHAUST the multiplicity (≥ 2 children).
+[PASS] [D6] identity B_v − Σ_u D_u = −s(m² − Σ m_u²)/2 < 0 (m=4, two double roots, slope 1)
+[PASS] [D6] identity B_v − Σ_u D_u = −s(m² − Σ m_u²)/2 < 0 (m=6, three double roots, slope 1)
+[PASS] [D6] identity B_v − Σ_u D_u = −s(m² − Σ m_u²)/2 < 0 (m=4, two double roots, slope 3)
+[PASS] [D6] identity B_v − Σ_u D_u = −s(m² − Σ m_u²)/2 < 0 (m=6, two triple roots, slope 2)
+[PASS] [D6] measured: exhausting 2-child node (q=3 one side, κ=1) fails ONLY the per-node inequality, and the law is FALSE there  (failing=['HNODE'] formula=9 TRUE stratum=243)
+[PASS] [D6] measured: exhausting 2-child node (q=3 one side, κ=2) fails ONLY the per-node inequality, and the law is FALSE there  (failing=['HNODE'] formula=108 TRUE stratum=486)
+[PASS] [D6] measured: exhausting 2-child node (q=2 two sides) fails ONLY the per-node inequality, and the law is FALSE there  (failing=['HNODE'] formula=32 TRUE stratum=128)
+[PASS] [D6] the hypothesis `hnode` is therefore LOAD-BEARING, not derivable  (three measured counterexamples above; the signed statement carries it)
+
+-- [TOOTH] per-clause mutation teeth (a clause with no tooth is DEAD)
+[PASS] TOOTH WF (L−1 at the root (the A-C.2 free-`L` disease, inside the tree)): violates exactly ['WF']  (failing=['WF'])
+[PASS] TOOTH WF (L−1 at the root (the A-C.2 free-`L` disease, inside the tree)): KILLS the law  (formula=162 stratum=54)
+[PASS] TOOTH CONS (child polygon under its conservative floor): violates exactly ['CONS']  (failing=['CONS'])
+[PASS] TOOTH CONS (child polygon under its conservative floor): KILLS the law  (formula=1458 stratum=0)
+[PASS] TOOTH COMPL (a child at a depth that is NOT a side slope of its parent): violates exactly ['COMPL']  (failing=['COMPL'])
+[PASS] TOOTH COMPL (a child at a depth that is NOT a side slope of its parent): KILLS the law  (formula=64 stratum=0)
+[PASS] TOOTH KAPPA (kappa=2 on a childless node (the A-C.2 refutation geometry)): violates exactly ['KAPPA']  (failing=['KAPPA'])
+[PASS] TOOTH KAPPA (kappa=2 on a childless node (the A-C.2 refutation geometry)): KILLS the law  (formula=1458 stratum=729)
+[PASS] TOOTH VIS (child polygon outside the window (N=4)): violates exactly ['VIS']  (failing=['VIS'])
+[PASS] TOOTH VIS (child polygon outside the window (N=4)): KILLS the law  (formula=6 stratum=0)
+[PASS] TOOTH HNODE (exhausting 2-child node (finding D6)): violates exactly ['HNODE']  (failing=['HNODE'])
+[PASS] TOOTH HNODE (exhausting 2-child node (finding D6)): KILLS the law  (formula=9 stratum=243)
+[PASS] [D5] TOOTH REP: A-C.2's s-pin ALONE (∃ over every lift) breaks the law  (formula=216 stratum(no REP)=324)
+[PASS] [D5] TOOTH REP (depth 1, split leaf residual): the same failure one level up  (formula=18 stratum(no REP)=54)
+[PASS] TOOTH TYPE: dropping the non-root side-type pin breaks the law  (formula=54 stratum(no TYPE)=108)
+[PASS] SPIN status: subsumed by REP (reported, not silently kept)  (formula=54 stratum(no SPIN, no REP)=54)
+[PASS] DIST status: subsumed in this grid (reported, not silently kept)  (true stratum=243 stratum(no DIST)=243)
+[PASS] FENCE instance fails exactly the fence  (failing=['FENCE'])
+[PASS] FENCE status: reported (scope fence, no truth tooth in this grid)  (formula=2187 stratum=2187)
+[PASS] TOOTH SIGMA: dropping the branch-assignment ∃ breaks the κ₀ law  (formula=512 stratum(no σ)=256)
+[PASS] TOOTH KAPPA0: κ₀=1 where the rule demands 2 breaks the law  (formula(bad κ₀)=256 stratum=512)
+[PASS] TOOTH DISTINCT-RESIDUES: two branches at the same residue break the law  (formula=64 stratum(same residue)=8)
+
+==============================================================================
+[DEAD/SUBSUMED] clause SPIN: subsumed by REP (a representative recentring has gaussVal = s by construction); no independent tooth in this grid
+[DEAD/SUBSUMED] clause DIST: SUBSUMED in this grid by the parent's side-TYPE pin (distinct residual roots ⇒ distinct centres ⇒ distinct clusters); reachable multi-child geometries are exhausting, where a shared cluster forces f = G² and leaves the type pin unsatisfiable.  Retained on source grounds (EFF.W12.85 step 4: "its repeated roots are distinguished by their values") and for the NON-exhausting regime, which is out of brute-force range
+[DEAD/SUBSUMED] clause FENCE: repeated degree-2 residual: stratum=2187 = formula (a SCOPE fence, retained on source grounds)
+RESULT: 63 checks, 0 failures, 3 clause(s) flagged
