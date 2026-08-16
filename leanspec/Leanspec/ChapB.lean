@@ -71,6 +71,19 @@ The §10 gates bind nothing: they are concrete `ℤ_[2]` / `ℤ_[3]` instances.
   B.81's clause verbatim), B.72 (`h0`), B.79a (`h0`); B.41/B.48/B.79b/B.80/B.81/B.82 verified
   immune (`hH₀`/`hvis`/`hnz`); B.63's stub UNCHANGED (its blueprint route gains the `φ`-part
   peel step 0 instead). Full record: blueprint amendment A-F.9.
+* **A-F.10 (2026-08-16, route adjudication).** B.42's A-F.9 PROOF ROUTE machine-checked
+  UNREACHABLE (committed obstruction record
+  `leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt`: purity forces a one-sided polygon —
+  B.41's `hpure` is unavailable in the inductive case — and step 5's degree arithmetic is
+  unsatisfiable); no corpus proof of the missing vertex split exists at general keys. B.42
+  retagged **[cite:GN15 Thm 2.3]** (Part V gate (b): a literature import, owner-signed per
+  cite; queue at CHAP-I §3's 2026-08-16 addendum with the faithfulness draft). Hypotheses
+  byte-unchanged; conclusion gains clause 6 (the residual tie `R_λ(F p) ∼ R_λ(f)`, the cited
+  theorem's own third clause — what B.63 step 2 consumes). NEW stub **B.42a**
+  (`card_sideSet_le_one_of_isPure`, the pure ⟺ one-sided dictionary; compiled proof committed
+  in the obstruction record). Consumer stubs UNCHANGED (the A-F.6/A-F.9 strengthened clauses +
+  clause 6 carry everything B.63/B.66a/B.72/B.79a read). Full record: blueprint amendment
+  A-F.10 + CHAP-B honesty item H-14 (the cite-conditionality inheritance list).
 
 ## THE DEFECT LIST (stage-0e gate, 2026-08-15)
 
@@ -713,7 +726,31 @@ axiom exists_graded_factorization (hπ : Irreducible π) {φ : Polynomial O} (h�
       h.natDegree = ℓ * φ.natDegree * H.natDegree ∧
       IsPure φ g u ℓ ∧ IsPure φ h u ℓ ∧ GradedCoprime π φ u ℓ g h
 
-/-- **B.42** [theorem] ENV-C. **[repaired: A-F.6]** — conclusion STRENGTHENED (hypotheses
+/-- **B.42a** [lemma] ENV-A. **[booked: A-F.10]** — the pure ⟺ one-sided dictionary,
+machine-checked direction: a `(w,t)`-pure monic `f` of degree `μ·m` has a ONE-POINT side at
+every genuinely different slope. Compiled proof committed in
+`leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt` (Lean-core footprint); it is the
+obstruction that retired B.42's proof route (B.41's `hpure` is unavailable in the inductive
+case), the base-case-exhaustiveness lemma of any future retirement proof, and the coherence
+corroboration of the B.42 cite. -/
+axiom card_sideSet_le_one_of_isPure {φ : Polynomial O} (hφ : IsKey φ)
+    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree)
+    {w t : ℕ} (ht : 0 < t) (hpure : IsPure φ f w t)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hslope : u * t ≠ w * ℓ) :
+    (sideSet φ f u ℓ).card ≤ 1
+
+/-- **B.42** [theorem] ENV-C — **[cite:GN15 Thm 2.3], gate (b) (A-F.10)**: this contract is a
+LITERATURE IMPORT, to land in `leanfinal` as a signed `axiom` after the owner's per-cite
+signature (queue: CHAP-I §3, dated addendum 2026-08-16, with the faithfulness entry draft).
+The signed proof route is machine-checked UNREACHABLE
+(`leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt`: purity forces a one-sided polygon, so
+B.41's `hpure` cannot hold in the inductive case; independently the step-5 `hprod` degree
+arithmetic is unsatisfiable), and no corpus proof of the missing vertex-split mechanism exists
+at general keys (A-F.7's B.44′ is CLOSED-REFUTED). Sources: [GN15] Thm 2.3
+(`g = g₀·φ^{ord_φ(g)}·∏ g_{λ,ψ}`, arbitrary discrete valued field — COVERS-ALL-O, NS-1/NS-2);
+per-slope grouping + factor clauses per GMN Thm 1.15 (`f_φ = F_1…F_g`, `N_φ(F_i)` one-sided,
+`R_{λ_i}(F_i) ∼ R_{λ_i}(f)`); second legs [AGNPRW] Thm 4.4 and NS-9's product theorem.
+**[repaired: A-F.6]** — conclusion STRENGTHENED (hypotheses
 unchanged): clause 1 records `0 < p.1` (proof step 2 derives every slope positive from `hres`),
 clause 3 records `φ.natDegree ∣ (F p).natDegree` (B.41's pinned factor degrees) — both are what
 the repaired B.48 needs at B.63. **[repaired: A-F.9]** — `(h0 : dev φ f 0 ≠ 0)` added: the
@@ -722,7 +759,10 @@ A-F.6 form is machine-REFUTED (`B42_REFUTATION.lean.txt`: `f = φ`, `μ = 1` at 
 classical `φ ∤ f` ([GN15] Thm 2.3 peels `φ^{ord_φ(g)}` explicitly). Clause 3 further records
 `dev φ (F p) 0 ≠ 0` and `0 < (F p).natDegree` (proof-free: B.41's `GradedCoprime` output pins
 the factors' left heights, and the peeled degrees are `ℓ·m·d`, `d ≥ 1`) — they discharge
-B.48's `hH₀`/`hne`/`hd` at B.63. -/
+B.48's `hH₀`/`hne`/`hd` at B.63. **[repaired: A-F.10]** — clause 6 added, the residual tie
+`R_λ(F p) ∼ R_λ(f)` (the cited theorem's own third clause; B.63 step 2 consumes it, and under
+the cite it cannot be re-derived from a construction). Clause 6 is the one clause never
+refutation-tested: flagged FIRST for the gate-(b) fresh-context audit. -/
 axiom exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
@@ -735,7 +775,14 @@ axiom exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ
         dev φ (F p) 0 ≠ 0 ∧ 0 < (F p).natDegree) ∧
       f = ∏ p ∈ s, F p ∧
       (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
-        (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s))
+        (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s)) ∧
+      (∀ p ∈ s, ∀ (hne : (sideSet φ f p.1 p.2).Nonempty)
+        (hne' : (sideSet φ (F p) p.1 p.2).Nonempty) (H₀ H₀' : ℕ),
+        npHgt φ f (sideMin φ f p.1 p.2 hne) = (H₀ : ℕ∞) →
+        npHgt φ (F p) (sideMin φ (F p) p.1 p.2 hne') = (H₀' : ℕ∞) →
+        ∃ c : (resField φ)ˣ,
+          resPoly π φ f p.1 p.2 hne H₀ =
+            Polynomial.C (c : resField φ) * resPoly π φ (F p) p.1 p.2 hne' H₀')
 
 /-- **B.43** [lemma] ENV-C. **[repaired: A-F.6]** — `(hu)`, the four divisibilities and the
 purity of `g'`, `h'` added: the node's own STATEMENT ("under B.41's hypotheses"; "g, g' pure …
