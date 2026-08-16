@@ -10844,13 +10844,23 @@ records the import and leaves the choice to the owner.
    `isCSState_of_exists_lift` (the §5 bridge) — plus the RE-POINTED docstring of the
    byte-unchanged `not_isCSState_plantedPoly_swap`. `lake build Leanspec.ChapH` green
    (9177 jobs, exit 0).
-3. **`spec/DAG_BLUEPRINT_H.tsv`** — **11 rows added, none removed**: `BP.H.116b3 →
-   BP.H.116b3i`, `BP.H.116b3 → BP.H.116b3ii`, `BP.H.116b3 → BP.H.116b3iii`, three
-   `BP.H.116b3i → …`, three `BP.H.116b3ii → …`, two `BP.H.116b3iii → …`. The load-bearing ones
+3. **`spec/DAG_BLUEPRINT_H.tsv`** — **10 rows added, none removed** (file 520 → 530 lines):
+   `BP.H.116b3 → BP.H.116b3i`, `BP.H.116b3 → BP.H.116b3ii`, `BP.H.116b3 → BP.H.116b3iii`, three
+   `BP.H.116b3i → …`, one `BP.H.116b3ii → …`, three `BP.H.116b3iii → …`. The load-bearing ones
    are **`BP.H.116b3iii → BP.H.116b3i`** and **`BP.H.116b3iii → BP.H.116b3ii`** (the assembly
-   consumes both packages); b3-i and b3-ii have no edge between them and may run in parallel.
-   Chapter B's polygon API — `B39a` included — is cited by LANDED name in the DEPENDS fields
-   with no TSV row, exactly as at H.110 and A-H.7.
+   consumes both packages); **b3-i and b3-ii have NO edge between them** — that is the
+   parallelism claim of §3, and it is recorded by the ABSENCE of a row, not by one (the file's
+   only two `kind` values are `stmt-dep` and `proof-dep`; a non-edge has no encoding and must
+   not be invented). Chapter B's polygon API — `B39a` included — is cited by LANDED name in the
+   DEPENDS fields with no TSV row, exactly as at H.110 and A-H.7.
+   **⚠ PRE-EXISTING DEFECT NOTICED, NOT REPAIRED HERE (A-H.7's rows, not this unit's).** The
+   chapter-H graph contains one 2-cycle, `BP.H.116 → BP.H.116b1` (A-H.7 row, "clause (ii) is now
+   the ASSEMBLY node") against `BP.H.116b1 → BP.H.116` (A-H.7 row, "clause (i) `betaChild_spec`
+   + the def half"). It is an artifact of H.116 being a single DAG node carrying a def half,
+   clause (i) and clause (ii): the real dependency is clause (ii) → b1 → clause (i), with no
+   cycle. Cut either edge and the whole chapter-H graph is acyclic, **including all ten rows
+   added here** (verified mechanically at this unit). Repairing it means splitting `BP.H.116`
+   into `BP.H.116a`/`BP.H.116b`-shaped rows, which is A-H.7 territory and is left to the owner.
 4. **`leanfinal/notes/BLOCKED_H116b3_2026-08-16.md`** — the provenance record; unchanged by this
    unit, and its §4 recommendation is what §3 above executes.
 
