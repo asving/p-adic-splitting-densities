@@ -401,6 +401,7 @@ BP.H.114	BP.H.109	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	sourc
 BP.H.114	BP.H.111	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.114 DEPENDS
 BP.H.114	BP.H.112	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.114 DEPENDS
 BP.H.114	EFF.GENIND.08	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.114 SOURCE (transcription)
+BP.H.115	BP.H.100	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.115 DEPENDS (added: AMENDMENT A-H.5 -- classSect inverts H.100's proj_surjective')
 BP.H.115	BP.H.109	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.115 DEPENDS
 BP.H.115	BP.H.111	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.115 DEPENDS
 BP.H.115	BP.H.112	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.115 DEPENDS
@@ -415,6 +416,7 @@ BP.H.116	BP.H.108	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	sourc
 BP.H.116	BP.H.109	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.116 DEPENDS
 BP.H.116	BP.H.111	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.116 DEPENDS
 BP.H.116	BP.H.112	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.116 DEPENDS
+BP.H.116	BP.H.115	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.116 DEPENDS (added: AMENDMENT A-H.5 -- the A-H.5 s1 canonical lift pair resSect/classSect/recFrame lands in H.115's file and is named in H.116's re-signed clause (i))
 BP.H.116	BP.H.60	proof-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.116 DEPENDS
 BP.H.116	EFF.GENIND.10	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.116 SOURCE (transcription)
 BP.H.116	EFF.GENIND.24	stmt-dep	H	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-H sec17 NODE H.116 SOURCE (transcription)

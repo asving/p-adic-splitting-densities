@@ -457,6 +457,7 @@ Six things, and they are the chapter's actual mathematical content:
 | 15 | — | leanspec stub list (stage 0e) |
 | 16 | — | teeth dispositions; flagged for the codex cross-read |
 | 17 | H.100–H.124 | *[dated extension 2026-08-16, unit T-1/OM-2]* **THE T-1 COMPLETION LAYER**: N-1 level-0 class transport (H.100–H.105) · N-2 cluster event grammar over `O` (H.106–H.117) · N-3 conservative verdict, `RecursionLegs` legs, the S-1 bridge, the composed reduction (H.118–H.124) |
+| A-H.5 | H.114, H.115, H.116 | *[dated append 2026-08-16, unit T-1 wave 3]* **THE CENTRE-SHIFT RE-SIGN**: clause (i) of `alphaChild_spec`/`betaChild_spec` REFUTED (∀-lift-pair quantifier); DECISION D-H17.3 pins the centre in the def, requantifies clause (i) at the canonical centre, and closes both opaque-carrier deviations. Carries LESSON L-BATT (GC-candidate) |
 
 **Kind census** (mechanically counted over this file's `### NODE` headings): 15 `def`, 62 `lemma`,
 18 `theorem`, 3 `def+lemma`, 1 `gate` — **99 nodes**. Three of the `def` nodes carry a `structure`
@@ -486,7 +487,7 @@ claimed early.
 **[EXTENDED 2026-08-16 — §17, unit T-1/OM-2.]** The chapter gains 25 nodes **H.100–H.124**
 (the T-1 completion layer; owner mandate #66), converting OM-2's certified GENIND.B skeleton
 into signed contracts: **124 nodes total**, +52 scratch-elaborated declarations
-(`leanspec/Leanspec/ChapH.lean` `LeanspecH17`), +125 DAG rows, fleet planning figure
+(`leanspec/Leanspec/ChapH.lean` `LeanspecH17`), +125 DAG rows (127 after A-H.5), fleet planning figure
 +≈35 files. The counts and graph-shape figures ABOVE remain the committed §§3–13 census,
 unchanged; §17.4 carries its own census and firing order. The §17 0e gate (bodies + signing
 + numeric gates) is OPEN — this line records the extension, not a landing.
@@ -8635,7 +8636,8 @@ H.101, H.106, H.107.
 
 **Cross-file records installed by this unit.** (i) `leanspec/Leanspec/ChapH.lean` — the
 `LeanspecH17` elaboration-scratch blocks (its header records the lifecycle position and the
-two opaque-def deviations); (ii) `spec/DAG_BLUEPRINT_H.tsv` — the 125 rows above; (iii)
+two opaque-def deviations — both CLOSED by A-H.5); (ii) `spec/DAG_BLUEPRINT_H.tsv` — the 125
+rows above, **127 after A-H.5**; (iii)
 `blueprint/CHAP-I_capstone_conditionality.md` §3.9 — the T-1 row's dated REDUCED-TO
 annotation (H.100–H.124 + the named residual rows); (iv) this file's §2 census — one dated
 line. Nothing else is touched; §§0–16 and A-H.1/A-H.2 are byte-unchanged.
@@ -8650,7 +8652,8 @@ row must EXPECT the axiom).
 
 ---
 
-*END OF §17 (2026-08-16). 25 nodes H.100–H.124, 52 scratch-elaborated declarations, 125 DAG
+*END OF §17 (2026-08-16). 25 nodes H.100–H.124, 52 scratch-elaborated declarations (59 after
+AMENDMENT A-H.5, zero opaque carriers), 125 DAG
 rows, 1 finding (F-H17.1) + 1 proposed amendment (PA-H17.1, owner: orchestrator), 2
 standing fences carried (F-1, F-2/S-1). The H.98 fence stands: GENIND.B remains a
 reduction; H.124 is its composed conditional form, hypothesis visible. CODEX/decorrelated
@@ -9049,8 +9052,11 @@ the H.98 fence.
 2. **`leanspec/Leanspec/ChapH.lean`** — `LeanspecH17`: the §1 sections added, `alphaChild`/`betaChild`
    converted from opaque `axiom` carriers to real `def` bodies, the two clause-(i) `axiom` stubs
    re-signed. `lake build Leanspec.ChapH` green.
-3. **`spec/DAG_BLUEPRINT_H.tsv`** — two rows added: `BP.H.116 → BP.H.115` (def-dep, the lift
-   supplier) and `BP.H.115 → BP.H.100` (def-dep, `proj_surjective'` under `classSect`).
+3. **`spec/DAG_BLUEPRINT_H.tsv`** — two rows added (125 → **127** §17 rows), both
+   def-dependencies of the pinned section, written in the file's two-kind vocabulary:
+   `BP.H.116 → BP.H.115` as `stmt-dep` (H.116's re-signed clause (i) names `resSect`, which
+   lands in H.115's file) and `BP.H.115 → BP.H.100` as `proof-dep` (`classSect` inverts H.100's
+   `proj_surjective'`). No cycle: H.115 has no edge to H.116, and H.100 is layer-0.
 4. **`verification/openmath/OM2_h115_h116_centre_shift_refutation.py`** — retained as a standing
    regression (exit 0 = the ∀-`w` form stays refuted), named in both nodes' TEETH.
 5. **`blueprint/CONVENTIONS_2026-08-15.md`** — LESSON L-BATT proposed as a GC item; the
