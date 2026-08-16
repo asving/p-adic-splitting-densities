@@ -1,0 +1,37 @@
+== LEG A (HYP.143 branch (ii)) ==
+  A1c sweep: 35 perturbed leaf members, sigma stable
+  LEG A done.
+== LEG B (HYP.79 P-BINOM + HYP.67 f1=1 slice) ==
+  X5: j*=3 slots={(0, 1): (40960, 13)} theta=61 att=False binom(5,2)=10
+  P36: j*=4 slots={(0, 1): (4860, 5)} theta=21 att=False binom(6,2)=15
+  P38: j*=6 slots={(0, 1): (9072, 4)} theta=21 att=True binom(8,2)=28
+  -- cascade geography (e2(f2 - t*) = 1): measured table --
+  B3: j*=2 pin=7 theta=7 att=True slots={(0, 1): (12, 2), (1, 0): (40, 3)} binomprof=[1, 1]
+  B4: j*=3 pin=8 theta=7 att=False slots={(0, 0): (16, 4), (0, 1): (24, 3), (1, 0): (112, 4)} binomprof=[0, 0, 1]
+  B5: j*=4 pin=8 theta=7 att=False slots={(0, 0): (80, 4), (0, 1): (40, 3), (1, 0): (240, 4)} binomprof=[0, 0, 1, 1]
+  BP3: j*=2 pin=7 theta=7 att=True slots={(0, 1): (27, 3), (1, 0): (135, 3)} binomprof=[0, 1]
+  BP4: j*=3 pin=7 theta=7 att=True slots={(0, 0): (81, 4), (0, 1): (54, 3), (1, 0): (378, 3)} binomprof=[0, 1, 1]
+  BP5: j*=4 pin=7 theta=7 att=True slots={(0, 0): (405, 4), (0, 1): (90, 2), (1, 0): (810, 4)} binomprof=[1, 1, 2, 1]
+  BP6: j*=5 pin=7 theta=7 att=True slots={(0, 0): (1215, 5), (0, 1): (135, 3), (1, 0): (1485, 3)} binomprof=[0, 2, 0, 0, 1]
+  LEG B done.
+== LEG C (f1 >= 2 compound: HYP.67 face / HYP.80 / HYP.70) ==
+  F23m3: j*=1 ceil=True cert@(0,1)=19683 v=9 (want 9) att=False (want False) slots={(0, 1): (19683, 9)}
+  F23m2: j*=0 ceil=True cert@(0,1)=6561 v=8 (want 8) att=True (want True) slots={(0, 1): (6561, 8)}
+  F22m3: j*=1 ceil=True cert@(0,1)=768 v=8 (want 8) att=True (want True) slots={(0, 1): (768, 8)}
+  F22m2: j*=0 ceil=True cert@(0,1)=256 v=8 (want 8) att=True (want True) slots={(0, 1): (256, 8)}
+  F423m3: j*=1 ceil=True cert@(2,1)=768 v=8 (want 8) att=True (want True) slots={(0, 1): (-1536, 9), (1, 0): (-4096, 12), (2, 1): (768, 8)}
+  F423m2: j*=0 ceil=True cert@(2,1)=256 v=8 (want 8) att=True (want True) slots={(0, 1): (-512, 9), (2, 1): (256, 8)}
+  LEG C done.
+== LEG E (HYP.71 witnesses / HYP.69 / HYP.78) ==
+  W1: sweep 18 crossing rows; min gap (mindiff - theta) = 1; INFEASIBLE (no in-locus theta-attainment)
+  W2: sweep 36 crossing rows; min gap (mindiff - theta) = 1; INFEASIBLE (no in-locus theta-attainment)
+  R5: pin(ShC_1) = 18, theta(1) = 18, slots = {(0, 0): (31250, 6)}
+  R2: pin(ShC_1) = 21, theta(1) = 18, slots = {(0, 0): (128, 7)}
+  LEG E done.
+== LEG D (GENTOW-6.6 ledger: HYP.68 / HYP.144-BOX-2) ==
+  LEG D done.
+
+CHECKS: 561, VIOLATIONS: 0
+TALLY: {'A1': 18, 'A2': 7, 'A1c': 35, 'AS3': 7, 'AS5': 4, 'A3': 14, 'TEETH': 9, 'DUAL': 39, 'B-ANCH': 18, 'B-FLOOR': 71, 'B-TOP': 9, 'B-SINGLE': 18, 'B-LAW': 7, 'C-FLOOR': 15, 'C-QCEIL': 6, 'C-QCERT': 6, 'C-QATT': 6, 'C-PERT': 30, 'E-W': 4, 'E-NOX': 135, 'E-X': 27, 'E-LAW': 54, 'E-PAIR': 2, 'E-INFEAS': 2, 'E-LIN': 1, 'E-RFLOOR': 4, 'E-CHI': 2, 'E-S4': 1, 'D2a': 3, 'D2b': 3, 'D2d': 3, 'D2c': 1}
+KILLS: {'T-A-DPRIME': 1, 'T-A-EMPTY': 1, 'T-A-SIG': 1, 'T-B-COEF': 1, 'T-B-ALLM': 1, 'T-C-VAL': 1, 'T-E-CHI': 1, 'T-E-BOUND': 1, 'T-D-CJ': 1}
+VERDICT: GREEN

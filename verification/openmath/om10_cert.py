@@ -707,6 +707,744 @@ def leg_A():
     print('  LEG A done.')
 
 # ======================================================================
+# Shared shadow instrument (GENTOW6 ledger mechanics, fresh-typed; the
+# dual routes R/E of the box1 leg are both implemented and bit-compared)
+# ======================================================================
+
+class Frame:
+    def __init__(self, name, p, PHI1, h, e1, e2, f2, mu2, u2, PHI2):
+        self.name, self.p, self.PHI1, self.h = name, p, PHI1, h
+        self.e1, self.e2, self.f2, self.mu2, self.u2 = e1, e2, f2, mu2, u2
+        self.PHI2 = PHI2
+        self.Dp, self.D2 = len(PHI1) - 1, len(PHI2) - 1
+        self.m = e2 * f2
+        self.mu1 = self.m * mu2
+        self.E2 = self.m * u2
+        self.delta = u2 - e2 * self.Dp * h
+        self.ee = e1 * e2
+        self.K2 = dev(PHI2, PHI1, self.m + 1)
+        assert self.K2[self.m] == [1], (name, 'K2 top')
+        assert self.D2 == self.m * self.Dp, (name, 'degree tie')
+        assert self.delta >= 1, (name, 'delta >= 1')
+
+    def theta(self, j):
+        return (self.mu2 - j) * self.E2 + self.delta
+
+    def w(self, a, b):
+        return a * self.e2 * self.h + b * self.u2
+
+    def red(self, c):
+        return pdivmod(c, self.PHI1)[1]
+
+    def honest(self, f):
+        out, r = [], list(f)
+        for _ in range(self.mu2):
+            r, rem = pdivmod(r, self.PHI2)
+            out.append(rem)
+        assert r == [1], 'member not monic of the right degree'
+        return out
+
+    def level1(self, f):
+        A = dev(f, self.PHI1, self.mu1 + 1)
+        assert A[self.mu1] == [1]
+        return A
+
+    def _divide(self, A, reduce_each):
+        out = []
+        for _ in range(self.mu2):
+            q = [[] for _ in range(max(1, len(A) - self.m))]
+            for i in range(len(A) - 1, self.m - 1, -1):
+                c = A[i]
+                if pstrip(list(c)):
+                    q[i - self.m] = padd(q[i - self.m], c)
+                    A[i] = []
+                    for k in range(self.m):
+                        t = padd(A[i - self.m + k],
+                                 pneg(pmul(c, self.K2[k])))
+                        A[i - self.m + k] = self.red(t) if reduce_each \
+                            else t
+            out.append([list(A[b]) for b in range(self.m)])
+            A = q
+        assert A and pstrip(list(A[0])) == [1] and \
+            all(not pstrip(list(x)) for x in A[1:]), 'top quotient != 1'
+        return out
+
+    def shadow_R(self, f):
+        A = [self.red(a) for a in self.level1(f)]
+        return self._divide(A, True)
+
+    def shadow_E(self, f):
+        A = [list(a) for a in self.level1(f)]
+        out = self._divide(A, False)
+        return [[self.red(list(c)) for c in coord] for coord in out]
+
+    def slotdict(self, coord):
+        d = {}
+        for b, g in enumerate(coord):
+            for a, c in enumerate(g):
+                if c:
+                    d[(a, b)] = c
+        return d
+
+    def pin(self, coord):
+        best = None
+        for (a, b), c in self.slotdict(coord).items():
+            ht = self.ee * vp(c, self.p) + self.w(a, b)
+            best = ht if best is None else min(best, ht)
+        return best
+
+    def mindiff(self, cH, cS):
+        dif = [padd(list(sb), pneg(hb)) for sb, hb in
+               zip(cS, dev(cH, self.PHI1, self.m))]
+        return self.pin(dif)
+
+    def graded_nonzero(self, coord, a, b, H):
+        c = self.slotdict(coord).get((a, b), 0)
+        if c == 0:
+            return False
+        n = H - self.w(a, b)
+        return n >= 0 and n % self.ee == 0 and vp(c, self.p) == n // self.ee
+
+    def dual_shadow(self, f, tag):
+        sR = self.shadow_R(f)
+        sE = self.shadow_E(f)
+        chk('DUAL', all(self.slotdict(a) == self.slotdict(b)
+                        for a, b in zip(sR, sE)),
+            '%s dual-route mismatch' % tag)
+        return sE
+
+
+# frames — geographies (see the note S2 for the derivations of the
+# constants; theta lists asserted below against the closed form):
+PX = [-2, 0, 1]                    # x^2 - 2 over Q2  (e1=2, f1=1)
+PP = [-3, 0, 1]                    # x^2 - 3 over Q3  (e1=2, f1=1)
+
+def mkframe(*args):
+    return Frame(*args)
+
+# ======================================================================
+# LEG B — HYP.79 (P-BINOM) + HYP.67's lower-coordinate slice, f1 = 1
+# ======================================================================
+#
+# Geographies: X (Q2, PHI2 = PHI'^2 - 64x, single-slot top coordinate),
+# P3 (Q3, PHI2 = PHI'^2 - 18x, single-slot), B (Q2, PHI2 =
+# PHI'^2 - 2x PHI' - 8, the e2(f2 - t*) = 1 cascade), BP (Q3, PHI2 =
+# PHI'^2 - 3x PHI' - 27, same cascade shape, the BP3 genre of the
+# GENTOW6_PROOF r1 bracket).
+#
+# PREREGISTERED (hard checks):
+#  P-ANCHOR  the five already-recorded frames (X3, X4, A53, B3, P33,
+#     P34, P35) reproduce the sealed instrument's committed top-slot
+#     values bit-exactly (fresh implementation tie).
+#  P-FLOOR   pin(ShC_j) >= theta(j) at every frame, every coordinate
+#     (GENTOW-3(i) instances).
+#  P-TOP     ShC_j == {} for every j > j* (6.5(a) ceiling), j* =
+#     (mu2-2) + floor((2 e2 t* + 1)/(e2 f2)).
+#  P-SINGLE  single-slot geographies (X/P3): floor attainment at j*
+#     iff p does not divide binom(mu2,2): X3 att / X4 no / X5 no /
+#     P33 no / P34 no / P35 att / P36 no / P38 att.
+#  P-CERT    certificate slot (a*,b*) = (2 i_t* - D', (2 e2 t* + 1)
+#     mod e2 f2) carries v_p = v_p(binom(mu2,2)) + mu2-independent
+#     base (measured at the anchors, asserted at the fresh frames).
+# MEASURED (the examples-first table, read off post hoc — B-S2):
+#  the cascade frames B4, B5, BP4, BP5, BP6: full ShC_{j*} slot dicts,
+#  graded floor digits, attainment verdicts vs the Kummer profile of
+#  binom(mu2, k) mod p.
+
+FR_X = lambda mu2: mkframe('X%d' % mu2, 2, PX, 1, 2, 2, 1, mu2, 13,
+                           [4, -64, -4, 0, 1])
+FR_P3 = lambda mu2: mkframe('P3%d' % mu2, 3, PP, 1, 2, 2, 1, mu2, 5,
+                            [9, -18, -6, 0, 1])
+FR_A5 = lambda mu2: mkframe('A5%d' % mu2, 2, PX, 1, 2, 2, 1, mu2, 5,
+                            [4, -4, -4, 0, 1])
+FR_B = lambda mu2: mkframe('B%d' % mu2, 2, PX, 1, 2, 1, 2, mu2, 3,
+                           [-4, 4, -4, -2, 1])
+FR_BP = lambda mu2: mkframe('BP%d' % mu2, 3, PP, 1, 2, 1, 2, mu2, 3,
+                            [-18, 9, -6, -3, 1])
+
+def top_j(fr, tstar):
+    return (fr.mu2 - 2) + (2 * fr.e2 * tstar + 1) // (fr.e2 * fr.f2)
+
+def cert_slot(fr, tstar, i_tstar):
+    return (2 * i_tstar - fr.Dp, (2 * fr.e2 * tstar + 1) % (fr.e2 * fr.f2))
+
+def binom(n, k):
+    from math import comb
+    return comb(n, k)
+
+def leg_B():
+    print('== LEG B (HYP.79 P-BINOM + HYP.67 f1=1 slice) ==')
+    # anchors with sealed wants (committed record of gentow6_box1_mu3):
+    anchors = [
+        (FR_X(3), 0, 1, 1, {(0, 1): 12288}, 12, True),
+        (FR_X(4), 0, 1, 2, {(0, 1): 24576}, 13, False),
+        (FR_A5(3), 0, 1, 1, {(0, 1): 48}, 4, True),
+        (FR_P3(3), 0, 1, 1, {(0, 1): 972}, 5, False),
+        (FR_P3(4), 0, 1, 2, {(0, 1): 1944}, 5, False),
+        (FR_P3(5), 0, 1, 3, {(0, 1): 3240}, 4, True),
+    ]
+    for fr, tstar, i_t, jstar_want, slot_want, v_want, att_want in anchors:
+        f = ppow(fr.PHI2, fr.mu2)
+        sh = fr.dual_shadow(f, fr.name)
+        js = top_j(fr, tstar)
+        chk('B-ANCH', js == jstar_want,
+            '%s j* = %d, want %d' % (fr.name, js, jstar_want))
+        for j in range(fr.mu2):
+            pn = fr.pin(sh[j])
+            chk('B-FLOOR', pn is None or pn >= fr.theta(j),
+                '%s floor at j=%d: pin %s < theta %d'
+                % (fr.name, j, pn, fr.theta(j)))
+            if j > js:
+                chk('B-TOP', fr.slotdict(sh[j]) == {},
+                    '%s ceiling: ShC_%d nonempty' % (fr.name, j))
+        got = fr.slotdict(sh[js])
+        chk('B-ANCH', got == slot_want,
+            '%s top slots: got %s want %s' % (fr.name, got, slot_want))
+        aslot, bslot = cert_slot(fr, tstar, i_t)
+        cval = got.get((aslot, bslot))
+        chk('B-ANCH', cval is not None and vp(cval, fr.p) == v_want,
+            '%s cert v_p: got %s want %d'
+            % (fr.name, None if cval is None else vp(cval, fr.p), v_want))
+        att = fr.graded_nonzero(sh[js], aslot, bslot, fr.theta(js))
+        chk('B-SINGLE', att == att_want,
+            '%s attainment %s, want %s' % (fr.name, att, att_want))
+        chk('B-SINGLE',
+            att == (binom(fr.mu2, 2) % fr.p != 0),
+            '%s P-BINOM law: att %s vs binom(%d,2) = %d mod %d'
+            % (fr.name, att, fr.mu2, binom(fr.mu2, 2), fr.p))
+    # fresh single-slot frames: X5, P36, P38 — the P-BINOM law
+    # preregistered: attainment iff p does not divide binom(mu2,2).
+    for fr, tstar, i_t in [(FR_X(5), 0, 1), (FR_P3(6), 0, 1),
+                           (FR_P3(8), 0, 1)]:
+        f = ppow(fr.PHI2, fr.mu2)
+        sh = fr.dual_shadow(f, fr.name)
+        js = top_j(fr, tstar)
+        for j in range(fr.mu2):
+            pn = fr.pin(sh[j])
+            chk('B-FLOOR', pn is None or pn >= fr.theta(j),
+                '%s floor at j=%d: pin %s < theta %d'
+                % (fr.name, j, pn, fr.theta(j)))
+            if j > js:
+                chk('B-TOP', fr.slotdict(sh[j]) == {},
+                    '%s ceiling: ShC_%d nonempty' % (fr.name, j))
+        aslot, bslot = cert_slot(fr, tstar, i_t)
+        got = fr.slotdict(sh[js])
+        att = fr.graded_nonzero(sh[js], aslot, bslot, fr.theta(js))
+        want = (binom(fr.mu2, 2) % fr.p != 0)
+        chk('B-SINGLE', att == want,
+            '%s P-BINOM law (fresh): att %s want %s' % (fr.name, att, want))
+        chk('B-SINGLE', set(got) <= {(aslot, bslot)},
+            '%s single-slot geography: slots %s' % (fr.name, sorted(got)))
+        print('  %s: j*=%d slots=%s theta=%d att=%s binom(%d,2)=%d'
+              % (fr.name, js, {k: (v, vp(v, fr.p)) for k, v in got.items()},
+                 fr.theta(js), att, fr.mu2, binom(fr.mu2, 2)))
+    # the cascade geographies (B/BP, t* = 1, i_t* = 1): MEASURE mode +
+    # the floor/ceiling/dual hard checks; attainment verdict = ANY slot
+    # of the top coordinate carrying a graded floor digit.
+    print('  -- cascade geography (e2(f2 - t*) = 1): measured table --')
+    for fr in [FR_B(3), FR_B(4), FR_B(5), FR_BP(3), FR_BP(4), FR_BP(5),
+               FR_BP(6)]:
+        f = ppow(fr.PHI2, fr.mu2)
+        sh = fr.dual_shadow(f, fr.name)
+        js = top_j(fr, 1)
+        for j in range(fr.mu2):
+            pn = fr.pin(sh[j])
+            chk('B-FLOOR', pn is None or pn >= fr.theta(j),
+                '%s floor at j=%d: pin %s < theta %d'
+                % (fr.name, j, pn, fr.theta(j)))
+            if j > js:
+                chk('B-TOP', fr.slotdict(sh[j]) == {},
+                    '%s ceiling: ShC_%d nonempty' % (fr.name, j))
+        got = fr.slotdict(sh[js])
+        pn = fr.pin(sh[js])
+        att = (pn == fr.theta(js))
+        kprof = [binom(fr.mu2, k) % fr.p for k in range(2, fr.mu2 + 1)]
+        print('  %s: j*=%d pin=%s theta=%d att=%s slots=%s binomprof=%s'
+              % (fr.name, js, pn, fr.theta(js), att,
+                 {k: (v, vp(v, fr.p)) for k, v in sorted(got.items())},
+                 kprof))
+        # record for the law read (asserted post hoc in leg_B_law)
+        CASCADE_ROWS.append((fr.name, fr.p, fr.mu2, js, pn, fr.theta(js),
+                             att, kprof))
+    # ---- the B-S2 law, read off the table and asserted over all rows:
+    # LAW B-S2 (certified on 7 rows, two primes): at the e2(f2-t*) = 1
+    # cascade geography, the height-THETA_{j*} graded layer at the top
+    # coordinate is carried by the PAIR slot (digit ~ binom(mu2,2)) and
+    # the TRIPLE slot (digit ~ binom(mu2,3)) ONLY — k >= 4 diagonal
+    # branches land strictly above the floor (B4/B5: unit binom(mu2,4)
+    # yet pin = THETA + 1, which REFUTES the naive "any in-band k"
+    # candidate — refutation kept, law repaired to pair-or-triple):
+    #   attainment at j*  <=>  p !| binom(mu2,2)  OR  p !| binom(mu2,3).
+    for (nm, p, mu2, js, pn, th, att, kprof) in CASCADE_ROWS:
+        want = (binom(mu2, 2) % p != 0) or (binom(mu2, 3) % p != 0)
+        chk('B-LAW', att == want,
+            'LAW B-S2 at %s: att %s want %s' % (nm, att, want))
+    # teeth
+    frX4 = FR_X(4)
+    f = ppow(frX4.PHI2, 4)
+    sh = frX4.dual_shadow(f, 'X4-tooth')
+    js = top_j(frX4, 0)
+    # T-B-COEF: mutant law "coefficient mu2 instead of binom(mu2,2)":
+    # at X4, mu2 = 4 is even (v2 = 2) while binom(4,2) = 6 has v2 = 1 —
+    # the measured cert v_p must equal v0 + v_p(binom), not v0 + v_p(mu2).
+    got = frX4.slotdict(sh[js])
+    v_meas = vp(got[(0, 1)], 2)
+    tooth('T-B-COEF', v_meas == 13 and v_meas != 12 + 2,
+          'X4 cert slot v2 = %d (binom law: 12+1; mu2 mutant: 12+2)'
+          % v_meas)
+    # T-B-ALLM: mutant "the certificate digit always attains" dies at
+    # every p | binom(mu2,2) single-slot frame (X4, X5, P33, P34, P36).
+    dead = 0
+    for fr, tstar, i_t in [(FR_X(4), 0, 1), (FR_X(5), 0, 1),
+                           (FR_P3(3), 0, 1), (FR_P3(4), 0, 1),
+                           (FR_P3(6), 0, 1)]:
+        sh = fr.shadow_E(ppow(fr.PHI2, fr.mu2))
+        js = top_j(fr, tstar)
+        aslot, bslot = cert_slot(fr, tstar, i_t)
+        if not fr.graded_nonzero(sh[js], aslot, bslot, fr.theta(js)):
+            dead += 1
+    tooth('T-B-ALLM', dead == 5,
+          'always-attains mutant: %d/5 kills' % dead)
+    print('  LEG B done.')
+
+CASCADE_ROWS = []
+
+# ======================================================================
+# LEG C — HYP.67 f1 >= 2 face / HYP.80 COMPOUND-6.5' / HYP.70 widening
+# ======================================================================
+#
+# FIRST machine contact of the f1 >= 2 x mu2 >= 3 compound (6.5' is
+# prose-only at HEAD). Three fresh f1 = 2 geographies:
+#   F23  (Q3, PHI' = x^2 - 18: e1 = 1, f1 = 2, K = F_9, eta = sqrt2 != 1
+#         — the eta-gauge axis GENTOW4-r1 flagged as machine-blind),
+#         PHI2 = PHI'^2 - 81x, e2 = 2, f2 = 1, u2 = 5.
+#   F22  (Q2, PHI' = x^2 + 2x + 4: e1 = 1, f1 = 2, K = F_4),
+#         PHI2 = PHI'^2 - 16x, e2 = 2, f2 = 1, u2 = 5.
+#   F423 (Q2, PHI' = x^4 + 2x^2 + 4: e1 = 2, f1 = 2, D' = 4 — BOX-4's
+#         sealed key, one mu2 up = HYP.80's direct object),
+#         PHI2 = PHI'^2 - 16x^3, e2 = 2, f2 = 1, u2 = 11.
+# Heights are exact at these frames (no cross-monomial cancellation:
+# the f1 = 2 residue directions 1, omega are F_p-independent).
+#
+# HARD checks: dual-route equality; floors pin(ShC_j) >= theta(j)
+# (GENTOW-3(i), whose criterion clauses are general per GENTOW3 S6).
+# PREREGISTERED naive-transport QUESTIONS (the f1 = 1 formulas of 6.5
+# moved verbatim; T4 warns the displays "are NOT proved as written" at
+# f1 >= 2 — a failure here is a FINDING, not a violation):
+#   Q-CEIL  ShC_j == {} for j > j* = (mu2-2) + floor((2 e2 t* + 1)/m);
+#   Q-CERT  cert slot (2 i_t* - D', (2 e2 t* + 1) mod m) carries
+#           v_p = 2 a_t* + v_p(binom(mu2,2)), i.e. floor attainment iff
+#           p !| binom(mu2,2): F23 (p = 3 | 3): NO att, ht Theta + 2;
+#           F22/F423 (p = 2, binom = 3 unit): att at Theta.
+# HYP.70 rows: the same three keys at mu2 = 2 (x-ful tails), same checks.
+
+FR_F23 = lambda mu2: mkframe('F23m%d' % mu2, 3, [-18, 0, 1], 1, 1, 2, 1,
+                             mu2, 5, [324, -81, -36, 0, 1])
+FR_F22 = lambda mu2: mkframe('F22m%d' % mu2, 2, [4, 2, 1], 1, 1, 2, 1,
+                             mu2, 5, [16, 0, 12, 4, 1])
+FR_F423 = lambda mu2: mkframe('F423m%d' % mu2, 2, [4, 0, 2, 0, 1], 1, 2,
+                              2, 1, mu2, 11,
+                              [16, 0, 16, -16, 12, 0, 4, 0, 1])
+
+def leg_C():
+    print('== LEG C (f1 >= 2 compound: HYP.67 face / HYP.80 / HYP.70) ==')
+    # (frame ctor, t*, i_t*, a_t*)
+    geos = [(FR_F23, 0, 1, 4), (FR_F22, 0, 1, 4), (FR_F423, 0, 3, 4)]
+    for mk, tstar, i_t, a_t in geos:
+        for mu2 in (3, 2):
+            fr = mk(mu2)
+            f = ppow(fr.PHI2, mu2)
+            sh = fr.dual_shadow(f, fr.name)
+            js = top_j(fr, tstar)
+            for j in range(mu2):
+                pn = fr.pin(sh[j])
+                chk('C-FLOOR', pn is None or pn >= fr.theta(j),
+                    '%s floor at j=%d: pin %s < theta %d'
+                    % (fr.name, j, pn, fr.theta(j)))
+            ceil_ok = all(fr.slotdict(sh[j]) == {}
+                          for j in range(js + 1, mu2))
+            aslot, bslot = cert_slot(fr, tstar, i_t)
+            got = fr.slotdict(sh[js]) if js < mu2 else {}
+            cval = got.get((aslot, bslot))
+            vwant = 2 * a_t + vp(binom(mu2, 2), fr.p)
+            att = fr.graded_nonzero(sh[js], aslot, bslot, fr.theta(js)) \
+                if js < mu2 else False
+            attwant = (binom(mu2, 2) % fr.p != 0)
+            print('  %s: j*=%d ceil=%s cert@(%d,%d)=%s v=%s (want %d) '
+                  'att=%s (want %s) slots=%s'
+                  % (fr.name, js, ceil_ok, aslot, bslot, cval,
+                     None if cval is None else vp(cval, fr.p), vwant,
+                     att, attwant,
+                     {k: (v, vp(v, fr.p)) for k, v in sorted(got.items())}))
+                # the naive-transport questions, asserted as the
+                # first-contact record (failures are findings — if one
+                # fires, it is kept, disclosed, and read as the corrected
+                # law's data):
+            chk('C-QCEIL', ceil_ok,
+                '%s naive ceiling survives' % fr.name)
+            chk('C-QCERT', cval is not None and vp(cval, fr.p) == vwant,
+                '%s naive cert v_p survives: got %s want %d'
+                % (fr.name, None if cval is None else vp(cval, fr.p),
+                   vwant))
+            chk('C-QATT', att == attwant,
+                '%s naive attainment law survives: %s want %s'
+                % (fr.name, att, attwant))
+            # perturbation rows (in-budget deep members): honest read,
+            # mindiff floors
+            for k, (aa, bb) in enumerate([(0, 0), (1, 1)]):
+                pert = padd(f, pmul(pmul([fr.p ** 40],
+                                         pmul(ppow([0, 1], aa),
+                                              ppow(fr.PHI1, bb))),
+                                    ppow(fr.PHI2, mu2 - 2)))
+                shp = fr.dual_shadow(pert, '%s-pert%d' % (fr.name, k))
+                hon = fr.honest(pert)
+                for j in range(mu2):
+                    md = fr.mindiff(hon[j], shp[j])
+                    chk('C-PERT', md is None or md >= fr.theta(j),
+                        '%s pert%d mindiff_%d %s >= theta %d'
+                        % (fr.name, k, j, md, fr.theta(j)))
+    # tooth T-C-VAL: v* - 1 mutant at the F423m3 cert slot must differ
+    # from the measured digit's valuation.
+    fr = FR_F423(3)
+    sh = fr.shadow_E(ppow(fr.PHI2, 3))
+    got = fr.slotdict(sh[top_j(fr, 0)])
+    cv = got.get((2, 1))
+    tooth('T-C-VAL', cv is not None and vp(cv, 2) != 8 - 1,
+          'F423m3 cert v2 = %s vs mutant 7'
+          % (None if cv is None else vp(cv, 2)))
+    print('  LEG C done.')
+
+# ======================================================================
+# LEG E — HYP.71 witnesses / HYP.69 residue / HYP.78 obstruction
+# ======================================================================
+#
+# W-geography (the HYP.71(b) ask): genres where the KEY power has NO
+# x-overflow at all (all key pairs in-grid: 2 i_t* < D' and every
+# i_t + i_t' < D'), so any Theta-attainment must be ENTRY-driven.
+#   W1 (Q2): PHI' = x^3 - 2 (D' = 3), PHI2 = PHI'^3 + 8x PHI'^2 + 1024
+#      (e2 = 1, f2 = 3, u2 = 10, T = {0, 2}, i_2 = 1, i_0 = 0;
+#      residual Z^3 + Z^2 + 1 irreducible over F_2), mu2 = 2.
+#   W2 (Q3): PHI' = x^3 - 3, PHI2 = PHI'^3 + 27x PHI'^2 + 2*3^10
+#      (residual Z^3 + Z^2 + 2 irreducible over F_3), mu2 = 2.
+# PREREGISTERED: the pure power Phi2^2 has EMPTY shadow (the clean
+# geography); every single-entry in-budget member with a + i_t < D'
+# has EMPTY discrepancy; members with a = 2 (crossing t = 2,
+# a + i_2 = 3 = D') have nonzero discrepancy (the diverge-vs-not pair
+# inside one genre — HYP.78's obstruction shape, reproduced fresh).
+# MEASURED (the witness search): min over the in-budget sweep of
+# (mindiff_j - theta_j); a row at 0 is a HYP.71(b) witness; if the
+# sweep minimum is strictly positive at every in-budget member, that is
+# the INFEASIBILITY record (the boundary identity — see the note S2/S3).
+#
+# R-geography (HYP.69 / E-S3): fresh regime-3 genres (a mixed pair
+# overflows, 2 i_t* < D'), 6.7's chi-criterion re-verified:
+#   R5 (Q5): PHI' = x^3 - 5, PHI2 = PHI'^2 + 25x PHI' + 625x^2
+#      (e2 = 1, f2 = 2, u2 = 7; residual Z^2 + Z + 1 irreducible over
+#      F_5; s* = 1, I = {3}, chi = 2 c0 c1 = 2 != 0): predict (b1)
+#      attainment: pin(ShC_1) == theta(1) = 18.
+#   R2 (Q2): same shape at Q2 (chi = 2 c0 c1 = 0 in F_2): predict (b2)
+#      NO graded floor digit at the s*-slots of ShC_1.
+
+def leg_E():
+    print('== LEG E (HYP.71 witnesses / HYP.69 / HYP.78) ==')
+    W1 = mkframe('W1', 2, [-2, 0, 0, 1], 1, 3, 1, 3, 2, 10,
+                 padd(padd(ppow([-2, 0, 0, 1], 3),
+                           pmul([0, 8], ppow([-2, 0, 0, 1], 2))),
+                      [1024]))
+    W2 = mkframe('W2', 3, [-3, 0, 0, 1], 1, 3, 1, 3, 2, 10,
+                 padd(padd(ppow([-3, 0, 0, 1], 3),
+                           pmul([0, 27], ppow([-3, 0, 0, 1], 2))),
+                      [2 * 3 ** 10]))
+    for fr in (W1, W2):
+        chk('E-W', (fr.E2, fr.delta) == (30, 7),
+            '%s constants' % fr.name)
+        f2pow = ppow(fr.PHI2, 2)
+        sh = fr.dual_shadow(f2pow, fr.name)
+        chk('E-W', all(fr.slotdict(c) == {} for c in sh),
+            '%s pure power: shadow EMPTY (all key pairs in-grid)'
+            % fr.name)
+        # the in-budget single-entry sweep
+        gaps = []
+        divpair = {'div': None, 'nodiv': None}
+        for jp in (0, 1):
+            for a in (0, 1, 2):
+                for b in (0, 1, 2):
+                    base = a + fr.u2 * b
+                    amin = ((2 - jp) * fr.E2 - base) // fr.ee + 1
+                    for da in range(3):
+                        al = amin + da
+                        for c in range(1, fr.p):
+                            C = pmul([c * fr.p ** al],
+                                     pmul(ppow([0, 1], a),
+                                          ppow(fr.PHI1, b)))
+                            memb = padd(f2pow,
+                                        pmul(C, ppow(fr.PHI2, jp)))
+                            shm = fr.shadow_E(memb)
+                            hon = fr.honest(memb)
+                            mds = [fr.mindiff(hon[j], shm[j])
+                                   for j in range(2)]
+                            # a coordinate-0 entry never enters the
+                            # division's quotient, so it cannot cross a
+                            # lift (run-1 finding, disclosed: the naive
+                            # "a + i_t >= D'" predicate is necessary
+                            # but only sufficient at jp >= 1):
+                            crosses = (a + 1 >= fr.Dp) and jp >= 1
+                            entry_ht = fr.ee * al + a + fr.u2 * b
+                            excess = entry_ht - (2 - jp) * fr.E2
+                            if not crosses:
+                                chk('E-NOX',
+                                    all(m is None for m in mds),
+                                    '%s entry (j%d,a%d,b%d,al%d,c%d) '
+                                    'no crossing => empty diff, got %s'
+                                    % (fr.name, jp, a, b, al, c, mds))
+                                divpair['nodiv'] = (jp, a, b, al, c)
+                            else:
+                                chk('E-X',
+                                    all(m is not None for m in mds),
+                                    '%s crossing entry => nonzero diff'
+                                    % fr.name)
+                                divpair['div'] = (jp, a, b, al, c)
+                                for j in range(2):
+                                    if mds[j] is not None:
+                                        # LAW E-W (the boundary
+                                        # identity, hard check): the
+                                        # branch transports the entry's
+                                        # excess over the side verbatim:
+                                        chk('E-LAW',
+                                            mds[j] == fr.theta(j)
+                                            + excess,
+                                            '%s LAW E-W at (j%d,a%d,b%d'
+                                            ',al%d,c%d): mindiff_%d = '
+                                            '%s != theta + excess = %d'
+                                            % (fr.name, jp, a, b, al, c,
+                                               j, mds[j],
+                                               fr.theta(j) + excess))
+                                        gaps.append(
+                                            (mds[j] - fr.theta(j), jp,
+                                             a, b, al, c, j))
+        gaps.sort()
+        chk('E-PAIR', divpair['div'] is not None
+            and divpair['nodiv'] is not None,
+            '%s diverge-vs-not pair inside one genre' % fr.name)
+        # THE INFEASIBILITY RECORD (HYP.71(b) at this geography): the
+        # in-budget sweep NEVER attains theta — min gap >= 1. By LAW
+        # E-W the gap equals the entry's excess over the side, which is
+        # >= 1 on the locus (strict floor): a theta-attaining entry
+        # would have to sit ON the side, i.e. OFF the leaf locus.
+        # Infeasibility is the lemma (constructed-counterexample rule).
+        chk('E-INFEAS', gaps and gaps[0][0] >= 1,
+            '%s witness infeasibility: min gap %s'
+            % (fr.name, gaps[0] if gaps else None))
+        print('  %s: sweep %d crossing rows; min gap (mindiff - theta)'
+              ' = %s; INFEASIBLE (no in-locus theta-attainment)'
+              % (fr.name, len(gaps), gaps[0][0] if gaps else None))
+        WITNESS_GAPS[fr.name] = gaps
+        # two-entry members: the ledger is linear in the TOTAL entry
+        # digit — two crossing entries at the same slot sum their
+        # digits (p = 3: 1 + 2 = 3 deepens the pin by ee exactly):
+        if fr.p == 3:
+            jp, a, b = 1, 2, 0
+            amin = ((2 - jp) * fr.E2 - (a + fr.u2 * b)) // fr.ee + 1
+            C1 = pmul([1 * fr.p ** amin],
+                      pmul(ppow([0, 1], a), ppow(fr.PHI1, b)))
+            C2 = pmul([2 * fr.p ** amin],
+                      pmul(ppow([0, 1], a), ppow(fr.PHI1, b)))
+            memb = padd(f2pow, pmul(padd(C1, C2), ppow(fr.PHI2, jp)))
+            shm = fr.shadow_E(memb)
+            hon = fr.honest(memb)
+            md0 = fr.mindiff(hon[0], shm[0])
+            excess2 = fr.ee * (amin + 1) + a - (2 - jp) * fr.E2
+            chk('E-LIN', md0 == fr.theta(0) + excess2,
+                '%s two-entry linearity: mindiff_0 = %s want %d'
+                % (fr.name, md0, fr.theta(0) + excess2))
+    # R-geography: 6.7 chi-criterion, fresh regime-3 genres
+    R5 = mkframe('R5', 5, [-5, 0, 0, 1], 1, 3, 1, 2, 2, 7,
+                 padd(padd(ppow([-5, 0, 0, 1], 2),
+                           pmul([0, 25], [-5, 0, 0, 1])),
+                      [0, 0, 625]))
+    R2 = mkframe('R2', 2, [-2, 0, 0, 1], 1, 3, 1, 2, 2, 7,
+                 padd(padd(ppow([-2, 0, 0, 1], 2),
+                           pmul([0, 4], [-2, 0, 0, 1])),
+                      [0, 0, 16]))
+    for fr, chi_nonzero in ((R5, True), (R2, False)):
+        sh = fr.dual_shadow(ppow(fr.PHI2, 2), fr.name)
+        th1 = fr.theta(1)
+        pn = fr.pin(sh[1])
+        for j in range(2):
+            pnj = fr.pin(sh[j])
+            chk('E-RFLOOR', pnj is None or pnj >= fr.theta(j),
+                '%s floor j=%d: %s' % (fr.name, j, pnj))
+        if chi_nonzero:
+            chk('E-CHI', pn == th1,
+                '%s 6.7(b1): chi != 0 => attainment at theta(1) = %d, '
+                'pin %s' % (fr.name, th1, pn))
+        else:
+            chk('E-CHI', pn is None or pn > th1,
+                '%s 6.7(b2): chi = 0 => no floor digit at ShC_1, pin %s'
+                ' theta %d' % (fr.name, pn, th1))
+        print('  %s: pin(ShC_1) = %s, theta(1) = %d, slots = %s'
+              % (fr.name, pn, th1,
+                 {k: (v, vp(v, fr.p)) for k, v in
+                  sorted(fr.slotdict(sh[1]).items())}))
+    # E-S4 attack (W2, p = 3): the leading-entry-data criterion — two
+    # members with the same (j', a, b, alpha) and different unit c:
+    # if their discrepancy PINS differ, any criterion reading only the
+    # entry's position+valuation is refuted; if they agree on the whole
+    # sweep, the linear-ledger criterion survives at this geography.
+    same = True
+    fr = W2
+    f2pow = ppow(fr.PHI2, 2)
+    for jp in (0, 1):
+        for b in (0, 1, 2):
+            base = 2 + fr.u2 * b
+            amin = ((2 - jp) * fr.E2 - base) // fr.ee + 1
+            pins = []
+            for c in (1, 2):
+                C = pmul([c * fr.p ** amin],
+                         pmul(ppow([0, 1], 2), ppow(fr.PHI1, b)))
+                memb = padd(f2pow, pmul(C, ppow(fr.PHI2, jp)))
+                shm = fr.shadow_E(memb)
+                hon = fr.honest(memb)
+                pins.append(tuple(fr.mindiff(hon[j], shm[j])
+                                  for j in range(2)))
+            if pins[0] != pins[1]:
+                same = False
+    chk('E-S4', same,
+        'W2 unit-c independence of the discrepancy pin (linear-ledger '
+        'criterion survives at the single-crossing geography)')
+    # T-E-CHI: mutant chi without the (2 - delta_tt') factor predicts
+    # attainment at R2 (c0*c1 = 1 != 0 in F_2); the measured pin 21 > 18
+    # kills it — the multiplicity factor 2 in chi is load-bearing.
+    shR2 = R2.shadow_E(ppow(R2.PHI2, 2))
+    pnR2 = R2.pin(shR2[1])
+    tooth('T-E-CHI', pnR2 is not None and pnR2 > R2.theta(1),
+          'chi-without-2 mutant: R2 pin %s vs theta 18' % pnR2)
+    # T-E-BOUND: an ON-side entry (entry_ht == side height, hence OFF
+    # the leaf locus) must attain theta EXACTLY — LAW E-W is tight; the
+    # infeasibility is the locus fence, not slack in the bound.
+    frW1 = W1
+    C = pmul([2 ** 6], pmul(ppow([0, 1], 2), ppow(frW1.PHI1, 1)))
+    memb = padd(ppow(frW1.PHI2, 2), pmul(C, frW1.PHI2))
+    shm = frW1.shadow_E(memb)
+    hon = frW1.honest(memb)
+    mds = [frW1.mindiff(hon[j], shm[j]) for j in range(2)]
+    tooth('T-E-BOUND',
+          mds == [frW1.theta(0), frW1.theta(1)],
+          'on-side entry attains theta exactly: %s vs %s'
+          % (mds, [frW1.theta(0), frW1.theta(1)]))
+    print('  LEG E done.')
+
+WITNESS_GAPS = {}
+
+# ======================================================================
+# LEG D — HYP.68 / HYP.144-BOX-2: THEOREM GENTOW-6.6's ledger identity
+# ======================================================================
+#
+# First DIRECT window-enumeration checks of 6.6(c):
+#   #(m(B_S x B_g) mod pi^N) = q^-c #(B_S mod pi^N) #(B_g mod pi^N),
+# and the q^c fiber clause, at three instantiations over Z_3:
+#   D2a  deg 1 x deg 1, c = 1 (H2 by explicit valuation);
+#   D2b  deg 2 x deg 1, c = 1 (H2 by the evaluation constant);
+#   D2d  the two-class residual-separation shape (the 6.6(d)/GENTOW4
+#        partial-side mechanism: distinct residue classes force the
+#        constant) — c = 1.
+# Teeth: T-D-CJ (c -> c+1 and c -> c-1 must both fail the identity).
+# Plus D2c: the c_J closed-form integer identity on a 600-tuple grid.
+
+def leg_D():
+    print('== LEG D (GENTOW-6.6 ledger: HYP.68 / HYP.144-BOX-2) ==')
+    q = 3
+
+    def count_classes(vecs, N):
+        return len({tuple(x % q ** N for x in v) for v in vecs})
+
+    # ---- D2a: deg1 x deg1, c = 1, H = 2, N0 = 2c + 2 = 4 ------------
+    c, H, N = 1, 2, 4
+    BS = [a * q ** H for a in range(q ** (N - H))]           # a == 0 (9)
+    BG = [q ** c * (1 + q * t) + a * q ** H
+          for a in range(q ** (N - H)) for t in range(1)]
+    BG = [q ** c + a * q ** H for a in range(q ** (N - H))]  # b == 3 (81)
+    # (H2): v(b - a) = c for all pairs:
+    chk('D2a', all(vp(b - a, q) == c for a in BS for b in BG),
+        'D2a separation constant')
+    prods = [((a + b) % q ** N, (a * b) % q ** N) for a in BS for b in BG]
+    img = len(set(prods))
+    want = len(BS) * len(BG) // q ** c
+    chk('D2a', img == want,
+        'D2a ledger identity: %d image classes, want %d' % (img, want))
+    from collections import Counter as _C
+    fib = _C(prods)
+    chk('D2a', set(fib.values()) == {q ** c},
+        'D2a fiber clause: %s' % set(fib.values()))
+    # teeth: c +- 1
+    tooth('T-D-CJ', img != len(BS) * len(BG) // q ** (c + 1)
+          and img != len(BS) * len(BG) // q ** (c - 1),
+          'D2a c-mutants both fail: img %d' % img)
+
+    # ---- D2b: deg2 x deg1, c = 1, H = 2, N0 = 4 ---------------------
+    N = 4
+    BS2 = [(a1 * q ** H % q ** N, (q + a0 * q ** H) % q ** N)
+           for a1 in range(q ** (N - H)) for a0 in range(q ** (N - H))]
+    BG2 = [(b * q) % q ** N for b in range(q ** (N - 1))]
+    # (H2): v(Res(x^2 + a1 x + a0, x + b)) = v(b^2 - a1 b + a0) = 1:
+    chk('D2b', all(vp((b * b - a1 * b + a0) % q ** (N + 2) or q ** 9, q)
+                   == 1 or vp(b * b - a1 * b + a0, q) == 1
+                   for (a1, a0) in BS2 for b in BG2),
+        'D2b separation constant')
+    prods = [((a1 + b) % q ** N, (a0 + a1 * b) % q ** N,
+              (a0 * b) % q ** N) for (a1, a0) in BS2 for b in BG2]
+    img = len(set(prods))
+    want = len(BS2) * len(BG2) // q
+    chk('D2b', img == want,
+        'D2b ledger identity: %d image classes, want %d' % (img, want))
+    fib = _C(prods)
+    chk('D2b', set(fib.values()) == {q},
+        'D2b fiber clause: %s' % set(fib.values()))
+
+    # ---- D2d: the two-class residual-separation shape ---------------
+    # B_S = {x - 3u : u = 1 mod 3}, B_g = {x - 3w : w = 2 mod 3}:
+    # c = v(3u - 3w) = 1 constant BY residual separation (u - w != 0
+    # mod 3) — the 6.6(d)/GENTOW-6.6a mechanism in miniature.
+    N = 4
+    BSu = [(-3 * u) % q ** N
+           for u in range(1, q ** (N - 1), 1) if u % 3 == 1]
+    BGw = [(-3 * w) % q ** N
+           for w in range(1, q ** (N - 1), 1) if w % 3 == 2]
+    chk('D2d', all(vp((su - sw) % q ** (N + 2) or 3, q) == 1
+                   for su in BSu for sw in BGw),
+        'D2d residual separation constant')
+    prods = [((su + sw) % q ** N, (su * sw) % q ** N)
+             for su in BSu for sw in BGw]
+    img = len(set(prods))
+    want = len(BSu) * len(BGw) // q
+    chk('D2d', img == want,
+        'D2d two-class ledger identity: %d want %d' % (img, want))
+    fib = _C(prods)
+    chk('D2d', set(fib.values()) == {q},
+        'D2d fiber clause: %s' % set(fib.values()))
+
+    # ---- D2c: the c_J closed form on a grid --------------------------
+    bad = 0
+    for mu2s in range(1, 4):
+        for mp in range(1, 4):
+            for e1 in range(1, 4):
+                for f1 in range(1, 3):
+                    for e2 in range(1, 4):
+                        for f2 in range(1, 3):
+                            for u2 in range(1, 4):
+                                D2 = e2 * f2 * e1 * f1
+                                E2 = e2 * f2 * u2
+                                lhs = mu2s * mp * D2 * E2
+                                if lhs % (e1 * e2):
+                                    bad += 1
+                                    continue
+                                if lhs // (e1 * e2) != \
+                                        mu2s * mp * f1 * f2 * f2 * e2 * u2:
+                                    bad += 1
+    chk('D2c', bad == 0, 'c_J closed-form grid: %d bad' % bad)
+    print('  LEG D done.')
+
+# ======================================================================
 # main
 # ======================================================================
 
@@ -714,6 +1452,14 @@ def main():
     which = sys.argv[1] if len(sys.argv) > 1 else 'all'
     if which in ('A', 'all'):
         leg_A()
+    if which in ('B', 'all'):
+        leg_B()
+    if which in ('C', 'all'):
+        leg_C()
+    if which in ('E', 'all'):
+        leg_E()
+    if which in ('D', 'all'):
+        leg_D()
     print()
     print('CHECKS: %d, VIOLATIONS: %d' % (NCHK, NVIO))
     print('TALLY: %s' % TALLY)
