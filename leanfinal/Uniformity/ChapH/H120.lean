@@ -585,13 +585,22 @@ theorem clusterUndecidedSet_subset {π : O} (hπ : Irreducible π) {m : ℕ} (hm
   rintro x ⟨hx, hu⟩
   exact ⟨(clusterTrunc h ⟨x, hx⟩).2, clusterUndecided_clusterTrunc hπ hu hm h hT⟩
 
+end Counting
+
+/-! ## 5b. The signed statement -/
+
 /-- **H.120 — cluster-level C2D (debt D-4), `GENIND-C2D` on the `ClusterState` carrier.**  The
 NORMALIZED conservative complement is antitone in the window.
 
 ⚠ S-1: this is the CONSERVATIVE complement of H.118/H.119, not the semantic `undecidedSet`;
 D-4's warning that the carriers differ is why H.70's full-space monotonicity is not consumed
-here (only its argument template is). -/
-theorem uClusterNorm_antitone {π : O} (hπ : Irreducible π) (m : ℕ) (hm : 2 ≤ m) :
+here (only its argument template is).
+
+The binder list is the frozen stub's, INLINE (`leanspec/Leanspec/ChapH.lean`, **H.120**). -/
+theorem uClusterNorm_antitone {O : Type} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [Finite (ResidueField O)]
+    [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) (m : ℕ) (hm : 2 ≤ m) :
     ∀ T W, 1 ≤ T → T ≤ W → uClusterNorm O π m W ≤ uClusterNorm O π m T := by
   intro T W hT hTW
   have hW : 1 ≤ W := le_trans hT hTW
@@ -627,6 +636,103 @@ theorem uClusterNorm_antitone {π : O} (hπ : Irreducible π) (m : ℕ) (hm : 2 
   rw [uClusterNorm, uClusterNorm, div_le_div_iff₀ (pow_pos hq _) (pow_pos hq _)]
   exact_mod_cast hcancel
 
-end Counting
-
 end Uniformity.Density.Induction
+
+/-! ## 6. TEETH — the numeric shadow: PART 3's per-window tables are monotone
+
+The node is PROOF-ONLY at the blueprint, as H.70's was; what the battery shows is that the
+per-window tables are monotone AFTER normalization.  `hexR`/`hexU` are
+`verification/openmath/OM2_genindb_battery.py`'s `hex3R_ref`/`hex3U_ref` transcribed verbatim
+(the `P1(i)` reference implementations of ChapG's landed `hex3R` at `m = 2` and `hex3U` at
+`m = 3`) — the same transcription H.119 §4.2 carries, repeated here so a drift in either copy
+breaks a build.
+
+`normLe q m u T W` is the theorem's conclusion cleared of denominators, exactly as the Lean
+proof clears it: `û(W) ≤ û(T)` is `u(W) · q ^ (m (T−1)) ≤ u(T) · q ^ (m (W−1))`.  The guards
+run it over the battery's whole `part1` window range at both battery characteristics.
+
+**The normalization is load-bearing, and the guard is not vacuous**: the un-normalized counts
+are checked NOT antitone (they grow with the window), and the exercised population of
+`(q, T, W)` pairs is pinned.
+
+⚠ S-1: `hex3R`/`hex3U` are CONSERVATIVE-family closed forms; nothing here ties them to the
+semantic `undecidedCount` (finding F-2). -/
+
+section NumericGate
+
+/-- The battery's `hex3R_ref` — ChapG `hex3R`, the `m = 2` conservative complement. -/
+private def hexR (q M : ℕ) : ℕ :=
+  if M = 0 then 0 else if M = 1 then 1
+  else q ^ (M - 1) + ((M - 1) / 2) * ((q - 1) * q ^ (M - 2))
+
+/-- The battery's `hex3U_ref` — ChapG `hex3U`, the cubic per-centre conservative complement. -/
+private def hexU (q N : ℕ) : ℕ :=
+  q ^ (2 * N - 2)
+    + (((List.range (N + 1)).filter fun k => decide (1 ≤ k ∧ 3 * k ≤ N - 1)).map fun k =>
+        (q - 1) * q ^ (4 * k - 1) * ((q ^ (N - 3 * k) - 1) * hexR q (N - 3 * k))).sum
+
+/-- `uClusterNorm O π m W ≤ uClusterNorm O π m T`, cleared of denominators. -/
+private def normLe (u : ℕ → ℕ → ℕ) (q m T W : ℕ) : Bool :=
+  decide (u q W * q ^ (m * (T - 1)) ≤ u q T * q ^ (m * (W - 1)))
+
+/-- The `(T, W)` pairs of the battery's window range: `1 ≤ T ≤ W ≤ cap`. -/
+private def windowPairs (cap : ℕ) : List (ℕ × ℕ) :=
+  ((List.range (cap + 1)).flatMap fun T =>
+    (List.range (cap + 1)).map fun W => (T, W)).filter
+    fun p => decide (1 ≤ p.1 ∧ p.1 ≤ p.2)
+
+-- THE THEOREM's conclusion, re-run: `m = 2` on `hex3R`, both battery characteristics
+#guard ([2, 3] : List ℕ).all fun q => (windowPairs 6).all fun p => normLe hexR q 2 p.1 p.2
+
+-- and `m = 3` on `hex3U`
+#guard ([2, 3] : List ℕ).all fun q => (windowPairs 6).all fun p => normLe hexU q 3 p.1 p.2
+
+-- non-vacuity: the exercised population of `(T, W)` pairs, pinned
+#guard (windowPairs 6).length == 21
+
+-- the normalization is LOAD-BEARING: the un-normalized counts are NOT antitone
+#guard !(decide (hexR 2 6 ≤ hexR 2 1))
+#guard !(decide (hexU 3 4 ≤ hexU 3 1))
+
+-- the transcription, pinned against H.119 §4.2's copy
+#guard (hexR 2 6, hexR 3 5) == (64, 189)
+#guard (hexU 2 4, hexU 3 4) == (72, 837)
+#guard (hexR 2 1, hexU 2 1) == (1, 1)
+
+-- the boundary is where antitonicity bites: `û(1) = 1` is the maximum of the normalized family
+#guard ([2, 3] : List ℕ).all fun q =>
+  ((List.range 7).filter fun W => decide (1 ≤ W)).all fun W =>
+    normLe hexR q 2 1 W && normLe hexU q 3 1 W
+
+end NumericGate
+
+/-! ## 7. Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Induction.resOrd_resFactor
+#print axioms Uniformity.Density.Induction.clusterTrunc
+#print axioms Uniformity.Density.Induction.clusterTrunc_apply
+#print axioms Uniformity.Density.Induction.proj_clusterTrunc
+#print axioms Uniformity.Density.Induction.isDrainState_clusterTrunc
+#print axioms Uniformity.Density.Induction.resOrd_zero_lt_of_not_isDrainState_clusterTrunc
+#print axioms Uniformity.Density.Induction.not_isDrainState_of_not_isDrainState_clusterTrunc
+#print axioms Uniformity.Density.Induction.betaContent_clusterTrunc_le
+#print axioms Uniformity.Density.Induction.betaContent_clusterTrunc_eq
+#print axioms Uniformity.Density.Induction.betaContent_lt_of_not_isDrainState_clusterTrunc
+#print axioms Uniformity.Density.Induction.visible_of_not_isDrainState
+#print axioms Uniformity.Density.Induction.isCSState_clusterTrunc
+#print axioms Uniformity.Density.Induction.isCSState_of_isCSState_clusterTrunc
+#print axioms Uniformity.Density.Induction.hasChildAt_clusterTrunc
+#print axioms Uniformity.Density.Induction.hasChildAt_full_of_clusterTrunc
+#print axioms Uniformity.Density.Induction.isAlphaState_clusterTrunc
+#print axioms Uniformity.Density.Induction.isBetaState_clusterTrunc
+#print axioms Uniformity.Density.Induction.alphaChild_clusterTrunc
+#print axioms Uniformity.Density.Induction.betaChild_clusterTrunc
+#print axioms Uniformity.Density.Induction.clusterUndecided_clusterTrunc
+#print axioms Uniformity.Density.Induction.clusterUndecidedSet
+#print axioms Uniformity.Density.Induction.card_clusterUndecidedSet
+#print axioms Uniformity.Density.Induction.clusterUndecidedSet_subset
+#print axioms Uniformity.Density.Induction.uClusterNorm_antitone
+
+end AxCheck
