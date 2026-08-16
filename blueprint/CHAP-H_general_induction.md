@@ -8416,8 +8416,13 @@ with measured K′ ≤ 0.0004 at (B′, c′) = (0, 1)"*); `EFF.GENIND.45` (the 
 `EFF.GENIND.152` (`GENIND-C1`, the β pricing), `EFF.GENIND.153` (`GENIND.C′`). **TEETH.**
 battery `P3 hsplit as EQUALITY` + `P3 halpha windowed, slope m(m+1)/2, EQUALITY` + `P3
 hbeta with (B',c')=(0,1), K'<=0.0004` + `P3 CC-3(i)` (the unwindowed form would read the
-nonexistent `u(0)` — the window filter is forced) → Lean theorem here. **ENVIRONMENT.**
-ENV-H17 + `[Finite]` + `[IsAdicComplete]` + `π` explicit.
+nonexistent `u(0)` — the window filter is forced) → Lean theorem here. *[added A-H.6, clause
+(iii) only]* the `P3 hbeta` row measures the SUPERSEDED envelope and is retained as-is (it is
+a true statement about a true, weaker bound); clause (iii) as re-signed is instead certified
+by `verification/AH6_beta_envelope_check.py` checks `C2` (the envelope holds, margin `> 4.3×`,
+`q ∈ {2,3}`, `N ≤ 40`, exact), `C6` (it implies the frozen envelope) and `C7`/`C8` (the tooth:
+the frozen envelope overruns H.122's budget at every `N ≥ 2` while the true cell does not).
+**ENVIRONMENT.** ENV-H17 + `[Finite]` + `[IsAdicComplete]` + `π` explicit.
 
 ---
 
@@ -8477,7 +8482,11 @@ species conclusion RateSpecies holds at (K, B, c) = (1, 1, 1) on true data at bo
 degrees"*); `EFF.GENIND.150` (the `m = 2` closed-form tie), `EFF.GENIND.153`
 (`GENIND.C′` + the sharpness remark). **TEETH.** battery `P3 RateSpecies (K,B,c)=(1,1,1) on
 true data` + `P3 m=2 closed-form tie (EFF.GENIND.150 / ChapH uTwo)` + `P3 CC-3(ii)` (the
-boundary `c = m` unreachable: `m < m(m+1)/2` ⟺ `m ≥ 2`, checked `m ≤ 12`) → Lean theorem
+boundary `c = m` unreachable: `m < m(m+1)/2` ⟺ `m ≥ 2`, checked `m ≤ 12`) *[added A-H.6]*
++ `verification/AH6_beta_envelope_check.py` `E4` (the CONCLUSION on the exact `m = 3`
+recursion, `1 ≤ N ≤ 40`, `q ∈ {2,3}`, exact rationals — the battery's own `P3` row reaches
+`N ≤ 5`), `E2` (the closing arithmetic `1 + (N−3)⁺/3 + N/3 ≤ N`, `2 ≤ N < 400`) and `E3` (the
+`m = 2` FENCE: clause (iii)'s envelope alone does NOT close `m = 2`) → Lean theorem
 here. **ENVIRONMENT.** ENV-H17 + `[Finite]` + `[IsAdicComplete]` + `π` explicit.
 
 ---
