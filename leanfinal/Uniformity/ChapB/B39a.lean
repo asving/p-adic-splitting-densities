@@ -10,13 +10,15 @@ import Uniformity.ChapB.B35b
 import Uniformity.ChapB.B37
 
 /-!
-# Uniformity.ChapB.B39a — the general graded product law and the residual lift
+# Uniformity.ChapB.B39a — the general graded product law
 
-**Chapter B, NODE B.39a** [lemma] (`blueprint/CHAP-B_leaf_layer.md` §6, PROOF step 3 — the
-RE-PLAN booking *"B.39a `resLift`"*), ENV-A′.
+**Chapter B, infrastructure for NODE B.39** (`blueprint/CHAP-B_leaf_layer.md` §6, PROOF steps
+1–5), ENV-A′.  **B.39 itself is NOT landed: its frozen signature is machine-refuted a third
+time** — see `B39_REFUTATION_2.lean.txt` in this directory (the missing level hypothesis
+`suppVal φ (g*h) u ℓ ≤ c`).  What this file lands is the reusable half of B.39's route, which
+the refutation does not impugn.
 
-This file carries B.39's step-3 lift **and the general product law the lift's specification
-needs**. The landed B.35 cluster (`B35a`–`B35d`) proves the product law only for factors that
+The landed B.35 cluster (`B35a`–`B35d`) proves the product law only for factors that
 are *monic, `(u,ℓ)`-pure and of `φ.natDegree`-divisible degree*; the Hensel correction terms
 `h * U` of B.39/B.41 are none of those (`U` is a lift of a residual polynomial: not monic, its
 side does not start at abscissa `0`, its degree is not a multiple of `φ.natDegree`).  The
@@ -39,16 +41,15 @@ purity: `suppVal_le_weight` (B35b), `onSide_eq_add_mul`/`onSide_modEq` (B.17/B.2
 * `resMk_dev_mul_gen` — **the general master identity**: the digit of `(f*z)`'s development at
   the lattice abscissa `j_f + j_z + ℓ·k` and the line height `H_f + H_z − u·k` is the `k`-th
   coefficient of the product of the two residual polynomials.
-* `onSide_mul_gen`, `suppVal_mul_gen`, `sideMin_mul_gen`, `npHgt_mul_gen'`, `sideDeg_mul_gen`,
-  `resPoly_mul_gen` — the general product law: `suppVal` is additive, the sides' left endpoints
-  and residual degrees add, and `resPoly` is multiplicative.
-* `resLift` and its specification (`dev_resLift`, `suppVal_resLift`, `natDegree_resLift_lt`,
-  `resPoly_resLift`) — B.39's step 3.
+* `resMk_dev_mul_left_ne_zero`, `npHgt_mul_gen`, `suppVal_mul_gen`, `sideMin_mul_gen`,
+  `sideDeg_mul_gen`, `resPoly_mul_gen` — **the general product law**: `suppVal` is additive,
+  the sides' left endpoints and their residual degrees add, and `resPoly` is multiplicative.
+  (`onSide_mul_decomp` is the engine: an on-side abscissa of a product splits.)
 
 **Flagged for human review** (new general statements, parent CLAUDE.md trust boundary): the
-product law is asserted here in a strictly stronger form than the signed B.35, and
-`resLift`'s specification is new contract text of this file (it is B.39's PROOF step 3, whose
-own booking is a RE-PLAN request, not a signed §-node).
+product law is asserted here in a strictly stronger form than the signed B.35 — no purity, no
+monicity, no degree divisibility, only finiteness of the two support values.  Nothing in this
+file is a signed §-node statement; every declaration is infrastructure.
 
 ## Status
 
@@ -781,6 +782,178 @@ theorem sideMin_mul_gen (hπ : Irreducible π) (hφ : IsKey φ) (hu : 0 < u)
     have h2 : jz ≤ i := Finset.min'_le _ _ (mem_sideSet_of_onSide hφ.monic hφ.pos hℓ htz honi)
     omega
 
+/-- **The residual degrees add** (the general product law, clause 3). -/
+theorem sideDeg_mul_gen (hπ : Irreducible π) (hφ : IsKey φ) (hu : 0 < u)
+    (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) (htf : suppVal φ f u ℓ ≠ ⊤)
+    (htz : suppVal φ z u ℓ ≠ ⊤) (hnf : (sideSet φ f u ℓ).Nonempty)
+    (hnz : (sideSet φ z u ℓ).Nonempty) {Hf Hz : ℕ}
+    (hHf : npHgt φ f (sideMin φ f u ℓ hnf) = (Hf : ℕ∞))
+    (hHz : npHgt φ z (sideMin φ z u ℓ hnz) = (Hz : ℕ∞))
+    (hnfz : (sideSet φ (f * z) u ℓ).Nonempty) :
+    sideDeg φ (f * z) u ℓ hnfz = sideDeg φ f u ℓ hnf + sideDeg φ z u ℓ hnz := by
+  classical
+  letI : Field (resField φ) := instFieldResField hφ
+  set jf := sideMin φ f u ℓ hnf with hjf
+  set jz := sideMin φ z u ℓ hnz with hjz
+  set df := sideDeg φ f u ℓ hnf with hdf
+  set dz := sideDeg φ z u ℓ hnz with hdz
+  have hSf : suppVal φ f u ℓ = ((ℓ * Hf + u * jf : ℕ) : ℕ∞) :=
+    suppVal_eq_of_onSide hHf (onSide_of_mem_sideSet (Finset.min'_mem _ hnf))
+  have hSz : suppVal φ z u ℓ = ((ℓ * Hz + u * jz : ℕ) : ℕ∞) :=
+    suppVal_eq_of_onSide hHz (onSide_of_mem_sideSet (Finset.min'_mem _ hnz))
+  have hprodval := suppVal_mul_gen hπ hφ hu hℓ hcop htf htz hnf hnz hHf hHz
+  have hprod' : suppVal φ (f * z) u ℓ
+      = (((ℓ * Hf + u * jf) + (ℓ * Hz + u * jz) : ℕ) : ℕ∞) := by
+    rw [hprodval]; congr 1; ring
+  have htfz : suppVal φ (f * z) u ℓ ≠ ⊤ := by rw [hprodval]; exact ENat.coe_ne_top _
+  have hminfz : sideMin φ (f * z) u ℓ hnfz = jf + jz :=
+    sideMin_mul_gen hπ hφ hu hℓ hcop htf htz hnf hnz hHf hHz hnfz
+  have hmaxfz : sideMax φ (f * z) u ℓ hnfz = jf + jz + ℓ * sideDeg φ (f * z) u ℓ hnfz := by
+    rw [sideMax_eq hℓ hcop htfz hnfz, hminfz]
+  have hudf : u * df ≤ Hf := u_mul_sideDeg_le hℓ hcop htf hnf hHf
+  have hudz : u * dz ≤ Hz := u_mul_sideDeg_le hℓ hcop htz hnz hHz
+  have hD : u * (df + dz) ≤ Hf + Hz := by
+    calc u * (df + dz) = u * df + u * dz := by ring
+      _ ≤ Hf + Hz := Nat.add_le_add hudf hudz
+  -- upper bound: the product's right endpoint splits
+  have hupper : sideDeg φ (f * z) u ℓ hnfz ≤ df + dz := by
+    obtain ⟨j, i, hji, honj, honi⟩ := onSide_mul_decomp hπ hφ hu hℓ hSf hSz hprod'
+      (onSide_of_mem_sideSet (Finset.max'_mem _ hnfz))
+    have hji' : j + i = sideMax φ (f * z) u ℓ hnfz := hji
+    have h1 : j ≤ jf + ℓ * df := by
+      have hj : j ≤ sideMax φ f u ℓ hnf :=
+        Finset.le_max' _ j (mem_sideSet_of_onSide hφ.monic hφ.pos hℓ htf honj)
+      rwa [sideMax_eq hℓ hcop htf hnf] at hj
+    have h2 : i ≤ jz + ℓ * dz := by
+      have hi : i ≤ sideMax φ z u ℓ hnz :=
+        Finset.le_max' _ i (mem_sideSet_of_onSide hφ.monic hφ.pos hℓ htz honi)
+      rwa [sideMax_eq hℓ hcop htz hnz] at hi
+    have hbig : ℓ * sideDeg φ (f * z) u ℓ hnfz ≤ ℓ * (df + dz) := by
+      have hexp : ℓ * (df + dz) = ℓ * df + ℓ * dz := by ring
+      omega
+    exact Nat.le_of_mul_le_mul_left hbig hℓ
+  -- lower bound: the top lattice abscissa carries a nonzero digit
+  have hlower : df + dz ≤ sideDeg φ (f * z) u ℓ hnfz := by
+    have hmaster := resMk_dev_mul_gen hπ hφ.monic hφ.pos hu hℓ hcop htf htz hnf hnz hHf hHz
+      (k := df + dz) le_rfl
+    have hsingle : ∑ k₁ ∈ Finset.range (df + dz + 1),
+        (resPoly π φ f u ℓ hnf Hf).coeff k₁ * (resPoly π φ z u ℓ hnz Hz).coeff (df + dz - k₁)
+        = (resPoly π φ f u ℓ hnf Hf).coeff df * (resPoly π φ z u ℓ hnz Hz).coeff dz := by
+      rw [Finset.sum_eq_single_of_mem df (Finset.mem_range.2 (by omega)) ?_]
+      · rw [Nat.add_sub_cancel_left]
+      · intro b hb hbne
+        rw [Finset.mem_range] at hb
+        rcases Nat.lt_or_ge df b with hlt | hge
+        · rw [show (resPoly π φ f u ℓ hnf Hf).coeff b = 0 from
+            Polynomial.coeff_eq_zero_of_natDegree_lt
+              (by rw [(natDegree_resPoly hπ hφ hℓ hcop htf hnf hHf).1]; exact hlt), zero_mul]
+        · rw [show (resPoly π φ z u ℓ hnz Hz).coeff (df + dz - b) = 0 from
+            Polynomial.coeff_eq_zero_of_natDegree_lt
+              (by rw [(natDegree_resPoly hπ hφ hℓ hcop htz hnz hHz).1]; omega), mul_zero]
+    rw [hsingle] at hmaster
+    have hFne : resPoly π φ f u ℓ hnf Hf ≠ 0 := fun h0 => by
+      simpa [h0] using (natDegree_resPoly hπ hφ hℓ hcop htf hnf hHf).2
+    have hZne : resPoly π φ z u ℓ hnz Hz ≠ 0 := fun h0 => by
+      simpa [h0] using (natDegree_resPoly hπ hφ hℓ hcop htz hnz hHz).2
+    have hFdeg : (resPoly π φ f u ℓ hnf Hf).natDegree = df :=
+      (natDegree_resPoly hπ hφ hℓ hcop htf hnf hHf).1
+    have hZdeg : (resPoly π φ z u ℓ hnz Hz).natDegree = dz :=
+      (natDegree_resPoly hπ hφ hℓ hcop htz hnz hHz).1
+    have hlead : (resPoly π φ f u ℓ hnf Hf).coeff df * (resPoly π φ z u ℓ hnz Hz).coeff dz ≠ 0 := by
+      refine mul_ne_zero ?_ ?_
+      · rw [← hFdeg]; exact Polynomial.leadingCoeff_ne_zero.2 hFne
+      · rw [← hZdeg]; exact Polynomial.leadingCoeff_ne_zero.2 hZne
+    have hne : resMk π φ (Hf + Hz - u * (df + dz))
+        (dev φ (f * z) (jf + jz + ℓ * (df + dz))) ≠ 0 := by rw [hmaster]; exact hlead
+    have hline : ℓ * (Hf + Hz - u * (df + dz)) + u * (jf + jz + ℓ * (df + dz))
+        = ℓ * (Hf + Hz) + u * (jf + jz) := by
+      obtain ⟨W, hW⟩ := Nat.exists_eq_add_of_le hD
+      rw [hW, Nat.add_sub_cancel_left]
+      ring
+    have honfz := onSide_of_resMk_ne_zero hπ hφ.monic hφ.pos hℓ hprodval hline hne
+    have hmem := mem_sideSet_of_onSide hφ.monic hφ.pos hℓ htfz honfz
+    have hle : jf + jz + ℓ * (df + dz) ≤ sideMax φ (f * z) u ℓ hnfz :=
+      Finset.le_max' _ _ hmem
+    rw [hmaxfz] at hle
+    have hbig : ℓ * (df + dz) ≤ ℓ * sideDeg φ (f * z) u ℓ hnfz := by omega
+    exact Nat.le_of_mul_le_mul_left hbig hℓ
+  omega
+
+/-- **`resPoly` is multiplicative** (the general product law, clause 4). -/
+theorem resPoly_mul_gen (hπ : Irreducible π) (hφ : IsKey φ) (hu : 0 < u)
+    (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) (htf : suppVal φ f u ℓ ≠ ⊤)
+    (htz : suppVal φ z u ℓ ≠ ⊤) (hnf : (sideSet φ f u ℓ).Nonempty)
+    (hnz : (sideSet φ z u ℓ).Nonempty) {Hf Hz : ℕ}
+    (hHf : npHgt φ f (sideMin φ f u ℓ hnf) = (Hf : ℕ∞))
+    (hHz : npHgt φ z (sideMin φ z u ℓ hnz) = (Hz : ℕ∞))
+    (hnfz : (sideSet φ (f * z) u ℓ).Nonempty) :
+    resPoly π φ (f * z) u ℓ hnfz (Hf + Hz)
+      = resPoly π φ f u ℓ hnf Hf * resPoly π φ z u ℓ hnz Hz := by
+  classical
+  letI : Field (resField φ) := instFieldResField hφ
+  set jf := sideMin φ f u ℓ hnf with hjf
+  set jz := sideMin φ z u ℓ hnz with hjz
+  set df := sideDeg φ f u ℓ hnf with hdf
+  set dz := sideDeg φ z u ℓ hnz with hdz
+  have hminfz : sideMin φ (f * z) u ℓ hnfz = jf + jz :=
+    sideMin_mul_gen hπ hφ hu hℓ hcop htf htz hnf hnz hHf hHz hnfz
+  have hdegfz : sideDeg φ (f * z) u ℓ hnfz = df + dz :=
+    sideDeg_mul_gen hπ hφ hu hℓ hcop htf htz hnf hnz hHf hHz hnfz
+  have hFne : resPoly π φ f u ℓ hnf Hf ≠ 0 := fun h0 => by
+    simpa [h0] using (natDegree_resPoly hπ hφ hℓ hcop htf hnf hHf).2
+  have hZne : resPoly π φ z u ℓ hnz Hz ≠ 0 := fun h0 => by
+    simpa [h0] using (natDegree_resPoly hπ hφ hℓ hcop htz hnz hHz).2
+  have hprodDeg : (resPoly π φ f u ℓ hnf Hf * resPoly π φ z u ℓ hnz Hz).natDegree = df + dz := by
+    rw [Polynomial.natDegree_mul hFne hZne,
+      (natDegree_resPoly hπ hφ hℓ hcop htf hnf hHf).1,
+      (natDegree_resPoly hπ hφ hℓ hcop htz hnz hHz).1]
+  refine Polynomial.ext fun i => ?_
+  rw [resPoly_coeff, hdegfz]
+  by_cases hi : i < df + dz + 1
+  · rw [if_pos hi]
+    have hmaster := resMk_dev_mul_gen hπ hφ.monic hφ.pos hu hℓ hcop htf htz hnf hnz hHf hHz
+      (k := i) (by omega)
+    calc resCoeff π φ (f * z) u ℓ hnfz (Hf + Hz) i
+        = resMk π φ (Hf + Hz - u * i) (dev φ (f * z) (jf + jz + ℓ * i)) := by
+          rw [resCoeff, hminfz]
+      _ = ∑ k₁ ∈ Finset.range (i + 1),
+            (resPoly π φ f u ℓ hnf Hf).coeff k₁
+              * (resPoly π φ z u ℓ hnz Hz).coeff (i - k₁) := hmaster
+      _ = (resPoly π φ f u ℓ hnf Hf * resPoly π φ z u ℓ hnz Hz).coeff i := by
+          rw [Polynomial.coeff_mul, Finset.Nat.sum_antidiagonal_eq_sum_range_succ_mk]
+  · rw [if_neg hi]
+    exact (Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [hprodDeg]; omega)).symm
+
 end ProductLaw
 
 end Uniformity.Density.Leaf
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+#print axioms Uniformity.Density.Leaf.suppVal_eq_of_onSide
+#print axioms Uniformity.Density.Leaf.le_weight_gen
+#print axioms Uniformity.Density.Leaf.lt_weight_gen
+#print axioms Uniformity.Density.Leaf.le_gaussVal_dev_lattice
+#print axioms Uniformity.Density.Leaf.resPoly_coeff
+#print axioms Uniformity.Density.Leaf.le_gaussVal_dev_mul_gen
+#print axioms Uniformity.Density.Leaf.lt_gaussVal_dev_mul_gen
+#print axioms Uniformity.Density.Leaf.le_gaussVal_dev_term_gen
+#print axioms Uniformity.Density.Leaf.resMk_dev_term_eq_zero_gen
+#print axioms Uniformity.Density.Leaf.resMk_dev_term_eq_mul_gen
+#print axioms Uniformity.Density.Leaf.mem_sideSet_of_onSide
+#print axioms Uniformity.Density.Leaf.onSide_lattice
+#print axioms Uniformity.Density.Leaf.u_mul_sideDeg_le
+#print axioms Uniformity.Density.Leaf.resMk_dev_mul_gen
+#print axioms Uniformity.Density.Leaf.le_gaussVal_dev_mul_line
+#print axioms Uniformity.Density.Leaf.lt_gaussVal_dev_mul_line
+#print axioms Uniformity.Density.Leaf.resMk_dev_mul_line
+#print axioms Uniformity.Density.Leaf.onSide_mul_decomp
+#print axioms Uniformity.Density.Leaf.onSide_of_resMk_ne_zero
+#print axioms Uniformity.Density.Leaf.resMk_dev_mul_left_ne_zero
+#print axioms Uniformity.Density.Leaf.npHgt_mul_gen
+#print axioms Uniformity.Density.Leaf.suppVal_mul_gen
+#print axioms Uniformity.Density.Leaf.sideMin_mul_gen
+#print axioms Uniformity.Density.Leaf.sideDeg_mul_gen
+#print axioms Uniformity.Density.Leaf.resPoly_mul_gen
+end AxCheck
