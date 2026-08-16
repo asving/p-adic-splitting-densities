@@ -156,6 +156,32 @@ elaborate is listed; nothing was adjusted silently.
   SIGNATURE.** No repair needed: it follows from the signed conclusion (monic of `natDegree
   D*(1-1) = 0` is `1`), but the fleet should know the signed contract is (i)+(ii) only.
 
+## RE-SIGN LOG (post-0e, blueprint-authorized amendments)
+
+The 0e-era "Chapter E has landed nothing in `leanfinal`" state above is superseded by the landing
+waves (E.01–E.05, E.07–E.13, E.17, E.18, E.25–E.28, E.30, E.32, E.34–E.36, E.43, E.45–E.50, E.53,
+E.54, E.59 are landed as of 2026-08-16); the stubs of landed nodes are re-signed here as their
+amendments are adjudicated, per §12's "those stubs are re-signed when their nodes land".
+
+* **A-E.1/E-D11 (2026-08-16, at E.07's landing).** `jump_count_bound` re-signed with the `4 ≤ μ`
+  floor on the jump STARTS (`∀ i < J`); the committed form is preserved at the declaration.
+  `ladder_finite_bounds` (E.60) still carries its pre-repair hypothesis set — E.60 has not landed.
+  Full record: blueprint amendment A-E.1/E-D11.
+* **A-E.3 (2026-08-16, wave-3 refutation adjudication).** **E.36 `coprime_of_not_dvd` REFUTED as
+  frozen** — over a bare domain the fraction-field descent it needs is FALSE (machine-checked
+  witness `O = ℤ[2i]`, `Ψ = X² + 1`, `F = X² − 2iX − 1 = (X − i)²`, in
+  `leanfinal/Uniformity/ChapE/E36.lean`'s `E36Refutation` namespace: `hforce` and `hndvd` hold, the
+  Bézout conclusion fails at the shared root `i`). The break is exactly monic-factor descent ⟺
+  integral closedness of `O`. **Re-signed here with `[IsIntegrallyClosed O]`** added and every other
+  binder byte-unchanged — PROVED in the landed file via
+  `IsIntegrallyClosed.eq_map_mul_C_of_dvd` + `Polynomial.Monic.dvd_of_fraction_map_dvd_fraction_map`.
+  The re-sign is call-site-free: the node's SIGNATURE binds a bare domain (ENV-arithmetic
+  weakening), but every consumer sits at ENV-E2's `[IsDiscreteValuationRing O]`, which yields the
+  class by instance search (checked). E.36's `gcd_dichotomy` and E.37's `peel_once` stubs are
+  UNCHANGED (E.37 consumes only E.36's statement-level company; its proof needs no descent). The
+  O-level fallback (`gcd_dichotomy` + `hndvd`) is recorded in the amendment as the non-adopted
+  alternative. Full record: blueprint amendment A-E.3.
+
 ## BLOCKED-UNTIL-RESOLUTION (§12; do NOT fire the fleet on these)
 
 `E.51` (`hpeel : True`), `E.57` (`hpart : True`), `E.61`/`E.62` (`supplied : True`) are signed
@@ -695,8 +721,31 @@ axiom gcd_dichotomy {O : Type*} [CommRing O] [IsDomain O]
     ∀ g₀ : Polynomial O, g₀.Monic → g₀ ∣ F → g₀ ∣ Ψ →
       g₀.natDegree = 0 ∨ g₀ = Ψ
 
-/-- **E.36** [theorem] Coprimality from non-divisibility. -/
-axiom coprime_of_not_dvd {O : Type*} [CommRing O] [IsDomain O]
+/-- **E.36** [theorem] Coprimality from non-divisibility.
+
+**RE-SIGNED 2026-08-16 at the A-E.3 form, at E.36's landing** (`[IsIntegrallyClosed O]` added;
+every other binder byte-unchanged). The committed form (preserved here for the record) was
+
+    axiom coprime_of_not_dvd {O : Type*} [CommRing O] [IsDomain O]
+        {F Ψ : Polynomial O} (hF : F.Monic) (hΨ : Ψ.Monic) {D : ℕ} (hD : 0 < D)
+        (hΨd : Ψ.natDegree = D)
+        (hforce : ∀ g₀ : Polynomial O, g₀.Monic → g₀ ∣ F → g₀ ∣ Ψ →
+          g₀.natDegree ≠ 0 → D ≤ g₀.natDegree)
+        (hndvd : ¬ Ψ ∣ F) :
+        IsCoprime (F.map (algebraMap O (FractionRing O)))
+          (Ψ.map (algebraMap O (FractionRing O)))
+
+— and it is **FALSE**: the proof route needs a monic factor of a monic `O`-polynomial to descend
+from `Frac(O)[X]` to `O[X]`, which holds iff `O` is integrally closed. Machine-checked refutation
+over the bare domain `O = ℤ[2i]` (`Ψ = X² + 1`, `F = X² − 2iX − 1 = (X − i)²`; `hforce` holds
+because no element of `ℤ[2i]` squares to `−1`, `hndvd` holds because `F ≠ Ψ` at equal degree, and
+the conclusion fails at the shared root `i`) in
+`leanfinal/Uniformity/ChapE/E36.lean`'s `E36Refutation` namespace. The re-signed form is PROVED
+there. It costs no consumer anything: this node's binder list is the ENV-arithmetic weakening to a
+bare domain, while every call site lives at ENV-E2's `[IsDiscreteValuationRing O]`, from which
+`IsIntegrallyClosed O` is derived by instance search. Full record: blueprint amendment A-E.3;
+E.37's `peel_once` needs no change. -/
+axiom coprime_of_not_dvd {O : Type*} [CommRing O] [IsDomain O] [IsIntegrallyClosed O]
     {F Ψ : Polynomial O} (hF : F.Monic) (hΨ : Ψ.Monic) {D : ℕ} (hD : 0 < D)
     (hΨd : Ψ.natDegree = D)
     (hforce : ∀ g₀ : Polynomial O, g₀.Monic → g₀ ∣ F → g₀ ∣ Ψ →
