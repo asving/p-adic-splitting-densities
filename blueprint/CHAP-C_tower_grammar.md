@@ -8255,4 +8255,116 @@ refutation records are PERMANENT (headers carry the repair notes). Standing obli
 opened: **A-C.3 — the C.114 realizes-refinement re-sign** (clause list at the node
 banner), with its own certification leg required before signing.
 
+# A-C.3 AMENDMENT (2026-08-16, unit EWBS2) — THE TWO OM-10 LAW NODES (C.127, C.128)
+
+**Charge and label.** OM-10's §3.6 flagged, as an orchestrator OPTION, "a dated A-C
+amendment adding two law nodes at the certified statements" for LAW E-W and LAW B-S2,
+which had "no signed home". This amendment is that option, executed. Label A-C.3: A-C.1
+is the signature-completion layer above; A-C.2 is the concurrently-landed C.109 cell-law
+re-sign (certification leg `verification/c109_ac2_cell_check.py`, commit `44709256`).
+Census effect: nodes 129 → **131** (+C.127, +C.128); no committed node is edited.
+
+**Grade asymmetry, stated plainly.** C.127 is signed at a PROVED source (the LAW E-W
+proof note, verifier-passed, every display machine-certified bit-exact). C.128 is signed
+at a CERTIFIED-OPEN source (OM-10 §2.2, 7/7 frames, two primes) — it is a LAW CANDIDATE
+whose Lean proof would be new mathematics; the fleet may prove it or leave it standing
+as the chapter's honest conditional, but MUST NOT widen it (its TEETH row records a
+refuted wider candidate).
+
+---
+
+### NODE C.127 [theorem] [fresh] [signed: A-C.3] — **LAW E-W: the K2-division boundary identity (three clauses)**
+
+**STATEMENT.** At the trinomial single-crossing frame — `F.key = x^{D′} − πω` (`f₁ = 1`,
+`h = 1`, `e₁ = D′`), `composedKey T = F.key^m + ĉ₂π^{v₂}x^{i₂}·F.key^{m−1} + ĉ₀π^{v₀}`
+(`e₂ = 1`, `f₂ = m`), on-side (`u₂ = D′v₂ + i₂`, `D′v₀ = m·u₂`), in-grid
+(`μ₂·i₂ < D′`) — the single-entry member `f = Φ₂^{μ₂} + c·π^α·x^a·Φ′^b·Φ₂^{j′}`
+(`j′ ≤ 1`) has: **(a)** empty shadow/honest discrepancy at every coordinate when
+`j′ = 0` or `a + i₂ < D′`; **(b)** when `j′ = 1` and `a + i₂ ≥ D′`, empty discrepancy
+at every `j ≥ 2` and discrepancy height EXACTLY `gridWeight T α a b (1−j) + margin` at
+`j ∈ {0, 1}` — the subtraction-free form of OM-10's
+`mindiff_j = Θ_j + (entry height − side height)`. Tight at every excess including the
+on-side boundary (T-E-BOUND is clause (b) at `ε = 0`).
+
+**SIGNATURE** [signed: A-C.3 — elaborated in `leanspec/Leanspec/ChapC.lean`, section
+`AC3Laws`]. Three axiom-stubs (proof targets, standing stub lifecycle):
+`lawEW_faithful_of_nox` (clause (a)), `lawEW_faithful_high` (clause (b), `j ≥ 2`),
+`lawEW_pin` (clause (b), `j ≤ 1`; conclusion
+`dv2Hgt (T.levelDatum hπ) (shadowDev T f j − dev (composedKey T) f j)
+= ((gridWeight T α a b (1 − j) + T.margin : ℕ) : ℕ∞)`). The frame is pinned by
+equation hypotheses on `F.key` and `composedKey T` (D19-safe: no `stageLiftO` plumbing
+is consumed); `δ = T.margin ≥ 1` is automatic from `T.hfloor`, so (F4) carries no
+hypothesis. Instance: OM-10's W1 (`ℤ₂`, `x³−2`, `Φ′³ + 8xΦ′² + 1024`).
+
+**DEPENDS.** C.11 (`dv2Hgt`) · C.42/C.43 (`TowerDatum`, `composedKey`) · C.44
+(`levelDatum`) · C.50 (`slotOffset`/`gridWeight`) · C.71 (`shadowDev`, `margin`,
+`theta`).
+
+**PROOF.** transcribe `lean/notes/openmath/LAWEW_PROOF_2026-08-16.md` (PROVED;
+two-pass adversarially verified): the development identity births the seed
+`g·Y^{b+m−1}(Y − Φ′)`; chain linearity + the `Φ′`-scalar kill localize `Δ` to the
+seed's one division; the telescoping census gives exact `q`/`r`; the two on-side
+integralities collapse every slot height to `H_C + δ` resp. `H_C + E₂ + δ`; the sole
+collision (`b = m−1`, forced by `D′ ∣ mi₂`) only rises. Clause (a) is the in-grid
+uniqueness of the development.
+
+**SIZE.** ~40 + ~30 + ~90 lines (the three stubs; the pin clause carries the census).
+
+**SOURCE.** `lean/notes/openmath/LAWEW_PROOF_2026-08-16.md` (the theorem + §6's
+certification record); OM-10 §2.4 (LEG E, the certified pin law).
+
+**TEETH.** §13-style numeric leg EXISTS already, retained under `verification/`:
+`ewbs2_lawew_cert.py` GREEN 2796/0, 5 teeth (T-EW-DELTA margin-forgotten, T-EW-J0
+`j′`-blind crossing, T-EW-SIGN sign-stripped census, T-EW-WRAP `ω`-stripped reduction,
+T-EW-COLLIDE the collision jump) — the closed-form dicts bit-exact on 281 crossing
+rows, 11 frames, `p ∈ {2,3,5}`. SCOPE FENCE: `j′ ≥ 2` members DEVIATE at `p = 2`
+(measured, `V1p2m3`: pin one grade high at two rows) — no fleet agent may generalize
+the statement over `j′`.
+
+**ENVIRONMENT.** ENV-C1.
+
+---
+
+### NODE C.128 [law-candidate] [fresh] [signed: A-C.3] — **LAW B-S2: the P-BINOM cascade pair-or-triple attainment law**
+
+**STATEMENT.** At the cascade geography — `e₂(f₂ − t*) = 1` with `ψ₂.coeff t* ≠ 0` and
+the `t*`-entry carrying `x`-power exactly 1 (`slotIdx ((f₂ − t*)·u₂) = 1`), `f₁ = 1`,
+`μ₂ ≥ 3` — the pure power `Φ₂^{μ₂}` attains its top-coordinate floor
+(`TouchCert` at `j* = (μ₂ − 2) + (2e₂t* + 1)/(e₂f₂)`) **iff**
+`p ∤ binom(μ₂,2)` **or** `p ∤ binom(μ₂,3)` (`p = ringChar` of the residue field): the
+height-`Θ_{j*}` graded layer is carried by the PAIR and TRIPLE diagonal slots only.
+
+**GRADE.** CERTIFIED-OPEN (OM-10 §2.2: 7/7 — B3/B4/B5 at `q = 2`, BP3/BP4/BP5/BP6 at
+`q = 3`; BP3 reproduces the GENTOW6_PROOF r1 bracket record bit-exactly). NOT proved;
+NOT consumed by any committed node; the fleet's cite-vs-prove choice per the 2026-08-15
+sign-off scope.
+
+**SIGNATURE** [signed: A-C.3 — elaborated in `leanspec/Leanspec/ChapC.lean`, section
+`AC3Laws`]. One axiom-stub: `lawBS2_pair_or_triple`, stated as a `TouchCert` iff — the
+attainment predicate is C.74's existing definition, no new carrier.
+
+**DEPENDS.** C.15 (`slotIdx`) · C.42/C.43 · C.44 · C.71 · C.74 (`TouchCert`).
+
+**PROOF.** open (law candidate). The certified route: the k-diagonal extraction
+branches at the `e₂(f₂ − t*) = 1` geography carry digits `~ binom(μ₂,k)`; the measured
+tables kill every `k ≥ 4` branch (see TEETH); a proof must show the `k ≥ 4` branches
+land strictly above the floor in general — the LAW E-W seed calculus (C.127's Step 3
+census) is the expected instrument, one Φ₂-division deeper.
+
+**SIZE.** statement 12 lines; proof unsized (open).
+
+**SOURCE.** OM-10 §2.2 (LEG B, `om10_cert.py` B-LAW 7/7); upstream THEOREM
+GENTOW-6.5(a)/(b) at the BOXES note's 0/2 grade.
+
+**TEETH** (preserved VERBATIM from OM-10 §2.2, per the conversion unit's charge):
+> **The naive "any in-band k-diagonal" candidate (this unit's own outline B-S2) is
+> REFUTED at B4**: binom(4,4) = 1 is a unit, yet pin(ShC_3) = 8 = Θ + 1 — k ≥ 4
+> branches land strictly above the floor (B5 confirms at μ₂ = 5). Refutation kept; the
+> repaired pair-or-triple law is the certified object.
+Plus the OM-10 LEG B teeth T-B-COEF (the `μ₂`-for-`binom` mutant) and T-B-ALLM (the
+always-attains mutant, killed at all 5 `p ∣ binom` frames). Any fleet proof attempt
+that derives an "any-k" statement has re-proved a REFUTED claim and must stop.
+
+**ENVIRONMENT.** ENV-C1.
+
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
