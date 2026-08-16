@@ -11,6 +11,18 @@ the chapter-C fleet fires, in blueprint node order.
 theorem-shaped node here is an `axiom` stub in the UNLANDED state of the `Leanspec.lean` stub
 lifecycle, and every `def`/`structure` carries a real body. **Zero `sorry`.**
 
+**A-C.1 RIDER (2026-08-16, the SIGNATURE-COMPLETION amendment — this file extended in place
+per its lifecycle).** The HEADLINE FINDING below describes the state AT THE GATE; amendment
+A-C.1 (`blueprint/CHAP-C_tower_grammar.md`, A-§ block items (a)–(m)) has since SIGNED the 70
+unsigned nodes and cured the 19 ellipsis signatures: the signed layer now lives in the
+`A-C.1 SIGNATURE-COMPLETION LAYER` sections below (§5 carriers, §6 tail, §§7–13), the D21
+`jump_drop` re-sign and the D19/D20 carrier bridge (NODE C.14a) are applied in place, the
+D14/D15/D22 gate-hygiene tables are in the numeric section, and the three gate-(b) cite
+axioms (`fgmn_residual_mul`, `fgmn_calculus_exists`, `agnprw_termination`) are DECLARED
+under append #66's category signature (statements owner-UNINSPECTED — queued in CHAP-I's
+2026-08-16 A-C.1 addendum). Four residuals are BOOKED to the fleet (C.90(b), C.91(c),
+C.102's letter-read field, C.58's (b)/(d)/(e) companions), each recorded at its node.
+
 ## THE HEADLINE FINDING (read before using this file as a contract)
 
 **Only 57 of the 127 nodes carry a Lean SIGNATURE at all** (`C.01`–`C.51`, `C.55`, `C.56a`,
@@ -3712,22 +3724,29 @@ end NumericGate
 end LeanspecC
 
 /-
-RESUME (chapter-C leanspec stub gate, 2026-08-16): COMPLETE for everything the blueprint signs.
-82 declarations landed (39 axiom / 3 structure / 2 abbrev / 36 def / 1 theorem / 1 example) +
-a 47-`#guard` numeric gate, all passing; `lake build Leanspec.ChapC` green; zero `sorry`.
-NOT landed, and not landable: the 70 unsigned nodes of D1 and the 19 ellipsis-bearing ones of D2
-(dispositions per node in the section comments above). The file is NOT wired into
-`leanspec/Leanspec.lean` — the orchestrator owns that line.
-
-NEXT ACTIONS, in the order they unblock the fleet:
- 1. CHAP-C amendment for D21 (`jump_drop`: replace `hL` by `hjump : 2 ≤ ℓ * d_r`) — a false
-    signed statement, stop-the-line class.
- 2. CHAP-C must SIGN §§6(tail)–13. Until then no fleet agent can fire on C.52–C.126, and §15's
-    own gate order (a)–(d) is unsatisfiable (it names five fragile signatures that do not exist).
- 3. D19/D20: decide whether `KeyFrame` gains the `GenreDatum` side conditions (`1 ≤ h`,
-    `2 ≤ e₁f₁`, a `Q`), or whether C.14/C.43 route around H §8. This is a GC-5 RE-PLAN.
- 4. D24: break the `C.94` ⇄ `I.01` deadlock (Display A line 1 is currently vacuous in Lean).
- 5. D11/D18/D3/D4/D5/D6/D8/D9/D10 are mechanical blueprint repairs; the cures are in this file.
- 6. Owner: the `C.66` statement below is this gate's drafting, not a transcription — gate (b)
-    statement inspection is owed (D23), and `C.92`/`C.94` have no statement to inspect at all.
+RESUME (chapter-C leanspec, 2026-08-16, POST-A-C.1): the stub gate's five NEXT ACTIONS are
+EXECUTED by amendment A-C.1 (this file + the blueprint's A-§ items (a)–(m) + CHAP-I's
+2026-08-16 addendum):
+ 1. D21 — DONE (jump_drop re-signed, source-verified at EFF.HE6R1.10; refutation record
+    preserved in the numeric section).
+ 2. §§6(tail)–13 — SIGNED (the A-C.1 SIGNATURE-COMPLETION LAYER; §15's gate order (a)–(d)
+    is now satisfiable; every signature elaborates in this file).
+ 3. D19/D20 — RESOLVED (NODE C.14a: the adapter with the corpus preconditions explicit;
+    C.14 re-signed with `1 ≤ F.h`; H's landed side untouched).
+ 4. D24 — BROKEN on the C side (DescentState/DescentStep/NS7TerminationStatement +
+    agnprw_termination; I.01 unblocked, see CHAP-I's addendum).
+ 5. D3–D18 mechanical cures — ALIGNED into the blueprint's signed half (A-C.1(m)).
+STILL OWED (the fleet/owner handoff):
+ a. OWNER (gate (b) statement inspection): fgmn_residual_mul (C.66), FGMNCalculus +
+    fgmn_calculus_exists (C.92), agnprw_termination (C.94) — category-signed by append #66,
+    statements drafted at A-C.1, per-statement inspection queued in CHAP-I's addendum;
+    plus C.102's ℓ₁ = e₂ exponent reading (flagged) and the two residual print-reads of
+    the A-3 audit §7.
+ b. FLEET (the four BOOKED residuals): C.90(b)'s level-general one-sidedness (published
+    Cor 6.3 — the C.92 residual field), C.91(c)'s entry characterization, C.102's
+    letter-read field, C.58's (b)/(d)/(e) companions.
+ c. ORCHESTRATOR: wire this file into leanspec/Leanspec.lean; PROJECT_STATE append #66's
+    "on file" sentence is corrected by CHAP-I's addendum (D23) — mirror it in
+    PROJECT_STATE at the next append; §14's DAG TSV gains C.14a/C.38a rows at re-harvest.
+`lake build Leanspec.ChapC` green; zero `sorry`; every #guard passing.
 -/

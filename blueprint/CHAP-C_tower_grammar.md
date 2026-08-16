@@ -547,12 +547,12 @@ noncomputable def KeyFrame.frameRes (F : KeyFrame O π) (H₀ : ℕ)
   resPoly π Polynomial.X F.key F.h F.e₁ F.hne H₀
 
 /-- The stage residue field `K = F_Q(η_θ) ≅ F_{Q^{f₁}}`, as an iterated `AdjoinRoot` (GC-7). -/
-abbrev KeyFrame.stageField (F : KeyFrame O π) (H₀ : ℕ) (hpin : _) : Type _ :=
+abbrev KeyFrame.stageField (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) : Type _ :=
   AdjoinRoot (F.frameRes H₀ hpin)
 
 /-- `|K| = Q^{f₁}` as a number (the lemma-level identity is C.04). -/
-def KeyFrame.stageCard (F : KeyFrame O π) [Finite (ResidueField O)] : ℕ :=
-  residueCard O ^ F.f₁
+noncomputable def KeyFrame.stageCard (F : KeyFrame O π) [Finite (ResidueField O)] : ℕ :=
+  residueCard O ^ F.f₁  -- [A-C.1/D18: `noncomputable` — `residueCard` is]
 ```
 
 **DEPENDS.** C.01 · B.21/B.25 (`resField`, `resMk`) · B.28 (`resPoly`).
@@ -722,7 +722,20 @@ noncomputable def dvSideSet (F : KeyFrame O π) (f : Polynomial O) (u ℓ : ℕ)
 
 noncomputable def dvSideMin (F : KeyFrame O π) (f : Polynomial O) (u ℓ : ℕ)
     (h : (dvSideSet F f u ℓ).Nonempty) : ℕ := (dvSideSet F f u ℓ).min' h
--- dvSideMax, dvSideLen, dvSideDeg analogous (one file, one public cluster per B.20 precedent)
+
+-- [A-C.1/D5: the "analogous" cluster DECLARED — B.20 lands no `sideLen`, so `dvSideLen`
+-- is the stub-side determination `max − min` (the only reading making C.08(b) the B.20(d)
+-- analogue); adopted as the signed text]
+noncomputable def dvSideMax (F : KeyFrame O π) (f : Polynomial O) (u ℓ : ℕ)
+    (h : (dvSideSet F f u ℓ).Nonempty) : ℕ := (dvSideSet F f u ℓ).max' h
+
+noncomputable def dvSideDeg (F : KeyFrame O π) (f : Polynomial O) (u ℓ : ℕ)
+    (h : (dvSideSet F f u ℓ).Nonempty) : ℕ :=
+  (dvSideMax F f u ℓ h - dvSideMin F f u ℓ h) / ℓ
+
+noncomputable def dvSideLen (F : KeyFrame O π) (f : Polynomial O) (u ℓ : ℕ)
+    (h : (dvSideSet F f u ℓ).Nonempty) : ℕ :=
+  dvSideMax F f u ℓ h - dvSideMin F f u ℓ h
 ```
 
 **DEPENDS.** C.06 · B.16/B.20 (templates).
@@ -751,11 +764,11 @@ are congruent mod `ℓ` (B.17's argument transposed), hence `ℓ ∣ dvSideLen` 
 ```lean
 namespace Uniformity.Density.Tower
 
-theorem dvOnSide_modEq (F : KeyFrame O π) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+theorem dvOnSide_modEq (F : KeyFrame O π) {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
     {f : Polynomial O} {j j' : ℕ} (hj : DvOnSide F f u ℓ j) (hj' : DvOnSide F f u ℓ j') :
-    j ≡ j' [MOD ℓ]
+    j ≡ j' [MOD ℓ]   -- [A-C.1/D3: `{u ℓ : ℕ}` bound — they were unbound]
 
-theorem dvSideLen_eq (F : KeyFrame O π) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+theorem dvSideLen_eq (F : KeyFrame O π) {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
     {f : Polynomial O} (h : (dvSideSet F f u ℓ).Nonempty) :
     dvSideLen F f u ℓ h = ℓ * dvSideDeg F f u ℓ h
 ```
@@ -812,11 +825,11 @@ structure LevelDatum (F : KeyFrame O π) (H₀ : ℕ)
   hrdeg : 0 < r.natDegree
 
 /-- `D″ = D′·ℓ·deg r`. -/
-def LevelDatum.keyDeg₂ {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin) : ℕ :=
+noncomputable def LevelDatum.keyDeg₂ {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin) : ℕ :=
   (F.e₁ * F.f₁) * L.ℓ * L.r.natDegree
 
 /-- `T₂ = ℓ·d_r·λ`, cleared to the integer `d_r·u`. -/
-def LevelDatum.seam {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin) : ℕ :=
+noncomputable def LevelDatum.seam {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin) : ℕ :=
   L.r.natDegree * L.u
 ```
 
@@ -1223,12 +1236,16 @@ by `i₀·k = i(k) + q(k)·e₁` with `i₀ = slotIdx F 1` (ϖ's `x`-exponent, s
 namespace Uniformity.Density.Tower
 
 /-- `i(k)`: the unique `0 ≤ i < e₁` with `ih ≡ k (mod e₁)` (`EFF.HE6.58`'s `i(k)`;
-`EFF.HE6.13`'s `i₀(k)`). Total: at the degenerate `e₁ = 1` it is `0`. -/
-noncomputable def KeyFrame.slotIdx (F : KeyFrame O π) (k : ℕ) : ℕ :=
-  Nat.find (F.slotIdx_exists k)   -- packaged via the H.51 bijection; see C.16
+`EFF.HE6.13`'s `i₀(k)`). Total: at the degenerate `e₁ = 1` it is `0`.
+[A-C.1/D6: the `Nat.find (F.slotIdx_exists k)` body was UNDECLARABLE (`slotIdx_exists`
+exists in no node, and `Nat.find` needs the predicate); the gate's total, COMPUTABLE,
+junk-`0`-defaulting body is adopted — it agrees with the intended value exactly when it
+exists, which `F.hcop` guarantees (C.16's spec pins it).] -/
+def KeyFrame.slotIdx (F : KeyFrame O π) (k : ℕ) : ℕ :=
+  ((List.range F.e₁).find? (fun i => (i * F.h) % F.e₁ == k % F.e₁)).getD 0
 
 /-- `q(k)`: the ϖ-vs-`n(k)` twist exponent, `i₀·k = i(k) + q(k)·e₁` (`EFF.HE6.13` RIDER). -/
-noncomputable def KeyFrame.twistExp (F : KeyFrame O π) (k : ℕ) : ℕ :=
+def KeyFrame.twistExp (F : KeyFrame O π) (k : ℕ) : ℕ :=
   (F.slotIdx 1 * k - F.slotIdx k) / F.e₁
 ```
 
@@ -1247,7 +1264,7 @@ the SPEC is the defining congruence + range, C.16, not the implementation).
 **executable regression** at §13 (`slotIdx` table at the gate frames); the `a₀ < 0`
 phenomenon is DESIGNED OUT (no `a₀` is ever computed — C-H14).
 
-**ENVIRONMENT.** ENV-C5 (pure arithmetic on the frame's numerals).
+**ENVIRONMENT.** ENV-C1 *[A-C.1 re-tag per D7: stated over `KeyFrame`, which binds the DVR telescope; the pure-arithmetic content is carried by the numeric-gate mirrors (`slotIdxN` etc.)]*.
 
 ---
 
@@ -1291,7 +1308,7 @@ bijection of `ℤ/e₁` because `gcd(h,e₁) = 1`"* — verbatim the proof mecha
 **TEETH.** the `.13` audit's `q(3) = 1` at `(2,2,3)` → **executable regression** (§13 gate
 value).
 
-**ENVIRONMENT.** ENV-C5.
+**ENVIRONMENT.** ENV-C1 *[A-C.1 re-tag per D7: stated over `KeyFrame` — see C.15's rider]*.
 
 ---
 
@@ -1321,7 +1338,7 @@ noncomputable def KeyFrame.slotWindow (F : KeyFrame O π) (k : ℕ) : Finset ℕ
 **TEETH.** the `.12` audit (`(3,1,2)`: `T(1) = ∅`; `(1,2,1)`: `T(0) = {0}` proper) →
 **executable regression** at §13.
 
-**ENVIRONMENT.** ENV-C5.
+**ENVIRONMENT.** ENV-C1 *[A-C.1 re-tag per D7: stated over `KeyFrame` — see C.15's rider]*.
 
 ---
 
@@ -1376,12 +1393,12 @@ because the frame residual has nonzero constant term (B.30 at the frame's side).
 ```lean
 namespace Uniformity.Density.Tower
 
-noncomputable def KeyFrame.stageLetter (F : KeyFrame O π) (H₀ : ℕ) (hpin : _) :
+noncomputable def KeyFrame.stageLetter (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) :
     F.stageField H₀ hpin :=
   AdjoinRoot.root (F.frameRes H₀ hpin)
 
 theorem KeyFrame.stageLetter_ne_zero (F : KeyFrame O π) (hπ : Irreducible π)
-    (H₀ : ℕ) (hpin : _) : F.stageLetter H₀ hpin ≠ 0
+    (H₀ : ℕ) (hpin : F.Pin H₀) : F.stageLetter H₀ hpin ≠ 0
 ```
 
 with the power-basis statement (`AdjoinRoot.powerBasis` at `Irreducible ψ`) as a companion
@@ -1475,16 +1492,19 @@ open Uniformity.Density.Leaf in
 /-- A3 F-1's normalized slot residue
 `γ_k(A) = Σ_t res(a_{i+e₁t}·π^{−(k−(i+e₁t)h)/e₁})·η^t` (`EFF.HE6.58`, TERMINAL layer of the
 `HE6-SLOT-SEAM` chain — the frozen bare-`γ` display is DEAD, C-H8). -/
-noncomputable def KeyFrame.slotRes (F : KeyFrame O π) (H₀ : ℕ) (hpin : _) (k : ℕ)
+noncomputable def KeyFrame.slotRes (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) (k : ℕ)
     (A : Polynomial O) : F.stageField H₀ hpin :=
   (F.slotWindow k).sum fun t =>
-    algebraMap _ _ (digAt π ((k - (F.slotIdx k + F.e₁ * t) * F.h) / F.e₁)
-        (A.coeff (F.slotIdx k + F.e₁ * t)))
+    algebraMap (resField (Polynomial.X : Polynomial O)) (F.stageField H₀ hpin)
+        (algebraMap (ResidueField O) (resField (Polynomial.X : Polynomial O))
+          (digAt π ((k - (F.slotIdx k + F.e₁ * t) * F.h) / F.e₁)
+            (A.coeff (F.slotIdx k + F.e₁ * t))))
       * (F.stageLetter H₀ hpin) ^ t
 ```
 
-(the `algebraMap` route `ResidueField O → resField X → stageField` is the composite of the
-landed quotient maps; one private helper may name it.)
+[A-C.1/D8: the composite of the two landed quotient maps WRITTEN OUT — mathlib composes no
+`Algebra` chains, so `algebraMap _ _` did not elaborate; the two-step form is the signed
+text.]
 
 **⚠ FAITHFULNESS (trust-boundary definition — the chapter's most consequential recast).**
 Three clauses. (i) This is the **n(k)-read** (`res(A(θ)/n(k)(θ))`), per `EFF.HE6.58`'s
@@ -1528,10 +1548,17 @@ namespace Uniformity.Density.Tower
 
 /-- The ϖ-read residue `γ_k(A)·η^{−q(k)}` (`EFF.HE6.15` [r2]-corrected sign; `EFF.HE6.58`
 TERMINAL).  All corpus residual polynomials (`R_λ`, C.25) read through THIS. -/
-noncomputable def KeyFrame.twistRead (F : KeyFrame O π) (H₀ : ℕ) (hpin : _) (k : ℕ)
+noncomputable def KeyFrame.twistRead (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) (k : ℕ)
     (A : Polynomial O) : F.stageField H₀ hpin :=
+  letI : Field (resField (Polynomial.X : Polynomial O)) := instFieldResField isKey_X
+  letI : Fact (Irreducible (F.frameRes H₀ hpin)) := ⟨(F.hresirr H₀ hpin).1⟩
   (F.stageLetter H₀ hpin)⁻¹ ^ (F.twistExp k) * F.slotRes H₀ hpin k A
 ```
+
+[A-C.1/D9: the two `letI`s are the signed text — `stageField` has no `Inv` without them
+(the `⁻¹` needs `AdjoinRoot`'s field structure, keyed on `Fact (Irreducible …)` +
+`Field (resField X)`, the latter through the new helper `isKey_X` — hereby a blueprint
+declaration of this node); this makes `hpin` genuinely USED, as the gate observed.]
 
 **⚠ FAITHFULNESS.** The corpus DERIVES this from ϖ (`res(n(k)/ϖ^k) = η^{−q}`); here it is a
 DEFINITION, because ϖ itself (`∈ K₀[x]`, possibly negative `π`-exponent) is never
@@ -1573,7 +1600,7 @@ Moreover the window coefficients of `slotRes` are exactly the attaining-slot dig
 namespace Uniformity.Density.Tower
 
 theorem KeyFrame.slotRes_ne_zero (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
-    (hpin : _) {A : Polynomial O} {k : ℕ} (hA : A.natDegree < F.e₁ * F.f₁)
+    (hpin : F.Pin H₀) {A : Polynomial O} {k : ℕ} (hA : A.natDegree < F.e₁ * F.f₁)
     (hht : F.stageHeight A = (k : ℕ∞)) :
     F.slotRes H₀ hpin k A ≠ 0
 ```
@@ -1618,7 +1645,7 @@ is all of `K^×` iff `T = range f₁` iff `k ≥ (slotIdx k + e₁(f₁−1))h` 
 namespace Uniformity.Density.Tower
 
 theorem KeyFrame.slotRes_image (F : KeyFrame O π) (hπ : Irreducible π)
-    [Finite (ResidueField O)] (H₀ : ℕ) (hpin : _) (k : ℕ) :
+    [Finite (ResidueField O)] (H₀ : ℕ) (hpin : F.Pin H₀) (k : ℕ) :
     (Set.image (F.slotRes H₀ hpin k)
         {A : Polynomial O | A.natDegree < F.e₁ * F.f₁ ∧ F.stageHeight A = (k : ℕ∞)})
       = {x | ∃ c : ℕ → ResidueField O, (∃ t ∈ F.slotWindow k, c t ≠ 0) ∧
@@ -1677,7 +1704,7 @@ namespace Uniformity.Density.Tower
 
 /-- `R_λ(Z) := Σ_t res(A_{j₁+tℓ}(θ)/ϖ(θ)^{m₁−tu})·Z^t ∈ K[Z]` (`EFF.HE6.11`), through the
 C.22 ϖ-read at the GC-1 `sideMin` pin. -/
-noncomputable def dvResPoly (F : KeyFrame O π) (H₀ : ℕ) (hpin : _)
+noncomputable def dvResPoly (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀)
     (f : Polynomial O) (u ℓ : ℕ) (hne₂ : (dvSideSet F f u ℓ).Nonempty) (M₀ : ℕ)
     (hpin₂ : dvHgt F f (dvSideMin F f u ℓ hne₂) = (M₀ : ℕ∞)) :
     Polynomial (F.stageField H₀ hpin) :=
@@ -1722,17 +1749,23 @@ C.25's data, `0 < ℓ`, `Nat.Coprime u ℓ`, `dvSupp F f u ℓ ≠ ⊤`: (i) the
 namespace Uniformity.Density.Tower
 
 theorem dvResPoly_coeff_eq_zero_iff (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
-    (hpin : _) {f : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+    (hpin : F.Pin H₀) {f : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
     (hne₂ : (dvSideSet F f u ℓ).Nonempty) {M₀ : ℕ}
     (hpin₂ : dvHgt F f (dvSideMin F f u ℓ hne₂) = (M₀ : ℕ∞)) {t : ℕ}
     (ht : t ≤ dvSideDeg F f u ℓ hne₂) :
     (dvResPoly F H₀ hpin f u ℓ hne₂ M₀ hpin₂).coeff t = 0
       ↔ ¬ DvOnSide F f u ℓ (dvSideMin F f u ℓ hne₂ + ℓ * t)
 
-theorem natDegree_dvResPoly (…same…) :
+theorem natDegree_dvResPoly (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : F.Pin H₀)
+    {f : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+    (hne₂ : (dvSideSet F f u ℓ).Nonempty) {M₀ : ℕ}
+    (hpin₂ : dvHgt F f (dvSideMin F f u ℓ hne₂) = (M₀ : ℕ∞)) :
     (dvResPoly F H₀ hpin f u ℓ hne₂ M₀ hpin₂).natDegree = dvSideDeg F f u ℓ hne₂ ∧
     (dvResPoly F H₀ hpin f u ℓ hne₂ M₀ hpin₂).coeff 0 ≠ 0
 ```
+[A-C.1/D2: "(…same…)" written out — the first signature's binder list reproduced, the
+unique reading.]
 
 **DEPENDS.** C.07 · C.08 · C.20 · C.22 · C.23 · C.25 · B.30 (the proof template).
 
@@ -1782,11 +1815,12 @@ theorem slot2_exact {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     {g : Polynomial O} (hg : HasLabel L g) {C : Polynomial O}
     (hC : C.natDegree < L.keyDeg₂) (hC0 : dv2Hgt L C ≠ ⊤) :
     ∃ v : ℕ, dv2Hgt L C = (v : ℕ∞) ∧
-      (F.e₁ * L.ℓ) * (addVal O (Algebra.norm O (AdjoinRoot.mk g C))).get! = g.natDegree * v
+      (F.e₁ * L.ℓ) * (addVal O (Algebra.norm O (AdjoinRoot.mk g C))).toNat = g.natDegree * v
 ```
 
-(the `addVal … .get!` packaging follows the landed `normValues` idiom; the stub stage fixes
-the exact `ℕ∞`-plumbing against `leanfinal`'s `addVal` API.)
+[A-C.1/D10: `.get!` → `ENat.toNat` — `ℕ∞ = ENat` carries no `get!`; `toNat` agrees with the
+intended value on the `≠ ⊤` locus the statement's own `∃ v` pins. The stub-stage
+`ℕ∞`-plumbing fix the parenthetical promised, executed.]
 
 **PROOF (route, the section's hard node).**
 1. Reduce to prime-power label blocks: `HasLabel` gives `g`'s level-1 purity and residual
@@ -2696,7 +2730,7 @@ C.16(iii)).
 **executable regression** (§13); the identity leg of the 2026-08-10 run (`k = 1..60` per
 frame) → retained.
 
-**ENVIRONMENT.** ENV-C5.
+**ENVIRONMENT.** ENV-C1 *[A-C.1 re-tag per D7: stated over `KeyFrame` — see C.15's rider]*.
 
 ---
 
@@ -2715,7 +2749,7 @@ irreducible of degree `f₂` with `ψ₂.coeff 0 ≠ 0`. Derived: `D₂ := (e₁
 ```lean
 namespace Uniformity.Density.Tower
 
-structure TowerDatum (F : KeyFrame O π) (H₀ : ℕ) (hpin : _) where
+structure TowerDatum (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) where
   e₂ : ℕ
   f₂ : ℕ
   u₂ : ℕ
@@ -7865,6 +7899,29 @@ increment:
   construction; C.90 at clause (a) (clause (b) = the booked Cor 6.3 residual); **C.91
   signed at (d)+(e), (c) BOOKED** (needs the level-(i+1) `dv`-carrier — the third booked
   §9-scope residual, with C.90(b) and C.102's letter reads); C.93/C.95/C.96 as displayed.
+* **A-C.1(m) — the gate's stub-side cures ADOPTED into the signed half (the D3–D18
+  alignment), ordering and census.** The committed signature blocks now carry the cures as
+  their text, each tagged in place: D4 (`(hpin : _)` → `(hpin : F.Pin H₀)` at all ~9 sites —
+  `KeyFrame.Pin` adopted per A-C.1(c)); D3 (`C.08`'s `{u ℓ}` bound); D5 (`C.07`'s
+  `dvSideMax`/`dvSideDeg`/`dvSideLen` DECLARED, `dvSideLen := max − min` the determination);
+  D6 (`C.15`'s total computable `slotIdx` body; `noncomputable` dropped); D8 (`C.21`'s
+  two-step `algebraMap` composite written out); D9 (`C.22`'s two `letI`s + the `isKey_X`
+  helper adopted as a blueprint declaration); D10 (`C.27`'s `.get!` → `.toNat`); D11
+  (`C.40`/`C.61`'s one-field constructors — in their A-C.1 blocks); D18 (`noncomputable` on
+  `C.03.stageCard`, `C.09.keyDeg₂`/`seam`). **D12 (ordering, binding on the fleet's
+  roll-up):** landed order is C.01 → C.04, **C.06 → C.07 → C.05** (i), … C.21 →
+  **C.13 → C.14/C.14a** (ii, the blueprint's own ⚠), C.25 → C.26 → **C.29 → C.27** (iii,
+  the §5 → §4 crossing) → C.28 — as executed in `leanspec/Leanspec/ChapC.lean`. **D7:**
+  C.15/C.16/C.17/C.41 re-tagged ENV-C5 → ENV-C1 in place (riders at the nodes; the
+  arithmetic content lives in the numeric-gate mirrors). **D13:** disposed at C.35's
+  `blockFactor_spec` (the multiplicity tie is its clause). **Census (supersedes A-2/A-7's
+  counts):** nodes 127 → **129** (+C.14a, +C.38a); kind deltas: +2 def-cluster nodes; the
+  three gate-(b) cites now carry DECLARED axioms (`fgmn_residual_mul`,
+  `fgmn_calculus_exists`, `agnprw_termination` — C.126's census expects exactly these).
+  **§15's gate order (a)–(d) is now SATISFIABLE** (the five named fragile signatures exist
+  and are elaborated); the four BOOKED residuals (C.90(b)'s Cor 6.3 clause, C.91(c)'s
+  entry characterization, C.102's letter-read field, C.58's (b)/(d)/(e) companions) are the
+  A-C.1 → fleet handoff list, each recorded at its node.
 * **A-C.1(l) — the depth-2 SCOPE FENCE self-catch (stop-the-line class, caught in-flight).**
   The first drafts of C.99's `gentow2_Bpp`/`theta_letter_valued` were quantified over
   arbitrary chain depth `r` — which would have SILENTLY ASSERTED the open `[GENTOW5-W(i)]`
