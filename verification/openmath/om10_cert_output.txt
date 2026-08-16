@@ -31,7 +31,7 @@
 == LEG D (GENTOW-6.6 ledger: HYP.68 / HYP.144-BOX-2) ==
   LEG D done.
 
-CHECKS: 561, VIOLATIONS: 0
-TALLY: {'A1': 18, 'A2': 7, 'A1c': 35, 'AS3': 7, 'AS5': 4, 'A3': 14, 'TEETH': 9, 'DUAL': 39, 'B-ANCH': 18, 'B-FLOOR': 71, 'B-TOP': 9, 'B-SINGLE': 18, 'B-LAW': 7, 'C-FLOOR': 15, 'C-QCEIL': 6, 'C-QCERT': 6, 'C-QATT': 6, 'C-PERT': 30, 'E-W': 4, 'E-NOX': 135, 'E-X': 27, 'E-LAW': 54, 'E-PAIR': 2, 'E-INFEAS': 2, 'E-LIN': 1, 'E-RFLOOR': 4, 'E-CHI': 2, 'E-S4': 1, 'D2a': 3, 'D2b': 3, 'D2d': 3, 'D2c': 1}
+CHECKS: 569, VIOLATIONS: 0
+TALLY: {'A1': 18, 'A2': 7, 'A1c': 35, 'AS3': 7, 'AS5': 4, 'A3': 14, 'AS4': 8, 'TEETH': 9, 'DUAL': 39, 'B-ANCH': 18, 'B-FLOOR': 71, 'B-TOP': 9, 'B-SINGLE': 18, 'B-LAW': 7, 'C-FLOOR': 15, 'C-QCEIL': 6, 'C-QCERT': 6, 'C-QATT': 6, 'C-PERT': 30, 'E-W': 4, 'E-NOX': 135, 'E-X': 27, 'E-LAW': 54, 'E-PAIR': 2, 'E-INFEAS': 2, 'E-LIN': 1, 'E-RFLOOR': 4, 'E-CHI': 2, 'E-S4': 1, 'D2a': 3, 'D2b': 3, 'D2d': 3, 'D2c': 1}
 KILLS: {'T-A-DPRIME': 1, 'T-A-EMPTY': 1, 'T-A-SIG': 1, 'T-B-COEF': 1, 'T-B-ALLM': 1, 'T-C-VAL': 1, 'T-E-CHI': 1, 'T-E-BOUND': 1, 'T-D-CJ': 1}
 VERDICT: GREEN

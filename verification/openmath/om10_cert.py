@@ -674,6 +674,30 @@ def leg_A():
             if e * f <= 8 and e % 4 == 0 and f % 2 == 0]
     chk('A3', cand == [(4, 2)], 'A3b component census')
 
+    # ---------- A-S4: the anchor property of the test polynomials ----
+    # Psi_s's own x-Newton polygon must be a SINGLE side of slope 1/2
+    # (all D'*ell roots at the key valuation h/e1 = 1/2), so LEMMA
+    # HE3-0's (T1)/(T2) read applies at Psi's roots — the entry
+    # condition of "the slot lemma at Psi's roots" (the box's named
+    # further step). Measured at all four labels + both anchors.
+    def x_polygon_single_side(g, p, slope_num, slope_den):
+        pts = [(i, vp(c, p)) for i, c in enumerate(g) if c]
+        d = len(g) - 1
+        v0 = pts[0][1] if pts[0][0] == 0 else None
+        if v0 is None:
+            return False
+        # single side from (0, v0) to (d, 0) of slope v0/d == num/den:
+        if v0 * slope_den != slope_num * d:
+            return False
+        return all(v * d >= v0 * (d - i) for i, v in pts)
+    for s in (1, 2, 3, 4):
+        Psi = padd(P2, pneg([0, s * 25]))
+        chk('AS4', x_polygon_single_side(Psi, 5, 1, 2),
+            'Psi_%d x-polygon single side of slope 1/2' % s)
+        Psi7 = padd(P2, pneg([0, s * 25 + 5 ** 3]))
+        chk('AS4', x_polygon_single_side(Psi7, 5, 1, 2),
+            'Psi_{%d,kappa=7} x-polygon single side of slope 1/2' % s)
+
     # ---------- teeth -------------------------------------------------
     # T-A-DPRIME: the mutant law |S_r| = D'*d (rescale forgotten):
     # predicts degree-2 factors on A1a (D'*d = 2) and a degree-4 factor
