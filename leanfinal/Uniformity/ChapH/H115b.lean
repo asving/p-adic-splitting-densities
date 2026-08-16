@@ -405,4 +405,150 @@ theorem not_isCSState_of_alphaParent {π : O} (hπ : Irreducible π) {m N k : �
 
 end Parent
 
+/-! ## 4. H.115 (clause ii) — the shear is ONTO -/
+
+/-- **H.115 (clause ii).** The shear is ONTO the full window-`(N−mk)` state space.
+
+The witness is the inverse shear of §1 applied to a child lift with coordinates in `𝔪`; the
+four `IsAlphaState` obligations are discharged as listed in the module docstring, and clause
+(i) (`alphaChild_spec`) identifies the child of the witness with the given state. -/
+theorem alphaChild_surjective {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {m N k : ℕ} {z : ResidueField O}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (hk : 1 ≤ k) (hw : m * k ≤ N - 1) (hz : z ≠ 0) :
+    ∀ d : ClusterState O m (N - m * k),
+      ∃ (c : ClusterState O m N) (h : IsAlphaState π c k z), alphaChild π c h = d := by
+  classical
+  intro d
+  have hπ0 : π ≠ 0 := hπ.ne_zero
+  have hm0 : 0 < m := by omega
+  have hmkN : m * k + 1 ≤ N := by omega
+  have hπdvd : ∀ x : O, x ∈ maximalIdeal O → π ∣ x := by
+    intro x hx
+    have h := (mem_maximalIdeal_pow_iff_dvd_of_irr hπ 1 x).1 (by rwa [pow_one])
+    rwa [pow_one] at h
+  have hπmem : ∀ x : O, π ∣ x → x ∈ maximalIdeal O := by
+    intro x hx
+    have h := (mem_maximalIdeal_pow_iff_dvd_of_irr hπ 1 x).2 (by rwa [pow_one])
+    rwa [pow_one] at h
+  set ŵ : O := resSect O z with hŵdef
+  have hŵ : residue O ŵ = z := residue_resSect O z
+  -- STEP 1: a child lift with every coordinate in `𝔪`
+  have hlift : ∀ i : Fin m, ∃ y : O, y ∈ maximalIdeal O ∧
+      Ideal.Quotient.mk ((maximalIdeal O) ^ (N - m * k)) y = d.1 i := fun i =>
+    (Ideal.mem_map_iff_of_surjective _ Ideal.Quotient.mk_surjective).1 (d.2 i)
+  choose b hb hbd using hlift
+  have hbproj : proj O m (N - m * k) b = d.1 := funext hbd
+  -- STEP 2: the parent frame and its coefficient vector
+  obtain ⟨a, hfa⟩ :=
+    exists_monicPoly_eq (alphaParent_monic π b k ŵ) (alphaParent_natDegree π b k ŵ)
+  have hacoeff : ∀ i : Fin m,
+      a i = (alphaFrame b ŵ).coeff (i : ℕ) * (π ^ k) ^ (m - (i : ℕ)) := by
+    intro i
+    have h1 : (monicPoly a).coeff (i : ℕ) = a i := by
+      simpa using monicPoly_coeff_lt a i.isLt
+    rw [← h1, hfa, alphaParent_coeff]
+  have hamem : ∀ i : Fin m, a i ∈ maximalIdeal O := by
+    intro i
+    refine hπmem _ ?_
+    rw [hacoeff i]
+    refine Dvd.dvd.mul_left ?_ _
+    rw [← pow_mul]
+    exact dvd_pow_self π (Nat.mul_ne_zero (by omega) (by have := i.isLt; omega))
+  set c : ClusterState O m N :=
+    ⟨proj O m N a, fun i => Ideal.mem_map_of_mem _ (hamem i)⟩ with hcdef
+  have hproj : proj O m N a = c.1 := by rw [hcdef]
+  have hcval : ∀ (j : ℕ) (hj : j < m),
+      c.1 ⟨j, hj⟩ = Ideal.Quotient.mk ((maximalIdeal O) ^ N) (a ⟨j, hj⟩) := by
+    intro j hj
+    rw [← hproj]
+    rfl
+  -- STEP 3: the recentring at the pinned pair is the child's development, scaled
+  have hrec : (monicPoly a).comp (C (π ^ k) * (X + C ŵ)) = C (π ^ (m * k)) * monicPoly b := by
+    rw [hfa]; exact alphaParent_recentre π b k ŵ
+  -- STEP 4: non-drain (this is where `z ≠ 0` pins the constant coefficient's valuation)
+  have hG0 : a ⟨0, hm0⟩ = (alphaFrame b ŵ).coeff 0 * π ^ (m * k) := by
+    have h := hacoeff ⟨0, hm0⟩
+    simpa [Nat.sub_zero, ← pow_mul, Nat.mul_comm k m] using h
+  have hnd : ¬ IsDrainState c := by
+    intro hdr
+    have h0 : c.1 ⟨0, hm0⟩ = 0 := hdr hm0
+    rw [hcval 0 hm0] at h0
+    have hdvdN : π ^ N ∣ a ⟨0, hm0⟩ :=
+      (mem_maximalIdeal_pow_iff_dvd_of_irr hπ N _).1 (Ideal.Quotient.eq_zero_iff_mem.1 h0)
+    have h1 : π ^ (m * k + 1) ∣ a ⟨0, hm0⟩ := dvd_trans (pow_dvd_pow π hmkN) hdvdN
+    rw [hG0, pow_succ, mul_comm ((alphaFrame b ŵ).coeff 0) (π ^ (m * k))] at h1
+    exact alphaFrame_coeff_zero_not_dvd hπ hb hz hŵ
+      ((mul_dvd_mul_iff_left (pow_ne_zero (m * k) hπ0)).1 h1)
+  -- STEP 5: the capped content is the monic top term
+  have hD : betaContent c k = m * k := by
+    refine le_antisymm (betaContent_le_mul c k) ?_
+    refine Finset.le_inf' _ _ ?_
+    intro j _
+    by_cases hjm : j < m
+    · rw [dif_pos hjm]
+      have hle : (m - j) * k ≤ N :=
+        le_trans (Nat.mul_le_mul_right k (Nat.sub_le m j)) (by omega)
+      have hdvdj : π ^ ((m - j) * k) ∣ a ⟨j, hjm⟩ := by
+        rw [hacoeff ⟨j, hjm⟩]
+        exact Dvd.dvd.mul_left (dvd_of_eq (by rw [← pow_mul, Nat.mul_comm k (m - j)])) _
+      have hge : (m - j) * k ≤ resOrd (c.1 ⟨j, hjm⟩) := by
+        rw [hcval j hjm]
+        exact (resOrd_ge_iff hπ hle (a ⟨j, hjm⟩)).2 hdvdj
+      have hsum : (m - j) * k + j * k = m * k := by
+        have hmj : (m - j) + j = m := by omega
+        calc (m - j) * k + j * k = ((m - j) + j) * k := by ring
+          _ = m * k := by rw [hmj]
+      omega
+    · rw [dif_neg hjm]
+  -- STEP 6: the full-multiplicity child event
+  have hchild : HasChildAt π c m k z := by
+    refine hasChildAt_of_exists hπ hN hnd hm hk hz a ŵ hproj hŵ ?_ ?_ ?_
+    · intro j
+      rw [hD, hrec, coeff_C_mul]
+      exact Dvd.intro _ rfl
+    · intro j hj
+      rw [hD, hrec, coeff_C_mul, monicPoly_coeff_lt b hj, pow_succ]
+      exact mul_dvd_mul_left _ (hπdvd _ (hb ⟨j, hj⟩))
+    · rw [hD, hrec, coeff_C_mul]
+      have htop : (monicPoly b).coeff m = 1 := by
+        have h := (monicPoly_monic b).coeff_natDegree
+        rwa [monicPoly_natDegree] at h
+      rw [htop, mul_one]
+      intro hdd
+      rw [pow_succ] at hdd
+      have hdd' : π ^ (m * k) * π ∣ π ^ (m * k) * 1 := by rwa [mul_one]
+      exact hπ.not_isUnit
+        (isUnit_of_dvd_one ((mul_dvd_mul_iff_left (pow_ne_zero (m * k) hπ0)).1 hdd'))
+  -- STEP 7: not CS, hence an α state
+  have hcs : ¬ IsCSState π c := not_isCSState_of_alphaParent hπ hk hz hb hŵ hproj hfa
+  refine ⟨c, ⟨hnd, hcs, hchild⟩, ?_⟩
+  -- STEP 8: clause (i) identifies the child of the witness with `d`
+  obtain ⟨b', -, hb'fac, hb'proj⟩ :=
+    alphaChild_spec hπ hm hN c ⟨hnd, hcs, hchild⟩ a hproj
+  have hCne : (C (π ^ (m * k)) : Polynomial O) ≠ 0 := by
+    simpa [Polynomial.C_eq_zero] using pow_ne_zero (m * k) hπ0
+  have hbb : monicPoly b' = monicPoly b := mul_left_cancel₀ hCne (hb'fac.symm.trans hrec)
+  have hb'b : b' = b := by
+    refine funext fun i => ?_
+    have h1 := monicPoly_coeff_lt b' i.isLt
+    have h2 := monicPoly_coeff_lt b i.isLt
+    rw [hbb] at h1
+    simpa using h1.symm.trans h2
+  refine Subtype.ext ?_
+  rw [← hb'proj, hb'b, hbproj]
+
 end Uniformity.Density.Induction
+
+/-! ## 5. Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Induction.alphaFrame
+#print axioms Uniformity.Density.Induction.alphaParent
+#print axioms Uniformity.Density.Induction.alphaParent_recentre
+#print axioms Uniformity.Density.Induction.alphaFrame_map_residue
+#print axioms Uniformity.Density.Induction.alphaParent_npHgt_zero
+#print axioms Uniformity.Density.Induction.not_isCSState_of_alphaParent
+#print axioms Uniformity.Density.Induction.alphaChild_surjective
+
+end AxCheck
