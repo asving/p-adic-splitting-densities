@@ -121,7 +121,7 @@ plan below is the battery's own `part1` plan (its largest window per `(q, m)` ro
 section NumericDrain
 
 /-- The drain census closed form of `card_drainState`, as a computable numeral function. -/
-def drainCensus (Q m N : ℕ) : ℕ := Q ^ ((m - 1) * (N - 1))
+private def drainCensus (Q m N : ℕ) : ℕ := Q ^ ((m - 1) * (N - 1))
 
 -- battery `part1` plan: (q, m, N) at the largest window of each row
 #eval [(2, 2, 6), (2, 3, 6), (2, 4, 4), (3, 2, 5), (3, 3, 4), (3, 4, 3)].map

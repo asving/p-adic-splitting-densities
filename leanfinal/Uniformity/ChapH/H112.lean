@@ -638,10 +638,10 @@ be `m * k`. -/
 section NumericGate
 
 /-- The window predicate of the battery's α scan: `1 ≤ k` and `m * k ≤ N − 1`. -/
-def alphaWindow (m N k : ℕ) : Bool := decide (1 ≤ k ∧ m * k ≤ N - 1)
+private def alphaWindow (m N k : ℕ) : Bool := decide (1 ≤ k ∧ m * k ≤ N - 1)
 
 /-- The admissible slopes of a cell, filtered out of `0, …, N`. -/
-def windowedSlopes (m N : ℕ) : List ℕ := (List.range (N + 1)).filter (alphaWindow m N)
+private def windowedSlopes (m N : ℕ) : List ℕ := (List.range (N + 1)).filter (alphaWindow m N)
 
 -- the admissible-slope set IS the battery's scan range `range(1, (N-1)//m + 1)`,
 -- at every cell of the battery's `part1` plan (its largest window per `(q, m)` row)
@@ -654,12 +654,12 @@ def windowedSlopes (m N : ℕ) : List ℕ := (List.range (N + 1)).filter (alphaW
 
 /-- The capped content model `Dpred = min_{j ≤ m} (min (v j) N + j k)`, with the monic top
 `j = m` contributing `m * k` (H.108's `betaContent`, transcribed for numerals). -/
-def contentModel (v : List ℕ) (N k : ℕ) : ℕ :=
+private def contentModel (v : List ℕ) (N k : ℕ) : ℕ :=
   let m := v.length
   ((v.zipIdx.map fun p => min p.1 N + p.2 * k) ++ [m * k]).foldr min (m * k)
 
 /-- The α-dominating (one-sided polygon) condition `v j ≥ (m − j) k`. -/
-def alphaDominates (v : List ℕ) (k : ℕ) : Bool :=
+private def alphaDominates (v : List ℕ) (k : ℕ) : Bool :=
   v.zipIdx.all fun p => decide ((v.length - p.2) * k ≤ p.1)
 
 -- ALPHA branch, `assert Dpred == m * k`: on every α-dominating digit vector of the grid
