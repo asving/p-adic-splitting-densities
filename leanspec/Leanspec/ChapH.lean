@@ -2152,3 +2152,580 @@ Disposition of the gate's own list, as of retirement:
   is a property of the landed `DecidableEq FactorizationType`). -/
 
 end LeanspecH
+
+/-!
+# §17 — THE T-1 COMPLETION LAYER (nodes H.100–H.124): SIGNATURE-ELABORATION SCRATCH
+
+(unit T-1 BLUEPRINT-CONVERSION, 2026-08-16; provenance: OM-2,
+`docs/openmath-campaign/OM-2_genind-b_2026-08-16.md` §4, under owner mandate #66's queue.)
+
+**Lifecycle position (the file header's lifecycle governs).** The `LeanspecH` block above is
+RETIRED (H.01–H.99 landed). THIS block is the opposite end of the lifecycle: the **pre-0e
+SIGNATURE-ELABORATION scratch** for the NEW §17 nodes of
+`blueprint/CHAP-H_general_induction.md` (H.100–H.124, dated extension 2026-08-16). Its only
+claim: **every §17 SIGNATURE elaborates against the landed `Uniformity` API.** It is NOT the
+§17 0e gate: theorem stubs are unsigned `axiom`s awaiting the fleet stage; TWO definitional
+carriers (`alphaChild`, `betaChild` — the heavy extraction bodies) are deliberately carried in
+axiom form as OPAQUE CONSTANTS so their consumers' signatures elaborate, with real bodies owed
+at the §17 0e gate (recorded deviation from 0e rule 1 — this unit's charge is elaboration
+verification, not stub signing). Every other definitional carrier is a REAL body.
+
+**Namespace discipline (PA-4 / GC-6.6):** flat inside `LeanspecH17`; the landed-side
+assignment (recorded per node in the blueprint §17) is `Uniformity.Density.Induction` for the
+new defs and the theorems about them, `Uniformity.Density` for `FullClusterRateBound` /
+`inductionPackage_of_clusterRates` (consumers of the landed `InductionPackage`).
+
+**Binder discipline:** every declaration binds INLINE — the B.42 landing rule
+(`leanfinal/Uniformity/ChapB/B42.lean`, "The completeness binder"): a hypothesis a statement's
+truth depends on is never left to section auto-inclusion.
+-/
+
+namespace LeanspecH17
+
+open Uniformity Uniformity.Density Uniformity.Density.Induction Uniformity.Density.Leaf
+open IsLocalRing Polynomial
+
+/-! ### H.100 — the level-0 stratum -/
+
+/-- **H.100 (def half).** The level-0 stratum of a residue polynomial `g`: the level-`N`
+classes ALL of whose monic lifts reduce to `g`. (∀-lift form; the ∃-lift transport is the
+lemma half.) -/
+def levelZeroStratum (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (n N : ℕ) (g : Polynomial (ResidueField O)) : Set (Coeff O n N) :=
+  {c | ∀ a : Fin n → O, proj O n N a = c → (monicPoly a).map (residue O) = g}
+
+/-- **H.100 (lemma half).** At `1 ≤ N` the reduction is class-determined, so the ∀-lift and
+∃-lift readings agree. -/
+axiom mem_levelZeroStratum_iff {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {n N : ℕ} (hN : 1 ≤ N)
+    (g : Polynomial (ResidueField O)) (c : Coeff O n N) :
+    c ∈ levelZeroStratum O n N g ↔
+      ∃ a : Fin n → O, proj O n N a = c ∧ (monicPoly a).map (residue O) = g
+
+/-! ### H.101 — class multiplication -/
+
+/-- **H.101 (def half).** The product of two monic coefficient classes, computed entirely in
+`(Res O N)[X]` — no lift is consulted. -/
+noncomputable def mulClass {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {n₁ n₂ N : ℕ} (c₁ : Coeff O n₁ N) (c₂ : Coeff O n₂ N) : Coeff O (n₁ + n₂) N :=
+  fun i =>
+    ((X ^ n₁ + ∑ j : Fin n₁, Polynomial.C (c₁ j) * X ^ (j : ℕ)) *
+      (X ^ n₂ + ∑ j : Fin n₂, Polynomial.C (c₂ j) * X ^ (j : ℕ))).coeff (i : ℕ)
+
+/-- **H.101 (lemma half).** `mulClass` computes the class of a product of monic lifts. -/
+axiom mulClass_proj {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {n₁ n₂ N : ℕ} (a₁ : Fin n₁ → O) (a₂ : Fin n₂ → O) :
+    proj O (n₁ + n₂) N (fun i => (monicPoly a₁ * monicPoly a₂).coeff (i : ℕ))
+      = mulClass (proj O n₁ N a₁) (proj O n₂ N a₂)
+
+/-! ### H.102 — the Hensel class bijection (N-1a) -/
+
+/-- **H.102 (bijection).** Binary Hensel class transport: over coprime monic residue factors,
+`mulClass` is a bijection of the product of the factor strata onto the product stratum — with
+NO precision loss (the level-0 resultants are units). -/
+axiom bijOn_mulClass {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] {n₁ n₂ N : ℕ} (hN : 1 ≤ N)
+    {g₁ g₂ : Polynomial (ResidueField O)} (hg₁ : g₁.Monic) (hg₂ : g₂.Monic)
+    (hd₁ : g₁.natDegree = n₁) (hd₂ : g₂.natDegree = n₂) (hcop : IsCoprime g₁ g₂) :
+    Set.BijOn (fun p : Coeff O n₁ N × Coeff O n₂ N => mulClass p.1 p.2)
+      ((levelZeroStratum O n₁ N g₁) ×ˢ (levelZeroStratum O n₂ N g₂))
+      (levelZeroStratum O (n₁ + n₂) N (g₁ * g₂))
+
+/-- **H.102 (count corollary).** -/
+axiom card_levelZeroStratum_mul {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O]
+    {n₁ n₂ N : ℕ} (hN : 1 ≤ N)
+    {g₁ g₂ : Polynomial (ResidueField O)} (hg₁ : g₁.Monic) (hg₂ : g₂.Monic)
+    (hd₁ : g₁.natDegree = n₁) (hd₂ : g₂.natDegree = n₂) (hcop : IsCoprime g₁ g₂) :
+    Nat.card (levelZeroStratum O (n₁ + n₂) N (g₁ * g₂))
+      = Nat.card (levelZeroStratum O n₁ N g₁) * Nat.card (levelZeroStratum O n₂ N g₂)
+
+/-! ### H.103 — σ-additive decidedness assembly (⟸ direction) -/
+
+/-- **H.103.** Decided factors assemble: the product class is decided at the multiset sum.
+(The per-type ⟹ direction is REFUTED — finding F-1's `split⊎inert = inert⊎split` collision —
+so no iff is stated at the σ level; the predicate-level iff is H.104.) -/
+axiom decidedAt_mulClass {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] {n₁ n₂ N : ℕ} (hN : 1 ≤ N)
+    {g₁ g₂ : Polynomial (ResidueField O)} (hg₁ : g₁.Monic) (hg₂ : g₂.Monic)
+    (hd₁ : g₁.natDegree = n₁) (hd₂ : g₂.natDegree = n₂) (hcop : IsCoprime g₁ g₂)
+    {c₁ : Coeff O n₁ N} {c₂ : Coeff O n₂ N}
+    (hc₁ : c₁ ∈ levelZeroStratum O n₁ N g₁) (hc₂ : c₂ ∈ levelZeroStratum O n₂ N g₂)
+    {σ₁ σ₂ : FactorizationType}
+    (h₁ : DecidedAt O n₁ σ₁ N c₁) (h₂ : DecidedAt O n₂ σ₂ N c₂) :
+    DecidedAt O (n₁ + n₂) ⟨σ₁.data + σ₂.data⟩ N (mulClass c₁ c₂)
+
+/-! ### H.104 — the drain/decidedness composition on the PREDICATE (N-1b) -/
+
+/-- **H.104.** The predicate-level composition: the product class is undecided iff SOME factor
+class is (multiset cancellation + the H.102 bijection). -/
+axiom undecidedAt_mulClass_iff {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O]
+    {n₁ n₂ N : ℕ} (hN : 1 ≤ N)
+    {g₁ g₂ : Polynomial (ResidueField O)} (hg₁ : g₁.Monic) (hg₂ : g₂.Monic)
+    (hd₁ : g₁.natDegree = n₁) (hd₂ : g₂.natDegree = n₂) (hcop : IsCoprime g₁ g₂)
+    {c₁ : Coeff O n₁ N} {c₂ : Coeff O n₂ N}
+    (hc₁ : c₁ ∈ levelZeroStratum O n₁ N g₁) (hc₂ : c₂ ∈ levelZeroStratum O n₂ N g₂) :
+    UndecidedAt O (n₁ + n₂) N (mulClass c₁ c₂)
+      ↔ UndecidedAt O n₁ N c₁ ∨ UndecidedAt O n₂ N c₂
+
+/-! ### H.105 — the per-stratum undecided count (N-1c, per-stratum binary form) -/
+
+/-- **H.105.** The exact per-stratum composed count `T₁T₂ − (T₁−u₁)(T₂−u₂)`, written
+subtraction-safely with decided-within-stratum complements. -/
+axiom card_undecided_mulClass {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [Finite (ResidueField O)]
+    [IsAdicComplete (maximalIdeal O) O] {n₁ n₂ N : ℕ} (hN : 1 ≤ N)
+    {g₁ g₂ : Polynomial (ResidueField O)} (hg₁ : g₁.Monic) (hg₂ : g₂.Monic)
+    (hd₁ : g₁.natDegree = n₁) (hd₂ : g₂.natDegree = n₂) (hcop : IsCoprime g₁ g₂) :
+    Nat.card
+        ((undecidedSet O (n₁ + n₂) N ∩ levelZeroStratum O (n₁ + n₂) N (g₁ * g₂) :
+          Set (Coeff O (n₁ + n₂) N)))
+      = Nat.card (levelZeroStratum O n₁ N g₁) * Nat.card (levelZeroStratum O n₂ N g₂)
+        - Nat.card ((levelZeroStratum O n₁ N g₁ \ undecidedSet O n₁ N : Set (Coeff O n₁ N)))
+          * Nat.card ((levelZeroStratum O n₂ N g₂ \ undecidedSet O n₂ N : Set (Coeff O n₂ N)))
+
+end LeanspecH17
+
+namespace LeanspecH17
+
+open Uniformity Uniformity.Density Uniformity.Density.Induction Uniformity.Density.Leaf
+open IsLocalRing Polynomial
+
+/-! ### H.106 — the cluster-state carrier -/
+
+/-- **H.106 (def half).** The `(m, d = 1, N)` cluster system: level-`N` classes with every
+coefficient residually zero (the recentred `Φ`-adic development, `Φ = X`). -/
+def ClusterState (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (m N : ℕ) : Type _ :=
+  {c : Coeff O m N //
+    ∀ i, c i ∈ (maximalIdeal O).map (Ideal.Quotient.mk ((maximalIdeal O) ^ N))}
+
+/-- **H.106 (lemma half).** The state-space census `Q^{m(N−1)}` (`EFF.GENIND.07`). -/
+axiom card_clusterState {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] (m N : ℕ) (hN : 1 ≤ N) :
+    Nat.card (ClusterState O m N) = residueCard O ^ (m * (N - 1))
+
+/-! ### H.107 — the windowed valuation on `Res O N` -/
+
+/-- **H.107 (def half).** The windowed (conservative) valuation of a truncated element:
+the largest `k ≤ N` with `x` in the image of `𝔪^k`. `resOrd x = N` means INVISIBLE
+(`x = 0` in the window), never "valuation `= N`". -/
+noncomputable def resOrd {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {N : ℕ} (x : Res O N) : ℕ :=
+  sSup {k | k ≤ N ∧ x ∈ ((maximalIdeal O) ^ k).map (Ideal.Quotient.mk ((maximalIdeal O) ^ N))}
+
+/-- **H.107 (lemma half, clause i).** Representative transport: for `k ≤ N`,
+`k ≤ resOrd (mk a) ↔ π^k ∣ a`. -/
+axiom resOrd_ge_iff {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {N k : ℕ} (hk : k ≤ N) (a : O) :
+    k ≤ resOrd (Ideal.Quotient.mk ((maximalIdeal O) ^ N) a) ↔ π ^ k ∣ a
+
+/-- **H.107 (lemma half, clause ii).** Invisibility: `resOrd x = N ↔ x = 0`. -/
+axiom resOrd_eq_iff {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {N : ℕ} (x : Res O N) : resOrd x = N ↔ x = 0
+
+/-! ### H.108 — the drain predicate and the capped content -/
+
+/-- **H.108 (def half, a).** DRAIN: the constant coefficient is invisible — the conservative
+reader exits UNDECIDED (S-1: it decides on visible data only). -/
+def IsDrainState {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {m N : ℕ} (c : ClusterState O m N) : Prop :=
+  ∀ h : 0 < m, c.1 ⟨0, h⟩ = 0
+
+/-- **H.108 (def half, b).** The CAPPED slope-`k` content
+`D = min_j (min(v(a_j), N) + j·k)` (`GENIND-3`'s terminal `[r3]`-capped display,
+`EFF.GENIND.24`), computed on the class — no lift consulted. -/
+noncomputable def betaContent {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {m N : ℕ} (c : ClusterState O m N) (k : ℕ) : ℕ :=
+  Finset.inf' (Finset.range (m + 1)) (Finset.nonempty_range_iff.mpr (Nat.succ_ne_zero m))
+    (fun j => if h : j < m then resOrd (c.1 ⟨j, h⟩) + j * k else m * k)
+
+/-- **H.108 (lemma half).** On non-drain states the content sits below the window:
+`D ≤ N − 1` (hence every extracted child window `N − D` is `≥ 1`). -/
+axiom betaContent_le {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {m N : ℕ} (hm : 1 ≤ m) (hN : 1 ≤ N) (c : ClusterState O m N)
+    (h0 : ¬ IsDrainState c) (k : ℕ) : betaContent c k ≤ N - 1
+
+/-! ### H.109 — the child events -/
+
+/-- **H.109 (def half).** `HasChildAt π c μ k z`: the slope-`k` residual has the NONZERO root
+`z` with multiplicity `μ ≥ 2` — stated conservatively (∀-lift) through the recentring
+`x ↦ π^k(y + ẑ)` and π-divisibility of the recentred coefficients at the capped content. -/
+def HasChildAt {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {m N : ℕ} (c : ClusterState O m N) (μ k : ℕ) (z : ResidueField O) : Prop :=
+  2 ≤ μ ∧ 1 ≤ k ∧ z ≠ 0 ∧
+    ∀ (a : Fin m → O) (w : O), proj O m N a = c.1 → residue O w = z →
+      (∀ j, π ^ betaContent c k ∣
+        ((monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))).coeff j) ∧
+      (∀ j < μ, π ^ (betaContent c k + 1) ∣
+        ((monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))).coeff j) ∧
+      ¬ π ^ (betaContent c k + 1) ∣
+        ((monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))).coeff μ
+
+/-- **H.109 (lemma half).** Conservativity/lift-independence: on non-drain states with
+`1 ≤ N`, the ∀-lift clauses hold as soon as they hold at ONE lift pair (every threshold is
+`≤ N`, so every consulted digit is class-determined). -/
+axiom hasChildAt_of_exists {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {m N : ℕ} (hN : 1 ≤ N)
+    {c : ClusterState O m N} (h0 : ¬ IsDrainState c) {μ k : ℕ} {z : ResidueField O}
+    (hμ : 2 ≤ μ) (hk : 1 ≤ k) (hz : z ≠ 0)
+    (a : Fin m → O) (w : O) (ha : proj O m N a = c.1) (hw : residue O w = z)
+    (h1 : ∀ j, π ^ betaContent c k ∣
+      ((monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))).coeff j)
+    (h2 : ∀ j < μ, π ^ (betaContent c k + 1) ∣
+      ((monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))).coeff j)
+    (h3 : ¬ π ^ (betaContent c k + 1) ∣
+      ((monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))).coeff μ) :
+    HasChildAt π c μ k z
+
+/-! ### H.110 — the composite-stage (CS) bucket -/
+
+/-- **H.110 (def half).** CS: some side of the visible polygon carries a repeated irreducible
+residual factor `ψ` with block size `ℓ·deg ψ ≥ 2` — the conservative reader exits UNDECIDED
+at depth 0 (the pessimistic reading; DECISION D-H17.1: stage data is HYP-gated, never read
+here). ∀-lift form; `H₀` pinned at `sideMin` per GC-1. -/
+def IsCSState {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {m N : ℕ} (c : ClusterState O m N) : Prop :=
+  ¬ IsDrainState c ∧
+    ∀ (a : Fin m → O), proj O m N a = c.1 →
+      ∃ (u ℓ : ℕ) (hne : (sideSet X (monicPoly a) u ℓ).Nonempty) (H₀ : ℕ),
+        0 < ℓ ∧ Nat.Coprime u ℓ ∧
+        npHgt X (monicPoly a) (sideMin X (monicPoly a) u ℓ hne) = (H₀ : ℕ∞) ∧
+        ∃ ψ : Polynomial (resField (X : Polynomial O)),
+          Irreducible ψ ∧ 2 ≤ ℓ * ψ.natDegree ∧
+          ψ ^ 2 ∣ resPoly π X (monicPoly a) u ℓ hne H₀
+
+/-! ### H.111 — the five-case partition (N-2a's shell) -/
+
+/-- **H.111 (def a).** α: a FULL-multiplicity child (`μ = m`) at integer slope `k` — the
+whole cluster recenters. -/
+def IsAlphaState {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {m N : ℕ} (c : ClusterState O m N) (k : ℕ) (z : ResidueField O) : Prop :=
+  ¬ IsDrainState c ∧ ¬ IsCSState π c ∧ HasChildAt π c m k z
+
+/-- **H.111 (def b).** β: fracture — a child exists but no full-multiplicity child. -/
+def IsBetaState {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {m N : ℕ} (c : ClusterState O m N) : Prop :=
+  ¬ IsDrainState c ∧ ¬ IsCSState π c ∧
+    (∃ μ k z, HasChildAt π c μ k z) ∧ ¬ ∃ k z, HasChildAt π c m k z
+
+/-- **H.111 (def c).** DEC: no drain, no CS, no child — every residual factor is simple and
+the conservative reader DECIDES (the pieces' `(e,f)` read is chapter B's leaf layer). -/
+def IsDecState {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {m N : ℕ} (c : ClusterState O m N) : Prop :=
+  ¬ IsDrainState c ∧ ¬ IsCSState π c ∧ ¬ ∃ μ k z, HasChildAt π c μ k z
+
+/-- **H.111 (lemma half, totality).** Every state is drain, CS, α, β or DEC. -/
+axiom cluster_partition {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {m N : ℕ} (c : ClusterState O m N) :
+    IsDrainState c ∨ IsCSState π c ∨ (∃ k z, IsAlphaState π c k z) ∨
+      IsBetaState π c ∨ IsDecState π c
+
+/-- **H.111 (lemma half, the one non-definitional disjointness).** -/
+axiom alpha_not_beta {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} {m N : ℕ} {c : ClusterState O m N} {k : ℕ} {z : ResidueField O} :
+    IsAlphaState π c k z → ¬ IsBetaState π c
+
+/-! ### H.112 — event well-formedness (window, uniqueness, finiteness) -/
+
+/-- **H.112 (clause i).** The α event is unique. -/
+axiom alpha_event_unique {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {m N : ℕ} (hm : 2 ≤ m) {c : ClusterState O m N}
+    {k k' : ℕ} {z z' : ResidueField O} :
+    IsAlphaState π c k z → IsAlphaState π c k' z' → k = k' ∧ z = z'
+
+/-- **H.112 (clause ii).** The α content is exactly `m·k` and the event sits in the window:
+`m·k ≤ N − 1` (the A-H.2 window condition, AUTOMATIC on true events). -/
+axiom alpha_content {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {m N : ℕ} (hm : 2 ≤ m) (hN : 1 ≤ N)
+    {c : ClusterState O m N} {k : ℕ} {z : ResidueField O} (h : IsAlphaState π c k z) :
+    betaContent c k = m * k ∧ 1 ≤ k ∧ m * k ≤ N - 1
+
+/-- **H.112 (clause iii).** The child set is finite. -/
+axiom childSet_finite {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {m N : ℕ} (c : ClusterState O m N) :
+    {p : ℕ × ℕ × ResidueField O | HasChildAt π c p.1 p.2.1 p.2.2}.Finite
+
+/-! ### H.113 — the drain census -/
+
+/-- **H.113.** `#DRAIN = Q^{(m−1)(N−1)}`. -/
+axiom card_drainState {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] (m N : ℕ) (hm : 1 ≤ m) (hN : 1 ≤ N) :
+    Nat.card {c : ClusterState O m N // IsDrainState c}
+      = residueCard O ^ ((m - 1) * (N - 1))
+
+/-! ### H.114 — the α-locus law -/
+
+/-- **H.114.** `#α(k) = (Q−1)·Q^{m(N−1) − k·m(m+1)/2}` at realized `k` (`1 ≤ k`,
+`m·k ≤ N−1`); the slope is `clusterC (m+1) = m(m+1)/2`. -/
+axiom card_alphaSlice {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] {π : O} (hπ : Irreducible π) {m N k : ℕ}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (hk : 1 ≤ k) (hw : m * k ≤ N - 1) :
+    Nat.card {c : ClusterState O m N // ∃ z, IsAlphaState π c k z}
+      = (residueCard O - 1) * residueCard O ^ (m * (N - 1) - k * clusterC (m + 1))
+
+/-! ### H.115 — the α-shear transport (N-2b) -/
+
+/-- **H.115 (def half, OPAQUE at this scratch — real body owed at the §17 0e gate).** The
+recentred, content-divided, window-truncated α child. -/
+axiom alphaChild {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {m N k : ℕ} {z : ResidueField O}
+    (c : ClusterState O m N) (h : IsAlphaState π c k z) : ClusterState O m (N - m * k)
+
+/-- **H.115 (clause i).** The extraction is what it says: on every lift pair the recentred
+polynomial is EXACTLY `π^{mk} ·` a monic cluster development lifting the child. -/
+axiom alphaChild_spec {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {m N k : ℕ} {z : ResidueField O} (hm : 2 ≤ m)
+    (hN : 1 ≤ N) (c : ClusterState O m N) (h : IsAlphaState π c k z) :
+    ∀ (a : Fin m → O) (w : O), proj O m N a = c.1 → residue O w = z →
+      ∃ b : Fin m → O, (∀ i, b i ∈ maximalIdeal O) ∧
+        (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))
+          = Polynomial.C (π ^ (m * k)) * monicPoly b ∧
+        proj O m (N - m * k) b = (alphaChild π c h).1
+
+/-- **H.115 (clause ii).** The shear is ONTO the full window-`(N−mk)` state space. -/
+axiom alphaChild_surjective {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {m N k : ℕ} {z : ResidueField O}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (hk : 1 ≤ k) (hw : m * k ≤ N - 1) (hz : z ≠ 0) :
+    ∀ d : ClusterState O m (N - m * k),
+      ∃ (c : ClusterState O m N) (h : IsAlphaState π c k z), alphaChild π c h = d
+
+/-- **H.115 (clause iii).** Every ghost fibre has cardinality `Q^{k·c(m)}`,
+`c(m) = clusterC m = m(m−1)/2` (the R2 unit-pivot mechanism, H.60). -/
+axiom card_alphaFiber {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] {π : O} (hπ : Irreducible π) {m N k : ℕ}
+    {z : ResidueField O} (hm : 2 ≤ m) (hN : 1 ≤ N) (hk : 1 ≤ k) (hw : m * k ≤ N - 1)
+    (hz : z ≠ 0) (d : ClusterState O m (N - m * k)) :
+    Nat.card {c : ClusterState O m N | ∃ h : IsAlphaState π c k z, alphaChild π c h = d}
+      = residueCard O ^ (k * clusterC m)
+
+/-! ### H.116 — the β-extraction at the capped window (N-2c) -/
+
+/-- **H.116 (def half, OPAQUE at this scratch — real body owed at the §17 0e gate).** The
+`(μ, k, z)`-child of a state, read at an EXPLICIT window `M` (DECISION D-H17.2: the window is
+an argument, so genre-level statements avoid dependent-index casts; the genuine child is at
+`M = N − betaContent c k`). -/
+axiom betaChild {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] (π : O) {m N μ k : ℕ} {z : ResidueField O}
+    (c : ClusterState O m N) (h : HasChildAt π c μ k z) (M : ℕ) : ClusterState O μ M
+
+/-- **H.116 (clause i).** The extraction factors every lift: recentred = `π^D ·`
+(monic degree-`μ` cluster lift of the child) `×` (co-factor), exactly. -/
+axiom betaChild_spec {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π)
+    {m N μ k : ℕ} {z : ResidueField O} (hm : 2 ≤ m) (hN : 1 ≤ N)
+    (c : ClusterState O m N) (h : HasChildAt π c μ k z) (h0 : ¬ IsDrainState c) :
+    ∀ (a : Fin m → O) (w : O), proj O m N a = c.1 → residue O w = z →
+      ∃ (b : Fin μ → O) (H' : Polynomial O), (∀ i, b i ∈ maximalIdeal O) ∧
+        (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))
+          = Polynomial.C (π ^ betaContent c k) * (monicPoly b * H') ∧
+        proj O μ (N - betaContent c k) b
+          = (betaChild π c h (N - betaContent c k)).1
+
+/-- **H.116 (clause ii).** Per genre (fixed child set `L` and fixed windows `D`), the joint
+child map has EQUICARDINAL fibres — the composed-count mechanism
+`census_g · [ΠT_l − Π(T_l − u_l)]` of the battery's P1(f). -/
+axiom betaExtract_fiber_card {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [Finite (ResidueField O)]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m N : ℕ}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (L : Finset (ℕ × ℕ × ResidueField O)) (hL : L.Nonempty)
+    (D : ℕ × ℕ × ResidueField O → ℕ) :
+    ∃ F : ℕ, ∀ t : ∀ p ∈ L, ClusterState O p.1 (N - D p),
+      Nat.card {c : ClusterState O m N |
+        IsBetaState π c ∧
+        (∀ p : ℕ × ℕ × ResidueField O, HasChildAt π c p.1 p.2.1 p.2.2 ↔ p ∈ L) ∧
+        (∀ p ∈ L, betaContent c p.2.1 = D p) ∧
+        (∀ (p : ℕ × ℕ × ResidueField O) (hp : p ∈ L)
+            (hc : HasChildAt π c p.1 p.2.1 p.2.2),
+          betaChild π c hc (N - D p) = t p hp)} = F
+
+/-! ### H.117 — the CS criterion (fires H.03/H.04) -/
+
+/-- **H.117 (clause i).** No CS event below `m = 4`. -/
+axiom isCSState_four_le {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {m N : ℕ} (hm : 1 ≤ m) (hN : 1 ≤ N)
+    (c : ClusterState O m N) (h : IsCSState π c) : 4 ≤ m
+
+/-- **H.117 (clause ii).** Every CS block obeys `4 ≤ ℓ·μ·deg ψ ≤ m`. -/
+axiom cs_block_bounds {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {m N : ℕ} (hm : 1 ≤ m) (hN : 1 ≤ N)
+    (c : ClusterState O m N) (h0 : ¬ IsDrainState c)
+    (a : Fin m → O) (ha : proj O m N a = c.1) (u ℓ : ℕ)
+    (hne : (sideSet X (monicPoly a) u ℓ).Nonempty) (H₀ : ℕ) (hℓ : 0 < ℓ)
+    (hcop : Nat.Coprime u ℓ)
+    (hpin : npHgt X (monicPoly a) (sideMin X (monicPoly a) u ℓ hne) = (H₀ : ℕ∞))
+    (ψ : Polynomial (resField (X : Polynomial O))) (hψ : Irreducible ψ) (μ : ℕ)
+    (hμ : 2 ≤ μ) (hblock : 2 ≤ ℓ * ψ.natDegree)
+    (hdvd : ψ ^ μ ∣ resPoly π X (monicPoly a) u ℓ hne H₀) :
+    4 ≤ ℓ * μ * ψ.natDegree ∧ ℓ * μ * ψ.natDegree ≤ m
+
+end LeanspecH17
+
+namespace LeanspecH17
+
+open Uniformity Uniformity.Density Uniformity.Density.Induction Uniformity.Density.Leaf
+open IsLocalRing Polynomial
+
+/-! ### H.118 — the conservative verdict (S-1's CONSERVATIVE object) -/
+
+/-- **H.118.** The conservative reader's UNDECIDED set, as the least predicate closed under
+the four propagation rules — DRAIN and CS exit undecided at depth 0 (DECISION D-H17.1,
+pessimistic on stage data), α recurses at the sheared child (same degree, window `−mk`),
+β propagates from ANY undecided child at its capped window. Well-founded by the lexicographic
+measure (degree, window) — `EFF.GENIND.202`'s repair, the same measure H.71's closure runs
+on. `DecidedAt`-side inversion: a state outside this predicate is DEC-resolved along its
+whole recursion tree (H.119's iff). **This is the conservative complement `u_{m,d}`, NOT the
+semantic `undecidedSet` — identifying them is REFUTED on F-2's witnesses (the S-1 fence).** -/
+inductive ClusterUndecided (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] (π : O) :
+    ∀ (m N : ℕ), ClusterState O m N → Prop
+  | drain {m N : ℕ} (c : ClusterState O m N) :
+      IsDrainState c → ClusterUndecided O π m N c
+  | cs {m N : ℕ} (c : ClusterState O m N) :
+      IsCSState π c → ClusterUndecided O π m N c
+  | alpha {m N k : ℕ} {z : ResidueField O} (c : ClusterState O m N)
+      (h : IsAlphaState π c k z) :
+      ClusterUndecided O π m (N - m * k) (alphaChild π c h) → ClusterUndecided O π m N c
+  | beta {m N μ k : ℕ} {z : ResidueField O} (c : ClusterState O m N)
+      (hβ : IsBetaState π c) (h : HasChildAt π c μ k z) :
+      ClusterUndecided O π μ (N - betaContent c k)
+          (betaChild π c h (N - betaContent c k)) →
+      ClusterUndecided O π m N c
+
+/-! ### H.119 — the conservative complement and its boundary -/
+
+/-- **H.119 (def a).** `u_{m,1}(N)`: the conservative undecided count. -/
+noncomputable def uCluster (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] (π : O) (m N : ℕ) : ℕ :=
+  Nat.card {c : ClusterState O m N // ClusterUndecided O π m N c}
+
+/-- **H.119 (def b).** The normalized conservative complement `û(N) = u(N)/Q^{m(N−1)}`. -/
+noncomputable def uClusterNorm (O : Type) [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [Finite (ResidueField O)]
+    [IsAdicComplete (maximalIdeal O) O] (π : O) (m N : ℕ) : ℝ :=
+  (uCluster O π m N : ℝ) / (residueCard O : ℝ) ^ (m * (N - 1))
+
+/-- **H.119 (lemma a).** The window-1 boundary `u(1) = 1` (`ANNEX R R3`, `EFF.GENIND.160`;
+OM-2 row 0d): at window 1 the unique state is drain. -/
+axiom uCluster_one {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] (π : O) (hπ : Irreducible π) (m : ℕ)
+    (hm : 1 ≤ m) : uCluster O π m 1 = 1
+
+/-- **H.119 (lemma b).** The recursion identity / inversion (battery P1(e)): the inductive
+predicate is EXACTLY the reader's verdict equations. -/
+axiom clusterUndecided_iff {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m N : ℕ}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (c : ClusterState O m N) :
+    ClusterUndecided O π m N c ↔
+      IsDrainState c ∨ IsCSState π c ∨
+      (∃ (k : ℕ) (z : ResidueField O) (h : IsAlphaState π c k z),
+        ClusterUndecided O π m (N - m * k) (alphaChild π c h)) ∨
+      (IsBetaState π c ∧ ∃ (μ k : ℕ) (z : ResidueField O) (h : HasChildAt π c μ k z),
+        ClusterUndecided O π μ (N - betaContent c k)
+          (betaChild π c h (N - betaContent c k)))
+
+/-! ### H.120 — cluster-level C2D (debt D-4) -/
+
+/-- **H.120.** Window-truncation monotonicity of the NORMALIZED conservative complement —
+H.70's argument on the `ClusterState` carrier. -/
+axiom uClusterNorm_antitone {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) (m : ℕ) (hm : 2 ≤ m) :
+    ∀ T W, 1 ≤ T → T ≤ W → uClusterNorm O π m W ≤ uClusterNorm O π m T
+
+/-! ### H.121 — the three legs on true data (N-3's instantiation layer) -/
+
+/-- **H.121 (clause i, the split — hsplit as an EQUALITY).** At `m ≤ 3` the CS bucket is
+empty (H.117) and the conservative complement splits exactly. -/
+axiom uCluster_split {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m : ℕ} (hm : 2 ≤ m) (hm3 : m ≤ 3) (N : ℕ) (hN : 1 ≤ N) :
+    uCluster O π m N
+      = Nat.card {c : ClusterState O m N // IsDrainState c}
+        + Nat.card {c : ClusterState O m N //
+            (∃ k z, IsAlphaState π c k z) ∧ ClusterUndecided O π m N c}
+        + Nat.card {c : ClusterState O m N //
+            IsBetaState π c ∧ ClusterUndecided O π m N c}
+
+/-- **H.121 (clause ii, the α leg — halpha as an EQUALITY, UNBOUNDED windowed range).**
+The α-undecided mass recurses with the structure slope `clusterC (m+1) − clusterC m`
+recomposition, i.e. absolute coefficient `(Q−1)·Q^{k·clusterC m}` against the child count at
+window `N − mk` — summed over ALL realized `k` (`1 ≤ k`, `mk ≤ N−1`). ⚠ The realized range
+is WINDOW-DEPENDENT: no fixed `n₀` covers it (finding F-H17.1 → PA-H17.1 at H.71). -/
+axiom uCluster_alpha_leg {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m : ℕ} (hm : 2 ≤ m) (N : ℕ) (hN : 1 ≤ N) :
+    Nat.card {c : ClusterState O m N //
+        (∃ k z, IsAlphaState π c k z) ∧ ClusterUndecided O π m N c}
+      = ∑ k ∈ (Finset.range N).filter (fun k => 1 ≤ k ∧ m * k ≤ N - 1),
+          (residueCard O - 1) * residueCard O ^ (k * clusterC m) * uCluster O π m (N - m * k)
+
+/-- **H.121 (clause iii, the β leg — hbeta at `(K', B', c') = (1, 0, 1)`).** Certified shape:
+the battery measures `K' ≤ 0.0004` at this envelope (`m ∈ {2,3}`, both rings), so `K' = 1` is
+safe; the proof route is the degree-descent (children have degree `< m`) through H.63/H.67/
+H.68. Stated unnormalized. -/
+axiom uCluster_beta_leg {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m : ℕ} (hm : 2 ≤ m) (hm3 : m ≤ 3) (N : ℕ) (hN : 1 ≤ N) :
+    (Nat.card {c : ClusterState O m N //
+        IsBetaState π c ∧ ClusterUndecided O π m N c} : ℝ)
+      ≤ (N : ℝ) ^ m * (residueCard O : ℝ) ^ (m * (N - 1))
+          * ((residueCard O : ℝ) ^ (N - 2))⁻¹
+
+/-! ### H.122 — the cluster rate species -/
+
+/-- **H.122.** The conservative cluster complement has the `(A2-RATE)` species at
+`(K, B, c) = (1, 1, 1)` for `2 ≤ m ≤ 3` — `EFF.GENIND.150`'s ground sharpness, certified on
+true data (battery P3). Proof route: H.121's legs closed by the H.71 lexicographic induction
+at the UNBOUNDED windowed α-range (PA-H17.1), constants via H.30/H.66. -/
+axiom uClusterNorm_rateSpecies {O : Type} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [Finite (ResidueField O)]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m : ℕ}
+    (hm : 2 ≤ m) (hm3 : m ≤ 3) :
+    RateSpecies (residueCard O) 1 1 1 (fun N => uClusterNorm O π m N)
+
+/-! ### H.123 — THE S-1 BRIDGE (INEQUALITY ONLY) -/
+
+/-- **H.123.** Reader-decided ⟹ `DecidedAt`, per full-cluster stratum at `d = 1`:
+the SEMANTIC undecided count of the stratum is at most the CONSERVATIVE complement.
+**INEQUALITY ONLY** — the two objects differ from `(n, N) = (2, 3)` on (F-2's witnesses:
+conservative `q·hex3R = 12` vs the landed semantic law `q^N = 8` at `q = 2, N = 3`); any
+equality form is REFUTED. Consumes B.42 (footprint-visible) + B.48/B.58/B.63 contracts. -/
+axiom undecidedCount_le_uCluster {O : Type} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [Finite (ResidueField O)]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m : ℕ}
+    (hm : 2 ≤ m) (N : ℕ) (hN : 1 ≤ N) (zbar : ResidueField O) :
+    Nat.card
+        ((undecidedSet O m N ∩
+          levelZeroStratum O m N ((X - Polynomial.C zbar) ^ m) : Set (Coeff O m N)))
+      ≤ uCluster O π m N
+
+/-! ### H.124 — the terminal composed reduction (T-1's honest conditional Lean form) -/
+
+/-- **H.124 (def half).** The full-cluster rate hypothesis at degree `n`: constants
+`(K, B, c)` chosen ONCE (outside `∀ O`), bounding the SEMANTIC per-stratum undecided count of
+every full-cluster stratum (`m ≥ 2`, `m·d = n`) relative to the stratum total. -/
+def FullClusterRateBound (n : ℕ) (K : ℝ) (B c : ℕ) : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
+    ∀ (p : Polynomial (IsLocalRing.ResidueField O)) (m d : ℕ), 2 ≤ m → m * d = n →
+      p.Monic → Irreducible p → p.natDegree = d →
+      ∀ M, 1 ≤ M →
+        (Nat.card ((undecidedSet O n M ∩ levelZeroStratum O n M (p ^ m) :
+            Set (Coeff O n M))) : ℝ)
+          ≤ K * (M : ℝ) ^ B * ((residueCard O : ℝ) ^ (M - c))⁻¹
+            * (Nat.card (levelZeroStratum O n M (p ^ m)) : ℝ)
+
+/-- **H.124 (theorem half).** THE REDUCTION, composed: `(IH) + full-cluster rates ⟹ P(n)`.
+This is `GENIND.B` Steps 1 + 4h as a single implication — the menu clause is landed
+(`exists_coveringMenu`, S-0), the level-0 transport is H.100–H.105, and the full-cluster
+hypothesis is exactly where Steps 2–4's cluster layer (H.106–H.123 at `m ≤ 3, d = 1`;
+HYP.36/81/82- and `B-BOX-1`-gated beyond) discharges. **NOT `THEOREM GENIND.B` itself**: the
+hypothesis is carried, never claimed (the H.98 fence stands). -/
+axiom inductionPackage_of_clusterRates (n : ℕ) (hn : 2 ≤ n)
+    (ih : ∀ k, 2 ≤ k → k < n → InductionPackage k)
+    (hfc : ∃ (K : ℝ) (B c : ℕ), 0 ≤ K ∧ FullClusterRateBound n K B c) :
+    InductionPackage n
+
+end LeanspecH17
