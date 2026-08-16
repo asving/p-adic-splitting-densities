@@ -4220,6 +4220,18 @@ row.
 
 ### NODE C.66 [cite] [cite:FGMN]
 
+**⛔ A-C.6 BANNER (2026-08-16) — THE SIGNATURE BLOCK BELOW IS THE **REFUTED** A-C.1 DRAFT. DO NOT
+TRANSCRIBE IT.** The gate-(b) landing proved that statement FALSE, absolutely, over `ℤ_[2]` at the
+LANDED `s2Frame` (`leanfinal/Uniformity/ChapC/C66_REFUTATION.lean.txt`): `IsDvPure` is vacuous
+below the frame degree `D′` because C.29's second conjunct uses ℕ-division, and the draft omits
+the source's principal-polygon fence. **The statement of record is now the A-C.6 redraft**
+`FgmnResidualMulStatement` (`leanspec/Leanspec/ChapC.lean`) — the same binders plus
+`hfloor : ℓ * ((F.e₁ * F.f₁) * F.h) < u` (from the SOURCE) and the degree law
+`hdg`/`hdg'`/`hpos`/`hpos'` (conservative). **Nothing is declared**: see amendment **A-C.6 §I**
+at the tail of this file for the defect, the source quotes, the certification
+(`C66_REDRAFT_CERT.lean.txt` + `verification/ac6_cite_redraft_check.py` PART 1) and the OWNER
+SIGNATURE BLOCK. The A-C.1 text below is kept for the record.
+
 **STATEMENT.** *TIER 3's import — residual multiplicativity at the general order
 ([cite:FGMN], gate (b)).* The cited theorem, at the scope Step II of `LEMMA GENTOW-6.1`
 consumes: **for monic `f = g·g'` over `O` with the §5 side data at a common side, the side
@@ -5768,6 +5780,19 @@ primes.
 
 ### NODE C.92 [cite] [cite:FGMN-chain]
 
+**⛔ A-C.6 BANNER (2026-08-16) — THIS NODE NO LONGER CARRIES A GATE-(b) AXIOM, AND IT HAS EXITED
+THE SIGNATURE QUEUE. THERE IS NOTHING HERE FOR THE OWNER TO SIGN.** The landing found the drafted
+`axiom fgmn_calculus_exists` to be a **THEOREM of Lean core** — realized by a junk instance with
+three of its four side conditions inert (`leanfinal/Uniformity/ChapC/C92_VACUITY.lean.txt`) — so
+declaring it would have put a name on the trusted base importing ZERO [FGMN] content. **A-C.6
+DECISION: option (1), hypothesis-form.** The axiom is WITHDRAWN; the class `FGMNCalculus` survives
+byte-unchanged as a hypothesis carrier, which all of its consumers already use, and `C.126`'s
+axiom-census row for `fgmn_calculus_exists` RETIRES (it is not renamed). The rejected option (2)
+("anchor the interface, keep an existence axiom") and its source-side reason are recorded in
+amendment **A-C.6 §III** at the tail of this file, together with the asserted consumer census. The
+cited clauses below remain the honest description of what a `[FGMNCalculus …]` hypothesis is
+*meant* to package — but they are packaged as a HYPOTHESIS, never as an import.
+
 **STATEMENT.** *The MacLane-chain certificate battery ([cite:FGMN], gate (b) — SECOND
 import, wider than C.66).* The cited clauses, each an exact Lean statement drafted at stub
 stage against C.25/C.83's carriers, signed per Part V gate (b) as ONE import with an
@@ -5922,6 +5947,21 @@ chapter received).
 ---
 
 ### NODE C.94 [cite] [cite:AGNPRW]
+
+**⛔ A-C.6 BANNER (2026-08-16) — THE A-C.1 DESCENT GRAMMAR IS **REFUTED**; THE STATEMENT OF RECORD
+IS THE A-C.6 REDRAFT.** The drafted `DescentStep` admits the SELF-LOOP `s′ = s` (the recentering
+clause degenerates: `natDegree 0 = 0`) and both of its side clauses are vacuous (`sideSet` is
+never empty — B39b's own `sideSet_nonempty_gen`), so the constant history is an infinite chain and
+the drafted `NS7TerminationStatement` implies `False`
+(`leanfinal/Uniformity/ChapC/C94_REFUTATION.lean.txt`, absolute over `ℤ_[2]`). **The statement of
+record is `DescentStepR` + `NS7TerminationStatementR`** (`leanspec/Leanspec/ChapC.lean`): self-loop
+excluded, the side clauses given content (two-point side + purity), the residual shape and its
+multiplicity `≥ 2` imported from §5.5, `jump` byte-unchanged. **Nothing is declared.** Amendment
+**A-C.6 §II** at the tail of this file carries the clause-by-clause source adjudication — including
+a PROVENANCE FINDING (the repo holds no copy of [AGNPRW], so the Def 5.5 clause texts are not
+verifiable in-repo; only Thm 5.6's statement is) — the certification
+(`C94_REDRAFT_CERT.lean.txt`: `¬ DescentStepR π s s` PROVED, and the redrafted `refine`
+constructor INHABITED at `ℤ_[2]`) and the OWNER SIGNATURE BLOCK.
 
 **STATEMENT.** *NS-7 — descent termination as a literature cite (gate (b); `HYP.15`'s
 answered branch).* The cited theorem: **[AGNPRW] Thm 5.2** (the Ore–Mac Lane–Montes
