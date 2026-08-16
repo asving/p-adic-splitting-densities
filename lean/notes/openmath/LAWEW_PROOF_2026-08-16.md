@@ -239,10 +239,12 @@ displayed heights; the one possibly-degraded slot only rises). Against the floor
 
 ## §4. Corollaries (each with its machine leg)
 
-**C1 (tightness — T-E-BOUND is a theorem).** The proof never used a sign on `ε`; at an
-ON-side entry (`ε = 0`) the pins are `Θ_j` exactly. The Θ-floor is tight; the
-witness-infeasibility below is the locus fence, not slack. [Machine: EW-TIGHT, 40
-boundary rows, every frame with an integral boundary.]
+**C1 (tightness — T-E-BOUND is a theorem).** The proof of (b) never used a sign on
+`ε`; at a CROSSING on-side entry (`j′ = 1`, `a + i₂ ≥ D′`, `ε = 0`) the pins are `Θ_j`
+exactly. (A non-crossing on-side entry has `Δ = 0` by clause (a) — also no attainment.)
+The Θ-floor is tight; the witness-infeasibility below is the locus fence, not slack.
+[Machine: EW-TIGHT, 40 boundary rows, all crossing, every frame with an integral
+boundary.]
 
 **C2 (witness infeasibility — HYP.71(b), now for the FULL in-budget locus at μ₂ = 2).**
 Let `f = Φ₂² + C₁Φ₂ + C₀` (`deg C_{j′} < D₂`) be any member whose development slots all
