@@ -74,7 +74,7 @@ theorem proj_one_eq_iff {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuati
     exact residue_eq_of_proj_eq le_rfl h i
   · intro h
     funext i
-    show Ideal.Quotient.mk ((maximalIdeal O) ^ 1) (a i) = Ideal.Quotient.mk _ (b i)
+    change Ideal.Quotient.mk ((maximalIdeal O) ^ 1) (a i) = Ideal.Quotient.mk _ (b i)
     refine Ideal.Quotient.eq.2 ?_
     rw [pow_one]
     exact Ideal.Quotient.eq.1 (h i)
@@ -106,7 +106,7 @@ theorem card_levelZeroStratum {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteV
         have h2 := congrArg (fun P => Polynomial.coeff P (i : ℕ)) h1
         simp only [monicPoly_coeff_lt _ i.isLt] at h2
         rw [h2, hβ i]
-      show coeffFactor (O := O) n hM c ∈ ({proj O n 1 β} : Set (Coeff O n 1))
+      change coeffFactor (O := O) n hM c ∈ ({proj O n 1 β} : Set (Coeff O n 1))
       simp only [Set.mem_singleton_iff]
       rw [← ha, coeffFactor_proj]
       exact (proj_one_eq_iff a β).2 hres
