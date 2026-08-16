@@ -17,8 +17,127 @@ frame; the A-C.1 amendment set governs, and this node's **D20 RE-SIGN** of 2026-
 force). **ENV-C1′ + `[Finite (ResidueField O)]`**. One signed declaration.
 
 C.13 turned `EFF.HE6.14`'s DEFINITION HE6-1 into the predicate `IsTestKey L Ψ` and asserted
-nothing. This node discharges the existence obligation: for every level datum `L` over a frame
-`F` there **is** a `Ψ` of that shape.
+nothing (the construction is non-canonical — the lifts `B_t` are choices). This node discharges
+the existence obligation: for every level datum `L` over a frame `F` there **is** a `Ψ` of that
+shape. The witness is the corpus's own display
+
+`Ψ := Φ′^{ℓd} + Σ_{t < d} B_t · Φ′^{ℓt}`,   `d := deg r`, `c_t := r.coeff t`,
+
+with `B_t` an exact-height lift of `c_t` at height `(d−t)u` when `c_t ≠ 0` and `B_t := 0`
+otherwise.
+
+## The proof, in the blueprint's four steps
+
+**Step 1 — fullness.** For `t < d` the target height is `(d−t)u ≥ u > ℓ·D′·h ≥ D′·h`, using
+`L.hκ` (`ℓ·D′·h < u`, the cleared `κ > D′h`) and `ℓ ≥ 1`. So every height a lift is asked for
+sits strictly above `D′h` — `EFF.HE6.13`'s NON-PROPAGATION route (1), which is what makes the
+slot window FULL at that height and hence the residue read surjective.
+
+**Steps 2–3 — the lift, in ONE branch.** The blueprint splits here: `2 ≤ D′` fires H §8 through
+C.14a's adapter, `D′ = 1` takes an "elementary lift" `π^{(d−t)u}·c̃_t`. Landed as a single
+construction — see the divergence note below — in `KeyFrame.exists_slotRes_preimage`:
+
+> above the fullness threshold `D′h < M`, every NONZERO `c ∈ K = F.stageField H₀ hpin` is
+> `F.slotRes H₀ hpin M B` for some `B` with `deg B < D′` and `F.stageHeight B = M` exactly.
+
+`B` is C.14a's landed `KeyFrame.stageLiftIA` (H.54's `stageLift'` body over the frame's numerals)
+at `i := F.slotIdx M`, `a := (M − i·h)/e₁`, with digits the letter-basis coordinates of `c` lifted
+by C.14a's `resLift`. Three clauses discharge it: the exponents `i + e₁s` (`s < f₁`) are distinct
+and all `< D′`; each occupied slot's stage cost is `e₁·v(digit lift) + M`, so the `Finset.inf` is
+`M` exactly, attained at any slot whose digit is a unit; and at a full window the slot residue
+reads the digits back through B.22's `digAt_eq`, reassembling `c` by the power basis. At
+`D′ = 1` (`e₁ = f₁ = 1`) the same term IS `π^M·c̃` — the blueprint's step-3 lift, not a second
+construction.
+
+**Step 4 — reading `IsTestKey` off the sum.** The displayed `Ψ` is `∑_{j ≤ ℓd} a_j Φ′^j` with
+`a_{ℓd} = 1`, `a_{ℓt} = B_t`, and `a_j = 0` off the `ℓ`-lattice. Every `a_j` has degree `< D′`,
+so B.06's `dev_unique` says this **is** the `Φ′`-development: `dev F.key Ψ j = a_j` for
+`j ≤ ℓd`, which is clauses (iii)–(v) of `IsTestKey` verbatim. Monicity and
+`natDegree Ψ = D″ = D′ℓd = L.keyDeg₂` come from the top term dominating the tail
+(`natDegree (a_j Φ′^j) ≤ (D′−1) + D′j ≤ D′ℓd − 1` for `j < ℓd`) — `EFF.HE6.14`'s own audit
+`deg(B_tΦ′^{ℓt}) < D″`, machine-checked.
+
+## Divergences from the blueprint's PROOF field, recorded
+
+**(a) No `D′` case split, and H.55/H.56 are NOT transported.** The blueprint routes step 2
+through H.55 (degree, integrality, exact height) and H.56 (the quotient identity) at
+`F.genreDatum`, and step 3 through a separate elementary lift. H.55's three landed theorems are
+*pure `ℕ` arithmetic in `(e₁, f₁, h, keyDeg)`* — they never mention `stageLift'` — and H.01's
+`GenreDatum` cannot be built at the frame's `D′ = 1` corner (`hkey : 2 ≤ e₁f₁`). Re-deriving the
+same three numeral facts over the frame's own numerals (`natDegree_stageLiftIA_lt`,
+`cost_stageLiftIA` and the `hsa` bound inside `exists_slotRes_preimage`) therefore *removes* the
+case split instead of duplicating it, and the object being lifted is still C.14a's
+`stageLiftIA`, i.e. H.54's body — the GC-5/H-14 door (`stageLiftIA_eq_stageLift'`) is not
+bypassed, only unused. **H's landed side is untouched.**
+
+**(b) `hh : 1 ≤ F.h` and `[Finite (ResidueField O)]` are NOT consumed.** Both are in the signed
+signature and both stay (the signature is frozen; `set_option linter.unusedVariables false`
+covers the linter). `hh` was added by the D20 RE-SIGN because the blueprint's step-2 branch needs
+it (C.14a's `genreDatum` demands `1 ≤ h`); the single-branch route above is valid at `h = 0` too
+— there `F.hcop` forces `e₁ = 1`, `slotIdx M = 0`, `a = M`, and the lift is `π^M·Σ_s c̃_s x^s`,
+whose height and residue clauses go through unchanged. Finiteness entered only through
+`genreDatum`'s `Q`. So the landed theorem is honestly *weaker in hypotheses used* than signed;
+nothing about the statement changed.
+
+**(c) `KeyFrame.exists_slotRes_preimage` is PUBLIC and is not a blueprint node.** It is the
+step-2/3 kernel, and it is verbatim **PROOF step 2 of NODE C.24** (`slotRes_image`, unlanded):
+"given `(c_t)`, the lift at height `k` produces `A` with the pinned height and residue; at
+`D′ = 1` the elementary lift (C.14 step 3's mechanism)". Exporting it means C.24 consumes the
+construction rather than replaying it. Its statement mentions only landed objects
+(`stageHeight`, `slotRes`, `Pin`), so nothing junk-valued crosses the file boundary. RE-PLAN
+item: C.24 should cite it.
+
+## ⚠ DEFECT FOUND IN C.14a's `stageCoord` (flagged, not fixed here)
+
+C.14a's `KeyFrame.stageCoord` reads the digits of `c` off `(AdjoinRoot.mk_surjective c).choose`,
+an ARBITRARY representative, and its own docstring concedes the `choose` "is not guaranteed to
+have degree `< f₁`" while promising that consumers pin it "through a residue equation asserted of
+the resulting lift". **That promise cannot be kept.** The residue clause
+`slotRes M (stageLiftO M c) = c` — the only thing that could pin `stageLiftO` — reduces to the
+reconstruction identity `Σ_{s < f₁} stageCoord(c,s)·η^s = c`, and that identity holds only when
+the representative has degree `< f₁`. `Classical.choice` supplies an OPAQUE witness: there is no
+lemma bounding its degree, so the identity is **not provable** (nor refutable — the witness is
+opaque, which is exactly the problem), and any consumer needing it is stuck. Note this is not
+repairable downstream: it is a defect of the definition, whose fix is to read the digits off the
+letter basis instead. This node therefore does **not** use `stageLiftO`; it
+uses the private `stageDigit` below, the letter-basis coordinate through
+`AdjoinRoot.powerBasis`, which is an honest invariant of `c` (`sum_stageDigit` is the
+reconstruction identity that `stageCoord` lacks). Downstream consumers of `stageLiftO` (C.43's
+`composedKey`, C.56a's `k2DigitLift`) inherit the defect and should be re-pointed at a
+power-basis digit read; recorded here for the fleet, out of this node's scope.
+
+## Private helpers (none is a blueprint node; GC-6.5)
+
+* **`isKey_X`** — the D9 cure again (C.04/C.12/C.19/C.21/C.23/C.26/C.44 each carry a copy):
+  private declarations do not export, and this is what names the `Field (resField X)` instance
+  that `AdjoinRoot.powerBasis` needs.
+* **`stagePB` / `stageDigit` / `sum_stageDigit`** — the letter power basis, its coordinate read
+  in `ResidueField O` (through B.59a's `resFieldXEquiv`), and the reconstruction
+  `c = Σ_{s < f₁} digit_s·η^s`. Hoist candidates when the `stageCoord` defect above is repaired.
+* **`slot_eq`, `coeff_stageLiftIA_mem`, `coeff_stageLiftIA_not_mem`, `natDegree_stageLiftIA_lt`,
+  `cost_stageLiftIA`, `stageHeight_stageLiftIA`, `slotRes_stageLiftIA`** — the frame readings of
+  H.55(i)–(iii)/H.56 described in divergence (a).
+* **`isUnit_of_residue_ne_zero`, `addVal_mul_pow`, `frameRes_ne_zero`** — bureaucracy.
+
+**DEPENDS.** C.01 (`KeyFrame`) · C.02 (`stageHeight`) · C.03 (`frameRes`, `stageField`) ·
+C.09 (`LevelDatum`, `keyDeg₂`) · C.13 (`IsTestKey`) · C.14a (`Pin`, `stageLiftIA`, `resLift`,
+`resLift_spec`) · C.15/C.16 (`slotIdx`, `slotIdx_spec`) · C.17 (`slotWindow`) ·
+C.18 (`slotWindow_full_of_le`) · C.19 (`stageLetter`) · C.21 (`slotRes`) ·
+B.02 (`dev`) · B.06 (`dev_unique`) · B.22 (`digAt_eq`) · B.59a (`resFieldXEquiv`,
+`resFieldXEquiv_coe`) — all by committed node ID (GC-13(b)). H.54 enters as the *shape* of
+C.14a's `stageLiftIA`; H.55/H.56 are not cited, per divergence (a). Mathlib:
+`AdjoinRoot.powerBasis`, `PowerBasis.coe_basis`, `Basis.sum_repr`.
+
+SOURCE: `EFF.HE6.14` (DEFINITION HE6-1's construction and its audit, verbatim); `EFF.HE6.13`
+(LEMMA HE6-1L's fullness clause, which licenses step 1); `EFF.HE6.08` (the `1 ≤ h` frame, whence
+the D20 re-sign's hypothesis).
+
+**TEETH.** `EFF.HE6.14`'s audit → **Lean theorem** here: step 1's fullness inequality is `hbig`,
+and step 4's `deg(B_tΦ′^{ℓt}) < D″` is `htailnat`. `HE6-T-BADKEY` (`gcd(u,ℓ) = 1` load-bearing)
+is carried at C.09's structure field, not re-audited here.
+
+ENVIRONMENT: ENV-C1′ + `[Finite (ResidueField O)]`, both as signed (see divergence (b) for what
+is actually consumed).
 
 ## Status
 
@@ -80,7 +199,7 @@ private theorem sum_stageDigit (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H�
       algebraMap (ResidueField O) (resField (Polynomial.X : Polynomial O))
         ((resFieldXEquiv O).symm y) = y := by
     intro y
-    show (AdjoinRoot.of ((Polynomial.X : Polynomial O).map (residue O)))
+    change (AdjoinRoot.of ((Polynomial.X : Polynomial O).map (residue O)))
         ((resFieldXEquiv O).symm y) = y
     rw [← resFieldXEquiv_coe]
     exact (resFieldXEquiv O).apply_symm_apply y
