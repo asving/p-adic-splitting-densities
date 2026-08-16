@@ -224,9 +224,11 @@ its `x`-power is `(s + mi₂) mod D′ = s` because `D′ ∣ mi₂` (from
 `−gc₀` and the `P`-chain value `(−1)^{b+1}gP^{b+1} = (−1)^m gP^m`, which reduces to
 `(−1)^m g ĉ₂^m ω^{mi₂/D′} π^{v₀}` (its `π`-power is `mv₂ + mi₂/D′ = v₀`, again (F3));
 the merged slot value is `g π^{v₀}((−1)^m ĉ₂^m ω^{mi₂/D′} − ĉ₀)`, of height
-`≥ H_C + E₂ + δ`, with equality iff `p ∤ ((−1)^m ĉ₂^m ω^{mi₂/D′} − ĉ₀)`. (At W1 this
-unit-difference is `−1 − 1 = −2`: the height jumps by exactly `D′` at `p = 2` —
-measured, tooth T-EW-COLLIDE.) At `b = m − 1 ≥ 1` the slots `k = 1, …, b` are
+`≥ H_C + E₂ + δ`, with equality iff the unit-difference
+`(−1)^m ĉ₂^m ω^{mi₂/D′} − ĉ₀` is a unit of `O` — i.e. `v_π` of it is `0`; at
+`O = ℤ_p` (`π = p`, all certified frames) that reads `p ∤`. (At W1 this difference is
+`−1 − 1 = −2`: the height jumps by exactly `D′` at `p = 2` — measured, tooth
+T-EW-COLLIDE.) At `b = m − 1 ≥ 1` the slots `k = 1, …, b` are
 untouched, single, nonzero, at height exactly `H_C + E₂ + δ`; at `b < m − 1` every
 slot is. In all cases `Δ₀ ≠ 0` and `Δ₁ ≠ 0`.
 
@@ -240,11 +242,15 @@ displayed heights; the one possibly-degraded slot only rises). Against the floor
 ## §4. Corollaries (each with its machine leg)
 
 **C1 (tightness — T-E-BOUND is a theorem).** The proof of (b) never used a sign on
-`ε`; at a CROSSING on-side entry (`j′ = 1`, `a + i₂ ≥ D′`, `ε = 0`) the pins are `Θ_j`
-exactly. (A non-crossing on-side entry has `Δ = 0` by clause (a) — also no attainment.)
-The Θ-floor is tight; the witness-infeasibility below is the locus fence, not slack.
-[Machine: EW-TIGHT, 40 boundary rows, all crossing, every frame with an integral
-boundary.]
+`ε`; at a CROSSING on-side entry (`j′ = 1`, `a + i₂ ≥ D′`, `ε = 0`) the pins at the
+coordinates `j ∈ {0, 1}` are `Θ_j` exactly. (A non-crossing on-side entry has `Δ = 0`
+by clause (a) — also no attainment; at `μ₂ > 2` the coordinates `j ≥ 2` stay empty and
+nothing is claimed there.) Hence the `Θ₀`/`Θ₁` floors are tight at every frame that
+ADMITS an integral crossing boundary — a crossing slot `(a, b)` (`a ≥ D′ − i₂`) with
+`D′ ∣ (μ₂−1)E₂ − a − bu₂` — an explicit per-frame congruence condition; the
+witness-infeasibility below is then the locus fence, not slack in `Θ`. [Machine:
+EW-TIGHT, 40 boundary rows, all crossing, across the frames whose boundary is
+integral.]
 
 **C2 (witness infeasibility — HYP.71(b), now for the FULL in-budget locus at μ₂ = 2).**
 Let `f = Φ₂² + C₁Φ₂ + C₀` (`deg C_{j′} < D₂`) be any member whose development slots all
@@ -262,9 +268,11 @@ two). [Machine: E-INFEAS 54-row sweep min gap 1 (OM-10); EW-MERGE; EW-2SLOT.]
 **C3 (single-crossing membership classification — HYP.78's surface at μ₂ = 2).** For a
 member as in C2: if no slot of `C₁` crosses, the shadow is faithful (`Δ = 0`
 everywhere). If EXACTLY ONE slot of `C₁` crosses, `Δ_j ≠ 0` at both coordinates with
-`mindiff_j = Θ_j + ε` of that slot. (Two crossing coefficients at the SAME `(a,b)` are
-one slot — their coefficients merge before the theorem applies; E-LIN's measured
-deepening is the theorem at the merged valuation.) If several distinct slots cross with
+`mindiff_j = Θ_j + ε` of that slot. (A member has ONE coefficient per development
+slot; a presentation listing two coefficients at the same `(a,b)` merges them by
+summation before the theorem applies — E-LIN's measured deepening is the theorem at
+the merged valuation, and if the sum is `0` the slot is simply absent from the
+development, i.e. not an entry at all.) If several distinct slots cross with
 pairwise DISTINCT excesses, the discrepancy is the dict-sum and
 `mindiff_j = Θ_j + min ε_i`, exactly (distinct heights cannot cancel). **The
 above-floor membership classification is COMPLETE at this geography except for
@@ -272,9 +280,10 @@ equal-excess multi-crossing ties** — the census hard-unit's obstruction, previ
 localized by OM-10 to multi-crossing geographies, is now localized to equal-excess
 ties. [Machine: 281 crossing + 1465 non-crossing rows; EW-MERGE; EW-2SLOT.]
 
-**C4 (unit-independence — E-S4).** The pins depend on the entry only through
-`(j′, a, b, α)`; the unit `c` multiplies every slot value. [Machine: E-S4 (OM-10) +
-the dict formulas.]
+**C4 (unit-independence — E-S4).** For a crossing entry, the defined pins (the
+coordinates `j ∈ {0, 1}`) depend on the entry only through `(j′, a, b, α)`; the unit
+`c` multiplies every slot value, changing no valuation. For a non-crossing entry both
+sides of the comparison are empty. [Machine: E-S4 (OM-10) + the dict formulas.]
 
 ---
 
