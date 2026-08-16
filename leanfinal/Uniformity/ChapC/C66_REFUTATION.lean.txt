@@ -1,0 +1,410 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapC.C22
+import Uniformity.ChapC.C25
+import Uniformity.ChapC.C29
+import Uniformity.ChapC.C97
+
+/-!
+# REFUTATION of the frozen A-C.1 statement of NODE C.66 (`fgmn_residual_mul`, `[cite:FGMN]`)
+
+**This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` /
+`C113_REFUTATION.lean.txt` convention: kept as `.lean.txt` so no build picks it up).
+To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapC/C66_REFUTATION.lean.txt /tmp/c66_counter.lean
+cd leanfinal && lake env lean /tmp/c66_counter.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only,
+2026-08-16 (GATE-(b) CITE LANDING unit).
+
+## Verdict: the C.66 landing is BLOCKED. The statement, as drafted, proves `False`.
+
+The gate-(b) cite of NODE C.66 was to land as the `axiom fgmn_residual_mul` of
+`leanspec/Leanspec/ChapC.lean` L3305-3319 (= the blueprint's NODE C.66 `**SIGNATURE**` block,
+`[signed: A-C.1]`), residual multiplicativity at the `dv`-carrier:
+
+```lean
+axiom fgmn_residual_mul (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ) (hpin : F.Pin H₀)
+    {g g' : Polynomial O} (hg : g.Monic) (hg' : g'.Monic) {u ℓ : ℕ} (hℓ : 0 < ℓ)
+    (hcop : Nat.Coprime u ℓ) (hpg : IsDvPure F g u ℓ) (hpg' : IsDvPure F g' u ℓ)
+    (hne : (dvSideSet F g u ℓ).Nonempty) (hne' : (dvSideSet F g' u ℓ).Nonempty)
+    (hne'' : (dvSideSet F (g * g') u ℓ).Nonempty) {M₀ M₀' M₀'' : ℕ}
+    (hp : dvHgt F g (dvSideMin F g u ℓ hne) = (M₀ : ℕ∞)) (hp' : …) (hp'' : …) :
+    ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
+      dvResPoly F H₀ hpin (g * g') u ℓ hne'' M₀'' hp''
+        = Polynomial.C c
+            * (dvResPoly F H₀ hpin g u ℓ hne M₀ hp * dvResPoly F H₀ hpin g' u ℓ hne' M₀' hp')
+```
+
+**Landing it would have made the whole corpus inconsistent.** `C66Statement` below is the
+∀-closure of exactly that type (at `Type 0`, which is all a refutation needs);
+`c66_refuted_at_s2Frame` derives `False` from it, and `Absolute.c66_false_absolute` closes the
+scope over `ℤ_[2]`, so the refutation is absolute and not a vacuous-scope artifact.
+
+## The counterexample
+
+Over any base `O` in which `2` is a uniformizer with residue field of size `2` (`ℤ_[2]` is
+exhibited), at the LANDED frame `F = s2Frame` of NODE C.97 — `Φ′ = x² − 2`,
+`(e₁, f₁, h) = (2, 1, 1)`, so `D′ = e₁f₁ = 2` — pinned at `H₀ = 1` (`s2Frame_pin`):
+
+* `g = g' = X`, `(u, ℓ) = (2, 1)`.
+* Every hypothesis holds: `X` is monic; `0 < 1`; `Nat.Coprime 2 1`; and — the defect —
+  **`IsDvPure F X 2 1` holds** (`pureX`).
+* `dvSideSet F X 2 1 = {0}` (`dvside_X`), so `dvSideDeg = 0` and `R(X)` is a CONSTANT
+  `Polynomial.C a`.
+* `dvSideSet F (X*X) 2 1 = {0, 1}` (`dvside_XX`) — a genuine two-point side — so
+  `dvSideDeg = 1`, and the `X¹` coefficient of `R(X·X)` is
+  `F.twistRead 1 hpin 0 (1 : Polynomial O) = 1` (`twistRead_zero_one`).
+* The conclusion forces `R(X·X) = C c * (C a * C a) = C (c·a·a)`, whose `X¹` coefficient is
+  `0`. Hence `(1 : F.stageField 1 hpin) = 0` in a field. Contradiction.
+
+## The defect, exactly: `IsDvPure` is VACUOUS below the frame degree
+
+`IsDvPure F g u ℓ` (C.29) is
+
+```lean
+0 ∈ dvSideSet F g u ℓ ∧ g.natDegree / (F.e₁ * F.f₁) ∈ dvSideSet F g u ℓ
+```
+
+and the second conjunct uses **`ℕ`-division**. For `0 < g.natDegree < D′` it floors to `0`, so
+the two conjuncts coincide and "purity" degenerates to "`0` is on the side" — which holds for
+every `(u, ℓ)` as soon as `dev F.key g 0 ≠ 0` and `dev F.key g j = 0` for `j ≥ 1`, i.e. for
+every nonzero `g` of degree `< D′`. `g = X` at `D′ = 2` is the smallest instance. The cited
+theorem's hypotheses are about factors of a `dv`-dissection, whose degrees are multiples of
+`D′` by construction; the transcription dropped that.
+
+This is the same class of defect as B.42's `[IsAdicComplete]` near-miss (a truth-bearing
+hypothesis silently absent) and as C.113 clause (i)'s vacuous `hne`
+(`C113_REFUTATION.lean.txt`).
+
+## Repair direction (NOT applied here — the statement is frozen and owner-signed at category)
+
+Restore the source's degree law on the factors. B.42's landed clause 3 carries it verbatim
+(`φ.natDegree ∣ (F p).natDegree ∧ 0 < (F p).natDegree`), and so does C.33's
+`DvDissection.hdeg`. Minimally add to C.66:
+
+```lean
+    (hdg  : F.e₁ * F.f₁ ∣ g.natDegree)  (hdg'  : F.e₁ * F.f₁ ∣ g'.natDegree)
+    (hpos : 0 < g.natDegree)            (hpos' : 0 < g'.natDegree)
+```
+
+and — separately worth the owner's eye, though not needed for this counterexample — the
+above-floor slope fence `ℓ * ((F.e₁ * F.f₁) * F.h) < u` that C.33's `hslopes` and C.09's
+`LevelDatum.hκ` both carry and that C.66's draft omits. Any repair is a STATEMENT CHANGE and
+must go back through gate (b).
+
+## What is NOT claimed
+
+That the cited theorem is false. [FGMN] (J. Algebra **427** (2015) 30-75,
+DOI 10.1016/j.jalgebra.2014.12.022, **Thm 2.8 + Cor 4.12(3) + Cor 4.9(3)** — the A-3-corrected
+published numbers) is a true residual-multiplicativity theorem. What is refuted is **this
+transcription of it**, which quantifies over pairs `(g, g')` the source's theorem never covers.
+
+## Status
+
+Evidence file. No `sorry`. Lean-core axioms only. Adds nothing to the build.
+-/
+
+namespace Uniformity.Density.Tower.C66Refutation
+
+open Polynomial IsLocalRing IsDiscreteValuationRing Uniformity.Density
+open Uniformity.Density.Leaf Uniformity.Density.Tower
+
+variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)] (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
+
+/-! ### Step 0 — `gaussVal` of a constant -/
+
+theorem gaussVal_C (a : O) : gaussVal (Polynomial.C a) = IsDiscreteValuationRing.addVal O a := by
+  simp [gaussVal]
+
+/-! ### Step 1 — the `Φ′`-adic developments of `X` and `X * X`, `Φ′ = X² − 2` -/
+
+theorem s2Key_deg : (s2Key O).degree = 2 := by
+  rw [Polynomial.degree_eq_natDegree (s2Key_monic (O := O)).ne_zero, s2Key_natDegree]
+  rfl
+
+theorem dev_X_zero : dev (s2Key O) Polynomial.X 0 = Polynomial.X := by
+  show Polynomial.X %ₘ (s2Key O) = Polynomial.X
+  rw [Polynomial.modByMonic_eq_self_iff s2Key_monic, s2Key_deg, Polynomial.degree_X]
+  decide
+
+theorem dev_X_one : dev (s2Key O) Polynomial.X 1 = 0 :=
+  dev_eq_zero_of_lt s2Key_monic (by rw [s2Key_natDegree]; norm_num) _ 1
+    (by rw [Polynomial.natDegree_X, s2Key_natDegree]; norm_num)
+
+theorem s2_divmod :
+    (Polynomial.X * Polynomial.X : Polynomial O) /ₘ (s2Key O) = 1 ∧
+      (Polynomial.X * Polynomial.X : Polynomial O) %ₘ (s2Key O) = Polynomial.C 2 := by
+  refine Polynomial.div_modByMonic_unique 1 (Polynomial.C 2) s2Key_monic ⟨?_, ?_⟩
+  · simp [s2Key, sq]
+  · rw [s2Key_deg]
+    exact lt_of_le_of_lt (Polynomial.degree_C_le) (by decide)
+
+theorem dev_XX_zero : dev (s2Key O) (Polynomial.X * Polynomial.X) 0 = Polynomial.C 2 :=
+  s2_divmod.2
+
+theorem dev_XX_one : dev (s2Key O) (Polynomial.X * Polynomial.X) 1 = 1 := by
+  show ((Polynomial.X * Polynomial.X : Polynomial O) /ₘ (s2Key O)) %ₘ (s2Key O) = 1
+  rw [s2_divmod.1, Polynomial.modByMonic_eq_self_iff s2Key_monic, s2Key_deg,
+    Polynomial.degree_one]
+  decide
+
+theorem dev_XX_two : dev (s2Key O) (Polynomial.X * Polynomial.X) 2 = 0 :=
+  dev_eq_zero_of_lt s2Key_monic (by rw [s2Key_natDegree]; norm_num) _ 2
+    (by rw [← sq, Polynomial.natDegree_X_pow, s2Key_natDegree]; norm_num)
+
+/-! ### Step 2 — the frame's stage heights `dv(A) = min_i (2·v(a_i) + i)` -/
+
+theorem e1_eq : (s2Frame h2 hq).e₁ = 2 := rfl
+theorem h_eq : (s2Frame h2 hq).h = 1 := rfl
+theorem f1_eq : (s2Frame h2 hq).f₁ = 1 := rfl
+theorem key_eq : (s2Frame h2 hq).key = s2Key O := rfl
+
+theorem sh_zero : (s2Frame h2 hq).stageHeight (0 : Polynomial O) = ⊤ := by
+  rw [KeyFrame.stageHeight_eq_inf]
+  simp only [e1_eq, h_eq]
+  simp only [Polynomial.natDegree_zero, show Finset.range (0 + 1) = {0} from rfl,
+    Finset.inf_singleton, Polynomial.coeff_zero, map_zero,
+    (gaussVal_eq_top_iff (O := O)).mpr rfl]
+  simp
+
+theorem sh_one : (s2Frame h2 hq).stageHeight (1 : Polynomial O) = 0 := by
+  rw [KeyFrame.stageHeight_eq_inf]
+  simp [e1_eq, h_eq, gaussVal_C]
+
+theorem sh_C2 : (s2Frame h2 hq).stageHeight (Polynomial.C 2 : Polynomial O) = 2 := by
+  rw [KeyFrame.stageHeight_eq_inf]
+  simp [e1_eq, h_eq, gaussVal_C, IsDiscreteValuationRing.addVal_uniformizer h2]
+
+theorem sh_X : (s2Frame h2 hq).stageHeight (Polynomial.X : Polynomial O) = 1 := by
+  rw [KeyFrame.stageHeight_eq_inf]
+  simp only [Polynomial.natDegree_X, e1_eq, h_eq, gaussVal_C,
+    show Finset.range (1 + 1) = {0, 1} from rfl]
+  simp [Polynomial.coeff_X_zero, Polynomial.coeff_X_one]
+
+/-! ### Step 3 — the level polygons of `X` and `X * X` at the slope `(u, ℓ) = (2, 1)` -/
+
+theorem dvhgt_X_0 : dvHgt (s2Frame h2 hq) (Polynomial.X : Polynomial O) 0 = 1 := by
+  rw [dvHgt, key_eq, dev_X_zero, sh_X]
+
+theorem dvhgt_X_1 : dvHgt (s2Frame h2 hq) (Polynomial.X : Polynomial O) 1 = ⊤ := by
+  rw [dvHgt, key_eq, dev_X_one, sh_zero]
+
+theorem dvhgt_XX_0 :
+    dvHgt (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 0 = 2 := by
+  rw [dvHgt, key_eq, dev_XX_zero, sh_C2]
+
+theorem dvhgt_XX_1 :
+    dvHgt (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 1 = 0 := by
+  rw [dvHgt, key_eq, dev_XX_one, sh_one]
+
+theorem dvhgt_XX_2 :
+    dvHgt (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 2 = ⊤ := by
+  rw [dvHgt, key_eq, dev_XX_two, sh_zero]
+
+theorem natDegree_XX : (Polynomial.X * Polynomial.X : Polynomial O).natDegree = 2 := by
+  rw [← sq, Polynomial.natDegree_X_pow]
+
+theorem dvsupp_X : dvSupp (s2Frame h2 hq) (Polynomial.X : Polynomial O) 2 1 = 1 := by
+  rw [dvSupp]
+  simp only [Polynomial.natDegree_X, show Finset.range (1 + 1) = {0, 1} from rfl,
+    Finset.inf_insert, Finset.inf_singleton, dvhgt_X_0 h2 hq, dvhgt_X_1 h2 hq]
+  simp
+
+theorem dvsupp_XX : dvSupp (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 2 1
+    = 2 := by
+  rw [dvSupp]
+  simp only [natDegree_XX, show Finset.range (2 + 1) = {0, 1, 2} from rfl,
+    Finset.inf_insert, Finset.inf_singleton, dvhgt_XX_0 h2 hq, dvhgt_XX_1 h2 hq,
+    dvhgt_XX_2 h2 hq]
+  simp
+
+theorem dvside_X : dvSideSet (s2Frame h2 hq) (Polynomial.X : Polynomial O) 2 1 = {0} := by
+  classical
+  ext j
+  simp only [dvSideSet, Finset.mem_filter, Finset.mem_range, Polynomial.natDegree_X,
+    Finset.mem_singleton, DvOnSide, dvsupp_X h2 hq]
+  constructor
+  · rintro ⟨hj, -, hne⟩
+    interval_cases j
+    · rfl
+    · exact absurd (dvhgt_X_1 h2 hq) hne
+  · rintro rfl
+    refine ⟨by norm_num, ?_, ?_⟩
+    · rw [dvhgt_X_0 h2 hq]; simp
+    · rw [dvhgt_X_0 h2 hq]; simp
+
+theorem dvside_XX :
+    dvSideSet (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 2 1 = {0, 1} := by
+  classical
+  ext j
+  simp only [dvSideSet, Finset.mem_filter, Finset.mem_range, natDegree_XX,
+    Finset.mem_insert, Finset.mem_singleton, DvOnSide, dvsupp_XX h2 hq]
+  constructor
+  · rintro ⟨hj, -, hne⟩
+    interval_cases j
+    · exact Or.inl rfl
+    · exact Or.inr rfl
+    · exact absurd (dvhgt_XX_2 h2 hq) hne
+  · rintro (rfl | rfl)
+    · exact ⟨by norm_num, by rw [dvhgt_XX_0 h2 hq]; simp, by rw [dvhgt_XX_0 h2 hq]; simp⟩
+    · exact ⟨by norm_num, by rw [dvhgt_XX_1 h2 hq]; simp, by rw [dvhgt_XX_1 h2 hq]; simp⟩
+
+/-! ### Step 4 — endpoints, purity, and the `twistRead` value -/
+
+theorem memX0 : (0 : ℕ) ∈ dvSideSet (s2Frame h2 hq) (Polynomial.X : Polynomial O) 2 1 := by
+  rw [dvside_X h2 hq]; simp
+
+theorem memXX0 :
+    (0 : ℕ) ∈ dvSideSet (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 2 1 := by
+  rw [dvside_XX h2 hq]; simp
+
+theorem memXX1 :
+    (1 : ℕ) ∈ dvSideSet (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 2 1 := by
+  rw [dvside_XX h2 hq]; simp
+
+theorem hneX : (dvSideSet (s2Frame h2 hq) (Polynomial.X : Polynomial O) 2 1).Nonempty :=
+  ⟨0, memX0 h2 hq⟩
+
+theorem hneXX :
+    (dvSideSet (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 2 1).Nonempty :=
+  ⟨0, memXX0 h2 hq⟩
+
+theorem pureX : IsDvPure (s2Frame h2 hq) (Polynomial.X : Polynomial O) 2 1 := by
+  refine ⟨memX0 h2 hq, ?_⟩
+  rw [show (Polynomial.X : Polynomial O).natDegree / ((s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁)
+        = 0 from by rw [Polynomial.natDegree_X, e1_eq, f1_eq]]
+  exact memX0 h2 hq
+
+theorem dvsidemin_X (hne : (dvSideSet (s2Frame h2 hq) (Polynomial.X : Polynomial O) 2 1).Nonempty) :
+    dvSideMin (s2Frame h2 hq) (Polynomial.X : Polynomial O) 2 1 hne = 0 :=
+  le_antisymm (Finset.min'_le _ 0 (memX0 h2 hq)) (Nat.zero_le _)
+
+theorem dvsidedeg_X (hne : (dvSideSet (s2Frame h2 hq) (Polynomial.X : Polynomial O) 2 1).Nonempty) :
+    dvSideDeg (s2Frame h2 hq) (Polynomial.X : Polynomial O) 2 1 hne = 0 := by
+  have hmax : dvSideMax (s2Frame h2 hq) (Polynomial.X : Polynomial O) 2 1 hne = 0 := by
+    refine le_antisymm (Finset.max'_le _ _ _ ?_) (Nat.zero_le _)
+    intro y hy
+    rw [dvside_X h2 hq] at hy
+    simpa using hy
+  rw [dvSideDeg, hmax, dvsidemin_X h2 hq hne]
+
+theorem dvsidemin_XX
+    (hne : (dvSideSet (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 2 1).Nonempty) :
+    dvSideMin (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 2 1 hne = 0 :=
+  le_antisymm (Finset.min'_le _ 0 (memXX0 h2 hq)) (Nat.zero_le _)
+
+theorem dvsidedeg_XX
+    (hne : (dvSideSet (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 2 1).Nonempty) :
+    dvSideDeg (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 2 1 hne = 1 := by
+  have hmax : dvSideMax (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O) 2 1 hne
+      = 1 := by
+    refine le_antisymm (Finset.max'_le _ _ _ ?_) (Finset.le_max' _ 1 (memXX1 h2 hq))
+    intro y hy
+    rw [dvside_XX h2 hq] at hy
+    rcases Finset.mem_insert.mp hy with rfl | hy
+    · norm_num
+    · exact le_of_eq (by simpa using hy)
+  rw [dvSideDeg, hmax, dvsidemin_XX h2 hq hne]
+
+theorem twistRead_zero_one (H₀ : ℕ) (hpin : (s2Frame h2 hq).Pin H₀) :
+    (s2Frame h2 hq).twistRead H₀ hpin 0 (1 : Polynomial O) = 1 := by
+  rw [KeyFrame.twistRead]
+  have hq0 : (s2Frame h2 hq).twistExp 0 = 0 := by simp [KeyFrame.twistExp]
+  rw [hq0, pow_zero, one_mul, KeyFrame.slotRes]
+  rw [show (s2Frame h2 hq).slotWindow 0 = {0} from rfl]
+  rw [Finset.sum_singleton]
+  simp [digAt_zero, show (s2Frame h2 hq).slotIdx 0 = 0 from rfl, Polynomial.coeff_one_zero]
+
+/-! ### Step 5 — the C.66 statement (leanspec `ChapC.lean` L3305-3319), and its refutation -/
+
+def C66Statement : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] (π : O)
+    (F : KeyFrame O π) (_hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key
+      (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    (g g' : Polynomial O) (_hg : g.Monic) (_hg' : g'.Monic) (u ℓ : ℕ) (_hl : 0 < ℓ)
+    (_hcop : Nat.Coprime u ℓ) (_hpg : IsDvPure F g u ℓ) (_hpg' : IsDvPure F g' u ℓ)
+    (hne : (dvSideSet F g u ℓ).Nonempty) (hne' : (dvSideSet F g' u ℓ).Nonempty)
+    (hne'' : (dvSideSet F (g * g') u ℓ).Nonempty) (M₀ M₀' M₀'' : ℕ)
+    (hp : dvHgt F g (dvSideMin F g u ℓ hne) = (M₀ : ℕ∞))
+    (hp' : dvHgt F g' (dvSideMin F g' u ℓ hne') = (M₀' : ℕ∞))
+    (hp'' : dvHgt F (g * g') (dvSideMin F (g * g') u ℓ hne'') = (M₀'' : ℕ∞)),
+    ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
+      dvResPoly F H₀ hpin (g * g') u ℓ hne'' M₀'' hp''
+        = Polynomial.C c
+            * (dvResPoly F H₀ hpin g u ℓ hne M₀ hp * dvResPoly F H₀ hpin g' u ℓ hne' M₀' hp')
+
+include h2 hq in
+theorem c66_refuted_at_s2Frame (hax : C66Statement) : False := by
+  classical
+  have hpin : (s2Frame h2 hq).Pin 1 := s2Frame_pin h2 hq
+  have hpX : dvHgt (s2Frame h2 hq) (Polynomial.X : Polynomial O)
+      (dvSideMin (s2Frame h2 hq) Polynomial.X 2 1 (hneX h2 hq)) = ((1 : ℕ) : ℕ∞) := by
+    rw [dvsidemin_X h2 hq, dvhgt_X_0 h2 hq]; rfl
+  have hpXX : dvHgt (s2Frame h2 hq) (Polynomial.X * Polynomial.X : Polynomial O)
+      (dvSideMin (s2Frame h2 hq) (Polynomial.X * Polynomial.X) 2 1 (hneXX h2 hq))
+        = ((2 : ℕ) : ℕ∞) := by
+    rw [dvsidemin_XX h2 hq, dvhgt_XX_0 h2 hq]; rfl
+  obtain ⟨c, hc, heq⟩ := hax O 2 (s2Frame h2 hq) h2 1 hpin Polynomial.X Polynomial.X
+    Polynomial.monic_X Polynomial.monic_X 2 1 Nat.one_pos (Nat.coprime_one_right 2)
+    (pureX h2 hq) (pureX h2 hq) (hneX h2 hq) (hneX h2 hq) (hneXX h2 hq) 1 1 2 hpX hpX hpXX
+  have hRX : dvResPoly (s2Frame h2 hq) 1 hpin (Polynomial.X : Polynomial O) 2 1
+      (hneX h2 hq) 1 hpX
+      = Polynomial.C ((s2Frame h2 hq).twistRead 1 hpin 1
+          (dev (s2Frame h2 hq).key Polynomial.X 0)) := by
+    rw [dvResPoly, dvsidedeg_X h2 hq]
+    simp [dvsidemin_X h2 hq]
+  have hL : (dvResPoly (s2Frame h2 hq) 1 hpin
+      (Polynomial.X * Polynomial.X : Polynomial O) 2 1 (hneXX h2 hq) 2 hpXX).coeff 1 = 1 := by
+    rw [dvResPoly, dvsidedeg_XX h2 hq,
+      show Finset.range (1 + 1) = {0, 1} from rfl, Finset.sum_insert (by decide),
+      Finset.sum_singleton]
+    simp [dvsidemin_XX h2 hq, key_eq, dev_XX_one, twistRead_zero_one h2 hq]
+  rw [heq, hRX] at hL
+  rw [← Polynomial.C_mul, ← Polynomial.C_mul, Polynomial.coeff_C] at hL
+  haveI : Nontrivial ((s2Frame h2 hq).stageField 1 hpin) :=
+    letI := s2StageFieldInst h2 hq 1 hpin; inferInstance
+  simp only [if_neg (by decide : ¬ (1 : ℕ) = 0)] at hL
+  exact zero_ne_one hL
+
+/-! ### Step 6 — the scope is NONEMPTY: the refutation is absolute, over `ℤ_[2]` -/
+
+namespace Absolute
+
+instance : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+
+instance instFin2 : Finite (IsLocalRing.ResidueField ℤ_[2]) :=
+  Finite.of_equiv (ZMod 2) (PadicInt.residueField (p := 2)).symm.toEquiv
+
+theorem rc2 : residueCard ℤ_[2] = 2 := by
+  have : Nat.card (IsLocalRing.ResidueField ℤ_[2]) = Nat.card (ZMod 2) :=
+    Nat.card_congr (PadicInt.residueField (p := 2)).toEquiv
+  rw [residueCard, this, Nat.card_eq_fintype_card, ZMod.card]
+
+theorem c66_false_absolute (hax : C66Statement) : False :=
+  c66_refuted_at_s2Frame (O := ℤ_[2]) (by simpa using PadicInt.irreducible_p (p := 2)) rc2 hax
+
+end Absolute
+
+end Uniformity.Density.Tower.C66Refutation
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Tower.C66Refutation.pureX
+#print axioms Uniformity.Density.Tower.C66Refutation.dvside_X
+#print axioms Uniformity.Density.Tower.C66Refutation.dvside_XX
+#print axioms Uniformity.Density.Tower.C66Refutation.twistRead_zero_one
+#print axioms Uniformity.Density.Tower.C66Refutation.c66_refuted_at_s2Frame
+#print axioms Uniformity.Density.Tower.C66Refutation.Absolute.c66_false_absolute
+
+end AxCheck
