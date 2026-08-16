@@ -5473,3 +5473,52 @@ re-land) + C wave 6b (C.23/45/56a/109/110/117) RUNNING after
 the storm backoff. Orchestrator queue: ChapF roll-up/root wiring
 + leanspec ChapF retirement at the next layer close (OM-9's
 flag, OM-7 precedent).
+
+**2026-08-16 DATED APPEND #74 — THE OPEN-MATH CAMPAIGN CLOSES:
+OM-1..OM-10 ALL DONE. Every open piece of mathematics behind the
+uniformity proof has now been outlined, certified, and either
+proved, reduced to a graded source theorem, or refuted-and-
+repaired; what remains everywhere is transcription, wiring, and
+process grades — no missing proof ideas.** OM-10 (the n≥8 box
+family, HYP.67–71/78–80/142/143/144-BOX-2 — OM-7's verified
+ENTIRE remainder behind Display A's n≥8 conjuncts): five
+mechanism groups; batteries 569/0 + an F₉ 43,046,721-member
+EXHAUSTIVE window, 12/12 planted teeth. Headlines: (1) HYP.143
+branch (ii) — previously ZERO machine contact — now 41 rows
+across all four cells, both characteristics: |S_r| = D′ℓd on
+every row, the box's displayed failure mode EXCLUDED everywhere,
+all three repair-route instruments certified working; residual
+sharpened to the slot lemma at Ψ's roots + one evaluation
+display. (2) HYP.142 RECONCILED, NO MATH escalation: the two
+records agree (GENHN's COUNT-RERUN is the landing HE6R1's tail
+scheduled); transcription-confirmation performed verbatim; the
+F₉ leg is the FIRST odd-characteristic f₁=2 count contact,
+measured = predicted on all 23 keys, sealed-error mutant killed.
+(3) HYP.71(b) REFUTED(+repair): the asked-for battery witnesses
+are INFEASIBLE at all-in-grid genres — LAW E-W (mindiff_j = Θ_j
++ entry excess; tight: Θ attained exactly ON the locus boundary,
+54/54 both primes); repair = scope GENTOW-3(iv)-sharpness to
+certificate-carrying geographies. (4) Two NEW certified laws:
+P-BINOM single-slot (attainment ⟺ p ∤ C(μ₂,2), 9/9) and cascade
+LAW B-S2 (pair-or-triple, 7/7) — the unit's own any-k candidate
+REFUTED at B4 and kept verbatim. (5) The f₁≥2 compound (6.5′,
+prose-only until today): first contact, naive f₁=1 laws survive
+verbatim, one sealed BOX-4 row reproduced bit-equal;
+HYP.67/80/70 REDUCE-TO the 6.3′ calculation at theorem grade.
+(6) Count layer REDUCES-TO(GENTOW-6.6) with first direct
+enumeration checks. No Lean landing — ADJUDICATED: the family's
+Lean surface is exactly the C fleet's §9 signed stubs
+(C.95/C.96) + OM-7's H73w/C93 fences. All dispositions
+unchanged; ARC NOTEs at every row; commits 74edb57c..f3f9e958.
+BOOKKEEPING: the OM-campaign watchdog cron (9010ae0c) DELETED —
+its termination condition (all rows DONE, no units running) is
+met. ORCHESTRATOR QUEUE from OM-10's flags: (a) LAW E-W's ledger
+proof is a NAMED CHEAP OPEN (one page, K2-division bookkeeping)
+— converts HYP.71's refutation + HYP.78's classification from
+certified to proved; unit to charter. (b) HYP.142's bucket move
+= owner one-line ratification (rider). (c) B-S2@B4 + E-W
+tightness → the Tuesday hostile-read queue. (d) Optional A-C
+amendment signing LAW B-S2/LAW E-W as nodes. Campaign totals:
+10 units, ~2,900 battery checks green, 50+ mutation teeth, 4
+refutations-with-repair, 2 vacuity catches, chapter F brought
+into existence, and zero statements weakened.
