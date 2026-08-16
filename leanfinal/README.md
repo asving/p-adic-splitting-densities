@@ -19,7 +19,10 @@ limit of level-N decided proportions. This definition (not any engine) is
 what the main theorem quantifies over.
 
 **Discipline (inherited from the parent project):** zero sorries in landed
-state; no axioms beyond Lean core; new definitions are the trust boundary —
+state; no axioms beyond Lean core, plus owner-signed gate-(b) literature
+cites (each with a faithfulness entry and a `#print axioms`-visible
+footprint) — record in `../docs/PROJECT_STATE.md` #61/#66, first exercised
+2026-08-16 by `Uniformity/ChapB/B42.lean`; new definitions are the trust boundary —
 each ships with a faithfulness note for human review; statement changes
 need sign-off. Toolchain pinned to Lean 4.31.0 / mathlib v4.31.0 to match
 the quarry (upgrade is a deliberate later step).
