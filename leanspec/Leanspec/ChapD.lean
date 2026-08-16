@@ -3,7 +3,252 @@ import Uniformity
 /-!
 # Chapter D — GAUGE + CERTIFICATE T-CHAIN: the leanspec interface (design stage 0e)
 
-HEADER PENDING — filled at gate close.
+Every SIGNATURE of `blueprint/CHAP-D_gauge_tchain.md` (68 nodes D.01–D.68; the T1 cocycle, the
+T3 telescope, the T4 certificate witness and the T5 w-frame), landed in the isolated `leanspec`
+environment **before** the chapter-D fleet fires, in the blueprint's node order.
+
+**STATE: OPEN (stage-0e gate executed 2026-08-16).** Chapter D has landed nothing in
+`leanfinal` (`grep` for `Density.Gauge` / `NormSection` / `GaugeArena` / `GentowW` over
+`leanfinal/Uniformity/`: zero hits), so every theorem-shaped stub is in the UNLANDED state of
+`Leanspec.lean`'s stub lifecycle — an `axiom` at the exact signed type. Nothing is retired;
+there is no name collision with `Uniformity.*`.
+
+**Wrapper choice, declared per GC-6.6:** wrapper `namespace LeanspecD` (the CHAP-B/`LeanspecB`
+route that CHAP-D §12 itself prescribes), NOT the ChapG retire-to-examples route. Consequently
+the blueprint's `namespace Uniformity.Density.Gauge` headers in the SIGNATURE blocks are
+DROPPED here and every declaration is flat inside `LeanspecD`; the landed-side namespace
+assignment (**everything** → `Uniformity.Density.Gauge`; chapter D declares no theorem about a
+landed object) is what the fleet must land.
+
+**This file is never imported by `leanfinal` or `leancheck`.** It carries `axiom`s by design;
+it is an interface contract, not mathematics. `sorry` appears nowhere, `native_decide` appears
+nowhere, and the file elaborates with `autoImplicit`/`relaxedAutoImplicit` **off**.
+It is NOT wired into `leanspec/Leanspec.lean` by this unit (a ChapF gate agent was running
+concurrently; the roll-up import is an ORCHESTRATOR item). Build it with
+`lake build Leanspec.ChapD`.
+
+**The B.42 binder rule is in force throughout:** every truth-bearing hypothesis is written
+INLINE in its declaration's binder list. This file has NO section `variable` block at all, so
+no ENV-D1…ENV-D5 under- or over-binding of the B.42 class is possible in it — and one of the
+findings below (D-D4) is that rule biting at DEFINITION level.
+
+## Census (mechanical, `grep` over this file)
+
+| kind | count | note |
+|---|---:|---|
+| `structure` (real bodies) | **5** | `NormSection`, `GaugeArena`, `ReadBundle`, `BoundaryReadPort`, `CertFrame` |
+| `def` / `noncomputable def`, blueprint | **30** | §12(b)'s def layer — §12's inventory names 29 and OMITS `varpiSection` (finding D-D10) |
+| `def`, stub-side helpers | **2** | `levelOneHeight` (D.17), `GaugeArena.chiK` (D.39/D.40, whose signature §12 rule 5 explicitly leaves to stub time) |
+| `axiom` stubs of theorem-shaped rows | **63** | one per signed theorem/lemma display, siblings expanded per each node's STATEMENT text (§12 estimated ≈ 48; the gap is the declared siblings) |
+| `theorem`, PROVED (not stubs) | **11** | 4 kernel-membership helpers + `iexp_one` + `levelOneHeight_ker_dvd` + `chi_varpi_mem_ker` + `GaugeArena.rho_mem_ker` (all needed INSIDE `def` bodies or to state a signature at all) + the 2 D-D12 defect witnesses + `certWitness_touched` |
+| gate-local / witness `def`s | **17** | §10's frames and the two non-vacuity witnesses; not blueprint declarations |
+| gate `example`s, ALL EXECUTED | **40** | §10 (D.65–D.67) + the D.06 orientation-table block |
+
+**98 signed blueprint declarations** (5 + 30 + 63). Nodes with NO declaration, exactly as the
+blueprint signs them: **D.36, D.42, D.43, D.53, D.54, D.56, D.61, D.64** (tables, interfaces,
+records) and D.06/D.65–D.68 whose Lean content is counted above. Per §12 rule 4, **no
+`[supplied-by: chapter C]` row is axiomatized here** — axiomatizing a supplier's theorem would
+fake the discharge.
+
+## Gate order (GC-6.6(c) / CHAP-H §15) as actually run
+
+(a) **the six FRAGILE signatures of §12 rule 1 first** — D.17 `levelOneArena` (`GaugeArena`
+fields over `Multiplicative (ℤ × ℤ)` with `MonoidHom.ker`), D.08 (`res` on subtype elements,
+membership as explicit `mem_ker` proofs and NOT tactic holes), D.28 (the
+`Basis`/`repr`/`algebraMap` stack), D.39 `compData` (kernel proof terms inside a `def`), D.46
+(`CertFrame`'s `Finsupp` codomain), and the D.65 𝔽₄ carrier; (b) the 30 `def` bodies + 5
+structures, REAL; (c) **the numeric gates EXECUTED at `q = 2` AND `q = 3` (+ `p = 5`)** — 40
+`decide` checks, every committed expected value reproduced; (d) only then the 63 `axiom` stubs.
+
+**Executed values.** `q = 2` (F4-JOINT, `e₁ = 2, f₁ = 2, h = 1, u₂ = 3`, `η = ω` of order 3 —
+GC-11's `e > 1 ∧ f > 1` witness): `iexp 2 1 · = · % 2` on `k = −3…5`; live wrap = odd/odd;
+`⌊s·i(3)/2⌋ = (0,0,1,1)`; `Wfloor 2 1 3 3 · = (1,1,0)`; the telescope `(1,1,ω,ω)`; the `μ = 3`
+canonical triple with **all three entries scored** — `Γ = (1,ω,ω)`, `u(β) = (ω,ω,ω²)`,
+canonical `= (ω,ω²,1)`, and the slotwise cancellation `Γ_t·u(β_t) = w^s`; `ϑ₂ = ω ≠ 1` (the
+gauge-naive kill); `ψ^{(w)}`'s coefficients `(ω,1)`. `q = 3` (X frame, `p = 3`, `e₁ = 2,
+f₁ = 1, h = 1, η = 2, u₂ = 3`): `iexp`/`aexp`/`qexp` on `k = −2…6`; `(C2-wrap)`, `(C5-carry)`
+and D.27's binary-carry law executed on grids INCLUDING negative heights; the telescope
+`(1,1,2,2,1)` with the involution against a committed `Θ`; the D.28 criterion firing;
+**`thresholdTheta 3 3 1 = (10,7,4)` — FR-M3's committed thresholds** — with the `[12,7,4]`
+self-shadow separator (`ν₀ = 12 > 10 = Θ₀`, `ω₀ = 0`; `j = 1,2` attain) in `ℕ` and in `ℕ∞`,
+and D.45's antitony. `p = 5` (FRAME-C): `ϑ = (1,1,2,2,4)` ASSEMBLED from D.18's formula,
+`U = (1,3,2,1,4)` as literal data, both runner obligations `w^s = U(s)·ϑ_s` and
+`U(s) = Θ_s·w^s` scored from the assembled definitions (never from the endpoint formula), **the
+non-character check `χ(1)² = 1 ≠ 2 = χ(2)`**, `δ = χ(2) = 2`, `χ(6) = 3`, and the CMP
+comparison `ρ_t = 3ρ̂_t2^{−t} = (3,3,1,4)`.
+
+**THE ϑ TABLE IS NOW EXECUTABLE (GC-14 / append #54's trap).** The D.06 block scores, at
+FRAME-C with `f₃ = 5`: the involution `Θ_s·ϑ_s = 1` on `s = 0…5`; the top-slot anchor
+`ϑ(f₃−1) = 1`; **row 4's reciprocal relation `ϑ_{G2}(t)·vartheta_{f₃−t} = 1`** (the exact
+GENTOW2/GENTOW5-A1 pair append #54 names); and the **numerical distinctness** of the two
+orientations, so a silent row-1-for-row-4 swap is a failing `decide`. Two of these are new
+teeth: the wrong-orientation B-law (`U(s) = ϑ_s·w^s`) now FAILS at `s = 2`, and the
+orientation swap FAILS at `t = 1` and `t = 4`. **Verdict on the table itself: the four rows
+plus the B-law direction block plus the top-slot anchor are MUTUALLY CONSISTENT** — checked
+symbolically row by row and then executed. No sign error found.
+
+## THE DEFECT LIST (stage-0e gate, 2026-08-16)
+
+Recorded here and in the 0e report; **NOT repaired in the blueprint** (§12 rule 5 / CHAP-H §15
+rule 5: elaboration failures in a stub are blueprint defects, versioned by dated append in the
+blueprint, never patched in `leanspec`). Every stub-side adjustment is listed; nothing was
+adjusted silently.
+
+* **D-D12 — D.62's `(H-VARTHETA-RES)_i` CARRIER IS VACUOUS (refuted, machine-checked).**
+  `HVarthetaRes G K N v := ∃ A : GaugeArena G K N, A.v = v`, and `GaugeArena` has NO field
+  tying `res` to an ambient residue map, so the TRIVIAL hom `1 : ker v →* Kˣ` inhabits it. The
+  two PROVED theorems `hvarthetaRes_of_exact_height` / `hvarthetaRes_iff` in §9 below show
+  `HVarthetaRes G K N v ↔ ∀ k, v (N.n k) = ofAdd k` — the carrier says NOTHING about
+  `ϑ_{i,s} ∈ K_iˣ` and is discharged by `⟨v, hv, 1⟩`. Chapter I would therefore carry a
+  Display-A `∀ i ≥ 3` conjunct that is provable from an exact-height fact, and D.63's
+  `VarthetaWConjunct` degenerates to `Wle` plus that fact. D-H3's "formally STRONGER than the
+  sitewise clauses" holds for D.07 used as a THEOREM HYPOTHESIS but is FALSE in the existential
+  direction D.62 uses. *Class: refuted statement (vacuous carrier).* **This is §14 item 2(iii)
+  answered, and it is a stop-the-line item for chapter I's conjunct bookkeeping.** Repair
+  direction (owner's, not applied): state `HVarthetaRes` against a GIVEN ambient residue datum
+  and require the arena's `res` to agree with it on the ϑ-quotients, or state the sitewise
+  clause directly. Needs a DECISION block in CHAP-D §9 and a re-signed D.62/D.63.
+* **D-D1 — the §10 gate lines DO NOT RUN as written: `iexp` is not `decide`-reducible (hard).**
+  `iexp` goes through `(h : ZMod e₁)⁻¹`; `ZMod.inv` routes through `Nat.gcdA`/`Nat.xgcd`, which
+  do not kernel-reduce. Even `((1 : ℕ) : ZMod 2)⁻¹ = 1` is not `decide`-able at the pin, so
+  D.65/D.66/D.67's `:= by decide` lines all fail, and so does every `Θ_s = ϑ_s⁻¹` spelling.
+  *Class: definition not computable for the gate it is gated by.* **Stub-side repair, no
+  expected value changed:** a PROVED helper `iexp_one : iexp e₁ 1 k = ((k : ZMod e₁)).val`
+  (all three gate frames have `h = 1`) plus `simp only [<local defs>, iexp_one]` before every
+  `decide`; and `Θ` committed as literal data with the involution `Θ_s·ϑ_s = 1` as the check
+  that it IS the inverse. **The fleet must not write the landed gates with a bare `decide`.**
+* **D-D2 — D.17 `levelOneArena` is signed with NO body**, although §12 rule 2 requires the def
+  layer to land real and D.17's PROOF gives the five-step construction. *Class: def with no
+  body (the ChapG D2 / ChapB B-D2 / ChapE E-D5 class).* **Landed REAL here** (the height hom,
+  the kernel-divisibility lemma `levelOneHeight_ker_dvd`, and `res = η^{i/e₁}` as a genuine
+  `MonoidHom`) — which required one new public helper, `levelOneHeight`. **Consequence the DAG
+  does not record:** `exact_height` can only be discharged from D.13's `iexp_aexp_spec`, so
+  `levelOneArena`'s axiom footprint carries it (`#print axioms` in the census block shows
+  `iexp_aexp_spec`) — a DEFINITIONAL dependency D.17 → D.13 that §11's edge census lists only
+  as a lemma dependency.
+* **D-D3 — D.39 `compData` is likewise signed with no body, and D.40's signature is explicitly
+  schematic.** Landed real; this required a second new public name, `GaugeArena.chiK` (the
+  blueprint's `chiK`, used unquoted in D.40's `(chiK-of-H₀-term)`), plus a proved helper
+  `GaugeArena.rho_mem_ker`. D.40's two legs are now spelled against those names. *Class:
+  elision the stub must resolve; §12 rule 5 licenses it, and this records what was chosen.*
+* **D-D4 — ENV-D4's `{π : O}` cannot be implicit: `π` occurs only in `liftC6`'s BODY**, so
+  every call site (`liftC6 e₁ h σ M l` in D.25 clauses 2–4, D.26, D.28) would leave an
+  unsolvable implicit-argument metavariable. Made EXPLICIT and first, matching the landed
+  convention (`Uniformity.Density.Leaf.digAt (π : O)`). *Class: binder that must be in the
+  binder list — the B.42 lesson recurring at definition level.* `f₁` is made implicit in
+  `liftC6` (it is determined by `l`) and stays explicit in `gammaCoord`, as the blueprint
+  writes them.
+* **D-D5 — D.28's `Basis` DOES NOT EXIST at the pin.** The constant is `Module.Basis`
+  (`Module.Basis (Fin f₁) (ResidueField O) K₁`). *Class: stale API name (training-data smell,
+  the E-D1 class).*
+* **D-D6 — D.25b clause 3's `Finset.filter (fun r => l r ≠ 0)` has no `DecidablePred`** over an
+  abstract residue field. `liftC6_support` is declared inside `section ClassicalSupport` /
+  `open scoped Classical`. The fleet's landed form must carry that or switch to a
+  `∀ j, j ∈ support ↔ ∃ r, l r ≠ 0 ∧ j = …` membership formulation. *Class: missing
+  decidability.*
+* **D-D7 — D.28's signature has four type slips under its `…` elisions.** (i) `Wfloor` takes
+  `u₂ : ℤ` but D.28 binds `u₂ : ℕ` (cast supplied); (ii) `t : Fin f₂` is fed to `Wfloor`'s
+  `t : ℕ` and to `f₂ - t` (casts supplied); (iii) `b.repr (…)` is a `Finsupp` where `liftC6`
+  wants `Fin f₁ → ResidueField O` (coercion supplied, written `fun r => b.repr (…) r`);
+  (iv) `(hσ : …)`/`(hπ : Irreducible π) …` are elided and expanded from the STATEMENT text.
+  *Class: elision + spelling; no strength change.*
+* **D-D8 — D.19's residue corollary and D.21 are UNSTATABLE if `levelOneArena` is opaque.**
+  Both apply `(levelOneArena …).res` to a subtype element, whose membership proof needs
+  `(levelOneArena …).v` to be transparent. With D-D2's real body plus the proved
+  `chi_varpi_mem_ker` they are statable as signed. **Flag for the fleet: landing D.17 as an
+  axiom would make D.19's `res_chi_varpi` and D.21's `levelOne_rho` unstatable without extra
+  membership hypotheses.**
+* **D-D9 — D.65 leg 3's three vectors are listed in ASCENDING `s` (= DESCENDING slot `t`), and
+  the blueprint never says so.** Read in slot order the committed vectors are wrong: `Γ` in
+  slot order is `(ω, ω, 1)` and `u(β)` is `(ω², ω, ω)`. The gate below scores them in the
+  blueprint's order and says which. *Class: unstated indexing convention — the
+  wrong-but-well-typed class §12 rule 3 warns a stub gate cannot catch mechanically (found by
+  recomputing, then executed).*
+* **D-D10 — census slips.** (i) §12's def inventory names **29** and omits `varpiSection`
+  (D.19's sibling def); the true blueprint def count is **30**. (ii) §12's "`theorem` ≈ 48"
+  undercounts: expanding the declared siblings per each node's STATEMENT text gives **63**
+  theorem-shaped declarations. §13/§14 should count against the corrected figures.
+* **D-D11 — D.41's clause 1 is `rfl` and carries no content.** `wtwist δ rhat = δ^{deg} •
+  rhat.comp (C δ⁻¹ * X)` IS `wtwist`'s definition, so the informative half of `t3_route` is
+  only the separability iff. Related spelling ambiguity, resolved here: the blueprint's
+  `(w⁻¹ : K)` in D.34/D.41 is ambiguous between `((w : K))⁻¹` and `((w⁻¹ : Kˣ) : K)`; the
+  `Kˣ`-inverse reading is signed (they are equal, and it makes D.41 clause 1 definitional).
+* **D-D13 (minor) — D.21's `hu : 0 ≤ u₂` is unnecessary.** Lean's `Int./` and `%` are
+  `ediv`/`emod` at the pin (`(-3)/2 = -2`, `(-3) % 2 = 1`), so `iexp u₂ = (i₀u₂) % e₁` and
+  `qexp u₂ = (i₀u₂)/e₁` hold at every sign; the sign hypothesis is signed as given (faithful)
+  but is dead weight. Same answer for §14 item 5's negative-height question, and the D.65/D.66
+  tables execute it at `k < 0`.
+* **D-D14 (minor) — D.29's `read_n` field is derivable from `ladder_mult` at `s = 1`.** Both
+  are separate corpus clauses (`(C3-ladder-unit)`, `(C3-ladder-multiplicativity)`), so both are
+  signed, but a `ReadBundle` instance need only supply one.
+
+## FINDINGS about the gate frames themselves (not blueprint defects — battery coverage)
+
+* **D-F1 — the X frame cannot separate `aexp` from `qexp`.** At `h = 1` (hence `i₀ = 1`)
+  `qexp ≡ aexp` identically, so D.66's leg-1 tables score the same function twice and an
+  `aexp`/`qexp` confusion survives there. A frame with `h > 1` is needed to score D.15
+  independently.
+* **D-F2 — FRAME-C's committed `ϑ`/`U` tables run `s = 0…4`, but the D.06 table's
+  `ϑ_{G2}(t) = Θ(f₃−t)` at the BOTTOM slot `t = 0` reads `s = f₃ = 5`** — one step beyond the
+  committed range. The battery as declared does not cover the bottom slot. Extended here by the
+  assembled formula (`ϑ₅ = 2^{⌊5/2⌋} = 4`, `Θ₅ = 4`) and executed.
+* **D-F3 — FRAME-C has `ϑ₂ = ϑ₃ = 2`** (both floors `⌊s/2⌋` equal 1), so an index-shift mutant
+  SURVIVES at the middle slots: `Θ_2 = Θ_3` is executed below as a warning. The orientation
+  distinctness check must be scored at `t = 1` or `t = 4`. A fleet agent scoring only the
+  middle of the table would miss the very mutant the table exists to catch.
+* **Non-vacuity, executed:** `BoundaryReadPort` and `CertFrame` are both INHABITED (witnesses
+  below), the latter with (FLOOR) satisfied AND its coordinate `j = 0` TOUCHED — so D.37/D.38
+  and D.46–D.52 are not vacuous. The port witness's `U` is forced to `w^s·ϑ⁻¹`, i.e. D.38's own
+  conclusion, from the port axioms alone.
+
+## Stub-side decisions (SD-n), all recorded, none silent
+
+* **SD-1** — the four kernel-membership facts (`mem_ker_div`, `varthetaEl_mem_ker`,
+  `thetaEl_mem_ker`, `tau_mem_ker`) are PROVED, not stubbed: D.08's `def` bodies apply `A.res`
+  to subtype elements, and an `axiom` inside a definition would put a stub in the def layer.
+* **SD-2** — `levelOneHeight` is a new public name (D-D2).
+* **SD-3** — `chi_varpi_mem_ker` is proved for the same reason (D-D8).
+* **SD-4** — `π` explicit in `liftC6`/`gammaCoord` (D-D4).
+* **SD-5** — `open scoped Classical` around `liftC6_support` (D-D6).
+* **SD-6** — **the 𝔽₄ carrier choice, made here as §10's ⚠ instructs.** `GaloisField 2 2` and
+  `AdjoinRoot (X²+X+1 : (ZMod 2)[X])` are quotient constructions with no computable
+  `DecidableEq` at the pin, so no `decide` runs in them. The F4-JOINT legs run in the
+  **discrete-log model**: `ω` has order 3 and every quantity in D.65's legs 2–4 is a power of
+  `ω`, so `⟨ω⟩ ≅ (ZMod 3, +)` carries them faithfully — products become sums and every
+  committed expected value is an exponent. The `q = 3` and `p = 5` frames need no such move
+  (`ZMod 3`, `ZMod 5` are `Fin`-backed).
+* **SD-7** — `Θ` tables committed as literal data with the involution as their certificate
+  (D-D1), so no gate depends on `ZMod.inv`.
+
+## Cross-chapter checks executed here
+
+* **The GC-13 fence holds:** no `[supplied-by: chapter C]` content is axiomatized. D.42, D.43,
+  D.53, D.54, D.56 and D.61 declare nothing (§12 rule 4), and no chapter-C/E/F node ID is
+  guessed anywhere in this file.
+* **The chapter-B consumption typechecks by name at the pin:**
+  `Uniformity.Density.Leaf.suppVal` (B.14) is consumed at D.25/D.28 and
+  `Uniformity.Density.Leaf.digAt` (B.21) at D.26, both at their landed signatures
+  (`leanfinal/Uniformity/ChapB/B14.lean:55`, `B21.lean:46`). B.07/B.08/B.11/B.15/B.22 are
+  proof-level dependencies of those nodes and appear in no signature.
+* **The GC-6.2 namespace fence holds:** no `Uniformity.Density.Leaf`/`.Menu`/`.Induction`
+  declaration is EXTENDED; chapter B's two names are READ, fully qualified.
+* **`FactorizationType` is correctly absent.** GC-4 note: chapter D emits no σ, and no
+  declaration here mentions `FactorizationType` — so chapter E's defect E-D8 (the wrong
+  fully-qualified `Uniformity.Density.FactorizationType`) has no analogue in chapter D.
+
+<!-- RESUME: chapter-D stub gate COMPLETE — 98 signed blueprint declarations (5 structures /
+30 defs / 63 axiom stubs) + 11 proved helpers/witnesses + 40 EXECUTED gate examples;
+`lake build Leanspec.ChapD` green, 0 errors, 0 warnings, 0 sorry, no native_decide.
+Defect list D-D1…D-D14 + findings D-F1…D-F3 + decisions SD-1…SD-7 recorded above.
+Next actions (orchestrator): (i) **D-D12 is stop-the-line for chapter I** — D.62/D.63 need a
+re-signed carrier before I's Display-A block is written; (ii) dated append of this defect list
+into `blueprint/CHAP-D_gauge_tchain.md`; (iii) wire `import Leanspec.ChapD` into
+`leanspec/Leanspec.lean` once the concurrent ChapF gate lands; (iv) §13.4's retained
+regressions `verification/chapD_frameC`, `chapD_f4joint`, `chapD_xframe`, `chapD_frm3_slack`,
+`chapD_t1_countermodels` are still owed (Python mirrors); (v) the §14 codex cross-read items
+1, 2 and 8 are now partly discharged mechanically (item 1: table consistent + executed;
+item 2(iii): REFUTED, see D-D12; item 8: every expected value recomputed and executed) —
+items 3, 4, 6, 7, 9, 10, 11, 12 remain. -->
 -/
 
 set_option autoImplicit false
@@ -849,6 +1094,40 @@ def HVarthetaRes (G : Type*) [CommGroup G] (K : Type*) [Field K]
 DISCHARGE NODE or LITERATURE CITE; this chapter only supplies the carrier. -/
 def VarthetaWConjunct (HVR W : ℕ → Prop) (i : ℕ) : Prop := HVR i ∧ Wle W i
 
+/-! ### DEFECT WITNESS D-D12 — D.62's carrier is VACUOUS (machine-checked below)
+
+`HVarthetaRes` (D.62) renders `(H-VARTHETA-RES)_i` — a Display-A `∀ i ≥ 3` conjunct — as
+"an arena over the level's height data EXISTS". But `GaugeArena` has NO field tying its `res`
+to any ambient residue map, so the **trivial** homomorphism `1 : ker v →* Kˣ` already inhabits
+it. The two theorems below are PROVED (not stubs): the carrier is EQUIVALENT to the
+height-homomorphism being exact on `N`, and says nothing whatever about `ϑ_{i,s}` landing in
+`K_iˣ`.
+
+Consequence: as written, chapter I would carry a Display-A conjunct that is discharged by
+`⟨v, hv, 1⟩`, and D.63's `VarthetaWConjunct` would degenerate to `Wle` plus an exact-height
+fact. D-H3's claim that the packaging is "formally STRONGER than the sitewise clauses" holds
+for D.07 used as a THEOREM HYPOTHESIS (the §3/§5/§6 theorems are true for any `res`), but is
+FALSE in the existential direction D.62 uses. §14 item 2(iii) asked exactly this question;
+this is the answer.
+
+REPAIR DIRECTION (blueprint-owner's, not patched here): `HVarthetaRes` must be stated against
+a GIVEN ambient residue datum — e.g. quantify over an ambient partial residue function and
+require the arena's `res` to agree with it on the ϑ-quotients, or state the sitewise clause
+`∀ s, ∃ u : K_iˣ, ambientRes (varthetaEl q s) = u` directly. Either way the fix is a DECISION
+block in CHAP-D §9 plus a re-signed D.62/D.63, not a stub-side edit. -/
+
+theorem hvarthetaRes_of_exact_height {G : Type*} [CommGroup G] (K : Type*) [Field K]
+    (N : NormSection G) (v : G →* Multiplicative ℤ)
+    (hv : ∀ k : ℤ, v (N.n k) = Multiplicative.ofAdd k) :
+    HVarthetaRes G K N v :=
+  ⟨{ v := v, exact_height := hv, res := 1 }, rfl⟩
+
+theorem hvarthetaRes_iff {G : Type*} [CommGroup G] (K : Type*) [Field K]
+    (N : NormSection G) (v : G →* Multiplicative ℤ) :
+    HVarthetaRes G K N v ↔ ∀ k : ℤ, v (N.n k) = Multiplicative.ofAdd k := by
+  refine ⟨fun ⟨A, hA⟩ k => ?_, hvarthetaRes_of_exact_height K N v⟩
+  rw [← hA]; exact A.exact_height k
+
 /-! **D.64** [record] OPEN-CALL and orphan routing — the chapter's residual-obligation
 table. NO Lean declaration. `JD0-BOX-2` → chapter I (zero T-unit cites); `HYP.01`/`HYP.12`
 → chapter I core-set (`HYP.98`); T1 OPEN-CALL 4 = T3 OPEN-CALL 1 (the surrounding tower
@@ -1142,6 +1421,54 @@ example : gate06varthetaG2 5 1 ≠ gate67theta 1 ∧ gate06varthetaG2 5 4 ≠ ga
 
 example : gate67theta 2 = gate67theta 3 := by
   simp only [gate67theta, gate67thetaL]; decide
+
+/-! ### NON-VACUITY WITNESSES (stub-side, not blueprint declarations)
+
+The GC-11 gates score arithmetic; they cannot score whether a SCHEMA is inhabited. Two of
+this chapter's three hypothesis-carrying structures are the ones whose emptiness would make
+their theorems vacuous, so both are inhabited here — with the discriminating field TRUE. -/
+
+/-- `BoundaryReadPort` is INHABITED for every arena, ladder step, exponent and unit, so
+D.37/D.38 are not vacuous. Note the witness's `U` is forced to `w^s·ϑ⁻¹ = Θ·w^s` — D.38's
+conclusion, arrived at from the port axioms alone. -/
+noncomputable def portWitness {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    (A : GaugeArena G K N) (q : ℤ) (s : ℕ) (w : Kˣ) : BoundaryReadPort A q s where
+  w := w
+  ctR := (w : K) ^ s
+  ctRQ := fun j => if j = 0 then (w : K) ^ s else 0
+  expSupport := {0}
+  br1 := rfl
+  br2 := by simp
+  br3 := by intro j hj; simp [hj]
+  U := (w : K) ^ s * ((A.vartheta q s)⁻¹ : Kˣ)
+  digit := (A.vartheta q s : K)
+  br4 := by
+    simp only [if_pos]
+    rw [mul_assoc, ← Units.val_mul, inv_mul_cancel, Units.val_one, mul_one]
+  br5 := rfl
+
+/-- gate-local data: an additive `grΔ` layer over `ℤ` with a single canonical slot. -/
+noncomputable def gradWitness (m : ℕ) : ℤ →+ (Unit →₀ ℚ) :=
+  if m = 0 then AddMonoidHom.mk' (fun n => Finsupp.single () (n : ℚ))
+    (by intro a b; simp [Finsupp.single_add]) else 0
+
+/-- `CertFrame` is INHABITED, with (FLOOR) satisfied, so D.46–D.52 are not vacuous. -/
+noncomputable def certWitness : CertFrame ℤ Unit ℚ where
+  μ₂ := 1
+  Θ := fun _ => 0
+  M := Set.univ
+  fkey := 1
+  fkey_mem := Set.mem_univ 1
+  grΔ := fun m _ => gradWitness m
+  floor := by intro f _ j _ m hm; exact absurd hm (Nat.not_lt_zero m)
+
+/-- …and its coordinate `j = 0` is TOUCHED, so D.48's `Touched` and D.49's equivalence are
+both non-trivially satisfiable. -/
+theorem certWitness_touched : certWitness.Touched 0 := by
+  simp only [CertFrame.Touched, CertFrame.omega, certWitness, gradWitness]
+  intro h
+  have := congrArg (fun f => f ()) h
+  simp at this
 
 /-! ### D.68 — the chapter-D census gate (stub-stage form)
 
