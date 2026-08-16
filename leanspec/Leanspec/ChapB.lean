@@ -7,8 +7,9 @@ Every SIGNATURE of `blueprint/CHAP-B_leaf_layer.md` (86 nodes, **135 signed decl
 RE-PLAN supplier declarations), landed in the isolated `leanspec` environment **before** the
 chapter-B fleet fires, in the blueprint's §11 topological order (node order `B.01 … B.86`) with
 §12 rule 2's one hard exception applied: the RE-PLAN suppliers **B.63a** (`typeOf_prod`) and
-**B.66a** (`slopeFinset` / `resFactorFinset` + their membership lemmas) are signed **before**
-B.63, B.66, B.71, B.79a/b and B.80.
+**B.66a** (`slopeFinset` / `resFactorFinset` + their membership lemmas) — and, since A-F.11,
+**B.66** (`order1Type`) itself, whose name now occurs in B.63's conclusion — are signed **before**
+B.63, B.71, B.79a/b and B.80.
 
 **Wrapper choice, declared per GC-6.6:** wrapper: `LeanspecB` per CHAP-B §12/H-13; the ChapG
 retire-to-examples route (PA-2) was considered and not taken — a wrapped namespace keeps the stubs
@@ -99,6 +100,22 @@ The §10 gates bind nothing: they are concrete `ℤ_[2]` / `ℤ_[3]` instances.
   FALSE over a non-complete DVR (witness `f = X² + 5X + 250` over `ℤ₍₅₎`, in B42.lean's header) —
   and Lean 4.31's instance auto-inclusion is usage-based and IMPORT-SET-dependent, so the landed
   axiom carries that binder inline rather than by section inheritance.
+
+* **A-F.11 (2026-08-16, wave-15 §14-item-12 adjudication).** **B.63 RE-SIGNED**: its conclusion
+  was a derivability dead end, not a false statement — the committed
+  `∃ T F, f = ∏ t ∈ T, F t ∧ (typeOf f).data = (T.val.map (fun t => (t.1.2, φ.natDegree *
+  t.2.natDegree)))` tied `T` to nothing (the slope numerator never occurs in it; the residual
+  factor only through its degree), so B.79a's term-by-term tie to `slopeFinset`/`resFactorFinset`
+  was underivable from ANY proof of the axiom (wave-15's B.79 agent; §14 item 12 FIRED). Re-signed
+  here as `(typeOf f).data = (order1Type π φ f).data ∧ ∃ T F, f = ∏ t ∈ T, F t`, with
+  `(h0 : dev φ f 0 ≠ 0)` added — the canonical form is refuted at `f = φ` without it
+  (`slopeFinset π φ φ = ∅` vs `typeOf φ = ⟨{(1, m)}⟩`), and A-F.9's compensating peel step 0 is
+  retired in the blueprint. **B.66 (`order1Type`) HOISTED** above B.63 (body byte-unchanged;
+  pointer left at its §-order slot), extending §12 rule 2's hard exception. **B.71 UNCHANGED and
+  recorded as such**: its conclusion already spoke in `order1Type`, and its A-F.9 `hnz` is exactly
+  B.63's new `h0` per block, so no consumer signature moves (B.72/B.79a/b/B.80/B.81/B.82 likewise
+  untouched; B.65's frozen `1 ↔ 2` half untouched — only its unsigned clause-3 `iff` inherits the
+  canonical form and `h0`). Full record: blueprint amendment A-F.11.
 
 ## THE DEFECT LIST (stage-0e gate, 2026-08-15)
 
@@ -1113,15 +1130,41 @@ axiom mem_resFactorFinset {φ f : Polynomial O} {p : ℕ × ℕ} {ψ : Polynomia
           npHgt φ f (sideMin φ f p.1 p.2 h) = (H₀ : ℕ∞) →
             ψ ∣ resPoly π φ f p.1 p.2 h H₀)
 
+/-- **B.66** [def] ENV-C. `order1Type π φ f` : the `FactorizationType` predicted by `f`'s order-1
+polygon-and-residual data. `0` (the empty type) when the data are not separable — the junk branch
+is never read. *(§12 rule 6 FRAGILE — `Classical` + `Multiset.bind` over the B.66a finsets.)*
+
+**[re-signed: A-F.11 — HOISTED, body byte-unchanged.]** B.63's re-signed conclusion NAMES
+`order1Type`, so §12 rule 2's hard exception now covers this definition too and it must be signed
+before B.63's stub. The declaration is moved here verbatim from its §-order slot below (which
+carries a pointer); the landed `leanfinal` import graph already matches (`B66.lean` imports
+`B66a`). No instance is consulted by the body, so the elaborated type is ENV-A either way. -/
+noncomputable def order1Type (π : O) (φ f : Polynomial O) : FactorizationType :=
+  open Classical in
+  ⟨(slopeFinset π φ f).val.bind (fun p =>
+      (resFactorFinset π φ f p).val.map (fun ψ => (p.2, φ.natDegree * ψ.natDegree)))⟩
+
 /-! ## §8 — NS-6, the order-0 peel, and `typeOf` transport (B.63–B.74) -/
 
 /-- **B.63** [theorem] ENV-C. **DEFECT B-D10** — `hperim` is elided in the SIGNATURE and is
 expanded here from §12 item 4(a)'s shared-clause dictionary, verbatim (this file is the single
 source for B.63, B.71, B.79a, B.79b, B.80, B.81, B.82). `hsep` is the node's own written-out
-clause at the A-F.1/GC-1 `sideMin` pin. -/
+clause at the A-F.1/GC-1 `sideMin` pin.
+**[re-signed: A-F.11]** — `(h0 : dev φ f 0 ≠ 0)` added and the CONCLUSION replaced. The A-F.9-era
+form ended `∃ (T : Finset ((ℕ × ℕ) × Polynomial (resField φ))) (F : _ → Polynomial O),
+f = ∏ t ∈ T, F t ∧ (typeOf f).data = (T.val.map (fun t => (t.1.2, φ.natDegree * t.2.natDegree)))`:
+`T` was tied to nothing (the slope numerator `t.1.1` does not occur in it, `t.2` only through its
+degree), so B.79a's term-by-term tie to `slopeFinset`/`resFactorFinset` was underivable from ANY
+proof of this axiom — wave-15's finding, §14 item 12 fired. The datum identity below is what the
+blueprint's steps 1–4 prove; `h0` is forced with it (the old conclusion was peel-tolerant because
+it was index-free, and `order1Type` reads the polygon only: refuted at `f = φ`, where
+`slopeFinset π φ φ = ∅` while `typeOf φ = ⟨{(1, m)}⟩`). Free at every consumer — B.71's `hnz`
+verbatim per block, B.79a's own `h0` (A-F.9), B.79b via `hvis` + B.76(ii). Full record: blueprint
+amendment A-F.11. -/
 axiom typeOf_of_separable_residuals (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (h0 : dev φ f 0 ≠ 0)
     (hsep : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ∀ h : (sideSet φ f u ℓ).Nonempty,
       1 < (sideSet φ f u ℓ).card → ∀ H₀ : ℕ, npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞) →
         (resPoly π φ f u ℓ h H₀).Separable)
@@ -1135,9 +1178,11 @@ axiom typeOf_of_separable_residuals (hπ : Irreducible π) {φ : Polynomial O} (
             ((ℓ = 1 ∧ φ.natDegree = 1) ∨ ψ.natDegree = 1 ∨
               ∀ g' ∈ monicFactors gS,
                 φ.natDegree * ψ.natDegree ∣ inertiaDegOf g')) :
-    ∃ (T : Finset ((ℕ × ℕ) × Polynomial (resField φ))) (F : _ → Polynomial O),
-      f = ∏ t ∈ T, F t ∧
-      (typeOf f).data = (T.val.map (fun t => (t.1.2, φ.natDegree * t.2.natDegree)))
+    -- [re-signed: A-F.11] the datum identity is clause 1; the retained factorization clause is
+    -- deliberately index-free (see the docstring and blueprint A-F.11 (IV)'s honesty note)
+    (typeOf f).data = (order1Type π φ f).data ∧
+      ∃ (T : Finset ((ℕ × ℕ) × Polynomial (resField φ)))
+        (F : (ℕ × ℕ) × Polynomial (resField φ) → Polynomial O), f = ∏ t ∈ T, F t
 
 end ENVC6
 
@@ -1167,13 +1212,10 @@ axiom ns6_biconditional (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey 
             ∀ ψ : Polynomial (resField φ), ψ.Monic → Irreducible ψ →
               ¬ (ψ ^ 2 ∣ resPoly π φ f u ℓ h H₀))
 
-/-- **B.66** [def] ENV-C. `order1Type π φ f` : the `FactorizationType` predicted by `f`'s order-1
-polygon-and-residual data. `0` (the empty type) when the data are not separable — the junk branch
-is never read. *(§12 rule 6 FRAGILE — `Classical` + `Multiset.bind` over the B.66a finsets.)* -/
-noncomputable def order1Type (π : O) (φ f : Polynomial O) : FactorizationType :=
-  open Classical in
-  ⟨(slopeFinset π φ f).val.bind (fun p =>
-      (resFactorFinset π φ f p).val.map (fun ψ => (p.2, φ.natDegree * ψ.natDegree)))⟩
+/-! **B.66** (`order1Type`) is signed ABOVE, in the RE-PLAN supplier block ahead of B.63
+*[re-signed: A-F.11 — hoisted, body byte-unchanged]*: B.63's re-signed conclusion names
+`order1Type`, which extends §12 rule 2's hard exception (formerly "the B.66a suppliers and B.63a")
+to B.66 itself. Nothing else about the node changed; this pointer keeps the §-order navigable. -/
 
 /-- **B.67** [theorem] ENV-C. -/
 axiom exists_order0_peel {f : Polynomial O} (hf : f.Monic) (hd : 0 < f.natDegree)
