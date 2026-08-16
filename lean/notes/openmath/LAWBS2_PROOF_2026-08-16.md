@@ -281,10 +281,17 @@ Heights (Theorem (ii)), using `4v₂ + u₂ = 3u₂ − 2h = Θ_{j*}` and `6v₂
 
 * `(0,1)`: `2(2v₂ + v(b₂)) + u₂ = Θ_{j*} + 2v(b₂)`;
 * `(1,0)`: `2(3v₂ + v(M)) + h = Θ_{j*} + 2v(M)`;
-* `(0,0)`: `2·min(4v₂ + v(b₄), 3v₂ + v(κ₁) + v(b₃)) ≥ 6v₂ + 2·min(v₂, v(κ₁))
-  ≥ Θ_{j*} − h + min(u₂ − h, h + 1) = Θ_{j*} + min(δ, 2v(κ₁) − h) ≥ Θ_{j*} + 1`
-  (valuations only rise if the two `(0,0)` deposits collide in valuation). ∎
-  [Machine: BS2-HT, 124.]
+* `(0,0)`: the value is the sum of TWO deposits, whose individual heights follow from
+  the same arithmetic (`8v₂ = 4(u₂ − h) = Θ_{j*} + δ` and `6v₂ = 3(u₂ − h) = Θ_{j*} − h`):
+  - the quad deposit `b₄ĉ₂⁴π^{4v₂}` at height `Θ_{j*} + δ + 2v(b₄)`,
+  - the `κ₁`-triple deposit `−κ₁b₃ĉ₂³π^{3v₂}` at height `Θ_{j*} + (2v(κ₁) − h) + 2v(b₃)`;
+  the slot height is the min of the two when their valuations differ, and only rises
+  when they collide, so in all cases
+  `ht(0,0) ≥ Θ_{j*} + min(δ + 2v(b₄), (2v(κ₁) − h) + 2v(b₃)) ≥ Θ_{j*} + min(δ, 2v(κ₁) − h)
+  ≥ Θ_{j*} + 1`, using `δ ≥ 1` (G4) and `2v(κ₁) − h ≥ 1` (G1). ∎
+  [Machine: binomial heights BS2-HT 124; `κ₁ ≠ 0` heights BS2-TAUH 6 (the min-formula,
+  equality on every measured row) + BS2-TAUG (every non-floor slot `≥ Θ + 1`) +
+  BS2-TAUR (the exact `(0,0)` value, from which the height is arithmetic).]
 
 **The law (Theorem (iii)).** `pin(Δ_{μ₂−1}) = Θ_{j*}` iff some slot sits at exactly
 `Θ_{j*}`; by (ii) only `(0,1)` and `(1,0)` can, and they do iff `v(b₂) = 0` resp.
@@ -438,14 +445,15 @@ is proved, at its certified geography.
 * `verification/openmath/om10_cert.py` LEG B (OM-10, committed): B-LAW 7/7, B-FLOOR,
   B-TOP, teeth T-B-COEF, T-B-ALLM; the sealed anchors.
 * `verification/openmath/bs2_lawbs2_cert.py` → `bs2_lawbs2_output.txt` (this unit):
-  **GREEN, 656 checks, 0 violations, 6/6 teeth killed** (script md5 `632f0f37…`, output
-  md5 `fb62e993…`). Composition: BS2-ANCH 8 (om10 frame ties + BP3's sealed
+  **GREEN, 662 checks, 0 violations, 6/6 teeth killed** (script md5 `a6836f65…`, output
+  md5 `6014c118…`). Composition: BS2-ANCH 8 (om10 frame ties + BP3's sealed
   `{(0,1): 27, (1,0): 135}`); DUAL 61; BS2-STUBJ 47; BS2-FLOOR 262; **BS2-DICT 47**
   (the §4 dict bit-exact: B2–B8, BP2–BP9, F5m3–8, F5om3–5, H3m3–5 (`h = 3`,
   `Φ′ = x² − 8`), V2m3–4 (`v₂ = 2`), 18 unit-sweep frames — including BP9, F5m5, F5m6:
-  the FIRST `p = 3` and `p = 5` non-attainment rows); BS2-HT 124; BS2-LAW 53; BS2-SWAP 1
-  (integer grid `μ₂ ≤ 3000`, `p ≤ 199`); BS2-TAUG 18 + BS2-TAUR 12 (`κ₁ ≠ 0` frames
-  T2m3–5, T3m3–5: Θ-layer graded-exact and the full refined dict bit-exact);
+  the FIRST `p = 3` and `p = 5` non-attainment rows); BS2-HT 124 (binomial heights);
+  BS2-LAW 53; BS2-SWAP 1 (integer grid `μ₂ ≤ 3000`, `p ≤ 199`); BS2-TAUG 18 +
+  BS2-TAUR 12 + BS2-TAUH 6 (`κ₁ ≠ 0` frames T2m3–5, T3m3–5: Θ-layer graded-exact, the
+  full refined dict bit-exact, and the `(0,0)` height min-formula with equality);
   BS2-STUBGAP 16 (P4 + D3 axes, PARI-validated); PROBE 1 (P32).
 * Teeth: T-BS2-QUAD (the REFUTED any-k law fails at B4/B5/F5m6; B4's `(0,0)` pinpointed
   as unit `16` at `Θ+δ`), T-BS2-WDEPTH (depth-blind weight mutant), T-BS2-MIX (the

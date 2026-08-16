@@ -244,6 +244,25 @@ def sweep_tau(fr):
     chk('BS2-TAUR', rest == wantf,
         '%s refined dict (non-(0,0) slots) EXACT: got %s want %s'
         % (fr.name, rest, wantf))
+    # BS2-TAUH: the (0,0) height min-formula (the note's Sec 5 display):
+    # quad deposit at Theta + delta + ee*vp(b4), kappa1-triple deposit at
+    # Theta + (2 vp(kappa1) - h) + ee*vp(b3); slot height == Theta + min
+    # when the deposit valuations differ (they do on every swept frame).
+    deps = [3 * fr.v2 + vp(fr.tau, fr.p) + vp(binom(fr.mu2, 3), fr.p)]
+    if fr.mu2 >= 4:
+        deps.append(4 * fr.v2 + vp(binom(fr.mu2, 4), fr.p))
+    gv = got.get((0, 0), 0)
+    if len(deps) == len(set(deps)) and gv:
+        chk('BS2-TAUH', ee * vp(gv, fr.p) == th
+            + min(fr.delta + ee * vp(binom(fr.mu2, 4), fr.p)
+                  if fr.mu2 >= 4 else 10 ** 9,
+                  (2 * vp(fr.tau, fr.p) - fr.h)
+                  + ee * vp(binom(fr.mu2, 3), fr.p)),
+            '%s (0,0) height min-formula: ht %s'
+            % (fr.name, ee * vp(gv, fr.p)))
+    else:
+        chk('BS2-TAUH', gv == 0 or ee * vp(gv, fr.p) >= th + 1,
+            '%s (0,0) collision case below Theta+1' % fr.name)
     att = (fr.pin(sh[js]) == th)
     chk('BS2-LAW', att == law_want(fr),
         '%s LAW B-S2 (tau key): att %s want %s'
