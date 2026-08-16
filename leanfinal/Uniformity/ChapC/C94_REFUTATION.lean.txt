@@ -1,0 +1,179 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapC.C13
+import Uniformity.ChapC.C14a
+import Uniformity.ChapC.C29
+import Uniformity.ChapB.B39b
+
+/-!
+# REFUTATION of the frozen A-C.1 statement of NODE C.94 (`agnprw_termination`, `[cite:AGNPRW]`)
+
+**This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` /
+`C113_REFUTATION.lean.txt` convention: kept as `.lean.txt` so no build picks it up).
+To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapC/C94_REFUTATION.lean.txt /tmp/c94_counter.lean
+cd leanfinal && lake env lean /tmp/c94_counter.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only,
+2026-08-16 (GATE-(b) CITE LANDING unit).
+
+## Verdict: the C.94 landing is BLOCKED. The statement, as drafted, proves `False`.
+
+The gate-(b) cite of NODE C.94 was to land as
+
+```lean
+axiom agnprw_termination : NS7TerminationStatement
+```
+
+with `DescentState`, `DescentStep`, `NS7TerminationStatement` as drafted at amendment A-C.1
+(`leanspec/Leanspec/ChapC.lean` L1611-1649; blueprint `CHAP-C_tower_grammar.md` NODE C.94).
+**Landing it would have made the whole corpus inconsistent**: `NS7TerminationStatement → False`
+is proved below, unconditionally, with the base `ℤ_[2]` exhibited so that the refutation is
+absolute and not a vacuous-scope artifact.
+
+## The defect, exactly
+
+Two independent slacknesses combine in the `refine` constructor of `DescentStep`:
+
+1. **`sideSet` is ALWAYS nonempty.** `sideSet φ f u ℓ` (B.16) is the argmin set of a
+   `Finset.inf` taken over `Finset.range (f.natDegree + 1)`, which is nonempty, so the `inf` is
+   attained. The repo already owns the proof: `Uniformity.Density.Leaf.sideSet_nonempty_gen`
+   (`Uniformity/ChapB/B39b.lean:679`), landed and Lean-core. Hence the two clauses
+   `(sideSet s.key s.block u ℓ).Nonempty` and `(sideSet s'.key s.block u' ℓ').Nonempty` of the
+   `refine` constructor are **vacuous** — they constrain nothing, and in particular they do NOT
+   assert that `(u, ℓ)` or `(u', ℓ')` is an attained *side* of a real polygon. This is exactly
+   the defect already recorded for NODE C.113 clause (i) (`C113_REFUTATION.lean.txt`); C.94
+   repeats it, twice.
+2. **The recentering clause admits `s' = s`.** `(s.key - s'.key).natDegree < s.key.natDegree`
+   is meant to say "recentering by a strictly lower-degree perturbation", but at `s' = s` the
+   perturbation is `0`, `natDegree 0 = 0`, and the clause reads `0 < s.key.natDegree` — true
+   for every key of positive degree.
+
+Consequently `DescentStep π s s` holds for **every** state `s` with `0 < s.key.natDegree`
+(take `(u, ℓ) = (0, 1)`, `(u', ℓ') = (1, 1)`, so `u * ℓ' = 0 < 1 = u' * ℓ`), the constant
+history `hist n = s` is an infinite `DescentStep`-chain on a fixed monic squarefree `f`, and
+`NS7TerminationStatement` delivers `False`. The blueprint's own gloss — *"the slope-increase
+clause is what makes vacuous refine loops non-steps"* — is precisely the claim that fails: the
+slope-increase clause compares two slopes of the SAME polygon when `s' = s`, and every pair of
+distinct slopes is available because `sideSet` never empties.
+
+`f = X` suffices as the monic squarefree witness (`Polynomial.irreducible_X.squarefree`), and
+`s = ⟨X, X⟩` has `s.key.natDegree = 1 > 0`, so the counterexample needs no arithmetic at all.
+
+## What is NOT claimed
+
+That the cited theorem is false. [AGNPRW] (Found. Comput. Math. **25** (2025) no. 2, 631-681,
+DOI 10.1007/s10208-024-09646-x, **Thm 5.6** — the A-3 numbering correction of
+`docs/CITE_NUMBERING_AUDIT_2026-08-16.md` §3, the repo's "Thm 5.2" being the arXiv-v1 number
+that collides with a different published theorem) is a true termination theorem about OM
+descent. What is refuted is **this transcription of it**: `DescentStep` is a strictly larger
+relation than §5's descent grammar, so "no infinite `DescentStep`-history" is strictly stronger
+than what [AGNPRW] proves, and is false.
+
+## Repair direction (NOT applied here — the statement is frozen and owner-signed at category)
+
+The `refine` constructor needs the two side clauses replaced by genuine side data, and the
+self-loop excluded. Minimally: (a) require `s' ≠ s` (or `s'.key ≠ s.key`); (b) replace
+`(sideSet _ _ u ℓ).Nonempty` by an attainment clause with content — e.g.
+`1 < (sideSet s.key s.block u ℓ).card`, the two-point-side predicate B.42 clause 5 uses, or
+`0 < sideDeg …`; (c) pin `(u, ℓ)` coprime and above the frame floor, as C.33's `hslopes` does.
+Any repair is a STATEMENT CHANGE and must go back through gate (b).
+
+## Status
+
+Evidence file. No `sorry`. Lean-core axioms only. Adds nothing to the build.
+-/
+
+namespace Uniformity.Density.Tower.C94Refutation
+
+open Polynomial Uniformity.Density.Leaf Uniformity.Density.Tower
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-! ## 1. The A-C.1 carriers, transcribed verbatim from `leanspec/Leanspec/ChapC.lean` -/
+
+/-- the §5 descent state: the current key and the current block factor. -/
+structure DescentState (O : Type*) [CommRing O] where
+  key : Polynomial O
+  block : Polynomial O
+
+/-- one step of §5's descent grammar (the [AGNPRW]-consumed shape). -/
+inductive DescentStep (π : O) : DescentState O → DescentState O → Prop
+  | jump : ∀ {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} (L : LevelDatum F H₀ hpin)
+      (s s' : DescentState O),
+      s.key = F.key → 2 ≤ L.ℓ * L.r.natDegree →
+      HasLabel L s'.block → s'.block ∣ s.block →
+      IsTestKey L s'.key → L.keyDeg₂ * 2 ≤ s'.block.natDegree →
+      DescentStep π s s'
+  | refine : ∀ (s s' : DescentState O) (u ℓ u' ℓ' : ℕ),
+      0 < ℓ → 0 < ℓ' → s'.block = s.block →
+      s'.key.natDegree = s.key.natDegree →
+      (s.key - s'.key).natDegree < s.key.natDegree →
+      (sideSet s.key s.block u ℓ).Nonempty →
+      (sideSet s'.key s.block u' ℓ').Nonempty →
+      u * ℓ' < u' * ℓ →
+      DescentStep π s s'
+
+/-- NODE C.94's EXACT LEAN STATEMENT as drafted. -/
+def NS7TerminationStatement : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (IsLocalRing.ResidueField O)] (π : O), Irreducible π →
+    ∀ f : Polynomial O, f.Monic → Squarefree f →
+    ∀ hist : ℕ → DescentState O,
+      (∀ n, (hist n).block ∣ f) →
+      (∀ n, DescentStep π (hist n) (hist (n + 1))) → False
+
+/-! ## 2. The self-loop -/
+
+/-- **The step relation has a self-loop at every state of positive key degree.** -/
+theorem descentStep_self (π : O) (s : DescentState O) (h : 0 < s.key.natDegree) :
+    DescentStep π s s := by
+  refine DescentStep.refine s s 0 1 1 1 Nat.one_pos Nat.one_pos rfl rfl ?_
+    (sideSet_nonempty_gen _ _ _ _) (sideSet_nonempty_gen _ _ _ _) (by omega)
+  simpa using h
+
+/-! ## 3. The statement proves `False` over every base in its own scope -/
+
+theorem ns7_proves_false (hax : NS7TerminationStatement)
+    (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (IsLocalRing.ResidueField O)] (π : O) (hπ : Irreducible π) : False := by
+  classical
+  refine hax O π hπ (Polynomial.X) Polynomial.monic_X
+    (Polynomial.irreducible_X.squarefree)
+    (fun _ => ⟨Polynomial.X, Polynomial.X⟩) (fun _ => dvd_rfl) (fun _ => ?_)
+  exact descentStep_self π ⟨Polynomial.X, Polynomial.X⟩ (by simp)
+
+/-! ## 4. The scope is nonempty: `ℤ_[2]` realizes every instance, so the refutation is absolute -/
+
+section Absolute
+
+instance : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+
+instance : Finite (IsLocalRing.ResidueField ℤ_[2]) :=
+  Finite.of_equiv (ZMod 2) (PadicInt.residueField (p := 2)).symm.toEquiv
+
+/-- **THE REFUTATION.** -/
+theorem ns7_false_absolute (hax : NS7TerminationStatement) : False :=
+  ns7_proves_false hax ℤ_[2] (2 : ℤ_[2]) (by simpa using PadicInt.irreducible_p (p := 2))
+
+end Absolute
+
+end Uniformity.Density.Tower.C94Refutation
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Tower.C94Refutation.descentStep_self
+#print axioms Uniformity.Density.Tower.C94Refutation.ns7_proves_false
+#print axioms Uniformity.Density.Tower.C94Refutation.ns7_false_absolute
+
+end AxCheck
