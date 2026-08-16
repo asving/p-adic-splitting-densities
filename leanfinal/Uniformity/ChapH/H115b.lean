@@ -202,6 +202,207 @@ theorem alphaParent_npHgt_natDegree (π : O) {m : ℕ} (b : Fin m → O) (k : �
     rwa [alphaParent_natDegree] at this
   rw [npHgt_X, h1, AddValuation.map_one]
 
+/-! ## 3. The parent state is not a CS state -/
+
+/-- `X` is an order-1 key.  `private` in C.12/C.19/H.117 and `private` does not export, so it is
+re-derived here (three lines, same proof). -/
+private theorem isKeyX {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] :
+    IsKey (Polynomial.X : Polynomial O) where
+  monic := Polynomial.monic_X
+  pos := by simp
+  irred := by
+    rw [Polynomial.map_X]
+    exact Polynomial.irreducible_X
+
+private theorem enat_smul_nat (ℓ t : ℕ) : ℓ • ((t : ℕ) : ℕ∞) = ((ℓ * t : ℕ) : ℕ∞) := by
+  simp [nsmul_eq_mul]
+
+private theorem enat_smul_mono {ℓ : ℕ} {x y : ℕ∞} (h : x ≤ y) : ℓ • x ≤ ℓ • y := by
+  simp only [nsmul_eq_mul]
+  gcongr
+
+/-- **The one geometric step.**  A cluster state carried by a parent frame is never CS: its
+polygon is the single side from `(0, m k)` to `(m, 0)`, whose only repeated residual factor is
+the LINEAR `Y − z`, and `IsCSState` demands a block of size `ℓ · deg ψ ≥ 2`. -/
+theorem not_isCSState_of_alphaParent {π : O} (hπ : Irreducible π) {m N k : ℕ}
+    {z : ResidueField O} (hk : 1 ≤ k) (hz : z ≠ 0)
+    {b : Fin m → O} (hb : ∀ i, b i ∈ maximalIdeal O) {ŵ : O} (hŵ : residue O ŵ = z)
+    {c : ClusterState O m N} {a : Fin m → O} (ha : proj O m N a = c.1)
+    (hfa : monicPoly a = alphaParent π b k ŵ) : ¬ IsCSState π c := by
+  classical
+  letI : Field (resField (Polynomial.X : Polynomial O)) := instFieldResField isKeyX
+  intro hCS
+  obtain ⟨u, ℓ, hne, H₀, hℓ, hcop, hpin, ψ, hψ, hblock, hdvd⟩ := hCS.2 a ha
+  -- the polygon profile of the lift, transported through `hfa`
+  have hdeg : (monicPoly a).natDegree = m := monicPoly_natDegree a
+  have hnp0 : npHgt X (monicPoly a) 0 = ((m * k : ℕ) : ℕ∞) := by
+    rw [hfa]; exact alphaParent_npHgt_zero hπ hb hz k hŵ
+  have hnpge : ∀ j, (((m - j) * k : ℕ) : ℕ∞) ≤ npHgt X (monicPoly a) j := by
+    intro j; rw [hfa]; exact alphaParent_npHgt_ge hπ b k ŵ j
+  have hnpm : npHgt X (monicPoly a) m = 0 := by
+    rw [hfa]; exact alphaParent_npHgt_natDegree π b k ŵ
+  have hrange : ∀ j ∈ sideSet X (monicPoly a) u ℓ, j ≤ m := by
+    intro j hj
+    have hj' : j ∈ Finset.filter (OnSide X (monicPoly a) u ℓ)
+      (Finset.range ((monicPoly a).natDegree + 1)) := hj
+    have := Finset.mem_range.1 (Finset.mem_filter.1 hj').1
+    omega
+  have hmem0 : (0 : ℕ) ∈ Finset.range ((monicPoly a).natDegree + 1) :=
+    Finset.mem_range.2 (Nat.succ_pos _)
+  have hmemm : m ∈ Finset.range ((monicPoly a).natDegree + 1) :=
+    Finset.mem_range.2 (by omega)
+  -- the cleared support value is finite (B.30's side condition)
+  have htop : suppVal X (monicPoly a) u ℓ ≠ ⊤ := by
+    have hle : suppVal X (monicPoly a) u ℓ
+        ≤ ℓ • npHgt X (monicPoly a) 0 + ((u * 0 : ℕ) : ℕ∞) := Finset.inf_le hmem0
+    rw [hnp0, enat_smul_nat] at hle
+    refine ne_top_of_le_ne_top ?_ hle
+    rw [← Nat.cast_add]
+    exact ENat.coe_ne_top _
+  rcases lt_trichotomy u (ℓ * k) with hcase | hcase | hcase
+  · -- SLOPE TOO FLAT: the supporting line touches only the monic top `(m, 0)`
+    have hone : ∀ j ∈ sideSet X (monicPoly a) u ℓ, j = m := by
+      intro j hj
+      by_contra hjm
+      have hjlt : j < m := lt_of_le_of_ne (hrange j hj) hjm
+      have hon : OnSide X (monicPoly a) u ℓ j := onSide_of_mem_sideSet hj
+      have hinf : suppVal X (monicPoly a) u ℓ
+          ≤ ℓ • npHgt X (monicPoly a) m + ((u * m : ℕ) : ℕ∞) := Finset.inf_le hmemm
+      rw [← hon, hnpm] at hinf
+      have hchain : ((ℓ * ((m - j) * k) + u * j : ℕ) : ℕ∞)
+          ≤ ((ℓ * 0 + u * m : ℕ) : ℕ∞) := by
+        calc ((ℓ * ((m - j) * k) + u * j : ℕ) : ℕ∞)
+            = ℓ • ((((m - j) * k : ℕ)) : ℕ∞) + ((u * j : ℕ) : ℕ∞) := by
+              rw [enat_smul_nat]; push_cast; ring
+          _ ≤ ℓ • npHgt X (monicPoly a) j + ((u * j : ℕ) : ℕ∞) :=
+              add_le_add (enat_smul_mono (hnpge j)) le_rfl
+          _ ≤ ℓ • ((0 : ℕ) : ℕ∞) + ((u * m : ℕ) : ℕ∞) := by simpa using hinf
+          _ = ((ℓ * 0 + u * m : ℕ) : ℕ∞) := by rw [enat_smul_nat]; push_cast; ring
+      have hnat : ℓ * ((m - j) * k) + u * j ≤ ℓ * 0 + u * m := by exact_mod_cast hchain
+      have hR : u * j + u * (m - j) = u * m := by
+        rw [← Nat.mul_add, Nat.add_sub_cancel' (le_of_lt hjlt)]
+      have hL : ℓ * ((m - j) * k) + u * j = u * j + (ℓ * k) * (m - j) := by ring
+      rw [hL, Nat.mul_zero, Nat.zero_add, ← hR] at hnat
+      have h3 := Nat.le_of_mul_le_mul_right (Nat.add_le_add_iff_left.mp hnat) (by omega)
+      omega
+    have hsd : sideDeg X (monicPoly a) u ℓ hne = 0 := by
+      have hmx : sideMax X (monicPoly a) u ℓ hne = sideMin X (monicPoly a) u ℓ hne := by
+        rw [sideMax, sideMin, hone _ (Finset.max'_mem _ hne), hone _ (Finset.min'_mem _ hne)]
+      rw [sideDeg, hmx, Nat.sub_self, Nat.zero_div]
+    obtain ⟨hrd, hc0⟩ := natDegree_resPoly hπ isKeyX hℓ hcop htop hne hpin
+    have hRne : resPoly π X (monicPoly a) u ℓ hne H₀ ≠ 0 := fun hzz => hc0 (by simp [hzz])
+    have hpow := Polynomial.natDegree_le_of_dvd hdvd hRne
+    rw [Polynomial.natDegree_pow, hrd, hsd] at hpow
+    have : ψ.natDegree = 0 := by omega
+    rw [this] at hblock
+    omega
+  · -- THE SIDE ITSELF: coprimality forces `ℓ = 1`, `u = k`, and the residual is `(Y − z) ^ m`
+    have hℓ1 : ℓ = 1 := by
+      have hg : Nat.gcd u ℓ = 1 := hcop
+      have hdvdℓ : ℓ ∣ Nat.gcd u ℓ := Nat.dvd_gcd ⟨k, hcase⟩ dvd_rfl
+      rw [hg] at hdvdℓ
+      exact Nat.dvd_one.mp hdvdℓ
+    subst hℓ1
+    have huk : u = k := by omega
+    subst huk
+    -- the cleared support value, exactly
+    have hsupp : suppVal X (monicPoly a) u 1 = ((m * u : ℕ) : ℕ∞) := by
+      refine le_antisymm ?_ ?_
+      · have hle : suppVal X (monicPoly a) u 1
+            ≤ (1 : ℕ) • npHgt X (monicPoly a) 0 + ((u * 0 : ℕ) : ℕ∞) := Finset.inf_le hmem0
+        rw [hnp0, enat_smul_nat] at hle
+        simpa using hle
+      · refine Finset.le_inf ?_
+        intro j hj
+        have hjm : j ≤ m := by
+          have := Finset.mem_range.1 hj
+          omega
+        calc ((m * u : ℕ) : ℕ∞) = ((1 * ((m - j) * u) + u * j : ℕ) : ℕ∞) := by
+              have : (m - j) + j = m := by omega
+              congr 1
+              calc m * u = ((m - j) + j) * u := by rw [this]
+                _ = 1 * ((m - j) * u) + u * j := by ring
+          _ = (1 : ℕ) • ((((m - j) * u : ℕ)) : ℕ∞) + ((u * j : ℕ) : ℕ∞) := by
+              rw [enat_smul_nat]; push_cast; ring
+          _ ≤ (1 : ℕ) • npHgt X (monicPoly a) j + ((u * j : ℕ) : ℕ∞) :=
+              add_le_add (enat_smul_mono (hnpge j)) le_rfl
+    -- both endpoints are on the side, so the frame is `(u,1)`-pure and `sideMin = 0`
+    have hon0 : OnSide X (monicPoly a) u 1 0 := by
+      show (1 : ℕ) • npHgt X (monicPoly a) 0 + ((u * 0 : ℕ) : ℕ∞) = _
+      rw [hnp0, enat_smul_nat, hsupp]
+      simp
+    have honm : OnSide X (monicPoly a) u 1 m := by
+      show (1 : ℕ) • npHgt X (monicPoly a) m + ((u * m : ℕ) : ℕ∞) = _
+      rw [hnpm, hsupp]
+      simp [Nat.mul_comm]
+    have hpure : IsPure X (monicPoly a) u 1 := by
+      refine ⟨hon0, ?_⟩
+      rw [natDegree_X, Nat.div_one, hdeg]
+      exact honm
+    have hmemS0 : (0 : ℕ) ∈ sideSet X (monicPoly a) u 1 :=
+      Finset.mem_filter.2 ⟨hmem0, hon0⟩
+    have hmin0 : sideMin X (monicPoly a) u 1 hne = 0 :=
+      Nat.le_zero.mp (Finset.min'_le _ _ hmemS0)
+    rw [hmin0] at hpin
+    -- B.59a's digit identity: the residual polynomial IS the reduction of the parent frame
+    have hres := resPoly_X_eq_map_of_scaleRoots (π := π) (g := monicPoly a)
+      (G := alphaFrame b ŵ) hπ (monicPoly_monic a)
+      (by rw [alphaFrame_natDegree, hdeg]) (by rw [hfa]; rfl) hpure hne hpin
+    rw [alphaFrame_map_residue hb ŵ, hŵ] at hres
+    simp only [Polynomial.map_pow, Polynomial.map_sub, Polynomial.map_X, Polynomial.map_C]
+      at hres
+    set φ := AdjoinRoot.of ((X : Polynomial O).map (residue O)) with hφ
+    -- an irreducible with a square dividing `(Y − z) ^ m` is linear
+    have hψdvd : ψ ∣ (X - C (φ z)) ^ m := by
+      refine dvd_trans (dvd_pow_self ψ two_ne_zero) ?_
+      rw [← hres]
+      exact hdvd
+    have hprime : Prime ψ := hψ.prime
+    have hlin : ψ ∣ (X - C (φ z)) := hprime.dvd_of_dvd_pow hψdvd
+    have hne0 : (X - C (φ z) : Polynomial (resField (X : Polynomial O))) ≠ 0 :=
+      Polynomial.X_sub_C_ne_zero _
+    have := Polynomial.natDegree_le_of_dvd hlin hne0
+    rw [Polynomial.natDegree_X_sub_C] at this
+    omega
+  · -- SLOPE TOO STEEP: the supporting line touches only the left endpoint `(0, m k)`
+    have hone : ∀ j ∈ sideSet X (monicPoly a) u ℓ, j = 0 := by
+      intro j hj
+      by_contra hj0
+      have hjm : j ≤ m := hrange j hj
+      have hon : OnSide X (monicPoly a) u ℓ j := onSide_of_mem_sideSet hj
+      have hinf : suppVal X (monicPoly a) u ℓ
+          ≤ ℓ • npHgt X (monicPoly a) 0 + ((u * 0 : ℕ) : ℕ∞) := Finset.inf_le hmem0
+      rw [← hon, hnp0] at hinf
+      have hchain : ((ℓ * ((m - j) * k) + u * j : ℕ) : ℕ∞)
+          ≤ ((ℓ * (m * k) + u * 0 : ℕ) : ℕ∞) := by
+        calc ((ℓ * ((m - j) * k) + u * j : ℕ) : ℕ∞)
+            = ℓ • ((((m - j) * k : ℕ)) : ℕ∞) + ((u * j : ℕ) : ℕ∞) := by
+              rw [enat_smul_nat]; push_cast; ring
+          _ ≤ ℓ • npHgt X (monicPoly a) j + ((u * j : ℕ) : ℕ∞) :=
+              add_le_add (enat_smul_mono (hnpge j)) le_rfl
+          _ ≤ ℓ • ((m * k : ℕ) : ℕ∞) + ((u * 0 : ℕ) : ℕ∞) := hinf
+          _ = ((ℓ * (m * k) + u * 0 : ℕ) : ℕ∞) := by rw [enat_smul_nat]; push_cast; ring
+      have hnat : ℓ * ((m - j) * k) + u * j ≤ ℓ * (m * k) + u * 0 := by exact_mod_cast hchain
+      have hL1 : ℓ * ((m - j) * k) + (ℓ * k) * j = ℓ * (m * k) := by
+        have hmj : (m - j) + j = m := by omega
+        calc ℓ * ((m - j) * k) + (ℓ * k) * j = (ℓ * k) * ((m - j) + j) := by ring
+          _ = ℓ * (m * k) := by rw [hmj]; ring
+      rw [Nat.mul_zero, Nat.add_zero, ← hL1] at hnat
+      have h3 := Nat.le_of_mul_le_mul_right (Nat.add_le_add_iff_left.mp hnat)
+        (Nat.pos_of_ne_zero hj0)
+      omega
+    have hsd : sideDeg X (monicPoly a) u ℓ hne = 0 := by
+      have hmx : sideMax X (monicPoly a) u ℓ hne = sideMin X (monicPoly a) u ℓ hne := by
+        rw [sideMax, sideMin, hone _ (Finset.max'_mem _ hne), hone _ (Finset.min'_mem _ hne)]
+      rw [sideDeg, hmx, Nat.sub_self, Nat.zero_div]
+    obtain ⟨hrd, hc0⟩ := natDegree_resPoly hπ isKeyX hℓ hcop htop hne hpin
+    have hRne : resPoly π X (monicPoly a) u ℓ hne H₀ ≠ 0 := fun hzz => hc0 (by simp [hzz])
+    have hpow := Polynomial.natDegree_le_of_dvd hdvd hRne
+    rw [Polynomial.natDegree_pow, hrd, hsd] at hpow
+    have : ψ.natDegree = 0 := by omega
+    rw [this] at hblock
+    omega
+
 end Parent
 
 end Uniformity.Density.Induction
