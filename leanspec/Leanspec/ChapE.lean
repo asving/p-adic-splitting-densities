@@ -1171,6 +1171,10 @@ axiom ladder_finite_bounds (μ : ℕ → ℕ) (J : ℕ)
 
 -- BLOCKED: GC-13/GC-14 resolution (§12 BLOCKED-UNTIL-RESOLUTION; the `supplied : True`
 -- placeholder is typed when chapter C's letter layer and chapter D's ϑ table freeze).
+-- [A-D.2 FENCE, 2026-08-16: when typed, this socket MUST bind chapter D's RE-SIGNED
+-- sitewise carrier `LeanspecD.HVarthetaRes` (ambient-residue form, DECISION D-2) with the
+-- level-i instantiation data — NOT the voided existential `HVarthetaResVoided` (D-D12),
+-- which is provably equivalent to an exact-height fact. See CHAP-I's I.10 dated note.]
 /-- **E.61** [def] `(H-VARTHETA-RES)_i` (Display A, ∀ i ≥ 3): the level-i deep-twist units are
 the letter-monomial residues, correctly oriented per chapter D's canonical ϑ table
 [GC-14 anchor: EFF.GENTOW2 orientation records, supplied-by chapter D]. -/
