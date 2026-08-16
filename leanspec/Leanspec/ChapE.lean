@@ -18,6 +18,12 @@ namespace LeanspecE
 
 open Finset
 
+-- The three universes E.12's `RungInterface` carries: `uO` (the bundle), `uK` (the label
+-- field) and `uW` — the `(SEC-RANK)` carrier's universe, which every declaration that
+-- QUANTIFIES over a `RungInterface` must bind explicitly (defect E-D6: the signed
+-- E.39/E.40/E.24 signatures leave it an uninferable universe metavariable).
+universe uO uK uW
+
 /-! ## §3 — THE RUNG/LADDER SCHEMA (E.01–E.09) -/
 
 /-- **E.01** [def] A **rung datum**: the arithmetic core of one σ-ladder level
@@ -519,5 +525,312 @@ axiom offdisk_positivity {ν T₂ ℓ D' h lam ε₀ ε₁ : ℤ}
     (hε₀ : 0 ≤ ε₀) (hε₁ : 0 ≤ ε₁)
     (hcase : (0 < ε₀ ∧ ε₁ = ℓ * (lam - D' * h) + ℓ * D' * ε₀) ∨ ε₀ = 0) :
     0 < (ν - T₂) + ε₁ - ℓ * (D' - 1) * ε₀
+
+/-! ## §6 — `(LB1)` AND `(MP1)`: THE TWO OPEN OBLIGATIONS (E.39–E.44) -/
+
+/-- **E.39** [def] `(LB1)` (`EFF.T2.18`): the level-one clause-4 block suite exists. OPEN — a
+named capstone hypothesis; no chapter-E node proves it. -/
+def LB1Carrier {O : Type uO} [CommRing O] {K : Type uK} [Field K]
+    (C : SlotCarrier O K) (B : BlockData C) : Prop :=
+  ∀ I : RungInterface.{uO, uK, uW} C B,
+    (1 < I.sides.card ∨ ∃ p ∈ I.sides, ¬ I.SepSide p) →
+    ∃ blocks : List (Σ B' : BlockData C, RungInterface.{uO, uK, uW} C B'),
+      B.F = (blocks.map fun x => x.1.F).prod ∧
+      (blocks.map fun x => x.1.F.natDegree).sum = B.F.natDegree
+      -- + the per-block pure-residual and length clauses; see the node's SIGNATURE NOTE
+
+/-- **E.40** [def] `(MP1)` (`EFF.T2.23`): the level-one mid-chain-peel input suite at a
+RECENTERED key. OPEN — a named capstone hypothesis; carried to chapter I. -/
+def MP1Carrier {O : Type uO} [CommRing O] {K : Type uK} [Field K]
+    (C : SlotCarrier O K) (B : BlockData C) : Prop :=
+  ∀ (Λ : Polynomial O),                        -- the recentering increment
+    Λ ≠ 0 → Λ.natDegree < C.D →
+    ∀ (B' : BlockData C),                      -- the quotient block at key Φ − Λ
+      B'.Φ = B.Φ - Λ → B'.Φ ∣ B.F →
+      Nonempty (RungInterface.{uO, uK, uW} C B') ∧
+      -- item 5: the peeled key's certified (e,f) emission
+      ∃ e f : ℕ, e * f = C.D ∧ C.eC ∣ e ∧ C.fC ∣ f
+
+/-- **E.41** [lemma] The scope theorem: clauses 1–2 fire without `(LB1)`. -/
+axiom clause12_lb1_free {O : Type*} [CommRing O] {K : Type*} [Field K]
+    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface C B)
+    (hone : I.sides.card = 1) (hsep : ∀ p ∈ I.sides, I.SepSide p) :
+    ∀ p ∈ I.sides, (∀ q ∈ I.linFac p, I.classCount p q = C.D * p.2) ∧
+      (∀ q ∈ I.hiFac p, I.classCountHi p q = C.D * p.2 * q.1)
+
+/-- **E.42** [theorem] The level-two discharge S1.8B (the composed-key entry). -/
+axiom s18b_fold {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) {T : ℤ}
+    (w : Polynomial O) (ws : List (Polynomial O))
+    (hw : w = 0 ∨ (w.natDegree < C.D ∧ ∃ v : ℤ, C.hgt w = (v : WithTop ℤ) ∧ T < v))
+    (hws : ∀ x ∈ ws, x.natDegree < C.D ∧ ∃ v : ℤ, C.hgt x = (v : WithTop ℤ) ∧ T < v)
+    (hdist : (w :: ws).Pairwise fun a b => a = 0 ∨ b = 0 ∨ C.hgt a ≠ C.hgt b) :
+    (w + ws.sum = 0 ∧ ws = [] ∧ w = 0) ∨
+    ((w + ws.sum).natDegree < C.D ∧
+      ∃ v : ℤ, C.hgt (w + ws.sum) = (v : WithTop ℤ) ∧ T < v)
+
+/-- **E.43** [lemma] S1.8C clause (i): the membership identity. -/
+axiom recentered_is_member {O : Type*} [CommRing O] (Φ B₀ : Polynomial O) :
+    Φ + B₀ = Φ - (-B₀)
+
+/-- **E.43** [lemma] S1.8C clause (ii): the carrier's read mentions no key (frame stability
+is enforced by TYPE; the content is that this elaborates). -/
+axiom frame_key_free {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) (A : Polynomial O) :
+    C.hgt A = C.hgt A ∧ C.dig A = C.dig A
+
+/-- **E.44** [def] The chapter-E obligations record: what chapter I receives from the
+σ-ladder. `(MP1′)` is RETIRED and deliberately has NO carrier. -/
+structure LadderObligations {O : Type uO} [CommRing O] {K : Type uK} [Field K]
+    (C : SlotCarrier O K) (B : BlockData C) : Prop where
+  lb1 : LB1Carrier.{uO, uK, uW} C B
+  mp1 : MP1Carrier.{uO, uK, uW} C B
+
+/-! ## §7 — THE σ DICTIONARY AND THE TRANSPORT LAWS (E.45–E.54; TERMINAL SUPPLY) -/
+
+/-- **E.45** [def] One terminal emission of the σ-ladder read (numerical shadow, D-E2). -/
+structure LadderLeaf where
+  path : List (ℕ × ℕ)
+  term : ℕ × ℕ
+  deriving DecidableEq
+
+/-- **E.45** [def] The composed `(e, f)` of a leaf at base `(e₀, f₀)` (`EFF.HE7.48`). -/
+def LadderLeaf.ef (l : LadderLeaf) (e₀ f₀ : ℕ) : ℕ × ℕ :=
+  (e₀ * (l.path.map Prod.fst).prod * l.term.1,
+   f₀ * (l.path.map Prod.snd).prod * l.term.2)
+
+/-- **E.45** [def] **The σ dictionary** (GC-4): ladder leaves → the landed factorization
+type. Carrier is the LANDED `Uniformity.FactorizationType` (see defect E-D8 on the
+blueprint's `Uniformity.Density.FactorizationType` spelling). -/
+def ladderSigma (e₀ f₀ : ℕ) (leaves : Multiset LadderLeaf) :
+    Uniformity.FactorizationType :=
+  ⟨leaves.map fun l => l.ef e₀ f₀⟩
+
+/-- **E.46** [lemma] Degree conservation (GC-4's mandatory invariant). -/
+axiom ladderSigma_degree (e₀ f₀ : ℕ) (leaves : Multiset LadderLeaf) :
+    (ladderSigma e₀ f₀ leaves).degree
+      = (leaves.map fun l => (l.ef e₀ f₀).1 * (l.ef e₀ f₀).2).sum
+
+/-- **E.46** [lemma] Degree conservation, block-degree form. -/
+axiom ladderSigma_degree_eq_deg {O : Type*} [CommRing O]
+    (e₀ f₀ : ℕ) (leaves : Multiset LadderLeaf) (F : Polynomial O)
+    (hwt : (leaves.map fun l => (l.ef e₀ f₀).1 * (l.ef e₀ f₀).2).sum = F.natDegree) :
+    (ladderSigma e₀ f₀ leaves).degree = F.natDegree
+
+/-- **E.47** [def] Prepending a rung to a leaf's path. -/
+def LadderLeaf.prepend (r : ℕ × ℕ) (l : LadderLeaf) : LadderLeaf :=
+  ⟨r :: l.path, l.term⟩
+
+/-- **E.47** [lemma] Rung composition of leaves (associativity of the ladder product). -/
+axiom ladderSigma_prepend (e₀ f₀ : ℕ) (r : ℕ × ℕ) (leaves : Multiset LadderLeaf) :
+    ladderSigma e₀ f₀ (leaves.map (LadderLeaf.prepend r))
+      = ladderSigma (e₀ * r.1) (f₀ * r.2) leaves
+
+/-- **E.48** [theorem] The rung σ-transport law (σ is multiplicative over the block split),
+stated at the LANDED `typeOf_mul`'s strength: on `.data`, monicity only. The signed
+`typeOf l.prod = (l.map typeOf).sum` does NOT elaborate — see defect E-D9. -/
+axiom typeOf_list_prod {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] (l : List (Polynomial O))
+    (hm : ∀ g ∈ l, Polynomial.Monic g) :
+    (Uniformity.Density.typeOf l.prod).data
+      = (l.map fun g => (Uniformity.Density.typeOf g).data).sum
+
+/-- **E.49** [def] The μ₂ = 2 dictionary rows (`EFF.HE7.58`'s table; rows 5/6 route onward). -/
+inductive Mu2Row
+  | oneSideHalf      -- row 1: λ₂ ∉ ℤ (ℓ₂ = 2)
+  | oneSideInert     -- row 2: λ₂ ∈ ℤ, R₂ irreducible quadratic
+  | oneSideSplit     -- row 3: λ₂ ∈ ℤ, R₂ split
+  | twoSides         -- row 4
+  | refineRow        -- row 5: R₂ = (Z−s₂)² — α-refine, re-read
+  | peelRow          -- row 6: Ψ ∣ f — peel
+  deriving DecidableEq
+
+/-- **E.49** [def] The decided-row σ values at the n = 8 frame. -/
+def mu2Sigma : Mu2Row → Option Uniformity.FactorizationType
+  | .oneSideHalf  => some ⟨{(8, 1)}⟩
+  | .oneSideInert => some ⟨{(4, 2)}⟩
+  | .oneSideSplit => some ⟨{(4, 1), (4, 1)}⟩
+  | .twoSides     => some ⟨{(4, 1), (4, 1)}⟩
+  | .refineRow    => none        -- re-read at the refined key (E.52)
+  | .peelRow      => some ⟨{(4, 1), (4, 1)}⟩
+
+/-- **E.49** [lemma] Every decided row has degree 8. -/
+axiom mu2Sigma_degree : ∀ r v, mu2Sigma r = some v → v.degree = 8
+
+/-- **E.50** [lemma] The three-letter alphabet ("no fourth value possible"). -/
+axiom mu2Sigma_alphabet :
+    ∀ r v, mu2Sigma r = some v →
+      v = ⟨{(8, 1)}⟩ ∨ v = ⟨{(4, 2)}⟩ ∨ v = ⟨{(4, 1), (4, 1)}⟩
+
+-- BLOCKED: GC-13 resolution (§12 BLOCKED-UNTIL-RESOLUTION; `hpeel : True` placeholder —
+-- the orchestrator types it against chapter C's HE6R1-3 emission record at freeze. A fleet
+-- agent must NOT prove E.51 while the placeholder is `True`: it would be vacuous.)
+/-- **E.51** [theorem] The peel-row law (row 6, given the peel supplier). -/
+axiom peel_row_law
+    (hpeel : True)   -- placeholder anchoring the HE6R1-3 emission supplier
+                     -- [supplied-by: chapter C]
+    {e f : ℕ} (hforce4 : 4 ∣ e * f) (hef : e * f = 4)
+    (he : 4 ∣ e ∨ (e = 4 ∧ f = 1)) :   -- the forcing shadow at μ₂′ = 1
+    e = 4 ∧ f = 1
+
+/-- **E.52** [theorem] THEOREM HE7.A′ schema (the n = 8 bite decided, refine loop included).
+NOT blocked (§12: it consumes E.51's row only through `mu2Sigma`). -/
+axiom he7a_prime_schema
+    (read : ℕ → Mu2Row)                  -- the row at refine-step i
+    (hterm : ∃ i, read i ≠ .refineRow)   -- termination supply (E.55/E.56 at μ₂ = 2)
+    : ∃ i v, mu2Sigma (read i) = some v ∧
+        (v = ⟨{(8, 1)}⟩ ∨ v = ⟨{(4, 2)}⟩ ∨ v = ⟨{(4, 1), (4, 1)}⟩)
+
+/-- **E.53** [lemma] The GC-3 bridge fence: the dictionary's `(e,f)` is NEVER identified with
+the ideal-theoretic pair (`HYP.01` + `HYP.12`, CORE-SET). -/
+axiom leaf_ef_finrank {e f n : ℕ} (hef : e * f = n)
+    (hrank : n = n) :  -- anchor: instances substitute `finrank K₀ L` here via the
+                       -- quarry identity; the fence forbids more
+    e * f = n
+
+/-- **E.54** [lemma] Frame/origin invariance of σ at the dictionary. -/
+axiom ladderSigma_frame_invariant (e₀ f₀ : ℕ) (leaves leaves' : Multiset LadderLeaf)
+    (h : leaves = leaves') :  -- the shadow equality the frame change induces
+    ladderSigma e₀ f₀ leaves = ladderSigma e₀ f₀ leaves'
+
+/-! ## §8 — ROOT-CONTINUATION AND EXHAUST (E.55–E.60) -/
+
+/-- **E.55** [theorem, HARD] α-refine chains are finite (LEMMA HE7-8, `(REF-TERM)`).
+The three stub-stage spelling calls of the SIGNATURE NOTE are executed here:
+(a) `hOcoeff` is the landed DVR valuation `IsDiscreteValuationRing.addVal` pushed into
+`WithTop ℤ` by `WithTop.map`; (b) the increment degree bound is against the CURRENT key degree
+`C.D` (the NOTE's own resolution of its display's `C.D * μ₂`); (c) `hfloor`'s right side is
+the cleared `WithTop ℤ` inequality. None changes the theorem's strength. -/
+axiom refine_chain_finite {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {K : Type*} [Field K] (C : SlotCarrier O K)
+    (hcoeff : ∀ (A : Polynomial O) (v : ℤ), A.natDegree < C.D →
+      (v : WithTop ℤ) ≤ C.hgt A → ∀ i,
+        (v : WithTop ℤ) ≤ (IsDiscreteValuationRing.addVal O (A.coeff i)).map
+          (fun n : ℕ => (n : ℤ)))
+    {F Ψ : Polynomial O} {μ₂ : ℕ} (hμ : 2 ≤ μ₂)
+    (hsq : Squarefree (F.map (algebraMap O (FractionRing O))))
+    (w : ℕ → Polynomial O) (lam : ℕ → ℤ)
+    (hdeg : ∀ j, (w j).natDegree < C.D)          -- deg < the current key degree; NOTE (b)
+    (hh : ∀ j, C.hgt (w j) = (lam j : WithTop ℤ))
+    (hmono : StrictMono lam)
+    (A : ℕ → ℕ → Polynomial O)
+    (hdev : ∀ j, F = (Ψ - ∑ i ∈ Finset.range j, w i) ^ μ₂
+      + ∑ m ∈ Finset.range μ₂, A j m * (Ψ - ∑ i ∈ Finset.range j, w i) ^ m)
+    (hfloor : ∀ j, ∀ m < μ₂,
+      (((((μ₂ - m : ℕ) : ℤ) * lam j : ℤ)) : WithTop ℤ) ≤ C.hgt (A j m)) :
+    False
+
+/-- **E.56** [theorem] The per-step jump: the same-residue kill. -/
+axiom same_digit_rises {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K)
+    (hsame : ∀ (a b : Polynomial O) (k : ℤ), C.hgt a = (k : WithTop ℤ) →
+      C.hgt b = (k : WithTop ℤ) → C.dig a = C.dig b → (k : WithTop ℤ) < C.hgt (a - b))
+    {a b : Polynomial O} {k : ℤ} (ha : C.hgt a = (k : WithTop ℤ))
+    (hb : C.hgt b = (k : WithTop ℤ)) (hd : C.dig a = C.dig b) :
+    (k : WithTop ℤ) < C.hgt (a - b)
+
+/-- **E.56** [theorem] The chain invariant (HE7-12(d)/HE7-13's mutual induction, packaged). -/
+axiom chain_invariant {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K) (w : ℕ → Polynomial O) (lam : ℕ → ℤ)
+    (hh : ∀ j, C.hgt (w j) = (lam j : WithTop ℤ))
+    (hstep : ∀ j, lam j < lam (j + 1))   -- supplied per step by the refined read
+    : StrictMono lam ∧ ∀ i j, i < j → C.hgt (w i) ≠ C.hgt (w j)
+
+-- BLOCKED: GC-13 resolution (§12 BLOCKED-UNTIL-RESOLUTION; `hpart : True` placeholder —
+-- the product/disjointness carrier leg, typed against chapter C's partition record at freeze.
+-- The fleet must NOT fire on E.57 before that pass.)
+/-- **E.57** [theorem, HARD] The mixed-node block split (ANNEX-LEMMA HE7-13′(a), schema
+form) — the PROVED level-≥2 counterpart of `(LB1)`. -/
+axiom block_split {O : Type*} [CommRing O] [IsDomain O] {K : Type*} [Field K]
+    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface C B)
+    -- carrier legs (C-supplied at instances; the schema's explicit hypotheses):
+    (hblocks : ∀ p ∈ I.sides, ∀ q ∈ I.linFac p,
+      ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
+        Fpq.natDegree = I.classCount p q)
+    (hblocksHi : ∀ p ∈ I.sides, ∀ q ∈ I.hiFac p,
+      ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
+        Fpq.natDegree = I.classCountHi p q)
+    (hpart : True)  -- the product/disjointness leg; typed at GC-13 resolution
+    : ∃ blocks : List (Polynomial O),
+        B.F = blocks.prod ∧
+        (blocks.map Polynomial.natDegree).sum = B.F.natDegree
+
+/-- **E.58** [lemma] The per-class refine quartet (HE7-13′(b)–(e)). -/
+axiom refine_quartet {O : Type*} [CommRing O] {K : Type*} [Field K]
+    (C : SlotCarrier O K)
+    (hneg : ∀ A, C.hgt (-A) = C.hgt A ∧ C.dig (-A) = - C.dig A)
+    (hsame : ∀ (a b : Polynomial O) (k : ℤ), C.hgt a = (k : WithTop ℤ) →
+      C.hgt b = (k : WithTop ℤ) → C.dig a = C.dig b → (k : WithTop ℤ) < C.hgt (a - b))
+    (hhigh : ∀ (a b : Polynomial O) (k : ℤ), C.hgt a = (k : WithTop ℤ) →
+      (k : WithTop ℤ) < C.hgt b → C.hgt (a + b) = (k : WithTop ℤ) ∧
+        C.dig (a + b) = C.dig a)
+    {w : Polynomial O} {lam : ℤ} (hw : C.hgt w = (lam : WithTop ℤ)) :
+    (∀ a, C.hgt a = (lam : WithTop ℤ) → C.dig a = C.dig w →
+      (lam : WithTop ℤ) < C.hgt (a - w)) ∧
+    (∀ a, C.hgt a = (lam : WithTop ℤ) → C.dig a ≠ C.dig w →
+      C.hgt (a - w) = (lam : WithTop ℤ) ∧ C.dig (a - w) = C.dig a - C.dig w) ∧
+    (∀ a (μ : ℤ), μ < lam → C.hgt a = (μ : WithTop ℤ) →
+      C.hgt (a - w) = (μ : WithTop ℤ) ∧ C.dig (a - w) = C.dig a) ∧
+    (∀ a (ν : ℤ), lam < ν → C.hgt a = (ν : WithTop ℤ) →
+      C.hgt (a - w) = (lam : WithTop ℤ) ∧ C.dig (a - w) = - C.dig w)
+
+/-- **E.59** [lemma] The per-block level-jump gate (`μ ≥ 4` at any jump). -/
+axiom block_jump_gate {k ℓ d L : ℕ} (hk : 2 ≤ k) (hld : 2 ≤ ℓ * d)
+    (hL : L = k * (ℓ * d)) : 4 ≤ L
+
+/-- **E.59** [lemma] Non-propagation at `μ ≤ 3`. -/
+axiom no_jump_of_mu_le_three {μ L : ℕ} (hμ : μ ≤ 3) (hLμ : L ≤ μ) : ¬ 4 ≤ L
+
+/-- **E.60** [theorem] THEOREM HE7.C, schema form (the ladder is finite at every degree). -/
+axiom ladder_finite_bounds (μ : ℕ → ℕ) (J : ℕ)
+    (h4 : ∀ i ≤ J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
+    2 ^ (J + 1) ≤ μ 0 ∧ (μ 0 = 4 → J ≤ 1) ∧ (μ 0 ≤ 7 → ∀ i, 1 ≤ i → i ≤ J → μ i ≤ 3)
+    ∧ (2 ≤ J → 8 ≤ μ 0)
+
+/-! ## §9 — THE `(H-VARTHETA-RES)_i ∧ 𝒲_(≤i)` INDEXED CARRIERS (E.61–E.64) -/
+
+-- BLOCKED: GC-13/GC-14 resolution (§12 BLOCKED-UNTIL-RESOLUTION; the `supplied : True`
+-- placeholder is typed when chapter C's letter layer and chapter D's ϑ table freeze).
+/-- **E.61** [def] `(H-VARTHETA-RES)_i` (Display A, ∀ i ≥ 3): the level-i deep-twist units are
+the letter-monomial residues, correctly oriented per chapter D's canonical ϑ table
+[GC-14 anchor: EFF.GENTOW2 orientation records, supplied-by chapter D]. -/
+structure VarthetaRes (i : ℕ) : Prop where
+  supplied : True   -- typed at GC-13/GC-14 resolution; see the node's SIGNATURE NOTE
+
+-- BLOCKED: GC-13 resolution (content is chapter D's T5 w-frame layer).
+/-- **E.62** [def] `𝒲_(≤i)` (Display A, ∀ i ≥ 3): the w-frame holds through level `i`.
+Content [supplied-by: chapter D (T5)]; E declares the socket. -/
+structure WFrame (i : ℕ) : Prop where
+  supplied : True   -- typed at GC-13 resolution against chapter D's T5 layer
+
+/-- **E.63** [def] The Display-A `∀ i ≥ 3` conjunct, packaged. -/
+def DeepTwistConjunct : Prop := ∀ i, 3 ≤ i → VarthetaRes i ∧ WFrame i
+
+/-- **E.63** [lemma] The conjunct constrains nothing at ladder depth ≤ 2. -/
+axiom deepTwist_vacuous_shallow (Λ : LadderData) (h : Λ.rungs.length ≤ 1) :
+    ∀ i, 3 ≤ i → Λ.rungs.length + 1 < i ∨ True
+
+/-- **E.64** [lemma] Depth ≥ 3 is unreachable below `n = 16` (necessary direction, R3-rider). -/
+axiom depth3_needs_16 {D₀ μ₀ J : ℕ} (hD : 2 ≤ D₀) (hJ8 : 2 ≤ J → 8 ≤ μ₀)
+    (hJ : 2 ≤ J) : 16 ≤ D₀ * μ₀
+
+/-! ### NODE E.24 — the chapter-I package (placed here per §12: forward references to
+§6's obligation carriers and §9's indexed carriers). -/
+
+/-- **E.24** [def] Display A's `HE7A[…]` conjunct: the σ-ladder carrier suite holds for the
+block — packaged for chapter I's hypothesis structure. -/
+def HE7APackage {O : Type uO} [CommRing O] {K : Type uK} [Field K]
+    (C : SlotCarrier O K) (B : BlockData C) : Prop :=
+  Nonempty (RungInterface.{uO, uK, uW} C B)
+
+/-- **E.24** [def] The full chapter-E supply to chapter I: the package at every rung of a
+ladder, plus the carried obligations. -/
+structure LadderSupply {O : Type uO} [CommRing O] {K : Type uK} [Field K]
+    (C : SlotCarrier O K) (B : BlockData C) : Prop where
+  package : HE7APackage.{uO, uK, uW} C B
+  lb1 : LB1Carrier.{uO, uK, uW} C B           -- E.39
+  mp1 : MP1Carrier.{uO, uK, uW} C B           -- E.40
+  vartheta : ∀ i ≥ 3, VarthetaRes i           -- E.61 (with E.62's 𝒲 conjunct at I)
 
 end LeanspecE
