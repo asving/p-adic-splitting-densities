@@ -5917,3 +5917,58 @@ sweep now ENFORCED by the new elab guards); the owner's next
 visit reads: the A-C.6 signature blocks (cites), the A-I.1
 field-list changes, HYP.142's bucket one-liner, and the
 B-BOX-1 nod that closes H.123.
+
+**2026-08-16 DATED APPEND #82 — LAW E-W FULLY IN LEAN (lawEW_pin
+lands, C.127 complete); A-C.6 OWNER-READY (the gate-(b) queue is
+TWO statements); A-I.1 SIGNED with FINDING I-D13 — the capstone
+hypothesis block as 0e-signed was CONTRADICTORY, now cured by
+canonical-config sockets; A-H.8 signed the b3 re-split and the
+b-chain is at b1+b2 landed / b3 fleet running / b4 research.**
+(1) C wave 12/13: lawEW_pin LANDED via the C.129 slot-height
+calculus (all five clauses proved) — the LAW E-W theorem is now
+end-to-end machine-checked from battery to blueprint to Lean;
+C.13/C.14 repaired at the ϖ-read; C.109-i/-ii/-iii landed; C.47
+surfaced a THIRD opaque-choose defect (resLift 0 formally
+independent) with a one-definition cure — wave 13 executing;
+C.128 waits on C.74 (one line) — wave 13 executing. (2) A-C.6
+COMPLETE, NO axiom landed: C.66 redraft (the slope fence
+adjudicated as the source's own printed counterexample; degree
+binders conservative with the owner's strike option displayed),
+C.94 redraft (self-loop excluded; the record's weaker suggestion
+was ITSELF refutable — caught; satisfiability via a CONSTRUCTED
+DescentStepR term), C.92 EXITS the queue (hypothesis-form).
+OWNER SIGNATURE BLOCKS at A-C.6 §I.6/§II.5. Two disclosures:
+four sorryAx found+fixed in the killed attempt's own cert
+record; THE REPO HOLDS NO [AGNPRW] COPY — every C.94 clause
+carries a second corpus-side justification; the ~2-min print-
+read is OWED. (3) A-I.1 SIGNED (8 commits, gate green 9119
+jobs): NEW FINDING I-D13 (stop-the-line) — the ∀ρ ladder field
+is not merely undischargeable but REFUTABLE (carriers certified
+FALSE at legal in-range instances), so CapstoneHypotheses was
+UNINHABITED and I.15–I.18 fired from a contradiction. Cure:
+I.10a/I.10b CanonicalLadderConfig/CanonicalDeepTwistConfig
+sockets (True bodies, owed at chapter C's tower freeze),
+PROVED strength-neutral today; NEW deepTwist field consumes
+E.63 (the 𝒲 half now has a carrier — I-D4 cured); I-D5/I-D6/
+I-D9 signed (the menu-law enumeration clause restored with
+non-triviality certified; I.01 re-pointed at the A-C.6
+redraft); I-D7/I-D8 RULED — the exhibited weld shapes are
+REFUTABLE at all-sites quantification (proved in the gate), so
+the True placeholders stand and the w1 debt is named. THE
+NON-SWALLOWING FENCE installed (no carrier field guarded by a
+condition implying its own carrier — two landed traps named).
+NO FLEET AGENT MAY FIRE ON I.10 until C types the sockets.
+(4) A-H.8 SIGNED (b3 three-way split; the FALSE sketch step
+preserved twice, byte-identical; F-1/F-2/F-3 verification
+findings; SIZE 60→360; the B39a human-review-flag rider is
+owner-facing). b3-i/ii/iii fleet RUNNING. DAG-H: the A-H.7
+2-cycle cut EXPOSED a 3-cycle through b4; my first cut commit
+claimed acyclicity FALSELY — corrected in 3f572376 (second
+assembly-direction edge cut, DFS re-verified ACYCLIC; the
+correction is on the record). (5) OWNER READING LIST (current,
+complete): (a) sign C.66 + C.94 redrafts (blocks §I.6/§II.5 of
+A-C.6); (b) the B-BOX-1 nod or B.62 order (closes H.123);
+(c) A-I.1's field-list changes (I.10a/I.10b + deepTwist —
+flagged, strength-neutral); (d) the B39a flag (sign-as-read or
+promote first); (e) HYP.142's bucket one-liner; (f) the AGNPRW
+print-read (~2 min); (g) A-3 browser riders (standing).
