@@ -1765,6 +1765,17 @@ and the key degree at least doubles at every jump while `2·keyDeg₂ ≤ deg s'
 history has at most `log₂ (deg f)` jumps — the Lean shadow of the source's *"the condition
 `deg(φ) < deg(ϕ)` inside the second for loop may occur only a finite number of times"*).
 
+**⚠ PROVENANCE OF THE §5.5 QUOTES (A-C.6, disclosed at the statement, not only in the
+amendment).** The repo holds **NO copy of [AGNPRW]** — `docs/references/` carries the FGMN layout
+print, `HigherNewton.tex` and the Montes blueprint, and nothing else. What IS verifiable in-repo
+is **Thm 5.6's statement and proof sketch** (quoted verbatim in
+`docs/CITE_SCOPE_RESOLUTION_2026-08-13.md`, number corrected 5.2 → 5.6 by
+`docs/CITE_NUMBERING_AUDIT_2026-08-16.md` §2.2 against the publisher abstract and two
+accepted-version copies). **The Def 5.5 clause texts quoted below are NOT verifiable against any
+in-repo print**; they are the drafting unit's reading. Each clause below therefore carries a
+corpus-side justification that stands without the quote (blueprint amendment A-C.6 §II.3's
+two-column table), and closing the caveat needs a print-read of published §5.5 — booked as OWED.
+
 **THE `refine` CLAUSES, each from [AGNPRW] published §5.5** (accepted version, compiled
 2023-12-11; A-3 audit §3 §8):
 
