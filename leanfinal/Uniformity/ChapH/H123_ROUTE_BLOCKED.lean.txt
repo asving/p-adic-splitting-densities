@@ -1,0 +1,234 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapB.B63
+import Uniformity.ChapH.H123a
+
+/-!
+# H123_ROUTE_BLOCKED — the obstruction record for NODE H.123 (bridge-a)
+
+**Chapter H, NODE H.123** (`blueprint/CHAP-H_general_induction.md` §17.3, the S-1 bridge).
+Kept as `.lean.txt`, OUTSIDE the build, per the B.42 precedent
+(`ChapB/B42_ROUTE_BLOCKED.lean.txt`).  It compiles at the 4.31 pin, sorry-free; its axiom
+footprint is Lean core plus `Uniformity.Density.Leaf.exists_slope_factorization` **only** where
+it re-reads B.63 (the `#print axioms` block at the end shows exactly which).
+
+**VERDICT: NODE H.123 is BLOCKED — not weakened, not landed.**  The reachable part (the
+recentring injection H.123a and the count H.123c) IS landed, in
+`Uniformity/ChapH/H123a.lean`, sorry-free with a Lean-core footprint.  What is blocked is
+bridge-a (H.123b): *a state the CONSERVATIVE reader decides is semantically `DecidedAt`*.
+
+## The target, and the exact remaining gap
+
+H.123's signed statement (`leanspec/Leanspec/ChapH.lean`, stub `undecidedCount_le_uCluster`) is
+transcribed below as `H123Target` — a `Prop`, *stated, not asserted*.  The landed reduction
+
+```lean
+Uniformity.Density.Induction.undecidedCount_le_uCluster_of_bridge
+```
+
+proves `H123Target` from the single hypothesis
+
+```lean
+(hbridge : ∀ c : ClusterState O m N, UndecidedAt O m N c.1 → ClusterUndecided O π m N c)
+```
+
+so the entire node reduces to `hbridge`, i.e. (contrapositive, and this is the blueprint's own
+phrasing) *a cluster state outside H.118's conservative undecided predicate has a
+lift-independent `typeOf`*.
+
+## OBSTRUCTION 1 — `B-BOX-1`, and it bites INSIDE H.123's signed scope
+
+H.123's signed binder list carries `hm : 2 ≤ m` and **no `m ≤ 3`** (unlike H.121/H.122, which
+carry `hm3 : m ≤ 3` because D-H17.1 empties the CS bucket only there).  So bridge-a must hold at
+every `m ≥ 2`.
+
+Its DEC leg — H.111 (c): no drain, no CS event, no child ⟹ semantically decided — has exactly
+one route in this corpus: B.42's side dissection, B.48's residual dissection, and B.63
+`typeOf_of_separable_residuals`, which reads the type off `order1Type`.  B.63's second
+hypothesis is
+
+```lean
+(hperim : ∀ u ℓ, 0 < ℓ → Nat.Coprime u ℓ → ∀ gS, gS.Monic → gS ∣ f → IsPure φ gS u ℓ → …
+    ∀ ψ, ψ.Monic → Irreducible ψ → (∃ c : (resField φ)ˣ, resPoly π φ gS u ℓ hne H₀ = c • ψ) →
+      ((ℓ = 1 ∧ φ.natDegree = 1) ∨ ψ.natDegree = 1 ∨
+        ∀ g' ∈ monicFactors gS, φ.natDegree * ψ.natDegree ∣ inertiaDegOf g'))
+```
+
+At the cluster key `φ = X` we have `φ.natDegree = 1`, so the first disjunct is FREE at `ℓ = 1`
+and the second is FREE at a linear residual factor.  **Both fail together as soon as
+`ℓ ≥ 2` and `deg ψ ≥ 2`** — `disjuncts_fail_at_quadratic_residual` below is the machine-checked
+statement of that failure — and the surviving disjunct is verbatim B.61's `hBOX`, i.e.
+`B-BOX-1`, which is an UNSIGNED carried hypothesis of this corpus
+(`ChapB/BBox1CiteStatement.lean`: *"`B-BOX-1` remains an explicit hypothesis everywhere"*).
+
+**The corner is realized inside the scope, at `m = 4`.**  A block of a `(u, ℓ)`-side with
+residual factor `ψ` of multiplicity `a` occupies degree `ℓ · deg φ · a · deg ψ` (B.48's third
+clause); at `φ = X`, `a = 1`, `ℓ = deg ψ = 2` that is `4`, so it fits in a degree-`m` cluster
+polynomial exactly when `m ≥ 4` (`bbox1_corner_degree_arithmetic` below).
+
+*The witness, worked by hand (not formalized here — no corpus API computes a residual polynomial
+from a numeral):* over `ℤ₂`, `f = X⁴ + 2X² + 4`.  Its `X`-Newton polygon has the single side from
+`(0, 2)` to `(4, 0)`, slope `−1/2`, i.e. `(u, ℓ) = (1, 2)`; its residual polynomial is
+`y² + y + 1`, irreducible over `𝔽₂`; hence `f` is irreducible with `(e, f) = (2, 2)`.  Read as a
+cluster state at `m = 4` (all four coefficients residually zero) it is DRAIN-free
+(`v(a₀) = 2 < N` for `N ≥ 3`), CS-free (`ψ² ∤ ψ`), and CHILD-free (the only integer-slope
+recentring `x ↦ 2(y + w)` divides out to `4(y+w)⁴ + 2(y+w)² + 1 ≡ 1 mod 2`, multiplicity `0` at
+every centre) — so it is a **DEC state**, and bridge-a must decide it.  It really is decided; the
+corpus simply cannot prove that without `B-BOX-1`.
+
+**§17.0's supplier-gate table prices this outcome in advance:**
+*`B-BOX-1` (`ℓ ≥ 2 ∧ d ≥ 2` leaves) → return `BLOCKED: B-BOX-1`.*
+
+## OBSTRUCTION 2 — the β assembly (independent of obstruction 1)
+
+Even strictly below the `B-BOX-1` corner, bridge-a needs the α and β legs of the recursion, i.e.
+`typeOf` of a parent cluster polynomial assembled from its children.
+
+* **α is reachable.**  `alphaChild_spec` (H.115 clause i) presents, at EVERY lift `a` of the
+  class, `(monicPoly a).comp (C (π ^ k) * (X + C ŵ)) = C (π ^ (m k)) * monicPoly b` with
+  `proj b = alphaChild`; `typeOf_shift` (HYP.05) and `typeOf_scale` (HYP.06) then give
+  `typeOf (monicPoly a) = typeOf (monicPoly b)`, so `DecidedAt` transports from the child.
+* **β is NOT.**  `betaChild_spec` (H.116 clause i) gives only
+
+  ```lean
+  (monicPoly a).comp (C (π ^ k) * (X + C ŵ)) = C (π ^ D) * (monicPoly b * H')
+  ```
+
+  with the COFACTOR `H'` existentially bound and otherwise UNCONSTRAINED (its only recorded
+  property, inside the proof, is that its reduction is coprime to `X ^ μ`).  `typeOf_mul` then
+  gives `typeOf (parent) = typeOf (monicPoly b) + typeOf H'`, and **no landed lemma reads
+  `typeOf H'`**: the cofactor is not a cluster state (its coefficients are not residually zero),
+  so no H.106-carrier statement applies to it, and no induction hypothesis of the (degree,
+  window) measure covers it.
+
+  Supplying the missing leg means re-running the B.42 slope dissection and the B.48 residual
+  dissection *against* H.116's extraction — matching each `(p, ψ)` block of the dissection with
+  the corresponding child through a monic-factor uniqueness argument, then reassembling with
+  `typeOf_mul` over the double product.  That is a chapter-B-scale piece of new mathematics
+  (it is the same content as the repo's standing obligation *"extend classifier faithfulness
+  from order ≤ 1 to order ≥ 2"*), not a leaf-sized proof.
+
+## NOT claimed by this record
+
+That `H123Target` is FALSE.  It is expected to be true — the conservative reader is pessimistic
+by construction (D-H17.1), so it can only over-count.  What is claimed is that the ROUTE through
+the landed layer is unreachable at the signed scope, for the two reasons above.
+
+## Retirement route
+
+1. Sign `B-BOX-1` (the gate-(b) artifact is already stated and wired:
+   `ChapB/BBox1CiteStatement.lean`, `typeOf_leaf_of_cite`), OR restate H.123 with `hm3 : m ≤ 3`
+   — a statement change, and one that would then need H.121/H.122's scope everywhere H.123 is
+   consumed.
+2. Land the β assembly as its own node (the `(p, ψ)`-block ↔ child matching plus the
+   `typeOf_mul` reassembly).
+3. Then H.123b is `hbridge`, and H.123 follows by the LANDED
+   `undecidedCount_le_uCluster_of_bridge`.
+-/
+
+set_option linter.style.longLine false
+
+namespace Uniformity.Density.Induction.RouteBlocked
+
+open IsLocalRing Polynomial Uniformity.Density Uniformity.Density.Induction
+
+/-! ## 1. H.123's signed statement, elaborated but NOT asserted -/
+
+/-- **NODE H.123's target**, transcribed byte-for-byte from the `leanspec` stub
+`undecidedCount_le_uCluster` (modulo the binder-to-`∀` rewriting a `Prop` needs).  Stating it
+here machine-checks that the transcription still TYPES against the landed layer; nothing in this
+file asserts it. -/
+def H123Target : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] (π : O),
+    Irreducible π → ∀ (m : ℕ), 2 ≤ m → ∀ (N : ℕ), 1 ≤ N → ∀ (zbar : ResidueField O),
+      Nat.card
+          ((undecidedSet O m N ∩
+            levelZeroStratum O m N ((X - Polynomial.C zbar) ^ m) : Set (Coeff O m N)))
+        ≤ uCluster O π m N
+
+/-- **Bridge-a (H.123b), the single remaining obligation**, as a closed `Prop`.  Contrapositive
+of the blueprint's *reader-decided ⟹ `DecidedAt`*. -/
+def BridgeA : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] (π : O),
+    Irreducible π → ∀ (m N : ℕ) (c : ClusterState O m N),
+      UndecidedAt O m N c.1 → ClusterUndecided O π m N c
+
+/-- **The reduction is COMPLETE: `BridgeA` is the whole of what is left.**  Proved by the landed
+`undecidedCount_le_uCluster_of_bridge` (`ChapH/H123a.lean`, Lean-core footprint). -/
+theorem h123Target_of_bridgeA (h : BridgeA) : H123Target := by
+  intro O _ _ _ _ _ π hπ m hm N hN zbar
+  exact undecidedCount_le_uCluster_of_bridge hπ hm N hN zbar
+    (fun c hc => h O π hπ m N c hc)
+
+/-! ## 2. OBSTRUCTION 1 — the `B-BOX-1` corner, machine-checked -/
+
+/-- **The two cheap disjuncts of B.63's `hperim` fail together** at a side of denominator
+`ℓ ≥ 2` carrying a residual factor of degree `≥ 2`, EVEN at the cluster key `φ = X` where
+`φ.natDegree = 1`.  So the third disjunct — verbatim B.61's `hBOX`, i.e. `B-BOX-1` — is forced,
+and `B-BOX-1` is an unsigned carried hypothesis of this corpus. -/
+theorem disjuncts_fail_at_quadratic_residual {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {ψ : Polynomial (Leaf.resField (X : Polynomial O))} {ℓ : ℕ}
+    (hℓ : 2 ≤ ℓ) (hψ : 2 ≤ ψ.natDegree) :
+    ¬ ((ℓ = 1 ∧ (X : Polynomial O).natDegree = 1) ∨ ψ.natDegree = 1) := by
+  rintro (⟨h1, -⟩ | h1) <;> omega
+
+/-- **The corner is realized inside H.123's signed scope.**  B.48's third clause gives a residual
+block the degree `ℓ · deg φ · a · deg ψ`; at the cluster key (`deg φ = 1`), multiplicity `a = 1`
+and `ℓ = deg ψ = 2` that is `4`, so such a block fits in a degree-`m` cluster polynomial exactly
+from `m = 4` on — and H.123's binder list stops at `2 ≤ m`. -/
+theorem bbox1_corner_degree_arithmetic {ℓ dφ a dψ : ℕ} (hℓ : ℓ = 2) (hφ : dφ = 1) (ha : a = 1)
+    (hψ : dψ = 2) : ℓ * dφ * a * dψ = 4 ∧ ∀ m : ℕ, ℓ * dφ * a * dψ ≤ m → 4 ≤ m := by
+  subst hℓ; subst hφ; subst ha; subst hψ
+  exact ⟨rfl, fun m hm => hm⟩
+
+/-- **And it is not excluded by `2 ≤ m`.**  The scope of H.123 contains `m = 4`. -/
+theorem four_in_scope : (2 : ℕ) ≤ 4 := by omega
+
+/-! ## 3. OBSTRUCTION 2 — the β cofactor, exhibited
+
+`betaChild_spec`'s conclusion is re-derived here in the shape a bridge-a proof would consume, so
+that the uncontrolled cofactor is visible as a Lean object rather than as a claim in prose. -/
+
+section Beta
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [IsAdicComplete (maximalIdeal O) O]
+
+/-- **The β leg, as far as the landed layer takes it.**  For a non-drain β state, every lift's
+recentred frame splits as `π ^ D` times (the child's development) times a COFACTOR `H'` — and
+`H'` is all that stands between this and a `typeOf` assembly, because `typeOf_mul` would finish
+immediately given `typeOf H'`.  Nothing in the corpus supplies it. -/
+theorem beta_leg_reaches_only_a_cofactor {π : O} (hπ : Irreducible π) {m N μ k : ℕ}
+    {z : ResidueField O} (hm : 2 ≤ m) (hN : 1 ≤ N) (c : ClusterState O m N)
+    (h : HasChildAt π c μ k z) (h0 : ¬ IsDrainState c) (a : Fin m → O)
+    (ha : proj O m N a = c.1) :
+    ∃ (b : Fin μ → O) (H' : Polynomial O),
+      (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C (resSect O z)))
+        = Polynomial.C (π ^ betaContent c k) * (monicPoly b * H') ∧
+      proj O μ (N - betaContent c k) b = (betaChild π c h (N - betaContent c k)).1 := by
+  obtain ⟨b, H', -, heq, hproj⟩ := betaChild_spec hπ hm hN c h h0 a ha
+  exact ⟨b, H', heq, hproj⟩
+
+end Beta
+
+end Uniformity.Density.Induction.RouteBlocked
+
+/-! ## Axiom footprint of this record
+
+`h123Target_of_bridgeA` and the two obstruction lemmas are Lean core.  The β re-read inherits
+nothing beyond Lean core either — `betaChild_spec` is a landed theorem.  B.42's
+`exists_slope_factorization` appears only through the `#print axioms` line for B.63 below, which
+is here to display the cite that a future H.123b WILL show. -/
+
+section AxCheck
+#print axioms Uniformity.Density.Induction.RouteBlocked.h123Target_of_bridgeA
+#print axioms Uniformity.Density.Induction.RouteBlocked.disjuncts_fail_at_quadratic_residual
+#print axioms Uniformity.Density.Induction.RouteBlocked.bbox1_corner_degree_arithmetic
+#print axioms Uniformity.Density.Induction.RouteBlocked.beta_leg_reaches_only_a_cofactor
+#print axioms Uniformity.Density.Leaf.typeOf_of_separable_residuals
+end AxCheck
