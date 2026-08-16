@@ -46,7 +46,17 @@ Display-A hypothesis block, the conditionality ledger, and the assembly toward
 `UniformityStatement`), landed in the isolated `leanspec` environment **before** the chapter-I
 fleet fires, in the blueprint's node order.
 
-**STATE: OPEN, AND ONE NODE IS SIGNED IN A STATE ITS OWN BLUEPRINT FORBIDS (defect I-D7).**
+**STATE (2026-08-16, after AMENDMENT A-I.1): OPEN, AND THE CAPSTONE HYPOTHESIS BLOCK IS
+CONTRADICTORY UNTIL CHAPTER C TYPES TWO SOCKETS (defect I-D13, machine-shown in the §4 gate).**
+The 0e gate signed I.10 with Display-A carrier fields quantified over ALL configurations; the
+A-E.2/A-D.2 carriers are certified FALSE at concrete legal instances, so
+`CapstoneHypotheses n` is UNINHABITED and I.15–I.18 fire from a contradiction. A-I.1 re-signs
+the two ladder fields at the ARISING configurations (NODES I.10a/I.10b — sockets whose bodies
+are owed at chapter C's freeze), which is the shape that becomes honest the moment those bodies
+land; it does NOT repair the contradiction today, and says so with a machine witness. I.10
+remains an ELABORATION GATE, not a signature (defect I-D7's verdict, upheld): **no fleet agent
+may fire on I.10.**
+
 Chapter I has landed nothing in `leanfinal` (`grep` for `CapstoneHypotheses` /
 `DecidedSliceAt` / `MenuLawAt` / `TypeOfFaithful` as a `Prop`-carrier over `leanfinal/Uniformity/`:
 zero hits), so nothing here is in the retirement state of `Leanspec.lean`'s stub lifecycle.
@@ -98,10 +108,17 @@ consumes the re-signed forms ONLY, against the LANDED declarations:
 2. **`(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}`** at the **A-D.2 form** — chapter D's SITEWISE
    `Uniformity.Density.Gauge.HVarthetaRes G K L N (v i) (ρ i) (q i)` against the level's GIVEN
    ambient residue datum, reached through E.61's typed socket `Ladder.VarthetaRes` inside E.24's
-   `vartheta` field. The voided existential `HVarthetaResVoided` is FENCED. **The `𝒲` half has no
-   field — defect I-D4**; the landed declaration that carries both halves at the typed sockets is
-   E.63's `Ladder.DeepTwistConjunct`, elaborated in the §4 gate below but NOT signed into I.10
-   (the field list is frozen).
+   `vartheta` field. The voided existential `HVarthetaResVoided` is FENCED. **[A-I.1, defect
+   I-D4 CURED] the `𝒲` half now has its own field**: `deepTwist`, consuming landed E.63's
+   `Ladder.DeepTwistConjunct` — BOTH halves at the typed E.61/E.62 sockets, one use-height
+   family `q` serving both (E.63's own fence against splitting them). The ϑ-half is consequently
+   carried twice, at the same level data; the redundancy is harmless and the field-level source
+   of truth for the `∀ i ≥ 3` conjunct is `deepTwist`.
+3. **[A-I.1, defects I-D3/I-D13] BOTH ladder fields are consumed only AT AN ARISING
+   CONFIGURATION** — `CanonicalLadderConfig` (I.10a) / `CanonicalDeepTwistConfig` (I.10b), the
+   sockets that pin the block `(C, B)` to chapter C's OM ladder and `ρ` to its canonical
+   node-point residue read. Consuming either field therefore costs a configuration certificate,
+   which is the honest price: without it the field is refutable, not merely open.
 
 ## THE SIGN-OFF COROLLARY (CONVENTIONS Part V, carried)
 
@@ -124,17 +141,19 @@ row, consumes C.92's withdrawn `fgmn_calculus_exists` (defect I-D11 records what
 
 | kind | count | note |
 |---|---:|---|
-| `def` of blueprint declarations (real bodies, stage-0e rule 1) | **7** | `NS7Termination` (I.01), `DecidedSliceAt` (I.02), `MenuLawAt` (I.03), `WindowPinningAt` (I.05), `GenhnHEAt` (I.06), `GenhnTow1At` (I.07), `TypeOfFaithful` (I.21) |
-| `structure` (real body) | **1** | `CapstoneHypotheses` (I.10) — ⚠ signed in the state §11 forbids, defect I-D7 |
-| `theorem` landed REAL (blueprint §11: "I.15–I.18 … land REAL, not axiom") | **4** | I.15–I.18 |
+| `def` of blueprint declarations (real bodies, stage-0e rule 1) | **9** | `NS7Termination` (I.01), `DecidedSliceAt` (I.02), `MenuLawAt` (I.03, RE-SIGNED at A-I.1), `WindowPinningAt` (I.05), `GenhnHEAt` (I.06), `GenhnTow1At` (I.07), `TypeOfFaithful` (I.21), **+ A-I.1's two sockets** `CanonicalLadderConfig` (I.10a), `CanonicalDeepTwistConfig` (I.10b) |
+| `def` NAMED-AND-VOIDED (refutation record, cite-forbidden) | **1** | `MenuLawAtVoided` — I.03's pre-A-I.1 form, kept so its vacuity proof survives verbatim |
+| `structure` (real body) | **1** | `CapstoneHypotheses` (I.10) — ⚠ an ELABORATION GATE, not a signature (defects I-D7, I-D13) |
+| `theorem` landed REAL (blueprint §11: "I.15–I.18 … land REAL, not axiom") | **4** | I.15–I.18 ⚠ conditionally VACUOUS today: their hypothesis is uninhabited until the I.10a/I.10b sockets are typed (defect I-D13) |
 | `axiom` stubs | **0** | chapter I signs no theorem it cannot prove at stub time; the file's ONE `axiom` is I.25's fenced, `private`, `True`-valued positive control for the AXCHK guard, consumed by nothing |
-| gate `example`s / `#check`, ALL EXECUTED | **23 `example` + 7 `#check`** | §4 gate (9 checks) · §6 gate (the `Iff.rfl` slice pin + the I.19 package-route `#check`s) · I.23 (the `q = 2`/`q = 3` anchors, the `e·f = 2` non-applicability proof, the two `n = 2` non-vacuity witnesses) |
+| gate `example`s / `#check`, ALL EXECUTED | **30 `example` + 8 `#check`** | §4 gate (14 checks, five of them A-I.1's certifications) · §6 gate (the `Iff.rfl` slice pin + the I.19 package-route `#check`s) · I.23 (the `q = 2`/`q = 3` anchors, the `e·f = 2` non-applicability proof, the two `n = 2` non-vacuity witnesses — `MenuLawAt 2` now at a REAL three-cell family) |
+| gate-local `private def` (not a blueprint declaration) | **1** | `a1LabelCell` — the σ-labelled `A1Cell 0` used by the re-signed `MenuLawAt 2` witness |
 | `[note]` nodes with no Lean file (blueprint §0.2) | **8** | I.04, I.11, I.12, I.13, I.14, I.19, I.20, I.22 — transcribed as docstring sections, nothing declared |
-| ENFORCED AXCHK guards (`#axiom_core`, I.24/I.25) | **67** | each one FAILS THE BUILD on a non-core footprint; two `elab` commands (`#axiom_core`, `#axiom_reg`) implement them |
+| ENFORCED AXCHK guards (`#axiom_core`, I.24/I.25) | **70** | each one FAILS THE BUILD on a non-core footprint; two `elab` commands (`#axiom_core`, `#axiom_reg`) implement them |
 
-**12 signed blueprint declarations** (7 `def` + 1 `structure` + 4 `theorem`), matching the
-blueprint's own file list (I01–I03, I05–I07, I10, I15–I18, I21, I23–I25 = 15 files; I.23–I.25 are
-gate files carrying no declaration).
+**14 signed blueprint declarations** (9 `def` + 1 `structure` + 4 `theorem`) — the blueprint's
+own file list (I01–I03, I05–I07, I10, I15–I18, I21, I23–I25 = 15 files; I.23–I.25 are gate files
+carrying no declaration) **plus AMENDMENT A-I.1's two new socket nodes I.10a/I.10b**.
 
 ## Gate order (GC-6.6(c)) as actually run
 
@@ -143,12 +162,24 @@ I.03's `A1Family` membership, I.02's literal-slice body, I.16's `exact`-closes-t
 (b) the `def` bodies, real; (c) the §8 numeric gates EXECUTED at `q = 2` AND `q = 3`; (d) the
 `axiom` stubs — none.
 
-## THE DEFECT LIST (stage-0e gate, 2026-08-16)
+## THE DEFECT LIST (stage-0e gate, 2026-08-16) — WITH AMENDMENT A-I.1's DISPOSITIONS
 
-Recorded here and in the 0e report; **NOT repaired in the blueprint** (CHAP-H §15 rule 5:
-elaboration failures in a stub are blueprint defects, versioned by a dated append in the
-blueprint, never patched in `leanspec`). Every stub-side adjustment made to get this file to
-elaborate is listed; nothing was adjusted silently.
+Recorded here and in the 0e report; the blueprint-side ones are now ADJUDICATED AND SIGNED by
+**AMENDMENT A-I.1** (`blueprint/CHAP-I_capstone_conditionality.md`, dated block at the end),
+which is the versioned dated append CHAP-H §15 rule 5 asks for; this file then carries the
+signed forms. Every stub-side adjustment is listed; nothing was adjusted silently.
+
+| defect | A-I.1 disposition |
+|---|---|
+| I-D1, I-D2 | out of scope here — `leanfinal`-side (duplicate declarations, roll-up gaps), cured separately |
+| **I-D3** | **RE-SIGNED**: repaired E.24 application + the arising-configuration binding (sockets I.10a/I.10b) |
+| **I-D4** | **CURED**: new `deepTwist` field at E.63's `DeepTwistConjunct` (both halves); §12 rider-(iii) and I.20's S3 row struck-and-corrected in the blueprint |
+| **I-D5** | **SIGNED**: the `@id (List (A1Cell r))` spelling is the blueprint form (reverts if H.93 lands an `abbrev`/instance) |
+| **I-D6** | **RE-POINTED**: the A-C.1 instruction struck at both blueprint sites; the live target is the A-C.6 REDRAFT `LeanspecC.NS7TerminationStatementR`, owner gate-(b) pending |
+| **I-D7, I-D8** | **RULED, not signed**: the weld carriers' `∀`-over-all-sites shapes are REFUTABLE (gate item (13)), so the placeholders stay and L-1/L-2's trigger is re-pointed at a weld site-supply socket; the missing `w1` field is a NAMED DEBT |
+| **I-D9** | **RE-SIGNED**: the two-directional σ-label enumeration, with the old form voided and its refutation preserved |
+| I-D10, I-D11, I-D12 | unchanged (recorded; not this amendment's scope) |
+| **I-D13 (NEW)** | the finding A-I.1 was written around: the Display-A carrier fields as signed are **REFUTABLE**, so the block is contradictory — see the entry below |
 
 * **I-D1 — STOP-THE-LINE, a `leanfinal` DUPLICATE-DECLARATION defect: `Uniformity.Density.Gauge.Wle`
   and `…VarthetaWConjunct` are each declared by TWO modules, which therefore cannot be imported
@@ -191,6 +222,11 @@ elaborate is listed; nothing was adjusted silently.
   QUANTIFIER DISCLOSURE chose the strongest uniform reading without the level data in view. The
   honest cure is an owner-gate-(a) field-list change binding the level data to chapter C's
   canonical instantiation; recorded, not taken.
+  **[A-I.1 DISPOSITION: BOTH HALVES SIGNED.]** The repaired application is now the blueprint's
+  own; the binding is NODE I.10a's socket (`CanonicalLadderConfig`), guarding the field. And the
+  "undischargeable" reading was too kind — see I-D13: the field is FALSE. E.24's three recorded
+  options are inherited (quantify = refutable; bundle existentially, equivalently thread as
+  structure parameters and supply at I.17 = fabricable D-D12; bind = signed).
 * **I-D4 — the `𝒲_{≤i}` half of Display A's `∀ i ≥ 3` conjunct (HYP.63) HAS NO FIELD.** I.10's
   STATEMENT says the `ladder` field packages "E.24's `LadderSupply`, which packages … the
   `∀ i ≥ 3` deep-twist carriers E.61/E.62". The LANDED E.24 packages **E.61 only**, and says so
@@ -201,6 +237,10 @@ elaborate is listed; nothing was adjusted silently.
   repair (field list frozen); the §4 gate elaborates landed `Ladder.DeepTwistConjunct` (E.63),
   which is the declaration that carries both halves at the typed sockets, so the fleet has the
   exact object to re-sign against.
+  **[A-I.1 DISPOSITION: CURED.]** The `deepTwist` field is signed at exactly that object, guarded
+  by I.10b; §12's rider-(iii) and NODE I.20's S3 row are struck-and-corrected in the blueprint
+  (both were FALSE as written, and the S3 row carried a second falsity: it called I.17 an
+  EQUIVALENCE, which it never was).
 * **I-D5 — I.03's `∀ C ∈ F` does not elaborate: `A1Family` is a plain `def`, not an `abbrev`.**
   H.93 lands `def A1Family (r : ℕ) : Type := List (A1Cell r)`; instance search does not unfold
   plain `def`s, so `failed to synthesize Membership ?m (Induction.A1Family r)`, cascading into
@@ -210,6 +250,9 @@ elaborate is listed; nothing was adjusted silently.
   **Stub-side repair:** `∀ C ∈ @id (List (Induction.A1Cell r)) F, …` — type-identical, since the
   two types are definitionally equal. Root-cause cure for the fleet: make H.93's `A1Family` an
   `abbrev`, or land a `Membership (A1Cell r) (A1Family r)` instance.
+  **[A-I.1 DISPOSITION: SIGNED.]** The `@id` spelling is now the blueprint's own form for I.03
+  (type-identical, so this is an elaboration repair and not a strength event); it reverts to the
+  plain `∀ C ∈ F` verbatim if the root cure lands at H.93.
 * **I-D6 — I.01's resolution instruction (the 2026-08-16 A-C.1 addendum) is STALE AND UNSAFE.**
   The addendum states *"the typed body is exactly `Uniformity.Density.Tower.NS7TerminationStatement`'s
   matrix … the orchestrator's stub-resolution pass may now type I.01's body — either
@@ -222,6 +265,11 @@ elaborate is listed; nothing was adjusted silently.
   `LeanspecC` draft), so the instruction is unexecutable as written as well as unsafe. *Class:
   stale blueprint instruction pointing at a refuted statement.* I.01 is landed here at its SIGNED
   `True` body, unresolved; **any fleet agent that follows the addendum lands `False`.**
+  **[A-I.1 DISPOSITION: RE-POINTED.]** Both blueprint sites (NODE I.01's A-C.1 rider and the
+  A-C.1 addendum's "I.01 UNBLOCKED" paragraph) are STRUCK with their text kept verbatim, and the
+  signed instruction names the A-C.6 REDRAFT `LeanspecC.NS7TerminationStatementR` over
+  `DescentStepR`, **cite-conditional on the owner's gate-(b) signature**: no pass may type I.01
+  before that signature; on it, the registry entry is `agnprw_termination` at gate I.25.
 * **I-D7 — I.10 is signed in a state its own blueprint FORBIDS, and the prohibition is now stale
   too.** §11's blocked table reads *"a signed I.10 stub with `True` fields is a false
   conditionality claim; forbidden"*, while I.10's own SIGNATURE block signs `jd0 : True` and
@@ -232,12 +280,21 @@ elaborate is listed; nothing was adjusted silently.
   carried verbatim at the declaration and a gate-local `example` proving the L-1/L-2 typed shape
   elaborates against the landed carriers. **The stub is not a signature: no fleet agent may fire
   on I.10 until the owner re-signs the field list.**
+  **[A-I.1 DISPOSITION: RULED — the prohibition STANDS, its blocker is RE-POINTED.]** The 0e
+  reasoning ("the placeholders are stale, the targets are landed") does not survive: the
+  consumption shapes gate item (6) exhibits quantify over ALL sites, and at least one of them is
+  REFUTABLE (item (13): `¬ ∀ (K ι) (Rh RG), W1Transport Rh RG`, at `Fin 1`/`ZMod 3`), so binding
+  the fields there would make the block contradictory a second time. L-1/L-2 must bind through a
+  weld site-supply socket (the I.10a pattern); until then `jd0`/`genhnBox2` stay `True`.
 * **I-D8 — the OM-9 `w1` honesty note has no field to attach to.** OM-9's instruction is that the
   `w1` conjunct field "should carry this note when bound". I.10's signed field list has **no `w1`
   field at all**: the W-1 sub-residue (HYP.139, MATH at full strength) rides inside the
   `genhnBox2 : 6 ≤ n → True` placeholder. F.28's landed `WeldObligations` carries three fields
   (`jd0box2`, `genhnBox2`, `w1`); I.10 carries one and a half. *Class: missing field for a carried
   ledger row.* The note is carried in this file's honesty block instead; no stub-side repair.
+  **[A-I.1 DISPOSITION: REGISTERED AS A NAMED DEBT.]** The field is owed at L-2's re-pointed
+  trigger (three fields, not two), and the OM-9 note travels with it verbatim. A-I.1 does not add
+  it now for the reason in I-D7: the only shape available today is the refutable one.
 * **I-D9 — I.03's `(A1)`-admissibility clause is VACUOUS as signed (machine-checked here).**
   `MenuLawAt n` existentially quantifies `(r, F, S)` and constrains `F` by `∀ C ∈ F, C.σ ∈ S`
   ONLY — one-directional, so `r = 0, F = []` satisfies it for **every** `S`. The §4 gate proves
@@ -248,6 +305,15 @@ elaborate is listed; nothing was adjusted silently.
   only the missing WEIGHT-correctness tie. *Class: vacuous carrier.* **No stub-side repair**
   (statements frozen). The evident re-sign is the reverse inclusion (`∀ σ ∈ S, ∃ C ∈ F, C.σ = σ`)
   plus H.94's closure predicate; that is an owner-gate-(a) event.
+  **[A-I.1 DISPOSITION: RE-SIGNED at the enumeration — the clause is CONTENTFUL, not redundant.]**
+  Adjudicated from the source: NODE I.03's STATEMENT says the cells' σ-labels *"enumerate `S`"*
+  (two-directional), and ledger HYP.26 wants a family carrying the menu's labels — the ⊇ half was
+  LOST, not absent by design. It is signed. H.94 turns out to supply a cell CALCULUS
+  (`A1Cell.prod`, `A1Cell.deltaSubst`), not a closure predicate, so nothing further is bound.
+  Certified per the A-E.2 standard in the gates: the old form's refutation preserved verbatim
+  against `MenuLawAtVoided`; the empty family PROVED not to satisfy the new clause at a nonempty
+  menu; `MenuLawAt 2` re-PROVED with a real three-cell labelled family; re-signed ⟹ voided.
+  ⚠ The re-sign kills the VACUITY, not the disclosed gap: the WEIGHT-correctness tie stays open.
 * **I-D10 — `a0` is over-demanded at `n = 0`.** `UniformityStatementDecided` guards its body with
   `0 < n`; `CapstoneHypotheses n`'s `a0 : DecidedSliceAt n` does not, so `∀ n, CapstoneHypotheses n`
   demands the decided-value law at degree 0, which the target never asks for. (`a2`'s `DrainageAt 0`
@@ -279,6 +345,22 @@ elaborate is listed; nothing was adjusted silently.
   reachable — `#check`ed in the §4 gate); I.21 **still blocked** (the maximal-order carrier does
   not exist in the tree). *Class: signed placeholders — an accounting fact, not an elaboration
   failure.*
+* **I-D13 — NEW AT AMENDMENT A-I.1, STOP-THE-LINE: the Display-A carrier fields, read over ALL
+  configurations, are REFUTABLE — so the capstone hypothesis block is CONTRADICTORY and I.15–I.18
+  fire from `False`.** I-D3 called the `∀ ρ` reading *undischargeable*; it is worse than that.
+  The A-E.2/A-D.2 re-signed carriers are machine-certified FALSE at concrete LEGAL instances —
+  `lb1_resigned_not_trivial : ¬ LB1Carrier C₁ B₁` over a real `SlotCarrier ℤ ℚ` with
+  `B₁.F = X² + X + 1`, `mp1_resigned_not_trivial : ¬ MP1Carrier C₂ B₂`,
+  `hvarthetaRes_resigned_not_trivial` (all in `verification/om4_resign_nontriviality.lean`; its
+  `LB1Carrier` is byte-identical to the landed `Uniformity.Density.Ladder.LB1Carrier` modulo
+  namespace, re-verified at A-I.1) — and the field's binders range over exactly those instances.
+  The §4 gate transports it: items (9)/(10) prove `¬ (the 0e ladder field type)` and
+  `¬ CapstoneHypotheses n` from one certified-false `(C, B)`. *Class: contradictory hypothesis
+  block (the OM-4 FINDING-0 genre with the sign flipped — FINDING 0 was a conjunct too weak to
+  say anything, this is one too strong to be true).* **Cure (A-I.1's ruling): the fields are
+  re-signed at the ARISING configurations (sockets I.10a/I.10b), and the contradiction lifts
+  exactly when chapter C types those sockets — no edit in this file can do it.** Until then:
+  no report may make a positive conditional claim from I.17, and no fleet agent may fire on I.10.
 
 ## What is real and what is a stub
 
@@ -760,7 +842,7 @@ example (n : ℕ) (h : MenuLawAt n) : MenuLawAtVoided n := by
 -- the whole HYP.82 census rests on, is LANDED and reachable.
 #check @Uniformity.Density.Tower.tower_first_live
 
--- (10) **DEFECT I-D13 (A-I.1's NEW finding), machine-TRANSPORTED: the 0e `ladder` field is not
+-- (9) **DEFECT I-D13 (A-I.1's NEW finding), machine-TRANSPORTED: the 0e `ladder` field is not
 -- undischargeable, it is FALSE.** One legal `(C, B)` at which the A-E.2 carrier fails refutes
 -- the whole ∀-over-all-configurations reading. The antecedent is certified, not assumed:
 -- `verification/om4_resign_nontriviality.lean` proves `lb1_resigned_not_trivial :
@@ -779,7 +861,7 @@ example {C : Ladder.SlotCarrier ℤ ℚ} {B : Ladder.BlockData C}
         Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C' B' G' Kt' L' N' v' ρ' q') :=
   fun hall => hlb1 (hall ℤ ℚ C B G Kt L N v ρ q).lb1
 
--- (10a) …and, WHILE THE I.10a SOCKET READS `True`, the same refutation reaches the re-signed
+-- (10) …and, WHILE THE I.10a SOCKET READS `True`, the same refutation reaches the re-signed
 -- structure: `CapstoneHypotheses n` is UNINHABITED, hence `∀ n, CapstoneHypotheses n` is FALSE
 -- and I.15–I.18 fire from a contradiction. **This is the disclosure A-I.1 exists to make.** It
 -- is repaired by TYPING I.10a (chapter C's freeze), not by any edit here: a typed socket
@@ -838,9 +920,10 @@ example : ¬ (∀ (K ι : Type) [Field K] (Rh RG : ι → K), Weld.W1Transport R
     (fun _ => (1 : ZMod 3)) (fun _ => (0 : ZMod 3))).mp (h (ZMod 3) (Fin 1) _ _)
   exact one_ne_zero ((this 0).mpr rfl)
 
--- (9) the FENCE, stated as a type: `NS7Termination`'s signed body is the placeholder, and this
+-- (14) the FENCE, stated as a type: `NS7Termination`'s signed body is the placeholder, and this
 -- is the ONE machine-visible fact about it. Anything stronger would be a resolution, which
--- defect I-D6 forbids until the C.94 REDRAFT is signed.
+-- defect I-D6 forbids until the C.94 REDRAFT (`LeanspecC.NS7TerminationStatementR`, A-C.6) is
+-- signed by the owner at gate (b) — the instruction A-I.1 re-pointed in the blueprint.
 example : NS7Termination := fun _ => trivial
 
 end GateFour
@@ -856,9 +939,12 @@ HYP.148's ∀`O` carrier; W/J (126), DU (127), W-10 (128) consumers out of cone 
 J-D0 (129) the ∀`O` binder of F's carrier statement — **now landed and checkable**, see §4 gate
 check (6); L2core (130), HUMAN_PROOF (131), local-integrals (132) quarry-side / Q7 route
 exclusion; CONV (133) `leanfinal` is monic-native; GENHN-count (134) H §7's ∀`O` statements at
-`μ = 2`. GC-8's rider-(iii) sanity check passes for these 14 — but see **defect I-D4**: the
-rider-(iii) summary sentence in §12 ("nothing else on the frozen display lacks a carrier ✓") is
-false as of this gate, because `𝒲_{≤i}` lacks one.
+`μ = 2`. GC-8's rider-(iii) sanity check passes for these 14 — and the §12 summary sentence ("nothing
+else on the frozen display lacks a carrier ✓"), which was FALSE at this gate because `𝒲_{≤i}`
+lacked a carrier (defect I-D4), is struck-and-corrected in the blueprint by A-I.1: with the
+`deepTwist` field signed, the Display-A content without a typed field is `AllOInterfaces`
+(signed non-applicability) plus the two weld placeholders and the `w1` debt (A-I.1 §I-D7/§I-D8)
+— named exceptions, which is the honest form of the row.
 
 ## §5 — THE COND RESOLUTIONS (I.12–I.14, all [note], NO LEAN FILES)
 
@@ -959,12 +1045,15 @@ The honest "capstone modulo …" statement at each stage, for the record and for
 | **S0 — today, landed** | `n = 1` drainage + total mass; `n = 2` drainage, total mass, the exact densities, THE CAPSTONE SLICE; the `q = 2, 3` instances | nothing — unconditional, Lean-core |
 | **S1 — chapters B–H land** | leaf layer, schema, rate calculus, `package_two`, the σ-μ2 chain, order-1 count laws | the gate-(b) cites where consumed (B.42 signed; C.66/C.94 REDRAFTED, unsigned; C.92 RETIRED) |
 | **S2 — the `n = 3` frontier closes** | `DrainageAt 3` (H.97 + H.98), cubic total mass unconditionally | `hrate₃` (HYP.08) + the cubic value layer (HYP.11/28/29) |
-| **S3 — the open surface** | `UniformityStatement` via I.17 | **exactly the §4 field list** — i.e. §3's 36 OPEN-MATH rows + the CITEs, and nothing else |
+| **S3 — the open surface** | `UniformityStatement` via I.17 | **exactly the A-I.1 field list** — §3's 36 OPEN-MATH rows + the CITEs, **plus chapter I's own two untyped sockets** (I.10a/I.10b) |
 
-**No stage claims more than its row.** ⚠ The S3 row's "and nothing else" claim is checkable and
-this gate finds it SHORT by one conjunct: `𝒲_{≤i}` (HYP.63) is on the display and has no field
-(defect I-D4), so "exactly the §4 field list" is at present a smaller set than Display A. The
-sentence a report may use must therefore be qualified until the field list is re-signed.
+**No stage claims more than its row.** ⚠ The S3 row was doubly wrong as composed and is
+struck-and-corrected in the blueprint by A-I.1: (i) "exactly the §4 field list" was SHORT of
+Display A by one conjunct (`𝒲_{≤i}`, defect I-D4 — now carried by `deepTwist`); (ii) the
+report sentence called I.17 an EQUIVALENCE, which it never was (one direction only). And while
+the I.10a/I.10b sockets read `True`, the block is contradictory (I-D13), so **no positive
+conditional claim may be made from I.17 at all** — the honest S3 sentence is A-I.1's, quoted in
+the blueprint at NODE I.20.
 
 ## §7 — THE `typeOf` FAITHFULNESS BRIDGE AND THE CORE-SET AUDIT LEDGER (I.21–I.22)
 
@@ -1003,7 +1092,7 @@ absorbed into the standing fresh-eyes cadence. **No audit row is a fleet node.**
 | A-3 | HYP.17 | [AGNPRW]/[GN15]/[FGMN]/Kuhlmann publisher numbering | gate-(b)-adjacent (cite) | **DONE for all three C-side cites** (A-C.1/A-C.6); residual print-reads are the owner's closing checks |
 | A-4 | HYP.98 | the core set: the types, `UniformityStatement`, the two densities, the cites, changed-definition faithfulness paragraphs | RECURRING fresh-eyes | at chapter milestones; **next at this gate's findings** |
 | A-5 | HYP.111 (def half) | what `decidedDensity` counts | rides A-4 | with A-4 |
-| A-6 | (I.10) | the field list of `CapstoneHypotheses` vs frozen Display A — one-to-one, nothing added, nothing dropped | fresh-eyes, decorrelated arm | **FIRES NOW: this gate finds it NOT one-to-one — I-D4 (`𝒲` dropped), I-D7/I-D8 (`jd0`/`genhnBox2` placeholders, no `w1`), I-D9 (`a1` vacuous), I-D10 (`a0` over-demanded at n = 0)** |
+| A-6 | (I.10) | the field list of `CapstoneHypotheses` vs frozen Display A — one-to-one, nothing added, nothing dropped | fresh-eyes, decorrelated arm | **FIRED at the 0e gate — NOT one-to-one: I-D4 (`𝒲` dropped), I-D7/I-D8 (`jd0`/`genhnBox2` placeholders, no `w1`), I-D9 (`a1` vacuous), I-D10 (`a0` over-demanded at n = 0). A-I.1 CLOSES I-D4 (field added) and I-D9 (clause re-signed), RULES I-D7/I-D8 (named debt at the weld socket), leaves I-D10 open, and ADDS I-D13 (the fields are refutable). Re-fire after the I.10a/I.10b sockets are typed.** |
 | A-7 | HYP.91 | OB-a…OB-d representation vs CHAP-H's committed text | bounded, one pass | at the H stub stage |
 -/
 
@@ -1284,46 +1373,54 @@ end LeanspecI
 /-!
 ## RESUME
 
-**LSPEC-I stage 0e COMPLETE (2026-08-16).** All 25 blueprint nodes are landed here: **12 signed
-declarations** (7 `def` + 1 `structure` real bodies + 4 `theorem`s landed REAL per §11), **zero
-`axiom` stubs** (chapter I signs no theorem it cannot prove at stub time — the one `axiom` in the
-file is I.25's fenced positive control), zero `sorry`, zero `native_decide`, `autoImplicit` off,
-and the §8 gates EXECUTED at `q = 2` AND `q = 3` (the `(1/3, 1/3, 1/3)` and `(3/8, 3/8, 1/4)`
-triples, the three `undecidedCount` spot values, the `e > 1 ∧ f > 1` non-applicability proof, and
-the two `n = 2` non-vacuity witnesses `DecidedSliceAt 2` / `MenuLawAt 2` PROVED), plus an
-**enforced** AXCHK census of 67 capstone-facing constants — all Lean-core.
-Build: `lake build Leanspec.ChapI`.
+**LSPEC-I stage 0e COMPLETE (2026-08-16), THEN AMENDED BY A-I.1 (2026-08-16, same day).** All 25
+blueprint nodes plus A-I.1's two new socket nodes are landed here: **14 signed declarations**
+(9 `def` + 1 `structure` real bodies + 4 `theorem`s landed REAL per §11), one NAMED-AND-VOIDED
+`def` (`MenuLawAtVoided`, kept for its refutation), **zero `axiom` stubs** (the one `axiom` in
+the file is I.25's fenced positive control), zero `sorry`, zero `native_decide`, `autoImplicit`
+off, the §8 gates EXECUTED at `q = 2` AND `q = 3` (the `(1/3, 1/3, 1/3)` and `(3/8, 3/8, 1/4)`
+triples, the three `undecidedCount` spot values, the `e > 1 ∧ f > 1` non-applicability proof,
+and the two `n = 2` non-vacuity witnesses `DecidedSliceAt 2` / `MenuLawAt 2` PROVED — the latter
+now at a REAL three-cell labelled family), plus an **enforced** AXCHK census of 70
+capstone-facing constants, all Lean-core. Build: `lake build Leanspec.ChapI` (green).
 
-**The four load-bearing type-diffs this gate performed** (the reason it exists): the Display-A
-`ladder` field types against LANDED `Ladder.LadderSupply` with `.lb1`/`.mp1` at the **A-E.2**
-forms (`Nonempty (BlockSuite I)` / `Nonempty (MidPeelEmission B B')`) universe-polymorphically in
-`uW`, and `.vartheta` at chapter D's **A-D.2** sitewise `HVarthetaRes`; the `a0` field is
-`Iff.rfl`-pinned to the landed `UniformityStatementDecided`; the `a2` field binds landed
-`DrainageAt`; and I.17 fires through landed `UniformityStatement.ofDecided`.
+**What A-I.1 changed here** (blueprint side: `blueprint/CHAP-I_capstone_conditionality.md`,
+AMENDMENT A-I.1 block):
 
-**Defects for the blueprint's dated-append queue (NOT patched there by this unit):** twelve,
-I-D1 … I-D12, listed in full in the header. The three the orchestrator should read first:
+1. **I.10's field list** — the `ladder` field re-signed (E.24's repaired application, guarded by
+   the new I.10a socket `CanonicalLadderConfig`), and a NEW `deepTwist` field consuming E.63's
+   `DeepTwistConjunct` (both halves of Display A's `∀ i ≥ 3` conjunct, guarded by I.10b). Owner
+   gate-(a) event, flagged.
+2. **I.03 re-signed** at the two-directional σ-label enumeration (I-D9), with the vacuous form
+   kept as `MenuLawAtVoided` and its refutation preserved verbatim; the `@id` membership
+   spelling signed (I-D5).
+3. **I.01's resolution instruction re-pointed** at the A-C.6 REDRAFT
+   `LeanspecC.NS7TerminationStatementR`, owner gate-(b) pending; the refuted A-C.1 route struck
+   at both blueprint sites, text kept (I-D6).
+4. **I-D7/I-D8 ruled**, not signed: the weld carriers' `∀`-over-all-sites shapes are refutable,
+   so the placeholders stay and the missing `w1` field becomes a named debt at a weld
+   site-supply socket.
 
-1. **I-D1 (stop-the-line, `leanfinal`)** — `Uniformity.Density.Gauge.Wle` and
-   `…VarthetaWConjunct` are DECLARED TWICE (ChapD/D55 + D63 vs ChapD/D62w), so the ChapD roll-up
-   and the chapter-E deep-twist branch are mutually un-importable. **Chapter I cannot be landed
-   in `leanfinal` at all until this is cured.**
-2. **I-D6 (unsafe instruction)** — the A-C.1 addendum tells the resolution pass to type I.01
-   against `NS7TerminationStatement`, which is MACHINE-REFUTED (proves `False`). Any agent that
-   follows it lands an inconsistency.
-3. **I-D9 (vacuous carrier)** — I.03's `(A1)`-admissibility clause is provably content-free
-   (proved in the §4 gate), so `COND:A1_n`'s resolution today certifies the MENU only. Same
-   genre as OM-4 FINDING 0, and it needs the same treatment: a re-sign, owner-gated.
+**THE ONE THING A READER MUST TAKE AWAY (defect I-D13).** The capstone hypothesis block is
+**contradictory today**: the Display-A carrier fields quantify over all configurations, and the
+carriers are certified false at concrete legal ones, so `CapstoneHypotheses n` is uninhabited
+and I.15–I.18 fire from `False`. A-I.1 installs the binding site (the two sockets) and proves
+that installing it weakens nothing today; **the contradiction lifts only when chapter C types
+the sockets.** Until then: I.10 is an elaboration gate, not a signature; no fleet agent fires on
+it; and no report makes a positive conditional claim from I.17.
 
 **Remaining external actions:** (i) `import Leanspec.ChapI` is wired into
 `leanspec/Leanspec.lean` **as a COMMENTED line with its reason** — wiring it live breaks
 `lake build Leanspec` outright, because the root imports `Uniformity` (the D62w branch) and this
-file must reach the E-side carriers (the D63 → D55 branch); machine-checked at this gate. One
-uncommenting restores the standing gate the moment I-D1 is cured; (ii) I-D1's `leanfinal` cure, then
-the ChapE/ChapF roll-up repairs of I-D2, then this file's import block reverts to the one-line
-`import Uniformity` every other chapter uses; (iii) the owner re-signs I.10's field list (I-D3,
-I-D4, I-D7, I-D8, I-D9, I-D10 are all field-list or carrier-strength events); (iv) the gate-(b)
-signatures for the C.66/C.94 REDRAFTS, after which their consumers move from `#axiom_core` to
-`#axiom_reg`; (v) as chapter I lands in `leanfinal`, retire each stub to the
-`example : <type> := <name>` diff form per `Leanspec.lean`'s stub lifecycle.
+file must reach the E-side carriers (the D63 → D55 branch); machine-checked at the 0e gate. One
+uncommenting restores the standing gate the moment I-D1 is cured; (ii) I-D1's `leanfinal` cure,
+then the ChapE/ChapF roll-up repairs of I-D2, then this file's import block reverts to the
+one-line `import Uniformity` every other chapter uses; (iii) **chapter C types I.10a/I.10b**
+(the GC-13/GC-14 pass that typed E.61/E.62), under A-I.1's NON-SWALLOWING fence — this is the
+item that repairs I-D13; (iv) the weld site-supply socket, then L-1/L-2 bind `jd0`,
+`genhnBox2` and `w1`; (v) the gate-(b) signatures for the C.66/C.94 REDRAFTS, after which their
+consumers move from `#axiom_core` to `#axiom_reg`; (vi) the owner's read of A-I.1's field-list
+change (gate (a)); (vii) as chapter I lands in `leanfinal`, retire each stub to the
+`example : <type> := <name>` diff form per `Leanspec.lean`'s stub lifecycle. Defect I-D10
+(`a0` over-demanded at `n = 0`) and I-D11 (I.25's stale registry) are recorded and still open.
 -/
