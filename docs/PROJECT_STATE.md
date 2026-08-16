@@ -5048,7 +5048,40 @@ in flight). (4) LEDGER: fifteen machine-refuted-before-proof
 statements today. ORCHESTRATOR QUEUE: DAG TSV regeneration
 (B.59/B.60 edges stale); B.43's route re-plan before scheduling;
 the stale ChapH blueprint prose (item 14 discharged by H09w);
-roll-up copyright lint; stub gates + fleets for C/E/D/F/I. — THE BLUEPRINT-COMPLETION CAMPAIGN
+roll-up copyright lint; stub gates + fleets for C/E/D/F/I.
+
+**2026-08-16 DATED APPEND #65 — THE DISSECTION ENDGAME: NS-2 IS A
+THEOREM; B.42 BECOMES THE PROJECT'S FIRST EXERCISED CITE-IMPORT
+([GN15] Thm 2.3, gate (b)); CHAPTER B AT 65/86 WITH ITS UPPER LAYER
+GATED ON THE OWNER'S SIGNATURE.** (1) LANDED through waves 11-12
+(each after refute-repair rounds A-F.8/A-F.9): B.35 (the product
+law), B.39 (the graded solve — refuted THREE times, then landed at
+the fleet-proved R3 form with the split weight bounds), B.41 (the
+graded Hensel engine), B.48 (`exists_residual_dissection` — THE
+THEOREM OF THE RESIDUAL POLYNOMIAL, NS-2), B.57, B.59/B.60 (the
+leaf theorem at the linear key), B.42a booked+proved (purity ⟺
+one-sided). A-F.9's bonus: B.71/B.72/B.79a re-signed (the φ∤f
+standing hypothesis); B.42's step-5 claim settled with proof.
+(2) B.42 (NS-1, the side dissection): signed route machine-checked
+IMPOSSIBLE (committed obstruction record: purity forces one-sided,
+so the common-slope engine can never serve the multi-side step;
+peel arithmetic independently unsatisfiable); the missing vertex
+split has NO corpus proof at general keys (EFF.W12.27 verbatim:
+"Ore's theorem — classical, cited not re-proved"; the candidate
+extraction = A-F.7's refuted B.44′). A-F.10 verdict: **gate-(b)
+cite [GN15] Thm 2.3** (COVERS-ALL-O), clause 6 (the residual tie)
+added to close a latent gap B.63's transport needed, exact Lean
+statement + faithfulness draft appended to CHAP-I's queue — now
+THREE cites deep (C.94 AGNPRW; C.66/C.92 FGMN; B.42 GN15). CHAP-B's
+§8/§9/§10 upper layer is now gated on the owner's signature instead
+of an impossible proof. (3) AUDIT A-3 (the printed-numbering
+verification, HYP.17 [CORE-SET]) LAUNCHED — it gates all three
+signatures; the owner package goes out on its verdict. (4) Ledger:
+~TWENTY machine-refuted/route-refuted signed artifacts caught
+pre-proof across the campaign (incl. the A-F.8-form's third B.39
+refutation and B.42's route obstruction). Ops: the roll-up
+generator swept .lean.txt refutation records into imports once —
+caught by the build, generator fixed, commit amended honestly. — THE BLUEPRINT-COMPLETION CAMPAIGN
 FIRES (conventions czar → adversarial gate → parallel authors), AND
 THE OWNER NARROWS SIGN-OFF TO TWO GATES.** (1) OWNER RULING (Asvin,
 recorded verbatim in CONVENTIONS_2026-08-15.md PART V, which now
