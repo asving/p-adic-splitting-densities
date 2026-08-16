@@ -455,7 +455,7 @@ is proved, at its certified geography.
 * `verification/openmath/om10_cert.py` LEG B (OM-10, committed): B-LAW 7/7, B-FLOOR,
   B-TOP, teeth T-B-COEF, T-B-ALLM; the sealed anchors.
 * `verification/openmath/bs2_lawbs2_cert.py` → `bs2_lawbs2_output.txt` (this unit):
-  **GREEN, 666 checks, 0 violations, 6/6 teeth killed** (script md5 `dae0e27c…`, output
+  **GREEN, 666 checks, 0 violations, 6/6 teeth killed** (script md5 `ec09e4d8…`, output
   md5 `59b479b2…`). Composition: BS2-ANCH 8 (om10 frame ties + BP3's sealed
   `{(0,1): 27, (1,0): 135}`); DUAL 61; BS2-STUBJ 47; BS2-FLOOR 262; **BS2-DICT 47**
   (the §4 dict bit-exact: B2–B8, BP2–BP9, F5m3–8, F5om3–5, H3m3–5 (`h = 3`,

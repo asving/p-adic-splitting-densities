@@ -388,14 +388,23 @@ def main():
     tooth('T-BS2-MIX', mut != got_bp3[(1, 0)] and mut == -27
           and got_bp3[(1, 0)] == 135,
           'mixed-digit mutant %s vs measured %s' % (mut, got_bp3[(1, 0)]))
-    # T-BS2-SIGN: c2h sign flip at p = 3, mu2 = 3 (unit-sweep frames)
+    # T-BS2-SIGN: c2h sign flip at p = 3 -- mu2 = 3 for (0,1)/(1,0), and
+    # mu2 = 4 so that the (0,0) slot EXISTS and its invariance (even
+    # c2h-power) is asserted too
     dp = results['U3_1_1'][2]         # c2h = +1
     dm_fr = cascade_frame('SGN', 3, 1, 3, c2h=-1)
     shm = dm_fr.shadow_E(ppow(dm_fr.PHI2, 3))
     dm = dm_fr.slotdict(shm[2])
+    dp4 = results['U4_1_1'][2]        # c2h = +1, mu2 = 4
+    dm4_fr = cascade_frame('SGN4', 3, 1, 4, c2h=-1)
+    shm4 = dm4_fr.shadow_E(ppow(dm4_fr.PHI2, 4))
+    dm4 = dm4_fr.slotdict(shm4[3])
     tooth('T-BS2-SIGN',
-          dm[(0, 1)] == dp[(0, 1)] and dm[(1, 0)] == -dp[(1, 0)],
-          'sign flip: +c2h %s vs -c2h %s' % (dp, dm))
+          dm[(0, 1)] == dp[(0, 1)] and dm[(1, 0)] == -dp[(1, 0)]
+          and dm4[(0, 1)] == dp4[(0, 1)] and dm4[(1, 0)] == -dp4[(1, 0)]
+          and dm4[(0, 0)] == dp4[(0, 0)],
+          'sign flip: mu2=3 +c2h %s vs -c2h %s; mu2=4 +c2h %s vs -c2h %s'
+          % (dp, dm, dp4, dm4))
     # T-BS2-OMEGA: F5/F5o pair -- top dicts equal, a lower coordinate differs
     f5, f5o = results['F5m3'], results['F5om3']
     lower_differ = any(
@@ -404,9 +413,11 @@ def main():
     tooth('T-BS2-OMEGA', f5[2] == f5o[2] and lower_differ,
           'omega pair: top equal %s, lower differ %s'
           % (f5[2] == f5o[2], lower_differ))
-    # T-BS2-TAU: the exact binomial dict must FAIL somewhere on tau frames
-    tooth('T-BS2-TAU', not all(tau_exact),
-          'tau tail never seen: all tau dicts binomial-exact')
+    # T-BS2-TAU: the exact binomial dict must FAIL at EVERY tau frame
+    # (guaranteed: the kappa1-triple deposit -kappa1*b3*c2h^3*p^(3v2) is
+    # nonzero on every swept frame, so the (0,0) slot always differs)
+    tooth('T-BS2-TAU', not any(tau_exact),
+          'tau tail unseen at some frame: %s' % (tau_exact,))
 
     # ---- the D' = 4 stub-gap frame (CONSTRUCTED REFUTATION, hard) --------
     print('  -- STUBGAP: D\' = 4, f2 = 2 (slotIdx(2u2) = 2: c0 carries'
