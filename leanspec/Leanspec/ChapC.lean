@@ -2123,6 +2123,551 @@ axiom level3_dead_at_mult2_three (mr ℓ₃ d₃ L μ₂ : ℕ) (hμ : μ₂ = 3
 axiom tower_termination_instance (J : ℕ) (a : Fin (J + 1) → ℕ) (ha0 : a 0 ≤ 6)
     (hfloor : ∀ j, 4 ≤ a j) (hdrop : ∀ j : Fin J, 2 * a j.succ ≤ a j.castSucc) : J = 0
 
+/-! ## A-C.1 §10 — THE GENTOW2 SUPPLY LAYER (C.99–C.106)
+
+Determinations (recorded per node in the blueprint): the §10 theorems live over the
+`FGMNCalculus` interface at the CONCRETE depth-2 chain `T.deepTower hπ` (the consumed
+generality — D/F's consumers are the S2 witness and depth-2/3 recipes), with the carrier
+bridge `ρ : fld 2 ≃+* AdjoinRoot T.ψ₂` as an explicit hypothesis and the repo read
+`repoRead := dv2Res` (C.104's determination: the coherent read IS the C.38a `K₂`-read).
+Every ϑ-adjacent statement is in NORMALIZER-RATIO form (C-H6/GC-14: the D-table anchor is
+cited at the nodes; no bare-ϑ orientation is committed here). -/
+
+/-- the depth-2 chain of a tower datum (def-kind with theorem-grade fields; stub-carried as
+an axiom constant + data clauses, the C.45/C.97 rule). -/
+axiom TowerDatum.deepTower {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) : DeepTower F H₀ hpin 2
+
+axiom TowerDatum.deepTower_data {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) :
+    (T.deepTower hπ).e 2 = T.e₂ ∧ (T.deepTower hπ).f 2 = T.f₂ ∧
+    (T.deepTower hπ).u 2 = T.u₂ ∧
+    Nonempty ((T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂)
+
+/-- the chain-normalizer MONOMIAL realizer: `n̂_{i+1}(k)` as an `O[x]`-polynomial from the
+`towerNorm` exponent solve and the interface's chain keys. -/
+noncomputable def FGMNCalculus.chainNorm {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    {r : ℕ} {W : DeepTower F H₀ hpin r} {e' f' u' : ℕ}
+    (I : FGMNCalculus W e' f' u') (i k : ℕ) : Polynomial O :=
+  Polynomial.C (π ^ (W.towerNorm i k).1) * Polynomial.X ^ (W.towerNorm i k).2.1
+    * ∏ j : Fin i, (I.keyAt (j.1 + 1)) ^ ((W.towerNorm i k).2.2 j)
+
+/-- the normalizer-RATIO `ϑ`-carrier (GC-14's ratio form; no orientation committed):
+`res(n̂(u')^t / n̂(t·u'))` read through the interface at grade `t·u'`. -/
+noncomputable def FGMNCalculus.thetaRatio {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    {r : ℕ} {W : DeepTower F H₀ hpin r} {e' f' u' : ℕ}
+    (I : FGMNCalculus W e' f' u') (t : ℕ) : W.fld r :=
+  I.Rgr (t * u') ((I.chainNorm r u') ^ t) * (I.Rgr (t * u') (I.chainNorm r (t * u')))⁻¹
+
+/-- the depth-3 recipe key (the R3-3-completed display; stub-side shared abbreviation for
+C.101/C.103). -/
+noncomputable def recipe3 {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (e' f' u' : ℕ)
+    (c : ℕ → AdjoinRoot (towerLabel T)) : Polynomial O :=
+  (composedKey T) ^ (e' * f')
+    - ∑ t ∈ Finset.range f', k2DigitLift T (c t) ((f' - t) * u') * (composedKey T) ^ (e' * t)
+
+/-! ### NODE C.104 [def] — the two-reads convention [signed: A-C.1; `(R-repo)` = the C.38a
+coherent read — determination recorded; `(R-FGMN)` is the interface's `Rgr`] -/
+
+noncomputable def repoRead {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (g : Polynomial O) : AdjoinRoot L.r :=
+  dv2Res L g
+
+/-! ### NODE C.99 [theorem] — `LEMMA GENTOW2-B″`, the single-`w` slot law, ratio form
+[signed: A-C.1] + the γ-calculus companion -/
+
+axiom gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
+    (hfloor : e' * W.Econst r < u') {t : ℕ} (ht : t < f') :
+    I.Rgr ((f' - t) * u') (I.chainNorm r ((f' - t) * u')) * I.thetaRatio (f' - t)
+      = (I.Rgr u' (I.chainNorm r u')) ^ (f' - t)
+
+axiom theta_letter_valued {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
+    (hfloor : e' * W.Econst r < u') :
+    I.thetaRatio 1 = 1 ∧
+    ∀ t : ℕ, ∃ j k : ℕ, I.thetaRatio t = I.letterZ 1 ^ j * I.letterZ 2 ^ k
+
+/-! ### NODE C.100 [theorem] — `LEMMA GENTOW2-B′`, the per-grade unit law, direction
+`FGMN = u · repo` [signed: A-C.1] + the honesty companion (clause (4); its consumed
+`u(β_t) = 1` form is machine-REFUTED at letter-live grades — PE4 LD2 — and DEAD) -/
+
+axiom gentow2_Bp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    (ρ : (T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂)
+    {β : ℕ} {g : Polynomial O} (hg : I.ExactGrade β g)
+    (hdeg : g.natDegree < e' * f' * T.D₂) (hfree : ¬ composedKey T ∣ g) :
+    I.Rgr β g
+      = I.Rgr β (I.chainNorm 2 β)
+        * ρ.symm ((towerLabelEquiv T hπ) (repoRead (T.levelDatum hπ) g))
+
+axiom gentow2_Bp_unit_iff {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    (ρ : (T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂)
+    {β : ℕ} {g : Polynomial O} (hg : I.ExactGrade β g)
+    (hdeg : g.natDegree < e' * f' * T.D₂) (hfree : ¬ composedKey T ∣ g)
+    (hne0 : repoRead (T.levelDatum hπ) g ≠ 0) :
+    I.Rgr β g = ρ.symm ((towerLabelEquiv T hπ) (repoRead (T.levelDatum hπ) g))
+      ↔ I.Rgr β (I.chainNorm 2 β) = 1
+
+/-! ### NODE C.101 [theorem] — `LEMMA GENTOW2-B` (r3 RESTATED): the B-law and the
+multiplicative prescription [signed: A-C.1; `κ₃ > e₂f₂u₂` an EXPLICIT hypothesis, supplied
+at leaves by C.55] -/
+
+axiom gentow2_B {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    (hkey : I.keyAt 2 = composedKey T)
+    (ρ : (T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂)
+    (hκ : T.e₂ * T.f₂ * T.u₂ < u') (he' : 0 < e') (hf' : 0 < f')
+    (hcop : Nat.Coprime u' e')
+    (c : ℕ → AdjoinRoot (towerLabel T)) (hc0 : c 0 ≠ 0) :
+    I.Rres (recipe3 T e' f' u' c)
+      = Polynomial.X ^ f'
+        - ∑ t ∈ Finset.range f',
+            Polynomial.C (I.Rgr ((f' - t) * u') (I.chainNorm 2 ((f' - t) * u'))
+              * ρ.symm ((towerLabelEquiv T hπ) (c t))) * Polynomial.X ^ t
+
+/-! ### NODE C.102 [theorem] — the letter formula [signed: A-C.1; ⚠ DETERMINATION FLAGGED
+for the cross-read: the exponent `⌊ℓ₁u₂/e₁⌋` is read at `ℓ₁ = e₂` (the level-2 clearing
+denominator) — verify against `EFF.GENTOW2.37` before fleet landing] -/
+
+axiom letter_formula {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    (ρ : (T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂) :
+    I.letterZ 2 * I.letterZ 1 ^ (T.e₂ * T.u₂ / F.e₁) = ρ.symm (AdjoinRoot.root T.ψ₂)
+
+/-! ### NODE C.103 [theorem] — `THEOREM GENTOW2-A`: the depth-3 key certificate
+[signed: A-C.1; the `[Q10]`/(H-b) `ν`-optimality clause is STRUCK (TOWERRAT-R3-1) and is
+NOT in the statement] -/
+
+axiom gentow2_A {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    (hkey : I.keyAt 2 = composedKey T)
+    (ρ : (T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂)
+    (hκ : T.e₂ * T.f₂ * T.u₂ < u') (he' : 0 < e') (hf' : 0 < f')
+    (hcop : Nat.Coprime u' e')
+    (c : ℕ → AdjoinRoot (towerLabel T)) (hc0 : c 0 ≠ 0)
+    (hadm : Irreducible (I.Rres (recipe3 T e' f' u' c)) ∧
+      (I.Rres (recipe3 T e' f' u' c)).natDegree = f') :
+    I.KP (recipe3 T e' f' u' c) ∧ Irreducible (recipe3 T e' f' u' c) ∧
+    ¬ I.nuEquiv (recipe3 T e' f' u' c) (composedKey T)
+
+/-! ### NODE C.105 [lemma] — w-blindness (ENV-C4 abstract) [signed: A-C.1; "same
+irreducible-factor degree pattern" via the UFD factor multiset] -/
+
+/-- the `w`-conjugate `P^{(w)} := w^{deg P}·P(y/w)`. -/
+noncomputable def wconj {K : Type*} [Field K] (w : K) (P : Polynomial K) : Polynomial K :=
+  Polynomial.C (w ^ P.natDegree) * P.comp (Polynomial.C w⁻¹ * Polynomial.X)
+
+axiom wconj_invariants {K : Type*} [Field K] (w : K) (hw : w ≠ 0) (P : Polynomial K)
+    (hP : P.Monic) :
+    (wconj w P).Monic ∧ (wconj w P).natDegree = P.natDegree ∧
+    (wconj w P).coeff 0 = w ^ P.natDegree * P.coeff 0 ∧
+    (Irreducible (wconj w P) ↔ Irreducible P) ∧
+    ((wconj w P).Separable ↔ P.Separable) ∧
+    Multiset.map Polynomial.natDegree (UniqueFactorizationMonoid.factors (wconj w P))
+      = Multiset.map Polynomial.natDegree (UniqueFactorizationMonoid.factors P)
+
+/-! ## A-C.1 §11 — THE HT COUNT LAYER (C.107–C.116)
+
+A-C.1 determinations (per node in the blueprint): the tree is INDEX-ENCODED (`nodes : List`,
+`parent : ℕ → ℕ`, root = 0, acyclicity `parent i < i` — no nested-inductive recursion);
+`HTNode` carries the CEILED pin data (`Pceil`, ℕ-valued — the cleared argmin form), the side
+set as a `Finset (ℕ × ℕ)` with a `sideType` function, and its orbit factor `kappa` as DATA
+(the factorial computation rule is the corpus's, recorded; C.116's manifest keeps the
+tags); the branch/global count FORMULAS land as arithmetic defs (`htBranchCount`,
+`htGlobalCount`) and the count laws tie the realization strata to them. -/
+
+/-! ### NODE C.107 [def] — the residual censuses [signed: A-C.1] -/
+
+/-- the factorization type of a polynomial (the `(deg, mult)` multiset) — stated over
+`CommRing` + UFD binders so it applies at `resField φ`'s OWN ring structure (no `Field`
+diamond; the instances are derivable from `IsKey φ` at every consumer). -/
+noncomputable def residualTypeOf {K : Type*} [CommRing K] [IsDomain K]
+    [UniqueFactorizationMonoid K] (p : Polynomial K) : FactorizationType :=
+  open Classical in
+  ⟨(UniqueFactorizationMonoid.factors p).toFinset.val.map
+    (fun q => (q.natDegree, (UniqueFactorizationMonoid.factors p).count q))⟩
+
+/-- `S_λ(K)` — the side census: monic, nonzero constant term, prescribed type. -/
+noncomputable def sideCensus (K : Type*) [CommRing K] [IsDomain K]
+    [UniqueFactorizationMonoid K] [Finite K] (lam : FactorizationType) : ℕ :=
+  Nat.card {p : Polynomial K // p.Monic ∧ p.coeff 0 ≠ 0 ∧ residualTypeOf p = lam}
+
+/-- `C₀(q)` — the level-0 configuration census: distinct monic irreducibles of the
+prescribed degrees. -/
+noncomputable def configCensus (K : Type*) [CommRing K] [IsDomain K] (d : Multiset ℕ) : ℕ :=
+  Nat.card {P : Multiset (Polynomial K) //
+    P.map Polynomial.natDegree = d ∧ (∀ q ∈ P, q.Monic ∧ Irreducible q) ∧ P.Nodup}
+
+/-! ### NODE C.108 [def] — the refinement tree and its node quantities [signed: A-C.1] -/
+
+structure HTNode where
+  /-- multiplicity `m_v`. -/
+  m : ℕ
+  /-- previous center depth `s_v` (0 at the root). -/
+  s : ℕ
+  /-- the exact polygon data, CEILED (`⌈P_v(j)⌉` — ℕ-computable from the cleared argmin). -/
+  Pceil : ℕ → ℕ
+  /-- the integral-boundary count `L_v`. -/
+  L : ℕ
+  /-- the sides `(u, ℓ)` of the node polygon. -/
+  sides : Finset (ℕ × ℕ)
+  /-- the per-side residual types `λ_{v,S}` (junk off `sides`). -/
+  sideType : ℕ → ℕ → FactorizationType
+  /-- the SIDE-TAGGED orbit factor `κ_v`, as data (the factorial rule is the corpus's
+  computation; the side tag is necessary — roots on different sides cannot be permuted). -/
+  kappa : ℕ
+
+def HTNode.default0 : HTNode := ⟨0, 0, fun _ => 0, 0, ∅, fun _ _ => ⟨0⟩, 1⟩
+
+/-- `B_v(N) = m·N − Σ_{j<m} ⌈P_v(j)⌉ − L_v`. -/
+def HTNode.B (v : HTNode) (N : ℕ) : ℕ :=
+  v.m * N - (∑ j ∈ Finset.range v.m, v.Pceil j) - v.L
+
+/-- `D_v(N) = Σ_{j<m} max(N − ((m−j)s + 1), 0)` — the CLIP is ℕ-subtraction. -/
+def HTNode.D (v : HTNode) (N : ℕ) : ℕ :=
+  ∑ j ∈ Finset.range v.m, (N - ((v.m - j) * v.s + 1))
+
+/-- the index-encoded finite tree: node `0` is the root; `parent i < i` is well-formedness. -/
+structure HTTree where
+  nodes : List HTNode
+  parent : ℕ → ℕ
+
+def HTTree.WF (t : HTTree) : Prop :=
+  ∀ i, 0 < i → i < t.nodes.length → t.parent i < i
+
+/-- the conservative cell `C_m(s)` on `ℕ∞`-height data: `v(b_j) ≥ (m−j)s + 1`. -/
+def conservativeCell (m s : ℕ) : Set (ℕ → ℕ∞) :=
+  {P | ∀ j < m, (((m - j) * s + 1 : ℕ) : ℕ∞) ≤ P j}
+
+/-- the exact node cell on members: pinned polygon + prescribed per-side residual types.
+(`π` explicit — it appears only in the membership predicate; the domain/UFD instances on
+`resField Φ` are derivable from `IsKey Φ` via `instFieldResField` at every consumer, taken
+as binders here.) -/
+def htCell (π : O) (Φ : Polynomial O) [IsDomain (resField Φ)]
+    [UniqueFactorizationMonoid (resField Φ)] (v : HTNode) :
+    Set (Polynomial O) :=
+  {f | f.Monic ∧ f.natDegree = v.m * Φ.natDegree ∧
+    (∀ j, j ≤ v.m → npHgt Φ f j = (v.Pceil j : ℕ∞)) ∧
+    ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → (u, ℓ) ∈ v.sides →
+      ∀ (hne : (sideSet Φ f u ℓ).Nonempty) (H₀ : ℕ),
+        npHgt Φ f (sideMin Φ f u ℓ hne) = (H₀ : ℕ∞) →
+        residualTypeOf (resPoly π Φ f u ℓ hne H₀) = v.sideType u ℓ}
+
+/-- `(HT-branch)`'s formula as arithmetic over the tree data. -/
+noncomputable def htBranchCount (Q : ℕ) (census : FactorizationType → ℕ)
+    (t : HTTree) (N : ℕ) : ℕ :=
+  ((List.range t.nodes.length).map (fun i =>
+      let v := t.nodes.getD i HTNode.default0
+      v.kappa * ∏ p ∈ v.sides, census (v.sideType p.1 p.2))).prod
+    * Q ^ ((((List.range t.nodes.length).map
+          (fun i => (t.nodes.getD i HTNode.default0).B N)).sum)
+        - (((List.range t.nodes.length).drop 1).map
+          (fun i => (t.nodes.getD i HTNode.default0).D N)).sum)
+
+instance : Inhabited HTTree := ⟨⟨[], fun _ => 0⟩⟩
+
+/-- the level-0 shape: branches `(d_i, m_i, tree_i)` + the level-0 orbit factor `κ₀`. -/
+structure HTShape where
+  branches : List (ℕ × ℕ × HTTree)
+  kappa0 : ℕ
+
+/-- `(HT-global)`'s formula (the branch censuses abstracted per branch). -/
+noncomputable def htGlobalCount (S : HTShape) (q : ℕ)
+    (census : ℕ → FactorizationType → ℕ) (N : ℕ) : ℕ :=
+  S.kappa0
+    * ((List.range S.branches.length).map (fun i =>
+        let b := S.branches.getD i (0, 0, default)
+        if b.2.1 = 1 then q ^ (b.1 * (N - 1))
+        else htBranchCount (q ^ b.1) (census i) b.2.2 N)).prod
+
+/-! ### NODE C.109 [lemma] — Step 1: the exact node cell [signed: A-C.1] -/
+
+axiom ht_node_cell_card (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {Φ : Polynomial O} (hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
+    [Finite (resField Φ)]  -- all derivable from hΦ; binders for elaboration
+    (v : HTNode) (N : ℕ)
+    (hvis : ∀ j, j ≤ v.m → v.Pceil j < N) :
+    Nat.card {c : Coeff O (v.m * Φ.natDegree) N //
+        ∃ a : Fin (v.m * Φ.natDegree) → O,
+          proj O (v.m * Φ.natDegree) N a = c ∧ monicPoly a ∈ htCell π Φ v}
+      = Nat.card (resField Φ) ^ v.B N
+        * ∏ p ∈ v.sides, sideCensus (resField Φ) (v.sideType p.1 p.2)
+
+/-! ### NODE C.110 [theorem] — Step 2: transfer at a repeated linear root [signed: A-C.1;
+split → 2: the conservative-cell count + the translate-residual iff] -/
+
+axiom ht_conservative_card (hπ : Irreducible π) [Finite (ResidueField O)]
+    (d a k N : ℕ) (hd : 0 < d) (hk : 0 < k) :
+    Nat.card {c : Coeff O (a * d) N //
+        ∃ b : Fin (a * d) → O, proj O (a * d) N b = c ∧
+          ∀ i : Fin (a * d), (((a - i.1 / d) * k + 1 : ℕ) : ℕ∞) ≤ addVal O (b i)}
+      = residueCard O ^ (d * ∑ j ∈ Finset.range a, (N - ((a - j) * k + 1)))
+
+axiom ht_transfer_residual_iff (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {Φ : Polynomial O} (hΦ : IsKey Φ) {a k : ℕ} (ha : 2 ≤ a) (hk : 0 < k)
+    (z : O) {G : Polynomial O} (hG : G.Monic) (hGdeg : G.natDegree = a * Φ.natDegree)
+    (hpure : IsPure Φ G k 1) (hne : (sideSet Φ G k 1).Nonempty) {H₀ : ℕ}
+    (hp : npHgt Φ G (sideMin Φ G k 1 hne) = (H₀ : ℕ∞)) :
+    (∀ j, j < a →
+        (((a - j) * k + 1 : ℕ) : ℕ∞) ≤ npHgt (Φ - Polynomial.C (z * π ^ k)) G j)
+      ↔ resPoly π Φ G k 1 hne H₀
+          = (Polynomial.X - Polynomial.C (algebraMap (ResidueField O) (resField Φ)
+              (digAt π 0 z))) ^ a
+
+/-! ### NODE C.111 [theorem] — Step 3: the fiber [signed: A-C.1 AT THE ARITHMETIC SHADOW:
+exponent nonnegativity; the multiplication-bijection engine is the booked B.37–B.40
+weighted-grading RE-PLAN — recorded] -/
+
+axiom ht_fiber_exponent_nonneg (t : HTTree) (hwf : t.WF) (N : ℕ)
+    (hvis : ∀ i, i < t.nodes.length →
+      ∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+        (t.nodes.getD i HTNode.default0).Pceil j < N) :
+    (((List.range t.nodes.length).drop 1).map
+        (fun i => (t.nodes.getD i HTNode.default0).D N)).sum
+      ≤ ((List.range t.nodes.length).map
+        (fun i => (t.nodes.getD i HTNode.default0).B N)).sum
+
+/-! ### NODE C.112 [lemma] — Step 4: `(HT-rec)` in division-free form [signed: A-C.1] -/
+
+axiom ht_rec (Q : ℕ) (hQ : 2 ≤ Q) (census : FactorizationType → ℕ)
+    (t : HTTree) (hwf : t.WF) (N : ℕ)
+    (hBD : (((List.range t.nodes.length).drop 1).map
+        (fun i => (t.nodes.getD i HTNode.default0).D N)).sum
+      ≤ ((List.range t.nodes.length).map
+        (fun i => (t.nodes.getD i HTNode.default0).B N)).sum) :
+    htBranchCount Q census t N
+        * Q ^ (((List.range t.nodes.length).drop 1).map
+            (fun i => (t.nodes.getD i HTNode.default0).D N)).sum
+      = ((List.range t.nodes.length).map (fun i =>
+          let v := t.nodes.getD i HTNode.default0
+          v.kappa * (∏ p ∈ v.sides, census (v.sideType p.1 p.2)) * Q ^ v.B N)).prod
+
+/-! ### NODE C.113 [theorem] — Step 5: termination + Ore certification [signed: A-C.1;
+split → 2; (ii)'s `B-BOX-1` inheritance is the inner hypothesis, exactly B's] -/
+
+axiom ht_depth_increase {Φ : Polynomial O} (hΦ : IsKey Φ) {G : Polynomial O} {m s : ℕ}
+    (hm : 0 < m) (hpins : ∀ j < m, (((m - j) * s + 1 : ℕ) : ℕ∞) ≤ npHgt Φ G j)
+    (htop : npHgt Φ G m = (0 : ℕ∞))
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hne : (sideSet Φ G u ℓ).Nonempty) :
+    ℓ * s < u
+
+axiom ht_leaf_certified (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {φ : Polynomial O} (hφ : IsKey φ) {g : Polynomial O} (hg : g.Monic)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) (hpure : IsPure φ g u ℓ)
+    (hne : (sideSet φ g u ℓ).Nonempty) {H₀ : ℕ}
+    (hp : npHgt φ g (sideMin φ g u ℓ hne) = (H₀ : ℕ∞))
+    (hsep : (resPoly π φ g u ℓ hne H₀).Separable)
+    {r : Polynomial (resField φ)} (hrm : r.Monic) (hri : Irreducible r)
+    (hdvd : r ∣ resPoly π φ g u ℓ hne H₀) :
+    ∃ gr : Polynomial O, gr.Monic ∧ gr ∣ g ∧
+      gr.natDegree = ℓ * (φ.natDegree * r.natDegree) ∧
+      ((∀ g' ∈ monicFactors gr, (φ.natDegree * r.natDegree) ∣ inertiaDegOf g') →
+        typeOf gr = ⟨{(ℓ, φ.natDegree * r.natDegree)}⟩ ∧ Irreducible gr)
+
+/-! ### NODE C.114 [theorem] — `(HT-branch)` + `(HT-global)` [signed: A-C.1; the strata via
+the `htRealizes` carrier; the per-node residual-type/side-tag refinements ride `htCell` and
+are BOOKED as the fleet's realizes-refinement — recorded at the node] -/
+
+/-- `f` realizes the tree `t` at the key `Φ`: cluster factors and recentered keys per node,
+child clusters dividing their parents. -/
+def htRealizes (Φ f : Polynomial O) (t : HTTree) : Prop :=
+  ∃ (G K : ℕ → Polynomial O), K 0 = Φ ∧ G 0 = f ∧
+    ∀ i, i < t.nodes.length →
+      (G i).Monic ∧
+      (G i).natDegree = (t.nodes.getD i HTNode.default0).m * (K i).natDegree ∧
+      (∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+        npHgt (K i) (G i) j = ((t.nodes.getD i HTNode.default0).Pceil j : ℕ∞)) ∧
+      (0 < i → G i ∣ G (t.parent i) ∧
+        (K i).natDegree = (K (t.parent i)).natDegree ∧
+        (K i - K (t.parent i)).natDegree < (K i).natDegree)
+
+axiom ht_branch (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {Φ : Polynomial O} (hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
+    [Finite (resField Φ)]
+    (t : HTTree) (hwf : t.WF)
+    (hroot : 0 < t.nodes.length) (N : ℕ)
+    (hvis : ∀ i, i < t.nodes.length →
+      ∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+        (t.nodes.getD i HTNode.default0).Pceil j < N) :
+    Nat.card {c : Coeff O ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) N //
+        ∃ a : Fin ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) → O,
+          proj O ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) N a = c ∧
+          monicPoly a ∈ htCell π Φ (t.nodes.getD 0 HTNode.default0) ∧
+          htRealizes Φ (monicPoly a) t}
+      = htBranchCount (Nat.card (resField Φ))
+          (fun lam => sideCensus (resField Φ) lam) t N
+
+axiom ht_global (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (S : HTShape) (Φb : ℕ → Polynomial O) (n N : ℕ)
+    (hn : n = ((List.range S.branches.length).map
+      (fun i => (S.branches.getD i (0, 0, default)).1
+        * (S.branches.getD i (0, 0, default)).2.1)).sum)
+    (hkeys : ∀ i, i < S.branches.length → IsKey (Φb i) ∧
+      (Φb i).natDegree = (S.branches.getD i (0, 0, default)).1)
+    (instD : ∀ i, IsDomain (resField (Φb i)))
+    (instU : ∀ i, UniqueFactorizationMonoid (resField (Φb i)))
+    (instFin : ∀ i, Finite (resField (Φb i))) :
+    Nat.card {c : Coeff O n N // ∃ a : Fin n → O, proj O n N a = c ∧
+        ∃ G : ℕ → Polynomial O,
+          monicPoly a = ∏ i ∈ Finset.range S.branches.length, G i ∧
+          ∀ i, i < S.branches.length → (G i).Monic ∧
+            (G i).map (IsLocalRing.residue O)
+              = ((Φb i).map (IsLocalRing.residue O))
+                  ^ (S.branches.getD i (0, 0, default)).2.1 ∧
+            ((S.branches.getD i (0, 0, default)).2.1 = 1 ∨
+              htRealizes (Φb i) (G i) (S.branches.getD i (0, 0, default)).2.2)}
+      = htGlobalCount S (residueCard O)
+          (fun i lam => @sideCensus (resField (Φb i)) _ (instD i) (instU i) (instFin i) lam) N
+
+/-! ### NODE C.115 [lemma] — specializations [signed: A-C.1 at the depth-zero clause; the
+obstruction-instance and L0-shape values are §13's executed `htSpot` rows (the D15 block)] -/
+
+axiom ht_depth_zero (Q : ℕ) (census : FactorizationType → ℕ) (v : HTNode) (N : ℕ) :
+    htBranchCount Q census ⟨[v], fun _ => 0⟩ N
+      = v.kappa * (∏ p ∈ v.sides, census (v.sideType p.1 p.2)) * Q ^ v.B N
+
+/-! ### NODE C.116 — the §11 disposition manifest (documentation node) -/
+
+section C116Manifest
+#check @HTNode.B          -- the digit-budget quantity
+#check @HTNode.D          -- the clipped history quantity (the C.53 discipline)
+#check @HTNode.kappa      -- the side-tagged orbit factor: A MANDATORY TAG (Phase-B contract)
+#check @HTNode.sideType   -- side tags: MANDATORY (roots on different sides never permute)
+#check @htBranchCount
+#check @htGlobalCount
+#check @ht_branch
+#check @ht_global
+end C116Manifest
+
+/-! ## A-C.1 §12 — LEVEL-`N` TOWER CERTIFICATES (C.117–C.122) -/
+
+/-! ### NODE C.117 [def] — level-2 window visibility [signed: A-C.1; abscissa-0-free: the
+bound is on every consulted pin, per GC-1's visibility rule] -/
+
+def Visible₂ {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (N : ℕ) : Prop :=
+  ∀ j, j ≤ f.natDegree / L.keyDeg₂ → dv2Pin L Ψ f j ≠ ⊤ →
+    dv2Pin L Ψ f j < (((F.e₁ * L.ℓ) * N : ℕ) : ℕ∞)
+
+axiom Visible₂_mono {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) {N N' : ℕ} (h : N ≤ N') :
+    Visible₂ L Ψ f N → Visible₂ L Ψ f N'
+
+/-! ### NODE C.118 [lemma] — visible reads are window functions [signed: A-C.1; B.77's own
+split: heights half / residual half] -/
+
+axiom dv2_read_congr {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [Finite (ResidueField O)]
+    {Ψ : Polynomial O} {n N : ℕ} {a a' : Fin n → O}
+    (hc : proj O n N a = proj O n N a')
+    (hvis : Visible₂ L Ψ (monicPoly a) N) {j : ℕ} (hj : j ≤ n / L.keyDeg₂) :
+    dv2Pin L Ψ (monicPoly a) j = dv2Pin L Ψ (monicPoly a') j
+
+axiom dv2_read_congr_res {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [Finite (ResidueField O)]
+    {Ψ : Polynomial O} {n N : ℕ} {a a' : Fin n → O}
+    (hc : proj O n N a = proj O n N a')
+    (hvis : Visible₂ L Ψ (monicPoly a) N)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂)
+    (hne : (dv2SideSet L Ψ (monicPoly a) u₂ ℓ₂).Nonempty)
+    (hne' : (dv2SideSet L Ψ (monicPoly a') u₂ ℓ₂).Nonempty) :
+    dv2ResPoly L Ψ (monicPoly a) u₂ ℓ₂ hne = dv2ResPoly L Ψ (monicPoly a') u₂ ℓ₂ hne'
+
+/-! ### NODE C.119 [theorem] — the tower certificate kernel [signed: A-C.1] -/
+
+axiom tower_cert_kernel {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ N : ℕ} {a : Fin (μ₂ * T.D₂) → O}
+    (hmem : monicPoly a ∈ towerLocus T μ₂)
+    (hvis : Visible₂ (T.levelDatum hπ) (composedKey T) (monicPoly a) N)
+    {u₃ ℓ₃ : ℕ} (hℓ₃ : 0 < ℓ₃) (hcop₃ : Nat.Coprime u₃ ℓ₃) (hfloor₃ : ℓ₃ * T.E₂ < u₃)
+    (hne₃ : (dv2SideSet (T.levelDatum hπ) (composedKey T) (monicPoly a) u₃ ℓ₃).Nonempty)
+    (hsep : (dv2ResPoly (T.levelDatum hπ) (composedKey T) (monicPoly a) u₃ ℓ₃ hne₃).Separable)
+    {r₂ : Polynomial (AdjoinRoot (towerLabel T))} (hr₂m : r₂.Monic) (hr₂i : Irreducible r₂)
+    (hdvd : r₂ ∣ dv2ResPoly (T.levelDatum hπ) (composedKey T) (monicPoly a) u₃ ℓ₃ hne₃) :
+    ∀ b : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N b = proj O (μ₂ * T.D₂) N a →
+      ∃ g : Polynomial O, g.Monic ∧ g ∣ monicPoly b ∧
+        g.natDegree = (F.e₁ * T.e₂ * ℓ₃) * (F.f₁ * T.f₂ * r₂.natDegree) ∧
+        ((∀ g' ∈ monicFactors g, CBox1Side (T.levelDatum hπ) g') →
+         (∀ g' ∈ monicFactors g, (F.f₁ * T.f₂ * r₂.natDegree) ∣ inertiaDegOf g') →
+          typeOf g = ⟨{(F.e₁ * T.e₂ * ℓ₃, F.f₁ * T.f₂ * r₂.natDegree)}⟩ ∧ Irreducible g)
+
+/-! ### NODE C.120 [theorem] — the tower `DecidedAt` certificate [signed: A-C.1] -/
+
+axiom tower_decidedAt {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ N : ℕ} {a : Fin (μ₂ * T.D₂) → O}
+    (hmem : monicPoly a ∈ towerLocus T μ₂) (hsq : Squarefree (monicPoly a))
+    (hvis : Visible₂ (T.levelDatum hπ) (composedKey T) (monicPoly a) N)
+    (hsep : ∀ (u₃ ℓ₃ : ℕ), 0 < ℓ₃ → Nat.Coprime u₃ ℓ₃ → ℓ₃ * T.E₂ < u₃ →
+      ∀ hne : (dv2SideSet (T.levelDatum hπ) (composedKey T) (monicPoly a) u₃ ℓ₃).Nonempty,
+        (dv2ResPoly (T.levelDatum hπ) (composedKey T) (monicPoly a) u₃ ℓ₃ hne).Separable)
+    (hbox : ∀ g' ∈ monicFactors (monicPoly a), CBox1Side (T.levelDatum hπ) g') :
+    DecidedAt O (μ₂ * T.D₂) (typeOf (monicPoly a)) N (proj O (μ₂ * T.D₂) N a)
+
+/-! ### NODE C.121 [lemma] — existence of a certifying `N`, per member [signed: A-C.1;
+per-member ONLY — GC-9.3's no-uniform-`N` law] -/
+
+axiom exists_certifying_N {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ : ℕ} {f : Polynomial O} (hmem : f ∈ towerLocus T μ₂) (hsq : Squarefree f) :
+    ∃ N : ℕ, Visible₂ (T.levelDatum hπ) (composedKey T) f N
+
+/-! ### NODE C.122 [lemma] — the degenerate-stratum path [signed: A-C.1] -/
+
+axiom tower_cert_peel_path {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ N : ℕ} {a : Fin (μ₂ * T.D₂) → O}
+    (hmem : monicPoly a ∈ towerLocus T μ₂)
+    (hctx : BlockContext (T.levelDatum hπ) (monicPoly a))
+    (hvis : Visible₂ (T.levelDatum hπ) (composedKey T) (monicPoly a) N)
+    (hdvd : composedKey T ∣ monicPoly a)
+    (hbox : CBox1Side (T.levelDatum hπ) (composedKey T)) :
+    typeOf (monicPoly a)
+      = ⟨{(F.e₁ * T.e₂, F.f₁ * T.f₂)}
+          + (typeOf ((monicPoly a) /ₘ composedKey T)).data⟩
+
+/-! ### NODE C.106 — the §10 supply manifest (documentation node: the `#check` suite) -/
+
+section C106Manifest
+#check @gentow2_Bpp        -- B″ = C.99 (ratio form)
+#check @theta_letter_valued
+#check @gentow2_Bp         -- B′ = C.100, direction FGMN = u · repo, never inverted
+#check @gentow2_B          -- B-law + prescription = C.101
+#check @s2Witness          -- the S2 witness = C.97
+#check @shear_onesided_iff -- the shear = C.98
+#check @letter_formula     -- C.102
+#check @gentow2_A          -- the certificate = C.103
+#check @repoRead           -- the reads/naming = C.104
+#check @wconj_invariants   -- w-blindness = C.105
+end C106Manifest
+
 /-! # §§9–13 — THE THIRD STAGE, THE GENTOW2 SUPPLY LAYER, THE HT COUNT LAYER, THE LEVEL-`N`
 CERTIFICATES, AND THE GATES (C.83–C.126)
 

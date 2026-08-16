@@ -5854,10 +5854,42 @@ node or chapter D's `(ABS-G2)` (the T3 absorption — `EFF.GENTOW2.92`); the orc
 keeps ONE of the two as the Lean home at freeze (this chapter claims it; D's brief cites
 it via GC-13, so the expected resolution is: home HERE, D cites).
 
-**SIGNATURE** (shape). `theorem gentow2_Bpp [FGMNCalculus …] …` + companion
-`theorem theta_letter_valued …` (the γ-calculus, whose `res(γ₂(x₀)) = z₂` leg uses the
-C-m1 denominator-clearing mechanism — implemented via `digAt`-style clearing as in C.21,
-no fraction field).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; stated in
+NORMALIZER-RATIO form throughout (C-H6/GC-14: `thetaRatio t` is the ratio read
+`res(n̂(u')^t / n̂(t·u'))` — no bare-ϑ orientation is committed; the D-table anchor cited);
+`chainNorm` realizes `n̂_{i+1}(k)` from `towerNorm`'s exponent solve and the interface's
+chain keys].
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def FGMNCalculus.chainNorm {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    {r : ℕ} {W : DeepTower F H₀ hpin r} {e' f' u' : ℕ}
+    (I : FGMNCalculus W e' f' u') (i k : ℕ) : Polynomial O :=
+  Polynomial.C (π ^ (W.towerNorm i k).1) * Polynomial.X ^ (W.towerNorm i k).2.1
+    * ∏ j : Fin i, (I.keyAt (j.1 + 1)) ^ ((W.towerNorm i k).2.2 j)
+
+noncomputable def FGMNCalculus.thetaRatio {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    {r : ℕ} {W : DeepTower F H₀ hpin r} {e' f' u' : ℕ}
+    (I : FGMNCalculus W e' f' u') (t : ℕ) : W.fld r :=
+  I.Rgr (t * u') ((I.chainNorm r u') ^ t) * (I.Rgr (t * u') (I.chainNorm r (t * u')))⁻¹
+
+theorem gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
+    (hfloor : e' * W.Econst r < u') {t : ℕ} (ht : t < f') :
+    I.Rgr ((f' - t) * u') (I.chainNorm r ((f' - t) * u')) * I.thetaRatio (f' - t)
+      = (I.Rgr u' (I.chainNorm r u')) ^ (f' - t)
+
+theorem theta_letter_valued {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
+    (hfloor : e' * W.Econst r < u') :
+    I.thetaRatio 1 = 1 ∧
+    ∀ t : ℕ, ∃ j k : ℕ, I.thetaRatio t = I.letterZ 1 ^ j * I.letterZ 2 ^ k
+```
+(the display's `u(β_t) = ϑ(t)·w^{f₃−t}` reads off the ratio form with
+`w := I.Rgr u' (chainNorm r u')`; the reciprocity between the slot-indexed and ratio-indexed
+ϑ is the D-table's business, deliberately NOT resolved here.)
 
 **DEPENDS.** C.83/C.84 (ladder monomials) · C.92 (the interface: Cor 4.7(1)/(2),
 Thm 4.8 + Prop 1.15, Def 1.8, Lemma 3.17, Prop 1.9, Cor 4.4, eq (14)/[Q7]) · C.21/C.28
@@ -5906,10 +5938,34 @@ FULL honesty stack: its consumed form `u(β_t) = 1` is machine-REFUTED at letter
 grades (PE4 LD2), and its SOLE surviving consumer is C.101's per-height-iff sentence (the
 PE6 FOLD's unified consumption list: **the true consumption is B′(3) + B″**).
 
-**SIGNATURE** (shape). `theorem gentow2_Bp [FGMNCalculus …] …` (clauses (3)/(5); clause
-(4) as a separate companion with the refutation recorded in its docstring); the two reads
-(`(R-FGMN)`/`(R-repo)`) as companion defs against the interface + C's `digit` (the
-`twistRead`-family read at the ladder normalizer — C.104's convention layer).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; clause (3) at
+the CONCRETE depth-2 chain `T.deepTower hπ` with the carrier bridge
+`ρ : fld 2 ≃+* AdjoinRoot T.ψ₂` explicit and `digit = repoRead` (C.104, = the C.38a coherent
+read) transported through C.45's equiv; direction `FGMN = u · repo` PRESERVED in the display
+shape; clause (5) is (3) + C.92's `Rres_recipe` (a consequence, not re-signed); clause (4)
+as the companion `gentow2_Bp_unit_iff` — its consumed `u(β_t) = 1` form is machine-REFUTED
+(PE4 LD2) and DEAD, recorded].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem gentow2_Bp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    (ρ : (T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂)
+    {β : ℕ} {g : Polynomial O} (hg : I.ExactGrade β g)
+    (hdeg : g.natDegree < e' * f' * T.D₂) (hfree : ¬ composedKey T ∣ g) :
+    I.Rgr β g
+      = I.Rgr β (I.chainNorm 2 β)
+        * ρ.symm ((towerLabelEquiv T hπ) (repoRead (T.levelDatum hπ) g))
+
+theorem gentow2_Bp_unit_iff … (same context, plus hne0 : repoRead … g ≠ 0) :
+    I.Rgr β g = ρ.symm ((towerLabelEquiv T hπ) (repoRead (T.levelDatum hπ) g))
+      ↔ I.Rgr β (I.chainNorm 2 β) = 1
+```
+(`TowerDatum.deepTower` + its data clauses are the §10 layer's carrier constants — full
+text in the leanspec twin; the elided binder list of `gentow2_Bp_unit_iff` repeats
+`gentow2_Bp`'s verbatim.)
 
 **DEPENDS.** C.83/C.84 · C.92 (Cor 4.4(1), Thm 4.8 + Prop 1.15, Def 3.16, Cor 4.7) ·
 C.21 (the digit read) · C.104 (the two-reads convention).
@@ -5950,7 +6006,35 @@ the multiplicative prescription `c_t := ϑ(t)^{−1}·a_t` realizes `R_ν(Φ₃)
 iff `u(β_t) = 1` at each used slot — holding at letter-dead slots, failing at letter-live
 LD2. The pre-r3 conclusion (`R_ν(Φ₃) = ψ₃` per-height) is DEAD.
 
-**SIGNATURE** (shape). `theorem gentow2_B [FGMNCalculus …] …`.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the recipe
+lands as the shared abbreviation `recipe3` (the R3-3-completed display) with the lifts
+`k2DigitLift` (C.56a) at heights `(f'−t)·u'`; `κ₃ > e₂f₂u₂` EXPLICIT as `hκ`].
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def recipe3 {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (e' f' u' : ℕ)
+    (c : ℕ → AdjoinRoot (towerLabel T)) : Polynomial O :=
+  (composedKey T) ^ (e' * f')
+    - ∑ t ∈ Finset.range f', k2DigitLift T (c t) ((f' - t) * u') * (composedKey T) ^ (e' * t)
+
+theorem gentow2_B {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    (hkey : I.keyAt 2 = composedKey T)
+    (ρ : (T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂)
+    (hκ : T.e₂ * T.f₂ * T.u₂ < u') (he' : 0 < e') (hf' : 0 < f')
+    (hcop : Nat.Coprime u' e')
+    (c : ℕ → AdjoinRoot (towerLabel T)) (hc0 : c 0 ≠ 0) :
+    I.Rres (recipe3 T e' f' u' c)
+      = Polynomial.X ^ f'
+        - ∑ t ∈ Finset.range f',
+            Polynomial.C (I.Rgr ((f' - t) * u') (I.chainNorm 2 ((f' - t) * u'))
+              * ρ.symm ((towerLabelEquiv T hπ) (c t))) * Polynomial.X ^ t
+```
+(the multiplicative prescription and the per-height iff read off this + C.99/C.100, as the
+PROOF field routes them.)
 
 **DEPENDS.** C.55 (the hypothesis supplier at leaves) · C.92 · C.99 · C.100 · C.84 (the
 lifts).
@@ -5984,9 +6068,20 @@ three consequences (`EFF.GENTOW2.39`) transcribed as companions, including the s
 the `i = 1` cross-frame unit (C.89(ii)'s supplier: the `u1` shape is a fixed
 `z₁`-letter-power).
 
-**SIGNATURE** (shape). `theorem letter_formula [FGMNCalculus …] …` (the identification
-side needs the interface's Prop 1.15/Def 3.12 fields; the repo side is C.19/C.44's
-letters).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; inverse-free
+form (`z₂·z₁^κ = ρ⁻¹(η₂)`); **⚠ DETERMINATION FLAGGED for the cross-read:** the exponent
+`⌊ℓ₁u₂/e₁⌋` is read at `ℓ₁ = e₂` (the level-2 clearing denominator), i.e.
+`κ := T.e₂ * T.u₂ / F.e₁` — verify against `EFF.GENTOW2.37` before fleet landing].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem letter_formula {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    (ρ : (T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂) :
+    I.letterZ 2 * I.letterZ 1 ^ (T.e₂ * T.u₂ / F.e₁) = ρ.symm (AdjoinRoot.root T.ψ₂)
+```
 
 **DEPENDS.** C.19 · C.44 · C.92 · C.99's γ-calculus companion.
 
@@ -6014,7 +6109,26 @@ Lemma 5.3(2) [Q4] give `KP(ν)`-membership; Lemma 1.11 [Q1] + Cor 1.13 [Q2] give
 `R(Φ₃) ≠ 1 = R(Φ₂)` gives non-equivalence. (The `[Q10]`-scope (H-b) chain clause is
 STRUCK — TOWERRAT-R3-1; the proof consumes Cor 6.4 only at its displayed quantifier.)
 
-**SIGNATURE** (shape). `theorem gentow2_A [FGMNCalculus …] …`.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the
+admissible-target hypothesis is `hadm` (irreducible residual of the displayed degree); the
+STRUCK (H-b)/`ν`-optimality clause is NOT in the statement].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem gentow2_A {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    (hkey : I.keyAt 2 = composedKey T)
+    (ρ : (T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂)
+    (hκ : T.e₂ * T.f₂ * T.u₂ < u') (he' : 0 < e') (hf' : 0 < f')
+    (hcop : Nat.Coprime u' e')
+    (c : ℕ → AdjoinRoot (towerLabel T)) (hc0 : c 0 ≠ 0)
+    (hadm : Irreducible (I.Rres (recipe3 T e' f' u' c)) ∧
+      (I.Rres (recipe3 T e' f' u' c)).natDegree = f') :
+    I.KP (recipe3 T e' f' u' c) ∧ Irreducible (recipe3 T e' f' u' c) ∧
+    ¬ I.nuEquiv (recipe3 T e' f' u' c) (composedKey T)
+```
 
 **DEPENDS.** C.92 · C.97 · C.99 · C.100 · C.101.
 
@@ -6046,9 +6160,17 @@ the scope fence R3-2 re-invokes (transcribed as the defs' hypothesis). (ii) The
 `R₂(φ₃)` — minpoly of `z₂`); the two are equal exactly up to C.102's letter twist; NO
 bare `ψ₂` token appears in any C signature (a stub carrying one is a defect).
 
-**SIGNATURE** (shape). `def repoRead …` + the naming convention as enforced docstrings
-(the convention itself is a blueprint-level rule; the Lean artifact is the pair of
-distinctly-named carriers, which makes the conflation unwritable).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; **A-C.1
+determination:** `(R-repo)`'s coherent read IS the C.38a `dv2Res` (the per-grade
+`K₂`-evaluation of the own-side residual), so `repoRead := dv2Res` — recorded; `(R-FGMN)`
+is the interface's `Rgr` field, distinctly named, so the conflation is unwritable].
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def repoRead {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (g : Polynomial O) : AdjoinRoot L.r :=
+  dv2Res L g
+```
 
 **DEPENDS.** C.12 · C.21/C.22 · C.42 · C.92.
 
@@ -6084,8 +6206,23 @@ The `w`-DISCLOSURE is carried as the docstring: `w` is measured ≠ 1 at 6 prime
 frames and `u₃`-dependent (PE6), its closed form OPEN — no node computes it, and this
 lemma is why none needs to.
 
-**SIGNATURE** (shape). `theorem wconj_invariants {K : Type*} [Field K] …` (ENV-C4
-abstract — reusable at every level's residue field).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the degree
+pattern via the UFD factor multiset].
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def wconj {K : Type*} [Field K] (w : K) (P : Polynomial K) : Polynomial K :=
+  Polynomial.C (w ^ P.natDegree) * P.comp (Polynomial.C w⁻¹ * Polynomial.X)
+
+theorem wconj_invariants {K : Type*} [Field K] (w : K) (hw : w ≠ 0) (P : Polynomial K)
+    (hP : P.Monic) :
+    (wconj w P).Monic ∧ (wconj w P).natDegree = P.natDegree ∧
+    (wconj w P).coeff 0 = w ^ P.natDegree * P.coeff 0 ∧
+    (Irreducible (wconj w P) ↔ Irreducible P) ∧
+    ((wconj w P).Separable ↔ P.Separable) ∧
+    Multiset.map Polynomial.natDegree (UniqueFactorizationMonoid.factors (wconj w P))
+      = Multiset.map Polynomial.natDegree (UniqueFactorizationMonoid.factors P)
+```
 
 **DEPENDS.** none beyond mathlib (`Polynomial.scaleRoots`-family; landed
 `irreducible_scaleRoots_iff`, `typeOf_scale`-shapes at the residue level).
@@ -6117,7 +6254,9 @@ sourced at `EFF.GENTOW2.25`'s orientation record** — this chapter cites the an
 supplies the RATIO-form statements only. Rows 23–24 of GENTOW2's S6.1 are DESCRIPTIVE
 (HYP.66/HYP.145's gate) and have NO node — recorded here so no consumer invents one.
 
-**SIGNATURE.** documentation node (`#check` suite; no new Prop).
+**SIGNATURE** [signed: A-C.1]. documentation node (`#check` suite; no new Prop) — landed as
+the `C106Manifest` section in `leanspec/Leanspec/ChapC.lean` (ten `#check`s over the §10
+names, each with its manifest-row comment).
 
 **DEPENDS.** C.97–C.105.
 
@@ -6158,8 +6297,27 @@ census `C₀(q)` — the number of monic squarefree-type configurations realizin
 `Finset.card` definitions with the standard generating identities as companions where
 §13's gates need spot values.
 
-**SIGNATURE** (shape). `noncomputable def sideCensus (K) [Field K] [Finite K]
-(λ : FactorizationType-shape data) : ℕ` + `def configCensus …`.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; `λ` through
+GC-4's landed carrier via the new `residualTypeOf`; stated over `CommRing` + UFD binders so
+the defs apply at `resField φ`'s OWN ring structure (no `Field`-instance diamond — the
+binders are derivable from `IsKey φ` at every consumer)].
+```lean
+namespace Uniformity.Density.Tower
+
+noncomputable def residualTypeOf {K : Type*} [CommRing K] [IsDomain K]
+    [UniqueFactorizationMonoid K] (p : Polynomial K) : FactorizationType :=
+  open Classical in
+  ⟨(UniqueFactorizationMonoid.factors p).toFinset.val.map
+    (fun q => (q.natDegree, (UniqueFactorizationMonoid.factors p).count q))⟩
+
+noncomputable def sideCensus (K : Type*) [CommRing K] [IsDomain K]
+    [UniqueFactorizationMonoid K] [Finite K] (lam : FactorizationType) : ℕ :=
+  Nat.card {p : Polynomial K // p.Monic ∧ p.coeff 0 ≠ 0 ∧ residualTypeOf p = lam}
+
+noncomputable def configCensus (K : Type*) [CommRing K] [IsDomain K] (d : Multiset ℕ) : ℕ :=
+  Nat.card {P : Multiset (Polynomial K) //
+    P.map Polynomial.natDegree = d ∧ (∀ q ∈ P, q.Monic ∧ Irreducible q) ∧ P.Nodup}
+```
 
 **DEPENDS.** landed `FactorizationType` (GC-4's carrier for `λ`) · B.26/B.27's ENV-D
 census toolkit shapes.
@@ -6189,9 +6347,51 @@ count), `D_v(N) = Σ_{j<m_v} max(N − ((m_v−j)s_v + 1), 0)` (note the CLIP �
 `κ_v = ∏_{S,a} r_{v,S,a}!/∏_H r_{v,S,a,H}!` ("the side tag is necessary because roots on
 different sides cannot be permuted"), plus `κ₀(T)` at level 0.
 
-**SIGNATURE** (shape). `structure HTNode …` / `structure HTTree …` + the quantity `def`s
-(`ℚ`-free: `⌈P_v(j)⌉` enters through the cleared pin data — the ceiling of `u·j/ℓ`-form
-values is `Nat`-computable from the argmin representation).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`]. A-C.1
+determinations: the tree is INDEX-ENCODED (`nodes : List HTNode`, `parent : ℕ → ℕ`, root 0,
+well-formedness `parent i < i` — no nested-inductive recursion); `HTNode` carries the CEILED
+pin data (`Pceil : ℕ → ℕ` — `ℚ`-free per the parenthetical), the side set as
+`sides : Finset (ℕ × ℕ)` with `sideType : ℕ → ℕ → FactorizationType`, and `κ_v` as a DATA
+field `kappa` (its side-tagged factorial rule is the corpus's computation, recorded in the
+docstring; C.116 keeps the tags mandatory). Quantities:
+```lean
+namespace Uniformity.Density.Tower
+
+structure HTNode where
+  m : ℕ
+  s : ℕ
+  Pceil : ℕ → ℕ
+  L : ℕ
+  sides : Finset (ℕ × ℕ)
+  sideType : ℕ → ℕ → FactorizationType
+  kappa : ℕ
+
+def HTNode.B (v : HTNode) (N : ℕ) : ℕ :=
+  v.m * N - (∑ j ∈ Finset.range v.m, v.Pceil j) - v.L
+def HTNode.D (v : HTNode) (N : ℕ) : ℕ :=
+  ∑ j ∈ Finset.range v.m, (N - ((v.m - j) * v.s + 1))   -- the CLIP is ℕ-subtraction
+
+structure HTTree where
+  nodes : List HTNode
+  parent : ℕ → ℕ
+def HTTree.WF (t : HTTree) : Prop := ∀ i, 0 < i → i < t.nodes.length → t.parent i < i
+
+def conservativeCell (m s : ℕ) : Set (ℕ → ℕ∞) :=
+  {P | ∀ j < m, (((m - j) * s + 1 : ℕ) : ℕ∞) ≤ P j}
+
+def htCell (π : O) (Φ : Polynomial O) [IsDomain (resField Φ)]
+    [UniqueFactorizationMonoid (resField Φ)] (v : HTNode) : Set (Polynomial O) :=
+  {f | f.Monic ∧ f.natDegree = v.m * Φ.natDegree ∧
+    (∀ j, j ≤ v.m → npHgt Φ f j = (v.Pceil j : ℕ∞)) ∧
+    ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → (u, ℓ) ∈ v.sides →
+      ∀ (hne : (sideSet Φ f u ℓ).Nonempty) (H₀ : ℕ),
+        npHgt Φ f (sideMin Φ f u ℓ hne) = (H₀ : ℕ∞) →
+        residualTypeOf (resPoly π Φ f u ℓ hne H₀) = v.sideType u ℓ}
+```
+plus the count-formula defs `htBranchCount (Q census t N)` and
+`htGlobalCount (S q census N)` over `HTShape` (branches `(d_i, m_i, tree_i)` + `κ₀`) — the
+`(HT-branch)`/`(HT-global)` display arithmetic, machine-typed; full text at the leanspec
+twin (byte-fixed there).
 
 **DEPENDS.** C.06/C.07 (polygon carriers) · C.107 · landed `Coeff`, `proj`.
 
@@ -6217,8 +6417,24 @@ residual letters of the prescribed types contributes exactly `∏_S S_{λ_{v,S}}
 extra unit factor (the right-to-left sweep: one side's monic normalization fixes the
 shared vertex unit for the next — C.25's fixed-convention reads, level-1 instance).
 
-**SIGNATURE** (shape). `theorem ht_node_cell_card …` (a `Finset.card` identity over the
-window classes).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the two S2.2
+clauses in one card identity: `Q^{B_v(N)}` digits × the census product; base
+`Q = Nat.card (resField Φ)`].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem ht_node_cell_card (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {Φ : Polynomial O} (hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
+    [Finite (resField Φ)]  -- all derivable from hΦ; binders for elaboration
+    (v : HTNode) (N : ℕ) (hvis : ∀ j, j ≤ v.m → v.Pceil j < N) :
+    Nat.card {c : Coeff O (v.m * Φ.natDegree) N //
+        ∃ a : Fin (v.m * Φ.natDegree) → O,
+          proj O (v.m * Φ.natDegree) N a = c ∧ monicPoly a ∈ htCell π Φ v}
+      = Nat.card (resField Φ) ^ v.B N
+        * ∏ p ∈ v.sides, sideCensus (resField Φ) (v.sideType p.1 p.2)
+```
 
 **DEPENDS.** C.107 · C.108 · B.20 (`sideLen`/`sideDeg` — H-10's named ingredient) ·
 B.24 (`digAt`/`digPoly`) · B.28/B.30 (the priced digits) · landed `card_coeff`.
@@ -6249,8 +6465,33 @@ finite window, including when conservative bounds lie beyond the window**; and
 `#C_a(k) = Q^{D_u(N)}`. Changing the lift composes with another unitriangular translation
 — the node and fiber size are lift-independent.
 
-**SIGNATURE** (shape). `theorem ht_transfer …` — **split-mandated C.110 → 2** (the
-translate-residual iff / the unitriangular bijection + card).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; split → 2:
+`ht_conservative_card` (the `#C_a(k) = Q^{D_u(N)}` count at general block degree `d` — the
+`d·Σ`-exponent is the `Q = q^d` clearing) and `ht_transfer_residual_iff` (the
+translate-residual iff at the `(k, 1)`-side, `z̄` mapped up through `algebraMap`); the
+unitriangular-bijection and lift-independence legs are the fleet's proof content].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem ht_conservative_card (hπ : Irreducible π) [Finite (ResidueField O)]
+    (d a k N : ℕ) (hd : 0 < d) (hk : 0 < k) :
+    Nat.card {c : Coeff O (a * d) N //
+        ∃ b : Fin (a * d) → O, proj O (a * d) N b = c ∧
+          ∀ i : Fin (a * d), (((a - i.1 / d) * k + 1 : ℕ) : ℕ∞) ≤ addVal O (b i)}
+      = residueCard O ^ (d * ∑ j ∈ Finset.range a, (N - ((a - j) * k + 1)))
+
+theorem ht_transfer_residual_iff (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {Φ : Polynomial O} (hΦ : IsKey Φ) {a k : ℕ} (ha : 2 ≤ a) (hk : 0 < k)
+    (z : O) {G : Polynomial O} (hG : G.Monic) (hGdeg : G.natDegree = a * Φ.natDegree)
+    (hpure : IsPure Φ G k 1) (hne : (sideSet Φ G k 1).Nonempty) {H₀ : ℕ}
+    (hp : npHgt Φ G (sideMin Φ G k 1 hne) = (H₀ : ℕ∞)) :
+    (∀ j, j < a →
+        (((a - j) * k + 1 : ℕ) : ℕ∞) ≤ npHgt (Φ - Polynomial.C (z * π ^ k)) G j)
+      ↔ resPoly π Φ G k 1 hne H₀
+          = (Polynomial.X - Polynomial.C (algebraMap (ResidueField O) (resField Φ)
+              (digAt π 0 z))) ^ a
+```
 
 **DEPENDS.** C.108 · B.02–B.06 (developments at two keys) · B.48 (the cluster isolation)
 · B.69 (shift covariance — H-10's descent-step routing: "B.69's SOURCE routes it here",
@@ -6291,8 +6532,22 @@ E_v(𝐑) ≃ U_v(𝐑) × ∏_{u child} C_{m_u}(s_u),    #U_v(𝐑) = Q^{B_v(N)
 the exponent a nonnegative integer BY the bijection (divisibility is a consequence, not
 an assumption).
 
-**SIGNATURE** (shape). `theorem ht_fiber …` — **split-mandated C.111 → 2** (the
-multiplication bijection / the fiber assembly).
+**SIGNATURE** [signed: A-C.1 AT THE ARITHMETIC SHADOW — `ht_fiber_exponent_nonneg` (the
+"exponent a nonnegative integer BY the bijection" clause, over the tree data); the
+multiplication-bijection engine and the set-level fiber assembly are the BOOKED B.37–B.40
+weighted-grading RE-PLAN (the node's own DEPENDS expected it) — recorded].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem ht_fiber_exponent_nonneg (t : HTTree) (hwf : t.WF) (N : ℕ)
+    (hvis : ∀ i, i < t.nodes.length →
+      ∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+        (t.nodes.getD i HTNode.default0).Pceil j < N) :
+    (((List.range t.nodes.length).drop 1).map
+        (fun i => (t.nodes.getD i HTNode.default0).D N)).sum
+      ≤ ((List.range t.nodes.length).map
+        (fun i => (t.nodes.getD i HTNode.default0).B N)).sum
+```
 
 **DEPENDS.** C.109 · C.110 · B.37–B.40 (the graded-coprime engine, consumed or re-run at
 the weighted grading — RE-PLAN if a weighted-grading generalization of B.39 is needed as
@@ -6326,8 +6581,26 @@ Concatenation-compatible (child tuples compose; unitriangular translations compo
 fracture-compatible (uniqueness identifies the same cluster before and after sibling
 operations).
 
-**SIGNATURE** (shape). `theorem ht_rec …` (the recursion as an exact `Finset.card`
-identity — division-free form: `#(v)·Q^{ΣD_u} = …·∏#(u)`).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`, in the
+DIVISION-FREE telescope form over the formula carrier (`htBranchCount·Q^{ΣD} = ∏ per-node
+factors`); the set-level recursion (concatenation/fracture compatibility) is the fleet's
+proof content behind `ht_branch` (C.114)].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem ht_rec (Q : ℕ) (hQ : 2 ≤ Q) (census : FactorizationType → ℕ)
+    (t : HTTree) (hwf : t.WF) (N : ℕ)
+    (hBD : (((List.range t.nodes.length).drop 1).map
+        (fun i => (t.nodes.getD i HTNode.default0).D N)).sum
+      ≤ ((List.range t.nodes.length).map
+        (fun i => (t.nodes.getD i HTNode.default0).B N)).sum) :
+    htBranchCount Q census t N
+        * Q ^ (((List.range t.nodes.length).drop 1).map
+            (fun i => (t.nodes.getD i HTNode.default0).D N)).sum
+      = ((List.range t.nodes.length).map (fun i =>
+          let v := t.nodes.getD i HTNode.default0
+          v.kappa * (∏ p ∈ v.sides, census (v.sideType p.1 p.2)) * Q ^ v.B N)).prod
+```
 
 **DEPENDS.** C.108 · C.109 · C.110 · C.111.
 
@@ -6361,8 +6634,37 @@ B.58's, conditional on `B-BOX-1` — the HT chain's conditionality is exactly B'
 an `e > 1` side opens a composite stage and remains under `[W12-H]` — routed to §5's
 trichotomy case (c) and chapter I's box, NEVER certified here.
 
-**SIGNATURE** (shape). `theorem ht_terminates …` + `theorem ht_leaf_certified …` —
-**split-mandated C.113 → 2**.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; split → 2:
+`ht_depth_increase` (the convexity leg in cleared argmin form — every attained side slope of
+a conservative-cell member is `> s`, C.55's shape one level down; window-visibility depth
+bounding rides the `Pceil` data) and `ht_leaf_certified` (the order-1 Ore certificate per
+terminal side factor, with the **`B-BOX-1` inheritance as the inner hypothesis** — exactly
+B's, no more)].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem ht_depth_increase {Φ : Polynomial O} (hΦ : IsKey Φ) {G : Polynomial O} {m s : ℕ}
+    (hm : 0 < m) (hpins : ∀ j < m, (((m - j) * s + 1 : ℕ) : ℕ∞) ≤ npHgt Φ G j)
+    (htop : npHgt Φ G m = (0 : ℕ∞))
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hne : (sideSet Φ G u ℓ).Nonempty) :
+    ℓ * s < u
+
+theorem ht_leaf_certified (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {φ : Polynomial O} (hφ : IsKey φ) {g : Polynomial O} (hg : g.Monic)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) (hpure : IsPure φ g u ℓ)
+    (hne : (sideSet φ g u ℓ).Nonempty) {H₀ : ℕ}
+    (hp : npHgt φ g (sideMin φ g u ℓ hne) = (H₀ : ℕ∞))
+    (hsep : (resPoly π φ g u ℓ hne H₀).Separable)
+    {r : Polynomial (resField φ)} (hrm : r.Monic) (hri : Irreducible r)
+    (hdvd : r ∣ resPoly π φ g u ℓ hne H₀) :
+    ∃ gr : Polynomial O, gr.Monic ∧ gr ∣ g ∧
+      gr.natDegree = ℓ * (φ.natDegree * r.natDegree) ∧
+      ((∀ g' ∈ monicFactors gr, (φ.natDegree * r.natDegree) ∣ inertiaDegOf g') →
+        typeOf gr = ⟨{(ℓ, φ.natDegree * r.natDegree)}⟩ ∧ Irreducible gr)
+```
+(clause (iii)'s order-≥ 2 fence is a routing rule, not a Lean statement — no node certifies
+those; they return to §5's trichotomy case (c) and `[W12-H]`.)
 
 **DEPENDS.** C.07/C.08 (argmin convexity arithmetic) · C.108 · B.58 (+ its `B-BOX-1`
 hypothesis at `d ≥ 2`) · B.63 (NS-6: leaves separable ⟺ descent stops) · B.79/B.82 (the
@@ -6399,8 +6701,34 @@ identities over `Coeff O n N`. Supplied to: chapter H's entry-law audits (CHAP-B
 routing — "counting level-`N` cells is chapters C/H's object … together with
 `LEMMA W12-HT`"), chapter I's count-side conditionality, and this chapter's §13 gates.
 
-**SIGNATURE** (shape). `theorem ht_branch …` + `theorem ht_global …` — **split-mandated
-C.114 → 2**.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; split → 2. The
+realization stratum is carried by the NEW `htRealizes` predicate (cluster factors `G` and
+recentered keys `K` per node: monic, degree `m_v·deg K_i`, exact `Pceil` pins, child
+clusters dividing parents, keys same-degree recenterings); the per-node residual-type/
+side-tag REFINEMENTS of the stratum are BOOKED as the fleet's realizes-refinement (they
+ride `htCell`, whose clauses the root already carries in `ht_branch`). `ht_global`'s branch
+instances (`IsDomain`/UFD/`Finite` on each `resField (Φb i)`) enter as explicit argument
+functions — all derivable from `hkeys`.]
+```lean
+namespace Uniformity.Density.Tower
+
+def htRealizes (Φ f : Polynomial O) (t : HTTree) : Prop :=
+  ∃ (G K : ℕ → Polynomial O), K 0 = Φ ∧ G 0 = f ∧
+    ∀ i, i < t.nodes.length →
+      (G i).Monic ∧
+      (G i).natDegree = (t.nodes.getD i HTNode.default0).m * (K i).natDegree ∧
+      (∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+        npHgt (K i) (G i) j = ((t.nodes.getD i HTNode.default0).Pceil j : ℕ∞)) ∧
+      (0 < i → G i ∣ G (t.parent i) ∧
+        (K i).natDegree = (K (t.parent i)).natDegree ∧
+        (K i - K (t.parent i)).natDegree < (K i).natDegree)
+
+theorem ht_branch …   -- Nat.card (root htCell ∩ htRealizes stratum, as Coeff classes)
+                      --   = htBranchCount (Nat.card (resField Φ)) (sideCensus (resField Φ)) t N
+theorem ht_global …   -- Nat.card (level-0 dissection stratum) = htGlobalCount S q censuses N
+```
+(the two full binder lists are byte-fixed in the leanspec twin — elided here only because
+they repeat C.108/C.109's displayed carriers verbatim.)
 
 **DEPENDS.** C.107–C.113.
 
@@ -6433,8 +6761,17 @@ at multiplicity two `κ_v = 1` and the exponents telescope (the `(q−1)^t` fact
 W-12.A display. Each as a computable instance lemma (`decide`/`norm_num`-grade at fixed
 small parameters, plus the symbolic telescope at (ii)).
 
-**SIGNATURE** (shape). three companion lemmas, one file (`ht_obstruction_instance`,
-`ht_L0_shape`, `ht_depth_zero`).
+**SIGNATURE** [signed: A-C.1 at the depth-zero clause (`ht_depth_zero`, the (iii)
+specialization over the formula carrier); the (i)/(ii) spot VALUES are §13's executed
+`htSpot`/`htSpotAlt` rows (the stub gate's D15 block — see C.123/C.124's A-C.1 tables), and
+their tree-level instantiations are the fleet's companions — recorded].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem ht_depth_zero (Q : ℕ) (census : FactorizationType → ℕ) (v : HTNode) (N : ℕ) :
+    htBranchCount Q census ⟨[v], fun _ => 0⟩ N
+      = v.kappa * (∏ p ∈ v.sides, census (v.sideType p.1 p.2)) * Q ^ v.B N
+```
 
 **DEPENDS.** C.107 · C.114.
 
@@ -6468,7 +6805,9 @@ problems — unchanged, chapter I's rows; (iv) the provenance note (`EFF.W12.88`
 was N1-conjectured → machine-certified → P1-composed → orchestrator-verified — carried
 in the docstring as the audit trail.
 
-**SIGNATURE.** documentation node (`#check` suite).
+**SIGNATURE** [signed: A-C.1]. documentation node — landed as the `C116Manifest` `#check`
+section in `leanspec/Leanspec/ChapC.lean` (the `HTNode` field manifest with the MANDATORY-tag
+comments on `kappa`/`sideType`, per the Phase-B consumer contract).
 
 **DEPENDS.** C.108 · C.114.
 
@@ -6504,7 +6843,19 @@ level-2 read consults is `< ` the cleared window bound: all level-1 slot digits 
 pinned at abscissa 0 per GC-1's visibility rule — visibility bounds EVERY consulted
 height, so the abscissa-0 pin is the right one HERE and only here).
 
-**SIGNATURE** (shape). `def Visible₂ …` (+ monotonicity in `N` companion).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`].
+```lean
+namespace Uniformity.Density.Tower
+
+def Visible₂ {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (N : ℕ) : Prop :=
+  ∀ j, j ≤ f.natDegree / L.keyDeg₂ → dv2Pin L Ψ f j ≠ ⊤ →
+    dv2Pin L Ψ f j < (((F.e₁ * L.ℓ) * N : ℕ) : ℕ∞)
+
+theorem Visible₂_mono {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) {N N' : ℕ} (h : N ≤ N') :
+    Visible₂ L Ψ f N → Visible₂ L Ψ f N'
+```
 
 **DEPENDS.** C.11 · C.21 · B.75 (template + the GC-1 visibility/residual split).
 
@@ -6525,8 +6876,28 @@ members' level-2 heights, side sets, and residual polynomials agree at every con
 datum (`dv2Pin`-congruence, `dv2SideSet`-congruence, `dv2ResPoly`-congruence) — stated
 convention-free (`consulted height < bound` only, B.77's pattern) so any consumer serves.
 
-**SIGNATURE** (shape). `theorem dv2_read_congr …` — **split candidate** (heights half /
-residual half, B.77's own split).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; B.77's own
+split executed: `dv2_read_congr` (heights) + `dv2_read_congr_res` (residuals)].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem dv2_read_congr {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [Finite (ResidueField O)]
+    {Ψ : Polynomial O} {n N : ℕ} {a a' : Fin n → O}
+    (hc : proj O n N a = proj O n N a')
+    (hvis : Visible₂ L Ψ (monicPoly a) N) {j : ℕ} (hj : j ≤ n / L.keyDeg₂) :
+    dv2Pin L Ψ (monicPoly a) j = dv2Pin L Ψ (monicPoly a') j
+
+theorem dv2_read_congr_res {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [Finite (ResidueField O)]
+    {Ψ : Polynomial O} {n N : ℕ} {a a' : Fin n → O}
+    (hc : proj O n N a = proj O n N a')
+    (hvis : Visible₂ L Ψ (monicPoly a) N)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂)
+    (hne : (dv2SideSet L Ψ (monicPoly a) u₂ ℓ₂).Nonempty)
+    (hne' : (dv2SideSet L Ψ (monicPoly a') u₂ ℓ₂).Nonempty) :
+    dv2ResPoly L Ψ (monicPoly a) u₂ ℓ₂ hne = dv2ResPoly L Ψ (monicPoly a') u₂ ℓ₂ hne'
+```
 
 **DEPENDS.** C.11 · C.25 · C.117 · B.77 (template) · landed `proj`, `dev_congr` (B.10).
 
@@ -6556,7 +6927,21 @@ with `¬ Ψ ∣ f_S`-visible data, and a SEPARABLE above-seam level-2 residual p
 `f₁d_r ≥ 2` and on the §9/§10 cites where the read consumes them, each named in the
 hypothesis list).
 
-**SIGNATURE** (shape). `theorem tower_cert_kernel …` (B.79's shape at the composed read).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; B.79's shape
+at the composed read — the representative's visible data transported to EVERY lift of its
+window class, the composed dictionary firing per lift with the boxes inside the
+conditional; full binder list at the leanspec twin, its carriers = C.117/C.38a/C.49's].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem tower_cert_kernel … :
+    ∀ b : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N b = proj O (μ₂ * T.D₂) N a →
+      ∃ g : Polynomial O, g.Monic ∧ g ∣ monicPoly b ∧
+        g.natDegree = (F.e₁ * T.e₂ * ℓ₃) * (F.f₁ * T.f₂ * r₂.natDegree) ∧
+        ((∀ g' ∈ monicFactors g, CBox1Side (T.levelDatum hπ) g') →
+         (∀ g' ∈ monicFactors g, (F.f₁ * T.f₂ * r₂.natDegree) ∣ inertiaDegOf g') →
+          typeOf g = ⟨{(F.e₁ * T.e₂ * ℓ₃, F.f₁ * T.f₂ * r₂.natDegree)}⟩ ∧ Irreducible g)
+```
 
 **DEPENDS.** C.37 · C.61/C.62 · C.117 · C.118 · B.79 (template).
 
@@ -6585,7 +6970,24 @@ enumerates them), the window class is DECIDED: `DecidedAt O n N c σ` for the as
 via landed `decidedAt_of_congr`. B.82's pattern at composed reads; fires with zero
 adaptation from the `N3Cert*` leancheck idiom per D-4(b)'s precedent.
 
-**SIGNATURE** (shape). `theorem tower_decidedAt …`.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the assembled
+σ is the member's own `typeOf` (honest: decided AT the member's value), the certificate
+hypotheses = visibility + all-above-seam-separable + the box per factor].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem tower_decidedAt {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ N : ℕ} {a : Fin (μ₂ * T.D₂) → O}
+    (hmem : monicPoly a ∈ towerLocus T μ₂) (hsq : Squarefree (monicPoly a))
+    (hvis : Visible₂ (T.levelDatum hπ) (composedKey T) (monicPoly a) N)
+    (hsep : ∀ (u₃ ℓ₃ : ℕ), 0 < ℓ₃ → Nat.Coprime u₃ ℓ₃ → ℓ₃ * T.E₂ < u₃ →
+      ∀ hne : (dv2SideSet (T.levelDatum hπ) (composedKey T) (monicPoly a) u₃ ℓ₃).Nonempty,
+        (dv2ResPoly (T.levelDatum hπ) (composedKey T) (monicPoly a) u₃ ℓ₃ hne).Separable)
+    (hbox : ∀ g' ∈ monicFactors (monicPoly a), CBox1Side (T.levelDatum hπ) g') :
+    DecidedAt O (μ₂ * T.D₂) (typeOf (monicPoly a)) N (proj O (μ₂ * T.D₂) N a)
+```
 
 **DEPENDS.** C.33/C.34 · C.119 · B.82 (template) · landed `DecidedAt`,
 `decidedAt_of_congr`, `typeOf_mul`.
@@ -6611,7 +7013,17 @@ C.120's hypotheses are visible — read off the member's OWN polygon data (its m
 consulted height + 1). Per-member only; NO family-uniform `N` (GC-9.3: the `R8-1`
 refutation stands — the B.81 pattern verbatim).
 
-**SIGNATURE** (shape). `theorem exists_certifying_N …`.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; per-member
+ONLY, GC-9.3].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem exists_certifying_N {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ : ℕ} {f : Polynomial O} (hmem : f ∈ towerLocus T μ₂) (hsq : Squarefree f) :
+    ∃ N : ℕ, Visible₂ (T.levelDatum hπ) (composedKey T) f N
+```
 
 **DEPENDS.** C.113 · C.117 · C.120 · B.81 (template).
 
@@ -6636,7 +7048,24 @@ continuing on the peeled complement at `mult₂ − 1` — decidedness of the cl
 from the peeled member's certificate (one recursion step, C.113(i)-bounded). The
 FINDING-HE6R1-F2 repair as a certificate-layer theorem.
 
-**SIGNATURE** (shape). `theorem tower_cert_peel_path …`.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the peeled
+`(e₁e₂, f₁f₂)` entry lands as a multiset-sum `typeOf` identity].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem tower_cert_peel_path {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {μ₂ N : ℕ} {a : Fin (μ₂ * T.D₂) → O}
+    (hmem : monicPoly a ∈ towerLocus T μ₂)
+    (hctx : BlockContext (T.levelDatum hπ) (monicPoly a))
+    (hvis : Visible₂ (T.levelDatum hπ) (composedKey T) (monicPoly a) N)
+    (hdvd : composedKey T ∣ monicPoly a)
+    (hbox : CBox1Side (T.levelDatum hπ) (composedKey T)) :
+    typeOf (monicPoly a)
+      = ⟨{(F.e₁ * T.e₂, F.f₁ * T.f₂)}
+          + (typeOf ((monicPoly a) /ₘ composedKey T)).data⟩
+```
 
 **DEPENDS.** C.36(i) (the `Ψ ∣ f_S ↔ Ψ ∣ f` check on visible data) · C.40 · C.119/C.120.
 
@@ -7037,5 +7466,28 @@ increment:
   the Prop-structure bundle `ClassSizeSupplyData` + `classSize_supply` (stub-stage choice
   exercised); C.70 at the per-side core. **C.82's DEPENDS names "C.89 (§9's 𝒯-free cap)" —
   the cap lemma is C.95; recorded as a DEPENDS-field slip (the 6.2C(d) supplier is C.95).**
+* **A-C.1(h) — §10 signed (C.99–C.106).** Over the interface at the CONCRETE depth-2 chain
+  (`TowerDatum.deepTower`, an axiom-constant carrier + data clauses) with the bridge
+  `ρ : fld 2 ≃+* AdjoinRoot T.ψ₂` explicit; every ϑ-adjacent statement in NORMALIZER-RATIO
+  form (`FGMNCalculus.thetaRatio`; no orientation committed — GC-14's D-table cited);
+  `chainNorm` realizes `n̂` from `towerNorm`; `repoRead := dv2Res` (C.104 determination);
+  B′'s direction `FGMN = u·repo` preserved; the refuted `u(β_t) = 1` form isolated in the
+  `gentow2_Bp_unit_iff` companion; `recipe3` the shared R3-3 display; **C.102's exponent
+  read `ℓ₁ = e₂` FLAGGED for the cross-read** (verify against `EFF.GENTOW2.37`); C.106 as
+  the `#check` manifest.
+* **A-C.1(i) — §11 + §12 signed (C.107–C.122).** §11 on the INDEX-ENCODED tree carrier
+  (`HTNode` with CEILED pin data, `Finset` sides + `sideType`, `κ_v` as a data field;
+  `HTTree` = list + parent function, `WF` acyclicity) with the count formulas as arithmetic
+  defs (`htBranchCount`/`htGlobalCount`) and the strata via `htCell`/`htRealizes`;
+  `residualTypeOf`/`sideCensus` over `CommRing`+UFD binders (no `Field` diamond at
+  `resField`); C.110 split into the conservative-cell count + the translate-residual iff;
+  C.111 signed at the arithmetic shadow (exponent nonnegativity; the multiplication-
+  bijection engine = the booked B.37–B.40 weighted RE-PLAN); C.112 in division-free
+  telescope form; C.113's `B-BOX-1` inheritance as the inner hypothesis; C.114's
+  `ht_branch`/`ht_global` tie the strata to the formulas (the realizes-refinement booked);
+  C.115 at the depth-zero clause (spot values = §13's executed `htSpot` rows); C.116 as the
+  `#check` manifest with the MANDATORY-tag comments. §12: `Visible₂`(+mono), the B.77 split
+  congruences, the kernel/`DecidedAt`/existence/peel-path certificates — per-member at
+  explicit `N` throughout (GC-9.3).
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
