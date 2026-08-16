@@ -843,6 +843,42 @@ arising from degree-`n` inputs, weakening the field is a gate-(a) statement chan
 weakens a hypothesis, hence STRENGTHENS the theorem — still owner-visible because the field
 list is the public conditionality). Cross-read item (§13 item 5).
 
+> **⛔ DATED NOTE (2026-08-16, Display-A carrier adjudication — THE CONSUMPTION RULE FOR
+> THIS BLOCK; supersedes the OM-4 addendum's FINDING-0 fence, which it executes).** Two of
+> this structure's Display-A conjunct carriers were machine-refuted VACUOUS as committed and
+> have been re-signed; chapter I consumes them at the re-signed forms ONLY:
+>
+> 1. **`LB1 ∧ MP1` (rows HYP.41/HYP.42; the `ladder` field's `.lb1`/`.mp1` projections
+>    through E.24/E.44):** consumed at the **A-E.2 forms** — `LB1Carrier` concluding
+>    `Nonempty (BlockSuite I)` (the full S1.7A record) and `MP1Carrier` concluding
+>    `Nonempty (MidPeelEmission B B')` (`EFF.T2.23` items 2–5, item 5 = `Φ″`-irreducibility
+>    + emission, the cite-consuming clause) — and consumed
+>    **universe-polymorphically** in `uW` (honesty E-12: this structure's Lean form carries
+>    the `{uO, uK, uW}` parameters; any fixed `uW` choice must be recorded).  The committed
+>    shadows are NAMED-AND-VOIDED as `OM4Shadow.LB1CarrierVoided`/`MP1CarrierVoided`/
+>    `LadderObligationsVoided` (`verification/om4_shadow_vacuity.lean` proves all three
+>    trivially — that file is the permanent refutation record): **no discharge, gate, or
+>    census row may cite them**, and any proposed weakening of the A-E.2 forms must first
+>    show those vacuity witnesses fail against it.
+> 2. **`(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}` (rows HYP.57/HYP.63; the `ladder` field's `.vartheta`
+>    projection, with E.62's/C.89's `𝒲` socket):** consumed at the **A-D.2 form** —
+>    D.62's SITEWISE `HVarthetaRes G K L N v ρ q` against the level's GIVEN ambient residue
+>    datum `ρ` at the level's use-height `q` (DECISION D-2; `EFF.T1.09`'s display verbatim),
+>    conjoined per D.63's fence.  The committed existential form is NAMED-AND-VOIDED as
+>    `HVarthetaResVoided` (provably equivalent to the exact-height fact — D-D12): **no
+>    consumer or discharge may cite it**.  In particular, when E.61's BLOCKED socket
+>    (`VarthetaRes i`, `supplied : True`) is typed at the GC-13/GC-14 resolution, it must be
+>    typed against the A-D.2 sitewise carrier with chapter C's/D's level-`i` instantiation
+>    data — typing it against the voided form (or leaving an untyped `True`) would
+>    reintroduce a vacuous Display-A conjunct, which is exactly what this note fences.
+>
+> Non-triviality of both re-signed forms is machine-certified
+> (`verification/om4_resign_nontriviality.lean`: each is FALSE at a concrete instance, so
+> the conjuncts now track genuine conditionality).  Records: CHAP-E AMENDMENT A-E.2,
+> CHAP-D DECISION D-2 + AMENDMENT A-D.2 (both 2026-08-16).  Effect on this node: I.10's
+> field list is UNCHANGED; the rule binds what the fields MEAN — §3.4's HYP.41/42/57/63
+> rows and §12's reconciliation read their carriers as the re-signed forms by reference.
+
 **DEPENDS.** I.01, I.02, I.03, I.05, I.06, I.07 · E.24 (`LadderSupply`, committed; via it
 E.39/E.40/E.61/E.62) · landed `DrainageAt` · I.08/I.09 (late-binding).
 **PROOF.** definitional. **SIZE.** 24 lines.
@@ -1656,7 +1692,12 @@ consumers) is now declarable.
 witness `verification/om4_shadow_vacuity.lean`. This addendum adds CITE DRAFTS ONLY — no
 landed statement is touched; §3.4's rows are annotated by reference, not edited.)*
 
-**FINDING 0 (stop-the-line for §4's consumption; machine-checked).** The landed carriers
+**FINDING 0 (stop-the-line for §4's consumption; machine-checked). *[EXECUTED 2026-08-16:
+the re-signs have LANDED — CHAP-E AMENDMENT A-E.2 (`BlockSuite`/`MidPeelEmission`) and
+CHAP-D DECISION D-2 + AMENDMENT A-D.2 (the sitewise `(H-VARTHETA-RES)` carrier); the
+consumption rule is the dated note at NODE I.10; non-triviality certificates in
+`verification/om4_resign_nontriviality.lean`. The fence below is superseded AT THE A-E.2
+FORMS.]*** The landed carriers
 `LeanspecE.LB1Carrier` (E.39), `LeanspecE.MP1Carrier` (E.40) and the record
 `LeanspecE.LadderObligations` (E.44) are **trivially provable as committed** —
 `verification/om4_shadow_vacuity.lean` proves all three outright (Lean-core footprint;
