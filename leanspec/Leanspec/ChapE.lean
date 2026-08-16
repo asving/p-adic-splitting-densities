@@ -193,6 +193,21 @@ amendments are adjudicated, per §12's "those stubs are re-signed when their nod
   UNCHANGED (E.37 consumes only E.36's statement-level company; its proof needs no descent). The
   O-level fallback (`gcd_dichotomy` + `hndvd`) is recorded in the amendment as the non-adopted
   alternative. Full record: blueprint amendment A-E.3.
+* **A-E.4 (2026-08-16, wave-3 refutation adjudication).** **E.29 `twisted_slot_spec` REFUTED as
+  frozen** — the committed `hatt` computed the attainer's required height through the truncating
+  `ℕ`-division `((s − s₀) / R.ℓ : ℕ)`, which rounds an OUT-OF-CLASS slot into the class ladder, so
+  the hypothesis holds with every in-class slot empty and the guarded `γ`-vector identically zero
+  (machine-checked witness `twisted_slot_spec_false` in `leanfinal/Uniformity/ChapE/E29.lean`:
+  `(O,K,K') = (ℚ,ℚ,ℚ)`, `η = 0`, `D = 1` carrier, `R = (2,1,1,0)`, `c` on slot `1` only,
+  `(k,m₀,s₀) = (2,1,0)`). **Re-signed here with `hatt` recording the ATTAINED VALUE**
+  (`∃ v, C.hgt (c s) = v ∧ ℓv + su = k`), every other binder and the conclusion byte-unchanged —
+  PROVED in the landed file, with the class location DERIVED (`attainer_in_class`, `EFF.HE7.11`
+  Step 2 at `ℤ`-valued heights) instead of assumed. `hmin`/`hocc` stay as honest inert binders
+  (`hmin` is the lower-bound half of the source's `k := min_s(ℓ·w(c_s) + s·u)`). The rejected
+  alternative — `hatt` naming an in-class slot directly — is landed as
+  `twisted_slot_spec_of_attain_inClass` but assumes what the source derives. No other stub moves
+  (`twisted_lift` (E.31) supplies the new `hatt` from its own construction: its slots have height
+  `m₀ − tu` at `s = s₀ + ℓt`, of value `ℓm₀ + s₀u = k`). Full record: blueprint amendment A-E.4.
 
 ## BLOCKED-UNTIL-RESOLUTION (§12; do NOT fire the fleet on these)
 
@@ -627,7 +642,27 @@ section E29
 open scoped Classical
 
 /-- **E.29** [theorem] The twisted slot specification (R1-b); `(SLOT₂)` is its `ϑ ≡ 1`
-instance. The `if`-guard spells §12(a)4's elided in-class guard. -/
+instance. The `if`-guard spells §12(a)4's elided in-class guard.
+
+**RE-SIGNED 2026-08-16 at the A-E.4 form, at E.29's landing** (`hatt` records the ATTAINED
+VALUE; every other binder byte-unchanged, conclusion byte-unchanged). The committed form
+(preserved here for the record) was
+
+    axiom twisted_slot_spec … (as below, with)
+        (hatt : ∃ s < R.slotCount, c s ≠ 0 ∧
+          C.hgt (c s) = (((m₀ : ℤ) - (((s - s₀) / R.ℓ : ℕ) : ℤ) * (R.u : ℤ)) : WithTop ℤ))
+
+— and it is **FALSE**: the truncating `ℕ`-division `((s − s₀) / R.ℓ : ℕ)` rounds an OUT-OF-CLASS
+slot into the class ladder, so `hatt` can be satisfied while every in-class slot is empty and the
+guarded `γ`-vector is identically zero. Machine-checked refutation
+(`twisted_slot_spec_false` in `leanfinal/Uniformity/ChapE/E29.lean`) at
+`(O, K, K') = (ℚ, ℚ, ℚ)`, `η = 0`, `C = oneHeightCarrier` (`D = 1`), `R = (ℓ,g,u,T) = (2,1,1,0)`,
+`c` occupying slot `1` only, `ϑ ≡ 1`, `(k, m₀, s₀) = (2, 1, 0)`. The re-signed `hatt` is the
+source's own reading — `EFF.HE7.11` defines `k := min_{s<ℓd_r}(ℓ·dv(c_s) + s·u)` and Step 2
+DERIVES "the minimum … is therefore attained inside a single class `s₀ + ℓ·{0,…,d_r−1}`" — so
+the class location is a conclusion (`attainer_in_class`), not a hypothesis. `hmin` and `hocc`
+are retained as honest inert binders: `hmin` is the lower-bound half of `k := min …`, without
+which `k` is un-named. PROVED in the landed file. Full record: blueprint amendment A-E.4. -/
 axiom twisted_slot_spec {O : Type*} [CommRing O] {K K' : Type*} [Field K] [Field K']
     [Algebra K K'] (C : SlotCarrier O K) (R : RungDatum) {η : K'}
     (hgen : (minpoly K η).natDegree = Module.finrank K K')
@@ -639,8 +674,8 @@ axiom twisted_slot_spec {O : Type*} [CommRing O] {K K' : Type*} [Field K] [Field
     {k m₀ s₀ : ℕ} (hs₀ : s₀ < R.ℓ) (hk : R.ℓ * m₀ + s₀ * R.u = k)
     (hmin : ∀ s < R.slotCount, c s ≠ 0 → ∀ v : ℤ, C.hgt (c s) = (v : WithTop ℤ) →
       (k : ℤ) ≤ R.ℓ * v + s * R.u)
-    (hatt : ∃ s < R.slotCount, c s ≠ 0 ∧
-      C.hgt (c s) = (((m₀ : ℤ) - (((s - s₀) / R.ℓ : ℕ) : ℤ) * (R.u : ℤ)) : WithTop ℤ)) :
+    (hatt : ∃ s < R.slotCount, c s ≠ 0 ∧ ∃ v : ℤ, C.hgt (c s) = (v : WithTop ℤ) ∧
+      (R.ℓ : ℤ) * v + (s : ℤ) * (R.u : ℤ) = (k : ℤ)) :
     seamSumT (fun t : Fin R.g =>
         if s₀ + R.ℓ * (t : ℕ) < R.slotCount ∧ c (s₀ + R.ℓ * (t : ℕ)) ≠ 0
           then C.dig (c (s₀ + R.ℓ * (t : ℕ))) else 0) ϑ η ≠ 0

@@ -62,6 +62,20 @@ read may discharge the obligation earlier per Part IV item 6's precedent).
 > `[IsDiscreteValuationRing O]` yields the class by instance search. E.36's dichotomy clause and
 > E.37's `peel_once` are unchanged. Read A-E.3 before consuming E.36's coprimality clause.
 
+> **AMENDMENT BANNER 2026-08-16 (third) — E.29's SIGNED THEOREM WAS FALSE AND IS RE-SIGNED AT THE
+> ATTAINED-VALUE FORM.** The landing wave refuted `twisted_slot_spec` at its committed type
+> (machine-checked witness in `leanfinal/Uniformity/ChapE/E29.lean`'s `E29Refutation`:
+> `(O,K,K') = (ℚ,ℚ,ℚ)`, `η = 0`, the `D = 1` carrier, `R = (ℓ,g,u,T) = (2,1,1,0)`, `c` occupying
+> slot `1` only, `(k,m₀,s₀) = (2,1,0)`) — the committed `hatt` computed the attainer's required
+> height through the truncating `ℕ`-division `((s − s₀) / R.ℓ : ℕ)`, which rounds an OUT-OF-CLASS
+> slot into the class ladder, so every hypothesis can hold while no in-class slot is occupied and
+> the conclusion's `γ`-vector is identically zero. **AMENDMENT A-E.4** (end of file) re-signs
+> `hatt` at the ATTAINED VALUE (`∃ v, C.hgt (c s) = v ∧ ℓv + su = k`) — the source's own reading,
+> since `EFF.HE7.11` DEFINES `k := min_{s<ℓd_r}(ℓ·dv(c_s) + s·u)` and its Step 2 DERIVES the class
+> location — with the conclusion and every other binder byte-unchanged. PROVED, and the class
+> location is now a conclusion (`attainer_in_class`), exactly as STATEMENT clause (i) promises.
+> Read A-E.4 before consuming E.29 (E.23's instance row and E.31's readout are its consumers).
+
 ---
 
 ## 0. How to read this chapter
@@ -2102,6 +2116,11 @@ verbatim").
 
 ### NODE E.29 [theorem] [fresh]
 
+**⚠ RE-SIGNED BY AMENDMENT A-E.4 (2026-08-16) — READ IT WITH THIS NODE.** The committed `hatt`
+was machine-refuted (out-of-class attainer admitted by a truncating `ℕ`-division); the signed
+form below carries the ATTAINED-VALUE `hatt`, everything else byte-unchanged, and is PROVED in
+`leanfinal/Uniformity/ChapE/E29.lean`.
+
 **STATEMENT.** *The twisted slot lemma at a rung (R1-b schema; `(SLOT₂)` is its `ϑ ≡ 1`
 instance).* Let `C` be the LEVEL-`i` slot carrier (E.10), `R` the rung, and
 `c : ℕ → Polynomial O` a slot family (`c s = 0` for `s ≥ L`, `deg (c s) < C.D`, not all zero).
@@ -2140,8 +2159,15 @@ theorem twisted_slot_spec {O : Type*} [CommRing O] {K K' : Type*} [Field K] [Fie
       (k : ℤ) ≤ R.ℓ * v + s * R.u)
     -- [repaired: A-E.1/E-D4] two cast slips: the right-hand side was ascribed `: ℤ` against a
     -- `WithTop ℤ`-valued equation, and `R.u` (a `ℕ`) was multiplied into an `ℤ` expression.
-    (hatt : ∃ s < R.slotCount, c s ≠ 0 ∧
-      C.hgt (c s) = (((m₀ : ℤ) - (((s - s₀) / R.ℓ : ℕ) : ℤ) * (R.u : ℤ)) : WithTop ℤ)) :
+    -- [re-signed: A-E.4] `hatt` NOW RECORDS THE ATTAINED VALUE.  The A-E.1/E-D4 form
+    --   ~~(hatt : ∃ s < R.slotCount, c s ≠ 0 ∧
+    --       C.hgt (c s) = (((m₀ : ℤ) - (((s - s₀) / R.ℓ : ℕ) : ℤ) * (R.u : ℤ)) : WithTop ℤ))~~
+    -- is REFUTED (witness in AMENDMENT A-E.4): the truncating `ℕ`-division rounds an
+    -- OUT-OF-CLASS slot into the class ladder, so the hypothesis holds with no in-class slot
+    -- occupied at all.  The height form `m₀ − tu` is the source's criterion for IN-CLASS slots
+    -- `s = s₀ + ℓt` ONLY; the class-free statement of attainment is the value equation.
+    (hatt : ∃ s < R.slotCount, c s ≠ 0 ∧ ∃ v : ℤ, C.hgt (c s) = (v : WithTop ℤ) ∧
+      (R.ℓ : ℤ) * v + (s : ℤ) * (R.u : ℤ) = (k : ℤ)) :
     -- [repaired: A-E.1/E-D4] the elided `if h : _` was a metavariable-typed guard (unelaborable);
     -- the node's own SIGNATURE NOTE licensed the stub to fix the spelling, and this IS that
     -- spelling — the in-class guard written out, with `t`'s `ℕ`-coercions explicit.  No strength
@@ -2169,9 +2195,22 @@ that silently drops the guard is not.]*
 
 **PROOF.**
 1. Class location + attainment: E.28 on the cleared values (the `hmin`/`hatt` hypotheses are
-   the cleared form of "k is the min, attained").
+   the cleared form of "k is the min, attained"). *[re-signed: A-E.4 — and this step is exactly
+   why `hatt` must be the VALUE equation: the class location is DERIVED here, so it cannot be
+   presupposed by the hypothesis that stands in for attainment. E.28's `ℕ`-height statements do
+   not reach the `WithTop ℤ` carrier heights of DECISION D-E1, so the landed file re-proves the
+   separation at `ℤ` as `attainer_in_class` (`ℓ ∣ (s₀ − s)u`, strip `u` by `hcop`, `s % ℓ = s₀`,
+   `ℓt ≤ s < ℓg`).]*
 2. `γ_t ≠ 0` at some `t`: the attaining slot's digit is nonzero by E.10's `dig_ne_zero`.
 3. Kill: E.27.
+
+*[added: A-E.4 — the honest binder note.]* Steps 1–3 never consume `hmin` (nor `hocc`, which
+`hatt` now implies): minimality is what makes `k` the next level's HEIGHT, while the kill clause
+needs only that some in-class slot attains. Both binders are RETAINED — `hmin` is the
+lower-bound half of the source's `k := min_{s<L}(ℓ·w(c_s) + s·u)`, without which `k` is un-named,
+and the node's contract is the bundle, not the kill clause alone. The landed proof-bearing
+declaration therefore carries `set_option linter.unusedVariables false in` (the B77a precedent,
+as at D.28); the signed name passes both binders through to it, so it needs no option itself.
 
 **SIZE.** 34 lines. **SPLIT-MANDATED** (the structure-valued spec route above).
 
@@ -4580,7 +4619,10 @@ land; the 0e type diff for E.07/E.60 is EXPECTED to differ and the blueprint is 
    four are hard errors without it), and the ruling for chapter I is honesty item **E-12**;
 4. E.29 `twisted_slot_spec` (the structure-valued `TwistedSlotRead` re-plan is
    pre-authorized) — **the elided `if h : _` was fixed at the gate (E-D4); the node now displays
-   the exact spelling and requires `open scoped Classical`**;
+   the exact spelling and requires `open scoped Classical`**; *[re-signed: A-E.4 — the gate's
+   `hatt` was a STATEMENT-level defect the gate could not see (it elaborates fine and is FALSE);
+   the leanspec stub is re-signed at the attained-value `hatt` at E.29's landing, per the same
+   "re-signed when their nodes land" rule that governs E.07/E.60]*;
 5. E.55 `refine_chain_finite` (the `hcoeff`/`hOcoeff`/`hfloor` spellings — three stub-stage
    calls, none strength-changing) — executed, no strength change;
 6. E.45/E.49 (the `FactorizationType` anonymous-constructor compatibility — 0e type-diff
@@ -4884,6 +4926,11 @@ E.49, E.60, E.67 or E.68.
 **LANDING-WAVE RE-SIGN 2026-08-16: AMENDMENT A-E.3** — E.36's `coprime_of_not_dvd` was refuted at
 its committed type (bare-domain witness `ℤ[2i]`) and is re-signed with `[IsIntegrallyClosed O]`,
 free at ENV-E2; E.36's dichotomy clause and E.37 unchanged.
+**LANDING-WAVE RE-SIGN 2026-08-16: AMENDMENT A-E.4** — E.29's `twisted_slot_spec` was refuted at
+its committed type (the truncating `ℕ`-division in `hatt` admits an out-of-class attainer) and is
+re-signed with `hatt` at the ATTAINED VALUE; conclusion and every other binder byte-unchanged,
+PROVED, class location derived. No consumer signature moves (E.31 supplies the new `hatt` from
+its own construction).
 
 <!-- RESUME: CHAPTER COMPLETE; STAGE-0e GATE CLOSED AND REPAIRED (amendment A-E.1, 2026-08-16).
 Remaining external actions: (i) orchestrator GC-13/GC-14 resolution pass (types the four
@@ -5438,5 +5485,175 @@ chapter-I-side rule is recorded at I.10's Display-A block (CHAP-I dated note, 20
   below the A-E.2 record must first refute `verification/om4_shadow_vacuity.lean`'s
   construction against the weakened form (i.e. show the singleton/fabricated witnesses
   fail it) — the vacuity witnesses are the permanent lower bound on carrier strength.
+
+## AMENDMENT A-E.4 (2026-08-16, dated append) — E.29 `twisted_slot_spec`: REFUTED AT THE COMMITTED `hatt`; RE-SIGNED AT THE ATTAINED VALUE
+
+**Provenance.** The chapter-E landing wave, landing node E.29 in
+`leanfinal/Uniformity/ChapE/E29.lean`, **refuted the node's single signed theorem at its committed
+type** with a machine-checked counterexample, WITHHELD the refuted name from the environment (the
+H.71 / E.36 / A-H.2 discipline: nothing false is ever declared), and landed TWO proved repair
+candidates under non-signed names. This block is the adjudication: the signed contract becomes the
+ATTAINED-VALUE form (repair candidate 1), the rejected alternative is recorded, and the signed name
+now lands over the adopted candidate. Same convention as A-E.1/A-E.3: node text is repaired in
+place with `[re-signed: A-E.4]` / `[added: A-E.4]` tags, superseded text stays visible struck
+through, nothing is deleted.
+
+**The refuted original** (the committed SIGNATURE's `hatt`, preserved verbatim as A-E.1/E-D4 left
+it; it was also the leanspec stub until this amendment — every other binder and the conclusion are
+unchanged by this amendment):
+
+    (hatt : ∃ s < R.slotCount, c s ≠ 0 ∧
+      C.hgt (c s) = (((m₀ : ℤ) - (((s - s₀) / R.ℓ : ℕ) : ℤ) * (R.u : ℤ)) : WithTop ℤ))
+
+### The refutation (the wave's, preserved verbatim in substance; machine-checked legs named)
+
+**The witness**, at the smallest legal frame: `O = K = K' = ℚ`, `η = 0` (so
+`Module.finrank ℚ ℚ = 1 = (minpoly ℚ 0).natDegree`, and `η` is integral), and
+
+* `C = oneHeightCarrier` — the `D = 1` slot carrier over `ℚ`: `hgt A = ⊤` for `A = 0` and `1`
+  otherwise, `dig A = A.coeff 0`, `Full k ↔ k = 1`. **Every** `SlotCarrier` law holds, including
+  the two ultrametric laws, digit additivity at a shared height, and `(LIFT)` — the lift is
+  genuinely realised at the carrier's one full height, so this is not a vacuous-`Full` carrier;
+* `R = rungTwoOne = (ℓ, g, u, T) = (2, 1, 1, 0)` — legal (`1 ≤ ℓ`, `1 ≤ g`, `Coprime u ℓ`,
+  `ℓ*T < u`), with `slotCount = ℓg = 2`: slots `{0, 1}`, and the class of `s₀ = 0` is `{0}`;
+* `c = outOfClassSlots`, the family occupying slot `1` ONLY (`c 1 = 1`, `c s = 0` otherwise);
+* `ϑ ≡ 1`, `s₀ = 0`, `m₀ = 1`, `k = ℓm₀ + s₀u = 2`.
+
+**Every signed hypothesis holds:**
+
+* `hdeg`, `hsupp`, `hocc` — immediate (`natDegree = 0 < 1 = D`; slot `1 < 2` is occupied);
+* `hs₀ : 0 < 2` and `hk : 2*1 + 0*1 = 2`;
+* `hmin` — the only occupied slot is `s = 1`, with height `v = 1`, and
+  `k = 2 ≤ ℓv + su = 2*1 + 1*1 = 3`. So `k` IS a genuine lower bound for the slot values;
+* `hatt` — at `s = 1`: `(s − s₀)/ℓ = 1/2 = 0` in `ℕ`, so the required height is `m₀ − 0*u = 1`,
+  and `hgt (c 1) = 1`. **The hypothesis is satisfied by a slot that does not lie in the class of
+  `s₀`.**
+
+**The conclusion FAILS:** the guarded coefficient vector is indexed by `t : Fin g = Fin 1`, i.e. by
+the single in-class slot `s₀ + ℓ·0 = 0`, where `c 0 = 0`; the guard is false, `γ ≡ 0`, and
+`seamSumT γ ϑ η = 0`. Machine-checked as
+`Uniformity.Density.Ladder.twisted_slot_spec_false` — stated at `Type` rather than the signed
+`Type*`, which is the STRONGER claim (the universe-polymorphic form instantiates at `Type`).
+Lean-core axioms only.
+
+### Where the committed statement broke (the diagnosis)
+
+`hatt` is meant to say *"the minimum `k` is ATTAINED"*, and the node's PROOF step 1 reads it that
+way ("the `hmin`/`hatt` hypotheses are the cleared form of 'k is the min, attained'"). As spelled,
+it does not say that. The truncating `ℕ`-division `((s − s₀) / R.ℓ : ℕ)` silently rounds an
+out-of-class index into the class ladder: for `s = s₀ + ℓt + r` with `0 < r < ℓ` the hypothesis
+asks for height `m₀ − tu`, whose slot value is `ℓ(m₀ − tu) + su = k + ru > k` — consistent with
+`hmin`, and no in-class slot need be occupied at all. **The class location that STATEMENT clause
+(i) announces is a CONCLUSION the committed hypotheses do not support**: E.28's separation argument
+needs the attained VALUE, which the committed `hatt` never records.
+
+This is a hypothesis-set defect, not a defect in R1-b's mathematics. `EFF.HE7.110` Step 2 fixes `k`
+as the minimum *of the slot values* and then locates its attainers, and every attainer of the
+minimum IS in the class of `s₀`. The gap is entirely in the cleared transcription — and it is a
+STATEMENT-level defect, so the stage-0e stub gate could not have caught it (it elaborates cleanly;
+it is simply false).
+
+### The two proved repair candidates, and the source adjudication
+
+1. **`twisted_slot_spec_of_attain_value` — repair candidate 1, ADOPTED.** The committed statement
+   with the single change
+
+       (hatt : ∃ s < R.slotCount, c s ≠ 0 ∧ ∃ v : ℤ, C.hgt (c s) = (v : WithTop ℤ) ∧
+         (R.ℓ : ℤ) * v + (s : ℤ) * (R.u : ℤ) = (k : ℤ))
+
+   PROVED. The class location is DERIVED, through the new chapter-internal helper
+   `attainer_in_class` (E.28's separation content at `ℤ`-valued heights: `ℓ ∣ (s₀ − s)u` from the
+   two value equations, `gcd(u, ℓ) = 1` — E.01's `hcop` — strips the `u`, `s % ℓ = s₀` follows,
+   and `t = s / ℓ` obeys `ℓt ≤ s < ℓg`). E.28's own statements are `ℕ`-height and cannot be applied
+   directly, since carrier heights are `WithTop ℤ` by DECISION D-E1.
+2. **`twisted_slot_spec_of_attain_inClass` — repair candidate 2, RECORDED, NOT ADOPTED.** `hatt`
+   names an occupied in-class slot directly (`∃ t : Fin R.g, s₀ + R.ℓ*t < R.slotCount ∧
+   c (s₀ + R.ℓ*t) ≠ 0`); `k`, `m₀`, `hk`, `hmin` are then unnecessary and are dropped. PROVED, and
+   kept as the interface for a consumer that has ALREADY located the class (e.g. through E.28).
+
+**The source decides, and it decides for candidate 1.** `EFF.HE7.11` (SLOT₂) defines the number in
+question as a minimum of slot VALUES —
+
+> “dv₂(C(ξ)) = min_{s<ℓd_r} ( ℓ·dv(c_s) + s·u )   EXACTLY,”
+
+— and its Step 2 then DERIVES the class location from that minimum (verbatim):
+
+> “**Step 2 (class separation — no cross-class ties).** ℓ·dv(c_s) + s·u ≡ s·u (mod ℓ), and
+> s ↦ s·u mod ℓ is a bijection of ℤ/ℓ because gcd(u, ℓ) = 1. Hence two slots s ≢ s′ (mod ℓ) have
+> term values in distinct classes mod ℓ, so they are never equal. The minimum of (S3.1) is
+> therefore attained inside a single class s₀ + ℓ·{0,…,d_r−1} — **exactly ℓ classes of exactly d_r
+> slots each**, the (e₁, f₁) pattern of GENHN-2 with (e₁, f₁) ↦ (ℓ, d_r).”
+
+*(Bolding as in `EFF.HE7.11`; the load-bearing clause for this amendment is the middle sentence —
+attainment inside a single class is `therefore`, a consequence of the value-minimum, not an
+input.)*
+
+The height form appears only AFTERWARDS, and only for in-class slots — `EFF.HE7.11` Step 3
+verbatim: “A slot attains iff ℓ·dv(c_{s₀+ℓt}) + (s₀+ℓt)u = k, i.e. iff dv(c_{s₀+ℓt}) = m₀ − tu
+(recall ℓm₀ + s₀u = k)”, and `EFF.HE7.110` Step 3 identically: “A class slot s₀ + ℓ_i t attains iff
+w_i(c_{s₀+ℓ_i t}) = m₀ − t·u_i (from ℓ_i m₀ + s₀u_i = k).” **That is exactly the defect**: the
+committed `hatt` applied the in-class criterion to an ARBITRARY `s` by pushing it through a
+truncating division. Candidate 2 would instead assume Step 2's conclusion — legitimate mathematics,
+but a different (weaker-input) contract than the source's, and it would leave the node's own
+STATEMENT clause (i) unproved. Candidate 1 is the faithful transcription, and its binder surface is
+the committed one minus nothing.
+
+**The teeth certify candidate 1 and not the committed form.** Q2 / HE7-SLOT2 (12,632 exactness
+identities, 0 violations) and `he7rannex_supp.py` (level 3, 79/79) sample slot families and read
+the minimum OFF the family, so their attainers are in-class by construction and their attained
+values are exactly candidate 1's `hatt`. The numerics never contradicted the committed form because
+they never produced its pathological input; the disposition “→ Lean theorem” is MET by candidate 1
+and NOT met by the committed form.
+
+### `hmin` and `hocc` stay, as honest inert binders
+
+Candidate 1's proof consumes neither `hmin` nor `hocc` (`hatt` now implies occupancy). Both are
+RETAINED at the signed form, per the D.28 / B77a precedent for inert binders that carry meaning:
+the source's `k` IS `min_{s<L}(ℓ·w(c_s) + s·u)`, of which `hmin` is precisely the lower-bound half —
+drop it and `k` becomes an arbitrary number satisfying `ℓm₀ + s₀u = k`, i.e. the node stops being
+about the minimum, and the SIGNATURE NOTE's bundle (`k, s₀, γ, hclass, hattain, hkill`) loses its
+`k`. The landed proof-bearing declaration carries `set_option linter.unusedVariables false in`; the
+signed name passes both binders through, so it needs no option itself. Recorded so that a future
+reader does not "simplify" the signature by deleting them.
+
+### Consumers: nothing moves
+
+* **E.31 `twisted_lift`** (DEPENDS on E.29 "the readout") SUPPLIES the new `hatt` from its own
+  construction: its clause gives `C.hgt (c (s₀ + R.ℓ*t)) = m₀ − t*u` at in-class slots, whose value
+  is `ℓ(m₀ − tu) + (s₀ + ℓt)u = ℓm₀ + s₀u = k`. The committed `hatt` was, at those slots, the same
+  statement — the two agree on in-class inputs and differ only on the out-of-class ones the
+  refutation exploits. **E.31's signature is unchanged.**
+* **E.23** (instance record, "SIGNATURE: none") cites E.29 as the `(SLOT₂)` schema over the level-1
+  carrier; a table row, no type to move.
+* **DAG.** `spec/DAG_BLUEPRINT_E.tsv` rows `BP.E.29 → {BP.E.10, BP.E.26, BP.E.27, BP.E.28, BP.H.53}`
+  (proof-dep) and `BP.E.29 → {EFF.HE7.11, EFF.HE7.110, EFF.T2.06}` (stmt-dep), plus the incoming
+  `BP.E.23 → BP.E.29` and `BP.E.31 → BP.E.29`, are all UNCHANGED and remain correct: the repair is
+  intra-node, adds no dependency (`attainer_in_class` re-proves E.28's content in-file rather than
+  importing new material), and removes none.
+
+### Evidence and disposition
+
+* **Landed:** `leanfinal/Uniformity/ChapE/E29.lean` — `twisted_slot_spec` (the SIGNED NAME, at the
+  A-E.4 type, proved over candidate 1), `attainer_in_class`, `twisted_slot_spec_of_attain_value`,
+  `twisted_slot_spec_of_attain_inClass`, and namespace `E29Refutation` with
+  `twisted_slot_spec_false` (kept as provenance). `lake build Uniformity.ChapE.E29` green, zero
+  `sorry`, `#print axioms` = `[propext, Classical.choice, Quot.sound]` for all eight printed
+  declarations.
+* **Re-signed:** `leanspec/Leanspec/ChapE.lean`'s `twisted_slot_spec` stub, at the A-E.4 type, with
+  the committed `hatt` preserved in its docstring and an entry in that file's RE-SIGN LOG;
+  `lake build Leanspec.ChapE` green.
+* **Not touched:** every other node and stub; the DAG (no edge changes); the node's ENVIRONMENT
+  (ENV-E2 + ENV-E3 + declaration-scoped `open scoped Classical`, A-E.1/E-D4); the conclusion
+  display, byte-for-byte, guard included.
+* **Still NOT here (unchanged by this amendment):** the SIGNATURE NOTE's full bundle
+  (`TwistedSlotRead`: `k, s₀, γ, hclass, hattain, hkill`) — the file lands its two mathematical
+  halves, the kill clause and the class location; the evaluation reading (`dv₂(C(ξ)) = k` at points
+  `ξ`) is carrier content and an instance obligation (C placeholder at E.23), per the node's own
+  **WHAT IS NOT HERE** field; the `g₂ = 1` disclosure rides E.27's TEETH note.
+* **Strength ledger:** the signed clause is now STRONGER in hypothesis-usefulness terms than the
+  committed one in the only sense that matters — the committed one was FALSE, so it had no strength
+  to lose. Against candidate 2 the adopted form is the weaker-hypothesis (stronger) statement: it
+  assumes attainment of the value and PROVES the class location, where candidate 2 assumes the
+  class location. Nothing else in the chapter is weakened; no consumer's hypotheses change.
 
 <!-- SENTINEL: BP-E END OF FILE -->
