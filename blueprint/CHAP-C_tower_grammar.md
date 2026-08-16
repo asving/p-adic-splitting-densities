@@ -9366,4 +9366,487 @@ not fixed — the same convention as append #79's disclosure of the reverse case
 
 ---
 
+# A-C.6 AMENDMENT (2026-08-16, the CITE-REDRAFT unit) — THE THREE GATE-(b) CITES, REDRAFTED FROM THE SOURCES: TWO AWAIT THE OWNER'S SIGNATURE, ONE EXITS THE QUEUE
+
+**BANNER — READ FIRST. NOTHING IS DECLARED BY THIS AMENDMENT.** No `axiom` is added anywhere by
+A-C.6, and the trusted base is byte-unchanged (`#print axioms` sweep allowlist still Lean core +
+`exists_slope_factorization`). C.66 and C.94 land in `leanspec/Leanspec/ChapC.lean` as UNDECLARED
+propositions — `def FgmnResidualMulStatement` and `inductive DescentStepR` + `def
+NS7TerminationStatementR` — each marked **REDRAFT A-C.6 — AWAITING OWNER GATE-(b) SIGNATURE**,
+each with the refuted A-C.1 draft preserved struck above it. C.92's existence axiom is WITHDRAWN
+outright, so **C.92 no longer has a gate-(b) axiom at all and EXITS the signature queue.** On
+signature — and only then — the two propositions become
+`axiom fgmn_residual_mul : FgmnResidualMulStatement` and
+`axiom agnprw_termination : NS7TerminationStatementR`.
+
+**Charge and label.** A-C.6 is the cite-REDRAFT unit chartered by PROJECT_STATE append #79, after
+the gate-(b) LANDING caught all three drafted chapter-C literature-cite statements defective
+BEFORE declaration. Labels: A-C.1 signature completion · A-C.2 the C.109 cell-law re-sign · A-C.3
+the C.114 realizes-refinement · A-C.4 the two OM-10 law nodes · A-C.5 the batched repairs ·
+**A-C.6 this unit** (concurrent with A-C.5, disjoint nodes). It inherits A-C.3's standard —
+CERTIFY BEFORE SIGNING, because a *designed* repair can itself be wrong (A-C.3's finding D5) — and
+adds the landing's own standard: **the repair must be run against the very program that refuted
+the draft**, and that program must then fail at a NAMED binder.
+
+**The three verdicts.**
+
+| node | cite | the landing's finding | A-C.6 disposition | certification legs |
+|---|---|---|---|---|
+| C.66 `fgmn_residual_mul` | `[cite:FGMN]` | **REFUTED absolutely** over `ℤ_[2]` at the LANDED `s2Frame`: `IsDvPure` is vacuous below the frame degree (ℕ-division floors), and the draft omitted the source's principal-polygon fence — the conclusion forces `1 = 0` in a field | REDRAFTED: `hfloor` (the fence, from the SOURCE) + the degree law `hdg`/`hdg'`/`hpos`/`hpos'` (conservative) | `C66_REDRAFT_CERT.lean.txt` (Lean-core, 3 legs) + `ac6_cite_redraft_check.py` PART 1 |
+| C.94 `agnprw_termination` | `[cite:AGNPRW]` | **REFUTED absolutely**: `DescentStep` admits the self-loop `s′ = s` and both side clauses are vacuous (`sideSet` is never empty) — the constant history is an infinite chain, so the drafted Prop implies `False` | REDRAFTED: self-loop excluded, both side clauses given content, the residual shape imported from Def 5.5 | `C94_REDRAFT_CERT.lean.txt` (Lean-core, 3 legs incl. an INHABITATION term) + PART 2 |
+| C.92 `fgmn_calculus_exists` | `[cite:FGMN-chain]` | **CONTENT-FREE**: a THEOREM of Lean core by a junk instance, three of its four side conditions inert — a name on the trusted base importing zero [FGMN] content | **RETIRED** (DECISION: option (1), hypothesis-form). No axiom; `FGMNCalculus` survives as a hypothesis carrier | `C92_VACUITY.lean.txt` + PART 3's asserted census |
+
+---
+
+## A-C.6 §I — NODE C.66 `fgmn_residual_mul` `[cite:FGMN]`: the fence the source itself carries
+
+### I.1 The defect, exactly (record: `leanfinal/Uniformity/ChapC/C66_REFUTATION.lean.txt`)
+
+C.29's purity predicate is
+
+```lean
+IsDvPure F g u ℓ  :=  0 ∈ dvSideSet F g u ℓ ∧ g.natDegree / (F.e₁ * F.f₁) ∈ dvSideSet F g u ℓ
+```
+
+whose second conjunct uses **ℕ-division**. For `0 < g.natDegree < D′ = e₁f₁` it floors to `0`, the
+two conjuncts collapse, and "purity" degenerates to "`0` is on the side" — true of every nonzero
+`g` of degree `< D′`. At the LANDED `s2Frame` of NODE C.97 (`Φ′ = x² − 2` over `ℤ_[2]`,
+`(e₁,f₁,h) = (2,1,1)`, so `D′ = 2`) the pair `g = g′ = X` at `(u, ℓ) = (2, 1)` satisfies EVERY
+drafted binder while `R(X)` is a constant and `R(X·X)` has a genuine two-point side with
+`X¹`-coefficient `1`; the drafted conclusion then forces `1 = 0` in `F.stageField`. Same defect
+class as B.42's `[IsAdicComplete]` near-miss and C.113(i)'s vacuous `hne`.
+
+### I.2 The redraft (`leanspec/Leanspec/ChapC.lean`, `def FgmnResidualMulStatement`)
+
+```lean
+def FgmnResidualMulStatement.{v} : Prop :=
+  ∀ {O : Type v} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+    (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    {g g' : Polynomial O} (hg : g.Monic) (hg' : g'.Monic) {u ℓ : ℕ} (hℓ : 0 < ℓ)
+    (hcop : Nat.Coprime u ℓ)
+    (hfloor : ℓ * ((F.e₁ * F.f₁) * F.h) < u)                                   -- A-C.6
+    (hdg : F.e₁ * F.f₁ ∣ g.natDegree) (hdg' : F.e₁ * F.f₁ ∣ g'.natDegree)      -- A-C.6
+    (hpos : 0 < g.natDegree) (hpos' : 0 < g'.natDegree)                        -- A-C.6
+    (hpg : IsDvPure F g u ℓ) (hpg' : IsDvPure F g' u ℓ)
+    (hne : (dvSideSet F g u ℓ).Nonempty) (hne' : (dvSideSet F g' u ℓ).Nonempty)
+    (hne'' : (dvSideSet F (g * g') u ℓ).Nonempty)
+    {M₀ M₀' M₀'' : ℕ}
+    (hp : dvHgt F g (dvSideMin F g u ℓ hne) = (M₀ : ℕ∞))
+    (hp' : dvHgt F g' (dvSideMin F g' u ℓ hne') = (M₀' : ℕ∞))
+    (hp'' : dvHgt F (g * g') (dvSideMin F (g * g') u ℓ hne'') = (M₀'' : ℕ∞)),
+    ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
+      dvResPoly F H₀ hpin (g * g') u ℓ hne'' M₀'' hp''
+        = Polynomial.C c
+            * (dvResPoly F H₀ hpin g u ℓ hne M₀ hp * dvResPoly F H₀ hpin g' u ℓ hne' M₀' hp')
+```
+
+Everything else is byte-identical to the A-C.1 draft (including the three drafting decisions the
+owner was already asked to inspect at the node: the existential scalar `c`, the three separate
+side witnesses, and purity as a hypothesis).
+
+### I.3 THE ADJUDICATION THE CHARTER ASKED FOR — is the above-floor fence part of the cite?
+
+**VERDICT: YES, `hfloor` belongs, and it is the SOURCE's own standing hypothesis, not a corpus
+convenience.** The evidence, from the in-repo print
+(`docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt`, lines 546–553):
+
+> **Theorem 2.8.** Let µ be a valuation and φ a key polynomial for µ. Then, `N⁻_{µ,φ}(gh) =
+> N⁻_{µ,φ}(g) + N⁻_{µ,φ}(h)` for any non-zero `g, h ∈ K[x]`.
+>
+> The analogous statement for entire Newton polygons is false. For instance, consider
+> `g, h ∈ K[x]` such that `deg g, deg h < deg φ` and `deg gh ≥ deg φ`; then, `N_{µ,φ}(g)` and
+> `N_{µ,φ}(h)` are a single point, while `N_{µ,φ}(gh)` has a side of length one.
+
+Three things follow, and they are exactly the landing's counterexample:
+
+1. the source states the additivity for the **principal** polygon `N⁻` only (negative slopes,
+   i.e. `λ > 0`);
+2. the paper PRINTS the failure mode, and it is the refuting pair's shape — two factors of degree
+   below `deg φ` whose product reaches it, product polygon acquiring a side of length one;
+3. in the corpus's cleared coordinates the source's `λ` is `λ = u/ℓ − (e₁f₁)·h`, so `λ > 0` is
+   `ℓ·((e₁f₁)·h) < u` — **the refuting pair sits at `λ = 0`, exactly the boundary the fence
+   excludes** (certified: `C66_REDRAFT_CERT.refutingPair_hfloor_false`).
+
+The corpus already carries this fence at both places that hand C.66 its data — C.09's
+`LevelDatum.hκ : ℓ * (F.e₁ * F.f₁) * F.h < u` and C.33's
+`DvDissection.hslopes : ∀ p ∈ slopes, 0 < p.2 ∧ Nat.Coprime p.1 p.2 ∧ p.2 * ((F.e₁ * F.f₁) * F.h) < p.1`
+(the redraft's parenthesization is C.33's, byte-for-byte; C.09's is the same natural number by
+`mul_assoc`, which a consumer bridging the two must supply).
+
+**The degree law is a different animal, and is flagged as such.** `Cor 4.12(3)` (published; v3's
+`Cor 4.7(3)`, verified in the in-repo print at line 1126: *"`R_i(gh) = R_i(g)R_i(h)` for all
+`g, h ∈ K[x]`"*) has NO degree hypothesis once one is inside the principal-polygon regime. So
+`hdg`/`hdg'`/`hpos`/`hpos'` are **CONSERVATIVE, not source-required**: they are the `dv`-level
+mirror of B.42's landed clause 3 (`φ.natDegree ∣ (F p).natDegree ∧ 0 < (F p).natDegree`) and of
+C.33's `hdeg`. Keeping them narrows the imported statement (a strictly weaker axiom) at zero cost
+to consumers, and they independently kill the refuting pair
+(`refutingPair_hdg_false`: `D′ = 2 ∤ 1 = deg X`). **The owner may strike all four and the cite is
+still non-refutable by the landing's counterexample** — the fence alone suffices. This is the one
+genuinely discretionary choice in the redraft, and it is placed here for inspection rather than
+buried.
+
+`dev F.key g 0 ≠ 0` (B.42 clause 3's third conjunct) is deliberately NOT added: `hpg` already
+forces `0 ∈ dvSideSet F g u ℓ`, whose `DvOnSide` conjunct `dvHgt F g 0 ≠ ⊤` is exactly it.
+
+### I.4 Every consumer supplies the new binders for free — checked against the landed carriers
+
+A C.66 consumer holds a `dv`-dissection factor at a slope in `D.slopes`. Then:
+
+| new binder | supplied by |
+|---|---|
+| `hfloor` | `DvDissection.hslopes` third conjunct (byte-identical form) — or `LevelDatum.hκ` modulo `mul_assoc` |
+| `hdg`, `hdg'` | `DvDissection.hdeg`: `(factor p).natDegree = (F.e₁ * F.f₁) * (p.2 * dvSideDeg F f p.1 p.2 hne)` — divisibility is immediate |
+| `hpos`, `hpos'` | the same `hdeg` together with `DvDissection.hsides` (`(u,ℓ) ∈ slopes ↔ 0 < dvSideDeg …`) and `0 < p.2` |
+
+So the redraft costs the Tier-3 chain (C.67 `multiplicity_tie`, Step II of `LEMMA GENTOW-6.1`)
+nothing: `BlockContext`'s `LevelDatum` carries `hκ`, and the dissection carries the rest.
+
+### I.5 Certification record (all three legs run BEFORE this amendment was written)
+
+* **(a) the SAME refutation program, retargeted** — `C66_REFUTATION.lean.txt` copied and given the
+  five new binders, nothing else touched (recipe in the cert file). The counterexample application
+  **fails to elaborate at the FIRST new binder**, verbatim: *"Application type mismatch: The
+  argument `pureX h2 hq` has type `IsDvPure (s2Frame h2 hq) X 2 1` but is expected to have type
+  `1 * ((s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁ * (s2Frame h2 hq).h) < 2`"*, and
+  `c66_refuted_at_s2Frame` degrades to `sorryAx`. Not an arity artifact:
+  `refutingPair_hfloor_false` and `refutingPair_hdg_false` PROVE those two binders FALSE at the
+  refuting data, so no re-ordering or lemma supply revives it (`refutingPair_hpos_holds` records
+  that the positivity half does NOT bite).
+* **(b) satisfiability at a LANDED instance** — `redraft_applies_at_s2Frame`: at the same
+  `s2Frame`, `g = g′ = x² + 2` at `(u, ℓ) = (4, 1)` discharges EVERY redraft binder by frame
+  computation, so the redraft delivers its conclusion there; `Absolute.redraft_applies_absolute`
+  closes the scope over `ℤ_[2]`. PART 1b adds five more witnesses (including a degree-4 `g` with a
+  degree-2 residual and a mixed-degree pair).
+* **(c) numeric consistency (the B.42 witness-disc pattern)** — `degree_bookkeeping_consistent`:
+  at the witness the residual degrees ADD (`2 = 1 + 1`), where at the refuting pair they read
+  `1 = 0 + 0`; and PART 1c runs the full identity `R(g·g′) = R(g)R(g′)` on **26 in-binder pairs**
+  over the stage field `K₁ = F₂`, all with scalar `c = 1`, including the non-square
+  `(1+Z+Z²)(1+Z) = 1+Z³`.
+
+### I.6 ★ OWNER SIGNATURE BLOCK — C.66
+
+**Sign this exact statement** (byte-for-byte the `def FgmnResidualMulStatement` of §I.2, as it
+stands in `leanspec/Leanspec/ChapC.lean`). On signature it becomes exactly one declaration:
+
+```lean
+axiom fgmn_residual_mul : FgmnResidualMulStatement
+```
+
+**What it imports.** [FGMN] Fernández–Guàrdia–Montes–Nart, *Residual ideals of MacLane
+valuations*, **J. Algebra 427 (2015) 30–75**, DOI 10.1016/j.jalgebra.2014.12.022 — **Thm 2.8**
+(principal-polygon additivity) **+ Cor 4.12(3)** (`R_i(gh) = R_i(g)R_i(h)`; v3's Cor 4.7(3))
+**+ Cor 4.9(3)** (degree/normalization of `R_i`; v3's Cor 4.4(4)), read through GENTOW2's
+tower↔MacLane dictionary. **Scope fence, unchanged from A-C.1:** exactly the multiplicativity
+clause Step II of `LEMMA GENTOW-6.1` consumes — never the full FGMN machinery, never `w`'s closed
+form (C-H10).
+
+**What it does NOT import.** No uniformity/rationality/`p`-independence claim; no closed form for
+the scalar `c` (existential); no relation between the three side witnesses (that is the RE-PLAN'd
+B.35 twin `dvResPoly_mul_of_pure`, corpus-side).
+
+**Faithfulness entry (draft, for `docs/AXIOM_FAITHFULNESS.md`).**
+*AX-FGMN-RESMUL (C.66).* **Verified core:** the in-repo layout print carries Thm 2.8 verbatim
+(principal polygons `N⁻` add) and Cor 4.7(3) = published Cor 4.12(3) verbatim (`R_i` is
+multiplicative on all of `K[x]`). **Transcription:** the axiom asserts multiplicativity of the
+corpus's `dvResPoly` at a COMMON `(u,ℓ)` side up to a nonzero scalar of `F.stageField`, under
+purity of both factors, the principal-polygon fence `ℓ·((e₁f₁)·h) < u`, and a degree law on the
+factors. **Gap disclosed:** the identification `dvResPoly ↔ R_i` is the corpus's own dictionary
+(GENTOW2, C.97/C.98), NOT part of the cite; the scalar's existence rather than its value is what
+is imported; the degree law is conservative (source-unnecessary). **Numbering:** A-3-corrected
+published numbers, `docs/CITE_NUMBERING_AUDIT_2026-08-16.md` §2.3 — the v3 numbers the corpus
+first used (Cor 4.7(3)/Cor 4.4(4)) are NOT the journal's. **Not print-read** (ScienceDirect 403s):
+residual risk LOW-MEDIUM, closing check in audit §7.2. **Refutation history:** the A-C.1 draft of
+this axiom was FALSE (record `C66_REFUTATION.lean.txt`); this statement is the A-C.6 repair, and
+its non-refutability + satisfiability are machine-recorded in `C66_REDRAFT_CERT.lean.txt`.
+
+**Residual risk the owner is accepting.** That the fence + purity + degree law are jointly
+*sufficient* for the source's regime is argued from the source's principal-polygon hypothesis and
+certified only NEGATIVELY (the known counterexample dies; a landed instance satisfies everything).
+If a second defect exists it would again be an over-broad instance class; the detector is the
+PART-1-style witness sweep at a landed frame.
+
+---
+
+## A-C.6 §II — NODE C.94 `agnprw_termination` `[cite:AGNPRW]`: a descent grammar that cannot self-loop
+
+### II.1 The defect, exactly (record: `leanfinal/Uniformity/ChapC/C94_REFUTATION.lean.txt`)
+
+Two independent slacknesses in the A-C.1 `refine` constructor: (i) **`sideSet` is ALWAYS nonempty**
+(the repo's own `Uniformity.Density.Leaf.sideSet_nonempty_gen`, B39b), so both
+`(sideSet _ _ u ℓ).Nonempty` clauses constrain nothing — the THIRD occurrence of this defect class
+after C.113(i) and C.111; (ii) the recentering clause `(s.key − s'.key).natDegree < s.key.natDegree`
+**admits `s′ = s`**, where the perturbation is `0` and the clause degenerates to
+`0 < s.key.natDegree`. Hence `DescentStep π s s` for every state of positive key degree, the
+constant history on `f = X` is an infinite chain, and the drafted `NS7TerminationStatement` implies
+`False` — Display A's line 1 would have been a false Prop.
+
+### II.2 The redraft (`leanspec/Leanspec/ChapC.lean`)
+
+`jump` is byte-unchanged from A-C.1. The `refine` constructor is rebuilt:
+
+```lean
+  | refine : ∀ (s s' : DescentState O) (u ℓ u' ℓ' : ℕ)
+      (hne : (sideSet s.key s.block u ℓ).Nonempty)
+      (hne' : (sideSet s'.key s.block u' ℓ').Nonempty),
+      s.key.Monic → s'.key.Monic → 0 < s.key.natDegree →
+      s'.block = s.block →
+      s'.key.natDegree = s.key.natDegree →
+      s'.key ≠ s.key →
+      (s.key - s'.key).natDegree < s.key.natDegree →
+      0 < u → 0 < ℓ → Nat.Coprime u ℓ →
+      0 < u' → 0 < ℓ' → Nat.Coprime u' ℓ' →
+      1 < (sideSet s.key s.block u ℓ).card →
+      1 < (sideSet s'.key s.block u' ℓ').card →
+      IsPure s.key s.block u ℓ →
+      IsPure s'.key s.block u' ℓ' →
+      2 ≤ sideDeg s.key s.block u ℓ hne →
+      (∀ H₀ : ℕ, npHgt s.key s.block (sideMin s.key s.block u ℓ hne) = (H₀ : ℕ∞) →
+        ∃ ζ : resField s.key, ζ ≠ 0 ∧
+          resPoly π s.key s.block u ℓ hne H₀
+            = (Polynomial.X - Polynomial.C ζ) ^ sideDeg s.key s.block u ℓ hne) →
+      u * ℓ' < u' * ℓ →
+      DescentStepR π s s'
+```
+
+and the statement is the A-C.1 body with `DescentStep → DescentStepR`:
+
+```lean
+def NS7TerminationStatementR : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (IsLocalRing.ResidueField O)] (π : O), Irreducible π →
+    ∀ f : Polynomial O, f.Monic → Squarefree f →
+    ∀ hist : ℕ → DescentState O,
+      (∀ n, (hist n).block ∣ f) →
+      (∀ n, DescentStepR π (hist n) (hist (n + 1))) → False
+```
+
+### II.3 Clause-by-clause adjudication against [AGNPRW] §5.5 — **and its provenance caveat**
+
+**⚠ PROVENANCE, DISCLOSED BEFORE THE TABLE.** The repo holds **no copy of [AGNPRW]** — no PDF, no
+layout print, nothing under `docs/references/` (which carries only the FGMN layout print,
+`HigherNewton.tex` and the Montes blueprint). What the repo DOES hold verbatim, and what the A-3
+audit checked against the publisher-side abstract and two author copies of the accepted version,
+is **Thm 5.6's statement** (*"If `v` is discrete of rank-one, then the OM-algorithm terminates."*)
+and its proof sketch (`docs/CITE_SCOPE_RESOLUTION_2026-08-13.md`, `docs/CITE_NUMBERING_AUDIT_2026-08-16.md`
+§2.2). **The Def 5.5 clause texts quoted below are NOT verifiable against an in-repo print.** They
+are the drafting unit's reading of §5.5 and must be treated as such: each clause below is
+justified twice — once by the (unverified) source reading, once by a corpus-side argument that
+stands on its own — and the owner's signature should either accept them on the second leg or
+require a print-read of §5.5 first (the audit §7 closing-check pattern, ≈2 minutes with the
+published PDF in hand).
+
+| redraft clause | source reading (Def 5.5, PROVENANCE-UNVERIFIED) | corpus-side justification that stands alone |
+|---|---|---|
+| `s'.block = s.block`, `s'.key.natDegree = s.key.natDegree` | *"a refinement step … yields a unique new type `(µ_λ, ϕ, n)`, with moreover `deg(ϕ) = deg(φ)`"* | retained from A-C.1, unchanged |
+| **`s'.key ≠ s.key`** | the step yields a NEW type | without it the relation has a self-loop and the statement is FALSE — machine-proved (`C94_REFUTATION`) |
+| **`1 < (sideSet …).card`** at both keys | *"`N⁺_{µ,φ}(g)` is one-sided"* — a SIDE, not a vertex | the B.42 clause-5 two-point predicate; the guard against B.34's ℕ-division degeneracy, i.e. the same defect class as C.66's |
+| **`IsPure …`** at both keys | one-sidedness of the principal part | B.34's predicate, the corpus's own reading of "one-sided" |
+| **`0 < u`**, `Nat.Coprime u ℓ` (and primed) | the principal part `N⁺` is the negative-slope part; at the leaf normalization `µ(φ) = 0` the above-floor fence reads `0 < u` | C.09's `hκ` / C.33's `hslopes` at `(e₁,f₁,h) = (1,1,0)`; coprimality is the corpus's standing slope normalization |
+| **`2 ≤ sideDeg`** and `resPoly = (X − C ζ)^{sideDeg}`, `ζ ≠ 0` | *"`R_{µ_λ,φ}(g) = (y − ζ)^ℓ` for some `ζ ∈ κ(µ_λ)^*`"*, together with the algorithm's `n_i ≠ 1` branch (a SIMPLE residual root ends the branch — it is an output, not a refinement) | **LOAD-BEARING and independently certified**: with the refutation record's own weaker suggestion `0 < sideDeg` the statement is STILL FALSE — `ac6_cite_redraft_check.py` PART 2c exhibits the infinite chain `φ_n = x² − 2 + 2ⁿ` on the block `x² − 2`, every other clause holding, `sideDeg = 1` throughout |
+| `u * ℓ' < u' * ℓ` | the refinement's slope strictly increases | retained from A-C.1 |
+| `jump` (unchanged) | *"the condition `deg(φ) < deg(ϕ)` inside the second for loop may occur only a finite number of times"* | `IsTestKey` pins `deg Ψ = keyDeg₂ ≥ 2·D′`, so jumps at least double the key degree under `2·keyDeg₂ ≤ deg block ≤ deg f` |
+
+**ADJUDICATED OUT, recorded.** `ℓ = 1`. Source Def 5.5's `e_rel(µ_λ) = 1` is, via the source's
+Thm 2.18 (`deg ϕ = e_rel(µ_λ)·deg ψ·deg φ`), what the RETAINED same-degree clause already
+expresses; restating it as `ℓ = 1` would additionally assert that this corpus's slope denominator
+IS `e_rel`, a normalization identification no landed lemma supplies.
+
+### II.4 Certification record
+
+* **(a) the SAME refutation program, retargeted**, in three strengths (record:
+  `leanfinal/Uniformity/ChapC/C94_REDRAFT_CERT.lean.txt`):
+  (i) mechanical — `descentStep_self` no longer elaborates, verbatim error quoted, all three
+  refutation theorems degrade to `sorryAx`;
+  (ii) **best-effort revival** — after re-supplying the two `Nonempty` proofs in their new
+  positions and filling everything fillable, the residual goals include the FALSE propositions
+  `⊢ s.key ≠ s.key` and `⊢ 0 < 0`, printed verbatim;
+  (iii) **the general theorem** `redraft_no_self_loop : ∀ π s, ¬ DescentStepR π s s`, PROVED for
+  BOTH constructors (`refine` on key-distinctness; `jump` on `IsTestKey`'s degree pin against
+  `F.hdeg` and `2 ≤ ℓ·deg r`), with corollary `redraft_constant_history_not_a_chain`. The draft's
+  self-loop is re-proved in the same file (`draft_has_self_loop`), so the two theorems side by side
+  are the separation record.
+* **(b) satisfiability — stronger than the chartered numeric probe.** `witness_step` CONSTRUCTS a
+  term `DescentStepR (2 : O) ⟨X, f⟩ ⟨X − 2, f⟩` for `f = (x − 6)² − 32 = x² − 12x + 4` at slope
+  `1/1 → 2/1`, over any base in which `2` is a uniformizer, `Absolute.witness_step_absolute` over
+  `ℤ_[2]`. All twenty-two clause slots are discharged from the LANDED definitions — including
+  two-point sides at BOTH keys (`sideSet = {0,2}`) and the residual-shape clause
+  `resPoly 2 X f 1 1 _ H₀ = (Y − 1)²` (route: B.59's `resPoly_X_eq_map_of_scaleRoots` with
+  `f = G.scaleRoots 2`, `G = x² − 6x + 1`, `G mod 2 = Y² + 1 = (Y − 1)²` in residue characteristic
+  2). The chartered TWO-step descent (`x → x − 2 → x − 6`, slopes `1 → 2 → 5/2`) is certified
+  numerically in PART 2b.
+* **(c) numeric consistency + a MODEL CROSS-CHECK.** `witness_index_bookkeeping`
+  (`sideDeg·ℓ·deg key = deg block`, `2 = 2` at both keys) and `witness_slope_increases`; and the
+  Lean numerals agree numeral-for-numeral with the INDEPENDENT Python model of PART 2b
+  (developments `[4, −12, 1]` heights `[2, 2, 0]` at the key `x`; `[−16, −8, 1]` heights
+  `[4, 3, 0]` at the key `x − 2`; residual `1 + Z²` over `F₂`). Two implementations of B.11–B.29
+  built from different sources agreeing digit-for-digit is the non-textual leg this repo requires
+  of a load-bearing formula.
+
+### II.5 ★ OWNER SIGNATURE BLOCK — C.94
+
+**Sign this exact statement** (the `inductive DescentStepR` of §II.2 TOGETHER WITH
+`def NS7TerminationStatementR` — the inductive is part of what is signed, because the Prop is only
+as strong as the relation it quantifies over). On signature the declarations become exactly one
+axiom:
+
+```lean
+axiom agnprw_termination : NS7TerminationStatementR
+```
+
+**What it imports.** [AGNPRW] Alberich-Carramiñana–Guàrdia–Nart–Poteaux–Roé–Weimann, *Polynomial
+factorization over henselian fields*, **Found. Comput. Math. 25 (2025), no. 2, 631–681**, DOI
+10.1007/s10208-024-09646-x, **Theorem 5.6** (*"If `v` is discrete of rank-one, then the
+OM-algorithm terminates."*) together with §5.5's reduction of termination to the absence of an
+infinite refinement sequence. **The repo's "Thm 5.2" is the arXiv-v1 number and collides with a
+different published theorem** (the `e`/`f` formula for the singled-out factor) — A-3 audit §2.2.
+
+**What it does NOT import.** No bound on the number of steps; no statement about the algorithm's
+output; nothing about non-discrete or higher-rank `v`.
+
+**Faithfulness entry (draft, for `docs/AXIOM_FAITHFULNESS.md`).**
+*AX-AGNPRW-TERM (C.94).* **Verified core:** published Thm 5.6's statement is quoted verbatim in
+the repo (`CITE_SCOPE_RESOLUTION_2026-08-13.md`) and its number was corrected 5.2 → 5.6 by the A-3
+audit against the publisher abstract + two accepted-version copies. **Transcription:** the axiom
+asserts that no infinite `DescentStepR`-history exists over a monic squarefree `f` on a complete
+DVR with finite residue field. **Gaps disclosed, three:** (1) `DescentStepR` is a POLYGON-LEVEL
+shadow of §5.5's type-level refinement relation — this corpus's `DescentState` records only
+`(key, block)` and not the MacLane type `(µ, φ, ℓ)`, so containment in the source's relation is
+argued clause-by-clause, not proved; (2) **the Def 5.5 clause texts are not verifiable against any
+in-repo print** (§II.3's caveat) — the closing check is a print-read of published §5.5; (3) the
+source discharges its index step by citing [GMN12, Thm 4.8], which in printed GMN is a *Lemma*
+(the theorem of the index is Thm 4.18) — the assertion chain's last link is imprecise in the
+source itself (A-3 audit §2.2, already recorded as the NS-7 caveat). **Refutation history:** the
+A-C.1 draft was FALSE (`C94_REFUTATION.lean.txt`); this is the A-C.6 repair, whose
+self-loop-freeness is PROVED and whose `refine` constructor is INHABITED at `ℤ_[2]`
+(`C94_REDRAFT_CERT.lean.txt`).
+
+**Residual risk the owner is accepting.** If `DescentStepR` is still strictly larger than the
+source's refinement relation, the axiom could again be false. The certification bounds this
+negatively (no self-loop; the two known over-broad families die; the relation is inhabited by a
+genuine descent) but cannot close it. **Cheapest hardening if the owner wants it:** carry the
+type-level data in `DescentState` (add the level's `LevelDatum`/valuation datum), which is a
+chapter-C statement change of its own and was NOT attempted here.
+
+---
+
+## A-C.6 §III — NODE C.92: the DECISION, EXECUTED — the axiom is RETIRED and **C.92 EXITS THE GATE-(b) QUEUE**
+
+### III.1 The finding
+
+`fgmn_calculus_exists` is **not unsound — it is worse, for a literature cite: a THEOREM of Lean
+core.** `C92_VACUITY.lean.txt`'s `fgmn_calculus_exists_IS_A_THEOREM` proves the exact conclusion
+under the exact binders with a junk instance (`ExactGrade := fun _ _ => False`, `Rres := fun _ => 1`,
+`KP := fun _ => False`, …), and three of the four side conditions (`he'`, `hcop`, `hfloor`) are
+unreferenced. Root cause: the class pins NOTHING to the chapter's own carriers — `ExactGrade`,
+`Rgr`, `Rres`, `KP`, `nuEquiv`, `letterZ` are all fields, none tied by a field-law to `dvHgt`,
+`dvResPoly`, `digAt` or `DeepTower.deepDigit`.
+
+### III.2 The DECISION, and the option it rejects
+
+**CHOSEN — option (1), hypothesis-form.** The existence axiom is WITHDRAWN. `FGMNCalculus`
+survives unchanged as a hypothesis carrier, which is what every consumer already uses.
+
+**REJECTED — option (2), "anchor the interface, then keep an existence axiom", and the SOURCE is
+what rejects it.** Anchoring means adding field-laws tying `ExactGrade`/`Rgr`/`Rres` to the landed
+`dv`-layer (`dvHgt`, `dvResPoly`, `digAt`, `DeepTower.deepDigit`). But [FGMN] defines `R_ν`,
+`ν`-equivalence and `KP(ν)` **intrinsically**, inside the graded algebra of the MacLane valuation;
+it says nothing about this corpus's `Φ′`-development coordinates. The anchoring field-laws are
+therefore a DICTIONARY between the source's objects and ours — corpus-side theorems (the C.22/C.25
+read layer, the GENTOW2 faithfulness rows), not cited ones — and an existence axiom carrying them
+would assert, under a `[cite:FGMN-chain]` label, a bridge FGMN never proves. That is precisely the
+failure mode the faithfulness gate exists to prevent. The anchoring work is real and stays in the
+corpus as proof obligations; it does not belong inside a cite.
+
+### III.3 The consumer census (asserted, not asserted-by-hand)
+
+`verification/ac6_cite_redraft_check.py` PART 3, re-run against the CURRENT file with a
+comment-aware classifier (a nesting `/- … -/` depth counter, replacing a `startswith` heuristic
+that had misread the file's own header prose as a declaration):
+
+* live `axiom fgmn_calculus_exists` DECLARATIONS: **0** (required 0) — the retirement is in force;
+* TERM-LEVEL consumers of the axiom name: **0** (required 0) — dropping it costs no consumer;
+* hypothesis-form consumers of `FGMNCalculus` (`[I : FGMNCalculus …]` / `(I : …)`): **14**
+  (required ≥ 1) — the class is doing the work, and always was.
+
+The script now FAILS (exit 1) if any of these three is violated, so a future re-declaration of the
+axiom is caught by the numeric gate rather than by prose.
+
+### III.4 Consequences the owner should see
+
+1. **C.92 has NO gate-(b) axiom. It is off the signature queue entirely** — there is nothing for
+   the owner to sign at this node. The gate-(b) queue for chapter C is now exactly
+   {C.66 redraft, C.94 redraft}.
+2. **`C.126`'s axiom-census row for `fgmn_calculus_exists` RETIRES** (it is not renamed): the
+   chapter's declared gate-(b) cite axioms drop from three to the two awaiting signature.
+3. Every `[FGMNCalculus …]`-conditional §10 theorem (C.99–C.104, C.90/C.91) keeps its statement
+   byte-unchanged and **wears its conditionality in its own signature** — which is the honest
+   state, and strictly better for the reader than an existence axiom that supplied junk.
+4. The instance-supply obligation is now VISIBLE rather than discharged-by-fiat: a
+   `[FGMNCalculus …]`-conditional theorem is only as strong as the instance a caller can build,
+   and no caller can build one from [FGMN] alone without the dictionary of §III.2. Recorded here
+   as the honest successor of the retired axiom.
+5. The C.92-gated §10 chain (C.99–C.104) is therefore **unblocked as a signature matter** — its
+   nodes were waiting on a signature that will never come — while remaining conditional in
+   content. What was "blocked on a gate-(b) axiom" is now "conditional on a hypothesis", and the
+   PROJECT_STATE line that describes it as gate-blocked should be read as superseded here.
+
+---
+
+## A-C.6 BOOKKEEPING — records, census, legs, and what stays owed
+
+**Records.** The two redrafts live in `leanspec/Leanspec/ChapC.lean` at their nodes' sections, each
+with the struck A-C.1 draft preserved verbatim in comment above it; C.92's retirement block sits
+where its axiom used to be, and carries the rejected option (2). The three landing records
+(`C66_REFUTATION`, `C94_REFUTATION`, `C92_VACUITY`) and the two redraft certifications
+(`C66_REDRAFT_CERT`, `C94_REDRAFT_CERT`) are `.lean.txt` evidence files under
+`leanfinal/Uniformity/ChapC/`, outside every build. Node banners point here from C.66, C.92, C.94.
+
+**Census.** **No node is added or deleted; no node count changes** (A-C.5's 137 stands). Three
+nodes are re-signed in place at the STATEMENT level: C.66 (redraft, unsigned pending owner), C.94
+(redraft, unsigned pending owner), C.92 (axiom retired; the `FGMNCalculus` class byte-unchanged).
+**Axiom census: −1** (C.126's `fgmn_calculus_exists` row retires); the other two cite rows change
+from "declared, statement-uninspected" to "**drafted, awaiting exact-statement signature —
+NOT declared**".
+
+**DAG.** No new edges: the redrafts are statement changes at existing nodes, and no DEPENDS field
+moves. (C.66's dependence on C.25 + the GENTOW2 dictionary rows is unchanged; C.94's on C.13/C.14a/
+C.29 unchanged.)
+
+**Certification legs (all run before this amendment was written).**
+
+| cite | leg (a): the refutation, retargeted | leg (b): satisfiability | leg (c): numeric |
+|---|---|---|---|
+| C.66 | dies at `hfloor`, verbatim; `hfloor`/`hdg` PROVED false at the refuting pair | `redraft_applies_at_s2Frame` (+ `ℤ_[2]`), 5 more witnesses in PART 1b | 26 in-binder pairs, `c = 1`; degree bookkeeping `2 = 1+1` |
+| C.94 | dies mechanically, then at `s.key ≠ s.key` / `0 < 0`; **`¬ DescentStepR π s s` PROVED** | `witness_step` — an actual term, `ℤ_[2]`-absolute; two-step descent numeric (PART 2b) | index bookkeeping `2 = 2`; Lean-vs-Python model agreement digit-for-digit; PART 2c's tooth |
+| C.92 | n/a — the "refutation" is that the axiom is a Lean-core THEOREM; the disposition is retirement | the class remains inhabitable (that is the finding), now hypothesis-form | PART 3's three asserted census checks |
+
+`lake build Leanspec.ChapC` GREEN (9083 jobs) after every hunk; zero `sorry`; both `.lean.txt`
+certifications compile under `lake env lean` with Lean-core axioms only.
+
+**Also repaired here (found while certifying, not chartered).** (1) The `C66_REDRAFT_CERT` record
+left by the unit's first (killed) attempt did NOT compile — two `ring` calls that could not see
+`C 2` as a numeral and a stray `omega`; four declarations carried `sorryAx`. Fixed and re-run
+green. (2) `leanspec`'s header still asserted that the three cite axioms "are DECLARED", which is
+false since the landing; corrected in place, together with §7's C.66 pointer and the tail's
+STILL-OWED item (a). (3) PART 3 of the numeric leg printed a hardcoded "TERM-LEVEL consumers: 0"
+while computing the list and discarding it; it now asserts.
+
+**OWED, and deliberately not done here.** (a) The owner's two signatures — nothing is declared
+until then, and the fleet must not transcribe either statement as an axiom. (b) A print-read of
+[AGNPRW] published §5.5 to close §II.3's provenance caveat (≈2 minutes with the PDF; the repo holds
+no copy). (c) The `AXIOM_FAITHFULNESS.md` entries themselves — drafted above, to be filed WITH the
+signatures, not before. (d) `docs/PROJECT_STATE.md` is untouched by this unit (append written by
+the orchestrator). (e) The C.66 degree-law choice (§I.3) is discretionary and stands until the
+owner strikes it.
+
+**Attribution disclosure.** This unit's first attempt (killed mid-run) committed the leanspec
+redrafts and the numeric leg as `958cc39b` / `ced0c72b`; the concurrent A-C.5 unit's `AC5SlotHeights`
+hunk was swept into `958cc39b` by that unit's `git add` (content intact, attribution stacked —
+recorded from the other side in A-C.5's bookkeeping), and four A-C.3 blueprint hunks were earlier
+swept into `1e35c199` the same way. Recorded, not rewritten.
+
+---
+
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
