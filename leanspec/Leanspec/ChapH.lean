@@ -2786,16 +2786,145 @@ axiom plantedPoly_genre {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuati
         (betaChild π c hcp (N - betaContent c p.1.2.1)).1
           = proj O p.1.1 (N - betaContent c p.1.2.1) (classSect O p.1.1 N (bb p).1))
 
-/-- **H.116b3 [NEW NODE: A-H.7].** THE `¬ IsCSState` TRANSPORT. Swapping the child
-presentations of a planted product while keeping the cofactor cannot create a composite-stage
-event. This is the one geometric leg — it needs the ChapB polygon API (`sideSet`, `sideMin`,
-`npHgt`, `resPoly`), which `H116bR.lean` deliberately does not import, and it is what
-`IsBetaState`'s second conjunct owes.
+/-! #### H.116b3-i / -ii / -iii [RE-SPLIT: A-H.8] — the three sub-nodes of H.116b3
+
+A-H.7 §6's PROOF step 1 is FALSE as written (`v(δ_j) ≥ 1 + npHgt(f)(j)` fails at `O = ℤ₂`,
+one child `(2,1,1)`; the difference is one digit above the HULL, not above the coefficient) and
+the repaired route needs chapter B's general graded product law `B39a`. The STATEMENT is
+unchanged. Record: `leanfinal/notes/BLOCKED_H116b3_2026-08-16.md`; amendment: A-H.8. -/
+
+/-- **H.116b3-i (1/4) [NEW NODE: A-H.8].** The planted factor's SUPPORT VALUE, exactly: the
+affine function `j ↦ ℓk(μ−j) + uj` on `[0, μ]` is minimised at an endpoint, and both endpoints
+are ATTAINED (`alphaParent_npHgt_zero` at `0`, monicity at `μ`). Landing site
+`leanfinal/Uniformity/ChapH/H116b3i.lean`, namespace `Uniformity.Density.Induction`. -/
+axiom suppVal_alphaParent {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {μ k : ℕ} {b : Fin μ → O}
+    (hb : ∀ i, b i ∈ maximalIdeal O) {z : ResidueField O} (hz : z ≠ 0) {ŵ : O}
+    (hŵ : residue O ŵ = z) (u ℓ : ℕ) :
+    suppVal X (alphaParent π b k ŵ) u ℓ = ((μ * min (ℓ * k) u : ℕ) : ℕ∞)
+
+/-- **H.116b3-i (2/4) [NEW NODE: A-H.8].** The side's LEFT ENDPOINT of a planted factor. The
+tie `ℓk = u` goes with the shallow branch: the whole segment is the side and `min' = 0`. -/
+axiom sideMin_alphaParent {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {μ k : ℕ} {b : Fin μ → O}
+    (hb : ∀ i, b i ∈ maximalIdeal O) {z : ResidueField O} (hz : z ≠ 0) {ŵ : O}
+    (hŵ : residue O ŵ = z) {u ℓ : ℕ}
+    (hne : (sideSet X (alphaParent π b k ŵ) u ℓ).Nonempty) :
+    sideMin X (alphaParent π b k ŵ) u ℓ hne = if ℓ * k ≤ u then 0 else μ
+
+/-- **H.116b3-i (3/4) [NEW NODE: A-H.8].** The HEIGHT at that endpoint — the `hHf`/`hHz` binder
+of every `B39a` product-law lemma, which demands the height be a NAT, not `⊤`. -/
+axiom npHgt_sideMin_alphaParent {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {μ k : ℕ} {b : Fin μ → O}
+    (hb : ∀ i, b i ∈ maximalIdeal O) {z : ResidueField O} (hz : z ≠ 0) {ŵ : O}
+    (hŵ : residue O ŵ = z) {u ℓ : ℕ}
+    (hne : (sideSet X (alphaParent π b k ŵ) u ℓ).Nonempty) :
+    npHgt X (alphaParent π b k ŵ) (sideMin X (alphaParent π b k ŵ) u ℓ hne)
+      = ((if ℓ * k ≤ u then μ * k else 0 : ℕ) : ℕ∞)
+
+/-- **H.116b3-i (4/4) [NEW NODE: A-H.8].** THE GRADED SWAP BOUND — the brick A-H.7 §6 believed
+it already had. The landed `pow_min_succ_dvd_coeff_recentre_alphaParent_sub` read at the trivial
+frame `(k', w') = (0, 0)` gives only `π ^ 1 ∣ δ_j` (its exponent is `μ · min k k' + 1`, and
+`min k 0 = 0`); the GRADED bound below is a different statement and is what the perturbation
+estimate needs. Route: `alphaParent_coeff` plus `π ∣ (alphaFrame b' ŵ − alphaFrame b ŵ).coeff i`
+— the latter currently exists only as an internal `have` (`hframe`) inside H116bR's proof and
+must be exported alongside this. -/
+axiom pow_grade_succ_dvd_coeff_alphaParent_sub {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {μ : ℕ} {b b' : Fin μ → O}
+    (hbb : ∀ i, b' i - b i ∈ maximalIdeal O) (k : ℕ) (ŵ : O) (j : ℕ) :
+    π ^ (k * (μ - j) + 1) ∣ (alphaParent π b' k ŵ - alphaParent π b k ŵ).coeff j
+
+/-- **H.116b3-ii (1/3) [NEW NODE: A-H.8]. ⚠ FLAGGED FOR HUMAN REVIEW — new general polygon
+statement.** THE ABOVE-THE-LINE TRANSPORT, `suppVal` clause. B.77 transports the polygon along a
+UNIFORM depth `π ^ N ∣ (f − f').coeff i`; that hypothesis FAILS here (`bb` and `bb'` are
+different level-`N` classes, so the difference is only `π ¹`-deep relative to the planted
+floor). What does hold is a LINE-depth hypothesis: the perturbation sits strictly above the
+supporting line at every abscissa. Stated at general monic `φ` — legitimate because `dev` is
+additive (`dev_add_of_monic`, B32a) so the hypothesis passes to developments; the consumer uses
+`φ = X`. Landing site `leanfinal/Uniformity/ChapH/H116b3ii.lean`, namespace
+`Uniformity.Density.Induction` (chapter-B-shaped content, kept in chapter H because chapter B is
+closed). -/
+axiom suppVal_congr_of_above_line {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {φ : Polynomial O}
+    (hφ : φ.Monic) (hd : 0 < φ.natDegree) {f f' : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ)
+    (hdeg : f'.natDegree = f.natDegree)
+    (habove : ∀ j, suppVal φ f u ℓ < ℓ • npHgt φ (f' - f) j + ((u * j : ℕ) : ℕ∞)) :
+    suppVal φ f' u ℓ = suppVal φ f u ℓ
+
+/-- **H.116b3-ii (2/3) [NEW NODE: A-H.8]. ⚠ FLAGGED FOR HUMAN REVIEW.** The same, `sideSet`
+clause — the analogue of B77a's `sideSet_congr`. `sideMin`, `sideMax`, `sideDeg` and `IsPure`
+transport by rewriting along it, exactly as at B77a. -/
+axiom sideSet_congr_of_above_line {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {φ : Polynomial O}
+    (hφ : φ.Monic) (hd : 0 < φ.natDegree) {f f' : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ)
+    (hdeg : f'.natDegree = f.natDegree)
+    (habove : ∀ j, suppVal φ f u ℓ < ℓ • npHgt φ (f' - f) j + ((u * j : ℕ) : ℕ∞)) :
+    sideSet φ f' u ℓ = sideSet φ f u ℓ
+
+/-- **H.116b3-ii (3/3) [NEW NODE: A-H.8]. ⚠ FLAGGED FOR HUMAN REVIEW.** The same, `resPoly`
+clause — the analogue of B77b's `resPoly_congr`, with `π ^ N`-depth replaced by line-depth. The
+`hcop` binder is not decoration: `resCoeff` reads the digit at the LINE height `H₀ − u·k`, and
+the `ℕ`-subtraction is only honest because `u · sideDeg ≤ H₀` (`u_mul_sideDeg_le`, B39a), which
+needs `hcop`. `htop` is redundant (it follows from `hH₀`) and is carried to match B39a's shape.
+The `(by …)` nonemptiness argument mirrors B77b's frozen form verbatim. -/
+axiom resPoly_congr_of_above_line {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {φ : Polynomial O}
+    (hφ : φ.Monic) (hd : 0 < φ.natDegree) {f f' : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ)
+    (hcop : Nat.Coprime u ℓ) (hdeg : f'.natDegree = f.natDegree)
+    (habove : ∀ j, suppVal φ f u ℓ < ℓ • npHgt φ (f' - f) j + ((u * j : ℕ) : ℕ∞))
+    (h : (sideSet φ f u ℓ).Nonempty) (htop : suppVal φ f u ℓ ≠ ⊤) {H₀ : ℕ}
+    (hH₀ : npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞)) :
+    resPoly π φ f' u ℓ
+        (by rw [sideSet_congr_of_above_line hπ hφ hd hℓ hdeg habove]; exact h) H₀
+      = resPoly π φ f u ℓ h H₀
+
+/-- **H.116b3-iii (1/2) [NEW NODE: A-H.8].** THE `∀`-OVER-LIFTS BRIDGE — the third gap the block
+record names, signed here. `IsCSState` quantifies over EVERY lift of the class, so `hcs` yields
+only "SOME lift of `c` has no witness", and that lift need not be the planted one. This is the
+converse plumbing: one lift with a witness suffices, because two lifts of one class differ by
+`π ^ N` and non-drain is exactly `Visible π X · N` (B.75/B.76), so B.77 applies verbatim.
+`hm : 0 < m` is what makes `(monicPoly a).coeff 0 = a 0`, hence `¬ IsDrainState` ⟹ `Visible`;
+`H₀ < N` (B77b's binder) comes from `suppVal ≤ ℓ·npHgt 0 < ℓ·N` and `suppVal = ℓH₀ + u·j₀`. -/
+axiom isCSState_of_exists_lift {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {m N : ℕ} (hm : 0 < m)
+    {c : ClusterState O m N} (h0 : ¬ IsDrainState c)
+    (h : ∃ (a : Fin m → O) (_ : proj O m N a = c.1),
+      ∃ (u ℓ : ℕ) (hne : (sideSet X (monicPoly a) u ℓ).Nonempty) (H₀ : ℕ),
+        0 < ℓ ∧ Nat.Coprime u ℓ ∧
+        npHgt X (monicPoly a) (sideMin X (monicPoly a) u ℓ hne) = (H₀ : ℕ∞) ∧
+        ∃ ψ : Polynomial (resField (X : Polynomial O)),
+          Irreducible ψ ∧ 2 ≤ ℓ * ψ.natDegree ∧
+          ψ ^ 2 ∣ resPoly π X (monicPoly a) u ℓ hne H₀) :
+    IsCSState π c
+
+/-- **H.116b3 = H.116b3-iii (2/2) [NEW NODE: A-H.7; RE-SPLIT: A-H.8].** THE `¬ IsCSState`
+TRANSPORT. Swapping the child presentations of a planted product while keeping the cofactor
+cannot create a composite-stage event. This is the one geometric leg — it needs the ChapB
+polygon API (`sideSet`, `sideMin`, `npHgt`, `resPoly`), which `H116bR.lean` deliberately does
+not import, and it is what `IsBetaState`'s second conjunct owes. **The STATEMENT is
+BYTE-UNCHANGED by A-H.8**; only the route below it changed.
+
+DEPENDS [RE-POINTED: A-H.8]: **H.116b3-i** (the four planted-polygon lemmas above) ·
+**H.116b3-ii** (the three above-the-line congruences above) · `isCSState_of_exists_lift` (the
+lifts bridge) · **`Uniformity.ChapB.B39a`** (`suppVal_mul_gen`, `npHgt_mul_gen`,
+`sideMin_mul_gen`, `sideDeg_mul_gen`, `resPoly_mul_gen` — ⚠ B39a carries its own
+*"Flagged for human review"* banner; consuming it here IMPORTS that flag, A-H.8 §4) ·
+`sideSet_nonempty_gen` (B39b, unconditional) · B.33 · B.77 (B77a/B77b) · B.75/B.76 ·
+B.15 (`npHgt_X`) · H116bR (`alphaParent_map_residue` — the `u = 0` branch) · H.109 · H.110 ·
+H.115b · H.116b2 (the carrier `plantedPoly`).
+
+**FENCE A-H.8/F1.** The assembly is the block record's step order — (3b) iterate
+`suppVal_mul_gen` over `L.attach`, (3c) the convolution estimate, (3d) = H.116b3-ii, (3e) the
+`u = 0` branch SEPARATELY (`B39a` carries `hu : 0 < u`), (3f) the lifts bridge. An agent that
+reaches for B.77 on the swap itself, or for B.33 to identify the support value, returns this
+fence: B.77's uniform-depth hypothesis fails at every cell of the genre, and B.33's
+superadditivity points the wrong way.
 
 TEMPLATE: H.115b's landed `not_isCSState_of_alphaParent` (the α-side single-factor case).
 TEETH: check `G` of `verification/openmath/OM2_h116b_replant_cert.py` — the replant difference
 sits STRICTLY ABOVE the parent's full Newton polygon at every `(u, ℓ)`, so side data and
-`resPoly` are unchanged on both sides. -/
+`resPoly` are unchanged on both sides. It is measured against the HULL, which is why the
+battery did not catch A-H.7 §6 step 1's mis-statement. -/
 axiom not_isCSState_plantedPoly_swap {O : Type*} [CommRing O] [IsDomain O]
     [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O] {π : O}
     (hπ : Irreducible π) {m N r : ℕ} (hm : 2 ≤ m) (hN : 1 ≤ N)

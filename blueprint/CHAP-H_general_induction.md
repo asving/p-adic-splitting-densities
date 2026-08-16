@@ -8064,7 +8064,9 @@ DEF-DEPENDENCY, added: A-H.5)** · H.60 (unit pivots, the
 fibre mechanism) · landed `exists_monic_factorization_finset` · *[added A-H.7, clause (ii)
 only]* **H.116b1** (`exists_peel_finset`, `peel_cofactor_inherits`), **H.116b2**
 (`coeff_level_mul_trailing`, `plantedPoly_genre`), **H.116b3**
-(`not_isCSState_plantedPoly_swap`), **H.116b4** (`planted_presentation_card`) · *[added A-H.7]*
+(`not_isCSState_plantedPoly_swap`; *[RE-SPLIT A-H.8]* into **H.116b3-i** the planted-polygon
+package, **H.116b3-ii** the above-the-line transport, **H.116b3-iii** the assembly — the
+consumed statement is byte-unchanged), **H.116b4** (`planted_presentation_card`) · *[added A-H.7]*
 **H.106** (`card_clusterState`, the coset count of §8 step 3) · *[added A-H.7]* the twenty
 LANDED declarations of `leanfinal/Uniformity/ChapH/H116bR.lean` (`exists_peel`,
 `not_pow_add_succ_dvd_coeff_mul`, `not_pow_min_succ_dvd_coeff_recentre_alphaParent`,
@@ -8121,6 +8123,11 @@ helper, and the ONE research step of the four) and the 70-line ASSEMBLY that is 
 A-H.7 §§4–8. Land them in the DAG order **b2 → b1 → b3 → b4 → assembly** (the b2 → b1 edge is
 adjudicated at A-H.7 §3, and reverses the block record's listing order). Do NOT assign H.116b4
 before b1–b3 land, and do NOT assign it to the replant route (FENCE A-H.7/F1).
+*[UPDATED A-H.8 — H.116b3's 60 lines was wrong by a factor of six.]* **H.116b3 is RE-SPLIT into
+three**: H.116b3-i (90 lines), H.116b3-ii (120 lines, FLAGGED FOR HUMAN REVIEW), H.116b3-iii
+(150 lines) — **360 lines, not 60**. The b3 rung of the landing order becomes
+**b2 → b1 → b3-i → b3-ii → b3-iii → b4 → assembly** (b3-i and b3-ii are independent of each
+other and may run in parallel; b3-iii consumes both). A-H.8 §3.
 **SOURCE.** OM-2 §3.2 N-2c (displayed: capped windows, constant fibre; the verdict half
 lands at H.118/H.119); `EFF.GENIND.10` (the β-fibration), `EFF.GENIND.24` (the
 `[r3]`-capped window with its THREE-layer correction history — a transcription must not
@@ -9981,6 +9988,17 @@ constants) and check **C** (the child set stays EXACTLY `L`, contents unchanged)
 
 ### §6. NEW NODE H.116b3 [theorem] [fresh] — the `¬ IsCSState` transport
 
+> **AMENDMENT BANNER 2026-08-16 — THIS SECTION'S PROOF STEP 1 IS FALSE AS WRITTEN; THE
+> STATEMENT IS NOT.** The block record `leanfinal/notes/BLOCKED_H116b3_2026-08-16.md` exhibits
+> a machine counterexample inside the genre (`O = ℤ₂`, one child `(μ,k,z) = (2,1,1)`, `Q = 1`):
+> at `φ = X` the Lean `npHgt` is the COEFFICIENT valuation (`npHgt_X`, B.15), not the hull
+> height, and the displayed `v(δ_j) ≥ 1 + npHgt(monicPoly a)(j)` fails at abscissa `1`. The
+> SIGNATURE, the DEPENDS-listed statement and the `⚠ WHAT THIS DOES AND DOES NOT GIVE` note
+> below all stand unchanged; **PROOF steps 1–3 are SUPERSEDED by AMENDMENT A-H.8** and are kept
+> verbatim there and here per the G.23a precedent. The node is RE-SPLIT into H.116b3-i,
+> H.116b3-ii, H.116b3-iii; its SIZE estimate of 60 lines was wrong by a factor of six (A-H.8 §3).
+> **Do not implement the PROOF below.**
+
 **STATEMENT.** Swapping the child presentations of a planted product while keeping the cofactor
 cannot create a composite-stage event. This is `IsBetaState`'s second conjunct, and it is the
 only geometric leg of the four: it needs the ChapB polygon API (`sideSet`, `sideMin`, `npHgt`,
@@ -10011,7 +10029,7 @@ and `alphaParent_npHgt_zero`, `alphaParent_npHgt_ge`, `alphaParent_npHgt_natDegr
 `OnSide`, `suppVal` · **landed in `H116bR.lean`**:
 `pow_min_succ_dvd_coeff_recentre_alphaParent_sub`.
 
-**PROOF.**
+**PROOF.** ⚠ **SUPERSEDED BY A-H.8 §1/§3 — step 1 is FALSE as written; frozen verbatim below.**
 1. **The difference is one digit above the polygon, coefficientwise.**
    `δ := plantedPoly bb' Qc − plantedPoly bb Qc = (∏_p P(b'_p) − ∏_p P(b_p))·Q`. Telescope the
    product difference over `L.attach`; every summand carries one factor
@@ -10035,11 +10053,25 @@ seeds each cofactor slice with a genuine genre member — supplied by the peel, 
 transports from there. An agent that needs `¬ IsCSState` for a cofactor slice containing no
 genre member does not need it: that slice is not in `𝒬`.
 
-**SIZE.** 60 lines. **SOURCE.** A-H.7 §6; block record §4c.
+**SIZE.** 60 lines. *[REFUTED AS AN ESTIMATE: A-H.8 §3 — the real figure is 360, split
+90 + 120 + 150 across b3-i/-ii/-iii.]* **SOURCE.** A-H.7 §6; block record §4c.
 **TEETH.** `OM2_h116b_replant_cert.py` check **G** — *"replant difference strictly above the
 polygon"*, measured at every `(u, ℓ)` on every enumerable cell → Lean theorem here.
+*[A-H.8: check **G** is measured against the HULL, which is exactly why the battery did not
+catch step 1's mis-statement — it is the machine form of A-H.8's step (3c), not of step 1.]*
 **ENVIRONMENT.** ENV-H17 + `[IsAdicComplete]` + `π` explicit; **imports chapter B** (the only
 node of the four that does).
+
+**DEPENDS [EXTENDED: A-H.8 §3].** The field above is INCOMPLETE — the repaired route needs
+chapter B's **general graded product law `Uniformity.ChapB.B39a`** (`suppVal_mul_gen`,
+`npHgt_mul_gen`, `sideMin_mul_gen`, `sideDeg_mul_gen`, `resPoly_mul_gen`), **B39b**
+(`sideSet_nonempty_gen`, `gaussVal_neg`, `dev_neg`, `suppVal_neg`), **B.33**
+(`suppVal_add_le_suppVal_mul`, for the direction it DOES give), **B32a** (`dev_add_of_monic`,
+`min_gaussVal_le_gaussVal_add`), **B77a/B77b** (`suppVal_congr`, `sideSet_congr`,
+`resPoly_congr` — for the LIFT bridge only, never for the swap), **B.75/B.76** (`Visible`,
+`visible_iff_npHgt_lt`), **B.15** (`npHgt_X`), and **H116bR**'s `alphaParent_map_residue`
+(the `u = 0` branch). ⚠ **B39a carries its own "Flagged for human review" banner** — consuming
+it here imports that flag; see the rider at A-H.8 §4.
 
 ---
 
