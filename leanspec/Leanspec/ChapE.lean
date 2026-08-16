@@ -208,6 +208,25 @@ amendments are adjudicated, per §12's "those stubs are re-signed when their nod
   `twisted_slot_spec_of_attain_inClass` but assumes what the source derives. No other stub moves
   (`twisted_lift` (E.31) supplies the new `hatt` from its own construction: its slots have height
   `m₀ − tu` at `s = s₀ + ℓt`, of value `ℓm₀ + s₀u = k`). Full record: blueprint amendment A-E.4.
+* **A-E.5 (2026-08-16, wave-6 refutation adjudication).** **E.55 `refine_chain_finite` REFUTED as
+  frozen, TWICE** (defect E-D14; both witnesses in `leanfinal/Uniformity/ChapE/E55.lean` over
+  `(ZMod 2)⟦T⟧` with the fully-discharged `D = 1` carrier `coeffZeroCarrier`, `μ₂ = 2`,
+  increments `w i = T^i(1+T)` of height `λ_i = i`): (1) `refine_chain_finite_false` — the
+  committed signature bounds no degree on the development coefficients `A j m`, while `hcoeff`
+  converts heights into `O`-coefficient valuations ONLY below `C.D`, so `Ψ = x`, `F = x + 1`,
+  `A j 0 = x² + x + T^{2j}` meets every floor with EQUALITY on its constant coefficient while its
+  `x²`-part carries the whole discrepancy; (2) `refine_chain_finite_boundedDev_false` — with that
+  patched it is STILL false, since nothing bounds `deg Ψ` below: `Ψ = 0`, `F = 1`,
+  `A j 0 = T^{2j}` makes `(Ψ − W)^{μ₂}` a unit's power, which IS squarefree. **Re-signed here with
+  two ADDED binders** — `hkey : C.D ≤ Ψ.natDegree` after `hsq`, and
+  `hAdeg : ∀ j m, (A j m).natDegree < C.D` after `A` — every other binder and the conclusion
+  byte-unchanged, in the committed order; PROVED in the landed file. Both are SOURCE frame data
+  (`EFF.HE7.44`(c)(6) + `EFF.HE7.11` for `hAdeg`; `DEFINITION HE7-1` + `EFF.HE7.44` for `hkey`,
+  taken only at its `≤` half). Both are NECESSARY and INDEPENDENT, machine-checked: witness (1)
+  satisfies `hkey`, witness (2) satisfies `hAdeg`. No other stub moves — E.52 takes termination as
+  its own `hterm`, and E.56 (landed at its committed signatures) supplies the `hmono` this node
+  consumes. `E55a.exists_limit_key` (the split's first piece, PROVED) needs `hAdeg` but neither
+  `hkey` nor `2 ≤ μ₂`; there is no `E55b`. Full record: blueprint amendment A-E.5.
 
 ## BLOCKED-UNTIL-RESOLUTION (§12; do NOT fire the fleet on these)
 
@@ -1114,7 +1133,37 @@ The three stub-stage spelling calls of the SIGNATURE NOTE are executed here:
 (a) `hOcoeff` is the landed DVR valuation `IsDiscreteValuationRing.addVal` pushed into
 `WithTop ℤ` by `WithTop.map`; (b) the increment degree bound is against the CURRENT key degree
 `C.D` (the NOTE's own resolution of its display's `C.D * μ₂`); (c) `hfloor`'s right side is
-the cleared `WithTop ℤ` inequality. None changes the theorem's strength. -/
+the cleared `WithTop ℤ` inequality. None changes the theorem's strength.
+
+**RE-SIGNED 2026-08-16 at the A-E.5 form, at E.55's landing** (two ADDED binders — `hkey` after
+`hsq`, `hAdeg` after `A`; every other binder and the conclusion byte-unchanged, in the committed
+order). The committed form (preserved here for the record) was
+
+    axiom refine_chain_finite … (as below, but WITHOUT)
+        (hkey : C.D ≤ Ψ.natDegree)
+        (hAdeg : ∀ j m, (A j m).natDegree < C.D)
+
+— and it is **FALSE**, twice over (defect E-D14; both witnesses machine-checked in
+`leanfinal/Uniformity/ChapE/E55.lean` over `O = (ZMod 2)⟦T⟧`, `K = ZMod 2`, with the
+fully-discharged `D = 1` carrier `coeffZeroCarrier`, increments `w i = T^i(1+T)` of height
+`λ_i = i`, and `μ₂ = 2`):
+
+* `refine_chain_finite_false` — with NO degree bound on the development coefficients, `hcoeff`
+  (which converts heights into `O`-coefficient valuations only below `C.D`) never sees the part
+  of `A j m` above the carrier's window. Witness `Ψ = x`, `F = x + 1`,
+  `A j 0 = x² + x + T^{2j}`: the floors are met with EQUALITY on the constant coefficient while
+  the `x²`-part carries the whole discrepancy. This witness SATISFIES `hkey` (`1 ≤ 1`);
+* `refine_chain_finite_boundedDev_false` — with `hAdeg` alone added it is still false: nothing
+  bounds `deg Ψ` below, so `Ψ = 0`, `F = 1`, `A j 0 = T^{2j}` (constants, so `hAdeg` HOLDS) makes
+  `(Ψ − W)^{μ₂}` a unit's power, which IS squarefree.
+
+Both added binders are SOURCE frame data the stub dropped. `hAdeg`: `EFF.HE7.53`'s proof invokes
+`(SLOT₂)` on the `A_m`, and `(SLOT₂)` (`EFF.HE7.11`) is stated "Let `C ∈ O[x]` with
+`deg C < D″`…", which the `A_m` meet by construction — `EFF.HE7.44`(c) item (6): "the developments
+in powers of the monic degree-`D″` polynomial `Ψ^{(w)}` have coefficients of degree `< D″`, so
+(SLOT₂) applies to them". `hkey`: `DEFINITION HE7-1` has the key "monic of degree `D″ := D′ℓd_r`",
+preserved along the chain by `EFF.HE7.44` ("Put `Ψ^{(w)} := Ψ − w`, monic of degree `D″`"); only
+the `≤` half is taken. PROVED in the landed file. Full record: blueprint amendment A-E.5. -/
 axiom refine_chain_finite {O : Type*} [CommRing O] [IsDomain O]
     [IsDiscreteValuationRing O] [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {K : Type*} [Field K] (C : SlotCarrier O K)
@@ -1124,11 +1173,13 @@ axiom refine_chain_finite {O : Type*} [CommRing O] [IsDomain O]
           (fun n : ℕ => (n : ℤ)))
     {F Ψ : Polynomial O} {μ₂ : ℕ} (hμ : 2 ≤ μ₂)
     (hsq : Squarefree (F.map (algebraMap O (FractionRing O))))
+    (hkey : C.D ≤ Ψ.natDegree)                   -- [re-signed: A-E.5] ADDED; the key's degree
     (w : ℕ → Polynomial O) (lam : ℕ → ℤ)
     (hdeg : ∀ j, (w j).natDegree < C.D)          -- deg < the current key degree; NOTE (b)
     (hh : ∀ j, C.hgt (w j) = (lam j : WithTop ℤ))
     (hmono : StrictMono lam)
     (A : ℕ → ℕ → Polynomial O)
+    (hAdeg : ∀ j m, (A j m).natDegree < C.D)     -- [re-signed: A-E.5] ADDED; sub-key development
     (hdev : ∀ j, F = (Ψ - ∑ i ∈ Finset.range j, w i) ^ μ₂
       + ∑ m ∈ Finset.range μ₂, A j m * (Ψ - ∑ i ∈ Finset.range j, w i) ^ m)
     (hfloor : ∀ j, ∀ m < μ₂,
