@@ -617,6 +617,168 @@ theorem exists_peel {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRi
 
 end Peel
 
+/-! ## 5. Exact levels multiply, and the planted profile is EXACT -/
+
+section Gauss
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+/-- `π ∣ x` is the residue reading of `x`. -/
+private theorem dvd_iff_residue_eq_zero {π : O} (hπ : Irreducible π) (x : O) :
+    π ∣ x ↔ residue O x = 0 := by
+  constructor
+  · intro hd
+    refine Ideal.Quotient.eq_zero_iff_mem.2 ?_
+    have h := (mem_maximalIdeal_pow_iff_dvd_of_irr hπ 1 x).2 (by rwa [pow_one])
+    rwa [pow_one] at h
+  · intro h0
+    have hmem : x ∈ maximalIdeal O := Ideal.Quotient.eq_zero_iff_mem.1 h0
+    have h := (mem_maximalIdeal_pow_iff_dvd_of_irr hπ 1 x).1 (by rwa [pow_one])
+    rwa [pow_one] at h
+
+omit [IsDomain O] [IsDiscreteValuationRing O] in
+/-- **Levels add under multiplication** (the easy half): `C (π ^ s) ∣ P` and `C (π ^ t) ∣ Q`
+give `C (π ^ (s + t)) ∣ P * Q`, read coefficientwise. -/
+theorem pow_add_dvd_coeff_mul {π : O} {s t : ℕ} {P Q : Polynomial O}
+    (hP : ∀ j, π ^ s ∣ P.coeff j) (hQ : ∀ j, π ^ t ∣ Q.coeff j) :
+    ∀ j, π ^ (s + t) ∣ (P * Q).coeff j := by
+  rw [← Polynomial.C_dvd_iff_dvd_coeff] at hP hQ ⊢
+  rw [pow_add, Polynomial.C_mul]
+  exact mul_dvd_mul hP hQ
+
+/-- **Gauss's lemma for the `π`-level.**  If `π ^ s` is the EXACT coefficient level of `P` and
+`π ^ t` the exact level of `Q`, then `π ^ (s + t)` is the exact level of `P * Q`: divide the
+exact levels out, and the two divided reductions are nonzero in `(ResidueField O)[X]`, which is
+a domain.  This is what makes the content of a PRODUCT the sum of the contents, and hence what
+lets a re-planting be certified one digit past the parent's content. -/
+theorem not_pow_add_succ_dvd_coeff_mul {π : O} (hπ : Irreducible π) {s t : ℕ}
+    {P Q : Polynomial O} (hP : ∀ j, π ^ s ∣ P.coeff j)
+    (hP' : ¬ ∀ j, π ^ (s + 1) ∣ P.coeff j) (hQ : ∀ j, π ^ t ∣ Q.coeff j)
+    (hQ' : ¬ ∀ j, π ^ (t + 1) ∣ Q.coeff j) :
+    ¬ ∀ j, π ^ (s + t + 1) ∣ (P * Q).coeff j := by
+  classical
+  obtain ⟨P₁, hP₁⟩ := (Polynomial.C_dvd_iff_dvd_coeff (π ^ s) P).2 hP
+  obtain ⟨Q₁, hQ₁⟩ := (Polynomial.C_dvd_iff_dvd_coeff (π ^ t) Q).2 hQ
+  -- the divided factors survive one more `π`, hence have nonzero reduction
+  have hres : ∀ (u : ℕ) (F F₁ : Polynomial O), F = Polynomial.C (π ^ u) * F₁ →
+      (¬ ∀ j, π ^ (u + 1) ∣ F.coeff j) → F₁.map (residue O) ≠ 0 := by
+    intro u F F₁ hF hF' hzero
+    refine hF' ?_
+    refine (Polynomial.C_dvd_iff_dvd_coeff (π ^ (u + 1)) F).1 ?_
+    have hall : ∀ i, π ∣ F₁.coeff i := by
+      intro i
+      refine (dvd_iff_residue_eq_zero hπ _).2 ?_
+      have := congrArg (fun p : Polynomial (ResidueField O) => p.coeff i) hzero
+      simpa only [Polynomial.coeff_map, Polynomial.coeff_zero] using this
+    obtain ⟨F₂, hF₂⟩ := (Polynomial.C_dvd_iff_dvd_coeff π F₁).2 hall
+    exact ⟨F₂, by rw [hF, hF₂, pow_succ, Polynomial.C_mul, mul_assoc]⟩
+  have hP₁res : P₁.map (residue O) ≠ 0 := hres s P P₁ hP₁ hP'
+  have hQ₁res : Q₁.map (residue O) ≠ 0 := hres t Q Q₁ hQ₁ hQ'
+  -- the product of the reductions is nonzero: `(ResidueField O)[X]` is a domain
+  have hprod : (P₁ * Q₁).map (residue O) ≠ 0 := by
+    rw [Polynomial.map_mul]
+    exact mul_ne_zero hP₁res hQ₁res
+  obtain ⟨j, hj⟩ : ∃ j, ((P₁ * Q₁).map (residue O)).coeff j ≠ 0 := by
+    by_contra hcon
+    refine hprod (Polynomial.ext fun j => ?_)
+    simpa using not_exists.1 hcon j
+  rw [Polynomial.coeff_map] at hj
+  intro hall
+  have hPQ : P * Q = Polynomial.C (π ^ (s + t)) * (P₁ * Q₁) := by
+    rw [hP₁, hQ₁, pow_add, Polynomial.C_mul]
+    ring
+  have hcj := hall j
+  rw [hPQ, Polynomial.coeff_C_mul] at hcj
+  exact not_pow_succ_dvd_pow_mul hπ (s + t) hj hcj
+
+/-- The planted factor's frame at its OWN slope, at ANY centre: `π ^ (μ k) ·` a MONIC
+degree-`μ` polynomial (the child's development, recentred).  The `k' = k` half of the exact
+profile law. -/
+theorem recentre_alphaParent_own {π : O} {μ : ℕ} (b : Fin μ → O) (k : ℕ) (ŵ w' : O) :
+    (alphaParent π b k ŵ).comp (C (π ^ k) * (X + C w'))
+      = C (π ^ (μ * k)) * ((alphaFrame b ŵ).comp (X + C w')) := by
+  have hstep : (alphaParent π b k ŵ).comp (C (π ^ k) * X)
+      = C ((π ^ k) ^ μ) * alphaFrame b ŵ := by
+    refine Polynomial.ext fun j => ?_
+    rw [comp_C_mul_X_coeff, alphaParent_coeff, coeff_C_mul]
+    by_cases hj : j ≤ μ
+    · rw [mul_assoc, ← pow_add, show μ - j + j = μ from by omega]
+      ring
+    · have hz : (alphaFrame b ŵ).coeff j = 0 :=
+        coeff_eq_zero_of_natDegree_lt (by rw [alphaFrame_natDegree]; omega)
+      rw [hz, zero_mul, zero_mul, mul_zero]
+  rw [comp_recentre_eq_comp_comp, hstep, mul_comp, C_comp, ← pow_mul, Nat.mul_comm k μ]
+
+/-- **The planted profile is EXACT at every frame** (C1, the upper half).  `π ^ (μ · min k k')`
+divides the planted factor's frame at `(k', w')` and `π ^ (μ · min k k' + 1)` does NOT:
+at a FOREIGN frame the witness is the unit constant term (§3), at the OWN slope it is the
+monic top of the recentred child development, at abscissa `μ`. -/
+theorem not_pow_min_succ_dvd_coeff_recentre_alphaParent {π : O} (hπ : Irreducible π) {μ : ℕ}
+    {b : Fin μ → O} (hb : ∀ i, b i ∈ maximalIdeal O) {k : ℕ} {ŵ : O}
+    {z : ResidueField O} (hŵ : residue O ŵ = z) (hz : z ≠ 0) {k' : ℕ} {w' : O}
+    {z' : ResidueField O} (hw' : residue O w' = z') (hz' : z' ≠ 0) :
+    ¬ ∀ j, π ^ (μ * min k k' + 1) ∣
+      ((alphaParent π b k ŵ).comp (C (π ^ k') * (X + C w'))).coeff j := by
+  by_cases hkk : k' = k
+  · subst hkk
+    intro hall
+    have hc := hall μ
+    rw [recentre_alphaParent_own, Polynomial.coeff_C_mul, Nat.min_self] at hc
+    have hmonic : ((alphaFrame b ŵ).comp (X + C w')).Monic :=
+      (alphaFrame_monic b ŵ).comp (monic_X_add_C w') (by rw [natDegree_X_add_C]; exact one_ne_zero)
+    have hdeg : ((alphaFrame b ŵ).comp (X + C w')).natDegree = μ := by
+      rw [natDegree_comp, natDegree_X_add_C, alphaFrame_natDegree, Nat.mul_one]
+    have htop : ((alphaFrame b ŵ).comp (X + C w')).coeff μ = 1 := by
+      have h := hmonic.coeff_natDegree
+      rw [hdeg] at h
+      exact h
+    rw [htop] at hc
+    exact not_pow_succ_dvd_pow_mul hπ (μ * k') (by simp) hc
+  · intro hall
+    exact coeff_zero_recentre_alphaParent_not_dvd hπ hb hŵ hz hw' hz'
+      (fun hcon => hkk hcon.1) (hall 0)
+
+/-- **The exact frame level of a PLANTED product** (Gauss, applied to `P(b) * Q`): the level is
+`μ · min(k, k') + e`, where `e` is the exact level of the cofactor's frame.  This is what makes
+the content of a state carrying a child SPLIT into the planted floor plus the outside data. -/
+theorem level_recentre_mul_alphaParent {π : O} (hπ : Irreducible π) {μ : ℕ}
+    {b : Fin μ → O} (hb : ∀ i, b i ∈ maximalIdeal O) {k : ℕ} {ŵ : O}
+    {z : ResidueField O} (hŵ : residue O ŵ = z) (hz : z ≠ 0) {k' : ℕ} {w' : O}
+    {z' : ResidueField O} (hw' : residue O w' = z') (hz' : z' ≠ 0)
+    (Q : Polynomial O) {e : ℕ}
+    (hQ : ∀ j, π ^ e ∣ (Q.comp (C (π ^ k') * (X + C w'))).coeff j)
+    (hQ' : ¬ ∀ j, π ^ (e + 1) ∣ (Q.comp (C (π ^ k') * (X + C w'))).coeff j) :
+    (∀ j, π ^ (μ * min k k' + e) ∣
+        ((alphaParent π b k ŵ * Q).comp (C (π ^ k') * (X + C w'))).coeff j) ∧
+      ¬ ∀ j, π ^ (μ * min k k' + e + 1) ∣
+        ((alphaParent π b k ŵ * Q).comp (C (π ^ k') * (X + C w'))).coeff j := by
+  rw [mul_comp]
+  exact ⟨pow_add_dvd_coeff_mul (pow_min_dvd_coeff_recentre_alphaParent b k ŵ k' w') hQ,
+    not_pow_add_succ_dvd_coeff_mul hπ (pow_min_dvd_coeff_recentre_alphaParent b k ŵ k' w')
+      (not_pow_min_succ_dvd_coeff_recentre_alphaParent hπ hb hŵ hz hw' hz') hQ hQ'⟩
+
+/-- **The re-planting moves every frame ONE DIGIT past its exact level** (C4's engine, in
+product form).  Swapping the planted child lift `b` for `b'` (congruent mod `𝔪`) leaves the
+cofactor alone, and the planted difference is `b`-independent one digit under the floor (§3), so
+the whole difference sits one digit under the product's exact level. -/
+theorem pow_level_succ_dvd_coeff_recentre_swap {π : O} (hπ : Irreducible π) {μ : ℕ}
+    {b b' : Fin μ → O} (hbb : ∀ i, b' i - b i ∈ maximalIdeal O)
+    (k : ℕ) (ŵ : O) (Q : Polynomial O) (k' : ℕ) (w' : O) {e : ℕ}
+    (hQ : ∀ j, π ^ e ∣ (Q.comp (C (π ^ k') * (X + C w'))).coeff j) :
+    ∀ j, π ^ (μ * min k k' + e + 1) ∣
+      ((alphaParent π b' k ŵ * Q - alphaParent π b k ŵ * Q).comp
+        (C (π ^ k') * (X + C w'))).coeff j := by
+  intro j
+  have hfac : alphaParent π b' k ŵ * Q - alphaParent π b k ŵ * Q
+      = (alphaParent π b' k ŵ - alphaParent π b k ŵ) * Q := by ring
+  have hexp : μ * min k k' + 1 + e = μ * min k k' + e + 1 := by omega
+  rw [hfac, mul_comp]
+  rw [← hexp]
+  exact pow_add_dvd_coeff_mul
+    (pow_min_succ_dvd_coeff_recentre_alphaParent_sub hπ hbb k ŵ k' w') hQ j
+
+end Gauss
+
 end Uniformity.Density.Induction
 
 /-! ## Axiom footprint (stages 1–2: §1–§3) -/
