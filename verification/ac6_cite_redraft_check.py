@@ -527,33 +527,76 @@ def part3():
     targets = [
         os.path.join(root, "leanspec", "Leanspec", "ChapC.lean"),
     ]
+    # A real classifier, not a startswith heuristic: track Lean's (nesting) block comments
+    # `/- … -/`, `/-- … -/`, `/-! … -/`, so that a name occurring inside a docstring is never
+    # mistaken for code.  `in_comment` is the depth AT THE START of the line.
     uses_axiom, uses_class = [], []
     for t in targets:
         if not os.path.exists(t):
             continue
+        depth = 0
         for i, line in enumerate(open(t, encoding="utf-8"), 1):
+            depth_at_line_start = depth
+            j = 0
+            while j < len(line) - 1:
+                if line[j:j + 2] == "/-":
+                    depth += 1
+                    j += 2
+                elif line[j:j + 2] == "-/":
+                    depth = max(0, depth - 1)
+                    j += 2
+                elif depth == 0 and line[j:j + 2] == "--":
+                    break          # line comment: the rest of the line is prose
+                else:
+                    j += 1
+            is_prose = depth_at_line_start > 0 or line.lstrip().startswith("--")
             if "fgmn_calculus_exists" in line:
-                uses_axiom.append((os.path.relpath(t, root), i, line.rstrip()))
-            if re.search(r"[\[(]\s*I?\s*:?\s*FGMNCalculus", line):
+                uses_axiom.append((os.path.relpath(t, root), i, line.rstrip(), is_prose))
+            if re.search(r"[\[(]\s*I?\s*:?\s*FGMNCalculus", line) and not is_prose:
                 uses_class.append((os.path.relpath(t, root), i, line.strip()))
     print(f"\n  occurrences of `fgmn_calculus_exists` in leanspec: {len(uses_axiom)}")
-    for f, i, l in uses_axiom:
-        kind = "DECLARATION" if l.strip().startswith("axiom") else "prose/comment"
+    for f, i, l, is_prose in uses_axiom:
+        kind = "prose/comment" if is_prose else (
+            "DECLARATION" if l.strip().startswith("axiom") else "CODE")
         print(f"    {f}:{i}  [{kind}]  {l.strip()[:90]}")
     print(f"\n  declarations taking the class as a HYPOTHESIS `[FGMNCalculus ...]`/`(I : ...)`:"
           f" {len(uses_class)}")
     for f, i, l in uses_class[:40]:
         print(f"    {f}:{i}  {l[:96]}")
-    term_consumers = [x for x in uses_axiom if not x[2].strip().startswith(("axiom", "/--", "*",
-                                                                            "--", "`"))
-                      and "fgmn_calculus_exists" in x[2] and "axiom" not in x[2]]
-    print(f"\n  -> TERM-LEVEL consumers of the axiom: 0 (every consumer already takes the class"
-          f" hypothesis-form).")
-    print(f"  -> DECISION (A-C.6): option (1) hypothesis-form.  Dropping the axiom costs no"
+    # ---- the three ASSERTIONS that make this a check rather than a printout (A-C.6 landing) ----
+    # (1) the axiom must not be DECLARED anywhere (a live `axiom fgmn_calculus_exists` line);
+    live_decls = [x for x in uses_axiom if (not x[3]) and x[2].strip().startswith("axiom ")]
+    # (2) no TERM-LEVEL consumer may mention the axiom name outside prose/comments;
+    term_consumers = [x for x in uses_axiom
+                      if (not x[3]) and not x[2].strip().startswith("axiom ")]
+    # (3) the class must still have hypothesis-form consumers (otherwise the decision is moot).
+    ok = True
+    print(f"\n  [assert] live `axiom fgmn_calculus_exists` DECLARATIONS: {len(live_decls)}"
+          f"   (required: 0 — retired by DECISION A-C.6 option (1))")
+    if live_decls:
+        ok = False
+        for f, i, l, _ in live_decls:
+            print(f"      VIOLATION  {f}:{i}  {l.strip()[:90]}")
+    print(f"  [assert] TERM-LEVEL consumers of the axiom name: {len(term_consumers)}"
+          f"   (required: 0 — every consumer takes the class hypothesis-form)")
+    if term_consumers:
+        ok = False
+        for f, i, l, _ in term_consumers:
+            print(f"      VIOLATION  {f}:{i}  {l.strip()[:90]}")
+    print(f"  [assert] hypothesis-form consumers of `FGMNCalculus`: {len(uses_class)}"
+          f"   (required: >= 1)")
+    if len(uses_class) < 1:
+        ok = False
+    print(f"\n  -> DECISION (A-C.6): option (1) hypothesis-form.  Dropping the axiom costs no"
           f" consumer,\n     removes a name from the trusted base, and makes the [FGMN]"
           f" conditionality visible in\n     every downstream signature.  C.126's census row"
           f" retires; C.92 EXITS the gate-(b) queue.")
-    return True
+    print(f"  -> REJECTED option (2) (anchor the interface, keep an existence axiom): the"
+          f" anchoring\n     field-laws would tie ExactGrade/Rgr/Rres to this corpus's dv-layer"
+          f" (dvHgt/dvResPoly/\n     digAt), which [FGMN] never mentions — a DICTIONARY, i.e."
+          f" corpus-side proof obligations,\n     smuggled under a [cite:FGMN-chain] label."
+          f"  Recorded in leanspec's retirement block.")
+    return ok
 
 
 def main():

@@ -162,35 +162,42 @@ PART 2 — NODE C.94 `agnprw_termination` [cite:AGNPRW Thm 5.6], leaf layer over
 PART 3 — NODE C.92 `fgmn_calculus_exists` [cite:FGMN-chain]: the DECISION's census
 ==============================================================================
 
-  occurrences of `fgmn_calculus_exists` in leanspec: 5
-    leanspec/Leanspec/ChapC.lean:21  [DECLARATION]  axioms (`fgmn_residual_mul`, `fgmn_calculus_exists`, `agnprw_termination`) are DECLARED
-    leanspec/Leanspec/ChapC.lean:1330  [prose/comment]  /-- NODE C.126's census name / C.92's ONE signed axiom (`fgmn_calculus_exists`): the inter
-    leanspec/Leanspec/ChapC.lean:1333  [DECLARATION]  axiom fgmn_calculus_exists {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
-    leanspec/Leanspec/ChapC.lean:3526  [prose/comment]  signatures FIRST" list; neither exists. `C.126`'s axiom census names `fgmn_calculus_exists
-    leanspec/Leanspec/ChapC.lean:4256  [prose/comment]  fgmn_calculus_exists (C.92), agnprw_termination (C.94) — category-signed by append #66,
+  occurrences of `fgmn_calculus_exists` in leanspec: 7
+    leanspec/Leanspec/ChapC.lean:21  [prose/comment]  axioms (`fgmn_residual_mul`, `fgmn_calculus_exists`, `agnprw_termination`) are DECLARED
+    leanspec/Leanspec/ChapC.lean:1366  [prose/comment]  `axiom fgmn_calculus_exists` was NOT landed and is now **withdrawn**, so **C.92 carries no
+    leanspec/Leanspec/ChapC.lean:1374  [prose/comment]  -- axiom fgmn_calculus_exists {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    leanspec/Leanspec/ChapC.lean:1381  [prose/comment]  those exact binders in Lean core (`fgmn_calculus_exists_IS_A_THEOREM`, junk instance:
+    leanspec/Leanspec/ChapC.lean:1398  [prose/comment]  **CONSEQUENCES the owner should see.** (a) `C.126`'s axiom census row for `fgmn_calculus_e
+    leanspec/Leanspec/ChapC.lean:3718  [prose/comment]  signatures FIRST" list; neither exists. `C.126`'s axiom census names `fgmn_calculus_exists
+    leanspec/Leanspec/ChapC.lean:4698  [prose/comment]  fgmn_calculus_exists (C.92), agnprw_termination (C.94) — category-signed by append #66,
 
-  declarations taking the class as a HYPOTHESIS `[FGMNCalculus ...]`/`(I : ...)`: 16
-    leanspec/Leanspec/ChapC.lean:1332  flagged for the owner; consumers may also take `[FGMNCalculus W e' f' u']` hypothesis-form. -/
-    leanspec/Leanspec/ChapC.lean:1336  Nonempty (FGMNCalculus W e' f' u')
-    leanspec/Leanspec/ChapC.lean:2188  (I : FGMNCalculus W e' f' u') (i k : ℕ) : Polynomial O :=
-    leanspec/Leanspec/ChapC.lean:2196  (I : FGMNCalculus W e' f' u') (t : ℕ) : W.fld r :=
-    leanspec/Leanspec/ChapC.lean:2218  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
-    leanspec/Leanspec/ChapC.lean:2228  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
-    leanspec/Leanspec/ChapC.lean:2242  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
-    leanspec/Leanspec/ChapC.lean:2253  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
-    leanspec/Leanspec/ChapC.lean:2268  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
-    leanspec/Leanspec/ChapC.lean:2287  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
-    leanspec/Leanspec/ChapC.lean:2298  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
-    leanspec/Leanspec/ChapC.lean:3368  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
-    leanspec/Leanspec/ChapC.lean:3379  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
-    leanspec/Leanspec/ChapC.lean:3390  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u') : Prop :=
-    leanspec/Leanspec/ChapC.lean:3401  (W : DeepTower F H₀ hpin 2) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
-    leanspec/Leanspec/ChapC.lean:3407  (W : DeepTower F H₀ hpin 1) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
+  declarations taking the class as a HYPOTHESIS `[FGMNCalculus ...]`/`(I : ...)`: 14
+    leanspec/Leanspec/ChapC.lean:2380  (I : FGMNCalculus W e' f' u') (i k : ℕ) : Polynomial O :=
+    leanspec/Leanspec/ChapC.lean:2388  (I : FGMNCalculus W e' f' u') (t : ℕ) : W.fld r :=
+    leanspec/Leanspec/ChapC.lean:2410  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    leanspec/Leanspec/ChapC.lean:2420  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    leanspec/Leanspec/ChapC.lean:2434  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:2445  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:2460  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:2479  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:2490  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:3560  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    leanspec/Leanspec/ChapC.lean:3571  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    leanspec/Leanspec/ChapC.lean:3582  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u') : Prop :=
+    leanspec/Leanspec/ChapC.lean:3593  (W : DeepTower F H₀ hpin 2) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
+    leanspec/Leanspec/ChapC.lean:3599  (W : DeepTower F H₀ hpin 1) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
 
-  -> TERM-LEVEL consumers of the axiom: 0 (every consumer already takes the class hypothesis-form).
+  [assert] live `axiom fgmn_calculus_exists` DECLARATIONS: 0   (required: 0 — retired by DECISION A-C.6 option (1))
+  [assert] TERM-LEVEL consumers of the axiom name: 0   (required: 0 — every consumer takes the class hypothesis-form)
+  [assert] hypothesis-form consumers of `FGMNCalculus`: 14   (required: >= 1)
+
   -> DECISION (A-C.6): option (1) hypothesis-form.  Dropping the axiom costs no consumer,
      removes a name from the trusted base, and makes the [FGMN] conditionality visible in
      every downstream signature.  C.126's census row retires; C.92 EXITS the gate-(b) queue.
+  -> REJECTED option (2) (anchor the interface, keep an existence axiom): the anchoring
+     field-laws would tie ExactGrade/Rgr/Rres to this corpus's dv-layer (dvHgt/dvResPoly/
+     digAt), which [FGMN] never mentions — a DICTIONARY, i.e. corpus-side proof obligations,
+     smuggled under a [cite:FGMN-chain] label.  Recorded in leanspec's retirement block.
 
 ==============================================================================
 PART 1 (C.66) : PASS
