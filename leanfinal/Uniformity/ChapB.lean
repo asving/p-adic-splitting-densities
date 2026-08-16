@@ -46,6 +46,8 @@ import Uniformity.ChapB.B39b
 import Uniformity.ChapB.B40
 import Uniformity.ChapB.B41a
 import Uniformity.ChapB.B41b
+import Uniformity.ChapB.B42
+import Uniformity.ChapB.B42a
 import Uniformity.ChapB.B44
 import Uniformity.ChapB.B45
 import Uniformity.ChapB.B46
@@ -77,4 +79,4 @@ import Uniformity.ChapB.B77a
 import Uniformity.ChapB.B77b
 import Uniformity.ChapB.B78
 
-/-! Chapter B roll-up — 67/86 base nodes landed (waves 1-13). Upper layer (§§8-10) gated on the owner's gate-(b) signature for B.42's [cite:GN15 Thm 2.3 + FGMN Thm 6.6]; B.43/B.62 await orchestrator decisions. Refutation records are .lean.txt, outside the build. -/
+/-! Chapter B roll-up — 69/86 base nodes landed (waves 1-13, plus the 2026-08-16 B.42 axiom landing). **B.42 is an owner-signed gate-(b) literature `axiom`** ([cite:GN15 Thm 2.3 + FGMN Thm 6.6], PROJECT_STATE #66): importing this roll-up puts `Uniformity.Density.Leaf.exists_slope_factorization` in scope, and any consumer's `#print axioms` will show it — by design; read `ChapB/B42.lean`'s header before using it. B.42a landed with it as a real theorem. B.43/B.62 await orchestrator decisions. Refutation and route-block records are .lean.txt, outside the build. -/
