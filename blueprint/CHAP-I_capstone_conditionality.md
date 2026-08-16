@@ -282,7 +282,7 @@ with the §4 carrier cross-referenced — the carrier is bookkeeping, not the di
 
 | row | title | category | disposition detail |
 |---|---|---|---|
-| HYP.13 | all-O citation swap | **DISCHARGED-BY** (contract) the chapter dictionary | in Lean there are no citations: NS-1/NS-2/NS-4/NS-5/NS-6 became proof nodes (CHAP-B H-8's table: B.42, B.48+B.58, B.22/B.23, D-1+B.11–B.20, B.63/B.64); NS-7 and FGMN became the gate-(b) cites (C.94; C.66/C.92). The one name with no consumer is HYP.18's row. |
+| HYP.13 | all-O citation swap | **DISCHARGED-BY** (contract) the chapter dictionary | in Lean there are no citations: NS-2/NS-4/NS-5/NS-6 became proof nodes (CHAP-B H-8's table: B.48+B.58, B.22/B.23, D-1+B.11–B.20, B.63/B.64); NS-7 and FGMN became the gate-(b) cites (C.94; C.66/C.92). *[A-F.10, 2026-08-16: NS-1 moved columns — B.42 is now itself a gate-(b) cite (`[cite:GN15 Thm 2.3]`, this file's 2026-08-16 addendum), after its proof route was machine-refuted; the row stays DISCHARGED-BY (contract) with the citation swap landing as a signed axiom instead of a proof node.]* The one name with no consumer is HYP.18's row. |
 | HYP.14 | `NS-6` stopping criterion | **DISCHARGED-BY** (contract) B.65 — **PARTIAL: order 1 only** | B.65's own ⚠ and CHAP-B §11's edge `BP.B.65 → HYP.14` label the discharge partial; the order-`r` biconditional is chapter C's §5 trigger layer (level-jump trigger, `LEMMA HE6R1-1`). |
 | HYP.15 | `NS-7` termination (CARRY-as-CITE) | **CITE** [AGNPRW] Thm 5.2 via **C.94** (gate (b)) | Q1's answered branch; §4's `ns7` field (I.01) is the carried hypothesis, discharged by C.94's signed axiom at stub time. HYP.17's numbering check is load-bearing on this cite (audit A-3, pre-signing). |
 | HYP.16 | `NS-15` finite-depth bound | **NOT-ON-CAPSTONE-PATH** (CLOSED) | LAPSED per Q1/COR-13 (the cite branch has no explicit constant; the capstone needs finiteness only). Re-opening = re-opening F-2 + inheriting MQ-3. |
@@ -494,7 +494,7 @@ the orchestrator's post-blueprint program.
 | DISCHARGED-BY (landed) | 6 | 03, 04, 05, 06, 10, 147 |
 | DISCHARGED-BY (contract/structural) | 16 | 07, 13, 14, 37, 40, 43, 44, 72, 87, 101, 102, 103, 116, 121, 134, 145 |
 | DISCHARGED-BY (late-binding: D/F) | 25 | 46–56, 58, 60, 61, 99, 104, 106–108, 112–115, 118, 129 |
-| CITE (gate (b)) | 2 | 15 ([AGNPRW] via C.94), 38 (FGMN via C.66/C.92) |
+| CITE (gate (b)) | 2 | 15 ([AGNPRW] via C.94), 38 (FGMN via C.66/C.92) — *[A-F.10: plus the chapter-B-owned [GN15] Thm 2.3 via B.42 (no ledger row of its own; see the 2026-08-16 addendum) — the gate-(b) signature queue is three deep]* |
 | DISCHARGE-NODE-HERE | 7 | 01, 12, 17, 91, 98, 105, 111(def-half) |
 | OPEN-MATH | 36 | 08, 09, 11, 23, 24, 25, 26, 27, 28, 29, 30, 32, 33, 35, 36, 41, 42, 57, 63, 67–71, 74, 78, 79, 80, 81, 82, 88, 139, 142, 143, 144(BOX-2), 148 |
 | NOT-ON-CAPSTONE-PATH | 62 | 02, 16, 18, 19–22, 31, 34, 39, 45, 59, 62, 64–66, 73, 75–77, 83–86, 89, 90, 92–97, 100, 109, 110, 117, 119, 120, 122–128, 130–133, 135–138, 140, 141, 146, 149–154 (+ 111's deep-tail half, secondary) |
@@ -1373,6 +1373,107 @@ degree-`d` extension of `resField φ`, an element of the field not known to lie 
 `AdjoinRoot g` (the same order/field gap as `HYP.01`). This addendum is cross-referenced from
 CHAP-B's D-3 table and amendment A-F.7; it adds no new ledger row — it widens the recorded scope of
 the `B-BOX-1` conditionality that §3's disposition already carries through B.61's consumers.
+
+### DATED ADDENDUM (2026-08-16, CHAP-B A-F.10 — GATE-(b) CITE QUEUE ADDITION: [GN15] Thm 2.3 for B.42)
+
+**The chapter-B side dissection (NS-1, the order-1 theorem of the polygon) enters the owner's
+gate-(b) queue as the THIRD literature cite** (after HYP.15's C.94 = [AGNPRW] Thm 5.2 and
+HYP.38's C.66/C.92 = FGMN). CHAP-B amendment A-F.10 (2026-08-16): B.42's signed proof route is
+machine-checked UNREACHABLE (committed obstruction record
+`leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt` — B.41's `hpure` is unavailable exactly
+in the multi-side inductive case, since purity forces a one-sided polygon; independently the
+peel's degree arithmetic is unsatisfiable), the missing mechanism (a graded Hensel at a vertex,
+Weierstrass-type) has NO corpus proof at general keys (the candidate extraction is A-F.7's
+CLOSED-REFUTED B.44′), and the statement is published at COVERS-ALL-O scope. Under Part V gate
+(b) — which names [GN15] Thm 2.3 as its own example of an exercisable cite — B.42 is retagged
+`[theorem] [cite:GN15 Thm 2.3]`. **Queue mechanics: the owner signs this cite individually;
+until signature, CHAP-B's §8/§9/§10 upper layer (B.63 up, gates included) stays gated — on the
+signature instead of on an impossible proof.** Conditionality inheritance list: CHAP-B H-14.
+Census impact on §3.11: **CITE (gate (b)) count 2 → 3** (this cite is chapter-B-owned, not a new
+ledger row; HYP.13's row is annotated in place). Nothing landed in `leanfinal` is affected.
+
+**THE EXACT LEAN STATEMENT to be signed** (the leanspec stub `LeanspecB.exists_slope_factorization`
+is the signable artifact, byte-identical modulo namespace to the `leanfinal` landing; ENV-C =
+complete DVR `O`, finite residue field; vocabulary: `dev`/`npHgt`/`sideSet`/`sideMin`/`IsPure`/
+`resPoly` per CHAP-B §§3–4, landed):
+
+```lean
+theorem exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
+    (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (h0 : dev φ f 0 ≠ 0) :
+    ∃ (s : Finset (ℕ × ℕ)) (F : ℕ × ℕ → Polynomial O),
+      (∀ p ∈ s, 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2) ∧
+      (∀ p ∈ s, ∀ q ∈ s, p ≠ q → p.1 * q.2 ≠ q.1 * p.2) ∧
+      (∀ p ∈ s, (F p).Monic ∧ IsPure φ (F p) p.1 p.2 ∧
+        φ.natDegree ∣ (F p).natDegree ∧
+        dev φ (F p) 0 ≠ 0 ∧ 0 < (F p).natDegree) ∧
+      f = ∏ p ∈ s, F p ∧
+      (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
+        (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s)) ∧
+      (∀ p ∈ s, ∀ (hne : (sideSet φ f p.1 p.2).Nonempty)
+        (hne' : (sideSet φ (F p) p.1 p.2).Nonempty) (H₀ H₀' : ℕ),
+        npHgt φ f (sideMin φ f p.1 p.2 hne) = (H₀ : ℕ∞) →
+        npHgt φ (F p) (sideMin φ (F p) p.1 p.2 hne') = (H₀' : ℕ∞) →
+        ∃ c : (resField φ)ˣ,
+          resPoly π φ f p.1 p.2 hne H₀ =
+            Polynomial.C (c : resField φ) * resPoly π φ (F p) p.1 p.2 hne' H₀')
+```
+
+**FAITHFULNESS ENTRY (draft, for the fresh-context audit + signature).**
+
+* **Published source (primary).** [GN15] J. Guàrdia, E. Nart, *Genetics of polynomials over
+  local fields*, Contemp. Math. **637** (2015) 207–241, **Theorem 2.3**. Standing setting
+  (verbatim, `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` §1): *"an arbitrary discrete valued
+  field `(K,v)`"* — our complete `O` is the case `K = K_v`. Statement (verbatim, NS-2): *"every
+  monic polynomial `g ∈ O_v[x]` factorizes into a product of monic polynomials in `O_v[x]`:
+  `g = g₀ · φ^{ord_φ(g)} · ∏_{(λ,ψ)} g_{λ,ψ}`, where `−λ` runs on the slopes of `N⁻(g)` and `ψ`
+  runs on the prime factors of `R_λ(g)` … `deg g₀ = deg g − ℓ(N⁻(g))·deg φ`,
+  `deg g_{λ,ψ} = e_λ·ord_ψ(R_λ(g))·deg ψ·deg φ`"* — instantiated at MacLane chain length
+  `r = 0` (the Gauss valuation; `φ` = an order-1 key). **Secondary displays:** GMN Thm 1.15
+  (`docs/GMN_citations.md` §1: *"`f_φ = F_1 … F_g` factors in `O[x]` with `N_φ(F_i)` one-sided
+  of slope `λ_i` and `R_{λ_i}(F_i) ∼ R_{λ_i}(f)`"* — the per-slope grouping and clauses 3/6
+  transcribed here, at ℚ_p scope); [AGNPRW] Thm 4.4 (arbitrary valued field — NS-1's verbatim
+  quote) and [FGMN] Thm 2.8 / [AGNPRW] Thm 4.6 + Cor 2.9 (NS-9 residual multiplicativity, the
+  general-scope leg of clause 6).
+* **Clause mapping (import ↔ source).** `h0 : dev φ f 0 ≠ 0` ↔ `ord_φ(f) = 0` (the source peels
+  `φ^{ord_φ}` explicitly; `hres` + `h0` then force `deg g₀ = 0`, `g₀ = 1` — verified end-to-end
+  at CHAP-B amendment A-F.9 (III)); `s` ↔ the (negated-)slope set, in lowest terms `(u,ℓ)`,
+  positive by `hres` (A-F.6 verification); `F p` ↔ `∏_ψ g_{λ,ψ}` at fixed `λ` (GMN Thm 1.15's
+  `F_i`); clause 3's `IsPure` ↔ "`N_φ(F_i)` one-sided of slope `λ_i`" (the dictionary is B.34's
+  definitional reading; the CONVERSE direction pure ⟹ one-point-sides-elsewhere is
+  machine-checked — CHAP-B NODE B.42a, committed proof); clause 3's divisibility/positivity/
+  `dev ≠ 0` ↔ the source's degree law + one-sidedness bookkeeping (A-F.9 (IV)); clause 4 ↔ the
+  product display; clause 5 (`↔`) ↔ "`−λ` runs on the slopes" + N⁻ additivity (NS-9); clause 6
+  ↔ `R_{λ_i}(F_i) ∼ R_{λ_i}(f)` (GMN Thm 1.15 verbatim; generally from `R(gh) = R(g)R(h)` with
+  the co-factors' `R` constant at `λ_i`). `∼` = equality up to a unit of
+  `resField φ = F_φ`, matching the `∃ c : (resField φ)ˣ` form.
+* **Known caveats, disclosed.** (1) **Numbering verification owed (the HYP.17 class, extended):**
+  [GN15]'s theorem numbers were read from the author PDF at `upcommons.upc.edu`, volume/pages
+  from a search summary (`CITE_SCOPE_RESOLUTION` §6.2); GMN Thm 1.15's number is from
+  arXiv:0807.2620v2 with the printed-TAMS caveat (`docs/GMN_citations.md` header). Verify
+  against the printed volumes BEFORE signature, together with C.94/C.66's audit A-3. (2)
+  **Clause 6 is the one clause of the import never refutation-tested** (clauses 1–5 survived
+  two machine-refutation waves, A-F.6/A-F.9, and were then source-verified clause-by-clause at
+  A-F.9 (II)–(III)); it sits inside the digit-read transcription's verified faithful scope
+  (`u ≥ 1`, `m ∣ deg`, PA-1 `sideMin` pins) — **audit this clause first** (transcription-shear
+  risk: the chapter's `resPoly` is the digit read at the side line, not the intrinsic graded
+  normalization; the A-F.6 record documents the two known shear modes and why clause 1/clause 3
+  hypotheses exclude them). (3) Sign convention: the chapter's slopes `(u,ℓ)` are the source's
+  `−λ` in lowest terms; `e_λ = ℓ`. (4) The import is stated for `f̄ = φ̄^μ` (the single-branch
+  case); the source's arbitrary monic `g` is strictly more general — no strengthening is
+  smuggled in.
+* **Corroboration on record.** `W12-SHAPE` (0/164 over 23 rows, BOTH directions — the
+  completeness half is exactly clause 5); `HE6-SEP` (4,232 strict-excess certificates); the
+  quartic PARI oracle harness (`verification/quartic_oracle.py` family); the landed `m = ℓ = 1`
+  instance B.44 (deriving it from the axiom is the booked decorrelation check, CHAP-B B.42a's
+  TEETH); two refuted earlier transcriptions caught by the wave process BEFORE import (evidence
+  the audit pipeline has teeth). **Retirement route** (fresh proof, retires the cite): the
+  obstruction record's "missing mechanism" display — the general-key graded vertex split,
+  `B-BOX-1`-tier own design.
+
+This addendum adds no new ledger row; it is cross-referenced from CHAP-B's NODE B.42, amendment
+A-F.10, and honesty item H-14.
 
 <!-- SENTINEL: BP-I END OF FILE -->
 
