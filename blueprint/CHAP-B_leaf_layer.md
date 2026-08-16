@@ -5059,8 +5059,18 @@ their sources, and every SOURCE field in this section says so where it applies. 
 is §14 item 5 (already flagged at H-11).
 
 **(b) Certificate hypotheses are stated on ONE representative's data and the theorem transports
-them.** A node below takes a concrete `a : Fin n → O` (or a concrete block `g`), states its
-polygon/residual hypotheses on that representative, and concludes `DecidedAt … (proj O n N a)` —
+them** *[amended: A-F.12 — TRUE OF THE POLYGON/RESIDUAL HYPOTHESES, FALSE OF `hperim`. The
+transport layer B.76–B.78 carries `suppVal`, `sideSet`, `sideMin`/`sideMax`/`sideDeg`, `IsPure`,
+`resPoly`, `Visible` and `NeedsDescent` — the **read data**, exactly what `EFF.W12.27` says
+transports ("All data the read consumes sit at heights ≤ N−1, so every lift of the window class
+shares them"). It carries NOTHING about `∣`, `monicFactors` or `inertiaDegOf`, and the perimeter
+clause `hperim` is quantified over the monic **divisors** of the polynomial being dissected with a
+third disjunct about the inertia degrees of their monic factors. So `hperim` does not transport,
+and the certificates state it where they consume it: **at the lift** (B.79b, `gS ∣ g'`) or **over
+the whole window class** (B.80/B.81/B.82, the `∀ gT` closure of §12 item 4's display (4a″)).
+Everything else in this clause stands. Full record: amendment A-F.12]*. A node below takes a
+concrete `a : Fin n → O` (or a concrete block `g`), states its polygon/residual hypotheses on that
+representative, and concludes `DecidedAt … (proj O n N a)` —
 i.e. the same conclusion for every other lift, obtained through the transport layer B.76–B.78,
 entered via landed `decidedAt_of_congr` (`DensityAPI.lean:140`, which already performs the
 `proj`-to-coefficientwise reduction through `proj_eq_iff_dvd`). The alternative — defining a
@@ -5091,7 +5101,14 @@ scores it.
 **THE PERIMETER, restated for this section.** Every certificate below concludes a `typeOf` value
 through §7/§8, so D-3's perimeter is inherited verbatim: unconditional at `ℓ = 1` (any `d`) and at
 `d = 1` (any `ℓ`); conditional on `B-BOX-1` at `ℓ ≥ 2 ∧ d ≥ 2`, carried as the explicit `hperim`
-hypothesis exactly as in B.63 — never assumed silently (H-7). A fleet agent needing `B-BOX-1`
+hypothesis exactly as in B.63 — never assumed silently (H-7). *[amended: A-F.12 — the perimeter's
+REGION is inherited verbatim; its SCOPE is not. A §9 certificate concludes a `typeOf` value for
+every member of the window class, so the region has to be respected by every member: `hperim` is
+signed at the lift (B.79b) or over the class (B.80/B.81/B.82). Consequence for the honesty ledger:
+where a §9 consumer's discharge falls outside the unconditional region, the `B-BOX-1` it carries is
+`B-BOX-1` **for every member of the class**, not for one representative. The §10 gates are
+unaffected in status (they stay inside the unconditional region) but gain one discharge step —
+B.83's PROOF step 6.]* A fleet agent needing `B-BOX-1`
 outside an `hperim` clause returns `BLOCKED: B-BOX-1`; one needing `HE6-BOX-1` returns
 `BLOCKED: HE6-BOX-1` (it is a NON-NODE, B.64).
 
@@ -5483,7 +5500,11 @@ A-F.9] — half (a) only; half (b) derives it from `hvis`, B.76(ii), and is unch
   polynomial of every slope of `g` is separable (B.73; at order 1 every residual is terminal);
 * `hperim` — every `(slope, irreducible residual factor)` pair lies in D-3's unconditional
   perimeter (`ℓ = 1` or `deg ψ = 1`), or `B-BOX-1` holds for the pairs outside it *(the same
-  clause as B.63's `hperim`; exact form in the leanspec stub, §12 item 4)*.
+  clause as B.63's `hperim`; exact form in the leanspec stub, §12 item 4)*. **[re-signed: A-F.12 —
+  in half (a) the clause is read at `g`; in half (b) it is read at the LIFT `g'` (`gS ∣ g'`),
+  because half (b) dissects `g'`, not `g`. The pairs are the same at `g` and `g'` (B.77 transports
+  the polygon and the residuals), the DIVISORS are not, and the clause quantifies over divisors:
+  amendment A-F.12.]**
 
 Then:
 
@@ -5512,19 +5533,28 @@ theorem typeOf_eq_order1Type (hπ : Irreducible π) {φ : Polynomial O} (hφ : I
     (hperim : ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField φ), …) :
     typeOf g = order1Type π φ g
 
+-- [re-signed: A-F.12] `hperim` MOVED to the end of the hypothesis list and RE-POINTED at the
+-- lift: `gS ∣ g'`, with the third disjunct's inner binder renamed `g''` (it would otherwise
+-- shadow the lift `g'`). The frozen form — `gS ∣ g` with `hperim` before the `g'` binders — was
+-- proved UNPROVABLE by the wave-16 B.79b unit: the proof applies half (a) to `g'`, so it needs
+-- the perimeter of `g'`'s divisors, and nothing in the signature relates `g'`'s divisor lattice
+-- to `g`'s (B.73–B.77 transport polygon/residual data only; no congruence-invariance for
+-- `inertiaDegOf` exists, and the bridging statement is `B-BOX-1`-strength, i.e. circular).
+-- Full record: amendment A-F.12.
 theorem typeOf_congr_of_certificate (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {g : Polynomial O} (hg : g.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
     (hterm : ¬ NeedsDescent π φ g)
-    (hperim : ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField φ), …)
     {N : ℕ} (hvis : Visible π φ g N)
     {g' : Polynomial O} (hg' : g'.Monic) (hdeg : g'.natDegree = g.natDegree)
-    (hgg' : ∀ i, π ^ N ∣ (g - g').coeff i) :
+    (hgg' : ∀ i, π ^ N ∣ (g - g').coeff i)
+    (hperim : ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField φ), … `gS ∣ g'` …) :
     typeOf g' = order1Type π φ g
 ```
-*(the `hperim` clause is byte-identical to B.63's; both are spelled out once, in the leanspec stub
-of §12 item 4, and the stub is the single source for both — a divergence there is a stub-stage
-blueprint defect.)*
+*(half (a)'s `hperim` clause is byte-identical to B.63's; half (b)'s is §12 item 4's display (4a)
+instantiated at `(φ, f) := (φ, g')` — the same schema at the polynomial the half dissects, which is
+the lift. Both are spelled out once, in the leanspec stub of §12 item 4, and the stub is the single
+source for all of them — a divergence there is a stub-stage blueprint defect.)*
 
 **DEPENDS.** (a): B.13 · B.42 · B.45 · B.58 · B.60 · B.61 · B.63 · B.63a (`typeOf_prod`) · B.66.
 *[A-F.11 — half (a)'s DIRECT dependencies are now just B.63 · B.66 · landed `FactorizationType.ext`;
@@ -5533,7 +5563,11 @@ and the tie legs). The line is kept as written so the generated §11 edges stay 
 transitive dependencies, and a trim would need a TSV regeneration, not a hand edit.]*
 (b): (a) · B.73 · B.74 · B.75 · B.76 (`visible_congr`, `visible_iff_npHgt_lt`) · B.77 (all three
 transport clauses) · landed `Uniformity.Hensel.natDegree_eq_of_map_eq` · *[A-F.11]* landed B.74's
-`suppVal_lt_of_vis` (promote from `private`; step 3's `hH₀` guard).
+`suppVal_lt_of_vis` (promote from `private`; step 3's `hH₀` guard). *[A-F.12 — EXECUTED AND
+SUPERSEDED: the guard is consumed as landed B.74's **public** `H₀_lt_of_visible`
+(`leanfinal/Uniformity/ChapB/B74.lean:349`, the finished `H₀ < N` at the `sideMin` pin), not as the
+inner `suppVal_lt_of_vis` (which stays `private`). Step 5 is now a landed helper:
+`order1Type_congr` in `leanfinal/Uniformity/ChapB/B66c.lean`, consumed by name.]*
 
 **PROOF.**
 1. **(a).** B.63 (whose `hsep` is `hterm` unfolded — B.73's `NeedsDescent` is the `∃`-negation of
@@ -5556,8 +5590,16 @@ transport clauses) · landed `Uniformity.Hensel.natDegree_eq_of_map_eq` · *[A-F
    (the `N ≥ 1` needed is automatic: `hvis` forces `0 < N`, since `Visible` at `N = 0` is
    `∃ i, ¬ 1 ∣ …`, false); `¬ NeedsDescent π φ g'` — by B.74's `needsDescent_congr` (which
    consumes B.75 and B.77, and whose hypotheses are exactly `hgg'`, `hvis`); `hperim` for `g'` —
-   its data (slopes, residual factors) are **equal**, not just corresponding, by B.77's
-   `sideSet_congr`/`resPoly_congr`, so the clause transports by rewriting.
+   ~~its data (slopes, residual factors) are **equal**, not just corresponding, by B.77's
+   `sideSet_congr`/`resPoly_congr`, so the clause transports by rewriting~~ **[re-signed: A-F.12 —
+   the struck sentence is FALSE and was the node's defect. `hperim` is not a statement about the
+   slope/residual data alone: it is quantified over the monic DIVISORS `gS` of the polynomial, and
+   its third disjunct `∀ g'' ∈ monicFactors gS, φ.natDegree * ψ.natDegree ∣ inertiaDegOf g''`
+   speaks about the inertia degrees of `gS`'s monic factors. B.77 transports the read data and
+   nothing else; there is no congruence-invariance for `∣`, `monicFactors` or `inertiaDegOf`
+   anywhere in `leanfinal`, and the bridge would be `B-BOX-1`-strength. NOTHING IS TRANSPORTED
+   HERE: `hperim` is now signed at `g'` and is used as given (amendment A-F.12). The other two
+   transports in this step are unaffected — they really are polygon/residual data.]**
 
    **⚠ [A-F.11 — THE `hH₀` GUARD OF B.77b, DERIVED HERE ONCE; this is the reschedule inheritor's
    map.]** Landed B.77b's `resPoly_congr` (`leanfinal/Uniformity/ChapB/B77b.lean:205`) carries the
@@ -5592,9 +5634,21 @@ transport clauses) · landed `Uniformity.Hensel.natDegree_eq_of_map_eq` · *[A-F
 5. `order1Type π φ g' = order1Type π φ g`: B.66's definition reads only `slopeFinset` and
    `resFactorFinset`, both of which are built from `sideSet`/`resPoly` data that B.77 transports
    (a ~10-line congruence unfold, private to this node — `order1Type_congr`).
+   *[LANDED at A-F.12: `order1Type_congr` is **not** private to this node — it is a booked
+   B.66-adjacent helper, `leanfinal/Uniformity/ChapB/B66c.lean` (sorry-free, footprint
+   `propext`/`Classical.choice`/`Quot.sound`, the B.42 cite not even on its import path), with
+   exactly this statement plus `hres`/`hvis`. Both canonical index finsets are proved LITERALLY
+   EQUAL (not merely in bijection): `slopeFinset` through B.66a's `mem_slopeFinset` after B.77a's
+   `sideSet_congr`; `resFactorFinset` through B.66a's `mem_resFactorFinset` after the `sideMin`
+   abscissa agreement, B.76(i)'s `npHgt_min_congr` under the window guard, and B.77b's
+   `resPoly_congr`; `Multiset.bind_congr` assembles. The B.79b unit consumes it by name (§0.2's
+   private-copy ban) — this step is now one `rw`.]*
 
 **SIZE.** (a) 60 lines + (b) 40 lines. **SPLIT MANDATED → 2** (§2's table, honored):
 `B79a.lean` = `typeOf_eq_order1Type`; `B79b.lean` = `typeOf_congr_of_certificate`.
+*[A-F.12: half (b) is now ≈ 30 lines — step 5's ~10-line congruence moved out to the landed
+`B66c.lean` helper, and step 3's `hperim` leg costs nothing (the hypothesis is signed where it is
+used). The wave-16 unit machine-checked every other leg of the skeleton; see A-F.12 (IV).]*
 
 **⚠ RE-PLAN ITEM: B.66's PRIVATE HELPERS BECOME SHARED SUPPLIERS.** B.66 defined
 `slopeFinset`/`resFactorFinset` as private helpers "and if either turns out to be reusable the
@@ -5658,7 +5712,13 @@ given order-0 data — order-1 keys `φ i` (`i ∈ s`) with pairwise distinct re
 `g i` with `f = ∏_{i ∈ s} g i` and `(g i).map (residue O) = (φ̄ i)^{e i}` (B.67 supplies one;
 by landed `monic_factorization_unique` iterated, the choice is unique, so the hypotheses are data
 of `a` alone). Assume, **per block**, R8-1's two clauses and the perimeter:
-`Visible π (φ i) (g i) N`, `¬ NeedsDescent π (φ i) (g i)`, and `hperim i`. Then the class of `a`
+`Visible π (φ i) (g i) N`, `¬ NeedsDescent π (φ i) (g i)`, and `hperim i`. **[re-signed: A-F.12 —
+`hperim i` is now the WINDOW-CLASS perimeter of block `i`: the clause holds for the divisors of
+every monic `gT` of degree `(g i).natDegree` with `π^N ∣ ((g i) − gT).coeff k` for all `k`, §12
+item 4's display (4a″). The exposure is the same one that re-signed B.79b: this node fires B.79(b)
+per block at the LIFT's peel `g' i`, which step 3 produces by Hensel and no signature can name, so
+the clause must be closed over the class. Reflexivity (`gT := g i`, `π^N ∣ 0`) makes the closure
+imply the old per-block clause, so no consumer loses anything it had.]** Then the class of `a`
 is decided — for **every** lift, per D-4(a):
 
 ```
@@ -5681,7 +5741,12 @@ theorem decidedAt_of_order1_certificate (hπ : Irreducible π) {n N : ℕ} (hn :
       = ((φ i).map (IsLocalRing.residue O)) ^ (e i))
     (hvis : ∀ i ∈ s, Visible π (φ i) (g i) N)
     (hterm : ∀ i ∈ s, ¬ NeedsDescent π (φ i) (g i))
-    (hperim : ∀ i ∈ s, ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField (φ i)), …) :
+    -- [re-signed: A-F.12] the per-block clause is closed over the level-`N` window class of the
+    -- block: `∀ gT, gT.Monic → gT.natDegree = (g i).natDegree → (∀ k, π ^ N ∣ ((g i) - gT).coeff k)
+    -- → …(4a′)'s body with `gS ∣ gT`…`. Full display: §12 item 4 (4a″); record: amendment A-F.12.
+    (hperim : ∀ i ∈ s, ∀ gT : Polynomial O, gT.Monic → gT.natDegree = (g i).natDegree →
+      (∀ k, π ^ N ∣ ((g i) - gT).coeff k) →
+      ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField (φ i)), … `gS ∣ gT` …) :
     Uniformity.Density.DecidedAt O n ⟨∑ i ∈ s, (order1Type π (φ i) (g i)).data⟩ N
       (Uniformity.Density.proj O n N a)
 ```
@@ -5707,7 +5772,11 @@ corrected, [repaired: A-F.3/B-D14]).
    `π^N ∣ ((g i) − (g' i)).coeff k` for every `i ∈ s`, `k`. Degrees match by
    `natDegree_eq_of_map_eq` on both sides of `hgres`.
 5. Per block, B.79(b) with `hvis i`, `hterm i`, `hperim i`:
-   `typeOf (g' i) = order1Type π (φ i) (g i)`.
+   `typeOf (g' i) = order1Type π (φ i) (g i)`. *[re-signed: A-F.12 — B.79(b)'s `hperim` is at the
+   lift, so this step instantiates the class closure at `gT := g' i`: `(g' i).Monic` from step 3,
+   `(g' i).natDegree = (g i).natDegree` from step 4's `natDegree_eq_of_map_eq` on both sides of
+   `hgres`, and the congruence from step 4's B.78(iii). All three are already in hand at this point
+   of the proof — the re-sign costs this node three named arguments and no new mathematics.]*
 6. `(typeOf f').data = Σ_{i ∈ s} (typeOf (g' i)).data` by B.63a's `typeOf_prod` (the same step as
    B.67's step 3, applied to the step-3 peel); substitute step 5 and close with
    `FactorizationType.ext`.
@@ -5759,9 +5828,16 @@ binding note already does.]* Binding note for the stub agent: `DecidedAt`, `proj
 
 **STATEMENT.** *Eventual certification — the per-member level exists.* Over the complete bundle,
 with the data of B.80 minus the level: `a : Fin n → O`, order-0 data `(φ i, e i)`, the peel `g i`,
-and per block `dev (φ i) (g i) 0 ≠ 0`, `¬ NeedsDescent π (φ i) (g i)`, `hperim i`. Then there is a
-level `N` — explicitly, any `N > max_{i ∈ s} npHgt (φ i) (g i) 0` — at which B.80 fires, and its
-σ is the member's own type:
+and per block `dev (φ i) (g i) 0 ≠ 0`, `¬ NeedsDescent π (φ i) (g i)`, `hperim i`. **[re-signed:
+A-F.12 — this node has no level in its signature (that is the point of it), so its `hperim` is
+closed over the window class **at every level at which its own certificate can fire**: the clause
+is prefixed `∀ N : ℕ, (∀ i ∈ s, Visible π (φ i) (g i) N) → …` and then reads B.80's (4a″) closure at
+that `N`. The `Visible` guard is what keeps the hypothesis weak — without it the `N = 0`
+instance would demand the perimeter for EVERY monic polynomial of each block's degree (`π^0 = 1`
+divides everything), and `Visible` fails at small `N` (B.76(ii): `Visible π φ g N ↔ npHgt φ g 0 <
+N`). Step 1 constructs exactly such an `N`, so the proof discharges the guard where it builds it.]**
+Then there is a level `N` — explicitly, any `N > max_{i ∈ s} npHgt (φ i) (g i) 0` — at which B.80
+fires, and its σ is the member's own type:
 
 ```
 ∃ N : ℕ, 0 < N ∧ DecidedAt O n (typeOf (monicPoly a)) N (proj O n N a).
@@ -5787,7 +5863,12 @@ theorem exists_decidedAt_of_terminating (hπ : Irreducible π) {n : ℕ} (hn : 0
       = ((φ i).map (IsLocalRing.residue O)) ^ (e i))
     (hnz : ∀ i ∈ s, dev (φ i) (g i) 0 ≠ 0)
     (hterm : ∀ i ∈ s, ¬ NeedsDescent π (φ i) (g i))
-    (hperim : ∀ i ∈ s, ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField (φ i)), …) :
+    -- [re-signed: A-F.12] level-quantified window-class closure: the level is existential in this
+    -- node's CONCLUSION, so it is universally quantified (guarded by visibility) in this clause.
+    (hperim : ∀ N : ℕ, (∀ i ∈ s, Visible π (φ i) (g i) N) →
+      ∀ i ∈ s, ∀ gT : Polynomial O, gT.Monic → gT.natDegree = (g i).natDegree →
+      (∀ k, π ^ N ∣ ((g i) - gT).coeff k) →
+      ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField (φ i)), … `gS ∣ gT` …) :
     ∃ N : ℕ, 0 < N ∧ Uniformity.Density.DecidedAt O n
       (typeOf (Uniformity.Density.monicPoly a)) N (Uniformity.Density.proj O n N a)
 ```
@@ -5800,6 +5881,9 @@ B.79(a) · B.80 · landed `FactorizationType.ext`.
    `N := max (1, max_{i ∈ s} N i)` (`Finset.max'` over the image, or `Finset.sup` + 1); B.76(iii)
    makes every block visible at `N`, and `0 < N`.
 2. B.80 at this `N` gives `DecidedAt O n ⟨Σ (order1Type π (φ i) (g i)).data⟩ N (proj O n N a)`.
+   *[re-signed: A-F.12 — B.80's `hperim` is the class closure at `N`, supplied by
+   `hperim N (step 1's per-block visibility)`; step 3's B.79(a) applications need no perimeter at
+   all beyond the same closure instantiated reflexively at `gT := g i` (`π^N ∣ 0`).]*
 3. The σ is the member's own type: per block B.79(a) gives
    `typeOf (g i) = order1Type π (φ i) (g i)`; B.63a's `typeOf_prod` over `hgprod` gives
    `(typeOf (monicPoly a)).data = Σ (typeOf (g i)).data`; `FactorizationType.ext` closes
@@ -5843,7 +5927,11 @@ tautological — completeness is already inside ENV-C, §0.1). *[repaired: A-F.3
 the complete bundle, let `a : Fin n → O` with `0 < n`, write `f := monicPoly a`, and let `φ` be an
 order-1 key with `f.map (residue O) = (φ.map (residue O))^μ`, `0 < μ` (one block; no peel).
 Assume R8-1's two clauses and the perimeter on `f` itself: `Visible π φ f N`,
-`¬ NeedsDescent π φ f`, `hperim`. Then
+`¬ NeedsDescent π φ f`, `hperim`. **[re-signed: A-F.12 — R8-1's two clauses stay on `f` itself (they
+transport, B.74/B.76/B.77); `hperim` does NOT, and is signed over `f`'s level-`N` window class —
+§12 item 4's display (4a″) at `(φ, f, N)`. This node fires B.79(b) at `g' := monicPoly b` for an
+arbitrary lift `b`, and B.79(b)'s re-signed `hperim` is at that lift; reflexivity recovers the
+clause at `f` itself. Record: amendment A-F.12.]** Then
 
 ```
 DecidedAt O n (order1Type π φ f) N (proj O n N a).
@@ -5865,7 +5953,11 @@ theorem decidedAt_of_leaf_certificate (hπ : Irreducible π) {n N : ℕ} (hn : 0
       = (φ.map (IsLocalRing.residue O)) ^ μ)
     (hvis : Visible π φ (Uniformity.Density.monicPoly a) N)
     (hterm : ¬ NeedsDescent π φ (Uniformity.Density.monicPoly a))
-    (hperim : ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField φ), …) :
+    -- [re-signed: A-F.12] the window-class closure at `(φ, monicPoly a, N)` — §12 item 4 (4a″).
+    (hperim : ∀ gT : Polynomial O, gT.Monic →
+      gT.natDegree = (Uniformity.Density.monicPoly a).natDegree →
+      (∀ k, π ^ N ∣ ((Uniformity.Density.monicPoly a) - gT).coeff k) →
+      ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField φ), … `gS ∣ gT` …) :
     Uniformity.Density.DecidedAt O n (order1Type π φ (Uniformity.Density.monicPoly a)) N
       (Uniformity.Density.proj O n N a)
 ```
@@ -5881,7 +5973,9 @@ theorem decidedAt_of_leaf_certificate (hπ : Irreducible π) {n N : ℕ} (hn : 0
    `j`; `monicPoly b` is monic of the same degree `n` (landed `monicPoly_monic`,
    `monicPoly_natDegree`).
 3. B.79(b) with `hvis`, `hterm`, `hperim` applied to `g := monicPoly a`, `g' := monicPoly b`
-   concludes.
+   concludes. *[re-signed: A-F.12 — `hperim` is instantiated at `gT := monicPoly b`: monicity and
+   the degree pin are landed (`monicPoly_monic`, `monicPoly_natDegree` — step 2 already names both),
+   the congruence is step 2's B.78(i). The node stays 26 lines and stays thin.]*
 
 **SIZE.** 26 lines.
 
@@ -6580,6 +6674,37 @@ mathlib `PadicInt.prime_p` (`Mathlib/NumberTheory/Padics/PadicIntegers.lean:514`
    Instance (iv) instead fires B.80 with `s = {1, 2}`, the table's keys/peel (`hgprod` by
    `ring_nf`; `hne`: `X ≠ X² + X + 1` in `𝔽₂[X]`), and per-block steps 1–5.
 
+   **⚠ [A-F.12 — ONE NEW DISCHARGE STEP, and it is the gates' only cost from the re-sign.]** B.82's
+   (and B.80's) `hperim` is now the window-class closure, so "every pair has `d = 1`" must be shown
+   **uniformly in the class member** `gT`, not by evaluating this instance's own polygon. It is
+   still elementary, and it does not need `gT`'s factorization. Fix a member `gT`, a monic
+   `gS ∣ gT` with `IsPure φ gS u ℓ`, and a monic irreducible `ψ` with
+   `resPoly π φ gS u ℓ hne H₀ = c • ψ`. Then
+   ```
+   gS.natDegree = k * φ.natDegree, some k       -- gS ∣ gT, ḡT = φ̄^μ ⟹ ḡS = φ̄^k (unique
+                                              --   factorization in the residue field) + landed
+                                              --   natDegree_eq_of_map_eq; ḡT = f̄ needs 0 < N,
+                                              --   which `hvis` gives (A-F.7 runs this same leg)
+   ψ.natDegree = sideDeg φ gS u ℓ hne          -- B.30 natDegree_resPoly (c a unit)
+   ℓ * sideDeg φ gS u ℓ hne = k                -- B.35b sideDeg_of_pure (landed, B35b.lean:143)
+   gS.natDegree ≤ gT.natDegree = f.natDegree = n
+                                              -- Polynomial.natDegree_le_of_dvd + the class's
+                                              --   degree pin
+   ⟹ ℓ * φ.natDegree * ψ.natDegree ≤ n
+   ```
+   and at every §10 instance the arithmetic closes: `(i)` `m = 2, ℓ = 1, n = 2 ⟹ deg ψ ≤ 1`;
+   `(ii)` `m = 1, ℓ = 2, n = 2 ⟹ deg ψ ≤ 1`; `(iii)` the `(1,1)` side takes the FIRST disjunct
+   (`ℓ = 1 ∧ φ.natDegree = 1`) and the `(1,2)` side gives `deg ψ ≤ 1`; `(iv)` block 1 is
+   `m = 1` (first disjunct at `ℓ = 1`; at `ℓ ≥ 2` no such `gS` exists, `deg gS ≤ 1`), block 2 is
+   `m = 2, n = 2 ⟹ deg ψ ≤ 1`. With `ψ` irreducible, `deg ψ ≥ 1`, so `deg ψ = 1` — the SECOND
+   disjunct, `B-BOX-1`-free, exactly as before the re-sign. **B.85 needs the same display with its
+   own numbers** (`n = 4, ℓ = 2, m = 2` and `n = 6, ℓ = 3, m = 2`, both giving `deg ψ ≤ 1`), and
+   there the `gS = gT` case is the one that matters: it is admissible only at the transported
+   purity (`IsPure` is one of B.77a's transported predicates), i.e. only at the instance's own
+   `(u,ℓ)`, where the display already gives `deg ψ = 1`. Size: ≈ 15 lines per gate file, shared
+   helper candidate (the step-1–5 evaluation kit's sibling — if two files want it, the orchestrator
+   books it, never a silent copy).
+
 **SIZE.** 150 lines. **SPLIT MANDATED → 4** (`B83a.lean`–`B83d.lean`, one instance and one public
 declaration each; the step-1–5 evaluation kit shared by (i)–(iv) is a private-helper candidate —
 if two files want the same helper, the orchestrator books it, RE-PLAN, never a silent copy).
@@ -7018,7 +7143,10 @@ B.73's FAITHFULNESS).
 
    **(4a) `hperim` — the perimeter/`B-BOX-1` disjunction** (consumed verbatim by B.63, B.79a,
    B.79b, B.82; per block — `(φ, f) := (φ i, g i)` — by B.71 and B.80). Fixed by B.58/B.60/B.61,
-   read at the A-F.1 `sideMin` pin:
+   read at the A-F.1 `sideMin` pin. **[amended: A-F.12 — the display below is a SCHEMA in `(φ, f)`,
+   and the instantiation is fixed by *which polynomial the consumer dissects*: B.63/B.79a at their
+   own `f`/`g`, **B.79b at the LIFT `g'`** (it dissects `g'`), and B.80/B.81/B.82 at every member of
+   the window class, display (4a″). The consumer list above is unchanged; the instantiations are.]**
 
    ```lean
    (hperim : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
@@ -7041,8 +7169,16 @@ B.73's FAITHFULNESS).
    degree reduces to `φ̄^k`, `k ≥ 1`, so `npHgt gS 0 ≥ 1 > 0 = suppVal` and `(0,1)`-purity
    fails — the `u = 0` instances of `hperim` are vacuous there.]* The
    quantification is over the `(u,ℓ)`-pure monic divisors with a multiplicity-1 residual
-   (B.48's output clause at separability), which is what B.63's steps 1–2 produce and what
-   B.77 transports.
+   (B.48's output clause at separability), which is what B.63's steps 1–2 produce and ~~what
+   B.77 transports~~. **[repaired: A-F.12 — the struck half is FALSE, and it is where the B.79b
+   defect was written down. B.77 transports the *read data* of one polynomial across the window
+   class (`suppVal`, `sideSet`, `sideMin`/`sideMax`/`sideDeg`, `IsPure`, `resPoly`); it says nothing
+   about `∣`, `monicFactors` or `inertiaDegOf`, so it does NOT carry this divisor-quantified clause
+   from `g` to a congruent `g'`. The corpus draws the same line: `EFF.W12.27` transports exactly the
+   read data — "All data the read consumes sit at heights ≤ N−1, so every lift of the window class
+   shares them" — while its `(e,f)` reading is applied to each lift, "factors any `O`-lift `F` of
+   the branch into one monic irreducible factor per (side `S`, irreducible residual factor
+   `ψ | R_S`)". Consumers therefore instantiate the schema per member; see (4a″).]**
 
    **(4a′) the per-block instantiation, displayed** *(imported from the 0e gate as the
    now-canonical text — [repaired: A-F.3/B-D10]; consumed by B.71 and B.80/B.81 with the
@@ -7061,7 +7197,40 @@ B.73's FAITHFULNESS).
                (φ i).natDegree * ψ.natDegree ∣ inertiaDegOf g'))
    ```
 
-   B.82 consumes (4a) at `(φ, f) := (φ, monicPoly a)` (`gS ∣ Uniformity.Density.monicPoly a`).
+   **(4a″) THE WINDOW-CLASS PERIMETER — the closure the §9 certificates carry** *[NEW at A-F.12;
+   this is contract text, flagged into §14 item 15(iv)]*. A certificate whose conclusion is
+   `DecidedAt … N (proj O n N a)` asserts a `typeOf` value for **every** member of the level-`N`
+   class, and (4a) is the side-condition of the `(e,f)` reading of the member it is instantiated at.
+   The member is not the representative — it is produced inside the proof (by Hensel at B.80 step 3,
+   as `monicPoly b` at B.82 step 1) — so the clause is closed over the class. Single-key form
+   (**B.82**, at `(φ, f, N) := (φ, monicPoly a, N)`):
+
+   ```lean
+   (hperim : ∀ gT : Polynomial O, gT.Monic → gT.natDegree = f.natDegree →
+     (∀ k, π ^ N ∣ (f - gT).coeff k) →
+     ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
+       ∀ gS : Polynomial O, gS.Monic → gS ∣ gT → IsPure φ gS u ℓ →
+         ∀ hne : (sideSet φ gS u ℓ).Nonempty, ∀ H₀ : ℕ,
+           npHgt φ gS (sideMin φ gS u ℓ hne) = (H₀ : ℕ∞) →
+           ∀ ψ : Polynomial (resField φ), ψ.Monic → Irreducible ψ →
+             (∃ c : (resField φ)ˣ, resPoly π φ gS u ℓ hne H₀ = c • ψ) →
+             ((ℓ = 1 ∧ φ.natDegree = 1) ∨ ψ.natDegree = 1 ∨
+               ∀ g'' ∈ monicFactors gS,
+                 φ.natDegree * ψ.natDegree ∣ inertiaDegOf g''))
+   ```
+
+   Per-block form (**B.80**): prefix `∀ i ∈ s,` and read `(φ i)`, `(g i)`, `hne'` as in (4a′).
+   Level-quantified form (**B.81**, whose level is existential in the conclusion): prefix
+   `∀ N : ℕ, (∀ i ∈ s, Visible π (φ i) (g i) N) → ∀ i ∈ s,`. Three properties of the closure, all
+   used above: it **implies (4a)** at the representative (reflexivity, `π^N ∣ 0`); it is **weaker
+   than the polynomial-blind form** `∀ gS, gS.Monic → IsPure φ gS u ℓ → …` (considered and rejected
+   at A-F.12 (III): dropping the divisor anchor also drops the degree bound the §10 gates discharge
+   with); and the inner binder of the third disjunct is `g''`, not `g'`, so the display can be
+   instantiated inside a signature that already binds a lift `g'` (B.79b).
+
+   B.82 consumes (4a″), not (4a) ~~at `(φ, f) := (φ, monicPoly a)`
+   (`gS ∣ Uniformity.Density.monicPoly a`)~~ *[re-signed: A-F.12]*; **B.79b** consumes (4a) at
+   `(φ, f) := (φ, g')`, the lift.
    **Canonicity after the 0e gate** *[repaired: A-F.3/B-D10]*: the gate expanded every
    `hsep`/`hperim` elision (B.63, B.71, B.72, B.79a, B.79b, B.80, B.81, B.82) from exactly
    these displays, and the LANDED single source for the fully-expanded signed texts is now
@@ -7331,6 +7500,16 @@ cross-read debt covers all of it. **Items 1–13 are the committed text's own fo
     vacuous since no positive-degree divisor of `φ̄^μ`-reducing `f` is `(0,1)`-pure — re-check
     the vacuity derivation displayed at §12 item 4(a));
     (iii) no committed signature's elision is narrower than the display.
+    **(iv) [added at A-F.12] the display is a schema, and each consumer's instantiation must be at
+    the polynomial that consumer dissects.** This is where wave-16's B.79b unit found the chapter's
+    second derivability defect: B.79b's frozen `hperim` was at the representative `g` while its
+    proof dissects the lift `g'`, and no transport closes the gap (A-F.12 (I)–(II)). Check, at every
+    §9 consumer: (α) B.79b's clause is at `g'`; (β) B.80/B.81/B.82's are the (4a″) window-class
+    closures, at the level their conclusion names (B.81: universally quantified under a `Visible`
+    guard, since its level is existential); (γ) the §10 gates' discharge is uniform in the class
+    member — B.83's PROOF step 6 ⚠ display, whose arithmetic is `ℓ · m · deg ψ ≤ n` per instance,
+    recomputed independently as item 14 demands; (δ) no OTHER divisor-, `monicFactors`- or
+    `inertiaDegOf`-quantified clause hides in a §9 signature (grep: only `hperim` does, today).
 16. **The §11 mechanical DAG generation (finisher addition).** 545 rows were parser-generated
     from DEPENDS/SOURCE prose: spot-check the parse (micro-node references mapped to parent
     nodes; the two `EFF.HE6R1` disambiguation rows carry their NOT-transcription caveat; the
@@ -8058,6 +8237,223 @@ merged `spec/DAG.tsv` picks it up at the next `dag_build.py` run. Authority: sta
 statement-change authority (2026-08-05) — the change is (i) a conclusion strengthening the committed
 proof route already delivers, (ii) an added hypothesis without which the strengthened conclusion is
 refuted, and (iii) the repair §14 item 12 itself booked as recommended and owner-gated.
+
+---
+
+### AMENDMENTS (2026-08-16, wave-16 B.79b adjudicator — the chapter-G §A- precedent)
+
+**A-F.12 — THE PERIMETER CLAUSE IS THE ONE CERTIFICATE HYPOTHESIS THE TRANSPORT LAYER DOES NOT
+CARRY. B.79b's `hperim` RE-SIGNED AT THE LIFT `g'` (`gS ∣ g'`); B.80's, B.81's and B.82's re-signed
+over the level-`N` WINDOW CLASS (new dictionary display (4a″)); D-4(b)'s "the theorem transports
+them" corrected; the banked transport leg LANDED as `order1Type_congr` in
+`leanfinal/Uniformity/ChapB/B66c.lean` (wave-16 adjudication, 2026-08-16).**
+
+**(I) The wave-16 finding, recorded.** Like A-F.11 this is a **derivability defect, not a false
+statement** — B.79b's frozen signature is a true implication whose hypothesis set is one clause
+short of its proof — so the preserved artifact is the analysis, not a compiled witness. Wave-16's
+B.79b agent, charged with landing `typeOf_congr_of_certificate` against the frozen stub, returned
+BLOCKED. The finding as returned (the frozen clause it quotes is displayed at (III)):
+
+> B.79b's `hperim` quantifies over the divisors of `g` (`gS ∣ g`) while the proof needs it over the
+> divisors of `g'`, the congruent lift. B.73–B.77's transport lemmas cover polygon/residual data
+> only, never divisibility/`inertiaDeg` clauses, and the bridging statement is `B-BOX-1`-strength
+> (circular).
+
+The agent did not weaken the statement, did not bank a `sorry`, and machine-checked every other leg
+of the node (the map is (VI) below); it banked the one non-mechanical leg, `order1Type_congr`, in a
+placeholder file, and named the two candidate repairs — both adopted here, one per exposure class.
+
+**(II) Why the gap cannot be closed downstream.** Four observations against the frozen text.
+
+1. **`hperim` is not a statement about the read data.** Its body quantifies `∀ gS : Polynomial O,
+   gS.Monic → gS ∣ g → IsPure φ gS u ℓ → …` and its third disjunct is
+   `∀ g'' ∈ monicFactors gS, φ.natDegree * ψ.natDegree ∣ inertiaDegOf g''`. The objects it speaks
+   about are the **divisors** of the polynomial and the inertia degrees of their monic factors.
+2. **The signature relates the two divisor lattices not at all.** The only hypotheses naming `g'`
+   are `hg' : g'.Monic`, `hdeg : g'.natDegree = g.natDegree` and the coefficientwise congruence
+   `hgg' : ∀ i, π ^ N ∣ (g - g').coeff i`. Nothing follows about `gS ∣ g'` from `gS ∣ g`.
+3. **The transport layer does not reach.** B.73–B.77 transport `suppVal`, `sideSet`,
+   `sideMin`/`sideMax`/`sideDeg`, `IsPure`, `resPoly`, `Visible` and `NeedsDescent`; **none of them
+   mentions `∣`, `monicFactors` or `inertiaDegOf`**, and there is no congruence-invariance for
+   `inertiaDegOf` anywhere in `leanfinal` (grep, 2026-08-16 — the wave-16 check, re-run at this
+   adjudication).
+4. **The missing bridge is theorem-strength.** "`B-BOX-1` for a block transports across a level-`N`
+   window congruence" asserts that the `(e,f)` data of the factors is window-determined — which is
+   exactly what B.79b concludes. Deriving it inside B.79b is circular; deriving it elsewhere is a
+   new node of B.61/B.62's class, i.e. the open box itself.
+
+**Why this is a stub-stage defect and not a refutation.** The frozen statement is true (its
+hypotheses are simply never enough to run its own proof), and §9's own composition note anticipated
+exactly this class: *"a divergence there is a stub-stage blueprint defect"* (B.79's SIGNATURE
+parenthetical, on the shared-clause dictionary). Nothing landed moves: B.79b, B.80, B.81, B.82 are
+all unfired, and no capstone footprint changes.
+
+**(III) The re-signs, with the alternatives that were rejected.**
+
+Frozen (retired here) — B.79b's clause, at the representative, ahead of the lift's binders:
+
+```lean
+    (hperim : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
+      ∀ gS : Polynomial O, gS.Monic → gS ∣ g → IsPure φ gS u ℓ → … )
+    {N : ℕ} (hvis : Visible π φ g N)
+    {g' : Polynomial O} (hg' : g'.Monic) (hdeg : g'.natDegree = g.natDegree)
+    (hgg' : ∀ i, π ^ N ∣ (g - g').coeff i) :
+    typeOf g' = order1Type π φ g
+```
+
+Re-signed — the clause moves after the lift's binders and points at the lift, inner binder renamed
+`g''` (it would otherwise shadow `g'`):
+
+```lean
+    {N : ℕ} (hvis : Visible π φ g N)
+    {g' : Polynomial O} (hg' : g'.Monic) (hdeg : g'.natDegree = g.natDegree)
+    (hgg' : ∀ i, π ^ N ∣ (g - g').coeff i)
+    (hperim : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
+      ∀ gS : Polynomial O, gS.Monic → gS ∣ g' → IsPure φ gS u ℓ →
+        ∀ hne : (sideSet φ gS u ℓ).Nonempty, ∀ H₀ : ℕ,
+          npHgt φ gS (sideMin φ gS u ℓ hne) = (H₀ : ℕ∞) →
+          ∀ ψ : Polynomial (resField φ), ψ.Monic → Irreducible ψ →
+            (∃ c : (resField φ)ˣ, resPoly π φ gS u ℓ hne H₀ = c • ψ) →
+            ((ℓ = 1 ∧ φ.natDegree = 1) ∨ ψ.natDegree = 1 ∨
+              ∀ g'' ∈ monicFactors gS,
+                φ.natDegree * ψ.natDegree ∣ inertiaDegOf g'')) :
+    typeOf g' = order1Type π φ g
+```
+
+**Alternative A — a SECOND clause at `g'` alongside the one at `g` (the wave-16 agent's option (ii)):
+REJECTED.** B.79b's proof applies half (a) exactly once, to `g'` (PROOF step 4), and reaches
+`order1Type π φ g` through `order1Type_congr` (step 5), which has no perimeter hypothesis. So the
+clause at `g` would be **dead weight in the signature**: never instantiated, yet demanded of every
+consumer, and (worse) it would misrepresent the mathematics by suggesting the representative's
+perimeter is what the certificate rests on. Every consumer that can supply the clause at `g` can
+supply it at `g'` — B.80 and B.82 supply both from the same window-class closure — so nothing is
+gained. Rejected on minimality and honesty, not on cost.
+
+**Alternative B — the polynomial-blind clause** (`∀ gS, gS.Monic → IsPure φ gS u ℓ → …`, no divisor
+anchor, optionally with `gS.natDegree ≤ g.natDegree`): **REJECTED.** It is strictly stronger as a
+hypothesis (it demands the perimeter of pure polynomials that divide nothing in sight), and the
+divisor anchor is load-bearing at discharge time: the §10 gates close their `hperim` by the degree
+bound `ℓ · φ.natDegree · ψ.natDegree = gS.natDegree ≤ gT.natDegree = n` (B.83 PROOF step 6's new ⚠
+display), which needs `gS ∣ gT`. Recorded because it is the shorter display and a future editor will
+be tempted by it.
+
+**Alternative C — a transport lemma for the clause** (a B.62-class node: `hperim` at `g` plus the
+window congruence implies `hperim` at `g'`): **REJECTED as circular**, (II)4.
+
+**B.80/B.81/B.82: the same exposure, one level up, and the closure that fixes it.** These nodes
+cannot name the member their proof dissects (B.80's `g' i` comes from Hensel at its step 3; B.82's
+`monicPoly b` is bound inside `decidedAt_of_congr`), so re-pointing is impossible and the clause is
+**closed over the class** — new dictionary display **(4a″)**, quantifying `∀ gT : Polynomial O,
+gT.Monic → gT.natDegree = f.natDegree → (∀ k, π ^ N ∣ (f - gT).coeff k) → …` ahead of (4a)'s body
+with `gS ∣ gT`. Three properties, all checked: reflexivity (`gT := f`) makes it **imply** (4a), so
+no consumer loses anything; it is weaker than Alternative B; and B.81, whose level is existential in
+its conclusion, carries it universally quantified under a visibility guard
+(`∀ N, (∀ i ∈ s, Visible π (φ i) (g i) N) → …`) — the guard is what stops the `N = 0` instance
+(`π^0 = 1`) from collapsing the closure onto every monic polynomial of the block's degree.
+
+**(IV) Source verification — the corpus's own scope for the `(e,f)` side-condition is PER MEMBER.**
+The charge required this check before the re-sign, and the corpus is explicit in the same sentence
+that grounds the transport layer. `EFF.W12.27` (§S2.3, the unit B.80/B.82's SOURCE fields cite),
+verbatim:
+
+> "If every residual is separable, Ore's theorem … factors **any O-lift F of the branch** into one
+> monic irreducible factor per (side S, irreducible residual factor ψ | R_S), with e = e_S (the
+> denominator of S's slope in lowest terms) and residue degree d·deg ψ. **All data the read consumes
+> sit at heights ≤ N−1, so every lift of the window class shares them**: the shape is σ-DECIDED with
+> σ read off the shape alone …"
+
+Two scopes in two clauses, and they are different: what the window class **shares** is *the data the
+read consumes* (heights, sides, residuals — precisely B.76–B.78's transport layer), while the
+factorization statement with its `(e,f)` labels is asserted of **any lift `F`**, one application per
+lift. This chapter's `hperim` is the side-condition of *its* `(e,f)` reading (D-3: the norm bracket
+`m ∣ inertiaDegOf g ∣ m·d` of B.55, unconditional at `d = 1` and at `ℓ = m = 1`, conditional on
+`B-BOX-1` otherwise), so it belongs to the per-lift clause, not to the shared-data clause.
+`EFF.W12.86` step 5 says the same thing in the certification direction — "S2.3's order-1 Ore theorem
+then certifies, **for every disc-nonzero lift**, one étale piece for each terminal side factor with
+its displayed `(e, f)`" — and R8-1's criterion (`EFF.HE3.67`) plus DEFINITION 2 (`EFF.HE3.15`) are
+per-history conditions on the member being read: "(a) the read TERMINATES with every TERMINAL
+residual polynomial separable … (b) every event along the history is lift-stable at the stage
+window". Clauses (a)/(b) are `hterm`/`hvis`, and those two DO transport (B.74's `needsDescent_congr`,
+B.76's `visible_congr`) — which is exactly why they stay signed at the representative while `hperim`
+does not.
+
+**The chapter-internal leg of the check.** D-3's perimeter table is indexed by a leaf
+`(m, ℓ, u, ψ)` **of the polynomial being read**, and B.55/B.58's `hBOX` is a hypothesis about the
+specific order `AdjoinRoot gS` of that piece (H-7: "`B-BOX-1` is therefore stated as an explicit
+hypothesis on B.55/B.58 and is not assumed anywhere else"). A per-piece hypothesis about the pieces
+of `g` says nothing about the pieces of `g'`. The dictionary display's own closing sentence had
+asserted the opposite — *"which is what B.63's steps 1–2 produce and what B.77 transports"* — and
+that half-sentence is struck at §12 item 4(a) as part of this amendment: it is where the defect was
+written down.
+
+**(V) The consumer audit.** Every consumer of the four re-signed nodes, with its disposition.
+
+| consumer | what it needs | verdict under A-F.12 |
+|---|---|---|
+| **B.80** `decidedAt_of_order1_certificate` | B.79(b) per block at the lift's peel `g' i` (its step 5) | **EXPOSED — RE-SIGNED** (the (4a″) per-block closure). The predicted verdict, verified not assumed: its `hperim i` was at `gS ∣ g i` while its conclusion `DecidedAt … N (proj O n N a)` quantifies over every lift, and the block it hands B.79(b) is `g' i` — Hensel-produced at step 3, congruent to `g i` by step 4's B.78(iii), of equal degree by `natDegree_eq_of_map_eq`. Those three facts are exactly (4a″)'s guards, so step 5 instantiates the closure and the node needs no new mathematics |
+| **B.81** `exists_decidedAt_of_terminating` | B.80 at the level its step 1 builds | **EXPOSED — RE-SIGNED** (the level-quantified closure, `Visible`-guarded). Its step 3's B.79(a) applications are satisfied reflexively (`gT := g i`) |
+| **B.82** `decidedAt_of_leaf_certificate` | B.79(b) at `g' := monicPoly b` (its step 3) | **EXPOSED — RE-SIGNED** ((4a″) at `(φ, monicPoly a, N)`); instantiated at `gT := monicPoly b` with landed `monicPoly_monic`/`monicPoly_natDegree` + B.78(i), all already named in its step 2 |
+| **§10 gates B.83/B.84** (fire B.82 (i)–(iii), B.80 (iv)) | (4a″) at their concrete instances | **STATUS UNCHANGED, one new step.** They stay inside D-3's unconditional region and carry no `B-BOX-1`; the discharge must now be uniform in the class member, by the degree display added at B.83 PROOF step 6 (`ℓ · m · deg ψ ≤ n`, from B.30's `natDegree_resPoly` + B.35b's landed `sideDeg_of_pure` + `natDegree_le_of_dvd`). ≈ 15 lines per gate file |
+| **§10 gate B.85** (the `e > 1 ∧ f > 1` witnesses) | (4a″) at `n ∈ {4, 6}`, `m = 2`, `ℓ ∈ {2, 3}` | **STATUS UNCHANGED**; same display, and the `gS = gT` case is admissible only at the transported purity (`IsPure` is a B.77a-transported predicate), i.e. only at the instance's own `(u,ℓ)`, where `d = 1` |
+| **B.63 / B.71 / B.79a** | (4a)/(4a′) at their own polynomial | **UNCHANGED, byte-for-byte.** They dissect the polynomial their clause names; the defect is specific to the nodes whose conclusion is about a *different* polynomial than their hypotheses' subject |
+| **chapter C's `HT` transcription** (H-10: consumes B.20, B.30, B.58 by name) | none of the four | **UNAFFECTED** — it consumes the `(e,f)` read and the polygon API, not the §9 certificates |
+
+**What the re-sign costs, stated plainly.** The carried conditionality's *region* is unchanged
+(D-3's table, verbatim) and its *scope* widens: where a §9 consumer's discharge falls outside the
+unconditional region, what it carries is `B-BOX-1` **for every member of the window class**, not for
+one representative. That is the honest reading of a certificate that asserts a `typeOf` value for
+every member, and it is recorded at D-4's perimeter paragraph and in D-4(b)'s amendment note. No
+node's conclusion weakens; no `DecidedAt` is weakened (D-4(a) stands).
+
+**(VI) The landed leg, and the map for the B.79b reschedule.** The wave-16 unit's banked
+composition is landed as a booked B.66-adjacent helper — **`order1Type_congr` in
+`leanfinal/Uniformity/ChapB/B66c.lean`** (the placeholder `B79bTransport.lean` is retired in the same
+commit; this amendment is its record):
+
+```lean
+theorem order1Type_congr (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {g : Polynomial O} (hg : g.Monic) {μ : ℕ}
+    (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    {N : ℕ} (hvis : Visible π φ g N)
+    {g' : Polynomial O} (hg' : g'.Monic) (hdeg : g'.natDegree = g.natDegree)
+    (hgg' : ∀ i, π ^ N ∣ (g - g').coeff i) :
+    order1Type π φ g' = order1Type π φ g
+```
+
+Sorry-free, footprint `propext`/`Classical.choice`/`Quot.sound`, and (unlike the placeholder) the
+B.42 literature cite is not even on its import path — its imports are B39b/B66/B74/B77b, so it sees
+neither B.63 nor B.42. Both canonical index finsets are proved **literally equal**: `slopeFinset`
+through B.66a's `mem_slopeFinset` after B.77a's `sideSet_congr`; `resFactorFinset` through B.66a's
+`mem_resFactorFinset` after the `sideMin` abscissa agreement, B.76(i)'s `npHgt_min_congr` under the
+window guard, and B.77b's `resPoly_congr`; `Multiset.bind_congr` assembles. **A-F.11 (VI)'s action
+item is executed in the promoted form**: the guard is landed B.74's public `H₀_lt_of_visible`
+(`B74.lean:349` — `H₀ < N` at the `sideMin` pin, exactly `resPoly_congr`'s `hH₀`), not the inner
+`suppVal_lt_of_vis`, which stays `private`; one visibility hypothesis at abscissa `0` guards the
+whole side family, which is the `HE-T-CAP` tooth (`EFF.HE3.54`) content.
+
+**The rest of B.79b is machine-checked closed** (the wave-16 unit's scratch skeleton, with `hperim`
+at `g'` as the only hole — now a hypothesis). For the inheritor, leg by leg: `0 < N` from `hvis`;
+`ḡ' = ḡ = φ̄ ^ μ` from `hgg'` through `Ideal.Quotient.eq_zero_iff_mem` and `hπ.maximalIdeal_eq`;
+`Visible π φ g' N` by B.76(iv) `visible_congr`; `dev φ g' 0 ≠ 0` by B.76(ii) + `npHgt_eq_top_iff`
+(this is how half (b) supplies half (a)'s A-F.9 `h0` at `g'`); `¬ NeedsDescent π φ g'` by B.74's
+`needsDescent_congr`; then half (a) at `g'`, and `order1Type_congr` to land on `order1Type π φ g`.
+Half (b) is therefore ≈ 30 lines, not 40.
+
+**(VII) Where applied.** DECISION D-4 (clause (b) amended — the transport claim scoped to the read
+data; the perimeter paragraph gains the scope note); NODE B.79 (STATEMENT's `hperim` bullet; half
+(b)'s SIGNATURE re-signed with the hypothesis reorder; DEPENDS (b) updated to the landed
+`H₀_lt_of_visible` and `B66c.lean`; PROOF step 3's false transport sentence struck and replaced;
+step 5 marked landed; SIZE annotated); NODE B.80 (STATEMENT, SIGNATURE, PROOF step 5); NODE B.81
+(STATEMENT, SIGNATURE, PROOF step 2); NODE B.82 (STATEMENT, SIGNATURE, PROOF step 3); NODE B.83
+(PROOF step 6's new ⚠ discharge display, inherited by B.84/B.85); §12 item 4 (the (4a) schema note,
+the struck transport half-sentence, and the NEW display (4a″)); §14 item 15 (new duty (iv)).
+Stub re-signs in `leanspec/Leanspec/ChapB.lean` (B.79b, B.80, B.81, B.82 tagged
+`[re-signed: A-F.12]`; RE-SIGN LOG entry added), `lake build Leanspec.ChapB` green. Landed:
+`leanfinal/Uniformity/ChapB/B66c.lean` (new, `lake build Uniformity.ChapB.B66c` green),
+`B79bTransport.lean` retired. Authority: standing statement-change authority (2026-08-05) — the
+changes are (i) hypothesis relocations/strengthenings without which the committed proof routes do
+not run, (ii) no conclusion weakened anywhere, and (iii) the repair class §9's own composition note
+booked in advance ("a divergence there is a stub-stage blueprint defect").
 
 ---
 
