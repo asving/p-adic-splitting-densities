@@ -1783,6 +1783,145 @@ this addendum (annotation by reference; the rows are not edited). Owner signs pe
 HYP.17/A-3 numbering discipline applies ([GN15] numbers above were read from
 arXiv:1309.4340v2 this campaign; Contemp. Math. print check is the standing A-3 residual).
 
+### DATED ADDENDUM (2026-08-16, OM-5 — GATE-(b) CITE-CANDIDATE: the leaf dichotomy for `B-BOX-1`)
+
+**`B-BOX-1` (B.61's `hBOX`, chapter B's sole open box, scope-widened at A-F.7) is a
+CITE-CANDIDATE, and this addendum is its queue draft at the B.42 standard.** Unit note:
+`docs/openmath-campaign/OM-5_bbox1_2026-08-16.md`; certification battery
+`verification/om5_bbox1_cert.gp` (**128 checks, 0 failures**: the leaf `(e,f) = (ℓ, m·d)` and
+the order-level gcd `inertiaDegOf = m·d` at `d ≥ 2` over both primes `{2,3}` and both
+characteristics, including the A-F.7 `ℓ = 1, m ≥ 2, d ≥ 2` region, the wild `p ∣ ℓ` rows and a
+`p ∣ d` row; the multiplicity-`≥ 2` and non-coprime defeats; LEMMA HE3-4U's base-change
+mechanism executed at an `m ≥ 2` equal-characteristic instance). **Nothing is retagged and no
+box is discharged by this addendum**: until the owner signs, `B-BOX-1` stays carried exactly
+as today.
+
+**THE EXACT LEAN STATEMENT to be signed** is LANDED (compiled, Lean-core footprint, **no
+axiom, no `sorry`** — the `Prop` is stated, not asserted):
+`Uniformity.Density.Leaf.BBox1CiteStatement`
+(`leanfinal/Uniformity/ChapB/BBox1CiteStatement.lean`) — B.61's binder list plus the `H₀` pin
+and `hirr : Irreducible (resPoly π φ g u ℓ hne H₀)`, concluding B.61's `hBOX` verbatim
+(`∀ g' ∈ monicFactors g, φ.natDegree * sideDeg φ g u ℓ hne ∣ inertiaDegOf g'`). The same file
+lands the **machine-checked wiring** `typeOf_leaf_of_cite`: `BBox1CiteStatement` → B.61's
+conclusion `typeOf g = ⟨{(ℓ, m·d)}⟩` under the leaf hypotheses — so signature alone completes
+the `d ≥ 2` leaf rows, with the axiom name in every downstream `#print axioms` (the H-14
+inheritance pattern). Post-signature form: `axiom bBox1_cite : BBox1CiteStatement` plus the
+`docs/AXIOM_FAITHFULNESS.md` entry distilled from this draft.
+
+**FAITHFULNESS ENTRY (draft, for the fresh-context audit + signature).**
+
+* **This is a COMPOSITE cite, and that is disclosed up front.** The mathematical core is the
+  published leaf dichotomy (ingredient (A)); reading it in `inertiaDegOf`'s order-level gcd
+  vocabulary — the only vocabulary `leanfinal` has, since the factor-field valuation-ring
+  carrier does not exist in the tree (I.21's stub note) — consumes two classical
+  valuation-theory legs (B), (C) that are standard but NOT Montes literature, plus one
+  mathlib-checkable leg (D). B.42's precedent already accepts repo-side dictionary glue
+  audited in the faithfulness entry; this draft has one more glue *class* and names it.
+  If the owner's gate-(b) discipline excludes composite cites, the recorded fallback is
+  REDUCES-TO(B.62) — OM-5 §3.1 proves there is NO route through landed vocabulary (at every
+  `d ≥ 2` leaf the order `AdjoinRoot g` has residue field `resField φ` of degree `m < m·d`,
+  hence is never a DVR: the box's region lies entirely off the monogenic-maximal locus that
+  `TypeOfFaithful.lean`/`typeOf_inert_faithful` reach).
+* **(A) Published source (primary): [FGMN] Thm 6.6** (arXiv:1305.0775v3; J. Algebra print
+  PREDICTED Thm 6.5 per `docs/CITE_NUMBERING_AUDIT_2026-08-16.md` §4 — *predicted, NOT
+  verified*, the same two-minute Elsevier check as B.42's residual). Verbatim (already quoted
+  at the B.42 entry): *"Let `µ` be an inductive valuation and let `φ` be a **proper** key
+  polynomial for `µ`. Then, every monic polynomial `g ∈ O_v[x]` factorizes into a product of
+  monic polynomials in `O_v[x]` … `deg g_{λ,L} = e_λ ord_L(R_{µ_λ}(g)) deg L deg φ`. Moreover,
+  if `ord_L(R_{µ_λ}(g)) = 1`, then `g_{λ,L}` is irreducible in `O_v[x]`."* — at the Gauss
+  valuation `µ₀`, where EVERY key is proper (`KP(µ₀)_str = KP(µ₀)`, [FGMN] Def 5.10; the whole
+  `IsKey` range, inheriting B.42's A-3 disposition verbatim — do NOT sign [GN15] Thm 2.3 alone
+  over `∀ φ, IsKey φ`). **Co-primary: [GN15] Thm 2.3** (VERIFIED at A-3, arXiv:1309.4340v2 +
+  author PDF; the chain-relative restatement covering `φ ≁_{µ₀} x`) **+ [GN15] eq. (2.1)**
+  for the explicit invariants: *"`e(F) = e(µ_F) = e₀⋯e_r`, `f(F) = f₀⋯f_r`"* — at order 1
+  (`e₀ = m₀ = 1`, `f₀ = deg φ = m`, `e₁ = ℓ`, `f₁ = deg ψ = d`): `e(F) = ℓ`, `f(F) = m·d`.
+  Standing setting of both: an arbitrary discrete valued field — **COVERS-ALL-O**, both
+  characteristics (`docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` NS-2, resolved verdict).
+  **Secondary display (ℚ_p scope only):** GMN Thm 1.19 + Cor 1.20 (`docs/GMN_citations.md`
+  §1 verbatim: *"`f(L/K)` is divisible by `m·deg ψ_i` … in particular, if `a_i = 1` then
+  `G_i` is irreducible, `f(L/K) = m·deg ψ_i`, `e(L/K) = e`"*) — the cleanest display of
+  exactly the box's content, but GMN's standing setting is a finite extension of `ℚ_p`
+  (`docs/references/HigherNewton.tex` §1.1), so as in B.42's entry **[FGMN]/[GN15] are the
+  load-bearing legs, not GMN**.
+* **(B) Glue leg, classical: the maximal-order carrier.** `O` complete DVR, `L = K[x]/(g)`
+  of degree `n` ⟹ the integral closure `O_L` of `O` in `L` is a DVR, finite free of rank
+  `n` over `O`, residue degree `f(L/K)`, unique valuation extension `w`. Standard complete-DVR
+  theory — Serre, *Corps Locaux* / *Local Fields* (GTM 67) Ch. II §2 (Prop. 3 is the
+  PREDICTED display) and Neukirch, *Algebraic Number Theory*, Ch. II §§4, 6. ⚠ **Exact
+  proposition numbers FLAGGED FOR LOOKUP at signature time** (neither book is in
+  `docs/references/`; the repo rule "never trust a number from memory" applies — HYP.17/A-3
+  class residual).
+* **(C) Glue leg, classical: the norm-valuation identity.** `v(N_{L/K}(x)) = f(L/K) · w(x)`
+  for `x ∈ L^×`, `w` normalized on `L`. Published form: the henselian uniqueness display
+  `w = (1/n) · v ∘ N_{L/K}` (Neukirch ANT Ch. II, Thm 4.8 is the PREDICTED number — same
+  lookup flag) combined with the fundamental identity `e·f = n` for complete discrete
+  valuations. **In-repo corroboration of exactly this mechanism, machine-checked:**
+  `Uniformity.Density.exists_ramification_data` + `inertiaDegOf_eq_inertiaDeg'`
+  (`leanfinal/Uniformity/Density/TypeOfFaithful.lean`) prove (C) shape-for-shape for ANY
+  carrier with `[IsDiscreteValuationRing A]` — normal form `x = unit·ϖ^j` gives
+  `v(N x) = j·v(N ϖ)` and the Quarry fundamental identity
+  (`Ideal.ramificationIdx_mul_inertiaDeg_eq_finrank_of_isLocalRing`) pins `v(N ϖ) = f`. The
+  missing Lean object is ONLY (B)'s carrier, never this identity.
+* **(D) Glue leg, mathlib-tier: order norm = field norm.** For `x` in the order,
+  `Algebra.norm O x ↦ N_{L/K}(x)` under fraction-field base change of the free module —
+  `Algebra.norm_localization`, PRESENT at our pin
+  (`Mathlib/RingTheory/Localization/NormTrace.lean:63`, mathlib `fabf563a`).
+* **Derivation (A)+(B)+(C)+(D) ⟹ the statement**, three lines: under the hypotheses, (A)
+  forces `g` irreducible (so `monicFactors g = {g}` — the `∀ g'` ranges over `{g}`) with
+  `f(L/K) = m·d`; for `0 ≠ x` in the order, (D) reads `addVal O (Algebra.norm O x)` as
+  `v(N_{L/K} x)`, which by (B)+(C) is `(m·d)·w(x)`; hence `m·d` divides every norm-valuation,
+  i.e. `m·d ∣ inertiaDegOf g` — the gcd semantics of `TypeOf.lean:193`. **Direction check
+  (D-3's order-not-field reading):** the order's norm-value set is a subset of the field's,
+  and a gcd over a subset is a multiple of the gcd over the superset — the box's divisibility
+  direction is exactly the one that survives the order reading; the reverse divisibility is
+  landed B.54 and needs no field.
+* **Clause mapping (import ↔ source).** `hφ : IsKey φ` ↔ `φ ∈ KP(µ₀)` (EXACT both
+  directions — B.42's A-3 bullet (i), inherited verbatim, [FGMN]-properness leg included);
+  `hpure`/`hne`/`hd` ↔ the one-sided `φ`-polygon of slope `−u/ℓ` in lowest terms (B.34's
+  dictionary; B.42a's machine-checked converse); `hres` ↔ the single-branch case `f̄ = φ̄^μ`
+  (strictly narrower than the source's arbitrary monic `g` — no strengthening smuggled);
+  `hirr : Irreducible (resPoly …)` ↔ `ord_L(R_{µ_λ}(g)) = 1` **with** `deg L = deg R` (the
+  residual is a unit times a single irreducible of full side degree — the multiplicity-1
+  clause; `resPoly` is not normalized monic, and irreducibility is unit-insensitive, B.30's
+  degree/constant-term theorem supplying `deg resPoly = d`); conclusion ↔ the source's
+  irreducibility + `(e,f)` display, deliberately WEAKENED to the divisibility form that is
+  byte-identical to B.61's `hBOX` (the full leaf conclusion is then recovered by the LANDED
+  B.61 through the landed wiring `typeOf_leaf_of_cite` — machine-checked, not cited).
+* **Necessity of `hirr`, certified by constructed counterexample** (CERT-C(i), both
+  characteristics): `g = (x²−p)²` is `(1,2)`-pure at `X` with `sideDeg = 2` and residual
+  `(y−1)²`; its factor `x²−p` has `inertiaDegOf = 1` and `m·d = 2 ∤ 1` — the statement is
+  FALSE at multiplicity `≥ 2`, so the clause cannot be dropped. (Cor 1.20's divisibility by
+  `m·deg ψ_i` still holds there — `1 ∣ 1`; the defeat is of `d = sideDeg`, not of the
+  source.) Do not conflate with HE6-BOX-1 (B.61's TEETH warning, unchanged).
+* **Known caveats.** (1) The composite-cite question is the OWNER'S DECISION — this draft
+  does not presume it (fallback recorded above). (2) `resPoly` transcription-shear risk:
+  B.42's caveat (2) applies verbatim since `hirr` reads `resPoly`; the same A-F.6-documented
+  hypotheses exclude the two known shear modes; `hirr` sits in the digit-read transcription's
+  verified faithful scope. (3) Numbering: [FGMN] print number PREDICTED (−1 drift); Serre and
+  Neukirch display numbers FLAGGED FOR LOOKUP (leg (B)/(C) bullets); [GN15] Thm 2.3 and GMN
+  printed-TAMS already VERIFIED at A-3. (4) The `Finite (ResidueField O)` binder is
+  mathematically unnecessary for (A)–(D) but is kept: it narrows the axiom to ENV-C (the
+  capstone's `O`), and a narrower axiom is a smaller trust surface.
+* **Consumer effects on signature.** B.61's `d ≥ 2` rows (hence B.71, B.79, and B.63's
+  `hperim` general branch) re-gate from OPEN-MATH onto the signature; the 2026-08-15 A-F.7
+  addendum's `ℓ = 1, m ≥ 2, d ≥ 2` OPEN-MATH routing is superseded-on-signature (annotation
+  by reference; the rows are not edited). **`C-BOX-1` (C.60):** the SAME published statement
+  covers the level-2 residue leg ([GN15] Thm 2.3 at any chain length — NS-2/NS-3), but the
+  level-2 axiom instance is a separate signable statement in C's vocabulary
+  (`CBox1Side`/`KeyFrame`/`LevelDatum`) — flagged to CHAP-C, not drafted here. `HYP.01`/
+  `HYP.12` [CORE-SET] are untouched: the axiom stays in the gcd/order vocabulary and
+  identifies no APIs (GC-3 respected).
+
+**Queue mechanics.** CITE (gate (b)) count **4 (+1 contingent) → 5 (+1 contingent)**: [AGNPRW]
+Thm 5.2 (C.94) · FGMN (C.66/C.92) · [GN15] Thm 2.3 (B.42) · [GN15] Thm 2.3 + (2.1) at the
+recentered key (OM-4/HYP.42 item 5) · **NEW: [FGMN] Thm 6.6 + [GN15] Thm 2.3 & eq. (2.1) for
+`B-BOX-1` (`BBox1CiteStatement`), with the (B)/(C) classical glue legs and (D)** · contingent
+[GN15]-at-`r = 1` for C.33 unchanged. **Merge option, owner's call:** this cite's (A) shares
+both primary sources and their verbatim displays with B.42's signature event — one
+general-order [GN15]/[FGMN] signature event could cover B.42, OM-4's item 5, the contingent
+C.33, AND this cite's ingredient (A), leaving only the (B)/(C) glue legs as this cite's own
+increment. Owner signs per cite; the HYP.17/A-3 numbering discipline applies throughout.
+
 <!-- SENTINEL: BP-I END OF FILE -->
 
 
