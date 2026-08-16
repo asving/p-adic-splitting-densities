@@ -8539,6 +8539,51 @@ A-C.5 from the wave-10 scope block should absorb (a) and (b) — this unit's fin
 split's intermediate layers must expose the fiber decomposition as its own layer, since that
 is the step that fails.
 
+**(VIII) THE D3-PATTERN AUDIT over the other A-C.1 carrier nodes** (charge item 4). Three
+patterns were looked for: **(a) data-field freedom** — a data field the corpus DETERMINES
+from the rest, left unpinned, while one side of a statement reads it (the A-C.2/A-C.3
+disease); **(b) pin over-strengthening** — a membership clause demanding `=` where the
+source states `≥` or a three-way law (A-C.2's D3); **(c) the opaque-choose pattern** — a
+definition reading data off an `Exists.choose` whose witness set is not a singleton and
+carries no spec, so the intended identity is neither provable nor refutable (the repaired
+C.14a `stageCoord`, commit `c2831103`, and C.56a `k2Coord`, commit `2e133686`).
+
+| node / carrier | data fields (or choose site) | verdict |
+|---|---|---|
+| C.01 `KeyFrame` | `e₁, f₁, h, key` | **CLEAN** — every determined field is pinned: `hdeg` fixes `f₁ = deg/e₁`, `hpure` + `hcop` + `he₁` fix the reduced slope `h/e₁`, `hirr`/`hresirr` fix the key's read. No unpinned determined field. |
+| C.09 `LevelDatum` | `u, ℓ, r` | **CLEAN** — free BY DESIGN (the datum IS the choice of a side and a residual factor; nothing else determines them), with `hℓ`/`hcop`/`hκ`/`hr*` carrying the constraints. |
+| C.41 `TowerDatum` | `e₂, f₂, u₂, ψ₂` | **CLEAN** — `hψdeg` pins `f₂ = deg ψ₂`, `hcop` pins the reduced `(u₂, e₂)`, `hψmonic`/`hψirr`/`hψ0` pin `ψ₂`'s shape. |
+| C.38a `DvDissection` | `slopes, factor, below` | **CLEAN** — all three ARE determined by `f`, and all three are pinned: `hprod`, `hsides` (an iff), `hdeg`, `hpure`, `hdistinct`, `hbelow` — plus an explicit `dvDissection_unique`. This is the shape A-C.2's C.108 lacked, done right. |
+| C.71 `DeepTower` | `e, f, u, fld, ψ` | **CLEAN** — `he1`/`hf1`/`hu1` pin stage 1 to the frame, `hψ` pins `f (i+1) = deg (ψ i)`, `hcop`/`hfloor`/`hproper` carry the constraints; `fld` is pinned only up to `≃+*` by `base`/`step`, which is the signed GC-7 decision, not a freedom. |
+| C.60 `ComposedLabel` | `u₃, ℓ₃, r₂` | **CLEAN** — `hres₂ : dv2ResPoly … = r₂` pins `r₂` to the ACTUAL residual (the clause `htRealizes` was missing before A-C.3); `(u₃, ℓ₃)` is a side choice with `hne₂`/`hcop`/`hfloor`. |
+| C.90 `DescentState` | `key, block` | **CLEAN** — a state, free by design; the grammar lives in `DescentStep`. |
+| C.62 `ClassSizeSupplyData` | (a `Prop` structure) | **CLEAN** — no data fields; it is a hypothesis bundle. |
+| C.51 `towerLocus`, C.57 `refineDom`/`refineCod` | residual pins | **CLEAN** (pattern (b) checked explicitly) — the equalities pinned are RESIDUAL equalities (`dvResPoly … = towerLabel^{μ₂}`, `dv2ResPoly … = (X − s)^{μ₂}`), which is exactly what the source states; the polygon-side clause in `refineCod` is the STRICT conservative `<`, not an `=`. No over-strengthening. |
+| C.53 `towerLocus_fibration`, C.82 `block_budget` | formula RHS over a locus LHS | **CLEAN** — audited deliberately because these are the same SHAPE as the refuted C.109/C.114 (a set-level LHS against a formula RHS reading a datum's fields). Every field `towerFreeCount` reads is pinned in the locus (`D₂` by the degree clause, `(u₂,e₂)` by `IsDvPure`, `ψ₂` through `towerLabel`'s residual pin), and the one field the RHS does NOT read, `ψ₂`, enters the LHS only symmetrically. |
+| C.35 `blockFactor` | `Classical.choose` on a maximality predicate | **CLEAN** (pattern (c) checked) — the witness set is characterised by MAXIMALITY and C.34's uniqueness makes it a singleton on the context, and the def carries `blockFactor_spec`; off the context it is documented junk (`1`). This is the healthy form of the pattern. |
+| C.24 `dv2Res` | `choose` on `∃ hne M₀, dvHgt … = M₀` | **CLEAN** — `hne` is a proof (irrelevant) and `M₀` is a function VALUE, so the witness set is a singleton; junk `0` off the locus. |
+| C.14a `resLift` | `residue_surjective.choose` | **CLEAN** — a genuine section; the ONLY property any consumer may use is `choose_spec` (`residue (resLift x) = x`), and the node says so. |
+| C.15 `slotIdx` | (former `Nat.find`) | **CLEAN** — already cured at A-C.1/D6: the `Nat.find` body rested on an existence claim that is FALSE off `hcop`, and was replaced by a computable total definition. |
+| **C.14a `stageCoord` (leanspec twin)** | `(AdjoinRoot.mk_surjective c).choose` | **DEFECT (pattern (c)), certified instance = the landed repair itself.** The `leanfinal` body was REPAIRED at `c2831103` (power-basis read + `sum_stageCoord`), signature byte-unchanged — but the **leanspec CONTRACT still carries the refuted body**, so a transcriber reading the spec reproduces the defect. Repaired at contract level in this amendment (a `DO NOT TRANSCRIBE` block naming the landed cure); the body is not transplanted because `LeanspecC.KeyFrame` duplicates the landed structure and the documented cure is lifecycle RETIREMENT — booked below. |
+| **C.56a `k2Coord` (leanspec twin)** | `((AdjoinRoot.mk_surjective s).choose).coeff t` | **DEFECT (pattern (c))** — the same, one level up; `leanfinal` repaired at `2e133686` (`k2PB` + `sum_k2Coord`), leanspec stale. Same contract-level repair. |
+| C.108 `HTNode`/`HTTree`/`HTShape` | `L, sides, sideType, kappa`; `kappa0` | **DEFECT — already found and fixed:** `L`/`sides`/type degrees at A-C.2, `kappa`/`kappa0` (and the `s`-to-side tie) at A-C.3. Recorded here so the row is not read as unaudited. |
+
+**The audit's own finding, beyond the table.** The two DEFECT rows are one symptom of a
+LARGER, structural issue this unit is not chartered to fix: `leanspec/Leanspec/ChapC.lean`
+still declares its own duplicates of structures and defs that have since LANDED in
+`leanfinal` (C.01's `KeyFrame`, C.14a, C.56a, C.108, C.109a, C.110, …), while
+`leanspec/Leanspec.lean`'s stub lifecycle says a landed `def`/`structure` must have its
+local body DELETED and replaced by a retirement-form check. The file's own header still
+says "this chapter has nothing landed to retire against" — TRUE at the 0e gate, STALE now.
+Until the sweep runs, every landed repair silently leaves a refuted body in the contract.
+**BOOKED TO A-C.5, with the designed list:** (i) enumerate the landed chapter-C
+declarations (`leanfinal/Uniformity/ChapC/*.lean` public names) against the leanspec twins;
+(ii) for each, retire per the lifecycle (`example : <type> := <name>` for `def`s/theorems, a
+representative field projection for structures); (iii) where the leanspec type does not
+match the landed one, that mismatch is itself a finding — record it, do not widen either
+side; (iv) re-run `lake build Leanspec.ChapC` and re-check the §11/§13 `#guard` rows;
+(v) fold the C.14a/C.56a `DO NOT TRANSCRIBE` blocks away once their retirement lands.
+
 # A-C.4 AMENDMENT (2026-08-16, unit EWBS2) — THE TWO OM-10 LAW NODES (C.127, C.128)
 
 **Charge and label.** OM-10's §3.6 flagged, as an orchestrator OPTION, "a dated A-C
