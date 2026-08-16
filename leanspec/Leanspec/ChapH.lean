@@ -2640,6 +2640,206 @@ axiom betaExtract_fiber_card {O : Type*} [CommRing O] [IsDomain O]
             (hc : HasChildAt π c p.1 p.2.1 p.2.2),
           betaChild π c hc (N - D p) = t p hp)} = F
 
+/-! ### H.116b1–H.116b4 [NEW NODES: A-H.7] — the H.116b re-split
+
+`betaExtract_fiber_card` (clause (ii)) is now the ASSEMBLY node of four sub-nodes; the
+statement above is BYTE-UNCHANGED. The re-split, its DAG order and the FENCE on the closed
+route are AMENDMENT A-H.7 of `blueprint/CHAP-H_general_induction.md`; the block record is
+`leanfinal/notes/BLOCKED_H116b_2026-08-16.md`; the machinery already landed (the exact peel,
+the π-level Gauss lemma, the exact planted profile `w_{k'} = μ·min(k,k')`, the frame-congruence
+transport — 20 declarations, Lean-core) is `leanfinal/Uniformity/ChapH/H116bR.lean`.
+
+**⚠ FENCE (do not re-attempt).** The peel-shift-REPLANT route to the count is CLOSED, refuted
+with witnesses by `verification/openmath/OM2_h116b_replant_cert.py`: check **D3** — *"two exact
+planted presentations of the SAME class, shifted by the SAME Delta, can give DIFFERENT
+classes"* in same-slope multi-child genres — and check **E3** — *"the round trip
+replant(t->t');replant(t'->t) is NOT the identity in Zq (section carries)"*. Surjectivity of
+the replant map fails for the same reason. The route signed below never builds a replant map. -/
+
+/-- **A-H.7 §1 (the shared carrier of H.116b1–H.116b4).** The PLANTED POLYNOMIAL of a
+genre-indexed family `bb` of child presentations against a cofactor presentation `Qc`: the
+product of the planted factors `alphaParent π b_p k_p (resSect O z_p)` (H.115b's inverse
+shear, at the PINNED centres of A-H.5) times the cofactor's canonical lift.
+
+Presentations are indexed by CLASSES, not by lifts, and that is sound: for `1 ≤ N` every lift
+of a `ClusterState` automatically has coefficients in `𝔪` (the class lies in the image of `𝔪`
+and `𝔪 ^ N ⊆ 𝔪`), so `classSect` needs no `𝔪`-respecting refinement, and `alphaParent`'s
+coefficients depend on the lift only through its class mod `π ^ N`. The dependent index
+`{x // x ∈ L}` (rather than `∀ p ∈ L`) is deliberate: it is a `Fintype`, which is what makes
+the presentation space of H.116b4 finite. -/
+noncomputable def plantedPoly {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {N r : ℕ} (L : Finset (ℕ × ℕ × ResidueField O))
+    (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
+    (Qc : ClusterState O r N) : Polynomial O :=
+  (∏ p ∈ L.attach, alphaParent π (classSect O p.1.1 N (bb p).1) p.1.2.1 (resSect O p.1.2.2))
+    * monicPoly (classSect O r N Qc.1)
+
+/-- **H.116b1 (clause i) [NEW NODE: A-H.7].** THE MULTI-CHILD PEEL. Every monic lift of a
+non-drain state whose child set contains `L` factors EXACTLY as a `Finset`-indexed product of
+planted factors at the pinned centres times a monic cofactor, with each `b_p` a lift of the
+`betaChild` class at `p`'s own genuine window — **and the degree-sum bound `Σ_p μ_p ≤ m` is a
+CONCLUSION, not a hypothesis.**
+
+ADJUDICATION OF THE BOUND (A-H.7 §3, the block record's open question). `Σ_p μ_p ≤ m` does
+NOT follow from H.108: `mul_le_betaContent` + `betaContent_le_mul` give `k_p μ_p ≤ D_p ≤ m k_p`,
+i.e. `μ_p ≤ m` for EACH `p` separately, and summing gives only `|L|·m`. What supplies it is
+THIS induction: peel one child (the landed `exists_peel`), show the cofactor's state carries
+the remaining children (clause (ii)), recurse on the strictly smaller degree `m − μ_p`. So the
+bound is paid for by clause (ii), whose mechanism is H.116b2 — **hence the DAG edge
+H.116b2 → H.116b1**, the reverse of the block record's listing order. -/
+axiom exists_peel_finset {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m N : ℕ}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (c : ClusterState O m N) (h0 : ¬ IsDrainState c)
+    (L : Finset (ℕ × ℕ × ResidueField O))
+    (hL : ∀ p ∈ L, HasChildAt π c p.1 p.2.1 p.2.2)
+    (a : Fin m → O) (ha : proj O m N a = c.1) :
+    (∑ p ∈ L, p.1) ≤ m ∧
+      ∃ (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, Fin p.1.1 → O)
+        (Q : Polynomial O),
+        (∀ p i, bb p i ∈ maximalIdeal O) ∧ Q.Monic ∧
+        Q.natDegree = m - ∑ p ∈ L, p.1 ∧
+        monicPoly a
+            = (∏ p ∈ L.attach, alphaParent π (bb p) p.1.2.1 (resSect O p.1.2.2)) * Q ∧
+        ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L},
+          proj O p.1.1 (N - betaContent c p.1.2.1) (bb p)
+            = (betaChild π c (hL p.1 p.2) (N - betaContent c p.1.2.1)).1
+
+/-- **H.116b1 (clause ii) [NEW NODE: A-H.7].** THE COFACTOR INHERITS THE REMAINING CHILDREN —
+the inductive step of clause (i). After peeling the `(μ, k, z)`-child, the cofactor's class is
+again non-drain, its content at any OTHER slope is the parent's content less the planted floor
+`μ·min(k, k')` (the Gauss law, landed as `level_recentre_mul_alphaParent`), it carries the same
+child event at every foreign frame, and it reads the SAME child there at the parent's window
+(the planted factor is a unit at a foreign frame — the landed
+`coeff_zero_recentre_alphaParent_not_dvd` — so it does not move the `X ^ μ'` Hensel factor). -/
+axiom peel_cofactor_inherits {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m N μ k : ℕ} {z : ResidueField O} (hm : 2 ≤ m) (hN : 1 ≤ N)
+    (c : ClusterState O m N) (h0 : ¬ IsDrainState c) (h : HasChildAt π c μ k z)
+    {b : Fin μ → O} (hb : ∀ i, b i ∈ maximalIdeal O) {Q : Polynomial O}
+    (hQ : Q.Monic) (hQdeg : Q.natDegree = m - μ)
+    {a : Fin m → O} (ha : proj O m N a = c.1)
+    (hfac : monicPoly a = alphaParent π b k (resSect O z) * Q)
+    (c' : ClusterState O (m - μ) N)
+    (hc' : proj O (m - μ) N (fun i : Fin (m - μ) => Q.coeff (i : ℕ)) = c'.1)
+    {μ' k' : ℕ} {z' : ResidueField O} (hne : ¬ (k' = k ∧ z' = z))
+    (h' : HasChildAt π c μ' k' z') :
+    ¬ IsDrainState c' ∧ betaContent c k' = μ * min k k' + betaContent c' k' ∧
+      ∃ h'' : HasChildAt π c' μ' k' z',
+        betaChild π c' h'' (N - betaContent c k') = betaChild π c h' (N - betaContent c k')
+
+/-- **H.116b2 (clause i) [NEW NODE: A-H.7].** MULTIPLICITY ADDS. If `π ^ s` is the exact
+coefficient level of `P₁` with the first unit at abscissa `μ₁`, and `π ^ t` the exact level of
+`P₂` with the first unit at `μ₂`, then `π ^ (s + t)` is the exact level of `P₁ P₂` and its
+first unit sits at `μ₁ + μ₂`. Read at the divided reductions in `(ResidueField O)[X]` this is
+`natTrailingDegree (f g) = natTrailingDegree f + natTrailingDegree g` over a domain; the landed
+`not_pow_add_succ_dvd_coeff_mul` (H116bR §5) is exactly the `μ₁ = μ₂ = 0` case, i.e. the
+CONTENT half. This clause is the multiplicity half, and it is the whole reason the child set of
+a planted product can be computed frame by frame. -/
+axiom coeff_level_mul_trailing {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {s t μ₁ μ₂ : ℕ}
+    {P₁ P₂ : Polynomial O}
+    (h1 : ∀ j, π ^ s ∣ P₁.coeff j) (h1' : ∀ j < μ₁, π ^ (s + 1) ∣ P₁.coeff j)
+    (h1'' : ¬ π ^ (s + 1) ∣ P₁.coeff μ₁)
+    (h2 : ∀ j, π ^ t ∣ P₂.coeff j) (h2' : ∀ j < μ₂, π ^ (t + 1) ∣ P₂.coeff j)
+    (h2'' : ¬ π ^ (t + 1) ∣ P₂.coeff μ₂) :
+    (∀ j, π ^ (s + t) ∣ (P₁ * P₂).coeff j) ∧
+      (∀ j < μ₁ + μ₂, π ^ (s + t + 1) ∣ (P₁ * P₂).coeff j) ∧
+      ¬ π ^ (s + t + 1) ∣ (P₁ * P₂).coeff (μ₁ + μ₂)
+
+/-- **H.116b2 (clause ii) [NEW NODE: A-H.7].** THE GENRE OF A PLANTED PRODUCT. Under the three
+b-FREE conditions on the cofactor — it is non-drain in the product, it carries NO child of its
+own, and it is ROOT-FREE at every frame of `L` — the planted product's child set is EXACTLY
+`L`, its content at each child slope is the planted floor plus the cofactor's content, and its
+child READ at `p` is the presentation `bb p` truncated to the genuine window.
+
+**`hQroot` is NOT implied by `hQchild`** and the distinction is load-bearing: a cofactor with a
+SIMPLE root at `(k_p, z_p)` (`ord₀ = 1`, so no child of its own) pushes the product's
+multiplicity there to `μ_p + 1` and moves it out of the genre. Certified as check `(e2)` of
+`verification/openmath/OM2_h116b_gauge_resultant.py` — the measured admissible-cofactor sets
+match this predicate exactly, and it is strictly smaller than the child-free set (e.g.
+4 of 16 versus 12 of 16 at `q = 2, N = 5, m = 3`). -/
+axiom plantedPoly_genre {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m N r : ℕ}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (L : Finset (ℕ × ℕ × ResidueField O))
+    (hLchild : ∀ p ∈ L, 2 ≤ p.1 ∧ 1 ≤ p.2.1 ∧ p.2.2 ≠ 0)
+    (hLsep : ∀ p ∈ L, ∀ p' ∈ L, p.2 = p'.2 → p = p')
+    (hdeg : (∑ p ∈ L, p.1) + r = m)
+    (bb : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
+    (Qc : ClusterState O r N)
+    (hQchild : ∀ (ν k' : ℕ) (y : ResidueField O), ¬ HasChildAt π Qc ν k' y)
+    (hQroot : ∀ p ∈ L, ∀ aQ : Fin r → O, proj O r N aQ = Qc.1 →
+      ¬ π ^ (betaContent Qc p.2.1 + 1) ∣
+        ((monicPoly aQ).comp (C (π ^ p.2.1) * (X + C (resSect O p.2.2)))).coeff 0)
+    (c : ClusterState O m N)
+    (hc : proj O m N (fun i : Fin m => (plantedPoly π L bb Qc).coeff (i : ℕ)) = c.1)
+    (h0 : ¬ IsDrainState c) :
+    (∀ p : ℕ × ℕ × ResidueField O, HasChildAt π c p.1 p.2.1 p.2.2 ↔ p ∈ L) ∧
+      (∀ p ∈ L, betaContent c p.2.1
+          = (∑ p' ∈ L, p'.1 * min p'.2.1 p.2.1) + betaContent Qc p.2.1) ∧
+      (∀ (p : {x : ℕ × ℕ × ResidueField O // x ∈ L})
+          (hcp : HasChildAt π c p.1.1 p.1.2.1 p.1.2.2),
+        (betaChild π c hcp (N - betaContent c p.1.2.1)).1
+          = proj O p.1.1 (N - betaContent c p.1.2.1) (classSect O p.1.1 N (bb p).1))
+
+/-- **H.116b3 [NEW NODE: A-H.7].** THE `¬ IsCSState` TRANSPORT. Swapping the child
+presentations of a planted product while keeping the cofactor cannot create a composite-stage
+event. This is the one geometric leg — it needs the ChapB polygon API (`sideSet`, `sideMin`,
+`npHgt`, `resPoly`), which `H116bR.lean` deliberately does not import, and it is what
+`IsBetaState`'s second conjunct owes.
+
+TEMPLATE: H.115b's landed `not_isCSState_of_alphaParent` (the α-side single-factor case).
+TEETH: check `G` of `verification/openmath/OM2_h116b_replant_cert.py` — the replant difference
+sits STRICTLY ABOVE the parent's full Newton polygon at every `(u, ℓ)`, so side data and
+`resPoly` are unchanged on both sides. -/
+axiom not_isCSState_plantedPoly_swap {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O] {π : O}
+    (hπ : Irreducible π) {m N r : ℕ} (hm : 2 ≤ m) (hN : 1 ≤ N)
+    (L : Finset (ℕ × ℕ × ResidueField O))
+    (hLchild : ∀ p ∈ L, 2 ≤ p.1 ∧ 1 ≤ p.2.1 ∧ p.2.2 ≠ 0)
+    (hdeg : (∑ p ∈ L, p.1) + r = m)
+    (bb bb' : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
+    (Qc : ClusterState O r N) (c c' : ClusterState O m N)
+    (hc : proj O m N (fun i : Fin m => (plantedPoly π L bb Qc).coeff (i : ℕ)) = c.1)
+    (hc' : proj O m N (fun i : Fin m => (plantedPoly π L bb' Qc).coeff (i : ℕ)) = c'.1)
+    (h0 : ¬ IsDrainState c) (h0' : ¬ IsDrainState c') (hcs : ¬ IsCSState π c) :
+    ¬ IsCSState π c'
+
+/-- **H.116b4 [NEW NODE: A-H.7].** THE COUNT, at the GAUGE-RESULTANT route: over the genre, the
+planting map from the PAIR space (one presentation per child, one cofactor presentation) to the
+state space is UNIFORMLY many-to-one — every genre class has the SAME number `G` of planted
+presentations, with `G` depending on `(L, r, N)` and not on the class.
+
+This is the whole counting mechanism, and it is what replaces the CLOSED replant route: with it
+`#fibre(t) = #{presentations whose reads are t} / G`, whose numerator is a coset count times the
+admissible-cofactor count — the first `t`-independent by H.116b2's read clause, the second
+`t`-free by H.116b2's cofactor conditions. No map between fibres is ever built, so D3's
+refutation of presentation stability is irrelevant to it.
+
+WHY `G` IS GENRE-DETERMINED (the resultant reading, certified as check `(c)` of the gauge
+battery): the gauge between two planted presentations of one class is governed by the pairwise
+syzygies of the planted sub-lattices, and `v(Res(P_p, P_p')) = μ_p·μ_p'·min(k_p, k_p')` is
+b-INDEPENDENT — the distinct slopes force it when `k_p ≠ k_p'`, the distinct residues when they
+agree. So the syzygy never sees the child's deep digits.
+
+TEETH: `verification/openmath/OM2_h116b_gauge_resultant.py`, checks `(d)`, `(f)`, `(g)`, `(h)`
+(65/65). At the same-slope census cell `q = 3, N = 6, m = 4, L = {(2,1,1),(2,1,2)}`:
+4 782 969 presentations, 59 049 classes, pair multiplicity `81` at EVERY class, splitting as
+`81` child reads × `729` classes — the split `OM2_h116b_replant_cert.py`'s check `E2` measures
+independently. -/
+axiom planted_presentation_card {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [Finite (ResidueField O)]
+    [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π) {m N r : ℕ}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (L : Finset (ℕ × ℕ × ResidueField O)) (hL : L.Nonempty)
+    (hdeg : (∑ p ∈ L, p.1) + r = m) (D : ℕ × ℕ × ResidueField O → ℕ) :
+    ∃ G : ℕ, 0 < G ∧
+      ∀ c : ClusterState O m N, IsBetaState π c →
+        (∀ p : ℕ × ℕ × ResidueField O, HasChildAt π c p.1 p.2.1 p.2.2 ↔ p ∈ L) →
+        (∀ p ∈ L, betaContent c p.2.1 = D p) →
+        Nat.card {x : (∀ p : {y : ℕ × ℕ × ResidueField O // y ∈ L},
+                ClusterState O p.1.1 N) × ClusterState O r N //
+            proj O m N (fun i : Fin m => (plantedPoly π L x.1 x.2).coeff (i : ℕ)) = c.1}
+          = G
+
 /-! ### H.117 — the CS criterion (fires H.03/H.04) -/
 
 /-- **H.117 (clause i).** No CS event below `m = 4`. -/
