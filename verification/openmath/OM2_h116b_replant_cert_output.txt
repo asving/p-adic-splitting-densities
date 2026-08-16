@@ -1,0 +1,73 @@
+H.116b replant certification — exact, both rings
+  ok    F planted profiles: w_(k') = mu*min(k,k'), reductions b-independent, unit const
+  ok    I negative control: colliding K residual bumps the child multiplicity
+  ok    A per-(L,D)-with-z fibres constant + onto [Zq q=2 m=3 N=4] (0 genres)
+  ok    B exact factorization, margin >= N+3 [Zq q=2 m=3 N=4] (min margin 1000000000, 0 states)
+  ok    C replant lands in fiber(t'), identity fixed [Zq q=2 m=3 N=4]
+  ok    D1 single-child presentation stability [Zq q=2 m=3 N=4]
+  ok    E1 canonical replant bijective fiber(t0) -> fiber(t1) [Zq q=2 m=3 N=4]
+  ok    G replant difference strictly above the polygon [Zq q=2 m=3 N=4]
+  ok    A per-(L,D)-with-z fibres constant + onto [Zq q=2 m=3 N=5] (1 genres)
+  ok    B exact factorization, margin >= N+3 [Zq q=2 m=3 N=5] (min margin 30, 32 states)
+  ok    C replant lands in fiber(t'), identity fixed [Zq q=2 m=3 N=5]
+  ok    D1 single-child presentation stability [Zq q=2 m=3 N=5]
+  ok    E1 canonical replant bijective fiber(t0) -> fiber(t1) [Zq q=2 m=3 N=5]
+  ok    G replant difference strictly above the polygon [Zq q=2 m=3 N=5]
+  ok    A per-(L,D)-with-z fibres constant + onto [Zq q=3 m=3 N=4] (2 genres)
+  ok    B exact factorization, margin >= N+3 [Zq q=3 m=3 N=4] (min margin 25, 54 states)
+  ok    C replant lands in fiber(t'), identity fixed [Zq q=3 m=3 N=4]
+  ok    D1 single-child presentation stability [Zq q=3 m=3 N=4]
+  ok    E1 canonical replant bijective fiber(t0) -> fiber(t1) [Zq q=3 m=3 N=4]
+  ok    G replant difference strictly above the polygon [Zq q=3 m=3 N=4]
+  ok    A per-(L,D)-with-z fibres constant + onto [Fqt q=2 m=3 N=5] (1 genres)
+  ok    B exact factorization, margin >= N+3 [Fqt q=2 m=3 N=5] (min margin 30, 32 states)
+  ok    C replant lands in fiber(t'), identity fixed [Fqt q=2 m=3 N=5]
+  ok    D1 single-child presentation stability [Fqt q=2 m=3 N=5]
+  ok    E1 canonical replant bijective fiber(t0) -> fiber(t1) [Fqt q=2 m=3 N=5]
+  ok    G replant difference strictly above the polygon [Fqt q=2 m=3 N=5]
+  ok    A per-(L,D)-with-z fibres constant + onto [Fqt q=3 m=3 N=4] (2 genres)
+  ok    B exact factorization, margin >= N+3 [Fqt q=3 m=3 N=4] (min margin 25, 54 states)
+  ok    C replant lands in fiber(t'), identity fixed [Fqt q=3 m=3 N=4]
+  ok    D1 single-child presentation stability [Fqt q=3 m=3 N=4]
+  ok    E1 canonical replant bijective fiber(t0) -> fiber(t1) [Fqt q=3 m=3 N=4]
+  ok    G replant difference strictly above the polygon [Fqt q=3 m=3 N=4]
+  ok    A per-(L,D)-with-z fibres constant + onto [Zq q=2 m=4 N=4] (1 genres)
+  ok    B exact factorization, margin >= N+3 [Zq q=2 m=4 N=4] (min margin 29, 64 states)
+  ok    C replant lands in fiber(t'), identity fixed [Zq q=2 m=4 N=4]
+  ok    D1 single-child presentation stability [Zq q=2 m=4 N=4]
+  ok    E1 canonical replant bijective fiber(t0) -> fiber(t1) [Zq q=2 m=4 N=4]
+  ok    G replant difference strictly above the polygon [Zq q=2 m=4 N=4]
+  ok    A per-(L,D)-with-z fibres constant + onto [Fqt q=2 m=4 N=4] (1 genres)
+  ok    B exact factorization, margin >= N+3 [Fqt q=2 m=4 N=4] (min margin 29, 64 states)
+  ok    C replant lands in fiber(t'), identity fixed [Fqt q=2 m=4 N=4]
+  ok    D1 single-child presentation stability [Fqt q=2 m=4 N=4]
+  ok    E1 canonical replant bijective fiber(t0) -> fiber(t1) [Fqt q=2 m=4 N=4]
+  ok    G replant difference strictly above the polygon [Fqt q=2 m=4 N=4]
+  ok    A per-(L,D)-with-z fibres constant + onto [Zq q=2 m=3 N=6] (2 genres)
+  ok    B exact factorization, margin >= N+3 [Zq q=2 m=3 N=6] (min margin 34, 164 states)
+  ok    C replant lands in fiber(t'), identity fixed [Zq q=2 m=3 N=6]
+  ok    D1 single-child presentation stability [Zq q=2 m=3 N=6]
+  ok    E1 canonical replant bijective fiber(t0) -> fiber(t1) [Zq q=2 m=3 N=6]
+  ok    G replant difference strictly above the polygon [Zq q=2 m=3 N=6]
+  ok    A per-(L,D)-with-z fibres constant + onto [Fqt q=2 m=3 N=6] (2 genres)
+  ok    B exact factorization, margin >= N+3 [Fqt q=2 m=3 N=6] (min margin 34, 164 states)
+  ok    C replant lands in fiber(t'), identity fixed [Fqt q=2 m=3 N=6]
+  ok    D1 single-child presentation stability [Fqt q=2 m=3 N=6]
+  ok    E1 canonical replant bijective fiber(t0) -> fiber(t1) [Fqt q=2 m=3 N=6]
+  ok    G replant difference strictly above the polygon [Fqt q=2 m=3 N=6]
+  ok    H constructed family: genre exact + replant + reads [Zq q3 m4 N6 same-slope]
+  ok    H constructed family: genre exact + replant + reads [Fqt q3 m4 N6 same-slope]
+  ok    H constructed family: genre exact + replant + reads [Zq q2 m4 N7 mixed-slope]
+  ok    H constructed family: genre exact + replant + reads [Fqt q2 m4 N7 mixed-slope]
+  ok    H constructed family: genre exact + replant + reads [Zq q2 m3 N7 k=2 W=2]
+  ok    H constructed family: genre exact + replant + reads [Fqt q2 m3 N7 k=2 W=2]
+  ok    H constructed family: genre exact + replant + reads [Zq q2 m3 N8 k=2 W=3]
+  ok    E2 same-slope census: 81 fibres x 729 exactly, reads class-determined
+  ok    E2 same-slope canonical replant: exact bijection fiber(t) -> fiber(t')
+  ok    D2 REFUTED (expected): output depends on the Delta lift beyond its class
+  ok    D3 REFUTED (expected): simultaneous multi-child presentation stability fails
+  ok    E3 recorded (expected): round trip is not the identity (Zq carries)
+
+==== 68 checks, 68 passed, 0 failed ====
+(negative-witness counts: {'S2': 436, 'S1multi': 137, 'roundtrip': 658})
+ALL CHECKS PASSED
