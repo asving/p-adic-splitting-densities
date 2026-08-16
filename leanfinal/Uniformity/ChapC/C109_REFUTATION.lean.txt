@@ -22,6 +22,26 @@ cd leanfinal && lake env lean /tmp/c109_counter.lean
 It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only
 (`propext, Classical.choice, Quot.sound`), 2026-08-16.
 
+## REPAIRED — amendment A-C.2 (2026-08-16, same day, the defect-repair unit)
+
+C.109 was RE-SIGNED per this record's demand: `HTNode.WF` (C.108, re-signed) now carries the
+source's own coherence — `EFF.W12.83`'s `L_v = #{j < m_v : P_v(j) ∈ ℤ}` display, the sides
+law, ceiled-consistency, the monic top, and the side-type degree law — and
+`ht_node_cell_card` takes `(hwf : v.WF)` inline.  BOTH of this record's mechanisms are
+killed: `vL 0` violates the `L` law and `vL 1` violates the sides law.  The secondary
+failure below was VERIFIED and repaired the same way (the sides law), and its bridge cost
+is the NEW node C.109a (`dev_box_bridge`).  Beyond this record's findings, A-C.2 found and
+repaired a THIRD divergence (D3): `htCell`'s pin clause `npHgt = Pceil` at every `j ≤ m`
+contradicted `EFF.W12.23`'s three-way membership law (equality at VERTICES only) — so the
+quotation of C.108 below shows the RETIRED cell body; the re-signed body pins `≥` everywhere
+and `=` at `HTNode.IsVertex` positions.  This file still compiles against the re-signed
+`htCell` (nothing here reads the pin clause), so the record stays live as a regression.
+Certification: `verification/c109_ac2_cell_check.py` (13 exact-count instances green;
+mutations for L, sides, and the old pin all kill).  Companion record for the consumer audit:
+`C111_C114_REFUTATION.lean.txt` (frozen C.111/C.114 also refuted; C.111 re-signed, C.114's
+two count axioms WITHDRAWN pending the realizes-refinement).  Full record: amendment A-C.2
+in `blueprint/CHAP-C_tower_grammar.md`.
+
 ## What is refuted
 
 `leanspec/Leanspec/ChapC.lean`, **C.109** `ht_node_cell_card` (blueprint

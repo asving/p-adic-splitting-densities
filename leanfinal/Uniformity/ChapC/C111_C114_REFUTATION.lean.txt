@@ -1,0 +1,275 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapB.B26
+import Uniformity.ChapC.C108
+
+/-!
+# REFUTATION of the frozen A-C.1 signatures of NODES C.111 and C.114
+
+**This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` convention: kept as
+`.lean.txt` so no build picks it up).  It is the machine-checked leg of amendment A-C.2's
+consumer audit (`blueprint/CHAP-C_tower_grammar.md`, A-§ block).  To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapC/C111_C114_REFUTATION.lean.txt /tmp/c111_c114_counter.lean
+cd leanfinal && lake env lean /tmp/c111_c114_counter.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only,
+2026-08-16 — checked against the A-C.2 re-signed `htCell` (the defects below are orthogonal
+to the pin clause: none of the counterexamples reads it).
+
+## What is refuted
+
+Three axioms of `leanspec/Leanspec/ChapC.lean` as frozen at `[signed: A-C.1]`:
+
+1. **C.111 `ht_fiber_exponent_nonneg`** — `∀ t, t.WF → ∀ N, hvis → Σ_{v≠root} D_v(N) ≤
+   Σ_v B_v(N)`.  FALSE: the tree data ties a child's depth `s` to NOTHING, so a child with
+   `s = 0` has `D = m(N−1)` while every `B` can be driven to `0` by a steep polygon.
+   `c111_frozen_false` below instantiates a two-node tree at `N = 2`.  NOTE (the numeric
+   companion `verification/c109_ac2_cell_check.py`, leg [C111]): the defect survives
+   `HTNode.WF` — a WF root and WF child with honest `L` still violate the inequality when
+   the child's `s` is inconsistent with its placement — so the A-C.2 re-sign carries the
+   corpus's PER-NODE inequality (`Σ_{u child of v} D_u(N) ≤ B_v(N)`, the arithmetic shadow
+   of `EFF.W12.85`'s `#U_v(𝐑) = Q^{B_v−ΣD_u}`) as an explicit hypothesis and keeps only the
+   telescope as the node's content.
+
+2. **C.114 `ht_branch`** — the realization stratum (root `htCell` + `htRealizes`) reads
+   NONE of `kappa`, `s`, the non-root `sideType`s, or the child-completeness of the tree,
+   while `htBranchCount` reads all of them.  `c114_branch_frozen_false` fires the cheapest
+   instance: two one-node trees differing ONLY in the root's `kappa` field have literally
+   the same counted subtype (definitional equality — no membership computation needed) and
+   formula values `1` and `2`.
+
+3. **C.114 `ht_global`** — same disease at level 0: `HTShape.kappa0` is read by the formula
+   and by nothing in the stratum.  `c114_global_frozen_false` uses the EMPTY shape.
+
+## Consequence for the nodes
+
+C.111 is RE-SIGNED by A-C.2 (per-node hypothesis, hvis dropped as dead weight).  C.114's two
+count axioms are WITHDRAWN from the leanspec axiom bank by A-C.2 (a refutable axiom is a
+live inconsistency) and the node is BLOCKED pending the realizes-refinement re-sign (the
+A-C.1 signature note had already BOOKED the per-node residual-type/side-tag refinements to
+the fleet; this file shows the booking is signature-critical, not proof-side).  The A-C.2
+amendment records the designed clause list for the re-sign (per-node `WF`, per-node cell
+membership at the recentered keys, the `s`-pin `gaussVal (K i − K parent) = s_i`, sibling
+distinctness, child-count-vs-type completeness, and the `(HT-orbit)` κ-rule at tree level).
+`htRealizes`' polygon pin clause is separately re-signed to the hull form (defect D3,
+recorded at C.108); the frozen equality-pin form is preserved verbatim below as
+`RealizesFrozen` since it is part of the refuted signature.
+-/
+
+set_option linter.style.longLine false
+
+namespace Uniformity.Density.Tower
+
+open Uniformity Uniformity.Density Uniformity.Density.Leaf IsLocalRing Polynomial
+
+/-! ## 1. C.111 — the frozen arithmetic shadow -/
+
+/-- The frozen C.111 signature (`ht_fiber_exponent_nonneg`), packaged as a `Prop`. -/
+def C111Frozen : Prop :=
+  ∀ (t : HTTree), t.WF → ∀ N : ℕ,
+    (∀ i, i < t.nodes.length →
+      ∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+        (t.nodes.getD i HTNode.default0).Pceil j < N) →
+    (((List.range t.nodes.length).drop 1).map
+        (fun i => (t.nodes.getD i HTNode.default0).D N)).sum
+      ≤ ((List.range t.nodes.length).map
+        (fun i => (t.nodes.getD i HTNode.default0).B N)).sum
+
+/-- the separating node: `m = 1`, polygon `(1, 0)` (so `B(2) = 2 − 1 − 1 = 0` with the
+honest `L = 1`), depth `s = 0` (so `D(2) = 1`). -/
+def vP : HTNode := ⟨1, 0, fun j => if j = 0 then 1 else 0, 1, ∅, fun _ _ => ⟨0⟩, 1⟩
+
+/-- **C.111's frozen inequality is false**: root and child both `vP`, at `N = 2`:
+`Σ_{v≠root} D_v = 1 > 0 = Σ_v B_v`, with `hvis` satisfied. -/
+theorem c111_frozen_false (H : C111Frozen) : False := by
+  have hwf : (HTTree.mk [vP, vP] fun _ => 0).WF := fun i hi _ => hi
+  have hvis : ∀ i, i < (HTTree.mk [vP, vP] fun _ => 0).nodes.length →
+      ∀ j, j ≤ ((HTTree.mk [vP, vP] fun _ => 0).nodes.getD i HTNode.default0).m →
+        ((HTTree.mk [vP, vP] fun _ => 0).nodes.getD i HTNode.default0).Pceil j < 2 := by
+    intro i hi j hj
+    have hi2 : i < 2 := by simpa using hi
+    interval_cases i <;>
+      · simp only [List.getD_cons_zero, List.getD_cons_succ, vP]
+        split <;> omega
+  have h := H ⟨[vP, vP], fun _ => 0⟩ hwf 2 hvis
+  simp only [List.length_cons, List.length_nil, List.range_succ, List.range_zero,
+    List.nil_append, List.cons_append, List.drop_succ_cons, List.drop_zero, List.map_cons,
+    List.map_nil, List.sum_cons, List.sum_nil, List.getD_cons_zero, List.getD_cons_succ,
+    HTNode.B, HTNode.D, vP, Finset.sum_range_one, reduceIte] at h
+  omega
+
+/-! ## 2. C.114 — the frozen count laws -/
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+/-- the FROZEN `htRealizes` (the leanspec twin at `[signed: A-C.1]`, verbatim — including
+the equality polygon pin that A-C.2 separately re-signs; the refutation never reads it). -/
+def RealizesFrozen (Φ f : Polynomial O) (t : HTTree) : Prop :=
+  ∃ (G K : ℕ → Polynomial O), K 0 = Φ ∧ G 0 = f ∧
+    ∀ i, i < t.nodes.length →
+      (G i).Monic ∧
+      (G i).natDegree = (t.nodes.getD i HTNode.default0).m * (K i).natDegree ∧
+      (∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+        npHgt (K i) (G i) j = ((t.nodes.getD i HTNode.default0).Pceil j : ℕ∞)) ∧
+      (0 < i → G i ∣ G (t.parent i) ∧
+        (K i).natDegree = (K (t.parent i)).natDegree ∧
+        (K i - K (t.parent i)).natDegree < (K i).natDegree)
+
+/-- The frozen C.114 `ht_branch` signature, packaged as a `Prop` over a fixed local base
+(every binder the frozen one; the implicit `{Φ}` made explicit). -/
+def C114BranchFrozen (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)] : Prop :=
+  ∀ (π : O), Irreducible π → ∀ (Φ : Polynomial O), IsKey Φ →
+    ∀ [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)] [Finite (resField Φ)]
+      (t : HTTree), t.WF → 0 < t.nodes.length → ∀ N : ℕ,
+      (∀ i, i < t.nodes.length →
+        ∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+          (t.nodes.getD i HTNode.default0).Pceil j < N) →
+      Nat.card {c : Coeff O ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) N //
+          ∃ a : Fin ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) → O,
+            proj O ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) N a = c ∧
+            monicPoly a ∈ htCell π Φ (t.nodes.getD 0 HTNode.default0) ∧
+            RealizesFrozen Φ (monicPoly a) t}
+        = htBranchCount (Nat.card (resField Φ))
+            (fun lam => sideCensus (resField Φ) lam) t N
+
+/-- the κ-separating one-node family: identical in every field the stratum reads, differing
+only in the orbit factor `kappa` (which only the FORMULA reads). -/
+def vK (k : ℕ) : HTNode := ⟨0, 0, fun _ => 0, 0, ∅, fun _ _ => ⟨0⟩, k⟩
+
+/-- the stratum does not read `kappa`: realization transfers between the two κ-trees (the
+clauses only consult `m`, `Pceil` and `parent`, which agree). -/
+theorem realizesFrozen_vK_mono {Φ f : Polynomial O} {k k' : ℕ}
+    (h : RealizesFrozen Φ f ⟨[vK k], fun _ => 0⟩) :
+    RealizesFrozen Φ f ⟨[vK k'], fun _ => 0⟩ := by
+  obtain ⟨G, K, hK0, hG0, hcl⟩ := h
+  refine ⟨G, K, hK0, hG0, ?_⟩
+  intro i hi
+  have h0 : i = 0 := by simpa using hi
+  subst h0
+  simpa [vK] using hcl 0 (by simp)
+
+set_option linter.overlappingInstances false in
+/-- **C.114's frozen `ht_branch` is contradictory** at any complete DVR with finite residue
+field, any uniformizer and any key: the trees `⟨[vK 1]⟩` and `⟨[vK 2]⟩` have equinumerous
+counted strata (`kappa` is read by nothing in them) and formula values `1` and `2`. -/
+theorem c114_branch_frozen_false [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
+    {π : O} (hπ : Irreducible π) {Φ : Polynomial O} (hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)] [Finite (resField Φ)]
+    (H : C114BranchFrozen O) : False := by
+  classical
+  have hwf : ∀ k, (HTTree.mk [vK k] fun _ => 0).WF := fun k i hi _ => hi
+  have hroot : ∀ k, 0 < (HTTree.mk [vK k] fun _ => 0).nodes.length := fun k => Nat.one_pos
+  have hvis : ∀ k, ∀ i, i < (HTTree.mk [vK k] fun _ => 0).nodes.length →
+      ∀ j, j ≤ ((HTTree.mk [vK k] fun _ => 0).nodes.getD i HTNode.default0).m →
+        ((HTTree.mk [vK k] fun _ => 0).nodes.getD i HTNode.default0).Pceil j < 1 := by
+    intro k i hi j hj
+    have h0 : i = 0 := by simpa using hi
+    subst h0
+    exact Nat.zero_lt_one
+  have h1 := H π hπ Φ hΦ ⟨[vK 1], fun _ => 0⟩ (hwf 1) (hroot 1) 1 (hvis 1)
+  have h2 := H π hπ Φ hΦ ⟨[vK 2], fun _ => 0⟩ (hwf 2) (hroot 2) 1 (hvis 2)
+  -- the counted strata are equinumerous: nothing in them reads `kappa`
+  have hcong :
+      Nat.card {c : Coeff O (((HTTree.mk [vK 1] fun _ => 0).nodes.getD 0 HTNode.default0).m
+          * Φ.natDegree) 1 //
+        ∃ a : Fin (((HTTree.mk [vK 1] fun _ => 0).nodes.getD 0 HTNode.default0).m
+          * Φ.natDegree) → O,
+          proj O (((HTTree.mk [vK 1] fun _ => 0).nodes.getD 0 HTNode.default0).m
+            * Φ.natDegree) 1 a = c ∧
+          monicPoly a ∈ htCell π Φ ((HTTree.mk [vK 1] fun _ => 0).nodes.getD 0
+            HTNode.default0) ∧
+          RealizesFrozen Φ (monicPoly a) ⟨[vK 1], fun _ => 0⟩}
+      = Nat.card {c : Coeff O (((HTTree.mk [vK 2] fun _ => 0).nodes.getD 0 HTNode.default0).m
+          * Φ.natDegree) 1 //
+        ∃ a : Fin (((HTTree.mk [vK 2] fun _ => 0).nodes.getD 0 HTNode.default0).m
+          * Φ.natDegree) → O,
+          proj O (((HTTree.mk [vK 2] fun _ => 0).nodes.getD 0 HTNode.default0).m
+            * Φ.natDegree) 1 a = c ∧
+          monicPoly a ∈ htCell π Φ ((HTTree.mk [vK 2] fun _ => 0).nodes.getD 0
+            HTNode.default0) ∧
+          RealizesFrozen Φ (monicPoly a) ⟨[vK 2], fun _ => 0⟩} := by
+    refine Nat.card_congr (Equiv.subtypeEquivRight ?_)
+    intro c
+    constructor
+    · rintro ⟨a, ha, hcell, hreal⟩
+      exact ⟨a, ha, hcell, realizesFrozen_vK_mono hreal⟩
+    · rintro ⟨a, ha, hcell, hreal⟩
+      exact ⟨a, ha, hcell, realizesFrozen_vK_mono hreal⟩
+  have hkey : htBranchCount (Nat.card (resField Φ))
+        (fun lam => sideCensus (resField Φ) lam) ⟨[vK 1], fun _ => 0⟩ 1
+      = htBranchCount (Nat.card (resField Φ))
+        (fun lam => sideCensus (resField Φ) lam) ⟨[vK 2], fun _ => 0⟩ 1 :=
+    h1.symm.trans (hcong.trans h2)
+  have e : ∀ k : ℕ, htBranchCount (Nat.card (resField Φ))
+      (fun lam => sideCensus (resField Φ) lam) ⟨[vK k], fun _ => 0⟩ 1 = k := by
+    intro k
+    simp [htBranchCount, HTNode.B, vK]
+  rw [e 1, e 2] at hkey
+  omega
+
+/-- The frozen C.114 `ht_global` signature, packaged as a `Prop`. -/
+def C114GlobalFrozen (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)] : Prop :=
+  ∀ (π : O), Irreducible π →
+    ∀ (S : HTShape) (Φb : ℕ → Polynomial O) (n N : ℕ),
+      n = ((List.range S.branches.length).map
+        (fun i => (S.branches.getD i (0, 0, default)).1
+          * (S.branches.getD i (0, 0, default)).2.1)).sum →
+      (∀ i, i < S.branches.length → IsKey (Φb i) ∧
+        (Φb i).natDegree = (S.branches.getD i (0, 0, default)).1) →
+      ∀ (instD : ∀ i, IsDomain (resField (Φb i)))
+        (instU : ∀ i, UniqueFactorizationMonoid (resField (Φb i)))
+        (instFin : ∀ i, Finite (resField (Φb i))),
+      Nat.card {c : Coeff O n N // ∃ a : Fin n → O, proj O n N a = c ∧
+          ∃ G : ℕ → Polynomial O,
+            monicPoly a = ∏ i ∈ Finset.range S.branches.length, G i ∧
+            ∀ i, i < S.branches.length → (G i).Monic ∧
+              (G i).map (IsLocalRing.residue O)
+                = ((Φb i).map (IsLocalRing.residue O))
+                    ^ (S.branches.getD i (0, 0, default)).2.1 ∧
+              ((S.branches.getD i (0, 0, default)).2.1 = 1 ∨
+                RealizesFrozen (Φb i) (G i) (S.branches.getD i (0, 0, default)).2.2)}
+        = htGlobalCount S (residueCard O)
+            (fun i lam => @sideCensus (resField (Φb i)) _ (instD i) (instU i) (instFin i) lam) N
+
+set_option linter.overlappingInstances false in
+/-- **C.114's frozen `ht_global` is contradictory**: the EMPTY shapes `⟨[], 1⟩` and
+`⟨[], 2⟩` have the same counted subtype and formula values `1` and `2`. -/
+theorem c114_global_frozen_false [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
+    {π : O} (hπ : Irreducible π) {Φ : Polynomial O} (_hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)] [Finite (resField Φ)]
+    (H : C114GlobalFrozen O) : False := by
+  classical
+  have hkeys : ∀ k : ℕ, ∀ i, i < (HTShape.mk [] k).branches.length →
+      IsKey ((fun _ => Φ) i) ∧ ((fun _ => Φ) i).natDegree
+        = ((HTShape.mk [] k).branches.getD i (0, 0, default)).1 :=
+    fun k i hi => absurd hi (Nat.not_lt_zero i)
+  have h1 := H π hπ ⟨[], 1⟩ (fun _ => Φ) 0 1 rfl (hkeys 1)
+    (fun _ => ‹IsDomain (resField Φ)›) (fun _ => ‹UniqueFactorizationMonoid (resField Φ)›)
+    (fun _ => ‹Finite (resField Φ)›)
+  have h2 := H π hπ ⟨[], 2⟩ (fun _ => Φ) 0 1 rfl (hkeys 2)
+    (fun _ => ‹IsDomain (resField Φ)›) (fun _ => ‹UniqueFactorizationMonoid (resField Φ)›)
+    (fun _ => ‹Finite (resField Φ)›)
+  have hkey := h1.symm.trans h2
+  simp only [htGlobalCount, List.length_nil, List.range_zero, List.map_nil,
+    List.prod_nil, mul_one] at hkey
+  omega
+
+end Uniformity.Density.Tower
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Tower.c111_frozen_false
+#print axioms Uniformity.Density.Tower.c114_branch_frozen_false
+#print axioms Uniformity.Density.Tower.c114_global_frozen_false
+
+end AxCheck

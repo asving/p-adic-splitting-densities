@@ -33,7 +33,17 @@ node quantities `B_v`, `D_v`, `κ_v` and the two conservative/exact cells.
 2. **`Pceil : ℕ → ℕ`, not `ℚ`.**  The polygon data is carried CEILED, which is the only form
    the count formulas read (`B_v` sums `⌈P_v(j)⌉`).  This keeps §11 `ℚ`-free, per the
    STATEMENT's own parenthetical; the un-ceiled argmin heights live in C.06/C.07's carriers and
-   reach a node through `htCell`'s `npHgt` clause, which pins `npHgt Φ f j = (Pceil j : ℕ∞)`.
+   reach a node through `htCell`'s `npHgt` clauses.  **[re-signed: A-C.2, 2026-08-16]** the
+   original pin clause `npHgt Φ f j = (Pceil j : ℕ∞)` at EVERY `j ≤ m` contradicted the
+   corpus's own three-way membership law (`EFF.W12.23`, quoted verbatim at B.16: *"`j` a
+   VERTEX of `P`: `v(a_j) = P(j)` exactly …; `j` an on-side lattice point: `v(a_j) ≥ P(j)`,
+   with `digit_{P(j)}(a_j)` = the residual coefficient `r_j` (**possibly zero**) …; every
+   other `j < m`: … `v(a_j) ≥ ⌈P(j)⌉`"*).  The re-signed cell pins `≥ Pceil` everywhere and
+   equality at `HTNode.IsVertex` positions only — which is exactly the three-way law in
+   ceiled form, since at on-side lattice points and vertices `Pceil = P` while elsewhere
+   `Pceil = ⌈P⌉`.  Certified: `verification/c109_ac2_cell_check.py` (the old pin makes the
+   cell EMPTY on the char-2 double-root instance and breaks the `ℓ = 2` count; the new cell
+   satisfies the count law on all 13 instances).  Full record: amendment A-C.2.
 3. **`κ_v` is a DATA field, not a computed expression.**  The corpus's side-tagged factorial
    rule `κ_v = ∏_{S,a} r_{v,S,a}! / ∏_H r_{v,S,a,H}!` is the corpus's computation and is
    recorded in the field docstring; the count formulas consume the value.  **The side tag is
@@ -42,6 +52,13 @@ node quantities `B_v`, `D_v`, `κ_v` and the two conservative/exact cells.
    the DROP-teeth guard it.
 4. **`sides : Finset (ℕ × ℕ)` with `sideType : ℕ → ℕ → FactorizationType`** — a side is its
    cleared slope pair `(u, ℓ)`, and `sideType` is junk off `sides` (the junk-total discipline).
+   **[A-C.2, 2026-08-16]** `L`, `sides` and the types' degrees are NOT free data in the
+   corpus: `EFF.W12.83` *defines* `L_v = #{j < m_v : P_v(j) ∈ ℤ}` in the same display that
+   defines `B_v`, and the census product ranges over the sides *of the polygon*
+   (`∏_{S ⊂ P_v}`).  The frozen C.109 quantified over all `v : HTNode` and was machine-refuted
+   (`C109_REFUTATION.lean.txt`).  The coherence is now the explicit predicate `HTNode.WF`
+   below (monic top, ceiled-consistency, the `L` law, the sides law, the degree law), taken as
+   an inline hypothesis by every count law.  Full record: amendment A-C.2.
 5. **`HTNode.D`'s clip is ℕ-subtraction.**  The STATEMENT writes `max(N − ((m−j)s + 1), 0)`;
    over `ℕ` truncated subtraction IS that max, which is the same discipline as C.53.  Nothing
    here may be read over `ℤ`.
@@ -125,6 +142,72 @@ discipline). -/
 def HTNode.D (v : HTNode) (N : ℕ) : ℕ :=
   ∑ j ∈ Finset.range v.m, (N - ((v.m - j) * v.s + 1))
 
+/-! ### [A-C.2] the node polygon read off `Pceil` (chord tests, ℚ-free)
+
+The lower convex hull of the ceiled points `{(j, ⌈P(j)⌉) : j ≤ m}` IS the polygon `P` (a
+convex function `≥ P` that agrees with `P` at the vertices agrees with `P` everywhere —
+the chord bound both ways), so all polygon reads below are ℕ-arithmetic on `Pceil`.
+Certified against direct rational hull geometry on every instance of
+`verification/c109_ac2_cell_check.py` (the `[ENC]` leg). -/
+
+/-- **[A-C.2]** `OnHull v j` — the point `(j, ⌈P_v(j)⌉)` lies on the lower convex hull of the
+ceiled points: on/below every bracketing chord.  Under `HTNode.WF`'s ceiled-consistency this
+is exactly the corpus's "`P_v(j) ∈ ℤ`" — the integral boundary positions of
+`EFF.W12.83`/`EFF.W12.23`, the positions whose height-`P_v(j)` digit is priced by the
+residual. -/
+def HTNode.OnHull (v : HTNode) (j : ℕ) : Prop :=
+  ∀ i k : ℕ, i ≤ j → j ≤ k → k ≤ v.m →
+    (k - i) * v.Pceil j ≤ (k - j) * v.Pceil i + (j - i) * v.Pceil k
+
+/-- **[A-C.2]** `IsVertex v j` — `(j, ⌈P_v(j)⌉)` is a VERTEX of the hull: strictly below
+every properly bracketing chord (the endpoints `j = 0, m` are vertices vacuously).
+`IsVertex` implies `OnHull` (a point strictly above the hull sits on/above some proper
+bracketing chord). -/
+def HTNode.IsVertex (v : HTNode) (j : ℕ) : Prop :=
+  ∀ i k : ℕ, i < j → j < k → k ≤ v.m →
+    (k - i) * v.Pceil j < (k - j) * v.Pceil i + (j - i) * v.Pceil k
+
+/-- **[A-C.2]** the node-data twin of B.16's `OnSide`: abscissa `j` attains the
+`(u, ℓ)`-cleared support minimum of the ceiled points. -/
+def HTNode.NodeOnSide (v : HTNode) (u ℓ j : ℕ) : Prop :=
+  ∀ i : ℕ, i ≤ v.m → ℓ * v.Pceil j + u * j ≤ ℓ * v.Pceil i + u * i
+
+/-- **[A-C.2]** the node-data twin of B.16's `sideSet`: the `(u, ℓ)`-support set of the
+ceiled points.  For a genuine side this is exactly its lattice abscissae (`≥ 2` of them);
+for any other direction it is the single supporting vertex. -/
+noncomputable def HTNode.nodeSideSet (v : HTNode) (u ℓ : ℕ) : Finset ℕ :=
+  open Classical in (Finset.range (v.m + 1)).filter (v.NodeOnSide u ℓ)
+
+/-- **[A-C.2]** `IsSide v u ℓ` — `(u, ℓ)` is a genuine side of the node polygon: a cleared
+slope pair whose support set has at least two points. -/
+def HTNode.IsSide (v : HTNode) (u ℓ : ℕ) : Prop :=
+  0 < ℓ ∧ Nat.Coprime u ℓ ∧ 2 ≤ (v.nodeSideSet u ℓ).card
+
+/-- **[A-C.2]** the node-data twin of B.20's `sideDeg`: the side's residual degree
+`(sideMax − sideMin)/ℓ`, junk `0` off the genuine sides. -/
+noncomputable def HTNode.nodeSideDeg (v : HTNode) (u ℓ : ℕ) : ℕ :=
+  ((v.nodeSideSet u ℓ).max.getD 0 - (v.nodeSideSet u ℓ).min.getD 0) / ℓ
+
+open Classical in
+/-- **[A-C.2] node well-formedness** — the corpus's implicit coherence of the node datum,
+made explicit (`EFF.W12.83`'s own `L_v = #{j < m_v : P_v(j) ∈ ℤ}` display; `EFF.W12.23`'s
+membership law; the census product over the sides *of the polygon*):
+(i) the polygon ends at `(m, 0)` (the monic top of `EFF.W12.23`'s hull);
+(ii) ceiled-consistency — `Pceil` is pointwise the CEILING of its own lower hull
+(`Pceil j < chord + 1` for every bracketing chord);
+(iii) the `L` law — `L = #{j < m : OnHull j}`;
+(iv) the sides law — `sides` is exactly the genuine cleared side-slope set;
+(v) the degree law — each side's type has total degree the side's residual degree.
+Every count law of §11 takes `v.WF` as an inline hypothesis (amendment A-C.2; the frozen
+C.109 without it is machine-refuted, `C109_REFUTATION.lean.txt`). -/
+def HTNode.WF (v : HTNode) : Prop :=
+  v.Pceil v.m = 0 ∧
+  (∀ i j k : ℕ, i ≤ j → j ≤ k → k ≤ v.m → i < k →
+    (k - i) * v.Pceil j < (k - j) * v.Pceil i + (j - i) * v.Pceil k + (k - i)) ∧
+  v.L = ((Finset.range v.m).filter v.OnHull).card ∧
+  (∀ u ℓ : ℕ, ((u, ℓ) ∈ v.sides ↔ v.IsSide u ℓ)) ∧
+  (∀ u ℓ : ℕ, (u, ℓ) ∈ v.sides → (v.sideType u ℓ).degree = v.nodeSideDeg u ℓ)
+
 /-- the index-encoded finite tree: node `0` is the root; `parent i < i` is well-formedness. -/
 structure HTTree where
   /-- the nodes, indexed by position; index `0` is the root. -/
@@ -144,12 +227,20 @@ def conservativeCell (m s : ℕ) : Set (ℕ → ℕ∞) :=
 /-- the exact node cell on members: pinned polygon + prescribed per-side residual types.
 (`π` explicit — it appears only in the membership predicate; the domain/UFD instances on
 `resField Φ` are derivable from `IsKey Φ` via B.25's field structure at every consumer, and are
-taken as binders here.) -/
+taken as binders here.)
+
+**[re-signed: A-C.2, 2026-08-16]** the polygon pin is `EFF.W12.23`'s three-way membership law
+in ceiled form: `npHgt ≥ Pceil` at every `j ≤ m` (the automatic ceiling; at on-side lattice
+points the height-`P(j)` digit is the residual coefficient, POSSIBLY ZERO), with equality
+exactly at the hull VERTICES.  The retired clause pinned equality at every `j`, which is
+strictly smaller than the corpus cell whenever the polygon has a non-vertex position
+(machine-certified divergence: `verification/c109_ac2_cell_check.py`, mutation M3). -/
 def htCell (π : O) (Φ : Polynomial O) [IsDomain (resField Φ)]
     [UniqueFactorizationMonoid (resField Φ)] (v : HTNode) :
     Set (Polynomial O) :=
   {f | f.Monic ∧ f.natDegree = v.m * Φ.natDegree ∧
-    (∀ j, j ≤ v.m → npHgt Φ f j = (v.Pceil j : ℕ∞)) ∧
+    (∀ j, j ≤ v.m → (v.Pceil j : ℕ∞) ≤ npHgt Φ f j) ∧
+    (∀ j, j ≤ v.m → v.IsVertex j → npHgt Φ f j = (v.Pceil j : ℕ∞)) ∧
     ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → (u, ℓ) ∈ v.sides →
       ∀ (hne : (sideSet Φ f u ℓ).Nonempty) (H₀ : ℕ),
         npHgt Φ f (sideMin Φ f u ℓ hne) = (H₀ : ℕ∞) →
@@ -199,6 +290,13 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.HTNode.default0
 #print axioms Uniformity.Density.Tower.HTNode.B
 #print axioms Uniformity.Density.Tower.HTNode.D
+#print axioms Uniformity.Density.Tower.HTNode.OnHull
+#print axioms Uniformity.Density.Tower.HTNode.IsVertex
+#print axioms Uniformity.Density.Tower.HTNode.NodeOnSide
+#print axioms Uniformity.Density.Tower.HTNode.nodeSideSet
+#print axioms Uniformity.Density.Tower.HTNode.IsSide
+#print axioms Uniformity.Density.Tower.HTNode.nodeSideDeg
+#print axioms Uniformity.Density.Tower.HTNode.WF
 #print axioms Uniformity.Density.Tower.HTTree
 #print axioms Uniformity.Density.Tower.HTTree.WF
 #print axioms Uniformity.Density.Tower.conservativeCell
