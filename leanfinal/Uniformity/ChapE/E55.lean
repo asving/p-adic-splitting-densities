@@ -359,6 +359,12 @@ theorem refine_chain_finite_false :
     (F := (X : Polynomial CexRing) + 1) (Ψ := (X : Polynomial CexRing)) (μ₂ := 2) le_rfl cex_hsq
     cexIncr cexSlope cex_hdeg cex_hh cex_hmono cexDev cex_hdev cex_hfloor
 
+/-- The independence claim of the header, machine-checked: refutation 1's witness DOES satisfy the
+second repair hypothesis `C.D ≤ Ψ.natDegree` (here `1 ≤ 1`), so hole 1 is not a shadow of hole 2. -/
+example : (coeffZeroCarrier CexRing).D ≤ ((X : Polynomial CexRing)).natDegree := by
+  show 1 ≤ ((X : Polynomial CexRing)).natDegree
+  rw [natDegree_X]
+
 /-! ## §4 REFUTATION 2 — patching hole 1 alone is not enough (`Ψ` may be constant) -/
 
 /-- Hole 2's development identity, at the key `Ψ = 0`: `1 = (0 − (1 + T^j))² + T^{2j}`. -/
