@@ -869,6 +869,76 @@ structure CapstoneHypotheses (n : ℕ) : Prop where
   genhnTow1 : 8 ≤ n → GenhnTow1At n
 ```
 
+**⛔ THE `ladder` FIELD ABOVE IS VOIDED AND RE-SIGNED, AND ONE FIELD IS ADDED, BY AMENDMENT
+A-I.1 (2026-08-16) — defects I-D3, I-D4, I-D13. This is an owner gate-(a) field-list change.**
+The block above is kept verbatim because it is the object of the amendment's machine
+refutation: `Ladder.LadderSupply C B` is UNDERAPPLIED by eight arguments against landed E.24,
+and its `∀`-over-all-configurations reading is REFUTABLE (§I-D13), i.e. it makes
+`CapstoneHypotheses n` uninhabited. **The signed form is** (universes
+`CapstoneHypotheses.{uW, uG, uKt, uL}`; the sockets are NODES I.10a/I.10b):
+
+```lean
+structure CapstoneHypotheses (n : ℕ) : Prop where
+  ns7 : NS7Termination
+  -- [A-I.1] E.24's application REPAIRED (level data bound, six universes spelled), and GUARDED
+  -- by I.10a: the supply is demanded at the ARISING configurations, at chapter C's canonical
+  -- node-point residue read — never at an arbitrary `(C, B, ρ)`.
+  ladder : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
+      (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+      (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+      [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+      (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
+      CanonicalLadderConfig C B G Kt L N v ρ q n →
+      Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q
+  -- [A-I.1, defect I-D4 — THE FIELD THAT WAS MISSING] Display A's `∀ i ≥ 3` conjunct, BOTH
+  -- halves, at E.63's `DeepTwistConjunct` (E.61's typed ϑ socket ∧ E.62's typed `𝒲` socket,
+  -- one use-height family `q` serving both, per E.63's own fence).
+  deepTwist : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
+      (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+      (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+      [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+      (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+      (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ),
+      CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w n →
+      Ladder.DeepTwistConjunct v ρ q A R w
+  a0 : DecidedSliceAt n
+  a1 : MenuLawAt n                      -- at A-I.1's re-signed I.03 (the enumeration)
+  a2 : DrainageAt n
+  jd0 : True                            -- ⚠ UNCHANGED placeholder; A-I.1 §I-D7 rules why
+  genhnBox2 : 6 ≤ n → True              -- ⚠ UNCHANGED placeholder; A-I.1 §I-D7/§I-D8 rule why
+  windowPinning : WindowPinningAt n
+  genhnHE : 6 ≤ n → GenhnHEAt n
+  genhnTow1 : 8 ≤ n → GenhnTow1At n
+```
+
+**NEW NODES I.10a / I.10b [def] [A-I.1] — the arising-configuration sockets** (GC-13(c)
+placeholders, `Prop`-valued, bodies owed at chapter C's tower-instantiation freeze — the same
+GC-13/GC-14 pass that typed E.61/E.62):
+
+```lean
+/-- I.10a: the block `(C, B)` is the one chapter C's OM ladder produces for a degree-`n` input
+over `O`, and `(G, K_t, L, N, v, ρ, q)` is that tower's level data with `ρ` the CANONICAL
+node-point residue datum (OM-8's pinning). -/
+def CanonicalLadderConfig {O : Type} [CommRing O] {K : Type} [Field K]
+    (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n : ℕ) : Prop :=
+  True  -- ⚠ SOCKET, BLOCKED-UNTIL-RESOLUTION (chapter C's freeze). FROZEN: name, argument
+        -- block, degree index, Prop kind.
+
+/-- I.10b: I.10a's configuration together with the level-indexed gauge-arena family `(A, R, w)`
+chapter D's `𝒲` leg reads. The conjunction spelling makes the refinement
+`CanonicalDeepTwistConfig → CanonicalLadderConfig` hold BY CONSTRUCTION. -/
+def CanonicalDeepTwistConfig … (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt)
+    (w : ℕ → Ktˣ) (n : ℕ) : Prop :=
+  CanonicalLadderConfig C B G Kt L N v ρ q n ∧ True   -- ⚠ second conjunct = the arena half's
+                                                      -- socket, owed at the same freeze
+```
+
+Both are elaborated, with the whole consumption suite, in `leanspec/Leanspec/ChapI.lean`
+(A-I.1 pass; `lake build Leanspec.ChapI` green).
+
 **⚠ THE TWO `True` FIELDS ARE PLACEHOLDERS, NOT VACUITIES-BY-DESIGN.** They are the
 chapter-E BLOCKED-UNTIL-RESOLUTION pattern applied to a parallel chapter: the orchestrator's
 §9 pass types them against F's frozen carrier names before ANY stub is signed (E §14 item 11
@@ -1157,10 +1227,35 @@ The honest "capstone modulo …" statement at each stage, for the record and for
 | **S2 — the `n = 3` frontier closes** | `DrainageAt 3` (via H.97+H.98), cubic total mass unconditionally | `hrate₃` (HYP.08) + the cubic value layer (HYP.11/28/29) for the `n = 3` capstone slice |
 | **S3 — the open surface** | `UniformityStatement` via I.17 | **exactly the §4 field list**: LB1, MP1, HE7A instantiations, ∀ i ≥ 3 deep-twist/𝒲, A0/A1 at every degree, JD0-BOX-2, GENHN-BOX-2 (n≥6), window pinning, GENHN-HE (n≥6), GENHN-TOW-1 (n≥8) — i.e. §3's 36 OPEN-MATH rows + 2 CITEs, and nothing else |
 
-**No stage claims more than its row.** The sentence a report may use verbatim: *"proved
+**No stage claims more than its row.** ~~The sentence a report may use verbatim: *"proved
 unconditionally at `n ≤ 2`; at general `n` the capstone is machine-checkably equivalent to
 the frozen Display-A block, whose open rows are enumerated at §3 census: 36 OPEN-MATH + 2
-CITEs + 7 chapter-I audit items."*
+CITEs + 7 chapter-I audit items."*~~
+
+**⛔ THE S3 ROW AND THE REPORT SENTENCE ARE STRUCK AS FALSE-AS-WRITTEN BY AMENDMENT A-I.1
+(2026-08-16), defects I-D4 and I-D13; the corrected forms are below.** Two independent
+falsities, both machine-found at the 0e gate and adjudicated at A-I.1:
+
+1. *"exactly the §4 field list"* was SHORT of Display A by one conjunct — `𝒲_{≤i}` (HYP.63) had
+   no field (I-D4). **Cured**: A-I.1's `deepTwist` field carries it (with the ϑ-half) at E.63.
+2. *"machine-checkably equivalent to the frozen Display-A block"* claimed an EQUIVALENCE that
+   I.17 never proved (I.17 is one direction: block ⟹ statement) — and, worse, while the
+   `ladder` field quantifies over all configurations the block is REFUTABLE (I-D13), so the
+   implication fires from a contradiction and reports nothing.
+
+**Corrected S3 row:** `UniformityStatement` via I.17, modulo **exactly the A-I.1 field list**:
+`ns7`; `ladder` (HE7A + LB1 + MP1 + the ϑ-half) and `deepTwist` (`(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}`),
+**both at the arising configurations of I.10a/I.10b — sockets NOT YET TYPED**; `a0`/`a1`/`a2` at
+every degree; the two weld placeholders `jd0`/`genhnBox2` (`True`-valued, with the `w1` debt);
+`windowPinning`; `genhnHE` (`n ≥ 6`); `genhnTow1` (`n ≥ 8`) — i.e. §3's 36 OPEN-MATH rows + the
+CITEs, **plus the two untyped sockets, which are chapter I's own open item, not one of §3's.**
+
+**Corrected report sentence (the one a report may use verbatim TODAY):** *"Proved
+unconditionally at `n ≤ 2`. At general `n` the capstone is stated as an IMPLICATION from the
+frozen Display-A block (I.17, one direction only), whose open rows are §3's census — 36
+OPEN-MATH + the gate-(b) CITEs — and whose two ladder fields are, until chapter C types the
+arising-configuration sockets, not yet a satisfiable hypothesis: no positive conditional claim
+may be made from I.17 until then."*
 
 ---
 
@@ -1333,8 +1428,8 @@ policy (CLAUDE.md). **TEST.** registry match exact. **ENVIRONMENT.** ENV-I2.
 
 | id | item | trigger |
 |---|---|---|
-| **L-1** | type I.08/I.10's `jd0` field against F's frozen carrier name; replace the `True` placeholder; re-run §11's blocked list | F freeze |
-| **L-2** | type I.09/I.10's `genhnBox2` field against F's frozen `GenhnBox2`/`W1Transport`; arc note travels with the field | F freeze |
+| **L-1** | type I.08/I.10's `jd0` field against F's frozen carrier name; replace the `True` placeholder; re-run §11's blocked list | ~~F freeze~~ → **[A-I.1 §I-D7] the weld site-supply socket** — F has frozen and `Weld.JD0Box2` (F.04) is landed, but the `∀`-over-all-sites shape is not bindable (see L-2's machine reason); L-1 binds through a per-site arising predicate on the I.10a pattern |
+| **L-2** | type I.09/I.10's `genhnBox2` field against F's frozen `GenhnBox2`/`W1Transport`; arc note travels with the field; **[A-I.1 §I-D8] and bind the THIRD field `w1`, which I.10's committed list omits** (F.28's `WeldObligations` has three) | ~~F freeze~~ → **the weld site-supply socket**: `∀ (K ι) (Rh RG : ι → K), W1Transport Rh RG` is FALSE (F.12w's `w1Transport_iff_zero_iff` + mismatched vanishing loci; machine-proved in `leanspec/Leanspec/ChapI.lean`'s §4 gate item (13)), so binding at that shape would make the hypothesis block contradictory |
 | **L-3** | resolve §3.5/§3.8's 25 D-rows to D node IDs; re-emit the affected `DAG_BLUEPRINT_I.tsv` rows with exact endpoints | D freeze |
 | **O-1** | **book the `[GENHN-HE(μ = 3)]` transcription** (THEOREM HE3.A at `μ = 3`, first-live `n = 6, 7` — corpus-unconditional, NO owner in any committed chapter; honesty I-11(i)). Candidate homes: a chapter-B appendix (HE3 is B's note) or a chapter-E instance section; cheap relative to its Display-A weight | now (this chapter's finding) |
 | **O-2** | **book the `LEMMA GENHN-3` cap/consultation transcription** (`EFF.GENHN.29` beyond the (c) bound H.51 consumes) — the general window-pinning supplier; candidate: an H-appendix node next to H.89 | now (this chapter's finding) |
@@ -1397,7 +1492,8 @@ and term applications, provable at stub time modulo dependencies) → I.21 (def)
 | I.05 (`WindowPinningAt` body) | H.09 `StageInterface` stub lands | H stub stage (in progress — `ChapH/*.lean` landings visible at HEAD) |
 | I.06 (`GenhnHEAt` body) | H.01/H.09 stubs + the O-1 transcription decision | H stub stage + O-1 |
 | I.07 (`GenhnTow1At` body) | C.93's `#check`-suite names | C stub stage |
-| I.08/I.09 and I.10's `jd0`/`genhnBox2` fields | **chapter F freeze** (L-1/L-2) | F freeze — **a signed I.10 stub with `True` fields is a false conditionality claim; forbidden** (I.10's ⚠) |
+| I.08/I.09 and I.10's `jd0`/`genhnBox2` fields | ~~**chapter F freeze** (L-1/L-2)~~ → **[A-I.1, I-D7/I-D8] the WELD SITE-SUPPLY SOCKET** (F froze; the carriers F.04/F.11/F.12 landed at OM-9, and binding them at their `∀`-over-all-sites shapes is REFUTABLE — proved for `W1Transport` at `ι = Fin 1`, `K = ZMod 3`) | the site-supply socket, per A-I.1 §I-D7 — **a signed I.10 stub with `True` fields is a false conditionality claim; forbidden** (I.10's ⚠, IN FORCE), and a signed stub at the unguarded site shape would be a CONTRADICTORY one, which is worse |
+| **[A-I.1, NEW] I.10a/I.10b (the arising-configuration sockets) and hence I.10's `ladder`/`deepTwist` fields** | chapter C's tower-instantiation freeze (the GC-13/GC-14 pass that typed E.61/E.62) | C's freeze — until then the two fields are equivalent to their unguarded readings, which are REFUTABLE (A-I.1 §I-D13): **the block is contradictory and I.10 is an ELABORATION GATE, not a signature** |
 | I.16 (`decided_of_capstoneHypotheses`) | I.02's body must be the literal slice (else `exact` fails) | I.02 typed |
 | I.21 (`TypeOfFaithful` body) | the maximal-order carrier (B.56 IF fired, else the discharge unit's own) | orchestrator |
 
@@ -1425,7 +1521,17 @@ its teeth are the gate nodes"). The full disposition summary, in the closed voca
 **The rider-(iii) sanity check, run:** Display A's conjunct list vs the signed-vacuity rows —
 the only Display-A content NOT carried as a typed Lean field is the `AllOInterfaces` conjunct
 (§4.3, signed) and the two late-binding F fields (placeholders with a forbidden-to-sign rule,
-§11). Nothing else on the frozen display lacks a carrier. ✓
+§11). ~~Nothing else on the frozen display lacks a carrier. ✓~~
+
+**⛔ STRUCK AS FALSE-AS-WRITTEN, AND RE-RUN, BY AMENDMENT A-I.1 (2026-08-16), defect I-D4.** At
+composition the check was WRONG: `𝒲_{≤i}` (row HYP.63, the second half of Display A's
+`∀ i ≥ 3` conjunct) had no carrier at all — E.24 packages the ϑ-half only, and chapter I added
+no field for the other half. **Re-run under A-I.1's field list:** the `deepTwist` field carries
+`(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}` at E.63's packaging, so the only Display-A content without a typed
+field is again `AllOInterfaces` (signed non-applicability, §4.3) plus the two weld placeholders
+(`jd0`, `genhnBox2` — `True`-valued, forbidden to sign, ruling at A-I.1 §I-D7/§I-D8, and the
+`w1` sub-conjunct rides there as a NAMED DEBT). ✓ *with those three exceptions named, which is
+the honest form of this row.*
 
 ---
 
@@ -2215,6 +2321,136 @@ fleet agent must be able to see what it was told, and why it is wrong).
 > **Forbidden, permanently:** resolving I.01 against `Uniformity.Density.Tower.NS7TerminationStatement`
 > (machine-refuted: it implies `False` — `leanfinal/Uniformity/ChapC/C94_REFUTATION.lean.txt`),
 > and citing that name at all — it does not exist in `leanfinal` at HEAD.
+
+---
+
+### I-D3 — the `ladder` field: BOTH halves signed (the repaired application AND the
+### canonical binding)
+
+**(a) The mechanical half — signed.** The committed `Ladder.LadderSupply C B` is underapplied
+by eight arguments against landed E.24, whose structure is
+`LadderSupply {O} [CommRing O] {K} [Field K] (C) (B) (G) [CommGroup G] (Kt) [Field Kt] (L)
+[Field L] [Algebra Kt L] (N : NormSection G) (v) (ρ) (q)`. The signed application binds the
+level data in the field and spells the six universes: `Ladder.LadderSupply.{0, 0, uW, uG, uKt,
+uL} C B G Kt L N v ρ q`, with `CapstoneHypotheses.{uW, uG, uKt, uL}` universe-polymorphic in
+`uW` (honesty E-12: `uW` is the `(SEC-RANK)` rank carrier's universe and is NOT inferable; a
+`Prop` cannot quantify over universes, so the structure carries them and every consumer records
+its choice). This is E.24's own recorded consumer obligation, discharged: *"When I.10 lands it
+must also bind (or quantify over) the tower data block — the same choice E.61 forced here."*
+
+**(b) The mathematical half — the binding, derived.** E.24 faced the identical question at its
+own `vartheta` field and recorded three options with reasons; chapter I inherits the same three,
+and TWO are closed by machine evidence (the pincer of §I-D13):
+
+* *quantify over the data* — E.24's rejected option 1 (*"this asserts the carrier at an
+  ARBITRARY ambient residue datum `ρ`, and the ρ-defeat is machine-shown at REAL tower
+  exponents"*). At chapter I it is worse than undischargeable: it is FALSE (§I-D13).
+* *bundle the data existentially, or thread it as parameters and supply it at I.17* — E.24's
+  rejected option 2, the D-D12 fabricable shape. (Note the equivalence a reader may miss:
+  `(data) → (block at data) → C` IS `(∃ data, block at data) → C`; parameterizing the structure
+  and letting I.17 take the data is therefore the SAME move as the existential bundle, and
+  falls to the same refutation genre.)
+* *bind the data* — what E.24 did (threading), and what chapter I must do in the only form
+  available to a `Prop` whose data are not yet constructible: a NAMED SOCKET restricting the
+  quantifier to the arising configurations. **Signed: NODES I.10a/I.10b, with the `ladder` field
+  guarded by I.10a.**
+
+**Why the socket and not a landed sufficient condition.** Everything landed today that pins `ρ`
+enough to help *already implies the carrier* — `Gauge.hvarthetaRes_of_arena_agree` (agreement
+with an arena's residue read) and `Gauge.hvarthetaRes_of_tau_letters` (the τ-letter law) both
+CONCLUDE `HVarthetaRes`. Guarding with either would retire ledger row HYP.57 by
+hypothesis-shuffling: the conjunct would still be printed on Display A while carrying nothing.
+Hence the **NON-SWALLOWING FENCE** (installed at §I-D13, restated at the nodes): *the socket
+constrains the CONFIGURATION — that it is the one chapter C's tower produces — never the residue
+law.* The typing template is OM-8's: `hvarthetaRes_deep3`'s hypothesis shape (the three letter
+memberships that the corpus's canonical node-point read supplies).
+
+**Certification (A-C.3's certify-before-sign; all machine-run in `leanspec/Leanspec/ChapI.lean`):**
+
+1. the repaired application ELABORATES against landed E.24, and all three projections
+   (`.lb1` at `Nonempty (BlockSuite I)`, `.mp1` at `Nonempty (MidPeelEmission B B')`, `.vartheta`
+   at chapter D's sitewise `HVarthetaRes`) are extracted from the guarded field as TERMS;
+2. **the re-sign weakens nothing today**: with I.10a at its placeholder body, the guarded field
+   type is proved `↔` the 0e unguarded one — the narrowing to arising configurations is
+   deferred to, and happens exactly at, the socket's typing (which is the gate-(a) event the
+   owner is flagged on);
+3. **the refutation that forces the socket is exhibited** (§I-D13's transport), and its reach
+   into the re-signed structure is proved: while I.10a reads `True`,
+   `¬ CapstoneHypotheses.{…} n` follows from one certified-false `(C, B)`;
+4. the I.10b→I.10a refinement is proved by construction (`.1`).
+
+**What is NOT claimed.** Signing the socket does not repair the contradiction — only TYPING it
+does. Until then I.10 remains what the 0e gate called it: an ELABORATION GATE, not a signature,
+and no fleet agent may fire on it.
+
+---
+
+### I-D4 — the `𝒲_{≤i}` half of the `∀ i ≥ 3` conjunct: the missing field, SIGNED at E.63
+
+**Verdict: a frozen Display-A conjunct had no carrier; the field is added, at E.63's packaging
+of BOTH halves.** Display A's conjunct is `(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}` (rows HYP.57/HYP.63).
+The `ladder` field reaches E.24's `LadderSupply`, and landed E.24 packages the ϑ-half ONLY —
+its own docstring says so: *"E.62's `𝒲` leg is conjoined at chapter I, not here."* So as signed,
+chapter I dropped `𝒲_{≤i}` silently.
+
+**Signed:** a new field `deepTwist`, consuming landed `Ladder.DeepTwistConjunct` (E.63,
+`leanfinal/Uniformity/ChapE/E63.lean`), which packages both halves at the TYPED sockets
+(E.61's `VarthetaRes` → chapter D's A-D.2 sitewise `HVarthetaRes`; E.62's `WFrame` → D.55's
+cumulative `Wle` at D.44's `GentowW`) and threads ONE use-height family `q` through both — E.63's
+own fence: *"Splitting it into two independent families here would let a consumer satisfy the
+HVR leg at one set of use-heights and the `𝒲` leg at another, which is not the corpus's
+conjunct."* The field is guarded by I.10b (the arena family needs the same arising restriction:
+`GentowW` at an arbitrary `(A, R, w)` is refutable for the same reason as everything else in
+§I-D13).
+
+**Recorded redundancy (deliberate, harmless):** the ϑ-half is now carried twice — inside
+`ladder`'s `.vartheta` projection and as `deepTwist`'s first component — at the SAME level data,
+because E.24 is one committed bundle and its field list is not chapter I's to edit. The
+field-level source of truth for the `∀ i ≥ 3` conjunct is `deepTwist`. **Certification:** both
+halves are extracted from the new field as terms (`.1.supplied : HVarthetaRes …`,
+`.2 : WFrame A q R w i`) in the §4 gate.
+
+**Two consequences that were FALSE AS WRITTEN and are corrected here (strike-and-note, §12 and
+NODE I.20 both amended inline):**
+
+* §12's rider-(iii) sanity check read *"Nothing else on the frozen display lacks a carrier ✓"* —
+  false at composition (`𝒲_{≤i}` lacked one), TRUE again under A-I.1's field list;
+* NODE I.20's S3 row read *"**exactly the §4 field list** — i.e. §3's 36 OPEN-MATH rows + the
+  CITEs, and nothing else"* — false at composition (the field list was SHORT of Display A by one
+  conjunct), and true again under A-I.1's field list, with the standing caveat that the two weld
+  placeholders (§I-D7/§I-D8) are still `True` and therefore carry no content.
+
+---
+
+### I-D7 / I-D8 — the weld placeholders and the missing `w1` field: RULED, not signed
+
+**Verdict on I-D7 (I.10 signed in a state §11 forbids): the prohibition STANDS, its blocker is
+RE-POINTED, and the fields stay at `True`.** The 0e gate reasoned that OM-9's landings
+(`Weld.JD0Box2` F.04, `Weld.GenhnBox2` F.11, `Weld.W1Transport` F.12) make the placeholders
+stale — that L-1/L-2 are executable now. **They are not**, and the reason is machine-checkable:
+the consumption shapes the 0e gate exhibited quantify over ALL sites, and at least one of them
+is REFUTABLE. `W1Transport Rh RG` is equivalent to equality of vanishing loci (F.12w's
+`w1Transport_iff_zero_iff`), and mismatched loci refuse every transport, so
+`∀ (K ι) (Rh RG : ι → K), W1Transport Rh RG` is FALSE — proved in this amendment's gate at
+`ι = Fin 1`, `K = ZMod 3`. Binding the weld fields at those shapes would add a SECOND,
+independent contradiction to the hypothesis block. The same site-supply socket the ladder needed
+(I.10a's pattern) is what L-1/L-2 must bind through.
+
+**Ruling, binding on the resolution pass:** §9.3's items L-1 and L-2 have their trigger changed
+from *"F freeze"* (which has occurred) to **"the weld site-supply socket"** — a per-site-type
+arising predicate, composed on the same GC-13(c) pattern as I.10a/I.10b, at chapter F's site
+layer or chapter I's next amendment. Until then `jd0` and `genhnBox2` stay at `True`, §11's
+forbidden-to-sign row stays in force, and I.10 stays an elaboration gate.
+
+**Verdict on I-D8 (no `w1` field for OM-9's note to ride on): the omission is REGISTERED as
+owed, at the same trigger.** F.28's landed `WeldObligations` carries three fields
+(`jd0box2`, `genhnBox2`, `w1`); I.10 carries one and a half. When L-2 binds, it binds **three**
+fields, and the `w1` field carries OM-9's honesty note verbatim: *`w1Transport_iff_zero_iff`
+proves the carrier is the transport's SIGNATURE, and `w1Transport_of_ne_zero` makes any
+instantiation at nonvanishing families FORMALLY TRIVIAL — a typed `w1` field discharges NOTHING
+of HYP.139* (whose MATH content is TR-3′-GEN's compatible dictionary at general order). A-I.1
+does not add the field, because adding it at the only shape available today is exactly the
+contradiction above; it makes the omission a NAMED DEBT instead of a silent one.
 
 ---
 

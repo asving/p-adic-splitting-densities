@@ -494,6 +494,69 @@ are executable now**, which is exactly what makes I.10's `True` fields a defect 
 than a wait. The conjuncts themselves are UNCHANGED: CARRY, and the OM-9 `w1` note (a typed
 instantiation discharges NOTHING of HYP.139) travels with them. -/
 
+/-! ### NODES I.10a / I.10b [def] [NEW at AMENDMENT A-I.1] — THE ARISING-CONFIGURATION SOCKETS
+
+The two GC-13(c) sockets the re-signed Display-A carrier fields are guarded by. **They exist
+because both other readings of the configuration quantifier are closed by machine evidence**
+(A-I.1 §I-D13): quantifying over ALL configurations is REFUTABLE (the A-E.2/A-D.2 carriers are
+certified FALSE at concrete legal instances — `verification/om4_resign_nontriviality.lean` — so
+the block would be contradictory and I.17 would fire from `False`), and bundling the data
+existentially (equivalently: threading it as parameters of `CapstoneHypotheses` and supplying it
+at I.17) is the FABRICABLE shape defect D-D12 refuted and E.24 explicitly rejected. What is
+left, and what the corpus actually claims, is the supply **at the configurations that arise**,
+with `ρ` pinned to chapter C's canonical node-point residue read (OM-8 §3.1: YES at every
+DEF GENTOW5-1 instantiation with the canonical read, NO at arbitrary `ρ`).
+
+⚠ **BLOCKED-UNTIL-RESOLUTION, and the block is on chapter C, not on this chapter.** Both bodies
+are the literal `True` placeholder; the typed bodies are owed at chapter C's tower-instantiation
+freeze (the same GC-13/GC-14 pass that typed E.61/E.62). **Consequence, disclosed and
+machine-shown in the §4 gate: while the sockets read `True` the guarded fields are EQUIVALENT to
+the unguarded ones, so A-I.1 weakens nothing today AND the block stays contradictory until the
+sockets are typed.** No fleet agent may fire on I.10 (unchanged from the 0e gate).
+
+⚠ **THE NON-SWALLOWING FENCE (A-I.1, binding on the resolution pass).** The socket may NOT be
+typed at any condition that already implies its own carrier. Two landed traps, both of which
+would silently discharge a CARRY conjunct by hypothesis-shuffling rather than by mathematics:
+`Gauge.hvarthetaRes_of_arena_agree` (a `ρ` agreeing with an arena's residue read discharges
+`HVarthetaRes` outright) and `Gauge.hvarthetaRes_of_tau_letters` (the τ-letter law does the
+same). The socket must constrain the CONFIGURATION (that it is the one chapter C's tower
+produces), never the residue law itself. -/
+
+set_option linter.unusedVariables false in
+/-- **NODE I.10a** [A-I.1] — *the arising ladder configuration at chapter C's canonical residue
+read.* The block `(C, B)` is the one chapter C's OM ladder produces for a degree-`n` input over
+`O`, and `(G, K_t, L, N, v, ρ, q)` is that tower's level data with `ρ` the CANONICAL node-point
+residue datum (OM-8's pinning; an unpinned `ρ` leaves the ϑ-conjunct undischargeable, and the
+`∀ ρ` reading makes it outright false).
+
+⚠ STUB-STAGE BODY (BLOCKED-UNTIL-RESOLUTION): typed at chapter C's tower-instantiation freeze.
+FROZEN HERE: the name, the configuration argument block, the degree index, the `Prop` kind. -/
+def CanonicalLadderConfig {O : Type} [CommRing O] {K : Type} [Field K]
+    (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n : ℕ) : Prop :=
+  True
+
+set_option linter.unusedVariables false in
+/-- **NODE I.10b** [A-I.1] — *the arising deep-twist configuration*: I.10a's configuration
+TOGETHER with the level-indexed gauge-arena family `(A, R, w)` chapter D's `𝒲` leg reads
+(`EFF.T3.21`'s `θ_j`, `w_j`). The conjunction spelling is deliberate: the second component is
+the arena half's own socket, so when both are typed the refinement
+`CanonicalDeepTwistConfig → CanonicalLadderConfig` holds BY CONSTRUCTION (machine-checked in
+the §4 gate), and no pass can type the deep-twist half against a configuration the ladder half
+would reject.
+
+⚠ STUB-STAGE BODY: the `True` conjunct is the arena half's placeholder, owed at the same
+freeze. FROZEN HERE: the name, the argument block, the refinement shape, the `Prop` kind. -/
+def CanonicalDeepTwistConfig {O : Type} [CommRing O] {K : Type} [Field K]
+    (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+    (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ) (n : ℕ) : Prop :=
+  CanonicalLadderConfig C B G Kt L N v ρ q n ∧ True
+
 /-! ### NODE I.10 [structure] — **THE CAPSTONE HYPOTHESIS STRUCTURE** (Display A, made formal).
 Lands `Uniformity.Density.CapstoneHypotheses`. ENV-I1.
 
@@ -506,18 +569,34 @@ found I-D3, I-D4, I-D5 and I-D9); **no fleet agent may fire on I.10 until the ow
 field list.** Since OM-9 the two `True` fields have real binding targets (F.04/F.11/F.12) — the
 gate below elaborates them — so the placeholders are STALE, not merely blocked.
 
-⚠ **STUB-SIDE REPAIR ON THE `ladder` FIELD (defect I-D3).** The signed `Ladder.LadderSupply C B`
-is underapplied by eight arguments against the landed E.24; the level data
-`(G, Kt, L, N, v, ρ, q)` is quantified inside the field here and the six universes are spelled
-explicitly (E-12). Recorded consequence: a `∀ ρ` binder is precisely OM-8's ρ-defeat regime, so
-the field as repaired is **undischargeable**; the honest cure is a gate-(a) field-list change
-binding chapter C's canonical residue data.
+⚠ **THE `ladder` FIELD, RE-SIGNED AT AMENDMENT A-I.1 (defects I-D3 and I-D13).** Two halves:
+(i) the MECHANICAL half — the 0e gate found the signed `Ladder.LadderSupply C B` underapplied by
+eight arguments against landed E.24, and the repaired application (level data
+`(G, Kt, L, N, v, ρ, q)` bound in the field, six universes spelled `LadderSupply.{0, 0, uW, uG,
+uKt, uL}`, E-12) is now the SIGNED application; (ii) the MATHEMATICAL half — the `∀`-over-all-
+configurations reading is not merely undischargeable (OM-8's ρ-defeat), it is **REFUTABLE**
+(A-I.1 §I-D13: `¬ LB1Carrier C₁ B₁` at a legal `SlotCarrier ℤ ℚ`,
+`verification/om4_resign_nontriviality.lean`), so the field is guarded by I.10a's
+`CanonicalLadderConfig` — the supply is demanded at the ARISING configurations, at chapter C's
+canonical residue read, which is what the corpus claims and the only reading that can ever be
+discharged.
 
-⚠ **QUANTIFIER DISCLOSURE, transcribed.** Display A assumes the ladder suite "uniformly in `O`";
-E's carriers are instance-level. The field quantifies over ALL instantiations — the strongest
-uniform reading. Weakening it to the instantiations arising from degree-`n` inputs weakens a
-hypothesis, hence STRENGTHENS the theorem, and is still a gate-(a) event because the field list
-IS the public conditionality.
+⚠ **THE `deepTwist` FIELD IS NEW AT A-I.1 (defect I-D4).** Display A's `∀ i ≥ 3` conjunct is
+`(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}`; E.24's `LadderSupply` packages the ϑ-half ONLY (its own
+docstring: *"E.62's `𝒲` leg is conjoined at chapter I, not here"*), so as signed chapter I
+carried half a conjunct. The field consumes E.63's `Ladder.DeepTwistConjunct`, which packages
+BOTH halves at the typed E.61/E.62 sockets and threads ONE use-height family `q` through both
+(E.63's own fence). The ϑ-half is now carried twice (here and inside `ladder`'s `vartheta`
+projection) at the SAME level data: harmless redundancy, and the field-level source of truth for
+the `∀ i ≥ 3` conjunct is `deepTwist`.
+
+⚠ **QUANTIFIER DISCLOSURE, transcribed and AMENDED (A-I.1).** Display A assumes the ladder suite
+"uniformly in `O`"; E's carriers are instance-level. The 0e reading quantified over ALL
+instantiations — "the strongest uniform reading", chosen without the level data in view — and
+§I-D13 shows that reading is FALSE, not strong. The signed reading is the blueprint's own
+alternative ("the instantiations arising from degree-`n` inputs"), sharpened by OM-8 to the
+canonical residue read and named as the I.10a/I.10b sockets. It weakens a hypothesis, hence
+STRENGTHENS the theorem; it is an owner gate-(a) event and is flagged as such in A-I.1.
 
 ⚠ **KIND NOTE [F7], transcribed.** H.95's `InductionPackage` is a `def`-Prop existential; this
 carrier is a `structure` and does NOT claim to mirror H.95's kind. -/
@@ -532,18 +611,29 @@ universe-polymorphically in `uW`; `.vartheta` is E.61's typed socket at chapter 
 sitewise `HVarthetaRes`. The voided shadows (`OM4Shadow.*`, `HVarthetaResVoided`) are FENCED.
 
 ⚠ The `AllOInterfaces` conjunct is NOT a field — §4.3's signed reconciliation (honesty I-10).
-⚠ The `𝒲_{≤i}` half of the `∀ i ≥ 3` conjunct has NO field (defect I-D4).
 ⚠ `jd0`/`genhnBox2` are the FORBIDDEN-TO-SIGN placeholders (defect I-D7); `w1` has no field at
-all (defect I-D8). -/
+all (defect I-D8). A-I.1 RULES both open rather than typing them — the naive consumption shapes
+the 0e gate exhibited are REFUTABLE (see the §4 gate's item (13)), so binding them unguarded
+would add a second contradiction to the block. -/
 structure CapstoneHypotheses (n : ℕ) : Prop where
   ns7 : NS7Termination
+  -- [A-I.1] the repaired E.24 application, guarded by I.10a's arising-configuration socket.
   ladder : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
       (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
-      -- ⚠ I-D3's stub-side repair: the level data E.24 actually takes, quantified here.
       (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
       [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
       (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
+      CanonicalLadderConfig C B G Kt L N v ρ q n →
       Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q
+  -- [A-I.1, defect I-D4] Display A's `∀ i ≥ 3` conjunct, BOTH halves, at E.63's packaging.
+  deepTwist : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
+      (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+      (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+      [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+      (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+      (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ),
+      CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w n →
+      Ladder.DeepTwistConjunct v ρ q A R w
   a0 : DecidedSliceAt n
   a1 : MenuLawAt n
   a2 : DrainageAt n
@@ -564,16 +654,18 @@ section GateFour
 example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n) : DrainageAt n := h.a2
 
 -- (2) the A-E.2 `(LB1)` consumption pattern, universe-polymorphic in `uW`: from the `ladder`
--- field at a triggering interface, the FULL S1.7A block suite. Had `lb1` been left at the
--- machine-refuted shadow (product identity + degree sum only), this would not typecheck.
+-- field AT AN ARISING CONFIGURATION (A-I.1's I.10a guard) and a triggering interface, the FULL
+-- S1.7A block suite. Had `lb1` been left at the machine-refuted shadow (product identity +
+-- degree sum only), this would not typecheck.
 example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
     (K : Type) [Field K] (C : Ladder.SlotCarrier ℤ K) (B : Ladder.BlockData C)
     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
     [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+    (hcfg : CanonicalLadderConfig C B G Kt L N v ρ q n)
     (I : Ladder.RungInterface.{0, 0, uW} C B) (hmulti : 1 < I.sides.card) :
     Nonempty (Ladder.BlockSuite I) :=
-  (h.ladder ℤ K C B G Kt L N v ρ q).lb1 I (Or.inl hmulti)
+  (h.ladder ℤ K C B G Kt L N v ρ q hcfg).lb1 I (Or.inl hmulti)
 
 -- (3) the A-E.2 `(MP1)` consumption pattern: at a legal recentering, the FULL items-2–5 record.
 example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
@@ -581,10 +673,11 @@ example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
     [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+    (hcfg : CanonicalLadderConfig C B G Kt L N v ρ q n)
     (Λ : Polynomial ℤ) (hΛ : Λ ≠ 0) (hdeg : Λ.natDegree < C.D) (B' : Ladder.BlockData C)
     (hB' : B'.Φ = B.Φ - Λ) (hdvd : B'.Φ ∣ B.F) :
     Nonempty (Ladder.MidPeelEmission.{0, 0, uW} B B') :=
-  (h.ladder ℤ K C B G Kt L N v ρ q).mp1 Λ hΛ hdeg B' hB' hdvd
+  (h.ladder ℤ K C B G Kt L N v ρ q hcfg).mp1 Λ hΛ hdeg B' hB' hdvd
 
 -- (4) the A-D.2 `(H-VARTHETA-RES)_i` consumption pattern: chapter D's SITEWISE carrier at the
 -- level-`i` data. Typing this against the voided existential would fail.
@@ -592,22 +685,37 @@ example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
     (K : Type) [Field K] (C : Ladder.SlotCarrier ℤ K) (B : Ladder.BlockData C)
     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
     [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
-    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (i : ℕ) (hi : 3 ≤ i) :
-    Gauge.HVarthetaRes G Kt L N (v i) (ρ i) (q i) :=
-  ((h.ladder ℤ K C B G Kt L N v ρ q).vartheta i hi).supplied
-
--- (5) **DEFECT I-D4, machine-exhibited.** The landed declaration that carries BOTH halves of the
--- `∀ i ≥ 3` conjunct at the typed sockets is E.63's `DeepTwistConjunct`; the `ladder` field
--- delivers only its first component, and the `𝒲` component has no field in I.10 at all. The
--- `#check` records the object the fleet must re-sign against.
-#check @Uniformity.Density.Ladder.DeepTwistConjunct
-example {G : Type uG} [CommGroup G] {K : Type uKt} [Field K] {L : Type uL} [Field L]
-    [Algebra K L] {N : Gauge.NormSection G} (v : ℕ → (G →* Multiplicative ℤ))
     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
-    (A : ℕ → Gauge.GaugeArena G K N) (R : ℕ → G → K) (w : ℕ → Kˣ)
-    (H : Ladder.DeepTwistConjunct v ρ q A R w) (i : ℕ) (hi : 3 ≤ i) :
-    Gauge.HVarthetaRes G K L N (v i) (ρ i) (q i) ∧ Ladder.WFrame A q R w i :=
-  ⟨(H i hi).1.supplied, (H i hi).2⟩
+    (hcfg : CanonicalLadderConfig C B G Kt L N v ρ q n) (i : ℕ) (hi : 3 ≤ i) :
+    Gauge.HVarthetaRes G Kt L N (v i) (ρ i) (q i) :=
+  ((h.ladder ℤ K C B G Kt L N v ρ q hcfg).vartheta i hi).supplied
+
+-- (5) **DEFECT I-D4, CURED AT A-I.1 and machine-exhibited at the new field.** Display A's
+-- `∀ i ≥ 3` conjunct has BOTH halves at the typed sockets, delivered by E.63's
+-- `DeepTwistConjunct` through the `deepTwist` field: the sitewise `(H-VARTHETA-RES)_i` AND the
+-- cumulative `𝒲_{≤i}` w-frame, at one use-height family `q`. Before A-I.1 the `𝒲` half had no
+-- carrier anywhere in the structure.
+#check @Uniformity.Density.Ladder.DeepTwistConjunct
+example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
+    (K : Type) [Field K] (C : Ladder.SlotCarrier ℤ K) (B : Ladder.BlockData C)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+    (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ)
+    (hcfg : CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w n) (i : ℕ) (hi : 3 ≤ i) :
+    Gauge.HVarthetaRes G Kt L N (v i) (ρ i) (q i) ∧ Ladder.WFrame A q R w i :=
+  ⟨(h.deepTwist ℤ K C B G Kt L N v ρ q A R w hcfg i hi).1.supplied,
+   (h.deepTwist ℤ K C B G Kt L N v ρ q A R w hcfg i hi).2⟩
+
+-- (5a) the I.10b refinement, by construction: a deep-twist configuration IS a ladder
+-- configuration, so the two guarded fields can never drift onto different data.
+example {K : Type} [Field K] {C : Ladder.SlotCarrier ℤ K} {B : Ladder.BlockData C}
+    {G : Type uG} [CommGroup G] {Kt : Type uKt} [Field Kt] {L : Type uL} [Field L]
+    [Algebra Kt L] {N : Gauge.NormSection G} {v : ℕ → (G →* Multiplicative ℤ)}
+    {ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ} {q : ℕ → ℤ}
+    {A : ℕ → Gauge.GaugeArena G Kt N} {R : ℕ → G → Kt} {w : ℕ → Ktˣ} {n : ℕ}
+    (hcfg : CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w n) :
+    CanonicalLadderConfig C B G Kt L N v ρ q n := hcfg.1
 
 -- (6) **DEFECT I-D7 / items L-1 and L-2, machine-exhibited.** The `True` fields' binding targets
 -- are landed and type at chapter I's consumption shape RIGHT NOW.
@@ -651,6 +759,84 @@ example (n : ℕ) (h : MenuLawAt n) : MenuLawAtVoided n := by
 -- (8) I.07's partially-typed census leg: C.93 clause (i), the `n = D_r·μ_r ≥ 2^{r+1}` threshold
 -- the whole HYP.82 census rests on, is LANDED and reachable.
 #check @Uniformity.Density.Tower.tower_first_live
+
+-- (10) **DEFECT I-D13 (A-I.1's NEW finding), machine-TRANSPORTED: the 0e `ladder` field is not
+-- undischargeable, it is FALSE.** One legal `(C, B)` at which the A-E.2 carrier fails refutes
+-- the whole ∀-over-all-configurations reading. The antecedent is certified, not assumed:
+-- `verification/om4_resign_nontriviality.lean` proves `lb1_resigned_not_trivial :
+-- ¬ LB1Carrier C₁ B₁` over a REAL `SlotCarrier ℤ ℚ` with `B₁.F = X² + X + 1` (its `LB1Carrier`
+-- is byte-identical to the landed one modulo namespace — re-verified at this amendment).
+example {C : Ladder.SlotCarrier ℤ ℚ} {B : Ladder.BlockData C}
+    (hlb1 : ¬ Ladder.LB1Carrier.{0, 0, uW} C B)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) :
+    ¬ (∀ (O : Type) [CommRing O] (K : Type) [Field K]
+        (C' : Ladder.SlotCarrier O K) (B' : Ladder.BlockData C')
+        (G' : Type uG) [CommGroup G'] (Kt' : Type uKt) [Field Kt'] (L' : Type uL) [Field L']
+        [Algebra Kt' L'] (N' : Gauge.NormSection G') (v' : ℕ → (G' →* Multiplicative ℤ))
+        (ρ' : ∀ j : ℕ, MonoidHom.ker (v' j) →* L'ˣ) (q' : ℕ → ℤ),
+        Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C' B' G' Kt' L' N' v' ρ' q') :=
+  fun hall => hlb1 (hall ℤ ℚ C B G Kt L N v ρ q).lb1
+
+-- (10a) …and, WHILE THE I.10a SOCKET READS `True`, the same refutation reaches the re-signed
+-- structure: `CapstoneHypotheses n` is UNINHABITED, hence `∀ n, CapstoneHypotheses n` is FALSE
+-- and I.15–I.18 fire from a contradiction. **This is the disclosure A-I.1 exists to make.** It
+-- is repaired by TYPING I.10a (chapter C's freeze), not by any edit here: a typed socket
+-- excludes exactly the adversarial `(C, B)`/`ρ` configurations that carry the refutation.
+example {C : Ladder.SlotCarrier ℤ ℚ} {B : Ladder.BlockData C}
+    (hlb1 : ¬ Ladder.LB1Carrier.{0, 0, uW} C B)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n : ℕ) :
+    ¬ CapstoneHypotheses.{uW, uG, uKt, uL} n :=
+  fun h => hlb1 (h.ladder ℤ ℚ C B G Kt L N v ρ q trivial).lb1
+
+-- (11) **A-I.1 WEAKENS NOTHING TODAY (the "never weaken" check, machine-run).** While I.10a's
+-- body is the placeholder, the guarded `ladder` field type is EQUIVALENT to the 0e unguarded
+-- one — so the amendment installs the binding site without moving the strength; the narrowing
+-- to arising configurations happens exactly at the moment the socket is typed, and is the
+-- gate-(a) event flagged to the owner.
+example (n : ℕ) :
+    (∀ (O : Type) [CommRing O] (K : Type) [Field K]
+        (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+        (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+        [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+        (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
+        CanonicalLadderConfig C B G Kt L N v ρ q n →
+        Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q)
+      ↔
+    (∀ (O : Type) [CommRing O] (K : Type) [Field K]
+        (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+        (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+        [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+        (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
+        Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q) := by
+  constructor
+  · intro h O _ K _ C B G _ Kt _ L _ _ N v ρ q
+    exact h O K C B G Kt L N v ρ q trivial
+  · intro h O _ K _ C B G _ Kt _ L _ _ N v ρ q _
+    exact h O K C B G Kt L N v ρ q
+
+-- (12) the NON-SWALLOWING fence, with its landed trap named as a term: this, used as the I.10a
+-- socket's body, would discharge the ϑ-conjunct outright — a CARRY row retired by
+-- hypothesis-shuffling rather than by mathematics. The resolution pass must constrain the
+-- CONFIGURATION, never the residue law. (The second trap, `hvarthetaRes_of_tau_letters` in
+-- `ChapD/D62w.lean`, is the τ-letter law and is the same hazard; it cannot be `#check`ed from
+-- this file because D62w is the module defect I-D1 makes un-importable alongside D55/D63.)
+#check @Uniformity.Density.Gauge.hvarthetaRes_of_arena_agree
+
+-- (13) **DEFECT I-D7/I-D8's honest reason, machine-shown (A-I.1's ruling).** The 0e gate's item
+-- (6) exhibited the weld carriers' `∀`-over-all-sites consumption shapes as if they were ready
+-- to bind. They are not: at least one of them is REFUTABLE, so a field at that shape would make
+-- the block contradictory in a second, independent way. `W1Transport` is equivalent to equality
+-- of vanishing loci (F.12w), and mismatched loci refuse every transport — so the `∀ Rh RG`
+-- reading is FALSE, exhibited here at `ι = Fin 1`, `K = ZMod 3`.
+example : ¬ (∀ (K ι : Type) [Field K] (Rh RG : ι → K), Weld.W1Transport Rh RG) := by
+  intro h
+  have := (Weld.w1Transport_iff_zero_iff (K := ZMod 3) (ι := Fin 1)
+    (fun _ => (1 : ZMod 3)) (fun _ => (0 : ZMod 3))).mp (h (ZMod 3) (Fin 1) _ _)
+  exact one_ne_zero ((this 0).mpr rfl)
 
 -- (9) the FENCE, stated as a type: `NS7Termination`'s signed body is the placeholder, and this
 -- is the ONE machine-visible fact about it. Anything stronger would be a resolution, which
@@ -1043,6 +1229,12 @@ names on landing — this block is the one place the whole trusted surface is gr
 #axiom_core LeanspecI.NS7Termination
 #axiom_core LeanspecI.DecidedSliceAt
 #axiom_core LeanspecI.MenuLawAt
+-- A-I.1's three additions: the voided I.03 copy (kept for its refutation) and the two
+-- arising-configuration sockets. A socket typed with an axiom would be a silent trusted-base
+-- change; these three lines fail the build if that ever happens.
+#axiom_core LeanspecI.MenuLawAtVoided
+#axiom_core LeanspecI.CanonicalLadderConfig
+#axiom_core LeanspecI.CanonicalDeepTwistConfig
 #axiom_core LeanspecI.WindowPinningAt
 #axiom_core LeanspecI.GenhnHEAt
 #axiom_core LeanspecI.GenhnTow1At
