@@ -1,0 +1,112 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapE.E12
+
+/-!
+# VACUITY RECORD for the committed signature of NODE E.57 (`block_split`)
+
+**This file is evidence, not a node** (the `C92_VACUITY.lean.txt` /
+`C109_REFUTATION.lean.txt` convention: kept as `.lean.txt` so no build picks it up).
+To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapE/E57_VACUITY.lean.txt /tmp/e57_vacuity.lean
+cd leanfinal && lake env lean /tmp/e57_vacuity.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only,
+2026-08-16 (Chapter-E fleet, wave 7 agent 3).
+
+## Verdict: E.57 is BLOCKED, and the GC-13 resolution pass alone will not unblock it.
+
+Two independent findings, in the order that matters.
+
+**(1) The anchor is not landed.** E.57's `hpart : True` is the GC-13(c) placeholder for the
+`EFF.HE7.96`-partition leg `[supplied-by: chapter C]` (`blueprint/CHAP-E_sigma_ladder.md`
+§11 cross-chapter ledger). The chapter-C record that leg names — the class-partition /
+product law `classSize_separable` (C.63), re-exported as `classSize_supply` /
+`ClassSizeSupplyData` (C.69, the TERMINAL SUPPLY the ledger points at) — is absent from
+`leanfinal`, together with `tier1_typeOf` (C.61), `BlockContext` (C.33/C.34) and
+`blockFactor`/`mult₂` (C.35). Details and greps in
+`leanfinal/notes/RESCHEDULE_E57_2026-08-16.md`. This is E.51's situation
+(`RESCHEDULE_E51_2026-08-16.md`, commit `ce61e801`), one node over.
+
+**(2) Typing `hpart` would not make the node contentful.** This is the new finding, and it
+is machine-checked below: the committed CONCLUSION is a theorem of Lean core. Take
+`blocks := [B.F]`; `List.prod_singleton` gives the product clause and `List.sum_singleton`
+the degree clause. Nothing about `I`, about the class counts, or about `hpart` is consumed —
+`block_split_conclusion_from_nothing` proves the same conclusion for an ARBITRARY polynomial
+over an arbitrary commutative ring, with no interface in scope at all.
+
+So `hpart`'s typing is orthogonal to the node's strength: for EVERY proposition `P` one might
+type it as, `(… ) (hpart : P) : ∃ blocks, …` is provable by ignoring `hpart`. This is exactly
+the genre OM-4 FINDING 0 caught at E.39/E.40/E.44 (`docs/openmath-campaign/OM-4_lb1-mp1_2026-08-16.md`
+§2.3, witness `verification/om4_shadow_vacuity.lean`), which AMENDMENT A-E.2 repaired by
+re-signing those nodes at their full `BlockSuite`/`MidPeelEmission` records. E.57's own
+SIGNATURE NOTE already says where its strength lives — *"the conclusion shape displayed is the
+PRODUCT/EXHAUSTION layer; the full contract adds, per block, the single-side and pure-residual
+interface clauses of (ii)–(iv) as a `BlockSuite` record"* — and those clauses are not in the
+committed conclusion. Hence the resolution pass owed here is an AMENDMENT (re-sign the
+conclusion at the per-block record), not a socket swap.
+
+## What is NOT claimed
+
+* Nothing here says E.57's mathematics is false. ANNEX-LEMMA HE7-13′(a) is annex-grade PROVED
+  content in the corpus, with teeth (`he7_pe3_probe12.py` 144/144 at `μ₂ = 3, n = 12`).
+  What is refuted is that the COMMITTED Lean signature carries it.
+* Nothing here types `hpart`. The two clauses below are the evidence for the RESCHEDULE, and
+  are deliberately stated in a private namespace so no downstream file can cite them.
+-/
+
+namespace E57Vacuity
+
+open Uniformity.Density.Ladder
+
+/-- **The committed E.57 signature, byte-for-byte** (`leanspec/Leanspec/ChapE.lean:1159-1171`,
+blueprint §8 NODE E.57), proved outright. All three hypotheses — both carrier legs and the
+`hpart : True` GC-13 placeholder — are inert; the Lean linter flags all three as unreferenced. -/
+theorem block_split_IS_A_THEOREM {O : Type*} [CommRing O] [IsDomain O] {K : Type*} [Field K]
+    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface C B)
+    (hblocks : ∀ p ∈ I.sides, ∀ q ∈ I.linFac p,
+      ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
+        Fpq.natDegree = I.classCount p q)
+    (hblocksHi : ∀ p ∈ I.sides, ∀ q ∈ I.hiFac p,
+      ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
+        Fpq.natDegree = I.classCountHi p q)
+    (hpart : True) :
+    ∃ blocks : List (Polynomial O),
+        B.F = blocks.prod ∧
+        (blocks.map Polynomial.natDegree).sum = B.F.natDegree :=
+  ⟨[B.F], by simp, by simp⟩
+
+/-- The sharper form: the conclusion needs no rung interface, no block data, no domain
+hypothesis and no carrier — just a polynomial. This is why typing `hpart` cannot rescue the
+node: the strength was never in the displayed conclusion. -/
+theorem block_split_conclusion_from_nothing {O : Type*} [CommRing O] (F : Polynomial O) :
+    ∃ blocks : List (Polynomial O),
+        F = blocks.prod ∧
+        (blocks.map Polynomial.natDegree).sum = F.natDegree :=
+  ⟨[F], by simp, by simp⟩
+
+/-- And it survives an arbitrary typing of the socket: for every `P`, the committed shape with
+`hpart : P` is provable. The quantifier over `P` makes the orthogonality explicit. -/
+theorem socket_typing_is_orthogonal {O : Type*} [CommRing O] (P : Prop) (F : Polynomial O) :
+    P → ∃ blocks : List (Polynomial O),
+        F = blocks.prod ∧
+        (blocks.map Polynomial.natDegree).sum = F.natDegree :=
+  fun _ => block_split_conclusion_from_nothing F
+
+end E57Vacuity
+
+/-! ## Axiom footprint (all three: Lean core only — the point of the record) -/
+
+section AxCheck
+
+#print axioms E57Vacuity.block_split_IS_A_THEOREM
+#print axioms E57Vacuity.block_split_conclusion_from_nothing
+#print axioms E57Vacuity.socket_typing_is_orthogonal
+
+end AxCheck
