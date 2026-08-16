@@ -552,8 +552,7 @@ def _read_d2_work(RB, ringkind, q, state, W, pbar):
     assert M >= 1
     nA0 = tuple(RB.trunc(RB.shift_down(x, 2 * k), M) for x in R0)
     nA1 = tuple(RB.trunc(RB.shift_down(x, k), M) for x in R1)
-    RM = Ring(ringkind, q, prec)
-    assert _gauss_val(RM, nA0, M) >= 1 and _gauss_val(RM, nA1, M) >= 1, "d2 alpha child not a state"
+    assert _gauss_val(RB, nA0, M) >= 1 and _gauss_val(RB, nA1, M) >= 1, "d2 alpha child not a state"
     return read_cluster_d2(ringkind, q, (nA0, nA1), M, pbar)
 
 # ----------------------------------------------------------------------------------
