@@ -458,11 +458,238 @@ theorem hvarthetaRes_resigned_not_trivial :
   rw [this] at him
   simp [Complex.ratCast_im] at him
 
+/-! ## Part 4 — A-E.6: NODE E.57 (`block_split`)'s RE-SIGNED conclusion is NOT trivial, and
+is FALSE at the untyped GC-13 socket
+
+Companion to `leanfinal/Uniformity/ChapE/E57_VACUITY.lean.txt` (which proves E.57's COMMITTED
+conclusion — `∃ blocks : List (Polynomial O), B.F = blocks.prod ∧ (blocks.map natDegree).sum =
+B.F.natDegree` — outright, from nothing, for an arbitrary polynomial over an arbitrary
+`CommRing`: take `blocks := [B.F]`).  Amendment **A-E.6** re-signs that conclusion at the full
+per-block record `Nonempty (BlockSuite I)`, the same record A-E.2 gave `(LB1)`; this part
+certifies the re-sign in the A-E.2 standard, and one step further.
+
+The instance is `O = ℤ`, `K = ℚ`, `D = 1` (the Part-1 carrier `C₁`), key `Φ = X + 1`,
+`F = X²`, mass `μ = 2`, ONE side `p = (1, 1)` carrying TWO linear residual classes (labels
+`0` and `1`, each of multiplicity `1`) of class weight `1` each.  Every `RungInterface` law is
+met: `hresdeg` reads `1·(1+1) = 2 = len p`, `haccount` reads `rootCount p = 1·2 = 2`,
+`hexhaust` reads `1 + 1 = 2`, `hforce` reads `D·ℓ = 1 ≤ 1`, `hlen_sum` reads `2 = μ`.
+
+Two theorems, in increasing strength:
+
+* `e57_resigned_not_trivial : ¬ Nonempty (BlockSuite I₃)` — the re-signed CONCLUSION is false
+  at a legal instance, so it is not (as the committed one was) a theorem of Lean core.  This is
+  the A-E.2 non-triviality standard, applied to E.57.
+* `e57_resigned_false_at_untyped_socket : ¬ BlockSplitTarget I₃` — the whole re-signed
+  IMPLICATION is false: at this instance `hblocks` and `hblocksHi` HOLD (`Fpq := X` is monic,
+  divides `X²`, and has degree `1 = classCount p q`; `hiFac p = 0` makes `hblocksHi` vacuous)
+  and `hpart : True` holds trivially, yet the conclusion fails.  **So typing the GC-13 socket
+  is load-bearing, not cosmetic**: with `hpart : True` the re-signed node may NOT be asserted.
+  This is why A-E.6 records E.57 in `Leanspec.ChapE` as the named target `BlockSplitTarget`
+  rather than as an `axiom`.
+
+The mechanism is `hdisj`: the two parent classes force two blocks of degree `1` whose product
+is `X²` and which are coprime over `Frac(ℤ)` — impossible, since both are then `c · X`.  That
+is exactly the *product/disjointness* leg `hpart` stands for (`EFF.HE7.96`(a): "they partition
+the roots of `f_S`, since the label's factor is the minimal polynomial of `β_{2,ρ}`"), whose
+chapter-C carrier is C.63 `classSize_separable` / C.69 `classSize_supply`.
+
+⚠ DISCLOSED, not machine-checked here: `B₃.F = X²` is not separable, and the corpus carries
+`disc f ≠ 0` (`EFF.HE7.05`) as a standing convention that E.57's SIGNATURE does not bind.  A
+second, separability-immune countermodel is argued in the A-E.6 amendment text (a side with
+`ℓ = 2` and two classes of multiplicities `1, 2` admits class weights `3, 3` under `hforce`'s
+`≤`-shadow of the forcing DIVISIBILITY, and a degree-3 block on a slope-denominator-2 side
+violates its own `hresdeg`); it needs `BlockData.natDegree_F`, which is a stub `axiom` in this
+file's import, so it is left to the GC-13 pass rather than proved here off a non-core footprint. -/
+
+/-- `B₃`: key `Φ = X + 1` (monic of degree `D = 1`, and coprime to `F`), mass `2`, `F = X²`. -/
+noncomputable def B₃ : BlockData C₁ where
+  Φ := X + 1
+  F := X ^ 2
+  μ := 2
+  hμ := by norm_num
+  hΦ := by simpa using monic_X_add_C (1 : ℤ)
+  hΦdeg := by
+    show (X + 1 : ℤ[X]).natDegree = 1
+    simpa using natDegree_X_add_C (1 : ℤ)
+  A := fun j => if j = 0 then 1 else if j = 1 then -2 else 0
+  hdev := by
+    show (X ^ 2 : ℤ[X]) = (X + 1) ^ 2 + ∑ j ∈ Finset.range 2, _ * (X + 1) ^ j
+    simp [Finset.sum_range_succ]
+    ring
+  hdegA := by
+    intro j hj
+    interval_cases j <;> simp [C₁, gradedCarrier]
+  hkeyfree := by
+    -- `1 · X² + (-(X − 1)) · (X + 1) = 1`
+    refine ⟨1, -(X - 1), ?_⟩
+    simp only [Polynomial.map_add, Polynomial.map_pow, Polynomial.map_X, Polynomial.map_one]
+    ring
+  hA0 := by norm_num
+  T := 0
+
+/-- The one-side, two-class interface: side `(1,1)`, labels `0` and `1` of multiplicity `1`,
+class weights `1`. -/
+noncomputable def I₃ : RungInterface.{0, 0, 0} C₁ B₃ where
+  sides := {(1, 1)}
+  hside_cop := by
+    intro p hp
+    simp only [Finset.mem_singleton] at hp
+    subst hp
+    exact ⟨by decide, le_rfl⟩
+  hside_node := by
+    intro p hp
+    simp only [Finset.mem_singleton] at hp
+    subst hp
+    simp [B₃]
+  len := fun _ => 2
+  hlen_pos := fun _ _ => by norm_num
+  hlen_sum := by simp [B₃]
+  linFac := fun _ => {((0 : ℚ), 1), ((1 : ℚ), 1)}
+  hiFac := fun _ => 0
+  hresdeg := by
+    intro p hp
+    simp only [Finset.mem_singleton] at hp
+    subst hp
+    simp
+  rootCount := fun _ => 2
+  haccount := by
+    intro p hp
+    simp [C₁, gradedCarrier]
+  classCount := fun _ _ => 1
+  classCountHi := fun _ _ => 1
+  hnonempty := by
+    intro p hp
+    exact ⟨fun q _ => le_rfl, fun q hq => by simp at hq⟩
+  hforce := by
+    intro p hp
+    simp only [Finset.mem_singleton] at hp
+    subst hp
+    refine ⟨fun q _ => ?_, fun q hq => by simp at hq⟩
+    simp [C₁, gradedCarrier]
+  hexhaust := by
+    intro p hp
+    simp
+  W := Unit
+  wf := ⟨fun _ _ => False, ⟨fun a => ⟨a, fun _ h => h.elim⟩⟩⟩
+  σRank := ()
+
+lemma B₃_F_natDegree : B₃.F.natDegree = 2 := by
+  show (X ^ 2 : ℤ[X]).natDegree = 2
+  compute_degree!
+
+/-- **THE A-E.6 NON-TRIVIALITY CERTIFICATE.**  The re-signed E.57 conclusion is FALSE at the
+legal instance `(C₁, B₃, I₃)`: the parent records two classes of weight `1` on one side, so a
+suite would have to split `X²` into two blocks of degree `1` that are coprime over `Frac(ℤ)`,
+and the only degree-1 factors of `X²` are the unit multiples of `X`. -/
+theorem e57_resigned_not_trivial : ¬ Nonempty (BlockSuite.{0, 0, 0} I₃) := by
+  rintro ⟨S⟩
+  -- every suite block has degree 1 (all parent class weights are 1)
+  have hdeg1 : ∀ x ∈ S.blocks, x.1.F.natDegree = 1 := by
+    intro x hx
+    obtain ⟨p, _, hc⟩ := S.hcount x hx
+    rcases hc with ⟨q, _, he⟩ | ⟨q, _, he⟩ <;> simpa [I₃] using he
+  -- degree sum 2 ⟹ exactly two blocks
+  have hsum : (S.blocks.map fun x => x.1.F.natDegree).sum = 2 := by
+    rw [S.hdegsum, B₃_F_natDegree]
+  have hrep : (S.blocks.map fun x => x.1.F.natDegree) =
+      List.replicate (S.blocks.map fun x => x.1.F.natDegree).length 1 := by
+    apply List.eq_replicate_of_mem
+    intro b hb
+    obtain ⟨x, hx, rfl⟩ := List.mem_map.mp hb
+    exact hdeg1 x hx
+  have hlen : S.blocks.length = 2 := by
+    have := hsum
+    rw [hrep, List.sum_replicate, smul_eq_mul, mul_one] at this
+    simpa using this
+  obtain ⟨x, y, hxy⟩ := List.length_eq_two.mp hlen
+  -- the product identity in ℤ[X], and the disjointness shadow over `Frac(ℤ)`
+  have hprod : (X ^ 2 : ℤ[X]) = x.1.F * y.1.F := by
+    have := S.hprod
+    rw [hxy] at this
+    simpa [B₃] using this
+  have hcop : IsCoprime (x.1.F.map (algebraMap ℤ (FractionRing ℤ)))
+      (y.1.F.map (algebraMap ℤ (FractionRing ℤ))) := by
+    have := S.hdisj
+    rw [hxy] at this
+    exact (List.pairwise_cons.mp this).1 y (by simp)
+  have hxdeg : x.1.F.natDegree = 1 := hdeg1 x (by rw [hxy]; simp)
+  have hydeg : y.1.F.natDegree = 1 := hdeg1 y (by rw [hxy]; simp)
+  -- write both factors as aX + b, cX + d
+  have hxle : x.1.F.degree ≤ 1 := by
+    have h := degree_le_natDegree (p := x.1.F)
+    rw [hxdeg] at h
+    exact_mod_cast h
+  have hyle : y.1.F.degree ≤ 1 := by
+    have h := degree_le_natDegree (p := y.1.F)
+    rw [hydeg] at h
+    exact_mod_cast h
+  obtain ⟨a, b, hab⟩ : ∃ a b : ℤ, x.1.F = C a * X + C b :=
+    ⟨_, _, eq_X_add_C_of_degree_le_one hxle⟩
+  obtain ⟨c, d, hcd⟩ : ∃ c d : ℤ, y.1.F = C c * X + C d :=
+    ⟨_, _, eq_X_add_C_of_degree_le_one hyle⟩
+  rw [hab, hcd] at hprod
+  have hexp : (C a * X + C b) * (C c * X + C d)
+      = C (a * c) * X ^ 2 + C (a * d + b * c) * X + C (b * d) := by
+    simp only [C_mul, C_add]
+    ring
+  rw [hexp] at hprod
+  -- coefficient comparison at 2, 1, 0 : `ac = 1`, `ad + bc = 0`, `bd = 0`
+  have h2 := congrArg (fun p : ℤ[X] => p.coeff 2) hprod
+  have h1 := congrArg (fun p : ℤ[X] => p.coeff 1) hprod
+  have h0 := congrArg (fun p : ℤ[X] => p.coeff 0) hprod
+  simp only [coeff_add, coeff_C_mul, coeff_X_pow, coeff_X, coeff_C,
+    mul_ite, mul_one, mul_zero] at h2 h1 h0
+  norm_num at h2 h1 h0
+  -- `a ≠ 0` and `c ≠ 0` (their product is 1), hence `b = d = 0`
+  have ha0 : a ≠ 0 := by rintro rfl; simp at h2
+  have hc0 : c ≠ 0 := by rintro rfl; simp at h2
+  have hbd : b = 0 ∧ d = 0 := by
+    rcases h0 with rfl | rfl
+    · refine ⟨rfl, ?_⟩
+      have hz : a * d = 0 := by simpa using h1.symm
+      rcases mul_eq_zero.mp hz with h | h
+      · exact absurd h ha0
+      · exact h
+    · refine ⟨?_, rfl⟩
+      have hz : b * c = 0 := by simpa using h1.symm
+      rcases mul_eq_zero.mp hz with h | h
+      · exact h
+      · exact absurd h hc0
+  obtain ⟨rfl, rfl⟩ := hbd
+  -- both blocks are `c · X`, so `X` divides both images: coprimality fails
+  have hab' : x.1.F = C a * X := by rw [hab]; simp
+  have hcd' : y.1.F = C c * X := by rw [hcd]; simp
+  have hXx : (X : Polynomial (FractionRing ℤ)) ∣ x.1.F.map (algebraMap ℤ (FractionRing ℤ)) := by
+    rw [hab', Polynomial.map_mul, Polynomial.map_C, Polynomial.map_X]
+    exact ⟨Polynomial.C (algebraMap ℤ (FractionRing ℤ) a), by ring⟩
+  have hXy : (X : Polynomial (FractionRing ℤ)) ∣ y.1.F.map (algebraMap ℤ (FractionRing ℤ)) := by
+    rw [hcd', Polynomial.map_mul, Polynomial.map_C, Polynomial.map_X]
+    exact ⟨Polynomial.C (algebraMap ℤ (FractionRing ℤ) c), by ring⟩
+  exact Polynomial.not_isUnit_X (hcop.isUnit_of_dvd' hXx hXy)
+
+/-- **THE A-E.6 SOCKET FENCE.**  Stronger: the whole re-signed implication is FALSE at the
+untyped GC-13 placeholder.  `hblocks` holds at `(C₁, B₃, I₃)` with `Fpq := X` (monic, `X ∣ X²`,
+`natDegree X = 1 = classCount p q`), `hblocksHi` is vacuous (`hiFac p = 0`), `hpart : True`
+holds — and the conclusion is `e57_resigned_not_trivial`.  Hence `BlockSplitTarget` may NOT be
+asserted as an `axiom` before GC-13 types `hpart` against chapter C's partition record. -/
+theorem e57_resigned_false_at_untyped_socket : ¬ BlockSplitTarget.{0, 0, 0} I₃ := by
+  intro h
+  refine e57_resigned_not_trivial (h ?_ ?_ trivial)
+  · intro p hp q hq
+    refine ⟨X, monic_X, ?_, by simp [I₃]⟩
+    have hF : B₃.F = X ^ 2 := by simp [B₃]
+    rw [hF]
+    exact dvd_pow_self X (by norm_num)
+  · intro p hp q hq
+    simp [I₃] at hq
+
 /-! ## Footprint census: Lean core only (no `sorry`, no repo axiom, no stub axiom). -/
 
 #print axioms lb1_resigned_not_trivial
 #print axioms mp1_resigned_not_trivial
 #print axioms hvarthetaRes_resigned_not_trivial
 #print axioms voided_still_trivial_here
+#print axioms e57_resigned_not_trivial
+#print axioms e57_resigned_false_at_untyped_socket
 
 end OM4ResignCert

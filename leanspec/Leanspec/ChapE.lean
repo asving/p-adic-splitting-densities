@@ -1205,21 +1205,37 @@ axiom chain_invariant {O : Type*} [CommRing O] {K : Type*} [Field K]
 -- BLOCKED: GC-13 resolution (§12 BLOCKED-UNTIL-RESOLUTION; `hpart : True` placeholder —
 -- the product/disjointness carrier leg, typed against chapter C's partition record at freeze.
 -- The fleet must NOT fire on E.57 before that pass.)
+-- ⚠ RE-SIGNED at A-E.6 (2026-08-16), AND DEMOTED FROM `axiom` TO A NAMED TARGET `Prop`.
+-- Two machine-checked facts forced both halves; see the §8 A-E.6 RE-SIGN NOTE below.
+set_option linter.unusedVariables false in
 /-- **E.57** [theorem, HARD] The mixed-node block split (ANNEX-LEMMA HE7-13′(a), schema
-form) — the PROVED level-≥2 counterpart of `(LB1)`. -/
-axiom block_split {O : Type*} [CommRing O] [IsDomain O] {K : Type*} [Field K]
-    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface C B)
+form) — the PROVED level-≥2 counterpart of `(LB1)`.  **RE-SIGNED at A-E.6**: the conclusion
+is the FULL per-block record `Nonempty (BlockSuite I)` (E.39a), not the committed
+product/exhaustion layer, which was machine-refuted VACUOUS
+(`leanfinal/Uniformity/ChapE/E57_VACUITY.lean.txt`: the committed conclusion is a theorem of
+Lean core, `blocks := [B.F]`, for an arbitrary polynomial over an arbitrary `CommRing`).
+
+**NOT ASSERTED.**  At the GC-13 placeholder `hpart : True` the re-signed statement is FALSE —
+`verification/om4_resign_nontriviality.lean` Part 4 exhibits a legal `SlotCarrier ℤ ℚ` /
+`BlockData` / `RungInterface` instance at which `hblocks`, `hblocksHi` and `hpart` ALL HOLD and
+`Nonempty (BlockSuite I)` fails.  So the node is recorded here as a named `Prop`
+(`BlockSplitTarget`); the landing declaration keeps the blueprint name `block_split` and may be
+asserted only after GC-13 types `hpart` against chapter C's partition record (C.63
+`classSize_separable` / C.69 `classSize_supply`), which is also what LANDING waits on
+(`leanfinal/notes/RESCHEDULE_E57_2026-08-16.md`).  Binder names, order and statements are
+byte-preserved from the committed signature; the three `Type*`s are spelled at the explicit
+`uO`/`uK`/`uW` per the A-E.1/E-D6 latitude (identical elaborated signature). -/
+def BlockSplitTarget {O : Type uO} [CommRing O] [IsDomain O] {K : Type uK} [Field K]
+    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface.{uO, uK, uW} C B) : Prop :=
     -- carrier legs (C-supplied at instances; the schema's explicit hypotheses):
-    (hblocks : ∀ p ∈ I.sides, ∀ q ∈ I.linFac p,
+    ∀ (hblocks : ∀ p ∈ I.sides, ∀ q ∈ I.linFac p,
       ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
         Fpq.natDegree = I.classCount p q)
-    (hblocksHi : ∀ p ∈ I.sides, ∀ q ∈ I.hiFac p,
+      (hblocksHi : ∀ p ∈ I.sides, ∀ q ∈ I.hiFac p,
       ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
         Fpq.natDegree = I.classCountHi p q)
-    (hpart : True)  -- the product/disjointness leg; typed at GC-13 resolution
-    : ∃ blocks : List (Polynomial O),
-        B.F = blocks.prod ∧
-        (blocks.map Polynomial.natDegree).sum = B.F.natDegree
+      (hpart : True),  -- the product/disjointness leg; typed at GC-13 resolution
+    Nonempty (BlockSuite I)
 
 /-- **E.58** [lemma] The per-class refine quartet (HE7-13′(b)–(e)). -/
 axiom refine_quartet {O : Type*} [CommRing O] {K : Type*} [Field K]
