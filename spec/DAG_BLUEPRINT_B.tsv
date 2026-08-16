@@ -561,3 +561,4 @@ BP.B.79	BP.B.25	stmt-dep	B	OPEN	blueprint	from:exact,to:exact	blueprint	source=b
 BP.B.80	BP.B.25	stmt-dep	B	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-B NODE B.80 SIGNATURE (resField) — stmt-dep extraction gap, added at A-F.4 (2026-08-15)
 BP.B.81	BP.B.25	stmt-dep	B	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-B NODE B.81 SIGNATURE (resField) — stmt-dep extraction gap, added at A-F.4 (2026-08-15)
 BP.B.82	BP.B.25	stmt-dep	B	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-B NODE B.82 SIGNATURE (resField) — stmt-dep extraction gap, added at A-F.4 (2026-08-15)
+BP.B.63	BP.B.66	stmt-dep	B	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-B NODE B.63 SIGNATURE (order1Type — re-signed conclusion) — stmt-dep, added at A-F.11 (2026-08-16)

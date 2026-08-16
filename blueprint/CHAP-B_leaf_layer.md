@@ -4254,58 +4254,95 @@ regression** retained.
 
 ### NODE B.63 [theorem] [fresh]
 
+*[re-signed: A-F.11 — the CONCLUSION now delivers B.66's canonical datum
+(`(typeOf f).data = (order1Type π φ f).data`) instead of an unconstrained existential multiset, and
+the hypothesis `dev φ f 0 ≠ 0` comes in (A-F.9's peel step 0 is retired with it). Reason: wave-15's
+B.79 agent confirmed §14 item 12 in the strong form — the committed conclusion's `T` was tied to
+nothing, so B.79a's term-by-term tie was underivable from ANY proof of this node. Full record,
+including the route verification against steps 1–4 and the rejected three-clause alternative:
+amendment A-F.11.]*
+
 **STATEMENT.** *NS-6, the `⇐` direction: separable residuals give a complete leaf factorization.* Over
 the complete bundle, let `φ` be an order-1 key and `f` monic with
-`f.map (residue O) = (φ.map (residue O))^μ`, `0 < μ`. Suppose that for every slope `(u,ℓ)` of `f`'s
-`φ`-adic polygon the residual polynomial is **separable**. Then `f` factors as a product indexed by
-pairs `(slope, monic irreducible residual factor)`, each factor being a leaf in the sense of B.58 /
-B.60 / B.61, with `(f_{S,ψ}).natDegree = ℓ_S * m * ψ.natDegree`; and
+`f.map (residue O) = (φ.map (residue O))^μ`, `0 < μ`, **and `dev φ f 0 ≠ 0`** *([re-signed: A-F.11] —
+the classical standing hypothesis `φ ∤ f`, as at B.42/B.71/B.72/B.79a; the canonical conclusion below
+is not peel-tolerant, and without it the node is refuted at `f = φ`, where `typeOf φ = ⟨{(1,m)}⟩` but
+`slopeFinset π φ φ = ∅`)*. Suppose that for every slope `(u,ℓ)` of `f`'s `φ`-adic polygon the residual
+polynomial is **separable**. Then `f` factors as a product indexed by pairs
+`(slope, monic irreducible residual factor)`, each factor being a leaf in the sense of B.58 / B.60 /
+B.61, with `(f_{S,ψ}).natDegree = ℓ_S * m * ψ.natDegree`; and
 
 ```
-(typeOf f).data  =  Σ_{(S,ψ)}  {(ℓ_S, m * ψ.natDegree)}
+(typeOf f).data  =  (order1Type π φ f).data                                      -- B.66's datum
+                 =  Σ_{S ∈ slopeFinset π φ f} Σ_{ψ ∈ resFactorFinset π φ f S} {(ℓ_S, m * ψ.natDegree)}
 ```
 whenever every `(S,ψ)` lies in D-3's unconditional perimeter (`ℓ_S = 1` or `ψ.natDegree = 1`), and in
-general under `B-BOX-1` for the pairs outside it.
+general under `B-BOX-1` for the pairs outside it. The second line is B.66's definition read through
+B.66a's two canonical index `Finset`s, i.e. the sum is over the polygon's own slopes and each side's
+own monic irreducible residual factors — *that* identification, not the bare multiset, is what the
+consumers (B.71, B.79a) need and what the route below proves.
 
 **SIGNATURE.**
 ```lean
 namespace Uniformity.Density.Leaf
 
+-- [re-signed: A-F.11] `(h0 : dev φ f 0 ≠ 0)` added and the CONCLUSION replaced. The committed
+-- form's second clause was `(typeOf f).data = (T.val.map (fun t => (t.1.2, φ.natDegree *
+-- t.2.natDegree)))` under `∃ T F`, with NO clause tying `T` to `slopeFinset`/`resFactorFinset`:
+-- the index was unconstrained (the slope numerator `t.1.1` does not occur in the conclusion at
+-- all, and `t.2` occurs only through its degree), so no consumer could name a canonical index
+-- and B.79a step 2's term-by-term tie was underivable from any proof of this node (wave-15;
+-- amendment A-F.11 (I)–(II)). The canonical datum is what steps 1–4 actually prove (A-F.11 (IV)).
+-- `h0` is forced by the strengthening: the old conclusion was peel-tolerant precisely because it
+-- was index-free (A-F.9's step 0 dumped the `φ^k` tags into `T` with fresh slope labels), while
+-- `order1Type` reads the polygon only — refuted at `f = φ` without `h0`. Free at every consumer
+-- (B.71's `hnz` verbatim per block, B.79a's own `h0`, B.79b via `hvis` + B.76(ii)).
 theorem typeOf_of_separable_residuals (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (h0 : dev φ f 0 ≠ 0)
     (hsep : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ∀ h : (sideSet φ f u ℓ).Nonempty,
       1 < (sideSet φ f u ℓ).card → ∀ H₀ : ℕ, npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞) →
         (resPoly π φ f u ℓ h H₀).Separable)
     (hperim : ∀ u ℓ : ℕ, ∀ ψ : Polynomial (resField φ), … ) :
-    ∃ (T : Finset ((ℕ × ℕ) × Polynomial (resField φ))) (F : _ → Polynomial O),
-      f = ∏ t ∈ T, F t ∧
-      (typeOf f).data = (T.val.map (fun t => (t.1.2, φ.natDegree * t.2.natDegree)))
+    (typeOf f).data = (order1Type π φ f).data ∧
+      ∃ (T : Finset ((ℕ × ℕ) × Polynomial (resField φ)))
+        (F : (ℕ × ℕ) × Polynomial (resField φ) → Polynomial O), f = ∏ t ∈ T, F t
 ```
 *(the `hperim` clause is the perimeter/`B-BOX-1` disjunction; its exact form is fixed by B.58/B.60/B.61
-and is written out in full in the leanspec stub — see §12 item 4.)*
+and is written out in full in the leanspec stub — see §12 item 4. [re-signed: A-F.11] the retained
+factorization clause is the NS-6 (⇐) product statement and is deliberately left index-free — by itself
+it is weak (any monic `f` satisfies it at a singleton `T` with `F t := f`); the leaf content lives in
+the STATEMENT prose and in the per-leaf B.58/B.60/B.61 applications inside the PROOF, and B.65's
+clause-3 `iff` is where a full leaf-factorization statement would have to be signed. Candidate further
+strengthening, recorded but NOT applied: `∀ t ∈ T, (F t).Monic ∧ (F t).natDegree = t.1.2 * (φ.natDegree
+* t.2.natDegree)` over the canonical index — A-F.11 (VII), flagged into §14 item 12's annotation.)*
 
-**DEPENDS.** B.27 · B.42 · B.45 · B.48 · B.58 · B.60 · B.61 · landed
-`Uniformity.Density.typeOf_mul` (`TypeOfAlgebra.lean:58`), `monicFactors_mul` (`:46`),
-`FactorizationType.degree_mk_add` (`:72`) · *[A-F.9]* landed CN-21
-`Uniformity.Density.typeOf_inert_of_irreducible_map` (`Density/InertLeaf.lean:179`) · mathlib
-`Polynomial.modByMonic_eq_zero_iff_dvd` (step 0's effectivity).
+**DEPENDS.** B.27 · B.42 · B.45 · B.48 · B.58 · B.60 · B.61 · *[A-F.11]* B.66 (`order1Type` — now in
+the SIGNATURE, so B.66 and B.66a are STATEMENT dependencies, not just route ones; §12 rule 2's stub
+order is extended accordingly) · B.66a (`slopeFinset`, `resFactorFinset`, `mem_slopeFinset`,
+`mem_resFactorFinset` — landed, `leanfinal/Uniformity/ChapB/B66a.lean`) · B.17
+(`npHgt_ne_top_of_onSide` — the `sideMin`-pin height is finite, so B.66a's membership divisibility is
+not vacuous) · landed `Uniformity.Density.typeOf_mul` (`TypeOfAlgebra.lean:58`), `monicFactors_mul`
+(`:46`), `FactorizationType.degree_mk_add` (`:72`), `Uniformity.Hensel.natDegree_eq_of_map_eq`
+(B.66a's `hdeg`) · mathlib `Multiset.map_bind`/`Multiset.sum_bind`, `Finset.sum_eq_multiset_sum`
+(step 4's `bind`-to-double-sum unfold). *[A-F.11 — RETIRED with step 0: landed CN-21
+`typeOf_inert_of_irreducible_map` and mathlib `Polynomial.modByMonic_eq_zero_iff_dvd`, which existed
+in this DEPENDS only for A-F.9's `φ`-part peel.]*
 
 **PROOF.**
-0. *[repaired: A-F.9 — the `φ`-part peel; SIGNATURE byte-unchanged.]* B.42 now carries the
-   classical standing hypothesis `dev φ f 0 ≠ 0`, which THIS node's hypotheses do not give
-   (`hres` holds at `f = φ^k·f'` for any `k`), so peel first: write `f = φ^k · f'` with
-   `k := ord_φ f` maximal (effective by `dev φ f 0 = 0 ↔ φ ∣ f` and degree recursion; each
-   quotient is monic since `φ` is), so `dev φ f' 0 ≠ 0` and `f̄' = φ̄^{μ−k}` (cancellation in
-   the domain `(ResidueField O)[X]`). `typeOf φ = ⟨{(1, m)}⟩` by landed CN-21
-   `typeOf_inert_of_irreducible_map` (`hφ.irred`, `hφ.pos`); `typeOf f = k • that + typeOf f'`
-   by landed `typeOf_mul` iterated (all factors monic). Enlarge the final `T` by `k` fresh tags
-   `((v_j, 1), ψ_lin)` — first coordinates chosen above `T₁`'s finite bound, each mapping to
-   `(1, m·1) = (1, m)`, with `F` sending each tag to `φ` (classical `if`-split) — and at
-   `k = μ`, `f' = 1` and `T` is the tags alone. Steps 1–4 below run on `f'` (if `k < μ`; its
-   `hμ` is `0 < μ − k`).
-1. B.42 splits `f'` into `(u_i,ℓ_i)`-pure pieces `f_i`, one per slope (its `h0` is step 0's
-   maximality).
+0. **RETIRED at A-F.11** (`h0` is now a hypothesis of this node, so there is nothing to peel; steps
+   1–4 run on `f` itself). *(The retired text — A-F.9's `φ`-part peel `f = φ^k·f'` with the `k` extra
+   `T`-tags — is preserved in amendment A-F.11 (III) and in A-F.9's consumer-audit row for B.63. Its
+   tags are exactly why the committed conclusion could not be canonical: an index-free multiset
+   absorbed them, `order1Type` cannot.)*
+1. B.42 splits `f` into `(u_i,ℓ_i)`-pure pieces `f_i`, one per slope (its `h0` is this node's `h0`).
+   **[A-F.11 — the slope leg of the canonical tie, from statements only.]** B.42's clause 5
+   (`∀ u ℓ, 0 < ℓ → Nat.Coprime u ℓ → (1 < (sideSet φ f u ℓ).card ↔ (u,ℓ) ∈ s)`) and clause 1
+   (`∀ p ∈ s, 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2`) give `s = slopeFinset π φ f` by
+   `Finset.ext` against B.66a's landed membership reading (`mem_slopeFinset_imp` for `→`,
+   `mem_slopeFinset hφ hf hdeg` for `←`; `hdeg : f.natDegree = μ * φ.natDegree` is free from `hf`
+   and `hres` by landed `natDegree_eq_of_map_eq`). No re-opening of any construction is involved.
 2. B.48 splits each `f_i` according to its residual factorization; `hsep` and B.45 make every
    multiplicity `1`, so each piece has residual a unit times a single irreducible `ψ`.
    *[A-F.9: B.48's `hu`/`hfd` come from B.42's A-F.6 clauses as before; its `hH₀` from the new
@@ -4319,17 +4356,37 @@ and is written out in full in the leanspec stub — see §12 item 4.)*
    `Polynomial.Separable.map`-free unit arithmetic (a unit times a separable polynomial is
    separable). The former instruction "the fleet derives it from the step-1 construction, where
    B.41's `hprod` hands each piece its residual" is void — under the cite there is no
-   construction to re-open, which is exactly why clause 6 was added (A-F.10 (IV))]*; the peel
-   of step 0 transports `hsep` from `f` to `f'`
-   trivially, since `dev φ (φ^k·f') j = dev φ f' (j−k)` (B.06 uniqueness) shifts the polygon
-   whole: same sides, same residuals.]*
+   construction to re-open, which is exactly why clause 6 was added (A-F.10 (IV))]*. *[A-F.11 — the
+   `hsep`-transport-through-the-peel sentence is retired with step 0.]*
+   **[A-F.11 — the residual leg of the canonical tie.]** B.48's output `Finset` `s_i` at the piece
+   `f_i` consists of monic irreducibles with `resPoly π φ f_i … = C c * ψ^{a ψ}`, and `hsep` +
+   B.45's last clause force `a ψ = 1`, so `s_i` is exactly the set of monic irreducible divisors of
+   the piece's residual polynomial (a prime divides a squarefree product of distinct monic
+   irreducibles iff it is one of them). B.42's clause 6 (the A-F.10 residual tie
+   `resPoly π φ f p … = C c * resPoly π φ (F p) p …`) carries that divisor set to `f`'s own
+   `sideMin`-pinned residual, which is B.66a's landed reading of `resFactorFinset π φ f (u_i,ℓ_i)`
+   (`mem_resFactorFinset`, monic irreducible dividing the pinned residual). The pin is honest, not
+   vacuous: the height at `sideMin` is finite by B.17's `npHgt_ne_top_of_onSide`, so exactly one
+   `H₀ : ℕ` satisfies B.66a's membership condition. Hence `s_i = resFactorFinset π φ f (u_i,ℓ_i)`.
 3. Each piece is a leaf: B.58 if `ψ.natDegree = 1`, B.60 if `ℓ_i = 1 ∧ φ.natDegree = 1`
    [repaired: A-F.7 — B.60 is re-signed at the linear key], B.61 under `B-BOX-1`
    otherwise. Its `typeOf` is `⟨{(ℓ_i, m·ψ.natDegree)}⟩`.
-4. Landed `typeOf_mul` (iterated over the `Finset` product by `Finset.prod_induction`, with
-   monicity preserved) turns the product into the multiset sum.
+4. B.63a's `typeOf_prod` (landed `typeOf_mul` iterated over a `Finset` product, monicity preserved)
+   applied twice — outer over `s = slopeFinset π φ f` (step 1), inner over
+   `s_i = resFactorFinset π φ f (u_i,ℓ_i)` (step 2) — gives
+   `(typeOf f).data = ∑ p ∈ slopeFinset π φ f, ∑ ψ ∈ resFactorFinset π φ f p,
+   {(p.2, φ.natDegree * ψ.natDegree)}`, and **that double sum IS `(order1Type π φ f).data`**: landed
+   `order1Type_data` (`leanfinal/Uniformity/ChapB/B66.lean:114`) plus the `Multiset.bind`-to-`Finset`
+   double-sum unfold (`Multiset.map_bind`/`Multiset.sum_bind`/`Finset.sum_eq_multiset_sum` — the two
+   rewrites landed `order1Type_degree` already performs at `B66.lean:142`). **Booked micro-obligation
+   (A-F.11):** land that unfold once, as a read-off lemma `order1Type_data_eq_sum` in B.66's landed
+   file (~5 lines, no signed statement changes), rather than growing a private copy here and at B.72
+   — the §0.2 private-copy ban.
 
-**SIZE.** 70 lines. **SPLIT CANDIDATE** at step 4 (the `Finset`-indexed `typeOf_mul` iteration is
+**SIZE.** 70 lines. *[A-F.11: unchanged as a total — the two canonical-tie legs (steps 1–2, ~25 lines
+of `Finset.ext` against B.66a's membership lemmas) replace A-F.9's retired step-0 peel (~20 lines).
+The work moved INTO this node from B.79a, which is why B.79a drops to a one-liner.]* **SPLIT
+CANDIDATE** at step 4 (the `Finset`-indexed `typeOf_mul` iteration is
 reusable and the orchestrator should expect a RE-PLAN request for `typeOf_prod`).
 
 **⚠ `typeOf_prod` IS A MISSING SUPPLIER AND IS BOOKED HERE.** Landed `typeOf_mul` is binary; step 4
@@ -4440,7 +4497,12 @@ theorem ns6_biconditional (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKe
               ¬ (ψ ^ 2 ∣ resPoly π φ f u ℓ h H₀))
 ```
 *(clause 3 is B.63's conclusion and is stated as a separate `iff` in the same file; the SIGNATURE above
-freezes the `1 ↔ 2` half, whose statement needs no perimeter hypothesis. Clause 1's quantifier prefix
+freezes the `1 ↔ 2` half, whose statement needs no perimeter hypothesis. **[A-F.11 — clause 3's
+unsigned `iff` inherits B.63's re-sign]**: its `3` is now *"`(typeOf f).data = (order1Type π φ f).data`
+plus the product clause"*, and it carries B.63's new `(h0 : dev φ f 0 ≠ 0)` — which the `3 → 2` half
+needs anyway (at `f = φ`, clause 1 holds vacuously while clause 3 reads `⟨{(1,m)}⟩ = ⟨0⟩`, so the
+un-`h0`'d `iff` would be false in the `1 → 3` direction). The frozen `1 ↔ 2` half is byte-unchanged.
+When that `iff` is signed, it must be signed with `h0`. Clause 1's quantifier prefix
 is byte-identical to B.63's `hsep` — the previously elided pin is written out per amendment A-F.1
 (PA-1): it sits at the side's left endpoint `sideMin`, never at abscissa 0. Clause 2 carries the same
 prefix; its `¬ ψ² ∣` body is the multiplicity-free reading of "multiplicity 1", re-signed and proved
@@ -4500,6 +4562,17 @@ books it separately.)*
 their signed forms — the two `Finset` suppliers as opaque constants and the two membership lemmas
 with the elisions expanded (marked NOT-CONTRACT) — are displayed in full at amendment A-F.3 item
 B-D4, which is their single blueprint source.]*
+
+*[A-F.11 — THIS NODE IS NOW A STATEMENT DEPENDENCY OF B.63, not only of B.71/B.72/B.79a.* B.63's
+re-signed conclusion reads `(typeOf f).data = (order1Type π φ f).data`, so `order1Type` must be
+signed **before** B.63's stub: §12 rule 2's hard exception is extended from "the B.66a suppliers and
+B.63a" to "the B.66a suppliers, B.63a, **and B.66's `order1Type` itself**". Landed reality already
+matches — `leanfinal/Uniformity/ChapB/B66.lean` imports `B66a` and is axiom-free — and the leanspec
+stub file was re-ordered accordingly at this amendment. Two consequences worth stating: (i) the
+"private helpers" hedge in the SIGNATURE gloss above is now definitively void (three §8/§9 nodes read
+them by name); (ii) B.66's landed `order1Type_data` read-off, plus the booked
+`order1Type_data_eq_sum` unfold (B.63 step 4), are the interface through which B.63 discharges its
+conclusion — nothing else about B.66 changes.]*
 
 **DEPENDS.** B.20 · B.42 · B.45 · landed `FactorizationType`.
 
@@ -4789,11 +4862,28 @@ B.80 to the data form, and the gate signed exactly this. [repaired: A-F.3/B-D10]
 **DEPENDS.** B.63 · B.66 · B.67 · B.68.
 
 **PROOF.**
-1. B.67 peels the blocks and gives the multiset additivity.
-2. B.63 computes each block's `typeOf` as its `order1Type` (B.66).
+1. B.67 peels the blocks and gives the multiset additivity. *(In the signed data form the peel is
+   supplied: `hgmon`/`hgprod`/`hgres` are B.67's conclusion as hypotheses, and B.63a's `typeOf_prod`
+   over `hgprod` gives `(typeOf f).data = ∑ i ∈ s, (typeOf (g i)).data`.)*
+2. B.63 computes each block's `typeOf` as its `order1Type` (B.66). *[re-signed: A-F.11 — this step is
+   now a REWRITE, not a reconstruction.* B.63's re-signed conclusion delivers
+   `(typeOf (g i)).data = (order1Type π (φ i) (g i)).data` as its first clause, applied at
+   `(φ, f) := (φ i, g i)` with `hμ := a i` positive, `hsep i`/`hperim i` verbatim, and **`hnz i` as B.63's new `h0`** — A-F.9 added `hnz` here for an
+   unrelated refutation (the singleton block `g i₀ = φ i₀`) and it is exactly the per-block hypothesis
+   A-F.11 now requires, so **this node's SIGNATURE is byte-unchanged** and no call site pays anything.
+   The former route — open B.63's existential `T` per block and re-index it — is void and was in any
+   case underivable (A-F.11 (I)–(II)).]*
+2′. **[A-F.11 — the one degenerate block this node's signature admits.]** `a : ι → ℕ` carries no
+   positivity clause, and B.63 needs `0 < μ`, so a block with `a i = 0` must be handled off-route:
+   there `(g i).map (residue O) = 1` forces `(g i).natDegree = 0` (landed `natDegree_eq_of_map_eq`),
+   hence `g i = 1` by monicity, and both sides of the per-block identity are the empty type
+   (`slopeFinset π (φ i) 1 = ∅` — a one-point polygon has no two-point side, the `order1Type_zero`
+   argument of `B66.lean:149` at `f = 1` instead of `f = 0`; and `typeOf 1` is `⟨0⟩` by the landed
+   `monicFactors` of a unit). Recorded so the fleet does not discover it as a failed `B.63` call. This
+   is a PROOF obligation only — no signature moves.
 3. Sum.
 
-**SIZE.** 26 lines.
+**SIZE.** 26 lines. *[A-F.11: unchanged — step 2 got shorter, nothing got longer.]*
 
 **SOURCE.** `EFF.W12.09` (THEOREM W-12.A: "`σ(T)` is read off by Ore's theorem: one étale piece
 `(e_S, d_i·deg ψ)` per side `S` and irreducible residual factor `ψ` of `R_S`"); `EFF.W12.29` (the
@@ -5437,21 +5527,30 @@ of §12 item 4, and the stub is the single source for both — a divergence ther
 blueprint defect.)*
 
 **DEPENDS.** (a): B.13 · B.42 · B.45 · B.58 · B.60 · B.61 · B.63 · B.63a (`typeOf_prod`) · B.66.
-(b): (a) · B.73 · B.74 · B.75 · B.76 (`visible_congr`) · B.77 (all three transport clauses) ·
-landed `Uniformity.Hensel.natDegree_eq_of_map_eq`.
+*[A-F.11 — half (a)'s DIRECT dependencies are now just B.63 · B.66 · landed `FactorizationType.ext`;
+everything else on that line is inherited **through** B.63 (whose own DEPENDS now carries B.66/B.66a
+and the tie legs). The line is kept as written so the generated §11 edges stay valid — they are true
+transitive dependencies, and a trim would need a TSV regeneration, not a hand edit.]*
+(b): (a) · B.73 · B.74 · B.75 · B.76 (`visible_congr`, `visible_iff_npHgt_lt`) · B.77 (all three
+transport clauses) · landed `Uniformity.Hensel.natDegree_eq_of_map_eq` · *[A-F.11]* landed B.74's
+`suppVal_lt_of_vis` (promote from `private`; step 3's `hH₀` guard).
 
 **PROOF.**
 1. **(a).** B.63 (whose `hsep` is `hterm` unfolded — B.73's `NeedsDescent` is the `∃`-negation of
    exactly B.63's `∀`-clause, a `push_neg` away) factors `g` over the pairs
    `(slope, irreducible residual factor)` and gives
    `(typeOf g).data = Σ_{(S,ψ)} {(ℓ_S, m·deg ψ)}`.
-2. B.66's `order1Type π φ g` is by definition the same multiset, indexed by B.66's canonical
-   finsets `slopeFinset`/`resFactorFinset`. **Tying step 1's existentially produced index family
-   to the canonical finsets is this half's real work** (B.63's `T` is existential): the proof
-   re-reads B.63's own steps 1–2 — the slope split is B.42's, whose slopes are by construction
-   the elements of `slopeFinset`; the residual split is B.45's, whose factors are
-   `resFactorFinset`'s — so the two multisets are equal term by term. `FactorizationType.ext`
-   closes. *(See the ⚠ RE-PLAN item.)*
+2. *[re-signed: A-F.11 — THIS STEP IS NOW ONE LINE.]* B.63's first conclusion clause **is**
+   `(typeOf g).data = (order1Type π φ g).data`, so `FactorizationType.ext` closes the half:
+   `exact FactorizationType.ext (typeOf_of_separable_residuals hπ hφ hg hμ hres h0 hsep hperim).1`.
+   *(The committed instruction — "**Tying step 1's existentially produced index family to the
+   canonical finsets is this half's real work** (B.63's `T` is existential): the proof re-reads
+   B.63's own steps 1–2 — the slope split is B.42's, whose slopes are by construction the elements
+   of `slopeFinset`; the residual split is B.45's, whose factors are `resFactorFinset`'s — so the
+   two multisets are equal term by term" — was IMPOSSIBLE as written: a consumer holding only
+   B.63's committed conclusion cannot re-read B.63's proof, and the conclusion constrained `T`
+   nothing (wave-15; A-F.11 (I)–(II)). The tie now lives where the witnesses live, inside B.63's
+   own steps 1–2, which is the only place it is available at all.)*
 3. **(b).** Transport every hypothesis of (a) from `g` to `g'`:
    `g'.map (residue O) = (φ.map (residue O))^μ` — from `hgg'` at any `i` with the reduction map
    (the `N ≥ 1` needed is automatic: `hvis` forces `0 < N`, since `Visible` at `N = 0` is
@@ -5459,6 +5558,36 @@ landed `Uniformity.Hensel.natDegree_eq_of_map_eq`.
    consumes B.75 and B.77, and whose hypotheses are exactly `hgg'`, `hvis`); `hperim` for `g'` —
    its data (slopes, residual factors) are **equal**, not just corresponding, by B.77's
    `sideSet_congr`/`resPoly_congr`, so the clause transports by rewriting.
+
+   **⚠ [A-F.11 — THE `hH₀` GUARD OF B.77b, DERIVED HERE ONCE; this is the reschedule inheritor's
+   map.]** Landed B.77b's `resPoly_congr` (`leanfinal/Uniformity/ChapB/B77b.lean:205`) carries the
+   window guard `(hH₀ : H₀ < N)` as a hypothesis — deliberately, since it transports whatever
+   polynomial the consumer's convention names (B.77's ⚠). This node is the consumer, so it must
+   discharge the guard at every slope it rewrites, and `hvis` is enough. The chain (HE-T-CAP's
+   window condition, read off `visible_iff_npHgt_lt`), at any `(u,ℓ)` with `0 < ℓ` and any
+   nonemptiness witness `h`, with the consumer's `sideMin` pin `npHgt φ g (sideMin φ g u ℓ h) =
+   (H₀ : ℕ∞)`:
+
+   ```
+   ℓ • npHgt φ g (sideMin φ g u ℓ h)
+       ≤ ℓ • npHgt φ g (sideMin …) + (u * sideMin … : ℕ)      -- le_self_add
+       = suppVal φ g u ℓ                                      -- B.20 onSide_of_mem_sideSet
+                                                              --  + B.16's OnSide, at sideMin ∈ sideSet
+       < ((ℓ * N : ℕ) : ℕ∞)                                   -- from hvis: the abscissa-0 term
+                                                              --  bounds the inf (B.14) and
+                                                              --  npHgt φ g 0 < N (B.76(ii))
+   ⟹ ℓ * H₀ < ℓ * N  in ℕ   ⟹   H₀ < N                       -- Nat.lt_of_mul_lt_mul_left, 0 < ℓ
+   ```
+
+   The `<`-step is **already landed**, as B.74's private helper `suppVal_lt_of_vis`
+   (`leanfinal/Uniformity/ChapB/B74.lean:139`: `suppVal φ f u ℓ < ((ℓ * N : ℕ) : ℕ∞)` from
+   `hvis`, `0 < ℓ`) — which is also how landed B.74 discharges its own version of this guard, so the
+   `hterm` half of this step needs nothing new. **Action for the B.79b unit:** promote
+   `suppVal_lt_of_vis` from `private` to public in `B74.lean` (a visibility change only, no statement
+   and no footprint change) and consume it by name; do NOT re-derive it (§0.2's private-copy ban). One
+   visibility hypothesis at abscissa 0 therefore guards the whole side family — that is exactly the
+   content `HE-T-CAP` (`EFF.HE3.54`) tests, and why this node's TEETH row lists it as a Lean theorem
+   "via B.77's clause 5 guard, consumed at step 3".
 4. Apply (a) to `g'`: `typeOf g' = order1Type π φ g'`.
 5. `order1Type π φ g' = order1Type π φ g`: B.66's definition reads only `slopeFinset` and
    `resFactorFinset`, both of which are built from `sideSet`/`resPoly` data that B.77 transports
@@ -5484,6 +5613,12 @@ cross-read must check that B.79a step 2's "term by term" tie is actually availab
 statements as committed (if B.63's existential cannot be re-opened, B.63's SIGNATURE needs its `T`
 strengthened to the canonical finsets — a §8-owned statement refinement, same class as defect
 D-§9.1).
+*[CLOSED at A-F.11 (2026-08-16) — the item fired and the predicted repair executed.* Wave-15's B.79
+agent confirmed the tie is NOT available: B.63's conclusion constrained `T` nothing, so the tie was
+underivable from any proof of B.63, not merely hard to extract. B.63's conclusion is re-signed at
+`(typeOf f).data = (order1Type π φ f).data` (with `h0`), the tie is proved inside B.63's own steps 1–2
+where B.42/B.48/B.45's witnesses are in scope, and step 2 above becomes one `FactorizationType.ext`.
+The stub order this ⚠ demanded is unchanged and now also covers B.66 itself (§12 rule 2).]*
 
 **⚠ WHAT THIS NODE DOES *NOT* SAY.** No bound on `N` in terms of `μ`, `λ`, or anything else: the
 refuted `LEMMA HE3-5` bullet ("one more window unit", `EFF.HE3.37`) is **not** transcribed, per
@@ -6863,10 +6998,15 @@ B.73's FAITHFULNESS).
    are `theorem`s the fleet proves (B-D2); `residueFieldEquiv` is data the fleet constructs,
    with the `IsLocalRing` instance applied explicitly in its type.
 2. **Stub order is §11's topological order, with one hard exception:** the B.66a suppliers
-   (`slopeFinset`/`resFactorFinset` + membership lemmas) and B.63a (`typeOf_prod`) must be signed
-   **before** B.79a/B.79b, B.80, B.71 and B.63's stub (A-§9.5 booking (1); B.79's ⚠ — B.79a
-   *proves* through the canonical finsets, so a stub order that reaches B.79 first would freeze a
-   signature whose proof route has no supplier).
+   (`slopeFinset`/`resFactorFinset` + membership lemmas), B.63a (`typeOf_prod`) **and B.66's
+   `order1Type` itself** *[extended: A-F.11 — B.63's re-signed conclusion NAMES `order1Type`, so
+   this is now a statement dependency, not only a route one]* must be signed **before**
+   B.79a/B.79b, B.80, B.71 and B.63's stub (A-§9.5 booking (1); B.79's ⚠ — B.79a *proves* through
+   the canonical finsets, so a stub order that reaches B.79 first would freeze a
+   signature whose proof route has no supplier). **Executed in `leanspec/Leanspec/ChapB.lean` at
+   A-F.11**: the `order1Type` body is hoisted into the RE-PLAN supplier block ahead of B.63, with a
+   pointer left at B.66's §-order slot; the landed `leanfinal` import graph already matches
+   (`B66.lean` imports `B66a`).
 3. **B.62 is NOT signed.** Its SIGNATURE field is explicitly *"not frozen — this node is
    OPTIONAL … the orchestrator must re-sign it before it fires"* (the H §15 rule-3 /
    `G.23a`-comment-out precedent class). Signing it now would freeze an interface the mathlib
@@ -7153,6 +7293,21 @@ cross-read debt covers all of it. **Items 1–13 are the committed text's own fo
     recommended repair, owner-gated, with the alternative (B.79a re-proves the split rather than
     re-reading it, at ~2× the committed size) recorded. Whichever lands, §12 rule 2's stub order
     already forces B.66a first.
+    **[FIRED AND CLOSED at A-F.11, 2026-08-16 — the recommended repair is APPLIED.]** Wave-15's
+    B.79 agent returned BLOCKED and confirmed the finisher's adjudication in the strong form: the
+    committed conclusion constrained `T` *nothing* (the slope numerator never occurs in it; the
+    residual factor occurs only through its degree), so the tie was underivable from **any** proof
+    of B.63, and no counting or degree bookkeeping can recover it (A-F.11 (II)). B.63's conclusion
+    is re-signed at `(typeOf f).data = (order1Type π φ f).data` with `(h0 : dev φ f 0 ≠ 0)`; the
+    tie is proved inside B.63's steps 1–2 from B.42's clauses 1/5/6, B.48, B.45 and B.66a's landed
+    membership lemmas; B.79a step 2 becomes one `FactorizationType.ext`; B.71's SIGNATURE is
+    byte-unchanged (its A-F.9 `hnz` is exactly B.63's new `h0`, per block). **Residual duty for
+    the cross-read, inherited from this item:** B.63's retained factorization clause
+    (`∃ T F, f = ∏ t ∈ T, F t`) is still index-free and by itself weak — confirm no consumer
+    silently expects the leaf content from it (none does today: B.71/B.79a read only the datum
+    clause, and B.65's clause-3 `iff` is unsigned), and adjudicate the recorded candidate
+    strengthening (`∀ t ∈ T, (F t).Monic ∧ (F t).natDegree = t.1.2 * (φ.natDegree *
+    t.2.natDegree)` over the canonical index), which A-F.11 deliberately did NOT apply.
 13. **The `H₀`-pin repair — now APPLIED (A-§9.1/D-§9.1 → PA-1 → A-F.1).** The remaining
     verification obligation: (i) the four applied sites are exactly PA-1's list, with no fifth
     statement pin hiding elsewhere (the finisher's grep found the remaining `npHgt φ f 0`
@@ -7693,6 +7848,216 @@ are unfired); no capstone footprint moves today.
   statement-change authority (clause 6 is a conclusion strengthening by the cited theorem's own
   display); the OWNER SIGNATURE on the import itself is pending and is the queue's purpose.
   The obstruction record `B42_ROUTE_BLOCKED.lean.txt` is KEPT as committed provenance.
+
+---
+
+### AMENDMENTS (2026-08-16, wave-15 §14-item-12 adjudicator — the chapter-G §A- precedent)
+
+**A-F.11 — B.63's CONCLUSION RE-SIGNED AT B.66's CANONICAL DATUM
+(`(typeOf f).data = (order1Type π φ f).data`): the committed existential `T` was tied to nothing and
+the term-by-term tie was underivable from ANY proof of the node; `h0 : dev φ f 0 ≠ 0` comes in and
+A-F.9's peel step 0 is retired; B.79a step 2 collapses to one `FactorizationType.ext`; §14 item 12
+CLOSED-BY-STRENGTHENING (wave-15 adjudication, 2026-08-16).**
+
+**(I) The wave-15 finding, recorded.** This is a **derivability defect, not a false statement**, so
+the preserved artifact is the analysis rather than a compiled witness (the `B42_REFUTATION` /
+`B59_REFUTATION` convention has nothing to compile against: B.63's committed statement is TRUE — it
+is simply too weak to be used). Wave-15's B.79 agent, charged with B.79a, returned BLOCKED against
+the committed text and confirmed §14 item 12's worry. The finding, as returned (relayed through the
+orchestrator; the committed conclusion it quotes is displayed in (III) below):
+
+> B.63's (`typeOf_of_separable_residuals`) conclusion
+> `∃ (T : Finset ((ℕ×ℕ) × Polynomial (resField φ))) (F), f = ∏ t ∈ T, F t ∧ (typeOf f).data = T.val.map …`
+> has **NO clause tying `T` to the canonical `slopeFinset`/`resFactorFinset`** (B.66a, landed) — the
+> existential is unconstrained, so B.79a's term-by-term tie is **underivable from any proof of
+> B.63**.
+
+The agent also assessed and rejected the weaker repair (see the end of (II)).
+
+**(II) Why the tie is underivable, and why counting cannot recover it.** Four observations, all
+against the committed conclusion as displayed in (III):
+
+1. **The slope numerator never occurs.** The multiset clause maps
+   `t ↦ (t.1.2, φ.natDegree * t.2.natDegree)`: it reads the slope *denominator* `t.1.2 = ℓ` and the
+   *degree* of `t.2`. Nothing in the conclusion mentions `t.1.1 = u`, so no property of `T` involving
+   the slope numerator — in particular `t.1 ∈ slopeFinset π φ f` — is a consequence of it.
+2. **The residual factor occurs only through its degree.** The conclusion does not even say `t.2` is
+   monic, or irreducible, or a divisor of anything. Over `resField φ` there are many monic
+   irreducibles of each degree (and many reducibles), so `deg t.2` cannot pin `t.2`.
+3. **Hence the witness set is closed under relabelling.** If `(T, F)` is a witness and `σ` is any
+   injection on `(ℕ × ℕ) × Polynomial (resField φ)` preserving `t.1.2` and `t.2.natDegree`, then
+   `(σ '' T, F ∘ σ⁻¹)` is again a witness (the product clause is unaffected — `F` is existential and
+   only its product over the index matters; the multiset clause is invariant by construction). Two
+   proofs of B.63 may return `T`s related by such a `σ`, so **no consumer holding only the statement
+   can name an element of `slopeFinset` or `resFactorFinset`.**
+4. **Counting cannot recover it.** The invariants a consumer has are the image multiset (the
+   conclusion), the cardinality `T.card` (not stated, and equal to `Σ_p (resFactorFinset p).card`
+   only if the tie is already known), and the degree identity `Σ ℓ·m·deg ψ = f.natDegree` (B.72,
+   B.13). All three are invariant under the relabellings of 3 — they constrain the *image* of the
+   index map, never the index. So B.79a's committed instruction to "re-read B.63's own steps 1–2"
+   describes a route through B.63's **proof**, and a fleet unit landing B.79a has only B.63's
+   **statement**. That is the whole defect, and it is a statement defect.
+
+**The weaker three-clause alternative, considered and REJECTED** (the blocking agent's own
+assessment, adopted):
+
+```lean
+    ∃ (T : Finset ((ℕ × ℕ) × Polynomial (resField φ))) (F : … → Polynomial O),
+      f = ∏ t ∈ T, F t ∧
+      (∀ t ∈ T, t.1 ∈ slopeFinset π φ f ∧ t.2 ∈ resFactorFinset π φ f t.1) ∧
+      (typeOf f).data = (T.val.map (fun t => (t.1.2, φ.natDegree * t.2.natDegree)))
+```
+
+*"More binders, same content."* Under `hsep` the canonical index is exhausted and the term map is
+its own bookkeeping, so this form is equivalent to the one-line datum identity — but it makes every
+consumer destructure three clauses and re-derive the equality of two multisets from a membership
+clause plus a cardinality argument (and it still would not say `T` *exhausts* the canonical index,
+so a fourth clause would follow). Rejected in favour of the datum identity, which is what the route
+proves anyway.
+
+**(III) The re-sign: the committed conclusion, the new one, and why `h0` comes with it.**
+
+Committed (retired here):
+
+```lean
+    ∃ (T : Finset ((ℕ × ℕ) × Polynomial (resField φ))) (F : _ → Polynomial O),
+      f = ∏ t ∈ T, F t ∧
+      (typeOf f).data = (T.val.map (fun t => (t.1.2, φ.natDegree * t.2.natDegree)))
+```
+
+Re-signed (hypotheses gain `h0` only; `hsep`/`hperim` byte-unchanged):
+
+```lean
+    (h0 : dev φ f 0 ≠ 0)                                    -- new hypothesis
+    …
+    (typeOf f).data = (order1Type π φ f).data ∧
+      ∃ (T : Finset ((ℕ × ℕ) × Polynomial (resField φ)))
+        (F : (ℕ × ℕ) × Polynomial (resField φ) → Polynomial O), f = ∏ t ∈ T, F t
+```
+
+**`h0` is forced by the strengthening, and its absence is a refutation.** The committed conclusion
+was *peel-tolerant* — that is precisely what made it weak. A-F.9 exploited the tolerance: its step 0
+peeled `f = φ^k·f'`, ran the polygon argument on `f'`, and dumped the `k` inert `φ`-factors into `T`
+as *"`k` fresh tags `((v_j, 1), ψ_lin)` — first coordinates chosen above `T₁`'s finite bound"*, i.e.
+as index elements belonging to no canonical set whatsoever (observation 3 of (II), in the blueprint's
+own committed text). `order1Type π φ f` reads the polygon of `f` only, so it cannot absorb them:
+at `f = φ`, `μ = 1` (A-F.9's own machine-checked witness geometry, `sideSet φ φ u ℓ = {1}` from the
+committed `sideSet_key_self` in `leanfinal/Uniformity/ChapB/B42_REFUTATION.lean.txt`)
+`slopeFinset π φ φ = ∅`, hence `(order1Type π φ φ).data = 0`, while `typeOf φ = ⟨{(1, m)}⟩` by landed
+CN-21 `typeOf_inert_of_irreducible_map` — the re-signed conclusion is **FALSE without `h0`**, exactly
+as B.72's and B.79a's were before A-F.9 gave them the same hypothesis. A-F.9 predicted this in
+writing, in its consumer-audit row for B.79a: *"also needed for step 2's tie of B.63's `T` to the
+canonical finsets (with `h0`, B.63's peel is trivial and `T` is polygon-only)"*. A-F.11 is that
+sentence, executed.
+
+Consequences inside B.63: **step 0 is RETIRED** (nothing to peel), and its two DEPENDS entries retire
+with it (landed CN-21 `typeOf_inert_of_irreducible_map`, mathlib
+`Polynomial.modByMonic_eq_zero_iff_dvd`). The node's SIZE is unchanged in total — the two tie legs
+(~25 lines) replace the peel (~20).
+
+**(IV) Route verification: the strengthened conclusion is what the committed PROOF steps 1–4 prove.**
+The check the brief demanded, leg by leg, quoting the committed statements the route consumes. The
+decisive structural point: **the tie is available inside B.63 and nowhere downstream**, because B.63
+is where B.42's and B.48's existential witnesses are bound.
+
+* **Leg 1 — the slope index is `slopeFinset` (step 1).** B.42's clause 5, verbatim from its committed
+  SIGNATURE: `(∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s))`,
+  together with clause 1 `(∀ p ∈ s, 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2)`, gives
+  `s = slopeFinset π φ f` by `Finset.ext` against B.66a's LANDED membership reading — whose defining
+  set is *"the slopes `(u,ℓ)` in lowest terms, `ℓ > 0`, that carry a two-point side … **B.42's
+  clause-5 characterisation taken as the definition**"* (`leanfinal/Uniformity/ChapB/B66a.lean`
+  header). The `→` half is `mem_slopeFinset_imp` (hypothesis-free); the `←` half is
+  `mem_slopeFinset hφ hf hdeg`, whose `hdeg : f.natDegree = μ * φ.natDegree` is free from `hf` +
+  `hres` by landed `natDegree_eq_of_map_eq` (B.66a's header says exactly this: *"free at every
+  consumer"*). **No construction is re-opened — this is a statement-level identification, which is
+  why it works under the A-F.10 cite.**
+* **Leg 2 — the residual index at each slope is `resFactorFinset` (step 2).** B.48's committed
+  conclusion returns `s_i` with `(∀ ψ ∈ s_i, ψ.Monic ∧ Irreducible ψ ∧ 0 < a ψ)` and
+  `resPoly π φ (F ψ) u ℓ hne' H = Polynomial.C (c : resField φ) * ψ ^ a ψ`; `hsep` plus B.45's last
+  clause (`R.Separable ↔ ∀ ψ ∈ s, a ψ = 1`) forces every `a ψ = 1`, so the piece's residual is a unit
+  times a product of **distinct** monic irreducibles and its monic irreducible divisors are exactly
+  `s_i`. B.42's clause 6 — the A-F.10 residual tie
+  `resPoly π φ f p.1 p.2 hne H₀ = Polynomial.C (c : resField φ) * resPoly π φ (F p) p.1 p.2 hne' H₀'`
+  — transports that divisor set to `f`'s own `sideMin`-pinned residual, which is B.66a's landed
+  reading of `resFactorFinset π φ f p`: *"the monic irreducible `ψ ∈ (resField φ)[Y]` dividing the
+  `(p.1,p.2)`-side's residual polynomial at the GC-1 `sideMin` pin — B.45's factor reading taken as
+  the definition"*. The pin is honest rather than vacuous because the `sideMin` height is finite
+  (B.17's `npHgt_ne_top_of_onSide`), so exactly one `H₀ : ℕ` satisfies B.66a's membership condition.
+  *(This is also where A-F.10 pays for itself twice: clause 6 was added for `hsep`-transport, and it
+  is the same clause that identifies the divisor sets.)*
+* **Leg 3 — the per-leaf value (step 3, unchanged).** B.58 (`ψ.natDegree = 1`), B.60
+  (`ℓ = 1 ∧ φ.natDegree = 1`, A-F.7's linear key) or B.61 (`hBOX`) under `hperim`'s three disjuncts
+  give `typeOf (F_{p,ψ}) = ⟨{(p.2, φ.natDegree * ψ.natDegree)}⟩`.
+* **Leg 4 — assembly (step 4).** B.63a's `typeOf_prod` twice (outer over `s = slopeFinset π φ f`,
+  inner over `s_i = resFactorFinset π φ f (u_i,ℓ_i)`) gives
+  `(typeOf f).data = ∑ p ∈ slopeFinset π φ f, ∑ ψ ∈ resFactorFinset π φ f p,
+  {(p.2, φ.natDegree * ψ.natDegree)}`, and that double sum is `(order1Type π φ f).data` by landed
+  `order1Type_data` (`B66.lean:114`) plus the `Multiset.bind`-to-double-sum unfold — the same
+  `Multiset.map_bind` / `Multiset.sum_bind` / `Finset.sum_eq_multiset_sum` rewrites landed
+  `order1Type_degree` performs at `B66.lean:142`. Booked as a ~5-line read-off lemma
+  `order1Type_data_eq_sum` in B.66's landed file (no signed statement changes), so B.63 and B.72 do
+  not each grow a private copy.
+
+**Note on what the route does NOT prove, kept honest.** The retained factorization clause is
+index-free and by itself weak (any monic `f` satisfies `∃ T F, f = ∏ t ∈ T, F t` at a singleton `T`
+with `F t := f`). It is retained as the NS-6 (⇐) product statement; the leaf content lives in the
+STATEMENT prose and in Leg 3's per-leaf applications, and B.65's clause-3 `iff` is where a full leaf
+factorization would be signed. The candidate strengthening (`∀ t ∈ T, (F t).Monic ∧ (F t).natDegree =
+t.1.2 * (φ.natDegree * t.2.natDegree)` over the canonical index) is recorded and **not applied** —
+it is beyond this unit's brief and belongs with B.65's clause 3; flagged into §14 item 12's closure
+annotation as the cross-read's residual duty.
+
+**(V) The consumer audit and the threading.**
+
+| consumer of B.63 | what it reads | disposition under A-F.11 |
+|---|---|---|
+| B.71 `typeOf_order1` | each block's `typeOf` as its `order1Type` | **SIGNATURE BYTE-UNCHANGED** — its conclusion already spoke in `order1Type` (`(typeOf f).data = ∑ i ∈ s, (order1Type π (φ i) (g i)).data`), so nothing to re-sign; PROOF step 2 becomes a rewrite, and **B.63's new `h0` is supplied per block by A-F.9's `hnz : ∀ i ∈ s, dev (φ i) (g i) 0 ≠ 0`, verbatim**. New step 2′ records the one degenerate block the signature admits (`a i = 0`, where `g i = 1` and both sides are the empty type) since B.63 needs `0 < μ`. Its `h0`-freeness at ITS consumers is A-F.9's table, unchanged (B.80's per-block `hvis`, B.81's `hnz`) |
+| B.79a `typeOf_eq_order1Type` (half (a)) | B.63's datum clause | PROOF step 2 collapses to `exact FactorizationType.ext (… ).1`; SIGNATURE unchanged (`h0` already present from A-F.9); half (a)'s direct DEPENDS shrink to B.63 · B.66 · landed `FactorizationType.ext` (line kept, see the node's annotation) |
+| B.79b `typeOf_congr_of_certificate` (half (b)) | (a) at `g` and at `g'` | unchanged — IMMUNE per A-F.9 (`hvis` gives `h0` via B.76(ii)/(iv)); step 3 gains the `hH₀`-guard derivation note of (VI) |
+| B.65 `ns6_biconditional` | clause 3 = B.63's conclusion (separate `iff`, **unsigned**) | frozen `1 ↔ 2` half BYTE-UNCHANGED; the unsigned clause-3 `iff` inherits the canonical form **and `h0`** (without `h0` its `1 → 3` direction is false at `f = φ`). Recorded at the node |
+| B.67 `exists_order0_peel` / B.68 `typeOf_of_separable_reduction` | **nothing** — verified by reading their DEPENDS: B.67 is `B.46 · B.63a (typeOf_prod) · landed Hensel/typeOf API`, B.68 is `B.67 · landed`. Neither names B.63; the `B.63a` in B.67's list is the `typeOf_prod` supplier, a different declaration | **UNAFFECTED** (they consume the order-0 peel, not the order-1 tie) |
+| B.72 `degree_order1Type` | `order1Type` only, not B.63 | unchanged (it already carries `h0` from A-F.9); it will consume the same booked `order1Type_data_eq_sum` unfold at its step 1 |
+| B.80 / B.81 / B.82, §10 gates B.83–B.86 | via B.71/B.79 | unchanged; they already supply `hvis`/`hnz` per block, which is what the new `h0` needs |
+
+Nothing in this amendment touches `hperim` / `B-BOX-1` conditionality, the A-F.10 cite-conditionality
+(H-14), or any landed `leanfinal` declaration: B.63, B.71 and B.79a/b are all unfired, so no landed
+proof moves and **no capstone footprint changes**. The two landed files A-F.11 asks for additions in
+(B.66's read-off lemma; promoting B.74's `suppVal_lt_of_vis` from `private`) are additive and
+statement-preserving.
+
+**(VI) The B.77b `hH₀` guard — the derivation note, recorded at B.79b's PROOF step 3.** Landed
+B.77b's `resPoly_congr` (`leanfinal/Uniformity/ChapB/B77b.lean:205`) carries `(hH₀ : H₀ < N)` as a
+hypothesis by design (B.77's ⚠: it transports whatever polynomial the consumer's convention names,
+so it cannot guess the pin). B.79b is the consumer and must discharge it at every slope it rewrites;
+`hvis` suffices, and the chain — HE-T-CAP's window condition read off `visible_iff_npHgt_lt` — is
+displayed in full at the node. Its two ingredients are landed: B.20's `onSide_of_mem_sideSet` with
+B.16's `OnSide` (the `sideMin` term *equals* `suppVal`), and B.74's private
+`suppVal_lt_of_vis` (`B74.lean:139`: `suppVal φ f u ℓ < ((ℓ * N : ℕ) : ℕ∞)` from `hvis` and `0 < ℓ`,
+via the abscissa-0 term of B.14's `inf` and B.76(ii)). Together: `ℓ • H₀ ≤ suppVal < ℓ * N`, so
+`H₀ < N` by `Nat.lt_of_mul_lt_mul_left`. **Action recorded for the reschedule inheritor:** promote
+`suppVal_lt_of_vis` to public in `B74.lean` (visibility only — no statement, no footprint change) and
+consume it by name rather than re-deriving it; this is also how landed B.74 already discharges the
+same guard for the `hterm` half, so `needsDescent_congr` needs nothing new. One `Visible` hypothesis
+at abscissa 0 guards the entire side family — which is what the `HE-T-CAP` tooth (`EFF.HE3.54`)
+tests, and why B.79's TEETH row disposes it as a Lean theorem "via B.77's clause 5 guard, consumed
+at step 3".
+
+**(VII) Where applied.** NODE B.63 (re-sign header, STATEMENT, SIGNATURE hypothesis + conclusion,
+DEPENDS, PROOF step 0 retired and steps 1/2/4 threaded, SIZE note); NODE B.65 (clause-3 inheritance
+note; frozen half untouched); NODE B.66 (statement-dependency note + the §12 rule 2 extension);
+NODE B.71 (PROOF steps 1/2 + new 2′; SIGNATURE byte-unchanged, stated as such); NODE B.79 (half (a)
+step 2 rewritten; half (b) step 3 gains the (VI) guard note; DEPENDS annotated; the ⚠ RE-PLAN item's
+§14-item-12 sentence closed); §12 rule 2 (hard exception extended to B.66's `order1Type`, with the
+executed leanspec re-order); §14 item 12 (FIRED AND CLOSED, with the residual cross-read duty).
+Stub re-signs in `leanspec/Leanspec/ChapB.lean` (B.63 re-signed and tagged `[re-signed: A-F.11]`;
+`order1Type` hoisted ahead of it with a pointer at B.66's slot; B.71 UNCHANGED, recorded in the log
+as such; RE-SIGN LOG entry added), `lake build Leanspec.ChapB` green. One hand DAG row added to
+`spec/DAG_BLUEPRINT_B.tsv` (`BP.B.63 → BP.B.66`, `stmt-dep`, evidence marked `added at A-F.11`) —
+the A-F.4 precedent for SIGNATURE-level dependencies that the mechanical generation missed; the
+merged `spec/DAG.tsv` picks it up at the next `dag_build.py` run. Authority: standing
+statement-change authority (2026-08-05) — the change is (i) a conclusion strengthening the committed
+proof route already delivers, (ii) an added hypothesis without which the strengthened conclusion is
+refuted, and (iii) the repair §14 item 12 itself booked as recommended and owner-gated.
 
 ---
 
