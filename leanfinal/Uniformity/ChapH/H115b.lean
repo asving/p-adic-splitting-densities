@@ -52,6 +52,11 @@ Clause (i) (`alphaChild_spec`, in `ChapH/H115.lean`) then identifies the child o
 constructed parent with `d`: two monic developments equal after multiplication by the nonzero
 `π ^ (m k)` are equal.
 
+Steps 3–8 are packaged as `exists_isAlphaState_of_alphaParent` (§4) — *any* state carried by a
+coefficient vector whose monic development is `alphaParent π b k (resSect O z)` is an α(k, z)
+state with child the class of `b` — because H.115c's fibre count parametrizes the fibre by the
+same inverse shear and must read it off the SAME lemma, not a copy.
+
 DEPENDS: H.115a (`resSect`, `alphaChild`, `alphaChild_spec`), H.117 (`sideMax_le_natDegree`),
 H.112 (`exists_proj_eq`, `coeff_recentre_top`), H.111 (`IsAlphaState`), H.110 (`IsCSState`),
 H.109 (`HasChildAt`, `hasChildAt_of_exists`), H.108 (`betaContent`), H.107 (`resOrd`) ·
@@ -403,22 +408,44 @@ theorem not_isCSState_of_alphaParent {π : O} (hπ : Irreducible π) {m N k : �
     rw [this] at hblock
     omega
 
-end Parent
+/-! ## 4. The inverse shear, packaged -/
 
-/-! ## 4. H.115 (clause ii) — the shear is ONTO -/
+/-- The parent's coefficient vector, read off `alphaParent_coeff`: the `i`-th coordinate is the
+`i`-th coefficient of the un-scaled frame times `(π ^ k) ^ (m − i)`. -/
+theorem coeff_eq_of_monicPoly_eq_alphaParent {π : O} {m k : ℕ} {b : Fin m → O} {ŵ : O}
+    {a : Fin m → O} (hfa : monicPoly a = alphaParent π b k ŵ) (i : Fin m) :
+    a i = (alphaFrame b ŵ).coeff (i : ℕ) * (π ^ k) ^ (m - (i : ℕ)) := by
+  have h1 : (monicPoly a).coeff (i : ℕ) = a i := by simpa using monicPoly_coeff_lt a i.isLt
+  rw [← h1, hfa, alphaParent_coeff]
 
-/-- **H.115 (clause ii).** The shear is ONTO the full window-`(N−mk)` state space.
+/-- Every coordinate of the parent's coefficient vector lies in `𝔪`: at `1 ≤ k` the factor
+`(π ^ k) ^ (m − i)` is a positive power of `π` for every `i < m`. -/
+theorem mem_maximalIdeal_of_monicPoly_eq_alphaParent {π : O} (hπ : Irreducible π) {m k : ℕ}
+    (hk : 1 ≤ k) {b : Fin m → O} {ŵ : O} {a : Fin m → O}
+    (hfa : monicPoly a = alphaParent π b k ŵ) (i : Fin m) : a i ∈ maximalIdeal O := by
+  have hdvd : π ∣ a i := by
+    rw [coeff_eq_of_monicPoly_eq_alphaParent hfa i]
+    refine Dvd.dvd.mul_left ?_ _
+    rw [← pow_mul]
+    exact dvd_pow_self π (Nat.mul_ne_zero (by omega) (by have := i.isLt; omega))
+  have h := (mem_maximalIdeal_pow_iff_dvd_of_irr hπ 1 (a i)).2 (by rwa [pow_one])
+  rwa [pow_one] at h
 
-The witness is the inverse shear of §1 applied to a child lift with coordinates in `𝔪`; the
-four `IsAlphaState` obligations are discharged as listed in the module docstring, and clause
-(i) (`alphaChild_spec`) identifies the child of the witness with the given state. -/
-theorem alphaChild_surjective {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
-    {π : O} (hπ : Irreducible π) {m N k : ℕ} {z : ResidueField O}
-    (hm : 2 ≤ m) (hN : 1 ≤ N) (hk : 1 ≤ k) (hw : m * k ≤ N - 1) (hz : z ≠ 0) :
-    ∀ d : ClusterState O m (N - m * k),
-      ∃ (c : ClusterState O m N) (h : IsAlphaState π c k z), alphaChild π c h = d := by
+/-- **The inverse shear lands in the α locus.**  If the state `c` is carried by a coefficient
+vector `a` whose monic development is the parent frame `alphaParent π b k (resSect O z)` of a
+child lift `b` with all coordinates in `𝔪`, then `c` IS an α(k, z) state and its α child is the
+class of `b`.
+
+This is the whole construction behind clause (ii); it is stated separately so that H.115c's
+fibre count reads the same parametrization.  The four `IsAlphaState` obligations are discharged
+as listed in the module docstring, and clause (i) (`alphaChild_spec`) identifies the child. -/
+theorem exists_isAlphaState_of_alphaParent {π : O} (hπ : Irreducible π) {m N k : ℕ}
+    {z : ResidueField O} (hm : 2 ≤ m) (hN : 1 ≤ N) (hk : 1 ≤ k) (hw : m * k ≤ N - 1)
+    (hz : z ≠ 0) {b : Fin m → O} (hb : ∀ i, b i ∈ maximalIdeal O) {a : Fin m → O}
+    (hfa : monicPoly a = alphaParent π b k (resSect O z)) {c : ClusterState O m N}
+    (hc : c.1 = proj O m N a) :
+    ∃ h : IsAlphaState π c k z, (alphaChild π c h).1 = proj O m (N - m * k) b := by
   classical
-  intro d
   have hπ0 : π ≠ 0 := hπ.ne_zero
   have hm0 : 0 < m := by omega
   have hmkN : m * k + 1 ≤ N := by omega
@@ -426,37 +453,12 @@ theorem alphaChild_surjective {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteV
     intro x hx
     have h := (mem_maximalIdeal_pow_iff_dvd_of_irr hπ 1 x).1 (by rwa [pow_one])
     rwa [pow_one] at h
-  have hπmem : ∀ x : O, π ∣ x → x ∈ maximalIdeal O := by
-    intro x hx
-    have h := (mem_maximalIdeal_pow_iff_dvd_of_irr hπ 1 x).2 (by rwa [pow_one])
-    rwa [pow_one] at h
   set ŵ : O := resSect O z with hŵdef
   have hŵ : residue O ŵ = z := residue_resSect O z
-  -- STEP 1: a child lift with every coordinate in `𝔪`
-  have hlift : ∀ i : Fin m, ∃ y : O, y ∈ maximalIdeal O ∧
-      Ideal.Quotient.mk ((maximalIdeal O) ^ (N - m * k)) y = d.1 i := fun i =>
-    (Ideal.mem_map_iff_of_surjective _ Ideal.Quotient.mk_surjective).1 (d.2 i)
-  choose b hb hbd using hlift
-  have hbproj : proj O m (N - m * k) b = d.1 := funext hbd
-  -- STEP 2: the parent frame and its coefficient vector
-  obtain ⟨a, hfa⟩ :=
-    exists_monicPoly_eq (alphaParent_monic π b k ŵ) (alphaParent_natDegree π b k ŵ)
+  have hproj : proj O m N a = c.1 := hc.symm
   have hacoeff : ∀ i : Fin m,
-      a i = (alphaFrame b ŵ).coeff (i : ℕ) * (π ^ k) ^ (m - (i : ℕ)) := by
-    intro i
-    have h1 : (monicPoly a).coeff (i : ℕ) = a i := by
-      simpa using monicPoly_coeff_lt a i.isLt
-    rw [← h1, hfa, alphaParent_coeff]
-  have hamem : ∀ i : Fin m, a i ∈ maximalIdeal O := by
-    intro i
-    refine hπmem _ ?_
-    rw [hacoeff i]
-    refine Dvd.dvd.mul_left ?_ _
-    rw [← pow_mul]
-    exact dvd_pow_self π (Nat.mul_ne_zero (by omega) (by have := i.isLt; omega))
-  set c : ClusterState O m N :=
-    ⟨proj O m N a, fun i => Ideal.mem_map_of_mem _ (hamem i)⟩ with hcdef
-  have hproj : proj O m N a = c.1 := by rw [hcdef]
+      a i = (alphaFrame b ŵ).coeff (i : ℕ) * (π ^ k) ^ (m - (i : ℕ)) :=
+    coeff_eq_of_monicPoly_eq_alphaParent hfa
   have hcval : ∀ (j : ℕ) (hj : j < m),
       c.1 ⟨j, hj⟩ = Ideal.Quotient.mk ((maximalIdeal O) ^ N) (a ⟨j, hj⟩) := by
     intro j hj
@@ -521,8 +523,8 @@ theorem alphaChild_surjective {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteV
         (isUnit_of_dvd_one ((mul_dvd_mul_iff_left (pow_ne_zero (m * k) hπ0)).1 hdd'))
   -- STEP 7: not CS, hence an α state
   have hcs : ¬ IsCSState π c := not_isCSState_of_alphaParent hπ hk hz hb hŵ hproj hfa
-  refine ⟨c, ⟨hnd, hcs, hchild⟩, ?_⟩
-  -- STEP 8: clause (i) identifies the child of the witness with `d`
+  refine ⟨⟨hnd, hcs, hchild⟩, ?_⟩
+  -- STEP 8: clause (i) identifies the child of the witness with the class of `b`
   obtain ⟨b', -, hb'fac, hb'proj⟩ :=
     alphaChild_spec hπ hm hN c ⟨hnd, hcs, hchild⟩ a hproj
   have hCne : (C (π ^ (m * k)) : Polynomial O) ≠ 0 := by
@@ -534,12 +536,43 @@ theorem alphaChild_surjective {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteV
     have h2 := monicPoly_coeff_lt b i.isLt
     rw [hbb] at h1
     simpa using h1.symm.trans h2
-  refine Subtype.ext ?_
-  rw [← hb'proj, hb'b, hbproj]
+  rw [← hb'proj, hb'b]
+
+end Parent
+
+/-! ## 5. H.115 (clause ii) — the shear is ONTO -/
+
+/-- **H.115 (clause ii).** The shear is ONTO the full window-`(N−mk)` state space.
+
+The witness is the inverse shear of §1 applied to a child lift with coordinates in `𝔪`; the
+four `IsAlphaState` obligations are discharged as listed in the module docstring, and clause
+(i) (`alphaChild_spec`) identifies the child of the witness with the given state. -/
+theorem alphaChild_surjective {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {m N k : ℕ} {z : ResidueField O}
+    (hm : 2 ≤ m) (hN : 1 ≤ N) (hk : 1 ≤ k) (hw : m * k ≤ N - 1) (hz : z ≠ 0) :
+    ∀ d : ClusterState O m (N - m * k),
+      ∃ (c : ClusterState O m N) (h : IsAlphaState π c k z), alphaChild π c h = d := by
+  classical
+  intro d
+  -- STEP 1: a child lift with every coordinate in `𝔪`
+  have hlift : ∀ i : Fin m, ∃ y : O, y ∈ maximalIdeal O ∧
+      Ideal.Quotient.mk ((maximalIdeal O) ^ (N - m * k)) y = d.1 i := fun i =>
+    (Ideal.mem_map_iff_of_surjective _ Ideal.Quotient.mk_surjective).1 (d.2 i)
+  choose b hb hbd using hlift
+  have hbproj : proj O m (N - m * k) b = d.1 := funext hbd
+  -- STEP 2: the parent frame and its coefficient vector
+  obtain ⟨a, hfa⟩ := exists_monicPoly_eq (alphaParent_monic π b k (resSect O z))
+    (alphaParent_natDegree π b k (resSect O z))
+  have hamem : ∀ i : Fin m, a i ∈ maximalIdeal O :=
+    mem_maximalIdeal_of_monicPoly_eq_alphaParent hπ hk hfa
+  -- STEPS 3–8: the packaged inverse shear
+  obtain ⟨h, hch⟩ := exists_isAlphaState_of_alphaParent hπ hm hN hk hw hz hb hfa
+    (c := ⟨proj O m N a, fun i => Ideal.mem_map_of_mem _ (hamem i)⟩) rfl
+  exact ⟨_, h, Subtype.ext (hch.trans hbproj)⟩
 
 end Uniformity.Density.Induction
 
-/-! ## 5. Axiom footprint -/
+/-! ## 6. Axiom footprint -/
 
 section AxCheck
 
@@ -549,6 +582,9 @@ section AxCheck
 #print axioms Uniformity.Density.Induction.alphaFrame_map_residue
 #print axioms Uniformity.Density.Induction.alphaParent_npHgt_zero
 #print axioms Uniformity.Density.Induction.not_isCSState_of_alphaParent
+#print axioms Uniformity.Density.Induction.coeff_eq_of_monicPoly_eq_alphaParent
+#print axioms Uniformity.Density.Induction.mem_maximalIdeal_of_monicPoly_eq_alphaParent
+#print axioms Uniformity.Density.Induction.exists_isAlphaState_of_alphaParent
 #print axioms Uniformity.Density.Induction.alphaChild_surjective
 
 end AxCheck
