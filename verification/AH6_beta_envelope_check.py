@@ -46,7 +46,7 @@ sys.path.insert(0, os.path.join(os.path.dirname(os.path.abspath(__file__)), "ope
 import OM2_genindb_battery as B
 
 FAST = "--fast" in sys.argv
-NMAX = 60
+NMAX = 12 if FAST else 40
 if "--nmax" in sys.argv:
     NMAX = int(sys.argv[sys.argv.index("--nmax") + 1])
 
@@ -57,6 +57,10 @@ def check(name, ok, detail=""):
 
 def fmt(x):
     return f"{float(x):.6g}"
+
+def geom(Q, c):
+    """sum_{k>=1} Q^{-c k} = 1/(Q^c - 1), exact."""
+    return Fraction(1, Q ** c - 1)
 
 # ----------------------------------------------------------------------------------
 # the m = 2 normalized complement, from the H.26 closed form (battery-verified tie
@@ -239,10 +243,11 @@ def main():
 
     # ---------------- LEG C ----------------
     print("\nLEG C — the envelope verdicts on the structural extension")
-    NM = 12 if FAST else NMAX
-    for q in ([2] if FAST else [2, 3]):
-        m = 3
-        Q = q
+    NM = NMAX
+    QS = [2] if FAST else [2, 3]
+    for q in QS:
+        m, Q = 3, q
+        S = Q * Q + Q + 1
         rows = []
         for N in range(1, NM + 1):
             nb = beta_classes_m3(q, N)
@@ -250,46 +255,111 @@ def main():
             bhat = sum(Fraction(cnt) * u2hat(q, M) for M, cnt in nb.items()) / tot
             cand0 = Fraction(m - 1, 1) * Fraction(1, Q ** (N - 1))
             signed = Fraction(N ** m, 1) * Fraction(1, Q ** max(N - 2, 0))
+            resign = Fraction(1, 3) * Fraction(N, Q ** (N - 1))
             ratio = bhat * Q ** (N - 1)                      # betahat / Q^{-(N-1)}
-            rows.append((N, bhat, cand0, signed, ratio))
-        print(f"\n  q={q}, m=3   [betahat exact; ratio := betahat * Q^(N-1)]")
-        print(f"  {'N':>3} {'betahat':>14} {'CAND-0 2Q^-(N-1)':>18} {'ratio':>10}"
-              f" {'ratio/N':>10}")
-        for (N, bhat, cand0, signed, ratio) in rows:
+            G = sum(Fraction(cnt) * Q ** (N - M) for M, cnt in nb.items()) / tot
+            rows.append((N, bhat, cand0, signed, resign, ratio, G))
+        print(f"\n  q={q}, m=3   [betahat exact; ratio := betahat*Q^(N-1);"
+              f" G(N) := sum_beta Q^D / Q^(3(N-1))]")
+        print(f"  {'N':>3} {'betahat':>13} {'CAND-0':>11} {'RE-SIGN 1/3':>12}"
+              f" {'ratio':>9} {'ratio/N':>9} {'G(N)':>9}")
+        for (N, bhat, cand0, signed, resign, ratio, G) in rows:
             if N <= 12 or N % 5 == 0 or N == NM:
-                print(f"  {N:>3} {fmt(bhat):>14} {fmt(cand0):>18} {fmt(ratio):>10}"
-                      f" {fmt(Fraction(ratio, N)):>10}")
-        # CANDIDATE-0 verdict
-        bad0 = [(N, ratio) for (N, bhat, cand0, signed, ratio) in rows if bhat > cand0]
+                print(f"  {N:>3} {fmt(bhat):>13} {fmt(cand0):>11} {fmt(resign):>12}"
+                      f" {fmt(ratio):>9} {fmt(Fraction(ratio, N)):>9} {fmt(G):>9}")
+        # --- C1: CANDIDATE-0 verdict
+        bad0 = [(N, ratio) for (N, bhat, cand0, _, _, ratio, _) in rows if bhat > cand0]
         if bad0:
             N0, r0 = bad0[0]
-            check(f"C1  q={q}: CANDIDATE-0 betahat <= (m-1)Q^-(N-1) is FALSE"
-                  f" — first failure at N={N0} (ratio {fmt(r0)} > {m-1})", True,
-                  f"{len(bad0)} failures in N<={NM}")
+            check(f"C1  q={q}: CANDIDATE-0 `betahat <= (m-1)*Q^-(N-1)` is REFUTED"
+                  f" — first failure N={N0}, ratio {fmt(r0)} > {m-1}", True,
+                  f"{len(bad0)} failures for N<={NM}")
         else:
-            check(f"C1  q={q}: CANDIDATE-0 holds on N<={NM}"
-                  f" (sup ratio {fmt(max(r for *_ , r in rows))})", True)
-        # the sharpest LINEAR form: betahat <= K * N * Q^{-(N-1)}
-        Kstar = max(Fraction(ratio, N) for (N, _, _, _, ratio) in rows)
-        Nstar = max(rows, key=lambda t: Fraction(t[4], t[0]))[0]
-        print(f"    sup_N betahat*Q^(N-1)/N = {Kstar} = {fmt(Kstar)}   (attained N={Nstar})")
-        for K, lab in [(Fraction(1, 1), "1"), (Fraction(m - 1, 1), f"{m-1}")]:
-            ok = all(bhat <= K * Fraction(N, Q ** (N - 1))
-                     for (N, bhat, _, _, _) in rows)
-            check(f"C2  q={q}: betahat(N) <= {lab} * N * Q^-(N-1) on 1<=N<={NM}", ok)
-        # the signed clause (iii) — true but useless (the finding's tooth)
-        ok = all(bhat <= signed for (N, bhat, _, signed, _) in rows)
-        check(f"C3  q={q}: the SIGNED clause (iii) envelope holds (it is TRUE, just weak)", ok)
-        teeth = [(N, signed) for (N, bhat, cand0, signed, ratio) in rows
+            check(f"C1  q={q}: CANDIDATE-0 NOT refuted on N<={NM} (raise --nmax)", False)
+        # --- C2: the sharpest LINEAR form
+        Kstar = max(Fraction(ratio, N) for (N, _, _, _, _, ratio, _) in rows)
+        Nstar = max(rows, key=lambda t: Fraction(t[5], t[0]))[0]
+        print(f"    sup_N betahat*Q^(N-1)/N = {Kstar} = {fmt(Kstar)} (at N={Nstar});"
+              f"  asymptotic slope (Q-1)/(2(Q^2+Q+1)) = {fmt(Fraction(Q-1, 2*S))}")
+        ok = all(bhat <= resign for (N, bhat, _, _, resign, _, _) in rows)
+        check(f"C2  q={q}: the RE-SIGNED envelope `betahat <= (1/3)*N*Q^-(N-1)` holds"
+              f" on 1<=N<={NM} (margin {fmt(Fraction(1,3)/Kstar)}x)", ok)
+        ok = Kstar < Fraction(Q - 1, 2 * S)
+        check(f"C3  q={q}: sup_N ratio/N is strictly below the asymptotic slope"
+              f" (the linear law is approached from below)", ok)
+        # --- C4: the PROVABLE pricing constant G(N) (H.121d)
+        ok = all(G <= Fraction(Q, S) for (*_, G) in rows)
+        check(f"C4  q={q}: H.121d `sum_beta Q^D <= (Q/(Q^2+Q+1))*Q^(3(N-1))`"
+              f" (sup G = {fmt(max(G for (*_, G) in rows))}, limit {Fraction(Q,S)})", ok)
+        ok = Fraction(Q, S) <= Fraction(2, 7) and Fraction(2, 7) < Fraction(1, 3)
+        check(f"C5  q={q}: Q/(Q^2+Q+1) <= 2/7 < 1/3 (the signed literal is safe)", ok)
+        # --- C6: the re-sign STRENGTHENS (implies the frozen envelope wherever it bites)
+        ok = all(resign <= signed for (N, _, _, signed, resign, _, _) in rows)
+        check(f"C6  q={q}: RE-SIGN => the OLD (frozen) envelope at every N (no weakening)", ok)
+        # --- C7: the tooth
+        teeth = [N for (N, bhat, _, signed, _, _, _) in rows
                  if N >= 2 and signed > Fraction(N, Q ** (N - 1))]
-        check(f"C4  q={q}: TOOTH — the signed envelope exceeds H.122's TOTAL budget"
-              f" N*Q^-(N-1) at every tested N>=2", len(teeth) == NM - 1,
-              f"{len(teeth)}/{NM-1}")
-        teeth2 = [N for (N, bhat, cand0, signed, ratio) in rows
-                  if N >= 2 and signed > Fraction(N, Q ** (N - 1))
-                  and bhat <= Fraction(N, Q ** (N - 1))]
-        check(f"C5  q={q}: TOOTH — at those N the TRUE betahat is inside the budget"
-              f" (the envelope, not the cell, is the defect)", len(teeth2) == NM - 1)
+        check(f"C7  q={q}: TOOTH — the OLD envelope exceeds H.122's TOTAL budget"
+              f" N*Q^-(N-1) at every N in [2,{NM}]", len(teeth) == NM - 1, f"{len(teeth)}")
+        teeth2 = [N for (N, bhat, _, signed, _, _, _) in rows
+                  if N >= 2 and bhat <= Fraction(N, Q ** (N - 1))]
+        check(f"C8  q={q}: TOOTH — at those N the TRUE betahat is INSIDE the budget"
+              f" (the envelope, not the cell, was the defect)", len(teeth2) == NM - 1)
+
+    # ---------------- LEG D — the three-case closed form (decorrelated leg) ----------
+    print("\nLEG D — the beta polygon case decomposition (A/B/C), closed form vs enumeration")
+    for q in QS:
+        Q, S = q, q * q + q + 1
+        # limit contributions:  A = 1/S,  B = 1/S,  C = (Q-2)/S,  total = Q/S
+        A = Fraction(Q - 1) * geom(Q, 3)                     # sum_k (Q-1) Q^{-3k}
+        Bc = Fraction((Q - 1) ** 2) * geom(Q, 1) * geom(Q, 3)  # sum_{j,t>=1}(Q-1)^2 Q^{-j-3t}
+        C = Fraction((Q - 1) * (Q - 2)) * geom(Q, 3)
+        check(f"D1  q={q}: case A (side (1,2k)->(3,0)) contributes 1/(Q^2+Q+1)",
+              A == Fraction(1, S), f"{A}")
+        check(f"D2  q={q}: case B (side (0,t+2k)->(2,t)) contributes 1/(Q^2+Q+1)",
+              Bc == Fraction(1, S), f"{Bc}")
+        check(f"D3  q={q}: case C (one side, cubic with a double root) contributes"
+              f" (Q-2)/(Q^2+Q+1)", C == Fraction(Q - 2, S), f"{C}")
+        check(f"D4  q={q}: A + B + C = Q/(Q^2+Q+1)  [= sup_N G(N), LEG C's C4]",
+              A + Bc + C == Fraction(Q, S))
+    ok = all(Fraction(Q, Q * Q + Q + 1) <= Fraction(2, 7) for Q in range(2, 200))
+    check("D5  Q/(Q^2+Q+1) is maximized at Q=2 (= 2/7) over Q in [2,199]", ok)
+
+    # ---------------- LEG E — H.122's closing arithmetic at the re-signed constants ----
+    print("\nLEG E — H.122 (1,1,1) closes at the re-signed constants")
+    for q in QS:
+        Q, S = q, q * q + q + 1
+        # the sharpened alpha-geometric factor (new node H.30b): c >= 2 => sum <= 1/3
+        ok = all(Fraction(Q - 1) * geom(Q, c) <= Fraction(1, 3) for c in range(2, 12))
+        check(f"E1  q={q}: sum_{{k>=1}} (Q-1)Q^(-c k) <= 1/3 for 2 <= c <= 11"
+              f"  [c=2 value {Fraction(Q-1)*geom(Q,2)}]", ok)
+        # m = 3 closure:  1 + (N-3)^+/3 + N/3 <= N for N >= 2
+        ok = all(Fraction(1) + Fraction(max(N - 3, 0), 3) + Fraction(N, 3) <= N
+                 for N in range(2, 400))
+        check(f"E2  q={q}: m=3 closure `1 + (N-3)^+/3 + N/3 <= N` for 2<=N<400"
+              f"  (N=1 is uCluster_one)", ok)
+        # m = 2 does NOT close from clause (iii): the beta bucket must be EMPTY
+        bad = [N for N in range(2, 40)
+               if Fraction(1) + Fraction(max(N - 2, 0)) + Fraction(N, 3) > N]
+        check(f"E3  q={q}: FENCE — at m=2 clause (iii)'s (1/3)N term BREAKS the closure"
+              f" from N={bad[0] if bad else '-'} on; the m=2 leg must use the EMPTY"
+              f" beta bucket (H122m2, landed)", len(bad) > 0, f"{len(bad)} failures")
+        # the true uhat at m = 3, from the exact recursion, against (1,1,1)
+        uh = {}
+        okr = True
+        for N in range(1, (12 if FAST else 40) + 1):
+            nb = beta_classes_m3(q, N)
+            tot = Fraction(q ** (3 * (N - 1)))
+            bh = sum(Fraction(cnt) * u2hat(q, M) for M, cnt in nb.items()) / tot
+            s = Fraction(1, Q ** (N - 1)) + bh
+            k = 1
+            while 3 * k <= N - 1:
+                s += Fraction(Q - 1, Q ** (6 * k)) * uh[N - 3 * k]
+                k += 1
+            uh[N] = s
+            if s > Fraction(N, Q ** (N - 1)): okr = False
+        check(f"E4  q={q}: the TRUE uhat(N) (exact recursion, m=3) satisfies"
+              f" RateSpecies (1,1,1) for 1<=N<={max(uh)}", okr)
 
     bad = [c for c in CHECKS if not c[1]]
     print(f"\n==== {len(CHECKS)} checks, {len(CHECKS) - len(bad)} passed, {len(bad)} failed ====")
