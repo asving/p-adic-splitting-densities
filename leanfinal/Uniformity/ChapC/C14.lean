@@ -117,10 +117,15 @@ hoisted machinery instead of privately duplicating it, so `exists_slotRes_preima
 `F.stageCoord H₀ hpin c s` and closes on `F.sum_stageCoord H₀ hpin c`. With the power-basis read
 gone from this file, so are its `isKey_X` and the `Field (resField X)` local instance: nothing
 left here needs one. `stageLiftO` (hence C.43's `composedKey` and C.56a's `k2DigitLift`) is
-pinnable at last, by the residue clause the finding names. **Still open, and NOT touched by this
+pinnable at last, by the residue clause the finding names. ~~**Still open, and NOT touched by this
 repair:** C.56a's `k2Coord` has the same defect one level up — it reads
 `((AdjoinRoot.mk_surjective s).choose).coeff t` for the `K₂`-over-`K` digits — and wants the same
-cure at `towerLabel T`'s power basis.
+cure at `towerLabel T`'s power basis.~~ **CLOSED the same day**: C.56a's `k2Coord` was repaired on
+2026-08-16 by exactly that cure — the tower power basis `k2PB` (`AdjoinRoot.powerBasis'` at the
+monic `towerLabel T`, `k2PB_dim = f₂`, `k2PB_gen = β`), signature byte-unchanged, with the pin
+`sum_k2Coord : Σ_{t < f₂} algebraMap(k2Coord T s t)·β^t = s`. Both digit reads of C.56a's
+`k2DigitLift` are therefore power-basis coordinates now; nothing in this file consumes either, and
+this paragraph is the cross-reference only.
 
 ## Private helpers (none is a blueprint node; GC-6.5)
 
