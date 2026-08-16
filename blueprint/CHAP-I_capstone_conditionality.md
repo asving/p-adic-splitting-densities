@@ -878,6 +878,25 @@ list is the public conditionality). Cross-read item (§13 item 5).
 > CHAP-D DECISION D-2 + AMENDMENT A-D.2 (both 2026-08-16).  Effect on this node: I.10's
 > field list is UNCHANGED; the rule binds what the fields MEAN — §3.4's HYP.41/42/57/63
 > rows and §12's reconciliation read their carriers as the re-signed forms by reference.
+>
+> **ARC NOTE (2026-08-16, unit OM-8 — the HYP.57/HYP.63 conjunct's state advanced; rows
+> stay CARRY).** (1) The ϑ-half's named adjudication (does GENTOW5 S2.1 imply
+> `(H-VARTHETA-RES)_i`?) is PERFORMED: YES at every DEF GENTOW5-1 instantiation with the
+> canonical node-point residue read, NO at arbitrary `ρ` (the ρ-defeat is now machine-shown
+> at REAL tower exponents — `verification/om8_vartheta_deep.py` LEG D2 — which is this
+> note's fence with an executable reason: **typing E.61's socket at anything but chapter
+> C's canonical residue data leaves the conjunct undischargeable**). The lattice core is
+> Lean-general (`leanfinal/Uniformity/ChapD/D62w.lean`: `triangular_descent`/`dvd_stage`;
+> depths 2/3 concrete; `i ∈ {1,2}` corpus proofs transcribed), and NODE D.62 itself is
+> landed in leanfinal at the A-D.2 signature (`D62.lean`; voided form NOT re-landed).
+> (2) The `𝒲`-half's empty-base closure (T5 S12.1's re-verification obligation) is
+> PERFORMED: interleaved-induction skeleton PROVED (`wle_of_interleaved`), footprint walk
+> recorded; when this chapter's discharge node composes the `𝒲` citation
+> {GENTOW2 base, WI step (SOL row 18, 2/2), frozen (a)→(b) chain}, it should commission
+> ONE fresh-context hostile pass on OM-8's C-3/C-5 index-alignment reading. New machine
+> coverage both halves: first `f₄ = 3` three-slot frame, first non-prime-field deep ϑ
+> (`F₉`), first equal-characteristic deep-twist rows. Ledger ARC NOTEs at HYP.57/HYP.63;
+> unit record `docs/openmath-campaign/OM-8_deep-twist_2026-08-16.md`.
 
 **DEPENDS.** I.01, I.02, I.03, I.05, I.06, I.07 · E.24 (`LadderSupply`, committed; via it
 E.39/E.40/E.61/E.62) · landed `DrainageAt` · I.08/I.09 (late-binding).
@@ -2021,6 +2040,40 @@ below the `if n ≥ 8` conjunct. HYP.82 stays CARRY.
 
 Unit record: `docs/openmath-campaign/OM-7_genhn-he-tow_2026-08-16.md`; ledger ARC NOTEs at
 HYP.81/HYP.82 (dispositions unchanged). This addendum adds no new ledger row.
+
+## ADDENDUM (2026-08-16, unit OM-9) — THE TWO WELD CONJUNCTS' CARRIERS ARE LANDED (I.08/I.09
+## LATE-BINDING TARGETS NOW EXIST); THE `w1` FIELD'S STRENGTH IS PINNED; WELD-ZERO UNTOUCHED
+
+**I.08 (`JD0-BOX-2`).** Chapter F's §4 is landed in `leanfinal` (AMENDMENT A-W.2):
+`Uniformity.Density.Weld.JD0Box2` (F.04) and the strike ledger `JD0SiteStrike` (F.05) exist
+at the gate-pinned bodies, with the fold route's site-independent half PROVED
+(`F04w.lean`: `JD0SiteStrike.jd0Box2` — a strike with its ledger leg witnesses the
+perimeter) and the mechanism layer proved (F.02/F.03/F.06 stubs now theorems; NEW
+`gaugeCobdry_isCocycle`, the perimeter's consistency). §9 item **L-1** can bind `jd0` to a
+real declaration at F's freeze. **The conjunct itself is UNCHANGED** (CARRY; the
+four-line-form warrant is synthesis at GRTJA 1/2): I.08's placeholder status resolves to a
+named landed carrier, not to a discharge. Each per-site strike record, once chapter-H/C
+site objects exist (GC-13), discharges its site by one application of
+`JD0SiteStrike.jd0Box2`.
+
+**I.09 (`GENHN-BOX-2` + W-1).** `GenhnBox2` (F.11, clause (iv) structurally absent, μ ≥ 3
+guard in the Prop) and `W1Transport` (F.12) are landed at gate signatures; W-9's abstract
+clauses (i)–(iii) are PROVED behind the carrier (F.07–F.10b, F.13 — assoc from the cocycle
+identity, dimension/cardinality, the JC-F1 power basis, plus the fresh certified theorem
+`CarryCocycle.c_comm`). **L-2's typing note, sharpened by a machine-checked fact:**
+`w1Transport_iff_zero_iff` (F12w) proves the `w1` field's type is equivalent to equality of
+vanishing loci — the carrier is the transport's SIGNATURE, so a site-level instantiation of
+`w1` at nonvanishing families is FORMALLY trivial (`w1Transport_of_ne_zero`) and would
+discharge NOTHING of HYP.139 (MATH content = TR-3′-GEN's compatible dictionary at general
+order). **Consequence for I.10/I.17's open-surface accounting:** the `w1` conjunct field
+should carry this note when bound, so no later pass mistakes a typed instantiation for a
+discharge (the same trap class as I-11's owner rules). The WELD-ZERO arc note travels with
+the field exactly as I-7 states: IN-PROGRESS, clean-pass 1 of 2, pass 2 IN FLIGHT
+(Fable-max), licenses nothing; this addendum consumed nothing from it.
+
+Unit record: `docs/openmath-campaign/OM-9_weld_2026-08-16.md`; ledger ARC NOTEs at
+HYP.74/HYP.139/HYP.148 (dispositions unchanged: CARRY/MATH/CARRY). This addendum adds no
+new ledger row and moves no bucket.
 
 <!-- SENTINEL: BP-I END OF FILE -->
 

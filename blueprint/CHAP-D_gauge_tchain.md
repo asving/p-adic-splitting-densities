@@ -3543,6 +3543,23 @@ the four specs' self-audit sections).
 
 **ENVIRONMENT.** n/a.
 
+> **⛔ DATED NOTE (2026-08-16, unit OM-8 — two routing rows advanced).** (i) The
+> S2.1-implication adjudication that D.62's SOURCE records as "nobody's in this chapter:
+> OPEN" (and ledger HYP.57's disposition books to a technical unit) is **PERFORMED**:
+> YES at every DEF GENTOW5-1 instantiation with the canonical node-point residue read
+> (all `i ≥ 3`, all `s ≥ 0`), NO for the abstract A-D.2 carrier at arbitrary `ρ`
+> (machine-refuted at REAL tower exponents — the adversarial-`ρ` leg of
+> `verification/om8_vartheta_deep.py`, GREEN 52/0). Record with the three-leg decomposition
+> and the two pinned residuals (canonical-read socket typing; the T1 site-by-site
+> convention walk, which REDUCES to the same lattice lemma): ledger HYP.57's ARC NOTE +
+> `docs/openmath-campaign/OM-8_deep-twist_2026-08-16.md` §3.1. (ii) OPEN-CALL 5's
+> `[GENTOW5-W(i)]`/HVR stack: NODE D.62 is now LANDED in `leanfinal`
+> (`Uniformity/ChapD/D62.lean`, the A-D.2 signature, `hvarthetaRes_of_arena_agree` PROVED;
+> the voided form NOT re-landed per I.10's fence) with the D-adjacent witness layer
+> `D62w.lean` (ϑ→τ reduction; `i ∈ {1,2}` transcriptions; the depth-3/depth-2
+> letter-lattice models; the general-depth `triangular_descent`/`dvd_stage` core; the
+> HYP.63 `wle_of_interleaved` skeleton) — all sorry-free, Lean-core; ChapD roll-up wired.
+
 ---
 ## 10. §10 — GATES: `q = 2` AND `q = 3` FIRING INSTANCES, THE FRAME-C REGRESSION, AND THE CENSUS
 
