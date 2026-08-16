@@ -1,7 +1,13 @@
 #!/usr/bin/env python3
 """One-shot generator for spec/DAG_BLUEPRINT_D.tsv (CHAP-D composer, 2026-08-15).
 Edge lists are hand-audited against blueprint/CHAP-D_gauge_tchain.md's DEPENDS/SOURCE
-fields. 9-column contract, consumer -> supplier."""
+fields. 9-column contract, consumer -> supplier.
+
+AMENDMENT A-D.1 (2026-08-16, chapter-D stub-gate defect-repair round): five intra edges
+added and one re-annotated, from the re-signed DEPENDS fields of the amendment
+(see `intra_note` below). Intra edges 162 -> 167, rows 337 -> 342; still ACYCLIC, critical
+path still 9 nodes, layer widths 10,9,13,7,8,6,6,4,5 -> 10,9,13,6,8,6,6,5,5 (D.39/D.40/
+D.41/D.43 each drop one layer deeper). Run from the repo root: `python3 spec/gen_dag_d.py`."""
 import csv, sys
 
 GENTOW2_EXT = 'EXT:GENTOW2_PROOF_2026-08-09.md'
@@ -10,15 +16,28 @@ GENTOW2_EXT = 'EXT:GENTOW2_PROOF_2026-08-09.md'
 intra = {
  2:[1], 3:[2], 4:[1], 5:[1,2,4], 6:[4], 7:[1], 8:[2,4,5,7], 9:[5,8], 10:[6,8],
  11:[2], 12:[1,2], 14:[13], 15:[13,14], 16:[13], 17:[1,7,13], 18:[8,13,16,17],
- 19:[12,13,15,17], 20:[7], 21:[13,15,19,20], 24:[13], 25:[13,24], 26:[13,24,25],
+ 19:[12,13,15,17], 20:[7], 21:[13,15,17,19,20], 24:[13], 25:[13,24], 26:[13,24,25],
  27:[14,15], 28:[16,18,24,25], 29:[1,7], 32:[4,8,10,29], 33:[8,10,31,32], 35:[34],
- 36:[20,21,22,23,29,30,31,32,33,34], 37:[7,8], 38:[8,10,37], 39:[1,7,12],
+ 36:[20,21,22,23,29,30,31,32,33,34], 37:[7,8], 38:[8,10,37], 39:[1,7,8,12],
  40:[12,39], 41:[34,40], 42:[10,35,38], 43:[11,12,39,40,41], 44:[37,38],
  46:[45], 47:[46], 48:[46], 49:[46,47,48], 50:[46,47,48,49], 51:[48,49], 52:[48],
  53:[45,46,47,48,49,50,51,52], 54:[45,46,47,48,49,51], 55:[44], 56:[44], 57:[55],
  58:[10,34,35,44], 59:[34], 60:[55,59], 61:[29,44,55], 62:[1,7], 63:[55,62],
- 65:[13,14,16,17,18,28,32,35,58], 66:[10,13,14,15,18,28,45,48],
- 67:[8,10,12,17,38,39,40],
+ 65:[13,14,16,17,18,28,32,35,58], 66:[10,13,14,15,16,18,27,28,45,48],
+ 67:[6,8,10,12,17,38,39,40],
+}
+
+# --- A-D.1 per-edge evidence riders (the five added edges + the one re-annotated) ---------
+intra_note = {
+ (17,13): 'A-D.1/D-D2: DEFINITIONAL dependency, not merely a lemma dependency -- '
+          "levelOneArena's exact_height field is discharged from iexp_aexp_spec, so the def's "
+          'axiom footprint carries it; D.13 must LAND before D.17',
+ (21,17): 'A-D.1/D-D8: edge was UNDECLARED -- the conclusion applies (levelOneArena ...).res, '
+          "so D.21's STATEMENT depends on D.17 (statability, not only proof)",
+ (39,8):  "A-D.1/D-D3: compData's real body applies A.mem_ker_div (D.08's proved helper)",
+ (66,16): 'A-D.1/D-F1: leg 5 (FRAME-H2) scores a Wfloor table',
+ (66,27): "A-D.1: leg 1's binary-carry grid executes D.27",
+ (67,6):  "A-D.1: leg 4 IS the D.06 orientation table's arithmetic",
 }
 
 # --- transcription/SOURCE edges: node -> [EFF ids] -----------------------------------
@@ -98,7 +117,10 @@ def add(frm, to, ev, res='from:exact,to:exact'):
 
 for n in sorted(intra):
     for m in intra[n]:
-        add(n, f'BP.D.{m:02d}', 'DEPENDS')
+        ev = 'DEPENDS'
+        if (n, m) in intra_note:
+            ev += ' [' + intra_note[(n, m)] + ']'
+        add(n, f'BP.D.{m:02d}', ev)
 for n in sorted(src):
     for t in src[n]:
         add(n, t, 'SOURCE (transcription)')

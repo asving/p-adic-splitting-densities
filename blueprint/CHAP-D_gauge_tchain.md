@@ -365,10 +365,13 @@ citable anchors) + 5 `interface` (GC-13-placeholder nodes: D.42, D.43, D.53, D.5
 2; split candidates at D.26, D.40 — fleet planning figure **≈ 74 Lean files** (interface/
 record/table nodes carry no file except D.06/D.36's anchors, which live in this blueprint).
 
-**Graph shape (computed mechanically from `spec/DAG_BLUEPRINT_D.tsv`, amendment A-1):**
-**162 intra-chapter edges over 68 nodes, ACYCLIC, critical path 9 nodes (8 edges)**, layer
-widths `10, 9, 13, 7, 8, 6, 6, 4, 5` (layer 0 = terminal supply). **Ten nodes are fireable
-immediately** (D.01, D.13, D.22, D.23, D.30, D.31, D.34, D.45, D.64, D.68-as-census). A
+**Graph shape (computed mechanically from `spec/DAG_BLUEPRINT_D.tsv`, amendment A-1; **recomputed
+at A-D.1**):** **167 intra-chapter edges over 68 nodes** *[A-1: 162; A-D.1 adds five edges from
+its re-signed DEPENDS fields — `D.21 → D.17`, `D.39 → D.08`, `D.66 → D.16`, `D.66 → D.27`,
+`D.67 → D.06`]*, **still ACYCLIC, critical path still 9 nodes (8 edges)**, layer widths
+`10, 9, 13, 6, 8, 6, 6, 5, 5` *[A-1: `10, 9, 13, 7, 8, 6, 6, 4, 5`; D.39/D.40/D.41/D.43 each sit
+one layer deeper]* (layer 0 = terminal supply). **Ten nodes are fireable immediately**
+(D.01, D.13, D.22, D.23, D.30, D.31, D.34, D.45, D.64, D.68-as-census — unchanged). A
 longest chain: `D.61 → D.55 → D.44 → D.38 → D.37 → D.08 → D.05 → D.04 → D.01` — through the
 abstract arena into the telescope port and the w-frame record. The schedule risks are
 D.25/D.26 (the C6/C5 concrete layer over chapter B's API — the only nodes whose dependencies
@@ -483,7 +486,7 @@ three normalizers" (`EFF.T1.08`).
 **SOURCE.** `EFF.T1.08` (the boxed `(C2-cocycle)`); `EFF.T3.02` (re-imported as `(T1-C2)`).
 
 **TEETH.** T1's "misindexed telescope tooth" (`EFF.T1.08` TEETH) → the mutation this statement
-kills is a shifted argument; Lean theorem (this node) + gate D.72's numeric leg.
+kills is a shifted argument; Lean theorem (this node) + gate D.67's numeric leg.
 
 **ENVIRONMENT.** ENV-D2.
 
@@ -530,7 +533,7 @@ of D.06. The slot reindexing `s = f_{i+1} − t` is applied at consumers (D.33, 
 baked into these definitions.
 
 **TEETH.** T1 "inverse-orientation tooth" (`EFF.T1.11/.14/.15` TEETH) → Lean theorem at D.10 +
-gate D.72.
+gate D.67.
 
 **ENVIRONMENT.** ENV-D2.
 
@@ -570,7 +573,7 @@ residue half is D.08); `EFF.T3.03` (`(T1-TEL)`).
 **ORIENTATION.** T1 two-index (D.06 row 1).
 
 **TEETH.** T3 §8.1(1) (endpoints) and §8.1(2) (recurrence) → Lean theorem (this node) +
-executable at gates D.70–D.72; T1 §4.2 check 2 (positive-wrap/wrong-sign) → the recursion's
+executable at gates D.65–D.67; T1 §4.2 check 2 (positive-wrap/wrong-sign) → the recursion's
 `τ`-factor is on the RIGHT of the product, the sign discipline the check guards.
 
 **ENVIRONMENT.** ENV-D2.
@@ -642,10 +645,30 @@ licence); `EFF.T1.14` (`(C3-Theta)`, `(C3-B-law)`); `EFF.T3.04` (`(T1-THETA)`), 
 (`(ABS-G2)`); GENTOW5-A1 row: `EFF-GENTOW2.md:1072` (per GC-14 — GENTOW5's own spec carries
 the merged-ID twin; C's author resolves it, GC-12).
 
-**TEETH.** The trap has NO battery (append #54: "a sign error no battery catches") — the
-teeth are (i) this node's Lean inversion theorem, (ii) D.10's `K`-valued form, (iii) gate
-D.72's numeric orientation leg (`U(s) = Θ_s w^s` at the FRAME-C tables), and (iv) the
-`ORIENTATION:` field discipline on every ϑ-touching node of chapters C/D/E/F.
+**TEETH** *[re-signed: A-D.1, 2026-08-16 — the trap NOW HAS AN EXECUTABLE BATTERY]*. Append
+#54's premise ("a sign error no battery catches") is **superseded for this table**: the stage-0e
+gate executed all four rows at FRAME-C (`f₃ = 5`, every quantity a concrete `𝔽₅`-unit;
+`leanspec/Leanspec/ChapD.lean` §10 "D.06 — THE ϑ FOUR-WAY ORIENTATION TABLE, EXECUTED"). The
+teeth are now (i) this node's Lean inversion theorem, (ii) D.10's `K`-valued form, (iii) **five
+executed `decide` legs** — the involution `Θ_s·ϑ_s = 1` on `s = 0…5`, the top-slot anchor
+`ϑ(f₃−1) = 1`, **row 4's reciprocal relation `ϑ_{G2}(t)·vartheta_{f₃−t} = 1`** (the exact
+GENTOW2/GENTOW5-A1 pair append #54 names), and the numerical DISTINCTNESS of the two
+orientations, (iv) gate D.67's numeric orientation leg (`U(s) = Θ_s w^s` at the FRAME-C
+tables), and (v) the `ORIENTATION:` field discipline on every ϑ-touching node of chapters
+C/D/E/F. **The two teeth that are NEW (quoted from the gate's header):** *"the wrong-orientation
+B-law (`U(s) = ϑ_s·w^s`) now FAILS at `s = 2`, and the orientation swap FAILS at `t = 1` and
+`t = 4`."* A silent row-1-for-row-4 swap is therefore a failing `decide`, not an undetectable
+sign error. ⚠ Scoring discipline, from finding D-F3 (§10): the distinctness leg must be scored
+at `t = 1` or `t = 4` — FRAME-C has `ϑ₂ = ϑ₃ = 2`, so an index-shift mutant SURVIVES at the
+middle slots.
+
+**A-D.1 VERDICT ON THE TABLE ITSELF (2026-08-16, stage-0e gate).** *"the four rows plus the
+B-law direction block plus the top-slot anchor are MUTUALLY CONSISTENT"* — checked symbolically
+row by row and then executed; **no sign error found**. This discharges the mechanical half of
+§14 item 1 (the byte-check against the four specs is still owed). Executed values at FRAME-C:
+`ϑ = (1,1,2,2,4,4)` and `Θ = (1,1,3,3,4,4)` on `s = 0…5` (the `s = 5` entry is finding D-F2's
+extension — the committed battery stopped at `s = 4`, one step short of the bottom slot
+`t = 0`, which reads `s = f₃ = 5`).
 
 **ENVIRONMENT.** ENV-D2.
 
@@ -664,9 +687,12 @@ abstracted); and a residue homomorphism `res : v.ker →* Kˣ` on the value-zero
 ```lean
 /-- DECISION D-1's residue interface. Instantiations: level 1 = D.17 (η-powers); level 2 =
 GENTOW2's letter group `⟨γ₁, γ₂⟩` (`EFF.GENTOW2.42`, supplied by chapter C); depth `i ≥ 3` =
-exactly the `(H-VARTHETA-RES)_i` conditionality (D.67) — supplying this structure at depth IS
-the hypothesis. FAITHFULNESS: formally stronger than the sitewise clauses; see CHAP-D honesty
-item D-H3 and §13 item 2. -/
+exactly the `(H-VARTHETA-RES)_i` conditionality (**D.62** = `HVarthetaRes`; "D.67" in the
+pre-A-1 numbering) — supplying this structure at depth IS the hypothesis. FAITHFULNESS:
+formally stronger than the sitewise clauses; see CHAP-D honesty item D-H3 and §13 item 2.
+⚠ D-D12 (stage-0e gate, stop-the-line): the EXISTENTIAL form of that reading — D.62's
+`HVarthetaRes` — is VACUOUS as signed; re-sign owned by the Display-A carrier adjudication
+unit (see §9's A-D.1 cross-reference stub). This structure itself is unaffected. -/
 structure GaugeArena (G : Type*) [CommGroup G] (K : Type*) [Field K]
     (N : NormSection G) where
   v : G →* Multiplicative ℤ
@@ -711,8 +737,13 @@ licence).
 noncomputable def GaugeArena.vartheta {G K N} [CommGroup G] [Field K]
     (A : GaugeArena G K N) (q : ℤ) (s : ℕ) : Kˣ :=
   A.res ⟨N.varthetaEl q s, A.varthetaEl_mem_ker q s⟩
--- sibling: `GaugeArena.theta`; membership lemmas `varthetaEl_mem_ker`, `tauEl_mem_ker`
--- (private); public recursion lemma `vartheta_succ` per the STATEMENT
+-- sibling: `GaugeArena.theta`; public recursion lemma `vartheta_succ` per the STATEMENT
+-- membership lemmas [names re-signed: A-D.1/SD-1 — FOUR, all PROVED, never `axiom`s: an
+-- `axiom` here would put a stub inside a `def` body]:
+--   `GaugeArena.mem_ker_div (h : A.v x = A.v y) : x * y⁻¹ ∈ MonoidHom.ker A.v`  (the engine)
+--   `GaugeArena.varthetaEl_mem_ker`, `GaugeArena.thetaEl_mem_ker`, `GaugeArena.tau_mem_ker`
+-- (the last replaces the originally-signed name `tauEl_mem_ker`: D.02's cocycle is `tau`, so
+--  `tauEl` names nothing — a pure naming slip, gate-corrected)
 ```
 
 **DEPENDS.** D.02, D.04, D.05, D.07.
@@ -764,7 +795,7 @@ item 1"); `EFF.T1.10` (`ϑ_{i,0} = ϑ_{i,1} = 1`).
 
 **ORIENTATION.** both (they agree at `s ∈ {0,1}`; D.06 anchor paragraph).
 
-**TEETH.** T3 §8.1(1) → **Lean theorem** (this node); executable at gate D.72.
+**TEETH.** T3 §8.1(1) → **Lean theorem** (this node); executable at gate D.67.
 
 **ENVIRONMENT.** ENV-D2 + ENV-D3.
 
@@ -803,7 +834,7 @@ exception scoped to exactly `varthetaG2` (the D.06 table mandates the name exist
 
 **ORIENTATION.** the involution itself — D.06 rows 1–3 made a theorem.
 
-**TEETH.** T3 §8.4(4) "inverse-orientation mutant" → **Lean theorem** (this node); gate D.72.
+**TEETH.** T3 §8.4(4) "inverse-orientation mutant" → **Lean theorem** (this node); gate D.67.
 
 **ENVIRONMENT.** ENV-D2 + ENV-D3.
 
@@ -853,7 +884,7 @@ exact-height sections on the same set of heights"): `χ(k) := n̂(k) · (n(k))�
 `χ(a)·χ(b)·χ(a+b)⁻¹ = τ_{N̂}(a,b) · τ_N(a,b)⁻¹`. In particular **no character law for `χ` is
 assumed**: `χ` is a character exactly when the two cocycles have equal residue (the corpus's
 own warning, kept as a ⚠ non-claim — T3's battery even exhibits the failure, `χ(1)² = 1 ≠ 2 =
-χ(2)` at FRAME-C, gate D.72).
+χ(2)` at FRAME-C, gate D.67).
 
 **SIGNATURE.**
 ```lean
@@ -880,7 +911,7 @@ D.07's `res` at consumers).
 `(T3-COB)` + "no character law for χ is assumed. It is a character exactly when the two
 imported cocycles have equal residue").
 
-**TEETH.** T3 §8.4(1) "character mutant" → **Lean theorem** (this node) + gate D.72's
+**TEETH.** T3 §8.4(1) "character mutant" → **Lean theorem** (this node) + gate D.67's
 `χ(1)² ≠ χ(2)` numeric leg (the mutant that assumes the character law dies there).
 
 **ENVIRONMENT.** ENV-D2.
@@ -921,11 +952,41 @@ def aexp (e₁ h : ℕ) (k : ℤ) : ℤ := (k - iexp e₁ h k * h) / e₁
 
 theorem iexp_aexp_spec (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁) (k : ℤ) :
     iexp e₁ h k < e₁ ∧ (iexp e₁ h k : ℤ) * h + aexp e₁ h k * e₁ = k
+
+/-- [signed: A-D.1/D-D1 — the gate's reduction at `h = 1`, PROVED, load-bearing for the WHOLE
+§10 gate programme: `iexp` routes through `ZMod.inv` → `Nat.gcdA`/`Nat.xgcd`, which do NOT
+kernel-reduce, so no `decide` can evaluate `iexp` as defined. The three ORIGINAL gate frames
+all have `h = 1`, where the `ZMod`-inverse disappears. -/
+theorem iexp_one (e₁ : ℕ) (k : ℤ) : iexp e₁ 1 k = ((k : ZMod e₁)).val := by simp [iexp]
+
+/-- [signed: A-D.1/D-F1 — the general reduction, needed by the `h > 1` frame FRAME-H2 that
+finding D-F1 makes MANDATORY (§10 leg 5). `c` is the inverse of `h` supplied as DATA, its
+defining equation `decide`-able at any concrete frame; this is what makes `iexp` computable
+when `h ≠ 1`. Route verified at the pin: `ZMod.inv_eq_of_mul_eq_one` exists. -/
+theorem iexp_eq_of_inv (e₁ h : ℕ) (c : ZMod e₁) (hc : (h : ZMod e₁) * c = 1) (k : ℤ) :
+    iexp e₁ h k = ((k : ZMod e₁) * c).val := by
+  simp [iexp, ZMod.inv_eq_of_mul_eq_one _ _ _ hc]
 ```
-⚠ Three public declarations — permitted on the B.15 precedent (the pair + its spec are one
-interface; every §4 node consumes all three). `ZMod e₁` needs `NeZero e₁` — supplied from
-`he` at use sites (`haveI`); the def itself is total (garbage at `e₁ = 0`, spec'd only under
-`he`).
+⚠ **Five** public declarations *[was three; A-D.1 adds `iexp_one` (D-D1) and `iexp_eq_of_inv`
+(D-F1)]* — permitted on the B.15 precedent (the pair + its spec are one interface; every §4
+node consumes all three, and every §10 gate row consumes one of the last two). `ZMod e₁` needs
+`NeZero e₁` — supplied from `he` at use sites (`haveI`); the def itself is total (garbage at
+`e₁ = 0`, spec'd only under `he`).
+
+⚠ **DEFECT D-D1, recorded here at its source (A-D.1).** This definition **is not
+`decide`-reducible**: `(h : ZMod e₁)⁻¹` unfolds to `ZMod.inv`, which routes through
+`Nat.gcdA`/`Nat.xgcd`; even `((1 : ℕ) : ZMod 2)⁻¹ = 1` fails `decide` at the v4.31.0 pin. The
+definition is signed AS IS (it is the faithful transcription of `EFF.T1.01`, and `ZMod.inv` is
+the right mathematical content), and the gate programme is repaired instead: **`iexp_one` +
+`simp only [<local defs>, iexp_one]` before every `decide`** (§10's GC-11 rider). A fleet agent
+that writes a §10 gate line as a bare `by decide` has written a line that does not compile.
+
+⚠ **§14 item 5's negative-height question, ANSWERED (A-D.1, executed).** `ZMod.val` is always
+the nonnegative representative, and Lean's `Int./`, `Int.%` are `ediv`/`emod` at the pin
+(`(-3)/2 = -2`, `(-3) % 2 = 1`), so `iexp`/`aexp`/`qexp` behave at every sign with no
+hypothesis: the gate executed `iexp 2 1` on `k = −3…5` (D.65) and `iexp`/`aexp`/`qexp` on
+`k = −2…6` plus the `(C2-wrap)`/`(C5-carry)`/D.27 grids INCLUDING negative heights (D.66).
+Consequence for D.21: its `hu : 0 ≤ u₂` is dead weight (defect D-D13, signed as given).
 
 **DEPENDS.** mathlib `ZMod.val`, `ZMod.inv` (coprime inverse: `ZMod.inv_mul_of_unit` /
 `ZMod.coe_unit_of_coprime` cluster — the stub agent verifies the exact names at the pin).
@@ -940,7 +1001,7 @@ interface; every §4 node consumes all three). `ZMod e₁` needs `NeZero e₁` �
 **SOURCE.** `EFF.T1.01` (the displayed `n̂₁(k) = x^{i(k)}π^{a(k)}, 0 ≤ i(k) < e₁,
 i(k)h + a(k)e₁ = k`).
 
-**TEETH.** T1 §4.2 check 1 (live-domain boundary) → gates D.70/D.71 evaluate `iexp`/`aexp`
+**TEETH.** T1 §4.2 check 1 (live-domain boundary) → gates D.65/D.66 evaluate `iexp`/`aexp`
 tables; check 10 (grade-data value group) → the `ℤ`-typing of `aexp` (heights are integers,
 `EFF.T1.02`'s integrality clause).
 
@@ -978,7 +1039,7 @@ shape). This is the corpus derivation: "the reduced exponent satisfies
 **SOURCE.** `EFF.T1.07` (the boxed `(C2-wrap)` and `wrap(a,b) = ⌊(i(a)+i(b))/e₁⌋ ∈ {0,1}`).
 
 **TEETH.** T1 §4.2 check 2 + the "positive-wrap" and "wrong-sign" teeth → Lean theorem (this
-node; the sign convention is `+e₁·wrap` on the RIGHT of `iexp (a+b)`) + gates D.70/D.71
+node; the sign convention is `+e₁·wrap` on the RIGHT of `iexp (a+b)`) + gates D.65/D.66
 (wrap tables at both primes).
 
 **ENVIRONMENT.** ENV-D1.
@@ -1013,8 +1074,14 @@ verbatim derivation); `omega`/`ring` after clearing the exact divisions
 **SOURCE.** `EFF.T1.19` (the boxed `(C5-carry)` `q(a+b) = q(a)+q(b)+wrap(a,b)`;
 `q(k) = (i₀k − i(k))/e₁`).
 
-**TEETH.** T1's A2 consumption regression + §4.2 check 4 (the `−q(k)` sign) → Lean theorem
-(this node + D.19); gate D.71.
+**TEETH** *[amended: A-D.1/D-F1]*. T1's A2 consumption regression + §4.2 check 4 (the `−q(k)`
+sign) → Lean theorem (this node + D.19); gate D.66 legs 1 **and 5**. ⚠ **FINDING D-F1: no
+`h = 1` frame can score this node.** At `h = 1` we have `i₀ = iexp e₁ 1 1 = 1`, so
+`qexp e₁ 1 k = (k − iexp k)/e₁ = aexp e₁ 1 k` **identically** — the X frame's leg-1 tables
+score the same function twice and an `aexp`/`qexp` confusion survives them (executed and
+recorded at the stage-0e gate: both tables come out `[-1,-1,0,0,1,1,2,2,3]` on `k = −2…6`).
+Scoring `qexp` independently REQUIRES a frame with `h > 1`: **FRAME-H2** (`e₁ = 3, h = 2`,
+`i₀ = 2`), signed as D.66 leg 5 by this amendment.
 
 **ENVIRONMENT.** ENV-D1.
 
@@ -1060,20 +1127,65 @@ residue hom `res : ker v →* Kˣ` sending `(i,a) ↦ η^{i/e₁}` — well-defi
 kernel is the cyclic group generated by the exponent pair of `x^{e₁}/π^h`, mapped by
 `t ↦ η^t`.
 
-**SIGNATURE.**
+**SIGNATURE** *[re-signed: A-D.1/D-D2 — REAL BODIES, elaborated in
+`leanspec/Leanspec/ChapD.lean`; the originally-signed `levelOneArena` row stopped at its type,
+which §12 rule 2 forbids for a def-class node, and D.19/D.21 are UNSTATABLE against an opaque
+arena (D-D8)]*.
 ```lean
+/-- [signed: A-D.1/SD-2 — a NEW public name: the height hom must be nameable for the arena's
+body AND for its kernel lemma to be stated at all.] -/
+def levelOneHeight (e₁ h : ℕ) : Multiplicative (ℤ × ℤ) →* Multiplicative ℤ where
+  toFun g :=
+    Multiplicative.ofAdd ((Multiplicative.toAdd g).1 * h + (Multiplicative.toAdd g).2 * e₁)
+  map_one' := by simp
+  map_mul' x y := by simp [← ofAdd_add]; ring
+
 def levelOneSection (e₁ h : ℕ) : NormSection (Multiplicative (ℤ × ℤ)) where
-  n k := Multiplicative.ofAdd (iexp e₁ h k, aexp e₁ h k)
-  n_zero := by simp [iexp, aexp]
+  n k := Multiplicative.ofAdd ((iexp e₁ h k : ℤ), aexp e₁ h k)   -- ⚠ the `(… : ℤ)` cast is
+  n_zero := by simp [iexp, aexp]                                 -- REQUIRED: `iexp` is `ℕ`
+
+/-- D.17's PROOF step 4, PROVED because `levelOneArena`'s `res` field needs it inside a `def`
+body (not a tactic hole, not an `axiom`). -/
+theorem levelOneHeight_ker_dvd (e₁ h : ℕ) (hcop : Nat.Coprime h e₁)
+    {g : Multiplicative (ℤ × ℤ)} (hg : g ∈ MonoidHom.ker (levelOneHeight e₁ h)) :
+    (e₁ : ℤ) ∣ (Multiplicative.toAdd g).1 := by
+  rw [MonoidHom.mem_ker] at hg
+  have h0 : (Multiplicative.toAdd g).1 * h + (Multiplicative.toAdd g).2 * e₁ = 0 := by
+    simp only [levelOneHeight, MonoidHom.coe_mk, OneHom.coe_mk, ofAdd_eq_one] at hg
+    exact hg
+  have hd : (e₁ : ℤ) ∣ (Multiplicative.toAdd g).1 * h :=
+    ⟨-(Multiplicative.toAdd g).2, by linarith⟩
+  exact (Nat.isCoprime_iff_coprime.mpr hcop.symm).dvd_of_dvd_mul_right hd
 
 noncomputable def levelOneArena (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁)
     {K : Type*} [Field K] (η : Kˣ) :
-    GaugeArena (Multiplicative (ℤ × ℤ)) K (levelOneSection e₁ h)
+    GaugeArena (Multiplicative (ℤ × ℤ)) K (levelOneSection e₁ h) where
+  v := levelOneHeight e₁ h
+  exact_height k := by
+    simp only [levelOneSection, levelOneHeight, MonoidHom.coe_mk, OneHom.coe_mk, toAdd_ofAdd]
+    exact congrArg Multiplicative.ofAdd (iexp_aexp_spec e₁ h he hcop k).2
+  res :=
+    { toFun := fun g => η ^ ((Multiplicative.toAdd (g : Multiplicative (ℤ × ℤ))).1 / (e₁ : ℤ))
+      map_one' := by simp
+      map_mul' := by
+        intro g₁ g₂
+        have h1 := levelOneHeight_ker_dvd e₁ h hcop g₁.2
+        simp only [Subgroup.coe_mul, toAdd_mul, Prod.fst_add]
+        rw [Int.add_ediv_of_dvd_left h1, zpow_add] }
 ```
-⚠ Two public declarations (section + arena) — sanctioned: they are one instance split only by
-where the field `K` enters; C and the gates cite both by name.
+⚠ **Four** public declarations *[was two; A-D.1/D-D2 adds `levelOneHeight` (SD-2) and
+`levelOneHeight_ker_dvd`]* — sanctioned, scoped to exactly those names: they are one instance
+split only by where the field `K` enters plus the two names its BODY cannot be written without;
+C and the gates cite the section and the arena by name.
 
 **DEPENDS.** D.01, D.07, D.13 (`iexp_aexp_spec` gives `exact_height`).
+⚠ **A-D.1/D-D2: this is a DEFINITIONAL dependency, not a lemma dependency.** `exact_height` can
+only be discharged from D.13's `iexp_aexp_spec`, so `levelOneArena`'s **axiom footprint carries
+it** (the stub-stage census prints `iexp_aexp_spec` for `LeanspecD.levelOneArena`; landed, it
+prints Lean core only once D.13 is proved). Two consequences the fleet must respect: D.13 must
+land BEFORE D.17 (not merely be cited by it), and D.68's census reads clean for `levelOneArena`
+only after D.13's proof is in. The DAG edge `BP.D.17 → BP.D.13` is re-signed with this
+character in `spec/DAG_BLUEPRINT_D.tsv` (§11).
 
 **PROOF.** 1. `n_zero`: `iexp 0 = 0`, `aexp 0 = 0` (compute). 2. `v` is a hom: componentwise
 `ℤ`-linear. 3. `exact_height`: D.13's identity verbatim. 4. Kernel description: for
@@ -1082,8 +1194,9 @@ where the field `K` enters; C and the gates cite both by name.
 hom-ness: `t` is additive in `(i,a)` (the quotient of a linear form), so `t ↦ η^t` is a
 `zpow` hom.
 
-**SIZE.** 40 lines. Fragile signature (dependent `GaugeArena` fields + `Multiplicative`
-coercions) — elaborate FIRST at the stub stage (§12).
+**SIZE.** 40 lines *[A-D.1: ~55 with the two added names]*. Fragile signature (dependent
+`GaugeArena` fields + `Multiplicative` coercions) — elaborated FIRST at the stub stage (§12),
+and the bodies above are that elaboration's output, byte-checked green.
 
 **FAITHFULNESS.** The exponent lattice is an exact model of the monomial group: all §4
 consumed identities are monomial-exponent identities (`EFF.T1.07/.10/.19`'s own derivations
@@ -1096,7 +1209,7 @@ field elements — deliberately (the §4 design note); no node consumes it. The 
 `n̂₁(k)`); `EFF.T1.04` (`z₁ := η`, `(C1-base-letter)`).
 
 **TEETH.** T1 §4.2 checks 1/2/4 (all level-1 checks run through this instance) → gates
-D.70/D.71 instantiate it at both primes.
+D.65/D.66 instantiate it at both primes.
 
 **ENVIRONMENT.** ENV-D1 + ENV-D3 (`{K} [Field K]`, `η : Kˣ`).
 
@@ -1138,7 +1251,7 @@ the INVERSE `η^{−W(t)}` — a consumer wanting GENTOW2's `ϑ(t)` reads `varth
 this lemma with a silent sign flip.
 
 **TEETH.** T1 §4.2 check 2 → **Lean theorem** (this node); gauge-naive and wrong-sign teeth →
-gates D.70/D.71 evaluate the `η`-power tables at both primes.
+gates D.65/D.66 evaluate the `η`-power tables at both primes.
 
 **ENVIRONMENT.** ENV-D1 + ENV-D3.
 
@@ -1160,8 +1273,32 @@ triangle wrap/carry/coboundary closes, which is the A2 regression's content.
 theorem chi_varpi (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁) (k : ℤ) :
     NormSection.chi (levelOneSection e₁ h) (varpiSection e₁ h) k
       = Multiplicative.ofAdd ((-(qexp e₁ h k)) • ((e₁ : ℤ), -(h : ℤ)))
--- sibling (same file, public): `varpiSection` [def] and the residue corollary `res_chi_varpi`
+
+-- siblings, spelled [A-D.1/D-D8, D-D10(i): `varpiSection` is a BLUEPRINT def and was missing
+-- from §12's inventory; the membership fact is PROVED, note SD-3, because the residue
+-- corollary cannot be STATED without it]:
+def varpiSection (e₁ h : ℕ) : NormSection (Multiplicative (ℤ × ℤ)) where
+  n k := (levelOneSection e₁ h).n 1 ^ k
+  n_zero := zpow_zero _
+
+theorem chi_varpi_mem_ker (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁)
+    {K : Type*} [Field K] (η : Kˣ) (k : ℤ) :
+    NormSection.chi (levelOneSection e₁ h) (varpiSection e₁ h) k
+      ∈ MonoidHom.ker (levelOneArena e₁ h he hcop η).v
+
+theorem res_chi_varpi (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁)
+    {K : Type*} [Field K] (η : Kˣ) (k : ℤ) :
+    (levelOneArena e₁ h he hcop η).res
+        ⟨NormSection.chi (levelOneSection e₁ h) (varpiSection e₁ h) k,
+          chi_varpi_mem_ker e₁ h he hcop η k⟩
+      = η ^ (-(qexp e₁ h k))
 ```
+⚠ **A-D.1/D-D8 — STATABILITY FENCE (flag for the fleet).** `res_chi_varpi` applies
+`(levelOneArena …).res` to a SUBTYPE element, so its membership proof must mention
+`(levelOneArena …).v`: **landing D.17 as an `axiom` (or with an opaque body) makes this
+corollary — and D.21's `levelOne_rho` — UNSTATABLE** without inventing extra membership
+hypotheses. With D.17's real body (D-D2) plus the proved `chi_varpi_mem_ker` both are statable
+exactly as signed. This is why D.17's body is mandatory, not stylistic.
 ⚠ Direction check for the stub: `chi Nhat N k = n̂(k)·(n(k))⁻¹` (D.12) with
 `Nhat := levelOneSection` (the exact-height section) and `N := varpiSection` — matching the
 corpus's `n(k)/ϖ^k`.
@@ -1239,14 +1376,25 @@ deriving depth-monomiality from this node alone is the defect the R2-1 withdrawa
 theorem levelOne_rho (e₁ h : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁)
     {K : Type*} [Field K] (η : Kˣ) (u₂ : ℤ) (hu : 0 ≤ u₂) :
     (levelOneArena e₁ h he hcop η).res
-      ⟨(levelOneSection e₁ h).n u₂ * ((varpiSection e₁ h).n u₂)⁻¹, by …⟩
-      = η ^ (-((iexp e₁ h 1 * u₂) / e₁))
+        ⟨NormSection.chi (levelOneSection e₁ h) (varpiSection e₁ h) u₂,
+          chi_varpi_mem_ker e₁ h he hcop η u₂⟩            -- [A-D.1/D-D8: the elided `by …`
+      = η ^ (-((iexp e₁ h 1 * u₂) / e₁))                  --  membership hole SPELLED, via
+                                                          --  D.19's proved sibling; the ratio
+                                                          --  IS D.19's `chi` at `k = u₂`
 -- ⚠ here `varpiSection` is REUSED with `ϖ := π₂ = n̂₁(1)`: `π₂^{u₂}` is the `u₂`-th power of
 -- the height-1 normalizer, so the LHS is D.19's `chi` at `k = u₂` — the whole lemma is
 -- D.19 + the arithmetic identity `qexp e₁ h u₂ = ⌊ℓ₁u₂/e₁⌋` (with `ℓ₁ = i₀`), `zpow` form
 ```
 
-**DEPENDS.** D.13, D.15, D.19, D.20.
+**DEPENDS.** D.13, D.15, **D.17** *[A-D.1: added — the conclusion applies
+`(levelOneArena …).res`, so this node's STATEMENT depends on D.17, not only on D.19's; the
+edge `BP.D.21 → BP.D.17` was UNDECLARED and is added in §11]*, D.19, D.20.
+
+⚠ **A-D.1/D-D13 (minor, no change of statement).** `hu : 0 ≤ u₂` is **unnecessary**: Lean's
+`Int./` and `%` are `ediv`/`emod` at the pin, so `iexp e₁ h u₂ = (i₀u₂) % e₁` and
+`qexp e₁ h u₂ = (i₀u₂)/e₁` hold at every sign (executed at `k < 0` in D.65/D.66's tables). The
+hypothesis is FAITHFUL to `EFF.T1.06`'s display and is signed as given — but it is dead weight,
+and a consumer blocked only by it may drop it in a re-sign.
 
 **PROOF.** 1. `π₂ = n̂₁(1)` by D.13 at `k = 1` (the corpus's `ℓ₁h + ℓ′₁e₁ = 1, 0 ≤ ℓ₁ < e₁`
 IS the exact-height spec at height 1). 2. D.19 gives residue `η^{−qexp u₂}`. 3.
@@ -1362,14 +1510,27 @@ coordinate vector `λ : Fin f₁ → ResidueField O`:
 point-free at D.26 (`γ ∘ L = id` on coordinates); the tower-point/embedding form is chapter
 C's carrier (§4 design note).
 
-**SIGNATURE.**
+**SIGNATURE** *[re-signed: A-D.1/D-D4 — `π` EXPLICIT and FIRST; `f₁` implicit; the `Fin`
+coercions spelled. Elaborated in `leanspec/Leanspec/ChapD.lean`]*.
 ```lean
-noncomputable def liftC6 (e₁ h : ℕ) (σ : ResidueField O → O) (M : ℕ)
+noncomputable def liftC6 (π : O) {f₁ : ℕ} (e₁ h : ℕ) (σ : ResidueField O → O) (M : ℕ)
     (l : Fin f₁ → ResidueField O) : Polynomial O :=
   ∑ r : Fin f₁,
-    Polynomial.C (σ (l r) * π ^ (aexp e₁ h M - r * h).toNat)
-      * Polynomial.X ^ (iexp e₁ h M + e₁ * r)
+    Polynomial.C (σ (l r) * π ^ (aexp e₁ h M - (r : ℕ) * h).toNat)
+      * Polynomial.X ^ (iexp e₁ h M + e₁ * (r : ℕ))
 ```
+⚠ **DEFECT D-D4 — ENV-D4's `{π : O}` CANNOT BE IMPLICIT (the B.42 lesson, recurring at
+DEFINITION level).** `π` occurs **only in this definition's BODY**, never in its type, so with
+the ENV-D4 section variable `{π : O}` every call site (`liftC6 … e₁ h σ M l` at D.25 clauses
+2–4, D.26, D.28) leaves an **unsolvable implicit-argument metavariable** — Lean cannot invent
+the uniformizer. Repair, applied here and at D.26: `(π : O)` is an EXPLICIT first argument,
+matching the LANDED convention `Uniformity.Density.Leaf.digAt (π : O)` (B.21). The rule
+generalises: **a binder that only the body mentions must be explicit**, which is the
+definition-level form of the B.42 inline-binder rule this chapter already runs for
+truth-bearing hypotheses. `f₁` stays IMPLICIT in `liftC6` (it is determined by `l`) and
+EXPLICIT in `gammaCoord` (nothing determines it there) — as the original text writes them.
+ENV-D4 is left byte-unchanged (it is CHAP-B's ENV-A′ verbatim by contract): its `{π : O}` is
+simply NOT the binder for this chapter's def-class nodes, which bind `π` themselves.
 
 **DEPENDS.** D.13.
 
@@ -1409,17 +1570,60 @@ counts).
    (`natDegree = 0` with a single support point `0`) **iff** `iexp e₁ h M = 0` and
    `∀ r ≠ 0, l r = 0`.
 
-**SIGNATURE.**
+**SIGNATURE** *[re-signed: A-D.1/D-D4 + D-D6 — `π` explicit and first at every occurrence
+(including the recursive call sites, which no longer carry `(O := O) (π := π)`); the four
+clauses spelled as the four sibling names the gate elaborated; clause 3 fenced under
+`open scoped Classical`]*.
 ```lean
-theorem liftC6_spec (e₁ h f₁ : ℕ) (hπ : Irreducible π) (he : 0 < e₁) (hf : 0 < f₁)
+-- D25a, clause 1 (integrality of the π-exponents on the live domain):
+theorem liftC6_exp_nonneg (π : O) (e₁ h f₁ : ℕ) (hπ : Irreducible π) (he : 0 < e₁) (hf : 0 < f₁)
+    (hcop : Nat.Coprime h e₁) (σ : ResidueField O → O)
+    (hσ : ∀ a, IsLocalRing.residue O (σ a) = a) (hσ0 : σ 0 = 0)
+    (M : ℕ) (hM : e₁ * f₁ * h < M) :
+    ∀ r : Fin f₁, 0 ≤ aexp e₁ h M - (r : ℕ) * h
+
+-- D25a, clauses 1–2 (degree + exact height):
+theorem liftC6_spec (π : O) (e₁ h f₁ : ℕ) (hπ : Irreducible π) (he : 0 < e₁) (hf : 0 < f₁)
     (hcop : Nat.Coprime h e₁) (σ : ResidueField O → O)
     (hσ : ∀ a, IsLocalRing.residue O (σ a) = a) (hσ0 : σ 0 = 0)
     (M : ℕ) (hM : e₁ * f₁ * h < M) (l : Fin f₁ → ResidueField O) (hl : l ≠ 0) :
-    (liftC6 (O := O) (π := π) e₁ h σ M l).natDegree < e₁ * f₁
-    ∧ Uniformity.Density.Leaf.suppVal Polynomial.X (liftC6 e₁ h σ M l) h e₁ = (M : ℕ∞)
--- clauses 3–4 are sibling public lemmas `liftC6_support`, `liftC6_xfree` in the same file
--- (SPLIT MANDATED → 2: `D25a` = clauses 1–2, `D25b` = clauses 3–4)
+    (liftC6 π e₁ h σ M l).natDegree < e₁ * f₁
+    ∧ Uniformity.Density.Leaf.suppVal Polynomial.X (liftC6 π e₁ h σ M l) h e₁ = (M : ℕ∞)
+
+-- D25a, clause 2's zero branch:
+theorem liftC6_zero (π : O) (e₁ h f₁ : ℕ) (σ : ResidueField O → O) (hσ0 : σ 0 = 0) (M : ℕ) :
+    liftC6 π e₁ h σ M (0 : Fin f₁ → ResidueField O) = 0
+
+section ClassicalSupport
+open scoped Classical                     -- ⚠ D-D6: REQUIRED, see the note below
+
+-- D25b, clause 3 (the A6/GENTOW6 x-support pin):
+theorem liftC6_support (π : O) (e₁ h f₁ : ℕ) (hπ : Irreducible π) (he : 0 < e₁) (hf : 0 < f₁)
+    (hcop : Nat.Coprime h e₁) (σ : ResidueField O → O)
+    (hσ : ∀ a, IsLocalRing.residue O (σ a) = a) (hσ0 : σ 0 = 0)
+    (M : ℕ) (hM : e₁ * f₁ * h < M) (l : Fin f₁ → ResidueField O) (hl : l ≠ 0) :
+    (liftC6 π e₁ h σ M l).support
+      = (Finset.univ.filter (fun r : Fin f₁ => l r ≠ 0)).image
+          (fun r : Fin f₁ => iexp e₁ h M + e₁ * (r : ℕ))
+
+end ClassicalSupport
+
+-- D25b, clause 4 (the x-free criterion):
+theorem liftC6_xfree (π : O) (e₁ h f₁ : ℕ) (hπ : Irreducible π) (he : 0 < e₁) (hf : 0 < f₁)
+    (hcop : Nat.Coprime h e₁) (σ : ResidueField O → O)
+    (hσ : ∀ a, IsLocalRing.residue O (σ a) = a) (hσ0 : σ 0 = 0)
+    (M : ℕ) (hM : e₁ * f₁ * h < M) (l : Fin f₁ → ResidueField O) (hl : l ≠ 0) :
+    ((liftC6 π e₁ h σ M l).natDegree = 0 ∧ (liftC6 π e₁ h σ M l).support = {0})
+      ↔ (iexp e₁ h M = 0 ∧ ∀ r : Fin f₁, (r : ℕ) ≠ 0 → l r = 0)
+-- (SPLIT MANDATED → 2 unchanged: `D25a` = clauses 1–2 (+ the zero branch), `D25b` = 3–4)
 ```
+⚠ **DEFECT D-D6 — clause 3's `Finset.filter` has NO `DecidablePred`.** `fun r => l r ≠ 0` over
+an ABSTRACT residue field is not decidable, so the clause-3 statement does not elaborate as
+written. Two admissible landed forms, and the fleet must pick one **in writing**: (a) declare
+the lemma inside `section ClassicalSupport / open scoped Classical` as above (what the gate
+did, note SD-5); or (b) restate membership-wise, `∀ j, j ∈ (liftC6 …).support ↔ ∃ r, l r ≠ 0 ∧
+j = iexp e₁ h M + e₁ * r`, which needs no decidability. (a) keeps the `EFF.T1.30` display shape
+and is signed as the default.
 
 **DEPENDS.** D.13, D.24 · B.07/B.08 (`gaussVal`, `le_gaussVal_iff`), B.11 (`npHgt`), B.14
 (`suppVal`), B.15 (`npHgt_X`) · mathlib `Polynomial.natDegree_sum_le`-cluster.
@@ -1475,19 +1679,20 @@ extension carrier `leanfinal` does not have (GC-7). They are the embedding inter
 this node + D.19 + its own point carrier. The HE6 F-1 provenance ("normalized slot
 coefficients in LEMMA HE6-0″", grep count 1) rides the same placeholder.
 
-**SIGNATURE.**
+**SIGNATURE** *[re-signed: A-D.1/D-D4 — `π` explicit and first in both declarations; the `Fin`
+coercion in the slot index spelled]*.
 ```lean
-noncomputable def gammaCoord (e₁ h f₁ : ℕ) (k : ℕ) (A : Polynomial O) (t : Fin f₁) :
+noncomputable def gammaCoord (π : O) (e₁ h f₁ : ℕ) (k : ℕ) (A : Polynomial O) (t : Fin f₁) :
     ResidueField O :=
-  let j := iexp e₁ h k + e₁ * t
+  let j := iexp e₁ h k + e₁ * (t : ℕ)
   let w : ℤ := ((k : ℤ) - j * h) / e₁
   if 0 ≤ w then Uniformity.Density.Leaf.digAt π w.toNat (A.coeff j) else 0
 
-theorem gammaCoord_liftC6 (e₁ h f₁ : ℕ) (hπ : Irreducible π) (he : 0 < e₁) (hh : 0 < h)
+theorem gammaCoord_liftC6 (π : O) (e₁ h f₁ : ℕ) (hπ : Irreducible π) (he : 0 < e₁) (hh : 0 < h)
     (hf : 0 < f₁) (hcop : Nat.Coprime h e₁) (σ : ResidueField O → O)
     (hσ : ∀ a, IsLocalRing.residue O (σ a) = a) (hσ0 : σ 0 = 0)
     (M : ℕ) (hM : e₁ * f₁ * h < M) (l : Fin f₁ → ResidueField O) (t : Fin f₁) :
-    gammaCoord (π := π) e₁ h f₁ M (liftC6 e₁ h σ M l) t = l t
+    gammaCoord π e₁ h f₁ M (liftC6 π e₁ h σ M l) t = l t
 ```
 
 **DEPENDS.** D.13, D.24, D.25 (clause 1's exponent facts) · B.21 (`digAt`), B.22 (`digAt_eq`,
@@ -1562,7 +1767,8 @@ edge (§11).
 ### NODE D.28 [lemma] [fresh]
 
 **STATEMENT.** *`(C3-level-1-key)` — the A3 pin, and the naive/corrected comparison.* Fix a
-carrier `(K₁, η)` with an `F`-basis `b : Basis (Fin f₁) F K₁`, `b r = η^r` (the corpus's
+carrier `(K₁, η)` with an `F`-basis `b : Module.Basis (Fin f₁) F K₁` *[A-D.1/D-D5: the constant
+is `Module.Basis` at the v4.31.0 pin; bare `Basis` DOES NOT EXIST]*, `b r = η^r` (the corpus's
 fixed basis `1, η, …, η^{f₁−1}`, `EFF.T1.01`), `F := ResidueField O`. For a slot `t < f₂`
 with `M_t := (f₂−t)·u₂ > D′h` and a digit `c_t : F ⊆ K₁`:
 
@@ -1576,24 +1782,54 @@ with `M_t := (f₂−t)·u₂ > D′h` and a digit `c_t : F ⊆ K₁`:
 3. **naive/corrected agreement in slot `t` iff `c_t·(ϑ_{1,f₂−t} − 1) = 0`** (`EFF.T1.13`'s
    criterion — over the field: iff `c_t = 0 ∨ η^{W(t)} = 1`).
 
-**SIGNATURE.**
+**SIGNATURE** *[re-signed: A-D.1/D-D4 + D-D5 + D-D7 — every `…` elision expanded from this
+node's own STATEMENT text (§12 rule 5), `Module.Basis` at the pin, `π` explicit, and the four
+type slips repaired. No strength change: the hypotheses are the ones the STATEMENT already
+names]*.
 ```lean
-theorem levelOne_corrected_key (e₁ h f₁ f₂ : ℕ) (hπ : Irreducible π) …
+theorem levelOne_corrected_key (π : O) (e₁ h f₁ f₂ : ℕ) (hπ : Irreducible π) (he : 0 < e₁)
+    (hh : 0 < h) (hf : 0 < f₁) (hcop : Nat.Coprime h e₁)
     {K₁ : Type*} [Field K₁] [Algebra (ResidueField O) K₁] (η : K₁ˣ)
-    (b : Basis (Fin f₁) (ResidueField O) K₁) (hb : ∀ r, b r = (η : K₁) ^ (r : ℕ))
-    (σ : ResidueField O → O) (hσ : …) (hσ0 : σ 0 = 0)
-    (u₂ : ℕ) (t : Fin f₂) (hM : e₁ * f₁ * h < (f₂ - t) * u₂) (c : ResidueField O) :
+    (b : Module.Basis (Fin f₁) (ResidueField O) K₁) (hb : ∀ r, b r = (η : K₁) ^ (r : ℕ))
+    (σ : ResidueField O → O)
+    (hσ : ∀ a, IsLocalRing.residue O (σ a) = a) (hσ0 : σ 0 = 0)
+    (u₂ : ℕ) (t : Fin f₂) (hM : e₁ * f₁ * h < (f₂ - (t : ℕ)) * u₂) (c : ResidueField O) :
     (c ≠ 0 → Uniformity.Density.Leaf.suppVal Polynomial.X
-        (liftC6 e₁ h σ ((f₂ - t) * u₂)
-          (b.repr (algebraMap _ K₁ c * (η : K₁) ^ Wfloor e₁ h u₂ f₂ t))) h e₁
-        = (((f₂ - t) * u₂ : ℕ) : ℕ∞))
-    ∧ (c = 0 → liftC6 e₁ h σ ((f₂ - t) * u₂)
-        (b.repr (algebraMap _ K₁ c * (η : K₁) ^ Wfloor e₁ h u₂ f₂ t)) = 0)
--- clauses 2–3 are sibling public lemmas (`levelOne_cmult`, `levelOne_naive_agree_iff`)
-```
-⚠ Fragile signature (Basis + repr + algebraMap stack) — elaborate FIRST (§12).
+        (liftC6 π e₁ h σ ((f₂ - (t : ℕ)) * u₂)
+          (fun r => b.repr (algebraMap (ResidueField O) K₁ c
+            * (η : K₁) ^ Wfloor e₁ h (u₂ : ℤ) f₂ (t : ℕ)) r)) h e₁
+        = (((f₂ - (t : ℕ)) * u₂ : ℕ) : ℕ∞))
+    ∧ (c = 0 → liftC6 π e₁ h σ ((f₂ - (t : ℕ)) * u₂)
+        (fun r => b.repr (algebraMap (ResidueField O) K₁ c
+          * (η : K₁) ^ Wfloor e₁ h (u₂ : ℤ) f₂ (t : ℕ)) r) = 0)
+-- clauses 2–3 are sibling public lemmas (`levelOne_cmult`, `levelOne_naive_agree_iff`),
+-- signed at the same spellings:
+theorem levelOne_cmult (e₁ h f₂ : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁)
+    {K₁ : Type*} [Field K₁] (η : K₁ˣ) (u₂ : ℕ) (t : Fin f₂) (c : K₁) :
+    (c * ((η : K₁) ^ Wfloor e₁ h (u₂ : ℤ) f₂ (t : ℕ)))
+        * (((levelOneArena e₁ h he hcop η).vartheta (u₂ : ℤ) (f₂ - (t : ℕ)) : K₁))⁻¹ = c
 
-**DEPENDS.** D.16, D.18, D.24, D.25 · mathlib `Basis.repr`, `Finsupp` coercions.
+theorem levelOne_naive_agree_iff (e₁ h f₂ : ℕ) (he : 0 < e₁) (hcop : Nat.Coprime h e₁)
+    {K₁ : Type*} [Field K₁] (η : K₁ˣ) (u₂ : ℕ) (t : Fin f₂) (c : K₁) :
+    c * (((levelOneArena e₁ h he hcop η).vartheta (u₂ : ℤ) (f₂ - (t : ℕ)) : K₁) - 1) = 0
+      ↔ c = 0 ∨ (η : K₁) ^ Wfloor e₁ h (u₂ : ℤ) f₂ (t : ℕ) = 1
+```
+⚠ Fragile signature (`Module.Basis` + `repr` + `algebraMap` stack) — elaborated FIRST at the
+stub stage (§12), and the form above is that elaboration.
+
+⚠ **DEFECT D-D7 — THE FOUR TYPE SLIPS THAT HID UNDER THE `…` ELISIONS** (each repaired above;
+none changes the mathematics, and each would have cost a fleet agent a debugging cycle):
+1. **`Wfloor` takes `u₂ : ℤ`, this node binds `u₂ : ℕ`** → the cast `(u₂ : ℤ)` is supplied at
+   every `Wfloor` occurrence (D.16's third argument is `ℤ` because heights are `ℤ`).
+2. **`t : Fin f₂` is fed to `Wfloor`'s `t : ℕ` and to `f₂ - t`** → `(t : ℕ)` supplied at both.
+3. **`b.repr (…)` is a `Finsupp`, but `liftC6` wants `Fin f₁ → ResidueField O`** → the
+   coercion is written `fun r => b.repr (…) r`, not `b.repr (…)`.
+4. **`(hσ : …)` and the `hπ`/`he`/`hh`/`hf`/`hcop` block were elided** → expanded from the
+   STATEMENT's own hypothesis list (`hh : 0 < h` is the D.25 ⚠'s carried hypothesis, §14
+   item 5).
+
+**DEPENDS.** D.16, D.18, D.24, D.25 · mathlib `Module.Basis.repr` *[A-D.1/D-D5: `Basis.repr`
+does not resolve at the pin]*, `Finsupp` coercions.
 
 **PROOF.** 1. Clause 1 is D.25 at `l := b.repr (…)` (nonzero iff the element is nonzero —
 `Basis.repr` is a linear equiv; zero branch by `map_zero` + `liftC6`'s `hσ0`). 2. Clause 2:
@@ -1640,8 +1876,9 @@ scalar covariance** `R (X·g) = R X · res g` for every `X : G` and value-zero `
 ```lean
 /-- The sitewise C3 read bundle (`EFF.T1.03`): exactly the clauses the B-law consumes, as
 fields. Instantiation = the external supplier's theorem (never proved in chapter D):
-`i = 2` — GENTOW2-B′/B″ [supplied-by: chapter C]; `i ≥ 3` — `[GENTOW5-W(i)]` behind
-`𝒲_{≤i}` (D.44/D.62) plus `(H-VARTHETA-RES)_i` (D.67). -/
+`i = 2` — GENTOW2-B′/B″ [supplied-by: chapter C]; `i ≥ 3` — `[GENTOW5-W(i)]` (D.44) behind
+`𝒲_{≤i}` (D.55) plus `(H-VARTHETA-RES)_i` (D.62) *[A-D.1: node IDs corrected to the
+post-A-1 numbering — the docstring is landed text, so a stale ID here ships]*. -/
 structure ReadBundle {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
     (A : GaugeArena G K N) (q : ℤ) where
   R : G → K
@@ -1656,6 +1893,13 @@ structure ReadBundle {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
 **PROOF.** definitional.
 
 **SIZE.** 20 lines.
+
+⚠ **A-D.1/D-D14 (minor, no change of statement).** `read_n` is DERIVABLE from `ladder_mult` at
+`s = 1` (`R ((N.n q) ^ 1) = w ^ 1`, then `pow_one` both sides). Both are signed as fields
+anyway, because they are two separate corpus clauses (`(C3-ladder-unit)` and
+`(C3-ladder-multiplicativity)`, `EFF.T1.03`) and the structure is a transcription of the
+corpus's clause list — but a fleet agent CONSTRUCTING a `ReadBundle` instance need only supply
+one of them, and the redundancy is not a defect in the corpus.
 
 **FAITHFULNESS.** (i) `(C3-zero-read)` (`R(0) = 0`) has no group-level zero; in this
 packaging the zero digit multiplies at the `K` level (D.34's coefficient `u(β_t)·c_t` with
@@ -1672,7 +1916,7 @@ others — the structure must carry all of them.
 naming); `EFF.T5.09` (the per-level nonvanishing suppliers, transcribed at D.61's interface).
 
 **TEETH.** T1 §4.2 checks 5, 8, 9 (read-bundle checks) → carried to instances (gates run
-the FRAME-C tables against a concrete bundle, D.72).
+the FRAME-C tables against a concrete bundle, D.67).
 
 **ENVIRONMENT.** ENV-D2 + ENV-D3.
 
@@ -1757,7 +2001,7 @@ dictionary-only).
 per D.06; consumers must pass the CORRECT unit (T1's `vartheta` at `s = f−t`, i.e.
 `varthetaG2⁻¹`) — the inverse-orientation tooth's site.
 
-**TEETH.** T1 §4.2 checks 2 and 5; inverse-orientation tooth → D.06/D.10 + gate D.72.
+**TEETH.** T1 §4.2 checks 2 and 5; inverse-orientation tooth → D.06/D.10 + gate D.67.
 
 **ENVIRONMENT.** ENV-D3.
 
@@ -1802,7 +2046,7 @@ for the deliberate duplication); `EFF.T5.14`'s consequent (D.62 fires this node)
 orientation (rows 2–3).
 
 **TEETH.** T1 §4.2 check 5 + inverse-orientation tooth → **Lean theorem** (this node);
-gate D.72's `U(s) = Θ_s w^s` numeric leg.
+gate D.67's `U(s) = Θ_s w^s` numeric leg.
 
 **ENVIRONMENT.** ENV-D2 + ENV-D3.
 
@@ -1848,7 +2092,7 @@ GENTOW2's A7 span by D.58 + this node).
 **ORIENTATION.** consumes both orientations through D.10's involution — the ONE place they
 meet; the ⚠ in the file body repeats D.06's warning verbatim.
 
-**TEETH.** T1 §4.2 checks 5, 8, 9 + inverse-orientation tooth → **Lean theorem**; gate D.72.
+**TEETH.** T1 §4.2 checks 5, 8, 9 + inverse-orientation tooth → **Lean theorem**; gate D.67.
 
 **ENVIRONMENT.** ENV-D2 + ENV-D3.
 
@@ -1871,7 +2115,11 @@ term, and irreducible-factor degrees and multiplicities" — `EFF.T5.08`.)
 **SIGNATURE.**
 ```lean
 noncomputable def wtwist {K : Type*} [Field K] (w : Kˣ) (P : Polynomial K) : Polynomial K :=
-  (w : K) ^ P.natDegree • P.comp (Polynomial.C (w⁻¹ : K) * Polynomial.X)
+  (w : K) ^ P.natDegree • P.comp (Polynomial.C ((w⁻¹ : Kˣ) : K) * Polynomial.X)
+  -- ⚠ [A-D.1/D-D11] the committed `(w⁻¹ : K)` is AMBIGUOUS between `((w : K))⁻¹` (field
+  -- inverse of the coercion) and `((w⁻¹ : Kˣ) : K)` (coercion of the group inverse). The two
+  -- are EQUAL; the **`Kˣ`-inverse reading is signed**, here and at D.41, because it makes
+  -- D.41 clause 1 definitional and keeps the term unit-valued (no `field_simp` side goals).
 
 theorem wtwist_monic {K : Type*} [Field K] (w : Kˣ) {P : Polynomial K} (hP : P.Monic) :
     (wtwist w P).Monic ∧ (wtwist w P).natDegree = P.natDegree
@@ -1941,8 +2189,10 @@ private helper).
 **SOURCE.** `EFF.T5.06` (the boxed `(WF-psi)` + its `[COMPUTATION]` derivation; the r4
 census's confirmation that T1's `(C3-three-reads)` boxes the same display).
 
-**TEETH.** T5 §7 Pass 1(1)/(6) → Lean theorem (this node); gate D.72 evaluates a `(WF-psi)`
-instance numerically.
+**TEETH.** T5 §7 Pass 1(1)/(6) → Lean theorem (this node); gate **D.65 leg 4** evaluates a
+`(WF-psi)` instance numerically *[A-D.1: was "gate D.72"; the ψ^{(w)} coefficient law
+`c_t·w^{f−t}` is executed at the F4-JOINT frame (`f = 2`, `w = ω`, `(c₁,c₀) = (1,ω)` ↦
+exponents `(1,0)`), not at FRAME-C]*.
 
 **ENVIRONMENT.** ENV-D3.
 
@@ -2080,7 +2330,7 @@ non-supply sentence).
 recorded inverse orientation of T3 §8.1 check 2 (D.10).
 
 **TEETH.** T3 §8.3(1)/(3) (GENTOW2-B″/GENTOW5-W legs), §8.4(2) (theta-free mutant), §8.4(3),
-§8.4(4) → **Lean theorem** (this node); gate D.72 runs the FRAME-C `U/ϑ` tables against it.
+§8.4(4) → **Lean theorem** (this node); gate D.67 runs the FRAME-C `U/ϑ` tables against it.
 
 **ENVIRONMENT.** ENV-D2 + ENV-D3.
 
@@ -2100,21 +2350,49 @@ height `H_t`"): the assembled coefficients
 `Rpoly := Σ_t (rho t) Z^t`, `RpolyHat := Σ_t (rhoHat t) Z^t` — "All displayed residual
 quotients have height zero."
 
-**SIGNATURE.**
+**SIGNATURE** *[re-signed: A-D.1/D-D3 — REAL BODY, elaborated in
+`leanspec/Leanspec/ChapD.lean`; the originally-signed row stopped at its type, and the body
+needs TWO names the original text used unquoted or not at all]*.
 ```lean
+/-- [signed: A-D.1/SD-3 — a NEW public name: the blueprint's `chiK`, used unquoted in D.40's
+`(chiK-of-H₀-term)`. §12 rule 5 leaves its spelling to stub time; THIS is the spelling.] -/
+noncomputable def GaugeArena.chiK {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    (A : GaugeArena G K N) (Nhat : NormSection G)
+    (hNhat : ∀ k : ℤ, A.v (Nhat.n k) = Multiplicative.ofAdd k) (k : ℤ) : Kˣ :=
+  A.res ⟨NormSection.chi Nhat N k, A.mem_ker_div ((hNhat k).trans (A.exact_height k).symm)⟩
+
+/-- The height-zero fact of `EFF.T3.13` ("All displayed residual quotients have height zero"),
+PROVED because `compData`'s body needs it inside a `def`. -/
+theorem GaugeArena.rho_mem_ker {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    (A : GaugeArena G K N) (M : NormSection G)
+    (hM : ∀ k : ℤ, A.v (M.n k) = Multiplicative.ofAdd k)
+    (H₀ q : ℤ) (t : ℕ) {x : G} (hx : A.v x = Multiplicative.ofAdd (H₀ - t * q)) :
+    x * (M.n q) ^ t * (M.n H₀)⁻¹ ∈ MonoidHom.ker A.v := by
+  rw [MonoidHom.mem_ker, map_mul, map_mul, map_inv, map_pow, hx, hM, hM, ← ofAdd_nsmul]
+  simp
+
 noncomputable def compData {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
     (A : GaugeArena G K N) (Nhat : NormSection G)
-    (hNhat : ∀ k, A.v (Nhat.n k) = Multiplicative.ofAdd k)
+    (hNhat : ∀ k : ℤ, A.v (Nhat.n k) = Multiplicative.ofAdd k)
     (H₀ q : ℤ) (D : ℕ) (Acoef : Fin (D + 1) → G)
-    (hA : ∀ t, A.v (Acoef t) = Multiplicative.ofAdd (H₀ - t * q)) :
-    (Fin (D + 1) → Kˣ) × (Fin (D + 1) → Kˣ) × Kˣ
+    (hA : ∀ t : Fin (D + 1), A.v (Acoef t) = Multiplicative.ofAdd (H₀ - (t : ℕ) * q)) :
+    (Fin (D + 1) → Kˣ) × (Fin (D + 1) → Kˣ) × Kˣ :=
+  (fun t => A.res ⟨Acoef t * (N.n q) ^ (t : ℕ) * (N.n H₀)⁻¹,
+      A.rho_mem_ker N A.exact_height H₀ q (t : ℕ) (hA t)⟩,
+   fun t => A.res ⟨Acoef t * (Nhat.n q) ^ (t : ℕ) * (Nhat.n H₀)⁻¹,
+      A.rho_mem_ker Nhat hNhat H₀ q (t : ℕ) (hA t)⟩,
+   A.chiK Nhat hNhat q)
 -- packaged `(rho, rhoHat, δ)`; the two polynomials are `∑ t, C ((rho t : K)) * X ^ (t : ℕ)`
 -- shapes formed at the consumers (D.40) — no separate public name
+-- ⚠ [A-D.1/D-D7-class] `hA`'s and `hNhat`'s binders need their types written (`∀ t : Fin (D+1)`,
+--   `∀ k : ℤ`) and `t * q` needs the cast `(t : ℕ) * q` — `t : Fin (D+1)`, `q : ℤ`.
 ```
-⚠ Fragile signature (kernel-membership proof terms inside a `def`) — elaborate FIRST (§12);
-the membership lemmas are private helpers with explicit statements, not tactic holes.
+⚠ Fragile signature (kernel-membership proof terms inside a `def`) — elaborated FIRST (§12); the
+membership facts are PUBLIC proved lemmas with explicit statements (`mem_ker_div` at D.08,
+`rho_mem_ker` here), never tactic holes and never `axiom`s: an `axiom` inside a `def` body would
+put a stub in the def layer.
 
-**DEPENDS.** D.01, D.07, D.12.
+**DEPENDS.** D.01, D.07, D.08 *[A-D.1: added — the body applies `A.mem_ker_div`]*, D.12.
 
 **PROOF.** definitional; the three membership facts are `map_mul`/`map_pow`/`map_inv` +
 `hNhat`/`hA`/`exact_height` + `omega` on exponents.
@@ -2124,7 +2402,7 @@ the membership lemmas are private helpers with explicit statements, not tactic h
 **SOURCE.** `EFF.T3.12` (χ, δ, the renaming fence), `EFF.T3.13` (`H_t = H₀ − tq`,
 `ρ_t`, `ρ̂_t`, `R(Z)`, `R̂(Z)`, `δ = χ(q)`, the height-zero clause).
 
-**TEETH.** T3 §8.2 (the port frames) → gate D.72 instantiates this data at FRAME-C's
+**TEETH.** T3 §8.2 (the port frames) → gate D.67 instantiates this data at FRAME-C's
 `p = 5` tables.
 
 **ENVIRONMENT.** ENV-D2 + ENV-D3.
@@ -2138,17 +2416,37 @@ the membership lemmas are private helpers with explicit statements, not tactic h
 the polynomial identity `Rpoly = C (chiK H₀ : K) * RpolyHat.comp (C ((δ : K))⁻¹ * X)` —
 "`R(Z) = χ(H₀)·R̂(Z/δ)`".
 
-**SIGNATURE.**
+**SIGNATURE** *[re-signed: A-D.1/D-D3 — the schematic projections and the
+`(chiK-of-H₀-term)` placeholder are now SPELLED against D.39's re-signed packaging (§12 rule 5:
+this is the elision the stub had to resolve, and this is the resolution)]*.
 ```lean
 theorem compData_cmp {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
-    (A : GaugeArena G K N) (Nhat : NormSection G) (hNhat : …) (H₀ q : ℤ) (D : ℕ)
-    (Acoef : Fin (D + 1) → G) (hA : …) (t : Fin (D + 1)) :
-    ((compData A Nhat hNhat H₀ q D Acoef hA).1 t : K)
-      = ((compData …).2.1 t : K) * ((compData …).2.2 : K)⁻¹ ^ (t : ℕ)
-          * (chiK-of-H₀-term)
--- the polynomial identity is the sibling public lemma `compData_cmp_poly`
--- (the exact spelled signature is fixed at stub time from D.39's packaging — the field
---  projections above are schematic; SPLIT: coefficient identity / polynomial identity)
+    (A : GaugeArena G K N) (Nhat : NormSection G)
+    (hNhat : ∀ k : ℤ, A.v (Nhat.n k) = Multiplicative.ofAdd k)
+    (H₀ q : ℤ) (D : ℕ) (Acoef : Fin (D + 1) → G)
+    (hA : ∀ t : Fin (D + 1), A.v (Acoef t) = Multiplicative.ofAdd (H₀ - (t : ℕ) * q))
+    (t : Fin (D + 1)) :
+    (((compData A Nhat hNhat H₀ q D Acoef hA).1 t : Kˣ) : K)
+      = (((compData A Nhat hNhat H₀ q D Acoef hA).2.1 t : Kˣ) : K)
+        * ((A.chiK Nhat hNhat H₀ : Kˣ) : K)
+        * ((((compData A Nhat hNhat H₀ q D Acoef hA).2.2 : Kˣ) : K))⁻¹ ^ (t : ℕ)
+
+theorem compData_cmp_poly {G K : Type*} [CommGroup G] [Field K] {N : NormSection G}
+    (A : GaugeArena G K N) (Nhat : NormSection G)
+    (hNhat : ∀ k : ℤ, A.v (Nhat.n k) = Multiplicative.ofAdd k)
+    (H₀ q : ℤ) (D : ℕ) (Acoef : Fin (D + 1) → G)
+    (hA : ∀ t : Fin (D + 1), A.v (Acoef t) = Multiplicative.ofAdd (H₀ - (t : ℕ) * q)) :
+    (∑ t : Fin (D + 1),
+        Polynomial.C ((((compData A Nhat hNhat H₀ q D Acoef hA).1 t : Kˣ) : K))
+          * Polynomial.X ^ (t : ℕ))
+      = Polynomial.C ((A.chiK Nhat hNhat H₀ : Kˣ) : K)
+        * (∑ t : Fin (D + 1),
+              Polynomial.C ((((compData A Nhat hNhat H₀ q D Acoef hA).2.1 t : Kˣ) : K))
+                * Polynomial.X ^ (t : ℕ)).comp
+            (Polynomial.C ((((compData A Nhat hNhat H₀ q D Acoef hA).2.2⁻¹ : Kˣ) : K))
+              * Polynomial.X)
+-- SPLIT (coefficient identity / polynomial identity) unchanged. The `δ⁻¹` substitution scalar
+-- is written as the `Kˣ`-inverse coerced to `K` (the D-D11 reading, signed at D.34).
 ```
 
 **DEPENDS.** D.12, D.39.
@@ -2163,7 +2461,7 @@ kernel-element quotient, apply `map_mul`-algebra, recognize D.12's `chi` at `q` 
 
 **SOURCE.** `EFF.T3.17` (the boxed `(T3-CMP)` + verbatim derivation).
 
-**TEETH.** T3 §8.2, §8.3(2), §8.4(1) → **Lean theorem**; gate D.72 checks
+**TEETH.** T3 §8.2, §8.3(2), §8.4(1) → **Lean theorem**; gate D.67 checks
 `ρ_t = 3·ρ̂_t·2^{−t}` and `R(Z) = 3R̂(Z/2)` in `𝔽₅[Z]` (FRAME-C's displayed obligation).
 
 **ENVIRONMENT.** ENV-D2 + ENV-D3.
@@ -2183,12 +2481,20 @@ containing `K` is preserved" — the correspondence commutes with `Polynomial.ma
 **SIGNATURE.**
 ```lean
 theorem t3_route {K : Type*} [Field K] (δ : Kˣ) {rhat : Polynomial K} (h : rhat.Monic) :
-    wtwist δ rhat = (δ : K) ^ rhat.natDegree • rhat.comp (Polynomial.C ((δ : K))⁻¹ * Polynomial.X)
+    wtwist δ rhat
+      = (δ : K) ^ rhat.natDegree • rhat.comp (Polynomial.C ((δ⁻¹ : Kˣ) : K) * Polynomial.X)
     ∧ ((wtwist δ rhat).Separable ↔ rhat.Separable)
 -- roots leg + map-commutation leg: sibling public lemmas `t3_route_roots`, `t3_route_map`
 -- (this node is D.34's package INSTANTIATED at w := δ and re-exported under T3's name —
 --  one-line proofs; the point is the T3-citable name and the rationality clause)
 ```
+⚠ **A-D.1/D-D11 — clause 1 is `rfl` and carries NO content.** With the `Kˣ`-inverse reading
+signed at D.34 (`Polynomial.C ((δ⁻¹ : Kˣ) : K)`), `(δ : K)^{deg} • r̂.comp (C δ⁻¹ * X)` **IS**
+`wtwist δ r̂` by definition, so the first conjunct of `t3_route` is definitional and the
+informative content of this node is the **separability iff** plus the two siblings
+(`t3_route_roots`, `t3_route_map`). The clause is signed as given — T3 displays it, and stating
+the identity under T3's own name is the point of the re-export — but a fleet agent must not
+budget proof effort for it, and a reviewer must not read it as a theorem.
 
 **DEPENDS.** D.34 (the transport package — the mathematical content lives there), D.40
 (the consumer shape).
@@ -2278,7 +2584,7 @@ bridge, `m`, the `τ` identification — `(H-HETOW-LOCAL)`'s fields; see D.27).
 `τ_H` is asserted" fence, and the verbatim absorption-boundary table).
 
 **TEETH.** T3 §8.3(2) → executable regression retained; §8.4(1) character mutant → D.12 +
-gate D.72.
+gate D.67.
 
 **ENVIRONMENT.** n/a.
 
@@ -2812,7 +3118,7 @@ split superseding the base's single unscoped law); `EFF.T5.15` (the supplier rec
 **ORIENTATION.** `Θ₂(t) = ϑ_{2,f₃−t}^{−1}` — D.06 rows 1–2 (the reconciliation row 5 is
 the verification this display rests on).
 
-**TEETH.** T5 §7 Pass 1(2)/Pass 2(3) → §12; gate D.72's orientation leg.
+**TEETH.** T5 §7 Pass 1(2)/Pass 2(3) → §12; gate D.67's orientation leg.
 
 **ENVIRONMENT.** n/a.
 
@@ -2897,7 +3203,7 @@ T1 side, `hW` the supplier side).
 
 **ORIENTATION.** the cancellation site — both orientations meet through D.10, as at D.33.
 
-**TEETH.** T5 §7 Pass 1(2)/Pass 2(2) → **Lean theorem**; gate D.72 (the FRAME-C `U·ϑ = w^s`
+**TEETH.** T5 §7 Pass 1(2)/Pass 2(2) → **Lean theorem**; gate D.67 (the FRAME-C `U·ϑ = w^s`
 identity is this cancellation's numeric shadow).
 
 **ENVIRONMENT.** ENV-D2 + ENV-D3.
@@ -3038,6 +3344,26 @@ regression retained).
 
 ## 9. §9 — THE `(H-VARTHETA-RES)_i ∧ 𝒲_{≤i}` CARRIERS (Display A's `∀ i ≥ 3` conjunct)
 
+> ⛔ **STOP-THE-LINE, CROSS-REFERENCE STUB (A-D.1, 2026-08-16) — DEFECT D-D12: D.62's CARRIER IS
+> VACUOUS, machine-checked; D.62/D.63 ARE AWAITING A RE-SIGN THAT THIS AMENDMENT DOES NOT MAKE.**
+> The stage-0e gate (`leanspec/Leanspec/ChapD.lean`, commit a63cffc2) refuted the existential
+> rendering below: `HVarthetaRes G K N v := ∃ A : GaugeArena G K N, A.v = v` is inhabited by the
+> TRIVIAL hom `1 : ker v →* Kˣ`, because `GaugeArena` has **no field tying `res` to an ambient
+> residue map**. Two PROVED theorems in the gate file (`hvarthetaRes_of_exact_height`,
+> `hvarthetaRes_iff`) show `HVarthetaRes G K N v ↔ ∀ k, v (N.n k) = ofAdd k` — the carrier says
+> NOTHING about `ϑ_{i,s} ∈ K_iˣ` and is discharged by `⟨v, hv, 1⟩`. Consequences: chapter I would
+> carry a Display-A `∀ i ≥ 3` conjunct provable from an exact-height fact; D.63's
+> `VarthetaWConjunct` degenerates to `Wle` plus that fact; and D-H3's "formally STRONGER than the
+> sitewise clauses" holds for D.07 used as a THEOREM HYPOTHESIS but is **FALSE in the existential
+> direction D.62 uses** (this is §14 item 2(iii), answered).
+> **Ownership: the D-D12 re-sign is NOT A-D.1's.** A separate Display-A carrier adjudication unit
+> owns the DECISION block and the re-signed D.62/D.63; this amendment records the refutation,
+> leaves both nodes' committed text byte-unchanged, and forwards the gate's (non-applied) repair
+> direction: *state `HVarthetaRes` against a GIVEN ambient residue datum and require the arena's
+> `res` to agree with it on the ϑ-quotients, or state the sitewise clause directly.* Until that
+> unit lands, **no chapter (E, I) may consume D.62/D.63 as a strength claim**, and the two nodes'
+> §13 rows stay open. Everything else in §9 is unaffected.
+
 ### NODE D.62 [def] [fresh]
 
 **STATEMENT.** *The `(H-VARTHETA-RES)_i` carrier.* The corpus's fence (`EFF.T1.09`): at
@@ -3131,7 +3457,7 @@ Lean declaration; one row per surviving open item of the four specs, each routed
 | WFRAME OPEN-2 (`ω₁ = w₁?`), OPEN-3/`HYP.66` (avatar) | open identifications | I ledger rows; D.59/D.61 fence them |
 | `JD0-BOX-2` | zero T-unit cites (D-H8's grep) | **chapter I**, named hypothesis (`HYP.39`) |
 | `HYP.01`/`HYP.12` escalations | trust-boundary naming from T3/T1 open calls | **chapter I** core-set (`HYP.98`); NO D node (Brief D trap (iii)) |
-| T3 `(T3-JOINT-OPEN)` | a realized p-adic B″ frame with `Θ ≠ 1 ∧ w ≠ 1` simultaneously — "a machine-coverage gap, not a proof gap" | gate D.72 carries the record; coverage stays open |
+| T3 `(T3-JOINT-OPEN)` | a realized p-adic B″ frame with `Θ ≠ 1 ∧ w ≠ 1` simultaneously — "a machine-coverage gap, not a proof gap" | gate D.67 carries the record; coverage stays open |
 
 **SIGNATURE.** none. **DEPENDS.** n/a. **PROOF.** n/a. **SIZE.** 0 Lean lines.
 
@@ -3157,6 +3483,43 @@ field-level legs run over concrete finite fields (`ZMod 3`, `ZMod 5`, and an `�
 known `decide`-fragility — the stub agent picks the computable route and records it; the
 exponent-table legs are pure `ℕ` and decide regardless.
 
+---
+
+**⚠⚠ THE GC-11 GATE-WRITING RIDER (A-D.1/D-D1, 2026-08-16 — MANDATORY, read before writing any
+line of D.65–D.67).** The gate lines as originally committed **do not run**: they are written
+`… := by decide` directly on `iexp`, and `iexp` is not `decide`-reducible (D.13's ⚠ — `ZMod.inv`
+routes through `Nat.gcdA`/`Nat.xgcd`; even `((1 : ℕ) : ZMod 2)⁻¹ = 1` fails `decide` at the
+v4.31.0 pin, and so does every `Θ_s = ϑ_s⁻¹` spelling). **Not one expected value changes**; the
+gate ROWS change, in three fixed ways:
+
+1. **Every row reduces before it decides.** The shape is
+   `by simp only [<the row's local defs>, iexp_one]; decide` — `iexp_one` being D.13's PROVED
+   reduction at `h = 1`, which is the value of `h` at all three original frames. At the `h > 1`
+   frame added below (leg 5 / FRAME-H2) the reducer is D.13's `iexp_eq_of_inv c hc` instead,
+   with `hc` the frame's `decide`-able inverse equation. **A bare `decide` on any row mentioning
+   `iexp`, `aexp`, `qexp`, `wrap` or `Wfloor` is a compile error, not a style choice.**
+2. **`Θ` is committed as LITERAL DATA with the involution as its certificate** (note SD-7). No
+   gate may spell `Θ_s` as `(ϑ_s)⁻¹` (`ZMod.inv` again). Instead: commit the table
+   (`gate66theta : List (ZMod 3) := [1, 1, 2, 2, 1]`,
+   `gate67thetaL : List (ZMod 5) := [1, 1, 3, 3, 4, 4]`), then EXECUTE
+   `∀ s, Θ_s · ϑ_s = 1` — which is D.10's involution and is the proof that the committed table
+   IS the inverse-orientation telescope. Same for `U` (D.67's `gate67U : List (ZMod 5) :=
+   [1, 3, 2, 1, 4]`): committing it as data is what makes the two runner obligations genuine
+   checks rather than unfoldings (the §8.4(3) endpoint-as-input mutant's kill).
+3. **Field inverses are stated multiplicatively.** `δ⁻¹ = 3` in `𝔽₅` is signed as
+   `(2 : ZMod 5) * 3 = 1`, and likewise for every `2⁻¹`/`4⁻¹` in the tables.
+
+**⚠ THE `𝔽₄` CARRIER, DECIDED (A-D.1/SD-6 — the section ⚠ above, resolved; the gate made this
+choice and it is now the blueprint's).** `GaloisField 2 2` and `AdjoinRoot (X²+X+1 :
+(ZMod 2)[X])` are quotient constructions with **no computable `DecidableEq` at the pin**, so no
+`decide` runs inside them and D.65's legs 2–4 cannot be executed in either. The signed carrier
+for D.65 is therefore the **discrete-log model**: `ω` has order 3 and every quantity in legs 2–4
+is a power of `ω`, so `⟨ω⟩ ≅ (ZMod 3, +)` carries them **faithfully** — products become sums and
+every committed expected value becomes an exponent, with `ω^a = 1 ↔ a = 0` preserving all four
+mutant kills. `q = 3` and `p = 5` need no such move (`ZMod 3`, `ZMod 5` are `Fin`-backed). A
+fleet agent that wants the honest 𝔽₄ instead must supply a `DecidableEq` instance and re-run;
+the discrete-log model is the signed default and the record of why.
+
 ### NODE D.65 [gate] [fresh]
 
 **STATEMENT.** *The `q = 2` gate — the F4-JOINT frame (`e₁ = 2, f₁ = 2, h = 1`,
@@ -3170,16 +3533,66 @@ reproduced by the general engine.* Executed checks:
 3. **the μ = 3 canonical vector** (`𝔽₄`): with `w = ω` and unit digits: `Γ = (1, ω, ω)`,
    `u(β) = (ω, ω, ω²)` (D.32's B-law at the instance), full canonical coefficient vector
    `(ω, ω², 1)` — assembling to `(y + ω)³` (D.58 + D.35).
+   ⚠ **INDEXING CONVENTION, STATED (A-D.1/D-D9 — it was NOT stated, and the vectors are wrong
+   without it).** All three vectors of this leg are listed in **ASCENDING `s`** (`s = 1, 2, 3`),
+   which is **DESCENDING slot `t`**. Read in SLOT order the committed entries are wrong: `Γ` in
+   slot order is `(ω, ω, 1)` and `u(β)` is `(ω², ω, ω)`. The gate scores them in the
+   ascending-`s` order committed above and says so at each row. *Class: the wrong-but-well-typed
+   defect §12 rule 3 warns a stub gate cannot catch mechanically — found by recomputing, then
+   executed.* Every consumer of this leg (and every reader of `EFF.T1.34`'s `μ = 3` row) must
+   fix the order before comparing.
 4. **the quadratic triple** (`𝔽₄`): `R_corr = y² + y + ω`, `R_naive = y² + y + 1`,
    `ψ^{(w)} = y² + ωy + 1` — the corrected/naive/canonical separation (the gauge-naive
    mutant's kill site: `R_naive ≠ R_corr` because `ϑ₂ = ω ≠ 1`, D.28 clause 3's criterion).
 
-**SIGNATURE.**
+**SIGNATURE** *[re-signed: A-D.1/D-D1 + SD-6 — the rows below are the EXECUTED ones (all green
+in `leanspec/Leanspec/ChapD.lean` §10, `q = 2` block); the originally-signed bare-`decide` row
+does not compile]*.
 ```lean
--- leanfinal/Uniformity/ChapD/D65.lean — one #eval/decide/example block per check above;
+-- leanfinal/Uniformity/ChapD/D65.lean — one decide/example block per check above;
 -- public declarations: `gate_f4_theta_vector` (leg 2) and `gate_f4_canonical` (leg 3) as
--- `example`-promoted theorems over the chosen 𝔽₄ carrier; legs 1 by `decide` lines
-example : (List.range 4).map (fun s => s * (iexp 2 1 3) / 2) = [0, 0, 1, 1] := by decide
+-- `example`-promoted theorems over the discrete-log 𝔽₄ carrier; legs 1 by reduce-then-decide
+
+-- leg 1 (pure ℕ/ℤ; note the NEGATIVE heights — §14 item 5's question, executed):
+example : ([-3, -2, -1, 0, 1, 2, 3, 4, 5] : List ℤ).map (fun k => iexp 2 1 k)
+    = [1, 0, 1, 0, 1, 0, 1, 0, 1] := by simp only [iexp_one]; decide
+
+example : ∀ a ∈ ([0, 1, 2, 3] : List ℤ), ∀ b ∈ ([0, 1, 2, 3] : List ℤ),
+    (wrap 2 1 a b = 1 ↔ (iexp 2 1 a = 1 ∧ iexp 2 1 b = 1)) := by
+  simp only [wrap, iexp_one]; decide            -- the live wrap: 1 exactly on odd/odd
+
+example : (List.range 4).map (fun s => s * iexp 2 1 3 / 2) = [0, 0, 1, 1] := by
+  simp only [iexp_one]; decide                  -- ⌊s·i(3)/2⌋, s = 0…3
+
+example : (List.range 3).map (fun t => Wfloor 2 1 3 3 t) = [1, 1, 0] := by
+  simp only [Wfloor, iexp_one]; decide          -- the same table through `Wfloor` at f₂ = 3
+
+-- the discrete-log 𝔽₄ model (SD-6): `ω^k ↦ k : ZMod 3`
+def gate65varthetaExp (s : ℕ) : ZMod 3 := ((s * iexp 2 1 3 / 2 : ℕ) : ZMod 3)
+def gate65thetaExp (s : ℕ) : ZMod 3 := -gate65varthetaExp s      -- Θ = ϑ⁻¹, additively
+def gate65wExp (s : ℕ) : ZMod 3 := (s : ZMod 3)                  -- w = ω
+
+-- leg 2: (ϑ_{1,0},…,ϑ_{1,3}) = (1, 1, ω, ω), as exponents:
+example : (List.range 4).map (fun s => gate65varthetaExp s) = [0, 0, 1, 1] := by
+  simp only [gate65varthetaExp, iexp_one]; decide
+
+-- leg 3, ALL THREE entries, in ASCENDING s (D-D9): Γ = (1, ω, ω); u(β) = (ω, ω, ω²);
+-- canonical = (ω, ω², 1); and the slotwise cancellation Γ_t·u(β_t) = w^s:
+example : ([1, 2, 3] : List ℕ).map (fun s => gate65varthetaExp s) = [0, 1, 1] := by
+  simp only [gate65varthetaExp, iexp_one]; decide
+example : ([1, 2, 3] : List ℕ).map (fun s => gate65thetaExp s + gate65wExp s) = [1, 1, 2] := by
+  simp only [gate65thetaExp, gate65varthetaExp, gate65wExp, iexp_one]; decide
+example : ([1, 2, 3] : List ℕ).map
+    (fun s => gate65varthetaExp s + (gate65thetaExp s + gate65wExp s)) = [1, 2, 0] := by
+  simp only [gate65thetaExp, gate65varthetaExp, gate65wExp, iexp_one]; decide
+example : ∀ s ∈ ([1, 2, 3] : List ℕ),
+    gate65varthetaExp s + (gate65thetaExp s + gate65wExp s) = gate65wExp s := by
+  simp only [gate65thetaExp, gate65varthetaExp, gate65wExp, iexp_one]; decide
+
+-- leg 4: the gauge-naive kill (ϑ₂ = ω ≠ 1) and ψ^{(w)}'s coefficients (ω, 1):
+example : gate65varthetaExp 2 ≠ 0 := by simp only [gate65varthetaExp, iexp_one]; decide
+example : ([(1, (0 : ZMod 3)), (0, (1 : ZMod 3))] : List (ℕ × ZMod 3)).map
+    (fun p => p.2 + gate65wExp (2 - p.1)) = [1, 0] := by simp only [gate65wExp]; decide
 ```
 
 **DEPENDS.** D.13, D.14, D.16, D.17, D.18, D.28, D.32, D.35, D.58.
@@ -3211,8 +3624,14 @@ wrong-sign, misindexed telescope, inverse orientation — each would flip a valu
 `ℤ`/`ZMod 3`, fully `decide`-friendly):
 
 1. **exponent tables:** `iexp 2 1` / `aexp 2 1` / `wrap 2 1` / `qexp 2 1` values on
-   `k = −2…6` (incl. the carry law `qexp (a+b) = qexp a + qexp b + wrap a b` on a grid —
-   D.15 executed);
+   `k = −2…6` (incl. the carry law `qexp (a+b) = qexp a + qexp b + wrap a b` on a grid, and
+   `(C2-wrap)` and D.27's binary-carry law on grids INCLUDING negative heights — D.14/D.15/D.27
+   executed);
+   ⚠ **FINDING D-F1 (A-D.1): this leg CANNOT separate `aexp` from `qexp`.** At `h = 1`, `i₀ = 1`
+   and `qexp ≡ aexp` identically — both tables come out `[-1,-1,0,0,1,1,2,2,3]`, so the leg
+   scores the same function twice and an `aexp`/`qexp` confusion **survives it**. This is a
+   coverage hole in the frame, not a defect in D.13/D.15. It is closed by **leg 5** below, which
+   this amendment makes MANDATORY;
 2. **the telescope vector** (`𝔽₃ = ZMod 3`): `(ϑ_{1,0},…,ϑ_{1,4}) = (1, 1, 2, 2, 1)`
    (`2^{⌊s/2⌋} mod 3`), and the involution table `Θ_s·ϑ_s = 1` with `Θ = (1, 1, 2, 2, 1)`
    (`2⁻¹ = 2` in `𝔽₃`) — D.10 executed;
@@ -3223,30 +3642,130 @@ wrong-sign, misindexed telescope, inverse orientation — each would flip a valu
    pins `[12, 7, 4]` give `ν₀ = 12 > 10 = Θ₀` (untouched with slack, `ω₀ = 0` — the D.48
    fence's separator) while `j = 1, 2` attain (`7 = Θ₁`, `4 = Θ₂`) — as `ℕ∞` facts
    (`decide` on the underlying `ℕ` comparisons).
+5. **FRAME-H2, the `h > 1` separator frame** *[NEW, signed: A-D.1/D-F1 — the frame finding D-F1
+   makes MANDATORY; without it nothing in chapter D scores D.15 independently]*. Frame data:
+   `e₁ = 3, h = 2` (coprime), so `2⁻¹ = 2` in `ZMod 3` and **`i₀ = iexp 3 2 1 = 2 ≠ 1`**; the
+   optional field leg runs over `K₁ = 𝔽₇` with `η = 2` (order 3) at `u₂ = 1`. Executed checks
+   (values verified twice — recomputed numerically, then elaborated at the pin):
+   * `iexp 3 2` on `k = −3…6` = `(0, 2, 1, 0, 2, 1, 0, 2, 1, 0)`;
+   * `aexp 3 2` on the same range = `(−1, −2, −1, 0, −1, 0, 1, 0, 1, 2)`;
+   * `qexp 3 2` on the same range = `(−2, −2, −1, 0, 0, 1, 2, 2, 3, 4)`;
+   * **the separation itself:** `aexp 3 2 k ≠ qexp 3 2 k` for every `k ∈ {1,…,6}` (they agree
+     only at `k ∈ {−2, −1, 0}`) — in particular at `k = 1`, where `aexp = −1` and `qexp = 0`.
+     An `aexp`/`qexp` swap now fails a `decide`;
+   * `(C2-wrap)` + `wrap ≤ 1` and `(C5-carry)` on the grid `a, b ∈ {−2,…,3}` at `h = 2` (the
+     wrap bit is now genuinely three-valued in `iexp`, `{0,1,2}`, not two-valued);
+   * `Wfloor 3 2 1 4 t = (2, 2, 1, 0)` for `t = 0…3` — a `Wfloor` table with a NON-CONSTANT
+     `i(u₂) = 2` (the `h = 1` frames all have `i(u₂) = 1`, which cannot expose a
+     misindexed-telescope mutant in the `i(u₂)` factor);
+   * *(recommended, not mandatory)* the telescope at this frame: `ϑ_s = 2^{⌊2s/3⌋}` over `𝔽₇` is
+     `(1, 1, 2, 4, 4, 1)` on `s = 0…5`, with the committed inverse table `Θ = (1, 1, 4, 2, 2, 1)`
+     certified by the involution `Θ_s·ϑ_s = 1` — a THIRD prime for the orientation discipline,
+     and the only frame where the `ϑ`-exponent grows by 2 per two steps.
 
-**SIGNATURE.**
+**SIGNATURE** *[re-signed: A-D.1/D-D1 + D-F1 — reduce-then-decide throughout; `Θ` as literal
+data; leg 5 added. Legs 1–4 are the EXECUTED rows of `leanspec/Leanspec/ChapD.lean` §10's
+`q = 3` block; leg 5's rows were elaborated green against the same file's defs]*.
 ```lean
 -- leanfinal/Uniformity/ChapD/D66.lean
-example : (List.range 5).map (fun s => (2 : ZMod 3) ^ (s * (iexp 2 1 3) / 2))
-    = [1, 1, 2, 2, 1] := by decide
-example : (List.range 3).map (thresholdTheta 3 3 1) = [10, 7, 4] := by decide
--- + the carry-law grid, the involution table, the D.28-criterion instances
+-- leg 1 (the four tables; `aexp`/`qexp` COINCIDE here — D-F1):
+example : ([-2, -1, 0, 1, 2, 3, 4, 5, 6] : List ℤ).map (fun k => iexp 2 1 k)
+    = [0, 1, 0, 1, 0, 1, 0, 1, 0] := by simp only [iexp_one]; decide
+example : ([-2, -1, 0, 1, 2, 3, 4, 5, 6] : List ℤ).map (fun k => aexp 2 1 k)
+    = [-1, -1, 0, 0, 1, 1, 2, 2, 3] := by simp only [aexp, iexp_one]; decide
+example : ([-2, -1, 0, 1, 2, 3, 4, 5, 6] : List ℤ).map (fun k => qexp 2 1 k)
+    = [-1, -1, 0, 0, 1, 1, 2, 2, 3] := by simp only [qexp, iexp_one]; decide
+example : ∀ a ∈ ([-2, -1, 0, 1, 2, 3] : List ℤ), ∀ b ∈ ([-2, -1, 0, 1, 2, 3] : List ℤ),
+    qexp 2 1 (a + b) = qexp 2 1 a + qexp 2 1 b + wrap 2 1 a b := by
+  simp only [qexp, wrap, iexp_one]; decide
+example : ∀ a ∈ ([-2, -1, 0, 1, 2, 3] : List ℤ), ∀ b ∈ ([-2, -1, 0, 1, 2, 3] : List ℤ),
+    iexp 2 1 a + iexp 2 1 b = iexp 2 1 (a + b) + 2 * wrap 2 1 a b ∧ wrap 2 1 a b ≤ 1 := by
+  simp only [wrap, iexp_one]; decide
+example : ∀ a ∈ ([-1, 0, 1, 2] : List ℤ), ∀ b ∈ ([-1, 0, 1, 2] : List ℤ),
+    ∀ u ∈ ([1, 2, 3] : List ℤ), ∀ c ∈ ([0, 1] : List ℕ),
+      qexp 2 1 (a + b - c * u)
+        = qexp 2 1 a + qexp 2 1 b + wrap 2 1 a b
+          - c * (qexp 2 1 u + wrap 2 1 (a + b - c * u) u) := by
+  simp only [qexp, wrap, iexp_one]; decide      -- D.27, both carry cases
+
+-- leg 2 (the telescope + the involution; Θ is DATA, the involution certifies it):
+def gate66vartheta (s : ℕ) : ZMod 3 := (2 : ZMod 3) ^ (s * iexp 2 1 3 / 2)
+def gate66theta : List (ZMod 3) := [1, 1, 2, 2, 1]
+example : (List.range 5).map (fun s => gate66vartheta s) = [1, 1, 2, 2, 1] := by
+  simp only [gate66vartheta, iexp_one]; decide
+example : ∀ s ∈ List.range 5, gate66theta.getD s 0 * gate66vartheta s = 1 := by
+  simp only [gate66vartheta, gate66theta, iexp_one]; decide
+
+-- leg 3 (D.28 clause 3's criterion fires: ϑ₂ = ϑ₃ = 2 ≠ 1):
+example : gate66vartheta 2 ≠ 1 ∧ gate66vartheta 3 ≠ 1 := by
+  simp only [gate66vartheta, iexp_one]; decide
+example : ∀ c ∈ ([1, 2] : List (ZMod 3)), c * (gate66vartheta 2 - 1) ≠ 0 := by
+  simp only [gate66vartheta, iexp_one]; decide
+
+-- leg 4 (FR-M3's thresholds; pure ℕ/ℕ∞, so a bare `decide` IS correct here):
+example : (List.range 3).map (fun j => thresholdTheta 3 3 1 j) = [10, 7, 4] := by decide
+example : thresholdTheta 3 3 1 0 < 12 ∧ thresholdTheta 3 3 1 1 = 7
+    ∧ thresholdTheta 3 3 1 2 = 4 := by decide
+example : ((thresholdTheta 3 3 1 0 : ℕ) : ℕ∞) < (12 : ℕ∞)
+    ∧ ((thresholdTheta 3 3 1 1 : ℕ) : ℕ∞) = (7 : ℕ∞)
+    ∧ ((thresholdTheta 3 3 1 2 : ℕ) : ℕ∞) = (4 : ℕ∞) := by decide
+example : thresholdTheta 3 3 1 2 < thresholdTheta 3 3 1 1
+    ∧ thresholdTheta 3 3 1 1 < thresholdTheta 3 3 1 0 := by decide   -- D.45's antitony
+
+-- leg 5 — FRAME-H2 (`e₁ = 3, h = 2`), the h > 1 separator frame [A-D.1/D-F1]:
+theorem gate66h2inv : ((2 : ℕ) : ZMod 3) * (2 : ZMod 3) = 1 := by decide
+example : ([-3, -2, -1, 0, 1, 2, 3, 4, 5, 6] : List ℤ).map (fun k => iexp 3 2 k)
+    = [0, 2, 1, 0, 2, 1, 0, 2, 1, 0] := by
+  simp only [iexp_eq_of_inv 3 2 2 gate66h2inv]; decide
+example : ([-3, -2, -1, 0, 1, 2, 3, 4, 5, 6] : List ℤ).map (fun k => aexp 3 2 k)
+    = [-1, -2, -1, 0, -1, 0, 1, 0, 1, 2] := by
+  simp only [aexp, iexp_eq_of_inv 3 2 2 gate66h2inv]; decide
+example : ([-3, -2, -1, 0, 1, 2, 3, 4, 5, 6] : List ℤ).map (fun k => qexp 3 2 k)
+    = [-2, -2, -1, 0, 0, 1, 2, 2, 3, 4] := by
+  simp only [qexp, iexp_eq_of_inv 3 2 2 gate66h2inv]; decide
+example : ∀ k ∈ ([1, 2, 3, 4, 5, 6] : List ℤ), aexp 3 2 k ≠ qexp 3 2 k := by
+  simp only [aexp, qexp, iexp_eq_of_inv 3 2 2 gate66h2inv]; decide   -- ★ the D-F1 separation
+example : ∀ a ∈ ([-2, -1, 0, 1, 2, 3] : List ℤ), ∀ b ∈ ([-2, -1, 0, 1, 2, 3] : List ℤ),
+    iexp 3 2 a + iexp 3 2 b = iexp 3 2 (a + b) + 3 * wrap 3 2 a b ∧ wrap 3 2 a b ≤ 1 := by
+  simp only [wrap, iexp_eq_of_inv 3 2 2 gate66h2inv]; decide
+example : ∀ a ∈ ([-2, -1, 0, 1, 2, 3] : List ℤ), ∀ b ∈ ([-2, -1, 0, 1, 2, 3] : List ℤ),
+    qexp 3 2 (a + b) = qexp 3 2 a + qexp 3 2 b + wrap 3 2 a b := by
+  simp only [qexp, wrap, iexp_eq_of_inv 3 2 2 gate66h2inv]; decide
+example : (List.range 4).map (fun t => Wfloor 3 2 1 4 t) = [2, 2, 1, 0] := by
+  simp only [Wfloor, iexp_eq_of_inv 3 2 2 gate66h2inv]; decide
+example : iexp 3 2 1 = 2 := by simp only [iexp_eq_of_inv 3 2 2 gate66h2inv]; decide
+-- (recommended) the 𝔽₇ telescope leg:
+def gate66h2vartheta (s : ℕ) : ZMod 7 := (2 : ZMod 7) ^ (s * iexp 3 2 1 / 3)
+def gate66h2theta : List (ZMod 7) := [1, 1, 4, 2, 2, 1]
+example : (List.range 6).map (fun s => gate66h2vartheta s) = [1, 1, 2, 4, 4, 1] := by
+  simp only [gate66h2vartheta, iexp_eq_of_inv 3 2 2 gate66h2inv]; decide
+example : ∀ s ∈ List.range 6, gate66h2theta.getD s 0 * gate66h2vartheta s = 1 := by
+  simp only [gate66h2vartheta, gate66h2theta, iexp_eq_of_inv 3 2 2 gate66h2inv]; decide
 ```
 
-**DEPENDS.** D.10, D.13, D.14, D.15, D.18, D.28, D.45, D.48.
+**DEPENDS.** D.10, D.13, D.14, D.15, **D.16** *[A-D.1: added — leg 5 scores a `Wfloor` table]*,
+D.18, D.27 *[A-D.1: added — leg 1's binary-carry grid]*, D.28, D.45, D.48.
 
-**PROOF.** `decide` throughout (ℕ/ℤ/`ZMod 3`).
+**PROOF.** reduce-then-`decide` throughout (ℕ/ℤ/`ZMod 3`/`ZMod 7`): `simp only [<local defs>,
+iexp_one]` at legs 1–3, `simp only [<local defs>, iexp_eq_of_inv 3 2 2 gate66h2inv]` at leg 5,
+bare `decide` at leg 4 (pure `ℕ`/`ℕ∞`, no `iexp`). See §10's GC-11 rider.
 
-**SIZE.** 45 lines.
+**SIZE.** 45 lines *[A-D.1: ~85 with leg 5]*.
 
 **SOURCE.** `EFF.T1.33` (frame X: "`p = 3, e₁ = 2, f₁ = 1, h = 1, η = 2, u₂ = 3`; corrected
 versus naive p-adic split"); `EFF.T4.20` (FR-M3: thresholds `[10,7,4]`, self-shadow pins
 `[12,7,4]`, `ω₀ = 0`, `ω₁, ω₂ ≠ 0` — the retained measured configuration this gate's leg 4
-anchors); `EFF.T4.11` (the separator's meaning).
+anchors); `EFF.T4.11` (the separator's meaning). **Leg 5 (FRAME-H2) has NO source unit** — it is
+authored by amendment A-D.1 in response to finding D-F1, and it is a GATE, not new mathematics:
+every value in it is computed from D.13/D.15/D.16's committed definitions, nothing is compared
+against inherited evidence, and no expected value of an inherited frame is touched. GC-10's
+"deviations only via dated AMENDMENT blocks" is satisfied by A-D.1 itself.
 
 **TEETH.** GC-11's second prime (never `q = 2` alone); T1 wrong-sign/misindexed teeth at
 `q = 3`; T4 S8 PE1(2)'s slack check ("specifically inspect FR-M3's measured slack `[12,7,4]`
-against `[10,7,4]`") → **executed Lean gate**.
+against `[10,7,4]`") → **executed Lean gate**. **Leg 5 adds the `aexp`/`qexp` separation tooth
+(D-F1) and a `Wfloor` table with `i(u₂) ≠ 1`** — the two mutant classes no `h = 1` frame in this
+chapter can kill.
 
 **ENVIRONMENT.** ENV-D5.
 
@@ -3263,6 +3782,12 @@ against `[10,7,4]`") → **executed Lean gate**.
    from the endpoint formula** (`EFF.T3.29`'s own instruction "without defining `U(s)` from
    the endpoint formula" — the §8.4(3) endpoint-as-input mutant's kill): `w^s = U(s)·ϑ_s`
    and `U(s) = Θ_s·w^s` for all five `s` (`3^s` vs the products, `decide`);
+   **⊕ EXTENSION, signed A-D.1/D-F2 — the committed range is ONE STEP TOO SHORT.** The D.06
+   table's row-1/row-4 relation `ϑ_{G2}(t) = Θ(f₃−t)` at the BOTTOM slot `t = 0` reads the
+   telescope at `s = f₃ = 5`, outside the committed `s = 0…4`, so **the battery as declared does
+   not cover the bottom slot**. The range is extended by the assembled formula (never by the
+   endpoint formula): `ϑ₅ = 2^{⌊5/2⌋} = 4` and `Θ₅ = 4`, executed; the involution is scored on
+   `s = 0…5` and the committed `Θ` table is `(1, 1, 3, 3, 4, 4)` (six entries);
 2. **the CMP leg (`q_CMP = 2`, `N̂(k) = x^k`, `H₀ = 6`, `D = 3`):** `χ(k) = 2^{⌊k/2⌋}`
    (D.12's `chi` at the two exponent-pair sections, residue via D.17); **the non-character
    check `χ(1)·χ(1) = 1 ≠ 2 = χ(2)`** (D.12's "no character law" fence, executed);
@@ -3272,29 +3797,90 @@ against `[10,7,4]`") → **executed Lean gate**.
    3 ≠ 1`) but "its reference `T` is formal … This machine-coverage gap is not a proof gap"
    — `(T3-JOINT-OPEN)` stays open (D.64's last row); this gate does NOT claim a realized
    p-adic tower.
+4. **the ϑ-ORIENTATION-TABLE leg** *[NEW, signed A-D.1 — this is where D.06's four rows become
+   arithmetic; it belongs to this node because FRAME-C is the one frame where every quantity of
+   the table is a concrete `𝔽₅`-unit]*: with `f₃ = 5`, `ϑ_{G2}(t) := Θ(f₃−t)` (row 1 = rows 2/3)
+   and A1's `theta_t := ϑ_t` (row 4, argument `t`, NOT `f₃−t`), execute
+   (i) the involution `Θ_s·ϑ_s = 1` on `s = 0…5`; (ii) the top-slot anchor
+   `ϑ_{G2}(f₃−1) = ϑ₁ = Θ₁ = 1`; (iii) **row 4's reciprocal relation**
+   `ϑ_{G2}(t)·ϑ_{f₃−t} = 1` for `t = 0…4` (the exact GENTOW2/GENTOW5-A1 pair append #54 names);
+   (iv) the **numerical distinctness** `ϑ_{G2}(2) ≠ ϑ₂` (row 1 gives `3`, row 4 gives `2`), so a
+   silent row-1-for-row-4 swap is a failing `decide`; and (v) the reflection is not the identity,
+   `ϑ_{G2}(t) ≠ Θ(t)`.
+   ⚠ **SCORING RULE, from finding D-F3: leg (v) must be scored at `t = 1` or `t = 4`, never at
+   `t = 2`/`t = 3`.** FRAME-C has `ϑ₂ = ϑ₃ = 2` (both floors `⌊s/2⌋` equal 1), hence
+   `Θ₂ = Θ₃ = 3`, so an **index-shift mutant SURVIVES at the middle slots** — a fleet agent
+   scoring only the middle of the table would miss the very mutant the table exists to catch.
+   The gate executes `Θ₂ = Θ₃` explicitly, as the warning.
 
-**SIGNATURE.**
+**SIGNATURE** *[re-signed: A-D.1/D-D1 + D-F2 + D-F3 — the schematic `…` rows replaced by the
+EXECUTED ones (`leanspec/Leanspec/ChapD.lean` §10, `p = 5` block + the D.06 block). Note that the
+originally-signed `χ` row is also wrong as written: `(2 : ZMod 5) ^ (1/2)` is `2^0 = 1` by ℕ
+division on BOTH sides only by accident of `1/2 = 0`, and `(2 : ZMod 5) ^ (2/2)` needs the
+`⌊k/2⌋` to be spelled through a definition, not inline]*.
 ```lean
 -- leanfinal/Uniformity/ChapD/D67.lean
-example : (List.range 5).map (fun s => ((3 : ZMod 5) ^ s, /- U·ϑ product -/ …))
-    = … := by decide
-example : ((2 : ZMod 5) ^ (1 / 2)) * ((2 : ZMod 5) ^ (1 / 2)) ≠ (2 : ZMod 5) ^ (2 / 2) := by
-  decide   -- χ(1)² ≠ χ(2): the character mutant dies here
--- + the δ/χ(6) values and one explicit-coefficient (T3-CMP) instance
+-- leg 1: ϑ ASSEMBLED from D.18's formula at q_BR = 1; Θ and U as LITERAL DATA
+def gate67vartheta (s : ℕ) : ZMod 5 := (2 : ZMod 5) ^ (s * iexp 2 1 1 / 2)
+def gate67thetaL : List (ZMod 5) := [1, 1, 3, 3, 4, 4]     -- six entries (D-F2)
+def gate67theta (s : ℕ) : ZMod 5 := gate67thetaL.getD s 0
+def gate67U : List (ZMod 5) := [1, 3, 2, 1, 4]
+
+example : (List.range 5).map (fun s => gate67vartheta s) = [1, 1, 2, 2, 4] := by
+  simp only [gate67vartheta, iexp_one]; decide
+example : gate67vartheta 5 = 4 := by simp only [gate67vartheta, iexp_one]; decide   -- D-F2
+example : ∀ s ∈ List.range 5, (3 : ZMod 5) ^ s = gate67U.getD s 0 * gate67vartheta s := by
+  simp only [gate67vartheta, gate67U, iexp_one]; decide
+example : ∀ s ∈ List.range 5, gate67U.getD s 0 = gate67theta s * (3 : ZMod 5) ^ s := by
+  simp only [gate67theta, gate67thetaL, gate67U]; decide
+example : gate67U.getD 2 0 ≠ gate67vartheta 2 * (3 : ZMod 5) ^ 2 := by
+  simp only [gate67vartheta, gate67U, iexp_one]; decide   -- ★ the wrong-orientation B-law DIES
+
+-- leg 2: χ, the non-character check, δ, and the CMP comparison
+def gate67chi (k : ℕ) : ZMod 5 := (2 : ZMod 5) ^ (k / 2)
+example : gate67chi 1 * gate67chi 1 ≠ gate67chi 2 := by decide   -- χ(1)² = 1 ≠ 2 = χ(2)
+example : gate67chi 2 = 2 ∧ gate67chi 6 = 3 := by decide         -- δ = 2, χ(6) = 3
+def gate67rhoHat : List (ZMod 5) := [1, 2, 3, 4]
+def gate67rho (t : ℕ) : ZMod 5 := gate67chi 6 * gate67rhoHat.getD t 0 * (3 : ZMod 5) ^ t
+example : (List.range 4).map (fun t => gate67rho t) = [3, 3, 1, 4] := by decide
+example : (2 : ZMod 5) * 3 = 1 := by decide                      -- δ⁻¹ = 3, multiplicatively
+
+-- leg 4: THE ϑ ORIENTATION TABLE, EXECUTED (D.06's Lean shadow at this frame)
+def gate06varthetaG2 (f t : ℕ) : ZMod 5 := gate67theta (f - t)   -- row 1 = rows 2/3
+def gate06A1theta (t : ℕ) : ZMod 5 := gate67vartheta t           -- row 4 (argument t)
+example : ∀ s ∈ List.range 6, gate67theta s * gate67vartheta s = 1 := by
+  simp only [gate67theta, gate67thetaL, gate67vartheta, iexp_one]; decide
+example : gate06varthetaG2 5 4 = 1 ∧ gate67vartheta 1 = 1 ∧ gate67theta 1 = 1 := by
+  simp only [gate06varthetaG2, gate67theta, gate67thetaL, gate67vartheta, iexp_one]; decide
+example : ∀ t ∈ List.range 5, gate06varthetaG2 5 t * gate06A1theta (5 - t) = 1 := by
+  simp only [gate06varthetaG2, gate06A1theta, gate67theta, gate67thetaL, gate67vartheta,
+    iexp_one]
+  decide
+example : gate06varthetaG2 5 2 ≠ gate06A1theta 2 := by
+  simp only [gate06varthetaG2, gate06A1theta, gate67theta, gate67thetaL, gate67vartheta,
+    iexp_one]
+  decide
+example : gate06varthetaG2 5 1 ≠ gate67theta 1 ∧ gate06varthetaG2 5 4 ≠ gate67theta 4 := by
+  simp only [gate06varthetaG2, gate67theta, gate67thetaL]; decide   -- ⚠ t = 1, 4 ONLY (D-F3)
+example : gate67theta 2 = gate67theta 3 := by
+  simp only [gate67theta, gate67thetaL]; decide                     -- the D-F3 warning itself
 ```
 
-**DEPENDS.** D.08, D.10, D.12, D.17, D.38, D.39, D.40.
+**DEPENDS.** D.06 *[A-D.1: added — leg 4 IS the table's arithmetic]*, D.08, D.10, D.12, D.17,
+D.38, D.39, D.40.
 
-**PROOF.** `decide` over `ZMod 5` + `Polynomial` coefficient extensionality on leg 2's
-explicit instance (small: `D = 3`).
+**PROOF.** reduce-then-`decide` over `ZMod 5` (§10's rider) + `Polynomial` coefficient
+extensionality on leg 2's explicit instance (small: `D = 3`).
 
-**SIZE.** 55 lines.
+**SIZE.** 55 lines *[A-D.1: ~90 with leg 4]*.
 
 **SOURCE.** `EFF.T3.29` (the whole frame, verbatim values), `EFF.T3.30` (`(T3-JOINT-OPEN)`).
 
-**TEETH.** T3 §8.4(1) (character mutant — leg 2's `≠`), §8.4(2)–(4) (theta-free /
-endpoint-as-input / inverse-orientation mutants — leg 1's two identities scored from
-assembled definitions) → **executed Lean gate**; this node is the chapter's FRAME-C
+**TEETH** *[amended: A-D.1]*. T3 §8.4(1) (character mutant — leg 2's `≠`), §8.4(2)–(4)
+(theta-free / endpoint-as-input / inverse-orientation mutants — leg 1's two identities scored
+from assembled definitions) → **executed Lean gate**; **and leg 4 is the append-#54 trap's
+battery** (D.06's TEETH row, re-signed: the wrong-orientation B-law fails at `s = 2`, the
+orientation swap fails at `t = 1` and `t = 4`). This node is the chapter's FRAME-C
 executable-regression retention (GC-8: named `verification/chapD_frameC` at fleet close,
 §12).
 
@@ -3311,6 +3897,27 @@ re-executes the three gates' headline `decide` lines (the two telescope vectors,
 threshold table, the non-character check) as regression anchors; (iii) asserts non-vacuity
 by `#check`ing the gate theorems and the six carrier definitions (D.44, D.55, D.59, D.60,
 D.62, D.63) at their stated types.
+
+*[A-D.1 additions, from the stage-0e census that was actually run:]*
+
+* **(iv) the DEF-LAYER census, and its ONE licensed exception.** At stub stage every
+  theorem-shaped node is an `axiom`, so `#print axioms` on a theorem is uninformative BY
+  CONSTRUCTION; what is informative — and what the landed census must also print — is that the
+  **`def`/`structure` layer is axiom-clean apart from the one definitional dependency the
+  blueprint itself creates**: `levelOneArena` (D.17) consumes D.13's `iexp_aexp_spec` for its
+  `exact_height` field (defect D-D2), so at stub stage `#print axioms levelOneArena` prints
+  `iexp_aexp_spec`, and landed it prints Lean core only once D.13 is proved. **Any OTHER axiom in
+  the def layer is a stop-the-line event.** The census as run prints **36** names: the **30**
+  blueprint `def`s (incl. `varpiSection` — D-D10(i)) + the **2** new def-class names of A-D.1
+  (`levelOneHeight`, `GaugeArena.chiK`) + the **4** proved helpers the def bodies and signatures
+  need (`iexp_one`, `levelOneHeight_ker_dvd`, `chi_varpi_mem_ker`, `GaugeArena.rho_mem_ker`).
+* **(v) INHABITATION, executed** (the gates score arithmetic; they cannot score whether a SCHEMA
+  is inhabited, and an empty structure makes its theorems vacuous). Two witnesses, both green at
+  the stub gate: `BoundaryReadPort` is inhabited for EVERY arena/step/exponent/unit — and the
+  witness's `U` is **forced to `w^s·ϑ⁻¹ = Θ·w^s`**, i.e. D.38's own conclusion, from the port
+  axioms alone (so D.37/D.38 are not vacuous and BR1–BR5 are consistent); `CertFrame` is
+  inhabited **with (FLOOR) satisfied AND its coordinate `j = 0` TOUCHED** (so D.46–D.52 and
+  D.48/D.49's equivalence are not vacuous). The landed census must carry both.
 
 **SIGNATURE.**
 ```lean
@@ -3336,6 +3943,15 @@ import Uniformity.ChapD
 #print axioms Uniformity.Density.Gauge.gentowW_realized                   -- D.58
 -- (ii) regression anchors: the four headline decide lines of D.65–D.67, re-executed
 -- (iii) #check the gate theorems + the six carriers at their stated types
+-- (iv) [A-D.1] the def layer, 36 lines — Lean-core-clean, with ONE licensed exception:
+#print axioms Uniformity.Density.Gauge.levelOneArena  -- ⚠ carries D.13's `iexp_aexp_spec`
+--     (D-D2: a DEFINITIONAL dependency; every other def-layer line must be Lean core only)
+#print axioms Uniformity.Density.Gauge.varpiSection   -- the def §12's inventory omitted
+#print axioms Uniformity.Density.Gauge.levelOneHeight
+#print axioms Uniformity.Density.Gauge.GaugeArena.chiK
+--     + the remaining 28 blueprint defs and the 4 proved helpers
+-- (v) [A-D.1] inhabitation: the `BoundaryReadPort` witness (its `U` FORCED to `Θ·w^s`) and the
+--     `CertFrame` witness with (FLOOR) satisfied and coordinate `j = 0` TOUCHED
 ```
 
 **DEPENDS.** every node named above (imports the roll-up).
@@ -3379,11 +3995,12 @@ fields (spot-check instructions: §14 item 10).
 
 | file | rows | what |
 |---|---:|---|
-| `spec/DAG_BLUEPRINT_D.tsv` | **337** | the canonical copy of this chapter's edges |
+| `spec/DAG_BLUEPRINT_D.tsv` | **342** *[A-1: 337; +5 at A-D.1]* | the canonical copy of this chapter's edges |
 | `spec/DAG.tsv` / `spec/DAG_NODES.tsv` (merged) | +337 / +68 | regenerated by `dag_build.py` at every rebuild (the durable-merge step) — **deliberately NOT committed by this composer** (scoped-adds discipline: three parallel composers were writing `DAG_BLUEPRINT_{C,D,E}.tsv` simultaneously; the orchestrator runs the final rebuild) |
 
-**Edge census by target class:** `BP.D.*` **162** (intra; **acyclic, critical path 9 nodes**,
-layer widths `10, 9, 13, 7, 8, 6, 6, 4, 5`, 10 fireable immediately — §2's A-1 figures);
+**Edge census by target class** *[recounted at A-D.1]*: `BP.D.*` **167** (intra; **acyclic,
+critical path 9 nodes**, layer widths `10, 9, 13, 6, 8, 6, 6, 5, 5`, 10 fireable immediately —
+§2's A-D.1 figures);
 `EFF.T1/T3/T4/T5.*` **148** (transcription edges — all 181 spec unit IDs exist in
 `DAG_NODES.tsv` at HEAD, so every row is `from:exact,to:exact`; the unit-level SOURCE map of
 D-H12); `BP.B.*` **7** (B.07/B.08/B.11/B.14/B.15 at D.25, B.21/B.22 at D.26 — committed IDs
