@@ -1,0 +1,262 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapB.B04
+import Uniformity.ChapB.B12
+import Uniformity.ChapB.B13b
+import Uniformity.ChapB.B17
+import Uniformity.ChapB.B18
+import Uniformity.ChapB.B20
+import Uniformity.ChapB.B34
+import Uniformity.ChapB.B39a
+
+/-!
+# ROUTE BLOCK for chapter-B NODE B.42 — `exists_slope_factorization` (the theorem of the polygon)
+
+**This file is evidence, not a node.**  Kept as `.lean.txt` (the `B59_REFUTATION` /
+`B39_REFUTATION` convention) so no build picks it up.  To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapB/B42_ROUTE_BLOCKED.lean.txt /tmp/b42_block.lean
+cd leanfinal && lake env lean /tmp/b42_block.lean
+```
+
+Both declarations below compile at the pin, sorry-free, with
+`#print axioms = [propext, Classical.choice, Quot.sound]`.
+
+## What is blocked, and what is NOT claimed
+
+BLOCKED: **the signed ROUTE of NODE B.42** (`blueprint/CHAP-B_leaf_layer.md`, PROOF steps 4-6,
+as amended by A-F.9), i.e. the instruction *"apply B.41 at the steepest slope to peel the
+steepest side"*.
+
+**NOT claimed:** that B.42's STATEMENT is false.  It is the classical theorem of the polygon
+at order 1 (GMN Thm 1.15 / [GN15] Thm 2.3 for the part of `f` prime to `φ`, which is what
+A-F.9's `h0 : dev φ f 0 ≠ 0` transcribes) and is expected to be TRUE as signed.  No
+counterexample to the statement is offered here and none is expected.  What this file
+establishes is that the statement is **not reachable from the landed engine**: it needs a
+mechanism the corpus does not have.
+
+## Defect 1 — B.41's `hpure` is UNAVAILABLE in exactly the inductive case (machine-checked)
+
+B.42 step 5 applies B.41 to `f` itself.  B.41's frozen signature carries
+`(hpure : IsPure φ f u ℓ)`.  `IsPure φ f u ℓ` is `OnSide φ f u ℓ 0 ∧ OnSide φ f u ℓ (deg f / m)`
+(B.34) — the polygon's two extreme abscissae both minimise the `(u,ℓ)`-weight.  For monic `f`
+of degree `μ·m` that pins `t·H₀ = w·μ` at the pure slope `(w,t)`, i.e. the pure slope is the
+CHORD slope, and forces every support point onto or above the chord: the polygon is
+**one-sided**.
+
+`card_sideSet_le_one_of_isPure` below is that fact in the form the route needs:
+
+```lean
+theorem card_sideSet_le_one_of_isPure {φ : Polynomial O} (hφ : IsKey φ)
+    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree)
+    {w t : ℕ} (ht : 0 < t) (hpure : IsPure φ f w t)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hslope : u * t ≠ w * ℓ) :
+    (sideSet φ f u ℓ).card ≤ 1
+```
+
+— a `(w,t)`-pure `f` has a ONE-POINT side at every slope other than `(w,t)`'s.  Note what is
+*not* assumed: no `hπ`, no coprimality of `(u,ℓ)` or `(w,t)`, no completeness, no residue
+finiteness.  The proof is four lines of weight arithmetic per case: multiply the on-side
+identity by `t`, the purity bound by `ℓ`, add, cancel the common `ℓ·t·H` monomial, and divide
+by the positive abscissa gap — the steeper case is decided at the RIGHT on-side point
+(`0 < j'`), the shallower case at the LEFT one (`j < μ`, via `μ = j + d`).
+
+`b42_route_blocked` is the immediate corollary, in the shape of B.42's step-4/5 hypothesis:
+
+```lean
+theorem b42_route_blocked {φ : Polynomial O} (hφ : IsKey φ) {f : Polynomial O} (hf : f.Monic)
+    {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree) {p q : ℕ × ℕ}
+    (hp : 0 < p.2) (hq : 0 < q.2) (hpq : p.1 * q.2 ≠ q.1 * p.2)
+    (hcp : 1 < (sideSet φ f p.1 p.2).card) (hcq : 1 < (sideSet φ f q.1 q.2).card) :
+    ∀ w t : ℕ, 0 < t → ¬ IsPure φ f w t
+```
+
+`(hcp)`, `(hcq)`, `(hpq)` are *verbatim* B.42's own inductive-case hypothesis: the node's
+`s` has at least two elements, whose slopes are pairwise distinct by the conclusion's clause 2.
+So in the inductive case `f` is `(w,t)`-pure for **no** slope at all, and B.41 cannot be
+applied to `f` — not at the steepest slope, not at a mediant, not at any slope.
+
+## Defect 2 — step 5's degree arithmetic is internally inconsistent (arithmetic, by inspection)
+
+Independent of Defect 1, the peel as written cannot typecheck against B.41's conclusion:
+
+* B.41's `hprod` demands `resPoly π φ f u₁ ℓ₁ hne H₀ = C c * (G * H)`.  With the side starting
+  at abscissa `0` (A-F.9's settled sub-claim), B.30's `natDegree_resPoly` gives that residual
+  polynomial degree `d₁ = sideDeg φ f u₁ ℓ₁ hne`.  Hence `G.natDegree + H.natDegree = d₁`.
+* B.41's conclusion pins `g.natDegree = ℓ₁·m·G.natDegree` and `h.natDegree = ℓ₁·m·H.natDegree`,
+  and `f = g·h` forces `μ·m = deg f = ℓ₁·m·(G.natDegree + H.natDegree) = ℓ₁·m·d₁`.
+* So a successful B.41 call at the steepest slope would force `ℓ₁·d₁ = μ`: the steepest side
+  spans the WHOLE polygon — again the one-sided case, i.e. the case the induction has already
+  handled at step 3.
+* The blueprint's step 5 asks for `G := resPoly π φ f u₁ ℓ₁` (degree `d₁`) and
+  `H := Y^(μ/ℓ₁ − d₁)`, whose product has degree `μ/ℓ₁ ≠ d₁` whenever `ℓ₁d₁ < μ`; `hprod` is
+  then unsatisfiable on degree grounds alone, for ANY unit `c`.
+
+## What survives, and is reusable
+
+* **Steps 1-2** (the slope set is a `Finset` — `ℓ ≤ μ` from the on-side spacing and
+  `u ≤ ℓ·H₀` from the weight at abscissa `0`; every slope in `s` has `0 < u` because
+  `hres` puts `npHgt φ f j ≥ 1` for `j < μ` while `npHgt φ f μ = 0`) are untouched by this
+  finding.
+* **Step 3** (the base case: `s` with at most one element ⇒ `f` pure ⇒ the family is `{f}`) is
+  untouched, and `card_sideSet_le_one_of_isPure` is its exact CONVERSE — worth landing as a
+  general lemma either way (it is the missing "pure ⟺ one-sided" dictionary entry, and it is
+  what makes the base case's disjunction exhaustive).
+* **A-F.9's geometric sub-claim** (the steepest side starts at abscissa `0`, with the `σ*`
+  proof) is not impugned; it is a statement about `f`'s polygon, independent of the peel.
+* A-F.9's `h0` and the conclusion strengthening are not impugned either.
+
+## The missing mechanism, specified (for the orchestrator)
+
+What B.42 needs, and what no landed node provides, is a **graded Hensel at a VERTEX** — the
+Weierstrass-type split, where the two factors are pure at DIFFERENT slopes:
+
+> **(proposed)** Let `f` be monic of degree `μ·m` with `dev φ f 0 ≠ 0`, and let `(u,ℓ)` be a
+> coprime slope with `sideSet φ f u ℓ = {i}` and `0 < i < μ` (a slope strictly between two
+> consecutive sides: the weight minimum is attained at the single vertex `i`).  Then
+> `f = g · h` with `g`, `h` monic, `g.natDegree = i·m`, `h.natDegree = (μ − i)·m`,
+> `sideSet φ g u ℓ = {i}` and `sideSet φ h u ℓ = {0}` (`g` collects the sides steeper than
+> `(u,ℓ)`, `h` the shallower ones).
+
+Why the landed engine cannot serve it: B.39's `hgh : GradedCoprime π φ u ℓ g h` (B.37) requires
+`IsPure φ g u ℓ ∧ IsPure φ h u ℓ` plus coprimality of their residual polynomials at the COMMON
+slope `(u,ℓ)`.  At a vertex slope, `g` and `h` each have a ONE-POINT `(u,ℓ)`-side
+(`sideDeg = 0`), so their residual polynomials are nonzero CONSTANTS — coprimality is free but
+carries no information, and neither factor is `(u,ℓ)`-pure (the `IsPure` clause fails at the
+abscissa-`0` end for `g` and at the top end for `h`).  The relevant graded coprimality is
+"monomial `Y^{i}` versus a unit", i.e. the distinguished/Weierstrass split, and its Newton
+step is a DIFFERENT solve from B.39's residual-Bézout one.
+
+Boundary note (why this is not a small gap): at `φ = X` and `ℓ = 1` the vertex split IS
+available from landed material — `scaleRoots` (B.70's polygon transport, B.44) turns the
+integral slope into slope `0`, where `f̄ = (unit part)·X^k` IS a coprime factorization in
+`k[X]` and the landed ungraded `Uniformity.Hensel.exists_monic_factorization` applies.  For a
+general key that route is exactly what A-F.7 refuted (B.44′, machine-checked: no `O[X]`-level
+polynomial in the shifted `dev` data encodes the residue tower `resField φ / F`), so the
+general-key vertex split is a genuinely new mechanism, in the `B-BOX-1` tier.
+
+## Knock-on
+
+* B.63 (`typeOf_of_separable_residuals`), B.66/B.66a, B.72, B.79a — every consumer that reads
+  B.42 — are blocked by dependency, unless the orchestrator supplies the vertex split.
+* **B.48 is NOT blocked**: `exists_residual_dissection` carries its own `hpure` and splits the
+  residual polynomial of a ONE-SIDED `f` at a single slope, which is precisely B.41's scope.
+  It is landed (this chain, `B48*.lean`).
+-/
+
+namespace Uniformity.Density.Leaf
+
+open Polynomial IsLocalRing
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-- An abscissa of finite height of a monic `f` of degree `μ * m` is at most `μ`. -/
+private theorem le_of_npHgt_ne_top {φ : Polynomial O} (hφ : φ.Monic) (hd : 0 < φ.natDegree)
+    {f : Polynomial O} {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree) {j : ℕ}
+    (hfin : npHgt φ f j ≠ ⊤) : j ≤ μ := by
+  by_contra hj
+  refine hfin (npHgt_eq_top_iff.2 (dev_eq_zero_of_lt hφ hd f j ?_))
+  rw [hdeg]
+  exact mul_lt_mul_of_pos_right (by omega) hd
+
+/-- **THE OBSTRUCTION.** A monic `f` of degree `μ · m` that is `(w,t)`-pure has a
+**one-point** side at every other slope: `IsPure` forces a single-sided polygon. -/
+theorem card_sideSet_le_one_of_isPure {φ : Polynomial O} (hφ : IsKey φ)
+    {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree)
+    {w t : ℕ} (ht : 0 < t) (hpure : IsPure φ f w t)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hslope : u * t ≠ w * ℓ) :
+    (sideSet φ f u ℓ).card ≤ 1 := by
+  classical
+  have htop : suppVal φ f u ℓ ≠ ⊤ :=
+    ne_top_of_le_ne_top (ENat.coe_ne_top _) (suppVal_ne_top hφ.monic hφ.pos hf hdeg u ℓ)
+  have htopwt : suppVal φ f w t ≠ ⊤ :=
+    ne_top_of_le_ne_top (ENat.coe_ne_top _) (suppVal_ne_top hφ.monic hφ.pos hf hdeg w t)
+  have hμindex : f.natDegree / φ.natDegree = μ := by
+    rw [hdeg]; exact Nat.mul_div_cancel _ hφ.pos
+  have hp0 : OnSide φ f w t 0 := hpure.1
+  have hpμ : OnSide φ f w t μ := by rw [← hμindex]; exact hpure.2
+  obtain ⟨H₀, hH₀⟩ := ENat.ne_top_iff_exists.1 (npHgt_ne_top_of_onSide ht htopwt hp0)
+  have hHμ : npHgt φ f μ = ((0 : ℕ) : ℕ∞) := by
+    rw [npHgt_top hφ.monic hφ.pos hf hdeg]; rfl
+  have hSwt : suppVal φ f w t = ((t * H₀ : ℕ) : ℕ∞) := by
+    have h := suppVal_eq_of_onSide (u := w) (ℓ := t) hH₀.symm hp0
+    simpa using h
+  have hSwtμ : suppVal φ f w t = ((w * μ : ℕ) : ℕ∞) := by
+    have h := suppVal_eq_of_onSide (u := w) (ℓ := t) hHμ hpμ
+    simpa using h
+  have hchord : t * H₀ = w * μ := by
+    have h : ((t * H₀ : ℕ) : ℕ∞) = ((w * μ : ℕ) : ℕ∞) := hSwt.symm.trans hSwtμ
+    exact_mod_cast h
+  -- the three inequalities available at an on-side abscissa
+  have hfacts : ∀ k ∈ sideSet φ f u ℓ, ∀ Hk : ℕ, npHgt φ f k = (Hk : ℕ∞) →
+      t * H₀ ≤ t * Hk + w * k ∧ ℓ * Hk + u * k ≤ ℓ * H₀ ∧ ℓ * Hk + u * k ≤ u * μ ∧ k ≤ μ := by
+    intro k hk Hk hHk
+    have hon : OnSide φ f u ℓ k := onSide_of_mem_sideSet hk
+    have hV : suppVal φ f u ℓ = ((ℓ * Hk + u * k : ℕ) : ℕ∞) := suppVal_eq_of_onSide hHk hon
+    refine ⟨le_weight_gen (u := w) (ℓ := t) hφ.monic hφ.pos ht hSwt hHk, ?_, ?_, ?_⟩
+    · have := le_weight_gen (u := u) (ℓ := ℓ) hφ.monic hφ.pos hℓ hV hH₀.symm
+      simpa using this
+    · have := le_weight_gen (u := u) (ℓ := ℓ) hφ.monic hφ.pos hℓ hV hHμ
+      simpa using this
+    · exact le_of_npHgt_ne_top hφ.monic hφ.pos hdeg (by rw [hHk]; exact ENat.coe_ne_top _)
+  by_contra hcard
+  rw [Nat.not_le] at hcard
+  obtain ⟨x, hx, y, hy, hxy⟩ := Finset.one_lt_card.1 hcard
+  obtain ⟨j, hj, j', hj', hjj'⟩ :
+      ∃ j ∈ sideSet φ f u ℓ, ∃ j' ∈ sideSet φ f u ℓ, j < j' := by
+    rcases Nat.lt_or_ge x y with h | h
+    · exact ⟨x, hx, y, hy, h⟩
+    · exact ⟨y, hy, x, hx, by omega⟩
+  obtain ⟨A, hA⟩ := ENat.ne_top_iff_exists.1
+    (npHgt_ne_top_of_onSide hℓ htop (onSide_of_mem_sideSet hj))
+  obtain ⟨B, hB⟩ := ENat.ne_top_iff_exists.1
+    (npHgt_ne_top_of_onSide hℓ htop (onSide_of_mem_sideSet hj'))
+  obtain ⟨hjpure, hj0, hjμ, hjle⟩ := hfacts j hj A hA.symm
+  obtain ⟨hj'pure, hj'0, hj'μ, hj'le⟩ := hfacts j' hj' B hB.symm
+  rcases lt_trichotomy (u * t) (w * ℓ) with hlt | heq | hgt
+  · -- the shallower case: use the LEFT point `j < μ`
+    obtain ⟨d, hdpos, hμd⟩ : ∃ d, 0 < d ∧ μ = j + d := ⟨μ - j, by omega, by omega⟩
+    have e1 : t * (ℓ * A + u * j) ≤ t * (u * μ) := Nat.mul_le_mul_left t hjμ
+    have e2 : ℓ * (t * H₀) ≤ ℓ * (t * A + w * j) := Nat.mul_le_mul_left ℓ hjpure
+    rw [hchord] at e2
+    rw [hμd] at e1 e2
+    have e3 : u * t * d < w * ℓ * d := mul_lt_mul_of_pos_right hlt hdpos
+    linarith
+  · exact hslope heq
+  · -- the steeper case: use the RIGHT point `0 < j'`
+    have hj'pos : 0 < j' := by omega
+    have e1 : t * (ℓ * B + u * j') ≤ t * (ℓ * H₀) := Nat.mul_le_mul_left t hj'0
+    have e2 : ℓ * (t * H₀) ≤ ℓ * (t * B + w * j') := Nat.mul_le_mul_left ℓ hj'pure
+    have e3 : w * ℓ * j' < u * t * j' := mul_lt_mul_of_pos_right hgt hj'pos
+    linarith
+
+/-- **The route block, as a theorem.** If `f` has a two-point side at two slopes that are
+genuinely different, then `f` is `(w,t)`-pure for NO slope `(w,t)` — so B.41's hypothesis
+`hpure` is unavailable at B.42's step 5 exactly in the inductive case. -/
+theorem b42_route_blocked {φ : Polynomial O} (hφ : IsKey φ) {f : Polynomial O} (hf : f.Monic)
+    {μ : ℕ} (hdeg : f.natDegree = μ * φ.natDegree) {p q : ℕ × ℕ}
+    (hp : 0 < p.2) (hq : 0 < q.2) (hpq : p.1 * q.2 ≠ q.1 * p.2)
+    (hcp : 1 < (sideSet φ f p.1 p.2).card) (hcq : 1 < (sideSet φ f q.1 q.2).card) :
+    ∀ w t : ℕ, 0 < t → ¬ IsPure φ f w t := by
+  intro w t ht hpure
+  by_cases h1 : p.1 * t = w * p.2
+  · have h2 : q.1 * t ≠ w * q.2 := by
+      intro h2
+      refine hpq (Nat.eq_of_mul_eq_mul_right ht ?_)
+      calc p.1 * q.2 * t = p.1 * t * q.2 := by ring
+        _ = w * p.2 * q.2 := by rw [h1]
+        _ = q.1 * t * p.2 := by rw [h2]; ring
+        _ = q.1 * p.2 * t := by ring
+    exact absurd hcq (Nat.not_lt.2 (card_sideSet_le_one_of_isPure hφ hf hdeg ht hpure hq h2))
+  · exact absurd hcp (Nat.not_lt.2 (card_sideSet_le_one_of_isPure hφ hf hdeg ht hpure hp h1))
+
+end Uniformity.Density.Leaf
+
+section AxCheck
+#print axioms Uniformity.Density.Leaf.card_sideSet_le_one_of_isPure
+#print axioms Uniformity.Density.Leaf.b42_route_blocked
+end AxCheck
