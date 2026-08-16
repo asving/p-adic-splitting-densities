@@ -44,6 +44,9 @@ representative).  LAW E-W says where they agree and, when they do not, by exactl
 * `lawEW_faithful_of_nox` — **clause (a)**, PROVED here, at the blueprint's own member class
   (`j′ ≤ 1`; see the fence note below).
 * `lawEW_faithful_high` — **clause (b) at `j ≥ 2`**, PROVED here.
+* `seed_division_census` / `devQ_seed` — the note's §3 Step 3 (the exact quotient and
+  remainder of the seed division) and Step 2's "one division", landed as reusable lemmas
+  over any commutative base: the pin clause's arithmetic core.
 * `lawEW_pin` — **clause (b) at `j ≤ 1`**, the boundary identity
   `dv2Hgt (Δ_j) = gridWeight T α a b (1−j) + T.margin`.  **NOT landed** (see
   `notes/C127_PIN_BLOCKED_2026-08-16.md` for the exact gap: the §3 Step 3 telescoping census
@@ -461,6 +464,133 @@ theorem shadowDev_of_ingrid {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
   rw [shadowDev_eq_reass, ← hKe, ← hAe, biRead_eval_eq_map F hK, biRead_eval_eq_map F hA]
 
 end BiReadAPI
+
+
+/-! ## Part 4 — the seed division census (§3 Step 3) and the discrepancy in closed form
+
+The pin clause `lawEW_pin` is NOT landed (see the module docstring and
+`notes/C127_PIN_BLOCKED_2026-08-16.md`).  What IS landed here is everything up to its last
+two steps: the exact quotient/remainder of the seed division (§3 Step 3) and the resulting
+CLOSED FORM of the two low-coordinate discrepancies (§3 Steps 1–3 assembled).  What remains
+for the pin is Step 4/5 only — the slot heights of those two explicit polynomials. -/
+
+section Census
+
+variable {R : Type*} [CommRing R]
+
+/-- §3 Step 3's quotient `q = Σ_{k≤b} (−1)^k g P^k Y^{b−k}`. -/
+noncomputable def seedQuot (P g : R) (b : ℕ) : Polynomial R :=
+  ∑ k ∈ Finset.range (b + 1), Polynomial.C ((-1 : R) ^ k * g * P ^ k) * Polynomial.X ^ (b - k)
+
+/-- §3 Step 3's remainder
+`r = (−1)^{b+1} g P^{b+1} Y^{m−1} + Σ_{k≤b} (−1)^{k+1} g P^k c₀ Y^{b−k}`. -/
+noncomputable def seedRem (P c0 g : R) (m b : ℕ) : Polynomial R :=
+  Polynomial.C ((-1 : R) ^ (b + 1) * g * P ^ (b + 1)) * Polynomial.X ^ (m - 1)
+    + ∑ k ∈ Finset.range (b + 1),
+        Polynomial.C ((-1 : R) ^ (k + 1) * g * P ^ k * c0) * Polynomial.X ^ (b - k)
+
+private noncomputable def seedTerm (P g : R) (b m k : ℕ) : Polynomial R :=
+  Polynomial.C ((-1 : R) ^ k * g * P ^ k) * Polynomial.X ^ (b + m - k)
+
+/-- **The seed division census** (the note's §3 Step 3, telescoped): the monic division of
+the seed `g·Y^{b+m}` by the trinomial key `K = Y^m + P·Y^{m−1} + c₀` in closed form.  The
+telescoping is `Σ_k (u_k − u_{k+1}) = u_0 − u_{b+1}` at `u_k = (−1)^k g P^k Y^{b+m−k}`; the
+`P`-column of the product supplies exactly `−u_{k+1}`. -/
+theorem seed_division_census (P c0 g : R) {m b : ℕ} (hm : 1 ≤ m) :
+    Polynomial.C g * Polynomial.X ^ (b + m)
+      = seedQuot P g b * (Polynomial.X ^ m + Polynomial.C P * Polynomial.X ^ (m - 1)
+          + Polynomial.C c0) + seedRem P c0 g m b := by
+  classical
+  have hterm : ∀ k ∈ Finset.range (b + 1),
+      Polynomial.C ((-1 : R) ^ k * g * P ^ k) * Polynomial.X ^ (b - k)
+          * (Polynomial.X ^ m + Polynomial.C P * Polynomial.X ^ (m - 1) + Polynomial.C c0)
+        = (seedTerm P g b m k - seedTerm P g b m (k + 1))
+          + Polynomial.C ((-1 : R) ^ k * g * P ^ k * c0) * Polynomial.X ^ (b - k) := by
+    intro k hk
+    rw [Finset.mem_range] at hk
+    have hx1 : (Polynomial.X : Polynomial R) ^ (b - k) * Polynomial.X ^ m
+        = Polynomial.X ^ (b + m - k) := by rw [← pow_add]; congr 1; omega
+    have hx2 : (Polynomial.X : Polynomial R) ^ (b - k) * Polynomial.X ^ (m - 1)
+        = Polynomial.X ^ (b + m - (k + 1)) := by rw [← pow_add]; congr 1; omega
+    have hsign : Polynomial.C ((-1 : R) ^ k * g * P ^ k * P)
+        = - Polynomial.C ((-1 : R) ^ (k + 1) * g * P ^ (k + 1)) := by
+      rw [← Polynomial.C_neg]
+      congr 1
+      ring
+    have expand : Polynomial.C ((-1 : R) ^ k * g * P ^ k) * Polynomial.X ^ (b - k)
+          * (Polynomial.X ^ m + Polynomial.C P * Polynomial.X ^ (m - 1) + Polynomial.C c0)
+        = Polynomial.C ((-1 : R) ^ k * g * P ^ k)
+              * (Polynomial.X ^ (b - k) * Polynomial.X ^ m)
+          + Polynomial.C ((-1 : R) ^ k * g * P ^ k * P)
+              * (Polynomial.X ^ (b - k) * Polynomial.X ^ (m - 1))
+          + Polynomial.C ((-1 : R) ^ k * g * P ^ k * c0) * Polynomial.X ^ (b - k) := by
+      simp only [Polynomial.C_mul]
+      ring
+    rw [expand, hx1, hx2, hsign]
+    simp only [seedTerm]
+    ring
+  have hsum := Finset.sum_congr rfl hterm
+  rw [seedQuot, Finset.sum_mul, hsum, Finset.sum_add_distrib,
+    Finset.sum_range_sub' (fun k => seedTerm P g b m k) (b + 1)]
+  have h0 : seedTerm P g b m 0 = Polynomial.C g * Polynomial.X ^ (b + m) := by
+    simp [seedTerm]
+  have hb1 : seedTerm P g b m (b + 1)
+      = Polynomial.C ((-1 : R) ^ (b + 1) * g * P ^ (b + 1)) * Polynomial.X ^ (m - 1) := by
+    have he : b + m - (b + 1) = m - 1 := by omega
+    simp only [seedTerm, he]
+  have hsum_neg : ∑ k ∈ Finset.range (b + 1),
+        Polynomial.C ((-1 : R) ^ k * g * P ^ k * c0) * Polynomial.X ^ (b - k)
+      = - ∑ k ∈ Finset.range (b + 1),
+        Polynomial.C ((-1 : R) ^ (k + 1) * g * P ^ k * c0) * Polynomial.X ^ (b - k) := by
+    rw [← Finset.sum_neg_distrib]
+    refine Finset.sum_congr rfl fun k _ => ?_
+    rw [← neg_mul, ← Polynomial.C_neg]
+    congr 2
+    ring
+  rw [h0, hb1, hsum_neg, seedRem]
+  abel
+
+theorem seedQuot_natDegree_le (P g : R) (b : ℕ) : (seedQuot P g b).natDegree ≤ b := by
+  refine natDegree_sum_le_of_forall_le _ _ fun k _ => ?_
+  exact le_trans (natDegree_C_mul_le _ _) (le_trans (natDegree_X_pow_le _) (by omega))
+
+theorem seedRem_natDegree_le (P c0 g : R) {m b : ℕ} (hb : b < m) :
+    (seedRem P c0 g m b).natDegree ≤ m - 1 := by
+  refine le_trans (natDegree_add_le _ _) (max_le ?_ ?_)
+  · exact le_trans (natDegree_C_mul_le _ _) (natDegree_X_pow_le _)
+  · refine natDegree_sum_le_of_forall_le _ _ fun k _ => ?_
+    exact le_trans (natDegree_C_mul_le _ _) (le_trans (natDegree_X_pow_le _) (by omega))
+
+/-- The seed's chain coordinates: `r` at `0`, `q` at `1` (and nothing above, by
+`devQ_eq_zero_of_lt`).  This is §3 Step 2's "one division" made explicit. -/
+theorem devQ_seed [Nontrivial R] (P c0 g : R) {m b : ℕ} (hb : b < m)
+    {K : Polynomial R} (hK : K = Polynomial.X ^ m + Polynomial.C P * Polynomial.X ^ (m - 1)
+      + Polynomial.C c0) (hKm : K.Monic) (hKd : K.natDegree = m) :
+    devQ K (Polynomial.C g * Polynomial.X ^ (b + m)) 0 = seedRem P c0 g m b
+      ∧ devQ K (Polynomial.C g * Polynomial.X ^ (b + m)) 1 = seedQuot P g b := by
+  have hm : 1 ≤ m := by omega
+  have hsplit : Polynomial.C g * Polynomial.X ^ (b + m)
+      = seedQuot P g b * K ^ 1 + seedRem P c0 g m b := by
+    rw [pow_one, hK]; exact seed_division_census P c0 g hm
+  have hrdeg : (seedRem P c0 g m b).degree < K.degree :=
+    degree_lt_degree (by rw [hKd]; exact lt_of_le_of_lt (seedRem_natDegree_le P c0 g hb) (by omega))
+  have hqdeg : (seedQuot P g b).degree < K.degree :=
+    degree_lt_degree (by rw [hKd]; exact lt_of_le_of_lt (seedQuot_natDegree_le P g b) hb)
+  constructor
+  · rw [hsplit, devQ_add hKm, devQ_mul_pow_of_lt hKm 1 _ 0 (by omega), zero_add,
+      devQ_zero_of_degree_lt hKm hrdeg]
+  · rw [hsplit, devQ_add hKm]
+    have h1 : devQ K (seedQuot P g b * K ^ 1) 1 = seedQuot P g b := by
+      have := devQ_mul_pow hKm 1 (seedQuot P g b) 0
+      rw [Nat.add_zero] at this
+      rw [this, devQ_zero_of_degree_lt hKm hqdeg]
+    have h2 : devQ K (seedRem P c0 g m b) 1 = 0 := by
+      refine devQ_eq_zero_of_lt hKm _ 1 ?_
+      rw [one_mul, hKd]
+      exact lt_of_le_of_lt (seedRem_natDegree_le P c0 g hb) (by omega)
+    rw [h1, h2, add_zero]
+
+end Census
 
 /-! ## Part 3 — the trinomial single-crossing frame -/
 
@@ -898,5 +1028,9 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.trinomialY_map_monic
 #print axioms Uniformity.Density.Tower.lawEW_faithful_of_nox
 #print axioms Uniformity.Density.Tower.lawEW_faithful_high
+#print axioms Uniformity.Density.Tower.seedQuot
+#print axioms Uniformity.Density.Tower.seedRem
+#print axioms Uniformity.Density.Tower.seed_division_census
+#print axioms Uniformity.Density.Tower.devQ_seed
 
 end AxCheck
