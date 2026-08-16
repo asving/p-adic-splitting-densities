@@ -47,6 +47,10 @@ representative).  LAW E-W says where they agree and, when they do not, by exactl
 * `seed_division_census` / `devQ_seed` — the note's §3 Step 3 (the exact quotient and
   remainder of the seed division) and Step 2's "one division", landed as reusable lemmas
   over any commutative base: the pin clause's arithmetic core.
+* `lawEW_discrepancy_eq_census` — **the pin clause minus its last two steps**: at a
+  crossing entry the two low-coordinate discrepancies are, in closed form,
+  `Δ₁ = reass (seedQuot P̄ ḡ b)` and `Δ₀ = reass (seedRem P̄ c̄₀ ḡ m b)` (the note's
+  `Δ₁ = red(q)`, `Δ₀ = red(r)`).  `lawEW_pin` is the `dv2Hgt` of these two polynomials.
 * `lawEW_pin` — **clause (b) at `j ≤ 1`**, the boundary identity
   `dv2Hgt (Δ_j) = gridWeight T α a b (1−j) + T.margin`.  **NOT landed** (see
   `notes/C127_PIN_BLOCKED_2026-08-16.md` for the exact gap: the §3 Step 3 telescoping census
@@ -1001,6 +1005,294 @@ theorem lawEW_faithful_high {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     rw [h1, h2, add_zero, reass_zero]
   rw [hshadow, hhonest]
 
+
+/-! ### The two low-coordinate discrepancies in closed form (§3 Steps 1–3 assembled)
+
+This is `lawEW_pin` up to its last two steps.  `lawEW_pin` asks for
+`dv2Hgt (Δ_j) = gridWeight T α a b (1−j) + T.margin`; the theorem below computes `Δ_j`
+itself, at both low coordinates, as the reassembly of the census pieces.  What is left for
+the pin is exactly the note's Step 4/5: the slot heights of these two explicit polynomials
+(and the `b = m−1` collision inside the second).  See
+`notes/C127_PIN_BLOCKED_2026-08-16.md`. -/
+
+set_option linter.unusedVariables false in
+/-- **The crossing discrepancy, in closed form.**  At a crossing entry (`j′ = 1`,
+`a + i₂ ≥ D′`) the shadow ledger exceeds the honest one at coordinate `1` by the reassembled
+census quotient and at coordinate `0` by the reassembled census remainder — the note's
+`Δ₁ = red(q)`, `Δ₀ = red(r)`. -/
+theorem lawEW_discrepancy_eq_census {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) [Finite (ResidueField O)]
+    (hh : F.h = 1) (hf₁ : F.f₁ = 1) (he₂ : T.e₂ = 1)
+    {ω : O} (hω : IsUnit ω)
+    (hkey : F.key = Polynomial.X ^ F.e₁ - Polynomial.C (π * ω))
+    {i₂ v₂ v₀ : ℕ} (hi₂ : 1 ≤ i₂) {c₂ c₀ : O} (hc₂ : IsUnit c₂) (hc₀ : IsUnit c₀)
+    (hcomp : composedKey T
+      = F.key ^ T.f₂
+        + Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂ * F.key ^ (T.f₂ - 1)
+        + Polynomial.C (c₀ * π ^ v₀))
+    (hu₂ : T.u₂ = F.e₁ * v₂ + i₂) (hv₀ : F.e₁ * v₀ = T.f₂ * T.u₂)
+    {μ₂ : ℕ} (hμ₂ : 2 ≤ μ₂) (hgrid : μ₂ * i₂ < F.e₁)
+    {c : O} (hc : IsUnit c) (α a b : ℕ) (ha : a < F.e₁) (hb : b < T.f₂)
+    {f : Polynomial O}
+    (hf : f = composedKey T ^ μ₂
+      + Polynomial.C (c * π ^ α) * Polynomial.X ^ a * F.key ^ b
+        * composedKey T)
+    (hcross : F.e₁ ≤ a + i₂) :
+    shadowDev T f 1 - dev (composedKey T) f 1
+        = reass F (seedQuot
+            (AdjoinRoot.mk F.key (Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂))
+            (AdjoinRoot.mk F.key (Polynomial.C (c * π ^ α * (c₂ * π ^ v₂))
+              * Polynomial.X ^ (a + i₂ - F.e₁))) b)
+      ∧ shadowDev T f 0 - dev (composedKey T) f 0
+        = reass F (seedRem
+            (AdjoinRoot.mk F.key (Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂))
+            (AdjoinRoot.mk F.key (Polynomial.C (c₀ * π ^ v₀)))
+            (AdjoinRoot.mk F.key (Polynomial.C (c * π ^ α * (c₂ * π ^ v₂))
+              * Polynomial.X ^ (a + i₂ - F.e₁))) T.f₂ b) := by
+  haveI : Nontrivial (AdjoinRoot F.key) := F.nontrivial_adjoinRoot
+  have hkeydeg : F.key.natDegree = F.e₁ := by rw [F.hdeg, hf₁, mul_one]
+  have hf₂ : 2 ≤ T.f₂ := by have h := T.hcomp; rw [he₂, one_mul] at h; exact h
+  have hi₂lt : i₂ < F.e₁ := lt_of_le_of_lt (Nat.le_mul_of_pos_left i₂ (by omega)) hgrid
+  obtain ⟨k, hk⟩ : ∃ k, T.f₂ = k + 1 := ⟨T.f₂ - 1, by omega⟩
+  set Pp : Polynomial O := Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂ with hPp
+  set c0p : Polynomial O := Polynomial.C (c₀ * π ^ v₀) with hc0p
+  set Ep : Polynomial O := Polynomial.C (c * π ^ α) * Polynomial.X ^ a with hEp
+  set s : ℕ := a + i₂ - F.e₁ with hsdef
+  set gp : Polynomial O := Polynomial.C (c * π ^ α * (c₂ * π ^ v₂)) * Polynomial.X ^ s with hgp
+  set Kp : Polynomial (Polynomial O) := trinomialY Pp c0p T.f₂ with hKp
+  set Ent : Polynomial (Polynomial O) :=
+    Polynomial.C (Ep + gp) * Polynomial.X ^ (b + T.f₂)
+      + Polynomial.C (gp * Polynomial.C (π * ω)) * Polynomial.X ^ (b + T.f₂ - 1)
+      + Polynomial.C (Ep * c0p) * Polynomial.X ^ b with hEnt
+  set Ap : Polynomial (Polynomial O) := Kp ^ μ₂ + Ent with hAp
+  -- one-variable degrees
+  have hPpdeg : Pp.natDegree ≤ i₂ := by
+    rw [hPp]
+    refine le_trans natDegree_mul_le ?_
+    rw [natDegree_C, natDegree_X_pow, Nat.zero_add]
+  have hc0pdeg : c0p.natDegree ≤ i₂ := by rw [hc0p, natDegree_C]; exact Nat.zero_le _
+  have hEpdeg : Ep.natDegree ≤ a := by
+    rw [hEp]
+    refine le_trans natDegree_mul_le ?_
+    rw [natDegree_C, natDegree_X_pow, Nat.zero_add]
+  have hEpkey : Ep.degree < F.key.degree :=
+    degree_lt_degree (lt_of_le_of_lt hEpdeg (by rw [hkeydeg]; exact ha))
+  have hgpdeg : gp.natDegree ≤ s := by
+    rw [hgp]
+    refine le_trans natDegree_mul_le ?_
+    rw [natDegree_C, natDegree_X_pow, Nat.zero_add]
+  have hslt : s < F.e₁ := by rw [hsdef]; omega
+  -- the wrap (§3 Step 1)
+  have hkeyX : F.key + Polynomial.C (π * ω) = (Polynomial.X : Polynomial O) ^ F.e₁ := by
+    rw [hkey]; ring
+  have hsadd : s + F.e₁ = a + i₂ := by rw [hsdef]; omega
+  have hEpPp : Ep * Pp = gp * (F.key + Polynomial.C (π * ω)) := by
+    have hx : (Polynomial.X : Polynomial O) ^ s * Polynomial.X ^ F.e₁
+        = Polynomial.X ^ a * Polynomial.X ^ i₂ := by
+      rw [← pow_add, ← pow_add, hsadd]
+    rw [hkeyX, hEp, hPp, hgp]
+    calc Polynomial.C (c * π ^ α) * Polynomial.X ^ a
+          * (Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂)
+        = Polynomial.C (c * π ^ α) * Polynomial.C (c₂ * π ^ v₂)
+            * (Polynomial.X ^ a * Polynomial.X ^ i₂) := by ring
+      _ = Polynomial.C (c * π ^ α * (c₂ * π ^ v₂))
+            * (Polynomial.X ^ s * Polynomial.X ^ F.e₁) := by
+          rw [hx, ← Polynomial.C_mul]
+      _ = Polynomial.C (c * π ^ α * (c₂ * π ^ v₂)) * Polynomial.X ^ s
+            * Polynomial.X ^ F.e₁ := by ring
+  -- in-grid
+  have hKgridN : ∀ i, (Kp.coeff i).natDegree ≤ i₂ := by
+    rw [hKp]; exact trinomialY_coeff_natDegree_le hPpdeg hc0pdeg
+  have hKgrid : ∀ i, (Kp.coeff i).degree < F.key.degree :=
+    degree_coeff_lt_of_natDegree_le F hKgridN (by rw [hkeydeg]; exact hi₂lt)
+  have hdlt : max (μ₂ * i₂) (max a s) < F.e₁ := max_lt hgrid (max_lt ha hslt)
+  have hEntN : ∀ i, (Ent.coeff i).natDegree ≤ max a s := by
+    rw [hEnt]
+    refine natDegree_coeff_add_le (natDegree_coeff_add_le ?_ ?_) ?_
+    · refine fun i => le_trans (natDegree_coeff_C_mul_X_pow_le _ _ i) ?_
+      exact le_trans (natDegree_add_le _ _) (max_le_max hEpdeg hgpdeg)
+    · refine fun i => le_trans (natDegree_coeff_C_mul_X_pow_le _ _ i) ?_
+      refine le_trans natDegree_mul_le ?_
+      rw [natDegree_C, Nat.add_zero]
+      exact le_trans hgpdeg (le_max_right _ _)
+    · refine fun i => le_trans (natDegree_coeff_C_mul_X_pow_le _ _ i) ?_
+      refine le_trans natDegree_mul_le ?_
+      rw [hc0p, natDegree_C, Nat.add_zero]
+      exact le_trans hEpdeg (le_max_left _ _)
+  have hAgridN : ∀ i, (Ap.coeff i).natDegree ≤ max (μ₂ * i₂) (max a s) := by
+    rw [hAp]
+    refine natDegree_coeff_add_le ?_ ?_
+    · exact fun i => le_trans (natDegree_coeff_pow_le hKgridN μ₂ i) (le_max_left _ _)
+    · exact fun i => le_trans (hEntN i) (le_max_right _ _)
+  have hAgrid : ∀ i, (Ap.coeff i).degree < F.key.degree :=
+    degree_coeff_lt_of_natDegree_le F hAgridN (by rw [hkeydeg]; exact hdlt)
+  -- evaluations
+  have hKe : Polynomial.eval F.key Kp = composedKey T := by
+    rw [hKp, trinomialY_eval, hcomp]
+  have hcomp' : composedKey T = F.key ^ T.f₂ + (Pp * F.key ^ (T.f₂ - 1) + c0p) := by
+    rw [hcomp]; ring
+  have hEnte : Polynomial.eval F.key Ent = Ep * F.key ^ b * composedKey T := by
+    rw [hEnt, hcomp']
+    simp only [eval_add, eval_mul, eval_pow, eval_C, eval_X]
+    have e1 : b + T.f₂ - 1 = b + k := by omega
+    have e2 : b + T.f₂ = b + k + 1 := by omega
+    have e3 : T.f₂ - 1 = k := by omega
+    have e4 : T.f₂ = k + 1 := hk
+    rw [e1, e2, e3, e4]
+    linear_combination (-(F.key ^ (b + k))) * hEpPp
+  have hAe : Polynomial.eval F.key Ap = f := by
+    rw [hAp]
+    simp only [eval_add, eval_pow, hKe, hEnte]
+    rw [hf]
+  -- the level-2 key
+  have hpowmonic : (F.key ^ T.f₂).Monic := F.hmonic.pow _
+  have hpowdeg : (F.key ^ T.f₂).natDegree = T.f₂ * F.e₁ := by rw [natDegree_pow, hkeydeg]
+  have hstep : (T.f₂ - 1) * F.e₁ + F.e₁ = T.f₂ * F.e₁ := by rw [hk]; simp; ring
+  have hrestN : (Pp * F.key ^ (T.f₂ - 1) + c0p).natDegree < T.f₂ * F.e₁ := by
+    refine lt_of_le_of_lt (natDegree_add_le _ _) (max_lt ?_ ?_)
+    · calc (Pp * F.key ^ (T.f₂ - 1)).natDegree
+          ≤ Pp.natDegree + (F.key ^ (T.f₂ - 1)).natDegree := natDegree_mul_le
+        _ ≤ i₂ + (T.f₂ - 1) * F.e₁ := by
+            refine Nat.add_le_add hPpdeg ?_
+            rw [natDegree_pow, hkeydeg]
+        _ < T.f₂ * F.e₁ := by omega
+    · rw [hc0p]
+      simp only [natDegree_C]
+      calc 0 < F.e₁ := F.he₁
+        _ ≤ T.f₂ * F.e₁ := Nat.le_mul_of_pos_left _ (by omega)
+  have hrest : (Pp * F.key ^ (T.f₂ - 1) + c0p).degree < (F.key ^ T.f₂).degree :=
+    degree_lt_degree (by rw [hpowdeg]; exact hrestN)
+  have hΦmonic : (composedKey T).Monic := by rw [hcomp']; exact hpowmonic.add_of_left hrest
+  have hΦdeg : (composedKey T).natDegree = T.f₂ * F.e₁ := by
+    rw [hcomp']
+    refine natDegree_eq_of_degree_eq_some ?_
+    rw [degree_add_eq_left_of_degree_lt hrest, degree_eq_natDegree hpowmonic.ne_zero, hpowdeg]
+  have hEntryN : (Ep * F.key ^ b).natDegree < T.f₂ * F.e₁ := by
+    have h1 : (Ep * F.key ^ b).natDegree ≤ a + b * F.e₁ := by
+      calc (Ep * F.key ^ b).natDegree ≤ Ep.natDegree + (F.key ^ b).natDegree := natDegree_mul_le
+        _ ≤ a + b * F.e₁ := by
+            refine Nat.add_le_add hEpdeg ?_
+            rw [natDegree_pow, hkeydeg]
+    have h2 : (b + 1) * F.e₁ ≤ T.f₂ * F.e₁ := Nat.mul_le_mul_right _ hb
+    have h3 : (b + 1) * F.e₁ = b * F.e₁ + F.e₁ := by ring
+    omega
+  have hEntry : (Ep * F.key ^ b).degree < (composedKey T).degree :=
+    degree_lt_degree (by rw [hΦdeg]; exact hEntryN)
+  have hfshape : f = composedKey T ^ μ₂ + (Ep * F.key ^ b) * composedKey T ^ 1 := by
+    rw [hf]; ring
+  -- the honest ledger at the two low coordinates
+  have hhon1 : dev (composedKey T) f 1 = Ep * F.key ^ b := by
+    rw [← devQ_eq_dev, hfshape, devQ_pow_add_entry hΦmonic hEntry (by omega : (1:ℕ) < μ₂),
+      if_pos rfl]
+  have hhon0 : dev (composedKey T) f 0 = 0 := by
+    rw [← devQ_eq_dev, hfshape, devQ_pow_add_entry hΦmonic hEntry (by omega : (0:ℕ) < μ₂),
+      if_neg (by omega)]
+  -- the transported key and the transported entry
+  have hKbar := trinomialY_map_monic (AdjoinRoot.mk F.key) Pp c0p hf₂
+  have hKbarEq : (trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key)
+      = Polynomial.X ^ T.f₂ + Polynomial.C (AdjoinRoot.mk F.key Pp) * Polynomial.X ^ (T.f₂ - 1)
+        + Polynomial.C (AdjoinRoot.mk F.key c0p) := by
+    simp only [trinomialY, Polynomial.map_add, Polynomial.map_mul, Polynomial.map_pow,
+      Polynomial.map_C, Polynomial.map_X]
+  have hmkkey : AdjoinRoot.mk F.key F.key = 0 := AdjoinRoot.mk_self
+  have hmkEpPp : AdjoinRoot.mk F.key Ep * AdjoinRoot.mk F.key Pp
+      = AdjoinRoot.mk F.key gp * AdjoinRoot.mk F.key (Polynomial.C (π * ω)) := by
+    have h := congrArg (AdjoinRoot.mk F.key) hEpPp
+    rw [map_mul (AdjoinRoot.mk F.key) Ep Pp,
+      map_mul (AdjoinRoot.mk F.key) gp (F.key + Polynomial.C (π * ω)),
+      map_add (AdjoinRoot.mk F.key) F.key (Polynomial.C (π * ω)), hmkkey, zero_add] at h
+    exact h
+  have hEntmap : Ent.map (AdjoinRoot.mk F.key)
+      = Polynomial.C (AdjoinRoot.mk F.key Ep) * Polynomial.X ^ b
+          * ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key))
+        + Polynomial.C (AdjoinRoot.mk F.key gp) * Polynomial.X ^ (b + T.f₂) := by
+    have e1 : b + T.f₂ - 1 = b + k := by omega
+    have e2 : b + T.f₂ = b + k + 1 := by omega
+    have e3 : T.f₂ - 1 = k := by omega
+    have hL : Ent.map (AdjoinRoot.mk F.key)
+        = Polynomial.C (AdjoinRoot.mk F.key Ep + AdjoinRoot.mk F.key gp)
+              * Polynomial.X ^ (b + k + 1)
+          + Polynomial.C (AdjoinRoot.mk F.key gp
+              * AdjoinRoot.mk F.key (Polynomial.C (π * ω))) * Polynomial.X ^ (b + k)
+          + Polynomial.C (AdjoinRoot.mk F.key Ep * AdjoinRoot.mk F.key c0p)
+              * Polynomial.X ^ b := by
+      rw [hEnt, e1, e2]
+      simp only [Polynomial.map_add, Polynomial.map_mul, Polynomial.map_pow, Polynomial.map_C,
+        Polynomial.map_X]
+      rw [map_add (AdjoinRoot.mk F.key) Ep gp,
+        map_mul (AdjoinRoot.mk F.key) gp (Polynomial.C (π * ω)),
+        map_mul (AdjoinRoot.mk F.key) Ep c0p]
+    have hR : Polynomial.C (AdjoinRoot.mk F.key Ep) * Polynomial.X ^ b
+          * ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key))
+        + Polynomial.C (AdjoinRoot.mk F.key gp) * Polynomial.X ^ (b + T.f₂)
+        = Polynomial.C (AdjoinRoot.mk F.key Ep + AdjoinRoot.mk F.key gp)
+              * Polynomial.X ^ (b + k + 1)
+          + Polynomial.C (AdjoinRoot.mk F.key Ep * AdjoinRoot.mk F.key Pp)
+              * Polynomial.X ^ (b + k)
+          + Polynomial.C (AdjoinRoot.mk F.key Ep * AdjoinRoot.mk F.key c0p)
+              * Polynomial.X ^ b := by
+      rw [hKbarEq, e2, e3, hk]
+      simp only [Polynomial.C_add, Polynomial.C_mul]
+      ring
+    rw [hL, hR, hmkEpPp]
+  -- the shadow chain at the two low coordinates
+  have hmapA : Ap.map (AdjoinRoot.mk F.key)
+      = ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key)) ^ μ₂
+        + (Polynomial.C (AdjoinRoot.mk F.key Ep) * Polynomial.X ^ b
+            * ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key))
+          + Polynomial.C (AdjoinRoot.mk F.key gp) * Polynomial.X ^ (b + T.f₂)) := by
+    rw [hAp]
+    simp only [Polynomial.map_add, Polynomial.map_pow, hEntmap, hKp]
+  have hseed := devQ_seed (AdjoinRoot.mk F.key Pp) (AdjoinRoot.mk F.key c0p)
+    (AdjoinRoot.mk F.key gp) hb hKbarEq hKbar.1 hKbar.2
+  have hEbar : (Polynomial.C (AdjoinRoot.mk F.key Ep) * Polynomial.X ^ b).degree
+      < ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key)).degree := by
+    rw [degree_eq_natDegree hKbar.1.ne_zero, hKbar.2]
+    exact lt_of_le_of_lt (degree_C_mul_X_pow_le b _) (by exact_mod_cast hb)
+  have hpure : ∀ j : ℕ, j < μ₂ →
+      devQ ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key))
+        (((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key)) ^ μ₂) j = 0 := by
+    intro j hjlt
+    have hone : ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key)) ^ μ₂
+        = 1 * ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key)) ^ μ₂ := by ring
+    rw [hone]
+    exact devQ_mul_pow_of_lt hKbar.1 μ₂ 1 j hjlt
+  have hsh1 : shadowDev T f 1
+      = Ep * F.key ^ b + reass F (seedQuot (AdjoinRoot.mk F.key Pp) (AdjoinRoot.mk F.key gp) b) := by
+    rw [shadowDev_of_ingrid T hKgrid hAgrid hKe hAe, hKp, hmapA, devQ_add hKbar.1,
+      devQ_add hKbar.1, hpure 1 (by omega), zero_add, hseed.2]
+    have hent1 : devQ ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key))
+        (Polynomial.C (AdjoinRoot.mk F.key Ep) * Polynomial.X ^ b
+          * ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key))) 1
+        = Polynomial.C (AdjoinRoot.mk F.key Ep) * Polynomial.X ^ b := by
+      have hpow : Polynomial.C (AdjoinRoot.mk F.key Ep) * Polynomial.X ^ b
+            * ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key))
+          = (Polynomial.C (AdjoinRoot.mk F.key Ep) * Polynomial.X ^ b)
+            * ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key)) ^ 1 := by ring
+      have hd := devQ_mul_pow hKbar.1 1 (Polynomial.C (AdjoinRoot.mk F.key Ep)
+        * Polynomial.X ^ b) 0
+      rw [Nat.add_zero] at hd
+      rw [hpow, hd, devQ_zero_of_degree_lt hKbar.1 hEbar]
+    rw [hent1, reass_add, reass_map_C_mul_X_pow F Ep b hEpkey]
+  have hsh0 : shadowDev T f 0
+      = reass F (seedRem (AdjoinRoot.mk F.key Pp) (AdjoinRoot.mk F.key c0p)
+          (AdjoinRoot.mk F.key gp) T.f₂ b) := by
+    rw [shadowDev_of_ingrid T hKgrid hAgrid hKe hAe, hKp, hmapA, devQ_add hKbar.1,
+      devQ_add hKbar.1, hpure 0 (by omega), zero_add, hseed.1]
+    have hent0 : devQ ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key))
+        (Polynomial.C (AdjoinRoot.mk F.key Ep) * Polynomial.X ^ b
+          * ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key))) 0 = 0 := by
+      have hpow : Polynomial.C (AdjoinRoot.mk F.key Ep) * Polynomial.X ^ b
+            * ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key))
+          = (Polynomial.C (AdjoinRoot.mk F.key Ep) * Polynomial.X ^ b)
+            * ((trinomialY Pp c0p T.f₂).map (AdjoinRoot.mk F.key)) ^ 1 := by ring
+      rw [hpow]
+      exact devQ_mul_pow_of_lt hKbar.1 1 _ 0 (by omega)
+    rw [hent0, zero_add]
+  refine ⟨?_, ?_⟩
+  · rw [hsh1, hhon1]; ring
+  · rw [hsh0, hhon0, sub_zero]
+
 end LawEW
 
 end Uniformity.Density.Tower
@@ -1032,5 +1324,6 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.seedRem
 #print axioms Uniformity.Density.Tower.seed_division_census
 #print axioms Uniformity.Density.Tower.devQ_seed
+#print axioms Uniformity.Density.Tower.lawEW_discrepancy_eq_census
 
 end AxCheck
