@@ -4839,6 +4839,17 @@ Under the committed floor the `n = 16` family would need `4 ≤ μ 2 ≤ μ 0/4 
 that excludes the corpus's own machine-exhibited witness family is wrong, independently of the
 vacuity finding.
 
+**The rejected alternative (recorded, so the choice is auditable).** One could instead KEEP
+`h4 : ∀ i ≤ J` and re-read the sequence as "all `J+1` listed nodes are jump starts", pushing the
+final target to an index `μ (J+1)` outside the displayed range. Rejected on two grounds, both
+internal to the committed text: (a) the jump count would then be `J+1`, so the source's own
+`4 ≤ μ/2^{J−1}` chain gives `2^(J+2) ≤ μ 0` and the committed clause-1 conclusion `2^(J+1) ≤ μ 0`
+would be permanently slack (the repaired form makes it exact); (b) clause 3 would have to be
+restated about `μ (J+1)`, an index the theorem never binds — i.e. the repair would have to
+rewrite the conclusion rather than the hypothesis. The adopted repair changes the hypothesis
+range only, leaves all four conclusions as committed (bar the `1 ≤ J` guard), and makes clauses
+1, 2 and 4 tight and clause 3 live.
+
 **Downstream audit (every consumer checked).** E.07(iii) is consumed by E.60 and E.64 (grep).
 E.64 `depth3_needs_16` consumes clause 4 (`2 ≤ J → 8 ≤ μ 0`) — unchanged in statement, and now
 with a realizable antecedent. E.65's numeric gate checks `∀ J ≤ 8, 2^(J+1) ≤ 4 → J ≤ 1` and
