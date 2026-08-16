@@ -162,30 +162,29 @@ PART 2 — NODE C.94 `agnprw_termination` [cite:AGNPRW Thm 5.6], leaf layer over
 PART 3 — NODE C.92 `fgmn_calculus_exists` [cite:FGMN-chain]: the DECISION's census
 ==============================================================================
 
-  occurrences of `fgmn_calculus_exists` in leanspec: 7
-    leanspec/Leanspec/ChapC.lean:21  [prose/comment]  axioms (`fgmn_residual_mul`, `fgmn_calculus_exists`, `agnprw_termination`) are DECLARED
-    leanspec/Leanspec/ChapC.lean:1366  [prose/comment]  `axiom fgmn_calculus_exists` was NOT landed and is now **withdrawn**, so **C.92 carries no
-    leanspec/Leanspec/ChapC.lean:1374  [prose/comment]  -- axiom fgmn_calculus_exists {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
-    leanspec/Leanspec/ChapC.lean:1381  [prose/comment]  those exact binders in Lean core (`fgmn_calculus_exists_IS_A_THEOREM`, junk instance:
-    leanspec/Leanspec/ChapC.lean:1398  [prose/comment]  **CONSEQUENCES the owner should see.** (a) `C.126`'s axiom census row for `fgmn_calculus_e
-    leanspec/Leanspec/ChapC.lean:3718  [prose/comment]  signatures FIRST" list; neither exists. `C.126`'s axiom census names `fgmn_calculus_exists
-    leanspec/Leanspec/ChapC.lean:4698  [prose/comment]  fgmn_calculus_exists (C.92), agnprw_termination (C.94) — category-signed by append #66,
+  occurrences of `fgmn_calculus_exists` in leanspec: 6
+    leanspec/Leanspec/ChapC.lean:24  [prose/comment]  `fgmn_calculus_exists` (C.92) content-free; A-C.6 therefore ships C.66 and C.94 as the
+    leanspec/Leanspec/ChapC.lean:1373  [prose/comment]  `axiom fgmn_calculus_exists` was NOT landed and is now **withdrawn**, so **C.92 carries no
+    leanspec/Leanspec/ChapC.lean:1381  [prose/comment]  -- axiom fgmn_calculus_exists {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    leanspec/Leanspec/ChapC.lean:1388  [prose/comment]  those exact binders in Lean core (`fgmn_calculus_exists_IS_A_THEOREM`, junk instance:
+    leanspec/Leanspec/ChapC.lean:1405  [prose/comment]  **CONSEQUENCES the owner should see.** (a) `C.126`'s axiom census row for `fgmn_calculus_e
+    leanspec/Leanspec/ChapC.lean:3736  [prose/comment]  signatures FIRST" list; neither exists. `C.126`'s axiom census names `fgmn_calculus_exists
 
   declarations taking the class as a HYPOTHESIS `[FGMNCalculus ...]`/`(I : ...)`: 14
-    leanspec/Leanspec/ChapC.lean:2380  (I : FGMNCalculus W e' f' u') (i k : ℕ) : Polynomial O :=
-    leanspec/Leanspec/ChapC.lean:2388  (I : FGMNCalculus W e' f' u') (t : ℕ) : W.fld r :=
-    leanspec/Leanspec/ChapC.lean:2410  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
-    leanspec/Leanspec/ChapC.lean:2420  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
-    leanspec/Leanspec/ChapC.lean:2434  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
-    leanspec/Leanspec/ChapC.lean:2445  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
-    leanspec/Leanspec/ChapC.lean:2460  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
-    leanspec/Leanspec/ChapC.lean:2479  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
-    leanspec/Leanspec/ChapC.lean:2490  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
-    leanspec/Leanspec/ChapC.lean:3560  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
-    leanspec/Leanspec/ChapC.lean:3571  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
-    leanspec/Leanspec/ChapC.lean:3582  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u') : Prop :=
-    leanspec/Leanspec/ChapC.lean:3593  (W : DeepTower F H₀ hpin 2) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
-    leanspec/Leanspec/ChapC.lean:3599  (W : DeepTower F H₀ hpin 1) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
+    leanspec/Leanspec/ChapC.lean:2398  (I : FGMNCalculus W e' f' u') (i k : ℕ) : Polynomial O :=
+    leanspec/Leanspec/ChapC.lean:2406  (I : FGMNCalculus W e' f' u') (t : ℕ) : W.fld r :=
+    leanspec/Leanspec/ChapC.lean:2428  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    leanspec/Leanspec/ChapC.lean:2438  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    leanspec/Leanspec/ChapC.lean:2452  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:2463  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:2478  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:2497  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:2508  (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
+    leanspec/Leanspec/ChapC.lean:3578  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    leanspec/Leanspec/ChapC.lean:3589  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    leanspec/Leanspec/ChapC.lean:3600  (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u') : Prop :=
+    leanspec/Leanspec/ChapC.lean:3611  (W : DeepTower F H₀ hpin 2) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
+    leanspec/Leanspec/ChapC.lean:3617  (W : DeepTower F H₀ hpin 1) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
 
   [assert] live `axiom fgmn_calculus_exists` DECLARATIONS: 0   (required: 0 — retired by DECISION A-C.6 option (1))
   [assert] TERM-LEVEL consumers of the axiom name: 0   (required: 0 — every consumer takes the class hypothesis-form)
