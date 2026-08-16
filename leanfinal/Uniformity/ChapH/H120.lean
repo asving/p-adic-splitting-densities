@@ -221,4 +221,98 @@ theorem betaContent_lt_of_not_isDrainState_clusterTrunc {m T W : ℕ} (h : T ≤
 
 end Carrier
 
+/-! ## 2. The CS rule under truncation
+
+The one direction that needs the polygon to be a function of the CLASS.  `IsCSState` is a
+`∀`-lift statement, and the small window has MORE lifts than the large one, so the transport
+runs through chapter B's landed level-`N` congruence: at the key `φ = X` a non-drain state's
+whole polygon is strictly below its own window (`Visible`), and then `sideSet_congr` (B.77a),
+`H₀_lt_of_visible` (B.74), `npHgt_min_congr` (B.76) and `resPoly_congr` (B.77b) carry the CS
+witness from the pinned `W`-lift to an arbitrary `T`-lift. -/
+
+section CS
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)]
+
+omit [Finite (ResidueField O)] in
+/-- **The visible-polygon principle, in B.75's digit form.**  A non-drain state's constant
+coefficient is a digit inside the window, so the order-1 read of every lift is `Visible` at that
+window — which is the licence chapter B's congruence lemmas ask for. -/
+theorem visible_of_not_isDrainState {π : O} (hπ : Irreducible π) {m T : ℕ} (hm : 0 < m)
+    {c : ClusterState O m T} (h0 : ¬ IsDrainState c) {a : Fin m → O}
+    (ha : proj O m T a = c.1) : Visible π X (monicPoly a) T := by
+  have hmk : c.1 ⟨0, hm⟩ = Ideal.Quotient.mk ((maximalIdeal O) ^ T) (a ⟨0, hm⟩) :=
+    (congrFun ha ⟨0, hm⟩).symm
+  refine ⟨0, ?_⟩
+  rw [dev_X, Polynomial.coeff_C_zero, monicPoly_coeff_lt a hm]
+  intro hdvd
+  have hge := (resOrd_ge_iff hπ (le_refl T) (a ⟨0, hm⟩)).2 hdvd
+  rw [← hmk] at hge
+  have heq : resOrd (c.1 ⟨0, hm⟩) = T := le_antisymm (resOrd_le _) hge
+  exact h0 ((isDrainState_iff hm c).2 ((resOrd_eq_iff _).1 heq))
+
+/-- **CS truncates to CS on the non-drain branch.**  DECISION D-H17.1's pessimistic exit is
+stable under shrinking the window, as long as the window still sees the constant coefficient
+(if it does not, the truncation is a DRAIN and exits undecided for that reason instead). -/
+theorem isCSState_clusterTrunc {π : O} (hπ : Irreducible π) {m T W : ℕ} (h : T ≤ W) (hm : 0 < m)
+    {c : ClusterState O m W} (h0 : ¬ IsDrainState (clusterTrunc h c)) (hcs : IsCSState π c) :
+    IsCSState π (clusterTrunc h c) := by
+  refine ⟨h0, ?_⟩
+  intro a' ha'
+  have hmin' : ∀ (s t : Finset ℕ) (hs : s.Nonempty) (ht : t.Nonempty), s = t →
+      s.min' hs = t.min' ht := by
+    rintro s t hs ht rfl; rfl
+  -- the pinned `W`-lift; it is a `T`-lift of the truncation
+  have haW : proj O m W (classSect O m W c.1) = c.1 := proj_classSect O m W c.1
+  have haT : proj O m T (classSect O m W c.1) = (clusterTrunc h c).1 := proj_clusterTrunc h c haW
+  obtain ⟨u, ℓ, hne, H₀, hℓ, hcop, hH₀, ψ, hψ, hψdeg, hψdvd⟩ := hcs.2 _ haW
+  -- the two lifts agree at level `T`
+  have hff' : ∀ i, π ^ T ∣ (monicPoly (classSect O m W c.1) - monicPoly a').coeff i := by
+    intro i
+    have hx := pow_dvd_coeff_comp_sub hπ (haT.trans ha'.symm) X i
+    rwa [Polynomial.comp_X, Polynomial.comp_X] at hx
+  have hdegX : (0 : ℕ) < (X : Polynomial O).natDegree := by simp
+  have hvis : Visible π X (monicPoly (classSect O m W c.1)) T :=
+    visible_of_not_isDrainState hπ hm h0 haT
+  have hdeg : (monicPoly a').natDegree = (monicPoly (classSect O m W c.1)).natDegree := by
+    rw [monicPoly_natDegree, monicPoly_natDegree]
+  have hset : sideSet X (monicPoly a') u ℓ = sideSet X (monicPoly (classSect O m W c.1)) u ℓ :=
+    sideSet_congr hπ monic_X hdegX hff' hdeg hvis u ℓ
+  have hne' : (sideSet X (monicPoly a') u ℓ).Nonempty := by rw [hset]; exact hne
+  have hH₀T : H₀ < T := H₀_lt_of_visible hπ hvis hℓ hne hH₀
+  -- the pinned abscissa and its height transport
+  have hminEq : sideMin X (monicPoly a') u ℓ hne'
+      = sideMin X (monicPoly (classSect O m W c.1)) u ℓ hne := hmin' _ _ _ _ hset
+  have hnp : npHgt X (monicPoly a') (sideMin X (monicPoly a') u ℓ hne') = (H₀ : ℕ∞) := by
+    rw [hminEq]
+    have hmc := npHgt_min_congr hπ monic_X hdegX hff'
+      (sideMin X (monicPoly (classSect O m W c.1)) u ℓ hne)
+    rw [hH₀] at hmc
+    have hlt : ((H₀ : ℕ) : ℕ∞) < ((T : ℕ) : ℕ∞) := by exact_mod_cast hH₀T
+    rw [min_eq_left hlt.le] at hmc
+    rcases min_cases (npHgt X (monicPoly a')
+      (sideMin X (monicPoly (classSect O m W c.1)) u ℓ hne)) ((T : ℕ) : ℕ∞) with
+      ⟨he, -⟩ | ⟨he, -⟩
+    · rw [he] at hmc; exact hmc.symm
+    · rw [he] at hmc; exact absurd hmc (by exact_mod_cast hlt.ne)
+  refine ⟨u, ℓ, hne', H₀, hℓ, hcop, hnp, ψ, hψ, hψdeg, ?_⟩
+  have hres : resPoly π X (monicPoly a') u ℓ hne' H₀
+      = resPoly π X (monicPoly (classSect O m W c.1)) u ℓ hne H₀ :=
+    resPoly_congr hπ monic_X hdegX hff' hdeg hvis hne hH₀T
+  rw [hres]
+  exact hψdvd
+
+/-- **The easy direction.**  CS at the SMALL window forces CS at the large one: every `W`-lift
+is a `T`-lift, so the `∀`-lift clause at `T` already covers the `W`-lift clause.  This is what
+keeps `¬ IsCSState` — the second conjunct of α, β and DEC — alive under truncation. -/
+theorem isCSState_of_isCSState_clusterTrunc {π : O} {m T W : ℕ} (h : T ≤ W)
+    {c : ClusterState O m W} (h0 : ¬ IsDrainState c)
+    (hcs : IsCSState π (clusterTrunc h c)) : IsCSState π c := by
+  refine ⟨h0, ?_⟩
+  intro a ha
+  exact hcs.2 a (proj_clusterTrunc h c ha)
+
+end CS
+
 end Uniformity.Density.Induction
