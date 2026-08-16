@@ -5283,3 +5283,40 @@ lost (committed increments); coordinated-restart-on-timer worked;
 the sweep-scoped-adds hazard fired twice across concurrent units —
 the fleet charge template now carries the reminder. OM roster:
 1/2/3/4 DONE, 5 running, 6–10 queued.
+
+**2026-08-16 DATED APPEND #70 — CHAPTER C BECOMES A FULL SIGNED
+CONTRACT (129 nodes, A-C.1); ALL SIX WORKING CHAPTERS NOW HAVE
+FLEETS FIRED OR FIRING; the cite queue stands at FOUR (statements
+on file, category-signed per #66, owner inspection open).**
+(1) A-C.1 complete (9 commits): 96 new signatures + 2 new nodes
+(C.14a the KeyFrame→GenreDatum adapter with EXACTLY the corpus's
+preconditions 1≤h and 2≤e₁f₁, GC-5's one-door rule honored,
+H's landed side untouched; C.38a the dv2 cluster); C.31 re-signed
+per EFF.HE6R1.10; the towerLocus exponent slip caught; the three
+C-side cite statements WRITTEN at the A-3-corrected numbering
+(AGNPRW Thm 5.6, not the colliding v1 5.2); I.01 unblocked; the
+D23 "on file" overstatement corrected in CHAP-I (mirrored here);
+one self-catch — a depth-general C.99 draft would have silently
+asserted the open [GENTOW5-W(i)]; both affected nodes now carry
+(hr : r = 2) fences. (2) A-F.11 executed: B.63 re-signed at the
+canonical order1Type datum, h0 FORCED (refutation at f = φ);
+A-F.9's peel step retired by its own prediction; B.71 pays for
+free; wave 16 (B.63→B.68→B.71→B.79) firing. (3) D/F stub gates
+CLOSED: F 41 decls green, BOTH Display-A supply nodes elaborate
+exactly as signed w/ Iff.rfl drift-pins, 6 defects (A-W.1 repair
+chartered); D 98 decls green, 14 defects incl. D-D12 — D.62's
+(H-VARTHETA-RES) carrier VACUOUS (trivial-hom witness) — the
+SECOND Display-A vacuity of the day; ϑ table verified consistent,
+the append-#54 trap now has a mutation-killing battery. A unified
+DISPLAY-A CARRIER ADJUDICATION unit (A-E.2 + A-D.2 + chapter I's
+consumption rule + non-triviality certificates) is in flight;
+chapter I's capstone block is FENCED until it lands. (4) Fleets:
+ChapB 77/86 (wave 16 on the transport chain), ChapE 20+/68 (wave
+3), ChapH §17 4+/25 (wave 2), ChapC wave 1 FIRING (C.01/C.30/
+C.105/C.107). OM roster: 1-4 DONE, OM-5 certification battery
+128/0 green (verdict near), 6-10 queued. Owner-facing: the
+gate-(b) queue is FOUR cites — B.42 (exact-signed, LANDED as the
+axiom), C.66/C.92 FGMN battery, C.94 AGNPRW Thm 5.6,
+recentered_key_emission (OM-4) — all category-signed per #66,
+exact statements + faithfulness entries on file in CHAP-I,
+individual inspection at will; A-3 browser riders still open.
