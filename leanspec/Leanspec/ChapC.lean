@@ -881,7 +881,11 @@ axiom jump_count_bound {J μ : ℕ} (a : Fin (J + 1) → ℕ) (ha0 : a 0 ≤ μ)
     (hfloor : ∀ j, 4 ≤ a j) (hdrop : ∀ j : Fin J, 2 * a j.succ ≤ a j.castSucc) :
     2 ^ (J + 2) ≤ 2 * μ
 
-/-! ### NODES C.33–C.40 — **UNSIGNABLE (D2)**; blueprint text verbatim, diagnosis attached.
+/-! ### NODES C.33–C.40 — **UNSIGNABLE (D2) at the gate; SIGNED at A-C.1** — the signed
+signatures live in the A-C.1 SIGNATURE-COMPLETION LAYER below (`DvDissection`,
+`exists_dv_residual_dissection`, `BlockContext`/`blockFactor`/`mult₂`, `complementConst`,
+`dv2Supp_translation`, the C.38a `dv2ResPoly` cluster, `dv2ResPoly_scalar`, `level2_peel`).
+The gate's original diagnosis is preserved verbatim below as the D2 record.
 
 ```lean
 -- C.33 [theorem]  **SIGNATURE** (shape; the stub fixes the side-indexing plumbing).
@@ -1345,6 +1349,283 @@ def hOnSide (P : ℕ → ℕ∞) (n u ℓ j : ℕ) : Prop :=
 /-- NODE C.98 — `shear_onesided_iff`. -/
 axiom shear_onesided_iff (P : ℕ → ℕ∞) (n c u ℓ j : ℕ) (hℓ : 0 < ℓ) (hj : j ≤ n) :
     hOnSide (fun i => P i + (i * c : ℕ∞)) n u ℓ j ↔ hOnSide P n (u + ℓ * c) ℓ j
+
+/-! ## A-C.1 §5 — THE DESCENT-GRAMMAR CARRIERS (C.33–C.40, D2 cured)
+
+The eight formerly-unsignable nodes. A-C.1 determinations, recorded per node in the
+blueprint: C.33's existential witness type is B.42's landed template (`exists_slope_
+factorization`, the CHAP-I addendum's exact statement) at the `dv`-carrier, packaged as a
+structure `DvDissection` + existence/uniqueness axioms (GC-4's inductive-domain licence, and
+what C.35's choice needs); C.34 is signed at the consumed `(λ, r)`-block clause; C.35's
+`blockFactor` takes the TOTAL maximal-labelled-divisor body (choice; junk `1`); C.36's `c_g`
+is `(dvSupp F g L.u L.ℓ).toNat` (the dv₂-unit value under which C.37's display type-checks;
+the STATEMENT's `L.ℓ •` prefix was a clearing slip, recorded); the C.38a helper cluster
+(`Dv2OnSide`/`dv2SideSet`/`dv2Res`/`dv2ResPoly`) mirrors C.07/C.25 at the `dv₂`-carrier with
+the K₂-read `dv2Res A := (A's dvResPoly) evaluated at β` (`AdjoinRoot.mk L.r`); C.38's
+"same radical" is signed as same-monic-irreducible-divisors (no `radical` import). -/
+
+/-! ### NODE C.33 [theorem] — the slope dissection at the level polygon [signed: A-C.1] -/
+
+/-- The witness type of C.33's dissection (B.41/B.42 one level up, at B.42's landed template
+shape): slopes in lowest terms above the frame floor, per-side monic `dv`-pure factors with
+the `(SEP)`-free degree law `deg f_i = D′·L_λ`, a below-floor monic remainder, the product,
+and the side-detection iff. -/
+structure DvDissection (F : KeyFrame O π) (f : Polynomial O) : Type _ where
+  slopes : Finset (ℕ × ℕ)
+  factor : ℕ × ℕ → Polynomial O
+  below : Polynomial O
+  hslopes : ∀ p ∈ slopes,
+    0 < p.2 ∧ Nat.Coprime p.1 p.2 ∧ p.2 * ((F.e₁ * F.f₁) * F.h) < p.1
+  hdistinct : ∀ p ∈ slopes, ∀ q ∈ slopes, p ≠ q → p.1 * q.2 ≠ q.1 * p.2
+  hmonic : ∀ p ∈ slopes, (factor p).Monic
+  hpure : ∀ p ∈ slopes, IsDvPure F (factor p) p.1 p.2
+  hdeg : ∀ p ∈ slopes, ∀ hne : (dvSideSet F f p.1 p.2).Nonempty,
+    (factor p).natDegree = (F.e₁ * F.f₁) * (p.2 * dvSideDeg F f p.1 p.2 hne)
+  hbelow_monic : below.Monic
+  hbelow : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ℓ * ((F.e₁ * F.f₁) * F.h) < u →
+    ∀ hne : (dvSideSet F below u ℓ).Nonempty, dvSideDeg F below u ℓ hne = 0
+  hprod : f = below * ∏ p ∈ slopes, factor p
+  hsides : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ℓ * ((F.e₁ * F.f₁) * F.h) < u →
+    ((u, ℓ) ∈ slopes ↔ ∃ hne : (dvSideSet F f u ℓ).Nonempty, 0 < dvSideDeg F f u ℓ hne)
+
+axiom exists_dvDissection (F : KeyFrame O π) (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hf : f.Monic) (hkey : ¬ F.key ∣ f) :
+    Nonempty (DvDissection F f)
+
+axiom dvDissection_unique (F : KeyFrame O π) (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hf : f.Monic) (hkey : ¬ F.key ∣ f)
+    (D D' : DvDissection F f) :
+    D.slopes = D'.slopes ∧ D.below = D'.below ∧ ∀ p ∈ D.slopes, D.factor p = D'.factor p
+
+/-! ### NODE C.34 [theorem] — the residual dissection, signed at the `(λ, r)`-block clause
+[signed: A-C.1]. The general coprime-prime-power refinement is the fleet's proof content
+(B.48's route); the PUBLIC statement is the consumed block form, with uniqueness. -/
+
+axiom exists_dv_residual_dissection {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {g : Polynomial O} (hg : g.Monic) (hpure : IsDvPure F g L.u L.ℓ)
+    (hne : (dvSideSet F g L.u L.ℓ).Nonempty) {M₀ : ℕ}
+    (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞))
+    (hdvd : L.r ∣ dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp) :
+    ∃ fS g' : Polynomial O, g = fS * g' ∧ HasLabel L fS ∧ g'.Monic ∧
+      (∀ (hne' : (dvSideSet F g' L.u L.ℓ).Nonempty) (M₀' : ℕ)
+        (hp' : dvHgt F g' (dvSideMin F g' L.u L.ℓ hne') = (M₀' : ℕ∞)),
+        ¬ L.r ∣ dvResPoly F H₀ hpin g' L.u L.ℓ hne' M₀' hp') ∧
+      ∀ fS' g'' : Polynomial O, g = fS' * g'' → HasLabel L fS' → g''.Monic →
+        (∀ (hne' : (dvSideSet F g'' L.u L.ℓ).Nonempty) (M₀' : ℕ)
+          (hp' : dvHgt F g'' (dvSideMin F g'' L.u L.ℓ hne') = (M₀' : ℕ∞)),
+          ¬ L.r ∣ dvResPoly F H₀ hpin g'' L.u L.ℓ hne' M₀' hp') →
+        fS' = fS ∧ g'' = g'
+
+/-! ### NODE C.35 [def] — `BlockContext`, `blockFactor`, `mult₂` [signed: A-C.1] -/
+
+/-- The §5 standing block context on `f` at the datum `L`: the PEEL-CONVENTION pair, a
+genuine `(λ, r)`-side of `f`'s own read (nonempty, positive length, `r`-divisible residual). -/
+def BlockContext {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) : Prop :=
+  f.Monic ∧ Squarefree f ∧ ¬ F.key ∣ f ∧
+  ∃ (hne : (dvSideSet F f L.u L.ℓ).Nonempty) (M₀ : ℕ)
+    (hp : dvHgt F f (dvSideMin F f L.u L.ℓ hne) = (M₀ : ℕ∞)),
+    0 < dvSideDeg F f L.u L.ℓ hne ∧
+    L.r ∣ dvResPoly F H₀ hpin f L.u L.ℓ hne M₀ hp
+
+/-- `blockFactor L f` — the block `f_S`, as the MAXIMAL `(λ, r)`-labelled monic divisor of
+`f` (total: choice; junk `1` when none — C.34's uniqueness makes the maximal divisor THE
+block under `hctx`). -/
+noncomputable def blockFactor {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) : Polynomial O :=
+  open Classical in
+  if h : ∃ fS : Polynomial O, HasLabel L fS ∧ fS ∣ f ∧
+      ∀ fS' : Polynomial O, HasLabel L fS' → fS' ∣ f → fS' ∣ fS
+  then h.choose else 1
+
+/-- `μ₂ = deg f_S / D″` (`EFF.HE6R1.12`). -/
+noncomputable def mult₂ {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) : ℕ := (blockFactor L f).natDegree / L.keyDeg₂
+
+/-- C.35's companion: under the context the block is genuine and the division exact. -/
+axiom blockFactor_spec {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hctx : BlockContext L f) :
+    HasLabel L (blockFactor L f) ∧ blockFactor L f ∣ f ∧
+    (blockFactor L f).natDegree = L.keyDeg₂ * mult₂ L f ∧ 0 < mult₂ L f
+
+/-! ### NODE C.36 [lemma] — block projection (a) + `complementConst` [signed: A-C.1] -/
+
+/-- `c_g` — the complement constant, in `dv₂`-units: the level support value of
+`g = f /ₘ f_S` at the datum's side (`EFF.HE6R1.13`'s `c_g`, ℕ-cleared; finite under C.36). -/
+noncomputable def complementConst {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) : ℕ :=
+  (dvSupp F (f /ₘ blockFactor L f) L.u L.ℓ).toNat
+
+axiom block_complement_notdvd {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hctx : BlockContext L f) :
+    (∀ Ψ : Polynomial O, IsTestKey L Ψ → (Ψ ∣ blockFactor L f ↔ Ψ ∣ f)) ∧
+    (∀ (hne' : (dvSideSet F (f /ₘ blockFactor L f) L.u L.ℓ).Nonempty) (M₀' : ℕ)
+      (hp' : dvHgt F (f /ₘ blockFactor L f)
+          (dvSideMin F (f /ₘ blockFactor L f) L.u L.ℓ hne') = (M₀' : ℕ∞)),
+      ¬ L.r ∣ dvResPoly F H₀ hpin (f /ₘ blockFactor L f) L.u L.ℓ hne' M₀' hp') ∧
+    dvSupp F (f /ₘ blockFactor L f) L.u L.ℓ ≠ ⊤
+
+/-! ### NODE C.37 [theorem] — the translation identity (the GC-2 mechanism) [signed: A-C.1] -/
+
+axiom dv2Supp_translation {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
+    (hnd : ¬ Ψ ∣ blockFactor L f)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂) :
+    dv2Supp L Ψ f u₂ ℓ₂
+      = dv2Supp L Ψ (blockFactor L f) u₂ ℓ₂ + ℓ₂ • (complementConst L f : ℕ∞)
+
+/-! ### NODE C.38a [def, RE-PLAN'd helper cluster] — `dv2SideSet` + `dv2ResPoly`
+[signed: A-C.1]; the §15 booking ("the `dv2ResPoly` + `dv2SideSet` cluster") executed. -/
+
+def Dv2OnSide {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (u₂ ℓ₂ j : ℕ) : Prop :=
+  dv2Supp L Ψ f u₂ ℓ₂ = ℓ₂ • dv2Pin L Ψ f j + (u₂ * j : ℕ∞) ∧ dv2Pin L Ψ f j ≠ ⊤
+
+noncomputable def dv2SideSet {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) : Finset ℕ :=
+  open Classical in (Finset.range (f.natDegree + 1)).filter (fun j => Dv2OnSide L Ψ f u₂ ℓ₂ j)
+
+noncomputable def dv2SideMin {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) (h : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) : ℕ :=
+  (dv2SideSet L Ψ f u₂ ℓ₂).min' h
+
+noncomputable def dv2SideMax {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) (h : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) : ℕ :=
+  (dv2SideSet L Ψ f u₂ ℓ₂).max' h
+
+noncomputable def dv2SideDeg {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) (h : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) : ℕ :=
+  (dv2SideMax L Ψ f u₂ ℓ₂ h - dv2SideMin L Ψ f u₂ ℓ₂ h) / ℓ₂
+
+/-- the coherent `K₂`-residue read of one coefficient: its own level residual evaluated at
+the letter `β` (`AdjoinRoot.mk L.r`; junk `0` off the pinned locus). -/
+noncomputable def dv2Res {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (A : Polynomial O) : AdjoinRoot L.r :=
+  open Classical in
+  if h : ∃ (hne : (dvSideSet F A L.u L.ℓ).Nonempty) (M₀ : ℕ),
+      dvHgt F A (dvSideMin F A L.u L.ℓ hne) = (M₀ : ℕ∞)
+  then AdjoinRoot.mk L.r
+    (dvResPoly F H₀ hpin A L.u L.ℓ h.choose h.choose_spec.choose h.choose_spec.choose_spec)
+  else 0
+
+/-- the level-2 residual polynomial over `K₂` (C.25 one level up; the coherent per-slot
+read). -/
+noncomputable def dv2ResPoly {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) :
+    Polynomial (AdjoinRoot L.r) :=
+  (Finset.range (dv2SideDeg L Ψ f u₂ ℓ₂ hne + 1)).sum fun t =>
+    Polynomial.C (dv2Res L (dev Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne + t * ℓ₂)))
+      * Polynomial.X ^ t
+
+/-! ### NODE C.38 [lemma] — same degree, same radical (as same-prime-divisors)
+[signed: A-C.1] -/
+
+axiom dv2ResPoly_radical_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
+    (hnd : ¬ Ψ ∣ blockFactor L f)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂)
+    (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty)
+    (hne' : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty) :
+    (dv2ResPoly L Ψ f u₂ ℓ₂ hne).natDegree
+        = (dv2ResPoly L Ψ (blockFactor L f) u₂ ℓ₂ hne').natDegree ∧
+    ∀ q : Polynomial (AdjoinRoot L.r), q.Monic → Irreducible q →
+      (q ∣ dv2ResPoly L Ψ f u₂ ℓ₂ hne ↔ q ∣ dv2ResPoly L Ψ (blockFactor L f) u₂ ℓ₂ hne')
+
+/-! ### NODE C.39 [lemma] — the per-side scalar, pin-height TERMINAL form [signed: A-C.1] -/
+
+/-- `γ_g` — the complement's own `K₂`-residue read (a `K₂^×` unit under C.36). -/
+noncomputable def γg {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) : AdjoinRoot L.r :=
+  dv2Res L (f /ₘ blockFactor L f)
+
+/-- the PIN height at the side's starting index (PE3 F-1's integer; GC-1 discipline at
+level 2). -/
+noncomputable def pinHeight {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) : ℕ :=
+  (dv2Pin L Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne)).toNat
+
+axiom dv2ResPoly_scalar {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
+    (hnd : ¬ Ψ ∣ blockFactor L f)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂)
+    (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty)
+    (hne' : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty) :
+    dv2ResPoly L Ψ f u₂ ℓ₂ hne
+      = Polynomial.C (γg L f * (AdjoinRoot.root L.r)
+            ^ (L.cocycle (pinHeight L Ψ (blockFactor L f) u₂ ℓ₂ hne') (complementConst L f)))
+          * dv2ResPoly L Ψ (blockFactor L f) u₂ ℓ₂ hne'
+
+/-! ### NODE C.40 [theorem] — the level-2 peel [signed: A-C.1; D11 cured in-statement] -/
+
+axiom level2_peel {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (ResidueField O)]
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
+    (hdvd : Ψ ∣ blockFactor L f) (hbox : CBox1Side L Ψ) :
+    typeOf Ψ = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}⟩ ∧ Irreducible Ψ ∧
+    ∃ fS' : Polynomial O, blockFactor L f = Ψ * fS' ∧ ¬ Ψ ∣ fS' ∧
+      fS'.natDegree = L.keyDeg₂ * (mult₂ L f - 1)
+
+/-! ## A-C.1 §9 — NODE C.94 [cite:AGNPRW] — the descent-history carriers and THE EXACT
+LEAN STATEMENT (the D24 deadlock broken on the C side)
+
+A-C.1 determinations, flagged for the owner (statement drafted here; append #66 signs the
+category): the descent STATE is `(key, block)`; a STEP is a level JUMP (a labelled block of
+degree ≥ 2·D″ at a jump datum `ℓd_r ≥ 2`, the new key a test key — §5's carriers verbatim)
+or an α-REFINE (a same-degree recentering whose attained side slope STRICTLY increases —
+the C.113(i)/C.56 shape; the slope-increase clause is what makes vacuous refine loops
+non-steps). The cite asserts: NO INFINITE HISTORY on a fixed monic squarefree `f` —
+"reaches multiplicity 1 (or a terminating α-refine chain) in finitely many steps" in
+no-infinite-chain form. What is NOT in the statement: the jump-count arithmetic (C.32,
+proved) and the α-refine finiteness interface (E's HE7-8 placeholder). -/
+
+/-- the §5 descent state: the current key and the current block factor. -/
+structure DescentState (O : Type*) [CommRing O] where
+  key : Polynomial O
+  block : Polynomial O
+
+/-- one step of §5's descent grammar (the [AGNPRW]-consumed shape). -/
+inductive DescentStep (π : O) : DescentState O → DescentState O → Prop
+  | jump : ∀ {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} (L : LevelDatum F H₀ hpin)
+      (s s' : DescentState O),
+      s.key = F.key → 2 ≤ L.ℓ * L.r.natDegree →
+      HasLabel L s'.block → s'.block ∣ s.block →
+      IsTestKey L s'.key → L.keyDeg₂ * 2 ≤ s'.block.natDegree →
+      DescentStep π s s'
+  | refine : ∀ (s s' : DescentState O) (u ℓ u' ℓ' : ℕ),
+      0 < ℓ → 0 < ℓ' → s'.block = s.block →
+      s'.key.natDegree = s.key.natDegree →
+      (s.key - s'.key).natDegree < s.key.natDegree →
+      (sideSet s.key s.block u ℓ).Nonempty →
+      (sideSet s'.key s.block u' ℓ').Nonempty →
+      u * ℓ' < u' * ℓ →
+      DescentStep π s s'
+
+/-- NODE C.94's EXACT LEAN STATEMENT ([cite:AGNPRW], published **Thm 5.6** — Found. Comput.
+Math. 25 (2025) no. 2, 631–681, DOI 10.1007/s10208-024-09646-x; the repo's "Thm 5.2" is the
+arXiv-v1 number and COLLIDES with a different published theorem — A-3 audit §3): OM descent
+terminates — no infinite §5 history on a fixed monic squarefree `f`. This Prop is what
+CHAP-I's `I.01` `NS7Termination` body quantifies (the D24 deadlock's C-side, now typed). -/
+def NS7TerminationStatement : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (IsLocalRing.ResidueField O)] (π : O), Irreducible π →
+    ∀ f : Polynomial O, f.Monic → Squarefree f →
+    ∀ hist : ℕ → DescentState O,
+      (∀ n, (hist n).block ∣ f) →
+      (∀ n, DescentStep π (hist n) (hist (n + 1))) → False
+
+/-- C.94's declared gate-(b) axiom (append #66 category signature; statement-UNINSPECTED,
+owner inspection queued in CHAP-I's addendum). -/
+axiom agnprw_termination : NS7TerminationStatement
 
 /-! # §§9–13 — THE THIRD STAGE, THE GENTOW2 SUPPLY LAYER, THE HT COUNT LAYER, THE LEVEL-`N`
 CERTIFICATES, AND THE GATES (C.83–C.126)

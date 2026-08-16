@@ -2125,16 +2125,47 @@ equal to the side's length `L_{λ_i}` (so `deg f_i = D′·L_{λ_i}` — the `(S
 (the part whose development sits at or below the frame floor — order-1 territory, chapter
 B's); the factorization is unique among monic dissections.
 
-**SIGNATURE** (shape; the stub fixes the side-indexing plumbing).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`]. The witness
+type is **B.42's landed template** (`exists_slope_factorization`, the CHAP-I addendum's exact
+statement — the unique corpus-anchored reading of "B.41/B.42 one level up") at the
+`dv`-carrier, packaged as a structure (GC-4's inductive-domain licence; what C.35's choice
+needs) with existence and uniqueness as the two theorem clauses:
+
 ```lean
 namespace Uniformity.Density.Tower
 
-theorem exists_dv_slope_dissection (F : KeyFrame O π) (hπ : Irreducible π)
+structure DvDissection (F : KeyFrame O π) (f : Polynomial O) : Type _ where
+  slopes : Finset (ℕ × ℕ)
+  factor : ℕ × ℕ → Polynomial O
+  below : Polynomial O
+  hslopes : ∀ p ∈ slopes,
+    0 < p.2 ∧ Nat.Coprime p.1 p.2 ∧ p.2 * ((F.e₁ * F.f₁) * F.h) < p.1
+  hdistinct : ∀ p ∈ slopes, ∀ q ∈ slopes, p ≠ q → p.1 * q.2 ≠ q.1 * p.2
+  hmonic : ∀ p ∈ slopes, (factor p).Monic
+  hpure : ∀ p ∈ slopes, IsDvPure F (factor p) p.1 p.2
+  hdeg : ∀ p ∈ slopes, ∀ hne : (dvSideSet F f p.1 p.2).Nonempty,
+    (factor p).natDegree = (F.e₁ * F.f₁) * (p.2 * dvSideDeg F f p.1 p.2 hne)
+  hbelow_monic : below.Monic
+  hbelow : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ℓ * ((F.e₁ * F.f₁) * F.h) < u →
+    ∀ hne : (dvSideSet F below u ℓ).Nonempty, dvSideDeg F below u ℓ hne = 0
+  hprod : f = below * ∏ p ∈ slopes, factor p
+  hsides : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ℓ * ((F.e₁ * F.f₁) * F.h) < u →
+    ((u, ℓ) ∈ slopes ↔ ∃ hne : (dvSideSet F f u ℓ).Nonempty, 0 < dvSideDeg F f u ℓ hne)
+
+theorem exists_dvDissection (F : KeyFrame O π) (hπ : Irreducible π)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    {f : Polynomial O} (hf : f.Monic) (hkey : ¬ F.key ∣ f) … :
-    ∃ …, f = … ∧ (∀ i, IsDvPure F (f_i) (u_i) (ℓ_i)) ∧
-      (∀ i, (f_i).natDegree = (F.e₁ * F.f₁) * ℓ_i * dvSideDeg F f (u_i) (ℓ_i) _) ∧ …
+    {f : Polynomial O} (hf : f.Monic) (hkey : ¬ F.key ∣ f) :
+    Nonempty (DvDissection F f)
+
+theorem dvDissection_unique (F : KeyFrame O π) (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hf : f.Monic) (hkey : ¬ F.key ∣ f)
+    (D D' : DvDissection F f) :
+    D.slopes = D'.slopes ∧ D.below = D'.below ∧ ∀ p ∈ D.slopes, D.factor p = D'.factor p
 ```
+(the "below-floor remainder" clause `hbelow` — trivial above-floor sides — is what makes
+uniqueness true; the degree clause is the `(SEP)`-free `n_λ = D′·L_λ` with
+`L_λ = ℓ·dvSideDeg`, C.08(b)'s length law.)
 
 **⚠ HEAVY NODE — split-mandated: C.33 → 3** (graded solve at the `dv`-filtration; the limit
 through completeness; uniqueness). The proof is B.41/B.42's route re-run at the
@@ -2180,14 +2211,31 @@ refinements. In particular for `L` a level datum with `L.r ∣ R`: the **`(λ, r
 factorization** `g = f_S · g'` with `HasLabel L f_S` (multiplicity `m_r`) and
 `¬ L.r ∣ dvResPoly … g' …`.
 
-**SIGNATURE** (shape).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`]. Signed at the
+consumed `(λ, r)`-BLOCK clause (the "in particular" of the STATEMENT — what C.35/C.36/C.61
+read); the general coprime-prime-power refinement is the fleet's proof content (B.48's
+route), not a second public statement. The stub gate's missing-`L`-binder and
+missing-`dvResPoly`-argument defects are cured by the `L`-headed form with the complement's
+non-divisibility ∀-quantified over ITS OWN pin witnesses (the dependent-plumbing resolution):
+
 ```lean
 namespace Uniformity.Density.Tower
 
-theorem exists_dv_residual_dissection (F : KeyFrame O π) (hπ : Irreducible π)
-    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] {H₀ hpin}
-    {g : Polynomial O} (hg : g.Monic) {u ℓ : ℕ} (hpure : IsDvPure F g u ℓ) … :
-    ∃ fS g', g = fS * g' ∧ HasLabel (L) fS ∧ … ∧ ¬ L.r ∣ dvResPoly F H₀ hpin g' u ℓ … …
+theorem exists_dv_residual_dissection {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {g : Polynomial O} (hg : g.Monic) (hpure : IsDvPure F g L.u L.ℓ)
+    (hne : (dvSideSet F g L.u L.ℓ).Nonempty) {M₀ : ℕ}
+    (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞))
+    (hdvd : L.r ∣ dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp) :
+    ∃ fS g' : Polynomial O, g = fS * g' ∧ HasLabel L fS ∧ g'.Monic ∧
+      (∀ (hne' : (dvSideSet F g' L.u L.ℓ).Nonempty) (M₀' : ℕ)
+        (hp' : dvHgt F g' (dvSideMin F g' L.u L.ℓ hne') = (M₀' : ℕ∞)),
+        ¬ L.r ∣ dvResPoly F H₀ hpin g' L.u L.ℓ hne' M₀' hp') ∧
+      ∀ fS' g'' : Polynomial O, g = fS' * g'' → HasLabel L fS' → g''.Monic →
+        (∀ (hne' : (dvSideSet F g'' L.u L.ℓ).Nonempty) (M₀' : ℕ)
+          (hp' : dvHgt F g'' (dvSideMin F g'' L.u L.ℓ hne') = (M₀' : ℕ∞)),
+          ¬ L.r ∣ dvResPoly F H₀ hpin g'' L.u L.ℓ hne' M₀' hp') →
+        fS' = fS ∧ g'' = g'
 ```
 
 **⚠ HEAVY NODE — split-mandated: C.34 → 2** (the coprime-residual Hensel split; the
@@ -2229,16 +2277,43 @@ and `mult₂ L f := (blockFactor L f).natDegree / L.keyDeg₂` (the corpus's
 `μ₂ := deg f_S / D″`, `EFF.HE6R1.12`). Companion: `(blockFactor L f).natDegree =
 L.keyDeg₂ * mult₂ L f` exactly (the division is exact — C.34's degree bookkeeping).
 
-**SIGNATURE.**
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`]. The elided
+"context" is the named Prop `BlockContext` (the §5 standing pair + a genuine `(λ, r)`-side of
+`f`'s own read); `blockFactor` takes the TOTAL maximal-labelled-divisor body (choice; junk
+`1` when none) so the def needs NO context argument — the context sits on the spec companion,
+where C.34's uniqueness makes the maximal labelled divisor THE block:
+
 ```lean
 namespace Uniformity.Density.Tower
 
+def BlockContext {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) : Prop :=
+  f.Monic ∧ Squarefree f ∧ ¬ F.key ∣ f ∧
+  ∃ (hne : (dvSideSet F f L.u L.ℓ).Nonempty) (M₀ : ℕ)
+    (hp : dvHgt F f (dvSideMin F f L.u L.ℓ hne) = (M₀ : ℕ∞)),
+    0 < dvSideDeg F f L.u L.ℓ hne ∧
+    L.r ∣ dvResPoly F H₀ hpin f L.u L.ℓ hne M₀ hp
+
 noncomputable def blockFactor {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
-    (f : Polynomial O) (h : …C.33/C.34 context…) : Polynomial O := …
+    (f : Polynomial O) : Polynomial O :=
+  open Classical in
+  if h : ∃ fS : Polynomial O, HasLabel L fS ∧ fS ∣ f ∧
+      ∀ fS' : Polynomial O, HasLabel L fS' → fS' ∣ f → fS' ∣ fS
+  then h.choose else 1
 
 noncomputable def mult₂ {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
-    (f : Polynomial O) (h : …) : ℕ := (blockFactor L f h).natDegree / L.keyDeg₂
+    (f : Polynomial O) : ℕ := (blockFactor L f).natDegree / L.keyDeg₂
+
+theorem blockFactor_spec {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hctx : BlockContext L f) :
+    HasLabel L (blockFactor L f) ∧ blockFactor L f ∣ f ∧
+    (blockFactor L f).natDegree = L.keyDeg₂ * mult₂ L f ∧ 0 < mult₂ L f
 ```
+(**A-C.1 note for D13:** `blockFactor_spec`'s `HasLabel` clause plus C.29's existential `m`
+and the exactness clause tie the two multiplicities the stub gate's D13 flagged: under
+`hctx`, `HasLabel`'s `m` and `mult₂` agree through C.26's degree law — the fleet proves the
+tie inside this spec, which is the D13 disposition.)
 
 **DEPENDS.** C.09 · C.33 · C.34.
 
@@ -2264,19 +2339,31 @@ restated); (iii) consequently the **complement constant**
 closure-free `c_g` ("for every level-2 point `ξ`, `dv₂(g(ξ)) = ℓ·h_{F_g}(λ)`, a constant
 depending on `(g, λ)` only").
 
-**SIGNATURE.**
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`]. The elided
+context is C.35's `BlockContext` (which carries the PEEL-CONVENTION pair, so the separate
+`hf`/`hsq`/`hkey` binders fold in); the complement's non-divisibility is ∀-quantified over
+its own pin witnesses (the C.34 plumbing pattern); **A-C.1 determination on `c_g`'s units:**
+`complementConst := (dvSupp F g L.u L.ℓ).toNat` — the `dv₂`-unit value under which C.37's
+display type-checks (`dv2Hgt` IS `dvSupp`, C.11); the STATEMENT's `L.ℓ •` prefix was a
+clearing slip, recorded here rather than transcribed:
+
 ```lean
 namespace Uniformity.Density.Tower
 
+noncomputable def complementConst {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) : ℕ :=
+  (dvSupp F (f /ₘ blockFactor L f) L.u L.ℓ).toNat
+
 theorem block_complement_notdvd {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    {f : Polynomial O} (hf : f.Monic) (hsq : Squarefree f) (hkey : ¬ F.key ∣ f) (hctx : …) :
-    (∀ Ψ, IsTestKey L Ψ → (Ψ ∣ blockFactor L f hctx ↔ Ψ ∣ f)) ∧
-    ¬ L.r ∣ dvResPoly F H₀ hpin (f /ₘ blockFactor L f hctx) L.u L.ℓ … …
+    {f : Polynomial O} (hctx : BlockContext L f) :
+    (∀ Ψ : Polynomial O, IsTestKey L Ψ → (Ψ ∣ blockFactor L f ↔ Ψ ∣ f)) ∧
+    (∀ (hne' : (dvSideSet F (f /ₘ blockFactor L f) L.u L.ℓ).Nonempty) (M₀' : ℕ)
+      (hp' : dvHgt F (f /ₘ blockFactor L f)
+          (dvSideMin F (f /ₘ blockFactor L f) L.u L.ℓ hne') = (M₀' : ℕ∞)),
+      ¬ L.r ∣ dvResPoly F H₀ hpin (f /ₘ blockFactor L f) L.u L.ℓ hne' M₀' hp') ∧
+    dvSupp F (f /ₘ blockFactor L f) L.u L.ℓ ≠ ⊤
 ```
-
-with `complementConst` (the `c_g` value) as a companion `def` in the same file (RE-PLAN if
-another section needs it by name — expected: C.37, C.39, §7).
 
 **DEPENDS.** C.13 · C.29 · C.34 · C.35 · B.31 (division monotonicity).
 
@@ -2320,16 +2407,18 @@ the above-seam level-2 polygon of `f` is that of `f_S` translated by `c_g`: same
 sets shifted, same slopes, same lengths — so `mult₂` and the §7 count are computable from
 `f` without exhibiting `f_S` (the consequence itself is packaged at C.64).
 
-**SIGNATURE.**
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the context is
+`BlockContext` + the `¬ Ψ ∣ f_S` clause C.36's "in particular" supplies].
 ```lean
 namespace Uniformity.Density.Tower
 
 theorem dv2Supp_translation {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : …C.36's context…)
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
+    (hnd : ¬ Ψ ∣ blockFactor L f)
     {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂) :
     dv2Supp L Ψ f u₂ ℓ₂
-      = dv2Supp L Ψ (blockFactor L f …) u₂ ℓ₂ + ℓ₂ • (complementConst L f … : ℕ∞)
+      = dv2Supp L Ψ (blockFactor L f) u₂ ℓ₂ + ℓ₂ • (complementConst L f : ℕ∞)
 ```
 
 **DEPENDS.** C.11 · C.13 · C.27 (`slot2_exact` — the value transport) · C.35 · C.36 · the
@@ -2368,15 +2457,28 @@ C.37's context, at every level-2 side `(u₂, ℓ₂)` above the seam: the level
 need it by name: they do — book it) have the same degree `L_{λ₂}/ℓ₂` and the same monic
 irreducible factors (same radical); in particular one is separable iff the other is.
 
-**SIGNATURE.**
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`]. The `dv2ResPoly`
++ `dv2SideSet` companion cluster is hereby the booked **NODE C.38a** (the §15 RE-PLAN
+executed; full defs at the node's leanspec twin — `Dv2OnSide`/`dv2SideSet`/`dv2SideMin`/
+`dv2SideMax`/`dv2SideDeg` mirror C.07 at the `dv₂`-carrier, and `dv2Res A` is the coherent
+`K₂`-read "`A`'s own `dvResPoly` evaluated at the letter `β`" via `AdjoinRoot.mk L.r`, with
+`dv2ResPoly` the per-slot assembly, C.25 one level up). **A-C.1 determination:** "same
+radical" is signed as same-monic-irreducible-divisors (carrier-free; no `radical` import):
+
 ```lean
 namespace Uniformity.Density.Tower
 
 theorem dv2ResPoly_radical_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (hctx : …C.37's context…) {u₂ ℓ₂ : ℕ} (hseam : ℓ₂ * L.seam < u₂) … :
-    (dv2ResPoly L Ψ f u₂ ℓ₂ …).radical = (dv2ResPoly L Ψ (blockFactor L f …) u₂ ℓ₂ …).radical
-    ∧ (dv2ResPoly L Ψ f u₂ ℓ₂ …).natDegree = (dv2ResPoly L Ψ (blockFactor L f …) u₂ ℓ₂ …).natDegree
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
+    (hnd : ¬ Ψ ∣ blockFactor L f)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂)
+    (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty)
+    (hne' : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty) :
+    (dv2ResPoly L Ψ f u₂ ℓ₂ hne).natDegree
+        = (dv2ResPoly L Ψ (blockFactor L f) u₂ ℓ₂ hne').natDegree ∧
+    ∀ q : Polynomial (AdjoinRoot L.r), q.Monic → Irreducible q →
+      (q ∣ dv2ResPoly L Ψ f u₂ ℓ₂ hne ↔ q ∣ dv2ResPoly L Ψ (blockFactor L f) u₂ ℓ₂ hne')
 ```
 
 **DEPENDS.** C.25 (template) · C.37 · C.39 (the scalar — the radical equality is scalar-
@@ -2411,18 +2513,33 @@ index (an integer — NOT the side's line value, which off the first side need n
 PE3 F-1's ill-formedness witness `39/2 ∉ ℤ`), and `c₁` is C.28's cocycle. At `L.ℓ = 1` the
 exponent vanishes (C.28(ii)) and the scalar is `γ_g` alone — the battery-exercised branch.
 
-**SIGNATURE.**
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`].
 ```lean
 namespace Uniformity.Density.Tower
 
-theorem dv2ResPoly_scalar {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin) … :
-    dv2ResPoly L Ψ f u₂ ℓ₂ …
-      = Polynomial.C (γg … * (AdjoinRoot.root L.r) ^ (L.cocycle (pinHeight …) (complementConst …)))
-          * dv2ResPoly L Ψ (blockFactor L f …) u₂ ℓ₂ …
-```
+noncomputable def γg {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) : AdjoinRoot L.r :=
+  dv2Res L (f /ₘ blockFactor L f)
 
-(`γg` and `pinHeight` are companion `def`s in this file; `pinHeight` is the level-2
-`dv2Pin` at the side's `dvSideMin`-analogue index — the GC-1 pin discipline at level 2.)
+noncomputable def pinHeight {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) : ℕ :=
+  (dv2Pin L Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne)).toNat
+
+theorem dv2ResPoly_scalar {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
+    (hnd : ¬ Ψ ∣ blockFactor L f)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂)
+    (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty)
+    (hne' : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty) :
+    dv2ResPoly L Ψ f u₂ ℓ₂ hne
+      = Polynomial.C (γg L f * (AdjoinRoot.root L.r)
+            ^ (L.cocycle (pinHeight L Ψ (blockFactor L f) u₂ ℓ₂ hne') (complementConst L f)))
+          * dv2ResPoly L Ψ (blockFactor L f) u₂ ℓ₂ hne'
+```
+(`γg` and `pinHeight` land as the displayed companion defs; `pinHeight` is the level-2
+`dv2Pin` at the side's `dv2SideMin` index — the GC-1 pin discipline at level 2, taken on
+the BLOCK's side per PE3 F-1's `m₁^{f_S}`.)
 
 **DEPENDS.** C.12 · C.22 · C.28 · C.36 · C.37 · **GC-13 placeholder:
 `EFF.HE7.<nn> — ANNEX-LEMMA R1-a(iii)/(iv) [supplied-by: chapter E]`** (the cocycle-unit
@@ -2467,19 +2584,21 @@ no more); (iii) `mult₂` drops by exactly one:
 `(f_S'.natDegree) = L.keyDeg₂ * (mult₂ L f … − 1)`, and the peel applies at most once
 (squarefreeness kills a second `Ψ`-factor).
 
-**SIGNATURE.**
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; D11 cured
+in-statement: `FactorizationType`'s one-field constructor].
 ```lean
 namespace Uniformity.Density.Tower
 
 theorem level2_peel {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     [Finite (ResidueField O)]
-    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : …) (hdvd : Ψ ∣ blockFactor L f hctx)
+    {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
+    (hdvd : Ψ ∣ blockFactor L f)
     (hbox : CBox1Side L Ψ) :   -- §7's C-BOX-1 hypothesis carrier, C.60; vacuous at f₁·d_r = 1
-    typeOf Ψ = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}, …⟩ ∧
+    typeOf Ψ = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}⟩ ∧
     Irreducible Ψ ∧
-    ∃ fS', blockFactor L f hctx = Ψ * fS' ∧ ¬ Ψ ∣ fS' ∧
-      fS'.natDegree = L.keyDeg₂ * (mult₂ L f hctx - 1)
+    ∃ fS' : Polynomial O, blockFactor L f = Ψ * fS' ∧ ¬ Ψ ∣ fS' ∧
+      fS'.natDegree = L.keyDeg₂ * (mult₂ L f - 1)
 ```
 
 **⚠ FAITHFULNESS (the C-D1 recast at its sharpest).** The corpus proof (`EFF.HE6R1.16`) is
@@ -5060,7 +5179,58 @@ are verbatim identical in both versions; only the label and the internal referen
 last link for the index step is imprecise — record it in the faithfulness entry rather than
 repeating it silently. Not print-read (Springer paywalled): risk LOW, closing check in audit §7.1.
 
-**DEPENDS.** C.30 · C.32 · C.83.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; THE EXACT LEAN
+STATEMENT, breaking the D24 `C.94 ⇄ I.01` deadlock on the C side].
+
+```lean
+namespace Uniformity.Density.Tower
+
+structure DescentState (O : Type*) [CommRing O] where
+  key : Polynomial O
+  block : Polynomial O
+
+inductive DescentStep (π : O) : DescentState O → DescentState O → Prop
+  | jump : ∀ {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} (L : LevelDatum F H₀ hpin)
+      (s s' : DescentState O),
+      s.key = F.key → 2 ≤ L.ℓ * L.r.natDegree →
+      HasLabel L s'.block → s'.block ∣ s.block →
+      IsTestKey L s'.key → L.keyDeg₂ * 2 ≤ s'.block.natDegree →
+      DescentStep π s s'
+  | refine : ∀ (s s' : DescentState O) (u ℓ u' ℓ' : ℕ),
+      0 < ℓ → 0 < ℓ' → s'.block = s.block →
+      s'.key.natDegree = s.key.natDegree →
+      (s.key - s'.key).natDegree < s.key.natDegree →
+      (sideSet s.key s.block u ℓ).Nonempty →
+      (sideSet s'.key s.block u' ℓ').Nonempty →
+      u * ℓ' < u' * ℓ →
+      DescentStep π s s'
+
+def NS7TerminationStatement : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (IsLocalRing.ResidueField O)] (π : O), Irreducible π →
+    ∀ f : Polynomial O, f.Monic → Squarefree f →
+    ∀ hist : ℕ → DescentState O,
+      (∀ n, (hist n).block ∣ f) →
+      (∀ n, DescentStep π (hist n) (hist (n + 1))) → False
+
+axiom agnprw_termination : NS7TerminationStatement
+```
+
+**⚠ THE A-C.1 DRAFTING DECISIONS (owner must inspect; statement drafted at stub stage per
+the node's own delegation, category-signed by append #66):** (1) the descent STATE is
+`(key, block)` and a JUMP step consumes §5's carriers verbatim (a labelled divisor at
+multiplicity ≥ 2 — `deg ≥ 2·D″` — over a jump datum `ℓd_r ≥ 2`, the new key a test key);
+(2) an α-REFINE step is a same-degree recentering with STRICTLY increasing attained side
+slope (the C.113(i)/C.56 shape) — the strictness clause is what makes vacuous refine loops
+non-steps, so "no infinite history" IS termination; (3) "reaches multiplicity 1 (or a
+terminating α-refine chain) in finitely many steps" is signed in no-infinite-chain form
+(the two are classically equivalent for a step relation whose terminal states admit no
+step); (4) histories are pinned to `f` by `block ∣ f` at every stage. `I.01`'s
+`NS7Termination` body can now be typed against `NS7TerminationStatement` (its `∀ O` bundle
+quantifier is the statement's own) — recorded in CHAP-I's addendum.
+
+**DEPENDS.** C.30 · C.32 · C.83 · **A-C.1: C.13 (`IsTestKey`) · C.29 (`HasLabel`) · C.09**.
 
 **PROOF.** none — gate-(b) import.
 
@@ -6456,5 +6626,25 @@ increment:
   the D23 top-down numbering trap closed by an inline pointer at the SOURCE paragraph).
   C.92/C.66 remain **statement-UNINSPECTED** under append #66's category signature — the
   owner's per-statement inspection is queued in CHAP-I's gate-(b) addendum.
+* **A-C.1(e) — §5 signed (C.33–C.40 + the C.38a cluster; D2's worst block cured).**
+  Determinations, each recorded at its node: C.33's witness type = B.42's landed template at
+  the `dv`-carrier as `structure DvDissection` + existence/uniqueness; C.34 signed at the
+  consumed `(λ, r)`-block clause with the dependent pin plumbing ∀-quantified; C.35's
+  `blockFactor` = TOTAL maximal-labelled-divisor (choice, junk `1`), context as the named
+  Prop `BlockContext`, spec companion carries the D13 multiplicity tie; C.36's `c_g` =
+  `(dvSupp …).toNat` (the STATEMENT's `L.ℓ •` prefix a recorded clearing slip); NEW node
+  **C.38a** (`dv2SideSet`/`dv2ResPoly` cluster — the §15 RE-PLAN executed; `dv2Res A` :=
+  `A`'s `dvResPoly` at the letter `β`); C.38's radical clause as
+  same-monic-irreducible-divisors; C.39's `γg`/`pinHeight` landed as displayed; C.40 signed
+  with `BlockContext` + the D11 one-field constructor. Node count 128 → **129** (C.38a);
+  census: +1 def.
+* **A-C.1(f) — C.94's EXACT LEAN STATEMENT (D24 broken, C side).** `DescentState`/
+  `DescentStep` (jump via §5's carriers: labelled block, `ℓd_r ≥ 2`, degree ≥ 2·D″, test-key
+  key; α-refine as same-degree recentering with STRICT attained-slope increase) +
+  `NS7TerminationStatement` (no infinite history on a fixed monic squarefree `f`) +
+  the declared `agnprw_termination` axiom at the A-3-corrected cite (**[AGNPRW] Thm 5.6**,
+  Found. Comput. Math. 25 (2025) no. 2, 631–681). Statement-UNINSPECTED under append #66;
+  queued with the others. CHAP-I's `I.01` can now be typed against
+  `NS7TerminationStatement` (recorded in CHAP-I's addendum).
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
