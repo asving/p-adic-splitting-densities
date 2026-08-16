@@ -16,7 +16,7 @@ queue. Unit notes land in `docs/openmath-campaign/OM-<k>_<slug>_2026-08-16.md`; 
 | unit | piece | ledger rows | status |
 |---|---|---|---|
 | OM-1 | the n=3 rate (hrate₃ → `package_three`) | HYP.08/09/11/28/29 | **RUNNING** (wave 1) |
-| OM-2 | GENIND.B, the inductive step — OUTLINE+CERTIFY ONLY | T-1 | **RUNNING** (wave 1) |
+| OM-2 | GENIND.B, the inductive step — OUTLINE+CERTIFY ONLY | T-1 | **DONE** — 30 rows: 12 landed / 10 reduce / 8 NEW in 3 families (N-1/N-2/N-3), ~15-node sketch, 612/612 certified, S-1 bridge-is-inequality fact; conversion unit chartered |
 | OM-3 | the count layer (CS-1/2/EXACT/1Q; A0/A1 per degree) | HYP.23/25/26/30/32/33/35/36/88 | **RUNNING** (wave 1) |
 | OM-4 | the σ-ladder pair (LB1)/(MP1) | HYP.41/42 | queued |
 | OM-5 | B-BOX-1 (the level-2 class-size residue leg) | CHAP-B H-2 residue; CHAP-I addendum routes | queued |
