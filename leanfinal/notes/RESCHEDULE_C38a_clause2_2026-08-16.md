@@ -1,7 +1,17 @@
 # RESCHEDULE record — NODE C.38a clause 2 (`dv2Res` / `dv2ResPoly`), Chapter-C fleet wave 7, agent 3
 
+> **SUPERSEDED, same slot (2026-08-16).** The block described below lasted about twenty minutes.
+> NODE C.25 (`dvResPoly`) landed mid-slot from a sibling agent at commit `495eb769`, and clause 2
+> went in against it at commit `3b146848` — **NODE C.38a is COMPLETE**, all seven signed
+> declarations in `leanfinal/Uniformity/ChapC/C38a.lean`, Lean-core axioms only, `lake build
+> Uniformity.ChapC.C38a` green. Nothing below is an open obligation. The file is kept for two
+> things that are still live: the **C.25 fanout table** in "Everything else waiting on C.25"
+> (C.26/C.27/C.29/C.34/C.61/C.67 and the rest are still unlanded), and the recorded precedent for
+> landing one half of a signed def-cluster when the other half's dependency is missing.
+
 **Date.** 2026-08-16. **Verdict.** clause 1 LANDED (`leanfinal/Uniformity/ChapC/C38a.lean`,
 commit `ac84a745`); **clause 2 BLOCKED — dependency not landed. Not weakened, no stand-in.**
+*(Verdict superseded within the slot — see the box above.)*
 
 ## The node and its split
 
