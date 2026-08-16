@@ -167,6 +167,18 @@ amendments are adjudicated, per §12's "those stubs are re-signed when their nod
   floor on the jump STARTS (`∀ i < J`); the committed form is preserved at the declaration.
   `ladder_finite_bounds` (E.60) still carries its pre-repair hypothesis set — E.60 has not landed.
   Full record: blueprint amendment A-E.1/E-D11.
+* **A-E.2 (2026-08-16, Display-A carrier adjudication — OM-4 FINDING 0).** **E.39
+  `LB1Carrier`, E.40 `MP1Carrier` RE-SIGNED at the full contentful records** (E.44
+  `LadderObligations` re-signed semantically through them, field list byte-unchanged): the
+  as-committed `Prop`s were machine-refuted VACUOUS as carriers
+  (`verification/om4_shadow_vacuity.lean` proves both outright — LB1 by the singleton
+  self-block, MP1 by a fabricated one-side interface). New: `structure BlockSuite` (the
+  full S1.7A suite per `EFF.T2.17`/`.18`) and `structure MidPeelEmission` (`EFF.T2.23`
+  items 2–5, item 5 = the cite-consuming `Φ″`-irreducibility + emission clause); the
+  carriers' names, parameters and triggers are byte-preserved, conclusions strengthened to
+  `Nonempty` of the records. Census delta: +2 `structure` (real bodies), 12 total.
+  Non-triviality countermodels: `verification/om4_resign_nontriviality.lean`. Full record:
+  blueprint amendment A-E.2 + the §6 RE-SIGN LOG below.
 * **A-E.3 (2026-08-16, wave-3 refutation adjudication).** **E.36 `coprime_of_not_dvd` REFUTED as
   frozen** — over a bare domain the fraction-field descent it needs is FALSE (machine-checked
   witness `O = ℤ[2i]`, `Ψ = X² + 1`, `F = X² − 2iX − 1 = (X − i)²`, in
@@ -779,30 +791,139 @@ axiom offdisk_positivity {ν T₂ ℓ D' h lam ε₀ ε₁ : ℤ}
     (hcase : (0 < ε₀ ∧ ε₁ = ℓ * (lam - D' * h) + ℓ * D' * ε₀) ∨ ε₀ = 0) :
     0 < (ν - T₂) + ε₁ - ℓ * (D' - 1) * ε₀
 
-/-! ## §6 — `(LB1)` AND `(MP1)`: THE TWO OPEN OBLIGATIONS (E.39–E.44) -/
+/-! ## §6 — `(LB1)` AND `(MP1)`: THE TWO OPEN OBLIGATIONS (E.39–E.44)
 
-/-- **E.39** [def] `(LB1)` (`EFF.T2.18`): the level-one clause-4 block suite exists. OPEN — a
-named capstone hypothesis; no chapter-E node proves it. -/
+**RE-SIGN LOG (A-E.2, 2026-08-16 — the Display-A carrier adjudication unit).** OM-4
+FINDING 0 (`docs/openmath-campaign/OM-4_lb1-mp1_2026-08-16.md` §2.3; machine witness
+`verification/om4_shadow_vacuity.lean`) proved the as-committed E.39/E.40/E.44 `Prop`s
+trivially — `LB1Carrier` by the singleton self-block, `MP1Carrier` by a fabricated one-side
+numerical-shadow interface plus the carrier's own `(eC, fC)`.  Both carriers are RE-SIGNED
+here at the full contentful records their SIGNATURE NOTEs had abbreviated away:
+
+* `BlockSuite` — the S1.7A suite (`EFF.T2.17`'s displays `(SIDE-PROD)`/`(LABEL-PROD)`/
+  `(LABEL-DEV)`/`(LABEL-PURE)`/`(LABEL-OWN)`, `EFF.T2.18`'s "own full developments,
+  single-side hulls, pure residuals, product identities, disjoint exhaustive root
+  partitions, and inherited continuation data", the σ-block continuation shape of
+  `EFF.T2.28`);
+* `MidPeelEmission` — `EFF.T2.23`'s `(MID-PEEL)` input suite items 2–5 at the RECENTERED
+  key, with item 5 (`Φ″` irreducible + the single-orbit `(e,f)`) as the cite-consuming
+  clause (the queued gate-(b) draft `recentered_key_emission`, CHAP-I dated addendum
+  2026-08-16 (OM-4)).
+
+Names, parameters and TRIGGER hypotheses are byte-preserved; only the conclusions are
+strengthened.  Blueprint authority: CHAP-E amendment **A-E.2** (dated append).
+Non-triviality certificates: `verification/om4_resign_nontriviality.lean` — concrete
+countermodels refute both re-signed forms at fabricated-witness instances, so the old
+trivial witnesses (and every recipe of their genre) fail.  Per `EFF.T2.17`'s own fence,
+`BlockSuite` does NOT tie a block's pure-residual exponent to the parent class
+multiplicity ("No equality between k and m from the parent residual factorization is
+assumed"). -/
+
+/-- **E.39a** [structure, signed at A-E.2] **The FULL S1.7A block suite** over a trigger
+interface: the contentful record `(LB1)` demands.  Per-display fields (`EFF.T2.17`/`.18`):
+product identity, disjointness/exhaustion shadow, own single-side hulls, pure residuals
+with `(LABEL-OWN)` integrality, parent `classCount` compatibility (both directions), and
+inherited continuation data (each block a σ-block for the SAME carrier — enforced by TYPE —
+with its own `RungInterface`, i.e. the HE7.A input suite's numerical shadow, and the
+inherited threshold). -/
+structure BlockSuite {O : Type uO} [CommRing O] {K : Type uK} [Field K]
+    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface.{uO, uK, uW} C B) where
+  /-- the blocks, each with its own development (`BlockData.hdev` = `(LABEL-DEV)`) and its
+  own carrier-hypothesis suite (`RungInterface` = the HE7.A input-suite shadow, incl. the
+  `(SEC-RANK)` continuation fields). -/
+  blocks : List (Σ B' : BlockData C, RungInterface.{uO, uK, uW} C B')
+  /-- `(SIDE-PROD)`·`(LABEL-PROD)`: the blocks multiply to `F`. -/
+  hprod : B.F = (blocks.map fun x => x.1.F).prod
+  /-- disjoint root partitions, master shadow: pairwise coprimality over the fraction
+  field. -/
+  hdisj : blocks.Pairwise fun x y =>
+    IsCoprime (x.1.F.map (algebraMap O (FractionRing O)))
+      (y.1.F.map (algebraMap O (FractionRing O)))
+  /-- exhaustive root partitions, degree accounting. -/
+  hdegsum : (blocks.map fun x => x.1.F.natDegree).sum = B.F.natDegree
+  /-- own single-side hulls: every block is one-sided. -/
+  hone : ∀ x ∈ blocks, ∃ p, x.2.sides = {p}
+  /-- `(LABEL-PURE)` + `(LABEL-OWN)`, numerical shadow: the single side carries exactly ONE
+  residual class, of some OWN multiplicity `k ≥ 1` (the interface laws then force
+  `μ = k·e′·deg r′`, i.e. `(LABEL-OWN)` integrality).  NOT tied to the parent class
+  multiplicity — `EFF.T2.17`: "No equality between `k` and `m` … is assumed". -/
+  hpure : ∀ x ∈ blocks, ∀ p ∈ x.2.sides,
+    (∃ (s : K) (k : ℕ), 1 ≤ k ∧ x.2.linFac p = {(s, k)} ∧ x.2.hiFac p = 0) ∨
+    (∃ d k : ℕ, 1 ≤ k ∧ 2 ≤ d ∧ x.2.hiFac p = {(d, k)} ∧ x.2.linFac p = 0)
+  /-- parent-`classCount` compatibility, cover direction: every parent `(side, class)` pair
+  is realized by a block of exactly its recorded weight, one-sided at the parent's own
+  slope datum, pure in the parent's class. -/
+  hcoverLin : ∀ p ∈ I.sides, ∀ q ∈ I.linFac p, ∃ x ∈ blocks,
+    x.2.sides = {p} ∧ (∃ k : ℕ, 1 ≤ k ∧ x.2.linFac p = {(q.1, k)}) ∧
+    x.1.F.natDegree = I.classCount p q
+  hcoverHi : ∀ p ∈ I.sides, ∀ q ∈ I.hiFac p, ∃ x ∈ blocks,
+    x.2.sides = {p} ∧ (∃ k : ℕ, 1 ≤ k ∧ x.2.hiFac p = {(q.1, k)}) ∧
+    x.1.F.natDegree = I.classCountHi p q
+  /-- parent-`classCount` compatibility, sort direction: every block's weight is one of the
+  parent's recorded class weights. -/
+  hcount : ∀ x ∈ blocks, ∃ p ∈ I.sides,
+    (∃ q ∈ I.linFac p, x.1.F.natDegree = I.classCount p q) ∨
+    (∃ q ∈ I.hiFac p, x.1.F.natDegree = I.classCountHi p q)
+  /-- inherited continuation data: the threshold is inherited (the frame does not move). -/
+  hthr : ∀ x ∈ blocks, x.1.T = B.T
+
+/-- **E.39** [def, RE-SIGNED at A-E.2] `(LB1)` (`EFF.T2.18`): the level-one clause-4 block
+suite exists — at the FULL S1.7A record (`BlockSuite`).  OPEN — a named capstone
+hypothesis; no chapter-E node proves it.  The as-committed conclusion (product identity +
+degree sum only) was machine-refuted as a carrier (OM-4 FINDING 0, singleton self-block);
+it is archived in `verification/om4_shadow_vacuity.lean` and VOID for chapter-I
+consumption. -/
 def LB1Carrier {O : Type uO} [CommRing O] {K : Type uK} [Field K]
     (C : SlotCarrier O K) (B : BlockData C) : Prop :=
   ∀ I : RungInterface.{uO, uK, uW} C B,
     (1 < I.sides.card ∨ ∃ p ∈ I.sides, ¬ I.SepSide p) →
-    ∃ blocks : List (Σ B' : BlockData C, RungInterface.{uO, uK, uW} C B'),
-      B.F = (blocks.map fun x => x.1.F).prod ∧
-      (blocks.map fun x => x.1.F.natDegree).sum = B.F.natDegree
-      -- + the per-block pure-residual and length clauses; see the node's SIGNATURE NOTE
+    Nonempty (BlockSuite I)
 
-/-- **E.40** [def] `(MP1)` (`EFF.T2.23`): the level-one mid-chain-peel input suite at a
-RECENTERED key. OPEN — a named capstone hypothesis; carried to chapter I. -/
+/-- **E.40a** [structure, signed at A-E.2] **The `(MID-PEEL)` input suite at a recentered
+level-one key** — items 2–5 of `EFF.T2.23`'s enumeration, as a record over the parent
+block `B` and the recentered-key block `B'`:
+
+* item 2, `(WINDOW)`/`(MID-MASS)`: the quotient `G′` exists as a σ-block over the SAME
+  carrier (`quot`), developed AT the peeled key (`hkey`), with the peel identity (`hpeel`),
+  the degree law (`hmass`) and the inherited threshold (`hthr` — the frame does not move,
+  S1.8C = `EFF.T2.61` (i)–(v));
+* items 3–4, development/`(ACCOUNT)`/S1.7 test data + occupied-height, lift, frame, origin,
+  residual-degree data: `quot`'s own `hdev` (by TYPE) + `iface` (the numerical-shadow
+  record; REDUCES-TO the S1.8C transport at instances, RELATIVE — OM-4 §3.2);
+* item 5, **THE OPEN CLAUSE** (`hirr` + `hef`): the peeled recentered key's certified
+  orbit/`(e,f)` decomposition — `Φ″` irreducible ("asserted nowhere", `EFF.T2.61`), the
+  single orbit carrying the frame's own pair.  Dischargeable at instances only by the
+  queued gate-(b) cite `recentered_key_emission` ([GN15] Thm 2.3 + eq (2.1); GMN Thm 2.11)
+  or a discharge node.  `hef` is the emission surface (derivable from `hΦdeg` + `C.hef`;
+  carried so chapter I reads the pair off the record — the dictionary `(e,f)`, GC-3
+  fenced, never the ideal-theoretic pair). -/
+structure MidPeelEmission {O : Type uO} [CommRing O] {K : Type uK} [Field K]
+    {C : SlotCarrier O K} (B B' : BlockData C) where
+  quot : BlockData C
+  hkey : quot.Φ = B'.Φ                              -- the development is AT the peeled key
+  hpeel : B.F = B'.Φ * quot.F                       -- (MID-PEEL)
+  hmass : quot.F.natDegree + C.D = B.F.natDegree    -- (MID-MASS), degree law
+  hthr : quot.T = B.T                               -- frame/origin: the frame does not move
+  iface : RungInterface.{uO, uK, uW} C quot         -- items 3–4, numerical shadow
+  /-- item 5, the cite-consuming clause: `Φ″` irreducible over the base's fraction field. -/
+  hirr : Irreducible (B'.Φ.map (algebraMap O (FractionRing O)))
+  /-- item 5, the emission surface: the single orbit's `(e,f)` accounts for the full peeled
+  degree at the carrier's `(DEG-EF)` data. -/
+  hef : B'.Φ.natDegree = C.eC * C.fC
+
+/-- **E.40** [def, RE-SIGNED at A-E.2] `(MP1)` (`EFF.T2.23`): the level-one mid-chain-peel
+input suite at a RECENTERED key — at the FULL items-2–5 record (`MidPeelEmission`).  OPEN —
+a named capstone hypothesis; carried to chapter I.  The as-committed conclusion
+(`Nonempty (RungInterface C B')` + a divisibility-only `(e,f)` clause) was machine-refuted
+as a carrier (OM-4 FINDING 0, fabricated interface); archived in
+`verification/om4_shadow_vacuity.lean` and VOID for chapter-I consumption. -/
 def MP1Carrier {O : Type uO} [CommRing O] {K : Type uK} [Field K]
     (C : SlotCarrier O K) (B : BlockData C) : Prop :=
   ∀ (Λ : Polynomial O),                        -- the recentering increment
     Λ ≠ 0 → Λ.natDegree < C.D →
-    ∀ (B' : BlockData C),                      -- the quotient block at key Φ − Λ
+    ∀ (B' : BlockData C),                      -- the block carrying the key Φ − Λ
       B'.Φ = B.Φ - Λ → B'.Φ ∣ B.F →
-      Nonempty (RungInterface.{uO, uK, uW} C B') ∧
-      -- item 5: the peeled key's certified (e,f) emission
-      ∃ e f : ℕ, e * f = C.D ∧ C.eC ∣ e ∧ C.fC ∣ f
+      Nonempty (MidPeelEmission.{uO, uK, uW} B B')
 
 /-- **E.41** [lemma] The scope theorem: clauses 1–2 fire without `(LB1)`. -/
 axiom clause12_lb1_free {O : Type*} [CommRing O] {K : Type*} [Field K]
@@ -832,8 +953,13 @@ axiom frame_key_free {O : Type*} [CommRing O] {K : Type*} [Field K]
     (C : SlotCarrier O K) (A : Polynomial O) :
     C.hgt A = C.hgt A ∧ C.dig A = C.dig A
 
-/-- **E.44** [def] The chapter-E obligations record: what chapter I receives from the
-σ-ladder. `(MP1′)` is RETIRED and deliberately has NO carrier. -/
+/-- **E.44** [def, RE-SIGNED at A-E.2 — field list byte-unchanged] The chapter-E
+obligations record: what chapter I receives from the σ-ladder. `(MP1′)` is RETIRED and
+deliberately has NO carrier.  Since A-E.2 the two fields bind the STRENGTHENED carriers
+(`BlockSuite`/`MidPeelEmission` records); the pre-A-E.2 record was trivially inhabitable
+(OM-4 FINDING 0, `verification/om4_shadow_vacuity.lean` `ladderObligations_shadow_trivial`)
+and is VOID — chapter I consumes the Display-A conjunct `LB1 ∧ MP1` at THIS re-signed form
+only, universe-polymorphically (honesty E-12). -/
 structure LadderObligations {O : Type uO} [CommRing O] {K : Type uK} [Field K]
     (C : SlotCarrier O K) (B : BlockData C) : Prop where
   lb1 : LB1Carrier.{uO, uK, uW} C B
@@ -1078,12 +1204,13 @@ def HE7APackage {O : Type uO} [CommRing O] {K : Type uK} [Field K]
   Nonempty (RungInterface.{uO, uK, uW} C B)
 
 /-- **E.24** [def] The full chapter-E supply to chapter I: the package at every rung of a
-ladder, plus the carried obligations. -/
+ladder, plus the carried obligations.  [A-E.2: the `lb1`/`mp1` fields bind the RE-SIGNED
+carriers (see the §6 RE-SIGN LOG); the pre-A-E.2 shadows are VOID for consumption.] -/
 structure LadderSupply {O : Type uO} [CommRing O] {K : Type uK} [Field K]
     (C : SlotCarrier O K) (B : BlockData C) : Prop where
   package : HE7APackage.{uO, uK, uW} C B
-  lb1 : LB1Carrier.{uO, uK, uW} C B           -- E.39
-  mp1 : MP1Carrier.{uO, uK, uW} C B           -- E.40
+  lb1 : LB1Carrier.{uO, uK, uW} C B           -- E.39 (A-E.2 re-signed form)
+  mp1 : MP1Carrier.{uO, uK, uW} C B           -- E.40 (A-E.2 re-signed form)
   vartheta : ∀ i ≥ 3, VarthetaRes i           -- E.61 (with E.62's 𝒲 conjunct at I)
 
 /-! ## §10 — GATES (E.65–E.68), EXECUTED (GC-11: `q = 2` AND `q = 3`)
