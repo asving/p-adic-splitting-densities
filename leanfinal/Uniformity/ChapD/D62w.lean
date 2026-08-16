@@ -411,6 +411,126 @@ theorem wle_of_interleaved (W B : ℕ → Prop) (base : B 2)
 /-- Display A's `∀ i ≥ 3` conjunct, assembled (D.63's signature, byte-matching leanspec). -/
 def VarthetaWConjunct (HVR W : ℕ → Prop) (i : ℕ) : Prop := HVR i ∧ Wle W i
 
+/-! ## 5. The general-depth structural core (every `i`, abstract)
+
+The `∀ i ≥ 3` law's arithmetic skeleton, PROVED at every depth: (a) `triangular_descent` —
+a value-zero exponent vector against a triangular generator system with per-stage
+divisibility factors EXACTLY over the generators (the depth-`d` letter-lattice
+factorization, of which §3/§3′ are the `d = 3, 2` tower instances); (b) `dvd_stage` — the
+per-stage divisibility IS the gcd chain (`gcd(u_{j+1}, e_{j+1}) = 1`), i.e. the number-
+theoretic input at each rung of ANY DEF GENTOW5-1 datum. Together: for every depth, every
+value-zero monomial in `(π, x, Φ₁, …, Φ_{i−1})` is an exact letter monomial — "standard
+MacLane residual specialization" (`EFF.T1.09` R9-2's phrase), exponent level, all `i`.
+Exponent vectors are `ℕ → ℤ` with bounded support (no `Fin`-casts); sums are `Finset.range`
+sums. Instantiating the two lemmas at a concrete chain is routine (§3/§3′ show the shape);
+the full chain-indexed instantiation (greedy `n̂` over stage lists + its exact-height law)
+is left to the ChapD fleet — disclosed in the OM-8 unit note §3.3. -/
+
+/-- Support bound: `w k = 0` above `n`. -/
+def SuppLE (w : ℕ → ℤ) (n : ℕ) : Prop := ∀ k, n < k → w k = 0
+
+/-- **The per-stage divisibility from the gcd chain** (the rung law): if every lower
+coefficient is divisible by `M * e`, the pivot coefficient is `M * u` with `u` coprime to
+`e`, and the vector is value-zero with support through the pivot, then `e` divides the pivot
+exponent. In the tower: `M = ê_d/ê_{j+1}`, `e = e_{j+1}`, `u = u_{j+1}` — the divisibility
+that drives the descent at rung `j`. -/
+theorem dvd_stage (c : ℕ → ℤ) (j : ℕ) (M e u : ℤ) (hM : M ≠ 0)
+    (hcop : IsCoprime u e)
+    (hlow : ∀ k, k ≤ j → (M * e) ∣ c k) (hpivc : c (j + 1) = M * u)
+    (w : ℕ → ℤ) (hsum : ∑ k ∈ Finset.range (j + 2), c k * w k = 0) :
+    e ∣ w (j + 1) := by
+  have hsplit : ∑ k ∈ Finset.range (j + 2), c k * w k
+      = (∑ k ∈ Finset.range (j + 1), c k * w k) + c (j + 1) * w (j + 1) :=
+    Finset.sum_range_succ _ _
+  have hlowdvd : (M * e) ∣ ∑ k ∈ Finset.range (j + 1), c k * w k := by
+    refine Finset.dvd_sum fun k hk => ?_
+    exact Dvd.dvd.mul_right (hlow k (by
+      have := Finset.mem_range.mp hk; omega)) _
+  have hMe : (M * e) ∣ M * u * w (j + 1) := by
+    have : M * u * w (j + 1) = -(∑ k ∈ Finset.range (j + 1), c k * w k) := by
+      rw [← hpivc]; omega
+    rw [this]
+    exact hlowdvd.neg_right
+  have he : e ∣ u * w (j + 1) := by
+    rcases hMe with ⟨t, ht⟩
+    refine ⟨t, ?_⟩
+    have : M * (u * w (j + 1)) = M * (e * t) := by ring_nf; ring_nf at ht; linarith
+    exact mul_left_cancel₀ hM this
+  exact (hcop.symm.dvd_of_dvd_mul_left he)
+
+/-- **The general-depth triangular descent** (the letter-lattice factorization, every
+depth): given a height functional `c` with `c 0 ≠ 0`, and for each rung `j < d` a generator
+`γ j` that is value-zero, supported through its pivot `j+1`, with pivot entry `e j`, and
+given the per-stage divisibility (supplied by `dvd_stage` at tower instances), EVERY
+value-zero vector supported in `[0, d]` factors over the generators. -/
+theorem triangular_descent (c : ℕ → ℤ) (hc0 : c 0 ≠ 0) :
+    ∀ (d : ℕ) (e : ℕ → ℤ) (γ : ℕ → ℕ → ℤ),
+    (∀ j, j < d → γ j (j + 1) = e j) →
+    (∀ j, j < d → SuppLE (γ j) (j + 1)) →
+    (∀ j, j < d → ∑ k ∈ Finset.range (j + 2), c k * γ j k = 0) →
+    (∀ j, j < d → ∀ w : ℕ → ℤ,
+      (∑ k ∈ Finset.range (j + 2), c k * w k = 0) → e j ∣ w (j + 1)) →
+    ∀ w : ℕ → ℤ, SuppLE w d → (∑ k ∈ Finset.range (d + 1), c k * w k = 0) →
+    ∃ a : ℕ → ℤ, ∀ k, w k = ∑ j ∈ Finset.range d, a j * γ j k := by
+  intro d
+  induction d with
+  | zero =>
+    intro e γ _ _ _ _ w hsupp hval
+    refine ⟨0, fun k => ?_⟩
+    simp only [Finset.range_zero, Finset.sum_empty]
+    rcases Nat.eq_zero_or_pos k with hk | hk
+    · subst hk
+      have : c 0 * w 0 = 0 := by simpa using hval
+      rcases mul_eq_zero.mp this with h | h
+      · exact absurd h hc0
+      · exact h
+    · exact hsupp k hk
+  | succ d ih =>
+    intro e γ hpiv htri hval hdvd w hsupp hwv
+    -- top-rung divisibility
+    have htop : e d ∣ w (d + 1) := by
+      refine hdvd d (by omega) w ?_
+      exact hwv
+    obtain ⟨q, hq⟩ := htop
+    -- peel the top generator
+    set w' : ℕ → ℤ := fun k => w k - q * γ d k with hw'
+    have hsupp' : SuppLE w' d := by
+      intro k hk
+      rcases Nat.lt_or_ge k (d + 2) with hk2 | hk2
+      · have hkd : k = d + 1 := by omega
+        subst hkd
+        simp only [hw', hpiv d (by omega), hq]
+        ring
+      · simp only [hw', hsupp k (by omega), htri d (by omega) k (by omega)]
+        ring
+    have hval' : ∑ k ∈ Finset.range (d + 1), c k * w' k = 0 := by
+      have hext : ∑ k ∈ Finset.range (d + 2), c k * w' k
+          = ∑ k ∈ Finset.range (d + 1), c k * w' k := by
+        rw [Finset.sum_range_succ, hsupp' (d + 1) (by omega)]
+        ring
+      rw [← hext]
+      have : ∑ k ∈ Finset.range (d + 2), c k * w' k
+          = (∑ k ∈ Finset.range (d + 2), c k * w k)
+            - q * ∑ k ∈ Finset.range (d + 2), c k * γ d k := by
+        rw [Finset.mul_sum, ← Finset.sum_sub_distrib]
+        exact Finset.sum_congr rfl fun k _ => by simp only [hw']; ring
+      rw [this, hwv, hval d (by omega)]
+      ring
+    obtain ⟨a', ha'⟩ := ih e γ (fun j hj => hpiv j (by omega))
+      (fun j hj => htri j (by omega)) (fun j hj => hval j (by omega))
+      (fun j hj => hdvd j (by omega)) w' hsupp' hval'
+    refine ⟨fun j => if j = d then q else a' j, fun k => ?_⟩
+    rw [Finset.sum_range_succ]
+    have hlow : ∑ j ∈ Finset.range d, (if j = d then q else a' j) * γ j k
+        = ∑ j ∈ Finset.range d, a' j * γ j k :=
+      Finset.sum_congr rfl fun j hj => by
+        rw [if_neg (by have := Finset.mem_range.mp hj; omega)]
+    rw [hlow, ← ha' k]
+    beta_reduce
+    rw [if_pos rfl]
+    simp only [hw']
+    ring
+
 end Uniformity.Density.Gauge
 
 /-! ## Axiom footprint -/
@@ -422,6 +542,10 @@ section AxCheck
 #print axioms Uniformity.Density.Gauge.deep3_exact_height
 #print axioms Uniformity.Density.Gauge.deep3_tau_descent
 #print axioms Uniformity.Density.Gauge.hvarthetaRes_deep3
+#print axioms Uniformity.Density.Gauge.deep2_tau_descent
+#print axioms Uniformity.Density.Gauge.hvarthetaRes_deep2
 #print axioms Uniformity.Density.Gauge.wle_of_interleaved
+#print axioms Uniformity.Density.Gauge.dvd_stage
+#print axioms Uniformity.Density.Gauge.triangular_descent
 
 end AxCheck
