@@ -7054,11 +7054,16 @@ beside the landed `InductionPackage`. One Lean file per node, `ChapH/H<nnn>.lean
 
 **Signature verification (this unit, executed).** Every SIGNATURE below is elaborated in
 `leanspec/Leanspec/ChapH.lean`'s new `LeanspecH17` blocks (appended 2026-08-16, per that
-file's lifecycle header; `lake build Leanspec.ChapH` green): **52 declarations — 14 real
-`def` bodies + 1 real `inductive` + 2 opaque definitional carriers (`alphaChild`,
-`betaChild`; axiom-form, real bodies owed at the §17 0e gate — recorded deviation) + 35
-theorem-shaped unsigned `axiom` stubs.** The §17 **0e gate is NOT closed** by this unit: stub
-SIGNING, the two heavy `def` bodies, and the numeric `#eval` gates are the fleet-stage
+file's lifecycle header; `lake build Leanspec.ChapH` green). As committed by unit T-1: **52
+declarations — 14 real `def` bodies + 1 real `inductive` + 2 opaque definitional carriers
+(`alphaChild`, `betaChild`; axiom-form, real bodies owed at the §17 0e gate — recorded
+deviation) + 35 theorem-shaped unsigned `axiom` stubs.** **[UPDATED by A-H.5, 2026-08-16: the
+two opaque carriers are GONE — both now carry real, centre-pinned bodies, and the amendment
+adds the canonical lift pair. New count: 59 declarations — 20 real `def` bodies + 1 real
+`inductive` + 3 PROVED theorems (`residue_resSect`, `proj_classSect`, `divPow_spec`) + 35
+theorem-shaped unsigned `axiom` stubs (two of them, the clause-(i) specs, re-signed). ZERO
+opaque carriers: the recorded def-body deviation is CLOSED.]** The §17 **0e gate is still NOT
+closed**: stub SIGNING and the numeric `#eval` gates remain fleet-stage
 obligations (GC-6.6 gate order applies when the §17 fleet fires).
 
 **TEETH convention.** Each node's TEETH names the specific checks of
@@ -7815,6 +7820,17 @@ theorem card_alphaSlice {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuati
 **DEPENDS.** H.109, H.111, H.112 · H.13 (`clusterC`) · H.115 (the intended proof route: the
 shear's fibre count times the child census).
 
+**[A-H.5 THREADING VERDICT — SUPPLIED, and strictly improved.]** What this node consumes from
+H.115 is clauses (ii) (`alphaChild_surjective`) and (iii) (`card_alphaFiber`) — never clause
+(i). Both signatures are **byte-unchanged** by A-H.5 (that amendment re-signs clause (i) and
+replaces the def's opaque axiom-form carrier with a real pinned body; it does not touch the
+counting clauses' types). The improvement is semantic, not syntactic: before A-H.5 these were
+claims about an OPAQUE constant that a fleet was free to realize as an incoherent
+centre-selection, for which (iii)'s exact `Q^{k·clusterC m}` is FALSE (A-H.5 §5); after A-H.5
+they are claims about the canonical-centre digit transform — the one H.60's unit-pivot engine
+governs and the one the battery's `P1(d)` fibre histogram measured. So this node's route is
+unblocked with no restatement of its own.
+
 **PROOF.** 1. An α(k)-state is the one-sided-polygon digit pattern: `resOrd(a_j) ≥ k(m−j)`
 for all `j`, slope-`k` residual `= unit·(y−z)^m`, `z ≠ 0` (H.111 step 3). 2. Route through
 H.115: the α(k, z)-slice fibres onto the window-`(N−mk)` state space with constant fibre
@@ -7833,9 +7849,15 @@ ENV-H17 + `[Finite]` + `π` explicit.
 
 ### NODE H.115 [def+theorem] [fresh]
 
-**STATEMENT.** *The α-shear transport (N-2b).* `alphaChild π c h` is the recentred,
-content-divided, window-truncated child of an α(k, z)-state — same degree `m`, window
-`N − m·k`. Clauses: (i) SPEC — on every lift pair the recentring factors EXACTLY as
+**STATEMENT.** [re-signed: A-H.5 — clause (i)'s ∀-LIFT-PAIR quantifier was REFUTED at
+transcription by explicit witnesses; the centre is now PINNED IN THE DEF and clause (i) is
+requantified at the canonical centre. Refuted original, the witnesses, the digit-budget
+diagnosis and the adjudication in AMENDMENT §A-H.5] *The α-shear transport (N-2b).*
+`alphaChild π c h` is the recentred, content-divided, window-truncated child of an
+α(k, z)-state, extracted AT THE CANONICAL LIFT PAIR (`a := classSect O m N c.1`,
+`w := resSect O z`; A-H.5 §1) — same degree `m`, window
+`N − m·k`. Clauses: (i) SPEC — at the canonical centre `resSect O z` and at EVERY lift `a`
+of the class the recentring factors EXACTLY as
 `π^{mk} · monicPoly b` with `b` a lift of the child (the α case of the extraction: the
 divided frame is already monic, no Hensel split); (ii) the shear is ONTO the full
 window-`(N−mk)` state space; (iii) every ghost fibre has cardinality `Q^{k·clusterC m}`,
@@ -7847,17 +7869,53 @@ H.62 the exhibited failure mode that makes the unit-pivot hypothesis non-optiona
 ```lean
 namespace Uniformity.Density.Induction
 
--- def half: real body owed at the §17 0e gate (opaque in the elaboration scratch)
+-- A-H.5 §1: the canonical lift pair and the pinned frame land at the head of THIS node's
+-- file (`ChapH/H115.lean`); `ChapH/H116.lean` imports them.  Both are real bodies.
+noncomputable def resSect (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] :
+    ResidueField O → O := Function.surjInv IsLocalRing.residue_surjective
+
+theorem residue_resSect (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (x : ResidueField O) : residue O (resSect O x) = x := Function.surjInv_eq _ x
+
+noncomputable def classSect (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (m N : ℕ) : Coeff O m N → (Fin m → O) := Function.surjInv (proj_surjective' O m N)
+
+theorem proj_classSect (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (m N : ℕ) (c : Coeff O m N) : proj O m N (classSect O m N c) = c :=
+  Function.surjInv_eq _ c
+
+noncomputable def recFrame {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {m N : ℕ} (c : Coeff O m N) (k : ℕ) (z : ResidueField O) : Polynomial O :=
+  (monicPoly (classSect O m N c)).comp (C (π ^ k) * (X + C (resSect O z)))
+
+noncomputable def divPow {O : Type*} [CommRing O] (π : O) (n : ℕ) (x : O) : O :=
+  letI : Decidable (π ^ n ∣ x) := Classical.dec _
+  if h : π ^ n ∣ x then h.choose else 0
+
+theorem divPow_spec {O : Type*} [CommRing O] {π : O} {n : ℕ} {x : O} (h : π ^ n ∣ x) :
+    x = π ^ n * divPow π n x := by unfold divPow; rw [dif_pos h]; exact h.choose_spec
+
+-- def half [re-signed: A-H.5 — REAL BODY, centre pinned; the signature is unchanged.
+-- `h` is a domain guard and the inference handle for `{k}`/`{z}`, unused in the body:
+-- `set_option linter.unusedVariables false in`, the B77a precedent.]
 noncomputable def alphaChild {O : Type*} [CommRing O] [IsDomain O]
     [IsDiscreteValuationRing O] (π : O) {m N k : ℕ} {z : ResidueField O}
-    (c : ClusterState O m N) (h : IsAlphaState π c k z) : ClusterState O m (N - m * k)
+    (c : ClusterState O m N) (h : IsAlphaState π c k z) : ClusterState O m (N - m * k) :=
+  let b : Fin m → O := fun j => divPow π (m * k) ((recFrame π c.1 k z).coeff (j : ℕ))
+  letI : Decidable (∀ i, proj O m (N - m * k) b i
+      ∈ (maximalIdeal O).map (Ideal.Quotient.mk ((maximalIdeal O) ^ (N - m * k)))) :=
+    Classical.dec _
+  if hb : ∀ i, proj O m (N - m * k) b i
+      ∈ (maximalIdeal O).map (Ideal.Quotient.mk ((maximalIdeal O) ^ (N - m * k)))
+    then ⟨proj O m (N - m * k) b, hb⟩
+    else ⟨fun _ => 0, fun _ => Ideal.zero_mem _⟩
 
 theorem alphaChild_spec {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π) {m N k : ℕ} {z : ResidueField O} (hm : 2 ≤ m)
     (hN : 1 ≤ N) (c : ClusterState O m N) (h : IsAlphaState π c k z) :
-    ∀ (a : Fin m → O) (w : O), proj O m N a = c.1 → residue O w = z →
+    ∀ a : Fin m → O, proj O m N a = c.1 →
       ∃ b : Fin m → O, (∀ i, b i ∈ maximalIdeal O) ∧
-        (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))
+        (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C (resSect O z)))
           = Polynomial.C (π ^ (m * k)) * monicPoly b ∧
         proj O m (N - m * k) b = (alphaChild π c h).1
 
@@ -7875,15 +7933,27 @@ theorem card_alphaFiber {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuati
       = residueCard O ^ (k * clusterC m)
 ```
 
-**DEPENDS.** H.109 (+ its expansion helper), H.111, H.112 · H.13, H.16, H.17 (the exponent
+**DEPENDS.** H.109 (+ its expansion helper), H.111, H.112 · H.100 (`proj_surjective'` — the
+class-lift supplier `classSect` inverts; added: A-H.5) · H.13, H.16, H.17 (the exponent
 recomposition is exactly clause (iii) against H.114's base count) · H.60
 (`TriangularUnitPivot.bijective` — the onto/fibre engine), H.62 (the guard).
 
-**PROOF.** 1. (def body, owed) `b j := (recentred coeff j)/π^{mk}` at a choice of lift
-(`Exists.choose`), truncated to window `N − mk`; well-defined by H.109's lemma half
-(class-determined below the window). 2. (i) the triangular expansion (H.109's helper):
-`g.coeff j = π^{k j} · Σ_{i ≥ j} a_i · binom(i,j) · ŵ^{i−j}`; on the one-sided α polygon
-every term at index `j` has order `≥ k(m−j) + kj = mk`; exact division. 3. (ii)+(iii) the
+**PROOF.** 1. [re-derived: A-H.5] (def body, LANDED not owed) `b j := divPow π (m*k)
+((recFrame π c.1 k z).coeff j)` — the recentred frame taken AT THE PINNED LIFT PAIR
+`(classSect O m N c.1, resSect O z)`, divided by `π^{mk}`, projected to window `N − mk`; the
+subtype guard `hb` is the α-membership `b i ∈ 𝔪`, discharged by step 2 (the `else` branch is
+junk that step 2 shows never fires — no content is smuggled: clause (i) is FALSE if the guard
+fails, so the membership stays a proof obligation of clause (i)). **No `Exists.choose` over
+lift pairs anywhere:** that was the refuted design (A-H.5). 2. (i) at the pinned centre, the
+triangular expansion (H.109's helper):
+`g.coeff j = π^{k j} · Σ_{i ≥ j} a_i · binom(i,j) · ŵ^{i−j}` with `ŵ = resSect O z`; on the
+one-sided α polygon every term at index `j` has order `≥ k(m−j) + kj = mk`; exact division.
+2′. [added: A-H.5] the `∀ a` leg of clause (i) — the CLASS-lift direction, which is NOT the
+refuted one: for `proj O m N a = proj O m N a'`, H.109's `pow_dvd_coeff_comp_sub` gives
+`π^N ∣ (comp difference).coeff j` *for any recentring*, so the two extracted `b`'s differ by
+`π^{N−mk}` and agree at window `N − mk` — the FULL child window. (Contrast the CENTRE
+direction, H.109's `pow_succ_dvd_coeff_shift`: `π^{D+1}`, ONE digit. The digit budget `N` vs
+`D+1` is the whole content of A-H.5.) 3. (ii)+(iii) the
 digit transform `(a-digits) ↦ (b-digits)` is TRIANGULAR over the digit filtration with UNIT
 pivots (binomial diagonal times units; `ŵ` a unit since `z ≠ 0`); H.60 gives layerwise
 bijectivity, hence onto with constant fibres; the fibre exponent counts the parent digits
@@ -7891,22 +7961,35 @@ the child forgets — `Σ_{j<m} k·j = k·clusterC m`. 4. Verdict transport is N
 it is H.118's `alpha` constructor plus H.119's inversion, keeping this node purely
 geometric/counting.
 
-**SIZE.** 50 lines + helpers; SPLIT MANDATED: H.115a (def + spec), H.115b (onto), H.115c
+**SIZE.** 50 lines + helpers; SPLIT MANDATED: H.115a (def + spec, INCLUDING A-H.5 §1's
+canonical lift pair at the file head), H.115b (onto), H.115c
 (fibre count). **SOURCE.** OM-2 §3.2 N-2b (displayed); `EFF.GENIND.18`, `EFF.GENIND.21`
 (the absolute transport `(Q−1)·Q^{+k·c(m)} ×` the window-`(N−mk)` menu); `ANNEX R R2` via
 `EFF.GENIND.156` (machine leg G — the unit-pivot mutant, landed as H.60/H.62). **TEETH.**
 battery `P1(d) alpha fibres exact+onto, all (k,z) slices` (exhaustive fibre histogram —
 every fibre EXACTLY `Q^{k·c(m)}`, onto; the Codex-pass finding-6 repair made it per-`(k,z)`;
-CC-2(ii): no non-constant fibre anywhere, both rings) → Lean theorem here. **ENVIRONMENT.**
-ENV-H17 + `π` explicit (+ `[Finite]` for clause (iii)).
+CC-2(ii): no non-constant fibre anywhere, both rings) → Lean theorem here. **The teeth cover
+the PINNED map only** [A-H.5]: `extract_child` recentres at `RB.lift_res(z)`, so P1(d)
+certifies the canonical-centre extraction and nothing about any other centre — the refuted
+∀-`w` reading was never in the battery's scope (LESSON L-BATT). A SECOND refutation battery is
+now retained alongside it: `verification/openmath/OM2_h115_h116_centre_shift_refutation.py`
+(exit 0 = refuted), the standing regression that the ∀-`w` form stays out.
+**ENVIRONMENT.** ENV-H17 + `π` explicit (+ `[Finite]` for clause (iii)).
 
 ---
 
 ### NODE H.116 [def+theorem] [fresh]
 
-**STATEMENT.** *The β-extraction at the capped window (N-2c).* `betaChild π c h M` is the
-`(μ, k, z)`-child of a state read at an EXPLICIT window `M` (DECISION D-H17.2); the genuine
-child sits at `M = N − betaContent c k`. Clauses: (i) SPEC — on every lift pair the
+**STATEMENT.** [re-signed: A-H.5 — clause (i)'s ∀-LIFT-PAIR quantifier was REFUTED at
+transcription by an explicit ℤ₅ witness; the centre is now PINNED IN THE DEF and clause (i) is
+requantified at the canonical centre. Refuted original, witness and adjudication in
+AMENDMENT §A-H.5. **DECISION D-H17.2's window-as-argument design is UNAFFECTED** and stands
+verbatim: the defect was the centre quantifier, not the explicit `M`.] *The β-extraction at
+the capped window (N-2c).* `betaChild π c h M` is the
+`(μ, k, z)`-child of a state read at an EXPLICIT window `M` (DECISION D-H17.2), extracted AT
+THE CANONICAL LIFT PAIR (A-H.5 §1); the genuine
+child sits at `M = N − betaContent c k`. Clauses: (i) SPEC — at the canonical centre
+`resSect O z` and at EVERY lift `a` of the class the
 recentring factors EXACTLY as `π^D · (monicPoly b · H′)` with `b` (degree `μ`, coefficients
 in `𝔪`) a lift of the child and `H′` the cofactor — the Hensel split of the content-divided
 frame along `X^μ ×` (unit-constant cofactor); (ii) per GENRE (fixed child set `L`, fixed
@@ -7917,19 +8000,33 @@ battery's per-genre composed count `census_g · [Π T_l − Π(T_l − u_l)]`.
 ```lean
 namespace Uniformity.Density.Induction
 
--- def half: real body owed at the §17 0e gate (opaque in the elaboration scratch)
+-- def half [re-signed: A-H.5 — REAL BODY, centre pinned; the signature is unchanged.
+-- Unlike α (a division formula) the β extraction needs a FACTORIZATION, so the body is a
+-- DEFINITION BY DESCRIPTION at the pinned centre: the unique child state whose lift `b`
+-- (degree `μ`, coefficients in `𝔪`) exhibits the pinned frame's `π^D`-factorization.
+-- `recFrame`/`resSect`/`classSect` are imported from `ChapH.H115` (A-H.5 §1).]
 noncomputable def betaChild {O : Type*} [CommRing O] [IsDomain O]
     [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O] (π : O)
     {m N μ k : ℕ} {z : ResidueField O} (c : ClusterState O m N)
-    (h : HasChildAt π c μ k z) (M : ℕ) : ClusterState O μ M
+    (h : HasChildAt π c μ k z) (M : ℕ) : ClusterState O μ M :=
+  letI : Decidable (∃ d : ClusterState O μ M, ∃ (b : Fin μ → O) (H' : Polynomial O),
+        (∀ i, b i ∈ maximalIdeal O) ∧
+        recFrame π c.1 k z = C (π ^ betaContent c k) * (monicPoly b * H') ∧
+        proj O μ M b = d.1) := Classical.dec _
+  if hb : ∃ d : ClusterState O μ M, ∃ (b : Fin μ → O) (H' : Polynomial O),
+        (∀ i, b i ∈ maximalIdeal O) ∧
+        recFrame π c.1 k z = C (π ^ betaContent c k) * (monicPoly b * H') ∧
+        proj O μ M b = d.1
+    then hb.choose
+    else ⟨fun _ => 0, fun _ => Ideal.zero_mem _⟩
 
 theorem betaChild_spec {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π)
     {m N μ k : ℕ} {z : ResidueField O} (hm : 2 ≤ m) (hN : 1 ≤ N)
     (c : ClusterState O m N) (h : HasChildAt π c μ k z) (h0 : ¬ IsDrainState c) :
-    ∀ (a : Fin m → O) (w : O), proj O m N a = c.1 → residue O w = z →
+    ∀ a : Fin m → O, proj O m N a = c.1 →
       ∃ (b : Fin μ → O) (H' : Polynomial O), (∀ i, b i ∈ maximalIdeal O) ∧
-        (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))
+        (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C (resSect O z)))
           = Polynomial.C (π ^ betaContent c k) * (monicPoly b * H') ∧
         proj O μ (N - betaContent c k) b
           = (betaChild π c h (N - betaContent c k)).1
@@ -7950,21 +8047,42 @@ theorem betaExtract_fiber_card {O : Type*} [CommRing O] [IsDomain O]
 ```
 
 **DEPENDS.** H.102 (the class-level Hensel bijection — the split of the divided frame along
-the coprime pair `(X^μ, cofactor)`), H.108, H.109, H.111, H.112 · H.60 (unit pivots, the
+the coprime pair `(X^μ, cofactor)`), H.108, H.109, H.111, H.112 · **H.115 (A-H.5 §1's
+canonical lift pair `resSect`/`classSect`/`recFrame`, landed at the head of `H115.lean`;
+DEF-DEPENDENCY, added: A-H.5)** · H.60 (unit pivots, the
 fibre mechanism) · landed `exists_monic_factorization_finset`.
 
-**PROOF.** 1. (def body, owed) divide the recentred lift by `π^D` (exact — H.109's
+**PROOF.** 1. [re-derived: A-H.5] (def body, LANDED not owed) the body is the DESCRIPTION
+displayed in the signature: the unique `d : ClusterState O μ M` whose lift exhibits the pinned
+frame `recFrame π c.1 k z`'s `π^D`-factorization with all coefficients in `𝔪`. Two obligations,
+both fleet-stage, both stated (they are what makes the description a definition and not a
+wish): **(1a) EXISTENCE** — divide the pinned recentred frame by `π^D` (exact — H.109's
 clauses); its reduction is `X^μ ·` (cofactor with nonzero constant term) — H.109's
 divisibility pattern read at the residue; split along the coprime residue pair by H.102's
 bijection at window `N − D`; take the degree-`μ` factor's class; truncate to the requested
-`M` (landed `coeffFactor`). Well-defined on the class by H.102's InjOn. 2. (i) unfold the
-choice; exactness of the factorization is `exists_monic_factorization_finset` over complete
-`O` on the divided lift. 3. (ii) the fibre over `t` is (ghost digits above each child's
+`M` (landed `coeffFactor`); exactness of the factorization is
+`exists_monic_factorization_finset` over complete `O` on the divided lift. **(1b) UNIQUENESS**
+— at a FIXED centre the admissible factor is unique: H.102's InjOn on the coprime split, plus
+the `𝔪`-coefficient condition selecting one monic degree-`μ` factor. (The refutation battery
+checks 1b numerically at its own cells: *"exactly ONE monic degree-`μ` factor has all
+coefficients in `𝔪`"*, at both centres it tries.) Until 1a holds the description falls to its
+junk branch and clause (i) is false — no content is smuggled past the `if`.
+2. (i) unfold the description at the pinned centre; the `∀ a` leg is the CLASS-lift direction:
+lifts of one class give divided frames agreeing at window `N − D` (H.109's
+`pow_dvd_coeff_comp_sub`, `π^N`, ANY recentring), and H.102's InjOn at that window carries
+equal frame classes to equal child classes — this is the "well-defined on the class" step the
+committed PROOF already had, and it is sound. What it never covered, and what A-H.5 removes, is
+the CENTRE direction: H.109's `pow_succ_dvd_coeff_shift` gives `π^{D+1}`, ONE digit, and the
+child is read at `N − D ≥ 2`. 3. (ii) the fibre over `t` is (ghost digits above each child's
 window) × (the frame sector outside the children — pieces and off-frame digits), both
 independent of `t`: unit-pivot triangularity per child (H.60, as at H.115 step 3) plus the
 product structure of the digit filtration. Equicardinality follows WITHOUT computing `F` —
 deliberately `∃ F` only: the genre census `census_g` is TRACK V (HYP.26's menu weights) and
-is not owed here. 4. Child-window positivity `1 ≤ N − D p` at the genuine windows is
+is not owed here. **[A-H.5] (ii) is a statement about the PINNED map**, and only the pinning
+makes it plausible: H.60's unit-pivot triangularity is a property of the canonical-centre digit
+transform, so a body that selected its centre from an existential would have fibres that are an
+uncontrolled reshuffling of the canonical ones and no route to equicardinality (A-H.5 §5). 4.
+Child-window positivity `1 ≤ N − D p` at the genuine windows is
 H.108's lemma half.
 
 **SIZE.** 55 lines + helpers; SPLIT MANDATED: H.116a (def + spec), H.116b (fibration).
@@ -7974,7 +8092,11 @@ lands at H.118/H.119); `EFF.GENIND.10` (the β-fibration), `EFF.GENIND.24` (the
 resurrect the sealed uncapped form). **TEETH.** battery `P1(f) beta genre composition`
 (per-genre composed counts against exhaustive enumeration, constant fibres, onto; the
 `m = 3, N = 6` cell exercises TWO live β genres including the `k = 2` child at boundary
-window `M_l = 1`) + `P1(e) recursion identity` → Lean theorem here. **ENVIRONMENT.**
+window `M_l = 1`) + `P1(e) recursion identity` → Lean theorem here. **The teeth cover the
+PINNED map only** [A-H.5]: `extract_child` recentres at `RB.lift_res(z)` before
+`hensel_split`, so P1(f) certifies the canonical-centre extraction (LESSON L-BATT). Second
+regression retained: `verification/openmath/OM2_h115_h116_centre_shift_refutation.py`
+(the `m = 3, N = 6, μ = 2` β witness is that file's second half). **ENVIRONMENT.**
 ENV-H17 + `[IsAdicComplete]` (+ `[Finite]` for clause (ii)) + `π` explicit.
 
 ---
@@ -8503,7 +8625,9 @@ F-1 (per-type census), F-2 (conservative = semantic), and A-H.2's (α-0)/(α-rat
 (H.115, H.116, H.124), **1 `def`** (H.118, the inductive), **2 `lemma`** (H.103, H.120),
 **10 `theorem`** (H.102, H.104, H.105, H.112, H.113, H.114, H.117, H.121, H.122, H.123).
 Scratch-elaborated declarations: **52** (14 real `def` + 1 real `inductive` + 2 opaque
-owed-body defs + 35 theorem-shaped). Split-mandated: H.115 → 3, H.116 → 2, H.121 → 3, H.123 → 3,
+owed-body defs + 35 theorem-shaped) → **59 after A-H.5** (20 real `def` + 1 real `inductive` +
+3 proved theorems + 35 theorem-shaped; no opaque carriers left).
+Split-mandated: H.115 → 3, H.116 → 2, H.121 → 3, H.123 → 3,
 H.124 → 3; fleet planning figure **≈ 35 Lean files** for the section. Graph shape:
 critical path (a longest dependency chain, 9 edges) H.122 → H.121 → H.119 → H.118 →
 H.115 → H.112 → H.111 → H.109 → H.108 → H.107; layer-0 (fireable immediately): H.100,
@@ -8651,3 +8775,289 @@ order-1 layer owns it; recorded here so no reader mistakes H73w for covering it.
 H.78's `composedSigma`.
 
 *Sections §§0–17 and A-H.1/A-H.2/A-H.3 are byte-unchanged by this append.*
+
+---
+
+## AMENDMENT A-H.5 (2026-08-16, dated append; unit T-1 wave 3 re-sign) — H.115 `alphaChild_spec`
+## AND H.116 `betaChild_spec`: CLAUSE (i)'s ∀-LIFT-PAIR QUANTIFIER REFUTED; THE CENTRE PINNED IN
+## THE DEF, CLAUSE (i) REQUANTIFIED AT THE CANONICAL CENTRE
+
+**Provenance.** The chapter-H §17 transcription fleet (T-1, wave 3, bundle 2), transcribing
+H.115/H.116, refuted clause (i) of BOTH nodes at its signed type and returned **BLOCKED** rather
+than weakening a frozen signature (the G.23a / A-H.2 precedent: nothing false enters any
+environment). The refutation is an executable artifact, exact integer arithmetic over `ℤ₅`, no
+dependencies, **exit 0 = refuted**:
+`verification/openmath/OM2_h115_h116_centre_shift_refutation.py` (committed 76c6cb88, whose
+message carries the fleet's own write-up). This block is the adjudication of the repair — a
+statement-level decision, derived below and re-signed here. Both nodes' clauses (ii)/(iii) keep
+their types; what changes is the DEF (a real, centre-pinned body replaces an opaque carrier) and
+clause (i)'s quantifier.
+
+### The refuted originals (preserved; the two clause-(i) types as committed by T-1)
+
+    theorem alphaChild_spec … (c : ClusterState O m N) (h : IsAlphaState π c k z) :
+        ∀ (a : Fin m → O) (w : O), proj O m N a = c.1 → residue O w = z →
+          ∃ b : Fin m → O, (∀ i, b i ∈ maximalIdeal O) ∧
+            (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))
+              = Polynomial.C (π ^ (m * k)) * monicPoly b ∧
+            proj O m (N - m * k) b = (alphaChild π c h).1
+
+    theorem betaChild_spec … (c : ClusterState O m N) (h : HasChildAt π c μ k z)
+        (h0 : ¬ IsDrainState c) :
+        ∀ (a : Fin m → O) (w : O), proj O m N a = c.1 → residue O w = z →
+          ∃ (b : Fin μ → O) (H' : Polynomial O), (∀ i, b i ∈ maximalIdeal O) ∧
+            (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))
+              = Polynomial.C (π ^ betaContent c k) * (monicPoly b * H') ∧
+            proj O μ (N - betaContent c k) b = (betaChild π c h (N - betaContent c k)).1
+
+### The refutation (the fleet's, preserved)
+
+**(C-1) The mechanism — a centre shift moves the child by `μ·d ∈ 𝔪 ∖ 𝔪²`.** `alphaChild π c h`
+and `betaChild π c h M` are FUNCTIONS of the class `c` (and of `π, k, z, M`); `h` is a `Prop` and
+carries no data. So each spec, quantifying the centre `w` universally over a residue class,
+asserts that the extracted child class is INDEPENDENT of the lift pair `(a, w)`. It is not: the
+extracted `b` is pinned by `(a, w)` — the factorization determines `monicPoly b`, and for β the
+cofactor is forced monic of degree 1, leaving exactly one factor with all coefficients in `𝔪` —
+and moving the centre from `w` to `w' = w + d`, `d ∈ 𝔪`, is a Taylor shift of the recentred
+polynomial, `g_{w'}(y) = g_w(y + d)`, so
+
+    b'_j − b_j  =  Σ_{i>j} b_i · binom(i,j) · d^(i−j)  +  binom(μ,j) · d^(μ−j),
+
+whose `j = μ−1` term is `μ·d ∈ 𝔪 ∖ 𝔪²`. The child is well defined only MODULO `𝔪`, i.e. at
+window 1 — while the spec reads it at window `N − m·k` (resp. `N − D`), which is `≥ 2` as soon as
+`m·k ≤ N − 2`.
+
+**(C-2) The witnesses (both nodes, machine-checked).**
+* **H.115 (α).** `O = ℤ₅`, `f = (x−5)²`, so `m = 2, N = 4, k = 1, z = 1`; `D = m·k = 2`, child
+  window 2. `¬IsCSState` is free (H.117's landed `isCSState_four_le`, `m = 2 < 4`); `HasChildAt`
+  at all lift pairs is H.109's `hasChildAt_of_exists` from the one checked pair. Same class, same
+  `z`, centres `w = 1, 6, 11, −4` give FOUR DISTINCT children `(0,0), (0,10), (0,20), (0,15)` mod
+  `5²`. All four agree mod `5¹` and no further — the exact strength of the transport available.
+* **H.116 (β).** `O = ℤ₅`, `f = (x−5)²(x−10)`, so `m = 3, N = 6, k = 1, z = 1, μ = 2`; `D = 3`,
+  child window `M = 3`. `w = 1` gives child `(0,0)`; `w = 6` gives `(25,10)` mod `5³`. At each
+  centre exactly ONE monic degree-`μ` factor has all coefficients in `𝔪` (the file enumerates
+  both candidates), so the two children are genuinely the two extractions, not an artefact of a
+  choice.
+
+**(C-3) The digit budget — where the committed PROOF slipped.** Its well-definedness cite was
+H.109's lemma half, *"class-determined below the window"*. That conflates two different
+transports, and H.109 itself keeps them apart:
+
+| direction | H.109 theorem | conclusion | reaches |
+|---|---|---|---|
+| swap the LIFT `a` within its class | `pow_dvd_coeff_comp_sub` | `π^N ∣ (comp difference).coeff j`, for ANY recentring | the FULL child window `N − D` |
+| swap the CENTRE `w` within its residue | `pow_succ_dvd_coeff_shift` (the engine of `recentre_transport`) | `π^{D+1} ∣ (g_{w'} − g_w).coeff j` | ONE digit |
+
+`π^{D+1}` is exactly enough to make the qualitative clause `b i ∈ maximalIdeal O` lift-pair
+independent — which is why H.109's `HasChildAt` and `hasChildAt_of_exists` are CORRECT in their
+∀-lift-pair form and are NOT touched by this amendment — and it is nowhere near enough to pin a
+class at window `≥ 2`. The class direction, by contrast, reaches the whole window, so the `∀ a`
+half of clause (i) was never in danger.
+
+**(C-4) Why the certified battery passed.** `verification/openmath/OM2_genindb_battery.py`
+(612/612, exhaustive cells, `q ∈ {2,3}`, both characteristics) recentres at the CANONICAL lift of
+`z`, quoted verbatim from its extractor:
+
+```python
+def extract_child(RB, state, m, W, k, z, q):
+    """recenter x -> pi^k(y+z), divide by content; return (child_state tuple @ window M, D, mu, ghost_data)
+    The child is the full recentered frame BEFORE Hensel split (degree m)."""
+    a = list(state) + [RB.from_int(1)]
+    s = RB.shift_up(RB.lift_res(z), k)          # s = z_hat * pi^k
+```
+
+with `def lift_res(self, r): return r % self.q` — a function of the residue `r` ALONE, i.e. a
+coherent section of the residue map, and `a = list(state) + [1]` the canonical representative of
+the class. Every `P1(d)` (α fibres exact + onto, per `(k,z)` slice) and `P1(f)` (β per-genre
+composition) result is a statement about THAT map and stands unaltered. The ∀-`w` quantifier is a
+transcription strengthening the battery never tested.
+
+### LESSON L-BATT (standing; GC-CANDIDATE for `blueprint/CONVENTIONS_2026-08-15.md`)
+
+> **A certified battery certifies the SEMANTICS OF ITS EXTRACTOR, not every quantifier
+> strengthening of it.** When a numeric leg computes an object by a coherent recipe (a canonical
+> lift, a fixed section, a sorted enumeration, a first-found root), a transcription that replaces
+> the recipe by a universal quantifier over the choices the recipe made is a NEW claim with ZERO
+> teeth behind it — and the battery's green will read as if it covered it. The transcription rule
+> that follows: **for every object the numeric leg CONSTRUCTS, name the construction in the Lean
+> statement (a pinned section, an explicit argument) rather than quantifying over the data it
+> chose.** A universal quantifier is admissible there only with its own independent argument, and
+> then it must be labeled as such (see §4 below, where one such quantifier is KEPT and its
+> licence named).
+>
+> This is the third failure of this shape in chapter H's §17 orbit (F-1's per-type census upgrade,
+> F-2's conservative/semantic complement, and now the ∀-centre upgrade), which is why it is
+> proposed as a global convention rather than a node fence.
+
+### The adjudication — DECISION D-H17.3 (the centre is pinned IN THE DEF)
+
+**§1 — the canonical lift pair.** Two sections, both real bodies, both one-liners, elaborated
+against the landed API (`resSect` is the pattern already machine-checked in this repo at
+`leancheck/UniformityCheck/N3Recur.lean`, whose docstring states the same reason: *"the recursion
+must recentre at a lift … that depends only on its residue"*):
+
+```lean
+noncomputable def resSect (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] :
+    ResidueField O → O := Function.surjInv IsLocalRing.residue_surjective
+
+theorem residue_resSect (O : Type*) … (x : ResidueField O) : residue O (resSect O x) = x :=
+  Function.surjInv_eq _ x
+
+noncomputable def classSect (O : Type*) … (m N : ℕ) : Coeff O m N → (Fin m → O) :=
+  Function.surjInv (proj_surjective' O m N)          -- H.100's Finite-free surjectivity
+
+theorem proj_classSect (O : Type*) … (m N : ℕ) (c : Coeff O m N) :
+    proj O m N (classSect O m N c) = c := Function.surjInv_eq _ c
+
+noncomputable def recFrame … (π : O) {m N : ℕ} (c : Coeff O m N) (k : ℕ) (z : ResidueField O) :
+    Polynomial O :=
+  (monicPoly (classSect O m N c)).comp (C (π ^ k) * (X + C (resSect O z)))
+```
+
+**LANDING SITE.** the head of `leanfinal/Uniformity/ChapH/H115.lean` (the H.115a file), imported
+by `ChapH/H116.lean`. **Why not H.109**, the natural owner of the recentring machinery: H.109 is
+LANDED and sorry-free with a published footprint, and A-H.5 does not reopen landed files. The
+cost is one new DAG edge, `BP.H.116 → BP.H.115` (def-dep), booked in §Bookkeeping; both nodes
+fire in wave 3, so nothing reschedules.
+
+**§2 — the α body: an explicit formula.** α needs no factorization (the divided frame is already
+monic), so the child is literally a division:
+
+```lean
+noncomputable def divPow {O : Type*} [CommRing O] (π : O) (n : ℕ) (x : O) : O :=
+  letI : Decidable (π ^ n ∣ x) := Classical.dec _
+  if h : π ^ n ∣ x then h.choose else 0
+
+theorem divPow_spec … (h : π ^ n ∣ x) : x = π ^ n * divPow π n x := by
+  unfold divPow; rw [dif_pos h]; exact h.choose_spec
+
+noncomputable def alphaChild … (c : ClusterState O m N) (h : IsAlphaState π c k z) :
+    ClusterState O m (N - m * k) :=
+  let b : Fin m → O := fun j => divPow π (m * k) ((recFrame π c.1 k z).coeff (j : ℕ))
+  if hb : ∀ i, proj O m (N - m * k) b i ∈ (maximalIdeal O).map (Ideal.Quotient.mk (𝔪 ^ (N - m*k)))
+    then ⟨proj O m (N - m * k) b, hb⟩ else ⟨fun _ => 0, fun _ => Ideal.zero_mem _⟩
+```
+
+The DEF SIGNATURE is unchanged (`h` stays, as the domain guard and the inference handle for the
+implicit `{k}`, `{z}`; it is unused in the body, so the declaration carries
+`set_option linter.unusedVariables false in` — the B77a precedent). The junk `else` branch
+totalizes the subtype obligation `b i ∈ 𝔪` WITHOUT hiding it: clause (i) is FALSE whenever that
+branch fires, so the α-membership remains a proof obligation of clause (i), where it belongs.
+
+**§3 — the β body: a definition by description at the pinned centre.** β needs a Hensel split, so
+no formula is available; the body names the child by the property that pins it:
+
+```lean
+noncomputable def betaChild … (c : ClusterState O m N) (h : HasChildAt π c μ k z) (M : ℕ) :
+    ClusterState O μ M :=
+  if hb : ∃ d : ClusterState O μ M, ∃ (b : Fin μ → O) (H' : Polynomial O),
+        (∀ i, b i ∈ maximalIdeal O) ∧
+        recFrame π c.1 k z = C (π ^ betaContent c k) * (monicPoly b * H') ∧
+        proj O μ M b = d.1
+    then hb.choose else ⟨fun _ => 0, fun _ => Ideal.zero_mem _⟩
+```
+
+Its two obligations are stated at the node (H.116 PROOF 1a/1b): **existence** (H.102's coprime
+split of the divided frame + `exists_monic_factorization_finset`) and **uniqueness at a fixed
+centre** (H.102's InjOn plus the `𝔪`-coefficient condition — the property the refutation battery
+checks numerically at both its centres). Existence is what makes the description a definition;
+until it is proved the body sits on its junk branch and clause (i) is false — again, nothing
+smuggled.
+
+**§4 — clause (i), re-signed at both nodes (the operative change).** The centre binder is REMOVED
+and replaced by the pinned `resSect O z`; the class binder `∀ a` is KEPT:
+
+```lean
+theorem alphaChild_spec … (c : ClusterState O m N) (h : IsAlphaState π c k z) :
+    ∀ a : Fin m → O, proj O m N a = c.1 →
+      ∃ b : Fin m → O, (∀ i, b i ∈ maximalIdeal O) ∧
+        (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C (resSect O z)))
+          = Polynomial.C (π ^ (m * k)) * monicPoly b ∧
+        proj O m (N - m * k) b = (alphaChild π c h).1
+
+theorem betaChild_spec … (c : ClusterState O m N) (h : HasChildAt π c μ k z)
+    (h0 : ¬ IsDrainState c) :
+    ∀ a : Fin m → O, proj O m N a = c.1 →
+      ∃ (b : Fin μ → O) (H' : Polynomial O), (∀ i, b i ∈ maximalIdeal O) ∧
+        (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C (resSect O z)))
+          = Polynomial.C (π ^ betaContent c k) * (monicPoly b * H') ∧
+        proj O μ (N - betaContent c k) b = (betaChild π c h (N - betaContent c k)).1
+```
+
+**At `a := classSect O m N c.1` this is exactly the battery's `extract_child` semantics** — same
+canonical centre, same content divisor, same window — which is the requantification's whole
+design criterion.
+
+**`∀ a` is a strengthening beyond the battery's tested point, and it is LABELED as one** (L-BATT's
+own rule, applied to this amendment): `extract_child` is called on the canonical representative
+only, so the battery certifies the canonical `a` alone. The licence for the quantifier is not
+teeth but a proof, named here and booked as PROOF step 2′ at H.115 and step 2 at H.116: for
+`proj O m N a = proj O m N a'`, H.109's `pow_dvd_coeff_comp_sub` gives `π^N ∣ (comp
+difference).coeff j` for ANY recentring, so the extracted vectors differ by `π^{N−D}` and agree at
+the child window `N − D` (β routes the same fact through H.102's InjOn at that window). This is
+the direction the committed PROOF's *"well-defined on the class"* step already had right. It is
+also why the `∀ a` form is worth keeping: consumers (H.118's `alpha`/`beta` constructors, H.119's
+inversion) hold a lift of the parent that they did not choose.
+
+**§5 — clauses (ii)/(iii) are now statements about a COHERENT map, by construction.** The
+refutation flagged that `card_alphaFiber`'s exact `Q^{k·clusterC m}` and H.116 (ii)'s
+equicardinality are not safe for an arbitrary `Exists.choose` body. The precise defect is worth
+stating, because it is NOT the obvious one:
+
+* **Not well-definedness.** `h` is a `Prop` and Lean's kernel is proof-irrelevant, so ANY body —
+  including one that opens an `∃ a w` — yields a genuine function of `(π, c, k, z)`. Nothing is
+  ill-defined.
+* **Canonicity.** (ii)/(iii) are not claims about *some* function. They are claims about the
+  specific digit transform whose triangularity-with-unit-pivots H.60 supplies and whose fibres
+  the battery's `P1(d)` histogrammed. A body that selects its centre from an existential is a
+  function whose centre varies with the parent uncontrollably, and (C-2)'s witnesses show that
+  such variation MOVES the value; its fibres are then a reshuffling of the canonical ones with no
+  route to the exact exponent (a selection that sends many parents to one child inflates a
+  fibre). Pinning the centre makes the map literally the transform H.60 governs, so the
+  equicardinality clauses become claims about the map they were always meant to describe.
+
+Hence: **(ii)/(iii) keep their signatures byte-unchanged** and gain a coherent subject. Their
+proofs are unaffected in outline (H.115 PROOF step 3, H.116 step 3) and now have a defensible
+starting point.
+
+**§6 — DECISION D-H17.2 stands verbatim.** The window-as-argument design of `betaChild`
+(`(M : ℕ)` explicit, the genuine child at `M = N − betaContent c k`) was independently confirmed
+by the refuting fleet and is UNTOUCHED: the defect was the centre quantifier, not the explicit
+window. Nor is the `[r3]`-capped content form disturbed (`EFF.GENIND.24`'s sealed correction
+history stands).
+
+**§7 — H.114 threading: SUPPLIED.** H.114 (`card_alphaSlice`) consumes clauses (ii) and (iii),
+never clause (i) — its PROOF step 2 routes "the α(k, z)-slice fibres onto the window-`(N−mk)`
+state space with constant fibre `Q^{k·clusterC m}` over `Q^{m(N−mk−1)}` child states, times
+`(Q−1)` choices of `z`". Both consumed signatures are byte-unchanged by this amendment, so H.114
+needs no restatement; per §5 what it consumes is strictly better founded than before. Verdict
+recorded at the node as **[A-H.5 THREADING VERDICT — SUPPLIED, and strictly improved]**.
+
+**§8 — what this amendment does NOT do.** It does not prove clause (i) at either node (the
+extraction proofs, including the α-membership guard and β's existence/uniqueness pair, are
+fleet-stage), does not touch H.109's `HasChildAt`/`hasChildAt_of_exists` (whose ∀-lift-pair form
+is correct — see C-3), does not touch clauses (ii)/(iii)'s types, does not close the §17 0e gate
+(stub signing and the numeric `#eval` gates remain), and discharges nothing of `GENIND-BOX-1` or
+the H.98 fence.
+
+### Bookkeeping installed by this amendment
+
+1. **`blueprint/CHAP-H_general_induction.md`** — nodes H.114 (threading verdict), H.115 and H.116
+   (STATEMENT re-sign markers, SIGNATURE, PROOF steps, DEPENDS, TEETH scope note); §17.0's
+   signature-verification paragraph and §17's census (declaration counts updated, the opaque-carrier
+   deviation CLOSED); this amendment block.
+2. **`leanspec/Leanspec/ChapH.lean`** — `LeanspecH17`: the §1 sections added, `alphaChild`/`betaChild`
+   converted from opaque `axiom` carriers to real `def` bodies, the two clause-(i) `axiom` stubs
+   re-signed. `lake build Leanspec.ChapH` green.
+3. **`spec/DAG_BLUEPRINT_H.tsv`** — two rows added: `BP.H.116 → BP.H.115` (def-dep, the lift
+   supplier) and `BP.H.115 → BP.H.100` (def-dep, `proj_surjective'` under `classSect`).
+4. **`verification/openmath/OM2_h115_h116_centre_shift_refutation.py`** — retained as a standing
+   regression (exit 0 = the ∀-`w` form stays refuted), named in both nodes' TEETH.
+5. **`blueprint/CONVENTIONS_2026-08-15.md`** — LESSON L-BATT proposed as a GC item; the
+   conventions doc is NOT edited by this append (GC ownership sits with the conventions owner).
+
+*END OF AMENDMENT A-H.5 (2026-08-16). Touched nodes: H.114 (threading note only), H.115
+(STATEMENT/SIGNATURE/PROOF/DEPENDS/TEETH), H.116 (same); §17.0 and §17's census paragraphs.
+Sections §§0–16 and A-H.1/A-H.2/A-H.3/A-H.4 are byte-unchanged by this append. DECISION D-H17.2
+and every H.98/GENIND-BOX-1 fence stand. CODEX/decorrelated CROSS-READ OWED on the re-signed
+clause (i) and on the `∀ a` licence of §4.*
