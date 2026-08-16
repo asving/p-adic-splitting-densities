@@ -3602,6 +3602,18 @@ THE deliverable of this node; nothing fires from it until signed.
 consumes — never the full FGMN machinery, never `w`'s closed form (C-H10: `w` is NOT
 computed anywhere in the corpus, and this cite must not smuggle it).
 
+**⚠ A-3 NUMBERING CORRECTION (2026-08-16, `docs/CITE_NUMBERING_AUDIT_2026-08-16.md`).** The three
+cited statements are right; **two of the three numbers are arXiv-v3 numbers that the published
+paper does not use.** Cite, for **J. Algebra 427 (2015) 30–75** (DOI 10.1016/j.jalgebra.2014.12.022):
+**Thm 2.8** (unchanged) **+ Cor 4.12(3)** (was "Cor 4.7(3)") **+ Cor 4.9(3)** (was "Cor 4.4(4)" —
+the published corollary drops v3's item (1), so the clause index moves 4 → 3). arXiv:1305.0775's
+last version is v3 (2013-07-26) and was never updated; a later author version (2013-12-04,
+deposited under the J. Algebra record at UPCommons handle 2117/28203) renumbers §§1, 3, 4, 5, 6, and
+three author-side citation echoes — including one from 2019, post-publication — confirm that later
+numbering is the journal's. Statement text unchanged; every quoted display was found verbatim under
+its new number. Not print-read (ScienceDirect 403s automated fetches despite bronze OA): risk
+LOW-MEDIUM, two-minute closing check in audit §7.2.
+
 **DEPENDS.** C.25 (the carrier the statement is written against) · GENTOW2's dictionary
 layer (§10: C.97/C.98 — the faithfulness map rows the transport reads through; DAG order
 §10's dictionary nodes before this node's SIGN-OFF, though its statement can be drafted
@@ -4683,6 +4695,23 @@ rows (§10) with the `ψ₂^{FGMN}`/`ψ₂^{repo}` discipline (C-H10).
 `w`-closed-form and anything about `nu`-optimality beyond the struck (H-b) chain clause
 (`EFF.GENTOW2`'s TOWERRAT-R3-1 STRUCK row) are NOT imported.
 
+**⚠ A-3 NUMBERING CORRECTION (2026-08-16, `docs/CITE_NUMBERING_AUDIT_2026-08-16.md`).** Every cited
+statement is right; **all but one of the numbers are arXiv-v3 numbers the published paper does not
+use.** For **J. Algebra 427 (2015) 30–75** (DOI 10.1016/j.jalgebra.2014.12.022) the loci are:
+Lemma 1.11 → **Lemma 1.8** · Cor 1.13 → **Cor 1.10** · Lemma 5.3(2) → **Lemma 5.2(2)** ·
+Prop 5.7 + eq (14) → **Prop 5.6 + eq (11)** · Cor 4.7(1)/(3) → **Cor 4.12(1)/(3)** ·
+Thm 6.3 → **Thm 6.2** (v3's items (1)(2)(3) become (1)(2): v3's (3) is absorbed into published (2)) ·
+Cor 6.4 → **Cor 6.3** (its eq (23) keeps its number). Two further fixes inside this node: the quoted
+phrase *"for any `1 ≤ j ≤ r`"* reads **`1 ≤ i ≤ r`** in both versions (the `j` is the repo's slip, and
+`j` is a different index in the surrounding blueprint text); and the NS-12 scope pins move off numbered
+items entirely — v3's **Def 6.1** (the set `P`, no separability restriction) is **unnumbered running
+prose at the head of published §6**, and v3's **Lemma 6.2**, whose proof carries the load-bearing
+*"with due count of multiplicities if `F` is inseparable"* clause, is published **Lemma 6.1** (clause
+verbatim intact, so the COVERS-ALL-O verdict stands on a re-pinned citation). Evidence: arXiv:1305.0775
+stops at v3 (2013-07-26); a later author version (2013-12-04, UPCommons handle 2117/28203) renumbers
+§§1, 3, 4, 5, 6; three author-side citation echoes, one post-publication (2019), match that numbering
+and none match v3. Not print-read: risk LOW-MEDIUM, closing check in audit §7.2.
+
 **DEPENDS.** C.25 · C.83 · §10's dictionary nodes (C.97/C.98) · the layout print
 (`docs/references/fgmn_residual_ideals_1305.0775v3_layout.txt`, numbering verified at
 GENTOW2's ledger).
@@ -4746,6 +4775,21 @@ level depth is `≤ log₂`-bounded unconditionally) and the α-refine finitenes
 descent including refine chains at every level — the resolution doc's "only PARTIAL" row,
 imported rather than re-proved (C-H9). Exact Lean statement drafted at stub stage;
 Asvin signs.
+
+**⚠ A-3 NUMBERING CORRECTION (2026-08-16, `docs/CITE_NUMBERING_AUDIT_2026-08-16.md`).** The
+statement above is right; **the number is wrong for the version of record, and it collides.**
+Cite **[AGNPRW] Thm 5.6**, not Thm 5.2: *"If `v` is discrete of rank-one, then the OM-algorithm
+terminates"* is **Theorem 5.6** of the published paper — **Found. Comput. Math. 25 (2025), no. 2,
+631–681**, DOI 10.1007/s10208-024-09646-x — whose **Theorem 5.2 is a different theorem** (the
+`e`/`f` formula for the factor singled out by `(µ, φ)`). "Thm 5.2" is the arXiv:2207.02139**v1**
+number; arXiv has only v1 and was never updated, while the accepted version renumbers §4 by +6 and
+§5 by +4 (the publisher's own abstract advertises *"a key new result (Theorem 4.10)"*, which is v1's
+Thm 4.4). Statement text unchanged — the termination sentence and its index-finiteness proof sketch
+are verbatim identical in both versions; only the label and the internal reference move
+(`[10, Thm. 4.8]` → `[14, Thm. 4.8]`, both = GMN12). Disclosed inheritance: GMN12 has no *Theorem*
+4.8 (4.8 is a Lemma there; the theorem of the index is **GMN Thm 4.18** + Cor 4.19), so AGNPRW's own
+last link for the index step is imprecise — record it in the faithfulness entry rather than
+repeating it silently. Not print-read (Springer paywalled): risk LOW, closing check in audit §7.1.
 
 **DEPENDS.** C.30 · C.32 · C.83.
 

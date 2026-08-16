@@ -16,21 +16,33 @@ version**. The published version is:
 > polygons* and the higher-order OM algorithm papers; the tame/foundational version is the
 > Montes thesis and Ore's three classical dissections.
 
-> **HONEST CAVEAT on pagination.** The theorem/definition **numbers** below (Thm 1.15, 1.19, 2.11,
-> 3.1, 3.7, 4.18; Def 1.21–1.22, 2.1, 2.3, 2.5, 2.21, 3.9, 3.10; Cor 1.20, 3.3, 3.8, 4.19; Lemma
-> 3.11) are taken from **arXiv:0807.2620v2**. The TAMS published numbering is, in the experience of
-> this literature, identical or near-identical, but **the printed-pagination numbers should be
-> confirmed against the TAMS 364 (2012) PDF before final submission.** All statements below are
-> quoted/paraphrased from the verified arXiv text, so the *mathematical content* is pinned even
-> where a printed number might shift by one.
+> **~~HONEST CAVEAT on pagination~~ — DISCHARGED [verified: A-3, 2026-08-16]**
+> (`docs/CITE_NUMBERING_AUDIT_2026-08-16.md` §5). The numbers below (Thm 1.15, 1.19, 2.11, 3.1,
+> 3.7, 4.18; Def 1.21–1.22, 2.1, 2.3, 2.5, 2.21, 3.9, 3.10; Cor 1.20, 3.3, 3.8, 4.19; Lemma 3.11)
+> were read from **arXiv:0807.2620v2**; **every one of them has now been confirmed against the
+> printed TAMS pages**, read this session from the free AMS PDF
+> (`ams.org/journals/tran/2012-364-01/S0002-9947-2011-05442-5/`, header *"Volume 364, Number 1,
+> January 2012, Pages 361–416, S 0002-9947(2011)05442-5, Article electronically published on May
+> 18, 2011"*), with the claimed kind (Theorem/Definition/Corollary/Lemma) and content in each case.
+> Spot-checks of arXiv v2 against print (1.15, 2.20, 2.21, 2.26, 4.8, 4.18) found **no drift at
+> all**: GMN is the one source in the audit whose arXiv and printed numbering agree. Printed Def
+> 2.21 is confirmed as the block defining both the virtual factor and the order-`r` residual
+> polynomial `R_{λ_r}(f)(y)`. No number below needs to change.
 
 This note **corrects** the earlier guesses in `notes/BB3_infinity.md §1` and
 `notes/COMPLETE_PROOF.md §12` (which cited "Def. 2.5, Thm. 2.11, Def. 2.20–2.23, Thm. 2.26"). The
 order-1 theorems are **1.15 / 1.19**; the order-`r` theorems are **3.1 / 3.7**; the residual
 polynomial of order `r` is **Definition 2.21** (not 2.20–2.23, though 2.20 defines the residual
-*coefficient* and 2.19 the truncation); there is **no Theorem 2.26** in this paper (§2 ends with the
-construction of the representative, Thm 2.11, and the order-`r` polygon/residual *definitions*; the
-order-`r` *theorems* are in §3). The propagation fix is listed in §4 below.
+*coefficient*, and 2.19 defines the initial abscissas `s_j(P)` and the integer `t_{r−1}(i)` —
+**A-3 2026-08-16:** the earlier gloss "2.19 the truncation" is not what printed 2.19 states);
+~~there is **no Theorem 2.26** in this paper~~ — **CORRECTED [A-3, 2026-08-16]: Theorem 2.26 DOES
+exist**, in both printed TAMS and arXiv v2, as the **Theorem of the product in order `r`**
+(*"`N⁻_r(fg) = N⁻_r(f) + N⁻_r(g)`, `R_{λ_r}(fg)(y) = R_{λ_r}(f)(y)R_{λ_r}(g)(y)`"*). The
+substantive correction stands unchanged — the order-`r` **theorems of the polygon and of the
+residual polynomial** are **3.1** and **3.7**, so the old `BB3_infinity.md` / `COMPLETE_PROOF.md`
+cite of "Thm 2.26" was aimed at the wrong statement — but it was aimed at a real one, and any
+future reader chasing 2.26 will find the order-`r` product theorem. The propagation fix is listed
+in §4 below.
 
 ---
 

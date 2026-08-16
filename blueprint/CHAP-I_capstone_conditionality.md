@@ -1448,11 +1448,22 @@ theorem exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (h
   ↔ `R_{λ_i}(F_i) ∼ R_{λ_i}(f)` (GMN Thm 1.15 verbatim; generally from `R(gh) = R(g)R(h)` with
   the co-factors' `R` constant at `λ_i`). `∼` = equality up to a unit of
   `resField φ = F_φ`, matching the `∃ c : (resField φ)ˣ` form.
-* **Known caveats, disclosed.** (1) **Numbering verification owed (the HYP.17 class, extended):**
-  [GN15]'s theorem numbers were read from the author PDF at `upcommons.upc.edu`, volume/pages
-  from a search summary (`CITE_SCOPE_RESOLUTION` §6.2); GMN Thm 1.15's number is from
-  arXiv:0807.2620v2 with the printed-TAMS caveat (`docs/GMN_citations.md` header). Verify
-  against the printed volumes BEFORE signature, together with C.94/C.66's audit A-3. (2)
+* **Known caveats, disclosed.** (1) ~~**Numbering verification owed (the HYP.17 class,
+  extended):**~~ **DONE — [verified: A-3, 2026-08-16]** (`docs/CITE_NUMBERING_AUDIT_2026-08-16.md`).
+  [GN15] Thm 2.3: **VERIFIED** — volume/pages from the publisher (AMS CONM 637 ToC: 207–241;
+  Crossref DOI 10.1090/conm/637/12767; zbMATH Zbl 1396.11143), and the statement quoted above
+  confirmed verbatim in TWO copies straddling the referee round — the `upcommons.upc.edu` author
+  PDF **and arXiv:1309.4340v2 ("revised according to suggestions by a referee")**, which the repo's
+  docs did not know existed; cite it as the freely checkable witness. Printed AMS chapter itself
+  not read (LibLynx paywall) → residual risk LOW. GMN Thm 1.15: **VERIFIED against the printed
+  TAMS pages** (free AMS PDF; header "Volume 364, Number 1, January 2012, Pages 361–416"), clauses
+  (1)(2)(3) as transcribed — this also discharges `docs/GMN_citations.md`'s printed-TAMS caveat.
+  **Secondary displays DRIFTED, do not sign the numbers as written:** [AGNPRW] Thm 4.4 →
+  **Thm 4.10**, Thm 4.6 → **Thm 4.15**, Cor 2.9 → **Cor 2.17** (published = Found. Comput. Math.
+  **25 (2025), no. 2, 631–681**; the repo's numbers are arXiv-v1 numbers and arXiv was never
+  updated); [FGMN] Thm 2.8 → **Thm 2.8** (stable). One non-numbering observation for the math
+  owner: the source Thm 2.3 carries the hypothesis **`φ ∈ KP(µ)` with `φ ≁_µ φ_r`**, which the
+  display quoted above omits. (2)
   **Clause 6 is the one clause of the import never refutation-tested** (clauses 1–5 survived
   two machine-refutation waves, A-F.6/A-F.9, and were then source-verified clause-by-clause at
   A-F.9 (II)–(III)); it sits inside the digit-read transcription's verified faithful scope

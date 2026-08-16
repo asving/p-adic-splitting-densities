@@ -49,7 +49,7 @@ marked **UNVERIFIED** with what would be needed.
 | **[GNP12]** | Guàrdia–Nart–Pauli, *Single-factor lifting and factorization of polynomials over local fields*, J. Symb. Comput. **47** (2012) 1318–1346 (arXiv:1104.3181) | arXiv PDF, "Notation" para. + §2 opening | "Notation. Throughout the paper we fix a local field $K$, that is, **a complete field with respect to a discrete valuation $v$**. We let $O$ be its ring of integers, $m$ the maximal ideal of $O$, $\pi\in m$ a generator of $m$, $F=O/m$ the residue class field of $K$, **which is suposed to be perfect** …" — and the crucial widening sentence: "Although most of the results about Montes algorithm are formulated for separable polynomials over the ring of integers of a $p$-adic field, **they can be easily generalized to separable monic polynomials with integral coefficients over local fields with perfect residue field. In this paper we work in the general setting.**" |
 | **[BNS13]** | Bauch–Nart–Stainsby, *Complexity of OM factorizations of polynomials over local fields*, LMS J. Comput. Math. **16** (2013) 139–171 (arXiv:1204.4671) | arXiv PDF, §1 | "Let $k$ be a **local field, i.e. a locally compact and complete field with respect to a discrete valuation $v$**. Let $O$ be the valuation ring of $k$, $m$ the maximal ideal, $\pi\in m$ a generator of $m$ and $F=O/m$ the residue field, **which is a finite field**." |
 | **[Nart14]** | Nart, *Local computation of differents and discriminants*, Math. Comp. **83** (2014) no. 287, 1513–1534 (arXiv:1205.1340) | arXiv PDF, §1 | "Let $k$ be a **local field, i.e. a locally compact and complete field with respect to a discrete valuation $v$.**" |
-| **[GMN11-IB]** | Guàrdia–Montes–Nart, *Higher Newton polygons and integral bases* (arXiv:0902.3428v3, 22 Jul 2012; journal version **UNVERIFIED** — [FGMN] and [GN15] both cite it as arXiv-only) | arXiv PDF, abstract + §1 | Abstract: "Let $A$ be a Dedekind domain whose field of fractions $K$ is **a global field**." §1: "Let $k$ be a local field, i.e. a locally compact and complete field with respect to a discrete valuation $v$ … $F=O/m$ the residue field, which is a finite field." |
+| **[GMN11-IB]** | Guàrdia–Montes–Nart, *Higher Newton polygons and integral bases* — journal version **RESOLVED [A-3, 2026-08-16]: J. Number Theory 147 (2015) 549–589**, DOI 10.1016/j.jnt.2014.07.027 (Crossref; cited in that form by arXiv:1409.4345's bibliography); ~~arXiv:0902.3428v3, 22 Jul 2012; journal version UNVERIFIED~~ (the "arXiv-only" reading came from [FGMN]/[GN15], both written before it appeared) | arXiv PDF, abstract + §1 | Abstract: "Let $A$ be a Dedekind domain whose field of fractions $K$ is **a global field**." §1: "Let $k$ be a local field, i.e. a locally compact and complete field with respect to a discrete valuation $v$ … $F=O/m$ the residue field, which is a finite field." |
 | **[PW26]** | Poteaux–Weimann, *Local polynomial factorisation: improving the Montes algorithm*, **arXiv:2607.02153v1, 2 Jul 2026 (PREPRINT — not refereed)** | arXiv HTML, §2 | "**Let $\mathbb L$ be a complete discrete valuation field**, $v:\mathbb L\to\mathbb Z\cup\{+\infty\}$ any normalised and surjective valuation on $\mathbb L$ and $\pi$ an uniformiser. … **The two fields we have in mind in this paper are $\mathbb L=\mathbb Q_p$ … and $\mathbb L=\mathbb K((t))$ the field of Laurent series over any field $\mathbb K$.**" |
 | **[ML36]** | MacLane, *A construction for absolute values in polynomial rings*, Trans. Amer. Math. Soc. **40** (1936) 363–395 | D. Ford re-typeset PDF (`users.encs.concordia.ca/~ford/UNCG/smvals.pdf`), §1 Introduction | "The succession of values $V_1,V_2,\dots$ is defined in Part I for polynomials with **coefficients in any field $K$**. … Here, as in §§8 and 16, we assume that every value of the field $K$ is 'discrete'; that is, that the real numbers used as values form an isolated point set, as in the case of $p$-adic values." (Numbering caveat: re-typeset, not a scan; TAMS pagination unchecked.) |
 | **[Kuhl]** | F.-V. Kuhlmann, *The defect*, in **Valuation theory in interaction**, EMS Ser. Congr. Rep. (2014) 277–318 | author PDF hosted at KGRC Vienna (`DEFECT.pdf`) | **Theorem 3.3** verbatim: "Let $(K,v)$ be a **discretely valued field**, that is, with value group $vK\simeq\mathbb Z$. **Then every finite separable extension is defectless.** If in addition $\operatorname{char}K=0$, then $(K,v)$ is a defectless field." (Publication venue **UNVERIFIED** at symbol level — I read the author's PDF, not the EMS volume.) |
@@ -460,18 +460,35 @@ and one statement weakening in a place that gates nothing downstream (Stage 4).
 
 ## 6. What I could NOT verify
 
-1. **Publisher-side pagination/numbering** for [AGNPRW] (FoCM 2024) — `link.springer.com` redirects
+> **ITEMS 1 AND 2 RESOLVED — AUDIT A-3, 2026-08-16** (`docs/CITE_NUMBERING_AUDIT_2026-08-16.md`),
+> and item 1 resolved **against** this doc: the AGNPRW numbers below are arXiv-v1 numbers that the
+> published paper does not use. **Every AGNPRW number in this document must be remapped**:
+> 2.7 → **2.14** · Cor 2.9 → **Cor 2.17** · 2.10 → **2.18** · 4.4 → **4.10** · 4.6 → **4.15** ·
+> 4.7 → **4.16** · 4.8 → **4.17** · **5.2 → 5.6** · Prop 4.5 → **Prop 4.14** (and v1's Thm 5.1 is
+> what now occupies **5.2**, so NS-7's cite currently mis-points at a real but different theorem).
+> Correct reference: **Found. Comput. Math. 25 (2025), no. 2, 631–681**. NS-7's quoted proof sketch
+> ends `[14, Thm. 4.8]` in print, not `[10, Thm. 4.8]`; and GMN12 has no *Theorem* 4.8 (it is a
+> Lemma; the theorem of the index is **GMN Thm 4.18**), so that last link is imprecise in the source
+> itself — say so rather than repeating it. **The [FGMN] numbering in this document (NS-9, NS-10,
+> NS-12) drifted too** — see the audit's §4 map; in particular NS-12's scope pins move off numbered
+> items (v3 "Def 6.1" → unnumbered published §6 opening prose; v3 "Lemma 6.2" → published **Lemma
+> 6.1**, inseparability clause verbatim intact). Item 6 (ML36) and items 3–5, 7–8 remain open.
+
+1. ~~**Publisher-side pagination/numbering** for [AGNPRW] (FoCM 2024)~~ — **RESOLVED (A-3): drift
+   found, see the box above.** `link.springer.com` redirects
    to an auth endpoint. All theorem numbers (2.7, 2.9, 2.10, 4.4, 4.6, 4.7, 4.8, 5.2, Prop 4.5) are
-   from **arXiv:2207.02139v1**. Open surrogates that should match:
+   from **arXiv:2207.02139v1** — and arXiv has **only** v1, never updated. The two open surrogates
+   named below turn out to be the **accepted version** (both compiled 2023-12-11), not copies of v1,
+   and they carry the published renumbering:
    `iri.upc.edu/files/scidoc/2965-Polynomial-factorization-over-Henselian-fields.pdf` and
-   `weimann.users.lmno.cnrs.fr/HenselianFactorization.pdf`. **Confirm numbering against the printed
-   FoCM version before submission.**
-2. **[GN15] printed pagination.** I read the author PDF hosted at `upcommons.upc.edu`; the copyright
-   line is the pre-print stamp "c 0000 (copyright holder)". Volume/pages (Contemp. Math. 637,
-   207–241) **and the DOI 10.1090/conm/637/12767** come from a search-result summary, **not** from the
-   fetched document. Theorem numbers (1.5, 1.9,
-   1.10, 1.13, 1.14, 2.1, 2.2, 2.3, 3.5, eq. 2.1) are from that PDF. **Confirm against the printed
-   AMS volume.**
+   `weimann.users.lmno.cnrs.fr/HenselianFactorization.pdf`.
+2. ~~**[GN15] printed pagination.**~~ — **RESOLVED (A-3): VERIFIED, no drift.** Volume/pages
+   (Contemp. Math. **637**, **207–241**) and DOI 10.1090/conm/637/12767 are now confirmed from the
+   publisher (AMS's own CONM 637 table of contents) plus Crossref and zbMATH (Zbl 1396.11143); and
+   the theorem numbers, previously known only from the `upcommons.upc.edu` author PDF (1.5, 1.9,
+   1.10, 1.13, 1.14, 2.1, 2.2, 2.3, 3.5, eq. 2.1), are confirmed by a second, **post-referee**
+   witness this doc did not know about: **arXiv:1309.4340v2** (2014-06-10, comments *"revised
+   according to suggestions by a referee"*). Cite that arXiv version alongside the chapter.
 3. **[Kuhl] venue.** The verbatim Theorem 3.3 is from the author's PDF (`DEFECT.pdf`, KGRC Vienna).
    Its publication as *The defect*, in **Valuation theory in interaction**, EMS Ser. Congr. Rep.
    (2014) 277–318, is **UNVERIFIED** — I did not fetch the EMS volume.
