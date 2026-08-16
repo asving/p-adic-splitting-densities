@@ -2164,11 +2164,16 @@ RETIRED (H.01–H.99 landed). THIS block is the opposite end of the lifecycle: t
 SIGNATURE-ELABORATION scratch** for the NEW §17 nodes of
 `blueprint/CHAP-H_general_induction.md` (H.100–H.124, dated extension 2026-08-16). Its only
 claim: **every §17 SIGNATURE elaborates against the landed `Uniformity` API.** It is NOT the
-§17 0e gate: theorem stubs are unsigned `axiom`s awaiting the fleet stage; TWO definitional
-carriers (`alphaChild`, `betaChild` — the heavy extraction bodies) are deliberately carried in
-axiom form as OPAQUE CONSTANTS so their consumers' signatures elaborate, with real bodies owed
-at the §17 0e gate (recorded deviation from 0e rule 1 — this unit's charge is elaboration
-verification, not stub signing). Every other definitional carrier is a REAL body.
+§17 0e gate: theorem stubs are unsigned `axiom`s awaiting the fleet stage. As committed by T-1,
+TWO definitional carriers (`alphaChild`, `betaChild` — the heavy extraction bodies) were
+carried in axiom form as OPAQUE CONSTANTS so their consumers' signatures elaborate, with real
+bodies owed at the §17 0e gate (recorded deviation from 0e rule 1). **UPDATED by AMENDMENT
+A-H.5 (2026-08-16): both carriers now have REAL, CENTRE-PINNED BODIES and the deviation is
+CLOSED.** A-H.5 also adds the canonical lift pair (`resSect`, `classSect`, `recFrame`,
+`divPow`, with `residue_resSect` / `proj_classSect` / `divPow_spec` PROVED) and re-signs the two
+clause-(i) stubs, whose committed ∀-lift-pair form was refuted by explicit `ℤ₅` witnesses
+(`verification/openmath/OM2_h115_h116_centre_shift_refutation.py`, exit 0 = refuted). Every
+definitional carrier in this block is now a REAL body; ZERO opaque constants remain.
 
 **Namespace discipline (PA-4 / GC-6.6):** flat inside `LeanspecH17`; the landed-side
 assignment (recorded per node in the blueprint §17) is `Uniformity.Density.Induction` for the
@@ -2465,22 +2470,92 @@ axiom card_alphaSlice {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuation
     Nat.card {c : ClusterState O m N // ∃ z, IsAlphaState π c k z}
       = (residueCard O - 1) * residueCard O ^ (m * (N - 1) - k * clusterC (m + 1))
 
+/-! ### A-H.5 §1 — the canonical lift pair (the pinned centre)
+
+AMENDMENT A-H.5 (2026-08-16): clause (i) of H.115/H.116 universally quantified the CENTRE and
+was REFUTED (`verification/openmath/OM2_h115_h116_centre_shift_refutation.py`, exit 0). The
+repair pins the centre IN THE DEF through a fixed section of `residue`, and the class lift
+through a fixed section of `proj` (H.100's `Finite`-free `proj_surjective'`). Landing site:
+the head of `leanfinal/Uniformity/ChapH/H115.lean`, imported by `ChapH/H116.lean`.
+`resSect` is the pattern already machine-checked in this repo at
+`leancheck/UniformityCheck/N3Recur.lean`. -/
+
+/-- **A-H.5 §1.** The pinned centre: a section of the residue map, a function of the residue
+alone — the Lean counterpart of the battery's `RB.lift_res(z)`. -/
+noncomputable def resSect (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] :
+    ResidueField O → O :=
+  Function.surjInv IsLocalRing.residue_surjective
+
+theorem residue_resSect (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (x : ResidueField O) : residue O (resSect O x) = x :=
+  Function.surjInv_eq _ x
+
+/-- **A-H.5 §1.** The pinned class lift: a section of `proj`, inverting H.100's
+`proj_surjective'`. -/
+noncomputable def classSect (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (m N : ℕ) : Coeff O m N → (Fin m → O) :=
+  Function.surjInv (proj_surjective' O m N)
+
+theorem proj_classSect (O : Type*) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (m N : ℕ) (c : Coeff O m N) : proj O m N (classSect O m N c) = c :=
+  Function.surjInv_eq _ c
+
+/-- **A-H.5 §1.** The recentred frame of a CLASS at the pinned lift pair — the object both
+child extractions read. -/
+noncomputable def recFrame {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {m N : ℕ} (c : Coeff O m N) (k : ℕ) (z : ResidueField O) : Polynomial O :=
+  (monicPoly (classSect O m N c)).comp (C (π ^ k) * (X + C (resSect O z)))
+
+/-- **A-H.5 §2.** Exact division by `π ^ n`, totalized (junk `0` off the divisibility
+locus). -/
+noncomputable def divPow {O : Type*} [CommRing O] (π : O) (n : ℕ) (x : O) : O :=
+  letI : Decidable (π ^ n ∣ x) := Classical.dec _
+  if h : π ^ n ∣ x then h.choose else 0
+
+theorem divPow_spec {O : Type*} [CommRing O] {π : O} {n : ℕ} {x : O} (h : π ^ n ∣ x) :
+    x = π ^ n * divPow π n x := by
+  unfold divPow
+  rw [dif_pos h]
+  exact h.choose_spec
+
 /-! ### H.115 — the α-shear transport (N-2b) -/
 
-/-- **H.115 (def half, OPAQUE at this scratch — real body owed at the §17 0e gate).** The
-recentred, content-divided, window-truncated α child. -/
-axiom alphaChild {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
-    (π : O) {m N k : ℕ} {z : ResidueField O}
-    (c : ClusterState O m N) (h : IsAlphaState π c k z) : ClusterState O m (N - m * k)
+set_option linter.unusedVariables false in
+/-- **H.115 (def half — REAL BODY, A-H.5 §2).** The recentred, content-divided,
+window-truncated α child, extracted at the PINNED lift pair. α needs no factorization (the
+divided frame is already monic), so the child is an explicit division of `recFrame`. The
+subtype guard totalizes the α-membership `b i ∈ 𝔪` without hiding it: clause (i) is FALSE
+whenever the junk branch fires, so the membership stays an obligation of clause (i).
 
-/-- **H.115 (clause i).** The extraction is what it says: on every lift pair the recentred
-polynomial is EXACTLY `π^{mk} ·` a monic cluster development lifting the child. -/
+`h` is the domain guard and the inference handle for the implicit `{k}`, `{z}`; it is unused
+in the body (B77a precedent for the linter silencing). -/
+noncomputable def alphaChild {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (π : O) {m N k : ℕ} {z : ResidueField O}
+    (c : ClusterState O m N) (h : IsAlphaState π c k z) : ClusterState O m (N - m * k) :=
+  let b : Fin m → O := fun j => divPow π (m * k) ((recFrame π c.1 k z).coeff (j : ℕ))
+  letI : Decidable (∀ i, proj O m (N - m * k) b i
+      ∈ (maximalIdeal O).map (Ideal.Quotient.mk ((maximalIdeal O) ^ (N - m * k)))) :=
+    Classical.dec _
+  if hb : ∀ i, proj O m (N - m * k) b i
+      ∈ (maximalIdeal O).map (Ideal.Quotient.mk ((maximalIdeal O) ^ (N - m * k)))
+    then ⟨proj O m (N - m * k) b, hb⟩
+    else ⟨fun _ => 0, fun _ => Ideal.zero_mem _⟩
+
+/-- **H.115 (clause i) [RE-SIGNED: A-H.5 §4].** The extraction is what it says: AT THE
+CANONICAL CENTRE `resSect O z` and at every lift `a` of the class, the recentred polynomial is
+EXACTLY `π^{mk} ·` a monic cluster development lifting the child.
+
+The committed `∀ (a) (w), … residue O w = z → …` form was REFUTED (a centre shift by `d ∈ 𝔪`
+moves the child by `m·d ∈ 𝔪 ∖ 𝔪²` while the child is read at window `N − mk ≥ 2`). At
+`a := classSect O m N c.1` this statement is exactly the battery's `extract_child` semantics.
+The surviving `∀ a` is a strengthening beyond the battery's tested point, licensed by H.109's
+`pow_dvd_coeff_comp_sub` (`π^N` for ANY recentring — the full child window), not by teeth. -/
 axiom alphaChild_spec {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     {π : O} (hπ : Irreducible π) {m N k : ℕ} {z : ResidueField O} (hm : 2 ≤ m)
     (hN : 1 ≤ N) (c : ClusterState O m N) (h : IsAlphaState π c k z) :
-    ∀ (a : Fin m → O) (w : O), proj O m N a = c.1 → residue O w = z →
+    ∀ a : Fin m → O, proj O m N a = c.1 →
       ∃ b : Fin m → O, (∀ i, b i ∈ maximalIdeal O) ∧
-        (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))
+        (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C (resSect O z)))
           = Polynomial.C (π ^ (m * k)) * monicPoly b ∧
         proj O m (N - m * k) b = (alphaChild π c h).1
 
@@ -2502,23 +2577,48 @@ axiom card_alphaFiber {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuation
 
 /-! ### H.116 — the β-extraction at the capped window (N-2c) -/
 
-/-- **H.116 (def half, OPAQUE at this scratch — real body owed at the §17 0e gate).** The
-`(μ, k, z)`-child of a state, read at an EXPLICIT window `M` (DECISION D-H17.2: the window is
-an argument, so genre-level statements avoid dependent-index casts; the genuine child is at
-`M = N − betaContent c k`). -/
-axiom betaChild {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
-    [IsAdicComplete (maximalIdeal O) O] (π : O) {m N μ k : ℕ} {z : ResidueField O}
-    (c : ClusterState O m N) (h : HasChildAt π c μ k z) (M : ℕ) : ClusterState O μ M
+set_option linter.unusedVariables false in
+/-- **H.116 (def half — REAL BODY, A-H.5 §3).** The `(μ, k, z)`-child of a state, read at an
+EXPLICIT window `M` (DECISION D-H17.2: the window is an argument, so genre-level statements
+avoid dependent-index casts; the genuine child is at `M = N − betaContent c k`. D-H17.2 is
+UNAFFECTED by A-H.5 — the refuted item was the centre quantifier, not the explicit window).
 
-/-- **H.116 (clause i).** The extraction factors every lift: recentred = `π^D ·`
-(monic degree-`μ` cluster lift of the child) `×` (co-factor), exactly. -/
+Unlike α (a division formula) β needs a FACTORIZATION, so the body is a DEFINITION BY
+DESCRIPTION at the pinned centre: the child state whose lift `b` (degree `μ`, coefficients in
+`𝔪`) exhibits the pinned frame's `π^D`-factorization. Its two obligations are node-side:
+EXISTENCE (H.102's coprime split + `exists_monic_factorization_finset`) and UNIQUENESS AT A
+FIXED CENTRE (H.102's `InjOn` plus the `𝔪`-coefficient condition). Until existence is proved
+the description sits on its junk branch and clause (i) is false — nothing smuggled. -/
+noncomputable def betaChild {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] (π : O) {m N μ k : ℕ} {z : ResidueField O}
+    (c : ClusterState O m N) (h : HasChildAt π c μ k z) (M : ℕ) : ClusterState O μ M :=
+  letI : Decidable (∃ d : ClusterState O μ M, ∃ (b : Fin μ → O) (H' : Polynomial O),
+        (∀ i, b i ∈ maximalIdeal O) ∧
+        recFrame π c.1 k z = C (π ^ betaContent c k) * (monicPoly b * H') ∧
+        proj O μ M b = d.1) := Classical.dec _
+  if hb : ∃ d : ClusterState O μ M, ∃ (b : Fin μ → O) (H' : Polynomial O),
+        (∀ i, b i ∈ maximalIdeal O) ∧
+        recFrame π c.1 k z = C (π ^ betaContent c k) * (monicPoly b * H') ∧
+        proj O μ M b = d.1
+    then hb.choose
+    else ⟨fun _ => 0, fun _ => Ideal.zero_mem _⟩
+
+/-- **H.116 (clause i) [RE-SIGNED: A-H.5 §4].** The extraction factors every lift of the class
+AT THE CANONICAL CENTRE `resSect O z`: recentred = `π^D ·` (monic degree-`μ` cluster lift of the
+child) `×` (co-factor), exactly.
+
+The committed `∀ (a) (w), … residue O w = z → …` form was REFUTED: at `O = ℤ₅`,
+`f = (x−5)²(x−10)` (`m = 3, N = 6, k = 1, z = 1, μ = 2`, so `D = 3`, window 3) the centres
+`w = 1` and `w = 6` give the children `(0, 0)` and `(25, 10)` mod `5³`, each the UNIQUE monic
+degree-`μ` factor with coefficients in `𝔪` at its centre. `∀ a` survives (H.109's
+`pow_dvd_coeff_comp_sub` + H.102's `InjOn` at window `N − D`). -/
 axiom betaChild_spec {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
     [IsAdicComplete (maximalIdeal O) O] {π : O} (hπ : Irreducible π)
     {m N μ k : ℕ} {z : ResidueField O} (hm : 2 ≤ m) (hN : 1 ≤ N)
     (c : ClusterState O m N) (h : HasChildAt π c μ k z) (h0 : ¬ IsDrainState c) :
-    ∀ (a : Fin m → O) (w : O), proj O m N a = c.1 → residue O w = z →
+    ∀ a : Fin m → O, proj O m N a = c.1 →
       ∃ (b : Fin μ → O) (H' : Polynomial O), (∀ i, b i ∈ maximalIdeal O) ∧
-        (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C w))
+        (monicPoly a).comp (Polynomial.C (π ^ k) * (X + Polynomial.C (resSect O z)))
           = Polynomial.C (π ^ betaContent c k) * (monicPoly b * H') ∧
         proj O μ (N - betaContent c k) b
           = (betaChild π c h (N - betaContent c k)).1
