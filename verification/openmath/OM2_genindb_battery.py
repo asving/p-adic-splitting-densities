@@ -21,7 +21,8 @@ PART 4  (CC-1 + F-1):  the multiset-cancellation defeat scan and the per-type co
         exhibit.
 
 Exit code 0 iff every check passes.  Run:  python3 OM2_genindb_battery.py  [--fast] [--no-oracle]
-(the padic venv python is needed for the oracle leg: /workspace-vast/asving/envs/padic/bin/python)
+(the oracle leg imports verification/quartic_oracle.py; cypari2 is found via the
+user site-packages ~/.local/lib/python3.10/site-packages)
 """
 
 import sys, os, itertools, random
