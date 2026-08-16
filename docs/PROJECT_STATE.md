@@ -5414,3 +5414,62 @@ C wave 6 landed C.13/C.44 (ChapC 33); OM-8's instrument sealed
 ITSELF — F.04/F.11 (Display-A carriers) + F.12 (W-1 carrier) at
 gate signatures, F.02/F.03/F.06 stubs PROVED, F.07 + A-W.2
 lemmas (badbb9cb).
+
+**2026-08-16 DATED APPEND #73 — OM WAVE 4 CLOSES: OM-8 AND OM-9
+BOTH DONE (ROSTER 9/10), CHAPTER F NOW EXISTS IN leanfinal,
+OM-10 (THE LAST ROSTER UNIT) LAUNCHED; WELD-ZERO PASS 2
+CLARIFIED TO THE TUESDAY CODEX GATE.** (1) OM-8 (deep-twist
+∀i≥3, HYP.57/63): HYP.57's named adjudication PERFORMED — YES
+at every DEF GENTOW5-1 instantiation with the canonical
+node-point residue read, all i≥3 and all s≥0 at once (letter-
+lattice factorization + residue multiplicativity + letters ∈
+K_iˣ); NO at arbitrary ambient ρ (the defeat is REAL at real
+tower exponents), so the residual is SUPPLY-SIDE WIRING — E.61's
+socket must bind chapter C's canonical residue data, and the T1
+convention walk reduces to the lattice leg. HYP.63's empty-base
+worry DISSOLVED: interleaved induction (base = landed GENTOW2
+(b)@2, step = WI, chain = frozen GENTOW5), skeleton PROVED
+(wle_of_interleaved), footprint walk recorded; residual =
+supplier grades + one fresh-context hostile pass on the C-3/C-5
+index-alignment reading, commissioned at chapter I's discharge
+node. Numerics 52/0 bit-identical (first f₄=3 three-slot frame,
+first non-prime-field deep ϑ (F₉), first equal-char deep rows).
+Lean: NODE D.62 LANDED at the A-D.2 signature + D62w witness
+layer incl. the GENERAL-DEPTH core triangular_descent/dvd_stage
+— the ∀i arithmetic skeleton is Lean-general. Both rows CARRY.
+(2) OM-9 (weld conjuncts, HYP.74/148+139): CHAPTER F's FIRST
+LANDINGS — §4+§5 complete, 16 files, Display-A carriers
+JD0Box2/GenhnBox2 + W1Transport byte-identical to the 0e gate
+signatures, 9/15 axiom stubs PROVED (F.09 assoc-from-cocycle,
+F.10b power basis, count-blindness, F₂ vacuity…), 29 theorems
+Lean-core; battery 95/0 with 8/8 mutants; fresh theorems
+gaugeCobdry_isCocycle + CarryCocycle.c_comm (every carry cocycle
+over ℤ/E is symmetric). HONESTY FINDING (ledger ARC NOTE): the
+W-1 carrier is the transport's SIGNATURE only — a typed
+instantiation can NEVER discharge HYP.139; its math content
+lives strictly in the site instantiation (chapter I's w1-field
+note flagged at I.10/L-2). HYP.74 CARRY (residual = four-line
+synthesis + seven strike records), HYP.148 CARRY (residual =
+"the site's carry table IS a CarryCocycle" + HYP.139), HYP.139
+MATH. WELD-ZERO fence verified untouched. (3) WELD-ZERO PASS 2
+CORRECTION: OM-9's fence text said pass 2 was "reassigned to a
+Fable-max agent and IN FLIGHT" — STALE; no such agent exists
+(storm casualty). The note's own operative counter block
+(WELDZERO_2026-08-14.md tail) specifies pass 2 as the
+gpt-5.6-sol confirmation pass, model-diverse per the RCT
+protocol, NOT BEFORE Tue 2026-08-18 10:23. Counter stands at
+1 of 2. QUEUED to the Tuesday codex window alongside the A-3
+riders and chapter cross-reads — no relaunch now. (4) INCIDENT
+(disclosed by OM-8): commit 223eccca incidentally staged OM-9's
+then-uncommitted ledger/CHAP-I hunks (shared files, concurrent
+units); content verified intact, attribution muddled in that one
+commit; future charges now instruct hunk-ownership checks on
+shared files. (5) LAUNCHED: OM-10 (the n≥8 box family,
+HYP.67–71/78–80/142/143/144-BOX-2 — the roster's last unit,
+OM-7's pinned terminal residue), fable-max, standard method
+charge. (6) Fleets: D wave 5 COMPLETE (D.18 landed, dfbb24dd —
+all 8 + D.26); recovery workflow (B.80–82 chain, H.114–116
+re-land) + C wave 6b (C.23/45/56a/109/110/117) RUNNING after
+the storm backoff. Orchestrator queue: ChapF roll-up/root wiring
++ leanspec ChapF retirement at the next layer close (OM-9's
+flag, OM-7 precedent).
