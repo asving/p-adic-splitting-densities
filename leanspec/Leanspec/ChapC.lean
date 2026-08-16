@@ -1327,13 +1327,48 @@ class FGMNCalculus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ
   nuEquiv_ne_of_Rres : ∀ (g g' : Polynomial O), KP g → KP g' →
     Rres g ≠ Rres g' → ¬ nuEquiv g g'
 
-/-- NODE C.126's census name / C.92's ONE signed axiom (`fgmn_calculus_exists`): the interface
-is realized on every chain. Gate-(b)-SIGNED-AT-CATEGORY (append #66), statement-UNINSPECTED —
-flagged for the owner; consumers may also take `[FGMNCalculus W e' f' u']` hypothesis-form. -/
-axiom fgmn_calculus_exists {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
-    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (he' : 0 < e') (hf' : 0 < f')
-    (hcop : Nat.Coprime u' e') (hfloor : e' * W.Econst r < u') :
-    Nonempty (FGMNCalculus W e' f' u')
+/-! ### ⛔ C.92's EXISTENCE AXIOM IS **RETIRED** — DECISION A-C.6, option (1) (hypothesis-form)
+
+`axiom fgmn_calculus_exists` was NOT landed and is now **withdrawn**, so **C.92 carries no
+gate-(b) axiom at all and EXITS the gate-(b) signature queue**. The class `FGMNCalculus` above
+survives unchanged, as a HYPOTHESIS carrier only — which is what all 16 of its consumers in this
+file already use (`[I : FGMNCalculus W e' f' u']` / `(I : FGMNCalculus …)`); the axiom had
+**zero** term-level consumers (census: `verification/ac6_cite_redraft_check.py` PART 3).
+
+```lean
+-- RETIRED A-C.1 DRAFT (do not declare — a Lean-core THEOREM, importing no [FGMN] content):
+-- axiom fgmn_calculus_exists {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+--     (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (he' : 0 < e') (hf' : 0 < f')
+--     (hcop : Nat.Coprime u' e') (hfloor : e' * W.Econst r < u') :
+--     Nonempty (FGMNCalculus W e' f' u')
+```
+
+**WHY.** `leanfinal/Uniformity/ChapC/C92_VACUITY.lean.txt` PROVES that exact conclusion under
+those exact binders in Lean core (`fgmn_calculus_exists_IS_A_THEOREM`, junk instance:
+`ExactGrade := fun _ _ => False`, `Rres := fun _ => 1`, `KP := fun _ => False`, …), with three
+of the four side conditions (`he'`, `hcop`, `hfloor`) unreferenced. As a literature cite that is
+worse than unsound: a name on the trusted-base allowlist, in every downstream `#print axioms`,
+importing **zero** [FGMN] content.
+
+**THE REJECTED OPTION (2) — "anchor the interface, then keep an existence axiom" — and why the
+SOURCE rejects it.** Anchoring means adding field-laws tying `ExactGrade`/`Rgr`/`Rres` to the
+LANDED `dv`-layer (`dvHgt`, `dvResPoly`, `digAt`, `DeepTower.deepDigit`). [FGMN] defines `R_ν`,
+`ν`-equivalence and `KP(ν)` INTRINSICALLY, inside the graded algebra of the MacLane valuation;
+it states nothing about this corpus's `Φ′`-development coordinates. So the anchoring field-laws
+are a DICTIONARY between the source's objects and ours — corpus-side theorems (the C.22/C.25
+read layer), not cited ones — and an existence axiom carrying them would assert, under a
+`[cite:FGMN-chain]` label, a bridge FGMN never proves. That is precisely the failure mode the
+axiom policy's faithfulness entry exists to prevent, so option (2) is REJECTED: the anchoring
+belongs in the corpus as proof obligations, not in a cite.
+
+**CONSEQUENCES the owner should see.** (a) `C.126`'s axiom census row for `fgmn_calculus_exists`
+RETIRES (not renames): the chapter's declared gate-(b) axioms drop from three to the two
+redrafts. (b) Every `[FGMNCalculus …]`-conditional §10 theorem (C.99–C.104, C.90/C.91) keeps its
+hypothesis and is honestly conditional in its own signature. (c) The corpus now owes an INSTANCE,
+not an axiom: supplying `FGMNCalculus` at the concrete S2 chain (`C.97`'s `s2Witness`) is a
+proof obligation of the fleet. (d) No field-law of the class pins it to the `dv`-layer, so a
+`[FGMNCalculus …]`-conditional theorem is only as strong as its instance supply — recorded here
+so no reader mistakes the hypothesis for content. -/
 
 /-! ## A-C.1 §10 — NODE C.97 [def+lemma] the S2 tower witness (fragile no. 3)
 
@@ -1658,9 +1693,119 @@ def NS7TerminationStatement : Prop :=
       (∀ n, (hist n).block ∣ f) →
       (∀ n, DescentStep π (hist n) (hist (n + 1))) → False
 
-/-- C.94's declared gate-(b) axiom (append #66 category signature; statement-UNINSPECTED,
-owner inspection queued in CHAP-I's addendum). -/
-axiom agnprw_termination : NS7TerminationStatement
+/-! ### ⛔ THE A-C.1 DRAFT OF C.94 IS **MACHINE-REFUTED** — STRUCK, NOT DECLARED (A-C.6)
+
+`axiom agnprw_termination : NS7TerminationStatement` was NOT landed:
+`NS7TerminationStatement → False` is proved absolutely (over `ℤ_[2]`) in
+`leanfinal/Uniformity/ChapC/C94_REFUTATION.lean.txt`, Lean-core, sorry-free. **`DescentStep`
+and `NS7TerminationStatement` above are kept for the record and MUST NOT BE CONSUMED**; the
+A-C.6 redrafts `DescentStepR` / `NS7TerminationStatementR` below replace them, and on signature
+they take over the names.
+
+```lean
+-- STRUCK A-C.1 DRAFT (do not declare — proves False):
+-- axiom agnprw_termination : NS7TerminationStatement
+```
+
+Two independent slacknesses in the A-C.1 `refine` constructor: (i) `sideSet` is ALWAYS nonempty
+(`Uniformity.Density.Leaf.sideSet_nonempty_gen`, B39b), so both side clauses constrain nothing —
+the third occurrence of this defect class after C.113(i) and C.111; (ii) the recentering clause
+admits `s' = s`, where `(s.key − s'.key).natDegree = 0` and the clause degenerates to
+`0 < s.key.natDegree`. Hence `DescentStep π s s` for every `s` with a positive-degree key, and
+the constant history on `f = X` is an infinite chain. -/
+
+/-- **REDRAFT A-C.6 — AWAITING OWNER GATE-(b) SIGNATURE; the defective A-C.1 draft
+(`DescentStep`) is preserved struck above.** The §5 descent grammar, retyped so that the
+relation is contained in — not larger than — the one [AGNPRW] §5.5 proves terminates.
+
+The `jump` constructor is UNCHANGED (it is not implicated: `IsTestKey` pins
+`Ψ.natDegree = L.keyDeg₂ ≥ 2·D′ > D′ = deg F.key = deg s.key`, so `jump` admits no self-loop,
+and the key degree at least doubles at every jump while `2·keyDeg₂ ≤ deg s'.block ≤ deg f`, so a
+history has at most `log₂ (deg f)` jumps — the Lean shadow of the source's *"the condition
+`deg(φ) < deg(ϕ)` inside the second for loop may occur only a finite number of times"*).
+
+**THE `refine` CLAUSES, each from [AGNPRW] published §5.5** (accepted version, compiled
+2023-12-11; A-3 audit §3 §8):
+
+* Def 5.5 verbatim: *"A refinement step for a type `(µ, φ, ℓ)` is a step of the while loop which
+  yields a **unique new type** `(µ_λ, ϕ, n)`, with moreover `deg(ϕ) = deg(φ)`."* → the retained
+  `s'.block = s.block`, `s'.key.natDegree = s.key.natDegree`, and the NEW `s'.key ≠ s.key`
+  (equivalent to `s' ≠ s` here, since the blocks agree — the self-loop exclusion).
+* Def 5.5's first bullet verbatim: *"`N⁺_{µ,φ}(g)` is **one-sided** and its slope `−λ` satisfies
+  `e_rel(µ_λ) = 1`."* → the NEW `IsPure` (one-sidedness) and `1 < (sideSet …).card` (a genuine
+  SIDE, not a vertex — B.42 clause 5's two-point predicate, and the guard against B.34's
+  `ℕ`-division degeneracy), plus `0 < u` (the principal part `N⁺` is the negative-slope part;
+  at the leaf normalization `µ(φ) = 0` the above-floor fence C.09's `hκ` / C.33's `hslopes`
+  carry reads exactly `0 < u`) and `Nat.Coprime u ℓ`.
+* Def 5.5's second bullet verbatim: *"`R_{µ_λ,φ}(g) = (y − ζ)^ℓ`, for some `ζ ∈ κ(µ_λ)^*`."* →
+  the NEW residual clause, with `ζ ≠ 0` (the source's `κ(µ_λ)^*`) and **`2 ≤ sideDeg`**. The
+  multiplicity bound is the algorithm's own `n_i ≠ 1` branch (*"if `n_i = 1` then append
+  `(µ_λ, ϕ)` to Types"* — a simple residual root ENDS the branch, it is not a refinement), and
+  it is LOAD-BEARING: `verification/ac6_cite_redraft_check.py` PART 2c exhibits an infinite
+  chain over `ℤ_[2]` (`φ_n = x² − 2 + 2ⁿ` on the fixed block `x² − 2`) satisfying every other
+  clause with `sideDeg = 1`, so the refutation record's own weaker suggestion (`0 < sideDeg`)
+  is STILL refutable.
+* `u * ℓ' < u' * ℓ` (retained): the attained slope strictly increases.
+
+ADJUDICATED OUT, recorded for the owner: `ℓ = 1`. Source Def 5.5 says `e_rel(µ_λ) = 1`, which
+via source Thm 2.18 (`deg ϕ = e_rel(µ_λ)·deg ψ·deg φ`) is what the RETAINED same-degree clause
+already expresses; restating it as `ℓ = 1` would additionally assert that the repo's slope
+denominator IS `e_rel`, a normalization identification no landed lemma supplies. -/
+inductive DescentStepR (π : O) : DescentState O → DescentState O → Prop
+  | jump : ∀ {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} (L : LevelDatum F H₀ hpin)
+      (s s' : DescentState O),
+      s.key = F.key → 2 ≤ L.ℓ * L.r.natDegree →
+      HasLabel L s'.block → s'.block ∣ s.block →
+      IsTestKey L s'.key → L.keyDeg₂ * 2 ≤ s'.block.natDegree →
+      DescentStepR π s s'
+  | refine : ∀ (s s' : DescentState O) (u ℓ u' ℓ' : ℕ)
+      (hne : (sideSet s.key s.block u ℓ).Nonempty)
+      (hne' : (sideSet s'.key s.block u' ℓ').Nonempty),
+      s.key.Monic → s'.key.Monic → 0 < s.key.natDegree →
+      s'.block = s.block →
+      s'.key.natDegree = s.key.natDegree →
+      s'.key ≠ s.key →
+      (s.key - s'.key).natDegree < s.key.natDegree →
+      0 < u → 0 < ℓ → Nat.Coprime u ℓ →
+      0 < u' → 0 < ℓ' → Nat.Coprime u' ℓ' →
+      1 < (sideSet s.key s.block u ℓ).card →
+      1 < (sideSet s'.key s.block u' ℓ').card →
+      IsPure s.key s.block u ℓ →
+      IsPure s'.key s.block u' ℓ' →
+      2 ≤ sideDeg s.key s.block u ℓ hne →
+      (∀ H₀ : ℕ, npHgt s.key s.block (sideMin s.key s.block u ℓ hne) = (H₀ : ℕ∞) →
+        ∃ ζ : resField s.key, ζ ≠ 0 ∧
+          resPoly π s.key s.block u ℓ hne H₀
+            = (Polynomial.X - Polynomial.C ζ) ^ sideDeg s.key s.block u ℓ hne) →
+      u * ℓ' < u' * ℓ →
+      DescentStepR π s s'
+
+/-- **REDRAFT A-C.6 — AWAITING OWNER GATE-(b) SIGNATURE.** NODE C.94's exact Lean statement,
+over the redrafted grammar. Body byte-identical to `NS7TerminationStatement` except for
+`DescentStep → DescentStepR`. On signature this becomes, and ONLY becomes,
+`axiom agnprw_termination : NS7TerminationStatementR` — nothing is declared here.
+
+SOURCE: [AGNPRW] Alberich-Carramiñana–Guàrdia–Nart–Poteaux–Roé–Weimann, *Polynomial
+factorization over henselian fields*, **Found. Comput. Math. 25 (2025), no. 2, 631–681**,
+DOI 10.1007/s10208-024-09646-x, **Theorem 5.6** verbatim: *"If `v` is discrete of rank-one, then
+the OM-algorithm terminates."*, together with §5.5's reduction *"the OM-algorithm does not
+terminate if and only if there is an infinite sequence of refinement steps"*. (The repo's
+"Thm 5.2" is the arXiv-v1 number and COLLIDES with a different published theorem — A-3 audit §3.)
+
+CERTIFICATION (A-C.6): the C.94 refutation program no longer elaborates against this statement
+(`leanfinal/Uniformity/ChapC/C94_REDRAFT_CERT.lean.txt`), and
+`verification/ac6_cite_redraft_check.py` PART 2b exhibits a GENUINE TWO-STEP refine descent over
+`ℤ_[2]` (block `f = (x−6)² − 32 = x² − 12x + 4`, keys `x → x−2 → x−6`, slopes `1 → 2`) at which
+every clause holds — so the relation is inhabited and the statement is not true-for-lack-of-
+steps. -/
+def NS7TerminationStatementR : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (IsLocalRing.ResidueField O)] (π : O), Irreducible π →
+    ∀ f : Polynomial O, f.Monic → Squarefree f →
+    ∀ hist : ℕ → DescentState O,
+      (∀ n, (hist n).block ∣ f) →
+      (∀ n, DescentStepR π (hist n) (hist (n + 1))) → False
 
 /-! ## A-C.1 §6 — COMPOSED KEYS AND TOWER BRIDGES (C.43–C.58 completions)
 
@@ -3580,17 +3725,91 @@ books and no node states);
 (3) purity of both factors at the common side is hypothesized (`IsDvPure`), which is the "common
 side data" of the prose. -/
 
-axiom fgmn_residual_mul (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+/-! ### ⛔ THE A-C.1 DRAFT OF C.66 IS **MACHINE-REFUTED** — STRUCK, NOT DECLARED (A-C.6)
+
+The `axiom fgmn_residual_mul` drafted here at A-C.1 was NOT landed: the gate-(b) landing
+proved it FALSE, absolutely, over `ℤ_[2]` at the LANDED `s2Frame` of C.97
+(`leanfinal/Uniformity/ChapC/C66_REFUTATION.lean.txt`, Lean-core, sorry-free). It is preserved
+verbatim in the comment below and REPLACED by the A-C.6 redraft `FgmnResidualMulStatement`.
+
+**The counterexample.** `g = g' = X` at `(u, ℓ) = (2, 1)`, `Φ′ = x² − 2`, `D′ = e₁f₁ = 2`.
+`IsDvPure F X 2 1` HOLDS because C.29's second conjunct `g.natDegree / (F.e₁ * F.f₁) ∈ …` uses
+`ℕ`-division, which floors `1 / 2` to `0`; so purity degenerates to "`0` is on the side" for
+EVERY nonzero `g` of degree `< D′`. Then `R(X)` is a constant while `R(X·X)` has a genuine
+two-point side with `X¹`-coefficient `1`, and the conclusion forces `1 = 0` in a field.
+
+```lean
+-- STRUCK A-C.1 DRAFT (do not declare — proves False):
+-- axiom fgmn_residual_mul (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+--     (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+--     {g g' : Polynomial O} (hg : g.Monic) (hg' : g'.Monic) {u ℓ : ℕ} (hℓ : 0 < ℓ)
+--     (hcop : Nat.Coprime u ℓ)
+--     (hpg : IsDvPure F g u ℓ) (hpg' : IsDvPure F g' u ℓ)
+--     (hne : (dvSideSet F g u ℓ).Nonempty) (hne' : (dvSideSet F g' u ℓ).Nonempty)
+--     (hne'' : (dvSideSet F (g * g') u ℓ).Nonempty)
+--     {M₀ M₀' M₀'' : ℕ}
+--     (hp : dvHgt F g (dvSideMin F g u ℓ hne) = (M₀ : ℕ∞))
+--     (hp' : dvHgt F g' (dvSideMin F g' u ℓ hne') = (M₀' : ℕ∞))
+--     (hp'' : dvHgt F (g * g') (dvSideMin F (g * g') u ℓ hne'') = (M₀'' : ℕ∞)) :
+--     ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
+--       dvResPoly F H₀ hpin (g * g') u ℓ hne'' M₀'' hp''
+--         = Polynomial.C c
+--             * (dvResPoly F H₀ hpin g u ℓ hne M₀ hp * dvResPoly F H₀ hpin g' u ℓ hne' M₀' hp')
+```
+-/
+
+/-- **REDRAFT A-C.6 — AWAITING OWNER GATE-(b) SIGNATURE; the defective A-C.1 draft is preserved
+struck above.** NODE C.66 `[cite:FGMN]`, residual multiplicativity at the `dv`-carrier.
+
+On signature this becomes, and ONLY becomes,
+`axiom fgmn_residual_mul : FgmnResidualMulStatement` — nothing is declared here.
+
+**THE TWO NEW BINDER GROUPS, and where each comes from.**
+
+1. `hfloor : ℓ * ((F.e₁ * F.f₁) * F.h) < u` — **REQUIRED, and it is the source's own standing
+   hypothesis.** [FGMN] states the product theorems for the PRINCIPAL polygon `N⁻` only, i.e.
+   at `λ ∈ ℚ_{>0}`, and the paper prints this very counterexample immediately after Thm 2.8:
+   *"The analogous statement for entire Newton polygons is false. For instance, consider
+   `g, h ∈ K[x]` such that `deg g, deg h < deg φ` and `deg gh ≥ deg φ`; then, `N_{µ,φ}(g)` and
+   `N_{µ,φ}(h)` are a single point, while `N_{µ,φ}(gh)` has a side of length one."* In the
+   repo's cleared coordinates the source's `λ` is `λ = u/ℓ − (e₁f₁)·h`, so `λ > 0` is exactly
+   `ℓ·((e₁f₁)·h) < u`; the refuting pair sits at `λ = 0`, the boundary this fence excludes.
+   Carried identically by C.09's `LevelDatum.hκ` and C.33's `DvDissection.hslopes`/`hbelow`.
+2. `hdg`/`hdg'`/`hpos`/`hpos'` (the degree law) — **CONSERVATIVE, not source-required.** The
+   source's Cor 4.12(3) (`R_i(gh) = R_i(g)R_i(h)`) has no degree hypothesis once `λ > 0`. These
+   four binders are the dv-level mirror of B.42's landed clause 3
+   (`φ.natDegree ∣ (F p).natDegree ∧ 0 < (F p).natDegree`) and of C.33's `DvDissection.hdeg`;
+   every consumer (a dv-dissection factor) supplies them for free, and they independently kill
+   the refuting pair. Keeping them costs the cite nothing and narrows the trusted base.
+
+`dev F.key g 0 ≠ 0` (B.42 clause 3's third conjunct) is NOT added: `hpg` already forces
+`0 ∈ dvSideSet F g u ℓ`, whose `DvOnSide` conjunct `dvHgt F g 0 ≠ ⊤` is exactly it.
+
+CERTIFICATION (A-C.6): the C.66 refutation program no longer elaborates against this statement
+(`leanfinal/Uniformity/ChapC/C66_REDRAFT_CERT.lean.txt`, which also exhibits a satisfying
+instance at the landed `s2Frame`), and `verification/ac6_cite_redraft_check.py` PART 1 checks
+26 in-binder pairs for the multiplicativity itself over the stage field.
+
+SOURCE (A-3-corrected published numbers, `docs/CITE_NUMBERING_AUDIT_2026-08-16.md`):
+J. Algebra **427** (2015) 30–75, DOI 10.1016/j.jalgebra.2014.12.022, **Thm 2.8 + Cor 4.12(3) +
+Cor 4.9(3)**. SCOPE FENCE unchanged: exactly the multiplicativity clause Step II of
+`LEMMA GENTOW-6.1` consumes — never the full FGMN machinery, never `w`'s closed form. -/
+def FgmnResidualMulStatement.{v} : Prop :=
+  ∀ {O : Type v} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+    (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
     (hpin : npHgt Polynomial.X F.key (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
     {g g' : Polynomial O} (hg : g.Monic) (hg' : g'.Monic) {u ℓ : ℕ} (hℓ : 0 < ℓ)
     (hcop : Nat.Coprime u ℓ)
+    (hfloor : ℓ * ((F.e₁ * F.f₁) * F.h) < u)
+    (hdg : F.e₁ * F.f₁ ∣ g.natDegree) (hdg' : F.e₁ * F.f₁ ∣ g'.natDegree)
+    (hpos : 0 < g.natDegree) (hpos' : 0 < g'.natDegree)
     (hpg : IsDvPure F g u ℓ) (hpg' : IsDvPure F g' u ℓ)
     (hne : (dvSideSet F g u ℓ).Nonempty) (hne' : (dvSideSet F g' u ℓ).Nonempty)
     (hne'' : (dvSideSet F (g * g') u ℓ).Nonempty)
     {M₀ M₀' M₀'' : ℕ}
     (hp : dvHgt F g (dvSideMin F g u ℓ hne) = (M₀ : ℕ∞))
     (hp' : dvHgt F g' (dvSideMin F g' u ℓ hne') = (M₀' : ℕ∞))
-    (hp'' : dvHgt F (g * g') (dvSideMin F (g * g') u ℓ hne'') = (M₀'' : ℕ∞)) :
+    (hp'' : dvHgt F (g * g') (dvSideMin F (g * g') u ℓ hne'') = (M₀'' : ℕ∞)),
     ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
       dvResPoly F H₀ hpin (g * g') u ℓ hne'' M₀'' hp''
         = Polynomial.C c
@@ -4235,6 +4454,66 @@ axiom lawBS2_pair_or_triple {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
          ∨ ¬ (ringChar (ResidueField O) ∣ Nat.choose μ₂ 3))
 
 end AC4Laws
+
+/-! # A-C.5 AMENDMENT LAYER (2026-08-16, the batched-repair unit) — NODE C.129
+
+**NODE C.129 [lemma] [signed: A-C.5] — the slot-height calculus for monomial data at a
+binomial key.** The height-evaluation layer that `lawEW_pin` (C.127 clause (b), `j ≤ 1`) is
+blocked on and that no landed C-chapter node owns; `leanfinal/notes/C127_PIN_BLOCKED_2026-08-16.md`
+names its five pieces and judges them "frame-generic, not E-W-specific" and deserving their
+own node. `lawEW_pin` then becomes a ~60-line consumer of
+`lawEW_discrepancy_eq_census` (landed) + this node + the record's E-W-specific piece 6.
+
+**These stubs are PROVED, not conjectured.** Certification record (the A-C.3
+certify-before-sign standard): `leanfinal/Uniformity/ChapC/C129_CERT.lean.txt` — all five
+clauses plus (b)'s helper, sorry-free, `#print axioms` Lean-core on every one, re-run at the
+repo pin 2026-08-16. They are `axiom`s here only because this file is the signature bank
+(standard stub lifecycle); the fleet's job on C.129 is transcription, not discovery.
+
+**Clause (b) has no leanspec twin, deliberately.** It reads `reass` (C.127's reassembly),
+which lives in `Uniformity/ChapC/C127.lean` — a landed module that is NOT in the `Uniformity`
+root import graph, so the name is not in scope here, and manufacturing a leanspec copy of a
+landed declaration is exactly the duplication anti-pattern A-C.3's D3-pattern audit flagged.
+Its signature is carried by the blueprint node and by the certification record:
+`dev F.key (reass F S) b = AdjoinRoot.modByMonicHom F.hmonic (S.coeff b)`, with helper
+`degree_modByMonicHom_lt : (AdjoinRoot.modByMonicHom F.hmonic x).degree < F.key.degree`. -/
+
+section AC5SlotHeights
+
+/-- C.129 (a) — the reduction of a MONOMIAL at a binomial key.  Ring-generic on purpose:
+nothing in the proof is frame data, and the corpus's `X^{D′} − C(πω)` is the instance at
+`w = π * ω`.  `[Nontrivial R]` is what gives `degree (X^D − C w) = D`; it is free at every
+consumer (`O` is a domain).  (Proved: the difference is
+`C lam * X^{N%D} * ((X^D)^{N/D} − (C w)^{N/D})`, killed by `sub_dvd_pow_sub_pow`; the
+remainder's degree is `N % D < D`.  The C127 record's guess that this "needs an induction on
+`N / D`" is not so.) -/
+axiom binomKey_mod_monomial {R : Type*} [CommRing R] [Nontrivial R] {D : ℕ} (hD : 0 < D)
+    (w lam : R) (N : ℕ) :
+    (Polynomial.C lam * Polynomial.X ^ N) %ₘ (Polynomial.X ^ D - Polynomial.C w)
+      = Polynomial.C (lam * w ^ (N / D)) * Polynomial.X ^ (N % D)
+
+/-- C.129 (c) — the `stageHeight` of a monomial, `dv(λx^a) = e₁·v(λ) + h·a`.  NO `λ ≠ 0`
+side condition: at `λ = 0` both sides are `⊤`, because `F.he₁` makes `F.e₁ • (⊤ : ℕ∞) = ⊤`.
+The call site wants a dictionary entry, not a case split. -/
+axiom stageHeight_C_mul_X_pow (F : KeyFrame O π) (lam : O) (a : ℕ) :
+    F.stageHeight (Polynomial.C lam * Polynomial.X ^ a)
+      = F.e₁ • gaussVal (Polynomial.C lam) + ((F.h * a : ℕ) : ℕ∞)
+
+/-- C.129 (d) — `gaussVal` of a unit times a `π`-power.  This is the clause that consumes
+the `IsUnit` hypotheses (`hc`, `hc₂`, `hc₀`, `hω`) that C.127's frozen signature carries and
+its two LANDED clauses do not. -/
+axiom gaussVal_C_unit_mul_pow (hπ : Irreducible π) {u : O} (hu : IsUnit u) (n : ℕ) :
+    gaussVal (Polynomial.C (u * π ^ n)) = (n : ℕ∞)
+
+/-- C.129 (e) — attainment for an `ℕ∞`-valued `Finset.inf`: all terms `≥ M`, one term `= M`.
+Absent slots are `⊤` and satisfy the lower bound vacuously, which is how the slot dictionary
+uses it.  (Clause (c)'s own proof consumes this — the designed list's internal coherence
+check.) -/
+axiom inf_eq_of_attained {ι : Type*} {s : Finset ι} {g : ι → ℕ∞} {M : ℕ∞}
+    (hlb : ∀ i ∈ s, M ≤ g i) {i₀ : ι} (hi₀ : i₀ ∈ s) (hat : g i₀ = M) :
+    s.inf g = M
+
+end AC5SlotHeights
 
 end LeanspecC
 
