@@ -48,14 +48,16 @@ by the rename.
 
 | kind | count | note |
 |---|---:|---|
-| `structure` (real bodies) | **8** | `ValueDictSite`, `JD0SiteStrike`, `CarryCocycle`, `CarrySite`, `LedgerJunction`, `WeldMPkg`, `WeldSupply`, `WeldObligations` |
-| `def` / `noncomputable def` (real bodies) | **16** | `gaugeCobdry`, `slotScale`, `slotScaleEquiv`, `resTwist`, `JD0Box2`, `TwistedAlgebra`, `single`, `GenhnBox2`, `W1Transport`, `SigmaLedgerLaw`, `xiChar`, `JAResLaw`, `JAGridLaw`, `XiWSatisfies`, `jbShear`, `JBVtxFace`, `gaugeBdry`, `DmultW` (18 counting the two below-the-line helpers `single` and the gate data) |
-| `instance` (below-the-line helpers, F.08) | **5** | `Mul`, `AddCommGroup`, `Module K`, `One`, `Pow _ ℕ` on `TwistedAlgebra` |
-| `axiom` stubs of theorem-shaped rows | **13** | F.02, F.03 (×3), F.06, F.09, F.10 (×2), F.13, F.15, F.16, F.18, F.23 (×2), F.25 — 15 axioms over 11 nodes |
-| gate `example`s / `#eval`s, all executed | **§10** | F.29, F.30 — see the gate block |
+| `structure` (real bodies) | **8** | `ValueDictSite` (F.04), `JD0SiteStrike` (F.05), `CarryCocycle` (F.07), `CarrySite` (F.11), `LedgerJunction` (F.14), `WeldMPkg` (F.24), `WeldSupply` (F.27), `WeldObligations` (F.28) |
+| `def` / `noncomputable def` of blueprint declarations (real bodies) | **18** | `gaugeCobdry`, `slotScale` (F.01); `slotScaleEquiv` (F.02); `resTwist` (F.03); `JD0Box2` (F.04); `TwistedAlgebra`, `single` (F.08); `GenhnBox2` (F.11); `W1Transport` (F.12); `SigmaLedgerLaw` (F.17); `xiChar` (F.18); `JAResLaw` (F.19); `JAGridLaw` (F.20); `XiWSatisfies` (F.21); `jbShear`, `JBVtxFace` (F.22); `gaugeBdry` (F.25); `DmultW` (F.26) |
+| `instance` (F.08's below-the-line helpers) | **5** | `Mul`, `AddCommGroup`, `Module K`, and — defect F-D3's repair — `One`, `Pow _ ℕ` on `TwistedAlgebra` |
+| `axiom` stubs of theorem-shaped rows | **15 over 11 nodes** | F.02 (×1), F.03 (×3), F.06, F.09, F.10 (×2), F.13, F.15, F.16, F.18 (lemma half), F.23 (×2), F.25 (lemma half) |
+| gate-local data (NOT blueprint declarations) | **11 `def` + 21 `instance`** | the table-built fields `F4`/`F9` with their `CommRing`/`Field` instances, `omega`, `iUnit`, `gateC`, `gateDelta`, `gateDelta3`, `gateCocycleF4`, `gateCocycleF3`, `z5`, `gateEta`, and `Fact (Nat.Prime 5)` |
+| gate `example`s, ALL EXECUTED | **50** | §10's F.29 (12 `example`s, plus the 6 `decide`-proved `CarryCocycle` proof fields of the two gate instances) and F.30 (31), plus 7 field-construction certificates |
 
-Nodes with no Lean declaration of their own: none in §§4–9; F.29/F.30 are gate blocks whose
-"signature" is the executed check list.
+**41 signed blueprint declarations** (8 + 18 + 15). Nodes with no declaration of their own: F.29
+and F.30 (gate blocks — their "signature" is the executed check list), and the two §7 DECISIONs
+D-F1/D-F2 (DAG rulings, not Lean objects).
 
 ## Gate order (GC-6.6(c) / CHAP-H §15) as actually run
 
@@ -95,10 +97,13 @@ elaborate is listed; nothing was adjusted silently.
   `Module K`); F.10's `pow_card_single` writes `(single 1 1 : TwistedAlgebra cc) ^ E`, which needs
   `Pow (TwistedAlgebra cc) ℕ`, i.e. (via `npowRec`) a `One`. *Class: missing declaration in a
   signed helper list.* **Stub-side repair, following F.09's own prose** ("`single 0 (cc.c 0 0)⁻¹`
-  is a two-sided unit"): `One (TwistedAlgebra cc) := ⟨single 0 ((cc.c 0 0 : K))⁻¹⟩` and
+  is a two-sided unit"): `One (TwistedAlgebra cc) := ⟨single 0 (((cc.c 0 0)⁻¹ : Kˣ) : K)⟩` and
   `Pow (TwistedAlgebra cc) ℕ := ⟨fun f n => npowRec n f⟩` — the same `npow` any later `Monoid`
   instance would carry, so F.10's statement is unchanged in content. The fleet must land these two
   instances (or a full `Monoid`/`Ring` instance, which is the natural target once F.09 is proved).
+  **The inverse must be taken in `Kˣ`, not in `K` after the coercion** — see F-D5(iv): with the
+  `((cc.c 0 0 : K))⁻¹` spelling the executed `q = 3` leg of F.29's check 4 does not `decide`,
+  because mathlib's `Inv (ZMod n)` does not kernel-reduce.
 * **F-D4 — F.22's below-the-line helper is signed in prose only.** "`jbShear` injectivity (`e ≠ 0`)
   is a below-the-line helper lemma the gate uses" has no SIGNATURE block, so there is nothing to
   stub at an exact type; this file's F.30 gate uses pointwise image values instead (which is what
@@ -112,8 +117,15 @@ elaborate is listed; nothing was adjusted silently.
   (ii) F.30 leg 1's `orderOf z = 4` is executed as the power certificate `z ^ 4 = 1 ∧ z ^ 2 ≠ 1`
   (order divides 4, is not 1 or 2 ⟹ order 4) — `orderOf` does not kernel-reduce. (iii) F.30 legs 3
   and 6 are set-level (`slotScale u '' S = S`, `jbShear e h '' V = V'`); executed pointwise on the
-  named finite witnesses, which is the arithmetic content the blueprint pins. *Class: gate-form
-  (not a statement defect).*
+  named finite witnesses, which is the arithmetic content the blueprint pins. (iv) **mathlib's
+  `Inv (ZMod n)` is `Nat.gcdA`-based (well-founded recursion), so `(2 : ZMod 5)⁻¹` does NOT
+  kernel-reduce**: §10's `χ₁ = 2⁻¹ = 3` value is executed as the UNITS inverse
+  (`((z5⁻¹ : (ZMod 5)ˣ) : ZMod 5) = 3`) plus the inverse-pair product `(2 : ZMod 5) * 3 = 1`. The
+  same reduction wall is why F-D3's `One` repair inverts inside `Kˣ`. (v) **`Field (ZMod 5)`
+  requires `Fact (Nat.Prime 5)`, which mathlib does not register** (only 2 and 3 are registered),
+  so §10's own `F₅` witness cannot even be TYPED at the `[Field K]`-based `xiChar` without a local
+  instance; the gate declares `instance gateFactPrimeFive : Fact (Nat.Prime 5)`. A fleet agent
+  landing an `F₅` example owes the same line. *Class: gate-form (not a statement defect).*
 * **F-D6 — F.29/F.30's `AdjoinRoot` field constructions do not carry `decide`-able instances; the
   pre-authorised table fallback was used.** `F₄ := AdjoinRoot (X² + X + 1 : (ZMod 2)[X])` and
   `F₉ := AdjoinRoot (X² + 1 : (ZMod 3)[X])` have no `DecidableEq`/`Fintype` instances (AdjoinRoot
@@ -261,7 +273,8 @@ instance instModuleTwistedAlgebra {E : ℕ} [NeZero E] {K : Type*} [Field K]
 /-- **Defect F-D3's stub-side repair**, following F.09's own prose (`single 0 (cc.c 0 0)⁻¹` is the
 two-sided unit): the `One`/`Pow` pair F.10's `^` needs and F.08's helper list omits. -/
 instance instOneTwistedAlgebra {E : ℕ} [NeZero E] {K : Type*} [Field K]
-    (cc : CarryCocycle E K) : One (TwistedAlgebra cc) := ⟨single 0 ((cc.c 0 0 : K))⁻¹⟩
+    (cc : CarryCocycle E K) : One (TwistedAlgebra cc) :=
+  ⟨single 0 (((cc.c 0 0)⁻¹ : Kˣ) : K)⟩
 
 instance instPowTwistedAlgebra {E : ℕ} [NeZero E] {K : Type*} [Field K]
     (cc : CarryCocycle E K) : Pow (TwistedAlgebra cc) ℕ := ⟨fun f n => npowRec n f⟩
@@ -323,9 +336,27 @@ axiom TwistedAlgebra.nat_card {E : ℕ} [NeZero E] {K : Type*} [Field K] [Finite
     Nat.card (TwistedAlgebra cc) = Nat.card K ^ E
 
 /-! ## §6 — THE Σ-LAW (SIGMALAW) (F.14–F.18); DECISION D-F3 in force: no F node declares a
-`FactorizationType`-valued function — σ-valued outputs consume chapter E's `ladderSigma`
-(unlanded at this gate: `leanfinal/Uniformity/ChapE/` is empty, so the GC-13 placeholder stands
-and NO Lean reference to `ladderSigma` appears here — none is signed). -/
+`FactorizationType`-valued function — where a weld σ-face needs a σ-valued output it consumes
+chapter E's dictionary by name.
+
+**GC-13 tier resolved at this gate (2026-08-16): E.45/E.46 have LANDED in `leanfinal`**
+(`Uniformity/ChapE/E45.lean`, `E46.lean`), so F.17's DEPENDS entry upgrades from the GC-13(c)
+placeholder `EFF.SIGMALAW.03 [supplied-by: chapter C]`-style form to the GC-13(a) landed
+declaration names `Uniformity.Density.Ladder.ladderSigma` and `…ladderSigma_degree`. The `#check`
+below records accessibility from this file; it asserts nothing, and **no F SIGNATURE references
+either name** — D-F3's whole point is that SIGMALAW has no σ-valued output, so a Lean dependency
+here would be manufactured.
+
+**Wiring note for the orchestrator (found at this gate, NOT an F defect):**
+`ladderSigma` is reachable from `import Uniformity`, but `ladderSigma_degree` is NOT — `E46.lean`
+is landed and imported only by `E47.lean`, and `Uniformity/ChapE.lean`'s roll-up currently lists
+`E01, E07, E25, E26, E34, E45` only. So the GC-4 degree-conservation leg exists but is outside the
+root import graph at HEAD; the second `#check` is commented out for exactly that reason and should
+be re-enabled when the ChapE roll-up catches up. -/
+
+#check @Uniformity.Density.Ladder.ladderSigma        -- GC-13(a), D-F3: landed, consumed by name
+-- #check @Uniformity.Density.Ladder.ladderSigma_degree -- landed in E46.lean, NOT yet in the
+-- `Uniformity` root import graph (ChapE roll-up gap, above): `unknownIdentifier` at HEAD.
 
 /-! ### NODE F.14 [def] — the abstract ledger junction (`(Σ-LEDGER)` as a structure).
 Defect **F-D1**: the signed field name `Σmap` is not a legal identifier; `sigmaMap` here. -/
@@ -499,4 +530,337 @@ structure WeldObligations {K : Type*} [Field K] {Γ : Type*} [AddCommGroup Γ]
   genhnBox2 : ∀ s, GenhnBox2 (csite s)
   w1 : W1Transport Rh RG
 
+/-! ## The Display-A carrier PINS (this gate's key deliverable, machine-checked)
+
+Chapter I consumes `JD0Box2` (F.04), `GenhnBox2` (F.11) and `W1Transport` (F.12) as Display-A
+conjunct fields, so their unfoldings are the contract. The three `Iff.rfl` pins below fail to
+elaborate if any carrier's body drifts by so much as a quantifier order — a standing gate on the
+signed statements, not an axiom. -/
+
+example {Γ K : Type*} [AddCommGroup Γ] [Field K] (site : ValueDictSite Γ K) :
+    JD0Box2 site ↔
+      ∃ u : Γ → Kˣ, site.slotAct = slotScale u ∧ site.ledgerAct = gaugeCobdry u := Iff.rfl
+
+example {K : Type*} [Field K] (s : CarrySite K) :
+    GenhnBox2 s ↔
+      (3 ≤ s.μ → ∃ (h : NeZero s.E) (cc : CarryCocycle s.E K),
+        ∀ a b, (cc.c a b : K) = s.carry a b) := Iff.rfl
+
+example {K : Type*} [Field K] {ι : Type*} (Rharness RGMN : ι → K) :
+    W1Transport Rharness RGMN ↔
+      ∃ c : ι → Kˣ, ∀ l, Rharness l = (c l : K) * RGMN l := Iff.rfl
+
+/-! ## §10 — THE GATES (F.29, F.30), EXECUTED (GC-11: `q = 2` AND `q = 3`)
+
+**Arena note, transcribed from §10.** Two degeneracies stalk this chapter's numerics: (i) over
+`F₂` the unit group is trivial, so every character check silently passes (F.06); (ii) on
+involution geographies (`ξ² = 1`) the corrected Σ-map and the WRONG boxed map coincide — 468
+sealed rows hid the defect that way. So the character content runs at `q = 2` on **F₄** (units of
+order 3 — non-involution) and at `q = 3` on **F₉** (units of order 4 — non-involution), with the
+`F₂`-triviality and the involution/NONCHAR instances kept as explicit NEGATIVE controls.
+`e > 1 ∧ f > 1` witness: `E = 2` (coset group, e-side) with `K = F₄` over `F₂` (f = 2), and the
+same shape at `K = F₉` over `F₃`.
+
+**Field constructions: the pre-authorised table fallback (defect F-D6).**
+`AdjoinRoot (X² + X + 1)` carries no `DecidableEq`/`Fintype`, so no `decide` can fire on it;
+§10 pre-authorises "a private table-built field instance below the gate in the same file", used
+here. **`native_decide` appears nowhere in this file.** -/
+
+section Gates
+
+/-! ### Gate-local field `F4 = (ZMod 2)[θ]/(θ² − θ − 1)`, carrier `ZMod 2 × ZMod 2`. -/
+
+/-- Gate-local: the four-element field, table-built (NOT a blueprint declaration). -/
+def F4 : Type := ZMod 2 × ZMod 2
+
+namespace F4
+
+instance : DecidableEq F4 := inferInstanceAs (DecidableEq (ZMod 2 × ZMod 2))
+instance : Fintype F4 := inferInstanceAs (Fintype (ZMod 2 × ZMod 2))
+instance : Inhabited F4 := inferInstanceAs (Inhabited (ZMod 2 × ZMod 2))
+instance : Zero F4 := ⟨(0, 0)⟩
+instance : One F4 := ⟨(1, 0)⟩
+instance : Add F4 := ⟨fun x y => ((x.1 + y.1 : ZMod 2), (x.2 + y.2 : ZMod 2))⟩
+instance : Neg F4 := ⟨fun x => ((-x.1 : ZMod 2), (-x.2 : ZMod 2))⟩
+/-- `θ² = θ + 1`. -/
+instance : Mul F4 :=
+  ⟨fun x y => ((x.1 * y.1 + x.2 * y.2 : ZMod 2), (x.1 * y.2 + x.2 * y.1 + x.2 * y.2 : ZMod 2))⟩
+
+instance commRing : CommRing F4 where
+  nsmul := nsmulRec
+  zsmul := zsmulRec
+  add_assoc := by decide
+  zero_add := by decide
+  add_zero := by decide
+  add_comm := by decide
+  neg_add_cancel := by decide
+  mul_assoc := by decide
+  one_mul := by decide
+  mul_one := by decide
+  left_distrib := by decide
+  right_distrib := by decide
+  mul_comm := by decide
+  zero_mul := by decide
+  mul_zero := by decide
+
+/-- `x⁻¹ = x^(q−2) = x²` on `F₄`; `0⁻¹ = 0`. -/
+instance : Field F4 :=
+  { commRing with
+    inv := fun x => x * x
+    nnqsmul := _
+    qsmul := _
+    exists_pair_ne := ⟨0, 1, by decide⟩
+    mul_inv_cancel := by decide
+    inv_zero := by decide }
+
+/-- `ω = θ`, of multiplicative order 3 — the NON-involution character at `q = 2`. -/
+def omega : F4ˣ := ⟨(0, 1), (1, 1), by decide, by decide⟩
+
+-- the order-3 (non-involution) certificate, and `Fintype.card F₄ = 4`
+example : Fintype.card F4 = 4 := by decide
+example : omega ^ 3 = 1 := by decide
+example : omega ≠ 1 := by decide
+example : omega ^ 2 ≠ 1 := by decide
+
+end F4
+
+/-! ### Gate-local field `F9 = (ZMod 3)[θ]/(θ² + 1)`, carrier `ZMod 3 × ZMod 3`. -/
+
+/-- Gate-local: the nine-element field, table-built (NOT a blueprint declaration). -/
+def F9 : Type := ZMod 3 × ZMod 3
+
+namespace F9
+
+instance : DecidableEq F9 := inferInstanceAs (DecidableEq (ZMod 3 × ZMod 3))
+instance : Fintype F9 := inferInstanceAs (Fintype (ZMod 3 × ZMod 3))
+instance : Inhabited F9 := inferInstanceAs (Inhabited (ZMod 3 × ZMod 3))
+instance : Zero F9 := ⟨(0, 0)⟩
+instance : One F9 := ⟨(1, 0)⟩
+instance : Add F9 := ⟨fun x y => ((x.1 + y.1 : ZMod 3), (x.2 + y.2 : ZMod 3))⟩
+instance : Neg F9 := ⟨fun x => ((-x.1 : ZMod 3), (-x.2 : ZMod 3))⟩
+/-- `θ² = −1`. -/
+instance : Mul F9 :=
+  ⟨fun x y => ((x.1 * y.1 - x.2 * y.2 : ZMod 3), (x.1 * y.2 + x.2 * y.1 : ZMod 3))⟩
+
+instance commRing : CommRing F9 where
+  nsmul := nsmulRec
+  zsmul := zsmulRec
+  add_assoc := by decide
+  zero_add := by decide
+  add_zero := by decide
+  add_comm := by decide
+  neg_add_cancel := by decide
+  mul_assoc := by decide
+  one_mul := by decide
+  mul_one := by decide
+  left_distrib := by decide
+  right_distrib := by decide
+  mul_comm := by decide
+  zero_mul := by decide
+  mul_zero := by decide
+
+/-- `x⁻¹ = x^(q−2) = x⁷` on `F₉`; `0⁻¹ = 0`. -/
+instance : Field F9 :=
+  { commRing with
+    inv := fun x => x * x * x * x * x * x * x
+    nnqsmul := _
+    qsmul := _
+    exists_pair_ne := ⟨0, 1, by decide⟩
+    mul_inv_cancel := by decide
+    inv_zero := by decide }
+
+/-- `i = θ`, of multiplicative order 4 — the NON-involution character at `q = 3`. -/
+def iUnit : F9ˣ := ⟨(0, 1), (0, -1), by decide, by decide⟩
+
+example : Fintype.card F9 = 9 := by decide
+example : iUnit ^ 4 = 1 := by decide
+example : iUnit ^ 2 ≠ 1 := by decide
+
+end F9
+
+/-! ### NODE F.29 [gate] — the twisted-algebra gate.
+The standard nontrivial 2-cocycle on `ZMod 2`: `c 1 1 = ζ`, else `1`; `δ 1 1 = 1`, else `0`. -/
+
+/-- The gate cocycle table (`c 1 1 = ζ`, else `1`). -/
+def gateC {K : Type*} [Field K] (ζ : Kˣ) : ZMod 2 → ZMod 2 → Kˣ :=
+  fun a b => if a = 1 ∧ b = 1 then ζ else 1
+
+/-- The gate carry shadow (`δ 1 1 = 1`, else `0`). -/
+def gateDelta : ZMod 2 → ZMod 2 → ℕ :=
+  fun a b => if a = 1 ∧ b = 1 then 1 else 0
+
+/-- F.29 leg 1, `q = 2`: all 8 triples of BOTH identities, at `(K, ζ) = (F₄, ω)` — the
+`CarryCocycle` fields are the checks (`decide`). `e > 1 ∧ f > 1` witness: `E = 2`, `F₄/F₂`. -/
+def gateCocycleF4 : CarryCocycle 2 F4 where
+  c := gateC F4.omega
+  δ := gateDelta
+  cocycle := by decide
+  δ_le_one := by decide
+  δ_cocycle := by decide
+
+/-- F.29 leg 1, `q = 3`: the same at `(K, ζ) = (F₃, 2 = −1)`. -/
+def gateCocycleF3 : CarryCocycle 2 (ZMod 3) where
+  c := gateC (-1)
+  δ := gateDelta
+  cocycle := by decide
+  δ_le_one := by decide
+  δ_cocycle := by decide
+
+-- F.29 leg 2 — F.13's cardinality identity at both primes: `card K ^ E` = 16 resp. 9.
+-- (Executed on the def's own carrier `ZMod E → K`; `Nat.card` via `Nat.card_eq_fintype_card`
+-- — defect F-D5(i).)
+example : Fintype.card (ZMod 2 → F4) = 16 := by decide
+example : Fintype.card (ZMod 2 → ZMod 3) = 9 := by decide
+example : Nat.card (TwistedAlgebra gateCocycleF4) = 16 := by
+  show Nat.card (ZMod 2 → F4) = 16
+  rw [Nat.card_eq_fintype_card]; decide
+example : Nat.card (TwistedAlgebra gateCocycleF3) = 9 := by
+  show Nat.card (ZMod 2 → ZMod 3) = 9
+  rw [Nat.card_eq_fintype_card]; decide
+
+-- F.29 leg 3 — F.10(a)'s `finrank = E = 2` at both primes (a `simp` leg, not `decide`:
+-- `Module.finrank` is noncomputable — defect F-D5(i)).
+example : Module.finrank F4 (TwistedAlgebra gateCocycleF4) = 2 := by
+  show Module.finrank F4 (ZMod 2 → F4) = 2
+  simp
+example : Module.finrank (ZMod 3) (TwistedAlgebra gateCocycleF3) = 2 := by
+  show Module.finrank (ZMod 3) (ZMod 2 → ZMod 3) = 2
+  simp
+
+-- F.29 leg 4 — F.10(b) at `E = 2`: `(single 1 1)² = ζ • single 0 1` with the orbit product
+-- `∏_{k=1}^{1} c(1,k) = c(1,1) = ζ`; expected `ζ = ω` at `F₄` and `ζ = 2` at `F₃`.
+-- Pointwise form (funext-free) so `decide` applies.
+example : ∀ t : ZMod 2,
+    ((single 1 1 : TwistedAlgebra gateCocycleF4) ^ 2) t
+      = (((F4.omega : F4) • (single 0 1 : TwistedAlgebra gateCocycleF4)) t) := by decide
+example : ∀ t : ZMod 2,
+    ((single 1 1 : TwistedAlgebra gateCocycleF3) ^ 2) t
+      = ((((2 : ZMod 3)) • (single 0 1 : TwistedAlgebra gateCocycleF3)) t) := by decide
+
+-- F.29 leg 5 — the `E = 3` integer-carry instance: the `{0,1}` carry table on `ZMod 3`
+-- satisfies the integer cocycle identity (27 triples).
+/-- The odd-`E` carry shadow: `δ a b = 1` exactly when `a.val + b.val` wraps. -/
+def gateDelta3 : ZMod 3 → ZMod 3 → ℕ :=
+  fun a b => if 3 ≤ a.val + b.val then 1 else 0
+
+example : ∀ a b : ZMod 3, gateDelta3 a b ≤ 1 := by decide
+example : ∀ a b d : ZMod 3,
+    gateDelta3 a b + gateDelta3 (a + b) d = gateDelta3 b d + gateDelta3 a (b + d) := by decide
+
+-- F.29 leg 6 — NEGATIVE control: at `K = F₂` the unit group is trivial, so every gate cocycle
+-- collapses to `c ≡ 1` (F.06's regime; a character check at `q = 2` on `F₂` alone is vacuous).
+example : ∀ u : (ZMod 2)ˣ, u = 1 := by decide
+example : ∀ a b : ZMod 2, gateC (1 : (ZMod 2)ˣ) a b = 1 := by decide
+
+/-! ### NODE F.30 [gate] — the character/fence/ledger gate. -/
+
+/-- `ZMod 5` is a field only through `Fact (Nat.Prime 5)`, which mathlib does not register. -/
+instance gateFactPrimeFive : Fact (Nat.Prime 5) := ⟨by norm_num⟩
+
+/-- The source's own `F₅` fence witness: `z = 2`, of multiplicative order 4. -/
+def z5 : (ZMod 5)ˣ := ⟨2, 3, by decide, by decide⟩
+
+-- F.30 leg 1 — WM-FENCE instances (F.23), as power certificates: `orderOf` does not
+-- kernel-reduce, so `orderOf z = 4` is executed as `z^4 = 1 ∧ z^2 ≠ 1` (order ∣ 4, ≠ 1, ≠ 2)
+-- — defect F-D5(ii).
+example : z5 ^ 4 = 1 := by decide
+example : z5 ^ 2 ≠ 1 := by decide
+example : z5 ≠ 1 := by decide
+example : ¬ ((4 : ℤ) ∣ 1) := by decide
+-- the χ₁ = 2⁻¹ = 3 ≠ 1 value, as the units inverse + the inverse-pair product: mathlib's
+-- `Inv (ZMod n)` is `Nat.gcdA`-based (well-founded recursion), so `(2 : ZMod 5)⁻¹` does NOT
+-- kernel-reduce and `decide` cannot see it — defect F-D5(iv).
+example : ((z5⁻¹ : (ZMod 5)ˣ) : ZMod 5) = 3 := by decide
+example : (2 : ZMod 5) * 3 = 1 := by decide
+-- the `q = 2` pair at `F₄` (`z = ω`, order 3): the criterion FAILS at `A = 1`, HOLDS at `A = 3`
+example : F4.omega ^ (1 : ℤ) ≠ 1 := by decide
+example : F4.omega ^ (3 : ℤ) = 1 := by decide
+-- the `q = 3` pair at `F₃` (`z = 2 = −1`, order 2): FAILS at `A = 1`, HOLDS at `A = 2`
+example : (-1 : (ZMod 3)ˣ) ^ (1 : ℤ) ≠ 1 := by decide
+example : (-1 : (ZMod 3)ˣ) ^ (2 : ℤ) = 1 := by decide
+
+-- F.30 leg 2 — `xiChar` instances (F.18). The `ξ₂ = θ₂⁻¹` degeneration, concrete at `F₅`:
+-- `xiChar 1 0 z5 2 1 = (z5²)⁻¹`, value `4`.
+example : xiChar 1 0 z5 2 1 = (z5 ^ (2 : ℤ))⁻¹ := by decide
+example : ((xiChar 1 0 z5 2 1 : (ZMod 5)ˣ) : ZMod 5) = 4 := by decide
+-- NON-involution instances (SL-INVREC's lesson: involution geographies hide the wrong map).
+-- `q = 2`, `F₄`: `χ = z = ω` (order 3), `e = 1`, `A = 2` ⟹ `ω¹·ω⁻² = ω⁻¹ = ω² = θ + 1 = (1,1)`.
+example : ((xiChar F4.omega 1 F4.omega 1 2 : F4ˣ) : F4) = ((1, 1) : ZMod 2 × ZMod 2) := by decide
+example : xiChar F4.omega 1 F4.omega 1 2 = F4.omega ^ (2 : ℤ) := by decide
+-- `q = 3`, `F₉`: `χ = z = i` (order 4), `e = 1`, `A = 2` ⟹ `i·i⁻² = i⁻¹ = i³ = −i = (0,2)`.
+example : ((xiChar F9.iUnit 1 F9.iUnit 1 2 : F9ˣ) : F9) = ((0, 2) : ZMod 3 × ZMod 3) := by decide
+example : xiChar F9.iUnit 1 F9.iUnit 1 2 = F9.iUnit ^ (3 : ℤ) := by decide
+-- INVOLUTION negative control (SL-INVREC's lesson, 218/218: involution geographies HIDE the
+-- wrong map). On `z² = 1` the character and its inverse coincide, so such an instance
+-- distinguishes the corrected `Σ_m` from the boxed `σ′` NOT AT ALL …
+example : ((-1 : (ZMod 3)ˣ) ^ (1 : ℤ))⁻¹ = (-1 : (ZMod 3)ˣ) ^ (1 : ℤ) := by decide
+example : xiChar 1 0 (-1 : (ZMod 3)ˣ) 1 1 = (-1 : (ZMod 3)ˣ) ^ (1 : ℤ) := by decide
+-- … while the order-3 character at `F₄` SEPARATES them (why the gate runs on `F₄`/`F₉`).
+example : (F4.omega ^ (1 : ℤ))⁻¹ ≠ F4.omega ^ (1 : ℤ) := by decide
+example : (F9.iUnit ^ (1 : ℤ))⁻¹ ≠ F9.iUnit ^ (1 : ℤ) := by decide
+
+-- F.30 leg 3 — slotScale counts (F.02) over `Γ = Fin 1`, `K = F₃`, on the stratum
+-- `S = {v | v 0 = 0}`: closure under every unit, `card S = 1`, and the NONCHAR negative
+-- control. Set-level image equality is executed pointwise — defect F-D5(iii).
+example : ∀ (u : Fin 1 → (ZMod 3)ˣ) (v : Fin 1 → ZMod 3), v 0 = 0 → slotScale u v 0 = 0 := by
+  decide
+example : Fintype.card {v : Fin 1 → ZMod 3 // v 0 = 0} = 1 := by decide
+-- NEGATIVE control (JD0-T-NONCHAR): the additive slot shift is a bijection that leaves `S` —
+-- it is NOT in the four-line perimeter.
+example : ((0 : Fin 1 → ZMod 3) + 1) 0 ≠ 0 := by decide
+
+-- F.30 leg 4 — the `F₂` degeneracy (F.06): `slotScale u = id` for every `u` over `K = F₂`.
+example : ∀ (u : Fin 1 → (ZMod 2)ˣ) (v : Fin 1 → ZMod 2), slotScale u v = v := by decide
+
+-- F.30 leg 5 — the torsor witness (F.25) over `E = 2`, `K = F₅`: `η ν = (−1)^ν` is a
+-- nontrivial character with the SAME coboundary as the trivial gauge, so `μ₂(F₅) ≠ 1` kills
+-- uniqueness at the smallest interesting instance.
+/-- `η ν = (−1)^ν` on `ZMod 2`, valued in `(ZMod 5)ˣ`. -/
+def gateEta : ZMod 2 → (ZMod 5)ˣ := fun ν => if ν = 1 then -1 else 1
+
+example : gateEta 1 ≠ 1 := by decide
+example : ((gateEta 1 : (ZMod 5)ˣ) : ZMod 5) = 4 := by decide
+example : gaugeBdry (fun _ : ZMod 2 => (1 : (ZMod 5)ˣ)) = gaugeBdry gateEta := by decide
+
+-- F.30 leg 6 — the JB shear (F.22) on the concrete harness vertex pair `{(0,0), (2,1)}`:
+-- `e = 2, h = 1` ⟹ `{(0,0), (2,4)}`; the `q = 3`-side instance `e = 3, h = 2` ⟹ `{(0,0), (2,7)}`.
+-- Pointwise on the named witnesses — defect F-D5(iii).
+example : jbShear 2 1 (0, 0) = (0, 0) := by decide
+example : jbShear 2 1 (2, 1) = (2, 4) := by decide
+example : jbShear 3 2 (0, 0) = (0, 0) := by decide
+example : jbShear 3 2 (2, 1) = (2, 7) := by decide
+
+end Gates
+
 end LeanspecF
+
+/-!
+## RESUME
+
+**LSPEC-F stage 0e COMPLETE (2026-08-16).** All 30 blueprint nodes are landed here: 41 signed
+declarations (8 `structure` + 18 `def` real bodies + 15 `axiom` stubs at the exact signed types),
+zero `sorry`, zero `native_decide`, `autoImplicit` off, and both §10 gates EXECUTED at `q = 2` AND
+`q = 3` (50 `example`s + 6 in-instance `decide`s; every expected value of §10 reproduced —
+card 16/9, finrank 2, `v² = ζ•single 0 1` at `ζ = ω` resp. `2`, the `F₅` fence witness, the
+`ξ₂ = θ₂⁻¹` degeneration, the two `jbShear` images, the `μ₂(F₅)` torsor witness, the `F₂`
+triviality and NONCHAR-shift negative controls, and the involution/non-involution separator pair).
+Build: `lake build Leanspec.ChapF` (module target only — `Leanspec.lean` is the orchestrator's
+file and is NOT touched by this unit, so concurrent stub-gate agents cannot collide).
+
+**Defects for the blueprint's dated-append queue (NOT patched there by this unit):** F-D1
+(`Σ`-bearing identifiers `Σmap`/`hΣ`/`hΣx`/`hΣρ` are illegal at the pin — the two FIELD names are
+part of the contract and must be respelled), F-D2 (F.12's `∀ λ` is the lambda keyword), F-D3
+(F.10's `^` has no signed `One`/`Pow`; the repair must invert inside `Kˣ`), F-D4 (F.22's
+prose-only injectivity helper is unsigned), F-D5 (five gate-form substitutions, all with the
+pinned values reproduced), F-D6 (the `AdjoinRoot` gate fields carry no `decide`-able instances;
+§10's pre-authorised table fallback used).
+
+**Remaining external actions:** (i) the orchestrator wires `import Leanspec.ChapF` into
+`leanspec/Leanspec.lean` once the concurrent ChapD gate closes; (ii) the two GC-13
+BLOCKED-UNTIL-RESOLUTION instance obligations (F.17's C-side `SigmaLedgerLaw` discharge, F.24's M4
+instance) stay unstubbed until the resolution pass; (iii) as the chapter-F fleet lands each
+declaration in `leanfinal`, retire its stub to the `example : <type> := <name>` diff form per
+`Leanspec.lean`'s stub lifecycle — the two Display-A carriers `JD0Box2` and `GenhnBox2` first,
+since chapter I consumes them; (iv) §8's WELD-ZERO amendment fires only after the ledger books
+the arc — nothing in this file consumes it.
+-/
