@@ -793,3 +793,5 @@ BP.C.128	BP.C.43	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source
 BP.C.128	BP.C.44	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.128 DEPENDS (A-C.4)
 BP.C.128	BP.C.71	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.128 DEPENDS (A-C.4)
 BP.C.128	BP.C.74	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.128 DEPENDS (A-C.4)
+BP.C.113	BP.B.11	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.113 DEPENDS — added A-C.5 (2026-08-16): clause (i)'s repaired form reads npHgt at the named support point
+BP.C.113	BP.B.16	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.113 DEPENDS — added A-C.5 (2026-08-16): clause (i)'s repaired form consumes OnSide/sideSet/suppVal (the vacuous-hne cure)

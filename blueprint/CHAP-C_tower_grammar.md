@@ -7153,6 +7153,34 @@ theorem ht_rec (Q : ℕ) (hQ : 2 ≤ Q) (census : FactorizationType → ℕ)
 
 ### NODE C.113 [theorem] [fresh]
 
+> ⚠ **[RE-SIGNED (clause (i) only): A-C.5, 2026-08-16 — the vacuous-`hne` defect, the
+> THIRD occurrence of the A-C.1 side-nonemptiness pattern (after C.111 and C.94).]** As
+> frozen at A-C.1, `ht_depth_increase` is **machine-refuted**:
+> `leanfinal/Uniformity/ChapC/C113_REFUTATION.lean.txt` (`c113_clause1_frozen_false`,
+> Lean-core, re-run green at the repo pin 2026-08-16) derives `False` from it at
+> `Φ = G = X`, `m = s = u = ℓ = 1`, because its side hypothesis `hne : (sideSet Φ G u ℓ).Nonempty`
+> is VACUOUS — the landed `sideSet_nonempty_gen` (B.39b) proves it unconditionally for every
+> `φ, f, u, ℓ` (`suppVal` is an `inf` over a nonempty range, hence attained). Stripped of
+> `hne`, the frozen statement asserts `ℓ·s < u` for EVERY direction, including directions
+> supporting the polygon only at its top vertex; adding `0 < u` or `Nat.Coprime u ℓ` does
+> NOT repair it (the witness has both). **The repair is the intent the STATEMENT already
+> carries** — "every attained side slope of a conservative-cell member is `> s`" is about a
+> GENUINE side, one with a support point strictly below the top abscissa `m`: replace `hne`
+> by a NAMED support point `{j : ℕ} (hj : j ∈ sideSet Φ G u ℓ) (hjm : j < m)`, and add the
+> chapter's standing full-degree binder `hdeg : G.natDegree = m * Φ.natDegree` (already
+> carried by `htCell` (C.108) and by C.110's `hGdeg`), which is what puts the top abscissa
+> `m` inside the index range of the `inf` defining `suppVal`. **CERTIFICATION (before
+> signing, the A-C.3 standard):** the repaired form is not merely designed, it is **PROVED**
+> — `ht_depth_increase_repaired` in the same record, sorry-free, Lean-core, four lines of
+> content (`suppVal ≤ u·m` by `Finset.inf_le` + `htop`; the on-side equation at `j` gives
+> `ℓ((m−j)s+1) + uj ≤ um`; with `d = m − j ≥ 1` that is `ℓsd + ℓ ≤ ud`, hence `ℓs < u`).
+> `hm : 0 < m` is now redundant (it follows from `hjm`) and is KEPT for a minimal diff.
+> **NOT signed, and recorded as the alternative:** the `2 ≤ (sideSet Φ G u ℓ).card` fence
+> (C.108's `IsSide` genuineness) should also imply the named support point, but that
+> implication needs a "development vanishes above the top" lemma that the record does not
+> establish; a future re-sign preferring the `card` form must supply it. Clause (ii)
+> (`ht_leaf_certified`) is UNTOUCHED — the record makes no claim about it.
+
 **STATEMENT.** *Step 5 — termination and Ore certification.* (i) Depth strictly
 increases: an eligible `e = 1` child has `s_u ≥ s_v + 1` (lower-polygon convexity in the
 argmin representation: every point strictly above the slope-`s_v` line through
@@ -7173,14 +7201,18 @@ trichotomy case (c) and chapter I's box, NEVER certified here.
 a conservative-cell member is `> s`, C.55's shape one level down; window-visibility depth
 bounding rides the `Pceil` data) and `ht_leaf_certified` (the order-1 Ore certificate per
 terminal side factor, with the **`B-BOX-1` inheritance as the inner hypothesis** — exactly
-B's, no more)].
+B's, no more); **clause (i) RE-SIGNED: A-C.5, 2026-08-16** — the vacuous `hne` is replaced
+by a named support point below the top plus the full-degree binder `hdeg`, and the repaired
+form is a PROVED Lean-core theorem (`ht_depth_increase_repaired`,
+`leanfinal/Uniformity/ChapC/C113_REFUTATION.lean.txt`), not a design].
 ```lean
 namespace Uniformity.Density.Tower
 
 theorem ht_depth_increase {Φ : Polynomial O} (hΦ : IsKey Φ) {G : Polynomial O} {m s : ℕ}
-    (hm : 0 < m) (hpins : ∀ j < m, (((m - j) * s + 1 : ℕ) : ℕ∞) ≤ npHgt Φ G j)
+    (hm : 0 < m) (hdeg : G.natDegree = m * Φ.natDegree)
+    (hpins : ∀ j < m, (((m - j) * s + 1 : ℕ) : ℕ∞) ≤ npHgt Φ G j)
     (htop : npHgt Φ G m = (0 : ℕ∞))
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hne : (sideSet Φ G u ℓ).Nonempty) :
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) {j : ℕ} (hj : j ∈ sideSet Φ G u ℓ) (hjm : j < m) :
     ℓ * s < u
 
 theorem ht_leaf_certified (hπ : Irreducible π)
@@ -7202,7 +7234,8 @@ those; they return to §5's trichotomy case (c) and `[W12-H]`.)
 
 **DEPENDS.** C.07/C.08 (argmin convexity arithmetic) · C.108 · B.58 (+ its `B-BOX-1`
 hypothesis at `d ≥ 2`) · B.63 (NS-6: leaves separable ⟺ descent stops) · B.79/B.82 (the
-certificates).
+certificates) · **[A-C.5]** B.11 (`npHgt`) · B.16 (`OnSide`/`sideSet`/`suppVal` — the
+repaired clause (i) reads the on-side equation at the named support point).
 
 **PROOF (route).** `EFF.W12.86` step 5, verbatim; the convexity leg in cleared argmin
 form.

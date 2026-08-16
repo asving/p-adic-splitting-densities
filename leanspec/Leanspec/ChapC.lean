@@ -2601,12 +2601,28 @@ axiom ht_rec (Q : ℕ) (hQ : 2 ≤ Q) (census : FactorizationType → ℕ)
           v.kappa * (∏ p ∈ v.sides, census (v.sideType p.1 p.2)) * Q ^ v.B N)).prod
 
 /-! ### NODE C.113 [theorem] — Step 5: termination + Ore certification [signed: A-C.1;
-split → 2; (ii)'s `B-BOX-1` inheritance is the inner hypothesis, exactly B's] -/
+split → 2; (ii)'s `B-BOX-1` inheritance is the inner hypothesis, exactly B's;
+**clause (i) RE-SIGNED: A-C.5, 2026-08-16**].
+
+**Why clause (i) changed.** The frozen `ht_depth_increase` is machine-REFUTED
+(`leanfinal/Uniformity/ChapC/C113_REFUTATION.lean.txt`, `c113_clause1_frozen_false`,
+Lean-core): its side hypothesis `hne : (sideSet Φ G u ℓ).Nonempty` is VACUOUS — B.39b's
+landed `sideSet_nonempty_gen` proves it for every `φ, f, u, ℓ` — so the statement asserted
+`ℓ * s < u` for EVERY direction, false already at `Φ = G = X`, `m = s = u = ℓ = 1`
+(the third occurrence of this A-C.1 pattern, after C.111 and C.94). The re-signed form
+names a support point strictly below the top abscissa (a GENUINE side, which is what the
+blueprint STATEMENT means by "every attained side slope") and adds the chapter's standing
+full-degree binder `hdeg`, which puts `m` inside the index range of the `inf` defining
+`suppVal`. It is not a design: `ht_depth_increase_repaired` in the same record PROVES it,
+sorry-free and Lean-core. `hm : 0 < m` is redundant under `hjm` and kept for a minimal
+diff. NOT adopted: the `2 ≤ (sideSet Φ G u ℓ).card` fence (it needs a "development
+vanishes above the top" lemma that no landed node supplies). -/
 
 axiom ht_depth_increase {Φ : Polynomial O} (hΦ : IsKey Φ) {G : Polynomial O} {m s : ℕ}
-    (hm : 0 < m) (hpins : ∀ j < m, (((m - j) * s + 1 : ℕ) : ℕ∞) ≤ npHgt Φ G j)
+    (hm : 0 < m) (hdeg : G.natDegree = m * Φ.natDegree)
+    (hpins : ∀ j < m, (((m - j) * s + 1 : ℕ) : ℕ∞) ≤ npHgt Φ G j)
     (htop : npHgt Φ G m = (0 : ℕ∞))
-    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hne : (sideSet Φ G u ℓ).Nonempty) :
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) {j : ℕ} (hj : j ∈ sideSet Φ G u ℓ) (hjm : j < m) :
     ℓ * s < u
 
 axiom ht_leaf_certified (hπ : Irreducible π)
