@@ -5140,3 +5140,54 @@ codex capped, fable substitutes); wave A (B-FIN + HARD C + HARD E)
 fires on its verdict, then D/F, then I last. Storm ops: 10-min
 watchdog cron re-armed; one czar kill (transient auth error, a NEW
 failure mode alongside the 529s) recovered by resume with zero loss.
+
+**2026-08-16 DATED APPEND #67 — OM-1 LANDS `package_three`: `P(3)` IS
+UNCONDITIONAL IN `leanfinal`, AND `DrainageAt 3` IS A THEOREM.** Unit
+OM-1 (the open-math campaign's n=3-rate slot; note
+`docs/openmath-campaign/OM-1_n3-rate_2026-08-16.md`) closed chapter
+G's named frontier (H-1, the `n = 3` rate) by a route that never
+proves HEX3.A: (i) the leancheck N3C drainage layer (@ `b00b0505`)
+was BACKPORTED into `leanfinal` under the quarry discipline as
+`Uniformity/ChapH/H97r1–r3` (recentring/trichotomy/peel toolkit; the
+E/L/R certificates, CERT R re-based on CN-19
+`norm_adjoinRoot_root`, no cubic-norm layer needed; the HYP.08 step
+lemma + mixed-precision box); (ii) NEW mathematics in `H97r4`
+sharpened both branches to rate 1 — the peel branch through G.36's
+EXACT `n = 2` law (`#(undecided ∩ peelBranch N) ≤ q^(2N)`, via the
+new reduction `decidedAt_of_peel_decided`: an undecided cubic class
+with a unit-derivative root has an `n = 2`-UNDECIDED cofactor class
+at the SAME level) and the triple branch through the sharp
+mixed-precision count `card_undecidedTriple_sharp`
+(`≤ q⁴·u(M)`, i.e. the `q^(−5)` constant — numerically an EQUALITY
+at every measured cell); giving `u(M+3) ≤ q^(2(M+3)) + q⁴·u(M)`;
+(iii) `H97b` unrolls it all in ℕ (`u(M)·q^M ≤ q^(3M+3)`, step
+`1 + q ≤ q³`) into **`rate_three : RateSpecies (residueCard O) 1 0 3
+(undecidedSeq O 3)`** — i.e. `undecidedSeq O 3 M ≤ (q^(M−3))⁻¹`,
+`M ≥ 1`, every complete DVR with finite residue field, constants
+outside the `∀ O` — and lands **`package_three : InductionPackage 3`
+UNCONDITIONAL** with `(K,B,c) = (1,0,3)`, plus the payoffs
+`undecidedSeq_three_tendsto_zero`, `drainage_three`,
+**`drainageAt_three : DrainageAt 3`** (Statement.lean's named Prop —
+G.71's hypothesis interface is superseded for every drainage
+consumer; G.71 itself untouched), `genuineDensity_three_eq_
+decidedDensity` at `n = 3`, and the now-unconditional
+`totalMass_three` (G.72 fired). Method compliance: outline first
+(`ed71cf6b`), per-step certification
+(`verification/om1_n3_rate_check.py`, ALL CHECKS PASSED, exact
+rationals + full enumerations p=2 N≤6 / p=3 N≤4 + the §6c decider
+rows; attacks A1–A3 survived) before any proving. Footprints: every
+new declaration Lean-core only; root build green (8 870 jobs).
+Commits: r1 `73be48ad`, r2 `e758086f`, r3 `ac10d459`, r4 `d70135fa`,
+H97b `fde9daf6`, wiring `6c1ce31c`. STATEMENT FENCE: H.95/H.96/H.97
+byte-unchanged; H.97's literal `hrate` `(1,1,0)` is NOT discharged
+(true, tight at `M = 1`, needs the exact level-1 census `u(1) = q²`
+— recorded as the narrowed residue; `package_three` no longer needs
+it). LEDGER EFFECTS (for the next fold, not executed here): HYP.08
+DISCHARGED in strengthened form (`undecidedCount_three_recursion`,
+first term `q^(−N)` vs the row's `q^(−N/2)`); HYP.09 DISCHARGED in
+`leanfinal` (was leancheck-only); HYP.29 not discharged as stated
+(HEX3.A stays open) but its drainage/rate consumers are now supplied
+axiom-free by the H97b route; HYP.11/28 untouched. GENIND
+consequence: both base cases of `THEOREM GENIND.B` (`P(2)`, `P(3)`)
+are now theorems; `drainage_of_package`'s per-degree instance at
+`n = 3` no longer needs the package hypothesis.
