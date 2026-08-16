@@ -8,18 +8,23 @@ import Uniformity.ChapE.E27
 import Uniformity.ChapE.E28
 
 /-!
-# Uniformity.ChapE.E29 — the twisted slot specification: `twisted_slot_spec` is FALSE as signed
+# Uniformity.ChapE.E29 — the twisted slot specification, RE-SIGNED at AMENDMENT A-E.4
 
 **Chapter E, NODE E.29** [theorem] (`blueprint/CHAP-E_sigma_ladder.md` §5, as repaired by
-A-E.1/E-D4), ENV-E2 + ENV-E3 + `open scoped Classical` (declaration-scoped, exactly as the
-amendment prescribes). R1-b's twisted slot lemma; `(SLOT₂)` is its `ϑ ≡ 1` instance.
+A-E.1/E-D4 and **re-signed by A-E.4, 2026-08-16**), ENV-E2 + ENV-E3 + `open scoped Classical`
+(declaration-scoped, exactly as the amendment prescribes). R1-b's twisted slot lemma; `(SLOT₂)`
+is its `ϑ ≡ 1` instance.
 
-**`BLOCKED`. The single signed theorem is refuted here, machine-checked, and is therefore NOT
-declared in this file in any form** — so the refuted claim never enters the environment as a
-fact (the H.71 / E.36 discipline). What lands instead: the counterexample, the class-location
-lemma the node actually needs, and two repair candidates under non-signed names, both PROVED.
+**STATUS: LANDED at the A-E.4 form.** The COMMITTED signature was refuted here, machine-checked
+(`twisted_slot_spec_false`), and the refuted claim never entered the environment as a fact (the
+H.71 / E.36 discipline). AMENDMENT A-E.4 adjudicated the re-sign in favour of **repair candidate
+1** — `hatt` records the ATTAINED VALUE, the class location is derived — and the signed name
+`twisted_slot_spec` now lands at the end of this file, over that candidate, with the signed
+conclusion byte-for-byte and every other binder byte-unchanged. Also landing: the counterexample
+(kept as provenance), the class-location lemma the node actually needs, and both repair
+candidates under their non-signed names.
 
-## The signed statement
+## The COMMITTED signed statement (REFUTED; preserved verbatim for the record)
 
 ```
 theorem twisted_slot_spec {O} [CommRing O] {K K'} [Field K] [Field K'] [Algebra K K']
@@ -97,14 +102,19 @@ in the cleared transcription.
   `t = s / ℓ` obeys `ℓt ≤ s < ℓg`. This is the ℤ-height twin of E.28's `rung_class_sep`, which is
   stated for `ℕ` heights and so cannot be applied directly here (carrier heights are
   `WithTop ℤ` by DECISION D-E1).
-* `twisted_slot_spec_of_attain_value` — **repair candidate 1**, the signed statement with the
-  single change that `hatt` records the attained VALUE:
+* `twisted_slot_spec_of_attain_value` — **repair candidate 1, ADOPTED by A-E.4**, the signed
+  statement with the single change that `hatt` records the attained VALUE:
   `∃ s < slotCount, c s ≠ 0 ∧ ∃ v, hgt (c s) = v ∧ ℓv + su = k`. PROVED. This is the faithful
   reading of "the minimum is attained": the class location is then *derived*
   (`attainer_in_class`), exactly as STATEMENT clause (i) promises.
-* `twisted_slot_spec_of_attain_inClass` — **repair candidate 2**, the minimal one: `hatt` names
-  an occupied in-class slot directly (`∃ t : Fin g, s₀ + ℓt < slotCount ∧ c (s₀ + ℓt) ≠ 0`).
-  PROVED. `k`, `m₀`, `hk`, `hmin` are then not needed at all, so this candidate drops them.
+* `twisted_slot_spec` — **the SIGNED NAME**, at that re-signed type (A-E.4), over candidate 1.
+* `twisted_slot_spec_of_attain_inClass` — **repair candidate 2, RECORDED AND NOT ADOPTED**
+  (A-E.4), the minimal one: `hatt` names an occupied in-class slot directly
+  (`∃ t : Fin g, s₀ + ℓt < slotCount ∧ c (s₀ + ℓt) ≠ 0`). PROVED. `k`, `m₀`, `hk`, `hmin` are
+  then not needed at all, so this candidate drops them. It is not the source's shape: it
+  ASSUMES what `EFF.HE7.11` Step 2 DERIVES ("The minimum … is therefore attained inside a single
+  class s₀ + ℓ·{0,…,d_r−1}"). Kept as the interface for a consumer that has already located the
+  class (e.g. through E.28).
 
 Both candidates end in the signed conclusion, byte-for-byte, under the `open scoped Classical`
 the amendment mandates; both fire E.27 (`seamSumT_ne_zero`) on a `γ`-vector shown nonzero at one
@@ -114,7 +124,9 @@ index through E.10's `dig_ne_zero`.
 `k` the next level's HEIGHT; the kill clause (`seamSumT ≠ 0`, "no cancellation") needs only that
 some in-class slot attains. The signed binder is kept in candidate 1 for signature fidelity (with
 the `unusedVariables` linter disabled at the declaration), because the node's contract is the
-bundle, not the kill clause alone.
+bundle, not the kill clause alone — and A-E.4 keeps it in the signed form for the same reason:
+the source defines `k := min_{s<L}(ℓ·w(c_s) + s·u)`, of which `hmin` is the lower-bound half, so
+dropping it would silently un-name `k`.
 
 ## What is still NOT here
 
@@ -145,7 +157,7 @@ ENVIRONMENT: ENV-E2 + ENV-E3 + `open scoped Classical` (A-E.1/E-D4).
 
 ## Status
 
-Sorry-free. The signed `twisted_slot_spec` is absent by design; `attainer_in_class`, both repair
+Sorry-free. `twisted_slot_spec` (the signed name, A-E.4 form), `attainer_in_class`, both repair
 candidates and every counterexample declaration are proved, Lean-core axioms only.
 -/
 
@@ -420,6 +432,40 @@ theorem twisted_slot_spec_of_attain_inClass {O : Type*} [CommRing O] {K K' : Typ
 
 end Repair
 
+/-! ## The SIGNED NAME, at the A-E.4 re-signed form -/
+
+open scoped Classical in
+/-- **NODE E.29's signed contract, `twisted_slot_spec`, at the AMENDMENT A-E.4 form.** The single
+change against the committed signature is `hatt`: it records the ATTAINED VALUE
+(`∃ v, C.hgt (c s) = v ∧ ℓv + su = k`) rather than a height computed through the truncating
+`ℕ`-division `((s − s₀)/ℓ)`, which admitted out-of-class attainers and made the committed form
+FALSE (`twisted_slot_spec_false` above). Every other binder — including `hocc` and `hmin` — is
+byte-unchanged: `hmin` is the lower-bound half of the source's `k := min_s(ℓ·w(c_s) + s·u)`
+(`EFF.HE7.11` Step 2 / `EFF.HE7.110` Step 3), so it stays as an honest inert binder even though
+this clause's proof does not consume it.
+
+The class location that STATEMENT clause (i) announces is DERIVED here, not assumed — through
+`attainer_in_class`, which is `EFF.HE7.11` Step 2's separation argument at `ℤ`-valued heights.
+Proof: the re-signed statement is repair candidate 1, so this is that candidate under the signed
+name. -/
+theorem twisted_slot_spec {O : Type*} [CommRing O] {K K' : Type*} [Field K]
+    [Field K'] [Algebra K K'] (C : SlotCarrier O K) (R : RungDatum) {η : K'}
+    (hgen : (minpoly K η).natDegree = Module.finrank K K')
+    (hint : IsIntegral K η) (hg : R.g = Module.finrank K K')
+    (c : ℕ → Polynomial O)
+    (hdeg : ∀ s, (c s).natDegree < C.D) (hsupp : ∀ s, R.slotCount ≤ s → c s = 0)
+    (hocc : ∃ s < R.slotCount, c s ≠ 0)
+    (ϑ : Fin R.g → K) (hϑ : ∀ t, ϑ t ≠ 0)
+    {k m₀ s₀ : ℕ} (hs₀ : s₀ < R.ℓ) (hk : R.ℓ * m₀ + s₀ * R.u = k)
+    (hmin : ∀ s < R.slotCount, c s ≠ 0 → ∀ v : ℤ, C.hgt (c s) = (v : WithTop ℤ) →
+      (k : ℤ) ≤ R.ℓ * v + s * R.u)
+    (hatt : ∃ s < R.slotCount, c s ≠ 0 ∧ ∃ v : ℤ, C.hgt (c s) = (v : WithTop ℤ) ∧
+      (R.ℓ : ℤ) * v + (s : ℤ) * (R.u : ℤ) = (k : ℤ)) :
+    seamSumT (fun t : Fin R.g =>
+        if s₀ + R.ℓ * (t : ℕ) < R.slotCount ∧ c (s₀ + R.ℓ * (t : ℕ)) ≠ 0
+          then C.dig (c (s₀ + R.ℓ * (t : ℕ))) else 0) ϑ η ≠ 0 :=
+  twisted_slot_spec_of_attain_value C R hgen hint hg c hdeg hsupp hocc ϑ hϑ hs₀ hk hmin hatt
+
 end Uniformity.Density.Ladder
 
 /-! ## Axiom footprint -/
@@ -433,5 +479,6 @@ section AxCheck
 #print axioms Uniformity.Density.Ladder.attainer_in_class
 #print axioms Uniformity.Density.Ladder.twisted_slot_spec_of_attain_value
 #print axioms Uniformity.Density.Ladder.twisted_slot_spec_of_attain_inClass
+#print axioms Uniformity.Density.Ladder.twisted_slot_spec
 
 end AxCheck
