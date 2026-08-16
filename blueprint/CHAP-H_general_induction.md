@@ -460,6 +460,7 @@ Six things, and they are the chapter's actual mathematical content:
 | A-H.5 | H.114, H.115, H.116 | *[dated append 2026-08-16, unit T-1 wave 3]* **THE CENTRE-SHIFT RE-SIGN**: clause (i) of `alphaChild_spec`/`betaChild_spec` REFUTED (∀-lift-pair quantifier); DECISION D-H17.3 pins the centre in the def, requantifies clause (i) at the canonical centre, and closes both opaque-carrier deviations. Carries LESSON L-BATT (GC-candidate) |
 | A-H.6 | H.121 (iii), H.122, **+H.121d**, **+H.30b** | *[dated append 2026-08-16, unit A-H.6]* **THE β-ENVELOPE RE-SIGN (F-H17.2's repair)**: clause (iii) re-signed at `(K′,B′,c′) = (1/3, 1, 1)` — `#(β∧undec)(N) ≤ (1/3)·N·Q^{m(N−1)}·Q^{−(N−1)}` — a STRENGTHENING (it implies the frozen envelope at every `N`); the finding's own repair candidate `(m−1)·Q^{−(N−1)}` is **REFUTED** (`q = 2` first failure `N = 32`); two nodes added — H.121d (the content-weighted β census, the priced non-circular pricing step) and H.30b (the α-geometric sum at `c ≥ 2`); H.122's `rate_close` route is **CLOSED as refuted**, the local replay is signed with its closing arithmetic. `verification/AH6_beta_envelope_check.py` |
 | A-H.7 | H.116 (clause ii), **+H.116b1**, **+H.116b2**, **+H.116b3**, **+H.116b4** | *[dated append 2026-08-16, unit A-H.7]* **THE H.116b RE-SPLIT**: `betaExtract_fiber_card` (BYTE-UNCHANGED) becomes an ASSEMBLY node over four new sub-nodes — the `Finset`-indexed multi-child peel with `Σ μ_p ≤ m` as a CONCLUSION (§3 adjudicates: NOT from H.108, it is paid for by the peel induction, so the DAG edge is b2 → b1), multiplicity-ADDS and the genre of a planted product (signed with the `hQroot` condition check `(e2)` forced), the `¬ IsCSState` transport, and THE COUNT at the **GAUGE-RESULTANT** route (uniform PAIR-space presentation multiplicity; `v(Res) = μμ'min(k,k')` b-independent). **FENCE A-H.7/F1: the peel-shift-REPLANT route is CLOSED** (D3/E3/surjectivity, machine-refuted, quoted verbatim in §1.2) — no agent re-attempts it. `verification/openmath/OM2_h116b_gauge_resultant.py` extended 39/39 → **65/65** |
+| A-H.8 | H.116b3 (PROOF only; statement BYTE-UNCHANGED), **+H.116b3-i**, **+H.116b3-ii**, **+H.116b3-iii** | *[dated append 2026-08-16, unit A-H.8]* **THE H.116b3 PROOF IS FALSE, THE STATEMENT IS TRUE**: A-H.7 §6 step 1 (*"the difference is one digit above the polygon, coefficientwise"*) is REFUTED by a machine counterexample inside the genre (`O = ℤ₂`, one child `(2,1,1)`) — at `φ = X` the Lean `npHgt` IS the coefficient valuation (B.15 `npHgt_X`), so the difference is one digit above the **HULL**, not above the coefficient, and the hull of a planted product is the **MINKOWSKI SUM** of the factors' hulls. The repaired proof (block record §3, steps 3a–3f) is signed here as a three-way re-split — **b3-i** the planted-polygon package (90 lines), **b3-ii** the above-the-line transport (120 lines, ⚠ FLAGGED FOR HUMAN REVIEW), **b3-iii** the assembly through chapter B's **general graded product law `B39a`** (150 lines) — SIZE corrected **60 → 360**. Three verification findings against the record's own brick citations (§2), the `∀`-over-lifts bridge signed (§5), **⚠ OWNER RIDER: b3-iii IMPORTS B39a's "Flagged for human review" banner** (§4). `leanfinal/notes/BLOCKED_H116b3_2026-08-16.md` |
 
 **Kind census** (mechanically counted over this file's `### NODE` headings): 15 `def`, 62 `lemma`,
 18 `theorem`, 3 `def+lemma`, 1 `gate` — **99 nodes**. Three of the `def` nodes carry a `structure`
@@ -10291,3 +10292,572 @@ A-H.1/A-H.2/A-H.3/A-H.4/A-H.5/A-H.6 are byte-unchanged by this append, as are H.
 and clause (i). FENCE A-H.7/F1 (the peel-shift-replant route is CLOSED) is standing and
 unconditional. CODEX/decorrelated CROSS-READ OWED on §3's adjudication of the degree-sum bound,
 on §5's `hQroot` necessity argument, and on §7 step 4's Smith-normal-form route.*
+
+---
+
+## AMENDMENT A-H.8 (2026-08-16, dated append; unit A-H.8) — NODE H.116b3: THE SIGNED PROOF IS
+## FALSE, THE SIGNED STATEMENT IS TRUE; RE-SPLIT INTO THREE SUB-NODES; THE `B39a` FLAG IMPORTED
+
+**Provenance.** The BLOCKED record `leanfinal/notes/BLOCKED_H116b3_2026-08-16.md` reported
+H.116b3 **BLOCKED — not weakened, no stand-in committed, no stub landed, no `sorry`**. What it
+found is unusual and worth naming precisely: **the node's STATEMENT is true and its binders are
+right; what is wrong is the signed PROOF of A-H.7 §6, whose step 1 is FALSE as literally
+written.** The record wrote the repaired proof out in full (its §3, steps 3a–3f) and recommended
+a three-way re-split, deferring the call. **This amendment makes that call**: it signs the three
+sub-nodes with exact Lean signatures, verifies each step of the repaired route against the
+landed bricks it cites (§2 — three findings, all recorded, none fatal), signs the third gap the
+record names (§5), corrects the SIZE estimate, extends the DEPENDS field, and records the
+owner-facing rider that consuming `B39a` imports `B39a`'s own human-review flag (§4).
+
+**`not_isCSState_plantedPoly_swap` is BYTE-UNCHANGED.** Nothing here weakens it; the three
+sub-nodes are new obligations *below* it, and b3-iii's conclusion IS it, verbatim.
+
+**Two artifacts decide the adjudication.** `verification/openmath/OM2_h116b_replant_cert.py`
+check **G** (*"the replant difference sits strictly above the parent's polygon at every
+`(u, ℓ)`"*) — which is measured against the **HULL**, and that is exactly why the battery did
+NOT catch §6 step 1's mis-statement; and the landed corpus itself, read declaration by
+declaration in §2.
+
+---
+
+### §1. The FALSE step, preserved verbatim, and the counterexample
+
+Verbatim from A-H.7 §6, PROOF step 1 (the passage is also frozen in place at §6, under an
+AMENDMENT BANNER, per the G.23a precedent):
+
+> 1. **The difference is one digit above the polygon, coefficientwise.**
+>    `δ := plantedPoly bb' Qc − plantedPoly bb Qc = (∏_p P(b'_p) − ∏_p P(b_p))·Q`. Telescope the
+>    product difference over `L.attach`; every summand carries one factor
+>    `alphaParent π b'_p k_p ẑ_p − alphaParent π b_p k_p ẑ_p`, whose `j`-th coefficient is
+>    `(alphaFrame' − alphaFrame)_j · π^{k_p(μ_p − j)}` with the bracket in `𝔪` (landed
+>    `alphaParent_coeff`; the two presentations are congruent mod `𝔪` because for `1 ≤ N` EVERY
+>    lift of a `ClusterState` is `𝔪`-valued). So the summand's Newton polygon lies at least `1`
+>    above `P(b_p)`'s at every abscissa, hence `v(δ_j) ≥ 1 + npHgt(monicPoly a)(j)` for all `j`.
+
+**Why it is false.** At `φ = X` the Lean `npHgt` is the **coefficient valuation**, not the hull
+height — B.15's landed
+
+```lean
+theorem npHgt_X (f : Polynomial O) (j : ℕ) :
+    npHgt X f j = IsDiscreteValuationRing.addVal O (f.coeff j)
+```
+
+With that reading the displayed inequality fails, and the smallest counterexample is inside the
+genre:
+
+* `O = ℤ₂`, one child `p = (μ, k, z) = (2, 1, 1)`, `Q = 1`. Then `P(b) = alphaParent π b 1 ŵ` has
+  `alphaFrame b ŵ ≡ (Y − 1)² = Y² − 2Y + 1 (mod 𝔪)`, so `alphaFrame_1 ≡ −2 ≡ 0`, i.e.
+  `v(P(b)_1) ≥ 2`.
+* The landed `pow_min_succ_dvd_coeff_recentre_alphaParent_sub` (H116bR §3) gives only
+  `v(δ_1) ≥ 1 + k(μ − 1) = 2`.
+* So `v(δ_1) ≥ 2 = 1 + 1` while `npHgt X f 1 = v(f_1) ≥ 2`: the inequality
+  `v(δ_1) ≥ 1 + npHgt X f 1` is **not** available. The difference is one digit above the
+  **HULL** (height `k(μ − j) = 1` at `j = 1`), not one digit above the coefficient.
+
+**What the defect costs.** Not the node: abscissa `1` is strictly ABOVE the hull on both sides,
+so it never sits on a side and the polygon is unmoved. The cost is that the proof must be run
+against the **hull profile**, and the hull of a planted product is the **Minkowski sum** of the
+hulls of its factors. That Minkowski identity is the whole missing content, and A-H.7 §6's
+DEPENDS field does not contain it. **It is also why the SIZE estimate of 60 lines is wrong by
+roughly a factor of six.**
+
+**Two reasons the naive reading cannot be repaired in place**, both carried from the record and
+both re-checked here against the landed signatures quoted in §2:
+
+* **B.77's congruence package does not apply to the swap.** `suppVal_congr`/`sideSet_congr`
+  (B77a) and `resPoly_congr` (B77b) transport the polygon along `π ^ N ∣ (f − f').coeff i`.
+  Here `bb` and `bb'` are DIFFERENT level-`N` classes, so `δ` is only `π ¹`-deep relative to the
+  planted floor; the hypothesis of B.77 fails at every cell of the genre. (B.77 *does* apply to
+  the LIFT bridge, §5 — a different use.)
+* **`IsCSState` is `∀`-over-lifts.** `hcs` with `h0` yields only `∃ a₀` lift of `c` with no CS
+  witness, and `a₀` need not be the planted lift. That is the third gap, signed at §5.
+
+---
+
+### §2. VERIFICATION OF THE REPAIRED ROUTE AGAINST THE LANDED BRICKS (charge 1)
+
+Each step of the record's §3 was type-sketched against the declaration it cites, quoted here at
+its landed signature. **Verdict: the route holds, with three findings — one wrong brick
+citation (F-1, repaired by a new lemma in b3-i), one binder the record did not name (F-2), one
+route the record's §3 names that does not exist (F-3, its own alternative works).** Nothing
+found impugns the statement or forces a fourth sub-node.
+
+#### §2.1 The bricks, quoted
+
+**`B39a` — the general graded product law** (`leanfinal/Uniformity/ChapB/B39a.lean`), the
+missing Minkowski content, purity-free. All five carry the same eleven-binder prefix:
+
+```lean
+theorem suppVal_mul_gen (hπ : Irreducible π) (hφ : IsKey φ) (hu : 0 < u)
+    (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) (htf : suppVal φ f u ℓ ≠ ⊤)
+    (htz : suppVal φ z u ℓ ≠ ⊤) (hnf : (sideSet φ f u ℓ).Nonempty)
+    (hnz : (sideSet φ z u ℓ).Nonempty) {Hf Hz : ℕ}
+    (hHf : npHgt φ f (sideMin φ f u ℓ hnf) = (Hf : ℕ∞))
+    (hHz : npHgt φ z (sideMin φ z u ℓ hnz) = (Hz : ℕ∞)) :
+    suppVal φ (f * z) u ℓ
+      = ((ℓ * (Hf + Hz) + u * (sideMin φ f u ℓ hnf + sideMin φ z u ℓ hnz) : ℕ) : ℕ∞)
+
+theorem npHgt_mul_gen  (… same prefix …) :
+    npHgt φ (f * z) (sideMin φ f u ℓ hnf + sideMin φ z u ℓ hnz) = ((Hf + Hz : ℕ) : ℕ∞)
+
+theorem sideMin_mul_gen (… same prefix …) (hnfz : (sideSet φ (f * z) u ℓ).Nonempty) :
+    sideMin φ (f * z) u ℓ hnfz = sideMin φ f u ℓ hnf + sideMin φ z u ℓ hnz
+
+theorem sideDeg_mul_gen (… same prefix …) (hnfz : (sideSet φ (f * z) u ℓ).Nonempty) :
+    sideDeg φ (f * z) u ℓ hnfz = sideDeg φ f u ℓ hnf + sideDeg φ z u ℓ hnz
+
+theorem resPoly_mul_gen (… same prefix …) (hnfz : (sideSet φ (f * z) u ℓ).Nonempty) :
+    resPoly π φ (f * z) u ℓ hnfz (Hf + Hz)
+      = resPoly π φ f u ℓ hnf Hf * resPoly π φ z u ℓ hnz Hz
+```
+
+The `hu : 0 < u` binder the record flags is real and is on all five — hence the separate `u = 0`
+branch (step 3e). `hφ : IsKey φ` is satisfied at `φ = X`, but note that **`IsKey X` is `private`
+in every file that proves it** (C.04, C.12, C.19, C.22, C.23, C.26, C.44–C.47, C.97, H.115b's
+`isKeyX`, H.117): each of b3-i/-ii/-iii re-derives it in three lines, as H.115b already does.
+
+**B.77's package** (`leanfinal/Uniformity/ChapB/B77a.lean`, `B77b.lean`), the model for b3-ii and
+the engine of the lift bridge:
+
+```lean
+theorem suppVal_congr (hπ : Irreducible π) {φ : Polynomial O} (hφ : φ.Monic)
+    (hd : 0 < φ.natDegree) {N : ℕ} {f f' : Polynomial O}
+    (hff' : ∀ i, π ^ N ∣ (f - f').coeff i) (hdeg : f'.natDegree = f.natDegree)
+    (hvis : Visible π φ f N) (u ℓ : ℕ) :
+    suppVal φ f' u ℓ = suppVal φ f u ℓ
+
+theorem sideSet_congr (… same binders …) : sideSet φ f' u ℓ = sideSet φ f u ℓ
+
+theorem resPoly_congr (hπ) (hφ) (hd) (hff') (hdeg) (hvis) {u ℓ : ℕ}
+    (h : (sideSet φ f u ℓ).Nonempty) {H₀ : ℕ} (hH₀ : H₀ < N) :
+    resPoly π φ f' u ℓ (by rw [sideSet_congr hπ hφ hd hff' hdeg hvis]; exact h) H₀
+      = resPoly π φ f u ℓ h H₀
+```
+
+**H116bR's swap bound**, the brick step 1 leaned on:
+
+```lean
+theorem pow_min_succ_dvd_coeff_recentre_alphaParent_sub {π : O} (hπ : Irreducible π)
+    {μ : ℕ} {b b' : Fin μ → O} (hbb : ∀ i, b' i - b i ∈ maximalIdeal O)
+    (k : ℕ) (ŵ : O) (k' : ℕ) (w' : O) :
+    ∀ j, π ^ (μ * min k k' + 1) ∣
+      (((alphaParent π b' k ŵ) - (alphaParent π b k ŵ)).comp
+        (C (π ^ k') * (X + C w'))).coeff j
+```
+
+and the α-side profile it works with (`H115b.lean`): `alphaParent_coeff`
+(`= (alphaFrame b ŵ).coeff j * (π ^ k) ^ (m - j)`), `alphaParent_npHgt_ge`
+(`((m - j) * k : ℕ) ≤ npHgt X (alphaParent π b k ŵ) j`), `alphaParent_npHgt_zero`
+(`= ((m * k : ℕ) : ℕ∞)`, needs `hb`, `hz`, `hŵ`), `alphaParent_npHgt_natDegree` (`= 0`),
+`alphaParent_natDegree` (`= m`); and `alphaParent_map_residue` (`H116bR.lean`, needs `hk : 1 ≤ k`,
+concludes `(alphaParent π b k ŵ).map (residue O) = X ^ μ`) for the `u = 0` branch.
+
+#### §2.2 Step-by-step verdict
+
+* **(3a) the planted hull, exactly — HOLDS.** `alphaParent_npHgt_ge` gives
+  `ℓ·npHgt(j) + u·j ≥ ℓk(μ−j) + uj ≥ μ·min(ℓk, u)` for every `j ≤ μ`, and the two endpoints
+  ATTAIN it (`alphaParent_npHgt_zero` at `j = 0`, monicity at `j = μ`), so
+  `suppVal X Pₚ u ℓ = μ · min (ℓk, u)`, the `inf` being over `Finset.range (μ + 1)` by
+  `alphaParent_natDegree`. The left endpoint is `0` when `ℓk ≤ u` (the tie included — the whole
+  segment is then the side and `min' = 0`) and `μ` when `u < ℓk` (there `sideSet = {μ}`, because
+  `ℓ·npHgt(j) + uj ≥ μu + (ℓk − u)(μ − j) > μu` off `j = μ`). Signed as b3-i (1/4)–(3/4).
+* **(3a), third bullet — ⚠ FINDING F-1: THE BRICK CITATION IS WRONG.** The record writes that
+  `v((P'ₚ − Pₚ)_j) ≥ 1 + k(μ − j)` *"is exactly the landed
+  `pow_min_succ_dvd_coeff_recentre_alphaParent_sub` read at the trivial frame"*. **It is not.**
+  At the trivial frame `(k', w') = (0, 0)` that lemma's exponent is `μ · min k 0 + 1 = 1`, so it
+  yields only `π ¹ ∣ δ_j` — the UNGRADED bound. The GRADED bound is a different statement. The
+  record's own alternative route is correct (`alphaParent_coeff` plus
+  `π ∣ (alphaFrame b' ŵ − alphaFrame b ŵ).coeff i`), but — **⚠ FINDING F-3** — that frame-
+  difference divisibility exists in the corpus only as an internal `have` (`hframe`) inside
+  H116bR's proof of the lemma above, at `H116bR.lean:374`; it is not an exported declaration.
+  **Repair: b3-i (4/4) signs the graded bound as a new lemma, and its proof exports the frame
+  step alongside.** Roughly 8 + 12 lines; no new mathematics, both proofs already exist inside
+  H116bR and are copied out.
+* **(3b) the Minkowski identity — HOLDS, and it is the load-bearing step.** Iterating
+  `suppVal_mul_gen` over `L.attach` and once more against `Q` gives
+  `S = Σ_p μ_p·min(ℓk_p, u) + suppVal X Q u ℓ`, which is exactly `min_j (ℓ·Λ(j) + u·j)` for the
+  hull profile `Λ(j) := min { Σ_p k_p(μ_p − j_p) + v(Q_{j₀}) : j₀ + Σ_p j_p = j }` — the minimum
+  of a sum of independent affine-on-a-box terms separates. **⚠ FINDING F-2 (a binder the record
+  does not name):** `sideMin_mul_gen`, `sideDeg_mul_gen` and `resPoly_mul_gen` each take
+  `hnfz : (sideSet φ (f * z) u ℓ).Nonempty` as a HYPOTHESIS, so the induction must supply the
+  product's own side nonemptiness at every stage. It is free: `B39b` lands
+  `theorem sideSet_nonempty_gen (φ f : Polynomial O) (u ℓ : ℕ) : (sideSet φ f u ℓ).Nonempty`,
+  UNCONDITIONALLY and publicly (the `inf` over `Finset.range (natDegree + 1)` is attained).
+  Add `B39b` to the DEPENDS; no obstruction.
+* **(3c) the perturbation estimate — HOLDS, and (3b) is exactly what it needs.** The
+  convolution of (3a)'s per-factor bounds gives `v(δ_j) ≥ 1 + Λ(j)`; then
+  `ℓ·v(δ_j) + u·j ≥ ℓ + (ℓΛ(j) + uj) ≥ ℓ + S > S`, **where the second inequality is
+  `min_j(ℓΛ(j)+uj) ≥ S` — i.e. exactly (3b)'s identity read in the direction B.33 cannot give.**
+  B.33's `suppVal_add_le_suppVal_mul (hπ) (hφ) (hd) (hℓ) (u) (f) (g) : suppVal φ f u ℓ +
+  suppVal φ g u ℓ ≤ suppVal φ (f * g) u ℓ` gives `S ≥ min_j(ℓΛ+uj)`, the wrong direction; the
+  record's diagnosis is confirmed at the signature.
+* **(3d) the above-the-line transport — HOLDS, and generalises further than the record claims.**
+  The record states it at `φ = X`; §3 below signs it at **general monic `φ`**, which is
+  legitimate because `dev` is additive — `dev_add_of_monic {φ} (hφ : φ.Monic) (a b) (j) :
+  dev φ (a + b) j = dev φ a j + dev φ b j` (B32a) — so a line-depth hypothesis phrased on
+  `npHgt φ (f' − f)` passes to developments, and `min_gaussVal_le_gaussVal_add` (B32a) plus
+  `gaussVal_neg`/`dev_neg`/`suppVal_neg` (B39b) supply the ultrametric bookkeeping in both
+  directions. **One arithmetic point the record's sketch glides over, and it is why `hcop`
+  appears in the signature:** the `resPoly` clause reads the digit at the LINE height `H₀ − u·k`
+  with `ℕ`-subtraction, and the needed depth `v(δ) > H₀ − u·k` follows from the hypothesis only
+  because `u·k ≤ H₀` on the range `k ≤ sideDeg` that `resPoly` sums over — which is B39a's
+  `u_mul_sideDeg_le (hℓ) (hcop) (htop) (hnf) (hHf) : u * sideDeg φ f u ℓ hnf ≤ Hf`. Without
+  `hcop` the clause is not provable as stated.
+* **(3e) the `u = 0` branch — HOLDS, but NOT by B.77.** `alphaParent_map_residue` gives
+  `P ≡ P' ≡ X^{Σμ_p} (mod 𝔪)`, hence `f ≡ f' (mod π)` coefficientwise; `suppVal X f 0 1 = 0`
+  (both monic); `OnSide X f 0 1 j ⟺ π ∤ f_j`; and `resCoeff` reads `digAt π 0 = residue`. All
+  three are functions of `f mod π = f' mod π`. **A note for whoever lands it:** the tempting
+  shortcut — apply B.77 at `N = 1` — **fails**, because `Visible π X f 1` demands `v(f₀) = 0`
+  while the planted `f` has `v(f₀) = Σ_p μ_p k_p ≥ 2`. The direct argument above is the route.
+* **(3f) the lift plumbing — HOLDS.** Two lifts of one class differ by `π ^ N` coefficientwise
+  and are both monic of degree `m`, so `hff'` and `hdeg` are met; `¬ IsDrainState c` is exactly
+  `¬ π ^ N ∣ a 0`, i.e. `Visible π X (monicPoly a) N` through `visible_iff_npHgt_lt` (B.76) and
+  `npHgt_X`, so `hvis` is met; and B77b's `hH₀ : H₀ < N` comes from
+  `suppVal ≤ ℓ·npHgt 0 < ℓ·N` together with `suppVal = ℓH₀ + u·j₀` and `0 < ℓ`. Signed at §5.
+  (The private helper `suppVal_lt_of_visible` in B77a is NOT needed: that five-line derivation
+  runs off the public `visible_iff_npHgt_lt`.)
+
+#### §2.3 The `private`-declaration tax (a size input, not a defect)
+
+`b3-ii` is *"modelled line-for-line on B77a/B77b"* in a stronger sense than the record's phrasing
+suggests: B77a's `npHgt_dichotomy`, `cast_mul_le_term`, `suppVal_lt_of_visible` and B77b's
+`digAt_congr`, `digPoly_congr`, `resMk_congr`, `sideMin_congr` are all **`private`** and do not
+export. b3-ii **copies** their proofs (they are 5–20 lines each) rather than citing them. Same
+for `IsKey X`. This is why 120 lines, not 60.
+
+---
+
+### §3. THE THREE SUB-NODES, SIGNED
+
+Landing order **b3-i ∥ b3-ii → b3-iii** (the first two are independent of each other and may run
+in parallel; b3-iii consumes both). Total **360 lines**, replacing A-H.7 §6's estimate of 60.
+
+#### §3.1 NEW NODE H.116b3-i [theorem] [fresh] — the planted polygon package
+
+**STATEMENT.** The exact `(u,ℓ)`-side datum of a single planted factor, plus the graded swap
+bound F-1 showed was missing. No new mathematics: every ingredient is landed in `H115b.lean`
+and `H116bR.lean`, and (4/4)'s two steps are copied out of H116bR's own proof.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem suppVal_alphaParent {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {μ k : ℕ} {b : Fin μ → O}
+    (hb : ∀ i, b i ∈ maximalIdeal O) {z : ResidueField O} (hz : z ≠ 0) {ŵ : O}
+    (hŵ : residue O ŵ = z) (u ℓ : ℕ) :
+    suppVal X (alphaParent π b k ŵ) u ℓ = ((μ * min (ℓ * k) u : ℕ) : ℕ∞)
+
+theorem sideMin_alphaParent {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    {π : O} (hπ : Irreducible π) {μ k : ℕ} {b : Fin μ → O}
+    (hb : ∀ i, b i ∈ maximalIdeal O) {z : ResidueField O} (hz : z ≠ 0) {ŵ : O}
+    (hŵ : residue O ŵ = z) {u ℓ : ℕ}
+    (hne : (sideSet X (alphaParent π b k ŵ) u ℓ).Nonempty) :
+    sideMin X (alphaParent π b k ŵ) u ℓ hne = if ℓ * k ≤ u then 0 else μ
+
+theorem npHgt_sideMin_alphaParent {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {μ k : ℕ} {b : Fin μ → O}
+    (hb : ∀ i, b i ∈ maximalIdeal O) {z : ResidueField O} (hz : z ≠ 0) {ŵ : O}
+    (hŵ : residue O ŵ = z) {u ℓ : ℕ}
+    (hne : (sideSet X (alphaParent π b k ŵ) u ℓ).Nonempty) :
+    npHgt X (alphaParent π b k ŵ) (sideMin X (alphaParent π b k ŵ) u ℓ hne)
+      = ((if ℓ * k ≤ u then μ * k else 0 : ℕ) : ℕ∞)
+
+theorem pow_grade_succ_dvd_coeff_alphaParent_sub {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {μ : ℕ} {b b' : Fin μ → O}
+    (hbb : ∀ i, b' i - b i ∈ maximalIdeal O) (k : ℕ) (ŵ : O) (j : ℕ) :
+    π ^ (k * (μ - j) + 1) ∣ (alphaParent π b' k ŵ - alphaParent π b k ŵ).coeff j
+```
+
+**DESIGN NOTES (read before landing).** (a) No `hk : 1 ≤ k` binder — the three side lemmas are
+true at `k = 0` too (both sides collapse to `0`), and the consumer has `hk` anyway; do not add
+it. (b) The tie `ℓk = u` belongs to the SHALLOW branch: the whole segment `[0, μ]` is then the
+side, and `Finset.min'` returns `0`. (c) `suppVal X (alphaParent π b k ŵ) u ℓ ≠ ⊤` — B39a's
+`htf`/`htz` binder — is a one-line corollary of the first lemma and needs no separate name.
+(d) The `if … then … else` in (2/4) and (3/4) is deliberate: B39a's `hHf`/`hHz` binders demand
+the height as a NAT, so a case-split-free closed form is what makes the b3-iii induction short.
+
+**DEPENDS.** H.115b (`alphaParent`, `alphaFrame`, `alphaParent_coeff`, `alphaParent_natDegree`,
+`alphaParent_npHgt_ge`, `alphaParent_npHgt_zero`, `alphaParent_npHgt_natDegree`,
+`alphaFrame_coeff_zero_not_dvd`) · H116bR (the `hframe` step of
+`pow_min_succ_dvd_coeff_recentre_alphaParent_sub`, exported by this node) · chapter B's
+`suppVal`, `sideSet`, `sideMin`, `OnSide`, `npHgt` (B.11/B.14/B.16/B.20) and B.15's `npHgt_X` ·
+B39b's `sideSet_nonempty_gen`.
+
+**PROOF.** (1/4) `le_antisymm` on the `inf`: `≥` from `alphaParent_npHgt_ge` pointwise plus
+`ℓk(μ−j) + uj ≥ μ·min(ℓk, u)` (`omega` after clearing the `ℕ∞` casts); `≤` from `Finset.inf_le`
+at whichever endpoint realises the `min`. (2/4) shallow branch: `0` is on the side by (1/4), so
+`min' = 0`; steep branch: any on-side `j < μ` contradicts `(ℓk − u)(μ − j) > 0`. (3/4) rewrite
+along (2/4) then `alphaParent_npHgt_zero` / `alphaParent_npHgt_natDegree`. (4/4)
+`alphaParent_coeff` twice, `sub_mul`, then `π ∣ (alphaFrame b' ŵ − alphaFrame b ŵ).coeff i`
+(the exported `hframe` step: the frame difference is `(monicPoly b' − monicPoly b).comp
+(X + C (−ŵ))` and `hbb` puts every coefficient of `monicPoly b' − monicPoly b` in `𝔪`).
+
+**SIZE.** 90 lines. **SOURCE.** Block record §3 (3a) and §4 bullet 1; A-H.8 §2.2.
+**TEETH.** `OM2_h116b_replant_cert.py` check **G**, read per factor.
+**ENVIRONMENT.** ENV-H17; no `[IsAdicComplete]`, no `[Finite (ResidueField O)]`.
+
+#### §3.2 NEW NODE H.116b3-ii [theorem] [fresh] — the above-the-line transport
+#### ⚠ FLAGGED FOR HUMAN REVIEW (new general polygon statement, parent CLAUDE.md trust boundary)
+
+**STATEMENT.** A perturbation that sits STRICTLY ABOVE the supporting line at every abscissa
+changes neither the support value, nor the on-side set, nor the residual polynomial. This is
+B.77 with `π ^ N`-depth replaced by LINE-depth, and it is the one genuinely new general
+statement in the repaired route — hence the flag.
+
+**SIGNATURE.**
+```lean
+namespace Uniformity.Density.Induction
+
+theorem suppVal_congr_of_above_line {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {φ : Polynomial O}
+    (hφ : φ.Monic) (hd : 0 < φ.natDegree) {f f' : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ)
+    (hdeg : f'.natDegree = f.natDegree)
+    (habove : ∀ j, suppVal φ f u ℓ < ℓ • npHgt φ (f' - f) j + ((u * j : ℕ) : ℕ∞)) :
+    suppVal φ f' u ℓ = suppVal φ f u ℓ
+
+theorem sideSet_congr_of_above_line (… the same binders …) :
+    sideSet φ f' u ℓ = sideSet φ f u ℓ
+
+theorem resPoly_congr_of_above_line {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {φ : Polynomial O}
+    (hφ : φ.Monic) (hd : 0 < φ.natDegree) {f f' : Polynomial O} {u ℓ : ℕ} (hℓ : 0 < ℓ)
+    (hcop : Nat.Coprime u ℓ) (hdeg : f'.natDegree = f.natDegree)
+    (habove : ∀ j, suppVal φ f u ℓ < ℓ • npHgt φ (f' - f) j + ((u * j : ℕ) : ℕ∞))
+    (h : (sideSet φ f u ℓ).Nonempty) (htop : suppVal φ f u ℓ ≠ ⊤) {H₀ : ℕ}
+    (hH₀ : npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞)) :
+    resPoly π φ f' u ℓ
+        (by rw [sideSet_congr_of_above_line hπ hφ hd hℓ hdeg habove]; exact h) H₀
+      = resPoly π φ f u ℓ h H₀
+```
+
+**DESIGN NOTES (read before landing).** (a) **General `φ`, not `X`** — the record's §3 states
+(3d) at `φ = X`; the general form is available and costs nothing, because `dev_add_of_monic`
+(B32a) makes the line-depth hypothesis pass to developments. The consumer instantiates at
+`φ = X`, where `habove` is read off `npHgt_X` as a plain coefficient bound. (b) `hcop` is
+load-bearing, not decoration — see §2.2 (3d): `resCoeff` reads at the `ℕ`-subtracted line height
+`H₀ − u·k`, honest only through B39a's `u_mul_sideDeg_le`, which needs it. (c) `htop` is
+redundant (it follows from `hH₀` and `sideMin` being on-side) and is carried anyway, to match
+B39a's shape at the call site. (d) If the landing agent finds `hπ` or `hd` unused, **keep them**
+and suppress the linter — B77a itself does exactly this (`set_option linter.unusedVariables
+false in`, with the reason in its docstring); the signature is frozen by this amendment.
+(e) The `(by …)` nonemptiness argument in the conclusion mirrors B77b's frozen form verbatim.
+(f) File `leanfinal/Uniformity/ChapH/H116b3ii.lean`, namespace
+`Uniformity.Density.Induction` — chapter-B-shaped content deliberately kept in chapter H,
+because chapter B is closed and this is a chapter-H obligation.
+
+**DEPENDS.** B.02/B.07/B.08 (`dev`, `gaussVal`, `le_gaussVal_iff`) · B.11 (`npHgt`) · B.14
+(`suppVal`) · B.16 (`OnSide`, `sideSet`) · B.20 (`sideMin`, `sideMax`, `sideDeg`, `sideMax_eq`) ·
+B.21/B.22/B.23/B.25 (`digAt`, `digAt_eq_zero_iff`, `digAt_add`, `digPoly`, `resMk`) · B.28/B.29
+(`resCoeff`, `resPoly`) · **B32a** (`dev_add_of_monic`, `min_gaussVal_le_gaussVal_add`) ·
+**B39a** (`u_mul_sideDeg_le`, `onSide_eq_add_mul`) · **B39b** (`gaussVal_neg`, `dev_neg`,
+`suppVal_neg`, `sideSet_nonempty_gen`) · **B77a/B77b as the TEMPLATE** — `npHgt_dichotomy`,
+`cast_mul_le_term`, `digAt_congr`, `digPoly_congr`, `resMk_congr`, `sideMin_congr` are `private`
+there and are COPIED, not cited (§2.3).
+
+**PROOF.** 1. **Pointwise dichotomy (the analogue of B77a's `npHgt_dichotomy`).** With
+`δ := f' − f`, `dev_add_of_monic` gives `dev φ f' j = dev φ f j + dev φ δ j`, so
+`min (npHgt φ f j) (npHgt φ δ j) ≤ npHgt φ f' j` and symmetrically (via `dev_neg`,
+`gaussVal_neg`, `f = f' + (−δ)`). Hence at every `j` with `ℓ•npHgt φ δ j + uj > S`: if
+`ℓ•npHgt φ f j + uj = S` then `npHgt φ δ j > npHgt φ f j` and `npHgt φ f' j = npHgt φ f j`; if
+`ℓ•npHgt φ f j + uj > S` then `ℓ•npHgt φ f' j + uj > S`. 2. **`suppVal`.** `le_antisymm` on the
+two `inf`s over the common range (`hdeg`), exactly B77a's two-branch argument with "above the
+cap" replaced by "above the line". 3. **`sideSet`.** `OnSide` is decided by step 1's two cases;
+`ext j` and `simp [sideSet, hdeg]`, as at B77a. 4. **`resPoly`.** At the lattice abscissa
+`J = sideMin + ℓk` with `k ≤ sideDeg` and line height `H = H₀ − u·k`, the hypothesis at `J` reads
+`ℓ·npHgt φ δ J > ℓH₀ − ℓuk = ℓ·H` — legitimate in `ℕ` because `u·k ≤ u·sideDeg ≤ H₀`
+(`u_mul_sideDeg_le`, whence `hcop`) — so `π ^ (H+1)` divides every coefficient of `dev φ δ J`
+(`le_gaussVal_iff`) and the copied `digAt_congr`/`digPoly_congr`/`resMk_congr` chain gives
+`resCoeff` equality digit by digit. Sum over `k ∈ range (sideDeg + 1)`, the two `sideDeg`s
+agreeing by step 3.
+
+**SIZE.** 120 lines. **SOURCE.** Block record §3 (3d) and §4 bullet 2; A-H.8 §2.2, §2.3.
+**TEETH.** `OM2_h116b_replant_cert.py` check **G** is the hypothesis' machine form; the
+conclusion is checked cell-by-cell by the same battery's side-data comparison.
+**ENVIRONMENT.** ENV-A′ (chapter-B environment), inside a chapter-H file.
+
+#### §3.3 NEW NODE H.116b3-iii [theorem] [fresh] — the assembly (= H.116b3's signed statement)
+
+**STATEMENT.** `not_isCSState_plantedPoly_swap`, **byte-unchanged from A-H.7 §6** (reproduced in
+the leanspec stub list and at §6 above). b3-iii's conclusion IS the node's statement; b3-i and
+b3-ii are machinery below it.
+
+**ADDITIONAL SIGNED DECLARATION.** `isCSState_of_exists_lift`, the `∀`-over-lifts bridge — §5.
+
+**DEPENDS.** **H.116b3-i** · **H.116b3-ii** · **`Uniformity.ChapB.B39a`** (`suppVal_mul_gen`,
+`npHgt_mul_gen`, `sideMin_mul_gen`, `sideDeg_mul_gen`, `resPoly_mul_gen` — ⚠ imports B39a's
+human-review flag, §4) · **B39b** (`sideSet_nonempty_gen`) · **B.33**
+(`suppVal_add_le_suppVal_mul`, for the direction it does give) · **B77a/B77b** (`suppVal_congr`,
+`sideSet_congr`, `resPoly_congr` — for the LIFT bridge only) · **B.75/B.76** (`Visible`,
+`visible_iff_npHgt_lt`) · **B.15** (`npHgt_X`) · **H116bR** (`alphaParent_map_residue`, for the
+`u = 0` branch) · H.108 (`IsDrainState`, `isDrainState_iff`) · H.109 · H.110 (`IsCSState`) ·
+H.115b (the α-side template `not_isCSState_of_alphaParent`) · **H.116b2** (the carrier
+`plantedPoly`, `plantedPoly_monic`, `plantedPoly_natDegree`).
+
+**PROOF (the record's step order; see FENCE A-H.8/F1 at §6).**
+1. Assume `IsCSState π c'`, destructure at the planted lift `a' := fun i => (plantedPoly π L bb'
+   Qc).coeff i` via `hc'`, obtaining `(u, ℓ, hne', H₀, hℓ, hcop, hpin', ψ, …)`.
+2. **`u = 0` branch (step 3e).** `hcop` forces `ℓ = 1`. Run the direct argument of §2.2 (3e):
+   `alphaParent_map_residue` ⟹ `f ≡ f' (mod π)` ⟹ side datum and `resPoly` agree at `(0,1)`.
+   **Do not reach for B.77 here** — `Visible π X f 1` is false.
+3. **`0 < u` branch, the hull (step 3b).** Induct over `L.attach` with `suppVal_mul_gen`,
+   feeding `htf`/`hnf`/`hHf` from b3-i (1/4)/(3/4) and `sideSet_nonempty_gen`, and closing with
+   one more application against `Q := monicPoly (classSect O r N Qc.1)`; likewise
+   `sideMin_mul_gen`, `sideDeg_mul_gen`, `resPoly_mul_gen`. Same for `bb'`: the b3-i data are
+   `b`-INDEPENDENT, so `S`, `sideMin`, `sideDeg` come out equal on both sides before any
+   perturbation argument is run.
+4. **The perturbation (step 3c).** Telescope `P' − P` over `L.attach`; each summand carries one
+   b3-i (4/4) factor and the rest at their `alphaParent_npHgt_ge` floors, so
+   `v(δ_j) ≥ 1 + Λ(j)`, whence `∀ j, S < ℓ•npHgt X δ j + u·j` — b3-ii's `habove`, verbatim.
+5. **The transport (step 3d).** Apply b3-ii's three clauses. Both directions are needed and the
+   second is free: `suppVal X f' u ℓ = suppVal X f u ℓ` by clause 1, and
+   `npHgt X (f − f') j = npHgt X (f' − f) j` by `dev_neg`/`gaussVal_neg`, so `habove` holds with
+   the roles of `f` and `f'` exchanged and the witness moves from `f'` back to `f`.
+6. **The lift bridge (step 3f).** The transported witness lives at the planted lift of `c`;
+   `isCSState_of_exists_lift` (§5) upgrades it to `IsCSState π c`, contradicting `hcs`. ∎
+
+**SIZE.** 150 lines (plus the bridge's 40). **SOURCE.** Block record §3 (3b)–(3f) and §4
+bullet 3. **TEETH.** `OM2_h116b_replant_cert.py` check **G** (65/65 companion battery
+`OM2_h116b_gauge_resultant.py` unaffected).
+**ENVIRONMENT.** ENV-H17 + `[IsAdicComplete]` + `π` explicit; imports chapter B.
+
+---
+
+### §4. ⚠ OWNER RIDER — CONSUMING `B39a` IMPORTS `B39a`'s HUMAN-REVIEW FLAG
+
+`leanfinal/Uniformity/ChapB/B39a.lean`'s module header carries, verbatim:
+
+> **Flagged for human review** (new general statements, parent CLAUDE.md trust boundary): the
+> product law is asserted here in a strictly stronger form than the signed B.35 — no purity, no
+> monicity, no degree divisibility, only finiteness of the two support values. Nothing in this
+> file is a signed §-node statement; every declaration is infrastructure.
+
+**H.116b3-iii is the first chapter-H node to consume that product law**, so it inherits the flag.
+Stated precisely, for the owner:
+
+* **This is NOT a gate-(b) item.** It is a *within-repo strengthened-lemma consumption*, not a
+  literature cite: `suppVal_mul_gen` and its four companions are PROVED in this repo,
+  `sorry`-free and Lean-core (`{propext, Classical.choice, Quot.sound}`). No axiom is declared,
+  no external source is claimed, and `docs/AXIOM_FAITHFULNESS.md` is untouched.
+* **What the flag means here.** B.35 is the SIGNED product law and it is guarded by purity,
+  monicity and degree divisibility. `B39a` re-proves the same conclusions without those guards.
+  The planted factors of this node are exactly the case that motivated dropping them: a planted
+  factor is `(u,ℓ)`-pure only at `u = ℓk_p`, so a mixed-slope `L` is out of B.35d's
+  `suppVal_mul_of_pure` reach entirely. Consuming `B39a` is therefore not an optimisation — it
+  is the only route in the corpus.
+* **The two ways to discharge the rider**, either of which the owner may elect: (i) sign the
+  flag as read, leaving `B39a` infrastructure; or (ii) promote `B39a`'s product-law cluster to a
+  signed chapter-B node first, at which point H.116b3-iii consumes a signed statement and the
+  rider closes. **This amendment does neither** — it records the import so the choice is made
+  deliberately rather than by default.
+* **Blast radius if `B39a`'s product law were ever found wrong**: H.116b3-iii and everything
+  above it (H.116b's assembly, H.116 clause (ii), and H.121c which is RESCHEDULED behind it).
+  b3-i and b3-ii do **not** touch `B39a`'s product law (b3-ii uses only its `u_mul_sideDeg_le`
+  and `onSide_eq_add_mul`, which are the frozen B.17/B.20-level facts), so the flag does not
+  spread to them.
+
+---
+
+### §5. THE THIRD GAP, SIGNED — the `IsCSState` `∀`-over-lifts bridge
+
+`IsCSState π c` is `¬ IsDrainState c ∧ ∀ a, proj O m N a = c.1 → ∃ (witness)` (H.110). So `hcs`
+gives only *"SOME lift of `c` has no witness"*, and that lift need not be the planted one. The
+converse plumbing is what the proof actually needs, and it is easy — this is the one place in
+the node where B.77 genuinely applies, because two lifts of one class differ by `π ^ N`.
+
+**SIGNATURE** (landed with b3-iii; namespace `Uniformity.Density.Induction`).
+```lean
+theorem isCSState_of_exists_lift {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (hπ : Irreducible π) {m N : ℕ} (hm : 0 < m)
+    {c : ClusterState O m N} (h0 : ¬ IsDrainState c)
+    (h : ∃ (a : Fin m → O) (_ : proj O m N a = c.1),
+      ∃ (u ℓ : ℕ) (hne : (sideSet X (monicPoly a) u ℓ).Nonempty) (H₀ : ℕ),
+        0 < ℓ ∧ Nat.Coprime u ℓ ∧
+        npHgt X (monicPoly a) (sideMin X (monicPoly a) u ℓ hne) = (H₀ : ℕ∞) ∧
+        ∃ ψ : Polynomial (resField (X : Polynomial O)),
+          Irreducible ψ ∧ 2 ≤ ℓ * ψ.natDegree ∧
+          ψ ^ 2 ∣ resPoly π X (monicPoly a) u ℓ hne H₀) :
+    IsCSState π c
+```
+
+**PROOF.** The first conjunct is `h0`. For the second, take any lift `a'`; `proj … a = c.1 =
+proj … a'` gives `π ^ N ∣ (monicPoly a − monicPoly a').coeff i` for every `i`, and both are monic
+of degree `m`, so `hdeg` holds. `¬ IsDrainState c` is `c.1 ⟨0, hm⟩ ≠ 0` (`isDrainState_iff`),
+i.e. `¬ π ^ N ∣ a 0 = (monicPoly a).coeff 0`, i.e. `npHgt X (monicPoly a) 0 < N` by `npHgt_X`,
+i.e. `Visible π X (monicPoly a) N` by `visible_iff_npHgt_lt` — `hvis`. B77b's `hH₀ : H₀ < N`
+follows from `suppVal ≤ ℓ•npHgt 0 < ℓ·N` and `suppVal = ℓH₀ + u·sideMin`, with `0 < ℓ`. Now
+`sideSet_congr` moves `hne`, `suppVal_congr` + `npHgt_dichotomy`'s public consequences move
+`hpin`, and `resPoly_congr` moves the `ψ ^ 2 ∣ …` clause. `hm : 0 < m` is exactly what makes
+`(monicPoly a).coeff 0 = a 0`.
+
+**SIZE.** 40 lines, inside b3-iii's file. **WHY IT IS NOT A FOURTH SUB-NODE.** It has one
+consumer, no chapter-B generality, and no flag; splitting it would cost more bookkeeping than it
+saves. It is nonetheless SIGNED here (statement frozen) because it is a real gap the record
+named, not a `have`.
+
+---
+
+### §6. FENCE A-H.8/F1 (standing) — the b3 assembly IS the record's step order
+
+**b3-iii is proved in the order (3b) → (3c) → (3d) → (3e) → (3f), and not otherwise.** An agent
+that returns any of the following returns this fence instead of a proof, and never a weakened
+statement:
+
+* **B.77 applied to the swap itself.** Refuted at §1: `bb` and `bb'` are different level-`N`
+  classes; `π ^ N ∣ (f − f').coeff i` fails at every cell of the genre. B.77's only legitimate
+  use in this node is the LIFT bridge, §5.
+* **B.33 used to identify the support value.** `suppVal_add_le_suppVal_mul` gives
+  `S ≥ min_j(ℓΛ(j)+uj)`; the proof needs `≤`. Superadditivity alone cannot close (3c).
+* **B.35d's `suppVal_mul_of_pure`.** A planted factor is `(u,ℓ)`-pure only at `u = ℓk_p`, so
+  mixed-slope `L` is outside it. This is the reason `B39a` is consumed at all (§4).
+* **The `u = 0` case folded into the main branch.** `B39a`'s five product-law lemmas all carry
+  `hu : 0 < u`; `u = 0` (forced by `hcop` to `ℓ = 1`) is a separate branch, and its own tempting
+  shortcut — B.77 at `N = 1` — is also refuted (§2.2 (3e)).
+* **A per-coefficient reading of "one digit above the polygon".** That is the FALSE step; §1.
+
+FENCE **A-H.7/F1** (the peel-shift-REPLANT route is CLOSED) is unaffected and remains standing:
+nothing in this amendment builds a map between fibres.
+
+---
+
+### §7. What this amendment does NOT do, and the bookkeeping it installs
+
+It does **not** change `not_isCSState_plantedPoly_swap` (byte-unchanged), `betaExtract_fiber_card`
+or any other signed statement; it does **not** prove H.116b3-i, H.116b3-ii, H.116b3-iii or any
+of H.116b1/b2/b4 (b1 and b2 are LANDED by the block-record unit — `H116b1.lean`, `H116b2.lean`,
+both Lean-core, zero `sorry`; b3 and b4 remain fresh); it does **not** touch A-H.7's §§1–5, §§7–10,
+its FENCE, or its adjudication of the degree-sum bound; it declares **no** new axiom and
+introduces **no** new definitional carrier; and it does **not** discharge the `B39a` rider — §4
+records the import and leaves the choice to the owner.
+
+**Bookkeeping installed by this amendment**
+
+1. **`blueprint/CHAP-H_general_induction.md`** — §2 node-index row A-H.8; the §6 AMENDMENT
+   BANNER with the FALSE step preserved verbatim under a SUPERSEDED marker; §6's DEPENDS
+   extended and its SIZE marked refuted; NODE H.116's SIZE/SPLIT line updated (60 → 360, the b3
+   rung of the landing order re-spelled) and its DEPENDS re-pointed at the three sub-nodes; this
+   amendment block.
+2. **`leanspec/Leanspec/ChapH.lean`** — `LeanspecH17`: **8 new `axiom` stubs** —
+   `suppVal_alphaParent`, `sideMin_alphaParent`, `npHgt_sideMin_alphaParent`,
+   `pow_grade_succ_dvd_coeff_alphaParent_sub` (b3-i); `suppVal_congr_of_above_line`,
+   `sideSet_congr_of_above_line`, `resPoly_congr_of_above_line` (b3-ii, all three flagged);
+   `isCSState_of_exists_lift` (the §5 bridge) — plus the RE-POINTED docstring of the
+   byte-unchanged `not_isCSState_plantedPoly_swap`. `lake build Leanspec.ChapH` green
+   (9177 jobs, exit 0).
+3. **`spec/DAG_BLUEPRINT_H.tsv`** — **11 rows added, none removed**: `BP.H.116b3 →
+   BP.H.116b3i`, `BP.H.116b3 → BP.H.116b3ii`, `BP.H.116b3 → BP.H.116b3iii`, three
+   `BP.H.116b3i → …`, three `BP.H.116b3ii → …`, two `BP.H.116b3iii → …`. The load-bearing ones
+   are **`BP.H.116b3iii → BP.H.116b3i`** and **`BP.H.116b3iii → BP.H.116b3ii`** (the assembly
+   consumes both packages); b3-i and b3-ii have no edge between them and may run in parallel.
+   Chapter B's polygon API — `B39a` included — is cited by LANDED name in the DEPENDS fields
+   with no TSV row, exactly as at H.110 and A-H.7.
+4. **`leanfinal/notes/BLOCKED_H116b3_2026-08-16.md`** — the provenance record; unchanged by this
+   unit, and its §4 recommendation is what §3 above executes.
+
+*END OF AMENDMENT A-H.8 (2026-08-16). Touched nodes: H.116b3 (PROOF, DEPENDS, SIZE and TEETH
+notes only — the SIGNATURE is byte-unchanged), H.116 (SIZE/SPLIT and DEPENDS lines only), and
+the three nodes added here (H.116b3-i, H.116b3-ii, H.116b3-iii). Sections §§0–16 and
+A-H.1 … A-H.7 are otherwise byte-unchanged by this append. FENCES A-H.7/F1 and A-H.8/F1 are both
+standing and unconditional. ⚠ OWNER ITEM: the `B39a` human-review rider, §4. CODEX/decorrelated
+CROSS-READ OWED on §2.2's step-by-step verdict (especially findings F-1 and F-3), on §3.2's
+general-`φ` generalisation of the record's `φ = X` statement, and on §5's bridge.*
