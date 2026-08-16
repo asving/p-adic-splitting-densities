@@ -2598,46 +2598,273 @@ axiom ht_leaf_certified (hπ : Irreducible π)
       ((∀ g' ∈ monicFactors gr, (φ.natDegree * r.natDegree) ∣ inertiaDegOf g') →
         typeOf gr = ⟨{(ℓ, φ.natDegree * r.natDegree)}⟩ ∧ Irreducible gr)
 
-/-! ### NODE C.114 [theorem] — `(HT-branch)` + `(HT-global)` [BLOCKED: A-C.2 — the two
-count axioms are WITHDRAWN; `htRealizes`' pin clause re-signed (the C.108 D3 fix)].
+/-! ### NODE C.114 [theorem] — `(HT-branch)` + `(HT-global)` [RE-SIGNED: A-C.3, 2026-08-16
+— the realizes-refinement; the A-C.2 block is LIFTED, with the two findings D5 and D6
+below].
 
-The A-C.1 signature note had BOOKED "the per-node residual-type/side-tag refinements ride
-`htCell`" to the fleet.  The A-C.2 audit shows the booking is SIGNATURE-critical, not
-proof-side: as frozen, the stratum reads none of `kappa`, `kappa0`, `s`, the non-root
-`sideType`s, nor the child-completeness of the tree, all of which `htBranchCount`/
-`htGlobalCount` read — both axioms are machine-refuted
+**History.** A-C.1 BOOKED "the per-node residual-type/side-tag refinements ride `htCell`"
+to the fleet.  A-C.2's audit showed the booking is SIGNATURE-critical, not proof-side:
+as frozen, the stratum reads none of `kappa`, `kappa0`, `s`, the non-root `sideType`s,
+nor the child-completeness of the tree, all of which `htBranchCount`/`htGlobalCount`
+read — both axioms are machine-refuted
 (`leanfinal/Uniformity/ChapC/C111_C114_REFUTATION.lean.txt`: `c114_branch_frozen_false`,
-`c114_global_frozen_false`), so they cannot stand in this file (a refutable axiom is a live
-inconsistency).  They are withdrawn pending the realizes-refinement re-sign (A-C.3 target);
-the amendment records the designed clause list: per-node `HTNode.WF`; per-node cell
-membership `G i ∈ htCell π (K i) (node i)` (subsumes the polygon pins and pins the types);
-the `s`-pin `gaussVal (K i − K (t.parent i)) = (s_i : ℕ∞)`; sibling distinctness on a side;
-child-count = the side type's repeated-linear count (completeness at the data level); and
-the `(HT-orbit)` κ-rule at tree level.  The withdrawn signatures are preserved verbatim in
-the refutation record (`C114BranchFrozen`, `C114GlobalFrozen`). -/
+`c114_global_frozen_false`), and A-C.2 WITHDREW them and recorded a designed clause list,
+with the standing warning that the re-sign needs its own certification leg.
 
-/-- `f` realizes the tree `t` at the key `Φ`: cluster factors and recentered keys per node,
-child clusters dividing their parents.  [re-signed: A-C.2 — the polygon pin clause takes
-the same hull form as `htCell`'s (defect D3): `≥ Pceil` everywhere, equality at vertices.
-The realizes-refinement (see the node note above) will extend this carrier; the pin fix is
-recorded now so downstream re-signs build on the faithful form.] -/
-def htRealizes (Φ f : Polynomial O) (t : HTTree) : Prop :=
-  ∃ (G K : ℕ → Polynomial O), K 0 = Φ ∧ G 0 = f ∧
-    ∀ i, i < t.nodes.length →
-      (G i).Monic ∧
-      (G i).natDegree = (t.nodes.getD i HTNode.default0).m * (K i).natDegree ∧
-      (∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
-        ((t.nodes.getD i HTNode.default0).Pceil j : ℕ∞) ≤ npHgt (K i) (G i) j) ∧
-      (∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
-        (t.nodes.getD i HTNode.default0).IsVertex j →
-        npHgt (K i) (G i) j = ((t.nodes.getD i HTNode.default0).Pceil j : ℕ∞)) ∧
-      (0 < i → G i ∣ G (t.parent i) ∧
-        (K i).natDegree = (K (t.parent i)).natDegree ∧
-        (K i - K (t.parent i)).natDegree < (K i).natDegree)
+**A-C.3's certification leg** (`verification/c114_ac3_stratum_check.py`, 63 checks, exit 0:
+stratum-vs-formula brute force over `O = Z/p^N` at q = 2, 3, depth ≤ 2, plus the global
+law at two branches) turned up TWO defects in the designed list itself:
 
--- [A-C.2] `axiom ht_branch` and `axiom ht_global` WITHDRAWN here (machine-refuted as
--- frozen; see the node note above and `C111_C114_REFUTATION.lean.txt`).  Node C.114 is
--- BLOCKED pending the realizes-refinement re-sign (A-C.3).
+* **D5 — the recentring must be by a REPRESENTATIVE.**  The designed `s`-pin
+  `gaussVal (K i − K (parent i)) = s_i` leaves the lift of the residual root free above
+  digit `s_i`, and `∃ K` then ranges over those lifts.  The corpus fixes one
+  (`EFF.W12.84` step 2: *"Choose a lift `z̃`, put `Ψ = Φ − z̃π^k`"*) and its
+  lift-independence claim is about the COUNT, not the SET — the child's own polygon is
+  NOT invariant under a shift of valuation `s_i + 1`.  Measured: with the designed list
+  alone the q = 3 depth-2 chain has stratum 324 against formula 216 (and 54 against 18
+  one level up).  Cured by `IsRepSystem`: the difference of keys is `π^{s_i}` times a
+  member of a system of representatives.  The count is the SAME for every system (four
+  systems certified) — the corpus's lift-independence, certified — and the clause IMPLIES
+  the designed `s`-pin, which is therefore not carried separately.
+* **D6 — `EFF.W12.85`'s per-node nonnegativity is FALSE at multi-child nodes**, so it is
+  carried as the HYPOTHESIS `t.NodeExponent N` (the A-C.2 precedent at C.111) and is NOT
+  derivable.  On the corpus's own `B_v`/`D_u` definitions, a node whose repeated-linear
+  children EXHAUST it (`Σ_u m_u = m_v`) with ≥ 2 children has, at a one-sided node of
+  slope `s`, `B_v(N) − Σ_u D_u(N) = −s(m_v² − Σ_u m_u²)/2 < 0` for EVERY `N`.  Measured
+  truth vs formula on three such nodes: 243 vs 9, 486 vs 108, 128 vs 32.  With `hnode`
+  the statement excludes exactly that regime; the multi-child regime UNDER `hnode` needs
+  `Σ_u m_u < m_v` and large `N`, is out of brute-force range, and is CERTIFIED-OPEN.
+
+Certified regime (exact counts): depth 0 (q = 2, 3; m = 1, 2), depth-1 chains (q = 2, 3;
+m = 2, 3 — including the corpus's own W12-L0 recovery row `(q−1)·(q−1)(q−2)/2·q^{2N−8}`),
+depth-2 chains (q = 2, 3), and the two-branch global law at κ₀ ∈ {1, 2}.  Separation of
+the A-C.2 refutation geometries is machine-checked in `leanspec/C114_AC3_SEPARATION.lean.txt`
+(`kappaRule_vK_iff`, `kappa0Rule_empty_iff`: the κ-rule / κ₀-rule force `kappa = 1` /
+`kappa0 = 1` on them, so the re-signed statements are silent on the refuting instances).
+The withdrawn A-C.1 signatures stay verbatim in `C111_C114_REFUTATION.lean.txt`. -/
+
+/-- [A-C.3] descendant (or equal) in the index-encoded tree, first-order via `parent^[k]`
+(no recursion, so the subtree comparison below is a plain `Prop`). -/
+def HTTree.IsDesc (t : HTTree) (i u : ℕ) : Prop :=
+  u < t.nodes.length ∧ ∃ k : ℕ, t.parent^[k] u = i
+
+open Classical in
+/-- [A-C.3] the children of node `i`. -/
+noncomputable def HTTree.children (t : HTTree) (i : ℕ) : Finset ℕ :=
+  (Finset.range t.nodes.length).filter (fun u => 0 < u ∧ t.parent u = i)
+
+/-- [A-C.3] **the COMPLETE HISTORY comparison**: the subtree at `u` in `t` is isomorphic to
+the subtree at `u'` in `t'` — a bijection of descendant sets carrying root to root,
+preserving node data, commuting with `parent`.  This is what `EFF.W12.83`'s κ-displays
+group by (`r_{v,S,a,H}` counts children "carrying `H`"); stated first-order so no
+nested-inductive history carrier is needed. -/
+def HTTree.SameHist (t : HTTree) (u : ℕ) (t' : HTTree) (u' : ℕ) : Prop :=
+  ∃ σ : ℕ → ℕ, σ u = u' ∧
+    Set.BijOn σ {w | t.IsDesc u w} {w | t'.IsDesc u' w} ∧
+    (∀ w, t.IsDesc u w →
+      t'.nodes.getD (σ w) HTNode.default0 = t.nodes.getD w HTNode.default0) ∧
+    (∀ w, t.IsDesc u w → w ≠ u → σ (t.parent w) = t'.parent (σ w))
+
+open Classical in
+/-- [A-C.3] **the `(HT-orbit)` κ-rule at tree level**, in DIVISION-FREE form (the C.112
+precedent): `κ_v · ∏_H (r_{v,H})! = ∏_{(S,a)} (r_{v,S,a})!`, the history classes running
+over `SameHist`-classes of `v`'s children and the groups over their `(side, multiplicity)`
+classes.  `EFF.W12.83`: `κ_v = ∏_{S,a} r_{v,S,a}!/∏_H r_{v,S,a,H}!`.  `kappa` was a FREE
+data field in the A-C.1 signature — that freedom is exactly the A-C.2 refutation. -/
+noncomputable def HTTree.KappaRule (t : HTTree) (i : ℕ) : Prop :=
+  (t.nodes.getD i HTNode.default0).kappa
+      * ∏ c ∈ (t.children i).image
+            (fun u => (t.children i).filter (fun u' => t.SameHist u t u')),
+        Nat.factorial c.card
+    = ∏ g ∈ (t.children i).image
+            (fun u => (t.children i).filter (fun u' =>
+              (t.nodes.getD u' HTNode.default0).s = (t.nodes.getD u HTNode.default0).s ∧
+              (t.nodes.getD u' HTNode.default0).m = (t.nodes.getD u HTNode.default0).m)),
+        Nat.factorial g.card
+
+/-- [A-C.3] every node datum is `HTNode.WF` (A-C.2's coherence). -/
+def HTTree.NodeWF (t : HTTree) : Prop :=
+  ∀ i, i < t.nodes.length → (t.nodes.getD i HTNode.default0).WF
+
+/-- [A-C.3] a non-root node is CONSERVATIVE for its own depth — `EFF.W12.83`: "the child
+is the degree-`d_i` conservative node of multiplicity `m_u` and depth `s_u`", with
+`C_{m}(s) = {(a_j) : v(a_j) ≥ (m−j)s + 1}`.  (Tooth: without it, the certified instance
+has stratum 0 against formula 1458.) -/
+def HTTree.Conservative (t : HTTree) : Prop :=
+  ∀ i, 0 < i → i < t.nodes.length →
+    ∀ j, j < (t.nodes.getD i HTNode.default0).m →
+      ((t.nodes.getD i HTNode.default0).m - j) * (t.nodes.getD i HTNode.default0).s + 1
+        ≤ (t.nodes.getD i HTNode.default0).Pceil j
+
+open Classical in
+/-- [A-C.3] **child-count-vs-type completeness** — `EFF.W12.83`: "Its children are
+precisely the repeated linear factors `(Y−z)^{m_u}` on `e = 1` sides.  If the side has
+slope `−s_u`, the child is the … node of multiplicity `m_u` and depth `s_u`."  Purely
+combinatorial: each child sits at a slope that IS an `e = 1` side of its parent and has
+multiplicity ≥ 2, and per side the child counts equal the type's repeated-linear
+multiplicities. -/
+noncomputable def HTTree.ChildComplete (t : HTTree) : Prop :=
+  (∀ u, 0 < u → u < t.nodes.length →
+      ((t.nodes.getD u HTNode.default0).s, 1)
+          ∈ (t.nodes.getD (t.parent u) HTNode.default0).sides
+        ∧ 2 ≤ (t.nodes.getD u HTNode.default0).m) ∧
+  (∀ i, i < t.nodes.length → ∀ u a : ℕ,
+      (u, 1) ∈ (t.nodes.getD i HTNode.default0).sides → 2 ≤ a →
+      ((t.children i).filter (fun c =>
+          (t.nodes.getD c HTNode.default0).s = u ∧
+          (t.nodes.getD c HTNode.default0).m = a)).card
+        = ((t.nodes.getD i HTNode.default0).sideType u 1).data.count (1, a))
+
+/-- [A-C.3] the order-1 FENCE — `EFF.W12.83`: "Repeated factors of degree `> 1`, and
+repeated factors on `e > 1` sides, open composite stages and are outside this order-1
+statement."  A SCOPE clause: the certification found no truth tooth for it (reported, not
+hidden), and it is retained because the source refuses to speak past it. -/
+def HTTree.OrderOne (t : HTTree) : Prop :=
+  ∀ i, i < t.nodes.length → ∀ u ℓ : ℕ,
+    (u, ℓ) ∈ (t.nodes.getD i HTNode.default0).sides →
+    ∀ p ∈ ((t.nodes.getD i HTNode.default0).sideType u ℓ).data, 2 ≤ p.2 → p.1 = 1 ∧ ℓ = 1
+
+/-- [A-C.3] window visibility of every node (`EFF.W12.83`'s standing "window-visible
+decided order-1 key"; `.86` step 5's `m_v s_v + 1 ≤ P_v(0) ≤ N − 1`). -/
+def HTTree.WindowVisible (t : HTTree) (N : ℕ) : Prop :=
+  ∀ i, i < t.nodes.length → ∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+    (t.nodes.getD i HTNode.default0).Pceil j < N
+
+open Classical in
+/-- [A-C.3, finding D6] the PER-NODE exponent inequality — `EFF.W12.85`'s
+`#U_v(𝐑) = Q^{B_v(N)−Σ_u D_u(N)}`, "in particular, the exponent is a nonnegative integer".
+The corpus derives it from the fiber bijection; the A-C.3 certification REFUTES the
+derivation at multi-child nodes (`B_v − Σ_u D_u = −s(m_v² − Σ_u m_u²)/2 < 0` when the
+children exhaust the node), so it is CARRIED, exactly as A-C.2 carries it at C.111. -/
+noncomputable def HTTree.NodeExponent (t : HTTree) (N : ℕ) : Prop :=
+  ∀ i, i < t.nodes.length →
+    (∑ u ∈ t.children i, (t.nodes.getD u HTNode.default0).D N)
+      ≤ (t.nodes.getD i HTNode.default0).B N
+
+open Classical in
+/-- [A-C.3] the level-0 orbit rule — `EFF.W12.83`: `κ₀(T) = ∏_{d,m} r_{d,m}!/∏_H r_{d,m,H}!`,
+division-free, branch histories compared by tree isomorphism. -/
+noncomputable def HTShape.Kappa0Rule (S : HTShape) : Prop :=
+  S.kappa0 * ∏ c ∈ (Finset.range S.branches.length).image (fun i =>
+        (Finset.range S.branches.length).filter (fun j =>
+          (S.branches.getD j (0, 0, default)).1 = (S.branches.getD i (0, 0, default)).1 ∧
+          (S.branches.getD j (0, 0, default)).2.1 = (S.branches.getD i (0, 0, default)).2.1 ∧
+          HTTree.SameHist (S.branches.getD i (0, 0, default)).2.2 0
+            (S.branches.getD j (0, 0, default)).2.2 0)),
+      Nat.factorial c.card
+    = ∏ g ∈ (Finset.range S.branches.length).image (fun i =>
+        (Finset.range S.branches.length).filter (fun j =>
+          (S.branches.getD j (0, 0, default)).1 = (S.branches.getD i (0, 0, default)).1 ∧
+          (S.branches.getD j (0, 0, default)).2.1 = (S.branches.getD i (0, 0, default)).2.1)),
+      Nat.factorial g.card
+
+/-- [A-C.3] an assignment of the shape's branch SLOTS to the given keys, preserving
+`(d, m)`.  The shape is LETTER-FREE, so with the letters (`Φb`) given the assignment is
+still free — that freedom is precisely what `κ₀` counts, and without this `∃` the global
+law is off by `κ₀` (tooth: 256 against 512). -/
+def HTShape.IsSlotAssign (S : HTShape) (σ : ℕ → ℕ) : Prop :=
+  Set.BijOn σ (Set.Iio S.branches.length) (Set.Iio S.branches.length) ∧
+  ∀ i, i < S.branches.length →
+    (S.branches.getD (σ i) (0, 0, default)).1 = (S.branches.getD i (0, 0, default)).1 ∧
+    (S.branches.getD (σ i) (0, 0, default)).2.1 = (S.branches.getD i (0, 0, default)).2.1
+
+/-- [A-C.3, finding D5] a SYSTEM OF REPRESENTATIVES of the degree-`< d` residue classes:
+exactly one polynomial of degree `< d` in each class mod `π`.  `EFF.W12.84` step 2's
+"Choose a lift `z̃`" made into data; the count is independent of the choice (certified). -/
+def IsRepSystem (R : Set (Polynomial O)) (d : ℕ) : Prop :=
+  (∀ r ∈ R, r.natDegree < d) ∧
+  ∀ a : Polynomial O, a.natDegree < d →
+    ∃! r : Polynomial O, r ∈ R ∧ (1 : ℕ∞) ≤ gaussVal (a - r)
+
+/-- `f` realizes the tree `t` at the key `Φ`, with recentrings drawn from the
+representative system `R`.  [RE-SIGNED: A-C.3 — the realizes-refinement.  Against the
+A-C.2 form this ADDS: per-node `IsKey (K i)`; per-node CELL membership at the recentered
+key (which subsumes the monic/degree/polygon clauses AND pins the non-root side TYPES —
+tooth: 108 against formula 54 without it); the D5 representative recentring (which
+subsumes A-C.2's designed `s`-pin); and sibling distinctness.] -/
+def htRealizes (π : O) (Φ f : Polynomial O) (t : HTTree) (R : Set (Polynomial O)) : Prop :=
+  ∃ (G K : ℕ → Polynomial O)
+    (instD : ∀ i, IsDomain (resField (K i)))
+    (instU : ∀ i, UniqueFactorizationMonoid (resField (K i))),
+    K 0 = Φ ∧ G 0 = f ∧
+    (∀ i, i < t.nodes.length → IsKey (K i)) ∧
+    (∀ i, i < t.nodes.length →
+      letI := instD i
+      letI := instU i
+      G i ∈ htCell π (K i) (t.nodes.getD i HTNode.default0)) ∧
+    (∀ i, 0 < i → i < t.nodes.length →
+      G i ∣ G (t.parent i) ∧
+      (K i).natDegree = (K (t.parent i)).natDegree ∧
+      (K i - K (t.parent i)).natDegree < (K i).natDegree ∧
+      ∃ z ∈ R, gaussVal z = 0 ∧
+        K (t.parent i) - K i
+          = Polynomial.C (π ^ (t.nodes.getD i HTNode.default0).s) * z) ∧
+    (∀ i i', 0 < i → 0 < i' → i < t.nodes.length → i' < t.nodes.length → i ≠ i' →
+      t.parent i = t.parent i' →
+      (t.nodes.getD i HTNode.default0).s = (t.nodes.getD i' HTNode.default0).s →
+      gaussVal (K i - K i') = ((t.nodes.getD i HTNode.default0).s : ℕ∞))
+
+/-- **(HT-branch)** [re-signed: A-C.3].  Every truth-bearing condition is an INLINE binder
+(the B.42 lesson): no section auto-inclusion, no bundle. -/
+axiom ht_branch [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (hπ : Irreducible π) {Φ : Polynomial O} (hΦ : IsKey Φ)
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)] [Finite (resField Φ)]
+    (R : Set (Polynomial O)) (hR : IsRepSystem R Φ.natDegree)
+    (t : HTTree) (N : ℕ) (hroot : 0 < t.nodes.length)
+    (hwf : t.WF) (hnodewf : t.NodeWF) (hcons : t.Conservative)
+    (hcompl : t.ChildComplete) (hfence : t.OrderOne) (hvis : t.WindowVisible N)
+    (hkappa : ∀ i, i < t.nodes.length → t.KappaRule i)
+    (hnode : t.NodeExponent N) :
+    Nat.card {c : Coeff O ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) N //
+        ∃ a : Fin ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) → O,
+          proj O ((t.nodes.getD 0 HTNode.default0).m * Φ.natDegree) N a = c ∧
+          htRealizes π Φ (monicPoly a) t R}
+      = htBranchCount (Nat.card (resField Φ))
+          (fun lam => sideCensus (resField Φ) lam) t N
+
+set_option linter.overlappingInstances false in
+/-- **(HT-global)** [re-signed: A-C.3].  Beyond the branch clauses this adds `hdistinct`
+(the corpus's "the actual DISTINCT irreducibles `P̄_i`" — tooth: 8 against formula 64 with
+two branches at one residue), the κ₀-rule, and the slot-assignment `∃ σ`. -/
+axiom ht_global [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (hπ : Irreducible π)
+    (S : HTShape) (Φb : ℕ → Polynomial O) (n N : ℕ)
+    (hn : n = ((List.range S.branches.length).map
+        (fun i => (S.branches.getD i (0, 0, default)).1
+          * (S.branches.getD i (0, 0, default)).2.1)).sum)
+    (hkeys : ∀ i, i < S.branches.length → IsKey (Φb i) ∧
+        (Φb i).natDegree = (S.branches.getD i (0, 0, default)).1)
+    (hdistinct : ∀ i j, i < S.branches.length → j < S.branches.length → i ≠ j →
+        (Φb i).map (IsLocalRing.residue O) ≠ (Φb j).map (IsLocalRing.residue O))
+    (R : ℕ → Set (Polynomial O))
+    (hR : ∀ i, i < S.branches.length → IsRepSystem (R i) (Φb i).natDegree)
+    (hbr : ∀ i, i < S.branches.length →
+        (S.branches.getD i (0, 0, default)).2.2.WF ∧
+        (S.branches.getD i (0, 0, default)).2.2.NodeWF ∧
+        (S.branches.getD i (0, 0, default)).2.2.Conservative ∧
+        (S.branches.getD i (0, 0, default)).2.2.ChildComplete ∧
+        (S.branches.getD i (0, 0, default)).2.2.OrderOne ∧
+        (S.branches.getD i (0, 0, default)).2.2.WindowVisible N ∧
+        (∀ k, k < (S.branches.getD i (0, 0, default)).2.2.nodes.length →
+          (S.branches.getD i (0, 0, default)).2.2.KappaRule k) ∧
+        (S.branches.getD i (0, 0, default)).2.2.NodeExponent N)
+    (hkappa0 : S.Kappa0Rule)
+    (instD : ∀ i, IsDomain (resField (Φb i)))
+    (instU : ∀ i, UniqueFactorizationMonoid (resField (Φb i)))
+    (instFin : ∀ i, Finite (resField (Φb i))) :
+    Nat.card {c : Coeff O n N // ∃ a : Fin n → O, proj O n N a = c ∧
+        ∃ σ : ℕ → ℕ, S.IsSlotAssign σ ∧
+        ∃ G : ℕ → Polynomial O,
+          monicPoly a = ∏ i ∈ Finset.range S.branches.length, G i ∧
+          ∀ i, i < S.branches.length → (G i).Monic ∧
+            (G i).map (IsLocalRing.residue O)
+              = ((Φb i).map (IsLocalRing.residue O))
+                  ^ (S.branches.getD (σ i) (0, 0, default)).2.1 ∧
+            ((S.branches.getD (σ i) (0, 0, default)).2.1 = 1 ∨
+              htRealizes π (Φb i) (G i)
+                (S.branches.getD (σ i) (0, 0, default)).2.2 (R i))}
+      = htGlobalCount S (residueCard O)
+          (fun i lam => @sideCensus (resField (Φb i)) _ (instD i) (instU i) (instFin i) lam) N
 
 /-! ### NODE C.115 [lemma] — specializations [signed: A-C.1 at the depth-zero clause; the
 obstruction-instance and L0-shape values are §13's executed `htSpot` rows (the D15 block)] -/
@@ -2656,8 +2883,18 @@ section C116Manifest
 #check @HTNode.WF         -- [A-C.2] node well-formedness: MANDATORY on every count law
 #check @htBranchCount
 #check @htGlobalCount
--- [A-C.2] `#check @ht_branch` / `#check @ht_global` removed: the two axioms are WITHDRAWN
--- (machine-refuted as frozen); see NODE C.114's note and C111_C114_REFUTATION.lean.txt.
+-- [A-C.3] the two count axioms are RESTORED, re-signed at the realizes-refinement
+-- (A-C.2 had WITHDRAWN them as machine-refuted).  The Phase-B consumer contract now also
+-- requires the RULES that pin the two orbit tags and the history data:
+#check @ht_branch
+#check @ht_global
+#check @HTTree.KappaRule    -- [A-C.3] κ_v is NOT free data: the (HT-orbit) rule. MANDATORY
+#check @HTShape.Kappa0Rule  -- [A-C.3] κ₀ is NOT free data either. MANDATORY
+#check @HTTree.SameHist     -- [A-C.3] the complete-history comparison the κ-rules group by
+#check @HTTree.ChildComplete -- [A-C.3] "children are PRECISELY the repeated linear factors"
+#check @HTTree.NodeExponent -- [A-C.3/D6] carried, NOT derived (EFF.W12.85 is false at
+                            -- multi-child nodes) — a menu entry must supply it
+#check @IsRepSystem         -- [A-C.3/D5] the recentring lift is data, not an ∃ over lifts
 end C116Manifest
 
 /-! ## A-C.1 §12 — LEVEL-`N` TOWER CERTIFICATES (C.117–C.122) -/
