@@ -488,4 +488,145 @@ theorem betaChild_clusterTrunc {O : Type*} [CommRing O] [IsDomain O] [IsDiscrete
 
 end Events
 
+/-! ## 4. The conservative verdict pulls back along truncation
+
+The theorem of the node.  Induction on the H.118 derivation; at each rule the truncated state
+is first tested for DRAIN (the "coarsens toward drain" branch — it fires exactly when the small
+window no longer sees the constant coefficient, and closes the case at depth 0), and on the
+non-drain branch the SAME rule re-fires at the small window. -/
+
+section Pullback
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O]
+
+/-- **The conservative reader with fewer digits decides no more.**  A window-`W` conservatively
+undecided state truncates to a window-`T` conservatively undecided state, for every
+`1 ≤ T ≤ W`.  This is the mathematical content of cluster-level C2D (debt D-4); the counting
+that turns it into the antitone statement is §5. -/
+theorem clusterUndecided_clusterTrunc {π : O} (hπ : Irreducible π) :
+    ∀ {m W : ℕ} {c : ClusterState O m W}, ClusterUndecided O π m W c → 2 ≤ m →
+      ∀ {T : ℕ} (h : T ≤ W), 1 ≤ T → ClusterUndecided O π m T (clusterTrunc h c) := by
+  intro m W c hu
+  induction hu with
+  | drain c hd =>
+      intro _ _ h _
+      exact ClusterUndecided.drain _ (isDrainState_clusterTrunc h hd)
+  | cs c hcs =>
+      intro hm T h hT
+      by_cases h0 : IsDrainState (clusterTrunc h c)
+      · exact ClusterUndecided.drain _ h0
+      · exact ClusterUndecided.cs _ (isCSState_clusterTrunc hπ h (by omega) h0 hcs)
+  | @alpha m N k z c hα hrec ih =>
+      intro hm T h hT
+      by_cases h0 : IsDrainState (clusterTrunc h c)
+      · exact ClusterUndecided.drain _ h0
+      · have hm0 : 0 < m := by omega
+        have hN : 1 ≤ N := one_le_window_of_not_drain _ hα.1
+        obtain ⟨hD, hk, hwin⟩ := alpha_content hπ hm hN hα
+        have hDlt : m * k < T := by
+          have hb := betaContent_lt_of_not_isDrainState_clusterTrunc h hm0 h0 k
+          omega
+        have hMM : T - m * k ≤ N - m * k := by omega
+        have hα' : IsAlphaState π (clusterTrunc h c) k z :=
+          isAlphaState_clusterTrunc hπ h hm0 h0 hα
+        refine ClusterUndecided.alpha _ hα' ?_
+        rw [alphaChild_clusterTrunc hπ h hm h0 hα hα' hMM]
+        exact ih hm hMM (by omega)
+  | @beta m N μ k z c hβ hch hrec ih =>
+      intro hm T h hT
+      by_cases h0 : IsDrainState (clusterTrunc h c)
+      · exact ClusterUndecided.drain _ h0
+      · have hm0 : 0 < m := by omega
+        have hDlt : betaContent c k < T :=
+          betaContent_lt_of_not_isDrainState_clusterTrunc h hm0 h0 k
+        have hDeq : betaContent (clusterTrunc h c) k = betaContent c k :=
+          betaContent_clusterTrunc_eq h c k hDlt
+        have hMM : T - betaContent (clusterTrunc h c) k ≤ N - betaContent c k := by omega
+        have hβ' : IsBetaState π (clusterTrunc h c) :=
+          isBetaState_clusterTrunc hπ h hm0 h0 hβ hch
+        have hch' : HasChildAt π (clusterTrunc h c) μ k z :=
+          hasChildAt_clusterTrunc hπ h hm0 h0 hch
+        refine ClusterUndecided.beta _ hβ' hch' ?_
+        rw [betaChild_clusterTrunc hπ h hm h0 hch hch' hMM]
+        exact ih hch.1 hMM (by omega)
+
+end Pullback
+
+/-! ## 5. The count: `GENIND-C2D` on the cluster carrier
+
+H.70's bookkeeping step, on this node's carrier.  The undecided states are first presented as a
+SUBSET of the coefficient box `Coeff O m N`, because the landed equicardinality of the
+truncation fibres (`card_preimage_coeffFactor`) lives there; this costs nothing, because being
+a cluster state is a property of the level-`1` truncation and is therefore preserved and
+reflected by `coeffFactor`. -/
+
+section Counting
+
+variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O]
+
+/-- The conservative-undecided locus, as a subset of the coefficient box. -/
+def clusterUndecidedSet (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [IsAdicComplete (maximalIdeal O) O] (π : O) (m N : ℕ) : Set (Coeff O m N) :=
+  {x | ∃ hx : ∀ i, x i ∈ (maximalIdeal O).map (Ideal.Quotient.mk ((maximalIdeal O) ^ N)),
+    ClusterUndecided O π m N ⟨x, hx⟩}
+
+omit [Finite (ResidueField O)] in
+/-- The box-level presentation counts what H.119's subtype counts. -/
+theorem card_clusterUndecidedSet (π : O) (m N : ℕ) :
+    Nat.card (clusterUndecidedSet O π m N) = uCluster O π m N :=
+  Nat.card_congr (Equiv.subtypeSubtypeEquivSubtypeExists _ _).symm
+
+/-- **The containment** (`clusterUndecided_clusterTrunc`, read on the box). -/
+theorem clusterUndecidedSet_subset {π : O} (hπ : Irreducible π) {m : ℕ} (hm : 2 ≤ m)
+    {T W : ℕ} (h : T ≤ W) (hT : 1 ≤ T) :
+    clusterUndecidedSet O π m W ⊆ (coeffFactor m h) ⁻¹' clusterUndecidedSet O π m T := by
+  rintro x ⟨hx, hu⟩
+  exact ⟨(clusterTrunc h ⟨x, hx⟩).2, clusterUndecided_clusterTrunc hπ hu hm h hT⟩
+
+/-- **H.120 — cluster-level C2D (debt D-4), `GENIND-C2D` on the `ClusterState` carrier.**  The
+NORMALIZED conservative complement is antitone in the window.
+
+⚠ S-1: this is the CONSERVATIVE complement of H.118/H.119, not the semantic `undecidedSet`;
+D-4's warning that the carriers differ is why H.70's full-space monotonicity is not consumed
+here (only its argument template is). -/
+theorem uClusterNorm_antitone {π : O} (hπ : Irreducible π) (m : ℕ) (hm : 2 ≤ m) :
+    ∀ T W, 1 ≤ T → T ≤ W → uClusterNorm O π m W ≤ uClusterNorm O π m T := by
+  intro T W hT hTW
+  have hW : 1 ≤ W := le_trans hT hTW
+  -- the containment, counted
+  have hcard : uCluster O π m W
+      ≤ Nat.card ((coeffFactor m hTW) ⁻¹' clusterUndecidedSet O π m T) := by
+    rw [← card_clusterUndecidedSet, Nat.card_coe_set_eq, Nat.card_coe_set_eq]
+    exact Set.ncard_le_ncard (clusterUndecidedSet_subset hπ hm hTW hT) (Set.toFinite _)
+  -- the fibres are equicardinal (the landed refinement count)
+  have hkey := card_preimage_coeffFactor (O := O) m hTW (clusterUndecidedSet O π m T)
+  rw [card_coeff, card_coeff, card_clusterUndecidedSet] at hkey
+  have hnat : uCluster O π m W * residueCard O ^ (m * T)
+      ≤ uCluster O π m T * residueCard O ^ (m * W) :=
+    calc uCluster O π m W * residueCard O ^ (m * T)
+        ≤ Nat.card ((coeffFactor m hTW) ⁻¹' clusterUndecidedSet O π m T)
+            * residueCard O ^ (m * T) := Nat.mul_le_mul_right _ hcard
+      _ = uCluster O π m T * residueCard O ^ (m * W) := hkey
+  -- strip one census factor `q ^ m` from each side
+  obtain ⟨t, rfl⟩ : ∃ t, T = t + 1 := ⟨T - 1, by omega⟩
+  obtain ⟨w, rfl⟩ : ∃ w, W = w + 1 := ⟨W - 1, by omega⟩
+  have hmT : m * (t + 1 - 1) + m = m * (t + 1) := by simp [Nat.mul_succ]
+  have hmW : m * (w + 1 - 1) + m = m * (w + 1) := by simp [Nat.mul_succ]
+  have hcancel : uCluster O π m (w + 1) * residueCard O ^ (m * (t + 1 - 1))
+      ≤ uCluster O π m (t + 1) * residueCard O ^ (m * (w + 1 - 1)) := by
+    refine Nat.le_of_mul_le_mul_right ?_ (pow_pos (residueCard_pos O) m)
+    calc uCluster O π m (w + 1) * residueCard O ^ (m * (t + 1 - 1)) * residueCard O ^ m
+        = uCluster O π m (w + 1) * residueCard O ^ (m * (t + 1)) := by
+          rw [mul_assoc, ← pow_add, hmT]
+      _ ≤ uCluster O π m (t + 1) * residueCard O ^ (m * (w + 1)) := hnat
+      _ = uCluster O π m (t + 1) * residueCard O ^ (m * (w + 1 - 1)) * residueCard O ^ m := by
+          rw [mul_assoc, ← pow_add, hmW]
+  have hq : (0 : ℝ) < (residueCard O : ℝ) := by exact_mod_cast residueCard_pos O
+  rw [uClusterNorm, uClusterNorm, div_le_div_iff₀ (pow_pos hq _) (pow_pos hq _)]
+  exact_mod_cast hcancel
+
+end Counting
+
 end Uniformity.Density.Induction
