@@ -5191,3 +5191,58 @@ axiom-free by the H97b route; HYP.11/28 untouched. GENIND
 consequence: both base cases of `THEOREM GENIND.B` (`P(2)`, `P(3)`)
 are now theorems; `drainage_of_package`'s per-degree instance at
 `n = 3` no longer needs the package hypothesis.
+
+**2026-08-16 DATED APPEND #68 — OM-3 CLOSES THE COUNT LAYER'S OPEN
+MATH DEBTS: THE DOMINANCE SPLIT IS PROVED, THE κ(T) CENSUS IS A
+THEOREM, AND THE β-PREFACTOR LEDGER IS EXPANDED AND EXACT.** Unit
+OM-3 (the campaign's count-layer slot; note
+`docs/openmath-campaign/OM-3_count-layer_2026-08-16.md`; rows
+HYP.23/25/26/30/32/33/35/36/88) delivered, method-compliant
+(outline → certify → prove, every battery at q = 2 AND 3 minimum):
+(i) **the dominance-region split** — `EFF.GENIND.30`'s one-line
+"induct on dimension" leg of LEMMA GENIND-0, declared OPEN by
+CHAP-H §16 item 6 — now has a COMPLETE elementary proof (note §A:
+automatic-positivity + bounded-fiber lemmas, mod-B sub-box split,
+monotone-affine pieces preserving the σ-strengthened (A1) predicate),
+with its decomposition algorithm certified 87/87 exact cells
+(`verification/om3_dominance_split_check.py`) and the 2SIDED
+set-level split + the r = 1 general-coefficient trichotomy landed in
+Lean (`ChapH/H94w.lean`); a constructed counterexample records that
+the reparameterization clause is NECESSARY (unreparameterized grids
+provably cannot tile a dominance region).  (ii) **the [H-d] census
+law with the κ(T) orbit factor** proved (note §B) — the 2026-08-12
+W-12.A correction is now a theorem — and certified at Q ∈
+{2,3,4,5,8,9}, primes AND prime powers, 92/92
+(`om3_residual_census_check.py`).  (iii) **the (CS-EXACT)-side
+inclusion–exclusion IDENTITY at every r** landed
+(`ChapH/H63w.lean`; H.63 was the bound direction; corpus leg F was
+r ≤ 3), H.09's no-`exactDrain` RE-PLAN fence respected.  (iv)
+**(CS-2) gets real-count teeth**: the m = 2 conservative reader run
+exhaustively in BOTH characteristics (q = 2, 3, 4) shows the
+per-composition masses are EXACTLY the mass-normalized bracket terms
+Π(Q−1)Q^{c·kᵢ} with the ghost as literal free digits, aggregating to
+`alphaBracket` and telescoping to u(N) = Q^{N−1}, with a semantic
+Δ-cross-check at odd p (`om3_bracket_history_check.py`).  (v)
+**LEMMA W12-S2.1** (CS-1's order-1 shadow) certified as a bijection,
+32/32 cells, both characteristics (`om3_s21_product_check.py`).
+(vi) **(A0) at n = 3, order 1**: 19,758 window-decided classes,
+canonical + decorrelated lifts, vs an independent PARI
+nfinit/idealprimedec (e,f)-oracle — 0 mismatches
+(`om3_a0_oracle_check.py`).  (vii) **HYP.88's residue — "the
+per-genre prefactor ledgers" (ANNEX R R1.4) — is EXPANDED AND
+PROVED at the first-step layer at EVERY degree** (note §C: the
+explicit-residual count Lemma C.1 and the ledger law
+count(genre) = Π censuses(y-excluded) × Q^{free digits}, Lemma C.2,
+both degree-agnostic), certified exhaustively at n = 4 (up to 30
+genres/cell incl. the α = GENIND.A(I) instance, the CS4-E law with
+the corpus's own spot values 162/13122, and the distinct-slope and
+same-slope β-genres; `om3_beta_ledger_n4_check.py`); the remaining
+HYP.88 debt is the m ≥ 3 child-transport count-isomorphism, which is
+HYP.32's (CS-1) residue, not a bookkeeping box — proposed
+re-disposition at the next ledger fold.  FENCES HONORED: HYP.36's
+`hwin`/`hprice` untouched (GC-5 CARRY; the standalone-quartic E/F
+rows recorded as H09w's landed proof fields); no statement changed;
+no interface field added.  Footprints: H63w/H94w Lean-core only;
+roll-up build green (8714 jobs).  Commits: skeleton `98d061d4`,
+legs `71a7c838`/`0a1e8f56`/`141f034d`/`e81a4f5b`/`8b043eec`/
+`87064f6c`, Lean `bdcdaf06`, note `76a60e33`.
