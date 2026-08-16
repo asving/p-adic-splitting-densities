@@ -9,6 +9,53 @@ import Uniformity.ChapC.C46
 /-!
 # REFUTATION of the frozen A-C.1 signature of NODE C.47 (`composedKey_isTestKey`)
 
+## ✔ REPAIR NOTE, 2026-08-16 — THE NODE HAS LANDED; THIS RECORD IS CLOSED (defect 1 of 2)
+
+*(Appended banner. Everything below the horizontal rule is the original record, verbatim and
+unedited — it is what the A-C.5 adjudication was made against and must stay readable as such.)*
+
+`composedKey_isTestKey` is now **LANDED**, sorry-free and Lean-core, in
+`leanfinal/Uniformity/ChapC/C47.lean`, at its A-C.1 signature **byte-unchanged** and with no
+added hypothesis. Two defects stood between the frozen signature and that landing:
+
+* **Defect 1 — the READ MISMATCH, which is what this file refutes.** REPAIRED at A-C.5 exactly as
+  this record's option 1 proposed (ϖ-read the test-key predicate): C.13 clause 5 was re-signed
+  (FU-1), C.14's lift argument took its one-line change (FU-2), and C.46 then IS the residue
+  clause. Certified in `C47_RESIGN_CERT.lean.txt`; the payout is
+  `composedKey_slot_residue_clause` in C.47.
+* **Defect 2 — the ZERO-SLOT BRANCH, which this record did NOT see.** Found at FU-3 (commit
+  `da950c29`) by the file that landed the six remaining clauses. This record's "What is NOT
+  refuted" section says *"the other four conjuncts and the height half of clause 5 are NOT in
+  question"* — a two-way split of clause 5 into height and residue that MISSED its third piece,
+  the branch `L.r.coeff t = 0 → dev Φ′ Φ₂ (e₂t) = 0`. At C.43's unguarded display that branch is
+  EQUIVALENT to `resLift (0 : ResidueField O) = 0` (C.47's `composedKey_zero_slot_iff`, via
+  `stageLiftO_zero_iff`), and pre-repair `resLift` was the bare `(residue_surjective x).choose`,
+  whose value `Classical.choose` fixes as a function of the proposition alone — so the equation
+  was independent of the corpus, neither provable nor false. REPAIRED 2026-08-16 at C.14a by
+  guarding `resLift` (`if x = 0 then 0 else …`, the convention C.24 already wrote by hand and
+  `EFF.HE6.14`'s DEFINITION HE6-1 states in the source), with `resLift_spec`'s statement
+  byte-unchanged and the new `resLift_zero` its only new export.
+
+**Method note for future refutation records.** Defect 1 was caught because a *value* was compared
+against a *value*. Defect 2 survived a signed adjudication because an accounting of "what remains"
+enumerated conjuncts rather than branches: a clause with an `if`/implication split needs each
+branch counted separately. Both defects are the same underlying species — an opaque
+`Classical.choose` standing where the source names a canonical value (the third such repair in
+this chapter; precedents `c2831103` for `stageCoord`, `2e133686`).
+
+**Consumers to re-check** (this record's own list, now discharged for the node itself): C.48(c),
+C.49, C.52, C.56a, C.83's §12 certificates. The C.14a repair's own blast radius — C.14, C.24,
+C.46, C.56a, C.84 — was re-verified at the repair: all five rebuild unedited.
+
+**⚠ RE-RUN STATUS (checked 2026-08-16).** The re-run recipe below **no longer compiles**, and that
+is the intended end state: `c47_frozen_forces_letter_collapse` type-errors because C.13 clause 5
+is now the ϖ-read `twistRead` clause, so the statement this file refutes no longer exists in the
+corpus. The failure dates from the A-C.5 FU-1 re-sign of C.13, not from the zero-guard repair
+(`resLift` occurs nowhere in this file). Read the file as a frozen record; to re-run it you would
+have to check out the pre-A-C.5 C.13.
+
+---
+
 **This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` /
 `C111_C114_REFUTATION.lean.txt` convention: kept as `.lean.txt` so no build picks it up).
 To re-run it:

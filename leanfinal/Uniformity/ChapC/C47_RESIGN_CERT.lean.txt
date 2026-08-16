@@ -10,6 +10,49 @@ import Uniformity.ChapC.C46
 /-!
 # CERTIFICATION of the A-C.5 re-sign of NODE C.47 (and of C.13 clause 5, C.14)
 
+## ✔ REPAIR NOTE, 2026-08-16 — THE NODE HAS LANDED; THIS CERTIFICATION HELD
+
+*(Appended banner. Everything below the horizontal rule is the original certification, verbatim
+and unedited.)*
+
+`composedKey_isTestKey` is now **LANDED**, sorry-free and Lean-core, in
+`leanfinal/Uniformity/ChapC/C47.lean`, at its A-C.1 signature **byte-unchanged** and with no added
+hypothesis. This certification's central prediction was correct and is now cashed:
+
+* CERT 2 predicted *"under option 1, C.47 is a corollary of C.46 plus the four shape clauses"*.
+  C.46 IS the residue clause at the composed key — landed C.47 states it as
+  `composedKey_slot_residue_clause`, whose body is `composedKey_slot_residue T hπ hh ht`, i.e.
+  literally C.46. The four shape clauses are `composedKey_monic`, `composedKey_natDegree`,
+  `composedKey_top_digit`, `composedKey_offLattice_digit`.
+
+**One correction to the accounting, not to the adjudication.** The clause-count above (residue +
+four shapes) was one item short, and so was the refutation record it inherited the split from.
+C.13 conjunct 5 has THREE pieces, not two: the height half, the ϖ-read residue half, and the
+**zero-slot branch** `L.r.coeff t = 0 → dev Φ′ Φ₂ (e₂t) = 0`. That third piece — defect 2, found
+at FU-3, commit `da950c29` — was EQUIVALENT at C.43's unguarded display to
+`resLift (0 : ResidueField O) = 0`, an equation the corpus did not decide either way, because
+`Classical.choose`'s value is a function of the proposition alone and `∃ a, residue O a = 0` names
+no witness. It was repaired 2026-08-16 at C.14a by guarding `resLift`
+(`if x = 0 then 0 else (residue_surjective x).choose` — the convention C.24 already wrote by hand,
+and `EFF.HE6.14`'s DEFINITION HE6-1's own `B_t := 0` when `c_t = 0`). `resLift_spec`'s statement
+is byte-unchanged; the guard's only new export is `resLift_zero`; all five other `resLift`
+consumers (C.14, C.24, C.46, C.56a, C.84) rebuilt unedited.
+
+Nothing in the three CERT legs below is affected: CERT 1 (`exists_twistRead_preimage`) and CERT 3
+(`exists_testKey_resigned`) are about the ϖ-read lift, which the zero guard does not touch, and
+CERT 2 is landed C.46 verbatim.
+
+**⚠ RE-RUN STATUS (checked 2026-08-16).** The re-run recipe below **no longer compiles**, and that
+is the intended end state: CERT 1's `KeyFrame.exists_twistRead_preimage` now collides with the
+same declaration LANDED in `ChapC/C14.lean` at FU-2 — i.e. the certification's proposal was
+adopted into the corpus, which is what a successful re-sign cert should end up doing to itself.
+The collision dates from FU-2, not from the zero-guard repair (`resLift` occurs nowhere in this
+file). Read the file as a frozen record; the live forms of CERT 1 and CERT 3 are C.14's
+`exists_twistRead_preimage` and `exists_testKey`, and of CERT 2, C.46's
+`composedKey_slot_residue`.
+
+---
+
 **This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` convention: kept as
 `.lean.txt` so no build picks it up).  To re-run it:
 
