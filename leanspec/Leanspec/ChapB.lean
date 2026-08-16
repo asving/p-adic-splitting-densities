@@ -58,6 +58,19 @@ The §10 gates bind nothing: they are concrete `ℤ_[2]` / `ℤ_[3]` instances.
   disjunct narrowed to `(ℓ = 1 ∧ φ.natDegree = 1)` at B.63, B.71, B.79a, B.79b, B.80, B.81,
   B.82 (7 sites, matching the blueprint's §12 item 4 dictionary). Full record: blueprint
   amendment A-F.7 + CHAP-I dated addendum (OPEN-MATH routing of `ℓ = 1, m ≥ 2, d ≥ 2`).
+* **A-F.8 (2026-08-16, wave-11 refutation adjudication).** B.39's A-F.6 re-sign REFUTED again
+  (compiled witness `leanfinal/Uniformity/ChapB/B39_REFUTATION.lean.txt`: `g = 1` passes every
+  hypothesis, `U.natDegree < 0` is `False`). Re-signed here with the conclusion bounds in
+  `degree`/`WithBot ℕ` (R1 — B.38's and the landed templates' shape; R2, added positivity,
+  rejected). Full record: blueprint amendment A-F.8.
+* **A-F.9 (2026-08-16, same adjudication).** B.42's A-F.6 re-sign REFUTED (compiled witness
+  `leanfinal/Uniformity/ChapB/B42_REFUTATION.lean.txt`: `f = φ`, `μ = 1`). Re-signed here with
+  the classical standing hypothesis `(h0 : dev φ f 0 ≠ 0)` ([GN15] Thm 2.3's explicit
+  `φ^{ord_φ(g)}` peel) and clause 3 strengthened (`dev φ (F p) 0 ≠ 0`, `0 < (F p).natDegree` —
+  what B.48 needs at B.63). The same missing hypothesis found and repaired at B.71 (`hnz`,
+  B.81's clause verbatim), B.72 (`h0`), B.79a (`h0`); B.41/B.48/B.79b/B.80/B.81/B.82 verified
+  immune (`hH₀`/`hvis`/`hnz`); B.63's stub UNCHANGED (its blueprint route gains the `φ`-part
+  peel step 0 instead). Full record: blueprint amendment A-F.9.
 
 ## THE DEFECT LIST (stage-0e gate, 2026-08-15)
 
@@ -650,7 +663,11 @@ axiom exists_solve_resField {K : Type*} [Field K] {G H : Polynomial K}
 
 /-- **B.39** [lemma] ENV-C. **[repaired: A-F.6]** — `(hu : 0 < u)` and `(hgd) (hhd)` added; the
 frozen form is machine-REFUTED (amendment A-F.6: `g = h = X`, `e = π^c` at `φ = X²+1` over `ℤ₃`,
-`u = ℓ = 1` — `GradedCoprime` holds since `resPoly X` is a unit constant, and no `U, V` exist). -/
+`u = ℓ = 1` — `GradedCoprime` holds since `resPoly X` is a unit constant, and no `U, V` exist).
+**[repaired: A-F.8]** — the two conclusion bounds re-stated in `degree` (`WithBot ℕ`): the
+A-F.6 form is machine-REFUTED again (`B39_REFUTATION.lean.txt`: `g = 1`, `h = φ + C π`, `e = 0`,
+`c = 0` at ANY DVR/key — `U.natDegree < 0` is `False` in `ℕ`). The `degree` form is B.38's own
+shape and the landed template's; the degenerate divisor is served by `U = 0` (`degree ⊥`). -/
 axiom exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h : Polynomial O}
     (hg : g.Monic) (hh : h.Monic)
@@ -658,7 +675,7 @@ axiom exists_graded_solve (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKe
     (hgh : GradedCoprime π φ u ℓ g h)
     {c : ℕ} {e : Polynomial O} (hdeg : e.natDegree < (g * h).natDegree)
     (he : ((c : ℕ) : ℕ∞) ≤ suppVal φ e u ℓ) :
-    ∃ U V : Polynomial O, U.natDegree < g.natDegree ∧ V.natDegree < h.natDegree ∧
+    ∃ U V : Polynomial O, U.degree < g.degree ∧ V.degree < h.degree ∧
       ((c + 1 : ℕ) : ℕ∞) ≤ suppVal φ (e - (h * U + g * V)) u ℓ
 
 end ENVC2
@@ -699,15 +716,23 @@ axiom exists_graded_factorization (hπ : Irreducible π) {φ : Polynomial O} (h�
 /-- **B.42** [theorem] ENV-C. **[repaired: A-F.6]** — conclusion STRENGTHENED (hypotheses
 unchanged): clause 1 records `0 < p.1` (proof step 2 derives every slope positive from `hres`),
 clause 3 records `φ.natDegree ∣ (F p).natDegree` (B.41's pinned factor degrees) — both are what
-the repaired B.48 needs at B.63. -/
+the repaired B.48 needs at B.63. **[repaired: A-F.9]** — `(h0 : dev φ f 0 ≠ 0)` added: the
+A-F.6 form is machine-REFUTED (`B42_REFUTATION.lean.txt`: `f = φ`, `μ = 1` at ANY DVR/key —
+`sideSet φ φ u ℓ = {1}`, the `↔`-clause forces `s = ∅`, clause 4 reads `φ = 1`). `h0` is the
+classical `φ ∤ f` ([GN15] Thm 2.3 peels `φ^{ord_φ(g)}` explicitly). Clause 3 further records
+`dev φ (F p) 0 ≠ 0` and `0 < (F p).natDegree` (proof-free: B.41's `GradedCoprime` output pins
+the factors' left heights, and the peeled degrees are `ℓ·m·d`, `d ≥ 1`) — they discharge
+B.48's `hH₀`/`hne`/`hd` at B.63. -/
 axiom exists_slope_factorization (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {f : Polynomial O} (hf : f.Monic) {μ : ℕ} (hμ : 0 < μ)
-    (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ) :
+    (hres : f.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (h0 : dev φ f 0 ≠ 0) :
     ∃ (s : Finset (ℕ × ℕ)) (F : ℕ × ℕ → Polynomial O),
       (∀ p ∈ s, 0 < p.1 ∧ 0 < p.2 ∧ Nat.Coprime p.1 p.2) ∧
       (∀ p ∈ s, ∀ q ∈ s, p ≠ q → p.1 * q.2 ≠ q.1 * p.2) ∧
       (∀ p ∈ s, (F p).Monic ∧ IsPure φ (F p) p.1 p.2 ∧
-        φ.natDegree ∣ (F p).natDegree) ∧
+        φ.natDegree ∣ (F p).natDegree ∧
+        dev φ (F p) 0 ≠ 0 ∧ 0 < (F p).natDegree) ∧
       f = ∏ p ∈ s, F p ∧
       (∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
         (1 < (sideSet φ f u ℓ).card ↔ (u, ℓ) ∈ s))
@@ -1106,7 +1131,10 @@ variable [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
 `(hperim : ∀ i ∈ s, …)` and the conclusion's `(…the block factor…)`. Per §12 rule 4(c) the stub
 signs B.71 in **B.80's data form** (`g : ι → Polynomial O` with `hgprod`/`hgres` as hypotheses),
 NOT over B.67's existential — an `axiom` stub cannot bind an existential's witness. `hsep`/`hperim`
-are §12 item 4's dictionary clauses at `(φ, f) := (φ i, g i)`. -/
+are §12 item 4's dictionary clauses at `(φ, f) := (φ i, g i)`.
+**[repaired: A-F.9]** — `(hnz : ∀ i ∈ s, dev (φ i) (g i) 0 ≠ 0)` added, byte-identical to
+B.81's existing clause (the A-F.6-era form is refuted at the canonical B-D4 reading by the
+singleton block `g i₀ = φ i₀`, `a i₀ = 1`; free at B.80's per-block `hvis` and B.81's `hnz`). -/
 axiom typeOf_order1 (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic) (hd : 0 < f.natDegree)
     {ι : Type*} [DecidableEq ι] {s : Finset ι} {φ : ι → Polynomial O} {a : ι → ℕ}
     (hkey : ∀ i ∈ s, IsKey (φ i))
@@ -1117,6 +1145,7 @@ axiom typeOf_order1 (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic) (hd
     {g : ι → Polynomial O} (hgmon : ∀ i ∈ s, (g i).Monic) (hgprod : f = ∏ i ∈ s, g i)
     (hgres : ∀ i ∈ s, (g i).map (IsLocalRing.residue O)
       = ((φ i).map (IsLocalRing.residue O)) ^ (a i))
+    (hnz : ∀ i ∈ s, dev (φ i) (g i) 0 ≠ 0)
     (hsep : ∀ i ∈ s, ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
       ∀ h : (sideSet (φ i) (g i) u ℓ).Nonempty, 1 < (sideSet (φ i) (g i) u ℓ).card →
         ∀ H₀ : ℕ, npHgt (φ i) (g i) (sideMin (φ i) (g i) u ℓ h) = (H₀ : ℕ∞) →
@@ -1134,10 +1163,14 @@ axiom typeOf_order1 (hπ : Irreducible π) {f : Polynomial O} (hf : f.Monic) (hd
     (typeOf f).data = ∑ i ∈ s, (order1Type π (φ i) (g i)).data
 
 /-- **B.72** [lemma] ENV-C. **DEFECT B-D10** — `(hsep : …)` expanded to B.63's `hsep` clause at
-`(φ, g)`. -/
+`(φ, g)`. **[repaired: A-F.9]** — `(h0 : dev φ g 0 ≠ 0)` added (the A-F.6-era form is refuted
+at the canonical B-D4 reading by `g = φ`: `slopeFinset π φ φ = ∅` by the committed
+`sideSet_key_self`, so the left side is `0 ≠ m`; step 3 is the `h0`-gated length identity
+`Σ ℓ_S d_S = μ`). -/
 axiom degree_order1Type (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {g : Polynomial O} (hg : g.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (h0 : dev φ g 0 ≠ 0)
     (hsep : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ∀ h : (sideSet φ g u ℓ).Nonempty,
       1 < (sideSet φ g u ℓ).card → ∀ H₀ : ℕ, npHgt φ g (sideMin φ g u ℓ h) = (H₀ : ℕ∞) →
         (resPoly π φ g u ℓ h H₀).Separable) :
@@ -1252,10 +1285,14 @@ section ENVC10
 variable [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
 
 /-- **B.79a** [theorem] ENV-C. **DEFECT B-D10** — `hperim` expanded from §12 item 4(a),
-byte-identical to B.63's. -/
+byte-identical to B.63's. **[repaired: A-F.9]** — `(h0 : dev φ g 0 ≠ 0)` added (the A-F.6-era
+form is refuted at the canonical B-D4 reading by `g = φ`: `hterm` holds, `hperim` is
+dischargeable, and the conclusion forces `⟨{(1, m)}⟩ = ⟨0⟩`). B.79b below is IMMUNE — its
+`hvis` gives `h0` via B.76(ii) — and supplies (a)'s `h0` at `g'` via B.76(iv). -/
 axiom typeOf_eq_order1Type (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
     {g : Polynomial O} (hg : g.Monic) {μ : ℕ} (hμ : 0 < μ)
     (hres : g.map (IsLocalRing.residue O) = (φ.map (IsLocalRing.residue O)) ^ μ)
+    (h0 : dev φ g 0 ≠ 0)
     (hterm : ¬ NeedsDescent π φ g)
     (hperim : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ →
       ∀ gS : Polynomial O, gS.Monic → gS ∣ g → IsPure φ gS u ℓ →
