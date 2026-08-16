@@ -2179,6 +2179,9 @@ noncomputable def repoRead {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H�
 
 axiom gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    (hr : r = 2)   -- ⚠ SCOPE FENCE (A-C.1 self-catch): B″ is PROVED at depth 2 ONLY;
+                   -- the general-depth form IS the OPEN [GENTOW5-W(i)] (C.89) — an
+                   -- unfenced general-r signing would silently assert the open law.
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
     (hfloor : e' * W.Econst r < u') {t : ℕ} (ht : t < f') :
     I.Rgr ((f' - t) * u') (I.chainNorm r ((f' - t) * u')) * I.thetaRatio (f' - t)
@@ -2186,6 +2189,7 @@ axiom gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
 
 axiom theta_letter_valued {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    (hr : r = 2)   -- the same depth-2 scope fence as gentow2_Bpp
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
     (hfloor : e' * W.Econst r < u') :
     I.thetaRatio 1 = 1 ∧
@@ -2652,6 +2656,473 @@ axiom tower_cert_peel_path {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     typeOf (monicPoly a)
       = ⟨{(F.e₁ * T.e₂, F.f₁ * T.f₂)}
           + (typeOf ((monicPoly a) /ₘ composedKey T)).data⟩
+
+/-! ## A-C.1 §8 — THE SHADOW-READ LAYER AND PARTIAL SIDES (C.71–C.82)
+
+Determinations: `shadowDev` gets a REAL body — the mod-`Φ′`-reduced two-variable division
+tower, implemented as the `Φ₂`-adic development computed in `(O[x]/Φ′)[Z]` (`biRead` +
+`devQ`, the generic monic division recursion) and mapped back through the CANONICAL
+representative (`AdjoinRoot.modByMonicHom`, no choice); `TouchCert` is the `[GT3-r2]`
+certificate as the exact-`Θ_j` nonvanishing of `Φ₂^{μ₂}`'s own read discrepancy. -/
+
+/-- generic monic-division development (B.02's `dev` over any `CommRing`; stub-side helper). -/
+noncomputable def devQ {R : Type*} [CommRing R] (Ψ : Polynomial R) :
+    Polynomial R → ℕ → Polynomial R
+  | g, 0 => g %ₘ Ψ
+  | g, j + 1 => devQ Ψ (g /ₘ Ψ) j
+
+/-- the mod-`Φ′`-reduced two-variable image `O[x] → (O[x]/Φ′)[Z]`. -/
+noncomputable def biRead (F : KeyFrame O π) (g : Polynomial O) :
+    Polynomial (AdjoinRoot F.key) :=
+  (Finset.range (g.natDegree + 1)).sum fun b =>
+    Polynomial.C (AdjoinRoot.mk F.key (dev F.key g b)) * Polynomial.X ^ b
+
+/-! ### NODE C.71 [def] — `shadowDev` [signed: A-C.1; real body] -/
+
+noncomputable def shadowDev {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (f : Polynomial O) (j : ℕ) : Polynomial O :=
+  let S := devQ (biRead F (composedKey T)) (biRead F f) j
+  (Finset.range (S.natDegree + 1)).sum fun b =>
+    (AdjoinRoot.modByMonicHom F.hmonic (S.coeff b)) * F.key ^ b
+
+/-! ### NODE C.72 [theorem] — the floor and the faithful band [signed: A-C.1] -/
+
+axiom shadow_floor {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)]
+    {μ₂ : ℕ} {f : Polynomial O} (hf : f ∈ towerLocus T μ₂) {j : ℕ} (hj : j < μ₂) :
+    (T.theta μ₂ j : ℕ∞)
+      ≤ dv2Hgt (T.levelDatum hπ) (shadowDev T f j - dev (composedKey T) f j)
+
+axiom shadow_faithful_band {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)]
+    {μ₂ : ℕ} {f : Polynomial O} (hf : f ∈ towerLocus T μ₂) {j : ℕ} (hj : j < μ₂)
+    {m : ℕ} (hm : m < T.theta μ₂ j)
+    (hval : dv2Hgt (T.levelDatum hπ) (dev (composedKey T) f j) = (m : ℕ∞)) :
+    dv2Hgt (T.levelDatum hπ) (shadowDev T f j) = (m : ℕ∞) ∧
+    dv2Res (T.levelDatum hπ) (shadowDev T f j)
+      = dv2Res (T.levelDatum hπ) (dev (composedKey T) f j)
+
+/-! ### NODE C.73 [def+theorem] — x-free genres and exactness [signed: A-C.1; the PRIMARY
+clause is the definition; the `i(u₂(f₂−t)) = 0` test is the `f₁ = 1` companion ONLY] -/
+
+def IsXFree {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) : Prop :=
+  ∀ t, t < T.f₂ → T.ψ₂.coeff t ≠ 0 →
+    (F.stageLiftO H₀ hpin ((T.f₂ - t) * T.u₂)
+      (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp T t))).natDegree = 0
+
+axiom shadow_exact_of_xfree {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] (hx : IsXFree T)
+    {μ₂ : ℕ} {f : Polynomial O} (hf : f ∈ towerLocus T μ₂) (j : ℕ) :
+    shadowDev T f j = dev (composedKey T) f j
+
+axiom isXFree_iff_slot_of_f1 {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h) (hf1 : F.f₁ = 1) :
+    IsXFree T
+      ↔ ∀ t, t < T.f₂ → T.ψ₂.coeff t ≠ 0 → F.slotIdx ((T.f₂ - t) * T.u₂) = 0
+
+/-! ### NODE C.74 [theorem] — the three TERMINAL layers [signed: A-C.1; `TouchCert` as the
+exact-`Θ_j` nonvanishing of the key power's own read discrepancy] -/
+
+def TouchCert {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (μ₂ j : ℕ) : Prop :=
+  dv2Hgt (T.levelDatum hπ)
+      (shadowDev T ((composedKey T) ^ μ₂) j - dev (composedKey T) ((composedKey T) ^ μ₂) j)
+    = (T.theta μ₂ j : ℕ∞)
+
+axiom shadow_attained_of_certificate {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] {μ₂ j : ℕ} (hj : j < μ₂) (hc : TouchCert T hπ μ₂ j) :
+    dev (composedKey T) ((composedKey T) ^ μ₂) j = 0 ∧
+    dv2Hgt (T.levelDatum hπ) (shadowDev T ((composedKey T) ^ μ₂) j) = (T.theta μ₂ j : ℕ∞)
+
+axiom shadow_persistence {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] {μ₂ j : ℕ} (hj : j < μ₂) (hc : TouchCert T hπ μ₂ j)
+    {g : Polynomial O}
+    (hbudget : ∀ j' a b : ℕ, j' < μ₂ → a < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
+      (budgetFloor T μ₂ j' a b : ℕ∞)
+        ≤ addVal O ((dev F.key (dev (composedKey T) g j') b).coeff a)) :
+    ((T.theta μ₂ j + 1 : ℕ) : ℕ∞)
+        ≤ dv2Hgt (T.levelDatum hπ) (shadowDev T g j - dev (composedKey T) g j) ∧
+    dv2Hgt (T.levelDatum hπ)
+        (shadowDev T ((composedKey T) ^ μ₂ + g) j
+          - dev (composedKey T) ((composedKey T) ^ μ₂ + g) j)
+      = (T.theta μ₂ j : ℕ∞)
+
+axiom shadow_not_sigma_function {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (hnx : ¬ IsXFree T) {μ₂ : ℕ} (hμ₂ : 2 ≤ μ₂) :
+    (∃ f g : Polynomial O, f ∈ towerLocus T μ₂ ∧ g ∈ towerLocus T μ₂ ∧
+      typeOf f = typeOf g ∧ ∃ j < μ₂, shadowDev T f j ≠ shadowDev T g j) ∧
+    (∃ f g : Polynomial O, f ∈ towerLocus T μ₂ ∧ g ∈ towerLocus T μ₂ ∧
+      (∀ j < μ₂, shadowDev T f j = shadowDev T g j) ∧ typeOf f ≠ typeOf g)
+
+/-! ### NODE C.75 [theorem] — the entry/event band is shadow-faithful [signed: A-C.1] -/
+
+axiom entry_band_faithful {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)]
+    {μ₂ : ℕ} {f : Polynomial O} (hf : f ∈ towerLocus T μ₂)
+    {j : ℕ} (hj : j < μ₂) {m : ℕ} (hm : m ≤ (μ₂ - j) * T.E₂)
+    (hval : dv2Hgt (T.levelDatum hπ) (dev (composedKey T) f j) = (m : ℕ∞)) :
+    dv2Hgt (T.levelDatum hπ) (shadowDev T f j) = (m : ℕ∞) ∧
+    dv2Res (T.levelDatum hπ) (shadowDev T f j)
+      = dv2Res (T.levelDatum hπ) (dev (composedKey T) f j)
+
+/-! ### NODE C.76 [lemma] — the level-2 datum at PARTIAL sides [signed: A-C.1; (a)+(b) with
+the frame-opening hypothesis `hopen` (the left-endpoint pin); (c) IS C.47 (side-blind,
+re-export); (d) at the frame-peel core] -/
+
+axiom partial_floor_and_datum {F : KeyFrame O π} {H₀ : ℕ} (hpin : F.Pin H₀)
+    (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hf : f.Monic) (hsq : Squarefree f) (hkey : ¬ F.key ∣ f)
+    (hopen : (((f.natDegree / (F.e₁ * F.f₁)) * ((F.e₁ * F.f₁) * F.h) : ℕ) : ℕ∞)
+      < dvHgt F f 0)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+    (hne : (dvSideSet F f u ℓ).Nonempty) (hdeg : 0 < dvSideDeg F f u ℓ hne) :
+    ℓ * ((F.e₁ * F.f₁) * F.h) < u ∧
+    ∀ (M₀ : ℕ) (hp : dvHgt F f (dvSideMin F f u ℓ hne) = (M₀ : ℕ∞)),
+      (dvResPoly F H₀ hpin f u ℓ hne M₀ hp).coeff 0 ≠ 0 ∧
+      (dvResPoly F H₀ hpin f u ℓ hne M₀ hp).natDegree = dvSideDeg F f u ℓ hne
+
+axiom partial_frame_peel {F : KeyFrame O π} {H₀ : ℕ} (hpin : F.Pin H₀)
+    (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {f : Polynomial O} (hf : f.Monic) (hsq : Squarefree f) (hdvd : F.key ∣ f)
+    (hbox : ∀ g' ∈ monicFactors F.key, F.f₁ ∣ inertiaDegOf g') :
+    typeOf F.key = ⟨{(F.e₁, F.f₁)}⟩ ∧ ¬ F.key ^ 2 ∣ f
+
+/-! ### NODE C.77 [theorem] — bouquet + projection at partial sides [signed: A-C.1; (i) is
+the C.33+C.34 chain (re-export); (ii) at the TOWERRAT2-C monic-signature core + the block
+degree; the translation clauses are C.37/C.64's, already signed] -/
+
+axiom partial_projection {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {f : Polynomial O} (hctx : BlockContext (T.levelDatum hπ) f) :
+    (dev (composedKey T) f (f.natDegree / T.D₂)).Monic ∧
+    ((T.D₂ ∣ f.natDegree) → dev (composedKey T) f (f.natDegree / T.D₂) = 1) ∧
+    (blockFactor (T.levelDatum hπ) f).natDegree = T.D₂ * mult₂ (T.levelDatum hπ) f
+
+/-! ### NODE C.78 [theorem] — the per-block decision from `f`'s OWN development
+[signed: A-C.1; the reads are on `f`, never on the (unexhibited) block; (iv)'s recursion
+routing = C.30, re-export] -/
+
+axiom partial_block_decision {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {f : Polynomial O} (hctx : BlockContext (T.levelDatum hπ) f)
+    {u₃ ℓ₃ : ℕ} (hℓ₃ : 0 < ℓ₃) (hcop₃ : Nat.Coprime u₃ ℓ₃) (hfloor₃ : ℓ₃ * T.E₂ < u₃)
+    (hne₃ : (dv2SideSet (T.levelDatum hπ) (composedKey T) f u₃ ℓ₃).Nonempty)
+    (hsep : (dv2ResPoly (T.levelDatum hπ) (composedKey T) f u₃ ℓ₃ hne₃).Separable)
+    {r₂ : Polynomial (AdjoinRoot (towerLabel T))} (hr₂m : r₂.Monic) (hr₂i : Irreducible r₂)
+    (hdvd : r₂ ∣ dv2ResPoly (T.levelDatum hπ) (composedKey T) f u₃ ℓ₃ hne₃) :
+    ∃ g : Polynomial O, g.Monic ∧ g ∣ blockFactor (T.levelDatum hπ) f ∧
+      g.natDegree = (F.e₁ * T.e₂ * ℓ₃) * (F.f₁ * T.f₂ * r₂.natDegree) ∧
+      ((∀ g' ∈ monicFactors g, CBox1Side (T.levelDatum hπ) g') →
+       (∀ g' ∈ monicFactors g, (F.f₁ * T.f₂ * r₂.natDegree) ∣ inertiaDegOf g') →
+        typeOf g = ⟨{(F.e₁ * T.e₂ * ℓ₃, F.f₁ * T.f₂ * r₂.natDegree)}⟩ ∧ Irreducible g)
+
+/-! ### NODE C.79 [theorem] — the `μ₂* = 2` decision table [signed: A-C.1; the five rows as
+an inductive case tag (GC-4's domain licence), σ per case, boxes inside] -/
+
+inductive Mu2TwoCase where
+  | twoSides : Mu2TwoCase
+  | halfInteger : Mu2TwoCase
+  | inertQuadratic : Mu2TwoCase
+  | split : Mu2TwoCase
+  | doubleRoot : Mu2TwoCase
+
+axiom partial_mu2star_two_decision {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {f : Polynomial O} (hctx : BlockContext (T.levelDatum hπ) f)
+    (hm2 : mult₂ (T.levelDatum hπ) f = 2)
+    (hbox1 : ∀ g' ∈ monicFactors (blockFactor (T.levelDatum hπ) f),
+      CBox1Side (T.levelDatum hπ) g') :
+    ∃ c : Mu2TwoCase,
+      ((c = Mu2TwoCase.twoSides ∨ c = Mu2TwoCase.split) →
+        typeOf (blockFactor (T.levelDatum hπ) f)
+          = ⟨{(F.e₁ * T.e₂, F.f₁ * T.f₂), (F.e₁ * T.e₂, F.f₁ * T.f₂)}⟩) ∧
+      (c = Mu2TwoCase.halfInteger →
+        typeOf (blockFactor (T.levelDatum hπ) f)
+          = ⟨{(2 * (F.e₁ * T.e₂), F.f₁ * T.f₂)}⟩) ∧
+      (c = Mu2TwoCase.inertQuadratic →
+        (∀ g' ∈ monicFactors (blockFactor (T.levelDatum hπ) f),
+          (F.f₁ * T.f₂ * 2) ∣ inertiaDegOf g') →
+        typeOf (blockFactor (T.levelDatum hπ) f)
+          = ⟨{(F.e₁ * T.e₂, 2 * (F.f₁ * T.f₂))}⟩) ∧
+      (c = Mu2TwoCase.doubleRoot →
+        ∃ (lam : ℕ) (s : AdjoinRoot (towerLabel T)), T.E₂ < lam ∧ s ≠ 0 ∧
+          ∃ hne : (dv2SideSet (T.levelDatum hπ) (composedKey T) f lam 1).Nonempty,
+            dv2ResPoly (T.levelDatum hπ) (composedKey T) f lam 1 hne
+              = (Polynomial.X - Polynomial.C s) ^ 2)
+
+/-! ### NODE C.80 [theorem] — the tie at pure-power sides, unconditional [signed: A-C.1;
+the mixed case routes to C.67 by name] -/
+
+axiom tie_pure_power {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hctx : BlockContext (T.levelDatum hπ) f)
+    {μ₂ : ℕ} (hμ₂ : 0 < μ₂)
+    (hres : ∀ (hne : (dvSideSet F f T.u₂ T.e₂).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F f (dvSideMin F f T.u₂ T.e₂ hne) = (M₀ : ℕ∞)),
+      ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
+        dvResPoly F H₀ hpin f T.u₂ T.e₂ hne M₀ hp
+          = Polynomial.C c * (towerLabel T) ^ μ₂) :
+    mult₂ (T.levelDatum hπ) f = μ₂ ∧
+    (blockFactor (T.levelDatum hπ) f).natDegree = T.D₂ * μ₂
+
+/-! ### NODE C.81 [theorem] — the `c_g`-read [signed: A-C.1; the right-endpoint identity +
+the floors visible through the projection] -/
+
+axiom cg_read {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {f : Polynomial O} (hctx : BlockContext (T.levelDatum hπ) f)
+    (hnd : ¬ composedKey T ∣ blockFactor (T.levelDatum hπ) f) :
+    dv2Pin (T.levelDatum hπ) (composedKey T) f (mult₂ (T.levelDatum hπ) f)
+      = (complementConst (T.levelDatum hπ) f : ℕ∞) ∧
+    ∀ j, j < mult₂ (T.levelDatum hπ) f →
+      (((mult₂ (T.levelDatum hπ) f - j) * T.E₂ + 1
+          + complementConst (T.levelDatum hπ) f : ℕ) : ℕ∞)
+        ≤ dv2Pin (T.levelDatum hπ) (composedKey T) f j
+
+/-! ### NODE C.82 [theorem] — block budgets through the projection (BUDGET half ONLY; the
+LEDGER/COUNT half stays §11's — the corpus's own fence) [signed: A-C.1] -/
+
+axiom block_budget {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {f : Polynomial O} (hctx : BlockContext (T.levelDatum hπ) f)
+    (hnd : ¬ composedKey T ∣ blockFactor (T.levelDatum hπ) f) (N : ℕ) :
+    Nat.card {c : Coeff O (T.D₂ * mult₂ (T.levelDatum hπ) f) N //
+        ∃ a : Fin (T.D₂ * mult₂ (T.levelDatum hπ) f) → O,
+          proj O (T.D₂ * mult₂ (T.levelDatum hπ) f) N a = c ∧
+          monicPoly a ∈ towerLocus T (mult₂ (T.levelDatum hπ) f)}
+      = residueCard O ^ towerFreeCount T (mult₂ (T.levelDatum hπ) f) N
+
+/-! ## A-C.1 §9 — THE THIRD STAGE (C.84–C.93, C.95, C.96) -/
+
+/-! ### NODE C.84 [def+lemma] — the level-`i` weight and the flavor lifts [signed: A-C.1;
+`towerWeight`/`flavorMonomial` real; `towerLift` stub-carried as an axiom constant (the
+multi-index digit iteration is the fleet's body) with the height clause signed] -/
+
+def DeepTower.towerWeight {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (i v a : ℕ) (J : ℕ → ℕ) : ℕ :=
+  W.ehat i * v + a * (W.ehat i / W.e 1) * W.u 1
+    + (∑ j ∈ Finset.Icc 1 (i - 1), J j * (W.ehat i / W.ehat (j + 1)) * W.u (j + 1))
+    + J i * W.Econst i
+
+noncomputable def DeepTower.flavorMonomial {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    {r : ℕ} (W : DeepTower F H₀ hpin r) (key : ℕ → Polynomial O)
+    (i rr : ℕ) (t : ℕ → ℕ) (m : ℕ) : Polynomial O :=
+  let Δ := F.e₁ * rr * (W.ehat i / W.e 1) * W.u 1
+    + ∑ j ∈ Finset.Icc 1 (i - 1), W.e (j + 1) * t j * (W.ehat i / W.ehat (j + 1)) * W.u (j + 1)
+  let p := W.towerNorm (i - 1) (m - Δ)
+  Polynomial.C (π ^ p.1) * Polynomial.X ^ (p.2.1 + F.e₁ * rr)
+    * ∏ j : Fin (i - 1), (key (j.1 + 1)) ^ (p.2.2 j + W.e (j + 2) * t (j + 1))
+
+axiom DeepTower.towerLift {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (key : ℕ → Polynomial O) (i m : ℕ)
+    (s : W.fld i) : Polynomial O
+
+/-! ### NODE C.85 [theorem] — the graded frame and the substitution theorem [signed: A-C.1;
+**A0 DROPPED per the node's own ⚠ DECISION note** ("A0 is scaffolding, not consumed
+content" — the recorded formalizer option, exercised); A1 at the C-carrier
+multiplicativity-defect form; (A)'s Step A as the binomial-free ring identity — the grid
+leg is C.56's `refine_kills`, already signed] -/
+
+axiom theta_dictionary {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)] :
+    ∃ θ : ℕ → AdjoinRoot (T.levelDatum hπ).r,
+      θ 0 = 1 ∧ θ 1 = 1 ∧ (∀ t, θ t ≠ 0) ∧
+      ∀ (s t : ℕ) (A B : Polynomial O),
+        dv2Res (T.levelDatum hπ) A ≠ 0 → dv2Res (T.levelDatum hπ) B ≠ 0 →
+        θ (s + t) * dv2Res (T.levelDatum hπ) (A * B)
+          = θ s * θ t * (dv2Res (T.levelDatum hπ) A * dv2Res (T.levelDatum hπ) B)
+
+axiom substitution_kills {R : Type*} [CommRing R] (μ : ℕ) (s : R) :
+    ((Polynomial.X - Polynomial.C s) ^ μ).comp (Polynomial.X + Polynomial.C s)
+      = Polynomial.X ^ μ
+
+/-! ### NODE C.86 [lemma] — GENTOW-2 at general `μ₂` + the level-1 rider [signed: A-C.1;
+(i) is C.56/C.57's re-export at general `μ₂` (their signatures already quantify `μ₂`);
+(ii) the rider as a REAL level-1 theorem over B's API] -/
+
+axiom substitution_kills_level1 (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {φ : Polynomial O} (hφ : IsKey φ) {f : Polynomial O} (hf : f.Monic)
+    {μ lam : ℕ} (hμ : 0 < μ) (hlam : 0 < lam) {s : resField φ} (hs : s ≠ 0)
+    (hne : (sideSet φ f lam 1).Nonempty) {H₀ : ℕ}
+    (hp : npHgt φ f (sideMin φ f lam 1 hne) = (H₀ : ℕ∞))
+    (hres : resPoly π φ f lam 1 hne H₀ = (Polynomial.X - Polynomial.C s) ^ μ) :
+    ∃ φ' : Polynomial O, φ'.natDegree = φ.natDegree ∧
+      (φ - φ').natDegree < φ.natDegree ∧
+      ∀ j < μ, (((μ - j) * lam : ℕ) : ℕ∞) < npHgt φ' f j
+
+/-! ### NODE C.87 [lemma] — GENTOW5-D TERMINAL, forward direction ONLY [signed: A-C.1; the
+two displayed carry computations, uniform in `j`; **NO two-directional statement exists —
+S11.1's withdrawal honored** (a stub matching the withdrawn closure is a defect)] -/
+
+axiom towerCarry_interior_strict {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (i j : ℕ) (hj : 1 ≤ j) (hji : j + 1 < i) (hir : i ≤ r) :
+    (W.e (j + 1) * W.f (j + 1)) * ((W.ehat i / W.ehat (j + 1)) * W.u (j + 1))
+      < (W.ehat i / W.ehat (j + 2)) * W.u (j + 2)
+
+axiom towerCarry_top_exact {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (i : ℕ) (hi : 1 ≤ i) (hir : i ≤ r) :
+    (W.e i * W.f i) * ((W.ehat i / W.ehat i) * W.u i) = W.Econst i
+
+/-! ### NODE C.88 [theorem] — `(SLOT_i)`/`(LIFT_i)` up the tower [signed: A-C.1, in norm
+form over the interface (C.27's carrier iterated); `boundRec` the companion] -/
+
+def boundRec {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) : ℕ → ℕ
+  | 0 => 0
+  | 1 => (F.e₁ * F.f₁ - 1) * F.h
+  | (i + 2) => (W.e (i + 2) * W.f (i + 2) - 1) * W.u (i + 2) + W.e (i + 2) * boundRec W (i + 1)
+
+axiom tower_slot_exact {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {β : ℕ} {C : Polynomial O} (hg : I.ExactGrade β C)
+    (hdeg : C.natDegree < e' * f' * W.Dcum r)
+    {g : Polynomial O} (hgm : g.Monic) (hKP : I.KP g)
+    (hgdeg : g.natDegree = e' * f' * W.Dcum r) :
+    (W.ehat r * e') * (addVal O (Algebra.norm O (AdjoinRoot.mk g C))).toNat
+      = g.natDegree * β
+
+axiom tower_lift {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (k : ℕ) (hk : boundRec W r < k) (s : W.fld r) (hs : s ≠ 0) :
+    ∃ C : Polynomial O, C.natDegree < W.Dcum r ∧ I.ExactGrade k C ∧ I.Rgr k C = s
+
+/-! ### NODE C.89 [def+lemma] — the `𝒲` HYPOTHESIS FAMILY [signed: A-C.1; the single-`w`
+form in the RATIO carrier; (i) the `i = 2` discharge from C.99; (ii) the `i = 1` SHAPE with
+the tie OPEN; (iii) `i ≥ 3` OPEN — no axiom asserts it, the definition IS the carrier] -/
+
+def GENTOW5W {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u') : Prop :=
+  ∃ w : W.fld r, w ≠ 0 ∧ ∀ t, t < f' →
+    I.Rgr ((f' - t) * u') (I.chainNorm r ((f' - t) * u')) * I.thetaRatio (f' - t)
+      = w ^ (f' - t)
+
+def Wle {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ)
+    (I : ∀ i, (hi : i ≤ r) → FGMNCalculus (W.trunc i hi) e' f' u') (n : ℕ) : Prop :=
+  ∀ i, 3 ≤ i → i ≤ n → ∀ hi : i ≤ r, GENTOW5W (W.trunc i hi) e' f' u' (I i hi)
+
+axiom gentow5w_two {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (W : DeepTower F H₀ hpin 2) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
+    (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
+    (hfloor : e' * W.Econst 2 < u') :
+    GENTOW5W W e' f' u' I
+
+axiom gentow5w_one_shape {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (W : DeepTower F H₀ hpin 1) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
+    (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
+    (hfloor : e' * W.Econst 1 < u') :
+    ∃ k : ℕ, ∀ t, t < f' →
+      I.Rgr ((f' - t) * u') (I.chainNorm 1 ((f' - t) * u')) * I.thetaRatio (f' - t)
+        = (I.letterZ 1 ^ k) ^ (f' - t)
+
+/-! ### NODE C.90 [theorem] — GENTOW5-B (a): the key certificate at the three-regime scope
+[signed: A-C.1 at clause (a); **clause (b) — the level-general one-sidedness — is the
+BOOKED C.92 residual field (published Cor 6.3)**, recorded there and here] -/
+
+axiom gentow5_key_certificate {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ)
+    (I : ∀ i, (hi : i ≤ r) → FGMNCalculus (W.trunc i hi) e' f' u')
+    (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (hW : Wle W e' f' u' I r) (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
+    (hfloor : e' * W.Econst r < u')
+    (Φnext : Polynomial O) (hmon : Φnext.Monic)
+    (hdeg : Φnext.natDegree = e' * f' * W.Dcum r)
+    (ψ' : Polynomial ((W.trunc r le_rfl).fld r)) (hψm : ψ'.Monic) (hψd : ψ'.natDegree = f')
+    (hadm : Irreducible ((I r le_rfl).Rres Φnext) ∧
+      ((I r le_rfl).Rres Φnext).natDegree = f') :
+    (I r le_rfl).KP Φnext ∧
+    ∃ w : (W.trunc r le_rfl).fld r, w ≠ 0 ∧
+      (I r le_rfl).Rres Φnext = wconj w ψ'
+
+/-! ### NODE C.91 [theorem] — budgets/transfer/self-feeding floor [signed: A-C.1 at (d)+(e);
+**(c) — the level-(i+1) entry characterization — BOOKED** (it needs the level-(i+1)
+`dv`-carrier, the same §9-scope residual as C.90(b)/C.102's; recorded in the delta block)] -/
+
+axiom gentow5_selffeed (P : ℕ → ℕ∞) (μ E : ℕ) (hμ : 0 < μ)
+    (hpins : ∀ j < μ, (((μ - j) * E + 1 : ℕ) : ℕ∞) ≤ P j) (htop : P μ = (0 : ℕ∞))
+    {u ℓ j : ℕ} (hℓ : 0 < ℓ) (hside : hOnSide P μ u ℓ j) :
+    ℓ * E < u
+
+/-! ### NODE C.93 [lemma] — threshold arithmetic + the `HYP.82` census [signed: A-C.1] -/
+
+axiom tower_first_live (r μr : ℕ) (hr : 1 ≤ r) (hμ : 2 ≤ μr) (l : ℕ → ℕ)
+    (hl : ∀ i, 1 ≤ i → i ≤ r → 2 ≤ l i) (D : ℕ) (hD : D = ∏ i ∈ Finset.Icc 1 r, l i) :
+    2 ^ (r + 1) ≤ D * μr
+
+section C93Census
+#check @towerLocus_iff_budget   -- item (1): GENTOW-1
+#check @refine_invariants       -- item (2): GENTOW-2
+#check @shadow_floor            -- item (3): GENTOW-3
+#check @partial_floor_and_datum -- item (4): GENTOW-4
+#check @window_band1            -- item (5): GENTOW-5 (core)
+#check @towerLocus_depth3_floor -- item (6)(β): DISCHARGED into (1)
+#check @gentow5_key_certificate -- item (6)(α): depth-3 scope, 𝒲-conditional
+end C93Census
+
+/-! ### NODE C.95 [theorem] — the 𝒯-free cap + the attainment certificate [signed: A-C.1;
+the cap at the PE2-F-2 corrected-codomain core; the certificate at its PINNED scope
+(`f₁ = 1, μ₂ = 2`) with the 6.3′ `f₁ ≥ 2` variant separate] -/
+
+axiom cap_free {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] {f : Polynomial O} (hf : f.Monic)
+    (hcond : f.natDegree % T.D₂ ≠ T.D₂ - 1) {j : ℕ} (hj : f.natDegree / T.D₂ < j) :
+    dev (composedKey T) f j = 0 ∧ shadowDev T f j = 0
+
+axiom attainment_certificate {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] (hf1 : F.f₁ = 1)
+    {f : Polynomial O} (hf : f ∈ towerLocus T 2) (hnx : ¬ IsXFree T)
+    {j : ℕ} (hj : j < 2) (hc : TouchCert T hπ 2 j) :
+    dv2Hgt (T.levelDatum hπ) (shadowDev T f j - dev (composedKey T) f j)
+      = (T.theta 2 j : ℕ∞)
+
+axiom attainment_certificate' {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] (hf1 : 2 ≤ F.f₁)
+    {f : Polynomial O} (hf : f ∈ towerLocus T 2) (hnx : ¬ IsXFree T)
+    {j : ℕ} (hj : j < 2) (hc : TouchCert T hπ 2 j) :
+    dv2Hgt (T.levelDatum hπ) (shadowDev T f j - dev (composedKey T) f j)
+      = (T.theta 2 j : ℕ∞)
+
+/-! ### NODE C.96 [theorem] — GENTOW6-BOX-1's closure at `f₁ = 1`, IF direction ONLY
+[signed: A-C.1; the "iff" is WITHDRAWN — no converse statement exists] -/
+
+axiom box1_attainment_if {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] (hf1 : F.f₁ = 1)
+    {μ₂ : ℕ} (hμ₂ : 3 ≤ μ₂)
+    (hbin : ¬ (ringChar (ResidueField O) ∣ Nat.choose μ₂ 2))
+    {f : Polynomial O} (hf : f ∈ towerLocus T μ₂) (hnx : ¬ IsXFree T)
+    (tstar : ℕ) (htstar : tstar < T.f₂ ∧ T.ψ₂.coeff tstar ≠ 0) :
+    dv2Hgt (T.levelDatum hπ)
+        (shadowDev T f ((μ₂ - 2) + (2 * T.e₂ * tstar + 1) / (T.e₂ * T.f₂))
+          - dev (composedKey T) f ((μ₂ - 2) + (2 * T.e₂ * tstar + 1) / (T.e₂ * T.f₂)))
+      = (T.theta μ₂ ((μ₂ - 2) + (2 * T.e₂ * tstar + 1) / (T.e₂ * T.f₂)) : ℕ∞)
 
 /-! ### NODE C.106 — the §10 supply manifest (documentation node: the `#check` suite) -/
 

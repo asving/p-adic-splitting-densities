@@ -4440,16 +4440,35 @@ inside the `Φ₂`-division — a total `O[x]`-construction); the **margin** `δ
 T.e₂ * (F.e₁*F.f₁) * F.h` (`≥ 1` by the node floor); and the **threshold**
 `Θ T j := (μ₂ − j) * T.E₂ + δ T`.
 
-**SIGNATURE.**
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; `shadowDev`'s
+REAL body determined: the mod-`Φ′`-reduced tower is the `Φ₂`-adic development computed in
+`(O[x]/Φ′)[Z]` (the `biRead` two-variable image + the generic monic division `devQ`) and
+mapped back through the CANONICAL representative `AdjoinRoot.modByMonicHom` (no choice) —
+"iterated `modByMonic` at `Φ′` inside the `Φ₂`-division" made literal].
 ```lean
 namespace Uniformity.Density.Tower
 
-noncomputable def shadowDev {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
-    (f : Polynomial O) (j : ℕ) : Polynomial O := …  -- the mod-Φ′-reduced division tower
+noncomputable def devQ {R : Type*} [CommRing R] (Ψ : Polynomial R) :
+    Polynomial R → ℕ → Polynomial R
+  | g, 0 => g %ₘ Ψ
+  | g, j + 1 => devQ Ψ (g /ₘ Ψ) j
 
-def TowerDatum.margin … : ℕ := T.u₂ - T.e₂ * ((F.e₁ * F.f₁) * F.h)
+noncomputable def biRead (F : KeyFrame O π) (g : Polynomial O) :
+    Polynomial (AdjoinRoot F.key) :=
+  (Finset.range (g.natDegree + 1)).sum fun b =>
+    Polynomial.C (AdjoinRoot.mk F.key (dev F.key g b)) * Polynomial.X ^ b
 
-def TowerDatum.theta … (μ₂ j : ℕ) : ℕ := (μ₂ - j) * T.E₂ + T.margin
+noncomputable def shadowDev {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (f : Polynomial O) (j : ℕ) : Polynomial O :=
+  let S := devQ (biRead F (composedKey T)) (biRead F f) j
+  (Finset.range (S.natDegree + 1)).sum fun b =>
+    (AdjoinRoot.modByMonicHom F.hmonic (S.coeff b)) * F.key ^ b
+
+def TowerDatum.margin {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin) : ℕ :=
+  T.u₂ - T.e₂ * ((F.e₁ * F.f₁) * F.h)
+
+def TowerDatum.theta {F : KeyFrame O π} {H₀ hpin} (T : TowerDatum F H₀ hpin)
+    (μ₂ j : ℕ) : ℕ := (μ₂ - j) * T.E₂ + T.margin
 ```
 
 **DEPENDS.** B.02 · C.42 · C.43 · C.50.
@@ -4473,9 +4492,21 @@ the threshold: `dv2Hgt … (shadowDev T f j − dev (composedKey T) f j) ≥ (Θ
 `K₂`-residues; consequently any read whose consulted heights at coordinate `j` are all
 `< Θ T j` returns identical output on both reads.
 
-**SIGNATURE** (shape). `theorem shadow_floor …` + `theorem shadow_faithful_band …` (the
-band is the floor restated — one file, two public names since (ii) is the one every
-downstream protection cites).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; two public
+names as planned]:
+```lean
+theorem shadow_floor … {j : ℕ} (hj : j < μ₂) :
+    (T.theta μ₂ j : ℕ∞)
+      ≤ dv2Hgt (T.levelDatum hπ) (shadowDev T f j - dev (composedKey T) f j)
+
+theorem shadow_faithful_band … {m : ℕ} (hm : m < T.theta μ₂ j)
+    (hval : dv2Hgt (T.levelDatum hπ) (dev (composedKey T) f j) = (m : ℕ∞)) :
+    dv2Hgt (T.levelDatum hπ) (shadowDev T f j) = (m : ℕ∞) ∧
+    dv2Res (T.levelDatum hπ) (shadowDev T f j)
+      = dv2Res (T.levelDatum hπ) (dev (composedKey T) f j)
+```
+(binder lists — `T hπ hh [insts] {μ₂} {f} (hf : f ∈ towerLocus T μ₂)` — byte-fixed at the
+leanspec twin.)
 
 **DEPENDS.** C.11 · C.50 · C.52 (Step 0's carry pricing: the x-carry's `Φ′`-branch raises
 weight by EXACTLY `δ` — "the whole engine of the note") · C.71.
@@ -4507,7 +4538,23 @@ monomial `π^a` — i.e. `stageLiftO`'s output at that slot has `X`-degree `0`. 
 (iii):** at an x-free datum the discrepancy is ZERO at every height: `shadowDev T f j =
 dev (composedKey T) f j` identically on `𝒯` — the shadow IS the composed read.
 
-**SIGNATURE** (shape). `def IsXFree …` + `theorem shadow_exact_of_xfree …`.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the PRIMARY
+clause is the definition (every nonzero lift slot has `X`-degree 0); the displayed
+`i(u₂(f₂−t)) = 0` test lands as the `f₁ = 1`-ONLY companion `isXFree_iff_slot_of_f1`, per
+the `[GT3-r1]` scope bracket]:
+```lean
+def IsXFree {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) : Prop :=
+  ∀ t, t < T.f₂ → T.ψ₂.coeff t ≠ 0 →
+    (F.stageLiftO H₀ hpin ((T.f₂ - t) * T.u₂)
+      (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp T t))).natDegree = 0
+
+theorem shadow_exact_of_xfree … (hx : IsXFree T) … (j : ℕ) :
+    shadowDev T f j = dev (composedKey T) f j
+
+theorem isXFree_iff_slot_of_f1 … (hf1 : F.f₁ = 1) :
+    IsXFree T ↔ ∀ t, t < T.f₂ → T.ψ₂.coeff t ≠ 0 → F.slotIdx ((T.f₂ - t) * T.u₂) = 0
+```
 
 **DEPENDS.** C.43 · C.71 · C.52 (no x-overflow ⟹ mod-`Φ′` reduction is the identity).
 
@@ -4554,9 +4601,35 @@ read's σ"** and NO MORE (S8.2's verdict-level-tuple scope is itself WITHDRAWN; 
 activation-basis disclosure of `EFF.GENTOW3.61` — search returned INCOMPLETE, read as
 stronger-than-EMPTY under the owner's delegated authority — is carried in the docstring).
 
-**SIGNATURE** (shape). Three public theorems — **split-mandated C.74 → 3**
-(`shadow_attained_of_certificate`, `shadow_persistence`, `shadow_not_sigma_function`);
-the certificate predicate `TouchCert T j : Prop` as a companion def in the first file.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; three public
+theorems, **split-mandated C.74 → 3**; `TouchCert` is the `[GT3-r2]` certificate as the
+EXACT-`Θ_j` discrepancy of `Φ₂^{μ₂}`'s own two reads (the single-extraction sum's
+non-cancellation IS that exactness — the FR-M3 separation honored: `ShC_j ≠ 0` is NOT the
+certificate)]:
+```lean
+def TouchCert {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (μ₂ j : ℕ) : Prop :=
+  dv2Hgt (T.levelDatum hπ)
+      (shadowDev T ((composedKey T) ^ μ₂) j - dev (composedKey T) ((composedKey T) ^ μ₂) j)
+    = (T.theta μ₂ j : ℕ∞)
+
+theorem shadow_attained_of_certificate … (hc : TouchCert T hπ μ₂ j) :
+    dev (composedKey T) ((composedKey T) ^ μ₂) j = 0 ∧
+    dv2Hgt (T.levelDatum hπ) (shadowDev T ((composedKey T) ^ μ₂) j) = (T.theta μ₂ j : ℕ∞)
+
+theorem shadow_persistence … (hc : TouchCert T hπ μ₂ j) {g}
+    (hbudget : <the C.52 in-budget box hypothesis on g — THE operative one, S8.1 TERMINAL>) :
+    ((T.theta μ₂ j + 1 : ℕ) : ℕ∞)
+        ≤ dv2Hgt (T.levelDatum hπ) (shadowDev T g j - dev (composedKey T) g j) ∧
+    dv2Hgt (T.levelDatum hπ) (shadowDev T ((composedKey T) ^ μ₂ + g) j
+        - dev (composedKey T) ((composedKey T) ^ μ₂ + g) j) = (T.theta μ₂ j : ℕ∞)
+
+theorem shadow_not_sigma_function … (hnx : ¬ IsXFree T) (hμ₂ : 2 ≤ μ₂) :
+    (∃ f g ∈ towerLocus T μ₂, typeOf f = typeOf g ∧ ∃ j < μ₂, shadowDev T f j ≠ shadowDev T g j) ∧
+    (∃ f g ∈ towerLocus T μ₂, (∀ j < μ₂, shadowDev T f j = shadowDev T g j) ∧ typeOf f ≠ typeOf g)
+```
+(exact binder lists and the written-out box hypothesis at the leanspec twin; (c) is the
+two-witness S8.4 TERMINAL claim and NO MORE.)
 
 **DEPENDS.** C.43 · C.52 · C.53 (the box hypothesis's carrier) · C.71 · C.72 · C.73.
 
@@ -4593,7 +4666,15 @@ discrepancy-free outright; (2) at the composed frame, the event data occupies `d
 band, for every genre (`δ ≥ 1` unconditional on `𝒯`). Hence GENHN-T(b)′(iv)'s sentence
 "this inequality HOLDS at the entry/event band" is a THEOREM.
 
-**SIGNATURE** (shape). `theorem entry_band_faithful …` (two clauses).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the band
+`m ≤ (μ₂−j)E₂ = Θ_j − δ < Θ_j`]:
+```lean
+theorem entry_band_faithful … {m : ℕ} (hm : m ≤ (μ₂ - j) * T.E₂)
+    (hval : dv2Hgt (T.levelDatum hπ) (dev (composedKey T) f j) = (m : ℕ∞)) :
+    dv2Hgt (T.levelDatum hπ) (shadowDev T f j) = (m : ℕ∞) ∧
+    dv2Res (T.levelDatum hπ) (shadowDev T f j)
+      = dv2Res (T.levelDatum hπ) (dev (composedKey T) f j)
+```
 
 **DEPENDS.** C.50 · C.52 · C.71 · C.72.
 
@@ -4637,8 +4718,25 @@ the degenerate level datum), and the read continues on `f / F.key`; if `composed
 likewise via C.40's peel at key `Φ₂` (licensed by (c)), contributing `(e₁e₂, f₁f₂)` and
 dropping `μ₂*` by 1.
 
-**SIGNATURE** (shape). Four public clauses — **split-mandated C.76 → 2** ((a)+(b) /
-(c)+(d)).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; split → 2 as
+(a)+(b) = `partial_floor_and_datum` (with the frame-OPENING hypothesis `hopen` — the
+left-endpoint pin above the `μ₁·D′h` line, which is what the R9 derivation reads) and (d)'s
+core = `partial_frame_peel`; **(c) IS C.47** (its proof is side-blind — the m-A discharge),
+consumed by name, not re-signed]:
+```lean
+theorem partial_floor_and_datum {F : KeyFrame O π} {H₀ : ℕ} (hpin : F.Pin H₀) …
+    (hopen : (((f.natDegree / (F.e₁ * F.f₁)) * ((F.e₁ * F.f₁) * F.h) : ℕ) : ℕ∞)
+      < dvHgt F f 0)
+    {u ℓ : ℕ} … (hne : (dvSideSet F f u ℓ).Nonempty) (hdeg : 0 < dvSideDeg F f u ℓ hne) :
+    ℓ * ((F.e₁ * F.f₁) * F.h) < u ∧
+    ∀ (M₀ : ℕ) (hp : dvHgt F f (dvSideMin F f u ℓ hne) = (M₀ : ℕ∞)),
+      (dvResPoly F H₀ hpin f u ℓ hne M₀ hp).coeff 0 ≠ 0 ∧
+      (dvResPoly F H₀ hpin f u ℓ hne M₀ hp).natDegree = dvSideDeg F f u ℓ hne
+
+theorem partial_frame_peel … (hdvd : F.key ∣ f)
+    (hbox : ∀ g' ∈ monicFactors F.key, F.f₁ ∣ inertiaDegOf g') :
+    typeOf F.key = ⟨{(F.e₁, F.f₁)}⟩ ∧ ¬ F.key ^ 2 ∣ f
+```
 
 **DEPENDS.** C.07 · C.26 · C.30 · C.40 · C.44 · C.47 · C.61.
 
@@ -4682,8 +4780,16 @@ C.36; `deg f_S = D₂·μ₂*` where `μ₂* := Σ_{λ₂>T₂} L_{λ₂}(P₂(f
 `[0, μ₂*]`, and equals `P₂(f_S)` translated up by `c_g` — C.37/C.64's law re-fired at the
 partial side; per side the residuals agree up to the `K₂^×` scalar `γ_g` (C.38/C.39).
 
-**SIGNATURE** (shape). `theorem partial_bouquet …` + `theorem partial_projection …` —
-**split-mandated C.77 → 2**.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; (i)'s bouquet
+IS the C.33 + C.34 chain applied side by side (consumed by name — the closure-free supply
+the STATEMENT records); (ii) signed at the TOWERRAT2-C monic-signature core + the block
+degree; the translation/scalar clauses are C.37/C.38/C.39/C.64's, already signed]:
+```lean
+theorem partial_projection … (hctx : BlockContext (T.levelDatum hπ) f) :
+    (dev (composedKey T) f (f.natDegree / T.D₂)).Monic ∧
+    ((T.D₂ ∣ f.natDegree) → dev (composedKey T) f (f.natDegree / T.D₂) = 1) ∧
+    (blockFactor (T.levelDatum hπ) f).natDegree = T.D₂ * mult₂ (T.levelDatum hπ) f
+```
 
 **DEPENDS.** C.33 · C.34 · C.35 · C.36 · C.37 · C.38 · C.39 · C.64 · C.65 · C.76.
 
@@ -4725,8 +4831,20 @@ repeated with `ℓd_r ≥ 2` ⟹ ITSELF a tower class, read by this same theorem
 side) or C.48/C.49 (full side) — the recursion is genuine. `σ(f)` = the disjoint union
 over classes plus the peels.
 
-**SIGNATURE** (shape). `theorem partial_block_decision …` + `theorem partial_class_
-recursion …` — **split-mandated C.78 → 2**.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; (iii) signed
+with EVERY read on `f`'s OWN development (`dv2SideSet`/`dv2ResPoly` of `f`, never of the
+unexhibited block — the computability content in the statement itself); (iv)'s recursion
+routing IS C.30's trichotomy per class (consumed by name, not re-signed)]:
+```lean
+theorem partial_block_decision … (hctx : BlockContext (T.levelDatum hπ) f)
+    {u₃ ℓ₃ : ℕ} … (hne₃ : (dv2SideSet (T.levelDatum hπ) (composedKey T) f u₃ ℓ₃).Nonempty)
+    (hsep : (dv2ResPoly (T.levelDatum hπ) (composedKey T) f u₃ ℓ₃ hne₃).Separable)
+    {r₂ …} (hdvd : r₂ ∣ dv2ResPoly (T.levelDatum hπ) (composedKey T) f u₃ ℓ₃ hne₃) :
+    ∃ g : Polynomial O, g.Monic ∧ g ∣ blockFactor (T.levelDatum hπ) f ∧
+      g.natDegree = (F.e₁ * T.e₂ * ℓ₃) * (F.f₁ * T.f₂ * r₂.natDegree) ∧
+      (<the two box hypotheses> → typeOf g = ⟨{(F.e₁ * T.e₂ * ℓ₃, F.f₁ * T.f₂ * r₂.natDegree)}⟩
+        ∧ Irreducible g)
+```
 
 **DEPENDS.** C.30 · C.49 · C.56 · C.57 · C.62 · C.63 · C.76 · C.77.
 
@@ -4761,9 +4879,19 @@ LEMMA HE7-8/13 [supplied-by: chapter E]` placeholder). Slopes are translation-in
 root/irreducibility tests invariant under the `K₂^×` scaling — which is exactly why the
 decision is computable from `f` alone.
 
-**SIGNATURE** (shape). `theorem partial_mu2star_two_decision …` (the five cases as an
-inductive case tag per GC-4's domain-type licence; σ outputs through the §16-noted GC-4
-dictionary of §11).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the five rows
+as the inductive case tag `Mu2TwoCase` (twoSides/halfInteger/inertQuadratic/split/
+doubleRoot — GC-4's domain licence), σ per case with each case's own box premise INSIDE its
+conditional, the doubleRoot case delivering the α-refine event data (C.56/C.57's carriers)]:
+```lean
+inductive Mu2TwoCase where
+  | twoSides | halfInteger | inertQuadratic | split | doubleRoot
+
+theorem partial_mu2star_two_decision … (hm2 : mult₂ (T.levelDatum hπ) f = 2)
+    (hbox1 : ∀ g' ∈ monicFactors (blockFactor (T.levelDatum hπ) f),
+      CBox1Side (T.levelDatum hπ) g') :
+    ∃ c : Mu2TwoCase, <per-case σ clauses; full text at the leanspec twin>
+```
 
 **DEPENDS.** C.38 · C.39 · C.56 · C.57 · C.62 · C.77 · C.78 · the HE7-8/13 placeholder.
 
@@ -4796,8 +4924,18 @@ MIXED side the read is UNCHANGED** (μ₂* computed from `f`, the decision fires
 C.66/C.67 landed) — this node states the pure-power case with NO cite and routes the
 mixed case by name.
 
-**SIGNATURE** (shape). `theorem tie_pure_power …` (+ a `mixed → C.67` re-export
-corollary).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the pure-power
+hypothesis with the `K^×`-scalar existential (the corpus's `c·ψ₂^{μ₂}`); the mixed re-export
+IS C.67 by name]:
+```lean
+theorem tie_pure_power … (hctx : BlockContext (T.levelDatum hπ) f) {μ₂ : ℕ} (hμ₂ : 0 < μ₂)
+    (hres : ∀ (hne : (dvSideSet F f T.u₂ T.e₂).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F f (dvSideMin F f T.u₂ T.e₂ hne) = (M₀ : ℕ∞)),
+      ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
+        dvResPoly F H₀ hpin f T.u₂ T.e₂ hne M₀ hp = Polynomial.C c * (towerLabel T) ^ μ₂) :
+    mult₂ (T.levelDatum hπ) f = μ₂ ∧
+    (blockFactor (T.levelDatum hπ) f).natDegree = T.D₂ * μ₂
+```
 
 **DEPENDS.** C.34 · C.64 · C.70 · C.67 (the mixed re-export only).
 
@@ -4831,7 +4969,19 @@ GENTOW-1(c)'s node floors are VISIBLE THROUGH THE PROJECTION:
 `p_j^S ≥ (μ₂* − j)·E₂ + 1` for `j < μ₂*` (C.54(c) applies to `f_S`, whose entry is
 full-side by construction).
 
-**SIGNATURE** (shape). `theorem cg_read …`.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the
+right-endpoint identity `c_g = p_{μ₂*}` + the shifted floors visible through the
+projection]:
+```lean
+theorem cg_read … (hctx : BlockContext (T.levelDatum hπ) f)
+    (hnd : ¬ composedKey T ∣ blockFactor (T.levelDatum hπ) f) :
+    dv2Pin (T.levelDatum hπ) (composedKey T) f (mult₂ (T.levelDatum hπ) f)
+      = (complementConst (T.levelDatum hπ) f : ℕ∞) ∧
+    ∀ j, j < mult₂ (T.levelDatum hπ) f →
+      (((mult₂ (T.levelDatum hπ) f - j) * T.E₂ + 1
+          + complementConst (T.levelDatum hπ) f : ℕ) : ℕ∞)
+        ≤ dv2Pin (T.levelDatum hπ) (composedKey T) f j
+```
 
 **DEPENDS.** C.37 · C.54 · C.64 · C.68 · C.76 · C.77.
 
@@ -4864,9 +5014,19 @@ a fleet agent must not read "block budgets" as a count law (the corpus's own fen
 verbatim: "the split is explicit … a consumer must not read 'block budgets PROVED' as a
 count law").
 
-**SIGNATURE** (shape). `theorem block_budget …` (+ the 6.2C supplier-chain corollary,
-whose PE1-GAP'd dependency is repaired prove-first by §9's C.89 cap lemma — DAG order
-C.89 → this node's corollary half).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the BUDGET
+half as the block-locus class count at the block's own full-side datum; the LEDGER/COUNT
+half stays §11's (the corpus's fence, verbatim in the STATEMENT). ⚠ A-C.1 DEPENDS
+correction: the 6.2C(d) cap supplier is **C.95** (the 𝒯-free cap), not C.89 — the committed
+DEPENDS entry was a numbering slip, recorded in the A-§ block]:
+```lean
+theorem block_budget … (hctx : BlockContext (T.levelDatum hπ) f)
+    (hnd : ¬ composedKey T ∣ blockFactor (T.levelDatum hπ) f) (N : ℕ) :
+    Nat.card {c : Coeff O (T.D₂ * mult₂ (T.levelDatum hπ) f) N //
+        ∃ a, proj O (T.D₂ * mult₂ (T.levelDatum hπ) f) N a = c ∧
+          monicPoly a ∈ towerLocus T (mult₂ (T.levelDatum hπ) f)}
+      = residueCard O ^ towerFreeCount T (mult₂ (T.levelDatum hπ) f) N
+```
 
 **DEPENDS.** C.52 · C.53 · C.77 · C.81 · C.89 (§9's 𝒯-free cap — the 6.2C(d) leg only).
 
@@ -5021,8 +5181,28 @@ negative-height proviso); `lift_i(c; m) := Σ d_{r,t}·M_{r,t}(m)` with inverse-
 digits, **valid for `m > bound_i`** (S12.2 TERMINAL: the display consumes the PRECEDING
 lift instance — threshold `bound_i`, NOT `bound_{i+1}`; the S11.4 bracket is DEAD).
 
-**SIGNATURE** (shape). `def towerWeight …` + `def flavorMonomial …` + `def towerLift …`
-(+ the exact-height lemma `wt`-audit companions).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`;
+`towerWeight`/`flavorMonomial` with REAL bodies over C.83's carrier (the flavor's base
+RE-SOLVE via `towerNorm`, `[GT5-r2]`); `towerLift` stub-carried as an axiom constant (the
+variable-length multi-index digit iteration is the fleet's body), its exact-height/`wt`
+companions the fleet's, per the C.45/C.97 rule]:
+```lean
+def DeepTower.towerWeight (W : DeepTower F H₀ hpin r) (i v a : ℕ) (J : ℕ → ℕ) : ℕ :=
+  W.ehat i * v + a * (W.ehat i / W.e 1) * W.u 1
+    + (∑ j ∈ Finset.Icc 1 (i - 1), J j * (W.ehat i / W.ehat (j + 1)) * W.u (j + 1))
+    + J i * W.Econst i
+
+noncomputable def DeepTower.flavorMonomial (W : DeepTower F H₀ hpin r)
+    (key : ℕ → Polynomial O) (i rr : ℕ) (t : ℕ → ℕ) (m : ℕ) : Polynomial O :=
+  let Δ := F.e₁ * rr * (W.ehat i / W.e 1) * W.u 1
+    + ∑ j ∈ Finset.Icc 1 (i - 1), W.e (j + 1) * t j * (W.ehat i / W.ehat (j + 1)) * W.u (j + 1)
+  let p := W.towerNorm (i - 1) (m - Δ)
+  Polynomial.C (π ^ p.1) * Polynomial.X ^ (p.2.1 + F.e₁ * rr)
+    * ∏ j : Fin (i - 1), (key (j.1 + 1)) ^ (p.2.2 j + W.e (j + 2) * t (j + 1))
+
+noncomputable def DeepTower.towerLift (W : DeepTower F H₀ hpin r)
+    (key : ℕ → Polynomial O) (i m : ℕ) (s : W.fld i) : Polynomial O  -- axiom-constant stub
+```
 
 **DEPENDS.** C.83 · H.54–H.57 (the base lift, per C-H5) · C.56a (`k2DigitLift` — the
 `i = 2` instance; the reconciliation lemma `towerLift`-at-depth-2 `= k2DigitLift` is this
@@ -5074,8 +5254,27 @@ binomial-free conclusion `(T−w)^{μ₂}|_{T→T+w} = T^{μ₂}`), Step B is th
 (C.87's forward direction + the flow-up pricing `λ > E₂`). **This node supplies C.56's
 general-`μ₂` leg** and lifts GENTOW-2's grade-note restriction.
 
-**SIGNATURE** (shape). Three public theorems — **split-mandated C.85 → 3** (`graded_frame`
-[ENV-C4 abstract]; `theta_dictionary`; `substitution_kills` [the C.56 supplier]).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`. **The ⚠
+DECISION NOTE's recorded option is EXERCISED: A0 (`graded_frame`) is DROPPED** ("A0 is
+scaffolding, not consumed content" — the node's own words); the split lands as
+`theta_dictionary` (A1, at the C-carrier MULTIPLICATIVITY-DEFECT form: the fixed units θ
+with `θ₀ = θ₁ = 1` are exactly what makes the coherent read multiplicative — the corpus's
+γ/c dictionary in defect form) + `substitution_kills` (Step A as the binomial-free ring
+identity over ANY `CommRing`, both characteristics; the grid leg is C.56's `refine_kills`,
+already signed — the SUPPLIES arrow to C.56's general-`μ₂` leg stands)]:
+```lean
+theorem theta_dictionary … :
+    ∃ θ : ℕ → AdjoinRoot (T.levelDatum hπ).r,
+      θ 0 = 1 ∧ θ 1 = 1 ∧ (∀ t, θ t ≠ 0) ∧
+      ∀ (s t : ℕ) (A B : Polynomial O),
+        dv2Res (T.levelDatum hπ) A ≠ 0 → dv2Res (T.levelDatum hπ) B ≠ 0 →
+        θ (s + t) * dv2Res (T.levelDatum hπ) (A * B)
+          = θ s * θ t * (dv2Res (T.levelDatum hπ) A * dv2Res (T.levelDatum hπ) B)
+
+theorem substitution_kills {R : Type*} [CommRing R] (μ : ℕ) (s : R) :
+    ((Polynomial.X - Polynomial.C s) ^ μ).comp (Polynomial.X + Polynomial.C s)
+      = Polynomial.X ^ μ
+```
 
 **⚠ DECISION NOTE (the A0 carrier).** The corpus's `gr(L₂)` lives on the completed leaf at
 a root — closure-adjacent. The Lean route: A0 abstractly over `Valuation K Γ` (mathlib),
@@ -5131,8 +5330,21 @@ as a DISPLAY node (the corpus claims nothing on frozen GENHN text; the Lean stat
 the level-1 instance of C.85, honest and self-contained — the consumption bookkeeping
 against `HYP.148` is chapter I's).
 
-**SIGNATURE** (shape). `theorem refine_general_mu …` (the (i) re-export) +
-`theorem substitution_kills_level1 …` (the rider as a real level-1 theorem over B's API).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; (i) is a
+RE-EXPORT (C.56/C.57's A-C.1 signatures already quantify general `μ₂` — no separate
+statement needed, recorded); (ii) the rider as a REAL level-1 theorem over B's API]:
+```lean
+theorem substitution_kills_level1 (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {φ : Polynomial O} (hφ : IsKey φ) {f : Polynomial O} (hf : f.Monic)
+    {μ lam : ℕ} (hμ : 0 < μ) (hlam : 0 < lam) {s : resField φ} (hs : s ≠ 0)
+    (hne : (sideSet φ f lam 1).Nonempty) {H₀ : ℕ}
+    (hp : npHgt φ f (sideMin φ f lam 1 hne) = (H₀ : ℕ∞))
+    (hres : resPoly π φ f lam 1 hne H₀ = (Polynomial.X - Polynomial.C s) ^ μ) :
+    ∃ φ' : Polynomial O, φ'.natDegree = φ.natDegree ∧
+      (φ - φ').natDegree < φ.natDegree ∧
+      ∀ j < μ, (((μ - j) * lam : ℕ) : ℕ∞) < npHgt φ' f j
+```
 
 **DEPENDS.** C.56 · C.57 · C.85 · B §5–§7 (the level-1 carriers for the rider).
 
@@ -5165,9 +5377,21 @@ weight-NONINCREASING, with the single surviving remnant the SINGLE-STEP top-rung
 (weight-preserving). Named consumers use the forward direction only (S11.1's consumption
 walk, verified: C.85 Step B, C.91(c) Steps 0/3, C.91(d)).
 
-**SIGNATURE** (shape). `theorem towerCarry_forward_mono …` + the top-rung remnant
-companion; NO two-directional statement exists in this chapter (a stub matching the
-withdrawn closure is a defect).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`, as the two
+displayed carry computations uniform in `j` (arithmetic over the datum — the strict
+interior raise from the floor chain; the exact top price `l_i·u_i = E_i`); **NO
+two-directional statement exists** (S11.1's withdrawal honored — a stub matching the
+withdrawn closure is a defect)]:
+```lean
+theorem towerCarry_interior_strict (W : DeepTower F H₀ hpin r) (i j : ℕ)
+    (hj : 1 ≤ j) (hji : j + 1 < i) (hir : i ≤ r) :
+    (W.e (j + 1) * W.f (j + 1)) * ((W.ehat i / W.ehat (j + 1)) * W.u (j + 1))
+      < (W.ehat i / W.ehat (j + 2)) * W.u (j + 2)
+
+theorem towerCarry_top_exact (W : DeepTower F H₀ hpin r) (i : ℕ)
+    (hi : 1 ≤ i) (hir : i ≤ r) :
+    (W.e i * W.f i) * ((W.ehat i / W.ehat i) * W.u i) = W.Econst i
+```
 
 **DEPENDS.** C.83 · C.84 · C.50/C.52 (the `i = 2` instance it must match — the corpus's
 own cross-check: GENTOW1 Step 0 prices the `Φ₂`-part "at weight E2 exactly").
@@ -5201,8 +5425,26 @@ H.53 iterated); and `(LIFT_i)`: `k`-uniformly above
 re-derived at the primary source), every `K_{i+1}`-residue at height `k` is realized by
 some `C` with `deg C < D_{i+1}` (inverse-twisted digits, C.84's lift).
 
-**SIGNATURE** (shape). `theorem tower_slot_exact …` + `theorem tower_lift …` — **split-
-mandated C.88 → 2**; the `bound` recursion as a companion `def boundRec`.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; split → 2, in
+NORM FORM over the interface (C.27's carrier iterated — the ξ-free consumer discipline);
+`boundRec` the recursion companion (the PE5-F-3 restored token)]:
+```lean
+def boundRec (W : DeepTower F H₀ hpin r) : ℕ → ℕ
+  | 0 => 0
+  | 1 => (F.e₁ * F.f₁ - 1) * F.h
+  | (i + 2) => (W.e (i + 2) * W.f (i + 2) - 1) * W.u (i + 2) + W.e (i + 2) * boundRec W (i + 1)
+
+theorem tower_slot_exact … [I : FGMNCalculus W e' f' u'] …
+    {β : ℕ} {C : Polynomial O} (hg : I.ExactGrade β C)
+    (hdeg : C.natDegree < e' * f' * W.Dcum r)
+    {g : Polynomial O} (hgm : g.Monic) (hKP : I.KP g)
+    (hgdeg : g.natDegree = e' * f' * W.Dcum r) :
+    (W.ehat r * e') * (addVal O (Algebra.norm O (AdjoinRoot.mk g C))).toNat
+      = g.natDegree * β
+
+theorem tower_lift … (k : ℕ) (hk : boundRec W r < k) (s : W.fld r) (hs : s ≠ 0) :
+    ∃ C : Polynomial O, C.natDegree < W.Dcum r ∧ I.ExactGrade k C ∧ I.Rgr k C = s
+```
 
 **DEPENDS.** C.23 · C.24 · C.27 · C.83 · C.84 · C.87 · H.51–H.53 (iterated) · **GC-13
 placeholder `EFF.HE7.<nn> — ANNEX-THEOREM R1-b/R1-c [supplied-by: chapter E]`** (the
@@ -5256,8 +5498,32 @@ fit no single `w`)"; a fleet agent needing it returns `BLOCKED: [GENTOW5-W(i)] (
 open lemma; the honest-sorry analogue)` — it is a HYPOTHESIS on C.90/C.91's `n ≥ 3` legs
 and on E's deep rungs, and chapter I carries it in the capstone block.
 
-**SIGNATURE** (shape). `def GENTOW5W …` + `def Wle …` + `theorem gentow5w_two …` (+ the
-`i = 1` shape lemma).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the single-`w`
+form in the RATIO carrier (GC-14 honored: no orientation committed); (i)'s `i = 2`
+discharge as `gentow5w_two`; (ii)'s `i = 1` SHAPE with the letter power — **the tie
+`u1 = w₁` stays OPEN, no statement asserts it**; (iii) `i ≥ 3` OPEN — **the definition IS
+the carrier; no axiom asserts it** (a fleet agent needing it returns
+`BLOCKED: [GENTOW5-W(i)]`)]:
+```lean
+def GENTOW5W {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u') : Prop :=
+  ∃ w : W.fld r, w ≠ 0 ∧ ∀ t, t < f' →
+    I.Rgr ((f' - t) * u') (I.chainNorm r ((f' - t) * u')) * I.thetaRatio (f' - t)
+      = w ^ (f' - t)
+
+def Wle {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ)
+    (I : ∀ i, (hi : i ≤ r) → FGMNCalculus (W.trunc i hi) e' f' u') (n : ℕ) : Prop :=
+  ∀ i, 3 ≤ i → i ≤ n → ∀ hi : i ≤ r, GENTOW5W (W.trunc i hi) e' f' u' (I i hi)
+
+theorem gentow5w_two (W : DeepTower F H₀ hpin 2) (e' f' u' : ℕ)
+    (I : FGMNCalculus W e' f' u') … : GENTOW5W W e' f' u' I
+
+theorem gentow5w_one_shape (W : DeepTower F H₀ hpin 1) … :
+    ∃ k : ℕ, ∀ t, t < f' →
+      I.Rgr ((f' - t) * u') (I.chainNorm 1 ((f' - t) * u')) * I.thetaRatio (f' - t)
+        = (I.letterZ 1 ^ k) ^ (f' - t)
+```
 
 **DEPENDS.** C.83 · C.85(A1) · C.99/C.100 (§10 — the `i = 2` discharge's suppliers; DAG
 order §10's B″/B′ before clause (i)).
@@ -5304,9 +5570,24 @@ values `v(Φ_{j−1}(ξ))`-cleared — recipe roots are depth-`(i+1)` node point
 membership, w-blind AFTER the single-`w` form is supplied — S12.1's withdrawal of the
 contrary transcribed).
 
-**SIGNATURE** (shape). Two public theorems — **split-mandated C.90 → 2**; the MacLane-side
-objects enter ONLY through C.92's cite statements (the repo side is §5/§6's polygons; the
-FGMN side exists in Lean only as the cited interface).
+**SIGNATURE** [signed: A-C.1 AT CLAUSE (a) — `gentow5_key_certificate` (KP-hood + the
+w-TWISTED residual `wconj w ψ'` under `Wle`, the three-regime scope through C.89's
+carriers); **clause (b) — the level-general one-sidedness — is the BOOKED C.92 residual
+field (published Cor 6.3)**, recorded there and in the A-§ block; the MacLane side enters
+ONLY through C.92's interface, as planned]:
+```lean
+theorem gentow5_key_certificate {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ)
+    (I : ∀ i, (hi : i ≤ r) → FGMNCalculus (W.trunc i hi) e' f' u')
+    … (hW : Wle W e' f' u' I r) …
+    (Φnext : Polynomial O) (hmon : Φnext.Monic)
+    (hdeg : Φnext.natDegree = e' * f' * W.Dcum r)
+    (ψ' : Polynomial ((W.trunc r le_rfl).fld r)) (hψm : ψ'.Monic) (hψd : ψ'.natDegree = f')
+    (hadm : Irreducible ((I r le_rfl).Rres Φnext) ∧
+      ((I r le_rfl).Rres Φnext).natDegree = f') :
+    (I r le_rfl).KP Φnext ∧
+    ∃ w : (W.trunc r le_rfl).fld r, w ≠ 0 ∧ (I r le_rfl).Rres Φnext = wconj w ψ'
+```
 
 **DEPENDS.** C.83 · C.84 · C.85 · C.88 · C.89 (the `n ≥ 3` hypothesis + the `i = 2`
 discharge) · C.92 ([cite:FGMN-chain]) · C.99/C.100 (§10).
@@ -5352,7 +5633,18 @@ automatically at tower leaves — **the induction feeds itself** (C.55 at every 
 At `n ≥ 3`, (c) and (e) are conditional on `Wle … n` (S12.1 items 3–4, with the
 datum-field carve-out C.83 implements).
 
-**SIGNATURE** (shape). Three public theorems — **split-mandated C.91 → 3**.
+**SIGNATURE** [signed: A-C.1 AT (d)+(e): (d) is C.85's `substitution_kills` (level-blind
+ring identity) + C.56's transport (both signed); (e) as `gentow5_selffeed`, reusing C.98's
+abstract `hSupp`/`hOnSide` carriers — the self-feeding floor at EVERY level in one
+statement. **(c) — the level-(i+1) entry characterization — BOOKED** (it needs the
+level-(i+1) `dv`-carrier, the same §9-scope residual as C.90(b)/C.102's; recorded in the
+A-§ block; its level-2 instance is C.52, signed)]:
+```lean
+theorem gentow5_selffeed (P : ℕ → ℕ∞) (μ E : ℕ) (hμ : 0 < μ)
+    (hpins : ∀ j < μ, (((μ - j) * E + 1 : ℕ) : ℕ∞) ≤ P j) (htop : P μ = (0 : ℕ∞))
+    {u ℓ j : ℕ} (hℓ : 0 < ℓ) (hside : hOnSide P μ u ℓ j) :
+    ℓ * E < u
+```
 
 **DEPENDS.** C.52–C.55 (the index-1 instances) · C.83 · C.84 · C.85 · C.87 · C.88 ·
 C.89 · C.90 · C.92.
@@ -5507,8 +5799,13 @@ depth ≥ 4 is NOT claimed by any node (the boxes stay at exact scope `n ≥ 32`
 the census is a documentation node (a `#check`-suite over the named theorems, the
 CHAP-G G.30 pattern) so chapter I's `HYP.82` row can cite ONE name.
 
-**SIGNATURE** (shape). `theorem tower_first_live …` (the arithmetic) + the census as the
-node's documented `#check` block (no new Prop).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the census as
+the `C93Census` `#check` block over the signed item names]:
+```lean
+theorem tower_first_live (r μr : ℕ) (hr : 1 ≤ r) (hμ : 2 ≤ μr) (l : ℕ → ℕ)
+    (hl : ∀ i, 1 ≤ i → i ≤ r → 2 ≤ l i) (D : ℕ) (hD : D = ∏ i ∈ Finset.Icc 1 r, l i) :
+    2 ^ (r + 1) ≤ D * μr
+```
 
 **DEPENDS.** C.31 · C.32 · C.55 · the §6/§8/§9 theorem names.
 
@@ -5640,8 +5937,23 @@ exactly its earned grade: its `μ₂ = 2` fence was LIFTED by the SUB-BOX batter
 (x-ful rows, GREEN 265/0), its derivation keeps prose grade — transcribed as a SEPARATE
 statement with the `f₁ ≥ 2` hypothesis explicit and the §16 table carrying the grade.
 
-**SIGNATURE** (shape). `theorem cap_free …` + `theorem attainment_certificate …` (+ the
-6.3′ variant) — **split-mandated C.95 → 2**.
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the cap at the
+PE2-F-2 corrected-codomain core (`n % D₂ ≠ D₂ − 1`, the SHARPER condition, in-statement);
+the certificate at its PINNED scope with the `f₁ ≥ 2` variant a SEPARATE statement, per the
+`[GT6-r1]` fence]:
+```lean
+theorem cap_free … {f : Polynomial O} (hf : f.Monic)
+    (hcond : f.natDegree % T.D₂ ≠ T.D₂ - 1) {j : ℕ} (hj : f.natDegree / T.D₂ < j) :
+    dev (composedKey T) f j = 0 ∧ shadowDev T f j = 0
+
+theorem attainment_certificate … (hf1 : F.f₁ = 1)
+    {f : Polynomial O} (hf : f ∈ towerLocus T 2) (hnx : ¬ IsXFree T)
+    {j : ℕ} (hj : j < 2) (hc : TouchCert T hπ 2 j) :
+    dv2Hgt (T.levelDatum hπ) (shadowDev T f j - dev (composedKey T) f j)
+      = (T.theta 2 j : ℕ∞)
+
+theorem attainment_certificate' … (hf1 : 2 ≤ F.f₁) (same) : (same conclusion)
+```
 
 **DEPENDS.** C.50 · C.52 · C.58 · C.74 · C.77.
 
@@ -5678,8 +5990,20 @@ classification at `μ₂ ≥ 3`, and the `f₁ ≥ 2 × μ₂ ≥ 3` compound (p
 recorded in §16, no node). GENTOW6-BOX-4's DISCHARGE (the x-ful battery row) is a TEETH
 row, not a node.
 
-**SIGNATURE** (shape). `theorem box1_attainment_if …` (the IF direction; hypothesis
-`¬ p ∣ Nat.choose μ₂ 2` explicit).
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the IF
+direction ONLY (the "iff" WITHDRAWN — no converse statement exists); the binomial hypothesis
+as `¬ ringChar (ResidueField O) ∣ Nat.choose μ₂ 2`, entering exactly once; attainment ON
+THE FLOOR at the displayed `j*`]:
+```lean
+theorem box1_attainment_if … (hf1 : F.f₁ = 1) {μ₂ : ℕ} (hμ₂ : 3 ≤ μ₂)
+    (hbin : ¬ (ringChar (ResidueField O) ∣ Nat.choose μ₂ 2))
+    {f : Polynomial O} (hf : f ∈ towerLocus T μ₂) (hnx : ¬ IsXFree T)
+    (tstar : ℕ) (htstar : tstar < T.f₂ ∧ T.ψ₂.coeff tstar ≠ 0) :
+    dv2Hgt (T.levelDatum hπ)
+        (shadowDev T f ((μ₂ - 2) + (2 * T.e₂ * tstar + 1) / (T.e₂ * T.f₂))
+          - dev (composedKey T) f ((μ₂ - 2) + (2 * T.e₂ * tstar + 1) / (T.e₂ * T.f₂)))
+      = (T.theta μ₂ ((μ₂ - 2) + (2 * T.e₂ * tstar + 1) / (T.e₂ * T.f₂)) : ℕ∞)
+```
 
 **DEPENDS.** C.50 · C.74 · C.85 · C.95.
 
@@ -5875,6 +6199,9 @@ noncomputable def FGMNCalculus.thetaRatio {F : KeyFrame O π} {H₀ : ℕ} {hpin
 
 theorem gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    (hr : r = 2)   -- ⚠ SCOPE FENCE (A-C.1 self-catch): B″ is PROVED at depth 2 ONLY;
+                   -- an unfenced general-r signing would silently assert the OPEN
+                   -- [GENTOW5-W(i)] (C.89) — exactly the strengthening C-H8 forbids
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
     (hfloor : e' * W.Econst r < u') {t : ℕ} (ht : t < f') :
     I.Rgr ((f' - t) * u') (I.chainNorm r ((f' - t) * u')) * I.thetaRatio (f' - t)
@@ -5882,6 +6209,7 @@ theorem gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : �
 
 theorem theta_letter_valued {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
+    (hr : r = 2)   -- the same depth-2 scope fence
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
     (hfloor : e' * W.Econst r < u') :
     I.thetaRatio 1 = 1 ∧
@@ -7524,6 +7852,26 @@ increment:
   `#check` manifest with the MANDATORY-tag comments. §12: `Visible₂`(+mono), the B.77 split
   congruences, the kernel/`DecidedAt`/existence/peel-path certificates — per-member at
   explicit `N` throughout (GC-9.3).
+* **A-C.1(k) — §8 + §9 signed (C.71–C.82, C.84–C.96).** §8: `shadowDev` gets a REAL body
+  (the `(O[x]/Φ′)[Z]`-division tower via `biRead`/`devQ` + the canonical
+  `AdjoinRoot.modByMonicHom` back-map); `TouchCert` as the exact-`Θ_j` discrepancy of
+  `Φ₂^{μ₂}`'s own reads; the three C.74 terminal layers incl. the S8.4 two-witness claim
+  and no more; C.76's frame-opening hypothesis `hopen` made explicit; C.79's five rows as
+  the `Mu2TwoCase` tag; C.82 at the budget half with the C.95-not-C.89 DEPENDS correction.
+  §9: `towerWeight`/`flavorMonomial` real, `towerLift` an axiom-constant stub; **C.85's A0
+  DROPPED per its own DECISION note** (A1 in multiplicativity-defect form; Step A the
+  binomial-free ring identity); C.87 forward-only (no two-directional statement); C.88 in
+  norm form + `boundRec`; C.89's `GENTOW5W`/`Wle` in the ratio carrier with (iii) OPEN by
+  construction; C.90 at clause (a) (clause (b) = the booked Cor 6.3 residual); **C.91
+  signed at (d)+(e), (c) BOOKED** (needs the level-(i+1) `dv`-carrier — the third booked
+  §9-scope residual, with C.90(b) and C.102's letter reads); C.93/C.95/C.96 as displayed.
+* **A-C.1(l) — the depth-2 SCOPE FENCE self-catch (stop-the-line class, caught in-flight).**
+  The first drafts of C.99's `gentow2_Bpp`/`theta_letter_valued` were quantified over
+  arbitrary chain depth `r` — which would have SILENTLY ASSERTED the open `[GENTOW5-W(i)]`
+  (the very C-H8-class strengthening this chapter polices). Caught during C.89's signing;
+  both carry `(hr : r = 2)` with the fence comment in-statement. Recorded because the trap
+  shape (interface generality outrunning the proved scope) is exactly what a fleet agent
+  re-hits.
 * **A-C.1(j) — GATE HYGIENE (D14/D15/D16/D22 cured).** D14: C.123/C.124 now carry
   MACHINE-FORM expected-value tables (named defs, `#guard`-diffed, all passing). D15:
   **RESOLVED against `EFF.W12.87`** — its finding-1 record re-derives the count as
