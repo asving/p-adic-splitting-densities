@@ -8724,9 +8724,38 @@ reproduces the GENTOW6_PROOF r1 bracket record bit-exactly).* The `f₂ ≥ 3` s
 remains measured-open (P32 probe: structurally different Θ-layer census, verdicts
 agreeing on the probe rows); the lower-coordinate rider of HYP.79 remains open.
 
-**SIGNATURE** [signed: A-C.3 — elaborated in `leanspec/Leanspec/ChapC.lean`, section
-`AC4Laws`]. One axiom-stub: `lawBS2_pair_or_triple`, stated as a `TouchCert` iff — the
-attainment predicate is C.74's existing definition, no new carrier.
+**SIGNATURE** [signed: A-C.4 — elaborated in `leanspec/Leanspec/ChapC.lean`, section
+`AC4Laws`; **RE-SIGNED: A-C.5, 2026-08-16 — the geography pin is now IN the binder list**].
+One axiom-stub: `lawBS2_pair_or_triple`, stated as a `TouchCert` iff — the attainment
+predicate is C.74's existing definition, no new carrier.
+```lean
+axiom lawBS2_pair_or_triple {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] (hf₁ : F.f₁ = 1)
+    (he₁ : F.e₁ = 2) (hf₂ : T.f₂ = 2)          -- [A-C.5] the geography pin
+    {μ₂ : ℕ} (hμ₂ : 3 ≤ μ₂)
+    {tstar : ℕ} (htlt : tstar < T.f₂) (hψt : T.ψ₂.coeff tstar ≠ 0)
+    (hcasc : T.e₂ * (T.f₂ - tstar) = 1)
+    (hslot : F.slotIdx ((T.f₂ - tstar) * T.u₂) = 1) :
+    TouchCert T hπ μ₂ ((μ₂ - 2) + (2 * T.e₂ * tstar + 1) / (T.e₂ * T.f₂))
+      ↔ (¬ (ringChar (ResidueField O) ∣ Nat.choose μ₂ 2)
+         ∨ ¬ (ringChar (ResidueField O) ∣ Nat.choose μ₂ 3))
+```
+**[A-C.5 ADJUDICATION.]** The STUB REPAIR FLAG below is EXECUTED, exactly as flagged: the
+two binders are added and every other binder is verbatim. The two refutations that forced
+it are preserved (STATEMENT's GEOGRAPHY PIN, the flag itself, and the leanspec warning
+block) — they are what the binders fence off, and any widening re-enters them. The binders
+suffice for the proof note's frame class (G1)–(G4) with nothing left implicit: `he₁ + hf₁`
+give `D′ = 2` and `F.hcop` then forces `h` ODD; `F.hpure` gives one-sidedness of slope
+`h/2`; `hf₂ + hcasc + htlt` force `e₂ = 1` and `t* = 1`; `hslot` gives `i₂ = 1`; `hψt` and
+the datum's `hψ0` give the entry units; (G3)'s on-side heights are automatic at the Lean
+carrier and (G4)'s `δ ≥ 1` is `T.hfloor`. `hμ₂ : 3 ≤ μ₂` is KEPT (the proof reaches
+`μ₂ ≥ 2`; minimal diff). **CERTIFICATION LEG re-run before signing:**
+`verification/openmath/bs2_lawbs2_cert.py` GREEN 666/0, 6/6 teeth killed, including
+BS2-STUBGAP's 16 hard rows (the two refutation families) — so the signed scope is exactly
+the certified one. **MEASURED-OPEN and NOT signed:** the `f₂ ≥ 3, D′ = 2` slice (battery
+rows `P32m3`/`P32m4`: the verdict agrees, the slot dictionary is structurally different —
+evidence, not proof).
 
 **DEPENDS.** C.15 (`slotIdx`) · C.42/C.43 · C.44 · C.71 · C.74 (`TouchCert`).
 
@@ -8774,7 +8803,9 @@ BP3), T-BS2-SIGN, T-BS2-OMEGA (the top census is `ω`-free, a lower coordinate i
 T-BS2-TAU (the binomial dict fails at every `κ₁ ≠ 0` key; the refined `(0,0)` display
 is exact).]**
 
-**STUB REPAIR FLAG (2026-08-16, unit C.128 — flagged, NOT executed).** The elaborated
+**STUB REPAIR FLAG (2026-08-16, unit C.128 — flagged, NOT executed *by that unit*;
+EXECUTED at A-C.5, same day — see the SIGNATURE block's adjudication. Kept verbatim: it
+is the record of what the two new binders fence off).** The elaborated
 stub `lawBS2_pair_or_triple` (leanspec `AC4Laws`) leaves `F.e₁` and `T.f₂` free and is
 therefore FALSE as stated (the STATEMENT's geography-pin refutations, BS2-STUBGAP). The
 promotion path for the C fleet: add `he₁ : F.e₁ = 2` and `hf₂ : T.f₂ = 2`, every other

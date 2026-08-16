@@ -4178,6 +4178,27 @@ CERTIFIED-OPEN (OM-10 §2.2, 7/7 at μ₂ = 3..6 over q = 2 and q = 3); the naiv
 "any in-band k-diagonal" candidate is REFUTED at B4 and MUST NOT be signed
 (`binom(4,4) = 1` is a unit yet `pin(ShC_3) = 8 = Θ + 1`).
 
+✅ **NARROWING EXECUTED: A-C.5, 2026-08-16** — the promotion path below is now the
+signed statement: `he₁ : F.e₁ = 2` and `hf₂ : T.f₂ = 2` are IN the binder list, every
+other binder verbatim. The warning is kept in full because the refutations it records are
+permanent: they are what the two new binders fence off, and any future widening re-enters
+them. The narrowed statement is PROVED at corpus grade
+(`lean/notes/openmath/LAWBS2_PROOF_2026-08-16.md`, §0's (G1)–(G4) scope, adversarially
+verified 4 passes CLEAN), and the pinned geography contains the ENTIRE certified surface
+(`verification/openmath/bs2_lawbs2_cert.py`, re-run GREEN 666/0, 6/6 teeth, 2026-08-16).
+The binder derivation, so the fleet need not redo it: `he₁ + hf₁` give `D′ = 2` and
+`F.hcop` then makes `h` ODD (= (G1)'s `Coprime h e₁` at `e₁ = 2`), `F.hpure` gives
+one-sidedness of slope `h/2`; `hf₂ + hcasc + htlt` force `T.e₂ = 1` and `t* = 1` (= (G2));
+`hslot` gives `i₂ = 1`; `hψt` and `T.hψ0` give the two entry units `ĉ₂, ĉ₀`; (G3)'s
+on-side heights are automatic at the Lean carrier (`composedKey` builds every entry as the
+`stageLiftO` monomial at the on-side height, and at `D′ = 2` the `x`-freeness of `c₀` and
+`v₀ = u₂` follow from `h` odd); (G4)'s `δ ≥ 1` is `T.hfloor`. `hμ₂ : 3 ≤ μ₂` is KEPT
+although the proof covers `μ₂ ≥ 2` (minimal diff). **MEASURED-OPEN, not covered by the
+signed statement:** the `f₂ ≥ 3, D′ = 2` slice — the Θ-layer census is structurally
+different there; the battery's P32 probe rows (`P32m3`, `P32m4`) show the VERDICT agreeing
+while the slot dictionary does not, which is evidence and not a proof. Widening `hf₂` is
+therefore forbidden without a new certification leg.
+
 ⚠ **SCOPE-FENCE WARNING (2026-08-16, unit C.128 — flag only, repair NOT executed
 here).** The axiom below is **FALSE AS STATED**: it leaves `F.e₁` and `T.f₂` free,
 and constructed PARI-valid keys refute it on both axes — `e₁ = 4` (`Φ′ = x⁴ − 5`/ℤ₅,
@@ -4195,13 +4216,16 @@ non-binomial one-sided keys, any odd `h`); its Lean transcription shares C.127's
 landed `j′ ≤ 1` scope-fence repair. Blueprint record: NODE C.128's GEOGRAPHY PIN and
 STUB REPAIR FLAG (A-C.4 section). -/
 
-/-- C.128: at the cascade geography (`e₂(f₂ − t*) = 1`, the `t*`-entry carrying
-`x`-power exactly 1), the pure power attains its top-coordinate floor iff the residue
-characteristic misses `binom(μ₂,2)` OR misses `binom(μ₂,3)` — the PAIR and TRIPLE
-slots are the only floor carriers. -/
+/-- C.128 [RE-SIGNED: A-C.5, 2026-08-16 — `he₁`/`hf₂` added, the geography pin]: at the
+`D′ = 2` cascade geography (`e₁ = f₂ = 2`, hence `e₂(f₂ − t*) = 1` with `t* = 1` and the
+`t*`-entry carrying `x`-power exactly 1), the pure power attains its top-coordinate floor
+iff the residue characteristic misses `binom(μ₂,2)` OR misses `binom(μ₂,3)` — the PAIR and
+TRIPLE slots are the only floor carriers.  Without `he₁`/`hf₂` the statement is REFUTED
+(see the two constructed key families in the warning above); with them it is PROVED. -/
 axiom lawBS2_pair_or_triple {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
     [Finite (ResidueField O)] (hf₁ : F.f₁ = 1)
+    (he₁ : F.e₁ = 2) (hf₂ : T.f₂ = 2)
     {μ₂ : ℕ} (hμ₂ : 3 ≤ μ₂)
     {tstar : ℕ} (htlt : tstar < T.f₂) (hψt : T.ψ₂.coeff tstar ≠ 0)
     (hcasc : T.e₂ * (T.f₂ - tstar) = 1)
