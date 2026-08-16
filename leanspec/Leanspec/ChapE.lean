@@ -288,9 +288,32 @@ axiom jump_floor {m p : ℕ} (hm : 2 ≤ m) (hp : 2 ≤ p) : 4 ≤ m * p
 /-- **E.07** [lemma] (ii) the halving. -/
 axiom jump_halving {μ μ₂ p : ℕ} (hp : 2 ≤ p) (h : μ₂ * p ≤ μ) : 2 * μ₂ ≤ μ
 
-/-- **E.07** [lemma] (iii) the jump count. -/
-axiom jump_count_bound (μ : ℕ → ℕ) (J : ℕ)
-    (h4 : ∀ i ≤ J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
+/-- **E.07** [lemma] (iii) the jump count.
+
+**RE-SIGNED 2026-08-16 at the A-E.1/E-D11 form, at E.07's landing.** The committed hypotheses
+(preserved here for the record) were
+
+    (h4 : ∀ i ≤ J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) : 2 ^ (J + 1) ≤ μ 0
+
+— the `4 ≤ μ i` floor on the jump TARGET as well as its starts, which the source does not do
+(`EFF.HE7.15` asserts `μ ≥ 4` of the node *requiring* the jump and only the halving of the
+problem it *opens*) and which excludes the corpus's own `n = 8`, `μ ≤ 7` and `n = 16`
+configurations. Defect E-D11 was recorded at the stage-0e gate and repaired BLUEPRINT-side
+(statement-level defects are never patched in this file, CHAP-H §15 rule 5); the stub is
+re-signed now that its node has landed, per §12's "those two stubs are re-signed when their
+nodes land".
+
+**LIFECYCLE NOTE (retirement OWED, not deferred silently).** The landed twin is
+`Uniformity.Density.Ladder.jump_count_bound`
+(`leanfinal/Uniformity/ChapE/E07.lean`, sorry-free, Lean-core footprint), but
+`Uniformity.ChapE` is not yet wired into the `Uniformity` root — the chapter-E orchestrator
+wires the roll-up and the root import at the layer close — so the retirement-form
+`example : <type> := Uniformity.Density.Ladder.jump_count_bound …` cannot elaborate against
+this file's `import Uniformity` yet. It is signed in the UNLANDED `axiom` state AT THE LANDED
+TYPE; converting E.07's three rows (and E.01's/E.10's definitional rows) to retirement form is
+part of the layer-close wiring unit. -/
+axiom jump_count_bound (μ : ℕ → ℕ) (J : ℕ) (hJ : 1 ≤ J)
+    (h4 : ∀ i < J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
     2 ^ (J + 1) ≤ μ 0
 
 /-- **E.08** [lemma] The lift-threshold implication `(‡) ⟹ (†)` at a rung. -/
