@@ -26,6 +26,23 @@ shape. The witness is the corpus's own display
 with `B_t` an exact-height lift of `c_t` at height `(d−t)u` when `c_t ≠ 0` and `B_t := 0`
 otherwise.
 
+## ⚠ WITNESS CHANGE [A-C.5, 2026-08-16 — the SIGNATURE is byte-unchanged]
+
+C.13's clause 5 was re-signed at C.22's ϖ-read (`twistRead`, `γ_k·η^{−q(k)}`) — the read
+`EFF.HE6.14`'s own display carries, and the repair of the C.47 refutation, applied at its true
+site. `IsTestKey` therefore MEANS something new, and the construction follows it: the lift target
+at height `M = (d−t)u` is `η^{q(M)}·c_t` instead of `c_t`, so that
+`twistRead M B_t = η^{−q(M)}·slotRes M B_t = c_t`. It is legal for exactly the reason the old
+target was — `η^{q(M)}·c_t ≠ 0` when `c_t ≠ 0`, since `η ≠ 0` (C.19's `stageLetter_ne_zero`) —
+and fullness supplies every nonzero value at these heights.
+
+In the landed proof this is **one line**: the `exists_slotRes_preimage` call inside `hlift` became
+an `exists_twistRead_preimage` call. The new lemma `KeyFrame.exists_twistRead_preimage` (below,
+public alongside its untwisted sibling) is CERT 1 of
+`leanfinal/Uniformity/ChapC/C47_RESIGN_CERT.lean.txt`, and the resulting proof is its CERT 3, so
+the re-signed C.13 was certified NON-VACUOUS before it was signed rather than after. Nothing else
+in this file moved: steps 1 and 4 never mention a residue read.
+
 ## The proof, in the blueprint's four steps
 
 **Step 1 — fullness.** For `t < d` the target height is `(d−t)u ≥ u > ℓ·D′·h ≥ D′·h`, using
@@ -79,7 +96,9 @@ whose height and residue clauses go through unchanged. Finiteness entered only t
 `genreDatum`'s `Q`. So the landed theorem is honestly *weaker in hypotheses used* than signed;
 nothing about the statement changed.
 
-**(c) `KeyFrame.exists_slotRes_preimage` is PUBLIC and is not a blueprint node.** It is the
+**(c) `KeyFrame.exists_slotRes_preimage` is PUBLIC and is not a blueprint node** (and since
+A-C.5, neither is its ϖ-read sibling `KeyFrame.exists_twistRead_preimage`, which is three lines
+on top of it). It is the
 step-2/3 kernel, and it is verbatim **PROOF step 2 of NODE C.24** (`slotRes_image`, unlanded):
 "given `(c_t)`, the lift at height `k` produces `A` with the pinned height and residue; at
 `D′ = 1` the elementary lift (C.14 step 3's mechanism)". Exporting it means C.24 consumes the
@@ -144,8 +163,10 @@ this paragraph is the cross-reference only.
 C.09 (`LevelDatum`, `keyDeg₂`) · C.13 (`IsTestKey`) · C.14a (`Pin`, `stageLiftIA`, `resLift`,
 `resLift_spec`, and — since the 2026-08-16 repair — `stageCoord`, `sum_stageCoord`) ·
 C.15/C.16 (`slotIdx`, `slotIdx_spec`) · C.17 (`slotWindow`) ·
-C.18 (`slotWindow_full_of_le`) · C.19 (`stageLetter`) · C.21 (`slotRes`) ·
-B.02 (`dev`) · B.06 (`dev_unique`) · B.22 (`digAt_eq`) — all by committed node ID (GC-13(b)).
+C.18 (`slotWindow_full_of_le`) · C.19 (`stageLetter`, and — since A-C.5 — `stageLetter_ne_zero`) ·
+C.21 (`slotRes`) · **[A-C.5]** C.22 (`twistRead`, through C.13) · C.15 (`twistExp`) ·
+B.02 (`dev`) · B.06 (`dev_unique`) · B.22 (`digAt_eq`) · B.25 (`instFieldResField`, for the
+private `isKey_X` the ϖ-read lemma's inverse needs) — all by committed node ID (GC-13(b)).
 H.54 enters as the *shape* of C.14a's `stageLiftIA`; H.55/H.56 are not cited, per divergence (a).
 The `AdjoinRoot.powerBasis` / `PowerBasis.coe_basis` / `Basis.sum_repr` mathlib cluster, and
 B.59a's `resFieldXEquiv`/`resFieldXEquiv_coe`, are now reached through C.14a rather than used
@@ -375,6 +396,46 @@ theorem KeyFrame.exists_slotRes_preimage (F : KeyFrame O π) (hπ : Irreducible 
     refine Eq.trans (Finset.sum_congr rfl fun s _ => ?_) (F.sum_stageCoord H₀ hpin c)
     rw [resLift_spec]
 
+/-! ### The ϖ-read lift law (A-C.5's one-line change, as its own lemma) -/
+
+/-- **D9 (cured).** The order-0 key `X` is an order-1 key; the private-copy pattern
+(C.04/C.12/C.19/C.21/C.22/C.44/C.46 each carry one), because `private` does not export. Needed
+again here — the A-C.5 lift law below inverts the letter, so it needs B.25's field structure on
+`resField X`. -/
+private theorem isKey_X : IsKey (Polynomial.X : Polynomial O) where
+  monic := Polynomial.monic_X
+  pos := by simp
+  irred := by
+    simpa using (Polynomial.irreducible_X (R := IsLocalRing.ResidueField O))
+
+/-- **The ϖ-read lift law (A-C.5, 2026-08-16).** The `twistRead` analogue of
+`exists_slotRes_preimage`: above the fullness threshold `D′h < M`, every NONZERO stage-field
+value is the **ϖ-read** residue (C.22's `twistRead`), at height exactly `M`, of a polynomial of
+degree `< D′`.
+
+This is CERT 1 of `leanfinal/Uniformity/ChapC/C47_RESIGN_CERT.lean.txt`, and it is the whole of
+"the one-line change to the lift argument" that the C.47 refutation record predicted: the witness
+lifts `η^{q(M)}·c` — nonzero, since `η ≠ 0` (C.19's `stageLetter_ne_zero`) — through the untwisted
+law above, and `twistRead = η^{−q(M)}·slotRes` then returns `c` on the nose. Fullness is what
+makes the lift EXIST under either read; this lemma is what makes it deliver the ϖ-read VALUE. -/
+theorem KeyFrame.exists_twistRead_preimage (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : F.Pin H₀) [Finite (ResidueField O)] {M : ℕ} (hM : F.e₁ * F.f₁ * F.h < M)
+    {c : F.stageField H₀ hpin} (hc : c ≠ 0) :
+    ∃ B : Polynomial O, B.natDegree < F.e₁ * F.f₁ ∧ F.stageHeight B = (M : ℕ∞) ∧
+      F.twistRead H₀ hpin M B = c := by
+  classical
+  letI : Field (resField (Polynomial.X : Polynomial O)) := instFieldResField isKey_X
+  haveI : Fact (Irreducible (F.frameRes H₀ hpin)) := ⟨(F.hresirr H₀ hpin).1⟩
+  set η : F.stageField H₀ hpin := F.stageLetter H₀ hpin with hη_def
+  have hη : η ≠ 0 := F.stageLetter_ne_zero hπ H₀ hpin
+  -- the witness value is the OLD target twisted by `η^{q(M)}` — nonzero, so the landed
+  -- fullness lemma applies unchanged
+  have htarget : η ^ (F.twistExp M) * c ≠ 0 := mul_ne_zero (pow_ne_zero _ hη) hc
+  obtain ⟨B, hB1, hB2, hB3⟩ := F.exists_slotRes_preimage hπ H₀ hpin hM htarget
+  refine ⟨B, hB1, hB2, ?_⟩
+  rw [KeyFrame.twistRead, hB3, ← hη_def, inv_pow]
+  field_simp
+
 /-! ### The signed declaration -/
 
 set_option linter.unusedVariables false in
@@ -404,13 +465,13 @@ theorem exists_testKey {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hp
       Bt.natDegree < D ∧ (L.r.coeff t = 0 → Bt = 0) ∧
       (t < d → L.r.coeff t ≠ 0 →
         F.stageHeight Bt = (((d - t) * L.u : ℕ) : ℕ∞) ∧
-        F.slotRes H₀ hpin ((d - t) * L.u) Bt = L.r.coeff t) := by
+        F.twistRead H₀ hpin ((d - t) * L.u) Bt = L.r.coeff t) := by
     intro t
     by_cases hc : L.r.coeff t = 0
     · exact ⟨0, by simpa using hD, fun _ => rfl, fun _ hne => absurd hc hne⟩
     · by_cases ht : t < d
       · obtain ⟨Bt, hB1, hB2, hB3⟩ :=
-          F.exists_slotRes_preimage hπ H₀ hpin (M := (d - t) * L.u) (hbig t ht) hc
+          F.exists_twistRead_preimage hπ H₀ hpin (M := (d - t) * L.u) (hbig t ht) hc
         exact ⟨Bt, hB1, fun h => absurd h hc, fun _ _ => ⟨hB2, hB3⟩⟩
       · exact ⟨0, by simpa using hD, fun _ => rfl, fun h => absurd h ht⟩
   choose B hBdeg hBzero hBspec using hlift
@@ -486,6 +547,7 @@ end Uniformity.Density.Tower
 section AxCheck
 
 #print axioms Uniformity.Density.Tower.KeyFrame.exists_slotRes_preimage
+#print axioms Uniformity.Density.Tower.KeyFrame.exists_twistRead_preimage
 #print axioms Uniformity.Density.Tower.exists_testKey
 
 end AxCheck
