@@ -5606,3 +5606,41 @@ Leanspec.ChapC` GREEN (8983 jobs). Commits a0ae4b3f (battery),
 0a950d9e + pass-3 records (proof note), e01b9abd (leanspec),
 b36ccd9e (blueprint+DAG), c17a7ce0 (ledger), + the A-C.4
 relabel.
+
+**2026-08-16 DATED APPEND #77 — H.116h: A GENUINELY NEW HENSEL
+THEOREM LANDS (non-monic f, one monic residual factor — the form
+mathlib's own Henselian.lean lists as TODO), AND H.116 CLAUSE (i)
+CLOSES; the §17 verdict layer opens.** (1) H.116h
+(`Uniformity.Hensel.exists_monic_factorization_of_monic_left`,
+ChapH/H116h.lean, commit 922cce03): the three Newton helpers of
+HenselFactorization.lean generalized (residue Bezout solve with
+only g₀ monic → transport along a degree-preserving lift → Newton
+step by linearity), iteration with an explicit total-degree
+budget ℓ (h₀ may drop degree; the cofactor approximants sit in a
+fixed degree-≤ℓ module so the adic-limit lemma applies directly);
+the degenerate h₀ = 0 case forced through IsCoprime → IsUnit.
+Sorry-free, Lean-core, build 8559 green. (2) H.116 clause (i)
+`betaChild_spec` LANDED byte-identical to the A-H.5 stub
+(9dff98fb): existence = dividedFrame (generalized to any class
+lift, centre pinned) → residue split → H.116h; uniqueness = NEW
+`monicFactor_congr_of_pow_dvd_sub` (H.102's InjOn route made
+quantitative — the residual Bezout obstruction one digit at a
+time), applied at s = N − betaContent via H.109 + H.108. The ℤ_5
+blocker cell is RETAINED as a standing regression ("former
+blocker", #guards fire). Build 8596 green, Lean-core. (3) H.116b
+(clause (ii)) honestly BLOCKED on the blueprint's own mandated
+split: the beta RE-PLANTING machinery (multi-child
+reconstruction: child set EXACTLY the genre L, exact contents,
+exact children, plus injectivity — strictly harder than alpha's
+inverse shear; no beta analogue of H.115b exists). CHARTERED as
+a fable unit (outline → certify the exactness claims numerically,
+esp. residue collisions → prove). (4) FIRED: H verdict wave 1 —
+H.118→H.119→H.120 chain + H.124 (their deps landed with H.115/
+H.116). Remaining §17 after these: H.116b, H.121→H.122, H.123
+(the S-1 bridge consuming B.42). (5) Also this hour: the C.56a
+k2Coord opaque-choose defect REPAIRED (2e133686, tower power
+basis k2PB, pin sum_k2Coord a theorem, signatures byte-identical
+— the second instance of the C.14a pattern); C.43 retry, D wave
+6 (7 frontier nodes), and the C.128 (LAW B-S2) prover unit all
+RUNNING. Amendment labels settled: A-C.3 = C.114
+realizes-refinement (in flight), A-C.4 = the landed law nodes.
