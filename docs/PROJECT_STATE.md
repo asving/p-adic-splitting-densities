@@ -5644,3 +5644,50 @@ basis k2PB, pin sum_k2Coord a theorem, signatures byte-identical
 6 (7 frontier nodes), and the C.128 (LAW B-S2) prover unit all
 RUNNING. Amendment labels settled: A-C.3 = C.114
 realizes-refinement (in flight), A-C.4 = the landed law nodes.
+
+**2026-08-16 DATED APPEND #78 — CHAPTER D COMPLETE (67/67); THE
+H VERDICT LAYER LANDS ITS EQUALITIES AND SURFACES F-H17.2 (the
+beta ENVELOPE is refuted at its own constants — the true rate is
+fine); H.123 REDUCES COMPLETELY TO BRIDGE-A + THE B-BOX-1 OWNER
+GATE; chapter E lands BOTH Display-A carriers and catches the
+E.29 hypothesis-set defect.** (1) CHAPTER D: D.57 (wf_law_i —
+hypothesis RETENTION, with the machine-checked example that the
+unscoped statement is FALSE), D.61 (w-site record), D.63
+(VarthetaWConjunct — Display A's ∀i≥3 conjunct ASSEMBLED, A-D.2
+fence in its strongest form: the voided name is not in scope
+anywhere in leanfinal), D.65/D.66 (both q-gates EXECUTED,
+discrete-log carriers, no native_decide). All 67 nodes done;
+third chapter surface complete after G and B. (2) H VERDICT
+WAVE 2: H.121a uCluster_split (EQUALITY at 2≤m≤3), H.121b
+uCluster_alpha_leg (EQUALITY, unconditional m≥2, windowed range
+DERIVED from H.112 — CC-3(i)'s unwindowed display defeated
+16≠12), H.122m2 BANKED (the m=2 recursion closes at constants
+(1,1,1) with room — proving the TARGET is right), H.123a (the
+recentring injection: stratum count ≤ cluster count
+UNCONDITIONAL; the signed H.123 inequality PROVED from bridge-a
+as h123Target_of_bridgeA — machine-checked reduction).
+(3) FINDING F-H17.2 (stop-the-line, committed with numeric
+certificate): H.121 clause (iii)'s beta envelope
+N^m·Q^−(N−2) NEVER certifies H.122's N·Q^−(N−1) (Q·N^m > N
+always), and rate_close returns (2,m+1,2) ≠ (1,1,1); the true
+beta rate at the certificate cell is 0.0064 vs 0.0625 needed —
+the ENVELOPE is the defect, the mathematics has room. Needed:
+beta^(N) ≤ (m−1)·Q^−(N−1), no polynomial factor. A-H.6
+CHARTERED (opus; certify the sharper envelope, adjudicate,
+re-sign clause (iii); H.122 target byte-unchanged). H.121c
+additionally waits on H.116b (fable, parked for the pool) +
+the priced genre-census route via H.122m2's tie (non-circular).
+(4) H.123's residual: the B-side leg is B-BOX-1 — the reduction
+is complete, so the node now sits EXACTLY on the held owner
+gate (OM-5's composite cite nod, fallback B.62 route). OWNER-
+FACING: one nod (or the B.62 re-plan order) closes H.123.
+(5) CHAPTER E wave 4: E.06/E.14/E.19/E.22/E.33/E.39a/E.39/E.40
+landed — BOTH A-E.2 Display-A carriers at the contentful forms
++ the BlockSuite record; E.29's twisted_slot_spec machine-
+REFUTED as signed (hatt constrains a height where the source
+means the attained value; negation + TWO proved repair
+candidates landed in-file) — A-E.4 CHARTERED (verify source,
+sign candidate 1, wrapper-land the signed name). E now 41/67.
+(6) Fable pool down all afternoon (BS2 ×3, beta ×3, A-C.3 ×4
+kills); A-C.3 TAKEN OVER by opus (running), BS2 + beta parked
+on a 40-min backoff; opus pool healthy throughout.
