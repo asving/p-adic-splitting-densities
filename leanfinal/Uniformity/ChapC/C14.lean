@@ -1,0 +1,309 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapB.B05
+import Uniformity.ChapB.B06
+import Uniformity.ChapC.C13
+import Uniformity.ChapC.C14a
+import Uniformity.ChapC.C18
+
+/-!
+# Uniformity.ChapC.C14 — `exists_testKey`: the enlarged test family is nonempty
+
+**Chapter C, NODE C.14** [lemma] [fresh] (`blueprint/CHAP-C_tower_grammar.md` §3, the level
+frame; the A-C.1 amendment set governs, and this node's **D20 RE-SIGN** of 2026-08-16 is in
+force). **ENV-C1′ + `[Finite (ResidueField O)]`**. One signed declaration.
+
+C.13 turned `EFF.HE6.14`'s DEFINITION HE6-1 into the predicate `IsTestKey L Ψ` and asserted
+nothing. This node discharges the existence obligation: for every level datum `L` over a frame
+`F` there **is** a `Ψ` of that shape.
+
+## Status
+
+Sorry-free, axiom-free (Lean core only).
+-/
+
+namespace Uniformity.Density.Tower
+
+open Uniformity.Density.Leaf IsLocalRing IsDiscreteValuationRing
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-! ### Private helpers -/
+
+private theorem isKey_X : IsKey (Polynomial.X : Polynomial O) where
+  monic := Polynomial.monic_X
+  pos := by simp
+  irred := by
+    rw [Polynomial.map_X]
+    exact Polynomial.irreducible_X
+
+noncomputable local instance instFieldResFieldX :
+    Field (resField (Polynomial.X : Polynomial O)) :=
+  instFieldResField isKey_X
+
+private theorem frameRes_ne_zero (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) :
+    F.frameRes H₀ hpin ≠ 0 :=
+  (F.hresirr H₀ hpin).1.ne_zero
+
+/-- The letter power basis of the stage field over `resField X`. -/
+private noncomputable def stagePB (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) :
+    PowerBasis (resField (Polynomial.X : Polynomial O)) (F.stageField H₀ hpin) :=
+  AdjoinRoot.powerBasis (frameRes_ne_zero F H₀ hpin)
+
+/-- The `s`-th letter-basis coordinate of a stage-field element, in `ResidueField O`. -/
+private noncomputable def stageDigit (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀)
+    (c : F.stageField H₀ hpin) (s : ℕ) : ResidueField O :=
+  (resFieldXEquiv O).symm
+    (if h : s < (stagePB F H₀ hpin).dim then (stagePB F H₀ hpin).basis.repr c ⟨s, h⟩ else 0)
+
+/-- The digits reconstruct the element: `c = Σ_{s < f₁} digit_s · η^s`. -/
+private theorem sum_stageDigit (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀)
+    (c : F.stageField H₀ hpin) :
+    ∑ s ∈ Finset.range F.f₁,
+        algebraMap (resField (Polynomial.X : Polynomial O)) (F.stageField H₀ hpin)
+          (algebraMap (ResidueField O) (resField (Polynomial.X : Polynomial O))
+            (stageDigit F H₀ hpin c s)) * F.stageLetter H₀ hpin ^ s = c := by
+  have hdim : (stagePB F H₀ hpin).dim = F.f₁ := by
+    rw [stagePB, AdjoinRoot.powerBasis_dim]; exact (F.hresirr H₀ hpin).2
+  have hgen : (stagePB F H₀ hpin).gen = F.stageLetter H₀ hpin := by
+    rw [stagePB, AdjoinRoot.powerBasis_gen, KeyFrame.stageLetter]
+  have hsum := (stagePB F H₀ hpin).basis.sum_repr c
+  rw [← hdim]
+  rw [← Fin.sum_univ_eq_sum_range
+    (fun s => algebraMap (resField (Polynomial.X : Polynomial O)) (F.stageField H₀ hpin)
+      (algebraMap (ResidueField O) (resField (Polynomial.X : Polynomial O))
+        (stageDigit F H₀ hpin c s)) * F.stageLetter H₀ hpin ^ s) (stagePB F H₀ hpin).dim]
+  have key : ∀ y : resField (Polynomial.X : Polynomial O),
+      algebraMap (ResidueField O) (resField (Polynomial.X : Polynomial O))
+        ((resFieldXEquiv O).symm y) = y := by
+    intro y
+    show (AdjoinRoot.of ((Polynomial.X : Polynomial O).map (residue O)))
+        ((resFieldXEquiv O).symm y) = y
+    rw [← resFieldXEquiv_coe]
+    exact (resFieldXEquiv O).apply_symm_apply y
+  refine Eq.trans (Finset.sum_congr rfl fun i _ => ?_) hsum
+  rw [PowerBasis.coe_basis, hgen, Algebra.smul_def, stageDigit, dif_pos i.2, key]
+
+private theorem isUnit_of_residue_ne_zero {x : O} (hx : residue O x ≠ 0) : IsUnit x := by
+  rw [Ne, IsLocalRing.residue_eq_zero_iff] at hx
+  exact IsLocalRing.notMem_maximalIdeal.mp hx
+
+private theorem addVal_mul_pow (hπ : Irreducible π) (x : O) (n : ℕ) :
+    addVal O (x * π ^ n) = addVal O x + (n : ℕ∞) := by
+  rw [AddValuation.map_mul, hπ.addVal_pow]
+
+/-! ### The frame lift, and its three clauses
+
+`KeyFrame.stageLiftIA` is C.14a's landed object — H.54's `stageLift'` body over the frame's
+numerals, pinned to it by C.14a's `rfl` reconciliation. The three clauses below are the frame
+readings of H.55(i)–(iii) and H.56; see the module docstring for why they are re-derived here
+rather than transported. -/
+
+/-- The normalizer equation `i·h + e₁·a = M` at C.15's junk-free solve. -/
+private theorem slot_eq (F : KeyFrame O π) {M : ℕ} (hM : F.slotIdx M * F.h ≤ M) :
+    F.slotIdx M * F.h + F.e₁ * ((M - F.slotIdx M * F.h) / F.e₁) = M := by
+  have hdvd : F.e₁ ∣ M - F.slotIdx M * F.h :=
+    (Nat.modEq_iff_dvd' hM).mp (F.slotIdx_spec M).2
+  rw [Nat.mul_div_cancel' hdvd, Nat.add_sub_cancel' hM]
+
+/-- The lift's coefficient at an occupied slot. -/
+private theorem coeff_stageLiftIA_mem (F : KeyFrame O π) {i a s : ℕ} (hs : s < F.f₁)
+    (lift : ℕ → O) :
+    (F.stageLiftIA (π := π) i a lift).coeff (i + F.e₁ * s) = lift s * π ^ (a - s * F.h) := by
+  classical
+  rw [KeyFrame.stageLiftIA, Polynomial.finsetSum_coeff]
+  rw [Finset.sum_eq_single s]
+  · rw [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, if_pos rfl, mul_one]
+  · intro b hb hbs
+    have hne : i + F.e₁ * s ≠ i + F.e₁ * b := by
+      intro he
+      exact hbs (Nat.eq_of_mul_eq_mul_left F.he₁ (by omega)).symm
+    rw [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, if_neg hne, mul_zero]
+  · intro hns
+    exact absurd (Finset.mem_range.mpr hs) hns
+
+/-- The lift's coefficient off the occupied slots. -/
+private theorem coeff_stageLiftIA_not_mem (F : KeyFrame O π) {i a n : ℕ} (lift : ℕ → O)
+    (hn : ∀ s < F.f₁, n ≠ i + F.e₁ * s) :
+    (F.stageLiftIA (π := π) i a lift).coeff n = 0 := by
+  classical
+  rw [KeyFrame.stageLiftIA, Polynomial.finsetSum_coeff]
+  refine Finset.sum_eq_zero fun s hs => ?_
+  have hne := hn s (Finset.mem_range.mp hs)
+  rw [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, if_neg hne, mul_zero]
+
+/-- **H.55(ii) at the frame.** Every `X`-exponent of the lift is `< D′ = e₁f₁`. -/
+private theorem natDegree_stageLiftIA_lt (F : KeyFrame O π) {i a : ℕ} (hi : i < F.e₁)
+    (lift : ℕ → O) : (F.stageLiftIA (π := π) i a lift).natDegree < F.e₁ * F.f₁ := by
+  classical
+  have hpos : 0 < F.e₁ * F.f₁ := Nat.mul_pos F.he₁ F.hf₁
+  have hbound : (F.stageLiftIA (π := π) i a lift).natDegree ≤ F.e₁ * F.f₁ - 1 := by
+    refine Polynomial.natDegree_sum_le_of_forall_le _ _ fun s hs => ?_
+    have hs' : s < F.f₁ := Finset.mem_range.mp hs
+    have hmul : F.e₁ * (s + 1) ≤ F.e₁ * F.f₁ := Nat.mul_le_mul_left F.e₁ hs'
+    have hexp : F.e₁ * (s + 1) = F.e₁ * s + F.e₁ := by ring
+    refine le_trans (Polynomial.natDegree_C_mul_le _ _) ?_
+    rw [Polynomial.natDegree_X_pow]
+    omega
+  omega
+
+/-- **H.55(iii) at the frame.** The `s`-th slot's stage cost is `M` plus the digit's own
+valuation — so the lift's height is `M` exactly when some digit is a unit. -/
+private theorem cost_stageLiftIA (F : KeyFrame O π) (hπ : Irreducible π) {i a M s : ℕ}
+    (hs : s < F.f₁) (hsa : s * F.h ≤ a) (hM : i * F.h + F.e₁ * a = M)
+    (lift : ℕ → O) :
+    F.e₁ • addVal O ((F.stageLiftIA (π := π) i a lift).coeff (i + F.e₁ * s))
+        + ((F.h * (i + F.e₁ * s) : ℕ) : ℕ∞)
+      = F.e₁ • addVal O (lift s) + (M : ℕ∞) := by
+  rw [coeff_stageLiftIA_mem F hs lift, addVal_mul_pow hπ, smul_add]
+  have hnat : F.e₁ * (a - s * F.h) + F.h * (i + F.e₁ * s) = M := by
+    have hsub : F.e₁ * (a - s * F.h) = F.e₁ * a - F.e₁ * (s * F.h) := by rw [Nat.mul_sub]
+    have hle : F.e₁ * (s * F.h) ≤ F.e₁ * a := Nat.mul_le_mul_left _ hsa
+    have hexp : F.h * (i + F.e₁ * s) = i * F.h + F.e₁ * (s * F.h) := by ring
+    omega
+  rw [add_assoc]
+  congr 1
+  rw [show F.e₁ • ((a - s * F.h : ℕ) : ℕ∞) = ((F.e₁ * (a - s * F.h) : ℕ) : ℕ∞) by
+    push_cast [nsmul_eq_mul]; ring]
+  rw [← Nat.cast_add, hnat]
+
+/-- **The exact-height clause.** -/
+private theorem stageHeight_stageLiftIA (F : KeyFrame O π) (hπ : Irreducible π) {i a M s₀ : ℕ}
+    (hM : i * F.h + F.e₁ * a = M) (hsa : ∀ s, s < F.f₁ → s * F.h ≤ a)
+    (lift : ℕ → O) (hs₀ : s₀ < F.f₁) (hu : IsUnit (lift s₀)) :
+    F.stageHeight (F.stageLiftIA (π := π) i a lift) = (M : ℕ∞) := by
+  classical
+  set A := F.stageLiftIA (π := π) i a lift with hA
+  have hinf : F.stageHeight A
+      = (Finset.range (A.natDegree + 1)).inf
+          (fun j => F.e₁ • addVal O (A.coeff j) + ((F.h * j : ℕ) : ℕ∞)) := by
+    simp only [KeyFrame.stageHeight, suppVal, npHgt_X]
+  have hcoeff₀ : A.coeff (i + F.e₁ * s₀) = lift s₀ * π ^ (a - s₀ * F.h) :=
+    coeff_stageLiftIA_mem F hs₀ lift
+  have hne₀ : A.coeff (i + F.e₁ * s₀) ≠ 0 := by
+    rw [hcoeff₀]
+    exact mul_ne_zero hu.ne_zero (pow_ne_zero _ hπ.ne_zero)
+  rw [hinf]
+  refine le_antisymm ?_ ?_
+  · have hmem : i + F.e₁ * s₀ ∈ Finset.range (A.natDegree + 1) :=
+      Finset.mem_range.mpr (Nat.lt_succ_of_le (Polynomial.le_natDegree_of_ne_zero hne₀))
+    refine le_trans (Finset.inf_le hmem) ?_
+    rw [cost_stageLiftIA F hπ hs₀ (hsa s₀ hs₀) hM lift,
+      addVal_eq_zero_iff.mpr hu, smul_zero, zero_add]
+  · refine Finset.le_inf fun j _ => ?_
+    by_cases hex : ∃ s, s < F.f₁ ∧ j = i + F.e₁ * s
+    · obtain ⟨s, hs, rfl⟩ := hex
+      rw [cost_stageLiftIA F hπ hs (hsa s hs) hM lift]
+      exact le_add_self
+    · have hz : A.coeff j = 0 :=
+        coeff_stageLiftIA_not_mem F lift (fun s hs he => hex ⟨s, hs, he⟩)
+      rw [hz, addVal_zero, nsmul_eq_mul, ENat.mul_top (by exact_mod_cast F.he₁.ne'), top_add]
+      exact le_top
+
+/-- **H.56 at the frame — the residue clause.** At a full window the slot residue of the lift
+reads its digits back. -/
+private theorem slotRes_stageLiftIA (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : F.Pin H₀) {a M : ℕ} (hM : F.slotIdx M * F.h + F.e₁ * a = M)
+    (hfull : F.slotWindow M = Finset.range F.f₁) (hsa : ∀ s, s < F.f₁ → s * F.h ≤ a)
+    (lift : ℕ → O) :
+    F.slotRes H₀ hpin M (F.stageLiftIA (π := π) (F.slotIdx M) a lift)
+      = ∑ s ∈ Finset.range F.f₁,
+          algebraMap (resField (Polynomial.X : Polynomial O)) (F.stageField H₀ hpin)
+            (algebraMap (ResidueField O) (resField (Polynomial.X : Polynomial O))
+              (residue O (lift s))) * F.stageLetter H₀ hpin ^ s := by
+  classical
+  rw [KeyFrame.slotRes, hfull]
+  refine Finset.sum_congr rfl fun s hs => ?_
+  have hs' : s < F.f₁ := Finset.mem_range.mp hs
+  have hsa' : s * F.h ≤ a := hsa s hs'
+  have hidx : (M - (F.slotIdx M + F.e₁ * s) * F.h) / F.e₁ = a - s * F.h := by
+    have hexp : (F.slotIdx M + F.e₁ * s) * F.h = F.slotIdx M * F.h + F.e₁ * (s * F.h) := by ring
+    have hle : F.e₁ * (s * F.h) ≤ F.e₁ * a := Nat.mul_le_mul_left _ hsa'
+    have heq : M - (F.slotIdx M + F.e₁ * s) * F.h = F.e₁ * (a - s * F.h) := by
+      rw [Nat.mul_sub]
+      omega
+    rw [heq, Nat.mul_div_cancel_left _ F.he₁]
+  rw [hidx, coeff_stageLiftIA_mem F hs' lift,
+    digAt_eq hπ (mul_comm (lift s) (π ^ (a - s * F.h)))]
+
+/-! ### The lift law -/
+
+/-- **The lift law (`LEMMA GENHN-LIFT` at the frame; C.24's constructive direction).** Above the
+fullness threshold `D′h < M`, every NONZERO stage-field value is the normalized slot residue,
+at height exactly `M`, of a polynomial of degree `< D′`.
+
+This is C.14's steps 2–3 in one statement, with no case split on `D′`: `EFF.HE6.14`'s
+`GENHN-LIFT` branch and its degenerate `D′ = 1` "elementary lift" branch are the same
+construction read at `f₁ = 1`/`e₁ = 1`. It is also exactly PROOF step 2 of NODE C.24
+(`slotRes_image`, unlanded at the time of writing), and is public so that C.24 can consume it
+instead of replaying the construction. -/
+theorem KeyFrame.exists_slotRes_preimage (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : F.Pin H₀) {M : ℕ} (hM : F.e₁ * F.f₁ * F.h < M) {c : F.stageField H₀ hpin}
+    (hc : c ≠ 0) :
+    ∃ B : Polynomial O, B.natDegree < F.e₁ * F.f₁ ∧ F.stageHeight B = (M : ℕ∞) ∧
+      F.slotRes H₀ hpin M B = c := by
+  classical
+  have hi : F.slotIdx M < F.e₁ := (F.slotIdx_spec M).1
+  have hbelow : ∀ s, s < F.f₁ → (F.slotIdx M + F.e₁ * s) * F.h < M := by
+    intro s hs
+    have hmul : F.e₁ * (s + 1) ≤ F.e₁ * F.f₁ := Nat.mul_le_mul_left F.e₁ hs
+    have hexp : F.e₁ * (s + 1) = F.e₁ * s + F.e₁ := by ring
+    have hle : F.slotIdx M + F.e₁ * s ≤ F.e₁ * F.f₁ := by omega
+    exact lt_of_le_of_lt (Nat.mul_le_mul_right _ hle) hM
+  have hile : F.slotIdx M * F.h ≤ M := by
+    have h0 := hbelow 0 F.hf₁
+    rw [Nat.mul_zero, Nat.add_zero] at h0
+    omega
+  set a := (M - F.slotIdx M * F.h) / F.e₁ with hadef
+  have hMa : F.slotIdx M * F.h + F.e₁ * a = M := slot_eq F hile
+  have hsa : ∀ s, s < F.f₁ → s * F.h ≤ a := by
+    intro s hs
+    have h1 := hbelow s hs
+    have hexp : (F.slotIdx M + F.e₁ * s) * F.h = F.slotIdx M * F.h + F.e₁ * (s * F.h) := by ring
+    have h2 : F.e₁ * (s * F.h) < F.e₁ * a := by omega
+    exact le_of_lt (Nat.lt_of_mul_lt_mul_left h2)
+  have hfull : F.slotWindow M = Finset.range F.f₁ := by
+    refine F.slotWindow_full_of_le M ?_
+    have hsub : (F.e₁ * F.f₁ - 1) * F.h ≤ (F.e₁ * F.f₁) * F.h :=
+      Nat.mul_le_mul_right _ (Nat.sub_le _ _)
+    omega
+  have hex : ∃ s, s < F.f₁ ∧ stageDigit F H₀ hpin c s ≠ 0 := by
+    by_contra hall
+    refine hc (Eq.trans (sum_stageDigit F H₀ hpin c).symm ?_)
+    refine Finset.sum_eq_zero fun s hs => ?_
+    have hzero : stageDigit F H₀ hpin c s = 0 := by
+      by_contra hd
+      exact hall ⟨s, Finset.mem_range.mp hs, hd⟩
+    rw [hzero, map_zero, map_zero, zero_mul]
+  obtain ⟨s₀, hs₀, hd₀⟩ := hex
+  refine ⟨F.stageLiftIA (π := π) (F.slotIdx M) a
+    (fun s => resLift (stageDigit F H₀ hpin c s)), natDegree_stageLiftIA_lt F hi _, ?_, ?_⟩
+  · refine stageHeight_stageLiftIA F hπ hMa hsa _ hs₀ ?_
+    exact isUnit_of_residue_ne_zero (by rw [resLift_spec]; exact hd₀)
+  · rw [slotRes_stageLiftIA F hπ H₀ hpin hMa hfull hsa]
+    refine Eq.trans (Finset.sum_congr rfl fun s _ => ?_) (sum_stageDigit F H₀ hpin c)
+    rw [resLift_spec]
+
+/-! ### The signed declaration -/
+
+set_option linter.unusedVariables false in
+/-- **C.14 — test keys exist.** `EFF.HE6.14`'s enlarged family `Ψ_{κ,r}` is nonempty at every
+level datum. -/
+theorem exists_testKey {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    [Finite (ResidueField O)] (hπ : Irreducible π) (hh : 1 ≤ F.h) :
+    ∃ Ψ : Polynomial O, IsTestKey L Ψ := by
+  sorry
+
+end Uniformity.Density.Tower
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Tower.KeyFrame.exists_slotRes_preimage
+#print axioms Uniformity.Density.Tower.exists_testKey
+
+end AxCheck
