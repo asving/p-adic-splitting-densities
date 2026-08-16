@@ -8869,9 +8869,16 @@ def extract_child(RB, state, m, W, k, z, q):
     s = RB.shift_up(RB.lift_res(z), k)          # s = z_hat * pi^k
 ```
 
-with `def lift_res(self, r): return r % self.q` — a function of the residue `r` ALONE, i.e. a
-coherent section of the residue map, and `a = list(state) + [1]` the canonical representative of
-the class. Every `P1(d)` (α fibres exact + onto, per `(k,z)` slice) and `P1(f)` (β per-genre
+where the centre supplier is, again verbatim,
+
+```python
+    def lift_res(self, r):
+        return r % self.q
+```
+
+— a function of the residue `r` ALONE, i.e. a coherent section of the residue map; and
+`a = list(state) + [RB.from_int(1)]` is the canonical representative of the class (states are
+stored canonically, `trunc` zeroing every digit `≥ W`). Every `P1(d)` (α fibres exact + onto, per `(k,z)` slice) and `P1(f)` (β per-genre
 composition) result is a statement about THAT map and stands unaltered. The ∀-`w` quantifier is a
 transcription strengthening the battery never tested.
 
