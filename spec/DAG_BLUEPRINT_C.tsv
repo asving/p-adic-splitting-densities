@@ -705,6 +705,11 @@ BP.C.109	BP.B.20	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source
 BP.C.109	BP.B.24	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109 DEPENDS
 BP.C.109	BP.B.28	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109 DEPENDS
 BP.C.109	BP.B.30	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109 DEPENDS
+BP.C.109	BP.C.109a	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109 DEPENDS — added A-C.2 (2026-08-16): the development bridge
+BP.C.109a	EFF.W12.s1of2.23	stmt-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109a SOURCE (transcription); contiguous EFF.W12.23 (merged 2026-08-14) — remap mechanical per GC-12/H-9; NEW node per A-C.2 (2026-08-16)
+BP.C.109a	BP.B.02	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109a DEPENDS (A-C.2)
+BP.C.109a	BP.B.06	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109a DEPENDS (A-C.2)
+BP.C.109a	BP.B.10	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.109a DEPENDS (A-C.2)
 BP.C.110	EFF.W12.s2of2.32	stmt-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.110 SOURCE (transcription); contiguous EFF.W12.84 (merged 2026-08-14) — remap mechanical per GC-12/H-9
 BP.C.110	BP.C.108	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.110 DEPENDS
 BP.C.110	BP.B.02	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.110 DEPENDS

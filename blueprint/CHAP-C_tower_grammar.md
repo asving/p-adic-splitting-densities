@@ -6635,6 +6635,17 @@ DESCRIPTIVE, verbatim gate); PA-3(i) (the czar assignment this section discharge
 
 ## 11. §11 — THE HT COUNT LAYER (`LEMMA W12-HT`, PA-5)
 
+> ⚠ **[AMENDED: A-C.2, 2026-08-16 — the defect-repair amendment on the C.109 refutation.]**
+> C.108's `htCell` pin and `HTNode`'s free `L`/`sides` were re-signed to the source's own
+> conditions (`EFF.W12.23`'s three-way membership law; `EFF.W12.83`'s `L_v` display), C.109
+> gains the inline well-formedness hypothesis `hwf : v.WF` and the NEW bridge node C.109a,
+> C.111 is re-signed to the honest per-node-hypothesis telescope, and **C.114's two count
+> axioms are WITHDRAWN (machine-refuted as frozen) — the node is BLOCKED pending the
+> realizes-refinement re-sign (A-C.3 target)**. C.110/C.112/C.113/C.115 audited clean.
+> Certification: `verification/c109_ac2_cell_check.py` (127 checks); machine refutations:
+> `leanfinal/Uniformity/ChapC/C109_REFUTATION.lean.txt`, `C111_C114_REFUTATION.lean.txt`.
+> Full record: the A-§ block, entry **A-C.2**.
+
 > **Design note.** `EFF.W12.83`–`.87` at exactly corpus strength (C-H7): per-member at
 > explicit `N` (GC-9.3 — no uniform-`N` law), σ through `monicFactors` at every-lift
 > strength where the corpus certifies "for every disc-nonzero lift" (the GC-9.1 divergence,
@@ -6709,13 +6720,23 @@ count), `D_v(N) = Σ_{j<m_v} max(N − ((m_v−j)s_v + 1), 0)` (note the CLIP �
 `κ_v = ∏_{S,a} r_{v,S,a}!/∏_H r_{v,S,a,H}!` ("the side tag is necessary because roots on
 different sides cannot be permuted"), plus `κ₀(T)` at level 0.
 
-**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`]. A-C.1
+**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`;
+**re-signed: A-C.2, 2026-08-16** — `htCell`'s pin clause and the NEW well-formedness
+apparatus; full record in the A-§ block]. A-C.1
 determinations: the tree is INDEX-ENCODED (`nodes : List HTNode`, `parent : ℕ → ℕ`, root 0,
 well-formedness `parent i < i` — no nested-inductive recursion); `HTNode` carries the CEILED
 pin data (`Pceil : ℕ → ℕ` — `ℚ`-free per the parenthetical), the side set as
 `sides : Finset (ℕ × ℕ)` with `sideType : ℕ → ℕ → FactorizationType`, and `κ_v` as a DATA
 field `kappa` (its side-tagged factorial rule is the corpus's computation, recorded in the
-docstring; C.116 keeps the tags mandatory). Quantities:
+docstring; C.116 keeps the tags mandatory). **A-C.2 determination:** `L`, `sides` and the
+types' degrees are data fields but NOT free — the corpus determines them from the polygon
+(`EFF.W12.83` defines `L_v = #{j < m_v : P_v(j) ∈ ℤ}` inside the `B_v` display; the census
+product ranges over `S ⊂ P_v`), and the frozen C.109 quantifying over unconstrained nodes
+was machine-refuted.  The coherence is the predicate `HTNode.WF` (displayed below), built
+from ℚ-free chord tests on `Pceil` (the hull of the ceiled points IS the polygon — the
+ceiling raises non-vertex points by `< 1` and fixes vertices, and a convex minorant through
+the vertices is the hull); every §11 count law takes `v.WF` INLINE (the B.42 lesson: no
+section auto-inclusion). Quantities:
 ```lean
 namespace Uniformity.Density.Tower
 
@@ -6733,6 +6754,31 @@ def HTNode.B (v : HTNode) (N : ℕ) : ℕ :=
 def HTNode.D (v : HTNode) (N : ℕ) : ℕ :=
   ∑ j ∈ Finset.range v.m, (N - ((v.m - j) * v.s + 1))   -- the CLIP is ℕ-subtraction
 
+-- [A-C.2] the node polygon read off `Pceil` (chord tests; certified [ENC] leg):
+def HTNode.OnHull (v : HTNode) (j : ℕ) : Prop :=          -- "P_v(j) ∈ ℤ" under WF
+  ∀ i k : ℕ, i ≤ j → j ≤ k → k ≤ v.m →
+    (k - i) * v.Pceil j ≤ (k - j) * v.Pceil i + (j - i) * v.Pceil k
+def HTNode.IsVertex (v : HTNode) (j : ℕ) : Prop :=        -- vertex of the hull
+  ∀ i k : ℕ, i < j → j < k → k ≤ v.m →
+    (k - i) * v.Pceil j < (k - j) * v.Pceil i + (j - i) * v.Pceil k
+def HTNode.NodeOnSide (v : HTNode) (u ℓ j : ℕ) : Prop :=  -- B.16's OnSide at node data
+  ∀ i : ℕ, i ≤ v.m → ℓ * v.Pceil j + u * j ≤ ℓ * v.Pceil i + u * i
+noncomputable def HTNode.nodeSideSet (v : HTNode) (u ℓ : ℕ) : Finset ℕ :=
+  open Classical in (Finset.range (v.m + 1)).filter (v.NodeOnSide u ℓ)
+def HTNode.IsSide (v : HTNode) (u ℓ : ℕ) : Prop :=
+  0 < ℓ ∧ Nat.Coprime u ℓ ∧ 2 ≤ (v.nodeSideSet u ℓ).card
+noncomputable def HTNode.nodeSideDeg (v : HTNode) (u ℓ : ℕ) : ℕ :=
+  ((v.nodeSideSet u ℓ).max.getD 0 - (v.nodeSideSet u ℓ).min.getD 0) / ℓ
+
+open Classical in
+def HTNode.WF (v : HTNode) : Prop :=                      -- [A-C.2] node coherence
+  v.Pceil v.m = 0 ∧
+  (∀ i j k : ℕ, i ≤ j → j ≤ k → k ≤ v.m → i < k →
+    (k - i) * v.Pceil j < (k - j) * v.Pceil i + (j - i) * v.Pceil k + (k - i)) ∧
+  v.L = ((Finset.range v.m).filter v.OnHull).card ∧
+  (∀ u ℓ : ℕ, ((u, ℓ) ∈ v.sides ↔ v.IsSide u ℓ)) ∧
+  (∀ u ℓ : ℕ, (u, ℓ) ∈ v.sides → (v.sideType u ℓ).degree = v.nodeSideDeg u ℓ)
+
 structure HTTree where
   nodes : List HTNode
   parent : ℕ → ℕ
@@ -6744,12 +6790,16 @@ def conservativeCell (m s : ℕ) : Set (ℕ → ℕ∞) :=
 def htCell (π : O) (Φ : Polynomial O) [IsDomain (resField Φ)]
     [UniqueFactorizationMonoid (resField Φ)] (v : HTNode) : Set (Polynomial O) :=
   {f | f.Monic ∧ f.natDegree = v.m * Φ.natDegree ∧
-    (∀ j, j ≤ v.m → npHgt Φ f j = (v.Pceil j : ℕ∞)) ∧
+    (∀ j, j ≤ v.m → (v.Pceil j : ℕ∞) ≤ npHgt Φ f j) ∧            -- [A-C.2] ≥ everywhere
+    (∀ j, j ≤ v.m → v.IsVertex j → npHgt Φ f j = (v.Pceil j : ℕ∞)) ∧ -- = at vertices
     ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → (u, ℓ) ∈ v.sides →
       ∀ (hne : (sideSet Φ f u ℓ).Nonempty) (H₀ : ℕ),
         npHgt Φ f (sideMin Φ f u ℓ hne) = (H₀ : ℕ∞) →
         residualTypeOf (resPoly π Φ f u ℓ hne H₀) = v.sideType u ℓ}
 ```
+(the retired A-C.1 pin clause `npHgt Φ f j = (v.Pceil j : ℕ∞)` at every `j ≤ m`
+contradicted `EFF.W12.23`'s three-way membership law — on-side lattice digits are
+"possibly zero"; the re-sign IS that law in ceiled form — A-C.2, certified at mutation M3)
 plus the count-formula defs `htBranchCount (Q census t N)` and
 `htGlobalCount (S q census N)` over `HTShape` (branches `(d_i, m_i, tree_i)` + `κ₀`) — the
 `(HT-branch)`/`(HT-global)` display arithmetic, machine-typed; full text at the leanspec
@@ -6760,10 +6810,68 @@ twin (byte-fixed there).
 **PROOF.** definitional. **SIZE.** 40 lines.
 
 **SOURCE.** `EFF.W12.83` (setting, verbatim: the datum, `B_v`, `D_v`, `C_{m_v}(s_v)`,
-`(HT-orbit)` with the side-tag rationale and the `side_index` convention note).
+`(HT-orbit)` with the side-tag rationale and the `side_index` convention note);
+**[A-C.2]** `EFF.W12.23` (the three-way membership law, verbatim — the cell's pin clauses)
+and `EFF.W12.24` (the priced-digit count with `L` = "lattice point on the polygon" — the
+`WF` laws).
 
 **TEETH.** the N1 certificate's `side_index` grouping → the side-tag is guarded by
-DROP-teeth (C.116). **ENVIRONMENT.** ENV-C3.
+DROP-teeth (C.116); **[A-C.2]** `verification/c109_ac2_cell_check.py` — the `[ENC]` leg
+(chord tests ≡ rational hull geometry) and mutation M3 (the retired pin) → **executable
+regression** retained. **ENVIRONMENT.** ENV-C3.
+
+---
+
+### NODE C.109a [lemma] [fresh] — **[NEW: A-C.2] the level-`N` development bridge**
+
+**STATEMENT.** *The `Φ`-adic development ↔ coefficient-box bridge at level `N`.* For monic
+`Φ` of positive degree: the level-`N` coefficient box of monic degree-`m·d` polynomials is
+in bijection with `m`-tuples of level-`N` degree-`< d` blocks, THROUGH the development —
+`Coeff O (m·d) N ≃ (Fin m → Coeff O d N)`, the forward map reading, at any lift, the
+level-`N` classes of `dev`'s coefficient vectors. Level-`N` well-definedness of `dev`
+(monic division preserves coefficientwise congruence mod `π^N` — B.10's content one level
+up) is PART of the claim: the componentwise spec at an arbitrary lift is contradictory
+without it. This is the node the C.109 refutation record named as C.109's real cost
+(*"formalizing it needs the level-`N` development↔coefficient-box bridge … which does not
+exist in `leanfinal` yet"*), and it is where `EFF.W12.23`'s *"Monic division gives the
+UNIQUE `Φ`-adic development … `f ↦ (a_j)_{j<m}` is a bijection"* lands as a reusable
+carrier. Consumed by C.109's slot count, C.110's `ht_conservative_card` (the same block
+decomposition at the conservative cell), and C.114's strata.
+
+**SIGNATURE** [signed: A-C.2 — elaborated in `leanspec/Leanspec/ChapC.lean`; `∃`-form (a
+single Prop axiom stub — no data axiom in the spec bank), the equivalence pinned
+componentwise through `dev` at an arbitrary lift].
+```lean
+namespace Uniformity.Density.Tower
+
+theorem dev_box_bridge {Φ : Polynomial O} (hΦm : Φ.Monic) (hΦd : 0 < Φ.natDegree)
+    (m N : ℕ) :
+    ∃ E : Coeff O (m * Φ.natDegree) N ≃ (Fin m → Coeff O Φ.natDegree N),
+      ∀ (a : Fin (m * Φ.natDegree) → O) (j : Fin m) (i : Fin Φ.natDegree),
+        E (proj O (m * Φ.natDegree) N a) j i
+          = Ideal.Quotient.mk ((IsLocalRing.maximalIdeal O) ^ N)
+              ((dev Φ (monicPoly a) (j : ℕ)).coeff (i : ℕ))
+```
+
+**DEPENDS.** B.02–B.06 (`dev`, the development calculus) · B.10 (well-definedness — the
+congruence leg) · landed `Coeff`/`proj`/`monicPoly`.
+
+**PROOF (route).** forward: well-defined by the congruence leg (division by monic `Φ`
+preserves mod-`π^N` congruence coefficientwise), so the spec determines `E` on every class
+(`proj` surjective); injective: two developments block-congruent mod `π^N` reassemble to
+coefficientwise-congruent polynomials (the development is a triangular change of
+coordinates); surjective: assemble `f = Φ^m + Σ ã_j Φ^j` from arbitrary block lifts and
+read the development back by uniqueness of monic division.
+
+**SIZE.** ~40 lines.
+
+**SOURCE.** `EFF.W12.23` (the development display + bijection sentence, verbatim); the
+C.109 refutation record (`C109_REFUTATION.lean.txt`, "A second, deeper failure" — the
+named cost).
+
+**TEETH.** `verification/c109_ac2_cell_check.py` computes every LHS through exactly this
+bridge (dev-blocks over `ℤ/p^N`) — 13 instances green. **ENVIRONMENT.** ENV-C1 (pure
+algebra: no completeness, no finiteness).
 
 ---
 
@@ -6779,8 +6887,15 @@ residual letters of the prescribed types contributes exactly `∏_S S_{λ_{v,S}}
 extra unit factor (the right-to-left sweep: one side's monic normalization fixes the
 shared vertex unit for the next — C.25's fixed-convention reads, level-1 instance).
 
-**SIGNATURE** [signed: A-C.1 — elaborated in `leanspec/Leanspec/ChapC.lean`; the two S2.2
-clauses in one card identity: `Q^{B_v(N)}` digits × the census product; base
+**SIGNATURE** [signed: A-C.1; **re-signed: A-C.2, 2026-08-16** — gains `(hwf : v.WF)`
+INLINE (the B.42 lesson). The frozen form (free `v`) is machine-refuted:
+`leanfinal/Uniformity/ChapC/C109_REFUTATION.lean.txt` derives `False` from it at every
+model of its own binders (two nodes differing only in the unread `L`), and the record's
+secondary arithmetic (no `L` repairs an empty `sides` at `Q ≥ 3`) is numerically VERIFIED
+at mutation M2 of `verification/c109_ac2_cell_check.py`. The re-signed law is certified at
+13 exact-count instances (q = 2, 3, and Q = 4 via a degree-2 key; steep/interior-lattice/
+`ℓ = 2`/flat/shared-vertex polygons). Elaborated in `leanspec/Leanspec/ChapC.lean`; the two
+S2.2 clauses in one card identity: `Q^{B_v(N)}` digits × the census product; base
 `Q = Nat.card (resField Φ)`].
 ```lean
 namespace Uniformity.Density.Tower
@@ -6790,7 +6905,7 @@ theorem ht_node_cell_card (hπ : Irreducible π)
     {Φ : Polynomial O} (hΦ : IsKey Φ)
     [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
     [Finite (resField Φ)]  -- all derivable from hΦ; binders for elaboration
-    (v : HTNode) (N : ℕ) (hvis : ∀ j, j ≤ v.m → v.Pceil j < N) :
+    (v : HTNode) (hwf : v.WF) (N : ℕ) (hvis : ∀ j, j ≤ v.m → v.Pceil j < N) :
     Nat.card {c : Coeff O (v.m * Φ.natDegree) N //
         ∃ a : Fin (v.m * Φ.natDegree) → O,
           proj O (v.m * Φ.natDegree) N a = c ∧ monicPoly a ∈ htCell π Φ v}
@@ -6798,17 +6913,24 @@ theorem ht_node_cell_card (hπ : Irreducible π)
         * ∏ p ∈ v.sides, sideCensus (resField Φ) (v.sideType p.1 p.2)
 ```
 
-**DEPENDS.** C.107 · C.108 · B.20 (`sideLen`/`sideDeg` — H-10's named ingredient) ·
-B.24 (`digAt`/`digPoly`) · B.28/B.30 (the priced digits) · landed `card_coeff`.
+**DEPENDS.** C.107 · C.108 (incl. the A-C.2 `WF` apparatus) · **C.109a (the development
+bridge — the refutation record's named cost, now a node)** · B.20 (`sideLen`/`sideDeg` —
+H-10's named ingredient) · B.24 (`digAt`/`digPoly`) · B.28/B.30 (the priced digits) ·
+landed `card_coeff`.
 
-**PROOF (route).** the slot count + the priced-digit count, per side right-to-left.
+**PROOF (route).** through C.109a's bridge to the block boxes; then the slot count + the
+priced-digit count, per side right-to-left (`EFF.W12.24`'s sweep: the rightmost side's
+monic top is the polynomial's leading `1`; each side's census fixes its left-vertex unit
+for the next side — no extra unit factor).
 
-**SIZE.** 36 lines.
+**SIZE.** 36 lines (+ C.109a's 40).
 
-**SOURCE.** `EFF.W12.84` step 1 (verbatim).
+**SOURCE.** `EFF.W12.84` step 1 (verbatim); **[A-C.2]** `EFF.W12.24` (the count + census
+normalization displays, verbatim — the `L` and sweep laws the re-sign enforces).
 
 **TEETH.** the certificate's per-key comparisons (C.116) → retained; §13 spot-fires one
-cell count at each prime.
+cell count at each prime; **[A-C.2]** `verification/c109_ac2_cell_check.py` (13 law
+instances + mutations M1/M2/M3 all killing) → **executable regression** retained.
 
 **ENVIRONMENT.** ENV-C3.
 
@@ -6894,17 +7016,27 @@ E_v(𝐑) ≃ U_v(𝐑) × ∏_{u child} C_{m_u}(s_u),    #U_v(𝐑) = Q^{B_v(N)
 the exponent a nonnegative integer BY the bijection (divisibility is a consequence, not
 an assumption).
 
-**SIGNATURE** [signed: A-C.1 AT THE ARITHMETIC SHADOW — `ht_fiber_exponent_nonneg` (the
-"exponent a nonnegative integer BY the bijection" clause, over the tree data); the
-multiplication-bijection engine and the set-level fiber assembly are the BOOKED B.37–B.40
-weighted-grading RE-PLAN (the node's own DEPENDS expected it) — recorded].
+**SIGNATURE** [signed: A-C.1 AT THE ARITHMETIC SHADOW; **re-signed: A-C.2, 2026-08-16** —
+the frozen form (hypotheses `hwf` + `hvis` only) is machine-refuted
+(`C111_C114_REFUTATION.lean.txt`, `c111_frozen_false`: the tree data ties a child's `s` to
+NOTHING, so a child at `s = 0` has `D = m(N−1)` while a steep polygon drives every `B` to
+`0`), and per-node `HTNode.WF` cannot rescue it (numeric leg [C111] of the certification —
+the WF-resistant instance). The corpus derives nonnegativity PER NODE from the fiber
+bijection (`EFF.W12.85`: `#U_v(𝐑) = Q^{B_v(N)−Σ_u D_u(N)}`, *"the exponent is a nonnegative
+integer"* — a property of REALIZED nodes), so the honest arithmetic shadow carries the
+per-node inequality as the hypothesis `hnode`, discharged by the fleet's bijection at
+realized nodes, and keeps the telescope over the parent map as this node's content. `hvis`
+DROPPED as dead weight (the A-F.12 minimality rule: never instantiable content). The
+multiplication-bijection engine and the set-level fiber assembly remain the BOOKED
+B.37–B.40 weighted-grading RE-PLAN (the node's own DEPENDS expected it) — recorded].
 ```lean
 namespace Uniformity.Density.Tower
 
 theorem ht_fiber_exponent_nonneg (t : HTTree) (hwf : t.WF) (N : ℕ)
-    (hvis : ∀ i, i < t.nodes.length →
-      ∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
-        (t.nodes.getD i HTNode.default0).Pceil j < N) :
+    (hnode : ∀ i, i < t.nodes.length →
+      ((((List.range t.nodes.length).drop 1).filter (fun u => t.parent u == i)).map
+        (fun u => (t.nodes.getD u HTNode.default0).D N)).sum
+        ≤ (t.nodes.getD i HTNode.default0).B N) :
     (((List.range t.nodes.length).drop 1).map
         (fun i => (t.nodes.getD i HTNode.default0).D N)).sum
       ≤ ((List.range t.nodes.length).map
@@ -6947,6 +7079,11 @@ operations).
 DIVISION-FREE telescope form over the formula carrier (`htBranchCount·Q^{ΣD} = ∏ per-node
 factors`); the set-level recursion (concatenation/fracture compatibility) is the fleet's
 proof content behind `ht_branch` (C.114)].
+**[AUDITED: A-C.2 — NO re-sign.** Predicted clean and verified: `ht_rec` carries its
+inequality as the explicit hypothesis `hBD` and is pure algebra over the formula carrier,
+true for arbitrary trees given `hBD` — the hypothesis-carrying discipline is exactly what
+the frozen C.111 lacked. `hBD` is now supplied by the re-signed C.111 (whose `hnode` the
+fleet discharges at realized nodes). Set-level consumption inherits C.114's BLOCK.]
 ```lean
 namespace Uniformity.Density.Tower
 
@@ -7049,6 +7186,26 @@ B.55/B.58").
 
 ### NODE C.114 [theorem] [fresh] — **TERMINAL SUPPLY: THE COUNT LAW**
 
+> ⚠ **[BLOCKED: A-C.2, 2026-08-16 — the two count axioms are WITHDRAWN from the leanspec
+> bank; the node awaits the realizes-refinement re-sign (A-C.3 target).]** As frozen, BOTH
+> `ht_branch` and `ht_global` are machine-refuted
+> (`leanfinal/Uniformity/ChapC/C111_C114_REFUTATION.lean.txt`): the stratum reads NONE of
+> `kappa`, `kappa0`, `s`, the non-root `sideType`s, nor the child-completeness of the
+> tree, while the formulas read all of them — one-node κ-separated trees (and the empty
+> shape at `κ₀`) give equinumerous strata with formula values `1` vs `2`. The A-C.1
+> signature note below had already BOOKED "the per-node residual-type/side-tag
+> refinements" to the fleet; the A-C.2 audit shows the booking is SIGNATURE-critical, not
+> proof-side. The A-C.2 record carries the designed clause list for the re-sign (per-node
+> `HTNode.WF`; per-node cell membership `G i ∈ htCell π (K i) (node i)`, subsuming the
+> polygon pins and pinning the types; the `s`-pin
+> `gaussVal (K i − K (t.parent i)) = (s_i : ℕ∞)`; sibling distinctness on a side;
+> child-count = the side type's repeated-linear count; the `(HT-orbit)` κ-rule at tree
+> level). `htRealizes`' polygon pin clause is separately re-signed NOW to the hull form
+> (C.108's D3 fix, mechanical), so downstream re-signs build on the faithful carrier. The
+> withdrawn signatures are preserved verbatim in the refutation record (`C114BranchFrozen`,
+> `C114GlobalFrozen`). Downstream consumers of the supply (chapter H's entry-law audits,
+> chapter I's count-side conditionality, §13's gates on `ht_branch`) inherit the BLOCK.
+
 **STATEMENT.** *`(HT-branch)` and `(HT-global)` — the all-degree order-1 count law
 (= THEOREM W-12.A's effective statement).* Iterating C.112 over the finite tree
 (C.113(i)):
@@ -7074,23 +7231,24 @@ functions — all derivable from `hkeys`.]
 ```lean
 namespace Uniformity.Density.Tower
 
-def htRealizes (Φ f : Polynomial O) (t : HTTree) : Prop :=
+def htRealizes (Φ f : Polynomial O) (t : HTTree) : Prop :=   -- [re-signed: A-C.2, pin → hull form]
   ∃ (G K : ℕ → Polynomial O), K 0 = Φ ∧ G 0 = f ∧
     ∀ i, i < t.nodes.length →
       (G i).Monic ∧
       (G i).natDegree = (t.nodes.getD i HTNode.default0).m * (K i).natDegree ∧
       (∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+        ((t.nodes.getD i HTNode.default0).Pceil j : ℕ∞) ≤ npHgt (K i) (G i) j) ∧
+      (∀ j, j ≤ (t.nodes.getD i HTNode.default0).m →
+        (t.nodes.getD i HTNode.default0).IsVertex j →
         npHgt (K i) (G i) j = ((t.nodes.getD i HTNode.default0).Pceil j : ℕ∞)) ∧
       (0 < i → G i ∣ G (t.parent i) ∧
         (K i).natDegree = (K (t.parent i)).natDegree ∧
         (K i - K (t.parent i)).natDegree < (K i).natDegree)
 
-theorem ht_branch …   -- Nat.card (root htCell ∩ htRealizes stratum, as Coeff classes)
-                      --   = htBranchCount (Nat.card (resField Φ)) (sideCensus (resField Φ)) t N
-theorem ht_global …   -- Nat.card (level-0 dissection stratum) = htGlobalCount S q censuses N
+-- [A-C.2] `theorem ht_branch` / `theorem ht_global` WITHDRAWN — machine-refuted as frozen
+-- (`C111_C114_REFUTATION.lean.txt`); re-sign pending the realizes-refinement (A-C.3).
+-- The withdrawn binder lists are preserved verbatim in the refutation record.
 ```
-(the two full binder lists are byte-fixed in the leanspec twin — elided here only because
-they repeat C.108/C.109's displayed carriers verbatim.)
 
 **DEPENDS.** C.107–C.113.
 
@@ -7127,6 +7285,10 @@ small parameters, plus the symbolic telescope at (ii)).
 specialization over the formula carrier); the (i)/(ii) spot VALUES are §13's executed
 `htSpot`/`htSpotAlt` rows (the stub gate's D15 block — see C.123/C.124's A-C.1 tables), and
 their tree-level instantiations are the fleet's companions — recorded].
+**[AUDITED: A-C.2 — NO re-sign.** Predicted clean and verified: `ht_depth_zero` is a
+formula-level identity over `htBranchCount` (both sides read the same node fields), true
+for ARBITRARY `v` — no set-level content, so the free-field disease cannot reach it. Its
+tree-level instantiations inherit C.114's BLOCK, but the depth-zero clause itself stands.]
 ```lean
 namespace Uniformity.Density.Tower
 
@@ -7170,6 +7332,9 @@ in the docstring as the audit trail.
 **SIGNATURE** [signed: A-C.1]. documentation node — landed as the `C116Manifest` `#check`
 section in `leanspec/Leanspec/ChapC.lean` (the `HTNode` field manifest with the MANDATORY-tag
 comments on `kappa`/`sideType`, per the Phase-B consumer contract).
+**[UPDATED: A-C.2** — the manifest gains `#check @HTNode.WF` (well-formedness is now
+MANDATORY on every count law) and loses `#check @ht_branch`/`@ht_global` (WITHDRAWN at
+C.114's block; the lines are replaced by the withdrawal comment).]
 
 **DEPENDS.** C.108 · C.114.
 
@@ -7941,5 +8106,153 @@ increment:
   git history. D22: the discriminating THIRD frame `(e₁,e₂,E₂) = (2,1,10)` added (`w = 0`
   row `[16,11,6,1]` ≠ the shared `[7,5,3,1]`, `#guard`-verified). C.126's expected census
   updated to the three declared A-C.1 names.
+
+**A-C.2 (2026-08-16, the C.109 defect-repair unit — the A-F.12/A-H.5 pattern: source
+adjudication first, refutations preserved, nothing weakened). THE HT COUNT LAYER'S NODE
+DATUM WAS FREE WHERE THE CORPUS DETERMINES IT; FOUR REPAIRS, ONE NEW NODE, TWO
+WITHDRAWALS.**
+
+**(I) The findings.** The wave refutation
+(`leanfinal/Uniformity/ChapC/C109_REFUTATION.lean.txt`, sorry-free, Lean-core) proved the
+frozen C.109 contradictory: `htCell` reads `(m, Pceil, sides, sideType)` while the count
+law's RHS reads `L` through `B_v`, so nodes differing only in `L` have `rfl`-equal counted
+subtypes and different RHS. Its secondary arithmetic — with `sides = ∅` the true count
+`Q^{N−3}(Q−1)` is a `Q`-power for NO `L` once `Q ≥ 3` — is now VERIFIED (mutation M2 of the
+certification; at `Q = 2` exactly `L = 1` matches, also as the record said). This unit's
+audit found TWO further defects in the same A-C.1 transcription event: **(D3)** `htCell`'s
+pin clause `npHgt Φ f j = Pceil j` at EVERY `j ≤ m` contradicts the corpus's own three-way
+membership law — the frozen cell is strictly smaller than the corpus cell at every
+non-vertex position, and the C.115(i) obstruction instance itself (a length-2 side, char
+2) makes the frozen cell EMPTY where the law demands `(q−1)q^B` (mutation M3); **(D4)**
+the frozen C.111 and BOTH frozen C.114 axioms are contradictory
+(`C111_C114_REFUTATION.lean.txt`: `c111_frozen_false`, `c114_branch_frozen_false`,
+`c114_global_frozen_false` — the tree data ties `s` to nothing; the strata read none of
+`kappa`/`kappa0`/`s`/non-root types/child-completeness).
+
+**(II) Source adjudication (verbatim pins; each with a non-textual leg per the
+extraction-corruption rule).** The well-formedness the source's own count law carries:
+
+1. `EFF.W12.83` (the setting display): *"Define `B_v(N)=m_vN−∑_{j<m_v}⌈P_v(j)⌉−L_v`,
+   `L_v=#{j<m_v:P_v(j)∈ℤ}`"* — **`L_v` is DEFINED in the same display that defines `B_v`**;
+   it was never free data. And the census product is *"`∏_{S⊂P_v}S_{λ_{v,S}}(Q_i)`"* — the
+   sides range over the sides OF THE POLYGON. Non-textual leg: `EFF.W12.24`'s own
+   cross-check row re-derives W-10's `(2,1,1)` law with `P(0)=1, P(1)=1/2`, `L=1`,
+   `B=2N−3` — `L` counts integral positions only, arithmetic confirmed, and confirmed
+   again by this unit's exact counts.
+2. `EFF.W12.23` (the membership law): *"`j` a VERTEX of `P`: `v(a_j)=P(j)` exactly and
+   `digit_{P(j)}(a_j)≠0`; `j` an on-side lattice point (side `S`): `v(a_j)≥P(j)`, with
+   `digit_{P(j)}(a_j)` = the residual coefficient `r_j` (**possibly zero**; priced jointly
+   by `λ_S`); every other `j<m`: `P(j)∉ℤ` … `v(a_j)≥⌈P(j)⌉` — the automatic ceiling."*
+   Equality at VERTICES ONLY. (Chapter B's landed B.16 already quotes this display
+   verbatim in its Faithfulness block — the law was in the repo's own trusted base.)
+   Also: *"the branch polygon is the lower hull of `{(j,v(a_j))}_{j<m} ∪ {(m,0)}`"* — the
+   monic-top clause. Non-textual leg: the char-2 double-root and char-3 `(Y−1)(Y−2)`
+   instances (M3) — the exact-pin reading is EMPTY there while the law's value is
+   attained by the three-way reading.
+3. `EFF.W12.24` (the count + normalization): *"slot `j` contributes `N−⌈P(j)⌉` free
+   digits, minus one priced digit if `j` is a lattice point on the polygon (`L` of
+   them)"*, and the sweep: *"Choosing its residual = a monic degree-`g_S` polynomial with
+   nonzero constant term of type `λ_S` (`S_{λ_S}(q^d)` ways) … Each next side to the left
+   … again exactly `S_{λ_S}(q^d)` choices … `S_T(q^d)=∏_S S_{λ_S}(q^d)` — no extra unit
+   factors."* This fixes the census semantics (= C.107's `sideCensus`, exactly) and the
+   degree law (each side's type has the side's residual degree). Non-textual leg: the
+   shared-vertex instance I6 (`Pceil=(3,1,0)`, two sides): count `Q^{2N−6}(Q−1)²`, no
+   extra unit factor — exact.
+4. `EFF.W12.85` (for C.111): *"`#U_v(𝐑)=Q^{B_v(N)−∑_uD_u(N)}`. In particular, the
+   exponent is a nonnegative integer"* — nonnegativity is PER NODE and BY THE BIJECTION
+   (at realized nodes), never a property of raw tree data. Non-textual leg: the
+   WF-resistant numeric counterexample ([C111] leg).
+
+**Verdict:** the source's condition = node-datum coherence (monic top; `Pceil` the ceiled
+hull of its own points; the `L` law; the sides law; the degree law) + the three-way cell
+membership. The ℚ-free chord-test encoding is licensed by the reconstruction lemma (the
+hull of the ceiled points IS the polygon: ceilings raise non-vertex points by `< 1`, fix
+vertices, and a convex minorant through the vertices is the hull) — certified [ENC] on
+every instance against direct rational hull geometry.
+
+**(III) The re-signs, with the alternatives rejected.**
+
+* **C.108** — `HTNode.WF` (five clauses, displayed at the node) + the chord-test reads
+  (`OnHull`/`IsVertex`/`NodeOnSide`/`nodeSideSet`/`IsSide`/`nodeSideDeg` — B.16/B.20's
+  shapes at the node's own data, GC-2 literal-reuse style); `htCell` pin → `≥` everywhere
+  + `=` at `IsVertex`. Rejected: *(a) all-vertex WF keeping the exact-pin cell* — kills
+  every polygon with a side of length `≥ 2` or denominator `≥ 2`, including C.115(i)'s
+  own obstruction instance; *(b) exact pins with a corrected RHS* — an ad-hoc law the
+  corpus never states, and the `(HT-rec)` recursion is stated for polygon cells; *(c) a
+  positivity clause `Pceil j ≥ 1` for `j < m`* (true of corpus tree nodes via
+  `f̄ = P̄^m`) — NOT needed for the law's truth (the flat-side instance I5 is exact), and
+  adding it would narrow C.109 with no gain; recorded as a deliberate strengthening of
+  scope, certified.
+* **C.109** — gains `(hwf : v.WF)` inline (B.42: truth-bearing hypotheses in binder
+  lists, never section auto-inclusion); everything else byte-identical. Rejected:
+  *unbundled per-clause hypotheses* — five binders on every consumer for one semantic
+  unit; the predicate is the corpus's "a node datum" made explicit.
+* **C.109a** [NEW node] — see (IV).
+* **C.111** — the per-node inequality becomes the hypothesis `hnode` (the corpus's
+  fiber-count shadow, discharged by the fleet's bijection at realized nodes); conclusion
+  unchanged (the telescope over the parent map); `hvis` dropped as dead weight (A-F.12's
+  minimality rule). Rejected: *(a) WF-only* — numerically refuted (the WF-resistant
+  instance); *(b) realization-scoping* — inverts the §11 dependency order and imports
+  C.114's unfinished stratum into an arithmetic node.
+* **C.114** — `htRealizes` pin → hull form (the D3 fix, mechanical); `ht_branch` and
+  `ht_global` WITHDRAWN (a refutable axiom is a live inconsistency in the spec bank);
+  node BLOCKED pending A-C.3 with the designed clause list recorded (node banner).
+  Rejected: *(a) signing the fully refined stratum now* — the refinement (histories, κ's
+  factorial rule at tree level, sibling matching) is exactly the complexity class whose
+  uncertified signing produced this defect family; it needs its own certification leg
+  (the A-C.1 lesson); *(b) WF-binders-only re-sign* — still refutable via `kappa`
+  (machine-checked), so it would land another false axiom.
+
+**(IV) DECISION D-C.2-BRIDGE — the secondary gap becomes NODE C.109a, not an annex.** The
+refutation record named C.109's real cost: the level-`N` development ↔ coefficient-box
+bridge `Coeff O (m·d) N ≃ (Fin m → Coeff O d N)` through `dev` (well defined by B.10),
+absent from `leanfinal`. Decision: a NEW node (C.109a, `dev_box_bridge`, signed `∃`-form
+with the componentwise spec through `dev` at an arbitrary lift — a single Prop axiom
+stub, no data axiom). Rationale: it has ≥ 3 consumers (C.109's slot count, C.110's
+`ht_conservative_card` block decomposition, C.114's strata), independent B-layer
+character (`EFF.W12.23`'s own "monic division … is a bijection" display), and annexing it
+to C.109 would hide a shared dependency from the DAG. Rejected: *annex to C.109* (hides
+the sharing), *landing it in chapter B* (its carrier `Coeff` is §11's counting frame, and
+chapter B is committed/landed — the GC-5 supplier fence).
+
+**(V) Consumer audit (predict-then-verify; grep over blueprint + leanspec).**
+`HTNode`/`htCell`/`htBranchCount` consumers are exactly C.108–C.116 (+ C.116's manifest;
+chapters H/I consume the SUPPLY, not the carriers — H-10's routing note; no other
+leanfinal/leanspec file mentions them — grep 2026-08-16):
+
+| node | prediction | verdict |
+|---|---|---|
+| C.109 | re-sign (the refutation's demand) | RE-SIGNED (`hwf` + C.109a) |
+| C.110 | clean (no `HTNode`) | CLEAN — both statements read raw `(d,a,k,N)` data |
+| C.111 | re-sign (free `s` vs `D`) | REFUTED as frozen, machine-checked; RE-SIGNED |
+| C.112 | clean (`hBD` hypothesis-carried) | CLEAN — pure algebra given `hBD`; verified |
+| C.113 | clean (no `HTNode`) | CLEAN |
+| C.114 | re-sign (the refutation note's flag) | REFUTED as frozen (both axioms), machine-checked; WITHDRAWN + BLOCKED (A-C.3) |
+| C.115 | clean (formula-level) | CLEAN — `ht_depth_zero` true for arbitrary `v`; verified |
+| C.116 | manifest update | UPDATED (`+HTNode.WF`, `−ht_branch/ht_global`) |
+
+**(VI) Certification (`verification/c109_ac2_cell_check.py`, 127 checks, exit 0; output
+committed).** [LAW] 13 exact-count instances of the re-signed C.109 over `ℤ/p^N`
+truncations: `q ∈ {2,3}` × {steep side, interior-lattice side (all three quadratic
+types), `ℓ = 2` side, flat side, two sides sharing a vertex} + one `Q = 4` instance
+through a degree-2 key (`Φ = x²+x+1` over `ℤ/2^N`). [ENC] the chord-test encodings agree
+with direct rational hull geometry on every instance. [MUT] `L±1` (M1), empty sides (M2 —
+the refutation note's arithmetic verified), the retired pin (M3 — empty cell at the
+char-`p` killer types; `Q^{2N−4}(Q−1)² ≠ Q^{2N−3}(Q−1)` at `ℓ = 2`) all KILL; the frozen
+C.111 and the κ-freedom of C.114 refuted numerically ([C111], [C114] legs). A first-run
+finding, recorded: at `q = 3` the double-root type's interior coefficient `−2c` is
+nonzero, so the OLD pin is accidentally IMPLIED by that single type there — the defect is
+exactly that the pin smuggles a type-dependent constraint into the polygon clause; the
+char-dependent killer types expose it.
+
+**(VII) Bookkeeping.** Census: nodes 129 → **130** (+C.109a [lemma]); A-5's fleet figure
+≈166 → **≈167**. DAG: C.109a rows added to `spec/DAG_BLUEPRINT_C.tsv` (stmt-dep →
+`EFF.W12.s1of2.23`; proof-deps → B.02, B.06, B.10; C.109 → C.109a). `leanfinal` edit
+surface: `Uniformity/ChapC/C108.lean` ONLY (definitional node, no landed proof consumes
+the retired pin — grep-verified; compiles clean, AxCheck extended); both refutation
+records re-verified against the re-signed cell (Lean-core footprints). The two `.lean.txt`
+refutation records are PERMANENT (headers carry the repair notes). Standing obligation
+opened: **A-C.3 — the C.114 realizes-refinement re-sign** (clause list at the node
+banner), with its own certification leg required before signing.
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
