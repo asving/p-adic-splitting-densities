@@ -5972,3 +5972,30 @@ A-C.6); (b) the B-BOX-1 nod or B.62 order (closes H.123);
 flagged, strength-neutral); (d) the B39a flag (sign-as-read or
 promote first); (e) HYP.142's bucket one-liner; (f) the AGNPRW
 print-read (~2 min); (g) A-3 browser riders (standing).
+
+**2026-08-16 DATED APPEND #83 — CLASSIFIER OUTAGE LOG + THE
+ORCHESTRATOR'S OWN LEAF WORK (owner-sanctioned).** A sustained
+classifier outage (~1h+ at this writing) gated every
+state-changing tool: Bash (incl. git commits and timers),
+Workflow launches/resumes, and the lean-lsp MCP calls; Read/
+Write/Edit stayed live. Owner's live directive during the
+outage: keep saving to git periodically; do fleet work myself
+if so inclined. STATE AT THE OUTAGE: (1) H.116b3-ii is
+FINISHED AND VERIFIED — the storm-killed agent left a complete
+401-line file; the orchestrator elaborated it (lake env lean
+clean) and module-built it (8,603 jobs green, all three
+theorems Lean-core, zero sorry) BEFORE the gates closed; the
+landing commit is queued (retried each watchdog tick).
+(2) Queued resumes: C wave 13's third agent (C.109-v + the
+C.109 assembly; its C.109-iv landed at 2c9b8b78, scratch
+material on disk) and the b3 chain (now only b3-iii, since the
+orchestrator verified b3-ii). (3) The orchestrator WROTE the
+b3-iii SKELETON (ChapH/H116b3iii.lean — statement 1 at the
+byte-frozen leanspec type, sorry body, not in any roll-up)
+but STOPPED there: with Bash and MCP both gated there is no
+compiler feedback, and blind monolithic proving is against
+the workflow rules. On recovery, order of operations: commit
+b3-ii → resume C wave 13 → EITHER finish b3-iii solo with the
+diagnostics loop OR hand the skeleton to the b3 resume (do
+NOT run both — race). (4) Nothing was lost: the committed
+tree is layer-close-#15 green (9,176 jobs, sweep clean).
