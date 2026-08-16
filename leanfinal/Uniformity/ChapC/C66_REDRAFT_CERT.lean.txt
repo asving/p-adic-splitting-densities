@@ -1,0 +1,530 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapC.C22
+import Uniformity.ChapC.C25
+import Uniformity.ChapC.C29
+import Uniformity.ChapC.C97
+
+/-!
+# CERTIFICATION of the A-C.6 REDRAFT of NODE C.66 (`fgmn_residual_mul`, `[cite:FGMN]`)
+
+**This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` /
+`C47_RESIGN_CERT.lean.txt` convention: kept as `.lean.txt` so no build picks it up).
+To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapC/C66_REDRAFT_CERT.lean.txt /tmp/c66_cert.lean
+cd leanfinal && lake env lean /tmp/c66_cert.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only,
+2026-08-16 (amendment A-C.6, the CITE-REDRAFT unit).
+
+## What is certified, and against what
+
+`leanfinal/Uniformity/ChapC/C66_REFUTATION.lean.txt` machine-refutes the FROZEN A-C.1 draft of
+C.66: at the LANDED `s2Frame` of C.97 (`Φ′ = x² − 2` over `ℤ_[2]`, `(e₁,f₁,h) = (2,1,1)`,
+`D′ = 2`) the pair `g = g′ = X` at `(u, ℓ) = (2, 1)` satisfies every drafted binder and violates
+the conclusion, so the draft proves `False`. The A-C.6 REDRAFT
+(`leanspec/Leanspec/ChapC.lean`, `def FgmnResidualMulStatement`) adds five binders:
+
+```lean
+    (hfloor : ℓ * ((F.e₁ * F.f₁) * F.h) < u)                 -- the above-floor slope fence
+    (hdg : F.e₁ * F.f₁ ∣ g.natDegree) (hdg' : F.e₁ * F.f₁ ∣ g'.natDegree)
+    (hpos : 0 < g.natDegree)          (hpos' : 0 < g'.natDegree)
+```
+
+`C66StatementR` below is that redraft's ∀-closure, at `Type 0` and with `O`, `π` made explicit
+(the leanspec `def` is universe-polymorphic with `{O}`, `{π}` implicit; the closure here is its
+`Type 0` instance, written in the SAME shape as the refutation's `C66Statement` so that the two
+are compared binder-for-binder).
+
+## LEG A — the refutation no longer elaborates, and it dies at NAMED binders
+
+The refutation program was copied and retargeted at the redraft. EXACT RECIPE (reproducible):
+
+```
+cp leanfinal/Uniformity/ChapC/C66_REFUTATION.lean.txt /tmp/c66_retarget.lean
+```
+
+then, inside `def C66Statement`, replace the single line
+
+```lean
+    (_hcop : Nat.Coprime u ℓ) (_hpg : IsDvPure F g u ℓ) (_hpg' : IsDvPure F g' u ℓ)
+```
+
+by the redraft's binder block (the five A-C.6 binders inserted, NOTHING else touched)
+
+```lean
+    (_hcop : Nat.Coprime u ℓ)
+    (_hfloor : ℓ * ((F.e₁ * F.f₁) * F.h) < u)
+    (_hdg : F.e₁ * F.f₁ ∣ g.natDegree) (_hdg' : F.e₁ * F.f₁ ∣ g'.natDegree)
+    (_hpos : 0 < g.natDegree) (_hpos' : 0 < g'.natDegree)
+    (_hpg : IsDvPure F g u ℓ) (_hpg' : IsDvPure F g' u ℓ)
+```
+
+and `cd leanfinal && lake env lean /tmp/c66_retarget.lean`. The counterexample application at
+`g = g′ = X`, `(u, ℓ) = (2, 1)` then FAILS TO ELABORATE, verbatim (2026-08-16 run; `exit=1`,
+and `c66_refuted_at_s2Frame` degrades to `sorryAx` — the refutation is dead):
+
+```
+/tmp/c66_retarget.lean:362:4: error: Application type mismatch: The argument
+  pureX h2 hq
+has type
+  IsDvPure (s2Frame h2 hq) X 2 1
+but is expected to have type
+  1 * ((s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁ * (s2Frame h2 hq).h) < 2
+in the application
+  hax O 2 (s2Frame h2 hq) h2 1 hpin X X monic_X monic_X 2 1 Nat.one_pos
+    (Nat.coprime_one_right 2) (pureX h2 hq)
+```
+
+i.e. the first binder the refuting data cannot fill is `hfloor`. That is not an arity artifact:
+`refutingPair_hfloor_false` and `refutingPair_hdg_false` below prove — with the expected types
+COPIED VERBATIM from that error message — that the refuting pair makes `hfloor` and `hdg` FALSE
+propositions, so no re-ordering, no re-instantiation, and no lemma supply can revive the
+counterexample. (`hpos`/`hpos'` DO hold at `X`; they are the conservative half of the repair.
+The fence and the degree law are each independently fatal.)
+
+`verification/ac6_cite_redraft_check.py` PART 1a is the numeric mirror: of the fourteen redraft
+binders the refuting pair satisfies eleven and fails exactly `hfloor`, `hdg`, `hdg'`.
+
+## LEG B — satisfiability: the redraft's binder list is inhabited at the LANDED frame
+
+`redraft_applies_at_s2Frame`: at the same `s2Frame`, with
+
+* `g = g′ = gw = X² + 2 = Φ′ + 4` (monic, `natDegree = 2 = D′`, so `hdg`/`hpos` hold),
+* `(u, ℓ) = (4, 1)` (`hfloor` reads `1·((2·1)·1) = 2 < 4` ✓, `hcop` ✓),
+* `M₀ = M₀′ = 4`, `M₀″ = 8`,
+
+EVERY binder of `C66StatementR` is discharged by a landed-frame computation, and the redraft
+therefore DELIVERS its conclusion there. So the redraft is not true-for-lack-of-instances: the
+`hfloor`/`hdg` fences cut out the refuting pair without emptying the statement. (Five further
+satisfying witnesses, including a degree-4 `g` with a degree-2 residual and a mixed-degree pair,
+are checked numerically in `ac6_cite_redraft_check.py` PART 1b.)
+
+## LEG C — numeric consistency (the B.42 witness-disc pattern), in Lean
+
+The conclusion `R(g·g′) = C c · (R(g)·R(g′))` forces `deg R(g·g′) = deg R(g) + deg R(g′)`
+(the scalar `c ≠ 0` cannot change a degree). At the redraft's witness that reads `2 = 1 + 1`
+(`dvsidedeg_gw`, `dvsidedeg_gwsq`) — CONSISTENT; at the refuting pair it read `1 = 0 + 0`
+(`C66_REFUTATION`'s `dvsidedeg_X`, `dvsidedeg_XX`) — INCONSISTENT, which is exactly the
+refutation. The degree signature therefore separates the two, and it separates them along the
+fence the redraft installs. `ac6_cite_redraft_check.py` PART 1c runs the full identity (not just
+degrees) on 26 in-binder pairs over the stage field `K₁ = F₂`, all with `c = 1`.
+
+## What is NOT claimed
+
+That the redraft is PROVED — it is a cite, and nothing here discharges it. Certified: the
+refutation dies at a named binder, the binder list is inhabited at a landed instance, and the
+conclusion's degree bookkeeping is consistent there. The owner still signs the exact statement
+at gate (b); no axiom is declared by this file or by leanspec.
+
+## Status
+
+Evidence file. No `sorry`. Lean-core axioms only. Adds nothing to the build.
+-/
+
+namespace Uniformity.Density.Tower.C66RedraftCert
+
+open Polynomial IsLocalRing IsDiscreteValuationRing Uniformity.Density
+open Uniformity.Density.Leaf Uniformity.Density.Tower
+
+variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)] (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
+
+/-! ## 0. The A-C.6 redraft, as a ∀-closure (leanspec `FgmnResidualMulStatement`, `Type 0`) -/
+
+/-- NODE C.66's REDRAFTED Lean statement. Binder-for-binder identical to
+`leanspec/Leanspec/ChapC.lean`'s `FgmnResidualMulStatement`, with `O` and `π` made explicit and
+the universe fixed to `Type 0`; the five A-C.6 binders are marked. -/
+def C66StatementR : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] (π : O)
+    (F : KeyFrame O π) (_hπ : Irreducible π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key
+      (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    (g g' : Polynomial O) (_hg : g.Monic) (_hg' : g'.Monic) (u ℓ : ℕ) (_hl : 0 < ℓ)
+    (_hcop : Nat.Coprime u ℓ)
+    (_hfloor : ℓ * ((F.e₁ * F.f₁) * F.h) < u)                              -- A-C.6
+    (_hdg : F.e₁ * F.f₁ ∣ g.natDegree) (_hdg' : F.e₁ * F.f₁ ∣ g'.natDegree) -- A-C.6
+    (_hpos : 0 < g.natDegree) (_hpos' : 0 < g'.natDegree)                   -- A-C.6
+    (_hpg : IsDvPure F g u ℓ) (_hpg' : IsDvPure F g' u ℓ)
+    (hne : (dvSideSet F g u ℓ).Nonempty) (hne' : (dvSideSet F g' u ℓ).Nonempty)
+    (hne'' : (dvSideSet F (g * g') u ℓ).Nonempty) (M₀ M₀' M₀'' : ℕ)
+    (hp : dvHgt F g (dvSideMin F g u ℓ hne) = (M₀ : ℕ∞))
+    (hp' : dvHgt F g' (dvSideMin F g' u ℓ hne') = (M₀' : ℕ∞))
+    (hp'' : dvHgt F (g * g') (dvSideMin F (g * g') u ℓ hne'') = (M₀'' : ℕ∞)),
+    ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
+      dvResPoly F H₀ hpin (g * g') u ℓ hne'' M₀'' hp''
+        = Polynomial.C c
+            * (dvResPoly F H₀ hpin g u ℓ hne M₀ hp * dvResPoly F H₀ hpin g' u ℓ hne' M₀' hp')
+
+/-! ## 1. Frame arithmetic at the landed `s2Frame` (`Φ′ = X² − 2`, `(e₁,f₁,h) = (2,1,1)`) -/
+
+theorem gaussVal_C (a : O) : gaussVal (Polynomial.C a) = IsDiscreteValuationRing.addVal O a := by
+  simp [gaussVal]
+
+theorem e1_eq : (s2Frame h2 hq).e₁ = 2 := rfl
+theorem f1_eq : (s2Frame h2 hq).f₁ = 1 := rfl
+theorem h_eq : (s2Frame h2 hq).h = 1 := rfl
+theorem key_eq : (s2Frame h2 hq).key = s2Key O := rfl
+
+theorem s2Key_deg : (s2Key O).degree = 2 := by
+  rw [Polynomial.degree_eq_natDegree (s2Key_monic (O := O)).ne_zero, s2Key_natDegree]
+  rfl
+
+include h2 in
+theorem addVal_two_pow (k : ℕ) : IsDiscreteValuationRing.addVal O ((2 : O) ^ k) = (k : ℕ∞) := by
+  induction k with
+  | zero => simp
+  | succ k ih =>
+      rw [pow_succ, AddValuation.map_mul, ih, addVal_uniformizer h2]
+      push_cast; ring
+
+include h2 hq in
+theorem sh_C (a : O) :
+    (s2Frame h2 hq).stageHeight (Polynomial.C a) = 2 • IsDiscreteValuationRing.addVal O a := by
+  rw [KeyFrame.stageHeight_eq_inf]
+  simp [e1_eq, h_eq, gaussVal_C]
+
+include h2 hq in
+theorem sh_C_pow (k : ℕ) :
+    (s2Frame h2 hq).stageHeight (Polynomial.C ((2 : O) ^ k)) = ((2 * k : ℕ) : ℕ∞) := by
+  rw [sh_C h2 hq, addVal_two_pow h2]
+  push_cast; rw [two_nsmul]; ring
+
+theorem sh_zero : (s2Frame h2 hq).stageHeight (0 : Polynomial O) = ⊤ := by
+  rw [KeyFrame.stageHeight_eq_inf]
+  simp only [e1_eq, h_eq]
+  simp only [Polynomial.natDegree_zero, show Finset.range (0 + 1) = {0} from rfl,
+    Finset.inf_singleton, Polynomial.coeff_zero, map_zero,
+    (gaussVal_eq_top_iff (O := O)).mpr rfl]
+  simp
+
+theorem sh_one : (s2Frame h2 hq).stageHeight (1 : Polynomial O) = 0 := by
+  rw [KeyFrame.stageHeight_eq_inf]
+  simp [e1_eq, h_eq, gaussVal_C]
+
+/-! ## 2. LEG A — the refuting pair's `hfloor` and `hdg` are FALSE propositions
+
+The two types below are copied verbatim from the retarget's elaboration error (`hfloor`) and
+from the redraft's `hdg` at `g = X`. -/
+
+/-- **LEG A(i).** The above-floor fence at the refuting pair `(u, ℓ) = (2, 1)` is FALSE:
+`λ = u/ℓ − D′h = 2/1 − 2 = 0`, i.e. the pair sits exactly ON the floor, which is the boundary
+[FGMN]'s principal-polygon hypothesis `λ > 0` excludes. -/
+theorem refutingPair_hfloor_false :
+    ¬ (1 * ((s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁ * (s2Frame h2 hq).h) < 2) := by
+  rw [e1_eq h2 hq, f1_eq h2 hq, h_eq h2 hq]
+  omega
+
+/-- **LEG A(ii).** The degree law at the refuting factor `g = X` is FALSE: `D′ = 2 ∤ 1`. -/
+theorem refutingPair_hdg_false :
+    ¬ ((s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁ ∣ (Polynomial.X : Polynomial O).natDegree) := by
+  rw [e1_eq h2 hq, f1_eq h2 hq, Polynomial.natDegree_X]
+  omega
+
+/-- **LEG A(iii).** …while `hpos` DOES hold at `X` — recorded so the owner sees exactly which
+half of the repair is load-bearing (the fence and the divisibility, not the positivity). -/
+theorem refutingPair_hpos_holds : 0 < (Polynomial.X : Polynomial O).natDegree := by
+  rw [Polynomial.natDegree_X]; norm_num
+
+/-! ## 3. LEG B — the satisfying witness `gw = X² + 2` at `(u, ℓ) = (4, 1)` -/
+
+/-- the satisfiability witness: `g = X² + 2 = Φ′ + 4`. -/
+noncomputable def gw (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] :
+    Polynomial O := Polynomial.X ^ 2 + Polynomial.C 2
+
+theorem gw_monic : (gw O).Monic := by
+  have : (gw O) = Polynomial.X ^ 2 + Polynomial.C 2 := rfl
+  rw [this]
+  exact (Polynomial.monic_X_pow 2).add_of_left (by
+    refine lt_of_le_of_lt Polynomial.degree_C_le ?_
+    rw [Polynomial.degree_X_pow]
+    decide)
+
+theorem gw_natDegree : (gw O).natDegree = 2 := by
+  have : (gw O).degree = 2 := by
+    rw [show (gw O) = Polynomial.X ^ 2 + Polynomial.C 2 from rfl]
+    rw [Polynomial.degree_add_eq_left_of_degree_lt (by
+      refine lt_of_le_of_lt Polynomial.degree_C_le ?_
+      rw [Polynomial.degree_X_pow]; decide)]
+    exact Polynomial.degree_X_pow 2
+  exact Polynomial.natDegree_eq_of_degree_eq_some this
+
+theorem gw_divmod :
+    (gw O) /ₘ (s2Key O) = 1 ∧ (gw O) %ₘ (s2Key O) = Polynomial.C ((2 : O) ^ 2) := by
+  refine Polynomial.div_modByMonic_unique 1 _ s2Key_monic ⟨?_, ?_⟩
+  · simp only [gw, s2Key, show ((2 : O) ^ 2) = 4 from by norm_num, map_ofNat]
+    ring
+  · rw [s2Key_deg]
+    exact lt_of_le_of_lt Polynomial.degree_C_le (by decide)
+
+theorem dev_gw_zero : dev (s2Key O) (gw O) 0 = Polynomial.C ((2 : O) ^ 2) := gw_divmod.2
+
+theorem dev_gw_one : dev (s2Key O) (gw O) 1 = 1 := by
+  show ((gw O) /ₘ (s2Key O)) %ₘ (s2Key O) = 1
+  rw [gw_divmod.1, Polynomial.modByMonic_eq_self_iff s2Key_monic, s2Key_deg,
+    Polynomial.degree_one]
+  decide
+
+theorem dev_gw_two : dev (s2Key O) (gw O) 2 = 0 :=
+  dev_eq_zero_of_lt s2Key_monic (by rw [s2Key_natDegree]; norm_num) _ 2
+    (by rw [gw_natDegree, s2Key_natDegree]; norm_num)
+
+theorem gwsq_natDegree : ((gw O) * (gw O)).natDegree = 4 := by
+  rw [(gw_monic (O := O)).natDegree_mul (gw_monic (O := O)), gw_natDegree]
+
+theorem gwsq_divmod :
+    ((gw O) * (gw O)) /ₘ (s2Key O) = s2Key O + Polynomial.C ((2 : O) ^ 3) ∧
+      ((gw O) * (gw O)) %ₘ (s2Key O) = Polynomial.C ((2 : O) ^ 4) := by
+  refine Polynomial.div_modByMonic_unique _ _ s2Key_monic ⟨?_, ?_⟩
+  · simp only [gw, s2Key, show ((2 : O) ^ 3) = 8 from by norm_num,
+      show ((2 : O) ^ 4) = 16 from by norm_num, map_ofNat]
+    ring
+  · rw [s2Key_deg]
+    exact lt_of_le_of_lt Polynomial.degree_C_le (by decide)
+
+theorem dev_gwsq_zero :
+    dev (s2Key O) ((gw O) * (gw O)) 0 = Polynomial.C ((2 : O) ^ 4) := gwsq_divmod.2
+
+theorem key_add_C_divmod (a : O) :
+    (s2Key O + Polynomial.C a) /ₘ (s2Key O) = 1 ∧
+      (s2Key O + Polynomial.C a) %ₘ (s2Key O) = Polynomial.C a := by
+  refine Polynomial.div_modByMonic_unique 1 _ s2Key_monic ⟨by ring, ?_⟩
+  rw [s2Key_deg]
+  exact lt_of_le_of_lt Polynomial.degree_C_le (by decide)
+
+theorem dev_gwsq_one :
+    dev (s2Key O) ((gw O) * (gw O)) 1 = Polynomial.C ((2 : O) ^ 3) := by
+  show (((gw O) * (gw O)) /ₘ (s2Key O)) %ₘ (s2Key O) = _
+  rw [gwsq_divmod.1, (key_add_C_divmod ((2 : O) ^ 3)).2]
+
+theorem dev_gwsq_two : dev (s2Key O) ((gw O) * (gw O)) 2 = 1 := by
+  show ((((gw O) * (gw O)) /ₘ (s2Key O)) /ₘ (s2Key O)) %ₘ (s2Key O) = 1
+  rw [gwsq_divmod.1, (key_add_C_divmod ((2 : O) ^ 3)).1,
+    Polynomial.modByMonic_eq_self_iff s2Key_monic, s2Key_deg, Polynomial.degree_one]
+  decide
+
+theorem dev_gwsq_three : dev (s2Key O) ((gw O) * (gw O)) 3 = 0 :=
+  dev_eq_zero_of_lt s2Key_monic (by rw [s2Key_natDegree]; norm_num) _ 3
+    (by rw [gwsq_natDegree, s2Key_natDegree]; norm_num)
+
+theorem dev_gwsq_four : dev (s2Key O) ((gw O) * (gw O)) 4 = 0 :=
+  dev_eq_zero_of_lt s2Key_monic (by rw [s2Key_natDegree]; norm_num) _ 4
+    (by rw [gwsq_natDegree, s2Key_natDegree]; norm_num)
+
+/-! ### the level heights -/
+
+theorem dvhgt_gw_0 : dvHgt (s2Frame h2 hq) (gw O) 0 = (4 : ℕ∞) := by
+  rw [dvHgt, key_eq, dev_gw_zero, sh_C_pow h2 hq 2]; rfl
+
+theorem dvhgt_gw_1 : dvHgt (s2Frame h2 hq) (gw O) 1 = 0 := by
+  rw [dvHgt, key_eq, dev_gw_one, sh_one]
+
+theorem dvhgt_gw_2 : dvHgt (s2Frame h2 hq) (gw O) 2 = ⊤ := by
+  rw [dvHgt, key_eq, dev_gw_two, sh_zero]
+
+theorem dvhgt_gwsq_0 : dvHgt (s2Frame h2 hq) ((gw O) * (gw O)) 0 = (8 : ℕ∞) := by
+  rw [dvHgt, key_eq, dev_gwsq_zero, sh_C_pow h2 hq 4]; rfl
+
+theorem dvhgt_gwsq_1 : dvHgt (s2Frame h2 hq) ((gw O) * (gw O)) 1 = (6 : ℕ∞) := by
+  rw [dvHgt, key_eq, dev_gwsq_one, sh_C_pow h2 hq 3]; rfl
+
+theorem dvhgt_gwsq_2 : dvHgt (s2Frame h2 hq) ((gw O) * (gw O)) 2 = 0 := by
+  rw [dvHgt, key_eq, dev_gwsq_two, sh_one]
+
+theorem dvhgt_gwsq_3 : dvHgt (s2Frame h2 hq) ((gw O) * (gw O)) 3 = ⊤ := by
+  rw [dvHgt, key_eq, dev_gwsq_three, sh_zero]
+
+theorem dvhgt_gwsq_4 : dvHgt (s2Frame h2 hq) ((gw O) * (gw O)) 4 = ⊤ := by
+  rw [dvHgt, key_eq, dev_gwsq_four, sh_zero]
+
+/-! ### the sides at `(u, ℓ) = (4, 1)`: `{0,1}` for `gw`, `{0,2}` for `gw²` -/
+
+theorem dvsupp_gw : dvSupp (s2Frame h2 hq) (gw O) 4 1 = 4 := by
+  rw [dvSupp]
+  simp only [gw_natDegree, show Finset.range (2 + 1) = {0, 1, 2} from rfl,
+    Finset.inf_insert, Finset.inf_singleton, dvhgt_gw_0 h2 hq, dvhgt_gw_1 h2 hq,
+    dvhgt_gw_2 h2 hq]
+  simp
+
+theorem dvsupp_gwsq : dvSupp (s2Frame h2 hq) ((gw O) * (gw O)) 4 1 = 8 := by
+  rw [dvSupp]
+  simp only [gwsq_natDegree, show Finset.range (4 + 1) = {0, 1, 2, 3, 4} from rfl,
+    Finset.inf_insert, Finset.inf_singleton, dvhgt_gwsq_0 h2 hq, dvhgt_gwsq_1 h2 hq,
+    dvhgt_gwsq_2 h2 hq, dvhgt_gwsq_3 h2 hq, dvhgt_gwsq_4 h2 hq]
+  simp
+  decide
+
+theorem dvside_gw : dvSideSet (s2Frame h2 hq) (gw O) 4 1 = {0, 1} := by
+  classical
+  ext j
+  simp only [dvSideSet, Finset.mem_filter, Finset.mem_range, gw_natDegree,
+    Finset.mem_insert, Finset.mem_singleton, DvOnSide, dvsupp_gw h2 hq]
+  constructor
+  · rintro ⟨hj, -, hne⟩
+    interval_cases j
+    · exact Or.inl rfl
+    · exact Or.inr rfl
+    · exact absurd (dvhgt_gw_2 h2 hq) hne
+  · rintro (rfl | rfl)
+    · exact ⟨by norm_num, by rw [dvhgt_gw_0 h2 hq]; simp, by rw [dvhgt_gw_0 h2 hq]; simp⟩
+    · exact ⟨by norm_num, by rw [dvhgt_gw_1 h2 hq]; simp, by rw [dvhgt_gw_1 h2 hq]; simp⟩
+
+theorem dvside_gwsq : dvSideSet (s2Frame h2 hq) ((gw O) * (gw O)) 4 1 = {0, 2} := by
+  classical
+  ext j
+  simp only [dvSideSet, Finset.mem_filter, Finset.mem_range, gwsq_natDegree,
+    Finset.mem_insert, Finset.mem_singleton, DvOnSide, dvsupp_gwsq h2 hq]
+  constructor
+  · rintro ⟨hj, hs, hne⟩
+    interval_cases j
+    · exact Or.inl rfl
+    · rw [dvhgt_gwsq_1 h2 hq] at hs; simp at hs; exact absurd hs (by decide)
+    · exact Or.inr rfl
+    · exact absurd (dvhgt_gwsq_3 h2 hq) hne
+    · exact absurd (dvhgt_gwsq_4 h2 hq) hne
+  · rintro (rfl | rfl)
+    · exact ⟨by norm_num, by rw [dvhgt_gwsq_0 h2 hq]; simp, by rw [dvhgt_gwsq_0 h2 hq]; simp⟩
+    · exact ⟨by norm_num, by rw [dvhgt_gwsq_2 h2 hq]; simp; decide,
+        by rw [dvhgt_gwsq_2 h2 hq]; simp⟩
+
+theorem hne_gw : (dvSideSet (s2Frame h2 hq) (gw O) 4 1).Nonempty :=
+  ⟨0, by rw [dvside_gw h2 hq]; simp⟩
+
+theorem hne_gwsq : (dvSideSet (s2Frame h2 hq) ((gw O) * (gw O)) 4 1).Nonempty :=
+  ⟨0, by rw [dvside_gwsq h2 hq]; simp⟩
+
+theorem pure_gw : IsDvPure (s2Frame h2 hq) (gw O) 4 1 := by
+  constructor
+  · rw [dvside_gw h2 hq]; simp
+  · rw [show (gw O).natDegree / ((s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁) = 1 from by
+        rw [gw_natDegree, e1_eq, f1_eq]]
+    rw [dvside_gw h2 hq]; simp
+
+theorem dvsidemin_gw : dvSideMin (s2Frame h2 hq) (gw O) 4 1 (hne_gw h2 hq) = 0 :=
+  le_antisymm (Finset.min'_le _ 0 (by rw [dvside_gw h2 hq]; simp)) (Nat.zero_le _)
+
+theorem dvsidemin_gwsq :
+    dvSideMin (s2Frame h2 hq) ((gw O) * (gw O)) 4 1 (hne_gwsq h2 hq) = 0 :=
+  le_antisymm (Finset.min'_le _ 0 (by rw [dvside_gwsq h2 hq]; simp)) (Nat.zero_le _)
+
+theorem hp_gw : dvHgt (s2Frame h2 hq) (gw O)
+    (dvSideMin (s2Frame h2 hq) (gw O) 4 1 (hne_gw h2 hq)) = ((4 : ℕ) : ℕ∞) := by
+  rw [dvsidemin_gw h2 hq, dvhgt_gw_0 h2 hq]; rfl
+
+theorem hp_gwsq : dvHgt (s2Frame h2 hq) ((gw O) * (gw O))
+    (dvSideMin (s2Frame h2 hq) ((gw O) * (gw O)) 4 1 (hne_gwsq h2 hq)) = ((8 : ℕ) : ℕ∞) := by
+  rw [dvsidemin_gwsq h2 hq, dvhgt_gwsq_0 h2 hq]; rfl
+
+/-! ### the five A-C.6 binders, at the witness -/
+
+theorem gw_hfloor : 1 * ((s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁ * (s2Frame h2 hq).h) < 4 := by
+  rw [e1_eq h2 hq, f1_eq h2 hq, h_eq h2 hq]; omega
+
+theorem gw_hdg : (s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁ ∣ (gw O).natDegree := by
+  rw [e1_eq h2 hq, f1_eq h2 hq, gw_natDegree]
+
+theorem gw_hpos : 0 < (gw O).natDegree := by rw [gw_natDegree]; norm_num
+
+/-- **LEG B — SATISFIABILITY.** Every binder of the A-C.6 redraft is discharged at the LANDED
+`s2Frame`, so the redraft delivers its conclusion there: the fences that kill the refuting pair
+do NOT empty the statement. -/
+theorem redraft_applies_at_s2Frame (hax : C66StatementR) :
+    ∃ c : (s2Frame h2 hq).stageField 1 (s2Frame_pin h2 hq), c ≠ 0 ∧
+      dvResPoly (s2Frame h2 hq) 1 (s2Frame_pin h2 hq) ((gw O) * (gw O)) 4 1
+          (hne_gwsq h2 hq) 8 (hp_gwsq h2 hq)
+        = Polynomial.C c *
+            (dvResPoly (s2Frame h2 hq) 1 (s2Frame_pin h2 hq) (gw O) 4 1
+                (hne_gw h2 hq) 4 (hp_gw h2 hq)
+              * dvResPoly (s2Frame h2 hq) 1 (s2Frame_pin h2 hq) (gw O) 4 1
+                  (hne_gw h2 hq) 4 (hp_gw h2 hq)) :=
+  hax O 2 (s2Frame h2 hq) h2 1 (s2Frame_pin h2 hq) (gw O) (gw O)
+    (gw_monic) (gw_monic) 4 1 Nat.one_pos (Nat.coprime_one_right 4)
+    (gw_hfloor h2 hq) (gw_hdg h2 hq) (gw_hdg h2 hq) (gw_hpos) (gw_hpos)
+    (pure_gw h2 hq) (pure_gw h2 hq) (hne_gw h2 hq) (hne_gw h2 hq) (hne_gwsq h2 hq)
+    4 4 8 (hp_gw h2 hq) (hp_gw h2 hq) (hp_gwsq h2 hq)
+
+/-! ## 4. LEG C — the degree bookkeeping at the witness is CONSISTENT (`2 = 1 + 1`) -/
+
+theorem dvsidedeg_gw : dvSideDeg (s2Frame h2 hq) (gw O) 4 1 (hne_gw h2 hq) = 1 := by
+  have hmax : dvSideMax (s2Frame h2 hq) (gw O) 4 1 (hne_gw h2 hq) = 1 := by
+    refine le_antisymm (Finset.max'_le _ _ _ ?_)
+      (Finset.le_max' _ 1 (by rw [dvside_gw h2 hq]; simp))
+    intro y hy
+    rw [dvside_gw h2 hq] at hy
+    rcases Finset.mem_insert.mp hy with rfl | hy
+    · norm_num
+    · exact le_of_eq (by simpa using hy)
+  rw [dvSideDeg, hmax, dvsidemin_gw h2 hq]
+
+theorem dvsidedeg_gwsq :
+    dvSideDeg (s2Frame h2 hq) ((gw O) * (gw O)) 4 1 (hne_gwsq h2 hq) = 2 := by
+  have hmax : dvSideMax (s2Frame h2 hq) ((gw O) * (gw O)) 4 1 (hne_gwsq h2 hq) = 2 := by
+    refine le_antisymm (Finset.max'_le _ _ _ ?_)
+      (Finset.le_max' _ 2 (by rw [dvside_gwsq h2 hq]; simp))
+    intro y hy
+    rw [dvside_gwsq h2 hq] at hy
+    rcases Finset.mem_insert.mp hy with rfl | hy
+    · norm_num
+    · exact le_of_eq (by simpa using hy)
+  rw [dvSideDeg, hmax, dvsidemin_gwsq h2 hq]
+
+/-- **LEG C.** The witness's residual degrees ADD, as the conclusion `R(g·g′) = C c · R(g)R(g′)`
+requires of a nonzero scalar `c`: `2 = 1 + 1`. (At the refuting pair the same bookkeeping read
+`1 = 0 + 0` — `C66_REFUTATION`'s `dvsidedeg_X`/`dvsidedeg_XX` — which is the refutation.) -/
+theorem degree_bookkeeping_consistent :
+    dvSideDeg (s2Frame h2 hq) ((gw O) * (gw O)) 4 1 (hne_gwsq h2 hq)
+      = dvSideDeg (s2Frame h2 hq) (gw O) 4 1 (hne_gw h2 hq)
+        + dvSideDeg (s2Frame h2 hq) (gw O) 4 1 (hne_gw h2 hq) := by
+  rw [dvsidedeg_gw h2 hq, dvsidedeg_gwsq h2 hq]
+
+/-! ## 5. The scope is nonempty: `ℤ_[2]` realizes the frame, so LEG B is absolute -/
+
+namespace Absolute
+
+instance : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+
+instance instFin2 : Finite (IsLocalRing.ResidueField ℤ_[2]) :=
+  Finite.of_equiv (ZMod 2) (PadicInt.residueField (p := 2)).symm.toEquiv
+
+theorem rc2 : residueCard ℤ_[2] = 2 := by
+  have : Nat.card (IsLocalRing.ResidueField ℤ_[2]) = Nat.card (ZMod 2) :=
+    Nat.card_congr (PadicInt.residueField (p := 2)).toEquiv
+  rw [residueCard, this, Nat.card_eq_fintype_card, ZMod.card]
+
+theorem h2_padic : Irreducible (2 : ℤ_[2]) := by simpa using PadicInt.irreducible_p (p := 2)
+
+/-- LEG A over `ℤ_[2]`: the refuting pair's fence binder is false at a REAL base. -/
+theorem hfloor_false_absolute :
+    ¬ (1 * ((s2Frame h2_padic rc2).e₁ * (s2Frame h2_padic rc2).f₁
+        * (s2Frame h2_padic rc2).h) < 2) :=
+  refutingPair_hfloor_false h2_padic rc2
+
+/-- LEG B over `ℤ_[2]`: the redraft's binder list is inhabited at a REAL base, and the
+conclusion it delivers there is not the trivial one (`c ≠ 0`). -/
+theorem redraft_applies_absolute (hax : C66StatementR) :
+    ∃ c : (s2Frame h2_padic rc2).stageField 1 (s2Frame_pin h2_padic rc2), c ≠ 0 := by
+  obtain ⟨c, hc, -⟩ := redraft_applies_at_s2Frame (O := ℤ_[2]) h2_padic rc2 hax
+  exact ⟨c, hc⟩
+
+end Absolute
+
+end Uniformity.Density.Tower.C66RedraftCert
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Tower.C66RedraftCert.refutingPair_hfloor_false
+#print axioms Uniformity.Density.Tower.C66RedraftCert.refutingPair_hdg_false
+#print axioms Uniformity.Density.Tower.C66RedraftCert.pure_gw
+#print axioms Uniformity.Density.Tower.C66RedraftCert.redraft_applies_at_s2Frame
+#print axioms Uniformity.Density.Tower.C66RedraftCert.degree_bookkeeping_consistent
+#print axioms Uniformity.Density.Tower.C66RedraftCert.Absolute.redraft_applies_absolute
+
+end AxCheck
