@@ -8664,9 +8664,23 @@ equation hypotheses on `F.key` and `composedKey T` (D19-safe: no `stageLiftO` pl
 is consumed); `δ = T.margin ≥ 1` is automatic from `T.hfloor`, so (F4) carries no
 hypothesis. Instance: OM-10's W1 (`ℤ₂`, `x³−2`, `Φ′³ + 8xΦ′² + 1024`).
 
+**STATUS (2026-08-16, after Chapter-C wave 11 and A-C.5).** Clauses (a) and (b)-high are
+**LANDED** in `leanfinal/Uniformity/ChapC/C127.lean` — clause (a) with the blueprint
+STATEMENT's own `j′ ≤ 1` fence restored (the unfenced stub is REFUTED,
+`verification/c127_nox_jp2_refutation.py`). Clause (b)-pin (`lawEW_pin`) is **BLOCKED**, and
+its gap is exactly named: `leanfinal/notes/C127_PIN_BLOCKED_2026-08-16.md`. Everything up to
+the last two steps is machine-checked (`lawEW_discrepancy_eq_census`: the pin clause with
+its conclusion replaced by the two explicit census polynomials). **[A-C.5, 2026-08-16: the
+record's pieces 1–5 are now signed as their own node, C.129 — and their five statements are
+PROVED, not designed (`leanfinal/Uniformity/ChapC/C129_CERT.lean.txt`). `lawEW_pin` is
+therefore no longer blocked on missing mathematics: it is a **~60-line consumer** of
+`lawEW_discrepancy_eq_census` + C.129 + the record's piece 6 (the `b = m−1` collision, which
+stays E-W-specific and inside this node). The statement is UNCHANGED — not weakened, not
+axiomatized, not `sorry`-ed.]**
+
 **DEPENDS.** C.11 (`dv2Hgt`) · C.42/C.43 (`TowerDatum`, `composedKey`) · C.44
 (`levelDatum`) · C.50 (`slotOffset`/`gridWeight`) · C.71 (`shadowDev`, `margin`,
-`theta`).
+`theta`) · **[A-C.5]** C.129 (the slot-height calculus — the pin clause only).
 
 **PROOF.** transcribe `lean/notes/openmath/LAWEW_PROOF_2026-08-16.md` (PROVED;
 two-pass adversarially verified): the development identity births the seed
@@ -8815,5 +8829,122 @@ failure genre as C.127's landed `j′ ≤ 1` scope-fence repair, caught here BEF
 transcription.
 
 **ENVIRONMENT.** ENV-C1.
+
+# A-C.5 AMENDMENT (2026-08-16, the BATCHED-REPAIR unit) — FIVE ITEMS ADJUDICATED, SIGNED IN ONE DATED PASS
+
+**Charge and label.** A-C.5 is the batched-repair amendment: five items reached it with the
+analysis already done by fleet agents and the repair *designed*, and the amendment's job is
+to ADJUDICATE each against sources, CERTIFY where the item is a new statement (the A-C.3
+standard: finding D5 proved that a *designed* clause list can itself be wrong, so no
+designed statement is signed on the strength of its design), and sign them as one dated
+amendment. Labels: A-C.1 signature completion · A-C.2 the C.109 cell-law re-sign · A-C.3
+the C.114 realizes-refinement · A-C.4 the two OM-10 law nodes · **A-C.5 this batch** ·
+A-C.6 (concurrent) the cite REDRAFT unit (C.66/C.92/C.94), which touches disjoint nodes.
+
+**The five items and their verdicts.**
+
+| # | item | verdict | certification leg run BEFORE signing |
+|---|---|---|---|
+| 1 | C.109 SPLIT into five layers + the assembly | SIGNED (C.109-i … C.109-v; C.109 becomes the assembly) | `verification/c109_ac5_sweep_check.py` (the sweep layer C.109-v, exact counts at I6 + the NEW instance I7) |
+| 2 | C.47 re-sign (the `twistRead` residue clause) | SIGNED as option 1 of the refutation record — and the source is DECISIVE, not merely permissive | `leanfinal/Uniformity/ChapC/C47_RESIGN_CERT.lean.txt` (the re-signed clause IS landed C.46; the frozen clause forces `η^{13} = 1`) |
+| 3 | C.113(i) adoption of `ht_depth_increase_repaired` | SIGNED (A-C.3 had NOT signed it) | the repair is a PROVED Lean-core theorem in `C113_REFUTATION.lean.txt`, re-run green |
+| 4 | the `lawEW_pin` height layer as its own node | SIGNED as NODE C.129 (five clauses) | `leanfinal/Uniformity/ChapC/C129_CERT.lean.txt` — **all five signed clauses PROVED**, Lean-core |
+| 5 | C.128 narrowing to the geography pin | SIGNED (`he₁ : F.e₁ = 2`, `hf₂ : T.f₂ = 2`) | `verification/openmath/bs2_lawbs2_cert.py` re-run GREEN 666/0, 6/6 teeth |
+
+**Census effect:** nodes 131 → **137** (+C.109-i, -ii, -iii, -iv, -v, +C.129). No committed
+node is deleted; C.109, C.113(i), C.128 are re-signed in place.
+
+---
+
+### NODE C.129 [lemma] [fresh] [signed: A-C.5] — **the slot-height calculus for monomial data at a binomial key**
+
+**STATEMENT.** The five frame-generic pieces that `lawEW_pin` (C.127 clause (b), `j ≤ 1`)
+needs to evaluate `dv2Hgt` on the two explicit census polynomials, and that no landed
+C-chapter node owns: **(a)** the reduction of a MONOMIAL at a binomial key,
+`(λx^N) mod (x^D − w) = λw^{⌊N/D⌋}x^{N mod D}`; **(b)** the `Φ′`-digits of a REASSEMBLY are
+the canonical representatives of its coefficients, `dev Φ′ (reass F S) b = mod_{Φ′}(S_b)`;
+**(c)** the `stageHeight` of a monomial, `dv(λx^{a}) = e₁·v(λ) + h·a` (with `⊤` at `λ = 0`,
+so no side condition); **(d)** `gaussVal` of a unit times a `π`-power,
+`v(u·π^n) = n` for `u ∈ O^×`; **(e)** attainment for an `ℕ∞`-valued `Finset.inf`: all terms
+`≥ M` and one term `= M` force the `inf` to be `M`.
+
+**SIGNATURE** [signed: A-C.5 — elaborated in `leanspec/Leanspec/ChapC.lean`, section
+`AC5SlotHeights`. **Every clause is PROVED** in
+`leanfinal/Uniformity/ChapC/C129_CERT.lean.txt` (sorry-free, Lean-core, re-run at the repo
+pin) — the stubs are transcription targets, not conjectures].
+```lean
+namespace Uniformity.Density.Tower
+
+-- (a) piece 1 — ring-generic (the corpus's key is the instance `w = π·ω`)
+theorem binomKey_mod_monomial {R : Type*} [CommRing R] [Nontrivial R] {D : ℕ} (hD : 0 < D)
+    (w lam : R) (N : ℕ) :
+    (Polynomial.C lam * Polynomial.X ^ N) %ₘ (Polynomial.X ^ D - Polynomial.C w)
+      = Polynomial.C (lam * w ^ (N / D)) * Polynomial.X ^ (N % D)
+
+-- (b) piece 2 — with its helper, the in-grid bound on canonical representatives
+theorem degree_modByMonicHom_lt (F : KeyFrame O π) (x : AdjoinRoot F.key) :
+    (AdjoinRoot.modByMonicHom F.hmonic x).degree < F.key.degree
+
+theorem dev_reass (F : KeyFrame O π) (S : Polynomial (AdjoinRoot F.key)) (b : ℕ) :
+    dev F.key (reass F S) b = AdjoinRoot.modByMonicHom F.hmonic (S.coeff b)
+
+-- (c) piece 3
+theorem stageHeight_C_mul_X_pow (F : KeyFrame O π) (lam : O) (a : ℕ) :
+    F.stageHeight (Polynomial.C lam * Polynomial.X ^ a)
+      = F.e₁ • gaussVal (Polynomial.C lam) + ((F.h * a : ℕ) : ℕ∞)
+
+-- (d) piece 4
+theorem gaussVal_C_unit_mul_pow (hπ : Irreducible π) {u : O} (hu : IsUnit u) (n : ℕ) :
+    gaussVal (Polynomial.C (u * π ^ n)) = (n : ℕ∞)
+
+-- (e) piece 5
+theorem inf_eq_of_attained {ι : Type*} {s : Finset ι} {g : ι → ℕ∞} {M : ℕ∞}
+    (hlb : ∀ i ∈ s, M ≤ g i) {i₀ : ι} (hi₀ : i₀ ∈ s) (hat : g i₀ = M) :
+    s.inf g = M
+```
+
+**WHY A NODE, AND WHY EXACTLY THESE FIVE.** `leanfinal/notes/C127_PIN_BLOCKED_2026-08-16.md`
+names SIX missing pieces for `lawEW_pin` and judges pieces 1–5 to be "a *height-evaluation
+layer* that no landed C-chapter node owns … The honest scope of that layer is its own node
+(a 'slot-height calculus' for monomial data at a binomial key), not an inline block inside
+C.127; attempting it inline would either bloat this node past reviewability or tempt a
+weakened pin statement." A-C.5 adopts that judgement verbatim. Piece **6** (the `b = m−1`
+collision) is E-W-specific and stays inside C.127. Two adjudications the record left open:
+clause (a) is stated **ring-generically** (`X^D − C w`, `[Nontrivial R]`) rather than at
+`F.key`, because nothing in its proof is frame data — the corpus's `X^{D′} − C(πω)` is the
+instance at `w = πω`; and clause (c) is stated with **no `λ ≠ 0` side condition**, because
+`F.he₁` makes `F.e₁ • (⊤ : ℕ∞) = ⊤` and both sides are then `⊤` — the call site wants a
+dictionary entry, not a case split.
+
+**CERTIFICATION (the A-C.3 standard, run before signing).** All five clauses — plus (b)'s
+helper — are **PROVED**: `leanfinal/Uniformity/ChapC/C129_CERT.lean.txt`, sorry-free,
+`#print axioms` = `[propext, Classical.choice, Quot.sound]` on every one. Two findings from
+doing the proofs rather than designing them: the record's "needs an induction on `N / D`"
+for piece 1 is NOT needed (the divisibility `X^D − C w ∣ C λ X^N − C(λw^{N/D})X^{N%D}` falls
+out of `sub_dvd_pow_sub_pow` after `N = D(N/D) + N%D`, and the degree bound is `N % D < D`);
+and clause (c)'s proof CONSUMES clause (e), which is the designed list's internal coherence
+check.
+
+**DEPENDS.** C.02 (`stageHeight`, `stageHeight_eq_inf`) · C.127's landed `reass` /
+`dev_eval_eq_coeff` API · B.07/B.08 (`gaussVal`) · B.39b's `addVal_pow_uniformizer` ·
+B.02 (`dev`).
+
+**CONSUMERS.** C.127's `lawEW_pin` (the C127 record sizes it at **~60 lines** once this node
+is available: `lawEW_discrepancy_eq_census` + C.129 + piece 6) and C.128's Lean
+transcription, which the C.128 node records as sharing exactly this bottleneck.
+
+**SIZE.** ~90 lines (the certification record is 199 lines including its header).
+
+**SOURCE.** `leanfinal/notes/C127_PIN_BLOCKED_2026-08-16.md` (the six-piece gap analysis,
+verbatim); `lean/notes/openmath/LAWEW_PROOF_2026-08-16.md` §3 Steps 4–5 (the slot arithmetic
+these pieces evaluate).
+
+**TEETH.** Signed non-applicable in the numeric sense (the clauses are Lean identities, and
+they are PROVED); the law they serve keeps its own battery
+(`verification/openmath/ewbs2_lawew_cert.py`, GREEN 2796/0, 5 teeth).
+
+**ENVIRONMENT.** ENV-C1.
+
+---
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->

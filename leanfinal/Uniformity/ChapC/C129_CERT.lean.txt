@@ -1,0 +1,199 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapB.B39b
+import Uniformity.ChapC.C02
+import Uniformity.ChapC.C127
+
+/-!
+# CERTIFICATION of NODE C.129 (`A-C.5`): the slot-height calculus at a binomial key
+
+**This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` convention: kept as
+`.lean.txt` so no build picks it up).  To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapC/C129_CERT.lean.txt /tmp/c129_cert.lean
+cd leanfinal && lake env lean /tmp/c129_cert.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only,
+2026-08-16 (amendment A-C.5, item 4).
+
+## Why this file exists
+
+`leanfinal/notes/C127_PIN_BLOCKED_2026-08-16.md` records C.127's `lawEW_pin` as BLOCKED
+with SIX named missing pieces, and judges pieces **1-5** to be "a *height-evaluation layer*
+that no landed C-chapter node owns … The honest scope of that layer is its own node (a
+'slot-height calculus' for monomial data at a binomial key), not an inline block inside
+C.127".  A-C.5 signs that layer as **NODE C.129**.  Per the A-C.3 standard
+(certify-before-sign — D5 showed a *designed* clause list can itself be wrong), the five
+signed statements are not merely designed here: **all five are PROVED below**, so the
+signature bank carries no guess and the fleet's transcription is a copy job.
+
+| record piece | signed clause | status |
+|---|---|---|
+| 1 (`red` of a monomial; "the single largest missing piece") | (a) `binomKey_mod_monomial` | PROVED |
+| 2 (the `Φ′`-digits of a reassembly) | (b) `dev_reass` (+ helper `degree_modByMonicHom_lt`) | PROVED |
+| 3 (`stageHeight` of a monomial) | (c) `stageHeight_C_mul_X_pow` | PROVED |
+| 4 (`gaussVal` of a unit times a `π`-power) | (d) `gaussVal_C_unit_mul_pow` | PROVED |
+| 5 (`inf`-evaluation over `ℕ∞`) | (e) `inf_eq_of_attained` | PROVED |
+
+Piece **6** (the `b = m−1` collision of Step 4's *Non-collision* paragraph) is E-W-specific
+— it stays inside C.127's `lawEW_pin`, which the C127 record sizes at ~60 lines once this
+node is available.
+
+## Two notes on the statements, for the reviewer
+
+* **(a) is stated ring-generically** (`{R} [CommRing R] [Nontrivial R]`, key `X^D − C w`),
+  not at `F.key`: the corpus's binomial keys are `X^{D′} − C(πω)`, an instance at `w = πω`.
+  `Nontrivial` is what makes `degree (X^D − C w) = D`; it is free at every consumer (`O` is
+  a domain).  The proof is the divisibility `X^D − C w ∣ C λ X^N − C(λw^{N/D})X^{N%D}`
+  (through `sub_dvd_pow_sub_pow` after splitting `N = D(N/D) + N%D`) plus the degree bound
+  `N % D < D` — no induction on `N / D` was needed after all.
+* **(c) needs no `λ ≠ 0` side condition**: at `λ = 0` both sides are `⊤`, because
+  `F.he₁ : 0 < F.e₁` makes `F.e₁ • (⊤ : ℕ∞) = ⊤`.  The clause is therefore usable without a
+  case split at the call site — the shape the pin's slot dictionary wants.  Its proof uses
+  clause (e), which is the internal coherence check of the designed list.
+
+## Status
+
+Sorry-free, Lean-core axioms only.
+-/
+
+set_option linter.style.longLine false
+
+namespace Uniformity.Density.Tower
+
+open Uniformity Uniformity.Density Uniformity.Density.Leaf Polynomial
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-- (e) piece 5 -/
+theorem inf_eq_of_attained {ι : Type*} {s : Finset ι} {g : ι → ℕ∞} {M : ℕ∞}
+    (hlb : ∀ i ∈ s, M ≤ g i) {i₀ : ι} (hi₀ : i₀ ∈ s) (hat : g i₀ = M) :
+    s.inf g = M :=
+  le_antisymm (hat ▸ Finset.inf_le hi₀) (Finset.le_inf hlb)
+
+/-- (a) piece 1 -/
+theorem binomKey_mod_monomial {R : Type*} [CommRing R] [Nontrivial R] {D : ℕ} (hD : 0 < D)
+    (w lam : R) (N : ℕ) :
+    (Polynomial.C lam * Polynomial.X ^ N) %ₘ (Polynomial.X ^ D - Polynomial.C w)
+      = Polynomial.C (lam * w ^ (N / D)) * Polynomial.X ^ (N % D) := by
+  have hmon : (Polynomial.X ^ D - Polynomial.C w).Monic :=
+    Polynomial.monic_X_pow_sub_C w (by omega)
+  have hdegK : (Polynomial.X ^ D - Polynomial.C w).degree = (D : WithBot ℕ) :=
+    Polynomial.degree_X_pow_sub_C hD w
+  -- the difference is divisible by the key
+  have hdvd : (Polynomial.X ^ D - Polynomial.C w) ∣
+      Polynomial.C lam * Polynomial.X ^ N
+        - Polynomial.C (lam * w ^ (N / D)) * Polynomial.X ^ (N % D) := by
+    have hsplit : N = D * (N / D) + N % D := (Nat.div_add_mod N D).symm
+    have hkey : Polynomial.C lam * Polynomial.X ^ N
+        - Polynomial.C (lam * w ^ (N / D)) * Polynomial.X ^ (N % D)
+        = (Polynomial.C lam * Polynomial.X ^ (N % D))
+            * ((Polynomial.X ^ D) ^ (N / D) - (Polynomial.C w) ^ (N / D)) := by
+      have hx : (Polynomial.X : Polynomial R) ^ N
+          = Polynomial.X ^ (N % D) * (Polynomial.X ^ D) ^ (N / D) := by
+        rw [← pow_mul, ← pow_add]
+        congr 1
+        omega
+      rw [hx, map_mul, map_pow]
+      ring
+    rw [hkey]
+    exact Dvd.dvd.mul_left (sub_dvd_pow_sub_pow _ _ _) _
+  have h1 : Polynomial.C lam * Polynomial.X ^ N %ₘ (Polynomial.X ^ D - Polynomial.C w)
+      = Polynomial.C (lam * w ^ (N / D)) * Polynomial.X ^ (N % D)
+          %ₘ (Polynomial.X ^ D - Polynomial.C w) :=
+    Polynomial.modByMonic_eq_of_dvd_sub hmon hdvd
+  rw [h1, (Polynomial.modByMonic_eq_self_iff hmon).2]
+  rw [hdegK]
+  refine lt_of_le_of_lt (Polynomial.degree_C_mul_X_pow_le (N % D) (lam * w ^ (N / D))) ?_
+  exact_mod_cast Nat.mod_lt _ hD
+
+/-- helper for (b): the canonical representative is in-grid. -/
+theorem degree_modByMonicHom_lt (F : KeyFrame O π) (x : AdjoinRoot F.key) :
+    (AdjoinRoot.modByMonicHom F.hmonic x).degree < F.key.degree :=
+  AdjoinRoot.induction_on _ x fun p => by
+    rw [AdjoinRoot.modByMonicHom_mk]; exact degree_modByMonic_lt p F.hmonic
+
+/-- (b) piece 2 -/
+theorem dev_reass (F : KeyFrame O π) (S : Polynomial (AdjoinRoot F.key)) (b : ℕ) :
+    dev F.key (reass F S) b = AdjoinRoot.modByMonicHom F.hmonic (S.coeff b) := by
+  classical
+  set N := S.natDegree + 1 with hN
+  set Ap : Polynomial (Polynomial O) :=
+    ∑ i ∈ Finset.range N,
+      Polynomial.C (AdjoinRoot.modByMonicHom F.hmonic (S.coeff i)) * Polynomial.X ^ i with hAp
+  have hcoeff : ∀ i, Ap.coeff i = AdjoinRoot.modByMonicHom F.hmonic (S.coeff i) := by
+    intro i
+    rw [hAp, finsetSum_coeff]
+    simp only [coeff_C_mul, coeff_X_pow, mul_ite, mul_one, mul_zero]
+    rw [Finset.sum_ite_eq (Finset.range N) i
+      (fun i' => AdjoinRoot.modByMonicHom F.hmonic (S.coeff i'))]
+    by_cases hi : i ∈ Finset.range N
+    · rw [if_pos hi]
+    · rw [if_neg hi]
+      rw [Finset.mem_range, not_lt] at hi
+      rw [coeff_eq_zero_of_natDegree_lt (by omega), map_zero]
+  have heval : Polynomial.eval F.key Ap = reass F S := by
+    rw [hAp, reass_eq_sum_range F S (N := N) (by omega)]
+    simp [eval_finsetSum]
+  have hdeg : ∀ i, (Ap.coeff i).degree < F.key.degree := by
+    intro i
+    rw [hcoeff i]
+    exact degree_modByMonicHom_lt F _
+  rw [← heval, dev_eval_eq_coeff F hdeg b, hcoeff b]
+
+/-- (d) piece 4 -/
+theorem gaussVal_C_unit_mul_pow (hπ : Irreducible π) {u : O} (hu : IsUnit u) (n : ℕ) :
+    gaussVal (Polynomial.C (u * π ^ n)) = (n : ℕ∞) := by
+  rw [gaussVal, Polynomial.natDegree_C, Finset.range_one, Finset.inf_singleton,
+    Polynomial.coeff_C_zero, IsDiscreteValuationRing.addVal_mul,
+    IsDiscreteValuationRing.addVal_eq_zero_iff.mpr hu, addVal_pow_uniformizer hπ, zero_add]
+
+private theorem nsmul_top_of_pos {n : ℕ} (hn : 0 < n) : n • (⊤ : ℕ∞) = ⊤ := by
+  simp [nsmul_eq_mul, Nat.cast_ne_zero.mpr hn.ne']
+
+/-- (c) piece 3 -/
+theorem stageHeight_C_mul_X_pow (F : KeyFrame O π) (lam : O) (a : ℕ) :
+    F.stageHeight (Polynomial.C lam * Polynomial.X ^ a)
+      = F.e₁ • gaussVal (Polynomial.C lam) + ((F.h * a : ℕ) : ℕ∞) := by
+  classical
+  have hcoeff : ∀ j, (Polynomial.C lam * Polynomial.X ^ a).coeff j
+      = if j = a then lam else 0 := by
+    intro j
+    rw [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow]
+    split <;> simp_all
+  rcases eq_or_ne lam 0 with rfl | hlam
+  · have h0 : (Polynomial.C (0 : O) * Polynomial.X ^ a) = 0 := by simp
+    rw [h0, KeyFrame.stageHeight_eq_inf]
+    simp only [Polynomial.natDegree_zero, Polynomial.coeff_zero, map_zero]
+    rw [show gaussVal (0 : Polynomial O) = ⊤ from gaussVal_eq_top_iff.mpr rfl,
+      nsmul_top_of_pos F.he₁]
+    simp
+  · have hdeg : (Polynomial.C lam * Polynomial.X ^ a).natDegree = a := by
+      simp [hlam]
+    rw [KeyFrame.stageHeight_eq_inf, hdeg]
+    refine inf_eq_of_attained ?_ (Finset.self_mem_range_succ a) ?_
+    · intro j hj
+      rcases eq_or_ne j a with rfl | hja
+      · rw [hcoeff, if_pos rfl, Nat.cast_mul]
+      · rw [hcoeff, if_neg hja, map_zero,
+          show gaussVal (0 : Polynomial O) = ⊤ from gaussVal_eq_top_iff.mpr rfl,
+          nsmul_top_of_pos F.he₁]
+        simp
+    · rw [hcoeff, if_pos rfl, Nat.cast_mul]
+
+end Uniformity.Density.Tower
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+#print axioms Uniformity.Density.Tower.binomKey_mod_monomial
+#print axioms Uniformity.Density.Tower.dev_reass
+#print axioms Uniformity.Density.Tower.stageHeight_C_mul_X_pow
+#print axioms Uniformity.Density.Tower.gaussVal_C_unit_mul_pow
+#print axioms Uniformity.Density.Tower.inf_eq_of_attained
+end AxCheck

@@ -795,3 +795,10 @@ BP.C.128	BP.C.71	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source
 BP.C.128	BP.C.74	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.128 DEPENDS (A-C.4)
 BP.C.113	BP.B.11	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.113 DEPENDS — added A-C.5 (2026-08-16): clause (i)'s repaired form reads npHgt at the named support point
 BP.C.113	BP.B.16	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.113 DEPENDS — added A-C.5 (2026-08-16): clause (i)'s repaired form consumes OnSide/sideSet/suppVal (the vacuous-hne cure)
+BP.C.129	BP.C.02	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.129 DEPENDS — NEW node per A-C.5 (2026-08-16): stageHeight + stageHeight_eq_inf
+BP.C.129	BP.C.71	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.129 DEPENDS — NEW node per A-C.5 (2026-08-16): clause (b) reads the reassembly half of shadowDev (C.71(iii); the landed carrier happens to sit in C127.lean, but the OBJECT is C.71's — edging to C.127 would create the cycle C.127 <-> C.129)
+BP.C.129	BP.B.02	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.129 DEPENDS — NEW node per A-C.5 (2026-08-16): dev
+BP.C.129	BP.B.07	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.129 DEPENDS — NEW node per A-C.5 (2026-08-16): gaussVal
+BP.C.129	BP.B.08	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.129 DEPENDS — NEW node per A-C.5 (2026-08-16): le_gaussVal_iff / the addVal API
+BP.C.127	BP.C.129	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.127 DEPENDS — added A-C.5 (2026-08-16): the pin clause lawEW_pin consumes the slot-height calculus (its named blocker)
+BP.C.128	BP.C.129	proof-dep	C	OPEN	blueprint	from:exact,to:exact	blueprint	source=blueprint | CHAP-C NODE C.128 DEPENDS — added A-C.5 (2026-08-16): the Lean transcription shares C.127's slot-height bottleneck
