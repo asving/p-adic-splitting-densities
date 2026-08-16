@@ -378,9 +378,16 @@ of injective monotone affine maps is one). ∎
 
 **Remarks.** (0) *Constructed counterexample sharpening the statement* (the mandated attack on
 the non-enumerable step): WITHOUT the reparameterization clause the corpus's sentence would be
-false — `{p₁ ≥ p₂} ∩ ℕ²` is NOT a finite union of unreparameterized shifted products: any
-2-parameter shifted product contains points `(o₁, o₂ + s₂t)` with `p₂` unbounded at fixed `p₁`,
-which leave the region; so every piece must be an affine IMAGE, exactly as Theorem A produces.
+false — `{p₁ ≥ p₂} ⊆ ℕ²` is NOT a finite union of unreparameterized shifted products, even
+allowing degenerate (lower-dimensional) products.  Argument, piece by admissible piece: a full
+2-parameter product contains `(o₁, o₂ + s₂t)` with `p₂` unbounded at fixed `p₁`, leaving the
+region; a vertical line `{(c, o₂ + s₂t)}` likewise; a horizontal line `{(o₁ + s₁t, c)}` meets
+the diagonal `{(n, n)}` in at most one point (`o₁ + s₁t = c`), and a single point in exactly
+one.  So every piece contained in the region meets the infinite diagonal — which lies inside
+the region — in at most one point, and no finite union covers.  [The finite-union half of this
+argument was supplied in response to the Codex verifier's JUSTIFICATION GAP finding; see the
+verification record below.]  Every piece must therefore be an affine IMAGE, exactly as Theorem
+A produces.
 The mixed-sign `r = 3`, large-coefficient battery cells are the adversarial instances against
 the proof's case analysis (the G.23 coincidence-regime lesson transposed: sub-boxing is
 invisible at `|B| = 1`, so the battery forces `B ∈ {2, 3, 4}`); all survived.
@@ -393,6 +400,16 @@ self-contained). (iii) Lean status: the 2SIDED instance and the `r = 1` general-
 trichotomy are landed (`H94w.lean`); the general split stays OPEN in Lean per the blueprint's own
 cost ruling (§16 item 6), with this section as the math-level discharge and the certified
 algorithm as its executable regression.
+
+**Verification record (decorrelated adversarial pass, 2026-08-16).** This section was handed to
+Codex (fresh context, quote-and-classify charge, fix-nothing) with an explicit attack list
+(disjointness/coverage joins, Lemma A.1 legitimacy on piece parameter spaces, ceiling/floor
+arithmetic, degenerate cases `k = 0`/`B = 1`/zero coefficients/empty regions, well-foundedness,
+Corollary A′ transport).  Verdict: **no critical error; Lemmas A.1–A.2, Theorem A, Corollary A′
+verified correct**, with one finding — a JUSTIFICATION GAP in the *nonessential* Remark (0)
+(the counterexample argument omitted the finite-union obstruction for lower-dimensional
+unreparameterized products).  The gap is closed in the remark's present form (the diagonal
+argument); the proof body needed no repair.
 
 ## §B. THE RESIDUAL CENSUS LAW WITH κ(T) (HYP.23)
 
