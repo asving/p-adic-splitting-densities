@@ -5692,7 +5692,7 @@ sign candidate 1, wrapper-land the signed name). E now 41/67.
 kills); A-C.3 TAKEN OVER by opus (running), BS2 + beta parked
 on a 40-min backoff; opus pool healthy throughout.
 
-**2026-08-16 DATED APPEND #79 — A-C.3 EXECUTED: C.114's TWO COUNT
+**2026-08-16 DATED APPEND #79a — A-C.3 EXECUTED: C.114's TWO COUNT
 AXIOMS RE-SIGNED AND RESTORED (the A-C.2 block LIFTED), WITH THE
 DESIGNED CLAUSE LIST ITSELF REPAIRED (D5) AND A CORPUS-LEVEL
 REFUTATION FOUND (D6).** (1) CERTIFY FIRST, as A-C.2's charter
