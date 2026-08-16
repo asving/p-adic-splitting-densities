@@ -3195,6 +3195,47 @@ def c41_nsmul_grid : Bool := Id.run do
 
 #guard c41_nsmul_grid
 
+/-! ### A-C.1 GATE HYGIENE (D14/D15/D22 cures) — NODES C.123/C.124's MACHINE-FORM
+EXPECTED-VALUE TABLES, the HT reading DECIDED, and the discriminating third frame.
+
+**D15 RESOLVED against `EFF.W12.87`** (its finding-1 record, verbatim: *"the
+H = (1) → SPLITEQ(k = 2) count `(q−1)·((q−1)(q−2)/2)·q^{2N−8}` re-derived from the lemma
+display"* — W12-L0's `(q−1)^t` history prefactor IS in the count): the FULL-coefficient
+reading `htSpot` is the source's; C.124's `2·1/2` is the MIDDLE factor `(q−1)(q−2)/2`
+evaluated at `q = 3`, so the two gate texts AGREE (`2·3^{2N−8}`) and `htSpotAlt` is DEAD.
+The `q = 3` witness decides (both vanish at `q = 2`). -/
+
+/-- C.123's machine-form expected values (`q = 2`). -/
+def gateC_q2_budget_w0 : List ℕ := [7, 5, 3, 1]
+def gateC_q2_budget_w5 : List ℕ := [5, 3, 1, 0]
+def gateC_q2_nodeFloors : List (List ℕ) := [[21, 11], [29, 15], [13, 7]]
+def gateC_q2_E2_splits : List (ℕ × ℕ) := [(10, 8), (14, 8), (6, 4)]
+def gateC_q2_s2Ladder : List ℕ := [4, 10, 21]
+def gateC_q2_htSpot : ℕ := 0    -- the degenerate census at q = 2, every N
+
+#guard (List.range 4).map (fun j => budgetFloorN 2 2 8 3 j 0) == gateC_q2_budget_w0
+#guard (List.range 4).map (fun j => budgetFloorN 2 2 8 3 j 5) == gateC_q2_budget_w5
+#guard gateC_q2_E2_splits.all (fun p => p.2 < p.1)
+#guard (List.range 12).all (fun N => htSpot 2 N == gateC_q2_htSpot)
+
+/-- C.124's machine-form expected values (`q = 3`). -/
+def gateC_q3_budget_w0 : List ℕ := [7, 5, 3, 1]
+def gateC_q3_budget_w5 : List ℕ := [6, 4, 2, 0]
+def gateC_q3_htSpot_atN6 : ℕ := 2 * 3 ^ 4   -- D15 DECIDED: the full-coefficient reading
+
+#guard (List.range 4).map (fun j => budgetFloorN 3 2 12 3 j 0) == gateC_q3_budget_w0
+#guard (List.range 4).map (fun j => budgetFloorN 3 2 12 3 j 5) == gateC_q3_budget_w5
+#guard htSpot 3 6 == gateC_q3_htSpot_atN6
+#guard htSpotAlt 3 6 ≠ gateC_q3_htSpot_atN6   -- the DEAD reading, kept as the negative control
+
+/-! **D22 cure — the discriminating THIRD frame.** C.123/C.124's frames give the IDENTICAL
+`w = 0` budget row `[7,5,3,1]` (the C-H12 coincidence). The third frame
+`(e₁, e₂, E₂) = (2, 1, 10)` separates at `w = 0` from BOTH — a gate row that includes it is
+frame-sensitive even at `w = 0`. -/
+def gateC_frame3_budget_w0 : List ℕ := [16, 11, 6, 1]
+#guard (List.range 4).map (fun j => budgetFloorN 2 1 10 3 j 0) == gateC_frame3_budget_w0
+#guard gateC_frame3_budget_w0 ≠ gateC_q2_budget_w0
+
 end NumericGate
 
 end LeanspecC

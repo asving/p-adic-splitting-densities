@@ -7103,8 +7103,24 @@ window rows; the `(1,2)`-genre bite (`EFF.HE6.20`(3): live at `q = 2`,
 HT spot values at `q = 2` (`(q−1)((q−1)(q−2)/2)q^{2N−8}` at `q = 2` = 0 — the degenerate
 census, itself a check); a depth-3 `(SLOT₃)` spot value on the S4 chain.
 
-**SIGNATURE** (shape). `theorem gateC_q2 : <conjunction of decidable instances> := by
-decide/norm_num` + the `#eval` block (GC-6.6(c)).
+**SIGNATURE** [signed: A-C.1 — the D14 cure: the expected values now exist in MACHINE FORM
+as named tables in `leanspec/Leanspec/ChapC.lean`'s gate-hygiene block, `#guard`-diffed
+against the computed values (all passing)]. `theorem gateC_q2 : <conjunction of decidable
+instances> := by decide/norm_num` + the `#eval` block (GC-6.6(c)); the fleet's gate file
+diffs against THE TABLES, not prose:
+```lean
+def gateC_q2_budget_w0 : List ℕ := [7, 5, 3, 1]
+def gateC_q2_budget_w5 : List ℕ := [5, 3, 1, 0]
+def gateC_q2_nodeFloors : List (List ℕ) := [[21, 11], [29, 15], [13, 7]]
+def gateC_q2_E2_splits : List (ℕ × ℕ) := [(10, 8), (14, 8), (6, 4)]
+def gateC_q2_s2Ladder : List ℕ := [4, 10, 21]
+def gateC_q2_htSpot : ℕ := 0    -- the degenerate census at q = 2, every N
+```
+**D22 cure (the `w = 0` identical-row trap):** the two gate frames' `w = 0` budget rows
+COINCIDE (`[7,5,3,1]` at both primes — C-H12); the gate hygiene block adds the
+DISCRIMINATING THIRD FRAME `(e₁, e₂, E₂) = (2, 1, 10)` with `w = 0` row `[16, 11, 6, 1]`
+(`gateC_frame3_budget_w0`, `#guard`-verified ≠ the shared row) — every budget-table gate
+row set must include it.
 
 **DEPENDS.** the §§3–12 nodes whose TEETH name it. **PROOF.** computation.
 **SIZE.** ~60 lines. **SOURCE.** the per-node TEETH rows. **TEETH.** IS the teeth.
@@ -7124,42 +7140,55 @@ the char-split's other half); BP3 (the C.96 negative control: attainment WITH
 prescription vs the `q = 2` letter-dead twin — the ψ vs ψ^{(w)} divergence EXHIBITED);
 HT spot values at `q = 3` (the obstruction instance `2·1/2·q^{2N−8}`-family values).
 
-**SIGNATURE/PROOF/etc.** as C.123.
+**⚠ D15 RESOLVED [signed: A-C.1] — the two HT spot readings AGREE, decided against the
+source.** `EFF.W12.87`'s own finding-1 record re-derives the `H = (1) → SPLITEQ(2)` count as
+**`(q−1)·((q−1)(q−2)/2)·q^{2N−8}`** (W12-L0's `(q−1)^t` history prefactor included), so
+C.123's family display is the source's FULL coefficient, and this node's `2·1/2` is the
+MIDDLE factor `(q−1)(q−2)/2` evaluated at `q = 3` — the two readings agree:
+`htSpot 3 6 = 2·3⁴ = 162` is THE expected value (`gateC_q3_htSpot_atN6`), and the
+factor-`q−1`-smaller `htSpotAlt` is DEAD (kept `#guard`-ed as the negative control). Both
+vanish at `q = 2`; the `q = 3` row is the deciding witness, exactly as the gate discipline
+predicted.
+
+**SIGNATURE** [signed: A-C.1 — machine-form tables in the leanspec gate-hygiene block]:
+```lean
+def gateC_q3_budget_w0 : List ℕ := [7, 5, 3, 1]
+def gateC_q3_budget_w5 : List ℕ := [6, 4, 2, 0]
+def gateC_q3_htSpot_atN6 : ℕ := 2 * 3 ^ 4   -- D15 DECIDED: the full-coefficient reading
+```
+**PROOF/etc.** as C.123 (incl. the D22 third frame).
 
 ---
 
 ### NODE C.125 [gate] [fresh]
 
-**STATEMENT.** *The wild `e > 1 ∧ f > 1` witness gate (GC-11's shape clause).* Two rows,
-both GENUINELY WILD (`e₁ ≥ 2`, `p ∣ e`): (i) `q = 2`: the frame `(e₁,f₁,h) = (2,1,1)`,
-`Φ′ = x² − 2` over `ℤ₂` (wild: `2 ∣ e₁`), level datum `ℓ = 1, r` quadratic → the
-Tier-1 read `typeOf = ⟨{(2, 2)}⟩` (`e = 2 > 1, f = 2 > 1`) via C.61 + C.119/C.120 at an
-explicit member and window; (ii) `q = 3`: the `(2,2,3)`-family frame over `ℤ₃` (tame `e`
-but wild-adjacent twist-live) PLUS the `ℤ₃` frame `Φ′ = x² − 3` (wild at... `e₁ = 2`,
-`p = 3` — TAME; the honest wild-at-`q = 3` row is `e₁ = 3`: the FAM-C-family
-`(e₂ = 3)`-composed instance or a `(3,1,2)`-frame instance — the gate constructs one,
-`Φ′ = x³ − 3` class, and fires the C.59 ramified leg on it). A row that cannot deliver
-`e > 1 ∧ f > 1` UNCONDITIONALLY (i.e. would need `C-BOX-1` at `f₁d_r ≥ 2` beyond the
-vacuity perimeter) is a DEFECT — witness (i) is chosen precisely because `f₁·d_r = 2`
-with `f₁ = 1, d_r = 2` requires `C-BOX-1`… **⚠ honesty check executed at composition
-time:** at witness (i), `f₁·d_r = 1·2 = 2 ≥ 2`, so the Tier-1 read DOES carry `C-BOX-1`.
-The B-D-3 lesson (`d = 1, ℓ ≥ 2` gives `e > 1, f > 1` honestly) transposes: take instead
-`f₁ = 2, d_r = 1` — wait, that also has `f₁d_r = 2`. **At level 2 the unconditional
-`e > 1 ∧ f > 1` witness is the COMPOSED route:** `e = e₁ℓ > 1` from C.59
-(unconditional) and `f = f₁d_r` with `f₁d_r = 1` forced `f = 1`. So an UNCONDITIONAL
-`f > 1` at a tower leaf needs the residue leg — i.e. `C-BOX-1`'s perimeter is exactly the
-gate's constraint, and the HONEST gate fires: (a) the `e > 1, f = 1` wild row
-unconditionally (`(e₁ℓ, 1)`, e.g. `ℓ = 2` at `f₁ = d_r = 1`: `typeOf = {(4,1)}` — the
-`EFF.HE6.20` σ at the `(2,1)`-genre bite, `q = 3`); (b) the `e > 1 ∧ f > 1` row
-`{(2,2)}` CONDITIONALLY on `C-BOX-1`, with the PARI-certified battery value as the
-regression that the hypothesis is true-in-fact at the witness (the corpus's 677/682); and
-(c) the record that an unconditional-in-Lean `e > 1 ∧ f > 1` tower witness is exactly
-`C-BOX-1`-gated — **this is a finding of the gate's composition, promoted to §16's
-cross-read list** (it sharpens BRIEF C's GC-11 expectation: at level ≥ 2 the two-sided
-witness is conditional, unlike B's level-1 D-3 row).
+**STATEMENT** *[REWRITTEN at A-C.1 — the D16 cure: the committed field was a live
+composition-time transcript, not a statement; its honest content is preserved below and the
+transcript is retired to the A-C.1 record].* *The wild witness gate (GC-11's shape clause),
+fired as the HONEST TRIPLE:*
+**(a) [unconditional wild row, `e > 1, f = 1`]** at a genuinely wild frame (`p ∣ e₁`: the
+`q = 2` frame `(e₁,f₁,h) = (2,1,1)`, `Φ′ = x² − 2` over `ℤ₂`; the `q = 3` row at an
+`e₁ = 3` frame, `Φ′ = x³ − 3` class, via the C.59 ramified leg — the `x² − 3` frame is
+TAME at `p = 3` and is NOT a wild witness): the Tier-1 read gives `typeOf = ⟨{(e₁ℓ, 1)}⟩`
+with `e₁ℓ > 1`, UNCONDITIONALLY (`f₁·d_r = 1` sits in `C-BOX-1`'s vacuity perimeter,
+C.60(i)) — e.g. `ℓ = 2` at `f₁ = d_r = 1`: `{(4,1)}`, the `EFF.HE6.20` `(2,1)`-genre σ.
+**(b) [the `e > 1 ∧ f > 1` row, CONDITIONAL]** the `{(2, 2)}` read at witness (i)'s frame
+with a quadratic label (`f₁·d_r = 2`), fired via C.61 + C.119/C.120 at an explicit member
+and window **with `C-BOX-1` as an explicit named hypothesis**, instantiated by the
+PARI-certified battery regression (the corpus's 677/682) — never silently.
+**(c) [the finding]** an unconditional-in-Lean `e > 1 ∧ f > 1` tower witness is exactly
+`C-BOX-1`-gated: `e = e₁ℓ > 1` is unconditional (C.59), while `f = f₁d_r > 1` forces
+`f₁d_r ≥ 2`, which is precisely `C-BOX-1`'s non-vacuous perimeter — at level ≥ 2 the
+two-sided witness is conditional, UNLIKE B's level-1 D-3 row. (Cross-read item 6; A-6's
+booking. The original in-field derivation transcript — including its two wrong turns — is
+preserved in the git history at the pre-A-C.1 revision, per the record-not-rewrite
+discipline for FINDINGS; what a fleet agent needs is the triple above.)
 
-**SIGNATURE/PROOF/etc.** as C.123; the (b)-row's conditional firing uses `C-BOX-1` as an
-explicit named hypothesis instantiated by the battery regression (never silently).
+**SIGNATURE** [signed: A-C.1]. As C.123 (machine-form rows in the leanspec gate-hygiene
+block; the `(2,2,3)` twist witness and the wild-frame slot rows are the executed
+`#guard`s of the stub gate's numeric section); the (b)-row's conditional firing uses
+`C-BOX-1` as an explicit named hypothesis instantiated by the battery regression (never
+silently). **PROOF/etc.** as C.123.
 
 ---
 
@@ -7173,7 +7202,13 @@ NOTHING else; the AxChk-pattern diffable output committed (the
 `lean/LeanUrat/AxChk_baseline.lean` idiom at the ChapC roll-up; a footprint regression is
 stop-the-line per the repo rule).
 
-**SIGNATURE** (shape). the AxChk file + its committed output.
+**SIGNATURE** [signed: A-C.1]. the AxChk file + its committed output. **The expected
+gate-(b) census, updated to the A-C.1-declared names:** the declared cited axioms are
+exactly **`fgmn_residual_mul`** (C.66), **`fgmn_calculus_exists`** (C.92) and
+**`agnprw_termination`** (C.94) — `fgmn_residual_mul` on C.67's chain (→ C.69/C.80),
+`fgmn_calculus_exists` on the §10 theorems and C.90/C.91's `[FGMNCalculus]` consumers,
+`agnprw_termination` on C.94's consumers (I.01's discharge) — plus Lean core, and NOTHING
+else on any §§7–12 terminal.
 
 **DEPENDS.** all terminal nodes. **PROOF.** mechanical. **SIZE.** ~40 lines.
 **SOURCE.** repo axiom policy; Part V gate (b). **TEETH.** IS the census.
@@ -7489,5 +7524,17 @@ increment:
   `#check` manifest with the MANDATORY-tag comments. §12: `Visible₂`(+mono), the B.77 split
   congruences, the kernel/`DecidedAt`/existence/peel-path certificates — per-member at
   explicit `N` throughout (GC-9.3).
+* **A-C.1(j) — GATE HYGIENE (D14/D15/D16/D22 cured).** D14: C.123/C.124 now carry
+  MACHINE-FORM expected-value tables (named defs, `#guard`-diffed, all passing). D15:
+  **RESOLVED against `EFF.W12.87`** — its finding-1 record re-derives the count as
+  `(q−1)·((q−1)(q−2)/2)·q^{2N−8}` (the `(q−1)^t` history prefactor included), so the two
+  gate texts AGREE (`2·1/2` is the middle factor at `q = 3`); `htSpot` is the reading,
+  `htSpotAlt` is DEAD (kept as the `#guard`ed negative control); expected value
+  `htSpot 3 6 = 162`. D16: C.125's STATEMENT rewritten from the composition transcript into
+  the honest triple (the unconditional wild `e>1,f=1` row; the `C-BOX-1`-conditional
+  `{(2,2)}` row with the battery regression named; the finding) — transcript preserved in
+  git history. D22: the discriminating THIRD frame `(e₁,e₂,E₂) = (2,1,10)` added (`w = 0`
+  row `[16,11,6,1]` ≠ the shared `[7,5,3,1]`, `#guard`-verified). C.126's expected census
+  updated to the three declared A-C.1 names.
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
