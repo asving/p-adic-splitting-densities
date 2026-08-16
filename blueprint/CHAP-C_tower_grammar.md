@@ -8255,13 +8255,15 @@ refutation records are PERMANENT (headers carry the repair notes). Standing obli
 opened: **A-C.3 — the C.114 realizes-refinement re-sign** (clause list at the node
 banner), with its own certification leg required before signing.
 
-# A-C.3 AMENDMENT (2026-08-16, unit EWBS2) — THE TWO OM-10 LAW NODES (C.127, C.128)
+# A-C.4 AMENDMENT (2026-08-16, unit EWBS2) — THE TWO OM-10 LAW NODES (C.127, C.128)
 
 **Charge and label.** OM-10's §3.6 flagged, as an orchestrator OPTION, "a dated A-C
 amendment adding two law nodes at the certified statements" for LAW E-W and LAW B-S2,
-which had "no signed home". This amendment is that option, executed. Label A-C.3: A-C.1
+which had "no signed home". This amendment is that option, executed. Label A-C.4: A-C.1
 is the signature-completion layer above; A-C.2 is the concurrently-landed C.109 cell-law
-re-sign (certification leg `verification/c109_ac2_cell_check.py`, commit `44709256`).
+re-sign (certification leg `verification/c109_ac2_cell_check.py`, commit `44709256`);
+A-C.3 is RESERVED by A-C.2's charter for the C.114 realizes-refinement re-sign
+(PROJECT_STATE append #75) and is not this amendment.
 Census effect: nodes 129 → **131** (+C.127, +C.128); no committed node is edited.
 
 **Grade asymmetry, stated plainly.** C.127 is signed at a PROVED source (the LAW E-W
@@ -8273,7 +8275,7 @@ refuted wider candidate).
 
 ---
 
-### NODE C.127 [theorem] [fresh] [signed: A-C.3] — **LAW E-W: the K2-division boundary identity (three clauses)**
+### NODE C.127 [theorem] [fresh] [signed: A-C.4] — **LAW E-W: the K2-division boundary identity (three clauses)**
 
 **STATEMENT.** At the trinomial single-crossing frame — `F.key = x^{D′} − πω` (`f₁ = 1`,
 `h = 1`, `e₁ = D′`), `composedKey T = F.key^m + ĉ₂π^{v₂}x^{i₂}·F.key^{m−1} + ĉ₀π^{v₀}`
@@ -8287,7 +8289,7 @@ at every `j ≥ 2` and discrepancy height EXACTLY `gridWeight T α a b (1−j) +
 on-side boundary (T-E-BOUND is clause (b) at `ε = 0`).
 
 **SIGNATURE** [signed: A-C.3 — elaborated in `leanspec/Leanspec/ChapC.lean`, section
-`AC3Laws`]. Three axiom-stubs (proof targets, standing stub lifecycle):
+`AC4Laws`]. Three axiom-stubs (proof targets, standing stub lifecycle):
 `lawEW_faithful_of_nox` (clause (a)), `lawEW_faithful_high` (clause (b), `j ≥ 2`),
 `lawEW_pin` (clause (b), `j ≤ 1`; conclusion
 `dv2Hgt (T.levelDatum hπ) (shadowDev T f j − dev (composedKey T) f j)
@@ -8325,7 +8327,7 @@ the statement over `j′`.
 
 ---
 
-### NODE C.128 [law-candidate] [fresh] [signed: A-C.3] — **LAW B-S2: the P-BINOM cascade pair-or-triple attainment law**
+### NODE C.128 [law-candidate] [fresh] [signed: A-C.4] — **LAW B-S2: the P-BINOM cascade pair-or-triple attainment law**
 
 **STATEMENT.** At the cascade geography — `e₂(f₂ − t*) = 1` with `ψ₂.coeff t* ≠ 0` and
 the `t*`-entry carrying `x`-power exactly 1 (`slotIdx ((f₂ − t*)·u₂) = 1`), `f₁ = 1`,
@@ -8340,7 +8342,7 @@ NOT consumed by any committed node; the fleet's cite-vs-prove choice per the 202
 sign-off scope.
 
 **SIGNATURE** [signed: A-C.3 — elaborated in `leanspec/Leanspec/ChapC.lean`, section
-`AC3Laws`]. One axiom-stub: `lawBS2_pair_or_triple`, stated as a `TouchCert` iff — the
+`AC4Laws`]. One axiom-stub: `lawBS2_pair_or_triple`, stated as a `TouchCert` iff — the
 attainment predicate is C.74's existing definition, no new carrier.
 
 **DEPENDS.** C.15 (`slotIdx`) · C.42/C.43 · C.44 · C.71 · C.74 (`TouchCert`).

@@ -3804,7 +3804,7 @@ def gateC_frame3_budget_w0 : List ℕ := [16, 11, 6, 1]
 
 end NumericGate
 
-/-! # A-C.3 AMENDMENT LAYER (2026-08-16, unit EWBS2) — the two OM-10 law nodes
+/-! # A-C.4 AMENDMENT LAYER (2026-08-16, unit EWBS2) — the two OM-10 law nodes
 
 NODE C.127 (LAW E-W, PROVED at source: `lean/notes/openmath/LAWEW_PROOF_2026-08-16.md`)
 and NODE C.128 (LAW B-S2, CERTIFIED-OPEN: OM-10 §2.2, 7/7 two primes, the any-k
@@ -3819,9 +3819,9 @@ Under `hf₁ : F.f₁ = 1` and `he₂ : T.e₂ = 1` the corpus constants read
 stated in the subtraction-free absolute form
 `pin(Δ_j) = gridWeight T α a b (1 − j) + T.margin` (equal to `Θ_j + excess` over ℤ). -/
 
-section AC3Laws
+section AC4Laws
 
-/-! ### NODE C.127 [theorem] [fresh] [signed: A-C.3] — LAW E-W, three clauses -/
+/-! ### NODE C.127 [theorem] [fresh] [signed: A-C.4] — LAW E-W, three clauses -/
 
 /-- C.127 clause (a): NO CROSSING — a coordinate-0 entry, or an entry whose
 `x`-power clears the wrap (`a + i₂ < D′`), leaves the shadow ledger EQUAL to the
@@ -3894,7 +3894,7 @@ axiom lawEW_pin {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     dv2Hgt (T.levelDatum hπ) (shadowDev T f j - dev (composedKey T) f j)
       = ((gridWeight T α a b (1 - j) + T.margin : ℕ) : ℕ∞)
 
-/-! ### NODE C.128 [law-candidate] [fresh] [signed: A-C.3] — LAW B-S2 (pair-or-triple)
+/-! ### NODE C.128 [law-candidate] [fresh] [signed: A-C.4] — LAW B-S2 (pair-or-triple)
 
 CERTIFIED-OPEN (OM-10 §2.2, 7/7 at μ₂ = 3..6 over q = 2 and q = 3); the naive
 "any in-band k-diagonal" candidate is REFUTED at B4 and MUST NOT be signed
@@ -3915,7 +3915,7 @@ axiom lawBS2_pair_or_triple {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
       ↔ (¬ (ringChar (ResidueField O) ∣ Nat.choose μ₂ 2)
          ∨ ¬ (ringChar (ResidueField O) ∣ Nat.choose μ₂ 3))
 
-end AC3Laws
+end AC4Laws
 
 end LeanspecC
 
