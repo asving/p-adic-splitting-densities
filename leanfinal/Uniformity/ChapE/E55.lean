@@ -11,7 +11,8 @@ import Uniformity.ChapE.E55a
 
 **Chapter E, NODE E.55** [theorem] [fresh] — **HARD NODE**
 (`blueprint/CHAP-E_sigma_ladder.md` §8, `refine_chain_finite`; stub twin
-`leanspec/Leanspec/ChapE.lean:1112-1136`). ENV-E2 + `[IsAdicComplete (IsLocalRing.maximalIdeal O) O]`.
+`leanspec/Leanspec/ChapE.lean:1112-1136`). ENV-E2 +
+`[IsAdicComplete (IsLocalRing.maximalIdeal O) O]`.
 
 **STATUS: the signed name is WITHHELD — the committed signature is REFUTED here, twice, with
 machine-checked counterexamples; the corpus's lemma is PROVED here under two added hypotheses.**
@@ -204,6 +205,16 @@ lemma coeffZeroCarrier_hcoeff {O : Type} [CommRing O] [IsDomain O] [IsDiscreteVa
     rw [h0, addVal_zero]
     simp
 
+/-- Definitional unfoldings, so the proofs below never change a goal by `show`. -/
+private lemma coeffZeroCarrier_D {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] :
+    (coeffZeroCarrier O).D = 1 := rfl
+
+private lemma coeffZeroCarrier_hgt {O : Type} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] (A : Polynomial O) :
+    (coeffZeroCarrier O).hgt A = nv (addVal O (A.coeff 0)) := rfl
+
+private lemma nv_natCast (n : ℕ) : nv (n : ℕ∞) = ((n : ℤ) : WithTop ℤ) := rfl
+
 /-! ## §2 The refuting ring `(ZMod 2)⟦T⟧` and the refuting chain -/
 
 /-- The refuting ring: power series over `ZMod 2`. A complete DVR of characteristic 2. -/
@@ -239,9 +250,13 @@ noncomputable def cexDev' : ℕ → ℕ → Polynomial CexRing
   | j, 0 => C (cexT ^ (2 * j))
   | _, _ + 1 => 0
 
+private lemma cexDev_succ (j m : ℕ) : cexDev j (m + 1) = 0 := rfl
+
+private lemma cexDev'_succ (j m : ℕ) : cexDev' j (m + 1) = 0 := rfl
+
 private lemma hgt_C (a : CexRing) :
     (coeffZeroCarrier CexRing).hgt (C a) = nv (addVal CexRing a) := by
-  simp [coeffZeroCarrier]
+  rw [coeffZeroCarrier_hgt, coeff_C_zero]
 
 /-- The partial sums telescope: `∑_{i<j} w i = 1 + T^j` (at `j = 0` this reads `1 + 1 = 0`,
 char 2). -/
@@ -266,8 +281,7 @@ lemma cex_hh (i : ℕ) :
 lemma cex_hmono : StrictMono cexSlope := fun _ _ hab => by simpa [cexSlope] using hab
 
 lemma cex_hdeg (i : ℕ) : (cexIncr i).natDegree < (coeffZeroCarrier CexRing).D := by
-  show (cexIncr i).natDegree < 1
-  rw [cexIncr, natDegree_C]
+  rw [coeffZeroCarrier_D, cexIncr, natDegree_C]
   norm_num
 
 /-- The char-2 identity the two developments run on. -/
@@ -299,22 +313,20 @@ lemma cex_hfloor (j : ℕ) (m : ℕ) (hm : m < 2) :
     ((((2 - m : ℕ) : ℤ) * cexSlope j : ℤ) : WithTop ℤ)
       ≤ (coeffZeroCarrier CexRing).hgt (cexDev j m) := by
   interval_cases m
-  · have hgtv : (coeffZeroCarrier CexRing).hgt (cexDev j 0) = nv (addVal CexRing (cexT ^ (2 * j)))
-        := by
-      show nv (addVal CexRing ((cexDev j 0).coeff 0)) = _
-      rw [cexDev]
+  · have hgtv : (coeffZeroCarrier CexRing).hgt (cexDev j 0)
+        = nv (addVal CexRing (cexT ^ (2 * j))) := by
+      rw [coeffZeroCarrier_hgt, cexDev]
       simp only [coeff_add, coeff_C_zero, coeff_X_zero, coeff_X_pow]
       norm_num
-    rw [hgtv, Irreducible.addVal_pow PowerSeries.X_irreducible]
-    show ((((2 - 0 : ℕ) : ℤ) * cexSlope j : ℤ) : WithTop ℤ) ≤ ((((2 * j : ℕ)) : ℤ) : WithTop ℤ)
+    rw [hgtv, Irreducible.addVal_pow PowerSeries.X_irreducible, nv_natCast]
     norm_num [cexSlope]
-  · rw [show cexDev j 1 = 0 from rfl, show (coeffZeroCarrier CexRing).hgt 0 = ⊤ from
-      (coeffZeroCarrier CexRing).hgt_zero]
+  · rw [cexDev_succ, (coeffZeroCarrier CexRing).hgt_zero]
     exact le_top
 
 lemma cex_hsq :
-    Squarefree ((((X : Polynomial CexRing) + 1)).map (algebraMap CexRing (FractionRing CexRing))) := by
-  have hmap : (((X : Polynomial CexRing) + 1)).map (algebraMap CexRing (FractionRing CexRing))
+    Squarefree (((X : Polynomial CexRing) + 1).map
+      (algebraMap CexRing (FractionRing CexRing))) := by
+  have hmap : ((X : Polynomial CexRing) + 1).map (algebraMap CexRing (FractionRing CexRing))
       = X - C (-1) := by
     simp [Polynomial.map_add, Polynomial.map_one, sub_eq_add_neg]
   rw [hmap]
@@ -362,8 +374,7 @@ theorem refine_chain_finite_false :
 /-- The independence claim of the header, machine-checked: refutation 1's witness DOES satisfy the
 second repair hypothesis `C.D ≤ Ψ.natDegree` (here `1 ≤ 1`), so hole 1 is not a shadow of hole 2. -/
 example : (coeffZeroCarrier CexRing).D ≤ ((X : Polynomial CexRing)).natDegree := by
-  show 1 ≤ ((X : Polynomial CexRing)).natDegree
-  rw [natDegree_X]
+  rw [coeffZeroCarrier_D, natDegree_X]
 
 /-! ## §4 REFUTATION 2 — patching hole 1 alone is not enough (`Ψ` may be constant) -/
 
@@ -384,20 +395,17 @@ lemma cex_hfloor' (j : ℕ) (m : ℕ) (hm : m < 2) :
   interval_cases m
   · have hgtv : (coeffZeroCarrier CexRing).hgt (cexDev' j 0)
         = nv (addVal CexRing (cexT ^ (2 * j))) := by
-      show nv (addVal CexRing ((cexDev' j 0).coeff 0)) = _
-      rw [cexDev', coeff_C_zero]
-    rw [hgtv, Irreducible.addVal_pow PowerSeries.X_irreducible]
-    show ((((2 - 0 : ℕ) : ℤ) * cexSlope j : ℤ) : WithTop ℤ) ≤ ((((2 * j : ℕ)) : ℤ) : WithTop ℤ)
+      rw [coeffZeroCarrier_hgt, cexDev', coeff_C_zero]
+    rw [hgtv, Irreducible.addVal_pow PowerSeries.X_irreducible, nv_natCast]
     norm_num [cexSlope]
-  · rw [show cexDev' j 1 = 0 from rfl, show (coeffZeroCarrier CexRing).hgt 0 = ⊤ from
-      (coeffZeroCarrier CexRing).hgt_zero]
+  · rw [cexDev'_succ, (coeffZeroCarrier CexRing).hgt_zero]
     exact le_top
 
 lemma cex_hAdeg' (j m : ℕ) : (cexDev' j m).natDegree < (coeffZeroCarrier CexRing).D := by
-  show (cexDev' j m).natDegree < 1
+  rw [coeffZeroCarrier_D]
   match m with
   | 0 => rw [cexDev', natDegree_C]; norm_num
-  | _ + 1 => rw [show cexDev' j _ = 0 from rfl, natDegree_zero]; norm_num
+  | _ + 1 => rw [cexDev'_succ, natDegree_zero]; norm_num
 
 /-- **DEFECT E-D14(2), machine-checked.** The committed signature PLUS the sub-key-degree bound on
 the development coefficients is STILL false: with `Ψ = 0` and `F = 1` the limit is a unit, and a
