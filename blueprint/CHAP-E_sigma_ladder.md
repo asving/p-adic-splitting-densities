@@ -25,6 +25,18 @@ kernel) by declaration name.
 **CODEX CROSS-READ OWED** (queued post-Tuesday per the budget regime; a Fable-max fresh-context
 read may discharge the obligation earlier per Part IV item 6's precedent).
 
+> **AMENDMENT BANNER 2026-08-16 — THE STAGE-0e STUB GATE HAS RUN, AND 13 DEFECTS ARE REPAIRED IN
+> PLACE.** `leanspec/Leanspec/ChapE.lean` (109 declarations, 58 executed gate checks, green)
+> recorded **E-D1…E-D13**; every repair is tagged `[repaired: A-E.1/E-D<n>]` at the passage it
+> touches, and the record — findings, verbatim originals, evidence — is **AMENDMENT A-E.1** at
+> the end of this file. Two are not spelling: **E-D11** re-signs E.60/E.07(iii) (the `4 ≤ μ`
+> floor belongs on the jump START, `∀ i < J`; the committed form made clause 3 vacuous and
+> excluded the corpus's own n = 8 / μ ≤ 7 / n = 16 configurations), and **E-D6** makes the
+> Display-A conjunct carriers explicitly universe-scoped (`RungInterface.{uO, uK, uW}`), which
+> chapter I must consume universe-polymorphically — honesty item **E-12**. Read A-E.1 before
+> consuming E.05, E.07, E.12, E.18, E.19, E.24, E.29, E.38, E.39, E.40, E.44, E.45, E.48, E.49,
+> E.60, E.67 or E.68.
+
 ---
 
 ## 0. How to read this chapter
@@ -280,10 +292,20 @@ fields), the σ dictionary `ladderSigma` + `ladderSigma_degree` + `ladderSigma_p
 
 **Kind census** (mechanically counted over this file's `### NODE` headings): 14 `def`,
 26 `lemma`, 20 `theorem`, 2 `def+lemma` (E.19, E.49), 2 `instance-record` (E.22, E.23),
-4 `gate` — **68 nodes**. Nine nodes carry a `structure` (E.01 `RungDatum`, E.05 `LadderData`,
-E.10 `SlotCarrier`, E.11 `BlockData`, E.12 `RungInterface`, E.24 `LadderSupply`, E.44
-`LadderObligations`, E.61/E.62 the Prop-carriers) and two an `inductive` (E.17 `ContCase`,
-E.45 is a plain structure `LadderLeaf`, E.49 `Mu2Row`).
+4 `gate` — **68 nodes**. *[repaired: A-E.1/E-D12 — the structure/inductive split was miscounted:
+`LadderLeaf` was listed under the inductives while being a structure.]* **TEN** nodes carry a
+`structure` — E.01 `RungDatum`, E.05 `LadderData`, E.10 `SlotCarrier`, E.11 `BlockData`,
+E.12 `RungInterface`, E.24 `LadderSupply`, E.44 `LadderObligations`, **E.45 `LadderLeaf`**,
+E.61 `VarthetaRes`, E.62 `WFrame` — and **TWO** an `inductive`: E.17 `ContCase`, E.49 `Mu2Row`.
+~~Nine nodes carry a `structure` … and two an `inductive` (E.17 `ContCase`, E.45 is a plain
+structure `LadderLeaf`, E.49 `Mu2Row`).~~ §13/§14 count against the corrected figures.
+
+**Declaration census, LANDED at the stage-0e gate** *[added: A-E.1/E-D12]*: **109 signed
+declarations** = 10 `structure` + 2 `inductive` + 27 `def`/`noncomputable def` + 70 `axiom`
+rows (69 theorem-shaped + `ladderState_wf`, the one body-less def-class row — defect E-D5).
+E.22 and E.23 sign no declaration (the blueprint signs them as obligation tables). The gate also
+carries 3 gate-local data `def`s and 58 executed `example`s, which are not blueprint
+declarations.
 **Split-mandated:** E.12 → 2, E.29 → 2, E.38 → 2, E.55 → **3**, E.57 → 2; split candidates
 flagged at E.03, E.10, E.11, E.13, E.18, E.20, E.36. **Fleet planning figure: ≈ 74–80 Lean
 files.**
@@ -4373,29 +4395,71 @@ recorded alternative). Gate order (CHAP-H §15 / GC-6.6(c)): (a) elaborate the F
 signatures first; (b) land the `def` bodies real; (c) EXECUTE the §10 numeric gates at `q = 2`
 AND `q = 3` against this file's expected values; (d) only then sign the `axiom` stubs.
 
+**⚠ THE GATE HAS RUN (2026-08-16) — READ AMENDMENT A-E.1 WITH THIS SECTION.** The stub file
+`leanspec/Leanspec/ChapE.lean` exists, builds green, and carries all 109 declarations; its
+header records defects **E-D1…E-D13**, repaired blueprint-side by amendment **A-E.1** at the end
+of this file. Everything below is the list AS EXECUTED, with the amendment's corrections folded
+in. **`leanspec` already carries the cured forms of E-D1…E-D10 and E-D12/E-D13** (they are
+elaboration-level); it still carries **E.60 and E.07(iii) at their PRE-repair hypothesis sets**,
+because E-D11 is statement-level and statement-level defects are repaired in the blueprint, never
+patched in the gate's file (CHAP-H §15 rule 5). Those two stubs are re-signed when their nodes
+land; the 0e type diff for E.07/E.60 is EXPECTED to differ and the blueprint is authority.
+
 **(a) Fragile-signature list (elaborate first, in this order):**
 1. E.10 `SlotCarrier` (the `WithTop ℤ` laws; the `dig_add` field's conjunction shape);
 2. E.11 `BlockData` + `ladderSuppVal` (the `FractionRing` coprimality spelling — fallback
    DECISION pre-authorized in the node);
 3. E.12 `RungInterface` (the `W : Type*` universe parameter — flag ANY universe issue,
-   never fix `W := ℕ`);
+   never fix `W := ℕ`) — **FIRED: defect E-D6.** The flag was raised, not patched away: the cure
+   is the explicit `universe uO uK uW` + `RungInterface.{uO, uK, uW}` at E.24/E.39/E.40/E.44 (all
+   four are hard errors without it), and the ruling for chapter I is honesty item **E-12**;
 4. E.29 `twisted_slot_spec` (the structure-valued `TwistedSlotRead` re-plan is
-   pre-authorized);
+   pre-authorized) — **the elided `if h : _` was fixed at the gate (E-D4); the node now displays
+   the exact spelling and requires `open scoped Classical`**;
 5. E.55 `refine_chain_finite` (the `hcoeff`/`hOcoeff`/`hfloor` spellings — three stub-stage
-   calls, none strength-changing);
+   calls, none strength-changing) — executed, no strength change;
 6. E.45/E.49 (the `FactorizationType` anonymous-constructor compatibility — 0e type-diff
-   against the landed twin);
-7. E.48 (`typeOf_mul`'s side conditions copied VERBATIM into the `hcond` slot).
+   against the landed twin) — **the constructor is compatible; the NAME was wrong (E-D8):
+   `Uniformity.FactorizationType`**;
+7. E.48 (`typeOf_mul`'s side conditions copied VERBATIM into the `hcond` slot) — **executed
+   (E-D9): the landed conditions are MONICITY ONLY, so `hcond` is dropped and the conclusion is
+   re-signed on `.data`.**
 
-**(b) Def bodies:** E.01, E.02, E.05, E.10–E.12, E.14 (`SepSide`), E.17 (`ContCase`,
-`contCaseOf`), E.19 (`LadderState`), E.26, E.30 (`reachSet`), E.32 (`realizedSet`), E.33
-(`coc`), E.34, E.39/E.40 (the two obligation `Prop`s), E.44, E.45 (`LadderLeaf`, `ef`,
-`ladderSigma`), E.47 (`prepend`), E.49 (`Mu2Row`, `mu2Sigma`), E.61–E.63 (the carriers), E.24
-(`HE7APackage`, `LadderSupply` — LAST among defs: forward references).
+**(b) Def bodies** *[repaired: A-E.1/E-D12(i)]*: E.01, E.02, E.05, E.10–E.12, E.14 (`SepSide`),
+E.17 (`ContCase`, `contCaseOf`), E.19 (`LadderState` **and `ladderState_wf`** — see the ordering
+note), E.26, E.30 (`reachSet`), E.32 (`realizedSet`), E.33 (`coc`), ~~E.34~~ *(E.34 has NO def:
+its SIGNATURE is two theorems, `unit_mul_bijOn`/`unit_mul_zero` — struck)*, E.39/E.40 (the two
+obligation `Prop`s), E.44, E.45 (`LadderLeaf`, `ef`, `ladderSigma`), E.47 (`prepend`), E.49
+(`Mu2Row`, `mu2Sigma`), E.61–E.63 (the carriers), E.24 (`HE7APackage`, `LadderSupply` — LAST
+among defs: forward references).
+
+**⚠ NODE-ORDERING NOTE — E.19's `ladderState_wf` BODY LANDS BEFORE E.20** *[added:
+A-E.1/E-D5]*. `ladderState_wf` is a DATA row whose committed block had no body, so the gate could
+only sign it as an `axiom` (an `axiom` cannot carry `instance`). While the relation is opaque,
+E.19's three `rank_decreases_*` lemmas and E.20's `read_terminates_exhausts` are **unprovable** —
+they are statements about an unspecified relation. Landing order is therefore forced:
+`LadderState` → **`ladderState_wf`'s real `Prod.Lex` body** (displayed at the node; one line at
+our pin) → the three descent lemmas → E.20. A fleet agent handed E.20 against the axiom stub must
+return `BLOCKED: E.19 body owed`, not a proof.
+
+**⚠ GC-11 GATE-SPELLING RIDER — σ-EQUATIONS ARE COMPARED ON `.data`** *[added: A-E.1/E-D10]*.
+Binding on E.65–E.68 and on every executable σ gate a later amendment adds:
+`Uniformity.FactorizationType`'s `DecidableEq` is `Classical.decEq` (noncomputable), so `decide`
+cannot reduce an equation between σ-VALUES — it gets stuck on `Classical.choice`. State such
+checks on `.data` (`Multiset (ℕ × ℕ)`, real instance). Degrees (ℕ) and `Option`-valued dictionary
+rows (`mu2Sigma … = some ⟨…⟩` by `rfl`) are unaffected. Full statement at E.67; this is the
+chapter's analogue of CHAP-B §12's rules for the stub-landing agent, and a gate that `decide`s a
+bare σ-equation is a stub-stage defect.
 
 **(c) Numeric gates:** E.65, E.66, E.67, E.68 — all `decide`/`norm_num`; expected values
 recomputed in this file (E.68's five frames match the spec's table exactly; E.66's
-non-coincidence witnesses at `k = 10, 11` over `(2,2,3)`).
+non-coincidence witnesses at `k = 10, 11` over `(2,2,3)`). **EXECUTED at the 0e gate at `q = 2`
+AND `q = 3`: 58 checks, every expected value reproduced** *[A-E.1]*, with two spellings forced —
+the `.data` rider above (E-D10) and E.68's frame-3 split (E-D7: that frame is not a legal rung at
+its corpus threshold `T₂ = D′h = 4`, so the value is checked at a legal `T` and formula-directly).
+Still OWED (orchestrator, outside the gate's file ownership): the four retained Python mirrors
+`verification/chapE_gate_q2.py`, `chapE_gate_q3_seam.py`, `chapE_gate_ef.py`,
+`chapE_gate_thresholds.py` (§13.4).
 
 **(d) Axiom stubs:** every lemma/theorem node not in (b)/(c).
 
@@ -4594,9 +4658,15 @@ conjuncts of Display A. Reconciles.
 8. **The HE6-A3 HE7-side residual** (honesty E-1) — HYP.150 is scoped to T2; E's HE7-derived
    nodes cite HE6 spans only through HE7's own displays. A future consumption check of
    HE7/HE6R1 against A3 F-1/F-3/F-4 remains open at the ledger; nothing in E licenses it.
-9. **E.48's `hcond` slot** — `typeOf_mul`'s exact landed side conditions to be copied
+9. ~~**E.48's `hcond` slot** — `typeOf_mul`'s exact landed side conditions to be copied
    verbatim at stub time; check the ladder's blocks can supply them (root-set disjointness
-   route flagged).
+   route flagged).~~ **ANSWERED at the 0e gate** *[A-E.1/E-D9]*: the landed
+   `typeOf_mul (hf : f.Monic) (hg : g.Monic) : (typeOf (f*g)).data = (typeOf f).data +
+   (typeOf g).data` takes **monicity only** — no coprimality, no root-set disjointness. There is
+   nothing for the ladder's blocks to supply, `hcond : True` is dropped, and E.48 is re-signed on
+   `.data` (the landed module deliberately has no `Add FactorizationType`). Nothing left to
+   cross-read here; the residual question is only whether any consumer silently wanted the
+   ADDITION shape — grep says no.
 10. **E.52's scoping** — no member-level Lean theorem at n = 8 is promised by this blueprint
     (the certificate layer is post-blueprint, B.79–B.82-pattern at level 2). Confirm chapter
     I's Display-A block expects the schema form, not the member form.
@@ -4611,15 +4681,333 @@ conjuncts of Display A. Reconciles.
 14. **The czar-ruling chapter move** (HE7: B → E in the DAG's chapter column) — §11's
     correction row; orchestrator books the `dag_build.py` re-run.
 
+*Items 15–18 added by amendment **A-E.1** (2026-08-16, the stage-0e gate's residue):*
+
+15. **[ORCHESTRATOR RULING OWED — E-D6] The Display-A conjunct carriers are universe-scoped.**
+    `LB1Carrier`/`MP1Carrier`/`HE7APackage`/`LadderSupply`/`LadderObligations` all carry a third
+    universe parameter `uW` (E.12's rank carrier) that is not inferable from their arguments.
+    Chapter I must consume them universe-polymorphically or record its `uW` choice — honesty
+    **E-12**, pointer at E.24. This is a capstone-conditionality item, not a spelling item; it
+    is the one item of A-E.1 that a cross-reader should attack first.
+16. **[E-D11 — check the re-derivation] E.60/E.07(iii)'s `4 ≤ μ` floor now ranges over the jump
+    STARTS (`∀ i < J`), with clause 1 guarded by `1 ≤ J`.** The verdict rests on reading
+    `EFF.HE7.15`'s "A node requiring a level jump … satisfies μ ≥ 4, and the level-2 problem it
+    opens has μ₂ ≤ μ/2" as putting no floor on the opened problem, plus the level→index
+    translation at E.07. Cross-reader: confirm the translation and confirm that no consumer
+    wanted the (false-for-the-corpus) target floor. Evidence: exhaustive sweep + the three named
+    corpus configurations, all inadmissible under the committed form.
+17. **[E-D7 — a reading, not a repair] Q3's frame 3 `(2,2,1,2,2,7)` violates E.01's `hnode`**
+    (`ℓ*T < u` reads `8 < 7` at `T₂ = D′h = 4`). Either the sharpness frames are enumeration
+    frames outside DEFINITION HE7-1's scope (likeliest) or `hnode` is stronger than the
+    chapter's own gate data. The gate needs no ruling (the threshold value is `T`-independent
+    and is checked twice), but a cross-reader should say which reading is right, because it
+    decides whether E.01's `hnode` field is correctly transcribed.
+18. **[E-D5 — an ordering obligation] E.19's `ladderState_wf` has no body in the committed
+    text.** The body is supplied by A-E.1 and must land before E.20; until it does, E.19's three
+    descent lemmas and E.20 are unprovable-in-principle, not merely unproved.
+
 ---
 
 ## FINAL STATE
 
 All 68 nodes composed (§§3–10); closing sections §§11–14 complete; `spec/DAG_BLUEPRINT_E.tsv`
 emitted (315 rows, acyclic, 8 layers). CODEX CROSS-READ OWED (§14 is the queue).
+**STAGE-0e GATE EXECUTED 2026-08-16 (`leanspec/Leanspec/ChapE.lean`, 109 declarations, 58 gate
+checks, builds green): 13 defects, all repaired here by dated AMENDMENT A-E.1 below** — read it
+before consuming E.05, E.07, E.12, E.18, E.19, E.24, E.29, E.38, E.39, E.40, E.44, E.45, E.48,
+E.49, E.60, E.67 or E.68.
 
-<!-- RESUME: CHAPTER COMPLETE. Remaining external actions: (i) orchestrator GC-13/GC-14
-resolution pass (types the four placeholder nodes); (ii) cross-read per §14; (iii) leanspec
-stub stage per §12; (iv) dag_build.py re-run for the HE7 chapter-column move. -->
+<!-- RESUME: CHAPTER COMPLETE; STAGE-0e GATE CLOSED AND REPAIRED (amendment A-E.1, 2026-08-16).
+Remaining external actions: (i) orchestrator GC-13/GC-14 resolution pass (types the four
+placeholder nodes); (ii) cross-read per §14 (items 15-18 are A-E.1's residue; item 15, the E-D6
+universe ruling for chapter I, is the load-bearing one); (iii) fleet lands per §12, with E.19's
+body before E.20 and E.60/E.07(iii) at the A-E.1 signatures (leanspec still carries the
+pre-repair ones); (iv) verification/chapE_gate_*.py mirrors; (v) dag_build.py re-run for the HE7
+chapter-column move. -->
+
+## AMENDMENT A-E.1 (2026-08-16, dated append) — THE STAGE-0e STUB-GATE DEFECT LIST, REPAIRED
+
+**Provenance.** The chapter-E stub gate `leanspec/Leanspec/ChapE.lean` (commits
+`0aa28d50`/`64af3617`/`9d626d64`; builds green: 109 signed declarations, 58 executed
+`decide`/`rfl` gate checks at `q = 2` AND `q = 3`, zero `sorry`) recorded **13 defects,
+E-D1…E-D13** in its header. Per §12 / CHAP-H §15 rule 5, elaboration-level defects were cured
+minimally stub-side and are repaired here blueprint-side; the one statement-level defect (E-D11)
+was NOT patched in `leanspec` and is repaired here only.
+
+**Convention of this block** (CHAP-H's A-H.1 convention, not CHAP-G's): node text IS repaired in
+place, each repaired passage tagged `[repaired: A-E.1/E-D<n>]`; superseded text stays visible as
+a strikethrough or a quoted original; this block records, per defect, the finding, the defective
+ORIGINAL verbatim, the repair, and the evidence. Nothing is deleted.
+
+**Where the two files now differ.** `leanspec` carries the cured forms of E-D1…E-D10 and
+E-D12/E-D13. It still carries **E.60 `ladder_finite_bounds` and E.07(iii) `jump_count_bound` at
+their pre-repair hypothesis sets** (E-D11 is statement-level). The blueprint is authority; those
+two stubs are re-signed when the nodes land, and their 0e type diff is expected to differ.
+
+### A-E.1/E-D11 — E.60 `ladder_finite_bounds`: **CLAUSE 3 VACUOUS, CLAUSE 2 SLACK; THE `4 ≤ μ` FLOOR BELONGS ON THE JUMP START**
+
+**The defective original** (committed SIGNATURE, preserved; still the `leanspec` stub):
+
+    theorem ladder_finite_bounds (μ : ℕ → ℕ) (J : ℕ)
+        (h4 : ∀ i ≤ J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
+        2 ^ (J + 1) ≤ μ 0 ∧ (μ 0 = 4 → J ≤ 1) ∧ (μ 0 ≤ 7 → ∀ i, 1 ≤ i → i ≤ J → μ i ≤ 3)
+        ∧ (2 ≤ J → 8 ≤ μ 0)
+
+together with its engine, E.07(iii):
+
+    theorem jump_count_bound (μ : ℕ → ℕ) (J : ℕ)
+        (h4 : ∀ i ≤ J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
+        2 ^ (J + 1) ≤ μ 0
+
+**The finding (gate, machine-checked).** Under `h4 : ∀ i ≤ J`, clause 3's antecedent is
+unsatisfiable at `J ≥ 1`: `2 * μ 1 ≤ μ 0 ≤ 7` forces `μ 1 ≤ 3`, contradicting `h4 1`. The clause
+is provable and says nothing. Clause 2 is slack in the same way (the hypotheses force `J = 0`).
+
+**THE SOURCE VERDICT — the floor sits on the START of the jump.** `EFF.HE7.15` (THEOREM HE7.C
+`[r1]`), CANONICAL STATEMENT, verbatim:
+
+> “A node requiring a level jump — **a side of slope λ = u/ℓ carrying a repeated irreducible
+> residual factor r (multiplicity m ≥ 2) with ℓ·deg r ≥ 2** … — satisfies μ ≥ 4, and the
+> level-2 problem it opens has
+>
+>     μ₂ ≤ μ / (ℓ·d_r) ≤ μ/2 .
+>
+> Hence the number J of level jumps in any history satisfies **J ≤ log₂ μ − 1 ≤ log₂ n − 2**”
+
+The floor is asserted of the node that *requires* the jump; of the problem it *opens*, the source
+asserts only the halving. The same split governs the iteration, in the DERIVATION (§S7's proof,
+verbatim):
+
+> “Iterating: if jumps occur at levels 1..J then μ_i ≥ 4 for i ≤ J and μ_J ≤ μ/2^{J−1}, so
+> 4 ≤ μ/2^{J−1}, i.e. **J ≤ log₂ μ − 1**”
+
+— here the floor-carrying levels `1..J` are exactly the `J` jump-HOSTING levels (the jump at
+level `i` opens level `i+1`), and the final opened problem, level `J+1`, carries no floor. Under
+the blueprint's 0-based dictionary `μ i := μ_{i+1}` that is `4 ≤ μ i` for `i = 0..J−1`, i.e.
+**`∀ i < J`** (index translation spelled out at E.07's new SOURCE note). And the intended content
+of clause 3 is `EFF.HE7.16`(i) = COROLLARY HE7.B(i), verbatim:
+
+> “sufficiently μ ≤ 7 (THEOREM HE7.C: μ₂ ≤ μ/2 ≤ 7/2 with μ₂ ∈ ℤ, so μ₂ ≤ ⌊7/2⌋ = 3
+> [r2, HE7-PE1 F-3])”
+
+— a statement about the jump TARGET `μ₂`, derived from the halving ALONE. Imposing `4 ≤ μ₂` on
+the target contradicts the very conclusion (`μ₂ ≤ 3`) the clause exists to state. **The source is
+not ambiguous**; the committed `∀ i ≤ J` is a transcription slip of the source's level indexing.
+
+**The repair.**
+
+    theorem jump_count_bound (μ : ℕ → ℕ) (J : ℕ) (hJ : 1 ≤ J)
+        (h4 : ∀ i < J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
+        2 ^ (J + 1) ≤ μ 0
+
+    theorem ladder_finite_bounds (μ : ℕ → ℕ) (J : ℕ)
+        (h4 : ∀ i < J, 4 ≤ μ i) (hh : ∀ i < J, 2 * μ (i + 1) ≤ μ i) :
+        (1 ≤ J → 2 ^ (J + 1) ≤ μ 0) ∧ (μ 0 = 4 → J ≤ 1)
+        ∧ (μ 0 ≤ 7 → ∀ i, 1 ≤ i → i ≤ J → μ i ≤ 3)
+        ∧ (2 ≤ J → 8 ≤ μ 0)
+
+The `1 ≤ J` guard is forced and is honest: with no jump the hypotheses are empty, and
+`2^(0+1) ≤ μ 0` — "the mass is at least 2" — is not a corpus claim (a terminal `μ = 1` leaf is a
+configuration: *"μ = 1: a single irreducible factor of the current key's degree, σ read off"*,
+`EFF.HE7.15` DERIVATION). It was the over-strong floor that had been silently supplying it.
+
+**Verification (exhaustive sweep, `μ ≤ 64`, `J ≤ 5`, hypothesis-respecting enumeration with
+pruning).**
+
+| | committed `∀ i ≤ J` | repaired `∀ i < J` |
+|---|---:|---:|
+| admissible sequences | 5,453 | 24,576 |
+| counterexamples, clause 1 (guarded) | 0 | **0** |
+| counterexamples, clauses 2 / 3 / 4 | 0 / 0 / 0 | **0 / 0 / 0** |
+| clause-3 antecedent LIVE (`μ 0 ≤ 7 ∧ J ≥ 1`) | **0 — vacuous** | 14 |
+| clause-2 tightness witness (`μ 0 = 4 ∧ J = 1`) | **0 — slack** | 3 |
+| max `J` realized | 4 | 5 |
+
+(Unguarded clause 1 has exactly two counterexamples under the repaired form, both at `J = 0`:
+`μ 0 ∈ {0, 1}` — which is what the `1 ≤ J` guard removes.)
+
+**The decisive check — the corpus's own configurations.** Admissibility under each hypothesis
+set, for the three configurations the source names:
+
+| configuration (source) | committed | repaired |
+|---|---|---|
+| `n = 8`: one jump, `μ = 4 → μ₂ = 2` (`EFF.HE7.15`, `.57`) | **INADMISSIBLE** | admissible |
+| COROLLARY HE7.B(i)'s edge: `μ = 7 → μ₂ = 3` (`EFF.HE7.16`(i)) | **INADMISSIBLE** | admissible |
+| `n = 16`: two jumps `8 → 4 → 2` (ANNEX R R1.3's constructed family, 79/79 machine witnesses) | **INADMISSIBLE** | admissible |
+
+Under the committed floor the `n = 16` family would need `4 ≤ μ 2 ≤ μ 0/4 = 2`. A hypothesis set
+that excludes the corpus's own machine-exhibited witness family is wrong, independently of the
+vacuity finding.
+
+**Downstream audit (every consumer checked).** E.07(iii) is consumed by E.60 and E.64 (grep).
+E.64 `depth3_needs_16` consumes clause 4 (`2 ≤ J → 8 ≤ μ 0`) — unchanged in statement, and now
+with a realizable antecedent. E.65's numeric gate checks `∀ J ≤ 8, 2^(J+1) ≤ 4 → J ≤ 1` and
+`∀ m ≤ 8, 2*m ≤ 4 → m ≤ 2` — pure arithmetic about the CONCLUSIONS, unaffected. §13.3's rows
+`.15`/`.16` are unaffected (the dispositions are unchanged; only the hypothesis range moved).
+No other node cites either theorem. PROOF fields re-derived in place at E.07 and E.60.
+
+### A-E.1/E-D6 — THE `RungInterface` UNIVERSE: **HARD ERRORS AT E.24, E.39, E.40, E.44; EXPLICIT `uW` ADOPTED, CONSEQUENCE DECLARED**
+
+**The finding.** E.12's `W : Type*` field (correct per its SPLIT note — `EFF.T2.52` licenses a
+merely well-founded carrier, so `W := ℕ` would strengthen) makes `RungInterface`
+universe-polymorphic in a third parameter. `LB1Carrier`, `MP1Carrier`, `HE7APackage` are
+`Prop`-valued, so that universe occurs ONLY inside the body, where auto-binding does not reach:
+*"Failed to infer universe levels in type of binder `I`"*, *"declaration `MP1Carrier` contains
+universe level metavariables"*. Four declarations did not elaborate at all.
+
+**The repair (the gate's, adopted verbatim).** An explicit `universe uO uK uW` in the affected
+SIGNATURE blocks, with `{O : Type uO}`, `{K : Type uK}` and every interface mention written
+`RungInterface.{uO, uK, uW}` — at E.39, E.40, E.44 and E.24 (both declarations). E.12 keeps its
+`Type*` header and now NAMES its three parameters in order `⟨uO, uK, uW⟩`, because the consumers
+instantiate positionally. Machine-checked at this amendment: the fully explicit header
+(`{O : Type uO} … W : Type uW`) elaborates to the identical signature and the identical
+parameter order, so either spelling may land — the ORDER is what is frozen.
+
+**The consequence, which is a statement-strength fact and NOT a spelling fact.** Recorded as
+honesty item **E-12** and pointed at from E.24/E.39/E.40/E.44:
+
+> `LB1Carrier.{uO, uK, uW} C B` asserts `EFF.T2.18`'s block-suite existence for every rung
+> interface **whose rank carrier `W` lives in universe `uW`** — one universe at a time, because
+> Lean cannot quantify over universes inside a `Prop`. Likewise `MP1Carrier`, `HE7APackage`, and
+> hence the records `LadderObligations` and `LadderSupply`. At any fixed `uW` the obligation is
+> the source's, verbatim — no strength moved — but **chapter I must consume the carriers
+> universe-polymorphically** (`∀ {uW}, LadderSupply.{uO, uK, uW} C B`, legal at field level) **or
+> instantiate at one `uW` and record that choice.** An unrecorded implicit choice is a
+> conditionality leak: the capstone would rest on a carrier suite for one unnamed universe.
+
+**What was NOT done.** `W := ℕ` was not adopted (E.12's own instruction, and `EFF.T2.52`'s "an
+instance may discharge it either way"); no carrier field was weakened or removed; no Display-A
+conjunct's field list changed (so Part V gate (a) is not engaged — but the universe ruling in
+§14 item 15 is owner-visible).
+
+### A-E.1/E-D1 — E.05: `List.get?` DOES NOT EXIST AT THE PIN (hard error)
+
+Original bodies: `((Λ.rungs.get? i).map RungDatum.slotCount |>.getD 1)` and
+`((Λ.rungs.get? i).getD Λ.base)`; DEPENDS named `List.get?`. At `v4.31.0` + our mathlib the
+constant is gone ("The environment does not contain `List.get?`"). *Class: stale-API name
+(training-data smell).* **Repair:** `Λ.rungs[i]?` — the `getElem?` notation, same
+`Option RungDatum` semantics, `getD` defaults unchanged. Applied at the two bodies, the SIGNATURE
+NOTE, DEPENDS, and E.06's PROOF step 2 (`rungs.get i` → `Λ.rungs[i]`).
+
+### A-E.1/E-D2 — E.05: `List.Chain` IS DEPRECATED, WITH A CHANGED TYPE
+
+`List.Chain R a l` still elaborates (deprecation warning); upstream's replacement is
+`List.IsChain R l` — **no head argument** — and `List.Chain.cons`/`.nil` are retyped as
+`List.IsChain.cons_cons`/`List.IsChain.singleton`. **Repair:** the field is re-signed
+`hchain : List.IsChain rungFollows (base :: rungs)`, and E.65's gate frame is built through the
+new constructors. **Machine-checked semantics-preservation:** `List.Chain R a l ↔ List.IsChain R
+(a :: l)` closes by `Eq.to_iff rfl` (probe at this amendment) — the two are definitionally equal,
+so the re-sign changes no content. (The gate itself kept the deprecated form, which is why
+`leanspec` shows `List.Chain` while the blueprint now shows `IsChain`; the landed form is the
+blueprint's.)
+
+### A-E.1/E-D3 — E.38: `hλ` IS NOT A LEGAL IDENTIFIER (hard parse error)
+
+`(hλ : D' * h < lam)` in `offdisk_positivity` — "unexpected token 'λ'". **Repair:** renamed
+`hlam`. Pure syntax; the PROOF field's references read "the `ε₀ > 0` branch", not the name.
+
+### A-E.1/E-D4 — E.29: AN UNELABORABLE HOLE AND TWO CAST SLIPS
+
+Original conclusion: `seamSumT (fun t => if h : _ then C.dig (c (s₀ + R.ℓ * t)) else 0) ϑ η ≠ 0`
+— `if h : _` is a metavariable-typed guard. The node's own SIGNATURE NOTE licensed the stub to
+fix the spelling; the fixed spelling is now displayed at the node:
+`if s₀ + R.ℓ * (t : ℕ) < R.slotCount ∧ c (s₀ + R.ℓ * (t : ℕ)) ≠ 0 then … else 0`. That guard is
+NOT decidable (`Polynomial O` equality), so the node needs **`open scoped Classical`** — recorded
+at the SIGNATURE, the ENVIRONMENT line and §12(a)4; a landed `dite`-free formulation is
+permitted, a landed form that drops the guard is not. Two casts also fixed: `hatt`'s right-hand
+side was ascribed `: ℤ` against a `WithTop ℤ` equation (coercion supplied), and `R.u` needed
+`(R.u : ℤ)`. *No strength change.*
+
+### A-E.1/E-D5 — E.19: `ladderState_wf` IS A DATA ROW WITH NO BODY
+
+The committed SIGNATURE stops at `instance ladderState_wf … : WellFoundedRelation (LadderState
+W)`; §12(b) did not list it among the def bodies either. The gate could only sign it as an
+`axiom` (an `axiom` cannot carry `instance` — the ChapB B-D3 / ChapG D2 precedent), which makes
+the relation OPAQUE, and against an opaque relation E.19's three `rank_decreases_*` lemmas and
+E.20's engine are **unprovable in principle**. **Repair:** the body is supplied at the node —
+`letI := r; (inferInstance : WellFoundedRelation (ℕ ×ₗ (ℕ ×ₗ W)))`, machine-checked to elaborate
+at our pin (mathlib's `×ₗ` instance is found twice) — the row is marked DATA-BODY-OWED, added to
+§12(b), and §12 gains a **node-ordering note**: the body lands before E.20; a fleet agent handed
+E.20 against the axiom stub returns `BLOCKED: E.19 body owed`.
+
+### A-E.1/E-D7 — E.68: Q3's THIRD FRAME IS NOT A LEGAL RUNG AT ITS CORPUS THRESHOLD
+
+Frame 3 `(2,2,1,2,2,7)` has `D′h = e₁f₁h = 4`; at `T₂ = D′h = 4` E.01's node condition
+`hnode : ℓ * T < u` reads `2*4 = 8 < 7` — FALSE (`example : ¬ (2 * 4 < 7) := by decide`). In
+corpus letters `λ = u/ℓ = 3.5 ≤ D′h = 4` violates DEFINITION HE7-1's `λ > D′h` as E.01
+transcribes it. **Repair (gate's, adopted): the gate ROW is split, not the frame data** — the
+threshold value `27` is `T`-independent (`nextBound` never reads `T`), so it is checked at a
+legal `T = 3` AND formula-directly; the other four frames build as genuine `RungDatum`s at
+`T₂ = D′h` (`2, 2, 6, 2`). Reading recorded at the node and flagged for the cross-read (§14 item
+17): either the Q3 sharpness frames are enumeration frames outside DEFINITION HE7-1's scope
+(likeliest — `EFF.HE7.23`'s TEETH table is about reachable-height thresholds) or `hnode` is
+stronger than the chapter's own gate data. **Binding on consumers:** build no `RungDatum` from a
+Q3 frame without checking `ℓ * T < u`.
+
+### A-E.1/E-D8 — THE σ CARRIER'S FULLY-QUALIFIED NAME WAS WRONG EVERYWHERE
+
+`Uniformity.Density.FactorizationType` does not resolve. The landed carrier and its API sit in
+`Uniformity` (`Uniformity/Density/LocalData.lean:43`): `FactorizationType`, `.data`, `.degree`,
+`.ext`, `.degree_mk_add`; while `typeOf`, `typeOf_degree`, `monicFactors`, `typeOf_mul` sit in
+`Uniformity.Density`. **Repair:** §0.3's name list is split by namespace; E.45's `ladderSigma`,
+E.49's `mu2Sigma`, §0.4 and §7's header now write `Uniformity.FactorizationType`. **Cross-file:**
+the same wrong name appeared in a LANDED docstring, `leanfinal/Uniformity/ChapG/G52.lean:14`,
+corrected in the same amendment — comment-only, no statement, proof or import touched.
+
+### A-E.1/E-D9 — E.48: THE SIGNED CONCLUSION DOES NOT ELABORATE; RE-SIGNED ON `.data`
+
+**The defective original:**
+
+    theorem typeOf_list_prod {O : Type*} [CommRing O] [IsDomain O]
+        [IsDiscreteValuationRing O] (l : List (Polynomial O))
+        (hm : ∀ g ∈ l, Polynomial.Monic g) (hcond : True) :
+        typeOf l.prod = (l.map typeOf).sum
+
+`(l.map typeOf).sum` fails with "failed to synthesize `Add FactorizationType`", and the absence
+is deliberate: the landed module states the peel law *"on `.data`, not on any addition structure
+for `FactorizationType`, so it survives verbatim if such structure is later added"*
+(`Uniformity/Density/TypeOfAlgebra.lean`, whose spec entry REJECTS the algebraic structure, R14).
+**§12(a)7 executed:** the landed `typeOf_mul (hf : f.Monic) (hg : g.Monic) : (typeOf (f*g)).data
+= (typeOf f).data + (typeOf g).data` has **monicity only** — no coprimality, no root-set
+disjointness. **Repair:** `hcond : True` DROPPED (it stands for nothing), conclusion re-signed
+`(typeOf l.prod).data = (l.map fun g => (typeOf g).data).sum`. §14 item 9 is thereby ANSWERED:
+there is nothing for the ladder's blocks to supply and E.23 routes no side condition for this
+node. Degree bookkeeping travels through `Uniformity.FactorizationType.degree_mk_add`.
+
+### A-E.1/E-D10 — NO GATE CAN `decide` AN EQUATION BETWEEN σ-VALUES
+
+`FactorizationType`'s `DecidableEq` is `Classical.decEq` (noncomputable), so `decide` gets stuck
+on `Classical.choice`. **Repair:** a standing **GC-11 gate-spelling rider**, stated at E.67 and
+in §12 (the CHAP-B §12 rules-for-the-stub-landing-agent analogue): σ identities are gated on
+`.data`; degrees and `Option`-valued dictionary rows are unaffected. E.67's
+`ladderSigma_prepend` spot check is displayed in its executed `.data` form.
+
+### A-E.1/E-D12 — TWO CENSUS SLIPS IN THE CHAPTER'S OWN BOOKKEEPING
+
+(i) §12(b)'s def-body list named **E.34**, which has no def (its SIGNATURE is two theorems,
+`unit_mul_bijOn`/`unit_mul_zero`), and omitted E.19's body-less `ladderState_wf` — both fixed
+(E.34 struck, `ladderState_wf` added with the ordering note). (ii) §2's kind census listed
+`LadderLeaf` under the inductives while it is a structure: the true split is **10 structures /
+2 inductives**, now stated with all twelve names. §2 also gains the landed declaration census
+(**109** = 10 + 2 + 27 + 70).
+
+### A-E.1/E-D13 — E.18's CLAUSE (iii) IS ABSENT FROM THE SIGNATURE (minor, no repair needed)
+
+STATEMENT clause (iii) (`ν = 1 ⟹ G′ = 1`) has no conjunct in the signed contract. It FOLLOWS
+from the signed conclusion (monic of `natDegree D*(1−1) = 0` is `1`), so nothing is added; a
+SIGNATURE NOTE now records that the signed contract is (i)+(ii) only, so the gap is not read as
+a transcription loss.
+
+### A-E.1 — WHAT THIS AMENDMENT DID NOT TOUCH
+
+* `leanspec/Leanspec/ChapE.lean` — the gate's file; not edited here (§12 rule / CHAP-H §15
+  rule 5). The one cross-file edit is the G52 docstring FQN (E-D8), comment-only.
+* The four BLOCKED-until-resolution nodes (E.51, E.57, E.61, E.62) and their `True` placeholders
+  — still awaiting the orchestrator's GC-13/GC-14 pass; A-E.1 types none of them.
+* No node's mathematical strength: the only statement-level change is E-D11's hypothesis range
+  (weaker hypothesis, plus a `J = 0` guard on one clause where the source claims nothing), and
+  E-D9's re-sign onto the landed lemma's own shape.
+* The DAG (`spec/DAG_BLUEPRINT_E.tsv`): no edge changes — every repair is intra-node, and the
+  one dependency wording that moved (E.05's mathlib names) is not a DAG row.
 
 <!-- SENTINEL: BP-E END OF FILE -->
