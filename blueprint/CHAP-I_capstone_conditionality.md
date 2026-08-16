@@ -475,6 +475,27 @@ completeness claim is honest: closing every OPEN-MATH row above is NECESSARY for
 it becomes SUFFICIENT only through this step, whose formal composition is future work owned by
 the orchestrator's post-blueprint program.
 
+> **[ANNOTATED 2026-08-16 — unit T-1 BLUEPRINT-CONVERSION (OM-2, owner mandate #66):
+> REDUCED-TO CHAP-H §17, nodes H.100–H.124.]** The "NO NODE ANYWHERE" sentence above is
+> HISTORICAL as of this date: OM-2's certified skeleton
+> (`docs/openmath-campaign/OM-2_genind-b_2026-08-16.md`, 612/612) is converted to signed
+> CHAP-H contracts. The composed implication now has the node **H.124**
+> (`inductionPackage_of_clusterRates`: `(IH) + FullClusterRateBound n ⟹ InductionPackage n`
+> — the reduction AS A CONDITIONAL, hypothesis carried, the H.98/I-2 fence intact), fed by
+> the level-0 transport **H.100–H.105**, the cluster event grammar **H.106–H.117**, and the
+> conservative-verdict/rate/bridge layer **H.118–H.123** (unconditional at `d = 1, m ≤ 3`;
+> the S-1 bridge H.123 is an INEQUALITY, F-2-fenced, and consumes the owner-signed B.42
+> axiom footprint-visibly). **The NAMED RESIDUAL of T-1 after this reduction** — what
+> discharging `FullClusterRateBound n` still costs beyond `m ≤ 3, d = 1`: the stage legs
+> `HYP.36`/`HYP.32`/`HYP.33`/`HYP.30` (CS mass at `m ≥ 4`, per genre, via H.72 +
+> `StageInterface`), `HYP.81` (`μ ≥ 3`, first live `n = 6`), `HYP.82` (`n ≥ 8` tower),
+> `B-BOX-1` (`d ≥ 2` leaf reads), the W12 transcription debt (OM-2 D-1, unowned), and the
+> TRACK-V value rows `HYP.24/25/26/35` (consumed by `hdec`, not by this step). Blueprint
+> mechanics: FINDING F-H17.1 + PA-H17.1 (H.71's fixed `n₀` vs the window-dependent α-range)
+> are recorded at CHAP-H §17.0; the §17 0e gate is OPEN. This annotation updates the
+> completeness sentence: closing the OPEN-MATH rows above becomes SUFFICIENT through
+> H.124 + H.98, whose composition is now a contract, not future prose.
+
 ### 3.10 The CAP and COND nodes
 
 | node | category | disposition detail |
@@ -1626,6 +1647,141 @@ orchestrator's stub-resolution pass may now type I.01's body** (either
 or its unfolding under I.01's frozen name/kind). Display A's line-1 conjunct stops being
 vacuous in Lean at that pass; `I.25`'s registry expectation (`agnprw_termination` on C.94's
 consumers) is now declarable.
+
+### DATED ADDENDUM (2026-08-16, OM-4 — THE `(LB1)`/`(MP1)` TERMINAL-FATE ADJUDICATION: one new gate-(b) cite, one decomposition, one stop-the-line carrier finding)
+
+*(OM-4 unit, ledger rows HYP.41/HYP.42; full record with certification tables in
+`docs/openmath-campaign/OM-4_lb1-mp1_2026-08-16.md`; scripts
+`verification/om4_lb1_block_suite.py`, `verification/om4_mp1_recentered_key.py`; machine
+witness `verification/om4_shadow_vacuity.lean`. This addendum adds CITE DRAFTS ONLY — no
+landed statement is touched; §3.4's rows are annotated by reference, not edited.)*
+
+**FINDING 0 (stop-the-line for §4's consumption; machine-checked).** The landed carriers
+`LeanspecE.LB1Carrier` (E.39), `LeanspecE.MP1Carrier` (E.40) and the record
+`LeanspecE.LadderObligations` (E.44) are **trivially provable as committed** —
+`verification/om4_shadow_vacuity.lean` proves all three outright (Lean-core footprint;
+`LB1Carrier` by the singleton self-block list, `MP1Carrier` by a fabricated one-side
+numerical-shadow interface plus the carrier's own `(eC, fC)`). E.39's SIGNATURE NOTE
+abbreviated away exactly the clauses that carried the strength. Consequence: **§4's
+Display-A conjunct `LB1 ∧ MP1` must NOT be transcribed as `LadderObligations` until the
+stub stage lands the full `BlockSuite`/emission records** (E.39/E.40 SIGNATURE NOTEs; the
+E.40 strengthening is amendment-level — owner gate). Until then the conjunct's honest Lean
+carrier does not exist, and any "discharge" of the current one is content-free. The two
+cite drafts below are therefore drafted against the CONCRETE chapter-C vocabulary (landed,
+non-vacuous), not against E.39/E.40's current shadows.
+
+**HYP.42 `(MP1)` — the new gate-(b) cite (the FOURTH in the signature queue).** The corpus's
+own narrowing locates the whole open content at item 5 of the `(MID-PEEL)` suite:
+`EFF.T2.23` — *"No pin proves the recentered level-one key's orbit/`(e,f)` item, so `(MP1)`
+remains open"*; `EFF.T2.61` — *"Peeling a recentered level-one key still needs item 5 … which
+requires `Φ″` irreducible, asserted nowhere"*; items 2–4 at `Φ″` are S1.8C's four-pin
+transport (relative — they carry `Φ′`'s conditionality). The missing statement is published:
+
+**THE EXACT LEAN STATEMENT to be signed** (chapter-C vocabulary, all landed in
+`leanspec/Leanspec/ChapC.lean` + `leanfinal` `typeOf`; ENV-C):
+
+```lean
+namespace Uniformity.Density.Tower
+
+/-- `(MP1)` item 5 [cite:GN15 Thm 2.3 + eq (2.1)]: an in-window recentering of the
+level-one key is irreducible, with the frame's own single-orbit `(e, f)`. -/
+theorem recentered_key_emission {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} (F : KeyFrame O π) (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {Λ : Polynomial O} (hΛ : Λ ≠ 0) (hdeg : Λ.natDegree < F.key.natDegree)
+    (hwin : (((F.e₁ * F.f₁) * F.h : ℕ) : ℕ∞) < F.stageHeight Λ) :
+    Irreducible (F.key - Λ) ∧ typeOf (F.key - Λ) = ⟨{(F.e₁, F.f₁)}⟩
+```
+
+**FAITHFULNESS ENTRY (draft, for the fresh-context audit + signature).**
+
+* **Published source (primary, COVERS-ALL-O).** [GN15] J. Guàrdia, E. Nart, *Genetics of
+  polynomials over local fields*, Contemp. Math. 637 (2015) 207–241, **Theorem 2.3** (the
+  NS-2 verbatim display, standing setting an arbitrary discrete valued field), applied to
+  `g := Φ″ = F.key − Λ` at the node `(µ₁, φ = F.key)` (`µ₁` = the frame's inductive
+  valuation, MacLane chain `µ₀ →(x, λ₁) µ₁`): `ord_φ(Φ″) = 0` and `deg Φ″ = deg φ` force,
+  in the source's own degree law `deg g_{λ,ψ} = e_λ·ord_ψ(R_λ(g))·deg ψ·deg φ`, one factor
+  with `e_λ = ord_ψ = deg ψ = 1` and `deg g₀ = 0` — so `Φ″ = g_{λ,ψ}` and the source's
+  final clause (*"if `ord_ψ(R_λ(g)) = 1`, then `g_{λ,ψ}` is irreducible in `O_v[x]`"*)
+  gives irreducibility. **`(e,f)` leg:** [GN15] eq **(2.1)**: *"`e(F) = e(µ_F) = e₀⋯e_r`,
+  `f(F) = f₀⋯f_r`"* — at the length-1 integer-slope side this is `(e₁·1, f₁·1) = (e₁, f₁)`.
+* **Secondary (ℚ_p-specialized, the tightest shape match).** GMN **Theorem 2.11**
+  (`docs/references/HigherNewton.tex` 1258–1282, label `phir`, printed-numbering verified at
+  A-3's standard): *"We can effectively construct a monic polynomial `φ_r(x)` of type `t`
+  such that `R_{r−1}(φ_r)(y) ∼ ψ_{r−1}(y)`. **This polynomial is irreducible over
+  `Z_p[x]`**"* — and its construction at the refined type `(t; λ, y − s)` (with `e_r = 1`,
+  `f_r = 1`, so `m_{r+1} = m_r`) produces `φ_{r+1} = φ_r + P` with `P` EXACTLY a height-λ
+  digit-lift of degree `< m_r`: the recentered key IS the theorem's constructed
+  representative. The definition following it (*"A representative … without necessarily
+  assuming that it has been constructed by the method"*) plus the proof's product-theorem
+  argument (line 1281) and the §2.1 chain sentence (line 887: *"By the Theorem of the
+  product in orders 1,…,r−1, the polynomials `φ_i(x)` are all irreducible over `Z_p[x]`"*)
+  cover every permitted lift choice. Corroborating general-scope remark: [AGNPRW] Thm 4.4
+  (*"If `v` has rank one, then `φ = Q`"* — keys are irreducible over the rank-one
+  henselization).
+* **Clause mapping.** `hdeg`/`hΛ` ↔ the recentering increment (`deg L < D′`, `Λ ≠ 0`);
+  `hwin : T = D′·h < dv(Λ)` ↔ the `(WINDOW)` floor — source-side, it makes `Φ″` "of type
+  `t`" (the below-window read of `Φ″` coincides with `Φ′`'s) and makes the `(µ₁, Φ′)`-polygon
+  of `Φ″` ONE side of LENGTH 1 and integer slope `dv(Λ) − T`; `Irreducible (F.key − Λ)` ↔
+  the source's mult-1 irreducibility clause; `typeOf … = ⟨{(e₁, f₁)}⟩` ↔ the certified
+  single-orbit `(e,f)` decomposition, [GN15] (2.1) / GMN Cor 3.3 (*"if `d(S) = 1` the
+  polynomial is irreducible … `f(L/K) = m`, `e(L/K) = e`"*).
+* **Standing-hypothesis caveat (same genus as B.42's `φ ≁_µ φ_r` bullet).** [GN15] Thm 2.3
+  at the node `(µ₁, F.key)` needs `F.key ≁_{µ₁} x`; for `deg F.key = e₁f₁ ≥ 2` this is
+  automatic (the difference is monic of positive degree, same derivation as the B.42
+  addendum's bullet (ii)); the degenerate frame `e₁ = f₁ = 1` (`h = 0`, `D′ = 1`) has a
+  LINEAR recentered key — irreducible outright, no cite consumed. So no [FGMN] co-primary
+  is needed here; record the two-case split in the faithfulness entry at signing.
+* **Certification record (OM-4 §2.2).** Both primes, both characteristics: unramified stage
+  (f₁ = 2): 336 + 90 recentered keys, ALL irreducible; ramified stage (e₁ = 2): the defeat
+  system `{dv(Λ) > T, Φ″ reducible}` INFEASIBLE over 168 (p = 2) + 624 (p = 3) frame-valid
+  sweeps and 78 char-p sweeps, and **SHARP at the boundary** `dv(Λ) = T` (explicit reducible
+  witnesses `x² − 4` at `p = 2`, `x² − 3x − 18` at `p = 3` — so the window hypothesis is
+  load-bearing, not decorative); `(e,f)` emission confirmed 160/160 against PARI
+  `idealprimedec` (decorrelated round-4 implementation). Exact infeasibility proof for the
+  swept genre transcribed at OM-4 §3.2.
+* **What the cite does NOT close (`(MP1)`'s honest residue).** Items 2–4 remain S1.8C's
+  RELATIVE transport (they carry the level-one records' own conditionality, per
+  `EFF.T2.61`); and the E-layer consumption needs the strengthened `MP1Carrier` (FINDING 0)
+  discharged from this cite at the instance rows — a chartered stub-stage unit, not
+  mathematics. At level two nothing is needed (E.42's discharge, landed).
+
+**HYP.41 `(LB1)` — DECOMPOSITION onto chapter C's signed §5 layer, with one CONTINGENT
+cite.** The concrete level-one content of the block suite is ALREADY carried, at exactly
+the right frame, by two committed chapter-C nodes: **C.33**
+`exists_dvDissection`/`dvDissection_unique` (the side dissection = `(SIDE-PROD)` +
+single-side purity + the `(SEP)`-free degree law + slope detection) and **C.34**
+`exists_dv_residual_dissection` (the label dissection = `(LABEL-PROD)`/`(LABEL-PURE)`-shaped
+block split with uniqueness — a fleet proof via B.48's graded-coprime route, and B.48 is
+LANDED, so this leg mirrors a proved node). `(LABEL-OWN)` is the degree law of the two
+dissections combined; disjoint/exhaustive partitions are the product identities under
+`Squarefree`; inherited continuation data is C.35's `BlockContext`/`blockFactor` packaging.
+**Terminal fate of HYP.41, adjudicated: REDUCES-TO(C.33 + C.34 + an E-side
+strengthening/discharge unit).** ⚠ **RISK FLAG on C.33's route, with the contingent cite
+that retires it.** C.33's DEPENDS is explicit that B.41/B.42 are *"route templates — NOT
+consumable directly: they require `IsKey φ`, false for `F.key` at `h ≥ 1`"* — and B.42's
+own committed route was **machine-refuted** at order 1 (A-F.10: `hpure` unavailable in the
+multi-side inductive case; the vertex-split mechanism has *"NO corpus proof … at general
+keys"*). The same obstruction plausibly recurs at C.33's `dv`-graded rerun. If it does,
+C.33's disposition follows B.42's precedent: retag `[cite:GN15 Thm 2.3]` — the SAME
+published display at MacLane chain length `r = 1` instead of `r = 0` (NS-2/NS-3: the source
+is simultaneously the order-1 and order-`r` statement), with [FGMN] Thm 6.6 as the same
+co-primary for the proper-key range. *Recommended queue shape in that branch:* ONE
+general-order [GN15] Thm 2.3 signature event covering B.42 AND C.33 (the two faithfulness
+entries share their primary verbatim quote; nothing mathematical changes). Certification
+record (OM-4 §2.1): the full S1.7A display list verified exactly on 22 constructed trigger
+suites over {p = 2,3} × {ℚ_p, 𝔽_p((t))} (multi-side, mixed, deg r′ = 2, e′ = 2, and an
+𝔽₄-stage showcase) + 300 random squarefree states against PARI factorpadic, 0 violations.
+
+**Queue mechanics.** CITE (gate (b)) count **3 → 4 (+1 contingent)**: the [AGNPRW] Thm 5.2
+cite (C.94), the FGMN cite (C.66/C.92), the [GN15] Thm 2.3 cite (B.42), NEW: [GN15]
+Thm 2.3 + (2.1) at the recentered key (`recentered_key_emission`, HYP.42's item 5), and
+CONTINGENT: [GN15] Thm 2.3 at `r = 1` for C.33 (= HYP.41's side leg) if its committed route
+hits B.42's refuted-mechanism wall — in which case merge it into B.42's signature event as
+one general-order cite. §3.4's HYP.41/HYP.42 rows' "none is known today" is superseded by
+this addendum (annotation by reference; the rows are not edited). Owner signs per cite; the
+HYP.17/A-3 numbering discipline applies ([GN15] numbers above were read from
+arXiv:1309.4340v2 this campaign; Contemp. Math. print check is the standing A-3 residual).
 
 <!-- SENTINEL: BP-I END OF FILE -->
 
