@@ -5081,7 +5081,38 @@ signatures; the owner package goes out on its verdict. (4) Ledger:
 pre-proof across the campaign (incl. the A-F.8-form's third B.39
 refutation and B.42's route obstruction). Ops: the roll-up
 generator swept .lean.txt refutation records into imports once —
-caught by the build, generator fixed, commit amended honestly. — THE BLUEPRINT-COMPLETION CAMPAIGN
+caught by the build, generator fixed, commit amended honestly.
+
+**2026-08-16 DATED APPEND #66 — THE OWNER SIGNS GATE (b) AND ISSUES
+THE STANDING COMPLETION MANDATE.** Asvin (near-verbatim): "the lean
+formalization looks good! Once the math lands, continue with the
+conversion to a blueprint followed by formalization. The goal is
+the same as always — a complete proof of the uniformity theorem
+modulo literature cites of the montes algorithm. Don't stop until
+we get there." RECORDED INTERPRETATION (orchestrator; owner may
+override): (a) **gate-(b) SIGNED for B.42's import** — the exact
+Lean statement (`exists_slope_factorization`) and its two sources
+([GN15] Thm 2.3 + [FGMN] Thm 6.6 co-primary) were displayed to the
+owner in full immediately before this approval; (b) the import
+MECHANISM is approved, and C.94 ([AGNPRW] publ. Thm 5.6) +
+C.66/C.92 ([FGMN] battery) are **signed at category level** — all
+three are Montes-algorithm literature, the named modulo-class of
+the goal; their exact statements + faithfulness entries are on
+file (CHAP-I §3 + addendum) for individual inspection at will;
+(c) the A-3 browser-check riders (AGNPRW §5 numbering; FGMN print
+numbering) remain OPEN VERIFICATION ITEMS, non-blocking per the
+don't-stop order — any check that later fails is a
+stop-the-line correction event on the cite's source line, not on
+the signed statement. (d) STANDING MANDATE: run the full loop —
+open math (OM campaign) → blueprint amendments/nodes → stub gates
+→ fleets — without stopping, until `UniformityStatement` is proved
+modulo the signed Montes cites. CHARTER CONSEQUENCE: leanfinal's
+"no axioms beyond Lean core" line amends to "…plus owner-signed
+gate-(b) literature cites, each with a faithfulness entry" —
+executed with the B.42 axiom landing. ACTIONS FIRED AT THIS
+APPEND: the B.42 axiom-landing unit; chapter-B upper-layer fleet
+(behind the landing); leanspec stub gates for chapters C and E
+(D/F/I to follow); the OM campaign continues under its watchdog. — THE BLUEPRINT-COMPLETION CAMPAIGN
 FIRES (conventions czar → adversarial gate → parallel authors), AND
 THE OWNER NARROWS SIGN-OFF TO TWO GATES.** (1) OWNER RULING (Asvin,
 recorded verbatim in CONVENTIONS_2026-08-15.md PART V, which now
