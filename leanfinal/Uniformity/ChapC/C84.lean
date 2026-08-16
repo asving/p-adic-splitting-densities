@@ -18,17 +18,19 @@ carrier: the level-`i` weight `wt_i`, the flavor monomials `M_{r,t}(m)` at the `
 CORRECTED display (the base **re-solves per flavor**), and the digit lift `lift_i(c; m)` built
 from them.
 
-**Five declarations**: the three signed ones (`DeepTower.towerWeight`,
-`DeepTower.flavorMonomial`, `DeepTower.towerLift`) plus the two the lift's body needs —
-`flavorIdx` (the multi-index transport `Fin (i−1) → ℕ` ↦ `ℕ → ℕ`) and `DeepTower.deepDigit` (the
-iterated `K_{i−1}`-expansion digit read). The twin carries `towerLift` as an **axiom constant**
-with the body declared "the fleet's" (the C.45/C.97 rule); it is a **real definition** here, and
-`deepDigit` is what makes it one.
+**Seven declarations**: the three signed ones (`DeepTower.towerWeight`,
+`DeepTower.flavorMonomial`, `DeepTower.towerLift`), the two the lift's body needs — `flavorIdx`
+(the multi-index transport `Fin (i−1) → ℕ` ↦ `ℕ → ℕ`) and `DeepTower.deepDigit` (the iterated
+`K_{i−1}`-expansion digit read) — and two theorems, `DeepTower.ehat_two` and
+`DeepTower.flavorMonomial_depth_two` (the statable half of the node's reconciliation companion).
+The twin carries `towerLift` as an **axiom constant** with the body declared "the fleet's" (the
+C.45/C.97 rule); it is a **real definition** here, and `deepDigit` is what makes it one.
 
 * `towerWeight W i v a J` — `wt_i`, the level-`i` weight of exponent data.
 * `flavorMonomial W key i r t m` — `M_{r,t}(m)`, the base-re-solved flavor monomial.
 * `flavorIdx i t` / `deepDigit W i s t r` — the multi-index form, and the digit `d_{r,t}`.
 * `towerLift W key i m s` — `lift_i(s; m) = Σ_{r,t} d_{r,t}·M_{r,t}(m)`.
+* `ehat_two` (`ê₂ = e₁e₂`) and `flavorMonomial_depth_two` — the `i = 2` monomial IS C.56a's.
 
 ## The displays
 
@@ -107,12 +109,12 @@ flavor solves its own class equation.
 * **The depth-2 reconciliation companion is `towerLift T.deepTower … = k2DigitLift`, and it is
   NOT statable yet**: `TowerDatum.deepTower` — the concrete depth-2 chain — is an axiom constant
   of §10 (C.99 region, `leanspec/Leanspec/ChapC.lean:2150`) with no landed file, so the two sides
-  cannot be typed against one another. What IS statable is the **exponent-level half**: at
-  `i = 2`, over any `DeepTower`
-  whose rung data matches a `TowerDatum`, `flavorMonomial` is exactly the monomial factor of
-  C.56a's `k2DigitLift` summand. That is where all the index arithmetic lives (the offset
-  `Δ(r,t)`, the `n̂₂`-solve, and both exponent shifts), so the residual gap in the companion is
-  only the digit map's transport along `deepTower`'s field identification.
+  cannot be typed against one another. What IS statable is the **exponent-level half**, landed
+  below as `DeepTower.flavorMonomial_depth_two`: at `i = 2`, over any `DeepTower` whose rung-2
+  data matches a `TowerDatum`, `flavorMonomial` is exactly the monomial factor of C.56a's
+  `k2DigitLift` summand. That is where all the index arithmetic lives (the offset `Δ(r,t)`, the
+  `n̂₂`-solve, and both exponent shifts), so the residual gap in the companion is only the digit
+  map's transport along `deepTower`'s field identification.
 
 **DEPENDS.** C.83 (`DeepTower`, `ehat`, `Econst`, `towerNorm`, `towerSolve`) · C.14a
 (`KeyFrame.Pin`, `stageCoord`, `resLift`) · C.56a (`k2DigitLift` — the `i = 2` instance this
@@ -127,15 +129,18 @@ non-existence `11/2 ∉ ℤ`); S12.2 via `.17`'s conditionality (the `bound_i` r
 
 **TEETH.** FA1-LIFT (22/0: fixed-base flavor non-existence + the re-solved member green) →
 executable regression + §13 row; the grid-4 equality instance (`170 = 170 = 170`) → retained.
-Neither is dischargeable at these binders (abstract carrier, no numerals — C.15's D7 rider); the
-local substitutes are the unfolding checks at the foot of the file.
+Neither is dischargeable at these binders (abstract carrier, no numerals — C.15's D7 rider). The
+local substitutes are `flavorMonomial_depth_two` — which bites hardest, since it fixes the whole
+`i = 2` exponent arithmetic against the independently landed C.56a display, so an `e₁ ↔ e₂` swap,
+a dropped `ê`-quotient or a fixed (un-re-solved) base breaks a compile — and the `wt₂` unfolding
+`example` at the foot of the file.
 
 **ENVIRONMENT.** ENV-C1.
 
 ## Status
 
 Sorry-free, axiom-free (Lean core only). All three signed declarations landed, `towerLift` as a
-real definition. **Booked, not landed** (recorded so no reader mistakes their absence for a
+real definition, plus the two-rung reconciliation theorem. **Booked, not landed** (recorded so no reader mistakes their absence for a
 claim): the exact-height and `wt`-companions, the range clauses (`i₀′ + e_1 r < D_1`,
 `b_j′ + e_{j+1} t_j < l_{j+1}`), and the full depth-2 reconciliation to C.56a's `k2DigitLift`
 (blocked on §10's `TowerDatum.deepTower`, see the divergences).
@@ -268,7 +273,94 @@ noncomputable def DeepTower.towerLift {F : KeyFrame O π} {H₀ : ℕ} {hpin : F
       Polynomial.C (resLift (W.deepDigit i s (flavorIdx i t) rr))
         * W.flavorMonomial key i rr (flavorIdx i t) m
 
+/-! ### The statable half of the depth-2 reconciliation companion
+
+The blueprint names `towerLift`-at-depth-2 `= k2DigitLift` (C.56a) as this node's companion. The
+full statement needs §10's `TowerDatum.deepTower` to type the two sides against each other and is
+therefore not yet writable (see the module docstring). Its **exponent-level half is**, and it is
+where all the index arithmetic sits: `flavorMonomial` at `i = 2`, over any `DeepTower` whose
+rung-2 data matches a `TowerDatum`, is exactly the monomial factor of C.56a's `k2DigitLift`
+summand — same flavor offset `Δ(r,t) = e₁e₂h·r + e₂u₂·t₁`, same `n̂₂`-solve, same two exponent
+shifts. -/
+
+/-- `ê₂ = e₁·e₂`, the two-rung instance of C.83's `ehat`. Shared by the weight check and the
+depth-2 reconciliation below, both of which turn on the two divisions `ê₂/e₁ = e₂` and
+`ê₂/ê₂ = 1`. -/
+theorem DeepTower.ehat_two {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) : W.ehat 2 = W.e 1 * W.e 2 := by
+  rw [DeepTower.ehat, show (Finset.Icc 1 2 : Finset ℕ) = {1, 2} by decide,
+    Finset.prod_insert (by decide), Finset.prod_singleton]
+
+/-- **The exponent-level depth-2 reconciliation.** Over a `DeepTower` whose rung-2 data matches a
+tower datum `T` (`e₂`, `u₂`; the rung-1 data matches by C.83's `he1`/`hu1` fields, unconditionally)
+and whose first key is the frame key, the flavor monomial at `i = 2` IS the monomial of C.56a's
+`k2DigitLift` summand at flavor `(r, t₁)`:
+
+* the offset is `Δ = e₁e₂h·r + e₂u₂·t₁` — C.56a's, on the nose (this is where `ê₂/e₁ = e₂` and
+  `ê₂/ê₂ = 1` are consumed, hence the two positivity hypotheses);
+* the base is `n̂₂` re-solved at `m − Δ` — C.83's `towerNorm 1` IS §8's `n2Exp` once the rung data
+  agrees;
+* the `x`-exponent shifts by `e₁r` and the `Φ′`-exponent by `e₂t₁`.
+
+What this does NOT say is the other half of the companion: that the DIGIT `d_{r,t}` agrees with
+C.56a's `resLift (stageCoord (k2Coord …))`. That needs the field identification carried by §10's
+`TowerDatum.deepTower` (`fld 2 ≃+* AdjoinRoot T.ψ₂`), which has no landed file. -/
+theorem DeepTower.flavorMonomial_depth_two {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    (W : DeepTower F H₀ hpin r) (T : TowerDatum F H₀ hpin) (key : ℕ → Polynomial O)
+    (hkey : key 1 = F.key) (hWe2 : W.e 2 = T.e₂) (hWu2 : W.u 2 = T.u₂)
+    (he₁ : 0 < F.e₁) (he₂ : 0 < T.e₂) (rr : ℕ) (t : ℕ → ℕ) (m : ℕ) :
+    W.flavorMonomial key 2 rr t m
+      = Polynomial.C (π ^ (n2Exp T (m - (F.e₁ * T.e₂ * F.h * rr + T.e₂ * T.u₂ * t 1))).1)
+          * Polynomial.X ^ ((n2Exp T (m - (F.e₁ * T.e₂ * F.h * rr + T.e₂ * T.u₂ * t 1))).2.1
+              + F.e₁ * rr)
+          * F.key ^ ((n2Exp T (m - (F.e₁ * T.e₂ * F.h * rr + T.e₂ * T.u₂ * t 1))).2.2
+              + T.e₂ * t 1) := by
+  have hehat : W.ehat 2 = F.e₁ * T.e₂ := by rw [W.ehat_two, W.he1, hWe2]
+  have hΔ : F.e₁ * rr * (W.ehat 2 / W.e 1) * W.u 1
+      + ∑ j ∈ Finset.Icc 1 (2 - 1), W.e (j + 1) * t j * (W.ehat 2 / W.ehat (j + 1)) * W.u (j + 1)
+      = F.e₁ * T.e₂ * F.h * rr + T.e₂ * T.u₂ * t 1 := by
+    norm_num [Finset.Icc_self, hehat, W.he1, W.hu1, hWe2, hWu2,
+      Nat.mul_div_cancel_left _ he₁, Nat.div_self (Nat.mul_pos he₁ he₂)]
+    ring
+  have hnorm : W.towerNorm 1 (m - (F.e₁ * T.e₂ * F.h * rr + T.e₂ * T.u₂ * t 1))
+      = ((n2Exp T (m - (F.e₁ * T.e₂ * F.h * rr + T.e₂ * T.u₂ * t 1))).1,
+         (n2Exp T (m - (F.e₁ * T.e₂ * F.h * rr + T.e₂ * T.u₂ * t 1))).2.1,
+         Fin.snoc (fun x : Fin 0 => x.elim0)
+           (n2Exp T (m - (F.e₁ * T.e₂ * F.h * rr + T.e₂ * T.u₂ * t 1))).2.2) := by
+    simp [DeepTower.towerNorm, n2Exp, hWe2, hWu2]
+  have hsnoc : (Fin.snoc (fun x : Fin 0 => x.elim0)
+      (n2Exp T (m - (F.e₁ * T.e₂ * F.h * rr + T.e₂ * T.u₂ * t 1))).2.2 : Fin 1 → ℕ) 0
+      = (n2Exp T (m - (F.e₁ * T.e₂ * F.h * rr + T.e₂ * T.u₂ * t 1))).2.2 := rfl
+  rw [DeepTower.flavorMonomial]
+  simp only [hΔ, show (2 - 1 : ℕ) = 1 from rfl, hnorm]
+  congr 1
+  simp [hsnoc, hkey, hWe2]
+
 end Uniformity.Density.Tower
+
+/-! ## Unfolding check — the weight's four terms at `i = 2`
+
+An `example`, not a declaration: the local substitute for the §13 numeral row (see the module
+docstring's TEETH). It pins which quotient prices which variable — `a` at `ê₂/e₁ = e₂` (NOT at
+`e₁`), the intermediate `J₁` at `ê₂/ê₂ = 1` times `u₂`, and the top `J₂` at `E₂` — so an
+`e₁ ↔ e₂` swap or a misplaced `ê`-quotient cannot survive it. -/
+
+section UnfoldingChecks
+
+open Uniformity.Density.Tower
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-- `wt₂(v, a, J) = e₁e₂·v + a·e₂·u₁ + J₁·u₂ + J₂·E₂`. -/
+example {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ} (W : DeepTower F H₀ hpin r)
+    (v a : ℕ) (J : ℕ → ℕ) (he₁ : 0 < W.e 1) (he₂ : 0 < W.e 2) :
+    W.towerWeight 2 v a J
+      = W.e 1 * W.e 2 * v + a * W.e 2 * W.u 1 + J 1 * W.u 2 + J 2 * W.Econst 2 := by
+  have hehat : W.ehat 2 = W.e 1 * W.e 2 := W.ehat_two
+  norm_num [DeepTower.towerWeight, Finset.Icc_self, hehat,
+    Nat.mul_div_cancel_left _ he₁, Nat.div_self (Nat.mul_pos he₁ he₂)]
+
+end UnfoldingChecks
 
 /-! ## Axiom footprint -/
 
@@ -279,5 +371,7 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.flavorIdx
 #print axioms Uniformity.Density.Tower.DeepTower.deepDigit
 #print axioms Uniformity.Density.Tower.DeepTower.towerLift
+#print axioms Uniformity.Density.Tower.DeepTower.ehat_two
+#print axioms Uniformity.Density.Tower.DeepTower.flavorMonomial_depth_two
 
 end AxCheck
