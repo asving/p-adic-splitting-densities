@@ -1,0 +1,112 @@
+
+=== LEG A — HYP.74 (JD0-BOX-2): the gauge-form mechanism ===
+GREEN A1.bijection+count-blind slotScale [F4, all u, all v]  | 9 gauges x 16 families; |S| = 4
+GREEN A1.bijection+count-blind slotScale [F3, all u, all v]  | 4 gauges x 9 families; |S| = 3
+GREEN A1.NONCHAR-control: additive shift leaves the stratum [F4]  | a bijection OUTSIDE the four-line class; image disjoint from S
+GREEN A1.NONCHAR-control: additive shift leaves the stratum [F3]  | a bijection OUTSIDE the four-line class; image disjoint from S
+CAUGHT [mutant] A1m.zero-letter 'gauge' breaks bijectivity [F4]
+GREEN A2.count |Z2(F4, E=2)| = |K*|^E = 9 [brute]  | found 9
+GREEN A2.gaugeCobdry preserves cocycles [F4, E=2]  | 9 cocycles x 9 gauges
+GREEN A2.count |Z2(F3, E=2)| = |K*|^E = 4 [brute]  | found 4
+GREEN A2.gaugeCobdry preserves cocycles [F3, E=2]  | 4 cocycles x 4 gauges
+GREEN A2.count |Z2(F3, E=3)| = |K*|^E = 8 [brute]  | found 8
+GREEN A2.gaugeCobdry preserves cocycles [F3, E=3]  | 8 cocycles x 8 gauges
+GREEN A2.count |Z2(F4, E=3)| = |K*|^E = 27 [brute]  | found 27
+GREEN A2.gaugeCobdry preserves cocycles [F4, E=3]  | 27 cocycles x 27 gauges
+GREEN A2.count |Z2(F5, E=2)| = |K*|^E = 16 [brute]  | found 16
+GREEN A2.gaugeCobdry preserves cocycles [F5, E=2]  | 16 cocycles x 16 gauges
+GREEN A2.count |Z2(F5, E=3)| = |K*|^E = 64 [brute]  | found 64
+GREEN A2.gaugeCobdry preserves cocycles [F5, E=3]  | 64 cocycles x 64 gauges
+CAUGHT [mutant] A2m.single-entry flip breaks the cocycle identity [F4, E=2]  | violating triple (0, 0, 1)
+GREEN A3.resTwist degree preserved [F4, deg <= 2, all xi]
+GREEN A3.resTwist leading coeff (hence monicity) preserved [F4]
+GREEN A3.resTwist root census r ~ xi*r [F4]
+GREEN A3.resTwist degree preserved [F9, deg <= 2, all xi]
+GREEN A3.resTwist leading coeff (hence monicity) preserved [F9]
+GREEN A3.resTwist root census r ~ xi*r [F9]
+CAUGHT [mutant] A3m.wrong normalization xi^{+deg} caught at F4 (non-involution)
+CAUGHT [mutant] A3m.wrong normalization xi^{+deg} MISSED at F3 — expected miss, the involution separator  | F3 units are involutions: xi^{2 deg} = 1 hides the defect (F-gate separator model)
+GREEN A4.z-power strike gauges are unit-valued [F4, all z, exponents -2..2]
+GREEN A5.F2 degeneracy: slotScale is the identity for every gauge (JD0-BOX-5)
+
+=== LEG B — HYP.139 (W-1 transport at the carrier vocabulary) ===
+GREEN B1.W1Transport iff equal vanishing loci [F3, all 729 pairs]
+GREEN B1.count transportable pairs = ((q-1)^2+1)^3 = 125 [F3]  | found 125
+GREEN B1.W1Transport iff equal vanishing loci [F4, all 4096 pairs]
+GREEN B1.count transportable pairs = ((q-1)^2+1)^3 = 1000 [F4]  | found 1000
+GREEN B2.transport relation reflexive + symmetric + transitive [F3, exhaustive]  | |rel| = 125
+GREEN B3.omega = c(l+m)/(c_l c_m) is a 2-cocycle [Z/6, F3, all 64 c]
+GREEN B3.#{omega == 1} = #Hom(Z/6, K*) = gcd(6, q-1) = 2 [F3]  | found 2; 'nothing gives omega == 1': 62 systems refuse
+GREEN B3.separator omega vs omega^-1 [F3]  | COINCIDE (involution regime)
+GREEN B3.omega = c(l+m)/(c_l c_m) is a 2-cocycle [Z/6, F4, all 729 c]
+GREEN B3.#{omega == 1} = #Hom(Z/6, K*) = gcd(6, q-1) = 3 [F4]  | found 3; 'nothing gives omega == 1': 726 systems refuse
+GREEN B3.separator omega vs omega^-1 [F4]  | separated: 3/729 omega-tables self-inverse
+GREEN B3.omega = c(l+m)/(c_l c_m) is a 2-cocycle [Z/6, F5, all 4096 c]
+GREEN B3.#{omega == 1} = #Hom(Z/6, K*) = gcd(6, q-1) = 2 [F5]  | found 2; 'nothing gives omega == 1': 4094 systems refuse
+GREEN B3.separator omega vs omega^-1 [F5]  | separated: 128/4096 omega-tables self-inverse
+CAUGHT [mutant] B3m.omega vs omega^{-1} confusion caught at F4
+CAUGHT [mutant] B3m.omega vs omega^{-1} confusion MISSED at F3 — expected miss (separator)
+GREEN B4.concrete omega != 1 witness at F4 (a non-homomorphic line system)  | c = [(0, 1), (1, 0), (0, 1), (0, 1), (0, 1), (0, 1)], omega(1,1) = (0, 1)
+
+=== LEG C — HYP.148 (GENHN-BOX-2), abstract W-9 algebra only (arc FENCED) ===
+GREEN C1.assoc(singles) <=> cocycle identity [F4, E=2, ALL tables]  | #assoc = 9 = #cocycles = 9
+GREEN C1.assoc(singles) <=> cocycle identity [F3, E=2, ALL tables]  | #assoc = 4 = #cocycles = 4
+GREEN C1.assoc(singles) <=> cocycle identity [F3, E=3, ALL tables]  | #assoc = 8 = #cocycles = 8
+GREEN C1.assoc(singles) <=> cocycle identity [F5, E=2, ALL tables]  | #assoc = 16 = #cocycles = 16
+GREEN C1.full-function associativity on all 27 cocycles [F4, E=3, 40 random triples each]
+CAUGHT [mutant] C1m.non-cocycle table breaks associativity [F4, E=2]  | cocycle violation at (0, 0, 1); assoc fails at singles (0, 0, 1)
+GREEN C2.card K^(Z/E) = q^E = 16 [F4, E=2]
+GREEN C2.card K^(Z/E) = q^E = 9 [F3, E=2]
+GREEN C2.card K^(Z/E) = q^E = 64 [F4, E=3]
+GREEN C2.card K^(Z/E) = q^E = 81 [F9, E=2]
+GREEN C3.|Z2| = 4 and degenerate rows constant [F3, E=2, brute]  | 4 cocycles
+GREEN C3.first-row symmetry c(1,k) = c(k,1) [F3, E=2]
+GREEN C3.FULL symmetry c(a,b) = c(b,a) [F3, E=2]
+GREEN C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F3, E=2]
+GREEN C3.left recursion agrees [F3, E=2]
+GREEN C3.|Z2| = 9 and degenerate rows constant [F4, E=2, brute]  | 9 cocycles
+GREEN C3.first-row symmetry c(1,k) = c(k,1) [F4, E=2]
+GREEN C3.FULL symmetry c(a,b) = c(b,a) [F4, E=2]
+GREEN C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F4, E=2]
+GREEN C3.left recursion agrees [F4, E=2]
+GREEN C3.|Z2| = 16 and degenerate rows constant [F5, E=2, brute]  | 16 cocycles
+GREEN C3.first-row symmetry c(1,k) = c(k,1) [F5, E=2]
+GREEN C3.FULL symmetry c(a,b) = c(b,a) [F5, E=2]
+GREEN C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F5, E=2]
+GREEN C3.left recursion agrees [F5, E=2]
+GREEN C3.|Z2| = 8 and degenerate rows constant [F3, E=3, brute]  | 8 cocycles
+GREEN C3.first-row symmetry c(1,k) = c(k,1) [F3, E=3]
+GREEN C3.FULL symmetry c(a,b) = c(b,a) [F3, E=3]
+GREEN C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F3, E=3]
+GREEN C3.left recursion agrees [F3, E=3]
+GREEN C3.|Z2| = 27 and degenerate rows constant [F4, E=3, brute]  | 27 cocycles
+GREEN C3.first-row symmetry c(1,k) = c(k,1) [F4, E=3]
+GREEN C3.FULL symmetry c(a,b) = c(b,a) [F4, E=3]
+GREEN C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F4, E=3]
+GREEN C3.left recursion agrees [F4, E=3]
+GREEN C3.|Z2| = 64 and degenerate rows constant [F5, E=3, brute]  | 64 cocycles
+GREEN C3.first-row symmetry c(1,k) = c(k,1) [F5, E=3]
+GREEN C3.FULL symmetry c(a,b) = c(b,a) [F5, E=3]
+GREEN C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F5, E=3]
+GREEN C3.left recursion agrees [F5, E=3]
+GREEN C3.|Z2| = 16 and degenerate rows constant [F3, E=4, brute]  | 16 cocycles
+GREEN C3.first-row symmetry c(1,k) = c(k,1) [F3, E=4]
+GREEN C3.FULL symmetry c(a,b) = c(b,a) [F3, E=4]
+GREEN C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F3, E=4]
+GREEN C3.left recursion agrees [F3, E=4]
+GREEN C3.|Z2| = 81 and degenerate rows constant [F4, E=4, generated]  | 81 cocycles
+GREEN C3.first-row symmetry c(1,k) = c(k,1) [F4, E=4]
+GREEN C3.FULL symmetry c(a,b) = c(b,a) [F4, E=4]
+GREEN C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F4, E=4]
+GREEN C3.left recursion agrees [F4, E=4]
+GREEN C3.|Z2| = 256 and degenerate rows constant [F5, E=4, generated]  | 256 cocycles
+GREEN C3.first-row symmetry c(1,k) = c(k,1) [F5, E=4]
+GREEN C3.FULL symmetry c(a,b) = c(b,a) [F5, E=4]
+GREEN C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F5, E=4]
+GREEN C3.left recursion agrees [F5, E=4]
+CAUGHT [mutant] C3m.asymmetric table fails the cocycle identity [F4, E=3]
+GREEN C4.integer carry census [E=2]: standard wrap among 4 {0,1}-solutions
+GREEN C4.integer carry census [E=3]: standard wrap among 6 {0,1}-solutions
+
+=== SUMMARY ===
+checks: 95 GREEN / 0 RED; mutants: 8/8 caught

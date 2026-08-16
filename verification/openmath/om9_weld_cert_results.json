@@ -1,0 +1,525 @@
+[
+ {
+  "name": "A1.bijection+count-blind slotScale [F4, all u, all v]",
+  "ok": true,
+  "detail": "9 gauges x 16 families; |S| = 4"
+ },
+ {
+  "name": "A1.bijection+count-blind slotScale [F3, all u, all v]",
+  "ok": true,
+  "detail": "4 gauges x 9 families; |S| = 3"
+ },
+ {
+  "name": "A1.NONCHAR-control: additive shift leaves the stratum [F4]",
+  "ok": true,
+  "detail": "a bijection OUTSIDE the four-line class; image disjoint from S"
+ },
+ {
+  "name": "A1.NONCHAR-control: additive shift leaves the stratum [F3]",
+  "ok": true,
+  "detail": "a bijection OUTSIDE the four-line class; image disjoint from S"
+ },
+ {
+  "name": "A1m.zero-letter 'gauge' breaks bijectivity [F4]",
+  "ok": true,
+  "detail": "",
+  "mutant": true
+ },
+ {
+  "name": "A2.count |Z2(F4, E=2)| = |K*|^E = 9 [brute]",
+  "ok": true,
+  "detail": "found 9"
+ },
+ {
+  "name": "A2.gaugeCobdry preserves cocycles [F4, E=2]",
+  "ok": true,
+  "detail": "9 cocycles x 9 gauges"
+ },
+ {
+  "name": "A2.count |Z2(F3, E=2)| = |K*|^E = 4 [brute]",
+  "ok": true,
+  "detail": "found 4"
+ },
+ {
+  "name": "A2.gaugeCobdry preserves cocycles [F3, E=2]",
+  "ok": true,
+  "detail": "4 cocycles x 4 gauges"
+ },
+ {
+  "name": "A2.count |Z2(F3, E=3)| = |K*|^E = 8 [brute]",
+  "ok": true,
+  "detail": "found 8"
+ },
+ {
+  "name": "A2.gaugeCobdry preserves cocycles [F3, E=3]",
+  "ok": true,
+  "detail": "8 cocycles x 8 gauges"
+ },
+ {
+  "name": "A2.count |Z2(F4, E=3)| = |K*|^E = 27 [brute]",
+  "ok": true,
+  "detail": "found 27"
+ },
+ {
+  "name": "A2.gaugeCobdry preserves cocycles [F4, E=3]",
+  "ok": true,
+  "detail": "27 cocycles x 27 gauges"
+ },
+ {
+  "name": "A2.count |Z2(F5, E=2)| = |K*|^E = 16 [brute]",
+  "ok": true,
+  "detail": "found 16"
+ },
+ {
+  "name": "A2.gaugeCobdry preserves cocycles [F5, E=2]",
+  "ok": true,
+  "detail": "16 cocycles x 16 gauges"
+ },
+ {
+  "name": "A2.count |Z2(F5, E=3)| = |K*|^E = 64 [brute]",
+  "ok": true,
+  "detail": "found 64"
+ },
+ {
+  "name": "A2.gaugeCobdry preserves cocycles [F5, E=3]",
+  "ok": true,
+  "detail": "64 cocycles x 64 gauges"
+ },
+ {
+  "name": "A2m.single-entry flip breaks the cocycle identity [F4, E=2]",
+  "ok": true,
+  "detail": "violating triple (0, 0, 1)",
+  "mutant": true
+ },
+ {
+  "name": "A3.resTwist degree preserved [F4, deg <= 2, all xi]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A3.resTwist leading coeff (hence monicity) preserved [F4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A3.resTwist root census r ~ xi*r [F4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A3.resTwist degree preserved [F9, deg <= 2, all xi]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A3.resTwist leading coeff (hence monicity) preserved [F9]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A3.resTwist root census r ~ xi*r [F9]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A3m.wrong normalization xi^{+deg} caught at F4 (non-involution)",
+  "ok": true,
+  "detail": "",
+  "mutant": true
+ },
+ {
+  "name": "A3m.wrong normalization xi^{+deg} MISSED at F3 \u2014 expected miss, the involution separator",
+  "ok": true,
+  "detail": "F3 units are involutions: xi^{2 deg} = 1 hides the defect (F-gate separator model)",
+  "mutant": true
+ },
+ {
+  "name": "A4.z-power strike gauges are unit-valued [F4, all z, exponents -2..2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "A5.F2 degeneracy: slotScale is the identity for every gauge (JD0-BOX-5)",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B1.W1Transport iff equal vanishing loci [F3, all 729 pairs]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B1.count transportable pairs = ((q-1)^2+1)^3 = 125 [F3]",
+  "ok": true,
+  "detail": "found 125"
+ },
+ {
+  "name": "B1.W1Transport iff equal vanishing loci [F4, all 4096 pairs]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B1.count transportable pairs = ((q-1)^2+1)^3 = 1000 [F4]",
+  "ok": true,
+  "detail": "found 1000"
+ },
+ {
+  "name": "B2.transport relation reflexive + symmetric + transitive [F3, exhaustive]",
+  "ok": true,
+  "detail": "|rel| = 125"
+ },
+ {
+  "name": "B3.omega = c(l+m)/(c_l c_m) is a 2-cocycle [Z/6, F3, all 64 c]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B3.#{omega == 1} = #Hom(Z/6, K*) = gcd(6, q-1) = 2 [F3]",
+  "ok": true,
+  "detail": "found 2; 'nothing gives omega == 1': 62 systems refuse"
+ },
+ {
+  "name": "B3.separator omega vs omega^-1 [F3]",
+  "ok": true,
+  "detail": "COINCIDE (involution regime)"
+ },
+ {
+  "name": "B3.omega = c(l+m)/(c_l c_m) is a 2-cocycle [Z/6, F4, all 729 c]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B3.#{omega == 1} = #Hom(Z/6, K*) = gcd(6, q-1) = 3 [F4]",
+  "ok": true,
+  "detail": "found 3; 'nothing gives omega == 1': 726 systems refuse"
+ },
+ {
+  "name": "B3.separator omega vs omega^-1 [F4]",
+  "ok": true,
+  "detail": "separated: 3/729 omega-tables self-inverse"
+ },
+ {
+  "name": "B3.omega = c(l+m)/(c_l c_m) is a 2-cocycle [Z/6, F5, all 4096 c]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "B3.#{omega == 1} = #Hom(Z/6, K*) = gcd(6, q-1) = 2 [F5]",
+  "ok": true,
+  "detail": "found 2; 'nothing gives omega == 1': 4094 systems refuse"
+ },
+ {
+  "name": "B3.separator omega vs omega^-1 [F5]",
+  "ok": true,
+  "detail": "separated: 128/4096 omega-tables self-inverse"
+ },
+ {
+  "name": "B3m.omega vs omega^{-1} confusion caught at F4",
+  "ok": true,
+  "detail": "",
+  "mutant": true
+ },
+ {
+  "name": "B3m.omega vs omega^{-1} confusion MISSED at F3 \u2014 expected miss (separator)",
+  "ok": true,
+  "detail": "",
+  "mutant": true
+ },
+ {
+  "name": "B4.concrete omega != 1 witness at F4 (a non-homomorphic line system)",
+  "ok": true,
+  "detail": "c = [(0, 1), (1, 0), (0, 1), (0, 1), (0, 1), (0, 1)], omega(1,1) = (0, 1)"
+ },
+ {
+  "name": "C1.assoc(singles) <=> cocycle identity [F4, E=2, ALL tables]",
+  "ok": true,
+  "detail": "#assoc = 9 = #cocycles = 9"
+ },
+ {
+  "name": "C1.assoc(singles) <=> cocycle identity [F3, E=2, ALL tables]",
+  "ok": true,
+  "detail": "#assoc = 4 = #cocycles = 4"
+ },
+ {
+  "name": "C1.assoc(singles) <=> cocycle identity [F3, E=3, ALL tables]",
+  "ok": true,
+  "detail": "#assoc = 8 = #cocycles = 8"
+ },
+ {
+  "name": "C1.assoc(singles) <=> cocycle identity [F5, E=2, ALL tables]",
+  "ok": true,
+  "detail": "#assoc = 16 = #cocycles = 16"
+ },
+ {
+  "name": "C1.full-function associativity on all 27 cocycles [F4, E=3, 40 random triples each]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C1m.non-cocycle table breaks associativity [F4, E=2]",
+  "ok": true,
+  "detail": "cocycle violation at (0, 0, 1); assoc fails at singles (0, 0, 1)",
+  "mutant": true
+ },
+ {
+  "name": "C2.card K^(Z/E) = q^E = 16 [F4, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C2.card K^(Z/E) = q^E = 9 [F3, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C2.card K^(Z/E) = q^E = 64 [F4, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C2.card K^(Z/E) = q^E = 81 [F9, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.|Z2| = 4 and degenerate rows constant [F3, E=2, brute]",
+  "ok": true,
+  "detail": "4 cocycles"
+ },
+ {
+  "name": "C3.first-row symmetry c(1,k) = c(k,1) [F3, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.FULL symmetry c(a,b) = c(b,a) [F3, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F3, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.left recursion agrees [F3, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.|Z2| = 9 and degenerate rows constant [F4, E=2, brute]",
+  "ok": true,
+  "detail": "9 cocycles"
+ },
+ {
+  "name": "C3.first-row symmetry c(1,k) = c(k,1) [F4, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.FULL symmetry c(a,b) = c(b,a) [F4, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F4, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.left recursion agrees [F4, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.|Z2| = 16 and degenerate rows constant [F5, E=2, brute]",
+  "ok": true,
+  "detail": "16 cocycles"
+ },
+ {
+  "name": "C3.first-row symmetry c(1,k) = c(k,1) [F5, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.FULL symmetry c(a,b) = c(b,a) [F5, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F5, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.left recursion agrees [F5, E=2]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.|Z2| = 8 and degenerate rows constant [F3, E=3, brute]",
+  "ok": true,
+  "detail": "8 cocycles"
+ },
+ {
+  "name": "C3.first-row symmetry c(1,k) = c(k,1) [F3, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.FULL symmetry c(a,b) = c(b,a) [F3, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F3, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.left recursion agrees [F3, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.|Z2| = 27 and degenerate rows constant [F4, E=3, brute]",
+  "ok": true,
+  "detail": "27 cocycles"
+ },
+ {
+  "name": "C3.first-row symmetry c(1,k) = c(k,1) [F4, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.FULL symmetry c(a,b) = c(b,a) [F4, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F4, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.left recursion agrees [F4, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.|Z2| = 64 and degenerate rows constant [F5, E=3, brute]",
+  "ok": true,
+  "detail": "64 cocycles"
+ },
+ {
+  "name": "C3.first-row symmetry c(1,k) = c(k,1) [F5, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.FULL symmetry c(a,b) = c(b,a) [F5, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F5, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.left recursion agrees [F5, E=3]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.|Z2| = 16 and degenerate rows constant [F3, E=4, brute]",
+  "ok": true,
+  "detail": "16 cocycles"
+ },
+ {
+  "name": "C3.first-row symmetry c(1,k) = c(k,1) [F3, E=4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.FULL symmetry c(a,b) = c(b,a) [F3, E=4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F3, E=4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.left recursion agrees [F3, E=4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.|Z2| = 81 and degenerate rows constant [F4, E=4, generated]",
+  "ok": true,
+  "detail": "81 cocycles"
+ },
+ {
+  "name": "C3.first-row symmetry c(1,k) = c(k,1) [F4, E=4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.FULL symmetry c(a,b) = c(b,a) [F4, E=4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F4, E=4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.left recursion agrees [F4, E=4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.|Z2| = 256 and degenerate rows constant [F5, E=4, generated]",
+  "ok": true,
+  "detail": "256 cocycles"
+ },
+ {
+  "name": "C3.first-row symmetry c(1,k) = c(k,1) [F5, E=4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.FULL symmetry c(a,b) = c(b,a) [F5, E=4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.power basis v^E = (prod_k c(1,k)) . single 0 1, right recursion [F5, E=4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3.left recursion agrees [F5, E=4]",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C3m.asymmetric table fails the cocycle identity [F4, E=3]",
+  "ok": true,
+  "detail": "",
+  "mutant": true
+ },
+ {
+  "name": "C4.integer carry census [E=2]: standard wrap among 4 {0,1}-solutions",
+  "ok": true,
+  "detail": ""
+ },
+ {
+  "name": "C4.integer carry census [E=3]: standard wrap among 6 {0,1}-solutions",
+  "ok": true,
+  "detail": ""
+ }
+]
