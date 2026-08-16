@@ -2303,10 +2303,14 @@ regime, i.e. *undischargeable*. The adjudication finds the stronger and worse fa
 > concrete legal instances** — `lb1_resigned_not_trivial : ¬ LB1Carrier C₁ B₁` over
 > `C₁ : SlotCarrier ℤ ℚ` with `B₁.F = X² + X + 1`, and `mp1_resigned_not_trivial :
 > ¬ MP1Carrier C₂ B₂` at key `X²`, `F = X⁴ − 5X² + 4`
-> (`verification/om4_resign_nontriviality.lean`; the leanspec carriers there are byte-identical
-> to the landed `Uniformity.Density.Ladder.*` ones modulo namespace — re-verified at this
-> amendment, not taken on the docstring's word). Instantiating the field at `(ℤ, ℚ, C₁, B₁)`
-> and any level data yields `LB1Carrier C₁ B₁`, contradiction.
+> (`verification/om4_resign_nontriviality.lean`). **The antecedent was RE-RUN at this amendment,
+> not taken on a docstring's word**: `cd leanspec && lake env lean
+> ../verification/om4_resign_nontriviality.lean` exits 0 today, with
+> `lb1_resigned_not_trivial`/`mp1_resigned_not_trivial`/`hvarthetaRes_resigned_not_trivial` all
+> Lean-core; and the carriers it refutes were diffed against the landed ones — `LB1Carrier` and
+> `BlockSuite` are byte-identical modulo namespace, `RungInterface` differs only in universe-
+> variable spelling (`Type*` vs `Type uO`/`uK`/`uW`). Instantiating the field at
+> `(ℤ, ℚ, C₁, B₁)` and any level data yields `LB1Carrier C₁ B₁`, contradiction.
 
 Consequences, stated flatly: `CapstoneHypotheses n` as signed is **uninhabited for every `n`**;
 `∀ n, CapstoneHypotheses n` is FALSE; and I.17 (`uniformity_of_capstoneHypotheses`) therefore

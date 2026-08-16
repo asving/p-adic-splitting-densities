@@ -351,9 +351,10 @@ signed forms. Every stub-side adjustment is listed; nothing was adjusted silentl
   The A-E.2/A-D.2 re-signed carriers are machine-certified FALSE at concrete LEGAL instances —
   `lb1_resigned_not_trivial : ¬ LB1Carrier C₁ B₁` over a real `SlotCarrier ℤ ℚ` with
   `B₁.F = X² + X + 1`, `mp1_resigned_not_trivial : ¬ MP1Carrier C₂ B₂`,
-  `hvarthetaRes_resigned_not_trivial` (all in `verification/om4_resign_nontriviality.lean`; its
-  `LB1Carrier` is byte-identical to the landed `Uniformity.Density.Ladder.LB1Carrier` modulo
-  namespace, re-verified at A-I.1) — and the field's binders range over exactly those instances.
+  `hvarthetaRes_resigned_not_trivial` (all in `verification/om4_resign_nontriviality.lean`,
+  RE-RUN at A-I.1: exit 0, Lean-core; its `LB1Carrier`/`BlockSuite` byte-identical to the landed
+  ones modulo namespace, `RungInterface` differing only in universe-variable spelling) — and the
+  field's binders range over exactly those instances.
   The §4 gate transports it: items (9)/(10) prove `¬ (the 0e ladder field type)` and
   `¬ CapstoneHypotheses n` from one certified-false `(C, B)`. *Class: contradictory hypothesis
   block (the OM-4 FINDING-0 genre with the sign flipped — FINDING 0 was a conjunct too weak to
@@ -859,8 +860,10 @@ example (n : ℕ) (h : MenuLawAt n) : MenuLawAtVoided n := by
 -- undischargeable, it is FALSE.** One legal `(C, B)` at which the A-E.2 carrier fails refutes
 -- the whole ∀-over-all-configurations reading. The antecedent is certified, not assumed:
 -- `verification/om4_resign_nontriviality.lean` proves `lb1_resigned_not_trivial :
--- ¬ LB1Carrier C₁ B₁` over a REAL `SlotCarrier ℤ ℚ` with `B₁.F = X² + X + 1` (its `LB1Carrier`
--- is byte-identical to the landed one modulo namespace — re-verified at this amendment).
+-- ¬ LB1Carrier C₁ B₁` over a REAL `SlotCarrier ℤ ℚ` with `B₁.F = X² + X + 1`. RE-RUN at this
+-- amendment (`lake env lean ../verification/om4_resign_nontriviality.lean`, exit 0, Lean-core),
+-- and its carriers diffed against the landed ones: `LB1Carrier`/`BlockSuite` byte-identical
+-- modulo namespace, `RungInterface` differing only in universe-variable spelling.
 example {C : Ladder.SlotCarrier ℤ ℚ} {B : Ladder.BlockData C}
     (hlb1 : ¬ Ladder.LB1Carrier.{0, 0, uW} C B)
     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
