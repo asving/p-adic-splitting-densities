@@ -59,18 +59,24 @@ a real `SlotCarrier ℤ ℚ`, `B₁.F = X² + X + 1`, and a legal two-side trigg
 class weights: `hcount` + `hdegsum` + `hprod` would force a monic-linear integer factorization of
 `X² + X + 1`, which does not exist, so the self-block and every recipe of its genre FAIL).
 
-## Field ↔ display table (`EFF.T2.17`/`.18`, source-verified at A-E.2)
+## Field ↔ display (`EFF.T2.17`/`.18`, source-verified at A-E.2)
 
-| field | source display |
-| --- | --- |
-| `blocks` | `EFF.T2.18` "own full developments … inherited continuation data"; `EFF.T2.28`: *"Every residual block `B_j` is a σ-block for the same carrier and satisfies the complete HE7.A input suite"* — "same carrier" is enforced by TYPE (`BlockData C`), the input suite by the paired `RungInterface` |
-| `hprod` | `(SIDE-PROD)` `F = ∏_λ F_λ` · `(LABEL-PROD)` `F_λ = ∏_{r′} F_{λ,r′}` |
-| `hdisj`, `hdegsum` | `EFF.T2.18` "disjoint exhaustive root partitions", in the master's shadow: pairwise coprimality over `Frac(O)` plus degree accounting |
-| `hone` | `EFF.T2.18` "single-side hulls" |
-| `hpure` | `(LABEL-PURE)` `R(F_{λ,r′}) = c·r′^k` — ONE residual class, of OWN multiplicity `k ≥ 1` |
-| `hpure`'s `k ≥ 1` + E.12's laws | `(LABEL-OWN)` `k = ν/(e′·deg r′) ∈ ℤ_{≥1}`: with one side and one class, `hlen_sum` + `hresdeg` force `μ = k·e′·deg r′` |
-| `hcoverLin`, `hcoverHi`, `hcount` | E.39's STATEMENT: *"for each side `p` and factor `q`, a `BlockData` … whose weight (degree) is `classCount`-compatible"* — both directions carried |
-| `hthr` | `EFF.T2.18` "inherited continuation data" (threshold leg; the `(SEC-RANK)` continuation fields ride each block's own `RungInterface`, `EFF.T2.27`'s footing) |
+* `blocks` ← `EFF.T2.18` "own full developments … inherited continuation data", and
+  `EFF.T2.28`: *"Every residual block `B_j` is a σ-block for the same carrier and satisfies
+  the complete HE7.A input suite"* — "same carrier" is enforced by TYPE (`BlockData C`), the
+  input suite by the paired `RungInterface`.
+* `hprod` ← `(SIDE-PROD)` `F = ∏_λ F_λ` · `(LABEL-PROD)` `F_λ = ∏_{r′} F_{λ,r′}`.
+* `hdisj`, `hdegsum` ← `EFF.T2.18` "disjoint exhaustive root partitions", in the master's
+  shadow: pairwise coprimality over `Frac(O)` plus degree accounting.
+* `hone` ← `EFF.T2.18` "single-side hulls".
+* `hpure` ← `(LABEL-PURE)` `R(F_{λ,r′}) = c·r′^k`: ONE residual class, of OWN multiplicity
+  `k ≥ 1`.
+* `hpure`'s `k ≥ 1`, with E.12's laws ← `(LABEL-OWN)` `k = ν/(e′·deg r′) ∈ ℤ_{≥1}`: at one
+  side and one class, `hlen_sum` + `hresdeg` force `μ = k·e′·deg r′`.
+* `hcoverLin`, `hcoverHi`, `hcount` ← E.39's STATEMENT: *"for each side `p` and factor `q`, a
+  `BlockData` … whose weight (degree) is `classCount`-compatible"* — both directions carried.
+* `hthr` ← `EFF.T2.18` "inherited continuation data" (threshold leg; the `(SEC-RANK)`
+  continuation fields ride each block's own `RungInterface`, `EFF.T2.27`'s footing).
 
 ## ⚠ THE PARENT-MULTIPLICITY NON-IMPORT (a fence, not an omission)
 
