@@ -5522,3 +5522,44 @@ amendment signing LAW B-S2/LAW E-W as nodes. Campaign totals:
 10 units, ~2,900 battery checks green, 50+ mutation teeth, 4
 refutations-with-repair, 2 vacuity catches, chapter F brought
 into existence, and zero statements weakened.
+
+**2026-08-16 DATED APPEND #75 — A-C.2 EXECUTED: THE HT-COUNT
+LAYER REPAIRED FROM SOURCES (C.108/C.109/C.111 RE-SIGNED, NEW
+BRIDGE NODE C.109a), A THIRD DEFECT (D3) FOUND AND FIXED, AND
+C.114 — CHAPTER C's TERMINAL SUPPLY — HONESTLY WITHDRAWN
+PENDING A-C.3.** (1) Source adjudication: four displays settle
+everything A-C.1 left free — EFF.W12.83 (L is DEFINED inside
+the B_v display; sides = sides OF THE POLYGON), EFF.W12.23 (the
+three-way membership law: equality at vertices ONLY), EFF.W12.24
+(census semantics = C.107's sideCensus exactly), EFF.W12.85
+(the per-node exponent inequality at realized nodes). (2) NEW
+FINDING D3 (the unit's own, beyond the refutation): htCell's
+pin clause demanded equality at EVERY j ≤ m, contradicting
+W12.23 — the frozen cell is strictly smaller than the corpus
+cell at every non-vertex position; certified EMPTY on C.115(i)'s
+own obstruction shape at q=2 where the law demands (q−1)q^B.
+(3) Re-signs: C.108 gains the ℚ-free chord-test apparatus +
+HTNode.WF (5 clauses) with pin → ≥ everywhere / = at vertices;
+C.109 gains (hwf : v.WF) INLINE, else byte-identical; C.111's
+frozen form separately machine-refuted AND shown WF-resistant —
+re-signed with the EFF.W12.85 shadow as hypothesis hnode;
+C.114's ht_branch/ht_global machine-refuted as frozen
+(κ-separated equinumerous strata, formula 1 vs 2) and WITHDRAWN
+from leanspec — BLOCKED pending A-C.3 (realizes-refinement,
+designed clause list recorded, own certification leg REQUIRED
+before signing). Audited clean: C.110/C.112/C.113/C.115.
+(4) DECISION D-C.2-BRIDGE: new node C.109a dev_box_bridge
+(Coeff O (m·d) N ≃ (Fin m → Coeff O d N) componentwise through
+dev; ≥3 consumers). (5) Certification: 127 checks exit 0, 13
+exact-count LAW instances, all 5 mutation teeth kill (incl. the
+original refutation mechanism); permanent records
+C109_REFUTATION (header re-verified against the re-signed cell)
++ NEW C111_C114_REFUTATION, both Lean-core. lake build
+Leanspec.ChapC green (8983 jobs). Commits 44709256, f8e8826b,
+5902a14e, 3bf75819. (6) DOWNSTREAM: chapter H entry-law audits,
+chapter I count-side rows, §13's ht_branch gates inherit the
+C.114 block — A-C.3 is the critical path for chapter C's
+terminal layer; CHARTERED (fable) with the D3-pattern audit
+(data-field freedom + pin over-strengthening across remaining
+A-C.1 carrier nodes) folded in. Codex cross-read of A-C.2 owed
+per §16 → Tuesday queue.
