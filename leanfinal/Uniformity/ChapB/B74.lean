@@ -338,8 +338,15 @@ private theorem resPoly_congr'' (hπ : Irreducible π) {φ : Polynomial O} (hφ 
 
 /-- **The `H₀` bound.**  The height at a side's left endpoint — B.73's A-F.1/PA-1 pin — is
 strictly inside the window whenever the polygon is visible.  This is what licenses the digit
-lemma at every residual coefficient. -/
-private theorem H₀_lt_of_visible (hπ : Irreducible π) {φ : Polynomial O} {N : ℕ}
+lemma at every residual coefficient.
+
+**Public since 2026-08-16 (B.79b unit, visibility change only — no statement, no proof, no
+footprint change).** Blueprint amendment A-F.11's action item for B.79 step 3 asks that unit to
+consume the HE-T-CAP window chain *by name* rather than re-derive it (§0.2's private-copy ban);
+the item names the inner `suppVal_lt_of_vis`, but this outer lemma **is** the guard the consumer
+needs (`H₀ < N` at the `sideMin` pin, which is exactly `resPoly_congr`'s `hH₀`), so promoting it
+saves the consumer the ten-line chain as well. Consumed by `B79bTransport.order1Type_congr`. -/
+theorem H₀_lt_of_visible (hπ : Irreducible π) {φ : Polynomial O} {N : ℕ}
     {f : Polynomial O} (hvis : Visible π φ f N) {u ℓ : ℕ} (hℓ : 0 < ℓ)
     (h : (sideSet φ f u ℓ).Nonempty) {H₀ : ℕ}
     (hH₀ : npHgt φ f (sideMin φ f u ℓ h) = (H₀ : ℕ∞)) : H₀ < N := by
@@ -411,5 +418,6 @@ end Uniformity.Density.Leaf
 /-! ## Axiom footprint -/
 
 section AxCheck
+#print axioms Uniformity.Density.Leaf.H₀_lt_of_visible
 #print axioms Uniformity.Density.Leaf.needsDescent_congr
 end AxCheck
