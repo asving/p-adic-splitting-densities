@@ -7,19 +7,22 @@ import Mathlib
 import Uniformity.ChapE.E55a
 
 /-!
-# Uniformity.ChapE.E55 — LEMMA HE7-8: the committed signature is FALSE, and the repair
+# Uniformity.ChapE.E55 — LEMMA HE7-8, RE-SIGNED at AMENDMENT A-E.5
 
 **Chapter E, NODE E.55** [theorem] [fresh] — **HARD NODE**
-(`blueprint/CHAP-E_sigma_ladder.md` §8, `refine_chain_finite`; stub twin
-`leanspec/Leanspec/ChapE.lean:1112-1136`). ENV-E2 +
+(`blueprint/CHAP-E_sigma_ladder.md` §8, `refine_chain_finite`, **re-signed by A-E.5, 2026-08-16**;
+stub twin `leanspec/Leanspec/ChapE.lean:1112-1141`). ENV-E2 +
 `[IsAdicComplete (IsLocalRing.maximalIdeal O) O]`.
 
-**STATUS: the signed name is WITHHELD — the committed signature is REFUTED here, twice, with
-machine-checked counterexamples; the corpus's lemma is PROVED here under two added hypotheses.**
-This is the E.29 discipline (`E29.lean`, same chapter, same day): a claim shown false never enters
-the environment as a fact, the counterexample lands as provenance, and the repair lands under a
-NON-signed name until an amendment adjudicates the re-sign. `refine_chain_finite` is therefore
-**not declared** in this file, and no consumer can pick it up by accident.
+**STATUS: LANDED at the A-E.5 form.** The COMMITTED signature was refuted here, twice, with
+machine-checked counterexamples; the signed name was WITHHELD pending adjudication (the E.29 /
+`E29.lean` discipline: a claim shown false never enters the environment as a fact, the
+counterexample lands as provenance, the repair lands under a non-signed name). **AMENDMENT A-E.5
+adjudicated the re-sign in favour of `refine_chain_finite_of_key`** — the committed binders plus
+the two frame data the stub dropped, both traced to the SOURCE display (`EFF.HE7.53` via
+`EFF.HE7.44`(c)(6) and `EFF.HE7.11`) — so §6 below declares the signed name
+`refine_chain_finite` at that type. Both refutations are RETAINED, verbatim, as the permanent
+record of what the committed form asserted.
 
 ## What the corpus lemma says (unchanged, and PROVED below)
 
@@ -54,22 +57,45 @@ fatal:
    step 4 has nothing to contradict. `refine_chain_finite_boundedDev_false` is that: same carrier,
    `Ψ = 0`, `F = 1`, `A j 0 = T^{2j}` (degree 0, so the patched hypothesis holds).
 
-Neither hole is in the SOURCE: in `EFF.HE7.53` the `A_m` ARE the `Φ′`-development coefficients
+Neither hole is in the SOURCE: in `EFF.HE7.53` the `A_m` ARE the key-development coefficients
 (degree `< D″` by construction) and `Ψ` IS the current key (degree exactly `D″`). The stub dropped
 two data of the frame. **This is a signature defect, not a mathematical one** — the repair adds
 the two data back and the corpus proof goes through unchanged.
+
+## The source displays behind the two added binders (verbatim, A-E.5's verification)
+
+`hAdeg`, i.e. `deg (A j m) < D″`. `EFF.HE7.53`'s own proof invokes `(SLOT₂)` on the development
+coefficients — “*Now dv₂(A) → ∞ forces the Φ′-development coefficients of A, hence its
+O-coefficients, to converge π-adically to 0 (by (SLOT₂): dv₂(A) = min_s(ℓ dv(c_s) + su), so every
+dv(c_s) → ∞, so every v of every O-coefficient → ∞)*”. `(SLOT₂)` is stated with the degree bound
+as its FIRST hypothesis (`EFF.HE7.11`): “*Let C ∈ O[x] with **deg C < D″** and let
+C = Σ_{s<ℓd_r} c_s·Φ′^{s} (deg c_s < D′) be its Φ′-development.*” And the `A_m` meet it by
+construction, `EFF.HE7.44`(c) item (6): “*the developments in powers of the monic degree-D″
+polynomial Ψ^{(w)} have **coefficients of degree < D″**, so (SLOT₂) applies to them*.” So the
+Lean binder `hAdeg : ∀ j m, (A j m).natDegree < C.D` is the source's `deg A_m^{(2,j)} < D″` at
+`C.D = D″`, and `hcoeff` (the Lean transcription of the `(SLOT₂)` implication) carries exactly
+that side condition.
+
+`hkey`, i.e. `D″ ≤ deg Ψ`. The key's degree is fixed by `DEFINITION HE7-1` (`EFF.HE7.06`):
+“*the **order-2 key** Ψ := Ψ_{λ,r} of DEFINITION HE6-1, **monic of degree D″ := D′ℓd_r***; never
+assumed irreducible*”, and it is preserved along a refine chain — `EFF.HE7.44`: “*Put
+Ψ^{(w)} := Ψ − w, **monic of degree D″***”, restated in that lemma's item (11) as
+“*deg Ψ^{(w)} = D″*”. The Lean binder asks only for the `≤` half of that equality (`C.D` is the
+carrier's *current key degree* field, E.10), which is all the squarefree step consumes; it is
+therefore strictly weaker than the source datum and cannot over-assume.
 
 The counterexamples are minimal in the sense that matters: each satisfies the OTHER repair
 hypothesis (in 1, `C.D ≤ Ψ.natDegree` holds — `1 ≤ 1`; in 2, `hAdeg` holds — all development
 coefficients are constants), so neither added hypothesis can be dropped.
 
-## The repair (proved, under a non-signed name)
+## The repair (proved), and the signed name over it
 
 `refine_chain_finite_of_key` = the committed signature **plus**
 `hAdeg : ∀ j m, (A j m).natDegree < C.D` and `hkey : C.D ≤ Ψ.natDegree`, concluding `False`. Every
-other binder is byte-identical to the committed one, in the committed order. Recommended amendment:
-re-sign E.55 at this statement (and E55a's `exists_limit_key` as the split's first piece); the two
-added binders are frame data the instances supply for free.
+other binder is byte-identical to the committed one, in the committed order. **AMENDMENT A-E.5
+adopted exactly this statement as E.55's signed contract**; §6 declares `refine_chain_finite` at
+it, and `leanspec/Leanspec/ChapE.lean`'s stub is re-signed to match. The two added binders are
+frame data the instances supply for free (the displays quoted above).
 
 ## Faithfulness
 
@@ -104,9 +130,11 @@ recasts to check:
 `PowerSeries` (DVR + adic completeness of `k⟦X⟧`), `IsDiscreteValuationRing.addVal`,
 `Polynomial.separable_X_sub_C`, `Squarefree`.
 
-**SOURCE.** `EFF.HE7.53` (LEMMA HE7-8 statement and proof); `EFF.T2.26`/`EFF.T2.52`
-(`HE7-REF-TERM` as the `(SEC-RANK)` supplier in well-foundedness form). The defect record is E's
-own (E-D14, this file), in the A-E.3/A-E.4 pattern.
+**SOURCE.** `EFF.HE7.53` (LEMMA HE7-8 statement and proof); `EFF.HE7.11` (`(SLOT₂)`, whose
+`deg C < D″` hypothesis is `hAdeg`), `EFF.HE7.44`(c)(6) + `EFF.HE7.06`/`DEFINITION HE7-1` (the
+key monic of degree `D″`, which is `hkey`); `EFF.T2.26`/`EFF.T2.52` (`HE7-REF-TERM` as the
+`(SEC-RANK)` supplier in well-foundedness form). The defect record is E's own (E-D14, this file),
+adjudicated by AMENDMENT A-E.5 in the A-E.3/A-E.4 pattern.
 
 **TEETH.** unchanged — Q1's 42 one-step refines, PE2's 2-step chains, `he7annex_supp.py` P4
 (48/48 wrong-continuation cycles). None of them exercises the missing binders, which is exactly
@@ -114,7 +142,8 @@ why the defect survived to the stub gate.
 
 ## Status
 
-Sorry-free, axiom-free (Lean core only). The signed name `refine_chain_finite` is NOT declared.
+Sorry-free, axiom-free (Lean core only). `refine_chain_finite` — the SIGNED NAME — is declared in
+§6 at the A-E.5 re-signed type, over `refine_chain_finite_of_key`.
 -/
 
 open Polynomial IsDiscreteValuationRing
@@ -451,8 +480,9 @@ The two binders `hAdeg` and `hkey` are the frame data the committed signature dr
 necessary (`refine_chain_finite_false`, `refine_chain_finite_boundedDev_false`). Every other
 binder is the committed one, in the committed order.
 
-**The signed name `refine_chain_finite` is deliberately NOT used** until an amendment adjudicates
-the re-sign — see this file's header. -/
+**AMENDMENT A-E.5 adopted this statement as the signed contract**; the signed name
+`refine_chain_finite` (§6) is declared over it. This declaration is retained under its
+adjudication-era name so that the amendment's citation stays resolvable. -/
 theorem refine_chain_finite_of_key {O : Type*} [CommRing O] [IsDomain O]
     [IsDiscreteValuationRing O] [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {K : Type*} [Field K] (C : SlotCarrier O K)
@@ -490,6 +520,45 @@ theorem refine_chain_finite_of_key {O : Type*} [CommRing O] [IsDomain O]
   have := Polynomial.natDegree_eq_zero_of_isUnit hunit
   omega
 
+/-! ## §6 THE SIGNED NAME, at the A-E.5 re-signed form -/
+
+/-- **NODE E.55's signed contract, `refine_chain_finite`, at the AMENDMENT A-E.5 form**
+(LEMMA HE7-8 / `(REF-TERM)`, `EFF.HE7.53`). The changes against the committed signature are
+exactly two added binders, both frame data of the SOURCE that the stub dropped:
+
+* `hkey : C.D ≤ Ψ.natDegree` (after `hsq`) — `DEFINITION HE7-1`'s key is "monic of degree
+  `D″ := D′ℓd_r`", preserved along the chain by `EFF.HE7.44` ("Put `Ψ^{(w)} := Ψ − w`, monic of
+  degree `D″`"); the binder takes only the `≤` half;
+* `hAdeg : ∀ j m, (A j m).natDegree < C.D` (after `A`) — `EFF.HE7.44`(c)(6): the developments in
+  powers of the monic degree-`D″` key "have coefficients of degree `< D″`, so `(SLOT₂)` applies to
+  them", and `(SLOT₂)` (`EFF.HE7.11`) is precisely what `hcoeff` transcribes.
+
+Every other binder is byte-unchanged, in the committed order. Both additions are INDEPENDENT and
+NEITHER is removable: the committed form is refuted by `refine_chain_finite_false` (which
+satisfies `hkey`) and the `hAdeg`-only patch by `refine_chain_finite_boundedDev_false` (which
+satisfies `hAdeg`) — machine-checked, above. Proof: the re-signed statement IS the adopted repair,
+so this is that repair under the signed name. -/
+theorem refine_chain_finite {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {K : Type*} [Field K] (C : SlotCarrier O K)
+    (hcoeff : ∀ (A : Polynomial O) (v : ℤ), A.natDegree < C.D →
+      (v : WithTop ℤ) ≤ C.hgt A → ∀ i,
+        (v : WithTop ℤ) ≤ (addVal O (A.coeff i)).map (fun n : ℕ => (n : ℤ)))
+    {F Ψ : Polynomial O} {μ₂ : ℕ} (hμ : 2 ≤ μ₂)
+    (hsq : Squarefree (F.map (algebraMap O (FractionRing O))))
+    (hkey : C.D ≤ Ψ.natDegree)
+    (w : ℕ → Polynomial O) (lam : ℕ → ℤ)
+    (hdeg : ∀ j, (w j).natDegree < C.D)
+    (hh : ∀ j, C.hgt (w j) = (lam j : WithTop ℤ))
+    (hmono : StrictMono lam)
+    (A : ℕ → ℕ → Polynomial O)
+    (hAdeg : ∀ j m, (A j m).natDegree < C.D)
+    (hdev : ∀ j, F = (Ψ - ∑ i ∈ Finset.range j, w i) ^ μ₂
+      + ∑ m ∈ Finset.range μ₂, A j m * (Ψ - ∑ i ∈ Finset.range j, w i) ^ m)
+    (hfloor : ∀ j, ∀ m < μ₂, ((((μ₂ - m : ℕ) : ℤ) * lam j : ℤ) : WithTop ℤ) ≤ C.hgt (A j m)) :
+    False :=
+  refine_chain_finite_of_key C hcoeff hμ hsq hkey w lam hdeg hh hmono A hAdeg hdev hfloor
+
 end Uniformity.Density.Ladder
 
 /-! ## Axiom footprint -/
@@ -499,6 +568,7 @@ section AxCheck
 #print axioms Uniformity.Density.Ladder.refine_chain_finite_false
 #print axioms Uniformity.Density.Ladder.refine_chain_finite_boundedDev_false
 #print axioms Uniformity.Density.Ladder.refine_chain_finite_of_key
+#print axioms Uniformity.Density.Ladder.refine_chain_finite
 #print axioms Uniformity.Density.Ladder.coeffZeroCarrier
 
 end AxCheck
