@@ -93,6 +93,25 @@ read may discharge the obligation earlier per Part IV item 6's precedent).
 > satisfies the OTHER binder). PROVED, and the signed name is landed. Read A-E.5 before consuming
 > E.55 (its consumer E.52 takes termination as a hypothesis and does not move).
 
+> **AMENDMENT BANNER 2026-08-16 (fifth) — E.57's SIGNED CONCLUSION WAS MACHINE-REFUTED VACUOUS,
+> IS RE-SIGNED AT THE FULL `BlockSuite` RECORD, AND IS **NOT ASSERTED** UNTIL GC-13 TYPES ITS
+> SOCKET.** `leanfinal/Uniformity/ChapE/E57_VACUITY.lean.txt` proves E.57's committed conclusion
+> (`∃ blocks : List (Polynomial O), B.F = blocks.prod ∧ (blocks.map natDegree).sum =
+> B.F.natDegree`) **outright** — byte-for-byte at the committed signature with all three
+> hypotheses unreferenced, then for an ARBITRARY polynomial over an arbitrary `CommRing` with no
+> carrier, block or interface in scope, then at an arbitrary `hpart : P` (so no typing of the
+> socket could ever have added strength). The witness is `blocks := [B.F]`. **AMENDMENT A-E.6**
+> (end of file) re-signs the conclusion at `Nonempty (BlockSuite I)` — E.39a's record, the same
+> cure A-E.2 applied to `(LB1)`, and exactly what E.57's own SIGNATURE NOTE said the full
+> contract was. It also records the harder half: at `hpart : True` the RE-SIGNED statement is
+> **FALSE**, machine-checked (`verification/om4_resign_nontriviality.lean` Part 4,
+> `e57_resigned_false_at_untyped_socket`: a legal `SlotCarrier ℤ ℚ` instance where `hblocks`,
+> `hblocksHi` and `hpart` all hold and no `BlockSuite` exists), so the leanspec entry is the
+> named target `BlockSplitTarget`, **not an `axiom`**. E.57 stays BLOCKED/RESCHEDULE: LANDING
+> and assertion both wait on C.63 `classSize_separable` / C.69 `classSize_supply`. Read A-E.6
+> before consuming E.57 (no chapter-E node consumes it today; chapter I's level-≥2 counterpart
+> of `(LB1)` is its only intended consumer).
+
 ---
 
 ## 0. How to read this chapter
@@ -370,7 +389,9 @@ fields): **315 rows; intra-chapter proof-dep graph ACYCLIC, 8 layers, widths
 `8, 13, 13, 12, 7, 9, 5, 1`**; critical path 7 edges. The schedule risks are the two HARD
 nodes **E.55** (`refine_chain_finite`, split ×3) and **E.57** (`block_split`, blocked on
 GC-13 resolution) — claim E.55 early.
-**Blocked-until-resolution:** E.51, E.57, E.61, E.62 (GC-13/GC-14 placeholders; §12).
+**Blocked-until-resolution:** E.51, E.57, E.61, E.62 (GC-13/GC-14 placeholders; §12) —
+*[A-E.6: E.57's conclusion is RE-SIGNED at `Nonempty (BlockSuite I)` and is NOT asserted (a
+`def`-named target, not an `axiom`); see the fifth amendment banner]*.
 
 ---
 
@@ -4011,8 +4032,10 @@ grade at source, full displayed proof, promoted here to a proof target.
 ```lean
 namespace Uniformity.Density.Ladder
 
-theorem block_split {O : Type*} [CommRing O] [IsDomain O] {K : Type*} [Field K]
-    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface C B)
+-- [A-E.6] `Type*` → explicit `uO`/`uK`/`uW` (A-E.1/E-D6 latitude, identical elaborated
+-- signature): `BlockSuite` names `RungInterface.{uO, uK, uW}`, so `uW` must be bound.
+theorem block_split {O : Type uO} [CommRing O] [IsDomain O] {K : Type uK} [Field K]
+    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface.{uO, uK, uW} C B)
     -- carrier legs (C-supplied at instances; the schema's explicit hypotheses):
     (hblocks : ∀ p ∈ I.sides, ∀ q ∈ I.linFac p,
       ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
@@ -4021,24 +4044,39 @@ theorem block_split {O : Type*} [CommRing O] [IsDomain O] {K : Type*} [Field K]
       ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
         Fpq.natDegree = I.classCountHi p q)
     (hpart : True)  -- the product/disjointness leg; typed at stub per the NOTE
-    : ∃ blocks : List (Polynomial O),
-        B.F = blocks.prod ∧
-        (blocks.map Polynomial.natDegree).sum = B.F.natDegree
+    : Nonempty (BlockSuite I)
+    -- [RE-SIGNED: A-E.6, 2026-08-16] The committed conclusion was the PRODUCT/EXHAUSTION
+    -- layer `∃ blocks : List (Polynomial O), B.F = blocks.prod ∧
+    -- (blocks.map Polynomial.natDegree).sum = B.F.natDegree`, MACHINE-REFUTED VACUOUS
+    -- (`blocks := [B.F]`; see A-E.6). `BlockSuite` is E.39a's landed record.
 ```
 
-**⚠ SIGNATURE NOTE (schema honesty; the annex-grade caveat).** The conclusion shape displayed
-is the PRODUCT/EXHAUSTION layer; the full contract adds, per block, the single-side and
-pure-residual interface clauses of (ii)–(iv) as a `BlockSuite` record (the E.39 note's
-structure, INSTANTIATED here rather than hypothesized — this is the level-≥2 vs level-1
-asymmetry the corpus draws). The `hpart : True` placeholder marks the disjointness/product
-carrier leg (the classes partition the roots — `EFF.HE7.96`(a)'s "the label's factor is the
-minimal polynomial" argument, K-theoretic, C-supplied); typed at GC-13 resolution — the node
-is BLOCKED for the fleet until then (§12). **Grade note carried:** the source is ANNEX GRADE
-("never hostile-passed as written", later covered by the annex stack's 2/2); this chapter's
-Lean target, once proved, strictly upgrades it.
+**⚠ NOT ASSERTED (A-E.6).** The signature above is the node's TARGET, not a stub that may be
+declared. At `hpart : True` it is **FALSE**, machine-checked — so `leanspec/Leanspec/ChapE.lean`
+records it as the named `Prop` `BlockSplitTarget` (binder names, order and statements
+byte-preserved; `Type*` respelled at the explicit `uO`/`uK`/`uW`) and NOT as an `axiom`. The
+landing declaration keeps the name `block_split`. Both assertion and LANDING wait on the same
+thing: GC-13 typing `hpart` against chapter C's partition record (C.63 `classSize_separable`,
+re-exported as C.69 `classSize_supply`), neither of which is landed in `leanfinal`
+(`leanfinal/notes/RESCHEDULE_E57_2026-08-16.md`).
+
+**⚠ SIGNATURE NOTE (schema honesty; the annex-grade caveat)** *[the abbreviation this note
+licensed is what A-E.6 repaired — the note's own diagnosis was correct and is now EXECUTED]*.
+~~The conclusion shape displayed is the PRODUCT/EXHAUSTION layer~~; the full contract adds, per
+block, the single-side and pure-residual interface clauses of (ii)–(iv) as a `BlockSuite`
+record (the E.39 note's structure, INSTANTIATED here rather than hypothesized — this is the
+level-≥2 vs level-1 asymmetry the corpus draws) — **and since A-E.6 the conclusion IS that
+record**. The `hpart : True` placeholder marks the disjointness/product carrier leg (the classes
+partition the roots — `EFF.HE7.96`(a)'s "the label's factor is the minimal polynomial" argument,
+K-theoretic, C-supplied); typed at GC-13 resolution — the node is BLOCKED for the fleet until
+then (§12). *[A-E.6: the placeholder is no longer merely a gap. `hprod`/`hdisj` are exactly what
+it supplies, so with `hpart : True` the re-signed statement is refuted, not just unproved.]*
+**Grade note carried:** the source is ANNEX GRADE ("never hostile-passed as written", later
+covered by the annex stack's 2/2); this chapter's Lean target, once proved, strictly upgrades it.
 
 **DEPENDS.** E.12, E.14–E.16 (the per-block count laws), E.36 (the dichotomy shape), E.59 ·
-C placeholders as displayed.
+**E.39a (`BlockSuite`, the A-E.6 conclusion — landed at
+`leanfinal/Uniformity/ChapE/E39a.lean`)** · C placeholders as displayed.
 
 **PROOF (the corpus's, mapped).**
 1. Per class: Galois-stable root set ⟹ monic `O`-divisor (the `hblocks` legs).
@@ -4740,7 +4778,15 @@ Still OWED (orchestrator, outside the gate's file ownership): the four retained 
 E.57 (`hpart : True`), E.61/E.62 (`supplied : True`) — these four carry GC-13(c) placeholders
 typed only at the orchestrator's resolution pass; stub them as `axiom`s with a
 `-- BLOCKED: GC-13 resolution` header, and mark E.52 (consumes E.51's row only through
-`mu2Sigma`, so NOT blocked) explicitly unblocked.
+`mu2Sigma`, so NOT blocked) explicitly unblocked. *[AMENDED A-E.6, 2026-08-16 — **E.57 is
+carved out of the "stub them as `axiom`s" instruction**: at its RE-SIGNED conclusion the `True`
+placeholder makes the statement FALSE (machine-checked,
+`verification/om4_resign_nontriviality.lean` Part 4), so an `axiom` would be a contradiction in
+`Leanspec.ChapE`. It is recorded as the named target `Prop` `BlockSplitTarget` instead, and is
+asserted only when GC-13 types `hpart`. E.51/E.61/E.62 keep the `axiom` instruction — they have
+NOT been audited for the same disease, and that audit is OWED (their committed conclusions
+should be run through the `E57_VACUITY` test: is the conclusion provable with the placeholder
+ignored, and is it refutable once strengthened?).]*
 
 **Order note:** the TSV (§11) is the stub build order; the four forward-referencing nodes
 (E.23, E.24, E.42, E.52) land after their §5/§6/§8 suppliers.
@@ -4945,7 +4991,9 @@ conjuncts of Display A. Reconciles.
     I's Display-A block expects the schema form, not the member form.
 11. **The four BLOCKED-until-resolution nodes** (E.51, E.57, E.61, E.62) and their `True`
     placeholders — the orchestrator's GC-13/GC-14 resolution pass types them; fleet must not
-    fire on them before that.
+    fire on them before that. *[A-E.6: E.57 has now been audited — its committed conclusion was
+    VACUOUS and its re-signed conclusion is FALSE at the placeholder. The same two-part audit is
+    OWED for E.51, E.61, E.62 and is the highest-value cross-read item in this list.]*
 12. **The §2 index census** (updated below) and the split-mandated figure — planning figure
     ≈ **74–80 Lean files** for 68 nodes.
 13. **Gate expectations** — E.68's five threshold recomputations match `EFF.HE7.23`'s table
@@ -5901,5 +5949,174 @@ a machine-checked counterexample to the remainder is already in the environment.
   hypothesis than the frame it transcribes (`C.D ≤ Ψ.natDegree` where the source has equality), so
   every instance the corpus can produce satisfies it. Nothing else in the chapter is weakened; no
   consumer's hypotheses change.
+
+## AMENDMENT A-E.6 (2026-08-16, dated append) — E.57 `block_split`: THE COMMITTED CONCLUSION WAS MACHINE-REFUTED VACUOUS; RE-SIGNED AT THE FULL `BlockSuite` RECORD, AND **NOT ASSERTED** AT THE UNTYPED GC-13 SOCKET
+
+*(E.57 RE-SIGN unit. Records: vacuity witness `leanfinal/Uniformity/ChapE/E57_VACUITY.lean.txt`;
+BLOCKED record `leanfinal/notes/RESCHEDULE_E57_2026-08-16.md`; non-triviality + socket-fence
+certificates `verification/om4_resign_nontriviality.lean` Part 4; re-signed stub
+`leanspec/Leanspec/ChapE.lean` §8 (A-E.6 RE-SIGN NOTE + header RE-SIGN LOG). Precedent:
+**A-E.2** (the same cure, at E.39/E.40) and PROJECT_STATE dated append #71. Builds green:
+`lake build Leanspec.ChapE`; `lake env lean ../verification/om4_resign_nontriviality.lean`, all
+six theorems at the Lean-core triple. **NOT landed** — `leanfinal/Uniformity/ChapE/E57.lean`
+does not exist and must not be created before GC-13.)*
+
+### The finding (machine-checked, two parts)
+
+**(1) The committed conclusion is a theorem of Lean core.** `E57_VACUITY.lean.txt` proves three
+statements, all sorry-free at the repo pin with footprint `{propext, Classical.choice,
+Quot.sound}`:
+
+* `block_split_IS_A_THEOREM` — the committed signature **byte-for-byte**, proved outright by
+  `⟨[B.F], by simp, by simp⟩`; the linter flags `hblocks`, `hblocksHi` AND `hpart` as
+  unreferenced;
+* `block_split_conclusion_from_nothing` — the same conclusion for an arbitrary polynomial over
+  an arbitrary `CommRing`: no carrier, no block, no interface, no `IsDomain`;
+* `socket_typing_is_orthogonal` — `∀ P : Prop`, the committed shape with `hpart : P` is provable
+  by ignoring `hpart`. **So the GC-13 socket typing could never have repaired this node**: the
+  strength was never in the displayed conclusion.
+
+This is OM-4 FINDING 0's genre (E.39/E.40/E.44, cured by A-E.2), and E.57's own SIGNATURE NOTE
+had disclosed the gap in advance — *"the conclusion shape displayed is the PRODUCT/EXHAUSTION
+layer; the full contract adds, per block, the single-side and pure-residual interface clauses of
+(ii)–(iv) as a `BlockSuite` record"*. What was new on 2026-08-16 is the machine proof that the
+displayed layer is **empty**, not merely partial.
+
+**(2) The re-signed conclusion is FALSE at `hpart : True`.** `om4_resign_nontriviality.lean`
+Part 4 builds a legal instance over the Part-1 carrier `C₁` (`O = ℤ`, `K = ℚ`, `D = 1`):
+`B₃` with key `Φ = X + 1` and `F = X²`, mass `μ = 2`; `I₃` with ONE side `p = (1,1)` carrying
+TWO linear residual classes (labels `0` and `1`, multiplicity `1` each) of class weight `1`
+each. Every `RungInterface` law is met (`hresdeg` `1·(1+1) = 2 = len p`; `haccount`
+`rootCount p = 1·2 = 2`; `hexhaust` `1 + 1 = 2`; `hforce` `D·ℓ = 1 ≤ 1`; `hlen_sum` `2 = μ`).
+Two theorems:
+
+* `e57_resigned_not_trivial : ¬ Nonempty (BlockSuite I₃)` — **the A-E.2 non-triviality standard,
+  met**: the re-signed conclusion is refutable, hence no longer a theorem of Lean core. The
+  mechanism is `hdisj`: `hcount` + `hdegsum` force exactly two blocks of degree `1` whose
+  product is `X²`, and any two such are `c·X` and `c′·X`, which are not coprime over `Frac(ℤ)`.
+* `e57_resigned_false_at_untyped_socket : ¬ BlockSplitTarget I₃` — the **whole re-signed
+  implication** is false: at that instance `hblocks` holds with `Fpq := X` (monic, `X ∣ X²`,
+  `natDegree X = 1 = classCount p q`), `hblocksHi` is vacuous (`hiFac p = 0`), and
+  `hpart : True` holds.
+
+**Disposition forced by (2).** The product/disjointness content the countermodel destroys is
+*precisely what `hpart` names*. So A-E.6 re-signs the conclusion but **does not declare the
+node**: `Leanspec.ChapE` carries the named target `Prop` `BlockSplitTarget` instead of
+`axiom block_split` (census delta −1 `axiom`, +1 `def`). Asserting it is what GC-13 must earn.
+
+### The adjudication (charge item 1): which `BlockSuite` clauses the conclusion must assert
+
+Read off `EFF.HE7.96` = ANNEX-LEMMA HE7-13′ clause (a) and its proof, verbatim. The corpus
+sentence is quoted in the middle column; the right column is the blueprint STATEMENT clause it
+realizes.
+
+| `BlockSuite` field (E.39a, landed) | `EFF.HE7.96`(a) / its proof, verbatim | E.57 STATEMENT clause |
+|---|---|---|
+| `blocks : List (Σ B' : BlockData C, RungInterface C B')` | *"each `C_{λ,r}` … **is the root set of a monic block factor `f_{λ,r} ∈ O[x]`**"*; proof: *"The reduction of §S5.5 applies to `f_C` exactly as to `f_S` … so LEMMAS HE7-9/HE7-10 and COROLLARY HE7-7″ run on `f_C`"* — each block carries its OWN polygon read, i.e. its own `RungInterface`, over the SAME carrier (enforced by TYPE) | (i)+(ii) |
+| `hprod` | *"`f_S = Π_{(λ,r)} f_{λ,r}`"* | (i) |
+| `hdisj` (pairwise `IsCoprime` over `Frac(O)`) | *"(the level-2 label classes of COROLLARY HE7-7″; **they partition the roots of `f_S`**, since the label's factor is the minimal polynomial of `β_{2,ρ}` over `ι^{(2)}(K₂)`)"*; proof: *"The classes partition the roots (each root has exactly one label …)"* | (i) |
+| `hdegsum` | proof: *"`n_λ(f_S) = Σ_{r | R_λ}|C_{λ,r}|` (the partition)"* with `f_C := Π_{ρ∈C}(x − ρ)` | (i) |
+| `hone` (`∃ p, x.2.sides = {p}`) | *"the polygon of `f_{λ,r}` with respect to `Ψ̃` is the **SINGLE side of slope λ**"*; proof: *"every slope of `f_C`'s polygon carries `D″·(its length) > 0` roots — so `λ` is the ONLY slope: the single side"* | (ii) |
+| `hpure` (ONE residual class, own multiplicity `k ≥ 1`) | *"the residual of `f_{λ,r}` is `c·r^{k}` with `c ∈ K₂^×` and `k = L_{λ,r}/(ℓ₂·deg r) ∈ ℤ_{≥1}` — **a single irreducible power**"*; proof: *"both `r, r′` … map to THE minimal polynomial of `β_{2,ρ}` … so `r′ = r`. Hence `R^{(C)} = c·r^{k}`"* | (ii) |
+| `hcoverLin` / `hcoverHi` (every parent `(side, class)` realized by a block, one-sided at the parent's slope, pure in the PARENT's class, of the parent's recorded weight) | *"each `C_{λ,r}` is **nonempty** (LEMMA HE7-10), Galois-stable (LEMMA HE7-11)"* + *"of length `L_{λ,r} := deg f_{λ,r}/D″`"* with `|C_{λ,r}| = n_λ(f_{λ,r}) = D″L_{λ,r}` (proof) — and the block's residual is the parent's `r`, which is what pins `x.2.linFac p = {(q.1,k)}` | (ii) |
+| `hcount` (sort direction) | the classes are INDEXED by `(λ, r)`: every block is some `C_{λ,r}`, so its weight is one of the parent's recorded class weights | (ii) |
+| `hthr` (`x.1.T = B.T`) | proof: *"LEMMA HE7-9(a) + THEOREM HE7.A(1)'s arithmetic on `f_C` give `λ > T₂`"* — the SAME `T₂`; the blocks are read at the same `Ψ̃`, so the frame does not move | (ii), continuation |
+
+**Clauses (iii) and (iv) are NOT new conclusion fields — adjudicated, with reasons.**
+
+* **(iii) side-length additivity, `Σ_q L_{p,q} = len p`** (source: *"Side lengths add: `n_λ(f_S) =
+  Σ_{r | R_λ}|C_{λ,r}|` (the partition) with `n_λ(f_S) = D″L_λ` and `|C_{λ,r}| = D″L_{λ,r}`, so
+  `Σ_r L_{λ,r} = L_λ`"*) is a **consequence of the record plus the PARENT interface E.57 already
+  binds**: `hcoverLin`/`hcoverHi` give `deg f_{p,q} = classCount p q`, `hcount` gives the
+  converse sort, and the parent's `hexhaust` + `haccount` give
+  `Σ_q classCount p q = rootCount p = D·len p`. Adding it as a field would duplicate E.12.
+* **(iv) the per-block trichotomy gate, `L_{p,q} = k·ℓ·deg q ≥ 4`** (source: *"at `k ≥ 2`,
+  `ℓ₂ deg r ≥ 2`, the displayed level-3 branch … its gate is the displayed arithmetic:
+  `L_{λ,r} = k·ℓ₂ deg r ≥ 4` forces `μ₂ = Σ_λ L_λ ≥ L_λ ≥ L_{λ,r} ≥ 4`"*) is **already a landed
+  E-internal theorem applied downstream**: `block_jump_gate {k ℓ d L} (hk : 2 ≤ k)
+  (hld : 2 ≤ ℓ * d) (hL : L = k * (ℓ * d)) : 4 ≤ L` at
+  `leanfinal/Uniformity/ChapE/E59.lean:63`. Its three inputs are exactly `hpure`'s own `k`, the
+  block's slope denominator (`hone` + `hcoverLin` pin it to the parent's `p.2`) and the block's
+  `hresdeg`. So (iv) is consumed FROM the record, not asserted BY it — which is what E.57's
+  PROOF map item 4 ("The trichotomy gate: E.59's arithmetic") already said.
+
+### The re-signed SIGNATURE (displayed in place at NODE E.57; binders byte-preserved)
+
+    theorem block_split {O : Type uO} [CommRing O] [IsDomain O] {K : Type uK} [Field K]
+        {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface.{uO, uK, uW} C B)
+        (hblocks : ∀ p ∈ I.sides, ∀ q ∈ I.linFac p,
+          ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
+            Fpq.natDegree = I.classCount p q)
+        (hblocksHi : ∀ p ∈ I.sides, ∀ q ∈ I.hiFac p,
+          ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
+            Fpq.natDegree = I.classCountHi p q)
+        (hpart : True)
+        : Nonempty (BlockSuite I)
+
+**The defective original (committed conclusion, preserved verbatim):**
+
+        : ∃ blocks : List (Polynomial O),
+            B.F = blocks.prod ∧
+            (blocks.map Polynomial.natDegree).sum = B.F.natDegree
+
+Note the committed conclusion did not even range over `BlockData`/`RungInterface` pairs (E.39's
+voided shadow at least did): it was a bare list of polynomials, which is why the self-block
+witness needs no interface at all.
+
+### Two honest disclosures (neither is patched here)
+
+**(D1) The machine-checked countermodel's `F = X²` is not separable, and E.57's SIGNATURE binds
+no separability.** The corpus carries `disc f ≠ 0` (`EFF.HE7.05`) as a standing convention, and
+HE7-13′(a)'s proof uses it (*"divides the separable `f_S`"*). So a reader may object that the
+countermodel sits outside the intended domain. The objection does not rescue the node — it
+relocates the defect: **the standing convention is not in the signed binder list**, so the
+signed statement is false as signed. The GC-13 pass must either bind separability of `B.F` or
+route it through the typed `hpart` (C.63 `classSize_separable`'s hypothesis chain carries it).
+
+**(D2) A second, separability-immune countermodel — ARGUED, NOT MACHINE-CHECKED (new defect
+E-D15).** Source pins the class weights to a DIVISIBILITY: `|C_{λ,r}| = D″·L_{λ,r}` with
+`L_{λ,r} = k·ℓ₂·deg r`, so `D·ℓ·deg q ∣ classCount p q`. E.12's `hforce` carries only the count
+shadow `D·ℓ·deg q ≤ classCount p q` (`EFF.T2.30`'s `|orbit| ≥ D e′ deg r′`), so an interface may
+be legal and arithmetically impossible. Concretely: one side `p = (1,2)` (`ℓ = 2`), `D = 1`, two
+linear classes of multiplicities `1` and `2`, class weights `3` and `3`. Every E.12 law holds
+(`hresdeg` `2·(1+2) = 6 = len p`; `haccount` `rootCount = 6`; `hexhaust` `3 + 3 = 6`; `hforce`
+`2 ≤ 3`; `hlen_sum` `6 = μ`, so `deg B.F = 6`), and `hblocks` is satisfiable by any monic cubic
+divisor of `B.F` (e.g. `B.F = (X³+X+1)(X³+X²+1)`, `Fpq := X³+X+1` for BOTH classes — `hblocks`
+has no injectivity). But `hcoverLin` would demand a block of degree `3` whose single side is the
+parent's `p`, and that block's OWN `hresdeg` + `hlen_sum` read `2·(k + …) = len′ = μ′ =
+deg block = 3`: even = odd. Not machine-checked here because the step `deg B.F = B.μ · C.D` is
+`BlockData.natDegree_F` (E.13) — PROVED in `leanfinal/Uniformity/ChapE/E13.lean:90` but a stub
+`axiom` in `Leanspec.ChapE`, which the certificate file imports, so proving it there would break
+that file's Lean-core footprint discipline. **Recorded as defect E-D15**, owed to the GC-13 pass:
+either strengthen `hforce` to the divisibility, or let the typed `hpart` carry C.63's degree law
+`(Fac r).natDegree = (F.e₁ * F.f₁) * L.ℓ * r.natDegree`, which supplies it exactly.
+
+### Evidence and disposition
+
+* **Re-signed:** `leanspec/Leanspec/ChapE.lean` — `axiom block_split` → `def BlockSplitTarget`
+  at the A-E.6 conclusion, with the §8 A-E.6 RE-SIGN NOTE, a header RE-SIGN LOG entry, and a
+  sharpened BLOCKED-UNTIL-RESOLUTION paragraph. `lake build Leanspec.ChapE` green.
+* **Certified:** `verification/om4_resign_nontriviality.lean` Part 4 — `B₃`, `I₃`,
+  `B₃_F_natDegree`, `e57_resigned_not_trivial`, `e57_resigned_false_at_untyped_socket`; all
+  `#print axioms` = `[propext, Classical.choice, Quot.sound]`; the A-E.2 Parts 0–3 are
+  byte-unchanged and re-verified green in the same run.
+* **Preserved:** the vacuity record `leanfinal/Uniformity/ChapE/E57_VACUITY.lean.txt` and the
+  BLOCKED record `leanfinal/notes/RESCHEDULE_E57_2026-08-16.md` — both still accurate; A-E.6 is
+  their recorded cure, and BLOCK 1 of the RESCHEDULE note (the missing C.63/C.69 chain) is
+  UNCHANGED and still governs LANDING.
+* **Not touched:** `hblocks`, `hblocksHi`, `hpart` (names, order, statements) — the C-side
+  supplier binders and the GC-13 socket stay exactly as committed; E.57's DEPENDS, PROOF map,
+  SIZE, SOURCE, TEETH and ENVIRONMENT; the SPLIT-MANDATE ×2 (`E57` product/lengths + `E57a` the
+  per-block record) — note that A-E.6 makes the split's second half unnecessary as a separate
+  RECORD file, since `BlockSuite` already exists at `leanfinal/Uniformity/ChapE/E39a.lean`, so
+  the split is now `E57` (the theorem) + nothing; E.58/E.59 and every other node; the DAG.
+* **Strength ledger:** the committed statement was VACUOUS, so it had no strength to lose. The
+  re-signed statement is strictly stronger than the committed one (`BlockSuite.hprod` +
+  `hdegsum` imply the committed conclusion via `blocks.map (·.1.F)`), and is not asserted, so no
+  consumer gains an unearned hypothesis. Against SOURCE the record is the honest reading of
+  HE7-13′(a) clauses (i)–(ii); (iii)/(iv) are consequences, adjudicated above.
+* **Owed:** (a) GC-13 types `hpart` against C.63/C.69 — assertion and landing both wait on it;
+  (b) defect E-D15 (D2 above); (c) the same two-part vacuity/falsity audit for E.51, E.61, E.62,
+  which A-E.6 did NOT perform.
 
 <!-- SENTINEL: BP-E END OF FILE -->
