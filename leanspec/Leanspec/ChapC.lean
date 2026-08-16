@@ -17,11 +17,16 @@ A-C.1 (`blueprint/CHAP-C_tower_grammar.md`, A-§ block items (a)–(m)) has sinc
 unsigned nodes and cured the 19 ellipsis signatures: the signed layer now lives in the
 `A-C.1 SIGNATURE-COMPLETION LAYER` sections below (§5 carriers, §6 tail, §§7–13), the D21
 `jump_drop` re-sign and the D19/D20 carrier bridge (NODE C.14a) are applied in place, the
-D14/D15/D22 gate-hygiene tables are in the numeric section, and the three gate-(b) cite
-axioms (`fgmn_residual_mul`, `fgmn_calculus_exists`, `agnprw_termination`) are DECLARED
-under append #66's category signature (statements owner-UNINSPECTED — queued in CHAP-I's
-2026-08-16 A-C.1 addendum). Four residuals are BOOKED to the fleet (C.90(b), C.91(c),
-C.102's letter-read field, C.58's (b)/(d)/(e) companions), each recorded at its node.
+D14/D15/D22 gate-hygiene tables are in the numeric section. **The three gate-(b) cite axioms
+are NOT declared — corrected at A-C.6 (2026-08-16), superseding the sentence this paragraph
+used to carry.** The gate-(b) landing (PROJECT_STATE append #79) machine-REFUTED the A-C.1
+drafts of `fgmn_residual_mul` (C.66) and `agnprw_termination` (C.94) and found
+`fgmn_calculus_exists` (C.92) content-free; A-C.6 therefore ships C.66 and C.94 as the
+UNDECLARED redraft propositions `FgmnResidualMulStatement` / `NS7TerminationStatementR`
+(AWAITING the owner's exact-statement signature at gate (b)) and RETIRES C.92's existence
+axiom outright, keeping `FGMNCalculus` as a hypothesis carrier. Four residuals are BOOKED to
+the fleet (C.90(b), C.91(c), C.102's letter-read field, C.58's (b)/(d)/(e) companions), each
+recorded at its node.
 
 ## THE HEADLINE FINDING (read before using this file as a contract)
 
@@ -1116,7 +1121,9 @@ signature (D1) — **all SIGNED at A-C.1** (the layer below: `tier1_typeOf`, `Co
 `tier1_typeOf_composed`, `classSize_separable`, `blockDeg_eq`/`mult₂_readable`,
 `dv2_length_sum`, `multiplicity_tie`, `dv2Pin_translation_interior`,
 `ClassSizeSupplyData`/`classSize_supply`, `side_degree_conservation`; `C.66`'s
-`fgmn_residual_mul` was drafted at the gate and is ADOPTED at A-C.1). -/
+`fgmn_residual_mul` was drafted at the gate and adopted at A-C.1 — **and then REFUTED at the
+gate-(b) landing and REDRAFTED at A-C.6 as the undeclared `FgmnResidualMulStatement`; see the
+struck block at §7's C.66 node**). -/
 
 /-! ### NODE C.59 [lemma] — the ramified divisibility leg (unconditional; Tier 1's first half) -/
 
@@ -4694,11 +4701,15 @@ EXECUTED by amendment A-C.1 (this file + the blueprint's A-§ items (a)–(m) + 
     agnprw_termination; I.01 unblocked, see CHAP-I's addendum).
  5. D3–D18 mechanical cures — ALIGNED into the blueprint's signed half (A-C.1(m)).
 STILL OWED (the fleet/owner handoff):
- a. OWNER (gate (b) statement inspection): fgmn_residual_mul (C.66), FGMNCalculus +
-    fgmn_calculus_exists (C.92), agnprw_termination (C.94) — category-signed by append #66,
-    statements drafted at A-C.1, per-statement inspection queued in CHAP-I's addendum;
-    plus C.102's ℓ₁ = e₂ exponent reading (flagged) and the two residual print-reads of
-    the A-3 audit §7.
+ a. OWNER (gate (b) statement inspection) — **RESTATED AT A-C.6 (2026-08-16)**: the A-C.1
+    drafts of C.66 and C.94 were MACHINE-REFUTED at the landing and C.92's was content-free,
+    so what awaits signature is now exactly TWO undeclared propositions —
+    `FgmnResidualMulStatement` (C.66, `[cite:FGMN]`) and `NS7TerminationStatementR`
+    (C.94, `[cite:AGNPRW]`), each with its own OWNER SIGNATURE BLOCK in the blueprint's
+    amendment A-C.6 — while **C.92 has EXITED the queue** (its existence axiom is retired;
+    `FGMNCalculus` survives hypothesis-form only). Nothing is declared until the owner signs
+    the exact statement. Still owed alongside: C.102's ℓ₁ = e₂ exponent reading (flagged) and
+    the two residual print-reads of the A-3 audit §7.
  b. FLEET (the four BOOKED residuals): C.90(b)'s level-general one-sidedness (published
     Cor 6.3 — the C.92 residual field), C.91(c)'s entry characterization, C.102's
     letter-read field, C.58's (b)/(d)/(e) companions.
