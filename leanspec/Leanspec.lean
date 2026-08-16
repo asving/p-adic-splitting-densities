@@ -7,6 +7,21 @@ import Leanspec.ChapB
 -- breaks this build. (It was deliberately unwired while the H stub gate was open, per ChapH's
 -- FILE LAYOUT note, so concurrent stub-gate agents could not collide on this file.)
 import Leanspec.ChapH
+-- **Chapter I is DELIBERATELY NOT WIRED (2026-08-16, its 0e stub gate) — wiring it would break
+-- this build, and that is a `leanfinal` defect, not a chapter-I one.** `Uniformity.Density.Gauge.Wle`
+-- and `…VarthetaWConjunct` are each DECLARED TWICE in `leanfinal` — `Uniformity/ChapD/D55.lean:103`
+-- + `D63.lean:144` versus `Uniformity/ChapD/D62w.lean:369` + `:412` — so the two module branches
+-- cannot coexist in one environment. `Uniformity` (line 1 above) carries the D62w branch;
+-- `Leanspec.ChapI` must reach the chapter-E Display-A carriers (E.24/E.61/E.62/E.63), which import
+-- D63 → D55. Adding the import below yields, machine-checked at the gate:
+--   `import Uniformity.ChapD.D55 failed, environment already contains
+--    'Uniformity.Density.Gauge.Wle' from Uniformity.ChapD.D62w`
+-- Chapter I's stub file therefore hand-picks its own import set (`Uniformity.lean`'s list minus
+-- `Uniformity.ChapD`, plus E24/E63) and is built with `lake build Leanspec.ChapI`, GREEN.
+-- Uncomment the line below the moment D62w's two duplicate `def`s are deleted in favour of
+-- importing D55/D63 — that one edit restores the standing gate here AND unblocks landing chapter I
+-- in `leanfinal` at all (defect I-D1 in `Leanspec/ChapI.lean`'s header).
+-- import Leanspec.ChapI
 /-!
 # leanspec — the isolated interface environment (design stage 0e)
 

@@ -124,14 +124,15 @@ row, consumes C.92's withdrawn `fgmn_calculus_exists` (defect I-D11 records what
 
 | kind | count | note |
 |---|---:|---|
-| `def` of blueprint declarations (real bodies, stage-0e rule 1) | **8** | `NS7Termination` (I.01), `DecidedSliceAt` (I.02), `MenuLawAt` (I.03), `WindowPinningAt` (I.05), `GenhnHEAt` (I.06), `GenhnTow1At` (I.07), `TypeOfFaithful` (I.21) — plus the `structure` below |
+| `def` of blueprint declarations (real bodies, stage-0e rule 1) | **7** | `NS7Termination` (I.01), `DecidedSliceAt` (I.02), `MenuLawAt` (I.03), `WindowPinningAt` (I.05), `GenhnHEAt` (I.06), `GenhnTow1At` (I.07), `TypeOfFaithful` (I.21) |
 | `structure` (real body) | **1** | `CapstoneHypotheses` (I.10) — ⚠ signed in the state §11 forbids, defect I-D7 |
 | `theorem` landed REAL (blueprint §11: "I.15–I.18 … land REAL, not axiom") | **4** | I.15–I.18 |
-| `axiom` stubs | **0** | chapter I signs no theorem it cannot prove at stub time |
-| gate `example`s / `#check` / `#print axioms`, ALL EXECUTED | **§4 gate 9 · §6 gate 3 · I.23 17 · I.24 22 · I.25 6** | |
+| `axiom` stubs | **0** | chapter I signs no theorem it cannot prove at stub time; the file's ONE `axiom` is I.25's fenced, `private`, `True`-valued positive control for the AXCHK guard, consumed by nothing |
+| gate `example`s / `#check`, ALL EXECUTED | **23 `example` + 7 `#check`** | §4 gate (9 checks) · §6 gate (the `Iff.rfl` slice pin + the I.19 package-route `#check`s) · I.23 (the `q = 2`/`q = 3` anchors, the `e·f = 2` non-applicability proof, the two `n = 2` non-vacuity witnesses) |
 | `[note]` nodes with no Lean file (blueprint §0.2) | **8** | I.04, I.11, I.12, I.13, I.14, I.19, I.20, I.22 — transcribed as docstring sections, nothing declared |
+| ENFORCED AXCHK guards (`#axiom_core`, I.24/I.25) | **67** | each one FAILS THE BUILD on a non-core footprint; two `elab` commands (`#axiom_core`, `#axiom_reg`) implement them |
 
-**13 signed blueprint declarations** (8 `def` + 1 `structure` + 4 `theorem`), matching the
+**12 signed blueprint declarations** (7 `def` + 1 `structure` + 4 `theorem`), matching the
 blueprint's own file list (I01–I03, I05–I07, I10, I15–I18, I21, I23–I25 = 15 files; I.23–I.25 are
 gate files carrying no declaration).
 
@@ -281,11 +282,14 @@ elaborate is listed; nothing was adjusted silently.
 
 ## What is real and what is a stub
 
-Per stage-0e rule 1 the definitional layer lands as REAL BODIES (8 `def`s + 1 `structure`), and
+Per stage-0e rule 1 the definitional layer lands as REAL BODIES (7 `def`s + 1 `structure`), and
 per blueprint §11 the four assembly theorems I.15–I.18 land REAL as well — their proofs are
-projections and one term application, all provable at stub time. **There is not one `axiom` in
-this file**, which is the chapter's design point: every open input to `UniformityStatement` is a
-HYPOTHESIS of I.17, never an axiom, so I.17's own footprint is Lean-core (printed at I.24).
+projections and one term application, all provable at stub time. **There is not one `axiom` STUB
+in this file**, which is the chapter's design point: every open input to `UniformityStatement` is
+a HYPOTHESIS of I.17, never an axiom, so I.17's own footprint is Lean-core — *enforced*, not
+merely printed, at I.24. (The single `private axiom axchkSelfTestAxiom : True` at I.25 is the
+AXCHK guard's positive control: `True`-valued, so it cannot weaken anything, and consumed by
+nothing outside its own two commented self-test lines.)
 -/
 
 set_option autoImplicit false
@@ -778,4 +782,296 @@ absorbed into the standing fresh-eyes cadence. **No audit row is a fleet node.**
 | A-5 | HYP.111 (def half) | what `decidedDensity` counts | rides A-4 | with A-4 |
 | A-6 | (I.10) | the field list of `CapstoneHypotheses` vs frozen Display A — one-to-one, nothing added, nothing dropped | fresh-eyes, decorrelated arm | **FIRES NOW: this gate finds it NOT one-to-one — I-D4 (`𝒲` dropped), I-D7/I-D8 (`jd0`/`genhnBox2` placeholders, no `w1`), I-D9 (`a1` vacuous), I-D10 (`a0` over-demanded at n = 0)** |
 | A-7 | HYP.91 | OB-a…OB-d representation vs CHAP-H's committed text | bounded, one pass | at the H stub stage |
+-/
+
+/-! ## §8 — THE GATES (I.23–I.25), EXECUTED
+
+**Arena note.** Chapter I owns no mathematics, so its gates are the teeth (GC-8's own
+battery-inheritance row: "I: no batteries — its teeth are the gate nodes"). Three of them: the
+unconditional `n ≤ 2` re-fire (I.23), the maintained AXCHK census (I.24), and the cite-footprint
+gate (I.25). GC-11 compliance for I.23: **two primes ✓** (`q = 2` and `q = 3`); the
+`e > 1 ∧ f > 1` witness clause is **signed non-applicable at `n = 2`** and the reason is
+executed below rather than asserted (a degree-2 type has `e·f = 2`).
+
+**The AXCHK guard is EXECUTED, not eyeballed.** `#print axioms` prints a line a human must read;
+this file installs `#axiom_core`, which *fails the build* when a constant's footprint leaves
+`{propext, Classical.choice, Quot.sound}`. That turns REVISION 2's "maintained, diffable census"
+into a maintained, self-enforcing one: a footprint regression anywhere on the capstone-facing
+surface is a red build here, which is what the repo's stop-the-line rule wants. -/
+
+section Gates
+
+open Lean Elab Command in
+/-- **The AXCHK primitive (I.24/I.25).** `#axiom_core foo` fails the build unless `foo`'s axiom
+footprint is EXACTLY Lean core `{propext, Classical.choice, Quot.sound}`. With the gate-(b)
+registry currently EMPTY (no cite axiom is landed in `leanfinal`; B.42 is signed but unlanded,
+C.66/C.94 are REDRAFTED and unsigned, C.92's axiom is RETIRED), "Lean core exactly" IS I.25's
+clause (i) AND its clause (iii) forbidden-list check — `AX_cellRecursion`, `Lean.ofReduceBool`
+and every unsigned axiom are excluded by the same test. When a cite lands, its consumers move to
+`#axiom_reg` below. -/
+elab "#axiom_core " id:ident : command => do
+  let n ← liftCoreM <| realizeGlobalConstNoOverload id
+  let ax ← liftCoreM <| collectAxioms n
+  let allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
+  let bad := ax.filter (fun a => !allowed.contains a)
+  unless bad.isEmpty do
+    throwError "AXCHK FAIL (I.25 clause (i)/(iii)): {n} depends on non-core axioms {bad.toList}"
+
+open Lean Elab Command in
+/-- **I.25 clause (ii), the cite-conditional form.** `#axiom_reg foo [a, b]` fails the build
+unless `foo`'s footprint is Lean core PLUS a subset of the named registry — the honest carrier
+the ledger wants ("the conditionality is IN the axiom dependency", C.67's pattern). The registry
+at composition time is **empty**, so no declaration uses this form yet; expected first entries
+are C.94's `agnprw_termination` (at the A-C.6 REDRAFT `NS7TerminationStatementR`) and C.66's FGMN
+axiom (at the REDRAFT `FgmnResidualMulStatement`), plus B.42's `[GN15]+[FGMN]` axiom on landing.
+⚠ Defect I-D11: this gate is BLIND to C.92's route, which A-C.6 converted from an axiom to
+hypothesis-form — an unsupplied `[FGMNCalculus …]` instance is invisible to `collectAxioms`. -/
+elab "#axiom_reg " id:ident " [" reg:ident,* "] " : command => do
+  let n ← liftCoreM <| realizeGlobalConstNoOverload id
+  let ax ← liftCoreM <| collectAxioms n
+  let mut allowed : Array Name := #[``propext, ``Classical.choice, ``Quot.sound]
+  for r in reg.getElems do
+    allowed := allowed.push (← liftCoreM <| realizeGlobalConstNoOverload r)
+  let bad := ax.filter (fun a => !allowed.contains a)
+  unless bad.isEmpty do
+    throwError "AXCHK FAIL (I.25 clause (ii)): {n} depends on unregistered axioms {bad.toList}"
+
+/-! ### NODE I.23 [gate] — THE UNCONDITIONAL-SLICE GATE (`q = 2` AND `q = 3`)
+
+(i) footprints of the landed unconditional set; (ii) chapter G's landed `n = 2` values re-fired
+as regression anchors, with the expected numbers EXECUTED rather than commented; (iii)
+non-vacuity witnesses for I.02's and I.03's `n = 2` instances. -/
+
+-- (i) the landed unconditional set: every one Lean-core, enforced.
+#axiom_core Uniformity.Density.drainage_one
+#axiom_core Uniformity.Density.totalMass_one
+#axiom_core Uniformity.Density.drainage_two
+#axiom_core Uniformity.Density.totalMass_two
+#axiom_core Uniformity.Density.coveringMenu_two
+#axiom_core Uniformity.Density.coveringMenu_three
+#axiom_core Uniformity.Density.genuineDensity_two_exact
+#axiom_core Uniformity.Density.uniformityStatement_two
+#axiom_core Uniformity.Density.gate_two_padic_two_exact
+#axiom_core Uniformity.Density.gate_two_padic_three_exact
+
+-- (ii) the `q = 2` anchor triple `(1/3, 1/3, 1/3)`.
+example : genuineDensity ℤ_[2] 2 splitType = 1 / 3 := gate_two_padic_two_exact.1
+example : genuineDensity ℤ_[2] 2 inertType = 1 / 3 := gate_two_padic_two_exact.2.1
+example : genuineDensity ℤ_[2] 2 ramType = 1 / 3 := gate_two_padic_two_exact.2.2
+-- the `q = 3` anchor triple `(3/8, 3/8, 1/4)` — a NON-uniform triple, so the two primes really
+-- separate (had the gate run at `q = 2` alone, a "all types equally likely" bug would survive).
+example : genuineDensity ℤ_[3] 2 splitType = 3 / 8 := gate_two_padic_three_exact.1
+example : genuineDensity ℤ_[3] 2 inertType = 3 / 8 := gate_two_padic_three_exact.2.1
+example : genuineDensity ℤ_[3] 2 ramType = 1 / 4 := gate_two_padic_three_exact.2.2
+-- the exact `n = 2` drainage law `undecidedCount O 2 N = q^N` (G.36), at both primes and at the
+-- blueprint's three spot values `(q, N) = (2,1) ↦ 2`, `(2,3) ↦ 8`, `(3,2) ↦ 9`.
+example : undecidedCount ℤ_[2] 2 1 = 2 := by rw [undecidedCount_two_eq]; simp [residueCard_padicInt]
+example : undecidedCount ℤ_[2] 2 3 = 8 := by rw [undecidedCount_two_eq]; simp [residueCard_padicInt]
+example : undecidedCount ℤ_[3] 2 2 = 9 := by rw [undecidedCount_two_eq]; simp [residueCard_padicInt]
+
+-- GC-11's `e > 1 ∧ f > 1` witness clause: SIGNED NON-APPLICABLE at `n = 2`, and the reason is
+-- executed rather than asserted. The meaningful witnesses live in B/C/E's gates (e.g. B.85),
+-- whose footprints I.24 re-prints on landing.
+example : ∀ e f : ℕ, e * f = 2 → ¬ (1 < e ∧ 1 < f) := by
+  rintro e f hef ⟨he, hf⟩
+  have h4 : 2 * 2 ≤ e * f := Nat.mul_le_mul he hf
+  rw [hef] at h4
+  omega
+
+-- (iii) NON-VACUITY of the `a0` field at `n = 2`: `DecidedSliceAt 2` is PROVED outright, from
+-- chapter G's landed `uniformityStatement_two` through the landed `n = 2` drainage tie
+-- `genuineDensity_eq_decidedDensity_two`. This is the field's witness that it says something.
+example : DecidedSliceAt 2 := by
+  intro σ hσ
+  obtain ⟨num, den, hden, hlaw⟩ := uniformityStatement_two σ hσ
+  refine ⟨num, den, hden, ?_⟩
+  intro O _ _ _ _ _
+  obtain ⟨h1, h2⟩ := hlaw O
+  exact ⟨h1, by rw [← genuineDensity_eq_decidedDensity_two]; exact h2⟩
+
+-- NON-VACUITY of the `a1` field at `n = 2`: `MenuLawAt 2` is PROVED from `coveringMenu_two`.
+-- ⚠ READ WITH DEFECT I-D9: the `A1Family` component of this witness is the EMPTY list, which is
+-- exactly why the witness is cheap — the shape clause carries no content. The menu clause is
+-- what is really certified here.
+example : MenuLawAt 2 := by
+  refine ⟨0, ([] : List (Induction.A1Cell 0)), {splitType, inertType, ramType}, ?_, ?_, ?_⟩
+  · intro C hC
+    simp at hC
+  · intro σ hσ
+    simp only [Finset.mem_insert, Finset.mem_singleton] at hσ
+    rcases hσ with h | h | h <;> subst h
+    exacts [splitType_degree, inertType_degree, ramType_degree]
+  · intro O _ _ _ _ _
+    exact coveringMenu_two
+
+/-! ### NODE I.24 [gate] — **AXCHK: THE MAINTAINED INTERFACE CENSUS**
+
+REVISION 2's planned artifact, composed here as an ENFORCED census: every exported
+capstone-facing interface of `leanfinal`, guarded Lean-core.
+
+**Location decision, recorded and CHANGED at this gate.** The blueprint proposes
+`leanfinal/AXCHK.lean` with a pointer at `spec/`. That is not composable at HEAD: defect I-D1
+means a `leanfinal` module cannot import both `Uniformity` and the chapter-E Display-A carriers,
+so a `leanfinal`-side census cannot cover the `ladder` field's supply. The census therefore
+lives HERE (in `leanspec`, which is allowed to pick its import set) until I-D1 is cured; the
+committed diffable OUTPUT still belongs under `spec/` and remains the orchestrator's to emit.
+
+**Maintenance rule (unchanged).** Every chapter's stub-gate agent APPENDS its chapter's terminal
+names on landing — this block is the one place the whole trusted surface is greppable. -/
+
+-- the `Statement.lean` API: both CAP targets and every cross-implication
+#axiom_core Uniformity.Density.UniformityStatement
+#axiom_core Uniformity.Density.UniformityStatementDecided
+#axiom_core Uniformity.Density.UniformityStatementPadic
+#axiom_core Uniformity.Density.UniformityStatement.ofDecided
+#axiom_core Uniformity.Density.UniformityStatement.toDecided
+#axiom_core Uniformity.Density.UniformityStatement.toPadic
+#axiom_core Uniformity.Density.DrainageAt
+#axiom_core Uniformity.Density.TotalMassOne
+#axiom_core Uniformity.Density.totalMassOne_of_drainage
+-- the density / drainage layer
+#axiom_core Uniformity.Density.genuineDensity
+#axiom_core Uniformity.Density.decidedDensity
+#axiom_core Uniformity.Density.CoveringMenu
+#axiom_core Uniformity.Density.genuineDensity_eq_of_drainage
+#axiom_core Uniformity.Density.sum_genuineDensity_eq_one_of_drainage
+#axiom_core Uniformity.Density.one_le_sum_genuineDensity
+#axiom_core Uniformity.Density.typeOf
+-- chapter G's terminal supplies (the rest are re-fired at I.23)
+#axiom_core Uniformity.Density.undecidedCount_two_eq
+#axiom_core Uniformity.Density.undecidedSeq_two_eq
+#axiom_core Uniformity.Density.totalMass_three_of_drainage
+#axiom_core Uniformity.Density.one_le_sum_three
+#axiom_core Uniformity.Density.card_le_undecidedCount_three
+-- chapter H's terminal supplies (the assembly spine + the `(A1)` schema)
+#axiom_core Uniformity.Density.InductionPackage
+#axiom_core Uniformity.Density.package_two
+#axiom_core Uniformity.Density.package_three_of_rate
+#axiom_core Uniformity.Density.drainage_of_package
+#axiom_core Uniformity.Density.uniformity_of_package
+#axiom_core Uniformity.Density.Induction.A1Cell
+#axiom_core Uniformity.Density.Induction.A1Family
+-- chapter E's Display-A carriers (the `ladder` field's supply, at the A-E.2/A-D.2 forms)
+#axiom_core Uniformity.Density.Ladder.LadderSupply
+#axiom_core Uniformity.Density.Ladder.LB1Carrier
+#axiom_core Uniformity.Density.Ladder.MP1Carrier
+#axiom_core Uniformity.Density.Ladder.VarthetaRes
+#axiom_core Uniformity.Density.Ladder.WFrame
+#axiom_core Uniformity.Density.Ladder.DeepTwistConjunct
+#axiom_core Uniformity.Density.Gauge.HVarthetaRes
+-- chapter F's Display-A carriers (I.08/I.09's L-1/L-2 targets)
+#axiom_core Uniformity.Density.Weld.JD0Box2
+#axiom_core Uniformity.Density.Weld.GenhnBox2
+#axiom_core Uniformity.Density.Weld.W1Transport
+-- chapter C's landed census leg
+#axiom_core Uniformity.Density.Tower.tower_first_live
+-- the landed discharge set named in the §3 disposition table
+#axiom_core Uniformity.Hensel.strongHensel
+#axiom_core Uniformity.Hensel.exists_monic_factorization_finset
+#axiom_core Uniformity.Density.typeOf_shift
+#axiom_core Uniformity.Density.typeOf_scaleRoots
+#axiom_core Uniformity.Density.typeOf_scale
+#axiom_core Uniformity.Density.exists_anisotropic
+-- **THIS CHAPTER'S OWN TERMINAL SUPPLIES (I.15–I.18).** I.17's Lean-core footprint IS the design
+-- point (I.17's TEETH row): every open input is a HYPOTHESIS, never an axiom, so the capstone
+-- assembly adds nothing to the trusted base.
+#axiom_core LeanspecI.drainage_of_capstoneHypotheses
+#axiom_core LeanspecI.decided_of_capstoneHypotheses
+#axiom_core LeanspecI.uniformity_of_capstoneHypotheses
+#axiom_core LeanspecI.totalMassOne_of_capstoneHypotheses
+-- and this chapter's carriers, so a later resolution pass cannot smuggle an axiom into a `Prop`
+#axiom_core LeanspecI.NS7Termination
+#axiom_core LeanspecI.DecidedSliceAt
+#axiom_core LeanspecI.MenuLawAt
+#axiom_core LeanspecI.WindowPinningAt
+#axiom_core LeanspecI.GenhnHEAt
+#axiom_core LeanspecI.GenhnTow1At
+#axiom_core LeanspecI.CapstoneHypotheses
+#axiom_core LeanspecI.TypeOfFaithful
+
+/-! ### NODE I.25 [gate] — THE CITE-FOOTPRINT GATE
+
+Axiom hygiene under Part V: Lean core plus exactly the signed cites, nowhere else.
+
+* **clause (i)** — every declaration NOT downstream of a gate-(b) import prints exactly Lean
+  core. Enforced: that is what all 67 `#axiom_core` lines above assert, and the guard THROWS
+  rather than prints.
+* **clause (ii)** — every cite-conditional declaration prints Lean core plus exactly its signed
+  cite axioms. The `#axiom_reg` form above is the enforcement shape; **the signed registry at
+  composition time is EMPTY**, so it has no call sites yet. Expected first entries: C.94's
+  `agnprw_termination` at the A-C.6 REDRAFT, C.66's FGMN axiom at the A-C.6 REDRAFT, B.42's
+  `[GN15 Thm 2.3 + FGMN Thm 6.6]` axiom. ⚠ **Defect I-D11**: C.92's route left the axiom world
+  at A-C.6 (option (1): `fgmn_calculus_exists` RETIRED, the class kept as a hypothesis carrier,
+  "C.92 EXITS the gate-(b) queue"), so orchestrator item **O-4 is MOOT** — and the sixteen
+  `[FGMNCalculus …]`-conditional §10 theorems are now conditional in a way `collectAxioms`
+  cannot see. A hypothesis-form cite is invisible to this gate BY CONSTRUCTION; the honest
+  compensating control is the instance-supply census, not the axiom census.
+* **clause (iii)** — the FORBIDDEN list (`AX_cellRecursion`-family, quarry-quarantined under Q7;
+  `Lean.ofReduceBool`, i.e. `native_decide`, stop-the-line per H.99's precedent; and any axiom
+  not in the signed registry) is enforced by the SAME test, since with an empty registry
+  "Lean core exactly" excludes all of them. The self-test below shows the guard has teeth. -/
+
+-- The guard's own self-test: a deliberately non-core constant must be REJECTED. It is declared
+-- and immediately fenced — nothing in this file or any other consumes it, and it is the only
+-- `axiom` chapter I writes anywhere.
+private axiom axchkSelfTestAxiom : True
+private theorem axchkSelfTestConsumer : True := axchkSelfTestAxiom
+-- If `#axiom_core LeanspecI.axchkSelfTestConsumer` is uncommented the build FAILS with
+-- "AXCHK FAIL (I.25 clause (i)/(iii)): … depends on non-core axioms [axchkSelfTestAxiom]".
+-- That is the gate's positive control, verified at composition (2026-08-16) and left commented
+-- so the file stays green:
+-- #axiom_core LeanspecI.axchkSelfTestConsumer
+-- The registry form's behaviour on the same constant, also verified and left commented:
+-- #axiom_reg LeanspecI.axchkSelfTestConsumer [axchkSelfTestAxiom]   -- PASSES (registered)
+-- #axiom_reg LeanspecI.axchkSelfTestConsumer []                     -- FAILS  (unregistered)
+
+end Gates
+
+end LeanspecI
+
+/-!
+## RESUME
+
+**LSPEC-I stage 0e COMPLETE (2026-08-16).** All 25 blueprint nodes are landed here: **12 signed
+declarations** (7 `def` + 1 `structure` real bodies + 4 `theorem`s landed REAL per §11), **zero
+`axiom` stubs** (chapter I signs no theorem it cannot prove at stub time — the one `axiom` in the
+file is I.25's fenced positive control), zero `sorry`, zero `native_decide`, `autoImplicit` off,
+and the §8 gates EXECUTED at `q = 2` AND `q = 3` (the `(1/3, 1/3, 1/3)` and `(3/8, 3/8, 1/4)`
+triples, the three `undecidedCount` spot values, the `e > 1 ∧ f > 1` non-applicability proof, and
+the two `n = 2` non-vacuity witnesses `DecidedSliceAt 2` / `MenuLawAt 2` PROVED), plus an
+**enforced** AXCHK census of 67 capstone-facing constants — all Lean-core.
+Build: `lake build Leanspec.ChapI`.
+
+**The four load-bearing type-diffs this gate performed** (the reason it exists): the Display-A
+`ladder` field types against LANDED `Ladder.LadderSupply` with `.lb1`/`.mp1` at the **A-E.2**
+forms (`Nonempty (BlockSuite I)` / `Nonempty (MidPeelEmission B B')`) universe-polymorphically in
+`uW`, and `.vartheta` at chapter D's **A-D.2** sitewise `HVarthetaRes`; the `a0` field is
+`Iff.rfl`-pinned to the landed `UniformityStatementDecided`; the `a2` field binds landed
+`DrainageAt`; and I.17 fires through landed `UniformityStatement.ofDecided`.
+
+**Defects for the blueprint's dated-append queue (NOT patched there by this unit):** twelve,
+I-D1 … I-D12, listed in full in the header. The three the orchestrator should read first:
+
+1. **I-D1 (stop-the-line, `leanfinal`)** — `Uniformity.Density.Gauge.Wle` and
+   `…VarthetaWConjunct` are DECLARED TWICE (ChapD/D55 + D63 vs ChapD/D62w), so the ChapD roll-up
+   and the chapter-E deep-twist branch are mutually un-importable. **Chapter I cannot be landed
+   in `leanfinal` at all until this is cured.**
+2. **I-D6 (unsafe instruction)** — the A-C.1 addendum tells the resolution pass to type I.01
+   against `NS7TerminationStatement`, which is MACHINE-REFUTED (proves `False`). Any agent that
+   follows it lands an inconsistency.
+3. **I-D9 (vacuous carrier)** — I.03's `(A1)`-admissibility clause is provably content-free
+   (proved in the §4 gate), so `COND:A1_n`'s resolution today certifies the MENU only. Same
+   genre as OM-4 FINDING 0, and it needs the same treatment: a re-sign, owner-gated.
+
+**Remaining external actions:** (i) `import Leanspec.ChapI` is wired into
+`leanspec/Leanspec.lean` **as a COMMENTED line with its reason** — wiring it live breaks
+`lake build Leanspec` outright, because the root imports `Uniformity` (the D62w branch) and this
+file must reach the E-side carriers (the D63 → D55 branch); machine-checked at this gate. One
+uncommenting restores the standing gate the moment I-D1 is cured; (ii) I-D1's `leanfinal` cure, then
+the ChapE/ChapF roll-up repairs of I-D2, then this file's import block reverts to the one-line
+`import Uniformity` every other chapter uses; (iii) the owner re-signs I.10's field list (I-D3,
+I-D4, I-D7, I-D8, I-D9, I-D10 are all field-list or carrier-strength events); (iv) the gate-(b)
+signatures for the C.66/C.94 REDRAFTS, after which their consumers move from `#axiom_core` to
+`#axiom_reg`; (v) as chapter I lands in `leanfinal`, retire each stub to the
+`example : <type> := <name>` diff form per `Leanspec.lean`'s stub lifecycle.
 -/
