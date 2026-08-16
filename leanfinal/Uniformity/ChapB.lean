@@ -59,11 +59,13 @@ import Uniformity.ChapB.B53a
 import Uniformity.ChapB.B53b
 import Uniformity.ChapB.B53c
 import Uniformity.ChapB.B54
+import Uniformity.ChapB.B55
 import Uniformity.ChapB.B56
 import Uniformity.ChapB.B57
 import Uniformity.ChapB.B59a
 import Uniformity.ChapB.B59b
 import Uniformity.ChapB.B60
+import Uniformity.ChapB.B61
 import Uniformity.ChapB.B64
 import Uniformity.ChapB.B69
 import Uniformity.ChapB.B70
@@ -75,4 +77,4 @@ import Uniformity.ChapB.B77a
 import Uniformity.ChapB.B77b
 import Uniformity.ChapB.B78
 
-/-! Chapter B roll-up — 65/86 base nodes landed (waves 1-12). B.42 route-blocked (vertex split, architecture decision pending). Refutation records are .lean.txt files, deliberately outside the build. -/
+/-! Chapter B roll-up — 67/86 base nodes landed (waves 1-13). Upper layer (§§8-10) gated on the owner's gate-(b) signature for B.42's [cite:GN15 Thm 2.3 + FGMN Thm 6.6]; B.43/B.62 await orchestrator decisions. Refutation records are .lean.txt, outside the build. -/
