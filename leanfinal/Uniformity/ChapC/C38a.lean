@@ -19,11 +19,11 @@ bump 128 → 129 and the census `+1 def`). The signed bodies are the gate-verifi
 C.11's `dv2Pin`/`dv2Supp` in place of C.06's `dvHgt`/`dvSupp` — the fourth turn of the crank
 C.06 and C.11 already documented as the second and third:
 
-| level | on-side predicate | side set | endpoints / degree |
+| level | on-side predicate | side set | endpoints, degree |
 | --- | --- | --- | --- |
-| order 0 (chapter B) | `OnSide φ f u ℓ j` (B.16 a) | `sideSet` (B.16 b) | `sideMin`/`sideMax`/`sideDeg` (B.20) |
-| level 1 (C.07) | `DvOnSide F f u ℓ j` | `dvSideSet` | `dvSideMin`/`dvSideMax`/`dvSideDeg` |
-| level 2 (here) | `Dv2OnSide L Ψ f u₂ ℓ₂ j` | `dv2SideSet` | `dv2SideMin`/`dv2SideMax`/`dv2SideDeg` |
+| 0 (B.16/B.20) | `OnSide φ f u ℓ j` | `sideSet` | `sideMin`/`sideMax`/`sideDeg` |
+| 1 (C.07) | `DvOnSide F f u ℓ j` | `dvSideSet` | `dvSideMin`/`dvSideMax`/`dvSideDeg` |
+| 2 (here) | `Dv2OnSide L Ψ f u₂ ℓ₂ j` | `dv2SideSet` | `dv2SideMin`/`dv2SideMax`/`dv2SideDeg` |
 
 D-1/GC-2 still forbid a polygon carrier, so a level-2 side is not a geometric object: it is the
 argmin `Finset` of the `ℕ`-linear form whose infimum defines `dv2Supp` (C.11), and the side's
