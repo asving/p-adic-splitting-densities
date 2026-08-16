@@ -1,0 +1,95 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Leanspec.ChapC
+
+/-!
+# SEPARATION RECORD for the A-C.3 re-sign of NODE C.114
+
+**This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` /
+`C111_C114_REFUTATION.lean.txt` convention: kept as `.lean.txt` so no build picks it up).
+It is the machine-checked leg showing that the A-C.3 re-signed `ht_branch` / `ht_global`
+are SILENT on the two geometries that refuted the A-C.1 signatures, and that the new
+representative clause subsumes A-C.2's designed `s`-pin.  To re-run it:
+
+```
+cp leanspec/C114_AC3_SEPARATION.lean.txt /tmp/c114_ac3_sep.lean
+cd leanspec && lake env lean /tmp/c114_ac3_sep.lean
+```
+
+Compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only,
+2026-08-16.
+
+## What is separated
+
+`C111_C114_REFUTATION.lean.txt` derives `False` from the frozen C.114 axioms using
+
+1. `c114_branch_frozen_false` — the ONE-NODE trees `⟨[vK 1]⟩` and `⟨[vK 2]⟩`, identical in
+   every field the frozen stratum reads and differing only in the FORMULA-read `kappa`
+   (values 1 and 2 against `rfl`-equal counted subtypes);
+2. `c114_global_frozen_false` — the EMPTY shapes `⟨[], 1⟩` and `⟨[], 2⟩`, same disease at
+   `kappa0`.
+
+The A-C.3 re-sign carries the `(HT-orbit)` rules as hypotheses.  `kappaRule_vK_iff` and
+`kappa0Rule_empty_iff` below show those hypotheses hold on the refuting instances EXACTLY
+when the orbit factor is `1` — so the re-signed axioms never speak about the `k = 2`
+members of either family, and both refutation arguments are cut at their first step.  At
+`k = 1` the axioms DO speak, and the certification measures both sides to be `1`
+(`verification/c114_ac3_stratum_check.py`, the `[SEP]` block).
+
+`repRecentring_gaussVal` records the other half: A-C.2's designed `s`-pin
+`gaussVal (K i − K (parent i)) = s_i` is a CONSEQUENCE of A-C.3's finding-D5 clause
+`K (parent i) − K i = C (π ^ s_i) * z` with `z` a representative of a nonzero class
+(`gaussVal z = 0`), so it is not carried separately — the minimality rule (A-F.12) applied
+with a proof rather than an assertion.
+-/
+
+set_option linter.style.longLine false
+
+namespace LeanspecC
+
+open Uniformity Uniformity.Density Uniformity.Density.Leaf Polynomial
+
+/-- the κ-separating one-node family of `C111_C114_REFUTATION.lean.txt`, verbatim: the
+nodes are identical in every field except the orbit factor `kappa`. -/
+def vK (k : ℕ) : HTNode := ⟨0, 0, fun _ => 0, 0, ∅, fun _ _ => ⟨0⟩, k⟩
+
+/-- **the branch refutation geometry is separated**: the A-C.3 κ-rule holds at the root of
+`⟨[vK k]⟩` exactly when `k = 1`, so `ht_branch`'s hypothesis `hkappa` fails at `k = 2` and
+the equinumerous-strata argument of `c114_branch_frozen_false` never starts. -/
+theorem kappaRule_vK_iff (k : ℕ) :
+    (HTTree.mk [vK k] fun _ => 0).KappaRule 0 ↔ k = 1 := by
+  classical
+  have hch : (HTTree.mk [vK k] fun _ => 0).children 0 = ∅ := by
+    simp [HTTree.children]
+  simp only [HTTree.KappaRule, hch, Finset.image_empty, Finset.prod_empty, mul_one]
+  simp [vK]
+
+/-- **the global refutation geometry is separated**: the A-C.3 κ₀-rule holds at the EMPTY
+shape exactly when `kappa0 = 1`, so `ht_global`'s hypothesis `hkappa0` fails at `k = 2`
+and `c114_global_frozen_false`'s argument never starts. -/
+theorem kappa0Rule_empty_iff (k : ℕ) : (HTShape.mk [] k).Kappa0Rule ↔ k = 1 := by
+  classical
+  simp [HTShape.Kappa0Rule]
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-- **the D5 clause subsumes A-C.2's designed `s`-pin**: a recentring by `π ^ s` times a
+representative of a NONZERO class has Gauss valuation exactly `s`. -/
+theorem repRecentring_gaussVal (hπ : Irreducible π) {z : Polynomial O} (hz : gaussVal z = 0)
+    (s : ℕ) : gaussVal (Polynomial.C (π ^ s) * z) = (s : ℕ∞) := by
+  rw [gaussVal_mul hπ, gaussVal_C_pow hπ, hz, add_zero]
+
+end LeanspecC
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms LeanspecC.kappaRule_vK_iff
+#print axioms LeanspecC.kappa0Rule_empty_iff
+#print axioms LeanspecC.repRecentring_gaussVal
+
+end AxCheck
