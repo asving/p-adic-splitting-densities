@@ -5691,3 +5691,82 @@ sign candidate 1, wrapper-land the signed name). E now 41/67.
 (6) Fable pool down all afternoon (BS2 ×3, beta ×3, A-C.3 ×4
 kills); A-C.3 TAKEN OVER by opus (running), BS2 + beta parked
 on a 40-min backoff; opus pool healthy throughout.
+
+**2026-08-16 DATED APPEND #79 — A-C.3 EXECUTED: C.114's TWO COUNT
+AXIOMS RE-SIGNED AND RESTORED (the A-C.2 block LIFTED), WITH THE
+DESIGNED CLAUSE LIST ITSELF REPAIRED (D5) AND A CORPUS-LEVEL
+REFUTATION FOUND (D6).** (1) CERTIFY FIRST, as A-C.2's charter
+demanded: `verification/c114_ac3_stratum_check.py`, 63 checks,
+exit 0 — stratum-vs-formula brute force over `O = Z/p^N`
+(`Φ = x`) at depth 0 (q=2,3; m=1,2), depth-1 chains (q=2,3;
+m=2,3, INCLUDING the corpus's own W12-L0 recovery row
+`(q−1)((q−1)(q−2)/2)q^{2N−8}`, reproduced exactly at 18), depth-2
+chains (q=2,3), and the two-branch GLOBAL law at κ₀ ∈ {1,2}
+(512 and 64, exact). Model exactness argued and used: every
+enumerated node's children either exhaust it or are the single
+unfractured child, so no mod-π^N factorization is lifted.
+(2) **FINDING D5** — A-C.2's designed `s`-pin
+`gaussVal(K i − K parent) = s_i` is NOT ENOUGH: it leaves the
+lift of the residual root free above digit `s_i`, and `∃ K` then
+roams the lifts (measured 324 vs formula 216). The corpus fixes
+ONE lift (`EFF.W12.84` step 2, "Choose a lift z̃"); its
+lift-independence sentence is about the COUNT, not the SET. Cure:
+`IsRepSystem` — the recentring is `π^{s_i}` times a member of a
+system of representatives; certified independent of the system
+(four systems), and it IMPLIES the designed `s`-pin (PROVED:
+`repRecentring_gaussVal`). Signing the designed list as written
+would have landed a THIRD false axiom. (3) **FINDING D6, against
+the CORPUS** — `EFF.W12.85` step 3's "the exponent is a
+nonnegative integer; divisibility … is a consequence of the
+bijection, not an assumption" is FALSE at multi-child nodes: on
+the corpus's own `B_v`/`D_u`, a node whose repeated-linear
+children EXHAUST it with ≥2 children has
+`B_v(N) − Σ_u D_u(N) = −s(m_v² − Σ_u m_u²)/2 < 0` for EVERY N
+(the `B_v` side brute-force confirmed: root cell exactly 3^6=729
+at q=3,m=4,N=5 while each child's ambient cell is 3^5). Such
+nodes are realizable — measured 243/486/128 against the
+formula's 9/108/32. So `hnode` is CARRIED (A-C.2's C.111
+precedent) and A-C.2's "discharged by the fleet's bijection at
+realized nodes" reading is CORRECTED to a scope condition
+(C.111 rider). The corpus-side gap is RECORDED, not patched.
+(4) SIGNED: `leanspec` C.114 re-signed — `htRealizes` gains
+per-node `IsKey`, per-node CELL membership at the recentered key
+(subsuming the pins AND pinning non-root types), the D5
+representative recentring, sibling distinctness; `ht_branch`/
+`ht_global` restored with eight INLINE tree binders (B.42);
+`ht_global` also gains `hdistinct` (the corpus's "actual DISTINCT
+irreducibles") and the letter-free slot-assignment `∃ σ` that κ₀
+counts. `lake build Leanspec.ChapC` GREEN (9080), zero sorry.
+Machine separation record `leanspec/C114_AC3_SEPARATION.lean.txt`
+(Lean-core): the κ-rule/κ₀-rule force `kappa = 1`/`kappa0 = 1` on
+the two A-C.2 refutation geometries, so the re-signed statements
+are SILENT on them. Blueprint amendment A-C.3 (banner + node +
+C.111 rider + C.116 contract extension + per-clause source
+adjudication table with verbatim pins and non-textual legs +
+per-clause teeth), 7 DAG rows. Census unchanged at 131.
+(5) FLAGGED, not hidden: the `s`-pin is SUBSUMED by D5's clause;
+sibling distinctness has no tooth in the reachable geometries;
+`OrderOne` is a scope fence with no truth tooth; a root-depth
+normalisation was certified INERT and dropped. (6) D3-PATTERN
+AUDIT over the other A-C.1 carriers: 13 rows CLEAN with reasons
+(KeyFrame, LevelDatum, TowerDatum, DvDissection, DeepTower,
+ComposedLabel, DescentState, ClassSizeSupplyData, towerLocus/
+refineDom/refineCod, towerLocus_fibration/block_budget,
+blockFactor, dv2Res, resLift, slotIdx), **2 DEFECT**: leanspec's
+`stageCoord` and `k2Coord` still carry the REFUTED opaque-choose
+bodies that `leanfinal` repaired at c2831103 / 2e133686 — the
+CONTRACT would reproduce the defect. Flagged in place
+(DO NOT TRANSCRIBE + the landed cure named). Root cause is
+structural: leanspec still duplicates landed chapter-C
+declarations instead of retiring them per its own stub lifecycle.
+(7) OPEN, for A-C.5: (a) the multi-child regime under `hnode` is
+CERTIFIED-OPEN (out of brute-force range — the smallest q=3
+instance needs N ≥ 10 and a 3^24 root cell); (b) the D6
+corpus-side gap in `EFF.W12.85` step 3; (c) the leanspec
+retirement sweep (designed list at the amendment's §VIII); the
+queued C.109 SPLIT (C.109-i..-v) should expose the fiber
+decomposition as its own layer — that is the step that fails.
+Commits a37119a1, 557ec871, 26c6b611, 8501af6e, a7ee42c2,
+7d24c1a3, c08b1ac2, a030ee1a (+ the four blueprint hunks swept
+into 1e35c199 by a concurrent unit's `git add` — content intact,
+attribution not).
