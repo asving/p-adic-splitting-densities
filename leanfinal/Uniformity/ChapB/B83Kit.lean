@@ -497,6 +497,50 @@ theorem polygon_read {φ f : Polynomial O} {n m : ℕ} (hn : f.natDegree = n) (h
     refine ⟨by omega, ?_⟩
     rw [OnSide, hsupp, hfin j hjm, cast_weight, hval]
 
+/-- **The polygon read at an arbitrary finite-height support**, for instances whose development
+has interior gaps (`dev φ f j = 0` at some `0 < j < μ`) — every B.85 witness, where
+`f = φ ^ μ − p`. `S` lists the abscissae of finite height; everything off `S` has height `⊤`. -/
+theorem polygon_read_set {φ f : Polynomial O} {n : ℕ} (hn : f.natDegree = n)
+    {S : Finset ℕ} (hS : ∀ j ∈ S, j ≤ n)
+    {H : ℕ → ℕ} (hfin : ∀ j ∈ S, npHgt φ f j = (H j : ℕ∞))
+    (htop : ∀ j, j ∉ S → npHgt φ f j = ⊤)
+    {u ℓ : ℕ} (hℓ : 0 < ℓ) {M : ℕ}
+    (hMle : ∀ j ∈ S, M ≤ ℓ * H j + u * j) (hMmem : ∃ j ∈ S, ℓ * H j + u * j = M) :
+    suppVal φ f u ℓ = (M : ℕ∞) ∧
+      ∀ j, (j ∈ sideSet φ f u ℓ ↔ (j ∈ S ∧ ℓ * H j + u * j = M)) := by
+  classical
+  have htoptm : ∀ j, j ∉ S → ℓ • npHgt φ f j + ((u * j : ℕ) : ℕ∞) = ⊤ := by
+    intro j hj
+    rw [htop j hj]
+    simp [nsmul_eq_mul, hℓ.ne']
+  have hsupp : suppVal φ f u ℓ = (M : ℕ∞) := by
+    rw [suppVal]
+    refine le_antisymm ?_ ?_
+    · obtain ⟨j₀, hj₀m, hj₀⟩ := hMmem
+      refine le_trans (Finset.inf_le (b := j₀) (Finset.mem_range.2 ?_)) ?_
+      · have := hS j₀ hj₀m; omega
+      · rw [hfin j₀ hj₀m, cast_weight, hj₀]
+    · refine Finset.le_inf ?_
+      intro j _
+      by_cases hjm : j ∈ S
+      · rw [hfin j hjm, cast_weight]
+        exact_mod_cast hMle j hjm
+      · rw [htoptm j hjm]; exact le_top
+  refine ⟨hsupp, fun j => ?_⟩
+  rw [mem_sideSet_iff]
+  constructor
+  · rintro ⟨hjlt, hon⟩
+    rw [OnSide, hsupp] at hon
+    by_cases hjm : j ∈ S
+    · refine ⟨hjm, ?_⟩
+      rw [hfin j hjm, cast_weight] at hon
+      exact_mod_cast hon
+    · rw [htoptm j hjm] at hon
+      exact absurd hon (by simp)
+  · rintro ⟨hjm, hval⟩
+    refine ⟨by have := hS j hjm; omega, ?_⟩
+    rw [OnSide, hsupp, hfin j hjm, cast_weight, hval]
+
 theorem sideMin_eq {φ f : Polynomial O} {u ℓ : ℕ} (hne : (sideSet φ f u ℓ).Nonempty) {a : ℕ}
     (hmem : a ∈ sideSet φ f u ℓ) (hle : ∀ j ∈ sideSet φ f u ℓ, a ≤ j) :
     sideMin φ f u ℓ hne = a :=
