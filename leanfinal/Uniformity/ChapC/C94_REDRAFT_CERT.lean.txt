@@ -1,0 +1,634 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapC.C13
+import Uniformity.ChapC.C14a
+import Uniformity.ChapC.C29
+import Uniformity.ChapB.B39b
+import Uniformity.ChapB.B59a
+
+/-!
+# CERTIFICATION of the A-C.6 REDRAFT of NODE C.94 (`agnprw_termination`, `[cite:AGNPRW]`)
+
+**This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` / `C66_REDRAFT_CERT.lean.txt`
+convention: kept as `.lean.txt` so no build picks it up). To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapC/C94_REDRAFT_CERT.lean.txt /tmp/c94_cert.lean
+cd leanfinal && lake env lean /tmp/c94_cert.lean
+```
+
+It compiles clean at the repo pin (Lean 4.31.0), sorry-free, Lean-core axioms only,
+2026-08-16 (amendment A-C.6, the CITE-REDRAFT unit).
+
+## What is certified, and against what
+
+`leanfinal/Uniformity/ChapC/C94_REFUTATION.lean.txt` machine-refutes the FROZEN A-C.1 draft of
+C.94: `DescentStep` admits the SELF-LOOP `s' = s` (the recentering clause degenerates,
+`natDegree 0 = 0`) and both of its side clauses are vacuous (`sideSet` is ALWAYS nonempty —
+B39b's own `sideSet_nonempty_gen`), so the constant history on `f = X` is an infinite chain and
+`NS7TerminationStatement → False`. The A-C.6 REDRAFT (`leanspec/Leanspec/ChapC.lean`,
+`inductive DescentStepR` + `def NS7TerminationStatementR`) rebuilds the `refine` constructor
+from [AGNPRW] published Def 5.5; both are transcribed VERBATIM in §1 below so that the draft and
+the redraft can be compared in one file.
+
+## LEG A — the refutation no longer elaborates, and the self-loop is IMPOSSIBLE, not merely unfilled
+
+**A(i) — the mechanical retarget.** EXACT RECIPE (reproducible):
+
+```
+cp leanfinal/Uniformity/ChapC/C94_REFUTATION.lean.txt /tmp/c94_retarget.lean
+```
+
+then replace that file's `| refine : …` constructor block by the redraft's (§1's `DescentStepR`
+`refine` clause list, name `DescentStep` kept so the rest of the refutation is UNTOUCHED) and
+`cd leanfinal && lake env lean /tmp/c94_retarget.lean`. The refutation's `descentStep_self` then
+FAILS TO ELABORATE, verbatim (2026-08-16 run; `exit=1`, and all three of `descentStep_self`,
+`ns7_proves_false`, `ns7_false_absolute` degrade to `sorryAx`):
+
+```
+/tmp/c94_retarget.lean:151:40: error: Application type mismatch: The argument
+  Nat.one_pos
+has type
+  0 < 1
+but is expected to have type
+  (sideSet s.key s.block 0 1).Nonempty
+in the application
+  DescentStep.refine s s 0 1 1 1 Nat.one_pos
+```
+
+**A(ii) — the BEST-EFFORT REVIVAL, so that A(i) cannot be dismissed as an arity artifact.**
+Re-supplying the two `Nonempty` proofs in their new positions and filling every fillable clause
+(`/tmp/c94_retarget2.lean`) leaves exactly these residual goals — two of them FALSE
+PROPOSITIONS, printed verbatim:
+
+```
+case refine_3
+⊢ s.key ≠ s.key
+case refine_4
+⊢ 0 < 0
+```
+
+(the further residual goals are `1 < (sideSet s.key s.block 0 1).card`,
+`1 < (sideSet s.key s.block 1 1).card`, the two `IsPure`s, `2 ≤ sideDeg …` and the residual-shape
+clause — none of which the constant history supplies either).
+
+**A(iii) — the general theorem, which is what actually closes the door.**
+`redraft_no_self_loop : ∀ π s, ¬ DescentStepR π s s` is PROVED below for BOTH constructors:
+
+* `refine` dies on the new `s'.key ≠ s.key`;
+* `jump` dies on arithmetic — `IsTestKey` pins `s'.key.natDegree = L.keyDeg₂ = (e₁f₁)·ℓ·deg r`
+  while `s.key = F.key` has `natDegree = e₁f₁ > 0` and `jump` itself carries `2 ≤ ℓ·deg r`.
+
+So NO choice of parameters, no re-ordering and no lemma supply revives the refutation's
+strategy: `redraft_constant_history_not_a_chain` shows the constant history is not a
+`DescentStepR`-chain at all. For contrast the draft's self-loop is re-proved here as
+`draft_has_self_loop` — the two theorems side by side are the separation record.
+
+## LEG B — satisfiability: the redrafted `refine` constructor is INHABITED, at a real base
+
+`witness_step` builds an actual term
+
+```lean
+DescentStepR (2 : O) ⟨X, bl O⟩ ⟨ky O, bl O⟩
+```
+
+over any base in which `2` is a uniformizer (`ℤ_[2]` exhibited in §4), where
+
+* the block is `f = (x − 6)² − 32 = x² − 12x + 4` (`bl`), squarefree over `ℚ₂` with roots
+  `6 ± 4√2`, so the descent is genuinely refining a ramified quadratic;
+* the step is `key x → key x − 2` at `(u, ℓ) = (1, 1) → (u′, ℓ′) = (2, 1)`.
+
+Every one of the redraft's twenty-two `refine` clause slots (the two `Nonempty` arguments plus
+twenty propositions) is discharged by a landed-definition computation — including the two that A-C.6 added with the most content:
+
+* `1 < (sideSet …).card` at BOTH keys: `sideSet X f 1 1 = {0, 2}` (`sideSet_bl`) and
+  `sideSet (X−2) f 2 1 = {0, 2}` (`sideSet_ky`) — genuine two-point sides, not vertices;
+* the residual-shape clause: `resPoly 2 X f 1 1 _ H₀ = (Y − 1)²` (`resPoly_bl`), i.e.
+  `ζ = 1 ≠ 0` and multiplicity `2 = sideDeg` — a REPEATED residual root, which is the
+  algorithm's `n_i ≠ 1` branch, the one that refines rather than outputs.
+
+So the fences that kill the self-loop do not empty the relation, and
+`NS7TerminationStatementR` is not true-for-lack-of-steps. The SECOND step of the descent
+(`x − 2 → x − 6` at `(2,1) → (5,2)`, a jump in the source's sense) is certified numerically:
+`verification/ac6_cite_redraft_check.py` PART 2b, exact integer arithmetic.
+
+## LEG C — numeric consistency (the B.42 witness-disc pattern), and the model cross-check
+
+* `witness_index_bookkeeping`: at both keys the side spans the whole abscissa range —
+  `sideDeg · ℓ · deg key = deg block` reads `2·1·1 = 2` — so the polygon data is consistent with
+  a single side of a degree-2 block, the Ore/index bookkeeping the descent presupposes.
+* `witness_slope_increases`: `u·ℓ′ = 1 < 2 = u′·ℓ`, the strict slope increase, at the SAME
+  attained sides just computed (in the draft this clause was satisfiable by two slopes of one
+  degenerate polygon; here the sides are real).
+* **model cross-check (decorrelation).** The Lean computations here and the independent Python
+  model of `verification/ac6_cite_redraft_check.py` PART 2b agree numeral-for-numeral:
+  developments `[4, −12, 1]` with heights `[2, 2, 0]` at the key `x`, `[−16, −8, 1]` with heights
+  `[4, 3, 0]` at the key `x − 2`, side `{0, 2}` and `sideDeg = 2` at both, residual `1 + Z²`
+  over `F₂` — which is `(Z − 1)²` in characteristic 2, exactly `resPoly_bl`. The numeric leg is
+  therefore not a re-reading of the same transcription: two independent implementations of the
+  B.11–B.29 definitions produce the same table.
+* the redraft's `2 ≤ sideDeg` is LOAD-BEARING and its tooth is numeric only:
+  `ac6_cite_redraft_check.py` PART 2c exhibits the family `φ_n = x² − 2 + 2ⁿ` on the block
+  `x² − 2`, an infinite chain satisfying every clause of the refutation record's own weaker
+  repair suggestion (`0 < sideDeg`) with `sideDeg = 1` throughout — so `0 < sideDeg` would have
+  left C.94 refutable. This file does not re-prove that family in Lean.
+
+## What is NOT claimed
+
+1. That the redraft is PROVED. It is a cite: [AGNPRW] Found. Comput. Math. **25** (2025) no. 2,
+   631–681, DOI 10.1007/s10208-024-09646-x, **Thm 5.6** (the A-3 numbering correction of
+   `docs/CITE_NUMBERING_AUDIT_2026-08-16.md` §3). Nothing here discharges it.
+2. That `DescentStepR` is PROVED contained in [AGNPRW] §5.5's refinement relation. Its clauses
+   are the polygon-level shadows of Def 5.5's type-level conditions (§1's docstring in leanspec
+   carries the clause-by-clause source quotes); the source additionally carries the full MacLane
+   type invariants `(µ, φ, ℓ)`, which this corpus's `DescentState` does not record. **This is the
+   live residual risk at gate (b)** and the owner should read it as such: if a defect remains it
+   is again an over-broad relation, and the detector is the PART 2c-style family probe.
+3. That the `jump` constructor is faithful. A-C.6 left it byte-unchanged from A-C.1; only its
+   self-loop-freeness is proved here.
+
+## Status
+
+Evidence file. No `sorry`. Lean-core axioms only. Adds nothing to the build.
+-/
+
+namespace Uniformity.Density.Tower.C94RedraftCert
+
+open Polynomial IsLocalRing IsDiscreteValuationRing
+open Uniformity.Density.Leaf Uniformity.Density.Tower
+
+variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+
+/-! ## 1. The two grammars, transcribed verbatim -/
+
+/-- the §5 descent state: the current key and the current block factor (A-C.1, unchanged). -/
+structure DescentState (O : Type) [CommRing O] where
+  key : Polynomial O
+  block : Polynomial O
+
+/-- **THE A-C.1 DRAFT** (`leanspec/Leanspec/ChapC.lean`, struck): one step of §5's descent
+grammar as first transcribed. Kept here only so that `draft_has_self_loop` can be stated. -/
+inductive DescentStep (π : O) : DescentState O → DescentState O → Prop
+  | jump : ∀ {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} (L : LevelDatum F H₀ hpin)
+      (s s' : DescentState O),
+      s.key = F.key → 2 ≤ L.ℓ * L.r.natDegree →
+      HasLabel L s'.block → s'.block ∣ s.block →
+      IsTestKey L s'.key → L.keyDeg₂ * 2 ≤ s'.block.natDegree →
+      DescentStep π s s'
+  | refine : ∀ (s s' : DescentState O) (u ℓ u' ℓ' : ℕ),
+      0 < ℓ → 0 < ℓ' → s'.block = s.block →
+      s'.key.natDegree = s.key.natDegree →
+      (s.key - s'.key).natDegree < s.key.natDegree →
+      (sideSet s.key s.block u ℓ).Nonempty →
+      (sideSet s'.key s.block u' ℓ').Nonempty →
+      u * ℓ' < u' * ℓ →
+      DescentStep π s s'
+
+/-- **THE A-C.6 REDRAFT**, binder-for-binder identical to `leanspec`'s `DescentStepR`. -/
+inductive DescentStepR (π : O) : DescentState O → DescentState O → Prop
+  | jump : ∀ {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} (L : LevelDatum F H₀ hpin)
+      (s s' : DescentState O),
+      s.key = F.key → 2 ≤ L.ℓ * L.r.natDegree →
+      HasLabel L s'.block → s'.block ∣ s.block →
+      IsTestKey L s'.key → L.keyDeg₂ * 2 ≤ s'.block.natDegree →
+      DescentStepR π s s'
+  | refine : ∀ (s s' : DescentState O) (u ℓ u' ℓ' : ℕ)
+      (hne : (sideSet s.key s.block u ℓ).Nonempty)
+      (hne' : (sideSet s'.key s.block u' ℓ').Nonempty),
+      s.key.Monic → s'.key.Monic → 0 < s.key.natDegree →
+      s'.block = s.block →
+      s'.key.natDegree = s.key.natDegree →
+      s'.key ≠ s.key →
+      (s.key - s'.key).natDegree < s.key.natDegree →
+      0 < u → 0 < ℓ → Nat.Coprime u ℓ →
+      0 < u' → 0 < ℓ' → Nat.Coprime u' ℓ' →
+      1 < (sideSet s.key s.block u ℓ).card →
+      1 < (sideSet s'.key s.block u' ℓ').card →
+      IsPure s.key s.block u ℓ →
+      IsPure s'.key s.block u' ℓ' →
+      2 ≤ sideDeg s.key s.block u ℓ hne →
+      (∀ H₀ : ℕ, npHgt s.key s.block (sideMin s.key s.block u ℓ hne) = (H₀ : ℕ∞) →
+        ∃ ζ : resField s.key, ζ ≠ 0 ∧
+          resPoly π s.key s.block u ℓ hne H₀
+            = (Polynomial.X - Polynomial.C ζ) ^ sideDeg s.key s.block u ℓ hne) →
+      u * ℓ' < u' * ℓ →
+      DescentStepR π s s'
+
+/-! ## 2. LEG A — the separation: the draft self-loops, the redraft cannot -/
+
+/-- **THE DRAFT'S DEFECT, re-proved here** (`C94_REFUTATION.descentStep_self`): every state of
+positive key degree is a `DescentStep`-self-loop, which is the infinite chain. -/
+theorem draft_has_self_loop (π : O) (s : DescentState O) (h : 0 < s.key.natDegree) :
+    DescentStep π s s := by
+  refine DescentStep.refine s s 0 1 1 1 Nat.one_pos Nat.one_pos rfl rfl ?_
+    (sideSet_nonempty_gen _ _ _ _) (sideSet_nonempty_gen _ _ _ _) (by omega)
+  simpa using h
+
+/-- **LEG A(iii) — THE REDRAFT HAS NO SELF-LOOP, at either constructor.** `refine` is excluded by
+the new `s'.key ≠ s.key`; `jump` by the degree arithmetic of `IsTestKey` (`keyDeg₂ = D′·ℓ·deg r`
+with `2 ≤ ℓ·deg r` and `D′ = e₁f₁ > 0`). -/
+theorem redraft_no_self_loop (π : O) (s : DescentState O) : ¬ DescentStepR π s s := by
+  intro h
+  cases h with
+  | @jump F H₀ hpin L s s' hkey hjump _hlab _hdvd htest _hdeg =>
+      have hdeg1 : s.key.natDegree = L.keyDeg₂ := htest.2.1
+      rw [hkey, F.hdeg, LevelDatum.keyDeg₂] at hdeg1
+      have hD : 0 < F.e₁ * F.f₁ := Nat.mul_pos F.he₁ F.hf₁
+      have h2 : (F.e₁ * F.f₁) * 2 ≤ (F.e₁ * F.f₁) * (L.ℓ * L.r.natDegree) :=
+        Nat.mul_le_mul_left _ hjump
+      rw [← mul_assoc, ← hdeg1] at h2
+      omega
+  | refine s s' u ℓ u' ℓ' hne hne' _ _ _ _ _ hkeyne _ _ _ _ _ _ _ _ _ _ _ _ _ _ =>
+      exact hkeyne rfl
+
+/-- **LEG A(iii), the corollary the refutation needed.** The constant history — the refutation's
+infinite chain — is not a `DescentStepR`-chain. -/
+theorem redraft_constant_history_not_a_chain (π : O) (s : DescentState O) :
+    ¬ (∀ n : ℕ, DescentStepR π ((fun _ => s) n) ((fun _ => s) (n + 1))) :=
+  fun h => redraft_no_self_loop π s (h 0)
+
+/-! ## 3. LEG B — the witness step, over any base in which `2` is a uniformizer
+
+`f = (x − 6)² − 32 = x² − 12x + 4`, key `x → x − 2`, slope `1/1 → 2/1`. -/
+
+section Witness
+
+variable (h2 : Irreducible (2 : O))
+
+/-! ### 3.1 units and valuations of the witness's numerals -/
+
+include h2 in
+theorem isUnit_three : IsUnit (3 : O) := by
+  by_contra hu
+  have h3m : (3 : O) ∈ IsLocalRing.maximalIdeal O := (IsLocalRing.mem_maximalIdeal _).2 hu
+  have h2m : (2 : O) ∈ IsLocalRing.maximalIdeal O :=
+    (IsLocalRing.mem_maximalIdeal _).2 h2.not_isUnit
+  have h1 : (1 : O) ∈ IsLocalRing.maximalIdeal O := by
+    have := Ideal.sub_mem _ h3m h2m
+    norm_num at this
+  exact ((IsLocalRing.maximalIdeal O).ne_top_iff_one.mp
+    (IsLocalRing.maximalIdeal.isMaximal O).ne_top) h1
+
+include h2 in
+theorem addVal_two_pow_mul (k : ℕ) (a : O) (hu : IsUnit a) :
+    addVal O ((2 : O) ^ k * a) = (k : ℕ∞) := by
+  rw [AddValuation.map_mul, addVal_eq_zero_iff.mpr hu, add_zero]
+  induction k with
+  | zero => simp
+  | succ k ih => rw [pow_succ, AddValuation.map_mul, ih, addVal_uniformizer h2]; push_cast; ring
+
+/-! ### 3.2 the block and its `X`-adic polygon -/
+
+/-- the witness block `f = (x − 6)² − 32 = x² − 12x + 4`. -/
+noncomputable def bl (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] :
+    Polynomial O := X ^ 2 - C 12 * X + C 4
+
+theorem bl_monic : (bl O).Monic := by unfold bl; monicity!
+
+theorem bl_natDegree : (bl O).natDegree = 2 := by unfold bl; compute_degree!
+
+theorem bl_coeff0 : (bl O).coeff 0 = 4 := by simp [bl]
+
+theorem bl_coeff1 : (bl O).coeff 1 = -12 := by simp [bl]
+
+theorem bl_coeff2 : (bl O).coeff 2 = 1 := by simp [bl]
+
+include h2 in
+theorem hgt_bl0 : npHgt X (bl O) 0 = (2 : ℕ∞) := by
+  rw [npHgt_X, bl_coeff0, show (4 : O) = 2 ^ 2 * 1 from by norm_num,
+    addVal_two_pow_mul h2 2 1 isUnit_one]
+  rfl
+
+include h2 in
+theorem hgt_bl1 : npHgt X (bl O) 1 = (2 : ℕ∞) := by
+  rw [npHgt_X, bl_coeff1, show (-12 : O) = 2 ^ 2 * (-3) from by ring,
+    addVal_two_pow_mul h2 2 (-3) ((isUnit_three h2).neg)]
+  rfl
+
+include h2 in
+theorem hgt_bl2 : npHgt X (bl O) 2 = (0 : ℕ∞) := by
+  rw [npHgt_X, bl_coeff2, show (1 : O) = 2 ^ 0 * 1 from by norm_num,
+    addVal_two_pow_mul h2 0 1 isUnit_one]
+  rfl
+
+include h2 in
+theorem suppVal_bl : suppVal X (bl O) 1 1 = (2 : ℕ∞) := by
+  rw [suppVal, bl_natDegree, show Finset.range 3 = {0, 1, 2} from rfl]
+  simp [hgt_bl0 h2, hgt_bl1 h2, hgt_bl2 h2]
+
+include h2 in
+theorem sideSet_bl : sideSet X (bl O) 1 1 = {0, 2} := by
+  classical
+  ext j
+  simp only [sideSet, Finset.mem_filter, Finset.mem_range, bl_natDegree, Finset.mem_insert,
+    Finset.mem_singleton, OnSide, suppVal_bl h2]
+  constructor
+  · rintro ⟨hj, hon⟩
+    interval_cases j
+    · exact Or.inl rfl
+    · rw [hgt_bl1 h2] at hon; simp at hon
+    · exact Or.inr rfl
+  · rintro (rfl | rfl)
+    · exact ⟨by norm_num, by rw [hgt_bl0 h2]; simp⟩
+    · exact ⟨by norm_num, by rw [hgt_bl2 h2]; simp⟩
+
+include h2 in
+theorem sideSet_bl_card : 1 < (sideSet X (bl O) 1 1).card := by
+  rw [sideSet_bl h2]; decide
+
+include h2 in
+theorem hne_bl : (sideSet X (bl O) 1 1).Nonempty := sideSet_nonempty_gen _ _ _ _
+
+include h2 in
+theorem pure_bl : IsPure X (bl O) 1 1 := by
+  have h0 : (0 : ℕ) ∈ sideSet X (bl O) 1 1 := by rw [sideSet_bl h2]; simp
+  have h2' : (2 : ℕ) ∈ sideSet X (bl O) 1 1 := by rw [sideSet_bl h2]; simp
+  refine ⟨onSide_of_mem_sideSet h0, ?_⟩
+  rw [show (bl O).natDegree / (X : Polynomial O).natDegree = 2 from by
+    rw [bl_natDegree, natDegree_X]]
+  exact onSide_of_mem_sideSet h2'
+
+include h2 in
+theorem sideMin_bl : sideMin X (bl O) 1 1 (hne_bl h2) = 0 :=
+  Nat.le_zero.mp (Finset.min'_le _ 0 (by rw [sideSet_bl h2]; simp))
+
+include h2 in
+theorem sideDeg_bl : sideDeg X (bl O) 1 1 (hne_bl h2) = 2 := by
+  have hmax : sideMax X (bl O) 1 1 (hne_bl h2) = 2 := by
+    refine le_antisymm (Finset.max'_le _ _ _ ?_) (Finset.le_max' _ 2 (by rw [sideSet_bl h2]; simp))
+    intro y hy
+    rw [sideSet_bl h2] at hy
+    rcases Finset.mem_insert.mp hy with rfl | hy
+    · norm_num
+    · exact le_of_eq (by simpa using hy)
+  rw [sideDeg, hmax, sideMin_bl h2]
+
+/-! ### 3.3 the refined key `ψ = X − 2` and the block's polygon there, at slope `(2, 1)` -/
+
+/-- the refined key `ψ = x − 2`. -/
+noncomputable def ky (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] :
+    Polynomial O := X - C 2
+
+theorem ky_monic : (ky O).Monic := monic_X_sub_C 2
+
+theorem ky_natDegree : (ky O).natDegree = 1 := by rw [ky, natDegree_X_sub_C]
+
+theorem ky_degree : (ky O).degree = 1 := by rw [ky, degree_X_sub_C]
+
+theorem gaussVal_C' (a : O) : gaussVal (C a) = addVal O a := by simp [gaussVal]
+
+theorem bl_divmod : (bl O) /ₘ (ky O) = X - C 10 ∧ (bl O) %ₘ (ky O) = C (-16 : O) := by
+  refine Polynomial.div_modByMonic_unique _ _ ky_monic ⟨?_, ?_⟩
+  · simp only [bl, ky, map_neg, map_ofNat]
+    ring
+  · rw [ky_degree]
+    exact lt_of_le_of_lt degree_C_le (by decide)
+
+theorem sub10_divmod :
+    (X - C 10 : Polynomial O) /ₘ (ky O) = 1 ∧
+      (X - C 10 : Polynomial O) %ₘ (ky O) = C (-8 : O) := by
+  refine Polynomial.div_modByMonic_unique 1 _ ky_monic ⟨?_, ?_⟩
+  · simp only [ky, map_neg, map_ofNat]
+    ring
+  · rw [ky_degree]
+    exact lt_of_le_of_lt degree_C_le (by decide)
+
+theorem dev_ky_0 : dev (ky O) (bl O) 0 = C (-16 : O) := bl_divmod.2
+
+theorem dev_ky_1 : dev (ky O) (bl O) 1 = C (-8 : O) := by
+  show ((bl O) /ₘ (ky O)) %ₘ (ky O) = _
+  rw [bl_divmod.1, sub10_divmod.2]
+
+theorem dev_ky_2 : dev (ky O) (bl O) 2 = 1 := by
+  show (((bl O) /ₘ (ky O)) /ₘ (ky O)) %ₘ (ky O) = 1
+  rw [bl_divmod.1, sub10_divmod.1, modByMonic_eq_self_iff ky_monic, ky_degree, degree_one]
+  decide
+
+include h2 in
+theorem hgt_ky0 : npHgt (ky O) (bl O) 0 = (4 : ℕ∞) := by
+  rw [npHgt, dev_ky_0, gaussVal_C', show (-16 : O) = 2 ^ 4 * (-1) from by ring,
+    addVal_two_pow_mul h2 4 (-1) (isUnit_one.neg)]
+  rfl
+
+include h2 in
+theorem hgt_ky1 : npHgt (ky O) (bl O) 1 = (3 : ℕ∞) := by
+  rw [npHgt, dev_ky_1, gaussVal_C', show (-8 : O) = 2 ^ 3 * (-1) from by ring,
+    addVal_two_pow_mul h2 3 (-1) (isUnit_one.neg)]
+  rfl
+
+include h2 in
+theorem hgt_ky2 : npHgt (ky O) (bl O) 2 = (0 : ℕ∞) := by
+  rw [npHgt, dev_ky_2, show (1 : Polynomial O) = C 1 from by simp, gaussVal_C',
+    show (1 : O) = 2 ^ 0 * 1 from by norm_num, addVal_two_pow_mul h2 0 1 isUnit_one]
+  rfl
+
+include h2 in
+theorem suppVal_ky : suppVal (ky O) (bl O) 2 1 = (4 : ℕ∞) := by
+  rw [suppVal, bl_natDegree, show Finset.range 3 = {0, 1, 2} from rfl]
+  simp only [hgt_ky0 h2, hgt_ky1 h2, hgt_ky2 h2, Finset.inf_insert, Finset.inf_singleton,
+    one_smul]
+  decide
+
+include h2 in
+theorem sideSet_ky : sideSet (ky O) (bl O) 2 1 = {0, 2} := by
+  classical
+  ext j
+  simp only [sideSet, Finset.mem_filter, Finset.mem_range, bl_natDegree, Finset.mem_insert,
+    Finset.mem_singleton, OnSide, suppVal_ky h2]
+  constructor
+  · rintro ⟨hj, hon⟩
+    interval_cases j
+    · exact Or.inl rfl
+    · rw [hgt_ky1 h2] at hon; exact absurd hon (by decide)
+    · exact Or.inr rfl
+  · rintro (rfl | rfl)
+    · exact ⟨by norm_num, by rw [hgt_ky0 h2]; simp⟩
+    · exact ⟨by norm_num, by rw [hgt_ky2 h2]; simp⟩
+
+include h2 in
+theorem sideSet_ky_card : 1 < (sideSet (ky O) (bl O) 2 1).card := by
+  rw [sideSet_ky h2]; decide
+
+include h2 in
+theorem hne_ky : (sideSet (ky O) (bl O) 2 1).Nonempty := sideSet_nonempty_gen _ _ _ _
+
+include h2 in
+theorem pure_ky : IsPure (ky O) (bl O) 2 1 := by
+  have h0 : (0 : ℕ) ∈ sideSet (ky O) (bl O) 2 1 := by rw [sideSet_ky h2]; simp
+  have h2' : (2 : ℕ) ∈ sideSet (ky O) (bl O) 2 1 := by rw [sideSet_ky h2]; simp
+  refine ⟨onSide_of_mem_sideSet h0, ?_⟩
+  rw [show (bl O).natDegree / (ky O).natDegree = 2 from by rw [bl_natDegree, ky_natDegree]]
+  exact onSide_of_mem_sideSet h2'
+
+include h2 in
+theorem sideDeg_ky : sideDeg (ky O) (bl O) 2 1 (hne_ky h2) = 2 := by
+  have hmin : sideMin (ky O) (bl O) 2 1 (hne_ky h2) = 0 :=
+    Nat.le_zero.mp (Finset.min'_le _ 0 (by rw [sideSet_ky h2]; simp))
+  have hmax : sideMax (ky O) (bl O) 2 1 (hne_ky h2) = 2 := by
+    refine le_antisymm (Finset.max'_le _ _ _ ?_) (Finset.le_max' _ 2 (by rw [sideSet_ky h2]; simp))
+    intro y hy
+    rw [sideSet_ky h2] at hy
+    rcases Finset.mem_insert.mp hy with rfl | hy
+    · norm_num
+    · exact le_of_eq (by simpa using hy)
+  rw [sideDeg, hmax, hmin]
+
+/-! ### 3.4 the residual polynomial of the side at the key `X`: `R = (Y − 1)²` -/
+
+/-- the unscaled model `G` with `f = G.scaleRoots 2`: `G = x² − 6x + 1`, whose reduction mod `2`
+is `Y² + 1 = (Y − 1)²`. -/
+noncomputable def Gw (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] :
+    Polynomial O := X ^ 2 - C 6 * X + C 1
+
+theorem Gw_natDegree : (Gw O).natDegree = 2 := by unfold Gw; compute_degree!
+
+theorem Gw_coeff0 : (Gw O).coeff 0 = 1 := by simp [Gw]
+
+theorem Gw_coeff1 : (Gw O).coeff 1 = -6 := by simp [Gw, coeff_one]
+
+theorem Gw_coeff2 : (Gw O).coeff 2 = 1 := by simp [Gw, coeff_one]
+
+theorem bl_eq_scale : (bl O) = (Gw O).scaleRoots ((2 : O) ^ 1) := by
+  ext i
+  rw [coeff_scaleRoots, Gw_natDegree]
+  rcases i with _ | _ | _ | n
+  · rw [bl_coeff0, Gw_coeff0]; norm_num
+  · rw [bl_coeff1, Gw_coeff1]; norm_num
+  · rw [bl_coeff2, Gw_coeff2]; norm_num
+  · rw [coeff_eq_zero_of_natDegree_lt (by rw [bl_natDegree]; omega),
+      coeff_eq_zero_of_natDegree_lt (by rw [Gw_natDegree]; omega), zero_mul]
+
+theorem isKey_X' : IsKey (X : Polynomial O) where
+  monic := monic_X
+  pos := by simp
+  irred := by rw [Polynomial.map_X]; exact irreducible_X
+
+include h2 in
+theorem two_eq_zero_resField : (2 : resField (X : Polynomial O)) = 0 := by
+  have h2r : (2 : ResidueField O) = 0 := by
+    rw [← map_ofNat (IsLocalRing.residue O) 2]
+    exact (IsLocalRing.residue_eq_zero_iff _).2 ((IsLocalRing.mem_maximalIdeal _).2 h2.not_isUnit)
+  have hof := congrArg (AdjoinRoot.of ((X : Polynomial O).map (IsLocalRing.residue O))) h2r
+  rw [map_ofNat, map_zero] at hof
+  exact hof
+
+include h2 in
+theorem six_residue_zero : IsLocalRing.residue O (6 : O) = 0 := by
+  refine (IsLocalRing.residue_eq_zero_iff _).2 ?_
+  have h2m : (2 : O) ∈ IsLocalRing.maximalIdeal O :=
+    (IsLocalRing.mem_maximalIdeal _).2 h2.not_isUnit
+  have := Ideal.mul_mem_left (IsLocalRing.maximalIdeal O) 3 h2m
+  norm_num at this
+  exact this
+
+include h2 in
+/-- **the residual read of the witness side**: `R_{1/1}(f) = (Y − 1)²` over `resField X`. The
+route is B.59's `resPoly_X_eq_map_of_scaleRoots` (`f = G.scaleRoots 2`), then `G mod 2 = Y² + 1`,
+then `Y² + 1 = (Y − 1)²` in residue characteristic `2`. -/
+theorem resPoly_bl (H₀ : ℕ) (hH : npHgt X (bl O) 0 = (H₀ : ℕ∞)) :
+    resPoly (2 : O) X (bl O) 1 1 (hne_bl h2) H₀
+      = (X - C (1 : resField (X : Polynomial O))) ^ 2 := by
+  rw [resPoly_X_eq_map_of_scaleRoots h2 bl_monic (by rw [Gw_natDegree, bl_natDegree])
+    bl_eq_scale (pure_bl h2) (hne_bl h2) hH]
+  have hmap : (Gw O).map (IsLocalRing.residue O) = X ^ 2 + 1 := by
+    simp only [Gw, Polynomial.map_add, Polynomial.map_sub, Polynomial.map_mul, Polynomial.map_pow,
+      Polynomial.map_X, Polynomial.map_C, Polynomial.map_one, six_residue_zero h2, map_one]
+    simp
+  rw [hmap]
+  have h2poly : (2 : Polynomial (resField (X : Polynomial O))) = 0 := by
+    rw [← map_ofNat (Polynomial.C (R := resField (X : Polynomial O))) 2,
+      two_eq_zero_resField h2, map_zero]
+  simp only [Polynomial.map_add, Polynomial.map_pow, Polynomial.map_X, Polynomial.map_one]
+  rw [map_one]
+  ring_nf
+  rw [h2poly]
+  ring
+
+/-! ### 3.5 the witness step itself -/
+
+include h2 in
+/-- **LEG B — THE REDRAFTED `refine` CONSTRUCTOR IS INHABITED.** Block `f = x² − 12x + 4`,
+key `x → x − 2`, slope `1/1 → 2/1`: every one of the twenty-two clause slots holds. -/
+theorem witness_step :
+    DescentStepR (2 : O) ⟨X, bl O⟩ ⟨ky O, bl O⟩ := by
+  letI : Field (resField (X : Polynomial O)) := instFieldResField isKey_X'
+  refine DescentStepR.refine ⟨X, bl O⟩ ⟨ky O, bl O⟩ 1 1 2 1 (hne_bl h2) (hne_ky h2)
+    monic_X ky_monic (by simp) rfl (by rw [ky_natDegree, natDegree_X]) ?_ ?_
+    Nat.one_pos Nat.one_pos (Nat.coprime_one_right 1)
+    (by norm_num) Nat.one_pos (Nat.coprime_one_right 2)
+    (sideSet_bl_card h2) (sideSet_ky_card h2) (pure_bl h2) (pure_ky h2) ?_ ?_ (by norm_num)
+  · -- the keys differ: `x − 2 ≠ x`
+    intro hEq
+    have h := congrArg (fun p : Polynomial O => X - p) hEq
+    simp only [ky, sub_sub_cancel, sub_self] at h
+    exact h2.ne_zero ((Polynomial.C_eq_zero).1 h)
+  · -- the recentring has strictly lower degree
+    show ((X : Polynomial O) - ky O).natDegree < (X : Polynomial O).natDegree
+    rw [show (X : Polynomial O) - ky O = C 2 from by rw [ky]; ring, natDegree_C, natDegree_X]
+    norm_num
+  · -- the side has residual degree `2`
+    rw [sideDeg_bl h2]
+  · -- the residual is a SQUARE of a nonzero linear form
+    intro H₀ hH
+    refine ⟨1, one_ne_zero, ?_⟩
+    rw [sideDeg_bl h2]
+    exact resPoly_bl h2 H₀ (by rw [← sideMin_bl h2]; exact hH)
+
+/-! ## 4. LEG C — the bookkeeping at the witness -/
+
+include h2 in
+/-- **LEG C(i).** At both keys the side spans the whole abscissa range:
+`sideDeg · ℓ · deg key = deg block` reads `2·1·1 = 2`. -/
+theorem witness_index_bookkeeping :
+    sideDeg X (bl O) 1 1 (hne_bl h2) * 1 * (X : Polynomial O).natDegree = (bl O).natDegree ∧
+      sideDeg (ky O) (bl O) 2 1 (hne_ky h2) * 1 * (ky O).natDegree = (bl O).natDegree := by
+  constructor
+  · rw [sideDeg_bl h2, natDegree_X, bl_natDegree]
+  · rw [sideDeg_ky h2, ky_natDegree, bl_natDegree]
+
+/-- **LEG C(ii).** The attained slope strictly increases across the witness step:
+`u·ℓ′ = 1 < 2 = u′·ℓ`. -/
+theorem witness_slope_increases : 1 * 1 < 2 * 1 := by norm_num
+
+end Witness
+
+/-! ## 5. The scope is nonempty: `ℤ_[2]` realizes the witness, so LEG B is absolute -/
+
+namespace Absolute
+
+instance : Fact (Nat.Prime 2) := ⟨Nat.prime_two⟩
+
+theorem h2_padic : Irreducible (2 : ℤ_[2]) := by simpa using PadicInt.irreducible_p (p := 2)
+
+/-- **LEG B over `ℤ_[2]`.** The redrafted `refine` step is inhabited at a REAL base, so
+`DescentStepR` is not the empty relation and `NS7TerminationStatementR` is not vacuous. -/
+theorem witness_step_absolute :
+    DescentStepR (2 : ℤ_[2]) ⟨X, bl ℤ_[2]⟩ ⟨ky ℤ_[2], bl ℤ_[2]⟩ :=
+  witness_step h2_padic
+
+/-- **LEG A over `ℤ_[2]`.** No self-loop, at a REAL base. -/
+theorem no_self_loop_absolute (s : DescentState ℤ_[2]) :
+    ¬ DescentStepR (2 : ℤ_[2]) s s :=
+  redraft_no_self_loop _ s
+
+end Absolute
+
+end Uniformity.Density.Tower.C94RedraftCert
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Tower.C94RedraftCert.draft_has_self_loop
+#print axioms Uniformity.Density.Tower.C94RedraftCert.redraft_no_self_loop
+#print axioms Uniformity.Density.Tower.C94RedraftCert.redraft_constant_history_not_a_chain
+#print axioms Uniformity.Density.Tower.C94RedraftCert.resPoly_bl
+#print axioms Uniformity.Density.Tower.C94RedraftCert.witness_step
+#print axioms Uniformity.Density.Tower.C94RedraftCert.witness_index_bookkeeping
+#print axioms Uniformity.Density.Tower.C94RedraftCert.Absolute.witness_step_absolute
+#print axioms Uniformity.Density.Tower.C94RedraftCert.Absolute.no_self_loop_absolute
+
+end AxCheck
