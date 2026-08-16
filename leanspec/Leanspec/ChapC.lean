@@ -14,12 +14,25 @@ lifecycle, and every `def`/`structure` carries a real body. **Zero `sorry`.**
 ## THE HEADLINE FINDING (read before using this file as a contract)
 
 **Only 57 of the 127 nodes carry a Lean SIGNATURE at all** (`C.01`–`C.51`, `C.55`, `C.56a`,
-`C.59`, `C.60`, `C.61`, `C.71`). The other **70 nodes** — `C.52`–`C.54`, `C.56`–`C.58`,
-`C.62`–`C.70`, `C.72`–`C.126`, i.e. all of §§7(rest)–13 plus the tail of §6 — carry only a prose
-`**SIGNATURE** (shape).` line naming a declaration, and in 20 of those not even a name. They are
-**not signable** and are listed in defect **D1** below. Of the 57 written signatures, a further
-**19 contain `…` ellipses** inside the Lean text (defect **D2**), so the number of chapter-C
-signatures that are complete Lean declarations is **38**.
+`C.59`, `C.60`, `C.61`, `C.71`). Of the other **70**: **67** carry only a prose
+`**SIGNATURE** (shape).` line, and **3 carry no `**SIGNATURE**` field of any kind — and those
+three are exactly the gate-(b) literature cites `C.66`, `C.92`, `C.94`.** All 70 are
+**unsignable**; see defect **D1**. Of the 57 written signatures a further **19 contain `…`
+ellipses inside the Lean text** (defect **D2**), so the number of chapter-C signatures that are
+complete Lean declarations is **38**, i.e. **30% of the chapter**.
+
+**WHAT LANDED HERE: 82 declarations** — 39 `axiom` (theorem-shaped nodes at their signed types),
+3 `structure`, 2 `abbrev`, 36 `def` (real bodies, stage-0e rule 1), 1 `theorem` and 1 `example`.
+Three of the 82 are NOT blueprint declarations and are marked as such at their sites:
+`KeyFrame.Pin` (the D4 abbreviation), `isKey_X` (the D9 helper), and the D11 negative-control
+`example`. Plus a 39-declaration NUMERIC GATE section with **47 `#guard`s**, all passing.
+`lake build Leanspec.ChapC` is green; `grep sorry` finds only this sentence.
+
+**FOUR FINDINGS THE FLEET MUST SEE BEFORE IT FIRES:** `D1` (70 nodes unsigned, including every
+remaining TERMINAL SUPPLY node), `D21` (`C.31`'s `jump_drop` is FALSE — machine-refuted, with the
+repair checked), `D19`/`D20` (chapter H's §8 lift interface — the only H content chapter C may
+consume — cannot be instantiated from `KeyFrame`, and `C.14`'s proof route therefore has an
+uncovered case), and `D24` (`C.94` ⇄ `I.01` is a stub-stage deadlock on Display A's line 1).
 
 ## FILE LAYOUT AND NAMESPACE
 
@@ -63,7 +76,8 @@ is left broken-in-comment with the diagnosis, never silently repaired.
   `C.52 C.53 C.54 C.56 C.57 C.58 C.62 C.63 C.64 C.65 C.66 C.67 C.68 C.69 C.70 C.72 C.73 C.74 C.75
   C.76 C.77 C.78 C.79 C.80 C.81 C.82 C.83 C.84 C.85 C.86 C.87 C.88 C.89 C.90 C.91 C.92 C.93 C.94
   C.95 C.96 C.97 C.98 C.99 C.100 C.101 C.102 C.103 C.104 C.105 C.106 C.107 C.108 C.109 C.110 C.111
-  C.112 C.113 C.114 C.115 C.116 C.117 C.118 C.119 C.120 C.121 C.122 C.123 C.124 C.125 C.126`.
+  C.112 C.113 C.114 C.115 C.116 C.117 C.118 C.119 C.120 C.121 C.122 C.123 C.124 C.125 C.126`
+  (67 of them prose-`(shape)`; `C.66`, `C.92`, `C.94` have no `**SIGNATURE**` field at all).
   Consequence: the stub gate is BLIND to §§7–13, which is exactly where the chapter's
   TERMINAL SUPPLY nodes live (C.66/C.69/C.89/C.97/C.99/C.100/C.107–C.110/C.114 are all named in
   §2's "what other chapters consume from here" table). §15's own gate order (a)–(d) is
@@ -73,7 +87,7 @@ is left broken-in-comment with the diagnosis, never silently repaired.
 * **D2 — 19 OF THE 57 WRITTEN SIGNATURES CONTAIN `…` INSIDE THE LEAN TEXT** (elaboration
   failure by construction): `C.26` (`theorem natDegree_dvResPoly (…same…)`), `C.28`
   (`LevelDatum.shift … := …`), `C.33`, `C.34`, `C.35`, `C.36`, `C.37`, `C.38`, `C.39`, `C.40`,
-  `C.42`, `C.44`, `C.48`, `C.49`, `C.50`, `C.51`, `C.56a`, `C.61`, `C.71`. Three of them
+  `C.42`, `C.44`, `C.48`, `C.49`, `C.50`, `C.51`, `C.56a`, `C.61`, `C.71`. Five of them
   (`C.33`, `C.34`, `C.48`, `C.49`, `C.56a`) label themselves `**SIGNATURE** (shape)`, so the
   ellipsis is deliberate; the other fourteen do not, so the ellipsis reads as an omission the
   composer meant to return to. Disposition below, per node: where the surrounding prose forces a
@@ -253,6 +267,31 @@ is left broken-in-comment with the diagnosis, never silently repaired.
   IDENTICAL row `[7,5,3,1]` at both — so a gate row that checked only `w = 0` would be blind to
   the frame, at both primes. At `w = 5` they separate (`[5,3,1,0]` vs `[6,4,2,0]`). Recorded
   because §13's gate text names sixteen budget-table entries without saying at which `w`.
+
+* **D23 — `PROJECT_STATE.md` APPEND #66 SAYS THE THREE C-CITES' "exact statements … are on file
+  (CHAP-I §3 + addendum)"; THEY ARE NOT (provenance defect).** CHAP-I's 2026-08-16 addendum carries
+  `THE EXACT LEAN STATEMENT to be signed` for exactly ONE cite — `B.42`'s
+  `LeanspecB.exists_slope_factorization` ([GN15] Thm 2.3 + [FGMN] Thm 6.6) — and all three
+  chapter-C cites say in their own STATEMENT fields *"Exact Lean statement drafted at stub stage;
+  Asvin signs"*. So append #66's category-level signature covers a statement set that does not
+  exist. `C.66` is drafted BY THIS GATE below and flagged; `C.92`/`C.94` are not draftable.
+  A related, smaller trap: `C.66`'s SOURCE paragraph still quotes the arXiv-v3 numbers
+  (`Cor 4.7(3)`, `Cor 4.4(4)`) and corrects them only in the A-3 rider two paragraphs later, so a
+  top-down transcription lands the wrong published numbers.
+* **D24 — `C.94` ⇄ `I.01` IS A STUB-STAGE DEADLOCK ON DISPLAY A's LINE 1 (cross-chapter
+  missing-dep).** `C.94`'s NS-7 termination statement must quantify over §5's descent histories,
+  which have no signature (D2 via `C.33`/`C.35`). CHAP-I's `I.01` `NS7Termination` is committed
+  with a literal `True` placeholder body, marked `BLOCKED-UNTIL-RESOLUTION`, and says *"the body is
+  typed against C's committed §5 carriers at stub time"*. The stub stage was the appointed
+  resolution point for both and neither side can move. Until one does, `NS7Termination` is a
+  `Prop` that is definitionally `True` for every `O`, i.e. **Display A's line-1 conjunct is
+  currently vacuous in Lean**, and `I.25`'s axiom registry expects an `[AGNPRW]` axiom that cannot
+  be declared.
+* **D25 — the ONE §§9–13 claim the gate could reach CHECKS OUT (positive finding).** `C.97`'s S2
+  tower witness (`Φ′ = x²−2`, `Φ₂ = Φ′²−4x`, `Φ₃ = Φ₂²−16Φ′` over `ℤ₂`) is verified from the
+  polynomials up in the numeric section: both higher polynomials are one-sided of slope `1/2` at
+  `p = 2`, and the root valuations that forces give `u₂ = 5`, the ladder `[4,10,21]`, `u₃ = 21`,
+  `n̂₂(21) = 16Φ′` at height 21, and both floors — every displayed number of the node.
 
 ## Numeric content EXECUTED at this gate (GC-11 / §15 gate order (c))
 
@@ -1365,6 +1404,74 @@ def c10_grid : Bool := Id.run do
 
 #guard (List.range 20).all (fun D => (List.range 20).all (fun mu =>
   !(2 ≤ D && 4 ≤ mu) || 8 ≤ D * mu))
+
+/-! ### C.97's S2 TOWER WITNESS, VERIFIED FROM THE POLYNOMIALS UP (`q = 2`; the wild
+`e₁ = 2 = p` row GC-11 demands, and chapter D's T1 battery check 10 consumer).
+
+C.97 has no signature (D1), but its STATEMENT displays a fully concrete third-stage tower over
+`ℤ₂`: `Φ′ = x² − 2` (frame `(e₁,f₁,h) = (2,1,1)`), `Φ₂ = Φ′² − 4x` (`u₂ = 5`),
+`Φ₃ = Φ₂² − 16Φ′` (`u₃ = 21`), ladder `[4,10,21]` for `(x, Φ′, Φ₂)`, `n̂₂(21) = 16Φ′`, floor chain
+`5 > 2·2·1` and `21 > 2·10`. Everything below is COMPUTED from the three polynomials, not
+transcribed: the polynomials are multiplied out, their `2`-adic Newton polygons are checked to be
+one-sided, and the root valuations that forces are propagated through the three defining
+identities `Φ′(θ) = 0`, `Φ₂(ξ) = 0 ⇒ Φ′(ξ)² = 4ξ`, `Φ₃(ζ) = 0 ⇒ Φ₂(ζ)² = 16Φ′(ζ)` in exact `ℚ`.
+**Every displayed number of C.97 is confirmed** (finding F1 — the one node of §§9–13 whose content
+the gate could reach at all). -/
+
+def pmul (a b : List ℤ) : List ℤ :=
+  (List.range (a.length + b.length - 1)).map (fun k =>
+    ((List.range (k + 1)).map (fun i => (a.getD i 0) * (b.getD (k - i) 0))).sum)
+
+def padd (a b : List ℤ) : List ℤ :=
+  (List.range (max a.length b.length)).map (fun k => a.getD k 0 + b.getD k 0)
+
+def psmul (c : ℤ) (a : List ℤ) : List ℤ := a.map (fun x => c * x)
+
+def v2 : ℤ → ℕ
+  | 0 => 0
+  | n => (n.natAbs).factorization 2
+
+def Phi1 : List ℤ := [-2, 0, 1]                                 -- Φ′ = x² − 2
+def Phi2 : List ℤ := padd (pmul Phi1 Phi1) [0, -4]              -- Φ₂ = Φ′² − 4x
+def Phi3 : List ℤ := padd (pmul Phi2 Phi2) (psmul (-16) Phi1)   -- Φ₃ = Φ₂² − 16Φ′
+
+#eval Phi2   -- [4, -4, -4, 0, 1]
+#eval Phi3   -- [48, -32, -32, 32, 24, -8, -8, 0, 1]
+
+/-! `f` is one-sided of slope `v(a₀)/n` at `p = 2`: every support point lies on or above the line
+through `(0, v(a₀))` and `(n, 0)`, cleared to `n·v(aᵢ) ≥ v(a₀)·(n − i)`. -/
+def isPure2 (f : List ℤ) : Bool :=
+  let n := f.length - 1
+  let v0 := v2 (f.getD 0 0)
+  (f.getD n 0 == 1) && (List.range (n + 1)).all (fun i =>
+    if f.getD i 0 == 0 then true else decide (n * v2 (f.getD i 0) ≥ v0 * (n - i)))
+
+#guard isPure2 Phi2
+#guard isPure2 Phi3
+#guard v2 (Phi2.getD 0 0) == 2 && Phi2.length - 1 == 4    -- slope 2/4 = 1/2, all four roots
+#guard v2 (Phi3.getD 0 0) == 4 && Phi3.length - 1 == 8    -- slope 4/8 = 1/2, all eight roots
+
+def vtheta : ℚ := 1/2
+def vxi : ℚ := 1/2
+def vzeta : ℚ := 1/2
+def vPhi1_at_xi : ℚ := (2 + vxi) / 2            -- Φ′(ξ)² = 4ξ
+def vPhi1_at_zeta : ℚ := (2 + vzeta) / 2
+def vPhi2_at_theta : ℚ := 2 + vtheta            -- Φ₂(θ) = −4θ
+def vPhi2_at_zeta : ℚ := (4 + vPhi1_at_zeta) / 2 -- Φ₂(ζ)² = 16Φ′(ζ)
+
+#guard vPhi1_at_xi == 5/4
+#guard vPhi2_at_theta == 5/2
+#guard vPhi2_at_zeta == 21/8
+/-! `u₂ = dv(Φ₂(θ))` with `dv = e₁·v = 2v`. -/
+#guard (2 : ℚ) * vPhi2_at_theta == 5
+/-! the ladder `[4, 10, 21] = (v₃(x), v₃(Φ′), v₃(Φ₂))` with `v₃ = e₁e₂e₃·v = 8v`. -/
+#guard ((8 : ℚ) * vzeta, (8 : ℚ) * vPhi1_at_zeta, (8 : ℚ) * vPhi2_at_zeta) == (4, 10, 21)
+/-! `u₃ = 21`; `n̂₂(21) = 16Φ′` at `v₂ = e₁e₂·v = 4v`; the two floors; the cleared `u₃ = e₃κ₃`. -/
+#guard (8 : ℚ) * vPhi2_at_zeta == 21
+#guard (4 : ℚ) * (4 + vPhi1_at_xi) == 21
+#guard 5 > 2 * 2 * 1
+#guard 21 > 2 * 10
+#guard 2 * 21 / 2 == 21
 
 end NumericGate
 
