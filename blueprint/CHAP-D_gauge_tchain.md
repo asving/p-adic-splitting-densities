@@ -3372,35 +3372,96 @@ regression retained).
 > until it lands here, no chapter (E, I) may consume D.62/D.63 as a strength claim from THIS text,
 > and the two nodes' §13 rows stay open. Everything else in §9 is unaffected.
 
-### NODE D.62 [def] [fresh]
+> ✅ **A-D.2 HAS LANDED (2026-08-16, same day, below).** DECISION D-2 and the re-signed
+> D.62/D.63 follow immediately; the full record is AMENDMENT A-D.2 at the append point. The
+> non-triviality countermodel is `verification/om4_resign_nontriviality.lean`
+> (`hvarthetaRes_resigned_not_trivial` + the contrast line `voided_still_trivial_here`).
 
-**STATEMENT.** *The `(H-VARTHETA-RES)_i` carrier.* The corpus's fence (`EFF.T1.09`): at
-depth `i ≥ 3` every consumer of `ϑ_{i,s}`/`Θ_i(t)` carries
-"`(H-VARTHETA-RES)_i : res(n̂_i(u_{i+1})^s / n̂_i(su_{i+1})) ∈ K_i (s ≥ 0)`". In the
-DECISION-D-1 packaging the Lean carrier is **arena existence over the level's height data**:
-`HVarthetaRes G K N v := ∃ A : GaugeArena G K N, A.v = v` — supplying the level-`i`
-residue interface IS the hypothesis. **Strength delta, disclosed (D-H3):** the arena form
-asserts the residue hom on the whole value-zero subgroup; the corpus's clause asserts it at
-the ϑ-quotients only. The delta is in the SAFE direction for the capstone (a stronger
-carried hypothesis claims less), but chapter I's ledger row must state the corpus form as
-the ledger-strength content and THIS name as the Lean-consumed form — handed to I with that
-exact note (§13 item 2; the czar's fresh-eyes audit arm is the natural reviewer).
+### DECISION D-2 (A-D.2, 2026-08-16) — THE `(H-VARTHETA-RES)_i` CARRIER IS THE SITEWISE CLAUSE AGAINST A GIVEN AMBIENT RESIDUE DATUM
 
-**SIGNATURE.**
+D-D12's repair fork was: **(α)** an ambient-residue datum ON the arena (re-open D.07, add an
+agreement field), or **(β)** the sitewise ϑ-clause directly, stated against a GIVEN ambient
+residue datum. **D-2 picks (β).** Grounds:
+
+1. **Source fidelity.** `EFF.T1.09`'s display IS sitewise:
+   "`(H-VARTHETA-RES)_i : res(n̂_i(u_{i+1})^s / n̂_i(su_{i+1})) ∈ K_i (s ≥ 0)`", with the
+   `K_iˣ`-membership the supplier-dependent content (its CONDITIONALITY line: "`K_i^×`
+   membership is unconditional only for `i = 1, 2`, and supplier-dependent for `i ≥ 3`");
+   `EFF.T5.10` carries exactly this named hypothesis alongside `𝒲_{≤i}` at every `i ≥ 3`
+   `Θ`-use. Fork (α) would re-impose the residue HOM on the whole value-zero subgroup —
+   the strength delta the committed D.62 docstring disclosed — where the corpus asserts
+   only the ϑ-quotient memberships. (β) is "exactly source strength, no wider and no
+   narrower".
+2. **D.07 untouched.** A-D.1's D-D12 note fixed "This structure itself is unaffected";
+   (β) honours it — `GaugeArena` keeps its role as the (formally stronger) THEOREM
+   HYPOTHESIS packaging, and D-H3's strength claim is RESTORED as a proved theorem
+   (`hvarthetaRes_of_arena_agree`: an arena whose `res` agrees with the ambient datum on
+   the value-zero subgroup discharges the sitewise clause). The agreement leg is exactly
+   what the voided existential lacked.
+3. **Non-fabricability.** With ρ GIVEN, the trivial-hom trick dies: the carrier's truth
+   depends on where ρ sends the ϑ-quotients. Machine-certified: exact height holds at the
+   countermodel yet the sitewise carrier is FALSE
+   (`verification/om4_resign_nontriviality.lean`).
+
+### NODE D.62 [def] [fresh] *[RE-SIGNED: A-D.2 / DECISION D-2, 2026-08-16]*
+
+**STATEMENT** *[re-signed]*. *The `(H-VARTHETA-RES)_i` carrier, SITEWISE.* The corpus's
+fence (`EFF.T1.09`): at depth `i ≥ 3` every consumer of `ϑ_{i,s}`/`Θ_i(t)` carries
+"`(H-VARTHETA-RES)_i : res(n̂_i(u_{i+1})^s / n̂_i(su_{i+1})) ∈ K_i (s ≥ 0)`". The Lean
+carrier is that display verbatim, over the level's height data `(N, v)` and a GIVEN
+ambient residue datum `ρ : ker v →* Lˣ` (`L` the ambient residue field, `K = K_i` the
+level field embedded in it), at the level's fixed use-height `q = u_{i+1}` (a parameter,
+exactly source scope): every ϑ-quotient `n̂(q)^s/n̂(sq)` has value zero AND its ambient
+residue is (the image of) a `K_i`-unit. The membership conjunct is exact-height arithmetic
+(unconditional at any arena instance — D.08's `varthetaEl_mem_ker`); the
+supplier-dependent content is the `K`-membership clause. ~~In the DECISION-D-1 packaging
+the Lean carrier is **arena existence over the level's height data**:
+`HVarthetaRes G K N v := ∃ A : GaugeArena G K N, A.v = v`~~ — **REFUTED (D-D12,
+machine-checked): the existential form is inhabited by the trivial hom and is equivalent
+to the exact-height fact.** It is kept, named-and-voided, as `HVarthetaResVoided`, with
+the two refutation witnesses re-pointed at it. The committed docstring's "strength delta
+in the SAFE direction" reading is WITHDRAWN for the existential form (there was no
+strength at all); the honest D-H3 relation is now the PROVED lemma
+`hvarthetaRes_of_arena_agree`: an arena whose `res` AGREES with ρ (through the level-field
+embedding) discharges the sitewise carrier — D.07-as-theorem-hypothesis is formally
+stronger, in exactly that sense and no other.
+
+**SIGNATURE** *[RE-SIGNED: A-D.2; the committed original is preserved in the amendment
+block. Landed stub: `leanspec/Leanspec/ChapD.lean` §9.]*
 ```lean
-/-- The Lean carrier of `(H-VARTHETA-RES)_i` (`EFF.T1.09` R9-2 fence; DECISION D-1
-packaging — see the chapter's D-H3 and the strength-delta note). Consumed by E (ladder
-displays at `i ≥ 3`) and I (Display A's `∀ i ≥ 3` conjunct, via D.63). -/
-def HVarthetaRes (G : Type*) [CommGroup G] (K : Type*) [Field K]
+/-- The Lean carrier of `(H-VARTHETA-RES)_i` (`EFF.T1.09` R9-2 fence), SITEWISE against a
+GIVEN ambient residue datum [RE-SIGNED: A-D.2 / DECISION D-2]. Consumed by E (ladder
+displays at `i ≥ 3`) and I (Display A's `∀ i ≥ 3` conjunct, via D.63) — at THIS form only;
+the pre-A-D.2 existential form is `HVarthetaResVoided` and is VOID. -/
+def HVarthetaRes (G : Type*) [CommGroup G] (K : Type*) [Field K] (L : Type*) [Field L]
+    [Algebra K L] (N : NormSection G) (v : G →* Multiplicative ℤ)
+    (ρ : MonoidHom.ker v →* Lˣ) (q : ℤ) : Prop :=
+  ∀ s : ℕ, ∃ (h : N.varthetaEl q s ∈ MonoidHom.ker v) (u : Kˣ),
+    ((ρ ⟨N.varthetaEl q s, h⟩ : Lˣ) : L) = algebraMap K L (u : K)
+
+/-- [named-and-voided at A-D.2] The committed D.62 carrier — REFUTED as a carrier (D-D12);
+kept solely as the machine-checked refutation record, with the two D-D12 witnesses
+(`hvarthetaResVoided_of_exact_height`/`hvarthetaResVoided_iff`) re-pointed at it. -/
+def HVarthetaResVoided (G : Type*) [CommGroup G] (K : Type*) [Field K]
     (N : NormSection G) (v : G →* Multiplicative ℤ) : Prop :=
   ∃ A : GaugeArena G K N, A.v = v
+
+/-- [PROVED at A-D.2] The D-H3 direction, restored honestly: an ambient-agreeing arena
+discharges the sitewise carrier. -/
+theorem hvarthetaRes_of_arena_agree {G : Type*} [CommGroup G] {K : Type*} [Field K]
+    {L : Type*} [Field L] [Algebra K L] {N : NormSection G} (A : GaugeArena G K N)
+    (ρ : MonoidHom.ker A.v →* Lˣ)
+    (hagree : ∀ x : MonoidHom.ker A.v, ((ρ x : Lˣ) : L) = algebraMap K L ((A.res x : Kˣ) : K))
+    (q : ℤ) : HVarthetaRes G K L N A.v ρ q
 ```
 
-**DEPENDS.** D.01, D.07.
+**DEPENDS.** D.01, D.07, D.08 (`varthetaEl_mem_ker`, for the proved lemma and the
+membership conjunct's dischargeability at instances).
 
-**PROOF.** definitional.
+**PROOF.** definitional (the two `def`s); `hvarthetaRes_of_arena_agree` is 3 lines
+(membership by `varthetaEl_mem_ker`, witness `A.res ⟨…⟩`, equation by `hagree`).
 
-**SIZE.** 10 lines.
+**SIZE.** 30 lines.
 
 **SOURCE.** `EFF.T1.09` (the fence + the displayed hypothesis), `EFF.T5.10` (the carry at
 every `i ≥ 3` `Θ`-use, "not adjudicated here" whether S11.2's S2.1 computation discharges
@@ -3413,16 +3474,21 @@ test.
 
 ---
 
-### NODE D.63 [def] [fresh]
+### NODE D.63 [def] [fresh] *[consumption RE-SIGNED: A-D.2 — signature byte-unchanged]*
 
 **STATEMENT.** *Display A's `∀ i ≥ 3` conjunct, assembled.* The indexed family
 `VarthetaWConjunct HVR W i := HVR i ∧ Wle W i` over abstract rung-indexed `HVR W : ℕ → Prop`
-— instantiated at `HVR i := HVarthetaRes (level-i data)` (D.62) and `W q := GentowW
-(level-q data)` (D.44), both instantiations chapter C's. This is the name chapters E and I
+— instantiated at `HVR i :=` **the A-D.2 sitewise `HVarthetaRes` over the level-`i` data
+AND the level-`i` ambient residue datum** (D.62 as re-signed; instantiation data chapter
+C's) and `W q := GentowW (level-q data)` (D.44). This is the name chapters E and I
 consume for the capstone conjunct `(H-VARTHETA-RES)_i ∧ 𝒲_(≤i)` (`∀ i ≥ 3`); per the Part V
 owner ruling, its terminal disposition in chapter I is DISCHARGE NODE or LITERATURE CITE —
-this chapter only supplies the carrier at exact ledger strength (modulo D.62's disclosed
-delta).
+this chapter only supplies the carrier at exact ledger strength. **CONSUMPTION FENCE
+(A-D.2):** the pre-A-D.2 instantiation through the voided existential form degenerates to
+`Wle` plus an exact-height fact (D-D12) and is VOID — any consumer or discharge
+instantiating `HVR` at `HVarthetaResVoided` is a defect. ~~(modulo D.62's disclosed
+delta)~~ *[withdrawn at A-D.2 — the existential form had no delta to disclose, it was
+empty].*
 
 **SIGNATURE.**
 ```lean
@@ -4631,5 +4697,88 @@ this append transcribes, and `lake build Leanspec.ChapD` was re-run green after 
 (text-alignment-only change).
 
 ---
+
+## AMENDMENT A-D.2 (2026-08-16, dated append) — D.62/D.63: THE `(H-VARTHETA-RES)_i` CARRIER, MACHINE-REFUTED VACUOUS (D-D12), RE-SIGNED SITEWISE PER DECISION D-2
+
+*(Display-A carrier adjudication unit — the owner of the re-sign A-D.1's §9 stop-the-line
+stub forwarded. Records: defect D-D12 (`leanspec/Leanspec/ChapD.lean` header + §9's A-D.1
+stub); DECISION D-2 and the re-signed nodes IN PLACE at §9; landed stubs
+`leanspec/Leanspec/ChapD.lean` §9 RE-SIGN LOG (commit `d420f112`); non-triviality
+countermodel `verification/om4_resign_nontriviality.lean`. Builds green:
+`lake build Leanspec.ChapD`; `lake env lean` on the verification file; all Lean-core
+footprints.)*
+
+### The finding (D-D12, recapped)
+
+The committed D.62 `HVarthetaRes G K N v := ∃ A : GaugeArena G K N, A.v = v` is inhabited
+by the trivial hom `1 : ker v →* Kˣ` and PROVABLY EQUIVALENT to the exact-height fact
+`∀ k, v (N.n k) = ofAdd k` (the two gate witnesses, now named
+`hvarthetaResVoided_of_exact_height`/`hvarthetaResVoided_iff`). Chapter I would have
+carried a Display-A `∀ i ≥ 3` conjunct dischargeable from height bookkeeping; D.63
+degenerated to `Wle` plus that fact.
+
+### The defective original (committed SIGNATURE, preserved verbatim)
+
+    def HVarthetaRes (G : Type*) [CommGroup G] (K : Type*) [Field K]
+        (N : NormSection G) (v : G →* Multiplicative ℤ) : Prop :=
+      ∃ A : GaugeArena G K N, A.v = v
+
+### The re-sign (DECISION D-2: the sitewise fork — full grounds at the §9 DECISION block)
+
+The new SIGNATURE is displayed at NODE D.62. Content: over the level's height data
+`(N, v)`, a GIVEN ambient residue datum `ρ : ker v →* Lˣ` with `[Algebra K L]` (`K = K_i`
+the level field, `L` the ambient residue field), and the level's fixed use-height
+`q = u_{i+1}`, the carrier asserts, for every `s ≥ 0`: the ϑ-quotient
+`n̂(q)^s · n̂(sq)⁻¹` lies in `ker v` AND its ρ-residue is the image of a `K_i`-unit.
+Source verification, clause by clause:
+
+* the quantified display ↔ `EFF.T1.09` verbatim: "`(H-VARTHETA-RES)_i :
+  res(n̂_i(u_{i+1})^s / n̂_i(su_{i+1})) ∈ K_i (s ≥ 0)`"; the `u : Kˣ` witness form carries
+  the `K_iˣ` content its CONDITIONALITY line names ("`K_i^×` membership is unconditional
+  only for `i = 1, 2`, and supplier-dependent for `i ≥ 3`"; the boxed `(C2-vartheta)` has
+  `ϑ_{i,s} ∈ K_i^×`);
+* the membership conjunct ↔ its DERIVATION's "The quotient has value zero" — exact-height
+  arithmetic, unconditional at any arena instance (D.08's `varthetaEl_mem_ker`); included
+  so the carrier is self-contained, NOT as supplier-dependent content;
+* `q` as a parameter ↔ the display's fixed `u_{i+1}` — exactly source scope, not widened
+  to all heights;
+* the stacking ↔ `EFF.T5.10`: "Every `i ≥ 3` use of `Θ_i(t)` in this note carries the
+  named hypothesis `(H-VARTHETA-RES)_i` **alongside** `𝒲_{≤i}`" — D.63's `∧`-shape
+  unchanged (with `EFF.T3.22`'s `𝒲_{≤n}` conjunction via D.55, unchanged).
+
+The committed form is KEPT under `HVarthetaResVoided` (named-and-voided) so the D-D12
+refutation stays machine-checked; the D-H3 "formally stronger" claim is RESTORED as the
+PROVED `hvarthetaRes_of_arena_agree` (arena + ambient agreement ⟹ sitewise carrier) —
+the agreement leg is precisely what the existential form lacked. D.07 is untouched, as
+A-D.1's note fixed. D.63's signature is byte-unchanged; its consumption contract is
+re-signed (fence at the node).
+
+### Non-triviality certificate (machine-checked, Lean-core)
+
+`verification/om4_resign_nontriviality.lean`, Part 3: `G₀ = Multiplicative (ℤ × ℤ)`,
+`v₀ = fst`, `N₀(k) = ofAdd (k, δ k)` with `δ(2) = 1` (exact height HOLDS — so
+`voided_still_trivial_here` re-fires the old trivializer against the VOIDED form at this
+very instance), ambient datum `ρ₀ : (0, m) ↦ iᵐ ∈ ℂˣ`, `K = ℚ ⊂ L = ℂ`:
+`hvarthetaRes_resigned_not_trivial` proves the `s = 2` ϑ-quotient's residue is
+`i⁻¹ = −i ∉ image(ℚˣ)` — the re-signed carrier is FALSE there, so no
+exact-height/trivial-hom recipe can prove it and the carrier tracks genuine
+conditionality.
+
+### Census and ledger effects
+
+* `leanspec/Leanspec/ChapD.lean`: `def` 30 → 31 (`HVarthetaResVoided`); proved `theorem`
+  11 → 12 (`hvarthetaRes_of_arena_agree`); the two D-D12 witnesses renamed onto the voided
+  form; census `#print axioms` extended; build green (8923 jobs).
+* §13's D.62/D.63 rows: the A-D.1 stub's "stay open" is RESOLVED at the A-D.2 forms —
+  consumers (E's §9 sockets at GC-13/GC-14 resolution; chapter I's Display-A block) bind
+  the SITEWISE carrier with the level's ambient residue datum, instantiation data
+  chapter C's. The voided form is fenced: any consumer or discharge citing
+  `HVarthetaResVoided` is a defect.
+* Chapter-I consumption rule recorded at I.10's Display-A block (CHAP-I dated note,
+  2026-08-16): the `(H-VARTHETA-RES) ∧ 𝒲` conjunct is consumed at THIS A-D.2 form only.
+* Standing refutation obligation on any weaker form: a proposal to weaken D.62 below the
+  sitewise-with-given-ρ form must first show the D-D12 witnesses
+  (`⟨v, hv, 1⟩` / `hvarthetaResVoided_iff`'s equivalence) fail against it — the vacuity
+  witnesses are the permanent lower bound on carrier strength.
 
 <!-- CHAP-D APPEND POINT — do not remove; sections are appended here in order -->
