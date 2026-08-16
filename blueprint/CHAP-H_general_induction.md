@@ -8505,8 +8505,9 @@ F-1 (per-type census), F-2 (conservative = semantic), and A-H.2's (α-0)/(α-rat
 Scratch-elaborated declarations: **52** (14 real `def` + 1 real `inductive` + 2 opaque
 owed-body defs + 35 theorem-shaped). Split-mandated: H.115 → 3, H.116 → 2, H.121 → 3, H.123 → 3,
 H.124 → 3; fleet planning figure **≈ 35 Lean files** for the section. Graph shape:
-critical path H.106 → H.107 → H.108 → H.109 → H.111 → H.112 → H.115 → H.118 → H.119 →
-H.121 → H.122 (10 edges); layer-0 (fireable immediately): H.100, H.101, H.106, H.107.
+critical path (a longest dependency chain, 9 edges) H.122 → H.121 → H.119 → H.118 →
+H.115 → H.112 → H.111 → H.109 → H.108 → H.107; layer-0 (fireable immediately): H.100,
+H.101, H.106, H.107.
 
 **Cross-file records installed by this unit.** (i) `leanspec/Leanspec/ChapH.lean` — the
 `LeanspecH17` elaboration-scratch blocks (its header records the lifecycle position and the
