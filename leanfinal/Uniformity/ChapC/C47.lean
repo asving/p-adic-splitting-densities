@@ -14,16 +14,27 @@ import Uniformity.ChapC.C46
 key and the tower bridges; signed A-C.1, repaired upstream at A-C.5 item 2, landed as FU-3 of the
 A-C.5 item-2 follow-up chain). **ENV-C3.**
 
-## ⚠ BLOCKED — the signed declaration is NOT in this file
+## ✔ LANDED WHOLE (2026-08-16) — `composedKey_isTestKey` at its byte-unchanged signature
 
-`composedKey_isTestKey` (the A-C.1 signature, byte-unchanged through A-C.5) is **not landed**. Its
-first defect — the read mismatch between C.13 clause 5's untwisted `slotRes` and C.43's ϖ-read
+`composedKey_isTestKey` is the A-C.1 signature, byte-unchanged through A-C.5 and through both
+repairs, with **no added hypothesis**: the composed key `Φ₂` of C.43 IS a test key for the level
+datum `T.levelDatum hπ` in C.13's sense, given only `hπ : Irreducible π`, `hh : 1 ≤ F.h` and
+`[Finite (ResidueField O)]`. Sorry-free, Lean core only.
+
+Getting here took two defect/repair rounds, both recorded below because both are load-bearing for
+anyone re-reading §6.
+
+## Defect 1 (A-C.5): the read mismatch — REPAIRED UPSTREAM
+
+The first defect — the read mismatch between C.13 clause 5's untwisted `slotRes` and C.43's ϖ-read
 composed key — was machine-refuted (`C47_REFUTATION.lean.txt`), adjudicated by A-C.5 against
-`EFF.HE6.14`, and repaired at C.13 (FU-1) and C.14 (FU-2). That repair is real and it discharges
-the residue half exactly as A-C.5 predicted: `composedKey_slot_residue_clause` below IS landed
-C.46, with no hypothesis added.
+`EFF.HE6.14`, and repaired at C.13 (FU-1) and C.14 (FU-2). That repair discharges the residue half
+exactly as A-C.5 predicted: `composedKey_slot_residue_clause` below IS landed C.46, with no
+hypothesis added.
 
-**A SECOND, INDEPENDENT DEFECT survives the A-C.5 repair, and this file isolates it.** C.13's
+## Defect 2 (found HERE at FU-3, commit `da950c29`): the zero-slot branch — REPAIRED AT C.14a
+
+A **second, independent defect survived the A-C.5 repair, and this file isolated it.** C.13's
 conjunct 5 has two branches, and the A-C.5 accounting (blueprint: *"what remains is the four shape
 clauses"*; the refutation record: *"the other four conjuncts and the height half of clause 5 are
 NOT in question"*) counted only one of them. The **zero-slot branch**
@@ -32,43 +43,57 @@ NOT in question"*) counted only one of them. The **zero-slot branch**
 L.r.coeff t = 0  →  dev Φ′ Φ₂ (e₂t) = 0
 ```
 
-is not provable at these binders. Machine-reduced below to a single equation about C.14a's
+was not provable at these binders. It was machine-reduced here to a single equation about C.14a's
 residue section:
 
 ```
 dev Φ′ (composedKey T) (e₂t) = 0   ↔   resLift (0 : ResidueField O) = 0
 ```
 
-(`composedKey_zero_slot_iff`, via `stageLiftO_zero_iff`). And `resLift` is
+(`composedKey_zero_slot_iff`, via `stageLiftO_zero_iff`; both retained below, now as the *proof
+route* rather than as a gap record). Pre-repair, `resLift` was the bare
 `(IsLocalRing.residue_surjective x).choose` — a `Classical.choose` section whose ONLY pinned
-property is `resLift_spec : residue O (resLift x) = x`. At `x = 0` that says exactly
-`resLift 0 ∈ maximalIdeal O`, which in a DVR is a nonzero ideal. So the equation is **independent**
-of everything the corpus carries: not false, not provable. (`Classical.choose` is opaque; its value
+property was `resLift_spec : residue O (resLift x) = x`. At `x = 0` that says exactly
+`resLift 0 ∈ maximalIdeal O`, which in a DVR is a nonzero ideal. So the equation was **independent**
+of everything the corpus carried: not false, not provable. (`Classical.choose` is opaque; its value
 is a function of the *proposition* alone, and `∃ a, residue O a = 0` does not name a witness.)
 
-## Why the defect is there, and why it is real
+**The cure, applied 2026-08-16 at C.14a (option 1 of the four recorded below, the RECOMMENDED
+one).** `resLift` is now guarded: `if x = 0 then 0 else (residue_surjective x).choose`. Its new
+companion lemma `resLift_zero : resLift 0 = 0` is `if_pos rfl`; `resLift_spec`'s STATEMENT is
+byte-unchanged (its proof gained a `by_cases`); all five other consumers (C.14, C.24, C.46, C.56a,
+C.84) rebuilt unchanged, since each reads `resLift` only through `resLift_spec` or writes it into
+a def body. `composedKey_isTestKey` below is then
+`composedKey_isTestKey_of_resLift_zero T hπ hh resLift_zero`.
+
+### Why defect 2 was there, and why it was real (retained verbatim from the BLOCKED record)
 
 * **C.43's `composedKey` has no zero guard.** Its display sums `L_{(f₂−t)u₂}(c_t·η^{W(t)})` over
   ALL `t < f₂`. `EFF.HE6.14`'s DEFINITION HE6-1, which C.13 transcribes, is explicit that
   `B_t := 0` when `c_t = 0` — the guard lives in the source and was dropped in the §6 display,
-  which silently assumes `L_M(0) = 0`. That is true of "the" lift and false of the corpus's
-  junk-defaulting `resLift`-section implementation of it.
+  which silently assumes `L_M(0) = 0`. That is true of "the" lift and was false of the corpus's
+  junk-defaulting `resLift`-section implementation of it. The C.14a repair makes the
+  implementation satisfy `L_M(0) = 0` (`stageLiftO_zero_iff` + `resLift_zero`), so the §6 display
+  may keep its unguarded form.
 * **Both neighbours DO guard.** C.14's own `exists_testKey` returns the literal `0` in its
   `L.r.coeff t = 0` branch (`hlift`'s first `by_cases`), and C.24 writes
-  `if c t = 0 then 0 else resLift (c t)` in the body of its lift. C.43 is the outlier.
-* **The vanishing case is legal.** `TowerDatum` constrains only `ψ₂.coeff 0` (`hψ0`); middle
-  coefficients are free. `T² + 1` over `F₃` — the very residual the C.47 refutation record
-  certifies irreducible on its mandatory `(e₁,f₁,h) = (2,2,3)` gate frame — is monic irreducible of
-  degree `2` with nonzero constant term and `coeff 1 = 0`. Taken as `ψ₂` with `e₂ = 1, f₂ = 2` and
-  any `u₂ > D′h` coprime to `1`, it is a legal `TowerDatum` at which the zero-slot branch fires.
-  The coefficient shape is machine-checked in `zeroMiddleCoeff_is_legal_shape` below.
+  `if c t = 0 then 0 else resLift (c t)` in the body of its lift. C.43 was the outlier; the cure
+  hoists their shared convention into `resLift` itself.
+* **The vanishing case is legal** — so the branch is reachable, and the repair is not vacuous
+  bookkeeping. `TowerDatum` constrains only `ψ₂.coeff 0` (`hψ0`); middle coefficients are free.
+  `T² + 1` over `F₃` — the very residual the C.47 refutation record certifies irreducible on its
+  mandatory `(e₁,f₁,h) = (2,2,3)` gate frame — is monic irreducible of degree `2` with nonzero
+  constant term and `coeff 1 = 0`. Taken as `ψ₂` with `e₂ = 1, f₂ = 2` and any `u₂ > D′h` coprime
+  to `1`, it is a legal `TowerDatum` at which the zero-slot branch fires. The coefficient shape is
+  machine-checked in the `LegalityCheck` section below.
 * **`towerLabel` transports the vanishing exactly.** `r̃_t = η^{−Qf₂}·ψ₂_t·η^{Qt}` and `η ≠ 0`, so
   `r̃_t = 0 ↔ ψ₂_t = 0`; the branch cannot be dodged by reading the label instead of `ψ₂`
   (`towerLabel_coeff_eq_zero_iff`).
 
-## What IS landed here (everything else in the node, unconditionally)
+## What is landed here
 
-Six theorems, all sorry-free and Lean-core, at the signed binders:
+The signed node, plus the seven clauses it is assembled from — all sorry-free and Lean-core, at
+the signed binders:
 
 1. `composedKey_monic` — clause 1.
 2. `composedKey_natDegree` — clause 2, `natDegree = keyDeg₂ = D′e₂f₂`.
@@ -78,37 +103,45 @@ Six theorems, all sorry-free and Lean-core, at the signed binders:
    exact-height calculus is `private`).
 6. `composedKey_slot_residue_clause` — clause 5's ϖ-read residue half, which IS landed C.46. This
    is the A-C.5 repair paying out.
+7. `composedKey_zero_slot` — clause 5's zero-slot branch, UNCONDITIONAL since the C.14a repair.
+   This is the defect-2 cure paying out.
 
-and the node itself, conditionally on the one missing equation:
+and
 
-7. `composedKey_isTestKey_of_resLift_zero` — the signed statement verbatim, with
-   `resLift (0 : ResidueField O) = 0` as an explicit hypothesis. This is a **record of the exact
-   gap, not a re-sign**: the permanent form of C.47 must not carry this hypothesis.
+8. `composedKey_isTestKey_of_resLift_zero` — the signed statement with
+   `resLift (0 : ResidueField O) = 0` as an explicit hypothesis. Retained: it was the BLOCKED
+   record of the exact gap, and it is now the honest audit trail showing that C.14a's guard is the
+   *only* thing the node needs beyond the six A-C.5 clauses. Nothing depends on it but item 9.
+9. `composedKey_isTestKey` — **THE NODE**, the A-C.1 signature verbatim, item 8 fed `resLift_zero`.
 
-## Repair options (for the amendment author; NOT a fleet-time choice)
+## The four repair options that were on the table (adjudication record, 2026-08-15)
 
-1. **Guard `resLift` (RECOMMENDED).** Re-sign C.14a's `resLift` as
-   `if x = 0 then 0 else (residue_surjective x).choose` — precisely C.24's own convention. Then
-   `resLift 0 = 0` by `if_pos`, `stageLiftO M 0 = 0` follows from `stageLiftO_zero_iff`, and C.47
-   lands whole with its signature byte-unchanged. `resLift_spec`'s STATEMENT is byte-unchanged (its
-   proof gains a `by_cases`), and every consumer (C.14, C.24, C.46, C.56a, C.84) reads `resLift`
-   only through `resLift_spec` — C.14a's own docstring says so ("the choice itself is junk").
-   Blast radius: one definition, one proof.
+1. **Guard `resLift` (RECOMMENDED) — ✔ THIS IS THE ONE TAKEN, 2026-08-16.** Re-sign C.14a's
+   `resLift` as `if x = 0 then 0 else (residue_surjective x).choose` — precisely C.24's own
+   convention. Then `resLift 0 = 0` by `if_pos`, `stageLiftO M 0 = 0` follows from
+   `stageLiftO_zero_iff`, and C.47 lands whole with its signature byte-unchanged. `resLift_spec`'s
+   STATEMENT is byte-unchanged (its proof gains a `by_cases`), and every consumer (C.14, C.24,
+   C.46, C.56a, C.84) reads `resLift` only through `resLift_spec` — C.14a's own docstring says so
+   ("the choice itself is junk"). Blast radius: one definition, one proof. *(Executed exactly as
+   written; the predicted blast radius held — all five consumers rebuilt with no edit.)*
 2. **Guard `composedKey`.** Re-sign C.43 to sum `if T.ψ₂.coeff t = 0 then 0 else stageLiftO …`.
    Closest to `EFF.HE6.14`'s literal `B_t := 0`, but it changes a §6 signature and forces a case
-   split inside landed C.46.
+   split inside landed C.46. NOT TAKEN.
 3. **Constrain `TowerDatum` (dishonest).** Adding `∀ t < f₂, ψ₂.coeff t ≠ 0` excludes legal inner
-   residuals (`T²+1` over `F₃`); recorded only to be rejected.
-4. **Hypothesize the equation.** Item 7 above, made permanent. Rejected as a signature: it would
-   propagate a `Classical.choose` artefact into every §6 consumer.
+   residuals (`T²+1` over `F₃`); recorded only to be rejected. NOT TAKEN.
+4. **Hypothesize the equation.** Item 8 above, made permanent. Rejected as a signature: it would
+   propagate a `Classical.choose` artefact into every §6 consumer. NOT TAKEN.
 
 ## Status
 
-Sorry-free, Lean-core axioms only. The signed `composedKey_isTestKey` is **BLOCKED**; nothing here
-weakens it, and nothing here is a re-sign.
+Sorry-free, Lean-core axioms only. The signed `composedKey_isTestKey` is **LANDED** at its
+byte-unchanged A-C.1 signature, with no added hypothesis and no statement weakened anywhere: the
+one thing that changed is the BODY of C.14a's `resLift` (a stub-side helper, not a blueprint node),
+whose two exported facts are `resLift_spec` (statement byte-unchanged) and the new `resLift_zero`.
 
 **DEPENDS.** C.13 (`IsTestKey`) · C.14 (packaging; `resLift_spec`) · C.14a (`stageLiftIA`,
-`stageLiftO`, `stageCoord`, `sum_stageCoord`, `resLift`) · C.42 (`TowerDatum`) · C.43
+`stageLiftO`, `stageCoord`, `sum_stageCoord`, `resLift`, and — since the 2026-08-16 zero-guard
+repair — `resLift_zero`) · C.42 (`TowerDatum`) · C.43
 (`composedKey`, `wrapExp`) · C.44 (`towerLabel`, `levelDatum`) · C.46
 (`composedKey_slot_residue`) · B.04/B.06/B.32a/B.35a/B.39b (the `dev` calculus) — by committed
 node ID (GC-13(b)).
@@ -556,16 +589,23 @@ theorem composedKey_slot_residue_clause {F : KeyFrame O π} {H₀ : ℕ} {hpin :
       = (towerLabel T).coeff t :=
   composedKey_slot_residue T hπ hh ht
 
-/-! ### THE GAP: C.13 conjunct 5's zero-slot branch -/
+/-! ### C.13 conjunct 5's zero-slot branch — WAS the gap, cured at C.14a on 2026-08-16
+
+The two `iff`s below are the machine-reduction that isolated defect 2. They are kept verbatim
+(statements byte-unchanged from the BLOCKED record, commit `da950c29`): with C.14a's `resLift`
+now guarded, their right-hand side `resLift (0 : ResidueField O) = 0` is the landed
+`resLift_zero`, so the same two lemmas that *diagnosed* the defect now *discharge* the branch. -/
 
 private theorem stageCoord_zero (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) (s : ℕ) :
     F.stageCoord H₀ hpin 0 s = 0 := by
   simp [KeyFrame.stageCoord]
 
-/-- **The gap, reduced to one equation about C.14a's residue section.** The zero lift is zero
-exactly when `resLift 0` is — and `resLift` is `(residue_surjective x).choose`, whose only pinned
-property (`resLift_spec`) says at `x = 0` merely that `resLift 0 ∈ maximalIdeal O`, a NONZERO ideal
-in a DVR. Nothing in the corpus decides this equation either way. -/
+/-- **The reduction, in one equation about C.14a's residue section.** The zero lift is zero
+exactly when `resLift 0` is. Pre-repair this was the gap: `resLift` was `(residue_surjective
+x).choose`, whose only pinned property (`resLift_spec`) said at `x = 0` merely that
+`resLift 0 ∈ maximalIdeal O`, a NONZERO ideal in a DVR, so nothing in the corpus decided the
+equation either way. Since the 2026-08-16 C.14a zero guard the right-hand side is `resLift_zero`,
+and this `iff` is the proof route rather than the obstruction. -/
 theorem stageLiftO_zero_iff (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
     (hpin : F.Pin H₀) (M : ℕ) :
     F.stageLiftO H₀ hpin M 0 = 0 ↔ resLift (0 : ResidueField O) = 0 := by
@@ -585,11 +625,12 @@ theorem stageLiftO_zero_iff (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : �
     refine Finset.sum_eq_zero fun s _ => ?_
     rw [stageCoord_zero, h, zero_mul, Polynomial.C_0, zero_mul]
 
-/-- **C.13 conjunct 5's zero-slot branch at the composed key IS the gap.** At a slot whose label
+/-- **C.13 conjunct 5's zero-slot branch at the composed key, reduced.** At a slot whose label
 coefficient vanishes, the required digit identity `dev Φ′ Φ₂ (e₂t) = 0` is EQUIVALENT to
 `resLift 0 = 0`. C.43's display carries no zero guard, while `EFF.HE6.14`'s DEFINITION HE6-1 (the
 source C.13 transcribes) says `B_t := 0` when `c_t = 0`, and both neighbouring nodes DO guard
-(C.14's `exists_testKey`, C.24's `if c t = 0 then 0 else resLift (c t)`). -/
+(C.14's `exists_testKey`, C.24's `if c t = 0 then 0 else resLift (c t)`). THE CURE puts the guard
+in `resLift` itself, which is what `composedKey_zero_slot` below reads off this `iff`. -/
 theorem composedKey_zero_slot_iff {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) {t : ℕ} (ht : t < T.f₂)
     (hz : (towerLabel T).coeff t = 0) :
@@ -600,10 +641,19 @@ theorem composedKey_zero_slot_iff {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin
   rw [dev_composedKey_slot T ht, neg_eq_zero, hcz]
   exact stageLiftO_zero_iff F hπ H₀ hpin _
 
-/-- **The signed statement, with the gap as an explicit hypothesis.** A RECORD of what is missing,
-NOT a re-sign: the permanent C.47 must not carry this hypothesis (see the module docstring's repair
-options — the recommended cure is to guard C.14a's `resLift`, after which the hypothesis is
-`if_pos rfl` and this theorem becomes `composedKey_isTestKey` outright). -/
+/-- **C.13 conjunct 5, the zero-slot branch, at the composed key — UNCONDITIONAL.** The seventh
+clause, and the payout of the 2026-08-16 C.14a zero guard: at a slot whose label coefficient
+vanishes, the `Φ′`-digit vanishes. -/
+theorem composedKey_zero_slot {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) {t : ℕ} (ht : t < T.f₂)
+    (hz : (towerLabel T).coeff t = 0) :
+    dev F.key (composedKey T) (T.e₂ * t) = 0 :=
+  (composedKey_zero_slot_iff T hπ ht hz).mpr resLift_zero
+
+/-- **The signed statement, with the former gap as an explicit hypothesis.** Retained as the audit
+trail of what defect 2 cost: everything except this one equation was already landed at FU-3
+(commit `da950c29`). Since the 2026-08-16 C.14a zero guard the hypothesis is discharged by
+`resLift_zero`, which is exactly what `composedKey_isTestKey` below does. -/
 theorem composedKey_isTestKey_of_resLift_zero {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
     [Finite (ResidueField O)] (hzero : resLift (0 : ResidueField O) = 0) :
@@ -630,6 +680,22 @@ theorem composedKey_isTestKey_of_resLift_zero {F : KeyFrame O π} {H₀ : ℕ} {
       exact composedKey_slot_height T hπ ht hne
     · rw [hℓ, hd, hu, hr]
       exact composedKey_slot_residue_clause T hπ hh ht
+
+/-! ### THE NODE -/
+
+/-- **NODE C.47 — HETOW-2 at the (LIFT)-form.** C.43's composed key `Φ₂` is a test key for the
+level datum `T.levelDatum hπ` in C.13's sense. The A-C.1 signature, byte-unchanged through the
+A-C.5 re-sign and through both repairs, with NO added hypothesis.
+
+Six of the seven clauses were landed at FU-3 (commit `da950c29`); the seventh, C.13 conjunct 5's
+zero-slot branch, was BLOCKED there on the `Classical.choose` artefact `resLift 0 = 0` and is
+discharged by the 2026-08-16 C.14a zero guard (`resLift_zero`). See the module docstring for the
+full two-defect record. -/
+theorem composedKey_isTestKey {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] :
+    IsTestKey (T.levelDatum hπ) (composedKey T) :=
+  composedKey_isTestKey_of_resLift_zero T hπ hh resLift_zero
 
 end Uniformity.Density.Tower
 
@@ -669,6 +735,8 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.composedKey_slot_residue_clause
 #print axioms Uniformity.Density.Tower.stageLiftO_zero_iff
 #print axioms Uniformity.Density.Tower.composedKey_zero_slot_iff
+#print axioms Uniformity.Density.Tower.composedKey_zero_slot
 #print axioms Uniformity.Density.Tower.composedKey_isTestKey_of_resLift_zero
+#print axioms Uniformity.Density.Tower.composedKey_isTestKey
 
 end AxCheck
