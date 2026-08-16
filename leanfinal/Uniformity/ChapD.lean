@@ -18,6 +18,8 @@ import Uniformity.ChapD.D35
 import Uniformity.ChapD.D45
 import Uniformity.ChapD.D46
 import Uniformity.ChapD.D59
+import Uniformity.ChapD.D62
+import Uniformity.ChapD.D62w
 import Uniformity.ChapD.D64
 
 /-! ChapD roll-up — regenerated at fleet layer close 13. -/
