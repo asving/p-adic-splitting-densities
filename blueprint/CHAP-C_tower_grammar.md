@@ -8384,6 +8384,161 @@ refutation records are PERMANENT (headers carry the repair notes). Standing obli
 opened: **A-C.3 — the C.114 realizes-refinement re-sign** (clause list at the node
 banner), with its own certification leg required before signing.
 
+**A-C.3 (2026-08-16, the C.114 defect-repair unit — successor to A-C.2 under its own
+charter: CERTIFY FIRST, then adjudicate, then sign). THE REALIZES-REFINEMENT RE-SIGN. THE
+DESIGNED CLAUSE LIST WAS ITSELF INSUFFICIENT — TWO NEW FINDINGS, ONE OF THEM AGAINST THE
+CORPUS.**
+
+**(0) What A-C.2 left, and why the order of work mattered.** A-C.2 machine-refuted both
+frozen C.114 axioms, WITHDREW them, recorded a designed clause list (per-node `WF`; per-node
+cell membership at the recentered keys; the `s`-pin `gaussVal (K i − K parent) = s_i`;
+sibling distinctness; child-count-vs-type completeness; the tree-level κ-rule), and warned
+that the re-sign "NEEDS ITS OWN CERTIFICATION LEG BEFORE SIGNING". It does. Signing the
+designed list as written would have landed a THIRD false axiom (finding D5), on top of a
+statement whose corpus warrant is broken in a regime the corpus never exercised (D6).
+
+**(I) The certification, run FIRST** (`verification/c114_ac3_stratum_check.py`, 63 checks,
+exit 0; output committed; reuses `c109_ac2_cell_check.py`'s field/polygon/digit machinery
+verbatim). Exact brute force over `O = Z/p^N` with `Φ = x` (`d = 1`), counting level-`N`
+classes of `f` against `htBranchCount`/`htGlobalCount`:
+
+| instance | q | N | formula | stratum |
+|---|---|---|---|---|
+| depth 0, `m = 2`, irreducible-quadratic residual | 2, 3 | 5 | 4 / 729 | = |
+| depth 0, `m = 1`, steep side | 2, 3 | 5 | 4 / 18 | = |
+| depth-1 chain, leaf type `(2,1)` | 2, 3 | 5 | 4 / 54 | = |
+| depth-1 chain, leaf type `(1,1)+(1,1)` — **W12-L0's own recovery row** | 3 | 5 | 18 | = |
+| depth-1 chain, `m = 3` (triple root, mixed leaf type) | 2 | 7 | 64 | = |
+| depth-2 chain | 2, 3 | 6 | 8 / 216 | = |
+| global, two branches, `κ₀ = 1` | 2 | 4 | 64 | = |
+| global, two branches, `κ₀ = 2` | 2 | 4 | 512 | = |
+
+The W12-L0 row is the strongest non-textual leg available: `EFF.W12.87`'s own consumer
+sweep predicts `(q−1)·((q−1)(q−2)/2)·q^{2N−8}`, i.e. `2·1·3² = 18` at `q = 3, N = 5`, and
+the brute force returns exactly 18. **Model exactness:** in every enumerated instance the
+children of a node either exhaust it (`Σ_u m_u = m_v`, so `G_v = ∏_u G_u` exactly and the
+level-`N` reading has the exact product as its witness) or are the single unfractured child
+(`G_u = G_v`), so nothing rests on lifting a mod-`π^N` factorization. The joint form
+`(∏_u G_u) ∣ G_v` is what is enumerated: over `O` it is EQUIVALENT to the signed per-child
+clause (distinct sibling centres ⇒ disjoint root sets ⇒ coprime over `K` ⇒ Gauss), but at
+level `N` the per-child form is strictly weaker — measured: EVERY member of the `q = 3` root
+cell has a mod-`π^5` divisor in the child cell.
+
+**(II) FINDING D5 — the recentring must be by a REPRESENTATIVE (the designed `s`-pin is not
+enough).** `gaussVal (K i − K parent) = s_i` pins only the digit at height `s_i`; the lift of
+the residual root is free above it, and the stratum's `∃ K` then ranges over all lifts. That
+is not what the corpus does: `EFF.W12.84` step 2 says *"Choose a lift `z̃`, put
+`Ψ = Φ − z̃π^k`"* — one lift — and its independence sentence, *"Changing the chosen lift of
+`z` composes the map with another unitriangular translation and changes neither the node nor
+its fiber size"*, is a claim about the SIZE, not about the SET. It cannot be about the set:
+the child's own polygon is not invariant under a shift of valuation `s_i + 1`, precisely
+when the child's residual has a linear factor. Measured with the designed list alone:
+`stratum 324` vs `formula 216` (q = 3, depth-2 chain) and `54` vs `18` (q = 3, depth-1, split
+leaf residual). Repair: `IsRepSystem R d` — exactly one polynomial of degree `< d` per class
+mod `π` — and the clause `K (parent i) − K i = C (π^{s_i}) · z` with `z ∈ R`, `gaussVal z = 0`.
+NON-TEXTUAL LEG (and the corpus's independence claim, certified): four different
+representative systems give the SAME count, 216 = the formula, on the depth-2 chain. The new
+clause IMPLIES the designed `s`-pin — proved, not asserted: `repRecentring_gaussVal` in
+`leanspec/C114_AC3_SEPARATION.lean.txt` — so the `s`-pin is not carried separately
+(A-F.12 minimality, applied with a proof).
+
+**(III) FINDING D6 — `EFF.W12.85`'s per-node nonnegativity is FALSE at multi-child nodes.**
+Pure arithmetic on the corpus's own `B_v` and `D_u`: for a node whose repeated-linear
+children EXHAUST it (`Σ_u m_u = m_v`) with `r ≥ 2` children on one side of slope `s`,
+`B_v(N) − Σ_u D_u(N) = −s·(m_v² − Σ_u m_u²)/2 < 0` for **every** `N` (certified at four
+shapes; two-sided instances measured too). The `B_v` side is brute-force confirmed: the
+`q = 3`, `m = 4`, slope-1 root cell has exactly `3^6 = 729` members at `N = 5` (matching
+`B = 6`), while each child's ambient conservative cell has `3^5 = 243`, so
+`#E_v(𝐑) = #U_v(𝐑) · 243²` is arithmetically impossible. Such nodes are realizable: the
+enumerated true counts are 243, 486, 128 against the formula's 9, 108, 32. So the corpus's
+*"In particular, the exponent is a nonnegative integer; divisibility … is a consequence of
+the bijection, not an assumption"* is false as stated, and step 3's fiber decomposition
+fails there. **Nothing is patched:** no node invents a corrected fiber law. The Lean
+statement CARRIES the inequality as `hnode` (`t.NodeExponent N`), the A-C.2 precedent at
+C.111, which excludes exactly that regime; A-C.2's reading of `hnode` as "discharged by the
+fleet's bijection at realized nodes" is CORRECTED to a scope condition at C.111's new rider.
+Every instance the corpus actually exercises (`EFF.W12.87`'s sweep: the discharge instance,
+W12-L0, W12-L1, the cubic consumers) has at most ONE child per node — `B_root = D_child`,
+the `#U_v = 1` boundary — which is why the corpus never met it.
+
+**(IV) Source adjudication, per clause** (verbatim pins, each with a non-textual leg per the
+extraction-corruption rule; a clause with no source backing would have stopped at
+CERTIFIED-OPEN — none did, except the two flagged in (V)).
+
+| clause | verbatim source | non-textual leg |
+|---|---|---|
+| `NodeWF` (per node) | A-C.2's adjudication of `EFF.W12.83`/`.24` (the `L_v` display, the sides law) | `L−1` tooth: formula 18, stratum 54 |
+| `Conservative` | `EFF.W12.83`: *"the child is the degree-`d_i` conservative node of multiplicity `m_u` and depth `s_u`"*; *"`C_{m_v}(s_v)= {(a_j)_{j<m_v}:v(a_j)≥(m_v−j)s_v+1}`"* | tooth: formula 1458, stratum **0** |
+| `ChildComplete` | `EFF.W12.83`: *"Its children are precisely the repeated linear factors `(Y−z)^{m_u}` on `e=1` sides. If the side has slope `−s_u`, the child is the … node of multiplicity `m_u` and depth `s_u`"* | tooth (child at a non-side depth): formula 64, stratum **0** |
+| `OrderOne` (fence) | `EFF.W12.83`: *"Repeated factors of degree `>1`, and repeated factors on `e>1` sides, open composite stages and are outside this order-1 statement"* | **NO tooth** — flagged in (V) |
+| `WindowVisible` | `EFF.W12.83`: *"Fix a letter-free, history-resolved, window-visible decided order-1 key `T`"*; `.86` step 5: *"For a window-visible node, `m_v s_v+1 ≤ P_v(0) ≤ N−1`"* | tooth: formula 6, stratum **0** |
+| `KappaRule` | `EFF.W12.83`: *"let `r_{v,S,a,H}` count the repeated linear roots on `S` of multiplicity `a` carrying `H` … `κ_v= ∏_{S,a} r_{v,S,a}!/∏_H r_{v,S,a,H}!` (HT-orbit) … The side tag is necessary because roots on different sides cannot be permuted"* | tooth (κ=2 on a childless node): formula 1458, stratum 729 — the ratio is exactly `κ` |
+| `Kappa0Rule` + `IsSlotAssign` | `EFF.W12.83`: *"let `r_{d,m,H}` count branches of degree `d` and multiplicity `m` carrying complete decoration/history `H`, and set `κ_0(T)= ∏_{d,m} r_{d,m}!/∏_H r_{d,m,H}!`"*; and the shape is *"letter-free"* while *"the actual distinct irreducibles `P̄_i` are the letters"* | the κ₀ law measured EXACTLY: `κ₀=2` gives 512, `κ₀=1` gives 64; dropping the slot-`∃` gives 256 (= 512/κ₀); a wrong `κ₀` gives 256 vs the true 512 |
+| `hdistinct` (branch residues) | `EFF.W12.83`: *"the actual **distinct** irreducibles `P̄_i`"* | tooth: two branches at one residue, formula 64, stratum 8 |
+| per-node CELL membership (incl. non-root TYPES) | `EFF.W12.83`: *"residual factorization type `λ_{v,S}` on every side `S`"*; A-C.2's `EFF.W12.23` three-way law for the pin shape | tooth (drop the non-root type pin): formula 54, stratum 108 |
+| sibling distinctness | `EFF.W12.85` step 4: *"For a fixed actual residual polynomial, its repeated roots are distinguished by their values"* | SUBSUMED in the reachable geometries — flagged in (V) |
+| `IsRepSystem` [D5] | `EFF.W12.84` step 2: *"Choose a lift `z̃`, put `Ψ=Φ−z̃π^k`"* | 324 vs 216; four representative systems agree at 216 |
+| `NodeExponent` [D6] | `EFF.W12.85` step 3: *"`#U_v(𝐑) = Q^{B_v(N)−∑_uD_u(N)}`. In particular, the exponent is a nonnegative integer"* — quoted as the SHAPE of the hypothesis, with its derivation REFUTED | three measured counterexamples (243/9, 486/108, 128/32) + the four-shape identity |
+
+**(V) The two clauses REPORTED as not load-bearing in the grid** (the charge's flag: a clause
+no mutation kills is dead weight, and must be named as such rather than quietly kept).
+
+* **the `s`-pin** — SUBSUMED by `IsRepSystem`, machine-checked (`repRecentring_gaussVal`).
+  Dropped from the signature; nothing is lost.
+* **sibling distinctness** — no tooth in the reachable geometries: with the parent's side
+  TYPE pinned, distinct residual roots force distinct centres, and every reachable
+  multi-child node is exhausting, where a shared cluster would force `f = G²` and break the
+  type pin. RETAINED on source grounds (`EFF.W12.85` step 4, quoted above) and because the
+  NON-exhausting regime — where a shared cluster leaves a third cluster free — is out of
+  brute-force range. Flagged, not hidden.
+* **`OrderOne` (the fence)** — no truth tooth: a node with a repeated degree-2 residual on an
+  `e = 1` side has stratum 2187 = formula 2187. It is a SCOPE clause, retained because the
+  corpus refuses to speak past it (*"outside this order-1 statement"*), and reported as
+  carrying no truth content in this grid.
+* Also DROPPED after certification: a root-depth normalisation `s_root = 0` (`EFF.W12.83`'s
+  *"previous center depth `s_v` (zero at the root)"`*). Certified INERT: the formula reads `s`
+  only through the non-root `D_u`, and the stratum reads it only through the recentring
+  clause, which the root has not. Not signed — A-F.12 minimality.
+
+**(VI) The re-sign, with the alternatives rejected.**
+
+* **C.114** — `htRealizes` gains `IsKey (K i)`, per-node CELL membership at the recentered
+  key (subsuming the frozen monic/degree/polygon clauses AND pinning the non-root types),
+  the D5 representative recentring, and sibling distinctness; the two count axioms are
+  RESTORED with the eight tree clauses as INLINE binders (B.42). Rejected: *(a) the designed
+  list as written* — refuted at D5; *(b) `∀`-quantifying the lift instead of `∃`* —
+  numerically 0, not the formula (no `f` lies in the child cell at every lift); *(c)
+  choosing the lift by an intrinsic extremal rule (maximal/minimal `P_u(0)`)* — an
+  `f`-dependent rule destroys the fixed-lift bijection `E_v(𝐑) ≃ C_{m_u}(s_u)` on which the
+  count rests, and it is the Montes OPTIMAL-refinement stratification, which is a different
+  object the corpus does not compute; *(d) deriving `hnode`* — refuted at D6; *(e) scoping
+  the law to one-child trees* — strictly weaker than `hnode` and not the corpus's condition.
+* **C.111** — no signature change (A-C.2's `hnode` stands); a RIDER corrects the discharge
+  claim per D6.
+* **C.116** — the Phase-B consumer contract is extended: the tag fields are no longer
+  contract-compliant without their RULES (manifest gains six `#check`s).
+* **DECISION D-C.3-CARRIER** — the seven tree predicates and `IsRepSystem` are ANNEXED to
+  C.114, not made a node. Rejected: *a C.114a def node* — unlike A-C.2's C.109a (≥ 3
+  consumers, independent B-layer character), these have exactly two consumers, both inside
+  C.114, and no independent statement content; a node would add DAG rows that hide nothing.
+
+**(VII) Bookkeeping.** Census: unchanged at **131** (no new node; C.114 re-signed in place).
+`lake build Leanspec.ChapC` GREEN (9080 jobs), zero `sorry`. New permanent records:
+`verification/c114_ac3_stratum_check.py` (+ committed output) and
+`leanspec/C114_AC3_SEPARATION.lean.txt` (Lean-core, sorry-free: `kappaRule_vK_iff`,
+`kappa0Rule_empty_iff`, `repRecentring_gaussVal`). DAG: C.114 gains stmt-deps on
+`EFF.W12.s2of2.32` (`.84`, the D5 lift display) and `EFF.W12.s2of2.33` (`.85`, the D6
+display) and proof-deps on C.108–C.112. `leanfinal` edit surface: NONE (nothing of chapter C
+has landed there; the two A-C.2 refutation records stand unchanged and still refute the
+A-C.1 signatures they quote — the re-signed axioms are different statements). STANDING
+OBLIGATIONS OPENED: **(a)** the multi-child regime under `hnode` is CERTIFIED-OPEN — no
+consumer may read `ht_branch` as certified there; **(b)** the D6 corpus-side gap
+(`EFF.W12.85` step 3's fiber decomposition) is an OPEN SOURCE DEFECT for chapter I / the
+source ledger, not repaired here; **(c)** the C.109 SPLIT proposal (C.109-i..-v) queued as
+A-C.5 from the wave-10 scope block should absorb (a) and (b) — this unit's findings say the
+split's intermediate layers must expose the fiber decomposition as its own layer, since that
+is the step that fails.
+
 # A-C.4 AMENDMENT (2026-08-16, unit EWBS2) — THE TWO OM-10 LAW NODES (C.127, C.128)
 
 **Charge and label.** OM-10's §3.6 flagged, as an orchestrator OPTION, "a dated A-C
