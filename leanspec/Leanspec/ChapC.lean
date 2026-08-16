@@ -3804,6 +3804,119 @@ def gateC_frame3_budget_w0 : List ℕ := [16, 11, 6, 1]
 
 end NumericGate
 
+/-! # A-C.3 AMENDMENT LAYER (2026-08-16, unit EWBS2) — the two OM-10 law nodes
+
+NODE C.127 (LAW E-W, PROVED at source: `lean/notes/openmath/LAWEW_PROOF_2026-08-16.md`)
+and NODE C.128 (LAW B-S2, CERTIFIED-OPEN: OM-10 §2.2, 7/7 two primes, the any-k
+candidate REFUTED at B4). Axiom-stub lifecycle as everywhere in this file: these are
+PROOF TARGETS for the fleet, not trusted axioms. The trinomial single-crossing frame
+of C.127 is pinned by explicit equation hypotheses on `F.key` and `composedKey T`
+(instance: OM-10's W1 = (ℤ₂, x³−2, Φ′³ + 8xΦ′² + 1024); numeric gates =
+`verification/openmath/om10_cert.py` LEG E + `ewbs2_lawew_cert.py`, GREEN 2796/0).
+Under `hf₁ : F.f₁ = 1` and `he₂ : T.e₂ = 1` the corpus constants read
+`D′ = F.e₁`, `m = T.f₂`; the frame margin `δ = T.margin ≥ 1` is automatic from
+`T.hfloor`. The entry height is `gridWeight T α a b 0`; the two pin conclusions are
+stated in the subtraction-free absolute form
+`pin(Δ_j) = gridWeight T α a b (1 − j) + T.margin` (equal to `Θ_j + excess` over ℤ). -/
+
+section AC3Laws
+
+/-! ### NODE C.127 [theorem] [fresh] [signed: A-C.3] — LAW E-W, three clauses -/
+
+/-- C.127 clause (a): NO CROSSING — a coordinate-0 entry, or an entry whose
+`x`-power clears the wrap (`a + i₂ < D′`), leaves the shadow ledger EQUAL to the
+honest ledger at every coordinate. -/
+axiom lawEW_faithful_of_nox {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) [Finite (ResidueField O)]
+    (hh : F.h = 1) (hf₁ : F.f₁ = 1) (he₂ : T.e₂ = 1)
+    {ω : O} (hω : IsUnit ω)
+    (hkey : F.key = Polynomial.X ^ F.e₁ - Polynomial.C (π * ω))
+    {i₂ v₂ v₀ : ℕ} (hi₂ : 1 ≤ i₂) {c₂ c₀ : O} (hc₂ : IsUnit c₂) (hc₀ : IsUnit c₀)
+    (hcomp : composedKey T
+      = F.key ^ T.f₂
+        + Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂ * F.key ^ (T.f₂ - 1)
+        + Polynomial.C (c₀ * π ^ v₀))
+    (hu₂ : T.u₂ = F.e₁ * v₂ + i₂) (hv₀ : F.e₁ * v₀ = T.f₂ * T.u₂)
+    {μ₂ : ℕ} (hμ₂ : 2 ≤ μ₂) (hgrid : μ₂ * i₂ < F.e₁)
+    {c : O} (hc : IsUnit c) (α a b j' : ℕ) (ha : a < F.e₁) (hb : b < T.f₂)
+    {f : Polynomial O}
+    (hf : f = composedKey T ^ μ₂
+      + Polynomial.C (c * π ^ α) * Polynomial.X ^ a * F.key ^ b
+        * composedKey T ^ j')
+    (hnox : j' = 0 ∨ a + i₂ < F.e₁) {j : ℕ} (hj : j < μ₂) :
+    shadowDev T f j = dev (composedKey T) f j
+
+/-- C.127 clause (b), high coordinates: a crossing entry at `j' = 1` leaves every
+coordinate `j ≥ 2` faithful (the seed spreads to coordinates `0` and `1` only). -/
+axiom lawEW_faithful_high {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) [Finite (ResidueField O)]
+    (hh : F.h = 1) (hf₁ : F.f₁ = 1) (he₂ : T.e₂ = 1)
+    {ω : O} (hω : IsUnit ω)
+    (hkey : F.key = Polynomial.X ^ F.e₁ - Polynomial.C (π * ω))
+    {i₂ v₂ v₀ : ℕ} (hi₂ : 1 ≤ i₂) {c₂ c₀ : O} (hc₂ : IsUnit c₂) (hc₀ : IsUnit c₀)
+    (hcomp : composedKey T
+      = F.key ^ T.f₂
+        + Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂ * F.key ^ (T.f₂ - 1)
+        + Polynomial.C (c₀ * π ^ v₀))
+    (hu₂ : T.u₂ = F.e₁ * v₂ + i₂) (hv₀ : F.e₁ * v₀ = T.f₂ * T.u₂)
+    {μ₂ : ℕ} (hμ₂ : 2 ≤ μ₂) (hgrid : μ₂ * i₂ < F.e₁)
+    {c : O} (hc : IsUnit c) (α a b : ℕ) (ha : a < F.e₁) (hb : b < T.f₂)
+    {f : Polynomial O}
+    (hf : f = composedKey T ^ μ₂
+      + Polynomial.C (c * π ^ α) * Polynomial.X ^ a * F.key ^ b
+        * composedKey T)
+    (hcross : F.e₁ ≤ a + i₂) {j : ℕ} (hj2 : 2 ≤ j) (hj : j < μ₂) :
+    shadowDev T f j = dev (composedKey T) f j
+
+/-- C.127 clause (b), the boundary identity: a crossing entry at `j' = 1` pins the
+discrepancy at BOTH low coordinates at exactly the entry height plus the margin
+(coordinate 1) resp. plus `E₂` and the margin (coordinate 0) — the subtraction-free
+form of `mindiff_j = Θ_j + (entry height − side height)`.  Tight at every excess,
+including the on-side boundary (T-E-BOUND). -/
+axiom lawEW_pin {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) [Finite (ResidueField O)]
+    (hh : F.h = 1) (hf₁ : F.f₁ = 1) (he₂ : T.e₂ = 1)
+    {ω : O} (hω : IsUnit ω)
+    (hkey : F.key = Polynomial.X ^ F.e₁ - Polynomial.C (π * ω))
+    {i₂ v₂ v₀ : ℕ} (hi₂ : 1 ≤ i₂) {c₂ c₀ : O} (hc₂ : IsUnit c₂) (hc₀ : IsUnit c₀)
+    (hcomp : composedKey T
+      = F.key ^ T.f₂
+        + Polynomial.C (c₂ * π ^ v₂) * Polynomial.X ^ i₂ * F.key ^ (T.f₂ - 1)
+        + Polynomial.C (c₀ * π ^ v₀))
+    (hu₂ : T.u₂ = F.e₁ * v₂ + i₂) (hv₀ : F.e₁ * v₀ = T.f₂ * T.u₂)
+    {μ₂ : ℕ} (hμ₂ : 2 ≤ μ₂) (hgrid : μ₂ * i₂ < F.e₁)
+    {c : O} (hc : IsUnit c) (α a b : ℕ) (ha : a < F.e₁) (hb : b < T.f₂)
+    {f : Polynomial O}
+    (hf : f = composedKey T ^ μ₂
+      + Polynomial.C (c * π ^ α) * Polynomial.X ^ a * F.key ^ b
+        * composedKey T)
+    (hcross : F.e₁ ≤ a + i₂) {j : ℕ} (hj : j ≤ 1) :
+    dv2Hgt (T.levelDatum hπ) (shadowDev T f j - dev (composedKey T) f j)
+      = ((gridWeight T α a b (1 - j) + T.margin : ℕ) : ℕ∞)
+
+/-! ### NODE C.128 [law-candidate] [fresh] [signed: A-C.3] — LAW B-S2 (pair-or-triple)
+
+CERTIFIED-OPEN (OM-10 §2.2, 7/7 at μ₂ = 3..6 over q = 2 and q = 3); the naive
+"any in-band k-diagonal" candidate is REFUTED at B4 and MUST NOT be signed
+(`binom(4,4) = 1` is a unit yet `pin(ShC_3) = 8 = Θ + 1`). -/
+
+/-- C.128: at the cascade geography (`e₂(f₂ − t*) = 1`, the `t*`-entry carrying
+`x`-power exactly 1), the pure power attains its top-coordinate floor iff the residue
+characteristic misses `binom(μ₂,2)` OR misses `binom(μ₂,3)` — the PAIR and TRIPLE
+slots are the only floor carriers. -/
+axiom lawBS2_pair_or_triple {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] (hf₁ : F.f₁ = 1)
+    {μ₂ : ℕ} (hμ₂ : 3 ≤ μ₂)
+    {tstar : ℕ} (htlt : tstar < T.f₂) (hψt : T.ψ₂.coeff tstar ≠ 0)
+    (hcasc : T.e₂ * (T.f₂ - tstar) = 1)
+    (hslot : F.slotIdx ((T.f₂ - tstar) * T.u₂) = 1) :
+    TouchCert T hπ μ₂ ((μ₂ - 2) + (2 * T.e₂ * tstar + 1) / (T.e₂ * T.f₂))
+      ↔ (¬ (ringChar (ResidueField O) ∣ Nat.choose μ₂ 2)
+         ∨ ¬ (ringChar (ResidueField O) ∣ Nat.choose μ₂ 3))
+
+end AC3Laws
+
 end LeanspecC
 
 /-
