@@ -311,6 +311,11 @@ def BlockSet (π : O) (Φ : Polynomial O) (h N : ℕ) : Set (Coeff O Φ.natDegre
   {c | ∃ A : Polynomial O, A.natDegree < Φ.natDegree ∧
     proj O Φ.natDegree N (fun i => A.coeff i) = c ∧ (h : ℕ∞) ≤ gaussVal A}
 
+/-- counting by fibres of a map into a finite base. -/
+theorem card_eq_sum_fibers {α β : Type*} [Finite α] [Fintype β] (F : α → β) :
+    Nat.card α = ∑ b : β, Nat.card {a : α // F a = b} := by
+  rw [Nat.card_congr (Equiv.sigmaFiberEquiv F).symm, Nat.card_sigma]
+
 /-- the priced refinement: C.109-iii's subtype is the `blockDigit` fibre of `BlockSet`. -/
 theorem blockSet_digit_eq_iii (hπ : Irreducible π) {Φ : Polynomial O} (hΦ : IsKey Φ)
     {h N : ℕ} (hh : h < N) (x : resField Φ) :
@@ -318,7 +323,17 @@ theorem blockSet_digit_eq_iii (hπ : Irreducible π) {Φ : Polynomial O} (hΦ : 
       = {c | ∃ A : Polynomial O, A.natDegree < Φ.natDegree ∧
           proj O Φ.natDegree N (fun i => A.coeff i) = c ∧
           (h : ℕ∞) ≤ gaussVal A ∧ resMk π Φ h A = x} := by
-  sorry
+  ext c
+  simp only [Set.mem_setOf_eq, BlockSet]
+  constructor
+  · rintro ⟨⟨A, hd, hp, hf⟩, hbd⟩
+    refine ⟨A, hd, hp, hf, ?_⟩
+    rw [← blockDigit_eq hπ hΦ hh hd, hp]
+    exact hbd
+  · rintro ⟨A, hd, hp, hf, hres⟩
+    refine ⟨⟨A, hd, hp, hf⟩, ?_⟩
+    rw [← hp, blockDigit_eq hπ hΦ hh hd]
+    exact hres
 
 /-- the priced block count, from C.109-iii. -/
 theorem card_blockSet_digit (hπ : Irreducible π) [Finite (ResidueField O)]
@@ -327,15 +342,39 @@ theorem card_blockSet_digit (hπ : Irreducible π) [Finite (ResidueField O)]
     Nat.card {c : Coeff O Φ.natDegree N //
         c ∈ BlockSet π Φ h N ∧ blockDigit π Φ h N c = x}
       = Nat.card (resField Φ) ^ (N - h - 1) := by
-  sorry
+  have hiff : ∀ c : Coeff O Φ.natDegree N,
+      (c ∈ BlockSet π Φ h N ∧ blockDigit π Φ h N c = x)
+        ↔ (∃ A : Polynomial O, A.natDegree < Φ.natDegree ∧
+            proj O Φ.natDegree N (fun i => A.coeff i) = c ∧
+            (h : ℕ∞) ≤ gaussVal A ∧ resMk π Φ h A = x) :=
+    fun c => Set.ext_iff.mp (blockSet_digit_eq_iii hπ hΦ hh x) c
+  exact (Nat.card_congr (Equiv.subtypeEquivRight hiff)).trans
+    (ht_priced_digit_fibre hπ hΦ h N hh x)
 
+set_option maxHeartbeats 1000000 in
 /-- the floored block count: summing the uniform priced fibre over the `Q` digit values
 (C.109-ii's content, recovered blockwise in the free-lift carrier). -/
 theorem card_blockSet (hπ : Irreducible π) [Finite (ResidueField O)]
     {Φ : Polynomial O} (hΦ : IsKey Φ) [Finite (resField Φ)]
     {h N : ℕ} (hh : h < N) :
     Nat.card (BlockSet π Φ h N) = Nat.card (resField Φ) ^ (N - h) := by
-  sorry
+  classical
+  haveI : Fintype (resField Φ) := Fintype.ofFinite _
+  haveI : Finite (BlockSet π Φ h N) := Subtype.finite
+  have h1 := card_eq_sum_fibers (β := resField Φ)
+    (fun c : BlockSet π Φ h N => blockDigit π Φ h N c.1)
+  rw [h1]
+  have h2 : ∀ x : resField Φ,
+      Nat.card {c : BlockSet π Φ h N // blockDigit π Φ h N c.1 = x}
+        = Nat.card (resField Φ) ^ (N - h - 1) := by
+    intro x
+    exact (Nat.card_congr (Equiv.subtypeSubtypeEquivSubtypeInter
+        (fun c => c ∈ BlockSet π Φ h N) (fun c => blockDigit π Φ h N c = x))).trans
+      (card_blockSet_digit hπ hΦ hh x)
+  rw [Finset.sum_congr rfl fun x _ => h2 x, Finset.sum_const, Finset.card_univ,
+    smul_eq_mul, ← Nat.card_eq_fintype_card, ← pow_succ']
+  congr 1
+  omega
 
 /-! ### 4. The hull side dictionary from the height profile -/
 
@@ -754,16 +793,24 @@ theorem mem_iff_blocks (hπ : Irreducible π)
 
 /-! ### 6. Cardinality glue -/
 
-/-- counting by fibres of a map into a finite base. -/
-theorem card_eq_sum_fibers {α β : Type*} [Finite α] [Fintype β] (F : α → β) :
-    Nat.card α = ∑ b : β, Nat.card {a : α // F a = b} := by
-  sorry
-
 /-- the sweep base is finite (assignments are supported on `≤ m + 1` positions). -/
 theorem finite_sweepCond {K : Type*} [CommRing K] [IsDomain K]
     [UniqueFactorizationMonoid K] [Finite K] (v : HTNode) :
     Finite {r : ℕ → K // C109v.SweepCond v r} := by
-  sorry
+  have hinj : Function.Injective (fun (r : {r : ℕ → K // C109v.SweepCond v r}) =>
+      (fun i : Fin (v.m + 1) => r.1 (i : ℕ))) := by
+    intro r r' h
+    refine Subtype.ext (funext fun j => ?_)
+    rcases le_or_gt j v.m with hj | hj
+    · exact congrFun h ⟨j, by omega⟩
+    · have h1 : r.1 j = 0 := by
+        by_contra hc
+        exact absurd (r.2.1 j hc) (by omega)
+      have h2 : r'.1 j = 0 := by
+        by_contra hc
+        exact absurd (r'.2.1 j hc) (by omega)
+      rw [h1, h2]
+  exact Finite.of_injective _ hinj
 
 open Classical in
 /-- the exponent arithmetic: the free digits left after pricing are exactly `B_v(N)`
@@ -772,7 +819,31 @@ theorem exponent_arith (v : HTNode) (hwf : v.WF) (N : ℕ)
     (hvis : ∀ j, j ≤ v.m → v.Pceil j < N) :
     ∑ j ∈ Finset.range v.m,
         (if v.OnHull j then N - v.Pceil j - 1 else N - v.Pceil j) = v.B N := by
-  sorry
+  have hterm : ∀ j ∈ Finset.range v.m,
+      (if v.OnHull j then N - v.Pceil j - 1 else N - v.Pceil j)
+        = (N - v.Pceil j) - (if v.OnHull j then 1 else 0) := by
+    intro j _
+    split_ifs <;> omega
+  rw [Finset.sum_congr rfl hterm]
+  have hsum1 : (∑ j ∈ Finset.range v.m,
+        ((N - v.Pceil j) - (if v.OnHull j then 1 else 0)))
+      + (∑ j ∈ Finset.range v.m, (if v.OnHull j then 1 else 0))
+      = ∑ j ∈ Finset.range v.m, (N - v.Pceil j) := by
+    rw [← Finset.sum_add_distrib]
+    refine Finset.sum_congr rfl fun j hj => ?_
+    have := hvis j (by rw [Finset.mem_range] at hj; omega)
+    split_ifs <;> omega
+  have hLcount : (∑ j ∈ Finset.range v.m, (if v.OnHull j then 1 else 0)) = v.L := by
+    rw [hwf.2.2.1, Finset.card_filter]
+  have hsum2 : (∑ j ∈ Finset.range v.m, (N - v.Pceil j))
+      + ∑ j ∈ Finset.range v.m, v.Pceil j = v.m * N := by
+    rw [← Finset.sum_add_distrib]
+    rw [Finset.sum_congr rfl fun j hj => (by
+      have := hvis j (by rw [Finset.mem_range] at hj; omega)
+      omega : (N - v.Pceil j) + v.Pceil j = N)]
+    rw [Finset.sum_const, Finset.card_range, smul_eq_mul]
+  have hB : v.B N = v.m * N - (∑ j ∈ Finset.range v.m, v.Pceil j) - v.L := rfl
+  omega
 
 end Uniformity.Density.Tower.C109asm
 
