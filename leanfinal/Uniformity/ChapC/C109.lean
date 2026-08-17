@@ -38,9 +38,9 @@ blockwise special case; nothing is weakened.
 
 ## Status
 
-SKELETON (in construction): the lemma chain is stated and elaborates; bodies land
-hardest-first with per-lemma commits.  Zero `sorry` required before this node is declared
-LANDED; final footprint must be Lean core only.
+LANDED (2026-08-17, orchestrator solo): sorry-free, axiom-free (Lean core only);
+`#print axioms ht_node_cell_card = [propext, Classical.choice, Quot.sound]`.  The statement
+is byte-frozen from the A-C.2 re-signed leanspec block.
 -/
 
 set_option linter.style.longLine false
@@ -304,6 +304,33 @@ noncomputable def sweepRead (π : O) (Φ : Polynomial O) (v : HTNode) (N : ℕ)
     if hj : j < v.m then
       (if v.OnHull j then blockDigit π Φ (v.Pceil j) N (g ⟨j, hj⟩) else 0)
     else if j = v.m then 1 else 0
+
+theorem sweepRead_lt (π : O) (Φ : Polynomial O) (v : HTNode) {N : ℕ}
+    (g : Fin v.m → Coeff O Φ.natDegree N) {j : ℕ} (hj : j < v.m) (hoh : v.OnHull j) :
+    sweepRead π Φ v N g j = blockDigit π Φ (v.Pceil j) N (g ⟨j, hj⟩) := by
+  classical
+  show (if hj' : j < v.m then (if v.OnHull j then
+    blockDigit π Φ (v.Pceil j) N (g ⟨j, hj'⟩) else 0) else if j = v.m then 1 else 0) = _
+  rw [dif_pos hj, if_pos hoh]
+
+theorem sweepRead_off (π : O) (Φ : Polynomial O) (v : HTNode) {N : ℕ}
+    (g : Fin v.m → Coeff O Φ.natDegree N) {j : ℕ} (hj : j < v.m) (hoh : ¬ v.OnHull j) :
+    sweepRead π Φ v N g j = 0 := by
+  classical
+  show (if hj' : j < v.m then (if v.OnHull j then _ else 0) else _) = 0
+  rw [dif_pos hj, if_neg hoh]
+
+theorem sweepRead_top (π : O) (Φ : Polynomial O) (v : HTNode) {N : ℕ}
+    (g : Fin v.m → Coeff O Φ.natDegree N) :
+    sweepRead π Φ v N g v.m = 1 := by
+  show (if hj : v.m < v.m then _ else if v.m = v.m then 1 else 0) = 1
+  rw [dif_neg (lt_irrefl v.m), if_pos rfl]
+
+theorem sweepRead_high (π : O) (Φ : Polynomial O) (v : HTNode) {N : ℕ}
+    (g : Fin v.m → Coeff O Φ.natDegree N) {j : ℕ} (hj : v.m < j) :
+    sweepRead π Φ v N g j = 0 := by
+  show (if hj' : j < v.m then _ else if j = v.m then 1 else 0) = 0
+  rw [dif_neg (by omega), if_neg (by omega)]
 
 /-- **the floored block set** at height `h`: classes with a lift of degree `< d` above the
 `h`-floor.  (The free-lift carrier of C.109-iii, without the digit prescription.) -/
@@ -869,6 +896,135 @@ theorem ht_node_cell_card (hπ : Irreducible π)
           proj O (v.m * Φ.natDegree) N a = c ∧ monicPoly a ∈ htCell π Φ v}
       = Nat.card (resField Φ) ^ v.B N
         * ∏ p ∈ v.sides, sideCensus (resField Φ) (v.sideType p.1 p.2) := by
-  sorry
+  classical
+  obtain ⟨E, hE⟩ := dev_box_bridge (Φ := Φ) hΦ.monic hΦ.pos v.m N
+  haveI : Finite {r : ℕ → resField Φ // C109v.SweepCond v r} := C109asm.finite_sweepCond v
+  haveI : Fintype {r : ℕ → resField Φ // C109v.SweepCond v r} := Fintype.ofFinite _
+  -- Step 1: the crux equivalence, transported through the development bridge
+  have hstep1 : Nat.card {c : Coeff O (v.m * Φ.natDegree) N //
+        ∃ a : Fin (v.m * Φ.natDegree) → O,
+          proj O (v.m * Φ.natDegree) N a = c ∧ monicPoly a ∈ htCell π Φ v}
+      = Nat.card {g : Fin v.m → Coeff O Φ.natDegree N //
+          C109v.SweepCond v (C109asm.sweepRead π Φ v N g)
+            ∧ ∀ j : Fin v.m, g j ∈ C109asm.BlockSet π Φ (v.Pceil (j : ℕ)) N} :=
+    Nat.card_congr (Equiv.subtypeEquiv E fun c => by
+      rw [C109asm.mem_iff_blocks hπ hΦ v hwf N hvis E hE c])
+  -- Step 2: fibre the sweep-conditioned block vectors over the sweep base
+  have hstep2 := C109asm.card_eq_sum_fibers
+    (β := {r : ℕ → resField Φ // C109v.SweepCond v r})
+    (fun g : {g : Fin v.m → Coeff O Φ.natDegree N //
+        C109v.SweepCond v (C109asm.sweepRead π Φ v N g)
+          ∧ ∀ j : Fin v.m, g j ∈ C109asm.BlockSet π Φ (v.Pceil (j : ℕ)) N} =>
+      (⟨C109asm.sweepRead π Φ v N g.1, g.2.1⟩ :
+        {r : ℕ → resField Φ // C109v.SweepCond v r}))
+  -- Step 3: every fibre is a product of blocks of size Q^{B_v(N)}
+  have hfib : ∀ r : {r : ℕ → resField Φ // C109v.SweepCond v r},
+      Nat.card {g : {g : Fin v.m → Coeff O Φ.natDegree N //
+          C109v.SweepCond v (C109asm.sweepRead π Φ v N g)
+            ∧ ∀ j : Fin v.m, g j ∈ C109asm.BlockSet π Φ (v.Pceil (j : ℕ)) N} //
+          (⟨C109asm.sweepRead π Φ v N g.1, g.2.1⟩ :
+            {r : ℕ → resField Φ // C109v.SweepCond v r}) = r}
+        = Nat.card (resField Φ) ^ v.B N := by
+    intro r
+    have he : {g : {g : Fin v.m → Coeff O Φ.natDegree N //
+        C109v.SweepCond v (C109asm.sweepRead π Φ v N g)
+          ∧ ∀ j : Fin v.m, g j ∈ C109asm.BlockSet π Φ (v.Pceil (j : ℕ)) N} //
+        (⟨C109asm.sweepRead π Φ v N g.1, g.2.1⟩ :
+          {r : ℕ → resField Φ // C109v.SweepCond v r}) = r}
+        ≃ ∀ j : Fin v.m, {c : Coeff O Φ.natDegree N //
+            c ∈ C109asm.BlockSet π Φ (v.Pceil (j : ℕ)) N ∧
+              (v.OnHull (j : ℕ) →
+                C109asm.blockDigit π Φ (v.Pceil (j : ℕ)) N c = r.1 (j : ℕ))} := by
+      refine ⟨fun g j => ⟨g.1.1 j, g.1.2.2 j, fun hoh => ?_⟩,
+        fun D => ⟨⟨fun j => (D j).1, ?_, fun j => (D j).2.1⟩, ?_⟩, fun g => ?_, fun D => ?_⟩
+      · have hsr : C109asm.sweepRead π Φ v N g.1.1 = r.1 := congrArg Subtype.val g.2
+        have h1 := congrFun hsr (j : ℕ)
+        rw [C109asm.sweepRead_lt π Φ v g.1.1 j.isLt hoh, Fin.eta] at h1
+        exact h1
+      · -- SweepCond of the reassembled read: it IS r.1
+        have hsw : C109asm.sweepRead π Φ v N (fun j => (D j).1) = r.1 := by
+          funext j
+          rcases lt_trichotomy j v.m with hlt | heq | hgt
+          · by_cases hoh : v.OnHull j
+            · rw [C109asm.sweepRead_lt π Φ v _ hlt hoh]
+              exact (D ⟨j, hlt⟩).2.2 hoh
+            · rw [C109asm.sweepRead_off π Φ v _ hlt hoh]
+              exact (r.2.2.1 j hlt hoh).symm
+          · rw [heq, C109asm.sweepRead_top π Φ v _]
+            exact r.2.2.2.1.symm
+          · rw [C109asm.sweepRead_high π Φ v _ hgt]
+            by_contra hc
+            exact absurd (r.2.1 j fun h0 => hc h0.symm) (by omega)
+        rw [hsw]
+        exact r.2
+      · refine Subtype.ext ?_
+        show C109asm.sweepRead π Φ v N (fun j => (D j).1) = r.1
+        funext j
+        rcases lt_trichotomy j v.m with hlt | heq | hgt
+        · by_cases hoh : v.OnHull j
+          · rw [C109asm.sweepRead_lt π Φ v _ hlt hoh]
+            exact (D ⟨j, hlt⟩).2.2 hoh
+          · rw [C109asm.sweepRead_off π Φ v _ hlt hoh]
+            exact (r.2.2.1 j hlt hoh).symm
+        · rw [heq, C109asm.sweepRead_top π Φ v _]
+          exact r.2.2.2.1.symm
+        · rw [C109asm.sweepRead_high π Φ v _ hgt]
+          by_contra hc
+          exact absurd (r.2.1 j fun h0 => hc h0.symm) (by omega)
+      · exact Subtype.ext (Subtype.ext rfl)
+      · exact funext fun j => Subtype.ext rfl
+    rw [Nat.card_congr he, Nat.card_pi]
+    have hcard : ∀ j : Fin v.m,
+        Nat.card {c : Coeff O Φ.natDegree N //
+            c ∈ C109asm.BlockSet π Φ (v.Pceil (j : ℕ)) N ∧
+              (v.OnHull (j : ℕ) →
+                C109asm.blockDigit π Φ (v.Pceil (j : ℕ)) N c = r.1 (j : ℕ))}
+          = Nat.card (resField Φ)
+              ^ (if v.OnHull (j : ℕ) then N - v.Pceil (j : ℕ) - 1
+                  else N - v.Pceil (j : ℕ)) := by
+      intro j
+      by_cases hoh : v.OnHull (j : ℕ)
+      · rw [if_pos hoh]
+        refine (Nat.card_congr (Equiv.subtypeEquivRight fun c => ?_)).trans
+          (C109asm.card_blockSet_digit hπ hΦ (hvis _ (le_of_lt j.isLt)) (r.1 (j : ℕ)))
+        constructor
+        · rintro ⟨h1, h2⟩
+          exact ⟨h1, h2 hoh⟩
+        · rintro ⟨h1, h2⟩
+          exact ⟨h1, fun _ => h2⟩
+      · rw [if_neg hoh]
+        refine (Nat.card_congr (Equiv.subtypeEquivRight fun c => ?_)).trans
+          (C109asm.card_blockSet hπ hΦ (hvis _ (le_of_lt j.isLt)))
+        constructor
+        · rintro ⟨h1, _⟩
+          exact h1
+        · intro h1
+          exact ⟨h1, fun hc => absurd hc hoh⟩
+    rw [Finset.prod_congr rfl fun j _ => hcard j, Finset.prod_pow_eq_pow_sum,
+      Fin.sum_univ_eq_sum_range
+        (fun j => if v.OnHull j then N - v.Pceil j - 1 else N - v.Pceil j) v.m,
+      C109asm.exponent_arith v hwf N hvis]
+  calc Nat.card {c : Coeff O (v.m * Φ.natDegree) N //
+        ∃ a : Fin (v.m * Φ.natDegree) → O,
+          proj O (v.m * Φ.natDegree) N a = c ∧ monicPoly a ∈ htCell π Φ v}
+      = _ := hstep1
+    _ = _ := hstep2
+    _ = ∑ _r : {r : ℕ → resField Φ // C109v.SweepCond v r},
+          Nat.card (resField Φ) ^ v.B N := Finset.sum_congr rfl fun r _ => hfib r
+    _ = Nat.card {r : ℕ → resField Φ // C109v.SweepCond v r}
+          * Nat.card (resField Φ) ^ v.B N := by
+        rw [Finset.sum_const, Finset.card_univ, smul_eq_mul,
+          Nat.card_eq_fintype_card (α := {r : ℕ → resField Φ // C109v.SweepCond v r})]
+    _ = (∏ p ∈ v.sides, sideCensus (resField Φ) (v.sideType p.1 p.2))
+          * Nat.card (resField Φ) ^ v.B N := by
+        rw [C109v.sweep_card hwf]
+    _ = Nat.card (resField Φ) ^ v.B N
+          * ∏ p ∈ v.sides, sideCensus (resField Φ) (v.sideType p.1 p.2) := mul_comm _ _
 
 end Uniformity.Density.Tower
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+#print axioms Uniformity.Density.Tower.ht_node_cell_card
+end AxCheck

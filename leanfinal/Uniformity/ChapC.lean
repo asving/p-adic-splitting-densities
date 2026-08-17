@@ -11,6 +11,7 @@ import Uniformity.ChapC.C10
 import Uniformity.ChapC.C105
 import Uniformity.ChapC.C107
 import Uniformity.ChapC.C108
+import Uniformity.ChapC.C109
 import Uniformity.ChapC.C109a
 import Uniformity.ChapC.C109i
 import Uniformity.ChapC.C109ii
