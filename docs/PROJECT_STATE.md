@@ -6199,3 +6199,29 @@ count — nothing weakened, the statement is frozen. Chapter C's
 HT count layer now has its foundation stone; next up the layer:
 C.110 (two parts), C.111 (hnode shadow), C.113/C.114/C.115 — and
 the §10 chain + C.85 chain remain the chapter's other mass.
+
+**2026-08-17 DATED APPEND #90 — LAYER CLOSE #16: full build
+green (9191 jobs), strict sweep CLEAN; one roll-up gap fixed
+(BBox1Cite); chapter-C fleet PROBE WAVE launched (3 agents).**
+(1) Full `lake build` green. (2) Strict sweep: source-level
+axiom census = EXACTLY the four signed cites
+(exists_slope_factorization, fgmn_residual_mul,
+agnprw_termination, bBox1_cite); footprint probe over the four
+cites + today's landings (ht_node_cell_card, ht_sweep_census,
+the b3-iii pair): every consumer core-only, every cite = core +
+itself. Two grep hits in ChapE (E63/E64 `axiom ...` lines) are
+DOCSTRING QUOTES of the leanspec stubs — the real declarations
+are theorems; noted so future sweeps don't re-flag them.
+(3) BBox1Cite.lean was MISSING from the ChapB roll-up (only its
+Statement module was wired) — the cite was not covered by plain
+lake build; wired, rebuilt green. Generator note: cite modules
+and multi-char-suffix modules keep falling out of regens — close
+#17 must regenerate from the DIRECTORY LISTING, not the name
+pattern. (4) Pools look recovered: a 3-agent chapter-C probe
+wave is in flight on the DAG frontier (unit 1: C.118+C.56a+
+C.106; unit 2: C.113 at the A-C.5 re-sign; unit 3: C.33) under
+the standard fleet charge + survival floor + exit-code
+discipline. Chapter-C remainder measured: ~90 signed statements
+open (frontier: C.106, C.113, C.118, C.33, C.52, C.56a; C.92
+retired). If the wave survives, scale next tick; if killed, back
+to solo.
