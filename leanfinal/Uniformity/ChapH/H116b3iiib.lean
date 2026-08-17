@@ -394,6 +394,92 @@ private theorem planted_delta_above_line {π : O} (hπ : Irreducible π) {N r : 
     ∀ j, suppVal X (plantedPoly π L bb Qc) u ℓ
       < ℓ • npHgt X (plantedPoly π L bb' Qc - plantedPoly π L bb Qc) j
           + ((u * j : ℕ) : ℕ∞) := by
+  classical
+  -- the two planted products and the shared cofactor
+  set P : Polynomial O := ∏ p ∈ L.attach,
+    alphaParent π (classSect O p.1.1 N ((bb p)).1) p.1.2.1 (resSect O p.1.2.2) with hP
+  set P' : Polynomial O := ∏ p ∈ L.attach,
+    alphaParent π (classSect O p.1.1 N ((bb' p)).1) p.1.2.1 (resSect O p.1.2.2) with hP'
+  set Q : Polynomial O := monicPoly (classSect O r N Qc.1) with hQ
+  have hfPQ : plantedPoly π L bb Qc = P * Q := by rw [hP, hQ]; rfl
+  have hfPQ' : plantedPoly π L bb' Qc = P' * Q := by rw [hP', hQ]; rfl
+  -- the per-factor combinatorial profile
+  set Hfun : {x : ℕ × ℕ × ResidueField O // x ∈ L} → ℕ :=
+    fun p => if ℓ * p.1.2.1 ≤ u then p.1.1 * p.1.2.1 else 0 with hHfun
+  set mfun : {x : ℕ × ℕ × ResidueField O // x ∈ L} → ℕ :=
+    fun p => if ℓ * p.1.2.1 ≤ u then 0 else p.1.1 with hmfun
+  set wfun : {x : ℕ × ℕ × ResidueField O // x ∈ L} → ℕ :=
+    fun p => ℓ * Hfun p + u * mfun p with hwfun
+  -- per-factor data, unprimed and primed
+  have hbmem : ∀ (cc : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
+      (p : {x : ℕ × ℕ × ResidueField O // x ∈ L}) (i : Fin p.1.1),
+      classSect O p.1.1 N ((cc p)).1 i ∈ maximalIdeal O :=
+    fun cc p i => mem_maximalIdeal_classSect hN (cc p) i
+  have hpinfam : ∀ (cc : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N),
+      ∀ p ∈ L.attach, ∀ hne : (sideSet X
+        (alphaParent π (classSect O p.1.1 N ((cc p)).1) p.1.2.1 (resSect O p.1.2.2)) u ℓ).Nonempty,
+        npHgt X (alphaParent π (classSect O p.1.1 N ((cc p)).1) p.1.2.1 (resSect O p.1.2.2))
+            (sideMin X (alphaParent π (classSect O p.1.1 N ((cc p)).1) p.1.2.1
+              (resSect O p.1.2.2)) u ℓ hne) = ((Hfun p : ℕ) : ℕ∞) := by
+    intro cc p _ hne
+    rw [hHfun]
+    exact npHgt_sideMin_alphaParent hπ (hbmem cc p) (hLchild p.1 p.2).2.2
+      (residue_resSect O p.1.2.2) hne
+  have hminfam : ∀ (cc : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N),
+      ∀ p ∈ L.attach, ∀ hne : (sideSet X
+        (alphaParent π (classSect O p.1.1 N ((cc p)).1) p.1.2.1 (resSect O p.1.2.2)) u ℓ).Nonempty,
+        sideMin X (alphaParent π (classSect O p.1.1 N ((cc p)).1) p.1.2.1
+          (resSect O p.1.2.2)) u ℓ hne = mfun p := by
+    intro cc p _ hne
+    rw [hmfun]
+    exact sideMin_alphaParent hπ (hbmem cc p) (hLchild p.1 p.2).2.2
+      (residue_resSect O p.1.2.2) hne
+  have hWfam : ∀ (cc : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
+      (p : {x : ℕ × ℕ × ResidueField O // x ∈ L}),
+      suppVal X (alphaParent π (classSect O p.1.1 N ((cc p)).1) p.1.2.1 (resSect O p.1.2.2)) u ℓ
+        = ((p.1.1 * min (ℓ * p.1.2.1) u : ℕ) : ℕ∞) :=
+    fun cc p => suppVal_alphaParent hπ (hbmem cc p) (hLchild p.1 p.2).2.2
+      (residue_resSect O p.1.2.2) u ℓ
+  -- the per-factor support value in profile form: w p = μ_p · min(ℓk_p, u)
+  have hwvalue : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L},
+      wfun p = p.1.1 * min (ℓ * p.1.2.1) u := by
+    intro p
+    simp only [hwfun, hHfun, hmfun]
+    by_cases hcase : ℓ * p.1.2.1 ≤ u
+    · rw [if_pos hcase, if_pos hcase, min_eq_left hcase]
+      ring
+    · rw [if_neg hcase, if_neg hcase, min_eq_right (le_of_not_ge hcase)]
+      ring
+  -- the Minkowski profile of P (and P')
+  have hneP : (sideSet X P u ℓ).Nonempty := sideSet_nonempty_gen _ _ _ _
+  obtain ⟨hPpin, hPmin⟩ := minkowski_prod hπ hu hℓ hcop
+    (hpinfam bb) (hminfam bb) hneP
+  have hWP : suppVal X P u ℓ
+      = ((ℓ * (∑ p ∈ L.attach, Hfun p) + u * (∑ p ∈ L.attach, mfun p) : ℕ) : ℕ∞) := by
+    have := suppVal_eq_of_onSide hPpin (onSide_of_mem_sideSet (Finset.min'_mem _ hneP))
+    rwa [hPmin] at this
+  -- the cofactor profile
+  have hQmonic : Q.Monic := by rw [hQ]; exact monicPoly_monic _
+  have hQtop : suppVal X Q u ℓ ≠ ⊤ := by
+    have h1 := suppVal_le_line (u := u) hℓ Q Q.natDegree
+    have h2 : npHgt X Q Q.natDegree = 0 := by
+      rw [npHgt_X, hQmonic.coeff_natDegree, IsDiscreteValuationRing.addVal_one]
+    rw [h2, smul_zero, zero_add] at h1
+    exact ne_top_of_le_ne_top (ENat.coe_ne_top _) h1
+  have hneQ : (sideSet X Q u ℓ).Nonempty := sideSet_nonempty_gen _ _ _ _
+  obtain ⟨HQ, hHQ⟩ := ENat.ne_top_iff_exists.1
+    (npHgt_ne_top_of_onSide hℓ hQtop (onSide_of_mem_sideSet (Finset.min'_mem _ hneQ)))
+  have hHQ' : npHgt X Q (sideMin X Q u ℓ hneQ) = ((HQ : ℕ) : ℕ∞) := hHQ.symm
+  set mQ : ℕ := sideMin X Q u ℓ hneQ with hmQ
+  have hWQ : suppVal X Q u ℓ = ((ℓ * HQ + u * mQ : ℕ) : ℕ∞) :=
+    suppVal_eq_of_onSide hHQ' (onSide_of_mem_sideSet (Finset.min'_mem _ hneQ))
+  -- the Minkowski value of the whole planted polynomial
+  have htfP : suppVal X P u ℓ ≠ ⊤ := by rw [hWP]; exact ENat.coe_ne_top _
+  have hWf : suppVal X (P * Q) u ℓ
+      = ((ℓ * ((∑ p ∈ L.attach, Hfun p) + HQ)
+          + u * ((∑ p ∈ L.attach, mfun p) + mQ) : ℕ) : ℕ∞) := by
+    have := suppVal_mul_gen hπ isKey_X' hu hℓ hcop htfP hQtop hneP hneQ hPpin hHQ'
+    rwa [hPmin, ← hmQ] at this
   sorry
 
 set_option linter.unusedVariables false in
