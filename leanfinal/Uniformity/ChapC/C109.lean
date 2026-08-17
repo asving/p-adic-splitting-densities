@@ -55,6 +55,27 @@ variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π :
 
 /-! ### 1. Class-level digit reads (level-`N` congruence) -/
 
+/-- the digit at height `h` only reads the class mod `π ^ (h + 1)`. -/
+theorem digAt_congr (hπ : Irreducible π) {h : ℕ} {x x' : O}
+    (hdvd : π ^ (h + 1) ∣ (x' - x)) : digAt π h x = digAt π h x' := by
+  obtain ⟨w, hw⟩ := hdvd
+  have hx' : x' = x + π ^ (h + 1) * w := by linear_combination hw
+  by_cases hx : π ^ h ∣ x
+  · obtain ⟨y, rfl⟩ := hx
+    have hx'2 : x' = π ^ h * (y + π * w) := by rw [hx']; ring
+    rw [digAt_eq hπ (rfl : π ^ h * y = π ^ h * y), digAt_eq hπ hx'2, map_add]
+    have : IsLocalRing.residue O (π * w) = 0 := by
+      rw [IsLocalRing.residue_eq_zero_iff, hπ.maximalIdeal_eq, Ideal.mem_span_singleton]
+      exact Dvd.intro w rfl
+    rw [this, add_zero]
+  · have hx2 : ¬ π ^ h ∣ x' := by
+      intro hc
+      refine hx ?_
+      have : π ^ h ∣ π ^ (h + 1) * w := Dvd.dvd.mul_right (pow_dvd_pow π (Nat.le_succ h)) w
+      have := hc.sub this
+      rwa [hx', add_sub_cancel_right] at this
+    rw [digAt, digAt, dif_neg hx, dif_neg hx2]
+
 /-- The height-`h` digit map factors through level-`N` classes (`h < N`): congruent
 coefficient vectors give equal `resMk` reads. -/
 theorem resMk_proj_congr (hπ : Irreducible π) {Φ : Polynomial O} (hΦ : IsKey Φ)
@@ -63,7 +84,22 @@ theorem resMk_proj_congr (hπ : Irreducible π) {Φ : Polynomial O} (hΦ : IsKey
     (hproj : proj O Φ.natDegree N (fun i => A.coeff i)
       = proj O Φ.natDegree N (fun i => A'.coeff i)) :
     resMk π Φ h A = resMk π Φ h A' := by
-  sorry
+  have hcoeff : ∀ i : ℕ, π ^ N ∣ (A'.coeff i - A.coeff i) := by
+    intro i
+    by_cases hi : i < Φ.natDegree
+    · have hmk := congrFun hproj ⟨i, hi⟩
+      have hmem : A.coeff i - A'.coeff i ∈ (IsLocalRing.maximalIdeal O) ^ N :=
+        Ideal.Quotient.eq.mp hmk
+      rw [hπ.maximalIdeal_eq, Ideal.span_singleton_pow, Ideal.mem_span_singleton] at hmem
+      exact dvd_sub_comm.mp hmem
+    · rw [A.coeff_eq_zero_of_natDegree_lt (by omega),
+        A'.coeff_eq_zero_of_natDegree_lt (by omega), sub_zero]
+      exact dvd_zero _
+  have hdig : digPoly π h A = digPoly π h A' := by
+    ext i
+    rw [digPoly_coeff hπ, digPoly_coeff hπ]
+    exact digAt_congr hπ (dvd_trans (pow_dvd_pow π (by omega)) (hcoeff i))
+  rw [resMk, resMk, hdig]
 
 /-- Vertex exactness at the digit: on the `h`-floor, the height-`h` digit is nonzero iff
 the Gauss valuation is exactly `h` (B.36 both ways). -/
@@ -141,7 +177,10 @@ noncomputable def blockDigit (π : O) (Φ : Polynomial O) (h N : ℕ)
 theorem blockDigit_eq (hπ : Irreducible π) {Φ : Polynomial O} (hΦ : IsKey Φ)
     {N h : ℕ} (hh : h < N) {A : Polynomial O} (hA : A.natDegree < Φ.natDegree) :
     blockDigit π Φ h N (proj O Φ.natDegree N (fun i => A.coeff i)) = resMk π Φ h A := by
-  sorry
+  rw [blockDigit]
+  refine resMk_proj_congr hπ hΦ hh
+    (blockPoly_natDegree_lt (lt_of_le_of_lt (Nat.zero_le _) hA) _) hA ?_
+  rw [blockPoly_proj]
 
 /-! ### 2. The development assembly (blocks → the monic member) -/
 
