@@ -60,12 +60,12 @@ namespace Uniformity.Density.Tower
 
 open Polynomial Uniformity.Density.Leaf
 
+set_option linter.unusedVariables false in
 /-- **NODE C.66 `[cite:FGMN]` (gate (b)).** Residual multiplicativity at the dv-layer: on the
 `λ > 0` region (the `hfloor` fence), the residual polynomial of a product of dv-pure monic
 polynomials is the product of their residual polynomials up to a nonzero stage-field constant.
 [FGMN] Thm 2.8 + Cor 4.9(3) + Cor 4.12(3); the full faithfulness entry is the module
 docstring. Statement = the A-C.6 redraft, byte-transcribed. -/
-set_option linter.unusedVariables false in
 axiom fgmn_residual_mul :
   ∀ {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
     (F : KeyFrame O π) (hπ : Irreducible π) (H₀ : ℕ)
