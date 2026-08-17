@@ -6107,3 +6107,31 @@ COUNT — the flagged research step) + the H.116b assembly, then
 the recorded one-sitting finish of H.121c/clause (iii)/H.122.
 The stale b3 workflow is RETIRED (do not resume
 wf_51b2b10c-f23 — its target is landed).
+
+**2026-08-17 DATED APPEND #87 — H.123's ANATOMY SETTLED: the
+cite unblocked HALF of bridge-a; the other half is the β
+ASSEMBLY — a chapter-B-scale piece identified by the record as
+EXACTLY the repo's standing obligation #2 (classifier
+faithfulness at order ≥ 2).** Reading the full obstruction
+record post-cite: OBSTRUCTION 1 (the B-BOX-1 corner, ℓ≥2∧d≥2
+leaves) is SUPPLIED by the landed bBox1_cite +
+typeOf_leaf_of_cite. OBSTRUCTION 2 stands: bridge-a's β leg
+needs typeOf of the parent assembled from H.116's extraction —
+betaChild_spec's cofactor H′ is existentially bound with no
+landed lemma reading typeOf H′ (not a cluster state; no carrier
+statement applies; no induction measure covers it). The record's
+own sizing: re-run the B.42 slope dissection + B.48 residual
+dissection AGAINST the extraction, match (p,ψ)-blocks to
+children by monic-factor uniqueness, reassemble with typeOf_mul
+— "the same content as the standing obligation 'extend
+classifier faithfulness from order ≤ 1 to order ≥ 2'".
+CONSEQUENCE FOR THE MAP: chapter H's remainder = TWO
+research-grade nodes (b4 the gauge-resultant count; the β
+assembly) + mechanical closes (H.116b assembly, H.121c, clause
+(iii), H.122, H.123b→H.123). Both research nodes fit the OM
+unit pattern (outline → certify → prove) and should be
+chartered as such when the pools recover — the β assembly
+doubles as standing obligation #2, so landing it pays twice.
+Pools: still saturated (the C.109 finisher died again at ~3
+min); C.109-v + assembly queued for solo work or the pool
+retry timer.
