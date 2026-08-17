@@ -279,14 +279,114 @@ private theorem line_diff_factor {π : O} (hπ : Irreducible π) {μ k : ℕ} (h
       ENat.mul_top (by exact_mod_cast hℓ.ne')]
     exact le_top.trans le_self_add
 
+/-! ### The Minkowski identity (record step (3b), via B39a's general graded product law) -/
+
+private theorem isKey_X' : IsKey (X : Polynomial O) := by
+  refine ⟨Polynomial.monic_X, by rw [Polynomial.natDegree_X]; norm_num, ?_⟩
+  rw [Polynomial.map_X]
+  exact Polynomial.irreducible_X
+
+/-- Pinned side minima and pinned heights ADD along a finite product (B39a iterated). -/
+private theorem minkowski_prod {ι : Type*} {u ℓ : ℕ} {π : O} (hπ : Irreducible π)
+    (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+    {s : Finset ι} {A : ι → Polynomial O} {Hh m : ι → ℕ}
+    (hpin : ∀ p ∈ s, ∀ hne : (sideSet X (A p) u ℓ).Nonempty,
+      npHgt X (A p) (sideMin X (A p) u ℓ hne) = ((Hh p : ℕ) : ℕ∞))
+    (hmin : ∀ p ∈ s, ∀ hne : (sideSet X (A p) u ℓ).Nonempty,
+      sideMin X (A p) u ℓ hne = m p) :
+    ∀ hne : (sideSet X (∏ p ∈ s, A p) u ℓ).Nonempty,
+      npHgt X (∏ p ∈ s, A p) (sideMin X (∏ p ∈ s, A p) u ℓ hne)
+          = ((∑ p ∈ s, Hh p : ℕ) : ℕ∞) ∧
+        sideMin X (∏ p ∈ s, A p) u ℓ hne = ∑ p ∈ s, m p := by
+  classical
+  induction s using Finset.induction_on with
+  | empty =>
+      intro hne
+      rw [Finset.sum_empty, Finset.sum_empty]
+      have hone : ∀ j ∈ sideSet X (1 : Polynomial O) u ℓ, j = 0 := by
+        intro j hj
+        have hjr := (Finset.mem_filter.1 hj).1
+        rw [Polynomial.natDegree_one] at hjr
+        have := Finset.mem_range.1 hjr
+        omega
+      have haux : ∀ (h₁ : (sideSet X (1 : Polynomial O) u ℓ).Nonempty),
+          npHgt X (1 : Polynomial O) (sideMin X (1 : Polynomial O) u ℓ h₁)
+              = ((0 : ℕ) : ℕ∞) ∧
+            sideMin X (1 : Polynomial O) u ℓ h₁ = 0 := by
+        intro h₁
+        have hmin0 : sideMin X (1 : Polynomial O) u ℓ h₁ = 0 :=
+          hone _ (Finset.min'_mem _ h₁)
+        refine ⟨?_, hmin0⟩
+        rw [hmin0, npHgt_X, Polynomial.coeff_one_zero,
+          IsDiscreteValuationRing.addVal_one, Nat.cast_zero]
+      have hgen : ∀ (h₁ : (sideSet X (∏ p ∈ (∅ : Finset ι), A p) u ℓ).Nonempty),
+          npHgt X (∏ p ∈ (∅ : Finset ι), A p)
+              (sideMin X (∏ p ∈ (∅ : Finset ι), A p) u ℓ h₁) = ((0 : ℕ) : ℕ∞) ∧
+            sideMin X (∏ p ∈ (∅ : Finset ι), A p) u ℓ h₁ = 0 := by
+        rw [Finset.prod_empty]
+        exact haux
+      exact hgen hne
+  | insert i s hi ih =>
+      intro hne
+      have hneA : (sideSet X (A i) u ℓ).Nonempty := sideSet_nonempty_gen _ _ _ _
+      have hneT : (sideSet X (∏ p ∈ s, A p) u ℓ).Nonempty := sideSet_nonempty_gen _ _ _ _
+      obtain ⟨ihpin, ihmin⟩ := ih
+        (fun p hp => hpin p (Finset.mem_insert_of_mem hp))
+        (fun p hp => hmin p (Finset.mem_insert_of_mem hp)) hneT
+      have hpinA := hpin i (Finset.mem_insert_self i s) hneA
+      have hminA := hmin i (Finset.mem_insert_self i s) hneA
+      -- support values are pinned, hence finite
+      have hWA : suppVal X (A i) u ℓ
+          = ((ℓ * Hh i + u * m i : ℕ) : ℕ∞) := by
+        have := suppVal_eq_of_onSide hpinA
+          (onSide_of_mem_sideSet (Finset.min'_mem _ hneA))
+        rwa [hminA] at this
+      have hWT : suppVal X (∏ p ∈ s, A p) u ℓ
+          = ((ℓ * (∑ p ∈ s, Hh p) + u * (∑ p ∈ s, m p) : ℕ) : ℕ∞) := by
+        have := suppVal_eq_of_onSide ihpin
+          (onSide_of_mem_sideSet (Finset.min'_mem _ hneT))
+        rwa [ihmin] at this
+      have htf : suppVal X (A i) u ℓ ≠ ⊤ := by rw [hWA]; exact ENat.coe_ne_top _
+      have htz : suppVal X (∏ p ∈ s, A p) u ℓ ≠ ⊤ := by rw [hWT]; exact ENat.coe_ne_top _
+      have hprod : (∏ p ∈ insert i s, A p) = A i * ∏ p ∈ s, A p :=
+        Finset.prod_insert hi
+      have hne' : (sideSet X (A i * ∏ p ∈ s, A p) u ℓ).Nonempty := by
+        rw [← hprod]; exact hne
+      have hminmul := sideMin_mul_gen hπ isKey_X' hu hℓ hcop htf htz hneA hneT
+        hpinA ihpin hne'
+      have hpinmul := npHgt_mul_gen hπ isKey_X' hu hℓ hcop htf htz hneA hneT
+        hpinA ihpin
+      constructor
+      · have goal1 : npHgt X (A i * ∏ p ∈ s, A p)
+            (sideMin X (A i * ∏ p ∈ s, A p) u ℓ hne')
+              = ((Hh i + ∑ p ∈ s, Hh p : ℕ) : ℕ∞) := by
+          rw [hminmul]
+          exact hpinmul
+        rw [Finset.sum_insert hi]
+        have hcongr : ∀ (h₁ : (sideSet X (∏ p ∈ insert i s, A p) u ℓ).Nonempty),
+            npHgt X (∏ p ∈ insert i s, A p)
+              (sideMin X (∏ p ∈ insert i s, A p) u ℓ h₁)
+                = ((Hh i + ∑ p ∈ s, Hh p : ℕ) : ℕ∞) := by
+          rw [hprod]
+          intro h₁
+          exact goal1
+        exact hcongr hne
+      · rw [Finset.sum_insert hi]
+        have hcongr : ∀ (h₁ : (sideSet X (∏ p ∈ insert i s, A p) u ℓ).Nonempty),
+            sideMin X (∏ p ∈ insert i s, A p) u ℓ h₁ = m i + ∑ p ∈ s, m p := by
+          rw [hprod]
+          intro h₁
+          rw [hminmul, hminA, ihmin]
+        exact hcongr hne
+
 /-- **L2 = record steps (3a)+(3b)+(3c): the swap difference sits strictly above the planted
 supporting line** at every `(u, ℓ)` with `0 < u`, `0 < ℓ`, `Nat.Coprime u ℓ` — exactly
-b3-ii's `habove` hypothesis. Mechanism: the per-factor graded swap bound (b3-i), the
-Minkowski identity by iterating `suppVal_mul_gen` over `L.attach` and once against the
-cofactor (B39a; `hnfz` free from `sideSet_nonempty_gen`), and the convolution bound via
-`Polynomial.coeff_mul`. -/
+b3-ii's `habove` hypothesis. Route: per-factor pins (b3-i) → the Minkowski identity
+(`minkowski_prod`, B39a iterated, then once against the cofactor) → the H63w signed-sum
+telescope with `line_diff_factor` + `line_conv_prod` → the pointwise convolution against the
+cofactor. -/
 private theorem planted_delta_above_line {π : O} (hπ : Irreducible π) {N r : ℕ}
-    (L : Finset (ℕ × ℕ × ResidueField O))
+    (hN : 1 ≤ N) (L : Finset (ℕ × ℕ × ResidueField O))
     (hLchild : ∀ p ∈ L, 2 ≤ p.1 ∧ 1 ≤ p.2.1 ∧ p.2.2 ≠ 0)
     (bb bb' : ∀ p : {x : ℕ × ℕ × ResidueField O // x ∈ L}, ClusterState O p.1.1 N)
     (Qc : ClusterState O r N) {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ)
