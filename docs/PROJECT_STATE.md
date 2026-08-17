@@ -6225,3 +6225,29 @@ discipline. Chapter-C remainder measured: ~90 signed statements
 open (frontier: C.106, C.113, C.118, C.33, C.52, C.56a; C.92
 retired). If the wave survives, scale next tick; if killed, back
 to solo.
+
+**2026-08-17 DATED APPEND #91 — the probe wave's fate: 1 landed
+by agent (C.113), 1 landed solo (C.56a), 1 skeleton banked
+(C.33), 2 findings; the 529 storm returned and killed all three
+remaining agents.** (1) C.56a landed solo (k2Coord/n2Exp/
+k2DigitLift byte-exact, Lean-core, first-try compile) after its
+agent died pre-commit. (2) FINDING: C.106 is NOT frontier-ready
+— its #check manifest consults C.97–C.105 (gentow2_A/B/B′/B″,
+s2Witness, shear, letter_formula, repoRead, wconj_invariants),
+ALL still open; the DAG lists it as frontier because the
+manifest's reads are not proof-dep edges. C.106 lands with the
+§10 chain. (3) FINDING (scoping for C.118): the dv-carrier has
+NO congruence layer — B.77's window-congruence chain (dev_congr
+→ suppVal/sideSet/resPoly_congr) exists at level 1 only; C.118
+needs the whole chain rebuilt at dvHgt/dvSupp/dvSideSet/
+dvResPoly then lifted through dv2Pin/dv2Supp/dv2SideSet/dv2Res/
+dv2ResPoly. Agent-charge note written: B77a/B77b are the
+explicit template; Visible₂'s guard is the cleared window
+(e₁·ℓ)·N. (4) C.33's remaining legs (exists/unique dissection)
+are a full dv-carrier Hensel induction — schedule-risk class,
+needs a dedicated unit, NOT a storm-window solo bite; the
+skeleton + slopes_eq leg are committed (644feff5). (5) Pool
+storm active again (C.52 killed twice incl. an instant
+resume-kill; C.33 and the trio killed mid-read); 20-min backoff
+timer running; on fire: resume C.52 and re-charter C.118 (as
+the dv-congruence unit) + C.33-fill.
