@@ -80,7 +80,41 @@ theorem ht_depth_increase {Φ : Polynomial O} (hΦ : IsKey Φ) {G : Polynomial O
     (htop : npHgt Φ G m = (0 : ℕ∞))
     {u ℓ : ℕ} (hℓ : 0 < ℓ) {j : ℕ} (hj : j ∈ sideSet Φ G u ℓ) (hjm : j < m) :
     ℓ * s < u := by
-  sorry
+  classical
+  -- the top abscissa is inside the index range of the `inf` defining `suppVal`
+  have hmle : m ≤ G.natDegree := by
+    rw [hdeg]; exact Nat.le_mul_of_pos_right _ hΦ.pos
+  have hmem : m ∈ Finset.range (G.natDegree + 1) := Finset.mem_range.2 (by omega)
+  -- so the support value is at most the value at the top, which `htop` makes `u * m`
+  have hle : suppVal Φ G u ℓ ≤ ((u * m : ℕ) : ℕ∞) := by
+    have h := Finset.inf_le (f := fun k => ℓ • npHgt Φ G k + ((u * k : ℕ) : ℕ∞)) hmem
+    simpa [suppVal, htop] using h
+  have hjon : OnSide Φ G u ℓ j := (Finset.mem_filter.mp hj).2
+  set K : ℕ := (m - j) * s + 1 with hK
+  have hpin : ((K : ℕ) : ℕ∞) ≤ npHgt Φ G j := hpins j hjm
+  have hstep : ((ℓ * K : ℕ) : ℕ∞) ≤ ℓ • npHgt Φ G j := by
+    rw [Nat.cast_mul, nsmul_eq_mul]
+    gcongr
+  have hchain : ((ℓ * K : ℕ) : ℕ∞) + ((u * j : ℕ) : ℕ∞) ≤ ((u * m : ℕ) : ℕ∞) := by
+    have h1 : ((ℓ * K : ℕ) : ℕ∞) + ((u * j : ℕ) : ℕ∞)
+        ≤ ℓ • npHgt Φ G j + ((u * j : ℕ) : ℕ∞) :=
+      add_le_add_left hstep (((u * j : ℕ) : ℕ∞))
+    rw [hjon] at h1
+    exact le_trans h1 hle
+  -- everything in sight is finite, so the inequality descends to `ℕ`
+  have hnat : ℓ * K + u * j ≤ u * m := by
+    have hc : ((ℓ * K + u * j : ℕ) : ℕ∞) ≤ ((u * m : ℕ) : ℕ∞) := by
+      rw [Nat.cast_add]; exact hchain
+    exact_mod_cast hc
+  have hsplit : u * m = u * j + u * (m - j) := by
+    rw [← Nat.mul_add]; congr 1; omega
+  have h2 : ℓ * K ≤ u * (m - j) := by
+    rw [hsplit, Nat.add_comm (u * j) (u * (m - j))] at hnat
+    exact Nat.add_le_add_iff_right.mp hnat
+  -- `ℓ·((m−j)s + 1) = ℓ·s·(m−j) + ℓ`, and `ℓ > 0` makes the inequality strict
+  have heq : ℓ * K = ℓ * s * (m - j) + ℓ := by rw [hK]; ring
+  rw [heq] at h2
+  exact Nat.lt_of_mul_lt_mul_right (lt_of_lt_of_le (Nat.lt_add_of_pos_right hℓ) h2)
 
 end Uniformity.Density.Tower
 
