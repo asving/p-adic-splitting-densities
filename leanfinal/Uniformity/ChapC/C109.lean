@@ -566,6 +566,53 @@ theorem resPoly_eq_sweep (hπ : Irreducible π) {Φ : Polynomial O} (hΦ : IsKey
     rw [hH₀]; omega
   rw [resCoeff, hmin2, hheight]
 
+theorem dev_natDegree_lt {Φ : Polynomial O} (hΦ : IsKey Φ) (f : Polynomial O) (j : ℕ) :
+    (dev Φ f j).natDegree < Φ.natDegree := by
+  rcases eq_or_ne (dev Φ f j) 0 with h0 | h0
+  · rw [h0, Polynomial.natDegree_zero]; exact hΦ.pos
+  · rw [Polynomial.natDegree_lt_iff_degree_lt h0,
+      ← Polynomial.degree_eq_natDegree hΦ.monic.ne_zero]
+    exact degree_dev_lt hΦ.monic hΦ.pos f j
+
+theorem gaussVal_one : gaussVal (1 : Polynomial O) = 0 := by
+  rw [gaussVal]
+  simp [Polynomial.natDegree_one, Polynomial.coeff_one, addVal_one]
+
+/-- **the sweep read is the priced-digit sum**: at any side, the polynomial `resOf` of the
+sweep read of the block classes of `f` is the sum of the `resMk` digit reads of `f`'s
+development blocks along the side's lattice. -/
+theorem resOf_sweepRead_eq (hπ : Irreducible π) {Φ : Polynomial O} (hΦ : IsKey Φ)
+    (v : HTNode) (hwf : v.WF) {N : ℕ} (hvis : ∀ j, j ≤ v.m → v.Pceil j < N)
+    {f : Polynomial O} (hmon : f.Monic) (hdegf : f.natDegree = v.m * Φ.natDegree)
+    (g : Fin v.m → Coeff O Φ.natDegree N)
+    (hg : ∀ j : Fin v.m, g j = proj O Φ.natDegree N (fun i => (dev Φ f (j : ℕ)).coeff i))
+    {U L : ℕ} (hS : v.IsSide U L) :
+    C109v.resOf v (sweepRead π Φ v N g) U L
+      = ∑ k ∈ Finset.range (v.nodeSideDeg U L + 1),
+          Polynomial.C (resMk π Φ (v.Pceil ((v.nodeSideSet U L).min.getD 0 + L * k))
+              (dev Φ f ((v.nodeSideSet U L).min.getD 0 + L * k)))
+            * Polynomial.X ^ k := by
+  classical
+  rw [C109v.resOf]
+  refine Finset.sum_congr rfl fun k hk => ?_
+  have hkd : k ≤ v.nodeSideDeg U L := by rw [Finset.mem_range] at hk; omega
+  have hpmem := C109v.mem_lattice hS.1 hwf hS hkd
+  have hpm : C109v.nsMin v U L + L * k ≤ v.m := C109v.le_m_of_mem hpmem
+  have hpoh : v.OnHull (C109v.nsMin v U L + L * k) := C109v.onHull_of_mem hS.1 hpmem
+  have hcoef : sweepRead π Φ v N g (C109v.nsMin v U L + L * k)
+      = resMk π Φ (v.Pceil (C109v.nsMin v U L + L * k))
+          (dev Φ f (C109v.nsMin v U L + L * k)) := by
+    rcases eq_or_lt_of_le hpm with heq | hlt
+    · rw [heq]
+      show (if hj : v.m < v.m then _ else if v.m = v.m then 1 else 0) = _
+      rw [dif_neg (lt_irrefl v.m), if_pos rfl, hwf.1,
+        dev_top_of_monic hΦ.monic hΦ.pos hmon hdegf, resMk_one hπ]
+    · show (if hj : C109v.nsMin v U L + L * k < v.m then _ else _) = _
+      rw [dif_pos hlt, if_pos hpoh, hg ⟨_, hlt⟩]
+      exact blockDigit_eq hπ hΦ (hvis _ (by omega)) (dev_natDegree_lt hΦ f _)
+  rw [hcoef]
+  rfl
+
 /-! ### 5. The crux: cell membership ↔ sweep condition + block floors -/
 
 /-- **The crux equivalence.**  Through a componentwise development bridge `E` (C.109a), a
@@ -588,7 +635,122 @@ theorem mem_iff_blocks (hπ : Irreducible π)
         proj O (v.m * Φ.natDegree) N a = c ∧ monicPoly a ∈ htCell π Φ v)
       ↔ (C109v.SweepCond v (sweepRead π Φ v N (E c))
           ∧ ∀ j : Fin v.m, E c j ∈ BlockSet π Φ (v.Pceil (j : ℕ)) N) := by
-  sorry
+  classical
+  set r := sweepRead π Φ v N (E c) with hr
+  have hrm : r v.m = 1 := by
+    show (if hj : v.m < v.m then _ else if v.m = v.m then 1 else 0) = 1
+    rw [dif_neg (lt_irrefl v.m), if_pos rfl]
+  have hrhigh : ∀ j, v.m < j → r j = 0 := by
+    intro j hj
+    show (if hj' : j < v.m then _ else if j = v.m then 1 else 0) = 0
+    rw [dif_neg (by omega), if_neg (by omega)]
+  have hroff : ∀ j, j < v.m → ¬ v.OnHull j → r j = 0 := by
+    intro j hj hoh
+    show (if hj' : j < v.m then (if v.OnHull j then _ else 0) else _) = 0
+    rw [dif_pos hj, if_neg hoh]
+  constructor
+  · rintro ⟨a, hpa, hcell⟩
+    obtain ⟨hmon, hdegf, hfl, hvx, hsides⟩ := hcell
+    set f := monicPoly a with hf
+    have hEcj : ∀ j : Fin v.m,
+        E c j = proj O Φ.natDegree N (fun i => (dev Φ f (j : ℕ)).coeff i) := by
+      intro j
+      funext i
+      rw [← hpa]
+      exact hE a j i
+    have hread : ∀ (j : ℕ) (hj : j < v.m), v.OnHull j →
+        r j = resMk π Φ (v.Pceil j) (dev Φ f j) := by
+      intro j hj hoh
+      show (if hj' : j < v.m then (if v.OnHull j then
+        blockDigit π Φ (v.Pceil j) N (E c ⟨j, hj'⟩) else 0) else _) = _
+      rw [dif_pos hj, if_pos hoh, hEcj ⟨j, hj⟩]
+      exact blockDigit_eq hπ hΦ (hvis j (by omega)) (dev_natDegree_lt hΦ f j)
+    refine ⟨⟨?_, hroff, hrm, ?_, ?_⟩, ?_⟩
+    · -- support clause
+      intro j hjne
+      by_contra hc
+      exact hjne (hrhigh j (by omega))
+    · -- vertex clause
+      intro j hjm hv
+      rcases eq_or_lt_of_le hjm with heq | hlt
+      · rw [heq, hrm]
+        exact one_ne_zero
+      · rw [hread j hlt (C109v.onHull_of_isVertex hv)]
+        exact (resMk_ne_zero_iff_gaussVal hπ hΦ (degree_dev_lt hΦ.monic hΦ.pos f j)
+          (hfl j hjm)).mpr (hvx j hjm hv)
+    · -- side-type clause
+      intro U L hmem
+      have hS : v.IsSide U L := C109v.isSide_of_mem hwf hmem
+      obtain ⟨hne, hmin, hdeg', hpin'⟩ :=
+        side_dictionary_of_profile hπ hΦ v hwf hmon hdegf hfl hvx hS
+      have htype := hsides U L hS.1 hS.2.1 hmem hne
+        (v.Pceil (sideMin Φ f U L hne)) hpin'
+      rw [resPoly_eq_sweep hπ hΦ v hwf hmon hdegf hfl hvx hS hne hpin'] at htype
+      rw [← resOf_sweepRead_eq hπ hΦ v hwf hvis hmon hdegf (E c) hEcj hS] at htype
+      exact htype
+    · -- block floors
+      intro j
+      exact ⟨dev Φ f (j : ℕ), dev_natDegree_lt hΦ f _, (hEcj j).symm,
+        hfl (j : ℕ) (le_of_lt j.isLt)⟩
+  · rintro ⟨hsweep, hblocks⟩
+    choose A hAdeg hAproj hAfl using hblocks
+    have hdegA : ∀ j : Fin v.m, (A j).degree < Φ.degree := by
+      intro j
+      refine lt_of_le_of_lt Polynomial.degree_le_natDegree ?_
+      rw [Polynomial.degree_eq_natDegree hΦ.monic.ne_zero]
+      exact_mod_cast hAdeg j
+    obtain ⟨a, ha⟩ := assemble_eq_monicPoly hΦ.monic hΦ.pos A hdegA
+    obtain ⟨hdevlow, hdevtop⟩ := dev_assemble hΦ.monic hΦ.pos A hdegA
+    set f := monicPoly a with hf
+    have hgf : f = ∑ i : Fin v.m, A i * Φ ^ (i : ℕ) + Φ ^ v.m := ha
+    have hdevf : ∀ j : Fin v.m, dev Φ f (j : ℕ) = A j := by
+      intro j; rw [hgf]; exact hdevlow j
+    have hdevfm : dev Φ f v.m = 1 := by rw [hgf]; exact hdevtop
+    have hmon : f.Monic := monicPoly_monic a
+    have hdegf : f.natDegree = v.m * Φ.natDegree := monicPoly_natDegree a
+    have hEcj : ∀ j : Fin v.m,
+        E c j = proj O Φ.natDegree N (fun i => (dev Φ f (j : ℕ)).coeff i) := by
+      intro j
+      rw [hdevf j]
+      exact (hAproj j).symm
+    -- the height profile of the assembled member
+    have hfl : ∀ j, j ≤ v.m → (v.Pceil j : ℕ∞) ≤ npHgt Φ f j := by
+      intro j hjm
+      rcases eq_or_lt_of_le hjm with heq | hlt
+      · rw [heq, npHgt, hdevfm, gaussVal_one, hwf.1]
+        exact le_of_eq Nat.cast_zero
+      · rw [npHgt, hdevf ⟨j, hlt⟩]
+        exact hAfl ⟨j, hlt⟩
+    have hvx : ∀ j, j ≤ v.m → v.IsVertex j → npHgt Φ f j = (v.Pceil j : ℕ∞) := by
+      intro j hjm hv
+      rcases eq_or_lt_of_le hjm with heq | hlt
+      · rw [heq, npHgt, hdevfm, gaussVal_one, hwf.1]
+        exact Nat.cast_zero.symm
+      · have hrne : r j ≠ 0 := hsweep.2.2.2.1 j hjm hv
+        have hoh : v.OnHull j := C109v.onHull_of_isVertex hv
+        have hrd : r j = resMk π Φ (v.Pceil j) (A ⟨j, hlt⟩) := by
+          show (if hj' : j < v.m then (if v.OnHull j then
+            blockDigit π Φ (v.Pceil j) N (E c ⟨j, hj'⟩) else 0) else _) = _
+          rw [dif_pos hlt, if_pos hoh, hEcj ⟨j, hlt⟩, hdevf ⟨j, hlt⟩]
+          exact blockDigit_eq hπ hΦ (hvis j (by omega)) (by
+            rw [← hdevf ⟨j, hlt⟩]; exact dev_natDegree_lt hΦ f j)
+        rw [hrd] at hrne
+        have := (resMk_ne_zero_iff_gaussVal hπ hΦ (hdegA ⟨j, hlt⟩)
+          (hAfl ⟨j, hlt⟩)).mp hrne
+        rw [npHgt, hdevf ⟨j, hlt⟩]
+        exact this
+    refine ⟨a, ?_, hmon, hdegf, hfl, hvx, ?_⟩
+    · -- proj a = c through E's injectivity
+      refine E.injective ?_
+      funext j i
+      rw [hE a j i, hEcj j]
+      rfl
+    · -- the side-type clause of the cell
+      intro U L hL hcop hmem hne H₀ hpin
+      have hS : v.IsSide U L := C109v.isSide_of_mem hwf hmem
+      rw [resPoly_eq_sweep hπ hΦ v hwf hmon hdegf hfl hvx hS hne hpin]
+      rw [← resOf_sweepRead_eq hπ hΦ v hwf hvis hmon hdegf (E c) hEcj hS]
+      exact hsweep.2.2.2.2 U L hmem
 
 /-! ### 6. Cardinality glue -/
 
