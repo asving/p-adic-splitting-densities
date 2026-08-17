@@ -6041,3 +6041,38 @@ further notice — currently b3-iii part 2 + the C wave 13
 resume; the C.66/C.94 cite LANDINGS and all next waves queue
 strictly behind completions. Permissions: accept-edits ON
 (outage-proofing); owner adding allow rules per /permissions.
+
+**2026-08-17 DATED APPEND #85 — ALL THREE REMAINING SIGNED CITES
+LANDED (orchestrator solo, during the storm): the trusted base is
+now Lean core + FOUR owner-signed gate-(b) axioms, and the
+signature queue holds ONE drafted item.** (1) C.66
+`fgmn_residual_mul` (87308e9d after an honest fix-commit — the
+first landing commit's pipeline masked a set_option placement
+failure; corrected on record): the A-C.6 redraft with the
+source's own hfloor fence + conservative degree binders;
+faithfulness + satisfiability/non-refutability records in the
+docstring; [FGMN] J. Algebra 427 (2015), Thm 2.8 + Cor 4.9(3)/
+4.12(3). (2) C.94 `agnprw_termination` (e2b393a7): DescentStepR
++ NS7TerminationStatementR transcribed verbatim from the signed
+leanspec block; provenance CLOSED by the executed print-read of
+the owner-supplied PDF; the containment honesty (polygon-level
+shadows of Def 5.5, argued clause-by-clause, not proved)
+disclosed at the axiom. (3) B-BOX-1 `bBox1_cite` (e906c566):
+BBox1CiteStatement declared true by citation — the COMPOSITE
+([FGMN] Thm 6.6 + [GN15] Thm 2.3/eq.(2.1) core; Serre Corps
+Locaux Ch. II / Neukirch glue) under the owner's 2026-08-17
+CATEGORY EXTENSION ("cite Serre's Corps Locaux or any other
+well established literature"); OM-5's typeOf_leaf_of_cite now
+fires unconditionally, discharging B.61's carried hBOX at the
+irreducible-residual leaf. (4) STRICT-SWEEP ALLOWLIST, from this
+append forward: {propext, Classical.choice, Quot.sound,
+exists_slope_factorization, fgmn_residual_mul,
+agnprw_termination, bBox1_cite}. (5) CONSEQUENCES firing:
+H.123's B-side leg is SUPPLIED (the S-1 bridge attempt
+launches); the C.92-gated §10 chain re-opens at hypothesis-form;
+C.67/I.01 consumers can wire. Remaining gate-(b):
+recentered_key_emission (OM-4's draft) only. (6) Also this
+morning: the ChapH roll-up regeneration defect FOUND AND FIXED
+(close #15's pattern dropped multi-char-suffix modules — the six
+b-chain imports re-added, 3fa5cdd1; generator note for close
+#16); b3-iii part 1 landed b0c3612f.
