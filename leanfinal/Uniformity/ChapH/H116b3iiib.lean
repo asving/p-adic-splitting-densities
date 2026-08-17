@@ -137,6 +137,148 @@ private theorem planted_side_transport_at_zero {π : O} (hπ : Irreducible π)
   unfold resMk
   rw [dev_X, dev_X, Nat.zero_sub, digPoly_zero_C, digPoly_zero_C, hres]
 
+/-! ### The pointwise line toolkit (record step (3c)'s engine)
+
+`lineF ℓ u g j := ℓ • npHgt X g j + u·j` is the cleared support functional read pointwise.
+Everything below manipulates it through three moves: it is monotone in the height, it
+distributes over convolution (`addVal_mul` + `coeff_mul`), and lower bounds pass through
+finite sums (`addVal_add`). -/
+
+private theorem enat_smul_mono'' {ℓ : ℕ} {x y : ℕ∞} (h : x ≤ y) : ℓ • x ≤ ℓ • y := by
+  rw [nsmul_eq_mul, nsmul_eq_mul]
+  exact mul_le_mul_left' h _
+
+/-- A uniform lower bound on the line functional passes through finite sums of ring
+elements. -/
+private theorem line_le_addVal_sum {ι : Type*} {s : Finset ι} {f : ι → O} {c K : ℕ∞}
+    {ℓ : ℕ} (hℓ : 0 < ℓ)
+    (h : ∀ i ∈ s, c ≤ ℓ • IsDiscreteValuationRing.addVal O (f i) + K) :
+    c ≤ ℓ • IsDiscreteValuationRing.addVal O (∑ i ∈ s, f i) + K := by
+  classical
+  induction s using Finset.induction_on with
+  | empty =>
+      rw [Finset.sum_empty, IsDiscreteValuationRing.addVal_zero, nsmul_eq_mul,
+        ENat.mul_top (by exact_mod_cast hℓ.ne')]
+      exact le_top.trans (le_self_add)
+  | insert i s hi ih =>
+      rw [Finset.sum_insert hi]
+      have hmin := IsDiscreteValuationRing.addVal_add
+        (a := f i) (b := ∑ j ∈ s, f j)
+      rcases min_le_iff.1 (le_refl (min (IsDiscreteValuationRing.addVal O (f i))
+          (IsDiscreteValuationRing.addVal O (∑ j ∈ s, f j)))) with _ | _
+      all_goals {
+        rcases le_total (IsDiscreteValuationRing.addVal O (f i))
+            (IsDiscreteValuationRing.addVal O (∑ j ∈ s, f j)) with hcase | hcase
+        · have hv : IsDiscreteValuationRing.addVal O (f i)
+              ≤ IsDiscreteValuationRing.addVal O (f i + ∑ j ∈ s, f j) := by
+            have := hmin; rwa [min_eq_left hcase] at this
+          exact le_trans (h i (Finset.mem_insert_self i s))
+            (add_le_add (enat_smul_mono'' hv) le_rfl)
+        · have hv : IsDiscreteValuationRing.addVal O (∑ j ∈ s, f j)
+              ≤ IsDiscreteValuationRing.addVal O (f i + ∑ j ∈ s, f j) := by
+            have := hmin; rwa [min_eq_right hcase] at this
+          exact le_trans (ih fun p hp => h p (Finset.mem_insert_of_mem hp))
+            (add_le_add (enat_smul_mono'' hv) le_rfl)
+      }
+
+/-- **Pointwise convolution**: line lower bounds ADD along a product of polynomials. -/
+private theorem line_conv {u ℓ : ℕ} (hℓ : 0 < ℓ) {g h : Polynomial O} {a b : ℕ∞}
+    (hg : ∀ s, a ≤ ℓ • npHgt X g s + ((u * s : ℕ) : ℕ∞))
+    (hh : ∀ s, b ≤ ℓ • npHgt X h s + ((u * s : ℕ) : ℕ∞)) :
+    ∀ j, a + b ≤ ℓ • npHgt X (g * h) j + ((u * j : ℕ) : ℕ∞) := by
+  intro j
+  rw [npHgt_X, Polynomial.coeff_mul]
+  refine line_le_addVal_sum hℓ fun p hp => ?_
+  have hpj : p.1 + p.2 = j := Finset.mem_antidiagonal.1 hp
+  rw [IsDiscreteValuationRing.addVal_mul, smul_add]
+  have hsplit : ((u * j : ℕ) : ℕ∞) = ((u * p.1 : ℕ) : ℕ∞) + ((u * p.2 : ℕ) : ℕ∞) := by
+    rw [← Nat.cast_add, ← Nat.mul_add, hpj]
+  rw [hsplit]
+  have hg' := hg p.1
+  have hh' := hh p.2
+  rw [npHgt_X] at hg' hh'
+  calc a + b ≤ (ℓ • IsDiscreteValuationRing.addVal O (g.coeff p.1) + ((u * p.1 : ℕ) : ℕ∞))
+        + (ℓ • IsDiscreteValuationRing.addVal O (h.coeff p.2) + ((u * p.2 : ℕ) : ℕ∞)) :=
+        add_le_add hg' hh'
+    _ = _ := by ring
+
+/-- Pointwise convolution over a `Finset` product. -/
+private theorem line_conv_prod {ι : Type*} {u ℓ : ℕ} (hℓ : 0 < ℓ) {s : Finset ι}
+    {A : ι → Polynomial O} {c : ι → ℕ∞}
+    (h : ∀ p ∈ s, ∀ j, c p ≤ ℓ • npHgt X (A p) j + ((u * j : ℕ) : ℕ∞)) :
+    ∀ j, (∑ p ∈ s, c p) ≤ ℓ • npHgt X (∏ p ∈ s, A p) j + ((u * j : ℕ) : ℕ∞) := by
+  classical
+  induction s using Finset.induction_on with
+  | empty =>
+      intro j
+      rw [Finset.sum_empty]
+      exact zero_le
+  | insert i s hi ih =>
+      rw [Finset.prod_insert hi, Finset.sum_insert hi]
+      exact line_conv hℓ (h i (Finset.mem_insert_self i s))
+        (ih fun p hp => h p (Finset.mem_insert_of_mem hp))
+
+/-- The pointwise reading of the support value: every abscissa sits on or above the support
+line (inside the coefficient range by the `inf`, outside it vacuously at `⊤`). -/
+private theorem suppVal_le_line {u ℓ : ℕ} (hℓ : 0 < ℓ) (g : Polynomial O) :
+    ∀ j, suppVal X g u ℓ ≤ ℓ • npHgt X g j + ((u * j : ℕ) : ℕ∞) := by
+  intro j
+  by_cases hj : j ≤ g.natDegree
+  · exact Finset.inf_le (Finset.mem_range.2 (by omega))
+  · have hz : g.coeff j = 0 := Polynomial.coeff_eq_zero_of_natDegree_lt (by omega)
+    rw [npHgt_X, hz, IsDiscreteValuationRing.addVal_zero, nsmul_eq_mul,
+      ENat.mul_top (by exact_mod_cast hℓ.ne')]
+    exact le_top.trans le_self_add
+
+/-- **The difference-factor line bound (record step (3a), graded form).** The swap difference
+of one planted factor clears its own factor's support value by a full `ℓ`. -/
+private theorem line_diff_factor {π : O} (hπ : Irreducible π) {μ k : ℕ} (hk : 1 ≤ k)
+    {b b' : Fin μ → O} (hbb : ∀ i, b' i - b i ∈ maximalIdeal O) (ŵ : O)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) :
+    ∀ s, ((ℓ + μ * min (ℓ * k) u : ℕ) : ℕ∞)
+      ≤ ℓ • npHgt X (alphaParent π b' k ŵ - alphaParent π b k ŵ) s
+          + ((u * s : ℕ) : ℕ∞) := by
+  intro s
+  by_cases hs : s ≤ μ
+  · have hdvd := pow_grade_succ_dvd_coeff_alphaParent_sub hπ hbb k ŵ s
+    have hval : ((k * (μ - s) + 1 : ℕ) : ℕ∞)
+        ≤ npHgt X (alphaParent π b' k ŵ - alphaParent π b k ŵ) s := by
+      rw [npHgt_X]
+      exact (Uniformity.Hensel.pow_dvd_iff_le_addVal hπ).1 hdvd
+    refine le_trans ?_ (add_le_add (enat_smul_mono'' hval) le_rfl)
+    rw [nsmul_eq_mul, ← Nat.cast_mul, ← Nat.cast_add]
+    refine Nat.cast_le.2 ?_
+    have h3 : ℓ * (k * (μ - s) + 1) = ℓ * (k * (μ - s)) + ℓ := by ring
+    rcases le_total (ℓ * k) u with hmin | hmin
+    · rw [min_eq_left hmin]
+      have h1 : ℓ * k * s ≤ u * s := Nat.mul_le_mul_right s hmin
+      have h2 : μ * (ℓ * k) = ℓ * (k * (μ - s)) + ℓ * k * s := by
+        obtain ⟨t, ht⟩ : ∃ t, μ = t + s := ⟨μ - s, (Nat.sub_add_cancel hs).symm⟩
+        subst ht
+        rw [Nat.add_sub_cancel]
+        ring
+      omega
+    · rw [min_eq_right hmin]
+      have h1 : u * (μ - s) ≤ ℓ * (k * (μ - s)) := by
+        have h := Nat.mul_le_mul_right (μ - s) hmin
+        calc u * (μ - s) ≤ ℓ * k * (μ - s) := h
+          _ = ℓ * (k * (μ - s)) := by ring
+      have h2 : μ * u = u * (μ - s) + u * s := by
+        obtain ⟨t, ht⟩ : ∃ t, μ = t + s := ⟨μ - s, (Nat.sub_add_cancel hs).symm⟩
+        subst ht
+        rw [Nat.add_sub_cancel]
+        ring
+      omega
+  · have hz : (alphaParent π b' k ŵ - alphaParent π b k ŵ).coeff s = 0 := by
+      have hd' : (alphaParent π b' k ŵ).coeff s = 0 :=
+        Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [alphaParent_natDegree]; omega)
+      have hd : (alphaParent π b k ŵ).coeff s = 0 :=
+        Polynomial.coeff_eq_zero_of_natDegree_lt (by rw [alphaParent_natDegree]; omega)
+      rw [Polynomial.coeff_sub, hd', hd, sub_zero]
+    rw [npHgt_X, hz, IsDiscreteValuationRing.addVal_zero, nsmul_eq_mul,
+      ENat.mul_top (by exact_mod_cast hℓ.ne')]
+    exact le_top.trans le_self_add
+
 /-- **L2 = record steps (3a)+(3b)+(3c): the swap difference sits strictly above the planted
 supporting line** at every `(u, ℓ)` with `0 < u`, `0 < ℓ`, `Nat.Coprime u ℓ` — exactly
 b3-ii's `habove` hypothesis. Mechanism: the per-factor graded swap bound (b3-i), the
