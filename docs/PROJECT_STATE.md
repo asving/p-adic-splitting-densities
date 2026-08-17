@@ -6169,3 +6169,33 @@ suffixes) and cite modules count. (4) The C.109 ASSEMBLY
 scoped agent with the full A-C.5 route + survival-floor +
 exit-code discipline in the charge; workflow wf_a86d181f-653 is
 RETIRED (superseded by the solo landing + this charter).
+
+**2026-08-17 DATED APPEND #89 — NODE C.109 LANDED (the A-C.5
+ASSEMBLY, orchestrator solo): the exact node-cell count is
+machine-checked, Lean-core only. The C.109 COMPLEX (C.109a +
+C.109-i…-v + the assembly) is CLOSED.** `ht_node_cell_card` is
+PROVED at the byte-frozen A-C.2 re-signed statement:
+#print axioms = [propext, Classical.choice, Quot.sound]; plain
+`lake build Uniformity.ChapC` green with the module wired. The
+assembly (leanfinal/Uniformity/ChapC/C109.lean, ~830 lines, 8
+commit increments): (1) a class-level digit calculus (digAt_congr
+→ resMk_proj_congr → blockDigit on level-N classes via a choice
+lift, well-defined because digits below N are class facts);
+(2) the development assembly both ways (dev_assemble/
+assemble_eq_monicPoly/dev_top_of_monic via B.05/B.06 +
+leading-coefficient comparison); (3) the SYNTHETIC side
+dictionary from the floors+vertex profile alone (suppVal pinned
+at the node minimum, endpoint capture, containment — needed
+because landed C.109-iv takes full cell membership, circular for
+the backward direction); (4) the crux: cell membership ↔
+SweepCond(sweepRead) + per-block floors, through C.109a's bridge
+E; (5) the count: fibration over C.109-v's sweep base,
+C.109-iii's uniform priced fibres + the digit partition
+recovering the floored block count, exponent arithmetic to
+B_v(N), and C.109-v's census product. RECORDED DEVIATION (in the
+module header): C.109-ii enters through its per-digit refinement
+C.109-iii blockwise (free-lift carrier), not as the global box
+count — nothing weakened, the statement is frozen. Chapter C's
+HT count layer now has its foundation stone; next up the layer:
+C.110 (two parts), C.111 (hnode shadow), C.113/C.114/C.115 — and
+the §10 chain + C.85 chain remain the chapter's other mass.
