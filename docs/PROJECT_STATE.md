@@ -5999,3 +5999,45 @@ b3-ii → resume C wave 13 → EITHER finish b3-iii solo with the
 diagnostics loop OR hand the skeleton to the b3 resume (do
 NOT run both — race). (4) Nothing was lost: the committed
 tree is layer-close-#15 green (9,176 jobs, sweep clean).
+
+**2026-08-17 DATED APPEND #84 — THE OWNER'S RATIFICATION-BY-COMPILE
+RULING (gate-(b) items 1/4 SIGNED in that form); THE AGNPRW
+PRINT-READ EXECUTED AND PASSED; b3-iii PART 1 PROVED SOLO; the
+org rate ceiling throttles the fleet to ≤2 concurrent workflows.**
+(1) OWNER RULING (2026-08-17, verbatim intent): the design
+decisions deep in the proof — the C.66/C.94 cite redrafts, the
+A-I.1 capstone field-list changes, the B39a flag consumption —
+are ratified BY THE PROOF COMPILING from the literature axiom
+imports with no other assumptions or axioms. Operationally: the
+redrafted C.66/C.94 statements are SIGNED for landing as gate-(b)
+axioms; the final acceptance check is the capstone's footprint
+being EXACTLY Lean core + the signed cites, which the I.24/I.25
+build-failing guards already enforce mechanically. A-I.1's forms
+and the B39a-flag consumption proceed under the same rule.
+(2) THE AGNPRW PDF now lives at docs/references/
+s10208-024-09646-x.pdf (owner-supplied); the ~2-min print-read
+was EXECUTED by the orchestrator: Thm 5.6 verbatim-match, every
+Def 5.5 source-reading row consistent, the adjudicated-out
+e_rel row confirmed against the published Thm 2.18 display.
+The A-C.6 §II provenance caveat is CLOSED (dated note in the
+blueprint). The A-3 numbering rider for AGNPRW is thereby also
+closed in-repo. (3) During the ~3h classifier outage the
+orchestrator did leaf work solo per the owner's live directive:
+H.116b3-ii verified+landed (31a3fbc0), the b3-iii part-1 bridge
+isCSState_of_exists_lift WRITTEN AND PROVED solo (b0c3612f,
+Lean-core, with the 1 ≤ N bound derived rather than assumed) —
+the last legs relayed through the owner's own shell. (4) B-BOX-1
+EXPLAINED to the owner (his question): the composite-cite
+anatomy is OM-5 §3.2 — core (A) = [FGMN] Thm 6.6 + [GN15]
+Thm 2.3/eq.(2.1) at COVERS-ALL-O scope; glue (B)/(C) = classical
+valuation theory (Serre, Corps Locaux Ch. II / Neukirch), NOT
+Montes literature; (D) mathlib-tier. Decision still OPEN with
+him: extend the cite category to admit the classical-valuation
+glue, or order the in-repo fallback B.62 (norm-bridge, opus-tier,
+no third route exists — OM-5 §3.1 proved the region is entirely
+off the monogenic-maximal locus). (5) THROTTLE (owner order,
+org limit errors observed): ≤2 concurrent workflows until
+further notice — currently b3-iii part 2 + the C wave 13
+resume; the C.66/C.94 cite LANDINGS and all next waves queue
+strictly behind completions. Permissions: accept-edits ON
+(outage-proofing); owner adding allow rules per /permissions.

@@ -9677,6 +9677,21 @@ stands on its own — and the owner's signature should either accept them on the
 require a print-read of §5.5 first (the audit §7 closing-check pattern, ≈2 minutes with the
 published PDF in hand).
 
+> **PRINT-READ EXECUTED (2026-08-17, orchestrator; PDF supplied by the owner at
+> `docs/references/s10208-024-09646-x.pdf`): PASS.** Thm 5.6 verbatim-matches ("If v is
+> discrete of rank-one, then the OM-algorithm terminates", p. 5.6 display). Def 5.5's published
+> text — "A refinement step for a type (μ, φ, ℓ) is a step of the while loop which yields a
+> unique NEW type (μ_λ, ϕ, n), with moreover deg(ϕ) = deg(φ)", the two characterizing
+> conditions "N⁺_{μ,φ}(g) is one-sided and its slope −λ satisfies e_rel(μ_λ) = 1" and
+> "R_{μ_λ,φ}(g) = (y − ζ)^ℓ for some ζ ∈ κ(μ_λ)^*", and the jump clause "deg(φ) < deg(ϕ) …
+> may occur only a finite number of times" — is CONSISTENT with every source-reading row of
+> the II.3 table, including the uniqueness/newness that grounds the self-loop exclusion and
+> the κ^* membership that grounds ζ ≠ 0. The ADJUDICATED-OUT row is likewise confirmed: the
+> published Thm 2.18 display reads deg(ϕ) = e_rel(μ_λ)·deg(ψ)·deg(φ), exactly as the
+> adjudication cites. The provenance caveat on this section is CLOSED; the clause-level
+> `2 ≤ sideDeg` strengthening continues to rest on its independent certification (PART 2c)
+> plus the algorithm's simple-root output branch, as drafted.
+
 | redraft clause | source reading (Def 5.5, PROVENANCE-UNVERIFIED) | corpus-side justification that stands alone |
 |---|---|---|
 | `s'.block = s.block`, `s'.key.natDegree = s.key.natDegree` | *"a refinement step … yields a unique new type `(µ_λ, ϕ, n)`, with moreover `deg(ϕ) = deg(φ)`"* | retained from A-C.1, unchanged |
