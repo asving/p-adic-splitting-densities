@@ -71,7 +71,21 @@ theorem resMk_ne_zero_iff_gaussVal (hπ : Irreducible π) {Φ : Polynomial O} (h
     {h : ℕ} {A : Polynomial O} (hA : A.degree < Φ.degree)
     (hfl : (h : ℕ∞) ≤ gaussVal A) :
     resMk π Φ h A ≠ 0 ↔ gaussVal A = (h : ℕ∞) := by
-  sorry
+  constructor
+  · intro hne
+    rcases eq_or_lt_of_le hfl with heq | hlt
+    · exact heq.symm
+    · exfalso
+      refine hne ?_
+      rw [resMk_eq_zero_iff hπ hΦ hA, digPoly_eq_zero_iff hπ hfl]
+      exact_mod_cast Order.add_one_le_of_lt hlt
+  · intro heq
+    have hA0 : A ≠ 0 := by
+      intro h0
+      rw [← gaussVal_eq_top_iff] at h0
+      rw [h0] at heq
+      exact (ENat.top_ne_coe h).elim heq
+    exact resMk_ne_zero hπ hΦ hA hA0 heq
 
 /-- the chosen integral lift of a level-`N` residue class. -/
 noncomputable def liftRes {N : ℕ} (x : Res O N) : O :=
@@ -85,13 +99,38 @@ theorem liftRes_spec {N : ℕ} (x : Res O N) :
 noncomputable def blockPoly {d N : ℕ} (c : Coeff O d N) : Polynomial O :=
   ∑ i : Fin d, C (liftRes (c i)) * X ^ (i : ℕ)
 
+theorem blockPoly_coeff {d N : ℕ} (c : Coeff O d N) (t : ℕ) :
+    (blockPoly c).coeff t = if h : t < d then liftRes (c ⟨t, h⟩) else 0 := by
+  classical
+  rw [blockPoly, finsetSum_coeff]
+  simp only [coeff_C_mul, coeff_X_pow, mul_ite, mul_one, mul_zero]
+  by_cases h : t < d
+  · rw [dif_pos h, Finset.sum_eq_single (⟨t, h⟩ : Fin d)]
+    · simp
+    · intro b _ hb
+      exact if_neg fun hc => hb (Fin.ext hc.symm)
+    · intro hmem
+      exact absurd (Finset.mem_univ _) hmem
+  · rw [dif_neg h]
+    refine Finset.sum_eq_zero fun b _ => if_neg fun hc => h ?_
+    exact hc ▸ b.isLt
+
 theorem blockPoly_natDegree_lt {d N : ℕ} (hd : 0 < d) (c : Coeff O d N) :
     (blockPoly c).natDegree < d := by
-  sorry
+  rcases eq_or_ne (blockPoly c) 0 with h0 | h0
+  · simpa [h0] using hd
+  · rw [Polynomial.natDegree_lt_iff_degree_lt h0]
+    rw [Polynomial.degree_lt_iff_coeff_zero]
+    intro t ht
+    rw [blockPoly_coeff]
+    exact dif_neg (by exact_mod_cast not_lt.2 ht)
 
 theorem blockPoly_proj {d N : ℕ} (c : Coeff O d N) :
     proj O d N (fun i => (blockPoly c).coeff i) = c := by
-  sorry
+  funext i
+  show Ideal.Quotient.mk _ ((blockPoly c).coeff (i : ℕ)) = c i
+  rw [blockPoly_coeff, dif_pos i.isLt, Fin.eta]
+  exact liftRes_spec (c i)
 
 /-- **the class-level digit read** at height `h`: the `resMk` of the chosen lift. -/
 noncomputable def blockDigit (π : O) (Φ : Polynomial O) (h N : ℕ)
