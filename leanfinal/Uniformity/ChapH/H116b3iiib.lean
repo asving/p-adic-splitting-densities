@@ -22,7 +22,7 @@ CHAIN: `planted_map_residue_eq` (PROVED — the u = 0 branch's engine) →
 `planted_side_transport_at_zero` (u = 0: the full witness transport off the equal residue
 maps) → `planted_delta_above_line` (u > 0: steps (3a)+(3b)+(3c), THE BEAST) → the assembly
 (via b3-ii's congruences and part 1's bridge, `monicPoly_coeff_self` as the plumbing).
-`sorry`-carrying until each fills; NOT in any roll-up until sorry-free.
+Every declaration PROVED (sorry-free).
 -/
 
 namespace Uniformity.Density.Induction
@@ -147,7 +147,29 @@ finite sums (`addVal_add`). -/
 
 private theorem enat_smul_mono'' {ℓ : ℕ} {x y : ℕ∞} (h : x ≤ y) : ℓ • x ≤ ℓ • y := by
   rw [nsmul_eq_mul, nsmul_eq_mul]
-  exact mul_le_mul_left' h _
+  exact mul_le_mul_right h _
+
+private theorem enat_smul_cancel' {ℓ : ℕ} (hℓ : 0 < ℓ) :
+    ∀ {x y : ℕ∞}, ℓ • x = ℓ • y → x = y := by
+  have hℓ0 : (ℓ : ℕ∞) ≠ 0 := by exact_mod_cast hℓ.ne'
+  intro x y h
+  rw [nsmul_eq_mul, nsmul_eq_mul] at h
+  induction x using ENat.recTopCoe with
+  | top =>
+    induction y using ENat.recTopCoe with
+    | top => rfl
+    | coe y =>
+      rw [ENat.mul_top hℓ0] at h
+      exact absurd h.symm (WithTop.mul_ne_top (ENat.coe_ne_top _) (ENat.coe_ne_top _))
+  | coe x =>
+    induction y using ENat.recTopCoe with
+    | top =>
+      rw [ENat.mul_top hℓ0] at h
+      exact absurd h (WithTop.mul_ne_top (ENat.coe_ne_top _) (ENat.coe_ne_top _))
+    | coe y =>
+      rw [← Nat.cast_mul, ← Nat.cast_mul] at h
+      have hnat : ℓ * x = ℓ * y := by exact_mod_cast h
+      exact_mod_cast Nat.eq_of_mul_eq_mul_left hℓ hnat
 
 /-- A uniform lower bound on the line functional passes through finite sums of ring
 elements. -/
@@ -491,7 +513,7 @@ private theorem planted_delta_above_line {π : O} (hπ : Irreducible π) {N r : 
     simp only [sub_sub_cancel] at hid
     rw [← hP', ← hP] at hid
     intro i
-    rw [hid, npHgt_X, Polynomial.finset_sum_coeff]
+    rw [hid, npHgt_X, Polynomial.finsetSum_coeff]
     refine line_le_addVal_sum hℓ fun t ht => ?_
     have htne : t.Nonempty :=
       Finset.nonempty_of_ne_empty (Finset.ne_of_mem_erase ht)
@@ -578,6 +600,152 @@ theorem not_isCSState_plantedPoly_swap {π : O}
     (hc' : proj O m N (fun i : Fin m => (plantedPoly π L bb' Qc).coeff (i : ℕ)) = c'.1)
     (h0 : ¬ IsDrainState c) (h0' : ¬ IsDrainState c') (hcs : ¬ IsCSState π c) :
     ¬ IsCSState π c' := by
-  sorry
+  classical
+  intro hcs'
+  apply hcs
+  have hm0 : 0 < m := by omega
+  -- the two planted polynomials, their monicity, and the common degree m
+  have hfm : (plantedPoly π L bb Qc).Monic := plantedPoly_monic π L bb Qc
+  have hfm' : (plantedPoly π L bb' Qc).Monic := plantedPoly_monic π L bb' Qc
+  have hfdeg : (plantedPoly π L bb Qc).natDegree = m := by
+    rw [plantedPoly_natDegree]; exact hdeg
+  have hfdeg' : (plantedPoly π L bb' Qc).natDegree = m := by
+    rw [plantedPoly_natDegree]; exact hdeg
+  have hdeg2 : (plantedPoly π L bb' Qc).natDegree = (plantedPoly π L bb Qc).natDegree := by
+    rw [hfdeg, hfdeg']
+  have hfa : monicPoly (fun i : Fin m => (plantedPoly π L bb Qc).coeff (i : ℕ))
+      = plantedPoly π L bb Qc := monicPoly_coeff_self hfm hfdeg
+  have hfa' : monicPoly (fun i : Fin m => (plantedPoly π L bb' Qc).coeff (i : ℕ))
+      = plantedPoly π L bb' Qc := monicPoly_coeff_self hfm' hfdeg'
+  -- extract the CS witness at the planted lift of c', and read it on f' itself
+  obtain ⟨u, ℓ, hne'A, H₀, hℓ, hcop, hpin'A, ψ, hψirr, hψblk, hψdvdA⟩ := hcs'.2 _ hc'
+  have hne'₀ : (sideSet X (plantedPoly π L bb' Qc) u ℓ).Nonempty := by
+    rw [← hfa']; exact hne'A
+  have hpin'₀ : npHgt X (plantedPoly π L bb' Qc)
+      (sideMin X (plantedPoly π L bb' Qc) u ℓ hne'₀) = (H₀ : ℕ∞) := by
+    have key : ∀ (h₁ : (sideSet X (plantedPoly π L bb' Qc) u ℓ).Nonempty),
+        npHgt X (plantedPoly π L bb' Qc)
+          (sideMin X (plantedPoly π L bb' Qc) u ℓ h₁) = (H₀ : ℕ∞) := by
+      rw [← hfa']
+      intro h₁
+      exact hpin'A
+    exact key hne'₀
+  have hψdvd₀ : ψ ^ 2 ∣ resPoly π X (plantedPoly π L bb' Qc) u ℓ hne'₀ H₀ := by
+    have key : ∀ (h₁ : (sideSet X (plantedPoly π L bb' Qc) u ℓ).Nonempty),
+        ψ ^ 2 ∣ resPoly π X (plantedPoly π L bb' Qc) u ℓ h₁ H₀ := by
+      rw [← hfa']
+      intro h₁
+      exact hψdvdA
+    exact key hne'₀
+  -- close through part 1's bridge at the planted lift of c
+  refine isCSState_of_exists_lift hπ hm0 h0
+    ⟨fun i : Fin m => (plantedPoly π L bb Qc).coeff (i : ℕ), hc, ?_⟩
+  rw [hfa]
+  rcases Nat.eq_zero_or_pos u with hu0 | hu
+  · -- the u = 0 branch: coprimality forces ℓ = 1, everything reads off f mod π
+    subst hu0
+    have hℓ1 : ℓ = 1 := Nat.coprime_zero_left ℓ |>.1 hcop
+    subst hℓ1
+    obtain ⟨hset0, hres0⟩ := planted_side_transport_at_zero (π := π) hπ hfm hfm' hdeg2
+      (planted_map_residue_eq hπ L hLchild bb bb' Qc)
+    -- the pinned height of the witness is 0
+    have hH₀0 : H₀ = 0 := by
+      have hOn' : OnSide X (plantedPoly π L bb' Qc) 0 1
+          (sideMin X (plantedPoly π L bb' Qc) 0 1 hne'₀) :=
+        onSide_of_mem_sideSet (Finset.min'_mem _ hne'₀)
+      have heq : (1 : ℕ) • npHgt X (plantedPoly π L bb' Qc)
+            (sideMin X (plantedPoly π L bb' Qc) 0 1 hne'₀)
+          + ((0 * sideMin X (plantedPoly π L bb' Qc) 0 1 hne'₀ : ℕ) : ℕ∞)
+            = suppVal X (plantedPoly π L bb' Qc) 0 1 := hOn'
+      rw [suppVal_zero_one_of_monic hfm', one_nsmul, Nat.zero_mul, Nat.cast_zero,
+        add_zero, hpin'₀] at heq
+      exact_mod_cast heq
+    subst hH₀0
+    have hne : (sideSet X (plantedPoly π L bb Qc) 0 1).Nonempty := by
+      rw [← hset0]; exact hne'₀
+    refine ⟨0, 1, hne, 0, one_pos, Nat.coprime_zero_left 1 |>.2 rfl, ?_, ψ, hψirr, hψblk, ?_⟩
+    · -- the pin on f at height 0
+      have hOn : OnSide X (plantedPoly π L bb Qc) 0 1
+          (sideMin X (plantedPoly π L bb Qc) 0 1 hne) :=
+        onSide_of_mem_sideSet (Finset.min'_mem _ hne)
+      have heq : (1 : ℕ) • npHgt X (plantedPoly π L bb Qc)
+            (sideMin X (plantedPoly π L bb Qc) 0 1 hne)
+          + ((0 * sideMin X (plantedPoly π L bb Qc) 0 1 hne : ℕ) : ℕ∞)
+            = suppVal X (plantedPoly π L bb Qc) 0 1 := hOn
+      rw [suppVal_zero_one_of_monic hfm, one_nsmul, Nat.zero_mul, Nat.cast_zero,
+        add_zero] at heq
+      rw [heq, Nat.cast_zero]
+    · rw [← hres0 hne hne'₀]
+      exact hψdvd₀
+  · -- the u > 0 branch: the above-line transport (the beast + b3-ii)
+    have habove : ∀ jj, suppVal X (plantedPoly π L bb Qc) u ℓ
+        < ℓ • npHgt X (plantedPoly π L bb' Qc - plantedPoly π L bb Qc) jj
+            + ((u * jj : ℕ) : ℕ∞) :=
+      planted_delta_above_line hπ hN L hLchild bb bb' Qc hu hℓ hcop
+    have habove' : ∀ jj, suppVal X (plantedPoly π L bb Qc) u ℓ
+        ≤ ℓ • npHgt X (plantedPoly π L bb' Qc - plantedPoly π L bb Qc) jj
+            + ((u * jj : ℕ) : ℕ∞) := fun jj => le_of_lt (habove jj)
+    have hdX : 0 < (X : Polynomial O).natDegree := by simp [Polynomial.natDegree_X]
+    have hset : sideSet X (plantedPoly π L bb' Qc) u ℓ
+        = sideSet X (plantedPoly π L bb Qc) u ℓ :=
+      sideSet_congr_of_above_line hπ Polynomial.monic_X hdX hℓ hdeg2 habove
+    have hsupp : suppVal X (plantedPoly π L bb' Qc) u ℓ
+        = suppVal X (plantedPoly π L bb Qc) u ℓ :=
+      suppVal_congr_of_above_line hπ Polynomial.monic_X hdX hℓ hdeg2 habove
+    have hne : (sideSet X (plantedPoly π L bb Qc) u ℓ).Nonempty := by
+      rw [← hset]; exact hne'₀
+    have hmin : sideMin X (plantedPoly π L bb' Qc) u ℓ hne'₀
+        = sideMin X (plantedPoly π L bb Qc) u ℓ hne := by
+      unfold sideMin
+      have key : ∀ (h₁ : (sideSet X (plantedPoly π L bb' Qc) u ℓ).Nonempty)
+          (h₂ : (sideSet X (plantedPoly π L bb Qc) u ℓ).Nonempty),
+          (sideSet X (plantedPoly π L bb' Qc) u ℓ).min' h₁
+            = (sideSet X (plantedPoly π L bb Qc) u ℓ).min' h₂ := by
+        rw [hset]; intro h₁ h₂; rfl
+      exact key hne'₀ hne
+    -- the pin transports by cancellation along the equal support values
+    have hpinf : npHgt X (plantedPoly π L bb Qc)
+        (sideMin X (plantedPoly π L bb Qc) u ℓ hne) = (H₀ : ℕ∞) := by
+      have hOn : OnSide X (plantedPoly π L bb Qc) u ℓ
+          (sideMin X (plantedPoly π L bb Qc) u ℓ hne) :=
+        onSide_of_mem_sideSet (Finset.min'_mem _ hne)
+      have hOn' : OnSide X (plantedPoly π L bb' Qc) u ℓ
+          (sideMin X (plantedPoly π L bb' Qc) u ℓ hne'₀) :=
+        onSide_of_mem_sideSet (Finset.min'_mem _ hne'₀)
+      have h₁ : ℓ • npHgt X (plantedPoly π L bb Qc)
+            (sideMin X (plantedPoly π L bb Qc) u ℓ hne)
+          + ((u * sideMin X (plantedPoly π L bb Qc) u ℓ hne : ℕ) : ℕ∞)
+            = suppVal X (plantedPoly π L bb Qc) u ℓ := hOn
+      have h₂ : ℓ • npHgt X (plantedPoly π L bb' Qc)
+            (sideMin X (plantedPoly π L bb' Qc) u ℓ hne'₀)
+          + ((u * sideMin X (plantedPoly π L bb' Qc) u ℓ hne'₀ : ℕ) : ℕ∞)
+            = suppVal X (plantedPoly π L bb' Qc) u ℓ := hOn'
+      rw [hmin, hsupp] at h₂
+      have heq := h₁.trans h₂.symm
+      have hfin : ((u * sideMin X (plantedPoly π L bb Qc) u ℓ hne : ℕ) : ℕ∞) ≠ ⊤ :=
+        ENat.coe_ne_top _
+      have hcancel := WithTop.add_right_cancel hfin heq
+      have hkey := enat_smul_cancel' hℓ hcancel
+      rw [hmin] at hpin'₀
+      rw [hkey]
+      exact hpin'₀
+    -- the pinned height sits inside the support (finiteness for the resPoly transport)
+    have htop : suppVal X (plantedPoly π L bb Qc) u ℓ ≠ ⊤ := by
+      have := suppVal_eq_of_onSide hpinf
+        (onSide_of_mem_sideSet (Finset.min'_mem _ hne))
+      rw [this]
+      exact ENat.coe_ne_top _
+    refine ⟨u, ℓ, hne, H₀, hℓ, hcop, hpinf, ψ, hψirr, hψblk, ?_⟩
+    have hres := resPoly_congr_of_above_line hπ Polynomial.monic_X hdX hℓ hcop hdeg2
+      habove hne htop hpinf
+    rw [← hres]
+    exact hψdvd₀
 
 end Uniformity.Density.Induction
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+#print axioms Uniformity.Density.Induction.not_isCSState_plantedPoly_swap
+#print axioms Uniformity.Density.Induction.planted_map_residue_eq
+end AxCheck
