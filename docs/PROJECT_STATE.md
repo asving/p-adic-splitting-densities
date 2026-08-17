@@ -6076,3 +6076,34 @@ morning: the ChapH roll-up regeneration defect FOUND AND FIXED
 (close #15's pattern dropped multi-char-suffix modules — the six
 b-chain imports re-added, 3fa5cdd1; generator note for close
 #16); b3-iii part 1 landed b0c3612f.
+
+**2026-08-17 DATED APPEND #86 — NODE H.116b3 CLOSES, PROVED
+ORCHESTRATOR-SOLO THROUGH THE STORM.** With the subagent pools
+saturated (7+ consecutive agent kills on this unit across both
+models, then the org 429 ceiling), the orchestrator built
+H.116b3-iii part 2 end-to-end in its own stream (f3ea2cf5 + the
+six survival commits before it): the u=0 branch
+(planted_map_residue_eq — every alpha factor reduces to X^μ
+presentation-independently — + the (0,1) side datum reading off
+f mod π, digAt_zero-based); the pointwise line toolkit
+(line_le_addVal_sum, line_conv via coeff_mul + addVal_mul,
+line_conv_prod, suppVal_le_line, and line_diff_factor — the
+graded per-factor swap bound clearing the factor's support by a
+full ℓ); minkowski_prod (pinned side minima and heights ADD
+along finite products, B39a's npHgt/sideMin_mul_gen iterated);
+THE BEAST planted_delta_above_line (per-factor b3-i pins →
+the Minkowski profile of P·Q → the H63w signed-sum telescope —
+prod_sub_prod_eq_signed_sum replacing any hand-rolled
+telescope — → the pointwise convolution → strict clearance by
+ℓ); and the assembly not_isCSState_plantedPoly_swap at the
+BYTE-FROZEN A-H.8 statement (witness extraction at the planted
+lift via monicPoly_coeff_self + the ∀-transport pattern for
+dependent-proof rewriting; the pin transported by
+smul-cancellation along equal support values; closed through
+part 1's isCSState_of_exists_lift). All Lean-core, zero sorry,
+module + roll-up builds green (8,802 jobs). THE b-CHAIN NOW:
+b1, b2, b3 (fully) LANDED; remaining = b4 (the gauge-resultant
+COUNT — the flagged research step) + the H.116b assembly, then
+the recorded one-sitting finish of H.121c/clause (iii)/H.122.
+The stale b3 workflow is RETIRED (do not resume
+wf_51b2b10c-f23 — its target is landed).
