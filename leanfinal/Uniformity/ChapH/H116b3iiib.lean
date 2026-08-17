@@ -3,6 +3,7 @@ Copyright (c) 2026 Asvin G. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
+import Uniformity.ChapH.H63w
 import Uniformity.ChapH.H116b2
 import Uniformity.ChapH.H116b3i
 import Uniformity.ChapH.H116b3ii
@@ -480,7 +481,81 @@ private theorem planted_delta_above_line {π : O} (hπ : Irreducible π) {N r : 
           + u * ((∑ p ∈ L.attach, mfun p) + mQ) : ℕ) : ℕ∞) := by
     have := suppVal_mul_gen hπ isKey_X' hu hℓ hcop htfP hQtop hneP hneQ hPpin hHQ'
     rwa [hPmin, ← hmQ] at this
-  sorry
+  -- (IV): the swap difference clears the planted support line by a full ℓ
+  have hdiffbound : ∀ i, ((ℓ + ∑ p ∈ L.attach, wfun p : ℕ) : ℕ∞)
+      ≤ ℓ • npHgt X (P' - P) i + ((u * i : ℕ) : ℕ∞) := by
+    have hid := prod_sub_prod_eq_signed_sum L.attach
+      (fun p => alphaParent π (classSect O p.1.1 N ((bb' p)).1) p.1.2.1 (resSect O p.1.2.2)
+        - alphaParent π (classSect O p.1.1 N ((bb p)).1) p.1.2.1 (resSect O p.1.2.2))
+      (fun p => alphaParent π (classSect O p.1.1 N ((bb' p)).1) p.1.2.1 (resSect O p.1.2.2))
+    simp only [sub_sub_cancel] at hid
+    rw [← hP', ← hP] at hid
+    intro i
+    rw [hid, npHgt_X, Polynomial.finset_sum_coeff]
+    refine line_le_addVal_sum hℓ fun t ht => ?_
+    have htne : t.Nonempty :=
+      Finset.nonempty_of_ne_empty (Finset.ne_of_mem_erase ht)
+    have htsub : t ⊆ L.attach := Finset.mem_powerset.1 (Finset.mem_of_mem_erase ht)
+    -- the three factor bounds
+    have hsign : ∀ s', (0 : ℕ∞)
+        ≤ ℓ • npHgt X ((-1 : Polynomial O) ^ (t.card + 1)) s' + ((u * s' : ℕ) : ℕ∞) :=
+      fun _ => zero_le
+    have hdiffs : ∀ p ∈ t, ∀ s', (((ℓ + wfun p : ℕ)) : ℕ∞)
+        ≤ ℓ • npHgt X
+            (alphaParent π (classSect O p.1.1 N ((bb' p)).1) p.1.2.1 (resSect O p.1.2.2)
+              - alphaParent π (classSect O p.1.1 N ((bb p)).1) p.1.2.1 (resSect O p.1.2.2)) s'
+          + ((u * s' : ℕ) : ℕ∞) := by
+      intro p _ s'
+      have := line_diff_factor hπ (hLchild p.1 p.2).2.1
+        (fun i => Submodule.sub_mem _ (hbmem bb' p i) (hbmem bb p i))
+        (resSect O p.1.2.2) hu hℓ s'
+      rwa [← hwvalue p] at this
+    have hprimed : ∀ p ∈ L.attach \ t, ∀ s', (((wfun p : ℕ)) : ℕ∞)
+        ≤ ℓ • npHgt X
+            (alphaParent π (classSect O p.1.1 N ((bb' p)).1) p.1.2.1 (resSect O p.1.2.2)) s'
+          + ((u * s' : ℕ) : ℕ∞) := by
+      intro p _ s'
+      have hline := suppVal_le_line (u := u) hℓ
+        (alphaParent π (classSect O p.1.1 N ((bb' p)).1) p.1.2.1 (resSect O p.1.2.2)) s'
+      have hW := hWfam bb' p
+      rw [hW, ← hwvalue p] at hline
+      exact hline
+    -- convolve
+    have hbt := line_conv_prod hℓ hdiffs
+    have hbp := line_conv_prod hℓ hprimed
+    have hconv := line_conv hℓ (line_conv hℓ hsign hbt) hbp i
+    rw [← npHgt_X]
+    refine le_trans ?_ hconv
+    -- the constant arithmetic, at ℕ level
+    rw [zero_add, ← Nat.cast_sum, ← Nat.cast_sum, ← Nat.cast_add]
+    refine Nat.cast_le.2 ?_
+    have hsplit : (∑ p ∈ t, wfun p) + ∑ p ∈ L.attach \ t, wfun p
+        = ∑ p ∈ L.attach, wfun p := by
+      rw [add_comm]
+      exact Finset.sum_sdiff htsub
+    have hcard : 1 ≤ t.card := Finset.card_pos.2 htne
+    have hexpand : ∑ p ∈ t, (ℓ + wfun p) = t.card * ℓ + ∑ p ∈ t, wfun p := by
+      rw [Finset.sum_add_distrib, Finset.sum_const, smul_eq_mul]
+    have hcardle : ℓ ≤ t.card * ℓ := Nat.le_mul_of_pos_left ℓ (by omega)
+    omega
+  -- (V) + the strict inequality
+  intro j
+  rw [hfPQ, hfPQ']
+  have hdelta : P' * Q - P * Q = (P' - P) * Q := by ring
+  rw [hdelta, hWf]
+  have hV := line_conv hℓ hdiffbound (suppVal_le_line (u := u) hℓ Q) j
+  rw [hWQ, ← Nat.cast_add] at hV
+  refine lt_of_lt_of_le ?_ hV
+  refine Nat.cast_lt.2 ?_
+  have hsumw : ∑ p ∈ L.attach, wfun p
+      = ℓ * (∑ p ∈ L.attach, Hfun p) + u * (∑ p ∈ L.attach, mfun p) := by
+    simp only [hwfun]
+    rw [Finset.sum_add_distrib, ← Finset.mul_sum, ← Finset.mul_sum]
+  have hd1 : ℓ * ((∑ p ∈ L.attach, Hfun p) + HQ)
+      = ℓ * (∑ p ∈ L.attach, Hfun p) + ℓ * HQ := by ring
+  have hd2 : u * ((∑ p ∈ L.attach, mfun p) + mQ)
+      = u * (∑ p ∈ L.attach, mfun p) + u * mQ := by ring
+  omega
 
 set_option linter.unusedVariables false in
 /-- **H.116b3 = H.116b3-iii (2/2) [NEW NODE: A-H.7; RE-SPLIT: A-H.8].** THE `¬ IsCSState`
