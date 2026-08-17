@@ -6135,3 +6135,37 @@ doubles as standing obligation #2, so landing it pays twice.
 Pools: still saturated (the C.109 finisher died again at ~3
 min); C.109-v + assembly queued for solo work or the pool
 retry timer.
+
+**2026-08-17 DATED APPEND #88 — C.109-v LANDED (Lean-core);
+CORRECTION on the recovery claim; SEVEN modules were missing
+from the ChapC roll-up (now wired); the C.109 assembly is
+chartered.** (1) `ht_sweep_census` (C.109-v) is PROVED at the
+byte-frozen A-C.5 statement — commit 78b205be. The proof is the
+sweep bijection: psiFun (monic normalization by the inverse of
+the top digit), gFun (the right-to-left sweep in CLOSED form via
+the telescoping tailU product of constant terms to the right),
+sweep_inj/psiFun_gFun mutual inverses, Nat.card_pi. The
+load-bearing scale invariance residualTypeOf_C_mul is PROVABLE
+despite choice-based UFM.factors: associated inputs make the
+choice predicate propositionally EQUAL (funext+propext), so
+Classical.choose returns the SAME multiset (factors_mul_unit).
+Provenance: ~90% is the recovered on-disk work of a storm-killed
+finisher agent (secured at recovery commit e0347ab0); the
+orchestrator normalized namespaces and fixed the 6 remaining
+errors. (2) CORRECTION (stop-the-line class, self-caught): the
+recovery commit's "COMPILES GREEN" claim was FALSE — the exit
+code was read after a pipe (tail/grep), masking lean's failure;
+THIRD occurrence of this trap (C.66 landing, DAG-acyclicity
+claim, now this). Standing rule reaffirmed: exit codes via
+`> file 2>&1; echo $?`, never through a pipe. (3) ChapC roll-up
+audit: C109iii/C109iv/C109v (multi-char-suffix generator
+defect) AND C66/C94 (the landed gate-(b) CITES!) AND C74/C128
+were absent from ChapC.lean — i.e. plain lake build was NOT
+covering the two cite axioms' modules. All seven wired; roll-up
+green at 71 imports (commit 78b205be). Generator note extended:
+the regen pattern must be `[A-Z][0-9]+([a-z]+)?` (multi-char
+suffixes) and cite modules count. (4) The C.109 ASSEMBLY
+(ht_node_cell_card from the five layers) is chartered as a
+scoped agent with the full A-C.5 route + survival-floor +
+exit-code discipline in the charge; workflow wf_a86d181f-653 is
+RETIRED (superseded by the solo landing + this charter).
