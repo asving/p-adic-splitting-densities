@@ -1,11 +1,77 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
 import Uniformity.ChapC.C108
+
+/-!
+# Uniformity.ChapC.C109v — the right-to-left sweep and the census product
+
+**Chapter C, NODE C.109-v** (`ht_sweep_census`, signed at amendment A-C.5) — the ONLY layer
+of the C.109 split with genuinely combinatorial content: the priced digits of a node cell
+are counted by the bare product of the per-side censuses `S_λ(K)` (`EFF.W12.24`, verbatim:
+"The sweep spends exactly the `L` priced slots, whence `S_T(q^d) = Π_S S_{λ_S}(q^d)` — no
+extra unit factors").
+
+## The proof (the sweep, made a bijection)
+
+The count is a bijection between sweep assignments `r : ℕ → K` (supported on the on-hull
+positions `≤ m`, monic top `r m = 1`, nonzero vertex digits, prescribed per-side residual
+types) and tuples of MONIC census members, one per side:
+
+* **forward** (`psiFun`): at each side, read the raw residual `resOf` off `r` and normalize
+  by the inverse of its top digit (`Ring.inverse (r nsMax)` — a unit, since vertices are
+  nonzero and a finite domain is a field).  Monicity, nonzero constant term and the
+  prescribed type survive the normalization because `residualTypeOf` is invariant under
+  multiplication by a nonzero constant (`residualTypeOf_C_mul`).
+* **backward** (`gFun`, the right-to-left sweep in CLOSED form): the digit at position `j`
+  interior to a side is the side's monic coefficient times `tailU` — the product of the
+  constant terms of all sides lying weakly to the RIGHT of the side's top.  The telescoping
+  law `tailU_step` is exactly the corpus's "each shared vertex hands its unit to the next
+  side"; the top position gets `1`.
+* the two directions are mutually inverse (`sweep_inj` by strong induction from the top
+  abscissa down; `psiFun_gFun` by the unit cancellation), so `Nat.card` transports through
+  `Nat.card_pi` to the product of the censuses.
+
+**On `residualTypeOf_C_mul`** (the load-bearing scale invariance): mathlib's
+`UniqueFactorizationMonoid.factors` is `Classical.choose` on the predicate
+"prime multiset whose product is associated to `a`" — for associated inputs the predicates
+are EQUAL as functions (`funext` + `propext`), so the chosen multisets are literally equal
+(`factors_mul_unit`).  No normalization structure on `K` is needed.
+
+The hull/side combinatorics consumed here (each on-hull position below `m` lies on a side,
+`side_unique` at interior positions, `nsMin`/`nsMax` arithmetic, `exists_side`) are proved
+from `HTNode.WF`'s ceiled-consistency by ℕ-only chord arithmetic (no ℚ anywhere, per the
+A-C.2 encoding).
+
+## Provenance note
+
+The body of this module is the recovered work of a storm-killed fleet agent (found
+uncommitted on disk 2026-08-17, compiling green; secured verbatim at the recovery commit —
+see `T2_scratch.lean` in history).  The orchestrator added this header, the namespace
+normalization (`Scratch`/`S2`–`S8` → `C109v`, no declaration renamed), and the closing
+byte-frozen theorem.
+
+## Certification
+
+`verification/c109_ac5_sweep_check.py` (A-C.5, 124 checks, exit 0): the sweep count at the
+shared-vertex instances I6/I7/I8 and the off-hull instance I3, `q = 2` and `q = 3`,
+cross-checked against the full cell count; T-SWEEP-VERTEX and T-SWEEP-HULL teeth.
+
+## Status
+
+Sorry-free, axiom-free (Lean core only).  The signed statement `ht_sweep_census` is
+byte-frozen from `leanspec/Leanspec/ChapC.lean` (A-C.5 block).
+-/
+
 
 set_option linter.style.longLine false
 set_option linter.overlappingInstances false
 set_option linter.unusedSectionVars false
 set_option linter.deprecated false
 
-namespace Scratch
+namespace Uniformity.Density.Tower.C109v
 
 open Uniformity.Density.Tower
 
@@ -73,11 +139,11 @@ private theorem nsMax_eq (v : HTNode) {u ℓ : ℕ} (h : (v.nodeSideSet u ℓ).N
     nsMax v u ℓ = (v.nodeSideSet u ℓ).max' h := by
   rw [nsMax, ← Finset.coe_max' h]; rfl
 
-end Scratch
+end Uniformity.Density.Tower.C109v
 
-namespace S2
+namespace Uniformity.Density.Tower.C109v
 
-open Uniformity.Density.Tower Scratch
+open Uniformity.Density.Tower
 
 variable {v : HTNode} {u ℓ : ℕ}
 
@@ -150,11 +216,11 @@ private theorem dvd_sub_nsMin (hℓ : 0 < ℓ) (hside : v.IsSide u ℓ) {j : ℕ
   have : ℓ ∣ d := (Nat.Coprime.dvd_of_dvd_mul_left hside.2.1.symm) hdvd
   simpa [hd] using this
 
-end S2
+end Uniformity.Density.Tower.C109v
 
-namespace S3
+namespace Uniformity.Density.Tower.C109v
 
-open Uniformity.Density.Tower Scratch S2
+open Uniformity.Density.Tower
 
 variable {v : HTNode} {u ℓ : ℕ}
 
@@ -233,11 +299,11 @@ private theorem mem_lattice (hℓ : 0 < ℓ) (hwf : v.WF) (hside : v.IsSide u �
   rw [hval]
   exact nv_le_of_mem (nsMin_mem hside) hi
 
-end S3
+end Uniformity.Density.Tower.C109v
 
-namespace S4
+namespace Uniformity.Density.Tower.C109v
 
-open Uniformity.Density.Tower Scratch S2 S3
+open Uniformity.Density.Tower
 
 variable {v : HTNode}
 
@@ -337,11 +403,11 @@ private theorem exists_side (hwf : v.WF) {j : ℕ} (hjm : j < v.m) (hoh : v.OnHu
   have hside : v.IsSide U L := ⟨hL0, hcop, hcard⟩
   exact ⟨U, L, hside, hjmem, lt_of_lt_of_le hjk (le_nsMax_of_mem hside hkmem)⟩
 
-end S4
+end Uniformity.Density.Tower.C109v
 
-namespace S5
+namespace Uniformity.Density.Tower.C109v
 
-open Uniformity.Density.Tower Scratch S2 S3 S4
+open Uniformity.Density.Tower
 
 variable {v : HTNode} {U L : ℕ}
 
@@ -443,11 +509,11 @@ private theorem isVertex_eq_endpoint (hside : v.IsSide U L) {j : ℕ}
   have hlt := hv (nsMin v U L) (nsMax v U L) h1 h2 (le_m_of_mem (nsMax_mem hside))
   omega
 
-end S5
+end Uniformity.Density.Tower.C109v
 
-namespace S6
+namespace Uniformity.Density.Tower.C109v
 
-open Uniformity.Density.Tower Scratch S2 S3 S4 S5
+open Uniformity.Density.Tower
 
 variable {v : HTNode} {U L U' L' : ℕ}
 
@@ -530,9 +596,9 @@ private theorem exists_next (hwf : v.WF) (hS : v.IsSide U L) (hlt : nsMax v U L 
   · exact h.symm
   · omega
 
-end S6
+end Uniformity.Density.Tower.C109v
 
-namespace S7
+namespace Uniformity.Density.Tower.C109v
 
 open Uniformity Uniformity.Density.Tower Polynomial
 
@@ -598,11 +664,11 @@ theorem residualTypeOf_degree {p : Polynomial K} (hp : p ≠ 0) :
   exact key
 
 
-end S7
+end Uniformity.Density.Tower.C109v
 
-namespace S8
+namespace Uniformity.Density.Tower.C109v
 
-open Uniformity Uniformity.Density.Tower Scratch S2 S3 S4 S5 S6 S7 Polynomial
+open Uniformity Uniformity.Density.Tower Polynomial
 
 variable {K : Type*} [CommRing K] [IsDomain K] [UniqueFactorizationMonoid K] [Finite K]
 
@@ -741,7 +807,7 @@ theorem gFun_eq_of_side (hwf : v.WF) {q : {x // x ∈ v.sides} → Polynomial K}
   classical
   have hjm : j ≠ v.m := by
     have := nsMax_le_m (isSide_of_mem hwf hmem); omega
-  rw [gFun, if_neg hjm, Nat.add_zero,
+  rw [gFun, if_neg hjm, add_zero,
     Finset.sum_eq_single (⟨(U, L), hmem⟩ : {x // x ∈ v.sides})]
   · rw [if_pos ⟨h1, h2, hdvd⟩]
   · intro p _ hne
@@ -757,7 +823,7 @@ theorem gFun_eq_zero_of_no_side (hwf : v.WF) {q : {x // x ∈ v.sides} → Polyn
       ¬(nsMin v U L ≤ j ∧ j < nsMax v U L ∧ L ∣ (j - nsMin v U L)))
     (hjm : j ≠ v.m) : gFun v q j = 0 := by
   classical
-  rw [gFun, if_neg hjm, Nat.add_zero]
+  rw [gFun, if_neg hjm, add_zero]
   refine Finset.sum_eq_zero fun p _ => ?_
   refine if_neg ?_
   intro hc
@@ -774,15 +840,14 @@ theorem gFun_m (hwf : v.WF) (q : {x // x ∈ v.sides} → Polynomial K) : gFun v
     refine Finset.sum_eq_zero fun p _ => if_neg ?_
     intro hc
     exact absurd hc.2.1 (not_lt.2 (nsMax_le_m (isSide_of_mem hwf p.2)))
-  rw [this, Nat.zero_add]
+  rw [this, zero_add]
 
 theorem tailU_m (hwf : v.WF) (q : {x // x ∈ v.sides} → Polynomial K) : tailU v q v.m = 1 := by
   classical
   rw [tailU, Finset.filter_eq_empty_iff.2, Finset.prod_empty]
   intro p _
-  have h1 := nsMin_lt_nsMax (isSide_of_mem hwf p.2)
-  have h2 := nsMax_le_m (isSide_of_mem hwf p.2)
-  omega
+  exact not_le.2 (lt_of_lt_of_le (nsMin_lt_nsMax (isSide_of_mem hwf p.2))
+    (nsMax_le_m (isSide_of_mem hwf p.2)))
 
 theorem tailU_step (hwf : v.WF) {q : {x // x ∈ v.sides} → Polynomial K} {U L : ℕ}
     (hmem : (U, L) ∈ v.sides) :
@@ -895,8 +960,7 @@ theorem sweepCond_gFun (hwf : v.WF) {q : {x // x ∈ v.sides} → Polynomial K}
     exact onHull_of_mem hS.1 (mem_lattice hS.1 hwf hS htg)
   · intro j hjm hv
     rcases eq_or_lt_of_le hjm with heq | hlt
-    · rw [← heq] at *
-      rw [gFun_m hwf]
+    · rw [heq, gFun_m hwf]
       exact one_ne_zero
     · obtain ⟨U, L, hS, hmemset, hltmax⟩ := exists_side hwf hlt (onHull_of_isVertex hv)
       have hmem : (U, L) ∈ v.sides := (hwf.2.2.2.1 U L).2 hS
@@ -960,7 +1024,7 @@ theorem sweep_inj (hwf : v.WF) {r r' : ℕ → K} (hr : SweepCond v r) (hr' : Sw
           rw [hmax] at hco
           have hne : r' (nsMax v U L) ≠ 0 := r_nsMax_ne hr' hS
           have hcan := congrArg (fun x : K => r' (nsMax v U L) * x) hco
-          simp only [← mul_assoc, Ring.inverse_mul_cancel _ (isUnit_ne_zero hne), one_mul] at hcan
+          simp only [← mul_assoc, Ring.mul_inverse_cancel _ (isUnit_ne_zero hne), one_mul] at hcan
           rw [hjeq]
           exact hcan
         · rw [hr.2.1 j hjlt hoh, hr'.2.1 j hjlt hoh]
@@ -994,4 +1058,33 @@ theorem sweep_card (hwf : v.WF) :
     ← Finset.prod_coe_sort v.sides (fun p => sideCensus K (v.sideType p.1 p.2))]
   rfl
 
-end S8
+end Uniformity.Density.Tower.C109v
+
+namespace Uniformity.Density.Tower
+
+/-- **NODE C.109-v** — the right-to-left sweep and the census product (`EFF.W12.24`).  The
+count of sweep assignments (digits supported on the on-hull positions below `m` plus the
+monic top, nonzero vertex digits, prescribed per-side residual types) is the bare product of
+the side censuses.  Statement byte-frozen from the A-C.5 leanspec block; proof = the sweep
+bijection above. -/
+theorem ht_sweep_census {K : Type*} [CommRing K] [IsDomain K]
+    [UniqueFactorizationMonoid K] [Finite K] (v : HTNode) (hwf : v.WF) :
+    Nat.card {r : ℕ → K //
+        (∀ j, r j ≠ 0 → j ≤ v.m) ∧
+        (∀ j, j < v.m → ¬ v.OnHull j → r j = 0) ∧
+        r v.m = 1 ∧
+        (∀ j, j ≤ v.m → v.IsVertex j → r j ≠ 0) ∧
+        (∀ u ℓ : ℕ, (u, ℓ) ∈ v.sides →
+          residualTypeOf (∑ k ∈ Finset.range (v.nodeSideDeg u ℓ + 1),
+              Polynomial.C (r ((v.nodeSideSet u ℓ).min.getD 0 + ℓ * k)) * Polynomial.X ^ k)
+            = v.sideType u ℓ)}
+      = ∏ p ∈ v.sides, sideCensus K (v.sideType p.1 p.2) :=
+  C109v.sweep_card hwf
+
+end Uniformity.Density.Tower
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+#print axioms Uniformity.Density.Tower.ht_sweep_census
+end AxCheck
