@@ -77,7 +77,7 @@ open Uniformity.Density.Tower
 
 /-! ### chord arithmetic -/
 
-private theorem chord_le {ℓ u : ℕ} (P : ℕ → ℕ) {i j k : ℕ} (hℓ : 0 < ℓ)
+theorem chord_le {ℓ u : ℕ} (P : ℕ → ℕ) {i j k : ℕ} (hℓ : 0 < ℓ)
     (hij : i ≤ j) (hjk : j ≤ k)
     (h1 : ℓ * P j + u * j ≤ ℓ * P i + u * i)
     (h2 : ℓ * P j + u * j ≤ ℓ * P k + u * k) :
@@ -97,7 +97,7 @@ private theorem chord_le {ℓ u : ℕ} (P : ℕ → ℕ) {i j k : ℕ} (hℓ : 0
   have key : ℓ * ((a + b) * Pj) ≤ ℓ * (b * Pi + a * Pk) := by nlinarith [e1, e2]
   exact Nat.le_of_mul_le_mul_left key hℓ
 
-private theorem nv_le_of_chord {ℓ u : ℕ} (P : ℕ → ℕ) {i j k : ℕ}
+theorem nv_le_of_chord {ℓ u : ℕ} (P : ℕ → ℕ) {i j k : ℕ}
     (hij : i ≤ j) (hjk : j ≤ k) (hik : i < k)
     (hchord : (k - i) * P j ≤ (k - j) * P i + (j - i) * P k)
     (heq : ℓ * P i + u * i = ℓ * P k + u * k) :
@@ -120,7 +120,7 @@ private theorem nv_le_of_chord {ℓ u : ℕ} (P : ℕ → ℕ) {i j k : ℕ}
 
 /-! ### the node's argmin set -/
 
-private theorem mem_nodeSideSet {v : HTNode} {u ℓ j : ℕ} :
+theorem mem_nodeSideSet {v : HTNode} {u ℓ j : ℕ} :
     j ∈ v.nodeSideSet u ℓ ↔ j ≤ v.m ∧ ∀ i, i ≤ v.m → ℓ * v.Pceil j + u * j ≤ ℓ * v.Pceil i + u * i := by
   classical
   have h : j ∈ Finset.filter (v.NodeOnSide u ℓ) (Finset.range (v.m + 1))
@@ -128,14 +128,14 @@ private theorem mem_nodeSideSet {v : HTNode} {u ℓ j : ℕ} :
   rw [← h, Finset.mem_filter, Finset.mem_range, Nat.lt_succ_iff]
   rfl
 
-private noncomputable def nsMin (v : HTNode) (u ℓ : ℕ) : ℕ := (v.nodeSideSet u ℓ).min.getD 0
-private noncomputable def nsMax (v : HTNode) (u ℓ : ℕ) : ℕ := (v.nodeSideSet u ℓ).max.getD 0
+noncomputable def nsMin (v : HTNode) (u ℓ : ℕ) : ℕ := (v.nodeSideSet u ℓ).min.getD 0
+noncomputable def nsMax (v : HTNode) (u ℓ : ℕ) : ℕ := (v.nodeSideSet u ℓ).max.getD 0
 
-private theorem nsMin_eq (v : HTNode) {u ℓ : ℕ} (h : (v.nodeSideSet u ℓ).Nonempty) :
+theorem nsMin_eq (v : HTNode) {u ℓ : ℕ} (h : (v.nodeSideSet u ℓ).Nonempty) :
     nsMin v u ℓ = (v.nodeSideSet u ℓ).min' h := by
   rw [nsMin, ← Finset.coe_min' h]; rfl
 
-private theorem nsMax_eq (v : HTNode) {u ℓ : ℕ} (h : (v.nodeSideSet u ℓ).Nonempty) :
+theorem nsMax_eq (v : HTNode) {u ℓ : ℕ} (h : (v.nodeSideSet u ℓ).Nonempty) :
     nsMax v u ℓ = (v.nodeSideSet u ℓ).max' h := by
   rw [nsMax, ← Finset.coe_max' h]; rfl
 
@@ -147,45 +147,45 @@ open Uniformity.Density.Tower
 
 variable {v : HTNode} {u ℓ : ℕ}
 
-private theorem ns_nonempty (hside : v.IsSide u ℓ) : (v.nodeSideSet u ℓ).Nonempty :=
+theorem ns_nonempty (hside : v.IsSide u ℓ) : (v.nodeSideSet u ℓ).Nonempty :=
   Finset.card_pos.1 (lt_of_lt_of_le Nat.zero_lt_two hside.2.2)
 
-private theorem nsMin_mem (hside : v.IsSide u ℓ) : nsMin v u ℓ ∈ v.nodeSideSet u ℓ := by
+theorem nsMin_mem (hside : v.IsSide u ℓ) : nsMin v u ℓ ∈ v.nodeSideSet u ℓ := by
   rw [nsMin_eq v (ns_nonempty hside)]; exact Finset.min'_mem _ _
 
-private theorem nsMax_mem (hside : v.IsSide u ℓ) : nsMax v u ℓ ∈ v.nodeSideSet u ℓ := by
+theorem nsMax_mem (hside : v.IsSide u ℓ) : nsMax v u ℓ ∈ v.nodeSideSet u ℓ := by
   rw [nsMax_eq v (ns_nonempty hside)]; exact Finset.max'_mem _ _
 
-private theorem nsMin_le_of_mem (hside : v.IsSide u ℓ) {j : ℕ} (hj : j ∈ v.nodeSideSet u ℓ) :
+theorem nsMin_le_of_mem (hside : v.IsSide u ℓ) {j : ℕ} (hj : j ∈ v.nodeSideSet u ℓ) :
     nsMin v u ℓ ≤ j := by
   rw [nsMin_eq v (ns_nonempty hside)]; exact Finset.min'_le _ _ hj
 
-private theorem le_nsMax_of_mem (hside : v.IsSide u ℓ) {j : ℕ} (hj : j ∈ v.nodeSideSet u ℓ) :
+theorem le_nsMax_of_mem (hside : v.IsSide u ℓ) {j : ℕ} (hj : j ∈ v.nodeSideSet u ℓ) :
     j ≤ nsMax v u ℓ := by
   rw [nsMax_eq v (ns_nonempty hside)]; exact Finset.le_max' _ _ hj
 
-private theorem nsMin_lt_nsMax (hside : v.IsSide u ℓ) : nsMin v u ℓ < nsMax v u ℓ := by
+theorem nsMin_lt_nsMax (hside : v.IsSide u ℓ) : nsMin v u ℓ < nsMax v u ℓ := by
   rw [nsMin_eq v (ns_nonempty hside), nsMax_eq v (ns_nonempty hside)]
   exact Finset.min'_lt_max'_of_card _ (lt_of_lt_of_le Nat.one_lt_two hside.2.2)
 
-private theorem nv_le_of_mem {j : ℕ} (hj : j ∈ v.nodeSideSet u ℓ) {i : ℕ} (hi : i ≤ v.m) :
+theorem nv_le_of_mem {j : ℕ} (hj : j ∈ v.nodeSideSet u ℓ) {i : ℕ} (hi : i ≤ v.m) :
     ℓ * v.Pceil j + u * j ≤ ℓ * v.Pceil i + u * i := (mem_nodeSideSet.1 hj).2 i hi
 
-private theorem le_m_of_mem {j : ℕ} (hj : j ∈ v.nodeSideSet u ℓ) : j ≤ v.m :=
+theorem le_m_of_mem {j : ℕ} (hj : j ∈ v.nodeSideSet u ℓ) : j ≤ v.m :=
   (mem_nodeSideSet.1 hj).1
 
-private theorem nv_eq_of_mem (hside : v.IsSide u ℓ) {j : ℕ} (hj : j ∈ v.nodeSideSet u ℓ) :
+theorem nv_eq_of_mem (hside : v.IsSide u ℓ) {j : ℕ} (hj : j ∈ v.nodeSideSet u ℓ) :
     ℓ * v.Pceil j + u * j = ℓ * v.Pceil (nsMin v u ℓ) + u * nsMin v u ℓ :=
   le_antisymm (nv_le_of_mem hj (le_m_of_mem (nsMin_mem hside)))
     (nv_le_of_mem (nsMin_mem hside) (le_m_of_mem hj))
 
-private theorem onHull_of_mem (hℓ : 0 < ℓ) {j : ℕ} (hj : j ∈ v.nodeSideSet u ℓ) : v.OnHull j := by
+theorem onHull_of_mem (hℓ : 0 < ℓ) {j : ℕ} (hj : j ∈ v.nodeSideSet u ℓ) : v.OnHull j := by
   intro i k hij hjk hkm
   exact chord_le v.Pceil hℓ hij hjk
     (nv_le_of_mem hj (le_trans hij (le_m_of_mem hj)))
     (nv_le_of_mem hj hkm)
 
-private theorem mem_of_onHull_between (hside : v.IsSide u ℓ) {j : ℕ}
+theorem mem_of_onHull_between (hside : v.IsSide u ℓ) {j : ℕ}
     (h1 : nsMin v u ℓ ≤ j) (h2 : j ≤ nsMax v u ℓ) (hoh : v.OnHull j) :
     j ∈ v.nodeSideSet u ℓ := by
   have hbm : nsMax v u ℓ ≤ v.m := le_m_of_mem (nsMax_mem hside)
@@ -196,7 +196,7 @@ private theorem mem_of_onHull_between (hside : v.IsSide u ℓ) {j : ℕ}
   refine mem_nodeSideSet.2 ⟨le_trans h2 hbm, fun i hi => le_trans hle ?_⟩
   exact nv_le_of_mem (nsMin_mem hside) hi
 
-private theorem dvd_sub_nsMin (hℓ : 0 < ℓ) (hside : v.IsSide u ℓ) {j : ℕ}
+theorem dvd_sub_nsMin (hℓ : 0 < ℓ) (hside : v.IsSide u ℓ) {j : ℕ}
     (hj : j ∈ v.nodeSideSet u ℓ) : ℓ ∣ (j - nsMin v u ℓ) := by
   obtain ⟨d, hd⟩ : ∃ d, j = nsMin v u ℓ + d := ⟨j - nsMin v u ℓ, by
     have := nsMin_le_of_mem hside hj; omega⟩
@@ -224,17 +224,17 @@ open Uniformity.Density.Tower
 
 variable {v : HTNode} {u ℓ : ℕ}
 
-private theorem nodeSideDeg_eq (v : HTNode) (u ℓ : ℕ) :
+theorem nodeSideDeg_eq (v : HTNode) (u ℓ : ℕ) :
     v.nodeSideDeg u ℓ = (nsMax v u ℓ - nsMin v u ℓ) / ℓ := rfl
 
-private theorem nsMax_eq_add (hℓ : 0 < ℓ) (hside : v.IsSide u ℓ) :
+theorem nsMax_eq_add (hℓ : 0 < ℓ) (hside : v.IsSide u ℓ) :
     nsMax v u ℓ = nsMin v u ℓ + ℓ * v.nodeSideDeg u ℓ := by
   have hdvd := dvd_sub_nsMin hℓ hside (nsMax_mem hside)
   have hle := (nsMin_lt_nsMax hside).le
   rw [nodeSideDeg_eq, Nat.mul_div_cancel' hdvd]
   omega
 
-private theorem nodeSideDeg_pos (hℓ : 0 < ℓ) (hside : v.IsSide u ℓ) :
+theorem nodeSideDeg_pos (hℓ : 0 < ℓ) (hside : v.IsSide u ℓ) :
     0 < v.nodeSideDeg u ℓ := by
   rcases Nat.eq_zero_or_pos (v.nodeSideDeg u ℓ) with h | h
   · have := nsMax_eq_add hℓ hside
@@ -242,7 +242,7 @@ private theorem nodeSideDeg_pos (hℓ : 0 < ℓ) (hside : v.IsSide u ℓ) :
     rw [h] at *; omega
   · exact h
 
-private theorem mem_lattice (hℓ : 0 < ℓ) (hwf : v.WF) (hside : v.IsSide u ℓ) {t : ℕ}
+theorem mem_lattice (hℓ : 0 < ℓ) (hwf : v.WF) (hside : v.IsSide u ℓ) {t : ℕ}
     (ht : t ≤ v.nodeSideDeg u ℓ) : nsMin v u ℓ + ℓ * t ∈ v.nodeSideSet u ℓ := by
   obtain ⟨s, hs⟩ : ∃ s, v.nodeSideDeg u ℓ = t + s := ⟨v.nodeSideDeg u ℓ - t, by omega⟩
   set a := nsMin v u ℓ with hadef
@@ -309,7 +309,7 @@ variable {v : HTNode}
 
 /-- the steepest-descent construction: every on-hull abscissa below `m` is the left part of a
 genuine side. -/
-private theorem exists_side (hwf : v.WF) {j : ℕ} (hjm : j < v.m) (hoh : v.OnHull j) :
+theorem exists_side (hwf : v.WF) {j : ℕ} (hjm : j < v.m) (hoh : v.OnHull j) :
     ∃ U L : ℕ, v.IsSide U L ∧ j ∈ v.nodeSideSet U L ∧ j < nsMax v U L := by
   classical
   obtain ⟨k, hkT, hkmin⟩ := Finset.exists_min_image (Finset.Ioc j v.m)
@@ -411,7 +411,7 @@ open Uniformity.Density.Tower
 
 variable {v : HTNode} {U L : ℕ}
 
-private theorem chord_strict {ℓ u : ℕ} (P : ℕ → ℕ) {i j k : ℕ}
+theorem chord_strict {ℓ u : ℕ} (P : ℕ → ℕ) {i j k : ℕ}
     (hij : i < j) (hjk : j < k)
     (h1 : ℓ * P j + u * j ≤ ℓ * P i + u * i)
     (h2 : ℓ * P j + u * j ≤ ℓ * P k + u * k)
@@ -442,7 +442,7 @@ private theorem chord_strict {ℓ u : ℕ} (P : ℕ → ℕ) {i j k : ℕ}
       nlinarith [e1, e2]
   exact Nat.lt_of_mul_lt_mul_left key
 
-private theorem isVertex_nsMin (hside : v.IsSide U L) : v.IsVertex (nsMin v U L) := by
+theorem isVertex_nsMin (hside : v.IsSide U L) : v.IsVertex (nsMin v U L) := by
   classical
   intro i k hi hk hkm
   have hmem := nsMin_mem hside
@@ -456,7 +456,7 @@ private theorem isVertex_nsMin (hside : v.IsSide U L) : v.IsVertex (nsMin v U L)
         hinot
   exact chord_strict v.Pceil hi hk (le_of_lt hstr) (nv_le_of_mem hmem hkm) (Or.inl hstr)
 
-private theorem isVertex_nsMax (hside : v.IsSide U L) : v.IsVertex (nsMax v U L) := by
+theorem isVertex_nsMax (hside : v.IsSide U L) : v.IsVertex (nsMax v U L) := by
   classical
   intro i k hi hk hkm
   have hmem := nsMax_mem hside
@@ -471,7 +471,7 @@ private theorem isVertex_nsMax (hside : v.IsSide U L) : v.IsVertex (nsMax v U L)
     (Or.inr hstr)
 
 /-- three on-side abscissae are exactly collinear. -/
-private theorem chord_eq (hL : 0 < L) {i j k : ℕ} (hij : i ≤ j) (hjk : j ≤ k)
+theorem chord_eq (hL : 0 < L) {i j k : ℕ} (hij : i ≤ j) (hjk : j ≤ k)
     (hi : i ∈ v.nodeSideSet U L) (hj : j ∈ v.nodeSideSet U L) (hk : k ∈ v.nodeSideSet U L) :
     (k - i) * v.Pceil j = (k - j) * v.Pceil i + (j - i) * v.Pceil k := by
   obtain ⟨e, he⟩ : ∃ e, j = i + e := ⟨j - i, by omega⟩
@@ -498,7 +498,7 @@ private theorem chord_eq (hL : 0 < L) {i j k : ℕ} (hij : i ≤ j) (hjk : j ≤
     _ = d * (L * v.Pceil i) + e * (L * v.Pceil k) := by rw [← e1]
     _ = L * (d * v.Pceil i + e * v.Pceil k) := by ring
 
-private theorem isVertex_eq_endpoint (hside : v.IsSide U L) {j : ℕ}
+theorem isVertex_eq_endpoint (hside : v.IsSide U L) {j : ℕ}
     (hj : j ∈ v.nodeSideSet U L) (hv : v.IsVertex j) :
     j = nsMin v U L ∨ j = nsMax v U L := by
   by_contra hcon
@@ -517,12 +517,12 @@ open Uniformity.Density.Tower
 
 variable {v : HTNode} {U L U' L' : ℕ}
 
-private theorem mem_both (hS' : v.IsSide U' L') {x : ℕ} (hL : 0 < L)
+theorem mem_both (hS' : v.IsSide U' L') {x : ℕ} (hL : 0 < L)
     (hx : x ∈ v.nodeSideSet U L) (hlo : nsMin v U' L' ≤ x) (hhi : x ≤ nsMax v U' L') :
     x ∈ v.nodeSideSet U' L' :=
   mem_of_onHull_between hS' hlo hhi (onHull_of_mem hL hx)
 
-private theorem side_unique (hS : v.IsSide U L) (hS' : v.IsSide U' L') {j : ℕ}
+theorem side_unique (hS : v.IsSide U L) (hS' : v.IsSide U' L') {j : ℕ}
     (h1 : nsMin v U L ≤ j) (h2 : j < nsMax v U L)
     (h1' : nsMin v U' L' ≤ j) (h2' : j < nsMax v U' L') : U = U' ∧ L = L' := by
   have hL := hS.1
@@ -586,7 +586,7 @@ private theorem side_unique (hS : v.IsSide U L) (hS' : v.IsSide U' L') {j : ℕ}
   · exact Nat.eq_of_mul_eq_mul_right hc0 (by omega)
   · exact Nat.eq_of_mul_eq_mul_right hc0 (by omega)
 
-private theorem exists_next (hwf : v.WF) (hS : v.IsSide U L) (hlt : nsMax v U L < v.m) :
+theorem exists_next (hwf : v.WF) (hS : v.IsSide U L) (hlt : nsMax v U L < v.m) :
     ∃ U' L' : ℕ, v.IsSide U' L' ∧ nsMin v U' L' = nsMax v U L ∧
       nsMax v U L < nsMax v U' L' := by
   obtain ⟨U', L', hS', hmem, hltmax⟩ :=

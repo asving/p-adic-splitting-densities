@@ -190,14 +190,108 @@ theorem dev_assemble {Φ : Polynomial O} (hΦm : Φ.Monic) (hΦd : 0 < Φ.natDeg
     {m : ℕ} (A : Fin m → Polynomial O) (hdeg : ∀ j, (A j).degree < Φ.degree) :
     (∀ j : Fin m, dev Φ (∑ i : Fin m, A i * Φ ^ (i : ℕ) + Φ ^ m) (j : ℕ) = A j)
       ∧ dev Φ (∑ i : Fin m, A i * Φ ^ (i : ℕ) + Φ ^ m) m = 1 := by
-  sorry
+  classical
+  set f := ∑ i : Fin m, A i * Φ ^ (i : ℕ) + Φ ^ m with hf
+  set a : ℕ → Polynomial O :=
+    fun j => if h : j < m then A ⟨j, h⟩ else if j = m then 1 else 0 with ha
+  have hΦ0 : Φ ≠ 0 := hΦm.ne_zero
+  have hdegΦ : (0 : WithBot ℕ) < Φ.degree := by
+    rw [Polynomial.degree_eq_natDegree hΦ0]
+    exact_mod_cast hΦd
+  have hdeg' : ∀ j, (a j).degree < Φ.degree := by
+    intro j
+    simp only [ha]
+    by_cases h1 : j < m
+    · rw [dif_pos h1]; exact hdeg _
+    · rw [dif_neg h1]
+      by_cases h2 : j = m
+      · rw [if_pos h2, Polynomial.degree_one]; exact hdegΦ
+      · rw [if_neg h2, Polynomial.degree_zero, Polynomial.degree_eq_natDegree hΦ0]
+        exact WithBot.bot_lt_coe _
+  have hsum : ∑ j ∈ Finset.range (m + 1), a j * Φ ^ j = f := by
+    rw [Finset.sum_range_succ, hf]
+    congr 1
+    · rw [Finset.sum_range fun j => a j * Φ ^ j]
+      refine Finset.sum_congr rfl fun i _ => ?_
+      simp only [ha, dif_pos i.isLt, Fin.eta]
+    · simp only [ha, dif_neg (lt_irrefl m), if_true, one_mul]
+  have huniq := dev_unique hΦm hΦd hdeg' hsum
+  constructor
+  · intro j
+    have := (huniq (j : ℕ) (by omega)).symm
+    simp only [ha, dif_pos j.isLt, Fin.eta] at this
+    exact this
+  · have := (huniq m (by omega)).symm
+    simp only [ha, dif_neg (lt_irrefl m), if_pos rfl] at this
+    exact this
 
 /-- the assembled polynomial is monic of degree `m·d`, hence IS a `monicPoly`. -/
 theorem assemble_eq_monicPoly {Φ : Polynomial O} (hΦm : Φ.Monic) (hΦd : 0 < Φ.natDegree)
     {m : ℕ} (A : Fin m → Polynomial O) (hdeg : ∀ j, (A j).degree < Φ.degree) :
     ∃ a : Fin (m * Φ.natDegree) → O,
       monicPoly a = ∑ i : Fin m, A i * Φ ^ (i : ℕ) + Φ ^ m := by
-  sorry
+  classical
+  set f := ∑ i : Fin m, A i * Φ ^ (i : ℕ) + Φ ^ m with hf
+  have hΦ0 : Φ ≠ 0 := hΦm.ne_zero
+  have hΦmdeg : (Φ ^ m).degree = ((m * Φ.natDegree : ℕ) : WithBot ℕ) := by
+    rw [Polynomial.degree_pow, Polynomial.degree_eq_natDegree hΦ0]
+    rw [nsmul_eq_mul]
+    exact_mod_cast rfl
+  have htaildeg : (∑ i : Fin m, A i * Φ ^ (i : ℕ)).degree < (Φ ^ m).degree := by
+    rw [hΦmdeg]
+    refine lt_of_le_of_lt (Polynomial.degree_sum_le _ _) ?_
+    rw [Finset.sup_lt_iff (by exact_mod_cast WithBot.bot_lt_coe (m * Φ.natDegree))]
+    intro i _
+    have hAi : (A i).natDegree < Φ.natDegree := by
+      rcases eq_or_ne (A i) 0 with h0 | h0
+      · rw [h0, Polynomial.natDegree_zero]; exact hΦd
+      · rw [Polynomial.natDegree_lt_iff_degree_lt h0,
+          ← Polynomial.degree_eq_natDegree hΦ0]
+        exact hdeg i
+    have hnat : ((A i * Φ ^ (i : ℕ)).natDegree) < m * Φ.natDegree := by
+      have h1 : (A i * Φ ^ (i : ℕ)).natDegree ≤ (A i).natDegree + (i : ℕ) * Φ.natDegree := by
+        refine le_trans (Polynomial.natDegree_mul_le) ?_
+        rw [Polynomial.natDegree_pow]
+      have h2 : ((i : ℕ) + 1) * Φ.natDegree ≤ m * Φ.natDegree :=
+        Nat.mul_le_mul_right _ i.isLt
+      nlinarith [hAi]
+    exact lt_of_le_of_lt Polynomial.degree_le_natDegree (by exact_mod_cast hnat)
+  have hmon : f.Monic := by
+    rw [hf, add_comm]
+    exact (hΦm.pow m).add_of_left htaildeg
+  have hdegf : f.natDegree = m * Φ.natDegree := by
+    have : f.degree = (Φ ^ m).degree := by
+      rw [hf]
+      rw [add_comm]
+      exact Polynomial.degree_add_eq_left_of_degree_lt htaildeg
+    have h2 : (Φ ^ m).natDegree = m * Φ.natDegree := by
+      rw [Polynomial.natDegree_pow]
+    rw [Polynomial.natDegree, this, ← Polynomial.natDegree]
+    exact h2
+  refine ⟨fun i => f.coeff (i : ℕ), ?_⟩
+  ext t
+  rw [monicPoly, Polynomial.coeff_add, coeff_X_pow]
+  have htail : (∑ i : Fin (m * Φ.natDegree), C (f.coeff (i : ℕ)) * X ^ (i : ℕ)).coeff t
+      = if t < m * Φ.natDegree then f.coeff t else 0 := by
+    rw [finsetSum_coeff]
+    simp only [coeff_C_mul, coeff_X_pow, mul_ite, mul_one, mul_zero]
+    by_cases h : t < m * Φ.natDegree
+    · rw [if_pos h, Finset.sum_eq_single (⟨t, h⟩ : Fin (m * Φ.natDegree))]
+      · simp
+      · intro b _ hb
+        exact if_neg fun hc => hb (Fin.ext hc.symm)
+      · intro hmem
+        exact absurd (Finset.mem_univ _) hmem
+    · rw [if_neg h]
+      refine Finset.sum_eq_zero fun b _ => if_neg fun hc => h ?_
+      exact hc ▸ b.isLt
+  rw [htail]
+  rcases lt_trichotomy t (m * Φ.natDegree) with h | h | h
+  · rw [if_neg (by omega), if_pos h, zero_add]
+  · rw [if_pos h, if_neg (by omega), add_zero, h, ← hdegf]
+    exact hmon.coeff_natDegree.symm
+  · rw [if_neg (by omega), if_neg (by omega), add_zero]
+    exact (f.coeff_eq_zero_of_natDegree_lt (by omega)).symm
 
 /-! ### 3. The sweep read and the block sets -/
 
