@@ -345,7 +345,17 @@ theorem pceil_on_side (v : HTNode) (hwf : v.WF) {u ℓ : ℕ} (hS : v.IsSide u �
     {k : ℕ} (hk : k ≤ v.nodeSideDeg u ℓ) :
     v.Pceil ((v.nodeSideSet u ℓ).min.getD 0 + ℓ * k) + u * k
       = v.Pceil ((v.nodeSideSet u ℓ).min.getD 0) := by
-  sorry
+  show v.Pceil (C109v.nsMin v u ℓ + ℓ * k) + u * k = v.Pceil (C109v.nsMin v u ℓ)
+  have hmem := C109v.mem_lattice hS.1 hwf hS hk
+  have heq := C109v.nv_eq_of_mem hS hmem
+  set a := v.Pceil (C109v.nsMin v u ℓ + ℓ * k) with hadef
+  set b := v.Pceil (C109v.nsMin v u ℓ) with hbdef
+  have hsplit : u * (C109v.nsMin v u ℓ + ℓ * k)
+      = u * C109v.nsMin v u ℓ + ℓ * (u * k) := by ring
+  have hkey : ℓ * (a + u * k) = ℓ * b := by
+    have h1 : ℓ * (a + u * k) = ℓ * a + ℓ * (u * k) := by ring
+    omega
+  exact Nat.eq_of_mul_eq_mul_left hS.1 hkey
 
 /-- **the synthetic side dictionary**: for a monic degree-`m·d` polynomial whose height
 profile has the node floors and vertex exactness, each genuine node side is read off `f`
@@ -363,7 +373,108 @@ theorem side_dictionary_of_profile (hπ : Irreducible π) {Φ : Polynomial O} (h
       sideDeg Φ f u ℓ hne = v.nodeSideDeg u ℓ ∧
       npHgt Φ f (sideMin Φ f u ℓ hne)
         = ((v.Pceil (sideMin Φ f u ℓ hne) : ℕ) : ℕ∞) := by
-  sorry
+  classical
+  have hd : 0 < Φ.natDegree := hΦ.pos
+  set j₀ := C109v.nsMin v u ℓ with hj₀
+  set j₁ := C109v.nsMax v u ℓ with hj₁
+  have hj₀m : j₀ ≤ v.m := C109v.le_m_of_mem (C109v.nsMin_mem hS)
+  have hj₁m : j₁ ≤ v.m := C109v.le_m_of_mem (C109v.nsMax_mem hS)
+  have hmmd : v.m ≤ v.m * Φ.natDegree := Nat.le_mul_of_pos_right _ hd
+  set V := ℓ * v.Pceil j₀ + u * j₀ with hV
+  have hVle : ∀ i, i ≤ v.m → V ≤ ℓ * v.Pceil i + u * i := fun i hi =>
+    C109v.nv_le_of_mem (C109v.nsMin_mem hS) hi
+  have hsmultop : ℓ • (⊤ : ℕ∞) = ⊤ := by
+    rw [nsmul_eq_mul]
+    exact WithTop.mul_top (Nat.cast_ne_zero.mpr hS.1.ne')
+  have htop : ∀ j, v.m < j → npHgt Φ f j = ⊤ := by
+    intro j hj
+    have hz : dev Φ f j = 0 := dev_eq_zero_of_lt hΦ.monic hd f j
+      (by rw [hdeg]; exact (Nat.mul_lt_mul_right hd).2 hj)
+    rw [npHgt, hz]
+    exact gaussVal_eq_top_iff.2 rfl
+  have hWcast : ∀ (j H : ℕ), npHgt Φ f j = (H : ℕ∞) →
+      ℓ • npHgt Φ f j + ((u * j : ℕ) : ℕ∞) = ((ℓ * H + u * j : ℕ) : ℕ∞) := by
+    intro j H hH
+    rw [hH, nsmul_eq_mul]
+    push_cast
+    ring
+  have hsupp : suppVal Φ f u ℓ = (V : ℕ∞) := by
+    apply le_antisymm
+    · refine le_trans (Finset.inf_le (Finset.mem_range.2
+        (lt_of_le_of_lt (le_trans hj₀m (hdeg ▸ hmmd)) (Nat.lt_succ_self _)))) ?_
+      rw [hWcast j₀ (v.Pceil j₀) (hvx j₀ hj₀m (C109v.isVertex_nsMin hS))]
+    · refine Finset.le_inf ?_
+      intro j _
+      rcases le_or_gt j v.m with hjm | hjm
+      · rcases eq_or_ne (npHgt Φ f j) ⊤ with hT | hT
+        · rw [hT, hsmultop, top_add]
+          exact le_top
+        · obtain ⟨H, hH⟩ := ENat.ne_top_iff_exists.1 hT
+          have hPH : v.Pceil j ≤ H := by
+            have := hfl j hjm
+            rw [← hH] at this
+            exact_mod_cast this
+          rw [hWcast j H hH.symm]
+          have : V ≤ ℓ * H + u * j :=
+            le_trans (hVle j hjm)
+              (Nat.add_le_add_right (Nat.mul_le_mul_left ℓ hPH) _)
+          exact_mod_cast this
+      · rw [htop j hjm, hsmultop, top_add]
+        exact le_top
+  -- the two endpoints are on the side of `f`
+  have hvertexW : ∀ j, j ∈ v.nodeSideSet u ℓ → v.IsVertex j → OnSide Φ f u ℓ j := by
+    intro j hjmem hjv
+    have hjm := C109v.le_m_of_mem hjmem
+    rw [OnSide, hsupp, hWcast j (v.Pceil j) (hvx j hjm hjv)]
+    exact_mod_cast (C109v.nv_eq_of_mem hS hjmem)
+  have hj0on : OnSide Φ f u ℓ j₀ :=
+    hvertexW j₀ (C109v.nsMin_mem hS) (C109v.isVertex_nsMin hS)
+  have hj1on : OnSide Φ f u ℓ j₁ :=
+    hvertexW j₁ (C109v.nsMax_mem hS) (C109v.isVertex_nsMax hS)
+  have hj0mem : j₀ ∈ sideSet Φ f u ℓ :=
+    Finset.mem_filter.mpr ⟨Finset.mem_range.2 (by omega), hj0on⟩
+  have hj1mem : j₁ ∈ sideSet Φ f u ℓ :=
+    Finset.mem_filter.mpr ⟨Finset.mem_range.2 (by omega), hj1on⟩
+  -- containment in the node side set
+  have hsub : ∀ j, j ∈ sideSet Φ f u ℓ → j ∈ v.nodeSideSet u ℓ := by
+    intro j hjmem
+    have hon : OnSide Φ f u ℓ j := onSide_of_mem_sideSet hjmem
+    rw [OnSide, hsupp] at hon
+    have hjm : j ≤ v.m := by
+      by_contra hc
+      rw [htop j (by omega), hsmultop, top_add] at hon
+      exact (WithTop.top_ne_coe (α := ℕ)) hon
+    have hT : npHgt Φ f j ≠ ⊤ := by
+      intro hT
+      rw [hT, hsmultop, top_add] at hon
+      exact (WithTop.top_ne_coe (α := ℕ)) hon
+    obtain ⟨H, hH⟩ := ENat.ne_top_iff_exists.1 hT
+    have hPH : v.Pceil j ≤ H := by
+      have := hfl j hjm
+      rw [← hH] at this
+      exact_mod_cast this
+    rw [hWcast j H hH.symm] at hon
+    have hnat : ℓ * H + u * j = V := by exact_mod_cast hon
+    have hjeq : ℓ * v.Pceil j + u * j = V := by
+      have h1 : ℓ * v.Pceil j + u * j ≤ ℓ * H + u * j :=
+        Nat.add_le_add_right (Nat.mul_le_mul_left ℓ hPH) _
+      have h2 := hVle j hjm
+      omega
+    exact C109v.mem_nodeSideSet.mpr ⟨hjm, fun i hi => by
+      rw [hjeq]
+      exact hVle i hi⟩
+  have hne : (sideSet Φ f u ℓ).Nonempty := ⟨j₀, hj0mem⟩
+  have hminEq : sideMin Φ f u ℓ hne = j₀ :=
+    le_antisymm (Finset.min'_le _ _ hj0mem)
+      (Finset.le_min' _ _ _ fun j hj => C109v.nsMin_le_of_mem hS (hsub j hj))
+  have hmaxEq : sideMax Φ f u ℓ hne = j₁ :=
+    le_antisymm (Finset.max'_le _ _ _ fun j hj => C109v.le_nsMax_of_mem hS (hsub j hj))
+      (Finset.le_max' _ _ hj1mem)
+  refine ⟨hne, ?_, ?_, ?_⟩
+  · exact hminEq
+  · rw [sideDeg, hminEq, hmaxEq, C109v.nodeSideDeg_eq]
+  · rw [hminEq]
+    exact hvx j₀ hj₀m (C109v.isVertex_nsMin hS)
 
 /-! ### 5. The crux: cell membership ↔ sweep condition + block floors -/
 
