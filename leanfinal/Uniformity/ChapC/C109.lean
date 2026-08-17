@@ -476,6 +476,96 @@ theorem side_dictionary_of_profile (hπ : Irreducible π) {Φ : Polynomial O} (h
   · rw [hminEq]
     exact hvx j₀ hj₀m (C109v.isVertex_nsMin hS)
 
+/-- the top development coefficient of a monic degree-`m·d` polynomial is `1`
+(B.05's expansion + a leading-coefficient comparison with the assembled twin). -/
+theorem dev_top_of_monic {Φ : Polynomial O} (hΦm : Φ.Monic) (hΦd : 0 < Φ.natDegree)
+    {m : ℕ} {f : Polynomial O} (hmon : f.Monic) (hdeg : f.natDegree = m * Φ.natDegree) :
+    dev Φ f m = 1 := by
+  classical
+  set A : Fin m → Polynomial O := fun j => dev Φ f (j : ℕ) with hA
+  have hdegA : ∀ j : Fin m, (A j).degree < Φ.degree := fun j => degree_dev_lt hΦm hΦd f _
+  obtain ⟨a, ha⟩ := assemble_eq_monicPoly hΦm hΦd A hdegA
+  set g := ∑ i : Fin m, A i * Φ ^ (i : ℕ) + Φ ^ m with hg
+  have hgmon : g.Monic := ha ▸ monicPoly_monic a
+  have hgdeg : g.natDegree = m * Φ.natDegree := by rw [← ha, monicPoly_natDegree]
+  have hexp : ∑ j ∈ Finset.range (m + 1), dev Φ f j * Φ ^ j = f :=
+    sum_dev_eq hΦm hΦd f
+      (by rw [hdeg]; exact (Nat.mul_lt_mul_right hΦd).2 (Nat.lt_succ_self m))
+  have h1 : f = (∑ i : Fin m, A i * Φ ^ (i : ℕ)) + dev Φ f m * Φ ^ m := by
+    conv_lhs => rw [← hexp]
+    rw [Finset.sum_range_succ, Finset.sum_range fun j => dev Φ f j * Φ ^ j]
+  have hfg : f - g = (dev Φ f m - 1) * Φ ^ m := by
+    conv_lhs => rw [h1, hg]
+    ring
+  by_contra hne
+  have hsub : dev Φ f m - 1 ≠ 0 := sub_ne_zero.mpr hne
+  have hdegfg : (f - g).degree < ((m * Φ.natDegree : ℕ) : WithBot ℕ) := by
+    have h1 : f.degree = g.degree := by
+      rw [Polynomial.degree_eq_natDegree hmon.ne_zero,
+        Polynomial.degree_eq_natDegree hgmon.ne_zero, hdeg, hgdeg]
+    have h2 := Polynomial.degree_sub_lt h1 hmon.ne_zero (by rw [hmon, hgmon])
+    rwa [Polynomial.degree_eq_natDegree hmon.ne_zero, hdeg] at h2
+  have hΦm0 : Φ ≠ 0 := hΦm.ne_zero
+  have hdegge : ((m * Φ.natDegree : ℕ) : WithBot ℕ) ≤ (f - g).degree := by
+    rw [hfg, Polynomial.degree_mul]
+    have h3 : (Φ ^ m).degree = ((m * Φ.natDegree : ℕ) : WithBot ℕ) := by
+      rw [Polynomial.degree_pow, Polynomial.degree_eq_natDegree hΦm0, nsmul_eq_mul]
+      exact_mod_cast rfl
+    rw [h3]
+    calc ((m * Φ.natDegree : ℕ) : WithBot ℕ)
+        = 0 + ((m * Φ.natDegree : ℕ) : WithBot ℕ) := (zero_add _).symm
+      _ ≤ (dev Φ f m - 1).degree + ((m * Φ.natDegree : ℕ) : WithBot ℕ) :=
+          add_le_add (Polynomial.zero_le_degree_iff.mpr hsub) le_rfl
+  exact absurd hdegfg (not_lt.2 hdegge)
+
+/-- the height-`0` digit read of the constant `1` is `1`. -/
+theorem resMk_one {Φ : Polynomial O} (hπ : Irreducible π) :
+    resMk π Φ 0 (1 : Polynomial O) = 1 := by
+  have hdig : digPoly π 0 (1 : Polynomial O) = 1 := by
+    ext i
+    rw [digPoly_coeff hπ, Polynomial.coeff_one, Polynomial.coeff_one]
+    rcases eq_or_ne i 0 with rfl | hi
+    · rw [if_pos rfl, if_pos rfl, digAt_zero, map_one]
+    · rw [if_neg hi, if_neg hi, digAt_zero, map_zero]
+  rw [resMk, hdig, map_one]
+
+/-- **the residual polynomial as the priced-digit sweep**: under the profile, `resPoly`'s
+`k`-th coefficient is the height-`Pceil` digit of the development block at the side's `k`-th
+lattice abscissa. -/
+theorem resPoly_eq_sweep (hπ : Irreducible π) {Φ : Polynomial O} (hΦ : IsKey Φ)
+    (v : HTNode) (hwf : v.WF)
+    {f : Polynomial O} (hmon : f.Monic) (hdeg : f.natDegree = v.m * Φ.natDegree)
+    (hfl : ∀ j, j ≤ v.m → (v.Pceil j : ℕ∞) ≤ npHgt Φ f j)
+    (hvx : ∀ j, j ≤ v.m → v.IsVertex j → npHgt Φ f j = (v.Pceil j : ℕ∞))
+    {u ℓ : ℕ} (hS : v.IsSide u ℓ)
+    (hne : (sideSet Φ f u ℓ).Nonempty) {H₀ : ℕ}
+    (hpin : npHgt Φ f (sideMin Φ f u ℓ hne) = (H₀ : ℕ∞)) :
+    resPoly π Φ f u ℓ hne H₀
+      = ∑ k ∈ Finset.range (v.nodeSideDeg u ℓ + 1),
+          Polynomial.C (resMk π Φ (v.Pceil ((v.nodeSideSet u ℓ).min.getD 0 + ℓ * k))
+              (dev Φ f ((v.nodeSideSet u ℓ).min.getD 0 + ℓ * k)))
+            * Polynomial.X ^ k := by
+  obtain ⟨hne', hmin, hdeg', hpin'⟩ :=
+    side_dictionary_of_profile hπ hΦ v hwf hmon hdeg hfl hvx hS
+  have hH₀ : H₀ = v.Pceil ((v.nodeSideSet u ℓ).min.getD 0) := by
+    have h1 : npHgt Φ f (sideMin Φ f u ℓ hne) = ((v.Pceil (sideMin Φ f u ℓ hne) : ℕ) : ℕ∞) := by
+      have : sideMin Φ f u ℓ hne = sideMin Φ f u ℓ hne' := rfl
+      rw [this, hpin']
+    rw [hpin] at h1
+    have h2 : H₀ = v.Pceil (sideMin Φ f u ℓ hne) := by exact_mod_cast h1
+    rw [h2]
+    exact congrArg v.Pceil hmin
+  rw [resPoly]
+  have hsd : sideDeg Φ f u ℓ hne = v.nodeSideDeg u ℓ := hdeg'
+  rw [hsd]
+  refine Finset.sum_congr rfl fun k hk => ?_
+  have hkd : k ≤ v.nodeSideDeg u ℓ := by rw [Finset.mem_range] at hk; omega
+  have hlaw := pceil_on_side v hwf hS hkd
+  have hmin2 : sideMin Φ f u ℓ hne = (v.nodeSideSet u ℓ).min.getD 0 := hmin
+  have hheight : H₀ - u * k = v.Pceil ((v.nodeSideSet u ℓ).min.getD 0 + ℓ * k) := by
+    rw [hH₀]; omega
+  rw [resCoeff, hmin2, hheight]
+
 /-! ### 5. The crux: cell membership ↔ sweep condition + block floors -/
 
 /-- **The crux equivalence.**  Through a componentwise development bridge `E` (C.109a), a
