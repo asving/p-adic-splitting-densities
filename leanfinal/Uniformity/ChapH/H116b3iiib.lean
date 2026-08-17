@@ -47,6 +47,50 @@ theorem planted_map_residue_eq {π : O} (hπ : Irreducible π) {N r : ℕ}
   rw [alphaParent_map_residue hπ _ (hLchild p.1 p.2).2.1,
     alphaParent_map_residue hπ _ (hLchild p.1 p.2).2.1]
 
+/-- Height-0 digit polynomial of a constant: the residue. -/
+private theorem digPoly_zero_C {π : O} (c : O) :
+    digPoly π 0 (Polynomial.C c) = Polynomial.C (residue O c) := by
+  unfold digPoly
+  rw [Polynomial.natDegree_C]
+  rw [Finset.sum_range_one, Polynomial.coeff_C_zero, pow_zero, mul_one, digAt_zero]
+
+/-- The monic support value at slope `(0, 1)` vanishes (attained at the top coefficient). -/
+private theorem suppVal_zero_one_of_monic {g : Polynomial O} (hg : g.Monic) :
+    suppVal X g 0 1 = 0 := by
+  refine le_antisymm ?_ zero_le
+  have hmem : g.natDegree ∈ Finset.range (g.natDegree + 1) :=
+    Finset.mem_range.2 (Nat.lt_succ_self _)
+  have hle := Finset.inf_le (f := fun j => (1 : ℕ) • npHgt X g j + ((0 * j : ℕ) : ℕ∞)) hmem
+  have hval : (1 : ℕ) • npHgt X g g.natDegree + ((0 * g.natDegree : ℕ) : ℕ∞) = 0 := by
+    rw [npHgt_X, hg.coeff_natDegree,
+      IsDiscreteValuationRing.addVal_eq_zero_iff.2 isUnit_one]
+    simp
+  rw [suppVal]
+  exact hval ▸ hle
+
+/-- At `(0, 1)` on a monic polynomial, on-side means height zero, i.e. unit coefficient,
+i.e. nonzero residue. -/
+private theorem onSide_zero_one_iff {g : Polynomial O}
+    (hg : g.Monic) (j : ℕ) :
+    OnSide X g 0 1 j ↔ (g.map (residue O)).coeff j ≠ 0 := by
+  have hOn : OnSide X g 0 1 j ↔ npHgt X g j = 0 := by
+    unfold OnSide
+    rw [suppVal_zero_one_of_monic hg]
+    constructor
+    · intro h
+      have := h
+      rwa [one_nsmul, Nat.zero_mul, Nat.cast_zero, add_zero] at this
+    · intro h
+      rw [one_nsmul, h, Nat.zero_mul, Nat.cast_zero, add_zero]
+  rw [hOn, npHgt_X, Polynomial.coeff_map]
+  constructor
+  · intro h
+    exact (IsLocalRing.residue_ne_zero_iff_isUnit _).2
+      (IsDiscreteValuationRing.addVal_eq_zero_iff.1 h)
+  · intro h
+    exact IsDiscreteValuationRing.addVal_eq_zero_iff.2
+      ((IsLocalRing.residue_ne_zero_iff_isUnit _).1 h)
+
 /-- **The u = 0 branch (record step (3e), second half).** At `(u, ℓ) = (0, 1)` the whole side
 datum — support value, side set, pinned height (necessarily `0`), and residual polynomial —
 is read off `f mod π`, so equal reductions transport the CS witness verbatim. B.77 is NOT
@@ -58,7 +102,40 @@ private theorem planted_side_transport_at_zero {π : O} (hπ : Irreducible π)
     sideSet X f' 0 1 = sideSet X f 0 1 ∧
       ∀ (hne : (sideSet X f 0 1).Nonempty) (hne' : (sideSet X f' 0 1).Nonempty),
         resPoly π X f' 0 1 hne' 0 = resPoly π X f 0 1 hne 0 := by
-  sorry
+  classical
+  have hres : ∀ j, residue O (f'.coeff j) = residue O (f.coeff j) := by
+    intro j
+    have := congrArg (fun p => Polynomial.coeff p j) hmap
+    simpa [Polynomial.coeff_map] using this
+  have hset : sideSet X f' 0 1 = sideSet X f 0 1 := by
+    unfold sideSet
+    rw [hdeg]
+    refine Finset.filter_congr fun j _ => ?_
+    rw [onSide_zero_one_iff hf', onSide_zero_one_iff hf, hmap]
+  refine ⟨hset, fun hne hne' => ?_⟩
+  have hmin : sideMin X f' 0 1 hne' = sideMin X f 0 1 hne := by
+    unfold sideMin
+    have key : ∀ (h₁ : (sideSet X f' 0 1).Nonempty) (h₂ : (sideSet X f 0 1).Nonempty),
+        (sideSet X f' 0 1).min' h₁ = (sideSet X f 0 1).min' h₂ := by
+      rw [hset]; intro h₁ h₂; rfl
+    exact key hne' hne
+  have hmax : sideMax X f' 0 1 hne' = sideMax X f 0 1 hne := by
+    unfold sideMax
+    have key : ∀ (h₁ : (sideSet X f' 0 1).Nonempty) (h₂ : (sideSet X f 0 1).Nonempty),
+        (sideSet X f' 0 1).max' h₁ = (sideSet X f 0 1).max' h₂ := by
+      rw [hset]; intro h₁ h₂; rfl
+    exact key hne' hne
+  have hdegs : sideDeg X f' 0 1 hne' = sideDeg X f 0 1 hne := by
+    unfold sideDeg
+    rw [hmin, hmax]
+  unfold resPoly
+  rw [hdegs]
+  refine Finset.sum_congr rfl fun k _ => ?_
+  congr 1
+  unfold resCoeff
+  rw [hmin]
+  unfold resMk
+  rw [dev_X, dev_X, Nat.zero_sub, digPoly_zero_C, digPoly_zero_C, hres]
 
 /-- **L2 = record steps (3a)+(3b)+(3c): the swap difference sits strictly above the planted
 supporting line** at every `(u, ℓ)` with `0 < u`, `0 < ℓ`, `Nat.Coprime u ℓ` — exactly
