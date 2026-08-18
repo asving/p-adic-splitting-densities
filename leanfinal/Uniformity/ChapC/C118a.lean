@@ -85,13 +85,40 @@ theorem smul_top_pos {k : ℕ} (hk : 0 < k) : k • (⊤ : ℕ∞) = ⊤ := by
 theorem addVal_min_congr (hπ : Irreducible π) {N : ℕ} {x x' : O}
     (hdvd : π ^ N ∣ (x - x')) :
     min (addVal O x) (N : ℕ∞) = min (addVal O x') (N : ℕ∞) := by
-  sorry
+  have key : ∀ y z : O, π ^ N ∣ (z - y) →
+      min (addVal O y) (N : ℕ∞) ≤ min (addVal O z) (N : ℕ∞) := by
+    intro y z hyz
+    have hNzy : (N : ℕ∞) ≤ addVal O (z - y) := by
+      have h1 : addVal O (π ^ N) ≤ addVal O (z - y) := addVal_le_iff_dvd.mpr hyz
+      rwa [hπ.addVal_pow] at h1
+    have hzsum : addVal O y ⊓ addVal O (z - y) ≤ addVal O z := by
+      have h2 := addVal_add (a := y) (b := z - y)
+      rwa [add_sub_cancel] at h2
+    rcases le_or_gt (N : ℕ∞) (addVal O y) with hy | hy
+    · have hz : (N : ℕ∞) ≤ addVal O z :=
+        le_trans (le_min hy hNzy) hzsum
+      rw [min_eq_right hy, min_eq_right hz]
+    · have hz : addVal O y ≤ addVal O z :=
+        le_trans (le_min le_rfl (le_trans hy.le hNzy)) hzsum
+      rw [min_eq_left hy.le]
+      exact le_min hz hy.le
+  exact le_antisymm (key x x' (dvd_sub_comm.mp hdvd)) (key x' x hdvd)
 
 /-! ### 2. the capped stage-height congruence -/
 
 /-- the stage height of `0` is `⊤`. -/
 theorem stageHeight_zero (F : KeyFrame O π) : F.stageHeight 0 = ⊤ := by
-  sorry
+  rw [KeyFrame.stageHeight, suppVal]
+  simp only [Polynomial.natDegree_zero, zero_add, Finset.range_one, Finset.inf_singleton]
+  have h2 : npHgt X (0 : Polynomial O) 0 = ⊤ := by
+    rw [npHgt]
+    have hz : dev X (0 : Polynomial O) 0 = 0 := by
+      rw [show dev X (0 : Polynomial O) 0 = (0 : Polynomial O) %ₘ X from rfl]
+      simp
+    rw [hz]
+    exact gaussVal_eq_top_iff.2 rfl
+  rw [h2, smul_top_pos F.he₁]
+  simp
 
 /-- the extended-range normal form of the stage height. -/
 theorem stageHeight_eq_inf_ext (F : KeyFrame O π) (A : Polynomial O) {M : ℕ}
@@ -99,7 +126,10 @@ theorem stageHeight_eq_inf_ext (F : KeyFrame O π) (A : Polynomial O) {M : ℕ}
     F.stageHeight A
       = (Finset.range (M + 1)).inf
           (fun i => F.e₁ • gaussVal (Polynomial.C (A.coeff i)) + (F.h * i : ℕ∞)) := by
-  sorry
+  rw [KeyFrame.stageHeight_eq_inf]
+  refine inf_range_ext hM _ fun i hi1 _ => ?_
+  rw [A.coeff_eq_zero_of_natDegree_lt (by omega), Polynomial.C_0,
+    gaussVal_eq_top_iff.2 rfl, smul_top_pos F.he₁, top_add]
 
 /-- **the capped stage-height congruence**: coefficientwise-congruent polynomials have the
 same stage height through the `e₁N` window. -/
@@ -107,7 +137,48 @@ theorem stageHeight_min_congr (hπ : Irreducible π) (F : KeyFrame O π) {N : �
     {A A' : Polynomial O} (h : ∀ i, π ^ N ∣ (A - A').coeff i) :
     min (F.stageHeight A) ((F.e₁ * N : ℕ) : ℕ∞)
       = min (F.stageHeight A') ((F.e₁ * N : ℕ) : ℕ∞) := by
-  sorry
+  have hgC : ∀ x : O, gaussVal (Polynomial.C x) = addVal O x := by
+    intro x
+    rw [gaussVal]
+    simp only [Polynomial.natDegree_C, zero_add, Finset.range_one, Finset.inf_singleton,
+      Polynomial.coeff_C_zero]
+  have hsmulN : F.e₁ • ((N : ℕ) : ℕ∞) = ((F.e₁ * N : ℕ) : ℕ∞) := by
+    rw [nsmul_eq_mul]
+    exact_mod_cast rfl
+  set M := max A.natDegree A'.natDegree with hM
+  rw [stageHeight_eq_inf_ext F A (le_max_left _ _),
+    stageHeight_eq_inf_ext F A' (le_max_right _ _),
+    min_inf_eq ⟨0, Finset.mem_range.2 (Nat.succ_pos _)⟩,
+    min_inf_eq ⟨0, Finset.mem_range.2 (Nat.succ_pos _)⟩]
+  refine Finset.inf_congr rfl fun i _ => ?_
+  have hcoef : π ^ N ∣ (A.coeff i - A'.coeff i) := by
+    have := h i
+    rwa [Polynomial.coeff_sub] at this
+  have hcap := addVal_min_congr hπ (N := N) hcoef
+  rcases le_or_gt (N : ℕ∞) (addVal O (A.coeff i)) with hbig | hsmall
+  · have hbig' : (N : ℕ∞) ≤ addVal O (A'.coeff i) := by
+      rw [min_eq_right hbig] at hcap
+      by_contra hc
+      push_neg at hc
+      rw [min_eq_left hc.le] at hcap
+      exact absurd (hcap ▸ hc) (lt_irrefl _)
+    have ht1 : ((F.e₁ * N : ℕ) : ℕ∞) ≤ F.e₁ • gaussVal (Polynomial.C (A.coeff i)) + (F.h * i : ℕ∞) := by
+      refine le_trans ?_ (le_add_of_nonneg_right zero_le)
+      rw [hgC, ← hsmulN, nsmul_eq_mul, nsmul_eq_mul]
+      exact mul_le_mul_left' hbig _
+    have ht2 : ((F.e₁ * N : ℕ) : ℕ∞) ≤ F.e₁ • gaussVal (Polynomial.C (A'.coeff i)) + (F.h * i : ℕ∞) := by
+      refine le_trans ?_ (le_add_of_nonneg_right zero_le)
+      rw [hgC, ← hsmulN, nsmul_eq_mul, nsmul_eq_mul]
+      exact mul_le_mul_left' hbig' _
+    rw [min_eq_right ht1, min_eq_right ht2]
+  · have heq : addVal O (A.coeff i) = addVal O (A'.coeff i) := by
+      rw [min_eq_left hsmall.le] at hcap
+      rcases min_cases (addVal O (A'.coeff i)) ((N : ℕ) : ℕ∞) with ⟨h1, _⟩ | ⟨h1, _⟩
+      · rw [h1] at hcap
+        exact hcap
+      · rw [h1] at hcap
+        exact absurd (hcap ▸ hsmall) (lt_irrefl _)
+    rw [hgC, hgC, heq]
 
 /-! ### 3. the capped dv-support congruence -/
 
@@ -117,12 +188,18 @@ theorem dvHgt_min_congr (hπ : Irreducible π) (F : KeyFrame O π) {N : ℕ}
     {A A' : Polynomial O} (h : ∀ i, π ^ N ∣ (A - A').coeff i) (j : ℕ) :
     min (dvHgt F A j) ((F.e₁ * N : ℕ) : ℕ∞)
       = min (dvHgt F A' j) ((F.e₁ * N : ℕ) : ℕ∞) := by
-  sorry
+  rw [dvHgt, dvHgt]
+  exact stageHeight_min_congr hπ F (dev_congr hπ F.hmonic h j)
 
 /-- `dvHgt` vanishes to `⊤` above the degree. -/
 theorem dvHgt_top_of_gt (F : KeyFrame O π) (A : Polynomial O) {j : ℕ}
     (hj : A.natDegree < j) : dvHgt F A j = ⊤ := by
-  sorry
+  have hdpos : 0 < F.key.natDegree := by
+    rw [F.hdeg]
+    exact Nat.mul_pos F.he₁ F.hf₁
+  have hjd : j ≤ j * F.key.natDegree := Nat.le_mul_of_pos_right _ hdpos
+  rw [dvHgt, dev_eq_zero_of_lt F.hmonic hdpos A j (by omega)]
+  exact stageHeight_zero F
 
 /-- **the capped dv-support congruence**: `dvSupp` of congruent polynomials agrees through
 the `(e₁ℓ)N` window. -/
@@ -130,26 +207,123 @@ theorem dvSupp_min_congr (hπ : Irreducible π) (F : KeyFrame O π) {N : ℕ}
     {A A' : Polynomial O} (h : ∀ i, π ^ N ∣ (A - A').coeff i) (u ℓ : ℕ) (hℓ : 0 < ℓ) :
     min (dvSupp F A u ℓ) (((F.e₁ * ℓ) * N : ℕ) : ℕ∞)
       = min (dvSupp F A' u ℓ) (((F.e₁ * ℓ) * N : ℕ) : ℕ∞) := by
-  sorry
+  set M := max A.natDegree A'.natDegree with hM
+  have hext : ∀ B : Polynomial O, B.natDegree ≤ M →
+      dvSupp F B u ℓ
+        = (Finset.range (M + 1)).inf (fun i => ℓ • dvHgt F B i + (u * i : ℕ∞)) := by
+    intro B hB
+    rw [dvSupp]
+    refine inf_range_ext hB _ fun i hi1 _ => ?_
+    rw [dvHgt_top_of_gt F B (by omega), smul_top_pos hℓ, top_add]
+  rw [hext A (le_max_left _ _), hext A' (le_max_right _ _),
+    min_inf_eq ⟨0, Finset.mem_range.2 (Nat.succ_pos _)⟩,
+    min_inf_eq ⟨0, Finset.mem_range.2 (Nat.succ_pos _)⟩]
+  refine Finset.inf_congr rfl fun i _ => ?_
+  have hcap := dvHgt_min_congr hπ F h i
+  have hsmulW : ℓ • ((F.e₁ * N : ℕ) : ℕ∞) = (((F.e₁ * ℓ) * N : ℕ) : ℕ∞) := by
+    rw [nsmul_eq_mul]
+    push_cast
+    ring
+  rcases le_or_gt ((F.e₁ * N : ℕ) : ℕ∞) (dvHgt F A i) with hbig | hsmall
+  · have hbig' : ((F.e₁ * N : ℕ) : ℕ∞) ≤ dvHgt F A' i := by
+      rw [min_eq_right hbig] at hcap
+      by_contra hc
+      push_neg at hc
+      rw [min_eq_left hc.le] at hcap
+      exact absurd (hcap ▸ hc) (lt_irrefl _)
+    have ht1 : (((F.e₁ * ℓ) * N : ℕ) : ℕ∞) ≤ ℓ • dvHgt F A i + (u * i : ℕ∞) := by
+      refine le_trans ?_ (le_add_of_nonneg_right zero_le)
+      rw [← hsmulW, nsmul_eq_mul, nsmul_eq_mul]
+      exact mul_le_mul_left' hbig _
+    have ht2 : (((F.e₁ * ℓ) * N : ℕ) : ℕ∞) ≤ ℓ • dvHgt F A' i + (u * i : ℕ∞) := by
+      refine le_trans ?_ (le_add_of_nonneg_right zero_le)
+      rw [← hsmulW, nsmul_eq_mul, nsmul_eq_mul]
+      exact mul_le_mul_left' hbig' _
+    rw [min_eq_right ht1, min_eq_right ht2]
+  · have heq : dvHgt F A i = dvHgt F A' i := by
+      rw [min_eq_left hsmall.le] at hcap
+      rcases min_cases (dvHgt F A' i) ((F.e₁ * N : ℕ) : ℕ∞) with ⟨h1, _⟩ | ⟨h1, _⟩
+      · rw [h1] at hcap
+        exact hcap
+      · rw [h1] at hcap
+        exact absurd (hcap ▸ hsmall) (lt_irrefl _)
+    rw [heq]
 
 /-! ### 4. through the level-2 development -/
 
 /-- `dev` of `0` is `0` for ANY divisor (both `%ₘ`/`/ₘ` branches). -/
 theorem dev_zero_any (Ψ : Polynomial O) : ∀ j, dev Ψ (0 : Polynomial O) j = 0 := by
-  sorry
+  intro j
+  induction j with
+  | zero =>
+    rw [show dev Ψ (0 : Polynomial O) 0 = (0 : Polynomial O) %ₘ Ψ from rfl]
+    exact Polynomial.zero_modByMonic Ψ
+  | succ j ih =>
+    rw [show dev Ψ (0 : Polynomial O) (j + 1)
+      = dev Ψ ((0 : Polynomial O) /ₘ Ψ) j from rfl, Polynomial.zero_divByMonic]
+    exact ih
 
 /-- the level-2 blocks of window-congruent members are congruent (monic and junk `Ψ`
 branches alike). -/
 theorem dev_blocks_congr (hπ : Irreducible π) {N : ℕ} {f f' : Polynomial O}
     (h : ∀ i, π ^ N ∣ (f - f').coeff i) (Ψ : Polynomial O) (j : ℕ) :
     ∀ i, π ^ N ∣ (dev Ψ f j - dev Ψ f' j).coeff i := by
-  sorry
+  by_cases hΨ : Ψ.Monic
+  · exact dev_congr hπ hΨ h j
+  · cases j with
+    | zero =>
+      intro i
+      rw [show dev Ψ f 0 = f %ₘ Ψ from rfl, show dev Ψ f' 0 = f' %ₘ Ψ from rfl,
+        Polynomial.modByMonic_eq_of_not_monic f hΨ, Polynomial.modByMonic_eq_of_not_monic f' hΨ]
+      exact h i
+    | succ j =>
+      intro i
+      rw [show dev Ψ f (j + 1) = dev Ψ (f /ₘ Ψ) j from rfl,
+        show dev Ψ f' (j + 1) = dev Ψ (f' /ₘ Ψ) j from rfl,
+        Polynomial.divByMonic_eq_of_not_monic f hΨ, Polynomial.divByMonic_eq_of_not_monic f' hΨ,
+        dev_zero_any, sub_self]
+      exact dvd_zero _
 
 /-- window congruence of the coefficient vectors, read off `proj`. -/
 theorem monicPoly_coeff_congr (hπ : Irreducible π) {n N : ℕ} {a a' : Fin n → O}
     (hc : proj O n N a = proj O n N a') :
     ∀ i, π ^ N ∣ (monicPoly a - monicPoly a').coeff i := by
-  sorry
+  classical
+  have htail : ∀ (b : Fin n → O) (t : ℕ),
+      (∑ i : Fin n, Polynomial.C (b i) * Polynomial.X ^ (i : ℕ)).coeff t
+        = if ht : t < n then b ⟨t, ht⟩ else 0 := by
+    intro b t
+    rw [finsetSum_coeff]
+    simp only [Polynomial.coeff_C_mul, Polynomial.coeff_X_pow, mul_ite, mul_one, mul_zero]
+    by_cases ht : t < n
+    · rw [dif_pos ht, Finset.sum_eq_single (⟨t, ht⟩ : Fin n)]
+      · simp
+      · intro c _ hc
+        exact if_neg fun hct => hc (Fin.ext hct.symm)
+      · intro hmem
+        exact absurd (Finset.mem_univ _) hmem
+    · rw [dif_neg ht]
+      refine Finset.sum_eq_zero fun c _ => if_neg fun hct => ht ?_
+      exact hct ▸ c.isLt
+  intro i
+  have hmp : (monicPoly a - monicPoly a').coeff i
+      = (if hi : i < n then a ⟨i, hi⟩ - a' ⟨i, hi⟩ else 0) := by
+    rw [Polynomial.coeff_sub, monicPoly, monicPoly, Polynomial.coeff_add,
+      Polynomial.coeff_add, htail a i, htail a' i]
+    by_cases hi : i < n
+    · rw [dif_pos hi, dif_pos hi, dif_pos hi]
+      ring
+    · rw [dif_neg hi, dif_neg hi, dif_neg hi]
+      ring
+  rw [hmp]
+  by_cases hi : i < n
+  · rw [dif_pos hi]
+    have hmk := congrFun hc ⟨i, hi⟩
+    have hmem : a ⟨i, hi⟩ - a' ⟨i, hi⟩ ∈ (IsLocalRing.maximalIdeal O) ^ N :=
+      Ideal.Quotient.eq.mp hmk
+    rwa [hπ.maximalIdeal_eq, Ideal.span_singleton_pow, Ideal.mem_span_singleton] at hmem
+  · rw [dif_neg hi]
+    exact dvd_zero _
 
 end Uniformity.Density.Tower.C118a
 
@@ -169,7 +343,8 @@ theorem dv2_read_congr_min {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H�
     (hc : proj O n N a = proj O n N a') (j : ℕ) :
     min (dv2Pin L Ψ (monicPoly a) j) (((F.e₁ * L.ℓ) * N : ℕ) : ℕ∞)
       = min (dv2Pin L Ψ (monicPoly a') j) (((F.e₁ * L.ℓ) * N : ℕ) : ℕ∞) := by
-  sorry
+  have hblocks := C118a.dev_blocks_congr hπ (C118a.monicPoly_coeff_congr hπ hc) Ψ j
+  exact C118a.dvSupp_min_congr hπ F hblocks L.u L.ℓ L.hℓ
 
 /-- **A-C.7, clause 1″ — the guarded raw form** (the frozen clause 1 with the missing
 non-`⊤` guard).  Under visibility, a non-`⊤` pin of the visible member sits strictly below
@@ -181,7 +356,19 @@ theorem dv2_read_congr_vis {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H�
     (hvis : Visible₂ L Ψ (monicPoly a) N) {j : ℕ} (hj : j ≤ n / L.keyDeg₂)
     (hT : dv2Pin L Ψ (monicPoly a) j ≠ ⊤) :
     dv2Pin L Ψ (monicPoly a) j = dv2Pin L Ψ (monicPoly a') j := by
-  sorry
+  have hjbound : j ≤ (monicPoly a).natDegree / L.keyDeg₂ := by
+    rw [monicPoly_natDegree]
+    exact hj
+  have hlt : dv2Pin L Ψ (monicPoly a) j < (((F.e₁ * L.ℓ) * N : ℕ) : ℕ∞) :=
+    hvis j hjbound hT
+  have hmin := dv2_read_congr_min L hπ (Ψ := Ψ) hc j
+  rw [min_eq_left hlt.le] at hmin
+  rcases min_cases (dv2Pin L Ψ (monicPoly a') j) (((F.e₁ * L.ℓ) * N : ℕ) : ℕ∞)
+    with ⟨h1, _⟩ | ⟨h1, _⟩
+  · rw [h1] at hmin
+    exact hmin
+  · rw [h1] at hmin
+    exact absurd (hmin ▸ hlt) (lt_irrefl _)
 
 end Uniformity.Density.Tower
 
