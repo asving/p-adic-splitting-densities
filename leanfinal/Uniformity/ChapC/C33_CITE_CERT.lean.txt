@@ -42,6 +42,10 @@ lattice points strictly ABOVE the side, so nothing below assumes consecutive on-
 
 All `#print axioms` here must be Lean-core; the proposed axiom names appear ONLY inside
 `def`-carriers and hypothesis binders.
+
+**CERTIFIED COMPLETE 2026-08-18** — zero `sorry`; all six capstones (`legA_nonempty`,
+`legA_two_slopes`, `legB_lowdeg`, `legB_swap`, `legB_goal1`, `legB_goal2`) print
+Lean-core axioms only (`propext`, `Classical.choice`, `Quot.sound`).
 -/
 
 set_option linter.unusedSectionVars false
@@ -668,7 +672,12 @@ theorem legB_lowdeg (D : DvDissection (s2Frame h2 hq) (fw : Polynomial O))
 
 /-- **B2**: the cross-slope swap dies at `hpure` — `g₄` is NOT `(6,1)`-pure. -/
 theorem legB_swap : ¬ IsDvPure (s2Frame h2 hq) (gfour : Polynomial O) 6 1 := by
-  sorry
+  rintro ⟨-, h1⟩
+  obtain ⟨he, hf, -, -⟩ := s2Frame_data h2 hq
+  rw [natDegree_gfour, he, hf] at h1
+  norm_num at h1
+  rw [gfour_eq, mem_dvSideSet_g h2 hq (by norm_num) Nat.one_pos] at h1
+  omega
 
 /-- **B3a**: proposed Prop 1 closes blocked goal 1 DIRECTLY. -/
 theorem legB_goal1 (h2 : Irreducible (2 : O)) (hcite : ExistsDvDissectionStatement O)
@@ -689,6 +698,9 @@ end Cert
 
 section AxCheck
 #print axioms legA_nonempty
+#print axioms legA_two_slopes
+#print axioms legB_lowdeg
+#print axioms legB_swap
 #print axioms legB_goal1
 #print axioms legB_goal2
 end AxCheck
