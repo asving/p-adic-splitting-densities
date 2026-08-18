@@ -7,7 +7,7 @@ import Uniformity.ChapC.C26
 import Uniformity.ChapC.C29
 
 /-!
-# Uniformity.ChapC.C34 — the residual dissection at the level polygon (SKELETON)
+# Uniformity.ChapC.C34 — the residual dissection at the level polygon (PARTIAL landing)
 
 **Chapter C, NODE C.34** [theorem] [fresh] [signed: A-C.1]
 (`blueprint/CHAP-C_tower_grammar.md` §5). ENV-C2. One signed declaration:
@@ -70,16 +70,35 @@ uses `HasLabel` (C.29), whose residual clause is the EXACT power `dvResPoly … 
 The A-C.1 signature resolved the scalar to the exact-power normal form; discharging it
 is part of the proof obligation (C.26's leading-read control), not a statement defect.
 
-## Frontier situation (C.33's record applies)
+## ⚠ PARTIAL LANDING — the signed theorem is ROUTE-BLOCKED
+
+**NOT landed — `exists_dv_residual_dissection`.** Its signed statement remains in
+`leanspec/Leanspec/ChapC.lean` (byte-frozen stub axiom, untouched). It was transcribed
+byte-exact here and compiled at commits `cdf53b30`/`e93bb724` (diff-verified against the
+spec); the obstruction record is **`C34_BLOCKED_2026-08-18.md`** (this directory) with
+the two frontier goals quoted verbatim: the signed route is B.48's graded-coprime lift
+AT THE `dv`-CARRIER, and (i) no dv-level Hensel engine exists at all (the C.33 record's
+obstruction 2 — B.44–B.48 are `IsKey`-fenced and `IsKey F.key` is FALSE at `F.h ≥ 1`),
+(ii) separation needs the complements' purity (dv-polygon additivity, landed nowhere,
+NOT in C.66's signed same-slope clause) and the residue-field coprimality that
+`Hensel.monic_factorization_unique` demands is structurally unavailable at `F.h ≥ 1`,
+(iii) the owner-signed A-C.8 cite pair (not yet landed) covers C.33's SLOPE dissection
+only — its scope fence explicitly excludes this node's residual-primary refinement.
+The statement is NOT claimed false — it is the residual-primary refinement of the
+theorem of the polygon and is expected true as signed.
+
+**Landed here (sorry-free, Lean-core):** the two machine-checked audit legs
+(`stageHeight_ne_top`, `dvSideSet_nonempty`), the `hdvd` fence
+(`one_le_dvSideDeg_of_dvd_dvResPoly`, `natDegree_pos_of_one_le_dvSideDeg`), the
+constant-complement law (`not_dvd_dvResPoly_of_natDegree_eq_zero`), the `R = r^m`
+single-class supply (`hasLabel_self_of_dvResPoly_eq_pow`,
+`block_pair_self_of_dvResPoly_eq_pow` — `EFF.HE6.20` item 1), and the frontier
+packaging (`exists_dv_residual_dissection_of_frontier`): the FULL signed conclusion
+follows from exactly the two frontier Props, so the node's remaining content is
+precisely FRONTIER 1 (hex) + FRONTIER 2 (hsep) of the record.
 
 DEPENDS: C.25 · C.26 · C.29 · C.33 · B.44–B.48 (route templates) · landed Hensel
-engine. The signed route is B.48's graded-coprime lift AT THE `dv`-CARRIER — the same
-missing dv-graded Hensel engine recorded at `C33_BLOCKED_2026-08-17.md` (no dv-level
-analogue of B.39/B.40/B.41 exists; the only completeness-consuming ChapC nodes are not
-Hensel-shaped). The A-C.8 cite pair for C.33 is owner-SIGNED but lands only when the
-§A-C.8.5 certification is fully green, and in any case covers C.33's SLOPE dissection,
-not this node's residual dissection. See `C34_BLOCKED_2026-08-18.md` (this directory)
-for this node's own frontier record once the reachable legs are landed.
+engine (see the record for why the templates cannot be consumed at the `dv`-carrier).
 -/
 
 namespace Uniformity.Density.Tower
@@ -286,36 +305,6 @@ theorem exists_dv_residual_dissection_of_frontier {F : KeyFrame O π} {H₀ hpin
   have heq : fS' = fS := hsep fS g' fS' g'' hprod hlab hmon hcomp hprod' hlab' hmon' hcomp'
   exact ⟨heq, mul_left_cancel₀ hlab.1.ne_zero ((heq ▸ hprod').symm.trans hprod)⟩
 
-/-! ### The signed statement (OPEN — see the frontier record) -/
-
-/-- **NODE C.34** — the residual dissection at the level polygon, signed at the consumed
-`(λ, r)`-block clause: under C.33's context, a `dv`-pure monic `g` whose level residual
-is divisible by the label's `L.r` splits as `g = fS * g'` with `HasLabel L fS`, the
-complement's residual `r`-free (∀-quantified over its own pin witnesses), uniquely so.
-Byte-exact to `leanspec/Leanspec/ChapC.lean` (A-C.1 §5). -/
-theorem exists_dv_residual_dissection {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
-    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    {g : Polynomial O} (hg : g.Monic) (hpure : IsDvPure F g L.u L.ℓ)
-    (hne : (dvSideSet F g L.u L.ℓ).Nonempty) {M₀ : ℕ}
-    (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞))
-    (hdvd : L.r ∣ dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp) :
-    ∃ fS g' : Polynomial O, g = fS * g' ∧ HasLabel L fS ∧ g'.Monic ∧
-      (∀ (hne' : (dvSideSet F g' L.u L.ℓ).Nonempty) (M₀' : ℕ)
-        (hp' : dvHgt F g' (dvSideMin F g' L.u L.ℓ hne') = (M₀' : ℕ∞)),
-        ¬ L.r ∣ dvResPoly F H₀ hpin g' L.u L.ℓ hne' M₀' hp') ∧
-      ∀ fS' g'' : Polynomial O, g = fS' * g'' → HasLabel L fS' → g''.Monic →
-        (∀ (hne' : (dvSideSet F g'' L.u L.ℓ).Nonempty) (M₀' : ℕ)
-          (hp' : dvHgt F g'' (dvSideMin F g'' L.u L.ℓ hne') = (M₀' : ℕ∞)),
-          ¬ L.r ∣ dvResPoly F H₀ hpin g'' L.u L.ℓ hne' M₀' hp') →
-        fS' = fS ∧ g'' = g' := by
-  refine exists_dv_residual_dissection_of_frontier L ?_ ?_
-  · -- FRONTIER 1 (hex): the dv-graded coprime Hensel lift — B.48's route at the
-    -- `dv`-carrier; no dv-level Hensel engine is landed (C33_BLOCKED obstruction 2)
-    sorry
-  · -- FRONTIER 2 (hsep): same-slope block separation — needs the complements' purity
-    -- (dv-polygon additivity, landed nowhere) before even C.66's cite could fire
-    sorry
-
 end Uniformity.Density.Tower
 
 /-! ## Axiom footprint -/
@@ -330,6 +319,5 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.hasLabel_self_of_dvResPoly_eq_pow
 #print axioms Uniformity.Density.Tower.block_pair_self_of_dvResPoly_eq_pow
 #print axioms Uniformity.Density.Tower.exists_dv_residual_dissection_of_frontier
-#print axioms Uniformity.Density.Tower.exists_dv_residual_dissection
 
 end AxCheck
