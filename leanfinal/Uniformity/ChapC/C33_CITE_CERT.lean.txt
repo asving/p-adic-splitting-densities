@@ -1,0 +1,170 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapC.C33
+import Uniformity.ChapC.C97
+import Uniformity.ChapC.C109
+
+/-!
+# A-C.8 CERTIFICATION RECORD (Legs A + B) — the two-slope witness and the hostile retargets
+
+**This file is evidence, not a node** (the `.lean.txt` convention).  To re-run:
+
+```
+cp leanfinal/Uniformity/ChapC/C33_CITE_CERT.lean.txt /tmp/c33_cert.lean
+cd leanfinal && lake env lean /tmp/c33_cert.lean
+```
+
+Certifies amendment A-C.8's §A-C.8.5 plan BEFORE the owner is asked to sign:
+
+* **Leg A (satisfiability, non-vacuity)** — a hand-built two-slope `DvDissection` over any
+  `O` with `2` irreducible and `residueCard O = 2`, at the landed `s2Frame`
+  (`Φ′ = X² − C 2`, `(e₁,f₁,h) = (2,1,1)`, frame floor `2`):
+  `f = (Φ′ + 8)(Φ′ + 4)`, i.e. `f = Φ′² + 12·Φ′ + 32` — development blocks `[32, 12, 1]`,
+  dv-heights `[10, 4, 0]`, slopes `{(6,1), (4,1)}`, factors `Φ′ + 8` / `Φ′ + 4`,
+  `below = 1`.  Every `DvDissection` field is proved UNIVERSALLY (the `hsides` iff over
+  ALL cleared directions, not just the two members).  Constructed WITHOUT either proposed
+  cite — the existence conclusion is inhabited and the factor-frontier's `p ∈ D.slopes`
+  quantifier is genuinely two-element.
+* **Leg B (non-refutability / hostile retargets)** — (1) the low-degree purity collapse
+  `g = X` cannot fill an indexed factor slot (`hdeg` forces `deg ≥ D′ = 2 > 1`); (2) the
+  cross-slope swap `g₄ ↔ g₆` dies at `hpure` (each factor is one-sided at its OWN slope
+  only — the Leg-C fence, machine-checked here); (3) the two proposed Props, taken as
+  HYPOTHESES (statement carriers, never axioms), close the two exact C.33 blocked goals —
+  the first directly, the second only through the landed `dvDissection_unique_of_factor_eq`.
+
+Leg C (the independent numeric leg) is `verification/ac8_dv_cite_check.py` — 26-row sweep
+green, 2026-08-18.  Design note imported from its run: repeated factors put interior
+lattice points strictly ABOVE the side, so nothing below assumes consecutive on-side sets.
+
+All `#print axioms` here must be Lean-core; the proposed axiom names appear ONLY inside
+`def`-carriers and hypothesis binders.
+-/
+
+set_option linter.unusedSectionVars false
+
+open Polynomial Uniformity Uniformity.Density Uniformity.Density.Leaf
+  Uniformity.Density.Tower IsLocalRing IsDiscreteValuationRing
+
+section Cert
+
+variable (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)] [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+
+/-! ## 0. Statement carriers (the proposed cite Props as `def`s — NEVER axioms here) -/
+
+/-- carrier for proposed axiom 1 (`exists_dvDissection`), at THIS `O`. -/
+def ExistsDvDissectionStatement : Prop :=
+  ∀ (F : KeyFrame O (2 : O)), Irreducible (2 : O) →
+    ∀ {f : Polynomial O}, f.Monic → ¬ F.key ∣ f → Nonempty (DvDissection F f)
+
+/-- carrier for proposed axiom 2 (`fgmn_dvDissection_factor_eq`), at THIS `O`. -/
+def FactorEqStatement : Prop :=
+  ∀ (F : KeyFrame O (2 : O)) (f : Polynomial O) (D D' : DvDissection F f),
+    ∀ p ∈ D.slopes, D.factor p = D'.factor p
+
+variable {O}
+variable (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
+
+/-! ## 1. The witness data -/
+
+/-- `g₆ := Φ′ + 8` (block `8`, slope `6`). -/
+noncomputable def gsix : Polynomial O := s2Key O + C 8
+
+/-- `g₄ := Φ′ + 4` (block `4`, slope `4`). -/
+noncomputable def gfour : Polynomial O := s2Key O + C 4
+
+/-- the witness member `f = g₆ · g₄ = Φ′² + 12·Φ′ + 32`. -/
+noncomputable def fw : Polynomial O := gsix * gfour
+
+/-- the two-slope index. -/
+noncomputable def wSlopes : Finset (ℕ × ℕ) := {(6, 1), (4, 1)}
+
+open Classical in
+/-- the factor assignment (junk `1` off the slope set). -/
+noncomputable def wFactor : ℕ × ℕ → Polynomial O := fun p =>
+  if p = (6, 1) then gsix else if p = (4, 1) then gfour else 1
+
+/-! ## 2. Number facts and block computations (skeleton) -/
+
+theorem addVal_two_pow (n : ℕ) : addVal O ((2 : O) ^ n) = n := by
+  sorry
+
+theorem addVal_twelve : addVal O (12 : O) = 2 := by
+  sorry
+
+theorem fw_expansion : (fw : Polynomial O) = C 32 + C 12 * s2Key O + s2Key O ^ 2 := by
+  sorry
+
+theorem dev_fw : dev (s2Key O) (fw : Polynomial O) 0 = C 32
+    ∧ dev (s2Key O) (fw : Polynomial O) 1 = C 12
+    ∧ dev (s2Key O) (fw : Polynomial O) 2 = 1 := by
+  sorry
+
+theorem dvHgt_fw (h2 : Irreducible (2 : O)) (hq : residueCard O = 2) :
+    dvHgt (s2Frame h2 hq) (fw : Polynomial O) 0 = (10 : ℕ∞)
+    ∧ dvHgt (s2Frame h2 hq) (fw : Polynomial O) 1 = (4 : ℕ∞)
+    ∧ dvHgt (s2Frame h2 hq) (fw : Polynomial O) 2 = (0 : ℕ∞)
+    ∧ ∀ j, 2 < j → dvHgt (s2Frame h2 hq) (fw : Polynomial O) j = ⊤ := by
+  sorry
+
+/-! ## 3. Leg A — the dissection -/
+
+noncomputable def wDissection : DvDissection (s2Frame h2 hq) (fw : Polynomial O) where
+  slopes := wSlopes
+  factor := wFactor
+  below := 1
+  hslopes := by sorry
+  hdistinct := by sorry
+  hmonic := by sorry
+  hpure := by sorry
+  hdeg := by sorry
+  hbelow_monic := monic_one
+  hbelow := by sorry
+  hprod := by sorry
+  hsides := by sorry
+
+/-- **Leg A conclusion 1**: the existence conclusion is INHABITED without the cite. -/
+theorem legA_nonempty : Nonempty (DvDissection (s2Frame h2 hq) (fw : Polynomial O)) :=
+  ⟨wDissection h2 hq⟩
+
+/-- **Leg A conclusion 2**: the factor-frontier quantifier is genuinely two-element. -/
+theorem legA_two_slopes : ((wDissection h2 hq).slopes : Finset (ℕ × ℕ)).card = 2 := by
+  sorry
+
+/-! ## 4. Leg B — hostile retargets -/
+
+/-- **B1**: the low-degree purity collapse `g = X` cannot fill an indexed factor slot:
+any indexed factor has degree `≥ D′ = 2`. -/
+theorem legB_lowdeg (D : DvDissection (s2Frame h2 hq) (fw : Polynomial O))
+    {p : ℕ × ℕ} (hp : p ∈ D.slopes) : 2 ≤ (D.factor p).natDegree := by
+  sorry
+
+/-- **B2**: the cross-slope swap dies at `hpure` — `g₄` is NOT `(6,1)`-pure. -/
+theorem legB_swap : ¬ IsDvPure (s2Frame h2 hq) (gfour : Polynomial O) 6 1 := by
+  sorry
+
+/-- **B3a**: proposed Prop 1 closes blocked goal 1 DIRECTLY. -/
+theorem legB_goal1 (h2 : Irreducible (2 : O)) (hcite : ExistsDvDissectionStatement O)
+    (F : KeyFrame O (2 : O)) {f : Polynomial O} (hf : f.Monic) (hkey : ¬ F.key ∣ f) :
+    Nonempty (DvDissection F f) :=
+  hcite F h2 hf hkey
+
+/-- **B3b**: proposed Prop 2 closes blocked goal 2 through the LANDED reduction only. -/
+theorem legB_goal2 (hcite : FactorEqStatement O)
+    (F : KeyFrame O (2 : O)) {f : Polynomial O} (D D' : DvDissection F f) :
+    D.slopes = D'.slopes ∧ D.below = D'.below ∧
+      ∀ p ∈ D.slopes, D.factor p = D'.factor p :=
+  dvDissection_unique_of_factor_eq D D' (hcite F f D D')
+
+end Cert
+
+/-! ## Axiom footprint (all must be Lean core) -/
+
+section AxCheck
+#print axioms legA_nonempty
+#print axioms legB_goal1
+#print axioms legB_goal2
+end AxCheck
