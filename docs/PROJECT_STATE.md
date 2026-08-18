@@ -6466,3 +6466,40 @@ pre-restart commits verified intact (5h gap, nothing lost);
 the Aug-16 scratch_*.lean files are stale exploration from
 already-landed waves, not lost work. (4) API: the orchestrator
 loop runs on the fresh key; pool probe next.
+
+**2026-08-18 DATED APPEND #101 — PRE-COMPACTION OPERATIONAL
+SNAPSHOT (the resume-here block for the post-compaction
+orchestrator).**
+IN FLIGHT (3 Claude agents, launched ~15:45 on the fresh key,
+all with the vacuity-audit + 6-cite-allowlist charge):
+(1) C.114 — the HT realizes-law at the A-C.3 RE-SIGN (the
+frozen form is machine-refuted; findings D5/D6 authoritative);
+(2) C.35 + C.53 (C.53: check overlaps with landed C.128/C.52
+material first); (3) C.72 + C.73 + C.87. ON COMPLETION: harvest
+per the standard (verify compile + footprints vs the SIX-cite
+allowlist; partials → quarantine opens per the C.33/C.52
+convention), then recompute the frontier
+(python DAG script pattern in this file's history; C.106 waits
+on §10; C.92 retired; the NEAR(1) list includes C.27←B.32,
+C.120←C.119, C.36←C.35, C.54←C.27, C.56←C.85, C.59←C.27,
+C.61←C.59, C.63←C.61) and fire the next wave at width ~3.
+STALL RULE: >45 min silent → TaskStop + resume-from-transcript;
+storm bursts → commit-cadence reminders + 30-60 min backoff
+timers; agents who die post-commit are RATCHETED (their commits
+survive), never restarted from scratch.
+CODEX: window 96% till Sun Aug 23 08:37; reserve = adversarial
+verification only; sandbox cannot write .git → orchestrator
+verifies and commits harvests.
+PENDING OWNER ITEMS: (a) the FGMN published-number print-read
+(Thm 6.6 arXiv-v3 vs predicted published 6.5) — recorded in
+C33Cite.lean + A-C.8.2; (b) B39a human-review rider; (c) the
+WeldObligations.w1 dead-field removal amendment.
+RESEARCH FRONTIERS (charter-level): b4 at GR-10 exactly; the
+β-assembly's two OPEN-MATH matching nodes (A-H.9 fences: fire
+only as dedicated units with the blueprint §2 text); the
+dv-Hensel engine (upgrade path retiring the A-C.8 cites, also
+serves C.111/C.34).
+NEXT MILESTONES: chapter-C §10 chain (unblocks C.106); the
+tower-instantiation freeze typing chapter I's I.10a/I.10b
+sockets (CRITICAL PATH — no fleet agent on I.10 until then);
+H.123b consumes A-H.9's (0.3) once H.124-H.127 land.
