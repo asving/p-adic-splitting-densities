@@ -1,6 +1,6 @@
 # EFF-T2-s2of6 — CANONICAL EFFECTIVE-SPECIFICATION SHARD
 
-**COMPILED-BY: opus (2026-08-14, Asvin-authorized substitution, PROJECT_STATE #51). CODEX CROSS-READ OWED (post-reset).**
+**COMPILED-BY: gpt-5.6-sol high (2026-08-18), Codex cross-read and v3.1 metadata repair of the prior Asvin-authorized shard compilation.**
 
 ## 1. Shard header
 
@@ -8,7 +8,7 @@
 
 **HOME range:** source lines 2242–2925 inclusive. The destination section of an edit, not the physical location of the edit directive, determines HOME. Every directive in this range that inserts, replaces, appends to, or supersedes material in base S0–S8 resolves an `EFF.T2.s1of6.<nn>` unit and is **routed, not re-emitted** (§7). Later text is used only to resolve material whose HOME lies in this range.
 
-**HEAD blob hash:** `9cc9063028c598a90cd98a022ac07694e6dc8a2a`
+**HEAD blob hash:** `2b74ad0f35f41e3109f1ba779eb8eb266a8ba0fc`
 
 **Compilation context:** `spec/EFF_TEMPLATE_v2.md`; temporary IDs `EFF.T2.s2of6.<nn>`. Conventions follow `spec/EFF-T2-s1of6.md` (the codex-compiled shard 1 of this note), with the HOME routing audit of `spec/EFF-T1-s2of3.md` added because this range is repair-round text.
 
@@ -69,6 +69,12 @@ Source statements below are verbatim excerpts or are marked `[ASSEMBLED]`. Delim
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — the r4 round record: provenance, protocol, counter]`
 
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** as-of scoping.
+
+**CHAIN:** r4 counter (0/2) → r5–r12 counter records → acceptance record (2/2) **TERMINAL for status consumers**. The r4 theorem-change census remains terminal as provenance, not as current status.
+
 > “*(Opus/Claude repair arm, against the r3 hostile pass of record `runs/comp13/T2P3_output.log` — 0 CRITICAL + 4 GAP + 8 minor; counter resets.)*”
 
 > “**Verification protocol for this round.** Every delimiter line quoted below was checked on 2026-08-13 by exact-full-line search in the named accepted source file, and both the command and its count are recorded at the pin. No source file is edited by this round; the expected source edit count remains zero.”
@@ -78,6 +84,8 @@ Source statements below are verbatim excerpts or are marked `[ASSEMBLED]`. Delim
 > “**The clean-pass counter is RESET to 0 of 2.**”
 
 **DERIVATION:** `[ROUND RECORD]` The reset is the direct application of S7's stated rule, quoted by the counter itself: “A gap-or-worse repair resets the clean count”. The census (0C+4G+8m) is the pass log's, not the round's own grading; the round's claim is only that it folds every finding of that census.
+
+**PIN VERIFICATION:** artifact `runs/comp13/T2P3_output.log` exists at cross-read (2026-08-18).
 
 **CONDITIONALITY:** Historical as to status. The acceptance record supersedes the counter (2/2) and the obligation set (`(LB1)` and `(MP1)` survive; `(MP1′)`, opened later at r5, is retired at r6). The two theorem-statement changes are **not** superseded: both stand in the accepted text. The zero-source-edit assertion is confirmed at acceptance (“**Zero source edits**”).
 
@@ -91,6 +99,12 @@ Source statements below are verbatim excerpts or are marked `[ASSEMBLED]`. Delim
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — the r5 round record: provenance, protocol, root cause, counter]`
 
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** as-of scoping.
+
+**CHAIN:** r5 counter (0/2), with three then-open obligations → r6 retirement of `(MP1′)` → acceptance record (2/2), with `(LB1)` and `(MP1)` only **TERMINAL for status/obligation consumers**. The r5 perturbation-transport provenance remains effective.
+
 > “*(Opus/Claude repair arm, against the r4 hostile pass of record `runs/comp13/T2P4_output.log` — 0 CRITICAL + 2 GAP + 5 minor; counter resets.)*”
 
 > “**Verification protocol for this round.** Every source delimiter line quoted below was checked on 2026-08-13 by exact-full-line search (`grep -cFx`) in the named accepted source file, and both the command and its count are recorded at the pin. No source file is edited by this round; the expected source edit count remains zero. Landmarks internal to this master are quoted from the **r4 effective text**, and their uniqueness is recorded in the form `sed -n '1,2608p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF '<string>'` → **1**; the line bound 2608 is the last line of the r4 round and excludes this round's own re-quotations, which would otherwise inflate every count.”
@@ -103,6 +117,8 @@ Source statements below are verbatim excerpts or are marked `[ASSEMBLED]`. Delim
 
 **DERIVATION:** `[ROUND RECORD]` The landmark convention is the round's own device for making master-internal supersession auditable: a superseded sentence is quoted byte-exactly and its uniqueness is certified under a line bound that excludes the quoting round. The bound 2608 is the last line of r4. Compilation re-ran nine of these landmark counts (§3, part B) and all returned 1.
 
+**PIN VERIFICATION:** artifact `runs/comp13/T2P4_output.log` exists at cross-read (2026-08-18).
+
 **CONDITIONALITY:** Historical as to status. `(MP1′)` is retired at r6 repair 2 and never becomes a standing conditionality. The counter is superseded to 2/2. The pinning of `HE7-PERT-TRANSPORT` and `HETOW-KEY-BRIDGE` stands in the accepted text.
 
 **RESOLUTION TRACE:** source lines 2612–2618 (header, protocol, root cause) and 2908–2912 (counter); `(MP1′)` superseded by r6 repair 2; counter superseded by the acceptance record.
@@ -114,6 +130,12 @@ Source statements below are verbatim excerpts or are marked `[ASSEMBLED]`. Delim
 ### EFF.T2.s2of6.03  [fence]
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — the HE6-SLOT-SEAM adjudication and its two signed declinations]`
+
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** provenance-rider.
+
+**TARGETS:** S0.2 `(PINS)` row `HE6-SLOT-SEAM` (merge target `EFF.T2.s1of6.03`) and the per-(A) seam reading consumed by `EFF.T2.s1of6.06`.
 
 > “The r2 description "the corrected normalized-slot/seam display" resolves against three distinct corrected slot/seam units of `HE6_PROOF_2026-08-08.md`, so condition 1 of S0.2 ("its named source unit occurs exactly once in the named file") could not be discharged. The pin is adjudicated by its consumption, not by its wording.”
 
@@ -140,6 +162,12 @@ The scope of a declination is fixed by r5 repair 4:
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — the two-unit contiguous span declaration]`
 
+**FORM:** inline sentence.
+
+**SUPERSESSION KIND:** scope-pin.
+
+**TARGETS:** the S0.2 span-boundary convention at `EFF.T2.s1of6.03`.
+
 > “This is a two-unit contiguous span, declared in the same form as `HE7-COCYCLE-2P-THROUGH-R1D` (r3 repair 1(b)): the pin is the run of consecutive complete units from the first delimiter to the last, and both endpoint units are complete. The source's own HEAD calls the pair "PINNED at DEFINITION 1 [r2] with the coboundary Remark", so the two-unit reading is the source's.”
 
 Re-applied at r5 repair 1(b):
@@ -159,6 +187,12 @@ Re-applied at r5 repair 1(b):
 ### EFF.T2.s2of6.05  [table]
 
 **CANONICAL STATEMENT:** `[TABLE — the r4 pin-derivation ledger; delimiter lines verbatim, counts re-run at compilation]`
+
+**FORM:** display.
+
+**SUPERSESSION KIND:** provenance-rider.
+
+**TARGETS:** the nine named S0.2 `(PINS)` rows listed in this table (merge target `EFF.T2.s1of6.03`).
 
 | Pin | Named source unit (r4 designation) | First delimiter | Last delimiter |
 |---|---|---|---|
@@ -190,6 +224,12 @@ The designation correction that produced the four R8 rows is the round's own:
 
 **CANONICAL STATEMENT:** `[TABLE — the r5 pin-derivation ledger; delimiter lines verbatim, counts re-run at compilation]`
 
+**FORM:** display.
+
+**SUPERSESSION KIND:** inventory completion.
+
+**TARGETS:** S0.2 `(PINS)` rows `HETOW-KEY-BRIDGE`, `HE7-PERT-TRANSPORT`, and `HE6-LIFT-1L` (merge target `EFF.T2.s1of6.03`).
+
 | Pin | Named source unit (r5 designation) | First delimiter | Last delimiter |
 |---|---|---|---|
 | `HETOW-KEY-BRIDGE` | LEMMA HETOW-2 (composed key = key-family member up to an above-line perturbation), statement and proof | `> **LEMMA HETOW-2 (the composed key is a key-family member up to an` | `covers w = 0). ∎` |
@@ -214,6 +254,12 @@ The reconciliation directive attached to the third pin is:
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — what a quoted delimiter discharges, and the two directional errors of the r4 inventory]`
 
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** inventory completion.
+
+**CHAIN:** r4 `13 of 29` → r5 `14 of 32` → r7/r10/r11/r12 recounts → acceptance taxonomy (20+4+13=37) **TERMINAL**. The delimiter-discharge rule itself is unchanged across the chain.
+
 > “Both delimiter lines of every pin **re-derived in this repair** are quoted byte-exactly from the accepted source and were verified by exact-full-line search on 2026-08-12: each occurs exactly once in its file, and each begin precedes its end. The remaining pins of `(PINS)` are description-only: their first and last delimiter lines are not quoted in this note, and the S7 pin gate must re-derive them from the description before checking conditions 1–4. Quoting a delimiter pair discharges conditions 2 and 3 in advance; it does not discharge conditions 1 and 4, which remain the gate's work.”
 
 > “**Over-count:** `HE3-R8-2`, `HE3-R8-3` and `HE3-R8-4` were listed as carrying quoted pairs, but r4 repair 6 quotes only their **first** delimiter and fixes each **last** delimiter by S0.2's boundary rule ("the unit ends immediately before the next `###` unit of equal rank"), explicitly excepting only `HE3-R8-5`. A single quoted delimiter discharges condition 2 for that line alone; it discharges neither condition 3 nor condition 2 for the unquoted endpoint. **Under-count:** `HE3-A-PROOF` was omitted although r4 repair 3's own verification remark quotes and grep-verifies both of its delimiters, `### S6.3 PROOF OF THEOREM HE3.A` and `leaf's history, so THEOREM HE3.A is proved. ∎`.”
@@ -231,6 +277,14 @@ The reconciliation directive attached to the third pin is:
 ### EFF.T2.s2of6.08  [changes-record]
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — effective "Honest status of the three (RANK) components": r4 repair 3's block with its second bullet replaced by r5 repair 1's two bullets]`
+
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `(SEC-RANK)` / `(RANK)` instance-status text attached to `EFF.T2.s1of6.26` and `EFF.T2.s1of6.27`.
+
+**CHAIN:** r4 single “level two and deeper” bullet → r5 split into DEFINITION-HE6-1-key and composed-key bullets **TERMINAL**, with r6 scope clarification applied downstream.
 
 > “**Honest status of the three components.** Components one and two are derived above from the effective text; the four supporting facts the note previously lacked — the split's strict decrease, the peel's degree drop, the child jump's degree non-increase via `(TEST)` composed with `(MASS)`, and the recentering's degree/mass preservation via \(\deg L_k(s)<D\) — are now displayed with their sources. Component three is **not** derived: `(SEC-RANK)` is a named carrier hypothesis. Its instance status:”
 
@@ -263,6 +317,16 @@ Four source lines carry the two composed-key clauses and their key declarations;
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — effective clause-5 discharge routing (r5 repair 2's replacement of r4 repair 2's “Instance consequence”)]`
 
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** replacement.
+
+**WITHDRAWN SUB-ROUTE:** the HE7-8 `[r3]` suite-discharge route; nothing is substituted at that supplier site, while the clause-5 route as a whole is replaced by `HE7-PERT-TRANSPORT`.
+
+**TARGETS:** clause-5 and S1.8B routing at `EFF.T2.s1of6.23`, `EFF.T2.s1of6.24`, and `EFF.T2.s1of6.31`.
+
+**CHAIN:** r4 HE7-8 `[r3]` route → r5 withdrawal and `HE7-PERT-TRANSPORT` route → r6/r7/r12 corrected S1.8B hypothesis/degree assembly **TERMINAL**.
+
 > “**Instance consequence.** The child-jump branch of the trigger is precisely LEMMA HE6R1-3's hypothesis, so r3 repair 4's cited discharge now discharges a case the theorem states. The recentering branch is **fenced at level one** by repair 4 as `(MP1)`, and is discharged at level two by S1.8B below — by LEMMA HE7-12(c)'s transport of LEMMA HE6R1-3 to the recentered key, **not** by the `[r3]` interleaving clause of LEMMA HE7-8, which asserts only that a mid-chain peel occurs and drops \(\mu_2\) by one and supplies no item of the input suite. That clause keeps exactly the role r3 repair 5 gave it: the \(\nu=1\) degenerate guard and the pigeonhole bounding how many peels may interleave one chain.”
 
 The withdrawal is signed rather than patched:
@@ -283,6 +347,12 @@ The withdrawal is signed rather than patched:
 
 **CANONICAL STATEMENT:** `[VERBATIM — the reading directive added at pin GENTOW-4-A]`
 
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** wording-rider.
+
+**TARGETS:** `GENTOW-4-A` consumption recorded at `EFF.T2.s1of6.37`.
+
 > “The span is THEOREM GENTOW-4.A in GENTOW4 §S3. Its clause (ii) carries the parenthetical "top coefficient NOT monic — the partial-side signature", which a later dated correction outside this span declares superseded: `### [TOWERRAT2-C annex, 2026-08-10] Dated correction: the 4.A(ii)` / `### "top coefficient NOT monic" parenthetical SUPERSEDED`. **The 2026-08-10 TOWERRAT2-C correction governs.** This master consumes from clause (ii) only \(\mu_2^*=\sum_{\lambda_2>T_2}L_{\lambda_2}\) and \(\deg f_S=D_2\mu_2^*\), never the top-coefficient parenthetical; S3.5 states the complementary restraint, "No whole-polynomial monicity or length hypothesis is transferred to \(f_S\) without proof". The pin is unchanged; the note is a reading directive.”
 
 **DERIVATION:** `[SUPERSESSION NOTICE AT A PIN]` The practice is r3 repair 3's, extended: “r3 repair 3 established the practice of noting a competing or superseded display at the pin, and applied it at `HE6R1-1` and `HETOW-LABELS`. The same configuration exists at `GENTOW-4-A` and was left unnoted.” Both annex heading lines re-verified at 1 in `GENTOW4_PROOF_2026-08-09.md` (§3, part A).
@@ -298,6 +368,12 @@ The withdrawal is signed rather than patched:
 ### EFF.T2.s2of6.11  [table]
 
 **CANONICAL STATEMENT:** `[TABLE / ASSEMBLED — the consumption sweep re-run and recorded at r5, with its residues]`
+
+**FORM:** display.
+
+**SUPERSESSION KIND:** inventory completion.
+
+**CHAIN:** r4 incomplete two-item cure claim → r5 six-residue sweep → r10/r11/r12 re-sweeps → acceptance cured-consumption census ten **TERMINAL**. The r5 table remains an explicitly incomplete intermediate enumeration.
 
 > “**The sweep, re-run and recorded.** So that the S7 gate can check rather than repeat it, here is the enumeration behind the claim, with its residues:”
 
@@ -326,6 +402,14 @@ The withdrawal is signed rather than patched:
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — the per-record Source-pin discipline and the r5 justification map]`
 
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** inventory completion.
+
+**TARGETS:** the five instance-record pin lines `EFF.T2.s1of6.33`, `EFF.T2.s1of6.34`, `EFF.T2.s1of6.35`, `EFF.T2.s1of6.36`, and `EFF.T2.s1of6.37`.
+
+**CHAIN:** r4 partial settings → r5 five-line reset → r7 S1.8C additions → r10 HE6 test/account additions → r11 `HE6-BETA-GUARD` additions → r12 `HETOW-KEY-BRIDGE-C-A` additions **TERMINAL per affected consumer record**.
+
 > “Rather than amend three lines and leave the reader to compose four rounds of edits, all five lines are set here in final form. Each supersedes every earlier setting of that line”
 
 > “Justifications, one per addition. **S3.1/S3.2 `HE6-LIFT-1L`:** \(q(k)\) of `(Q-DEF)`, consumed by S1.2's `(HE6-SEAM)` and restated by S3.2's print-frame read, is defined only there (repair 4). **S3.2 `HE3-A-PROOF`:** r4 repair 3 routes S3.2's `(SEC-RANK)` to the stage-α termination clause inside that span. **S3.3 `HE7-PERT-TRANSPORT`:** S1.8B's level-two recentered-key discharge runs through LEMMA HE7-12(c) at every level-two record, S3.3 included. **S3.4 `HETOW-KEY-BRIDGE`:** S3.4's text names LEMMA HETOW-2 by name. **S3.4/S3.5 `HE7-REF-TERM`:** `HETOW-A`(ii) and `GENTOW-4-A`(iii) both name LEMMA HE7-8 in the clause the records consume. **S3.4/S3.5 `HE7-PERT-TRANSPORT`:** the same two clauses name LEMMA HE7-12, and S1.8B applies at these records too. **S3.4/S3.5 `HE7-MIXED-13P`:** clause 4 demands side and label blocks whenever \(P_2\) has at least two sides, and ANNEX-LEMMA HE7-13′ is their supplier. **S3.4/S3.5 `HE6R1-3`:** the clause-5 peel at \(\Phi_2\), available there by `HETOW-KEY-BRIDGE` and `GENTOW-4-1`(c) respectively; S3.4's standing restraint "Any key-boundary contribution is handled by T2.KEY-BOUNDARY, not by a purported single \(\Phi_2\)-peel" is untouched and continues to govern the **proper-gcd** case, which routes to S1.9 — `HE6R1-3` is listed for the exact-division case \(\Phi_2\mid f\) that clause 5 now states. **S3.5 `HE6R1-2`:** S3.5's text consumes it by name ("HE6R1-2 gives a constant \(c_g=dv_2(g(\xi))\)").”
@@ -348,6 +432,12 @@ None of the other nine justifications is withdrawn by any later round.
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — the r6 round header; BOUNDARY UNIT, repairs homed in shard 3]`
 
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** as-of scoping.
+
+**CHAIN:** r6 preview/counter-reset context → r6 repairs in shard 3 → r12 plus riders → acceptance record **TERMINAL for note status**. This unit remains provenance for the r6 repair boundary.
+
 > “*(Opus/Claude repair arm, against the r5 hostile pass of record `runs/comp13/T2P5_output.log` — 0 CRITICAL + 2 GAP + 4 minor; counter resets.)*”
 
 > “**Verification protocol for this round.** Every source line quoted below was checked on 2026-08-13 by exact-full-line search (`grep -cFx`) in the named accepted source file, with the count and the source line number recorded at the point of use. No source file is edited by this round; the expected source edit count remains zero. Landmarks internal to this master are quoted from the **r5 effective text**, and their uniqueness is recorded in the form `sed -n '1,2912p' T2_SIGMA_LADDER_MASTER_2026-08-12.md | grep -cF -- '<string>'` → **1**; the line bound 2912 is the last line of the r5 round and excludes this round's own re-quotations, which would otherwise inflate every count.”
@@ -355,6 +445,8 @@ None of the other nine justifications is withdrawn by any later round.
 > “**What the two GAPs share.** Both are about something the note named instead of settling. G-1: S1.8B's hypothesis needs "refinement height = side slope", and the index \(k\) of \(L_k(s)\) is unbound at every site of the effective text, so the height was asserted rather than derived, and the offered corroboration cited a line that does not carry it. G-2: `(MP1′)`'s load-bearing negative — that no pinned unit certifies a recentered level-one key as carrying a level-one frame — was asserted without adjudicating the obvious pinned candidate. Repair 1 binds the height from the master's own `(SIDE-COUNT)`, `(SLOT-V)` and `(LIFT)`, as `(REF-HT)`. Repair 2 performs the adjudication; the candidate wins, the fence is **discharged**, and one of the three open obligations is retired.”
 
 **DERIVATION:** `[ROUND RECORD]` The landmark-bound convention advances from 2608 (r4's last line) to 2912 (r5's last line) by the same rule stated at .02. The round's own preview names the two GAPs it answers and the disposition of each; both are executed in repairs homed at lines 2926–3296 (shard 3).
+
+**PIN VERIFICATION:** artifact `runs/comp13/T2P5_output.log` exists at cross-read (2026-08-18).
 
 **CONDITIONALITY:** **Boundary unit.** Only lines 2916–2925 are homed here; r6 repair 1 (`(REF-HT)`) begins at line 2926 and is compiled in shard 3, as are repairs 2–7 and the r6 counter. The preview's claim that `(MP1′)` is retired is executed there and confirmed by the acceptance record. This round's counter reset is superseded to 2/2.
 
@@ -366,9 +458,11 @@ None of the other nine justifications is withdrawn by any later round.
 
 ## 3. XREF verification ledger
 
-**Method.** Every source line and designation below was **re-searched at compilation time (2026-08-14)** by exact-line comparison in the named accepted source file under `lean/notes/openmath/`, not transcribed from the note's own recorded counts. A count other than exactly 1 on a delimiter line would have been an `OPEN-CALL`; no such case occurred. Part A verifies source lines; part B independently re-runs the master-internal landmark counts on which this range's supersessions rest; part C verifies the designations the local units name.
+**Method.** Every source line and designation below was **re-searched at compilation time and again at Codex cross-read (2026-08-18)** by exact-line comparison in the named accepted source file under `lean/notes/openmath/`, not transcribed from the note's own recorded counts. A count other than exactly 1 on a delimiter line would have been an `OPEN-CALL`; no such case occurred. Part A verifies source lines; part B independently re-runs the master-internal landmark counts on which this range's supersessions rest; part C verifies the designations the local units name.
 
 ### A. Source delimiter and verification lines (exact full-line match)
+
+`[TABLE — compiler XREF ledger]`
 
 | XREF | Pin / use | Source file | Line searched | Count |
 |---|---|---|---|---:|
@@ -410,9 +504,13 @@ None of the other nine justifications is withdrawn by any later round.
 | Y36 | TOWERRAT2-C annex heading 1 | `GENTOW4_PROOF_2026-08-09.md` | `### [TOWERRAT2-C annex, 2026-08-10] Dated correction: the 4.A(ii)` | 1 |
 | Y37 | TOWERRAT2-C annex heading 2 | `GENTOW4_PROOF_2026-08-09.md` | `### "top coefficient NOT monic" parenthetical SUPERSEDED` | 1 |
 
+**Arithmetic audit:** 37 rows × count 1 = 37 verified exact source lines; 0 rows have a count other than 1.
+
 Also re-run: r4 repair 6's negative claim, `redline` in `HE3_PROOF_2026-08-08.md` (case-insensitive) → **0**, confirming the designation correction that produced Y08–Y12.
 
 ### B. Master-internal landmark counts (re-run, bound as the round states)
+
+`[TABLE — compiler supersession-landmark ledger]`
 
 | Landmark superseded | Bound | Count |
 |---|---|---:|
@@ -426,7 +524,11 @@ Also re-run: r4 repair 6's negative claim, `redline` in `HE3_PROOF_2026-08-08.md
 | `Two source units this master consumes were covered by no pin.` | 1–2608 | 1 |
 | `Both are tested.` (r5 repair 5's anchor) | 1–2608 | 1 |
 
+**Arithmetic audit:** 9 rows × count 1 = 9 verified bounded landmarks; 0 rows have a count other than 1.
+
 ### C. Designations named by the local units (fixed-string occurrence in target)
+
+`[TABLE — compiler designation ledger]`
 
 | Designation | Target | Count |
 |---|---|---:|
@@ -441,6 +543,8 @@ Also re-run: r4 repair 6's negative claim, `redline` in `HE3_PROOF_2026-08-08.md
 | `THEOREM HETOW.A` | `HETOW_RECON_2026-08-09.md` | 3 |
 | `THEOREM GENTOW-4.A` | `GENTOW4_PROOF_2026-08-09.md` | 7 |
 | `LEMMA HE6R1-3` | `HE6R1_RECON_2026-08-08.md` | 8 |
+
+**Arithmetic audit:** 11 designation rows; occurrence-count sum (6+1+4+1+17+23+23+3+3+7+8=96); all 11 counts are positive, so 0 designation rows fall to `OPEN-CALL`.
 
 **XREF result:** 37 source lines verified at exactly 1; 1 negative claim verified at 0; 9 master-internal landmarks verified at 1; 11 designations verified present. **0 unverifiable designations; 0 compiler `OPEN-CALL`s.** Designation counts above 1 are unit-name occurrences, not pin resolutions: pin resolution is by the delimiter pair, which is unique in every case.
 
@@ -554,6 +658,8 @@ T2 has no numbered battery table; its teeth are the S7 Pass 1/Pass 2 hostile row
 
 ## 8. BOUNDARY SELF-AUDIT
 
+`[TABLE — compiler boundary audit]`
+
 | Unit group | Boundary reason |
 |---|---|
 | .01, .02, .13 | One unit per round for round-level process: provenance, protocol, and counter share a single function (what this round answers and what status it sets) and are superseded together. |
@@ -585,10 +691,12 @@ T2 has no numbered battery table; its teeth are the S7 Pass 1/Pass 2 hostile row
 
 ## 10. SELF-AUDIT
 
+`[TABLE — compiler self-audit]`
+
 | Check | Result |
 |---|---|
 | Statement inventory | 13 temporary-ID units, all with HOME in source lines 2242–2925 |
-| Required fields | 13/13 have `CANONICAL STATEMENT`, `DERIVATION`, `CONDITIONALITY`, `RESOLUTION TRACE`, and `TEETH` |
+| Required fields | 13/13 have `CANONICAL STATEMENT`, `FORM`, `DERIVATION`, `CONDITIONALITY`, `RESOLUTION TRACE`, and `TEETH`; every superseding unit also has `SUPERSESSION KIND`, with `TARGETS`/`CHAIN` wherever the terminal edge is multi-site or multi-layer |
 | XREF verification | 37 source lines at count 1; 9 master-internal landmarks at count 1; 11 designations present; 1 negative claim at 0 — all re-run at compilation |
 | Compiler open calls | 0 |
 | Source open obligations | None opened or closed by a locally homed unit. `(MP1′)`, named at r5, is recorded as retired at r6 and is **not** stated as effective |

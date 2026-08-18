@@ -1,6 +1,6 @@
 # EFF-T2-s3of6 — CANONICAL EFFECTIVE-SPECIFICATION SHARD
 
-**COMPILED-BY: opus (2026-08-14, Asvin-authorized substitution, PROJECT_STATE #51). CODEX CROSS-READ OWED (post-reset).**
+**COMPILED-BY: Codex (gpt-5.6-sol high), 2026-08-18 cross-read and effective-text repair of the 2026-08-14 Opus draft.**
 
 ## 1. Shard header
 
@@ -8,7 +8,7 @@
 
 **HOME range:** source lines 2926–3568 inclusive (r6 repairs 1–7 and counter; r7 in full; the r8 header and r8 repair 1). The destination section of an edit, not the physical location of the edit directive, determines HOME; directives aimed at base S0–S8 resolve `EFF.T2.s1of6.<nn>` units and are routed, not re-emitted (§7).
 
-**HEAD blob hash:** `9cc9063028c598a90cd98a022ac07694e6dc8a2a`
+**HEAD blob hash:** `2b74ad0f35f41e3109f1ba779eb8eb266a8ba0fc`
 
 **Compilation context:** `spec/EFF_TEMPLATE_v2.md`; temporary IDs `EFF.T2.s3of6.<nn>`. Conventions follow `spec/EFF-T2-s1of6.md`; the HOME routing audit follows `spec/EFF-T1-s2of3.md`.
 
@@ -26,6 +26,14 @@ Two of the acceptance record's four standing conditionalities are settled inside
 
 Every counter state set in this range (“RESET to 0 of 2”, three times) is superseded by “**The clean-pass counter reaches 2 OF 2**”.
 
+The terminal dated append was also read. It expressly records “NO r-section, no grade event, no counter reset, and NO supersession”; it therefore changes no unit in this shard. Its F-1 adjudication nevertheless governs the reading of `HE6-SLOT-SEAM`: “**The 2026-08-12 correction governs**, and obeying it changes not one character of what this master reads.”
+
+### FREEZE PREDICATES
+
+- **Text freeze:** the acceptance record says, “With this record the note is **BYTE-FROZEN**,” and restricts later changes to dated appends. Pin: the source-note blob hash above.
+- **Acceptance-scope enumeration:** acceptance is “acceptance of the composition, not an upgrade of the level-one supplier”; the two level-one records and chains consuming HE3 through S1.8C remain capped at HE3's supplied HEAD grade. This independently governs .04's conditionality.
+- **No instrument freeze:** T2 says no battery is owed; its machine evidence is the pin sweep. No second artifact-freeze predicate is invented.
+
 ### Scope split
 
 **ABSORPTION/supply SET.** Unchanged by this range as to membership: the supply set is `HE7.A`, `T2.KEY-BOUNDARY` and the five instance records, inventoried at their base HOME in shard 1. What this range changes is the **hypothesis suite** under `HE7.A` — r7 books it explicitly:
@@ -40,20 +48,26 @@ Every counter state set in this range (“RESET to 0 of 2”, three times) is su
 
 The standing S7 consumption check is invoked as a demand, not reported as passed: “Every consumption of this repair lies inside a span of `(PINS)`, as the standing S7 consumption check demands.”
 
+**INBOUND corrections RECEIVED.** The 2026-08-14 dated consumption record adjudicates HE6's four A3 corrections. Only F-1 lands inside a pin used here (`HE6-SLOT-SEAM`), and the terminal record says the master's `(GAMMA)`/`(HE6-SEAM)` form already is the corrected form; F-2–F-4 move no assertion consumed by a locally homed unit. This is an inbound-reading edge, not an absorption-set addition and not a passed downstream protocol check.
+
 ### Resolution rules applied
 
 1. The acceptance record governs status. Counter states, obligation counts and pin counts stated in this range are historical.
 2. A directive homed in base S0–S8 is routed (§7), **with two stated exceptions**: (i) reading directives, adjudications, declinations and verification records whose destination is a `(PINS)` row or a pin name, which no row can carry; (ii) a multi-leg derivation with quoted source legs whose shard-1 destination unit compresses it to a single clause. Exception (ii) is used at .02, .03, .04 and .05, each flagged with its destination so the merge can attach it. Exception (ii) is **not** used for any statement, display, clause or instance box: no carrier statement of shard 1 is re-emitted here.
 3. Intra-shard supersession is applied and only the replacement is stated as effective: r7 repair 1 supersedes r6 repair 1's necessity claim; r7 repair 4 supersedes r6 repair 2's configuration clause; r7 repair 6 supersedes r6 repair 2's frame framing and engine sentence; r7 repair 2 supersedes r6 repair 2's taxonomy totals; r8 repair 1 supersedes r7 repair 1's level-one discharge bullet, its alternative-height sentence, its non-circularity paragraph, and r6 repair 2's honest-status clause.
-4. Cross-shard supersession is applied downward: pin count 32 → 37 and taxonomy 15+4+13 → \(20+4+13\) (r10–r12, acceptance); the three level-two Source-pin lines set at r7 repair 5 → r10 repair 1(f), r11 repair 1(e), r12 repair 1(f); the r8 counter and r8 repairs 2–4, physically outside this range, are named where they bear on a local unit but are compiled in shard 4.
+4. Cross-shard supersession is applied downward, not merely noted: r8 repair 4 corrects the `(REF-HT)` lead-in; r9 repair 1 and Rider 1 govern the print/coherent identification and lift-choice scope in .03/.04; r12 repair 1 replaces the composed-key degree licence in .05; pin count 32 → 37 and taxonomy 15+4+13 → \(20+4+13\) (r10–r12, acceptance); the three level-two Source-pin lines set at r7 repair 5 → r10 repair 1(f), r11 repair 1(e), r12 repair 1(f).
 5. `(REF-HT)`'s two clauses have different statuses and are never merged: (HT) is derived, (RISE) is stipulated. Neither is an open obligation; the open set stays `(LB1)` and `(MP1)`.
 6. `(MP1′)` is retired inside this range. Its name is retained only as a pointer — “The name is kept here only so that r5's text resolves” — and it is never stated as effective conditionality.
-7. Where this range records a `grep -cFx` count, the count is **re-run at compilation time** (§3) rather than transcribed. All 44 source lines and 20 master-internal landmarks re-verified.
+7. Where this range records a grep count, the count is **re-run at compilation time** (§3) rather than transcribed. Fourteen foreign target designations, 44 exact source lines and 20 master-internal landmarks re-verified.
 8. The r8 header and r8 repair 1 are homed here; r8 repairs 2–4 and the r8 counter begin at line 3569 and are compiled in shard 4.
 
 ### Quotation and table discipline
 
 Source statements are verbatim excerpts or marked `[ASSEMBLED]`. Source lines are reproduced byte-exactly including any leading `> `. Compiler ledgers are separately marked.
+
+### Pin verification
+
+The cited pass artifacts `runs/comp13/T2P6_output.log`, `T2P7_output.log`, `T2SOL_output.log`, and `T2P10_output.log` all exist at compilation time. The source-note hash above was recomputed with `git hash-object`. No commit hash is cited by a locally homed unit.
 
 ---
 
@@ -62,6 +76,16 @@ Source statements are verbatim excerpts or marked `[ASSEMBLED]`. Source lines ar
 ### EFF.T2.s3of6.01  [changes-record]
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — the r6 round record (counter; this round's header is homed at EFF.T2.s2of6.13)]`
+
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** counter re-reading.
+
+**TARGETS:** `EFF.T2.s2of6.02`.
+
+**CHAIN:** r5 three-obligation counter → r6 two-obligation/reset record → r7/r8 resets → acceptance record, **TERMINAL** at two open obligations and 2/2.
+
+**SERIES:** T2 hostile-pass repair/counter arc; r6 entry, after shard 2's r5 entry and before `.07`.
 
 > “r6 folds repairs for both GAPs (G-1P5, G-2P5) and all four minors (m-1P5 … m-4P5) of the r5 hostile pass of record, plus the four recorded nits. Its substantive content is two objects. First, `(REF-HT)`: the refinement height of the product-\(1\) recentering is bound to the side's own slope, derived from `(SIDE-COUNT)`, `(SLOT-V)` and `(LIFT)` rather than named, so that S1.8B's use of LEMMA HE7-12 no longer rests on an identification the master never made; the r5 claim that two independent textual legs carried it is withdrawn, and the source display is re-cited to `HE7_PROOF_2026-08-08.md`:924, the line that states the height, and demoted from a leg to a corroboration. Second, the `(MP1′)` adjudication: the r5 negative is withdrawn, and the assertion that a recentered level-one key reads over a level-one frame is DISCHARGED in the new S1.8C from four pins already on both level-one records' lines”
 
@@ -81,9 +105,17 @@ Source statements are verbatim excerpts or marked `[ASSEMBLED]`. Source lines ar
 
 ### EFF.T2.s3of6.02  [lemma]
 
-**CANONICAL STATEMENT:** `[ASSEMBLED — the effective derivation of (REF-HT): r6 repair 1(a) as amended by r7 repair 1(a)-(c). The (REF-HT) display itself is homed at base S1.8 (shard 1, EFF.T2.s1of6.19); what is homed here is its derivation and the withdrawals it rests on.]`
+**CANONICAL STATEMENT:** `[ASSEMBLED — the effective derivation of (REF-HT): r6 repair 1(a), r7 repair 1(a)–(c), and r8 repair 4(a). The (REF-HT) display itself is homed at base S1.8 (shard 1, EFF.T2.s1of6.19); what is homed here is its derivation and the withdrawals it rests on.]`
 
-> “The recentering at this branch is a REFINE step, and this master stipulates of a refine step both that it raise the key's value on the class it refines and that its increment sit at the side's own slope — the second a consequence of the first, derived below:”
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.T2.s1of6.19`, `EFF.T2.s1of6.31`.
+
+**CHAIN:** r6 “forced” binding → r7 (RISE) premise plus derived (HT) → r8 repair 4(a), **TERMINAL**: exactly one stipulation, (RISE), with (HT) derived from it.
+
+> “The recentering at this branch is a REFINE step, and this master stipulates of a refine step ONE thing: that it raise the key's value on the class it refines. That its increment then sits at the side's own slope is not a second stipulation but a consequence of the first, derived below. Both are displayed, because both are consumed downstream:”
 
 > “The two clauses of `(REF-HT)` are not independent stipulations: (HT) is forced by (RISE), and that forcing uses master data only. (RISE) itself is stipulated, and its status is recorded at the end of this passage.”
 
@@ -111,7 +143,7 @@ Two consequences are recorded with the derivation:
 
 **CONDITIONALITY:** The implication is unconditional master-side; the premise (RISE) is a carrier hypothesis discharged per instance (.03). The `(OCC)` demand is at the determined height \(\lambda\). At \(e'\ge2\) the branch does not arise.
 
-**RESOLUTION TRACE:** base S1.8 product-\(1\) sentence replaced by r6 repair 1(a) (2936–2967); necessity claim, display and case reading amended by r7 repair 1(a)–(c) (3315–3349); the same binding installed in the S2 clause-3 proof by r6 repair 1(b) (2969–2975). All four superseded strings landmark-verified at 1 under bound 3293 (§3, part B). Destination: base S1.8 and the S2 proof → shard 1, `.19` and `.31`.
+**RESOLUTION TRACE:** statement lines: base S1.8 product-\(1\) sentence replaced by r6 repair 1(a) (2936–2967), with the lead-in corrected by r8 repair 4(a) (3621–3631); proof lines: r7 repair 1(a)–(c) (3315–3349); correction sites: the same binding installed in the S2 clause-3 proof by r6 repair 1(b) (2969–2975), and the incomplete r6 descriptions booked by r8 repair 2 (3569–3595). Destination: base S1.8 and the S2 proof → shard 1, `.19` and `.31`.
 
 **TEETH:** S7 Pass 1 pure-mathematics theorem gate; the finite-refinement/root-preservation attack; the sub-threshold-lift refusal (\(k\le T\) leaves the window).
 
@@ -119,15 +151,52 @@ Two consequences are recorded with the derivation:
 
 ### EFF.T2.s3of6.03  [changes-record]
 
-**CANONICAL STATEMENT:** `[ASSEMBLED — the “Honest status of (RISE)” map AT THE r8 STATE: r7 repair 1(c)'s two bullets with the level-one bullet replaced by r8 repair 1(a)–(b), plus r8 repair 1(d)'s non-circularity statement. Its two level-one passages are superseded by r9 repair 1 (shard 4) — see CONDITIONALITY; the level-two bullet, the assembly order and the non-circularity statement are effective as quoted.]`
+**CANONICAL STATEMENT:** `[ASSEMBLED — TERMINAL “Honest status of (RISE)” map: r7 repair 1(c), r8 repairs 1 and 3, r9 repair 1, and the post-r9 lift-choice Rider 1. Omissions inside long replacement paragraphs are shown by ….]`
+
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** wording-rider.
+
+**TARGETS:** `EFF.T2.s1of6.19`.
+
+**CHAIN:** r7 instance map → r8 step-first assembly → r9 coherent-frame rebuild → Rider 1 lift-choice qualifier, **TERMINAL** at the r9 map with Rider 1 attached.
 
 > “**Honest status of (RISE).** Not derived by this master. Its instance status, recorded in the form r4 repair 3 used for `(SEC-RANK)`:”
 
-**Level one** (effective, r8 repair 1(a)–(b)):
+**Level one** (terminal r9/Rider-1 reading):
 
-> “**Level one** (S3.1/S3.2): supplied at the instance's own refine step, inside the existing pins `HE3-A-PROOF` and — for S3.2's enlarged classes — `HE6-FAMILY` and `HE6-PROOF`. Both clauses are properties of that one step, and the step is exhibited before either clause is read. … That step is a recentering of this master's own form at an index its construction fixes and this master does not choose: at \(\ell=1\) DEFINITION HE6-1's family IS the family of these recenterings — `> monic of degree D″ := D′ℓd (each B_tΦ′^{ℓt} has degree < D′ℓd). For ℓ = 1` (`HE6_PROOF_2026-08-08.md`:209), `> this is HE3's recentered-key family enlarged in DEGREE; for ℓ ≥ 2 it is a` (210) — and that family's recipe puts the increment of the member indexed by \((\kappa,r)\) at the index's own height … At \((\ell,d)=(1,1)\) and \(r=Z-s\) that reads \(\Psi_{\kappa,Z-s}=\Phi'+B_0\) with \(u=\ell\kappa=\kappa\), \(\deg B_0<D'\), \(d(B_0)=\kappa\) and residue \(c_0=-s\): this master's \(\Phi-L_\kappa(s)\), at the family's own index \(\kappa\), with the recipe's standing \(\kappa>D'h=T\) placing it inside `(WINDOW)` before any clause of `(REF-HT)` is read. **No height is asserted of \(\kappa\) here, and none is needed to read the clause that follows.** (RISE) at that step is the passage's own conclusion, stated of \(\Phi''\) with no height in the reading.”
+> “**Level one** (S3.1/S3.2): supplied at the instance's own refine step, inside the existing pins `HE3-A-PROOF` and — for S3.2's enlarged classes — `HE6-FAMILY` and `HE6-PROOF`. Both clauses are properties of that one step, and the step is exhibited before either clause is read.”
 
-> “**(HT) at that same step**, on two grounds, neither of them the theorem's own (HT) clause. FIRST, reading no index at all. … At any index \(\kappa\ne\lambda\) the display leaves every root of the class at \(d=\min(\lambda,\kappa)\le\lambda\), so the class contributes nothing strictly above \(\lambda\), the sub-block does not travel, and the floor does not increase — which is not what the passage states of \(\Phi''\). Hence \(\kappa=\lambda\), and the step is \(\Phi-L_\lambda(s)\). This is this master's (RISE) \(\Rightarrow\) (HT) implication run AT the instance, on an instance-supplied premise whose reading used no height; it is not the theorem's (HT) clause imported to license that reading, and the direction of use is the safe one — the master's generality in \(k\) is INSTANTIATED here, not transferred. SECOND, and independently of the display: the passage forms its key at its own refine datum … so the member of DEFINITION HE6-1's family that the read uses at that node is the one indexed by \((\lambda,Z-s)\), whose increment sits at \(d=\lambda\) by the recipe above. This second ground is a **reading of the passage's index, not a quoted formula** … It is recorded as corroboration; the first ground carries the leg.”
+The family member is first exhibited without importing a height, digit, or equal-name label. The effective print/coherent relation is:
+
+> \[
+> \boxed{
+> \Psi_{\kappa,Z-\sigma}
+> =
+> \Phi'-L_\kappa\bigl(\sigma\eta^{q(\kappa)}\bigr),
+> \qquad\text{equivalently}\qquad
+> \Phi'-L_\kappa(s)
+> =
+> \Psi_{\kappa,\,Z-s\eta^{-q(\kappa)}} .}
+> \tag{IDX-TWIST}
+> \]
+
+Rider 1 supplies the governing qualifier:
+
+> “**Which lift the equality is read at.** (IDX-TWIST) is an equality of polynomials AT the compatible choice \(B_0=-L_\kappa(\sigma\eta^{q(\kappa)})\) … For an ARBITRARY (LIFT)-permitted choice … (IDX-TWIST) therefore holds MODULO increments of height \(>\kappa\), and what is choice-independent is exactly the pair \(h(-B_0)=\kappa\), \(\operatorname{dig}(-B_0)=\sigma\eta^{q(\kappa)}\) … The COVERING direction — every nonempty recentering \(\Phi'-L_\kappa(c)\) of this master at a full height \(\kappa\) is a member of the family, at the label \(r=Z-c\eta^{-q(\kappa)}\) and the permitted choice \(B_0=-L_\kappa(c)\) — is EXACT.”
+
+The discharge then reads (RISE) from the passage with no height or index and derives both coherent data from that rise:
+
+> \[
+> \boxed{
+> d\bigl((\Phi-\Lambda)(\rho)\bigr)>\lambda
+> \iff
+> \iota_\rho\bigl(s-\operatorname{dig}(\Lambda)\bigr)=0
+> \iff
+> \operatorname{dig}(\Lambda)=s .}
+> \]
+
+> “The passage's rise therefore forces both readings at once: \(h(\Lambda)=\lambda\) and \(\operatorname{dig}(\Lambda)=s\), with \(s\) this master's own coherent residual root of `(RES-FACT)` … while the family's print label at that same member is \(s\eta^{-q(\lambda)}\) by (IDX-TWIST) and plays no part in the derivation.”
 
 **Level two and deeper** (r7 repair 1(c), unamended):
 
@@ -135,15 +204,15 @@ Two consequences are recorded with the derivation:
 
 > “The height binding that S1.8B Step 1 consumes at level two therefore rests on (RISE) as a carrier assertion discharged by these pins, together with this master's (RISE) \(\Rightarrow\) (HT) implication, and on no derivation of necessity. (RISE) is a carrier hypothesis, not a ledger obligation: it fences no instance read, and the open named obligations remain `(LB1)` and `(MP1)`.”
 
-**Non-circularity** (effective, r8 repair 1(d)):
+**Non-circularity** (terminal r9 statement):
 
-> “**Non-circularity, stated of the effective text.** The level-one discharge above establishes both clauses at the instance's own step and neither from the other: (RISE) is the passage's conclusion about \(\Phi''\), whose reading uses no height, and (HT) at that step follows at the instance from that conclusion through this master's own display, corroborated by the passage's index. S1.8C's configuration match invokes no clause of `(REF-HT)`, as r7 repair 4 rebuilt it and as the honest-status sentence now records.”
+> “**Non-circularity, restated for the rebuilt discharge.** The order of assembly is unchanged and the added leg does not disturb it. The step is exhibited first, as a family member in master form, with NO height and NO digit asserted of it … (RISE) is then the passage's conclusion about that step, read with no height and no index … Both the height and the digit are then derived FROM that conclusion, through this master's own `(SLOT-V)`/`(SLOT-R)`/`(GAMMA)`/S1.3 displays and the coherent label read that `HE3-A-PROOF` carries.”
 
-**DERIVATION:** `[HYPOTHESIS / INSTANCE DISCHARGE]` The r8 assembly order is the derivation: exhibit the instance's step first, as a member of DEFINITION HE6-1's family at the index that family's own recipe fixes; read (RISE) off the passage's conclusion with no height in the reading; then obtain (HT) at that step by instantiating the master's own min-rule display. Both level-one legs are inside pins already on both records' Source-pin lines, so no pin is added — “No Source-pin line is amended either: the three pins this round cites — `HE3-A-PROOF`, `HE6-FAMILY`, `HE6-PROOF` — already stand on both level-one records' lines”. Eleven source lines carry the two bullets; all re-verified at 1 (§3, part A).
+**DERIVATION:** `[HYPOTHESIS / INSTANCE DISCHARGE]` Exhibit the instance step first, with no height, digit, or print/coherent identification imported. Read (RISE) from `HE3-A-PROOF`. The min-rule forces the height \(\kappa=\lambda\); the coherent residue comparison forces \(\operatorname{dig}(\Lambda)=s\); the designated-lift argument absorbs the difference between the constructed increment and \(L_\lambda(s)\) at height \(>\lambda\). `(IDX-TWIST)` then identifies the print label, with Rider 1 separating the exact compatible-choice direction from the arbitrary-lift modulo-higher-height direction. `HE6-PROOF` licenses the S3.2 use, with its \(\ell\ge2\) repeated-residual caveat routed away.
 
-**CONDITIONALITY:** **Two passages quoted above are superseded in shard 4 and are reproduced here only as the r8 state of the discharge.** r9 repair 1(a) (source 3689–3711) replaces the step sentence — the `\((\ell,d)=(1,1)\), \(r=Z-s\), residue \(c_0=-s\)` identification — because the family indexes its members by a \(\varpi\)-PRINT residue while this master indexes recenterings by the COHERENT digit; the effective form carries `(IDX-TWIST)` and is homed at shard 4. r9 repair 1(b) (3713–3739) replaces the height-ground passage by one that derives the step's height **and its digit** from the same rise; the effective form is likewise homed at shard 4, as is r8 repair 3's HE6 leg of the "(S3.1/S3.2)" scope. What survives r9 unchanged, and is effective as quoted here, is the **assembly order** — step exhibited first, (RISE) read with no height or index, both clauses derived at the instance — the level-two bullet, and the non-circularity statement. (RISE) is stipulated, never derived; the map records who supplies it, not a proof. The level-two lines are hypothesis-side descriptions, explicitly “NOT a derivation that a step must be this one”. The second level-one height ground is corroboration only, because the increment's height display belongs to LEMMA HE3-2, whose unit “is HE3 §S5 and lies inside no span of `(PINS)`”. The HE6 leg carries r6 repair 2's caveat: an \(\ell\ge2\) side with a repeated residual factor is routed to the product-\(\ge2\) branch and is not consumed here.
+**CONDITIONALITY:** (RISE) is stipulated, never derived; this map records its per-instance supply. The level-two lines are hypothesis-side descriptions, explicitly “NOT a derivation that a step must be this one”. At level one, polynomial equality in `(IDX-TWIST)` is exact only at the compatible lift choice; arbitrary permitted choices agree in the height-and-digit data every consumer reads. The HE6 licence excludes an \(\ell\ge2\) side with a repeated residual factor, routed to the product-\(\ge2\) branch. LEMMA HE3-2 remains outside every pin and supplies no hidden height formula.
 
-**RESOLUTION TRACE:** r7 repair 1(c) (3351–3357); level-one bullet and alternative-height sentence replaced in full by r8 repair 1(a)–(b) (3531–3545); non-circularity paragraph replaced by r8 repair 1(d) (3555–3561). Four superseded strings landmark-verified at 1 under bound 3509 (§3, part B). Destination: base S1.8's `(REF-HT)` passage → shard 1, `.19`, whose `DERIVATION` compresses this map to one clause. Reaffirmed verbatim in substance by the acceptance record's `(RISE)` bullet.
+**RESOLUTION TRACE:** statement lines: r7 repair 1(c) (3351–3357), replaced at level one by r8 repair 1(a)–(b) (3531–3545); proof lines: r9 repair 1(a)–(b) and its non-circularity paragraph (3689–3759); correction sites: r8 repair 3 (3599–3613), r9 repair 1(c)–(e) (3741–3757), and Rider 1 (3811–3837). Destination: base S1.8's `(REF-HT)` passage → shard 1, `.19`. Acceptance 4497 is the terminal status summary.
 
 **TEETH:** S7 finite-refinement/root-preservation attack; the level-one `(RISE)` discharge tooth; the print/coherent and lift-choice mutants that later rounds add at the same step.
 
@@ -151,7 +220,15 @@ Two consequences are recorded with the derivation:
 
 ### EFF.T2.s3of6.04  [lemma]
 
-**CANONICAL STATEMENT:** `[ASSEMBLED — S1.8C, the (MP1′) adjudication and discharge: r6 repair 2's subsection as amended by r7 repairs 4 and 6 and r8 repair 1(c). The retirement statement is homed at base S1.8 (shard 1, EFF.T2.s1of6.25); what is homed here is the adjudication that produces it.]`
+**CANONICAL STATEMENT:** `[ASSEMBLED — TERMINAL S1.8C (MP1′) adjudication: r6 repair 2, r7 repairs 4 and 6, r8 repair 1(c), r9 repair 1(d), and Rider 1. The retirement statement is homed at base S1.8 (shard 1, EFF.T2.s1of6.25); what is homed here is the adjudication that produces it.]`
+
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.T2.s1of6.25`.
+
+**CHAIN:** r5 `(MP1′)` obligation → r6 S1.8C discharge → r7 frame/configuration corrections → r8 entry-point correction → r9 coherent family-member identification + Rider 1 permittedness check, **TERMINAL**; acceptance reaffirms retirement.
 
 The question settled:
 
@@ -185,9 +262,11 @@ with `HE6-SLOT-SEAM`'s key-freeness quoted from inside its span — `> ξ be ANY
 
 > “They are not "carried by" \(\Phi''\): nothing about them moves when the key does. That is why no pin was ever going to state them in the form `(MP1′)` demanded, and why the absence of such a pin was not evidence of a gap.”
 
-**(vi)**, the family leg: the test data are chosen key-free (`> deg B_t < D′, dv(B_t) = (d−t)u and res(B_t(θ)/ϖ(θ)^{(d−t)u}) = c_t (and`), the assembly is a formula in the current monic degree-\(D'\) key (`>     Ψ_{κ,r} := Φ′^{ℓd} + Σ_{t<d} B_t·Φ′^{ℓt}  ∈ O[x],`), and
+**(vi)**, the family leg: the test data are chosen key-free (`> deg B_t < D′, dv(B_t) = (d−t)u and res(B_t(θ)/ϖ(θ)^{(d−t)u}) = c_t (and`), the assembly is a formula in the current monic degree-\(D'\) key (`>     Ψ_{κ,r} := Φ′^{ℓd} + Σ_{t<d} B_t·Φ′^{ℓt}  ∈ O[x],`), and the terminal r9/Rider-1 identification is:
 
-> “At \((\ell,d)=(1,1)\) the member \(\Psi_{\lambda,Z-s}=\Phi'+B_0\) IS the recentered key, \(B_0\) being the \(\varpi\)-frame form of \(-L_\lambda(s)\) under `(HE6-SEAM)`. A recentered level-one key is not a foreign object to HE6; it is one of HE6's own test polynomials.”
+> “At \((\ell,d)=(1,1)\) the recentered key IS a member of the family, and the member it is, is \(\Psi_{\lambda,\,Z-s\eta^{-q(\lambda)}}=\Phi'+B_0\) with \(B_0=-L_\lambda(s)\): the family indexes its members by the PRINT residue of \(B_0\) … this master indexes its recenterings by the COHERENT digit of the increment … and the two differ by the fixed unit \(\eta^{q(\lambda)}\in K^\times\) of `(HE6-SEAM)`, as (IDX-TWIST) in r9 repair 1 displays. The relabelling is a bijection of \(K^\times\), so the family covers every recentering of this master at that height, member for member; what it does not do is match them at equal index names.”
+
+Rider 1 makes this exact reading legitimate: the sentence names the compatible choice \(B_0=-L_\lambda(s)\), and the rider verifies that this choice satisfies DEFINITION HE6-1's line-204 height and print-residue conditions. The converse for an arbitrary permitted family choice is only modulo an increment of height \(>\lambda\); S1.8C consumes the exact covering direction.
 
 **(vii)** and the engine sentence (effective, r7 repair 6(b)):
 
@@ -216,11 +295,11 @@ with `HE6-SLOT-SEAM`'s key-freeness quoted from inside its span — `> ξ be ANY
 
 > “**The name `(MP1′)` is retired.** r5 named the assertion (i)–(vii) as an obligation on the ground that "no pinned unit certifies" it. That ground is withdrawn: `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY` and `HE6-PROOF` certify it between them, and all four are already on both level-one records' Source-pin lines. The name is kept here only so that r5's text resolves — `(MP1′)` denotes (i)–(vii) — and it now denotes a consequence of the pins, not an obligation. No instance record carries it and no ledger item fences it.”
 
-**DERIVATION:** `[ADJUDICATION WITH FOUR PINNED LEGS]` The negative that created `(MP1′)` (“no pinned unit certifies”) is tested against the obvious candidate and fails: `HE3-A-PROOF` carries the \(\Phi''\)-polygon, the \(\Phi''\)-label read, and the inductive application of THEOREM HE3.A to the sub-block over the same stage ring; `HE6-SLOT-SEAM` states its slot law with no key in it and its own correction record says the restatement exists so the law may be applied off the key; `HE6-FAMILY`'s recipe is key-free in its data and formulaic in its key, and identifies \(\Phi''\) as its \((\ell,d)=(1,1)\) member; `HE6-PROOF` licenses running HE3's stage-α with HE6's enlarged classes. Twenty-two source lines carry the four legs; all re-verified at 1 (§3, part A).
+**DERIVATION:** `[ADJUDICATION WITH FOUR PINNED LEGS]` The negative that created `(MP1′)` (“no pinned unit certifies”) is tested against the obvious candidate and fails: `HE3-A-PROOF` carries the \(\Phi''\)-polygon, the \(\Phi''\)-label read, and the inductive application of THEOREM HE3.A to the sub-block over the same stage ring; `HE6-SLOT-SEAM` supplies the key-free slot law in its terminal corrected `(GAMMA)`/`(HE6-SEAM)` reading; `HE6-FAMILY` is key-free in its data and formulaic in its key, and covers the recentered key at \((\ell,d)=(1,1)\) under the r9 print/coherent relabelling and Rider-1 compatible choice; `HE6-PROOF` licenses running HE3's stage-α with HE6's enlarged classes. Twenty-two source lines carry the four original legs; all re-verified at 1 (§3, quote ledger).
 
-**CONDITIONALITY:** Relative, not absolute — the transport carries the records' existing `(LB1)`/`(MP1)` triggers unchanged. Consumed-not-reproved at HE3's own grade, which `(GRADE)` already minimises over (HE3 is capped at \(0/2\) at acceptance). The HE6 leg excludes the \(\ell\ge2\)-with-repeated-residual caveat. The two reading directives bound what may travel to \(\Phi''\).
+**CONDITIONALITY:** Relative, not absolute — the transport carries the records' existing `(LB1)`/`(MP1)` triggers unchanged. Consumed-not-reproved at HE3's own grade, which `(GRADE)` already minimises over (HE3 is capped at \(0/2\) at acceptance). The HE6 leg excludes the \(\ell\ge2\)-with-repeated-residual caveat. Only the refined sub-block travels. The family identification uses the exact covering direction at the compatible lift; equal print/coherent index names are prohibited.
 
-**RESOLUTION TRACE:** r6 repair 2 (3007–3141), replacing r5 repair 2's `(MP1′)` subsection in full (both bounding strings landmark-verified at 1 under bound 2912); amended by r7 repair 4 (configuration clause, 3423–3431), r7 repair 6(a)–(b) (framing and engine sentence, 3477–3491), r8 repair 1(c) (honest status, 3547–3553), and r7 repair 3 (the stale `(MP1′)` disjunct in r5 repair 2's closing paragraph, 3405–3411). Consumption consequence: r7 repair 5 puts the four pins on the three level-two Source-pin lines, on the ground that S1.8C's closing sentence “puts a level-two state over that frame” — those line settings are superseded downstream (r10–r12) but the ground is not. Destination: base S1.8C → shard 1, `.25`. Reaffirmed by the acceptance record's `(MP1′)` sentence.
+**RESOLUTION TRACE:** statement lines: r6 repair 2 (3007–3141), replacing r5 repair 2's `(MP1′)` subsection; proof lines: the four pinned legs quoted there; correction sites: r7 repair 4 (3423–3431), r7 repair 6(a)–(b) (3477–3491), r8 repair 1(c) (3547–3553), r9 repair 1(d) (3749–3755), Rider 1 (3821–3837), and r7 repair 3's stale-disjunct deletion (3405–3411). The r7 repair 5 Source-pin settings are superseded downstream, not the four-pin ground. Destination: base S1.8C → shard 1, `.25`; acceptance 4499 is terminal status.
 
 **TEETH:** the level-one frame-transport hostile tooth; S7 reducible/recentered-key rows; the print/coherent-frame tooth that r9 later adds at the same seam.
 
@@ -228,9 +307,25 @@ with `HE6-SLOT-SEAM`'s key-freeness quoted from inside its span — `> ξ be ANY
 
 ### EFF.T2.s3of6.05  [lemma]
 
-**CANONICAL STATEMENT:** `[VERBATIM — S1.8B's scope clause at a composed key (r6 repair 6(a)); destination base S1.8B, shard 1 EFF.T2.s1of6.24]`
+**CANONICAL STATEMENT:** `[ASSEMBLED — TERMINAL S1.8B scope clause at a composed key: r6 repair 6(a) as replaced by r12 repair 1(c); omissions inside the long r12 replacement paragraph are shown by …; destination base S1.8B, shard 1 EFF.T2.s1of6.24]`
 
-> “**Scope: entry at a composed key.** S1.8B is stated for a chain based at a DEFINITION HE6-1 key \(\Psi=\Psi_{\lambda,r}\). At S3.4/S3.5 the chain is based at the composed key \(\Phi_2\), which is not such a key, and entry costs one composition — performed by the records' own already-listed pins, not by this master. `HETOW-KEY-BRIDGE` gives \(\Phi_2=\Psi_{\kappa_2,\widetilde r}-w\) with \(\deg w<D''\) and "either w = 0 … or dv₂(w) > T₂", and `GENTOW-4-1` clause (c) gives the same at the partial tower. If \(w=0\), the base key IS a DEFINITION HE6-1 key and S1.8B applies literally. If \(w\ne0\), then \(w\) already satisfies LEMMA HE7-12's hypothesis at \(\Psi_{\kappa_2,\widetilde r}\), and Step 1 gives the same for each refine increment \(w_1,\dots,w_j\) by `(REF-HT)`; LEMMA HE7-12(d) folds the whole sum, so
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.T2.s1of6.24`.
+
+**CHAIN:** r6 bridge-supplied value+degree reading → HETOW correction C-A scopes the source HE7-12 licence to \(w=0\) → r12 master-side degree proof, **TERMINAL**.
+
+> “**Scope: entry at a composed key.** S1.8B is stated for a chain based at a DEFINITION HE6-1 key \(\Psi=\Psi_{\lambda,r}\). At S3.4/S3.5 the chain is based at the composed key \(\Phi_2\), which is not such a key, and entry costs one composition — performed by the records' own already-listed pins, not by this master.”
+
+> “`HETOW-KEY-BRIDGE` gives \(\Phi_2=\Psi_{\kappa_2,\widetilde r}-w\) with "either w = 0 … or dv₂(w) > T₂" — the VALUE disjunct, which is the only conjunct read off a source statement here — and `GENTOW-4-1` clause (c) gives that same disjunct at the partial tower … LEMMA HE7-12's remaining hypothesis \(\deg w<D''\) is supplied here by this master, from the monicity of the two keys.”
+
+The displayed master-side proof is: \(\Phi_2\) is monic of degree \(D_2\), \(\Psi_{\kappa_2,\widetilde r}\) is monic of degree \(D''\), and the instance-box invariants give \(D''=D'\ell d_r=D'e_2f_2=D_2\). Thus \(w=\Psi_{\kappa_2,\widetilde r}-\Phi_2\) is zero or has degree \(<D''\) by cancellation of leading terms. HETOW correction C-A(ii), pinned downstream as `HETOW-KEY-BRIDGE-C-A`, governs the source licence but does not supply this degree leg.
+
+> “If \(w=0\), the base key IS a DEFINITION HE6-1 key and S1.8B applies literally. If \(w\ne0\), then \(w\) satisfies LEMMA HE7-12's hypothesis at \(\Psi_{\kappa_2,\widetilde r}\) — its degree by the cancellation just displayed, its slot value by the disjunct cited above — and Step 1 gives the same for each refine increment \(w_1,\dots,w_j\) by `(REF-HT)`, each of degree \(<D''\) by S1.4's \(\deg L_k(c)<D\) at \(D=D''\), so that the ACCUMULATED increment carries the bound with nothing further to check.”
+
+Consequently
 >
 > \[
 > \Phi_2-W
@@ -238,13 +333,13 @@ with `HE6-SLOT-SEAM`'s key-freeness quoted from inside its span — `> ξ be ANY
 > \Psi_{\kappa_2,\widetilde r}-\bigl(w+w_1+\dots+w_j\bigr)
 > \]
 >
-> is covered by ONE instance of clauses (a)–(c) at \(\Psi_{\kappa_2,\widetilde r}\). That is the composition `GENTOW-4-A`(iii) already displays as "available by LEMMA HE7-12 with W + w". Step 2 then runs unchanged, at \(\Psi_{\kappa_2,\widetilde r}\) and not at \(\Phi_2\).”
+> “is covered by ONE instance of clauses (a)–(c) at \(\Psi_{\kappa_2,\widetilde r}\). That is the composition `GENTOW-4-A`(iii) already displays as "available by LEMMA HE7-12 with W + w". Step 2 then runs unchanged, at \(\Psi_{\kappa_2,\widetilde r}\) and not at \(\Phi_2\).”
 
-**DERIVATION:** `[ONE-CLAUSE COMPOSITION]` The seam repaired is that “S1.8B's own scope sentence excludes them and the composition is nowhere displayed”, while “Both bridge units ARE pinned … so the ingredients are present and the claim is true. What is missing is the one-clause composition”. The composition is a case split on the bridge's own disjunct (\(w=0\) or \(dv_2(w)>T_2\)) followed by LEMMA HE7-12(d)'s fold of \(w+w_1+\dots+w_j\) into a single application; the refine increments enter with their heights supplied by `(REF-HT)` (.02, .03). The reading is displayed by `GENTOW-4-A`(iii) itself as “available by LEMMA HE7-12 with W + w”.
+**DERIVATION:** `[ONE-CLAUSE COMPOSITION, r12 TERMINAL]` The bridge records supply only the value disjunct. Equal-degree monicity supplies \(\deg w<D''\) master-side. S1.4 supplies the same degree bound for every refine increment; a finite sum preserves it. LEMMA HE7-12(d) folds \(w+w_1+\dots+w_j\) into one application, while `(REF-HT)` supplies the refine heights. No \(w\ne0\) use of HETOW's re-scoped source licence remains.
 
-**CONDITIONALITY:** The chain is read at \(\Psi_{\kappa_2,\widetilde r}\), never at \(\Phi_2\); the master performs no key transfer of its own. The \(w\ne0\) degree conjunct \(\deg w<D''\) is later re-derived master-side at r12 repair 1 (shard 5) after HETOW's C-A correction withdraws the source licence for it.
+**CONDITIONALITY:** The chain is read at \(\Psi_{\kappa_2,\widetilde r}\), never at \(\Phi_2\). For \(w=0\), S1.8B applies literally. For \(w\ne0\), value is source-supplied and degree is master-derived; HETOW's C-A licence is obeyed and not consumed. The same degree bound must hold for the accumulated increment, not merely the entry increment.
 
-**RESOLUTION TRACE:** r6 repair 6(a) (3221–3231), appended to S1.8B at the anchor sentence landmark-verified at 1 under bound 2912; the corresponding justification sentence in r5 repair 6 re-pointed by r6 repair 6(b) (shard 2, `.12`). Destination: base S1.8B → shard 1, `.24`.
+**RESOLUTION TRACE:** statement lines: r6 repair 6(a) (3221–3231); proof lines: r12 repair 1(b) (4226–4234); correction sites: HETOW C-A adjudication and terminal replacement at r12 repair 1(a),(c) (4224–4225, 4236–4242), plus r6 repair 6(b)'s re-pointing of shard 2 `.12`. Destination: base S1.8B → shard 1, `.24`.
 
 **TEETH:** the composed-key transport tooth; HETOW frame gate; the accumulated-degree tooth added at r12.
 
@@ -254,6 +349,14 @@ with `HE6-SLOT-SEAM`'s key-freeness quoted from inside its span — `> ξ be ANY
 
 **CANONICAL STATEMENT:** `[TABLE — pin and inventory bookkeeping homed in this range]`
 
+**FORM:** display.
+
+**SUPERSESSION KIND:** inventory completion.
+
+**TARGETS:** `EFF.T2.s1of6.03`, `EFF.T2.s1of6.42`.
+
+**CHAIN:** pre-r6 description-only inventory → r6/r7 pair/first-only classifications → r10/r11/r12 inventory completion, **TERMINAL** at \(20+4+13=37\).
+
 | Item | Effective operation at r6/r7 | Status now |
 |---|---|---|
 | `HE6-PROOF` delimiters | first `### S6.2 PROOF OF THEOREM HE6.A`, last `histories containing an ℓ ≥ 2 side with a repeated residual factor.`; the row description “the complete proof unit of THEOREM HE6.A” resolved to the `###` unit, ending before `### S6.3 Multiplicity ≥ 2 on an ℓ = 1 side (the stage-α node) is unaffected` | Effective; moves the pin from description-only to quoted-pair |
@@ -262,7 +365,9 @@ with `HE6-SLOT-SEAM`'s key-freeness quoted from inside its span — `> ξ be ANY
 | Taxonomy | “Totals: 15 pairs + 4 first-only + 13 description-only = 32.” | **Superseded** to \(20+4+13=37\) |
 | Pin count | 32, unchanged by r6, r7 and r8 (“no pin is added or removed”) | **Superseded** to 37 |
 
-**DERIVATION:** `[BOOKKEEPING]` The `HE6-PROOF` pair is quoted because the S1.8C discharge leans on the closing paragraph of that span, so “the span's boundary is fixed here instead of being the gate's work”, following the practice r4 repair 6 set for `###`-headed units. `HE6-FAMILY`'s reclassification follows mechanically from r5 repair 3's taxonomy rule (.07 of shard 2): a round that quotes and grep-verifies a first delimiter must book the pin as first-only. Both delimiter lines and the `HE6-FAMILY` first delimiter re-verified at 1 (§3, part A); the two superseded totals sentences landmark-verified at 1 (§3, part B).
+**DERIVATION:** `[BOOKKEEPING]` The `HE6-PROOF` pair is quoted because the S1.8C discharge leans on the closing paragraph of that span, so “the span's boundary is fixed here instead of being the gate's work”, following the practice r4 repair 6 set for `###`-headed units. `HE6-FAMILY`'s reclassification follows mechanically from r5 repair 3's taxonomy rule (.07 of shard 2): a round that quotes and grep-verifies a first delimiter must book the pin as first-only. Both delimiter lines and the `HE6-FAMILY` first delimiter re-verified at 1 (§3, part B); the two superseded totals sentences landmark-verified at 1 (§3, part C).
+
+**ARITHMETIC AUDIT:** historical \(15+4+13=32\); terminal \(20+4+13=37\). The pair column rises by five and the total rises by five; first-only and description-only columns are unchanged. Both sums recomputed.
 
 **CONDITIONALITY:** Counts are superseded downstream; the three per-pin operations are not. A first-only pin discharges S0.2 condition 2 for the quoted line alone; condition 3 remains the gate's work.
 
@@ -275,6 +380,16 @@ with `HE6-SLOT-SEAM`'s key-freeness quoted from inside its span — `> ξ be ANY
 ### EFF.T2.s3of6.07  [changes-record]
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — the r7 round record: provenance, protocol, GAP framing, counter]`
+
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.T2.s1of6.19`, `EFF.T2.s3of6.01`.
+
+**CHAIN:** r6 derived-necessity description → r7 stipulated-(RISE)/derived-(HT) statement change → r8 wording correction → acceptance, **TERMINAL**.
+
+**SERIES:** T2 hostile-pass repair/counter arc; r7 entry, after `.01` and before `.08`.
 
 > “*(Opus/Claude repair arm, against the r6 hostile pass of record `runs/comp13/T2P6_output.log` — 0 CRITICAL + 1 GAP + 5 minor; counter resets.)*”
 
@@ -290,9 +405,11 @@ with `HE6-SLOT-SEAM`'s key-freeness quoted from inside its span — `> ξ be ANY
 
 **DERIVATION:** `[ROUND RECORD]` The round's shape follows from the pass's verdict: everything positive was certified, one premise refuted, so the cure “prices the premise instead of deriving it”. The statement-change booking is forced by S7's own accounting — a hypothesis added to the suite is a theorem-statement change even when no case or conclusion moves — and the round says so against its own predecessor's contrary sentence rather than silently amending it.
 
+**PIN VERIFICATION:** artifact `runs/comp13/T2P6_output.log` exists at cross-read (2026-08-18).
+
 **CONDITIONALITY:** Counter superseded to 2/2. The statement change stands in the accepted text: the acceptance record lists `(RISE)` as one of the four standing conditionalities. The obligation set is final.
 
-**RESOLUTION TRACE:** source lines 3297–3303 (header, protocol, framing) and 3497–3509 (counter). Its landmark census is re-run at §3, part B.
+**RESOLUTION TRACE:** source lines 3297–3303 (header, protocol, framing) and 3497–3509 (counter). Its landmark census is re-run at §3, part C.
 
 **TEETH:** S7 acceptance gate; the r6 hostile pass of record; the whole-round landmark census as its own audit tooth.
 
@@ -301,6 +418,16 @@ with `HE6-SLOT-SEAM`'s key-freeness quoted from inside its span — `> ξ be ANY
 ### EFF.T2.s3of6.08  [changes-record]
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — the r8 round header and GAP framing; BOUNDARY UNIT, repairs 2–4 and the counter homed in shard 4]`
+
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.T2.s1of6.19`, `EFF.T2.s1of6.25`.
+
+**CHAIN:** r7 circular instance assembly → r8 step-first assembly → r9 coherent-frame rebuild → Rider 1 lift qualifier, **TERMINAL** outside this shard.
+
+**SERIES:** T2 hostile-pass repair/counter arc; r8 entry, after `.07`; its repairs 2–4 and counter continue in shard 4.
 
 > “*(Opus/Claude repair arm, against the r7 hostile pass of record `runs/comp13/T2P7_output.log` — 0 CRITICAL + 1 GAP + 2 minor, plus 2 recorded nits; counter resets.)*”
 
@@ -314,6 +441,8 @@ One correction to the pass's own proposed cure is recorded, because the repair t
 
 **DERIVATION:** `[ROUND RECORD]` The circularity diagnosis is structural: the master's product-\(1\) display leaves \(k\) free, so identifying the passage's \(\Phi''\) with the master's \(\Phi_{\mathrm{new}}\) needs \(k=\lambda\), which is (HT) — the clause derived from (RISE). The only non-circular order therefore exhibits the instance's step independently of both clauses, which is what `.03` records.
 
+**PIN VERIFICATION:** artifact `runs/comp13/T2P7_output.log` exists at cross-read (2026-08-18).
+
 **CONDITIONALITY:** **Boundary unit.** Lines 2926–3568 of this round comprise the header and repair 1 only; r8 repairs 2–4 and the counter begin at 3569 and are compiled in shard 4. This round's counter reset is superseded to 2/2.
 
 **RESOLUTION TRACE:** source lines 3513–3519 (header, protocol, framing) and 3529 (the correction to the report's cure); repair 1 at 3523–3567 is compiled at `.03`; repairs 2–4 and the counter at 3569–3670 belong to shard 4.
@@ -325,6 +454,12 @@ One correction to the pass's own proposed cure is recorded, because the repair t
 ### EFF.T2.s3of6.09  [fence]
 
 **CANONICAL STATEMENT:** `[TABLE / ASSEMBLED — the withdrawals register: claims of earlier rounds retracted inside this range, each quoted at its retraction]`
+
+**FORM:** display.
+
+**SUPERSESSION KIND:** withdrawal (with deletion where the source says remove the stale `(MP1′)` disjunct).
+
+**CHAIN:** each row's named prior support → local withdrawal, **TERMINAL**; no later append revives any row.
 
 | Withdrawn claim | Retracted at | Governing retraction wording |
 |---|---|---|
@@ -339,7 +474,7 @@ One correction to the pass's own proposed cure is recorded, because the repair t
 
 **CONDITIONALITY:** A withdrawal removes a support, never a conclusion: in every row the conclusion the withdrawn support was offered for survives on other grounds, named in the same repair. The r6-counter row is a supersession-in-substance only; the r6 sentence stands byte-unchanged as that round's own record.
 
-**RESOLUTION TRACE:** r6 repair 1(c) (2999), r7 repair 1(c) (3349), r7 repair 4 (3431), r8 repair 1(d) (3561), r7 counter (3501), r8 header (3529). Each superseded target landmark-verified at 1 under its round's bound (§3, part B).
+**RESOLUTION TRACE:** r6 repair 1(c) (2999), r7 repair 1(c) (3349), r7 repair 4 (3431), r8 repair 1(d) (3561), r7 counter (3501), r8 header (3529). Each superseded target landmark-verified at 1 under its round's bound (§3, part C).
 
 **TEETH:** the pass-level orphan check (“all four r7 withdrawals are orphan-free”); the standing S7 consumption sweep, which must not re-admit a withdrawn citation.
 
@@ -347,9 +482,28 @@ One correction to the pass's own proposed cure is recorded, because the repair t
 
 ## 3. XREF verification ledger
 
-**Method.** Every source line and every master-internal landmark below was **re-searched at compilation time (2026-08-14)**, by exact-line comparison in the named accepted source file (part A) or by fixed-string containment under the round's own line bound (part B). No count differed from the note's recorded value. A delimiter or quoted source line at a count other than 1 would have been an `OPEN-CALL`; none occurred.
+**Method.** Every foreign designation, quoted source line, and master-internal landmark below was **re-searched at compilation time (2026-08-18)**. Part A is the v2 XREF count: fixed-string designation targets. Part B is quote/pin evidence, checked by exact full-line equality. Part C is local supersession evidence, checked by fixed-string containment under the round's own historical bound. An absent foreign designation would be an `OPEN-CALL`; none occurred.
 
-### A. Source lines quoted in this range (exact full-line match, count 1 in the named file)
+### A. Foreign target designations (the 14 counted XREFs)
+
+| ID | Target and verified designation | Fixed-string grep count | Role |
+|---|---|---:|---|
+| X01 | `HE3_PROOF_2026-08-08.md` — `### S6.3 PROOF OF THEOREM HE3.A` | 1 | level-one inductive passage / `HE3-A-PROOF` |
+| X02 | same — `> **LEMMA HE3-2.**` | 1 | named but fenced recentering lemma |
+| X03 | same — `> **LEMMA HE3-4.**` | 1 | HE3 residue-peel input named by the HE6 licence |
+| X04 | `HE6_PROOF_2026-08-08.md` — `> **DEFINITION HE6-1 (THE ENLARGED TEST FAMILY).**` | 1 | family recipe / `HE6-FAMILY` |
+| X05 | same — `### S6.2 PROOF OF THEOREM HE6.A` | 1 | enlarged-class licence / `HE6-PROOF` |
+| X06 | same — `> **LEMMA HE6-0″` | 1 | key-free slot seam / `HE6-SLOT-SEAM` |
+| X07 | `HE7_PROOF_2026-08-08.md` — `> **THEOREM HE7.A (THE LEVEL-2 READ DECIDES` | 1 | carrier theorem whose hypothesis suite receives (RISE) |
+| X08 | same — `> **LEMMA HE7-8 ((REF-TERM)` | 1 | chain convention / `HE7-REF-TERM` |
+| X09 | same — `> **LEMMA HE7-12 [r2] (SLOT-DOMINATION` | 1 | perturbation and fold used by S1.8B |
+| X10 | same — `> **LEMMA HE7-13 [r2] (the strict slope increase` | 1 | level-two (RISE) supply / `HE7-PERT-TRANSPORT` |
+| X11 | `HE6R1_RECON_2026-08-08.md` — `> **LEMMA HE6R1-3 (the level-2 peel).**` | 1 | proof-inclusive pin-row bookkeeping |
+| X12 | `HETOW_RECON_2026-08-09.md` — `> **LEMMA HETOW-2 (the composed key` | 1 | composed-key bridge |
+| X13 | `GENTOW4_PROOF_2026-08-09.md` — `> **LEMMA GENTOW-4.1.**` | 1 | partial-tower value disjunct |
+| X14 | same — `> **THEOREM GENTOW-4.A (partial inner sides:` | 1 | partial-tower source displaying the folded composition |
+
+### B. Source lines quoted in this range (exact full-line match, count 1 in the named file)
 
 | XREF | Use | Source file | Line searched |
 |---|---|---|---|
@@ -371,7 +525,7 @@ One correction to the pass's own proposed cure is recorded, because the repair t
 
 All 44 lines returned exactly **1** in the named file.
 
-### B. Master-internal landmarks superseded or anchored in this range (fixed-string, count 1 under the round's own bound)
+### C. Master-internal landmarks superseded or anchored in this range (fixed-string, count 1 under the round's own bound)
 
 | Landmark | Bound | Count |
 |---|---|---:|
@@ -396,7 +550,7 @@ All 44 lines returned exactly **1** in the named file.
 | ``Derived master-side: the configuration match (through `(REF-HT)`)`` | 1–3509 | 1 |
 | `**Non-circularity.** The level-one discharge above uses S1.8C's configuration match` | 1–3509 | 1 |
 
-**XREF result:** 44 source lines at count 1; 20 master-internal landmarks at count 1; **0 unverifiable designations; 0 compiler `OPEN-CALL`s.** Every source line quoted in this range lies inside a span of `(PINS)` — `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY`, `HE6-PROOF`, `HE7-PERT-TRANSPORT`, `HE7-REF-TERM` — as the standing S7 consumption check demands; the two `HE6-PROOF` boundary lines are the span's own delimiter and its boundary witness.
+**XREF result:** 14 foreign designations verified at count 1; additionally, 44 source quotation lines and 20 master-internal landmarks verified at count 1; **0 unverifiable designations; 0 compiler `OPEN-CALL`s.** Every source line quoted in this range lies inside a span of `(PINS)` — `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY`, `HE6-PROOF`, `HE7-PERT-TRANSPORT`, `HE7-REF-TERM` — as the standing S7 consumption check demands; the two `HE6-PROOF` boundary lines are the span's own delimiter and its boundary witness.
 
 ---
 
@@ -407,7 +561,7 @@ All 44 lines returned exactly **1** in the named file.
 | Item homed here | Effective status | Surviving condition/fence | Consumption-protocol status |
 |---|---|---|---|
 | `(REF-HT)` derivation (.02) | Effective; (HT) derived from (RISE) | Master-side implication only; premise is carrier data | No downstream check run here |
-| `(RISE)` instance-discharge map (.03) | Effective in r8 form | Stipulated hypothesis; an instance that cannot supply it does not instantiate HE7.A | Listed as a standing conditionality at acceptance |
+| `(RISE)` instance-discharge map (.03) | Effective in terminal r9 + Rider-1 form | Stipulated hypothesis; an instance that cannot supply it does not instantiate HE7.A | Listed as a standing conditionality at acceptance |
 | S1.8C adjudication (.04) | Effective; `(MP1′)` retired | Relative transport; HE3's grade cap applies; `(LB1)`/`(MP1)` unchanged | Its four pins added to the three level-two lines at r7 repair 5 (settings superseded downstream) |
 | S1.8B composed-key scope (.05) | Effective | Chain read at \(\Psi_{\kappa_2,\widetilde r}\); \(w\ne0\) degree conjunct re-derived master-side at r12 | Same |
 | Pin/inventory bookkeeping (.06) | Per-pin operations effective; totals superseded | First-only pins discharge condition 2 for one line only | Pin sweep run whole at acceptance |
@@ -430,13 +584,15 @@ All 44 lines returned exactly **1** in the named file.
 | (RISE) as an obligation | Do not enter (RISE) in the open-obligation ledger: it fences no read and both instance families discharge it from pins already on their lines. |
 | Textual carriage of the height | Do not treat `HE7_PROOF`:924/925 as legs that carry the refinement height; they are hypothesis-side corroboration of the configuration. |
 | LEMMA HE3-2 | Do not consume LEMMA HE3-2 or its clause (b): its unit is HE3 §S5 and lies inside no span of `(PINS)`. In particular do not assert that its recentered key exists only at an integer slope. |
-| Circular level-one discharge | Do not identify HE3's \(\Phi''\) with the master's \(\Phi_{\mathrm{new}}\) by importing (HT); the instance's step must be exhibited first, at the index DEFINITION HE6-1's recipe fixes. |
+| Circular level-one discharge | Do not identify HE3's \(\Phi''\) with the master's \(\Phi_{\mathrm{new}}\) by importing (HT), a digit, or an equal-name family label. Exhibit the step first; derive height and coherent digit from its rise. |
+| Print label = coherent digit | Do not read \(\Psi_{\kappa,Z-s}\) as \(\Phi-L_\kappa(s)\). The labels differ by \(\eta^{q(\kappa)}\); polynomial equality requires Rider 1's compatible lift choice, while arbitrary choices agree only modulo height \(>\kappa\). |
 | `(MP1′)` as a condition | Do not treat `(MP1′)` as an obligation or as a condition a state may carry; it is retired and denotes a consequence of the pins. |
 | Frame inventory as demand list | Do not read S1.8C's (i)–(vii) as everything S1.2–S1.7 demand; S1.3/S1.4/S1.5/S1.6 and S1.7's test package are demands on the RECORDS and reach \(\Phi''\) only through (vii). |
 | HE3-only transport | Do not read the S1.8C transport as an HE3-only discharge: the record transported is the composite HE3+HE6 discharge, and no more is claimed at \(\Phi''\) than at \(\Phi'\). |
 | Sibling classes at the recentered key | Do not read an above-\(\lambda\) block's labels at \(\Phi''\); only the refined sub-block travels. |
 | HE6 caveat | Do not consume anything behind `HE6-PROOF`'s §S7 caveat (an \(\ell\ge2\) side with a repeated residual factor); that configuration is the product-\(\ge2\) branch. |
 | S1.8B at \(\Phi_2\) | Do not apply S1.8B at the composed key directly; entry costs the one displayed composition, after which the chain is read at \(\Psi_{\kappa_2,\widetilde r}\). |
+| Source-supplied \(w\ne0\) degree | Do not read \(\deg w<D''\) from `HETOW-KEY-BRIDGE` or `GENTOW-4-1`; after C-A, only the value disjunct is source-supplied and the degree conjunct is derived master-side from equal-degree monicity. |
 | Superseded counts | Do not cite 32 pins or the 15+4+13 taxonomy as effective; the accepted inventory is 37 with taxonomy \(20+4+13\). |
 
 ---
@@ -445,19 +601,19 @@ All 44 lines returned exactly **1** in the named file.
 
 `[TABLE — compiler inverse; T2 owes no numbered battery, so the teeth are the S7 hostile rows, the pin gate, the standing consumption sweep, and each round's pass of record]`
 
-| Tooth / hostile demand | Disposition in effective text | Local units carrying the response |
-|---|---|---|
-| S7 Pass 1 pure-mathematics theorem gate | The one new implication is displayed with its three master inputs | .02 |
-| Refinement-termination and root preservation | Height bound; rise stipulated and discharged per instance; step exhibited before either clause | .02, .03 |
-| Sub-threshold lift refusal | \(k\le T\) leaves the window and is excluded in the same display | .02 |
-| Non-circularity of an instance discharge | Assembly order fixed: step first, (RISE) with no height, (HT) at the instance | .03, .08, .09 |
-| Level-one frame transport (recentered key) | Adjudicated and discharged from four already-listed pins; obligation retired | .04 |
-| Reducible/recentered-key boundary rows | `(MP1)` untouched by the frame discharge; peel still needs item 5 | .04 |
-| Composed-key transport (HETOW/GENTOW4 frame gates) | One displayed composition; chain read at the DEFINITION HE6-1 key | .05 |
-| S7 pin gate, conditions 1–4 | One pin gains a verified pair; one is booked first-only; one row description corrected | .06 |
-| Standing S7 consumption sweep | Every consumption of these repairs is inside a span; withdrawn citations are registered | .04, .09, and §3's span statement |
-| S7 acceptance gate (two clean passes) | Counter reset by all three rounds here; superseded to 2/2 | .01, .07, .08 |
-| Orphan check on withdrawals | All withdrawals registered with their surviving grounds | .09 |
+| Class | Tooth / hostile demand | Disposition in effective text | Local units carrying the response |
+|---|---|---|---|
+| PROOF-ONLY | S7 Pass 1 pure-mathematics theorem gate | The one new implication is displayed with its three master inputs | .02 |
+| PROOF-ONLY | Refinement-termination and root preservation | Height bound; rise stipulated and discharged per instance; step exhibited before either clause | .02, .03 |
+| PROOF-ONLY | Sub-threshold lift refusal | \(k\le T\) leaves the window and is excluded in the same display | .02 |
+| AUDIT — in-house hostile pass | Non-circularity of an instance discharge | Assembly order fixed: step first with no height/digit, (RISE), then coherent height and digit; Rider 1 scopes lift equality | .03, .08, .09 |
+| PROOF-ONLY | Level-one frame transport (recentered key) | Adjudicated and discharged from four already-listed pins; obligation retired | .04 |
+| GATE | Reducible/recentered-key boundary rows | `(MP1)` untouched by the frame discharge; peel still needs item 5 | .04 |
+| PROOF-ONLY | Composed-key transport (HETOW/GENTOW4 frame gates) | One displayed composition; value source-supplied, degree master-derived, chain read at the DEFINITION HE6-1 key | .05 |
+| GATE | S7 pin gate, conditions 1–4 | One pin gains a verified pair; one is booked first-only; one row description corrected | .06 |
+| GATE | Standing S7 consumption sweep | Every consumption of these repairs is inside a span; withdrawn citations are registered | .04, .09, and §3's span statement |
+| GATE | S7 acceptance gate (two clean passes) | Counter reset by all three rounds here; superseded to 2/2 | .01, .07, .08 |
+| AUDIT — in-house hostile pass | Orphan check on withdrawals | All withdrawals registered with their surviving grounds | .09 |
 
 **Forward check:** all 9 statement units have a nonempty `TEETH` field and appear in at least one inverse row.
 
@@ -518,7 +674,7 @@ All 44 lines returned exactly **1** in the named file.
 - **Intra-shard supersessions applied:** r7 over r6 (necessity claim, configuration clause, framing, engine sentence, taxonomy), and r8 over r7 (level-one discharge, alternative-height sentence, non-circularity) and over r6 (S1.8C honest-status clause). Only replacement text is stated as effective.
 - **Exception (ii) accounting.** Four units (`.02`, `.03`, `.04`, `.05`) carry derivations whose destination is a base section compiled in shard 1. In each case shard 1's destination unit carries the *statement* and compresses the derivation to one clause; the merge should attach these four as the `DERIVATION` of shard 1's `.19`, `.19`, `.25` and `.24` respectively, not create parallel statements. **No statement, display, clause or instance box of shard 1 is re-emitted here.**
 - **Merge flags:** (i) shard 1 `.19` quotes the `(REF-HT)` box and the “two clauses” sentence but not the min-rule derivation or the discharge map — supplied here as `.02`/`.03`. (ii) Shard 1 `.25` states the retirement but not the (i)–(vii) inventory, the four legs, or the two reading directives — supplied here as `.04`. (iii) Shard 1 `.24` states S1.8B but not the composed-key entry composition — supplied here as `.05`.
-- **Verification independence:** all 64 counts in §3 were re-run at compilation. One presentational note: the note's own landmark for r7 repair 1(a) is the phrase `The refinement height is that slope:` occurring at the end of source line 2942 (not at line start); it verifies at 1 as a fixed-string, exactly as the note records, and is listed that way in §3 part B.
+- **Verification independence:** all 78 checks in §3 were re-run at compilation: 14 designation XREFs, 44 quotation lines and 20 local landmarks. One presentational note: the note's own landmark for r7 repair 1(a) is the phrase `The refinement height is that slope:` occurring at the end of source line 2942 (not at line start); it verifies at 1 as a fixed-string, exactly as the note records, and is listed that way in §3 part C.
 - **Protocol versus absorption:** this range discharges source-side pin verification only. It runs no downstream consumption check, and the standing S7 check is invoked as a demand each repair must satisfy, never as a passed gate.
 
 ---
@@ -528,18 +684,18 @@ All 44 lines returned exactly **1** in the named file.
 | Check | Result |
 |---|---|
 | Statement inventory | 9 temporary-ID units, all with HOME in source lines 2926–3568 |
-| Required fields | 9/9 have `CANONICAL STATEMENT`, `DERIVATION`, `CONDITIONALITY`, `RESOLUTION TRACE`, and `TEETH` |
-| XREF verification | 44 source lines at count 1; 20 master-internal landmarks at count 1 — all re-run at compilation |
+| Required fields | 9/9 have `CANONICAL STATEMENT`, `FORM`, `DERIVATION`, `CONDITIONALITY`, `RESOLUTION TRACE`, and `TEETH`; superseding units also carry `SUPERSESSION KIND`, with `TARGETS`/`CHAIN` where applicable |
+| XREF verification | 14 foreign designations at count 1; separately, 44 source lines and 20 master-internal landmarks at count 1 — all re-run at compilation |
 | Compiler open calls | 0 |
 | Source open obligations | The open set is `(LB1)` and `(MP1)`; `(MP1′)` is retired inside this range and is never stated as effective; `(RISE)` is recorded as a stipulated carrier hypothesis, not an obligation |
 | Supersession | Intra-shard (r7 over r6, r8 over r7/r6) and cross-shard (both directions) applied; superseded text recorded as historical only |
 | Protocol/supply split | Hypothesis-suite change and obligation retirement separated from the queued downstream consumption checks |
 | Tables | Source enumerations as `[TABLE]`; compiler ledgers marked; no source table prosified |
 | Fidelity | Quotations verbatim or explicitly `[ASSEMBLED]`; ellipses marked where a quoted block is abridged; source lines byte-exact including leading `> ` |
-| NON-IMPORTS | Present, 13 rows, all from locally homed text |
+| NON-IMPORTS | Present, 15 rows, all arising from locally homed units after whole-note resolution |
 | Teeth inverse | Both directions checked; zero orphans |
 | HOME routing | All 18 physical blocks of the range accounted for; 9 homed locally, the rest routed (two of them upward into shard 2) |
 | Shard edges | Both edges split a round; each half names the other; no unit truncated |
 | Padding discipline | Exception (ii) used four times, each flagged with its destination; no shard-1 statement re-emitted |
 
-EFF-T2-s3of6 COMPILED: 9 statements / 44 xrefs verified / 0 open calls
+EFF-T2-s3of6 COMPILED: 9 statements / 14 xrefs verified / 0 open calls
