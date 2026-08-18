@@ -6304,3 +6304,31 @@ storm-dead ~3 hours (instant 529 kills on every resume); C.33
 and C.52 hold banked skeletons + leg 1; the C.118-repair agent
 is SUPERSEDED by this solo landing — on pool recovery resume
 only C.33/C.52. Solo remains the productive channel.
+
+**2026-08-18 DATED APPEND #94 — C.33 PARTIAL LANDING (agent,
+honest-BLOCKED): the carrier + 3 uniqueness-reduction lemmas
+core-only; both theorems BLOCKED with a mechanism-precise
+record; the block MIRRORS B.42's own machine-checked route
+block, pointing at a dv-LEVEL CITE as the natural resolution.**
+The C.33 agent landed DvDissection (byte-exact) + slopes_eq +
+below_eq_of_factor_eq + dvDissection_unique_of_factor_eq
+(uniqueness reduced to its exact purity-separation frontier),
+4 commits, zero sorry, core footprints. BLOCKED record
+(C33_BLOCKED_2026-08-17.md): existence needs a dv-level Hensel
+engine (no B.39–B.41 analogue exists at the dv-carrier;
+IsKey F.key is FALSE at h ≥ 1 so level-1 machinery can't be
+consumed; the level-1 twin B.42 is itself an owner-signed cite
+BECAUSE this same induction was unreachable — B42_ROUTE_BLOCKED
+is the precedent); uniqueness's frontier needs [FGMN] Thm 2.8
+CROSS-SLOPE additivity, which is in fgmn_residual_mul's
+faithfulness PROSE but NOT its signed same-slope Lean clause.
+DESIGN CONSEQUENCE (queued): the natural resolution is a
+SECOND dv-carrier FGMN cite (A-C.8 draft): (a) dv-level slope
+factorization mirroring exists_slope_factorization's form —
+[FGMN]'s theorems hold at general order-r valuations, covering
+the dv-carrier; (b) the cross-slope additivity clause. A brand-
+NEW cite import is an OWNER GATE (sign-off scope: literature-
+cite imports) — the draft+certification proceed fleet-side; the
+declaration WAITS for Asvin's one-liner (unlike the C.66/C.94
+redrafts, which were category-pre-signed at append #66).
+OWNER QUEUE: A-C.8 cite inspection added (alongside HYP.142).
