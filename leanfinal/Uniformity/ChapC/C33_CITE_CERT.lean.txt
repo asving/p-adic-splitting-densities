@@ -405,6 +405,62 @@ theorem mem_dvSideSet_fw {u ℓ j : ℕ} (hl : 0 < ℓ) :
     · exact ⟨by norm_num, by rw [t1]; exact_mod_cast hm, by rw [hd1]; simp⟩
     · exact ⟨by norm_num, by rw [t2]; exact_mod_cast hm, by rw [hd2]; simp⟩
 
+/-- the cleared support of a factor `Φ′ + 2ⁿ`, in ℕ: the min of the two finite terms
+`{ℓ·2n, u}` (heights `[2n, 0]`, abscissae `0, 1`; the height at `2` is `⊤`). -/
+theorem dvSupp_g {n u ℓ : ℕ} (hn : 0 < n) (hl : 0 < ℓ) :
+    dvSupp (s2Frame h2 hq) (s2Key O + C (2 ^ n : O)) u ℓ
+      = ((min (ℓ * (2 * n) + u * 0) (ℓ * 0 + u * 1) : ℕ) : ℕ∞) := by
+  obtain ⟨hd0, hd1, hdtop⟩ := dvHgt_g h2 hq hn
+  have t0 := term_cast hd0 ℓ u 0
+  have t1 := term_cast hd1 ℓ u 1
+  rw [show dvSupp (s2Frame h2 hq) (s2Key O + C (2 ^ n : O)) u ℓ
+      = (Finset.range ((s2Key O + C (2 ^ n : O)).natDegree + 1)).inf
+          (fun j => ℓ • dvHgt (s2Frame h2 hq) (s2Key O + C (2 ^ n : O)) j + (u * j : ℕ∞))
+      from rfl, natDegree_key_add_C]
+  apply le_antisymm
+  · have hchoice : (min (ℓ * (2 * n) + u * 0) (ℓ * 0 + u * 1) = ℓ * (2 * n) + u * 0)
+        ∨ (min (ℓ * (2 * n) + u * 0) (ℓ * 0 + u * 1) = ℓ * 0 + u * 1) := by omega
+    rcases hchoice with h | h <;> rw [h]
+    · rw [← t0]
+      exact Finset.inf_le (Finset.mem_range.mpr (by norm_num))
+    · rw [← t1]
+      exact Finset.inf_le (Finset.mem_range.mpr (by norm_num))
+  · refine Finset.le_inf fun j hj => ?_
+    have hj2 : j ≤ 2 := Nat.lt_succ_iff.mp (Finset.mem_range.mp hj)
+    interval_cases j
+    · rw [t0]
+      exact_mod_cast (by omega :
+        min (ℓ * (2 * n) + u * 0) (ℓ * 0 + u * 1) ≤ ℓ * (2 * n) + u * 0)
+    · rw [t1]
+      exact_mod_cast (by omega :
+        min (ℓ * (2 * n) + u * 0) (ℓ * 0 + u * 1) ≤ ℓ * 0 + u * 1)
+    · rw [hdtop 2 (by norm_num), C118a.smul_top_pos hl, top_add]
+      exact le_top
+
+/-- membership in the side set of a factor `Φ′ + 2ⁿ`, fully in ℕ. -/
+theorem mem_dvSideSet_g {n u ℓ j : ℕ} (hn : 0 < n) (hl : 0 < ℓ) :
+    j ∈ dvSideSet (s2Frame h2 hq) (s2Key O + C (2 ^ n : O)) u ℓ ↔
+      (j = 0 ∧ min (ℓ * (2 * n) + u * 0) (ℓ * 0 + u * 1) = ℓ * (2 * n) + u * 0)
+      ∨ (j = 1 ∧ min (ℓ * (2 * n) + u * 0) (ℓ * 0 + u * 1) = ℓ * 0 + u * 1) := by
+  obtain ⟨hd0, hd1, hdtop⟩ := dvHgt_g h2 hq hn
+  have t0 := term_cast hd0 ℓ u 0
+  have t1 := term_cast hd1 ℓ u 1
+  rw [mem_dvSideSet_iff, natDegree_key_add_C, dvSupp_g h2 hq hn hl]
+  constructor
+  · rintro ⟨hj2, heq, htne⟩
+    interval_cases j
+    · refine Or.inl ⟨rfl, ?_⟩
+      rw [t0] at heq
+      exact_mod_cast heq
+    · refine Or.inr ⟨rfl, ?_⟩
+      rw [t1] at heq
+      exact_mod_cast heq
+    · exact absurd (hdtop 2 (by norm_num)) htne
+  · rintro (⟨rfl, hm⟩ | ⟨rfl, hm⟩)
+    · exact ⟨by norm_num, by rw [t0]; exact_mod_cast hm,
+        by rw [hd0]; exact ENat.coe_ne_top _⟩
+    · exact ⟨by norm_num, by rw [t1]; exact_mod_cast hm, by rw [hd1]; simp⟩
+
 /-! ## 3. Leg A — the dissection -/
 
 noncomputable def wDissection : DvDissection (s2Frame h2 hq) (fw : Polynomial O) where
