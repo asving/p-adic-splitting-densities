@@ -3196,20 +3196,28 @@ axiom dv2_read_congr_vis {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ 
     (hT : dv2Pin L Ψ (monicPoly a) j ≠ ⊤) :
     dv2Pin L Ψ (monicPoly a) j = dv2Pin L Ψ (monicPoly a') j
 
-/- ⚠ **clause 2 (`dv2_read_congr_res`) — SUSPECT per A-C.7, DO NOT LAND as frozen**: its
-side data (`hne'`, the `dv2Res` pins) consult the unguarded member by the same mechanism
-that refuted clause 1; not yet machine-refuted, not yet repaired.  Its re-sign is settled
-at its own certification (expected shape: B77b's level-1 form with the side reads guarded
-through the clause-1′ capped law).  Any fleet charge on it fires the A-C.7 vacuity audit
-FIRST. -/
-axiom dv2_read_congr_res {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+/- **clause 2 RE-SIGNED: A-C.7 second finding, 2026-08-18.**  The frozen
+`dv2_read_congr_res` is machine-REFUTED (`C118_REFUTATION.lean.txt` §2,
+`c118_clause2_refuted`: the degree-jump instance `X²` vs `X² + C 16` at `(4,1)`, `N = 1` —
+side sets `{2}` vs `{0, 2}`, residual degrees `0` vs `2`).  A first repair draft carrying
+only the side-visibility guard `hsupp` was ALSO machine-refuted (§3,
+`c118_hsupp_only_refuted`: `dv2ResPoly` consults interior off-side slots at each block's
+own level-1 data, and a ⊤-pinned interior slot leaks a `π^N`-perturbation).  The re-sign
+below carries BOTH guards, each sharp at its counterexample; it is NOT a design:
+`dv2_read_congr_res_guarded` is PROVED in `leanfinal/Uniformity/ChapC/C118b.lean`,
+sorry-free and Lean-core, before this edit. -/
+axiom dv2_read_congr_res_guarded {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [Finite (ResidueField O)]
     {Ψ : Polynomial O} {n N : ℕ} {a a' : Fin n → O}
     (hc : proj O n N a = proj O n N a')
     (hvis : Visible₂ L Ψ (monicPoly a) N)
     {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂)
     (hne : (dv2SideSet L Ψ (monicPoly a) u₂ ℓ₂).Nonempty)
-    (hne' : (dv2SideSet L Ψ (monicPoly a') u₂ ℓ₂).Nonempty) :
+    (hne' : (dv2SideSet L Ψ (monicPoly a') u₂ ℓ₂).Nonempty)
+    (hsupp : dv2Supp L Ψ (monicPoly a) u₂ ℓ₂ < ((ℓ₂ * ((F.e₁ * L.ℓ) * N) : ℕ) : ℕ∞))
+    (hslots : ∀ t, t ≤ dv2SideDeg L Ψ (monicPoly a) u₂ ℓ₂ hne →
+      dv2Pin L Ψ (monicPoly a) (dv2SideMin L Ψ (monicPoly a) u₂ ℓ₂ hne + t * ℓ₂)
+        < (((F.e₁ * L.ℓ) * N : ℕ) : ℕ∞)) :
     dv2ResPoly L Ψ (monicPoly a) u₂ ℓ₂ hne = dv2ResPoly L Ψ (monicPoly a') u₂ ℓ₂ hne'
 
 /-! ### NODE C.119 [theorem] — the tower certificate kernel [signed: A-C.1] -/
