@@ -461,6 +461,61 @@ theorem mem_dvSideSet_g {n u ℓ j : ℕ} (hn : 0 < n) (hl : 0 < ℓ) :
         by rw [hd0]; exact ENat.coe_ne_top _⟩
     · exact ⟨by norm_num, by rw [t1]; exact_mod_cast hm, by rw [hd1]; simp⟩
 
+/-- the `wFactor` if-reductions. -/
+theorem wFactor_six : (wFactor (6, 1) : Polynomial O) = gsix := by
+  simp [wFactor]
+
+theorem wFactor_four : (wFactor (4, 1) : Polynomial O) = gfour := by
+  simp [wFactor]
+
+/-- `dvSideDeg` of `fw` at `(6,1)` is `1` (side set `{0, 1}`). -/
+theorem dvSideDeg_fw_six
+    (hne : (dvSideSet (s2Frame h2 hq) (fw : Polynomial O) 6 1).Nonempty) :
+    dvSideDeg (s2Frame h2 hq) (fw : Polynomial O) 6 1 hne = 1 := by
+  have h0 : 0 ∈ dvSideSet (s2Frame h2 hq) (fw : Polynomial O) 6 1 := by
+    rw [mem_dvSideSet_fw h2 hq Nat.one_pos]
+    exact Or.inl ⟨rfl, by omega⟩
+  have h1 : 1 ∈ dvSideSet (s2Frame h2 hq) (fw : Polynomial O) 6 1 := by
+    rw [mem_dvSideSet_fw h2 hq Nat.one_pos]
+    exact Or.inr (Or.inl ⟨rfl, by omega⟩)
+  have hub : ∀ x ∈ dvSideSet (s2Frame h2 hq) (fw : Polynomial O) 6 1, x ≤ 1 := by
+    intro x hx
+    rw [mem_dvSideSet_fw h2 hq Nat.one_pos] at hx
+    rcases hx with ⟨rfl, -⟩ | ⟨rfl, -⟩ | ⟨rfl, hx2⟩ <;> omega
+  have hmin : dvSideMin (s2Frame h2 hq) (fw : Polynomial O) 6 1 hne = 0 :=
+    Nat.le_antisymm (Finset.min'_le _ 0 h0) (Nat.zero_le _)
+  have hmax : dvSideMax (s2Frame h2 hq) (fw : Polynomial O) 6 1 hne = 1 :=
+    Nat.le_antisymm (Finset.max'_le _ hne _ hub) (Finset.le_max' _ 1 h1)
+  show (dvSideMax (s2Frame h2 hq) (fw : Polynomial O) 6 1 hne
+      - dvSideMin (s2Frame h2 hq) (fw : Polynomial O) 6 1 hne) / 1 = 1
+  rw [hmax, hmin]
+
+/-- `dvSideDeg` of `fw` at `(4,1)` is `1` (side set `{1, 2}`). -/
+theorem dvSideDeg_fw_four
+    (hne : (dvSideSet (s2Frame h2 hq) (fw : Polynomial O) 4 1).Nonempty) :
+    dvSideDeg (s2Frame h2 hq) (fw : Polynomial O) 4 1 hne = 1 := by
+  have h1 : 1 ∈ dvSideSet (s2Frame h2 hq) (fw : Polynomial O) 4 1 := by
+    rw [mem_dvSideSet_fw h2 hq Nat.one_pos]
+    exact Or.inr (Or.inl ⟨rfl, by omega⟩)
+  have h2' : 2 ∈ dvSideSet (s2Frame h2 hq) (fw : Polynomial O) 4 1 := by
+    rw [mem_dvSideSet_fw h2 hq Nat.one_pos]
+    exact Or.inr (Or.inr ⟨rfl, by omega⟩)
+  have hlb : ∀ x ∈ dvSideSet (s2Frame h2 hq) (fw : Polynomial O) 4 1, 1 ≤ x := by
+    intro x hx
+    rw [mem_dvSideSet_fw h2 hq Nat.one_pos] at hx
+    rcases hx with ⟨rfl, hx0⟩ | ⟨rfl, -⟩ | ⟨rfl, -⟩ <;> omega
+  have hub : ∀ x ∈ dvSideSet (s2Frame h2 hq) (fw : Polynomial O) 4 1, x ≤ 2 := by
+    intro x hx
+    rw [mem_dvSideSet_fw h2 hq Nat.one_pos] at hx
+    rcases hx with ⟨rfl, -⟩ | ⟨rfl, -⟩ | ⟨rfl, -⟩ <;> omega
+  have hmin : dvSideMin (s2Frame h2 hq) (fw : Polynomial O) 4 1 hne = 1 :=
+    Nat.le_antisymm (Finset.min'_le _ 1 h1) (Finset.le_min' _ hne _ hlb)
+  have hmax : dvSideMax (s2Frame h2 hq) (fw : Polynomial O) 4 1 hne = 2 :=
+    Nat.le_antisymm (Finset.max'_le _ hne _ hub) (Finset.le_max' _ 2 h2')
+  show (dvSideMax (s2Frame h2 hq) (fw : Polynomial O) 4 1 hne
+      - dvSideMin (s2Frame h2 hq) (fw : Polynomial O) 4 1 hne) / 1 = 1
+  rw [hmax, hmin]
+
 /-! ## 3. Leg A — the dissection -/
 
 noncomputable def wDissection : DvDissection (s2Frame h2 hq) (fw : Polynomial O) where
