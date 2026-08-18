@@ -223,6 +223,114 @@ theorem dvHgt_fw (h2 : Irreducible (2 : O)) (hq : residueCard O = 2) :
     rw [dvHgt, hkey, hz]
     exact C118a.stageHeight_zero _
 
+/-! ### 2b. Factor-level blocks and heights -/
+
+theorem dev_g (c : O) : dev (s2Key O) (s2Key O + C c) 0 = C c
+    ∧ dev (s2Key O) (s2Key O + C c) 1 = 1 := by
+  classical
+  have hdegK : (0 : ℕ) < (s2Key O).natDegree := by rw [s2Key_natDegree]; norm_num
+  set A : Fin 1 → Polynomial O := ![C c] with hA
+  have hAdeg : ∀ j : Fin 1, (A j).degree < (s2Key O).degree := by
+    intro j
+    fin_cases j
+    simp only [hA, Matrix.cons_val_zero]
+    refine lt_of_le_of_lt degree_C_le ?_
+    rw [Polynomial.degree_eq_natDegree s2Key_monic.ne_zero, s2Key_natDegree]
+    exact_mod_cast Nat.zero_lt_two
+  have hsum : s2Key O + C c = ∑ i : Fin 1, A i * s2Key O ^ (i : ℕ) + s2Key O ^ 1 := by
+    simp [hA]
+    ring
+  obtain ⟨hlow, htop⟩ := C109asm.dev_assemble s2Key_monic hdegK A hAdeg
+  constructor
+  · have := hlow 0
+    rw [← hsum] at this
+    simpa [hA] using this
+  · rw [hsum]
+    exact htop
+
+theorem dvHgt_g (h2 : Irreducible (2 : O)) (hq : residueCard O = 2) {n : ℕ} (hn : 0 < n) :
+    dvHgt (s2Frame h2 hq) (s2Key O + C (2 ^ n : O)) 0 = ((2 * n : ℕ) : ℕ∞)
+    ∧ dvHgt (s2Frame h2 hq) (s2Key O + C (2 ^ n : O)) 1 = (0 : ℕ∞)
+    ∧ ∀ j, 1 < j → dvHgt (s2Frame h2 hq) (s2Key O + C (2 ^ n : O)) j = ⊤ := by
+  obtain ⟨hd0, hd1⟩ := dev_g (O := O) (2 ^ n : O)
+  have hkey : (s2Frame h2 hq).key = s2Key O := rfl
+  have hndeg : (s2Key O + C (2 ^ n : O)).natDegree = 2 := by
+    have h : (C (2 ^ n : O) : Polynomial O).degree < (s2Key O).degree :=
+      lt_of_le_of_lt degree_C_le (by
+        rw [Polynomial.degree_eq_natDegree s2Key_monic.ne_zero, s2Key_natDegree]
+        exact_mod_cast Nat.zero_lt_two)
+    rw [Polynomial.natDegree_eq_of_degree_eq (Polynomial.degree_add_eq_left_of_degree_lt h),
+      s2Key_natDegree]
+  refine ⟨?_, ?_, ?_⟩
+  · rw [dvHgt, hkey, hd0, stageHeight_C_s2 h2 hq, addVal_two_pow h2 n]
+    rw [nsmul_eq_mul]
+    exact_mod_cast rfl
+  · rw [dvHgt, hkey, hd1, show (1 : Polynomial O) = C 1 from (Polynomial.C_1).symm,
+      stageHeight_C_s2 h2 hq, addVal_one]
+    rfl
+  · intro j hj
+    have hz : dev (s2Key O) (s2Key O + C (2 ^ n : O)) j = 0 := by
+      refine dev_eq_zero_of_lt s2Key_monic (by rw [s2Key_natDegree]; norm_num) _ j ?_
+      rw [hndeg, s2Key_natDegree]
+      omega
+    rw [dvHgt, hkey, hz]
+    exact C118a.stageHeight_zero _
+
+theorem dvHgt_one (h2 : Irreducible (2 : O)) (hq : residueCard O = 2) :
+    dvHgt (s2Frame h2 hq) (1 : Polynomial O) 0 = (0 : ℕ∞) := by
+  have hkey : (s2Frame h2 hq).key = s2Key O := rfl
+  have hd : dev (s2Key O) (1 : Polynomial O) 0 = 1 := by
+    rw [show dev (s2Key O) (1 : Polynomial O) 0 = (1 : Polynomial O) %ₘ s2Key O from rfl]
+    rw [(Polynomial.modByMonic_eq_self_iff s2Key_monic).mpr]
+    rw [Polynomial.degree_one, Polynomial.degree_eq_natDegree s2Key_monic.ne_zero,
+      s2Key_natDegree]
+    exact_mod_cast Nat.zero_lt_two
+  rw [dvHgt, hkey, hd, show (1 : Polynomial O) = C 1 from (Polynomial.C_1).symm,
+    stageHeight_C_s2 h2 hq, addVal_one]
+  rfl
+
+/-! ### 2c. Side-set arithmetic — membership unpacked, the witness side data in ℕ -/
+
+/-- C.07 membership, unpacked as an iff (C.08's private filter plumbing, both directions). -/
+theorem mem_dvSideSet_iff {π : O} {F : KeyFrame O π} {f : Polynomial O} {u ℓ j : ℕ} :
+    j ∈ dvSideSet F f u ℓ ↔
+      j ≤ f.natDegree ∧ dvSupp F f u ℓ = ℓ • dvHgt F f j + (u * j : ℕ∞) ∧
+        dvHgt F f j ≠ ⊤ := by
+  classical
+  constructor
+  · intro hj
+    have hj' : j ∈ Finset.filter (DvOnSide F f u ℓ) (Finset.range (f.natDegree + 1)) := hj
+    obtain ⟨hr, hs1, hs2⟩ := Finset.mem_filter.mp hj'
+    exact ⟨Nat.lt_succ_iff.mp (Finset.mem_range.mp hr), hs1, hs2⟩
+  · rintro ⟨hr, hs1, hs2⟩
+    show j ∈ Finset.filter (DvOnSide F f u ℓ) (Finset.range (f.natDegree + 1))
+    exact Finset.mem_filter.mpr ⟨Finset.mem_range.mpr (Nat.lt_succ_iff.mpr hr), ⟨hs1, hs2⟩⟩
+
+/-- a finite `dv`-term collapses to a single cast. -/
+theorem term_cast {x : ℕ∞} {a : ℕ} (hx : x = (a : ℕ∞)) (ℓ u b : ℕ) :
+    ℓ • x + ((u : ℕ∞) * (b : ℕ∞)) = ((ℓ * a + u * b : ℕ) : ℕ∞) := by
+  subst hx
+  rw [nsmul_eq_mul]
+  push_cast
+  ring
+
+/-- `natDegree (Φ′ + c) = 2`, generic constant (the `natDegree_gsix` proof, reusable). -/
+theorem natDegree_key_add_C (c : O) : (s2Key O + C c).natDegree = 2 := by
+  have h : (C c : Polynomial O).degree < (s2Key O).degree :=
+    lt_of_le_of_lt degree_C_le (by
+      rw [Polynomial.degree_eq_natDegree s2Key_monic.ne_zero, s2Key_natDegree]
+      exact_mod_cast Nat.zero_lt_two)
+  rw [Polynomial.natDegree_eq_of_degree_eq (Polynomial.degree_add_eq_left_of_degree_lt h),
+    s2Key_natDegree]
+
+theorem gsix_eq : (gsix : Polynomial O) = s2Key O + C (2 ^ 3 : O) := by
+  rw [show (2 ^ 3 : O) = 8 by norm_num]
+  rfl
+
+theorem gfour_eq : (gfour : Polynomial O) = s2Key O + C (2 ^ 2 : O) := by
+  rw [show (2 ^ 2 : O) = 4 by norm_num]
+  rfl
+
 /-! ## 3. Leg A — the dissection -/
 
 noncomputable def wDissection : DvDissection (s2Frame h2 hq) (fw : Polynomial O) where
