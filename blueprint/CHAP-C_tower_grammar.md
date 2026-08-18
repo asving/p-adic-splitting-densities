@@ -10247,10 +10247,17 @@ transcription after approval; it cannot supply the literature-import authorizati
 
 Owner decision (mark exactly one only after §A-C.8.5 is complete and attached):
 
-- [ ] **APPROVE BOTH exact declarations in §A-C.8.1** as one C.33 gate-(b) cite package:
+- [x] **APPROVE BOTH exact declarations in §A-C.8.1** as one C.33 gate-(b) cite package:
   `exists_dvDissection` under [GN15] Thm 2.3 + [FGMN] arXiv-v3 Thm 6.6
   (published-number check still to be recorded), and `fgmn_dvDissection_factor_eq` under
   [FGMN] Thm 2.8.
+
+  **SIGNED — Asvin, 2026-08-18** (in-session one-liner: "the proposed dv-level citation
+  pair seems alright … Lets sign off on the drafted pair now", given after the
+  cite-vs-Hensel-primitive alternative was weighed and with the certification status
+  disclosed: Leg C green, Legs A+B in progress).  Per this amendment's own gate, the
+  DECLARATIONS still land only once §A-C.8.5 is fully green; the upgrade path (the booked
+  dv-graded engine retiring both cites) is recorded in the owner exchange.
 - [ ] **REJECT / RETURN FOR REDRAFT.** No declaration may land; record the requested change.
 
 ```text
