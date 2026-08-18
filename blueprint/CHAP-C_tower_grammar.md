@@ -9988,3 +9988,297 @@ Machine-certification of this instance = the clause-2 unit's step 1 deliverable
 adds the side-visibility guard (`dv2Supp` strictly below `ℓ₂·W`, which pins every attaining
 abscissa's read below the window and transfers the side set through the clause-1′ capped
 law — at the counterexample `dv2Supp = 8 = ℓ₂·W` exactly, so the guard excludes it sharply).
+
+---
+
+## AMENDMENT A-C.8 (2026-08-18) [DRAFT — OWNER GATE] — NODE C.33: the dv-level theorem of the polygon
+
+**BANNER — DESIGN ONLY; NOTHING IS DECLARED.** This amendment proposes a NEW gate-(b)
+literature import.  It appends no declaration to `leanfinal`, changes no `leanspec` stub, and
+does not authorize a fleet unit to write either `axiom` below.  The ratification-by-compile
+ruling does **NOT** cover a new cite import: both exact statements and the source mapping require
+the owner's explicit signature in §A-C.8.6 before either name may enter the trusted base.
+
+**Trigger.** `leanfinal/Uniformity/ChapC/C33_BLOCKED_2026-08-17.md` isolates two, and only two,
+unreached goals at NODE C.33:
+
+1. `⊢ Nonempty (DvDissection F f)`; and
+2. after the landed Lean-core reductions `DvDissection.slopes_eq`,
+   `DvDissection.below_eq_of_factor_eq`, and `dvDissection_unique_of_factor_eq`,
+   `⊢ ∀ p ∈ D.slopes, D.factor p = D'.factor p`.
+
+The first is the theorem of the polygon at the level carrier: the chain-length `r = 1`
+instance of [GN15] Thm 2.3 / [FGMN] arXiv-v3 Thm 6.6, whereas B.42's signed
+`exists_slope_factorization` is the `r = 0` instance.  The second is the exact cross-slope
+separation frontier: [FGMN] Thm 2.8 makes principal polygons additive, so a monic pure factor
+of slope `p` accounts for the whole `p`-side fixed by `DvDissection.hdeg`, while
+`hdistinct`/`hbelow` exclude that side from the complementary factors.  Ordinary monic
+factorization then pins the grouped factor.  No counterexample to either goal is known or
+expected.
+
+### A-C.8.1 Exact proposed Lean declarations
+
+The proposal has **two** cite declarations.  The first is byte-for-byte C.33's A-C.1 signed
+existence statement.  The second is not the full signed uniqueness statement: it is exactly the
+one factor-equality goal left after C.33's three landed reduction lemmas.
+
+```lean
+namespace Uniformity.Density.Tower
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-- NODE C.33 `[cite:GN15 Thm 2.3 + FGMN Thm 6.6]`, proposed gate-(b) import:
+the slope dissection at the dv-level. -/
+axiom exists_dvDissection (F : KeyFrame O π) (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hf : f.Monic) (hkey : ¬ F.key ∣ f) :
+    Nonempty (DvDissection F f)
+
+/-- NODE C.33 `[cite:FGMN Thm 2.8]`, proposed gate-(b) import: the exact
+cross-slope purity-separation frontier for two already-constructed dissections. -/
+axiom fgmn_dvDissection_factor_eq {F : KeyFrame O π} {f : Polynomial O}
+    (D D' : DvDissection F f) :
+    ∀ p ∈ D.slopes, D.factor p = D'.factor p
+
+end Uniformity.Density.Tower
+```
+
+On signature, `dvDissection_unique` remains a **theorem**, not a third axiom: apply
+`fgmn_dvDissection_factor_eq D D'` to the already-landed
+`dvDissection_unique_of_factor_eq D D'`.  Thus the two proposed trusted names correspond
+one-for-one to the two blocked frontiers; the slope-set and below-remainder equalities remain
+Lean-core consequences.
+
+**Why the second declaration has this form.** A raw repo-level transcription of all of [FGMN]
+Thm 2.8 would quantify over every nonzero pair `g,h`, expose a polygon-addition operation the
+corpus does not define, and import far more than C.33 consumes.  A fixed-slope
+`dvSideDeg (g*h) = dvSideDeg g + dvSideDeg h` clause would still leave the separately missing
+“irreducible implies one-sided dv-polygon” mechanism identified by the BLOCKED record, so it
+would **not** unblock uniqueness.  The displayed `fgmn_dvDissection_factor_eq` is the smallest
+consumer-normal-form consequence: no residual polynomial, no scalar, no arbitrary product, no
+full polygon equality, and no claim about `factor` away from `D.slopes`.
+
+### A-C.8.2 Faithfulness entry I — `exists_dvDissection`
+
+**Publications and number discipline.**
+
+* **[GN15]** J. Guàrdia and E. Nart, *Genetics of polynomials over local fields*,
+  *Contemporary Mathematics* **637** (2015), 207–241, DOI
+  10.1090/conm/637/12767, **Theorem 2.3**.  The number and display are A-3 VERIFIED in two
+  copies straddling the referee round, including arXiv:1309.4340v2.  The printed AMS pages were
+  not opened; A-3 grades the residual risk LOW.
+* **[FGMN]** J. Fernández, J. Guàrdia, J. Montes, and E. Nart, *Residual ideals of MacLane
+  valuations*, *J. Algebra* **427** (2015), 30–75, DOI
+  10.1016/j.jalgebra.2014.12.022, **Theorem 6.6 in arXiv v3**.  Under A-3's numbering
+  discipline this must not be called “published Thm 6.6”: the later-author/published map
+  predicts **published Thm 6.5**, but the Elsevier-typeset number has not been print-read.
+  The statement text used here is the repo-local arXiv-v3 layout print; the closing owner check
+  must confirm the typeset number before the faithfulness entry is filed.
+
+These are co-primary for the same reason recorded at B.42.  [GN15] Thm 2.3 carries the
+chain-relative exclusion `φ ≁_μ φ_r`; [FGMN]'s intrinsic theorem replaces it by “proper key
+polynomial.”  At `r = 1`, the key supplied by a MacLane frame is proper (the arXiv-v3 chain
+properness locus is Lemma 5.3; A-3 maps it to published Lemma 5.2), so [FGMN] closes the range
+that [GN15] alone does not certify.  Neither citation requires a finite residue field.
+
+**Source-to-carrier map.** [GN15]'s product is indexed by `(λ,ψ)` and [FGMN]'s by `(λ,L)`.
+For each fixed principal slope, multiply all residual-primary factors at that slope; that grouped
+product is `DvDissection.factor p`.  The source's `g₀` is `below`.  The hypothesis
+`hkey : ¬ F.key ∣ f` removes the displayed `φ ^ ordφ(f)` factor.  After the level-1 shear, the
+source condition `λ > 0` is exactly
+`p.2 * ((F.e₁ * F.f₁) * F.h) < p.1`.
+
+| Lean datum/clause | source content and reason it is retained |
+|---|---|
+| `slopes` | the finite set of principal slopes of the level polygon, stored in positive coprime cleared coordinates |
+| `factor p` | the product of every source factor `(λ,ψ)` / `(λ,L)` with the fixed slope represented by `p` |
+| `below` | the source factor `g₀`, including exactly the non-principal/below-floor part after `hkey` removes the explicit key power |
+| `hslopes` | denominator positivity, lowest terms, and the source's principal-polygon fence `λ > 0` after the frame shear |
+| `hdistinct` | distinct reduced rational slopes; it prevents two names for one source side |
+| `hmonic` / `hbelow_monic` | the sources factor a monic polynomial into monic factors; monicity also removes unit ambiguity |
+| `hpure` | “the factor polygon is one-sided of slope `λ`,” after grouping all residual-primary factors with that slope |
+| `hdeg` | the summed source degree law at fixed `λ`: `deg factor = D′ · (ℓ · dvSideDeg f)` |
+| `hbelow` | `g₀` has zero length at every principal slope above the frame floor |
+| `hprod` | the source product after grouping by slope and removing the absent key-power factor |
+| `hsides` | completeness of the index: a reduced above-floor slope occurs exactly when `f` has positive side length there |
+
+**Why each declaration binder is present.**
+
+| binder | faithfulness / fence role |
+|---|---|
+| `O`, `[CommRing O]`, `[IsDomain O]`, `[IsDiscreteValuationRing O]` | the corpus's integral-ring presentation of the source's arbitrary discretely valued field |
+| `π`, `hπ` | fixes the uniformizer normalization used by the repo's reads; `hπ` is written inline because its truth role must not depend on section-variable auto-inclusion |
+| `F : KeyFrame O π` | the `r = 1` MacLane frame and the dictionary from `Φ′`-developments to the source polygon |
+| `[IsAdicComplete ...]` | load-bearing exactly as at B.42: it identifies `O` with the valuation ring in the complete field where the source factors live; it is inline and may not be moved to a section variable |
+| `f`, `hf` | the source polynomial and its monicity normalization |
+| `hkey` | excludes the separate `F.key ^ ord` factor; without it the proposed `below × above-floor factors` carrier omits a source component |
+| `Nonempty (DvDissection F f)` | constructive data are not claimed; the cite supplies existence of the finite grouped dissection |
+
+**Scope fence.** This import is only the grouped-by-slope `r = 1` theorem of the polygon in
+the already-landed `DvDissection` vocabulary.  It imports no residual-primary dissection
+(C.34), no residual multiplicativity (C.66), no root statement, no termination statement, no
+finite-residue-field assumption, and no uniformity or density conclusion.  The
+`KeyFrame`↔MacLane-chain/shear identification is the corpus-side dictionary and is disclosed as
+the principal faithfulness risk; the sources do not mention `dvHgt` or `dvSideSet` by those repo
+names.
+
+### A-C.8.3 Faithfulness entry II — `fgmn_dvDissection_factor_eq`
+
+**Publication.** [FGMN], same publication metadata as above, **Theorem 2.8**:
+principal Newton polygons satisfy `N⁻_{μ,φ}(gh) = N⁻_{μ,φ}(g) + N⁻_{μ,φ}(h)` for nonzero
+polynomials.  This number is A-3 VERIFIED stable between arXiv v3 and the later author version.
+The source itself prints immediately afterward why the analogous entire-polygon statement is
+false; the proposed clause stays on the principal/above-floor portion encoded by
+`DvDissection.hslopes` and `hbelow`.
+
+**Exact transcription level.** The axiom is a deliberately narrow corollary, not a claim that
+FGMN states the Lean sentence verbatim.  For a fixed `p ∈ D.slopes`:
+
+1. `D.hprod` and `D'.hprod` are two monic factorizations of the same `f`;
+2. `hpure` and `hdistinct` identify the distinct one-sided principal slopes;
+3. `hdeg` says `D.factor p` and `D'.factor p` each consume the entire horizontal length of
+   `f` at `p`;
+4. `hbelow` gives the complementary factor zero length there; and
+5. Thm 2.8 prevents a factor belonging to another slope from contributing at `p`.
+
+Unique factorization/cancellation for monic polynomials supplies the final equality and is not a
+second literature import.  The cite clause exposes only that final frontier because the required
+dv-graded intermediary API does not exist in the corpus.
+
+**Binder minimality.** `F` and `f` occur only as indices of the two carrier values; `D` and
+`D'` are the complete hypotheses.  There is intentionally no `hπ`, completeness instance,
+`hf`, or `hkey`: those hypotheses are necessary to **produce** a dissection, but once two
+`DvDissection F f` values exist, their fields already contain every monicity, product, side,
+degree, floor, and distinctness condition used by separation.  The conclusion is restricted to
+`p ∈ D.slopes`; values of either total function `factor` away from its slope set remain
+unconstrained.  Slope-set equality is not assumed and not imported—it is the landed theorem
+`D.slopes_eq D'`.
+
+**What this clause does NOT import.** No equation for `dvSupp`; no addition operation on whole
+polygons; no fixed-slope formula for arbitrary `g*h`; no residual-polynomial law; no
+“irreducible implies one-sided” public theorem; no equality of the entire `DvDissection`
+structures; and no equality of off-slope values of `factor`.
+
+### A-C.8.4 Binder-vacuity audit — including the four-instance A-C.7 registry
+
+The audit is against the A-C.7 registry's four prior A-C.1 failures: C.111 `hnode`, C.94's
+self-loop, C.113's `hne`, and C.118's one-sided `Visible₂` guard.
+
+| possible collapse | result for the A-C.8 drafts |
+|---|---|
+| **C.111 `hnode`: an unpinned carrier field** | No analogue. `slopes`, on-slope `factor`, and `below` are tied to `f` by `hprod`, `hsides`, `hdeg`, `hpure`, `hdistinct`, and `hbelow`. Off-slope `factor` values are intentionally free and are absent from the conclusion. |
+| **C.94: a self-loop makes an infinite relation trivial** | No relation or history is quantified. Taking `D' = D` is a valid consistency instance, not a refutation; §A-C.8.5 also requires a nonempty, two-slope carrier so the quantified `p` is real. |
+| **C.113 `hne`: a `Nonempty` hypothesis carries no intended content** | `hdeg` is conditional on a side witness, but for every `p ∈ slopes`, `hsides` supplies a witness with `0 < dvSideDeg`; hence the dependent `hne` cannot empty the degree law on an indexed factor. `hbelow` is correctly conditional: it asserts degree zero whenever a below-factor side exists. |
+| **C.118 `Visible₂`: `x ≠ ⊤ → ...` leaves the `⊤` stratum unguarded** | Neither proposed declaration contains an implication-guarded `≠ ⊤`, a visibility predicate, or a window. `DvOnSide` itself includes finiteness positively, and `hsides` demands a positive-length side. |
+| **C.66's additional low-degree purity collapse** | `IsDvPure F g u ℓ` can collapse when `0 < deg g < D′`, but such a polynomial cannot be an indexed dissection factor: `hsides` gives positive `dvSideDeg`, while `hdeg` forces `deg factor = D′·(ℓ·dvSideDeg) ≥ D′`. The `g = X`, `D′ = 2` refuting pair dies at this equality. |
+| empty `slopes` | Allowed exactly when `f` has no positive above-floor side, by the `hsides` iff. It makes the factor-frontier conclusion empty only on the mathematically empty case; the certification's two-slope witness prevents satisfiability from being established solely there. |
+| no `DvDissection` values exist | Ruled out as a vacuity-only certification by the explicit hand-built two-slope instance below, constructed without either proposed cite. |
+| syntactically inert existence binders | `hπ`, completeness, `hf`, and `hkey` restrict the source regime even though they are not fields of the conclusion. Each has a named source/failure role in §A-C.8.2; none is duplicated in the factor-frontier axiom. |
+
+**Verdict.** No fifth instance of the A-C.7 vacuity pattern is present in the two displayed
+types.  This is a draft verdict only; the certification plan must machine-check the two places
+where dependent side witnesses and the `IsDvPure` degree floor could otherwise conceal one.
+
+### A-C.8.5 Certification plan — must be green before the owner is asked to sign
+
+No certification artifact is created by this design amendment.  The signing unit must use
+statement carriers (`def ...Statement : Prop`) and hypotheses, never temporary axioms, and must
+produce a sorry-free record `leanfinal/Uniformity/ChapC/C33_CITE_CERT.lean.txt` plus
+`verification/ac8_dv_cite_check.py`.
+
+**Leg A — satisfiability / non-vacuity, with a genuine two-slope dissection.** Work over
+`O = ℤ_[2]` at the landed `s2Frame`, where
+`Φ′ = X² − C 2`, `(e₁,f₁,h) = (2,1,1)`.  Put
+
+```text
+g₄ := Φ′ + C 4 = X² + C 2,
+g₆ := Φ′ + C 8 = X² + C 6,
+f  := g₆ * g₄.
+```
+
+Construct `D : DvDissection (s2Frame ...) f` directly, without either proposed statement, with
+`slopes = {(6,1),(4,1)}`, factors `g₆,g₄`, and `below = 1`.  The exact level heights of `f` in
+its `Φ′`-development are `[10,4,0]`; consequently the `(6,1)` side is `{0,1}`, the `(4,1)` side
+is `{1,2}`, both residual side degrees are `1`, and each factor degree is
+`2 = (e₁f₁)·(1·1)`.  Prove the universal `hsides`/`hbelow` fields, not merely these two
+members; prove `f.Monic` and `¬ Φ′ ∣ f`; and instantiate the existing complete-DVR instance.
+This single object makes the existence conclusion inhabited and makes the factor-frontier's
+`p ∈ D.slopes` quantifier nonempty.  A companion `Doff` may differ from `D` away from the two
+slopes while agreeing on them, confirming that the conclusion does not accidentally demand
+total-function equality.
+
+**Leg B — non-refutability / hostile retargets.** In the same Lean record:
+
+1. retarget C.66's `g = X`, `D′ = 2` low-degree purity witness and prove that it cannot fill an
+   indexed `DvDissection.factor` slot: `hdeg` contradicts the positive side degree delivered by
+   `hsides`;
+2. attempt the designed cross-slope swap `g₄ ↔ g₆` in a second presentation of the two-slope
+   witness and record the first false field (`hpure` at the wrong reduced slope);
+3. check all four A-C.7 registry shapes mechanically: no self-loop relation, no
+   implication-guarded top case, and every `hne` used by an indexed factor is produced together
+   with positive side degree;
+4. pass the two proposed Props as hypotheses to the exact C.33 blocked goals and verify that the
+   first closes directly and the second closes only through the landed
+   `dvDissection_unique_of_factor_eq`; and
+5. run `#print axioms` on every certification theorem, requiring only Lean core.  In particular,
+   the certification must not mention either proposed axiom name as a declaration.
+
+**Leg C — independent numeric leg.** The Python check uses exact integer arithmetic in the
+`Φ′`-development, not copied Lean reductions.  Its fixed tooth must reproduce heights
+`[10,4,0]`, side sets `{0,1}` and `{1,2}`, side degrees `(1,1)`, and grouped degrees `(2,2)` for
+the displayed witness.  Its bounded sweep takes
+`∏_{m∈{2,3,4}} (Φ′ + 2^m)^{a_m}` for every `a_m ∈ {0,1,2}`, not all zero (**26 rows**), and
+checks:
+
+* principal side slopes are exactly `2m` with `a_m > 0`;
+* the side degree at `2m` is `a_m` and the grouped factor degree is `2a_m`;
+* permuting the input factors does not change the monic grouped factor at any slope; and
+* the low-degree `X` candidate and every deliberate cross-slope swap fail their named fence.
+
+The script must assert its row count and every tooth, and the Lean record must prove the fixed
+tooth independently.  Agreement is the decorrelated numeric leg; one implementation alone is
+not certification.
+
+### A-C.8.6 ★ OWNER SIGNATURE BLOCK — NEW CITE IMPORT; ratification-by-compile is inapplicable
+
+**No signature is recorded here.** The owner is being asked to approve two new trusted-base
+names, not to ratify an already-approved statement by a green build.  A build can verify exact
+transcription after approval; it cannot supply the literature-import authorization.
+
+Owner decision (mark exactly one only after §A-C.8.5 is complete and attached):
+
+- [ ] **APPROVE BOTH exact declarations in §A-C.8.1** as one C.33 gate-(b) cite package:
+  `exists_dvDissection` under [GN15] Thm 2.3 + [FGMN] arXiv-v3 Thm 6.6
+  (published-number check still to be recorded), and `fgmn_dvDissection_factor_eq` under
+  [FGMN] Thm 2.8.
+- [ ] **REJECT / RETURN FOR REDRAFT.** No declaration may land; record the requested change.
+
+```text
+Owner: ____________________________________
+Date: _____________________________________
+Blueprint commit signed: __________________
+FGMN typeset Thm 6.x number checked as: ___
+Certification artifacts/commits: __________
+Owner notes: _______________________________
+```
+
+**Effect of approval, and only approval.** The landing may replace the open
+`exists_dvDissection` stub by the first axiom, add the second axiom, and prove the existing
+signed `dvDissection_unique` statement from the second plus the landed reduction.  The strict
+axiom registry then gains exactly
+`{exists_dvDissection, fgmn_dvDissection_factor_eq}`.  No full Thm 2.8 interface and no axiom
+named `dvDissection_unique` may be added.
+
+### A-C.8.7 Draft bookkeeping
+
+Node census: unchanged.  Trusted-base census: unchanged **in this draft**; proposed post-signature
+delta is `+2` cite axioms, while C.33's uniqueness clause remains a theorem.  DAG: C.33's
+existence clause changes grade from open theorem to gate-(b) cite; its uniqueness clause gains a
+proof-dependency on the narrow FGMN frontier and retains the three landed Lean-core reductions.
+The A-C.6 statement that chapter C's gate queue was exactly `{C.66,C.94}` remains historical:
+A-C.8 opens a new owner-gated proposal but does not alter that queue until signed.
+
+**Still owed.** The two certification artifacts; the Elsevier-typeset Thm 6.x number check; the
+owner's exact-statement signature; post-signature faithfulness filing and axiom-registry update;
+then, and only then, the two declarations and C.33 proof landing.  This amendment itself edits
+the blueprint only.
