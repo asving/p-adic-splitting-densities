@@ -10871,3 +10871,51 @@ A-H.1 … A-H.7 are otherwise byte-unchanged by this append. FENCES A-H.7/F1 and
 standing and unconditional. ⚠ OWNER ITEM: the `B39a` human-review rider, §4. CODEX/decorrelated
 CROSS-READ OWED on §2.2's step-by-step verdict (especially findings F-1 and F-3), on §3.2's
 general-`φ` generalisation of the record's `φ = X` statement, and on §5's bridge.*
+
+---
+
+## AMENDMENT A-H.9 (2026-08-18) — THE BETA ASSEMBLY: H.123's obstruction 2 resolved by blueprint; four new nodes
+
+**Provenance.** `leanfinal/notes/BETA_ASSEMBLY_BLUEPRINT_2026-08-18.md` (codex sol, high),
+adversarially audited fresh-context (codex sol): clean on landed-citation existence,
+OPEN-tier honesty, circularity, and cite hygiene; its one finding (the §4.3 cite-provenance
+collapse) is CURED in the note (2026-08-18 changelog).  This amendment converts the
+blueprint into signed chapter-H nodes; per the standing pipeline the leanspec STUB GATE
+must elaborate every signature below (dependent-transport warnings are expected at the
+`betaIndexFinset_mem` binders) before any fleet charge fires.
+
+**The corrected semantics (the blueprint's §0, adopted as this amendment's D-finding
+A-H.9/D1).**  The obstruction record's informal `typeOf(parent) = typeOf(child) + typeOf(H′)`
+is NOT formalizable: `H′` in the divided recentred frame need not be monic (machine witness
+`5Y³+4Y² = Y²(5Y+4)` in H.116's own blocker cell), and `typeOf` returns junk off monic.
+The honest carrier is the MONIC original-coordinate cofactor `Q` of H.116bR
+(`F = alphaParent · Q`), tied to `H′` by the exact frame identity
+`Q(π^k(Y+ẑ)) = π^{D−μk}·H′(Y)` (0.1), with `μk ≤ D` landed as `mul_le_betaContent`.
+
+**NEW NODES** (statements = the blueprint's §1 signature sketches, verbatim modulo the
+stub gate's elaboration surgery; sizes from the blueprint's decomposition):
+
+* **H.124 [def]** — `betaIndexFinset` (the finite child-index set via `childSet_finite`)
+  + `betaRemainderData` (the order-1 remainder multiset `R_c`, (0.2)).  Definitional.
+* **H.125 [theorem]** — `typeOf_beta_assembly`: the full-parent assembly (0.3),
+  `typeOf(F).data = R_c + Σ_p σ_p.data` under per-child `DecidedAt` hypotheses.  The
+  blueprint's §2 route: Step 1 (OPEN-ROUTINE `cluster_lift_order1_input`), Step 2 (the
+  canonical double dissection — OPEN-PROOF, a general rerun of landed B.42/B.48/B.45),
+  Step 3/4 (the block↔child matching — OPEN-MATH, the two genuinely new nodes), Step 5
+  (simple blocks through the EXISTING `bBox1_cite` wiring — OPEN-ROUTINE wrapper
+  `typeOf_simple_order1Block`), Step 6 (cofactor identification — OPEN-ROUTINE refactor
+  of `betaChild_spec`).
+* **H.126 [theorem]** — `exists_beta_frame_cofactor_read`: the selected-cofactor reading
+  (0.4) + the frame identity (0.1).  Consumes H.125's machinery; NO `typeOf H′` claim.
+* **H.127 [lemma]** — the OPEN-ROUTINE helpers as one node: `cluster_lift_order1_input`,
+  `typeOf_simple_order1Block`, and the Step-6 refactor.
+
+**Consumption.**  H.123b (bridge-a) consumes (0.3) at the β leg; the α leg stays
+H.115+HYP.05/06 as recorded.  NO new cite: the assembly inherits `exists_slope_factorization`
+and `bBox1_cite` only (§4.3 as cured).  Axiom budget of the four nodes: core + those two.
+
+**Fences.**  (F1) The two OPEN-MATH matching nodes (blueprint Steps 3–4) are the research
+mass; they fire ONLY as a dedicated unit with the blueprint §2 text as charge — not as
+generic fleet nodes.  (F2) `typeOf H′` must never be stated as a lemma anywhere (D1).
+(F3) The stub gate must run the A-C.7 vacuity audit on every hypothesis (registry: five
+instances now counting C.118's pair).
