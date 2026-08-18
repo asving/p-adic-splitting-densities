@@ -6,6 +6,7 @@ Authors: Asvin G
 import Uniformity.ChapC.C33
 import Uniformity.ChapC.C97
 import Uniformity.ChapC.C109
+import Uniformity.ChapC.C118a
 
 /-!
 # A-C.8 CERTIFICATION RECORD (Legs A + B) — the two-slope witness and the hostile retargets
@@ -89,19 +90,64 @@ noncomputable def wFactor : ℕ × ℕ → Polynomial O := fun p =>
 
 /-! ## 2. Number facts and block computations (skeleton) -/
 
-theorem addVal_two_pow (n : ℕ) : addVal O ((2 : O) ^ n) = n := by
-  sorry
+theorem addVal_two_pow (h2 : Irreducible (2 : O)) (n : ℕ) :
+    addVal O ((2 : O) ^ n) = n := by
+  exact_mod_cast h2.addVal_pow n
 
-theorem addVal_twelve : addVal O (12 : O) = 2 := by
-  sorry
+theorem isUnit_three (h2 : Irreducible (2 : O)) : IsUnit (3 : O) := by
+  by_contra hc
+  have hmem : (3 : O) ∈ IsLocalRing.maximalIdeal O := hc
+  have h2mem : (2 : O) ∈ IsLocalRing.maximalIdeal O := h2.not_isUnit
+  have h1 : (1 : O) ∈ IsLocalRing.maximalIdeal O := by
+    have : (3 : O) - 2 = 1 := by norm_num
+    rw [← this]
+    exact sub_mem hmem h2mem
+  exact (IsLocalRing.maximalIdeal.isMaximal O).ne_top (Ideal.eq_top_of_isUnit_mem _ h1 isUnit_one)
+
+theorem addVal_twelve (h2 : Irreducible (2 : O)) : addVal O (12 : O) = 2 := by
+  have h12 : (12 : O) = 2 ^ 2 * 3 := by norm_num
+  rw [h12, addVal_mul, addVal_two_pow h2 2]
+  have h3 : addVal O (3 : O) = 0 := addVal_eq_zero_iff.mpr (isUnit_three h2)
+  rw [h3, add_zero]
+  rfl
 
 theorem fw_expansion : (fw : Polynomial O) = C 32 + C 12 * s2Key O + s2Key O ^ 2 := by
-  sorry
+  have h84 : (C 8 : Polynomial O) * C 4 = C 32 := by rw [← C_mul]; norm_num
+  have h8p4 : (C 8 : Polynomial O) + C 4 = C 12 := by rw [← C_add]; norm_num
+  rw [fw, gsix, gfour]
+  calc (s2Key O + C 8) * (s2Key O + C 4)
+      = s2Key O ^ 2 + (C 8 + C 4) * s2Key O + C 8 * C 4 := by ring
+    _ = C 32 + C 12 * s2Key O + s2Key O ^ 2 := by rw [h84, h8p4]; ring
 
 theorem dev_fw : dev (s2Key O) (fw : Polynomial O) 0 = C 32
     ∧ dev (s2Key O) (fw : Polynomial O) 1 = C 12
     ∧ dev (s2Key O) (fw : Polynomial O) 2 = 1 := by
-  sorry
+  classical
+  have hdegK : (0 : ℕ) < (s2Key O).natDegree := by rw [s2Key_natDegree]; norm_num
+  have hdegC : ∀ c : O, (C c : Polynomial O).degree < (s2Key O).degree := by
+    intro c
+    refine lt_of_le_of_lt (degree_C_le) ?_
+    rw [Polynomial.degree_eq_natDegree s2Key_monic.ne_zero, s2Key_natDegree]
+    exact_mod_cast Nat.zero_lt_two
+  set A : Fin 2 → Polynomial O := ![C 32, C 12] with hA
+  have hAdeg : ∀ j : Fin 2, (A j).degree < (s2Key O).degree := by
+    intro j
+    fin_cases j <;> simp [hA] <;> exact hdegC _
+  have hsum : fw = ∑ i : Fin 2, A i * s2Key O ^ (i : ℕ) + s2Key O ^ 2 := by
+    rw [fw_expansion, Fin.sum_univ_two]
+    simp only [hA, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons,
+      Fin.val_zero, Fin.val_one, pow_zero, pow_one, mul_one]
+    ring
+  obtain ⟨hlow, htop⟩ := C109asm.dev_assemble s2Key_monic hdegK A hAdeg
+  refine ⟨?_, ?_, ?_⟩
+  · have := hlow 0
+    rw [← hsum] at this
+    simpa [hA] using this
+  · have := hlow 1
+    rw [← hsum] at this
+    simpa [hA] using this
+  · rw [hsum]
+    exact htop
 
 theorem dvHgt_fw (h2 : Irreducible (2 : O)) (hq : residueCard O = 2) :
     dvHgt (s2Frame h2 hq) (fw : Polynomial O) 0 = (10 : ℕ∞)
