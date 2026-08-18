@@ -10282,3 +10282,14 @@ A-C.8 opens a new owner-gated proposal but does not alter that queue until signe
 owner's exact-statement signature; post-signature faithfulness filing and axiom-registry update;
 then, and only then, the two declarations and C.33 proof landing.  This amendment itself edits
 the blueprint only.
+
+### A-C.7 addendum-2 (2026-08-18, post-verification) — the addendum's guard design was itself refuted and corrected; independent audit clean
+
+The codex sol adversarial pass over the full A-C.7 chain (three refutations, three landed
+repairs, both leanspec re-signs) returned **no critical errors and no third read leak**
+(`hslots` bounds every outer slot `dv2ResPoly` consumes; the transferred inner data pins
+every `twistRead` digit below `N`; `H₀`/`slotIdx`/`twistExp` are shared-data-only).  Its
+one finding, cured by THIS note: the first addendum's drafted `hsupp`-only guard was
+subsequently machine-refuted (`C118_REFUTATION.lean.txt` §3, the interior-slot leak) and
+the LANDED/re-signed clause 2 carries TWO guards (`hsupp` + `hslots`) — the addendum text
+above predates that correction and must be read with it.
