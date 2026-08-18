@@ -1,0 +1,256 @@
+/-
+Copyright (c) 2026 Asvin G. All rights reserved.
+Released under Apache 2.0 license as described in the file LICENSE.
+Authors: Asvin G
+-/
+import Uniformity.ChapC.C11
+import Uniformity.ChapC.C12
+import Uniformity.ChapC.C38a
+import Uniformity.ChapC.C97
+import Uniformity.ChapC.C117
+
+/-!
+# REFUTATION of the frozen A-C.1 signature of NODE C.118, clause 1 (`dv2_read_congr`)
+
+**This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` convention: kept as
+`.lean.txt` so no build picks it up).  To re-run it:
+
+```
+cp leanfinal/Uniformity/ChapC/C118_REFUTATION.lean.txt /tmp/c118_counter.lean
+cd leanfinal && lake env lean /tmp/c118_counter.lean
+```
+
+## What is refuted
+
+`dv2_read_congr`, the first of NODE C.118's two signed clauses
+(`leanspec/Leanspec/ChapC.lean`, A-C.1 §12), as frozen:
+
+```lean
+theorem dv2_read_congr {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [Finite (ResidueField O)]
+    {Ψ : Polynomial O} {n N : ℕ} {a a' : Fin n → O}
+    (hc : proj O n N a = proj O n N a')
+    (hvis : Visible₂ L Ψ (monicPoly a) N) {j : ℕ} (hj : j ≤ n / L.keyDeg₂) :
+    dv2Pin L Ψ (monicPoly a) j = dv2Pin L Ψ (monicPoly a') j
+```
+
+**It is FALSE.**  The defect is the FOURTH occurrence of the A-C.1 vacuous-⊤ pattern
+(after C.111's `hnode`, C.94's self-loop, and C.113's `hne` — each a hypothesis that
+silently carries no information on part of its domain): `Visible₂`'s guard is
+`dv2Pin ≠ ⊤ → dv2Pin < window`, so a ⊤ pin of the member `a` is UNGUARDED — and a ⊤ pin
+is REAL at level 2, because the consulted object is a development BLOCK `dev Ψ f j`,
+which (unlike the monic `f` itself, whose top block saves B.77's level-1 twin) can be
+ZERO below the top.  A `π^N`-perturbation of the same window class then has a FINITE pin
+at the same abscissa: the frozen conclusion equates `⊤` with a numeral.
+
+## The counterexample
+
+Over any `O` in which `2` is irreducible with `residueCard O = 2` (e.g. `ℤ₂` — the same
+carrier class as the landed `s2Frame`, whose theorem-grade fields we reuse):
+
+* `F := s2Frame h2 hq` (C.97: `Φ′ = x² − 2`, `(e₁, f₁, h) = (2, 1, 1)`, pinned at `H₀ = 1`);
+* `L := ⟨u = 3, ℓ = 1, r = X − C 1⟩` (a legitimate level-2 label: `hκ : 1·2·1 < 3`;
+  `X − C 1` is monic linear irreducible over the stage FIELD with nonzero constant term);
+  so `L.keyDeg₂ = 2·1·1 = 2`;
+* `Ψ := X`, `n := 2`, `N := 1`, `a := 0` (so `monicPoly a = X²`),
+  `a' := (2, 0)` (so `monicPoly a' = X² + C 2` — the same level-1 window class, since
+  `2 ∈ 𝔪`);
+* `j := 0 ≤ 2 / 2`.
+
+Then `dev X (X²) 0 = 0`, so `dv2Pin L X (X²) 0 = dvSupp F 0 3 1 = ⊤`; while
+`dev X (X² + C 2) 0 = C 2` and `dv2Pin L X (X² + C 2) 0 = 1 • (2 • addVal O 2) = 2 ≠ ⊤`.
+`Visible₂ L X (X²) 1` holds VACUOUSLY: the consulted pins (`j ≤ 1`) are all `⊤`
+(`dev X (X²) 0 = dev X (X²) 1 = 0`).  The frozen conclusion demands `⊤ = 2`.
+
+## Status of clause 2 (`dv2_read_congr_res`)
+
+NOT machine-refuted here, but SUSPECT by the same mechanism: its side data
+(`dv2SideSet`, the `hne'` binder, `dv2Res`'s pin) consult the UNGUARDED member `a'`
+whose reads `Visible₂ (monicPoly a) N` does not constrain.  The A-C.7 amendment
+re-signs both clauses in guarded/window form; clause 2's exact repair is settled at
+certification.
+-/
+
+open Polynomial Uniformity Uniformity.Density Uniformity.Density.Leaf Uniformity.Density.Tower IsLocalRing
+  IsDiscreteValuationRing
+
+section Refutation
+
+variable (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)]
+
+/-- `X` is a key over any DVR (local rebuild — the landed `isKey_X` copies are `private`). -/
+private theorem isKeyX : IsKey (Polynomial.X : Polynomial O) where
+  monic := monic_X
+  pos := by simp
+  irred := by
+    rw [Polynomial.map_X]
+    letI : Field (IsLocalRing.ResidueField O) := inferInstance
+    exact Polynomial.irreducible_X
+
+/-- the smul-⊤ helper. -/
+private theorem smul_top_of_pos {k : ℕ} (hk : 0 < k) : k • (⊤ : ℕ∞) = ⊤ := by
+  rw [nsmul_eq_mul]
+  exact WithTop.mul_top (Nat.cast_ne_zero.mpr hk.ne')
+
+/-- `dvSupp` of the ZERO polynomial is `⊤` (every consulted height is `⊤`). -/
+private theorem dvSupp_zero {π : O} (F : KeyFrame O π) (u ℓ : ℕ) (hℓ : 0 < ℓ) :
+    dvSupp F (0 : Polynomial O) u ℓ = ⊤ := by
+  rw [dvSupp]
+  simp only [Polynomial.natDegree_zero, zero_add, Finset.range_one, Finset.inf_singleton]
+  have h1 : dvHgt F (0 : Polynomial O) 0 = ⊤ := by
+    rw [dvHgt]
+    have hz : dev F.key (0 : Polynomial O) 0 = 0 := by
+      rw [show dev F.key (0 : Polynomial O) 0 = (0 : Polynomial O) %ₘ F.key from rfl]
+      simp
+    rw [hz, KeyFrame.stageHeight, suppVal]
+    simp only [Polynomial.natDegree_zero, zero_add, Finset.range_one, Finset.inf_singleton]
+    have h2 : npHgt X (0 : Polynomial O) 0 = ⊤ := by
+      rw [npHgt]
+      have : dev X (0 : Polynomial O) 0 = 0 := by
+        rw [show dev X (0 : Polynomial O) 0 = (0 : Polynomial O) %ₘ X from rfl]
+        simp
+      rw [this]
+      exact gaussVal_eq_top_iff.2 rfl
+    rw [h2, smul_top_of_pos F.he₁]
+    simp
+  rw [h1, smul_top_of_pos hℓ]
+  simp
+
+/-- **The refutation.**  Assuming the frozen clause-1 statement AT THIS `O` (the frozen
+theorem is `∀`-quantified over `O`, so its truth implies this instance), we derive `False`. -/
+theorem c118_clause1_refuted (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
+    (hstmt : ∀ {F : KeyFrame O (2 : O)} {H₀ : ℕ}
+      {hpin : npHgt X F.key (sideMin X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞)}
+      (L : LevelDatum F H₀ hpin),
+      Irreducible (2 : O) →
+      ∀ {Ψ : Polynomial O} {n N : ℕ} {a a' : Fin n → O},
+        proj O n N a = proj O n N a' →
+        Visible₂ L Ψ (monicPoly a) N →
+        ∀ {j : ℕ}, j ≤ n / L.keyDeg₂ →
+          dv2Pin L Ψ (monicPoly a) j = dv2Pin L Ψ (monicPoly a') j) :
+    False := by
+  classical
+  set F := s2Frame h2 hq with hF
+  have hpin1 : F.Pin 1 := s2Frame_pin h2 hq
+  letI : Field (F.stageField 1 hpin1) := by
+    letI : Field (resField (Polynomial.X : Polynomial O)) := instFieldResField (isKeyX O)
+    haveI : Fact (Irreducible (F.frameRes 1 hpin1)) := ⟨(F.hresirr 1 hpin1).1⟩
+    exact AdjoinRoot.instField
+  set L : LevelDatum F 1 hpin1 :=
+    { u := 3
+      ℓ := 1
+      r := X - C 1
+      hℓ := one_pos
+      hcop := by norm_num [Nat.Coprime]
+      hκ := by show 1 * ((2 : ℕ) * 1) * 1 < 3; norm_num
+      hrmonic := monic_X_sub_C 1
+      hrirr := irreducible_X_sub_C (1 : F.stageField 1 hpin1)
+      hr0 := by simp
+      hrdeg := by rw [Polynomial.natDegree_X_sub_C]; norm_num } with hL
+  -- the two members
+  set a : Fin 2 → O := fun _ => 0 with ha
+  set a' : Fin 2 → O := fun i => if (i : ℕ) = 0 then 2 else 0 with ha'
+  have hmono : monicPoly a = X ^ 2 := by
+    rw [monicPoly]
+    simp [ha]
+  have hmono' : monicPoly a' = X ^ 2 + C 2 := by
+    rw [monicPoly, ha']
+    rw [Fin.sum_univ_two]
+    simp
+  -- window congruence at N = 1
+  have h2mem : (2 : O) ∈ IsLocalRing.maximalIdeal O := h2.not_isUnit
+  have hc : proj O 2 1 a = proj O 2 1 a' := by
+    funext i
+    refine Ideal.Quotient.eq.mpr ?_
+    rw [pow_one]
+    by_cases h0 : i = 0
+    · subst h0
+      have hval : a 0 - a' 0 = -2 := by simp [ha, ha']
+      rw [hval]
+      exact neg_mem h2mem
+    · have h0' : ¬((i : ℕ) = 0) := fun hc => h0 (Fin.ext hc)
+      have hval : a i - a' i = 0 := by simp [ha, ha', h0, h0']
+      rw [hval]
+      exact zero_mem _
+  -- the level-2 key degree
+  have hkd : L.keyDeg₂ = 2 := by
+    rw [LevelDatum.keyDeg₂]
+    simp only [hL, hF]
+    rw [Polynomial.natDegree_X_sub_C]
+    show (2 : ℕ) * 1 * 1 * 1 = 2
+    norm_num
+  -- the two blocks at abscissa 0
+  have hblk : dev X (monicPoly a) 0 = 0 := by
+    rw [hmono, show dev X (X ^ 2 : Polynomial O) 0 = (X ^ 2 : Polynomial O) %ₘ X from rfl]
+    simp [Polynomial.modByMonic_X]
+  have hblk' : dev X (monicPoly a') 0 = C 2 := by
+    rw [hmono', show dev X (X ^ 2 + C 2 : Polynomial O) 0
+      = (X ^ 2 + C 2 : Polynomial O) %ₘ X from rfl]
+    simp [Polynomial.modByMonic_X]
+  -- the member pin at 0 is ⊤
+  have hpinA : dv2Pin L X (monicPoly a) 0 = ⊤ := by
+    rw [dv2Pin, hblk]
+    exact dvSupp_zero O F L.u L.ℓ L.hℓ
+  -- the other member's pin at 0 is the numeral 2
+  have hval2 : addVal O 2 = 1 := by
+    simpa using addVal_uniformizer h2
+  have hu : L.u = 3 := rfl
+  have hl : L.ℓ = 1 := rfl
+  have hpinA' : dv2Pin L X (monicPoly a') 0 = (2 : ℕ∞) := by
+    rw [dv2Pin, hblk', dv2Hgt, hu, hl]
+    simp only [dvSupp]
+    simp only [Polynomial.natDegree_C, zero_add, Finset.range_one, Finset.inf_singleton]
+    have hdevC : dev F.key (C (2 : O)) 0 = C 2 := by
+      rw [show dev F.key (C (2 : O)) 0 = (C (2 : O)) %ₘ F.key from rfl]
+      rw [(Polynomial.modByMonic_eq_self_iff F.hmonic).mpr]
+      rw [Polynomial.degree_C (by exact_mod_cast h2.ne_zero),
+        Polynomial.degree_eq_natDegree F.hmonic.ne_zero, F.hdeg]
+      exact_mod_cast Nat.mul_pos (s2Frame h2 hq).he₁ (s2Frame h2 hq).hf₁
+    have hgv : gaussVal (C (2 : O)) = 1 := by
+      rw [gaussVal]
+      simp only [Polynomial.natDegree_C, zero_add, Finset.range_one, Finset.inf_singleton,
+        Polynomial.coeff_C_zero]
+      exact hval2
+    have hdvh : dvHgt F (C (2 : O)) 0 = 2 := by
+      rw [dvHgt, hdevC, KeyFrame.stageHeight, suppVal]
+      simp only [Polynomial.natDegree_C, zero_add, Finset.range_one, Finset.inf_singleton]
+      have hnp : npHgt X (C (2 : O)) 0 = 1 := by
+        rw [npHgt, show dev X (C (2 : O)) 0 = (C (2 : O)) %ₘ X from rfl]
+        rw [Polynomial.modByMonic_X]
+        simp only [Polynomial.eval_C]
+        exact hgv
+      rw [hnp]
+      have : F.e₁ = 2 := rfl
+      rw [this]
+      simp [nsmul_eq_mul]
+    rw [hdvh]
+    simp
+  -- visibility of the member is VACUOUS: all consulted pins are ⊤
+  have hvis : Visible₂ L X (monicPoly a) 1 := by
+    intro j hj hT
+    exfalso
+    refine hT ?_
+    rw [hmono] at hj ⊢
+    have hnd : (X ^ 2 : Polynomial O).natDegree = 2 := by simp
+    rw [hnd, hkd] at hj
+    interval_cases j
+    · rw [← hmono]
+      exact hpinA
+    · rw [dv2Pin]
+      have : dev X (X ^ 2 : Polynomial O) 1 = 0 := by
+        rw [show dev X (X ^ 2 : Polynomial O) 1 = dev X ((X ^ 2 : Polynomial O) /ₘ X) 0
+          from rfl]
+        rw [show (X ^ 2 : Polynomial O) /ₘ X = X by
+          rw [pow_two]
+          exact Polynomial.mul_divByMonic_cancel_left X monic_X]
+        rw [show dev X (X : Polynomial O) 0 = (X : Polynomial O) %ₘ X from rfl]
+        simp [Polynomial.modByMonic_X]
+      rw [this]
+      exact dvSupp_zero O F L.u L.ℓ L.hℓ
+  -- fire the frozen statement at j = 0 and collide ⊤ with 2
+  have := hstmt L h2 hc hvis (j := 0) (by simp)
+  rw [hpinA, hpinA'] at this
+  exact (ENat.top_ne_coe 2) (by exact_mod_cast this)
+
+end Refutation
