@@ -9962,3 +9962,29 @@ UNLANDED A-C.1 signature whose hypotheses mention `Nonempty`, `≠ ⊤`, or a on
 `Visible`-style guard MUST be pattern-audited before its fleet charge fires
 (one-line check: "does the guard still bind on the degenerate stratum?").  The §12
 neighbours C.119–C.126 and the §10 chain are the first candidates.
+
+### A-C.7 addendum (2026-08-18, second finding) — clause 2 is ALSO refutable: the DESIGNED counterexample
+
+Adjudication outcome for `dv2_read_congr_res` (step 1 of the clause-2 unit): **REFUTABLE**,
+by a DEGREE JUMP on the same `s2Frame` carrier (no larger residue field needed — the first
+attempt via residual VALUES fails over `𝔽₂` where all units read residue `1`; the working
+discriminator is the residual DEGREE):
+
+* members `a := X²`, `a' := X² + C 16` at `N = 1` (`16 = 2⁴`, so the pair is window-
+  congruent at `N = 1`); direction `(u₂, ℓ₂) = (4, 1)` (`hseam : 1·3 < 4` ✓);
+* pins of `a`: `(⊤, ⊤, 0)` → `dv2Supp = 8` attained at `j = 2` only → side set `{2}`,
+  `dv2SideDeg = 0`, `dv2ResPoly = C (dv2Res L 1)`;
+* pins of `a'`: `(8, ⊤, 0)` (the `j = 0` block is `C 16`, `stageHeight = 2·addVal(16) = 8`)
+  → `dv2Supp = min(8, ⊤, 8) = 8` attained at `j ∈ {0, 2}` → side set `{0, 2}`,
+  `dv2SideDeg = 2`, `dv2ResPoly = C (dv2Res L (C 16)) + 0·X + C (dv2Res L 1)·X²`;
+* `Visible₂` on `a` at `N = 1` holds VACUOUSLY (consulted pins all `⊤`), both `hne`s hold;
+* the coefficient-`2` discriminator: LHS coeff `= 0` (degree-0 sum range) vs RHS coeff
+  `= dv2Res L 1 ≠ 0` (the `dite` fires at the constant `1`'s side data `({0}, M₀ = 0)`;
+  `dvResPoly = C (twistRead … 0 1)`, a nonzero constant, and `AdjoinRoot.mk` into the
+  level-2 FIELD kills no nonzero constant).
+
+Machine-certification of this instance = the clause-2 unit's step 1 deliverable
+(`c118_clause2_refuted`, to be appended to `C118_REFUTATION.lean.txt`); the re-sign then
+adds the side-visibility guard (`dv2Supp` strictly below `ℓ₂·W`, which pins every attaining
+abscissa's read below the window and transfers the side set through the clause-1′ capped
+law — at the counterexample `dv2Supp = 8 = ℓ₂·W` exactly, so the guard excludes it sharply).
