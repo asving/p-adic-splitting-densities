@@ -1,0 +1,71 @@
+/- QUARANTINED OPEN LEGS of NODE C.52 (evidence convention; not built).
+The four dv-graded legs + the capstone assembly, exactly as the codex sol unit left them
+(sorry-bodied), pending the mechanisms named in C52_BLOCKED_2026-08-18.md.  The PROVED
+material (budgetFloor, DvAbove, budgetFloor_le_iff, dev_pow_self) stays in C52.lean.
+Re-run: prepend C52.lean's imports/namespace. -/
+
+/-- **Step 0, the two carries** (`EFF.GENTOW1.19`, value-blind): a box monomial
+`C c · x^a · Φ′^b · Φ₂^j` has every level-1 slot at weight `≥ gridWeight T v a b j` whenever
+`v ≤ addVal c` — the x-carry priced by the key's one side, the `Φ′`-carry priced by `E₂`. -/
+theorem dvAbove_boxMonomial {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] (c : O) (a b j : ℕ) :
+    DvAbove F (Polynomial.C c * Polynomial.X ^ a * F.key ^ b * composedKey T ^ j) T.u₂ T.e₂
+      (((F.e₁ * T.e₂ : ℕ) : ℕ∞) * addVal O c + ((slotOffset T a b + j * T.E₂ : ℕ) : ℕ∞)) := by
+  sorry
+
+
+/-- **Step 1** (`EFF.GENTOW1.20`): `Φ₂^{μ₂}`'s own level-1 data, via C.47's test-key hood and
+graded multiplicativity — the composed key's power lies on the locus it fences. -/
+theorem composedKey_pow_mem_towerLocus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] {μ₂ : ℕ} (hμ₂ : 0 < μ₂) :
+    composedKey T ^ μ₂ ∈ towerLocus T μ₂ := by
+  sorry
+
+
+/-- **Step 2** (`EFF.GENTOW1.21`, the ⟸ realizability): digits at-or-above the floors put every
+slot of `g = f − Φ₂^{μ₂}` at weight `≥ μ₂E₂ + 1`; adding `Φ₂^{μ₂}` (Step 1) leaves the full
+inner side with residual `r̃^{μ₂}` exact. -/
+theorem mem_towerLocus_of_budget {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)]
+    {μ₂ : ℕ} (hμ₂ : 0 < μ₂) {f : Polynomial O} (hf : f.Monic)
+    (hdeg : f.natDegree = μ₂ * T.D₂)
+    (hbud : ∀ j a b : ℕ, j < μ₂ → a < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
+      (budgetFloor T μ₂ j a b : ℕ∞)
+        ≤ addVal O ((dev F.key (dev (composedKey T) f j) b).coeff a)) :
+    f ∈ towerLocus T μ₂ := by
+  sorry
+
+
+/-- **Step 3** (`EFF.GENTOW1.22`, the ⟹ necessity): on `𝒯` the side-lattice reads of `f` equal
+`Φ₂^{μ₂}`'s, so the lattice digits of `g = f − Φ₂^{μ₂}` cancel one digit up, off-lattice slots
+clear by pin-lattice class separation, and Step 0 converts the slot bounds to the floors. -/
+theorem budget_of_mem_towerLocus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)]
+    {μ₂ : ℕ} (hμ₂ : 0 < μ₂) {f : Polynomial O} (hf : f.Monic)
+    (hdeg : f.natDegree = μ₂ * T.D₂) (hmem : f ∈ towerLocus T μ₂) :
+    ∀ j a b : ℕ, j < μ₂ → a < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
+      (budgetFloor T μ₂ j a b : ℕ∞)
+        ≤ addVal O ((dev F.key (dev (composedKey T) f j) b).coeff a) := by
+  sorry
+
+/-! ### The signed statement -/
+
+
+/-- **NODE C.52** (GENTOW-1(a)) — the weight characterization: `f ∈ 𝒯` iff every composed digit
+clears its budget floor. Signed A-C.1; statement byte-frozen from `leanspec/Leanspec/ChapC.lean`. -/
+theorem towerLocus_iff_budget {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)]
+    {μ₂ : ℕ} (hμ₂ : 0 < μ₂) {f : Polynomial O} (hf : f.Monic)
+    (hdeg : f.natDegree = μ₂ * T.D₂) :
+    f ∈ towerLocus T μ₂
+      ↔ ∀ j a b : ℕ, j < μ₂ → a < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
+          (budgetFloor T μ₂ j a b : ℕ∞)
+            ≤ addVal O ((dev F.key (dev (composedKey T) f j) b).coeff a) :=
+  ⟨budget_of_mem_towerLocus T hπ hh hμ₂ hf hdeg,
+   mem_towerLocus_of_budget T hπ hh hμ₂ hf hdeg⟩
+

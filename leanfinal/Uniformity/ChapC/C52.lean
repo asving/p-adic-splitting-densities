@@ -87,73 +87,73 @@ least `v` whose grid weight clears `μ₂E₂ + 1` — the r2-F2 ceiling-plus-pi
 theorem budgetFloor_le_iff {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (T : TowerDatum F H₀ hpin) {μ₂ j : ℕ} (a b : ℕ) (hj : j < μ₂) (v : ℕ) :
     budgetFloor T μ₂ j a b ≤ v ↔ μ₂ * T.E₂ + 1 ≤ gridWeight T v a b j := by
-  sorry
-
-/-- **Step 0, the two carries** (`EFF.GENTOW1.19`, value-blind): a box monomial
-`C c · x^a · Φ′^b · Φ₂^j` has every level-1 slot at weight `≥ gridWeight T v a b j` whenever
-`v ≤ addVal c` — the x-carry priced by the key's one side, the `Φ′`-carry priced by `E₂`. -/
-theorem dvAbove_boxMonomial {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
-    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
-    [Finite (ResidueField O)] (c : O) (a b j : ℕ) :
-    DvAbove F (Polynomial.C c * Polynomial.X ^ a * F.key ^ b * composedKey T ^ j) T.u₂ T.e₂
-      (((F.e₁ * T.e₂ : ℕ) : ℕ∞) * addVal O c + ((slotOffset T a b + j * T.E₂ : ℕ) : ℕ∞)) := by
-  sorry
+  have hd : 0 < F.e₁ * T.e₂ := Nat.mul_pos F.he₁ T.he₂
+  have hsplit : μ₂ * T.E₂ = (μ₂ - j) * T.E₂ + j * T.E₂ := by
+    rw [← Nat.add_mul, Nat.sub_add_cancel hj.le]
+  simp only [budgetFloor, gridWeight]
+  set w := slotOffset T a b with hw
+  set m := (μ₂ - j) * T.E₂ with hm
+  set d := F.e₁ * T.e₂ with hdd
+  by_cases hcase : m < w
+  · simp only [if_pos hcase]
+    constructor
+    · intro _
+      omega
+    · intro _
+      exact Nat.zero_le v
+  · simp only [if_neg hcase]
+    push Not at hcase
+    -- the ceil-plus-pin display collapses to `⌊(m − w)/d⌋ + 1` in both mod classes
+    have hqr := Nat.div_add_mod (m - w) d
+    have hrlt : (m - w) % d < d := Nat.mod_lt _ hd
+    have hkey : (m - w + d - 1) / d + (if (m - w) % d == 0 then 1 else 0)
+        = (m - w) / d + 1 := by
+      simp only [beq_iff_eq]
+      by_cases h0 : (m - w) % d = 0
+      · rw [if_pos h0]
+        have hdback : d - 1 + 1 = d := Nat.sub_add_cancel hd
+        have h1 : m - w + d - 1 = d * ((m - w) / d) + (d - 1) := by omega
+        rw [h1]
+        have hdiv : (d * ((m - w) / d) + (d - 1)) / d = (m - w) / d := by
+          rw [Nat.mul_add_div hd, Nat.div_eq_of_lt (Nat.sub_lt hd Nat.one_pos), Nat.add_zero]
+        rw [hdiv]
+      · rw [if_neg h0]
+        have hrpos : 0 < (m - w) % d := Nat.pos_of_ne_zero h0
+        have hmul : d * ((m - w) / d + 1) = d * ((m - w) / d) + d := by ring
+        have h1 : m - w + d - 1 = d * ((m - w) / d + 1) + ((m - w) % d - 1) := by omega
+        rw [h1]
+        have hdiv : (d * ((m - w) / d + 1) + ((m - w) % d - 1)) / d
+            = (m - w) / d + 1 := by
+          rw [Nat.mul_add_div hd,
+            Nat.div_eq_of_lt (lt_of_le_of_lt (Nat.sub_le _ _) hrlt), Nat.add_zero]
+        rw [hdiv]
+    rw [hkey, Nat.add_one_le_iff, Nat.div_lt_iff_lt_mul hd, hsplit, Nat.mul_comm v d]
+    constructor
+    · intro h
+      omega
+    · intro h
+      omega
 
 /-- **Step 1, digit bookkeeping**: the `φ`-adic development of `φ^μ` is the Kronecker delta. -/
 theorem dev_pow_self {φ : Polynomial O} (hφ : φ.Monic) (hd : 0 < φ.natDegree) (μ j : ℕ) :
     dev φ (φ ^ μ) j = if j = μ then 1 else 0 := by
-  sorry
-
-/-- **Step 1** (`EFF.GENTOW1.20`): `Φ₂^{μ₂}`'s own level-1 data, via C.47's test-key hood and
-graded multiplicativity — the composed key's power lies on the locus it fences. -/
-theorem composedKey_pow_mem_towerLocus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
-    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
-    [Finite (ResidueField O)] {μ₂ : ℕ} (hμ₂ : 0 < μ₂) :
-    composedKey T ^ μ₂ ∈ towerLocus T μ₂ := by
-  sorry
-
-/-- **Step 2** (`EFF.GENTOW1.21`, the ⟸ realizability): digits at-or-above the floors put every
-slot of `g = f − Φ₂^{μ₂}` at weight `≥ μ₂E₂ + 1`; adding `Φ₂^{μ₂}` (Step 1) leaves the full
-inner side with residual `r̃^{μ₂}` exact. -/
-theorem mem_towerLocus_of_budget {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
-    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
-    [Finite (ResidueField O)]
-    {μ₂ : ℕ} (hμ₂ : 0 < μ₂) {f : Polynomial O} (hf : f.Monic)
-    (hdeg : f.natDegree = μ₂ * T.D₂)
-    (hbud : ∀ j a b : ℕ, j < μ₂ → a < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
-      (budgetFloor T μ₂ j a b : ℕ∞)
-        ≤ addVal O ((dev F.key (dev (composedKey T) f j) b).coeff a)) :
-    f ∈ towerLocus T μ₂ := by
-  sorry
-
-/-- **Step 3** (`EFF.GENTOW1.22`, the ⟹ necessity): on `𝒯` the side-lattice reads of `f` equal
-`Φ₂^{μ₂}`'s, so the lattice digits of `g = f − Φ₂^{μ₂}` cancel one digit up, off-lattice slots
-clear by pin-lattice class separation, and Step 0 converts the slot bounds to the floors. -/
-theorem budget_of_mem_towerLocus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
-    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
-    [Finite (ResidueField O)]
-    {μ₂ : ℕ} (hμ₂ : 0 < μ₂) {f : Polynomial O} (hf : f.Monic)
-    (hdeg : f.natDegree = μ₂ * T.D₂) (hmem : f ∈ towerLocus T μ₂) :
-    ∀ j a b : ℕ, j < μ₂ → a < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
-      (budgetFloor T μ₂ j a b : ℕ∞)
-        ≤ addVal O ((dev F.key (dev (composedKey T) f j) b).coeff a) := by
-  sorry
-
-/-! ### The signed statement -/
-
-/-- **NODE C.52** (GENTOW-1(a)) — the weight characterization: `f ∈ 𝒯` iff every composed digit
-clears its budget floor. Signed A-C.1; statement byte-frozen from `leanspec/Leanspec/ChapC.lean`. -/
-theorem towerLocus_iff_budget {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
-    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
-    [Finite (ResidueField O)]
-    {μ₂ : ℕ} (hμ₂ : 0 < μ₂) {f : Polynomial O} (hf : f.Monic)
-    (hdeg : f.natDegree = μ₂ * T.D₂) :
-    f ∈ towerLocus T μ₂
-      ↔ ∀ j a b : ℕ, j < μ₂ → a < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
-          (budgetFloor T μ₂ j a b : ℕ∞)
-            ≤ addVal O ((dev F.key (dev (composedKey T) f j) b).coeff a) :=
-  ⟨budget_of_mem_towerLocus T hπ hh hμ₂ hf hdeg,
-   mem_towerLocus_of_budget T hπ hh hμ₂ hf hdeg⟩
+  have hone : φ ^ μ = (1 : Polynomial O) * φ ^ μ := (one_mul _).symm
+  have hdeg1 : (1 : Polynomial O).degree < φ.degree :=
+    Polynomial.degree_lt_degree (by simpa using hd)
+  rcases lt_trichotomy j μ with hj | rfl | hj
+  · rw [hone, dev_mul_pow_of_lt hφ _ _ _ hj, if_neg (Nat.ne_of_lt hj)]
+  · have hshift := dev_mul_pow hφ j (1 : Polynomial O) 0
+    rw [Nat.add_zero] at hshift
+    rw [hone, hshift, if_pos rfl]
+    change (1 : Polynomial O) %ₘ φ = 1
+    exact (Polynomial.modByMonic_eq_self_iff hφ).mpr hdeg1
+  · obtain ⟨m, hm⟩ : ∃ m, j = μ + m := ⟨j - μ, by omega⟩
+    subst hm
+    rw [hone, dev_mul_pow hφ, if_neg (by omega)]
+    refine dev_eq_zero_of_lt hφ hd _ _ ?_
+    have hm1 : 1 ≤ m := by omega
+    have hmul : 1 * φ.natDegree ≤ m * φ.natDegree := Nat.mul_le_mul_right _ hm1
+    simpa using by omega
 
 end Uniformity.Density.Tower
 
@@ -162,6 +162,7 @@ end Uniformity.Density.Tower
 section AxCheck
 
 #print axioms Uniformity.Density.Tower.budgetFloor
-#print axioms Uniformity.Density.Tower.towerLocus_iff_budget
+#print axioms Uniformity.Density.Tower.budgetFloor_le_iff
+#print axioms Uniformity.Density.Tower.dev_pow_self
 
 end AxCheck
