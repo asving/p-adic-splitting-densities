@@ -597,13 +597,21 @@ No stronger assertion about irreducibility or splitting type is attributed to B.
 
 ### 4.3 Literature input that is genuinely needed: B-BOX-1, already signed
 
-**Minimal citable clause.**  A monic one-side block with residual multiplicity one and
-irreducible residual factor `psi` has exactly one splitting-type entry
-`(ell, deg(phi)*deg(psi))`.
+**[provenance split, 2026-08-18, per the adversarial audit — the literature clause and the
+repo-derived wiring must not be collapsed when claiming minimality.]**
 
-**Published source.**  FGMN, Theorem 6.6, and Guardia-Nart, Theorem 2.3 and equation (2.1), with
-the classical residue-degree/norm glue recorded in the existing Serre/Neukirch faithfulness
-entry.  This is precisely the existing `bBox1_cite`, consumed through
+**The citable literature clause** (= what the signed `BBox1CiteStatement` actually asserts;
+`leanfinal/Uniformity/ChapB/BBox1CiteStatement.lean:71`): the leaf dichotomy's `(e, f)`
+clause at the irreducible-residual leaf — ramification `ell` and inertia `deg(phi)*deg(psi)`
+in the order-level-gcd vocabulary.  Published source: FGMN, Theorem 6.6, and Guardia-Nart,
+Theorem 2.3 and equation (2.1), with the classical residue-degree/norm glue recorded in the
+existing Serre/Neukirch faithfulness entry.
+
+**The repo-derived wiring** (NOT literature; separately PROVED at
+`BBox1CiteStatement.lean:90`): `typeOf_leaf_of_cite`, which converts that `(e, f)` clause
+into the singleton splitting-type reading "exactly one entry `(ell, deg(phi)*deg(psi))`"
+that Step 5 consumes.  The beta assembly therefore adds NO new cite: it consumes the
+existing axiom `bBox1_cite` through the existing proved wiring
 `typeOf_leaf_of_cite bBox1_cite`.
 
 **Faithfulness paragraph.**  The beta assembly invokes the clause only for B.48 blocks whose
@@ -665,3 +673,9 @@ node are proofs.
 With those fences, the beta assembly is a finite algebraic comparison theorem, and obstruction
 2 of H.123 reduces to the two explicit new mathematical nodes `H.betaA3` and `H.betaA5` plus
 the stated assembly bookkeeping.
+
+---
+2026-08-18 changelog: §4.3 provenance split per the adversarial audit (orchestrator-applied;
+the pool-probe agent was storm-killed) — the citable clause is the leaf `(e,f)` statement of
+`BBox1CiteStatement`; the singleton-typeOf reading is the separately proved wiring
+`typeOf_leaf_of_cite`, not literature input.
