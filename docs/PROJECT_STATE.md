@@ -6332,3 +6332,29 @@ cite imports) — the draft+certification proceed fleet-side; the
 declaration WAITS for Asvin's one-liner (unlike the C.66/C.94
 redrafts, which were category-pre-signed at append #66).
 OWNER QUEUE: A-C.8 cite inspection added (alongside HYP.142).
+
+**2026-08-18 DATED APPEND #95 — NODE C.118 FULLY CLOSED, both
+clauses, both ways: two frozen statements machine-refuted, one
+drafted repair machine-refuted, three honest replacements PROVED
+Lean-core; the decorrelation worked in BOTH directions.**
+(1) Clause 2: the fleet agent certified the orchestrator's
+banked degree-jump counterexample (refutation record §2), then
+REFUTED THE ORCHESTRATOR'S DRAFTED GUARD too (§3,
+c118_hsupp_only_refuted: dv2ResPoly consults interior off-side
+slots at each block's own level-1 data — a ⊤-pinned interior
+slot leaks a π^N-perturbation; instance X⁴+X³+16X vs +128X² at
+N=7 with hsupp holding at 12<14), and proved the corrected
+TWO-guard form dv2_read_congr_res_guarded (hsupp + hslots, each
+sharp at its counterexample) in C118b.lean — zero sorry,
+Lean-core. (2) leanspec re-signs EXECUTED for clause 2 (the
+certified two-guard statement, riders naming both refutations);
+leanspec + roll-up builds green; C118b wired. (3) C.118 final
+state: C118a (capped law + guarded pin congruence) + C118b
+(guarded residual congruence) LANDED; C118_REFUTATION (3
+sections) + C118_FROZEN_REFUTED quarantined as evidence.
+LESSON (for the audit registry): guard designs are themselves
+refutation targets — the A-C.7 audit now reads "every guard
+must be certified sharp, and every DRAFTED repair gets its own
+refutation attempt before proving" (the agent's §3 instance is
+the precedent). (4) C.52: silent ~50 min past its skeleton —
+stall nudge issued this tick.
