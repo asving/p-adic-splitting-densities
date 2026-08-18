@@ -6393,3 +6393,25 @@ remainder B1/B2 transcription from the partial note; (8) the
 phase-0a sweep runner (sequential inside). Claude-side agents:
 all retired/complete; the Claude pool remains storm-unreliable
 and is used for orchestration only until it stabilizes.
+
+**2026-08-18 DATED APPEND #98 — FIRST CODEX HARVEST: five
+artifacts committed; A-C.7 independently audited CLEAN; the
+verification wave for the new math is in flight.** Harvested
+(each RECEIVED pending its own audit where load-bearing):
+(1) WELD-ZERO pass 2 — claims HYP.148 DISCHARGED (GENHN-4 layer
+1 without COROLLARY W-9) + HYP.139 RETIRED from the capstone
+cone; NO ledger change until the decorrelated verification pass
+(in flight) returns clean. (2) H.116b4 outline (701 lines:
+statement, audited API, reductions, OPEN sub-lemmas, cert plan,
+node decomposition). (3) β-assembly blueprint (667 lines,
+dependency-classified OPEN tiers) — the H.123 obstruction-2 /
+standing-obligation-#2 route. (4) A-C.8 DRAFT in the blueprint
+(two dv-level cite axioms + faithfulness + vacuity audit +
+OWNER-GATE block; nothing declared; awaiting Asvin). (5) C.52
+partial (3 decls Lean-core; opens quarantined). A-C.7's codex
+audit: NO critical errors, NO third read leak; its one
+documentation finding cured (addendum-2). Fleet now: 3
+verification jobs [sol high] (WELD-ZERO claims, β-assembly,
+b4) + C.128 remainder transcription + the phase-0a sweep.
+Harvest discipline: codex sandbox can't write .git — the
+orchestrator verifies and commits on the jobs' behalf.
