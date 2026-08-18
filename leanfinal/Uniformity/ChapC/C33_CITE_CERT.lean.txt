@@ -655,7 +655,16 @@ theorem legA_two_slopes : ((wDissection h2 hq).slopes : Finset (ℕ × ℕ)).car
 any indexed factor has degree `≥ D′ = 2`. -/
 theorem legB_lowdeg (D : DvDissection (s2Frame h2 hq) (fw : Polynomial O))
     {p : ℕ × ℕ} (hp : p ∈ D.slopes) : 2 ≤ (D.factor p).natDegree := by
-  sorry
+  obtain ⟨hb, hcop, hfloor⟩ := D.hslopes p hp
+  obtain ⟨hne, hdegpos⟩ :=
+    (D.hsides p.1 p.2 hb hcop hfloor).mp (by rwa [Prod.mk.eta])
+  have hd := D.hdeg p hp hne
+  obtain ⟨he, hf, -, -⟩ := s2Frame_data h2 hq
+  rw [he, hf] at hd
+  have h1 : 0 < p.2 * dvSideDeg (s2Frame h2 hq) (fw : Polynomial O) p.1 p.2 hne :=
+    Nat.mul_pos hb hdegpos
+  rw [hd]
+  omega
 
 /-- **B2**: the cross-slope swap dies at `hpure` — `g₄` is NOT `(6,1)`-pure. -/
 theorem legB_swap : ¬ IsDvPure (s2Frame h2 hq) (gfour : Polynomial O) 6 1 := by
