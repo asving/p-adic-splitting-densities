@@ -253,4 +253,35 @@ theorem c118_clause1_refuted (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
   rw [hpinA, hpinA'] at this
   exact (ENat.top_ne_coe 2) (by exact_mod_cast this)
 
+/-! ## Section 2 — REFUTATION of the frozen clause 2 (`dv2_read_congr_res`)
+
+The A-C.7 addendum's DESIGNED counterexample (blueprint, "second finding"), machine-certified:
+a DEGREE JUMP on the same carrier.  Members `X²` and `X² + C 16` are window-congruent at
+`N = 1` (`16 = 2⁴ ∈ 𝔪`); at the side `(u₂, ℓ₂) = (4, 1)` (`hseam : 1·3 < 4`) the member `X²`
+has pins `(⊤, ⊤, 0)`, support `8`, side set `{2}` and residual degree `0`, while `X² + C 16`
+has pins `(8, ⊤, 0)` (the `j = 0` block `C 16` has `stageHeight = 2·addVal 16 = 8`), the SAME
+support `8`, side set `{0, 2}` and residual degree `2`.  `Visible₂` on `X²` at `N = 1` is
+VACUOUS (all consulted pins `⊤`).  The discriminator is the residual polynomial's coefficient
+at `2`: the LHS sum ranges over one slot (degree `0`), so its coefficient vanishes; the RHS
+coefficient is `dv2Res L 1 ≠ 0` (C.26's nonzero-constant-term law through the level-2 field).
+The frozen conclusion equates them. -/
+
+/-- **The clause-2 refutation.**  Assuming the frozen clause-2 statement AT THIS `O`, we
+derive `False`. -/
+theorem c118_clause2_refuted (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
+    (hstmt : ∀ {F : KeyFrame O (2 : O)} {H₀ : ℕ}
+      {hpin : npHgt X F.key (sideMin X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞)}
+      (L : LevelDatum F H₀ hpin),
+      Irreducible (2 : O) →
+      ∀ {Ψ : Polynomial O} {n N : ℕ} {a a' : Fin n → O},
+        proj O n N a = proj O n N a' →
+        Visible₂ L Ψ (monicPoly a) N →
+        ∀ {u₂ ℓ₂ : ℕ}, 0 < ℓ₂ → ℓ₂ * L.seam < u₂ →
+        ∀ (hne : (dv2SideSet L Ψ (monicPoly a) u₂ ℓ₂).Nonempty)
+          (hne' : (dv2SideSet L Ψ (monicPoly a') u₂ ℓ₂).Nonempty),
+          dv2ResPoly L Ψ (monicPoly a) u₂ ℓ₂ hne
+            = dv2ResPoly L Ψ (monicPoly a') u₂ ℓ₂ hne') :
+    False := by
+  sorry
+
 end Refutation
