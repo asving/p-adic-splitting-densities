@@ -6415,3 +6415,28 @@ verification jobs [sol high] (WELD-ZERO claims, β-assembly,
 b4) + C.128 remainder transcription + the phase-0a sweep.
 Harvest discipline: codex sandbox can't write .git — the
 orchestrator verifies and commits on the jobs' behalf.
+
+**2026-08-18 DATED APPEND #99 — the codex day closes: OM-9's
+second leg VERIFIED-CLOSED (HYP.148 discharged, HYP.139 off the
+capstone cone), the C.128 remainder landed, 13/52 sweep shards,
+three research artifacts audited; the weekly window is spent
+(96%, resets Sun Aug 23 08:37) — the ~4% reserve is held for
+adversarial verification only.** Verification outcomes:
+(1) WELD-ZERO pass 2 — NO FINDINGS (8 checks; battery 9877/0);
+HYP.148/139 ledger rows updated; the carried WeldObligations.w1
+field stays pending its authorized amendment but has no
+downstream projection use. (2) β-assembly blueprint — clean on
+cycles/tier-honesty/cite-hygiene; ONE GAP finding: its cite
+clause conflates literature input with the repo-derived
+typeOf_leaf_of_cite output — fix the clause's provenance split
+before any A-C.9 draft goes to the owner. (3) b4 outline — ONE
+REAL finding: OPEN GR-10 is the WHOLE remaining counting problem
+restated, not an agent-sized node; the mechanical ghost/cofactor
+reductions ARE general (65/65 with genuine ghosts) — b4 stays
+research-open AT GR-10 specifically, which is sharper than
+before. NEXT (post-codex): the Claude pool retest; the leanspec
+transcription of the A-C.8 draft awaits Asvin's owner gate; the
+β-assembly's OPEN-MATH node and GR-10 are the two research
+frontiers; C.118's closure + the C.109 complex + today's
+harvests leave chapter C's count layer needing C.110-C.115
+consumers and the §10 chain.
