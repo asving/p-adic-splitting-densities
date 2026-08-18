@@ -37,11 +37,19 @@ window by the same guard).
 
 ## Status
 
-SKELETON — the two signed statements transcribed byte-exactly from
-`leanspec/Leanspec/ChapC.lean` (A-C.1 §12, `axiom` → `theorem`); proofs in progress.
-The internal congruence chain (dv-carrier dichotomy lemmas) is deliberately NOT
-pre-stated: the window-guard placement is the content, and B77a's private lemma layout is
-the pattern to follow at fill time.
+**BLOCKED — the frozen clause 1 is MACHINE-REFUTED** (2026-08-18;
+`C118_REFUTATION.lean.txt`, `c118_clause1_refuted`, compiles clean at the pin): a ⊤ pin of
+the member `a` is unguarded by `Visible₂` (`≠ ⊤ →` escape) and REAL at level 2 (blocks can
+vanish below the top), while a `π^N`-perturbed member of the same window class has a
+FINITE pin at the same abscissa — the FOURTH A-C.1 vacuous-⊤ instance (C.111, C.94,
+C.113, now C.118).  Clause 2 is SUSPECT by the same mechanism (its `hne'`/side data
+consult the unguarded member).  The sorried clauses below are the FROZEN (refuted) forms,
+retained verbatim for the record; do NOT attempt to prove clause 1 — it is false.
+Amendment A-C.7 (blueprint) drafts the re-signs: the unconditional CAPPED law
+`min (dv2Pin ·) W = min (dv2Pin ·) W` (`W = (F.e₁ * L.ℓ) * N`, the honest "window
+function" reading) plus the guarded raw form (`dv2Pin ≠ ⊤` binder), with clause 2
+re-signed at B77b's level-1 shape; per the A-C.5 certify-BEFORE-sign standard the
+leanspec re-sign lands only WITH the repair proofs.
 -/
 
 namespace Uniformity.Density.Tower
