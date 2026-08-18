@@ -228,6 +228,26 @@ theorem hasLabel_self_of_dvResPoly_eq_pow {F : KeyFrame O π} {H₀ hpin}
   exact ⟨hg, natDegree_pos_of_one_le_dvSideDeg L.hℓ hne h1, hpure,
     hne, M₀, hp, m, hm, hres⟩
 
+/-- **The single-class case's existence supply, packaged (`EFF.HE6.20` item 1: a
+single-label side needs no dissection).** When the whole residual is a positive power
+of `L.r`, the trivial pair `(g, 1)` IS a labelled block pair — the packaging theorem's
+existence frontier holds with no Hensel content in this case. (The general-`R`
+existence and the separation frontier remain open; see `C34_BLOCKED_2026-08-18.md`.) -/
+theorem block_pair_self_of_dvResPoly_eq_pow {F : KeyFrame O π} {H₀ hpin}
+    (L : LevelDatum F H₀ hpin) (hπ : Irreducible π) {g : Polynomial O} (hg : g.Monic)
+    (hpure : IsDvPure F g L.u L.ℓ)
+    (hne : (dvSideSet F g L.u L.ℓ).Nonempty) {M₀ : ℕ}
+    (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞)) {m : ℕ} (hm : 0 < m)
+    (hres : dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp = L.r ^ m) :
+    ∃ fS g' : Polynomial O, g = fS * g' ∧ HasLabel L fS ∧ g'.Monic ∧
+      ∀ (hne' : (dvSideSet F g' L.u L.ℓ).Nonempty) (M₀' : ℕ)
+        (hp' : dvHgt F g' (dvSideMin F g' L.u L.ℓ hne') = (M₀' : ℕ∞)),
+        ¬ L.r ∣ dvResPoly F H₀ hpin g' L.u L.ℓ hne' M₀' hp' :=
+  ⟨g, 1, (mul_one g).symm, hasLabel_self_of_dvResPoly_eq_pow L hπ hg hpure hne hp hm hres,
+    Polynomial.monic_one,
+    fun hne' _ hp' =>
+      not_dvd_dvResPoly_of_natDegree_eq_zero L hπ Polynomial.natDegree_one hne' hp'⟩
+
 /-! ### Frontier isolation — the packaging -/
 
 /-- **Frontier isolation (C.33's `dvDissection_unique_of_factor_eq` pattern).** NODE
@@ -288,7 +308,13 @@ theorem exists_dv_residual_dissection {F : KeyFrame O π} {H₀ hpin} (L : Level
           (hp' : dvHgt F g'' (dvSideMin F g'' L.u L.ℓ hne') = (M₀' : ℕ∞)),
           ¬ L.r ∣ dvResPoly F H₀ hpin g'' L.u L.ℓ hne' M₀' hp') →
         fS' = fS ∧ g'' = g' := by
-  sorry
+  refine exists_dv_residual_dissection_of_frontier L ?_ ?_
+  · -- FRONTIER 1 (hex): the dv-graded coprime Hensel lift — B.48's route at the
+    -- `dv`-carrier; no dv-level Hensel engine is landed (C33_BLOCKED obstruction 2)
+    sorry
+  · -- FRONTIER 2 (hsep): same-slope block separation — needs the complements' purity
+    -- (dv-polygon additivity, landed nowhere) before even C.66's cite could fire
+    sorry
 
 end Uniformity.Density.Tower
 
@@ -302,6 +328,7 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.natDegree_pos_of_one_le_dvSideDeg
 #print axioms Uniformity.Density.Tower.not_dvd_dvResPoly_of_natDegree_eq_zero
 #print axioms Uniformity.Density.Tower.hasLabel_self_of_dvResPoly_eq_pow
+#print axioms Uniformity.Density.Tower.block_pair_self_of_dvResPoly_eq_pow
 #print axioms Uniformity.Density.Tower.exists_dv_residual_dissection_of_frontier
 #print axioms Uniformity.Density.Tower.exists_dv_residual_dissection
 
