@@ -137,7 +137,6 @@ theorem dev_fw : dev (s2Key O) (fw : Polynomial O) 0 = C 32
     rw [fw_expansion, Fin.sum_univ_two]
     simp only [hA, Matrix.cons_val_zero, Matrix.cons_val_one, Matrix.head_cons,
       Fin.val_zero, Fin.val_one, pow_zero, pow_one, mul_one]
-    ring
   obtain ⟨hlow, htop⟩ := C109asm.dev_assemble s2Key_monic hdegK A hAdeg
   refine ⟨?_, ?_, ?_⟩
   · have := hlow 0
