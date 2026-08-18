@@ -54,6 +54,23 @@ structure DvDissection (F : KeyFrame O π) (f : Polynomial O) : Type _ where
   hsides : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ℓ * ((F.e₁ * F.f₁) * F.h) < u →
     ((u, ℓ) ∈ slopes ↔ ∃ hne : (dvSideSet F f u ℓ).Nonempty, 0 < dvSideDeg F f u ℓ hne)
 
+/-- **Uniqueness, leg 1 (the slope sets agree).** Pure clause plumbing: each dissection's
+`hslopes` establishes the floor/coprimality/positivity preconditions under which BOTH
+dissections' `hsides` iffs fire against the same `f`-side data, so membership transfers.
+No completeness, no `hπ`, no monicity of `f` needed for this leg. -/
+theorem DvDissection.slopes_eq {F : KeyFrame O π} {f : Polynomial O}
+    (D D' : DvDissection F f) : D.slopes = D'.slopes := by
+  ext p
+  constructor
+  · intro hp
+    obtain ⟨h2, hcop, hfloor⟩ := D.hslopes p hp
+    exact (Prod.mk.eta (p := p) ▸ (D'.hsides p.1 p.2 h2 hcop hfloor).2)
+      ((D.hsides p.1 p.2 h2 hcop hfloor).1 (Prod.mk.eta (p := p) ▸ hp))
+  · intro hp
+    obtain ⟨h2, hcop, hfloor⟩ := D'.hslopes p hp
+    exact (Prod.mk.eta (p := p) ▸ (D.hsides p.1 p.2 h2 hcop hfloor).2)
+      ((D'.hsides p.1 p.2 h2 hcop hfloor).1 (Prod.mk.eta (p := p) ▸ hp))
+
 /-- **C.33 existence** — the slope dissection at the level polygon exists for every monic
 `f` with `F.key ∤ f`, over the complete bundle. -/
 theorem exists_dvDissection (F : KeyFrame O π) (hπ : Irreducible π)
