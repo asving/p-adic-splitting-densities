@@ -6277,3 +6277,30 @@ charge fires (§12 neighbours + §10 chain first). Fleet: C.33 and
 C.52 agents in the storm resume-loop (C.33 ratcheting; C.52
 still pre-skeleton); the C.118 agent must be RE-CHARGED at the
 A-C.7 drafts, not the frozen forms.
+
+**2026-08-18 DATED APPEND #93 — A-C.7 CYCLE CLOSED IN ONE
+SESSION: refutation → amendment → CERTIFIED repair → leanspec
+re-sign. C.118's honest content is LANDED (Lean-core).**
+(1) The repair module C118a.lean PROVED both re-signs first-
+compile-clean: `dv2_read_congr_min` (the unconditional capped
+window law — min-at-W equality, W = (F.e₁·L.ℓ)·N) and
+`dv2_read_congr_vis` (the guarded raw form = the frozen clause
++ the missing hT : pin ≠ ⊤). The dv-carrier dichotomy chain
+underneath: addVal_min_congr (the capped-valuation ultrametric),
+capped stageHeight/dvHgt/dvSupp congruences (range extension
+across ⊤ tails + min-inf commute + per-term dichotomy), B.10
+dev_congr through BOTH development layers with the non-monic-Ψ
+junk branches, and the monicPoly window congruence. Footprints:
+[propext, Classical.choice, Quot.sound]. (2) leanspec re-sign
+EXECUTED (the C.113 precedent: proofs in hand before the edit):
+clause 1 replaced by the certified pair with the full "why"
+rider; clause 2 (dv2_read_congr_res) fenced SUSPECT with a
+do-not-land rider (same mechanism, repair at its own
+certification). leanspec builds green. (3) Housekeeping: the
+refuted frozen skeleton moved to the evidence convention
+(C118_FROZEN_REFUTED.lean.txt); C118a wired into the ChapC
+roll-up, build green. (4) Fleet: the subagent pool has been
+storm-dead ~3 hours (instant 529 kills on every resume); C.33
+and C.52 hold banked skeletons + leg 1; the C.118-repair agent
+is SUPERSEDED by this solo landing — on pool recovery resume
+only C.33/C.52. Solo remains the productive channel.
