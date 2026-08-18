@@ -6440,3 +6440,29 @@ transcription of the A-C.8 draft awaits Asvin's owner gate; the
 frontiers; C.118's closure + the C.109 complex + today's
 harvests leave chapter C's count layer needing C.110-C.115
 consumers and the §10 chain.
+
+**2026-08-18 DATED APPEND #100 — NODE C.33 CLOSED: the A-C.8
+cite pair DECLARED under the owner signature with all three
+certification legs green; the trusted base grows to SIX signed
+cites; the session was RESTARTED on a fresh API key with zero
+work lost.** (1) Both fleet units completed and committed BEFORE
+the restart: the A-C.8 certification record (zero sorry, the
+universal hsides, six Lean-core capstones) and C.34's honest
+partial (8 Lean-core decls incl. the single-class case; its
+signed theorem route-blocked at the same dv-Hensel frontier,
+scope-fenced from this pair — its own resolution is a future
+route). (2) C33Cite.lean declares exists_dvDissection ([GN15]
+Thm 2.3 + [FGMN] arXiv-v3 Thm 6.6 — the r=1 instance of B.42's
+source pair; the published-number print-read for FGMN remains
+the recorded pending owner check) and fgmn_dvDissection_factor_eq
+([FGMN] Thm 2.8, consumer normal form, transcription level
+disclosed); dvDissection_unique is a THEOREM (footprint = core +
+the separation cite). leanspec disposition rider added;
+allowlist now {exists_slope_factorization, fgmn_residual_mul,
+agnprw_termination, bBox1_cite, exists_dvDissection,
+fgmn_dvDissection_factor_eq} + core. The Hensel-engine upgrade
+path (retiring both) stays booked. (3) Restart hygiene: last
+pre-restart commits verified intact (5h gap, nothing lost);
+the Aug-16 scratch_*.lean files are stale exploration from
+already-landed waves, not lost work. (4) API: the orchestrator
+loop runs on the fresh key; pool probe next.
