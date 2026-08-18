@@ -522,15 +522,123 @@ noncomputable def wDissection : DvDissection (s2Frame h2 hq) (fw : Polynomial O)
   slopes := wSlopes
   factor := wFactor
   below := 1
-  hslopes := by sorry
-  hdistinct := by sorry
-  hmonic := by sorry
-  hpure := by sorry
-  hdeg := by sorry
+  hslopes := by
+    intro p hp
+    have hp' : p = ((6 : ℕ), (1 : ℕ)) ∨ p = ((4 : ℕ), (1 : ℕ)) := by
+      simpa [wSlopes, Prod.ext_iff] using hp
+    obtain ⟨he, hf, hh, -⟩ := s2Frame_data h2 hq
+    rw [he, hf, hh]
+    rcases hp' with rfl | rfl <;>
+      exact ⟨Nat.one_pos, Nat.coprime_one_right _, by norm_num⟩
+  hdistinct := by
+    intro p hp q hq' hpq
+    have hp' : p = ((6 : ℕ), (1 : ℕ)) ∨ p = ((4 : ℕ), (1 : ℕ)) := by
+      simpa [wSlopes, Prod.ext_iff] using hp
+    have hq'' : q = ((6 : ℕ), (1 : ℕ)) ∨ q = ((4 : ℕ), (1 : ℕ)) := by
+      simpa [wSlopes, Prod.ext_iff] using hq'
+    rcases hp' with rfl | rfl <;> rcases hq'' with rfl | rfl <;>
+      first
+        | exact absurd rfl hpq
+        | norm_num
+  hmonic := by
+    intro p hp
+    have hp' : p = ((6 : ℕ), (1 : ℕ)) ∨ p = ((4 : ℕ), (1 : ℕ)) := by
+      simpa [wSlopes, Prod.ext_iff] using hp
+    rcases hp' with rfl | rfl
+    · rw [wFactor_six]; exact monic_gsix
+    · rw [wFactor_four]; exact monic_gfour
+  hpure := by
+    intro p hp
+    have hp' : p = ((6 : ℕ), (1 : ℕ)) ∨ p = ((4 : ℕ), (1 : ℕ)) := by
+      simpa [wSlopes, Prod.ext_iff] using hp
+    obtain ⟨he, hf, -, -⟩ := s2Frame_data h2 hq
+    rcases hp' with rfl | rfl
+    · show IsDvPure (s2Frame h2 hq) (wFactor (6, 1)) 6 1
+      rw [wFactor_six]
+      refine ⟨?_, ?_⟩
+      · rw [gsix_eq, mem_dvSideSet_g h2 hq (by norm_num) Nat.one_pos]
+        exact Or.inl ⟨rfl, by omega⟩
+      · have hnd : (gsix : Polynomial O).natDegree
+            / ((s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁) = 1 := by
+          rw [natDegree_gsix, he, hf]
+        rw [hnd, gsix_eq, mem_dvSideSet_g h2 hq (by norm_num) Nat.one_pos]
+        exact Or.inr ⟨rfl, by omega⟩
+    · show IsDvPure (s2Frame h2 hq) (wFactor (4, 1)) 4 1
+      rw [wFactor_four]
+      refine ⟨?_, ?_⟩
+      · rw [gfour_eq, mem_dvSideSet_g h2 hq (by norm_num) Nat.one_pos]
+        exact Or.inl ⟨rfl, by omega⟩
+      · have hnd : (gfour : Polynomial O).natDegree
+            / ((s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁) = 1 := by
+          rw [natDegree_gfour, he, hf]
+        rw [hnd, gfour_eq, mem_dvSideSet_g h2 hq (by norm_num) Nat.one_pos]
+        exact Or.inr ⟨rfl, by omega⟩
+  hdeg := by
+    intro p hp hne
+    have hp' : p = ((6 : ℕ), (1 : ℕ)) ∨ p = ((4 : ℕ), (1 : ℕ)) := by
+      simpa [wSlopes, Prod.ext_iff] using hp
+    obtain ⟨he, hf, -, -⟩ := s2Frame_data h2 hq
+    rcases hp' with rfl | rfl
+    · show (wFactor (6, 1) : Polynomial O).natDegree
+          = ((s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁)
+            * (1 * dvSideDeg (s2Frame h2 hq) (fw : Polynomial O) 6 1 hne)
+      rw [wFactor_six, natDegree_gsix, he, hf, dvSideDeg_fw_six h2 hq hne]
+    · show (wFactor (4, 1) : Polynomial O).natDegree
+          = ((s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁)
+            * (1 * dvSideDeg (s2Frame h2 hq) (fw : Polynomial O) 4 1 hne)
+      rw [wFactor_four, natDegree_gfour, he, hf, dvSideDeg_fw_four h2 hq hne]
   hbelow_monic := monic_one
-  hbelow := by sorry
-  hprod := by sorry
-  hsides := by sorry
+  hbelow := by
+    intro u ℓ hl hcop hfloor hne
+    have hzero : ∀ x ∈ dvSideSet (s2Frame h2 hq) (1 : Polynomial O) u ℓ, x = 0 := by
+      intro x hx
+      have hb := (mem_dvSideSet_iff.mp hx).1
+      rwa [Polynomial.natDegree_one, Nat.le_zero] at hb
+    show (dvSideMax (s2Frame h2 hq) (1 : Polynomial O) u ℓ hne
+        - dvSideMin (s2Frame h2 hq) (1 : Polynomial O) u ℓ hne) / ℓ = 0
+    have hmax : dvSideMax (s2Frame h2 hq) (1 : Polynomial O) u ℓ hne = 0 :=
+      hzero _ (Finset.max'_mem _ hne)
+    rw [hmax]
+    simp
+  hprod := by
+    rw [one_mul]
+    show (fw : Polynomial O) = ∏ p ∈ insert ((6 : ℕ), (1 : ℕ)) {((4 : ℕ), (1 : ℕ))}, wFactor p
+    rw [Finset.prod_insert (by decide), Finset.prod_singleton, wFactor_six, wFactor_four]
+    rfl
+  hsides := by
+    intro u ℓ hl hcop hfloor
+    constructor
+    · intro hm
+      have hm' : (u = 6 ∧ ℓ = 1) ∨ (u = 4 ∧ ℓ = 1) := by
+        simpa [wSlopes, Prod.ext_iff] using hm
+      rcases hm' with ⟨rfl, rfl⟩ | ⟨rfl, rfl⟩
+      · have h0 : 0 ∈ dvSideSet (s2Frame h2 hq) (fw : Polynomial O) 6 1 := by
+          rw [mem_dvSideSet_fw h2 hq Nat.one_pos]
+          exact Or.inl ⟨rfl, by omega⟩
+        exact ⟨⟨0, h0⟩, by rw [dvSideDeg_fw_six h2 hq ⟨0, h0⟩]; norm_num⟩
+      · have h1 : 1 ∈ dvSideSet (s2Frame h2 hq) (fw : Polynomial O) 4 1 := by
+          rw [mem_dvSideSet_fw h2 hq Nat.one_pos]
+          exact Or.inr (Or.inl ⟨rfl, by omega⟩)
+        exact ⟨⟨1, h1⟩, by rw [dvSideDeg_fw_four h2 hq ⟨1, h1⟩]; norm_num⟩
+    · rintro ⟨hne, hdegpos⟩
+      have hdd : dvSideDeg (s2Frame h2 hq) (fw : Polynomial O) u ℓ hne
+          = ((dvSideSet (s2Frame h2 hq) (fw : Polynomial O) u ℓ).max' hne
+              - (dvSideSet (s2Frame h2 hq) (fw : Polynomial O) u ℓ).min' hne) / ℓ := rfl
+      have hgap : ℓ ≤ (dvSideSet (s2Frame h2 hq) (fw : Polynomial O) u ℓ).max' hne
+          - (dvSideSet (s2Frame h2 hq) (fw : Polynomial O) u ℓ).min' hne := by
+        by_contra hc
+        rw [hdd, Nat.div_eq_of_lt (Nat.lt_of_not_le hc)] at hdegpos
+        exact absurd hdegpos (lt_irrefl 0)
+      have hminmem :=
+        Finset.min'_mem (dvSideSet (s2Frame h2 hq) (fw : Polynomial O) u ℓ) hne
+      have hmaxmem :=
+        Finset.max'_mem (dvSideSet (s2Frame h2 hq) (fw : Polynomial O) u ℓ) hne
+      rw [mem_dvSideSet_fw h2 hq hl] at hminmem hmaxmem
+      have hres : (u = 6 ∧ ℓ = 1) ∨ (u = 4 ∧ ℓ = 1) := by
+        rcases hminmem with ⟨e1, e2⟩ | ⟨e1, e2⟩ | ⟨e1, e2⟩ <;>
+          rcases hmaxmem with ⟨f1, f2⟩ | ⟨f1, f2⟩ | ⟨f1, f2⟩ <;>
+          omega
+      rcases hres with ⟨rfl, rfl⟩ | ⟨rfl, rfl⟩ <;> simp [wSlopes]
 
 /-- **Leg A conclusion 1**: the existence conclusion is INHABITED without the cite. -/
 theorem legA_nonempty : Nonempty (DvDissection (s2Frame h2 hq) (fw : Polynomial O)) :=
