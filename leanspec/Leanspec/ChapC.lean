@@ -1499,6 +1499,14 @@ structure DvDissection (F : KeyFrame O π) (f : Polynomial O) : Type _ where
   hsides : ∀ u ℓ : ℕ, 0 < ℓ → Nat.Coprime u ℓ → ℓ * ((F.e₁ * F.f₁) * F.h) < u →
     ((u, ℓ) ∈ slopes ↔ ∃ hne : (dvSideSet F f u ℓ).Nonempty, 0 < dvSideDeg F f u ℓ hne)
 
+/- **A-C.8 DISPOSITION (2026-08-18, owner-signed, certification green):** the existence
+statement below is LANDED as the gate-(b) cite `exists_dvDissection`
+(`leanfinal/Uniformity/ChapC/C33Cite.lean`, [GN15] Thm 2.3 + [FGMN] arXiv-v3 Thm 6.6 —
+the r = 1 instance of B.42's source pair); `dvDissection_unique` is LANDED as a THEOREM
+there (the landed reductions + the second cite `fgmn_dvDissection_factor_eq`, [FGMN]
+Thm 2.8 in consumer normal form).  Certification: `C33_CITE_CERT.lean.txt` (Legs A+B,
+zero sorry) + `verification/ac8_dv_cite_check.py` (Leg C, 26 rows).  Statements
+byte-unchanged. -/
 axiom exists_dvDissection (F : KeyFrame O π) (hπ : Irreducible π)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {f : Polynomial O} (hf : f.Monic) (hkey : ¬ F.key ∣ f) :
