@@ -6374,3 +6374,22 @@ resumed (paused at 7/52 at the old 98% cap; resume-safe runner).
 The Tuesday queue's remaining items (WELD-ZERO pass 2, the
 amendment cross-reads, the FGMN print-numbering rider) follow as
 slots free.
+
+**2026-08-18 DATED APPEND #97 — FULL CODEX PARALLEL REGIME per
+Asvin's directive (max parallelism; sol-pro-high for math/
+blueprints, lower tier for Lean transcription; memory row
+codex-parallel-tiering).** Eight concurrent codex jobs: [sol
+high] (1) H.116b4 gauge-resultant OUTLINE (OM phase-1 artifact:
+statement, SNF/Sylvester route, certification plan, node
+decomposition); (2) the β-ASSEMBLY BLUEPRINT (H.123 obstruction
+2 = standing obligation #2; cite-vs-prove the unit's choice,
+owner's paper never citable); (3) WELD-ZERO PASS 2 (HYP.148/139
+discharge arguments; A-W.2 fence untouchable); (4) the A-C.8
+CITE DRAFT (dv-level FGMN/GN15 cite + minimal cross-slope
+additivity clause from C.33's frontier; OWNER-GATE block, no
+declaration); (5) [earlier] A-C.7 adversarial verification.
+[default tier] (6) C.52 fill (workspace-write); (7) C.128
+remainder B1/B2 transcription from the partial note; (8) the
+phase-0a sweep runner (sequential inside). Claude-side agents:
+all retired/complete; the Claude pool remains storm-unreliable
+and is used for orchestration only until it stabilizes.
