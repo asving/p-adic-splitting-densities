@@ -6358,3 +6358,19 @@ must be certified sharp, and every DRAFTED repair gets its own
 refutation attempt before proving" (the agent's §3 instance is
 the precedent). (4) C.52: silent ~50 min past its skeleton —
 stall nudge issued this tick.
+
+**2026-08-18 DATED APPEND #96 — CODEX IS BACK EARLY (2% used,
+window resets Sun Aug 23); per Asvin's mid-storm directive the
+project routes through gpt-5.6-sol while the Claude subagent
+pool storms.** Three codex jobs launched: (1) the C.52 fill
+(workspace-write; the stranded fleet unit — its Claude agent is
+RETIRED as of this append, do not resume at the pending backoff;
+codex owns the node); (2) the A-C.7 ADVERSARIAL VERIFICATION
+(read-only quote-and-classify over both refutations, the three
+repair theorems, and the leanspec re-signs — the top-priority
+codex use per the standing discipline; charge includes a hunt
+for a THIRD leak beyond hsupp/hslots); (3) the PHASE-0a sweep
+resumed (paused at 7/52 at the old 98% cap; resume-safe runner).
+The Tuesday queue's remaining items (WELD-ZERO pass 2, the
+amendment cross-reads, the FGMN print-numbering rider) follow as
+slots free.
