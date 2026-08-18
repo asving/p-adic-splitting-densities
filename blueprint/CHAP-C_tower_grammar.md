@@ -9905,3 +9905,60 @@ swept into `1e35c199` the same way. Recorded, not rewritten.
 ---
 
 <!-- CHAP-C APPEND POINT — do not remove; sections are appended here in order -->
+
+---
+
+## AMENDMENT A-C.7 (2026-08-18) — NODE C.118: the frozen clause 1 is REFUTED; re-sign at the window-read forms
+
+**Trigger.** At fill time (post-skeleton), the orchestrator found the frozen
+`dv2_read_congr` FALSE and machine-certified the refutation
+(`leanfinal/Uniformity/ChapC/C118_REFUTATION.lean.txt`, `c118_clause1_refuted`, compiles
+clean, Lean-core; the evidence-file convention of C.109/C.111/C.113).
+
+**The defect (the FOURTH A-C.1 vacuous-⊤ instance; pattern registry: C.111 `hnode`,
+C.94 self-loop, C.113 `hne`, now C.118 `Visible₂`).** `Visible₂`'s guard is
+`dv2Pin ≠ ⊤ → dv2Pin < window`: a ⊤ pin of the visible member is UNGUARDED.  At level 1
+(B.77) the analogous escape is harmless because the read object is the monic member
+itself, whose top development block is `1` — some consulted read is always finite.  At
+level 2 the consulted object is a development BLOCK `dev Ψ f j`, which can be ZERO below
+the top; the zero block has every level-1 height `⊤`, so its pin is `⊤`, while a `π^N`-
+perturbation *in the same window class* has a FINITE pin (`≥ e₁N`-graded, but finite) at
+the same abscissa.  Refuting instance (all landed carriers): `F = s2Frame` (C.97),
+`L = ⟨u=3, ℓ=1, r=X−C 1⟩`, `Ψ = X`, `n = 2`, `N = 1`, members `X²` vs `X² + C 2`, `j = 0`:
+`⊤ ≠ 2` with `Visible₂` holding VACUOUSLY.
+
+**Status of clause 2 (`dv2_read_congr_res`).** SUSPECT, same mechanism (the side data and
+`hne'` consult the unguarded member); not machine-refuted; adjudicated at the re-sign.
+
+**The re-signs (DRAFT — per the A-C.5 certify-BEFORE-sign standard, the leanspec edit
+lands only WITH the repair proofs; nothing is declared until then):**
+
+1. `dv2_read_congr_min` (NEW, the unconditional law — the honest reading of the node's
+   own title "visible reads are WINDOW functions"): same binders MINUS `hvis`, conclusion
+   `min (dv2Pin L Ψ (monicPoly a) j) W = min (dv2Pin L Ψ (monicPoly a') j) W` with
+   `W := (((F.e₁ * L.ℓ) * N : ℕ) : ℕ∞)`.
+2. `dv2_read_congr` (re-signed): the frozen binders PLUS
+   `(hT : dv2Pin L Ψ (monicPoly a) j ≠ ⊤)`; conclusion unchanged.  Follows from 1 + `hvis`
+   (the visible pin sits strictly below `W`, so the caps are invisible).
+3. `dv2_read_congr_res` (re-signed): B77b's level-1 shape one level up — the residual
+   congruence with the SIDE data guarded on the visible member (`hT` at the side's pin)
+   and the `hne'` binder REPLACED by the transported nonemptiness (the repair proof
+   produces `dv2SideSet`-equality below the window, as B77b's `sideSet_congr` does at
+   level 1); exact binder list fixed at certification against the proof.
+
+**Proof route for the repairs** (recorded at the C118.lean header, expanded): every dv2
+read bottoms out in `suppVal`-at-key-`X` of double developments
+`dev F.key (dev Ψ f j) i`; congruence propagates through both `dev` layers by B.10's
+`dev_congr` (junk branch of non-monic `Ψ` handled by the `%ₘ`/`/ₘ` junk conventions);
+the reads then agree in CAPPED form by the B.77 capped-min dichotomy rebuilt at the
+dv-carrier — per-coefficient `min (addVal x) N`-congruence, lifted through the two
+`inf`-layers with the `h·i`/`u·j` offsets absorbed by uniform caps (`e₁N`, then
+`(e₁ℓ)N`); B77a's private lemma layout (`npHgt_dichotomy`, `suppVal_lt_of_visible`,
+min-cap commute) is the template.  `suppVal_congr` itself is NOT directly applicable
+(its `hdeg` binder fails for blocks — block degrees are not window-stable).
+
+**Registry rider.** The A-C.1 vacuity pattern now has FOUR instances.  Every remaining
+UNLANDED A-C.1 signature whose hypotheses mention `Nonempty`, `≠ ⊤`, or a one-sided
+`Visible`-style guard MUST be pattern-audited before its fleet charge fires
+(one-line check: "does the guard still bind on the degenerate stratum?").  The §12
+neighbours C.119–C.126 and the §10 chain are the first candidates.
