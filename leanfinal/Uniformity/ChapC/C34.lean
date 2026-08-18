@@ -84,7 +84,189 @@ for this node's own frontier record once the reachable legs are landed.
 
 namespace Uniformity.Density.Tower
 
+open Uniformity.Density.Leaf
+
 variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-! ### The machine-checked audit legs -/
+
+/-- **Audit leg 1 (machine-checked): a nonzero polynomial has finite stage height.**
+`⊤` level heights occur ONLY at zero development blocks (the A-C.7 degenerate stratum):
+the leading coefficient of a nonzero block reads at a finite `gaussVal`. -/
+theorem KeyFrame.stageHeight_ne_top (F : KeyFrame O π) {A : Polynomial O} (hA : A ≠ 0) :
+    F.stageHeight A ≠ ⊤ := by
+  have hgv : gaussVal (Polynomial.C (A.coeff A.natDegree)) ≠ ⊤ := fun h =>
+    Polynomial.C_ne_zero.mpr (Polynomial.leadingCoeff_ne_zero.mpr hA) (gaussVal_eq_top_iff.mp h)
+  obtain ⟨m, hm⟩ := WithTop.ne_top_iff_exists.mp hgv
+  have hle : F.stageHeight A ≤ ((F.e₁ * m + F.h * A.natDegree : ℕ) : ℕ∞) := by
+    rw [F.stageHeight_eq_inf]
+    refine le_trans (Finset.inf_le (Finset.self_mem_range_succ A.natDegree)) ?_
+    rw [← hm, nsmul_eq_mul]
+    push_cast
+    exact le_refl _
+  exact ne_top_of_le_ne_top (ENat.coe_ne_top _) hle
+
+/-- **Audit leg 2 (machine-checked): the `dv` side set of a NONZERO polynomial is
+nonempty in every positive-denominator direction.** This closes the C.118-pattern escape
+route through NODE C.34's complement clause: the `∀ (hne') (M₀') (hp')` quantification
+domain never empties on monic competitors (monic ⟹ nonzero), so the complement's
+non-divisibility is never vacuously satisfiable. -/
+theorem dvSideSet_nonempty (F : KeyFrame O π) {g : Polynomial O} (hg : g ≠ 0)
+    (u : ℕ) {ℓ : ℕ} (hℓ : 0 < ℓ) : (dvSideSet F g u ℓ).Nonempty := by
+  classical
+  have hkeydeg : 0 < F.key.natDegree := F.hdeg ▸ Nat.mul_pos F.he₁ F.hf₁
+  -- a nonzero block exists within the support range
+  have hblock : ∃ j ∈ Finset.range (g.natDegree + 1), dev F.key g j ≠ 0 := by
+    by_contra hall
+    push Not at hall
+    refine hg ?_
+    have hrep : ∑ j ∈ Finset.range (g.natDegree + 1), dev F.key g j * F.key ^ j = g :=
+      sum_dev_eq F.hmonic hkeydeg g
+        (Nat.lt_of_lt_of_le (Nat.lt_succ_self _) (Nat.le_mul_of_pos_right _ hkeydeg))
+    rw [← hrep]
+    exact Finset.sum_eq_zero fun j hj => by rw [hall j hj, zero_mul]
+  obtain ⟨j₀, hj₀mem, hj₀⟩ := hblock
+  have hhgt₀ : dvHgt F g j₀ ≠ ⊤ := F.stageHeight_ne_top hj₀
+  -- hence the cleared support is finite
+  have hfin : dvSupp F g u ℓ ≠ ⊤ := by
+    obtain ⟨m, hm⟩ := WithTop.ne_top_iff_exists.mp hhgt₀
+    have hle : dvSupp F g u ℓ ≤ ((ℓ * m + u * j₀ : ℕ) : ℕ∞) := by
+      simp only [dvSupp]
+      refine le_trans (Finset.inf_le hj₀mem) ?_
+      rw [← hm, nsmul_eq_mul]
+      push_cast
+      exact le_refl _
+    exact ne_top_of_le_ne_top (ENat.coe_ne_top _) hle
+  -- the inf is attained; the attaining abscissa's height is finite since `0 < ℓ`
+  obtain ⟨j₁, hj₁mem, hj₁⟩ :=
+    Finset.exists_mem_eq_inf (Finset.range (g.natDegree + 1))
+      ⟨0, Finset.mem_range.mpr (Nat.succ_pos _)⟩
+      (fun j => ℓ • dvHgt F g j + (u * j : ℕ∞))
+  have hside : dvSupp F g u ℓ = ℓ • dvHgt F g j₁ + (u * j₁ : ℕ∞) := hj₁
+  have hhgt₁ : dvHgt F g j₁ ≠ ⊤ := by
+    intro htop
+    apply hfin
+    rw [hside, htop, nsmul_eq_mul, ENat.mul_top (by exact_mod_cast hℓ.ne'), top_add]
+  refine ⟨j₁, ?_⟩
+  show j₁ ∈ Finset.filter (DvOnSide F g u ℓ) (Finset.range (g.natDegree + 1))
+  exact Finset.mem_filter.mpr ⟨hj₁mem, hside, hhgt₁⟩
+
+/-! ### The `hdvd` fence and its consumers -/
+
+-- C.26's `le_natDegree_of_mem_dvSideSet` is `private` there; reproved locally.
+private theorem mem_dvSideSet_le_natDegree {F : KeyFrame O π} {u ℓ j : ℕ}
+    {f : Polynomial O} (hj : j ∈ dvSideSet F f u ℓ) : j ≤ f.natDegree := by
+  classical
+  have hj' : j ∈ Finset.filter (DvOnSide F f u ℓ) (Finset.range (f.natDegree + 1)) := hj
+  exact Nat.lt_succ_iff.mp (Finset.mem_range.mp (Finset.mem_filter.mp hj').1)
+
+/-- **The audit fence, machine-checked: `hdvd` is unsatisfiable on the degenerate
+stratum.** Divisibility by the label's `r` forces a positive residual side degree — in
+particular the C.66 low-degree purity collapse (`dvSideDeg = 0`, constant residual)
+cannot satisfy NODE C.34's hypothesis pack. Monic-`r` degree arithmetic; NO field
+instance on the stage field is consumed. -/
+theorem one_le_dvSideDeg_of_dvd_dvResPoly {F : KeyFrame O π} {H₀ hpin}
+    (L : LevelDatum F H₀ hpin) (hπ : Irreducible π) {g : Polynomial O}
+    (hne : (dvSideSet F g L.u L.ℓ).Nonempty) {M₀ : ℕ}
+    (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞))
+    (hdvd : L.r ∣ dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp) :
+    1 ≤ dvSideDeg F g L.u L.ℓ hne := by
+  obtain ⟨hdeg, h0⟩ := natDegree_dvResPoly F hπ H₀ hpin L.hℓ L.hcop hne hp
+  obtain ⟨c, hc⟩ := hdvd
+  have hRne : dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp ≠ 0 := fun h => h0 (by simp [h])
+  have hcne : c ≠ 0 := fun h => hRne (by rw [hc, h, mul_zero])
+  have hmul : (L.r * c).natDegree = L.r.natDegree + c.natDegree :=
+    Polynomial.natDegree_mul' (by
+      rw [L.hrmonic.leadingCoeff, one_mul]
+      exact Polynomial.leadingCoeff_ne_zero.mpr hcne)
+  calc 1 ≤ L.r.natDegree := L.hrdeg
+    _ ≤ L.r.natDegree + c.natDegree := Nat.le_add_right _ _
+    _ = (L.r * c).natDegree := hmul.symm
+    _ = dvSideDeg F g L.u L.ℓ hne := by rw [← hc, hdeg]
+
+/-- A positive residual side degree forces a positive polynomial degree (`ℓ` fits under
+the side's horizontal length). Bookkeeping for `HasLabel`'s `0 < natDegree` clause. -/
+theorem natDegree_pos_of_one_le_dvSideDeg {F : KeyFrame O π} {u ℓ : ℕ} (hℓ : 0 < ℓ)
+    {g : Polynomial O} (hne : (dvSideSet F g u ℓ).Nonempty)
+    (h1 : 1 ≤ dvSideDeg F g u ℓ hne) : 0 < g.natDegree := by
+  have hlen : ℓ ≤ dvSideMax F g u ℓ hne - dvSideMin F g u ℓ hne :=
+    (Nat.one_le_div_iff hℓ).mp h1
+  have hmax : dvSideMax F g u ℓ hne ≤ g.natDegree :=
+    mem_dvSideSet_le_natDegree (Finset.max'_mem _ _)
+  omega
+
+/-- **The constant-complement law: a degree-zero polynomial's level residual is never
+divisible by the label's `r`** (its side is the single abscissa `0`, so the residual is
+a nonzero constant, and `L.r` is nonconstant). This is what discharges the complement
+clause at `g' = 1` in the `R = r^m` case (`EFF.HE6.20` item 1). -/
+theorem not_dvd_dvResPoly_of_natDegree_eq_zero {F : KeyFrame O π} {H₀ hpin}
+    (L : LevelDatum F H₀ hpin) (hπ : Irreducible π) {g' : Polynomial O}
+    (hdeg0 : g'.natDegree = 0)
+    (hne' : (dvSideSet F g' L.u L.ℓ).Nonempty) {M₀' : ℕ}
+    (hp' : dvHgt F g' (dvSideMin F g' L.u L.ℓ hne') = (M₀' : ℕ∞)) :
+    ¬ L.r ∣ dvResPoly F H₀ hpin g' L.u L.ℓ hne' M₀' hp' := by
+  intro hdvd
+  have h1 := one_le_dvSideDeg_of_dvd_dvResPoly L hπ hne' hp' hdvd
+  have hpos := natDegree_pos_of_one_le_dvSideDeg L.hℓ hne' h1
+  omega
+
+/-- **The `R = r^m` self-label (`EFF.HE6.20` item 1: single-label sides need no
+dissection).** When the whole residual is a positive power of `L.r`, `g` itself carries
+the label — the EXISTENCE frontier's supply in the single-class case, packaged for the
+frontier theorem below with `g' = 1`. -/
+theorem hasLabel_self_of_dvResPoly_eq_pow {F : KeyFrame O π} {H₀ hpin}
+    (L : LevelDatum F H₀ hpin) (hπ : Irreducible π) {g : Polynomial O} (hg : g.Monic)
+    (hpure : IsDvPure F g L.u L.ℓ)
+    (hne : (dvSideSet F g L.u L.ℓ).Nonempty) {M₀ : ℕ}
+    (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞)) {m : ℕ} (hm : 0 < m)
+    (hres : dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp = L.r ^ m) :
+    HasLabel L g := by
+  have hdvd : L.r ∣ dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp := by
+    rw [hres]
+    exact dvd_pow_self _ hm.ne'
+  have h1 := one_le_dvSideDeg_of_dvd_dvResPoly L hπ hne hp hdvd
+  exact ⟨hg, natDegree_pos_of_one_le_dvSideDeg L.hℓ hne h1, hpure,
+    hne, M₀, hp, m, hm, hres⟩
+
+/-! ### Frontier isolation — the packaging -/
+
+/-- **Frontier isolation (C.33's `dvDissection_unique_of_factor_eq` pattern).** NODE
+C.34's FULL signed conclusion follows from exactly two frontier facts: EXISTENCE of one
+labelled block pair (`hex` — the dv-graded Hensel lift), and SEPARATION (`hsep` — any
+two labelled block pairs share the block; the same-slope uniqueness frontier). The
+second component of the uniqueness clause is Lean-core monic cancellation, supplied
+here. So the entire remaining content of the signed statement is `hex` + `hsep`. -/
+theorem exists_dv_residual_dissection_of_frontier {F : KeyFrame O π} {H₀ hpin}
+    (L : LevelDatum F H₀ hpin) {g : Polynomial O}
+    (hex : ∃ fS g' : Polynomial O, g = fS * g' ∧ HasLabel L fS ∧ g'.Monic ∧
+      ∀ (hne' : (dvSideSet F g' L.u L.ℓ).Nonempty) (M₀' : ℕ)
+        (hp' : dvHgt F g' (dvSideMin F g' L.u L.ℓ hne') = (M₀' : ℕ∞)),
+        ¬ L.r ∣ dvResPoly F H₀ hpin g' L.u L.ℓ hne' M₀' hp')
+    (hsep : ∀ fS g' fS' g'' : Polynomial O, g = fS * g' → HasLabel L fS → g'.Monic →
+      (∀ (hne' : (dvSideSet F g' L.u L.ℓ).Nonempty) (M₀' : ℕ)
+        (hp' : dvHgt F g' (dvSideMin F g' L.u L.ℓ hne') = (M₀' : ℕ∞)),
+        ¬ L.r ∣ dvResPoly F H₀ hpin g' L.u L.ℓ hne' M₀' hp') →
+      g = fS' * g'' → HasLabel L fS' → g''.Monic →
+      (∀ (hne' : (dvSideSet F g'' L.u L.ℓ).Nonempty) (M₀' : ℕ)
+        (hp' : dvHgt F g'' (dvSideMin F g'' L.u L.ℓ hne') = (M₀' : ℕ∞)),
+        ¬ L.r ∣ dvResPoly F H₀ hpin g'' L.u L.ℓ hne' M₀' hp') →
+      fS' = fS) :
+    ∃ fS g' : Polynomial O, g = fS * g' ∧ HasLabel L fS ∧ g'.Monic ∧
+      (∀ (hne' : (dvSideSet F g' L.u L.ℓ).Nonempty) (M₀' : ℕ)
+        (hp' : dvHgt F g' (dvSideMin F g' L.u L.ℓ hne') = (M₀' : ℕ∞)),
+        ¬ L.r ∣ dvResPoly F H₀ hpin g' L.u L.ℓ hne' M₀' hp') ∧
+      ∀ fS' g'' : Polynomial O, g = fS' * g'' → HasLabel L fS' → g''.Monic →
+        (∀ (hne' : (dvSideSet F g'' L.u L.ℓ).Nonempty) (M₀' : ℕ)
+          (hp' : dvHgt F g'' (dvSideMin F g'' L.u L.ℓ hne') = (M₀' : ℕ∞)),
+          ¬ L.r ∣ dvResPoly F H₀ hpin g'' L.u L.ℓ hne' M₀' hp') →
+        fS' = fS ∧ g'' = g' := by
+  obtain ⟨fS, g', hprod, hlab, hmon, hcomp⟩ := hex
+  refine ⟨fS, g', hprod, hlab, hmon, hcomp, ?_⟩
+  intro fS' g'' hprod' hlab' hmon' hcomp'
+  have heq : fS' = fS := hsep fS g' fS' g'' hprod hlab hmon hcomp hprod' hlab' hmon' hcomp'
+  exact ⟨heq, mul_left_cancel₀ hlab.1.ne_zero ((heq ▸ hprod').symm.trans hprod)⟩
+
+/-! ### The signed statement (OPEN — see the frontier record) -/
 
 /-- **NODE C.34** — the residual dissection at the level polygon, signed at the consumed
 `(λ, r)`-block clause: under C.33's context, a `dv`-pure monic `g` whose level residual
@@ -114,6 +296,13 @@ end Uniformity.Density.Tower
 
 section AxCheck
 
+#print axioms Uniformity.Density.Tower.KeyFrame.stageHeight_ne_top
+#print axioms Uniformity.Density.Tower.dvSideSet_nonempty
+#print axioms Uniformity.Density.Tower.one_le_dvSideDeg_of_dvd_dvResPoly
+#print axioms Uniformity.Density.Tower.natDegree_pos_of_one_le_dvSideDeg
+#print axioms Uniformity.Density.Tower.not_dvd_dvResPoly_of_natDegree_eq_zero
+#print axioms Uniformity.Density.Tower.hasLabel_self_of_dvResPoly_eq_pow
+#print axioms Uniformity.Density.Tower.exists_dv_residual_dissection_of_frontier
 #print axioms Uniformity.Density.Tower.exists_dv_residual_dissection
 
 end AxCheck
