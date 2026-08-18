@@ -646,7 +646,8 @@ theorem legA_nonempty : Nonempty (DvDissection (s2Frame h2 hq) (fw : Polynomial 
 
 /-- **Leg A conclusion 2**: the factor-frontier quantifier is genuinely two-element. -/
 theorem legA_two_slopes : ((wDissection h2 hq).slopes : Finset (ℕ × ℕ)).card = 2 := by
-  sorry
+  show (wSlopes : Finset (ℕ × ℕ)).card = 2
+  decide
 
 /-! ## 4. Leg B — hostile retargets -/
 
