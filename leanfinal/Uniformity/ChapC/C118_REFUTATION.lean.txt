@@ -5,12 +5,14 @@ Authors: Asvin G
 -/
 import Uniformity.ChapC.C11
 import Uniformity.ChapC.C12
+import Uniformity.ChapC.C26
 import Uniformity.ChapC.C38a
 import Uniformity.ChapC.C97
 import Uniformity.ChapC.C117
 
 /-!
-# REFUTATION of the frozen A-C.1 signature of NODE C.118, clause 1 (`dv2_read_congr`)
+# REFUTATION of the frozen A-C.1 signature of NODE C.118 — BOTH clauses
+# (section 1: clause 1, `dv2_read_congr`; section 2: clause 2, `dv2_read_congr_res`)
 
 **This file is evidence, not a node** (the `C109_REFUTATION.lean.txt` convention: kept as
 `.lean.txt` so no build picks it up).  To re-run it:
@@ -64,11 +66,13 @@ Then `dev X (X²) 0 = 0`, so `dv2Pin L X (X²) 0 = dvSupp F 0 3 1 = ⊤`; while
 
 ## Status of clause 2 (`dv2_read_congr_res`)
 
-NOT machine-refuted here, but SUSPECT by the same mechanism: its side data
-(`dv2SideSet`, the `hne'` binder, `dv2Res`'s pin) consult the UNGUARDED member `a'`
-whose reads `Visible₂ (monicPoly a) N` does not constrain.  The A-C.7 amendment
-re-signs both clauses in guarded/window form; clause 2's exact repair is settled at
-certification.
+**MACHINE-REFUTED — section 2 below** (`c118_clause2_refuted`, certifying the A-C.7
+addendum's designed degree-jump counterexample on the same carrier).  The mechanism is the
+same vacuous-⊤ species: the side data (`dv2SideSet`, the `hne'` binder, `dv2Res`'s pin)
+consult the UNGUARDED member `a'`, whose reads `Visible₂ (monicPoly a) N` does not
+constrain.  The A-C.7 amendment re-signs both clauses in guarded/window form; clause 2's
+guarded re-sign is `C118b.lean` (whose module docstring also records a CORRECTION to the
+addendum's drafted single-guard design — the interior-slot leak).
 -/
 
 open Polynomial Uniformity Uniformity.Density Uniformity.Density.Leaf Uniformity.Density.Tower IsLocalRing
@@ -266,6 +270,37 @@ at `2`: the LHS sum ranges over one slot (degree `0`), so its coefficient vanish
 coefficient is `dv2Res L 1 ≠ 0` (C.26's nonzero-constant-term law through the level-2 field).
 The frozen conclusion equates them. -/
 
+/-- `gaussVal` of a constant is the valuation of the constant. -/
+private theorem gaussVal_C_addVal (c : O) : gaussVal (Polynomial.C c) = addVal O c := by
+  rw [gaussVal]
+  simp only [Polynomial.natDegree_C, zero_add, Finset.range_one, Finset.inf_singleton,
+    Polynomial.coeff_C_zero]
+
+/-- `dvHgt` of a constant block at abscissa `0`: the staged valuation. -/
+private theorem dvHgt_C {π : O} (F : KeyFrame O π) (c : O) :
+    dvHgt F (Polynomial.C c) 0 = F.e₁ • addVal O c := by
+  rw [dvHgt]
+  have hdev : dev F.key (Polynomial.C c) 0 = Polynomial.C c := by
+    rw [show dev F.key (Polynomial.C c) 0 = Polynomial.C c %ₘ F.key from rfl]
+    rw [(Polynomial.modByMonic_eq_self_iff F.hmonic).mpr]
+    refine lt_of_le_of_lt Polynomial.degree_C_le ?_
+    rw [Polynomial.degree_eq_natDegree F.hmonic.ne_zero, F.hdeg]
+    exact_mod_cast Nat.mul_pos F.he₁ F.hf₁
+  rw [hdev, KeyFrame.stageHeight, suppVal]
+  simp only [Polynomial.natDegree_C, zero_add, Finset.range_one, Finset.inf_singleton]
+  rw [npHgt, dev_X]
+  simp only [Polynomial.coeff_C_zero]
+  rw [gaussVal_C_addVal]
+  simp
+
+/-- `dvSupp` of a constant block: the `ℓ`-cleared staged valuation. -/
+private theorem dvSupp_C {π : O} (F : KeyFrame O π) (u ℓ : ℕ) (c : O) :
+    dvSupp F (Polynomial.C c) u ℓ = ℓ • (F.e₁ • addVal O c) := by
+  rw [dvSupp]
+  simp only [Polynomial.natDegree_C, zero_add, Finset.range_one, Finset.inf_singleton]
+  rw [dvHgt_C]
+  simp
+
 /-- **The clause-2 refutation.**  Assuming the frozen clause-2 statement AT THIS `O`, we
 derive `False`. -/
 theorem c118_clause2_refuted (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
@@ -282,6 +317,291 @@ theorem c118_clause2_refuted (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
           dv2ResPoly L Ψ (monicPoly a) u₂ ℓ₂ hne
             = dv2ResPoly L Ψ (monicPoly a') u₂ ℓ₂ hne') :
     False := by
-  sorry
+  classical
+  set F := s2Frame h2 hq with hF
+  have hpin1 : F.Pin 1 := s2Frame_pin h2 hq
+  letI : Field (F.stageField 1 hpin1) := by
+    letI : Field (resField (Polynomial.X : Polynomial O)) := instFieldResField (isKeyX O)
+    haveI : Fact (Irreducible (F.frameRes 1 hpin1)) := ⟨(F.hresirr 1 hpin1).1⟩
+    exact AdjoinRoot.instField
+  set L : LevelDatum F 1 hpin1 :=
+    { u := 3
+      ℓ := 1
+      r := X - C 1
+      hℓ := one_pos
+      hcop := by norm_num [Nat.Coprime]
+      hκ := by show 1 * ((2 : ℕ) * 1) * 1 < 3; norm_num
+      hrmonic := monic_X_sub_C 1
+      hrirr := irreducible_X_sub_C (1 : F.stageField 1 hpin1)
+      hr0 := by simp
+      hrdeg := by rw [Polynomial.natDegree_X_sub_C]; norm_num } with hL
+  -- the two members: X² and X² + C 16 (16 = 2⁴, window-congruent at N = 1)
+  set a : Fin 2 → O := fun _ => 0 with ha
+  set a' : Fin 2 → O := fun i => if (i : ℕ) = 0 then 16 else 0 with ha'
+  have hmono : monicPoly a = X ^ 2 := by
+    rw [monicPoly]
+    simp [ha]
+  have hmono' : monicPoly a' = X ^ 2 + C 16 := by
+    rw [monicPoly, ha']
+    rw [Fin.sum_univ_two]
+    simp
+  have h16mem : (16 : O) ∈ IsLocalRing.maximalIdeal O := by
+    have h2mem : (2 : O) ∈ IsLocalRing.maximalIdeal O := h2.not_isUnit
+    have h168 : (16 : O) = 2 * 8 := by norm_num
+    rw [h168]
+    exact Ideal.mul_mem_right _ _ h2mem
+  have hc : proj O 2 1 a = proj O 2 1 a' := by
+    funext i
+    refine Ideal.Quotient.eq.mpr ?_
+    rw [pow_one]
+    by_cases h0 : i = 0
+    · subst h0
+      have hval : a 0 - a' 0 = -16 := by simp [ha, ha']
+      rw [hval]
+      exact neg_mem h16mem
+    · have h0' : ¬((i : ℕ) = 0) := fun hcc => h0 (Fin.ext hcc)
+      have hval : a i - a' i = 0 := by simp [ha, ha', h0, h0']
+      rw [hval]
+      exact zero_mem _
+  -- the level-2 key degree (for visibility's range)
+  have hkd : L.keyDeg₂ = 2 := by
+    rw [LevelDatum.keyDeg₂]
+    simp only [hL, hF]
+    rw [Polynomial.natDegree_X_sub_C]
+    show (2 : ℕ) * 1 * 1 * 1 = 2
+    norm_num
+  -- the six blocks, through `dev_X`
+  have hb0 : dev X (monicPoly a) 0 = 0 := by rw [hmono, dev_X]; simp
+  have hb1 : dev X (monicPoly a) 1 = 0 := by rw [hmono, dev_X]; simp
+  have hb2 : dev X (monicPoly a) 2 = 1 := by rw [hmono, dev_X]; simp
+  have hb0' : dev X (monicPoly a') 0 = C 16 := by rw [hmono', dev_X]; simp
+  have hb1' : dev X (monicPoly a') 1 = 0 := by rw [hmono', dev_X]; simp
+  have hb2' : dev X (monicPoly a') 2 = 1 := by rw [hmono', dev_X]; simp
+  -- valuations
+  have hval1 : addVal O (1 : O) = 0 := by simpa using (addVal O).map_one
+  have hval16 : addVal O (16 : O) = 4 := by
+    rw [show (16 : O) = 2 ^ 4 by norm_num, h2.addVal_pow]
+    norm_cast
+  -- frame constants
+  have he1 : F.e₁ = 2 := rfl
+  have hlu : L.u = 3 := rfl
+  have hll : L.ℓ = 1 := rfl
+  -- the six pins: a ↦ (⊤, ⊤, 0), a' ↦ (8, ⊤, 0)
+  have hpinA0 : dv2Pin L X (monicPoly a) 0 = ⊤ := by
+    rw [dv2Pin, hb0]
+    exact dvSupp_zero O F L.u L.ℓ L.hℓ
+  have hpinA1 : dv2Pin L X (monicPoly a) 1 = ⊤ := by
+    rw [dv2Pin, hb1]
+    exact dvSupp_zero O F L.u L.ℓ L.hℓ
+  have hpinA2 : dv2Pin L X (monicPoly a) 2 = 0 := by
+    rw [dv2Pin, hb2, show (1 : Polynomial O) = Polynomial.C 1 from Polynomial.C_1.symm]
+    rw [show dv2Hgt L (Polynomial.C (1 : O)) = dvSupp F (Polynomial.C (1 : O)) L.u L.ℓ from rfl]
+    rw [dvSupp_C, hval1]
+    simp
+  have hpinA0' : dv2Pin L X (monicPoly a') 0 = (8 : ℕ∞) := by
+    rw [dv2Pin, hb0']
+    rw [show dv2Hgt L (Polynomial.C (16 : O)) = dvSupp F (Polynomial.C (16 : O)) L.u L.ℓ from rfl]
+    rw [dvSupp_C, hval16, he1, hll]
+    simp [nsmul_eq_mul]
+    norm_num
+  have hpinA1' : dv2Pin L X (monicPoly a') 1 = ⊤ := by
+    rw [dv2Pin, hb1']
+    exact dvSupp_zero O F L.u L.ℓ L.hℓ
+  have hpinA2' : dv2Pin L X (monicPoly a') 2 = 0 := by
+    rw [dv2Pin, hb2', show (1 : Polynomial O) = Polynomial.C 1 from Polynomial.C_1.symm]
+    rw [show dv2Hgt L (Polynomial.C (1 : O)) = dvSupp F (Polynomial.C (1 : O)) L.u L.ℓ from rfl]
+    rw [dvSupp_C, hval1]
+    simp
+  -- degrees
+  have hndA : (monicPoly a).natDegree = 2 := monicPoly_natDegree a
+  have hndA' : (monicPoly a').natDegree = 2 := monicPoly_natDegree a'
+  have hrange3 : Finset.range (2 + 1) = ({0, 1, 2} : Finset ℕ) := by decide
+  -- the two supports at (u₂, ℓ₂) = (4, 1): both 8
+  have hsuppA : dv2Supp L X (monicPoly a) 4 1 = (8 : ℕ∞) := by
+    rw [dv2Supp, hndA, hrange3, Finset.inf_insert, Finset.inf_insert, Finset.inf_singleton]
+    simp only [hpinA0, hpinA1, hpinA2, one_smul, top_add, Nat.cast_ofNat, Nat.cast_one,
+      Nat.cast_zero, mul_zero, mul_one, add_zero, zero_add, top_inf_eq]
+    norm_num
+  have hsuppA' : dv2Supp L X (monicPoly a') 4 1 = (8 : ℕ∞) := by
+    rw [dv2Supp, hndA', hrange3, Finset.inf_insert, Finset.inf_insert, Finset.inf_singleton]
+    simp only [hpinA0', hpinA1', hpinA2', one_smul, top_add, Nat.cast_ofNat, Nat.cast_one,
+      Nat.cast_zero, mul_zero, mul_one, add_zero, zero_add, top_inf_eq]
+    norm_num
+  -- the two side sets: {2} and {0, 2}
+  have hsetA : dv2SideSet L X (monicPoly a) 4 1 = ({2} : Finset ℕ) := by
+    ext j
+    simp only [dv2SideSet, Dv2OnSide, Finset.mem_filter, Finset.mem_range, hndA,
+      Finset.mem_singleton]
+    constructor
+    · rintro ⟨hjr, _, hnetop⟩
+      interval_cases j
+      · exact absurd hpinA0 hnetop
+      · exact absurd hpinA1 hnetop
+      · rfl
+    · rintro rfl
+      refine ⟨by norm_num, ?_, ?_⟩
+      · rw [hsuppA, hpinA2]
+        simp
+        norm_num
+      · rw [hpinA2]
+        simp
+  have hsetA' : dv2SideSet L X (monicPoly a') 4 1 = ({0, 2} : Finset ℕ) := by
+    ext j
+    simp only [dv2SideSet, Dv2OnSide, Finset.mem_filter, Finset.mem_range, hndA',
+      Finset.mem_insert, Finset.mem_singleton]
+    constructor
+    · rintro ⟨hjr, _, hnetop⟩
+      interval_cases j
+      · exact Or.inl rfl
+      · exact absurd hpinA1' hnetop
+      · exact Or.inr rfl
+    · rintro (rfl | rfl)
+      · refine ⟨by norm_num, ?_, ?_⟩
+        · rw [hsuppA', hpinA0']
+          simp
+        · rw [hpinA0']
+          simp
+      · refine ⟨by norm_num, ?_, ?_⟩
+        · rw [hsuppA', hpinA2']
+          simp
+          norm_num
+        · rw [hpinA2']
+          simp
+  -- nonemptiness witnesses (the frozen statement's `hne` binders)
+  have hneA : (dv2SideSet L X (monicPoly a) 4 1).Nonempty := by
+    rw [hsetA]
+    exact ⟨2, by simp⟩
+  have hneA' : (dv2SideSet L X (monicPoly a') 4 1).Nonempty := by
+    rw [hsetA']
+    exact ⟨0, by simp⟩
+  -- side endpoints and degrees (parameterized over the nonemptiness proof)
+  have hminA : ∀ h, dv2SideMin L X (monicPoly a) 4 1 h = 2 := by
+    intro h
+    rw [dv2SideMin]
+    simp only [hsetA]
+    exact Finset.min'_singleton 2
+  have hmaxA : ∀ h, dv2SideMax L X (monicPoly a) 4 1 h = 2 := by
+    intro h
+    rw [dv2SideMax]
+    simp only [hsetA]
+    exact Finset.max'_singleton 2
+  have hdegA : ∀ h, dv2SideDeg L X (monicPoly a) 4 1 h = 0 := by
+    intro h
+    rw [dv2SideDeg, hmaxA h, hminA h]
+  have hminA' : ∀ h, dv2SideMin L X (monicPoly a') 4 1 h = 0 := by
+    intro h
+    rw [dv2SideMin]
+    refine le_antisymm ?_ (Nat.zero_le _)
+    refine Finset.min'_le _ 0 ?_
+    rw [hsetA']
+    simp
+  have hmaxA' : ∀ h, dv2SideMax L X (monicPoly a') 4 1 h = 2 := by
+    intro h
+    rw [dv2SideMax]
+    refine le_antisymm ?_ ?_
+    · refine Finset.max'_le _ _ _ ?_
+      intro y hy
+      rw [hsetA'] at hy
+      simp at hy
+      rcases hy with rfl | rfl <;> norm_num
+    · refine Finset.le_max' _ 2 ?_
+      rw [hsetA']
+      simp
+  have hdegA' : ∀ h, dv2SideDeg L X (monicPoly a') 4 1 h = 2 := by
+    intro h
+    rw [dv2SideDeg, hmaxA' h, hminA' h]
+  -- the nonzero read: dv2Res L 1 ≠ 0, through C.26's nonzero-constant-term law
+  have hdvh1 : dvHgt F (1 : Polynomial O) 0 = 0 := by
+    rw [show (1 : Polynomial O) = Polynomial.C 1 from Polynomial.C_1.symm, dvHgt_C, hval1]
+    simp
+  have hdvs1 : dvSupp F (1 : Polynomial O) L.u L.ℓ = 0 := by
+    rw [show (1 : Polynomial O) = Polynomial.C 1 from Polynomial.C_1.symm, dvSupp_C, hval1]
+    simp
+  have hone_on : DvOnSide F (1 : Polynomial O) L.u L.ℓ 0 := by
+    refine ⟨?_, ?_⟩
+    · rw [hdvs1, hdvh1]
+      simp
+    · rw [hdvh1]
+      simp
+  have hmem1 : (0 : ℕ) ∈ dvSideSet F (1 : Polynomial O) L.u L.ℓ := by
+    simp only [dvSideSet, Finset.mem_filter, Finset.mem_range]
+    exact ⟨by simp, hone_on⟩
+  have hne1 : (dvSideSet F (1 : Polynomial O) L.u L.ℓ).Nonempty := ⟨0, hmem1⟩
+  have hset1 : dvSideSet F (1 : Polynomial O) L.u L.ℓ = ({0} : Finset ℕ) := by
+    refine Finset.Subset.antisymm ?_ (Finset.singleton_subset_iff.mpr hmem1)
+    intro y hy
+    simp only [dvSideSet, Finset.mem_filter, Finset.mem_range, Polynomial.natDegree_one] at hy
+    simp only [Finset.mem_singleton]
+    omega
+  have hmin1 : ∀ h, dvSideMin F (1 : Polynomial O) L.u L.ℓ h = 0 := by
+    intro h
+    rw [dvSideMin]
+    simp only [hset1]
+    exact Finset.min'_singleton 0
+  have hmax1 : ∀ h, dvSideMax F (1 : Polynomial O) L.u L.ℓ h = 0 := by
+    intro h
+    rw [dvSideMax]
+    simp only [hset1]
+    exact Finset.max'_singleton 0
+  have hdeg1 : ∀ h, dvSideDeg F (1 : Polynomial O) L.u L.ℓ h = 0 := by
+    intro h
+    rw [dvSideDeg, hmax1 h, hmin1 h]
+    simp
+  have hex1 : ∃ (hne : (dvSideSet F (1 : Polynomial O) L.u L.ℓ).Nonempty) (M₀ : ℕ),
+      dvHgt F (1 : Polynomial O) (dvSideMin F (1 : Polynomial O) L.u L.ℓ hne) = (M₀ : ℕ∞) :=
+    ⟨hne1, 0, by rw [hmin1 hne1, hdvh1]; simp⟩
+  have hresne : dv2Res L (1 : Polynomial O) ≠ 0 := by
+    rw [dv2Res, dif_pos hex1]
+    haveI : Fact (Irreducible L.r) := ⟨L.hrirr⟩
+    letI : Field (AdjoinRoot L.r) := AdjoinRoot.instField
+    obtain ⟨hdr, hc0⟩ := natDegree_dvResPoly F h2 1 hpin1 L.hℓ L.hcop
+      hex1.choose hex1.choose_spec.choose_spec
+    set P := dvResPoly F 1 hpin1 (1 : Polynomial O) L.u L.ℓ hex1.choose
+      hex1.choose_spec.choose hex1.choose_spec.choose_spec with hP
+    have hPdeg : P.natDegree = 0 := by
+      rw [hP]
+      rw [hdr, hdeg1 hex1.choose]
+    have hPC : P = Polynomial.C (P.coeff 0) := Polynomial.eq_C_of_natDegree_le_zero (by omega)
+    intro hzero
+    refine hc0 ?_
+    have hinj : Function.Injective (AdjoinRoot.of L.r) := (AdjoinRoot.of L.r).injective
+    apply hinj
+    rw [map_zero, ← AdjoinRoot.mk_C]
+    rw [hPC] at hzero
+    exact hzero
+  -- the seam bound at (u₂, ℓ₂) = (4, 1)
+  have hseam4 : (1 : ℕ) * L.seam < 4 := by
+    have hs : L.seam = 3 := by
+      rw [LevelDatum.seam]
+      simp only [hL]
+      rw [Polynomial.natDegree_X_sub_C]
+    rw [hs]
+    norm_num
+  -- visibility of the member is VACUOUS (as in section 1)
+  have hvis : Visible₂ L X (monicPoly a) 1 := by
+    intro j hj hT
+    exfalso
+    apply hT
+    rw [hndA, hkd] at hj
+    norm_num at hj
+    interval_cases j
+    · exact hpinA0
+    · exact hpinA1
+  -- fire the frozen statement and collide the coefficient at 2
+  have hkey := hstmt L h2 hc hvis (u₂ := 4) (ℓ₂ := 1) one_pos hseam4 hneA hneA'
+  have hLHS : (dv2ResPoly L X (monicPoly a) 4 1 hneA).coeff 2 = 0 := by
+    rw [dv2ResPoly, hdegA hneA]
+    rw [Finset.sum_range_one]
+    simp [Polynomial.coeff_C]
+  have hRHS : (dv2ResPoly L X (monicPoly a') 4 1 hneA').coeff 2 = dv2Res L (1 : Polynomial O) := by
+    rw [dv2ResPoly, hdegA' hneA', hminA' hneA']
+    rw [Finset.sum_range_succ, Finset.sum_range_succ, Finset.sum_range_one]
+    simp only [Polynomial.coeff_add, Polynomial.coeff_C_mul, Polynomial.coeff_X_pow]
+    norm_num
+    rw [hb2']
+  have hcoll : (dv2ResPoly L X (monicPoly a) 4 1 hneA).coeff 2
+      = (dv2ResPoly L X (monicPoly a') 4 1 hneA').coeff 2 := by rw [hkey]
+  rw [hLHS, hRHS] at hcoll
+  exact hresne hcoll.symm
 
 end Refutation
