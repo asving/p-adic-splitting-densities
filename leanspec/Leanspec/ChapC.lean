@@ -3163,15 +3163,45 @@ axiom Visible₂_mono {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpi
     Visible₂ L Ψ f N → Visible₂ L Ψ f N'
 
 /-! ### NODE C.118 [lemma] — visible reads are window functions [signed: A-C.1; B.77's own
-split: heights half / residual half] -/
+split: heights half / residual half; **clause 1 RE-SIGNED: A-C.7, 2026-08-18**].
 
-axiom dv2_read_congr {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+**Why clause 1 changed.** The frozen `dv2_read_congr` is machine-REFUTED
+(`leanfinal/Uniformity/ChapC/C118_REFUTATION.lean.txt`, `c118_clause1_refuted`,
+Lean-core, over ALL-LANDED carriers — the C.97 `s2Frame`, a legitimate `LevelDatum`,
+`X²` vs `X² + C 2` at `N = 1`): `Visible₂`'s `≠ ⊤ →` escape leaves ⊤ pins of the
+visible member unguarded, and ⊤ pins are REAL at level 2 (development blocks vanish
+below the top — no monic-top rescue as at B.77's level 1), while a `π^N`-perturbed
+window-classmate reads a FINITE pin at the same abscissa.  The FOURTH A-C.1 vacuous-⊤
+instance (C.111, C.94, C.113, C.118); amendment A-C.7 carries the registry rider.
+The re-signs are NOT designs: BOTH are PROVED in `leanfinal/Uniformity/ChapC/C118a.lean`,
+sorry-free and Lean-core, before this edit (the A-C.5 certify-BEFORE-sign standard). -/
+
+/-- clause 1′ — the unconditional capped window law (the honest reading of the node
+title): pins agree AS SEEN THROUGH the window `W = (F.e₁ * L.ℓ) * N`. -/
+axiom dv2_read_congr_min {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [Finite (ResidueField O)]
+    {Ψ : Polynomial O} {n N : ℕ} {a a' : Fin n → O}
+    (hc : proj O n N a = proj O n N a') (j : ℕ) :
+    min (dv2Pin L Ψ (monicPoly a) j) (((F.e₁ * L.ℓ) * N : ℕ) : ℕ∞)
+      = min (dv2Pin L Ψ (monicPoly a') j) (((F.e₁ * L.ℓ) * N : ℕ) : ℕ∞)
+
+/-- clause 1″ — the guarded raw form: the frozen clause 1 PLUS the missing non-`⊤`
+guard `hT` (under visibility a non-`⊤` pin sits strictly below the window, so the caps
+are invisible). -/
+axiom dv2_read_congr_vis {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [Finite (ResidueField O)]
     {Ψ : Polynomial O} {n N : ℕ} {a a' : Fin n → O}
     (hc : proj O n N a = proj O n N a')
-    (hvis : Visible₂ L Ψ (monicPoly a) N) {j : ℕ} (hj : j ≤ n / L.keyDeg₂) :
+    (hvis : Visible₂ L Ψ (monicPoly a) N) {j : ℕ} (hj : j ≤ n / L.keyDeg₂)
+    (hT : dv2Pin L Ψ (monicPoly a) j ≠ ⊤) :
     dv2Pin L Ψ (monicPoly a) j = dv2Pin L Ψ (monicPoly a') j
 
+/- ⚠ **clause 2 (`dv2_read_congr_res`) — SUSPECT per A-C.7, DO NOT LAND as frozen**: its
+side data (`hne'`, the `dv2Res` pins) consult the unguarded member by the same mechanism
+that refuted clause 1; not yet machine-refuted, not yet repaired.  Its re-sign is settled
+at its own certification (expected shape: B77b's level-1 form with the side reads guarded
+through the clause-1′ capped law).  Any fleet charge on it fires the A-C.7 vacuity audit
+FIRST. -/
 axiom dv2_read_congr_res {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [Finite (ResidueField O)]
     {Ψ : Polynomial O} {n N : ℕ} {a a' : Fin n → O}
