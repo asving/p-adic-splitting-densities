@@ -148,12 +148,80 @@ theorem dev_fw : dev (s2Key O) (fw : Polynomial O) 0 = C 32
   · rw [hsum]
     exact htop
 
+theorem stageHeight_C_s2 (h2 : Irreducible (2 : O)) (hq : residueCard O = 2) (c : O) :
+    (s2Frame h2 hq).stageHeight (C c) = (2 : ℕ) • addVal O c := by
+  rw [KeyFrame.stageHeight, suppVal]
+  simp only [natDegree_C, zero_add, Finset.range_one, Finset.inf_singleton]
+  have hnp : npHgt X (C c) 0 = addVal O c := by
+    rw [npHgt, show dev X (C c) 0 = (C c) %ₘ X from rfl, Polynomial.modByMonic_X]
+    simp only [Polynomial.eval_C]
+    rw [gaussVal]
+    simp only [natDegree_C, zero_add, Finset.range_one, Finset.inf_singleton,
+      Polynomial.coeff_C_zero]
+  rw [hnp]
+  show (s2Frame h2 hq).e₁ • addVal O c + ((s2Frame h2 hq).h * 0 : ℕ∞) = (2 : ℕ) • addVal O c
+  norm_num
+  rfl
+
+theorem monic_gsix : (gsix : Polynomial O).Monic :=
+  s2Key_monic.add_of_left (by
+    refine lt_of_le_of_lt degree_C_le ?_
+    rw [Polynomial.degree_eq_natDegree s2Key_monic.ne_zero, s2Key_natDegree]
+    exact_mod_cast Nat.zero_lt_two)
+
+theorem monic_gfour : (gfour : Polynomial O).Monic :=
+  s2Key_monic.add_of_left (by
+    refine lt_of_le_of_lt degree_C_le ?_
+    rw [Polynomial.degree_eq_natDegree s2Key_monic.ne_zero, s2Key_natDegree]
+    exact_mod_cast Nat.zero_lt_two)
+
+theorem natDegree_gsix : (gsix : Polynomial O).natDegree = 2 := by
+  rw [gsix]
+  have h : (C 8 : Polynomial O).degree < (s2Key O).degree :=
+    lt_of_le_of_lt degree_C_le (by
+      rw [Polynomial.degree_eq_natDegree s2Key_monic.ne_zero, s2Key_natDegree]
+      exact_mod_cast Nat.zero_lt_two)
+  rw [Polynomial.natDegree_eq_of_degree_eq (Polynomial.degree_add_eq_left_of_degree_lt h),
+    s2Key_natDegree]
+
+theorem natDegree_gfour : (gfour : Polynomial O).natDegree = 2 := by
+  rw [gfour]
+  have h : (C 4 : Polynomial O).degree < (s2Key O).degree :=
+    lt_of_le_of_lt degree_C_le (by
+      rw [Polynomial.degree_eq_natDegree s2Key_monic.ne_zero, s2Key_natDegree]
+      exact_mod_cast Nat.zero_lt_two)
+  rw [Polynomial.natDegree_eq_of_degree_eq (Polynomial.degree_add_eq_left_of_degree_lt h),
+    s2Key_natDegree]
+
+theorem monic_fw : (fw : Polynomial O).Monic := monic_gsix.mul monic_gfour
+
+theorem natDegree_fw : (fw : Polynomial O).natDegree = 4 := by
+  rw [fw, Polynomial.Monic.natDegree_mul monic_gsix monic_gfour,
+    natDegree_gsix, natDegree_gfour]
+
 theorem dvHgt_fw (h2 : Irreducible (2 : O)) (hq : residueCard O = 2) :
     dvHgt (s2Frame h2 hq) (fw : Polynomial O) 0 = (10 : ℕ∞)
     ∧ dvHgt (s2Frame h2 hq) (fw : Polynomial O) 1 = (4 : ℕ∞)
     ∧ dvHgt (s2Frame h2 hq) (fw : Polynomial O) 2 = (0 : ℕ∞)
     ∧ ∀ j, 2 < j → dvHgt (s2Frame h2 hq) (fw : Polynomial O) j = ⊤ := by
-  sorry
+  obtain ⟨hd0, hd1, hd2⟩ := dev_fw (O := O)
+  have hkey : (s2Frame h2 hq).key = s2Key O := rfl
+  refine ⟨?_, ?_, ?_, ?_⟩
+  · rw [dvHgt, hkey, hd0, stageHeight_C_s2 h2 hq]
+    rw [show (32 : O) = 2 ^ 5 by norm_num, addVal_two_pow h2 5]
+    rfl
+  · rw [dvHgt, hkey, hd1, stageHeight_C_s2 h2 hq, addVal_twelve h2]
+    rfl
+  · rw [dvHgt, hkey, hd2, show (1 : Polynomial O) = C 1 from (Polynomial.C_1).symm,
+      stageHeight_C_s2 h2 hq, addVal_one]
+    rfl
+  · intro j hj
+    have hz : dev (s2Key O) (fw : Polynomial O) j = 0 := by
+      refine dev_eq_zero_of_lt s2Key_monic (by rw [s2Key_natDegree]; norm_num) _ j ?_
+      rw [natDegree_fw, s2Key_natDegree]
+      omega
+    rw [dvHgt, hkey, hz]
+    exact C118a.stageHeight_zero _
 
 /-! ## 3. Leg A — the dissection -/
 
