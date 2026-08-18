@@ -6251,3 +6251,29 @@ storm active again (C.52 killed twice incl. an instant
 resume-kill; C.33 and the trio killed mid-read); 20-min backoff
 timer running; on fire: resume C.52 and re-charter C.118 (as
 the dv-congruence unit) + C.33-fill.
+
+**2026-08-18 DATED APPEND #92 — NODE C.118: the frozen clause 1
+is MACHINE-REFUTED (the FOURTH A-C.1 vacuous-⊤ instance);
+amendment A-C.7 drafted; a pattern-audit rider now guards every
+remaining A-C.1 signature.** At fill time the orchestrator found
+`dv2_read_congr` FALSE: `Visible₂`'s `≠ ⊤ →` escape leaves ⊤
+pins unguarded, and ⊤ pins are REAL at level 2 (development
+blocks vanish below the top — no monic-top rescue as at B.77's
+level 1); a π^N-perturbed window-classmate has a FINITE pin at
+the same abscissa. Refutation machine-certified over ALL-LANDED
+carriers (s2Frame + a legitimate LevelDatum + X² vs X²+C 2 at
+N=1): C118_REFUTATION.lean.txt compiles clean, evidence
+convention. Clause 2 SUSPECT (same mechanism). A-C.7 (blueprint)
+drafts the re-signs: the unconditional CAPPED window law
+(min-at-W equality — the honest reading of the node title), the
+guarded raw form (hT : pin ≠ ⊤), and clause 2 at B77b's shape;
+per the A-C.5 standard the leanspec re-sign lands only WITH the
+repair proofs (the dv-carrier dichotomy chain — the C.118 unit's
+actual work, route recorded in C118.lean + A-C.7). REGISTRY: 4
+vacuity instances now (C.111 hnode, C.94 self-loop, C.113 hne,
+C.118 Visible₂); A-C.7's rider mandates a one-line degenerate-
+stratum audit of every UNLANDED A-C.1 signature before its fleet
+charge fires (§12 neighbours + §10 chain first). Fleet: C.33 and
+C.52 agents in the storm resume-loop (C.33 ratcheting; C.52
+still pre-skeleton); the C.118 agent must be RE-CHARGED at the
+A-C.7 drafts, not the frozen forms.
