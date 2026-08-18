@@ -7,7 +7,7 @@ import Uniformity.ChapC.C26
 import Uniformity.ChapC.C29
 
 /-!
-# Uniformity.ChapC.C33 — the slope dissection at the level polygon
+# Uniformity.ChapC.C33 — the slope dissection at the level polygon (PARTIAL landing)
 
 **Chapter C, NODE C.33** [theorem] [fresh] [signed: A-C.1]
 (`blueprint/CHAP-C_tower_grammar.md` §5). ENV-C. Three signed declarations: the witness
@@ -15,17 +15,41 @@ structure `DvDissection` (B.42's landed template at the `dv`-carrier, packaged p
 inductive-domain licence) and the two theorem clauses `exists_dvDissection` /
 `dvDissection_unique`.
 
-*The statement (B.41/B.42 one level up).* Over the complete bundle, a monic `f` with
-`F.key ∤ f` dissects along the sides of its level polygon above the frame floor: monic
-`dv`-pure factors, one per side, each with the `(SEP)`-free degree law
-`deg f_i = D′·(ℓ_i·dvSideDeg)` (= `D′·L_λ`), a below-floor monic remainder with no
-above-floor sides, the product identity, and the side-detection iff; the monic dissection
-is unique.
+## ⚠ PARTIAL LANDING — the two signed theorems are ROUTE-BLOCKED
+
+**Landed here (sorry-free, Lean-core):**
+
+* `DvDissection` — the signed witness type, byte-exact to `leanspec/Leanspec/ChapC.lean`
+  (A-C.1 §5). This is what C.35's choice and the §5 consumers need to STATE things.
+* `DvDissection.slopes_eq` — uniqueness leg 1: any two dissections of the same `f` carry
+  the same slope set (pure clause plumbing off `hslopes` + `hsides`).
+* `DvDissection.below_eq_of_factor_eq` — uniqueness leg 2 REDUCTION: if the per-slope
+  factors agree then the below-floor remainders agree (monic cancellation off `hprod`).
+* `dvDissection_unique_of_factor_eq` — the packaging: the FULL signed uniqueness
+  conclusion follows from the per-slope factor leg alone. So the entire remaining content
+  of `dvDissection_unique` is the one goal `∀ p ∈ D.slopes, D.factor p = D'.factor p`
+  (purity separation), and the entire remaining content of the node is that plus
+  `exists_dvDissection`.
+
+**NOT landed — `exists_dvDissection` and `dvDissection_unique`.** Their signed statements
+remain in `leanspec/Leanspec/ChapC.lean` (byte-frozen, untouched). The obstruction record
+is **`C33_BLOCKED_2026-08-17.md`** (this directory): the signed PROOF route re-runs
+B.41/B.42's two-piece split one level up, but (i) the multi-side peel needs the graded
+Hensel AT A VERTEX that is machine-checked missing already at order 1
+(`../ChapB/B42_ROUTE_BLOCKED.lean.txt` — the reason B.42 itself is an owner-signed
+gate-(b) axiom), (ii) no `dv`-level Hensel engine exists at all (no analogue of
+B.39/B.40/B.41 at the `dv`-carrier), (iii) B.41/B.42 are not consumable directly
+(`IsKey F.key` is FALSE at `F.h ≥ 1`, C01 header) and B.42's axiom hypotheses
+(`hres`/`h0`, single-branch) do not match even at the degenerate frame, and (iv) the
+uniqueness separation leg needs cross-slope `dv`-polygon additivity, which is landed
+nowhere and is NOT part of C.66's signed same-slope clause. Neither statement is claimed
+false — both are the classical theorem of the polygon at the level (r = 1) carrier and
+are expected true as signed.
 
 ## Status
 
-SKELETON — statements transcribed byte-exactly from `leanspec/Leanspec/ChapC.lean`
-(A-C.1 §5, `axiom` → `theorem`); proofs in progress.
+Sorry-free, axiom-free (Lean core only) — for the PARTIAL scope above. The two signed
+theorem clauses are OPEN, blocked per the record.
 -/
 
 namespace Uniformity.Density.Tower
@@ -71,22 +95,33 @@ theorem DvDissection.slopes_eq {F : KeyFrame O π} {f : Polynomial O}
     exact (Prod.mk.eta (p := p) ▸ (D.hsides p.1 p.2 h2 hcop hfloor).2)
       ((D'.hsides p.1 p.2 h2 hcop hfloor).1 (Prod.mk.eta (p := p) ▸ hp))
 
-/-- **C.33 existence** — the slope dissection at the level polygon exists for every monic
-`f` with `F.key ∤ f`, over the complete bundle. -/
-theorem exists_dvDissection (F : KeyFrame O π) (hπ : Irreducible π)
-    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    {f : Polynomial O} (hf : f.Monic) (hkey : ¬ F.key ∣ f) :
-    Nonempty (DvDissection F f) := by
-  sorry
+/-- **Uniqueness, leg 2 as a REDUCTION (the below-floor remainders agree, given the
+factors do).** From the two `hprod`s the products over the common slope set (leg 1) agree,
+and the product of the monic factors is monic hence a regular element of the domain
+`O[X]`; cancel it. No completeness, no `hπ`, no monicity of `f` needed. -/
+theorem DvDissection.below_eq_of_factor_eq {F : KeyFrame O π} {f : Polynomial O}
+    (D D' : DvDissection F f) (hfac : ∀ p ∈ D.slopes, D.factor p = D'.factor p) :
+    D.below = D'.below := by
+  have hP : ∏ p ∈ D.slopes, D.factor p = ∏ p ∈ D'.slopes, D'.factor p := by
+    rw [← D.slopes_eq D']
+    exact Finset.prod_congr rfl hfac
+  have hmon : (∏ p ∈ D.slopes, D.factor p).Monic :=
+    Polynomial.monic_prod_of_monic _ _ (fun p hp => D.hmonic p hp)
+  have key : D.below * ∏ p ∈ D.slopes, D.factor p
+      = D'.below * ∏ p ∈ D.slopes, D.factor p :=
+    calc D.below * ∏ p ∈ D.slopes, D.factor p = f := D.hprod.symm
+      _ = D'.below * ∏ p ∈ D'.slopes, D'.factor p := D'.hprod
+      _ = D'.below * ∏ p ∈ D.slopes, D.factor p := by rw [hP]
+  exact mul_right_cancel₀ hmon.ne_zero key
 
-/-- **C.33 uniqueness** — the monic dissection is unique: same slopes, same below-floor
-remainder, same factor at each slope. -/
-theorem dvDissection_unique (F : KeyFrame O π) (hπ : Irreducible π)
-    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    {f : Polynomial O} (hf : f.Monic) (hkey : ¬ F.key ∣ f)
-    (D D' : DvDissection F f) :
-    D.slopes = D'.slopes ∧ D.below = D'.below ∧ ∀ p ∈ D.slopes, D.factor p = D'.factor p := by
-  sorry
+/-- **The uniqueness frontier, made exact.** The FULL signed conclusion of
+`dvDissection_unique` follows from the per-slope factor leg alone; so the missing content
+of the signed uniqueness theorem is EXACTLY the purity-separation goal
+`∀ p ∈ D.slopes, D.factor p = D'.factor p` (see `C33_BLOCKED_2026-08-17.md`). -/
+theorem dvDissection_unique_of_factor_eq {F : KeyFrame O π} {f : Polynomial O}
+    (D D' : DvDissection F f) (hfac : ∀ p ∈ D.slopes, D.factor p = D'.factor p) :
+    D.slopes = D'.slopes ∧ D.below = D'.below ∧ ∀ p ∈ D.slopes, D.factor p = D'.factor p :=
+  ⟨D.slopes_eq D', D.below_eq_of_factor_eq D' hfac, hfac⟩
 
 end Uniformity.Density.Tower
 
@@ -95,7 +130,8 @@ end Uniformity.Density.Tower
 section AxCheck
 
 #print axioms Uniformity.Density.Tower.DvDissection
-#print axioms Uniformity.Density.Tower.exists_dvDissection
-#print axioms Uniformity.Density.Tower.dvDissection_unique
+#print axioms Uniformity.Density.Tower.DvDissection.slopes_eq
+#print axioms Uniformity.Density.Tower.DvDissection.below_eq_of_factor_eq
+#print axioms Uniformity.Density.Tower.dvDissection_unique_of_factor_eq
 
 end AxCheck
