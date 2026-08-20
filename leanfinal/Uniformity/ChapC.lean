@@ -22,6 +22,7 @@ import Uniformity.ChapC.C11
 import Uniformity.ChapC.C110
 import Uniformity.ChapC.C111
 import Uniformity.ChapC.C112
+import Uniformity.ChapC.C114
 import Uniformity.ChapC.C115
 import Uniformity.ChapC.C116
 import Uniformity.ChapC.C117
@@ -70,6 +71,8 @@ import Uniformity.ChapC.C56a
 import Uniformity.ChapC.C60
 import Uniformity.ChapC.C66
 import Uniformity.ChapC.C71
+import Uniformity.ChapC.C72
+import Uniformity.ChapC.C73
 import Uniformity.ChapC.C74
 import Uniformity.ChapC.C83
 import Uniformity.ChapC.C84
