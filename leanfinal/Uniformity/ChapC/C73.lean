@@ -381,4 +381,88 @@ theorem devQ_chain (hΨ : Ψ.Monic) (E : ℕ → Polynomial R)
 
 end Chain
 
+/-! ## The exactness theorem, part 2: `biRep`, the two-variable presentation of one polynomial
+
+`biRep F A` is `A` read as a `Z`-polynomial over `O[x]`: its `Z^b`-coefficient is the `b`-th
+`Φ′`-adic digit of `A`.  It is the honest-side twin of C.71's `biRead` (which reduces the digits
+mod `Φ′`); the two are related by `map (AdjoinRoot.mk Φ′)`, which is exactly the relation the
+exactness proof exploits.
+
+Everything here is unconditional — no x-freeness, no locus. -/
+
+section BiRep
+
+variable {F : KeyFrame O π}
+
+/-- the two-variable presentation of a single polynomial: its `Φ′`-digits against `Z`. -/
+noncomputable def biRep (F : KeyFrame O π) (A : Polynomial O) : Polynomial (Polynomial O) :=
+  ∑ b ∈ Finset.range (A.natDegree + 1), Polynomial.C (dev F.key A b) * Polynomial.X ^ b
+
+/-- every coefficient of `biRep F A` is the corresponding `Φ′`-digit — including past
+`A.natDegree`, where both sides vanish (C.127's `biRead_coeff` one reduction earlier). -/
+theorem biRep_coeff (F : KeyFrame O π) (A : Polynomial O) (b : ℕ) :
+    (biRep F A).coeff b = dev F.key A b := by
+  classical
+  rw [biRep, finsetSum_coeff]
+  simp only [coeff_C_mul, coeff_X_pow, mul_ite, mul_one, mul_zero]
+  rw [Finset.sum_ite_eq (Finset.range (A.natDegree + 1)) b (fun b' => dev F.key A b')]
+  by_cases hb : b ∈ Finset.range (A.natDegree + 1)
+  · rw [if_pos hb]
+  · rw [if_neg hb]
+    rw [Finset.mem_range, not_lt] at hb
+    refine (dev_eq_zero_of_lt F.hmonic F.natDegree_key_pos A b ?_).symm
+    calc A.natDegree < b := by omega
+      _ = b * 1 := (Nat.mul_one b).symm
+      _ ≤ b * F.key.natDegree := Nat.mul_le_mul_left b F.natDegree_key_pos
+
+/-- the presentation never grows the degree. -/
+theorem biRep_natDegree_le (F : KeyFrame O π) (A : Polynomial O) :
+    (biRep F A).natDegree ≤ A.natDegree := by
+  rw [biRep]
+  refine natDegree_sum_le_of_forall_le _ _ fun b hb => ?_
+  have hb' : b ≤ A.natDegree := by
+    have := Finset.mem_range.mp hb; omega
+  refine le_trans (natDegree_C_mul_le _ _) ?_
+  rw [natDegree_X_pow]
+  exact hb'
+
+/-- **the presentation presents**: evaluating at `Φ′` returns `A` (B.05's `sum_dev_eq`). -/
+theorem biRep_eval (F : KeyFrame O π) (A : Polynomial O) :
+    Polynomial.eval F.key (biRep F A) = A := by
+  rw [biRep, eval_finsetSum]
+  simp only [eval_mul, eval_C, eval_pow, eval_X]
+  refine sum_dev_eq F.hmonic F.natDegree_key_pos A ?_
+  calc A.natDegree < A.natDegree + 1 := by omega
+    _ = (A.natDegree + 1) * 1 := by ring
+    _ ≤ (A.natDegree + 1) * F.key.natDegree :=
+        Nat.mul_le_mul_left _ F.natDegree_key_pos
+
+/-- **the presentation is IN-GRID**: every coefficient is a `Φ′`-digit, hence of degree `< D′`
+(B.03's `degree_dev_lt`).  This is `EFF.GENTOW3.26`'s "`deg A_J ≤ D′−1 < D′`", verbatim. -/
+theorem biRep_coeff_natDegree_le (F : KeyFrame O π) (A : Polynomial O) (i : ℕ) :
+    ((biRep F A).coeff i).natDegree ≤ F.key.natDegree - 1 := by
+  rw [biRep_coeff]
+  have hlt : (dev F.key A i).degree < F.key.degree :=
+    degree_dev_lt F.hmonic F.natDegree_key_pos A i
+  by_cases h0 : dev F.key A i = 0
+  · rw [h0, natDegree_zero]
+    exact Nat.zero_le _
+  · have h1 : (dev F.key A i).natDegree < F.key.natDegree := natDegree_lt_natDegree h0 hlt
+    omega
+
+/-- the `Z`-degree of the presentation is bounded by the `Φ′`-adic length: if `A` sits below
+`Φ′^m` in degree then `biRep F A` sits below `Z^m`.  (Used at `m = e₂f₂`, where it says a
+development coefficient of `Φ₂` presents as a `Z`-polynomial of degree `< deg_Z Φ₂`.) -/
+theorem biRep_natDegree_lt (F : KeyFrame O π) (A : Polynomial O) {m : ℕ} (hm : 0 < m)
+    (hA : A.natDegree < m * F.key.natDegree) : (biRep F A).natDegree < m := by
+  have hle : (biRep F A).natDegree ≤ m - 1 := by
+    refine natDegree_le_iff_coeff_eq_zero.mpr fun N hN => ?_
+    rw [biRep_coeff]
+    refine dev_eq_zero_of_lt F.hmonic F.natDegree_key_pos A N ?_
+    calc A.natDegree < m * F.key.natDegree := hA
+      _ ≤ N * F.key.natDegree := Nat.mul_le_mul_right _ (by omega)
+  omega
+
+end BiRep
+
 end Uniformity.Density.Tower
