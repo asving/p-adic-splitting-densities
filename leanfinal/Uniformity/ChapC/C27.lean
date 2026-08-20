@@ -72,9 +72,13 @@ guard `hx : IsPure Polynomial.X g F.h F.e₁` that C.59 (`ramLeg_dvd`, the sole 
 ## LANDED INVENTORY (authoritative; updated at every commit — the audit table above states the
 ## verdicts, this states what is machine-checked so far)
 
-* commit 1 (skeleton): `Slot2ExactStatement` only.  Every other declaration named in the audit
-  table is PLANNED at commit 1 and becomes machine-checked as it lands; this line is the
-  authority on which is which.
+* commit 1 (skeleton): `Slot2ExactStatement`.
+* commit 2 (the refutation): `keyDeg₂_pos`, `dv2Hgt_zero`, `Slot2ExactWithoutHC0Statement`,
+  `slot2_exact_without_hC0_false` (the `hC0`-undroppability certificate), the `C := X` slot-height
+  computation (`dev_X_zero`, `dev_X_one`, `dvhgt_X_0`, `dvhgt_X_1`, `dv2hgt_X`, `keyDeg₂_L₀`), the
+  norm read (`g₀_coeff_zero`, `addVal_norm_g₀_X`), and **`slot2_exact_false` — the signed
+  statement is FALSE**.
+* Anything named in the audit table and not listed above is PLANNED, not machine-checked.
 -/
 
 namespace Uniformity.Density.Tower
@@ -101,12 +105,155 @@ def Slot2ExactStatement : Prop :=
     ∃ v : ℕ, dv2Hgt L C = (v : ℕ∞) ∧
       (F.e₁ * L.ℓ) * (addVal O (Algebra.norm O (AdjoinRoot.mk g C))).toNat = g.natDegree * v
 
+/-! ## Two frame-level facts the audit table quotes -/
+
+private theorem nsmul_top_pos {n : ℕ} (hn : 0 < n) : n • (⊤ : ℕ∞) = ⊤ := by
+  cases n with
+  | zero => exact absurd hn (lt_irrefl 0)
+  | succ k => rw [succ_nsmul]; exact WithTop.add_top _
+
+/-- `0 < L.keyDeg₂` always: `keyDeg₂ = (e₁f₁)·ℓ·d_r` and all four factors are positive
+(`F.he₁`, `F.hf₁`, `L.hℓ`, `L.hrdeg`).  So `hC : C.natDegree < L.keyDeg₂` is **never an empty
+hypothesis** — every constant `C` satisfies it. -/
+theorem keyDeg₂_pos {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin) :
+    0 < L.keyDeg₂ := by
+  rw [LevelDatum.keyDeg₂]
+  exact Nat.mul_pos (Nat.mul_pos (Nat.mul_pos F.he₁ F.hf₁) L.hℓ) L.hrdeg
+
+/-- `dv2Hgt L 0 = ⊤`.  This is what makes `hC0` undroppable: `C = 0` passes `hC`
+(`keyDeg₂_pos`) and its level-2 slot height is `⊤`, so no `v : ℕ` can satisfy the first
+conjunct of the conclusion. -/
+theorem dv2Hgt_zero {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin) :
+    dv2Hgt L (0 : Polynomial O) = ⊤ := by
+  rw [dv2Hgt, dvSupp]
+  simp only [Polynomial.natDegree_zero, show Finset.range (0 + 1) = {0} from rfl,
+    Finset.inf_singleton]
+  rw [dvHgt, show dev F.key (0 : Polynomial O) 0 = 0 from Polynomial.zero_modByMonic _,
+    KeyFrame.stageHeight, suppVal_zero_eq_top F.he₁, nsmul_top_pos L.hℓ]
+  simp
+
+/-- The signed statement **with `hC0` deleted**. -/
+def Slot2ExactWithoutHC0Statement : Prop :=
+  ∀ {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+    {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (_hπ : Irreducible π) [Finite (ResidueField O)]
+    {g : Polynomial O} (_hg : HasLabel L g) {C : Polynomial O}
+    (_hC : C.natDegree < L.keyDeg₂),
+    ∃ v : ℕ, dv2Hgt L C = (v : ℕ∞) ∧
+      (F.e₁ * L.ℓ) * (addVal O (Algebra.norm O (AdjoinRoot.mk g C))).toNat = g.natDegree * v
+
 end Uniformity.Density.Tower
+
+/-! ## The refutations, absolute over `ℤ_[2]` -/
+
+namespace Uniformity.Density.Tower.C27Refute
+
+open Polynomial IsLocalRing IsDiscreteValuationRing Uniformity.Density
+open Uniformity.Density.Leaf Uniformity.Density.Tower Uniformity.Density.Tower.C35b
+
+variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)] (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
+
+/-! ### 1. `hC0` is UNDROPPABLE -/
+
+/-- **The signed statement minus `hC0` is FALSE.**  Take `C = 0` at the landed label witness:
+`hC` holds (`keyDeg₂_pos`) and `dv2Hgt L₀ 0 = ⊤` (`dv2Hgt_zero`), so no `v : ℕ` exists. -/
+theorem slot2_exact_without_hC0_false : ¬ Slot2ExactWithoutHC0Statement := by
+  intro hax
+  obtain ⟨v, hv, -⟩ := hax (L₀ h2_padic rc2) h2_padic (hasLabel_g₀ h2_padic rc2)
+    (C := (0 : Polynomial ℤ_[2])) (by simpa using keyDeg₂_pos (L₀ h2_padic rc2))
+  rw [dv2Hgt_zero] at hv
+  exact (ENat.coe_ne_top v) hv.symm
+
+/-! ### 2. The `Φ′`-development and the level-2 slot height of `C := X` at the landed frame -/
+
+theorem dev_X_zero : dev (s2Key O) (Polynomial.X : Polynomial O) 0 = Polynomial.X := by
+  show (Polynomial.X : Polynomial O) %ₘ (s2Key O) = Polynomial.X
+  rw [Polynomial.modByMonic_eq_self_iff s2Key_monic, s2Key_deg, Polynomial.degree_X]
+  decide
+
+omit [Finite (ResidueField O)] in
+theorem dev_X_one : dev (s2Key O) (Polynomial.X : Polynomial O) 1 = 0 :=
+  dev_eq_zero_of_lt s2Key_monic (by rw [s2Key_natDegree]; norm_num) _ 1
+    (by rw [Polynomial.natDegree_X, s2Key_natDegree]; norm_num)
+
+include h2 hq in
+theorem dvhgt_X_0 : dvHgt (s2Frame h2 hq) (Polynomial.X : Polynomial O) 0 = 1 := by
+  rw [dvHgt, key_eq, dev_X_zero, sh_X h2 hq]
+
+include h2 hq in
+theorem dvhgt_X_1 : dvHgt (s2Frame h2 hq) (Polynomial.X : Polynomial O) 1 = ⊤ := by
+  rw [dvHgt, key_eq, dev_X_one, sh_zero h2 hq]
+
+include h2 hq in
+/-- **the level-2 slot height of `X` is `ℓ·h = 1`** at `(s2Frame, L₀)` — the blueprint's own
+`dv2Hgt = ℓh` read at the linear coefficient. -/
+theorem dv2hgt_X : dv2Hgt (L₀ h2 hq) (Polynomial.X : Polynomial O) = 1 := by
+  rw [dv2Hgt, show (L₀ h2 hq).u = 3 from rfl, show (L₀ h2 hq).ℓ = 1 from rfl, dvSupp]
+  simp only [Polynomial.natDegree_X, show Finset.range (1 + 1) = {0, 1} from rfl,
+    Finset.inf_insert, Finset.inf_singleton, dvhgt_X_0 h2 hq, dvhgt_X_1 h2 hq]
+  simp
+
+include h2 hq in
+/-- `keyDeg₂ = (e₁f₁)·ℓ·d_r = 2·1·1 = 2` at `L₀`, so `C := X` clears `hC`. -/
+theorem keyDeg₂_L₀ : (L₀ h2 hq).keyDeg₂ = 2 := by
+  rw [LevelDatum.keyDeg₂, e1_eq h2 hq, f1_eq h2 hq, show (L₀ h2 hq).ℓ = 1 from rfl,
+    show (L₀ h2 hq).r = ρ h2 hq from rfl, ρ_natDegree h2 hq]
+
+/-! ### 3. The norm read at `C := X`: `N(mk g₀ X) = ±g₀(0) = ±4`, of valuation `2` -/
+
+omit [Finite (ResidueField O)] in
+theorem g₀_coeff_zero : (g₀ O).coeff 0 = 4 := by simp [g₀]
+
+include h2 in
+theorem addVal_norm_g₀_X :
+    addVal O (Algebra.norm O (AdjoinRoot.mk (g₀ O) Polynomial.X)) = ((2 : ℕ) : ℕ∞) := by
+  have hmk : AdjoinRoot.mk (g₀ O) Polynomial.X = AdjoinRoot.root (g₀ O) := rfl
+  rw [hmk, norm_adjoinRoot_root g₀_monic (by rw [g₀_natDegree]; norm_num), g₀_natDegree,
+    AddValuation.map_mul, g₀_coeff_zero,
+    IsDiscreteValuationRing.addVal_eq_zero_iff.2 (isUnit_one.neg.pow 3),
+    show (4 : O) = (2 : O) ^ 2 from by norm_num, addVal_two_pow h2 2, zero_add]
+
+/-! ### 4. THE REFUTATION -/
+
+/-- **C.27 AS SIGNED IS FALSE.**  At `(ℤ_[2], π = 2, s2Frame, H₀ = 1, s2Frame_pin, L₀,
+g₀ = x³ − 2x + 4, C := X)` every hypothesis of the signed `slot2_exact` holds —
+`hπ = h2_padic`, `hg = hasLabel_g₀`, `hC : 1 < 2` (`keyDeg₂_L₀`), `hC0 : 1 ≠ ⊤`
+(`dv2hgt_X`) — while the conclusion demands
+`(F.e₁·L.ℓ)·v(N(mk g₀ X)) = deg g₀ · dv2Hgt L₀ X`, i.e. `2·2 = 3·1`, i.e. `4 = 3`.
+
+**Mechanism.**  `dv2Hgt L X = ℓ·h` is the level-1 `x`-slot value the frame *declares*; the norm
+side is `v(g₀.coeff 0) = 2`, the value `g₀` *actually has* at the `x`-polygon.  The identity is
+`F.e₁ · v(g₀.coeff 0) = F.h · deg g₀` (`2·2 = 1·3`, false), which is exactly the level-1
+`x`-purity of `g` — and `HasLabel L g` does not imply it: it constrains the `Φ′`-polygon, not the
+`x`-polygon.  `g₀` is the landed witness of that separation (`C35b`, `hx_g₀_false` at C.61). -/
+theorem slot2_exact_false : ¬ Slot2ExactStatement := by
+  intro hax
+  obtain ⟨v, hv, heq⟩ := hax (L₀ h2_padic rc2) h2_padic (hasLabel_g₀ h2_padic rc2)
+    (C := (Polynomial.X : Polynomial ℤ_[2]))
+    (by rw [Polynomial.natDegree_X, keyDeg₂_L₀ h2_padic rc2]; norm_num)
+    (by rw [dv2hgt_X h2_padic rc2]; decide)
+  rw [dv2hgt_X h2_padic rc2] at hv
+  have hv1 : v = 1 := by
+    have : ((1 : ℕ) : ℕ∞) = ((v : ℕ) : ℕ∞) := by exact_mod_cast hv
+    exact (Nat.cast_injective this).symm
+  rw [hv1, addVal_norm_g₀_X h2_padic, e1_eq h2_padic rc2,
+    show (L₀ h2_padic rc2).ℓ = 1 from rfl, g₀_natDegree] at heq
+  simp at heq
+
+end Uniformity.Density.Tower.C27Refute
 
 /-! ## Axiom footprint -/
 
 section AxCheck
 
 #print axioms Uniformity.Density.Tower.Slot2ExactStatement
+#print axioms Uniformity.Density.Tower.keyDeg₂_pos
+#print axioms Uniformity.Density.Tower.dv2Hgt_zero
+#print axioms Uniformity.Density.Tower.Slot2ExactWithoutHC0Statement
+#print axioms Uniformity.Density.Tower.C27Refute.slot2_exact_without_hC0_false
+#print axioms Uniformity.Density.Tower.C27Refute.dv2hgt_X
+#print axioms Uniformity.Density.Tower.C27Refute.addVal_norm_g₀_X
+#print axioms Uniformity.Density.Tower.C27Refute.slot2_exact_false
 
 end AxCheck
