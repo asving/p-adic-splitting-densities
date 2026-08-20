@@ -69,6 +69,7 @@ import Uniformity.ChapC.C47
 import Uniformity.ChapC.C50
 import Uniformity.ChapC.C51
 import Uniformity.ChapC.C53
+import Uniformity.ChapC.C53b
 import Uniformity.ChapC.C56a
 import Uniformity.ChapC.C60
 import Uniformity.ChapC.C61
