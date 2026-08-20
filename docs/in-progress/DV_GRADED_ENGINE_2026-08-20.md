@@ -158,3 +158,12 @@ landed witnesses (`linTower`: δ = 1, E₂ = 6; `s2Witness` trunc: δ = 1, E₂ 
 brute-force two-variable reduction in Python (`verification/` twin, exact arithmetic);
 (2) a Codex adversarial pass on THIS document (after the Sun Aug 23 budget reset, or on
 owner-purchased credits); (3) only then C.131a.
+
+**(1) EXECUTED, 2026-08-20 — `verification/dv_ledger_cert.py`, exact ℤ arithmetic at the
+s2 slice (`Φ₂ = Φ′² − 4x`, the corpus's own C.97 value): 4143 tests, 0 FAILS.** Covered:
+the box-monomial floor (Corollary B / `dvAbove_boxMonomial`'s exact statement) EXHAUSTIVELY
+including deliberately OVERFLOWING monomials `a ≥ D′`, `b ≥ e₂f₂` — both carries exercised;
+the summed x-basis floor law on 4000 random integral `f` through degree 12, `μ₂ ≤ 3`.
+Sharpness: the floor binds with EQUALITY in 372/400 random probes, so the certified law is
+the sharp statement, not a slack bound. Falsifier pre-registered and survived. (2) remains
+owed before C.131a.
