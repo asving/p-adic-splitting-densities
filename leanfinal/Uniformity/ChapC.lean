@@ -57,6 +57,7 @@ import Uniformity.ChapC.C33Cite
 import Uniformity.ChapC.C34
 import Uniformity.ChapC.C35
 import Uniformity.ChapC.C38a
+import Uniformity.ChapC.C40
 import Uniformity.ChapC.C41
 import Uniformity.ChapC.C42
 import Uniformity.ChapC.C43
