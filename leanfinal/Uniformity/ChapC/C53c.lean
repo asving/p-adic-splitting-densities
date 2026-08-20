@@ -410,18 +410,9 @@ theorem linDigit (hπ : Irreducible π) (a : Fin 2 → O) :
 
 /-! ## 7. Valuation bookkeeping
 
-**Disclosure:** the two `private` lemmas are verbatim reproductions of `C53.lean`'s `private`
-cluster (`le_addVal_iff_pow_dvd'`, `mem_pow_maximalIdeal_iff'`) — private there, hence not
-importable; the same RE-PLAN candidate (promote to `Density/LocalData.lean`) applies. -/
-
-private theorem le_addVal_iff_pow_dvd (hπ : Irreducible π) (m : ℕ) (x : O) :
-    ((m : ℕ) : ℕ∞) ≤ addVal O x ↔ π ^ m ∣ x := by
-  rw [← hπ.addVal_pow m]
-  exact addVal_le_iff_dvd
-
-private theorem mem_pow_maximalIdeal_iff (hπ : Irreducible π) (m : ℕ) (x : O) :
-    x ∈ (IsLocalRing.maximalIdeal O) ^ m ↔ π ^ m ∣ x := by
-  rw [hπ.maximalIdeal_eq, Ideal.span_singleton_pow, Ideal.mem_span_singleton]
+PROMOTED (2026-08-20): the two former `private` reproductions of C53's cluster now come
+PUBLIC from `Uniformity/Density/LocalData.lean` §5b (`le_addVal_iff_pow_dvd`,
+`mem_pow_maximalIdeal_iff`) — the RE-PLAN item, executed. -/
 
 /-! ## 8. THE REFUTATION — `TriangularDigitRead` is FALSE at the instance
 

@@ -130,91 +130,12 @@ open Uniformity Uniformity.Density IsLocalRing IsDiscreteValuationRing
 
 variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
 
-/-! ### Valuation bookkeeping in one coordinate -/
+/-! ### Valuation bookkeeping in one coordinate
 
-private theorem le_addVal_iff_pow_dvd (hπ : Irreducible π) (m : ℕ) (x : O) :
-    ((m : ℕ) : ℕ∞) ≤ addVal O x ↔ π ^ m ∣ x := by
-  rw [← hπ.addVal_pow m]
-  exact addVal_le_iff_dvd
-
-private theorem mem_pow_maximalIdeal_iff (hπ : Irreducible π) (m : ℕ) (x : O) :
-    x ∈ (IsLocalRing.maximalIdeal O) ^ m ↔ π ^ m ∣ x := by
-  rw [hπ.maximalIdeal_eq, Ideal.span_singleton_pow, Ideal.mem_span_singleton]
-
-section Counting
-
-variable [Finite (ResidueField O)]
-
-omit [Finite (ResidueField O)] in
-/-- The level-`N` classes with a lift of valuation `≥ m`, when `N ≤ m`: only the zero class.
-This is the CLIP branch — the conservative bound lies at or beyond the window. -/
-private theorem card_res_ge_of_le (hπ : Irreducible π) {N m : ℕ} (h : N ≤ m) :
-    Nat.card {r : Res O N // ∃ x : O, Ideal.Quotient.mk _ x = r ∧ ((m : ℕ) : ℕ∞) ≤ addVal O x}
-      = residueCard O ^ (N - m) := by
-  have hzero : ∀ r : Res O N,
-      (∃ x : O, Ideal.Quotient.mk _ x = r ∧ ((m : ℕ) : ℕ∞) ≤ addVal O x) ↔ r = 0 := by
-    intro r
-    constructor
-    · rintro ⟨x, rfl, hx⟩
-      rw [Ideal.Quotient.eq_zero_iff_mem, mem_pow_maximalIdeal_iff hπ]
-      exact dvd_trans (pow_dvd_pow _ h) ((le_addVal_iff_pow_dvd hπ m x).1 hx)
-    · rintro rfl
-      exact ⟨0, by simp, by simp⟩
-  have hone : Nat.card {r : Res O N // r = 0} = 1 := by simp
-  rw [Nat.sub_eq_zero_of_le h, pow_zero, ← hone]
-  exact Nat.card_congr (Equiv.subtypeEquivRight hzero)
-
-/-- The level-`N` classes with a lift of valuation `≥ m`, when `m ≤ N`: `q ^ (N − m)` of them —
-the range of the additive map `x ↦ [x·π ^ m]`, whose kernel is `𝔪 ^ (N−m)`. -/
-private theorem card_res_ge_of_ge (hπ : Irreducible π) {N m : ℕ} (h : m ≤ N) :
-    Nat.card {r : Res O N // ∃ x : O, Ideal.Quotient.mk _ x = r ∧ ((m : ℕ) : ℕ∞) ≤ addVal O x}
-      = residueCard O ^ (N - m) := by
-  classical
-  set μ : O →+ Res O N :=
-    (Ideal.Quotient.mk ((IsLocalRing.maximalIdeal O) ^ N)).toAddMonoidHom.comp
-      (AddMonoidHom.mulRight (π ^ m)) with hμ
-  have hμ_apply : ∀ x : O, μ x = Ideal.Quotient.mk _ (x * π ^ m) := fun _ => rfl
-  have hrange : ∀ r : Res O N,
-      (∃ x : O, Ideal.Quotient.mk _ x = r ∧ ((m : ℕ) : ℕ∞) ≤ addVal O x) ↔ r ∈ Set.range μ := by
-    intro r
-    constructor
-    · rintro ⟨x, rfl, hx⟩
-      obtain ⟨y, rfl⟩ := (le_addVal_iff_pow_dvd hπ m x).1 hx
-      exact ⟨y, by rw [hμ_apply]; ring_nf⟩
-    · rintro ⟨y, rfl⟩
-      refine ⟨y * π ^ m, rfl, ?_⟩
-      exact (le_addVal_iff_pow_dvd hπ m _).2 ⟨y, by ring⟩
-  have hker : μ.ker = ((IsLocalRing.maximalIdeal O) ^ (N - m)).toAddSubgroup := by
-    ext x
-    simp only [AddMonoidHom.mem_ker, hμ_apply, Ideal.Quotient.eq_zero_iff_mem,
-      Submodule.mem_toAddSubgroup]
-    rw [mem_pow_maximalIdeal_iff hπ, mem_pow_maximalIdeal_iff hπ]
-    constructor
-    · rintro ⟨c, hc⟩
-      refine ⟨c, ?_⟩
-      have hid : π ^ (N - m) * c * π ^ m = π ^ N * c := by
-        rw [mul_right_comm, ← pow_add, Nat.sub_add_cancel h]
-      have hsplit : x * π ^ m = (π ^ (N - m) * c) * π ^ m := by rw [hid]; exact hc
-      exact mul_right_cancel₀ (pow_ne_zero m hπ.ne_zero) hsplit
-    · rintro ⟨c, rfl⟩
-      exact ⟨c, by rw [mul_right_comm, ← pow_add, Nat.sub_add_cancel h]⟩
-  have hcard : Nat.card (Set.range μ) = Nat.card (O ⧸ μ.ker) :=
-    (Nat.card_congr (QuotientAddGroup.quotientKerEquivRange μ).toEquiv).symm
-  have hq : Nat.card (O ⧸ μ.ker) = residueCard O ^ (N - m) := by
-    rw [hker]
-    exact card_res (O := O) (N - m)
-  rw [Nat.card_congr (Equiv.subtypeEquivRight hrange), hcard, hq]
-
-/-- **One coordinate, both branches.**  `#{r : O ⧸ 𝔪 ^ N | r lifts to valuation ≥ m}
-= q ^ (N − m)`, the subtraction being the ℕ-clip. -/
-private theorem card_res_ge (hπ : Irreducible π) (N m : ℕ) :
-    Nat.card {r : Res O N // ∃ x : O, Ideal.Quotient.mk _ x = r ∧ ((m : ℕ) : ℕ∞) ≤ addVal O x}
-      = residueCard O ^ (N - m) := by
-  rcases le_total m N with h | h
-  · exact card_res_ge_of_ge hπ h
-  · exact card_res_ge_of_le hπ h
-
-end Counting
+PROMOTED (2026-08-20): the former `private` cluster (`le_addVal_iff_pow_dvd`,
+`mem_pow_maximalIdeal_iff`, `card_res_ge_of_le`, `card_res_ge_of_ge`, `card_res_ge`) now
+lives PUBLIC in `Uniformity/Density/LocalData.lean` §5b — the RE-PLAN item this file's
+header flagged.  Consumed from there below; statements byte-identical. -/
 
 /-! ### The block regrouping -/
 

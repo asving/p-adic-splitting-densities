@@ -327,6 +327,99 @@ theorem card_preimage_coeffFactor (n : ℕ) {N M : ℕ} (h : N ≤ M) (S : Set (
 
 end Card
 
+/-! ## 5b. Valuation bookkeeping in one coordinate
+
+Promoted 2026-08-20 from `ChapC/C110.lean`'s `private` cluster (the RE-PLAN item C.53's and
+C.110's headers both flag): the divisibility reads of `addVal` and the one-coordinate count
+`#{r : O ⧸ 𝔪 ^ N | r lifts to valuation ≥ m} = q ^ (N − m)` with the `ℕ`-subtraction CLIP.
+The former `private` copies in C110/C53/C53c now consume these. -/
+
+section ValCount
+
+open IsDiscreteValuationRing
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+theorem le_addVal_iff_pow_dvd (hπ : Irreducible π) (m : ℕ) (x : O) :
+    ((m : ℕ) : ℕ∞) ≤ addVal O x ↔ π ^ m ∣ x := by
+  rw [← hπ.addVal_pow m]
+  exact addVal_le_iff_dvd
+
+theorem mem_pow_maximalIdeal_iff (hπ : Irreducible π) (m : ℕ) (x : O) :
+    x ∈ (IsLocalRing.maximalIdeal O) ^ m ↔ π ^ m ∣ x := by
+  rw [hπ.maximalIdeal_eq, Ideal.span_singleton_pow, Ideal.mem_span_singleton]
+
+/-- The level-`N` classes with a lift of valuation `≥ m`, when `N ≤ m`: only the zero class
+(the CLIP branch — the bound lies at or beyond the window). -/
+theorem card_res_ge_of_le (hπ : Irreducible π) {N m : ℕ} (h : N ≤ m) :
+    Nat.card {r : Res O N // ∃ x : O, Ideal.Quotient.mk _ x = r ∧ ((m : ℕ) : ℕ∞) ≤ addVal O x}
+      = residueCard O ^ (N - m) := by
+  have hzero : ∀ r : Res O N,
+      (∃ x : O, Ideal.Quotient.mk _ x = r ∧ ((m : ℕ) : ℕ∞) ≤ addVal O x) ↔ r = 0 := by
+    intro r
+    constructor
+    · rintro ⟨x, rfl, hx⟩
+      rw [Ideal.Quotient.eq_zero_iff_mem, mem_pow_maximalIdeal_iff hπ]
+      exact dvd_trans (pow_dvd_pow _ h) ((le_addVal_iff_pow_dvd hπ m x).1 hx)
+    · rintro rfl
+      exact ⟨0, by simp, by simp⟩
+  have hone : Nat.card {r : Res O N // r = 0} = 1 := by simp
+  rw [Nat.sub_eq_zero_of_le h, pow_zero, ← hone]
+  exact Nat.card_congr (Equiv.subtypeEquivRight hzero)
+
+/-- The level-`N` classes with a lift of valuation `≥ m`, when `m ≤ N`: `q ^ (N − m)` of them —
+the range of the additive map `x ↦ [x·π ^ m]`, whose kernel is `𝔪 ^ (N−m)`. -/
+theorem card_res_ge_of_ge [Finite (ResidueField O)] (hπ : Irreducible π) {N m : ℕ}
+    (h : m ≤ N) :
+    Nat.card {r : Res O N // ∃ x : O, Ideal.Quotient.mk _ x = r ∧ ((m : ℕ) : ℕ∞) ≤ addVal O x}
+      = residueCard O ^ (N - m) := by
+  classical
+  set μ : O →+ Res O N :=
+    (Ideal.Quotient.mk ((IsLocalRing.maximalIdeal O) ^ N)).toAddMonoidHom.comp
+      (AddMonoidHom.mulRight (π ^ m)) with hμ
+  have hμ_apply : ∀ x : O, μ x = Ideal.Quotient.mk _ (x * π ^ m) := fun _ => rfl
+  have hrange : ∀ r : Res O N,
+      (∃ x : O, Ideal.Quotient.mk _ x = r ∧ ((m : ℕ) : ℕ∞) ≤ addVal O x) ↔ r ∈ Set.range μ := by
+    intro r
+    constructor
+    · rintro ⟨x, rfl, hx⟩
+      obtain ⟨y, rfl⟩ := (le_addVal_iff_pow_dvd hπ m x).1 hx
+      exact ⟨y, by rw [hμ_apply]; ring_nf⟩
+    · rintro ⟨y, rfl⟩
+      refine ⟨y * π ^ m, rfl, ?_⟩
+      exact (le_addVal_iff_pow_dvd hπ m _).2 ⟨y, by ring⟩
+  have hker : μ.ker = ((IsLocalRing.maximalIdeal O) ^ (N - m)).toAddSubgroup := by
+    ext x
+    simp only [AddMonoidHom.mem_ker, hμ_apply, Ideal.Quotient.eq_zero_iff_mem,
+      Submodule.mem_toAddSubgroup]
+    rw [mem_pow_maximalIdeal_iff hπ, mem_pow_maximalIdeal_iff hπ]
+    constructor
+    · rintro ⟨c, hc⟩
+      refine ⟨c, ?_⟩
+      have hid : π ^ (N - m) * c * π ^ m = π ^ N * c := by
+        rw [mul_right_comm, ← pow_add, Nat.sub_add_cancel h]
+      have hsplit : x * π ^ m = (π ^ (N - m) * c) * π ^ m := by rw [hid]; exact hc
+      exact mul_right_cancel₀ (pow_ne_zero m hπ.ne_zero) hsplit
+    · rintro ⟨c, rfl⟩
+      exact ⟨c, by rw [mul_right_comm, ← pow_add, Nat.sub_add_cancel h]⟩
+  have hcard : Nat.card (Set.range μ) = Nat.card (O ⧸ μ.ker) :=
+    (Nat.card_congr (QuotientAddGroup.quotientKerEquivRange μ).toEquiv).symm
+  have hq : Nat.card (O ⧸ μ.ker) = residueCard O ^ (N - m) := by
+    rw [hker]
+    exact card_res (O := O) (N - m)
+  rw [Nat.card_congr (Equiv.subtypeEquivRight hrange), hcard, hq]
+
+/-- **One coordinate, both branches.**  `#{r : O ⧸ 𝔪 ^ N | r lifts to valuation ≥ m}
+= q ^ (N − m)`, the subtraction being the `ℕ`-CLIP. -/
+theorem card_res_ge [Finite (ResidueField O)] (hπ : Irreducible π) (N m : ℕ) :
+    Nat.card {r : Res O N // ∃ x : O, Ideal.Quotient.mk _ x = r ∧ ((m : ℕ) : ℕ∞) ≤ addVal O x}
+      = residueCard O ^ (N - m) := by
+  rcases le_total m N with h | h
+  · exact card_res_ge_of_ge hπ h
+  · exact card_res_ge_of_le hπ h
+
+end ValCount
+
 /-! ## 6. `ℤ_[p]` is an instance of the bundle -/
 
 section Padic
