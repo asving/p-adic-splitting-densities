@@ -7265,3 +7265,40 @@ NEXT: (a) the C.131 formalization arc (after the Codex pass);
 (c) chapter C's remaining unlanded names off the frontier list.
 Owner packet ready: freeze v1+review, D-TIF-1..5, the C.27/C.67
 re-sign questions, the L6 cite-or-prove fallback.
+
+**2026-08-20 DATED APPEND #109 — C.48 LANDED WHOLE and C.64 REFUTED in
+one stroke: the D-CARRY fault line machine-checked on BOTH sides in a
+single day, and the sweep registry extended to EIGHT sites by the
+mechanical check.**
+
+(1) ★ `ChapC/C48.lean` — **NODE C.48 `fullSide_block` PROVED at its
+byte-frozen binders** (roll-up green): at full-side data (monic,
+deg = μ₂D₂, (u₂,e₂)-pure, residual = towerLabel^μ₂) — the towerLocus
+membership data unbundled — the left digit is finite (purity's own
+DvOnSide at 0), the frame key does not divide f, **f IS its own
+(λ,r)-block** (the C67 blockFactor_eq_of_frontier pattern at the
+general datum), and mult₂ = μ₂ (keyDeg₂ = D₂ by towerLabel_spec).
+Lean-core, no cite. HX_SWEEP §6.1's clearance verdict is thereby
+confirmed IN LEAN: the exact-degree law as a HYPOTHESIS is the
+protected shape.
+
+(2) ★ `ChapC/C64.lean` — **the signed `blockDeg_eq` is FALSE** (the
+naked form: `deg (blockFactor L f) = keyDeg₂ · mult₂`, i.e.
+`keyDeg₂ ∣ deg blockFactor`, at bare `BlockContext`): pure ASSEMBLY of
+C67's landed instruments (blockContext_g₀ + blockFactor_g₀ + mult₂_g₀
++ keyDeg₂ = 2) — the conclusion demands 3 = 2. Fifth D-CARRY casualty;
+cheapest refutation yet (everything was landed; one file, first-compile
+green). `mult₂_readable` (the node's dv2-translation half) is NOT
+adjudicated — different statement, stays at stub. Re-sign owner item
+joins C.27/C.67's.
+
+(3) THE REGISTRY, extended mechanically (HX_SWEEP §7): the corrected
+check over the signed spec returns EIGHT `blockFactor`-degree sites —
+2 BLOCKED members (C.35 cl.3, C.40 (iii)), 2 REFUTED (C.67, C.64),
+1 LANDED-protected (C.48), and THREE tower-borne candidates
+(C.77 cl.(iii), C.78, C.80) that the s2 probe cannot instantiate
+(the `hcomp` fence) — the analysis route is a `linTower`-based
+labelled-impure probe (keyDeg₂ = D₂ = 2 at (e₂,f₂) = (2,1)), queued.
+
+NEXT: unchanged from #108 plus (new) the linTower probe for
+C.77/C.78/C.80. Owner items: + the C.64 re-sign question.
