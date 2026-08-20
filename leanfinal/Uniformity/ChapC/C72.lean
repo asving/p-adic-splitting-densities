@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Uniformity.ChapC.C73
 import Uniformity.ChapC.C38a
+import Uniformity.ChapC.C27
 
 /-!
 # Uniformity.ChapC.C72 — GENTOW-3(i)+(ii): the floor and the faithful band — **PARTIAL: BLOCKED**
@@ -26,7 +27,10 @@ This file lands, honestly and with nothing claimed beyond it:
    identically zero (C.73's `shadow_exact_of_xfree`), so the floor is `⊤ ≥ Θ_j` and the band
    clause is a triviality.  This is a genuine but NARROW stratum: it is precisely the stratum on
    which the node has no content, since C.72's whole purpose is the non-x-free case;
-3. `dv2Hgt_zero`, the reusable reduction the above rides on: the level-2 height of `0` is `⊤`;
+3. the reusable reduction the above rides on: the level-2 height of `0` is `⊤` — `dv2Hgt_zero`,
+   imported from `C27.lean` (the hypothesis-free form; this file's original copy carried a
+   redundant `0 < L.ℓ` binder already available as the `LevelDatum.hℓ` field, and was removed
+   when wiring C27 exposed the name collision, 2026-08-20);
 4. the **BLOCKED record** below, with the exact mechanism.
 
 **No consumer may read this file as supplying GENTOW-3(i) or (ii).**
@@ -94,7 +98,7 @@ hj : j < μ₂
 ⊢ ↑(T.theta μ₂ j) ≤ dv2Hgt (T.levelDatum hπ) (shadowDev T f j - dev (composedKey T) f j)
 ```
 
-The single available reduction is `dv2Hgt_zero` (below): if the difference is `0` the goal closes
+The single available reduction is `dv2Hgt_zero` (C27): if the difference is `0` the goal closes
 by `le_top`.  That is the x-free stratum, and it is landed.  Off it, the goal above is untouched:
 `dv2Hgt` is a `Finset.inf` of `dvSupp` over the `Φ′`-digits of a DIFFERENCE of two division
 towers, and there is no landed lemma that lower-bounds such a thing.
@@ -202,22 +206,9 @@ private theorem nsmul_top_pos {n : ℕ} (hn : 0 < n) : n • (⊤ : ℕ∞) = �
   | zero => simp
   | succ k ih => rw [succ_nsmul, ih, top_add]
 
-/-- **The level-2 height of `0` is `⊤`.**  `dv2Hgt` is C.11's `dvSupp` at the level's own side, an
-inf over the `Φ′`-digits; at the zero polynomial the single digit in range is `0`, whose level-1
-height is `⊤` (C.127's `KeyFrame.stageHeight_zero`), and `ℓ • ⊤ = ⊤` because `ℓ > 0`.
-
-This is the reduction that makes "the two reads agree" imply "the floor holds": a vanishing
-discrepancy has height `⊤`, which dominates every threshold. -/
-theorem dv2Hgt_zero {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} (L : LevelDatum F H₀ hpin)
-    (hℓ : 0 < L.ℓ) : dv2Hgt L (0 : Polynomial O) = ⊤ := by
-  have hz : dev F.key (0 : Polynomial O) 0 = 0 := by
-    show (0 : Polynomial O) %ₘ F.key = 0
-    exact zero_modByMonic F.key
-  have hdig : dvHgt F (0 : Polynomial O) 0 = ⊤ := by
-    rw [dvHgt, hz, F.stageHeight_zero]
-  rw [dv2Hgt, dvSupp]
-  simp only [Polynomial.natDegree_zero, Nat.zero_add, Finset.range_one, Finset.inf_singleton,
-    hdig, nsmul_top_pos hℓ, top_add]
+/- `dv2Hgt_zero` — the level-2 height of `0` is `⊤` — is imported from `C27.lean` (the
+hypothesis-free form).  It is the reduction that makes "the two reads agree" imply "the floor
+holds": a vanishing discrepancy has height `⊤`, which dominates every threshold. -/
 
 /-! ## The two signed statements, as STATEMENT CARRIERS (nothing is asserted)
 
@@ -271,7 +262,7 @@ theorem shadow_floor_of_xfree {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H�
     (T.theta μ₂ j : ℕ∞)
       ≤ dv2Hgt (T.levelDatum hπ) (shadowDev T f j - dev (composedKey T) f j) := by
   rw [shadow_exact_of_xfree T hπ hh hx hf j, sub_self,
-    dv2Hgt_zero (T.levelDatum hπ) T.he₂]
+    dv2Hgt_zero (T.levelDatum hπ)]
   exact le_top
 
 set_option linter.unusedVariables false in
