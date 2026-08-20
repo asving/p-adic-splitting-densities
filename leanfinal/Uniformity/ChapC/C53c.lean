@@ -230,6 +230,58 @@ theorem linFrame_data (hπ : Irreducible π) :
 theorem linFrame_pin (hπ : Irreducible π) : (linFrame hπ).Pin 1 :=
   linKey_pinHgt hπ
 
+/-! ## 4. The tower datum — **the corpus's first `TowerDatum` VALUE**
+
+Until this declaration the corpus landed NO `TowerDatum` value at all (PROJECT_STATE append
+#103 (5): the inhabitation gap flagged as the live vacuity risk for C.72/C.73's
+∀-over-`TowerDatum` statements).  `linTower` inhabits that binder: `(e₂, f₂, u₂) = (2, 1, 3)`,
+`ψ₂ = T + 1` over the stage field, fences `2 ≤ 2·1`, `Coprime 3 2`, `2·(1·1)·1 = 2 < 3`. -/
+
+/-- the `Field` structure on the frame's stage field, from `hresirr` (the C.97
+`s2StageFieldInst` pattern; reducible so the `CommRing` it induces is the ambient
+`AdjoinRoot` one). -/
+@[reducible] noncomputable def linStageFieldInst (hπ : Irreducible π)
+    (H₀ : ℕ) (hpin : (linFrame hπ).Pin H₀) : Field ((linFrame hπ).stageField H₀ hpin) :=
+  letI : Field (resField (X : Polynomial O)) := instFieldResField isKey_X
+  haveI : Fact (Irreducible ((linFrame hπ).frameRes H₀ hpin)) :=
+    ⟨((linFrame hπ).hresirr H₀ hpin).1⟩
+  AdjoinRoot.instField
+
+/-- **the refuting tower datum** `(e₂, f₂, u₂) = (2, 1, 3)`, `ψ₂ = T + 1` (written `T − (−1)`
+so that mathlib's `irreducible_X_sub_C` applies verbatim; the two are equal by `sub_neg_eq_add`,
+see `linTower_psi`). -/
+noncomputable def linTower (hπ : Irreducible π) :
+    TowerDatum (linFrame hπ) 1 (linFrame_pin hπ) :=
+  letI : Field ((linFrame hπ).stageField 1 (linFrame_pin hπ)) :=
+    linStageFieldInst hπ 1 (linFrame_pin hπ)
+  { e₂ := 2
+    f₂ := 1
+    u₂ := 3
+    ψ₂ := Polynomial.X - Polynomial.C (-1)
+    he₂ := by norm_num
+    hf₂ := Nat.one_pos
+    hcomp := by norm_num
+    hcop := by decide
+    hfloor := by show 2 * (1 * 1) * 1 < 3; norm_num
+    hψmonic := monic_X_sub_C (-1)
+    hψirr := irreducible_X_sub_C (-1)
+    hψdeg := natDegree_X_sub_C (-1)
+    hψ0 := by
+      simp only [coeff_sub, coeff_X_zero, coeff_C_zero, zero_sub, neg_neg]
+      exact one_ne_zero }
+
+/-- the tower's three numerals and the two derived constants `D₂ = 2`, `E₂ = 6`, by `rfl`. -/
+theorem linTower_data (hπ : Irreducible π) :
+    (linTower hπ).e₂ = 2 ∧ (linTower hπ).f₂ = 1 ∧ (linTower hπ).u₂ = 3 ∧
+      (linTower hπ).D₂ = 2 ∧ (linTower hπ).E₂ = 6 :=
+  ⟨rfl, rfl, rfl, rfl, rfl⟩
+
+/-- `ψ₂` is `T + 1` on the nose. -/
+theorem linTower_psi (hπ : Irreducible π) :
+    (linTower hπ).ψ₂ = Polynomial.X + Polynomial.C 1 := by
+  show Polynomial.X - Polynomial.C (-1) = _
+  rw [map_neg, sub_neg_eq_add]
+
 end Uniformity.Density.Tower.C53c
 
 /-! ## Axiom footprint -/
