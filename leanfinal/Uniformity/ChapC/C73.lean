@@ -565,4 +565,224 @@ theorem keyY_coeff_natDegree_le (T : TowerDatum F H₀ hpin) (hπ : Irreducible 
 
 end KeyY
 
+/-! ## The exactness theorem, part 4: reassembly inverts the presentation, and the assembly -/
+
+section Exact
+
+open IsLocalRing
+
+variable {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+
+/-- **`reass` inverts `biRep` after transport.**  C.71's reassembly recovers a polynomial from the
+mod-`Φ′` classes of its own `Φ′`-digits, because those digits are already the canonical
+degree-`< D′` representatives (`degree_dev_lt` + `modByMonic_eq_self_iff`).  This is the last step
+of the shadow read, and the reason the shadow can return the honest answer at all. -/
+theorem reass_map_biRep (F : KeyFrame O π) (A : Polynomial O) :
+    reass F ((biRep F A).map (AdjoinRoot.mk F.key)) = A := by
+  have hle : ((biRep F A).map (AdjoinRoot.mk F.key)).natDegree < A.natDegree + 1 := by
+    have h1 : ((biRep F A).map (AdjoinRoot.mk F.key)).natDegree ≤ (biRep F A).natDegree :=
+      natDegree_map_le
+    have h2 := biRep_natDegree_le F A
+    omega
+  rw [reass_eq_sum_range F _ hle]
+  have hterm : ∀ b ∈ Finset.range (A.natDegree + 1),
+      (AdjoinRoot.modByMonicHom F.hmonic
+          (((biRep F A).map (AdjoinRoot.mk F.key)).coeff b)) * F.key ^ b
+        = dev F.key A b * F.key ^ b := by
+    intro b _
+    rw [coeff_map, biRep_coeff, AdjoinRoot.modByMonicHom_mk,
+      (modByMonic_eq_self_iff F.hmonic).2 (degree_dev_lt F.hmonic F.natDegree_key_pos A b)]
+  rw [Finset.sum_congr rfl hterm]
+  refine sum_dev_eq F.hmonic F.natDegree_key_pos A ?_
+  calc A.natDegree < A.natDegree + 1 := by omega
+    _ = (A.natDegree + 1) * 1 := by ring
+    _ ≤ (A.natDegree + 1) * F.key.natDegree :=
+        Nat.mul_le_mul_left _ F.natDegree_key_pos
+
+-- The A-C.1-signed binders `hh`, `[Finite (ResidueField O)]`, `μ₂` and `hf` are NOT consumed:
+-- (iii) is a degree identity and the proof establishes it for EVERY `f : Polynomial O`, exactly
+-- as `EFF.GENTOW3.26` presents it ("no x-overflow ever occurs, reduction mod Φ′ is the identity
+-- on every coefficient").  They are kept because the signature is frozen (statement fence), and
+-- the fact is recorded in the module docstring rather than papered over.  `hπ` IS consumed, via
+-- `isXFree_iff_forall` (the zero-slot branch) and `composedKey_natDegree`.
+set_option linter.unusedVariables false in
+/-- **NODE C.73 — GENTOW-3(iii), X-FREE EXACTNESS.**  At an x-free datum the discrepancy between
+C.71's two reads is ZERO at every coordinate: the stage-shadow read IS the composed (honest)
+read, `shadowDev T f j = dev (composedKey T) f j`.
+
+The proof is `EFF.GENTOW3.26`'s degree argument, formalized through the two-variable
+presentation.  Write `Φ′ = F.key`, `D′ = deg Φ′`, `m = e₂f₂`, `Φ₂ = composedKey T`, and let
+`C_{j'} = dev Φ₂ f j'` be the honest development coefficients.  Then
+
+* `keyY T` presents `Φ₂` in `O[x][Z]`, monic of `Z`-degree `m`, with every coefficient a CONSTANT
+  — this last is exactly x-freeness (`keyY_coeff_natDegree_le`), and the only place it is used;
+* `Ap = Σ_{j' < N} biRep F C_{j'} · (keyY T)^{j'}` presents `f`, and is IN-GRID because the
+  `keyY`-powers contribute `X`-degree `0`: no coefficient ever reaches `X`-degree `D′`, so "no
+  x-overflow ever occurs";
+* `Ap` is BY CONSTRUCTION the `keyY`-adic chain, so `devQ` reads `biRep F C_j` back out of it
+  (`devQ_chain`) — and the identical computation runs after transport by `AdjoinRoot.mk Φ′`,
+  since the division is in `Z` and the reduction mod `Φ′` cannot disturb it;
+* `reass` inverts `biRep ∘ map` (`reass_map_biRep`), returning `C_j` on the nose.
+
+At a non-x-free datum the second bullet fails — the products leave the grid — which is precisely
+the content of C.72's floor and C.74's attainment, and precisely why (iii) is an x-free
+statement. -/
+theorem shadow_exact_of_xfree (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] (hx : IsXFree T)
+    {μ₂ : ℕ} {f : Polynomial O} (hf : f ∈ towerLocus T μ₂) (j : ℕ) :
+    shadowDev T f j = dev (composedKey T) f j := by
+  classical
+  haveI : Nontrivial (AdjoinRoot F.key) := F.nontrivial_adjoinRoot
+  have hDpos : 0 < F.key.natDegree := F.natDegree_key_pos
+  have hmpos : 0 < T.e₂ * T.f₂ := by have := T.hcomp; omega
+  -- the composed key: monic, of degree `m·D′`
+  have hΦmonic : (composedKey T).Monic := composedKey_monic T
+  have hΦdeg : (composedKey T).natDegree = (T.e₂ * T.f₂) * F.key.natDegree := by
+    have hd : (T.levelDatum hπ).r.natDegree = T.f₂ := (towerLabel_spec T hπ).2.2.1
+    have hl : (T.levelDatum hπ).ℓ = T.e₂ := rfl
+    rw [composedKey_natDegree T hπ, LevelDatum.keyDeg₂, hd, hl, F.hdeg]
+    ring
+  have hΦpos : 0 < (composedKey T).natDegree := by
+    rw [hΦdeg]; exact Nat.mul_pos hmpos hDpos
+  -- how many chain coordinates the presentation needs
+  obtain ⟨N, hjN, hfN⟩ : ∃ N, j < N ∧ f.natDegree < N * (composedKey T).natDegree := by
+    refine ⟨max (f.natDegree + 1) (j + 1),
+      lt_of_lt_of_le (Nat.lt_succ_self j) (le_max_right _ _), ?_⟩
+    have h1 : f.natDegree + 1 ≤ max (f.natDegree + 1) (j + 1) := le_max_left _ _
+    have h2 : max (f.natDegree + 1) (j + 1) * 1
+        ≤ max (f.natDegree + 1) (j + 1) * (composedKey T).natDegree :=
+      Nat.mul_le_mul_left _ hΦpos
+    omega
+  -- the key's presentation
+  have hKmonic : (keyY T).Monic := keyY_monic T
+  have hKcoef : ∀ i, ((keyY T).coeff i).natDegree ≤ 0 := keyY_coeff_natDegree_le T hπ hx
+  have hKgrid : ∀ i, ((keyY T).coeff i).degree < F.key.degree :=
+    degree_coeff_lt_of_natDegree_le F hKcoef hDpos
+  have hKpow : ∀ (n i : ℕ), (((keyY T) ^ n).coeff i).natDegree ≤ 0 := by
+    intro n i
+    have h := natDegree_coeff_pow_le hKcoef n i
+    simpa using h
+  -- `f`'s presentation, as the `keyY`-adic chain of its honest development
+  set Ap : Polynomial (Polynomial O) :=
+    ∑ j' ∈ Finset.range N, biRep F (dev (composedKey T) f j') * (keyY T) ^ j' with hAp
+  have hAcoef : ∀ i, (Ap.coeff i).natDegree ≤ F.key.natDegree - 1 := by
+    intro i
+    rw [hAp, finsetSum_coeff]
+    refine natDegree_sum_le_of_forall_le _ _ fun j' _ => ?_
+    have h := natDegree_coeff_mul_le
+      (p := biRep F (dev (composedKey T) f j')) (q := (keyY T) ^ j')
+      (d := F.key.natDegree - 1) (e := 0)
+      (biRep_coeff_natDegree_le F (dev (composedKey T) f j')) (hKpow j') i
+    simpa using h
+  have hAgrid : ∀ i, (Ap.coeff i).degree < F.key.degree :=
+    degree_coeff_lt_of_natDegree_le F hAcoef (by omega)
+  have hAe : Polynomial.eval F.key Ap = f := by
+    rw [hAp, eval_finsetSum]
+    have hterm : ∀ j' ∈ Finset.range N,
+        Polynomial.eval F.key (biRep F (dev (composedKey T) f j') * (keyY T) ^ j')
+          = dev (composedKey T) f j' * (composedKey T) ^ j' := by
+      intro j' _
+      rw [eval_mul, eval_pow, biRep_eval, keyY_eval]
+    rw [Finset.sum_congr rfl hterm]
+    exact sum_dev_eq hΦmonic hΦpos f hfN
+  -- the transported key, and the in-grid bound on the transported chain entries
+  have hKbarmonic : ((keyY T).map (AdjoinRoot.mk F.key)).Monic := hKmonic.map _
+  have hKbardeg : ((keyY T).map (AdjoinRoot.mk F.key)).natDegree = T.e₂ * T.f₂ := by
+    rw [hKmonic.natDegree_map, keyY_natDegree T]
+  have hEbar : ∀ j', ((biRep F (dev (composedKey T) f j')).map (AdjoinRoot.mk F.key)).degree
+      < ((keyY T).map (AdjoinRoot.mk F.key)).degree := by
+    intro j'
+    rw [degree_eq_natDegree hKbarmonic.ne_zero, hKbardeg]
+    refine (degree_lt_iff_coeff_zero _ _).2 ?_
+    intro k hk
+    rw [coeff_map, biRep_coeff]
+    have hd1 : (dev (composedKey T) f j').natDegree < (T.e₂ * T.f₂) * F.key.natDegree := by
+      by_cases h0 : dev (composedKey T) f j' = 0
+      · rw [h0, natDegree_zero]
+        exact Nat.mul_pos hmpos hDpos
+      · have h2 := natDegree_lt_natDegree h0 (degree_dev_lt hΦmonic hΦpos f j')
+        rw [hΦdeg] at h2
+        exact h2
+    have hz : dev F.key (dev (composedKey T) f j') k = 0 := by
+      refine dev_eq_zero_of_lt F.hmonic hDpos _ k ?_
+      calc (dev (composedKey T) f j').natDegree
+            < (T.e₂ * T.f₂) * F.key.natDegree := hd1
+        _ ≤ k * F.key.natDegree := Nat.mul_le_mul_right _ hk
+    rw [hz, map_zero]
+  -- the assembly
+  rw [shadowDev_of_ingrid T hKgrid hAgrid (keyY_eval T) hAe j]
+  have hmapA : Ap.map (AdjoinRoot.mk F.key)
+      = ∑ j' ∈ Finset.range N,
+          ((biRep F (dev (composedKey T) f j')).map (AdjoinRoot.mk F.key))
+            * ((keyY T).map (AdjoinRoot.mk F.key)) ^ j' := by
+    rw [hAp, Polynomial.map_sum]
+    exact Finset.sum_congr rfl fun j' _ => by
+      rw [Polynomial.map_mul, Polynomial.map_pow]
+  rw [hmapA, devQ_chain hKbarmonic
+    (fun j' => (biRep F (dev (composedKey T) f j')).map (AdjoinRoot.mk F.key)) hEbar hjN]
+  exact reass_map_biRep F (dev (composedKey T) f j)
+
+end Exact
+
 end Uniformity.Density.Tower
+
+/-! ## Unfolding checks
+
+`example`s, not declarations: the local pins on the shape of the signed definition and on the two
+places a transposition would otherwise pass silently — that `IsXFree` is read at the composed
+key's OWN lift argument (`−ψ₂.coeff t · η^{W(t)}` at height `(f₂−t)u₂`, C.43's body), and that the
+`f₁ = 1` companion's right-hand side is the slot index of that SAME height. -/
+
+section UnfoldingChecks
+
+open Uniformity.Density.Tower Uniformity.Density.Leaf Polynomial
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+
+/-- the body, verbatim: `IsXFree` IS the guarded `X`-degree-zero condition on C.43's lift slots. -/
+example {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} (T : TowerDatum F H₀ hpin) :
+    IsXFree T
+      ↔ ∀ t, t < T.f₂ → T.ψ₂.coeff t ≠ 0 →
+          (F.stageLiftO H₀ hpin ((T.f₂ - t) * T.u₂)
+            (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp T t))).natDegree = 0 := Iff.rfl
+
+/-- `keyY` is read against `Z^{e₂t}`, matching C.43's `Φ′^{e₂t}` — a transposed `e₂ ↔ f₂` or a
+dropped `wrapExp` would break `keyY_eval`, which is `rfl`-grade after `simp only`. -/
+example {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} (T : TowerDatum F H₀ hpin) :
+    Polynomial.eval F.key (keyY T) = composedKey T := keyY_eval T
+
+/-- at an x-free datum the discrepancy is zero at EVERY coordinate, `j ≥ μ₂` included: the
+statement is a coordinatewise identity, not a band statement (contrast C.72). -/
+example {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} (T : TowerDatum F H₀ hpin)
+    (hπ : Irreducible π) (hh : 1 ≤ F.h) [Finite (IsLocalRing.ResidueField O)] (hx : IsXFree T)
+    {μ₂ : ℕ} {f : Polynomial O} (hf : f ∈ towerLocus T μ₂) :
+    ∀ j, shadowDev T f j - dev (composedKey T) f j = 0 := fun j => by
+  rw [shadow_exact_of_xfree T hπ hh hx hf j, sub_self]
+
+end UnfoldingChecks
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Tower.IsXFree
+#print axioms Uniformity.Density.Tower.isXFree_iff_forall
+#print axioms Uniformity.Density.Tower.isXFree_iff_slot_of_f1
+#print axioms Uniformity.Density.Tower.devQ_finsetSum
+#print axioms Uniformity.Density.Tower.devQ_term
+#print axioms Uniformity.Density.Tower.devQ_chain
+#print axioms Uniformity.Density.Tower.biRep
+#print axioms Uniformity.Density.Tower.biRep_coeff
+#print axioms Uniformity.Density.Tower.biRep_natDegree_le
+#print axioms Uniformity.Density.Tower.biRep_eval
+#print axioms Uniformity.Density.Tower.biRep_coeff_natDegree_le
+#print axioms Uniformity.Density.Tower.biRep_natDegree_lt
+#print axioms Uniformity.Density.Tower.keyY
+#print axioms Uniformity.Density.Tower.keyY_eval
+#print axioms Uniformity.Density.Tower.keyY_monic
+#print axioms Uniformity.Density.Tower.keyY_natDegree
+#print axioms Uniformity.Density.Tower.keyY_coeff_natDegree_le
+#print axioms Uniformity.Density.Tower.reass_map_biRep
+#print axioms Uniformity.Density.Tower.shadow_exact_of_xfree
+
+end AxCheck
