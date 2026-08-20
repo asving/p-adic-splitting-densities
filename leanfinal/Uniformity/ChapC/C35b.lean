@@ -379,6 +379,16 @@ theorem d13_refuted : ¬ D13Statement := fun hax =>
     (hax ℤ_[2] 2 (s2Frame h2_padic rc2) 1 (s2Frame_pin h2_padic rc2)
       (L₀ h2_padic rc2) h2_padic (g₀ ℤ_[2]) (hasLabel_g₀ h2_padic rc2))
 
+/-- **the same refutation at the question's EXACT binder shape** (implicit `{F} {H₀ hpin}
+{g}`, as the D13 target prints it) — so the faithfulness of `D13Statement` to the asked
+theorem is machine-checked, not judged. -/
+theorem hasLabel_natDegree_dvd_false :
+    ¬ (∀ {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+        {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+        (_hπ : Irreducible π) {g : Polynomial O} (_hg : HasLabel L g),
+        (F.e₁ * F.f₁) ∣ g.natDegree) :=
+  fun htarget => d13_refuted fun _O _ _ _ _π _F _H₀ _hpin L hπ _g hg => htarget L hπ hg
+
 end Absolute
 
 end Uniformity.Density.Tower.C35b
@@ -389,5 +399,6 @@ section AxCheck
 
 #print axioms Uniformity.Density.Tower.C35b.hasLabel_g₀
 #print axioms Uniformity.Density.Tower.C35b.d13_refuted
+#print axioms Uniformity.Density.Tower.C35b.hasLabel_natDegree_dvd_false
 
 end AxCheck
