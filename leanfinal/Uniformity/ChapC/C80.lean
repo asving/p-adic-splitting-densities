@@ -179,4 +179,86 @@ theorem dev_f₅_two : dev (s2Key O) (f₅ O) 2 = Polynomial.X + Polynomial.C 1 
   rw [s2Key_deg, Polynomial.degree_X_add_C]
   decide
 
+/-! ## 3. The height profile `(5, ⊤, 0)`, the side `{0, 2}`, and purity -/
+
+include h2 hq in
+theorem dvhgt_f₅_0 : dvHgt (s2Frame h2 hq) (f₅ O) 0 = (5 : ℕ∞) := by
+  rw [dvHgt, key_eq h2 hq, dev_f₅_zero, KeyFrame.stageHeight_eq_inf]
+  have h4 : (4 : O) ≠ 0 := by
+    rw [show (4 : O) = 2 ^ 2 by norm_num]
+    exact pow_ne_zero 2 h2.ne_zero
+  have hdeg : ((Polynomial.C (4 : O) * Polynomial.X + Polynomial.C 8)).natDegree = 1 :=
+    Polynomial.natDegree_linear h4
+  rw [hdeg, show Finset.range (1 + 1) = {0, 1} from rfl]
+  simp only [Finset.inf_insert, Finset.inf_singleton, e1_eq h2 hq, h_eq h2 hq,
+    Polynomial.coeff_add, Polynomial.coeff_C_mul, Polynomial.coeff_X_zero,
+    Polynomial.coeff_X_one, Polynomial.coeff_C, gaussVal_C]
+  norm_num
+  rw [show (8 : O) = 2 ^ 3 by norm_num, addVal_two_pow h2,
+    show (4 : O) = 2 ^ 2 by norm_num, addVal_two_pow h2]
+  decide
+
+include h2 hq in
+theorem dvhgt_f₅_1 : dvHgt (s2Frame h2 hq) (f₅ O) 1 = ⊤ := by
+  rw [dvHgt, key_eq h2 hq, dev_f₅_one]
+  exact sh_zero h2 hq
+
+include h2 hq in
+theorem dvhgt_f₅_2 : dvHgt (s2Frame h2 hq) (f₅ O) 2 = (0 : ℕ∞) := by
+  rw [dvHgt, key_eq h2 hq, dev_f₅_two, KeyFrame.stageHeight_eq_inf]
+  have hdeg : ((Polynomial.X + Polynomial.C (1 : O))).natDegree = 1 := natDegree_X_add_C 1
+  rw [hdeg, show Finset.range (1 + 1) = {0, 1} from rfl]
+  simp only [Finset.inf_insert, Finset.inf_singleton, e1_eq h2 hq, h_eq h2 hq,
+    Polynomial.coeff_add, Polynomial.coeff_X_zero, Polynomial.coeff_X_one,
+    Polynomial.coeff_C, gaussVal_C]
+  norm_num
+
+private theorem dev_f₅_ge_three (j : ℕ) (hj : 3 ≤ j) : dev (s2Key O) (f₅ O) j = 0 := by
+  refine dev_eq_zero_of_lt s2Key_monic (by rw [s2Key_natDegree]; norm_num) _ _ ?_
+  rw [f₅_natDegree, s2Key_natDegree]
+  omega
+
+include h2 hq in
+theorem dvhgt_f₅_ge_three (j : ℕ) (hj : 3 ≤ j) :
+    dvHgt (s2Frame h2 hq) (f₅ O) j = ⊤ := by
+  rw [dvHgt, key_eq h2 hq, dev_f₅_ge_three j hj]
+  exact sh_zero h2 hq
+
+include h2 hq in
+theorem dvsupp_f₅ : dvSupp (s2Frame h2 hq) (f₅ O) 5 2 = (10 : ℕ∞) := by
+  rw [dvSupp, f₅_natDegree, show Finset.range (5 + 1) = {0, 1, 2, 3, 4, 5} from rfl]
+  simp only [Finset.inf_insert, Finset.inf_singleton, dvhgt_f₅_0 h2 hq, dvhgt_f₅_1 h2 hq,
+    dvhgt_f₅_2 h2 hq, dvhgt_f₅_ge_three h2 hq 3 (by norm_num),
+    dvhgt_f₅_ge_three h2 hq 4 (by norm_num), dvhgt_f₅_ge_three h2 hq 5 (by norm_num)]
+  decide
+
+include h2 hq in
+theorem dvside_f₅_zero_mem : 0 ∈ dvSideSet (s2Frame h2 hq) (f₅ O) 5 2 := by
+  classical
+  refine Finset.mem_filter.mpr ⟨Finset.mem_range.mpr (by rw [f₅_natDegree]; norm_num), ?_, ?_⟩
+  · rw [dvsupp_f₅ h2 hq, dvhgt_f₅_0 h2 hq]
+    decide
+  · rw [dvhgt_f₅_0 h2 hq]
+    decide
+
+include h2 hq in
+theorem dvside_f₅_two_mem : 2 ∈ dvSideSet (s2Frame h2 hq) (f₅ O) 5 2 := by
+  classical
+  refine Finset.mem_filter.mpr ⟨Finset.mem_range.mpr (by rw [f₅_natDegree]; norm_num), ?_, ?_⟩
+  · rw [dvsupp_f₅ h2 hq, dvhgt_f₅_2 h2 hq]
+    decide
+  · rw [dvhgt_f₅_2 h2 hq]
+    decide
+
+include h2 hq in
+/-- **`f₅` is `(5, 2)`-pure**: both endpoints of the floored abscissa range `0 … ⌊5/2⌋ = 2`
+are on the side — the tower-borne provenance gap in action (`deg f₅ = 5` is INVISIBLE). -/
+theorem pure_f₅ : IsDvPure (s2Frame h2 hq) (f₅ O) 5 2 := by
+  constructor
+  · exact dvside_f₅_zero_mem h2 hq
+  · have hidx : (f₅ O).natDegree / ((s2Frame h2 hq).e₁ * (s2Frame h2 hq).f₁) = 2 := by
+      rw [f₅_natDegree, e1_eq h2 hq, f1_eq h2 hq]
+    rw [hidx]
+    exact dvside_f₅_two_mem h2 hq
+
 end Uniformity.Density.Tower.C80
