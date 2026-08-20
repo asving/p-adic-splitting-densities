@@ -543,7 +543,42 @@ theorem ht_branch_one_node [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
           htRealizes π Φ (monicPoly a) t R}
       = htBranchCount (Nat.card (resField Φ))
           (fun lam => sideCensus (resField Φ) lam) t N := by
-  sorry
+  classical
+  obtain ⟨tn, tp⟩ := t
+  obtain ⟨v, rfl⟩ : ∃ v, tn = [v] := by
+    match tn, hone with
+    | [a], _ => exact ⟨a, rfl⟩
+  -- the three per-node facts the cell count needs, plus `kappa = 1`
+  have hk1 : v.kappa = 1 := (kappaRule_one_node_iff' v tp).1 (hkappa 0 (by simp))
+  have hvWF : v.WF := hnodewf 0 (by simp)
+  have hvis0 : ∀ j, j ≤ v.m → v.Pceil j < N := hvis 0 (by simp)
+  show Nat.card {c : Coeff O (v.m * Φ.natDegree) N //
+      ∃ a : Fin (v.m * Φ.natDegree) → O,
+        proj O (v.m * Φ.natDegree) N a = c ∧
+        htRealizes π Φ (monicPoly a) (HTTree.mk [v] tp) R}
+    = htBranchCount (Nat.card (resField Φ))
+        (fun lam => sideCensus (resField Φ) lam) (HTTree.mk [v] tp) N
+  have hstrat : Nat.card {c : Coeff O (v.m * Φ.natDegree) N //
+      ∃ a : Fin (v.m * Φ.natDegree) → O,
+        proj O (v.m * Φ.natDegree) N a = c ∧
+        htRealizes π Φ (monicPoly a) (HTTree.mk [v] tp) R}
+      = Nat.card {c : Coeff O (v.m * Φ.natDegree) N //
+        ∃ a : Fin (v.m * Φ.natDegree) → O,
+          proj O (v.m * Φ.natDegree) N a = c ∧ monicPoly a ∈ htCell π Φ v} := by
+    refine Nat.card_congr (Equiv.subtypeEquivRight fun c => ?_)
+    constructor
+    · rintro ⟨a, ha, hr⟩
+      exact ⟨a, ha, (htRealizes_one_node_iff hΦ v tp R _).1 hr⟩
+    · rintro ⟨a, ha, hr⟩
+      exact ⟨a, ha, (htRealizes_one_node_iff hΦ v tp R _).2 hr⟩
+  -- `htBranchCount` never reads `parent`, so C.115's depth-zero value applies verbatim
+  have hbc : htBranchCount (Nat.card (resField Φ)) (fun lam => sideCensus (resField Φ) lam)
+      (HTTree.mk [v] tp) N
+      = v.kappa * (∏ p ∈ v.sides, sideCensus (resField Φ) (v.sideType p.1 p.2))
+        * Nat.card (resField Φ) ^ v.B N :=
+    ht_depth_zero (Nat.card (resField Φ)) (fun lam => sideCensus (resField Φ) lam) v N
+  rw [hstrat, ht_node_cell_card hπ hΦ v hvWF N hvis0, hbc, hk1]
+  ring
 
 set_option linter.unusedVariables false in
 set_option linter.overlappingInstances false in
