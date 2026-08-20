@@ -100,18 +100,23 @@ peel degree `D″ = 4` divides the local degree (LEMMA HE6-0′) — the shadow 
 `e·f = 4` this forces `(e, f) = (4, 1)`, i.e. `f′` irreducible.  ℕ arithmetic; the emission that
 justifies the shadow is chapter C's. -/
 theorem peel_row_arith {e f : ℕ} (he : 4 ∣ e) (hef : e * f = 4) : e = 4 ∧ f = 1 := by
-  sorry
+  have he4 : e ∣ 4 := ⟨f, hef.symm⟩
+  have hE : e = 4 := Nat.dvd_antisymm he4 he
+  subst hE
+  exact ⟨rfl, by omega⟩
 
 /-- The same conclusion from the frozen DISJUNCTIVE shadow (the frozen `he` binder). -/
 theorem peel_row_arith_of_shadow {e f : ℕ} (he : 4 ∣ e ∨ (e = 4 ∧ f = 1))
     (hef : e * f = 4) : e = 4 ∧ f = 1 := by
-  sorry
+  rcases he with he | he
+  · exact peel_row_arith he hef
+  · exact he
 
 /-! ## 2. The audit findings, as theorems -/
 
 /-- **§0 finding 2, machine-checked.**  `hforce4` restricts nothing. -/
 theorem hforce4_redundant {e f : ℕ} (hef : e * f = 4) : 4 ∣ e * f := by
-  sorry
+  rw [hef]
 
 /-- **§0 findings 3 and 4, machine-checked.**  Both surviving hypotheses are SHARP: dropping the
 forcing shadow `4 ∣ e` admits `(e,f) = (2,2)` (and `(1,4)`); dropping `e·f = 4` admits
@@ -119,7 +124,7 @@ forcing shadow `4 ∣ e` admits `(e,f) = (2,2)` (and `(1,4)`); dropping `e·f = 
 theorem peel_row_shadow_sharp :
     (2 * 2 = 4 ∧ ¬ (2 = 4 ∧ 2 = 1)) ∧ (1 * 4 = 4 ∧ ¬ (1 = 4 ∧ 4 = 1))
       ∧ ((4 : ℕ) ∣ 8 ∧ ¬ ((8 : ℕ) = 4 ∧ (1 : ℕ) = 1)) := by
-  sorry
+  refine ⟨⟨by norm_num, by omega⟩, ⟨by norm_num, by omega⟩, ⟨by norm_num, by omega⟩⟩
 
 /-! ## 3. The defect certificate — the frozen TYPE is bare arithmetic -/
 
@@ -140,7 +145,11 @@ arithmetic — which is exactly why the blueprint BLOCKS the node until `hpeel` 
 chapter C's HE6R1-3 emission record.  This is a certificate ABOUT the frozen type, not an
 assertion of the law. -/
 theorem peelRowLawFrozen_iff_arith : PeelRowLawFrozen ↔ PeelRowLawArith := by
-  sorry
+  constructor
+  · intro h e f he hef
+    exact h trivial (hforce4_redundant hef) hef (Or.inl he)
+  · intro h _hpeel e f _hforce4 hef he
+    exact peel_row_arith_of_shadow (he.imp id id) hef
 
 end Uniformity.Density.Ladder
 
