@@ -7023,3 +7023,94 @@ landed value); (h) E.57 as a dedicated hard unit. Owner items unchanged:
 the FGMN published-number print-read, the B39a rider, the
 WeldObligations.w1 amendment, plus NEW: the C.27 re-sign question and
 the I.10a/I.10b placeholder sockets.
+
+**2026-08-20 DATED APPEND #105 — THE LEG-2 REFUTATION MACHINE-CHECKED
+(handoff §7's top queue item DISCHARGED), and the corpus's FIRST
+`TowerDatum` VALUE: C53c complete, plus the roll-up defect's FOURTH
+recurrence cured on restart (six orphan modules, one latent name
+collision).**
+
+(0) MODE. New session (Fable 5, working the leaves DIRECTLY per the
+no-subagents directive — the API still storms; one ~15-minute
+permission-classifier outage mid-session, ridden out by composing
+increments to disk and verifying after). The 20-minute watchdog cron
+(session-only) replaced the 15-minute tick. Everything below is
+committed in SIX increments, per the survival discipline.
+
+(1) THE ROLL-UP DEFECT, FOURTH RECURRENCE — found on restart, cured at
+a32a0548. SIX landed ChapC modules were outside `lake build`: C27
+(REFUTATION file — committed by ratchet, never wired), C52, C53c,
+C113, C128b1, C128b2. Wiring exposed a REAL LATENT DEFECT the missing
+coverage had hidden: `dv2Hgt_zero` was declared in BOTH `C27.lean` and
+`C72.lean` (same namespace, same name) — the full build had NEVER
+elaborated both together. Dedup: C27's copy kept (hypothesis-free —
+its `0 < L.ℓ` comes from the `LevelDatum.hℓ` field; C72's carried it
+as a redundant binder), C72 now imports C27 and its one use site
+dropped the argument. Roll-up 93 imports, `lake build Uniformity.ChapC`
+EXIT=0. The standing rule stands: the moment a unit's file is
+committed, the ORCHESTRATOR wires it — including refutation files.
+
+(2) ★ C53c COMPLETE (`ChapC/C53c.lean`, wired, 12 AxCheck lines ALL
+Lean-core, zero `sorry`, no cite) — the #104 (3) ⚠ item is CLOSED: the
+prose refutation of C.53 leg 2 is now a THEOREM, by the record's own
+explicit numeric instance, with NO dependence on C.50's transcribed
+`gridWeight` scope note (the reason the numeric route was chosen).
+  * `linFrame hπ : KeyFrame O π` — `Φ′ = X + π`, `(e₁,f₁,h) = (1,1,1)`,
+    over ANY DVR: all theorem-grade legs proved (Eisenstein
+    irreducibility at the linear key; slope −1 single-side purity;
+    side {0,1}; residual degree 1; pin H₀ = 1 satisfiable).
+  * ★ `linTower hπ : TowerDatum (linFrame hπ) 1 _` — `(e₂,f₂,u₂) =
+    (2,1,3)`, `ψ₂ = T+1`, `D₂ = 2`, `E₂ = 6` by `rfl` — **the FIRST
+    `TowerDatum` value anywhere in the corpus.** The #103 (5)/#104 (g)
+    inhabitation gap is HALF closed: C.72/C.73's ∀-over-`TowerDatum`
+    binders are now inhabited (their `s2Frame`-specific worked instance
+    remains unwitnessed, and `IsTestKey` still has no landed value).
+  * `linTower_composedKey : ∃ w, Φ₂ = Φ′² − C w` (the f₂=1 collapse,
+    `slotIdx 3 = 0`, one `stageLiftIA` summand via C128's public
+    `stageLiftO_of_f1`) and `linPhi2_coeff1 : Φ₂.coeff 1 = 2π` EXACTLY.
+  * `linDigit` — the slot-(0,0,1) two-key digit of `monicPoly a` is the
+    CONSTANT `a₁ − 2π`; both `dev` steps are `div_modByMonic_unique`
+    instances. Floor numeral `budgetFloor (linTower hπ) 1 0 0 1 = 2`.
+  * ★ `triangularDigitRead_false_at : ¬ TriangularDigitRead
+    (linTower hπ) 1 N` for EVERY `N ≥ 2`, given `IsUnit (2 : O)`. The
+    mechanism, machine-checked: RAW-BOX ∋ 0 (witness `a = 0`), any lift
+    of the zero class has `π² ∣ a₁`, but the digit floor demands
+    `π² ∣ a₁ − 2π`, so `π² ∣ 2π` — with `2` a unit, `2 ≤ addVal π = 1`.
+  * ★ `budgetBoxRead_false_of_leg1` — the VACUITY finding at EXACTLY
+    the record's conditionality, not upgraded and not weakened: GIVEN
+    C.52's signed leg 1 (`TowerBudgetIff`, still OPEN category (iii)),
+    `BudgetBoxRead` is FALSE, i.e. the moment leg 1 lands,
+    `towerLocus_fibration_of_frontier` is certified a true theorem
+    with a false hypothesis. Plus `legs_incompatible` (the two-leg
+    route of `budgetBoxRead_of_legs` is closed) and
+    `triangularDigitRead_statement_false` — the ∀-closed GOAL-3 binder
+    family WITH all four guards (`Irreducible π`, `0 < μ₂`, `1 ≤ F.h`,
+    `2 ≤ N`), refuted absolutely over `ℤ_[3]` (`Irreducible (3:ℤ_[3])`,
+    `IsUnit (2:ℤ_[3])` both landed).
+  * The REFUTED record carries a STATUS UPGRADE banner; its provenance
+    paragraphs are unchanged. `C53.lean` and the leanspec: untouched.
+    C.53's remaining obligation is UNCHANGED: leg 1 alone
+    (`towerLocus_iff_budget`, the dv-graded frontier), consumed via
+    C53b's `towerLocus_fibration_of_leg1`.
+
+(3) SUPPLY NOTES for future units. (a) The linear frame is a SECOND
+reusable probe frame, complementary to the `s2Frame` workhorse: use
+`(s2Frame, L₀, g₀)` for label-layer/x-purity questions (residue char
+2), `(linFrame, linTower)` for tower/digit-box questions (any residue
+char ≠ 2, obstructing digit clear of lift constants). (b) The private
+valuation cluster (`le_addVal_iff_pow_dvd`, `mem_pow_maximalIdeal_iff`)
+is now duplicated in THREE files (C110, C53, C53c) — the promotion to
+`Density/LocalData.lean` is overdue. (c) `budgetFloor` numerals at a
+concrete tower do NOT reduce by bare `rfl`/`decide` (free variables +
+`ite`); the working pattern is `simp only [budgetFloor, slotOffset,
+TowerDatum.E₂, <projection rfl-shows>]` then `decide`.
+
+NEXT, priority order (updated from #104): (a) `Squarefree g₀` then the
+`multiplicity_tie` refutation (HX_SWEEP §6.3 — analysis complete, one
+real proof obligation); (b) the chapter-I blueprint placeholders
+(I.10a/I.10b sockets + the five I-D12 `True` bodies) — the
+blueprint-finishing charge, owner items noted; (c) C.59's `L.ℓ`-half
+(through the C.27 frontier — HARD, not a quick win; C.61/C.40(ii)
+gated on it); (d) chapter C's ~145 unlanded signed names; (e) the
+D-CARRY sweep rows; (f) `IsTestKey` inhabitation (the remaining half
+of (g)); (g) E.57. Owner items unchanged from #104.
