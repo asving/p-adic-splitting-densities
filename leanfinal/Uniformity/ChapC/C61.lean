@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Uniformity.ChapC.C10
 import Uniformity.ChapC.C35
+import Uniformity.ChapC.C35b
 import Uniformity.ChapC.C60
 import Uniformity.ChapB.B56
 import Uniformity.Density.TypePositivity
@@ -103,7 +104,7 @@ always satisfied) / load-bearing and SHARP (counterexample given).
 | `[IsAdicComplete …]`, `[Finite (ResidueField O)]` | **restricts-nothing at the conclusion, and NOT consumed by the reduction below** — the `(e,f)` engine (`inertiaDegOf`/`ramIndexOf`) is DVR-level (`Density/TypeOf.lean`). They are the environment in which the missing leg (C.59) and the `typeOf`-faithfulness identification live. Instances exist at `ℤ_[p]`. Recorded, not silently dropped: the reduction theorem below **carries them anyway**, unused, for signature fidelity. |
 | `{g : Polynomial O}`, `hlab : HasLabel L g` | **load-bearing and its locus IS witnessed by a term**: `hasLabel_g₀ : HasLabel (L₀ …) (g₀ …)` (`C35b.lean:347`), `g₀ = x³ − 2x + 4`. Not vacuous. |
 | `hm1` (the exact-residual ∀) | **load-bearing, and NOT vacuously satisfiable-by-emptiness.** Its ∀ ranges over `hne`, `M₀`, `hp`; `hne : Finset.Nonempty` is a `Prop` (proof-irrelevant), and `hp` pins `M₀` uniquely because `dvHgt F g (dvSideMin …) ≠ ⊤` on a nonempty side (`DvOnSide`'s finiteness conjunct). So `hm1` is exactly ONE equation, not an empty family — the A-C.7 `C.113 hne` pattern does NOT recur. Satisfied at `g₀` (`hm1_g₀` below, from `hasLabel_g₀`'s own `rfl`). |
-| `hx : IsPure Polynomial.X g F.h F.e₁` | **load-bearing and SHARP — counterexample machine-checked below.** At `(s2Frame, L₀, g₀)` the hypotheses `hlab`, `hm1`, `hbox` ALL hold and the conclusion is FALSE (`hx_sharp`): `g₀`'s x-polygon has `0 ∉ sideSet X g₀ 1 2` (`suppVal = 3`, attained only at `j ∈ {1,3}`), so `hx` fails, and it is the only guard left standing. Dropping `hx` (equivalently: dropping its downstream C.59 content) turns C.61 into a false statement. |
+| `hx : IsPure Polynomial.X g F.h F.e₁` | **load-bearing and SHARP — counterexample machine-checked below.** At `(s2Frame, L₀, g₀)` the hypotheses `hlab`, `hm1`, `hbox` ALL hold and the conclusion is FALSE (`tier1_typeOf_without_hx_false`): `g₀`'s x-polygon has `0 ∉ sideSet X g₀ 1 2` (`suppVal = 3`, attained only at `j ∈ {1,3}`), so `hx` fails, and it is the only guard left standing. Dropping `hx` (equivalently: dropping its downstream C.59 content) turns C.61 into a false statement. |
 | `hbox : ∀ g' ∈ monicFactors g, CBox1Side L g'` | **load-bearing, with a named perimeter on which it restricts nothing**: `F.f₁ * L.r.natDegree = 1` makes it `one_dvd` (C.60 (i), `cbox1_of_deg_one`) — that is exactly the regime of the `g₀` witness (`f₁ = d_r = 1`), which is why `g₀` can satisfy it while failing `hx`. Above the perimeter it is `C-BOX-1`, the fenced `B-BOX-1` analogue (C.60), and it is SHARP: with `f₁·d_r ≥ 2` a factor of residue degree coprime to `f₁·d_r` falsifies it. |
 
 **Verdict: no vacuous binder; no fifth instance of the A-C.7 pattern.** Two binders are
@@ -142,8 +143,8 @@ Two D-CARRY sub-findings, both recorded because they change how the node must be
 
 **CONTENT-FREE TYPE — no.** The conclusion is a genuine equation between `FactorizationType`
 values plus `Irreducible g`; `typeOf` is the real `(monicFactors ·).map efPair` (`Density/TypeOf.lean`),
-and the type is *refutable*: `hx_sharp` below proves an instance of the conclusion FALSE, which is
-impossible for a `True`-bodied or arithmetic-shadow statement. (The weaker check — `example :
+and the type is *refutable*: `tier1_typeOf_without_hx_false` below proves an instance of the
+conclusion FALSE, which is impossible for a `True`-bodied or arithmetic-shadow statement. (The weaker check — `example :
 <statement> := trivial` — is not attempted; it would only certify that `True` is true.)
 
 **INHABITATION — the locus is witnessed by TERMS, not merely argued.** Every carrier in the
@@ -197,9 +198,9 @@ residue clause `g.map residue = (φ.map residue)^ℓ`, which at `φ = X` forces 
 3. `irreducible_of_tier1_type` — the "and `g` is irreducible" clause read off a singleton
    `typeOf`, reusable and independent of the frame (B.58's `irreducible_of_resDeg_one` pattern,
    restated for an arbitrary singleton).
-4. `hm1_g₀`, `hbox_g₀`, `hx_sharp` — the sharpness certificate: `hlab ∧ hm1 ∧ hbox` hold at
-   `(s2Frame, L₀, g₀)` over `ℤ_[2]` while the conclusion FAILS, so neither `hx` nor `hram` is
-   droppable.
+4. `Tier1TypeOfWithoutHxStatement` + `tier1_typeOf_without_hx_false` (with `hm1_g₀`, `hbox_g₀`,
+   `typeOf_g₀_ne`) — the sharpness certificate: `hlab ∧ hm1 ∧ hbox` hold at `(s2Frame, L₀, g₀)`
+   over `ℤ_[2]` while the conclusion FAILS, so neither `hx` nor `hram` is droppable.
 
 **DEPENDS (landed, by name).** C.10 `LevelDatum.keyDeg₂_regroup` · C.26 `natDegree_dvResPoly` ·
 C.29 `HasLabel`/`IsDvPure` · C.35 `natDegree_div_eq_of_isDvPure`, `dvSideMax_eq_of_isDvPure`,
@@ -353,7 +354,87 @@ theorem tier1_typeOf_of_ramLeg {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F
       (fun p hp => efPair_pos_of_mem hgm hp) hA hB
   exact ⟨htype, irreducible_of_singleton_typeOf hgm htype⟩
 
+/-! ## 4. The sharpness certificate: `hx` (equivalently, the `e`-leg) is NOT droppable
+
+The audit's mandate is to try to refute one's own guards. Here it succeeds against the guard-set
+`{hlab, hm1, hbox}`: those three hold at a LANDED witness while the conclusion is FALSE, so
+whatever closes C.61 must consume `hx` (in the intended proof: through C.59). This is also the
+non-degeneracy check on the conclusion — a `True`-bodied or arithmetic-shadow type could not be
+refuted at an instance. -/
+
+/-- **The signed C.61 type with `hx` DELETED**, everything else byte-identical to
+`Tier1TypeOfStatement`. `tier1_typeOf_without_hx_false` proves this FALSE. -/
+def Tier1TypeOfWithoutHxStatement : Prop :=
+  ∀ {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+    {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (_hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (ResidueField O)]
+    {g : Polynomial O} (_hlab : HasLabel L g)
+    (_hm1 : ∀ (hne : (dvSideSet F g L.u L.ℓ).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞)),
+      dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp = L.r)
+    (_hbox : ∀ g' ∈ monicFactors g, CBox1Side L g'),
+    typeOf g = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}⟩ ∧ Irreducible g
+
 end Uniformity.Density.Tower
+
+namespace Uniformity.Density.Tower.C61Sharp
+
+open Polynomial IsLocalRing IsDiscreteValuationRing Uniformity.Density
+open Uniformity.Density.Leaf Uniformity.Density.Tower Uniformity.Density.Tower.C35b
+
+set_option linter.unusedSectionVars false
+
+variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+  [Finite (ResidueField O)] (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
+
+/-- **`hm1` holds at `g₀`.** `hasLabel_g₀`'s residual clause is `dvResPoly … = ρ¹` at the
+pinned data `(hne_g₀, 4, hp_g₀)`; the ∀-form follows because `hp` determines `M₀ = 4`
+(`Nat.cast` injectivity on `ℕ∞`) and the two proof arguments are irrelevant. -/
+theorem hm1_g₀ :
+    ∀ (hne : (dvSideSet (s2Frame h2 hq) (g₀ O) 3 1).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt (s2Frame h2 hq) (g₀ O)
+        (dvSideMin (s2Frame h2 hq) (g₀ O) 3 1 hne) = (M₀ : ℕ∞)),
+      dvResPoly (s2Frame h2 hq) 1 (s2Frame_pin h2 hq) (g₀ O)
+        3 1 hne M₀ hp = (L₀ h2 hq).r := by
+  intro hne M₀ hp
+  have h4 : M₀ = 4 := Nat.cast_injective (hp.symm.trans (hp_g₀ (O := O) h2 hq))
+  subst h4
+  rfl
+
+/-- **`hbox` holds at `g₀`, on C.60 (i)'s perimeter.** `F.f₁ * L.r.natDegree = 1 * 1 = 1`, so
+`CBox1Side` is `one_dvd` for every factor (`cbox1_of_deg_one`). This is why the witness can
+satisfy the `C-BOX-1` guard while failing `hx`. -/
+theorem hbox_g₀ : ∀ g' ∈ monicFactors (g₀ O), CBox1Side (L₀ h2 hq) g' := by
+  intro g' _
+  refine cbox1_of_deg_one (L₀ h2 hq) g' ?_
+  rw [f1_eq h2 hq, show (L₀ h2 hq).r = ρ h2 hq from rfl, ρ_natDegree h2 hq]
+
+/-- **the conclusion FAILS at `g₀`.** `(typeOf g₀).degree = deg g₀ = 3` (`typeOf_degree`), while
+the claimed singleton `⟨{(e₁ℓ, f₁d_r)}⟩ = ⟨{(2,1)}⟩` has degree `2`. -/
+theorem typeOf_g₀_ne :
+    typeOf (g₀ O) ≠ ⟨{((s2Frame h2 hq).e₁ * (L₀ h2 hq).ℓ,
+      (s2Frame h2 hq).f₁ * (L₀ h2 hq).r.natDegree)}⟩ := by
+  intro heq
+  have hdeg : (typeOf (g₀ O)).degree = (g₀ O).natDegree := typeOf_degree (g₀_monic (O := O))
+  rw [heq, g₀_natDegree, FactorizationType.degree, e1_eq h2 hq, f1_eq h2 hq,
+    show (L₀ h2 hq).ℓ = 1 from rfl, show (L₀ h2 hq).r = ρ h2 hq from rfl,
+    ρ_natDegree h2 hq] at hdeg
+  simp at hdeg
+
+/-- **C.61 MINUS `hx` IS FALSE.** At `(s2Frame, L₀, g₀)` over `ℤ_[2]` the hypotheses `hlab`,
+`hm1` and `hbox` all hold and the conclusion fails, so `hx` — equivalently the `e`-leg
+`(F.e₁ * L.ℓ) ∣ ramIndexOf g'` that `hram` supplies in `tier1_typeOf_of_ramLeg` — is
+load-bearing and SHARP. (`g₀`'s x-polygon at `(h, e₁) = (1, 2)` has cleared support `3`, attained
+only at `j ∈ {1, 3}`, so `0 ∉ sideSet X g₀ 1 2` and `hx` fails; correspondingly
+`ramIndexOf (x + 2) = 1` is not divisible by `F.e₁ * L.ℓ = 2`, so `hram` fails too.) -/
+theorem tier1_typeOf_without_hx_false : ¬ Tier1TypeOfWithoutHxStatement := by
+  intro hax
+  exact typeOf_g₀_ne h2_padic rc2
+    (hax (L₀ h2_padic rc2) h2_padic (hasLabel_g₀ h2_padic rc2)
+      (hm1_g₀ h2_padic rc2) (hbox_g₀ h2_padic rc2)).1
+
+end Uniformity.Density.Tower.C61Sharp
 
 /-! ## Axiom footprint -/
 
@@ -362,5 +443,10 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.Tier1TypeOfStatement
 #print axioms Uniformity.Density.Tower.irreducible_of_singleton_typeOf
 #print axioms Uniformity.Density.Tower.tier1_typeOf_of_ramLeg
+#print axioms Uniformity.Density.Tower.Tier1TypeOfWithoutHxStatement
+#print axioms Uniformity.Density.Tower.C61Sharp.hm1_g₀
+#print axioms Uniformity.Density.Tower.C61Sharp.hbox_g₀
+#print axioms Uniformity.Density.Tower.C61Sharp.typeOf_g₀_ne
+#print axioms Uniformity.Density.Tower.C61Sharp.tier1_typeOf_without_hx_false
 
 end AxCheck
