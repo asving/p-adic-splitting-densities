@@ -246,6 +246,83 @@ theorem resPoly_mul_gen' (hπ : Irreducible π) (hφ : IsKey φ) (hu : 0 < u) (h
 
 end Transport
 
+/-! ## 3. The height pin
+
+`hgg'` is quantified over **all** `H₀`, and that is exactly the strength needed to pin `g`'s and
+`g'`'s side heights to each other.  Read at `H₀ := H` (the true left height of `f`), B.30's
+"the `0`-th residual coefficient does not vanish" collides with "`resMk` vanishes strictly below
+the Gauss valuation" (`resMk_eq_zero_of_lt`) unless `H' ≤ H`.  Applying the lemma twice, once in
+each direction, gives `H = H'`.
+
+Only the coefficient at `k = 0` is used, which is what makes this work: at `k = sideDeg` the
+junk-digit above the line need not vanish, so a coefficientwise argument would fail there. -/
+
+section HeightPin
+
+variable {φ : Polynomial O} {u ℓ : ℕ}
+
+/-- **The height pin, one direction.**  If `f`'s residual polynomial read at `f`'s own left height
+`H` equals `f'`'s residual polynomial read at the *same* `H`, then `f'`'s left height is at most
+`H`. -/
+theorem height_le_of_resPoly_eq (hπ : Irreducible π) (hφ : IsKey φ) (hℓ : 0 < ℓ)
+    (hcop : Nat.Coprime u ℓ) {f f' : Polynomial O} (htf : suppVal φ f u ℓ ≠ ⊤)
+    (hnf : (sideSet φ f u ℓ).Nonempty) (hnf' : (sideSet φ f' u ℓ).Nonempty) {H H' : ℕ}
+    (hH : npHgt φ f (sideMin φ f u ℓ hnf) = (H : ℕ∞))
+    (hH' : npHgt φ f' (sideMin φ f' u ℓ hnf') = (H' : ℕ∞))
+    (heq : resPoly π φ f u ℓ hnf H = resPoly π φ f' u ℓ hnf' H) :
+    H' ≤ H := by
+  by_contra hcon
+  rw [not_le] at hcon
+  have h0 : resCoeff π φ f' u ℓ hnf' H 0 ≠ 0 := by
+    have hne := (natDegree_resPoly hπ hφ hℓ hcop htf hnf hH).2
+    rw [heq, resPoly_coeff] at hne
+    simpa using hne
+  refine h0 ?_
+  simp only [resCoeff, Nat.mul_zero, Nat.sub_zero, Nat.add_zero]
+  refine resMk_eq_zero_of_lt hπ ?_
+  show ((H + 1 : ℕ) : ℕ∞) ≤ npHgt φ f' (sideMin φ f' u ℓ hnf')
+  rw [hH']
+  exact_mod_cast Nat.succ_le_of_lt hcon
+
+/-- **The height pin.**  Both directions of `height_le_of_resPoly_eq`. -/
+theorem height_eq_of_resPoly_eq (hπ : Irreducible π) (hφ : IsKey φ) (hℓ : 0 < ℓ)
+    (hcop : Nat.Coprime u ℓ) {f f' : Polynomial O} (htf : suppVal φ f u ℓ ≠ ⊤)
+    (htf' : suppVal φ f' u ℓ ≠ ⊤) (hnf : (sideSet φ f u ℓ).Nonempty)
+    (hnf' : (sideSet φ f' u ℓ).Nonempty) {H H' : ℕ}
+    (hH : npHgt φ f (sideMin φ f u ℓ hnf) = (H : ℕ∞))
+    (hH' : npHgt φ f' (sideMin φ f' u ℓ hnf') = (H' : ℕ∞))
+    (hall : ∀ H₀ : ℕ, resPoly π φ f u ℓ hnf H₀ = resPoly π φ f' u ℓ hnf' H₀) :
+    H = H' :=
+  le_antisymm
+    (height_le_of_resPoly_eq hπ hφ hℓ hcop htf' hnf' hnf hH' hH (hall H').symm)
+    (height_le_of_resPoly_eq hπ hφ hℓ hcop htf hnf hnf' hH hH' (hall H))
+
+/-- **A lower-degree polynomial has a strictly shorter side.**  For `g` monic `(u,ℓ)`-pure of
+degree `a·φ.natDegree` the side has length `ℓ·sideDeg g = a`; a nonzero `δ` of smaller degree has
+`ℓ·sideDeg δ · φ.natDegree ≤ sideMax δ · φ.natDegree ≤ δ.natDegree < a·φ.natDegree`. -/
+theorem sideDeg_lt_of_natDegree_lt (hφ : IsKey φ) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
+    {δ g : Polynomial O} (hδ : δ ≠ 0) (hg : g.Monic) {a : ℕ}
+    (hga : g.natDegree = a * φ.natDegree) (hgp : IsPure φ g u ℓ)
+    (hgne : (sideSet φ g u ℓ).Nonempty) (hδne : (sideSet φ δ u ℓ).Nonempty)
+    (hlt : δ.natDegree < g.natDegree) :
+    sideDeg φ δ u ℓ hδne < sideDeg φ g u ℓ hgne := by
+  have htδ : suppVal φ δ u ℓ ≠ ⊤ := suppVal_ne_top_of_ne_zero hφ.monic hφ.pos hδ
+  have hmax : sideMax φ δ u ℓ hδne = sideMin φ δ u ℓ hδne + ℓ * sideDeg φ δ u ℓ hδne :=
+    sideMax_eq hℓ hcop htδ hδne
+  have hb : sideMax φ δ u ℓ hδne * φ.natDegree ≤ δ.natDegree :=
+    mul_sideMax_le_natDegree hφ.monic hφ.pos hℓ htδ hδne
+  have ha : ℓ * sideDeg φ g u ℓ hgne = a :=
+    sideDeg_of_pure hφ.monic hφ.pos hg hga hℓ hcop hgp hgne
+  have hle : ℓ * sideDeg φ δ u ℓ hδne ≤ sideMax φ δ u ℓ hδne := by omega
+  have h1 : ℓ * sideDeg φ δ u ℓ hδne * φ.natDegree ≤ δ.natDegree :=
+    le_trans (Nat.mul_le_mul hle (le_refl _)) hb
+  have h2 : ℓ * sideDeg φ δ u ℓ hδne * φ.natDegree < ℓ * sideDeg φ g u ℓ hgne * φ.natDegree := by
+    rw [ha]
+    exact lt_of_le_of_lt h1 (by rw [← hga]; exact hlt)
+  exact lt_of_mul_lt_mul_left (lt_of_mul_lt_mul_right h2 (Nat.zero_le _)) (Nat.zero_le _)
+
+end HeightPin
+
 end Uniformity.Density.Leaf
 
 /-! ## Axiom footprint -/
@@ -258,4 +335,7 @@ section AxCheck
 #print axioms Uniformity.Density.Leaf.sideMin_mul_gen'
 #print axioms Uniformity.Density.Leaf.sideDeg_mul_gen'
 #print axioms Uniformity.Density.Leaf.resPoly_mul_gen'
+#print axioms Uniformity.Density.Leaf.height_le_of_resPoly_eq
+#print axioms Uniformity.Density.Leaf.height_eq_of_resPoly_eq
+#print axioms Uniformity.Density.Leaf.sideDeg_lt_of_natDegree_lt
 end AxCheck
