@@ -391,20 +391,26 @@ def vK (k : ℕ) : HTNode := ⟨0, 0, fun _ => 0, 0, ∅, fun _ _ => ⟨0⟩, k�
 /-- a one-node tree has no children (whatever its `parent` field). -/
 theorem children_of_one_node (v : HTNode) (p : ℕ → ℕ) :
     (HTTree.mk [v] p).children 0 = ∅ := by
-  sorry
+  classical
+  simp [HTTree.children]
 
 /-- **the branch refutation geometry is separated**: the A-C.3 κ-rule holds at the root of
 `⟨[vK k]⟩` exactly when `k = 1`, so `ht_branch`'s hypothesis `hkappa` fails at `k = 2` and the
 equinumerous-strata argument of `c114_branch_frozen_false` never starts. -/
 theorem kappaRule_one_node_iff (k : ℕ) :
     (HTTree.mk [vK k] fun _ => 0).KappaRule 0 ↔ k = 1 := by
-  sorry
+  classical
+  have hch : (HTTree.mk [vK k] fun _ => 0).children 0 = ∅ :=
+    children_of_one_node (vK k) (fun _ => 0)
+  simp only [HTTree.KappaRule, hch, Finset.image_empty, Finset.prod_empty, mul_one]
+  simp [vK]
 
 /-- **the global refutation geometry is separated**: the A-C.3 κ₀-rule holds at the EMPTY shape
 exactly when `kappa0 = 1`, so `ht_global`'s hypothesis `hkappa0` fails at `k = 2` and
 `c114_global_frozen_false`'s argument never starts. -/
 theorem kappa0Rule_empty_iff (k : ℕ) : (HTShape.mk [] k).Kappa0Rule ↔ k = 1 := by
-  sorry
+  classical
+  simp [HTShape.Kappa0Rule]
 
 /-- **the D5 clause subsumes A-C.2's designed `s`-pin**: a recentring by `π ^ s` times a
 representative of a NONZERO class has Gauss valuation exactly `s`.  This is why the designed
@@ -412,13 +418,16 @@ representative of a NONZERO class has Gauss valuation exactly `s`.  This is why 
 applied with a proof rather than an assertion). -/
 theorem repRecentring_gaussVal (hπ : Irreducible π) {z : Polynomial O} (hz : gaussVal z = 0)
     (s : ℕ) : gaussVal (Polynomial.C (π ^ s) * z) = (s : ℕ∞) := by
-  sorry
+  rw [gaussVal_mul hπ, gaussVal_C_pow hπ, hz, add_zero]
 
 /-- **the DISCLOSED non-tooth `hfence`**: `OrderOne` holds on the WHOLE refuting one-node
 family, so it separates nothing there — the blueprint TEETH line's "a SCOPE fence with no
 truth tooth in the grid", machine-recorded. -/
 theorem orderOne_of_one_node_vK (k : ℕ) : (HTTree.mk [vK k] fun _ => 0).OrderOne := by
-  sorry
+  intro i hi u l hmem
+  have hi0 : i = 0 := by simpa using hi
+  subst hi0
+  simp [vK] at hmem
 
 /-- **the DISCLOSED depth-0 triviality of `hnode`**: on ANY one-node tree the per-node
 exponent inequality holds unconditionally (the child sum is empty).  Not a defect — finding
@@ -426,7 +435,12 @@ D6's counterexamples are all multi-child — but recorded so `hnode` is not read
 depth 0. -/
 theorem nodeExponent_of_one_node (v : HTNode) (p : ℕ → ℕ) (N : ℕ) :
     (HTTree.mk [v] p).NodeExponent N := by
-  sorry
+  classical
+  intro i hi
+  have hi0 : i = 0 := by simpa using hi
+  subst hi0
+  rw [children_of_one_node, Finset.sum_empty]
+  exact Nat.zero_le _
 
 /-! ## 4. `IsRepSystem` is satisfiable (finding D5's clause is not a vacuity) -/
 
@@ -439,9 +453,11 @@ theorem exists_isRepSystem (hπ : Irreducible π) [Finite (ResidueField O)] {d :
 
 /-- and it is not implied either: `R = ∅` FAILS at every positive degree, so the clause has
 content. -/
-theorem not_isRepSystem_empty (hπ : Irreducible π) {d : ℕ} (hd : 0 < d) :
+theorem not_isRepSystem_empty {d : ℕ} (hd : 0 < d) :
     ¬ IsRepSystem (∅ : Set (Polynomial O)) d := by
-  sorry
+  intro h
+  obtain ⟨r, hr, -⟩ := h.2 0 (by simpa using hd)
+  exact hr.1
 
 /-! ## 5. The count laws at the certified degenerate strata
 
