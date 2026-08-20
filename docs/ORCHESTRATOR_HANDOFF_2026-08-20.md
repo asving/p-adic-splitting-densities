@@ -1,5 +1,16 @@
 # ORCHESTRATOR HANDOFF — read this to resume cold (2026-08-20)
 
+> **⚠ SUPERSEDED IN PART (same day, the Fable session that followed): PROJECT_STATE appends
+> #105–#108 are the operative state.** Discharged since this was written: §7's top item
+> (C.53 leg 2 is machine-checked, `C53c.lean`); the `multiplicity_tie` prediction (C.67
+> REFUTED, machine-checked); the `TowerDatum`/`IsTestKey` inhabitation gap (BOTH witnessed);
+> the valuation-cluster promotion. The roll-up defect recurred a FOURTH time and is cured
+> (§4's rule stands). New since: the dv-graded engine assembly + 4143/0 numeric cert
+> (`docs/in-progress/DV_GRADED_ENGINE_2026-08-20.md`), and the tower-instantiation freeze
+> draft v1 + its Codex NEEDS-REDESIGN packet
+> (`docs/in-progress/TOWER_INSTANTIATION_FREEZE_DRAFT_2026-08-20.md`). Owner packet:
+> D-TIF-1..5, C.27/C.67 re-signs, the L6 cite fallback.
+
 Written by the outgoing orchestrator (an Opus instance) at a CLEAN CHECKPOINT: nothing in
 flight, working tree clean, full `lake build` green. This is the tacit operating knowledge
 that lives in a session's context rather than in the repo — the part that would otherwise be
