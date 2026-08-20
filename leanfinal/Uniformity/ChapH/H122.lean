@@ -160,7 +160,8 @@ theorem betaLeg_two {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRin
         IsBetaState π c ∧ ClusterUndecided O π 2 N c} : ℝ)
       ≤ (1 / 3 : ℝ) * (N : ℝ) * (residueCard O : ℝ) ^ (2 * (N - 1))
           * ((residueCard O : ℝ) ^ (N - 1))⁻¹ := by
-  sorry
+  rw [card_betaUndecided_two (π := π) (N := N), Nat.cast_zero]
+  positivity
 
 /-! ## 3. The `m = 3` strong induction -/
 
@@ -176,7 +177,138 @@ theorem uCluster_three_le_of_betaLeg {O : Type} [CommRing O] [IsDomain O]
             * ((residueCard O : ℝ) ^ (N - 1))⁻¹) :
     ∀ N : ℕ, 1 ≤ N →
       (uCluster O π 3 N : ℝ) ≤ (N : ℝ) * (residueCard O : ℝ) ^ (2 * (N - 1)) := by
-  sorry
+  classical
+  have hQ2 : 2 ≤ residueCard O := two_le_residueCard O
+  have hQR : (2 : ℝ) ≤ (residueCard O : ℝ) := by exact_mod_cast hQ2
+  have hQ0 : (0 : ℝ) < (residueCard O : ℝ) := by linarith
+  have hcast1 : ((residueCard O - 1 : ℕ) : ℝ) = (residueCard O : ℝ) - 1 := by
+    have h1 : (1 : ℕ) ≤ residueCard O := residueCard_pos O
+    push_cast [Nat.cast_sub h1]
+    ring
+  have hc3 : clusterC 3 = 3 := by simp [clusterC]
+  intro N
+  induction N using Nat.strong_induction_on with
+  | _ N ih =>
+    intro hN
+    rcases Nat.lt_or_ge N 2 with hN1 | hN2
+    · -- base case `N = 1`: H.119 (i)
+      have hN1' : N = 1 := by omega
+      subst hN1'
+      rw [uCluster_one π hπ 3 (by norm_num)]
+      norm_num
+    -- the inductive step at `N ≥ 2`
+    · have hP : (0 : ℝ) < (residueCard O : ℝ) ^ (2 * (N - 1)) := pow_pos hQ0 _
+      -- step 2: H.121 (i), an equality
+      have hsplit := uCluster_split hπ (show (2 : ℕ) ≤ 3 by norm_num)
+        (show (3 : ℕ) ≤ 3 by norm_num) N hN
+      have hcast : (uCluster O π 3 N : ℝ)
+          = (Nat.card {c : ClusterState O 3 N // IsDrainState c} : ℝ)
+            + (Nat.card {c : ClusterState O 3 N //
+                (∃ k z, IsAlphaState π c k z) ∧ ClusterUndecided O π 3 N c} : ℝ)
+            + (Nat.card {c : ClusterState O 3 N //
+                IsBetaState π c ∧ ClusterUndecided O π 3 N c} : ℝ) := by
+        rw [hsplit]; push_cast; ring
+      -- step 3: the head cell, EXACT (H.113)
+      have hhead : (Nat.card {c : ClusterState O 3 N // IsDrainState c} : ℝ)
+          = (residueCard O : ℝ) ^ (2 * (N - 1)) := by
+        rw [card_drainState (O := O) 3 N (by norm_num) hN]
+        norm_num
+      -- step 4: the α cell — H.121 (ii), the IH, and H.30b at `clusterC 3 = 3 ≥ 2`
+      have halpha : (Nat.card {c : ClusterState O 3 N //
+            (∃ k z, IsAlphaState π c k z) ∧ ClusterUndecided O π 3 N c} : ℝ)
+          ≤ ((N - 3 : ℕ) : ℝ) / 3 * (residueCard O : ℝ) ^ (2 * (N - 1)) := by
+        rw [uCluster_alpha_leg hπ (show (2 : ℕ) ≤ 3 by norm_num) N hN, Nat.cast_sum]
+        have hbound : ∀ k ∈ (Finset.range N).filter (fun k => 1 ≤ k ∧ 3 * k ≤ N - 1),
+            (((residueCard O - 1) * residueCard O ^ (k * clusterC 3)
+                * uCluster O π 3 (N - 3 * k) : ℕ) : ℝ)
+              ≤ ((N - 3 : ℕ) : ℝ) * (residueCard O : ℝ) ^ (2 * (N - 1))
+                  * (((residueCard O : ℝ) - 1) * ((residueCard O : ℝ) ^ (3 * k))⁻¹) := by
+          intro k hk
+          simp only [Finset.mem_filter, Finset.mem_range] at hk
+          obtain ⟨hkN, hk1, hk3⟩ := hk
+          have hM1 : 1 ≤ N - 3 * k := by omega
+          have hMN : N - 3 * k < N := by omega
+          have hM3 : N - 3 * k ≤ N - 3 := by omega
+          have hih := ih (N - 3 * k) hMN hM1
+          have hM3R : ((N - 3 * k : ℕ) : ℝ) ≤ ((N - 3 : ℕ) : ℝ) := by
+            exact_mod_cast hM3
+          have hexp : (residueCard O : ℝ) ^ (2 * (N - 1))
+                * ((residueCard O : ℝ) ^ (3 * k))⁻¹
+              = (residueCard O : ℝ) ^ (k * clusterC 3)
+                * (residueCard O : ℝ) ^ (2 * (N - 3 * k - 1)) := by
+            rw [mul_inv_eq_iff_eq_mul₀ (ne_of_gt (pow_pos hQ0 (3 * k))), ← pow_add, ← pow_add,
+              hc3]
+            congr 1
+            omega
+          push_cast [hcast1]
+          calc ((residueCard O : ℝ) - 1) * (residueCard O : ℝ) ^ (k * clusterC 3)
+                * (uCluster O π 3 (N - 3 * k) : ℝ)
+              ≤ ((residueCard O : ℝ) - 1) * (residueCard O : ℝ) ^ (k * clusterC 3)
+                  * (((N - 3 * k : ℕ) : ℝ) * (residueCard O : ℝ) ^ (2 * (N - 3 * k - 1))) := by
+                exact mul_le_mul_of_nonneg_left hih
+                  (mul_nonneg (by linarith) (by positivity))
+            _ = ((N - 3 * k : ℕ) : ℝ) * ((residueCard O : ℝ) ^ (2 * (N - 1))
+                  * ((residueCard O : ℝ) ^ (3 * k))⁻¹) * ((residueCard O : ℝ) - 1) := by
+                rw [hexp]; ring
+            _ ≤ ((N - 3 : ℕ) : ℝ) * ((residueCard O : ℝ) ^ (2 * (N - 1))
+                  * ((residueCard O : ℝ) ^ (3 * k))⁻¹) * ((residueCard O : ℝ) - 1) := by
+                refine mul_le_mul_of_nonneg_right ?_ (by linarith)
+                exact mul_le_mul_of_nonneg_right hM3R (by positivity)
+            _ = ((N - 3 : ℕ) : ℝ) * (residueCard O : ℝ) ^ (2 * (N - 1))
+                  * (((residueCard O : ℝ) - 1) * ((residueCard O : ℝ) ^ (3 * k))⁻¹) := by ring
+        have hgeom : ∑ k ∈ (Finset.range N).filter (fun k => 1 ≤ k ∧ 3 * k ≤ N - 1),
+              (((residueCard O : ℝ) - 1) * ((residueCard O : ℝ) ^ (3 * k))⁻¹) ≤ 1 / 3 := by
+          have hsub : (Finset.range N).filter (fun k => 1 ≤ k ∧ 3 * k ≤ N - 1)
+              ⊆ (Finset.range N).image (· + 1) := by
+            intro k hk
+            simp only [Finset.mem_filter, Finset.mem_range] at hk
+            simp only [Finset.mem_image, Finset.mem_range]
+            exact ⟨k - 1, by omega, by omega⟩
+          refine le_trans (Finset.sum_le_sum_of_subset_of_nonneg hsub
+            (fun i _ _ => mul_nonneg (by linarith) (by positivity))) ?_
+          rw [Finset.sum_image (by intro a _ b _ hab; simpa using hab)]
+          exact alpha_geom_partial_le_third (residueCard O) 3 hQ2 (by norm_num) N
+        calc ∑ k ∈ (Finset.range N).filter (fun k => 1 ≤ k ∧ 3 * k ≤ N - 1),
+                (((residueCard O - 1) * residueCard O ^ (k * clusterC 3)
+                  * uCluster O π 3 (N - 3 * k) : ℕ) : ℝ)
+            ≤ ∑ k ∈ (Finset.range N).filter (fun k => 1 ≤ k ∧ 3 * k ≤ N - 1),
+                ((N - 3 : ℕ) : ℝ) * (residueCard O : ℝ) ^ (2 * (N - 1))
+                  * (((residueCard O : ℝ) - 1) * ((residueCard O : ℝ) ^ (3 * k))⁻¹) :=
+              Finset.sum_le_sum hbound
+          _ = ((N - 3 : ℕ) : ℝ) * (residueCard O : ℝ) ^ (2 * (N - 1))
+                * ∑ k ∈ (Finset.range N).filter (fun k => 1 ≤ k ∧ 3 * k ≤ N - 1),
+                  (((residueCard O : ℝ) - 1) * ((residueCard O : ℝ) ^ (3 * k))⁻¹) := by
+              rw [Finset.mul_sum]
+          _ ≤ ((N - 3 : ℕ) : ℝ) * (residueCard O : ℝ) ^ (2 * (N - 1)) * (1 / 3) :=
+              mul_le_mul_of_nonneg_left hgeom (by positivity)
+          _ = ((N - 3 : ℕ) : ℝ) / 3 * (residueCard O : ℝ) ^ (2 * (N - 1)) := by ring
+      -- step 5: the β cell — the carried hypothesis, used ONCE
+      have hbetaR : (Nat.card {c : ClusterState O 3 N //
+            IsBetaState π c ∧ ClusterUndecided O π 3 N c} : ℝ)
+          ≤ (N : ℝ) / 3 * (residueCard O : ℝ) ^ (2 * (N - 1)) := by
+        have hpow2 : (residueCard O : ℝ) ^ (3 * (N - 1))
+              * ((residueCard O : ℝ) ^ (N - 1))⁻¹
+            = (residueCard O : ℝ) ^ (2 * (N - 1)) := by
+          rw [mul_inv_eq_iff_eq_mul₀ (ne_of_gt (pow_pos hQ0 (N - 1))), ← pow_add]
+          congr 1
+          omega
+        refine le_trans (hbeta N hN) (le_of_eq ?_)
+        rw [mul_assoc, hpow2]
+        ring
+      -- step 6: sum, and A-H.6's closing arithmetic
+      have hclose : (residueCard O : ℝ) ^ (2 * (N - 1))
+            + ((N - 3 : ℕ) : ℝ) / 3 * (residueCard O : ℝ) ^ (2 * (N - 1))
+            + (N : ℝ) / 3 * (residueCard O : ℝ) ^ (2 * (N - 1))
+          ≤ (N : ℝ) * (residueCard O : ℝ) ^ (2 * (N - 1)) :=
+        calc (residueCard O : ℝ) ^ (2 * (N - 1))
+              + ((N - 3 : ℕ) : ℝ) / 3 * (residueCard O : ℝ) ^ (2 * (N - 1))
+              + (N : ℝ) / 3 * (residueCard O : ℝ) ^ (2 * (N - 1))
+            = (1 + ((N - 3 : ℕ) : ℝ) / 3 + (N : ℝ) / 3)
+                * (residueCard O : ℝ) ^ (2 * (N - 1)) := by ring
+          _ ≤ (N : ℝ) * (residueCard O : ℝ) ^ (2 * (N - 1)) :=
+              mul_le_mul_of_nonneg_right (cluster_closing_arith hN2) hP.le
+      rw [hcast, hhead]
+      linarith
 
 /-! ## 4. The node's conclusion, at the signed constants -/
 
