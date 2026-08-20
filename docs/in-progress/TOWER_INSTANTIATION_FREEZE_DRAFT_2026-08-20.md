@@ -3,8 +3,46 @@
 **Author: the orchestrator (Fable 5), 2026-08-20, working the blueprint-finishing charge
 directly.** STATUS: **DRAFT — nothing here is signed.** Adopting any part of §3–§5 is an
 owner gate-(a) event (it fixes the meaning of the capstone's `ladder`/`deepTwist`
-hypotheses). A Codex adversarial architecture pass is owed before the owner read (standing
-plan-level-adversarial rule).
+hypotheses).
+
+## ⛔ CODEX ADVERSARIAL PASS (2026-08-20, same day): **NEEDS-REDESIGN** — v1 is SUPERSEDED
+
+The standing plan-level adversarial pass ran the same day and returned NEEDS-REDESIGN with
+32 numbered findings. ⚠ PROCESS DEFECT, disclosed: the launch command piped through
+`tail -80`, so findings 1–18 were LOST (only 19–32 + the verdict survive; the session id
+went with them, so no resume). The surviving structural findings, all accepted on review:
+
+* **(#27, CRITICAL — the central semantic gap)** the §4 socket never says the tower ARISES
+  from the input: `hkf` + a development identity hold for many unrelated towers, so the
+  socket's advertised meaning ("the configuration chapter C's OM ladder produces") is not
+  what the body says. v2 must either add the algorithm linkage (blocked on the classifier
+  layer) or — the recommended route — re-advertise the guard at OM-8's own adjudicated
+  class ("every legal DEF GENTOW5-1 instantiation with the canonical read"), which is
+  dischargeable-in-principle by OM-8's YES and needs no algorithm linkage. New design
+  decision D-TIF-4 for the owner.
+* **(#21/#22, CRITICAL — the fence violation)** the §3 `canonicalRes` table as drafted
+  (letters valued through the read-level field) makes `HVarthetaRes`'s `∃ u : Ktˣ` clause
+  TRUE BY CONSTRUCTION — the socket would swallow the ϑ-conjunct, the exact trap the
+  non-swallowing fence names, and the I.10b arena equations would feed
+  `hvarthetaRes_of_arena_agree` its agreement hypothesis. v2 must value the deep letters'
+  residues genuinely in `L` (the descent to `Kt` — the actual content — must remain open),
+  and must NOT equate the arena `res` with the canonical read.
+* **(#20, CRITICAL)** the frozen binders carry ONE `Kt` for the whole level-indexed family
+  `(A, R, w)`; the tower's natural per-level fields differ. v2 must fix the intended common
+  receiving field from E.61's own semantics (a source read of E.61/D62w is prerequisite).
+* **(#30, CRITICAL)** total structure/function equalities pin junk (off-range indices,
+  `Full`, thresholds) beyond the live configuration. v2 should pin live-range projections
+  and the mathematically-meaningful fields only.
+* **(#19, #23–#26, #28–#29, #31–#32, GAPs, all accepted)** algebra-map compatibility for
+  `eL`; `μ`/`hμ`/divisibility/threshold/`hkeyfree`-binding for the input block; universe
+  lifts for `G` and the tower-field family; and G-1's non-vacuity is currently a claim
+  about `DeepTower` witnesses, not socket inhabitants — the gate must construct the FULL
+  socket witness (carrier + block + lattice + transports) at a fixed stage with a
+  well-specified `(i, μ, F₀)`.
+
+§§1–2 (the gap inventory and D-TIF-1/2/3) survive review; §§3–4 are superseded pending v2;
+§§5–8 survive with the above amendments. v2 is queued as a dedicated unit with the required
+source reads (E.61's `Kt` semantics, D62w's witness layer, OM-8's record).
 
 ## §0 The charge, and what is owed to whom
 
