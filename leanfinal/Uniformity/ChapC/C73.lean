@@ -219,4 +219,103 @@ theorem isXFree_iff_forall {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
   · intro h t ht _
     exact h t ht
 
+/-! ### The `f₁ = 1` companion (`[GT3-r1]`): x-freeness IS the slot test, there and only there
+
+`EFF.GENTOW3.17`'s displayed criterion `i(u₂(f₂−t)) = 0` is an EVALUATION of the primary clause
+at `f₁ = 1`, where C.14a's `stageLiftIA` has a single summand and the lift is one monomial
+`C(λ·π^a)·x^{i(M)}`; its `X`-degree is then `i(M)` exactly, PROVIDED the constant `λ·π^a` does not
+vanish.  That proviso is where `hπ` is spent twice over: `π ≠ 0`, and `η ≠ 0` (C.19's
+`stageLetter_ne_zero`) so that the lift ARGUMENT `−ψ₂.coeff t·η^{W(t)}` is nonzero, whence its
+single letter-basis digit is nonzero (`stageCoord_ne_zero_of_f1`) and so is its `resLift`.
+
+At `f₁ ≥ 2` the equivalence is FALSE in general (the source's own `[GT3-r1]` bracket), which is
+why this is a companion carrying `hf1` and NOT the definition. -/
+
+/-- **D9 (cured).**  The order-0 key `X` is an order-1 key; the private-copy pattern
+(C.04/C.12/C.19/C.21/C.22/C.44/C.46/C.47/C.128 each carry one), because `private` does not
+export. -/
+private theorem isKey_X : IsKey (Polynomial.X : Polynomial O) where
+  monic := Polynomial.monic_X
+  pos := by simp
+  irred := by
+    rw [Polynomial.map_X]
+    exact Polynomial.irreducible_X
+
+/-- The `Field` structure on the stage field `K` — C.04's private copy (a `@[reducible]` `def`,
+not an `instance`, for B.25(b)'s reason). -/
+@[reducible] private noncomputable def fieldStageField (F : KeyFrame O π) (H₀ : ℕ)
+    (hpin : F.Pin H₀) : Field (F.stageField H₀ hpin) :=
+  letI : Field (resField (Polynomial.X : Polynomial O)) := instFieldResField isKey_X
+  haveI : Fact (Irreducible (F.frameRes H₀ hpin)) := ⟨(F.hresirr H₀ hpin).1⟩
+  AdjoinRoot.instField
+
+/-- At `f₁ = 1` every `stageLiftO` entry is a single monomial: C.14a's `stageLiftIA` sums `f₁`
+terms, so one survives, at slot `i(M) = F.slotIdx M` and `π`-exponent `(M − i(M)h)/e₁`.  (Private
+copy of C.128's Part 3(a): C.128 is a far later node and importing it here would invert the DAG.
+The two proofs are the same two lines.) -/
+private theorem stageLiftO_of_f1 (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀) (hf₁ : F.f₁ = 1)
+    (M : ℕ) (c : F.stageField H₀ hpin) :
+    F.stageLiftO H₀ hpin M c
+      = Polynomial.C (resLift (F.stageCoord H₀ hpin c 0)
+            * π ^ ((M - F.slotIdx M * F.h) / F.e₁))
+        * Polynomial.X ^ F.slotIdx M := by
+  rw [KeyFrame.stageLiftO, KeyFrame.stageLiftIA, hf₁, Finset.sum_range_one]
+  simp
+
+/-- At `f₁ = 1` the single letter-basis digit detects nonvanishing: `stageCoord c 0 = 0` would
+make C.14a's reconstruction identity `sum_stageCoord` read `c = 0`.  (Private copy of C.128's
+helper of the same name, for the DAG reason above.) -/
+private theorem stageCoord_ne_zero_of_f1 (F : KeyFrame O π) (H₀ : ℕ) (hpin : F.Pin H₀)
+    (hf₁ : F.f₁ = 1) {c : F.stageField H₀ hpin} (hc : c ≠ 0) :
+    F.stageCoord H₀ hpin c 0 ≠ 0 := by
+  intro h0
+  refine hc ?_
+  have hsum := F.sum_stageCoord H₀ hpin c
+  rw [hf₁, Finset.sum_range_one, h0] at hsum
+  simpa using hsum.symm
+
+-- `hh : 1 ≤ F.h` is an A-C.1-signed binder and is NOT consumed: the equivalence is a degree
+-- computation on a single monomial, and the frame's slope numerator never enters.  Kept because
+-- the signature is frozen (statement fence).
+set_option linter.unusedVariables false in
+/-- **NODE C.73 — the `f₁ = 1` COMPANION** (`EFF.GENTOW3.17`'s displayed test, scoped by
+`[GT3-r1]`).  At `f₁ = 1`, x-freeness of the datum is exactly the arithmetic condition that every
+NONZERO residual slot sits at the `x`-free slot index: `i((f₂−t)u₂) = 0`.
+
+This is the criterion the corpus displays, and it is landed here with `hf1 : F.f₁ = 1` EXPLICIT,
+because at `f₁ ≥ 2` it is false in general — the primary clause `IsXFree` is the operative
+definition at every `f₁` and is what `shadow_exact_of_xfree` consumes.
+
+It is also this node's satisfiability certificate for `IsXFree`: it reduces x-freeness to a
+decidable statement about `slotIdx`, which at e.g. the landed `s2Frame` (`e₁ = 2`, `f₁ = 1`,
+`h = 1`, so `i(k) = k mod 2`) holds for every even `u₂` — see the module docstring's audit. -/
+theorem isXFree_iff_slot_of_f1 {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h) (hf1 : F.f₁ = 1) :
+    IsXFree T
+      ↔ ∀ t, t < T.f₂ → T.ψ₂.coeff t ≠ 0 → F.slotIdx ((T.f₂ - t) * T.u₂) = 0 := by
+  classical
+  letI : Field (F.stageField H₀ hpin) := fieldStageField F H₀ hpin
+  constructor
+  · intro hx t ht hc
+    have hcne : (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ wrapExp T t) ≠ 0 :=
+      mul_ne_zero (neg_ne_zero.mpr hc)
+        (pow_ne_zero _ (F.stageLetter_ne_zero hπ H₀ hpin))
+    have hcoord := stageCoord_ne_zero_of_f1 F H₀ hpin hf1 hcne
+    have hres : resLift (F.stageCoord H₀ hpin
+        (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ wrapExp T t) 0) ≠ 0 := by
+      intro h0
+      have hspec := resLift_spec (F.stageCoord H₀ hpin
+        (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ wrapExp T t) 0)
+      rw [h0, map_zero] at hspec
+      exact hcoord hspec.symm
+    have hv : resLift (F.stageCoord H₀ hpin
+          (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ wrapExp T t) 0)
+        * π ^ (((T.f₂ - t) * T.u₂ - F.slotIdx ((T.f₂ - t) * T.u₂) * F.h) / F.e₁) ≠ 0 :=
+      mul_ne_zero hres (pow_ne_zero _ hπ.ne_zero)
+    have hlift := hx t ht hc
+    rw [stageLiftO_of_f1 F H₀ hpin hf1, Polynomial.natDegree_C_mul_X_pow _ _ hv] at hlift
+    exact hlift
+  · intro h t ht hc
+    rw [stageLiftO_of_f1 F H₀ hpin hf1, h t ht hc, pow_zero, mul_one, Polynomial.natDegree_C]
+
 end Uniformity.Density.Tower
