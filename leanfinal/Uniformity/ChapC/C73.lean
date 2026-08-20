@@ -318,4 +318,67 @@ theorem isXFree_iff_slot_of_f1 {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H�
   · intro h t ht hc
     rw [stageLiftO_of_f1 F H₀ hpin hf1, h t ht hc, pow_zero, mul_one, Polynomial.natDegree_C]
 
+/-! ## The exactness theorem, part 1: the generic `devQ`-chain lemma
+
+`EFF.GENTOW3.26`'s "the two division towers coincide term by term" is, formalized, the statement
+that a polynomial PRESENTED as `Σ_{j' < N} E_{j'}·Ψ^{j'}` with every `E_{j'}` below `Ψ` in degree
+IS its own `Ψ`-adic development.  C.127's `devQ` API gives the three pieces (`devQ_add`,
+`devQ_mul_pow`, `devQ_mul_pow_of_lt`); these three lemmas assemble them over a general
+`CommRing`, which is what lets the SAME computation run twice — once in `O[x][Z]` and once, after
+transport by `AdjoinRoot.mk Φ′`, in `(O[x]/Φ′)[Z]`.  That double use is the whole mechanism of
+(iii): the two-variable division happens in `Z`, and reduction mod `Φ′` cannot disturb it. -/
+
+section Chain
+
+variable {R : Type*} [CommRing R] [Nontrivial R] {Ψ : Polynomial R}
+
+/-- `devQ` is additive over a `Finset.sum` (C.127's `devQ_add`, iterated). -/
+theorem devQ_finsetSum {ι : Type*} (hΨ : Ψ.Monic) (s : Finset ι) (g : ι → Polynomial R) (j : ℕ) :
+    devQ Ψ (∑ i ∈ s, g i) j = ∑ i ∈ s, devQ Ψ (g i) j := by
+  classical
+  refine Finset.induction_on s ?_ ?_
+  · simp [devQ_of_zero]
+  · intro a s' ha ih
+    rw [Finset.sum_insert ha, devQ_add hΨ, ih, Finset.sum_insert ha]
+
+/-- One chain term: an in-grid `E` parked at `Ψ^{j'}` contributes `E` at coordinate `j'` and
+nothing anywhere else.  (C.127's `devQ_pow_add_entry` is this statement bundled with a leading
+pure power; here the term is isolated, which is what a general chain needs.) -/
+theorem devQ_term (hΨ : Ψ.Monic) {E : Polynomial R} (hE : E.degree < Ψ.degree) (j' j : ℕ) :
+    devQ Ψ (E * Ψ ^ j') j = if j = j' then E else 0 := by
+  rcases lt_trichotomy j j' with hlt | heq | hgt
+  · rw [if_neg (by omega)]
+    exact devQ_mul_pow_of_lt hΨ j' E j hlt
+  · subst heq
+    rw [if_pos rfl]
+    have h := devQ_mul_pow hΨ j E 0
+    rw [Nat.add_zero] at h
+    rw [h]
+    exact devQ_zero_of_degree_lt hΨ hE
+  · rw [if_neg (by omega)]
+    by_cases hE0 : E = 0
+    · rw [hE0, zero_mul]; exact devQ_of_zero Ψ j
+    obtain ⟨c, hc⟩ : ∃ c, j = j' + c := ⟨j - j', by omega⟩
+    subst hc
+    rw [devQ_mul_pow hΨ]
+    refine devQ_eq_zero_of_lt hΨ E c ?_
+    have hEd : E.natDegree < Ψ.natDegree := natDegree_lt_natDegree hE0 hE
+    have hc1 : 1 ≤ c := by omega
+    calc E.natDegree < Ψ.natDegree := hEd
+      _ = 1 * Ψ.natDegree := by ring
+      _ ≤ c * Ψ.natDegree := Nat.mul_le_mul_right _ hc1
+
+/-- **THE CHAIN LEMMA.**  A polynomial presented as `Σ_{j' < N} E_{j'}·Ψ^{j'}` with every
+`E_{j'}` of degree `< deg Ψ` IS its own `Ψ`-adic development: `devQ` reads the presentation back
+coordinate by coordinate.  (This is `dev_unique` (B.06) in the shape the shadow read needs, over
+an arbitrary `CommRing` rather than over the DVR.) -/
+theorem devQ_chain (hΨ : Ψ.Monic) (E : ℕ → Polynomial R)
+    (hE : ∀ j', (E j').degree < Ψ.degree) {N j : ℕ} (hj : j < N) :
+    devQ Ψ (∑ j' ∈ Finset.range N, E j' * Ψ ^ j') j = E j := by
+  classical
+  rw [devQ_finsetSum hΨ, Finset.sum_congr rfl (fun j' _ => devQ_term hΨ (hE j') j' j),
+    Finset.sum_ite_eq (Finset.range N) j E, if_pos (Finset.mem_range.mpr hj)]
+
+end Chain
+
 end Uniformity.Density.Tower
