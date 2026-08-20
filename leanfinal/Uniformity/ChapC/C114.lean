@@ -394,16 +394,23 @@ theorem children_of_one_node (v : HTNode) (p : ℕ → ℕ) :
   classical
   simp [HTTree.children]
 
+/-- on a one-node tree the κ-rule says exactly `kappa = 1` (both factorial products are
+empty). -/
+theorem kappaRule_one_node_iff' (v : HTNode) (p : ℕ → ℕ) :
+    (HTTree.mk [v] p).KappaRule 0 ↔ v.kappa = 1 := by
+  classical
+  have hch : (HTTree.mk [v] p).children 0 = ∅ := children_of_one_node v p
+  simp only [HTTree.KappaRule, hch, Finset.image_empty, Finset.prod_empty, mul_one]
+  constructor
+  · intro h; simpa using h
+  · intro h; simpa using h
+
 /-- **the branch refutation geometry is separated**: the A-C.3 κ-rule holds at the root of
 `⟨[vK k]⟩` exactly when `k = 1`, so `ht_branch`'s hypothesis `hkappa` fails at `k = 2` and the
 equinumerous-strata argument of `c114_branch_frozen_false` never starts. -/
 theorem kappaRule_one_node_iff (k : ℕ) :
-    (HTTree.mk [vK k] fun _ => 0).KappaRule 0 ↔ k = 1 := by
-  classical
-  have hch : (HTTree.mk [vK k] fun _ => 0).children 0 = ∅ :=
-    children_of_one_node (vK k) (fun _ => 0)
-  simp only [HTTree.KappaRule, hch, Finset.image_empty, Finset.prod_empty, mul_one]
-  simp [vK]
+    (HTTree.mk [vK k] fun _ => 0).KappaRule 0 ↔ k = 1 :=
+  kappaRule_one_node_iff' (vK k) (fun _ => 0)
 
 /-- **the global refutation geometry is separated**: the A-C.3 κ₀-rule holds at the EMPTY shape
 exactly when `kappa0 = 1`, so `ht_global`'s hypothesis `hkappa0` fails at `k = 2` and
@@ -411,6 +418,13 @@ exactly when `kappa0 = 1`, so `ht_global`'s hypothesis `hkappa0` fails at `k = 2
 theorem kappa0Rule_empty_iff (k : ℕ) : (HTShape.mk [] k).Kappa0Rule ↔ k = 1 := by
   classical
   simp [HTShape.Kappa0Rule]
+
+/-- the same for an arbitrary shape with no branches. -/
+theorem kappa0Rule_nil_iff (S : HTShape) (h : S.branches.length = 0) :
+    S.Kappa0Rule ↔ S.kappa0 = 1 := by
+  classical
+  simp only [HTShape.Kappa0Rule, h, Finset.range_zero, Finset.image_empty, Finset.prod_empty,
+    mul_one]
 
 /-- **the D5 clause subsumes A-C.2's designed `s`-pin**: a recentring by `π ^ s` times a
 representative of a NONZERO class has Gauss valuation exactly `s`.  This is why the designed
@@ -466,6 +480,18 @@ theorem not_isRepSystem_empty {d : ℕ} (hd : 0 < d) :
 A-C.2 refutation lived: the one-node tree and the empty shape.  The binder lists are the FULL
 A-C.3 re-signed lists, byte-frozen, plus one scope equation (`hone` / `hnil`). -/
 
+set_option linter.overlappingInstances false in
+/-- transport of exact-cell membership along an equality of keys.  (The two instance pairs may
+differ; `IsDomain` and `UniqueFactorizationMonoid` are `Prop`-classes, so after `subst` they
+are proof-irrelevantly equal.) -/
+theorem htCell_congr_key {Ψ Φ : Polynomial O} (h : Ψ = Φ)
+    [IsDomain (resField Ψ)] [UniqueFactorizationMonoid (resField Ψ)]
+    [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
+    (v : HTNode) (f : Polynomial O) :
+    f ∈ htCell π Ψ v ↔ f ∈ htCell π Φ v := by
+  subst h
+  exact Iff.rfl
+
 /-- the one-node normal form of the realization predicate: on a single-node tree `htRealizes`
 is exactly membership in that node's exact cell (the recentring and sibling clauses are
 vacuous, and `K 0 = Φ` collapses the key tower). -/
@@ -473,7 +499,26 @@ theorem htRealizes_one_node_iff {Φ : Polynomial O} (hΦ : IsKey Φ)
     [IsDomain (resField Φ)] [UniqueFactorizationMonoid (resField Φ)]
     (v : HTNode) (p : ℕ → ℕ) (R : Set (Polynomial O)) (f : Polynomial O) :
     htRealizes π Φ f (HTTree.mk [v] p) R ↔ f ∈ htCell π Φ v := by
-  sorry
+  constructor
+  · rintro ⟨G, K, instD, instU, hK0, hG0, hkey, hcell, -, -⟩
+    haveI := instD 0
+    haveI := instU 0
+    have h0 := hcell 0 (by simp)
+    rw [← hG0]
+    exact (htCell_congr_key hK0 v (G 0)).1 h0
+  · intro hf
+    refine ⟨fun _ => f, fun _ => Φ, fun _ => inferInstance, fun _ => inferInstance,
+      rfl, rfl, fun i _ => hΦ, ?_, ?_, ?_⟩
+    · intro i hi
+      have hi0 : i = 0 := by simpa using hi
+      subst hi0
+      exact hf
+    · intro i hi hi'
+      simp only [List.length_singleton] at hi'
+      omega
+    · intro i i' hi hi' hlt hlt' hne _ _
+      simp only [List.length_singleton] at hlt
+      omega
 
 set_option linter.unusedVariables false in
 set_option linter.overlappingInstances false in
