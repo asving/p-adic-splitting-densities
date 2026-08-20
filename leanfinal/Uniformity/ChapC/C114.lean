@@ -597,7 +597,39 @@ theorem ht_branch_empty_tree [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
           htRealizes π Φ (monicPoly a) t R}
       = htBranchCount (Nat.card (resField Φ))
           (fun lam => sideCensus (resField Φ) lam) t N := by
-  sorry
+  classical
+  obtain ⟨tn, tp⟩ := t
+  obtain rfl : tn = [] := by
+    match tn, hnil with
+    | [], _ => rfl
+  -- the read node is the junk default, of multiplicity `0`, so the coefficient box is a point
+  have hm : (HTNode.default0).m * Φ.natDegree = 0 := by simp [HTNode.default0]
+  haveI hE : IsEmpty (Fin ((HTNode.default0).m * Φ.natDegree)) := by
+    rw [hm]; infer_instance
+  haveI : Unique (Coeff O ((HTNode.default0).m * Φ.natDegree) N) := Pi.uniqueOfIsEmpty _
+  show Nat.card {c : Coeff O ((HTNode.default0).m * Φ.natDegree) N //
+      ∃ a : Fin ((HTNode.default0).m * Φ.natDegree) → O,
+        proj O ((HTNode.default0).m * Φ.natDegree) N a = c ∧
+        htRealizes π Φ (monicPoly a) (HTTree.mk [] tp) R}
+    = htBranchCount (Nat.card (resField Φ))
+        (fun lam => sideCensus (resField Φ) lam) (HTTree.mk [] tp) N
+  -- every class is realized: all six `htRealizes` clauses are vacuous over the empty tree
+  have hall : ∀ c : Coeff O ((HTNode.default0).m * Φ.natDegree) N,
+      ∃ a : Fin ((HTNode.default0).m * Φ.natDegree) → O,
+        proj O ((HTNode.default0).m * Φ.natDegree) N a = c ∧
+        htRealizes π Φ (monicPoly a) (HTTree.mk [] tp) R := by
+    intro c
+    refine ⟨fun _ => 0, Subsingleton.elim _ _, ?_⟩
+    exact ⟨fun _ => monicPoly (fun _ => (0 : O)), fun _ => Φ, fun _ => inferInstance,
+      fun _ => inferInstance, rfl, rfl, by simp, by simp, by simp, by simp⟩
+  have hcard : Nat.card {c : Coeff O ((HTNode.default0).m * Φ.natDegree) N //
+      ∃ a : Fin ((HTNode.default0).m * Φ.natDegree) → O,
+        proj O ((HTNode.default0).m * Φ.natDegree) N a = c ∧
+        htRealizes π Φ (monicPoly a) (HTTree.mk [] tp) R} = 1 := by
+    refine Nat.card_eq_one_iff_unique.2 ⟨⟨fun x y => Subtype.ext (Subsingleton.elim _ _)⟩, ?_⟩
+    exact ⟨⟨default, hall default⟩⟩
+  rw [hcard]
+  simp [htBranchCount]
 
 set_option linter.unusedVariables false in
 set_option linter.overlappingInstances false in
@@ -646,7 +678,48 @@ theorem ht_global_empty_shape [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
                 (S.branches.getD (σ i) (0, 0, default)).2.2 (R i))}
       = htGlobalCount S (residueCard O)
           (fun i lam => @sideCensus (resField (Φb i)) _ (instD i) (instU i) (instFin i) lam) N := by
-  sorry
+  classical
+  obtain ⟨sb, k0⟩ := S
+  obtain rfl : sb = [] := by
+    match sb, hnil with
+    | [], _ => rfl
+  have hn0 : n = 0 := by simpa using hn
+  subst hn0
+  haveI : Unique (Coeff O 0 N) := Pi.uniqueOfIsEmpty _
+  -- `hkappa0` forces `kappa0 = 1` on the empty shape: the refuting `k = 2` member is excluded
+  have hk0 : k0 = 1 := (kappa0Rule_nil_iff (HTShape.mk [] k0) rfl).1 hkappa0
+  have hall : ∀ c : Coeff O 0 N,
+      ∃ a : Fin 0 → O, proj O 0 N a = c ∧
+        ∃ σ : ℕ → ℕ, (HTShape.mk [] k0).IsSlotAssign σ ∧
+        ∃ G : ℕ → Polynomial O,
+          monicPoly a = ∏ i ∈ Finset.range (HTShape.mk [] k0).branches.length, G i ∧
+          ∀ i, i < (HTShape.mk [] k0).branches.length → (G i).Monic ∧
+            (G i).map (IsLocalRing.residue O)
+              = ((Φb i).map (IsLocalRing.residue O))
+                  ^ ((HTShape.mk [] k0).branches.getD (σ i) (0, 0, default)).2.1 ∧
+            (((HTShape.mk [] k0).branches.getD (σ i) (0, 0, default)).2.1 = 1 ∨
+              htRealizes π (Φb i) (G i)
+                ((HTShape.mk [] k0).branches.getD (σ i) (0, 0, default)).2.2 (R i)) := by
+    intro c
+    refine ⟨fun _ => 0, Subsingleton.elim _ _, id, ?_, fun _ => 1, ?_, by simp⟩
+    · refine ⟨?_, by simp⟩
+      simp [Set.BijOn, Set.MapsTo, Set.InjOn, Set.SurjOn]
+    · simp [monicPoly]
+  have hcard : Nat.card {c : Coeff O 0 N // ∃ a : Fin 0 → O, proj O 0 N a = c ∧
+      ∃ σ : ℕ → ℕ, (HTShape.mk [] k0).IsSlotAssign σ ∧
+      ∃ G : ℕ → Polynomial O,
+        monicPoly a = ∏ i ∈ Finset.range (HTShape.mk [] k0).branches.length, G i ∧
+        ∀ i, i < (HTShape.mk [] k0).branches.length → (G i).Monic ∧
+          (G i).map (IsLocalRing.residue O)
+            = ((Φb i).map (IsLocalRing.residue O))
+                ^ ((HTShape.mk [] k0).branches.getD (σ i) (0, 0, default)).2.1 ∧
+          (((HTShape.mk [] k0).branches.getD (σ i) (0, 0, default)).2.1 = 1 ∨
+            htRealizes π (Φb i) (G i)
+              ((HTShape.mk [] k0).branches.getD (σ i) (0, 0, default)).2.2 (R i))} = 1 := by
+    refine Nat.card_eq_one_iff_unique.2 ⟨⟨fun x y => Subtype.ext (Subsingleton.elim _ _)⟩, ?_⟩
+    exact ⟨⟨default, hall default⟩⟩
+  rw [hcard]
+  simp [htGlobalCount, hk0]
 
 end Uniformity.Density.Tower
 
