@@ -366,6 +366,12 @@ theorem rc2 : residueCard ℤ_[2] = 2 := by
 
 theorem h2_padic : Irreducible (2 : ℤ_[2]) := by simpa using PadicInt.irreducible_p (p := 2)
 
+/-- the label and the degree obstruction, both inhabited at the REAL base `ℤ_[2]` —
+nothing in the refutation is vacuous. -/
+example : HasLabel (L₀ h2_padic rc2) (g₀ ℤ_[2]) ∧ (g₀ ℤ_[2]).natDegree = 3 ∧
+    (s2Frame h2_padic rc2).e₁ * (s2Frame h2_padic rc2).f₁ = 2 :=
+  ⟨hasLabel_g₀ h2_padic rc2, g₀_natDegree, rfl⟩
+
 /-- **D13 IS FALSE.**  The constructed frame realizes every hypothesis of
 `hasLabel_natDegree_dvd` over `ℤ_[2]` while its conclusion fails (`2 ∤ 3`). -/
 theorem d13_refuted : ¬ D13Statement := fun hax =>
