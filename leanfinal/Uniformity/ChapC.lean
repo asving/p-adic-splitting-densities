@@ -87,6 +87,7 @@ import Uniformity.ChapC.C71
 import Uniformity.ChapC.C72
 import Uniformity.ChapC.C73
 import Uniformity.ChapC.C74
+import Uniformity.ChapC.C80
 import Uniformity.ChapC.C83
 import Uniformity.ChapC.C84
 import Uniformity.ChapC.C87

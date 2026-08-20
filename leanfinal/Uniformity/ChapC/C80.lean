@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import Uniformity.ChapC.C04
+import Uniformity.ChapC.C43
 import Uniformity.ChapC.C67
 import Uniformity.ChapC.C44
 import Uniformity.ChapC.C97
@@ -627,4 +628,165 @@ theorem f₅_squarefree : Squarefree (f₅ O) := by
       linear_combination (-e) * s1 + s0 - 2 * e ^ 2 * c * hb' - 4 * e ^ 2 * b' * hc'
     exact h2dvd3 ⟨e - b' * c' * e ^ 2, by linear_combination hkey⟩
 
+/-! ## 7. The label, the block, and THE REFUTATIONS -/
+
+include h2 hq in
+theorem f₅_key_not_dvd : ¬ (s2Frame h2 hq).key ∣ (f₅ O) := by
+  rw [key_eq h2 hq]
+  intro hdvd
+  have h0 : dev (s2Key O) (f₅ O) 0 = 0 := by
+    show (f₅ O) %ₘ (s2Key O) = 0
+    exact (Polynomial.modByMonic_eq_zero_iff_dvd s2Key_monic).mpr hdvd
+  rw [dev_f₅_zero] at h0
+  have h4 : (4 : O) = 0 := by
+    have := congrArg (fun r : Polynomial O => r.coeff 1) h0
+    simpa using this
+  rw [show (4 : O) = 2 ^ 2 by norm_num] at h4
+  exact pow_ne_zero 2 h2.ne_zero h4
+
+include h2 hq in
+theorem hasLabel_f₅ : HasLabel ((s2Tower h2 hq).levelDatum h2) (f₅ O) := by
+  refine ⟨f₅_monic, by rw [f₅_natDegree]; norm_num, pure_f₅ h2 hq,
+    hne_f₅ h2 hq, 5, hp_f₅ h2 hq, 1, Nat.one_pos, ?_⟩
+  rw [pow_one]
+  show ρ₅ h2 hq = ((s2Tower h2 hq).levelDatum h2).r
+  rw [ρ₅_eq_towerLabel h2 hq]
+  rfl
+
+include h2 hq in
+theorem blockContext_f₅ : BlockContext ((s2Tower h2 hq).levelDatum h2) (f₅ O) := by
+  refine ⟨f₅_monic, f₅_squarefree h2, f₅_key_not_dvd h2 hq, hne_f₅ h2 hq, 5, hp_f₅ h2 hq,
+    ?_, ?_⟩
+  · show 0 < dvSideDeg (s2Frame h2 hq) (f₅ O) 5 2 (hne_f₅ h2 hq)
+    rw [dvsidedeg_f₅ h2 hq]
+    norm_num
+  · show ((s2Tower h2 hq).levelDatum h2).r ∣ ρ₅ h2 hq
+    rw [ρ₅_eq_towerLabel h2 hq]
+    exact dvd_rfl
+
+include h2 hq in
+theorem blockFactor_f₅ :
+    blockFactor ((s2Tower h2 hq).levelDatum h2) (f₅ O) = f₅ O :=
+  blockFactor_eq_of_frontier ((s2Tower h2 hq).levelDatum h2) (hasLabel_f₅ h2 hq) dvd_rfl
+    (fun _ _ h => h)
+
+include h2 hq in
+theorem keyDeg₂_s2Tower : ((s2Tower h2 hq).levelDatum h2).keyDeg₂ = 4 := by
+  have hr : ((s2Tower h2 hq).levelDatum h2).r.natDegree = 1 := by
+    have h := (towerLabel_spec (s2Tower h2 hq) h2).2.2.1
+    exact h
+  rw [LevelDatum.keyDeg₂, e1_eq h2 hq, f1_eq h2 hq,
+    show ((s2Tower h2 hq).levelDatum h2).ℓ = 2 from rfl, hr]
+
+include h2 hq in
+/-- ★ **the FLOOR conjunct survives at the probe**: `mult₂ = ⌊5/4⌋ = 1`. -/
+theorem mult₂_f₅ : mult₂ ((s2Tower h2 hq).levelDatum h2) (f₅ O) = 1 := by
+  rw [mult₂, blockFactor_f₅ h2 hq, f₅_natDegree, keyDeg₂_s2Tower h2 hq]
+
 end Uniformity.Density.Tower.C80
+
+namespace Uniformity.Density.Tower.C80
+
+open Polynomial IsLocalRing IsDiscreteValuationRing Uniformity.Density
+open Uniformity.Density.Leaf Uniformity.Density.Tower Uniformity.Density.Tower.C35b
+
+/-! ## 8. The ∀-closures, refuted absolutely over `ℤ_[2]` -/
+
+/-- The signed C.80 `tie_pure_power`, closed over everything. -/
+def TiePurePowerStatement : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] (π : O)
+    (F : KeyFrame O π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key
+      (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (_hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    (f : Polynomial O) (_hctx : BlockContext (T.levelDatum hπ) f)
+    (μ₂ : ℕ) (_hμ₂ : 0 < μ₂)
+    (_hres : ∀ (hne : (dvSideSet F f T.u₂ T.e₂).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F f (dvSideMin F f T.u₂ T.e₂ hne) = (M₀ : ℕ∞)),
+      ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
+        dvResPoly F H₀ hpin f T.u₂ T.e₂ hne M₀ hp
+          = Polynomial.C c * (towerLabel T) ^ μ₂),
+    mult₂ (T.levelDatum hπ) f = μ₂ ∧
+    (blockFactor (T.levelDatum hπ) f).natDegree = T.D₂ * μ₂
+
+/-- The signed C.77 `partial_projection`, closed over everything. -/
+def PartialProjectionStatement : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] (π : O)
+    (F : KeyFrame O π) (H₀ : ℕ)
+    (hpin : npHgt Polynomial.X F.key
+      (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞))
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (_hh : 1 ≤ F.h)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    (f : Polynomial O) (_hctx : BlockContext (T.levelDatum hπ) f),
+    (dev (composedKey T) f (f.natDegree / T.D₂)).Monic ∧
+    ((T.D₂ ∣ f.natDegree) → dev (composedKey T) f (f.natDegree / T.D₂) = 1) ∧
+    (blockFactor (T.levelDatum hπ) f).natDegree = T.D₂ * mult₂ (T.levelDatum hπ) f
+
+private theorem hres_f₅ :
+    ∀ (hne : (dvSideSet (s2Frame h2_padic rc2) (f₅ ℤ_[2])
+        (s2Tower h2_padic rc2).u₂ (s2Tower h2_padic rc2).e₂).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt (s2Frame h2_padic rc2) (f₅ ℤ_[2])
+        (dvSideMin (s2Frame h2_padic rc2) (f₅ ℤ_[2])
+          (s2Tower h2_padic rc2).u₂ (s2Tower h2_padic rc2).e₂ hne) = (M₀ : ℕ∞)),
+      ∃ c : (s2Frame h2_padic rc2).stageField 1 (s2Frame_pin h2_padic rc2), c ≠ 0 ∧
+        dvResPoly (s2Frame h2_padic rc2) 1 (s2Frame_pin h2_padic rc2) (f₅ ℤ_[2])
+          (s2Tower h2_padic rc2).u₂ (s2Tower h2_padic rc2).e₂ hne M₀ hp
+          = Polynomial.C c * (towerLabel (s2Tower h2_padic rc2)) ^ 1 := by
+  intro hne M₀ hp
+  have hM : M₀ = 5 := by
+    have h5 : (M₀ : ℕ∞) = ((5 : ℕ) : ℕ∞) := hp.symm.trans (hp_f₅ h2_padic rc2)
+    exact_mod_cast h5
+  subst hM
+  letI : Field ((s2Frame h2_padic rc2).stageField 1 (s2Frame_pin h2_padic rc2)) :=
+    s2StageFieldInst h2_padic rc2 1 (s2Frame_pin h2_padic rc2)
+  refine ⟨1, one_ne_zero, ?_⟩
+  rw [pow_one, map_one, one_mul]
+  show ρ₅ h2_padic rc2 = towerLabel (s2Tower h2_padic rc2)
+  exact ρ₅_eq_towerLabel h2_padic rc2
+
+/-- ★ **NODE C.80's signed `tie_pure_power` is FALSE** — at `(s2Tower, f₅, μ₂ = 1)` over
+`ℤ_[2]` every hypothesis holds and the exact-degree conjunct demands `5 = 4`, while the
+floor conjunct `mult₂ = 1` is TRUE at the same instance (`mult₂_f₅`). -/
+theorem tiePurePower_false : ¬ TiePurePowerStatement := by
+  intro hax
+  have h := hax ℤ_[2] (2 : ℤ_[2]) (s2Frame h2_padic rc2) 1
+    (s2Frame_pin h2_padic rc2) (s2Tower h2_padic rc2) h2_padic le_rfl (f₅ ℤ_[2])
+    (blockContext_f₅ h2_padic rc2) 1 Nat.one_pos (hres_f₅)
+  have h2c := h.2
+  rw [blockFactor_f₅ h2_padic rc2, f₅_natDegree, (s2Tower_data h2_padic rc2).2.2.2.1,
+    mul_one] at h2c
+  norm_num at h2c
+
+/-- ★ **NODE C.77's signed `partial_projection` is FALSE** (through clause (iii)) — at
+`(s2Tower, f₅)` over `ℤ_[2]`, `BlockContext` alone is demanded and the clause requires
+`5 = 4 · 1`. -/
+theorem partialProjection_false : ¬ PartialProjectionStatement := by
+  intro hax
+  have h := hax ℤ_[2] (2 : ℤ_[2]) (s2Frame h2_padic rc2) 1
+    (s2Frame_pin h2_padic rc2) (s2Tower h2_padic rc2) h2_padic le_rfl (f₅ ℤ_[2])
+    (blockContext_f₅ h2_padic rc2)
+  have h3 := h.2.2
+  rw [blockFactor_f₅ h2_padic rc2, f₅_natDegree, (s2Tower_data h2_padic rc2).2.2.2.1,
+    mult₂_f₅ h2_padic rc2, mul_one] at h3
+  norm_num at h3
+
+end Uniformity.Density.Tower.C80
+
+/-! ## Axiom footprint -/
+
+section AxCheck
+
+#print axioms Uniformity.Density.Tower.C80.s2Tower
+#print axioms Uniformity.Density.Tower.C80.f₅_squarefree
+#print axioms Uniformity.Density.Tower.C80.pure_f₅
+#print axioms Uniformity.Density.Tower.C80.ρ₅_eq_towerLabel
+#print axioms Uniformity.Density.Tower.C80.hasLabel_f₅
+#print axioms Uniformity.Density.Tower.C80.blockContext_f₅
+#print axioms Uniformity.Density.Tower.C80.blockFactor_f₅
+#print axioms Uniformity.Density.Tower.C80.mult₂_f₅
+#print axioms Uniformity.Density.Tower.C80.tiePurePower_false
+#print axioms Uniformity.Density.Tower.C80.partialProjection_false
+
+end AxCheck
+
