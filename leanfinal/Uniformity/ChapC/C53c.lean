@@ -523,6 +523,19 @@ theorem triangularDigitRead_statement_false : ¬ TriangularDigitReadStatement :=
     (hax ℤ_[3] (3 : ℤ_[3]) (linFrame h3_padic) 1 (linFrame_pin h3_padic)
       (linTower h3_padic) 1 2 h3_padic Nat.one_pos le_rfl le_rfl)
 
+/-! ## 10. `IsTestKey`, inhabited
+
+The OTHER core chapter-C predicate with no landed value (append #103 (4): "no `IsTestKey`
+VALUE is landed anywhere in the corpus — the SECOND core chapter-C predicate with no
+witnessing value, after `TowerDatum`").  With `linTower` landed, C.47's landed
+`composedKey_isTestKey` closes it in one application. -/
+
+/-- **`IsTestKey` is INHABITED**: the composed key of the linear tower is a test key at its
+level datum.  Closes the second half of the #103 (5)/#104 (g) inhabitation gap. -/
+theorem isTestKey_witness [Finite (IsLocalRing.ResidueField O)] (hπ : Irreducible π) :
+    IsTestKey ((linTower hπ).levelDatum hπ) (composedKey (linTower hπ)) :=
+  composedKey_isTestKey (linTower hπ) hπ le_rfl
+
 end Uniformity.Density.Tower.C53c
 
 /-! ## Axiom footprint -/
@@ -541,5 +554,6 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.C53c.legs_incompatible
 #print axioms Uniformity.Density.Tower.C53c.budgetBoxRead_false_of_leg1
 #print axioms Uniformity.Density.Tower.C53c.triangularDigitRead_statement_false
+#print axioms Uniformity.Density.Tower.C53c.isTestKey_witness
 
 end AxCheck
