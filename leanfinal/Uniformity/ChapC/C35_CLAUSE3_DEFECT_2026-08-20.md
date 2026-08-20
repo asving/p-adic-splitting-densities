@@ -175,3 +175,41 @@ C.36 (`complementConst`, a `toNat` of a support that C.36's own clause 3 must fi
 finite), C.38a/C.39 (`γg`/`pinHeight`), and C.40 (whose signed conclusion
 `fS'.natDegree = L.keyDeg₂ * (mult₂ L f − 1)` re-uses exactly the arithmetic audited here and
 therefore inherits the same rider).
+
+---
+
+## SETTLED 2026-08-20 — `hasLabel_natDegree_dvd` is **REFUTED**, so consequence 2 holds
+
+The decidable question this record named in §4 has been answered, machine-checked, in
+`C35b.lean` (`C35B_D13_REFUTED_2026-08-20.md`): **`hasLabel_natDegree_dvd` is FALSE.**
+
+Frame (all at the corpus's own landed `s2Frame`, C.97, realized over ℤ_[2] — not a
+degenerate artifact): `Φ′ = x² − 2`, `(e₁, f₁, h) = (2, 1, 1)`, `D′ = 2`, pin `H₀ = 1`;
+`g₀ = x³ − 2x + 4 = x·Φ′ + 2²`, monic of degree **3**; `L₀` with `u = 3`, `ℓ = 1`, and
+`r := ρ` the residual of `g₀` itself. `HasLabel L₀ g₀` holds with `m = 1`
+(`dvResPoly = ρ = r¹` by `rfl`), while `e₁f₁ = 2 ∤ 3`.
+
+Three theorems carry it: `hasLabel_g₀` (the label holds), `d13_refuted : ¬ D13Statement`
+(the ∀-closure), and `hasLabel_natDegree_dvd_false` — the negation at the target's EXACT
+printed binder shape, so the closure's faithfulness is machine-checked rather than judged.
+Zero `sorry`, footprints Lean core.
+
+**CONSEQUENCE — this record's option 2, as written: D13 IS DEAD AS WRITTEN.** Clause 3 of
+`blockFactor_spec` is NOT a C.35-local discharge. It survives only through MAXIMALITY: one
+must show a `g₀`-like polynomial can never be the maximal labelled divisor of a
+`BlockContext` `f`. That is a within-slope refinement claim, i.e. C.34's frontier — so **the
+obligation is confirmed INSEPARABLE FROM C.34**, and the `BlockFrontier` divisibility rider
+**cannot** be dropped. C.40's `level2_peel` clause (iii) stays blocked for the same reason
+(`deg g₀ = 3 ≠ 2m` for any `m`, while `hasLabel_natDegree_div`'s divided identity holds at
+`m = 1`).
+
+**Why the label cannot see it.** The purity is genuine, not an endpoint artifact — `g₀`'s
+level polygon really is one-sided of slope −3. What `HasLabel` loses is PROVENANCE:
+`g₀ = (valuation-1 linear)·(θ-like quadratic)` hides a mixed factor in the odd degree, and
+the floor-divided top abscissa cannot see it. This makes C.29's FAITHFULNESS warning (the
+root-side reading is not stated) **executable** rather than cautionary.
+
+One addition to the orchestrator's sketched candidate, worth recording: `HasLabel` forces the
+residual to be monic (`r^m` is monic), so the refutation also needed the top digit's ϖ-read
+to be `1`. At `s2Frame`, `ϖ = x` and the top digit IS `x`, so the read is `res(θ/ϖ) = 1` on
+the nose.

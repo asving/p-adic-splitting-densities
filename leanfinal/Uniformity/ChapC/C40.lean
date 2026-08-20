@@ -58,8 +58,23 @@ division, so purity constrains `⌊deg g / D′⌋` and says nothing about `deg 
 C.40(iii) inherits that gap verbatim — `mult₂` is itself a floor division
 (`natDegree / keyDeg₂`), so the equation asserts an EXACT degree where the available supply
 gives only the divided identity. The C.35 record names the one-unit decidable question that
-would settle it either way: **`hasLabel_natDegree_dvd`**. It is still open, and it gates
-C.40(iii) exactly as it gates C.35's `blockFactor_spec`.
+would settle it either way: **`hasLabel_natDegree_dvd`**.
+
+**SETTLED (2026-08-20, later the same day): that question is REFUTED, so clause (iii) stays
+blocked and its block is now KNOWN inseparable from C.34.** `C35b.lean` machine-checks a
+counterexample at the corpus's own landed `s2Frame` (C.97, realized over ℤ_[2]):
+`g₀ = x³ − 2x + 4 = x·Φ′ + 2²` is monic of degree 3 with `HasLabel L₀ g₀` at `m = 1`, while
+`e₁f₁ = 2 ∤ 3`. `hasLabel_natDegree_dvd_false` negates the target at its exact binder shape.
+So `mult₂` genuinely cannot be read off the label: `deg g₀ = 3 ≠ L.keyDeg₂ * m` for any `m`,
+although `hasLabel_natDegree_div`'s divided identity holds at `m = 1`. Clause (iii) is
+therefore NOT reachable by any C.35-local route; it needs C.34's within-slope maximality
+refinement. Record: `C35B_D13_REFUTED_2026-08-20.md`.
+
+The mechanism is worth stating because it is the deep reason: the purity is genuine (`g₀`'s
+level polygon really is one-sided of slope −3); what `HasLabel` loses is PROVENANCE, since
+`g₀ = (valuation-1 linear)·(θ-like quadratic)` hides a mixed factor in the odd degree that
+the floor-divided top abscissa cannot see. C.29's FAITHFULNESS warning — the root-side
+reading is not stated — is now executable rather than cautionary.
 
 **THREE INDEPENDENT AUDITS CONVERGED ON THIS NODE** and it is worth recording that they
 agree: (1) the C.35 unit's D-CARRY finding predicted C.40 would inherit the mismatch;
