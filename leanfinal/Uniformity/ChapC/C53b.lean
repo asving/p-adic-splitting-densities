@@ -268,6 +268,173 @@ private theorem slotPoly_grouped {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin 
   refine Finset.sum_congr rfl fun i _ => ?_
   rw [vext_apply]
 
+/-! ### `slotPoly` is monic of degree `μ₂D₂`, and `monicPoly` inverts coefficient reading -/
+
+private theorem monic_slotMon {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (i : ℕ) : (slotMon T i).Monic :=
+  ((Polynomial.monic_X_pow _).mul (F.hmonic.pow _)).mul ((composedKey_monic T).pow _)
+
+/-- **The two-key monomial at raw index `i` has degree exactly `i`** — the "unipotent in the
+x-degree filtration" statement, as an identity rather than a hand-wave.  Unconditional in `i`:
+`i%D₂%D′ + (i%D₂/D′)·D′ + (i/D₂)·D₂ = i` is two applications of `Nat.mod_add_div`. -/
+private theorem natDegree_slotMon {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (i : ℕ) : (slotMon T i).natDegree = i := by
+  rw [slotMon, twoKeyMon,
+    ((Polynomial.monic_X_pow _).mul (F.hmonic.pow _)).natDegree_mul ((composedKey_monic T).pow _),
+    (Polynomial.monic_X_pow _).natDegree_mul (F.hmonic.pow _),
+    Polynomial.natDegree_X_pow, Polynomial.natDegree_pow, Polynomial.natDegree_pow, F.hdeg,
+    composedKey_natDegree_D₂ T hπ]
+  have h1 : i % T.D₂ % (F.e₁ * F.f₁) + (F.e₁ * F.f₁) * (i % T.D₂ / (F.e₁ * F.f₁)) = i % T.D₂ :=
+    Nat.mod_add_div _ _
+  have h2 : i % T.D₂ + T.D₂ * (i / T.D₂) = i := Nat.mod_add_div _ _
+  calc i % T.D₂ % (F.e₁ * F.f₁) + (i % T.D₂ / (F.e₁ * F.f₁)) * (F.e₁ * F.f₁)
+        + (i / T.D₂) * T.D₂
+      = (i % T.D₂ % (F.e₁ * F.f₁) + (F.e₁ * F.f₁) * (i % T.D₂ / (F.e₁ * F.f₁)))
+        + T.D₂ * (i / T.D₂) := by ring
+    _ = i := by rw [h1, h2]
+
+private theorem natDegree_slotTail_lt {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) {μ₂ : ℕ} (hμ : 0 < μ₂)
+    (c : Fin (μ₂ * T.D₂) → O) :
+    (∑ i : Fin (μ₂ * T.D₂), C (c i) * slotMon T i.1).natDegree < μ₂ * T.D₂ := by
+  have hpos : 0 < μ₂ * T.D₂ := Nat.mul_pos hμ (hD₂pos T)
+  have hbound : (∑ i : Fin (μ₂ * T.D₂), C (c i) * slotMon T i.1).natDegree ≤ μ₂ * T.D₂ - 1 := by
+    refine Polynomial.natDegree_sum_le_of_forall_le _ _ fun i _ => ?_
+    refine le_trans (Polynomial.natDegree_C_mul_le _ _) ?_
+    rw [natDegree_slotMon T hπ]
+    have := i.isLt
+    omega
+  omega
+
+private theorem monic_slotPoly {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) {μ₂ : ℕ} (hμ : 0 < μ₂)
+    (c : Fin (μ₂ * T.D₂) → O) : (slotPoly T μ₂ c).Monic := by
+  have hpow : ((composedKey T) ^ μ₂).Monic := (composedKey_monic T).pow μ₂
+  have hdeg : ((composedKey T) ^ μ₂).natDegree = μ₂ * T.D₂ := by
+    rw [Polynomial.natDegree_pow, composedKey_natDegree_D₂ T hπ]
+  rw [slotPoly]
+  refine hpow.add_of_left (Polynomial.degree_lt_degree ?_)
+  rw [hdeg]
+  exact natDegree_slotTail_lt T hπ hμ c
+
+private theorem natDegree_slotPoly {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) {μ₂ : ℕ} (hμ : 0 < μ₂)
+    (c : Fin (μ₂ * T.D₂) → O) : (slotPoly T μ₂ c).natDegree = μ₂ * T.D₂ := by
+  have hpow : ((composedKey T) ^ μ₂).Monic := (composedKey_monic T).pow μ₂
+  have hdeg : ((composedKey T) ^ μ₂).natDegree = μ₂ * T.D₂ := by
+    rw [Polynomial.natDegree_pow, composedKey_natDegree_D₂ T hπ]
+  have hlt : (∑ i : Fin (μ₂ * T.D₂), C (c i) * slotMon T i.1).degree
+      < ((composedKey T) ^ μ₂).degree :=
+    Polynomial.degree_lt_degree (by rw [hdeg]; exact natDegree_slotTail_lt T hπ hμ c)
+  rw [slotPoly,
+    Polynomial.natDegree_eq_of_degree_eq (Polynomial.degree_add_eq_left_of_degree_lt hlt), hdeg]
+
+omit [IsDomain O] [IsDiscreteValuationRing O] in
+/-- **`monicPoly` inverts coefficient reading**: a monic polynomial of degree `n` is `monicPoly`
+of its own low coefficient vector. -/
+private theorem monicPoly_coeff_self {n : ℕ} {f : Polynomial O} (hf : f.Monic)
+    (hn : f.natDegree = n) : monicPoly (fun i : Fin n => f.coeff i.1) = f := by
+  classical
+  have hlead : f.coeff n = 1 := by rw [← hn]; exact hf.coeff_natDegree
+  refine Polynomial.ext fun m => ?_
+  rw [monicPoly, Polynomial.coeff_add, Polynomial.coeff_X_pow, Polynomial.finsetSum_coeff]
+  have hsum : ∑ i : Fin n, (C (f.coeff i.1) * X ^ (i.1 : ℕ) : Polynomial O).coeff m
+      = if m < n then f.coeff m else 0 := by
+    rw [Fin.sum_univ_eq_sum_range (fun k => (C (f.coeff k) * X ^ k : Polynomial O).coeff m) n]
+    simp only [Polynomial.coeff_C_mul_X_pow]
+    rw [Finset.sum_ite_eq (Finset.range n) m (fun k => f.coeff k)]
+    simp [Finset.mem_range]
+  rw [hsum]
+  rcases lt_trichotomy m n with h | h | h
+  · rw [if_neg (by omega), if_pos h, zero_add]
+  · subst h
+    rw [if_pos rfl, if_neg (by omega), add_zero, hlead]
+  · rw [if_neg (by omega), if_neg (by omega), add_zero]
+    exact (Polynomial.coeff_eq_zero_of_natDegree_lt (by omega)).symm
+
+omit [IsDomain O] [IsDiscreteValuationRing O] in
+private theorem monicPoly_coeff_val {n : ℕ} (a : Fin n → O) (i : Fin n) :
+    (monicPoly a).coeff i.1 = a i := by
+  classical
+  rw [monicPoly, Polynomial.coeff_add, Polynomial.coeff_X_pow, Polynomial.finsetSum_coeff,
+    if_neg (by have := i.isLt; omega), zero_add]
+  rw [Finset.sum_eq_single i]
+  · rw [Polynomial.coeff_C_mul_X_pow, if_pos rfl]
+  · intro b _ hb
+    rw [Polynomial.coeff_C_mul_X_pow, if_neg (fun hcon => hb (Fin.val_injective hcon.symm))]
+  · intro hcon
+    exact absurd (Finset.mem_univ i) hcon
+
+/-! ### Dictionary, direction B: `digitVec ∘ polyVec = id` -/
+
+private theorem degree_slotA_lt {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (μ₂ : ℕ) (u : ℕ → O) (j : ℕ) :
+    ((if j = μ₂ then 1 else slotDig0 T u j) : Polynomial O).degree < (composedKey T).degree := by
+  by_cases h : j = μ₂
+  · rw [if_pos h]
+    refine Polynomial.degree_lt_degree ?_
+    rw [Polynomial.natDegree_one, composedKey_natDegree_D₂ T hπ]
+    exact hD₂pos T
+  · rw [if_neg h]
+    exact degree_slotDig0_lt T hπ u j
+
+private theorem slotPoly_eq_devSum {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (μ₂ : ℕ) (c : Fin (μ₂ * T.D₂) → O) :
+    slotPoly T μ₂ c = ∑ j ∈ Finset.range (μ₂ + 1),
+      (if j = μ₂ then 1 else slotDig0 T (vext c) j) * (composedKey T) ^ j := by
+  rw [slotPoly_grouped, Finset.sum_range_succ, if_pos rfl, one_mul, add_comm]
+  congr 1
+  refine Finset.sum_congr rfl fun j hj => ?_
+  rw [if_neg (by have := Finset.mem_range.1 hj; omega)]
+
+private theorem dev_slotPoly {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (μ₂ : ℕ) (c : Fin (μ₂ * T.D₂) → O)
+    {j : ℕ} (hj : j < μ₂) :
+    dev (composedKey T) (slotPoly T μ₂ c) j = slotDig0 T (vext c) j := by
+  have hmon := composedKey_monic T
+  have hpos : 0 < (composedKey T).natDegree := by
+    rw [composedKey_natDegree_D₂ T hπ]; exact hD₂pos T
+  have h := dev_unique hmon hpos (fun j' => degree_slotA_lt T hπ μ₂ (vext c) j')
+    (slotPoly_eq_devSum T μ₂ c).symm j (by omega)
+  rw [if_neg (by omega : ¬ j = μ₂)] at h
+  exact h.symm
+
+private theorem dev_slotDig0 {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (u : ℕ → O) (j : ℕ) {b : ℕ} (hb : b < T.e₂ * T.f₂) :
+    dev F.key (slotDig0 T u j) b = slotDig1 T u j b := by
+  have hpos : 0 < F.key.natDegree := by rw [F.hdeg]; exact Nat.mul_pos F.he₁ F.hf₁
+  exact (dev_unique F.hmonic hpos (fun b' => degree_slotDig1_lt T u j b') rfl b hb).symm
+
+/-- **THE DICTIONARY, direction B.**  Reading the two-key digits of the reconstruction returns
+the digit vector one started from: `digitVec ∘ polyVec = id`. -/
+theorem digitVec_polyVec {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) {μ₂ : ℕ} (hμ : 0 < μ₂)
+    (c : Fin (μ₂ * T.D₂) → O) : digitVec T μ₂ (polyVec T μ₂ c) = c := by
+  have hD' : 0 < F.e₁ * F.f₁ := Nat.mul_pos F.he₁ F.hf₁
+  have hD₂ : 0 < T.D₂ := hD₂pos T
+  have hmp : monicPoly (polyVec T μ₂ c) = slotPoly T μ₂ c :=
+    monicPoly_coeff_self (monic_slotPoly T hπ hμ c) (natDegree_slotPoly T hπ hμ c)
+  funext i
+  have hi := i.isLt
+  -- the three decoded indices are in range
+  have hj : i.1 / T.D₂ < μ₂ := (Nat.div_lt_iff_lt_mul hD₂).2 hi
+  have hb : i.1 % T.D₂ / (F.e₁ * F.f₁) < T.e₂ * T.f₂ := by
+    refine (Nat.div_lt_iff_lt_mul hD').2 ?_
+    have hlt : i.1 % T.D₂ < T.D₂ := Nat.mod_lt _ hD₂
+    have : T.D₂ = T.e₂ * T.f₂ * (F.e₁ * F.f₁) := by rw [TowerDatum.D₂]; ring
+    omega
+  have ha : i.1 % T.D₂ % (F.e₁ * F.f₁) < F.e₁ * F.f₁ := Nat.mod_lt _ hD'
+  -- the index recomposes
+  have hrec : i.1 / T.D₂ * T.D₂ + i.1 % T.D₂ / (F.e₁ * F.f₁) * (F.e₁ * F.f₁)
+      + i.1 % T.D₂ % (F.e₁ * F.f₁) = i.1 := by
+    have h1 : i.1 % T.D₂ / (F.e₁ * F.f₁) * (F.e₁ * F.f₁) + i.1 % T.D₂ % (F.e₁ * F.f₁)
+        = i.1 % T.D₂ := Nat.div_add_mod' _ _
+    have h2 : i.1 / T.D₂ * T.D₂ + i.1 % T.D₂ = i.1 := Nat.div_add_mod' _ _
+    omega
+  simp only [digitVec, hmp]
+  rw [dev_slotPoly T hπ μ₂ c hj, dev_slotDig0 T (vext c) _ hb, coeff_slotDig1 T (vext c) _ _ ha,
+    hrec, vext_apply]
+
 end Uniformity.Density.Tower
 
 /-! ## Axiom footprint -/
@@ -280,5 +447,6 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.digitVec
 #print axioms Uniformity.Density.Tower.polyVec
 #print axioms Uniformity.Density.Tower.composedKey_natDegree_D₂
+#print axioms Uniformity.Density.Tower.digitVec_polyVec
 
 end AxCheck
