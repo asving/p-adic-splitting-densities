@@ -6636,3 +6636,194 @@ NEXT AFTER WAVE-2: C.53 leg 2 (category (ii), closable now); the
 (C.40 first); E.57 as a dedicated hard unit; promote C.110's `private`
 valuation-counting helpers to `Uniformity/Density/LocalData.lean` to
 remove wave-1's only duplication.
+
+**2026-08-20 DATED APPEND #103 — WAVE-2 + THE ORCHESTRATOR TAKEOVER:
+chapter I OPENED (7 nodes) and chapter B's required work FINISHED;
+the SIGNED-NAME CENSUS replaces the node-count proxy; and **D13 is
+SETTLED BY REFUTATION** — `hasLabel_natDegree_dvd` is FALSE at the
+corpus's own `s2Frame`, which confirms C.35 clause 3 inseparable from
+C.34 and makes C.29's faithfulness warning executable.**
+
+(0) OPERATING MODE CHANGED. The API spent the whole day killing
+subagents every 20-30 min (`Server error mid-response`, repeated
+`529 Overloaded`) and the permission classifier rate-limited
+intermittently on top. Per the owner's directive mid-session, the
+ORCHESTRATOR (an Opus instance) now does non-Fable work DIRECTLY
+rather than delegating it: its context survives the session where an
+agent's does not. Standing lesson, dearly bought — under a ~25-minute
+expected agent lifetime **the optimal strategy inverts: build the
+durable artifact FIRST and be careful second**, because carefulness
+that is not committed does not exist. Every unit that committed early
+kept all its work; the one that reasoned first lost four consecutive
+lifetimes until told to stop. The RATCHET (resume-from-transcript;
+orchestrator commits on a unit's behalf when it dies between "verified
+green" and `git commit`) carried ~30 agent deaths with ZERO work lost.
+
+(1) WAVE-2 DISPOSITIONS.
+  * B.38 LANDED (`exists_solve_resField`, the graded Bézout solve over
+    the residual field) and B.43 LANDED (`graded_factorization_unique`,
+    10 top-level decls, Lean-core) — **chapter B's required work is
+    DONE**, only the OPTIONAL B.62 remains. B.43 also reports the
+    **A-F.6 route obstruction DISSOLVED**.
+  * H.122 COMPLETE (CONDITIONAL): `uClusterNorm_rateSpecies_of_betaLeg`
+    proves the signed conclusion at the ground constants over
+    2 ≤ m ≤ 3 under ONE explicit carried binder byte-identical to H.121
+    clause (iii); m=2 UNCONDITIONAL. `betaLeg_two` proves the carried
+    binder is INHABITED — the check that separates an honest carried
+    clause from a vacuous dodge. **Signed node NOT landed.**
+  * CHAPTER H IS NOT ONE NODE FROM COMPLETE. The unit's by-name audit
+    of all 76 signed ChapH names found FIVE unlanded (H.122, H.121 iii,
+    H.116b, H.116b4, H.123), classification (iii), frontier NAMED:
+    H.116b4 `planted_presentation_card`, GR-7 landed, **GR-9/GR-10
+    open**. Its remainder is gated on the open counting problem, not on
+    transcription.
+  * E.51: signed `peel_row_law` NOT landed (supplier C.40 unlanded),
+    but a **DEFECT CERTIFICATE** landed instead —
+    `peelRowLawFrozen_iff_arith`: the frozen E.51 TYPE is provably
+    EQUIVALENT TO BARE ℕ ARITHMETIC, so the frozen name advertises peel
+    content it does not deliver. Degeneracies: `hpeel : True` is the
+    DELIBERATE GC-13 placeholder; NEW findings are `hforce4` redundant
+    given `hef`, and `he`'s SECOND DISJUNCT IS THE CONCLUSION. Honest
+    hypothesis `he : 4 ∣ e`, sharp at (2,2)/(1,4)/(8,1).
+  * CHAPTER I OPENED, 0/24 → 7 `[def]` nodes + 4 `[note]` dispositions
+    + a verification record, all 8 diffs IDENTICAL to the signed
+    leanspec. **But the unit's own summary is exact and is adopted: NO
+    MATHEMATICS WAS PROVED AND NO OPEN OBLIGATION DISCHARGED.** Five of
+    eight declarations have signed `True` bodies (blueprint defect
+    I-D12): NS7Termination, WindowPinningAt, GenhnHEAt, GenhnTow1At,
+    TypeOfFaithful. Real content only at I.02 `DecidedSliceAt` and I.03
+    `MenuLawAt` (both non-vacuous at n=2); I.03's `MenuLawAtVoided` is
+    deliberately REFUTED. Chapter I is WIRED (new roll-up + library
+    root; full build 9212 jobs green) so it is inside `lake build` from
+    the start, unlike chapter C which had to be retrofitted.
+  * **THE TRUST BOUNDARY IS CURRENTLY FICTIONAL.** I.21
+    `TypeOfFaithful` IS ledger HYP.01 [CORE-SET] + HYP.105, and its
+    body is `True`. So any theorem hypothesizing it is UNCONDITIONALLY
+    TRUE: hypothesizing the trust boundary costs nothing and buys
+    nothing. **Audit row A-1 is LIVE-BUT-UNRUN** (trigger: the first
+    consumer; landing the name does not fire it). Blocked per OM-5
+    §3.1: typing the body needs the factor-field valuation-ring
+    carrier, and at every d ≥ 2 leaf `AdjoinRoot g` has residue field
+    of degree m < m·d, hence is NEVER a DVR — off the
+    monogenic-maximal locus the landed `Density/TypeOfFaithful.lean`
+    reaches. That module SHARES ITS NAME with the constant but does not
+    prove it; not imported, per GC-3's kept-apart rule.
+  * ALSO: I.10a/I.10b — the tower-instantiation sockets on the CRITICAL
+    PATH — are SIGNED AS PLACEHOLDERS (`True`, and `… ∧ True`), still
+    unlanded. Defect I-D6: the A-C.1 addendum's route
+    `NS7TerminationStatement` proves `False`, so no pass may type I.01
+    against it.
+
+(2) THE SIGNED-NAME CENSUS (`docs/SIGNED_NAME_CENSUS_2026-08-20.md`,
+full listing `..._TABLE_...txt`, instrument `spec/signed_name_census.py`
+by the fleet unit, driver `spec/census_driver.py` + all numbers by the
+orchestrator). 1236 signed names across leanspec ChapB..ChapI:
+**PROVED 638 · CARRIER 390 · UNLANDED 195 · CONDITIONAL 5 ·
+PLACEHOLDER-BODY 5 · CITE 2 · UNRESOLVED 1.**
+PROVED/total per chapter: B 113/141 · C 73/356 · D 72/130 · E 68/116 ·
+F 15/60 · G 100/139 · H 197/276 · **I 0/18**.
+**HONESTY IN BOTH DIRECTIONS:** 52% proved sounds far worse than the
+node-level 86%, but the comparison is unfair — the 390 CARRIER entries
+are signed DEFINITIONS whose landing IS the obligation, giving
+(638+390)/1236 = 83% vs 86%. **The node count was NOT wildly wrong and
+this orchestrator's earlier "huge hidden gap" framing was OVERSTATED.**
+What the node count genuinely hides: (a) 195 unlanded names, **147 of
+them in CHAPTER C** — three quarters of remaining work in one chapter;
+(b) the 5 green-but-empty declarations; (c) CONDITIONAL 5 is a FLOOR,
+since the detector compares binder ARITY and misses a narrowed range
+inside an existing binder; (d) chapter I at 0/18.
+FOUR DRIVER BUGS found and fixed during construction, each of which
+would have published a wrong number: `content_free` returns
+(bool,reason) not bool (false headline of **494** placeholders);
+definiens compared as a raw string (missed `∀ x, True`); the
+RETIREMENT FORM (leanspec `example` USING a landed decl — leanspec
+elaboration IS the type-level check) filed UNRESOLVED, giving a
+spurious 100/148 unresolved bucket in G/H and an absurd 0 PROVED for
+chapter G; and placeholder-ness ranked above landedness (8 vs 5).
+DECORRELATED CROSS-CHECK, the only one available: driver and hand audit
+agree by different methods on chapter I's PROVED count (zero) and on
+EXACTLY the same five placeholders. Both disagreements were driver
+bugs; the hand audit was right each time.
+
+(3) ★ D13 SETTLED BY REFUTATION — the highest-leverage open item in
+chapter C, and it went the OTHER way. `hasLabel_natDegree_dvd` is
+**FALSE**, machine-checked in `ChapC/C35b.lean` (record
+`C35B_D13_REFUTED_2026-08-20.md`), Lean-core, zero `sorry`.
+COUNTEREXAMPLE at the corpus's OWN landed frame: `F = s2Frame` (C.97;
+Φ′ = x²−2, (e₁,f₁,h) = (2,1,1), D′ = 2, pin H₀ = 1, realized
+absolutely over ℤ_[2] — the h ≥ 1 corpus-grade frame, not a degenerate
+artifact); `g₀ = x³ − 2x + 4 = x·Φ′ + 2²` monic of degree **3**;
+`L₀` at u = 3, ℓ = 1, `r := ρ` the residual of `g₀` itself (monic
+because the top digit's ϖ-read is exactly 1). `HasLabel L₀ g₀` holds
+with m = 1 (`dvResPoly = ρ = r¹` by `rfl`) while **e₁f₁ = 2 ∤ 3**.
+Faithfulness is machine-checked, not judged:
+`hasLabel_natDegree_dvd_false` negates the target at its EXACT binder
+shape, derived from `d13_refuted : ¬ D13Statement`.
+**CONSEQUENCE:** D13 is DEAD AS WRITTEN. C.35 clause 3 is NOT a
+C.35-local discharge; it survives only through MAXIMALITY (show a
+g₀-like polynomial can never be the MAXIMAL labelled divisor of a
+`BlockContext` f) — a within-slope refinement claim, so **CONFIRMED
+INSEPARABLE FROM C.34**; the `BlockFrontier` divisibility rider CANNOT
+be dropped.
+**THE DEEP FINDING:** the purity is GENUINE (g₀'s level polygon really
+is one-sided of slope −3); what `HasLabel` loses is PROVENANCE —
+g₀ = (valuation-1 linear)·(θ-like quadratic) hides a mixed factor in
+the odd degree that the floor-divided top abscissa cannot see. **This
+makes C.29's FAITHFULNESS warning (the root-side reading is NOT
+stated) EXECUTABLE rather than cautionary** — a standing caution is now
+a machine-checked defect.
+
+(4) C.40 PARTIAL/BLOCKED (orchestrator). Signed `level2_peel` NOT
+declared (leanspec stub retained). Its three conjuncts fail for TWO
+distinct reasons: (ii) needs **C.61, UNLANDED** (the blueprint's proof
+step 1 is "C.61 applied to Ψ itself"; C.60/C.61 is a FORWARD dependency
+whose §7 Tier-1 has not fired) — category (ii), not a frontier; (iii)
+is the D13 site, now KNOWN blocked by (3). LANDED:
+`peel_once_of_squarefree` (any `CommMonoidWithZero`: Squarefree p +
+Ψ ∣ p + ¬IsUnit Ψ ⟹ p = Ψ*q with ¬Ψ ∣ q) — the honest content of "the
+peel applies at most once", stated with NO chapter-C dependency so it
+cannot inherit the floor-division gap; **prints "does not depend on any
+axioms"**. It is SUPPLY, not the node. Audit findings: `hdvd` also
+rules out `blockFactor`'s `Classical.choice` junk branch (`Ψ ∣ 1` would
+force Ψ a unit), so it is what makes the read meaningful; `hbox` is
+VACUOUS AT f₁·d_r = 1 BY DESIGN (blueprint says so), carrying §7's
+C-BOX-1 conditionality and no more; and **no `IsTestKey` VALUE is
+landed anywhere in the corpus**, so `hΨ`'s inhabitation is ARGUED, not
+witnessed — the SECOND core chapter-C predicate with no witnessing
+value, after `TowerDatum` (C.73).
+
+(5) THE ROLL-UP DEFECT, third recurrence, CURED + a standing rule.
+`Uniformity/ChapC.lean` was missing NINE landed modules (C33, C33Cite,
+C34 from 08-18 plus all of wave-1), so **no full build had ever covered
+the signed A-C.8 cite pair**, and C.87's parse error was invisible to
+`lake build` for the same reason. Cured; ChapC now 85 imports,
+`lake build Uniformity.ChapC` 8706 jobs EXIT=0. **STANDING RULE:
+landing a node and wiring it are separate steps and agents die between
+them — the ORCHESTRATOR wires and verifies, never the unit.**
+
+(6) THREE DEFECT PATTERNS NOW DISTINGUISHED, for the audit registry:
+  * **A-C.7** (4 registry entries) — HYPOTHESIS degeneracy: a guard
+    that fails to bind / nothing satisfies it.
+  * **D-CARRY** (new, C.35 clause 3, inherited by C.40 (iii)) —
+    CONCLUSION-vs-BODY mismatch: every guard binds, but the body does
+    not determine the signed conclusion. Standing check proposed: any
+    signature whose body is `Classical.choice` from an extremality
+    property. Sweep candidates: C.36 `complementConst`, C.38a/C.39, and
+    C.40 (now settled as inheriting it).
+  * **CONTENT-FREE TYPE** (new, E.51 + I-D12's five) — every binder is
+    fine and the TYPE ITSELF asserts nothing. Constraint on any
+    standing check for it: it must NOT be satisfiable by exhibiting
+    `example : <carrier> := trivial`, which certifies only that `True`
+    is true (the chapter-I unit deliberately wrote none).
+
+NEXT, in priority order: (a) **C.61** — now the single named unlanded
+supplier gating C.40 (ii), and §7 Tier-1 more broadly; (b) chapter C's
+147 unlanded signed names, the bulk of all remaining work; (c) C.53
+leg 2 (category (ii), closable now, NOT Hensel-gated); (d) the
+`TowerDatum` / `IsTestKey` inhabitation gap — two core predicates with
+no landed value, the live vacuity risk; (e) the D-CARRY sweep, C.36
+and C.38a/C.39; (f) E.57 as a dedicated hard unit; (g) promote C.110's
+`private` valuation-counting helpers to `Density/LocalData.lean`
+(wave-1's only duplication). Owner items unchanged: the FGMN
+published-number print-read, the B39a rider, the WeldObligations.w1
+dead-field amendment.
