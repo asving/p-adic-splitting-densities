@@ -6827,3 +6827,199 @@ and C.38a/C.39; (f) E.57 as a dedicated hard unit; (g) promote C.110's
 (wave-1's only duplication). Owner items unchanged: the FGMN
 published-number print-read, the B39a rider, the WeldObligations.w1
 dead-field amendment.
+
+**2026-08-20 DATED APPEND #104 — THE REFUTATION DAY: three signed
+statements or their key properties machine-refuted at ONE reusable
+frame; C.61 landed at ℓ=1 with a sharpness certificate; C.53's node
+narrowed to a single obstruction; and the session's diagnosis CORRECTED
+— the fault line is the EXACT-DEGREE family (D-CARRY), not the missing
+x-purity guard.**
+
+(0) MODE. The API spent the day in `Server error mid-response` plus
+escalating `529 Overloaded` capacity storms; by the end units were
+dying ON CONTACT (three consecutive launches produced zero artifacts).
+Per the owner's directive the ORCHESTRATOR (Opus) works non-Fable items
+DIRECTLY. Ratchet still perfect: ~35 agent deaths, ZERO work lost.
+Standing division that emerged and WORKS: the orchestrator does the
+ANALYSIS (which candidate is live, and why) and hands it over, so a
+unit spends its ~25-minute life on Lean rather than rediscovery.
+
+(1) ★ THE WORKHORSE FRAME. `(s2Frame, L₀, g₀)` over ℤ_[2] —
+`Φ′ = x²−2`, `(e₁,f₁,h) = (2,1,1)`, `D′ = 2`, `H₀ = 1`, `u = 3`,
+`ℓ = 1`, `r := ρ` the residual of `g₀` itself, and
+**`g₀ = x³ − 2x + 4 = x·Φ′ + 2²`, monic of degree 3** — has now carried
+FOUR independent results in one day: the D13 refutation (#103), C.61's
+sharpness certificate, C.27's refutation, and the `hx`-sweep probe. Two
+landed lemmas make it an instrument rather than an example:
+`hasLabel_g₀` (C35b) and `hx_g₀_false` (C61) — i.e. **`g₀` witnesses
+that "LABELLED but NOT x-pure" is inhabited.** Build a counterexample
+once, reuse it as a probe. Every surrounding lemma
+(`g₀_monic/_natDegree/_not_dvd/_divmod`, `dev_g₀_*`, `dvhgt_g₀_*`,
+`dvside_g₀ = {0,1}`, `hne_g₀`) is landed in `ChapC/C35b.lean`.
+
+(2) C.61 (`tier1_typeOf`) — signed statement NOT landed (stays at the
+leanspec stub); 12 declarations of SUPPLY, all Lean-core, in
+`ChapC/C61.lean`, record `C61_BLOCKED_2026-08-20.md`, WIRED (roll-up 86
+imports, 8717 jobs green).
+  * `tier1_typeOf_of_ell_one` — the signed conclusion from SIGNED
+    HYPOTHESES ONLY at `L.ℓ = 1`: **unconditional on that stratum**.
+  * `tier1_natDegree_eq` — `deg g = (F.e₁·L.ℓ)·(F.f₁·d_r)` at EVERY
+    `L.ℓ` from the signed hypotheses alone.
+  * `tier1_typeOf_of_ramLeg` — the full statement with ONE inserted
+    hypothesis `hram`. diff vs leanspec:2191-2200 = two hunks
+    (axiom→theorem, +hram); binders and conclusion unchanged bytes.
+  * **SHARPNESS CERTIFICATE** `tier1_typeOf_without_hx_false`: C.61
+    MINUS `hx` is FALSE at the frame; since `L₀.ℓ = 1` the proved
+    ℓ=1 case upgrades this to the theorem `hx_g₀_false`. The hypothesis
+    is PROVED UNDROPPABLE, not assumed necessary.
+  * THE CHAIN, named to the bottom: **C.40 (ii) ← C.61 ← C.59 ← C.27**,
+    and NO `C27.lean` existed. Verbatim remaining goal:
+    `g' ∈ monicFactors g ⊢ F.e₁ * L.ℓ ∣ ramIndexOf g'`, classified
+    (ii)+(iii). The `F.e₁` HALF NOW COMES FREE from `hx` via landed
+    CHAP-B (B.18→B.57→B.35b→B.54→`ramIndexOf_mul_inertiaDegOf`);
+    only the `L.ℓ`-half remains. Residual sharpness: at `L.ℓ = 2` the
+    multiset {(e₁,f₁d_r),(e₁,f₁d_r)} satisfies `Σ e'f' = E·D` without
+    being the singleton, so **`L.ℓ = 1` is the genuine reach of the
+    landed engine, not an artifact**.
+  * ★ KNOCK-ON: **C.61 does NOT need `D′ ∣ deg g`** — the property
+    refuted at #103. The legs supply divisibility themselves
+    (`E ∣ e'`, `D ∣ f'` ⟹ `E·D ∣ Σ e'f' = deg g`) and C.35's floor
+    identity pins the cofactor to 1. The D13 refutation therefore
+    REMOVED A FALSE REQUIREMENT from the blueprint's own proof sketch —
+    it did not merely close a dead route.
+  * C.40 (ii) is NOT unblocked in general (Ψ is a general level-2
+    carrier so `L.ℓ` is arbitrary), but its remaining obligation is now
+    IDENTICALLY C.59's `L.ℓ`-half, the discharge is one line, and at
+    `L.ℓ = 1` it is dischargeable NOW.
+
+(3) C.53 leg 2 — the node NARROWED to one obstruction, plus a
+correction to the orchestrator's own brief. `ChapC/C53b.lean` (WIRED,
+roll-up 87 imports, 8718 jobs green; 11 AxCheck lines all Lean-core,
+0 warnings, 0 real axioms across 49 decls).
+  * ★ `towerLocus_fibration_of_leg1` — **C.53's signed count law now
+    follows from LEG 1 ALONE.** Leg 2 is ELIMINATED FROM THE CHAIN, not
+    discharged. The node's only remaining input is `TowerBudgetIff` =
+    C.52's signed `towerLocus_iff_budget` (category (iii), the
+    `dv`-graded product/purity frontier). ONE named obstruction where
+    there were two. Route is CARD-level, which is the point: the
+    fibration is a COUNT and the two-key change of coordinates is
+    measure-preserving WITHOUT being box-preserving. No
+    unitriangularity, no matrix, no determinant.
+  * THE GENERAL TWO-KEY DICTIONARY, landed as a mutually inverse pair
+    (`slotPoly_digitVec`, `polyVec_digitVec`, `digitVec_polyVec`), plus
+    `composedKey_natDegree_D₂`, `natDegree_slotMon` (unconditional in
+    `i` — the honest form of "unipotent in the x-degree filtration"),
+    `card_digitVec_transport` (arbitrary `Q`), `slotSum_grouped`,
+    `digitFloors_iff`. Obstruction 4 of `C52_BLOCKED_2026-08-18.md`
+    named THIS FILE as its intended supplier; it is now landed and
+    reusable. NB `digitFloors_iff` — the RE-INDEXING half of leg 2 — is
+    **TRUE**; only the set-equality half fails.
+  * ⚠ **LEG 2 IS ARGUED FALSE IN PROSE, NOT MACHINE-CHECKED.** There is
+    no `theorem ¬ TriangularDigitRead`. `C53c.lean` is a beachhead only
+    (`linKey`, `linKey_monic`). Record
+    `C53_LEG2_REFUTED_2026-08-20.md`. Two consequences currently rest
+    on an ARGUMENT: (a) that record's own GOAL-3 category-(ii)
+    classification is wrong (the lemma cannot be written); (b)
+    `BudgetBoxRead` is refuted too, hence **`C53.lean`'s
+    `towerLocus_fibration_of_frontier` is a TRUE THEOREM WITH A FALSE
+    HYPOTHESIS** — vacuous, and a `sorry`/axiom-shaped discharge of
+    either Prop would be UNSOUND. **Do not upgrade this status without
+    the theorem.** One ingredient of the general argument is C.50's
+    TRANSCRIBED SCOPE NOTE — corpus prose, not a landed theorem — which
+    is why the machine-check should use the explicit numeric witness
+    route instead (`e₁=f₁=h=1, e₂=2, f₂=1, u₂=3, μ₂=1`, `Φ′ = X+π`,
+    `D₂=2, E₂=6`, floors (4,2); at `N=2` the zero class is in RAW-BOX
+    but not DIGIT-BOX).
+  * ORCHESTRATOR ERROR ON RECORD: I briefed the unit that "the
+    unipotence in the x-degree filtration is the reason the transport
+    is floor-preserving". **FALSE**, and the unit was right to reject
+    it — I was sharpening the blocked record's own claim, so the error
+    is in the record too. Both real mechanisms: (R1) the change of
+    coordinates is AFFINE not linear (the translation
+    `Δ = Φ₂^{μ₂} − X^{μ₂D₂}`; RAW-BOX always holds the zero class,
+    DIGIT-BOX does not, by C.50's landed `E₂_gt_xfloor`); (R2) even the
+    unipotent LINEAR part fails, since a unitriangular map preserves
+    `∏𝔪^{mᵢ}` only when `m` is non-DEcreasing in the index while
+    `budgetSlot` is non-INcreasing. **Orchestrator restatements of a
+    record's mechanism are not evidence.**
+
+(4) ★ C.27 — A SIGNED STATEMENT IS FALSE. `slot2_exact` is REFUTED at
+`(s2Frame, L₀, g₀, C := X)` over ℤ_[2]. `ChapC/C27.lean`, 18 decls, 8
+AxCheck lines all Lean-core, 0 real axioms; TWO machine-checked
+refutations — `slot2_exact_false` AND `slot2_exact_without_hC0_false` —
+so the unit SEPARATES WHICH BINDER IS AT FAULT rather than only
+reporting that something is. Diagnosis: a MISSING BINDER, the x-purity
+guard. Signed statement NOT declared (no axiom, no `sorry`); it stays
+at the leanspec stub. **A re-sign is OWNER-GATED and was not enacted.**
+NOT yet wired (unit did not complete its record).
+
+(5) THE `hx` SWEEP, and ★ THE DIAGNOSIS CORRECTED
+(`ChapC/HX_SWEEP_2026-08-20.md`, orchestrator). Mechanical over the
+signed spec with the census comment-stripper: **159 signed Prop
+obligations in chapter C; exactly 3 carry `IsPure Polynomial.X`**
+(`ramLeg_dvd` L1130, `tier1_typeOf` L2191, `classSize_separable`
+L2232); 6 are label-layer without one. Then the three UNEXAMINED
+candidates were analysed and **they do NOT behave alike**:
+  * `fullSide_block` (L1965) — NOT a candidate: it carries
+    `hdeg : f.natDegree = μ₂ * T.D₂` as a HYPOTHESIS, and `3 ≠ 2μ₂`, so
+    `g₀` cannot instantiate it. **The corpus DOES sometimes guard this
+    correctly.** (Its locus is unwitnessed anyway — `TowerDatum`.)
+  * `side_degree_conservation` (L2349) — expected TRUE, structurally
+    immune: it asserts only FLOOR-level quantities and never mentions
+    `HasLabel`, so it never reaches the provenance gap.
+  * ★ `multiplicity_tie` (L2285) — LIVE REFUTATION CANDIDATE. Conjunct
+    1 is `deg (blockFactor L f) = L.keyDeg₂ * m`, the exact-degree form
+    D13 kills. At `f := g₀`, `m := 1`: `hmult` holds (`ρ¹∣ρ`, `¬ρ²∣ρ`),
+    `blockFactor L₀ g₀ = g₀` by maximality, so conjunct 1 demands
+    **3 = 2**. And the sharpest detail: **conjunct 2 (`mult₂ L f = m`)
+    is TRUE at the same instance** (`⌊3/2⌋ = 1`). The statement fails on
+    its EXACT-degree conjunct while its FLOOR conjunct survives.
+  * ★★ **THE CORRECTED DIAGNOSIS, superseding this session's earlier
+    framing: the common thread is the EXACT-DEGREE FAMILY, not the
+    missing `hx` guard.** `slot2_exact` (refuted),
+    `blockFactor_spec` clause 3 (blocked), C.40 clause (iii) (blocked)
+    and `multiplicity_tie` (predicted false) all assert an exact degree
+    of a labelled object that the floor-divided bodies cannot
+    determine. `hx` was the correct diagnosis for C.27 SPECIFICALLY and
+    is NOT the general pattern. Registry entry: **D-CARRY**. Standing
+    check, sharper and more mechanical than hunting a missing guard:
+    **"does this conclusion assert an EXACT DEGREE of a labelled
+    object?"**
+  * HONESTY: §6.3 is ANALYSIS, NOT A THEOREM. Landing it needs
+    `BlockContext L₀ g₀` — every part landed EXCEPT **`Squarefree g₀`**
+    (true: `disc(x³−2x+4) = −400 ≠ 0`; the Lean proof for a concrete
+    cubic over a DVR is the one real piece of work) — plus the
+    `blockFactor L₀ g₀ = g₀` maximality argument through
+    `Classical.choice`, and `3 ≠ 2`. QUEUED, not claimed. Note the
+    Separable route is NOT available: over `O` the resultant
+    `= ±disc = ∓400` is a NON-UNIT, so `IsCoprime g₀ g₀'` FAILS and
+    `Separable → Squarefree` cannot be used; `Squarefree` must be
+    proved directly.
+
+(6) A NEAR-MISS ON THE ORCHESTRATOR'S OWN AUDIT, recorded because the
+lesson is general. Verifying C.61's "no axiom" claim, my
+`grep -E "^axiom tier1_typeOf"` HIT (C61.lean:38) and I was one step
+from calling a stop-the-line. The hit is inside a FENCED CODE BLOCK in
+the module docstring quoting the leanspec stub — the SAME
+`package_three_of_drainage` trap a unit found earlier and that I had
+been passing to every agent since. Two things caught it: the footprint
+check (0 non-core across 12 decls) was inconsistent with a live axiom,
+and the census comment-stripper gives REAL AXIOMS: 0. **STANDING RULE,
+for the orchestrator as much as the fleet: never accept a bare
+name-grep as evidence about declarations — strip comments or check
+`#print axioms`.**
+
+NEXT, priority order: (a) machine-check `¬ TriangularDigitRead` at the
+explicit witness — it is the only thing keeping a VACUITY finding at
+argument-strength; (b) `Squarefree g₀` then the `multiplicity_tie`
+refutation (§5) — `Squarefree g₀` is reusable supply either way;
+(c) C.59's `L.ℓ`-half, the sole remaining input to C.61 and thence
+C.40 (ii); (d) C.27's disposition record + wiring; (e) chapter C's ~147
+unlanded signed names, still three quarters of all remaining work;
+(f) the D-CARRY sweep under the CORRECTED check of (5) — every signed
+conclusion asserting an exact degree of a labelled object; (g) the
+`TowerDatum`/`IsTestKey` inhabitation gap (two core predicates, no
+landed value); (h) E.57 as a dedicated hard unit. Owner items unchanged:
+the FGMN published-number print-read, the B39a rider, the
+WeldObligations.w1 amendment, plus NEW: the C.27 re-sign question and
+the I.10a/I.10b placeholder sockets.
