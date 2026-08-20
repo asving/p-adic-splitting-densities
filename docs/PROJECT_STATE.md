@@ -7164,3 +7164,67 @@ OWNER-GATED and recorded, not enacted. NEXT queue unchanged from #105
 otherwise: (a) chapter-I blueprint placeholders (NOW THE TOP ITEM —
 the blueprint-finishing charge); (b) C.59's `L.ℓ`-half (HARD); (c)
 chapter C's unlanded names; (d) `IsTestKey` inhabitation; (e) E.57.
+
+**2026-08-20 DATED APPEND #107 — THE VACUITY WATCH CLOSES (IsTestKey
+witnessed; both core predicates now inhabited), the LocalData promotion
+executes the twice-flagged RE-PLAN, and the TOWER-INSTANTIATION FREEZE
+draft v1 goes to Codex and comes back NEEDS-REDESIGN — the adversarial
+pass catching a fence violation the author had built in.**
+
+(1) ★ THE #103 (5)/#104 (g) INHABITATION GAP IS FULLY CLOSED.
+`C53c.lean` §10: `isTestKey_witness : IsTestKey ((linTower hπ).levelDatum
+hπ) (composedKey (linTower hπ))` — one application of C.47's landed
+`composedKey_isTestKey` at the new `linTower`. Both `TowerDatum` and
+`IsTestKey` — the two core chapter-C predicates that had NO witnessing
+value anywhere — are now inhabited by landed terms, over any DVR (and
+absolutely over ℤ_[3] via `h3_padic`). C.72/C.73's ∀-binders and C.40's
+`hΨ` are no longer at vacuity risk. Lean-core; ChapC roll-up 8725 jobs
+green.
+
+(2) REFACTOR: the valuation-counting cluster (`le_addVal_iff_pow_dvd`,
+`mem_pow_maximalIdeal_iff`, `card_res_ge_of_le/_of_ge`, `card_res_ge`)
+PROMOTED to `Density/LocalData.lean` §5b — the RE-PLAN item C.110's and
+C.53's headers both flagged. The three private copies (C110, C53, C53c)
+deleted; consumers switched; statements byte-identical; full root
+rebuild (`lake build Uniformity`) EXIT=0.
+
+(3) THE BLUEPRINT-FINISHING CHARGE: chapter I's remaining work was
+scoped and has ONE genuine bottleneck. Findings: I.10/I.15–I.18 are
+OWNER-GATED (I-D7's fence — the field list; not touched); the five
+I-D12 `True` bodies and the I.10a/I.10b critical-path sockets ALL owe
+their typed bodies to a single unauthored design object — chapter C's
+TOWER-INSTANTIATION FREEZE (the "arising configuration" layer OM-8's
+adjudication and A-I.1's guards both point at). Drafted as
+`docs/in-progress/TOWER_INSTANTIATION_FREEZE_DRAFT_2026-08-20.md`
+(A-C.9/A-I.2 draft v1): seven C.130x nodes (stage `SlotCarrier` read,
+input block, letter lattice, canonical residue read), transport-equation
+socket bodies, a 5-item verification gate, 4 owner items.
+
+(4) ★ THE CODEX ADVERSARIAL PASS RETURNED **NEEDS-REDESIGN** — and it
+is RIGHT. Four structural CRITICALs accepted on review: (a) the v1
+socket never ties the tower to the input (the ∃ admits unrelated
+towers) — v2 route: re-advertise the guard at OM-8's own adjudicated
+class (every legal GENTOW5-1 instantiation with the canonical read),
+which is dischargeable by OM-8's YES and needs no algorithm linkage
+(NEW owner decision D-TIF-4); (b) the v1 `canonicalRes` letter table
+(read-level-valued) makes `HVarthetaRes`'s `∃ u : Ktˣ` clause TRUE BY
+CONSTRUCTION — the socket would SWALLOW the ϑ-conjunct, the exact trap
+the non-swallowing fence names; v2 must value deep letters genuinely in
+`L`; (c) the frozen binders carry ONE `Kt` for the whole level-indexed
+family — the intended common receiving field must be read off
+E.61/D62w's semantics before v2 (and if the signed shape is genuinely
+inconsistent with per-level data, that is a FINDING against A-I.1's
+`deepTwist` field, to be raised); (d) total structure equalities
+over-pin junk. Plus 9 accepted GAPs (μ/hμ/threshold/keyfree binding,
+universe lifts, and the G-1 non-vacuity being a claim about `DeepTower`
+witnesses, not socket inhabitants). PROCESS DEFECT disclosed: the
+launch piped through `tail -80`, losing findings 1–18 and the session
+id (no resume possible). v1 is superseded in place; v2 queued with the
+prerequisite source reads (E.61 `Kt` semantics, D62w, OM-8's record).
+Codex window: 96% used, resets Sun Aug 23 — v2's verification pass
+should wait for the reset unless the owner spends credits.
+
+NEXT: (a) freeze v2 (after the E.61/D62w read — the Kt question may be
+a finding in its own right); (b) chapter C's unlanded names; (c) C.59's
+`L.ℓ`-half (HARD); (d) E.57. Owner items: unchanged + D-TIF-1..4 and
+the freeze v1 packet (draft + review) ready for a read.
