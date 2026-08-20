@@ -30,9 +30,32 @@ B.05 `sum_dev_eq`, B.06 `dev_unique`) — no polygon, no purity, no residual, no
 Hensel lifting.  Style modelled on `C110.lean` clause 2's `dev_sub_C`: an exact identity in
 `O[X]`, never a "the change of coordinates is unitriangular" hand-wave.
 
+## And what it is used for: C.53 reduced to LEG 1 ALONE
+
+`towerLocus_fibration_of_leg1` proves the FULL signed conclusion of C.53's `towerLocus_fibration`
+from `TowerBudgetIff` (leg 1 = C.52's signed `towerLocus_iff_budget`) alone.  C.53's leg 2
+`TriangularDigitRead` is **eliminated from the chain, not discharged**, because it is **FALSE** —
+see `C53_LEG2_REFUTED_2026-08-20.md`, which corrects that node's category-(ii) classification.
+Two independent mechanisms: the change of coordinates is **affine** (the translation
+`Φ₂^{μ₂} − X^{μ₂D₂}` is not in the box — this is exactly C.50's landed SPLIT
+`E₂_gt_xfloor : D₂·(e₂·h) < E₂`), and the box's floors **decrease** along the degree filtration,
+so a unitriangular map does not preserve it either.
+
+What replaces leg 2 is `card_digitVec_transport`: the two-key change of coordinates is
+**measure-preserving without being box-preserving**, and `towerLocus_fibration` is a COUNT.  It is
+proved without unitriangularity, matrices or determinants — `polyVec` is visibly affine over `O`
+so it descends to `slotClassMap` on the finite type `Coeff O n N`, `polyVec ∘ digitVec = id` makes
+that descent surjective hence bijective, and `digitVec ∘ polyVec = id` identifies the digit-box
+family of classes as its image of the raw-box family.
+
+**Never assume `TriangularDigitRead` or `BudgetBoxRead`** (the latter is leg 1 ∧ leg 2, hence also
+refuted).  `C53.lean`'s `towerLocus_fibration_of_frontier` remains a true theorem with a false
+hypothesis; the live route is the theorem below.
+
 ## Status
 
-Sorry-free. Axiom footprint: Lean core (AxCheck footer).
+Sorry-free, no new axiom, no signed statement touched. Axiom footprint of every declaration:
+Lean core `{propext, Classical.choice, Quot.sound}` (AxCheck footer).  No cite is inherited.
 -/
 
 set_option linter.style.longLine false
