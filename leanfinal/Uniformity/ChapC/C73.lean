@@ -465,4 +465,104 @@ theorem biRep_natDegree_lt (F : KeyFrame O π) (A : Polynomial O) {m : ℕ} (hm 
 
 end BiRep
 
+/-! ## The exactness theorem, part 3: `keyY`, the composed key as a `Z`-polynomial
+
+`keyY T` is C.43's display read in `O[x][Z]`: `Z^{e₂f₂}` minus the lift terms parked at
+`Z^{e₂t}`.  Three of its four properties are UNCONDITIONAL — it evaluates to `Φ₂` at `Z = Φ′`
+(`keyY_eval`), and it is monic of `Z`-degree `e₂f₂` (`keyY_monic`, `keyY_natDegree`).
+
+**The fourth is where x-freeness enters, and it enters here and nowhere else**:
+`keyY_coeff_natDegree_le` says every coefficient of `keyY T` is a CONSTANT (`X`-degree `0`).
+That is exactly the hypothesis `EFF.GENTOW3.26` uses ("at an x-free genre every `K₂`-coefficient
+is x-free"), and it is what keeps the products `biRep(C_{j'})·keyY^{j'}` in-grid.  At a
+non-x-free datum this single lemma fails, and with it the whole argument — which is the honest
+statement of why (iii) is an x-free phenomenon. -/
+
+section KeyY
+
+variable {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+
+/-- C.43's composed key, read as a `Z`-polynomial over `O[x]`: `Z^{e₂f₂} − Σ_{t<f₂} L_t·Z^{e₂t}`
+with `L_t` the `t`-th lift coefficient.  `eval Φ′` sends it to `Φ₂` (`keyY_eval`). -/
+noncomputable def keyY (T : TowerDatum F H₀ hpin) : Polynomial (Polynomial O) :=
+  Polynomial.X ^ (T.e₂ * T.f₂)
+    - ∑ t ∈ Finset.range T.f₂,
+        Polynomial.C (F.stageLiftO H₀ hpin ((T.f₂ - t) * T.u₂)
+            (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp T t)))
+          * Polynomial.X ^ (T.e₂ * t)
+
+/-- **`keyY` presents the composed key**: `eval Φ′ (keyY T) = Φ₂`, C.43's body verbatim. -/
+theorem keyY_eval (T : TowerDatum F H₀ hpin) :
+    Polynomial.eval F.key (keyY T) = composedKey T := by
+  rw [keyY, composedKey]
+  simp only [eval_sub, eval_pow, eval_X, eval_finsetSum, eval_mul, eval_C]
+
+/-- the lift tail sits strictly below `Z^{e₂f₂}`: every parked exponent is `e₂t < e₂f₂`. -/
+private theorem keyY_tail_natDegree_le (T : TowerDatum F H₀ hpin) :
+    (∑ t ∈ Finset.range T.f₂,
+        Polynomial.C (F.stageLiftO H₀ hpin ((T.f₂ - t) * T.u₂)
+            (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp T t)))
+          * Polynomial.X ^ (T.e₂ * t)).natDegree ≤ T.e₂ * T.f₂ - 1 := by
+  refine natDegree_sum_le_of_forall_le _ _ fun t ht => ?_
+  have ht' : t < T.f₂ := Finset.mem_range.mp ht
+  refine le_trans (natDegree_C_mul_le _ _) ?_
+  rw [natDegree_X_pow]
+  have hstep : T.e₂ * t + T.e₂ ≤ T.e₂ * T.f₂ := by
+    calc T.e₂ * t + T.e₂ = T.e₂ * (t + 1) := by ring
+      _ ≤ T.e₂ * T.f₂ := Nat.mul_le_mul_left _ (by omega)
+  have he : 0 < T.e₂ := T.he₂
+  omega
+
+private theorem keyY_tail_degree_lt (T : TowerDatum F H₀ hpin) :
+    (-(∑ t ∈ Finset.range T.f₂,
+        Polynomial.C (F.stageLiftO H₀ hpin ((T.f₂ - t) * T.u₂)
+            (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp T t)))
+          * Polynomial.X ^ (T.e₂ * t))).degree
+      < ((Polynomial.X : Polynomial (Polynomial O)) ^ (T.e₂ * T.f₂)).degree := by
+  rw [degree_neg]
+  refine degree_lt_degree ?_
+  have hnd := keyY_tail_natDegree_le T
+  have hm : 2 ≤ T.e₂ * T.f₂ := T.hcomp
+  rw [natDegree_X_pow]
+  omega
+
+/-- `keyY T` is MONIC — unconditionally, x-free or not: the lift tail is parked strictly below
+the leading `Z^{e₂f₂}`. -/
+theorem keyY_monic (T : TowerDatum F H₀ hpin) : (keyY T).Monic := by
+  rw [keyY, sub_eq_add_neg]
+  exact (monic_X_pow _).add_of_left (keyY_tail_degree_lt T)
+
+/-- `keyY T` has `Z`-degree exactly `e₂f₂` — unconditionally. -/
+theorem keyY_natDegree (T : TowerDatum F H₀ hpin) : (keyY T).natDegree = T.e₂ * T.f₂ := by
+  rw [keyY, sub_eq_add_neg]
+  refine natDegree_eq_of_degree_eq_some ?_
+  rw [degree_add_eq_left_of_degree_lt (keyY_tail_degree_lt T), degree_X_pow]
+
+/-- **THE X-FREE INPUT, and the only one.**  At an x-free datum every coefficient of `keyY T` is a
+CONSTANT: the leading one is `1`, and each lift coefficient has `X`-degree `0` — by
+`isXFree_iff_forall`, at EVERY slot `t < f₂`, vanishing residual slots included (which is why the
+guard-closure lemma was needed).
+
+This is `EFF.GENTOW3.26`'s "at an x-free genre every `K₂`-coefficient is x-free".  It is the
+single step of the exactness proof that fails at a non-x-free datum. -/
+theorem keyY_coeff_natDegree_le (T : TowerDatum F H₀ hpin) (hπ : Irreducible π)
+    (hx : IsXFree T) : ∀ i, ((keyY T).coeff i).natDegree ≤ 0 := by
+  have hlift := (isXFree_iff_forall T hπ).mp hx
+  have htail : ∀ k, ((∑ t ∈ Finset.range T.f₂,
+        Polynomial.C (F.stageLiftO H₀ hpin ((T.f₂ - t) * T.u₂)
+            (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp T t)))
+          * Polynomial.X ^ (T.e₂ * t)).coeff k).natDegree ≤ 0 := by
+    intro k
+    rw [finsetSum_coeff]
+    refine natDegree_sum_le_of_forall_le _ _ fun t ht => ?_
+    have ht' : t < T.f₂ := Finset.mem_range.mp ht
+    exact le_trans (natDegree_coeff_C_mul_X_pow_le _ _ _) (le_of_eq (hlift t ht'))
+  rw [keyY, sub_eq_add_neg]
+  refine natDegree_coeff_add_le (fun k => natDegree_coeff_X_pow_le _ _) ?_
+  intro k
+  rw [coeff_neg, natDegree_neg]
+  exact htail k
+
+end KeyY
+
 end Uniformity.Density.Tower
