@@ -196,6 +196,78 @@ private theorem degree_slotDig0_lt {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pi
   rw [composedKey_natDegree_D₂ T hπ]
   exact natDegree_slotDig0_lt T u j
 
+/-- reading a coefficient off `slotDig1` inside its range just reads the slot vector. -/
+private theorem coeff_slotDig1 {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (u : ℕ → O) (j b : ℕ) {a : ℕ} (ha : a < F.e₁ * F.f₁) :
+    (slotDig1 T u j b).coeff a = u (j * T.D₂ + b * (F.e₁ * F.f₁) + a) := by
+  classical
+  simp only [slotDig1, Polynomial.finsetSum_coeff, Polynomial.coeff_C_mul_X_pow]
+  rw [Finset.sum_ite_eq (Finset.range (F.e₁ * F.f₁)) a
+    (fun k => u (j * T.D₂ + b * (F.e₁ * F.f₁) + k))]
+  simp [Finset.mem_range.2 ha]
+
+/-! ### The grouped form: the flat slot sum IS a two-level development
+
+`slotSum_grouped` is the whole combinatorial content of the dictionary — the flat sum over the
+`μ₂D₂` raw indices, regrouped along `i = j·D₂ + b·D′ + a`, is literally the nested development
+`∑_j (∑_b (∑_a c·X^a)·Φ′^b)·Φ₂^j`.  Everything after this is `dev_unique` / `sum_dev_eq`. -/
+
+private theorem slotSum_grouped {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (μ₂ : ℕ) (u : ℕ → O) :
+    ∑ i ∈ Finset.range (μ₂ * T.D₂), C (u i) * slotMon T i
+      = ∑ j ∈ Finset.range μ₂, slotDig0 T u j * (composedKey T) ^ j := by
+  have hD' : 0 < F.e₁ * F.f₁ := Nat.mul_pos F.he₁ F.hf₁
+  have hE : 0 < T.e₂ * T.f₂ := hEpos T
+  have hD₂ : 0 < T.D₂ := hD₂pos T
+  -- the outer regrouping `i ↦ (i / D₂, i % D₂)`
+  have hg := sum_range_div_mod' hD₂ (fun j s => C (u (j * T.D₂ + s)) *
+      (X ^ (s % (F.e₁ * F.f₁)) * F.key ^ (s / (F.e₁ * F.f₁)) * (composedKey T) ^ j)) μ₂
+  have hlhs : ∑ i ∈ Finset.range (μ₂ * T.D₂), C (u i) * slotMon T i
+      = ∑ i ∈ Finset.range (μ₂ * T.D₂), C (u (i / T.D₂ * T.D₂ + i % T.D₂)) *
+          (X ^ (i % T.D₂ % (F.e₁ * F.f₁)) * F.key ^ (i % T.D₂ / (F.e₁ * F.f₁)) *
+            (composedKey T) ^ (i / T.D₂)) := by
+    refine Finset.sum_congr rfl fun i _ => ?_
+    rw [Nat.div_add_mod']
+    rfl
+  rw [hlhs, hg]
+  refine Finset.sum_congr rfl fun j _ => ?_
+  -- the inner regrouping `s ↦ (s / D′, s % D′)` on `range ((e₂f₂)·D′)`
+  have hcomm : T.D₂ = (T.e₂ * T.f₂) * (F.e₁ * F.f₁) := by rw [TowerDatum.D₂]; ring
+  have hinner : ∀ K : ℕ, ∀ P : Polynomial O,
+      ∑ s ∈ Finset.range ((T.e₂ * T.f₂) * (F.e₁ * F.f₁)), C (u (K + s)) *
+          (X ^ (s % (F.e₁ * F.f₁)) * F.key ^ (s / (F.e₁ * F.f₁)) * P)
+        = ∑ b ∈ Finset.range (T.e₂ * T.f₂), ∑ a ∈ Finset.range (F.e₁ * F.f₁),
+            C (u (K + (b * (F.e₁ * F.f₁) + a))) * (X ^ a * F.key ^ b * P) := by
+    intro K P
+    rw [← sum_range_div_mod' hD' (fun b a => C (u (K + (b * (F.e₁ * F.f₁) + a))) *
+      (X ^ a * F.key ^ b * P)) (T.e₂ * T.f₂)]
+    refine Finset.sum_congr rfl fun s _ => ?_
+    rw [Nat.div_add_mod']
+  have hstep2 := hinner (j * T.D₂) ((composedKey T) ^ j)
+  rw [← hcomm] at hstep2
+  rw [hstep2, slotDig0, Finset.sum_mul]
+  refine Finset.sum_congr rfl fun b _ => ?_
+  rw [slotDig1, Finset.sum_mul, Finset.sum_mul]
+  refine Finset.sum_congr rfl fun a _ => ?_
+  have hidx : j * T.D₂ + (b * (F.e₁ * F.f₁) + a) = j * T.D₂ + b * (F.e₁ * F.f₁) + a := by ring
+  rw [hidx]
+  ring
+
+/-- **The grouped form of `slotPoly`.**  `slotPoly T μ₂ c = Φ₂^{μ₂} + ∑_{j<μ₂} A_j·Φ₂^j` with
+`A_j = ∑_{b<e₂f₂} (∑_{a<D′} c_{jD₂+bD′+a}·X^a)·Φ′^b`: exactly the shape of a `Φ₂`-adic
+development whose digits are themselves `Φ′`-adic developments. -/
+private theorem slotPoly_grouped {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (μ₂ : ℕ) (c : Fin (μ₂ * T.D₂) → O) :
+    slotPoly T μ₂ c
+      = (composedKey T) ^ μ₂
+        + ∑ j ∈ Finset.range μ₂, slotDig0 T (vext c) j * (composedKey T) ^ j := by
+  rw [slotPoly]
+  congr 1
+  rw [← slotSum_grouped T μ₂ (vext c),
+    ← Fin.sum_univ_eq_sum_range (fun i => C (vext c i) * slotMon T i) (μ₂ * T.D₂)]
+  refine Finset.sum_congr rfl fun i _ => ?_
+  rw [vext_apply]
+
 end Uniformity.Density.Tower
 
 /-! ## Axiom footprint -/
