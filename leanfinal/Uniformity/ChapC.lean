@@ -51,6 +51,10 @@ import Uniformity.ChapC.C29
 import Uniformity.ChapC.C30
 import Uniformity.ChapC.C31
 import Uniformity.ChapC.C32
+import Uniformity.ChapC.C33
+import Uniformity.ChapC.C33Cite
+import Uniformity.ChapC.C34
+import Uniformity.ChapC.C35
 import Uniformity.ChapC.C38a
 import Uniformity.ChapC.C41
 import Uniformity.ChapC.C42
@@ -61,6 +65,7 @@ import Uniformity.ChapC.C46
 import Uniformity.ChapC.C47
 import Uniformity.ChapC.C50
 import Uniformity.ChapC.C51
+import Uniformity.ChapC.C53
 import Uniformity.ChapC.C56a
 import Uniformity.ChapC.C60
 import Uniformity.ChapC.C66
@@ -68,6 +73,7 @@ import Uniformity.ChapC.C71
 import Uniformity.ChapC.C74
 import Uniformity.ChapC.C83
 import Uniformity.ChapC.C84
+import Uniformity.ChapC.C87
 import Uniformity.ChapC.C93
 import Uniformity.ChapC.C94
 import Uniformity.ChapC.C97
