@@ -63,13 +63,13 @@ defects): `hfence`, `hroot`, and `hnode`-at-depth-0 — all three machine-record
 |---|---|---|---|
 | `hkappa : ∀ i < len, t.KappaRule i` | C.111 (unpinned `kappa`) — the ORIGINAL defect | **SHARP** | `kappaRule_one_node_iff`: on the refuting one-node family `⟨[vK k]⟩` the rule holds **iff `k = 1`**, so the `k = 2` member (which gave formula `2` against an equinumerous stratum) is excluded. Machine-checked below. |
 | `hkappa0 : S.Kappa0Rule` | C.111, at level 0 | **SHARP** | `kappa0Rule_empty_iff`: on the refuting empty family `⟨[], k⟩` the rule holds **iff `k = 1`**. Machine-checked below; and at `k = 1` the conclusion is not merely silent but TRUE (`ht_global_empty_shape`). |
-| `hR : IsRepSystem R Φ.natDegree` | "no `R` exists ⇒ the theorem is vacuous" (the new D5 clause) | **NON-VACUOUS, SATISFIABLE** | `exists_isRepSystem`: for every `0 < d` a rep system is CONSTRUCTED (digitwise, from a section of the residue map). Also non-trivial: `isRepSystem_empty_iff_of_pos` shows `R = ∅` fails for `0 < d`, so the clause is not implied. |
+| `hR : IsRepSystem R Φ.natDegree` | "no `R` exists ⇒ the theorem is vacuous" (the new D5 clause) | **NON-VACUOUS, SATISFIABLE** | `exists_isRepSystem`: for every `0 < d` a rep system is CONSTRUCTED (digitwise, from a section of the residue map). Also non-trivial: `not_isRepSystem_empty` shows `R = ∅` fails for `0 < d`, so the clause is not implied. *Sharpness note:* `hR` is a satisfiability guard on a chosen datum, not a fence excluding a false stratum, so "sharp at a counterexample" is not the right test; its A-C.3 tooth (324 vs 216, 54 vs 18 WITHOUT it) is Python-side and is NOT re-verified in Lean here. |
 | `hcompl : t.ChildComplete` | C.113 (a clause carrying no content) | **CONTENTFUL at leaves too** | its second conjunct at a childless node forces `(v.sideType u 1).data.count (1, a) = 0` for every `e = 1` side and every `a ≥ 2` — i.e. a leaf may not have repeated linear residual factors. Not vacuous. |
 | `hvis : t.WindowVisible N` | none (positive statement, no guard) | **SHARP** | it is the binder `ht_node_cell_card` consumes (`hvis`); without it the digit budget `B_v(N)` clips by ℕ-subtraction and the count is wrong. |
 | `hcons : t.Conservative` | C.113 | **SHARP** (A-C.3 tooth) | `verification/c114_ac3_stratum_check.py`: dropping it gives stratum `0` against formula `1458`. |
 | `hwf`, `hnodewf` | C.113 | **SHARP** (A-C.2 teeth) | the C.109 refutation record: the frozen `HTNode`-datum count without `WF` is refuted. |
 | `hnode : t.NodeExponent N` | C.111 — the CARRIED clause | **SHARP where D6 bites; DISCLOSED trivial at depth 0** | `nodeExponent_of_one_node`: on ANY one-node tree it holds unconditionally (empty child sum). That is not a defect — D6's counterexamples (truth `243, 486, 128` vs formula `9, 108, 32`) are all multi-child, and there the clause is the fence. Recorded so it is not read as a tooth at depth 0. |
-| `hfence : t.OrderOne` | C.113 | **NOT SHARP — DISCLOSED** (already flagged in the blueprint TEETH line: "a SCOPE fence with no truth tooth in the grid") | `orderOne_of_no_sides`: it holds vacuously on the whole refuting one-node family, so it separates nothing there. Retained because the source refuses to speak past it. |
+| `hfence : t.OrderOne` | C.113 | **NOT SHARP — DISCLOSED** (already flagged in the blueprint TEETH line: "a SCOPE fence with no truth tooth in the grid") | `orderOne_of_one_node_vK`: it holds vacuously on the whole refuting one-node family, so it separates nothing there. Retained because the source refuses to speak past it. |
 | `hroot : 0 < t.nodes.length` | "typing clause or truth tooth?" | **NOT SHARP — DISCLOSED** | `ht_branch_empty_tree`: at `t.nodes = []` the conclusion is TRUE (both sides `1`), so dropping `hroot` would not falsify the statement. It is a scope/read clause (it makes `t.nodes.getD 0` a real node). Machine-checked below. |
 | `hdistinct` (global) | C.113 | **SHARP** (A-C.3 tooth) | tooth `8` against formula `64` with two branches at one residue. |
 | `hn`, `hkeys`, `hbr` (global) | none | pinning/relay clauses | `hn` pins the degree; `hbr` relays the eight branch clauses verbatim, so their audit rows above transfer. |
@@ -94,6 +94,27 @@ run against the re-signed guards before proving anything:
    by the rest of the tree — `kappa_unique_of_kappaRule` below, machine-checked. This closes
    the C.111 pattern for `kappa` in general, not just on the refuting family. The same
    argument closes `kappa0` (`kappa0_unique_of_kappa0Rule`).
+
+## STATUS OF THE SIGNED STATEMENT (read this before citing the node)
+
+**Case (c): landed in REDUCED form, with the remainder recorded** in
+`C114_BLOCKED_2026-08-20.md` (verbatim failing goals for both signed names, plus the mechanism).
+`sorry`-free is NOT the same as "the signed theorem is proved", so precisely:
+
+* the fourteen A-C.3 carriers are landed **outright**;
+* the signed names `ht_branch` / `ht_global` are **neither proved nor declared here** — what is
+  landed is each at the degenerate stratum where the A-C.2 refutation lived, at the FULL
+  byte-frozen binder list **plus one ADDED scope equation** (`hone : t.nodes.length = 1`,
+  `hnil : S.branches.length = 0`).  **No signed hypothesis was trimmed or substituted**, and no
+  hypothesis was introduced that a later node is expected to discharge en route to the signed
+  statement: the general statements are simply OPEN.
+
+Sharpness that this unit did NOT establish in Lean (full accounting in the record): `hcons`,
+`hcompl`, `hwf`, `hnodewf`, `hdistinct` — each has a numeric tooth in
+`verification/c114_ac3_stratum_check.py`, and the `WF` pair a Lean refutation record at C.109,
+but no leanfinal counterexample is exhibited here.  Deciding them needs a decidable-instance
+layer for `htCell` membership over a concrete `O`, which is the same missing apparatus as the
+block itself.  `hfence` and `hroot` are established NOT sharp — those are findings, not gaps.
 
 ## WHAT IS LANDED vs WHAT IS BLOCKED
 
