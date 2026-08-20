@@ -7114,3 +7114,53 @@ blueprint-finishing charge, owner items noted; (c) C.59's `L.ℓ`-half
 gated on it); (d) chapter C's ~145 unlanded signed names; (e) the
 D-CARRY sweep rows; (f) `IsTestKey` inhabitation (the remaining half
 of (g)); (g) E.57. Owner items unchanged from #104.
+
+**2026-08-20 DATED APPEND #106 — C.67 SETTLED BY REFUTATION: the signed
+`multiplicity_tie` is FALSE (the FOURTH exact-degree casualty, exactly
+as HX_SWEEP §6.3 predicted), and `Squarefree g₀` — the workhorse
+frame's one missing leg — is LANDED as reusable supply.**
+
+(1) ★ `ChapC/C67.lean` (WIRED, roll-up 94 imports green; 7 AxCheck
+lines ALL Lean-core, zero `sorry`, no cite — the leanspec's
+`[cite:FGMN]` note described the intended proof of the now-refuted
+statement; no FGMN name is touched). `multiplicityTie_false :
+¬ MultiplicityTieStatement` — the ∀-closure of the signed C.67
+(binders mirrored verbatim, D13Statement pattern), refuted at
+`(s2Frame, L₀, g₀, m := 1)` over ℤ_[2]:
+  * every hypothesis HOLDS — `blockContext_g₀` (the full BlockContext
+    package, previously blocked on squarefreeness) and `hmult_g₀` (the
+    level residual of `g₀` is `ρ` itself, so `ρ¹ ∣ ρ` and `¬ρ² ∣ ρ` by
+    degrees; the pin forces `M₀ = 4`);
+  * `blockFactor_g₀ : blockFactor L₀ g₀ = g₀` — `g₀` inhabits the
+    maximality existential TRIVIALLY (every labelled divisor of `g₀`
+    divides `g₀`), so C.35's `blockFactor_eq_of_frontier` pins the
+    `Classical.choice`;
+  * the EXACT-degree conjunct then demands `3 = 2`. FALSE.
+  * ★ the sharpest machine-checked detail, predicted by §6.3 and
+    landed: **the FLOOR conjunct `mult₂ L₀ g₀ = 1` is TRUE at the SAME
+    instance** (`mult₂_g₀ : ⌊3/2⌋ = 1`) — the D-CARRY fault line
+    (floor reads survive, exact-degree reads of labelled objects die)
+    displayed inside one statement.
+
+(2) `g₀_squarefree` — REUSABLE SUPPLY, over ANY DVR in which 2 is a
+uniformizer. The Separable route is unavailable (non-unit resultant),
+so it is direct divisibility descent: a repeated factor must be
+linear; `g₀ = (AX+a)²(BX+b)` forces `A²B = 1`, `A²b + 2AaB = 0`,
+`2Aab + a²B = −2`; a linear_combination gives `3a² = 2A²`; 2 prime and
+`2 ∤ 3` give `2 ∣ a`; substituting `a = 2a′` gives `A² = 2(3a′²)`, so
+`2 ∣ A` against `A` a unit. Also landed en route: `g₀_key_not_dvd`
+(`Φ′ ∤ g₀`, off `g₀_divmod`'s nonzero constant remainder — the form
+BlockContext actually needs; C35b's `g₀_not_dvd` is the DEGREE
+non-divisibility, a different statement).
+
+(3) LEDGER CONSEQUENCES. The D-CARRY registry now has FOUR members
+with `slot2_exact` (REFUTED), `blockFactor_spec` clause 3 (BLOCKED),
+C.40 (iii) (BLOCKED) — and `multiplicity_tie` moves from "predicted
+false" to **REFUTED, machine-checked**. HX_SWEEP §2's candidate table
+and §6.3 carry status-upgrade banners. C.68's pin-translation and any
+consumer of C.67 must now thread the floor-form content only; the
+honest re-sign of C.67 (floor form, or a `D′ ∣ deg`-guard) is
+OWNER-GATED and recorded, not enacted. NEXT queue unchanged from #105
+otherwise: (a) chapter-I blueprint placeholders (NOW THE TOP ITEM —
+the blueprint-finishing charge); (b) C.59's `L.ℓ`-half (HARD); (c)
+chapter C's unlanded names; (d) `IsTestKey` inhabitation; (e) E.57.
