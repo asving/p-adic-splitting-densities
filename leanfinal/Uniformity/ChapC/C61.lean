@@ -584,6 +584,18 @@ theorem tier1_typeOf_without_hx_false : ¬ Tier1TypeOfWithoutHxStatement := by
     (hax (L₀ h2_padic rc2) h2_padic (hasLabel_g₀ h2_padic rc2)
       (hm1_g₀ h2_padic rc2) (hbox_g₀ h2_padic rc2)).1
 
+/-- **`hx` genuinely FAILS at `g₀` — machine-checked, not hand-computed.** `L₀.ℓ = 1`, so the
+PROVED `tier1_typeOf_of_ell_one` would deliver the conclusion from `hlab`, `hm1`, `hx`, `hbox`;
+`typeOf_g₀_ne` says the conclusion is false. Hence `¬ hx`. (The hand computation agrees: `g₀`'s
+x-polygon at `(h, e₁) = (1,2)` has cleared support `3`, attained only at `j ∈ {1,3}`, so
+`0 ∉ sideSet X g₀ 1 2` — but that arithmetic is now redundant.) This is what makes the sharpness
+verdict a *fact about the guard* and not merely about the guard-set. -/
+theorem hx_g₀_false :
+    ¬ IsPure Polynomial.X (g₀ ℤ_[2]) (s2Frame h2_padic rc2).h (s2Frame h2_padic rc2).e₁ :=
+  fun hx => typeOf_g₀_ne h2_padic rc2
+    (tier1_typeOf_of_ell_one (L₀ h2_padic rc2) h2_padic rfl (hasLabel_g₀ h2_padic rc2)
+      (hm1_g₀ h2_padic rc2) hx (hbox_g₀ h2_padic rc2)).1
+
 end Uniformity.Density.Tower.C61Sharp
 
 /-! ## Axiom footprint -/
@@ -601,5 +613,6 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.C61Sharp.hbox_g₀
 #print axioms Uniformity.Density.Tower.C61Sharp.typeOf_g₀_ne
 #print axioms Uniformity.Density.Tower.C61Sharp.tier1_typeOf_without_hx_false
+#print axioms Uniformity.Density.Tower.C61Sharp.hx_g₀_false
 
 end AxCheck
