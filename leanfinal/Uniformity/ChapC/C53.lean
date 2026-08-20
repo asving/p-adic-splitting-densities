@@ -106,7 +106,7 @@ set_option linter.style.longLine false
 
 namespace Uniformity.Density.Tower
 
-open Uniformity Uniformity.Density IsLocalRing IsDiscreteValuationRing
+open Uniformity Uniformity.Density Uniformity.Density.Leaf IsLocalRing IsDiscreteValuationRing
 
 variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
 
@@ -336,6 +336,51 @@ def BudgetBoxRead [Finite (ResidueField O)] {F : KeyFrame O π} {H₀ : ℕ} {hp
       ↔ (∃ a : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N a = c ∧
           ∀ i : Fin (μ₂ * T.D₂), ((budgetSlot T μ₂ i.1 : ℕ) : ℕ∞) ≤ addVal O (a i))
 
+/-- **Leg 1 of the frontier — C.52's signed characterization**, as a Prop to be threaded (the
+leanspec stub `towerLocus_iff_budget`, BLOCKED at `C52_BLOCKED_2026-08-18.md`): membership in
+`𝒯` is the conjunction of per-slot `addVal` floors on the TWO-KEY development digits
+`(dev F.key (dev (composedKey T) f j) b).coeff a`. -/
+def TowerBudgetIff {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (μ₂ : ℕ) : Prop :=
+  ∀ f : Polynomial O, f.Monic → f.natDegree = μ₂ * T.D₂ →
+    (f ∈ towerLocus T μ₂
+      ↔ ∀ j a b : ℕ, j < μ₂ → a < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
+          (budgetFloor T μ₂ j a b : ℕ∞)
+            ≤ addVal O ((dev F.key (dev (composedKey T) f j) b).coeff a))
+
+/-- **Leg 2 of the frontier — C.52 Step 3's unipotent digit dictionary**, as a Prop: at a fixed
+window `N`, having a lift whose TWO-KEY digits clear the floors is the same as having a lift
+whose RAW coefficients clear the same floors at the decoded slots.  This is the only place where
+"triangular-unimodular" is used, and it is used exactly as a measure-preservation statement:
+`c_{j,a,b}` is the coefficient at degree `j·D₂ + b·D′ + a` plus an `O`-combination of strictly
+higher-degree coefficients, so the change of coordinates is unipotent in the x-degree filtration
+and therefore a bijection of the level-`N` box onto itself. UNLANDED (obstruction 4 of
+`C52_BLOCKED_2026-08-18.md`). -/
+def TriangularDigitRead [Finite (ResidueField O)] {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (μ₂ N : ℕ) : Prop :=
+  ∀ c : Coeff O (μ₂ * T.D₂) N,
+    (∃ a : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N a = c ∧
+        ∀ j a' b : ℕ, j < μ₂ → a' < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
+          (budgetFloor T μ₂ j a' b : ℕ∞)
+            ≤ addVal O ((dev F.key (dev (composedKey T) (monicPoly a) j) b).coeff a'))
+      ↔ (∃ a : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N a = c ∧
+          ∀ i : Fin (μ₂ * T.D₂), ((budgetSlot T μ₂ i.1 : ℕ) : ℕ∞) ≤ addVal O (a i))
+
+/-- **The frontier splits into exactly those two legs.**  `monicPoly` supplies C.52's two side
+conditions for free (`monicPoly_monic`, `monicPoly_natDegree`), so leg 1 rewrites the locus
+membership into digit floors class by class and leg 2 transports them to the raw coordinates. -/
+theorem budgetBoxRead_of_legs [Finite (ResidueField O)] {F : KeyFrame O π} {H₀ : ℕ}
+    {hpin : F.Pin H₀} (T : TowerDatum F H₀ hpin) (μ₂ N : ℕ)
+    (h1 : TowerBudgetIff T μ₂) (h2 : TriangularDigitRead T μ₂ N) :
+    BudgetBoxRead T μ₂ N := by
+  intro c
+  refine Iff.trans ?_ (h2 c)
+  constructor
+  · rintro ⟨a, ha, hmem⟩
+    exact ⟨a, ha, (h1 (monicPoly a) (monicPoly_monic a) (monicPoly_natDegree a)).1 hmem⟩
+  · rintro ⟨a, ha, hbud⟩
+    exact ⟨a, ha, (h1 (monicPoly a) (monicPoly_monic a) (monicPoly_natDegree a)).2 hbud⟩
+
 /-- **NODE C.53, from the frontier alone (Lean-core).**  The full signed conclusion of
 `towerLocus_fibration` follows from `BudgetBoxRead` and the landed `card_budgetBox`; so the
 missing content of the signed theorem is EXACTLY the frontier Prop.  The signed hypotheses
@@ -363,6 +408,9 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.sum_budgetSlot
 #print axioms Uniformity.Density.Tower.card_budgetBox
 #print axioms Uniformity.Density.Tower.BudgetBoxRead
+#print axioms Uniformity.Density.Tower.TowerBudgetIff
+#print axioms Uniformity.Density.Tower.TriangularDigitRead
+#print axioms Uniformity.Density.Tower.budgetBoxRead_of_legs
 #print axioms Uniformity.Density.Tower.towerLocus_fibration_of_frontier
 
 end AxCheck
