@@ -56,3 +56,64 @@ A seventh label, **DEFN**, is used for signed names that are ordinary
 These are not statements and are excluded from the PROVED denominator; they are
 counted separately so the arithmetic is auditable rather than hidden.
 
+---
+
+## §I — chapter I (capstone and conditionality)
+
+Signed source: `leanspec/Leanspec/ChapI.lean` (25 blueprint nodes I.01–I.25 plus
+A-I.1's two sockets). This section **independently reproduces** the chapter-I
+placeholder census of commit `97dca60c` (8 landed declarations, 3 with real content,
+5 signed `True`) and adopts its attribution. My instrument found the same 5.
+
+| bucket | count |
+|---|---|
+| CARRIER | 3 |
+| PLACEHOLDER-BODY | 5 |
+| UNLANDED | 7 |
+| **total signed names** | **15** |
+
+#### CARRIER — 3
+
+| signed name | leanspec form | evidence |
+|---|---|---|
+| `DecidedSliceAt` | L438 DEF | Prop-def leanfinal/Uniformity/ChapI/I02.lean:98 |
+| `MenuLawAt` | L470 DEF | Prop-def leanfinal/Uniformity/ChapI/I03.lean:123 |
+| `MenuLawAtVoided` | L484 DEF | Prop-def leanfinal/Uniformity/ChapI/I03.lean:137 |
+
+#### PLACEHOLDER-BODY — 5
+
+| signed name | leanspec form | evidence |
+|---|---|---|
+| `NS7Termination` | L422 DEF | landed Prop-def body reduces to `True` after peeling binders |
+| `WindowPinningAt` | L521 DEF | landed Prop-def body reduces to `True` after peeling binders |
+| `GenhnHEAt` | L545 DEF | landed Prop-def body reduces to `True` after peeling binders |
+| `GenhnTow1At` | L564 DEF | landed Prop-def body reduces to `True` after peeling binders |
+| `TypeOfFaithful` | L1096 DEF | landed Prop-def body reduces to `True` after peeling binders |
+
+#### UNLANDED — 7
+
+| signed name | leanspec form | evidence |
+|---|---|---|
+| `CanonicalLadderConfig` | L626 DEF | no landed declaration of this name in leanfinal |
+| `CanonicalDeepTwistConfig` | L644 DEF | no landed declaration of this name in leanfinal |
+| `CapstoneHypotheses` | L714 STRUCTURE | no landed declaration of this name in leanfinal |
+| `drainage_of_capstoneHypotheses` | L991 THEOREM | no landed declaration of this name in leanfinal |
+| `decided_of_capstoneHypotheses` | L1002 THEOREM | no landed declaration of this name in leanfinal |
+| `uniformity_of_capstoneHypotheses` | L1014 THEOREM | no landed declaration of this name in leanfinal |
+| `totalMassOne_of_capstoneHypotheses` | L1022 THEOREM | no landed declaration of this name in leanfinal |
+
+**Chapter I verdict: ZERO signed statements PROVED.** Chapter I lands eight
+`Prop`-valued carriers and nothing else; five of the eight assert nothing. Its
+four signed theorems (I.15–I.18, the assembly toward `UniformityStatement`) and
+its capstone hypothesis block `CapstoneHypotheses` are UNLANDED.
+
+Two further facts that the bucket table alone does not carry:
+
+* `CanonicalLadderConfig` (I.10a) is signed with the body `True`, and
+  `CanonicalDeepTwistConfig` (I.10b) is signed as
+  `CanonicalLadderConfig … ∧ True`. Both are currently UNLANDED, so they are not
+  counted in PLACEHOLDER-BODY — but **they are placeholders in the signature**,
+  and landing them verbatim would add two more content-free declarations.
+* `MenuLawAtVoided` is a `Prop`-def with real content whose *name* records that
+  the shape it carries was voided.
+

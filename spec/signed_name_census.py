@@ -124,7 +124,13 @@ def decls(path):
         if kind == "example":
             name = None
         else:
-            nm = NAME_RE.search(rest)
+            # The declared name lives in the HEADER: the text before the first
+            # depth-0 `:` or the first binder bracket.  Requiring this kills the
+            # anonymous-instance artifact (`instance : DecidableEq F4 := ...`
+            # otherwise reports a signed name `DecidableEq`) and it kills
+            # `def f : Foo := ...` reporting `Foo`.
+            hdr = re.split(r"[:\(\{\[⦃⟦]", rest, maxsplit=1)[0]
+            nm = NAME_RE.search(hdr)
             name = nm.group(0) if nm else None
         # node label: nearest `**X.NN**` in the ORIGINAL text above this decl
         label = None
@@ -333,3 +339,75 @@ def has_True_conjunct(prop):
     if len(cj) < 2:
         return False
     return any(strip_quantifiers(c).strip("() ") in TRIVIAL_TERMS for c in cj)
+
+
+# ---------------------------------------------------------------------------
+# signed-vs-landed drift (the CONDITIONAL detector)
+# ---------------------------------------------------------------------------
+
+def binder_groups(sig):
+    """Top-level binder groups of a signature, as (bracket, text) pairs."""
+    out = []
+    depth = 0
+    i = 0
+    cur = None
+    while i < len(sig):
+        c = sig[i]
+        if c in "({[⦃":
+            if depth == 0:
+                cur = [c, ""]
+            else:
+                cur[1] += c
+            depth += 1
+        elif c in ")}]⦄":
+            depth -= 1
+            if depth == 0:
+                out.append((cur[0], cur[1]))
+                cur = None
+            else:
+                cur[1] += c
+        elif depth == 0 and c == ":":
+            break
+        else:
+            if depth:
+                cur[1] += c
+        i += 1
+    return out
+
+
+def hyp_binders(sig):
+    """Explicit hypothesis binders, identified by the repo's `h…` naming."""
+    out = []
+    for br, txt in binder_groups(sig):
+        if br not in "({":
+            continue
+        head = txt.split(":")[0].strip()
+        names = head.split()
+        if names and all(re.match(r"^h", n) for n in names):
+            out.append(norm(txt))
+    return out
+
+
+def arrow_antecedents(sig):
+    """Depth-0 `→` antecedents of the result type."""
+    rt = result_type(sig)
+    parts, depth, cur = [], 0, ""
+    i = 0
+    while i < len(rt):
+        c = rt[i]
+        if c in "([{⟨":
+            depth += 1
+        elif c in ")]}⟩":
+            depth -= 1
+        if depth == 0 and rt.startswith("→", i):
+            parts.append(norm(cur))
+            cur = ""
+            i += 1
+            continue
+        cur += c
+        i += 1
+    return parts  # antecedents only (conclusion dropped)
+
+
+def hypothesis_count(sig):
+    return len(hyp_binders(sig)) + len(arrow_antecedents(sig))
