@@ -190,3 +190,33 @@ def IsXFree {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
   ∀ t, t < T.f₂ → T.ψ₂.coeff t ≠ 0 →
     (F.stageLiftO H₀ hpin ((T.f₂ - t) * T.u₂)
       (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp T t))).natDegree = 0
+
+/-! ## The audit's pattern-4 closure, and the `f₁ = 1` companion
+
+`isXFree_iff_forall` is what makes the `ψ₂.coeff t ≠ 0` guard of `IsXFree` harmless: on the
+vanishing stratum the lift ARGUMENT is `−0·η^{W(t)} = 0`, and C.47's `stageLiftO_zero_iff`
+(with C.14a's `resLift_zero`) says the zero lift IS zero — whose `X`-degree is `0` anyway.  So the
+guarded and unguarded readings coincide, and no content escapes the implication.  This is the
+proved form the exactness theorem below consumes. -/
+
+/-- **C.73 companion (the A-C.7 pattern-4 closure)** — the guard in `IsXFree` is vacuous:
+x-freeness is EQUIVALENT to the unguarded "every lift slot below `f₂` has `X`-degree `0`", because
+the zero lift is zero.  Consumed by `shadow_exact_of_xfree`, which needs the bound at every slot,
+including the vanishing ones. -/
+theorem isXFree_iff_forall {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) :
+    IsXFree T
+      ↔ ∀ t, t < T.f₂ →
+          (F.stageLiftO H₀ hpin ((T.f₂ - t) * T.u₂)
+            (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp T t))).natDegree = 0 := by
+  constructor
+  · intro hx t ht
+    by_cases hc : T.ψ₂.coeff t = 0
+    · have h0 : (- T.ψ₂.coeff t * F.stageLetter H₀ hpin ^ (wrapExp T t))
+          = (0 : F.stageField H₀ hpin) := by rw [hc, neg_zero, zero_mul]
+      rw [h0, (stageLiftO_zero_iff F hπ H₀ hpin _).2 resLift_zero, Polynomial.natDegree_zero]
+    · exact hx t ht hc
+  · intro h t ht _
+    exact h t ht
+
+end Uniformity.Density.Tower
