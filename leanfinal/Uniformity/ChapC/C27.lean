@@ -142,6 +142,35 @@ def Slot2ExactWithoutHC0Statement : Prop :=
     ∃ v : ℕ, dv2Hgt L C = (v : ℕ∞) ∧
       (F.e₁ * L.ℓ) * (addVal O (Algebra.norm O (AdjoinRoot.mk g C))).toNat = g.natDegree * v
 
+/-! ## The frame's own two elementary reads
+
+`keyDeg_pos` and the level-1 purity value law.  The purity value law is the mechanism the
+refutation isolates: it is the CONTENT of the `C := X` read, and it is a theorem of `IsPure`,
+not of `HasLabel`. -/
+
+theorem keyDeg_pos (F : KeyFrame O π) : 0 < F.key.natDegree := by
+  rw [F.hdeg]; exact Nat.mul_pos F.he₁ F.hf₁
+
+theorem key_degree_pos (F : KeyFrame O π) : 0 < F.key.degree :=
+  Polynomial.natDegree_pos_iff_degree_pos.1 (keyDeg_pos F)
+
+/-- **the level-1 purity value law.**  If the `x`-polygon of a monic `g` is the single side of
+slope `−h/e₁` (`IsPure Polynomial.X g h e₁`, B.34), then
+`e₁ · v(g.coeff 0) = h · deg g` on the nose.
+
+This is what the signed C.27 asserts at `C := X`, and `HasLabel` does not supply it: at
+`(s2Frame, L₀, g₀)` the left side is `2·2 = 4` and the right side is `1·3 = 3`
+(`slot2_exact_false`). -/
+theorem isPure_addVal_coeff_zero {g : Polynomial O} (hg : g.Monic) {h e : ℕ}
+    (hx : IsPure Polynomial.X g h e) :
+    e • addVal O (g.coeff 0) = ((h * g.natDegree : ℕ) : ℕ∞) := by
+  obtain ⟨h0, hn⟩ := hx
+  -- the right endpoint of the `x`-polygon: `deg g / deg X = deg g`
+  rw [Polynomial.natDegree_X, Nat.div_one] at hn
+  rw [OnSide, npHgt_X, Nat.mul_zero, Nat.cast_zero, add_zero] at h0
+  rw [OnSide, npHgt_X, hg.coeff_natDegree, AddValuation.map_one, smul_zero, zero_add] at hn
+  rw [h0, ← hn]
+
 end Uniformity.Density.Tower
 
 /-! ## The refutations, absolute over `ℤ_[2]` -/
