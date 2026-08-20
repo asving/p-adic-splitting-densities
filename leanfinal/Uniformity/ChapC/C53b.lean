@@ -435,6 +435,112 @@ theorem digitVec_polyVec {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
   rw [dev_slotPoly T hπ μ₂ c hj, dev_slotDig0 T (vext c) _ hb, coeff_slotDig1 T (vext c) _ _ ha,
     hrec, vext_apply]
 
+/-! ### Dictionary, direction A: `polyVec ∘ digitVec = id` -/
+
+private theorem natDegree_dev_lt' {φ : Polynomial O} (hφ : φ.Monic) (hd : 0 < φ.natDegree)
+    (f : Polynomial O) (j : ℕ) : (dev φ f j).natDegree < φ.natDegree := by
+  by_cases h : dev φ f j = 0
+  · rw [h, Polynomial.natDegree_zero]; exact hd
+  · exact natDegree_lt_natDegree h (degree_dev_lt hφ hd f j)
+
+private theorem slotDig1_digitVec {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) {μ₂ : ℕ} (a : Fin (μ₂ * T.D₂) → O)
+    {j b : ℕ} (hj : j < μ₂) (hb : b < T.e₂ * T.f₂) :
+    slotDig1 T (vext (digitVec T μ₂ a)) j b
+      = dev F.key (dev (composedKey T) (monicPoly a) j) b := by
+  have hD' : 0 < F.e₁ * F.f₁ := Nat.mul_pos F.he₁ F.hf₁
+  have hD₂ : 0 < T.D₂ := hD₂pos T
+  have hkeypos : 0 < F.key.natDegree := by rw [F.hdeg]; exact hD'
+  have hdeglt : (dev F.key (dev (composedKey T) (monicPoly a) j) b).natDegree < F.e₁ * F.f₁ := by
+    have := natDegree_dev_lt' F.hmonic hkeypos (dev (composedKey T) (monicPoly a) j) b
+    rw [F.hdeg] at this
+    exact this
+  rw [Polynomial.as_sum_range_C_mul_X_pow' _ hdeglt, slotDig1]
+  refine Finset.sum_congr rfl fun a' ha' => ?_
+  have ha'' : a' < F.e₁ * F.f₁ := Finset.mem_range.1 ha'
+  -- the inner index `b·D′ + a'` is below `D₂`, so it is the `% D₂` residue
+  have hr : b * (F.e₁ * F.f₁) + a' < T.D₂ := by
+    have hDD : T.D₂ = T.e₂ * T.f₂ * (F.e₁ * F.f₁) := by rw [TowerDatum.D₂]; ring
+    have : b * (F.e₁ * F.f₁) + (F.e₁ * F.f₁) ≤ T.e₂ * T.f₂ * (F.e₁ * F.f₁) := by
+      have : (b + 1) * (F.e₁ * F.f₁) ≤ T.e₂ * T.f₂ * (F.e₁ * F.f₁) :=
+        Nat.mul_le_mul_right _ (by omega)
+      calc b * (F.e₁ * F.f₁) + (F.e₁ * F.f₁) = (b + 1) * (F.e₁ * F.f₁) := by ring
+        _ ≤ T.e₂ * T.f₂ * (F.e₁ * F.f₁) := this
+    omega
+  have hidx : j * T.D₂ + b * (F.e₁ * F.f₁) + a' < μ₂ * T.D₂ := by
+    have : (j + 1) * T.D₂ ≤ μ₂ * T.D₂ := Nat.mul_le_mul_right _ (by omega)
+    have hexp : (j + 1) * T.D₂ = j * T.D₂ + T.D₂ := by ring
+    omega
+  have hassoc : j * T.D₂ + b * (F.e₁ * F.f₁) + a' = j * T.D₂ + (b * (F.e₁ * F.f₁) + a') := by ring
+  have hdiv : (j * T.D₂ + (b * (F.e₁ * F.f₁) + a')) / T.D₂ = j := by
+    rw [Nat.mul_comm j T.D₂, Nat.mul_add_div hD₂, Nat.div_eq_of_lt hr, Nat.add_zero]
+  have hmod : (j * T.D₂ + (b * (F.e₁ * F.f₁) + a')) % T.D₂ = b * (F.e₁ * F.f₁) + a' := by
+    rw [Nat.mul_comm j T.D₂, Nat.mul_add_mod, Nat.mod_eq_of_lt hr]
+  have hdiv2 : (b * (F.e₁ * F.f₁) + a') / (F.e₁ * F.f₁) = b := by
+    rw [Nat.mul_comm b (F.e₁ * F.f₁), Nat.mul_add_div hD', Nat.div_eq_of_lt ha'', Nat.add_zero]
+  have hmod2 : (b * (F.e₁ * F.f₁) + a') % (F.e₁ * F.f₁) = a' := by
+    rw [Nat.mul_comm b (F.e₁ * F.f₁), Nat.mul_add_mod, Nat.mod_eq_of_lt ha'']
+  rw [vext_of_lt _ hidx]
+  congr 2
+  simp only [digitVec, hassoc, hdiv, hmod, hdiv2, hmod2]
+
+private theorem slotDig0_digitVec {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) {μ₂ : ℕ} (a : Fin (μ₂ * T.D₂) → O)
+    {j : ℕ} (hj : j < μ₂) :
+    slotDig0 T (vext (digitVec T μ₂ a)) j = dev (composedKey T) (monicPoly a) j := by
+  have hD' : 0 < F.e₁ * F.f₁ := Nat.mul_pos F.he₁ F.hf₁
+  have hkeypos : 0 < F.key.natDegree := by rw [F.hdeg]; exact hD'
+  have hΦpos : 0 < (composedKey T).natDegree := by
+    rw [composedKey_natDegree_D₂ T hπ]; exact hD₂pos T
+  have hk : (dev (composedKey T) (monicPoly a) j).natDegree < (T.e₂ * T.f₂) * F.key.natDegree := by
+    have h := natDegree_dev_lt' (composedKey_monic T) hΦpos (monicPoly a) j
+    rw [composedKey_natDegree_D₂ T hπ] at h
+    have hDD : T.D₂ = (T.e₂ * T.f₂) * F.key.natDegree := by rw [TowerDatum.D₂, F.hdeg]; ring
+    omega
+  rw [slotDig0]
+  rw [Finset.sum_congr rfl fun b hb =>
+    congrArg (fun P => P * F.key ^ b) (slotDig1_digitVec T a hj (Finset.mem_range.1 hb))]
+  exact sum_dev_eq F.hmonic hkeypos (dev (composedKey T) (monicPoly a) j) hk
+
+/-- **THE DICTIONARY, direction A.**  Reconstructing from the two-key digits of `monicPoly a`
+returns `monicPoly a` on the nose — the exact identity in `O[X]`
+
+  `monicPoly a = Φ₂^{μ₂} + ∑_{i < μ₂D₂} 𝔠ᵢ·X^{a'(i)}Φ′^{b(i)}Φ₂^{j(i)}`,   `𝔠 = digitVec T μ₂ a`,
+
+with `deg (X^{a'}Φ′^{b}Φ₂^{j}) = i` exactly (`natDegree_slotMon`). -/
+theorem slotPoly_digitVec {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) {μ₂ : ℕ} (a : Fin (μ₂ * T.D₂) → O) :
+    slotPoly T μ₂ (digitVec T μ₂ a) = monicPoly a := by
+  have hD₂ : 0 < T.D₂ := hD₂pos T
+  have hΦpos : 0 < (composedKey T).natDegree := by
+    rw [composedKey_natDegree_D₂ T hπ]; exact hD₂
+  have hfdeg : (monicPoly a).natDegree = μ₂ * (composedKey T).natDegree := by
+    rw [monicPoly_natDegree, composedKey_natDegree_D₂ T hπ]
+  have htop : dev (composedKey T) (monicPoly a) μ₂ = 1 :=
+    dev_top (composedKey_monic T) hΦpos (monicPoly_monic a) hfdeg
+  have hk : (monicPoly a).natDegree < (μ₂ + 1) * (composedKey T).natDegree := by
+    rw [hfdeg]
+    have : μ₂ * (composedKey T).natDegree < (μ₂ + 1) * (composedKey T).natDegree := by
+      have hexp : (μ₂ + 1) * (composedKey T).natDegree
+          = μ₂ * (composedKey T).natDegree + (composedKey T).natDegree := by ring
+      omega
+    exact this
+  have hsum := sum_dev_eq (composedKey_monic T) hΦpos (monicPoly a) hk
+  rw [Finset.sum_range_succ, htop, one_mul] at hsum
+  rw [slotPoly_grouped,
+    Finset.sum_congr rfl fun j hj =>
+      congrArg (fun P => P * (composedKey T) ^ j)
+        (slotDig0_digitVec T hπ a (Finset.mem_range.1 hj)),
+    add_comm]
+  exact hsum
+
+/-- **THE DICTIONARY, direction A, in coordinates**: `polyVec ∘ digitVec = id`. -/
+theorem polyVec_digitVec {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) {μ₂ : ℕ} (a : Fin (μ₂ * T.D₂) → O) :
+    polyVec T μ₂ (digitVec T μ₂ a) = a := by
+  funext i
+  rw [polyVec, slotPoly_digitVec T hπ a, monicPoly_coeff_val]
+
 end Uniformity.Density.Tower
 
 /-! ## Axiom footprint -/
@@ -448,5 +554,7 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.polyVec
 #print axioms Uniformity.Density.Tower.composedKey_natDegree_D₂
 #print axioms Uniformity.Density.Tower.digitVec_polyVec
+#print axioms Uniformity.Density.Tower.slotPoly_digitVec
+#print axioms Uniformity.Density.Tower.polyVec_digitVec
 
 end AxCheck
