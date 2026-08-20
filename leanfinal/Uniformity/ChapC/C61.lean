@@ -7,7 +7,9 @@ import Uniformity.ChapC.C10
 import Uniformity.ChapC.C35
 import Uniformity.ChapC.C35b
 import Uniformity.ChapC.C60
+import Uniformity.ChapB.B54
 import Uniformity.ChapB.B56
+import Uniformity.ChapB.B57
 import Uniformity.Density.TypePositivity
 
 /-!
@@ -19,10 +21,14 @@ record). **ENV-C3.**
 
 ## Status in one line
 
-**BLOCKED — the signed `tier1_typeOf` is NOT declared in this file.** What lands is the
-COMPLETE REDUCTION of the signed statement to a single missing divisibility leg (`tier1_typeOf_of_ramLeg`,
-byte-identical to the signed statement except for one extra hypothesis) plus a machine-checked
-**sharpness certificate** showing that leg cannot be dropped. See "The block" below.
+**BLOCKED at general `L.ℓ`; PROVED UNCONDITIONALLY at `L.ℓ = 1`.** The signed `tier1_typeOf` is
+NOT declared in this file. What lands: (a) the COMPLETE REDUCTION of the signed statement to a
+single missing divisibility leg (`tier1_typeOf_of_ramLeg`, byte-identical to the signed statement
+except for one extra hypothesis); (b) **`tier1_typeOf_of_ell_one` — the signed conclusion, from the
+signed hypotheses and no others, on `L.ℓ = 1`**; (c) **`tier1_natDegree_eq` — the degree pin
+`deg g = keyDeg₂` at EVERY `L.ℓ`, from the signed hypotheses alone**; (d) a machine-checked
+sharpness certificate showing the missing leg cannot simply be dropped. See "The block" below for
+what is left: exactly the `L.ℓ`-half of the `e`-leg.
 
 ## The signed statement (NOT declared in this file)
 
@@ -101,10 +107,10 @@ always satisfied) / load-bearing and SHARP (counterexample given).
 | `{H₀ hpin}` | **restricts-nothing given `F`** (`hpin` pins `H₀` to the frame's own side height, and `H₀` is then unique by `Nat.cast` injectivity). Witnessed by `s2Frame_pin` at `H₀ = 1`. |
 | `(L : LevelDatum F H₀ hpin)` | **load-bearing, inhabited.** Witnessed by the landed `L₀` (`C35b.lean:328`, `(u,ℓ) = (3,1)`, `r := ρ`). Its `hκ : ℓ·(e₁f₁)·h < u` is a genuine restriction (it is the above-floor fence); `hrdeg : 0 < r.natDegree` is load-bearing in the proof below (it is what cancels the multiplicity `s`). |
 | `(hπ : Irreducible π)` | **load-bearing but not conclusion-visible**: it is the uniformizer hypothesis every `dvResPoly`-degree read (C.26) consumes. Witnessed by `h2_padic : Irreducible (2 : ℤ_[2])`. Not droppable: `natDegree_dvResPoly` requires it. |
-| `[IsAdicComplete …]`, `[Finite (ResidueField O)]` | **restricts-nothing at the conclusion, and NOT consumed by the reduction below** — the `(e,f)` engine (`inertiaDegOf`/`ramIndexOf`) is DVR-level (`Density/TypeOf.lean`). They are the environment in which the missing leg (C.59) and the `typeOf`-faithfulness identification live. Instances exist at `ℤ_[p]`. Recorded, not silently dropped: the reduction theorem below **carries them anyway**, unused, for signature fidelity. |
+| `[IsAdicComplete …]`, `[Finite (ResidueField O)]` | **restricts-nothing at the conclusion, but LOAD-BEARING in the proof.** They are not consumed by `tier1_typeOf_of_ramLeg` (the `(e,f)` engine `inertiaDegOf`/`ramIndexOf` is DVR-level, `Density/TypeOf.lean`) — that theorem carries them unused, for signature fidelity. They ARE consumed by the `e₁`-leg (§3b): B.57's `isPure_of_monic_factor` and B.54's `inertiaDegOf_dvd_key_mul_resDeg` both require them (this is the same ENV-C artifact B.52/B.54/B.55/B.58 record). Instances exist at `ℤ_[p]`. |
 | `{g : Polynomial O}`, `hlab : HasLabel L g` | **load-bearing and its locus IS witnessed by a term**: `hasLabel_g₀ : HasLabel (L₀ …) (g₀ …)` (`C35b.lean:347`), `g₀ = x³ − 2x + 4`. Not vacuous. |
 | `hm1` (the exact-residual ∀) | **load-bearing, and NOT vacuously satisfiable-by-emptiness.** Its ∀ ranges over `hne`, `M₀`, `hp`; `hne : Finset.Nonempty` is a `Prop` (proof-irrelevant), and `hp` pins `M₀` uniquely because `dvHgt F g (dvSideMin …) ≠ ⊤` on a nonempty side (`DvOnSide`'s finiteness conjunct). So `hm1` is exactly ONE equation, not an empty family — the A-C.7 `C.113 hne` pattern does NOT recur. Satisfied at `g₀` (`hm1_g₀` below, from `hasLabel_g₀`'s own `rfl`). |
-| `hx : IsPure Polynomial.X g F.h F.e₁` | **load-bearing and SHARP — counterexample machine-checked below.** At `(s2Frame, L₀, g₀)` the hypotheses `hlab`, `hm1`, `hbox` ALL hold and the conclusion is FALSE (`tier1_typeOf_without_hx_false`): `g₀`'s x-polygon has `0 ∉ sideSet X g₀ 1 2` (`suppVal = 3`, attained only at `j ∈ {1,3}`), so `hx` fails, and it is the only guard left standing. Dropping `hx` (equivalently: dropping its downstream C.59 content) turns C.61 into a false statement. |
+| `hx : IsPure Polynomial.X g F.h F.e₁` | **load-bearing and SHARP — counterexample machine-checked below.** At `(s2Frame, L₀, g₀)` the hypotheses `hlab`, `hm1`, `hbox` ALL hold and the conclusion is FALSE (`tier1_typeOf_without_hx_false`): `g₀`'s x-polygon has `0 ∉ sideSet X g₀ 1 2` (`suppVal = 3`, attained only at `j ∈ {1,3}`), so `hx` fails, and it is the only guard left standing. Dropping `hx` (equivalently: dropping its downstream C.59 content) turns C.61 into a false statement. It is also *consumed*, not merely carried: §3b extracts `F.e₁ ∣ ramIndexOf g'` from it. |
 | `hbox : ∀ g' ∈ monicFactors g, CBox1Side L g'` | **load-bearing, with a named perimeter on which it restricts nothing**: `F.f₁ * L.r.natDegree = 1` makes it `one_dvd` (C.60 (i), `cbox1_of_deg_one`) — that is exactly the regime of the `g₀` witness (`f₁ = d_r = 1`), which is why `g₀` can satisfy it while failing `hx`. Above the perimeter it is `C-BOX-1`, the fenced `B-BOX-1` analogue (C.60), and it is SHARP: with `f₁·d_r ≥ 2` a factor of residue degree coprime to `f₁·d_r` falsifies it. |
 
 **Verdict: no vacuous binder; no fifth instance of the A-C.7 pattern.** Two binders are
@@ -354,6 +360,150 @@ theorem tier1_typeOf_of_ramLeg {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F
       (fun p hp => efPair_pos_of_mem hgm hp) hA hB
   exact ⟨htype, irreducible_of_singleton_typeOf hgm htype⟩
 
+/-! ## 3b. The `e₁`-half of the `e`-leg, from `hx` alone (level-1 machinery, no C.59)
+
+C.59's conclusion is `(F.e₁ * L.ℓ) ∣ ramIndexOf g'`. Its `F.e₁` half needs nothing from level 2:
+it is CHAP-B's own mechanism at the x-key, and every ingredient is landed. This is what makes the
+`L.ℓ = 1` instance of C.61 unconditional (§3c). -/
+
+private theorem isKey_X : IsKey (Polynomial.X : Polynomial O) where
+  monic := Polynomial.monic_X
+  pos := by simp
+  irred := by rw [Polynomial.map_X]; exact Polynomial.irreducible_X
+
+/-- **The `e₁`-leg of the sandwich, from `hx` alone.** For every monic irreducible factor `g'` of
+an x-pure `g`, `F.e₁ ∣ ramIndexOf g'`.
+
+Route (all landed): B.18's `sideSet_nonempty` at the x-key; B.57's `isPure_of_monic_factor` for the
+split `g = g' * rest`, which returns both `IsPure X g' F.h F.e₁` **and** the residue clause
+`g'.map residue = X^(F.e₁ * sideDeg)`; B.35b's `sideDeg_of_pure` for `F.e₁ * sideDeg = deg g'`
+(hence positivity of the side degree); B.54's `inertiaDegOf_dvd_key_mul_resDeg`, which at `φ = X`
+reads `inertiaDegOf g' ∣ sideDeg`; and `ramIndexOf_mul_inertiaDegOf`. Writing `f' := inertiaDegOf g'`
+and `sideDeg = f' * t`, `F.e₁ * f' * t = deg g' = ramIndexOf g' * f'` cancels `f' > 0`.
+
+The degenerate frame `F.h = 0` is handled first: `F.hcop : Nat.Coprime F.h F.e₁` then forces
+`F.e₁ = 1`, so the conclusion is `one_dvd`. (That case is excluded from the main branch because
+B.54 and B.57 both require `0 < u`.) -/
+theorem e1_dvd_ramIndexOf_of_mem_monicFactors {F : KeyFrame O π} (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
+    {g : Polynomial O} (hg : g.Monic) (hx : IsPure Polynomial.X g F.h F.e₁)
+    {g' : Polynomial O} (hg' : g' ∈ monicFactors g) :
+    F.e₁ ∣ ramIndexOf g' := by
+  classical
+  rcases Nat.eq_zero_or_pos F.h with hh0 | hh
+  · have he1 : F.e₁ = 1 := by
+      have hc := F.hcop
+      rw [hh0, Nat.coprime_zero_left] at hc
+      exact hc
+    rw [he1]
+    exact one_dvd _
+  · have hspec := monicFactors_spec hg
+    obtain ⟨hg'm, hg'irr⟩ := hspec.1 g' hg'
+    have hg'pos : 0 < g'.natDegree := natDegree_pos_of_mem_monicFactors hg hg'
+    obtain ⟨R, hR⟩ := Multiset.exists_cons_of_mem hg'
+    have hprod : g = g' * R.prod := by rw [← hspec.2, hR, Multiset.prod_cons]
+    have hRm : R.prod.Monic := by
+      have h := Polynomial.monic_multiset_prod_of_monic R id
+        (fun q hq => (hspec.1 q (by rw [hR]; exact Multiset.mem_cons_of_mem hq)).1)
+      rwa [Multiset.map_id] at h
+    have hneg : (sideSet (Polynomial.X : Polynomial O) g F.h F.e₁).Nonempty :=
+      sideSet_nonempty Polynomial.monic_X (by simp) hg (μ := g.natDegree) (by simp) F.h F.e₁
+    obtain ⟨hne₁, hne₂, hp₁, hp₂, hsum, hres₁⟩ :=
+      isPure_of_monic_factor hπ isKey_X hh F.he₁ F.hcop hg hg'm hRm (by simp) hprod hx hneg
+    have hdeq : F.e₁ * sideDeg (Polynomial.X : Polynomial O) g' F.h F.e₁ hne₁ = g'.natDegree :=
+      sideDeg_of_pure Polynomial.monic_X (by simp) hg'm (by simp) F.he₁ F.hcop hp₁ hne₁
+    have hdd : 0 < sideDeg (Polynomial.X : Polynomial O) g' F.h F.e₁ hne₁ := by
+      rcases Nat.eq_zero_or_pos (sideDeg (Polynomial.X : Polynomial O) g' F.h F.e₁ hne₁) with
+        h0 | hpos
+      · rw [h0, Nat.mul_zero] at hdeq; omega
+      · exact hpos
+    have hB54 := inertiaDegOf_dvd_key_mul_resDeg hπ isKey_X hh F.he₁ F.hcop hg'm hg'pos hp₁
+      hne₁ hdd hres₁
+    rw [Polynomial.natDegree_X, one_mul] at hB54
+    obtain ⟨t, ht⟩ := hB54
+    have hfpos : 0 < inertiaDegOf g' := inertiaDegOf_pos (normValues_nonempty hg'm hg'pos)
+    have hmul : ramIndexOf g' * inertiaDegOf g' = g'.natDegree :=
+      ramIndexOf_mul_inertiaDegOf hg'm hg'pos
+    refine ⟨t, ?_⟩
+    have hkey : ramIndexOf g' * inertiaDegOf g' = (F.e₁ * t) * inertiaDegOf g' := by
+      rw [hmul, ← hdeq, ht]; ring
+    exact Nat.eq_of_mul_eq_mul_right hfpos hkey
+
+/-! ## 3c. `L.ℓ = 1`: C.61 UNCONDITIONALLY, and the degree pin at every `L.ℓ`
+
+At `L.ℓ = 1` the missing `e`-leg IS the `e₁`-leg, so §3b closes it and the sandwich needs no
+hypothesis beyond the signed ones. The degree pin needs even less — only the `e₁`-half. -/
+
+set_option linter.unusedVariables false in
+/-- **the degree pin, at EVERY `L.ℓ`, from the signed hypotheses alone.**
+`deg g = (F.e₁ * L.ℓ) * (F.f₁ * L.r.natDegree)` — i.e. `deg g = L.keyDeg₂` (C.10's regrouping).
+The blueprint reads this off "C.26's degree law + C.33's degree clause"; that route is dead
+(`hasLabel_natDegree_dvd` refuted, `C35B_D13_REFUTED_2026-08-20.md`). What works: `hx` gives
+`F.e₁ ∣ e'` (§3b) and `hbox` gives `F.f₁ * d_r ∣ f'` on every member, so
+`F.e₁ * (F.f₁ * d_r) ∣ Σ e'f' = deg g` (`typeOf_degree`); dividing the resulting
+`deg g = F.e₁ * (F.f₁ * d_r) * s` by `D′ = F.e₁ * F.f₁` and comparing with the landed floor
+identity `deg g / D′ = L.ℓ * d_r` (`natDegree_div_eq_of_isDvPure`) gives `s = L.ℓ`. -/
+theorem tier1_natDegree_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (ResidueField O)]
+    {g : Polynomial O} (hlab : HasLabel L g)
+    (hm1 : ∀ (hne : (dvSideSet F g L.u L.ℓ).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞)),
+      dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp = L.r)
+    (hx : IsPure Polynomial.X g F.h F.e₁)
+    (hbox : ∀ g' ∈ monicFactors g, CBox1Side L g') :
+    g.natDegree = (F.e₁ * L.ℓ) * (F.f₁ * L.r.natDegree) := by
+  classical
+  obtain ⟨hgm, hgpos, hpure, hne₂, M₀, hpin₂, m, hm, hres⟩ := hlab
+  have hdegres : (dvResPoly F H₀ hpin g L.u L.ℓ hne₂ M₀ hpin₂).natDegree
+      = dvSideDeg F g L.u L.ℓ hne₂ :=
+    (natDegree_dvResPoly F hπ H₀ hpin L.hℓ L.hcop hne₂ hpin₂).1
+  rw [hm1 hne₂ M₀ hpin₂] at hdegres
+  have hfloor : g.natDegree / (F.e₁ * F.f₁) = L.ℓ * L.r.natDegree := by
+    rw [natDegree_div_eq_of_isDvPure L.hℓ L.hcop hpure hne₂, hdegres]
+  have hdvd : F.e₁ * (F.f₁ * L.r.natDegree) ∣ g.natDegree := by
+    have hsum : ((typeOf g).data.map (fun q : ℕ × ℕ => q.1 * q.2)).sum = g.natDegree :=
+      typeOf_degree hgm
+    rw [← hsum]
+    refine Multiset.dvd_sum ?_
+    intro k hk
+    rw [Multiset.mem_map] at hk
+    obtain ⟨p, hp, rfl⟩ := hk
+    rw [typeOf_data, Multiset.mem_map] at hp
+    obtain ⟨g', hg', rfl⟩ := hp
+    exact mul_dvd_mul (by simpa [efPair] using
+        e1_dvd_ramIndexOf_of_mem_monicFactors hπ hgm hx hg')
+      (by simpa [efPair, CBox1Side] using hbox g' hg')
+  obtain ⟨s, hs⟩ := hdvd
+  have hq : g.natDegree / (F.e₁ * F.f₁) = L.r.natDegree * s := by
+    rw [hs, show F.e₁ * (F.f₁ * L.r.natDegree) * s = (F.e₁ * F.f₁) * (L.r.natDegree * s) by ring,
+      Nat.mul_div_cancel_left _ (Nat.mul_pos F.he₁ F.hf₁)]
+  have hs1 : s = L.ℓ := by
+    have hmul : L.r.natDegree * s = L.r.natDegree * L.ℓ := by
+      rw [← hq, hfloor]; ring
+    exact Nat.eq_of_mul_eq_mul_left L.hrdeg hmul
+  rw [hs, hs1]; ring
+
+/-- **C.61 AT `L.ℓ = 1`, UNCONDITIONALLY.** The signed conclusion, with the signed hypotheses and
+no extra ones, on the hypothesis `L.ℓ = 1`. At `L.ℓ = 1` the missing `e`-leg
+`(F.e₁ * L.ℓ) ∣ ramIndexOf g'` IS the `e₁`-leg of §3b, so `hram` is discharged and
+`tier1_typeOf_of_ramLeg` applies. This is the regime of C.10's recorded benign degeneracy
+(`keyDeg₂ = D′·d_r`) and of the corpus's only landed `LevelDatum` value (`L₀`, `ℓ = 1`). -/
+theorem tier1_typeOf_of_ell_one {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (ResidueField O)]
+    (hℓ1 : L.ℓ = 1)
+    {g : Polynomial O} (hlab : HasLabel L g)
+    (hm1 : ∀ (hne : (dvSideSet F g L.u L.ℓ).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞)),
+      dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp = L.r)
+    (hx : IsPure Polynomial.X g F.h F.e₁)
+    (hbox : ∀ g' ∈ monicFactors g, CBox1Side L g') :
+    typeOf g = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}⟩ ∧ Irreducible g := by
+  refine tier1_typeOf_of_ramLeg L hπ hlab hm1 hx (fun g' hg' => ?_) hbox
+  rw [hℓ1, mul_one]
+  exact e1_dvd_ramIndexOf_of_mem_monicFactors hπ hlab.1 hx hg'
+
 /-! ## 4. The sharpness certificate: `hx` (equivalently, the `e`-leg) is NOT droppable
 
 The audit's mandate is to try to refute one's own guards. Here it succeeds against the guard-set
@@ -443,6 +593,9 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.Tier1TypeOfStatement
 #print axioms Uniformity.Density.Tower.irreducible_of_singleton_typeOf
 #print axioms Uniformity.Density.Tower.tier1_typeOf_of_ramLeg
+#print axioms Uniformity.Density.Tower.e1_dvd_ramIndexOf_of_mem_monicFactors
+#print axioms Uniformity.Density.Tower.tier1_natDegree_eq
+#print axioms Uniformity.Density.Tower.tier1_typeOf_of_ell_one
 #print axioms Uniformity.Density.Tower.Tier1TypeOfWithoutHxStatement
 #print axioms Uniformity.Density.Tower.C61Sharp.hm1_g₀
 #print axioms Uniformity.Density.Tower.C61Sharp.hbox_g₀
