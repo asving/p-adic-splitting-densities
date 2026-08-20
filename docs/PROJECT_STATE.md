@@ -6503,3 +6503,136 @@ NEXT MILESTONES: chapter-C §10 chain (unblocks C.106); the
 tower-instantiation freeze typing chapter I's I.10a/I.10b
 sockets (CRITICAL PATH — no fleet agent on I.10 until then);
 H.123b consumes A-H.9's (0.3) once H.124-H.127 land.
+
+**2026-08-20 DATED APPEND #102 — WAVE-1 OF THE RESTART CLOSED: five
+chapter-C nodes disposed (2 landed whole, 3 honest partials), the
+ChapC ROLL-UP DEFECT found and repaired (9 modules were outside
+`lake build`), and the frontier script's multi-char-suffix bug fixed
+(landed count was UNDERSTATED by 8).**
+
+(0) RESTART RECONCILIATION. The three agents #101 listed as in flight
+(C.114; C.35+C.53; C.72+C.73+C.87) all died at `Not logged in ·
+Please run /login` roughly 70 transcript lines in, having made only
+read-only calls — ZERO Writes, ZERO Edits, no commits. Nothing was
+recoverable and nothing was lost; their transcripts survive under
+`~/.claude/projects/.../c94e989f-*/subagents/`. The one useful
+artifact mined from them was the previous orchestrator's house brief,
+which was reused verbatim for the relaunch.
+
+(1) WAVE-1 DISPOSITIONS (all Lean-core, zero `sorry`, zero new axioms,
+no cite inherited outside the six-name allowlist):
+  * C.87 LANDED WHOLE — `towerCarry_interior_strict` +
+    `towerCarry_top_exact`, 6 decls, plus `ehat_pos/_dvd/_succ/_div_succ`
+    making the signed ℕ-divisions honest. Self-refutation on record:
+    relaxing `j+1 < i` to `j+1 ≤ i` REFUTES clause (i), so the guard is
+    load-bearing. NB it first landed with a PARSE ERROR (a `/-- -/` doc
+    comment followed by `set_option ... in`); fixed at 65ec1522.
+  * C.73 LANDED WHOLE — all three signed declarations, 19 decls.
+    X-freeness deliberately isolated in ONE lemma
+    (`keyY_coeff_natDegree_le`) so the dependency is auditable.
+  * C.35 PARTIAL — 3 signed defs (diff-verified byte-identical, spec
+    1543-1565) + 10 theorems; signed `blockFactor_spec` BLOCKED,
+    category (iii), the dv-level Hensel frontier. The A-C.8 cite route
+    WAS walked to its end before being called dead.
+  * C.53 PARTIAL — `towerFreeCount` (byte-identical, spec 2011-2014) +
+    `card_budgetBox`, THE WHOLE COUNTING HALF, valid at every finite
+    window; `towerLocus_fibration` BLOCKED with 3 verbatim goals.
+    **Leg 2 is category (ii): reachable, lemma unwritten, NOT gated on
+    the Hensel engine — the actionable next increment in §6.**
+  * C.72 BLOCKED — Prop CARRIERS + the x-free stratum only; NEITHER
+    signed statement proved. Block is MISSING SUPPLY, not proof-search
+    failure (needs the two-variable weight function + monotonicity, the
+    `+δ` x-carry exactness, recarry bookkeeping, and GENHN-2′'s
+    weight-to-height conversion, which is an ANNEX not a Lean object).
+    ORCHESTRATOR ERROR ON RECORD: commit 538239b2's subject said
+    "LANDED"; corrected at d9864b0a. C.72 is NOT a discharged node.
+  * C.114 CASE (c), REDUCED — 14 A-C.3 carriers landed outright;
+    `ht_branch`/`ht_global` NEITHER proved nor declared, landed instead
+    at the degenerate strata at the full byte-frozen binder list plus
+    ONE ADDED scope equation (`hone`, `hnil`). No signed hypothesis
+    trimmed; the general statements are simply OPEN. Guard audit:
+    `hkappa`/`hkappa0` machine-checked SHARP, `hR` (the new D5 clause)
+    proved SATISFIABLE by construction (`exists_isRepSystem`), `hvis`
+    sharp, `hfence`/`hroot` established NOT sharp (findings, not gaps),
+    and `hcons`/`hcompl`/`hwf`/`hnodewf`/`hdistinct` sharpness NOT
+    established in Lean — numeric teeth only, needing a decidable-
+    instance layer for `htCell` membership over a concrete `O`.
+
+(2) THE ROLL-UP DEFECT — RECURRENCE, now cured. `Uniformity/ChapC.lean`
+was missing NINE landed modules (C33, C33Cite, C34 from 2026-08-18,
+plus all of wave-1). Since `lake build` walks only the import graph
+from `Uniformity.lean`, **no full build had ever covered the signed
+A-C.8 cite pair**, and C.87's parse error was invisible to `lake build`
+for the same reason. This is the third recorded instance of the same
+failure (cf. 78b205be "gains 7 dropped modules ... never wired";
+67ee37fd's six-roll-up regeneration curing stub-gate finding I-D2).
+Cured at 064a2b35 + 86ea8adf: roll-up now 83 imports,
+`lake build Uniformity.ChapC` = 8704 jobs, EXIT=0, 0 errors, 0 sorry.
+**STANDING RULE for fleet charges: landing a node and wiring it are
+separate steps and agents die between them — the ORCHESTRATOR wires and
+verifies, never the unit.**
+
+(3) FRONTIER SCRIPT BUG (measurement, not math). The ad-hoc frontier
+script mapped `C14a.lean` -> node `C.14`, dropping alphabetic suffixes,
+so C.14a/C.56a/C.109a/B.42a/G.30a read as OPEN though landed and wired.
+Same class as the recorded `C109iii/iv/v` multi-char-suffix defect.
+Corrected counts at this append: **612 nodes, 526 LANDED, 86 OPEN, 32
+frontier-ready.** OPEN/chapter: B 3, C 54, D 1, E 2, F 0, G 1, H 1,
+I 24. Chapter H is ONE node from complete (H.122); chapter I is 0/24.
+
+(4) A NEW AUDIT PATTERN PROPOSED — **D-CARRY**, distinct from A-C.7.
+All four A-C.7 registry entries are HYPOTHESIS degeneracies (a guard
+that fails to bind); C.35's clause-3 defect is instead a
+CONCLUSION-vs-BODY mismatch (`blockFactor`'s body does not determine
+signed clause 3, because `IsDvPure` names the top abscissa by FLOOR
+division, so purity constrains `⌊deg g / D′⌋` and says nothing about
+`deg g mod D′`). Nothing landed is weakened — the landed lemmas take
+the mismatch as explicit riders, in the open direction. What is
+defective is the BLUEPRINT's D13 prose ("agree through C.26's degree
+law"): C.26 + C.08 + C.29 give only the DIVIDED identity. Honesty
+fence: the ENTAILMENT FAILURE is machine-checked; NO realizable
+counterexample was constructed. Decidable one-unit question that
+settles it: `hasLabel_natDegree_dvd`. Proposed standing check — any
+signature whose body is `Classical.choice` from an extremality
+property. Sweep candidates named: C.36 `complementConst`, C.38a/C.39,
+and especially **C.40**, whose signed
+`fS'.natDegree = L.keyDeg₂ * (mult₂ L f − 1)` reuses this exact
+arithmetic and inherits the same rider.
+
+(5) THE VACUITY WATCH ITEM, open and load-bearing. The corpus lands NO
+`TowerDatum` VALUE at all, and `Φ₂^{μ₂} ∈ towerLocus T μ₂` is C.52's
+planned-but-unlanded `composedKey_pow_mem_towerLocus`. **This is the
+one thing that could make C.72's two statements VACUOUS**, and it also
+means C.73's `hx` inhabitation is ARGUED (worked instance over
+`s2Frame`: e₂=1, f₂=2, u₂=4, ψ₂=T²+T+1) rather than witnessed by a
+term. C.72's A-C.7 pattern-4 finding is separate and real: `hval` is a
+finiteness guard that silently exempts the DRAIN stratum, so clause
+(ii) says NOTHING about drain coordinates — the natural over-reading is
+wrong, though the guard is correct as frozen (dropping it is refuted by
+C.74's own certificate).
+
+(6) OPERATIONAL. The API killed every wave-1 agent every 20-35 min
+(`Server error mid-response`, plus two `529 Overloaded` capacity
+storms); the permission classifier also rate-limits intermittently,
+blocking Bash for a minute at a time. The RATCHET held: resume-from-
+transcript after each death, orchestrator commits on a unit's behalf
+when it dies between "verified green" and `git commit` (done twice:
+366b1aea for C.73, 538239b2 for C.72). Wave-1 cost 3 agents, ~19
+deaths/resumes, 24 commits, zero lost work.
+
+(7) WAVE-2 IN FLIGHT (launched at this append, width 3, chosen to AVOID
+the blocked C.35/C.53/C.72 chain — note the DAG marks a node satisfied
+when its FILE exists, so C.36/C.57/C.58/C.75 look frontier-ready while
+resting on unproved suppliers): (a) chapter-B finisher B.38+B.43+B.62;
+(b) chapter-completion H.122 (takes H to COMPLETE) + E.51, with E.57
+held back as a HARD NODE for a dedicated unit; (c) the CHAPTER-I OPENER
+— I.01/02/03/05/06/07/21 defs plus the I.04/12/19/22 note dispositions,
+under hard fences: no I.10 (tower-instantiation freeze, CRITICAL PATH),
+no new axiom, no new cite, no capstone assertion — owner-gated content
+lands as Prop CARRIERS per A-C.8.5.
+
+NEXT AFTER WAVE-2: C.53 leg 2 (category (ii), closable now); the
+`TowerDatum` inhabitation gap at (5); the D-CARRY sweep at (4)
+(C.40 first); E.57 as a dedicated hard unit; promote C.110's `private`
+valuation-counting helpers to `Uniformity/Density/LocalData.lean` to
+remove wave-1's only duplication.
