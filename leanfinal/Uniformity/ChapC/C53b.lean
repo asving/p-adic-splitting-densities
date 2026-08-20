@@ -541,6 +541,197 @@ theorem polyVec_digitVec {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
   funext i
   rw [polyVec, slotPoly_digitVec T hπ a, monicPoly_coeff_val]
 
+/-! ### The slot index bijection, and the digit-floor condition in flat form -/
+
+private theorem slot_decode {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) {μ₂ i : ℕ} (hi : i < μ₂ * T.D₂) :
+    i / T.D₂ < μ₂ ∧ i % T.D₂ % (F.e₁ * F.f₁) < F.e₁ * F.f₁
+      ∧ i % T.D₂ / (F.e₁ * F.f₁) < T.e₂ * T.f₂ := by
+  have hD' : 0 < F.e₁ * F.f₁ := Nat.mul_pos F.he₁ F.hf₁
+  have hD₂ : 0 < T.D₂ := hD₂pos T
+  refine ⟨(Nat.div_lt_iff_lt_mul hD₂).2 hi, Nat.mod_lt _ hD', ?_⟩
+  refine (Nat.div_lt_iff_lt_mul hD').2 ?_
+  have hlt : i % T.D₂ < T.D₂ := Nat.mod_lt _ hD₂
+  have hDD : T.D₂ = T.e₂ * T.f₂ * (F.e₁ * F.f₁) := by rw [TowerDatum.D₂]; ring
+  omega
+
+private theorem slot_encode {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) {μ₂ j a' b : ℕ} (hj : j < μ₂) (ha' : a' < F.e₁ * F.f₁)
+    (hb : b < T.e₂ * T.f₂) :
+    j * T.D₂ + b * (F.e₁ * F.f₁) + a' < μ₂ * T.D₂
+      ∧ (j * T.D₂ + b * (F.e₁ * F.f₁) + a') / T.D₂ = j
+      ∧ (j * T.D₂ + b * (F.e₁ * F.f₁) + a') % T.D₂ % (F.e₁ * F.f₁) = a'
+      ∧ (j * T.D₂ + b * (F.e₁ * F.f₁) + a') % T.D₂ / (F.e₁ * F.f₁) = b := by
+  have hD' : 0 < F.e₁ * F.f₁ := Nat.mul_pos F.he₁ F.hf₁
+  have hD₂ : 0 < T.D₂ := hD₂pos T
+  have hDD : T.D₂ = T.e₂ * T.f₂ * (F.e₁ * F.f₁) := by rw [TowerDatum.D₂]; ring
+  have hr : b * (F.e₁ * F.f₁) + a' < T.D₂ := by
+    have h1 : (b + 1) * (F.e₁ * F.f₁) ≤ T.e₂ * T.f₂ * (F.e₁ * F.f₁) :=
+      Nat.mul_le_mul_right _ (by omega)
+    have h2 : (b + 1) * (F.e₁ * F.f₁) = b * (F.e₁ * F.f₁) + (F.e₁ * F.f₁) := by ring
+    omega
+  have hassoc : j * T.D₂ + b * (F.e₁ * F.f₁) + a' = j * T.D₂ + (b * (F.e₁ * F.f₁) + a') := by ring
+  have hlt : j * T.D₂ + b * (F.e₁ * F.f₁) + a' < μ₂ * T.D₂ := by
+    have h1 : (j + 1) * T.D₂ ≤ μ₂ * T.D₂ := Nat.mul_le_mul_right _ (by omega)
+    have h2 : (j + 1) * T.D₂ = j * T.D₂ + T.D₂ := by ring
+    omega
+  have hmod : (j * T.D₂ + b * (F.e₁ * F.f₁) + a') % T.D₂ = b * (F.e₁ * F.f₁) + a' := by
+    rw [hassoc, Nat.mul_comm j T.D₂, Nat.mul_add_mod, Nat.mod_eq_of_lt hr]
+  refine ⟨hlt, ?_, ?_, ?_⟩
+  · rw [hassoc, Nat.mul_comm j T.D₂, Nat.mul_add_div hD₂, Nat.div_eq_of_lt hr, Nat.add_zero]
+  · rw [hmod, Nat.mul_comm b (F.e₁ * F.f₁), Nat.mul_add_mod, Nat.mod_eq_of_lt ha']
+  · rw [hmod, Nat.mul_comm b (F.e₁ * F.f₁), Nat.mul_add_div hD', Nat.div_eq_of_lt ha',
+      Nat.add_zero]
+
+/-- **The triple-indexed digit-floor condition IS the flat per-slot condition on `digitVec`.**
+This is the re-indexing half of C.53 leg 2, and it is TRUE: it is the slot bijection
+`i ↔ (j, a', b)` of `budgetSlot`, nothing more. -/
+private theorem digitFloors_iff {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) {μ₂ : ℕ} (a : Fin (μ₂ * T.D₂) → O) :
+    (∀ j a' b : ℕ, j < μ₂ → a' < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
+        ((budgetFloor T μ₂ j a' b : ℕ) : ℕ∞)
+          ≤ addVal O ((dev F.key (dev (composedKey T) (monicPoly a) j) b).coeff a'))
+      ↔ ∀ i : Fin (μ₂ * T.D₂),
+          ((budgetSlot T μ₂ i.1 : ℕ) : ℕ∞) ≤ addVal O (digitVec T μ₂ a i) := by
+  constructor
+  · intro h i
+    obtain ⟨hj, ha', hb⟩ := slot_decode T i.isLt
+    simpa only [budgetSlot, digitVec] using h _ _ _ hj ha' hb
+  · intro h j a' b hj ha' hb
+    obtain ⟨hlt, hdiv, hmodmod, hmoddiv⟩ := slot_encode T hj ha' hb
+    have hh := h ⟨j * T.D₂ + b * (F.e₁ * F.f₁) + a', hlt⟩
+    simp only [budgetSlot, digitVec, hdiv, hmodmod, hmoddiv] at hh
+    exact hh
+
+/-! ### The reconstruction descends to level `N`, and is a BIJECTION there
+
+This is the honest replacement for the refuted "the digit box and the raw box cut out the same
+classes" (see `C53_LEG2_REFUTED_2026-08-20.md`): the reconstruction `polyVec` is visibly affine
+over `O`, hence descends to `slotClassMap` on `Coeff O n N`; `polyVec ∘ digitVec = id` makes that
+descent surjective; `Coeff O n N` is finite, so it is a bijection.  No unitriangularity, no
+matrix, no determinant — and, crucially, no claim that the box is preserved (it is not). -/
+
+private theorem coeff_slotPoly {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (μ₂ : ℕ) (u : Fin (μ₂ * T.D₂) → O) (m : ℕ) :
+    (slotPoly T μ₂ u).coeff m
+      = ((composedKey T) ^ μ₂).coeff m
+        + ∑ i : Fin (μ₂ * T.D₂), u i * (slotMon T i.1).coeff m := by
+  rw [slotPoly, Polynomial.coeff_add, Polynomial.finsetSum_coeff]
+  congr 1
+  exact Finset.sum_congr rfl fun i _ => Polynomial.coeff_C_mul _
+
+private theorem polyVec_proj_congr [Finite (ResidueField O)] {F : KeyFrame O π} {H₀ : ℕ}
+    {hpin : F.Pin H₀} (T : TowerDatum F H₀ hpin) (μ₂ N : ℕ)
+    {u u' : Fin (μ₂ * T.D₂) → O} (h : proj O (μ₂ * T.D₂) N u = proj O (μ₂ * T.D₂) N u') :
+    proj O (μ₂ * T.D₂) N (polyVec T μ₂ u) = proj O (μ₂ * T.D₂) N (polyVec T μ₂ u') := by
+  have hi : ∀ k : Fin (μ₂ * T.D₂),
+      Ideal.Quotient.mk ((IsLocalRing.maximalIdeal O) ^ N) (u k)
+        = Ideal.Quotient.mk ((IsLocalRing.maximalIdeal O) ^ N) (u' k) := fun k => congrFun h k
+  funext i
+  simp only [proj, polyVec, coeff_slotPoly, map_add, map_sum]
+  congr 1
+  refine Finset.sum_congr rfl fun k _ => ?_
+  rw [map_mul, map_mul, hi k]
+
+/-- the reconstruction map, descended to the level-`N` coefficient box. -/
+private noncomputable def slotClassMap [Finite (ResidueField O)] {F : KeyFrame O π} {H₀ : ℕ}
+    {hpin : F.Pin H₀} (T : TowerDatum F H₀ hpin) (μ₂ N : ℕ) :
+    Coeff O (μ₂ * T.D₂) N → Coeff O (μ₂ * T.D₂) N :=
+  fun c => proj O (μ₂ * T.D₂) N
+    (polyVec T μ₂ (Classical.choose (proj_surjective O (μ₂ * T.D₂) N c)))
+
+private theorem slotClassMap_apply [Finite (ResidueField O)] {F : KeyFrame O π} {H₀ : ℕ}
+    {hpin : F.Pin H₀} (T : TowerDatum F H₀ hpin) (μ₂ N : ℕ) (u : Fin (μ₂ * T.D₂) → O) :
+    slotClassMap T μ₂ N (proj O (μ₂ * T.D₂) N u)
+      = proj O (μ₂ * T.D₂) N (polyVec T μ₂ u) :=
+  polyVec_proj_congr T μ₂ N
+    (Classical.choose_spec (proj_surjective O (μ₂ * T.D₂) N (proj O (μ₂ * T.D₂) N u)))
+
+private theorem slotClassMap_surjective [Finite (ResidueField O)] {F : KeyFrame O π} {H₀ : ℕ}
+    {hpin : F.Pin H₀} (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (μ₂ N : ℕ) :
+    Function.Surjective (slotClassMap T μ₂ N) := by
+  intro c
+  obtain ⟨a, ha⟩ := proj_surjective O (μ₂ * T.D₂) N c
+  refine ⟨proj O (μ₂ * T.D₂) N (digitVec T μ₂ a), ?_⟩
+  rw [slotClassMap_apply, polyVec_digitVec T hπ a, ha]
+
+private theorem slotClassMap_injective [Finite (ResidueField O)] {F : KeyFrame O π} {H₀ : ℕ}
+    {hpin : F.Pin H₀} (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (μ₂ N : ℕ) :
+    Function.Injective (slotClassMap T μ₂ N) :=
+  Finite.injective_iff_surjective.2 (slotClassMap_surjective T hπ μ₂ N)
+
+/-- **The CARD-level dictionary — the honest replacement for C.53's refuted leg 2.**
+
+For ANY predicate `Q` on integral coefficient vectors, the level-`N` classes admitting a lift
+whose TWO-KEY DIGITS satisfy `Q` are exactly as MANY as those admitting a lift whose RAW
+coefficients satisfy `Q` — the two families of classes being a translate of one another under the
+bijection `slotClassMap`.  They are NOT the same family: at `Q =` "clear the budget floors" the
+sets genuinely differ (`C53_LEG2_REFUTED_2026-08-20.md`), which is exactly why this statement is
+about `Nat.card` and not about membership. -/
+theorem card_digitVec_transport [Finite (ResidueField O)] {F : KeyFrame O π} {H₀ : ℕ}
+    {hpin : F.Pin H₀} (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) {μ₂ : ℕ} (hμ₂ : 0 < μ₂)
+    (N : ℕ) (Q : (Fin (μ₂ * T.D₂) → O) → Prop) :
+    Nat.card {c : Coeff O (μ₂ * T.D₂) N //
+        ∃ a : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N a = c ∧ Q (digitVec T μ₂ a)}
+      = Nat.card {c : Coeff O (μ₂ * T.D₂) N //
+        ∃ u : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N u = c ∧ Q u} := by
+  classical
+  set f : {c : Coeff O (μ₂ * T.D₂) N //
+      ∃ u : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N u = c ∧ Q u}
+      → {c : Coeff O (μ₂ * T.D₂) N //
+      ∃ a : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N a = c ∧ Q (digitVec T μ₂ a)} :=
+    fun x => ⟨slotClassMap T μ₂ N x.1, by
+      obtain ⟨u, hu, hQ⟩ := x.2
+      refine ⟨polyVec T μ₂ u, ?_, ?_⟩
+      · rw [← hu, slotClassMap_apply]
+      · rw [digitVec_polyVec T hπ hμ₂ u]; exact hQ⟩ with hf
+  have hinj : Function.Injective f := by
+    intro x y hxy
+    have h1 : slotClassMap T μ₂ N x.1 = slotClassMap T μ₂ N y.1 := congrArg Subtype.val hxy
+    exact Subtype.ext (slotClassMap_injective T hπ μ₂ N h1)
+  have hsurj : Function.Surjective f := by
+    intro y
+    obtain ⟨a, ha, hQ⟩ := y.2
+    refine ⟨⟨proj O (μ₂ * T.D₂) N (digitVec T μ₂ a), ⟨digitVec T μ₂ a, rfl, hQ⟩⟩, ?_⟩
+    refine Subtype.ext ?_
+    show slotClassMap T μ₂ N (proj O (μ₂ * T.D₂) N (digitVec T μ₂ a)) = y.1
+    rw [slotClassMap_apply, polyVec_digitVec T hπ a, ha]
+  exact (Nat.card_congr (Equiv.ofBijective f ⟨hinj, hsurj⟩)).symm
+
+/-! ### NODE C.53 from LEG 1 ALONE -/
+
+/-- **The signed conclusion of `towerLocus_fibration`, from leg 1 alone.**
+
+`TowerBudgetIff` (leg 1 = C.52's signed `towerLocus_iff_budget`) is now the ONLY remaining input:
+leg 2 (`TriangularDigitRead`) is eliminated, not reduced.  It had to be — it is FALSE
+(`C53_LEG2_REFUTED_2026-08-20.md`).  What replaces it is `card_digitVec_transport`: the two-key
+change of coordinates is measure-preserving without being box-preserving, and `towerLocus_fibration`
+only ever needed the measure. -/
+theorem towerLocus_fibration_of_leg1 [Finite (ResidueField O)] (hπ : Irreducible π)
+    {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} (T : TowerDatum F H₀ hpin) {μ₂ : ℕ}
+    (hμ₂ : 0 < μ₂) (N : ℕ) (h1 : TowerBudgetIff T μ₂) :
+    Nat.card {c : Coeff O (μ₂ * T.D₂) N //
+        ∃ a : Fin (μ₂ * T.D₂) → O,
+          proj O (μ₂ * T.D₂) N a = c ∧ monicPoly a ∈ towerLocus T μ₂}
+      = residueCard O ^ towerFreeCount T μ₂ N := by
+  have hstep1 : ∀ c : Coeff O (μ₂ * T.D₂) N,
+      (∃ a : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N a = c ∧ monicPoly a ∈ towerLocus T μ₂)
+        ↔ (∃ a : Fin (μ₂ * T.D₂) → O, proj O (μ₂ * T.D₂) N a = c ∧
+            ∀ i : Fin (μ₂ * T.D₂),
+              ((budgetSlot T μ₂ i.1 : ℕ) : ℕ∞) ≤ addVal O (digitVec T μ₂ a i)) := by
+    intro c
+    constructor
+    · rintro ⟨a, ha, hmem⟩
+      exact ⟨a, ha, (digitFloors_iff T a).1
+        ((h1 (monicPoly a) (monicPoly_monic a) (monicPoly_natDegree a)).1 hmem)⟩
+    · rintro ⟨a, ha, hbud⟩
+      exact ⟨a, ha, (h1 (monicPoly a) (monicPoly_monic a) (monicPoly_natDegree a)).2
+        ((digitFloors_iff T a).2 hbud)⟩
+  rw [Nat.card_congr (Equiv.subtypeEquivRight hstep1),
+    card_digitVec_transport T hπ hμ₂ N
+      (fun u => ∀ i : Fin (μ₂ * T.D₂), ((budgetSlot T μ₂ i.1 : ℕ) : ℕ∞) ≤ addVal O (u i))]
+  exact card_budgetBox hπ T μ₂ N
+
 end Uniformity.Density.Tower
 
 /-! ## Axiom footprint -/
@@ -556,5 +747,7 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.digitVec_polyVec
 #print axioms Uniformity.Density.Tower.slotPoly_digitVec
 #print axioms Uniformity.Density.Tower.polyVec_digitVec
+#print axioms Uniformity.Density.Tower.card_digitVec_transport
+#print axioms Uniformity.Density.Tower.towerLocus_fibration_of_leg1
 
 end AxCheck
