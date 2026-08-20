@@ -461,9 +461,43 @@ theorem nodeExponent_of_one_node (v : HTNode) (p : ℕ → ℕ) (N : ℕ) :
 /-- **the D5 clause is SATISFIABLE at every positive degree**: the level-1 block lifts
 (`blockPoly` at `N = 1`) form a system of representatives of the degree-`< d` residue classes.
 So `hR : IsRepSystem R Φ.natDegree` does not empty `ht_branch`. -/
+private theorem one_le_gaussVal_sub_iff (hπ : Irreducible π) [Finite (ResidueField O)]
+    {d : ℕ} {x y : Polynomial O} (hx : x.natDegree < d) (hy : y.natDegree < d) :
+    (1 : ℕ∞) ≤ gaussVal (x - y) ↔
+      proj O d 1 (fun i => x.coeff i) = proj O d 1 (fun i => y.coeff i) := by
+  have h1 : ((1 : ℕ) : ℕ∞) ≤ gaussVal (x - y) ↔ ∀ i, π ^ 1 ∣ (x - y).coeff i :=
+    le_gaussVal_iff hπ
+  simp only [Nat.cast_one] at h1
+  rw [h1]
+  constructor
+  · intro h
+    funext i
+    show Ideal.Quotient.mk _ (x.coeff (i : ℕ)) = Ideal.Quotient.mk _ (y.coeff (i : ℕ))
+    refine Ideal.Quotient.eq.2 ((mem_maximalIdeal_pow_iff_dvd hπ 1 _).2 ?_)
+    simpa [Polynomial.coeff_sub] using h (i : ℕ)
+  · intro h i
+    by_cases hi : i < d
+    · have h2 : x.coeff i - y.coeff i ∈ (IsLocalRing.maximalIdeal O) ^ 1 :=
+        Ideal.Quotient.eq.1 (congrFun h ⟨i, hi⟩)
+      simpa [Polynomial.coeff_sub] using (mem_maximalIdeal_pow_iff_dvd hπ 1 _).1 h2
+    · have hx0 : x.coeff i = 0 := Polynomial.coeff_eq_zero_of_natDegree_lt (by omega)
+      have hy0 : y.coeff i = 0 := Polynomial.coeff_eq_zero_of_natDegree_lt (by omega)
+      simp [Polynomial.coeff_sub, hx0, hy0]
+
 theorem exists_isRepSystem (hπ : Irreducible π) [Finite (ResidueField O)] {d : ℕ} (hd : 0 < d) :
     ∃ R : Set (Polynomial O), IsRepSystem R d := by
-  sorry
+  classical
+  refine ⟨Set.range (fun c : Coeff O d 1 => C109asm.blockPoly c), ?_, ?_⟩
+  · rintro r ⟨c, rfl⟩
+    exact C109asm.blockPoly_natDegree_lt hd c
+  · intro a ha
+    refine ⟨C109asm.blockPoly (proj O d 1 (fun i => a.coeff i)), ⟨⟨_, rfl⟩, ?_⟩, ?_⟩
+    · rw [one_le_gaussVal_sub_iff hπ ha (C109asm.blockPoly_natDegree_lt hd _)]
+      exact (C109asm.blockPoly_proj _).symm
+    · rintro y ⟨⟨c, rfl⟩, hy⟩
+      rw [one_le_gaussVal_sub_iff hπ ha (C109asm.blockPoly_natDegree_lt hd c),
+        C109asm.blockPoly_proj c] at hy
+      rw [hy]
 
 /-- and it is not implied either: `R = ∅` FAILS at every positive degree, so the clause has
 content. -/
