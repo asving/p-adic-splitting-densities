@@ -37,3 +37,4 @@ import Uniformity.ChapE
 import Uniformity.ChapC
 import Uniformity.ChapD
 import Uniformity.ChapF
+import Uniformity.ChapI
