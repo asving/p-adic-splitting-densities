@@ -323,6 +323,145 @@ theorem sideDeg_lt_of_natDegree_lt (hφ : IsKey φ) (hℓ : 0 < ℓ) (hcop : Nat
 
 end HeightPin
 
+/-! ## 4. NODE B.43 — the signed statement -/
+
+section Node
+
+set_option linter.unusedVariables false in
+/-- **B.43** (`graded_factorization_unique`), ENV-C, **[repaired: A-F.6]**.
+*Uniqueness of the graded factorization.*  Under B.41's hypotheses, if `f = g*h = g'*h'` with all
+four factors monic of `φ.natDegree`-divisible degree, `g'` and `h'` `(u,ℓ)`-pure, `(g,h)`
+graded-coprime, and `g`,`g'` (resp. `h`,`h'`) sharing residual polynomials at every height, then
+`g = g'` and `h = h'`.
+
+`hhd`, `hhd'`, `hhp'` are the A-F.6 fidelity restorations and are **not consumed**: the route needs
+the degree bookkeeping and purity only on the `g`-side, the `h`-side being reached by cancelling
+the monic `g`.  They are kept byte-frozen and the unused-variable linter is silenced, exactly as
+the landed template `Hensel.monic_factorization_unique` does for its own symmetric pair. -/
+theorem graded_factorization_unique (hπ : Irreducible π) {φ : Polynomial O} (hφ : IsKey φ)
+    {u ℓ : ℕ} (hu : 0 < u) (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ) {g h g' h' : Polynomial O}
+    (hg : g.Monic) (hh : h.Monic) (hg' : g'.Monic) (hh' : h'.Monic)
+    (hgd : φ.natDegree ∣ g.natDegree) (hhd : φ.natDegree ∣ h.natDegree)
+    (hgd' : φ.natDegree ∣ g'.natDegree) (hhd' : φ.natDegree ∣ h'.natDegree)
+    (hgp' : IsPure φ g' u ℓ) (hhp' : IsPure φ h' u ℓ)
+    (hcopGH : GradedCoprime π φ u ℓ g h)
+    (hgg' : ∀ hne hne' H₀, resPoly π φ g u ℓ hne H₀ = resPoly π φ g' u ℓ hne' H₀)
+    (hhh' : ∀ hne hne' H₀, resPoly π φ h u ℓ hne H₀ = resPoly π φ h' u ℓ hne' H₀)
+    (heq : g * h = g' * h') : g = g' ∧ h = h' := by
+  classical
+  letI : Field (resField φ) := instFieldResField hφ
+  obtain ⟨Hg, Hh, hgne, hhne, hgH0, hhH0, hgp, hhp, hGH⟩ := hcopGH
+  -- ## the degrees, as multiples of `m := φ.natDegree`
+  obtain ⟨a, ha⟩ := hgd
+  obtain ⟨a', ha'⟩ := hgd'
+  have hga : g.natDegree = a * φ.natDegree := by rw [ha, Nat.mul_comm]
+  have hga' : g'.natDegree = a' * φ.natDegree := by rw [ha', Nat.mul_comm]
+  -- ## GC-1: the pure inputs' abscissa-`0` heights ARE their `sideMin` heights
+  have hgmin : sideMin φ g u ℓ hgne = 0 := sideMin_of_pure hgp hgne
+  have hhmin : sideMin φ h u ℓ hhne = 0 := sideMin_of_pure hhp hhne
+  have hgH : npHgt φ g (sideMin φ g u ℓ hgne) = (Hg : ℕ∞) := by rw [hgmin]; exact hgH0
+  have hhH : npHgt φ h (sideMin φ h u ℓ hhne) = (Hh : ℕ∞) := by rw [hhmin]; exact hhH0
+  have htg : suppVal φ g u ℓ ≠ ⊤ := suppVal_ne_top_of_ne_zero hφ.monic hφ.pos hg.ne_zero
+  have hth : suppVal φ h u ℓ ≠ ⊤ := suppVal_ne_top_of_ne_zero hφ.monic hφ.pos hh.ne_zero
+  have htg' : suppVal φ g' u ℓ ≠ ⊤ := suppVal_ne_top_of_ne_zero hφ.monic hφ.pos hg'.ne_zero
+  have hth' : suppVal φ h' u ℓ ≠ ⊤ := suppVal_ne_top_of_ne_zero hφ.monic hφ.pos hh'.ne_zero
+  have hg'ne : (sideSet φ g' u ℓ).Nonempty := sideSet_nonempty_gen φ g' u ℓ
+  have hh'ne : (sideSet φ h' u ℓ).Nonempty := sideSet_nonempty_gen φ h' u ℓ
+  obtain ⟨Hg', hHg'⟩ := exists_sideMin_height hℓ htg' hg'ne
+  obtain ⟨Hh', hHh'⟩ := exists_sideMin_height hℓ hth' hh'ne
+  -- ## STEP 1 — the heights are pinned by the `∀ H₀` quantification
+  have hgHeq : Hg = Hg' :=
+    height_eq_of_resPoly_eq hπ hφ hℓ hcop htg htg' hgne hg'ne hgH hHg' (hgg' hgne hg'ne)
+  have hhHeq : Hh = Hh' :=
+    height_eq_of_resPoly_eq hπ hφ hℓ hcop hth hth' hhne hh'ne hhH hHh' (hhh' hhne hh'ne)
+  have hGeq : resPoly π φ g' u ℓ hg'ne Hg' = resPoly π φ g u ℓ hgne Hg := by
+    rw [← hgHeq]; exact (hgg' hgne hg'ne Hg).symm
+  have hHeq : resPoly π φ h' u ℓ hh'ne Hh' = resPoly π φ h u ℓ hhne Hh := by
+    rw [← hhHeq]; exact (hhh' hhne hh'ne Hh).symm
+  -- ## STEP 2 — hence `g.natDegree = g'.natDegree` (the A-F.6 derivation)
+  have hdegG : (resPoly π φ g u ℓ hgne Hg).natDegree = sideDeg φ g u ℓ hgne :=
+    (natDegree_resPoly hπ hφ hℓ hcop htg hgne hgH).1
+  have hdegG' : (resPoly π φ g' u ℓ hg'ne Hg').natDegree = sideDeg φ g' u ℓ hg'ne :=
+    (natDegree_resPoly hπ hφ hℓ hcop htg' hg'ne hHg').1
+  have hsideg : sideDeg φ g u ℓ hgne = sideDeg φ g' u ℓ hg'ne := by
+    rw [← hdegG, ← hdegG', hGeq]
+  have haa : ℓ * sideDeg φ g u ℓ hgne = a :=
+    sideDeg_of_pure hφ.monic hφ.pos hg hga hℓ hcop hgp hgne
+  have haa' : ℓ * sideDeg φ g' u ℓ hg'ne = a' :=
+    sideDeg_of_pure hφ.monic hφ.pos hg' hga' hℓ hcop hgp' hg'ne
+  have haeq : a = a' := by rw [← haa, ← haa', hsideg]
+  have hdegeq : g'.natDegree = g.natDegree := by rw [hga, hga', haeq]
+  -- ## STEP 3 — the dichotomy
+  rcases eq_or_ne g g' with hgg | hgnq
+  · refine ⟨hgg, ?_⟩
+    have hcancel : g * h = g * h' := by rw [heq, hgg]
+    exact mul_left_cancel₀ hg.ne_zero hcancel
+  · exfalso
+    have hδ0 : g' - g ≠ 0 := sub_ne_zero_of_ne (Ne.symm hgnq)
+    have key : g * (h - h') = (g' - g) * h' := by linear_combination heq
+    have hε0 : h - h' ≠ 0 := by
+      intro h0
+      rw [h0, mul_zero] at key
+      rcases mul_eq_zero.mp key.symm with hd0 | hz
+      · exact hδ0 hd0
+      · exact hh'.ne_zero hz
+    have htδ : suppVal φ (g' - g) u ℓ ≠ ⊤ := suppVal_ne_top_of_ne_zero hφ.monic hφ.pos hδ0
+    have htε : suppVal φ (h - h') u ℓ ≠ ⊤ := suppVal_ne_top_of_ne_zero hφ.monic hφ.pos hε0
+    have hδne : (sideSet φ (g' - g) u ℓ).Nonempty := sideSet_nonempty_gen φ (g' - g) u ℓ
+    have hεne : (sideSet φ (h - h') u ℓ).Nonempty := sideSet_nonempty_gen φ (h - h') u ℓ
+    obtain ⟨Hδ, hHδ⟩ := exists_sideMin_height hℓ htδ hδne
+    obtain ⟨Hε, hHε⟩ := exists_sideMin_height hℓ htε hεne
+    have hPne : (sideSet φ (g * (h - h')) u ℓ).Nonempty :=
+      sideSet_nonempty_gen φ (g * (h - h')) u ℓ
+    -- ## STEP 4 — the product's side and height, computed under BOTH factorisations
+    have hminA : sideMin φ (g * (h - h')) u ℓ hPne
+        = sideMin φ g u ℓ hgne + sideMin φ (h - h') u ℓ hεne :=
+      sideMin_mul_gen' hπ hφ hu hℓ hcop rfl htg htε hgne hεne hgH hHε hPne
+    have hminB : sideMin φ (g * (h - h')) u ℓ hPne
+        = sideMin φ (g' - g) u ℓ hδne + sideMin φ h' u ℓ hh'ne :=
+      sideMin_mul_gen' hπ hφ hu hℓ hcop key htδ hth' hδne hh'ne hHδ hHh' hPne
+    have hnpA : npHgt φ (g * (h - h'))
+        (sideMin φ g u ℓ hgne + sideMin φ (h - h') u ℓ hεne) = ((Hg + Hε : ℕ) : ℕ∞) :=
+      npHgt_mul_gen' hπ hφ hu hℓ hcop rfl htg htε hgne hεne hgH hHε
+    have hnpB : npHgt φ (g * (h - h'))
+        (sideMin φ (g' - g) u ℓ hδne + sideMin φ h' u ℓ hh'ne) = ((Hδ + Hh' : ℕ) : ℕ∞) :=
+      npHgt_mul_gen' hπ hφ hu hℓ hcop key htδ hth' hδne hh'ne hHδ hHh'
+    have hheights : Hg + Hε = Hδ + Hh' := by
+      have h1 : ((Hg + Hε : ℕ) : ℕ∞) = ((Hδ + Hh' : ℕ) : ℕ∞) := by
+        rw [← hnpA, ← hnpB, ← hminA, ← hminB]
+      exact_mod_cast h1
+    have hRA : resPoly π φ (g * (h - h')) u ℓ hPne (Hg + Hε)
+        = resPoly π φ g u ℓ hgne Hg * resPoly π φ (h - h') u ℓ hεne Hε :=
+      resPoly_mul_gen' hπ hφ hu hℓ hcop rfl htg htε hgne hεne hgH hHε hPne
+    have hRB : resPoly π φ (g * (h - h')) u ℓ hPne (Hδ + Hh')
+        = resPoly π φ (g' - g) u ℓ hδne Hδ * resPoly π φ h' u ℓ hh'ne Hh' :=
+      resPoly_mul_gen' hπ hφ hu hℓ hcop key htδ hth' hδne hh'ne hHδ hHh' hPne
+    have hprod : resPoly π φ g u ℓ hgne Hg * resPoly π φ (h - h') u ℓ hεne Hε
+        = resPoly π φ (g' - g) u ℓ hδne Hδ * resPoly π φ h u ℓ hhne Hh := by
+      rw [← hRA, hheights, hRB, hHeq]
+    -- ## STEP 5 — coprimality against the degree drop
+    have hdvd : resPoly π φ g u ℓ hgne Hg
+        ∣ resPoly π φ (g' - g) u ℓ hδne Hδ * resPoly π φ h u ℓ hhne Hh := by
+      rw [← hprod]; exact dvd_mul_right _ _
+    have hGD : resPoly π φ g u ℓ hgne Hg ∣ resPoly π φ (g' - g) u ℓ hδne Hδ :=
+      hGH.dvd_of_dvd_mul_right hdvd
+    have hDne : resPoly π φ (g' - g) u ℓ hδne Hδ ≠ 0 := fun h0 => by
+      simpa [h0] using (natDegree_resPoly hπ hφ hℓ hcop htδ hδne hHδ).2
+    have hdegle : (resPoly π φ g u ℓ hgne Hg).natDegree
+        ≤ (resPoly π φ (g' - g) u ℓ hδne Hδ).natDegree :=
+      Polynomial.natDegree_le_of_dvd hGD hDne
+    have hdegD : (resPoly π φ (g' - g) u ℓ hδne Hδ).natDegree = sideDeg φ (g' - g) u ℓ hδne :=
+      (natDegree_resPoly hπ hφ hℓ hcop htδ hδne hHδ).1
+    have hlt : (g' - g).natDegree < g.natDegree := by
+      have hd := Uniformity.Hensel.degree_sub_lt_of_monic_of_natDegree_eq hg' hg hdegeq
+      have h2 := (Polynomial.natDegree_lt_iff_degree_lt hδ0).mpr hd
+      omega
+    have hside : sideDeg φ (g' - g) u ℓ hδne < sideDeg φ g u ℓ hgne :=
+      sideDeg_lt_of_natDegree_lt hφ hℓ hcop hδ0 hg hga hgp hgne hδne hlt
+    omega
+
+end Node
+
 end Uniformity.Density.Leaf
 
 /-! ## Axiom footprint -/
@@ -338,4 +477,5 @@ section AxCheck
 #print axioms Uniformity.Density.Leaf.height_le_of_resPoly_eq
 #print axioms Uniformity.Density.Leaf.height_eq_of_resPoly_eq
 #print axioms Uniformity.Density.Leaf.sideDeg_lt_of_natDegree_lt
+#print axioms Uniformity.Density.Leaf.graded_factorization_unique
 end AxCheck
