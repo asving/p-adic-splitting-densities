@@ -204,6 +204,7 @@ theorem towerCarry_interior_strict {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pi
     _ < (W.ehat i / W.ehat (j + 2)) * W.u (j + 2) := by
         exact Nat.mul_lt_mul_of_le_of_lt (le_refl _) hfl hApos
 
+set_option linter.unusedVariables false in
 /-- **NODE C.87 (ii) — the TOP carry is `E_i`-priced EXACTLY.**  At the top rung of the level-`i`
 grid the key-part's price is `l_i·(ê_i/ê_i)·u_i = e_i f_i u_i = E_i`: NO floor rung is consumed,
 `ê_i/ê_i` being `1` exactly (by `DeepTower.ehat_pos` — this is where the `1 ≤ i ≤ r` range is
@@ -215,7 +216,6 @@ the corpus cross-check — GENTOW1 Step 0 prices the `Φ₂`-part "at weight `E�
 
 `hi : 1 ≤ i` is a SIGNED binder and is kept although the proof routes the range through `hir`
 alone: it is the `[GT5-r2]` edge marker, and dropping it would change the signed statement. -/
-set_option linter.unusedVariables false in
 theorem towerCarry_top_exact {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower F H₀ hpin r) (i : ℕ) (hi : 1 ≤ i) (hir : i ≤ r) :
     (W.e i * W.f i) * ((W.ehat i / W.ehat i) * W.u i) = W.Econst i := by
