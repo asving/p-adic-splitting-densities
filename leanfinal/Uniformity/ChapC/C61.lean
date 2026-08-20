@@ -57,8 +57,28 @@ Two transcriptions are diffed against `leanspec/Leanspec/ChapC.lean` lines **219
   in a `def` body trips the linter. Hypothesis TYPES and ORDER and the conclusion are the spec's
   byte-for-byte, `hm1`'s inner binder names `hne`, `M₀`, `hp` included.
 * **`tier1_typeOf_of_ramLeg`** (the reduction) keeps the spec's binder names verbatim
-  (`L`, `hπ`, `g`, `hlab`, `hm1`, `hx`, `hbox`) and inserts exactly one new line, `hram`,
-  immediately before `hbox`. That single inserted line is the whole diff.
+  (`L`, `hπ`, `g`, `hlab`, `hm1`, `hx`, `hbox`) and inserts exactly one new line, `hram`.
+  Real `diff -u` of `leanspec/Leanspec/ChapC.lean:2191-2200` against this file's `273-283`
+  (`.lean` on the right), TWO hunks and nothing else:
+
+```text
+@@ -1,4 +1,4 @@
+-axiom tier1_typeOf {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
++theorem tier1_typeOf_of_ramLeg {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+     [Finite (ResidueField O)]
+     {g : Polynomial O} (hlab : HasLabel L g)
+@@ -6,5 +6,6 @@
+       (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞)),
+       dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp = L.r)
+     (hx : IsPure Polynomial.X g F.h F.e₁)
++    (hram : ∀ g' ∈ monicFactors g, (F.e₁ * L.ℓ) ∣ ramIndexOf g')
+     (hbox : ∀ g' ∈ monicFactors g, CBox1Side L g') :
+     typeOf g = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}⟩ ∧ Irreducible g
+```
+
+  i.e. the declaration head and one inserted hypothesis line. Instance binders, implicit
+  binders, `hm1`'s inner binder names and the conclusion are unchanged bytes.
 
 **D11 (already cured stub-side; NOT re-broken here).** `leanspec/Leanspec/ChapC.lean:188-194`
 records that C.40 and C.61 were originally written with a TWO-component
@@ -219,6 +239,120 @@ def Tier1TypeOfStatement : Prop :=
     (_hbox : ∀ g' ∈ monicFactors g, CBox1Side L g'),
     typeOf g = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}⟩ ∧ Irreducible g
 
+/-! ## 2. The irreducibility clause, off any singleton `typeOf`
+
+B.58's `irreducible_of_resDeg_one` reads irreducibility off the level-1 singleton type; the
+argument uses nothing about the frame, so it is restated here at an arbitrary singleton and both
+Tier-1 tiers (C.61, C.62) can consume it. -/
+
+/-- **A monic polynomial with singleton `typeOf` is irreducible.** `typeOf g = ⟨{(a,b)}⟩` says
+`monicFactors g` has exactly one element; that element's product is `g`, hence equals `g`, and
+the elements of `monicFactors` are irreducible by `monicFactors_spec`. -/
+theorem irreducible_of_singleton_typeOf {g : Polynomial O} (hg : g.Monic) {a b : ℕ}
+    (h : typeOf g = ⟨{(a, b)}⟩) : Irreducible g := by
+  classical
+  have hdata : (monicFactors g).map efPair = ({(a, b)} : Multiset (ℕ × ℕ)) := by
+    have h' := congrArg FactorizationType.data h
+    rwa [typeOf_data] at h'
+  have hcard : Multiset.card (monicFactors g) = 1 := by
+    have h' := congrArg Multiset.card hdata
+    simpa using h'
+  obtain ⟨g', hg'⟩ := Multiset.card_eq_one.1 hcard
+  have hspec := monicFactors_spec hg
+  have hgg' : g = g' := by rw [← hspec.2, hg', Multiset.prod_singleton]
+  rw [hgg']
+  exact (hspec.1 g' (by rw [hg']; exact Multiset.mem_singleton_self g')).2
+
+/-! ## 3. The reduction: the signed statement modulo the `e`-leg (NODE C.59)
+
+`hram` is the ONLY inserted line; every other binder is the spec's, verbatim and in order.
+`hx` is retained for signature fidelity and is **not consumed** — it is the input to C.59, whose
+conclusion `hram` supplies directly, so the linter is silenced for it explicitly rather than the
+binder being dropped (dropping it would change the signature). -/
+
+set_option linter.unusedVariables false in
+/-- **C.61's proof, complete modulo NODE C.59.** The sandwich, with the `e`-leg
+`(F.e₁ * L.ℓ) ∣ ramIndexOf g'` taken as the hypothesis `hram` (that is exactly C.59 = `ramLeg_dvd`
+applied per monic factor, which is NOT landed — `C61.lean`'s header block record).
+
+The proof is four steps, and the second is the determination that corrects the blueprint's sketch:
+
+1. **The floor identity.** `hm1` + C.26's `natDegree_dvResPoly` give
+   `L.r.natDegree = dvSideDeg F g L.u L.ℓ`, and C.35's `natDegree_div_eq_of_isDvPure` (which is
+   `IsDvPure` + C.08's spacing law) gives `deg g / D′ = L.ℓ * dvSideDeg`. Hence
+   `deg g / D′ = L.ℓ * L.r.natDegree` — a FLOOR-divided identity, all that `HasLabel` can supply
+   (`hasLabel_natDegree_dvd` is refuted: `C35B_D13_REFUTED_2026-08-20.md`).
+2. **The degree pin, from the two legs rather than from a divisibility rider.** Every member of
+   `(typeOf g).data` is `efPair g'` for a monic irreducible factor `g'`; `hram` gives `E ∣ e'` and
+   `hbox` gives `D ∣ f'`, so `E * D` divides every summand of `Σ e'f' = deg g` (`typeOf_degree`),
+   hence `E * D ∣ deg g`. Writing `deg g = (E*D)*s = D′*((L.ℓ*d_r)*s)` and dividing by `D′` turns
+   step 1 into `L.ℓ*d_r = (L.ℓ*d_r)*s`, so `s = 1` (`L.hℓ`, `L.hrdeg`) and `deg g = E * D`
+   **exactly**. No `D′ ∣ deg g` is needed anywhere.
+3. **Collapse.** B.56b's `factorizationType_eq_of_dvd` at `a := E`, `b := D`.
+4. **Irreducibility.** `irreducible_of_singleton_typeOf`. -/
+theorem tier1_typeOf_of_ramLeg {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (ResidueField O)]
+    {g : Polynomial O} (hlab : HasLabel L g)
+    (hm1 : ∀ (hne : (dvSideSet F g L.u L.ℓ).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞)),
+      dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp = L.r)
+    (hx : IsPure Polynomial.X g F.h F.e₁)
+    (hram : ∀ g' ∈ monicFactors g, (F.e₁ * L.ℓ) ∣ ramIndexOf g')
+    (hbox : ∀ g' ∈ monicFactors g, CBox1Side L g') :
+    typeOf g = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}⟩ ∧ Irreducible g := by
+  classical
+  obtain ⟨hgm, hgpos, hpure, hne₂, M₀, hpin₂, m, hm, hres⟩ := hlab
+  have hEpos : 0 < F.e₁ * L.ℓ := Nat.mul_pos F.he₁ L.hℓ
+  have hDpos : 0 < F.f₁ * L.r.natDegree := Nat.mul_pos F.hf₁ L.hrdeg
+  have hqpos : 0 < L.ℓ * L.r.natDegree := Nat.mul_pos L.hℓ L.hrdeg
+  -- step 1: the floor identity `deg g / D′ = ℓ · d_r`
+  have hdegres : (dvResPoly F H₀ hpin g L.u L.ℓ hne₂ M₀ hpin₂).natDegree
+      = dvSideDeg F g L.u L.ℓ hne₂ :=
+    (natDegree_dvResPoly F hπ H₀ hpin L.hℓ L.hcop hne₂ hpin₂).1
+  rw [hm1 hne₂ M₀ hpin₂] at hdegres
+  have hfloor : g.natDegree / (F.e₁ * F.f₁) = L.ℓ * L.r.natDegree := by
+    rw [natDegree_div_eq_of_isDvPure L.hℓ L.hcop hpure hne₂, hdegres]
+  -- the two legs, read on `(typeOf g).data`
+  have hA : ∀ p ∈ (typeOf g).data, F.e₁ * L.ℓ ∣ p.1 := by
+    intro p hp
+    rw [typeOf_data, Multiset.mem_map] at hp
+    obtain ⟨g', hg', rfl⟩ := hp
+    simpa [efPair] using hram g' hg'
+  have hB : ∀ p ∈ (typeOf g).data, F.f₁ * L.r.natDegree ∣ p.2 := by
+    intro p hp
+    rw [typeOf_data, Multiset.mem_map] at hp
+    obtain ⟨g', hg', rfl⟩ := hp
+    simpa [efPair, CBox1Side] using hbox g' hg'
+  -- step 2: `E * D ∣ deg g`, then the cofactor is `1`
+  have hsum : ((typeOf g).data.map (fun q : ℕ × ℕ => q.1 * q.2)).sum = g.natDegree :=
+    typeOf_degree hgm
+  have hdvd : (F.e₁ * L.ℓ) * (F.f₁ * L.r.natDegree) ∣ g.natDegree := by
+    rw [← hsum]
+    refine Multiset.dvd_sum ?_
+    intro k hk
+    rw [Multiset.mem_map] at hk
+    obtain ⟨p, hp, rfl⟩ := hk
+    exact mul_dvd_mul (hA p hp) (hB p hp)
+  obtain ⟨s, hs⟩ := hdvd
+  have hED : (F.e₁ * L.ℓ) * (F.f₁ * L.r.natDegree)
+      = (F.e₁ * F.f₁) * (L.ℓ * L.r.natDegree) := by ring
+  have hq : g.natDegree / (F.e₁ * F.f₁) = (L.ℓ * L.r.natDegree) * s := by
+    rw [hs, hED, mul_assoc, Nat.mul_div_cancel_left _ (Nat.mul_pos F.he₁ F.hf₁)]
+  have hs1 : s = 1 := by
+    have hmul : (L.ℓ * L.r.natDegree) * 1 = (L.ℓ * L.r.natDegree) * s := by
+      rw [mul_one]
+      exact hfloor.symm.trans hq
+    exact (Nat.eq_of_mul_eq_mul_left hqpos hmul).symm
+  have hdeg : g.natDegree = (F.e₁ * L.ℓ) * (F.f₁ * L.r.natDegree) := by
+    rw [hs, hs1, mul_one]
+  -- steps 3 and 4
+  have htype : typeOf g = ⟨{(F.e₁ * L.ℓ, F.f₁ * L.r.natDegree)}⟩ :=
+    factorizationType_eq_of_dvd hEpos hDpos
+      (by rw [typeOf_degree hgm]; exact hdeg)
+      (fun p hp => efPair_pos_of_mem hgm hp) hA hB
+  exact ⟨htype, irreducible_of_singleton_typeOf hgm htype⟩
+
 end Uniformity.Density.Tower
 
 /-! ## Axiom footprint -/
@@ -226,5 +360,7 @@ end Uniformity.Density.Tower
 section AxCheck
 
 #print axioms Uniformity.Density.Tower.Tier1TypeOfStatement
+#print axioms Uniformity.Density.Tower.irreducible_of_singleton_typeOf
+#print axioms Uniformity.Density.Tower.tier1_typeOf_of_ramLeg
 
 end AxCheck
