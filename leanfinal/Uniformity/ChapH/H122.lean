@@ -328,7 +328,26 @@ theorem uClusterNorm_rateSpecies_of_betaLeg {O : Type} [CommRing O] [IsDomain O]
         ≤ (1 / 3 : ℝ) * (N : ℝ) * (residueCard O : ℝ) ^ (m * (N - 1))
             * ((residueCard O : ℝ) ^ (N - 1))⁻¹) :
     RateSpecies (residueCard O) 1 1 1 (fun N => uClusterNorm O π m N) := by
-  sorry
+  have hQ2 : 2 ≤ residueCard O := two_le_residueCard O
+  have hQ0 : (0 : ℝ) < (residueCard O : ℝ) := by
+    have : (2 : ℝ) ≤ (residueCard O : ℝ) := by exact_mod_cast hQ2
+    linarith
+  interval_cases m
+  · -- `m = 2`: LANDED unconditionally, the empty β bucket route (`hbeta` is NOT used)
+    exact uClusterNorm_rateSpecies_two hπ
+  · -- `m = 3`: normalize §3's induction by the census `Q^(3(N−1))`
+    intro M hM
+    have hkey := uCluster_three_le_of_betaLeg hπ hbeta M hM
+    have hden : (0 : ℝ) < (residueCard O : ℝ) ^ (3 * (M - 1)) := pow_pos hQ0 _
+    have hpow2 : ((residueCard O : ℝ) ^ (M - 1))⁻¹ * (residueCard O : ℝ) ^ (3 * (M - 1))
+        = (residueCard O : ℝ) ^ (2 * (M - 1)) := by
+      rw [inv_mul_eq_iff_eq_mul₀ (ne_of_gt (pow_pos hQ0 (M - 1))), ← pow_add]
+      congr 1
+      omega
+    simp only [uClusterNorm]
+    rw [div_le_iff₀ hden]
+    refine le_trans hkey (le_of_eq ?_)
+    rw [pow_one, one_mul, mul_assoc, hpow2]
 
 end Uniformity.Density.Induction
 
