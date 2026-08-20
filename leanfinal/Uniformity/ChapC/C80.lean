@@ -3,6 +3,7 @@ Copyright (c) 2026 Asvin G. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
+import Uniformity.ChapC.C04
 import Uniformity.ChapC.C67
 import Uniformity.ChapC.C44
 import Uniformity.ChapC.C97
@@ -260,5 +261,90 @@ theorem pure_f₅ : IsDvPure (s2Frame h2 hq) (f₅ O) 5 2 := by
       rw [f₅_natDegree, e1_eq h2 hq, f1_eq h2 hq]
     rw [hidx]
     exact dvside_f₅_two_mem h2 hq
+
+/-! ## 4. The side endpoints and the level residual `ρ₅` -/
+
+include h2 hq in
+theorem hne_f₅ : (dvSideSet (s2Frame h2 hq) (f₅ O) 5 2).Nonempty :=
+  ⟨0, dvside_f₅_zero_mem h2 hq⟩
+
+include h2 hq in
+theorem dvsidemin_f₅ : dvSideMin (s2Frame h2 hq) (f₅ O) 5 2 (hne_f₅ h2 hq) = 0 :=
+  Nat.le_zero.mp (Finset.min'_le _ 0 (dvside_f₅_zero_mem h2 hq))
+
+include h2 hq in
+theorem hp_f₅ : dvHgt (s2Frame h2 hq) (f₅ O)
+    (dvSideMin (s2Frame h2 hq) (f₅ O) 5 2 (hne_f₅ h2 hq)) = ((5 : ℕ) : ℕ∞) := by
+  rw [dvsidemin_f₅ h2 hq, dvhgt_f₅_0 h2 hq]
+  rfl
+
+include h2 hq in
+theorem dvsidemax_f₅ : dvSideMax (s2Frame h2 hq) (f₅ O) 5 2 (hne_f₅ h2 hq) = 2 := by
+  classical
+  refine le_antisymm (Finset.max'_le _ _ _ ?_) (Finset.le_max' _ 2 (dvside_f₅_two_mem h2 hq))
+  intro y hy
+  have hrange := Finset.mem_range.mp (Finset.mem_filter.mp hy).1
+  have hon := (Finset.mem_filter.mp hy).2
+  rw [f₅_natDegree] at hrange
+  interval_cases y
+  · norm_num
+  · exact absurd (dvhgt_f₅_1 h2 hq) hon.2
+  · norm_num
+  · exact absurd (dvhgt_f₅_ge_three h2 hq 3 (by norm_num)) hon.2
+  · exact absurd (dvhgt_f₅_ge_three h2 hq 4 (by norm_num)) hon.2
+  · exact absurd (dvhgt_f₅_ge_three h2 hq 5 (by norm_num)) hon.2
+
+include h2 hq in
+theorem dvsidedeg_f₅ : dvSideDeg (s2Frame h2 hq) (f₅ O) 5 2 (hne_f₅ h2 hq) = 1 := by
+  rw [dvSideDeg, dvsidemax_f₅ h2 hq, dvsidemin_f₅ h2 hq]
+
+/-- the level residual of `f₅` at `(5, 2)`, pinned at `M₀ = 5`. -/
+noncomputable def ρ₅ : Polynomial ((s2Frame h2 hq).stageField 1 (s2Frame_pin h2 hq)) :=
+  dvResPoly (s2Frame h2 hq) 1 (s2Frame_pin h2 hq) (f₅ O) 5 2 (hne_f₅ h2 hq) 5 (hp_f₅ h2 hq)
+
+include h2 hq in
+theorem ρ₅_spec : (ρ₅ h2 hq).natDegree = 1 ∧ (ρ₅ h2 hq).coeff 0 ≠ 0 := by
+  have h := natDegree_dvResPoly (s2Frame h2 hq) h2 1 (s2Frame_pin h2 hq)
+    (by norm_num : 0 < 2) (by decide : Nat.Coprime 5 2) (hne_f₅ h2 hq) (hp_f₅ h2 hq)
+  rw [dvsidedeg_f₅ h2 hq] at h
+  exact h
+
+/-! ## 5. The residue-field collapse: `|K₁| = 2` identifies the residual with the label -/
+
+private theorem eq_one_of_card_two {K : Type} [Field K] (hcard : Nat.card K = 2)
+    {z : K} (hz : z ≠ 0) : z = 1 := by
+  haveI : Finite K := Nat.finite_of_card_ne_zero (by rw [hcard]; norm_num)
+  have hu : Nat.card Kˣ = 1 := by rw [Nat.card_units, hcard]
+  haveI : Subsingleton Kˣ := (Nat.card_eq_one_iff_unique.mp hu).1
+  have h1 : hz.isUnit.unit = 1 := Subsingleton.elim _ _
+  calc z = ((hz.isUnit.unit : Kˣ) : K) := (hz.isUnit.unit_spec).symm
+    _ = 1 := by rw [h1]; rfl
+
+private theorem eq_X_add_one_of_card_two {K : Type} [Field K] (hcard : Nat.card K = 2)
+    {p : Polynomial K} (hd : p.natDegree = 1) (h0 : p.coeff 0 ≠ 0) :
+    p = Polynomial.X + Polynomial.C 1 := by
+  have hne0 : p ≠ 0 := fun hz => by simp [hz] at hd
+  have h1 : p.coeff 1 ≠ 0 := by
+    have := Polynomial.leadingCoeff_ne_zero.mpr hne0
+    rwa [show p.leadingCoeff = p.coeff p.natDegree from rfl, hd] at this
+  have hp : p = Polynomial.C (p.coeff 1) * Polynomial.X + Polynomial.C (p.coeff 0) :=
+    Polynomial.eq_X_add_C_of_degree_le_one (Polynomial.natDegree_le_iff_degree_le.mp (le_of_eq hd))
+  rw [hp, eq_one_of_card_two hcard h1, eq_one_of_card_two hcard h0, map_one, one_mul]
+
+include h2 hq in
+theorem card_K₁ : Nat.card ((s2Frame h2 hq).stageField 1 (s2Frame_pin h2 hq)) = 2 := by
+  rw [KeyFrame.card_stageField (s2Frame h2 hq) h2 1 (s2Frame_pin h2 hq), hq, f1_eq h2 hq,
+    pow_one]
+
+include h2 hq in
+/-- ★ **the residual IS the label**: `ρ₅ = towerLabel s2Tower` — both are degree-1 with
+nonzero endpoints over the 2-element field `K₁`, hence both are `X + 1`. -/
+theorem ρ₅_eq_towerLabel : ρ₅ h2 hq = towerLabel (s2Tower h2 hq) := by
+  letI : Field ((s2Frame h2 hq).stageField 1 (s2Frame_pin h2 hq)) :=
+    s2StageFieldInst h2 hq 1 (s2Frame_pin h2 hq)
+  have hspec := towerLabel_spec (s2Tower h2 hq) h2
+  have hdeg : (towerLabel (s2Tower h2 hq)).natDegree = 1 := hspec.2.2.1
+  rw [eq_X_add_one_of_card_two (card_K₁ h2 hq) (ρ₅_spec h2 hq).1 (ρ₅_spec h2 hq).2,
+    eq_X_add_one_of_card_two (card_K₁ h2 hq) hdeg hspec.2.2.2]
 
 end Uniformity.Density.Tower.C80
