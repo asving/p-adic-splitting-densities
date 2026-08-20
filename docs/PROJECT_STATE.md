@@ -7302,3 +7302,54 @@ labelled-impure probe (keyDeg₂ = D₂ = 2 at (e₂,f₂) = (2,1)), queued.
 
 NEXT: unchanged from #108 plus (new) the linTower probe for
 C.77/C.78/C.80. Owner items: + the C.64 re-sign question.
+
+**2026-08-20 DATED APPEND #110 — THE D-CARRY SWEEP CLOSES AT 7 OF 8:
+the tower-borne probe built (s2Tower + f₅), and C.77 AND C.80 both
+REFUTED at it — four signed exact-degree statements have now fallen in
+ONE session, each with its floor conjunct surviving.**
+
+(1) ★ `ChapC/C80.lean` (WIRED, roll-up 97 imports green; 10 AxCheck
+lines ALL Lean-core, zero `sorry`, no cite). The HX_SWEEP §7 brief
+executed: `s2Tower` — the (2,1,5) `TowerDatum` over `s2Frame`
+(s2Witness's rung 2 standalone; ALSO the s2-specific witness #102 (5)
+wanted, so BOTH probe frames now carry tower data) — and the probe
+`f₅ = (x+1)Φ′² + (4x+8)`: monic degree 5 (keyDeg₂ = D₂ = 4 ∤ 5, floor
+slack s = 1), digits (8+4x, 0, x+1), heights (5, ⊤, 0), (5,2)-pure,
+SQUAREFREE (divisibility descent at the quintic — three degree cases,
+each ending at 2∣3 or a parity clash). Numerically pre-certified
+before any Lean.
+  * ★ THE BONUS MECHANISM: `|K₁| = 2` (C.04's card_stageField at hq)
+    collapses every degree-1 polynomial with nonzero endpoints to
+    `X + 1`, so `dvResPoly f₅ = towerLabel s2Tower` with NO twist
+    arithmetic — the residual leg of both `HasLabel` and
+    `BlockContext` closes abstractly. (Reusable: any q = 2 residual
+    identification can use this collapse.)
+  * ★ `tiePurePower_false` — **NODE C.80's signed `tie_pure_power` is
+    FALSE**: all hypotheses hold at μ₂ = 1 (`blockContext_f₅`, `hres`
+    via the collapse), `blockFactor = f₅` (the C67 maximality trick),
+    and the exact-degree conjunct demands 5 = 4 — while the FLOOR
+    conjunct `mult₂ = 1` is TRUE at the same instance (`mult₂_f₅`),
+    the THIRD repeat of the fail-on-exact-survive-on-floor signature.
+  * ★ `partialProjection_false` — **NODE C.77's signed
+    `partial_projection` is FALSE** through clause (iii)
+    (`deg blockFactor = D₂·mult₂` = 4 vs 5), from `BlockContext` ALONE.
+
+(2) THE SWEEP'S FINAL TABLE (HX_SWEEP §7, updated): 8 exact-degree
+sites — C.35 cl.3 + C.40 (iii) BLOCKED (members), C.64 + C.67 + C.77 +
+C.80 **REFUTED machine-checked**, C.48 LANDED (the protected,
+hypothesis-shaped form), C.78 the lone open candidate (DIFFERENT
+shape: an ∃-divisor-at-exact-degree + conditional typeOf — the FGMN
+block-decision content, possibly TRUE; needs level-2 dv2 side data of
+a probe, beyond the level-1 instruments; not adjudicated).
+  ★ THE SYSTEMATIC FINDING, now at full strength for the owner: the
+  EXACT-DEGREE STATEMENT SHAPE IS DEAD in chapter C — four signed
+  statements refuted in one session by two probe frames, always at the
+  same mechanism (floor-divided bodies cannot see deg mod keyDeg₂).
+  Every re-sign should use the floor form or carry the degree as a
+  hypothesis (C.48's landed shape). Re-sign questions now pending for
+  FOUR nodes: C.27, C.64, C.67, C.77+C.80 (owner items).
+
+NEXT: unchanged from #108/#109 — (a) the C.131 dv-engine formalization
+(after the Codex pass, Sun); (b) freeze v2 (owner decisions); (c)
+chapter C unlanded names; (d) C.78's level-2 analysis (needs dv2 probe
+instruments); (e) E.57.
