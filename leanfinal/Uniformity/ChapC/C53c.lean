@@ -83,6 +83,153 @@ theorem linKey_coeff0 : (linKey π).coeff 0 = π := by simp [linKey]
 
 theorem linKey_coeff1 : (linKey π).coeff 1 = 1 := by simp [linKey, coeff_C]
 
+/-! ## 2. The frame legs — the `X`-adic polygon of `Φ′ = X + π`
+
+Mirrors `C97.lean`'s `s2Key_*` battery at `(u, ℓ) = (h, e₁) = (1, 1)`: the two heights are
+`addVal π = 1` and `addVal 1 = 0`, the cleared support value is `1`, both endpoints attain it,
+the side is `{0, 1}`, and the pin is `H₀ = 1`. -/
+
+/-- height `1` at abscissa `0` — where `Irreducible π` enters as `addVal O π = 1`. -/
+theorem linKey_h0 (hπ : Irreducible π) : npHgt X (linKey π) 0 = (1 : ℕ∞) := by
+  rw [npHgt_X, linKey_coeff0, addVal_uniformizer hπ]
+
+/-- height `0` at abscissa `1`: `Φ′` is monic. -/
+theorem linKey_h1 : npHgt X (linKey π) 1 = (0 : ℕ∞) := by
+  rw [npHgt_X, linKey_coeff1]
+  exact (IsDiscreteValuationRing.addVal O).map_one
+
+/-- the cleared support value at the slope `h/e₁ = 1/1` is `1`: the two cleared terms are
+`1·1 + 0 = 1` and `1·0 + 1 = 1`. -/
+theorem linKey_supp (hπ : Irreducible π) : suppVal X (linKey π) 1 1 = (1 : ℕ∞) := by
+  rw [suppVal, linKey_natDegree, show Finset.range 2 = {0, 1} from rfl]
+  simp [linKey_h0 hπ, linKey_h1]
+
+/-- **`Φ′` is `(1,1)`-pure**: both endpoints of the abscissa range `0 … 1` attain the support
+value — the polygon is the single side of slope `−1`. -/
+theorem linKey_pure (hπ : Irreducible π) : IsPure X (linKey π) 1 1 := by
+  have hdd : (linKey π).natDegree / (X : Polynomial O).natDegree = 1 := by
+    simp [linKey_natDegree]
+  refine ⟨?_, ?_⟩
+  · rw [OnSide, linKey_h0 hπ, linKey_supp hπ]; simp
+  · rw [hdd, OnSide, linKey_h1, linKey_supp hπ]; simp
+
+theorem linKey_ne : (sideSet X (linKey π) 1 1).Nonempty :=
+  sideSet_nonempty (μ := 1) monic_X (by simp) linKey_monic (by simp [linKey_natDegree]) 1 1
+
+theorem linKey_zero_mem (hπ : Irreducible π) : 0 ∈ sideSet X (linKey π) 1 1 := by
+  classical
+  refine Finset.mem_filter.mpr ⟨Finset.mem_range.mpr (by simp [linKey_natDegree]), ?_⟩
+  exact (linKey_pure hπ).1
+
+theorem linKey_one_mem (hπ : Irreducible π) : 1 ∈ sideSet X (linKey π) 1 1 := by
+  classical
+  refine Finset.mem_filter.mpr ⟨Finset.mem_range.mpr (by simp [linKey_natDegree]), ?_⟩
+  have := (linKey_pure hπ).2
+  rwa [show (linKey π).natDegree / (X : Polynomial O).natDegree = 1 from by
+    simp [linKey_natDegree]] at this
+
+theorem linKey_sideMin (hπ : Irreducible π) :
+    sideMin X (linKey π) 1 1 linKey_ne = 0 :=
+  Nat.le_zero.mp (Finset.min'_le _ 0 (linKey_zero_mem hπ))
+
+theorem linKey_sideMax (hπ : Irreducible π) :
+    sideMax X (linKey π) 1 1 linKey_ne = 1 := by
+  classical
+  refine le_antisymm ?_ (Finset.le_max' _ 1 (linKey_one_mem hπ))
+  have hmem : sideMax X (linKey π) 1 1 linKey_ne ∈ sideSet X (linKey π) 1 1 :=
+    Finset.max'_mem _ _
+  have h := Finset.mem_range.mp (Finset.mem_filter.mp hmem).1
+  rw [linKey_natDegree] at h
+  omega
+
+/-- the side has residual degree `d = (1 − 0)/1 = 1`, which is the frame's `f₁`. -/
+theorem linKey_sideDeg (hπ : Irreducible π) :
+    sideDeg X (linKey π) 1 1 linKey_ne = 1 := by
+  rw [sideDeg, linKey_sideMax hπ, linKey_sideMin hπ]
+
+/-- **the pin numeral**: the polygon height at the side's left endpoint is `1`, so the GC-1 pin
+of this frame is `H₀ = 1`. -/
+theorem linKey_pinHgt (hπ : Irreducible π) :
+    npHgt X (linKey π) (sideMin X (linKey π) 1 1 linKey_ne) = (1 : ℕ∞) := by
+  rw [linKey_sideMin hπ, linKey_h0 hπ]
+
+/-- **`Φ′ = X + π` is irreducible — EISENSTEIN at the maximal ideal** (`C97.lean`'s
+`s2Key_irr` argument at the linear key): `𝔪 = (π)`, the constant coefficient `π` lies in `𝔪`
+but not in `𝔪² = (π²)` — otherwise `π = π²c`, whence `π·(1 − πc) = 0`, whence (`O` a domain,
+`π ≠ 0`) `1 = πc` and `π` is a unit — and the leading coefficient `1` does not lie in `𝔪`. -/
+theorem linKey_irr (hπ : Irreducible π) : Irreducible (linKey π) := by
+  have hmax : IsLocalRing.maximalIdeal O = Ideal.span {π} := hπ.maximalIdeal_eq
+  have hE : (linKey π).IsEisensteinAt (IsLocalRing.maximalIdeal O) := by
+    constructor
+    · rw [(linKey_monic (π := π)).leadingCoeff]
+      exact (Ideal.ne_top_iff_one _).mp (IsLocalRing.maximalIdeal.isMaximal O).ne_top
+    · intro n hn
+      rw [linKey_natDegree] at hn
+      interval_cases n
+      rw [linKey_coeff0, hmax, Ideal.mem_span_singleton]
+    · rw [linKey_coeff0, hmax, Ideal.span_singleton_pow, Ideal.mem_span_singleton]
+      rintro ⟨c, hc⟩
+      have h0 : π * (1 - π * c) = 0 := by linear_combination hc
+      rcases mul_eq_zero.mp h0 with h | h
+      · exact hπ.ne_zero h
+      · exact hπ.not_isUnit ⟨⟨π, c, by linear_combination -h, by linear_combination -h⟩, rfl⟩
+  exact hE.irreducible inferInstance (linKey_monic).isPrimitive
+    (by rw [linKey_natDegree]; norm_num)
+
+/-- the D9 private-helper pattern (C.04/C.12/C.19/C.22/C.44/C.97): the order-0 key `X` is a key,
+so `resField X` is a field. -/
+private theorem isKey_X : IsKey (Polynomial.X : Polynomial O) where
+  monic := Polynomial.monic_X
+  pos := by simp
+  irred := by rw [Polynomial.map_X]; exact Polynomial.irreducible_X
+
+/-- **the frame's residual read is irreducible of degree `1`** — B.30's `natDegree_resPoly`
+supplies `natDegree = sideDeg = 1` together with `coeff 0 ≠ 0`; a degree-one polynomial over the
+field `resField X` is irreducible (mirrors `C97.lean`'s `s2Key_resirr`). -/
+theorem linKey_resirr (hπ : Irreducible π) (H₀ : ℕ)
+    (hH : npHgt X (linKey π) (sideMin X (linKey π) 1 1 linKey_ne) = (H₀ : ℕ∞)) :
+    Irreducible (resPoly π X (linKey π) 1 1 linKey_ne H₀) ∧
+      (resPoly π X (linKey π) 1 1 linKey_ne H₀).natDegree = 1 := by
+  letI : Field (resField (X : Polynomial O)) := instFieldResField isKey_X
+  have htop : suppVal X (linKey π) 1 1 ≠ ⊤ := by
+    rw [linKey_supp hπ]; exact ENat.coe_ne_top 1
+  obtain ⟨hdeg, hc0⟩ :=
+    natDegree_resPoly hπ isKey_X Nat.one_pos (Nat.coprime_one_left 1) htop linKey_ne hH
+  rw [linKey_sideDeg hπ] at hdeg
+  have hne0 : resPoly π X (linKey π) 1 1 linKey_ne H₀ ≠ 0 := fun hz => hc0 (by rw [hz]; simp)
+  exact ⟨irreducible_of_degree_eq_one ((degree_eq_iff_natDegree_eq hne0).mpr hdeg), hdeg⟩
+
+/-! ## 3. The frame -/
+
+/-- **The refuting frame** `(e₁, f₁, h; Φ′) = (1, 1, 1; X + π)`, over any DVR with a chosen
+uniformizer `π`.  Supply, not a signed object: its purpose is to instantiate refutations (this
+file) with the obstructing digit kept clear of the lift constants (see the module docstring's
+"why not `s2Frame`" note). -/
+noncomputable def linFrame (hπ : Irreducible π) : KeyFrame O π where
+  e₁ := 1
+  f₁ := 1
+  h := 1
+  key := linKey π
+  he₁ := Nat.one_pos
+  hf₁ := Nat.one_pos
+  hcop := Nat.coprime_one_left 1
+  hmonic := linKey_monic
+  hdeg := by rw [linKey_natDegree]
+  hirr := linKey_irr hπ
+  hpure := linKey_pure hπ
+  hne := linKey_ne
+  hresirr := fun H₀ hH => linKey_resirr hπ H₀ hH
+
+/-- the frame's four numerals, by `rfl`. -/
+theorem linFrame_data (hπ : Irreducible π) :
+    (linFrame hπ).e₁ = 1 ∧ (linFrame hπ).f₁ = 1 ∧ (linFrame hπ).h = 1 ∧
+      (linFrame hπ).key = Polynomial.X + Polynomial.C π :=
+  ⟨rfl, rfl, rfl, rfl⟩
+
+/-- **the pin exists**: `linFrame` is pinned at `H₀ = 1`. -/
+theorem linFrame_pin (hπ : Irreducible π) : (linFrame hπ).Pin 1 :=
+  linKey_pinHgt hπ
+
 end Uniformity.Density.Tower.C53c
 
 /-! ## Axiom footprint -/
@@ -90,6 +237,8 @@ end Uniformity.Density.Tower.C53c
 section AxCheck
 
 #print axioms Uniformity.Density.Tower.C53c.linKey
-#print axioms Uniformity.Density.Tower.C53c.linKey_monic
+#print axioms Uniformity.Density.Tower.C53c.linKey_irr
+#print axioms Uniformity.Density.Tower.C53c.linFrame
+#print axioms Uniformity.Density.Tower.C53c.linFrame_pin
 
 end AxCheck
