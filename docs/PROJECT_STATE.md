@@ -7228,3 +7228,40 @@ NEXT: (a) freeze v2 (after the E.61/D62w read — the Kt question may be
 a finding in its own right); (b) chapter C's unlanded names; (c) C.59's
 `L.ℓ`-half (HARD); (d) E.57. Owner items: unchanged + D-TIF-1..4 and
 the freeze v1 packet (draft + review) ready for a read.
+
+**2026-08-20 DATED APPEND #108 — THE DV-GRADED ENGINE ASSEMBLED AND
+NUMERICALLY CERTIFIED: the ONE proof behind five blocked chapter-C
+sites now exists as a math document with a formalization plan, and its
+floor law survived a 4143-test pre-registered falsifier.**
+
+(1) `docs/in-progress/DV_GRADED_ENGINE_2026-08-20.md` (math-first, per
+the standing directive): the EFF.GENTOW3.22–.24 weight ledger restated
+with full justifications as SIX named lemmas (L1–L6) + three
+corollaries, with the reframing that unlocks it: **the two-variable
+product law is FREE** (monomial weights add in `O[x][Y]` — L1 is
+support arithmetic); the entire difficulty of the "missing dv-graded
+product law" (C.52 obstruction 1, C.33's twin audit) lives in the
+REDUCTION calculus (the x-carry and the Φ₂-recarry), each priced by
+one landed structure field (`hfloor` ⟹ δ ≥ 1). One engine ⟹ C.72's
+`shadow_floor`/`shadow_faithful_band` (clause (i)+(ii) verbatim),
+C.52's `dvAbove_boxMonomial` + Steps 1–3 (hence `towerLocus_iff_budget`
+= leg 1, C.53's ONLY remaining input), C.54's node floors. Honest gaps
+in §3, incl. **THE one cite-or-prove decision: L6 (GENHN-2′'s
+weight-to-height conversion) — an accepted annex, not a printed proof;
+attempt at the reduced normal form first, owner gate-(b) question only
+on stall.** Formalization plan: 8 nodes C.131a–h, ≈30–60 min each.
+
+(2) ★ CERTIFIED: `verification/dv_ledger_cert.py`, exact ℤ arithmetic
+at the s2 slice (`Φ₂ = Φ′² − 4x`, C.97's own display value) — **4143
+tests, 0 FAILS**: the box-monomial floor (C.52's `dvAbove_boxMonomial`
+exactly) EXHAUSTIVE including overflowing carries (`a ≥ D′`,
+`b ≥ e₂f₂`), plus 4000 random integral `f` against the summed x-basis
+floor at `μ₂ ≤ 3`. Sharpness: equality attained in 372/400 probes —
+the certified law is the sharp statement. Protocol: Codex adversarial
+pass on the document owed (budget resets Sun Aug 23), THEN C.131a.
+
+NEXT: (a) the C.131 formalization arc (after the Codex pass);
+(b) freeze v2 (owner decisions D-TIF-4/5 pending);
+(c) chapter C's remaining unlanded names off the frontier list.
+Owner packet ready: freeze v1+review, D-TIF-1..5, the C.27/C.67
+re-sign questions, the L6 cite-or-prove fallback.
