@@ -347,4 +347,284 @@ theorem ρ₅_eq_towerLabel : ρ₅ h2 hq = towerLabel (s2Tower h2 hq) := by
   rw [eq_X_add_one_of_card_two (card_K₁ h2 hq) (ρ₅_spec h2 hq).1 (ρ₅_spec h2 hq).2,
     eq_X_add_one_of_card_two (card_K₁ h2 hq) hdeg hspec.2.2.2]
 
+/-! ## 6. `Squarefree f₅` — divisibility descent at degree 5
+
+The `g₀_squarefree` argument (C67), run at the quintic.  A repeated factor may be normalized
+MONIC (its leading coefficient squares into `f₅`'s leading `1`); the two live degrees are
+handled by coefficient systems: `deg p = 2` forces `2 ∣ b`, `2 ∣ c` and then the identity
+`3 = 2·(e − b′c′e²)`; `deg p = 1` splits on `2 ∣ a`, each branch reaching `2 ∣ 3` or
+`2 ∣ a ∧ 2 ∤ a`. -/
+
+private theorem f₅_eq : (f₅ O)
+    = Polynomial.X ^ 5 + Polynomial.X ^ 4 - Polynomial.C 4 * Polynomial.X ^ 3
+      - Polynomial.C 4 * Polynomial.X ^ 2 + Polynomial.C 8 * Polynomial.X
+      + Polynomial.C 12 := by
+  rw [f₅, s2Key]
+  simp only [map_ofNat, map_one]
+  ring
+
+private theorem eq_sum_three {p : Polynomial O} (h : p.natDegree ≤ 3) :
+    p = Polynomial.C (p.coeff 3) * Polynomial.X ^ 3 + Polynomial.C (p.coeff 2) * Polynomial.X ^ 2
+      + Polynomial.C (p.coeff 1) * Polynomial.X + Polynomial.C (p.coeff 0) := by
+  ext n
+  simp only [Polynomial.coeff_add, Polynomial.coeff_C_mul, Polynomial.coeff_X_pow,
+    Polynomial.coeff_X, Polynomial.coeff_C]
+  match n with
+  | 0 => simp
+  | 1 => simp
+  | 2 => simp
+  | 3 => simp
+  | (m + 4) =>
+    have : p.coeff (m + 4) = 0 :=
+      Polynomial.coeff_eq_zero_of_natDegree_lt (by omega)
+    simp [this]
+
+include h2 in
+theorem f₅_squarefree : Squarefree (f₅ O) := by
+  have hprime : Prime (2 : O) := UniqueFactorizationMonoid.irreducible_iff_prime.mp h2
+  have h2dvd3 : ¬ (2 : O) ∣ 3 := by
+    intro h3
+    obtain ⟨t, ht⟩ := h3
+    exact h2.not_isUnit (isUnit_of_dvd_one ⟨t - 1, by linear_combination ht⟩)
+  have h4ne : (4 : O) ≠ 0 := by
+    rw [show (4 : O) = 2 ^ 2 by norm_num]
+    exact pow_ne_zero 2 h2.ne_zero
+  intro p hp
+  by_contra hpu
+  have hg0 : (f₅ O) ≠ 0 := (f₅_monic (O := O)).ne_zero
+  have hpne : p ≠ 0 := by
+    rintro rfl
+    rw [zero_mul] at hp
+    exact hg0 (zero_dvd_iff.mp hp)
+  obtain ⟨q, hq⟩ := hp
+  have hqne : q ≠ 0 := by
+    rintro rfl
+    rw [mul_zero] at hq
+    exact hg0 hq
+  have hlead : p.leadingCoeff * (p.leadingCoeff * q.leadingCoeff) = 1 := by
+    have h1 := congrArg Polynomial.leadingCoeff hq
+    rw [(f₅_monic (O := O)).leadingCoeff, Polynomial.leadingCoeff_mul,
+      Polynomial.leadingCoeff_mul] at h1
+    linear_combination -h1
+  have hAunit : IsUnit p.leadingCoeff := isUnit_of_dvd_one ⟨_, hlead.symm⟩
+  have hdeg5 : p.natDegree + p.natDegree + q.natDegree = 5 := by
+    have h := congrArg Polynomial.natDegree hq
+    rw [f₅_natDegree, Polynomial.natDegree_mul (mul_ne_zero hpne hpne) hqne,
+      Polynomial.natDegree_mul hpne hpne] at h
+    omega
+  -- kill the constant case; then normalize `p` monic
+  rcases Nat.lt_or_ge p.natDegree 1 with hd0 | hd1
+  · have hdp : p.natDegree = 0 := by omega
+    have hc : IsUnit (p.coeff 0) := by
+      have h : p.leadingCoeff = p.coeff 0 := by
+        rw [show p.leadingCoeff = p.coeff p.natDegree from rfl, hdp]
+      rwa [h] at hAunit
+    exact hpu ((Polynomial.eq_C_of_natDegree_eq_zero hdp) ▸ Polynomial.isUnit_C.mpr hc)
+  obtain ⟨u, hu⟩ := hAunit
+  set P : Polynomial O := Polynomial.C (↑u⁻¹ : O) * p with hP
+  have hune : (↑u⁻¹ : O) ≠ 0 := Units.ne_zero u⁻¹
+  have hPdeg : P.natDegree = p.natDegree := by
+    rw [hP, Polynomial.natDegree_C_mul hune]
+  have hPmonic : P.Monic := by
+    rw [Polynomial.Monic, hP, Polynomial.leadingCoeff_mul, Polynomial.leadingCoeff_C, ← hu]
+    exact Units.inv_mul u
+  have hQ : f₅ O = P * P * (Polynomial.C (↑u : O) * Polynomial.C (↑u : O) * q) := by
+    have hcanC : (Polynomial.C (↑u⁻¹ : O)) * Polynomial.C (↑u : O) = 1 := by
+      rw [← Polynomial.C_mul, Units.inv_mul, Polynomial.C_1]
+    rw [hP, hq]
+    calc p * p * q
+        = ((Polynomial.C (↑u⁻¹ : O)) * Polynomial.C (↑u : O))
+          * (((Polynomial.C (↑u⁻¹ : O)) * Polynomial.C (↑u : O)) * (p * p * q)) := by
+          rw [hcanC]; ring
+      _ = Polynomial.C ↑u⁻¹ * p * (Polynomial.C ↑u⁻¹ * p)
+          * (Polynomial.C ↑u * Polynomial.C ↑u * q) := by ring
+  set Q : Polynomial O := Polynomial.C (↑u : O) * Polynomial.C (↑u : O) * q with hQdef
+  have hQne : Q ≠ 0 := by
+    rw [hQdef]
+    exact mul_ne_zero (mul_ne_zero (Polynomial.C_ne_zero.mpr (Units.ne_zero u))
+      (Polynomial.C_ne_zero.mpr (Units.ne_zero u))) hqne
+  have hQmonic : Q.Monic := by
+    have hPP : (P * P).Monic := hPmonic.mul hPmonic
+    have h1 := congrArg Polynomial.leadingCoeff hQ
+    rw [(f₅_monic (O := O)).leadingCoeff, Polynomial.leadingCoeff_mul, hPP] at h1
+    rw [Polynomial.Monic]
+    linear_combination -h1
+  have hQdeg : P.natDegree + P.natDegree + Q.natDegree = 5 := by
+    have h := congrArg Polynomial.natDegree hQ
+    have hPne : P ≠ 0 := hPmonic.ne_zero
+    rw [f₅_natDegree, Polynomial.natDegree_mul (mul_ne_zero hPne hPne) hQne,
+      Polynomial.natDegree_mul hPne hPne] at h
+    omega
+  -- the two live degrees
+  rcases Nat.lt_or_ge p.natDegree 2 with hd1' | hd2
+  · -- `deg P = 1`, `deg Q = 3`
+    have hdP : P.natDegree = 1 := by omega
+    have hdQ : Q.natDegree = 3 := by omega
+    have hPform : P = Polynomial.X + Polynomial.C (P.coeff 0) := by
+      have h := Polynomial.eq_X_add_C_of_degree_le_one
+        (Polynomial.natDegree_le_iff_degree_le.mp (le_of_eq hdP))
+      have hc1 : P.coeff 1 = 1 := by
+        have hm := hPmonic
+        rwa [Polynomial.Monic, show P.leadingCoeff = P.coeff P.natDegree from rfl, hdP] at hm
+      rw [hc1, map_one, one_mul] at h
+      exact h
+    have hc3 : Q.coeff 3 = 1 := by
+      have hm := hQmonic
+      rwa [Polynomial.Monic, show Q.leadingCoeff = Q.coeff Q.natDegree from rfl, hdQ] at hm
+    have hQform : Q = Polynomial.X ^ 3
+        + Polynomial.C (Q.coeff 2) * Polynomial.X ^ 2
+        + Polynomial.C (Q.coeff 1) * Polynomial.X + Polynomial.C (Q.coeff 0) := by
+      have h := eq_sum_three (O := O) (p := Q) (le_of_eq hdQ)
+      rw [hc3, map_one, one_mul] at h
+      exact h
+    set a := P.coeff 0
+    set B := Q.coeff 2
+    set C' := Q.coeff 1
+    set D := Q.coeff 0
+    have hcanon : (f₅ O)
+        = Polynomial.C (B + 2 * a) * Polynomial.X ^ 4
+          + Polynomial.C (C' + 2 * a * B + a ^ 2) * Polynomial.X ^ 3
+          + Polynomial.C (D + 2 * a * C' + a ^ 2 * B) * Polynomial.X ^ 2
+          + Polynomial.C (2 * a * D + a ^ 2 * C') * Polynomial.X
+          + Polynomial.C (a ^ 2 * D) + Polynomial.X ^ 5 := by
+      rw [hQ, hPform, hQform]
+      simp only [map_add, map_mul, map_pow, map_ofNat, map_one]
+      ring
+    have hval := fun k => congrArg (fun r : Polynomial O => r.coeff k) (f₅_eq.symm.trans hcanon)
+    have s3 : (-4 : O) = C' + 2 * a * B + a ^ 2 := by
+      have h := hval 3
+      simp only [Polynomial.coeff_add, Polynomial.coeff_sub, Polynomial.coeff_C_mul,
+        Polynomial.coeff_X_pow, Polynomial.coeff_X, Polynomial.coeff_C] at h
+      norm_num at h
+      linear_combination h
+    have s1 : (8 : O) = 2 * a * D + a ^ 2 * C' := by
+      have h := hval 1
+      simp only [Polynomial.coeff_add, Polynomial.coeff_sub, Polynomial.coeff_C_mul,
+        Polynomial.coeff_X_pow, Polynomial.coeff_X, Polynomial.coeff_C] at h
+      norm_num at h
+      linear_combination h
+    have s0 : (12 : O) = a ^ 2 * D := by
+      have h := hval 0
+      simp only [Polynomial.coeff_add, Polynomial.coeff_sub, Polynomial.coeff_C_mul,
+        Polynomial.coeff_X_pow, Polynomial.coeff_X, Polynomial.coeff_C] at h
+      norm_num at h
+      linear_combination h
+    by_cases ha : (2 : O) ∣ a
+    · -- `2 ∣ a`: `a′²D = 3` and `a′(D + a′C′) = 2` with `2 ∣ C′` force `2 ∣ 3`
+      obtain ⟨a', ha'⟩ := ha
+      have hC : (2 : O) ∣ C' :=
+        ⟨-2 - 2 * a' * B - 2 * a' ^ 2, by linear_combination (-1 : O) * s3
+          - (2 * B + a + 2 * a') * ha'⟩
+      have hD3 : a' ^ 2 * D = 3 := by
+        refine mul_left_cancel₀ h4ne ?_
+        linear_combination (-1 : O) * s0 - D * (a + 2 * a') * ha'
+      have hsplit : a' * (D + a' * C') = 2 := by
+        refine mul_left_cancel₀ h4ne ?_
+        linear_combination (-1 : O) * s1 - (2 * D + C' * (a + 2 * a')) * ha'
+      have h2a' : ¬ (2 : O) ∣ a' := by
+        intro hdvd
+        obtain ⟨t, ht⟩ := hdvd
+        exact h2dvd3 ⟨2 * t ^ 2 * D, by linear_combination (-1 : O) * hD3
+          + (a' + 2 * t) * D * ht⟩
+      have h2sum : (2 : O) ∣ D + a' * C' := by
+        have hd2 : (2 : O) ∣ a' * (D + a' * C') := ⟨1, by linear_combination hsplit⟩
+        rcases hprime.dvd_mul.mp hd2 with h | h
+        · exact absurd h h2a'
+        · exact h
+      have h2D : (2 : O) ∣ D := by
+        obtain ⟨t, ht⟩ := h2sum
+        obtain ⟨w, hw⟩ := hC
+        exact ⟨t - a' * w, by linear_combination ht - a' * hw⟩
+      obtain ⟨t, ht⟩ := h2D
+      exact h2dvd3 ⟨a' ^ 2 * t, by linear_combination (-1 : O) * hD3 + a' ^ 2 * ht⟩
+    · -- `2 ∤ a`: `2 ∣ C′` (from `s1` + `s0`), then `s3` makes `a²` even
+      have h2a2 : ¬ (2 : O) ∣ a ^ 2 := by
+        intro hdvd
+        rcases hprime.dvd_mul.mp (show (2 : O) ∣ a * a by rw [← pow_two]; exact hdvd) with h | h <;>
+          exact ha h
+      have hC2 : (2 : O) ∣ C' := by
+        have h1 : (2 : O) ∣ a ^ 2 * C' := ⟨4 - a * D, by linear_combination (-1 : O) * s1⟩
+        exact (hprime.dvd_mul.mp h1).resolve_left h2a2
+      refine h2a2 ?_
+      obtain ⟨w, hw⟩ := hC2
+      exact ⟨-2 - w - a * B, by linear_combination (-1 : O) * s3 - hw⟩
+  · -- `deg P = 2`, `deg Q = 1`
+    have hdP : P.natDegree = 2 := by omega
+    have hdQ : Q.natDegree = 1 := by omega
+    have hc2 : P.coeff 2 = 1 := by
+      have hm := hPmonic
+      rwa [Polynomial.Monic, show P.leadingCoeff = P.coeff P.natDegree from rfl, hdP] at hm
+    have hPform : P = Polynomial.X ^ 2 + Polynomial.C (P.coeff 1) * Polynomial.X
+        + Polynomial.C (P.coeff 0) := by
+      have h := eq_sum_three (O := O) (p := P) (by omega)
+      have hc3' : P.coeff 3 = 0 := Polynomial.coeff_eq_zero_of_natDegree_lt (by omega)
+      rw [hc2, hc3', map_zero, zero_mul, zero_add, map_one, one_mul] at h
+      exact h
+    have hQform : Q = Polynomial.X + Polynomial.C (Q.coeff 0) := by
+      have h := Polynomial.eq_X_add_C_of_degree_le_one
+        (Polynomial.natDegree_le_iff_degree_le.mp (le_of_eq hdQ))
+      have hc1 : Q.coeff 1 = 1 := by
+        have hm := hQmonic
+        rwa [Polynomial.Monic, show Q.leadingCoeff = Q.coeff Q.natDegree from rfl, hdQ] at hm
+      rw [hc1, map_one, one_mul] at h
+      exact h
+    set b := P.coeff 1
+    set c := P.coeff 0
+    set e := Q.coeff 0
+    have hcanon : (f₅ O)
+        = Polynomial.C (2 * b + e) * Polynomial.X ^ 4
+          + Polynomial.C (b ^ 2 + 2 * c + 2 * b * e) * Polynomial.X ^ 3
+          + Polynomial.C (2 * b * c + b ^ 2 * e + 2 * c * e) * Polynomial.X ^ 2
+          + Polynomial.C (c ^ 2 + 2 * b * c * e) * Polynomial.X
+          + Polynomial.C (c ^ 2 * e) + Polynomial.X ^ 5 := by
+      rw [hQ, hPform, hQform]
+      simp only [map_add, map_mul, map_pow, map_ofNat, map_one]
+      ring
+    have hval := fun k => congrArg (fun r : Polynomial O => r.coeff k) (f₅_eq.symm.trans hcanon)
+    have s4 : (1 : O) = 2 * b + e := by
+      have h := hval 4
+      simp only [Polynomial.coeff_add, Polynomial.coeff_sub, Polynomial.coeff_C_mul,
+        Polynomial.coeff_X_pow, Polynomial.coeff_X, Polynomial.coeff_C] at h
+      norm_num at h
+      linear_combination h
+    have s3 : (-4 : O) = b ^ 2 + 2 * c + 2 * b * e := by
+      have h := hval 3
+      simp only [Polynomial.coeff_add, Polynomial.coeff_sub, Polynomial.coeff_C_mul,
+        Polynomial.coeff_X_pow, Polynomial.coeff_X, Polynomial.coeff_C] at h
+      norm_num at h
+      linear_combination h
+    have s1 : (8 : O) = c ^ 2 + 2 * b * c * e := by
+      have h := hval 1
+      simp only [Polynomial.coeff_add, Polynomial.coeff_sub, Polynomial.coeff_C_mul,
+        Polynomial.coeff_X_pow, Polynomial.coeff_X, Polynomial.coeff_C] at h
+      norm_num at h
+      linear_combination h
+    have s0 : (12 : O) = c ^ 2 * e := by
+      have h := hval 0
+      simp only [Polynomial.coeff_add, Polynomial.coeff_sub, Polynomial.coeff_C_mul,
+        Polynomial.coeff_X_pow, Polynomial.coeff_X, Polynomial.coeff_C] at h
+      norm_num at h
+      linear_combination h
+    have h2b : (2 : O) ∣ b := by
+      have h1 : (2 : O) ∣ b * b := ⟨-2 - c - b * e, by linear_combination (-1 : O) * s3⟩
+      exact (hprime.dvd_mul.mp h1).elim id id
+    have h2e : ¬ (2 : O) ∣ e := by
+      intro hdvd
+      obtain ⟨t, ht⟩ := hdvd
+      exact h2.not_isUnit (isUnit_of_dvd_one ⟨b + t, by linear_combination s4 + ht⟩)
+    have h2c : (2 : O) ∣ c := by
+      have h1 : (2 : O) ∣ c * (c * e) := ⟨6, by linear_combination (-1 : O) * s0⟩
+      rcases hprime.dvd_mul.mp h1 with h | h
+      · exact h
+      · rcases hprime.dvd_mul.mp h with h' | h'
+        · exact h'
+        · exact absurd h' h2e
+    obtain ⟨b', hb'⟩ := h2b
+    obtain ⟨c', hc'⟩ := h2c
+    -- `e·s1 − s0` gives `12 + 8b′c′e² = 8e`; divide by 4: `3 + 2b′c′e² = 2e` — `2 ∣ 3`
+    have hkey : (3 : O) + 2 * b' * c' * e ^ 2 = 2 * e := by
+      refine mul_left_cancel₀ h4ne ?_
+      linear_combination (-e) * s1 + s0 - 2 * e ^ 2 * c * hb' - 4 * e ^ 2 * b' * hc'
+    exact h2dvd3 ⟨e - b' * c' * e ^ 2, by linear_combination hkey⟩
+
 end Uniformity.Density.Tower.C80
