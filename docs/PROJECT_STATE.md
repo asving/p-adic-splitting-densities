@@ -7353,3 +7353,59 @@ NEXT: unchanged from #108/#109 — (a) the C.131 dv-engine formalization
 (after the Codex pass, Sun); (b) freeze v2 (owner decisions); (c)
 chapter C unlanded names; (d) C.78's level-2 analysis (needs dv2 probe
 instruments); (e) E.57.
+
+**2026-08-23 DATED APPEND #111 — THE ENGINE REVIEW: Codex returns
+NEEDS-REDESIGN on the dv-graded engine v1 (13 findings, 4 CRITICAL,
+all accepted) — the pricing arithmetic SURVIVES faithful, but the plan
+under-scoped the EXACT half, and the census's termination measure was
+arithmetically wrong.**
+
+(0) MODE. The Codex 7-day window reset Sun 08:37; the §5-protocol
+adversarial pass ran immediately (output captured UNTRUNCATED to
+`docs/in-progress/DV_GRADED_ENGINE_REVIEW_2026-08-23.md` — the
+tail-pipe lesson applied). 87.6k tokens; verdict line: "the central
+weight is not well-typed as specified, the stated termination measure
+is false, and the proposed engine omits the exact purity/residual
+mechanisms required by C.52."
+
+(1) THE FOUR CRITICALS, accepted: (i) `WT` needs the two-index support
+form to be well-typed; (ii) ★ the sketched termination measure
+`Σ (a + b·D′)` is INVARIANT under the x-carry's Y-branch
+((a,b) ↦ (a−D′, b+1) conserves it EXACTLY) — a genuine arithmetic
+error by this orchestrator, caught only by the decorrelated reviewer;
+(iii) Corollary A is not C.72's statement until the L6
+weight-to-height conversion exists (C.72 lives at `dv2Hgt` with
+threshold `theta = (μ₂−j)E₂ + margin`) — L6 is LOAD-BEARING, not an
+annex; (iv) ★★ THE STRUCTURAL ONE: the engine is a FLOOR engine;
+C.52's EXACT half (`IsDvPure` closure under products/powers,
+normalized `dvResPoly` multiplicativity/power-exactness) is NOT a
+lower-bound corollary — v1 silently under-scoped the second half of
+C.52's own obstruction 1 into L6. The exact half is a SECOND engine,
+or the FGMN cite route.
+
+(2) WHAT SURVIVES, per the findings' own text: the carry-pricing
+arithmetic and index directions (L2/L3/L4/the recarry audit) are
+confirmed FAITHFUL to EFF.GENTOW3.22–.24; Corollary B's numeric
+expression matches C.52's `dvAbove_boxMonomial` goal EXACTLY
+(coercions included); the 4143/0 numeric certification stands at its
+honest scope. The nine GAPs are itemized, fixable v2 obligations
+(hpure→all-coefficient bridge, C.46/C.47 private-pin exports, the
+quotient-side L4 bound, L6's true size, the faithful-band's
+ultrametric-exactness content, ℕ-subtraction hypotheses).
+
+(3) DISPOSITION: **v2 is an OWNER-INPUT item.** The #11 split — prove
+a second (exact) engine vs. take the FGMN cite for the exact half —
+is a cite-or-prove decision at owner gate (b), and it reshapes the
+C.131 node plan. The engine doc carries the supersession banner;
+nothing in it is a formalization target until the owner rules.
+NO LEAN WAS WRITTEN on the gated plan (the §5 protocol held).
+
+THE OWNER PACKET, consolidated (everything now waiting on Asvin):
+(a) the dv-engine v2 split decision (#111(3), above) — gate (b)
+adjacent; (b) the tower-instantiation freeze decisions D-TIF-1..5
+(#107); (c) FIVE exact-degree re-signs: C.27, C.64, C.67, C.77, C.80
+(repair template = C.48's hypothesis shape); (d) the FGMN cite
+signatures (C.92/C.94 — gates the §10 chain C.99–C.104); (e) I.10's
+field list; (f) the standing FGMN print-read, B39a rider,
+WeldObligations.w1 items. Non-owner queue: C.78's level-2 analysis,
+E.57, the C.123 gate table — fresh-session-scale research arcs.

@@ -1,5 +1,38 @@
 # THE DV-GRADED ENGINE — the one proof behind the chapter-C frontier (assembly, 2026-08-20)
 
+## ⛔ CODEX ADVERSARIAL PASS (2026-08-23, §5 protocol item (2)): **NEEDS-REDESIGN** — v1 SUPERSEDED
+
+Full findings: `DV_GRADED_ENGINE_REVIEW_2026-08-23.md` (13 findings, captured untruncated).
+The FOUR CRITICALs, all accepted on review:
+
+* **(#1)** the central weight `WT` is not well-typed as sketched — `Polynomial (Polynomial O)`
+  needs TWO support indices (outer `b` in `Y`, inner `a` in `x`, then `addVal` of the
+  `O`-coefficient); v2 must define `WT P := min over b ∈ P.support, min over a ∈ (P.coeff b).support, …`.
+* **(#6)** the sketched termination measure `Σ (a + b·D′)` is INVARIANT under the x-carry's
+  `Y`-branch (`(a, b) ↦ (a − D′, b + 1)` conserves it exactly) — a genuine arithmetic error;
+  the structural-recursion route (§3 gap 3's own suggestion) is mandatory, not optional.
+* **(#8)** Corollary A is not C.72's `shadow_floor` STATEMENT (that lives at `dv2Hgt` on
+  `Polynomial O`, threshold `T.theta μ₂ j = (μ₂−j)E₂ + T.margin`); the L6 conversion is
+  LOAD-BEARING for every corollary, not an annex.
+* **(#11) — the structural one**: the engine as scoped is a FLOOR engine and cannot clear
+  C.52's EXACT half — `IsDvPure` closure under products/powers and normalized `dvResPoly`
+  multiplicativity/power-exactness are NOT lower-bound corollaries.  C.52's own obstruction
+  inventory said this ("Step 1 needs its exact/purity half"); v1 under-scoped it into L6.
+  The exact half is a SECOND engine (or the FGMN cite route — owner gate (b)).
+
+What SURVIVES review, per the findings' own text: the carry-pricing arithmetic and index
+directions (L2/L3/L4/L7) are confirmed FAITHFUL to `EFF.GENTOW3.22–.24`; the Corollary-B
+numeric expression matches C.52's goal exactly; the numeric certification stands at its
+honest scope (finding #13).  The nine GAPs are itemized fixes (the `hpure`→all-coefficient
+bridge; the private-pin exports in C.46/C.47; the quotient-side bound in L4; L6's true size;
+the faithful-band's ultrametric-exactness content; ℕ-subtraction hypotheses).
+
+**DISPOSITION: v2 is an OWNER-INPUT item** — the #11 split (floor engine + exact engine
+vs. the FGMN cite for the exact half) is a cite-or-prove decision at gate (b), and it
+reshapes the C.131 node plan.  Nothing below is a formalization target until then.
+
+---
+
 **Author: the orchestrator (Fable 5), math-first assembly per the standing directive.**
 STATUS: **math assembly + formalization design — nothing signed, nothing landed.** Sources:
 `EFF.GENTOW3.22–.26` (the weight ledger, verbatim steps), `EFF.GENTOW1.19` (Step 0's compile),
