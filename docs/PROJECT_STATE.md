@@ -128,11 +128,13 @@ adjudicating now). Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
 | A-C.10 | the five re-signs (orchestrator) | DONE 2026-08-24 |
 | U7 | FGMNCalculus field list (codex HIGH) | DONE 2026-08-24 (`FGMNCALCULUS_FIELDLIST_2026-08-24.md`) |
 | U8 | n=3 drainage math (codex HIGH) | DONE 2026-08-24 (`N3_DRAINAGE_PROOF_2026-08-24.md`: u_N ≤ q⁻ᴺ + q⁻⁵u_{N−3}, uniform incl. p=2,3) |
-| C131a | C.131a′–c′ weight + product law (codex) | RUNNING (runs/wave-b/out_C131a.log) |
+| C131a | C.131a′–c′ weight + product law (codex) | DONE 2026-08-24 — all 3 nodes LANDED (`C131a.lean`, orchestrator-verified Lean-core) |
 | C131d | C.131d′–e′ hpure bridge + x-carry (codex) | RUNNING (runs/wave-b/out_C131d.log) |
-| C131k | C.131k′–l′ structural normal forms (codex) | RUNNING (runs/wave-b/out_C131k.log) |
-| C131p | C.131p′–s′ conversion utilities (codex) | RUNNING (runs/wave-b/out_C131p.log) |
+| C131k | C.131k′–l′ structural normal forms (codex) | DONE 2026-08-24 — both nodes LANDED (`C131k.lean`, orchestrator-verified Lean-core) |
+| C131p | C.131p′–s′ conversion utilities (codex) | DONE 2026-08-24 — all 4 nodes LANDED (`C131p.lean`, orchestrator-verified Lean-core) |
 | C131aa | C.131aa′–ab′ exact-half locals (codex) | RUNNING (runs/wave-b/out_C131aa.log) |
+| U9 | FGMN §9-questions adjudication + A-C.11 diff (codex HIGH) | RUNNING (runs/wave-b/out_U9.log) |
+| F3 | I.10a/I.10b sockets vs freeze v2 (codex HIGH) | RUNNING (runs/wave-b/out_F3.log) |
 
 ## 7. Resume protocol (fresh agent)
 
