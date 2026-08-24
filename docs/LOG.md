@@ -141,3 +141,17 @@ one-token repair to C.130f, all six dependent modules rebuilt green, and the lit
 `DeepTower.laurentNormalizer` instance now discharges by `rfl`-agreement (Lean-core). C.83's
 `towerNorm` is retro-validated on its honest `NoTrunc` domain (`laurentSolve_eq_towerNorm`);
 C130B's (2,5,1) truncation site is excluded by the guard at the predicate level.
+
+**2026-08-24 — C.72 `shadow_floor` LANDED (the dv-engine headline) + full parallel spread.**
+Fable unit C131w proved `shadow_floor` with the signed NODE C.72 statement byte-identical
+(axiom→theorem only), Lean-core footprint, no cite: splice = C131v's `shadow_discrepancy` +
+`dv2Hgt_neg` + two NEW pricing ledgers (`dev_coeff_paid_floor`, `dv2Hgt_dev_floor`) that
+close C131n's census-instantiation gap (honest supersession recorded). CC-16 landed the
+leanfinal `FGMNCalculus` twin (byte-audited, 23 fields) + `ChainRealization.toCalculus`
+packaging — census 183→171 unlanded. DT1 (first SONNET unit) landed 6 definitional twins
+and correctly refused the struck A-C.1 drafts. Per Asvin's directives (sonnets on
+transcription; fable on the hard math; API errors intermittent again — codex is the
+recovery lane): launched GTA/GTB/GTC (GENTOW2 C.99–C.106 + C.88/C.85, sonnet, against the
+new class twin), C131y (faithful band), E57 + C78 (the two standing HARD nodes, fable,
+adjudication mandates with re-sign-proposal protocol), U12 (codex HIGH: level-general
+carrier design for C.90/FGMN Cor 6.3 on top of the landed CC layer).

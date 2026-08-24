@@ -86,6 +86,10 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    hpure bridge+x-carry; polls C131a for `WT`), C131k (k′–l′ structural normal forms),
    C131p (p′–s′ conversion utilities), C131aa (aa′–ab′ exact-half locals) — relaunched on
    codex after the original Fable fleet died to API 529s before writing anything.
+   **C.72 `shadow_floor` LANDED (2026-08-24, Fable unit C131w): signed statement
+   byte-identical, Lean-core, no cite** — the engine's headline. Remaining in the plan:
+   y′ (faithful band, in flight), ae′/af′ (budget↔locus closers, in flight); then the
+   C.52/C.53/C.54 consumer chain fires.
 2. **The tower-instantiation freeze** (types I.10a/I.10b, gives I.05/06/07 their domains —
    chapter I's critical path): v1 **NEEDS-REDESIGN** (swallowing trap + arising-linkage
    gap; findings in the doc's banner, `TOWER_INSTANTIATION_FREEZE_DRAFT_2026-08-20.md`).
@@ -135,12 +139,19 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | unit | what | status |
 |---|---|---|
 | (archive) | wave A–B units E2/F2/FT/A-C.10/U7/U8/U9/U10/U11/F3 + the C.131′ fleet a–v,x,aa–ad + CC-0…9,13,14,15 | ALL DONE 2026-08-24 — details in docs/LOG.md + git log; every landing orchestrator-verified Lean-core (cite inheritance only where designed) |
-| C131w | **C.131w′ = C.72 `shadow_floor`** (FABLE) | RUNNING — all splice inputs landed (v′ + o′ + t′) |
+| C131w | **C.131w′ = C.72 `shadow_floor`** (FABLE) | **DONE 2026-08-24 — LANDED, signed statement byte-identical, Lean-core, no cite** (commit 81405bcb) |
+| CC16 | FGMNCalculus leanfinal twin + packaging (FABLE) | DONE 2026-08-24 — LANDED byte-audited (census → 171 unlanded) |
+| DT1 | definitional twins batch 1 (SONNET) | DONE 2026-08-24 — 6 twins landed; struck drafts correctly skipped |
+| GTA | GENTOW2 C.99–C.101 (SONNET) | RUNNING (→ C99gt.lean) |
+| GTB | GENTOW2 C.102–C.104 (SONNET) | RUNNING (→ C102gt.lean) |
+| GTC | GENTOW supply C.105–106 + C.88/C.85 (SONNET) | RUNNING (→ C105gt.lean) |
+| C131y | C.131y′ = C.72 faithful band (FABLE) | RUNNING (→ C131y.lean) |
+| E57 | HARD: E.57 partition-leg adjudication (FABLE) | RUNNING (→ ChapE/E57p.lean) |
+| C78 | HARD: C.78 exact-degree adjudication (FABLE) | RUNNING (→ C78adj.lean) |
+| U12 | DESIGN: level-general carrier for C.90/Cor 6.3 (codex HIGH) | RUNNING (runs/wave-b/out_U12.log) |
 | C131ae | C.131ae′–af′ budget↔locus closers (SONNET) | RUNNING (→ C131ae.lean) |
-| DT1 | definitional twins batch 1 (SONNET) | RUNNING (→ C140defs.lean) |
 | CC10 | CC-10 canonical L-read (FABLE) | RUNNING (→ C130cr.lean) |
 | CC11 | CC-11 separate arena read (FABLE) | RUNNING (→ C130ar.lean) |
-| CC16 | CC-16 FGMNCalculus leanfinal twin + packaging (FABLE) | RUNNING (→ C130pk.lean) — gates the GENTOW2 sonnet trio |
 
 ## 7. Resume protocol (fresh agent)
 
