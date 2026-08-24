@@ -68,9 +68,14 @@ adjudicating now). Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
    C.53's only remaining input, C.54): v1 assembled + numerically certified (floor law
    sharp, 4143/0, `verification/dv_ledger_cert.py`) but **NEEDS-REDESIGN** (Codex review,
    13 findings — `docs/in-progress/DV_GRADED_ENGINE_REVIEW_2026-08-23.md`). Two halves:
-   the FLOOR engine (repairable per findings) and the **EXACT half** (`IsDvPure` closure,
-   `dvResPoly` power-exactness) — separate mathematics, cite-or-prove. **Unit E2 (codex
-   HIGH) in flight on the v2 + adjudication.**
+   the FLOOR engine and the **EXACT half**. **v2 DELIVERED (unit E2, 2026-08-24):**
+   `DV_GRADED_ENGINE_V2_2026-08-24.md` — all 13 findings disposed (structural-recursion
+   normal form, two-index weight, full conversion chain), honest PROVED/BLUEPRINT/OPEN
+   statuses, and the exact-half adjudication = **CITE** (FGMN, J. Algebra 427 (2015):
+   published Thm 2.8 polygon additivity + Cor 4.12(3) exact normalized residual
+   multiplicativity; coexists with C.66, does not replace it). NEXT: author the
+   `fgmn_dv_exact_mul` gate-(b) cite (print-read first), then the C.131′ formalization
+   fleet per the v2 node plan.
 2. **The tower-instantiation freeze** (types I.10a/I.10b, gives I.05/06/07 their domains —
    chapter I's critical path): v1 **NEEDS-REDESIGN** (swallowing trap + arising-linkage
    gap; findings in the doc's banner, `TOWER_INSTANTIATION_FREEZE_DRAFT_2026-08-20.md`).
@@ -105,7 +110,7 @@ adjudicating now). Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
 
 | unit | what | status |
 |---|---|---|
-| E2 | dv-engine v2 + exact-half adjudication (codex HIGH) | RUNNING (runs/wave-a/out_E2.log) |
+| E2 | dv-engine v2 + exact-half adjudication (codex HIGH) | DONE 2026-08-24 (v2 delivered; verdict CITE) |
 | F2 | freeze v2 (codex HIGH) | RUNNING (runs/wave-a/out_F2.log) |
 | FT | C.123 q=2 gate partial (fable test / API probe) | RUNNING |
 | A-C.10 | the five re-signs (orchestrator) | DONE 2026-08-24 |

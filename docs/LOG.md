@@ -29,3 +29,11 @@ discharged cite-conditionally by `ns7Termination_of_cite` (footprint: Lean core 
 `agnprw_termination`, exactly as designed). First Display-A field dischargeable. Census
 effect: NS7Termination leaves the PLACEHOLDER-BODY bucket. CITE_REVIEW_LIST row 1 opened
 for Asvin's secondary read of the binding.
+
+**2026-08-24 — E2 delivered.** `DV_GRADED_ENGINE_V2_2026-08-24.md`: all 13 review findings
+disposed (two-index weight; structural-recursion normal form replacing the broken rewrite
+measure; quotient+remainder division bounds; the full named conversion chain to dv2Hgt;
+private-pin export list; faithful-band exactness nodes); exact-half adjudication = CITE
+(FGMN J. Algebra 427 (2015), published Thm 2.8 + Cor 4.12(3) + Defs 3.15/5.4; arXiv-v3
+numbering differs — 4.7(3) there; the draft gate signature keeps C.66's fences and COEXISTS
+with C.66 rather than silently strengthening it). Numeric certification re-run 4143/0.
