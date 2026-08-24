@@ -93,9 +93,14 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    (D-TIF-4 carrier, non-swallowing residue design). **A-I.2 ENACTED (2026-08-24):** E.63
    re-signed to the live range `3 ≤ i < r`; I.10b + the `deepTwist` field carry the tower
    depth `r` and conclude at F3's `DeepTwistConjunctLive` (leanfinal `I10FreezeV2.lean`,
-   wired). The sockets' bodies stay `True` — honestly BLOCKED on the freeze's OPEN C.130
-   layers (b/c, d/e, f, g/h, i, j/k, gate — F3's verdict lists them). NEXT: transcribe the
-   C.130 layers (codex wave), then the §9 witness, then the sockets land.
+   wired). The sockets' bodies stay `True` — the C.130 layers were BLOCKED on a missing
+   carrier (C130A/C130B verdicts; C130B refuted the freeze's all-integer exact-height
+   demand with a counterexample — needs a Laurent normalizer). **The carrier is now
+   DESIGNED (U11, 2026-08-24): layered `ChainRealization` over `DeepTower`,
+   `CHAIN_CARRIER_DESIGN_2026-08-24.md`** — 19-node plan CC-0…CC-18 (CC-17/CC-18 are the
+   serial acceptance gates that land the sockets; after CC-1/2, nodes CC-3/4/5/9/13 run
+   parallel). This plan is ALSO the FGMNCalculus discharge path (CC-16:
+   `ChainRealization → Nonempty FGMNCalculus`). NEXT: execute the CC plan.
 3. **The five exact-degree re-signs: DONE (amendment A-C.10, 2026-08-24)** — enacted in the
    leanspec (elaborates green) with per-stub annotations + the blueprint amendment entry;
    the re-signed C.64 is already PROVED (`C64.lean` `blockDeg_eq_resigned`, Lean-core).
@@ -154,7 +159,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | C131h | C.131h′–j′ division ledger F6–F8 (codex) | DONE 2026-08-24 — all 3 LANDED (orchestrator-verified Lean-core) |
 | C130A | freeze layers C.130b/c + d/e (codex) | DONE 2026-08-24 — `stageDeg` landed; b–e BLOCKED on the missing key-chain/node-point carrier (→ U11) |
 | C130B | freeze layer C.130f (codex) | DONE 2026-08-24 — 15 decls LANDED; exact-height law BLOCKED: freeze demand FALSE vs C.83 `towerNorm` truncation at (2,5,1); Laurent normalizer named (→ U11) |
-| U11 | chain-realization carrier DESIGN (codex HIGH) | RUNNING (runs/wave-b/out_U11.log) — the convergence artifact gating FGMNCalculus discharge + I.10 sockets |
+| U11 | chain-realization carrier DESIGN (codex HIGH) | DONE 2026-08-24 — layered `ChainRealization` DECIDED (`CHAIN_CARRIER_DESIGN_2026-08-24.md`: signatures elaborate, S2 depth-2 key chain constructed in scratch, 19-node CC-plan); orchestrator-verified |
+| CC01 | CC-0 core re-home + CC-1 carrier skeleton (FABLE) | RUNNING |
 | C131v | C.131v′ retry post-m′ (FABLE probe) | RUNNING |
 | C131ac | C.131ac′ exact powers (FABLE probe) | RUNNING |
 | C131n | C.131n′–o′ recarry + census floor (FABLE) | RUNNING |

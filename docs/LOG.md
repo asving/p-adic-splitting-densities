@@ -111,3 +111,20 @@ footprint. The CHAP-I HYP.08/HYP.09 OPEN-MATH rows are STALE. Remaining from the
 two BLUEPRINT nodes for H.97's literal (1,1,0) sharpening (only if a consumer needs it) and
 the OPEN Haar-null statement (measure carrier missing; NOT needed for `DrainageAt 3`).
 Deliverable: `N3_DRAINAGE_BLUEPRINT_2026-08-24.md` + `scratch/U10_sig_check.lean` (exit 0).
+
+**2026-08-24 — U11 DELIVERED: the chain-realization carrier design (the convergence
+artifact).** Decision: a NEW layered `ChainRealization` over `DeepTower` (C.83 untouched —
+nine consumer files counted; extending it would falsely claim every abstract telescope is a
+MacLane/node-point realization). The layer owns: the polynomial key chain, an integer/Laurent
+normalizer (curing C130B's truncated-subtraction refutation), legal node points + stage
+value/digit reads, the EFF.T2.11 threshold AS INHERITED DATA (not derivable — WINDOW is a
+source law), the two deliberately separate residue reads, and the FGMN source data/laws.
+Field-by-field honesty classification: every field is a source obligation (named EFF/FGMN
+row) or a repo dictionary; no field stores a consumer's conclusion. Depth-2: the S2 key chain
+is constructed and elaboration-checked in `scratch/U11_carrier_check.lean` (exit 0, no sorry,
+no axiom — orchestrator re-verified). Consumer maps: CC-16 packages
+`ChainRealization → Nonempty FGMNCalculus` (the A-C.11 class); CC-18 lands both literal I.10
+socket applications. 19-node plan CC-0…CC-18; CC-0 (core re-home to break the C→I import
+cycle) + CC-1 (carrier skeleton) launched as Fable unit CC01. Fable confirmed healthy
+(C131ac landed first-compile), so transcription shifts to Fable; codex (~51% of the weekly
+window) is reserved for HIGH design/adjudication.
