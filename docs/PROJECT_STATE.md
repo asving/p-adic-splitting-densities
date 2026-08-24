@@ -105,8 +105,15 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    constructors proving the diagnosis exact: `S2SourceFrontier → ChainRealization →
    Nonempty (FGMNCalculus (2,1,5)) → RealizedInput` (no cite, Lean-core). U12's
    level-general audit says inhabiting it = formalizing the source MacLane valuation
-   chain — the ONE remaining hard-math campaign on this path. CC-18 (in flight) lands
-   the socket applications conditionally on the same bundle.
+   chain. CC-18 LANDED the socket applications conditionally on the same bundle (the CC
+   plan is COMPLETE, 19/19). **U13 then machine-REFUTED the bundle AS TYPED** (char-2
+   collision at S2; `IsEmpty`, Lean-core — CC-17/18's conditionals were true-but-vacuous;
+   caught by keeping the frontier a named premise). The corrected campaign is
+   `S2_SOURCE_PLAN_2026-08-24.md`: ambient split (E valued / L residual — unit SF1 in
+   flight re-typing the bundle + a non-vacuity tooth), then the concrete
+   weighted-development construction, with FIVE named inductive cores (`value_mul`,
+   `graded_mul`, `normalized_mul`, `key_criterion`, `initial_iff_residual`) as the honest
+   remaining hard math of this path.
 3. **The five exact-degree re-signs: DONE (amendment A-C.10, 2026-08-24)** — enacted in the
    leanspec (elaborates green) with per-stub annotations + the blueprint amendment entry;
    the re-signed C.64 is already PROVED (`C64.lean` `blockDeg_eq_resigned`, Lean-core).
