@@ -451,3 +451,19 @@ faithfulness-doc mirror. **Each entry: DRAFT 2026-07-30 — PENDING ASVIN REVIEW
   (quote-and-classify, per the axiom policy — the process that caught two false axioms);
   (3) Asvin sign-off. Until all three: no `axiom` keyword, no consumer, no footprint change
   (`AxChk_baseline` untouched — nothing to print).
+
+## `fgmn_dv_exact_mul` (C66b, declared 2026-08-24)
+
+**Ports:** FGMN, *Residual ideals of MacLane valuations*, J. Algebra 427 (2015) 30–75,
+DOI 10.1016/j.jalgebra.2014.12.022 — Theorem 2.8 (principal Newton-polygon additivity,
+specialized to equal-slope one-sided factors) + Corollary 4.12(3) (exact multiplicativity of
+the NORMALIZED residual operator R_r) + Corollary 4.9(3) (the normalization: deg R_r =
+(s′−s)/e_r, R_r(0) ≠ 0) + Definition 5.4 (one-sidedness). All four statements print-read
+VERBATIM 2026-08-24 against the author-posted PDF (UPCommons 2117/28203); quotes in the
+C66b.lean module docstring. **Faithfulness surface:** the corpus↔paper dictionary
+(IsDvPure ↔ Def 5.4 one-sidedness at the frame's augmented valuation; dvResPoly at the
+sideMin pin ↔ R_r up to the frame twist, a slotwise unit rescaling preserving
+multiplicativity). The import carries the corpus's degree/slope fences, strictly SHRINKING
+the source's ∀ g,h ∈ K[x] — the safe direction. Recorded caveat: the cite is pinned to the
+PRINCIPAL polygon (the paper itself refutes the entire-polygon analogue). Owner secondary
+review: CITE_REVIEW_LIST row 2 (the dictionary + journal-numbering spot-check).

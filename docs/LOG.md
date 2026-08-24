@@ -37,3 +37,12 @@ private-pin export list; faithful-band exactness nodes); exact-half adjudication
 (FGMN J. Algebra 427 (2015), published Thm 2.8 + Cor 4.12(3) + Defs 3.15/5.4; arXiv-v3
 numbering differs — 4.7(3) there; the draft gate signature keeps C.66's fences and COEXISTS
 with C.66 rather than silently strengthening it). Numeric certification re-run 4143/0.
+
+**2026-08-24 — `fgmn_dv_exact_mul` DECLARED (the engine's exact half; allowlist → SEVEN).**
+Decorrelated print-read executed by the orchestrator against the author-posted FGMN PDF:
+Thm 2.8, Cor 4.12(3), Cor 4.9(3), Def 5.4 all verified verbatim (one numbering correction
+to the E2 doc: the normalization sits at Cor 4.9(3)/4.11 in that version, not "Def 3.15";
+recorded in the faithfulness entry). New axiom lands in C66b.lean, COEXISTING with C.66
+per the v2 mandate; roll-up wired; faithfulness entry appended; review-list row 2 opened.
+Also: PROJECT_STATE §1 goal line refined per Asvin's /goal (cites restricted to the
+p-adic-densities + Montes-algorithm literature).

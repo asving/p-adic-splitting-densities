@@ -11,8 +11,9 @@ to continue from this file + the repo alone.
 
 **GOAL:** prove the main theorem — the uniformity-in-`p` of splitting densities, the
 `leanfinal/` capstone `UniformityStatement` via `uniformity_of_capstoneHypotheses` —
-**COMPLETELY, modulo literature cites** (published results only; **Asvin's own paper is
-never citable**). Target: all 1236 signed names disposed (proved / carrier-landed / cite),
+**COMPLETELY, modulo literature cites** (published results only, restricted to the
+p-adic-densities and Montes-algorithm literature — Asvin's /goal, 2026-08-24; **his own
+paper is never citable**). Target: all 1236 signed names disposed (proved / carrier-landed / cite),
 capstone `#print axioms` = Lean core + the declared cites, no `sorry`, no vacuity.
 
 **PROTOCOL (Asvin, 2026-08-24):** owner input is needed ONLY for literature-cite Lean
@@ -52,8 +53,10 @@ never pipe an output you need through head/tail; never trust a bare name-grep
 
 ## 3. Trusted base (cites)
 
-Declared-and-landed allowlist (six): `exists_slope_factorization`, `fgmn_residual_mul`,
-`agnprw_termination`, `bBox1_cite`, `exists_dvDissection`, `fgmn_dvDissection_factor_eq`.
+Declared-and-landed allowlist (SEVEN): `exists_slope_factorization`, `fgmn_residual_mul`,
+`agnprw_termination`, `bBox1_cite`, `exists_dvDissection`, `fgmn_dvDissection_factor_eq`,
+and NEW (2026-08-24) `fgmn_dv_exact_mul` (C66b — the engine's exact half; FGMN Thm 2.8 +
+Cor 4.12(3), print-read verbatim, dictionary on the review list).
 Pending authoring under the new protocol (each gets a faithfulness entry +
 CITE_REVIEW_LIST row): **C.94** (AGNPRW Thm 5.6 termination — the A-C.6 redraft
 `NS7TerminationStatementR` exists, machine-safe, ready to declare), **C.92**
