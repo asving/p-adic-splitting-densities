@@ -71,7 +71,9 @@ open Uniformity.Density.Leaf
 the canonical receiver's level-map family can branch on liveness with `dite`.  (The branch is
 decidable; the receiver defs below are `noncomputable` only through `AdjoinRoot`'s ring
 instance.) -/
-instance instDecidableStageLive (r j : ℕ) : Decidable (StageLive r j) :=
+-- [orchestrator 2026-08-24] private: C130k declares the public instance of the same name;
+-- co-importing both files collided at import (CC-9's SUPPLY finding).
+private instance instDecidableStageLive (r j : ℕ) : Decidable (StageLive r j) :=
   inferInstanceAs (Decidable (1 ≤ j ∧ j ≤ r))
 
 section Telescope
@@ -257,7 +259,6 @@ end Uniformity.Density.Tower
 
 section AxCheck
 
-#print axioms Uniformity.Density.Tower.instDecidableStageLive
 #print axioms Uniformity.Density.Tower.DeepTower.stepEmb
 #print axioms Uniformity.Density.Tower.DeepTower.stepEmb_injective
 #print axioms Uniformity.Density.Tower.DeepTower.climbTo
