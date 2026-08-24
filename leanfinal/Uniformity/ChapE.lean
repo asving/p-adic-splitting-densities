@@ -61,6 +61,7 @@ import Uniformity.ChapE.E59
 import Uniformity.ChapE.E60
 import Uniformity.ChapE.E61
 import Uniformity.ChapE.E62
+import Uniformity.ChapE.E57p
 import Uniformity.ChapE.E63
 import Uniformity.ChapE.E64
 import Uniformity.ChapE.E65
