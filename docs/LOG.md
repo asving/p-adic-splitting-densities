@@ -46,3 +46,17 @@ recorded in the faithfulness entry). New axiom lands in C66b.lean, COEXISTING wi
 per the v2 mandate; roll-up wired; faithfulness entry appended; review-list row 2 opened.
 Also: PROJECT_STATE §1 goal line refined per Asvin's /goal (cites restricted to the
 p-adic-densities + Montes-algorithm literature).
+
+**2026-08-24 — wave-B deliveries + the C.131′ fleet relaunched on codex.** U7 (codex HIGH)
+delivered `FGMNCALCULUS_FIELDLIST_2026-08-24.md` (type-checked candidate `FGMNCalculus`
+class, per-field provenance, 16-consumer matrix, published/arXiv numbering reconciliation,
+explicit OPEN dictionary obligations; rejects the unconditional `fgmn_calculus_exists`
+form — C.92 cite authoring now unblocked). U8 (codex HIGH) delivered
+`N3_DRAINAGE_PROOF_2026-08-24.md` (u_N ≤ q^{-N} + q^{-5} u_{N-3} for N ≥ 3, strengthening
+the ledger's q^{-N/2}; HYP.04–09 proved uniformly incl. p=2,3; the infinite undecided
+locus is Haar-null; distinguishes actual `undecidedSet` drainage from the conservative
+`hex3U` reader). The original Fable C.131′ first-wave fleet (5 units) died to repeated
+API 529s before writing any file; relaunched as codex default-effort units per Asvin's
+directive (prioritize codex over fable during the API storm): C131a (a′–c′), C131d
+(d′–e′, polls C131a for `WT`), C131k (k′–l′), C131p (p′–s′), C131aa (aa′–ab′); briefs +
+logs in `runs/wave-b/`. A 20-min watchdog cron is active in-session.

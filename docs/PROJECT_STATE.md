@@ -76,19 +76,28 @@ adjudicating now). Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
    normal form, two-index weight, full conversion chain), honest PROVED/BLUEPRINT/OPEN
    statuses, and the exact-half adjudication = **CITE** (FGMN, J. Algebra 427 (2015):
    published Thm 2.8 polygon additivity + Cor 4.12(3) exact normalized residual
-   multiplicativity; coexists with C.66, does not replace it). NEXT: author the
-   `fgmn_dv_exact_mul` gate-(b) cite (print-read first), then the C.131′ formalization
-   fleet per the v2 node plan.
+   multiplicativity; coexists with C.66, does not replace it). The gate-(b) cite
+   `fgmn_dv_exact_mul` is DECLARED (allowlist → 7, commit 38e0153d). **C.131′ first-wave
+   fleet RUNNING on codex (2026-08-24):** C131a (a′–c′ weight+product law), C131d (d′–e′
+   hpure bridge+x-carry; polls C131a for `WT`), C131k (k′–l′ structural normal forms),
+   C131p (p′–s′ conversion utilities), C131aa (aa′–ab′ exact-half locals) — relaunched on
+   codex after the original Fable fleet died to API 529s before writing anything.
 2. **The tower-instantiation freeze** (types I.10a/I.10b, gives I.05/06/07 their domains —
    chapter I's critical path): v1 **NEEDS-REDESIGN** (swallowing trap + arising-linkage
    gap; findings in the doc's banner, `TOWER_INSTANTIATION_FREEZE_DRAFT_2026-08-20.md`).
-   **Unit F2 (codex HIGH) in flight on the v2.**
+   **v2 DELIVERED (unit F2, 2026-08-24):** `TOWER_INSTANTIATION_FREEZE_V2_2026-08-24.md`
+   (610 lines, D-TIF-4 carrier, non-swallowing residue design; two honest signed-shape
+   findings: single-Kt must be terminal K_r; E.63's unbounded ∀i vs finite live range —
+   commit 241a997d). NEXT: type the I.10a/I.10b sockets against it.
 3. **The five exact-degree re-signs: DONE (amendment A-C.10, 2026-08-24)** — enacted in the
    leanspec (elaborates green) with per-stub annotations + the blueprint amendment entry;
    the re-signed C.64 is already PROVED (`C64.lean` `blockDeg_eq_resigned`, Lean-core).
    C.78 remains the lone unadjudicated exact-degree site (different shape).
-4. **The §10 GENTOW2 supply chain** (C.99–C.106) + C.88/C.85: gated on C.92's
-   `FGMNCalculus` field list (item 3 above) — next after the cite authoring.
+4. **The §10 GENTOW2 supply chain** (C.99–C.106) + C.88/C.85: the gating `FGMNCalculus`
+   field list is DELIVERED (unit U7, 2026-08-24 — `FGMNCALCULUS_FIELDLIST_2026-08-24.md`:
+   type-checked candidate class, 16-consumer matrix, citation reconciliation, explicit
+   OPEN dictionary obligations; rejects the unconditional `fgmn_calculus_exists` form).
+   NEXT (orchestrator): author the C.92 cite from it, print-read first.
 5. **C.123/C.124 gates** (q=2/q=3 executable rows): partial firing possible now —
    **Fable test unit on C.123 in flight.** C.126 (axiom census gate) waits on C.92/C.94.
 6. **E.57** (mixed-node block split; `hpart : True` target FALSE as signed — needs the
@@ -114,9 +123,16 @@ adjudicating now). Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
 | unit | what | status |
 |---|---|---|
 | E2 | dv-engine v2 + exact-half adjudication (codex HIGH) | DONE 2026-08-24 (v2 delivered; verdict CITE) |
-| F2 | freeze v2 (codex HIGH) | RUNNING (runs/wave-a/out_F2.log) |
-| FT | C.123 q=2 gate partial (fable test / API probe) | RUNNING |
+| F2 | freeze v2 (codex HIGH) | DONE 2026-08-24 (commit 241a997d) |
+| FT | C.123 q=2 gate partial (fable test / API probe) | DONE 2026-08-24 (5 rows fired, 5 deferred; commit 241a997d) |
 | A-C.10 | the five re-signs (orchestrator) | DONE 2026-08-24 |
+| U7 | FGMNCalculus field list (codex HIGH) | DONE 2026-08-24 (`FGMNCALCULUS_FIELDLIST_2026-08-24.md`) |
+| U8 | n=3 drainage math (codex HIGH) | DONE 2026-08-24 (`N3_DRAINAGE_PROOF_2026-08-24.md`: u_N ≤ q⁻ᴺ + q⁻⁵u_{N−3}, uniform incl. p=2,3) |
+| C131a | C.131a′–c′ weight + product law (codex) | RUNNING (runs/wave-b/out_C131a.log) |
+| C131d | C.131d′–e′ hpure bridge + x-carry (codex) | RUNNING (runs/wave-b/out_C131d.log) |
+| C131k | C.131k′–l′ structural normal forms (codex) | RUNNING (runs/wave-b/out_C131k.log) |
+| C131p | C.131p′–s′ conversion utilities (codex) | RUNNING (runs/wave-b/out_C131p.log) |
+| C131aa | C.131aa′–ab′ exact-half locals (codex) | RUNNING (runs/wave-b/out_C131aa.log) |
 
 ## 7. Resume protocol (fresh agent)
 
