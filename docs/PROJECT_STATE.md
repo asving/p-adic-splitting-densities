@@ -151,6 +151,11 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | C131m | C.131m′ (codex) | DONE 2026-08-24 — LANDED (`taggedOuterNF_erasure`; orchestrator-verified Lean-core) |
 | C131t | C.131t′+x′ (codex) | DONE 2026-08-24 — both LANDED (orchestrator-verified Lean-core) |
 | C131u | C.131u′–v′ (codex) | DONE 2026-08-24 — u′ LANDED; v′ was BLOCKED on m′ (now landed) → requeued as unit C131v |
+| C131h | C.131h′–j′ division ledger F6–F8 (codex) | RUNNING (runs/wave-b/out_C131h.log) |
+| C130A | freeze layers C.130b/c + d/e (codex) | RUNNING (runs/wave-b/out_C130A.log) |
+| C130B | freeze layer C.130f (codex) | RUNNING (runs/wave-b/out_C130B.log) |
+| C131v | C.131v′ retry post-m′ (FABLE probe) | RUNNING |
+| C131ac | C.131ac′ exact powers (FABLE probe) | RUNNING |
 
 ## 7. Resume protocol (fresh agent)
 

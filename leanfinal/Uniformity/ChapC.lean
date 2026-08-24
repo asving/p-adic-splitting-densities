@@ -97,3 +97,12 @@ import Uniformity.ChapC.C93
 import Uniformity.ChapC.C94
 import Uniformity.ChapC.C97
 import Uniformity.ChapC.C98
+import Uniformity.ChapC.C131a
+import Uniformity.ChapC.C131d
+import Uniformity.ChapC.C131k
+import Uniformity.ChapC.C131p
+import Uniformity.ChapC.C131aa
+import Uniformity.ChapC.C131f
+import Uniformity.ChapC.C131m
+import Uniformity.ChapC.C131t
+import Uniformity.ChapC.C131u
