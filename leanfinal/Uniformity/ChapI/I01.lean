@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import Uniformity.Density.LocalData
+import Uniformity.ChapC.C94
 
 /-!
 # Uniformity.ChapI.I01 — `NS7(O)`, the OM-termination carrier — **STATEMENT CARRIER**
@@ -104,20 +105,44 @@ namespace Uniformity.Density
 open IsLocalRing Polynomial
 
 /-- `NS7(O)` (Display A line 1; ledger HYP.15, CARRY-as-CITE): OM descent terminates over every
-complete DVR with finite residue field. Discharged by chapter C's gate-(b) cite C.94 ([AGNPRW]
-**Thm 5.6**, published — the repo's "Thm 5.2" is the arXiv-v1 number, A-3 audit §3) once signed;
-carried as a named `Prop` until then.
+complete DVR with finite residue field.
 
-⚠ STUB-STAGE BODY (BLOCKED-UNTIL-RESOLUTION): the real body quantifies over chapter C's
-descent-history type and asserts finiteness. FROZEN HERE: the name, the bundle quantifier, the
-`Prop` kind. **Do not resolve it against `NS7TerminationStatement` (refuted) — see I-D6.** -/
+**[RESOLVED: the I.01 resolution pass, 2026-08-24, under the owner's autonomous-until-proved
+protocol.]** The body is TYPED against the A-C.6 REDRAFT `Tower.NS7TerminationStatementR`
+(C94.lean) — the I-D6-safe target; the refuted `NS7TerminationStatement` is NOT touched.
+Byte-wise, the body below IS the redraft's definiens (anti-drift pin:
+`NS7Termination_iff_statementR = Iff.rfl` in the gate). The frozen contract is honored: the
+NAME, the bundle quantifier `∀ (O) [CommRing] [IsDomain] [IsDVR] [IsAdicComplete] [Finite]`,
+and the `Prop` kind are unchanged; only the placeholder `True` matrix is replaced by the real
+finiteness assertion over chapter C's descent-history grammar. Discharge:
+`ns7Termination_of_cite` below, through the declared allowlisted cite `agnprw_termination`
+([AGNPRW] Thm 5.6 — the repo's "Thm 5.2" is the arXiv-v1 number, A-3 audit §3); every
+consumer inherits the cite in `#print axioms`, which is the designed conditionality.
+Secondary owner review: row 1 of `docs/CITE_REVIEW_LIST.md`. -/
 def NS7Termination : Prop :=
   ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
-    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
-    True
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (IsLocalRing.ResidueField O)] (π : O), Irreducible π →
+    ∀ f : Polynomial O, f.Monic → Squarefree f →
+    ∀ hist : ℕ → Tower.DescentState O,
+      (∀ n, (hist n).block ∣ f) →
+      (∀ n, Tower.DescentStepR π (hist n) (hist (n + 1))) → False
+
+/-- the anti-drift pin: the typed body IS the A-C.6 redraft, on the nose. -/
+theorem NS7Termination_iff_statementR : NS7Termination ↔ Tower.NS7TerminationStatementR :=
+  Iff.rfl
+
+/-- **Display A line 1, DISCHARGED cite-conditionally**: `NS7Termination` holds by the
+declared gate-(b) cite. Consumers inherit `agnprw_termination` in their footprint — the
+honest, visible form of the conditionality. -/
+theorem ns7Termination_of_cite : NS7Termination :=
+  Tower.agnprw_termination
 
 end Uniformity.Density
 
-/-! ## AXCHECK FOOTER — expect Lean core `{propext, Classical.choice, Quot.sound}` only -/
+/-! ## AXCHECK FOOTER — `NS7Termination` itself: Lean core only.  `ns7Termination_of_cite`:
+Lean core + `agnprw_termination` (the designed cite-conditionality, visible). -/
 
 #print axioms Uniformity.Density.NS7Termination
+#print axioms Uniformity.Density.NS7Termination_iff_statementR
+#print axioms Uniformity.Density.ns7Termination_of_cite

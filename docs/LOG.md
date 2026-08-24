@@ -22,3 +22,10 @@ C.77 clause (iii) dropped; C.80 conjunct 2 dropped), each annotated at the stub;
 amendment entry A-C.10 appended; leanspec re-elaborates green. The re-signed C.64 PROVED on
 the spot (`blockDeg_eq_resigned` = C.35's `hasLabel_natDegree_eq_of_dvd` at the block,
 Lean-core) — the end-to-end criterion vindicating the repair immediately.
+
+**2026-08-24 — I.01 RESOLVED.** `NS7Termination`'s placeholder body typed against the
+I-D6-safe A-C.6 redraft (`NS7TerminationStatementR`, byte-wise; anti-drift `Iff.rfl` pin);
+discharged cite-conditionally by `ns7Termination_of_cite` (footprint: Lean core +
+`agnprw_termination`, exactly as designed). First Display-A field dischargeable. Census
+effect: NS7Termination leaves the PLACEHOLDER-BODY bucket. CITE_REVIEW_LIST row 1 opened
+for Asvin's secondary read of the binding.
