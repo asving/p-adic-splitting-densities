@@ -151,10 +151,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | unit | what | status |
 |---|---|---|
 | (archive) | all 2026-08-24 waves through CC-16/A-E.7 | DONE — details in docs/LOG.md + git log; every landing orchestrator-verified |
-| GTA | GENTOW2 C.99–C.101 (codex, relaunched after silent Fable death) | RUNNING (runs/wave-b/out_GTA.log) |
-| C131ae | C.131ae′–af′ budget↔locus closers (SONNET) | RUNNING (C131ae.lean at 45KB, finishing) |
-| C78 | HARD: C.78 exact-degree adjudication (FABLE) | RUNNING (C78adj.lean at 43KB, verifying) |
-| CC17 | **ACCEPTANCE GATE: full S2 ChainRealization + first non-vacuous FGMNCalculus instance** (codex HIGH) | RUNNING (runs/wave-b/out_CC17.log) |
+| (archive) | CC17/CC18/GTR/TDW/GSW+A-C.12/C106/U13/SF1 (2026-08-24 evening) | ALL DONE — see LOG; the S2-source corrected campaign (`S2_SOURCE_PLAN_2026-08-24.md`, ~48 nodes) is now the frontier's execution plan |
+| NV01 | S2-plan nodes NV-0/NV-1: cleared value functions + level-one product (FABLE) | RUNNING (→ C130nv.lean) |
 
 ## 7. Resume protocol (fresh agent)
 
