@@ -162,12 +162,16 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | U11 | chain-realization carrier DESIGN (codex HIGH) | DONE 2026-08-24 — layered `ChainRealization` DECIDED (`CHAIN_CARRIER_DESIGN_2026-08-24.md`: signatures elaborate, S2 depth-2 key chain constructed in scratch, 19-node CC-plan); orchestrator-verified |
 | CC01 | CC-0 core re-home + CC-1 carrier skeleton (FABLE) | DONE 2026-08-24 — both LANDED byte-faithfully (C130a/C130k; all builds green, orchestrator-verified) |
 | CC02 | CC-2 S2 key bridge (FABLE) | DONE 2026-08-24 — LANDED (s2DepthTwoKeyChain + full bridge, 19 decls Lean-core, orchestrator-verified) |
-| CC03 | CC-3 terminal maps (FABLE) | RUNNING (→ C130tr.lean) |
+| CC03 | CC-3 terminal maps (FABLE) | DONE 2026-08-24 — LANDED (canonical TerminalReceiver; honest `junk` off-live field + exactness iff; 18 decls Lean-core) |
 | CC04 | CC-4 Laurent solve (FABLE) | RUNNING (→ C130ln.lean) |
+| CC07 | CC-7 threshold (FABLE) | DONE 2026-08-24 — LANDED (inherited-data ruling enforced; 18 decls Lean-core) |
+| CC13 | CC-13 FGMN source carrier (FABLE) | DONE 2026-08-24 — LANDED (`ChainRealization` + FGMNSourceData/Laws, diff-identical to U11 authority; 5 decls Lean-core) |
+| CC08 | CC-8 realized input block (FABLE) | RUNNING (→ C130in.lean) |
+| CC09 | CC-9 legal node points (FABLE) | RUNNING (→ C130pt.lean) |
+| CC14 | CC-14 FGMN laws A (FABLE) | RUNNING (→ C130la.lean) |
+| CC15 | CC-15 FGMN laws B (FABLE) | RUNNING (→ C130lb.lean) |
 | CC05 | CC-5 stage source interface (FABLE) | DONE 2026-08-24 — LANDED (stageCarrier → landed SlotCarrier, rfl anti-drift pins, 17 decls Lean-core; flag: new `DeepTower.fhat` name) |
 | CC06 | CC-6 S2 stage regression (FABLE) | RUNNING (→ C130s6.lean) |
-| CC07 | CC-7 threshold dictionary (FABLE) | RUNNING (→ C130th.lean) |
-| CC13 | CC-13 FGMN source carrier (FABLE) | RUNNING (→ C130fg.lean) |
 | C131v | C.131v′ Cnv13 identification (FABLE) | DONE 2026-08-24 — LANDED unconditional (`shadow_discrepancy`, 37 decls Lean-core, orchestrator-verified) |
 | C131ac | C.131ac′ exact powers (FABLE probe) | DONE 2026-08-24 — LANDED (`composedKey_pow_mem_towerLocus`; cite footprint exactly `fgmn_dv_exact_mul` on 4 decls as designed) |
 | C131n | C.131n′–o′ recarry + census floor (FABLE) | DONE 2026-08-24 — n′ LANDED; o′ SUPPLY (F11 parameterized `census_floor`; unparameterized closed by v′) |
