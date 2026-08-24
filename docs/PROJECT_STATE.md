@@ -165,10 +165,11 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | CC03 | CC-3 terminal maps (FABLE) | RUNNING (→ C130tr.lean) |
 | CC04 | CC-4 Laurent solve (FABLE) | RUNNING (→ C130ln.lean) |
 | CC05 | CC-5 stage source interface (FABLE) | RUNNING (→ C130st.lean) |
-| C131v | C.131v′ retry post-m′ (FABLE probe) | RUNNING |
-| C131ac | C.131ac′ exact powers (FABLE probe) | RUNNING |
-| C131n | C.131n′–o′ recarry + census floor (FABLE) | RUNNING |
-| C131ad | C.131ad′ box-monomial floor (FABLE) | RUNNING |
+| C131v | C.131v′ Cnv13 identification (FABLE) | DONE 2026-08-24 — LANDED unconditional (`shadow_discrepancy`, 37 decls Lean-core, orchestrator-verified) |
+| C131ac | C.131ac′ exact powers (FABLE probe) | DONE 2026-08-24 — LANDED (`composedKey_pow_mem_towerLocus`; cite footprint exactly `fgmn_dv_exact_mul` on 4 decls as designed) |
+| C131n | C.131n′–o′ recarry + census floor (FABLE) | DONE 2026-08-24 — n′ LANDED; o′ SUPPLY (F11 parameterized `census_floor`; unparameterized closed by v′) |
+| C131ad | C.131ad′ box-monomial floor (FABLE) | DONE 2026-08-24 — LANDED (+ reusable `dev_coeff_floor` carry-down; 23 decls Lean-core) |
+| C131w | **C.131w′ = C.72 `shadow_floor`** (FABLE) | RUNNING — all splice inputs landed (v′ + o′ + t′) |
 
 ## 7. Resume protocol (fresh agent)
 
