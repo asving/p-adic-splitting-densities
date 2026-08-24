@@ -160,7 +160,11 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | C130A | freeze layers C.130b/c + d/e (codex) | DONE 2026-08-24 — `stageDeg` landed; b–e BLOCKED on the missing key-chain/node-point carrier (→ U11) |
 | C130B | freeze layer C.130f (codex) | DONE 2026-08-24 — 15 decls LANDED; exact-height law BLOCKED: freeze demand FALSE vs C.83 `towerNorm` truncation at (2,5,1); Laurent normalizer named (→ U11) |
 | U11 | chain-realization carrier DESIGN (codex HIGH) | DONE 2026-08-24 — layered `ChainRealization` DECIDED (`CHAIN_CARRIER_DESIGN_2026-08-24.md`: signatures elaborate, S2 depth-2 key chain constructed in scratch, 19-node CC-plan); orchestrator-verified |
-| CC01 | CC-0 core re-home + CC-1 carrier skeleton (FABLE) | RUNNING |
+| CC01 | CC-0 core re-home + CC-1 carrier skeleton (FABLE) | DONE 2026-08-24 — both LANDED byte-faithfully (C130a/C130k; all builds green, orchestrator-verified) |
+| CC02 | CC-2 S2 key bridge (FABLE) | RUNNING (→ C130s2.lean) |
+| CC03 | CC-3 terminal maps (FABLE) | RUNNING (→ C130tr.lean) |
+| CC04 | CC-4 Laurent solve (FABLE) | RUNNING (→ C130ln.lean) |
+| CC05 | CC-5 stage source interface (FABLE) | RUNNING (→ C130st.lean) |
 | C131v | C.131v′ retry post-m′ (FABLE probe) | RUNNING |
 | C131ac | C.131ac′ exact powers (FABLE probe) | RUNNING |
 | C131n | C.131n′–o′ recarry + census floor (FABLE) | RUNNING |
