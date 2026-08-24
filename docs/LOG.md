@@ -169,3 +169,19 @@ the rest blocked on a uniform genre — signed statements omitting source-stated
 GSW decides re-sign vs re-base per statement. Also: E.57 hard node LANDED at the schema
 layer + A-E.7 ENACTED (hpart typed at the PartitionLeg twin, Leanspec.ChapE green);
 C.78 adjudication in flight. Codex window at 77% → conserve mode.
+
+**2026-08-24 — A-C.12 ENACTED (the GENTOW2 re-signs, GSW's adjudication).** Five signed
+statements re-signed per the source-quoted evidence (all five hunks applied, Leanspec.ChapC
+green 9240 jobs): C.99 `gentow2_Bpp` + `theta_letter_valued` gain the source-stated B-1
+normalizer supply (S5.2 ll.740–744; the letter form also moves ℕ→ℤ exponents — the signed
+ℕ-form overclaimed vs the source's negative letter exponents); C.101 `gentow2_B` gains the
+recipe data + the per-slot B′ unit law as an explicit discharge-node hypothesis; C.103
+`gentow2_A`'s `hadm` gains the omitted `ψ₃(0) ≠ 0` conjunct + degree bounds (now provable
+via `KP_criterion`); C.85 `theta_dictionary` re-signed with dv₂-height-tied quantifiers
+(GTC's falsity argument CONFIRMED plausible; counterexample construction specified at the
+LP1 frame). BONUS: the re-signed `gentow2_Bpp` is already machine-PROVED from the A-C.11
+class fields alone (`gentow2_Bpp_resigned_provable` in GSW's scratch check — a transcription
+unit turns it into the landed twin). HOLD (named objects): C.100 (IS lemma B′ —
+OPEN-EVAL-ISO), C.102 (OPEN-LETTERS), C.88 both (HE7 ANNEX R1-b/c + the norm↔root-value
+bridge). RE-BASE rejected globally on CC-17's evidence. Follow-ups: `TowerDatum.deepTower`
+unlanded (blocks stating C.100–C.103 in leanfinal); C.89 needs the same B-1 supply.

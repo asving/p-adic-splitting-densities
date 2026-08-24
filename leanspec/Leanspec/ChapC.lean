@@ -2465,7 +2465,18 @@ axiom gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
                    -- the general-depth form IS the OPEN [GENTOW5-W(i)] (C.89) — an
                    -- unfenced general-r signing would silently assert the open law.
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
-    (hfloor : e' * W.Econst r < u') {t : ℕ} (ht : t < f') :
+    (hfloor : e' * W.Econst r < u')
+    -- [A-C.12, 2026-08-24 RE-SIGN — GSW] the source-stated B-1 normalizer supply
+    -- (GENTOW2_PROOF S5.2 proof, ll.740–744: "N := n̂₂(u₃), M := n̂₂(u₃d): ladder
+    -- monomials, deg < m₃, single-point N₃-polygon, exact grades κ̄ resp. β_t (B-1)"):
+    -- the slot normalizer monomials sit at their exact grades, below the key degree,
+    -- and are nonzero.  Provability certificate: leanfinal/scratch/GSW_check.lean
+    -- `gentow2_Bpp_resigned_provable` (Lean-core, from the A-C.11 class fields alone).
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm r (d * u')))
+    (hnormdeg : ∀ d, 0 < d → d ≤ f' →
+      (I.chainNorm r (d * u')).natDegree < (I.keyAt r).natDegree)
+    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNorm r (d * u') ≠ 0)
+    {t : ℕ} (ht : t < f') :
     I.Rgr ((f' - t) * u') (I.chainNorm r ((f' - t) * u')) * I.thetaRatio (f' - t)
       = (I.Rgr u' (I.chainNorm r u')) ^ (f' - t)
 
@@ -2473,9 +2484,19 @@ axiom theta_letter_valued {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {
     (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
     (hr : r = 2)   -- the same depth-2 scope fence as gentow2_Bpp
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
-    (hfloor : e' * W.Econst r < u') :
+    (hfloor : e' * W.Econst r < u')
+    -- [A-C.12 RE-SIGN — GSW] the same B-1 normalizer supply as gentow2_Bpp (the first
+    -- conjunct is its d = 1 cancellation; the letter clause reads the same monomials).
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm r (d * u')))
+    (hnormdeg : ∀ d, 0 < d → d ≤ f' →
+      (I.chainNorm r (d * u')).natDegree < (I.keyAt r).natDegree)
+    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNorm r (d * u') ≠ 0) :
     I.thetaRatio 1 = 1 ∧
-    ∀ t : ℕ, ∃ j k : ℕ, I.thetaRatio t = I.letterZ 1 ^ j * I.letterZ 2 ^ k
+    -- [A-C.12 RE-SIGN — GSW] exponents ℤ, not ℕ: the γ-calculus produces
+    -- "grade-determined INTEGERS j, k" (S5.2), negative at the LP1 pin
+    -- (ϑ(0) = z₂⁻¹z₁⁻⁵); over an abstract `W.fld r` the ℕ-form overclaims.
+    -- Letter clause remains BLOCKED on OPEN-LETTERS (GSW adjudication §3).
+    ∀ t : ℕ, ∃ j k : ℤ, I.thetaRatio t = I.letterZ 1 ^ j * I.letterZ 2 ^ k
 
 /-! ### NODE C.100 [theorem] — `LEMMA GENTOW2-B′`, the per-grade unit law, direction
 `FGMN = u · repo` [signed: A-C.1] + the honesty companion (clause (4); its consumed
@@ -2519,7 +2540,22 @@ axiom gentow2_B {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (ρ : (T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂)
     (hκ : T.e₂ * T.f₂ * T.u₂ < u') (he' : 0 < e') (hf' : 0 < f')
     (hcop : Nat.Coprime u' e')
-    (c : ℕ → AdjoinRoot (towerLabel T)) (hc0 : c 0 ≠ 0) :
+    (c : ℕ → AdjoinRoot (towerLabel T)) (hc0 : c 0 ≠ 0)
+    -- [A-C.12 RE-SIGN — GSW] the source-stated recipe data (GENTOW2_PROOF S5,
+    -- ll.307–309: "k̂_t ∈ K[x] with deg k̂_t < deg Φ₂, dv₂-height u₃(f₃ − t), and
+    -- K₂-digit residual class c_t"):
+    (hlift : ∀ t, t < f' →
+      I.ExactGrade ((f' - t) * u') (k2DigitLift T (c t) ((f' - t) * u')))
+    (hliftdeg : ∀ t, t < f' →
+      (k2DigitLift T (c t) ((f' - t) * u')).natDegree < T.D₂)
+    -- — and the per-slot B′ unit law (S5 proof: "R_{3,β_t}(k̂_t) = u(β_t)·c_t"), the
+    -- C.100 discharge node applied at the used slots, carried EXPLICITLY because C.100
+    -- is HELD on OPEN-EVAL-ISO (GSW adjudication §4; delete by follow-up amendment when
+    -- C.100 + the k2DigitLift read companion land):
+    (hunit : ∀ t, t < f' →
+      I.Rgr ((f' - t) * u') (k2DigitLift T (c t) ((f' - t) * u'))
+        = I.Rgr ((f' - t) * u') (I.chainNorm 2 ((f' - t) * u'))
+          * ρ.symm ((towerLabelEquiv T hπ) (c t))) :
     I.Rres (recipe3 T e' f' u' c)
       = Polynomial.X ^ f'
         - ∑ t ∈ Finset.range f',
@@ -2550,8 +2586,16 @@ axiom gentow2_A {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (hκ : T.e₂ * T.f₂ * T.u₂ < u') (he' : 0 < e') (hf' : 0 < f')
     (hcop : Nat.Coprime u' e')
     (c : ℕ → AdjoinRoot (towerLabel T)) (hc0 : c 0 ≠ 0)
+    -- [A-C.12 RE-SIGN — GSW] the source-stated recipe degree bound (S5 ll.307–309,
+    -- "deg k̂_t < deg Φ₂") — types KP_criterion's Monic/degree legs:
+    (hliftdeg : ∀ t, t < f' →
+      (k2DigitLift T (c t) ((f' - t) * u')).natDegree < T.D₂)
     (hadm : Irreducible (I.Rres (recipe3 T e' f' u' c)) ∧
-      (I.Rres (recipe3 T e' f' u' c)).natDegree = f') :
+      (I.Rres (recipe3 T e' f' u' c)).natDegree = f' ∧
+      -- [A-C.12 RE-SIGN — GSW] the omitted source antecedent (GENTOW2_PROOF S4,
+      -- ll.187–188: "monic irreducible of degree f₃ ≥ 1 with ψ₃(0) ≠ 0") —
+      -- KP_criterion's fifth antecedent; GTB's option (a):
+      (I.Rres (recipe3 T e' f' u' c)).coeff 0 ≠ 0) :
     I.KP (recipe3 T e' f' u' c) ∧ Irreducible (recipe3 T e' f' u' c) ∧
     ¬ I.nuEquiv (recipe3 T e' f' u' c) (composedKey T)
 
@@ -3611,10 +3655,20 @@ leg is C.56's `refine_kills`, already signed] -/
 axiom theta_dictionary {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)] :
+    -- [A-C.12 RE-SIGN — GSW] quantifiers TIED to the dv₂-heights per the source
+    -- (EFF.GENTOW5.08: θ_t is the normalizer-system defect at the HEIGHTS, telescoped
+    -- through the ladder cocycle τ(a,b) = n̂₂(a)n̂₂(b)/n̂₂(a+b)); the untied A-C.1 form
+    -- collapses at s = t = 0 to exact multiplicativity of dv2Res — plausibly FALSE
+    -- (PE4 LP1 cocycle pin res(n̂₂(19)²/n̂₂(38)) = z₁² ≠ 1; GSW adjudication §7).
+    -- Product exactness/pinned-ness carried as hypotheses (on-locus facts).
     ∃ θ : ℕ → AdjoinRoot (T.levelDatum hπ).r,
       θ 0 = 1 ∧ θ 1 = 1 ∧ (∀ t, θ t ≠ 0) ∧
       ∀ (s t : ℕ) (A B : Polynomial O),
+        dv2Hgt (T.levelDatum hπ) A = (s : ℕ∞) →
+        dv2Hgt (T.levelDatum hπ) B = (t : ℕ∞) →
+        dv2Hgt (T.levelDatum hπ) (A * B) = ((s + t : ℕ) : ℕ∞) →
         dv2Res (T.levelDatum hπ) A ≠ 0 → dv2Res (T.levelDatum hπ) B ≠ 0 →
+        dv2Res (T.levelDatum hπ) (A * B) ≠ 0 →
         θ (s + t) * dv2Res (T.levelDatum hπ) (A * B)
           = θ s * θ t * (dv2Res (T.levelDatum hπ) A * dv2Res (T.levelDatum hπ) B)
 
