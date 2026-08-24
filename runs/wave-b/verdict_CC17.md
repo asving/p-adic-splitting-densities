@@ -193,3 +193,15 @@ lake build Uniformity.ChapC.C130s17
 
 Both exit 0.  The module build completed successfully (8699 jobs).  No roll-up, leanspec, or
 other unit file was touched.
+
+---
+## ORCHESTRATOR ADDENDUM (2026-08-24, for unit U13)
+
+A killed Fable U13 predecessor's last finding, unverified but flagged load-bearing: the
+`(e′, f′, u′) = (2, 1, 5)` parameter choice in this verdict's S2 instance may conflict with
+the witness's STAGE-3 data `(2, 1, 21)` — under U9's Q1 decision (the class is the calculus
+of the NEXT augmented valuation), the parameters at `r = 2` should be the next-augmentation
+data, and whether that is `(2,1,5)` or `(2,1,21)` at the S2 chain must be traced (D62w's
+`u = (1, 5, 21)`; C131ac consumed `(2,1,5)`-shaped loci). U13 must adjudicate this before
+planning the inhabitation — a wrong parameter here would make the frontier bundle
+inhabitable-but-useless (fed to consumers at the wrong slot).
