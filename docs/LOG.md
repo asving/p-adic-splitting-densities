@@ -87,3 +87,27 @@ U9 (codex HIGH) launched to settle U7 §9 Q1–Q7 (index convention, scalar `Rgr
 strength) and deliver the A-C.11 leanspec class-correction diff for orchestrator
 enactment. F3 (codex HIGH) launched on chapter I's critical path: type the I.10a/I.10b
 sockets against the freeze v2, I01 anti-drift pattern, amendments proposed not applied.
+
+**2026-08-24 — A-C.11 ENACTED (the FGMNCalculus re-sign) + the Q6 C.100 re-sign.** U9's
+adjudication decided all seven U7 §9 questions with print-read evidence: Q1 the class is the
+calculus of the NEXT augmented valuation (`Rgr`/`Rres`/`KP`/`nuEquiv` mean `R_{r+1,β}`,
+`R_{r+1}`, `KP(μ_{r+1})`, `∼_{μ_{r+1}}`); Q2 scalar `Rgr` = degree-zero coefficient, with
+`Rgr_ne_zero` fenced by `deg g < deg (keyAt r)`; Q3 `PrevGrade` redundant, removed; Q4 `r = 0`
+kept syntactic, laws fenced `0 < r`; Q5 the Gauss transport is mathlib's
+`Polynomial.Monic.irreducible_iff_irreducible_map_fraction_map` (probe elaborated) — OPEN-GAUSS
+resolved; Q6 C.100's `hfree : ¬ composedKey T ∣ g` was ordinary divisibility, NOT FGMN's
+`∣_μ` (Prop 1.7(2)) — `gentow2_Bp` + `gentow2_Bp_unit_iff` re-signed to the actually-proved
+scope `deg g < T.D₂` (μ-freeness automatic; revisit trigger recorded for the wider interval);
+Q7 C.90 needs full published Cor 6.3 — stays OPEN-LEVEL-GENERAL, no fake field. The unified
+diff (git-apply-clean, elaboration-checked in `scratch/U9_class_check.lean`) applied;
+`Rres_exists` additionally requires `Irreducible ψ` per the Thm 5.7 print-read;
+`Leanspec.ChapC` green (9229 jobs).
+
+**2026-08-24 — U10 audit: `DrainageAt 3` is ALREADY UNCONDITIONAL.** The n=3 drainage
+blueprint unit found U8's actual-set recurrence already landed
+(`undecidedCount_three_recursion`) and `DrainageAt 3` proved via `rate_three` (constants
+(1,0,3)) + `drainageAt_three` in `ChapH/H97b.lean` — orchestrator re-verified: Lean-core
+footprint. The CHAP-I HYP.08/HYP.09 OPEN-MATH rows are STALE. Remaining from the blueprint:
+two BLUEPRINT nodes for H.97's literal (1,1,0) sharpening (only if a consumer needs it) and
+the OPEN Haar-null statement (measure carrier missing; NOT needed for `DrainageAt 3`).
+Deliverable: `N3_DRAINAGE_BLUEPRINT_2026-08-24.md` + `scratch/U10_sig_check.lean` (exit 0).

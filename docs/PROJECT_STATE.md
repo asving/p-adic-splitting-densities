@@ -90,9 +90,12 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    chapter I's critical path): v1 **NEEDS-REDESIGN** (swallowing trap + arising-linkage
    gap; findings in the doc's banner, `TOWER_INSTANTIATION_FREEZE_DRAFT_2026-08-20.md`).
    **v2 DELIVERED (unit F2, 2026-08-24):** `TOWER_INSTANTIATION_FREEZE_V2_2026-08-24.md`
-   (610 lines, D-TIF-4 carrier, non-swallowing residue design; two honest signed-shape
-   findings: single-Kt must be terminal K_r; E.63's unbounded ∀i vs finite live range —
-   commit 241a997d). NEXT: type the I.10a/I.10b sockets against it.
+   (D-TIF-4 carrier, non-swallowing residue design). **A-I.2 ENACTED (2026-08-24):** E.63
+   re-signed to the live range `3 ≤ i < r`; I.10b + the `deepTwist` field carry the tower
+   depth `r` and conclude at F3's `DeepTwistConjunctLive` (leanfinal `I10FreezeV2.lean`,
+   wired). The sockets' bodies stay `True` — honestly BLOCKED on the freeze's OPEN C.130
+   layers (b/c, d/e, f, g/h, i, j/k, gate — F3's verdict lists them). NEXT: transcribe the
+   C.130 layers (codex wave), then the §9 witness, then the sockets land.
 3. **The five exact-degree re-signs: DONE (amendment A-C.10, 2026-08-24)** — enacted in the
    leanspec (elaborates green) with per-stub annotations + the blueprint amendment entry;
    the re-signed C.64 is already PROVED (`C64.lean` `blockDeg_eq_resigned`, Lean-core).
@@ -141,8 +144,13 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | C131m | C.131m′ paid-branch recursion + erasure (codex) | RUNNING (runs/wave-b/out_C131m.log) |
 | C131t | C.131t′+x′ weight-to-height + strict exactness (codex) | RUNNING (runs/wave-b/out_C131t.log) |
 | C131u | C.131u′–v′ DvAbove bridge + shadow discrepancy (codex) | RUNNING (runs/wave-b/out_C131u.log) |
-| U9 | FGMN §9-questions adjudication + A-C.11 diff (codex HIGH) | RUNNING (runs/wave-b/out_U9.log) |
-| F3 | I.10a/I.10b sockets vs freeze v2 (codex HIGH) | RUNNING (runs/wave-b/out_F3.log) |
+| U9 | FGMN adjudication Q1–Q7 (codex HIGH) | DONE 2026-08-24 — all DECIDED; **A-C.11 ENACTED** (class body + Q6 C.100 re-sign, Leanspec.ChapC green) |
+| F3 | I.10a/I.10b sockets vs freeze v2 (codex HIGH) | DONE 2026-08-24 — SUPPLY (`I10FreezeV2.lean` wired); **A-I.2 ENACTED** (E.63 live-range re-sign + I.10b `r` binder, both leanspecs green); sockets stay `True` pending C.130 layers |
+| U10 | n=3 drainage blueprint (codex HIGH) | DONE 2026-08-24 — audit finding: **`DrainageAt 3` ALREADY UNCONDITIONAL** (`drainageAt_three`, H97b, Lean-core — orchestrator-verified); H.97's literal (1,1,0) sharpening = 2 BLUEPRINT nodes; Haar-null OPEN (not needed) |
+| C131f | C.131f′–g′ (codex) | DONE 2026-08-24 — both LANDED (public fence + `WT K_T = E₂`; orchestrator-verified Lean-core) |
+| C131m | C.131m′ (codex) | DONE 2026-08-24 — LANDED (`taggedOuterNF_erasure`; orchestrator-verified Lean-core) |
+| C131t | C.131t′+x′ (codex) | DONE 2026-08-24 — both LANDED (orchestrator-verified Lean-core) |
+| C131u | C.131u′–v′ (codex) | DONE 2026-08-24 — u′ LANDED; v′ was BLOCKED on m′ (now landed) → requeued as unit C131v |
 
 ## 7. Resume protocol (fresh agent)
 

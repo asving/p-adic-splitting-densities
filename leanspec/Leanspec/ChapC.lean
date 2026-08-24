@@ -1317,61 +1317,72 @@ their consumers fire): the level-general one-sidedness clause (published **Cor 6
 Cor 6.4 — C.90(b)'s leg; needs the level-`i` `dv`-carriers, §9-scope) and the γ-letter
 defining reads (published Def 3.12-family — C.102's leg). -/
 
-/-- NODE C.92 — the MacLane-chain certificate interface ([cite:FGMN-chain], gate (b)). -/
+/-- NODE C.92 — the MacLane-chain certificate interface ([cite:FGMN-chain], gate (b)).
+
+[A-C.11, 2026-08-24 RE-SIGN — recorded amendment.] Body replaced with the adjudicated field
+list: per-field provenance, the published-source print-reads, and the seven decided design
+questions (index convention = next augmentation `R_{r+1}`; scalar `Rgr` = degree-zero
+coefficient; `PrevGrade` removed; `r = 0` syntactic only; Gauss transport =
+`Polynomial.Monic.irreducible_iff_irreducible_map_fraction_map`) live in
+`docs/in-progress/FGMN_ADJUDICATION_2026-08-24.md` (U9) on top of
+`docs/in-progress/FGMNCALCULUS_FIELDLIST_2026-08-24.md` (U7). The class remains a HYPOTHESIS
+CARRIER: `fgmn_calculus_exists` stays undeclared (C92_VACUITY); discharge path =
+`FGMNChainRealization` (OPEN-DICT-1..4). -/
 class FGMNCalculus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) where
-  /-- the MacLane chain keys `Φ_1 … Φ_r` (`Φ_1 = F.key`); junk outside. -/
   keyAt : ℕ → Polynomial O
   keyAt_one : keyAt 1 = F.key
-  /-- `deg Φ_i = D_i` (chain-degree law; published §§5–6 chain conventions). -/
   keyAt_deg : ∀ i, 1 ≤ i → i ≤ r → (keyAt i).natDegree = W.Dcum i
-  /-- the exact-grade pin (`ν`-value data): the scope carrier of R3-2's fence — every graded
-  read below is conditioned on it (`digit` applied only in scope). -/
+
   ExactGrade : ℕ → Polynomial O → Prop
-  /-- the graded coefficient read `R_{r+1,β}` at cleared grade `β`, valued in the top residue
-  field (C.104's `(R-FGMN)`, the `ε₂`-normalized coordinate; published §4). -/
+  AboveGrade : ℕ → Polynomial O → Prop
+
   Rgr : ℕ → Polynomial O → W.fld r
-  /-- the residual operator `R_ν(·)` of the depth-`r` valuation, valued in `K_r[y]`
-  (published §§4–6). -/
   Rres : Polynomial O → Polynomial (W.fld r)
-  /-- `KP(ν)`-membership (key/prime polynomial for the depth-`r` MacLane valuation). -/
   KP : Polynomial O → Prop
-  /-- `ν`-equivalence `∼_ν`. -/
   nuEquiv : Polynomial O → Polynomial O → Prop
-  /-- the FGMN residue letters `z_i` (published Def 3.12-family `γ_i`-letters), in `K_r`. -/
   letterZ : ℕ → W.fld r
-  /-- [published **Cor 4.12(3)**; was Cor 4.7(3)] graded multiplicativity of the `R`-read. -/
-  Rgr_mul : ∀ β β' (g g' : Polynomial O), ExactGrade β g → ExactGrade β' g' →
-    ExactGrade (β + β') (g * g') ∧ Rgr (β + β') (g * g') = Rgr β g * Rgr β' g'
-  /-- [published **Cor 4.9(3)**; was Cor 4.4(4)] nonvanishing of the in-scope graded read
-  (the single-pin polygon leg C.100's `u(β) ≠ 0` consumes). -/
-  Rgr_ne_zero : ∀ β (g : Polynomial O), ExactGrade β g → g ≠ 0 → Rgr β g ≠ 0
-  /-- [published **Prop 5.6 + eq (11)**; was Prop 5.7 + eq (14), plus Def 1.8's
-  expansion-minimum and **Cor 4.12(1)**] the recipe expansion law: the residual of the
-  recipe key is the `y`-polynomial of the graded slot reads — the raw (B-law) sum. -/
+
+  Rgr_zero_of_above : ∀ β (g : Polynomial O),
+    AboveGrade β g → Rgr β g = 0
+  Rgr_add : ∀ β (g h : Polynomial O),
+    ExactGrade β g → ExactGrade β h → ExactGrade β (g + h) →
+      Rgr β (g + h) = Rgr β g + Rgr β h
+  Rgr_mul : ∀ β β' (g h : Polynomial O),
+    ExactGrade β g → ExactGrade β' h →
+      ExactGrade (β + β') (g * h) ∧
+      Rgr (β + β') (g * h) = Rgr β g * Rgr β' h
+  Rgr_ne_zero : ∀ β (g : Polynomial O),
+    ExactGrade β g → g.natDegree < (keyAt r).natDegree → g ≠ 0 → Rgr β g ≠ 0
+  Rres_mul : ∀ g h : Polynomial O,
+    Rres (g * h) = Rres g * Rres h
   Rres_recipe : ∀ (khat : ℕ → Polynomial O),
     (∀ t, t < f' → ExactGrade ((f' - t) * u') (khat t)) →
     (∀ t, t < f' → (khat t).natDegree < (keyAt r).natDegree) →
-    Rres ((keyAt r) ^ (e' * f') - ∑ t ∈ Finset.range f', khat t * (keyAt r) ^ (e' * t))
-      = Polynomial.X ^ f'
-        - ∑ t ∈ Finset.range f',
-            Polynomial.C (Rgr ((f' - t) * u') (khat t)) * Polynomial.X ^ t
-  /-- [published **Lemma 5.2(2)**; was Lemma 5.3(2)] the key-polynomial criterion at the
-  recipe degree (admissibility/degree forcing). -/
-  KP_criterion : ∀ (g : Polynomial O), g.Monic →
+    Rres ((keyAt r) ^ (e' * f') -
+        ∑ t ∈ Finset.range f', khat t * (keyAt r) ^ (e' * t)) =
+      Polynomial.X ^ f' -
+        ∑ t ∈ Finset.range f',
+          Polynomial.C (Rgr ((f' - t) * u') (khat t)) * Polynomial.X ^ t
+  Rres_exists : 0 < r → ∀ ψ : Polynomial (W.fld r),
+    ψ.Monic → Irreducible ψ → ψ.natDegree = f' → ψ.coeff 0 ≠ 0 →
+      ∃ g : Polynomial O,
+        g.Monic ∧
+        g.natDegree = e' * f' * (keyAt r).natDegree ∧
+        Rres g = ψ
+  KP_criterion : ∀ g : Polynomial O,
+    g.Monic →
     g.natDegree = e' * f' * (keyAt r).natDegree →
-    Irreducible (Rres g) → (Rres g).natDegree = f' → KP g
-  /-- [published **Lemma 1.8 + Cor 1.10**; were Lemma 1.11 + Cor 1.13] key polynomials are
-  irreducible (over `K_v[x]` in the source; monic + `KP(µ) ⊂ O[x]` transports it to `O[x]`
-  by Gauss — the transport recorded in the faithfulness entry). -/
-  KP_irred : ∀ (g : Polynomial O), KP g → g.Monic → Irreducible g
-  /-- [published **Thm 6.2**; was Thm 6.3 items (1)(2)(3), v3's (3) absorbed into (2)] the
-  chain key's own residual is trivial — the non-equivalence pivot C.103 reads. -/
-  Rres_keyAt : Rres (keyAt r) = 1
-  /-- [published **Prop 5.6**, the consumed equivalence] distinct residuals ⟹ not
-  `ν`-equivalent. -/
-  nuEquiv_ne_of_Rres : ∀ (g g' : Polynomial O), KP g → KP g' →
-    Rres g ≠ Rres g' → ¬ nuEquiv g g'
+    Irreducible (Rres g) →
+    (Rres g).natDegree = f' →
+    (Rres g).coeff 0 ≠ 0 →
+      KP g
+  KP_irred : ∀ g : Polynomial O, KP g → g.Monic → Irreducible g
+  KP_keyAt : 0 < r → KP (keyAt r)
+  Rres_keyAt : 0 < r → Rres (keyAt r) = 1
+  nuEquiv_iff_Rres : ∀ g h : Polynomial O,
+    KP g → KP h → (nuEquiv g h ↔ Rres g = Rres h)
+  letterZ_ne_zero : ∀ i, 1 ≤ i → i ≤ r → letterZ i ≠ 0
 
 /-! ### ⛔ C.92's EXISTENCE AXIOM IS **RETIRED** — DECISION A-C.6, option (1) (hypothesis-form)
 
@@ -2476,7 +2487,10 @@ axiom gentow2_Bp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
     (ρ : (T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂)
     {β : ℕ} {g : Polynomial O} (hg : I.ExactGrade β g)
-    (hdeg : g.natDegree < e' * f' * T.D₂) (hfree : ¬ composedKey T ∣ g) :
+    -- [A-C.11/Q6, 2026-08-24 RE-SIGN] the proved scope is `deg g < D₂` (GENTOW2 S5.1), where
+    -- μ-freeness is automatic by μ-minimality of the key; the old `hfree` used ORDINARY
+    -- divisibility, which is not FGMN's `∣_μ` (Prop 1.7(2)) — never an admissible substitute.
+    (hdeg : g.natDegree < T.D₂) :
     I.Rgr β g
       = I.Rgr β (I.chainNorm 2 β)
         * ρ.symm ((towerLabelEquiv T hπ) (repoRead (T.levelDatum hπ) g))
@@ -2487,7 +2501,8 @@ axiom gentow2_Bp_unit_iff {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (e' f' u' : ℕ) [I : FGMNCalculus (T.deepTower hπ) e' f' u']
     (ρ : (T.deepTower hπ).fld 2 ≃+* AdjoinRoot T.ψ₂)
     {β : ℕ} {g : Polynomial O} (hg : I.ExactGrade β g)
-    (hdeg : g.natDegree < e' * f' * T.D₂) (hfree : ¬ composedKey T ∣ g)
+    -- [A-C.11/Q6, 2026-08-24 RE-SIGN] same scope re-sign as gentow2_Bp above.
+    (hdeg : g.natDegree < T.D₂)
     (hne0 : repoRead (T.levelDatum hπ) g ≠ 0) :
     I.Rgr β g = ρ.symm ((towerLabelEquiv T hπ) (repoRead (T.levelDatum hπ) g))
       ↔ I.Rgr β (I.chainNorm 2 β) = 1
