@@ -151,11 +151,14 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | C131m | C.131m′ (codex) | DONE 2026-08-24 — LANDED (`taggedOuterNF_erasure`; orchestrator-verified Lean-core) |
 | C131t | C.131t′+x′ (codex) | DONE 2026-08-24 — both LANDED (orchestrator-verified Lean-core) |
 | C131u | C.131u′–v′ (codex) | DONE 2026-08-24 — u′ LANDED; v′ was BLOCKED on m′ (now landed) → requeued as unit C131v |
-| C131h | C.131h′–j′ division ledger F6–F8 (codex) | RUNNING (runs/wave-b/out_C131h.log) |
-| C130A | freeze layers C.130b/c + d/e (codex) | RUNNING (runs/wave-b/out_C130A.log) |
-| C130B | freeze layer C.130f (codex) | RUNNING (runs/wave-b/out_C130B.log) |
+| C131h | C.131h′–j′ division ledger F6–F8 (codex) | DONE 2026-08-24 — all 3 LANDED (orchestrator-verified Lean-core) |
+| C130A | freeze layers C.130b/c + d/e (codex) | DONE 2026-08-24 — `stageDeg` landed; b–e BLOCKED on the missing key-chain/node-point carrier (→ U11) |
+| C130B | freeze layer C.130f (codex) | DONE 2026-08-24 — 15 decls LANDED; exact-height law BLOCKED: freeze demand FALSE vs C.83 `towerNorm` truncation at (2,5,1); Laurent normalizer named (→ U11) |
+| U11 | chain-realization carrier DESIGN (codex HIGH) | RUNNING (runs/wave-b/out_U11.log) — the convergence artifact gating FGMNCalculus discharge + I.10 sockets |
 | C131v | C.131v′ retry post-m′ (FABLE probe) | RUNNING |
 | C131ac | C.131ac′ exact powers (FABLE probe) | RUNNING |
+| C131n | C.131n′–o′ recarry + census floor (FABLE) | RUNNING |
+| C131ad | C.131ad′ box-monomial floor (FABLE) | RUNNING |
 
 ## 7. Resume protocol (fresh agent)
 
