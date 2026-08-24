@@ -69,7 +69,7 @@ def levelExponentHeight (T : DeepTower F H₀ hpin r) (j : ℕ) :
     let z := Multiplicative.toAdd g
     Multiplicative.ofAdd
       (z.1 * T.ehat j + z.2.1 * ((T.ehat j / T.e 1) * T.u 1) +
-        ∑ a : Fin (j - 1), z.2.2 a * ((T.ehat j / T.e (a.1 + 2)) * T.u (a.1 + 2)))
+        ∑ a : Fin (j - 1), z.2.2 a * ((T.ehat j / T.ehat (a.1 + 2)) * T.u (a.1 + 2)))
   map_one' := by simp
   map_mul' x y := by
     apply Multiplicative.toAdd.injective

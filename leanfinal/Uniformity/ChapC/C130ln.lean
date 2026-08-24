@@ -27,7 +27,7 @@ residual heights instead of C130B's truncation.  Coprimality (C.83's `hcop` rung
 `F.hcop` at the frame) makes every division exact; this is the general-depth form of D62w's
 landed depth-3 greedy solve (`d3b2`/`d3m2`/…, `deep3_exact_height`).
 
-## ⚠ STOP-THE-LINE FINDING (formalized below, NOT repaired here)
+## ⚠ STOP-THE-LINE FINDING — REPAIRED 2026-08-24 (orchestrator; refuter retired to git history)
 
 The landed `levelExponentHeight` (C.130f) carries the Φ-weight denominator `T.e (a.1 + 2)`.
 The corpus pattern is `T.ehat (a.1 + 2)`: C.130f's own docstring says `(ê_j/ê_(a+2))u_(a+2)`,
@@ -69,7 +69,8 @@ stage-live level, with no `sorry`, no axiom, no `True`-bodied interface.
   `towerNorm`, and C.83's word then sits at exact Hat-height.
 * `DeepTower.laurentNormalizerOfAgree` — the `C130k.LaurentNormalizer` constructor behind the
   named landed-height agreement hypothesis.
-* `isEmpty_laurentNormalizer_of_two_dvd` — the formal stop-the-line refuter.
+* `DeepTower.laurentNormalizer` — the literal instance (post-repair; the refuter
+  `isEmpty_laurentNormalizer_of_two_dvd` is retired to the "BP: CC-4" commit in git history).
 
 ## Status
 
@@ -416,59 +417,23 @@ def laurentNormalizerOfAgree (T : DeepTower F H₀ hpin r)
     rw [hagree i hi]
     exact T.laurentNormAt_exact_height i hi k
 
+/-- The literal `C130k.LaurentNormalizer`, unconditionally: after the C.130f one-token
+repair (2026-08-24, orchestrator; refuter history in the "BP: CC-4" commit), the landed
+`levelExponentHeight` and this file's `levelExponentHeightHat` agree definitionally. -/
+def laurentNormalizer (T : DeepTower F H₀ hpin r) : LaurentNormalizer T :=
+  T.laurentNormalizerOfAgree fun _ _ _ => rfl
+
 end DeepTower
 
-/-! ## The stop-the-line refuter -/
+/-! ## The stop-the-line refuter — RETIRED (repair enacted 2026-08-24)
 
-/-- **The landed exact-height demand is uninhabitable on doubly even-ramified towers.**  With
-`2 ∣ e₁`, `2 ∣ e₂` and `2 ≤ r` (every S2/S4 witness chain qualifies: `e = 2` at all rungs),
-ALL level-2 weights of the LANDED `levelExponentHeight` — `ê₂ = e₁e₂`, `(ê₂/e₁)u₁ = e₂u₁`,
-`(ê₂/e₂)u₂ = e₁u₂` — are even, so no `norm` can hit height `1` and `C130k.LaurentNormalizer`
-is EMPTY.  (Against the corrected `levelExponentHeightHat`, whose level-2 Φ-weight is `u₂`
-with `gcd(u₂, e₂) = 1`, the instance exists: `laurentSolve_exact`.)  This is the formal form
-of the stop-the-line finding in the module docstring. -/
-theorem isEmpty_laurentNormalizer_of_two_dvd (T : DeepTower F H₀ hpin r) (hr : 2 ≤ r)
-    (h1 : 2 ∣ T.e 1) (h2 : 2 ∣ T.e 2) : IsEmpty (LaurentNormalizer T) := by
-  constructor
-  intro N
-  have hne1 : ((T.e 1 : ℕ) : ℤ) ≠ 0 := by
-    exact_mod_cast (T.he 1 (by omega) (by omega)).ne'
-  have hne2 : ((T.e 2 : ℕ) : ℤ) ≠ 0 := by exact_mod_cast (T.he 2 (by omega) hr).ne'
-  have hN2 : T.ehat 2 = T.e 1 * T.e 2 := by
-    have h21 : (2 : ℕ) = 1 + 1 := rfl
-    rw [h21, T.ehat_succ 1, T.ehat_one]
-  have he2 : ((T.ehat 2 : ℕ) : ℤ) = (T.e 1 : ℤ) * (T.e 2 : ℤ) := by rw [hN2, Nat.cast_mul]
-  have hd1 : (2 : ℤ) ∣ (T.e 1 : ℤ) := by exact_mod_cast h1
-  have hd2 : (2 : ℤ) ∣ (T.e 2 : ℤ) := by exact_mod_cast h2
-  -- every LANDED level-2 height is even: all three landed weights are.
-  have himg : ∀ g : LevelExponentLattice 2,
-      (2 : ℤ) ∣ Multiplicative.toAdd (levelExponentHeight T 2 g) := by
-    intro g
-    have hbody : Multiplicative.toAdd (levelExponentHeight T 2 g) =
-        (Multiplicative.toAdd g).1 * (T.ehat 2 : ℤ) +
-          (Multiplicative.toAdd g).2.1 * ((T.ehat 2 : ℤ) / (T.e 1 : ℤ) * (T.u 1 : ℤ)) +
-          ∑ a : Fin (2 - 1), (Multiplicative.toAdd g).2.2 a *
-            ((T.ehat 2 : ℤ) / (T.e (a.1 + 2) : ℤ) * (T.u (a.1 + 2) : ℤ)) := rfl
-    rw [hbody]
-    refine dvd_add (dvd_add ?_ ?_) (Finset.dvd_sum fun a _ => ?_)
-    · -- π-weight `ê₂ = e₁e₂` is even
-      have : (2 : ℤ) ∣ (T.ehat 2 : ℤ) := by
-        rw [he2]
-        exact hd1.mul_right _
-      exact this.mul_left _
-    · -- x-weight `(ê₂/e₁)u₁ = e₂u₁` is even
-      rw [he2, Int.mul_ediv_cancel_left _ hne1]
-      exact (hd2.mul_right _).mul_left _
-    · -- Φ₁-weight `(ê₂/e₂)u₂ = e₁u₂` is even — THE mis-transcribed weight
-      have ha : a.1 + 2 = 2 := by
-        have := a.isLt
-        omega
-      rw [ha, he2, Int.mul_ediv_cancel _ hne2]
-      exact (hd1.mul_right _).mul_left _
-  have hcontra := himg (N.norm 2 1)
-  rw [N.exact_height 2 ⟨by omega, hr⟩ 1] at hcontra
-  simp only [toAdd_ofAdd] at hcontra
-  norm_num at hcontra
+The machine-checked refuter `isEmpty_laurentNormalizer_of_two_dvd` (the LANDED weight
+pattern `T.e (a.1+2)` made `LaurentNormalizer` empty on every doubly even-ramified tower)
+is preserved verbatim in git history at the commit titled "BP: CC-4 SUPPLY +
+STOP-THE-LINE" (8f8537d7).  The orchestrator then enacted the one-token C.130f repair
+(`T.e (a.1+2)` → `T.ehat (a.1+2)` in `levelExponentHeight`), after which the landed height
+and `levelExponentHeightHat` agree definitionally and the refuter's premise no longer
+exists.  The literal instance is `DeepTower.laurentNormalizer` above. -/
 
 /-! ## Teeth: C130B's truncation site, at the predicate level
 
@@ -503,6 +468,7 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.DeepTower.laurentSolve_zero
 #print axioms Uniformity.Density.Tower.DeepTower.laurentNormAt_zero
 #print axioms Uniformity.Density.Tower.DeepTower.heightAux
+#print axioms Uniformity.Density.Tower.DeepTower.laurentNormalizer
 #print axioms Uniformity.Density.Tower.levelExponentHeightHat_ofAdd
 #print axioms Uniformity.Density.Tower.DeepTower.heightAux_snoc
 #print axioms Uniformity.Density.Tower.DeepTower.laurentSolve_exact
@@ -512,6 +478,5 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.DeepTower.towerNormLattice_eq_laurentNormAt
 #print axioms Uniformity.Density.Tower.DeepTower.towerNormLattice_exact_heightHat
 #print axioms Uniformity.Density.Tower.DeepTower.laurentNormalizerOfAgree
-#print axioms Uniformity.Density.Tower.isEmpty_laurentNormalizer_of_two_dvd
 
 end AxCheck

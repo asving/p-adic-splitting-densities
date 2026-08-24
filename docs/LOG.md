@@ -128,3 +128,16 @@ socket applications. 19-node plan CC-0…CC-18; CC-0 (core re-home to break the 
 cycle) + CC-1 (carrier skeleton) launched as Fable unit CC01. Fable confirmed healthy
 (C131ac landed first-compile), so transcription shifts to Fable; codex (~51% of the weekly
 window) is reserved for HIGH design/adjudication.
+
+**2026-08-24 — CC-4 stop-the-line + the C.130f one-token repair ENACTED.** CC-4 (Fable)
+landed the general-depth Laurent solve with exact height for ALL k ∈ ℤ, and machine-refuted
+the landed `levelExponentHeight`: its Φ-weight denominator read `T.e (a.1+2)` where C.130f's
+own docstring, D62w's regressed weights (8,4,10,21 — the landed form gives 20 where the
+corpus forces 10), and the GENTOW5.21 regression rows all force `T.ehat (a.1+2)`; under the
+landed form `LaurentNormalizer` is EMPTY on every doubly even-ramified tower (all S2/S4
+chains) — CC-17 would have been unbuildable. The refuter `isEmpty_laurentNormalizer_of_two_dvd`
+was committed pre-repair (commit 8f8537d7) and then retired; the orchestrator applied the
+one-token repair to C.130f, all six dependent modules rebuilt green, and the literal
+`DeepTower.laurentNormalizer` instance now discharges by `rfl`-agreement (Lean-core). C.83's
+`towerNorm` is retro-validated on its honest `NoTrunc` domain (`laurentSolve_eq_towerNorm`);
+C130B's (2,5,1) truncation site is excluded by the guard at the predicate level.
