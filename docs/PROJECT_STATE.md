@@ -138,20 +138,11 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 
 | unit | what | status |
 |---|---|---|
-| (archive) | wave A–B units E2/F2/FT/A-C.10/U7/U8/U9/U10/U11/F3 + the C.131′ fleet a–v,x,aa–ad + CC-0…9,13,14,15 | ALL DONE 2026-08-24 — details in docs/LOG.md + git log; every landing orchestrator-verified Lean-core (cite inheritance only where designed) |
-| C131w | **C.131w′ = C.72 `shadow_floor`** (FABLE) | **DONE 2026-08-24 — LANDED, signed statement byte-identical, Lean-core, no cite** (commit 81405bcb) |
-| CC16 | FGMNCalculus leanfinal twin + packaging (FABLE) | DONE 2026-08-24 — LANDED byte-audited (census → 171 unlanded) |
-| DT1 | definitional twins batch 1 (SONNET) | DONE 2026-08-24 — 6 twins landed; struck drafts correctly skipped |
-| GTA | GENTOW2 C.99–C.101 (SONNET) | RUNNING (→ C99gt.lean) |
-| GTB | GENTOW2 C.102–C.104 (SONNET) | RUNNING (→ C102gt.lean) |
-| GTC | GENTOW supply C.105–106 + C.88/C.85 (SONNET) | RUNNING (→ C105gt.lean) |
-| C131y | C.131y′ = C.72 faithful band (FABLE) | RUNNING (→ C131y.lean) |
-| E57 | HARD: E.57 partition-leg adjudication (FABLE) | RUNNING (→ ChapE/E57p.lean) |
-| C78 | HARD: C.78 exact-degree adjudication (FABLE) | RUNNING (→ C78adj.lean) |
-| U12 | DESIGN: level-general carrier for C.90/Cor 6.3 (codex HIGH) | RUNNING (runs/wave-b/out_U12.log) |
-| C131ae | C.131ae′–af′ budget↔locus closers (SONNET) | RUNNING (→ C131ae.lean) |
-| CC10 | CC-10 canonical L-read (FABLE) | RUNNING (→ C130cr.lean) |
-| CC11 | CC-11 separate arena read (FABLE) | RUNNING (→ C130ar.lean) |
+| (archive) | all 2026-08-24 waves through CC-16/A-E.7 | DONE — details in docs/LOG.md + git log; every landing orchestrator-verified |
+| GTA | GENTOW2 C.99–C.101 (codex, relaunched after silent Fable death) | RUNNING (runs/wave-b/out_GTA.log) |
+| C131ae | C.131ae′–af′ budget↔locus closers (SONNET) | RUNNING (C131ae.lean at 45KB, finishing) |
+| C78 | HARD: C.78 exact-degree adjudication (FABLE) | RUNNING (C78adj.lean at 43KB, verifying) |
+| CC17 | **ACCEPTANCE GATE: full S2 ChainRealization + first non-vacuous FGMNCalculus instance** (codex HIGH) | RUNNING (runs/wave-b/out_CC17.log) |
 
 ## 7. Resume protocol (fresh agent)
 
