@@ -195,3 +195,18 @@ missing from TowerDatum) — C.100–C.103 twins statable. Census EOD: 646/1239 
 419 carrier (+29), 161 unlanded (−~33 net). The whole chapter-I socket path + the
 FGMNCalculus discharge now funnel through inhabiting `S2SourceFrontier` (the source
 MacLane model) — the next campaign. GTR (re-signed GENTOW2 landings) still in flight.
+
+**2026-08-24 (night) — U13: `S2SourceFrontier` REFUTED AS TYPED (vacuity caught).** The
+codex-HIGH plan unit, before planning the inhabitation, machine-refuted the bundle itself:
+at S2 the `[Algebra Kt L]` constraint forces char 2 on the evaluation target, so
+`coeffHom (C 2) = 0` while `slot_value`/`hgt_ne_top` require finite height — formal
+`IsEmpty` proofs, Lean-core, no sorry (`scratch/U13_probe.lean`). CONSEQUENCE: CC-17/CC-18's
+conditional constructors are true-but-vacuous at S2 (recorded as verdict addenda) — the
+honesty invariant (`sorry`-free ≠ non-vacuous) held because the bundle was kept a named
+PREMISE rather than asserted. The cure is U12's fence enacted at the type level: split the
+valued evaluation field `E` from the residue/letter field `L`. U13 delivers the corrected
+30–45-node campaign (`S2_SOURCE_PLAN_2026-08-24.md`): ambient split first, then concrete
+weighted-development values, with FIVE genuine inductive cores named (`value_mul`,
+`graded_mul`, `normalized_mul`, `key_criterion`, `initial_iff_residual`) — the honest
+remaining hard math of the chapter-I/class-discharge path. The (2,1,5)-vs-(2,1,21)
+parameter breadcrumb is addressed inside the plan's per-field analysis.

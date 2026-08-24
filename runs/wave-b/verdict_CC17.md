@@ -205,3 +205,15 @@ data, and whether that is `(2,1,5)` or `(2,1,21)` at the S2 chain must be traced
 `u = (1, 5, 21)`; C131ac consumed `(2,1,5)`-shaped loci). U13 must adjudicate this before
 planning the inhabitation — a wrong parameter here would make the frontier bundle
 inhabitable-but-useless (fed to consumers at the wrong slot).
+
+---
+## ORCHESTRATOR ADDENDUM 2 (2026-08-24, post-U13) — VACUITY FINDING
+
+U13's machine-checked refutation (`scratch/U13_probe.lean`, `IsEmpty` proofs, Lean-core):
+`S2SourceFrontier` is UNINHABITABLE as typed — `[Algebra Kt L]` forces char L = 2 at S2,
+so the coefficient hom kills `C 2` while `slot_value`/`hgt_ne_top` demand finite height.
+This verdict's conditional constructors are correct implications with an EMPTY premise at
+S2 (vacuous conditionals). The cure (U13's plan §2): split the valued evaluation field `E`
+(char 0) from the residue/letter field `L`; the re-typed bundle + the corrected 30–45-node
+campaign are in `docs/in-progress/S2_SOURCE_PLAN_2026-08-24.md`. The same caveat applies
+to C130s18's S2 socket applications (general-`ChainRealization` forms unaffected).
