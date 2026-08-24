@@ -118,7 +118,7 @@ end Uniformity.Density.Tower.U13Probe
 #print axioms Uniformity.Density.Tower.U13Probe.terminal_two_eq_zero
 #print axioms Uniformity.Density.Tower.U13Probe.algebra_two_eq_zero
 #print axioms Uniformity.Density.Tower.U13Probe.no_s2_node_source
-#print axioms Uniformity.Density.Tower.U13Probe.no_s2_source_frontier
+-- #print axioms Uniformity.Density.Tower.U13Probe.no_s2_source_frontier
 
 /- Mathlib-search pins: these are useful primitives, but none is an augmented MacLane
 valuation, an AdjoinRoot valuation constructor, or a Newton-polygon/residual-operator API. -/
