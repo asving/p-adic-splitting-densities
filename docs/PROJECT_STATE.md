@@ -75,11 +75,10 @@ adjudicating now). Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
    chapter I's critical path): v1 **NEEDS-REDESIGN** (swallowing trap + arising-linkage
    gap; findings in the doc's banner, `TOWER_INSTANTIATION_FREEZE_DRAFT_2026-08-20.md`).
    **Unit F2 (codex HIGH) in flight on the v2.**
-3. **The five exact-degree re-signs** (C.27 `slot2_exact` +`hx`; C.64 `blockDeg_eq` +riders;
-   C.67 `multiplicity_tie` drop conjunct 1; C.77 clause (iii); C.80 drop conjunct 2):
-   the D-CARRY family is settled — 4 refuted machine-checked, C.48 landed as the protected
-   template, C.78 the lone open candidate (different shape, needs level-2 instruments).
-   **Re-sign batch: orchestrator, in progress (amendment A-C.10).**
+3. **The five exact-degree re-signs: DONE (amendment A-C.10, 2026-08-24)** — enacted in the
+   leanspec (elaborates green) with per-stub annotations + the blueprint amendment entry;
+   the re-signed C.64 is already PROVED (`C64.lean` `blockDeg_eq_resigned`, Lean-core).
+   C.78 remains the lone unadjudicated exact-degree site (different shape).
 4. **The §10 GENTOW2 supply chain** (C.99–C.106) + C.88/C.85: gated on C.92's
    `FGMNCalculus` field list (item 3 above) — next after the cite authoring.
 5. **C.123/C.124 gates** (q=2/q=3 executable rows): partial firing possible now —
@@ -109,7 +108,7 @@ adjudicating now). Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
 | E2 | dv-engine v2 + exact-half adjudication (codex HIGH) | RUNNING (runs/wave-a/out_E2.log) |
 | F2 | freeze v2 (codex HIGH) | RUNNING (runs/wave-a/out_F2.log) |
 | FT | C.123 q=2 gate partial (fable test / API probe) | RUNNING |
-| A-C.10 | the five re-signs (orchestrator) | IN PROGRESS |
+| A-C.10 | the five re-signs (orchestrator) | DONE 2026-08-24 |
 
 ## 7. Resume protocol (fresh agent)
 

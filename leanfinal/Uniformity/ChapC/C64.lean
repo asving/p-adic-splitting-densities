@@ -89,6 +89,27 @@ theorem blockDegEq_false : ¬ BlockDegEqStatement := by
   rw [blockFactor_g₀ h2_padic rc2, g₀_natDegree, mult₂_g₀ h2_padic rc2, hkd] at h
   norm_num at h
 
+/-! ## 2. The RE-SIGNED statement, PROVED on the spot (amendment A-C.10, 2026-08-24)
+
+The repair adds the two riders of the protected shape (C.48's template): the block's label
+and its `D′`-divisibility.  Under them the law IS C.35's landed
+`hasLabel_natDegree_eq_of_dvd` — landing it here at the amendment is the end-to-end-proof
+criterion vindicating the re-sign immediately. -/
+
+/-- **the re-signed C.64, PROVED**: with the label and `D′ ∣ deg` riders, the block's degree
+is exactly `keyDeg₂ · mult₂`. -/
+theorem blockDeg_eq_resigned {O : Type*} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] {π : O} {F : KeyFrame O π} {H₀ : ℕ}
+    {hpin : npHgt Polynomial.X F.key
+      (sideMin Polynomial.X F.key F.h F.e₁ F.hne) = (H₀ : ℕ∞)}
+    (L : LevelDatum F H₀ hpin) (hπ : Irreducible π)
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    {f : Polynomial O} (hctx : BlockContext L f)
+    (hlab : HasLabel L (blockFactor L f))
+    (hdvd : (F.e₁ * F.f₁) ∣ (blockFactor L f).natDegree) :
+    (blockFactor L f).natDegree = L.keyDeg₂ * mult₂ L f :=
+  (hasLabel_natDegree_eq_of_dvd L hπ hlab hdvd).1
+
 end Uniformity.Density.Tower.C64
 
 /-! ## Axiom footprint -/
@@ -97,5 +118,6 @@ section AxCheck
 
 #print axioms Uniformity.Density.Tower.C64.BlockDegEqStatement
 #print axioms Uniformity.Density.Tower.C64.blockDegEq_false
+#print axioms Uniformity.Density.Tower.C64.blockDeg_eq_resigned
 
 end AxCheck

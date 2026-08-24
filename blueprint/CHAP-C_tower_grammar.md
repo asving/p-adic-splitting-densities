@@ -10300,3 +10300,34 @@ one finding, cured by THIS note: the first addendum's drafted `hsupp`-only guard
 subsequently machine-refuted (`C118_REFUTATION.lean.txt` §3, the interior-slot leak) and
 the LANDED/re-signed clause 2 carries TWO guards (`hsupp` + `hslots`) — the addendum text
 above predates that correction and must be read with it.
+
+---
+
+### A-C.10 (2026-08-24) — THE EXACT-DEGREE RE-SIGN BATCH: five signed statements repaired after the D-CARRY refutations
+
+**Authority:** the 2026-08-24 owner protocol (autonomous-until-proved; the end-to-end-proof
+criterion adjudicates). **Evidence:** the machine-checked refutations `ChapC/C27.lean`
+(`slot2_exact_false`), `C64.lean` (`blockDegEq_false`), `C67.lean` (`multiplicityTie_false`),
+`C80.lean` (`tiePurePower_false`, `partialProjection_false`), the HX_SWEEP §7 registry
+(8 sites, both fault-line sides machine-checked), and C.48's LANDED `fullSide_block` as the
+protected-shape template.
+
+The five re-signs, enacted in `leanspec/Leanspec/ChapC.lean` with per-stub annotations:
+
+1. **C.27 `slot2_exact`** — the x-purity guard `hx : IsPure Polynomial.X g F.h F.e₁` ADDED
+   (the guard C.59's own signature carries; C.27's refutation record's prescribed repair).
+2. **C.64 `blockDeg_eq`** — riders ADDED: `hlab : HasLabel L (blockFactor L f)` and
+   `hdvd : (F.e₁ * F.f₁) ∣ (blockFactor L f).natDegree`; under them the law IS C.35's landed
+   `hasLabel_natDegree_eq_of_dvd` (and is landed as a THEOREM at this amendment —
+   `C64.lean`'s `blockDeg_eq_resigned`). Consumers thread the riders; the C.35 frontier
+   lemmas produce them under `BlockFrontier`.
+3. **C.67 `multiplicity_tie`** — the exact-degree FIRST conjunct DROPPED (refuted; its floor
+   companion `mult₂ = m` was TRUE at the same instance and stays).
+4. **C.77 `partial_projection`** — clause (iii) DROPPED (refuted from `BlockContext` alone;
+   the full-side form is C.48, the rider form is the re-signed C.64).
+5. **C.80 `tie_pure_power`** — the exact-degree SECOND conjunct DROPPED (refuted; the floor
+   conjunct `mult₂ = μ₂` stays).
+
+Nothing is weakened silently: each drop/guard is the minimal repair certified by a
+refutation, and the un-dropped content is preserved verbatim. The leanspec re-elaborates
+green. C.78 (`partial_block_decision`) is NOT re-signed — unadjudicated (see HX_SWEEP §7).

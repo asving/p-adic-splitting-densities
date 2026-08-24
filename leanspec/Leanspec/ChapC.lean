@@ -876,9 +876,14 @@ def HasLabel {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
 
 **D10 (cured).** `(addVal O …).get!` → `ENat.toNat`: `ℕ∞ = ENat` carries no `get!`. -/
 
+-- [RE-SIGNED: A-C.10, 2026-08-24 — the x-purity guard `hx` ADDED. The unguarded form is
+-- machine-REFUTED (`ChapC/C27.lean`: `slot2_exact_false` at (s2Frame, L₀, g₀, C := X) over
+-- ℤ_[2]); the guard is the one C.59's own signature already carries, exactly as C.27's
+-- refutation record prescribes. `hC0` separately certified undroppable there.]
 axiom slot2_exact {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [Finite (ResidueField O)]
-    {g : Polynomial O} (hg : HasLabel L g) {C : Polynomial O}
+    {g : Polynomial O} (hg : HasLabel L g) (hx : IsPure Polynomial.X g F.h F.e₁)
+    {C : Polynomial O}
     (hC : C.natDegree < L.keyDeg₂) (hC0 : dv2Hgt L C ≠ ⊤) :
     ∃ v : ℕ, dv2Hgt L C = (v : ℕ∞) ∧
       (F.e₁ * L.ℓ) * (addVal O (Algebra.norm O (AdjoinRoot.mk g C))).toNat = g.natDegree * v
@@ -2251,9 +2256,16 @@ axiom classSize_separable {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀
 /-! ### NODE C.64 [theorem] — Tier 2, the block length in read form [signed: A-C.1;
 "computable from `f`" signed as the argmin-data equality] -/
 
+-- [RE-SIGNED: A-C.10, 2026-08-24 — the naked exact-degree law is machine-REFUTED
+-- (`ChapC/C64.lean`: `blockDegEq_false`, 3 = 2 at the probe). Repaired to the PROTECTED
+-- shape (C.48's template): the block's label and D′-divisibility are RIDERS, under which the
+-- law is C.35's landed `hasLabel_natDegree_eq_of_dvd`. Consumers thread the riders, which
+-- the C.35 frontier lemmas produce under `BlockFrontier`.]
 axiom blockDeg_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    {f : Polynomial O} (hctx : BlockContext L f) :
+    {f : Polynomial O} (hctx : BlockContext L f)
+    (hlab : HasLabel L (blockFactor L f))
+    (hdvd : (F.e₁ * F.f₁) ∣ (blockFactor L f).natDegree) :
     (blockFactor L f).natDegree = L.keyDeg₂ * mult₂ L f
 
 axiom mult₂_readable {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
@@ -2289,7 +2301,11 @@ axiom multiplicity_tie {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hp
       (hp : dvHgt F f (dvSideMin F f L.u L.ℓ hne) = (M₀ : ℕ∞)),
       L.r ^ m ∣ dvResPoly F H₀ hpin f L.u L.ℓ hne M₀ hp ∧
       ¬ L.r ^ (m + 1) ∣ dvResPoly F H₀ hpin f L.u L.ℓ hne M₀ hp) :
-    (blockFactor L f).natDegree = (F.e₁ * F.f₁) * L.ℓ * (L.r.natDegree * m) ∧
+    -- [RE-SIGNED: A-C.10, 2026-08-24 — the former FIRST conjunct
+    -- `(blockFactor L f).natDegree = (F.e₁ * F.f₁) * L.ℓ * (L.r.natDegree * m)` is DROPPED:
+    -- machine-REFUTED (`ChapC/C67.lean`: `multiplicityTie_false`, 3 = 2 at the probe with
+    -- every hypothesis holding), while the floor conjunct below is TRUE at the same
+    -- instance (`mult₂_g₀`). The exact form survives only under C.48-style riders.]
     mult₂ L f = m ∧
     IsDvPure F (blockFactor L f) L.u L.ℓ ∧
     ∀ (hne : (dvSideSet F (blockFactor L f) L.u L.ℓ).Nonempty) (M₀ : ℕ)
@@ -3435,9 +3451,13 @@ axiom partial_projection {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
     {f : Polynomial O} (hctx : BlockContext (T.levelDatum hπ) f) :
+    -- [RE-SIGNED: A-C.10, 2026-08-24 — the former clause (iii)
+    -- `(blockFactor (T.levelDatum hπ) f).natDegree = T.D₂ * mult₂ (T.levelDatum hπ) f`
+    -- is DROPPED: machine-REFUTED (`ChapC/C80.lean`: `partialProjection_false`, 5 = 4 at
+    -- the tower-borne probe from `BlockContext` alone). Its true form at full-side data is
+    -- C.48's landed `fullSide_block`; the rider form is C.64's re-signed `blockDeg_eq`.]
     (dev (composedKey T) f (f.natDegree / T.D₂)).Monic ∧
-    ((T.D₂ ∣ f.natDegree) → dev (composedKey T) f (f.natDegree / T.D₂) = 1) ∧
-    (blockFactor (T.levelDatum hπ) f).natDegree = T.D₂ * mult₂ (T.levelDatum hπ) f
+    ((T.D₂ ∣ f.natDegree) → dev (composedKey T) f (f.natDegree / T.D₂) = 1)
 
 /-! ### NODE C.78 [theorem] — the per-block decision from `f`'s OWN development
 [signed: A-C.1; the reads are on `f`, never on the (unexhibited) block; (iv)'s recursion
@@ -3506,8 +3526,12 @@ axiom tie_pure_power {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
       ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
         dvResPoly F H₀ hpin f T.u₂ T.e₂ hne M₀ hp
           = Polynomial.C c * (towerLabel T) ^ μ₂) :
-    mult₂ (T.levelDatum hπ) f = μ₂ ∧
-    (blockFactor (T.levelDatum hπ) f).natDegree = T.D₂ * μ₂
+    -- [RE-SIGNED: A-C.10, 2026-08-24 — the former SECOND conjunct
+    -- `(blockFactor (T.levelDatum hπ) f).natDegree = T.D₂ * μ₂` is DROPPED: machine-REFUTED
+    -- (`ChapC/C80.lean`: `tiePurePower_false`, 5 = 4 at the tower-borne probe with every
+    -- hypothesis holding), while the floor conjunct below is TRUE at the same instance
+    -- (`mult₂_f₅`).]
+    mult₂ (T.levelDatum hπ) f = μ₂
 
 /-! ### NODE C.81 [theorem] — the `c_g`-read [signed: A-C.1; the right-endpoint identity +
 the floors visible through the projection] -/

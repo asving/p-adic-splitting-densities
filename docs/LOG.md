@@ -15,3 +15,10 @@ archived. Wave A launched: E2 (dv-engine v2 + exact-half cite-or-prove adjudicat
 HIGH), F2 (freeze v2, codex HIGH), FT (C.123 partial gate, fable API probe). Orchestrator:
 the A-C.10 re-sign batch (C.27/C.64/C.67/C.77/C.80) begun. `docs/CITE_REVIEW_LIST.md`
 opened.
+
+**2026-08-24 — A-C.10 enacted.** The five exact-degree re-signs landed in
+`leanspec/Leanspec/ChapC.lean` (C.27 +hx; C.64 +hlab/hdvd riders; C.67 conjunct 1 dropped;
+C.77 clause (iii) dropped; C.80 conjunct 2 dropped), each annotated at the stub; blueprint
+amendment entry A-C.10 appended; leanspec re-elaborates green. The re-signed C.64 PROVED on
+the spot (`blockDeg_eq_resigned` = C.35's `hasLabel_natDegree_eq_of_dvd` at the block,
+Lean-core) — the end-to-end criterion vindicating the repair immediately.
