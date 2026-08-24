@@ -35,6 +35,7 @@ import Uniformity.ChapB.B86
 import Uniformity.ChapE
 import Uniformity.ChapE.E24
 import Uniformity.ChapE.E63
+import Uniformity.ChapI.I10FreezeV2 -- [A-I.2] F3's typed freeze-v2 carriers (DeepTwistConjunctLive)
 import Uniformity.ChapC
 import Uniformity.ChapF
 
@@ -621,6 +622,11 @@ read.* The block `(C, B)` is the one chapter C's OM ladder produces for a degree
 residue datum (OM-8's pinning; an unpinned `ρ` leaves the ϑ-conjunct undischargeable, and the
 `∀ ρ` reading makes it outright false).
 
+[A-I.2(a), 2026-08-24 — interpretive rider, no statement change.] The frozen single `K_t` is
+the terminal common receiver: every arising witness carries `T.fld r ≃+* K_t` and compatible
+live maps `T.fld i →+* K_t` (freeze v2's `TerminalReceiver`). Thus the conclusion is the
+common-receiver recast in `K_r`, not the source's literal per-level `K_i` statement.
+
 ⚠ STUB-STAGE BODY (BLOCKED-UNTIL-RESOLUTION): typed at chapter C's tower-instantiation freeze.
 FROZEN HERE: the name, the configuration argument block, the degree index, the `Prop` kind. -/
 def CanonicalLadderConfig {O : Type} [CommRing O] {K : Type} [Field K]
@@ -646,7 +652,10 @@ def CanonicalDeepTwistConfig {O : Type} [CommRing O] {K : Type} [Field K]
     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
     [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
-    (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ) (n : ℕ) : Prop :=
+    (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ)
+    (r n : ℕ) : Prop :=
+  -- [A-I.2(b)] `r` is the tower depth the deep-twist conjunct is read at; the final real body
+  -- must pin it to the same joint arising witness the arena export uses (never a free numeral).
   CanonicalLadderConfig C B G Kt L N v ρ q n ∧ True
 
 /-! ### NODE I.10 [structure] — **THE CAPSTONE HYPOTHESIS STRUCTURE** (Display A, made formal).
@@ -722,14 +731,16 @@ structure CapstoneHypotheses (n : ℕ) : Prop where
       CanonicalLadderConfig C B G Kt L N v ρ q n →
       Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q
   -- [A-I.1, defect I-D4] Display A's `∀ i ≥ 3` conjunct, BOTH halves, at E.63's packaging.
+  -- [A-I.2(b), 2026-08-24] re-signed at the freeze-v2 LIVE RANGE: the conjunct is read at the
+  -- arising tower depth `r` through `DeepTwistConjunctLive` (unbounded form undischargeable).
   deepTwist : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
       (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
       (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
       [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
       (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
-      (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ),
-      CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w n →
-      Ladder.DeepTwistConjunct v ρ q A R w
+      (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ) (r : ℕ),
+      CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w r n →
+      Ladder.DeepTwistConjunctLive r v ρ q A R w
   a0 : DecidedSliceAt n
   a1 : MenuLawAt n
   a2 : DrainageAt n
@@ -791,17 +802,18 @@ example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
 -- `DeepTwistConjunct` through the `deepTwist` field: the sitewise `(H-VARTHETA-RES)_i` AND the
 -- cumulative `𝒲_{≤i}` w-frame, at one use-height family `q`. Before A-I.1 the `𝒲` half had no
 -- carrier anywhere in the structure.
-#check @Uniformity.Density.Ladder.DeepTwistConjunct
+#check @Uniformity.Density.Ladder.DeepTwistConjunctLive
 example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
     (K : Type) [Field K] (C : Ladder.SlotCarrier ℤ K) (B : Ladder.BlockData C)
     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
     [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
-    (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ)
-    (hcfg : CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w n) (i : ℕ) (hi : 3 ≤ i) :
+    (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ) (r i : ℕ)
+    (hcfg : CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w r n)
+    (hi : Tower.DeepLive r i) :
     Gauge.HVarthetaRes G Kt L N (v i) (ρ i) (q i) ∧ Ladder.WFrame A q R w i :=
-  ⟨(h.deepTwist ℤ K C B G Kt L N v ρ q A R w hcfg i hi).1.supplied,
-   (h.deepTwist ℤ K C B G Kt L N v ρ q A R w hcfg i hi).2⟩
+  ⟨(h.deepTwist ℤ K C B G Kt L N v ρ q A R w r hcfg i hi).1.supplied,
+   (h.deepTwist ℤ K C B G Kt L N v ρ q A R w r hcfg i hi).2⟩
 
 -- (5a) the I.10b refinement, by construction: a deep-twist configuration IS a ladder
 -- configuration, so the two guarded fields can never drift onto different data.
@@ -810,7 +822,7 @@ example {K : Type} [Field K] {C : Ladder.SlotCarrier ℤ K} {B : Ladder.BlockDat
     [Algebra Kt L] {N : Gauge.NormSection G} {v : ℕ → (G →* Multiplicative ℤ)}
     {ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ} {q : ℕ → ℤ}
     {A : ℕ → Gauge.GaugeArena G Kt N} {R : ℕ → G → Kt} {w : ℕ → Ktˣ} {n : ℕ}
-    (hcfg : CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w n) :
+    {r : ℕ} (hcfg : CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w r n) :
     CanonicalLadderConfig C B G Kt L N v ρ q n := hcfg.1
 
 -- (6) **DEFECT I-D7 / items L-1 and L-2, machine-exhibited.** The `True` fields' binding targets
@@ -1308,7 +1320,7 @@ names on landing — this block is the one place the whole trusted surface is gr
 #axiom_core Uniformity.Density.Ladder.MP1Carrier
 #axiom_core Uniformity.Density.Ladder.VarthetaRes
 #axiom_core Uniformity.Density.Ladder.WFrame
-#axiom_core Uniformity.Density.Ladder.DeepTwistConjunct
+#axiom_core Uniformity.Density.Ladder.DeepTwistConjunctLive
 #axiom_core Uniformity.Density.Gauge.HVarthetaRes
 -- chapter F's Display-A carriers (I.08/I.09's L-1/L-2 targets)
 #axiom_core Uniformity.Density.Weld.JD0Box2

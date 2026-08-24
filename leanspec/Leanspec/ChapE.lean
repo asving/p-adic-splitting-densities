@@ -1337,8 +1337,15 @@ Content [supplied-by: chapter D (T5)]; E declares the socket. -/
 structure WFrame (i : ℕ) : Prop where
   supplied : True   -- typed at GC-13 resolution against chapter D's T5 layer
 
-/-- **E.63** [def] The Display-A `∀ i ≥ 3` conjunct, packaged. -/
-def DeepTwistConjunct : Prop := ∀ i, 3 ≤ i → VarthetaRes i ∧ WFrame i
+/-- **E.63** [def] The Display-A deep conjunct on the live range of a depth-`r` tower.
+
+[A-I.2(b), 2026-08-24 — RE-SIGN, recorded amendment.] The 0e form was unbounded
+(`∀ i, 3 ≤ i → ...`); the tower-instantiation freeze v2 (D-TIF-4) showed the conjunct is
+dischargeable only on a finite tower's LIVE range `3 ≤ i < r` — C.83 `DeepTower` data are
+meaningful only for `i < r`, so the unbounded form is undischargeable from any arising
+witness (freeze v2's second signed-shape finding; unit F3's verdict has the full diff). -/
+def DeepTwistConjunct (r : ℕ) : Prop :=
+  ∀ i, 3 ≤ i → i < r → VarthetaRes i ∧ WFrame i
 
 /-- **E.63** [lemma] The conjunct constrains nothing at ladder depth ≤ 2. -/
 axiom deepTwist_vacuous_shallow (Λ : LadderData) (h : Λ.rungs.length ≤ 1) :
