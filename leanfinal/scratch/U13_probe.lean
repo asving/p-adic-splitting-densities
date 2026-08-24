@@ -86,13 +86,20 @@ theorem no_s2_node_source {L : Type uL} [Field L]
   have hfinite : S.hgt 2 A ≠ ⊤ := S.hgt_ne_top 2 hi A hA hdeg
   exact hfinite (hslot.symm.trans hpoint_top)
 
-theorem no_s2_source_frontier {L : Type uL} [Field L]
-    [Algebra ((s2DepthTwo h2 hq).fld 2) L] :
-    IsEmpty (S2SourceFrontier h2 hq L) := by
-  constructor
-  intro S
-  exact (no_s2_node_source h2 hq).false S.node
+/- [SF-0 PIN, 2026-08-24] The frontier-level certificate `no_s2_source_frontier` refuted
+ the PRE-SPLIT `S2SourceFrontier` typing. SF1's ambient split re-typed the bundle (as this
+ refutation demanded), so the certificate no longer type-checks at HEAD. It is preserved
+ verbatim, commented, pinned to git history (commit "U13 (codex HIGH): S2SourceFrontier
+ REFUTED AS TYPED", d209f81b). The node-level refuter `no_s2_node_source` above remains
+ live and compiling. -/
 
+-- theorem no_s2_source_frontier {L : Type uL} [Field L]
+--     [Algebra ((s2DepthTwo h2 hq).fld 2) L] :
+--     IsEmpty (S2SourceFrontier h2 hq L) := by
+--   constructor
+--   intro S
+--   exact (no_s2_node_source h2 hq).false S.node
+--
 /-! ## A small finite-development tooth: concrete input computations do elaborate -/
 
 example : (s2DepthTwo h2 hq).Dcum 2 = 4 := s2DepthTwo_Dcum_two h2 hq

@@ -28,9 +28,19 @@ after CC-17.
    `realizedInput_deepTwistConfigData`: given a `ChainRealization` and a `RealizedInput` on
    it (CC-17's carrier pair), the exported socket arguments satisfy the intended bodies.
    These are CONDITIONAL in exactly CC-17's sense: no unconditional inhabitant of
-   `ChainRealization` is claimed; at the S2 instance the applications fire from the named
-   blocker bundle `S2SourceFrontier` (`s2_ladder_socket_application`,
-   `s2_deepTwist_socket_application`), never from a `True` body.
+   `ChainRealization` is claimed; at the S2 instance the applications fire from CC-17's
+   named blocker bundle, never from a `True` body.  **Corrected conditionality
+   (2026-08-24, unit SF1):** U13 machine-refuted the original single-ambient
+   `S2SourceFrontier` (`leanfinal/scratch/U13_probe.lean` — char-2 `IsEmpty` at the `C 2`
+   slot), so CC-17's bundle was re-typed at the SPLIT ambient of
+   `S2_SOURCE_PLAN_2026-08-24.md` §2 (valued evaluation ambient `E` / residue-letter
+   ambient `L`).  The S2 applications (`s2_ladder_socket_application`,
+   `s2_deepTwist_socket_application`) now take the split bundle `S` PLUS the quarantined
+   premise `ev : S.LegacyEvaluation` — exactly the U13-refuted single-ambient evaluation
+   half, which the packaging into the still-un-split `ChainRealization` requires until the
+   plan's SF-3 carrier ripple, and which is UNINHABITABLE at S2.  The S2 gate's remaining
+   vacuity is therefore concentrated in the one named argument `ev`, no longer hidden in
+   the bundle (whose split re-type carries CC-17's SF-4 non-vacuity tooth).
 3. **The I.10b → I.10a refinement** at these shapes: `And.left`, mirroring the leanspec §4
    gate item (5a) byte-shape (`canonicalDeepTwistConfigData_to_ladder`).
 4. **The NON-SWALLOWING audit**, mechanized: the canonical read is a FREE field of the
@@ -76,7 +86,7 @@ open Polynomial IsLocalRing IsDiscreteValuationRing Uniformity.Density
 open Uniformity.Density.Leaf Uniformity.Density.Tower
 open Uniformity.Density.Tower.C130s2 Uniformity.Density.Tower.C130s17
 
-universe uG uKt uL
+universe uE uG uKt uL
 
 /-! ## §0 Kernel transport helper
 
@@ -247,11 +257,17 @@ theorem canonicalDeepTwistConfigData_to_ladder {O : Type} [CommRing O] {K : Type
     {r : ℕ} (hcfg : CanonicalDeepTwistConfigData C B G Kt L N v ρ q A R w r n) :
     CanonicalLadderConfigData C B G Kt L N v ρ q n := hcfg.1
 
-/-! ## §4 The S2 socket applications — conditional on CC-17's `S2SourceFrontier`
+/-! ## §4 The S2 socket applications — conditional on CC-17's split `S2SourceFrontier`
+     AND the quarantined `LegacyEvaluation`
 
 The gate's S2 instance: the CC-17 conditional constructors feed the general applications.
-Everything below inherits EXACTLY CC-17's conditionality — `S2SourceFrontier` is the named,
-honestly-blocked source frontier; no instance of it is claimed.  The depth pin is the
+Everything below inherits EXACTLY CC-17's corrected conditionality (SF1 re-type,
+2026-08-24): `S2SourceFrontier` is now the SPLIT-ambient source frontier (evaluation in `E`,
+letters in `L`; no instance of it is claimed — that is the S2-source campaign), and the
+packaging into the still-un-split `ChainRealization` additionally consumes the quarantined
+`ev : S.LegacyEvaluation` — the U13-refuted single-ambient evaluation half, empty at S2 —
+so every theorem below is explicitly empty-premised at S2 IN `ev` until the plan's SF-3
+carrier ripple removes that argument.  The depth pin is the
 witness's own `(s2ArisingCore).r = 2` (definitional), and the S2 gauge-live range is the
 single level `j = 1` (the depth-two witness has no live DEEP index — `DeepLive 2 j` is empty
 — exactly freeze v2 §9's disclosed limitation; a positive deep regression needs a landed
@@ -261,6 +277,7 @@ section S2Gate
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [Finite (ResidueField O)] (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
+variable {E : Type uE} [Field E]
 variable {L : Type uL} [Field L] [Algebra ((S2DepthTwo h2 hq).fld 2) L]
 
 /-- Depth pin: the S2 arising core's tower depth is `2`, definitionally — the `r` fed to the
@@ -272,49 +289,59 @@ theorem s2ArisingCore_r [IsAdicComplete (IsLocalRing.maximalIdeal O) O] :
 theorem s2ArisingCore_i [IsAdicComplete (IsLocalRing.maximalIdeal O) O] :
     (s2ArisingCore h2 hq L).i = 2 := rfl
 
-/-- ★ **The S2 I.10a socket application** — conditional on the CC-17 frontier: given any
-`S : S2SourceFrontier`, the concrete `keyAt 2 + 1` arising occurrence's exported socket
+/-- ★ **The S2 I.10a socket application** — conditional on the CC-17 split frontier AND the
+quarantined legacy premise (empty at S2 — U13): given `S : S2SourceFrontier` and
+`ev : S.LegacyEvaluation`, the concrete `keyAt 2 + 1` arising occurrence's exported socket
 arguments satisfy the intended `CanonicalLadderConfig` body at degree `4`. -/
 theorem s2_ladder_socket_application [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (S : S2SourceFrontier h2 hq L) :
+    (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) :
     CanonicalLadderConfigData
-      (S.s2RealizedInput.stageCarrierTransport (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
-      (S.s2RealizedInput.inputBlockTransport (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
+      ((S.s2RealizedInput ev).stageCarrierTransport
+        (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
+      ((S.s2RealizedInput ev).inputBlockTransport
+        (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
       (GaugeLattice.{uG} 2) ((S2DepthTwo h2 hq).fld 2) L
-      (S.toChainRealization.normalizer.arenaNormSection0.transport
+      ((S.toChainRealization ev).normalizer.arenaNormSection0.transport
         (gaugeLatticeEquiv 2).symm)
-      (gaugeHeightFamily S.s2RealizedInput) (canonicalResFamily S.s2RealizedInput)
-      (useHeightFamily S.s2RealizedInput) 4 :=
-  realizedInput_ladderConfigData S.s2RealizedInput (RingEquiv.refl _)
+      (gaugeHeightFamily (S.s2RealizedInput ev)) (canonicalResFamily (S.s2RealizedInput ev))
+      (useHeightFamily (S.s2RealizedInput ev)) 4 :=
+  realizedInput_ladderConfigData (S.s2RealizedInput ev) (RingEquiv.refl _)
 
-/-- ★ **The S2 I.10b socket application** — conditional on the CC-17 frontier, with the
-depth binder pinned to the witness's own `r = 2`. -/
+/-- ★ **The S2 I.10b socket application** — conditional on the CC-17 split frontier AND the
+quarantined legacy premise (empty at S2 — U13), with the depth binder pinned to the
+witness's own `r = 2`. -/
 theorem s2_deepTwist_socket_application [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (S : S2SourceFrontier h2 hq L) :
+    (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) :
     CanonicalDeepTwistConfigData
-      (S.s2RealizedInput.stageCarrierTransport (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
-      (S.s2RealizedInput.inputBlockTransport (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
+      ((S.s2RealizedInput ev).stageCarrierTransport
+        (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
+      ((S.s2RealizedInput ev).inputBlockTransport
+        (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
       (GaugeLattice.{uG} 2) ((S2DepthTwo h2 hq).fld 2) L
-      (S.toChainRealization.normalizer.arenaNormSection0.transport
+      ((S.toChainRealization ev).normalizer.arenaNormSection0.transport
         (gaugeLatticeEquiv 2).symm)
-      (gaugeHeightFamily S.s2RealizedInput) (canonicalResFamily S.s2RealizedInput)
-      (useHeightFamily S.s2RealizedInput)
-      (arenaFamily S.s2RealizedInput Nat.one_lt_two)
-      (towerReadFamily S.s2RealizedInput)
-      S.toChainRealization.node.peelUnitFamily 2 4 :=
-  realizedInput_deepTwistConfigData S.s2RealizedInput (RingEquiv.refl _) Nat.one_lt_two
+      (gaugeHeightFamily (S.s2RealizedInput ev)) (canonicalResFamily (S.s2RealizedInput ev))
+      (useHeightFamily (S.s2RealizedInput ev))
+      (arenaFamily (S.s2RealizedInput ev) Nat.one_lt_two)
+      (towerReadFamily (S.s2RealizedInput ev))
+      (S.toChainRealization ev).node.peelUnitFamily 2 4 :=
+  realizedInput_deepTwistConfigData (S.s2RealizedInput ev) (RingEquiv.refl _) Nat.one_lt_two
 
-/-- The S2 refinement fires end-to-end (gate item (5a) at the S2 instance). -/
-example [IsAdicComplete (IsLocalRing.maximalIdeal O) O] (S : S2SourceFrontier h2 hq L) :
+/-- The S2 refinement fires end-to-end (gate item (5a) at the S2 instance, at the corrected
+conditionality). -/
+example [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) :
     CanonicalLadderConfigData
-      (S.s2RealizedInput.stageCarrierTransport (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
-      (S.s2RealizedInput.inputBlockTransport (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
+      ((S.s2RealizedInput ev).stageCarrierTransport
+        (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
+      ((S.s2RealizedInput ev).inputBlockTransport
+        (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
       (GaugeLattice.{uG} 2) ((S2DepthTwo h2 hq).fld 2) L
-      (S.toChainRealization.normalizer.arenaNormSection0.transport
+      ((S.toChainRealization ev).normalizer.arenaNormSection0.transport
         (gaugeLatticeEquiv 2).symm)
-      (gaugeHeightFamily S.s2RealizedInput) (canonicalResFamily S.s2RealizedInput)
-      (useHeightFamily S.s2RealizedInput) 4 :=
-  canonicalDeepTwistConfigData_to_ladder (s2_deepTwist_socket_application h2 hq S)
+      (gaugeHeightFamily (S.s2RealizedInput ev)) (canonicalResFamily (S.s2RealizedInput ev))
+      (useHeightFamily (S.s2RealizedInput ev)) 4 :=
+  canonicalDeepTwistConfigData_to_ladder (s2_deepTwist_socket_application h2 hq S ev)
 
 end S2Gate
 
@@ -529,21 +556,24 @@ end AuditRealization
 
 /-! ### The audit at the S2 instance
 
-Conditional on CC-17's frontier — exactly the gate's conditionality — the S2 socket
-application's ϑ-conjunct cannot be discharged by the arena-agreement trap from the supplied
-data: the defeat fires at the single S2 gauge-live level `j = 1`. -/
+Conditional on CC-17's split frontier and the quarantined legacy premise (empty at S2 —
+U13) — exactly the gate's corrected conditionality — the S2 socket application's ϑ-conjunct
+cannot be discharged by the arena-agreement trap from the supplied data: the defeat fires at
+the single S2 gauge-live level `j = 1`. -/
 
 section AuditS2
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [Finite (ResidueField O)] (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
+variable {E : Type uE} [Field E]
 variable {L : Type uL} [Field L] [Algebra ((S2DepthTwo h2 hq).fld 2) L]
 
-/-- The non-swallowing defeat at the S2 gate instance: conditional on the CC-17 frontier,
-no uniform derivation over the S2 supplied context yields the arena-agreement clause at any
-gauge-live level (`j = 1` is the only one at depth two). -/
+/-- The non-swallowing defeat at the S2 gate instance: conditional on the CC-17 split
+frontier plus the quarantined legacy premise, no uniform derivation over the S2 supplied
+context yields the arena-agreement clause at any gauge-live level (`j = 1` is the only one
+at depth two). -/
 theorem s2_arenaAgreement_not_uniform [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (S : S2SourceFrontier h2 hq L) {j : ℕ} (hj : GaugeLive 2 j)
+    (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) {j : ℕ} (hj : GaugeLive 2 j)
     (χ : (i : ℕ) → MonoidHom.ker (levelExponentHeight (S2DepthTwo h2 hq) i) →* Lˣ)
     (x₀ : MonoidHom.ker (levelHeight (S2DepthTwo h2 hq) ⟨j, hj⟩ :
       GaugeLattice.{uG} 2 →* Multiplicative ℤ))
@@ -557,7 +587,7 @@ theorem s2_arenaAgreement_not_uniform [IsAdicComplete (IsLocalRing.maximalIdeal 
             ((arenaReadAt X' hj x : ((S2DepthTwo h2 hq).fld 2)ˣ) :
               (S2DepthTwo h2 hq).fld 2)) :
     False :=
-  arenaAgreement_not_uniform S.s2RealizedInput hj χ x₀ hχ hagree
+  arenaAgreement_not_uniform (S.s2RealizedInput ev) hj χ x₀ hχ hagree
 
 end AuditS2
 
