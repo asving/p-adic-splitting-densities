@@ -63,8 +63,8 @@ safe direction.
 ## Consumption
 
 The exact half of the dv-graded engine (v2 §4): `IsDvPure` closure under products (hence
-powers, by induction — the induction is a THEOREM here, `fgmn_dv_exact_pow`, not part of the
-axiom), and exact residual power laws.  Primary consumers: C.52's
+powers, by induction — the induction is a THEOREM, `fgmn_dv_exact_pow` (landed in C131ac),
+not part of the axiom), and exact residual power laws.  Primary consumers: C.52's
 `composedKey_pow_mem_towerLocus`/`towerLocus_iff_budget` legs, C.34-adjacent purity
 propagation, C.80/C.67's re-signed floor conjuncts' eventual proofs.
 
