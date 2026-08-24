@@ -7409,3 +7409,47 @@ signatures (C.92/C.94 — gates the §10 chain C.99–C.104); (e) I.10's
 field list; (f) the standing FGMN print-read, B39a rider,
 WeldObligations.w1 items. Non-owner queue: C.78's level-2 analysis,
 E.57, the C.123 gate table — fresh-session-scale research arcs.
+
+**2026-08-24 DATED APPEND #112 — THE OWNER RETURNS AND RE-SCOPES THE
+PROTOCOL: autonomous-until-proved, cites-only owner review; the fleet
+resumes. CAMPAIGN GOAL RESTATED: the main theorem COMPLETE modulo
+literature cites (Asvin's paper excepted, never citable).**
+
+(0) THE NEW STANDING PROTOCOL (Asvin, verbatim intent, memory file
+`signoff-scope-2026-08-24`): owner input is needed ONLY for
+literature-cite Lean transcriptions, and only as a SECONDARY check —
+every other decision (re-signs, field lists, freeze/engine design)
+proceeds autonomously under the END-TO-END-PROOF CRITERION: a design
+choice is right iff it leads to a completed proof. Consequences,
+effective immediately: (a) the five exact-degree re-signs
+(C.27/C.64/C.67/C.77/C.80) are unblocked — enact at the C.48 template;
+(b) the C.94 AGNPRW cite (the A-C.6 redraft, machine-safe) can be
+DECLARED, unblocking I.01; (c) C.92's FGMNCalculus field list is an
+authoring task; (d) D-TIF-1..5 and the engine split are mine to
+decide; (e) a RUNNING CITE-REVIEW LIST for Asvin's secondary reads is
+opened at `docs/CITE_REVIEW_LIST.md`. Fleet: Codex at
+model_reasoning_effort=high for NEW MATH + blueprint conversion;
+default effort for Lean transcription; Fable subagents to be re-tested
+(memory `fleet-resumption-2026-08-24`).
+
+(1) WAVE A (launched at this append):
+  * E2 [codex HIGH]: the dv-graded engine v2 — repair the 13-finding
+    review (two-index weight, structural-recursion normal form, the
+    L4 quotient bound, L6 as a full module) AND adjudicate the exact
+    half: WHICH published FGMN statement covers IsDvPure
+    closure/dvResPoly power-exactness, or the proof route if none.
+  * F2 [codex HIGH]: the tower-instantiation freeze v2 — repair the
+    review packet (arising := OM-8's adjudicated class, L-valued
+    letter tables, the single-Kt resolution off E.61's recorded
+    semantics, live-range pinning, a REAL non-vacuity witness plan).
+  * FT [fable test]: one Fable subagent on the C.123 q=2 gate
+    (partial, landed rows only) — the API-health probe before any
+    wider Fable fleet.
+  * ORCHESTRATOR in parallel: the C.27 re-sign (its record's exact
+    repair), then C.94's cite declaration + I.01 typing, then the
+    remaining four re-signs.
+
+NEXT after wave A: the C.131 engine formalization per E2's v2; the
+freeze nodes per F2; the §10 chain behind C.92's field list; C.78;
+E.57. The census target is 1236/1236 disposed (proved, carrier-landed,
+or cite) with capstone footprint = Lean core + the allowed cites.
