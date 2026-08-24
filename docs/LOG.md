@@ -60,3 +60,30 @@ API 529s before writing any file; relaunched as codex default-effort units per A
 directive (prioritize codex over fable during the API storm): C131a (a′–c′), C131d
 (d′–e′, polls C131a for `WT`), C131k (k′–l′), C131p (p′–s′), C131aa (aa′–ab′); briefs +
 logs in `runs/wave-b/`. A 20-min watchdog cron is active in-session.
+
+**2026-08-24 — C.131′ FIRST WAVE COMPLETE (13/13 nodes LANDED, codex).** All five units
+delivered, every declaration orchestrator-verified `lake env lean` green with Lean-core
+axiom footprints: C131a (a′–c′: `wtCoeff`/`WT`, `WT_add`, convolution lemmas, `WT_mul`),
+C131d (d′–e′: `key_coeff_side_floor`(+cleared), `xCarry_tail_floor`, exact +δ branches —
+reuses C131a's `WT`, no duplicate weight), C131k (k′–l′: structural `xQuot`/`xDigit`/`xNF`
++ reconstruction/uniqueness, `outerNF` via `devQ`), C131p (p′–s′: Cnv1–Cnv9 —
+finite-infimum utilities, `stageHeight_eq_coeff_inf`, `dvHgt_eq_coeff_inf`,
+`dvSupp_eq_nested_inf`, reduced-development recovery), C131aa (aa′–ab′:
+`isTestKey_isDvPure`, `dvResPoly_testKey`). Operational finding: the codex
+workspace-write sandbox mounts `.git` read-only — units cannot commit; the orchestrator
+verifies and commits their outputs (adopted as standing procedure). SECOND WAVE launched
+(unblocked by the DAG): C131f (f′–g′), C131m (m′ — hardest single node), C131t (t′+x′),
+C131u (u′–v′).
+
+**2026-08-24 — C.92 ADJUDICATED NOT-SIGNABLE (orchestrator adopts U7's verdict).**
+`fgmn_calculus_exists` stays undeclared: the unconditional form is Lean-core inhabitable
+(the repo's own `C92_VACUITY.lean.txt` junk instance), and FGMN never proves that a bare
+abstract `DeepTower` realizes its calculus. Dispositions: consumers C.99–C.106 stay
+conditional on `[FGMNCalculus ...]`; the laws live IN the class (decision on U7 §9 Q8 —
+consumers need them to fire, and a class hypothesis adds nothing to the trusted base);
+discharge path = a future `FGMNChainRealization` bridge carrying OPEN-DICT-1..4 (U7 §8).
+U9 (codex HIGH) launched to settle U7 §9 Q1–Q7 (index convention, scalar `Rgr` semantics,
+`PrevGrade` domain, r=0, the Gauss transport lemma, μ-divisibility in C.100, C.90
+strength) and deliver the A-C.11 leanspec class-correction diff for orchestrator
+enactment. F3 (codex HIGH) launched on chapter I's critical path: type the I.10a/I.10b
+sockets against the freeze v2, I01 anti-drift pattern, amendments proposed not applied.

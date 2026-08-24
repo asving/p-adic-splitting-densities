@@ -59,10 +59,14 @@ and NEW (2026-08-24) `fgmn_dv_exact_mul` (C66b — the engine's exact half; FGMN
 Cor 4.12(3), print-read verbatim, dictionary on the review list).
 Pending authoring under the new protocol (each gets a faithfulness entry +
 CITE_REVIEW_LIST row): **C.94** (AGNPRW Thm 5.6 termination — the A-C.6 redraft
-`NS7TerminationStatementR` exists, machine-safe, ready to declare), **C.92**
-(`fgmn_calculus_exists` — needs the `FGMNCalculus` field list authored from the cited
-clauses), possibly an FGMN exactness cite for the dv-engine's exact half (E2 unit
-adjudicating now). Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
+`NS7TerminationStatementR` exists, machine-safe, ready to declare), **C.92**:
+ADJUDICATED NOT-SIGNABLE (U7 + orchestrator, 2026-08-24) — `fgmn_calculus_exists` stays
+UNDECLARED (Lean-core inhabitable per `C92_VACUITY`; no faithful unconditional statement
+exists over a bare `DeepTower`); the GENTOW2 consumers stay conditional on the
+`FGMNCalculus` hypothesis carrier, whose laws live IN the class (orchestrator decision on
+U7 §9 Q8, end-to-end criterion); the discharge path is a future `FGMNChainRealization`
+bridge (OPEN-DICT-1..4, U7 §8). U9 (codex HIGH) is adjudicating U7 §9 Q1–Q7 and drafting
+the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
 `lean/notes/SEMANTIC_AUDIT_LOG.md`.
 
 ## 4. The live frontier (what blocks what)
@@ -129,10 +133,14 @@ adjudicating now). Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
 | U7 | FGMNCalculus field list (codex HIGH) | DONE 2026-08-24 (`FGMNCALCULUS_FIELDLIST_2026-08-24.md`) |
 | U8 | n=3 drainage math (codex HIGH) | DONE 2026-08-24 (`N3_DRAINAGE_PROOF_2026-08-24.md`: u_N ≤ q⁻ᴺ + q⁻⁵u_{N−3}, uniform incl. p=2,3) |
 | C131a | C.131a′–c′ weight + product law (codex) | DONE 2026-08-24 — all 3 nodes LANDED (`C131a.lean`, orchestrator-verified Lean-core) |
-| C131d | C.131d′–e′ hpure bridge + x-carry (codex) | RUNNING (runs/wave-b/out_C131d.log) |
+| C131d | C.131d′–e′ hpure bridge + x-carry (codex) | DONE 2026-08-24 — both nodes LANDED (`C131d.lean`, reuses C131a's `WT`; orchestrator-verified Lean-core) |
 | C131k | C.131k′–l′ structural normal forms (codex) | DONE 2026-08-24 — both nodes LANDED (`C131k.lean`, orchestrator-verified Lean-core) |
 | C131p | C.131p′–s′ conversion utilities (codex) | DONE 2026-08-24 — all 4 nodes LANDED (`C131p.lean`, orchestrator-verified Lean-core) |
-| C131aa | C.131aa′–ab′ exact-half locals (codex) | RUNNING (runs/wave-b/out_C131aa.log) |
+| C131aa | C.131aa′–ab′ exact-half locals (codex) | DONE 2026-08-24 — both nodes LANDED (`C131aa.lean`; orchestrator-verified Lean-core) |
+| C131f | C.131f′–g′ export fence + composed-key floor (codex) | RUNNING (runs/wave-b/out_C131f.log) |
+| C131m | C.131m′ paid-branch recursion + erasure (codex) | RUNNING (runs/wave-b/out_C131m.log) |
+| C131t | C.131t′+x′ weight-to-height + strict exactness (codex) | RUNNING (runs/wave-b/out_C131t.log) |
+| C131u | C.131u′–v′ DvAbove bridge + shadow discrepancy (codex) | RUNNING (runs/wave-b/out_C131u.log) |
 | U9 | FGMN §9-questions adjudication + A-C.11 diff (codex HIGH) | RUNNING (runs/wave-b/out_U9.log) |
 | F3 | I.10a/I.10b sockets vs freeze v2 (codex HIGH) | RUNNING (runs/wave-b/out_F3.log) |
 
