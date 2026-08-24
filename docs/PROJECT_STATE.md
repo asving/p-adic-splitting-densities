@@ -37,8 +37,8 @@ never pipe an output you need through head/tail; never trust a bare name-grep
 * **Legacy `lean/` project (untouched since 07/08):** the order-0 σ-keyed capstone
   `OM.RealInstanceV2.montes_unconditional` + wild wave 1 — machine-checked, Lean-core,
   conditional on `htameFE`/`hExhaust` as recorded there. Not this campaign's workstream.
-* **`leanfinal/` (the campaign):** census **639 / 1236 signed names PROVED**, 390 carrier,
-  194 unlanded, 5 conditional, 5 placeholder-body, 2 cite, 1 unresolved
+* **`leanfinal/` (the campaign):** census **646 / 1239 signed names PROVED**, 419 carrier,
+  161 unlanded, 5 conditional, 5 placeholder-body, 2 cite, 1 unresolved (2026-08-24 EOD)
   (`python3 spec/census_driver.py`); frontier 543/612 node-files
   (`python3 spec/frontier.py` — file-existence proxy, do NOT quote as progress).
   Chapters: B and H required-work done; F complete; G complete; D one gate open;
@@ -118,9 +118,12 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    NEXT (orchestrator): author the C.92 cite from it, print-read first.
 5. **C.123/C.124 gates** (q=2/q=3 executable rows): partial firing possible now —
    **Fable test unit on C.123 in flight.** C.126 (axiom census gate) waits on C.92/C.94.
-6. **E.57** (mixed-node block split; `hpart : True` target FALSE as signed — needs the
-   A-E.6 partition leg typed) and **C.78** (the FGMN block-decision existential; needs
-   dv2-level probe instruments): dedicated hard units, unassigned.
+6. **BOTH standing hard nodes DISPOSITIONED (2026-08-24):** E.57 — the partition leg
+   TYPED (`E57p.lean`, schema layer; A-E.7 ENACTED: `hpart : Nonempty (PartitionLeg I)`,
+   corrected statement PROVED as `block_split_of_partitionLeg`; remaining: the E.22/23-genre
+   instance bridge). C.78 — ADJUDICATED TRUE at the dv2 probe (`C78adj.lean`, 2⁶⁰-exact
+   certificate; 8/8 exact-degree sites dispositioned; universal proof = SUPPLY via the
+   CC-16 path or a future gate-(b) order-2 cite).
 
 ## 5. Instruments and reusable assets
 
