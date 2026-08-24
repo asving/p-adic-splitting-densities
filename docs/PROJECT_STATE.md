@@ -134,49 +134,13 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 
 | unit | what | status |
 |---|---|---|
-| E2 | dv-engine v2 + exact-half adjudication (codex HIGH) | DONE 2026-08-24 (v2 delivered; verdict CITE) |
-| F2 | freeze v2 (codex HIGH) | DONE 2026-08-24 (commit 241a997d) |
-| FT | C.123 q=2 gate partial (fable test / API probe) | DONE 2026-08-24 (5 rows fired, 5 deferred; commit 241a997d) |
-| A-C.10 | the five re-signs (orchestrator) | DONE 2026-08-24 |
-| U7 | FGMNCalculus field list (codex HIGH) | DONE 2026-08-24 (`FGMNCALCULUS_FIELDLIST_2026-08-24.md`) |
-| U8 | n=3 drainage math (codex HIGH) | DONE 2026-08-24 (`N3_DRAINAGE_PROOF_2026-08-24.md`: u_N ≤ q⁻ᴺ + q⁻⁵u_{N−3}, uniform incl. p=2,3) |
-| C131a | C.131a′–c′ weight + product law (codex) | DONE 2026-08-24 — all 3 nodes LANDED (`C131a.lean`, orchestrator-verified Lean-core) |
-| C131d | C.131d′–e′ hpure bridge + x-carry (codex) | DONE 2026-08-24 — both nodes LANDED (`C131d.lean`, reuses C131a's `WT`; orchestrator-verified Lean-core) |
-| C131k | C.131k′–l′ structural normal forms (codex) | DONE 2026-08-24 — both nodes LANDED (`C131k.lean`, orchestrator-verified Lean-core) |
-| C131p | C.131p′–s′ conversion utilities (codex) | DONE 2026-08-24 — all 4 nodes LANDED (`C131p.lean`, orchestrator-verified Lean-core) |
-| C131aa | C.131aa′–ab′ exact-half locals (codex) | DONE 2026-08-24 — both nodes LANDED (`C131aa.lean`; orchestrator-verified Lean-core) |
-| C131f | C.131f′–g′ export fence + composed-key floor (codex) | RUNNING (runs/wave-b/out_C131f.log) |
-| C131m | C.131m′ paid-branch recursion + erasure (codex) | RUNNING (runs/wave-b/out_C131m.log) |
-| C131t | C.131t′+x′ weight-to-height + strict exactness (codex) | RUNNING (runs/wave-b/out_C131t.log) |
-| C131u | C.131u′–v′ DvAbove bridge + shadow discrepancy (codex) | RUNNING (runs/wave-b/out_C131u.log) |
-| U9 | FGMN adjudication Q1–Q7 (codex HIGH) | DONE 2026-08-24 — all DECIDED; **A-C.11 ENACTED** (class body + Q6 C.100 re-sign, Leanspec.ChapC green) |
-| F3 | I.10a/I.10b sockets vs freeze v2 (codex HIGH) | DONE 2026-08-24 — SUPPLY (`I10FreezeV2.lean` wired); **A-I.2 ENACTED** (E.63 live-range re-sign + I.10b `r` binder, both leanspecs green); sockets stay `True` pending C.130 layers |
-| U10 | n=3 drainage blueprint (codex HIGH) | DONE 2026-08-24 — audit finding: **`DrainageAt 3` ALREADY UNCONDITIONAL** (`drainageAt_three`, H97b, Lean-core — orchestrator-verified); H.97's literal (1,1,0) sharpening = 2 BLUEPRINT nodes; Haar-null OPEN (not needed) |
-| C131f | C.131f′–g′ (codex) | DONE 2026-08-24 — both LANDED (public fence + `WT K_T = E₂`; orchestrator-verified Lean-core) |
-| C131m | C.131m′ (codex) | DONE 2026-08-24 — LANDED (`taggedOuterNF_erasure`; orchestrator-verified Lean-core) |
-| C131t | C.131t′+x′ (codex) | DONE 2026-08-24 — both LANDED (orchestrator-verified Lean-core) |
-| C131u | C.131u′–v′ (codex) | DONE 2026-08-24 — u′ LANDED; v′ was BLOCKED on m′ (now landed) → requeued as unit C131v |
-| C131h | C.131h′–j′ division ledger F6–F8 (codex) | DONE 2026-08-24 — all 3 LANDED (orchestrator-verified Lean-core) |
-| C130A | freeze layers C.130b/c + d/e (codex) | DONE 2026-08-24 — `stageDeg` landed; b–e BLOCKED on the missing key-chain/node-point carrier (→ U11) |
-| C130B | freeze layer C.130f (codex) | DONE 2026-08-24 — 15 decls LANDED; exact-height law BLOCKED: freeze demand FALSE vs C.83 `towerNorm` truncation at (2,5,1); Laurent normalizer named (→ U11) |
-| U11 | chain-realization carrier DESIGN (codex HIGH) | DONE 2026-08-24 — layered `ChainRealization` DECIDED (`CHAIN_CARRIER_DESIGN_2026-08-24.md`: signatures elaborate, S2 depth-2 key chain constructed in scratch, 19-node CC-plan); orchestrator-verified |
-| CC01 | CC-0 core re-home + CC-1 carrier skeleton (FABLE) | DONE 2026-08-24 — both LANDED byte-faithfully (C130a/C130k; all builds green, orchestrator-verified) |
-| CC02 | CC-2 S2 key bridge (FABLE) | DONE 2026-08-24 — LANDED (s2DepthTwoKeyChain + full bridge, 19 decls Lean-core, orchestrator-verified) |
-| CC03 | CC-3 terminal maps (FABLE) | DONE 2026-08-24 — LANDED (canonical TerminalReceiver; honest `junk` off-live field + exactness iff; 18 decls Lean-core) |
-| CC04 | CC-4 Laurent solve (FABLE) | RUNNING (→ C130ln.lean) |
-| CC07 | CC-7 threshold (FABLE) | DONE 2026-08-24 — LANDED (inherited-data ruling enforced; 18 decls Lean-core) |
-| CC13 | CC-13 FGMN source carrier (FABLE) | DONE 2026-08-24 — LANDED (`ChainRealization` + FGMNSourceData/Laws, diff-identical to U11 authority; 5 decls Lean-core) |
-| CC08 | CC-8 realized input block (FABLE) | RUNNING (→ C130in.lean) |
-| CC09 | CC-9 legal node points (FABLE) | RUNNING (→ C130pt.lean) |
-| CC14 | CC-14 FGMN laws A (FABLE) | RUNNING (→ C130la.lean) |
-| CC15 | CC-15 FGMN laws B (FABLE) | RUNNING (→ C130lb.lean) |
-| CC05 | CC-5 stage source interface (FABLE) | DONE 2026-08-24 — LANDED (stageCarrier → landed SlotCarrier, rfl anti-drift pins, 17 decls Lean-core; flag: new `DeepTower.fhat` name) |
-| CC06 | CC-6 S2 stage regression (FABLE) | RUNNING (→ C130s6.lean) |
-| C131v | C.131v′ Cnv13 identification (FABLE) | DONE 2026-08-24 — LANDED unconditional (`shadow_discrepancy`, 37 decls Lean-core, orchestrator-verified) |
-| C131ac | C.131ac′ exact powers (FABLE probe) | DONE 2026-08-24 — LANDED (`composedKey_pow_mem_towerLocus`; cite footprint exactly `fgmn_dv_exact_mul` on 4 decls as designed) |
-| C131n | C.131n′–o′ recarry + census floor (FABLE) | DONE 2026-08-24 — n′ LANDED; o′ SUPPLY (F11 parameterized `census_floor`; unparameterized closed by v′) |
-| C131ad | C.131ad′ box-monomial floor (FABLE) | DONE 2026-08-24 — LANDED (+ reusable `dev_coeff_floor` carry-down; 23 decls Lean-core) |
+| (archive) | wave A–B units E2/F2/FT/A-C.10/U7/U8/U9/U10/U11/F3 + the C.131′ fleet a–v,x,aa–ad + CC-0…9,13,14,15 | ALL DONE 2026-08-24 — details in docs/LOG.md + git log; every landing orchestrator-verified Lean-core (cite inheritance only where designed) |
 | C131w | **C.131w′ = C.72 `shadow_floor`** (FABLE) | RUNNING — all splice inputs landed (v′ + o′ + t′) |
+| C131ae | C.131ae′–af′ budget↔locus closers (SONNET) | RUNNING (→ C131ae.lean) |
+| DT1 | definitional twins batch 1 (SONNET) | RUNNING (→ C140defs.lean) |
+| CC10 | CC-10 canonical L-read (FABLE) | RUNNING (→ C130cr.lean) |
+| CC11 | CC-11 separate arena read (FABLE) | RUNNING (→ C130ar.lean) |
+| CC16 | CC-16 FGMNCalculus leanfinal twin + packaging (FABLE) | RUNNING (→ C130pk.lean) — gates the GENTOW2 sonnet trio |
 
 ## 7. Resume protocol (fresh agent)
 
