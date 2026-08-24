@@ -1250,6 +1250,64 @@ Two machine-checked facts, in the order that forced the amendment.
    `classSize_supply` is what earns the assertion, and is also what LANDING waits on
    (`leanfinal/notes/RESCHEDULE_E57_2026-08-16.md`). -/
 
+-- [A-E.7, 2026-08-24] Leanspec twin of the typed `PartitionLeg` carrier landed in
+-- `leanfinal/Uniformity/ChapE/E57p.lean`, against this file's own E.10--E.12 twins.
+
+/-- A **class address** in a parent interface: a side `p : ℕ × ℕ` paired with either a
+linear residual class `(root, mult) : K × ℕ` or a higher residual class
+`(deg, mult) : ℕ × ℕ` (E.12's `linFac`/`hiFac` entries). -/
+abbrev ClassIx (K : Type uK) : Type uK := (ℕ × ℕ) × ((K × ℕ) ⊕ (ℕ × ℕ))
+
+/-- The parent's recorded **class weight** at a class address (E.12's `classCount` /
+`classCountHi`, merged over the address sum). -/
+def classWeight {O : Type uO} [CommRing O] {K : Type uK} [Field K] {C : SlotCarrier O K}
+    {B : BlockData C} (I : RungInterface.{uO, uK, uW} C B) (c : ClassIx K) : ℕ :=
+  match c.2 with
+  | Sum.inl q => I.classCount c.1 q
+  | Sum.inr q => I.classCountHi c.1 q
+
+/-- **The TYPED partition leg for NODE E.57** — what `hpart : True` was a placeholder for
+(`EFF.HE7.96`(a)'s partition/product/disjointness content, C-supplied at instances through
+C.63/C.69; see the file docstring's correspondence table). Over the parent interface `I`:
+a `Finset` ledger `cls` enumerating exactly the parent's `(side, class)` addresses, and a
+block assignment `blk` giving each class its own `BlockData`/`RungInterface` pair over the
+SAME carrier, such that the class factors are a product/coprime decomposition of `B.F` of
+the recorded weights, each block one-sided at its parent side, pure in its parent class,
+at the inherited threshold. -/
+structure PartitionLeg {O : Type uO} [CommRing O] {K : Type uK} [Field K]
+    {C : SlotCarrier O K} {B : BlockData C} (I : RungInterface.{uO, uK, uW} C B) where
+  /-- the class ledger: exactly the parent's class addresses, enumerated without repetition. -/
+  cls : Finset (ClassIx K)
+  hclsLin : ∀ p q, ((p, Sum.inl q) ∈ cls) ↔ (p ∈ I.sides ∧ q ∈ I.linFac p)
+  hclsHi : ∀ p q, ((p, Sum.inr q) ∈ cls) ↔ (p ∈ I.sides ∧ q ∈ I.hiFac p)
+  /-- the block assignment: each class's monic factor with its OWN development and its OWN
+  interface (blueprint PROOF-map item 2's output, C-supplied). -/
+  blk : ClassIx K → Σ B' : BlockData C, RungInterface.{uO, uK, uW} C B'
+  /-- the PRODUCT law (`(SIDE-PROD)`·`(LABEL-PROD)` at the mixed node): the class factors
+  multiply to `B.F`. -/
+  hprod : B.F = ∏ c ∈ cls, (blk c).1.F
+  /-- the DISJOINTNESS law (*"they partition the roots"*): distinct classes get factors
+  coprime over `Frac(O)`. -/
+  hdisj : ∀ c ∈ cls, ∀ c' ∈ cls, c ≠ c' →
+    IsCoprime ((blk c).1.F.map (algebraMap O (FractionRing O)))
+      ((blk c').1.F.map (algebraMap O (FractionRing O)))
+  /-- per class: the factor's degree is the parent's recorded class weight
+  (`|C_{λ,r}| = D″·L_{λ,r}` read as a degree). -/
+  hdeg : ∀ c ∈ cls, (blk c).1.F.natDegree = classWeight I c
+  /-- per class: the block is one-sided AT THE PARENT'S OWN side. -/
+  hone : ∀ c ∈ cls, (blk c).2.sides = {c.1}
+  /-- per linear class: the block's residual is pure in the PARENT's class, of some OWN
+  multiplicity `k ≥ 1` (`EFF.T2.17`'s `k`/`m` non-import: `k` is NOT tied to `q.2`). -/
+  hpureLin : ∀ p q, (p, Sum.inl q) ∈ cls →
+    ∃ k : ℕ, 1 ≤ k ∧ (blk (p, Sum.inl q)).2.linFac p = {(q.1, k)} ∧
+      (blk (p, Sum.inl q)).2.hiFac p = 0
+  /-- per higher class: same, plus the parent class's degree really is ≥ 2 (D-E2). -/
+  hpureHi : ∀ p q, (p, Sum.inr q) ∈ cls →
+    ∃ k : ℕ, 1 ≤ k ∧ 2 ≤ q.1 ∧ (blk (p, Sum.inr q)).2.hiFac p = {(q.1, k)} ∧
+      (blk (p, Sum.inr q)).2.linFac p = 0
+  /-- inherited continuation: the threshold does not move (*"the SAME `T₂`"*). -/
+  hthr : ∀ c ∈ cls, (blk c).1.T = B.T
+
 -- BLOCKED: GC-13 resolution (§12 BLOCKED-UNTIL-RESOLUTION; `hpart : True` placeholder —
 -- the product/disjointness carrier leg, typed against chapter C's partition record at freeze.
 -- The fleet must NOT fire on E.57 before that pass.)
@@ -1262,6 +1320,10 @@ is the FULL per-block record `Nonempty (BlockSuite I)` (E.39a), not the committe
 product/exhaustion layer, which was machine-refuted VACUOUS
 (`leanfinal/Uniformity/ChapE/E57_VACUITY.lean.txt`: the committed conclusion is a theorem of
 Lean core, `blocks := [B.F]`, for an arbitrary polynomial over an arbitrary `CommRing`).
+
+**[A-E.7, 2026-08-24.]** GC-13 has now typed `hpart` as
+`Nonempty (PartitionLeg I)`, and the target is assertable via the landed assembly
+`block_split_of_partitionLeg` in `leanfinal/Uniformity/ChapE/E57p.lean`.
 
 **NOT ASSERTED.**  At the GC-13 placeholder `hpart : True` the re-signed statement is FALSE —
 `verification/om4_resign_nontriviality.lean` Part 4 exhibits a legal `SlotCarrier ℤ ℚ` /
@@ -1282,7 +1344,9 @@ def BlockSplitTarget {O : Type uO} [CommRing O] [IsDomain O] {K : Type uK} [Fiel
       (hblocksHi : ∀ p ∈ I.sides, ∀ q ∈ I.hiFac p,
       ∃ Fpq : Polynomial O, Fpq.Monic ∧ Fpq ∣ B.F ∧
         Fpq.natDegree = I.classCountHi p q)
-      (hpart : True),  -- the product/disjointness leg; typed at GC-13 resolution
+      -- [A-E.7] GC-13 typing executed; landed twin and proof: E57p.lean,
+      -- `block_split_of_partitionLeg`.
+      (hpart : Nonempty (PartitionLeg I)),
     Nonempty (BlockSuite I)
 
 /-- **E.58** [lemma] The per-class refine quartet (HE7-13′(b)–(e)). -/
