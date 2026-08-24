@@ -155,3 +155,17 @@ recovery lane): launched GTA/GTB/GTC (GENTOW2 C.99–C.106 + C.88/C.85, sonnet, 
 new class twin), C131y (faithful band), E57 + C78 (the two standing HARD nodes, fable,
 adjudication mandates with re-sign-proposal protocol), U12 (codex HIGH: level-general
 carrier design for C.90/FGMN Cor 6.3 on top of the landed CC layer).
+
+**2026-08-24 (late) — the funnel synthesis.** The day's three campaigns (dv-engine C.131′,
+chain-carrier CC, GENTOW2 consumers) have converged: (1) **NODE C.72 fully proved** (floor
++ faithful band, Lean-core, no cite) — dv-engine remaining: af′ reverse correspondence
+(C.53-sized, queued) + C.106 manifest; (2) **the carrier plan executed through CC-17**: S2
+repository realization INHABITED; the residual is the named `S2SourceFrontier` bundle
+(source MacLane model — per U12, the one remaining hard-math campaign on the
+class-discharge/socket path); CC-18 landing the socket applications conditionally on it;
+(3) **the GENTOW2 chain adjudication (GSW, in flight)**: C.104/C.85-part/C.88-part landed;
+the rest blocked on a uniform genre — signed statements omitting source-stated antecedents
++ the OPEN-DICT/EVAL-ISO/LETTERS dictionary laws that `ChainRealization` now carries;
+GSW decides re-sign vs re-base per statement. Also: E.57 hard node LANDED at the schema
+layer + A-E.7 ENACTED (hpart typed at the PartitionLeg twin, Leanspec.ChapE green);
+C.78 adjudication in flight. Codex window at 77% → conserve mode.

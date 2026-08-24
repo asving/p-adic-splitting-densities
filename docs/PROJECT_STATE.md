@@ -96,15 +96,17 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    **v2 DELIVERED (unit F2, 2026-08-24):** `TOWER_INSTANTIATION_FREEZE_V2_2026-08-24.md`
    (D-TIF-4 carrier, non-swallowing residue design). **A-I.2 ENACTED (2026-08-24):** E.63
    re-signed to the live range `3 ≤ i < r`; I.10b + the `deepTwist` field carry the tower
-   depth `r` and conclude at F3's `DeepTwistConjunctLive` (leanfinal `I10FreezeV2.lean`,
-   wired). The sockets' bodies stay `True` — the C.130 layers were BLOCKED on a missing
-   carrier (C130A/C130B verdicts; C130B refuted the freeze's all-integer exact-height
-   demand with a counterexample — needs a Laurent normalizer). **The carrier is now
-   DESIGNED (U11, 2026-08-24): layered `ChainRealization` over `DeepTower`,
-   `CHAIN_CARRIER_DESIGN_2026-08-24.md`** — 19-node plan CC-0…CC-18 (CC-17/CC-18 are the
-   serial acceptance gates that land the sockets; after CC-1/2, nodes CC-3/4/5/9/13 run
-   parallel). This plan is ALSO the FGMNCalculus discharge path (CC-16:
-   `ChainRealization → Nonempty FGMNCalculus`). NEXT: execute the CC plan.
+   depth `r` and conclude at F3's `DeepTwistConjunctLive`. **The CC carrier plan is
+   EXECUTED through CC-17 (2026-08-24, 18 of 19 nodes disposed; CC-18 in flight):**
+   the S2 REPOSITORY realization is fully inhabited (`s2RepositoryRealization`,
+   C130s17.lean), and everything still missing is ONE named bundle —
+   **`S2SourceFrontier`** (the source-side MacLane model: `NodePointSource` instance,
+   `FGMNSourceData`/`FGMNSourceLaws`, OPEN-DICT-2/4 compatibilities) — with conditional
+   constructors proving the diagnosis exact: `S2SourceFrontier → ChainRealization →
+   Nonempty (FGMNCalculus (2,1,5)) → RealizedInput` (no cite, Lean-core). U12's
+   level-general audit says inhabiting it = formalizing the source MacLane valuation
+   chain — the ONE remaining hard-math campaign on this path. CC-18 (in flight) lands
+   the socket applications conditionally on the same bundle.
 3. **The five exact-degree re-signs: DONE (amendment A-C.10, 2026-08-24)** — enacted in the
    leanspec (elaborates green) with per-stub annotations + the blueprint amendment entry;
    the re-signed C.64 is already PROVED (`C64.lean` `blockDeg_eq_resigned`, Lean-core).
