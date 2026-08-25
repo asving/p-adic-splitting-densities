@@ -87,9 +87,18 @@ def strip_comments(src):
     return "".join(out)
 
 
+# An inline `@[attr]` (or several) prefixing the decl keyword ON THE SAME LINE
+# (e.g. `@[reducible] def ladderState_wf ...`) used to be invisible: DECL_RE
+# required whitespace/known MODIFIERS right after the line-start, so the whole
+# line silently failed to match and the declaration was never indexed. An
+# attribute on its OWN line was already fine (it's not a decl line at all; the
+# decl keyword still starts its own line below it) -- only the same-line case
+# was broken. `[^\]\n]*` deliberately keeps this single-line only.
+ATTR_RE = r"(?:@\[[^\]\n]*\][ \t]*)*"
+
 DECL_RE = re.compile(
-    r"^(?P<indent>[ \t]*)(?P<mods>(?:(?:%s)[ \t]+)*)(?P<kind>%s)(?![A-Za-z0-9_'])"
-    % ("|".join(MODIFIERS), "|".join(DECL_KINDS)),
+    r"^(?P<indent>[ \t]*)(?P<attr>%s)(?P<mods>(?:(?:%s)[ \t]+)*)(?P<kind>%s)(?![A-Za-z0-9_'])"
+    % (ATTR_RE, "|".join(MODIFIERS), "|".join(DECL_KINDS)),
     re.M)
 
 NAME_RE = re.compile(r"[A-Za-z_α-ωΑ-Ω][A-Za-z0-9_'!?₀-₉.α-ωΑ-Ω₁-₉]*")
@@ -173,6 +182,13 @@ def example_target(body):
             if not nm:
                 return None
             cand = nm.group(0)
+            # `inferInstance` is a generic Lean-core term, not a declared name:
+            # `example : DecidableEq X := inferInstance` is a typeclass-resolution
+            # check ("some instance exists"), not a check that a SPECIFIC signed
+            # name landed. Treating it as a retirement target manufactures a
+            # census row for a name nobody ever declared.
+            if cand == "inferInstance":
+                return None
             # reject projections off a LOCAL binder (`h.a2`, `hcfg.1`,
             # `gate_two_padic_two_exact.1`): a retirement-form target is a
             # global declaration, never a numeric/field projection of a hyp.
@@ -200,6 +216,70 @@ def leanfinal_files():
     return sorted(out)
 
 
+# A landed `structure`/`inductive` auto-generates a projection per field or a
+# constructor per `|` arm. These are real, landed, Lean-checked names the
+# instant the parent declaration lands -- but `decls()` never emits a DECL_RE
+# hit for them (there is no `def`/`theorem` line to match), so the leanfinal
+# index used to have no entry for e.g. `CertFamily.m` or `CubicFamilyIndex.sep`
+# even though `structure CertFamily ... where m : ℕ ...` / `inductive
+# CubicFamilyIndex | sep : ... ` landed them. leanspec's retirement-form
+# `example`s (`example : ... := CertFamily.m`, `example : Fin 3 → CubicFamilyIndex
+# := CubicFamilyIndex.sep`) deliberately cite these as signed names to check —
+# so the fix is to make the leanfinal SIDE recognize them, at their parent's
+# landed declaration, rather than remove them from the signed-name universe.
+# (leanspec itself never restates the `structure`/`inductive` body, only these
+# retirement `example`s, so this expansion cannot double-count anything on the
+# leanspec side -- see verdict_CFIX.md's denominator note.)
+
+FIELD_RE = re.compile(r"(?m)^([ \t]*)(%s)[ \t]*:(?!=)" % NAME_RE.pattern)
+
+
+def structure_fields(body, base_line):
+    """[(field_name, line)]: auto-generated projections of a `structure ...
+    where` body, restricted to the indentation of the first field (so a
+    multi-line field's continuation lines are never mistaken for new fields)."""
+    m = re.search(r"\bwhere\b", body)
+    if not m:
+        return []
+    out = []
+    base_indent = None
+    for lm in FIELD_RE.finditer(body, m.end()):
+        indent = len(lm.group(1))
+        if base_indent is None:
+            base_indent = indent
+        elif indent != base_indent:
+            continue
+        line = base_line + body[:lm.start()].count("\n")
+        out.append((lm.group(2), line))
+    return out
+
+
+def inductive_ctors(body, base_line):
+    """[(ctor_name, line)]: constructor names of an `inductive ... | ctor ...`
+    body, found as the identifier following each top-level (depth-0) `|`."""
+    out = []
+    depth = 0
+    i, n = 0, len(body)
+    while i < n:
+        c = body[i]
+        if c in "([{⟨⦃":
+            depth += 1
+        elif c in ")]}⟩⦄":
+            depth -= 1
+        elif c == "|" and depth == 0:
+            j = i + 1
+            while j < n and body[j] in " \t\n":
+                j += 1
+            nm = NAME_RE.match(body, j)
+            if nm:
+                line = base_line + body[:j].count("\n")
+                out.append((nm.group(0), line))
+                i = nm.end()
+                continue
+        i += 1
+    return out
+
+
 def build_index():
     """name -> list of (path, line, kind, mods, body) for every landed decl."""
     idx = {}
@@ -210,6 +290,27 @@ def build_index():
             short = d["name"].split(".")[-1]
             for key in {d["name"], short}:
                 idx.setdefault(key, []).append(d)
+            if d["kind"] == "structure":
+                members = structure_fields(d["body"], d["line"])
+            elif d["kind"] == "inductive":
+                members = inductive_ctors(d["body"], d["line"])
+            else:
+                members = []
+            for mname, mline in members:
+                full = f'{d["name"]}.{mname}'
+                entry = dict(d, name=full, line=mline, kind="def")
+                # FULLY-QUALIFIED key only -- deliberately NOT also under the
+                # bare `mname` short key. A bare field/ctor name is common
+                # (`stageSigma`, `ram`, ...) and registering it as a short key
+                # collided with an UNRELATED top-level declaration of the same
+                # bare name elsewhere (`Uniformity.Density.Induction.stageSigma`
+                # the def vs. `StageInterface.stageSigma` the field), silently
+                # swapping in the wrong landing site for an already-correct
+                # census row. The retirement-form targets this census ever
+                # looks up are always fully qualified (`CertFamily.m`,
+                # `CubicFamilyIndex.sep`, ...), so the short key buys nothing
+                # here and only risks exactly that collision.
+                idx.setdefault(full, []).append(entry)
     return idx
 
 
