@@ -25,7 +25,15 @@ The fixed index convention is the **next-augmentation convention**: at repo dept
 and every operator of `FGMNSourceData` belongs to `μ_(r+1) = [μ_r; (φ_(r+1), ν_(r+1))]`:
 
 * `nextValue`           ↔ `μ_(r+1)`, in the repo's CLEARED integer grades (U9 Q3: after
-  clearing by `e(μ_r)` every class grade is already in `Γ_r`; `PrevGrade` is removed);
+  clearing by `e(μ_r)` every class grade is already in `Γ_r`; `PrevGrade` is removed)
+  — [A-C.13, 2026-08-25]: U9 Q3's removal was WRONG at the graded level and `PrevGrade` is
+  RESTORED as a field below, per U14's print-read adjudication
+  (`docs/in-progress/COR412_ADJUDICATION_2026-08-25.md` §4/§8.1): published Cor 4.12(2)
+  carries the premise `β ∈ Γ_{r−1}` and its proof uses `s_r(β) = 0` verbatim; the plain
+  graded product law at arbitrary grades is machine-refuted at the RP-1 operator
+  (`C130rp2.tooth_graded_mul_plain_shape_refuted`);
+* `PrevGrade β`         ↔ `β ∈ Γ_r` in cleared coordinates (published Cor 4.12(2)'s
+  `β ∈ Γ_{r−1}` after the index shift) — [A-C.13] restored;
 * `gradedResidual β g`  ↔ `R_(r+1,β)(g) ∈ F_(r+1)[y]` (FGMN published Def 3.13),
   POLYNOMIAL-valued — U9 Q2: the scalar consumer `Rgr` is its **degree-zero coefficient**,
   derived at CC-16, never a field here;
@@ -115,6 +123,15 @@ structure FGMNSourceData (W : DeepTower.{0, uKt} F H₀ hpin r)
   /-- U9 §2: the normalized residual operator `R_(r+1)(g)` (published Def 3.15), in the same
   OPEN-DICT-3 transported codomain. -/
   normalizedResidual : Polynomial O → Polynomial (W.fld r)
+  /-- [A-C.13, 2026-08-25 — U14, `COR412_ADJUDICATION_2026-08-25.md` §8.1] Cleared grades
+  coming from the preceding value group `Γ_r` (published Corollary 4.12(2)'s `β ∈ Γ_{r−1}`
+  after the repo index shift).  RESTORED: U9 Q3 removed it as "automatic after clearing",
+  which is incompatible with the full-current-group integer clearing actually used by the
+  RP-1 operator (U14 §4).  The realization must identify it with membership in the preceding
+  value group; under the full-current-group clearing this is `e' ∣ β` — at S2, evenness.
+  The predicate form is carried until OPEN-DICT-2 formally proves that divisibility is the
+  correct general cleared-group test (U14 §8.1). -/
+  PrevGrade : ℕ → Prop
   /-- U9 §2: membership `g ∈ KP(μ_(r+1))` (published §1.2); the `Polynomial O` domain builds
   in published Cor 1.10's `KP(μ) ⊂ O[x]`. -/
   keyPolynomial : Polynomial O → Prop
@@ -168,10 +185,16 @@ structure FGMNSourceLaws (W : DeepTower.{0, uKt} F H₀ hpin r)
     S.ExactGrade β g → S.ExactGrade β h → S.ExactGrade β (g + h) →
       S.gradedResidual β (g + h) = S.gradedResidual β g + S.gradedResidual β h
   /-- FGMN published Corollary 4.12(2), polynomial-valued, with the exact-grade product
-  conclusion.  U9 Q3 makes the source's `β ∈ Γ_r` premise automatic after clearing, so no
-  `PrevGrade` binder appears. -/
+  conclusion, INCLUDING its printed `β ∈ Γ_{r−1}` premise (`PrevGrade β'`).
+  [A-C.13, 2026-08-25]: premise RESTORED per U14's print-read adjudication
+  (`COR412_ADJUDICATION_2026-08-25.md` §4/§8.1) — the printed proof uses `s_r(β) = 0`
+  verbatim, and the PLAIN law at arbitrary grades is machine-refuted at the RP-1 operator
+  (`C130rp2.tooth_graded_mul_plain_shape_refuted`: `R₁₀(Φ′²) = X ≠ 1 = R₅(Φ′)²`).  U9 Q3's
+  "automatic after clearing" removal was wrong at the graded level.  The arbitrary-grade
+  extension carries the carry twist `y^c` (U14 §5) and is deliberately NOT this field. -/
   graded_mul : ∀ β β' (g h : Polynomial O),
     S.ExactGrade β g → S.ExactGrade β' h →
+    S.PrevGrade β' →
       S.ExactGrade (β + β') (g * h) ∧
       S.gradedResidual (β + β') (g * h) =
         S.gradedResidual β g * S.gradedResidual β' h

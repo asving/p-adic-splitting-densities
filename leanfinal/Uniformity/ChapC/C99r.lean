@@ -97,12 +97,22 @@ certificate is restoring the four scope-fence hypotheses `hr`, `he'`, `hcop`, `h
 re-signed AXIOM keeps (the certificate's own note: "does not even consume `hr`, `he'`, `hcop`,
 `hfloor` — the re-signed axiom keeps them; removing binders is a different amendment") and
 switching `I` from an explicit argument to the leanspec instance-implicit `[I : FGMNCalculus …]`
-binder — both cosmetic, the algebra is untouched. -/
+binder — both cosmetic, the algebra is untouched.
+
+[A-C.13, 2026-08-25]: gains the supply hypothesis `hprev : I.PrevGrade u'` (amended in the
+leanspec axiom in the same unit, kept byte-parallel) — the restored Cor 4.12(2) scope premise
+at the iterated grade: every power-law induction step multiplies by a second factor of grade
+`u'`.  It is a SUPPLY hypothesis in the A-C.12 pattern: under the GENTOW2 consumer clearing
+`β̂ = e(μ₂)β` (U9 §5) every ℕ-cleared grade lies in the preceding group, so the intended
+instance discharges it; abstractly it cannot be derived from the other hypotheses (U14 §6:
+`Nat.Coprime u' e'` puts `u'` OUTSIDE the preceding group under the full-current-group
+clearing, so dropping it would re-assert the refuted plain law). -/
 
 /-- **NODE C.99, `gentow2_Bpp`** — `LEMMA GENTOW2-B″`, the single-`w` slot law, ratio form, with
 the A-C.12 B-1 normalizer supply (`hnorm`/`hnormdeg`/`hnormz`; GENTOW2_PROOF S5.2, ll.740–744).
-PROVED from the A-C.11 class fields alone (`Rgr_mul` iterated for the power law, `Rgr_ne_zero` at
-the B-1 supply, field cancellation) — no scope fence, no floor arithmetic, no cite is consumed by
+PROVED from the A-C.11 class fields alone (`Rgr_mul` iterated for the power law — each step
+consuming the [A-C.13] `hprev` supply at its second grade `u'` — `Rgr_ne_zero` at the B-1
+supply, field cancellation) — no scope fence, no floor arithmetic, no cite is consumed by
 this algebra; `hr`, `he'`, `hcop`, `hfloor` are unused, carried only for fidelity to the signed
 scope. -/
 theorem gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
@@ -110,6 +120,9 @@ theorem gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : �
     (hr : r = 2)   -- ⚠ SCOPE FENCE (A-C.1 self-catch, carried unchanged by A-C.12)
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
     (hfloor : e' * W.Econst r < u')
+    -- [A-C.13, 2026-08-25] the restored Cor 4.12(2) scope premise at the iterated grade
+    -- (supply hypothesis, byte-parallel with the amended leanspec axiom; see above):
+    (hprev : I.PrevGrade u')
     (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm r (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
       (I.chainNorm r (d * u')).natDegree < (I.keyAt r).natDegree)
@@ -134,7 +147,7 @@ theorem gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : �
         refine ⟨by simpa using hbase, by simp⟩
       · obtain ⟨ihg, ihr⟩ := ih hn
         have hmul := I.Rgr_mul (n * u') u' ((I.chainNorm r u') ^ n) (I.chainNorm r u')
-          ihg hbase
+          ihg hbase hprev
         constructor
         · have : I.ExactGrade (n * u' + u') ((I.chainNorm r u') ^ n * I.chainNorm r u') :=
             hmul.1

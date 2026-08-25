@@ -36,6 +36,7 @@ class.
 | `keyAt` | `A.keys.keyAt` |
 | `keyAt_one`, `keyAt_deg` | `KeyChain.keyAt_one` / `keyAt_degree` (OPEN-DICT-1, C130k) |
 | `ExactGrade` / `AboveGrade` | `A.fgmn.ExactGrade` / `A.fgmn.AboveGrade` (CC-13 definitions) |
+| `PrevGrade` | `A.fgmn.PrevGrade` (CC-13 field, [A-C.13] restored per U14) |
 | `Rgr β g` | `A.fgmn.Rgr` = `(A.fgmn.gradedResidual β g).coeff 0` (CC-14, U9 Q2) |
 | `Rres` | `A.fgmn.normalizedResidual` |
 | `KP` | `A.fgmn.keyPolynomial` |
@@ -89,7 +90,11 @@ and the seven decided design questions (index convention = next augmentation `R_
 scalar `Rgr` = degree-zero coefficient; `PrevGrade` removed; `r = 0` syntactic only; Gauss
 transport = `Polynomial.Monic.irreducible_iff_irreducible_map_fraction_map`) live in
 `docs/in-progress/FGMN_ADJUDICATION_2026-08-24.md` (U9) on top of
-`docs/in-progress/FGMNCALCULUS_FIELDLIST_2026-08-24.md` (U7).  The class remains a HYPOTHESIS
+`docs/in-progress/FGMNCALCULUS_FIELDLIST_2026-08-24.md` (U7).  [A-C.13, 2026-08-25 —
+correction, mirrored byte-parallel from the enacted leanspec class]: U9 Q3's `PrevGrade`
+removal is REVERSED per U14 (`docs/in-progress/COR412_ADJUDICATION_2026-08-25.md`) —
+`PrevGrade` restored as a field and `Rgr_mul` regains the `PrevGrade β'` premise;
+`Rres_mul` stays plain (Cor 4.12(3)).  The class remains a HYPOTHESIS
 CARRIER: `fgmn_calculus_exists` stays undeclared (C92_VACUITY); the conditional discharge is
 `chainRealization_calculus_nonempty` below (this file), fed by a future realized
 `ChainRealization` (CC-17). -/
@@ -101,6 +106,12 @@ class FGMNCalculus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ
 
   ExactGrade : ℕ → Polynomial O → Prop
   AboveGrade : ℕ → Polynomial O → Prop
+  -- [A-C.13, 2026-08-25 — U14 §8.1] cleared grades from the PRECEDING value group `Γ_r`
+  -- (published Cor 4.12(2)'s `β ∈ Γ_{r−1}` after the index shift); restored — U9 Q3's
+  -- removal was wrong at the graded level. Realization obligation: identify it with
+  -- preceding-group membership (under full-current-group clearing, `e' ∣ β`; at S2,
+  -- evenness).
+  PrevGrade : ℕ → Prop
 
   Rgr : ℕ → Polynomial O → W.fld r
   Rres : Polynomial O → Polynomial (W.fld r)
@@ -113,8 +124,13 @@ class FGMNCalculus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ
   Rgr_add : ∀ β (g h : Polynomial O),
     ExactGrade β g → ExactGrade β h → ExactGrade β (g + h) →
       Rgr β (g + h) = Rgr β g + Rgr β h
+  -- [A-C.13, 2026-08-25] `PrevGrade β'` premise RESTORED (U14: published Cor 4.12(2) states
+  -- the law ONLY with `β ∈ Γ_{r−1}`; the proof uses `s_r(β) = 0`; the unrestricted scalar
+  -- law FAILS under odd-odd carry — coeff₀ of `X·P·Q` is 0 while the constant coefficients
+  -- multiply to 1 at RP23's tooth).
   Rgr_mul : ∀ β β' (g h : Polynomial O),
     ExactGrade β g → ExactGrade β' h →
+    PrevGrade β' →
       ExactGrade (β + β') (g * h) ∧
       Rgr (β + β') (g * h) = Rgr β g * Rgr β' h
   Rgr_ne_zero : ∀ β (g : Polynomial O),
@@ -187,6 +203,7 @@ scratch's marking — and registers NO instance). -/
   keyAt_deg := fun i hi hir => A.keys.keyAt_degree i ⟨hi, hir⟩
   ExactGrade := A.fgmn.ExactGrade
   AboveGrade := A.fgmn.AboveGrade
+  PrevGrade := A.fgmn.PrevGrade
   Rgr := A.fgmn.Rgr
   Rres := A.fgmn.normalizedResidual
   KP := A.fgmn.keyPolynomial
@@ -241,6 +258,10 @@ example (A : ChainRealization W Kt L e' f' u') :
 
 example (A : ChainRealization W Kt L e' f' u') :
     A.toCalculus.AboveGrade = A.fgmn.AboveGrade := rfl
+
+/-- [A-C.13] the restored preceding-group predicate passes through unrewritten. -/
+example (A : ChainRealization W Kt L e' f' u') :
+    A.toCalculus.PrevGrade = A.fgmn.PrevGrade := rfl
 
 example (A : ChainRealization W Kt L e' f' u') :
     A.toCalculus.Rgr = fun β g => (A.fgmn.gradedResidual β g).coeff 0 := rfl

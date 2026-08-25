@@ -35,10 +35,13 @@ Lean core, is that the scalar coordinate follows from the polynomial-valued law:
 * `FGMNSourceLaws.Rgr_add` — published **Corollary 4.12(1)** scalar coordinate: the graded
   additivity polynomial identity, read at coefficient zero (`Polynomial.coeff_add`).
 * `FGMNSourceLaws.Rgr_mul` — published **Corollary 4.12(2)** scalar coordinate, WITH the
-  exact-grade product conjunct: constant coefficients multiply
-  (`Polynomial.mul_coeff_zero`); U9 Q3 removed the `PrevGrade` premise (after clearing,
-  every class grade is already in `Γ_r`).  Components also exposed separately as
-  `exactGrade_mul` and `Rgr_mul_eq`.
+  exact-grade product conjunct AND the printed `β ∈ Γ_{r−1}` scope premise (`PrevGrade β'`):
+  constant coefficients multiply (`Polynomial.mul_coeff_zero`).  [A-C.13, 2026-08-25]: the
+  premise is RESTORED per U14 (`COR412_ADJUDICATION_2026-08-25.md` §6/§8.3) — U9 Q3's
+  removal was wrong at the graded level; coefficient zero of the arbitrary-grade CARRY law
+  `X^c·P·Q` is multiplicative ONLY in the no-carry scope (odd-odd carry sends the left side
+  to 0 while the right side can be 1 — RP23's tooth).  Components also exposed separately as
+  `exactGrade_mul` and `Rgr_mul_eq`, both carrying the same restored premise.
 * `FGMNSourceLaws.Rres_mul` — published **Corollary 4.12(3)**: normalized multiplicativity,
   a direct transport (the A-C.11 `Rres` IS `normalizedResidual`, design §7); its own
   coefficient-zero read is `Rres_coeff_zero_mul`.
@@ -49,9 +52,10 @@ Lean core, is that the scalar coordinate follows from the polynomial-valued law:
   fence is essential and is carried verbatim from the source law).
 
 Bonus iterate (pure Lean-core corollary of `Rgr_mul`, no new source content):
-`FGMNSourceLaws.Rgr_pow` — for `0 < n`, `g^n` has exact grade `n·β` and
-`Rgr (n·β) (g^n) = (Rgr β g)^n` — the scalar shape the §10 recipe consumers read on key
-powers.
+`FGMNSourceLaws.Rgr_pow` — for `0 < n` and `PrevGrade β` ([A-C.13]: RESTRICTED per U14
+§8.3 — the unrestricted proof repeatedly used the omitted premise), `g^n` has exact grade
+`n·β` and `Rgr (n·β) (g^n) = (Rgr β g)^n` — the scalar shape the §10 recipe consumers read
+on key powers.
 
 ## Coefficient-zero regressions (design §10 row CC-14: "coefficient-zero regressions pass")
 
@@ -144,35 +148,40 @@ theorem Rgr_add (hL : FGMNSourceLaws W K e' f' u' S) :
   rw [hL.graded_add β g h hg hh hgh, Polynomial.coeff_add]
 
 /-- CC-14 component — FGMN published **Corollary 4.12(2)**, the exact-grade product
-conjunct alone: exact grades add on products (U9 Q3: no `PrevGrade` premise — after
-clearing by `e(μ_r)` every class grade is already in `Γ_r`). -/
+conjunct alone: exact grades add on products.  [A-C.13, 2026-08-25]: carries the restored
+`PrevGrade β'` premise with the source law (U14 §8.1); the UNCONDITIONAL grade half at S2
+is RP-0's separate `S2ExactGrade_mul` (C130rp0), not this abstract projection. -/
 theorem exactGrade_mul (hL : FGMNSourceLaws W K e' f' u' S) :
     ∀ β β' (g h : Polynomial O),
-      S.ExactGrade β g → S.ExactGrade β' h → S.ExactGrade (β + β') (g * h) :=
-  fun β β' g h hg hh => (hL.graded_mul β β' g h hg hh).1
+      S.ExactGrade β g → S.ExactGrade β' h → S.PrevGrade β' →
+        S.ExactGrade (β + β') (g * h) :=
+  fun β β' g h hg hh hprev => (hL.graded_mul β β' g h hg hh hprev).1
 
 /-- CC-14 scalar law — FGMN published **Corollary 4.12(2)**, scalar coordinate WITH the
 exact-grade product conjunct (A-C.11 field shape `Rgr_mul`): the polynomial product
 identity (source law `graded_mul`) read at coefficient zero — constant coefficients
-multiply (`Polynomial.mul_coeff_zero`; U9 §4.1 row 3). -/
+multiply (`Polynomial.mul_coeff_zero`; U9 §4.1 row 3).  [A-C.13, 2026-08-25]: the printed
+`β ∈ Γ_{r−1}` premise (`PrevGrade β'`) is RESTORED per U14 §6/§8.3 — coefficient zero is
+multiplicative only in the no-carry scope. -/
 theorem Rgr_mul (hL : FGMNSourceLaws W K e' f' u' S) :
     ∀ β β' (g h : Polynomial O),
-      S.ExactGrade β g → S.ExactGrade β' h →
+      S.ExactGrade β g → S.ExactGrade β' h → S.PrevGrade β' →
         S.ExactGrade (β + β') (g * h) ∧
           S.Rgr (β + β') (g * h) = S.Rgr β g * S.Rgr β' h := by
-  intro β β' g h hg hh
-  obtain ⟨hgrade, hres⟩ := hL.graded_mul β β' g h hg hh
+  intro β β' g h hg hh hprev
+  obtain ⟨hgrade, hres⟩ := hL.graded_mul β β' g h hg hh hprev
   refine ⟨hgrade, ?_⟩
   simp only [FGMNSourceData.Rgr]
   rw [hres, Polynomial.mul_coeff_zero]
 
 /-- CC-14 component — the scalar product identity of `Rgr_mul` alone: the scalar of a
-product is the product of the scalars, under exact grades. -/
+product is the product of the scalars, under exact grades and the restored `PrevGrade β'`
+scope ([A-C.13]). -/
 theorem Rgr_mul_eq (hL : FGMNSourceLaws W K e' f' u' S) :
     ∀ β β' (g h : Polynomial O),
-      S.ExactGrade β g → S.ExactGrade β' h →
+      S.ExactGrade β g → S.ExactGrade β' h → S.PrevGrade β' →
         S.Rgr (β + β') (g * h) = S.Rgr β g * S.Rgr β' h :=
-  fun β β' g h hg hh => (hL.Rgr_mul β β' g h hg hh).2
+  fun β β' g h hg hh hprev => (hL.Rgr_mul β β' g h hg hh hprev).2
 
 /-- CC-14 scalar law — FGMN published **Theorem 4.1 + Corollary 4.9(1)** in the scalar
 scope (A-C.11 field shape `Rgr_ne_zero`), WITH the U9 degree fence
@@ -206,14 +215,16 @@ theorem Rres_coeff_zero_mul (hL : FGMNSourceLaws W K e' f' u' S) :
   rw [hL.normalized_mul g h, Polynomial.mul_coeff_zero]
 
 /-- CC-14 iterate — pure Lean-core corollary of `Rgr_mul` (no new source content): for
-`0 < n`, the `n`-th power of an exact-grade-`β` polynomial has exact grade `n·β` and its
-scalar residual is the `n`-th power of the scalar — the shape the §10 recipe consumers
-read on key powers.  Fenced by `0 < n`: grade-0 behavior of `g^0 = 1` is deliberately not
-asserted (no source law values `1`). -/
+`0 < n` and `PrevGrade β`, the `n`-th power of an exact-grade-`β` polynomial has exact
+grade `n·β` and its scalar residual is the `n`-th power of the scalar — the shape the §10
+recipe consumers read on key powers.  Fenced by `0 < n`: grade-0 behavior of `g^0 = 1` is
+deliberately not asserted (no source law values `1`).  [A-C.13, 2026-08-25]: RESTRICTED by
+the restored `PrevGrade β` (U14 §8.3 — the previous unrestricted proof used the omitted
+premise at every induction step; each step multiplies by a second factor of grade `β`). -/
 theorem Rgr_pow (hL : FGMNSourceLaws W K e' f' u' S) :
-    ∀ (β : ℕ) (g : Polynomial O), S.ExactGrade β g → ∀ n : ℕ, 0 < n →
+    ∀ (β : ℕ) (g : Polynomial O), S.ExactGrade β g → S.PrevGrade β → ∀ n : ℕ, 0 < n →
       S.ExactGrade (n * β) (g ^ n) ∧ S.Rgr (n * β) (g ^ n) = S.Rgr β g ^ n := by
-  intro β g hg n
+  intro β g hg hprev n
   induction n with
   | zero => exact fun h => absurd h (lt_irrefl 0)
   | succ m ih =>
@@ -222,7 +233,7 @@ theorem Rgr_pow (hL : FGMNSourceLaws W K e' f' u' S) :
     · subst hm
       simpa using hg
     · obtain ⟨hgrade, hval⟩ := ih hm
-      obtain ⟨hgrade', hres'⟩ := hL.graded_mul (m * β) β (g ^ m) g hgrade hg
+      obtain ⟨hgrade', hres'⟩ := hL.graded_mul (m * β) β (g ^ m) g hgrade hg hprev
       have hidx : (m + 1) * β = m * β + β := by ring
       have hpow : g ^ (m + 1) = g ^ m * g := pow_succ g m
       constructor
@@ -262,10 +273,11 @@ example (hL : FGMNSourceLaws W K e' f' u' S) :
   hL.Rgr_add
 
 /-- Tooth (i).3 — Cor 4.12(2): the scalar of a product = product of scalars under exact
-grades, WITH the exact-grade product conjunct — the coefficient-zero read verbatim. -/
+grades AND the restored `PrevGrade β'` scope ([A-C.13]), WITH the exact-grade product
+conjunct — the coefficient-zero read verbatim. -/
 example (hL : FGMNSourceLaws W K e' f' u' S) :
     ∀ β β' (g h : Polynomial O),
-      S.ExactGrade β g → S.ExactGrade β' h →
+      S.ExactGrade β g → S.ExactGrade β' h → S.PrevGrade β' →
         S.ExactGrade (β + β') (g * h) ∧
           (S.gradedResidual (β + β') (g * h)).coeff 0 =
             (S.gradedResidual β g).coeff 0 * (S.gradedResidual β' h).coeff 0 :=
@@ -287,12 +299,13 @@ example (hL : FGMNSourceLaws W K e' f' u' S) :
   hL.Rres_mul
 
 /-- Tooth (i).6 — the `n = 2` power read: the scalar of `g²` at doubled grade is the
-square of the scalar. -/
+square of the scalar, in the restored `PrevGrade β` scope ([A-C.13]: exactly the odd-odd
+carry genre RP23's tooth refutes OUTSIDE this scope). -/
 example (hL : FGMNSourceLaws W K e' f' u' S) (β : ℕ) (g : Polynomial O)
-    (hg : S.ExactGrade β g) :
+    (hg : S.ExactGrade β g) (hprev : S.PrevGrade β) :
     (S.gradedResidual (2 * β) (g ^ 2)).coeff 0 =
       (S.gradedResidual β g).coeff 0 * (S.gradedResidual β g).coeff 0 := by
-  simpa [sq, FGMNSourceData.Rgr] using (hL.Rgr_pow β g hg 2 (by norm_num)).2
+  simpa [sq, FGMNSourceData.Rgr] using (hL.Rgr_pow β g hg hprev 2 (by norm_num)).2
 
 /- (ii) The three generic coefficient-zero reads carrying the projection, pinned to their
 mathlib names. -/

@@ -1327,7 +1327,12 @@ coefficient; `PrevGrade` removed; `r = 0` syntactic only; Gauss transport =
 `docs/in-progress/FGMN_ADJUDICATION_2026-08-24.md` (U9) on top of
 `docs/in-progress/FGMNCALCULUS_FIELDLIST_2026-08-24.md` (U7). The class remains a HYPOTHESIS
 CARRIER: `fgmn_calculus_exists` stays undeclared (C92_VACUITY); discharge path =
-`FGMNChainRealization` (OPEN-DICT-1..4). -/
+`FGMNChainRealization` (OPEN-DICT-1..4).
+[A-C.13, 2026-08-25 — correction.] U9 Q3's `PrevGrade` removal is REVERSED per U14's
+print-read (`docs/in-progress/COR412_ADJUDICATION_2026-08-25.md`): published Cor 4.12(2)
+carries the premise `β ∈ Γ_{r−1}` (its proof uses `s_r(β) = 0` verbatim), the plain graded
+product law is machine-refuted at arbitrary grades (RP23's tooth), so `PrevGrade` is restored
+below and `Rgr_mul` regains the premise; `Rres_mul` (Cor 4.12(3)) stays plain. -/
 class FGMNCalculus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) where
   keyAt : ℕ → Polynomial O
@@ -1336,6 +1341,12 @@ class FGMNCalculus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ
 
   ExactGrade : ℕ → Polynomial O → Prop
   AboveGrade : ℕ → Polynomial O → Prop
+  -- [A-C.13, 2026-08-25 — U14 §8.1] cleared grades from the PRECEDING value group `Γ_r`
+  -- (published Cor 4.12(2)'s `β ∈ Γ_{r−1}` after the index shift); restored — U9 Q3's
+  -- removal was wrong at the graded level. Realization obligation: identify it with
+  -- preceding-group membership (under full-current-group clearing, `e' ∣ β`; at S2,
+  -- evenness).
+  PrevGrade : ℕ → Prop
 
   Rgr : ℕ → Polynomial O → W.fld r
   Rres : Polynomial O → Polynomial (W.fld r)
@@ -1348,8 +1359,13 @@ class FGMNCalculus {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ
   Rgr_add : ∀ β (g h : Polynomial O),
     ExactGrade β g → ExactGrade β h → ExactGrade β (g + h) →
       Rgr β (g + h) = Rgr β g + Rgr β h
+  -- [A-C.13, 2026-08-25] `PrevGrade β'` premise RESTORED (U14: published Cor 4.12(2) states
+  -- the law ONLY with `β ∈ Γ_{r−1}`; the proof uses `s_r(β) = 0`; the unrestricted scalar
+  -- law FAILS under odd-odd carry — coeff₀ of `X·P·Q` is 0 while the constant coefficients
+  -- multiply to 1 at RP23's tooth).
   Rgr_mul : ∀ β β' (g h : Polynomial O),
     ExactGrade β g → ExactGrade β' h →
+    PrevGrade β' →
       ExactGrade (β + β') (g * h) ∧
       Rgr (β + β') (g * h) = Rgr β g * Rgr β' h
   Rgr_ne_zero : ∀ β (g : Polynomial O),
@@ -2466,12 +2482,22 @@ axiom gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
                    -- unfenced general-r signing would silently assert the open law.
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
     (hfloor : e' * W.Econst r < u')
+    -- [A-C.13, 2026-08-25] the restored Cor 4.12(2) scope premise at the iterated grade:
+    -- the power-law induction multiplies by a second factor of grade `u'` at every step, so
+    -- the restored `Rgr_mul` needs `PrevGrade u'`.  Carried EXPLICITLY as supply (the
+    -- A-C.12 pattern): under the GENTOW2 consumer clearing `β̂ = e(μ₂)β` (U9 §5) every
+    -- ℕ-cleared grade lies in the preceding group, so the intended instance discharges it;
+    -- abstractly it cannot be derived from the other hypotheses (U14 §6: coprimality puts
+    -- `u'` OUTSIDE the preceding group under the full-current-group clearing).
+    (hprev : I.PrevGrade u')
     -- [A-C.12, 2026-08-24 RE-SIGN — GSW] the source-stated B-1 normalizer supply
     -- (GENTOW2_PROOF S5.2 proof, ll.740–744: "N := n̂₂(u₃), M := n̂₂(u₃d): ladder
     -- monomials, deg < m₃, single-point N₃-polygon, exact grades κ̄ resp. β_t (B-1)"):
     -- the slot normalizer monomials sit at their exact grades, below the key degree,
     -- and are nonzero.  Provability certificate: leanfinal/scratch/GSW_check.lean
-    -- `gentow2_Bpp_resigned_provable` (Lean-core, from the A-C.11 class fields alone).
+    -- `gentow2_Bpp_resigned_provable` (Lean-core, from the A-C.11 class fields alone;
+    -- [A-C.13]: certificate predates the restored premise — superseded by the landed
+    -- leanfinal proof in `Uniformity/ChapC/C99r.lean`, which consumes `hprev`).
     (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm r (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
       (I.chainNorm r (d * u')).natDegree < (I.keyAt r).natDegree)
