@@ -3895,9 +3895,13 @@ axiom gentow5_key_certificate {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H�
 **(c) — the level-(i+1) entry characterization — BOOKED** (it needs the level-(i+1)
 `dv`-carrier, the same §9-scope residual as C.90(b)/C.102's; recorded in the delta block)] -/
 
+-- [A-C.16, 2026-08-25 RE-SIGN] the live-range fence `hj : j < μ` restored: the naked form is
+-- FALSE (machine-refuted, `C150rb2.gentow5_selffeed_false` — the degenerate endpoint j = μ with
+-- u = 0 satisfies hOnSide and forces ℓ·E < 0); the repaired form is PROVED
+-- (`gentow5_selffeed_resigned`, floor telescoping, matching the blueprint's own PROOF field).
 axiom gentow5_selffeed (P : ℕ → ℕ∞) (μ E : ℕ) (hμ : 0 < μ)
     (hpins : ∀ j < μ, (((μ - j) * E + 1 : ℕ) : ℕ∞) ≤ P j) (htop : P μ = (0 : ℕ∞))
-    {u ℓ j : ℕ} (hℓ : 0 < ℓ) (hside : hOnSide P μ u ℓ j) :
+    {u ℓ j : ℕ} (hℓ : 0 < ℓ) (hj : j < μ) (hside : hOnSide P μ u ℓ j) :
     ℓ * E < u
 
 /-! ### NODE C.93 [lemma] — threshold arithmetic + the `HYP.82` census [signed: A-C.1] -/
