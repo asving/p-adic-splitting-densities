@@ -1,0 +1,5 @@
+NP-6 LANDED (new file `leanfinal/Uniformity/ChapC/C130np6.lean`, 11 decls, Lean-core only, zero sorry).
+`ambientLetter`/`psi_root` (SplitNodePointSource exact field shapes, C130s17): `s2AmbientLetter := 1 : Lˣ` for any `Kt`/`L`/`receiver`, proved a root of `ψ 1 = X − C 1` (`s2Bridge_ψ`) since ring homs fix `1` — no card-2 appeal needed for this half; tied to CC-9's `TerminalReceiver.ambientHom`/`.psiTransported`/`.psiTransported_root_ne_zero` (C130pt) by instantiation, not duplication.
+`letter_ne_zero` (`FGMNSourceLaws` exact shape at r=2, C130fg, read only): `s2Letter := 1 : (S2DepthTwo h2 hq).fld 2`, nonzero by `one_ne_zero`, plus a "free letters" forcing lemma (`s2Letter_forced`, mirroring `s2Dig₂_forced`) showing ANY nonzero live-index letter value is forced to `1` via the q=2 collapse (`s2Fld₂_card`).
+No `FGMNSourceData`/`FGMNSourceLaws`/`SplitNodePointSource` instance assembled — ready-to-plug field values/proofs only, per plan scope.
+Verified: `lake env lean Uniformity/ChapC/C130np6.lean` — zero errors/warnings; all 11 `#print axioms` show `[propext, Classical.choice, Quot.sound]` or a Lean-core subset thereof.
