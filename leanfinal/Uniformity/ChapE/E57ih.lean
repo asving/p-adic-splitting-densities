@@ -122,6 +122,81 @@ example :
       I.classCountHi (1, 1) (2, 1) = 2 :=
   ⟨hiBlock, hiIface, rfl, rfl, rfl, rfl, rfl, rfl, rfl, rfl⟩
 
+/-! ## DEC1-N7: assembly + firing at the HI row
+
+**Node DEC1-N7** of the GC-13 bridge plan (`docs/in-progress/GC13_BRIDGE_PLAN_2026-08-25.md`,
+§3), extending this file with the HI row's typed `PartitionLeg` and the E.57 assembly fired
+through it. Named inputs: `hiBlock`/`hiIface` (N6, above), the landed
+`block_split_of_partitionLeg` and `PartitionLeg.dvd_classCount_hi` (`Uniformity.ChapE.E57p`).
+The one-class residue is honest here exactly as E39a disclosed for `E57pCert.pureLeg`: an
+inert row's single block IS the row itself — `hiLeg`'s `blk` sends the sole class address to
+`⟨hiBlock, hiIface⟩`. This discharges `dvd_classCount_hi` NON-TRIVIALLY (`2 ∣ 2` read off
+the leg's `hdeg`/`hpureHi` through `one_side_pure_hi_mass`, not `norm_num`) — the E-D15 hi
+divisibility, saturated exactly at this row (`hforce`'s hi bound `D·ℓ·deg = 1·1·2 = 2` has
+no slack). -/
+
+/-- class address of the HI row's sole class: side `(1,1)`, higher residual `(deg, mult) =
+(2, 1)`. -/
+def ah : ClassIx ℚ := ((1, 1), Sum.inr (2, 1))
+
+/-- The HI row's typed partition leg: the single higher class's block is the row itself
+(same honest residue as `E57pCert.pureLeg`, now on the hi branch). -/
+noncomputable def hiLeg : PartitionLeg.{0, 0, 0} hiIface where
+  cls := {ah}
+  hclsLin := by intro p q; simp [ah, hiIface]
+  hclsHi := by intro p q; simp [ah, hiIface]
+  blk := fun _ => ⟨hiBlock, hiIface⟩
+  hprod := by simp
+  hdisj := by
+    intro c hc c' hc' hne
+    rw [Finset.mem_singleton] at hc hc'
+    exact absurd (hc.trans hc'.symm) hne
+  hdeg := by
+    intro c hc
+    rw [Finset.mem_singleton] at hc
+    subst hc
+    show (X ^ 2 + X + 1 : Polynomial ℤ).natDegree = 2
+    have h := (hiBlock.natDegree_F).1
+    simpa [hiBlock, flatCarrier] using h
+  hone := by
+    intro c hc
+    rw [Finset.mem_singleton] at hc
+    subst hc
+    rfl
+  hpureLin := by intro p q h; simp [ah] at h
+  hpureHi := by
+    intro p q h
+    rw [Finset.mem_singleton] at h
+    have hpq : p = (1, 1) ∧ q = (2, 1) := by
+      simpa [ah, Prod.ext_iff] using h
+    obtain ⟨rfl, rfl⟩ := hpq
+    exact ⟨1, le_rfl, le_rfl, rfl, rfl⟩
+  hthr := by intro c hc; rfl
+
+/-- The typed `hpart` socket (E.57's former `hpart : True` placeholder) discharged at the
+HI row: `Nonempty (PartitionLeg hiIface)`. -/
+theorem hi_partitionLeg_nonempty : Nonempty (PartitionLeg hiIface) := ⟨hiLeg⟩
+
+/-- The corrected E.57 statement (`block_split_of_partitionLeg`) FIRED end-to-end at the HI
+row, consuming `hiLeg` as the typed leg. -/
+theorem hi_blockSuite : Nonempty (BlockSuite hiIface) :=
+  block_split_of_partitionLeg hiIface hiLeg.supplies_hblocks hiLeg.supplies_hblocksHi ⟨hiLeg⟩
+
+/-- Teeth: the E-D15 hi divisibility (`PartitionLeg.dvd_classCount_hi`) consumed at a row
+where it says something (`2 ∣ 2`, read through the leg's own arithmetic) rather than being
+discharged by `norm_num` alone — `hforce`'s hi lower bound is SATURATED here. -/
+example : (1 * 1 * 2 : ℕ) ∣ hiIface.classCountHi (1, 1) (2, 1) :=
+  hiLeg.dvd_classCount_hi (1, 1) (by simp [hiIface]) (2, 1) (by simp [hiIface])
+
+/-- **DEC1-N7 target, discharged** — byte-copied from `scratch/DEC1_check.lean`'s
+`DEC1Check.N7_target` (the check file is scratch and not importable, so this is the
+anti-drift pin: the statement below is byte-identical to the pinned target's body). -/
+example :
+    ∃ (B : BlockData flatCarrier) (I : RungInterface.{0, 0, 0} flatCarrier B),
+      B.F = X ^ 2 + X + 1 ∧ I.linFac (1, 1) = 0 ∧ I.hiFac (1, 1) = {(2, 1)} ∧
+      Nonempty (PartitionLeg I) ∧ Nonempty (BlockSuite I) :=
+  ⟨hiBlock, hiIface, rfl, rfl, rfl, hi_partitionLeg_nonempty, hi_blockSuite⟩
+
 end E57iCert
 
 end Uniformity.Density.Ladder
@@ -132,5 +207,8 @@ section AxCheck
 
 #print axioms Uniformity.Density.Ladder.E57iCert.hiBlock
 #print axioms Uniformity.Density.Ladder.E57iCert.hiIface
+#print axioms Uniformity.Density.Ladder.E57iCert.hiLeg
+#print axioms Uniformity.Density.Ladder.E57iCert.hi_partitionLeg_nonempty
+#print axioms Uniformity.Density.Ladder.E57iCert.hi_blockSuite
 
 end AxCheck
