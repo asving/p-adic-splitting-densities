@@ -40,20 +40,44 @@ fired is satisfiable in the split typing: at the concrete probe ambient
 `FractionRing (Polynomial O)` with the injective coefficient read at the rational-function
 coordinate, `eval₂ coeffHom coord (C 2) ≠ 0`.
 
-## Corrected conditionality (REPLACES the pre-U13 caveat)
+## The SG-0 re-type of the FGMN legs (2026-08-25, unit SG01)
 
-* `S2SourceFrontier` (split-ambient) is NOT claimed inhabited: constructing an inhabitant is
-  the S2-source campaign (plan §6, nodes NV/NP/RP/KP/FD/SG).  It is, however, no longer
-  refutable by U13's char-2 argument — the tooth section is the machine check.
+FD-0 (`C130fd0.s2SourceLaws_depthTwo_unsatisfiable`, `runs/wave-b/verdict_FD01.md`)
+machine-refuted this structure's ORIGINAL `fgmn`/`fgmnLaws` typing — `FGMNSourceData
+(S2DepthTwo h2 hq) (s2RepositoryRealization h2 hq).keys 2 1 5` and its laws — at the landed
+operator readings: `carried_key_is_key` + `carried_key_residual` + KP-9's degree dictionary
+(`deg R₃(g) = deg g / 4` on keys) collide with the chain's own `deg (keyAt 2) = 4`.  Cause:
+the abstract structure reuses the tower depth `r` as the FGMN key index, but the landed S2
+operators realize the `μ₁ → μ₂` augmentation keyed at `keyAt 1` — the `r = 1` anchoring
+RECORDED by RP-0's docstring, RP-11's course correction, and KP-3's anchoring note.  Per plan
+§6 row SG-0 the two legs are therefore RE-TYPED here at that anchoring: the tower is the SAME
+landed witness truncated to depth one (`s2FgmnAnchor` below — definitionally C130fd0's
+`s2DepthOne`; the duplicate definition is forced by the import direction and rfl-pinned in
+`C130sg`), the chain is `s2FgmnAnchorKeys` (`keyAt 1 = Φ′`), and FD-0's constructed records
+`s2SourceDataOne`/`s2SourceLawsOne` (all thirteen laws discharged by named landed theorems)
+fill the legs at the `C130sg` instance.  The REFUTED depth-two half moves to the quarantined
+packaging premise `LegacyFGMN` (mirror of `LegacyEvaluation`, below).
+
+## Corrected conditionality (REPLACES the pre-U13 caveat; updated at SG-0)
+
+* `S2SourceFrontier` (split-ambient, r = 1 fgmn legs) is inhabited by `C130sg.s2Frontier`,
+  CONDITIONAL on exactly one named source datum: the level-1 inherited threshold
+  (`C130sg.S2LevelOneThreshold` — NP-4/NP-5's one open: no source occurrence names `T₁`;
+  any candidate must satisfy `T₁ < 5`).  It is no longer refutable by U13's char-2 argument —
+  the tooth section is the machine check.
 * Packaging into the CURRENT single-ambient `ChainRealization` (C130fg, untouched here)
-  additionally requires the QUARANTINED premise `S2SourceFrontier.LegacyEvaluation` — exactly
-  the U13-refuted single-ambient evaluation half, which is uninhabitable at S2 (the U13
-  contradiction transplants verbatim against the split bundle's live tables).  Hence
-  `toChainRealization`, `calculusNonempty`, `realizedInput`, and `s2RealizedInput` carry an
-  EXPLICITLY-empty-at-S2 premise `ev` and are retained as packaging shapes only, until the
-  plan's SF-3 consumer ripple re-types `NodePointSource`/`ChainRealization` themselves.
-  Nothing downstream of `ev` is a non-vacuous S2 statement; every non-vacuous statement of
-  this file is either repository-side or `ev`-free.
+  additionally requires TWO QUARANTINED premises: `S2SourceFrontier.LegacyEvaluation` —
+  exactly the U13-refuted single-ambient evaluation half, uninhabitable at S2 (the U13
+  contradiction transplants verbatim; machine-certified at the SG-0 instance by
+  `C130sg.s2Frontier_legacyEvaluation_isEmpty`) — and `S2SourceFrontier.LegacyFGMN` — the
+  FD-0-refuted depth-two FGMN half, uninhabitable at the landed operator readings
+  (`C130sg.s2LegacyFGMN_landed_empty`) and reserved for plan §5.2's genuinely-μ₃-level
+  operators (nowhere landed).  Hence `toChainRealization`, `calculusNonempty`,
+  `realizedInput`, and `s2RealizedInput` carry the EXPLICITLY-quarantined premises `ev`/`lf`
+  and are retained as packaging shapes only, until the plan's SF-3 consumer ripple re-types
+  `NodePointSource`/`ChainRealization` themselves.  Nothing downstream of `ev`/`lf` is a
+  non-vacuous S2 statement; every non-vacuous statement of this file is either
+  repository-side or `ev`/`lf`-free.
 
 Likewise, `S2InputData` exposes exactly the separate input-occurrence data needed by
 `ArisingCore`; `S2InputData.toArisingCore` and `S2SourceFrontier.realizedInput` construct the
@@ -301,6 +325,51 @@ noncomputable def s2RepositoryRealization : S2RepositoryRealization h2 hq where
 @[simp] theorem s2RepositoryRealization_stageTwo :
     (s2RepositoryRealization h2 hq).stageTwo = s2Slot₂ h2 hq := rfl
 
+/-! ## The r = 1 FGMN anchoring (SG-0 re-type, 2026-08-25)
+
+FD-0 machine-refuted the depth-two typing of the frontier's FGMN legs at the landed operator
+readings (`C130fd0.s2SourceLaws_depthTwo_unsatisfiable`); the honest anchoring is the repo
+depth `r = 1`, where the landed operators realize the `μ₁ → μ₂` augmentation keyed at
+`keyAt 1 = Φ′`.  The two definitions below are byte-duplicates of C130fd0's
+`s2DepthOne`/`s2DepthOneKeyChain` (rfl-pinned against them in `C130sg`): C130fd0 transitively
+imports this file, so the anchoring objects must be re-declared here for the structure's
+field types to mention them. -/
+
+/-- [SG-0, 2026-08-25] **the depth-one FGMN anchor tower**: C.97's witness truncated to depth
+ONE — the repo depth at which the landed S2 operators realize `FGMNSourceData` (RP-0's
+docstring, RP-11's course correction, KP-3's anchoring note; the FD-0 finding).
+Definitionally IDENTICAL to `C130fd0.s2DepthOne` (`C130sg.s2FgmnAnchor_eq_depthOne : rfl`). -/
+noncomputable def s2FgmnAnchor : DeepTower (s2Frame h2 hq) 1 (s2Frame_pin h2 hq) 1 :=
+  (s2Witness h2 hq 1 (s2Frame_pin h2 hq)).trunc 1 (by omega)
+
+/-- anti-drift pin: the anchor's terminal carrier IS the depth-two terminal carrier,
+definitionally (C.97's witness uses one constant stage field at every index). -/
+theorem s2FgmnAnchor_fld_eq : (s2FgmnAnchor h2 hq).fld 1 = (S2DepthTwo h2 hq).fld 2 := rfl
+
+/-- `D₁ = ê₁·f̂₁ = 2` at the anchor. -/
+theorem s2FgmnAnchor_Dcum_one : (s2FgmnAnchor h2 hq).Dcum 1 = 2 := by
+  rw [DeepTower.Dcum, show (Finset.Icc 1 1 : Finset ℕ) = {1} by decide,
+    Finset.prod_singleton, (s2FgmnAnchor h2 hq).he1, (s2FgmnAnchor h2 hq).hf1]
+  rfl
+
+/-- [SG-0] the anchor key assignment: the frame key `Φ′` at every index (only index `1` is
+live; junk elsewhere, exactly as `s2DepthTwoKeyChain` treats its off-range indices). -/
+noncomputable def s2FgmnAnchorKeyAt (_ : ℕ) : Polynomial O := (s2Frame h2 hq).key
+
+/-- [SG-0] **the anchor key chain**: `keyAt 1 = Φ′`, monic, of the cumulative degree `2` —
+definitionally `C130fd0.s2DepthOneKeyChain` (`C130sg.s2FgmnAnchorKeys_eq_depthOne : rfl`). -/
+noncomputable def s2FgmnAnchorKeys : KeyChain (s2FgmnAnchor h2 hq) where
+  keyAt := s2FgmnAnchorKeyAt h2 hq
+  keyAt_one := rfl
+  keyAt_monic := fun _ _ => (s2Frame h2 hq).hmonic
+  keyAt_degree := by
+    intro i hi
+    obtain ⟨h1, h2i⟩ := hi
+    interval_cases i
+    show ((s2Frame h2 hq).key : Polynomial O).natDegree = (s2FgmnAnchor h2 hq).Dcum 1
+    rw [(s2Frame h2 hq).hdeg, s2FgmnAnchor_Dcum_one h2 hq, C35b.e1_eq h2 hq,
+      C35b.f1_eq h2 hq]
+
 /-! ## Exact source frontier for a full S2 `ChainRealization` — SPLIT-AMBIENT re-type -/
 
 /-- The exact source-side frontier left after the concrete repository assembly — RE-TYPED
@@ -322,10 +391,15 @@ structure S2SourceFrontier (E : Type uE) [Field E] (L : Type uL) [Field L]
   hgt_two : node.hgt 2 = s2Hgt₂ h2 hq
   dig_two : node.dig 2 = s2Dig₂ h2 hq
   full_two : node.Full 2 = S2Full₂ h2 hq
-  fgmn : FGMNSourceData (S2DepthTwo h2 hq)
-    (s2RepositoryRealization h2 hq).keys 2 1 5
-  fgmnLaws : FGMNSourceLaws (S2DepthTwo h2 hq)
-    (s2RepositoryRealization h2 hq).keys 2 1 5 fgmn
+  /-- [SG-0, 2026-08-25] The FGMN source data, RE-TYPED at the recorded `r = 1` anchoring
+  (`s2FgmnAnchor`) after FD-0 machine-refuted the original depth-two typing at the landed
+  operator readings (`C130fd0.s2SourceLaws_depthTwo_unsatisfiable`).  The depth-two half is
+  now the quarantined `LegacyFGMN` premise. -/
+  fgmn : FGMNSourceData (s2FgmnAnchor h2 hq) (s2FgmnAnchorKeys h2 hq) 2 1 5
+  /-- [SG-0, 2026-08-25] The thirteen FGMN source laws at the same `r = 1` anchoring — the
+  typing at which FD-0 discharged ALL thirteen by named landed theorems
+  (`C130fd0.s2SourceLawsOne`). -/
+  fgmnLaws : FGMNSourceLaws (s2FgmnAnchor h2 hq) (s2FgmnAnchorKeys h2 hq) 2 1 5 fgmn
   grade_compat : ∀ x : node.Point, node.Pt 2 x → ∀ g : Polynomial O,
     fgmn.nextValue g = node.pointHgt 2 x g
   letter_compat : ∀ i, StageLive 2 i →
@@ -365,6 +439,34 @@ structure LegacyEvaluation (S : S2SourceFrontier h2 hq E L) where
       valueOn i (a + b) = min (valueOn i a) (valueOn i b)
   pointHgt_eval : ∀ i x A,
     S.node.pointHgt i x A = valueOn i (Polynomial.eval₂ coeffHom (coord x) A)
+
+/-- QUARANTINE (FD-0 → SG-0, 2026-08-25): the LEGACY depth-two FGMN residual — exactly the
+false-anchoring half that FD-0 refuted (`C130fd0.s2SourceLaws_depthTwo_unsatisfiable`,
+`runs/wave-b/verdict_FD01.md`): the depth-two-typed FGMN records at the repository chain,
+plus the two compat fields binding them to the split node (the shapes this structure's
+`fgmn`/`fgmnLaws`/`grade_compat`/`letter_compat` carried before the SG-0 re-type).
+
+At the landed operator readings (`normalizedResidual = s2NormRes`, `keyPolynomial =
+S2KeyPoly`) this structure is UNINHABITABLE: `carried_key_is_key` forces
+`keyAt 2 ∈ KP(μ₂)`, `carried_key_residual` forces `R₃(keyAt 2) = 1`, and KP-9's landed
+degree dictionary collides with the chain's own `deg (keyAt 2) = 4` — machine-certified by
+`C130sg.s2LegacyFGMN_landed_empty` (this file cannot import C130fd0, so the theorem lives
+downstream).  A record built from genuinely `μ₃`-level depth-two operators (plan §5.2's
+original intent, nowhere landed) is NOT refuted — which is why this is a named premise
+rather than a dead field.  It exists ONLY so the packaging into the CURRENT un-split
+`ChainRealization` (C130fg, whose `fgmn` leg is typed at the tower's own depth) stays
+typeable until the plan's SF-3 consumer ripple; the campaign fills the `r = 1` legs of
+`S2SourceFrontier`, never this. -/
+structure LegacyFGMN (S : S2SourceFrontier h2 hq E L) where
+  fgmn : FGMNSourceData (S2DepthTwo h2 hq) (s2RepositoryRealization h2 hq).keys 2 1 5
+  fgmnLaws : FGMNSourceLaws (S2DepthTwo h2 hq)
+    (s2RepositoryRealization h2 hq).keys 2 1 5 fgmn
+  grade_compat : ∀ x : S.node.Point, S.node.Pt 2 x → ∀ g : Polynomial O,
+    fgmn.nextValue g = S.node.pointHgt 2 x g
+  letter_compat : ∀ i, StageLive 2 i →
+    algebraMap ((S2DepthTwo h2 hq).fld 2) L
+        ((s2RepositoryRealization h2 hq).receiver.topEquiv (fgmn.letter i)) =
+      (S.node.ambientLetter i : L)
 
 /-- Rebuild the legacy single-ambient `NodePointSource` from a split witness and the
 quarantined evaluation premise.  Every non-evaluation field is the split bundle's own,
@@ -411,27 +513,32 @@ noncomputable def withLegacy (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEval
   peelUnit := S.node.peelUnit
 
 /-- A split-frontier witness packages into the literal full S2 `ChainRealization` — but,
-until C130fg's carrier is itself ambient-split (plan SF-3), ONLY through the quarantined
-legacy premise `ev`, which is uninhabitable at S2 (U13).  This is a packaging shape, not a
-non-vacuous S2 statement; its S2 content lives entirely in the `ev`-free fields of `S`. -/
+until C130fg's carrier is itself ambient-split (plan SF-3), ONLY through the TWO quarantined
+legacy premises: `ev` (the U13-refuted single-ambient evaluation half, uninhabitable at S2)
+and — since the SG-0 re-type moved the frontier's own FGMN legs to the honest `r = 1`
+anchoring — `lf` (the FD-0-refuted depth-two FGMN half, uninhabitable at the landed operator
+readings).  This is a packaging shape, not a non-vacuous S2 statement; its S2 content lives
+entirely in the `ev`/`lf`-free fields of `S`. -/
 noncomputable def toChainRealization (S : S2SourceFrontier h2 hq E L)
-    (ev : S.LegacyEvaluation) :
+    (ev : S.LegacyEvaluation) (lf : S.LegacyFGMN) :
     ChainRealization (S2DepthTwo h2 hq) ((S2DepthTwo h2 hq).fld 2) L 2 1 5 where
   receiver := (s2RepositoryRealization h2 hq).receiver
   keys := (s2RepositoryRealization h2 hq).keys
   normalizer := (s2RepositoryRealization h2 hq).normalizer
   node := S.withLegacy ev
-  fgmn := S.fgmn
-  fgmnLaws := S.fgmnLaws
-  grade_compat := S.grade_compat
-  letter_compat := S.letter_compat
+  fgmn := lf.fgmn
+  fgmnLaws := lf.fgmnLaws
+  grade_compat := lf.grade_compat
+  letter_compat := lf.letter_compat
 
 /-- The first calculus is non-vacuous exactly when the split frontier AND (until the SF-3
-carrier ripple) the quarantined legacy premise are inhabited; the latter is empty at S2
-(U13).  No class instance is registered. -/
-theorem calculusNonempty (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) :
+carrier ripple) the two quarantined legacy premises are inhabited; `ev` is empty at S2
+(U13) and `lf` is empty at the landed operator readings (FD-0).  No class instance is
+registered. -/
+theorem calculusNonempty (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation)
+    (lf : S.LegacyFGMN) :
     Nonempty (FGMNCalculus (S2DepthTwo h2 hq) 2 1 5) :=
-  chainRealization_calculus_nonempty (S.toChainRealization ev)
+  chainRealization_calculus_nonempty (S.toChainRealization ev lf)
 
 /-- The canonical legal S2 level-two point, conditional only on the source P-locus carried
 by `node.point_exists` — `ev`-free. -/
@@ -649,12 +756,13 @@ variable {h2 hq}
 variable {E : Type uE} [Field E] {L : Type uL} [Field L]
 variable [Algebra ((S2DepthTwo h2 hq).fld 2) L]
 
-/-- Given the split source frontier, the quarantined legacy premise (empty at S2 — U13),
-and the explicit input frontier, construct the literal S2 `RealizedInput`.  The selected
-point is CC-9's `legalPoint`, hence comes from the carried `point_exists`. -/
+/-- Given the split source frontier, the two quarantined legacy premises (`ev` empty at S2
+— U13; `lf` empty at the landed operator readings — FD-0), and the explicit input frontier,
+construct the literal S2 `RealizedInput`.  The selected point is CC-9's `legalPoint`, hence
+comes from the carried `point_exists`. -/
 noncomputable def realizedInput (S : S2SourceFrontier h2 hq E L)
-    (ev : S.LegacyEvaluation) (I : S2InputData h2 hq L) :
-    RealizedInput I.toArisingCore (S.toChainRealization ev) where
+    (ev : S.LegacyEvaluation) (lf : S.LegacyFGMN) (I : S2InputData h2 hq L) :
+    RealizedInput I.toArisingCore (S.toChainRealization ev lf) where
   receiver_eq := rfl
   stageKey_eq := rfl
   stageDeg_eq := rfl
@@ -663,12 +771,13 @@ noncomputable def realizedInput (S : S2SourceFrontier h2 hq E L)
 
 /-- The maximal conditional acceptance-gate input: the arising occurrence is the concrete
 `keyAt 2 + 1` occurrence; the remaining premises are the separately exposed split frontier
-and the quarantined legacy evaluation (empty at S2 — U13). -/
+and the two quarantined legacy halves (`ev` empty at S2 — U13; `lf` empty at the landed
+operator readings — FD-0). -/
 noncomputable def s2RealizedInput
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) :
-    RealizedInput (s2ArisingCore h2 hq L) (S.toChainRealization ev) :=
-  realizedInput S ev (s2InputData h2 hq L)
+    (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) (lf : S.LegacyFGMN) :
+    RealizedInput (s2ArisingCore h2 hq L) (S.toChainRealization ev lf) :=
+  realizedInput S ev lf (s2InputData h2 hq L)
 
 end S2SourceFrontier
 
@@ -694,8 +803,14 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.C130s17.s2RepositoryRealization_keys
 #print axioms Uniformity.Density.Tower.C130s17.s2RepositoryRealization_normalizer
 #print axioms Uniformity.Density.Tower.C130s17.s2RepositoryRealization_stageTwo
+#print axioms Uniformity.Density.Tower.C130s17.s2FgmnAnchor
+#print axioms Uniformity.Density.Tower.C130s17.s2FgmnAnchor_fld_eq
+#print axioms Uniformity.Density.Tower.C130s17.s2FgmnAnchor_Dcum_one
+#print axioms Uniformity.Density.Tower.C130s17.s2FgmnAnchorKeyAt
+#print axioms Uniformity.Density.Tower.C130s17.s2FgmnAnchorKeys
 #print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier
 #print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.LegacyEvaluation
+#print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.LegacyFGMN
 #print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.withLegacy
 #print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.toChainRealization
 #print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.calculusNonempty
