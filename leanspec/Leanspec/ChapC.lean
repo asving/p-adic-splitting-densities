@@ -2370,9 +2370,19 @@ structure ClassSizeSupplyData {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F 
         ∀ r ∈ s, (Fac r).Monic ∧ (Fac r).natDegree = (F.e₁ * F.f₁) * L.ℓ * r.natDegree ∧
           ((∀ g' ∈ monicFactors (Fac r), (F.f₁ * r.natDegree) ∣ inertiaDegOf g') →
             typeOf (Fac r) = ⟨{(F.e₁ * L.ℓ, F.f₁ * r.natDegree)}⟩ ∧ Irreducible (Fac r))
+  -- [RE-SIGNED: A-C.15, 2026-08-25 — DEC1's stop-the-line side finding
+  -- (`runs/wave-b/verdict_DEC1.md`): this clause quoted the NAKED C.64 law, machine-REFUTED
+  -- (`ChapC/C64.lean`: `blockDegEq_false`, 3 = 2 at `(s2Frame, L₀, g₀)` over ℤ_[2]), so
+  -- `classSize_supply` was FALSE at the probe frame. A-C.10 (2026-08-24) re-signed the
+  -- standalone `blockDeg_eq` with the `hlab`/`hdvd` riders but missed this bundle field.
+  -- Repaired to the SAME protected shape (C.48's template): the block's label and
+  -- D′-divisibility are RIDERS, under which the law is C.35's landed
+  -- `hasLabel_natDegree_eq_of_dvd` (already PROVED as `blockDeg_eq_resigned`, `ChapC/C64.lean`).]
   read_form : ∀ (hπ : Irreducible π)
     (_ : IsAdicComplete (IsLocalRing.maximalIdeal O) O)
     {f : Polynomial O}, BlockContext L f →
+    HasLabel L (blockFactor L f) →
+    (F.e₁ * F.f₁) ∣ (blockFactor L f).natDegree →
     (blockFactor L f).natDegree = L.keyDeg₂ * mult₂ L f
   mixed_tie : ∀ (hπ : Irreducible π)
     (_ : IsAdicComplete (IsLocalRing.maximalIdeal O) O)
@@ -3775,13 +3785,48 @@ def Wle {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
 axiom gentow5w_two {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (W : DeepTower F H₀ hpin 2) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
-    (hfloor : e' * W.Econst 2 < u') :
+    (hfloor : e' * W.Econst 2 < u')
+    -- [A-C.14, 2026-08-25 RE-SIGN — AC14] the C.99 supply-hypothesis CASCADE, enacted.  This
+    -- axiom's documented route is "(i) the `i = 2` discharge from C.99" (the C.89 header
+    -- above), and the re-signed C.99 (`gentow2_Bpp`, [A-C.12]/[A-C.13]) consumes four supply
+    -- families this signature never carried — the standing adjudication's own flag
+    -- (GENTOW2_ADJUDICATION_2026-08-24.md §2: "Cascade flag (not enacted here): C.89's
+    -- `gentow5w_two` (docstring: "the i = 2 discharge from C.99") and `gentow5w_one_shape`
+    -- will need the same three families when their landing unit runs; flagged for the next
+    -- A-C amendment"; §10 item 3 likewise).  Same B-1 source as C.99 (GENTOW2_PROOF S5.2
+    -- proof, ll.740–744: "N := n̂₂(u₃), M := n̂₂(u₃d): ladder monomials, deg < m₃,
+    -- single-point N₃-polygon, exact grades κ̄ resp. β_t (B-1)"); `hprev` per [A-C.13] (the
+    -- restored Cor 4.12(2) scope premise at the iterated grade).  Provability certificate:
+    -- leanfinal `Uniformity/ChapC/C107ac14.lean` `gentow5w_two` (Lean-core, via the landed
+    -- C.99 twin `C99r.gentow2_Bpp` at `r = 2` + `Rgr_ne_zero` for the witness `w`).
+    (hprev : I.PrevGrade u')
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm 2 (d * u')))
+    (hnormdeg : ∀ d, 0 < d → d ≤ f' →
+      (I.chainNorm 2 (d * u')).natDegree < (I.keyAt 2).natDegree)
+    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNorm 2 (d * u') ≠ 0) :
     GENTOW5W W e' f' u' I
 
 axiom gentow5w_one_shape {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (W : DeepTower F H₀ hpin 1) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
-    (hfloor : e' * W.Econst 1 < u') :
+    (hfloor : e' * W.Econst 1 < u')
+    -- [A-C.14, 2026-08-25 RE-SIGN — AC14] the same C.99 supply cascade as `gentow5w_two`
+    -- above (the adjudication's cascade flag names BOTH axioms; same B-1 source quote,
+    -- GENTOW2_PROOF S5.2 ll.740–744, read at depth 1: the ratio power law consumes the same
+    -- ladder-normalizer exact-grade/degree/nonzero supply at every used grade `d·u'`, plus
+    -- [A-C.13]'s `PrevGrade u'` for the iterated `Rgr_mul`).  With the supply, the RATIO
+    -- clause is provable at any depth (leanfinal `C107ac14.lean`, private
+    -- `ratio_power_law`); the LETTER clause — the tie `Rgr u' (chainNorm 1 u') = letterZ 1 ^ k`
+    -- — remains this axiom's open content: the audited OPEN-LETTERS/OPEN-EVAL-ISO gap
+    -- (verdict_GTB.md C.102 row: "No class field relates `letterZ` to `ρ` or to
+    -- `AdjoinRoot.root T.ψ₂`"), NOT bridged here.  Conditional discharge certificate:
+    -- leanfinal `C107ac14.lean` `gentow5w_one_shape_of_letter_tie` (Lean-core; the letter
+    -- tie carried as the explicit hypothesis `htie` — exactly the missing law).
+    (hprev : I.PrevGrade u')
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm 1 (d * u')))
+    (hnormdeg : ∀ d, 0 < d → d ≤ f' →
+      (I.chainNorm 1 (d * u')).natDegree < (I.keyAt 1).natDegree)
+    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNorm 1 (d * u') ≠ 0) :
     ∃ k : ℕ, ∀ t, t < f' →
       I.Rgr ((f' - t) * u') (I.chainNorm 1 ((f' - t) * u')) * I.thetaRatio (f' - t)
         = (I.letterZ 1 ^ k) ^ (f' - t)
@@ -3795,13 +3840,53 @@ axiom gentow5_key_certificate {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H�
     (I : ∀ i, (hi : i ≤ r) → FGMNCalculus (W.trunc i hi) e' f' u')
     (hπ : Irreducible π) (hh : 1 ≤ F.h)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
-    (hW : Wle W e' f' u' I r) (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
+    (hW : Wle W e' f' u' I r)
+    -- [A-C.14, 2026-08-25 RE-SIGN — AC14] the DEPTH-3 SCOPE binder, made explicit.  The C93
+    -- census records this node as "item (6)(α): depth-3 scope, 𝒲-conditional"; the 𝒲 law is
+    -- consumed at the TOP rung `r`, and `Wle` only carries rungs `3 ≤ i` — without `3 ≤ r`
+    -- the `hW` binder is vacuous at the consumed rung.  Also repairs verdict_GT5.md's
+    -- secondary observation: `KP_criterion`'s degree leg reads `keyAt_deg`, asserted only at
+    -- `1 ≤ i ≤ r`, and no previous binder excluded `r = 0`.
+    (hr3 : 3 ≤ r)
+    (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
     (hfloor : e' * W.Econst r < u')
     (Φnext : Polynomial O) (hmon : Φnext.Monic)
     (hdeg : Φnext.natDegree = e' * f' * W.Dcum r)
     (ψ' : Polynomial ((W.trunc r le_rfl).fld r)) (hψm : ψ'.Monic) (hψd : ψ'.natDegree = f')
+    -- [A-C.14, 2026-08-25 RE-SIGN — AC14] the RECIPE COUPLING of `ψ'` to `Φnext`, carried as
+    -- explicit supply hypotheses (the C.101-`hunit` discharge-node style).  The A-C.1 signing
+    -- left `ψ'` a FREE binder tied to `Φnext` by nothing — under which the conclusion is
+    -- FALSE-shaped: instantiating `ψ' := X ^ f'` (monic, degree `f'`) forces
+    -- `Rres Φnext = wconj w (X ^ f') = X ^ f'`, contradicting `hadm` (irreducibility at
+    -- `f' ≥ 2`; the coeff-0 conjunct at every `f' ≥ 1`) at ANY inhabited configuration —
+    -- the GSW-§7 genre (an untied quantifier collapsing the statement).  The source ties
+    -- them by construction: GENTOW5_PROOF S3 statement, "keys Phi_1, ..., Phi_r built by THE
+    -- RECIPE [GT5-r1: in its GAUGE-CORRECTED form — the S2.1 pin's vartheta-twisted
+    -- khat_t]", and clause (a)'s display "R_{nu_i}(Phi_{i+1}) = psi_{i+1}^{(w_i)} :=
+    -- w_i^{f_{i+1}} * psi_{i+1}(y / w_i)" (ll.785–786) — i.e. `ψ'` is the digit-string
+    -- polynomial and `Rres Φnext` is its slot-read expansion through the ϑ-twisted recipe.
+    -- `hres` is exactly the depth-`r` B-law display (the landed depth-2 instance is C.101,
+    -- `C99r.gentow2_B`, coefficients `Rgr(chainNorm)·digit` with the ϑ-twist of the
+    -- gauge-corrected khat_t appearing as the `thetaRatio` factor); it discharges at depth 2
+    -- from C.101 + the ϑ-twist bookkeeping, at general depth from the future 𝒲-family
+    -- B-law — delete by follow-up amendment when that lands.
+    (c : ℕ → (W.trunc r le_rfl).fld r)
+    (hψc : ψ' = Polynomial.X ^ f'
+      - ∑ t ∈ Finset.range f', Polynomial.C (c t) * Polynomial.X ^ t)
+    (hres : (I r le_rfl).Rres Φnext
+      = Polynomial.X ^ f' - ∑ t ∈ Finset.range f',
+          Polynomial.C ((I r le_rfl).Rgr ((f' - t) * u')
+              ((I r le_rfl).chainNorm r ((f' - t) * u'))
+            * (I r le_rfl).thetaRatio (f' - t) * c t) * Polynomial.X ^ t)
+    -- [A-C.14, 2026-08-25 RE-SIGN — AC14] the omitted third admissibility conjunct — the
+    -- source states its admissibility notion with the nonzero constant term explicitly
+    -- (GENTOW5_PROOF ll.793–796: "psi_{i+1}^{(w_i)} is GENTOW2-A-ADMISSIBLE at each value of
+    -- w_i — monic irreducible of degree f_{i+1} with nonzero constant term (y -> w*y is a
+    -- substitution automorphism; ...)") — `KP_criterion`'s fifth antecedent; the identical
+    -- repair A-C.12 enacted on the sibling `gentow2_A` (GTB's option (a)).
     (hadm : Irreducible ((I r le_rfl).Rres Φnext) ∧
-      ((I r le_rfl).Rres Φnext).natDegree = f') :
+      ((I r le_rfl).Rres Φnext).natDegree = f' ∧
+      ((I r le_rfl).Rres Φnext).coeff 0 ≠ 0) :
     (I r le_rfl).KP Φnext ∧
     ∃ w : (W.trunc r le_rfl).fld r, w ≠ 0 ∧
       (I r le_rfl).Rres Φnext = wconj w ψ'
