@@ -173,6 +173,61 @@ theorem split_N4 :
     · rw [splitBlk_a1]; rfl
     · rw [splitBlk_a2]; rfl
 
+/-! ## DEC1-N5: assembly + firing at the split row
+
+**Node DEC1-N5** of the GC-13 bridge plan (`docs/in-progress/GC13_BRIDGE_PLAN_2026-08-25.md`,
+§3), the plan's FINAL node: assembles `splitLeg : PartitionLeg mixIface` from N3's
+ledger/product/disjointness field-group (`split_N3`) and N4's degree/purity/threshold
+field-group (`split_N4`) — packed in exactly `DEC1Check.legOfSpecs`'s field order
+(term-checked in `scratch/DEC1_check.lean`, the plan's first load-bearing joint) — then
+fires the corrected E.57 statement (`block_split_of_partitionLeg`) through it. Unlike
+`E57pCert.pureLeg` and `E57ih.lean`'s `hiLeg` (one-class residues where the sole block IS
+the row), `splitLeg` is the first typed leg with a genuinely MULTI-class ledger: two linear
+classes, each assigned to its OWN child block (`E57pCert.pureBlock` for `a1`, `E57i2`'s
+`pureBlock₂` for `a2`). -/
+
+/-- The split row's typed partition leg: N3+N4's field-groups packed in `PartitionLeg`'s
+constructor order — verbatim `DEC1Check.legOfSpecs`'s term at `(mixIface, splitCls,
+splitBlk, split_N3, split_N4)`. -/
+noncomputable def splitLeg : PartitionLeg mixIface :=
+  ⟨splitCls, split_N3.1, split_N3.2.1, splitBlk, split_N3.2.2.1, split_N3.2.2.2,
+    split_N4.1, split_N4.2.1, split_N4.2.2.1, split_N4.2.2.2.1, split_N4.2.2.2.2⟩
+
+/-- The typed `hpart` socket (E.57's former `hpart : True` placeholder) discharged at the
+split row: `Nonempty (PartitionLeg mixIface)` — the first genuinely multi-class instance
+(beyond `E57pCert.pureLeg`'s and `E57ih.lean`'s `hiLeg`'s one-class residues). -/
+theorem split_partitionLeg_nonempty : Nonempty (PartitionLeg mixIface) := ⟨splitLeg⟩
+
+/-- The corrected E.57 statement (`block_split_of_partitionLeg`) FIRED end-to-end at the
+split row, consuming `splitLeg` as the typed leg. -/
+theorem split_blockSuite : Nonempty (BlockSuite mixIface) :=
+  block_split_of_partitionLeg mixIface splitLeg.supplies_hblocks splitLeg.supplies_hblocksHi
+    ⟨splitLeg⟩
+
+/-- Teeth: the ledger is genuinely two classes (strictly beyond `E57pCert.pureLeg`'s and
+`hiLeg`'s one-class residues). -/
+example : splitCls.card = 2 := Finset.card_pair a1_ne_a2
+
+/-- Teeth: the E-D15 linear divisibility (`PartitionLeg.dvd_classCount_lin`) consumed at
+BOTH classes of the split row (`a1`'s label `1` and `a2`'s label `−1`). At `D = 1` the read
+is numerically trivial (`1 * 1 ∣ 1`) — the hi row (`E57ih.lean`'s N7) carries the
+non-trivial saturated case — but this is the first row exercising the field at more than
+one class of the SAME leg. -/
+example : (1 * 1 : ℕ) ∣ mixIface.classCount (1, 1) ((1 : ℚ), 1) :=
+  splitLeg.dvd_classCount_lin (1, 1) (by simp [mixIface]) ((1 : ℚ), 1) (by simp [mixIface])
+
+example : (1 * 1 : ℕ) ∣ mixIface.classCount (1, 1) ((-1 : ℚ), 1) :=
+  splitLeg.dvd_classCount_lin (1, 1) (by simp [mixIface]) ((-1 : ℚ), 1) (by simp [mixIface])
+
+/-- **DEC1-N5 target, discharged** — byte-copied from `scratch/DEC1_check.lean`'s
+`DEC1Check.N5_target` (the check file is scratch and not importable, so this is the
+anti-drift pin: the statement below is byte-identical to the pinned target's body). -/
+example :
+    ∃ (B : BlockData flatCarrier) (I : RungInterface.{0, 0, 0} flatCarrier B),
+      B.F = X ^ 2 - 1 ∧ I.linFac (1, 1) = {((1 : ℚ), 1), ((-1 : ℚ), 1)} ∧
+      Nonempty (PartitionLeg I) ∧ Nonempty (BlockSuite I) :=
+  ⟨mixBlock, mixIface, rfl, rfl, split_partitionLeg_nonempty, split_blockSuite⟩
+
 end E57iCert
 
 end Uniformity.Density.Ladder
@@ -185,5 +240,8 @@ section AxCheck
 #print axioms Uniformity.Density.Ladder.E57iCert.splitBlk
 #print axioms Uniformity.Density.Ladder.E57iCert.split_N3
 #print axioms Uniformity.Density.Ladder.E57iCert.split_N4
+#print axioms Uniformity.Density.Ladder.E57iCert.splitLeg
+#print axioms Uniformity.Density.Ladder.E57iCert.split_partitionLeg_nonempty
+#print axioms Uniformity.Density.Ladder.E57iCert.split_blockSuite
 
 end AxCheck
