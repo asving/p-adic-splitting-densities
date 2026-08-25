@@ -228,3 +228,9 @@ question COMPUTED, letters/reads/arena all forced-or-honestly-free), recipe + ex
 composedKey proven S2KeyPoly with residual X+1. Remaining: FD-0/FD-1 assembly (in flight;
 six _fills pins banked), then SG-0/SG-1 (the corrected frontier instance + the funnel fire
 through ChainRealization → FGMNCalculus (2,1,5) → RealizedInput → the I.10 sockets).
+
+**2026-08-25 — commit-hygiene note (audit trail):** commit 19d1f7ec ("A-C.14 ENACTED")
+incidentally swept in unit AC15C27's concurrent A-C.15 leanspec edit (the C.69 `read_form`
+re-sign to the A-C.10 protected shape, riders `HasLabel` + divisibility, [A-C.15] comment
+citing DEC1 + `blockDegEq_false`). Both amendments verified green independently; the
+combined commit is recorded here so neither enactment is orphaned from its record.
