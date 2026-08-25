@@ -210,3 +210,21 @@ weighted-development values, with FIVE genuine inductive cores named (`value_mul
 `graded_mul`, `normalized_mul`, `key_criterion`, `initial_iff_residual`) — the honest
 remaining hard math of the chapter-I/class-discharge path. The (2,1,5)-vs-(2,1,21)
 parameter breadcrumb is addressed inside the plan's per-field analysis.
+
+**2026-08-25 (early) — ALL FIVE INDUCTIVE CORES OF THE S2-SOURCE CAMPAIGN CLOSED.** Over
+~20 units (Fable + Sonnet, with orchestrator finishes during the 529 storms and one codex
+print-read), the corrected S2-source plan's five named hard cores are all proved Lean-core:
+`value_mul` (the NV chain — the exact one-step MacLane expansion, the parity survival core,
+the universal level-two product law, AddValuation packaging + fraction-field extension);
+`graded_mul` (the RP chain — including U14's Cor 4.12(2) print-read that CORRECTED U9's
+PrevGrade removal, enacted as A-C.13, with the repo's twist law as the recorded
+arbitrary-grade generalization); `normalized_mul` (universal, premise-free, Cor 4.12(3)
+verbatim scope); `key_criterion` (with the degree fence machine-checked sharp and the crown:
+RP-12's constructed lift IS a key polynomial); `initial_iff_residual` (Prop 5.6(2)↔(3),
+via the degree dictionary). Supporting: the NP track fully disposed (points/evaluation with
+the FORCED MacLane augmentation discovery, thresholds source-pinned with the 5-vs-10
+question COMPUTED, letters/reads/arena all forced-or-honestly-free), recipe + existence
+(X+1 unique, explicit degree-4 lift), Eisenstein irreducibility, and the tower's own
+composedKey proven S2KeyPoly with residual X+1. Remaining: FD-0/FD-1 assembly (in flight;
+six _fills pins banked), then SG-0/SG-1 (the corrected frontier instance + the funnel fire
+through ChainRealization → FGMNCalculus (2,1,5) → RealizedInput → the I.10 sockets).

@@ -152,7 +152,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 |---|---|---|
 | (archive) | all 2026-08-24 waves through CC-16/A-E.7 | DONE — details in docs/LOG.md + git log; every landing orchestrator-verified |
 | (archive) | CC17/CC18/GTR/TDW/GSW+A-C.12/C106/U13/SF1 (2026-08-24 evening) | ALL DONE — see LOG; the S2-source corrected campaign (`S2_SOURCE_PLAN_2026-08-24.md`, ~48 nodes) is now the frontier's execution plan |
-| NV01 | S2-plan nodes NV-0/NV-1: cleared value functions + level-one product (FABLE) | RUNNING (→ C130nv.lean) |
+| (archive) | the S2-source campaign's NV/NP/RP/KP tracks (2026-08-25, ~20 units) | **ALL FIVE INDUCTIVE CORES CLOSED** — value_mul (NV-0..6), graded_mul (RP-0..6, incl. U14's print-read + A-C.13), normalized_mul (RP-7..10), key_criterion (KP-0..4), initial_iff_residual (KP-7..9); NP track fully disposed (NP-0..8); recipe/existence landed (RP-11/12); KP-5/6 landed (Eisenstein key + the tower's composedKey proven S2KeyPoly, residual X+1); details in LOG/git |
+| FD01 | S2-plan FD-0/FD-1: assemble FGMNSourceData/Laws + OPEN-DICT-2/4 (FABLE) | RUNNING (→ C130fd0.lean) — six _fills pins banked |
 
 ## 7. Resume protocol (fresh agent)
 
