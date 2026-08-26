@@ -15,7 +15,8 @@ launch () {
   echo "LAUNCHED $U (pid $!)"
 }
 launch AMND "-c model_reasoning_effort=high"
+launch CHFD "-c model_reasoning_effort=high"
 launch BW1 ""
 launch HW1 ""
 sleep 15
-for U in AMND BW1 HW1; do echo "== $U err head =="; head -6 "runs/wave-b/err_${U}.log" 2>/dev/null; done
+for U in AMND CHFD BW1 HW1; do echo "== $U err head =="; head -6 "runs/wave-b/err_${U}.log" 2>/dev/null; done

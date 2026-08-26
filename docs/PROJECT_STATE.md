@@ -147,6 +147,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | AMND | the two DEC3R-mandated signed consumer amendments (hprev fence; chainNorm re-index) (codex HIGH) | QUEUED — codex 5h window at 96%; auto-launch at the 22:26 reset via `runs/wave-b/launch_wave_20260826.sh` |
 | BW1 | BLOCKERS_PLAN wave 1: norm bridge + shadow linearity corpus landing (codex default) | QUEUED — same launch |
 | HW1 | H116B4_MAP fireable rows GR-1/2 + GR-3/3b (codex default) | QUEUED — same launch |
+| CHFD | the CapstoneHypotheses field-list supply map (the inhabitation campaign's decomposer) (codex HIGH) | QUEUED — same launch |
+| EXPO | public exposition refresh (standing obligation at major milestones — the assembly landing qualifies) | PENDING — schedule after the CHFD map lands |
 
 ## 7. Resume protocol (fresh agent)
 
