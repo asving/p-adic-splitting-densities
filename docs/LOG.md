@@ -318,3 +318,29 @@ in §4 item 6. All 8 roll-up targets rebuilt green; `Leanspec.ChapI` re-verified
 against the 57 newly-transitive modules (no name-ambiguity breakage). This closes the
 stale-olean incident class RSGN hit on C130sg (a landed file in no roll-up never gets its
 olean refreshed by roll-up builds).
+
+**2026-08-26 (late night) — the math fleet returns + all four amendments land + the
+capstone supply map.** Under Asvin's evening directives (compile-is-the-validator; math →
+codex-else-Fable; transcription → Sonnet fleets), five Fable math units ran through heavy
+API storms (529 waves + classifier gates; two units needed multiple resumes; MSMITH twice
+hit the 64k output cap until a hard one-small-Write constraint broke its monolith loop —
+still in flight). RESULTS: (1) MBRIDGE — RB3's upward budget→height bridge PROVED
+(cert 210/0; refuted signed `shadow_persistence` sans degree fence). (2) MRAMX — ramified
+level-1 norm exactness PROVED completion-free (cert 4443/4443 + predicted negative
+control; verifier ACCEPT). (3) MHENS — the dv-graded one-slope Hensel engine PROVED at
+math grade (cert 2832/0; found HasLabel's defective-stratum leak refuting signed C.34
+uniqueness + C.35 clause 3; fgmn_dv_exact_mul becomes RETIRABLE once MH.3 lands).
+(4) MLIFT — H.116b4 core II-a PROVED over every DVR; II-b reduced to two named OPENs with
+the new certified law Iₙ=#Vₙ. The codex wave (after the 5h window reset + one silent-exit
+resume): AMND LANDED ALL FOUR amendments A-C.17–A-C.20 (hprev fence; chainNormBelow
+re-index; shadow_persistence hdeg; the HasLabel degree pin with refutations preserved as
+*Leaky) — orchestrator-verified via full ChapC roll-up + leanspec builds, all Lean-core.
+CHFD delivered the CAPSTONE SUPPLY MAP: `CapstoneHypotheses 2` = ns7 + ladder + deepTwist
+EXACTLY (a0/a1/a2 provable at n=2, machine-checked); the decisive campaigns are
+LADDER-SUPPLY and DEEP-TWIST-SUPPLY; found the NS7Termination leanspec/leanfinal drift
+(reconciliation re-sign owed). BW1 landed the probe-complete F2/F3 corpus declarations
+(B53d + C131ah, wired). The Sonnet tier recovered: CW1a/CW1b landed all four capstone
+wrappers (DecidedSliceAt 2, MenuLawAt 2, DrainageAt 2, MenuLawAt 3) in minutes, Lean-core
+— the a0/a1/a2 branch of `CapstoneHypotheses 2` is now fully public. The μ₃ fleet is
+UN-GATED (A-C.17/18); its chain head (M3-NV0/NV1) and the CIFACE interface nodes launch
+next. Still in flight: MSMITH, HW1 (codex window at 100% till 04:09).
