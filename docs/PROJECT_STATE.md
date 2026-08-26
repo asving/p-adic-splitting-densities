@@ -146,11 +146,16 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | DEC3R | μ₃/Route-B blueprint (codex HIGH) | DONE — commit b5d16d0f; gates unit AMND |
 | DEC4R | chain-blockers plan (codex HIGH) | DONE — commit 5755bc59; wave-1 = unit BW1 |
 | DEC5R | H.116b4 examples-first map (codex HIGH) | DONE — commit 93c618b8; fireable rows = unit HW1 |
-| AMND | the two DEC3R-mandated signed consumer amendments (hprev fence; chainNorm re-index) (codex HIGH) | QUEUED — codex 5h window at 96%; auto-launch at the 22:26 reset via `runs/wave-b/launch_wave_20260826.sh` |
-| BW1 | BLOCKERS_PLAN wave 1: norm bridge + shadow linearity corpus landing (codex default) | QUEUED — same launch |
-| HW1 | H116B4_MAP fireable rows GR-1/2 + GR-3/3b (codex default) | QUEUED — same launch |
-| CHFD | the CapstoneHypotheses field-list supply map (the inhabitation campaign's decomposer) (codex HIGH) | QUEUED — same launch |
-| EXPO | public exposition refresh (standing obligation at major milestones — the assembly landing qualifies) | PENDING — schedule after the CHFD map lands |
+| AMND | the two DEC3R-mandated signed consumer amendments (hprev fence; chainNorm re-index) (codex HIGH) | QUEUED — auto-launch at the codex 22:26 reset via `runs/wave-b/launch_wave_20260826.sh` |
+| CHFD | the CapstoneHypotheses field-list supply map (codex HIGH) | QUEUED — same launch |
+| BW1 | BLOCKERS_PLAN wave 1: norm bridge + shadow linearity corpus landing | RUNNING (SONNET — reassigned from codex per Asvin 2026-08-26 evening) |
+| HW1 | H116B4_MAP fireable rows GR-1/2 + GR-3/3b | RUNNING (SONNET — reassigned likewise) |
+| MHENS | MATH: the dv-graded one-slope Hensel engine, the C.34/C.35 root (FABLE) | RUNNING |
+| MBRIDGE | MATH: RB3's upward budget→dv2Hgt bridge, certificate-first (FABLE) | RUNNING |
+| MSMITH | MATH: H.116b4 core I — restricted Smith identification (FABLE) | LAUNCH-PENDING (classifier storm; auto-retry scheduled) |
+| MLIFT | MATH: H.116b4 cores II-a/II-b — one-grade lifting + pushforward induction (FABLE) | LAUNCH-PENDING (same retry) |
+| MRAMX | MATH: completion-free ramified level-1 exactness (FABLE) | LAUNCH-PENDING (same retry) |
+| EXPO | public exposition refresh (standing obligation at major milestones) | PENDING — after the CHFD map lands |
 
 ## 7. Resume protocol (fresh agent)
 

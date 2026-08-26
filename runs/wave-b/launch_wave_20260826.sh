@@ -14,9 +14,9 @@ launch () {
   disown
   echo "LAUNCHED $U (pid $!)"
 }
+# BW1/HW1 removed 2026-08-26 ~19:30: reassigned to SONNET agents launched immediately
+# (Asvin's directive — transcription is Sonnet work; codex slots reserved for AMND/CHFD).
 launch AMND "-c model_reasoning_effort=high"
 launch CHFD "-c model_reasoning_effort=high"
-launch BW1 ""
-launch HW1 ""
 sleep 15
-for U in AMND CHFD BW1 HW1; do echo "== $U err head =="; head -6 "runs/wave-b/err_${U}.log" 2>/dev/null; done
+for U in AMND CHFD; do echo "== $U err head =="; head -6 "runs/wave-b/err_${U}.log" 2>/dev/null; done
