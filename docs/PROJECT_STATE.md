@@ -37,9 +37,9 @@ never pipe an output you need through head/tail; never trust a bare name-grep
 * **Legacy `lean/` project (untouched since 07/08):** the order-0 σ-keyed capstone
   `OM.RealInstanceV2.montes_unconditional` + wild wave 1 — machine-checked, Lean-core,
   conditional on `htameFE`/`hExhaust` as recorded there. Not this campaign's workstream.
-* **`leanfinal/` (the campaign):** census **646 / 1239 signed names PROVED**, 419 carrier,
-  161 unlanded, 5 conditional, 5 placeholder-body, 2 cite, 1 unresolved (2026-08-24 EOD)
-  (`python3 spec/census_driver.py`); frontier 543/612 node-files
+* **`leanfinal/` (the campaign):** census **658 / 1235 signed names PROVED**, 484 carrier,
+  79 unlanded, 6 conditional, 5 placeholder-body, 2 cite, 1 unresolved (2026-08-26, post-PK)
+  (`python3 spec/census_driver.py`); frontier
   (`python3 spec/frontier.py` — file-existence proxy, do NOT quote as progress).
   Chapters: B and H required-work done; F complete; G complete; D one gate open;
   E one hard node (E.57); **C carries ~145 of the unlanded names**; I is the capstone
@@ -71,29 +71,38 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 
 ## 4. The live frontier (what blocks what) — rewritten 2026-08-26
 
-1. **The packaging enactment (PK plan, U15's Route A)**: PK-1/2 IN FLIGHT (the carrier
-   retype removing the machine-refuted fgmn legs); then PK-3..6 (factored `fgmnCalculusOf`,
-   S2 re-wire, the leanspec I.10 socket-body re-sign, the ev/lf-free funnel). U15's scratch
-   already elaborates the first non-vacuous UNCONDITIONAL `Nonempty (FGMNCalculus
-   (s2DepthOne) 2 1 5)`. After PK: the I.10 sockets + the class discharge are non-vacuous,
-   lifting the I.10 fire-ban → the four capstone-assembly theorems
-   (`uniformity_of_capstoneHypotheses` among them) become mechanical projections.
+1. **The capstone gate: the leanspec I.10a/I.10b socket re-sign.** PK-1..6 ENACTED
+   (2026-08-26, commits 1dc51795 + 21838f72 — the latter is C130in.lean's RealizedInput
+   retype, missed by the original add): the star `C130sg.s2_calculus_discharge : Nonempty
+   (FGMNCalculus (s2DepthOne) 2 1 5)` is UNCONDITIONAL Lean-core; both S2 socket
+   applications fire with no provably-empty premise; PK-7 (docs) done this session.
+   REMAINING: re-sign leanspec's `CanonicalLadderConfig`/`CanonicalDeepTwistConfig`
+   (I.10a/b, bodies `True`) to C130s18's enacted §4.4 exists-E `ChainRealization` bodies
+   (explicit-universe shape, `(fieldE := fE)` — per verdict_PK12.md "Notes for later
+   nodes"), recorded amendment; then the four capstone-assembly theorems (I.15–I.18,
+   `uniformity_of_capstoneHypotheses` among them — all four still UNLANDED per census)
+   become mechanical projections. UNIT RSGN in flight.
 2. **The μ₃ campaign** (DEC3 authoring the blueprint): the corrected-parameter (2,1,21)
    operators one level up, so the GENTOW consumer CONCLUSIONS fire at S2 depth 2.
    U15-adjudicated as ~20-30 nodes; NP-0's parameter-free-engine discovery should make
    most nodes reuse-with-numerals.
-3. **The dv-engine: CLOSED.** C.72 (both halves), C.52 (`towerLocus_iff_budget` byte-
-   identical), C.54(c)'s strict floor, af′/ag′ — all proved; C.53 wiring + the C123R feed
-   in flight (UFEED). E.57: CLOSED (`block_split` under its blueprint name). Chapter D's
-   gate: CLOSED (D68).
+3. **The dv-engine: FULLY CLOSED (2026-08-26).** C.72 (both halves), C.52
+   (`towerLocus_iff_budget` byte-identical), C.54(c)'s strict floor, af′/ag′, AND the
+   C.53 wiring: UFEED landed `towerLocus_fibration` UNCONDITIONAL at the leanspec signed
+   shape (axiom→theorem, `C131uf.lean`) plus the non-drain witness `s2Witness` disposing
+   verdict_C123R's named gap. E.57: CLOSED (`block_split` under its blueprint name).
+   Chapter D's gate: CLOSED (D68).
 4. **Remaining chapter-C blockers** (DEC4 planning): the C.35 `BlockFrontier` 8-row family;
    general C.27's two mechanisms (norm↔resultant bridge + ramified level-1 exactness);
    RB3's two gaps (Hensel refinement; the upward height bridge). Held/adjudicated: C.100
    (OPEN-EVAL-ISO), C.102 + one_shape's htie (OPEN-LETTERS), peel_row_law (undesigned
    PeelLeg), hprev/hcop satisfiability at μ₃ (DEC3's decision).
 5. **Chapter H's research step** H.116b4 (5 rows; DEC5 mapping it examples-first).
-6. **Maintenance queues**: the SIMP consolidation map; the review queue for the owner (RQ);
-   the roll-up wiring for the ~25 newest files (orchestrator, at the next quiet window).
+6. **Maintenance queues**: the SIMP map is DELIVERED (`docs/in-progress/
+   SIMPLIFICATION_MAP_2026-08-26.md` — two live risks flagged: C131af.lean:46-47
+   dual-namespace open; the 4-way `slot_eq` collision) — enactment wave unscheduled;
+   RQ DELIVERED (`docs/REVIEW_QUEUE_2026-08-26.md`, Asvin's queue); the roll-up wiring
+   for the ~25 newest files (orchestrator, at the next quiet window).
 
 ## 5. Instruments and reusable assets
 
@@ -113,14 +122,11 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 
 | unit | what | status |
 |---|---|---|
-| (archive) | everything through 2026-08-26 00:30 (the S2-source campaign, the GC-13 bridge N1-N7, the af′ chain, A-C.10..16/A-E.7/A-I.2 amendments, E.57 + D-gate + C.52/C.72 closures) | ALL DONE — LOG + git log; every landing orchestrator-verified |
-| PK12 | PK-1/2: the ChainRealization retype + ripple (FABLE) | RUNNING |
-| UFEED | af′ U-FEED + the C.53 wiring (SONNET) | RUNNING |
-| DEC3 | the μ₃ campaign blueprint (FABLE) | RUNNING |
-| DEC4 | the chain-blockers plan: BlockFrontier/C.27/RB3-gaps (FABLE) | RUNNING |
-| DEC5 | H.116b4 examples-first map (FABLE) | RUNNING |
-| RQ | the consolidated owner review queue (SONNET) | RUNNING |
-| SIMP | the read-only simplification map (SONNET) | RUNNING |
+| (archive) | everything through 2026-08-26 (S2-source campaign, GC-13 bridge, af′ chain, amendments, E.57/D-gate/dv-engine closures, PK-1..7, RQ, UFEED, SIMP, EFF sweep GENTOW5+T2s5s6+W12) | ALL DONE — LOG + git log; every landing orchestrator-verified |
+| RSGN | the leanspec I.10a/b socket re-sign → capstone assembly un-gating (FABLE) | RUNNING |
+| DEC3R | the μ₃/Route-B campaign blueprint (codex HIGH; the Fable original died without artifact) | RUNNING |
+| DEC4R | the chain-blockers plan: BlockFrontier/C.27/RB3-gaps (codex HIGH; the Fable original died AFTER landing its probes — `leanfinal/scratch/DEC4_check.lean`, 181 lines, handed to the relaunch) | RUNNING |
+| DEC5R | H.116b4 examples-first map (codex HIGH; the Fable original died AFTER its battery PASSED — `runs/wave-b/h116b4_battery.py` + `out_DEC5_battery.log`, handed to the relaunch) | RUNNING |
 
 ## 7. Resume protocol (fresh agent)
 

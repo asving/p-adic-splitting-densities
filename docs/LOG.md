@@ -234,3 +234,27 @@ incidentally swept in unit AC15C27's concurrent A-C.15 leanspec edit (the C.69 `
 re-sign to the A-C.10 protected shape, riders `HasLabel` + divisibility, [A-C.15] comment
 citing DEC1 + `blockDegEq_false`). Both amendments verified green independently; the
 combined commit is recorded here so neither enactment is orphaned from its record.
+
+**2026-08-26 (orchestrator catch-up session) — the API-storm casualty sweep + PK closes.**
+A fresh orchestrator session (post-/clear) reconciled the ledger against the repo. Found
+and fixed: (1) commit 1dc51795 (PK-1/2) had MISSED `C130in.lean` — the RealizedInput
+binder retype was in verdict_PK12.md's enacted scope but not in the add, so the committed
+tree alone didn't elaborate; verified green (`lake env lean` exit 0, Lean-core) and
+committed (21838f72). (2) UFEED was COMPLETE but uncommitted — `C131uf.lean` (the af′
+non-drain witness `s2Witness = Φ₂³ + 2⁶xΦ′` at μ₂=3, exact j=0 digit height 31, disposes
+verdict_C123R's gap) + the C.53 wiring (`towerLocus_fibration` UNCONDITIONAL at leanspec's
+signed shape, axiom→theorem); committed 51f50c78. The dv-engine chain is now FULLY closed.
+(3) SIMP complete but uncommitted — map + verdict committed 3a99b8d7 (two live risks
+flagged: the C131af dual-namespace open; the 4-way slot_eq collision). (4) The EFF codex
+sweep shards GENTOW5×2/T2-s5,s6/W12×2 all COMPILED per their logs — spec edits + briefs
+committed b71194bb. (5) DEC3/DEC4/DEC5 (Fable decomposers) all DIED in the storms: DEC3
+no artifact; DEC4 died after landing 181 lines of elaboration probes
+(`scratch/DEC4_check.lean` — the C.27 norm↔resultant symmetry F2-1/F2-2, the C.35
+conditional-landing pattern F1-1, RB3 ∀-closure elaboration F3-1/F3-2) but before its plan
+doc; DEC5 died after its H.116b4 battery PASSED ALL CHECKS (69s, committed c87d3603).
+All three RELAUNCHED as codex HIGH with their banked artifacts handed over. (6) Census
+refreshed: 658/1235 PROVED, 484 carrier, 79 unlanded (unlanded HALVED from 08-24's 161 —
+the S2-source + PK + af′ campaigns' consolidated effect). PK-7 (docs) done in this session:
+PROJECT_STATE §§2/4/6 rewritten; the review-queue rows were already in RQ's compilation.
+NEXT GATE (unit RSGN, Fable): the leanspec I.10a/b socket re-sign to C130s18's §4.4
+bodies → I.15–I.18 (`uniformity_of_capstoneHypotheses`) become mechanical projections.
