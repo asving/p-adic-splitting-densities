@@ -17,9 +17,10 @@ leanfinal/notes/H116B4_OUTLINE_2026-08-18.md:
              perturbation domain), at every base point;
          (ii) level-by-level, the raw lifting tree branches uniformly: at each level n the
              nonzero bucket sizes  #{lifts of a node with product = Fnext}  are ONE constant
-             K_n across all nodes, all Fnext, all target classes — and how many nodes DIE
-             toward the true target (dead branches) is recorded (GR-10's omitted-branch
-             question).
+             K_n across all nodes, all Fnext, all target classes.  The extension also checks
+             the mechanism: each one-grade digit map is affine with a level-fixed linear part,
+             a node dies exactly when its obstruction is outside the image, and the aggregate
+             next-target histogram is uniform on its support (GR-10's omitted-branch question).
 
   GR-4   (exhaustive, as §10 of the outline requests) v_q(Res(P_p, P_p')) equals
          mu*mu'*min(k,k') for EVERY child-lift tuple in the level-N box, not a sample.
@@ -467,6 +468,7 @@ def run_tree(q, N, m, children, cof_deg, F, tag, expect_leaves=None):
     ncoords = sum(mu for (mu, k, w) in children) + cof_deg
     nodes = [tuple([0] * ncoords)]
     per_level = []
+    mechanism = []
     for n in range(1, N):
         Mn1 = q ** (n + 1)
         Ftrunc = tuple(x % Mn1 for x in F)
@@ -489,6 +491,9 @@ def run_tree(q, N, m, children, cof_deg, F, tag, expect_leaves=None):
             *[list(itertools.product(range(q), repeat=mu)) for (mu, k, w) in children],
             *([list(range(q))] * cof_deg)))
         sizes, new_nodes, dead = set(), [], 0
+        aggregate = Counter()
+        affine_ok = obstruction_ok = True
+        linear_parts, image_sizes = set(), set()
         for node in nodes:
             sp = 0
             Ps = []
@@ -498,6 +503,7 @@ def run_tree(q, N, m, children, cof_deg, F, tag, expect_leaves=None):
                 sp += mu
             buckets = Counter()
             hits = []
+            digit_outputs = {}
             for split in digit_split:
                 f = [1]
                 liftc = []
@@ -518,13 +524,61 @@ def run_tree(q, N, m, children, cof_deg, F, tag, expect_leaves=None):
                     f = om.pmul(f, Qp, Mn1)
                 key = tuple(f[:m])
                 buckets[key] += 1
+                flat = tuple(x for ds in split[:len(children)] for x in ds) + \
+                    tuple(split[len(children):])
+                digit_outputs[flat] = key
                 if key == Ftrunc:
                     hits.append(tuple(liftc))
+            zero = tuple([0] * ncoords)
+            base_key = digit_outputs[zero]
+
+            # One q-adic digit at a time, multiplication is affine: quadratic terms in the
+            # q^n-increments vanish modulo q^(n+1).  Record the induced F_q-linear map and
+            # check it is the SAME at every node of the level.  This is the mechanism behind
+            # the observed one-K law, not merely a recount of bucket sizes.
+            rel = {}
+            for d, key in digit_outputs.items():
+                diff = tuple((key[j] - base_key[j]) % Mn1 for j in range(m))
+                if any(x % (q ** n) for x in diff):
+                    affine_ok = False
+                rel[d] = tuple((x // (q ** n)) % q for x in diff)
+            cols = []
+            for i in range(ncoords):
+                ei = tuple(1 if j == i else 0 for j in range(ncoords))
+                cols.append(rel[ei])
+            for d, y in rel.items():
+                pred = tuple(sum(d[i] * cols[i][j] for i in range(ncoords)) % q
+                             for j in range(m))
+                if pred != y:
+                    affine_ok = False
+            linear_parts.add(tuple(cols))
+            image = set(rel.values())
+            image_sizes.add(len(image))
+            predicted_K = q ** ncoords // len(image)
+            if set(buckets.values()) != {predicted_K}:
+                affine_ok = False
+
+            # The zero/nonzero case in GR-9 is literal here: a node is live exactly when its
+            # next target digit differs from the base product by an element of the fixed image.
+            target_diff = tuple((Ftrunc[j] - base_key[j]) % Mn1 for j in range(m))
+            if any(x % (q ** n) for x in target_diff):
+                obstruction_ok = False
+                target_digit = None
+            else:
+                target_digit = tuple((x // (q ** n)) % q for x in target_diff)
+            if bool(hits) != (target_digit in image if target_digit is not None else False):
+                obstruction_ok = False
+            aggregate.update(buckets)
             sizes |= set(buckets.values())
             if not hits:
                 dead += 1
             new_nodes.extend(hits)
         per_level.append((n + 1, len(nodes), sorted(sizes), dead, len(new_nodes)))
+        aggregate_uniform = (len(set(aggregate.values())) == 1 and Ftrunc in aggregate and
+                             aggregate[Ftrunc] == len(new_nodes))
+        mechanism.append((n + 1, affine_ok, obstruction_ok, aggregate_uniform,
+                          len(linear_parts), sorted(image_sizes), len(aggregate),
+                          sorted(set(aggregate.values()))))
         nodes = new_nodes
         if not nodes:
             break
@@ -533,6 +587,18 @@ def run_tree(q, N, m, children, cof_deg, F, tag, expect_leaves=None):
                        for (n, nn, s, d, nx) in per_level)
     check(f"(GR-9ii) branching UNIFORM at every level (one K, all Fnext) [{tag}]",
           okuni, detail)
+    mech_ok = all(a and o and ns == 1 for (_, a, o, _, ns, _, _, _) in mechanism)
+    mech_detail = "; ".join(
+        f"lvl{level}: linear-parts={ns}, |image|={ims}"
+        for (level, _, _, _, ns, ims, _, _) in mechanism)
+    check(f"(GR-9ii mechanism) one-grade map AFFINE with level-fixed linear part; "
+          f"dead iff obstruction outside image [{tag}]", mech_ok, mech_detail)
+    aggregate_ok = all(au for (_, _, _, au, _, _, _, _) in mechanism)
+    aggregate_detail = "; ".join(
+        f"lvl{level}: {support} next targets, total-fibres={counts}"
+        for (level, _, _, _, _, _, support, counts) in mechanism)
+    check(f"(GR-10 mechanism) aggregate next-target histogram UNIFORM on its support [{tag}]",
+          aggregate_ok, aggregate_detail)
     leaves = len(nodes) if nodes else 0
     if expect_leaves is not None:
         check(f"(tree) leaf count == ghost x image-mult = {expect_leaves} [{tag}]",
