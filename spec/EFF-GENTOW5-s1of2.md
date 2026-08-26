@@ -1,6 +1,6 @@
 # EFF-GENTOW5-s1of2 — CANONICAL EFFECTIVE-SPECIFICATION SHARD
 
-**COMPILED-BY: opus (2026-08-14, Asvin-authorized substitution, PROJECT_STATE #51). CODEX CROSS-READ OWED (post-reset).**
+**COMPILED-BY: gpt-5.6-sol high (2026-08-18), compiler/cross-read replacement of the 2026-08-14 opus draft.**
 
 ## 1. Shard header
 
@@ -8,7 +8,7 @@
 
 **HOME range:** source lines 1–1474 inclusive (front matter + CHARGE + SOURCES + STATUS TABLE + §§S0–S7). Later text is used only to resolve material homed in that range.
 
-**HEAD blob hash:** `5cc4c0f783c524b25ba7f6d6c55f576ae41cfcac` (clean in the working tree; last touched by commit `cb010522`).
+**HEAD blob hash:** `00a4c7e80cfd652bc4416edb476d44ae6ca0a420` (fresh `git hash-object`; source clean in the working tree; last touched by commit `ddfc6b61`, verified by `git cat-file -t` = `commit`).
 
 **Compilation context:** `spec/EFF_TEMPLATE_v2.md`; temporary IDs `EFF.GENTOW5.s1of2.<nn>`.
 
@@ -29,13 +29,13 @@ The post-acceptance appends state the same rule as a supersession discipline (S1
 
 ### Scope split
 
-**ABSORPTION/supply SET** (what the note claims to prove). S6, line 1306:
+**A. ABSORPTION/supply SET** (what the note claims to prove). S6, line 1306:
 
 > “**What this note PROVES (grade 0/2, hostile arc owed):**”
 
 with the two target bullets quoted at `EFF.GENTOW5.s1of2.38`, and the STATUS TABLE at `EFF.GENTOW5.s1of2.04`. The grade clause of that heading is superseded by the acceptance record above (ACCEPTED 2/2); the *content* of the supply set is not.
 
-**APPEND/consumption PROTOCOL scope** (what has been landed on other notes). S6, lines 1389–1394:
+**B. APPEND/consumption PROTOCOL scope** (what has been landed on other notes). S6, lines 1389–1394 records the state at composition time:
 
 > “**Consumption path (not executed here):** GENTOW1_PROOF's S3 grade note and S6 GENTOW-BOX-1, GENHN_PROOF's GENHN-BOX-2 and [GENHN-TOW-1] item (6) depth->=4 sentence, and GENTOW2_PROOF S7's depth->=4 bullet are candidates for the orchestrator's dated consumption updates after this note's own hostile arc; the four source notes are byte-untouched by this unit.”
 
@@ -43,7 +43,19 @@ and S1.4(ii), lines 347–349:
 
 > “GENHN_PROOF is frozen; recording the consumption there is the orchestrator's dated update, not this note's edit.”
 
-These predicates are not conflated below: the note supplies its targets mathematically, and declares that **no** dated consumption append has been landed on any of the four source notes by this unit.
+That remains the disposition for the four named source notes. The later dated consumption append (lines 2315–2435) adds a distinct outbound consumer: T5 consumes S12.1's conditionality fence and S11.2's proved fixed-unit half, not an unconditional GENTOW5 theorem. It expressly preserves the frozen reading:
+
+> “Certification of the WI companion does not discharge these conjuncts from the frozen GENTOW5 statements. Both the higher-rung supplier law and every downstream conclusion retain their explicit cumulative hypothesis.”
+
+These predicates are not conflated below: GENTOW5 supplies its two mathematical targets; no append lands on the four source notes listed in S6; T5 later consumes the conditional fence under its cumulative hypothesis.
+
+**C. INBOUND corrections RECEIVED from supplier notes.** Three supplier-state changes are folded into in-range text: GENHN's corrected gauge digit (`ĉ_t := lift(c_t·η^{W(t)})`, source commit `59c1966`); GENTOW2's landed r3 cocycle law (`LEMMA GENTOW2-B′/″`, culminating at `d798529`); and HE7 ANNEX R's acceptance lift (`4a613d8` → `a472155`, consumed by HETOW at `e38df9f`). These change the support/provenance read of the GENTOW5 recipe and pin stack; they do not edit the supplier notes from this unit.
+
+### Freeze predicates
+
+1. **Text freeze:** “THE NOTE IS FROZEN AT THIS RECORD: dated appends and dated brackets only; statement displays and sealed artifacts stay byte-untouched.” Pin: dated acceptance record, lines 1671–1741.
+2. **Instrument freeze:** “Sealed machine artifacts BYTE-FROZEN at their committed md5s” (`gentow5_checks.py` `5fa684c7…`, exact output `dc499a49…`, full output `839a8660…`). Pins are rechecked in §3.2.
+3. **Acceptance-scope enumeration:** S6's two “What this note PROVES” bullets enumerate TARGET 1 and TARGET 2; the acceptance record changes their grade to ACCEPTED 2/2 but does not enlarge their content. Units `.38` and `.04` carry the enumeration.
 
 ### Resolution rules applied
 
@@ -56,12 +68,15 @@ These predicates are not conflated below: the note supplies its targets mathemat
 7. Where an out-of-range correction lands on an in-range unit, the corrected reading is carried in that unit's CONDITIONALITY and RESOLUTION TRACE, and the superseded sentence is quoted when it is load-bearing (the note keeps it byte-intact above).
 8. Repair-round records homed *inside* the range (S7) are emitted as units; S8/S9/S10 and S11/S12 are homed in shard 2 and appear here only as resolvers.
 9. External repo records (the SOL certification ledger, the CITE-SCOPE resolution) are **reading notes only**, never edits — recorded in §8 below.
+10. The 2026-08-15 consumption append (lines 2315–2435) makes no correction to the frozen mathematical text. It resolves the earlier corpus-perimeter ambiguity in favor of retaining `𝒲_{≤n}` on GENTOW5's frozen statements, while recording T5 as a consumer of the fence.
 
 ---
 
 ## 2. Statement inventory
 
 ### EFF.GENTOW5.s1of2.01  [changes-record]
+
+**FORM:** bracketed rider
 
 **CANONICAL STATEMENT:** [ASSEMBLED — front-matter status line plus the four in-range ARC verdict sentences, quoted verbatim; the repair-item bodies of each bracket are inventoried at their own repair-record units]
 
@@ -87,6 +102,8 @@ These predicates are not conflated below: the note supplies its targets mathemat
 
 ### EFF.GENTOW5.s1of2.02  [scope-record]
 
+**FORM:** inline sentence
+
 **CANONICAL STATEMENT:**
 
 > “CHARGE: (1) PROVE or box-with-obstruction GENTOW-BOX-1 — LEMMA GENTOW-2 layer 1 at general mu2 (the composed graded frame; GENTOW1_PROOF S3/S6). (2) THE LEVEL-r LADDER GRAMMAR: the normalizer recursion n-hat_i(m), the composed key recipe Phi_{i+1}, the digit ladder at general i, the general-depth composition theorem (FGMN Cor 6.4 is level-general; HE7 ANNEX R's HE7-2'/R1-a/R1-b is the template one level down); depth-4 witness at n = 32, q = 2 if reachable.”
@@ -109,6 +126,8 @@ XREF: `lean/notes/openmath/HE7_PROOF_2026-08-08.md:ANNEX-THEOREM R1-b` — grep-
 
 ### EFF.GENTOW5.s1of2.03  [fence]
 
+**FORM:** inline sentence
+
 **CANONICAL STATEMENT:**
 
 > “SOURCES CONSUMED (never edited): GENTOW1_PROOF_2026-08-09.md (S0 notation, LEMMA GENTOW-1 + Step 0, LEMMA GENTOW-2 + grade note, LEMMA GENTOW-5, S6 boxes); GENTOW2_PROOF_2026-08-09.md (FGMN quotes [Q1]-[Q10] at verified numbering, THEOREM GENTOW2-A, LEMMA GENTOW2-B + honesty box, S7 depth->=4 scope sentence); GENHN_PROOF_2026-08-08.md (S6.1 LEMMA GENHN-4 + GENHN-BOX-2, S8 [r2] annex T(b)' + GENHN-2', [GENHN-TOW-1] r3 item (6) text); HE7_PROOF_2026-08-08.md ANNEX R (ANNEX-DEF HE7-2', ANNEX-LEMMA R1-a, ANNEX-THEOREMS R1-b/R1-c, R1.2 audit, R1.3 run record).”
@@ -125,7 +144,7 @@ XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:LEMMA GENTOW-5` — grep-
 
 XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:THEOREM GENTOW2-A` — grep-verified count **8**.
 
-XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:LEMMA GENTOW2-B` — grep-verified count **30**.
+XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:LEMMA GENTOW2-B` — grep-verified count **32**.
 
 XREF: `lean/notes/openmath/GENHN_PROOF_2026-08-08.md:LEMMA GENHN-4` — grep-verified count **3**.
 
@@ -143,6 +162,8 @@ XREF: `lean/notes/openmath/HE7_PROOF_2026-08-08.md:ANNEX-THEOREM R1-c` — grep-
 
 ### EFF.GENTOW5.s1of2.04  [TABLE] [scope-record]
 
+**FORM:** bold-headed paragraph
+
 **CANONICAL STATEMENT:** [TABLE — the note's STATUS TABLE, transcribed]
 
 > “STATUS TABLE (updated per section as composed):”
@@ -158,6 +179,8 @@ XREF: `lean/notes/openmath/HE7_PROOF_2026-08-08.md:ANNEX-THEOREM R1-c` — grep-
 | (2) | depth-4 witness n = 32 q = 2 | GREEN: ladder (16,40,84,170,341) exact, resultant + PARI routes (S4.3) |
 | battery | gentow5_checks.py | GREEN 92 checks / 0 violations, 5/5 teeth-and-flags as predicted (S5) |
 
+**ARITHMETIC AUDIT:** 8 rows = 2 TARGET-1 rows + 5 TARGET-2 rows + 1 battery row. The battery's `92 = 86 exact + 6 PARI` and `0 violations` agree with the re-opened committed outputs; its stated `5/5` is a source summary of tooth/flag groups, not a claim that only five individual inverse-table rows exist.
+
 **CONDITIONALITY:** The “PROVED with named pins” row for GENTOW5-B is further conditioned by the out-of-range appends: at i ≥ 3 clauses (a), (b), (c), (e) are conditional on `[GENTOW5-W(i)]` (S12.1, resolution rule 5), at i = 1 clause (a) reads at S11.3's re-scoped form, and clause (b)'s residual display reads at S11.5's re-index with the post-D3i twist index.
 
 **DERIVATION:** Status ledger; each row's derivation is the section it names.
@@ -169,6 +192,8 @@ XREF: `lean/notes/openmath/HE7_PROOF_2026-08-08.md:ANNEX-THEOREM R1-c` — grep-
 ---
 
 ### EFF.GENTOW5.s1of2.05  [hypothesis]
+
+**FORM:** inline sentence
 
 **CANONICAL STATEMENT:** [ASSEMBLED — §S0 SETTING, quoted in full]
 
@@ -191,6 +216,8 @@ XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:LEMMA GENTOW-2` — grep-
 ---
 
 ### EFF.GENTOW5.s1of2.06  [lemma]
+
+**FORM:** bold-headed paragraph
 
 **CANONICAL STATEMENT:** LEMMA GENTOW5-A0 (gr of a valued field is a graded division ring)
 
@@ -218,6 +245,8 @@ With the framing consequence the note attaches (lines 179–183):
 ---
 
 ### EFF.GENTOW5.s1of2.07  [definition]
+
+**FORM:** bold-headed paragraph
 
 **CANONICAL STATEMENT:** DEFINITION (multiplicative side residual), with its normalizer class
 
@@ -249,6 +278,8 @@ XREF: `lean/notes/openmath/GENHN_PROOF_2026-08-08.md:LEMMA GENHN-4` — grep-ver
 
 ### EFF.GENTOW5.s1of2.08  [lemma]
 
+**FORM:** bold-headed paragraph
+
 **CANONICAL STATEMENT:** LEMMA GENTOW5-A1 (dictionary to the per-height coherent digits)
 
 > “Let gamma_j := the coherent per-height residue of C_j(x0) (the GENHN-2'/S4 digit read against n2hat((mu2-j)lam)). Then
@@ -278,6 +309,8 @@ XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:Step 5` — grep-verified
 
 ### EFF.GENTOW5.s1of2.09  [fence]
 
+**FORM:** inline sentence
+
 **CANONICAL STATEMENT:** Convention consequence (displayed for honesty)
 
 > “At mu2 = 2 only vartheta_2 can differ from 1 (vartheta_0 = vartheta_1 = 1 by definition), and in char 2 every element of K2 is a square, so "R is a perfect square" is convention-independent there and the root s re-parameterizes by vartheta_2^{1/2} — which is why the mu2 = 2 battery rows never saw the convention. At mu2 >= 3 with a live cocycle the per-height-digit coefficient vector of a perfect power is NOT itself a perfect-power vector unless the vartheta_t are carried: **fixing the multiplicative convention is part of the box's content**, not a cosmetic choice. All event statements below are in the multiplicative convention; LEMMA GENTOW5-A1 is the exact translation, with fixed re-parameterization only (J-D0: counts are twist-blind, letters re-coordinatize).”
@@ -293,6 +326,8 @@ XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:Step 5` — grep-verified
 ---
 
 ### EFF.GENTOW5.s1of2.10  [lemma]
+
+**FORM:** bold-headed paragraph
 
 **CANONICAL STATEMENT:** THEOREM GENTOW5-A (the substitution theorem = LEMMA GENTOW-2 layer 1 at general mu2)
 
@@ -343,6 +378,8 @@ XREF: `lean/notes/openmath/GENHN_PROOF_2026-08-08.md:GENHN-2′` — grep-verifi
 
 ### EFF.GENTOW5.s1of2.11  [lemma]
 
+**FORM:** bold-headed paragraph
+
 **CANONICAL STATEMENT:** COROLLARY GENTOW5-A′ (i) — GENTOW-2 closes at general mu2
 
 > “(i) LEMMA GENTOW-2's clauses (ii), (iii), (iv) hold at general mu2: (ii) is THEOREM GENTOW5-A; (iii)'s triangularity/bijection consumed layer 1 only through (ii) (GENTOW1_PROOF S3 layer 3, general-mu2 as written); (iv)'s reverse transport is the SAME Step-A computation run on Phi2 = Phi2+ + lift with R_N(T) = T^{mu2} at the refined frame: coordinate j receives minimal class binom(mu2, j) w^{mu2-j} N^{mu2-j} from C_{mu2}+ = 1 — pin (mu2-j)lam with multiplicative residue binom(mu2, j)(-w)^{mu2-j} exactly where q does not divide binom(mu2, j), strictly above where it does. (ii)'s GRADE NOTE restriction is hereby lifted.”
@@ -360,6 +397,8 @@ XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:LEMMA GENTOW-2` — grep-
 ---
 
 ### EFF.GENTOW5.s1of2.12  [instance-record]
+
+**FORM:** bracketed rider
 
 **CANONICAL STATEMENT:** COROLLARY GENTOW5-A′ (ii) — the level-1 rider
 
@@ -379,6 +418,8 @@ XREF: `lean/notes/openmath/GENHN_PROOF_2026-08-08.md:GENHN-BOX-2` — grep-verif
 
 ### EFF.GENTOW5.s1of2.13  [scope-record]
 
+**FORM:** bold-headed paragraph
+
 **CANONICAL STATEMENT:** S1.5 GENTOW-BOX-1 DISPOSITION
 
 > “**RETIRED as a mathematical box; the residue is grade-only.** What LEMMA GENTOW-2 layer 1 at mu2 >= 3 now consumes: LEMMA GENTOW5-A0 (elementary, self-contained), LEMMA GENTOW5-A1 (self-contained given GENHN-2' + the S4/T(b)'(iii) wrap letters — all accepted corpus), THEOREM GENTOW5-A (this note), and GENTOW-2 layer 2 @ GENTOW1_PROOF (grade 0/2). No W-9-analogue weld face is consumed; the graded frame is gr(L2) itself. Honest conditionality: this note is at grade 0/2 (hostile arc owed), GENTOW-1/GENTOW-2 are at 0/2, and the accepted pins are T(b)'(i)/(ii)/(iii) + S4's coherent normalizers (GENHN accepted 2/2 at PE4). Machine leg: S5's CHECK-A rows are the FIRST mu2 = 3 pointwise re-division kills anywhere in the program (the GN-REFINE3 pattern at the composed key), including a char-3 row and an f2 = 2 two-flavor-lift row.”
@@ -389,6 +430,12 @@ XREF: `lean/notes/openmath/GENHN_PROOF_2026-08-08.md:GENHN-BOX-2` — grep-verif
 
 **RESOLUTION TRACE:** Base §S1.5, lines 351–365; grade sentence superseded at lines 1671–1741.
 
+**SUPERSESSION KIND:** as-of scoping (grade only).
+
+**TARGETS:** `EFF.GENTOW5.s1of2.13`'s frozen “grade 0/2” clause.
+
+**CHAIN:** S1.5 grade 0/2 → dated acceptance record **TERMINAL (status consumer): ACCEPTED 2/2**. The mathematical box disposition is unchanged.
+
 **NON-IMPORT (explicit):** “No W-9-analogue weld face is consumed.”
 
 **TEETH:** §S5 CHECK-A rows (P-A1/A2/A3, incl. the char-3 and f2 = 2 frames).
@@ -396,6 +443,8 @@ XREF: `lean/notes/openmath/GENHN_PROOF_2026-08-08.md:GENHN-BOX-2` — grep-verif
 ---
 
 ### EFF.GENTOW5.s1of2.14  [definition]
+
+**FORM:** bold-headed paragraph
 
 **CANONICAL STATEMENT:** DEF GENTOW5-1 (the depth-r tower data) — indices, ladders, floor chain
 
@@ -423,6 +472,8 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:Prop 3.7` — grep-verifi
 
 ### EFF.GENTOW5.s1of2.15  [definition]
 
+**FORM:** bold-headed paragraph
+
 **CANONICAL STATEMENT:** DEF GENTOW5-1 — the normalizer recursion
 
 > “* **Normalizers (the recursion of HE7-2', tower-based).** n1hat(m) := pi^a x^{i0} (i0 < e1, e1*a + i0*h = m); for i >= 1
@@ -448,6 +499,8 @@ XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:S3` — grep-verified cou
 
 ### EFF.GENTOW5.s1of2.16  [definition]
 
+**FORM:** bold-headed paragraph
+
 **CANONICAL STATEMENT:** DEF GENTOW5-1 — cocycle and letters
 
 > “* **Cocycle + letters.** tau_i(a, b) := nhat_i(a) nhat_i(b) / nhat_i(a+b); the level letters Lam_i := Phi_i^{e_{i+1}} / nhat_i(u_{i+1}) (dv-value 0 at level-(i+1) points), beta_{i,xi} := res(Lam_i(xi)); transport tower iota^{(i+1)} extending iota^{(i)} by beta_i -> beta_{i,xi} — ANNEX-DEF HE7-2''s attached objects, tower-instantiated.”
@@ -465,6 +518,8 @@ XREF: `lean/notes/openmath/HE7_PROOF_2026-08-08.md:ANNEX-DEF HE7-2′` — grep-
 ---
 
 ### EFF.GENTOW5.s1of2.17  [definition]
+
+**FORM:** bold-headed paragraph
 
 **CANONICAL STATEMENT:** DEF GENTOW5-1 — K_i-digit lifts, at the `[GT5-r2]` CORRECTED DISPLAY
 
@@ -504,6 +559,12 @@ And its ripple fence:
 
 **RESOLUTION TRACE:** Base §S2.1 display, replaced in place by `[GT5-r2]` (PE2 F-2, lines 407–458); m-range bracket added by S11.4; that bracket superseded by S12.2 (resolution rule 5).
 
+**SUPERSESSION KIND:** replacement (display) plus scope-pin (range), terminal replacement attached.
+
+**TARGETS:** `EFF.GENTOW5.s1of2.17`'s frozen fixed-base lift display and its S11.4 range bracket.
+
+**CHAIN:** composed fixed-base display → `[GT5-r2]` per-flavor re-solve → S11.4 `m > bound_{i+1}` range → **S12.2 `m > bound_i` TERMINAL**.
+
 **NON-IMPORT (explicit):** “GENTOW1 S3's fixed-base READING of its lift display fails the same way at seam-live heights — a display-level defect there, flagged for that note's own arc, not consumed here.”
 
 **TEETH:** `FA1-LIFT` (gentow5_pe2_fresh.py @ 40f313a, 22 checks / 0 violations).
@@ -512,7 +573,9 @@ And its ripple fence:
 
 ### EFF.GENTOW5.s1of2.18  [definition]
 
-**CANONICAL STATEMENT:** DEF GENTOW5-1 — THE COMPOSED KEY RECIPE, at the `[GT5-r1]` GAUGE PIN
+**FORM:** bold-headed paragraph
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — S2.1 recipe statement and its terminal in-bullet scope sentence]` DEF GENTOW5-1 — THE COMPOSED KEY RECIPE, at the `[GT5-r1]` GAUGE PIN
 
 > “* **THE COMPOSED KEY RECIPE (the charge's display). [GT5-r1 GAUGE PIN — the governing pin of the r1 round; PE1 F-1 CRITICAL].** Given stage data (e_{i+1}, f_{i+1}) and monic irreducible psi_{i+1} = y^{f_{i+1}} - Sum_{t<f_{i+1}} c_t y^t over K_i with c_0 != 0:
 >
@@ -545,6 +608,12 @@ Degeneracy fence and the machine tooth:
 
 **RESOLUTION TRACE:** Base §S2.1 recipe display, pinned by `[GT5-r1]` (PE1 F-1, lines 460–520) with the `[GT5-r2]` parenthetical inserted at the R-read sentence. Its governing scope is declared inside the pin: “This pin governs khat_t at its uses below (S2.4's INV-j heights — value-blind, see there; S3's statement + (a), (b), (c) Step 5, (d); S4.1's witness keys — seam-blind, see there).”
 
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.GENTOW5.s1of2.18`'s gauge-naive recipe.
+
+**CHAIN:** plain `lift_i(c_t;·)` recipe → **`[GT5-r1]` vartheta-twisted recipe TERMINAL**; `[GT5-r2]` changes the FGMN residual reading, not this recipe display.
+
 XREF: `lean/notes/openmath/GENHN_PROOF_2026-08-08.md:W(t) = ⌊(f₂−t)·i(u₂)/e₁⌋` — grep-verified count **1** (GENHN_PROOF line 1990); the erratum's exponent law that the level-2 specialization reproduces. The erratum's corrected digit is printed there as `ĉ_t := lift(c_t·η^{W(t)})` — grep-verified count **1** (line 1997); GENTOW5's ASCII `chat_t` is the transliteration of that Unicode designation (the ASCII string `chat_t` has count **0** in GENHN_PROOF).
 
 XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:[GT1-r1]` — grep-verified count **5**; the round at which the erratum was pinned there.
@@ -554,6 +623,8 @@ XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:[GT1-r1]` — grep-verifi
 ---
 
 ### EFF.GENTOW5.s1of2.19  [definition]
+
+**FORM:** bold-headed paragraph
 
 **CANONICAL STATEMENT:** DEF GENTOW5-1 — the depth-(i+1) node locus
 
@@ -573,6 +644,8 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:THEOREM GENTOW2-A` — gr
 
 ### EFF.GENTOW5.s1of2.20  [lemma]
 
+**FORM:** inline sentence
+
 **CANONICAL STATEMENT:** first-live arithmetic
 
 > “First-live arithmetic: a depth-r tower with a live top problem mu_r >= 2 needs n = D_r * mu_r >= 2^{r+1}; depth 4 first lives at n = 32 (S4's witness is exactly minimal).”
@@ -587,7 +660,9 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:THEOREM GENTOW2-A` — gr
 
 ---
 
-### EFF.GENTOW5.s1of2.21  [regression-record]
+### EFF.GENTOW5.s1of2.21  [instance-record]
+
+**FORM:** inline sentence
 
 **CANONICAL STATEMENT:** §S2.2 Consistency checks on the recursion (worked pins)
 
@@ -605,7 +680,9 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:THEOREM GENTOW2-A` — gr
 
 ### EFF.GENTOW5.s1of2.22  [lemma]
 
-**CANONICAL STATEMENT:** LEMMA GENTOW5-C ((SLOT_i) + (LIFT_i) for the tower ladder)
+**FORM:** bold-headed paragraph
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — statement plus acceptance-fold replacement]` LEMMA GENTOW5-C ((SLOT_i) + (LIFT_i) for the tower ladder)
 
 > “**Statement.** Let i >= 1 and assume the tower data of DEF GENTOW5-1 through level i+1 with P_{i+1} nonempty, and (SLOT_{i-1}) at level i (base: i = 1 is GENHN-2 + HE6-1's transport identity; i = 2 is GENHN-2' — both accepted). Let xi in P_{i+1}, C in O[x] with 0 != deg C < D_{i+1}, developed C = Sum_{b < e_{i+1} f_{i+1}} c_b Phi_i^b with deg c_b < D_i. Then dv_{i+1}(C(xi)) equals the slot minimum EXACTLY; the minimizing b lie in one class mod e_{i+1}; and the height-k residue against nhat_{i+1}(k)(xi) is iota^{(i+1)}(Sum_t gamma_t vartheta_t beta_i^t) != 0 with gamma_t the level-i digit symbols ((SLOT_{i-1})) and vartheta_t the FIXED twist units of the telescoped tau_i-cocycle — i.e. one K_{i+1}-digit per dv_{i+1}-height, class separation mod e_{i+1} between Phi_i-slots and mod ehat_{i+1} overall. (LIFT_i): k-uniformly above the bound recursion bound_{i+1} = (l_{i+1}-1)u_{i+1} + e...*bound_i, every K_{i+1}-residue at height k is realized by some C with deg < D_{i+1} (inverse-twisted digits).”
 
@@ -627,6 +704,12 @@ Grade fold on the precedent pin:
 
 **RESOLUTION TRACE:** Base §S2.3, lines 544–613, with the `[GT5-r1]` grade fold inside the proof and the post-PE5 `[acceptance fold]` on the bound token. Step (3) of this proof is the derivation cited by `.17` and by `.27`'s i ≥ 3 leg — and it is precisely the leg that S11.2 (out of range) fences: it carries per-grade fixedness, **not** the single-w monomial form.
 
+**SUPERSESSION KIND:** replacement (truncated bound token) plus provenance-rider (annex grade).
+
+**TARGETS:** `EFF.GENTOW5.s1of2.22`'s `e...*bound_i` token and its stale “POST-RATIFICATION, UNPASSED” provenance.
+
+**CHAIN:** `e...*bound_i` → **`e_{i+1}*bound_i` TERMINAL (formula consumer)**; annex-grade cap → **HE7 ANNEX R ACCEPTED 2/2 TERMINAL (provenance consumer)**.
+
 XREF: `lean/notes/openmath/HE7_PROOF_2026-08-08.md:ANNEX-THEOREM R1-b` — grep-verified count **4**.
 
 XREF: `lean/notes/openmath/HE7_PROOF_2026-08-08.md:ANNEX-THEOREM R1-c` — grep-verified count **3**.
@@ -640,6 +723,8 @@ XREF: `lean/notes/openmath/GENHN_PROOF_2026-08-08.md:GENHN-2` — grep-verified 
 ---
 
 ### EFF.GENTOW5.s1of2.23  [fence]
+
+**FORM:** inline sentence
 
 **CANONICAL STATEMENT:** Remark (HE7 base vs tower base)
 
@@ -661,6 +746,8 @@ XREF: `lean/notes/openmath/HE7_PROOF_2026-08-08.md:R1.2` — grep-verified count
 
 ### EFF.GENTOW5.s1of2.24  [definition]
 
+**FORM:** bold-headed paragraph
+
 **CANONICAL STATEMENT:** the level-i weight functional, at the `[GT5-r1]` top-grid repair
 
 > “**Weight. [GT5-r1 — PE1 F-3: the top-grid term is now DEFINED.]** On monomials M = pi^v x^{a} Phi_1^{J_1} ... Phi_i^{J_i} (exponents unbounded) define
@@ -677,6 +764,12 @@ XREF: `lean/notes/openmath/HE7_PROOF_2026-08-08.md:R1.2` — grep-verified count
 
 **RESOLUTION TRACE:** Base §S2.4 weight display, replaced by `[GT5-r1]` (PE1 F-3, lines 628–642).
 
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.GENTOW5.s1of2.24`'s undefined top-grid “E-part”.
+
+**CHAIN:** undefined top-grid `E-part` → **top variable `Phi_i` priced at `E_i` TERMINAL**.
+
 **NON-IMPORT (explicit):** “wt_i consumes NO data beyond the depth-i datum: u_{i+1} does not appear.”
 
 **TEETH:** §S7's F-3 worked grid-4 equality instance (170 = 170 = 170).
@@ -685,7 +778,9 @@ XREF: `lean/notes/openmath/HE7_PROOF_2026-08-08.md:R1.2` — grep-verified count
 
 ### EFF.GENTOW5.s1of2.25  [lemma]
 
-**CANONICAL STATEMENT:** LEMMA GENTOW5-D (Step-0 carry monotonicity is level-agnostic), at the `[GT5-r1]`/`[GT5-r2]` restatement
+**FORM:** bold-headed paragraph
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — statement, riders, and quoted superseded clauses]` LEMMA GENTOW5-D (Step-0 carry monotonicity is level-agnostic), at the `[GT5-r1]`/`[GT5-r2]` restatement
 
 > “**Statement [GT5-r1 restated — strictness weakened to what the induction needs].** For every level i, the i reduction moves — the x-carry (a >= D_1) and the Phi_j-carries (J_j >= l_{j+1}, j < i) — are wt_i-NONDECREASING; lift-generated terms preserve weight exactly; the key-part of each INTERIOR carry (the x-carry WHEN i >= 2, and the Phi_j-carries with j < i-1) strictly raises it, while the TOP carry's key-part (j = i-1: key-part Phi_i at weight E_i = wt(Phi_{i-1}^{l_i})) PRESERVES it exactly.”
 
@@ -722,6 +817,14 @@ S11.1 `[A-F1, CRITICAL]` withdraws both:
 
 **RESOLUTION TRACE:** Base §S2.4, lines 644–727, restated by `[GT5-r1]` and edged by `[GT5-r2]`; the consequence clause and the converse-direction sentence are superseded out of range by S11.1 (resolution rule 4). S11.1's own consumption walk re-verifies that the in-range consumers (`.10` Step B, `.29` Steps 0/3, `.30`) use only the forward direction.
 
+**SUPERSESSION KIND:** partial-withdrawal.
+
+**TARGETS:** `EFF.GENTOW5.s1of2.25`'s blanket strictness clause, two-directional closure, and converse-direction sentence.
+
+**CHAIN:** blanket strictness → `[GT5-r1]` interior-only strictness/top preservation → `[GT5-r2]` i=1 top-carry edge → S11.1 withdrawal of two-directional closure → **forward nondecreasing theorem + converse nonincreasing replacement TERMINAL**.
+
+**REPLACEMENT DISPLAY:** “forward carry moves are `wt_i`-nondecreasing; converse rewriting is weight-NONINCREASING, preserved at the top rung and strictly lowered at interior rungs.”
+
 XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:S2 Step 0` — grep-verified count **2**; the i = 2 instance whose “Phi_2-part at weight E2 exactly” the restatement now matches.
 
 **TEETH:** §S7 F-3's grid-4 equality instance (170 = 170 = 170); out of range, S11.1's isolated re-check `gentow5_af1_direction_check.py` (8 checks / 0 violations) exercises both directions.
@@ -730,7 +833,9 @@ XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:S2 Step 0` — grep-verif
 
 ### EFF.GENTOW5.s1of2.26  [scope-record]
 
-**CANONICAL STATEMENT:** THEOREM GENTOW5-B — statement header, plus the post-PE5 INDEX-0 SCOPE fold
+**FORM:** bracketed rider
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — statement header plus post-PE5 scope fold]` THEOREM GENTOW5-B
 
 > “**Statement.** Fix a base (Q; h) and a depth-r tower datum per DEF GENTOW5-1: stage data (e_i, f_i, psi_i) with properness l_i >= 2 (i >= 2), heights u_i satisfying the floor chain u_{i+1} > e_{i+1} E_i, keys Phi_1, ..., Phi_r built by THE RECIPE [GT5-r1: in its GAUGE-CORRECTED form — the S2.1 pin's vartheta-twisted khat_t; every clause below reads AT that form, and (a)/(b) are FALSE at the gauge-naive display on letter-live frames (PE1 FR-1's machine counter-instance, quoted at the S2.1 pin)], and the terminal inductive valuation nu_r (the MacLane chain mu_0 -(x, lam_1)-> mu_1 -(Phi_1, lam_2)-> ... -> mu_r = nu_r in FGMN coordinates, the GENTOW2 S2 dictionary at every level). Then, by induction on i < r:”
 
@@ -748,6 +853,12 @@ The fold also fixes how the header's own “keys built by THE RECIPE” reads:
 
 **RESOLUTION TRACE:** Base §S3 statement header, lines 731–742, with `[GT5-r1]`'s gauge clause inline; the index-0 scope is the post-PE5 `[acceptance fold]` at lines 744–779, itself completing the post-PE4 `[rider]` scoping of (c)/(e) at lines 864–880.
 
+**SUPERSESSION KIND:** scope-pin.
+
+**TARGETS:** `EFF.GENTOW5.s1of2.26`'s blanket “by induction on i < r” reading.
+
+**CHAIN:** blanket `i < r` → post-PE4 `(c)/(e): i ≥ 1` → **post-PE5 per-clause index set TERMINAL**: `(a),(b),(c),(e): i ≥ 1`; `(d): i ≥ 0`.
+
 XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:S2` — grep-verified count **15**; the MacLane-chain dictionary consumed at every level.
 
 **TEETH:** `gentow5_pe5_fresh.py` (GREEN 40/0) instantiates the unclaimed T_1 case TRUE at one frame; FR-1 is the counter-instance for the gauge clause.
@@ -756,7 +867,9 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:S2` — grep-verified cou
 
 ### EFF.GENTOW5.s1of2.27  [lemma]
 
-**CANONICAL STATEMENT:** THEOREM GENTOW5-B clause (a) — KEY CERTIFICATE, at the `[GT5-r2]` re-scope
+**FORM:** inline sentence
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — base clause plus effective r2/r4/r5 readings]` THEOREM GENTOW5-B clause (a) — KEY CERTIFICATE
 
 > “(a) [KEY CERTIFICATE, level-general — GT5-r2 RE-SCOPED (PE2 F-1): the realized residual is the w-TWISTED form] Phi_{i+1} is a key polynomial for nu_i and a PRIME polynomial (monic, O-coefficients, irreducible over K_v), with
 >
@@ -833,9 +946,15 @@ The i = 1 line of the two level lists is supplied by the in-range acceptance fol
 
 **RESOLUTION TRACE:** Base §S3(a) statement (lines 781–820) and proof (lines 894–1003), rewritten by `[GT5-r1]` (F-2, the deleted `y -> eps*y` fallback), re-scoped by `[GT5-r2]` (PE2 F-1) at the landed GENTOW2 r3 law, dated by `[GT5-r3]` (PE3 F-2) at the measured record, completed at i = 1 by the post-PE5 `[acceptance fold]`; then corrected out of range by S11.2 (i ≥ 3 fence), S11.3 (i = 1 re-scope) and S12.1 (certificate legs conditional at n ≥ 3).
 
-XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:LEMMA GENTOW2-B″` — grep-verified count **10** (Unicode double prime; GENTOW5's ASCII `LEMMA GENTOW2-B''` has count **1** in GENTOW2_PROOF — see `.03`'s reading note).
+**SUPERSESSION KIND:** scope-pin.
 
-XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:LEMMA GENTOW2-B′` — grep-verified count **8**; the B′(3)/(5) per-grade-unit law the r1 discharge consumed.
+**TARGETS:** `EFF.GENTOW5.s1of2.27`'s original on-the-nose residual and its later unconditional transported reading.
+
+**CHAIN:** on-the-nose `psi_{i+1}` → `[GT5-r2] psi_{i+1}^{(w_i)}` → S11.3 **TERMINAL for i=1:** `psi_2^{(u1)}`, tie `u1=w_1` OPEN; landed GENTOW2 law **TERMINAL for i=2:** `psi_3^{(w_2)}`; S11.2 + S12.1 **TERMINAL for i≥3:** clause and certificate conditional on `𝒲_{≤i}`.
+
+XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:LEMMA GENTOW2-B″` — grep-verified count **11** (Unicode double prime; GENTOW5's ASCII `LEMMA GENTOW2-B''` has count **1** in GENTOW2_PROOF — see `.03`'s reading note).
+
+XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:LEMMA GENTOW2-B′` — grep-verified count **9**; the B′(3)/(5) per-grade-unit law the r1 discharge consumed.
 
 XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:S5.1` — grep-verified count **42**; the letter formula and the u(beta) definition.
 
@@ -855,7 +974,9 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:Cor 5.6` — grep-verifie
 
 ### EFF.GENTOW5.s1of2.28  [lemma]
 
-**CANONICAL STATEMENT:** THEOREM GENTOW5-B clause (b) — ONE-SIDEDNESS AT EVERY LEVEL
+**FORM:** inline sentence
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — base clause, rider, and terminal residual-display corrections]` THEOREM GENTOW5-B clause (b) — ONE-SIDEDNESS AT EVERY LEVEL
 
 > “(b) [ONE-SIDEDNESS AT EVERY LEVEL — the FGMN cite, arbitrary chain length] for every j <= i+1, the level-(j-1) polygon N_j(Phi_{i+1}) is one-sided of slope -lam_j with residual R_{j-1}(Phi_{i+1}) = psi_{j-1}^{l_j ... l_{i+1}}, and every root xi of Phi_{i+1} has the EXACT intermediate values v(Phi_{j-1}(xi)) = u_j / ehat_j — i.e. xi in P_{i+1}: the recipe's roots ARE depth-(i+1) node points.”
 
@@ -890,6 +1011,12 @@ S11.5's re-derivation of the corrected index (out of range, but it is the deriva
 
 **RESOLUTION TRACE:** Base §S3(b) statement (lines 821–833) and proof (lines 1005–1020); rider by `[GT5-r2]`; residual display re-indexed by S11.5; twist attached by S12.1 and re-indexed by the post-D3i corrigendum; conditionality set by S12.1 item 2.
 
+**SUPERSESSION KIND:** replacement plus scope-pin.
+
+**TARGETS:** `EFF.GENTOW5.s1of2.28`'s `psi_{j-1}` residual display and its former unconditional exact-value/P-membership reading.
+
+**CHAIN:** `psi_{j-1}^{l_j⋯l_{i+1}}` → S11.5 `psi_j^{l_{j+1}⋯l_{i+1}}` → S12.1 `psi_j^{(ω_j)}` → **post-D3i `psi_j^{(ω_{j-1})}` TERMINAL (display consumer)**; former w-blind scope → **S12.1 `𝒲_{≤n}` TERMINAL (n≥3 consumer)**.
+
 XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:[Q9]` — grep-verified count **4**; FGMN Theorem 6.3.
 
 XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:[Q10]` — grep-verified count **6**; FGMN Corollary 6.4. **Source-display check:** the `[Q10]` quote block prints display (23) as “R_{i−1}(F) = (ψ_{i−1})^{ℓ_i}”, confirming S11.5's diagnosis that the base display transcribed the source's own index convention rather than this note's stage numbering.
@@ -902,7 +1029,9 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:(23)` — grep-verified c
 
 ### EFF.GENTOW5.s1of2.29  [lemma]
 
-**CANONICAL STATEMENT:** THEOREM GENTOW5-B clause (c) — BUDGETS AT LEVEL i+1, at the `[GT5-r3]` RE-INDEXING
+**FORM:** inline sentence
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — re-indexed clause, scope rider, and Step-2 correction]` THEOREM GENTOW5-B clause (c) — BUDGETS AT LEVEL i+1
 
 > “(c) [BUDGETS AT LEVEL i+1 — GENTOW-1 re-based. GT5-r3 RE-INDEXED (PE3 F-1): the composed display paired these (i+1)-anchored degree/weight/pin/floor clauses with an (i+2)-anchored entry-read clause ("level-(i+1) read, slope kappa_{i+2}, residual psi_{i+2}^{mu}"). That pairing fails the residual-degree count … and is refuted at the committed witness rows P-B3 f32@Phi4 and Phi4@Phi3 … The read clause below is the uniform GENTOW-1 transport 2 -> i+1 …] the level-(i+1) tower-entry locus T_{i+1} (monic f of degree n = mu * D_{i+1} whose level-i stage read exhibits the full side of slope kappa_{i+1} := u_{i+1}/e_{i+1} with residual psi_{i+1}^{mu} — the Phi_i-adic polygon of length mu * l_{i+1}, one side, residual degree mu*l_{i+1}/e_{i+1} = mu*f_{i+1} = deg psi_{i+1}^{mu}) is weight-characterized: f in T_{i+1} iff every slot of f - Phi_{i+1}^{mu} clears weight mu*E_{i+1} + 1, with the per-slot digit floors, the fibration, the node pins p_j >= (mu-j)E_{i+1} + 1, and the field floor dv_{i+1}(Phi_{i+1}(xi)) > E_{i+1}, exactly as in LEMMA GENTOW-1 (a)-(d).”
 
@@ -931,6 +1060,12 @@ with the post-PE4 index scope:
 
 **RESOLUTION TRACE:** Base §S3(c) statement (lines 834–880) and proof (lines 1022–1075), re-indexed by `[GT5-r3]` (PE3 F-1) and scoped by the post-PE4 `[rider]`; Step 2 superseded by S11.1; conditionality set by S12.1 item 3.
 
+**SUPERSESSION KIND:** replacement plus scope-pin.
+
+**TARGETS:** `EFF.GENTOW5.s1of2.29`'s mixed `(i+2)` entry-read pairing, broken Step-2 parenthetical, and former unconditional n≥3 scope.
+
+**CHAIN:** mixed `(i+2)` read → `[GT5-r3]` uniform `(i+1)` read → S11.1 one-directional descent proof → **S12.1 conditional-on-`𝒲_{≤n}` reading TERMINAL for n≥3**.
+
 XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:LEMMA GENTOW-1` — grep-verified count **7**; the index-1 instance the transport re-bases.
 
 XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:[Q8]` — grep-verified count **8**; Cor 4.7(3) multiplicativity at Step 1 (clause (3) verified at the quote block, see `.07`).
@@ -944,6 +1079,8 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:Cor 6.4` — grep-verifie
 ---
 
 ### EFF.GENTOW5.s1of2.30  [lemma]
+
+**FORM:** inline sentence
 
 **CANONICAL STATEMENT:** THEOREM GENTOW5-B clause (d) — REFINE TRANSFER AT LEVEL i+1, GENERAL mu
 
@@ -963,6 +1100,8 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:Cor 6.4` — grep-verifie
 
 ### EFF.GENTOW5.s1of2.31  [lemma]
 
+**FORM:** inline sentence
+
 **CANONICAL STATEMENT:** THEOREM GENTOW5-B clause (e) — NODE-FLOOR COROLLARY
 
 > “(e) [NODE-FLOOR COROLLARY = the floor chain's provenance] every side of the level-(i+1) composed polygon of an f in T_{i+1} has dv-slope > E_{i+1} > dv_{i+1}(x^{D_{i+1}}); hence the NEXT stage's height obeys u_{i+2} > e_{i+2} E_{i+1} automatically at tower leaves — the induction feeds itself (COR GENTOW-1.1 at every level).”
@@ -975,6 +1114,12 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:Cor 6.4` — grep-verifie
 
 **RESOLUTION TRACE:** Base §S3(e) statement (lines 886–890) and proof (lines 1081–1086); scoped with (c) by the post-PE4 `[rider]`; conditionality set by S12.1 item 4. Re-verified at `[GT5-r3]`: “(e) consumes the pins + box at E_{i+1} (the sound half) and its conclusion u_{i+2} > e_{i+2}E_{i+1} matches DEF GENTOW5-1's floor-chain provenance one index down”.
 
+**SUPERSESSION KIND:** scope-pin.
+
+**TARGETS:** `EFF.GENTOW5.s1of2.31`'s automatic-next-floor claim at n≥3.
+
+**CHAIN:** unconditional automatic derivation → **S12.1 conditional-on-`𝒲_{≤n}` automatic derivation TERMINAL**; explicit floor-chain datum remains independently usable.
+
 XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:COR GENTOW-1.1` — grep-verified count **4**; the two-line convexity argument transported.
 
 **TEETH:** §S5's P-B1/B2 (“floor chain tight (u = 5, 21, 85, 341)”).
@@ -983,7 +1128,9 @@ XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:COR GENTOW-1.1` — grep-
 
 ### EFF.GENTOW5.s1of2.32  [changes-record]
 
-**CANONICAL STATEMENT:** `[GT5-r2]` THE RE-SCOPE'S CONSUMER WALK
+**FORM:** bold-headed paragraph
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — r2 walk plus terminal partial withdrawal]` THE RE-SCOPE'S CONSUMER WALK
 
 > “**[GT5-r2] THE RE-SCOPE'S CONSUMER WALK (PE2 F-1 ripple — checked per consumer, no blanket claim).** Consumers of (a)/(b) inside this note, each read against the twisted residual psi^{(w_i)}:
 > * (b)'s cite legs (Thm 6.3 [Q9] / Cor 6.4 [Q10]): consume Phi_{i+1} in KP(nu_i) + prime + the chain data — an ADMISSIBLE residual suffices (the (a) admissibility clause); the residual DISPLAYS inherit the per-level twists — carried by the (b) rider, no on-the-nose psi identification consumed.
@@ -1005,11 +1152,21 @@ XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:COR GENTOW-1.1` — grep-
 
 **RESOLUTION TRACE:** Base §S3, lines 1088–1121, added by `[GT5-r2]` (PE2 F-1 ripple), one pointer corrected by `[GT5-r3]` (PE3 F-3); partially withdrawn by S12.1.
 
+**SUPERSESSION KIND:** partial-withdrawal.
+
+**TARGETS:** `EFF.GENTOW5.s1of2.32`'s w-blind consumer claims for exact values, repo residue classes, P-membership, (c), and (e).
+
+**CHAIN:** `[GT5-r2]` w-blind walk → **S12.1 partial withdrawal TERMINAL**; clause (d), formal monicity/degrees, recipe-height arithmetic, and the S4 witness survive.
+
+**REPLACEMENT DISPLAY:** “At n ≥ 3 the named `(b)/(c)/(e)` consequences require `𝒲_{≤n}`; the expressly unaffected carve-outs remain unconditional at their stated hypotheses.”
+
 **TEETH:** FR-A (`gentow5_pe2_fresh.py`, 22/0); PE5's admissibility verification.
 
 ---
 
 ### EFF.GENTOW5.s1of2.33  [scope-record]
+
+**FORM:** bold-headed paragraph
 
 **CANONICAL STATEMENT:** What the induction consumes, per rung (the honest pin stack)
 
@@ -1033,7 +1190,9 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:S6` — grep-verified cou
 
 ### EFF.GENTOW5.s1of2.34  [instance-record]
 
-**CANONICAL STATEMENT:** §S4.1 The minimal chain (u_{i+1} = 4u_i + 1 — every floor tight)
+**FORM:** inline sentence
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — chain, seam re-check, and terminal degree-32 member]` §S4.1 The minimal chain
 
 > “q = 2, h = 1, all stages (e_i, f_i) = (2, 1), all psi_i = y - 1 (K_i = F_2 throughout — the minimal alphabet; properness l_i = 2). The floor chain u_{i+1} > e_{i+1}E_i = 4u_i admits the MINIMAL odd solutions u_{i+1} = 4u_i + 1 from u_1 = h = 1:
 >
@@ -1073,9 +1232,11 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:S5.1` — grep-verified c
 
 ---
 
-### EFF.GENTOW5.s1of2.35  [battery-frame]
+### EFF.GENTOW5.s1of2.35  [preregistration]
 
-**CANONICAL STATEMENT:** §S4.2 Preregistered predictions (sealed in the battery docstring)
+**FORM:** bold-headed paragraph
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — selected preregistered prediction and tooth rows]` §S4.2 Preregistered predictions
 
 > “By THEOREM GENTOW5-B (b)+(e) every root xi of f32 carries the EXACT ladder v(x) = 1/2, v(Phi_1) = 5/4, v(Phi_2) = 21/8, v(Phi_3) = 85/16, v(Phi_4) = 341/32; f32 is irreducible over Q_2 with e = 32, f = 1 (RAM leaf at the odd top height). Machine forms:
 > * P-B4 (RESULTANT LADDER, exact-integer — the "nfeltval-only" route, PARI-free): v_2(Res(f32, g)) = 32\*v(g(xi)) for g = x, Phi_1, Phi_2, Phi_3, Phi_4 -> (16, 40, 84, 170, 341); and at the depth-4 KEY itself: v_2(Res(Phi_4, g)) -> (8, 20, 42, 85).
@@ -1091,11 +1252,19 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:S5.1` — grep-verified c
 
 **RESOLUTION TRACE:** Base §S4.2, lines 1179–1219, with the `[GT5-r1]` F-6 wording correction inserted inside the P-C bullet.
 
+**SUPERSESSION KIND:** withdrawal.
+
+**TARGETS:** `EFF.GENTOW5.s1of2.35`'s counterfactual “P-B4 is the exact witness either way” clause.
+
+**CHAIN:** PARI-free standalone-strength claim → **`[GT5-r1]` withdrawal TERMINAL**; the as-run two-route prediction and verdict survive.
+
 **TEETH:** This unit IS the battery frame; its rows are inventoried in §5's inverse table.
 
 ---
 
-### EFF.GENTOW5.s1of2.36  [regression-record]
+### EFF.GENTOW5.s1of2.36  [run-record]
+
+**FORM:** bold-headed paragraph
 
 **CANONICAL STATEMENT:** §S4.3 Run record (VERDICT)
 
@@ -1111,9 +1280,11 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:S5.1` — grep-verified c
 
 ---
 
-### EFF.GENTOW5.s1of2.37  [regression-record]
+### EFF.GENTOW5.s1of2.37  [instrument-record]
 
-**CANONICAL STATEMENT:** §S5 MACHINE LEG (gentow5_checks.py, two-commit seal)
+**FORM:** bold-headed paragraph
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — instrument seal, exact verdict, PARI verdict, and disclosure]` §S5 MACHINE LEG
 
 > “INSTRUMENT: `verification/openmath/gentow5_checks.py`, sealed at commit 4b279a7 (predictions P-A1..A4, T-A1W/T-A2W/T-A4W, P-B1..B4, T-B1, P-C1..C4 in the docstring BEFORE the first run; the T-B1 drain factorization and the A-row residual arithmetic were hand-derived pre-seal and disclosed in S4.2/S1.2). Run 1: 85/86 — the single flag was an instrument-wiring defect in T-A1W's survivor comparison (the predicted survivor (j=2, slotmin 10) WAS in the alive list; the check read the first list entry — the wrong-height refine also drags the j = 0, 1 coordinates below their event pins, which is additional tooth-firing). Repaired + disclosed in the docstring (committed before re-run); no prediction changed; no reader/kill logic touched. UNIT NOTE (disclosed): the f32@\* and Phi4@Phi3 polygon rows print one dv-scale above the canonical N_j normalization; one-sidedness and on-chord support are affine-invariant.”
 
@@ -1158,7 +1329,9 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:S5.1` — grep-verified c
 
 ### EFF.GENTOW5.s1of2.38  [scope-record]
 
-**CANONICAL STATEMENT:** §S6 — What this note PROVES
+**FORM:** bold-headed paragraph
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — both target bullets with their dated riders]` §S6 — What this note PROVES
 
 > “**What this note PROVES (grade 0/2, hostile arc owed):**
 > * TARGET 1: THEOREM GENTOW5-A + LEMMAS GENTOW5-A0/A1 — LEMMA GENTOW-2 layer 1 at GENERAL mu2. GENTOW-BOX-1 is RETIRED as a mathematical box: the "composed graded frame" is gr(leaf field) (a graded division ring — elementary) + GENHN-2' (accepted) + the fixed-unit dictionary; no W-9-analogue weld face. Residue: this note's own arc grade; and the mu2 >= 3 machine rows are three constructed frames, not a sweep (GENTOW-BOX-2's coverage discipline applies to them verbatim).
@@ -1181,6 +1354,8 @@ XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:GENTOW-BOX-2` — grep-ve
 ---
 
 ### EFF.GENTOW5.s1of2.39  [scope-record]
+
+**FORM:** bold-headed paragraph
 
 **CANONICAL STATEMENT:** §S6 — Named conditionality stack (per consumer)
 
@@ -1208,7 +1383,9 @@ XREF: `lean/notes/openmath/HE7_PROOF_2026-08-08.md:ANNEX-LEMMA R1-a` — grep-ve
 
 ### EFF.GENTOW5.s1of2.40  [open-obligation]
 
-**CANONICAL STATEMENT:** §S6 — Machine coverage (GENTOW5-BOX-A), the seam axis, and the compound row
+**FORM:** bold-headed paragraph
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — base coverage bullet plus r1/r2 coverage riders]` §S6 — Machine coverage
 
 > “* Machine coverage (GENTOW5-BOX-A): CHECK-A exercises mu2 in {2,3}, q in {2,3}, K2 in {F2, F3, F4}, e2 in {1,2}, f2 in {1,2}, d = 1, depth 2; CHECK-B exercises ONE depth-4 chain (all-(2,1) stages, q = 2, minimal heights). The proofs are uniform in the stage data; the coverage gap is machine-side, named here. The vartheta direction (theta vs theta^{-1}) is machine-tested only up to self-inverse units (F3; disclosed at T-A4W) — an F5-frame or F4-live-twist row would pin it; proof-side the direction is S1.2's derivation.”
 
@@ -1227,6 +1404,8 @@ XREF: `lean/notes/openmath/HE7_PROOF_2026-08-08.md:ANNEX-LEMMA R1-a` — grep-ve
 ---
 
 ### EFF.GENTOW5.s1of2.41  [open-obligation]
+
+**FORM:** bold-headed paragraph
 
 **CANONICAL STATEMENT:** §S6 — What stays OPEN (not claimed)
 
@@ -1247,6 +1426,8 @@ XREF: `lean/notes/openmath/GENHN_PROOF_2026-08-08.md:[GENHN-HE(μ ≥ 3)]` — g
 ---
 
 ### EFF.GENTOW5.s1of2.42  [scope-record]
+
+**FORM:** bold-headed paragraph
 
 **CANONICAL STATEMENT:** §S6 — Consumption path (not executed here)
 
@@ -1270,7 +1451,9 @@ XREF: `lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:S7` — grep-verified cou
 
 ### EFF.GENTOW5.s1of2.43  [changes-record]
 
-**CANONICAL STATEMENT:** §S7 `[GT5-r1]` PE1 REPAIR RECORD (2026-08-10, post-passPE1)
+**FORM:** bold-headed paragraph
+
+**CANONICAL STATEMENT:** `[ASSEMBLED — repair header, six findings, and closing status]` §S7 `[GT5-r1]` PE1 REPAIR RECORD
 
 > “PE1 verdict (GENTOW5_passPE1_report.md @ 0160b94): NOT CLEAN — 1 CRITICAL (F-1) + 2 GAP (F-2, F-3) + 3 MINOR (F-4, F-5, F-6); counter stays 0/2. This section is the r1 repair round. Tag convention: this round's edits are marked [GT5-r1]; bare [r1] in the body refers, as composed, to GENHN-1's node-floor erratum. Sealed machine artifacts BYTE-FROZEN at their committed md5s (gentow5_checks.py 5fa684c7..., gentow5_output_exact.txt dc499a49..., gentow5_output_full.txt 839a8660...); no runner edited, no re-run. Pre-r1 note body md5 02deb7e0 (43,779 bytes = the 87a7b61-era file, the PE1 target state).”
 
@@ -1309,6 +1492,8 @@ XREF: `lean/notes/openmath/GENTOW1_PROOF_2026-08-09.md:S2 Step 0` — grep-verif
 
 Every designation below was checked with fixed-string `grep -cF` in the named target file. Counts are recorded per `EFF_TEMPLATE_v2.md` rule 2.
 
+**[TABLE]**
+
 | # | Target and designation | Count | Material consumed by GENTOW5 §§1–1474 |
 |---:|---|---:|---|
 | 1 | `GENTOW1_PROOF_2026-08-09.md:LEMMA GENTOW-1` | 7 | Budgets template re-based at clause (c) |
@@ -1323,9 +1508,9 @@ Every designation below was checked with fixed-string `grep -cF` in the named ta
 | 10 | `GENTOW1_PROOF_2026-08-09.md:GENTOW-BOX-2` | 2 | Coverage discipline for constructed frames |
 | 11 | `GENTOW1_PROOF_2026-08-09.md:[GT1-r1]` | 5 | Erratum pin precedent for the gauge twist |
 | 12 | `GENTOW2_PROOF_2026-08-09.md:THEOREM GENTOW2-A` | 8 | Admissibility quantifier; clause (d)'s i = 2 node data |
-| 13 | `GENTOW2_PROOF_2026-08-09.md:LEMMA GENTOW2-B` | 30 | The cite pattern run at level i |
-| 14 | `GENTOW2_PROOF_2026-08-09.md:LEMMA GENTOW2-B′` | 8 | Per-grade unit family (B′(3)/(5)) |
-| 15 | `GENTOW2_PROOF_2026-08-09.md:LEMMA GENTOW2-B″` | 10 | The landed r3 B-law's `w` and the root correspondence |
+| 13 | `GENTOW2_PROOF_2026-08-09.md:LEMMA GENTOW2-B` | 32 | The cite pattern run at level i |
+| 14 | `GENTOW2_PROOF_2026-08-09.md:LEMMA GENTOW2-B′` | 9 | Per-grade unit family (B′(3)/(5)) |
+| 15 | `GENTOW2_PROOF_2026-08-09.md:LEMMA GENTOW2-B″` | 11 | The landed r3 B-law's `w` and the root correspondence |
 | 16 | `GENTOW2_PROOF_2026-08-09.md:S5.1` | 42 | `u(beta)` definition + the letter formula |
 | 17 | `GENTOW2_PROOF_2026-08-09.md:S2` | 15 | MacLane-chain dictionary / polygon shear |
 | 18 | `GENTOW2_PROOF_2026-08-09.md:S6` | 25 | FGMN faithfulness audit |
@@ -1369,9 +1554,37 @@ Every designation below was checked with fixed-string `grep -cF` in the named ta
 | 56 | `HE6_PROOF_2026-08-08.md:LEMMA HE6-1` | 15 | The transport identity in GENTOW5-C's i = 1 base |
 | 57 | `JD0_PROOF_2026-08-08.md:J-D0` | 25 | Counts twist-blind / letters re-coordinatize |
 
+**ARITHMETIC AUDIT:** 57 designation rows; the fresh sum of the 57 fixed-string occurrence counts is **475**. This is a raw-occurrence checksum, not a count of distinct mathematical imports. All 57 row counts were recomputed; three changed because `GENTOW2_PROOF_2026-08-09.md` grew after the opus draft (`LEMMA GENTOW2-B`: 30→32; `B′`: 8→9; `B″`: 10→11).
+
 **Designation counted but NOT emitted as an XREF:** `GENTOW2-A(d)` (count **0** in GENTOW2_PROOF). The parent designation `THEOREM GENTOW2-A` is verified (row 12); the clause letter is not separately greppable there, so the clause reference is carried descriptively rather than as a designation.
 
-### 3.2 Reverse consumer edges: mathematical supply versus append protocol
+### 3.2 Pin verification ledger
+
+Per template rules 23 and 34, commits were checked with `git cat-file -t`; artifacts were checked for existence, and the sealed core artifacts were also re-md5ed.
+
+**[TABLE]**
+
+| Pin class | Pins checked | Fresh disposition |
+|---|---|---|
+| Source blob / last-touch commit | `00a4c7e80cfd652bc4416edb476d44ae6ca0a420`; `ddfc6b61` | Blob recomputed; commit object verified |
+| Referenced commits | `0160b94`, `18900e03`, `2f95be6`, `39c36aa`, `40f313a`, `477b1b1`, `4a613d8`, `4b279a7`, `59c1966`, `75923bc`, `87a7b61`, `9f0eca7`, `a472155`, `ade1727`, `b22b37b`, `cb010522`, `d798529`, `dd44d20`, `deba21b`, `e38df9f` | All 20 resolve as `commit` |
+| Sealed runner | `verification/openmath/gentow5_checks.py` | Exists; md5 `5fa684c74326aea31d2b065b373fcf22` |
+| Exact output | `verification/openmath/gentow5_output_exact.txt` | Exists; md5 `dc499a4967537d157756905c21104acb`; verdict 86 checks / 0 violations |
+| Full output | `verification/openmath/gentow5_output_full.txt` | Exists; md5 `839a866006f9f6fc341a789c463a763a`; verdict 92 checks / 0 violations |
+| Fresh instruments | `gentow5_pe1_fresh.py`, `gentow5_pe2_fresh.py`, `gentow5_pe3_fresh.py`, `gentow5_pe5_fresh.py` under `verification/openmath/` | All exist |
+| Repair helpers | `gentow5_rider_f32dev.py`, `gentow5_af1_direction_check.py` under `verification/openmath/` | Both exist; md5s `81bbb5db3a8a40b211a7f1101d865e91`, `82acd3d2f48e5d03b50c4e2cf181370b` |
+| Cross-check runner | `verification/openmath/genhnr2_supp.py` | Exists; md5 `51154c9501156d9c14917ae35a274c1e` |
+| Pass reports | GENTOW5 PE1–PE5; GENTOW2 PE5/PE6; HE7 annexpass/annexpass2 under `lean/notes/openmath/` | All 9 named report files exist |
+| External reading records | `docs/SOL_CERTIFICATION_LEDGER_2026-08-12.md`, `docs/CITE_SCOPE_RESOLUTION_2026-08-13.md` | Both exist |
+| Historical body md5 `02deb7e0…` | Pre-r1 body named by S7 | **AS-OF-PIN**: honest at append time, not a current whole-file checksum after designed insertions/appends |
+
+**ARITHMETIC AUDIT:** 11 pin rows: 1 source-blob row, 1 grouped row of 20 verified commits, 7 current artifact/report/resource rows, 1 external-record row, and 1 AS-OF-PIN row. The two output verdicts cross-check `86 exact + 6 PARI = 92 full`; both report 0 violations.
+
+No reported in-range run lacks a filename: **zero UNPINNED run records**.
+
+### 3.3 Reverse consumer edges: mathematical supply versus append protocol
+
+**[TABLE]**
 
 | Consumer (candidate) | Exact verified designation | GENTOW5 supply | Mathematical status | Append/consumption-protocol status |
 |---|---|---|---|---|
@@ -1380,13 +1593,17 @@ Every designation below was checked with fixed-string `grep -cF` in the named ta
 | GENHN_PROOF | `GENHN-BOX-2` (5) | `.12` | The level-1 rider matches the box's stated retirement condition; explicitly “no new claim on frozen text” | **Not landed**; “recording the consumption there is the orchestrator's dated update, not this note's edit” |
 | GENHN_PROOF | `[GENHN-TOW-1]` (19) | `.38`, `.41` | Item (6)'s depth ≥ 4 sentence is a candidate; items (3)/(4) are declared still open | **Not landed** |
 | GENTOW2_PROOF | `S7` (1) | `.27`, `.33` | The depth ≥ 4 bullet's proviso ((B-1)/(B-2) at level r) is supplied — at i = 2 unconditionally, at i ≥ 3 behind `[GENTOW5-W(i)]` | **Not landed** |
-| GENTOW5_WI_2026-08-10.md | `[GENTOW5-W(i)]` (9) | reverse direction: WI **supplies** the lemma GENTOW5 leaves open | Homed in shard 2 (S11.2 fence); recorded here because it governs `.27`–`.29`, `.31` at i ≥ 3 | Cross-note; see OPEN-CALL 2 |
+| GENTOW5_WI_2026-08-10.md | `[GENTOW5-W(i)]` (24) | reverse direction: WI proves the lemma GENTOW5 leaves open | Homed in shard 2 (S11.2 fence); recorded here because it governs `.27`–`.29`, `.31` at i ≥ 3 | The 2026-08-15 append confirms certification does **not** discharge the frozen GENTOW5 conditionality |
+
+**ARITHMETIC AUDIT:** 6 rows = 5 candidate consumers named by the in-range S6 protocol sentence + 1 reverse supplier edge. The first five designations duplicate verified rows in §3.1; `[GENTOW5-W(i)]` is the one additional designation, fixed-string count **24** in `GENTOW5_WI_2026-08-10.md`. Thus this shard has **58 verified XREF designations** total, not 57.
 
 The last column is not an inference: it is §S6's own consumption-path sentence, quoted in the header's scope split.
 
 ---
 
 ## 4. NON-IMPORTS
+
+**[TABLE]**
 
 | Fence | Explicit material not imported or not proved in lines 1–1474 |
 |---|---|
@@ -1410,6 +1627,8 @@ The last column is not an inference: it is §S6's own consumption-path sentence,
 
 ## 5. Teeth inverse table
 
+**[TABLE]**
+
 | Battery row / tooth | Guarded unit(s) | Disposition |
 |---|---|---|
 | §S5 P-A1 / P-A2 / P-A3 (mu2 = 3 kills, three frames incl. char 3 and K2 = F4) | `.05`, `.10`, `.11`, `.13`, `.30`, `.38` | Executable regression (sealed battery, 86 exact checks) |
@@ -1431,8 +1650,14 @@ The last column is not an inference: it is §S6's own consumption-path sentence,
 | §S7 F-3 grid-4 equality instance (170 = 170 = 170) | `.24`, `.25` | Signed failure-mode fence (no downstream lean on top-carry strictness exists) |
 | GENTOW2 PE4 @ 2f95be6 (B-2 on-the-nose REFUTED at letter-live grades) | `.27`, `.43` | Foreign-note regression consumed as a negative result |
 | GENTOW2 PE6 (w measured ≠ 1, 6 primes / 4 frames) + PE5 @ 75923bc (psi^{(w)} admissible for every w) | `.27`, `.38` | Foreign-note measurement + verification |
+| PROOF-ONLY: LEMMA GENTOW5-C at i ≥ 3 | `.17`, `.22`, `.27` | **PROOF-ONLY** — no dedicated committed row; the note says “The depth->=4 region has machine contact ONLY through S4's witness (one exact instance) + HE7 R1.3's level-3 leg one ladder over” |
+| Committed-battery seam axis | `.18`, `.40` | **signed vacuity disclosure** for the sealed battery (“GAUGE-SEAM-BLIND BY CONSTRUCTION”); **accepted-with-decorrelation-supplied** by fresh FR-1 |
+| Seam-live × `e_stage ≥ 2` compound | `.22`, `.40` | **disclosed non-repair** — “NO machine contact”; proof-side derivation remains uniform |
+| S11.1 `gentow5_af1_direction_check.py` | `.25`, `.29` | **AUDIT — decorrelated-model audit**; corrected converse direction and one-directional Step 2, GREEN 8/0 |
 
-**Both-direction audit:** every row above guards at least one in-range unit, and every in-range unit carrying a non-empty `TEETH` field appears in at least one row. Units with `TEETH: NONE` (`.03`, `.23`, `.39`, `.41`, `.42`) are declarations or inventories and are outside the orphan count. **Zero battery-row orphans; zero toothed-unit orphans.** One out-of-range tooth is recorded but not counted here: S11.1's isolated `gentow5_af1_direction_check.py` (8 checks / 0 violations), which guards the corrected direction of `.25` and is homed in shard 2.
+**ARITHMETIC AUDIT:** 23 data rows. The sealed core contributes 86 exact checks plus 6 PARI checks = 92 full checks, matching `.04`, `.36`, `.37`, and the two committed output verdicts; violation totals are 0 on both routes. Fresh/helper row totals (15/0, 22/0, 40/0, 7/0, 8/0) are independent runs and are not added to the sealed 92. Every guarded-unit column is nonempty.
+
+**Both-direction audit:** every row above guards at least one in-range unit, and every in-range unit carrying a non-empty `TEETH` field appears in at least one row. Units with `TEETH: NONE` (`.03`, `.23`, `.39`, `.41`, `.42`) are declarations or inventories and are outside the orphan count. **Zero battery-row orphans; zero toothed-unit orphans.** The S11.1 audit is homed in shard 2 but is included because it guards corrected readings of in-range units `.25` and `.29`.
 
 ---
 
@@ -1458,9 +1683,10 @@ Merges deliberately NOT made: the (B-1)/(B-2) legs stay inside `.27`'s DERIVATIO
 ## 7. SHARD NOTES
 
 - **Cross-shard supersessions applied (resolution rules 3–6):** the acceptance record (status → ACCEPTED 2/2); S11.1 (S2.4's converse direction + two-directional closure withdrawn; S3(c) Step 2's parenthetical superseded); S11.2 (`[GENTOW5-W(i)]` fence at i ≥ 3); S11.3 ((a)@i=1 re-scoped to `psi_2^{(u1)}`, tie to `w_1` open); S11.4 (lift m-range) as itself superseded by S12.2 (threshold `bound_i`, boxed `bound_i < E_i`); S11.5 (clause (b) residual display re-indexed); S12.1 (`𝒲_{≤n}` conditionality propagated to (a)/(b)/(c)/(e) at n ≥ 3, S11.2's unaffected list withdrawn); the post-D3i corrigendum (twist index `ψ_j^{(ω_{j−1})}`).
+- **Later non-superseding consumption record:** the 2026-08-15 T5 append is outside HOME and explicitly makes no correction to this note. It nevertheless resolves the former WI perimeter call: T5 carries `𝒲_{≤n}` rather than treating the certified companion as discharging GENTOW5's frozen conjuncts. T5's `WF-w` designation is grep-verified count **16**, but is not added to this shard's XREF total because the consumed S11/S12 fence is homed in shard 2.
 - **Range-edge audit:** line 1473 is S7's closing sentence (“TARGET 1 … untouched beyond the pins named here.”); line 1474 is blank and line 1475 opens `## S8`. **No source statement unit is cut at the edge.** S8's own content (the PE2 repair record) is homed in shard 2; its *effects* on in-range text (the r2 rewrites at S3(a), S2.1, S2.4, S6) are already landed in the base text inside this range and are inventoried at their units.
 - **Outside-HOME material not inventoried:** S8, S9, S10, the acceptance record, S11 and S12 are NOT emitted as units here merely because they resolve in-range text. They appear only in the header, in CONDITIONALITY/RESOLUTION TRACE fields, and in this shard-notes list. Shard 2 owns them.
-- **Protocol versus absorption:** §S6's supply set is inventoried; no consumption append is claimed landed on any source note, and none is invented.
+- **Protocol versus absorption:** §S6's supply set is inventoried; no consumption append is claimed landed on any of the four source notes. The later T5 fence-consumption append is recorded separately and does not enlarge the supply set.
 - **Numbering:** temporary IDs `EFF.GENTOW5.s1of2.01`–`.43`, to be reconciled with shard 2's at the merge run.
 
 ---
@@ -1471,13 +1697,14 @@ Merges deliberately NOT made: the (B-1)/(B-2) legs stay inside `.27`'s DERIVATIO
 
 LEMMA GENTOW5-A1's proof (`.08`) sources the first wrap letter as “z1 by GENHN's S4 level-1 cocycle (accepted; the ITER-LAW z-letter)”. Fixed-string grep for `ITER-LAW` in `GENHN_PROOF_2026-08-08.md` returns **0**. The designation does exist in the corpus — `DITER_RESTATE_2026-08-08.md` (**16**) and `GRTJC_PROOF_2026-08-08.md` (**5**) — but attributing it to GENHN's S4 cannot be verified, and no XREF is emitted for it. The verified part of the same sentence (`T22`, count **9** in GENHN_PROOF, for the second wrap letter) is emitted. **Decision needed:** whether the z-letter's supplier for this note is GENHN's S4 cocycle (designation unnamed there) or the DITER `ITER-LAW` unit.
 
-### OPEN-CALL 2 — `[GENTOW5-W(i)]`: note-internal OPEN versus corpus-level discharged
+### OPEN-CALL 2 — the accepted outer `ψ₁` leg is unnamed
 
-The note declares `[GENTOW5-W(i)]` an OPEN transported lemma (S11.2, shard 2) and S12.1 propagates that conditionality through clauses (a)/(b)/(c)/(e) at every index n ≥ 3 — the governing conditionality for in-range units `.27`, `.28`, `.29`, `.31`, and hence for `.04`'s status row and `.38`'s supply set. The repo, however, contains `GENTOW5_WI_2026-08-10.md`, whose title line reads “[GENTOW5-W(i)] — the i >= 3 monomial form of the B''-transport, PROVED”, with the designation grep-verified **9** times there. Compiling what the NOTE says leaves every i ≥ 3 clause conditional; compiling the corpus would discharge it. **This is a DAG decision above the compiler** (it is exactly the T3 precedent's “PERIMETER-UNRESOLVED → cross-spec reconciliation” shape). No silent choice was made: every affected unit carries the note's own conditional, and this call records the alternative. **Reading note, not an edit:** `docs/SOL_CERTIFICATION_LEDGER_2026-08-12.md` row 18 records the WI note as **CERTIFIED 2026-08-12**.
+The post-D3i corrigendum governing `.28` says “`ω₁ = the S11.3 unit (the outer ψ₁ leg handled separately as accepted)`”. Fixed-string grep finds `outer ψ₁ leg` exactly **1** time in this note and **0** times in every other openmath note; no supplier designation is given. The S11.3 unit names the `ψ₂` residual re-scope, not a separately named outer-`ψ₁` theorem. No XREF is invented. **Decision needed:** identify the accepted source unit for the outer `ψ₁` leg, or make the acceptance self-contained in a later append.
 
-### OPEN-CALL 3 — the floor chain's provenance is circular unless the datum supplies it
+### Resolved former calls
 
-`.14` states the floor chain `u_{i+1} > e_{i+1} E_i` as part of DEF GENTOW5-1, with provenance “the level-i budgets' node corollary, S3(e)”; clause (e) (`.31`) derives the next floor from clause (c)'s pins; and S12.1 makes (e) at n ≥ 3 conditional on `𝒲_{≤n}`, adding that the inequality “may still be used unconditionally when it is included explicitly in the fixed tower datum; only its claimed automatic derivation from the recipe is conditional”. **Which reading the effective spec should carry — floor chain as a DATUM hypothesis (unconditional, but then the induction does not “feed itself”) or as a DERIVED consequence (conditional at n ≥ 3) — is not settled by the note's own text**, which uses both framings. Rung 1 is unproblematic either way (it rides the accepted `[r1]` node floor directly).
+1. **WI perimeter:** resolved by the 2026-08-15 append. `[GENTOW5-W(i)]` occurs **24** times in `GENTOW5_WI_2026-08-10.md`, but the current GENTOW5 tail explicitly says certification of that companion “does not discharge these conjuncts from the frozen GENTOW5 statements”. The terminal reading remains conditional on `𝒲_{≤n}`.
+2. **Floor-chain provenance:** resolved as two predicates, exactly as S12.1 instructs. As a fixed tower datum, `u_{i+1}>e_{i+1}E_i` is usable unconditionally; its claimed automatic derivation from clause (e) is conditional on `𝒲_{≤n}` for n ≥ 3. Units `.14` and `.31` carry the two readings separately.
 
 ### Recorded source defects (flagged, not silently repaired)
 
@@ -1490,10 +1717,10 @@ The note declares `[GENTOW5-W(i)]` an OPEN transported lemma (S11.2, shard 2) an
 - Every CANONICAL STATEMENT is either verbatim quotation or explicitly marked `[ASSEMBLED]`; no inverse, sign, quantifier, index, level, or implication direction was altered. Truncations inside quotations are marked with `…`.
 - The note's own ASCII displays are reproduced with their line structure intact; the only presentational change is Markdown blockquote framing (and backslash-escaping of `*` inside quoted prose where Markdown would otherwise consume it, at `.34`, `.35`, `.37`, `.38`).
 - The one source table (STATUS TABLE) is emitted as a table and flagged `[TABLE]`; no source table was prosified.
-- All 57 external XREF designations carry fixed-string counts ≥ 1, recorded inline and in §3.1. Three ASCII/Unicode orthography differences are recorded as reading notes with the verified (Unicode) form; one candidate designation with count 0 (`GENTOW2-A(d)`) is explicitly NOT emitted as an XREF; one unverifiable designation (`ITER-LAW` in GENHN_PROOF) is OPEN-CALL 1.
-- Status and absorption are kept as distinct predicates throughout: the acceptance record governs grade, §S6's consumption path governs appends, and no append is claimed landed.
+- All **58** external XREF designations carry fixed-string counts ≥ 1: 57 import rows in §3.1 plus the reverse-supplier `[GENTOW5-W(i)]` row in §3.3. Three ASCII/Unicode orthography differences are recorded as reading notes with the verified (Unicode) form; one candidate designation with count 0 (`GENTOW2-A(d)`) is explicitly NOT emitted as an XREF; unverifiable names are OPEN-CALLs, never invented XREFs.
+- Structural recount: **43** units, **43** FORM fields, **43** CANONICAL STATEMENT fields, **43** DERIVATION fields, **43** RESOLUTION TRACE fields, and **43** TEETH fields; zero retired `regression-record` types.
+- Status and absorption are kept as distinct predicates throughout: the acceptance record governs grade; §S6 leaves the four named source-note appends unlanded; the later T5 append consumes only the conditional fence and is recorded separately.
+- Commit/artifact pins are recorded in §3.2: all named commits resolve, every reported run has a filename, the sealed md5s match, and the historical pre-r1 checksum is classified AS-OF-PIN rather than falsely current.
 - Out-of-range material is used only to resolve in-range HOME units, per resolution rule 8.
 
-EFF-GENTOW5-s1of2 COMPILED: 43 statements / 57 xrefs verified / 3 open calls
-
-
+EFF-GENTOW5-s1of2 COMPILED: 43 statements / 58 xrefs verified / 2 open calls

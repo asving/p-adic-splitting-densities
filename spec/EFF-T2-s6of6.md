@@ -1,6 +1,6 @@
 # EFF-T2-s6of6 — CANONICAL EFFECTIVE-SPECIFICATION SHARD
 
-**COMPILED-BY: opus (2026-08-14, Asvin-authorized substitution, PROJECT_STATE #51). CODEX CROSS-READ OWED (post-reset).**
+**COMPILED-BY: gpt-5.6-sol high (2026-08-18).**
 
 ## 1. Shard header
 
@@ -8,7 +8,14 @@
 
 **HOME range:** source lines 4443–4507 inclusive — post-pass rider block 3 and the ACCEPTANCE RECORD. This is the shortest shard of the six and the **governing** one: the note's front matter names this block as the authority over status, and every other shard resolves its counter states, pin counts, obligation sets and grades against it.
 
-**HEAD blob hash:** `9cc9063028c598a90cd98a022ac07694e6dc8a2a`
+**HEAD blob hash:** `2b74ad0f35f41e3109f1ba779eb8eb266a8ba0fc`
+
+**Last source-changing commit:** `66062771a0496cc1105b618fc98523a0437b79b0`
+(`git cat-file -e <hash>^{commit}` succeeded; subject: “T2: dated consumption
+record (2026-08-14) — HE6's four A3 corrections adjudicated; T2 immune at every
+sampled site”). The appended record at source lines 4511–4542 declares **NO
+supersession** and changes no statement, grade, pin, fence, obligation, or queued
+protocol in this HOME range.
 
 **Compilation context:** `spec/EFF_TEMPLATE_v2.md`; temporary IDs `EFF.T2.s6of6.<nn>`. Conventions follow `spec/EFF-T2-s1of6.md`; the HOME routing audit follows `spec/EFF-T1-s2of3.md`.
 
@@ -22,7 +29,21 @@ and the block defines the text of record:
 
 > “The accepted T2 v2 of record is the effective text as of r12, plus the first post-pass rider block, plus the second post-pass rider block, plus post-pass rider 3 above, and consumers cite it as exactly that.”
 
-**Everything in this shard is effective. Nothing here is superseded by anything.**
+**Everything in this shard is effective.** The later dated consumption record is
+non-superseding, so nothing here is withdrawn or replaced by material after line 4507.
+
+### Freeze predicates
+
+`[TABLE — compiler freeze ledger]`
+
+| Predicate | Governing quotation | Pin |
+|---|---|---|
+| F1 — acceptance-scope enumeration | “Acceptance is acceptance of the composition WITH this ledger, not clearance of it.” | source 4492–4499; `.05` |
+| F2 — grade scope | “Acceptance of this note does NOT make those composed instances \(2/2\).” | source 4503; `.07` |
+| F3 — text freeze | “With this record the note is **BYTE-FROZEN**.” | source 4505; `.08` |
+
+**Arithmetic audit:** 3 independent predicates = 1 acceptance-scope enumeration +
+1 grade-scope pin + 1 text freeze. No instrument/artifact freeze is claimed.
 
 ### Scope split
 
@@ -40,6 +61,13 @@ and a grade that is explicitly **not** transitive to the composed instances:
 
 The only gate this block reports as **run** is the source-side pin sweep at 37 pins. No downstream consumption check has been run.
 
+**INBOUND CORRECTIONS RECEIVED (predicate C).** The accepted ledger retains two
+supplier-side reading corrections: `HE6-BETA-GUARD` and
+`HETOW-KEY-BRIDGE-C-A`. The later 2026-08-14 consumption record adjudicates HE6's
+four A3 corrections and expressly declares **NO supersession**: F-1 lands on a
+consumed clause, but T2 already states the corrected form; F-2–F-4 move no consumed
+assertion.
+
 ### Resolution rules applied
 
 1. This block governs; it is not resolved against anything later. Where an earlier shard's unit conflicts with it, the earlier unit is historical.
@@ -48,6 +76,9 @@ The only gate this block reports as **run** is the source-side pin sweep at 37 p
 4. The rider's landmark convention — counts taken over lines 1–4439, before the block that necessarily re-quotes each landmark — is applied when re-verifying its census (§3). A naive whole-file grep today returns more, and the difference is exactly the rider's own re-quotations.
 5. Every machine-evidence claim in this block was **independently re-run at compilation** (§3): the zero-`T2V2PIN` sweep, the clean worktree, the bounded naming census, the existence of both pass logs, and both passes' verdict lines.
 6. Shard 1 quotes parts of this block in its `.42` and `.44` and in its header. Those are governing-record citations; the HOME of every sentence quoted there is here, and the merge should treat this shard as the source of record for them.
+7. The dated consumption record at 4511–4542 lies outside this shard's HOME range,
+   was read in full, and explicitly declares “NO supersession”; it therefore adds
+   boundary context but no local statement unit.
 
 ### Quotation and table discipline
 
@@ -60,6 +91,15 @@ Every unit below is verbatim or explicitly `[ASSEMBLED]` from a single block; ab
 ### EFF.T2.s6of6.01  [acceptance-box]
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — post-pass rider block 3: fold rule, scope, landmark convention, and the counter state it SETS]`
+
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** counter re-reading.
+
+**TARGETS:** `EFF.T2.s5of6.07`.
+
+**CHAIN:** r12 reset 0/2 → Rider 3 counter 2/2 → **TERMINAL:** acceptance
+record (`EFF.T2.s6of6.04`).
 
 > “**Dated rider (2026-08-13 — the single minor of the Opus/Claude confirmation hostile pass on the r12 effective text, `runs/comp13/T2P10_output.log`, returning 0 CRITICAL + 0 GAP + 1 minor, taken after the gpt-5.6-sol high hostile pass on the same effective text, `runs/comp13/T2SOL5_output.log`, returned 0 CRITICAL + 0 GAP + 0 minors. Folded per the campaign's minors-only precedent — T4's post-pass gloss-direction rider, T5's two post-pass-1 locator riders, T1's five post-pass-1 riders and its two final riders, and this note's own two post-pass rider blocks above, each folded on a 0 CRITICAL + 0 GAP pass and none of them a grade event. NO r-section, no grade event, NO counter reset.)** The rider RE-GROUNDS one disposition sentence and does nothing else.”
 
@@ -82,6 +122,16 @@ Every unit below is verbatim or explicitly `[ASSEMBLED]` from a single block; ab
 ### EFF.T2.s6of6.02  [changes-record]
 
 **CANONICAL STATEMENT:** `[ASSEMBLED — Rider 3.1: the HE7:2478 / M-B disposition re-grounded on consumption]`
+
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** wording-rider.
+
+**TARGETS:** `EFF.T2.s5of6.10`.
+
+**CHAIN:** r12 “this master names neither” ground → Rider 3 consumption-ground
+replacement → **TERMINAL:** the replacement quoted below; the not-consumed
+disposition is unchanged.
 
 The finding:
 
@@ -109,6 +159,8 @@ The cure:
 
 **CANONICAL STATEMENT:** `[VERBATIM — the arc: thirteen hostile passes, two arms, zero CRITICAL, and the compressed GAP history]`
 
+**FORM:** bold-headed paragraph.
+
 > “**The arc.** Thirteen hostile passes of record across two arms carried this note from a composition draft to acceptance: eight Opus/Claude-arm passes (`runs/comp13/T2P3`–`T2P10`) and five gpt-5.6-sol-high passes (`runs/comp13/T2SOL`–`T2SOL5`), every gap-or-worse pass answered by a repair round r4–r12 and every minors-only pass by a post-pass rider block. Rounds r1–r3 answer earlier passes of the pre-comp13 arc and lie outside that count; their content, compressed, is the mixed-residual block theorem installed as S1.7A (r1), synthetic markers replaced by immutable existing-text spans in S0.2 (r2), and four defective pins re-derived as verbatim delimiter pairs with the `(MID-PEEL)` suite and the `(LB1)` widening (r3). **Zero CRITICAL findings across all thirteen.** The GAP history of the thirteen, compressed: the clause-5 trigger, the displayed well-founded rank, and the level-one `(MID-PEEL)` suite (r4); the perturbation transport LEMMA HE7-12, consumed at two statement changes and pinned nowhere (r5); the refinement height, asserted rather than bound, and `(MP1′)` (r6 — bound as `(REF-HT)`, and `(MP1′)` adjudicated and DISCHARGED); the rise that `(REF-HT)`'s necessity rested on, which no displayed assertion carried (r7 — split into stipulated (RISE) and derived (HT)); the level-one discharge's assembly order (r8); the print/coherent frame conflation at the HE6 family index, caught by the first model-diverse pass (r9 — (IDX-TWIST)); the level-one test package and `(ACCOUNT)` without pinned suppliers (r10 — three new HE6 spans); LEMMA HE6-2's β-definedness guard (r11 — `HE6-BETA-GUARD`); and HETOW's post-PE2 correction C-A with S1.8B's imported degree conjunct (r12 — `HETOW-KEY-BRIDGE-C-A`, and the conjunct re-derived master-side).”
 
 **DERIVATION:** `[ARC RECORD]` One round per gap-or-worse pass, one rider per minors-only pass, is the arc's own bookkeeping rule; the count of thirteen is the count of passes of record, with r1–r3 excluded because they answer earlier passes. The compressed GAP list is a one-line-per-round index into the repair rounds compiled at shards 2–5, and it matches them: r4→shard 2, r5→shard 2, r6/r7→shard 3, r8→shards 3–4, r9/r10→shard 4, r11/r12→shard 5.
@@ -123,7 +175,9 @@ The cure:
 
 ### EFF.T2.s6of6.04  [acceptance-box]
 
-**CANONICAL STATEMENT:** `[VERBATIM — the two passes of record, and the rider that postdates them]`
+**CANONICAL STATEMENT:** `[ASSEMBLED — verbatim pass records, counter sentence, and the rider that postdates them]`
+
+**FORM:** bold-headed paragraph.
 
 > “- **Pass 1 of 2** — `runs/comp13/T2SOL5_output.log` (gpt-5.6-sol high, r12 effective text, 2026-08-13): **0 CRITICAL + 0 GAP + 0 minor**, the arc's first zero-findings verdict. It re-derived the r12 degree mathematics at all five instance boxes, verified `HETOW-KEY-BRIDGE-C-A`'s span byte-minimal under S0.2, re-resolved the pin inventory to \(20+4+13=37\), re-ran the six-source dated-append sweep, and attacked the `d = c_{\mathcal C}v` datum and the lift-difference step.
 > - **Pass 2 of 2** — `runs/comp13/T2P10_output.log` (Opus/Claude confirmation, r12 effective text, 2026-08-13): **0 CRITICAL + 0 GAP + 1 minor**, the minor being bookkeeping on r12's own sweep record (the ground for the HE7:2478 disposition; the disposition itself is upheld on the consumption ground). It ran r12's assembly audit against the r1–r11 body and the seventeen-landmark set, the theorem statement as effectively amended with the `d = c_{\mathcal C}v` datum folded, the full S7 consumption sweep at 37 pins, an exhaustive 28-unit dated-append re-enumeration of all six sources, a pin-note directive coherence audit over the seven reading directives, and a master-side closure of the `(OCC)` demand at the refinement height at both levels. Its four non-counted nits are recorded in that log and are deliberately not cured here, so that later work need not re-raise them.”
@@ -146,6 +200,8 @@ The cure:
 
 **CANONICAL STATEMENT:** `[TABLE — the four standing conditionalities, verbatim, plus the sentence excluding a fifth]`
 
+**FORM:** display.
+
 > “**Standing conditionalities, displayed rather than discharged.** Acceptance is acceptance of the composition WITH this ledger, not clearance of it.”
 
 | Item | Status, verbatim |
@@ -156,6 +212,10 @@ The cure:
 | `(RISE)` | “**STIPULATED**, on `(SEC-RANK)`'s footing, as the first clause of `(REF-HT)`; (HT), \(k=\lambda\), is DERIVED from it by the min-rule display. Discharged per instance: level one at the instance's own refine step inside `HE3-A-PROOF`, with `HE6-FAMILY` and `HE6-PROOF` supplying the HE6 leg and its \(\ell\ge2\) caveat routed to the product-\(\ge2\) branch; level two and deeper inside `HE7-PERT-TRANSPORT` (LEMMA HE7-13's rise is that lemma's derived conclusion), with `HE7-REF-TERM` recording the same chain convention.” |
 
 > “`(MP1′)` is NOT a fifth standing conditionality: it was RETIRED at r6 repair 2 and discharged in S1.8C from `HE3-A-PROOF`, `HE6-SLOT-SEAM`, `HE6-FAMILY` and `HE6-PROOF`. It denotes a consequence of the pins, not an obligation.”
+
+**Arithmetic audit:** 4 table rows = 2 open obligations (`(LB1)`, `(MP1)`) +
+2 stipulated carrier hypotheses (`(SEC-RANK)`, `(RISE)`); the excluded
+`(MP1′)` contributes 0 standing rows. Thus 2 + 2 = 4, not 5.
 
 **DERIVATION:** `[LEDGER]` The ledger separates two statuses that the arc kept distinct throughout: an **open obligation** fences reads and appears in S5/S4.2 (`(LB1)`, `(MP1)`), while a **carrier hypothesis** fences nothing and is discharged per instance (`(SEC-RANK)`, `(RISE)`). Each row names where it is fenced or where it is discharged, by pin. The fifth-item sentence closes the one name a reader of r5 would otherwise carry forward.
 
@@ -171,6 +231,16 @@ The cure:
 
 **CANONICAL STATEMENT:** `[VERBATIM — machine evidence, and why no battery is owed]`
 
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** inventory completion.
+
+**TARGETS:** `EFF.T2.s5of6.14`.
+
+**CHAIN:** r12 final 37-pin inventory → two-pass acceptance certification of the
+same \(20+4+13\) roster → **TERMINAL:** this acceptance evidence; the later
+2026-08-14 record leaves the roster unchanged.
+
 > “**Machine evidence, and why no battery is owed.** No battery obligation exists for T2: S4.1 states in terms that this note "does not rerun supplier batteries", and S7's gate is the **pin sweep**, not a machine leg. That sweep was run whole at **37** pins by pass 2 — all 40 delimiter lines of the 20 quoted pairs resolved by exact-full-line search, each occurring exactly once and each first preceding its last, 4 first-only pins resolved at their quoted first delimiter, 13 description-only pins resolving to a unique unit head, and all spans within a file pairwise disjoint — and re-resolved to the same \(20+4+13=37\) inventory by pass 1, which additionally certified the new span `HETOW-KEY-BRIDGE-C-A` [548, 569] minimal under S0.2. **Zero `T2V2PIN` lines in the six accepted sources**, reported by both passes. **Zero source edits**: `git status --porcelain lean/notes/openmath/` was empty at pass 2, and pass 1 records that it constructed the effective text first and made no edits. The cured-consumption census stands at **ten**.”
 
 **DERIVATION:** `[GATE RESULT]` The absence of a battery is derived from the note's own scope declaration (S4.1) and from S7's gate definition, not asserted. The sweep is reported in the gate's own four terms — pair resolution, taxonomy, synthetic-marker count, source-edit count — and by two independent passes, one of which additionally certified the last pin's span minimal.
@@ -185,7 +255,17 @@ The cure:
 
 ### EFF.T2.s6of6.07  [table]
 
-**CANONICAL STATEMENT:** `[VERBATIM — grade, stated honestly, and the HE3 cap it leaves in force]`
+**CANONICAL STATEMENT:** `[ASSEMBLED — verbatim grade paragraph followed by a compiler grade-consequence table]`
+
+**FORM:** bold-headed paragraph.
+
+**SUPERSESSION KIND:** as-of scoping.
+
+**TARGETS:** `EFF.T2.s1of6.38`, `EFF.T2.s1of6.44`.
+
+**CHAIN:** master attempt grade 0/2 → accepted master grade 2/2 → **TERMINAL:**
+2/2 for the composition, with `(GRADE)` and the HE3 cap still binding per
+consumer.
 
 > “**Grade, stated honestly.** The master's own attempt grade moves \(0/2\to 2/2\), and the front-matter status line is refreshed in place to say so. `(GRADE)` is unchanged and still binds: \(\operatorname{grade}(I)=\min(g_{\mathrm{master}},g_{\mathrm{carrier}},g_{\mathrm{frame}},g_{\mathrm{local}})\). At the supplied source HEAD, HE6, HE7, HE6R1, HETOW and GENTOW4 are \(2/2\), while **HE3 is consumed at the grade stated by its supplied HEAD, which is attempt grade \(0/2\) (consecutive-clean count \(1/2\))** — so the two level-one records S3.1 and S3.2, and any level-two chain that consumes an HE3 pin through S1.8C, remain capped at HE3's grade. **Acceptance of this note does NOT make those composed instances \(2/2\).** It is acceptance of the composition, not an upgrade of the level-one supplier; \(g_{\mathrm{master}}=2/2\) removes the master's own factor from the minimum and nothing else.”
 
@@ -196,11 +276,23 @@ The cure:
 | A level-two chain consuming an HE3 pin through S1.8C | capped the same way |
 | S3.3, S3.4, S3.5 not consuming an HE3 pin | \(\min\) over their own carrier/frame/local grades, master factor removed |
 
+**Arithmetic audit:** 4 consumer classes = 1 accepted master class + 2 explicitly
+HE3-capped classes + 1 residual class governed by the remaining minimum; no row
+licenses grade transitivity.
+
 **DERIVATION:** `[GRADE MINIMUM]` `(GRADE)` is a minimum over four factors, so raising the master's factor removes it from the minimum and changes nothing where another factor is lower. HE3's HEAD grade is the lowest supplier factor, and S1.8C is the route by which a level-two chain can come to consume an HE3 pin — which is why the cap follows a chain's *history* and not its level.
 
 **CONDITIONALITY:** The cap is a property of the supplied source HEAD; it lifts only if HE3's own arc closes, and nothing in this note can lift it.
 
-**RESOLUTION TRACE:** source line 4503; the `(GRADE)` display is base S4.1 (shard 1, `.38`) and the supplier grades base S4.1's list; S1.8C's transport is shard 3 `.04`. The compiler table above is derived from the quoted paragraph and is marked as a compiler ledger by its position under the verbatim quotation.
+**RESOLUTION TRACE:** source line 4503; the `(GRADE)` display is base S4.1
+(shard 1, `.38`) and the supplier grades base S4.1's list; S1.8C's transport
+is shard 3 `.04`. The HE3 supplier status was checked through the full supplied
+note, not only its HEAD: `HE3_PROOF_2026-08-08.md` lines 4–9 and 1278 state
+attempt grade 0/2; its post-PE3 record at 1577–1583 moves the consecutive-clean
+count to 1/2 and says it HOLDS there; the later R8 append through EOF contains no
+acceptance or grade event (§3.D). The compiler table above is derived from the
+quoted paragraph and is marked as a compiler ledger by its position under the
+verbatim quotation.
 
 **TEETH:** the grade-laundering hazard row of S6; the `(GRADE)` minimum; the acceptance gate.
 
@@ -209,6 +301,8 @@ The cure:
 ### EFF.T2.s6of6.08  [fence]
 
 **CANONICAL STATEMENT:** `[VERBATIM — byte-freeze and the append-only regime]`
+
+**FORM:** bold-headed paragraph.
 
 > “**Byte-freeze.** With this record the note is **BYTE-FROZEN**. The accepted T2 v2 of record is the effective text as of r12, plus the first post-pass rider block, plus the second post-pass rider block, plus post-pass rider 3 above, and consumers cite it as exactly that. From here the note takes dated appends only, each superseding its quoted sentence of record and each carrying its own landmark census, in the register r5–r12 used; the pin table, the two open obligations, the two stipulated carrier hypotheses and the `(GRADE)` machinery move only that way. Any change that would rewrite the accepted text reopens the hostile arc rather than editing the note. One in-place edit accompanies this fold and it is the only one: the front-matter status line, refreshed DATELESS so that it stays self-maintaining — every round-dependent fact lives in the governing block, and acceptance only moves which block that is.”
 
@@ -226,13 +320,18 @@ The cure:
 
 **CANONICAL STATEMENT:** `[VERBATIM — the queued consumption protocol]`
 
+**FORM:** bold-headed paragraph.
+
 > “**Next.** Consumption checks ride the next queue: re-price every downstream note that consumes T2 v2 under `(GRADE)` with \(g_{\mathrm{master}}=2/2\) — subject to the HE3 cap above — and re-run the standing S7 consumption check at the consuming sites.”
 
 **DERIVATION:** `[PROTOCOL QUEUE]` Two distinct obligations are queued, matching the two predicates this compilation keeps apart: a **grade re-pricing** at every downstream consumer (with the HE3 cap still binding), and a **re-run of the standing S7 consumption check at the consuming sites** — the same check installed by r4 repair 13, now pointed outward instead of at T2's own sources.
 
 **CONDITIONALITY:** **Nothing here is done.** No downstream note has been re-priced and no consuming-site check has been run. Any claim that a T2 consumer is at \(2/2\), or that its consumption of T2 has been checked, is unsupported by this note.
 
-**RESOLUTION TRACE:** source line 4507. This is the note's final sentence; no unit of any shard reports either obligation as discharged.
+**RESOLUTION TRACE:** source line 4507. This is the final sentence of the accepted
+record and the end of this HOME range. The later dated record at 4511–4542 declares
+NO supersession and does not discharge either queued obligation; no unit in the six
+charged shards reports either obligation as discharged.
 
 **TEETH:** the standing S7 consumption check, pointed at consuming sites; `(GRADE)` at every consumer.
 
@@ -240,18 +339,40 @@ The cure:
 
 ## 3. XREF verification ledger
 
-**Method.** This block quotes **no source line** from the six pinned sources — “no source file is quoted or edited by this rider at all”, and the acceptance record cites files and run logs rather than source displays. Part A therefore records designation-level checks; part B records the block's **machine-evidence claims, each independently re-run at compilation time (2026-08-14)**. Every claim reproduced.
+**Method.** Every designation named by this block was re-searched with exact fixed
+string matching in its target source on 2026-08-18. Local pin aliases are mapped to
+the actual source designation that defines their span. Designation rows alone count
+as XREFs; bounded landmarks, artifact checks and machine-evidence claims do not.
 
 ### A. Designations named in this block
 
-| XREF | Designation / object | Target | Check | Result |
-|---|---|---|---|---|
-| U01 | `HETOW-KEY-BRIDGE-C-A` span [548, 569] | `HETOW_RECON_2026-08-09.md` | both delimiter lines exact-match | 1 each, at 548 and 569 (verified in shard 5 §3) |
-| U02 | `HE7-COCYCLE-2P-THROUGH-R1D` [2013, 2253] | `HE7_PROOF_2026-08-08.md` | span bounds as recorded by r3 repair 1(b) | consistent; the pin's delimiters were verified at shard 1 §3 (X22) |
-| U03 | `ANNEX-COROLLARY R1-d` | `HE7_PROOF_2026-08-08.md` | designation present | present (the pin's last-delimiter unit) |
-| U04 | `HE6-PEEL-CONVENTION`, `HE6R1-3`, `HE7-PERT-TRANSPORT`, `HE7-REF-TERM`, `HE3-A-PROOF`, `HE6-FAMILY`, `HE6-PROOF`, `HETOW-A`(ii), `GENTOW-4-A`(iii) | six sources | all named in `.05`'s conditionality ledger; each verified in shards 1–5 | all resolve |
+`[TABLE — compiler designation-verification ledger]`
 
-No designation in this block is unverifiable, and none is invented; every pin name it uses was declared and verified in an earlier round.
+| XREF | Local pin / named unit | Target source | Exact designation searched | Count |
+|---|---|---|---|---:|
+| U01 | `HETOW-KEY-BRIDGE-C-A` | `HETOW_RECON_2026-08-09.md` | `C-A (cures PE2 F-A` | 1 |
+| U02 | `HE7-COCYCLE-2P-THROUGH-R1D` | `HE7_PROOF_2026-08-08.md` | `ANNEX-DEF HE7-2′ (the corrected level recursion` | 1 |
+| U03 | `ANNEX-COROLLARY R1-d` | `HE7_PROOF_2026-08-08.md` | `ANNEX-COROLLARY R1-d` | 3 |
+| U04 | `THEOREM HE7.D` | `HE7_PROOF_2026-08-08.md` | `THEOREM HE7.D` | 20 |
+| U05 | `COROLLARY HE7.B(ii)` | `HE7_PROOF_2026-08-08.md` | `COROLLARY HE7.B(ii)` | 8 |
+| U06 | `HE6-PEEL-CONVENTION` | `HE6_PROOF_2026-08-08.md` | `CONVENTION [r1] (the two standing hypotheses on f` | 1 |
+| U07 | `HE6R1-3` | `HE6R1_RECON_2026-08-08.md` | `LEMMA HE6R1-3 (the level-2 peel)` | 1 |
+| U08 | `HE7-PERT-TRANSPORT` | `HE7_PROOF_2026-08-08.md` | `LEMMA HE7-12 [r2] (SLOT-DOMINATION` | 1 |
+| U09 | `HE7-REF-TERM` | `HE7_PROOF_2026-08-08.md` | `LEMMA HE7-8 ((REF-TERM)` | 1 |
+| U10 | `HE3-A-PROOF` | `HE3_PROOF_2026-08-08.md` | `### S6.3 PROOF OF THEOREM HE3.A` | 1 |
+| U11 | `HETOW-A` | `HETOW_RECON_2026-08-09.md` | `THEOREM HETOW.A ([GENHN-HE(μ₂)]` | 1 |
+| U12 | `GENTOW-4-A` | `GENTOW4_PROOF_2026-08-09.md` | `THEOREM GENTOW-4.A (partial inner sides` | 1 |
+| U13 | `HE6-FAMILY` | `HE6_PROOF_2026-08-08.md` | `DEFINITION HE6-1 (THE ENLARGED TEST FAMILY)` | 1 |
+| U14 | `HE6-PROOF` | `HE6_PROOF_2026-08-08.md` | `### S6.2 PROOF OF THEOREM HE6.A` | 1 |
+| U15 | `HE6-SLOT-SEAM` | `HE6_PROOF_2026-08-08.md` | `LEMMA HE6-0″ [r1, R5/F6]` | 1 |
+| U16 | `HE6-BETA-GUARD` | `HE6_PROOF_2026-08-08.md` | `Correction 2 (PE4 F-2 — LEMMA HE6-2's β-definedness guard)` | 1 |
+| U17 | LEMMA HE7-13, carried by `HE7-PERT-TRANSPORT` | `HE7_PROOF_2026-08-08.md` | `LEMMA HE7-13 [r2]` | 1 |
+
+**Arithmetic audit:** 17 designation rows; all counts are positive. Fourteen rows
+have count 1, and the three multi-occurrence named units have counts 3, 20 and 8,
+so the occurrence total is \(14+3+20+8=45\). Multi-occurrence does not make a
+designation unverifiable; the local pin aliases resolve to unique source-unit heads.
+Result: 17 verified designations, 0 `NEAR-MISS`, 0 unverifiable.
 
 ### B. Machine-evidence claims, re-run at compilation
 
@@ -266,7 +387,39 @@ No designation in this block is unverifiable, and none is invented; every pin na
 | — the same grep with no bound, today | re-run over the whole file | returns 2136, 4333, 4459, 4465, 4469, 4471: the four extra hits are the rider block's own re-quotations, which is precisely why the rider states its 1–4439 convention. **Not a discrepancy**; recorded so that a cross-reader does not read one. |
 | “The expected pin count stays **37** with taxonomy \(20+4+13\)” | arithmetic against the pin roster compiled at shards 2–5 | 20 quoted pairs + 4 first-only + 13 description-only = 37 — consistent with the roster |
 
-**XREF result:** 0 unverifiable designations; **8 of 8 machine-evidence claims reproduced**; 0 compiler `OPEN-CALL`s. The one apparent mismatch (the unbounded naming grep) is explained by the block's own stated convention and is recorded rather than raised.
+**Arithmetic audit:** 8 machine-evidence rows: 7 direct reproductions plus 1
+unbounded control whose additional four hits are exactly the rider's re-quotations.
+All 8 have the recorded disposition.
+
+### C. Blob, commit and artifact pins
+
+`[TABLE — compiler provenance-verification ledger]`
+
+| Citation | Verification | Disposition |
+|---|---|---|
+| `2b74ad0f35f41e3109f1ba779eb8eb266a8ba0fc` | `git cat-file -t` → `blob`; equals `git rev-parse HEAD:<note>` | current source blob verified |
+| `66062771a0496cc1105b618fc98523a0437b79b0` | `git cat-file -t` → `commit` | last source-changing commit verified |
+| `runs/comp13/T2SOL5_output.log` | file exists; verdict line read | `CLEAN`, `0C + 0G + 0m` |
+| `runs/comp13/T2P10_output.log` | file exists; verdict line read | `CLEAN`, `0C + 0G + 1m` |
+
+**Arithmetic audit:** 4 provenance rows = 1 blob + 1 commit + 2 artifacts; 0
+missing and 0 `UNPINNED`.
+
+### D. Cross-note status verification
+
+`[TABLE — compiler full-append status check; not an additional designation XREF]`
+
+| Status claim consumed by this block | Full supplied-note walk | Result |
+|---|---|---|
+| HE3 is at attempt grade 0/2 with consecutive-clean count 1/2 | `HE3_PROOF_2026-08-08.md`: front status/grade at 4–9; `HE3-BOX-1` at 1278–1284; post-PE3 record at 1577–1583; later R8 append checked from 1584 through EOF 1853 | **verified** — the post-PE3 record moves 0/2 → 1/2 and says it HOLDS; the later append has no acceptance or grade event |
+
+**Arithmetic audit:** 1 status claim, 1 full supplied-note chain checked, 1
+verified, 0 unresolved.
+
+**XREF result:** **17 distinct designations verified**; separately, 8/8
+machine-evidence claims reproduced, 4/4 provenance pins verified, and 1/1
+cross-note status chains verified. 0 `NEAR-MISS`; 0 unverifiable designations; 0
+compiler `OPEN-CALL`s.
 
 ---
 
@@ -285,6 +438,10 @@ No designation in this block is unverifiable, and none is invented; every pin na
 | Grade (.07) | Effective | HE3 cap binds S3.1/S3.2 and any HE3-consuming chain | Re-pricing queued |
 | Byte-freeze (.08) | Effective | Dated appends only; rewrite reopens the arc | n/a |
 | Next queue (.09) | Effective; **nothing discharged** | Both obligations outstanding | This IS the consumption-protocol status |
+
+**Arithmetic audit:** 9 ledger rows = the 9 local statement units, each exactly
+once. Status partition: 8 effective records/fences + 1 effective queue with nothing
+discharged; source-side evidence occurs in `.04`/`.06`, downstream completion in 0 rows.
 
 **Reverse-XREF audit.** The acceptance record names **no** downstream consumer note or designation: it addresses “every downstream note that consumes T2 v2” generically. There is therefore no source-backed consumer designation to grep-verify and no reverse-XREF row to invent. This is the same finding shard 1 records, and this shard is its HOME.
 
@@ -307,6 +464,10 @@ No designation in this block is unverifiable, and none is invented; every pin na
 | Rider review status | Do not treat post-pass rider 3 as third-context reviewed; it is not, and the record says so. |
 | Pass-2 nits | Do not treat pass 2's four non-counted nits as cured; they are recorded in the log and deliberately left. |
 
+**Arithmetic audit:** 10 negative-perimeter rows. They partition into 4 mathematical/
+grade fences, 3 protocol/evidence fences, and 3 text/status-reading fences; no row
+creates a positive import edge.
+
 ---
 
 ## 6. TEETH inverse table
@@ -315,7 +476,7 @@ No designation in this block is unverifiable, and none is invented; every pin na
 
 | Tooth / hostile demand | Disposition in effective text | Local units carrying the response |
 |---|---|---|
-| S7 acceptance gate — two consecutive clean hostile passes over one effective text | MET, on model-diverse arms | .01, .04 |
+| S7 acceptance gate — two consecutive clean hostile passes over one effective text | MET, on model-diverse arms; arc provenance retained | .01, .03, .04 |
 | S7 pin gate / pin sweep (the acceptance leg) | Run whole at 37 pins by pass 2; re-resolved by pass 1; last span certified minimal | .06 |
 | Standing S7 consumption check (“quotes, names, or leans on”) | Applied to the M-B row; naming distinguished from consumption | .02 |
 | Dated-append sweep | 28-unit re-enumeration of all six sources at pass 2 | .04 |
@@ -326,6 +487,10 @@ No designation in this block is unverifiable, and none is invented; every pin na
 | Byte-freeze / append discipline | Accepted text fixed; append-only regime declared | .08 |
 | Downstream consumption | Explicitly queued, nothing claimed | .09 |
 | Zero synthetic markers / zero source edits | Both re-reported by both passes and re-run here | .06 |
+
+**Arithmetic audit:** 11 inverse rows. Local-unit coverage is
+`.01`(1), `.02`(1), `.03`(1), `.04`(4), `.05`(1), `.06`(2), `.07`(1),
+`.08`(1), `.09`(1); union = all 9 units. Repeated coverage is intentional.
 
 **Forward check:** all 9 statement units have a nonempty `TEETH` field and appear in at least one inverse row.
 
@@ -353,6 +518,10 @@ No designation in this block is unverifiable, and none is invented; every pin na
 | 4505, byte-freeze | Accepted text of record; append-only | **Local: .08** |
 | 4507, next | Consumption checks queued | **Local: .09** |
 
+**Arithmetic audit:** 11 physical rows cover every nonblank content block in
+4443–4507; they map onto 9 units because `.01` has three separated source spans and
+the other eight units each have one span.
+
 Every line of the range is homed here. **Nothing in this shard is routed elsewhere** — this is the only shard of the six with no routed block, which is what it means for a block to be governing.
 
 ---
@@ -369,18 +538,28 @@ Every line of the range is homed here. **Nothing in this shard is routed elsewhe
 
 **Leading edge.** Line 4442 is blank; line 4443 opens `## Post-pass rider 3`. The r12 round is complete in shard 5, so the edge falls between whole blocks and nothing is split.
 
-**Trailing edge.** Line 4507 is the note's final line. No unit is truncated, and no material of this note lies outside the six shards.
+**Trailing edge.** Line 4507 ends the `Next` unit. Lines 4508–4510 are blank/rule/
+blank; a new whole unit begins at 4511, the 2026-08-14 dated consumption record. It
+lies outside this shard range, was read in full, and explicitly declares **NO
+supersession**. The edge therefore splits no unit and silently truncates nothing.
 
 ---
 
 ## 9. SHARD NOTES
 
-- **No supersession applies to this shard.** Every other shard resolves *into* it. It is the only shard whose units are all effective and none historical.
+- **No later supersession applies to this shard.** Intra-shard Rider 3 supersession
+  is installed in `.01`/`.02`, and the acceptance status supersedes the r12 counter;
+  every local unit is terminal-effective after those changes. The 2026-08-14 dated
+  record outside the range explicitly declares NO supersession.
 - **Upward effects applied elsewhere:** Rider 3.1 amends the ground of shard 5 `.10`'s HE7:2478 row; shard 5 `.10` already records that amendment and states that the disposition is unchanged, so no further edit was required.
 - **Shard-1 overlap, resolved:** shard 1 quotes this block in its header (the effective-text sentence and the “acceptance with this ledger” sentence), in `.42` (the 37-pin sweep sentence) and in `.44` (the grade-move clause). Those are governing-record citations made from a shard whose own HOME is base S0–S8; the HOME of every such sentence is here, and the merge should take this shard as the source of record for them. The same applies to the header quotations in shards 2–5, which cite this block by design.
 - **The one honest gap in the acceptance evidence**, stated by the record itself and preserved here: post-pass rider 3 “has not been read by a third fresh context”. It is wording-grade and deletable without altering a claim, but a cross-reader should know the acceptance pair did not see it.
 - **A verification note for the cross-read:** an unbounded `grep -n 'HE7\.D\|HE7\.B'` over the note today returns six lines, not the two the rider records. This is not an error: the rider's own landmark convention takes counts over lines 1–4439, before the block that necessarily re-quotes the clause four times, and under that bound the census is exactly 2136 and 4333, as re-verified in §3.
-- **Independent corroboration obtained:** unlike the other five shards, this one could be checked against artefacts outside the note — both pass logs carry the exact verdict lines the record claims, the six sources carry zero `T2V2PIN` lines, and the worktree is clean. All eight machine-evidence claims reproduced.
+- **Independent corroboration obtained:** unlike the other five shards, this one could be checked against artefacts outside the note — both pass logs carry the exact verdict lines the record claims, the six sources carry zero `T2V2PIN` lines, and the worktree is clean. All eight machine-evidence claims reproduced; the current blob and last source-changing commit also verify.
+- **HE3 cap checked through its append tail:** the supplier note's front and
+  `HE3-BOX-1` retain attempt grade 0/2; its post-PE3 record moves the
+  consecutive-clean count to 1/2 and holds it there; no later R8 append upgrades
+  it. Thus `.07` does not merely trust a stale supplier HEAD.
 - **Protocol versus absorption, finally:** the note's last sentence queues both downstream obligations. No shard of this compilation reports either as discharged, and `.09` is the unit that says so.
 
 ---
@@ -390,18 +569,19 @@ Every line of the range is homed here. **Nothing in this shard is routed elsewhe
 | Check | Result |
 |---|---|
 | Statement inventory | 9 temporary-ID units, all with HOME in source lines 4443–4507; every line of the range homed |
-| Required fields | 9/9 have `CANONICAL STATEMENT`, `DERIVATION`, `CONDITIONALITY`, `RESOLUTION TRACE`, and `TEETH` |
-| XREF verification | No source display is quoted by this block; 4 designation-level checks resolve; **8 of 8 machine-evidence claims independently re-run and reproduced** |
+| Required fields | 9/9 have `CANONICAL STATEMENT`, `FORM`, `DERIVATION`, `CONDITIONALITY`, `RESOLUTION TRACE`, and `TEETH` |
+| Supersession metadata | `.01`, `.02`, `.06`, `.07` carry functional `SUPERSESSION KIND`; bivalent units carry `TARGETS`, and multi-layer status changes carry a terminal `CHAIN` |
+| XREF verification | **17 distinct designations grep-verified with inline counts**; separately 8/8 machine-evidence claims, 4/4 provenance pins, and 1/1 full-append status chains independently reproduced |
 | Compiler open calls | 0 |
 | Source open obligations | Exactly two — `(LB1)` and `(MP1)` — plus two stipulated carrier hypotheses that fence nothing; `(MP1′)` explicitly not a fifth |
-| Supersession | None applies to this shard; its own effect on shard 5 `.10` is recorded there |
+| Supersession | Rider 3 counter and wording-rider changes installed; acceptance terminal; 2026-08-14 append confirmed non-superseding |
 | Protocol/supply split | Mathematical acceptance, source-side gate evidence, grade, and the queued downstream checks are four separately stated predicates |
 | Tables | The conditionality ledger and the grade consequences are tables; no source table prosified; compiler ledgers marked |
 | Fidelity | Every unit verbatim or explicitly `[ASSEMBLED]`; abridgements marked with ellipses |
 | NON-IMPORTS | Present, 10 rows, all from this block |
 | Teeth inverse | Both directions checked; zero orphans; the no-battery statement is itself homed here |
 | HOME routing | 11 physical blocks, all homed locally; nothing routed |
-| Shard edges | Both edges fall between whole blocks; line 4507 is the note's last line |
+| Shard edges | Both edges fall between whole blocks; the 2026-08-14 record begins as a new unit at 4511 and is explicitly non-superseding |
 | Padding discipline | No shard-1 statement re-emitted; the block's own governing sentences are homed here rather than left as citations elsewhere |
 
-EFF-T2-s6of6 COMPILED: 9 statements / 12 xrefs verified / 0 open calls
+EFF-T2-s6of6 COMPILED: 9 statements / 17 xrefs verified / 0 open calls

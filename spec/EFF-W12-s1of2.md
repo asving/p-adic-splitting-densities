@@ -1,6 +1,7 @@
 # EFF-W12-s1of2 — CANONICAL EFFECTIVE-SPECIFICATION SHARD
 
-**COMPILED-BY: opus (2026-08-14, Asvin-authorized substitution, PROJECT_STATE #51). CODEX CROSS-READ OWED (post-reset).**
+**COMPILED-BY:** gpt-5.6-sol high, compiler pass (2026-08-18). This compilation
+resolves the source record; it does not author new mathematics.
 
 ## 1. Shard header
 
@@ -8,9 +9,15 @@
 
 **HOME range:** source lines 1–1271 inclusive (title/unit header · §S0 reconciliation · §S1 statement + the [r1]/[r3]/[r4] repair records + FIRING CHECK · §S2 proof of W-12.A with W12-L0/W12-L1 · §S3 drainage + the reduction proof · §S4 the weld interface [W12-H] · §S5 the J-D1 handoff · §S6 the eight honest boxes). Later text is used only to resolve material homed in that range.
 
-**HEAD blob hash:** `9fbd5f9ddc5b60297a392f67ddc86cb29a516076` (clean in the working tree; last touched by commit `06958241`).
+**HEAD blob hash:** `9fbd5f9ddc5b60297a392f67ddc86cb29a516076` (`git hash-object`,
+re-verified 2026-08-18). The source file is clean in the working tree and was last
+touched by commit `06958241` (`git cat-file -t` = `commit`).
 
 **Compilation context:** `spec/EFF_TEMPLATE_v2.md`; temporary IDs `EFF.W12.s1of2.<nn>`. Companion shard: `spec/EFF-W12-s2of2.md` (lines 1272–2453), which owns the battery, the arcs, the acceptance record and the 2026-08-12 dated appends that correct three statements homed here.
+
+**GENRE:** tag-sparse prose proof. The HOME range has `grep -c '\\tag{'` = **0**
+(the full note has 11 tags, all in the later W12-HT discharge). `FORM` is therefore
+mandatory on every unit, and §6 records the boundary choices.
 
 ### Governing effective-text record
 
@@ -26,13 +33,56 @@ The post-acceptance appends state the same discipline (line 2009):
 
 > “Everything above this heading is byte-untouched by this append.”
 
-**Effective text for this shard = the base body of lines 1–1271 as written, READ AS CORRECTED by (i) the in-range dated brackets `[r1]`–`[r5]`, and (ii) the out-of-range 2026-08-12 dated appends, which correct three statements homed here.** The three corrections are load-bearing and are applied at their units:
+**Effective text for this shard = the base body of lines 1–1271 as written, READ AS
+CORRECTED by (i) the in-range dated brackets `[r1]`–`[r5]`, and (ii) the out-of-range
+2026-08-12 dated appends.** The later correction or discharge is terminal wherever it
+names an earlier span. Four cross-shard corrections are applied at their HOME units:
 
 1. the **level-0 decoration-orbit factor** `κ(T)` in W-12.A (lines 2032–2091);
 2. the **all-degree order-1 history-transfer** obstruction (2012–2030) and its **discharge** by LEMMA W12-HT (2192–2453) — after which W-12.A's controlling formula is `(HT-global)`, not the S1 display;
 3. the **rationality/uniformity of the core coefficient** `c_F` in W-12.D hypothesis (A1) (2093–2141);
 
-plus a fourth, purely bibliographic: the **W12-BOX-1 dependency range** `(H-a)–(H-d)` → `(H-a)–(H-e)` (2143–2153).
+4. the **W12-BOX-1 dependency range** `(H-a)–(H-d)` → `(H-a)–(H-e)`
+   (2143–2153).
+
+The obstruction/discharge chain is:
+
+> frozen S1 display → dated obstruction (lines 2012–2030) → level-zero orbit
+> correction (2032–2091) → LEMMA W12-HT and its consumer sweep (2192–2429,
+> **TERMINAL**).
+
+The terminal source sentence is unambiguous: “The corrected W-12.A law for every
+window-visible decided order-1 shape is (HT-global), with per-branch term (HT-branch).”
+The external certification ledger additionally records transcription confirmation, but
+that external status is not needed to select the note's terminal mathematical reading.
+
+### Freeze predicates
+
+1. **Text freeze / acceptance.** The post-PE7 record says: “the 2-clean counter
+   COMPLETES 1/2 → 2/2; W-12 IS ACCEPTED, the note FROZEN, dated appends only.”
+2. **Instrument freeze.** The accepted record says the “runner + artifacts” stay
+   “byte-frozen at seal `f669cb0`”; the runner is byte-identical to that commit.
+3. **Acceptance-scope enumeration.** The §S10 consequence paragraph enumerates the
+   accepted mathematical perimeter:
+
+   > “**Consequence for the grade box:** the S1 grades stand as composed —
+   > THEOREM W-12.A PROVED at the order-1 layer of every degree with its new
+   > instances machine-sealed both characteristics (7 TRP families incl. 3 wild
+   > strata, QRT g = 2 incl. the wild (2,2)); THEOREM W-12.C's exact DBL drainage
+   > term GREEN on 23 rows; THEOREM W-12.D stands as an unconditional reduction
+   > (its n = 2 instance fires on W-11's theorems; nothing here can strengthen or
+   > weaken a proof, but the reduction's (A1)-shape data — q-uniform laws,
+   > letter-blind cells — is what the battery confirmed at every new family); the
+   > S6 boxes open exactly as displayed (orders ≥ 2 = [W12-H];
+   > (hMenu-3)/(hExhaust-3) = BOX-2/BOX-3; W-12.B remains a conjecture).”
+
+   Acceptance changes the arc grade, not those mathematical grades.
+
+**Evidence fence for the later discharge:** LEMMA W12-HT was appended after PE7. Its
+source record supplies a proof, a GREEN machine certificate, and a transcription
+confirmation recorded in the external certification ledger; W12 records no new hostile
+pass over that append. This evidence classification does not weaken its terminal role in
+the note's effective mathematical text.
 
 ### Scope split
 
@@ -46,11 +96,17 @@ and the one-line hypothesis ledger at §S9 (out of range, quoted here because it
 
 “Attempt 0/2” is superseded by the acceptance record (ACCEPTED 2/2).
 
-**APPEND/consumption PROTOCOL scope.** Separate predicate, and explicitly asymmetric here: this note RECEIVES two verbatim annexes (from HEX3 and HMENU3, both homed in shard 2) that discharge two of its own boxes, and it OWES one correction outward, un-landed:
+**B. APPEND/consumption PROTOCOL scope.** No absorption append is claimed landed by
+W12 on a supplier. The cross-note quantifier repairs diagnosed by W12 are now both
+landed in their owners' full chains: HMENU3 ANNEX A (commit `19c02857`, refined by
+ANNEX B/C at `d665620b`) and HEX3's in-place `[r4]` correction at lines 80–95. The
+frozen pre-correction sentences remain present by design and are not evidence that an
+append failed to land.
 
-> “The HMENU3-side dated annex is drafted verbatim for application at `lean/notes/openmath/HMENU3_annex_draft_r5.md` (application to HMENU3_PROOF_2026-08-08.md is the orchestrator's, per the same annex-fence convention ANNEX/ANNEX 2 follow here).”
-
-No consumption append is claimed landed on any supplier by this note.
+**C. INBOUND corrections received.** W12 receives two verbatim supplier annexes,
+both homed in shard 2: HEX3 discharges `(hExhaust-3)`/W12-BOX-3 at composition grade;
+HMENU3 discharges `(hMenu-3)`/W12-BOX-2 at composition grade. These licenses close the
+two n = 3 firing obligations without changing W-12.D's reduction theorem or W-12.B.
 
 ### Resolution rules applied
 
@@ -62,7 +118,18 @@ No consumption append is claimed landed on any supplier by this note.
 6. The 2026-08-12 dated (A1) correction governs W-12.D's hypothesis interface: `c_F(X) ∈ ℚ(X)` fixed for the family, evaluated at `X = q`.
 7. The 2026-08-12 dated BOX-1 correction governs W12-BOX-1's dependency range.
 8. `[W12-H]`, `(H-a)`–`(H-e)`, and `(A0)`/`(A1)`/`(A2)` are this note's hypothesis-interface vocabulary and are emitted as first-class units (`.47`, `.12`, `.13`) — they are what downstream capstone conditionality is written in.
-9. External repo records — the CITE-SCOPE resolution and the SOL certification ledger — are **reading notes**, never edits (§8).
+9. `(A0)` remains in the effective interface because the source explicitly calls it
+   “redundant-but-retained”; deleting it would be authorship, not compilation.
+10. The HMENU3 and HEX3 supplier-side wording corrections are verified against their
+    complete current correction/append chains. Their old “owed” descriptions are stale.
+11. External repo records — the CITE-SCOPE resolution and the SOL certification ledger — are **reading notes**, never edits (§8).
+
+### Quotation and table discipline
+
+Every CANONICAL STATEMENT is verbatim or explicitly `[ASSEMBLED]`; strike-through is
+preserved and truncation is marked `…`. Source tables are marked `[TABLE]`, not
+prosified. Count tables carry a compiler arithmetic-audit line. Compiler ledgers are
+marked `[TABLE — compiler ledger]`.
 
 ---
 
@@ -72,13 +139,22 @@ No consumption append is claimed landed on any supplier by this note.
 
 **CANONICAL STATEMENT:** Title line and unit header
 
+**FORM:** bold-headed paragraph
+
 > “# W12 — THE GENERAL-n ASSEMBLY (the J-D block's terminal rung): the order-1 shape-generic count law PROVED at ALL degrees (THEOREM W-12.A), the general drainage law stated precisely with the n = 3 double-root term EXACT (THEOREM W-12.C partial; CONJECTURE W-12.B), and THE REDUCTION THEOREM (THEOREM W-12.D, PROVED): exact menu laws + drainage ⟹ ONE R_τ ∈ ℚ(q) per splitting type at every prime power, both characteristics, wild included — conditional structure displayed the way `montes_unconditional` displays its hypotheses”
 
 > “**Unit:** W-12, the J-D block's terminal rung after THEOREM W-11(n = 2) (GRT_WELD_BLUEPRINT_2026-08-08 §S3.1 row W-12; execution-order step (8); WELD_SYNTHESIS_2026-08-05 §4(ii)). **Attempt grade 0/2** (**[r5, PE5 m2: the display that followed was the [r1]-era arc — SUPERSEDED; the CURRENT arc is the [r5] ARC at the end of this note, marked the same way as the [r1] and [r3] displays]** ~~arc: composed → PE1 NOT CLEAN 1C+3G+2m @ 2b47711 → r1 THIS REPAIR, note-only, [r1] tags, minimality contract — F1 (CRITICAL, W-12.A display) + F2/F3/F4 + m1/m2 repaired in place; counter 0/2; PE2 next~~).”
 
 > “Per the effort directive (Asvin 2026-08-05) W-12 IS the complete-theorem target of the block: composed at the strength actually proved, honest boxes over reach, every supplier pinned as-of.”
 
-**CONDITIONALITY:** “Attempt grade 0/2” is historical, superseded by the acceptance record (ACCEPTED 2/2, resolution rule 3). The struck arc display is not effective text; the `[r5]` ARC (shard 2) is the current one.
+**CONDITIONALITY:** `STALE-SELF-DESCRIPTION` — “Attempt grade 0/2” is historical,
+superseded by the acceptance record (ACCEPTED 2/2, resolution rule 3). The struck arc
+display is not effective text; the `[r5]` ARC (shard 2) is the last repair-round arc.
+
+**SUPERSESSION KIND:** as-of scoping.
+
+**CHAIN:** composition 0/2 → `[r1]` arc → `[r3]` arc → `[r4]` arc → `[r5]` arc →
+PE6 CLEAN 1/2 → PE7 CLEAN, **TERMINAL: ACCEPTED 2/2**.
 
 **DERIVATION:** Header record, no derivation.
 
@@ -95,6 +171,8 @@ XREF: `docs/in-progress/WELD_SYNTHESIS_2026-08-05.md:(ii) J-D composition plan: 
 ### EFF.W12.s1of2.02  [fence]
 
 **CANONICAL STATEMENT:** Composition provenance (disclosed)
+
+**FORM:** bold-headed paragraph
 
 > “**Composition provenance (disclosed):** this is the FIFTH incarnation of the unit (four prior composer sessions died to API errors mid-draft; their partials are archived OUTSIDE the repo in /tmp/k2res_partial_archive/ and were treated as UNTRUSTED scaffolding — every statement kept here was re-derived from scratch in this session; the archived S7 bookkeeping totals failed re-derivation and are recomputed below; the archived drafts' own disclosed correction — a spurious (q^d−1)-per-interior-vertex factor in the census normalization of an earlier draft — was independently re-confirmed to be a necessary correction by the sweep argument of S2.2, which this session re-proved). This note was written and committed in increments (survival discipline); the SEAL commit is the one containing the final §S7 + the unrun runner.”
 
@@ -114,6 +192,8 @@ XREF: `docs/in-progress/WELD_SYNTHESIS_2026-08-05.md:(ii) J-D composition plan: 
 
 **CANONICAL STATEMENT:** Instrument summary (header)
 
+**FORM:** bold-headed paragraph
+
 > “**Instrument:** sealed two-commit battery `verification/openmath/w12_checks.py` (23 cubic census rows = 7,105,774 cubics covered with 2,946,008 DBL/TRP lifts read individually; 8 quartic quadruple-center stratum rows = 580,550 members; 11 history-resolved quadratic rows = 69,053 polynomials; PARI/GP independent σ-multiset oracle on 40,645 cubics + 1,516 quartics + 85 constructed species ambiguity-witness pairs; the n = 3 drainage decomposition with the DBL term as a THEOREM row and U₃^TRP measured EXPLORATORY under a disclosed conservative convention; four teeth). Verdict §S10, appended at commit 2 FROM the committed artifacts.”
 
 **CONDITIONALITY:** Two disclosed scope limits are carried by the summary itself: `U₃^TRP` is EXPLORATORY under a conservative convention (not a σ-decidedness claim), and the oracle is PARI-based on mixed-characteristic rows only (W12-BOX-6, `.52`).
@@ -129,6 +209,8 @@ XREF: `docs/in-progress/WELD_SYNTHESIS_2026-08-05.md:(ii) J-D composition plan: 
 ### EFF.W12.s1of2.04  [scope-record]
 
 **CANONICAL STATEMENT:** What W-12 is (one breath)
+
+**FORM:** bold-headed paragraph
 
 > “W-10 proved ONE count equality at ONE order-1 shape ((2,1,1) Eisenstein quadratics); W-11 proved the COMPLETE menu at n = 2 with the exact drainage law q^(−N). W-12 is the assembly rung the uniformity directive (Asvin 2026-08-03: ONE R_τ ∈ ℚ(q) per splitting type, all orders and all primes AT ONCE) actually needs: (i) the shape-generic count law — proved outright at the order-1 layer of EVERY degree (THEOREM W-12.A), with the orders-≥ 2 layer stated through the weld machinery as a displayed hypothesis box; (ii) the general menu-exhaustion/drainage law — stated precisely (CONJECTURE W-12.B), with W-11's q^N as the proved n = 2 instance, the n = 3 double-root stratum drained EXACTLY here (THEOREM W-12.C, via the block-transfer LEMMA W12-L1 consuming W-11's per-center law), and the triple-center residue boxed with its exact obstruction; (iii) THE REDUCTION THEOREM (W-12.D): (i) + (ii) imply one R_τ ∈ ℚ(q) per splitting type at every prime including wild — proved unconditionally AS a reduction, and it FIRES unconditionally at n = 2 (re-deriving W-11's densities through the general mechanism). The blueprint row's own J-D1 faithfulness-handoff composition display is §S5, at its own S-price.”
 
@@ -149,6 +231,8 @@ XREF: `lean/notes/openmath/W10_PROOF_2026-08-08.md:THEOREM W-10` — grep-verifi
 ### EFF.W12.s1of2.05  [scope-record]
 
 **CANONICAL STATEMENT:** §S0 — the blueprint's W-12 row and the divergence box
+
+**FORM:** bold-headed paragraph
 
 > “**The blueprint's W-12 row, verbatim** (GRT_WELD_BLUEPRINT_2026-08-08 §S3.1):
 >
@@ -172,6 +256,8 @@ XREF: `docs/in-progress/GRT_WELD_BLUEPRINT_2026-08-08.md:the faithfulness handof
 
 **CANONICAL STATEMENT:** §S0 — Reconciliation with W-11 §S4.3 (the stated general-n program)
 
+**FORM:** bold-headed paragraph
+
 > “W-11 closed n = 2 and stated the general program as (P1) the node system, (P2) the per-node exhaustiveness identity with owed inputs (universal S_λ(q) censuses at g ≥ 2, the JA-GRID/JB-VTX position faces incl. JB row-12's open membership residue, the JC no-cancellation warrant at composite stages), (P3) the uniform drainage bound. THIS note executes the program's provable slice and composes the rung the program was for: (P2)'s census-times-lattice structure is clause (i) — and the S_λ(q) censuses at g ≥ 2 enter as EXPLICIT classical counting polynomials, re-derived and machine-checked at g = 2, 3 in both characteristics, so that owed input is DISCHARGED at the order-1 layer; (P3) is clause (ii); the assembly they feed is clause (iii), which S4.3 did not state and which is W-12's own theorem. (P1) appears as the organizing frame of S1's conventions (definitions, not theorems). The JB row-12 residue and the JC composite-stage warrant remain owed by the order-≥ 2 layer exactly as W-11 priced them (W12-BOX-1).”
 
 **CONDITIONALITY:** One of W-11's three owed inputs (the `S_λ(q)` censuses at `g ≥ 2`) is discharged **at the order-1 layer only**; the other two stay owed at orders ≥ 2.
@@ -191,6 +277,8 @@ XREF: `lean/notes/openmath/GRTJB_PROOF_2026-08-08.md:JB-VTX` — grep-verified c
 ### EFF.W12.s1of2.07  [fence]
 
 **CANONICAL STATEMENT:** §S0 — THE KEY DESIGN DECISION (three reasons the elementary route does not scale)
+
+**FORM:** bold-headed paragraph
 
 > “**THE KEY DESIGN DECISION (charge-mandated, reasoning displayed).** W-11 was proved at n = 2 by elementary classification — explicit Hensel/Eisenstein/Artin–Schreier case analysis of a 3-point polygon. That route does NOT scale to the general rung, for three separately fatal reasons, and the general clauses are therefore composed THROUGH the weld machinery:
 >
@@ -220,6 +308,8 @@ XREF: `lean/notes/openmath/GRTJB_PROOF_2026-08-08.md:JB-DEV` — grep-verified c
 
 **CANONICAL STATEMENT:** §S1 Conventions — the setting, the read, and the pinned σ-DECIDED predicate
 
+**FORM:** bold-headed paragraph
+
 > “Conventions. Fix a degree n ≥ 2. O a complete DVR with residue field F_q (either characteristic: mixed absolutely-unramified Z_p-type, v(p) = 1, or equal F_q[[t]]-type — the W-11 r2 pin inherited; as there, the pin is load-bearing only for p = 2 disc-spectrum displays, never for counts), π a uniformizer, window N ≥ 2; enumerate monic degree-n f over O/π^N (q^(nN) of them; unit: polynomials).”
 
 > “The read is the recursive OM-convention read: level-0 factorization of f̄ over F_q; per repeated irreducible factor P̄ (degree d, multiplicity m ≥ 2), the Φ-adic branch development (Φ the read's fixed monic lift of P̄) and its principal Newton polygon; per side, the residual polynomial over F_{q^d}; separable residuals decide (Ore leaves); repeated residual roots of degree 1 ON AN e = 1 SIDE refine (recenter deeper), while on an e ≥ 2 side they open a key of degree e·d > d — an order-2 (composite) stage, exactly S2.5's QRT-G2(h;(1²)) row [r1: the sealed trichotomy misclassified this genre as "recenter deeper"; harmless at n = 3, where every e ≥ 2 side has g = 1 so no repeated residual can occur on one — PE1-verified in the completeness case tree, incl. the runner's never-firing `assert e == 1`]; repeated residual factors of degree ≥ 2 open order-2 (composite) stages.”
@@ -246,7 +336,11 @@ XREF: `lean/notes/openmath/W11_PROOF_2026-08-08.md:SPLIT-TAIL` — grep-verified
 
 ### EFF.W12.s1of2.09  [lemma]
 
-**CANONICAL STATEMENT:** THEOREM W-12.A — the order-1 shape-generic count law (clause (i))
+**CANONICAL STATEMENT:** [ASSEMBLED — frozen clause (i), the level-zero orbit
+correction, and the terminal W12-HT discharge] THEOREM W-12.A — the order-1
+shape-generic count law (clause (i))
+
+**FORM:** bold-headed paragraph
 
 > “**(i) [THEOREM W-12.A — the order-1 shape-generic count law] PROVED at all degrees n, all prime powers q, both characteristics, wild strata included.** Let T be an order-1 window-visible decided shape: level-0 configuration C = {(P̄_i, m_i)} (distinct monic irreducibles P̄_i of degree d_i, multiplicities m_i, Σ m_i d_i = n), and per repeated branch (m_i ≥ 2) an exact branch polygon P_i (all vertex heights ≤ N−1) with per-side residual factorization types λ_{i,S} over F_{q^{d_i}}, all residuals separable. Then the window-N count of monic f realizing T is EXACTLY
 >
@@ -279,6 +373,16 @@ XREF: `lean/notes/openmath/W11_PROOF_2026-08-08.md:SPLIT-TAIL` — grep-verified
 
 with the in-range display recovered as its depth-zero case. The `[W12-H]` fence on the order-≥ 2 layer is unchanged by either correction (“Composite-stage and drainage boxes do not move”).
 
+**SUPERSESSION KIND:** replacement (the simple-branch and `κ_0(T)` factors) + license
+(W12-HT restores full order-1 coverage).
+
+**TARGETS:** `EFF.W12.s1of2.09` (the frozen depth-zero display);
+`EFF.W12.s1of2.14` (the full-order-1 coverage line).
+
+**CHAIN:** frozen display → `[r1]` simple-branch replacement → dated obstruction →
+dated `κ(T)` correction → LEMMA W12-HT consumer sweep, **TERMINAL: `(HT-global)` with
+`(HT-branch)`**.
+
 **DERIVATION:** Assembled in §S2: `.21` (level-0 product structure) × `.23`–`.24` (one branch: the digit calculus and the census normalization) × `.22` (the level-0 census), closed at `.27` (Ore leaves). At full generality the derivation is LEMMA W12-HT's five-step proof (shard 2), whose depth-zero specialization is the §S2 chain here.
 
 **RESOLUTION TRACE:** Base §S1 clause (i), lines 197–230, with `[r1]`'s simple-branch repair landed in the display (`.15`); corrected by the two 2026-08-12 appends (resolution rules 4–5).
@@ -294,6 +398,8 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 ### EFF.W12.s1of2.10  [open-obligation]
 
 **CANONICAL STATEMENT:** CONJECTURE W-12.B (DRAIN-n), stated precisely
+
+**FORM:** bold-headed paragraph
 
 > “* **CONJECTURE W-12.B (DRAIN-n), stated precisely.** For every n ≥ 2 there is c_n(q) ∈ ℚ(q), independent of the characteristic, with undecided(n, q, N) · q^{−(n−1)N} → c_n(q) as N → ∞ at every prime power q, where undecided(n, q, N) counts the window members NOT σ-DECIDED in the S1 Conventions' pinned lift-certification sense (W12-BOX-7's convention) — NOT the conservative-read residue, whose normalized mass DIVERGES linearly at n = 3 (THEOREM HEX3.A; the σ-scoping is load-bearing, [r3] F1 record below) — equivalently the normalized σ-undecided mass is c_n(q)·q^{−N}·(1 + o(1)) → 0 (hExhaust at degree n), and the decided window counts are given exactly by finitely many q-polynomial laws in the style of clause (i). PROVED instances and bounds: n = 2 is THEOREM W-11(iii) with the EXACT law q^N (c_2 = 1, zero error at every window); the general LOWER bound undecided(n, q, N) ≥ q^{(n−1)(N−1)} holds at every n ≥ 2 (S3.3) — so the conjectured rate is correct-in-order wherever the conjecture holds. GRADE: conjecture (the n ≥ 3 upper bounds are open).”
 
@@ -313,6 +419,8 @@ XREF: `lean/notes/openmath/HEX3_PROOF_2026-08-08.md:THEOREM HEX3.A` — grep-ver
 
 **CANONICAL STATEMENT:** THEOREM W-12.C (n = 3, partial)
 
+**FORM:** bold-headed paragraph
+
 > “* **THEOREM W-12.C (n = 3, partial). PROVED as stated.** For every prime power q, both characteristics, every N ≥ 2:
 >
 >       undecided(3, q, N) = (q−1)·q^{2N−1} + U₃^TRP(q, N),
@@ -331,7 +439,11 @@ XREF: `lean/notes/openmath/HEX3_PROOF_2026-08-08.md:THEOREM HEX3.A` — grep-ver
 
 ### EFF.W12.s1of2.12  [hypothesis]
 
-**CANONICAL STATEMENT:** THEOREM W-12.D — the hypothesis interface (A0), (A1), (A2)
+**CANONICAL STATEMENT:** [ASSEMBLED — frozen (A0)/(A1)/(A2), `[r4]` σ-labeling
+strengthening, and the dated rational-coefficient replacement] THEOREM W-12.D — the
+hypothesis interface (A0), (A1), (A2)
+
+**FORM:** bold-headed paragraph
 
 > “**(iii) [THEOREM W-12.D — THE REDUCTION THEOREM] PROVED, unconditional as a reduction.** Fix n and suppose, at every prime power q simultaneously:
 >   (A0) [lift well-posedness] every window-decided member of a core family has ALL its disc ≠ 0 O-lifts of the read's type **[r4, PE4 F2(i): "the read's type" = the family's label σ_F — the reading that (A1)'s new σ-clause now fixes; under the r3 pin, read as the member's OWN forced σ this clause is a tautology, see the [r4] F2 record]**;
@@ -352,6 +464,16 @@ with the reason stated at the end of that append: “The \(n=2\) coefficients su
 
 **Effective (A1) = the corrected clause.** (A0) is, post-`[r4]`, “redundant-but-retained”: `[r5]` MINOR 1 records that “(A0) is the same statement in its well-posedness phrasing, i.e. redundant-but-retained: it is not the load-bearing warrant at either bound”.
 
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.W12.s1of2.12` (pre-`[r4]` (A1) and its original coefficient clause),
+`EFF.W12.s1of2.42` (Step 1's q-independence warrant), `EFF.W12.s1of2.44` (the literal
+admissibility of the n = 2 coefficients).
+
+**CHAIN:** frozen (A1) → `[r4]` σ-labeling strengthening → dated
+`c_F(X) ∈ ℚ(X)` replacement, **TERMINAL: corrected (A1)**. `(A0)` is retained at every
+link.
+
 **DERIVATION:** Hypotheses, not derived. The σ-LABELING clause's necessity is proved by the degenerate instance at `.17`; its supply at each firing degree is the FIRING CHECK table `.18`.
 
 **RESOLUTION TRACE:** Base §S1 clause (iii) hypotheses, lines 267–295, with `[r4]` F2's two brackets landed in place; (A1)'s coefficient clause replaced by the 2026-08-12 correction.
@@ -363,6 +485,8 @@ with the reason stated at the end of that append: “The \(n=2\) coefficients su
 ### EFF.W12.s1of2.13  [lemma]
 
 **CANONICAL STATEMENT:** THEOREM W-12.D — the conclusion
+
+**FORM:** bold-headed paragraph
 
 > “THEN for every splitting type τ of degree n:
 >
@@ -389,9 +513,21 @@ XREF: `lean/notes/openmath/HEX3_PROOF_2026-08-08.md:THEOREM HEX3.A` — grep-ver
 
 **CANONICAL STATEMENT:** GRADE SUMMARY
 
+**FORM:** bold-headed paragraph
+
 > “**GRADE SUMMARY: (iii) PROVED as stated; (i) PROVED at the order-1 layer of every degree (+ the named instances machine-sealed), CONDITIONAL at orders ≥ 2 on the displayed [W12-H]; (ii) theorem at n = 2 (consumed), exact-DBL-term + bounds at n = 3 (W-12.C PROVED as stated), precise conjecture in general. Attempt 0/2.**”
 
-**CONDITIONALITY:** “Attempt 0/2” superseded by ACCEPTED 2/2. Clause (i)'s “order-1 layer of every degree” is exactly the claim the 2026-08-12 obstruction suspended and the W12-HT discharge restored — the discharge's own closing sentence: “Thus ‘the order-1 layer at all degrees’ and ‘every W-11 row is an instance’ are again justified by the note's proved mechanisms.”
+**CONDITIONALITY:** `STALE-SELF-DESCRIPTION` for “Attempt 0/2”, superseded by
+ACCEPTED 2/2. Clause (i)'s “order-1 layer of every degree” is exactly the claim the
+2026-08-12 obstruction suspended and the W12-HT discharge restored — the discharge's
+own closing sentence: “Thus ‘the order-1 layer at all degrees’ and ‘every W-11 row is an
+instance’ are again justified by the note's proved mechanisms.”
+
+**SUPERSESSION KIND:** license + as-of scoping.
+
+**CHAIN:** order-1 coverage asserted → dated obstruction → W12-HT discharge,
+**TERMINAL for mathematical scope: full order-1 coverage**; attempt 0/2 → PE7,
+**TERMINAL for grade: ACCEPTED 2/2**.
 
 **DERIVATION:** Grade ledger.
 
@@ -404,6 +540,12 @@ XREF: `lean/notes/openmath/HEX3_PROOF_2026-08-08.md:THEOREM HEX3.A` — grep-ver
 ### EFF.W12.s1of2.15  [changes-record]
 
 **CANONICAL STATEMENT:** `[r1]` F1 REPAIR RECORD (PE1 @ 2b47711, FINDING 1 CRITICAL, display-level)
+
+**FORM:** bold-headed paragraph
+
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.W12.s1of2.09` (pre-`[r1]` count display).
 
 > “The W-12.A display as sealed ran the product over {i : m_i ≥ 2} only, omitting the simple-branch factor Π_{i: m_i=1} q^{d_i(N−1)} — false for every shape with at least one simple branch — while the S2 proof establishes the CORRECTED law all along (S2.1's explicit simple-branch count q^{d_i(N−1)} each, assembled in S2.3): the display and the cell clause above are now ALIGNED TO THE PROOF, nothing re-proved. Verified against both PE1 counter-instances during this repair: (a) SEP-SPLIT at n = 2 (two simple branches) — the corrected display gives C₀·q^{2(N−1)} = ((q²−q)/2)·q^{2N−2} = W-11(ii)'s SEP law exactly (the sealed display gave the N-free C₀ alone); (b) DBL RAM(1) at (Zp, q = 2, N = 5) — the corrected display gives C₀·q^{N−1}·(q−1)q^{2N−3} = q(q−1)·q^{N−1}·(q−1)q^{2N−3} = 2·16·128 = 4096 == the committed artifact `w12_checks_results.json` row (Zp,2,5) dbl_keys[('RAM',(1,),())], re-read from the committed JSON this repair (the sealed display gave 256, short by exactly the simple-branch fiber q^{N−1} = 16 that LEMMA W12-L1(c) carries correctly). The corrected dens_T = C₀(q)·q^{−Σ_{i:m_i=1} d_i}·Π_{i:m_i≥2}[S_T·q^{−d_i(Σ_{j<m_i}⌈P_i(j)⌉ + L_i)}] is N-free, restoring the statement's own "dens_T ∈ ℚ(q) is shape-only" clause (internally contradicted by the sealed display).”
 
@@ -424,6 +566,13 @@ XREF: `lean/notes/BRIDGE_ADJUDICATIONS_2026-07-30.md:erratum` — grep-verified 
 ### EFF.W12.s1of2.16  [changes-record]
 
 **CANONICAL STATEMENT:** `[r3]` F1 REPAIR RECORD — the σ-pin, the rejected parse's computed price, and the consuming-surface sweep
+
+**FORM:** bold-headed paragraph
+
+**SUPERSESSION KIND:** scope-pin.
+
+**TARGETS:** `EFF.W12.s1of2.08` (σ-DECIDED definition),
+`EFF.W12.s1of2.10` (DRAIN-n quantity), `EFF.W12.s1of2.51` (BOX-7 reading).
 
 > “As sealed(+r1+r2) the statement complex carried TWO non-equivalent definitions of CONJECTURE W-12.B's load-bearing quantity: S1's read-anchored sentence (whose "the read's σ" is undefined on a tail member — the S1 read description specifies no tail-certification rule — so that parse counts EVERY tail member undecided) vs W12-BOX-7's lift-certification "Decided" (the window digits force one σ across all disc ≠ 0 lifts). The two coincide at n = 2 ONLY because THEOREM W-11 proved its read certifies SPLIT-TAIL, and can disagree only on deep-tail TRP members (BOX-7's own fence); the [r3] pin — at the S1 definition and in the W-12.B bullet — selects BOX-7's notion, the one every PROVED and machine-checked surface already uses; nothing is re-proved.”
 
@@ -447,6 +596,13 @@ XREF: `lean/notes/openmath/HEX3_PROOF_2026-08-08.md:THEOREM HEX3.A` — grep-ver
 
 **CANONICAL STATEMENT:** `[r4]` F2 REPAIR RECORD — the missing σ-labeling hypothesis, with its necessity instance
 
+**FORM:** bold-headed paragraph
+
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.W12.s1of2.12` ((A1) hypothesis interface),
+`EFF.W12.s1of2.43` (Step-4 warrant).
+
 > “As sealed(+r1+r2+r3), (A0)+(A1) attached σ_F to each core family as DATA and never said the family's members HAVE type σ_F, nor that they are σ-DECIDED at all: (A1) gave counts and disjointness only, and (A0) was conditioned on "every **window-decided** member" while Step 4's lower bound needs the conclusion for EVERY member of every visible core class (D_τ counts them all). Under the r3 pin (A0)'s "the read's type" reads as the member's own forced σ, making it the tautology "for every decided member, all disc ≠ 0 lifts have the σ they all have".”
 
 > “THE DEGENERATE INSTANCE that the sealed hypotheses admit (PE4's, verified here): n = 2, any q, ONE family F = all window-N monic quadratics with d_F = 0, ℓ_F ≡ 0, ν_F ≡ 0, c_F = 1, and label σ_F := split. (A1) as sealed holds (a single class per window, exact count 1·q^{2N}, disjointness trivial, all data q- and characteristic-free); (A2) holds with r(N) ≡ 0; (A0) as sealed holds tautologously. The conclusion then gives R_split = 1, R_inert = R_ram = 0 — Σ_τ R_τ = 1 ✓ — while μ_split = q/(2(q+1)) ≠ 1, so the theorem's "it equals … the Haar splitting density μ_τ" clause is FALSE at that instance. The [r4] σ-LABELING clause excludes it exactly: that F contains σ-undecided members (W-11(iii)'s q^N residue) and members with forced σ = inert (SEP-INERT), so NO σ_F satisfies the clause. Nothing is re-proved: the intended reading was always S2.3's ("σ-DECIDED with σ read off the shape alone, and (A0)-strongly"), which is why the proof was morally fine and no corpus conclusion moves.”
@@ -461,9 +617,15 @@ XREF: `lean/notes/openmath/HEX3_PROOF_2026-08-08.md:THEOREM HEX3.A` — grep-ver
 
 ---
 
-### EFF.W12.s1of2.18  [TABLE]
+### EFF.W12.s1of2.18  [table]
 
 **CANONICAL STATEMENT:** [TABLE] FIRING CHECK — does every instance the corpus actually fires supply the new clause?
+
+**FORM:** display
+
+**SUPERSESSION KIND:** wording-rider.
+
+**TARGETS:** `EFF.W12.s1of2.18` (the pre-`[r5]` n = 3 firing cell).
 
 > “*FIRING CHECK (the charge: does every instance the corpus actually fires supply the new clause? — verified against the supplier notes at this repair, clause by clause).*”
 
@@ -475,7 +637,17 @@ XREF: `lean/notes/openmath/HEX3_PROOF_2026-08-08.md:THEOREM HEX3.A` — grep-ver
 | **n = 5** (GENHN, "P(5) FIRES OUTRIGHT") | every n = 5 genre (all μ = 2) | **SUPPLIED.** THEOREM GENHN.C: "At every decided leaf of every μ = 2 stage genre (all e₁ ≥ 1, f₁ ≥ 1 with e₁f₁ ≥ 2, all Q, both characteristics, any history, any window), EVERY lift with disc ≠ 0 has the σ claimed by the leaf dictionary" (stage-RAM ↦ {(2e₁, f₁)}, stage-2SIDED/SPLITEQ/SPLTAIL ↦ {(e₁,f₁),(e₁,f₁)}, stage-INERT ↦ {(e₁, 2f₁)}), with "(A0)-strong at every μ = 2 stage leaf" recorded at the end of its proof |
 | **n ≥ 6** (GENHN's P(n)) | μ ≥ 3 stage leaves appear | **NOT supplied — and openly so:** the clause at μ ≥ 3 leaves IS the named open box [GENHN-HE(μ ≥ 3)] ("σ-decision at stage leaves of multiplicity μ ≥ 3, first live n = 6"). So the strengthening hides nothing: it names, at W-12.D's own hypothesis, the one thing that program already owes |
 
-**CONDITIONALITY:** Coverage is complete through n = 5 and **openly absent at n ≥ 6**. The n = 3 row was re-worded at `[r5]` (the strike-through above is the note's own) — the row now vouches only for the disc ≠ 0 form, and the HMENU3-side phrasing correction is owed and drafted but **not landed** (`.02`'s protocol note; the draft is `lean/notes/openmath/HMENU3_annex_draft_r5.md`).
+**ARITHMETIC AUDIT:** Five firing rows: four supplied rows (`n = 2,3,4,5`) and one
+open range (`n ≥ 6`). The frozen n = 3 cell says “33-family”; HMENU3 ANNEX B later
+refines the indexing to **53 formal fixed-σ families**. Both figures are recorded, not
+silently reconciled: 33 is W12's frozen source count; 53 is the terminal supplier-side
+formal-family inventory.
+
+**CONDITIONALITY:** Coverage is complete through n = 5 and **openly absent at n ≥ 6**.
+The n = 3 row was re-worded at `[r5]` (the strike-through above is the note's own) and
+vouches only for the disc ≠ 0 form. The HMENU3-side correction is **LANDED** at ANNEX A
+(commit `19c02857`) and refined by ANNEX B/C (`d665620b`); it is not an outstanding
+protocol obligation.
 
 **DERIVATION:** Per-supplier verification against the supplier notes at the repair; each cell quotes its supplier's own statement.
 
@@ -497,6 +669,8 @@ XREF: `lean/notes/openmath/GENHN_PROOF_2026-08-08.md:[GENHN-HE(μ ≥ 3)]` — g
 
 **CANONICAL STATEMENT:** STEP-4 RE-CHECK — does the proof now consume only the clause as stated?
 
+**FORM:** bold-headed paragraph
+
 > “*STEP-4 RE-CHECK (does the proof now consume only the clause as stated?).* Steps 1–3 use no σ-notion (Step 3 needs only that each family HAS a label, so the Σ_τ D_τ sum counts each family once — (A1) data). Step 4 lower bound: consumes exactly the clause (display above). Step 4 upper bound: a type-τ F with disc ≠ 0 truncating into a visible core class (F, x) forces σ_F = τ, because F is a disc ≠ 0 lift of its own truncation and the clause says every such lift has type σ_F — same clause, applied at F. Krasner-openness, the τ-partition of the étale locus and the disc = 0 null set are classical and displayed. No other σ-statement enters, and (A2) is untouched.”
 
 **CONDITIONALITY:** Establishes that the new clause is exactly what Steps 4 consumes — no more, no less. `[r5]` MINOR 1 later routes both Step-4 bounds explicitly through it (`.43`).
@@ -512,6 +686,8 @@ XREF: `lean/notes/openmath/GENHN_PROOF_2026-08-08.md:[GENHN-HE(μ ≥ 3)]` — g
 ### EFF.W12.s1of2.20  [changes-record]
 
 **CANONICAL STATEMENT:** `[r4]` F1/F3/m1/m2/R-1 INDEX
+
+**FORM:** bold-headed paragraph
 
 > “**[r4] F1/F3/m1/m2/R-1 INDEX (PE4 @ 26689da).** F1 (CRITICAL, the inseparable witness at S3.2's b₂ = 0 sub-species) is repaired AT THE SITE with its own [r4] record after LEMMA W12-S3.2; F3 at §S10 P-6; m1 at W12-BOX-7 (§S6); m2 at S2.3; R-1 (the pin's totality) at the S1 Conventions above.”
 
@@ -533,6 +709,8 @@ Followed by the design close:
 
 **CANONICAL STATEMENT:** LEMMA W12-S2.1 — the level-0 product structure (window-exact Hensel)
 
+**FORM:** bold-headed paragraph
+
 > “**LEMMA W12-S2.1.** The multiplication map (f_i)_i ↦ Π_i f_i is a bijection from Π_i {monic of degree m_i d_i over O/π^N with reduction P̄_i^{m_i}} onto {monic of degree n over O/π^N with reduction f̄}. Moreover σ(f) = ⊔_i σ(f_i) branchwise, and f is σ-decided iff every f_i is; the fibers transport counts multiplicatively.”
 
 **CONDITIONALITY:** Requires the `P̄_i` distinct (pairwise coprime powers) and `O` complete. Both characteristics; no separability hypothesis.
@@ -551,6 +729,8 @@ Followed by the design close:
 
 **CANONICAL STATEMENT:** §S2.1 — simple branches and the level-0 census
 
+**FORM:** inline sentence
+
 > “Simple branches (m_i = 1) are σ-decided at level 0 with the single étale piece (1, d_i) (Hensel: the lift factor is irreducible unramified of residue degree d_i), count q^{d_i(N−1)} each. The level-0 census C₀(q) = #{configurations f̄ of the given combinatorial type} is a classical product of irreducible-polynomial counts (instances used below: q for a linear center; q(q−1) for an ordered distinct linear pair; q(q−1)(q−2)/6 for three distinct linears; q·(q²−q)/2 for linear × irreducible quadratic; (q³−q)/3 for an irreducible cubic; these sum to q³ over the five cubic patterns — checked at q = 2: 2+2+2+2+0 = 8; at q = 3: 6+9+8+3+1 = 27). It remains to count one repeated branch.”
 
 **CONDITIONALITY:** `C₀(q)` is the **undecorated** census — the 2026-08-12 orbit correction turns on exactly this: “S2.1's C₀(q) confirmed as the undecorated census (unordered within same-(d,m) classes)”, so a shape with two same-`(d, m)` branches carrying **distinct** decorations needs the factor `κ(T)` (`.09`(a)).
@@ -566,6 +746,8 @@ Followed by the design close:
 ### EFF.W12.s1of2.23  [lemma]
 
 **CANONICAL STATEMENT:** §S2.2 — the monic-division digit calculus and the membership conditions
+
+**FORM:** inline sentence
 
 > “Branch: f with f̄ = P̄^m, d = deg P̄, m ≥ 2; Φ the read's fixed monic lift of P̄ (by S2.1 we may take f = the branch factor, monic of degree md). Monic division gives the UNIQUE Φ-adic development
 >
@@ -594,6 +776,8 @@ Followed by the design close:
 
 **CANONICAL STATEMENT:** §S2.2 — the branch count and the census normalization (sweep right-to-left)
 
+**FORM:** bold-headed paragraph
+
 > “Counting slots: slot j contributes N − ⌈P(j)⌉ free digits, minus one priced digit if j is a lattice point on the polygon (L of them), whence
 >
 >     #branch(N) = S_T(q^d) · q^{d·B(N)},   B(N) = mN − Σ_{j<m}⌈P(j)⌉ − L,
@@ -618,9 +802,11 @@ XREF: `lean/notes/openmath/W10_PROOF_2026-08-08.md:THEOREM W-10` — grep-verifi
 
 ---
 
-### EFF.W12.s1of2.25  [TABLE]
+### EFF.W12.s1of2.25  [table]
 
 **CANONICAL STATEMENT:** [TABLE] §S2.2 — the universal residual censuses (Q = q^d)
+
+**FORM:** display
 
 > “The universal censuses used below (Q = q^d; classical, re-derived this session and machine-checked in both characteristics by the S7 battery):
 >
@@ -632,7 +818,26 @@ XREF: `lean/notes/openmath/W10_PROOF_2026-08-08.md:THEOREM W-10` — grep-verifi
 >             [row sum Q²(Q−1) ✓; at Q = 2: 0+1+2+0+1 = 4 ✓;
 >              at Q = 3: 0+6+8+2+2 = 18 ✓].”
 
+`[TABLE — Markdown transcription of the fixed-width source display]`
+
+| Degree `g` | Factorization type | `S_λ(Q)` |
+|---:|---|---|
+| 1 | `(1)` | `Q−1` |
+| 2 | `(1,1)` | `(Q−1)(Q−2)/2` |
+| 2 | `(2)` | `Q(Q−1)/2` |
+| 2 | `(1²)` | `Q−1` |
+| 3 | `(1,1,1)` | `(Q−1)(Q−2)(Q−3)/6` |
+| 3 | `(1,2)` | `(Q−1)·Q(Q−1)/2` |
+| 3 | `(3)` | `(Q³−Q)/3` |
+| 3 | `(1,1²)` | `(Q−1)(Q−2)` |
+| 3 | `(1³)` | `Q−1` |
+
 > “THE LOCI DIFFER ACROSS CHARACTERISTICS (square classes vs Artin–Schreier traces; W-11 S2.1's table is the g = 2 instance); THE COUNTS DO NOT — J-D0's blindness at the residual level, which is the entire reason clause (i) can be stated shape-only.”
+
+**ARITHMETIC AUDIT:** Fresh symbolic expansion gives
+`S_(1,1)+S_(2)+S_(1²)=Q(Q−1)` for `g=2` and the five `g=3` terms sum to
+`Q²(Q−1)`. Substitution gives `4` at `Q=2` and `18` at `Q=3`, matching the source's
+numeric checks. No discrepancy.
 
 **CONDITIONALITY:** Classical counting polynomials; the characteristic-independence of the COUNTS (not the loci) is the J-D0 frame, and it is what discharges W-11's owed `g ≥ 2` census input at the order-1 layer (`.06`).
 
@@ -649,6 +854,8 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 ### EFF.W12.s1of2.26  [fence]
 
 **CANONICAL STATEMENT:** §S2.2 — cell factorization and the lift-convention note
+
+**FORM:** inline sentence
 
 > “Cell factorization: for FIXED configuration and residual-letter assignment the remaining digits are free — every cell has exactly q^{d·B(N)} members (W-10's cell-by-cell template at every degree). Convention note: the count is stated for the read's OWN lift choice Φ; the formula is independent of which fixed monic lift the convention picks (the development bijection works verbatim for each), while the deeper question — whether different lift conventions select the same member SET at deep shapes — is the W-2/LIFTCORNER seam, not consumed here (W12-BOX-5).”
 
@@ -668,6 +875,12 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 
 **CANONICAL STATEMENT:** §S2.3 — Decidedness and σ (Ore leaves); clause (i) assembled
 
+**FORM:** inline sentence
+
+**SUPERSESSION KIND:** withdrawal (deletion sub-kind).
+
+**TARGETS:** `EFF.W12.s1of2.27` (the struck “in fact every lift” parenthetical).
+
 > “If every residual is separable, Ore's theorem (the order-1/regular case of the Montes read; Ore 1928, via GMN "Newton polygons of higher order", order-1 layer — classical, cited not re-proved) factors any O-lift F of the branch into one monic irreducible factor per (side S, irreducible residual factor ψ | R_S), with e = e_S (the denominator of S's slope in lowest terms) and residue degree d·deg ψ. All data the read consumes sit at heights ≤ N−1, so every lift of the window class shares them: the shape is σ-DECIDED with σ read off the shape alone, and (A0)-strongly (every disc ≠ 0 lift has this σ ~~— in fact every lift~~ **[r4, PE4 m2: the struck parenthetical is FALSE in equal characteristic at wild decided shapes, and nothing consumes it — (A0), (A1)'s [r4] σ-labeling clause and Step 4 all quantify over disc ≠ 0 lifts only. Counter-instance from the note's own family table: a TRP-RAM3(h) member with 3∤h whose b₁, b₂ vanish in-window admits the lift F = y³ + b₀ with v(b₀) = h, and in equal characteristic 3 that lift has F′ ≡ 0, hence disc = 0 and no σ at all; same at any wild side with e divisible by p and the intermediate slots empty (LINRAM2 / RAM2LIN / QRT-G2 in char 2). Such lifts are exactly what the disc ≠ 0 quantifier is for — same root cause as the [r4] F1 repair in S3.2]**). Combining S2.1 (product over branches) × S2.2 (each branch) × the level-0 census C₀(q): THEOREM W-12.A. ∎”
 
 **CONDITIONALITY:** The quantifier is **disc ≠ 0 lifts only** — the unrestricted “every lift” is struck as FALSE in equal characteristic at wild decided shapes, with an explicit counter-instance. This is the σ-certification strength that W-12.D's (A1) clause needs and that the FIRING CHECK audits at every degree.
@@ -682,9 +895,11 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 
 ---
 
-### EFF.W12.s1of2.28  [TABLE]
+### EFF.W12.s1of2.28  [table]
 
 **CANONICAL STATEMENT:** [TABLE] §S2.4 — the SEVEN new decided families at the triple center
+
+**FORM:** display
 
 > “At a TRP center (f̄ = (x−c̄)³; q centers; recenter g = f(x+c) with coefficients (b₂, b₁, b₀), all v ≥ 1; branch polygon = hull of {(0,u₀),(1,u₁),(2,u₂),(3,0)}, u_j := v(b_j)), the digit calculus of S2.2 evaluates to (all counts PER CENTER; whole space = × q centers; params ≥ 1; visibility u₀ ≤ N−1; ⌈2h/3⌉+⌈h/3⌉ = h+1 for 3∤h):”
 
@@ -697,6 +912,12 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 | TRP-FULL(k;λ), λ∈{(1,1,1),(1,2),(3)} | one side (0,3k)–(3,0), e = 1, g = 3 | S_λ(q)·q^{3N−6k−3} | σ(λ) | — |
 | TRP-RAM2LIN(u₀,t), u₀−t odd, u₀>3t | vertex (2,t); left side e = 2 | (q−1)²·q^{3N−2−u₀−t−(u₀+t+1)/2} | {(2,1),(1,1)} | p = 2 / char 2 |
 | TRP-VERT2(u₀,t;λ), u₀−t even, u₀>3t, λ∈{(1,1),(2)} | vertex (2,t); left side e = 1, g = 2 | (q−1)·S_λ(q)·q^{3N−3−u₀−t−(u₀+t)/2} | σ(λ)⊎{(1,1)} | — |
+
+**ARITHMETIC AUDIT:** Seven data rows, exactly three marked wild (RAM3, LINRAM2,
+RAM2LIN), matching the source's later “SEVEN”/“3 wild strata” summaries. The rows are
+parameterized families, not a finite fixed-parameter count partition, so no meaningful
+column total is asserted; their exponent calculations are audited individually in
+`.29`.
 
 **CONDITIONALITY:** Depth-0 (no refinement history), per center, window-visible (`u₀ ≤ N−1`). Three rows are wild strata (`p = 3` for RAM3; `p = 2` for LINRAM2/RAM2LIN) and are counted by the same laws as the tame rows.
 
@@ -711,6 +932,8 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 ### EFF.W12.s1of2.29  [lemma]
 
 **CANONICAL STATEMENT:** §S2.4 — the seven derivations and the σ(λ) dictionary
+
+**FORM:** inline sentence
 
 > “Derivations (each a direct S2.2 evaluation; heights listed are (⌈P(0)⌉, ⌈P(1)⌉, ⌈P(2)⌉)):
 > * RAM3(h): heights (h, ⌈2h/3⌉, ⌈h/3⌉) summing to 2h+1; L = 1 (only j = 0 lattice); S_T = S_{(1)} = q−1. B = 3N − (2h+1) − 1.
@@ -737,6 +960,8 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 
 **CANONICAL STATEMENT:** §S2.4 — Completeness at depth 0
 
+**FORM:** bold-headed paragraph
+
 > “**Completeness at depth 0:** every exact visible 4-point polygon falls in exactly one row or a REFINE/tail case: one side — slope h/3 with 3∤h (RAM3) xor integer slope k (FULL; decided iff λ separable, else refine); vertex at 1 only — right side of length 2: e = 2 (LINRAM2) xor e = 1 (VERT1 / refine at λ = (1²)); vertex at 2 only — left side of length 2: e = 2 (RAM2LIN) xor e = 1 (VERT2 / refine); vertices at 1 and 2 — 3LIN, always decided. So the seven families are the COMPLETE depth-0 decided TRP menu, and the battery enforces key-completeness (any unpredicted depth-0 decided key is a violation, both directions). Refinement leaves (repeated residual roots: λ ∈ {(1²)} on a g = 2 side, {(1,1²)}, {(1³)} on the g = 3 side) recurse deeper; their per-history laws are NOT derived here (W12-BOX-2: the n = 3 analogue of W-11's instance bracket, with TWO node species — see S3.1). The exact-zero rows are real predictions: S_{(1,1)}(2) = 0, S_{(1,1,1)}(q) = 0 for q ≤ 3 — the battery checks the zeros exactly. ∎”
 
 > “[machine: W12-SHAPE — all seven laws, both directions, on every cubic row; re-derivation record: an independent throwaway brute-force (pre-runner, this session) confirmed all seven laws per center at (p,N) ∈ {(2,3),(2,4),(2,5),(2,7),(3,2),(3,3),(3,4),(5,2),(7,2)}, including the 22-key (2,7) row realizing TRP-3LIN(3,2,1).]”
@@ -754,6 +979,8 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 ### EFF.W12.s1of2.31  [lemma]
 
 **CANONICAL STATEMENT:** §S2.5 — the quartic g = 2 instance (first g ≥ 2 residual census row)
+
+**FORM:** display
 
 > “At a quadruple center (f̄ = (x−c̄)⁴; recentered coefficients (b₃,b₂,b₁,b₀), all v ≥ 1), the shape with ONE side (0,2h)–(4,0), h odd (slope h/2, e = 2, length 4, g = 2; lattice points j = 0, 2, 4; residual R(y) = y² + r₂y + r₀ over F_q, r₂ = digit_h(b₂), r₀ = digit_{2h}(b₀) ≠ 0): S2.2 gives, per center,
 >
@@ -780,6 +1007,8 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 
 **CANONICAL STATEMENT:** LEMMA W12-L0 (the history-resolved n = 2 law; W-11 refined)
 
+**FORM:** bold-headed paragraph
+
 > “**LEMMA W12-L0.** Fix n = 2, a center, a window N, and a refinement history H = (k₁ < ⋯ < k_t) (t ≥ 0; k₁ ≥ 1; refinement at depth k requires 2k ≤ N−1, so k_t ≤ M := ⌊(N−1)/2⌋; write s := k_t, s = 0 for t = 0). The window-N count PER CENTER of monic quadratics with history exactly H and the given leaf is (q−1)^t × the leaf count from ONE node instance C(2s+1, s+1) (W-11 S2 coordinates):
 >
 >     RAM(u)@H:        (q−1)·q^{N−1−u}·q^{N−(u+1)/2},  u odd, 2s+1 ≤ u ≤ N−1;
@@ -788,6 +1017,22 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 >     INERTDEEP(k)@H:  (q(q−1)/2)·q^{2N−3k−2},      s+1 ≤ k ≤ M;
 >     SPLIT-TAIL(w)@H: (q−1)·q^{N−1−w},   s+1 ≤ w ≤ M;
 >     UNDECIDED@H:     q^{N−1−M}.”
+
+`[TABLE — Markdown transcription of the fixed-width source display]`
+
+| Leaf at history `H` | Per-center count | Range |
+|---|---|---|
+| `RAM(u)@H` | `(q−1)q^{N−1−u}q^{N−(u+1)/2}` | `u` odd; `2s+1 ≤ u ≤ N−1` |
+| `2SIDED(w,u−w)@H` | `(q−1)²q^{2N−2−u−w}` | `s+1 ≤ w`, `2w < u ≤ N−1` |
+| `SPLITEQ(k)@H` | `((q−1)(q−2)/2)q^{2N−3k−2}` | `s+1 ≤ k ≤ M` |
+| `INERTDEEP(k)@H` | `(q(q−1)/2)q^{2N−3k−2}` | `s+1 ≤ k ≤ M` |
+| `SPLIT-TAIL(w)@H` | `(q−1)q^{N−1−w}` | `s+1 ≤ w ≤ M` |
+| `UNDECIDED@H` | `q^{N−1−M}` | no additional leaf parameter |
+
+**ARITHMETIC AUDIT:** Six leaf rows. Summing the history factor gives
+`1+Σ_{s=1}^{k−1}(q−1)q^{s−1}=q^{k−1}` for decided leaves and
+`q^{N−1−M}(1+Σ_{s=1}^{M}(q−1)q^{s−1})=q^{N−1}` for the undecided row,
+matching `.33` and W-11's aggregate law.
 
 **CONDITIONALITY:** `n = 2` only — this is the lemma the 2026-08-12 obstruction cites as insufficient for the general order-1 claim (“W12-L0 supplies this only for \(n=2\)”), and whose `(q−1)^t` prefactor exhibits the missing history factor. Its own content is unaffected: LEMMA W12-HT “recovers” it (“This is W12-L0's \((q-1)^t\) factor and its six leaf laws”).
 
@@ -807,6 +1052,8 @@ XREF: `lean/notes/openmath/W11_PROOF_2026-08-08.md:S2.3` — grep-verified count
 
 **CANONICAL STATEMENT:** §S2.6 — aggregation back to W-11, and the drainage consistency display
 
+**FORM:** inline sentence
+
 > “Summing W12-L0 over H returns W-11's aggregated rows (the instance bracket: Σ over histories ending at any s < k of (q−1)^t = 1 + Σ_{s=1}^{k−1}(q−1)q^{s−1} = q^{k−1} per leaf read at k — W-11 S2.5's bracket re-derived). Consistency display for drainage: undecided per center = Σ_H (q−1)^t·q^{N−1−M} = q^{N−1−M}·(1 + Σ_{s=1}^{M}(q−1)q^{s−1}) = q^{N−1−M}·q^M = q^{N−1} — W-11's exact law, history-resolved. Each history-resolved key is its own decided shape (refinement depth t as shape datum); at n = 2 the refinement tower never leaves key degree 1, which is why W12-L0 needs no [W12-H] input.”
 
 **CONDITIONALITY:** The closing clause is the reason W12-L0 is `[W12-H]`-free: at n = 2 no composite stage ever opens.
@@ -822,6 +1069,8 @@ XREF: `lean/notes/openmath/W11_PROOF_2026-08-08.md:S2.3` — grep-verified count
 ### EFF.W12.s1of2.34  [lemma]
 
 **CANONICAL STATEMENT:** LEMMA W12-L1 (block transfer: the DBL stratum of cubics IS the n = 2 system)
+
+**FORM:** bold-headed paragraph
 
 > “**LEMMA W12-L1.** (a) [window Hensel split] (g, l) ↦ g·l is a bijection {monic quadratic g, ḡ = (x−c̄)²} × {monic linear l, l̄ = x−d̄} → {monic cubic f, f̄ = (x−c̄)²(x−d̄)} over O/π^N.
 > (b) [read equivalence] The recursive read of f at the center c̄ equals the W-11 read of its block g: the same trichotomy case at every node, the same (u, w) parameters, unit-scaled letters, the same refinement history, the same decided/tail/undecided exit.
@@ -855,6 +1104,8 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 
 **CANONICAL STATEMENT:** §S2.7 — what W12-L1 is an instance of
 
+**FORM:** inline sentence
+
 > “W12-L1 is the smallest instance of the S0 design decision: the general mechanism is TRANSPORT — blocks reduce to lower-degree systems with unit-scaled letters that counts never see — not per-degree re-derivation. It moves the ENTIRE proved W-11 menu (count laws, per-history structure via W12-L0, and the exact drainage term) into degree 3 at one stroke.”
 
 **CONDITIONALITY:** A design statement about mechanism, not a count claim.
@@ -871,6 +1122,8 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 
 **CANONICAL STATEMENT:** §S3.1 — the n = 3 partition and the exact DBL term
 
+**FORM:** inline sentence
+
 > “undecided(3, q, N) partitions by level-0 pattern (S2.1: decidedness is branchwise): the three separable patterns contribute 0 (all branches simple ⟹ decided at level 0); the DBL patterns contribute EXACTLY (q−1)·q^{2N−1} (LEMMA W12-L1(c) — a THEOREM); the TRP pattern contributes U₃^TRP(q, N), for which no law is derived here. THEOREM W-12.C's identity is this partition. ∎(the exact term)”
 
 **CONDITIONALITY:** The identity is exact; only its `U₃^TRP` summand is underived.
@@ -886,6 +1139,8 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 ### EFF.W12.s1of2.37  [open-obligation]
 
 **CANONICAL STATEMENT:** §S3.1 — the obstruction to an exact `U₃^TRP` law (two node species)
+
+**FORM:** bold-headed paragraph
 
 > “The obstruction to an exact U₃^TRP law, displayed (W12-BOX-3): the TRP refinement tree has TWO node species — (α) the triple-cluster node (λ = (1³) at a FULL side: recentering keeps all three roots in one cluster, a genuine n = 3 node, analogous to W-11's C(2s+1, s+1) but with a 3-parameter state), and (β) the DBL-re-entry node (λ = (1,1²) at FULL, or (1²) at a VERT1/VERT2 g = 2 side: one root Hensel-splits off, and the remaining double cluster re-enters the n = 2 system of W-11/W12-L0 at a REDUCED window and shifted valuation frame). A closed form needs the (α)-species instance bracket (the n = 3 analogue of W-11's Σ(q−1)^t q^{s−1} identity) plus the (β)-species window-transfer law; neither is derived here. Additionally the TRP TAIL needs its own σ-certification lemma (the n = 3 SPLIT-TAIL analogue: a deep vertex can certify a split-off (1,1) piece even with b₀ hidden), also not derived. These three named lemmas are exactly (hMenu-3)/(hExhaust-3)'s distance.”
 
@@ -906,6 +1161,15 @@ XREF: `lean/notes/openmath/HMENU3_PROOF_2026-08-08.md:THEOREM HM3.C` — grep-ve
 ### EFF.W12.s1of2.38  [lemma]
 
 **CANONICAL STATEMENT:** LEMMA W12-S3.2 — the TRP lower bound via a constructed ambiguous species
+
+**FORM:** bold-headed paragraph
+
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.W12.s1of2.38` (the sealed `b₂ = 0`, `B = 0` proof branch).
+
+**CHAIN:** sealed `B = 0` witnesses → `[r4]` repaired `B = π^N`, `t := N` construction,
+**TERMINAL: repaired pair**.
 
 > “**LEMMA W12-S3.2.** Every TRP member with b₁ = b₀ = 0 over O/π^N (after recentering; b₂ ∈ πO/π^N free) is σ-undecided: U₃^TRP(q, N) ≥ q·q^{N−1} = q^N.”
 
@@ -928,6 +1192,8 @@ XREF: `lean/notes/openmath/HMENU3_PROOF_2026-08-08.md:THEOREM HM3.C` — grep-ve
 
 **CANONICAL STATEMENT:** `[r4]` SEPARABILITY OF THE REPAIRED PAIR, EVERY CHARACTERISTIC
 
+**FORM:** bold-headed paragraph
+
 > “**[r4] SEPARABILITY OF THE REPAIRED PAIR, EVERY CHARACTERISTIC** (the warrant the sealed proof outsourced to "étale"; write y = x − c, so F_A = y·(y² + By + π^{2K+1}) and F_B = y³ + By² + π^L with v(B) = t ∈ [1, N], 2K+1 ≥ max(N, 2t+2), L ≥ 3N, L − t odd):
 >
 > * **F_A.** disc(y² + By + π^{2K+1}) = B² − 4π^{2K+1} has valuation EXACTLY 2t in every case: in equal characteristic 2 the second term vanishes (4 = 0) leaving B² ≠ 0; otherwise v(4π^{2K+1}) ≥ 2K+1 ≥ 2t+2 > 2t = v(B²). With Res(y, y²+By+π^{2K+1}) = π^{2K+1} ≠ 0, disc F_A = (B² − 4π^{2K+1})·π^{2(2K+1)} ≠ 0. The two O-roots come out characteristic-freely too: y = π^t z gives π^{2t}(z² + uz + π^{2K+1−2t}) with u := B/π^t a unit and 2K+1−2t ≥ 2, whose derivative 2z + u is a UNIT at both z ≡ 0 and z ≡ −u (in char 2 it IS u), so Hensel yields roots of valuations t and 2K+1−t as the polygon says. σ_A = {(1,1)³}.
@@ -946,6 +1212,13 @@ XREF: `lean/notes/openmath/HMENU3_PROOF_2026-08-08.md:THEOREM HM3.C` — grep-ve
 ### EFF.W12.s1of2.40  [changes-record]
 
 **CANONICAL STATEMENT:** `[r4]` F1 REPAIR RECORD — the deleted branches, and the honest battery-invisibility disclosure
+
+**FORM:** bold-headed paragraph
+
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.W12.s1of2.38` (proof construction) and
+`EFF.W12.s1of2.39` (every-characteristic separability warrant).
 
 > “*What the deleted branches did.* With B = 0 the same computations FAIL: Lift 1 becomes y(y² + π^{2K+1}) whose quadratic has disc = −4π^{2K+1} = 0 in equal characteristic 2 — it is (y + π^{(2K+1)/2})² over the closure, a purely inseparable e = 2 = p side, and gcd(F_A, F_A′) = y² + π^{2K+1} ≠ 1 — so the sealed σ_A = {(1,1),(2,1)} does not exist there; and Lift 2 becomes y³ + π^L whose derivative is ≡ 0 in equal characteristic 3 (disc = −27π^{2L} = 0, F_B = (y + π^{L/3})³), so the sealed σ_B = {(3,1)} does not exist there. The repaired construction never has B = 0.”
 
@@ -971,6 +1244,8 @@ XREF: `lean/notes/openmath/HMENU3_PROOF_2026-08-08.md:THEOREM HM3.C` — grep-ve
 
 **CANONICAL STATEMENT:** §S3.3 — the general-n lower bound
 
+**FORM:** inline sentence
+
 > “At every n ≥ 3: pick the level-0 pattern (x−c̄)²·h̄ with h̄ monic irreducible of degree n−2, h̄ ≠ x−c̄ (such h̄ exists over every F_q at every degree: for n−2 ≥ 2 irreducibles of that degree are non-linear; for n−2 = 1 take a second linear, q ≥ 2). By LEMMA W12-S2.1, decidedness is branchwise and the h̄-branch is simple (decided); by W-11's drainage law the double-root branch has q^{N−1} σ-undecided members per center. Fibering (S2.1 bijection):
 >
 >     undecided(n, q, N) ≥ q^{N−1}·q^{(n−2)(N−1)} = q^{(n−1)(N−1)}
@@ -989,7 +1264,14 @@ XREF: `lean/notes/openmath/HMENU3_PROOF_2026-08-08.md:THEOREM HM3.C` — grep-ve
 
 ### EFF.W12.s1of2.42  [lemma]
 
-**CANONICAL STATEMENT:** §S3.4 Step 1 — rationality
+**CANONICAL STATEMENT:** [ASSEMBLED — frozen Step 1 plus the dated re-derivation under
+the corrected (A1)] §S3.4 Step 1 — rationality
+
+**FORM:** bold-headed paragraph
+
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.W12.s1of2.42` (the original q-independence closing step).
 
 > “*Step 1 (rationality).* For one family F with P_F a shifted product Π_{i=1}^{d_F}(a_i + b_iℤ_{≥0}) and dens_F = c_F(q)·q^{−ℓ_F}, ℓ_F = m₀ + Σ m_ix_i with m_i > 0:
 >
@@ -1017,6 +1299,12 @@ with its two guards, both landed as dated brackets:
 
 **CANONICAL STATEMENT:** §S3.4 Steps 2–4 — the limit, the partition, and the classical tie
 
+**FORM:** bold-headed paragraph
+
+**SUPERSESSION KIND:** wording-rider.
+
+**TARGETS:** `EFF.W12.s1of2.43` (the pre-`[r5]` Step-4 upper-bound warrant).
+
 > “*Step 2 (R_τ is the decided-core limit).* D_τ(N) := Σ_{σ_F = τ, x visible} count(F, x) = q^{nN}·Σ_{x visible} dens_F(x) by (A1) exactness and disjointness. The visible sets {x : ν_F(x) ≤ N} increase to P_F (ν_F affine), so D_τ(N)/q^{nN} is a monotone partial-sum net of the positive convergent series of Step 1: D_τ(N)/q^{nN} → R_τ(q).”
 
 > “*Step 3 (Σ_τ R_τ = 1).* Σ_τ D_τ(N) + r(N) = q^{nN} by (A1) disjointness and (A2)'s definition of r; divide by q^{nN}, let N → ∞, apply (A2).”
@@ -1036,6 +1324,8 @@ with its two guards, both landed as dated brackets:
 ### EFF.W12.s1of2.44  [instance-record]
 
 **CANONICAL STATEMENT:** §S3.4 — the n = 2 instance (fires unconditionally), with the tail routed honestly
+
+**FORM:** bold-headed paragraph
 
 > “**The n = 2 instance (fires unconditionally), with the tail routed honestly.** Core families: SEP-SPLIT, SEP-INERT (point families), RAM(h) (P = 1 + 2ℤ_{≥0}, dens (q−1)q^{−h−1}, ν = h+1), 2SIDED(w₁,w₂) ({1 ≤ w₁ < w₂}: the shifted-product image (w₁,δ) ∈ (1+ℤ_{≥0})×(1+ℤ_{≥0}), w₂ = w₁+δ; dens (q−1)²q^{−w₁−w₂−2}), SPLITEQ(k), INERTDEEP(k) ({k ≥ 1}) — exact laws, disjointness, and q-uniform data by THEOREM W-11(i)(ii); (A0) by W-11's decidedness (+ its sealed double-lift oracle leg). SPLIT-TAIL is NOT a core family (its count (q−1)q^{N−1} per center per w is not dens·q^{2N} with N-free dens): it routes through (A2): r(N) = undecided + tail = q^N + q·⌊(N−1)/2⌋·(q−1)·q^{N−2} = O(N·q^N), and r(N)/q^{2N} → 0 by W-11 clause (iii) + the tail law. *(Display note: (A2) is phrased as drainage of the REST — not of the σ-undecided residue alone — exactly so that window-boundary families route through it; an (A1)-only reading would make the n = 2 instance-check incomplete.)* Steps 1–4 then re-derive, through the general mechanism:
 >
@@ -1064,6 +1354,12 @@ with its two guards, both landed as dated brackets:
 
 **CANONICAL STATEMENT:** §S3.4 — Conditionality at n ≥ 3, displayed montes-style
 
+**FORM:** bold-headed paragraph
+
+**SUPERSESSION KIND:** wording-rider.
+
+**TARGETS:** `EFF.W12.s1of2.45` (the pre-`[r5]` “No other conditionality” close).
+
 > “**Conditionality at n ≥ 3, displayed montes-style.** (hMenu-3) = the complete n = 3 core menu: the order-1 layer is supplied by W-12.A (S2.4's seven TRP families — note their parameter sets and laws are q-uniform shifted-product data, so (A1)-admissible — plus the DBL transport of the entire n = 2 menu via W12-L1/W12-L0); MISSING: the TRP refinement families (depth ≥ 1) — W12-BOX-2. (hExhaust-3) = (A2) at n = 3: the σ-undecided DBL part is proved (S3.1); and [r2, PE2 FINDING 2 — displaying the one remaining r(N) leg, previously undisplayed] the DBL BOUNDARY-TAIL families — the transported SPLIT-TAIL (σ-DECIDED split-certified; their count is N-dependent, dens would be (q−1)²q^{−N−2}, hence they lie in NO (A1)-admissible family) — route through (A2) exactly as SPLIT-TAIL does at n = 2, with vanishing mass ⌊(N−1)/2⌋·(q−1)²·q^{2N−2} (= q(q−1) patterns × W12-L1(c)'s q^{N−1} simple-branch fiber × W12-L0's SPLIT-TAIL row, per-w aggregate (q−1)²q^{2N−2}, over the ⌊(N−1)/2⌋ values of w; re-verified against the committed JSON on ALL 23 cubic rows this repair, e.g. (Zp,2,5): 256+128+128 = 512, exact zeros at N = 2 included), /q^{3N} → 0; MISSING: a vanishing U₃^TRP upper bound — W12-BOX-3 (whose conservative-convention bound also drains the TRP members σ-decided only by tail certification: those are conv-UNDECIDED by construction, so no TRP tail leg is separately owed). At n ≥ 4 additionally [W12-H] (W12-BOX-1) at composite stages. No other conditionality: (A0) at the order-1 decided shapes is S2.3's Ore argument **[r5, PE5 m1: stated exactly — what the order-1 decided shapes must supply is (A1)'s [r4] σ-LABELING clause (every member of every visible core class σ-DECIDED with forced σ = σ_F, i.e. at all its disc ≠ 0 lifts), since that is what BOTH Step-4 bounds consume; S2.3's Ore argument is what PROVES that clause at the order-1 layer, and (A0) is the same statement in its well-posedness phrasing]**.”
 
 **CONDITIONALITY:** THIS unit is the conditionality vocabulary for n ≥ 3: exactly `{(hMenu-3)} + {(hExhaust-3)}` at n = 3, plus `[W12-H]` at n ≥ 4. Both n = 3 legs are DISCHARGED at composition grade by the two out-of-range annexes; the closing “No other conditionality” sentence is routed through (A1)'s σ-labeling clause by `[r5]` m1.
@@ -1079,6 +1375,8 @@ with its two guards, both landed as dated brackets:
 ### EFF.W12.s1of2.46  [scope-record]
 
 **CANONICAL STATEMENT:** §S4.1 — Consumed at PROVED strength
+
+**FORM:** display
 
 > “* **THEOREM W-11(n = 2)** — the complete menu + exact drainage + the S2.3 refinement isomorphism: consumed at pin (S2.6, S2.7, S3.4 instance).
 > * **THEOREM W-10(2,1,1)** — the digit-calculus template (S2.2 is its all-degrees generalization; the (2,1,1) row is the m = 2, d = 1, one-side instance) and the recentering mechanics.
@@ -1106,6 +1404,8 @@ XREF: `lean/notes/openmath/JD0_PROOF_2026-08-08.md:LEMMA J-D0` — grep-verified
 ### EFF.W12.s1of2.47  [hypothesis]
 
 **CANONICAL STATEMENT:** §S4.2 — THE DISPLAYED HYPOTHESIS BOX `[W12-H]` (orders ≥ 2), five named inputs
+
+**FORM:** display
 
 > “The general clause (i) at orders ≥ 2 — shapes with repeated residual factors of degree ≥ 2, i.e. towers whose key polynomials have degree > d — is CONDITIONAL on the following FIVE named inputs [r1: the sealed box said "on, exactly:" over FOUR members; PE1 F2 found the fifth (H-e) missing, and its further hunt found no sixth — the completeness of this list is PE1's verified negative, not asserted by fiat]:
 > * **(H-a)** the JC composite-stage warrant (no-cancellation + level-detection of residual reads at wild composite stages; JC-PSIKER/JC-LOAD, GRTJC ACCEPTED 2/2 @ 83f47f4) — consumed as warrant, its own conditionality displayed there;
@@ -1138,6 +1438,8 @@ XREF: `lean/notes/openmath/GRTW2_PROOF_2026-08-08.md:Σ-LAW` — grep-verified c
 
 **CANONICAL STATEMENT:** §S5 — THE J-D1 FAITHFULNESS HANDOFF (the blueprint row's own content, at its S-price)
 
+**FORM:** bold-headed paragraph
+
 > “The blueprint's (J-D1), verbatim (GRT_WELD_BLUEPRINT_2026-08-08 §S2.4):
 >
 > > **(J-D1) THE FAITHFULNESS HANDOFF.** Under J-A/J-B/J-C, the accepted carry-law corpus proves the (H1) residue-structure package at orders ≥ 2: the anchored-march frame tie + residual dictionary ((GR-B)'s displayed content, both FGMN-4.2 pairings) hold at every realized composite stage of every classifier tower IN THE WELDED CLASS — i.e. GD-2/GD-3's one open input becomes a theorem there, and with it the GD-1 representative-admissibility and order-≥ 2 KEY1 members ((H1) members (b)/(d)) inherit the corpus's proofs where the dictionary reaches.”
@@ -1166,7 +1468,10 @@ XREF: `lean/notes/openmath/DULEMMA_PROOF_2026-08-08.md:DULEMMA` — grep-verifie
 
 ### EFF.W12.s1of2.49  [open-obligation]
 
-**CANONICAL STATEMENT:** §S6 — W12-BOX-1 (orders ≥ 2 = `[W12-H]`)
+**CANONICAL STATEMENT:** [ASSEMBLED — frozen box plus dated dependency-range
+replacement] §S6 — W12-BOX-1 (orders ≥ 2 = `[W12-H]`)
+
+**FORM:** bold-headed paragraph
 
 > “* **W12-BOX-1 (orders ≥ 2 = [W12-H]).** No count law at composite stages is claimed; the route is priced in S4.2 ((H-a)–(H-d)) and its frontier is exhibited (S2.5's λ = (1²) quartic stratum: volume law proved, σ-resolution open). The general W-10 (every decided shape, every order) remains OPEN — W10-BOX-1 stands untouched.”
 
@@ -1184,6 +1489,10 @@ XREF: `lean/notes/openmath/DULEMMA_PROOF_2026-08-08.md:DULEMMA` — grep-verifie
 
 **Effective reading:** `(H-a)–(H-e)`.
 
+**SUPERSESSION KIND:** replacement.
+
+**TARGETS:** `EFF.W12.s1of2.49` (the frozen `(H-a)–(H-d)` range).
+
 **DERIVATION:** Bookkeeping repair against S4.2's own five-member list (`.47`).
 
 **RESOLUTION TRACE:** Base §S6, lines 1213–1217; corrected at lines 2143–2153.
@@ -1196,13 +1505,24 @@ XREF: `lean/notes/openmath/W10_PROOF_2026-08-08.md:W10-BOX-1` — grep-verified 
 
 ### EFF.W12.s1of2.50  [open-obligation]
 
-**CANONICAL STATEMENT:** §S6 — W12-BOX-2, W12-BOX-3, W12-BOX-4 (the menu and drainage boxes)
+**CANONICAL STATEMENT:** [ASSEMBLED — frozen boxes plus the two received discharge
+licenses] §S6 — W12-BOX-2, W12-BOX-3, W12-BOX-4 (the menu and drainage boxes)
+
+**FORM:** bold-headed paragraph
 
 > “* **W12-BOX-2 (n ≥ 3 refinement families; (hMenu-3)).** The depth-≥ 1 TRP families are not enumerated: the n = 3 instance bracket needs TWO node species — (α) the triple-cluster node and (β) the DBL-re-entry node at reduced window (S3.1) — and neither species' transfer law is derived. W-12.D at n = 3 is conditional on this menu; it is the natural W-13 rung, with S2.4's depth-0 completeness as its floor.
 > * **W12-BOX-3 (U₃^TRP; (hExhaust-3)).** The exact triple-center drainage law is not derived; obstruction: the same two-species node calculus, plus a TRP tail-σ-certification lemma (the n = 3 SPLIT-TAIL analogue: a visible deep vertex can certify a split-off (1,1) piece even with b₀ window-hidden), which this note's instrument deliberately does NOT attempt: the battery's TRP reader certifies NO tail σ (conservative convention, disclosed in the runner), so its measured U₃^TRP is an UPPER count for the σ-convention residue — EXPLORATORY grade, no closed form preregistered. The proved content is the pair of bounds (S3.2 + trivial).
 > * **W12-BOX-4 (n ≥ 4 drainage).** No upper bound at any grade; lower bounds only (S3.3). W-12.B is a conjecture with two proved instances of its shape (n = 2 exact; n = 3 DBL term exact).”
 
 **CONDITIONALITY:** BOX-2 and BOX-3 are the two `(hMenu-3)`/`(hExhaust-3)` legs of W-12.D's n = 3 firing. Both are **DISCHARGED at composition grade** by the two verbatim annexes homed in shard 2 (HEX3 → BOX-3; HMENU3 → BOX-2), leaving the residual tail-σ-certification lemma open as HEX3-BOX-1. BOX-4 is untouched: no n ≥ 4 upper bound at any grade.
+
+**SUPERSESSION KIND:** license.
+
+**TARGETS:** `EFF.W12.s1of2.50` (BOX-2 and BOX-3 only).
+
+**CHAIN:** BOX-2 open → HMENU3 ANNEX 2, **TERMINAL for `(hMenu-3)`: discharged at
+composition grade**; BOX-3 open → HEX3 ANNEX, **TERMINAL for `(hExhaust-3)`: discharged
+at composition grade**; **TERMINAL for n ≥ 4 drainage: BOX-4 remains open**.
 
 **DERIVATION:** Each box names its own obstruction; the derivations of the obstructions are `.37` (two species) and `.30` (depth-0 floor).
 
@@ -1220,6 +1540,12 @@ XREF: `lean/notes/openmath/HEX3_PROOF_2026-08-08.md:COROLLARY HEX3.C` — grep-v
 
 **CANONICAL STATEMENT:** §S6 — W12-BOX-7 (σ-convention at the TRP tail), the pinned notion
 
+**FORM:** bold-headed paragraph
+
+**SUPERSESSION KIND:** wording-rider.
+
+**TARGETS:** `EFF.W12.s1of2.51` (the pre-`[r4]` scope word).
+
 > “* **W12-BOX-7 (σ-convention at the TRP tail).** Decided = certified on window digits for all disc ≠ 0 lifts; the DBL side inherits W-11's proved convention (incl. its SPLIT-TAIL certification); the **battery's [r4, PE4 m1: one scope word — post-r3 there is exactly ONE definitional notion, clause 1's lift certification, and the conservative reader is a MEASUREMENT convention (as the runner docstring itself discloses); the sealed "the TRP side uses …" read definitionally would assert UNDECIDED (this clause) and DECIDED (clause 1) at once for a lift-certified TRP deep-tail member]** TRP reader uses the BOX-3 conservative convention. The two conventions can disagree only on deep-tail TRP members; the battery reports the measured TRP residue per row.”
 
 **CONDITIONALITY:** THE definitional anchor of the σ-pin (`.08`). Post-`[r4]` m1 there is exactly **one** definitional notion (clause 1's lift certification); the conservative reader is a MEASUREMENT convention only. Without that scope word the box would have asserted DECIDED and UNDECIDED simultaneously for a lift-certified TRP deep-tail member.
@@ -1235,6 +1561,8 @@ XREF: `lean/notes/openmath/HEX3_PROOF_2026-08-08.md:COROLLARY HEX3.C` — grep-v
 ### EFF.W12.s1of2.52  [fence]
 
 **CANONICAL STATEMENT:** §S6 — W12-BOX-5, W12-BOX-6, W12-BOX-8 (instrument, coverage, and no-symmetry fences)
+
+**FORM:** bold-headed paragraph
 
 > “* **W12-BOX-5 (classifier reimplementation; lift convention).** The battery's cubic/quartic readers are convention-faithful reimplementations (W10-BOX-3/W11-BOX-3 inherited); the engine tie rides the accepted JB-VTX face + the SEALED W-11 instrument consumed by md5-pinned import (the W12-L1X seam is machine-checked pointwise). The Lean `omCount` evaluator remains order-0; growing it is Phase-B code (W-11 S4.1's spec now extends to every degree via W-12.A). Lift-convention independence of the member SET at deep shapes is the W-2/LIFTCORNER seam, not consumed (S2.2 convention note).
 > * **W12-BOX-6 (oracle coverage).** PARI legs are mixed-characteristic only; eq-char rows are SAME-class evidence; no mixed-characteristic prime-power rows exist in the frozen kit (W10-BOX-4/W11-BOX-4 inherited verbatim). Quartic rows enumerate the quadruple-center stratum only (the QRT laws are stratum laws; no quartic drainage/partition claim exists to test).
@@ -1263,6 +1591,8 @@ XREF: `lean/LeanUrat/OM/RealInstanceV2.lean:htameFE` — grep-verified count **9
 ### 3.1 Verified import/XREF designations
 
 Every designation below was checked with fixed-string `grep -cF` in the named target file (template rule 2).
+
+`[TABLE — compiler ledger]`
 
 | # | Target and designation | Count | Material consumed by W12 §§1–1271 |
 |---:|---|---:|---|
@@ -1305,11 +1635,27 @@ Every designation below was checked with fixed-string `grep -cF` in the named ta
 
 **Orthography reading notes (no invented designations).** (a) W12 writes “JB row-12”; `row-12` has count **0** in GRTJB_PROOF while `row 12` has count **9**. (b) W12 cites the blueprint as `§S3.1`; that string has count **0** there — the file's header reads `### S3.1 The twelve lemmas`, and the W-12 row is at blueprint line 302. Neither is a missing referent.
 
-### 3.2 Reverse consumer edges: mathematical supply versus append protocol
+### 3.2 Pin and artifact verification
+
+`[TABLE — compiler ledger]`
+
+| Class | Pins/artifacts | Fresh verification |
+|---|---|---|
+| Git commits | `048cf6d`, `06958241`, `08f61e9`, `17d2a32`, `19c02857`, `26689da`, `2b47711`, `31506b3`, `4a970aa`, `66b3498`, `7020ceb`, `83f47f4`, `9387eb1`, `97122f2`, `a0290f9`, `adc6cf3`, `cb05127`, `d665620b`, `f131c53`, `f669cb0`, `f819f26`, `fa3acb2` | `git cat-file -t` = `commit` for all 22 |
+| Imported-instrument MD5s | `w11_checks.py` `500aae152bb5b5e9df3712904a6d73a6`; `w10_checks.py` `a9c34244a3af19f5fa864375b494380b`; `iterlawn_pe_reimpl.py` `cae45db2318b89520dd5484466ef3604`; `grt_jc_probe.py` `03811b695cf7aa1bd5b52d5b0cd8bcd6`; `jd0_checks.py` `d3a5e13df97d3768573800960a0ec509` | all five files present under `verification/openmath/`; all five MD5s match |
+| W12 artifacts | `verification/openmath/w12_checks_output.txt` `0557b15fb08a6e6eb40bd2db7e62206b`; `verification/openmath/w12_checks_results.json` `05776c9e00071c5d7524abdfbe894442` | both files present; both MD5s match |
+| Instrument freeze | `verification/openmath/w12_checks.py` at seal `f669cb0` | byte-identical (`git diff --quiet f669cb0 -- …` = 0) |
+| History certificate | `verification/openmath/w12_history_law_check.py` | file present; the source note supplies its grid/count/teeth record; no content hash is asserted, so verification is existence-only |
+| Hostile-pass reports | `W12_passPE1_report.md` through `W12_passPE7_report.md` | all seven named files present under `lean/notes/openmath/` |
+| Frozen source prefix | first 124,423 bytes of W12 | MD5 `42a7655ed3e40596d4aea098b2ec7882`; the source's abbreviated `42a7655e` matches |
+
+### 3.3 Reverse consumer edges: mathematical supply versus append protocol
+
+`[TABLE — compiler ledger]`
 
 | Consumer / supplier | Exact verified designation | Direction and supply | Mathematical status | Append/consumption-protocol status |
 |---|---|---|---|---|
-| HMENU3 | `THEOREM HM3.C` (10) | **Both ways.** W12 consumes HM3.C as the n = 3 σ-labeling supplier; W12 owes HMENU3 a phrasing correction | The n = 3 firing SURVIVES on the corrected disc ≠ 0 form; HM3.C's conclusion, HM3.A/B, HM3.D and all counts unchanged | **OWED AND NOT LANDED.** The correction is drafted at `lean/notes/openmath/HMENU3_annex_draft_r5.md` (file present); application “is the orchestrator's”. Verified at HEAD: `HMENU3_PROOF_2026-08-08.md` L216–219 still reads “so Ore certifies EVERY lift”. See OPEN-CALL 2 |
+| HMENU3 | `THEOREM HM3.C` (10) | **Both ways.** W12 consumes HM3.C as the n = 3 σ-labeling supplier; W12 diagnoses its inherited unrestricted-lift wording | The n = 3 firing SURVIVES on the corrected disc ≠ 0 form; HM3.C's conclusion and all counts remain; ANNEX B refines the formal fixed-σ family inventory | **LANDED:** ANNEX A, commit `19c02857`; refined by ANNEX B/C, `d665620b`. The frozen L216–219 sentence remains byte-present by the append protocol and is not a negative landing test |
 | HEX3 | `THEOREM HEX3.A` (11) | HEX3 **supplies** the BOX-3 annex | (hExhaust-3) discharged at composition grade; `U₃^σ ≤ U₃^conv ≤ N·q^{2N−1}` | Landed as a verbatim ANNEX in shard 2's range |
 | HMENU3 | `COROLLARY HM3.D` (11) | HMENU3 **supplies** the BOX-2 annex | (hMenu-3) discharged at composition grade | Landed as verbatim ANNEX 2 in shard 2's range |
 | GENH4 / GENHN | `THEOREM GENH4.C` (9), `THEOREM GENHN.C` (11) | W12 consumes as (A1)-clause suppliers at n = 4, 5 | SUPPLIED — both statements already read “EVERY lift **with disc ≠ 0**” | No append owed either way (the `[r5]` sweep marks both CLEAN) |
@@ -1317,9 +1663,14 @@ Every designation below was checked with fixed-string `grep -cF` in the named ta
 | Six weld notes | `JB-VTX` (77), `JC-PSIKER` (19), `Σ-LAW` (14), `WELD-M-PKG` (5) | W12 consumes only in §S5's display and as `[W12-H]` inputs | “NO S2/S3 proof depends on them” | No append landed on any weld note |
 | Lean capstone | `montes_unconditional_exhaustive` (5), `hExhaust` (5), `omMenu_order0` (1) | W12 supplies transcription targets | Cited as tie TARGETS only | “no Lean is changed by this unit” |
 
+**Protocol audit:** zero outward corrections remain unlanded. The two inbound supplier
+annexes (HEX3 and HMENU3) remain distinct from these owner-side wording repairs.
+
 ---
 
 ## 4. NON-IMPORTS
+
+`[TABLE — compiler ledger]`
 
 | Fence | Explicit material not imported or not proved in lines 1–1271 |
 |---|---|
@@ -1345,6 +1696,8 @@ Every designation below was checked with fixed-string `grep -cF` in the named ta
 
 ## 5. Teeth inverse table
 
+`[TABLE — compiler ledger]`
+
 | Battery row / tooth | Guarded unit(s) | Disposition |
 |---|---|---|
 | W12-PIN (5 md5-pinned frozen imports) | `.46`, `.52` | Bookkeeping check (evidence class NONE per the note's own labelling) |
@@ -1361,12 +1714,12 @@ Every designation below was checked with fixed-string `grep -cF` in the named ta
 | Tooth W12-T-CENSUS4 (`S_{(2)}` with the `/2` dropped must break QRT-G2) | `.24`, `.25`, `.31` | Planted mutant |
 | Tooth W12-T-SIGMA (QRT-G2 `(2)` σ mis-keyed must be caught by PARI) | `.27`, `.31` | Planted mutant, IND leg |
 | Pre-runner independent brute force (9 cubic + 4 quartic rows) | `.29`, `.30`, `.31` | Independent re-derivation, disclosed pre-seal |
-| `[r4]` fresh separability instrument (sympy over `GF(p)[t]` and `ℤ`; p = 2,3,5,7, N = 2,3,4) | `.38`, `.39`, `.40` | Executable regression on a FRESH instrument, covering exactly what the frozen kit structurally cannot |
+| `[r4]` fresh separability instrument (sympy over `GF(p)[t]` and `ℤ`; p = 2,3,5,7, N = 2,3,4) | `.38`, `.39`, `.40` | **PROOF-ONLY / AUDIT — in-house hostile pass.** It covers exactly what the note says was “invisible to the sealed instrument BY CONSTRUCTION” |
 | `[r1]` counter-instance re-read of `w12_checks_results.json` row `(Zp,2,5)` = 4096 | `.09`, `.15` | Committed-artifact re-read |
 | `[r2]` boundary-tail mass re-verified on all 23 cubic rows | `.45` | Committed-artifact re-read |
 | `[r3]` HEX3.A transcription tied to all 23 committed `U₃` values, 0 mismatches | `.16` | Cross-note numerical tie |
-| The degenerate one-family instance (`R_split = 1 ≠ μ_split`) | `.12`, `.17` | Signed counter-model to the sealed hypothesis set |
-| S2.3's equal-characteristic-3 counter-instance (`F = y³ + b₀`, `F′ ≡ 0`) | `.18`, `.27` | Signed non-applicability |
+| The degenerate one-family instance (`R_split = 1 ≠ μ_split`) | `.12`, `.17` | **PROOF-ONLY / AUDIT — decorrelated-model audit:** signed counter-model to the sealed hypothesis set |
+| S2.3's equal-characteristic-3 counter-instance (`F = y³ + b₀`, `F′ ≡ 0`) | `.18`, `.27` | **PROOF-ONLY / AUDIT — in-house hostile pass:** signed non-applicability; the sealed mixed-characteristic oracle could not expose it |
 | The runner's never-firing `assert e == 1` (PE1-verified) | `.08` | Negative executable check |
 
 **Both-direction audit:** every row guards at least one in-range unit, and every in-range unit with a non-empty `TEETH` field appears in at least one row. Units with `TEETH: NONE` (`.01`, `.04`, `.05`, `.19`, `.20`, `.26`, `.37`, `.43`, `.48`) are headers, reconciliations, proof audits, fences or composition displays. **Zero battery-row orphans; zero toothed-unit orphans.** Out-of-range teeth not counted here: the LEMMA W12-HT machine certificate (`verification/openmath/w12_history_law_check.py`, 1,196 per-key comparisons, four teeth), homed in shard 2, which guards the corrected form of `.09`.
@@ -1375,11 +1728,13 @@ Every designation below was checked with fixed-string `grep -cF` in the named ta
 
 ## 6. Boundary self-audit
 
-W12 is prose-proof with named theorems (`\tag{` density 0.00), so boundaries were chosen at changes of consumer, supplier perimeter, conditionality, or executable tooth. The governing choices:
+The W12 HOME range is prose-proof with named theorems (`\tag{` count 0 in lines
+1–1271), so boundaries were chosen at changes of consumer, supplier perimeter,
+conditionality, or executable tooth. The governing choices:
 
 1. **The statement complex `.09`–`.14` follows the note's own clause letters** (i)/(ii)/(iii) and grade summary, with ONE deliberate split inside clause (iii): `.12` (the (A0)/(A1)/(A2) hypothesis interface) is separated from `.13` (the conclusion). This is the shard's most consequential boundary: the hypotheses are the capstone-facing conditionality vocabulary, they are what the `[r4]` strengthening and the 2026-08-12 (A1) correction act on, and they are cited independently of the conclusion by every downstream firing.
 2. **Repair records are units, not annotations** (`.15`–`.20`, `.40`). Each carries a counter-instance, a price computation, or a sweep that is evidence in its own right — the `[r3]` rejected-parse price and the `[r4]` degenerate instance are the two places where the note proves that its own definitions are load-bearing.
-3. **The FIRING CHECK (`.18`) and the seven-family table (`.28`) are emitted as tables**, per template rule 5. Prosifying either would destroy the per-degree / per-family addressability the teeth table needs.
+3. **The FIRING CHECK (`.18`) and the seven-family table (`.28`) are emitted as tables**, per template rule 5. The fixed-width census display (`.25`) and W12-L0 leaf-law display (`.32`) are double-emitted verbatim plus Markdown transcription. Prosifying any of these would destroy addressability.
 4. **§S2 is split along its proof seams** (`.21` product structure / `.22` census / `.23` digit calculus / `.24` branch count + sweep / `.25` censuses / `.26` cell factorization / `.27` Ore leaves) because LEMMA W12-HT (shard 2) re-uses precisely `.23`, `.24` and `.21` as its steps 1, 1 and 3 — the seams are the reuse boundaries.
 5. **`.38`/`.39`/`.40` split LEMMA W12-S3.2 into statement+construction / separability warrant / repair record**, because the statement is byte-unchanged while the construction was replaced and the warrant is new: merging them would hide that a CRITICAL proof-level repair left the statement fixed.
 6. **§S3.4 is split into Step 1 (`.42`) and Steps 2–4 (`.43`)** because only Step 1 is touched by the 2026-08-12 (A1) correction, and only Step 4 consumes the σ-labeling clause.
@@ -1391,66 +1746,98 @@ Merges deliberately NOT made: `.45` (conditionality at n ≥ 3) is kept apart fr
 
 ## 7. SHARD NOTES
 
-- **Cross-shard supersessions applied (resolution rules 3–7):** the post-PE7 acceptance record (status → ACCEPTED 2/2, note FROZEN); the 2026-08-12 κ(T) level-0 orbit correction (→ `.09`); the 2026-08-12 obstruction + the LEMMA W12-HT discharge (→ `.09`'s effective law `(HT-global)`, and `.14`'s coverage claim); the 2026-08-12 (A1) rationality correction (→ `.12`, `.42`, `.44`); the 2026-08-12 BOX-1 dependency-range correction (→ `.49`). In-range, the `[r1]`–`[r5]` brackets are applied at their own sites.
-- **Range-edge audit:** line 1270 closes W12-BOX-8; line 1271 is blank and line 1272 opens `## S7. THE SEALED BATTERY`. **No source unit is cut at the edge.** The battery's family definitions, predictions and verdict are homed in shard 2; this shard cites individual battery rows only inside `TEETH` fields, using the row names S7 defines.
-- **Outside-HOME material not inventoried:** §S7–§S10, the two verbatim annexes, the `[r5]` NOTICE + m2 sweep, the arcs, the PE6/PE7 dated records, and the 2026-08-12 adjudication/obstruction/corrections/discharge are NOT emitted here. Shard 2 owns them.
-- **Protocol versus absorption:** the two received annexes are recorded as discharges of this note's boxes at *composition grade*; the one owed outward correction (HMENU3) is recorded as **not landed** and verified so at HEAD (OPEN-CALL 2).
-- **Numbering:** temporary IDs `EFF.W12.s1of2.01`–`.52`, to be reconciled with shard 2's at the merge run.
+### 7.1 Cross-shard supersessions applied
+
+`[TABLE — compiler ledger]`
+
+| Later source site (all physically in shard 2) | HOME target in this shard | SUPERSESSION KIND | Terminal effective reading |
+|---|---|---|---|
+| PE7 acceptance/re-anchor, lines 1952–1995 | `.01`, `.14` | as-of scoping | **ACCEPTED 2/2; text frozen, dated appends only** |
+| level-zero orbit correction, 2032–2091 | `.09` | replacement | `κ₀(T)C₀(q)` at level zero |
+| dated obstruction 2012–2030 → W12-HT 2192–2429 | `.09`, `.14` | license | **TERMINAL:** `(HT-global)` with `(HT-branch)`; full order-1 coverage restored |
+| rational-coefficient correction, 2093–2141 | `.12`, `.42`, `.44` | replacement | fixed `c_F(X) ∈ ℚ(X)`, evaluated at `X=q` |
+| BOX-1 dependency correction, 2143–2153 | `.49` | replacement | `(H-a)–(H-e)` |
+| HEX3 BOX-3 annex, 1654–1683 | `.45`, `.50` | license | `(hExhaust-3)` discharged at composition grade |
+| HMENU3 BOX-2 annex, 1685–1720 | `.45`, `.50` | license | `(hMenu-3)` discharged at composition grade |
+
+**Zero dangling targets.** The obstruction chain has one mathematical terminal member,
+W12-HT's consumer sweep. The two drainage licenses have separate terminals because they
+discharge distinct n = 3 hypotheses; BOX-4 remains open for `n ≥ 4`.
+
+### 7.2 Status SERIES
+
+The dated arc is a SERIES assembled from the source's own chronology:
+
+> composition 0/2 → PE1/r1 → PE2/r2 → PE3/r3 → PE4/r4 → PE5/r5 →
+> PE6 CLEAN 1/2 → PE7 CLEAN, **TERMINAL: 2/2 ACCEPTED**.
+
+The earlier “attempt 0/2” clauses are tagged `STALE-SELF-DESCRIPTION`, not silently
+rewritten. The terminal PE6/PE7 pair is an **AUDIT — hostile-pass certification**.
+The instrument freeze is independent of this text/acceptance series.
+
+### 7.3 Boundary and protocol notes
+
+- **Range edge:** line 1270 closes W12-BOX-8; line 1271 is blank; line 1272 opens
+  `## S7. THE SEALED BATTERY`. No source unit is cut at the shard boundary.
+- **Outside-HOME material not emitted:** §S7–§S10, the two annexes, the arc records,
+  PE6/PE7, and the 2026-08-12 corrections/discharge are used only to resolve HOME units.
+- **Current cross-note protocol:** HMENU3's quantifier correction is landed at ANNEX A
+  (`19c02857`) and refined by ANNEX B/C (`d665620b`); HEX3's corresponding wording
+  correction is landed in its `[r4]` chain. Grepping their frozen original sentences
+  is not a landing test.
+- **Numbering:** temporary IDs `EFF.W12.s1of2.01`–`.52`; merge renumbering is
+  deliberately deferred.
 
 ---
 
-## 8. Self-audit and OPEN-CALLS
+## 8. Self-audit
 
-### OPEN-CALL 1 — which text is THEOREM W-12.A's canonical statement in the effective spec
+### Resolved compilation judgments
 
-Three texts are in play for the same theorem: (a) the S1 display as repaired by `[r1]` (`.09`, in range); (b) that display with the level-0 orbit factor `κ(T)` (2026-08-12 correction); (c) `(HT-global)`, the history-resolved law of LEMMA W12-HT, which the discharge names as “its controlling formula”, with (b) as “the depth-zero specialization”. I have compiled (c) as effective, per the discharge's own words, and carried (a) as the depth-zero case. **The call is that the discharge's own ledger line does not declare itself final:** *“Ledger: row 12 → the obstruction is DISCHARGED; a final transcription-confirmation rides the next queue.”* — and the three A1-derived corrections carry *“the three corrections await sol discharge-confirmation”*. Whether the effective spec should present W-12.A as `(HT-global)` (my reading) or hold it at the κ(T)-corrected depth-zero display pending confirmation is a DAG/status decision above the compiler. **Reading note (external, not an edit):** `docs/SOL_CERTIFICATION_LEDGER_2026-08-12.md` row 12 records W-12 as **CERTIFIED 2026-08-12** — “A1 repairs discharged (D2a 3/3); the obstruction discharged by LEMMA W12-HT (machine certificate GREEN; transcription confirmed at TC1) — W-12.A at full order-1 coverage”, i.e. the ledger says both confirmations have since landed.
+1. **W-12.A canonical law:** resolved from the note's own terminal discharge sentence.
+   The effective law is `(HT-global)`/`(HT-branch)`; the S1 formula is its depth-zero
+   specialization, not a competing terminal statement.
+2. **HMENU3/HEX3 protocol status:** resolved by reading each supplier's full correction
+   chain. Both wording repairs are landed.
+3. **`(A0)` interface status:** resolved by fidelity. The source says
+   “redundant-but-retained”, so the effective interface retains it.
+4. **W12-BOX-1 range:** resolved to five inputs, `(H-a)–(H-e)`.
+5. **Grade versus mathematical scope:** acceptance is terminal at 2/2; it does not turn
+   W-12.B into a theorem, remove `[W12-H]`, or close BOX-4.
 
-### OPEN-CALL 2 — the owed HMENU3 quantifier correction is drafted but NOT applied
+### OPEN-CALLS
 
-The `[r5]` FIRING CHECK rewording (`.18`) and the `[r5]` NOTICE (shard 2) record that HMENU3's THEOREM HM3.C carries the same unrestricted “EVERY lift” over-claim that `[r4]` m2 struck from this note's S2.3, that the defect is INHERITED from the shared S2.3-era phrasing, and that the corrected clause is the disc ≠ 0 form. The correction is drafted at `lean/notes/openmath/HMENU3_annex_draft_r5.md` (**file present, verified**), with application declared “the orchestrator's”. **Verified at HEAD:** `HMENU3_PROOF_2026-08-08.md` lines 216–219 still read *“so Ore certifies EVERY lift (W-12 S2.3 at the terminal frame; W12-L1(c) transports the DBL certificates); σ_F = the leaf …”* — the annex has **not** been applied. Nothing mathematical turns on it (the n = 3 firing survives on the corrected form, and no count moves), but the corpus currently contains a statement W-12 has diagnosed as false in equal characteristic 3, and W-12's own FIRING CHECK cites that statement as its n = 3 supplier. **Decision needed:** land the drafted annex, or record the obligation in the spec's hypothesis-closure ledger.
+**None.** Mathematical open obligations (W-12.B, `[W12-H]`, BOX-4,
+`[GENHN-HE(μ ≥ 3)]`, and HEX3-BOX-1) are inventoried statements or fences, not
+unresolved compiler judgments.
 
-### OPEN-CALL 3 — `(A0)` retained-but-redundant: keep or retire in the effective interface
+### Recorded source defects and near-misses
 
-Post-`[r4]`/`[r5]`, `(A0)` is “the same statement in its well-posedness phrasing, i.e. redundant-but-retained: it is not the load-bearing warrant at either bound”. The note keeps it as a hypothesis of W-12.D. A downstream formalization must choose: transcribe (A0) as a hypothesis (faithful to the note, but a provable-from-(A1) redundancy in the interface) or drop it (leaner, but a statement change). I compile it as retained. **This is a statement-shape decision for the blueprint, flagged rather than taken.**
+1. W12 writes “JB row-12”; fixed-string count is 0, while the verified referent
+   `row 12` has count 9. This is recorded as a near-miss, not emitted as an XREF.
+2. W12 writes blueprint `§S3.1`; that exact string has count 0, while the verified
+   header is `### S3.1 The twelve lemmas` and the quoted W-12 row is unique.
+3. The frozen FIRING CHECK says “33-family” at n = 3; HMENU3 ANNEX B's terminal formal
+   fixed-σ inventory is 53. Both figures are recorded with provenance.
+4. The archived draft's spurious `(q^d−1)` interior-vertex factor is explicitly
+   non-imported.
 
-### Recorded source defects and orthography (flagged, not silently repaired)
+### Structural and fidelity audit
 
-1. **`.05`, `.06`:** W12 cites the blueprint as `§S3.1` (count **0**; the file's header is `### S3.1 The twelve lemmas`) and GRTJB's `row-12` (count **0**; the file writes `row 12`, count **9**). Both referents are unique and verified; the orthography is recorded, not corrected.
-2. **`.49`:** W12-BOX-1's `(H-a)–(H-d)` contradicted §S4.2's own five-input list; corrected out of range and applied here. The note's own verification records “no prior dated append correcting it”.
-3. **`.02`:** the archived draft's spurious `(q^d−1)`-per-interior-vertex factor is recorded as a known-wrong alternative to `.24`'s sweep result, useful to a cross-reader as the exact shape of the error the sweep excludes.
+- **52/52** units have CANONICAL STATEMENT, mandatory `FORM`, DERIVATION,
+  CONDITIONALITY, RESOLUTION TRACE, and TEETH fields.
+- All effective multi-span statements are marked `[ASSEMBLED]`; quoted source text,
+  strike-through, and displayed tables are preserved.
+- Four source tabular displays are marked `[TABLE]` or carry an explicit `[TABLE — Markdown transcription]`; count-bearing tables have fresh
+  arithmetic audits. Compiler tables are marked `[TABLE — compiler ledger]`.
+- **36/36** XREF designations were freshly fixed-string verified with their counts
+  unchanged; two zero-count orthographic near-misses are kept out of the XREF ledger.
+- **22/22** cited commit pins resolve to commit objects. All named artifacts exist; the
+  five imported-instrument MD5s, both W12 result MD5s, the source-prefix MD5, and the
+  runner/seal identity were freshly checked.
+- Supply, append protocol, and inbound-correction predicates remain distinct.
+- The teeth inverse table is bidirectional: zero battery-row orphans and zero toothed-unit
+  orphans; proof-only decorrelated audits are labelled explicitly.
+- The shard boundary is clean and no out-of-range statement is emitted as a HOME unit.
 
-### Fidelity audit
-
-- Every CANONICAL STATEMENT is verbatim quotation or explicitly marked `[ASSEMBLED]`; no inverse, sign, quantifier, index, or implication direction was altered. Struck text is reproduced as struck (`~~…~~`) and never carried as effective. Truncations inside quotations are marked `…` (used once, inside `.18`'s n = 3 table cell, where the elided argument is quoted in full at `.27`).
-- Two source tables (the FIRING CHECK, the seven TRP families) are emitted as tables and flagged `[TABLE]`; the universal censuses are emitted as a `[TABLE]` unit preserving the source's display block. No source table was prosified.
-- All 36 XREF designations carry fixed-string counts ≥ 1, recorded inline and in §3.1. Two orthography mismatches are recorded as reading notes with the verified form; no zero-count string is emitted as an XREF.
-- Three predicates are kept distinct throughout: **grade** (ACCEPTED 2/2, from the acceptance record), **mathematical conditionality** (`[W12-H]`, `(hMenu-3)`, `(hExhaust-3)`, the (A0)/(A1)/(A2) interface), and **append protocol** (two annexes received; one correction owed outward and not landed).
-- The three 2026-08-12 corrections and the obstruction/discharge pair are applied as supersessions with their target spans quoted, per the note's own convention.
-- CITE-SCOPE retargets ([GN15] Thm 2.3 for the Ore/GMN cites at `.09`, `.27`, `.46`, `.47`) are recorded as reading notes at their units and are **not** applied to the compiled text, per the charge.
-
-EFF-W12-s1of2 COMPILED: 52 statements / 36 xrefs verified / 3 open calls
-
----
-
-## AMENDMENT (dated append, 2026-08-14, post-compilation; the compiled text above is NOT edited): the HMENU3 quantifier correction LANDED — three OWED/NOT-LANDED sites superseded
-
-**What is superseded, quoted exactly, byte-verified at HEAD (`grep -cF`, count in parens — each is unique):**
-
-1. **§3.2 crossref row (~L1312).** `| HMENU3 | ... | **OWED AND NOT LANDED.** The correction is drafted at \`lean/notes/openmath/HMENU3_annex_draft_r5.md\` (file present); application "is the orchestrator's". Verified at HEAD: \`HMENU3_PROOF_2026-08-08.md\` L216–219 still reads "so Ore certifies EVERY lift". See OPEN-CALL 2 |` (1).
-2. **`.18` CONDITIONALITY (~L478).** "…the HMENU3-side phrasing correction is owed and drafted but **not landed** (`.02`'s protocol note; the draft is `lean/notes/openmath/HMENU3_annex_draft_r5.md`)." (1).
-3. **OPEN-CALL 2 (~L1408).** Header "### OPEN-CALL 2 — the owed HMENU3 quantifier correction is drafted but NOT applied" (1); body "**Verified at HEAD:** `HMENU3_PROOF_2026-08-08.md` lines 216–219 still read *"so Ore certifies EVERY lift…"* — the annex has **not** been applied. … **Decision needed:** land the drafted annex, or record the obligation in the spec's hypothesis-closure ledger." (1).
-
-**Why all three are stale.** Each site's own evidence for "not landed" is identical: *the frozen sentence at `HMENU3_PROOF_2026-08-08.md` L216–219 is unchanged.* That check cannot distinguish "not landed" from "landed by dated append" — this note's own convention (line 29: out-of-range 2026-08-12 appends "correct three statements homed here" while the base body stays byte-frozen; ANNEX A/B/C inside HMENU3_PROOF itself use the identical pattern, quoting the frozen sentence "As frozen" and giving a "Read as" correction beside it, never touching L216–219) is that a correction is a **dated append below the frozen body**, never an in-place edit. By construction the pinned original sentence never disappears whether or not the correction landed. Absence of change at L216–219 is therefore not evidence either way; the three sites over-read a structural non-signal as a negative result.
-
-**What actually landed.** `lean/notes/openmath/HMENU3_PROOF_2026-08-08.md` §"ANNEX A (dated append, 2026-08-08, post-acceptance…)" (commit **19c02857**, "HMENU3 ANNEX A applied (dated append per freeze convention): HM3.C's (A0) quantifier corrected to the disc!=0 form at two sites…") applies exactly the correction all three superseded sites call "owed": THEOREM HM3.C's (A0) clause (L216–219, quoted "As frozen") and §S5.2's (A0) proof (L431–437, quoted "As frozen") are each given a "Read as" corrected reading — "so Ore certifies every lift **with disc ≠ 0**" and "assigns the SAME σ to every O-lift **with disc ≠ 0**", the "(not only disc ≠ 0 ones)" parenthetical withdrawn. ANNEX A records the counter-instance forcing the correction (TRP-RAM3(1) at p = 3, disc = 0, no σ at all) and that nothing else moves: HM3.A, HM3.B, HM3.C's (A2) exact complement, HM3.D, both W-12-side boxes, and the sealed battery are all UNCHANGED, and "W-12.D's n = 3 firing stands on the corrected form". ANNEX A was subsequently refined, not reopened, by **ANNEX B** (fixed-λ refinement: 7+7 shape schemas → 11+11 formal fixed-σ (A1) families, 53 total) and **ANNEX C** (states ANNEX A's logical effect precisely: strictly narrower quantifier, not merely a null-set removal), both dated appends of 2026-08-12, commit **d665620b** ("SOL cert E7 FOLDED: HMENU3 — ANNEX B fixed-λ refinement … + ANNEX C strictness statement"), landed via the sol certification C8/E7 adjudication (gpt-5.6-sol high; C8 raised the (A1)-indexing gap as CHALLENGE, E7 adjudicated findings 1 and 3 REAL and repaired them by ANNEX B and ANNEX C respectively). Verification (byte-exact pin re-verification against both commits, md5 match, tripwire green) is the maintenance agent's finding, logged at the next `docs/PROJECT_STATE.md` append; cite commit 19c02857 as the landing, d665620b as the refinement.
-
-**Corrected reading at each superseded site (mathematical content unmoved; append/consumption-protocol status only):**
-
-- **§3.2 crossref row:** the append/consumption-protocol cell reads **LANDED 2026-08-08 (ANNEX A, commit 19c02857), refined 2026-08-12 (ANNEX B/C, commit d665620b) — not owed.** The mathematical-status cell already said "SURVIVES on the corrected disc ≠ 0 form; HM3.C's conclusion, HM3.A/B, HM3.D and all counts unchanged" and needs no change: ANNEX A supplies exactly that reading, ANNEX B/C only sharpen HM3.B's schemas and state ANNEX A's effect precisely.
-- **`.18` CONDITIONALITY:** the n = 3 row of the FIRING CHECK table is **SUPPLIED at the ANNEX-A-corrected, sol-certified (ANNEX B/C) form** — HMENU3's (A1) supply to W-12 is "every disc ≠ 0 lift of every core-menu member has σ = the leaf table's entry" (ANNEX A's own corrected-clause statement), landed, not owed. No residual obligation remains on the HMENU3 side; the row's characterization of the n = 3 firing as surviving is unaffected.
-- **OPEN-CALL 2:** **CLOSED.** The named decision ("land the drafted annex, or record the obligation") is resolved by the landing itself: the annex was applied (two sites, orchestrator-applied per the note's own `[r5]`-drafted text), and hardened further by ANNEX B/C. No open decision remains at this call.
-
-Nothing mathematical moves by this amendment: it corrects only the append/consumption-protocol predicate (per the header's own SCOPE SPLIT, rule 7) that the three superseded sites had wrong, using a detection method — grepping the pinned original sentence — that structurally cannot witness an appended correction. The compiled text's statement content, counts, and CANONICAL STATEMENTs above are untouched.
-
-
-
+EFF-W12-s1of2 COMPILED: 52 statements / 36 xrefs verified / 0 open calls
