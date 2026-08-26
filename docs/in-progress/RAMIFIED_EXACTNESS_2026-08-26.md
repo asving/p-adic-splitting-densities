@@ -15,7 +15,7 @@ certificate; the landed quotient symmetry TRANSFERS it (BW1 interfaces
 **Status of this document: the theorem is PROVED below with no open gaps at math level.**
 Every step is finite/graded commutative algebra over the DVR — no completion, no Hensel, no
 new cite. The examples-first certificate (`verification/ramx_cert.py`, log
-`verification/ramx_cert.log`) checks the formula exactly on 4,433 instances across 7 frames
+`verification/ramx_cert.log`) checks the formula exactly on 4,443 instances across 7 frames
 (two independent norm computations per instance) and exhibits the predicted violation when
 residual irreducibility is dropped. Definition-faithfulness of the STATEMENT (like all new
 statements) is flagged for the standing trust-boundary review.
