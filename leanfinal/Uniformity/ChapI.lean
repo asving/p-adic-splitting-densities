@@ -1,6 +1,8 @@
 import Uniformity.ChapI.I01
 import Uniformity.ChapI.I02
+import Uniformity.ChapI.I02_I03w
 import Uniformity.ChapI.I03
+import Uniformity.ChapI.I03_I04w
 import Uniformity.ChapI.I05
 import Uniformity.ChapI.I06
 import Uniformity.ChapI.I07
