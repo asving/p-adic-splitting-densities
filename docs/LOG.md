@@ -306,3 +306,15 @@ top item becomes the INHABITATION campaign (field-list decomposer next). Census 
 664/1237 PROVED, 487 carrier, 72 unlanded. One incident: a stale pre-PK12 `C130sg.olean`
 in the shared build tree (C130sg is in no roll-up) — rebuilt, artifact refresh only;
 noted for the roll-up wiring pass.
+
+**2026-08-26 (evening, hold window) — the roll-up wiring pass (orchestrator).** With the
+fleet idle until the codex 22:26 reset, the quiet-window task ran: 57 landed-but-unwired
+node files wired into their chapter roll-ups (ChapC +40 — the whole C130/C131 sprint plus
+C150rb1-3, C123r, C27x, C141defs; ChapE +6 — the E57 family; ChapH +6; ChapB +3; ChapI +
+the new I10_I15_I18; D/F/G +1 each). Import lists regenerated as SORTED unions — canonical
+from now on, so future wiring is a pure append. Two build-cycle discoveries: `B86` and
+`G78` import their OWN chapter roll-ups (consumer files) and must never be wired — recorded
+in §4 item 6. All 8 roll-up targets rebuilt green; `Leanspec.ChapI` re-verified green
+against the 57 newly-transitive modules (no name-ambiguity breakage). This closes the
+stale-olean incident class RSGN hit on C130sg (a landed file in no roll-up never gets its
+olean refreshed by roll-up builds).

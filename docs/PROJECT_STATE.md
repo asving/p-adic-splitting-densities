@@ -118,8 +118,10 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 6. **Maintenance queues**: the SIMP map is DELIVERED (`docs/in-progress/
    SIMPLIFICATION_MAP_2026-08-26.md` — two live risks flagged: C131af.lean:46-47
    dual-namespace open; the 4-way `slot_eq` collision) — enactment wave unscheduled;
-   RQ DELIVERED (`docs/REVIEW_QUEUE_2026-08-26.md`, Asvin's queue); the roll-up wiring
-   for the ~25 newest files (orchestrator, at the next quiet window).
+   RQ DELIVERED (`docs/REVIEW_QUEUE_2026-08-26.md`, Asvin's queue); roll-up wiring DONE
+   (2026-08-26: 57 files wired, all 8 targets + Leanspec.ChapI green; B86/G78 are
+   roll-up CONSUMERS, never wire them — cycle). Wiring rule now: sorted import lists,
+   append new nodes on landing.
 
 ## 5. Instruments and reusable assets
 
