@@ -62,6 +62,7 @@ import Uniformity.ChapB.B52
 import Uniformity.ChapB.B53a
 import Uniformity.ChapB.B53b
 import Uniformity.ChapB.B53c
+import Uniformity.ChapB.B53d
 import Uniformity.ChapB.B54
 import Uniformity.ChapB.B55
 import Uniformity.ChapB.B56
