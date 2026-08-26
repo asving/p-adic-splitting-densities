@@ -18,6 +18,12 @@ views (`SlotViewEq`, `BlockViewEq`, `GaugeFamilyViewEq`, `ArenaFamilyViewEq`).
 Every family equation is guarded by `GaugeLive`.  In particular, no declaration identifies
 the ambient canonical read with the separate terminal-field arena read, and no declaration
 constrains a family off the live range.
+
+**[PK-2/U15, 2026-08-25]** — packaging-route view-binder ripple
+(`PACKAGING_ROUTE_2026-08-25.md` §4/PK-2): the carrier binder block is retyped at the
+PK-1 `ChainRealization` (split node, no `(e' f' u')` parameters, evaluation ambient `{E}`);
+every view statement and proof below is otherwise byte-unchanged — none of them ever
+consumed the deleted FGMN legs or the evaluation fields (U15 §1's grep verification).
 -/
 
 set_option linter.style.longLine false
@@ -144,14 +150,14 @@ open Uniformity.Density.Leaf
 abbrev KernelRead (G U : Type*) [CommGroup G] [CommMonoid U] :=
   Σ v : G →* Multiplicative ℤ, MonoidHom.ker v →* U
 
-universe uG uK uKt uL
+universe uE uG uK uKt uL
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
 variable {π : O} {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
-variable {Kt : Type uKt} [Field Kt] {L : Type uL} [Field L] [Algebra Kt L]
-variable {n e' f' u' : ℕ} {core : ArisingCore (O := O) Kt L n}
+variable {Kt : Type uKt} [Field Kt] {E : Type uE} [Field E] {L : Type uL} [Field L] [Algebra Kt L]
+variable {n : ℕ} {core : ArisingCore (O := O) Kt L n}
 variable {A : ChainRealization (O := O) (π := core.π) (F := core.F)
-  (H₀ := core.H₀) (hpin := core.hpin) core.T Kt L e' f' u'}
+  (H₀ := core.H₀) (hpin := core.hpin) core.T Kt E L}
 
 /-- The realized stage carrier, transported to an arbitrary universe-equivalent digit field. -/
 def RealizedInput.stageCarrierTransport (X : RealizedInput core A)
@@ -308,7 +314,7 @@ theorem RealizedInput.arenaFamilyViewEq (X : RealizedInput core A) (hr : 1 < cor
     apply heq_of_eq
     rfl
   · intro g
-    rw [towerReadFamily, NodePointSource.towerReadFamily0_live _ hj]
+    rw [towerReadFamily, SplitNodePointSource.towerReadFamily0_live _ hj]
 
 /-! Off-range lint: the four view propositions have no off-range consequence. -/
 

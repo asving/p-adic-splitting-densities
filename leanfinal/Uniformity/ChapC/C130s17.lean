@@ -79,6 +79,19 @@ packaging premise `LegacyFGMN` (mirror of `LegacyEvaluation`, below).
   non-vacuous S2 statement; every non-vacuous statement of this file is either
   repository-side or `ev`/`lf`-free.
 
+**[PK-2/U15, 2026-08-25] — the SF-3 consumer ripple ENACTED** (packaging route,
+`PACKAGING_ROUTE_2026-08-25.md` §4.5): `SplitNodePointSource` + helpers moved to `C130k2`
+(re-exported below); `ChainRealization` is now split-ambient with NO FGMN legs (C130fg,
+PK-1), so the packaging is `toCarrier` — NO `LegacyEvaluation` and NO `LegacyFGMN` premise —
+and `realizedInput`/`s2RealizedInput` are `ev`/`lf`-free.  The retired
+`toChainRealization ev lf`/`calculusNonempty ev lf` are gone: the class packaging is the
+factored `fgmnCalculusOf` (C130pk) and the honest anchored discharge is
+`C130sg.s2_calculus_discharge` (unconditional, at `r = 1`, `(2,1,5)`).  `LegacyEvaluation`/
+`LegacyFGMN`/`withLegacy` and the un-split `NodePointSource` are KEPT, marked QUARANTINE —
+they are the U13/FD-0 refutation record, no longer on any packaging path; C130sg's two
+emptiness theorems keep their statements verbatim.  The paragraph above this note is the
+pre-ripple record.
+
 Likewise, `S2InputData` exposes exactly the separate input-occurrence data needed by
 `ArisingCore`; `S2InputData.toArisingCore` and `S2SourceFrontier.realizedInput` construct the
 literal `RealizedInput`, selecting CC-9's `legalPoint` from the carried `point_exists`.
@@ -98,188 +111,18 @@ open Uniformity.Density.Tower.C130s2 Uniformity.Density.Tower.C130s6
 
 universe uE uKt uL
 
-/-! ## The corrected split-ambient node source (S2_SOURCE_PLAN_2026-08-24.md §2)
+/-! ## The split-ambient node source — MOVED to the carrier skeleton ([PK-1/U15, 2026-08-25])
 
-The general (any-depth) split re-type of C130k's `NodePointSource`, landed here because this
-file is the re-typed bundle's authority; the plan's SF-3 consumer ripple may later move it to
-the carrier skeleton.  Field-for-field byte-parallel to C130k except the four evaluation
-fields, whose codomain moves from `L` to the new valued ambient `E`. -/
+`SplitNodePointSource` and its helpers (`legalPoint`/`legalPoint_mem`/`stageCarrier`),
+landed HERE by unit SF1 on 2026-08-24, moved VERBATIM to `C130k2.lean` (packaging-route
+node PK-1, `PACKAGING_ROUTE_2026-08-25.md` §4.1) so the retyped CC-13 carrier
+(`ChainRealization`, C130fg) can take the split node as its `node` leg — exactly the SF-3
+consumer ripple SF1's landing note anticipated ("the plan's SF-3 consumer ripple may later
+move it to the carrier skeleton").  The re-export below keeps the historical qualified name
+`C130s17.SplitNodePointSource` resolving to the SAME constant (an alias, not a copy). -/
 
-section SplitAmbient
+export Uniformity.Density.Tower (SplitNodePointSource)
 
-variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
-variable {π : O} {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
-
-/-- The AMBIENT-SPLIT node-point source (plan §2's REQUIRED CORRECTION, re-typed
-2026-08-24 by unit SF1): C130k's `NodePointSource` with the single ambient `L` split into
-
-* the VALUED EVALUATION ambient `E` — `coeffHom`, `coord`, `valueOn`, `pointHgt_eval` —
-  a bare field, with NO `Algebra Kt E` demanded, so a faithful evaluation need not kill a
-  nonzero DVR constant; and
-* the RESIDUE/LETTER ambient `L` — `ambientLetter`, `psi_root`, `canonicalRead` — which
-  keeps `[Algebra Kt L]` (at S2 this forces `(2 : L) = 0`, harmlessly: `L` no longer hosts
-  the evaluation).
-
-U13 (`leanfinal/scratch/U13_probe.lean`, `no_s2_node_source`) machine-refuted the un-split
-typing at S2: the two roles cannot share one field in residue characteristic two.  Per the
-plan's fence, NO map `E → L` and no identification of node points with FGMN roots is
-carried.  All non-evaluation fields are byte-parallel to C130k's `NodePointSource`. -/
-structure SplitNodePointSource
-    (W : DeepTower.{0, uKt} F H₀ hpin r)
-    {Kt : Type uKt} [Field Kt] (E : Type uE) [Field E] {L : Type uL} [Field L]
-    [Algebra Kt L]
-    (receiver : TerminalReceiver F H₀ hpin r W Kt) (K : KeyChain W) where
-  /-- DEF GENTOW5-1 and EFF.GENTOW5.16: the legal node points (the P-locus). -/
-  Point : Type
-  /-- EFF.GENTOW5.16: legality of a node point at each live stage. -/
-  Pt : ℕ → Point → Prop
-  /-- EFF.GENTOW5.16: every live stage has a legal point. -/
-  point_exists : ∀ i, StageLive r i → Nonempty {x : Point // Pt i x}
-  /-- EFF.GENTOW5.16/.19 (SPLIT: valued in `E`): the coefficient read of the evaluation. -/
-  coeffHom : O →+* E
-  /-- EFF.GENTOW5.16/.19 (SPLIT: valued in `E`): the coordinate of a node point. -/
-  coord : Point → E
-  /-- EFF.GENTOW5.16/.19 (SPLIT: valued in `E`): the stage valuation read. -/
-  valueOn : ℕ → E → WithTop ℤ
-  /-- EFF.GENTOW5.19: valuation law — zero has infinite value. -/
-  value_zero : ∀ i, StageLive r i → valueOn i 0 = ⊤
-  /-- EFF.GENTOW5.19: valuation law — multiplicativity. -/
-  value_mul : ∀ i, StageLive r i → ∀ a b,
-    valueOn i (a * b) = valueOn i a + valueOn i b
-  /-- EFF.GENTOW5.19: valuation law — ultrametric inequality. -/
-  value_add_ge : ∀ i, StageLive r i → ∀ a b,
-    min (valueOn i a) (valueOn i b) ≤ valueOn i (a + b)
-  /-- EFF.GENTOW5.19: valuation law — ultrametric equality off ties. -/
-  value_add_eq : ∀ i, StageLive r i → ∀ a b,
-    valueOn i a ≠ valueOn i b →
-      valueOn i (a + b) = min (valueOn i a) (valueOn i b)
-
-  /-- EFF.T2.04: the stage height table. -/
-  hgt : ℕ → Polynomial O → WithTop ℤ
-  /-- EFF.T2.05: the stage digit table. -/
-  dig : (i : ℕ) → Polynomial O → W.fld i
-  /-- EFF.T2.04 at a node point: the pointwise height read. -/
-  pointHgt : ℕ → Point → Polynomial O → WithTop ℤ
-  /-- EFF.T2.05 at a node point: the pointwise digit read. -/
-  pointDig : (i : ℕ) → Point → Polynomial O → W.fld i
-  /-- The point read is an actual polynomial evaluation, not a free table (SPLIT: the
-  evaluation happens in `E`; retained unchanged in meaning, per plan §5.1). -/
-  pointHgt_eval : ∀ i x A,
-    pointHgt i x A = valueOn i (Polynomial.eval₂ coeffHom (coord x) A)
-  /-- EFF.T2.04: the stage height table agrees with every legal-point read in slot range. -/
-  slot_value : ∀ i (_hi : StageLive r i) (x : Point), Pt i x →
-    ∀ A : Polynomial O, A ≠ 0 → A.natDegree < W.Dcum i → pointHgt i x A = hgt i A
-  /-- EFF.T2.05: the stage digit table agrees with every legal-point read in slot range. -/
-  slot_digit : ∀ i (_hi : StageLive r i) (x : Point), Pt i x →
-    ∀ A : Polynomial O, A ≠ 0 → A.natDegree < W.Dcum i → pointDig i x A = dig i A
-
-  /-- EFF.T2.04: stage law — zero has infinite height. -/
-  hgt_zero : ∀ i, StageLive r i → hgt i 0 = ⊤
-  /-- EFF.T2.05: stage law — zero has digit zero. -/
-  dig_zero : ∀ i, StageLive r i → dig i 0 = 0
-  /-- EFF.T2.04: stage law — slot-range nonzero polynomials have finite height. -/
-  hgt_ne_top : ∀ i, StageLive r i → ∀ A : Polynomial O,
-    A ≠ 0 → A.natDegree < W.Dcum i → hgt i A ≠ ⊤
-  /-- EFF.T2.05: stage law — slot-range nonzero polynomials have nonzero digit. -/
-  dig_ne_zero : ∀ i, StageLive r i → ∀ A : Polynomial O,
-    A ≠ 0 → A.natDegree < W.Dcum i → dig i A ≠ 0
-  /-- EFF.T2.04: stage law — ultrametric inequality for heights. -/
-  hgt_add_ge : ∀ i, StageLive r i → ∀ A B,
-    min (hgt i A) (hgt i B) ≤ hgt i (A + B)
-  /-- EFF.T2.04: stage law — ultrametric equality off ties. -/
-  hgt_add_eq : ∀ i, StageLive r i → ∀ A B,
-    hgt i A ≠ hgt i B → hgt i (A + B) = min (hgt i A) (hgt i B)
-  /-- EFF.T2.05: stage law — digit additivity at a common height, off digit cancellation. -/
-  dig_add : ∀ i, StageLive r i → ∀ A B : Polynomial O, ∀ k : ℤ,
-    hgt i A = (k : WithTop ℤ) → hgt i B = (k : WithTop ℤ) →
-    dig i A + dig i B ≠ 0 →
-      hgt i (A + B) = (k : WithTop ℤ) ∧ dig i (A + B) = dig i A + dig i B
-  /-- EFF.T2.09: the fullness predicate for realizable heights. -/
-  Full : ℕ → ℤ → Prop
-  /-- EFF.T2.09: every full height realizes every nonzero digit by a slot-range polynomial. -/
-  lift : ∀ i, StageLive r i → ∀ k : ℤ, Full i k → ∀ c : W.fld i, c ≠ 0 →
-    ∃ A : Polynomial O, A ≠ 0 ∧ A.natDegree < W.Dcum i ∧
-      hgt i A = (k : WithTop ℤ) ∧ dig i A = c
-
-  /-- EFF.T2.04/.11: inherited integer input, not a function inferred from `(W,i,F₀)`. -/
-  thresholdZ : ℕ → ℤ
-  /-- Repo dictionary to E.11's current natural-valued `BlockData.T`. -/
-  thresholdNat : ℕ → ℕ
-  /-- The dictionary obligation forced by the natural-valued `BlockData.T`: if a source
-  instance has a genuinely negative inherited threshold, this field is uninhabitable and
-  E.11 must be re-signed to `ℤ`; no truncation to zero is allowed. -/
-  threshold_nonneg : ∀ i, StageLive r i → (thresholdNat i : ℤ) = thresholdZ i
-  /-- EFF.T2.11: the WINDOW source law `T < d(Φ(ρ)) < ∞` at every legal point. -/
-  window : ∀ i, StageLive r i → ∀ x : Point, Pt i x →
-    (thresholdZ i : WithTop ℤ) < pointHgt i x (K.keyAt i) ∧
-      pointHgt i x (K.keyAt i) ≠ ⊤
-
-  /-- EFF.GENTOW5 S2.1/S2.3 (residue ambient `L`): the ambient node-point letters. -/
-  ambientLetter : ℕ → Lˣ
-  /-- EFF.GENTOW5.19: the exact key value `u_(i+1)` at a legal point (gauge-live only). -/
-  key_value : ∀ i, GaugeLive r i → ∀ x : Point, Pt i x →
-    pointHgt i x (K.keyAt i) = (W.u (i + 1) : WithTop ℤ)
-  /-- EFF.GENTOW5 S2.3 (residue ambient `L`): the transported `ψ`-root law for the ambient
-  letter. -/
-  psi_root : ∀ i, GaugeLive r i →
-    Polynomial.eval₂ ((algebraMap Kt L).comp (receiver.levelHom i))
-      (ambientLetter i : L) (W.ψ i) = 0
-  /-- EFF.T1.01 and EFF.GENTOW5 S2.3 step (3) (residue ambient `L`): the L-valued node
-  read. -/
-  canonicalRead : (i : ℕ) → MonoidHom.ker (levelExponentHeight W i) →* Lˣ
-  /-- D.07/D.08, D.44 and EFF.T3.21: the separate terminal-field W-leg read. -/
-  arenaRead : (i : ℕ) → MonoidHom.ker (levelExponentHeight W i) →* Ktˣ
-  /-- D.07/D.08, D.44 and EFF.T3.21: the terminal-field lattice read for the arena family. -/
-  towerRead : (i : ℕ) → LevelExponentLattice i → Kt
-  /-- EFF.T1.01--.03 and EFF.T3.21: the peel units of the separate arena data. -/
-  peelUnit : ℕ → Ktˣ
-
-namespace SplitNodePointSource
-
-variable {W : DeepTower.{0, uKt} F H₀ hpin r}
-variable {Kt : Type uKt} [Field Kt] {E : Type uE} [Field E] {L : Type uL} [Field L]
-variable [Algebra Kt L]
-variable {receiver : TerminalReceiver F H₀ hpin r W Kt} {K : KeyChain W}
-
-/-- The canonical legal point at a live stage (choice on `point_exists`) — CC-9's
-`legalPoint`, verbatim at the split typing (C130pt's definition on the un-split node). -/
-noncomputable def legalPoint (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
-    (hi : StageLive r i) : S.Point :=
-  ((S.point_exists i hi).some : {x : S.Point // S.Pt i x}).1
-
-/-- The canonical legal point is legal. -/
-theorem legalPoint_mem (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
-    (hi : StageLive r i) : S.Pt i (S.legalPoint i hi) :=
-  ((S.point_exists i hi).some : {x : S.Point // S.Pt i x}).2
-
-/-- CC-5's producing map at the split typing (C130st's `stageCarrier`, verbatim: every
-field consumed is ambient-free, so the split changes nothing here): every live stage of a
-`SplitNodePointSource` yields the landed E.10 `Ladder.SlotCarrier` over the stage residue
-field `W.fld i`. -/
-def stageCarrier (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
-    (hi : StageLive r i) : Ladder.SlotCarrier O (W.fld i) where
-  D := W.Dcum i
-  hD := W.Dcum_pos hi.2
-  eC := W.ehat i
-  fC := W.fhat i
-  hef := W.Dcum_eq_ehat_mul_fhat i
-  heC := W.ehat_pos hi.2
-  hfC := W.fhat_pos hi.2
-  hgt := S.hgt i
-  dig := S.dig i
-  hgt_zero := S.hgt_zero i hi
-  dig_zero := S.dig_zero i hi
-  hgt_ne_top := S.hgt_ne_top i hi
-  dig_ne_zero := S.dig_ne_zero i hi
-  hgt_add_ge := S.hgt_add_ge i hi
-  hgt_add_eq := S.hgt_add_eq i hi
-  dig_add := S.dig_add i hi
-  Full := S.Full i
-  hlift := S.lift i hi
-
-end SplitNodePointSource
-
-end SplitAmbient
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [Finite (ResidueField O)] (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
@@ -421,9 +264,11 @@ bundle's `pointHgt` by `pointHgt_eval`.
 At S2 this structure is UNINHABITABLE: `[Algebra Kt L]` forces `(2 : L) = 0`, so
 `coeffHom 2 = 0` and `pointHgt_eval` + `value_zero` force `S.node.pointHgt 2 x (C 2) = ⊤`,
 against the split bundle's own `slot_value` + `hgt_ne_top` — the U13 contradiction
-transplants verbatim.  It exists ONLY so the packaging into the CURRENT un-split
-`ChainRealization` (C130fg, out of this unit's sanction) stays typeable until the plan's
-SF-3 consumer ripple re-types that carrier.  Do NOT attempt to inhabit it; the campaign
+transplants verbatim.  [PK-2/U15, 2026-08-25]: the SF-3 ripple is ENACTED —
+the retyped carrier consumes the split node directly and NO packaging path consumes this
+structure any more; it is KEPT purely as the U13 refutation record
+(`C130sg.s2Frontier_legacyEvaluation_isEmpty` certifies its emptiness at the SG-0
+instance).  Do NOT attempt to inhabit it; the campaign
 fills `S2SourceFrontier`, never this. -/
 structure LegacyEvaluation (S : S2SourceFrontier h2 hq E L) where
   coeffHom : O →+* L
@@ -453,9 +298,12 @@ degree dictionary collides with the chain's own `deg (keyAt 2) = 4` — machine-
 `C130sg.s2LegacyFGMN_landed_empty` (this file cannot import C130fd0, so the theorem lives
 downstream).  A record built from genuinely `μ₃`-level depth-two operators (plan §5.2's
 original intent, nowhere landed) is NOT refuted — which is why this is a named premise
-rather than a dead field.  It exists ONLY so the packaging into the CURRENT un-split
-`ChainRealization` (C130fg, whose `fgmn` leg is typed at the tower's own depth) stays
-typeable until the plan's SF-3 consumer ripple; the campaign fills the `r = 1` legs of
+rather than a dead field.  [PK-2/U15, 2026-08-25]: the SF-3 ripple is
+ENACTED — the retyped carrier has NO FGMN legs and no packaging path consumes this
+structure any more; it is KEPT purely as the FD-0 refutation record
+(`C130sg.s2LegacyFGMN_landed_empty`).  Per the packaging route's §2 parameter adjudication,
+a future genuinely-μ₃-level depth-two record must be typed `(2,1,21)`, not this structure's
+`(2,1,5)`.  The campaign fills the `r = 1` legs of
 `S2SourceFrontier`, never this. -/
 structure LegacyFGMN (S : S2SourceFrontier h2 hq E L) where
   fgmn : FGMNSourceData (S2DepthTwo h2 hq) (s2RepositoryRealization h2 hq).keys 2 1 5
@@ -470,7 +318,9 @@ structure LegacyFGMN (S : S2SourceFrontier h2 hq E L) where
 
 /-- Rebuild the legacy single-ambient `NodePointSource` from a split witness and the
 quarantined evaluation premise.  Every non-evaluation field is the split bundle's own,
-verbatim; only the eight `LegacyEvaluation` fields are new.  Empty premise at S2 (U13). -/
+verbatim; only the eight `LegacyEvaluation` fields are new.  Empty premise at S2 (U13).
+[PK-2/U15, 2026-08-25]: QUARANTINE — no packaging path consumes this any more (the retyped
+carrier takes the split node directly); kept as the refutation record. -/
 noncomputable def withLegacy (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) :
     NodePointSource (L := L) (S2DepthTwo h2 hq)
       (s2RepositoryRealization h2 hq).receiver (s2RepositoryRealization h2 hq).keys where
@@ -512,33 +362,23 @@ noncomputable def withLegacy (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEval
   towerRead := S.node.towerRead
   peelUnit := S.node.peelUnit
 
-/-- A split-frontier witness packages into the literal full S2 `ChainRealization` — but,
-until C130fg's carrier is itself ambient-split (plan SF-3), ONLY through the TWO quarantined
-legacy premises: `ev` (the U13-refuted single-ambient evaluation half, uninhabitable at S2)
-and — since the SG-0 re-type moved the frontier's own FGMN legs to the honest `r = 1`
-anchoring — `lf` (the FD-0-refuted depth-two FGMN half, uninhabitable at the landed operator
-readings).  This is a packaging shape, not a non-vacuous S2 statement; its S2 content lives
-entirely in the `ev`/`lf`-free fields of `S`. -/
-noncomputable def toChainRealization (S : S2SourceFrontier h2 hq E L)
-    (ev : S.LegacyEvaluation) (lf : S.LegacyFGMN) :
-    ChainRealization (S2DepthTwo h2 hq) ((S2DepthTwo h2 hq).fld 2) L 2 1 5 where
+/-- ★ [PK-2/U15, 2026-08-25] **the carrier packaging, `ev`/`lf`-FREE** (replaces the
+retired `toChainRealization ev lf`): a split-frontier witness packages into the PK-1-retyped
+S2 `ChainRealization` with NO quarantined premise — the retyped carrier's node leg IS the
+split node, so `S.node` slots in directly and neither the U13-refuted evaluation half
+(`LegacyEvaluation`) nor the FD-0-refuted depth-two FGMN half (`LegacyFGMN`) is consumed.
+The FGMN legs are gone from the carrier (factored into `fgmnCalculusOf`, C130pk); the
+class discharge now lives at the honest `r = 1` anchoring (`C130sg.s2_calculus_discharge`),
+so the retired `calculusNonempty ev lf` (the depth-two-typed, empty-premised packaging
+shape) has NO replacement at this depth-two typing — per the §2 parameter adjudication of
+`PACKAGING_ROUTE_2026-08-25.md`, every future S2 depth-two class statement must be typed
+`(2,1,21)`, not `(2,1,5)`. -/
+noncomputable def toCarrier (S : S2SourceFrontier h2 hq E L) :
+    ChainRealization (S2DepthTwo h2 hq) ((S2DepthTwo h2 hq).fld 2) E L where
   receiver := (s2RepositoryRealization h2 hq).receiver
   keys := (s2RepositoryRealization h2 hq).keys
   normalizer := (s2RepositoryRealization h2 hq).normalizer
-  node := S.withLegacy ev
-  fgmn := lf.fgmn
-  fgmnLaws := lf.fgmnLaws
-  grade_compat := lf.grade_compat
-  letter_compat := lf.letter_compat
-
-/-- The first calculus is non-vacuous exactly when the split frontier AND (until the SF-3
-carrier ripple) the two quarantined legacy premises are inhabited; `ev` is empty at S2
-(U13) and `lf` is empty at the landed operator readings (FD-0).  No class instance is
-registered. -/
-theorem calculusNonempty (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation)
-    (lf : S.LegacyFGMN) :
-    Nonempty (FGMNCalculus (S2DepthTwo h2 hq) 2 1 5) :=
-  chainRealization_calculus_nonempty (S.toChainRealization ev lf)
+  node := S.node
 
 /-- The canonical legal S2 level-two point, conditional only on the source P-locus carried
 by `node.point_exists` — `ev`-free. -/
@@ -756,28 +596,29 @@ variable {h2 hq}
 variable {E : Type uE} [Field E] {L : Type uL} [Field L]
 variable [Algebra ((S2DepthTwo h2 hq).fld 2) L]
 
-/-- Given the split source frontier, the two quarantined legacy premises (`ev` empty at S2
-— U13; `lf` empty at the landed operator readings — FD-0), and the explicit input frontier,
-construct the literal S2 `RealizedInput`.  The selected point is CC-9's `legalPoint`, hence
-comes from the carried `point_exists`. -/
+/-- Given the split source frontier and the explicit input frontier, construct the literal
+S2 `RealizedInput` — [PK-2/U15, 2026-08-25]: the two quarantined legacy premises `ev`/`lf`
+are DELETED (the PK-1 carrier consumes the split node directly).  The selected point is
+CC-9's `legalPoint`, hence comes from the carried `point_exists`.  All three dictionary
+fields remain `rfl` (scratch authority: `U15_check.s2RealizedInputV2`). -/
 noncomputable def realizedInput (S : S2SourceFrontier h2 hq E L)
-    (ev : S.LegacyEvaluation) (lf : S.LegacyFGMN) (I : S2InputData h2 hq L) :
-    RealizedInput I.toArisingCore (S.toChainRealization ev lf) where
+    (I : S2InputData h2 hq L) :
+    RealizedInput I.toArisingCore S.toCarrier where
   receiver_eq := rfl
   stageKey_eq := rfl
   stageDeg_eq := rfl
   point := S.point
   point_mem := S.point_mem
 
-/-- The maximal conditional acceptance-gate input: the arising occurrence is the concrete
-`keyAt 2 + 1` occurrence; the remaining premises are the separately exposed split frontier
-and the two quarantined legacy halves (`ev` empty at S2 — U13; `lf` empty at the landed
-operator readings — FD-0). -/
+/-- The maximal conditional acceptance-gate input, `ev`/`lf`-FREE ([PK-2/U15]): the arising
+occurrence is the concrete `keyAt 2 + 1` occurrence; the only remaining premise is the
+separately exposed split frontier itself (inhabited by `C130sg.s2Frontier`, conditional on
+exactly the level-1 threshold source datum `w`). -/
 noncomputable def s2RealizedInput
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) (lf : S.LegacyFGMN) :
-    RealizedInput (s2ArisingCore h2 hq L) (S.toChainRealization ev lf) :=
-  realizedInput S ev lf (s2InputData h2 hq L)
+    (S : S2SourceFrontier h2 hq E L) :
+    RealizedInput (s2ArisingCore h2 hq L) S.toCarrier :=
+  realizedInput S (s2InputData h2 hq L)
 
 end S2SourceFrontier
 
@@ -791,10 +632,8 @@ landed Lean-core CC constructors.  In particular `fgmn_dv_exact_mul` is not used
 
 section AxCheck
 
-#print axioms Uniformity.Density.Tower.C130s17.SplitNodePointSource
-#print axioms Uniformity.Density.Tower.C130s17.SplitNodePointSource.legalPoint
-#print axioms Uniformity.Density.Tower.C130s17.SplitNodePointSource.legalPoint_mem
-#print axioms Uniformity.Density.Tower.C130s17.SplitNodePointSource.stageCarrier
+-- [PK-1/U15] the split node source and its helpers moved to C130k2; their `#print axioms`
+-- rows live there (the alias `C130s17.SplitNodePointSource` resolves to the same constant).
 #print axioms Uniformity.Density.Tower.C130s17.s2TerminalReceiver
 #print axioms Uniformity.Density.Tower.C130s17.S2DepthTwo
 #print axioms Uniformity.Density.Tower.C130s17.S2RepositoryRealization
@@ -812,8 +651,7 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.LegacyEvaluation
 #print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.LegacyFGMN
 #print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.withLegacy
-#print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.toChainRealization
-#print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.calculusNonempty
+#print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.toCarrier
 #print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.point
 #print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.point_mem
 #print axioms Uniformity.Density.Tower.C130s17.S2SourceFrontier.thresholdZ

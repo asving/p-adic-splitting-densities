@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import Uniformity.ChapC.C130k
+import Uniformity.ChapC.C130k2
 import Uniformity.ChapC.C130s2
 
 /-!
@@ -16,6 +17,14 @@ CC-1 skeleton (`NodePointSource`, C130k); this file lands the LAYER on top of th
 P-locus exports, the derived exact-key-value laws, the transported-`ψ` object and its root/
 forcing theorems, and the bundled clause-by-clause legality read — the freeze-v2 layer C.130g
 (`NodePointDatum`/`LegalGENTOW5NodeRead`) content at the carrier, derived rather than stored.
+
+**[PK-2/U15, 2026-08-25]** — packaging-route view-binder ripple
+(`PACKAGING_ROUTE_2026-08-25.md` §4/PK-2): every node binder below is retyped
+un-split→split (`NodePointSource` → `SplitNodePointSource`, C130k2), signature-only — the
+consumed fields are byte-identical, so every proof is byte-stable.  `legalPoint`/
+`legalPoint_mem` moved to C130k2 with the split structure (PK-1) and are not re-declared
+here.  Prose mentions of the un-split name below are the historical CC-9 record; the
+un-split `NodePointSource` survives only as the U13-refutation quarantine record.
 
 ## Source rows (design §9's "source obligations" for this layer)
 
@@ -75,12 +84,12 @@ namespace Uniformity.Density.Tower
 
 open Uniformity.Density.Leaf
 
-universe uKt uL
+universe uE uKt uL
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
 variable {π : O} {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
 variable {W : DeepTower.{0, uKt} F H₀ hpin r}
-variable {Kt : Type uKt} [Field Kt] {L : Type uL} [Field L] [Algebra Kt L]
+variable {Kt : Type uKt} [Field Kt] {E : Type uE} [Field E] {L : Type uL} [Field L] [Algebra Kt L]
 variable {receiver : TerminalReceiver F H₀ hpin r W Kt} {K : KeyChain W}
 
 /-! ## 1. The ambient transport and the transported `ψ`
@@ -154,7 +163,7 @@ theorem psiTransported_root_ne_zero {i : ℕ} (hi : GaugeLive r i) {z : L}
 
 end TerminalReceiver
 
-namespace NodePointSource
+namespace SplitNodePointSource
 
 /-! ## 2. The legal P-locus (`Point`/`Pt`), exported
 
@@ -163,25 +172,19 @@ canonical (choice) legal point that CC-8's `RealizedInput` and CC-17's gate can 
 Nonemptiness is the `point_exists` SOURCE field — never derived from a bare tower. -/
 
 /-- GENTOW5.19: the stage-`i` legal P-locus, as a subtype of the carrier's point type. -/
-def LegalPt (S : NodePointSource (L := L) W receiver K) (i : ℕ) : Type :=
+def LegalPt (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ) : Type :=
   {x : S.Point // S.Pt i x}
 
 /-- The legal locus is nonempty at every live stage — the `point_exists` source field,
 re-read at the subtype (GENTOW5.19's nonemptiness hypothesis, carried not proved). -/
-theorem legalPt_nonempty (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem legalPt_nonempty (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hi : StageLive r i) : Nonempty (S.LegalPt i) :=
   S.point_exists i hi
 
-/-- The canonical legal point at a live stage (choice on `point_exists`).  This is the
-supply for `RealizedInput`'s `point` field (CC-8) at any instance. -/
-noncomputable def legalPoint (S : NodePointSource (L := L) W receiver K) (i : ℕ)
-    (hi : StageLive r i) : S.Point :=
-  ((S.point_exists i hi).some : {x : S.Point // S.Pt i x}).1
-
-/-- The canonical legal point is legal. -/
-theorem legalPoint_mem (S : NodePointSource (L := L) W receiver K) (i : ℕ)
-    (hi : StageLive r i) : S.Pt i (S.legalPoint i hi) :=
-  ((S.point_exists i hi).some : {x : S.Point // S.Pt i x}).2
+/-! [PK-2/U15, 2026-08-25]: CC-9's `legalPoint`/`legalPoint_mem` now live at the carrier
+skeleton (`C130k2.SplitNodePointSource.legalPoint`/`legalPoint_mem`, moved verbatim with the
+split structure by node PK-1); the `exists_legalGentowNodeRead` supply below consumes them
+from there.  They are deliberately NOT re-declared here (one definition, no drift). -/
 
 /-! ## 3. Pointwise value arithmetic
 
@@ -189,13 +192,13 @@ Derived laws of the point read (`pointHgt` through `pointHgt_eval` and the `valu
 source laws) — the dv-arithmetic GENTOW5.19's exactness clauses ride on. -/
 
 /-- The point read of `0` is `⊤` at a live stage (evaluation is `0`; `value_zero`). -/
-theorem pointHgt_zero (S : NodePointSource (L := L) W receiver K) {i : ℕ}
+theorem pointHgt_zero (S : SplitNodePointSource (L := L) W E receiver K) {i : ℕ}
     (hi : StageLive r i) (x : S.Point) : S.pointHgt i x 0 = ⊤ := by
   rw [S.pointHgt_eval i x 0, Polynomial.eval₂_zero, S.value_zero i hi]
 
 /-- The point read is multiplicative at a live stage: the evaluation is a ring hom and
 `valueOn` is multiplicative (`value_mul`). -/
-theorem pointHgt_mul (S : NodePointSource (L := L) W receiver K) {i : ℕ}
+theorem pointHgt_mul (S : SplitNodePointSource (L := L) W E receiver K) {i : ℕ}
     (hi : StageLive r i) (x : S.Point) (A B : Polynomial O) :
     S.pointHgt i x (A * B) = S.pointHgt i x A + S.pointHgt i x B := by
   rw [S.pointHgt_eval i x (A * B), S.pointHgt_eval i x A, S.pointHgt_eval i x B,
@@ -203,7 +206,7 @@ theorem pointHgt_mul (S : NodePointSource (L := L) W receiver K) {i : ℕ}
   exact S.value_mul i hi _ _
 
 /-- The point read of a positive power: `pointHgt (A^m) = m • pointHgt A` (`1 ≤ m`). -/
-theorem pointHgt_pow (S : NodePointSource (L := L) W receiver K) {i : ℕ}
+theorem pointHgt_pow (S : SplitNodePointSource (L := L) W E receiver K) {i : ℕ}
     (hi : StageLive r i) (x : S.Point) (A : Polynomial O) (m : ℕ) (hm : 1 ≤ m) :
     S.pointHgt i x (A ^ m) = m • S.pointHgt i x A := by
   obtain ⟨k, rfl⟩ : ∃ k, m = k + 1 := ⟨m - 1, by omega⟩
@@ -220,14 +223,14 @@ exported and consumed: the coercion pin, finiteness, and the power law — the l
 height-arithmetic half of GENTOW5.16's `Λ_i` dv-value-`0` derivation. -/
 
 /-- Coercion pin for the exact key value: the same law with the `ℤ`-cast spelled out. -/
-theorem key_value_coe (S : NodePointSource (L := L) W receiver K) {i : ℕ}
+theorem key_value_coe (S : SplitNodePointSource (L := L) W E receiver K) {i : ℕ}
     (hi : GaugeLive r i) (x : S.Point) (hx : S.Pt i x) :
     S.pointHgt i x (K.keyAt i) = ((W.u (i + 1) : ℤ) : WithTop ℤ) := by
   exact_mod_cast S.key_value i hi x hx
 
 /-- The key value at a legal point is FINITE (it is the exact integer `u_(i+1)`) —
 the `< ∞` half of GENTOW5.19's exactness, derived rather than assumed. -/
-theorem key_value_ne_top (S : NodePointSource (L := L) W receiver K) {i : ℕ}
+theorem key_value_ne_top (S : SplitNodePointSource (L := L) W E receiver K) {i : ℕ}
     (hi : GaugeLive r i) (x : S.Point) (hx : S.Pt i x) :
     S.pointHgt i x (K.keyAt i) ≠ ⊤ := by
   rw [S.key_value i hi x hx]
@@ -235,7 +238,7 @@ theorem key_value_ne_top (S : NodePointSource (L := L) W receiver K) {i : ℕ}
 
 /-- ★ The exact key-POWER value at a legal point: `pointHgt (Φ_i^m) = m·u_(i+1)` exactly
 (`1 ≤ m`).  GENTOW5.16's height arithmetic, from `key_value` and multiplicativity. -/
-theorem key_value_pow (S : NodePointSource (L := L) W receiver K) {i : ℕ}
+theorem key_value_pow (S : SplitNodePointSource (L := L) W E receiver K) {i : ℕ}
     (hi : GaugeLive r i) (x : S.Point) (hx : S.Pt i x) (m : ℕ) (hm : 1 ≤ m) :
     S.pointHgt i x (K.keyAt i ^ m) = ((m * W.u (i + 1) : ℕ) : WithTop ℤ) := by
   obtain ⟨k, rfl⟩ : ∃ k, m = k + 1 := ⟨m - 1, by omega⟩
@@ -251,7 +254,7 @@ theorem key_value_pow (S : NodePointSource (L := L) W receiver K) {i : ℕ}
 `Φ_i^(e_(i+1))` at any legal point is `e_(i+1)·u_(i+1)` exactly (`e_(i+1) ≥ 1` by `W.he`).
 The dv-value-`0` claim for the letter `Λ_i` is this height matched against the normalizer's
 — the normalizer half is CC-4/CC-10's and is NOT claimed here. -/
-theorem key_value_pow_e (S : NodePointSource (L := L) W receiver K) {i : ℕ}
+theorem key_value_pow_e (S : SplitNodePointSource (L := L) W E receiver K) {i : ℕ}
     (hi : GaugeLive r i) (x : S.Point) (hx : S.Pt i x) :
     S.pointHgt i x (K.keyAt i ^ W.e (i + 1)) =
       ((W.e (i + 1) * W.u (i + 1) : ℕ) : WithTop ℤ) :=
@@ -264,20 +267,20 @@ nonzeroness is FORCED by the root law (not just recorded by the `Lˣ` codomain),
 `psi_root` source law is exported at the named transport objects. -/
 
 /-- The ambient letter is nonzero in `L` (the `Lˣ` codomain, read off). -/
-theorem ambientLetter_ne_zero (S : NodePointSource (L := L) W receiver K) (i : ℕ) :
+theorem ambientLetter_ne_zero (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ) :
     (S.ambientLetter i : L) ≠ 0 :=
   Units.ne_zero _
 
 /-- The `psi_root` source law, exported at the named transport hom (`ambientHom` is
 definitionally `psi_root`'s composite). -/
-theorem psi_root_ambientHom (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem psi_root_ambientHom (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hi : GaugeLive r i) :
     Polynomial.eval₂ (receiver.ambientHom (L := L) i) (S.ambientLetter i : L) (W.ψ i) = 0 :=
   S.psi_root i hi
 
 /-- ★ The transported `ψ`-root, as a root of the transported polynomial: the ambient letter
 is a root of `psiTransported` on the gauge-live range (GENTOW5 S2.3's transport clause). -/
-theorem ambientLetter_isRoot (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem ambientLetter_isRoot (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hi : GaugeLive r i) :
     (receiver.psiTransported (L := L) i).IsRoot (S.ambientLetter i : L) := by
   have h : ((W.ψ i).map (receiver.ambientHom (L := L) i)).eval (S.ambientLetter i : L) = 0 := by
@@ -287,7 +290,7 @@ theorem ambientLetter_isRoot (S : NodePointSource (L := L) W receiver K) (i : �
 
 /-- The letter's nonzeroness DERIVED from the root law and `ψ_i(0) ≠ 0` alone — the honesty
 check that the clauses force the unit value even without the `Lˣ` codomain. -/
-theorem ambientLetter_ne_zero_forced (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem ambientLetter_ne_zero_forced (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hi : GaugeLive r i) : (S.ambientLetter i : L) ≠ 0 :=
   receiver.psiTransported_root_ne_zero (L := L) hi (S.ambientLetter_isRoot i hi)
 
@@ -301,14 +304,14 @@ The threshold/window clause lives in CC-7's `CanonicalThresholdAt` (C130th), not
 /-- Freeze-v2 layer C.130g's legality read, at the carrier: `x` is a stage-`i` legal node
 point, the key value at `x` is exactly `u_(i+1)`, and the ambient letter is a transported
 `ψ_i`-root.  NO descent clause (nothing `Kt`-valued) — the design's explicit fence. -/
-def LegalGentowNodeRead (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+def LegalGentowNodeRead (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (x : S.Point) : Prop :=
   S.Pt i x ∧
     S.pointHgt i x (K.keyAt i) = (W.u (i + 1) : WithTop ℤ) ∧
     (receiver.psiTransported (L := L) i).IsRoot (S.ambientLetter i : L)
 
 /-- Anti-drift pin: the legality read is exactly its three displayed clauses. -/
-theorem legalGentowNodeRead_def (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem legalGentowNodeRead_def (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (x : S.Point) :
     S.LegalGentowNodeRead i x ↔
       (S.Pt i x ∧
@@ -319,21 +322,21 @@ theorem legalGentowNodeRead_def (S : NodePointSource (L := L) W receiver K) (i :
 /-- ★ **NODE CC-9, the producing theorem**: on the gauge-live range EVERY legal point
 satisfies the full legality read — the three clauses are the `Pt` membership and the
 `key_value`/`psi_root` source laws, consumed verbatim. -/
-theorem legalGentowNodeRead_of_pt (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem legalGentowNodeRead_of_pt (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hi : GaugeLive r i) (x : S.Point) (hx : S.Pt i x) :
     S.LegalGentowNodeRead i x :=
   ⟨hx, S.key_value i hi x hx, S.ambientLetter_isRoot i hi⟩
 
 /-- Existence of a fully-read legal node point on the gauge-live range (via the canonical
 `legalPoint`; nonemptiness is still the carried `point_exists` source field). -/
-theorem exists_legalGentowNodeRead (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem exists_legalGentowNodeRead (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hi : GaugeLive r i) : ∃ x : S.Point, S.LegalGentowNodeRead i x :=
   ⟨S.legalPoint i hi.stageLive,
     S.legalGentowNodeRead_of_pt i hi _ (S.legalPoint_mem i hi.stageLive)⟩
 
 namespace LegalGentowNodeRead
 
-variable {S : NodePointSource (L := L) W receiver K} {i : ℕ} {x : S.Point}
+variable {S : SplitNodePointSource (L := L) W E receiver K} {i : ℕ} {x : S.Point}
 
 /-- Projection: legality (`Pt`). -/
 theorem pt (h : S.LegalGentowNodeRead i x) : S.Pt i x := h.1
@@ -348,7 +351,7 @@ theorem psi_isRoot (h : S.LegalGentowNodeRead i x) :
 
 end LegalGentowNodeRead
 
-end NodePointSource
+end SplitNodePointSource
 
 end Uniformity.Density.Tower
 
@@ -367,9 +370,9 @@ open Uniformity.Density.Tower.C80 Uniformity.Density.Tower.C130s2
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [Finite (ResidueField O)] (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
-variable {Kt : Type} [Field Kt] {L : Type} [Field L] [Algebra Kt L]
+variable {Kt : Type} [Field Kt] {E : Type} [Field E] {L : Type} [Field L] [Algebra Kt L]
 variable (R : TerminalReceiver (s2Frame h2 hq) 1 (s2Frame_pin h2 hq) 2 (s2DepthTwo h2 hq) Kt)
-variable (S : NodePointSource (L := L) (s2DepthTwo h2 hq) R (s2DepthTwoKeyChain h2 hq))
+variable (S : SplitNodePointSource (L := L) (s2DepthTwo h2 hq) E R (s2DepthTwoKeyChain h2 hq))
 
 -- at depth two the only gauge-live stage is 1
 example : GaugeLive 2 1 := ⟨le_rfl, by omega⟩
@@ -409,27 +412,25 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.TerminalReceiver.psiTransported_natDegree_pos
 #print axioms Uniformity.Density.Tower.TerminalReceiver.psiTransported_coeff_zero_ne_zero
 #print axioms Uniformity.Density.Tower.TerminalReceiver.psiTransported_root_ne_zero
-#print axioms Uniformity.Density.Tower.NodePointSource.LegalPt
-#print axioms Uniformity.Density.Tower.NodePointSource.legalPt_nonempty
-#print axioms Uniformity.Density.Tower.NodePointSource.legalPoint
-#print axioms Uniformity.Density.Tower.NodePointSource.legalPoint_mem
-#print axioms Uniformity.Density.Tower.NodePointSource.pointHgt_zero
-#print axioms Uniformity.Density.Tower.NodePointSource.pointHgt_mul
-#print axioms Uniformity.Density.Tower.NodePointSource.pointHgt_pow
-#print axioms Uniformity.Density.Tower.NodePointSource.key_value_coe
-#print axioms Uniformity.Density.Tower.NodePointSource.key_value_ne_top
-#print axioms Uniformity.Density.Tower.NodePointSource.key_value_pow
-#print axioms Uniformity.Density.Tower.NodePointSource.key_value_pow_e
-#print axioms Uniformity.Density.Tower.NodePointSource.ambientLetter_ne_zero
-#print axioms Uniformity.Density.Tower.NodePointSource.psi_root_ambientHom
-#print axioms Uniformity.Density.Tower.NodePointSource.ambientLetter_isRoot
-#print axioms Uniformity.Density.Tower.NodePointSource.ambientLetter_ne_zero_forced
-#print axioms Uniformity.Density.Tower.NodePointSource.LegalGentowNodeRead
-#print axioms Uniformity.Density.Tower.NodePointSource.legalGentowNodeRead_def
-#print axioms Uniformity.Density.Tower.NodePointSource.legalGentowNodeRead_of_pt
-#print axioms Uniformity.Density.Tower.NodePointSource.exists_legalGentowNodeRead
-#print axioms Uniformity.Density.Tower.NodePointSource.LegalGentowNodeRead.pt
-#print axioms Uniformity.Density.Tower.NodePointSource.LegalGentowNodeRead.key_value
-#print axioms Uniformity.Density.Tower.NodePointSource.LegalGentowNodeRead.psi_isRoot
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.LegalPt
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.legalPt_nonempty
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.pointHgt_zero
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.pointHgt_mul
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.pointHgt_pow
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.key_value_coe
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.key_value_ne_top
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.key_value_pow
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.key_value_pow_e
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.ambientLetter_ne_zero
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.psi_root_ambientHom
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.ambientLetter_isRoot
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.ambientLetter_ne_zero_forced
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.LegalGentowNodeRead
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.legalGentowNodeRead_def
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.legalGentowNodeRead_of_pt
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.exists_legalGentowNodeRead
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.LegalGentowNodeRead.pt
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.LegalGentowNodeRead.key_value
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.LegalGentowNodeRead.psi_isRoot
 
 end AxCheck

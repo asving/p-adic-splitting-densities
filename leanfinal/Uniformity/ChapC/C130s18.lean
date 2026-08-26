@@ -77,6 +77,18 @@ sitewise ϑ-carrier occurs; the traps are consumed ONLY inside the audit section
 subjects.  (The module docstring above names them, which is why the tooth is scoped to the
 declaration region.)
 
+## [PK-2/U15, 2026-08-25] — the SF-3 carrier ripple ENACTED
+
+Per `PACKAGING_ROUTE_2026-08-25.md` §4.4: the socket bodies' `∃ (e' f' u' : ℕ) …
+ChainRealization … e' f' u'` witness block is replaced by `∃ (E : Type uE) (fE : Field E)
+… ChainRealization core.T Kt E L` (the PK-1 retyped carrier — split node, no FGMN legs);
+the view conjuncts are UNCHANGED.  The S2 gate theorems drop the two quarantined premises
+`ev`/`lf` entirely (their structures survive in C130s17 as the refutation record), so the
+S2 applications are conditional on exactly `S : S2SourceFrontier` (+ `IsAdicComplete`) —
+at the SG-0 instance, on `w : S2LevelOneThreshold` alone.  The non-swallowing audit
+re-runs at the split node (`twistNode` retyped; the χ-freedom argument is unchanged).
+Prose above this note describing `ev`/`lf`-conditionality is the pre-ripple record.
+
 ## Cite ledger
 
 CITES CONSUMED BY THIS FILE: **none**.  No owner hypothesis, no `sorry`, no new axiom, no
@@ -134,17 +146,17 @@ unrelated. -/
 
 /-- The instance-full I.10a body: some arising occurrence, realized by the chain carrier,
 exports exactly the socket data `(C, B, G, N, v, ρ, q)` at degree `n`. -/
-def LadderRealizationData {O : Type} [CommRing O] [dom : IsDomain O]
+def LadderRealizationData.{uE', uG', uKt', uL'} {O : Type} [CommRing O] [dom : IsDomain O]
     [dvr : IsDiscreteValuationRing O] {K : Type} [Field K]
     (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
-    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    (G : Type uG') [CommGroup G] (Kt : Type uKt') [Field Kt] (L : Type uL') [Field L]
     [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n : ℕ) : Prop :=
-  ∃ (e' f' u' : ℕ) (core : ArisingCore (O := O) Kt L n)
+  ∃ (E : Type uE') (fE : Field E) (core : ArisingCore (O := O) Kt L n)
     (Aℛ : ChainRealization (O := O) (π := core.π) (F := core.F) (H₀ := core.H₀)
-      (hpin := core.hpin) core.T Kt L e' f' u')
+      (hpin := core.hpin) (fieldE := fE) core.T Kt E L)
     (X : RealizedInput core Aℛ)
-    (eK : core.T.fld core.i ≃+* K) (eG : G ≃* GaugeLattice.{uG} core.r),
+    (eK : core.T.fld core.i ≃+* K) (eG : G ≃* GaugeLattice.{uG'} core.r),
     SlotViewEq X eK C ∧
     (∃ hC : C = X.stageCarrierTransport eK, BlockViewEq X eK (hC ▸ B)) ∧
     GaugeFamilyViewEq X (N.transport eG)
@@ -154,30 +166,30 @@ def LadderRealizationData {O : Type} [CommRing O] [dom : IsDomain O]
 /-- **The intended NODE I.10a body** (freeze v2 §8, at the landed CC-12 views), typed at the
 leanspec `CanonicalLadderConfig` binder block.  The leanspec socket's `True` body is NOT
 touched; re-signing it at this body is a later recorded amendment gated on this file. -/
-def CanonicalLadderConfigData {O : Type} [CommRing O] {K : Type} [Field K]
+def CanonicalLadderConfigData.{uE', uG', uKt', uL'} {O : Type} [CommRing O] {K : Type} [Field K]
     (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
-    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    (G : Type uG') [CommGroup G] (Kt : Type uKt') [Field Kt] (L : Type uL') [Field L]
     [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n : ℕ) : Prop :=
   ∃ (dom : IsDomain O) (dvr : IsDiscreteValuationRing O),
-    LadderRealizationData (dom := dom) (dvr := dvr) C B G Kt L N v ρ q n
+    LadderRealizationData.{uE', uG', uKt', uL'} (dom := dom) (dvr := dvr) C B G Kt L N v ρ q n
 
 /-- The instance-full I.10b joint-witness clause: ONE realized input exports BOTH the ladder
 data and the separate arena data, and the socket's tower depth `r` is pinned to that same
 witness (`core.r = r`) — A-I.2(b)'s "never a free numeral" rule. -/
-def DeepTwistRealizationData {O : Type} [CommRing O] [dom : IsDomain O]
+def DeepTwistRealizationData.{uE', uG', uKt', uL'} {O : Type} [CommRing O] [dom : IsDomain O]
     [dvr : IsDiscreteValuationRing O] {K : Type} [Field K]
     (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
-    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    (G : Type uG') [CommGroup G] (Kt : Type uKt') [Field Kt] (L : Type uL') [Field L]
     [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
     (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ)
     (r n : ℕ) : Prop :=
-  ∃ (e' f' u' : ℕ) (core : ArisingCore (O := O) Kt L n)
+  ∃ (E : Type uE') (fE : Field E) (core : ArisingCore (O := O) Kt L n)
     (Aℛ : ChainRealization (O := O) (π := core.π) (F := core.F) (H₀ := core.H₀)
-      (hpin := core.hpin) core.T Kt L e' f' u')
+      (hpin := core.hpin) (fieldE := fE) core.T Kt E L)
     (X : RealizedInput core Aℛ)
-    (eK : core.T.fld core.i ≃+* K) (eG : G ≃* GaugeLattice.{uG} core.r),
+    (eK : core.T.fld core.i ≃+* K) (eG : G ≃* GaugeLattice.{uG'} core.r),
     core.r = r ∧
     SlotViewEq X eK C ∧
     (∃ hC : C = X.stageCarrierTransport eK, BlockViewEq X eK (hC ▸ B)) ∧
@@ -194,16 +206,16 @@ frozen refinement shape (I.10b → I.10a is `And.left`, by construction); the se
 JOINT witness certifying the same external `(C, B, G, N, v, ρ, q)` together with the arena
 family — so the arena cannot come from a tower unrelated to the input.  The leanspec socket's
 `CanonicalLadderConfig ∧ True` body is NOT touched. -/
-def CanonicalDeepTwistConfigData {O : Type} [CommRing O] {K : Type} [Field K]
+def CanonicalDeepTwistConfigData.{uE', uG', uKt', uL'} {O : Type} [CommRing O] {K : Type} [Field K]
     (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
-    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    (G : Type uG') [CommGroup G] (Kt : Type uKt') [Field Kt] (L : Type uL') [Field L]
     [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
     (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ)
     (r n : ℕ) : Prop :=
-  CanonicalLadderConfigData C B G Kt L N v ρ q n ∧
+  CanonicalLadderConfigData.{uE', uG', uKt', uL'} C B G Kt L N v ρ q n ∧
   ∃ (dom : IsDomain O) (dvr : IsDiscreteValuationRing O),
-    DeepTwistRealizationData (dom := dom) (dvr := dvr) C B G Kt L N v ρ q A R w r n
+    DeepTwistRealizationData.{uE', uG', uKt', uL'} (dom := dom) (dvr := dvr) C B G Kt L N v ρ q A R w r n
 
 /-! ## §2 The two literal socket applications (general carrier form)
 
@@ -217,20 +229,21 @@ claims the carrier pair exists unconditionally: that is CC-17's honestly-blocked
 section Applications
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
-variable {Kt : Type uKt} [Field Kt] {L : Type uL} [Field L] [Algebra Kt L]
-variable {n e' f' u' : ℕ} {core : ArisingCore (O := O) Kt L n}
+variable {Kt : Type uKt} [Field Kt] {E : Type uE} [Field E] {L : Type uL} [Field L]
+variable [Algebra Kt L]
+variable {n : ℕ} {core : ArisingCore (O := O) Kt L n}
 variable {Aℛ : ChainRealization (O := O) (π := core.π) (F := core.F)
-  (H₀ := core.H₀) (hpin := core.hpin) core.T Kt L e' f' u'}
+  (H₀ := core.H₀) (hpin := core.hpin) core.T Kt E L}
 
 /-- ★ **CC-18, literal socket application (I.10a shape)**: the realized input's exported
 socket arguments satisfy the intended `CanonicalLadderConfig` body. -/
 theorem realizedInput_ladderConfigData (X : RealizedInput core Aℛ)
     {K : Type} [Field K] (eK : core.T.fld core.i ≃+* K) :
-    CanonicalLadderConfigData (X.stageCarrierTransport eK) (X.inputBlockTransport eK)
+    CanonicalLadderConfigData.{uE, uG, uKt, uL} (X.stageCarrierTransport eK) (X.inputBlockTransport eK)
       (GaugeLattice.{uG} core.r) Kt L
       (Aℛ.normalizer.arenaNormSection0.transport (gaugeLatticeEquiv core.r).symm)
       (gaugeHeightFamily X) (canonicalResFamily X) (useHeightFamily X) n :=
-  ⟨inferInstance, inferInstance, e', f', u', core, Aℛ, X, eK, MulEquiv.refl _,
+  ⟨inferInstance, inferInstance, E, inferInstance, core, Aℛ, X, eK, MulEquiv.refl _,
     X.slotViewEq eK, ⟨rfl, X.blockViewEq eK⟩, X.gaugeFamilyViewEq⟩
 
 /-- ★ **CC-18, literal socket application (I.10b shape, with the A-I.2 `r` binder)**: the
@@ -238,13 +251,13 @@ same realized input additionally exports the separate arena family, and the sock
 the witness's own `core.r` — pinned, not a numeral. -/
 theorem realizedInput_deepTwistConfigData (X : RealizedInput core Aℛ)
     {K : Type} [Field K] (eK : core.T.fld core.i ≃+* K) (hr : 1 < core.r) :
-    CanonicalDeepTwistConfigData (X.stageCarrierTransport eK) (X.inputBlockTransport eK)
+    CanonicalDeepTwistConfigData.{uE, uG, uKt, uL} (X.stageCarrierTransport eK) (X.inputBlockTransport eK)
       (GaugeLattice.{uG} core.r) Kt L
       (Aℛ.normalizer.arenaNormSection0.transport (gaugeLatticeEquiv core.r).symm)
       (gaugeHeightFamily X) (canonicalResFamily X) (useHeightFamily X)
       (arenaFamily X hr) (towerReadFamily X) Aℛ.node.peelUnitFamily core.r n :=
   ⟨realizedInput_ladderConfigData X eK,
-    inferInstance, inferInstance, e', f', u', core, Aℛ, X, eK, MulEquiv.refl _,
+    inferInstance, inferInstance, E, inferInstance, core, Aℛ, X, eK, MulEquiv.refl _,
     rfl, X.slotViewEq eK, ⟨rfl, X.blockViewEq eK⟩, X.gaugeFamilyViewEq,
     X.arenaFamilyViewEq hr⟩
 
@@ -261,8 +274,8 @@ theorem canonicalDeepTwistConfigData_to_ladder {O : Type} [CommRing O] {K : Type
     [Algebra Kt L] {N : Gauge.NormSection G} {v : ℕ → (G →* Multiplicative ℤ)}
     {ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ} {q : ℕ → ℤ}
     {A : ℕ → Gauge.GaugeArena G Kt N} {R : ℕ → G → Kt} {w : ℕ → Ktˣ} {n : ℕ}
-    {r : ℕ} (hcfg : CanonicalDeepTwistConfigData C B G Kt L N v ρ q A R w r n) :
-    CanonicalLadderConfigData C B G Kt L N v ρ q n := hcfg.1
+    {r : ℕ} (hcfg : CanonicalDeepTwistConfigData.{uE, uG, uKt, uL} C B G Kt L N v ρ q A R w r n) :
+    CanonicalLadderConfigData.{uE, uG, uKt, uL} C B G Kt L N v ρ q n := hcfg.1
 
 /-! ## §4 The S2 socket applications — conditional on CC-17's split `S2SourceFrontier`
      AND the two quarantined premises `LegacyEvaluation`/`LegacyFGMN`
@@ -298,64 +311,66 @@ theorem s2ArisingCore_r [IsAdicComplete (IsLocalRing.maximalIdeal O) O] :
 theorem s2ArisingCore_i [IsAdicComplete (IsLocalRing.maximalIdeal O) O] :
     (s2ArisingCore h2 hq L).i = 2 := rfl
 
-/-- ★ **The S2 I.10a socket application** — conditional on the CC-17 split frontier AND the
-two quarantined premises (`ev` empty at S2 — U13; `lf` empty at the landed operator
-readings — FD-0): given `S : S2SourceFrontier`, `ev : S.LegacyEvaluation`, and
-`lf : S.LegacyFGMN`, the concrete `keyAt 2 + 1` arising occurrence's exported socket
-arguments satisfy the intended `CanonicalLadderConfig` body at degree `4`. -/
+/-- ★ **The S2 I.10a socket application, `ev`/`lf`-FREE** ([PK-2/U15, 2026-08-25]:
+the two quarantined premises are DELETED with the carrier retype) — conditional on the
+CC-17 split frontier ALONE: given `S : S2SourceFrontier`, the concrete `keyAt 2 + 1`
+arising occurrence's exported socket arguments satisfy the intended
+`CanonicalLadderConfig` body at degree `4`.  At the SG-0 instance (`C130sg.s2Frontier`)
+this is the first I.10a-shaped statement of the campaign with NO provably-empty premise —
+conditional on exactly `w : S2LevelOneThreshold` + `IsAdicComplete`. -/
 theorem s2_ladder_socket_application [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) (lf : S.LegacyFGMN) :
-    CanonicalLadderConfigData
-      ((S.s2RealizedInput ev lf).stageCarrierTransport
+    (S : S2SourceFrontier h2 hq E L) :
+    CanonicalLadderConfigData.{uE, uG, 0, uL}
+      (S.s2RealizedInput.stageCarrierTransport
         (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
-      ((S.s2RealizedInput ev lf).inputBlockTransport
+      (S.s2RealizedInput.inputBlockTransport
         (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
       (GaugeLattice.{uG} 2) ((S2DepthTwo h2 hq).fld 2) L
-      ((S.toChainRealization ev lf).normalizer.arenaNormSection0.transport
+      (S.toCarrier.normalizer.arenaNormSection0.transport
         (gaugeLatticeEquiv 2).symm)
-      (gaugeHeightFamily (S.s2RealizedInput ev lf))
-      (canonicalResFamily (S.s2RealizedInput ev lf))
-      (useHeightFamily (S.s2RealizedInput ev lf)) 4 :=
-  realizedInput_ladderConfigData (S.s2RealizedInput ev lf) (RingEquiv.refl _)
+      (gaugeHeightFamily S.s2RealizedInput)
+      (canonicalResFamily S.s2RealizedInput)
+      (useHeightFamily S.s2RealizedInput) 4 :=
+  realizedInput_ladderConfigData S.s2RealizedInput (RingEquiv.refl _)
 
-/-- ★ **The S2 I.10b socket application** — conditional on the CC-17 split frontier AND the
-two quarantined premises (`ev` empty at S2 — U13; `lf` empty at the landed operator
-readings — FD-0), with the depth binder pinned to the witness's own `r = 2`. -/
+/-- ★ **The S2 I.10b socket application, `ev`/`lf`-FREE** ([PK-2/U15]) — conditional on
+the CC-17 split frontier alone, with the depth binder pinned to the witness's own
+`r = 2`. -/
 theorem s2_deepTwist_socket_application [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) (lf : S.LegacyFGMN) :
-    CanonicalDeepTwistConfigData
-      ((S.s2RealizedInput ev lf).stageCarrierTransport
+    (S : S2SourceFrontier h2 hq E L) :
+    CanonicalDeepTwistConfigData.{uE, uG, 0, uL}
+      (S.s2RealizedInput.stageCarrierTransport
         (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
-      ((S.s2RealizedInput ev lf).inputBlockTransport
+      (S.s2RealizedInput.inputBlockTransport
         (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
       (GaugeLattice.{uG} 2) ((S2DepthTwo h2 hq).fld 2) L
-      ((S.toChainRealization ev lf).normalizer.arenaNormSection0.transport
+      (S.toCarrier.normalizer.arenaNormSection0.transport
         (gaugeLatticeEquiv 2).symm)
-      (gaugeHeightFamily (S.s2RealizedInput ev lf))
-      (canonicalResFamily (S.s2RealizedInput ev lf))
-      (useHeightFamily (S.s2RealizedInput ev lf))
-      (arenaFamily (S.s2RealizedInput ev lf) Nat.one_lt_two)
-      (towerReadFamily (S.s2RealizedInput ev lf))
-      (S.toChainRealization ev lf).node.peelUnitFamily 2 4 :=
-  realizedInput_deepTwistConfigData (S.s2RealizedInput ev lf) (RingEquiv.refl _)
+      (gaugeHeightFamily S.s2RealizedInput)
+      (canonicalResFamily S.s2RealizedInput)
+      (useHeightFamily S.s2RealizedInput)
+      (arenaFamily S.s2RealizedInput Nat.one_lt_two)
+      (towerReadFamily S.s2RealizedInput)
+      S.toCarrier.node.peelUnitFamily 2 4 :=
+  realizedInput_deepTwistConfigData S.s2RealizedInput (RingEquiv.refl _)
     Nat.one_lt_two
 
-/-- The S2 refinement fires end-to-end (gate item (5a) at the S2 instance, at the corrected
-conditionality). -/
+/-- The S2 refinement fires end-to-end (gate item (5a) at the S2 instance, `ev`/`lf`-free
+[PK-2/U15]). -/
 example [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) (lf : S.LegacyFGMN) :
-    CanonicalLadderConfigData
-      ((S.s2RealizedInput ev lf).stageCarrierTransport
+    (S : S2SourceFrontier h2 hq E L) :
+    CanonicalLadderConfigData.{uE, uG, 0, uL}
+      (S.s2RealizedInput.stageCarrierTransport
         (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
-      ((S.s2RealizedInput ev lf).inputBlockTransport
+      (S.s2RealizedInput.inputBlockTransport
         (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
       (GaugeLattice.{uG} 2) ((S2DepthTwo h2 hq).fld 2) L
-      ((S.toChainRealization ev lf).normalizer.arenaNormSection0.transport
+      (S.toCarrier.normalizer.arenaNormSection0.transport
         (gaugeLatticeEquiv 2).symm)
-      (gaugeHeightFamily (S.s2RealizedInput ev lf))
-      (canonicalResFamily (S.s2RealizedInput ev lf))
-      (useHeightFamily (S.s2RealizedInput ev lf)) 4 :=
-  canonicalDeepTwistConfigData_to_ladder (s2_deepTwist_socket_application h2 hq S ev lf)
+      (gaugeHeightFamily S.s2RealizedInput)
+      (canonicalResFamily S.s2RealizedInput)
+      (useHeightFamily S.s2RealizedInput) 4 :=
+  canonicalDeepTwistConfigData_to_ladder (s2_deepTwist_socket_application h2 hq S)
 
 end S2Gate
 
@@ -385,23 +400,25 @@ section Audit
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
 variable {π : O} {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
 variable {W : DeepTower.{0, uKt} F H₀ hpin r}
-variable {Kt : Type uKt} [Field Kt] {L : Type uL} [Field L] [Algebra Kt L]
+variable {Kt : Type uKt} [Field Kt] {E : Type uE} [Field E] {L : Type uL} [Field L]
+variable [Algebra Kt L]
 variable {receiver : TerminalReceiver F H₀ hpin r W Kt} {K : KeyChain W}
 
-/-- AUDIT: replace the carrier's ambient canonical read by a χ-twisted read.  This
-typechecks precisely because `NodePointSource` carries NO law tying `canonicalRead` to
+/-- AUDIT ([PK-2/U15]: re-run at the SPLIT node, the retyped carrier's leg): replace the
+carrier's ambient canonical read by a χ-twisted read.  This
+typechecks precisely because `SplitNodePointSource` carries NO law tying `canonicalRead` to
 `arenaRead` (or to anything else) — the freedom the non-swallowing fence protects. -/
-def twistNode (S : NodePointSource (L := L) W receiver K)
+def twistNode (S : SplitNodePointSource (L := L) W E receiver K)
     (χ : (i : ℕ) → MonoidHom.ker (levelExponentHeight W i) →* Lˣ) :
-    NodePointSource (L := L) W receiver K :=
+    SplitNodePointSource (L := L) W E receiver K :=
   { S with canonicalRead := fun i => S.canonicalRead i * χ i }
 
-@[simp] theorem twistNode_canonicalRead (S : NodePointSource (L := L) W receiver K)
+@[simp] theorem twistNode_canonicalRead (S : SplitNodePointSource (L := L) W E receiver K)
     (χ : (i : ℕ) → MonoidHom.ker (levelExponentHeight W i) →* Lˣ) (i : ℕ) :
     (twistNode S χ).canonicalRead i = S.canonicalRead i * χ i := rfl
 
 /-- The twist does not move the SEPARATE arena read (nor any other field). -/
-@[simp] theorem twistNode_arenaRead (S : NodePointSource (L := L) W receiver K)
+@[simp] theorem twistNode_arenaRead (S : SplitNodePointSource (L := L) W E receiver K)
     (χ : (i : ℕ) → MonoidHom.ker (levelExponentHeight W i) →* Lˣ) :
     (twistNode S χ).arenaRead = S.arenaRead := rfl
 
@@ -417,27 +434,25 @@ end Audit
 section AuditRealization
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
-variable {Kt : Type uKt} [Field Kt] {L : Type uL} [Field L] [Algebra Kt L]
-variable {n e' f' u' : ℕ} {core : ArisingCore (O := O) Kt L n}
+variable {Kt : Type uKt} [Field Kt] {E : Type uE} [Field E] {L : Type uL} [Field L]
+variable [Algebra Kt L]
+variable {n : ℕ} {core : ArisingCore (O := O) Kt L n}
 variable {Aℛ : ChainRealization (O := O) (π := core.π) (F := core.F)
-  (H₀ := core.H₀) (hpin := core.hpin) core.T Kt L e' f' u'}
+  (H₀ := core.H₀) (hpin := core.hpin) core.T Kt E L}
 
-/-- AUDIT: the χ-twisted node still assembles into a full `ChainRealization` — no law of the
-realization (OPEN-DICT-2/4 included) mentions the canonical read. -/
+/-- AUDIT ([PK-2/U15]: re-run at the retyped carrier — the deleted FGMN legs consumed no
+canonical read either, so the audit only gets STRONGER): the χ-twisted node still assembles
+into a full `ChainRealization` — no law of the realization mentions the canonical read. -/
 def twistRealization
     (Aℛ : ChainRealization (O := O) (π := core.π) (F := core.F)
-      (H₀ := core.H₀) (hpin := core.hpin) core.T Kt L e' f' u')
+      (H₀ := core.H₀) (hpin := core.hpin) core.T Kt E L)
     (χ : (i : ℕ) → MonoidHom.ker (levelExponentHeight core.T i) →* Lˣ) :
     ChainRealization (O := O) (π := core.π) (F := core.F)
-      (H₀ := core.H₀) (hpin := core.hpin) core.T Kt L e' f' u' where
+      (H₀ := core.H₀) (hpin := core.hpin) core.T Kt E L where
   receiver := Aℛ.receiver
   keys := Aℛ.keys
   normalizer := Aℛ.normalizer
   node := twistNode Aℛ.node χ
-  fgmn := Aℛ.fgmn
-  fgmnLaws := Aℛ.fgmnLaws
-  grade_compat := Aℛ.grade_compat
-  letter_compat := Aℛ.letter_compat
 
 /-- AUDIT: the realized input survives the twist verbatim. -/
 def twistRealizedInput (X : RealizedInput core Aℛ)
@@ -473,7 +488,7 @@ determine any relation between the pinned ρ and the arena read. -/
 theorem twist_supplies_ladderConfigData (X : RealizedInput core Aℛ)
     (χ : (i : ℕ) → MonoidHom.ker (levelExponentHeight core.T i) →* Lˣ)
     {K : Type} [Field K] (eK : core.T.fld core.i ≃+* K) :
-    CanonicalLadderConfigData (X.stageCarrierTransport eK) (X.inputBlockTransport eK)
+    CanonicalLadderConfigData.{uE, uG, uKt, uL} (X.stageCarrierTransport eK) (X.inputBlockTransport eK)
       (GaugeLattice.{uG} core.r) Kt L
       (Aℛ.normalizer.arenaNormSection0.transport (gaugeLatticeEquiv core.r).symm)
       (gaugeHeightFamily X) (canonicalResFamily (twistRealizedInput X χ))
@@ -492,7 +507,7 @@ theorem arenaAgreement_not_uniform (X : RealizedInput core Aℛ) {j : ℕ}
       GaugeLattice.{uG} core.r →* Multiplicative ℤ))
     (hχ : (χ j) (liftKerHom core.T hj x₀) ≠ 1)
     (hagree : ∀ (A' : ChainRealization (O := O) (π := core.π) (F := core.F)
-        (H₀ := core.H₀) (hpin := core.hpin) core.T Kt L e' f' u')
+        (H₀ := core.H₀) (hpin := core.hpin) core.T Kt E L)
       (X' : RealizedInput core A')
       (x : MonoidHom.ker (levelHeight core.T ⟨j, hj⟩ :
         GaugeLattice.{uG} core.r →* Multiplicative ℤ)),
@@ -522,7 +537,7 @@ theorem embeddedValue_not_uniform (X : RealizedInput core Aℛ) {j : ℕ}
     (hχ : ∀ y : Kt, (((χ j) (liftKerHom core.T hj x₀) : Lˣ) : L)
       ≠ algebraMap Kt L y)
     (hemb : ∀ (A' : ChainRealization (O := O) (π := core.π) (F := core.F)
-        (H₀ := core.H₀) (hpin := core.hpin) core.T Kt L e' f' u')
+        (H₀ := core.H₀) (hpin := core.hpin) core.T Kt E L)
       (X' : RealizedInput core A'),
       ∃ u : Ktˣ, ((canonicalResAt X' hj x₀ : Lˣ) : L) = algebraMap Kt L (u : Kt)) :
     False := by
@@ -570,8 +585,8 @@ end AuditRealization
 
 /-! ### The audit at the S2 instance
 
-Conditional on CC-17's split frontier and the quarantined legacy premise (empty at S2 —
-U13) — exactly the gate's corrected conditionality — the S2 socket application's ϑ-conjunct
+Conditional on CC-17's split frontier alone ([PK-2/U15]: the quarantined legacy premises
+are deleted with the carrier retype) — the S2 socket application's ϑ-conjunct
 cannot be discharged by the arena-agreement trap from the supplied data: the defeat fires at
 the single S2 gauge-live level `j = 1`. -/
 
@@ -582,18 +597,18 @@ variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
 variable {E : Type uE} [Field E]
 variable {L : Type uL} [Field L] [Algebra ((S2DepthTwo h2 hq).fld 2) L]
 
-/-- The non-swallowing defeat at the S2 gate instance: conditional on the CC-17 split
-frontier plus the two quarantined legacy premises, no uniform derivation over the S2
+/-- The non-swallowing defeat at the S2 gate instance, `ev`/`lf`-FREE ([PK-2/U15]):
+conditional on the CC-17 split frontier alone, no uniform derivation over the S2
 supplied context yields the arena-agreement clause at any gauge-live level (`j = 1` is the
 only one at depth two). -/
 theorem s2_arenaAgreement_not_uniform [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (S : S2SourceFrontier h2 hq E L) (ev : S.LegacyEvaluation) (lf : S.LegacyFGMN)
+    (S : S2SourceFrontier h2 hq E L)
     {j : ℕ} (hj : GaugeLive 2 j)
     (χ : (i : ℕ) → MonoidHom.ker (levelExponentHeight (S2DepthTwo h2 hq) i) →* Lˣ)
     (x₀ : MonoidHom.ker (levelHeight (S2DepthTwo h2 hq) ⟨j, hj⟩ :
       GaugeLattice.{uG} 2 →* Multiplicative ℤ))
     (hχ : (χ j) (liftKerHom (S2DepthTwo h2 hq) hj x₀) ≠ 1)
-    (hagree : ∀ (A' : ChainRealization (s2DepthTwo h2 hq) ((S2DepthTwo h2 hq).fld 2) L 2 1 5)
+    (hagree : ∀ (A' : ChainRealization (s2DepthTwo h2 hq) ((S2DepthTwo h2 hq).fld 2) E L)
       (X' : RealizedInput (s2ArisingCore h2 hq L) A')
       (x : MonoidHom.ker (levelHeight (S2DepthTwo h2 hq) ⟨j, hj⟩ :
         GaugeLattice.{uG} 2 →* Multiplicative ℤ)),
@@ -602,7 +617,7 @@ theorem s2_arenaAgreement_not_uniform [IsAdicComplete (IsLocalRing.maximalIdeal 
             ((arenaReadAt X' hj x : ((S2DepthTwo h2 hq).fld 2)ˣ) :
               (S2DepthTwo h2 hq).fld 2)) :
     False :=
-  arenaAgreement_not_uniform (S.s2RealizedInput ev lf) hj χ x₀ hχ hagree
+  arenaAgreement_not_uniform S.s2RealizedInput hj χ x₀ hχ hagree
 
 end AuditS2
 
@@ -623,15 +638,15 @@ variable {ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ} {q : ℕ → ℤ} {n :
 
 /-- LINT (I.10a): index `0` is gauge-live at no depth; updating `q` there is invisible. -/
 theorem canonicalLadderConfigData_update_q_zero (q₀ : ℤ) :
-    CanonicalLadderConfigData C B G Kt L N v ρ q n ↔
-      CanonicalLadderConfigData C B G Kt L N v ρ (Function.update q 0 q₀) n := by
+    CanonicalLadderConfigData.{uE, uG, uKt, uL} C B G Kt L N v ρ q n ↔
+      CanonicalLadderConfigData.{uE, uG, uKt, uL} C B G Kt L N v ρ (Function.update q 0 q₀) n := by
   constructor
-  · rintro ⟨dom, dvr, e', f', u', core, Aℛ, X, eK, eG, hslot, hblock, hgauge⟩
-    exact ⟨dom, dvr, e', f', u', core, Aℛ, X, eK, eG, hslot, hblock,
+  · rintro ⟨dom, dvr, E, fE, core, Aℛ, X, eK, eG, hslot, hblock, hgauge⟩
+    exact ⟨dom, dvr, E, fE, core, Aℛ, X, eK, eG, hslot, hblock,
       (gaugeFamilyViewEq_offRange_unconstrained X _ _ _ _
         (fun h => Nat.not_succ_le_zero 0 h.1) q₀).mp hgauge⟩
-  · rintro ⟨dom, dvr, e', f', u', core, Aℛ, X, eK, eG, hslot, hblock, hgauge⟩
-    exact ⟨dom, dvr, e', f', u', core, Aℛ, X, eK, eG, hslot, hblock,
+  · rintro ⟨dom, dvr, E, fE, core, Aℛ, X, eK, eG, hslot, hblock, hgauge⟩
+    exact ⟨dom, dvr, E, fE, core, Aℛ, X, eK, eG, hslot, hblock,
       (gaugeFamilyViewEq_offRange_unconstrained X _ _ _ _
         (fun h => Nat.not_succ_le_zero 0 h.1) q₀).mpr hgauge⟩
 
@@ -642,23 +657,23 @@ the body pins `core.r = r` — updates of the arena, tower-read, and peel-unit f
 invisible. -/
 theorem canonicalDeepTwistConfigData_update_offRange {j : ℕ} (hj : ¬ GaugeLive r j)
     (Aj : Gauge.GaugeArena G Kt N) (Rj : G → Kt) (wj : Ktˣ) :
-    CanonicalDeepTwistConfigData C B G Kt L N v ρ q A R w r n ↔
-      CanonicalDeepTwistConfigData C B G Kt L N v ρ q
+    CanonicalDeepTwistConfigData.{uE, uG, uKt, uL} C B G Kt L N v ρ q A R w r n ↔
+      CanonicalDeepTwistConfigData.{uE, uG, uKt, uL} C B G Kt L N v ρ q
         (Function.update A j Aj) (Function.update R j Rj) (Function.update w j wj) r n := by
   constructor
-  · rintro ⟨hl, dom, dvr, e', f', u', core, Aℛ, X, eK, eG, hrpin, hslot, hblock, hgauge,
+  · rintro ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hslot, hblock, hgauge,
       harena⟩
     subst hrpin
-    refine ⟨hl, dom, dvr, e', f', u', core, Aℛ, X, eK, eG, rfl, hslot, hblock, hgauge, ?_⟩
+    refine ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, rfl, hslot, hblock, hgauge, ?_⟩
     intro k hk
     have hkj : k ≠ j := fun e => hj (e ▸ hk)
     beta_reduce
     rw [Function.update_of_ne hkj, Function.update_of_ne hkj, Function.update_of_ne hkj]
     exact harena k hk
-  · rintro ⟨hl, dom, dvr, e', f', u', core, Aℛ, X, eK, eG, hrpin, hslot, hblock, hgauge,
+  · rintro ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hslot, hblock, hgauge,
       harena⟩
     subst hrpin
-    refine ⟨hl, dom, dvr, e', f', u', core, Aℛ, X, eK, eG, rfl, hslot, hblock, hgauge, ?_⟩
+    refine ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, rfl, hslot, hblock, hgauge, ?_⟩
     intro k hk
     have hkj : k ≠ j := fun e => hj (e ▸ hk)
     have h := harena k hk
@@ -669,19 +684,19 @@ theorem canonicalDeepTwistConfigData_update_offRange {j : ℕ} (hj : ¬ GaugeLiv
 /-- LINT (I.10b): the `q`-update at the always-off index `0` is invisible in BOTH the ladder
 conjunct and the joint witness. -/
 theorem canonicalDeepTwistConfigData_update_q_zero (q₀ : ℤ) :
-    CanonicalDeepTwistConfigData C B G Kt L N v ρ q A R w r n ↔
-      CanonicalDeepTwistConfigData C B G Kt L N v ρ (Function.update q 0 q₀) A R w r n := by
+    CanonicalDeepTwistConfigData.{uE, uG, uKt, uL} C B G Kt L N v ρ q A R w r n ↔
+      CanonicalDeepTwistConfigData.{uE, uG, uKt, uL} C B G Kt L N v ρ (Function.update q 0 q₀) A R w r n := by
   constructor
-  · rintro ⟨hl, dom, dvr, e', f', u', core, Aℛ, X, eK, eG, hrpin, hslot, hblock, hgauge,
+  · rintro ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hslot, hblock, hgauge,
       harena⟩
     exact ⟨(canonicalLadderConfigData_update_q_zero q₀).mp hl,
-      dom, dvr, e', f', u', core, Aℛ, X, eK, eG, hrpin, hslot, hblock,
+      dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hslot, hblock,
       (gaugeFamilyViewEq_offRange_unconstrained X _ _ _ _
         (fun h => Nat.not_succ_le_zero 0 h.1) q₀).mp hgauge, harena⟩
-  · rintro ⟨hl, dom, dvr, e', f', u', core, Aℛ, X, eK, eG, hrpin, hslot, hblock, hgauge,
+  · rintro ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hslot, hblock, hgauge,
       harena⟩
     exact ⟨(canonicalLadderConfigData_update_q_zero q₀).mpr hl,
-      dom, dvr, e', f', u', core, Aℛ, X, eK, eG, hrpin, hslot, hblock,
+      dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hslot, hblock,
       (gaugeFamilyViewEq_offRange_unconstrained X _ _ _ _
         (fun h => Nat.not_succ_le_zero 0 h.1) q₀).mpr hgauge, harena⟩
 

@@ -49,6 +49,10 @@ s2RealizedInput →` both socket applications"), the FINAL nodes of the plan.
 
 ## SG-1 — the funnel, fired at the SG-0 frontier
 
+(Pre-ripple record; superseded by the [PK-2/U15] note at the end of this section — the
+funnel now runs `s2FrontierChainRealization → s2_calculus_discharge →
+s2FrontierRealizedInput → sockets`, `ev`/`lf`-free.)
+
 `s2FrontierChainRealization → s2Frontier_calculusNonempty → s2FrontierRealizedInput →`
 BOTH socket applications (`s2Frontier_ladder_socket`, `s2Frontier_deepTwist_socket`), each
 conditional on exactly:
@@ -69,6 +73,14 @@ exactly CC-17/CC-18's recorded conditionality, now with the vacuity CONCENTRATED
 named, separately-refuted premises while the frontier itself (the S2 content) is inhabited
 modulo the one named threshold datum.  Removing `ev`/`lf` is the plan's SF-3 consumer
 ripple (re-type `NodePointSource`/`ChainRealization` themselves), not this node.
+
+**[PK-2/U15, 2026-08-25] — the SF-3 ripple ENACTED** (packaging route,
+`PACKAGING_ROUTE_2026-08-25.md`): the paragraph above is the pre-ripple record.  The
+carrier is retyped (split node, no FGMN legs — PK-1), so the funnel now re-runs
+`ev`/`lf`-FREE (Part 7): every stage is conditional on exactly `w` (+ `IsAdicComplete`),
+stage 2 is the UNCONDITIONAL `s2_calculus_discharge` at the honest `r = 1` anchoring
+through C130pk's factored `fgmnCalculusOf`, and the two emptiness certificates (Part 6)
+keep their statements verbatim as the refutation record.
 
 ## Anti-drift pins
 
@@ -444,76 +456,104 @@ theorem s2LegacyFGMN_landed_empty {E : Type uE} [Field E]
     (hkp : lf.fgmn.keyPolynomial = S2KeyPoly h2 hq) : False :=
   (s2SourceLaws_depthTwo_unsatisfiable h2 hq _ lf.fgmn hnorm hkp).false lf.fgmnLaws
 
-/-! ## Part 7 — ★ SG-1: the funnel, fired at the SG-0 frontier
+/-! ## Part 7 — ★ SG-1: the funnel, fired at the SG-0 frontier — `ev`/`lf`-FREE
+([PK-2/U15, 2026-08-25])
 
 Each stage is stated at `S := s2Frontier h2 hq L w`, so the full conditionality of every
-statement is visible in its binders: `w` (open source datum) + `ev` (empty at S2, Part 6) +
-`lf` (empty at the landed readings, Part 6).  Packaging shapes, per the recorded CC-17/
-CC-18 conditionality; the S2 content is the `ev`/`lf`-free frontier of Parts 3–5. -/
+statement is visible in its binders: exactly `w` (the one open source datum) +
+`IsAdicComplete` where the input occurrence needs it.  The packaging route
+(`PACKAGING_ROUTE_2026-08-25.md`) retyped the carrier (PK-1), so the two quarantined
+premises `ev`/`lf` are DELETED from every stage: the socket stages are the first
+NON-VACUOUS I.10a/b-shaped statements of the campaign (no provably-empty premise anywhere
+on the path), and stage 2 is replaced by the UNCONDITIONAL class discharge
+`s2_calculus_discharge` at the honest `r = 1` anchoring.  Part 6's two emptiness theorems
+are RETAINED verbatim — they are the refutation record that forced the retype. -/
 
-/-- ★ SG-1 stage 1: `toChainRealization` fires at the SG-0 frontier. -/
-def s2FrontierChainRealization (w : S2LevelOneThreshold)
-    (ev : (s2Frontier h2 hq L w).LegacyEvaluation)
-    (lf : (s2Frontier h2 hq L w).LegacyFGMN) :
-    ChainRealization (S2DepthTwo h2 hq) ((S2DepthTwo h2 hq).fld 2) L 2 1 5 :=
-  (s2Frontier h2 hq L w).toChainRealization ev lf
+/-- ★ SG-1 stage 1, `ev`/`lf`-FREE ([PK-2/U15, 2026-08-25]): `toCarrier` fires at the SG-0
+frontier — the PK-1-retyped carrier takes the split node directly, so the packaging is
+conditional on exactly the one open source datum `w`. -/
+def s2FrontierChainRealization (w : S2LevelOneThreshold) :
+    ChainRealization (S2DepthTwo h2 hq) ((S2DepthTwo h2 hq).fld 2)
+      (FractionRing (Polynomial O)) L :=
+  (s2Frontier h2 hq L w).toCarrier
 
-/-- ★ SG-1 stage 2: `calculusNonempty` fires at the SG-0 frontier. -/
-theorem s2Frontier_calculusNonempty (w : S2LevelOneThreshold)
-    (ev : (s2Frontier h2 hq L w).LegacyEvaluation)
-    (lf : (s2Frontier h2 hq L w).LegacyFGMN) :
-    Nonempty (FGMNCalculus (S2DepthTwo h2 hq) 2 1 5) :=
-  (s2Frontier h2 hq L w).calculusNonempty ev lf
+/-- ★★ SG-1 stage 2, REPLACED at [PK-2/U15, 2026-08-25] by **the first non-vacuous
+`FGMNCalculus` instance** (scratch authority `U15_check.s2AnchorCalculus`): the landed FD-0
+records (`s2SourceDataOne`/`s2SourceLawsOne`, all thirteen laws by named landed theorems)
+packaged through the factored `fgmnCalculusOf` (C130pk) at the honest `r = 1` anchoring.
+UNCONDITIONAL — no `w`, no `ev`, no `lf`.  (The retired stage 2, `calculusNonempty ev lf`
+at the depth-two `(2,1,5)` typing, was empty-premised AND consumer-rejected — per the
+packaging route's §2 adjudication the honest depth-2 triple is `(2,1,21)`, deferred to the
+μ₃ campaign.)  Deliberately a `def`, not an `instance` (C130pk's rule). -/
+@[implicit_reducible] def s2AnchorCalculus : FGMNCalculus (s2DepthOne h2 hq) 2 1 5 :=
+  fgmnCalculusOf (s2DepthOneKeyChain h2 hq) (s2SourceDataOne h2 hq)
+    (s2SourceLawsOne h2 hq)
 
-/-- ★ SG-1 stage 3: `s2RealizedInput` fires at the SG-0 frontier (the concrete
-`keyAt 2 + 1` arising occurrence at degree 4). -/
+/-- ★★ SG-1 stage 2, **the class discharge — non-vacuous and unconditional** (scratch
+authority `U15_check.s2_calculus_discharge`): what the retired `calculusNonempty` could only
+state behind the provably-empty `ev`/`lf` premises, now Lean-core with NO premise at all —
+the C92-vacuity closed at a concrete anchor.  `fgmn_calculus_exists` stays undeclared, per
+the standing adjudication. -/
+theorem s2_calculus_discharge :
+    Nonempty (FGMNCalculus (s2DepthOne h2 hq) 2 1 5) :=
+  ⟨s2AnchorCalculus h2 hq⟩
+
+/-- anti-drift: the discharged instance's normalized-residual operator IS the landed S2
+operator. -/
+example : (s2AnchorCalculus h2 hq).Rres = s2NormRes h2 hq := rfl
+
+/-- anti-drift: the discharged instance's key-polynomial predicate IS the landed S2
+predicate. -/
+example : (s2AnchorCalculus h2 hq).KP = S2KeyPoly h2 hq := rfl
+
+/-- ★ SG-1 stage 3, `ev`/`lf`-FREE ([PK-2/U15]): `s2RealizedInput` fires at the SG-0
+frontier (the concrete `keyAt 2 + 1` arising occurrence at degree 4), conditional on `w` +
+`IsAdicComplete` only. -/
 def s2FrontierRealizedInput [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (w : S2LevelOneThreshold)
-    (ev : (s2Frontier h2 hq L w).LegacyEvaluation)
-    (lf : (s2Frontier h2 hq L w).LegacyFGMN) :
+    (w : S2LevelOneThreshold) :
     RealizedInput (s2ArisingCore h2 hq L)
-      ((s2Frontier h2 hq L w).toChainRealization ev lf) :=
-  (s2Frontier h2 hq L w).s2RealizedInput ev lf
+      (s2Frontier h2 hq L w).toCarrier :=
+  (s2Frontier h2 hq L w).s2RealizedInput
 
-/-- ★ SG-1 stage 4a: the S2 I.10a socket application fires at the SG-0 frontier. -/
+/-- ★ SG-1 stage 4a, `ev`/`lf`-FREE ([PK-2/U15]): the S2 I.10a socket application fires at
+the SG-0 frontier — the FIRST I.10a-shaped statement of the campaign with NO provably-empty
+premise anywhere on its path: conditional on exactly `w : S2LevelOneThreshold` (the one open
+faithfulness datum) + `IsAdicComplete`. -/
 theorem s2Frontier_ladder_socket [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (w : S2LevelOneThreshold)
-    (ev : (s2Frontier h2 hq L w).LegacyEvaluation)
-    (lf : (s2Frontier h2 hq L w).LegacyFGMN) :
-    CanonicalLadderConfigData
-      (((s2Frontier h2 hq L w).s2RealizedInput ev lf).stageCarrierTransport
+    (w : S2LevelOneThreshold) :
+    CanonicalLadderConfigData.{0, uG, 0, uL}
+      ((s2Frontier h2 hq L w).s2RealizedInput.stageCarrierTransport
         (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
-      (((s2Frontier h2 hq L w).s2RealizedInput ev lf).inputBlockTransport
+      ((s2Frontier h2 hq L w).s2RealizedInput.inputBlockTransport
         (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
       (GaugeLattice.{uG} 2) ((S2DepthTwo h2 hq).fld 2) L
-      (((s2Frontier h2 hq L w).toChainRealization ev lf).normalizer.arenaNormSection0.transport
+      ((s2Frontier h2 hq L w).toCarrier.normalizer.arenaNormSection0.transport
         (gaugeLatticeEquiv 2).symm)
-      (gaugeHeightFamily ((s2Frontier h2 hq L w).s2RealizedInput ev lf))
-      (canonicalResFamily ((s2Frontier h2 hq L w).s2RealizedInput ev lf))
-      (useHeightFamily ((s2Frontier h2 hq L w).s2RealizedInput ev lf)) 4 :=
-  s2_ladder_socket_application h2 hq (s2Frontier h2 hq L w) ev lf
+      (gaugeHeightFamily (s2Frontier h2 hq L w).s2RealizedInput)
+      (canonicalResFamily (s2Frontier h2 hq L w).s2RealizedInput)
+      (useHeightFamily (s2Frontier h2 hq L w).s2RealizedInput) 4 :=
+  s2_ladder_socket_application h2 hq (s2Frontier h2 hq L w)
 
-/-- ★ SG-1 stage 4b: the S2 I.10b socket application fires at the SG-0 frontier, depth
-pinned to the witness's own `r = 2`. -/
+/-- ★ SG-1 stage 4b, `ev`/`lf`-FREE ([PK-2/U15]): the S2 I.10b socket application fires at
+the SG-0 frontier, depth pinned to the witness's own `r = 2` — same exact conditionality
+as stage 4a. -/
 theorem s2Frontier_deepTwist_socket [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
-    (w : S2LevelOneThreshold)
-    (ev : (s2Frontier h2 hq L w).LegacyEvaluation)
-    (lf : (s2Frontier h2 hq L w).LegacyFGMN) :
-    CanonicalDeepTwistConfigData
-      (((s2Frontier h2 hq L w).s2RealizedInput ev lf).stageCarrierTransport
+    (w : S2LevelOneThreshold) :
+    CanonicalDeepTwistConfigData.{0, uG, 0, uL}
+      ((s2Frontier h2 hq L w).s2RealizedInput.stageCarrierTransport
         (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
-      (((s2Frontier h2 hq L w).s2RealizedInput ev lf).inputBlockTransport
+      ((s2Frontier h2 hq L w).s2RealizedInput.inputBlockTransport
         (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
       (GaugeLattice.{uG} 2) ((S2DepthTwo h2 hq).fld 2) L
-      (((s2Frontier h2 hq L w).toChainRealization ev lf).normalizer.arenaNormSection0.transport
+      ((s2Frontier h2 hq L w).toCarrier.normalizer.arenaNormSection0.transport
         (gaugeLatticeEquiv 2).symm)
-      (gaugeHeightFamily ((s2Frontier h2 hq L w).s2RealizedInput ev lf))
-      (canonicalResFamily ((s2Frontier h2 hq L w).s2RealizedInput ev lf))
-      (useHeightFamily ((s2Frontier h2 hq L w).s2RealizedInput ev lf))
-      (arenaFamily ((s2Frontier h2 hq L w).s2RealizedInput ev lf) Nat.one_lt_two)
-      (towerReadFamily ((s2Frontier h2 hq L w).s2RealizedInput ev lf))
-      ((s2Frontier h2 hq L w).toChainRealization ev lf).node.peelUnitFamily 2 4 :=
-  s2_deepTwist_socket_application h2 hq (s2Frontier h2 hq L w) ev lf
+      (gaugeHeightFamily (s2Frontier h2 hq L w).s2RealizedInput)
+      (canonicalResFamily (s2Frontier h2 hq L w).s2RealizedInput)
+      (useHeightFamily (s2Frontier h2 hq L w).s2RealizedInput)
+      (arenaFamily (s2Frontier h2 hq L w).s2RealizedInput Nat.one_lt_two)
+      (towerReadFamily (s2Frontier h2 hq L w).s2RealizedInput)
+      (s2Frontier h2 hq L w).toCarrier.node.peelUnitFamily 2 4 :=
+  s2_deepTwist_socket_application h2 hq (s2Frontier h2 hq L w)
 
 end S2
 
@@ -550,7 +590,8 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.C130sg.s2Frontier_legacyEvaluation_isEmpty
 #print axioms Uniformity.Density.Tower.C130sg.s2LegacyFGMN_landed_empty
 #print axioms Uniformity.Density.Tower.C130sg.s2FrontierChainRealization
-#print axioms Uniformity.Density.Tower.C130sg.s2Frontier_calculusNonempty
+#print axioms Uniformity.Density.Tower.C130sg.s2AnchorCalculus
+#print axioms Uniformity.Density.Tower.C130sg.s2_calculus_discharge
 #print axioms Uniformity.Density.Tower.C130sg.s2FrontierRealizedInput
 #print axioms Uniformity.Density.Tower.C130sg.s2Frontier_ladder_socket
 #print axioms Uniformity.Density.Tower.C130sg.s2Frontier_deepTwist_socket

@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import Uniformity.ChapC.C130k
+import Uniformity.ChapC.C130k2
 
 /-!
 # Uniformity.ChapC.C130fg — the FGMN source carrier (chain-carrier node CC-13)
@@ -46,6 +47,23 @@ and every operator of `FGMNSourceData` belongs to `μ_(r+1) = [μ_r; (φ_(r+1), 
 
 The coefficient codomain `W.fld r` is the depth-two consumer's checked identification
 `F₃ = K₂` (U9 §4, `GENTOW2_PROOF` S5.1) read at general depth: `F_(r+1) ≃ W.fld r`.
+
+## [PK-1/U15, 2026-08-25] The carrier retype (packaging route, `PACKAGING_ROUTE_2026-08-25.md` §4.1)
+
+`ChainRealization` is RETYPED: the node leg is now the SPLIT-ambient `SplitNodePointSource`
+(C130k2 — the SF-3 ripple U13's refutation demanded), and the FGMN legs (`fgmn`/`fgmnLaws`)
+together with the record's `(e' f' u')` parameters are REMOVED from the carrier and factored
+into the standalone packaging map `fgmnCalculusOf : FGMNSourceData + FGMNSourceLaws +
+KeyChain → FGMNCalculus` (C130pk, node PK-3).  Machine grounds: CC-16's `toCalculus` never
+consumed `node`/`receiver`/`normalizer` or either compat field, and the socket view layer
+never consumed `fgmn`/`fgmnLaws`/`(e',f',u')` or the four evaluation fields (grep-verified,
+U15 §1).  The four deleted legs are NOT lost: `FGMNSourceData`/`FGMNSourceLaws` live on
+UNTOUCHED below (consumed by the factored packaging), and the two compat fields
+(OPEN-DICT-2/OPEN-DICT-4) live where they are already landed and PROVEN — the S2 bundle
+`S2SourceFrontier.grade_compat`/`letter_compat` (C130s17, FD-1's proofs).  The paragraphs
+below this note describe the PRE-retype design and are kept as the record of the four
+OPEN-DICT obligations; OPEN-DICT-1 (shared `keys`) and OPEN-DICT-3 (`receiver` + the
+`Polynomial (W.fld r)` codomains) remain carrier signatures.
 
 ## The four OPEN-DICT obligations as signatures (U7 §8)
 
@@ -96,7 +114,7 @@ namespace Uniformity.Density.Tower
 
 open Uniformity.Density.Leaf
 
-universe uKt uL
+universe uE uKt uL
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
 variable {π : O} {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
@@ -258,50 +276,43 @@ structure FGMNSourceLaws (W : DeepTower.{0, uKt} F H₀ hpin r)
 
 /-! ## The assembled layer: the four OPEN-DICT obligations as signatures -/
 
-/-- The decided carrier (design §4.4): a conservative layer over `DeepTower`, reusing the
-freeze's `TerminalReceiver` and C130k's carrier skeleton.  The four OPEN-DICT obligations of
-U7 §8 are signatures here: OPEN-DICT-1 is the shared `keys` (one `KeyChain` parametrizes both
-`node` and `fgmn`), OPEN-DICT-2 is `grade_compat`, OPEN-DICT-3's transport boundary is
-`receiver` together with `fgmn`'s `Polynomial (W.fld r)` residual codomains, and OPEN-DICT-4
-is `letter_compat`.  No field is a socket conclusion or a consumer class, and the two residue
-reads of `node` (`canonicalRead`/`arenaRead`) remain deliberately unrelated (design §8: the
-OM-8 L3 descent goal stays open at the sockets). -/
+/-- The decided carrier — RETYPED at [PK-1/U15, 2026-08-25] per
+`PACKAGING_ROUTE_2026-08-25.md` §4.1 (elaboration authority
+`scratch/U15_check.lean`, `ChainRealizationV2`, landed under the original name): a
+conservative layer over `DeepTower`, reusing the freeze's `TerminalReceiver` and the carrier
+skeleton, with the node leg at the SPLIT ambient (`SplitNodePointSource`, C130k2 — the
+valued evaluation ambient `E` split from the residue/letter ambient `L`, U13's required
+correction) and NO FGMN legs: `fgmn`/`fgmnLaws` and the `(e' f' u')` parameters are factored
+into the standalone packaging map `fgmnCalculusOf` (C130pk), and the former
+`grade_compat`/`letter_compat` fields (OPEN-DICT-2/OPEN-DICT-4) live at the S2 bundle
+`S2SourceFrontier` (C130s17), where FD-1 PROVED them.  OPEN-DICT-1 remains the shared `keys`
+(one `KeyChain` parametrizes the node; the FGMN records are keyed at the same chain wherever
+they are packaged), and OPEN-DICT-3's transport boundary remains `receiver`.  No field is a
+socket conclusion or a consumer class, and the two residue reads of `node`
+(`canonicalRead`/`arenaRead`) remain deliberately unrelated (design §8: the OM-8 L3 descent
+goal stays open at the sockets).  The instance binder `fieldE` is NAMED so downstream
+existential bodies (C130s18's socket data) can supply it explicitly. -/
 structure ChainRealization
     (W : DeepTower.{0, uKt} F H₀ hpin r)
-    (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L] [Algebra Kt L]
-    (e' f' u' : ℕ) where
+    (Kt : Type uKt) [Field Kt] (E : Type uE) [fieldE : Field E]
+    (L : Type uL) [Field L] [Algebra Kt L] where
   /-- OPEN-DICT-3 (U7 §8.3): the coefficient-field transport boundary.  `topEquiv` and the
   chain-compatible `levelHom` family are the repo side of the equivalences `W.fld i ≃ F_i`
-  and their truncation compatibility; with `fgmn`'s `Polynomial (W.fld r)` codomains they
-  carry the scalar-coordinate specialization boundary of `R_(r+1,β)`.  The remaining
-  OPEN-DICT-3 content (that `Rgr`, `Rres`, `KP`, `nuEquiv` ARE the transported FGMN objects)
-  is exactly what an instance of this structure must supply through `fgmn` + `fgmnLaws`. -/
+  and their truncation compatibility.  The remaining OPEN-DICT-3 content (that `Rgr`,
+  `Rres`, `KP`, `nuEquiv` ARE the transported FGMN objects) is what the FGMN records supply
+  wherever they are packaged (`fgmnCalculusOf`, C130pk). -/
   receiver : TerminalReceiver F H₀ hpin r W Kt
-  /-- OPEN-DICT-1 (U7 §8.1): the single MacLane key chain, SHARED between `node` and `fgmn`.
+  /-- OPEN-DICT-1 (U7 §8.1): the single MacLane key chain, SHARED with the node.
   Its `keyAt_one` (index shift/first key) and `keyAt_degree` (the equation-(7) degree
   recurrence identified with `W.Dcum`) fields are the key dictionary; sharing the parameter
   leaves no second chain to drift against. -/
   keys : KeyChain W
   /-- EFF.T2.07/GENTOW5.15: the integer/Laurent normalizer layer (C130k). -/
   normalizer : LaurentNormalizer W
-  /-- The legal node-point source (C130k): points, stage tables, threshold/window, letters,
-  and the two deliberately separate residue reads. -/
-  node : NodePointSource (L := L) W receiver keys
-  /-- This file's FGMN source data for the next augmentation `μ_(r+1)` (U9 §2). -/
-  fgmn : FGMNSourceData W keys e' f' u'
-  /-- This file's thirteen named FGMN source obligations (design §4.3). -/
-  fgmnLaws : FGMNSourceLaws W keys e' f' u' fgmn
-  /-- OPEN-DICT-2 (U7 §8.2): the cleared next-valuation convention agrees with the legal
-  point read at the terminal stage — the source's rational grades and the corpus's natural
-  grades are identified through an actual evaluation, so `ExactGrade`/`AboveGrade` are
-  FGMN's `P_β \ P_β⁺`/`P_β⁺` and not freely chosen predicates. -/
-  grade_compat : ∀ x : node.Point, node.Pt r x → ∀ g : Polynomial O,
-    fgmn.nextValue g = node.pointHgt r x g
-  /-- OPEN-DICT-4 (U7 §8.4): FGMN's transported `z_i` is the same ambient node letter — the
-  `γ_i → y_i → z_i` construction is compatible with the repo letters; C.102's letter formula
-  must be a theorem of this dictionary, not a consequence of a freely chosen `letter`. -/
-  letter_compat : ∀ i, StageLive r i →
-    algebraMap Kt L (receiver.topEquiv (fgmn.letter i)) = (node.ambientLetter i : L)
+  /-- The legal node-point source at the SPLIT ambient (C130k2, [PK-1/U15]): points, stage
+  tables, threshold/window, letters, and the two deliberately separate residue reads — with
+  the evaluation valued in `E` and the letters/reads in `L`. -/
+  node : SplitNodePointSource (L := L) W E receiver keys
 
 end Uniformity.Density.Tower
 

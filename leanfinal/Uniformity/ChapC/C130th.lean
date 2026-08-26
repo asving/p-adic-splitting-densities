@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import Uniformity.ChapC.C130st
+import Uniformity.ChapC.C130k2
 
 /-!
 # Uniformity.ChapC.C130th — the threshold dictionary and `CanonicalThresholdAt` (chain-carrier node CC-7)
@@ -15,6 +16,14 @@ is the carrier-level cure of the freeze-v2 layer C.130d that verdict C130A found
 point `ρ`, the stage valuation `d`, the polynomial key `Φ_i`, the inherited threshold `T`, and
 the window proof — now exists as CARRIED DATA of the landed `NodePointSource`/`KeyChain`
 (C130k, node CC-1), so the predicate is finally stateable without inventing anything.
+
+**[PK-2/U15, 2026-08-25]** — packaging-route view-binder ripple
+(`PACKAGING_ROUTE_2026-08-25.md` §4/PK-2): every binder below is retyped un-split→split
+(`NodePointSource` → `SplitNodePointSource`, C130k2), signature-only — the consumed fields
+(`thresholdZ`/`thresholdNat`/`threshold_nonneg`/`window`/`pointHgt`/`point_exists`/
+`key_value`) are byte-identical between the two structures, so every proof is byte-stable.
+The un-split `NodePointSource` (C130k) survives only as the U13-refutation quarantine
+record; prose mentions of it below are the historical CC-7 record.
 
 ## The design §5 ruling (quoted, and respected exactly)
 
@@ -93,15 +102,15 @@ namespace Uniformity.Density.Tower
 
 open Uniformity.Density.Leaf
 
-universe uKt uL
+universe uE uKt uL
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
 variable {π : O} {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
 variable {W : DeepTower.{0, uKt} F H₀ hpin r}
-variable {Kt : Type uKt} [Field Kt] {L : Type uL} [Field L] [Algebra Kt L]
+variable {Kt : Type uKt} [Field Kt] {E : Type uE} [Field E] {L : Type uL} [Field L] [Algebra Kt L]
 variable {receiver : TerminalReceiver F H₀ hpin r W Kt} {K : KeyChain W}
 
-namespace NodePointSource
+namespace SplitNodePointSource
 
 /-! ## The integer/natural threshold dictionary
 
@@ -112,28 +121,28 @@ where the source asserts it). -/
 /-- Dictionary: on the live range the inherited integer threshold is nonnegative (forced by
 the `threshold_nonneg` source field — E.11's `BlockData.T : ℕ` could not otherwise be
 filled without truncation, which is forbidden). -/
-theorem thresholdZ_nonneg (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem thresholdZ_nonneg (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hi : StageLive r i) : 0 ≤ S.thresholdZ i := by
   have h := S.threshold_nonneg i hi
   omega
 
 /-- Dictionary, ℤ-side spelling: the inherited integer threshold is the cast of its natural
 avatar (the `threshold_nonneg` field, symmetrized). -/
-theorem thresholdZ_eq_natCast (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem thresholdZ_eq_natCast (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hi : StageLive r i) : S.thresholdZ i = (S.thresholdNat i : ℤ) :=
   (S.threshold_nonneg i hi).symm
 
 /-- Dictionary, ℕ-side spelling: the natural avatar is `Int.toNat` of the inherited integer
 threshold.  This is a THEOREM about the carried pair, not a definition of `thresholdNat` —
 the truncation direction is derivable only because `threshold_nonneg` holds. -/
-theorem thresholdNat_eq_toNat (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem thresholdNat_eq_toNat (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hi : StageLive r i) : S.thresholdNat i = (S.thresholdZ i).toNat := by
   have h := S.threshold_nonneg i hi
   omega
 
 /-- Dictionary rigidity: the natural avatar is the UNIQUE natural number casting to the
 inherited integer threshold.  `thresholdNat` is a dictionary entry, not a free choice. -/
-theorem thresholdNat_unique (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem thresholdNat_unique (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hi : StageLive r i) {m : ℕ} (hm : (m : ℤ) = S.thresholdZ i) :
     m = S.thresholdNat i := by
   have h := S.threshold_nonneg i hi
@@ -141,14 +150,14 @@ theorem thresholdNat_unique (S : NodePointSource (L := L) W receiver K) (i : ℕ
 
 /-- Dictionary at the window's value type: the two threshold casts agree in `WithTop ℤ`
 (the codomain of `hgt`/`pointHgt`, where EFF.T2.11's `(WINDOW)` lives). -/
-theorem coe_thresholdNat (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem coe_thresholdNat (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hi : StageLive r i) :
     ((S.thresholdNat i : ℕ) : WithTop ℤ) = (S.thresholdZ i : WithTop ℤ) := by
   rw [← S.threshold_nonneg i hi, WithTop.coe_natCast]
 
 /-- EFF.T2.11 `(WINDOW)` at the natural avatar: `T < d(Φ_i(ρ)) < ∞` with `T` read through
 the dictionary.  Same source law, respelled for the ℕ-valued consumers (E.11's block). -/
-theorem window_nat (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem window_nat (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hi : StageLive r i) (x : S.Point) (hx : S.Pt i x) :
     ((S.thresholdNat i : ℕ) : WithTop ℤ) < S.pointHgt i x (K.keyAt i) ∧
       S.pointHgt i x (K.keyAt i) ≠ ⊤ := by
@@ -166,14 +175,14 @@ realized-occurrence form is the definitional specialization).
 `(DeepTower,i,F₀)`", so the predicate PINS `T` to the carried datum instead of computing it),
 and EFF.T2.11's `(WINDOW)` `T < d(Φ_i(ρ)) < ∞` holds at the point `x` (clauses 2–3, with
 `d(Φ_i(ρ)) = S.pointHgt i x (K.keyAt i)`, an actual evaluation by `pointHgt_eval`). -/
-def CanonicalThresholdAt (S : NodePointSource (L := L) W receiver K)
+def CanonicalThresholdAt (S : SplitNodePointSource (L := L) W E receiver K)
     (i : ℕ) (x : S.Point) (T : ℕ) : Prop :=
   T = S.thresholdNat i ∧
   (S.thresholdZ i : WithTop ℤ) < S.pointHgt i x (K.keyAt i) ∧
   S.pointHgt i x (K.keyAt i) ≠ ⊤
 
 /-- Anti-drift pin: `CanonicalThresholdAt` is byte-wise its three design clauses. -/
-theorem canonicalThresholdAt_def (S : NodePointSource (L := L) W receiver K)
+theorem canonicalThresholdAt_def (S : SplitNodePointSource (L := L) W E receiver K)
     (i : ℕ) (x : S.Point) (T : ℕ) :
     S.CanonicalThresholdAt i x T ↔
       (T = S.thresholdNat i ∧
@@ -184,7 +193,7 @@ theorem canonicalThresholdAt_def (S : NodePointSource (L := L) W receiver K)
 equality; the mathematical content is the EFF.T2.11 `window` obligation"): at every live
 stage and legal point, the inherited natural threshold IS canonical.  No other value is
 (`not_canonicalThresholdAt_of_ne`). -/
-theorem canonicalThresholdAt_thresholdNat (S : NodePointSource (L := L) W receiver K)
+theorem canonicalThresholdAt_thresholdNat (S : SplitNodePointSource (L := L) W E receiver K)
     (i : ℕ) (hi : StageLive r i) (x : S.Point) (hx : S.Pt i x) :
     S.CanonicalThresholdAt i x (S.thresholdNat i) :=
   ⟨rfl, S.window i hi x hx⟩
@@ -192,38 +201,38 @@ theorem canonicalThresholdAt_thresholdNat (S : NodePointSource (L := L) W receiv
 /-- Projection: a canonical threshold is the inherited natural threshold — nothing else can
 inhabit the predicate.  (No guard needed: clause 1 is unconditional.) -/
 theorem CanonicalThresholdAt.eq_thresholdNat
-    {S : NodePointSource (L := L) W receiver K} {i : ℕ} {x : S.Point} {T : ℕ}
+    {S : SplitNodePointSource (L := L) W E receiver K} {i : ℕ} {x : S.Point} {T : ℕ}
     (h : S.CanonicalThresholdAt i x T) : T = S.thresholdNat i := h.1
 
 /-- Projection: the strict lower window bound `T < d(Φ_i(ρ))`, in the ℤ-threshold spelling. -/
 theorem CanonicalThresholdAt.window_lt
-    {S : NodePointSource (L := L) W receiver K} {i : ℕ} {x : S.Point} {T : ℕ}
+    {S : SplitNodePointSource (L := L) W E receiver K} {i : ℕ} {x : S.Point} {T : ℕ}
     (h : S.CanonicalThresholdAt i x T) :
     (S.thresholdZ i : WithTop ℤ) < S.pointHgt i x (K.keyAt i) := h.2.1
 
 /-- Projection: the finiteness window bound `d(Φ_i(ρ)) < ∞`. -/
 theorem CanonicalThresholdAt.window_ne_top
-    {S : NodePointSource (L := L) W receiver K} {i : ℕ} {x : S.Point} {T : ℕ}
+    {S : SplitNodePointSource (L := L) W E receiver K} {i : ℕ} {x : S.Point} {T : ℕ}
     (h : S.CanonicalThresholdAt i x T) :
     S.pointHgt i x (K.keyAt i) ≠ ⊤ := h.2.2
 
 /-- Rigidity: two canonical thresholds at the same stage and point are equal. -/
 theorem CanonicalThresholdAt.unique
-    {S : NodePointSource (L := L) W receiver K} {i : ℕ} {x : S.Point} {T T' : ℕ}
+    {S : SplitNodePointSource (L := L) W E receiver K} {i : ℕ} {x : S.Point} {T T' : ℕ}
     (h : S.CanonicalThresholdAt i x T) (h' : S.CanonicalThresholdAt i x T') : T = T' :=
   h.1.trans h'.1.symm
 
 /-- The no-arbitrary-numeral refuter (design §5: "C.130d should not introduce an opaque
 predicate which can be inhabited by an arbitrary numeral"): any `T` other than the inherited
 threshold is refuted, at every stage and point, with no liveness or legality needed. -/
-theorem not_canonicalThresholdAt_of_ne (S : NodePointSource (L := L) W receiver K)
+theorem not_canonicalThresholdAt_of_ne (S : SplitNodePointSource (L := L) W E receiver K)
     (i : ℕ) (x : S.Point) {T : ℕ} (hT : T ≠ S.thresholdNat i) :
     ¬ S.CanonicalThresholdAt i x T := fun h => hT h.1
 
 /-- Characterization on the honest domain (live stage, legal point): being canonical is
 EXACTLY being the inherited natural threshold.  Forward is projection; backward consumes the
 `window` source law. -/
-theorem canonicalThresholdAt_iff (S : NodePointSource (L := L) W receiver K)
+theorem canonicalThresholdAt_iff (S : SplitNodePointSource (L := L) W E receiver K)
     (i : ℕ) (hi : StageLive r i) (x : S.Point) (hx : S.Pt i x) (T : ℕ) :
     S.CanonicalThresholdAt i x T ↔ T = S.thresholdNat i :=
   ⟨fun h => h.1, fun h => by
@@ -232,7 +241,7 @@ theorem canonicalThresholdAt_iff (S : NodePointSource (L := L) W receiver K)
 /-- The window at a canonical threshold, in the ℕ-cast spelling CC-8's block binding
 consumes: `(T : WithTop ℤ) < d(Φ_i(ρ))`.  Needs the live guard for the dictionary leg. -/
 theorem CanonicalThresholdAt.natCast_lt
-    {S : NodePointSource (L := L) W receiver K} {i : ℕ} {x : S.Point} {T : ℕ}
+    {S : SplitNodePointSource (L := L) W E receiver K} {i : ℕ} {x : S.Point} {T : ℕ}
     (h : S.CanonicalThresholdAt i x T) (hi : StageLive r i) :
     ((T : ℕ) : WithTop ℤ) < S.pointHgt i x (K.keyAt i) := by
   rw [h.eq_thresholdNat, S.coe_thresholdNat i hi]
@@ -246,7 +255,7 @@ tower data.  Point-free via `point_exists`.  These consume only carried source l
 
 /-- The window forces `thresholdZ i < u_{i+1}` at every gauge-live stage: the inherited
 threshold sits strictly below the next inherited stage height. -/
-theorem thresholdZ_lt_u_succ (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem thresholdZ_lt_u_succ (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hg : GaugeLive r i) : S.thresholdZ i < (W.u (i + 1) : ℤ) := by
   obtain ⟨⟨x, hx⟩⟩ := S.point_exists i hg.stageLive
   have hw := (S.window i hg.stageLive x hx).1
@@ -255,13 +264,13 @@ theorem thresholdZ_lt_u_succ (S : NodePointSource (L := L) W receiver K) (i : �
 
 /-- The natural-avatar spelling: `thresholdNat i < u (i+1)` at every gauge-live stage
 (dictionary + `thresholdZ_lt_u_succ`). -/
-theorem thresholdNat_lt_u_succ (S : NodePointSource (L := L) W receiver K) (i : ℕ)
+theorem thresholdNat_lt_u_succ (S : SplitNodePointSource (L := L) W E receiver K) (i : ℕ)
     (hg : GaugeLive r i) : S.thresholdNat i < W.u (i + 1) := by
   have h1 := S.thresholdZ_lt_u_succ i hg
   have h2 := S.threshold_nonneg i hg.stageLive
   omega
 
-end NodePointSource
+end SplitNodePointSource
 
 end Uniformity.Density.Tower
 
@@ -269,23 +278,23 @@ end Uniformity.Density.Tower
 
 section AxCheck
 
-#print axioms Uniformity.Density.Tower.NodePointSource.thresholdZ_nonneg
-#print axioms Uniformity.Density.Tower.NodePointSource.thresholdZ_eq_natCast
-#print axioms Uniformity.Density.Tower.NodePointSource.thresholdNat_eq_toNat
-#print axioms Uniformity.Density.Tower.NodePointSource.thresholdNat_unique
-#print axioms Uniformity.Density.Tower.NodePointSource.coe_thresholdNat
-#print axioms Uniformity.Density.Tower.NodePointSource.window_nat
-#print axioms Uniformity.Density.Tower.NodePointSource.CanonicalThresholdAt
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalThresholdAt_def
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalThresholdAt_thresholdNat
-#print axioms Uniformity.Density.Tower.NodePointSource.CanonicalThresholdAt.eq_thresholdNat
-#print axioms Uniformity.Density.Tower.NodePointSource.CanonicalThresholdAt.window_lt
-#print axioms Uniformity.Density.Tower.NodePointSource.CanonicalThresholdAt.window_ne_top
-#print axioms Uniformity.Density.Tower.NodePointSource.CanonicalThresholdAt.unique
-#print axioms Uniformity.Density.Tower.NodePointSource.not_canonicalThresholdAt_of_ne
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalThresholdAt_iff
-#print axioms Uniformity.Density.Tower.NodePointSource.CanonicalThresholdAt.natCast_lt
-#print axioms Uniformity.Density.Tower.NodePointSource.thresholdZ_lt_u_succ
-#print axioms Uniformity.Density.Tower.NodePointSource.thresholdNat_lt_u_succ
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.thresholdZ_nonneg
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.thresholdZ_eq_natCast
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.thresholdNat_eq_toNat
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.thresholdNat_unique
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.coe_thresholdNat
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.window_nat
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.CanonicalThresholdAt
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalThresholdAt_def
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalThresholdAt_thresholdNat
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.CanonicalThresholdAt.eq_thresholdNat
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.CanonicalThresholdAt.window_lt
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.CanonicalThresholdAt.window_ne_top
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.CanonicalThresholdAt.unique
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.not_canonicalThresholdAt_of_ne
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalThresholdAt_iff
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.CanonicalThresholdAt.natCast_lt
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.thresholdZ_lt_u_succ
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.thresholdNat_lt_u_succ
 
 end AxCheck

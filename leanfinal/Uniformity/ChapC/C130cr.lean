@@ -3,6 +3,7 @@ Copyright (c) 2026 Asvin G. All rights reserved.
 Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
+import Uniformity.ChapC.C130k2
 import Uniformity.ChapC.C130ln
 import Uniformity.ChapC.C130s2
 
@@ -41,6 +42,13 @@ L-valued node-point residue read, exported from the carrier's `canonicalRead` SO
   synchronized kernels along the level projection, and the other-factors-to-1 clause is a
   THEOREM (`canonicalRes0_eq_one_of_level_one`, `canonicalRes0_insert_ne`), not a convention.
 
+**[PK-2/U15, 2026-08-25]** — packaging-route view-binder ripple
+(`PACKAGING_ROUTE_2026-08-25.md` §4/PK-2): every node binder below is retyped
+un-split→split (`NodePointSource` → `SplitNodePointSource`, C130k2), signature-only — the
+one consumed node field (`canonicalRead`) is byte-identical between the two structures, so
+every proof is byte-stable.  Prose mentions of the un-split name below are the historical
+CC-10 record.
+
 ## Honesty ledger
 
 * `canonicalRead` is a CARRIED source field of `NodePointSource`; its values at the
@@ -78,7 +86,7 @@ namespace Uniformity.Density.Tower
 open scoped BigOperators
 open Uniformity.Density.Leaf
 
-universe uG uKt uL
+universe uE uG uKt uL
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
 variable {π : O} {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
@@ -287,34 +295,34 @@ display `canonicalRes(τ) = η^m·∏ β_a^{t_a}`, OM-8 §3.1 L2's multiplicativ
 defect-corrected τ reduction.  The values are exports of carried data, not constructions; the
 bridge to the node-point residue classes is C.130g's OPEN transcription, not claimed here. -/
 
-namespace NodePointSource
+namespace SplitNodePointSource
 
 variable {W : DeepTower.{0, uKt} F H₀ hpin r}
-variable {Kt : Type uKt} [Field Kt] {L : Type uL} [Field L] [Algebra Kt L]
+variable {Kt : Type uKt} [Field Kt] {E : Type uE} [Field E] {L : Type uL} [Field L] [Algebra Kt L]
 variable {receiver : TerminalReceiver F H₀ hpin r W Kt} {K : KeyChain W}
 
 /-- The canonical read of the wrap generator `W₀` — freeze v2 §4's η-value, exported. -/
-def wrapValue (S : NodePointSource (L := L) W receiver K) {i : ℕ} (hi : StageLive r i) : Lˣ :=
+def wrapValue (S : SplitNodePointSource (L := L) W E receiver K) {i : ℕ} (hi : StageLive r i) : Lˣ :=
   S.canonicalRead i (W.wrapClass hi)
 
 /-- Anti-drift pin: the wrap value is the canonical read of the wrap class. -/
-theorem wrapValue_def (S : NodePointSource (L := L) W receiver K) {i : ℕ}
+theorem wrapValue_def (S : SplitNodePointSource (L := L) W E receiver K) {i : ℕ}
     (hi : StageLive r i) : S.wrapValue hi = S.canonicalRead i (W.wrapClass hi) := rfl
 
 /-- The canonical read of the letter generator `Λ_a` — freeze v2 §4's β-value, exported. -/
-def letterValue (S : NodePointSource (L := L) W receiver K) (N : LaurentNormalizer W)
+def letterValue (S : SplitNodePointSource (L := L) W E receiver K) (N : LaurentNormalizer W)
     {i : ℕ} (hi : StageLive r i) (a : Fin (i - 1)) : Lˣ :=
   S.canonicalRead i (N.letterClass hi a)
 
 /-- Anti-drift pin: the letter value is the canonical read of the letter class. -/
-theorem letterValue_def (S : NodePointSource (L := L) W receiver K) (N : LaurentNormalizer W)
+theorem letterValue_def (S : SplitNodePointSource (L := L) W E receiver K) (N : LaurentNormalizer W)
     {i : ℕ} (hi : StageLive r i) (a : Fin (i - 1)) :
     S.letterValue N hi a = S.canonicalRead i (N.letterClass hi a) := rfl
 
 /-- ★ **The distinguished-generator view on level kernels** (freeze v2 §4's L-valued
 factorization display, OM-8 §3.1 L2): the canonical read of any generator word is the
 corresponding word in the generator values, `η^m · ∏_a β_a^{t_a}` in `Lˣ`. -/
-theorem canonicalRead_generatorWord (S : NodePointSource (L := L) W receiver K)
+theorem canonicalRead_generatorWord (S : SplitNodePointSource (L := L) W E receiver K)
     (N : LaurentNormalizer W) {i : ℕ} (hi : StageLive r i) (m : ℤ) (t : Fin (i - 1) → ℤ) :
     S.canonicalRead i (N.generatorWord hi m t) =
       S.wrapValue hi ^ m * ∏ a, S.letterValue N hi a ^ t a := by
@@ -324,7 +332,7 @@ theorem canonicalRead_generatorWord (S : NodePointSource (L := L) W receiver K)
 
 /-- The defect-corrected τ reduction under the canonical read: the read of a product class is
 the product of the reads times the read of the normalizer defect. -/
-theorem canonicalRead_heightClass_mul (S : NodePointSource (L := L) W receiver K)
+theorem canonicalRead_heightClass_mul (S : SplitNodePointSource (L := L) W E receiver K)
     (N : LaurentNormalizer W) {i : ℕ} (hi : StageLive r i)
     {g g' : LevelExponentLattice i} {k k' : ℤ}
     (hg : levelExponentHeight W i g = Multiplicative.ofAdd k)
@@ -336,7 +344,7 @@ theorem canonicalRead_heightClass_mul (S : NodePointSource (L := L) W receiver K
         S.canonicalRead i (N.defect hi k k') := by
   rw [N.heightClass_mul hi hg hg' hgg', map_mul, map_mul]
 
-end NodePointSource
+end SplitNodePointSource
 
 /-! ## 5. The synchronized-product export
 
@@ -424,42 +432,42 @@ def kerGaugeEquiv (T : DeepTower F H₀ hpin r) (j : LiveLevel r) :
   map_mul' τ σ := Subtype.ext
     (map_mul (gaugeLatticeEquiv r : GaugeLattice.{uG} r ≃* GaugeLattice0 r) _ _)
 
-namespace NodePointSource
+namespace SplitNodePointSource
 
 variable {W : DeepTower.{0, uKt} F H₀ hpin r}
-variable {Kt : Type uKt} [Field Kt] {L : Type uL} [Field L] [Algebra Kt L]
+variable {Kt : Type uKt} [Field Kt] {E : Type uE} [Field E] {L : Type uL} [Field L] [Algebra Kt L]
 variable {receiver : TerminalReceiver F H₀ hpin r W Kt} {K : KeyChain W}
 
 /-- ★ **The C.130h export, concrete form**: the canonical L-valued read on the synchronized
 product kernel at a live level — `canonicalRead j` at the level factor; the other level
 factors are provably sent to `1` (`canonicalRes0_eq_one_of_level_one`).  L-valued; no
 `Kt`-descent field exists (freeze v2 D-TIF-5). -/
-def canonicalRes0 (S : NodePointSource (L := L) W receiver K) (j : LiveLevel r) :
+def canonicalRes0 (S : SplitNodePointSource (L := L) W E receiver K) (j : LiveLevel r) :
     MonoidHom.ker (levelHeight0 W j) →* Lˣ :=
   (S.canonicalRead j.1).comp (kerLevelProj0 W j)
 
 /-- Anti-drift pin: the synchronized read is the level read of the level factor. -/
-theorem canonicalRes0_apply (S : NodePointSource (L := L) W receiver K) (j : LiveLevel r)
+theorem canonicalRes0_apply (S : SplitNodePointSource (L := L) W E receiver K) (j : LiveLevel r)
     (τ : MonoidHom.ker (levelHeight0 W j)) :
     S.canonicalRes0 j τ = S.canonicalRead j.1 (kerLevelProj0 W j τ) := rfl
 
 /-- Freeze v2 §4's "other level factors to `1`", as a theorem: any synchronized kernel
 element whose level-`j` factor is trivial reads to `1`. -/
-theorem canonicalRes0_eq_one_of_level_one (S : NodePointSource (L := L) W receiver K)
+theorem canonicalRes0_eq_one_of_level_one (S : SplitNodePointSource (L := L) W E receiver K)
     (j : LiveLevel r) (τ : MonoidHom.ker (levelHeight0 W j))
     (h : (τ : GaugeLattice0 r) j = 1) : S.canonicalRes0 j τ = 1 := by
   have hproj : kerLevelProj0 W j τ = 1 := Subtype.ext h
   rw [canonicalRes0_apply, hproj, map_one]
 
 /-- The synchronized read of an inserted level-kernel element is its level read. -/
-theorem canonicalRes0_kerLevelInsert0 (S : NodePointSource (L := L) W receiver K)
+theorem canonicalRes0_kerLevelInsert0 (S : SplitNodePointSource (L := L) W E receiver K)
     (j : LiveLevel r) (g : MonoidHom.ker (levelExponentHeight W j.1)) :
     S.canonicalRes0 j (kerLevelInsert0 W j g) = S.canonicalRead j.1 g := by
   rw [canonicalRes0_apply, kerLevelProj0_kerLevelInsert0]
 
 /-- At a DIFFERENT live level `j' ≠ j`, the synchronized read of the `j`-inserted element is
 `1` — the other-factors-to-`1` clause across levels. -/
-theorem canonicalRes0_insert_ne (S : NodePointSource (L := L) W receiver K)
+theorem canonicalRes0_insert_ne (S : SplitNodePointSource (L := L) W E receiver K)
     {j j' : LiveLevel r} (hne : j' ≠ j)
     (g : MonoidHom.ker (levelExponentHeight W j.1)) :
     S.canonicalRes0 j'
@@ -472,17 +480,17 @@ theorem canonicalRes0_insert_ne (S : NodePointSource (L := L) W receiver K)
 
 /-- ★ **The C.130h export, `ULift` form** (finding #28): the canonical L-valued read on the
 `Type uG` synchronized kernel, through the explicit `gaugeLatticeEquiv`. -/
-def canonicalRes (S : NodePointSource (L := L) W receiver K) (j : LiveLevel r) :
+def canonicalRes (S : SplitNodePointSource (L := L) W E receiver K) (j : LiveLevel r) :
     MonoidHom.ker (levelHeight W j : GaugeLattice.{uG} r →* Multiplicative ℤ) →* Lˣ :=
   (S.canonicalRes0 j).comp (kerGaugeEquiv W j).toMonoidHom
 
 /-- Anti-drift pin: the `ULift` read factors through the kernel equivalence. -/
-theorem canonicalRes_apply (S : NodePointSource (L := L) W receiver K) (j : LiveLevel r)
+theorem canonicalRes_apply (S : SplitNodePointSource (L := L) W E receiver K) (j : LiveLevel r)
     (τ : MonoidHom.ker (levelHeight W j : GaugeLattice.{uG} r →* Multiplicative ℤ)) :
     S.canonicalRes j τ = S.canonicalRes0 j (kerGaugeEquiv W j τ) := rfl
 
 /-- Round trip: the `ULift` read of a lifted concrete kernel element is its concrete read. -/
-theorem canonicalRes_symm_apply (S : NodePointSource (L := L) W receiver K) (j : LiveLevel r)
+theorem canonicalRes_symm_apply (S : SplitNodePointSource (L := L) W E receiver K) (j : LiveLevel r)
     (τ : MonoidHom.ker (levelHeight0 W j)) :
     S.canonicalRes j
         (((kerGaugeEquiv W j).symm τ :
@@ -490,7 +498,7 @@ theorem canonicalRes_symm_apply (S : NodePointSource (L := L) W receiver K) (j :
       S.canonicalRes0 j τ := by
   rw [canonicalRes_apply, MulEquiv.apply_symm_apply]
 
-end NodePointSource
+end SplitNodePointSource
 
 /-! ## 6. The distinguished generators on the synchronized product
 
@@ -508,34 +516,34 @@ def LaurentNormalizer.letterClassSync {W : DeepTower.{0, uKt} F H₀ hpin r}
     MonoidHom.ker (levelHeight0 W j) :=
   kerLevelInsert0 W j (N.letterClass j.2.stageLive a)
 
-namespace NodePointSource
+namespace SplitNodePointSource
 
 variable {W : DeepTower.{0, uKt} F H₀ hpin r}
-variable {Kt : Type uKt} [Field Kt] {L : Type uL} [Field L] [Algebra Kt L]
+variable {Kt : Type uKt} [Field Kt] {E : Type uE} [Field E] {L : Type uL} [Field L] [Algebra Kt L]
 variable {receiver : TerminalReceiver F H₀ hpin r W Kt} {K : KeyChain W}
 
 /-- Distinguished-generator view, synchronized: the read of the inserted `W₀` is η. -/
-theorem canonicalRes0_wrapClassSync (S : NodePointSource (L := L) W receiver K)
+theorem canonicalRes0_wrapClassSync (S : SplitNodePointSource (L := L) W E receiver K)
     (j : LiveLevel r) :
     S.canonicalRes0 j (W.wrapClassSync j) = S.wrapValue j.2.stageLive :=
   S.canonicalRes0_kerLevelInsert0 j _
 
 /-- Distinguished-generator view, synchronized: the read of the inserted `Λ_a` is `β_a`. -/
-theorem canonicalRes0_letterClassSync (S : NodePointSource (L := L) W receiver K)
+theorem canonicalRes0_letterClassSync (S : SplitNodePointSource (L := L) W E receiver K)
     (N : LaurentNormalizer W) (j : LiveLevel r) (a : Fin (j.1 - 1)) :
     S.canonicalRes0 j (N.letterClassSync j a) = S.letterValue N j.2.stageLive a :=
   S.canonicalRes0_kerLevelInsert0 j _
 
 /-- ★ **The distinguished-generator view on the synchronized product**: the synchronized read
 of any inserted generator word is the word in the generator values, `η^m · ∏_a β_a^{t_a}`. -/
-theorem canonicalRes0_generatorWordSync (S : NodePointSource (L := L) W receiver K)
+theorem canonicalRes0_generatorWordSync (S : SplitNodePointSource (L := L) W E receiver K)
     (N : LaurentNormalizer W) (j : LiveLevel r) (m : ℤ) (t : Fin (j.1 - 1) → ℤ) :
     S.canonicalRes0 j (kerLevelInsert0 W j (N.generatorWord j.2.stageLive m t)) =
       S.wrapValue j.2.stageLive ^ m *
         ∏ a, S.letterValue N j.2.stageLive a ^ t a := by
   rw [S.canonicalRes0_kerLevelInsert0 j, S.canonicalRead_generatorWord N j.2.stageLive m t]
 
-end NodePointSource
+end SplitNodePointSource
 
 end Uniformity.Density.Tower
 
@@ -555,9 +563,9 @@ open Uniformity.Density.Tower.C80 Uniformity.Density.Tower.C130s2
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [Finite (ResidueField O)] (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
-variable {Kt : Type} [Field Kt] {L : Type} [Field L] [Algebra Kt L]
+variable {Kt : Type} [Field Kt] {E : Type} [Field E] {L : Type} [Field L] [Algebra Kt L]
 variable (R : TerminalReceiver (s2Frame h2 hq) 1 (s2Frame_pin h2 hq) 2 (s2DepthTwo h2 hq) Kt)
-variable (S : NodePointSource (L := L) (s2DepthTwo h2 hq) R (s2DepthTwoKeyChain h2 hq))
+variable (S : SplitNodePointSource (L := L) (s2DepthTwo h2 hq) E R (s2DepthTwoKeyChain h2 hq))
 
 -- D62w regression `d2g1`: the wrap generator at the S2 chain is `x²·π⁻¹` at both live levels
 example : (s2DepthTwo h2 hq).wrapGen 1 = Multiplicative.ofAdd ((-1 : ℤ), (2 : ℤ), 0) := rfl
@@ -603,7 +611,7 @@ example (m : ℤ) (t : Fin 0 → ℤ) :
         ((s2DepthTwo h2 hq).laurentNormalizer.generatorWord
           (⟨le_rfl, by omega⟩ : StageLive 2 1) m t) =
       S.wrapValue (⟨le_rfl, by omega⟩ : StageLive 2 1) ^ m := by
-  rw [NodePointSource.canonicalRead_generatorWord]
+  rw [SplitNodePointSource.canonicalRead_generatorWord]
   simp
 
 -- the synchronized export and its wrap view specialize at the unique S2 live level
@@ -640,12 +648,12 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.LaurentNormalizer.letterClass_coe
 #print axioms Uniformity.Density.Tower.LaurentNormalizer.generatorWord
 #print axioms Uniformity.Density.Tower.LaurentNormalizer.generatorWord_def
-#print axioms Uniformity.Density.Tower.NodePointSource.wrapValue
-#print axioms Uniformity.Density.Tower.NodePointSource.wrapValue_def
-#print axioms Uniformity.Density.Tower.NodePointSource.letterValue
-#print axioms Uniformity.Density.Tower.NodePointSource.letterValue_def
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRead_generatorWord
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRead_heightClass_mul
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.wrapValue
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.wrapValue_def
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.letterValue
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.letterValue_def
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRead_generatorWord
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRead_heightClass_mul
 #print axioms Uniformity.Density.Tower.kerLevelProj0
 #print axioms Uniformity.Density.Tower.kerLevelProj0_coe
 #print axioms Uniformity.Density.Tower.mulSingle_mem_ker_levelHeight0
@@ -653,18 +661,18 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.kerLevelInsert0_coe
 #print axioms Uniformity.Density.Tower.kerLevelProj0_kerLevelInsert0
 #print axioms Uniformity.Density.Tower.kerGaugeEquiv
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRes0
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRes0_apply
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRes0_eq_one_of_level_one
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRes0_kerLevelInsert0
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRes0_insert_ne
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRes
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRes_apply
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRes_symm_apply
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRes0
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRes0_apply
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRes0_eq_one_of_level_one
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRes0_kerLevelInsert0
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRes0_insert_ne
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRes
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRes_apply
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRes_symm_apply
 #print axioms Uniformity.Density.Tower.DeepTower.wrapClassSync
 #print axioms Uniformity.Density.Tower.LaurentNormalizer.letterClassSync
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRes0_wrapClassSync
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRes0_letterClassSync
-#print axioms Uniformity.Density.Tower.NodePointSource.canonicalRes0_generatorWordSync
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRes0_wrapClassSync
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRes0_letterClassSync
+#print axioms Uniformity.Density.Tower.SplitNodePointSource.canonicalRes0_generatorWordSync
 
 end AxCheck
