@@ -196,10 +196,10 @@ namespace Uniformity.Density.Tower
 
 open Uniformity.Density.Leaf
 
-universe uKt uL
+universe uE uKt uL
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
-variable {Kt : Type uKt} [Field Kt] {L : Type uL} [Field L] [Algebra Kt L]
+variable {Kt : Type uKt} [Field Kt] {E : Type uE} [Field E] {L : Type uL} [Field L] [Algebra Kt L]
 
 /-- The input degree ledger of an `ArisingCore`, closed under its own dictionary fields:
 `deg F₀ = n = μ · stageDeg = μ · deg stageKey`. -/
@@ -208,16 +208,19 @@ theorem ArisingCore.F₀_natDegree {n : ℕ} (core : ArisingCore (O := O) Kt L n
   rw [core.stageKey_degree, core.degree_input]
   exact core.degree_block
 
-/-- ★ **CC-8 — `RealizedInput`** (design §4.4, byte-identical to the elaboration authority
-`scratch/U11_carrier_check.lean`): the input-specific layer over `ArisingCore` and a
-`ChainRealization` on the core's own tower.  "It reuses `ArisingCore`; the only new fields
-are dictionary equalities and a selected legal point, never a socket conclusion."  The three
-equalities are REPOSITORY DICTIONARIES (design §9); the point pair is EFF.GENTOW5.16's
-selected legal node point at the core's live stage. -/
-structure RealizedInput {n e' f' u' : ℕ} (core : ArisingCore Kt L n)
+/-- ★ **CC-8 — `RealizedInput`** (design §4.4; binders retyped at [PK-1/U15, 2026-08-25]
+per `PACKAGING_ROUTE_2026-08-25.md` §4.3, elaboration authority `scratch/U15_check.lean`'s
+`RealizedInputV2`: the `{e' f' u'}` binders are DROPPED with the carrier's FGMN legs and the
+split evaluation ambient `{E}` is added; all five fields are byte-identical to the
+U11-landed text): the input-specific layer over `ArisingCore` and a `ChainRealization` on
+the core's own tower.  "It reuses `ArisingCore`; the only new fields are dictionary
+equalities and a selected legal point, never a socket conclusion."  The three equalities are
+REPOSITORY DICTIONARIES (design §9); the point pair is EFF.GENTOW5.16's selected legal node
+point at the core's live stage. -/
+structure RealizedInput {n : ℕ} (core : ArisingCore Kt L n)
     (A : ChainRealization (O := O) (π := core.π) (F := core.F)
       (H₀ := core.H₀) (hpin := core.hpin)
-      core.T Kt L e' f' u') where
+      core.T Kt E L) where
   /-- Repository dictionary: the realization's terminal receiver is the core's. -/
   receiver_eq : A.receiver = core.receiver
   /-- Repository dictionary: the core's C.130b stage key is the key chain's `keyAt i`. -/
@@ -231,9 +234,9 @@ structure RealizedInput {n e' f' u' : ℕ} (core : ArisingCore Kt L n)
 
 namespace RealizedInput
 
-variable {n e' f' u' : ℕ} {core : ArisingCore (O := O) Kt L n}
+variable {n : ℕ} {core : ArisingCore (O := O) Kt L n}
 variable {A : ChainRealization (O := O) (π := core.π) (F := core.F)
-    (H₀ := core.H₀) (hpin := core.hpin) core.T Kt L e' f' u'}
+    (H₀ := core.H₀) (hpin := core.hpin) core.T Kt E L}
 
 /-! ### The realized degree dictionary
 
