@@ -44,7 +44,12 @@ namespace Uniformity.Density.Tower.C131af
 
 open Polynomial IsLocalRing IsDiscreteValuationRing Uniformity.Density
 open Uniformity.Density.Leaf Uniformity.Density.Tower
-open Uniformity.Density.Tower.C131ae Uniformity.Density.Tower.C131v
+-- [SIMP §2 row 13 defusal, 2026-08-26] The blanket `open … C131ae … C131v` alongside the
+-- `Leaf` open above put B39b's public `gaussVal_neg`/`dev_neg`/`suppVal_neg` and C131ae's
+-- private re-derivations in bare-name scope together — a future bare reference would be
+-- ambiguous. Narrowed to exactly the names this file uses; elaboration unchanged.
+open Uniformity.Density.Tower.C131ae (stageHeight_one)
+open Uniformity.Density.Tower.C131v (dev_sub dev_top_eq_one)
 
 variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
 variable {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
