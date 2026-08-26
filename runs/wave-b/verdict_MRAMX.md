@@ -5,7 +5,7 @@ and completion-free, ramified level-1 exactness at `AdjoinRoot F.key` — the B5
 level up — including the initial-determinant noncancellation as its own statement.
 
 **Verdict: PROVED at math level, no open gaps; statement carriers elaborate in Lean; two F2.6
-sub-pieces already proved Lean-core; cert battery exact on 4,433 instances with the predicted
+sub-pieces already proved Lean-core; cert battery exact on 4,443 instances with the predicted
 negative control.** Fresh-context adversarial verification: see the addendum at the end.
 
 ## Deliverables (all on disk)
@@ -54,7 +54,7 @@ matrix analysis is needed; the no-cancellation lives one level down, in one vari
 `ramx_cert.py`: 7 positive frames — Eisenstein ×2, (e₁,h,f₁)=(2,1,2) at p=2, (3,2,1) at p=2,
 (2,1,2) at p=3, (1,1,2) at p=5, degenerate h=0 — every nonzero `A₀` over coefficient grids,
 norm computed TWO independent ways (resultant AND multiplication-matrix determinant,
-asserted equal): **4,433/4,433 exact**. NEGATIVE control: `Φ′ = x²+18` over `ℤ_(3)` — pure,
+asserted equal): **4,443/4,443 exact**. NEGATIVE control: `Φ′ = x²+18` over `ℤ_(3)` — pure,
 coprime, irreducible over the (incomplete) base, but ψ = (y−1)(y+1) REDUCIBLE — **10
 violations** (first: `A₀ = x+3`, v(N)=3 > f₁s=2), exactly where the proof predicts (the UFD
 step). `hresirr` is the load-bearing hypothesis, also over incomplete O.
@@ -91,6 +91,24 @@ already half-banked. Node table with per-node inputs/sizing: the doc §5.
 3. F2.7 (`slot2_exact_resigned_key`) becomes reachable once X0–X9 land: its two supplies
    (T1 value + T2 certificate through the BW1 transfer) are exactly this unit's outputs.
 
-## Addendum — fresh-context adversarial verification
+## Addendum — fresh-context adversarial verification (completed 2026-08-26)
 
-(filled below after the verifier returns)
+A fresh-context Claude verifier (quote-and-classify charge, fix-nothing; permitted reads:
+the doc + C01/B34/B14 only) returned **ACCEPT — no critical errors; §3.1–§3.8 all CLEAN**.
+It re-derived the §3.2–§3.4 mechanics independently, ran concrete numeric traces of the
+band count on the (2,1,1) and (2,1,2) frames (band dims sum to v(norm) in each), confirmed
+acyclicity, completion-freeness (no hidden completeness/locality of A anywhere), every
+degenerate case (h=0, e₁=1, f₁=1, constant A₀, γ=0, γ<s, s=0, unit z), and traced the
+negative control to failure exactly and only at the UFD step. Three findings, all
+justification-gap class:
+
+1. **I1 (resPoly ↔ ψ identification)** — acknowledged in-document; it is the single entry
+   point of `Irreducible ψ`, so the Lean transcription of I1 is the one place T1/NC's
+   soundness must be re-checked against B16/B20/B28/B29 (node I1 already says this).
+2. **Landed-cite form** — the B53c dictionary's exact hypotheses are asserted, not
+   displayed (mathematically sound; standard trust-boundary form risk).
+3. **Instance-count typo** — headline said 4,433; table sums to 4,443. FIXED in both the
+   doc and this verdict (per-battery counts and results unchanged).
+
+Codex re-verification when the primary window resets (22:26) remains recommended as the
+decorrelated second pass, prioritized per the repo's verification policy.

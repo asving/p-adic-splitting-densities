@@ -46,6 +46,21 @@ consumes. Consumer audit: grep landed leanfinal consumers of `shadow_persistence
 closures elaborate in scratch/DEC4_check.lean:147-188 — re-check they still elaborate with
 the added binder).
 
+AMENDMENT 4 — the HasLabel degree pin (ADDED 2026-08-26 ~20:10, unit MHENS's stop-the-line
+finding; runs/wave-b/verdict_MHENS.md §1 + docs/in-progress/HENSEL_ENGINE_2026-08-26.md §7).
+`HasLabel` (C.29) is LEAKY on the defective stratum `D′ ∤ deg g`: it absorbs any monic
+unit-content factor of degree < D′ (weight 0, slot read 1), so the concrete ℤ₂ instance
+(Φ′ = x²+2x+12, fS = x²+6x+12, g = fS·(x+1)) yields TWO labelled splits — machine-verified
+(verification/dv_hensel_cert.py Sec 5, 2832 checks 0 fails), normalization-robust. REFUTED
+as signed: C.34's uniqueness clause, C.35 `blockFactor_spec` clause 3, and the planned
+BlockFrontier-from-BlockContext. Enact repair R1: pin the degree — `HasLabel ∧ D′ ∣ deg` —
+in C.34's clauses and `BlockFrontier`'s maximality quantifier (this matches the classical
+LEMMA HE7-6 degree pin `D″ | deg f_S`, spec/EFF-HE7.md:1653, which the corpus surrogate
+dropped). The `D′ ∣ deg` stratum is immune (floor-cap pigeonhole, doc §5 B1). The eight
+`_of_frontier` rows survive unchanged as conditionals. Consumer audit: grep landed
+leanfinal consumers of the amended clauses (C35b's D13 refutation record is this leak's
+visible tip — keep it verbatim).
+
 ## Protocol
 
 1. Read: MU3_CAMPAIGN_2026-08-26.md (whole), verdict_DEC3R.md,

@@ -150,11 +150,11 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | CHFD | the CapstoneHypotheses field-list supply map (codex HIGH) | QUEUED — same launch |
 | BW1 | BLOCKERS_PLAN wave 1: norm bridge + shadow linearity corpus landing (SONNET, reassigned from codex per Asvin 2026-08-26 evening) | REASSIGNED to the codex 22:34 launcher after TWO Sonnet 529 deaths (the storm is Sonnet-tier; Fable agents surviving) |
 | HW1 | H116B4_MAP fireable rows GR-1/2 + GR-3/3b (SONNET, reassigned likewise) | REASSIGNED to the codex 22:34 launcher (529 death mid-read; both Sonnet units storm-killed) |
-| MHENS | MATH: the dv-graded one-slope Hensel engine, the C.34/C.35 root (FABLE) | RUNNING |
+| MHENS | MATH: the dv-graded one-slope Hensel engine, the C.34/C.35 root (FABLE) | DONE — engine PROVED at math grade (mixed product law M + Newton existence with exact +1 contraction + completeness-free pigeonhole uniqueness + Gauss-descent maximality; cert 2832/0 orchestrator-re-run; 16 nodes MH.0a–16, H1/H3 re-priced 520–880/310–530); STOP-THE-LINE: HasLabel leaky on D′∤deg — signed C.34 uniqueness + C.35 clause 3 REFUTED (concrete ℤ₂ instance) → repair R1 (degree pin) ADDED to AMND as amendment 4; BONUS: once MH.3 lands, the cite fgmn_dv_exact_mul becomes a THEOREM (retirable); MH.16 (the Lean refutation record) must land before any transcription against unrepaired signatures |
 | MBRIDGE | MATH: RB3's upward budget→dv2Hgt bridge, certificate-first (FABLE) | DONE — bridge PROVED (cert 210/0, Codex-audited; RB3's "not reusable in reverse" was too pessimistic — all on landed w-abstract machinery, 5+2 nodes, 180–305 lines); STOP-THE-LINE: signed `shadow_persistence` refutable as signed (g=Φ₂^μ₂) → the `hdeg` amendment ADDED to AMND's brief as its 3rd item |
 | MSMITH | MATH: H.116b4 core I — restricted Smith identification (FABLE) | RUNNING |
 | MLIFT | MATH: H.116b4 cores II-a/II-b — one-grade lifting + pushforward induction (FABLE) | RUNNING |
-| MRAMX | MATH: completion-free ramified level-1 exactness (FABLE) | RUNNING (launched 19:24, third attempt) |
+| MRAMX | MATH: completion-free ramified level-1 exactness (FABLE) | DONE — T1/T2 PROVED at math grade (filtration/length route; the plan's matrix step superseded by the initial-forms LEMMA NC; cert 4433/4433 + predicted negative control; probe orchestrator-verified, incl. proved norm_mem_span_self); re-sized 480–780 lines over X0–X9+I1; fresh-context verifier addendum pending (agent still running); codex adversarial read queued for the NEXT codex window (not tonight's — budget) |
 | EXPO | public exposition refresh (standing obligation at major milestones) | PENDING — after the CHFD map lands |
 
 ## 7. Resume protocol (fresh agent)
