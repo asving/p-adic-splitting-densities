@@ -37,6 +37,7 @@ import Uniformity.ChapE.E24
 import Uniformity.ChapE.E63
 import Uniformity.ChapI.I10FreezeV2 -- [A-I.2] F3's typed freeze-v2 carriers (DeepTwistConjunctLive)
 import Uniformity.ChapC
+import Uniformity.ChapC.C130sg -- [A-I.3] the SG-1 socket-application instances (the §4 gate's non-vacuity teeth)
 import Uniformity.ChapF
 
 /-!
@@ -57,6 +58,31 @@ are owed at chapter C's freeze), which is the shape that becomes honest the mome
 land; it does NOT repair the contradiction today, and says so with a machine witness. I.10
 remains an ELABORATION GATE, not a signature (defect I-D7's verdict, upheld): **no fleet agent
 may fire on I.10.**
+
+**STATE UPDATE (2026-08-26, AMENDMENT A-I.3): CHAPTER C HAS TYPED THE TWO SOCKETS, AND THE
+I-D13 CONTRADICTION IS LIFTED.** The packaging enactment (`runs/wave-b/verdict_PK12.md`;
+`docs/in-progress/PACKAGING_ROUTE_2026-08-25.md` §4.4) landed the intended I.10a/I.10b bodies
+as chapter-C data-carriers — `Uniformity.Density.Tower.C130s18.CanonicalLadderConfigData` /
+`.CanonicalDeepTwistConfigData` (the `∃ (E : Type uE) (fE : Field E) … ChainRealization …
+(fieldE := fE)` shapes over the PK-1-retyped split-node carrier, with the CC-12 view pins) —
+and this amendment re-signs the two socket BODIES at exactly those carriers (ONLY the two
+bodies change; `CapstoneHypotheses`' field list, `UniformityStatement`, and I.15–I.18's
+statements are byte-unchanged). Consequences, machine-run in the §4 gate: the old item (10)
+(`¬ CapstoneHypotheses n` from one certified-false `(C, B)` through a `trivial` socket
+certificate) NO LONGER ELABORATES and is struck with its text preserved — the block is no
+longer provably empty by the I-D13 route; the old item (11) equivalence (guarded = unguarded)
+is retired to its surviving weakening direction — **the owner-gate-(a) narrowing event A-I.1
+flagged in advance has now HAPPENED** (the fields are demanded at the arising configurations
+only); and the sockets are certified NON-VACUOUSLY INHABITABLE at the S2 instance (new teeth
+(16)/(17): `C130sg.s2Frontier_ladder_socket`/`s2Frontier_deepTwist_socket`, conditional on
+exactly `w : S2LevelOneThreshold` + `IsAdicComplete`). The block is NOT thereby inhabited —
+`a0`/`a1` stay open at `n ≥ 3`, the guarded fields still demand supply at the arising
+configurations, and the `jd0`/`genhnBox2`/`w1` debts and five I-D12 placeholders are untouched.
+
+Since 2026-08-20 the definitional layer I.01–I.03/I.05–I.07/I.21 IS landed in `leanfinal`
+(`Uniformity/ChapI/I01.lean` … `I21.lean`, byte-frozen transcriptions), and A-I.3's Stage-2
+companion lands I.10a/I.10b + I.10 + I.15–I.18 there (`Uniformity/ChapI/I10_I15_I18.lean`) at
+the amended bodies; the 2026-08-16 "nothing landed" paragraph below is the historical record.
 
 Chapter I has landed nothing in `leanfinal` (`grep` for `CapstoneHypotheses` /
 `DecidedSliceAt` / `MenuLawAt` / `TypeOfFaithful` as a `Prop`-carrier over `leanfinal/Uniformity/`:
@@ -145,9 +171,9 @@ row, consumes C.92's withdrawn `fgmn_calculus_exists` (defect I-D11 records what
 | `def` of blueprint declarations (real bodies, stage-0e rule 1) | **9** | `NS7Termination` (I.01), `DecidedSliceAt` (I.02), `MenuLawAt` (I.03, RE-SIGNED at A-I.1), `WindowPinningAt` (I.05), `GenhnHEAt` (I.06), `GenhnTow1At` (I.07), `TypeOfFaithful` (I.21), **+ A-I.1's two sockets** `CanonicalLadderConfig` (I.10a), `CanonicalDeepTwistConfig` (I.10b) |
 | `def` NAMED-AND-VOIDED (refutation record, cite-forbidden) | **1** | `MenuLawAtVoided` — I.03's pre-A-I.1 form, kept so its vacuity proof survives verbatim |
 | `structure` (real body) | **1** | `CapstoneHypotheses` (I.10) — ⚠ an ELABORATION GATE, not a signature (defects I-D7, I-D13) |
-| `theorem` landed REAL (blueprint §11: "I.15–I.18 … land REAL, not axiom") | **4** | I.15–I.18 ⚠ conditionally VACUOUS today: their hypothesis is uninhabited until the I.10a/I.10b sockets are typed (defect I-D13) |
+| `theorem` landed REAL (blueprint §11: "I.15–I.18 … land REAL, not axiom") | **4** | I.15–I.18 ⚠ ~~conditionally VACUOUS today: their hypothesis is uninhabited until the I.10a/I.10b sockets are typed (defect I-D13)~~ **[A-I.3, 2026-08-26: the sockets ARE typed and the I-D13 refutation route is closed — the hypothesis is no longer provably empty; it is OPEN (not claimed inhabited: `a0`/`a1` open at `n ≥ 3`, supply at arising configurations open)]** |
 | `axiom` stubs | **0** | chapter I signs no theorem it cannot prove at stub time; the file's ONE `axiom` is I.25's fenced, `private`, `True`-valued positive control for the AXCHK guard, consumed by nothing |
-| gate `example`s / `#check`, ALL EXECUTED | **30 `example` + 8 `#check`** | §4 gate (14 checks, five of them A-I.1's certifications) · §6 gate (the `Iff.rfl` slice pin + the I.19 package-route `#check`s) · I.23 (the `q = 2`/`q = 3` anchors, the `e·f = 2` non-applicability proof, the two `n = 2` non-vacuity witnesses — `MenuLawAt 2` now at a REAL three-cell family) |
+| gate `example`s / `#check`, ALL EXECUTED | **33 `example` + 8 `#check`** [A-I.3: item (10) struck (−1), item (11) retired to its surviving direction (±0), items (15)–(17) added (+4)] | §4 gate (14 checks at A-I.1, five of them A-I.1's certifications; A-I.3 strikes (10), retires (11), adds the two `Iff.rfl` body pins (15) and the two S2 non-vacuity teeth (16)/(17)) · §6 gate (the `Iff.rfl` slice pin + the I.19 package-route `#check`s) · I.23 (the `q = 2`/`q = 3` anchors, the `e·f = 2` non-applicability proof, the two `n = 2` non-vacuity witnesses — `MenuLawAt 2` now at a REAL three-cell family) |
 | gate-local `private def` (not a blueprint declaration) | **1** | `a1LabelCell` — the σ-labelled `A1Cell 0` used by the re-signed `MenuLawAt 2` witness |
 | `[note]` nodes with no Lean file (blueprint §0.2) | **8** | I.04, I.11, I.12, I.13, I.14, I.19, I.20, I.22 — transcribed as docstring sections, nothing declared |
 | ENFORCED AXCHK guards (`#axiom_core`, I.24/I.25) | **70** | each one FAILS THE BUILD on a non-core footprint; two `elab` commands (`#axiom_core`, `#axiom_reg`) implement them |
@@ -600,12 +626,46 @@ left, and what the corpus actually claims, is the supply **at the configurations
 with `ρ` pinned to chapter C's canonical node-point residue read (OM-8 §3.1: YES at every
 DEF GENTOW5-1 instantiation with the canonical read, NO at arbitrary `ρ`).
 
-⚠ **BLOCKED-UNTIL-RESOLUTION, and the block is on chapter C, not on this chapter.** Both bodies
+~~⚠ **BLOCKED-UNTIL-RESOLUTION, and the block is on chapter C, not on this chapter.** Both bodies
 are the literal `True` placeholder; the typed bodies are owed at chapter C's tower-instantiation
 freeze (the same GC-13/GC-14 pass that typed E.61/E.62). **Consequence, disclosed and
 machine-shown in the §4 gate: while the sockets read `True` the guarded fields are EQUIVALENT to
 the unguarded ones, so A-I.1 weakens nothing today AND the block stays contradictory until the
-sockets are typed.** No fleet agent may fire on I.10 (unchanged from the 0e gate).
+sockets are typed.** No fleet agent may fire on I.10 (unchanged from the 0e gate).~~
+
+⛔ **RESOLVED AT AMENDMENT A-I.3 (2026-08-26): both bodies are TYPED at chapter C's enacted
+carriers.** The tower-instantiation freeze happened as the packaging enactment
+(`runs/wave-b/verdict_PK12.md`; `docs/in-progress/PACKAGING_ROUTE_2026-08-25.md` §4.4): the
+intended bodies are `leanfinal/Uniformity/ChapC/C130s18.lean`'s `CanonicalLadderConfigData` /
+`CanonicalDeepTwistConfigData`, which were composed AT THESE EXACT BINDER BLOCKS for this
+re-sign ("re-signing them at these bodies is a later recorded amendment gated on this file" —
+C130s18 §1) and amended by PK-2/U15 to the split-carrier existential shape
+`∃ (E : Type uE) (fE : Field E) (core : ArisingCore …) (Aℛ : ChainRealization … (fieldE := fE)
+core.T Kt E L) (X : RealizedInput core Aℛ) …` with the CC-12 view pins. The bodies below ARE
+those carriers (I.10a definitionally; I.10b keeps its frozen refinement shape, definitionally
+equal to the C130s18 conjunction — `Iff.rfl` pins at gate item (15)).
+
+⚠ **UNIVERSE PIN, disclosed (A-I.3).** C130s18's carriers are universe-polymorphic in the
+existential ambient (`∃ (E : Type uE')`); a `Prop` cannot quantify over universes, and giving
+the sockets a NEW universe parameter would leave it an unconstrained metavariable at
+`CapstoneHypotheses`' byte-frozen field sites (the fields apply the sockets with no universe
+annotation), un-elaborating the frozen structure. The ambient universe is therefore PINNED to
+`0` — the universe of every arising instance (the ambient is constructed from `O : Type`;
+at S2, `E := FractionRing (Polynomial O)`), and exactly the level C130sg's socket applications
+use (`.{0, uG, 0, uL}`). A wider ambient is representable on the leanfinal side
+(`CanonicalLadderConfigData.{uE', …}`) if ever needed; re-widening the leanspec socket would be
+a further recorded amendment.
+
+⚠ **THE NON-SWALLOWING FENCE, CHECKED AT THE RESOLUTION (A-I.3).** The typed bodies constrain
+the CONFIGURATION only — an arising witness (`ChainRealization` + `RealizedInput`) exporting
+exactly the socket data through the CC-12 views — and pin no relation between the canonical
+residue read `ρ` and the arena read. This is machine-audited, not prose: C130s18's §5 audit
+proves that NO derivation uniform in the supplied context can produce either landed trap's
+hypothesis (`arenaAgreement_not_uniform` defeats `Gauge.hvarthetaRes_of_arena_agree`'s
+agreement clause; `embeddedValue_not_uniform` defeats the `Gauge.hvarthetaRes_of_tau_letters`
+genre), because a χ-twist of the canonical read is again a full carrier supplying identical
+socket data. Unpacking a socket leaves exactly the OM-8 L3 descent/agreement goal — reachable,
+NOT supplied.
 
 ⚠ **THE NON-SWALLOWING FENCE (A-I.1, binding on the resolution pass).** The socket may NOT be
 typed at any condition that already implies its own carrier. Two landed traps, both of which
@@ -627,14 +687,23 @@ the terminal common receiver: every arising witness carries `T.fld r ≃+* K_t` 
 live maps `T.fld i →+* K_t` (freeze v2's `TerminalReceiver`). Thus the conclusion is the
 common-receiver recast in `K_r`, not the source's literal per-level `K_i` statement.
 
-⚠ STUB-STAGE BODY (BLOCKED-UNTIL-RESOLUTION): typed at chapter C's tower-instantiation freeze.
-FROZEN HERE: the name, the configuration argument block, the degree index, the `Prop` kind. -/
+~~⚠ STUB-STAGE BODY (BLOCKED-UNTIL-RESOLUTION): typed at chapter C's tower-instantiation freeze.
+FROZEN HERE: the name, the configuration argument block, the degree index, the `Prop` kind.~~
+⛔ **TYPED AT AMENDMENT A-I.3 (2026-08-26)**: the body is chapter C's enacted I.10a
+data-carrier `Uniformity.Density.Tower.C130s18.CanonicalLadderConfigData` (freeze v2 §8 at the
+landed CC-12 views, PK-2/U15-amended split-carrier shape — `runs/wave-b/verdict_PK12.md`,
+`PACKAGING_ROUTE_2026-08-25.md` §4.4), ambient universe pinned to `0` (see the section
+disclosure). The frozen name/argument block/degree index/`Prop` kind are byte-unchanged. -/
 def CanonicalLadderConfig {O : Type} [CommRing O] {K : Type} [Field K]
     (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
     [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n : ℕ) : Prop :=
-  True
+  -- [A-I.3, 2026-08-26] the typed body (was the `True` placeholder): some arising occurrence,
+  -- realized by the PK-1 split-node chain carrier, exports exactly `(C, B, G, N, v, ρ, q)` at
+  -- degree `n` through the CC-12 views. Cites: verdict_PK12.md + PACKAGING_ROUTE §4.4.
+  Uniformity.Density.Tower.C130s18.CanonicalLadderConfigData.{0, uG, uKt, uL}
+    C B G Kt L N v ρ q n
 
 set_option linter.unusedVariables false in
 /-- **NODE I.10b** [A-I.1] — *the arising deep-twist configuration*: I.10a's configuration
@@ -645,8 +714,14 @@ the arena half's own socket, so when both are typed the refinement
 the §4 gate), and no pass can type the deep-twist half against a configuration the ladder half
 would reject.
 
-⚠ STUB-STAGE BODY: the `True` conjunct is the arena half's placeholder, owed at the same
-freeze. FROZEN HERE: the name, the argument block, the refinement shape, the `Prop` kind. -/
+~~⚠ STUB-STAGE BODY: the `True` conjunct is the arena half's placeholder, owed at the same
+freeze. FROZEN HERE: the name, the argument block, the refinement shape, the `Prop` kind.~~
+⛔ **TYPED AT AMENDMENT A-I.3 (2026-08-26)**: the arena-half conjunct is chapter C's enacted
+joint-witness carrier `Uniformity.Density.Tower.C130s18.DeepTwistRealizationData` (behind the
+same `IsDomain`/`IsDiscreteValuationRing` existential the ladder half carries), so the whole
+body is definitionally C130s18's `CanonicalDeepTwistConfigData` (`Iff.rfl`, gate item (15)).
+The frozen refinement shape is byte-preserved: the first conjunct is still literally
+`CanonicalLadderConfig …`, so I.10b → I.10a stays `And.left` by construction. -/
 def CanonicalDeepTwistConfig {O : Type} [CommRing O] {K : Type} [Field K]
     (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
@@ -656,7 +731,12 @@ def CanonicalDeepTwistConfig {O : Type} [CommRing O] {K : Type} [Field K]
     (r n : ℕ) : Prop :=
   -- [A-I.2(b)] `r` is the tower depth the deep-twist conjunct is read at; the final real body
   -- must pin it to the same joint arising witness the arena export uses (never a free numeral).
-  CanonicalLadderConfig C B G Kt L N v ρ q n ∧ True
+  -- [A-I.3, 2026-08-26] the pin is now REAL: the joint witness carries `core.r = r` inside
+  -- `DeepTwistRealizationData` (A-I.2(b)'s "never a free numeral" rule, discharged).
+  CanonicalLadderConfig C B G Kt L N v ρ q n ∧
+    ∃ (dom : IsDomain O) (dvr : IsDiscreteValuationRing O),
+      Uniformity.Density.Tower.C130s18.DeepTwistRealizationData.{0, uG, uKt, uL}
+        (dom := dom) (dvr := dvr) C B G Kt L N v ρ q A R w r n
 
 /-! ### NODE I.10 [structure] — **THE CAPSTONE HYPOTHESIS STRUCTURE** (Display A, made formal).
 Lands `Uniformity.Density.CapstoneHypotheses`. ENV-I1.
@@ -673,6 +753,15 @@ corrects this**: the targets are landed but not BINDABLE at the exhibited shapes
 refutes one of them), so the placeholders are blocked after all — on the weld site-supply socket,
 not on chapter F. And the defect that now dominates I.10 is I-D13, not I-D7: the eight
 NON-placeholder fields are the ones that make the block contradictory.
+
+⛔ **[A-I.3, 2026-08-26] I-D13 IS LIFTED: the I.10a/I.10b sockets are TYPED** (bodies =
+chapter C's enacted `C130s18` carriers; see the socket nodes above and the STATE UPDATE in the
+header). The field list below is BYTE-UNCHANGED by A-I.3; the gate's refutation of the block
+(old item (10)) no longer elaborates and is struck with its text preserved. The block's honest
+state is OPEN — not provably empty, not claimed inhabited. The `jd0`/`genhnBox2` placeholders,
+the `w1` debt, and I-D10 are untouched and still owed exactly as A-I.1 ruled. The Stage-2
+companion lands the byte-frozen transcription (sockets + structure + I.15–I.18, statements
+only, nothing discharged) at `leanfinal/Uniformity/ChapI/I10_I15_I18.lean`.
 
 ⚠ **THE `ladder` FIELD, RE-SIGNED AT AMENDMENT A-I.1 (defects I-D3 and I-D13).** Two halves:
 (i) the MECHANICAL half — the 0e gate found the signed `Ladder.LadderSupply C B` underapplied by
@@ -889,44 +978,57 @@ example {C : Ladder.SlotCarrier ℤ ℚ} {B : Ladder.BlockData C}
         Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C' B' G' Kt' L' N' v' ρ' q') :=
   fun hall => hlb1 (hall ℤ ℚ C B G Kt L N v ρ q).lb1
 
--- (10) …and, WHILE THE I.10a SOCKET READS `True`, the same refutation reaches the re-signed
+-- (10) ~~…and, WHILE THE I.10a SOCKET READS `True`, the same refutation reaches the re-signed
 -- structure: `CapstoneHypotheses n` is UNINHABITED, hence `∀ n, CapstoneHypotheses n` is FALSE
 -- and I.15–I.18 fire from a contradiction. **This is the disclosure A-I.1 exists to make.** It
 -- is repaired by TYPING I.10a (chapter C's freeze), not by any edit here: a typed socket
--- excludes exactly the adversarial `(C, B)`/`ρ` configurations that carry the refutation.
-example {C : Ladder.SlotCarrier ℤ ℚ} {B : Ladder.BlockData C}
-    (hlb1 : ¬ Ladder.LB1Carrier.{0, 0, uW} C B)
-    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
-    [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
-    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n : ℕ) :
-    ¬ CapstoneHypotheses.{uW, uG, uKt, uL} n :=
-  fun h => hlb1 (h.ladder ℤ ℚ C B G Kt L N v ρ q trivial).lb1
+-- excludes exactly the adversarial `(C, B)`/`ρ` configurations that carry the refutation.~~
+-- ⛔ **STRUCK BY A-I.3 (2026-08-26): the socket is TYPED and this refutation route is CLOSED —
+-- defect I-D13's contradiction is LIFTED.** The item's proof fed the certified-false `(C, B)`
+-- through the socket with `trivial`; with the body the C130s18 carrier, the adversarial
+-- configuration would need an arising witness (a `ChainRealization`/`RealizedInput` pair
+-- exporting exactly that `(C, B)` and `ρ` through the CC-12 views) — exactly what the socket
+-- was installed to demand. NOT thereby claimed: inhabitation of `CapstoneHypotheses n`
+-- (`a0`/`a1` stay open at `n ≥ 3`; the guarded fields still demand supply at the arising
+-- configurations; the weld debts are untouched). The struck term, preserved verbatim (it no
+-- longer elaborates — `trivial` no longer certifies an arising configuration, which is the
+-- amendment's whole content):
+--   example {C : Ladder.SlotCarrier ℤ ℚ} {B : Ladder.BlockData C}
+--       (hlb1 : ¬ Ladder.LB1Carrier.{0, 0, uW} C B)
+--       (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+--       [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+--       (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n : ℕ) :
+--       ¬ CapstoneHypotheses.{uW, uG, uKt, uL} n :=
+--     fun h => hlb1 (h.ladder ℤ ℚ C B G Kt L N v ρ q trivial).lb1
 
--- (11) **A-I.1 WEAKENS NOTHING TODAY (the "never weaken" check, machine-run).** While I.10a's
+-- (11) ~~**A-I.1 WEAKENS NOTHING TODAY (the "never weaken" check, machine-run).** While I.10a's
 -- body is the placeholder, the guarded `ladder` field type is EQUIVALENT to the 0e unguarded
 -- one — so the amendment installs the binding site without moving the strength; the narrowing
 -- to arising configurations happens exactly at the moment the socket is typed, and is the
--- gate-(a) event flagged to the owner.
+-- gate-(a) event flagged to the owner.~~ ⛔ **RETIRED BY A-I.3 (2026-08-26): THE FLAGGED
+-- NARROWING HAS HAPPENED.** With the socket typed, the 0e equivalence's forward direction
+-- (guarded ⟹ unguarded, proved by `trivial`) is GONE — deliberately: that direction was the
+-- contradiction (items (9)/(10)). What survives, machine-run below, is the weakening direction
+-- (unguarded ⟹ guarded): the guarded field is IMPLIED by the 0e one, so A-I.3 weakens a
+-- hypothesis and thereby STRENGTHENS I.15–I.18 — the owner-gate-(a) event A-I.1 flagged in
+-- advance, now enacted and re-flagged (REVIEW_QUEUE_2026-08-26 amendment row A-I.3).
 example (n : ℕ) :
     (∀ (O : Type) [CommRing O] (K : Type) [Field K]
         (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
         (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
         [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
         (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
-        CanonicalLadderConfig C B G Kt L N v ρ q n →
         Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q)
-      ↔
+      →
     (∀ (O : Type) [CommRing O] (K : Type) [Field K]
         (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
         (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
         [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
         (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
+        CanonicalLadderConfig C B G Kt L N v ρ q n →
         Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q) := by
-  constructor
-  · intro h O _ K _ C B G _ Kt _ L _ _ N v ρ q
-    exact h O K C B G Kt L N v ρ q trivial
-  · intro h O _ K _ C B G _ Kt _ L _ _ N v ρ q _
-    exact h O K C B G Kt L N v ρ q
+  intro h O _ K _ C B G _ Kt _ L _ _ N v ρ q _
+  exact h O K C B G Kt L N v ρ q
 
 -- (12) the NON-SWALLOWING fence, with its landed trap named as a term: this, used as the I.10a
 -- socket's body, would discharge the ϑ-conjunct outright — a CARRY row retired by
@@ -953,6 +1055,83 @@ example : ¬ (∀ (K ι : Type) [Field K] (Rh RG : ι → K), Weld.W1Transport R
 -- defect I-D6 forbids until the C.94 REDRAFT (`LeanspecC.NS7TerminationStatementR`, A-C.6) is
 -- signed by the owner at gate (b) — the instruction A-I.1 re-pointed in the blueprint.
 example : NS7Termination := fun _ => trivial
+
+-- (15) **[A-I.3] anti-drift pins: the socket bodies ARE chapter C's enacted I.10a/I.10b
+-- data-carriers, DEFINITIONALLY** (`Iff.rfl` — fails the build the moment either side drifts;
+-- the A-I.2 `deepTwistConjunctLive_iff` pattern). The deep-twist pin also certifies that the
+-- frozen refinement shape (first conjunct literally `CanonicalLadderConfig`) reassembles
+-- C130s18's `CanonicalDeepTwistConfigData` on the nose.
+example {O : Type} [CommRing O] {K : Type} [Field K]
+    (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n : ℕ) :
+    CanonicalLadderConfig C B G Kt L N v ρ q n ↔
+      Uniformity.Density.Tower.C130s18.CanonicalLadderConfigData.{0, uG, uKt, uL}
+        C B G Kt L N v ρ q n := Iff.rfl
+example {O : Type} [CommRing O] {K : Type} [Field K]
+    (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+    [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+    (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ) (r n : ℕ) :
+    CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w r n ↔
+      Uniformity.Density.Tower.C130s18.CanonicalDeepTwistConfigData.{0, uG, uKt, uL}
+        C B G Kt L N v ρ q A R w r n := Iff.rfl
+
+section AThreeTeeth
+open Uniformity.Density.Tower
+open Uniformity.Density.Tower.C130s17 Uniformity.Density.Tower.C130sg
+
+-- (16) **[A-I.3] NON-VACUITY of the typed I.10a socket at the arising S2 instance** (the
+-- A-E.2 certification standard: a re-sign ships a witness genre). The landed SG-1 stage-4a
+-- application (`C130sg.s2Frontier_ladder_socket`, `ev`/`lf`-FREE per PK-2/U15) inhabits the
+-- re-signed socket at the concrete `keyAt 2 + 1` occurrence, degree 4, conditional on exactly
+-- `w : S2LevelOneThreshold` (the one open faithfulness datum) + `IsAdicComplete` — no
+-- provably-empty premise anywhere on the path.
+example {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (IsLocalRing.ResidueField O)]
+    (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
+    (L : Type uL) [Field L] [Algebra ((S2DepthTwo h2 hq).fld 2) L]
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] (w : S2LevelOneThreshold) :
+    CanonicalLadderConfig
+      ((s2Frontier h2 hq L w).s2RealizedInput.stageCarrierTransport
+        (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
+      ((s2Frontier h2 hq L w).s2RealizedInput.inputBlockTransport
+        (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
+      (GaugeLattice.{uG} 2) ((S2DepthTwo h2 hq).fld 2) L
+      ((s2Frontier h2 hq L w).toCarrier.normalizer.arenaNormSection0.transport
+        (gaugeLatticeEquiv 2).symm)
+      (gaugeHeightFamily (s2Frontier h2 hq L w).s2RealizedInput)
+      (canonicalResFamily (s2Frontier h2 hq L w).s2RealizedInput)
+      (useHeightFamily (s2Frontier h2 hq L w).s2RealizedInput) 4 :=
+  s2Frontier_ladder_socket h2 hq L w
+
+-- (17) **[A-I.3] NON-VACUITY of the typed I.10b socket at the same instance**, depth binder
+-- pinned to the witness's own `r = 2` (the A-I.2(b) rule, machine-real via the joint witness's
+-- `core.r = r` conjunct) — `C130sg.s2Frontier_deepTwist_socket`, same exact conditionality.
+example {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    [Finite (IsLocalRing.ResidueField O)]
+    (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
+    (L : Type uL) [Field L] [Algebra ((S2DepthTwo h2 hq).fld 2) L]
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] (w : S2LevelOneThreshold) :
+    CanonicalDeepTwistConfig
+      ((s2Frontier h2 hq L w).s2RealizedInput.stageCarrierTransport
+        (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
+      ((s2Frontier h2 hq L w).s2RealizedInput.inputBlockTransport
+        (RingEquiv.refl ((S2DepthTwo h2 hq).fld 2)))
+      (GaugeLattice.{uG} 2) ((S2DepthTwo h2 hq).fld 2) L
+      ((s2Frontier h2 hq L w).toCarrier.normalizer.arenaNormSection0.transport
+        (gaugeLatticeEquiv 2).symm)
+      (gaugeHeightFamily (s2Frontier h2 hq L w).s2RealizedInput)
+      (canonicalResFamily (s2Frontier h2 hq L w).s2RealizedInput)
+      (useHeightFamily (s2Frontier h2 hq L w).s2RealizedInput)
+      (arenaFamily (s2Frontier h2 hq L w).s2RealizedInput Nat.one_lt_two)
+      (towerReadFamily (s2Frontier h2 hq L w).s2RealizedInput)
+      (s2Frontier h2 hq L w).toCarrier.node.peelUnitFamily 2 4 :=
+  s2Frontier_deepTwist_socket h2 hq L w
+
+end AThreeTeeth
 
 end GateFour
 
@@ -1443,9 +1622,16 @@ it; and no report makes a positive conditional claim from I.17.
 file must reach the E-side carriers (the D63 → D55 branch); machine-checked at the 0e gate. One
 uncommenting restores the standing gate the moment I-D1 is cured; (ii) I-D1's `leanfinal` cure,
 then the ChapE/ChapF roll-up repairs of I-D2, then this file's import block reverts to the
-one-line `import Uniformity` every other chapter uses; (iii) **chapter C types I.10a/I.10b**
+one-line `import Uniformity` every other chapter uses; (iii) ~~**chapter C types I.10a/I.10b**
 (the GC-13/GC-14 pass that typed E.61/E.62), under A-I.1's NON-SWALLOWING fence — this is the
-item that repairs I-D13; (iv) the weld site-supply socket, then L-1/L-2 bind `jd0`,
+item that repairs I-D13~~ **DONE AT AMENDMENT A-I.3 (2026-08-26)**: chapter C's packaging
+enactment (PK-1..6, `runs/wave-b/verdict_PK12.md`) landed the bodies as
+`C130s18.CanonicalLadderConfigData`/`CanonicalDeepTwistConfigData`, and A-I.3 re-signs the two
+socket bodies at exactly those carriers (ambient universe pinned to `0`; fence checked against
+C130s18's mechanized non-swallowing audit; gate items (10)/(11) struck/retired, (15)–(17)
+added; the I-D13 refutation route is CLOSED — the block is OPEN, not claimed inhabited; the
+narrowing is the gate-(a) event A-I.1 pre-flagged, re-flagged in
+`docs/REVIEW_QUEUE_2026-08-26.md`'s amendment table); (iv) the weld site-supply socket, then L-1/L-2 bind `jd0`,
 `genhnBox2` and `w1`; (v) the gate-(b) signatures for the C.66/C.94 REDRAFTS, after which their
 consumers move from `#axiom_core` to `#axiom_reg`; (vi) the owner's read of A-I.1's field-list
 change (gate (a)); (vii) as chapter I lands in `leanfinal`, retire each stub to the
