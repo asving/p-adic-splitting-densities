@@ -110,22 +110,37 @@ supply hypotheses (depth-`r` B-1), exactly the A-C.14 cascade design. -/
 private theorem ratio_power_law {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower.{0, uKt} F H₀ hpin r) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
     (hf' : 0 < f')
-    (hprev : I.PrevGrade u')
-    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm r (d * u')))
+    (hprev : 2 ≤ f' → I.PrevGrade u')
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNormBelow r (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
-      (I.chainNorm r (d * u')).natDegree < (I.keyAt r).natDegree)
-    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNorm r (d * u') ≠ 0)
+      (I.chainNormBelow r (d * u')).natDegree < (I.keyAt r).natDegree)
+    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNormBelow r (d * u') ≠ 0)
     {t : ℕ} (ht : t < f') :
-    I.Rgr ((f' - t) * u') (I.chainNorm r ((f' - t) * u')) * I.thetaRatio (f' - t)
-      = (I.Rgr u' (I.chainNorm r u')) ^ (f' - t) := by
+    I.Rgr ((f' - t) * u') (I.chainNormBelow r ((f' - t) * u')) * I.thetaRatio (f' - t)
+      = (I.Rgr u' (I.chainNormBelow r u')) ^ (f' - t) := by
+  by_cases hf1 : f' = 1
+  · subst f'
+    have ht0 : t = 0 := by omega
+    subst t
+    have hgrade : I.ExactGrade u' (I.chainNormBelow r u') := by
+      simpa using hnorm 1 one_pos le_rfl
+    have hdeg : (I.chainNormBelow r u').natDegree < (I.keyAt r).natDegree := by
+      simpa using hnormdeg 1 one_pos le_rfl
+    have hnz : I.chainNormBelow r u' ≠ 0 := by
+      simpa using hnormz 1 one_pos le_rfl
+    have ha : I.Rgr u' (I.chainNormBelow r u') ≠ 0 :=
+      I.Rgr_ne_zero u' _ hgrade hdeg hnz
+    simp [FGMNCalculus.thetaRatio, ha]
+  have hf2 : 2 ≤ f' := by omega
   set d := f' - t with hd
   have hd0 : 0 < d := Nat.sub_pos_of_lt ht
   have hdf : d ≤ f' := Nat.sub_le f' t
-  have h1 : I.ExactGrade (1 * u') (I.chainNorm r (1 * u')) := hnorm 1 one_pos hf'
-  have hbase : I.ExactGrade u' (I.chainNorm r u') := by simpa using h1
+  have h1 : I.ExactGrade (1 * u') (I.chainNormBelow r (1 * u')) := hnorm 1 one_pos hf'
+  have hbase : I.ExactGrade u' (I.chainNormBelow r u') := by simpa using h1
   have hpow : ∀ k : ℕ, 0 < k →
-      I.ExactGrade (k * u') ((I.chainNorm r u') ^ k) ∧
-      I.Rgr (k * u') ((I.chainNorm r u') ^ k) = (I.Rgr u' (I.chainNorm r u')) ^ k := by
+      I.ExactGrade (k * u') ((I.chainNormBelow r u') ^ k) ∧
+      I.Rgr (k * u') ((I.chainNormBelow r u') ^ k) =
+        (I.Rgr u' (I.chainNormBelow r u')) ^ k := by
     intro k hk
     induction k with
     | zero => exact absurd hk (lt_irrefl 0)
@@ -134,28 +149,31 @@ private theorem ratio_power_law {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H
       · subst hn
         refine ⟨by simpa using hbase, by simp⟩
       · obtain ⟨ihg, ihr⟩ := ih hn
-        have hmul := I.Rgr_mul (n * u') u' ((I.chainNorm r u') ^ n) (I.chainNorm r u')
-          ihg hbase hprev
+        have hmul := I.Rgr_mul (n * u') u' ((I.chainNormBelow r u') ^ n)
+          (I.chainNormBelow r u') ihg hbase (hprev hf2)
         constructor
-        · have : I.ExactGrade (n * u' + u') ((I.chainNorm r u') ^ n * I.chainNorm r u') :=
-            hmul.1
+        · have : I.ExactGrade (n * u' + u')
+              ((I.chainNormBelow r u') ^ n * I.chainNormBelow r u') := hmul.1
           simpa [pow_succ, Nat.succ_mul] using this
-        · have : I.Rgr (n * u' + u') ((I.chainNorm r u') ^ n * I.chainNorm r u')
-              = I.Rgr (n * u') ((I.chainNorm r u') ^ n) * I.Rgr u' (I.chainNorm r u') :=
-            hmul.2
-          calc I.Rgr ((n + 1) * u') ((I.chainNorm r u') ^ (n + 1))
-              = I.Rgr (n * u' + u') ((I.chainNorm r u') ^ n * I.chainNorm r u') := by
+        · have : I.Rgr (n * u' + u')
+              ((I.chainNormBelow r u') ^ n * I.chainNormBelow r u') =
+              I.Rgr (n * u') ((I.chainNormBelow r u') ^ n) *
+                I.Rgr u' (I.chainNormBelow r u') := hmul.2
+          calc I.Rgr ((n + 1) * u') ((I.chainNormBelow r u') ^ (n + 1))
+              = I.Rgr (n * u' + u')
+                  ((I.chainNormBelow r u') ^ n * I.chainNormBelow r u') := by
                 rw [pow_succ, Nat.succ_mul]
-            _ = I.Rgr (n * u') ((I.chainNorm r u') ^ n) * I.Rgr u' (I.chainNorm r u') :=
-                this
-            _ = (I.Rgr u' (I.chainNorm r u')) ^ n * I.Rgr u' (I.chainNorm r u') := by
+            _ = I.Rgr (n * u') ((I.chainNormBelow r u') ^ n) *
+                  I.Rgr u' (I.chainNormBelow r u') := this
+            _ = (I.Rgr u' (I.chainNormBelow r u')) ^ n *
+                  I.Rgr u' (I.chainNormBelow r u') := by
                 rw [ihr]
-            _ = (I.Rgr u' (I.chainNorm r u')) ^ (n + 1) := by rw [pow_succ]
-  have hane : I.Rgr (d * u') (I.chainNorm r (d * u')) ≠ 0 :=
-    I.Rgr_ne_zero (d * u') (I.chainNorm r (d * u')) (hnorm d hd0 hdf)
+            _ = (I.Rgr u' (I.chainNormBelow r u')) ^ (n + 1) := by rw [pow_succ]
+  have hane : I.Rgr (d * u') (I.chainNormBelow r (d * u')) ≠ 0 :=
+    I.Rgr_ne_zero (d * u') (I.chainNormBelow r (d * u')) (hnorm d hd0 hdf)
       (hnormdeg d hd0 hdf) (hnormz d hd0 hdf)
   unfold FGMNCalculus.thetaRatio
-  rw [mul_comm (I.Rgr (d * u') ((I.chainNorm r u') ^ d)) _, ← mul_assoc,
+  rw [mul_comm (I.Rgr (d * u') ((I.chainNormBelow r u') ^ d)) _, ← mul_assoc,
     mul_inv_cancel₀ hane, one_mul]
   exact (hpow d hd0).2
 
@@ -169,14 +187,14 @@ theorem gentow5w_two {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (W : DeepTower.{0, uKt} F H₀ hpin 2) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
     (hfloor : e' * W.Econst 2 < u')
-    (hprev : I.PrevGrade u')
-    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm 2 (d * u')))
+    (hprev : 2 ≤ f' → I.PrevGrade u')
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNormBelow 2 (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
-      (I.chainNorm 2 (d * u')).natDegree < (I.keyAt 2).natDegree)
-    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNorm 2 (d * u') ≠ 0) :
+      (I.chainNormBelow 2 (d * u')).natDegree < (I.keyAt 2).natDegree)
+    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNormBelow 2 (d * u') ≠ 0) :
     GENTOW5W W e' f' u' I := by
-  refine ⟨I.Rgr u' (I.chainNorm 2 u'), ?_, fun t ht => ?_⟩
-  · have h := I.Rgr_ne_zero (1 * u') (I.chainNorm 2 (1 * u'))
+  refine ⟨I.Rgr u' (I.chainNormBelow 2 u'), ?_, fun t ht => ?_⟩
+  · have h := I.Rgr_ne_zero (1 * u') (I.chainNormBelow 2 (1 * u'))
       (hnorm 1 one_pos hf') (hnormdeg 1 one_pos hf') (hnormz 1 one_pos hf')
     simpa using h
   · exact C99r.gentow2_Bpp W e' f' u' (I := I) rfl he' hf' hcop hfloor hprev
@@ -197,16 +215,16 @@ theorem gentow5w_one_shape_of_letter_tie {F : KeyFrame O π} {H₀ : ℕ} {hpin 
     (W : DeepTower.{0, uKt} F H₀ hpin 1) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
     (hfloor : e' * W.Econst 1 < u')
-    (hprev : I.PrevGrade u')
-    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm 1 (d * u')))
+    (hprev : 2 ≤ f' → I.PrevGrade u')
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNormBelow 1 (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
-      (I.chainNorm 1 (d * u')).natDegree < (I.keyAt 1).natDegree)
-    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNorm 1 (d * u') ≠ 0)
+      (I.chainNormBelow 1 (d * u')).natDegree < (I.keyAt 1).natDegree)
+    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNormBelow 1 (d * u') ≠ 0)
     -- the OPEN-LETTERS tie, carried explicitly (NOT in the leanspec signature; the audited
     -- gap `OPEN-LETTERS`/`OPEN-EVAL-ISO`, verdict_GTB.md C.102 row):
-    (htie : ∃ k : ℕ, I.Rgr u' (I.chainNorm 1 u') = I.letterZ 1 ^ k) :
+    (htie : ∃ k : ℕ, I.Rgr u' (I.chainNormBelow 1 u') = I.letterZ 1 ^ k) :
     ∃ k : ℕ, ∀ t, t < f' →
-      I.Rgr ((f' - t) * u') (I.chainNorm 1 ((f' - t) * u')) * I.thetaRatio (f' - t)
+      I.Rgr ((f' - t) * u') (I.chainNormBelow 1 ((f' - t) * u')) * I.thetaRatio (f' - t)
         = (I.letterZ 1 ^ k) ^ (f' - t) := by
   obtain ⟨k, hk⟩ := htie
   refine ⟨k, fun t ht => ?_⟩
@@ -289,7 +307,7 @@ theorem gentow5_key_certificate {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H
     (hres : (I r le_rfl).Rres Φnext
       = Polynomial.X ^ f' - ∑ t ∈ Finset.range f',
           Polynomial.C ((I r le_rfl).Rgr ((f' - t) * u')
-              ((I r le_rfl).chainNorm r ((f' - t) * u'))
+              ((I r le_rfl).chainNormBelow r ((f' - t) * u'))
             * (I r le_rfl).thetaRatio (f' - t) * c t) * Polynomial.X ^ t)
     (hadm : Irreducible ((I r le_rfl).Rres Φnext) ∧
       ((I r le_rfl).Rres Φnext).natDegree = f' ∧

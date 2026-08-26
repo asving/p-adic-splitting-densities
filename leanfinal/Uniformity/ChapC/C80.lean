@@ -666,8 +666,8 @@ theorem blockContext_f₅ : BlockContext ((s2Tower h2 hq).levelDatum h2) (f₅ O
 
 include h2 hq in
 theorem blockFactor_f₅ :
-    blockFactor ((s2Tower h2 hq).levelDatum h2) (f₅ O) = f₅ O :=
-  blockFactor_eq_of_frontier ((s2Tower h2 hq).levelDatum h2) (hasLabel_f₅ h2 hq) dvd_rfl
+    blockFactorLeaky ((s2Tower h2 hq).levelDatum h2) (f₅ O) = f₅ O :=
+  blockFactorLeaky_eq_of_frontier ((s2Tower h2 hq).levelDatum h2) (hasLabel_f₅ h2 hq) dvd_rfl
     (fun _ _ h => h)
 
 include h2 hq in
@@ -680,8 +680,8 @@ theorem keyDeg₂_s2Tower : ((s2Tower h2 hq).levelDatum h2).keyDeg₂ = 4 := by
 
 include h2 hq in
 /-- ★ **the FLOOR conjunct survives at the probe**: `mult₂ = ⌊5/4⌋ = 1`. -/
-theorem mult₂_f₅ : mult₂ ((s2Tower h2 hq).levelDatum h2) (f₅ O) = 1 := by
-  rw [mult₂, blockFactor_f₅ h2 hq, f₅_natDegree, keyDeg₂_s2Tower h2 hq]
+theorem mult₂_f₅ : mult₂Leaky ((s2Tower h2 hq).levelDatum h2) (f₅ O) = 1 := by
+  rw [mult₂Leaky, blockFactor_f₅ h2 hq, f₅_natDegree, keyDeg₂_s2Tower h2 hq]
 
 end Uniformity.Density.Tower.C80
 
@@ -707,8 +707,8 @@ def TiePurePowerStatement : Prop :=
       ∃ c : F.stageField H₀ hpin, c ≠ 0 ∧
         dvResPoly F H₀ hpin f T.u₂ T.e₂ hne M₀ hp
           = Polynomial.C c * (towerLabel T) ^ μ₂),
-    mult₂ (T.levelDatum hπ) f = μ₂ ∧
-    (blockFactor (T.levelDatum hπ) f).natDegree = T.D₂ * μ₂
+    mult₂Leaky (T.levelDatum hπ) f = μ₂ ∧
+    (blockFactorLeaky (T.levelDatum hπ) f).natDegree = T.D₂ * μ₂
 
 /-- The signed C.77 `partial_projection`, closed over everything. -/
 def PartialProjectionStatement : Prop :=
@@ -721,7 +721,8 @@ def PartialProjectionStatement : Prop :=
     (f : Polynomial O) (_hctx : BlockContext (T.levelDatum hπ) f),
     (dev (composedKey T) f (f.natDegree / T.D₂)).Monic ∧
     ((T.D₂ ∣ f.natDegree) → dev (composedKey T) f (f.natDegree / T.D₂) = 1) ∧
-    (blockFactor (T.levelDatum hπ) f).natDegree = T.D₂ * mult₂ (T.levelDatum hπ) f
+    (blockFactorLeaky (T.levelDatum hπ) f).natDegree =
+      T.D₂ * mult₂Leaky (T.levelDatum hπ) f
 
 private theorem hres_f₅ :
     ∀ (hne : (dvSideSet (s2Frame h2_padic rc2) (f₅ ℤ_[2])
@@ -789,4 +790,3 @@ section AxCheck
 #print axioms Uniformity.Density.Tower.C80.partialProjection_false
 
 end AxCheck
-

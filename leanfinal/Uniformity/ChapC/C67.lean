@@ -80,13 +80,13 @@ def MultiplicityTieStatement : Prop :=
       (hp : dvHgt F f (dvSideMin F f L.u L.ℓ hne) = (M₀ : ℕ∞)),
       L.r ^ m ∣ dvResPoly F H₀ hpin f L.u L.ℓ hne M₀ hp ∧
       ¬ L.r ^ (m + 1) ∣ dvResPoly F H₀ hpin f L.u L.ℓ hne M₀ hp),
-    (blockFactor L f).natDegree = (F.e₁ * F.f₁) * L.ℓ * (L.r.natDegree * m) ∧
-    mult₂ L f = m ∧
-    IsDvPure F (blockFactor L f) L.u L.ℓ ∧
-    ∀ (hne : (dvSideSet F (blockFactor L f) L.u L.ℓ).Nonempty) (M₀ : ℕ)
-      (hp : dvHgt F (blockFactor L f)
-        (dvSideMin F (blockFactor L f) L.u L.ℓ hne) = (M₀ : ℕ∞)),
-      dvResPoly F H₀ hpin (blockFactor L f) L.u L.ℓ hne M₀ hp = L.r ^ m
+    (blockFactorLeaky L f).natDegree = (F.e₁ * F.f₁) * L.ℓ * (L.r.natDegree * m) ∧
+    mult₂Leaky L f = m ∧
+    IsDvPure F (blockFactorLeaky L f) L.u L.ℓ ∧
+    ∀ (hne : (dvSideSet F (blockFactorLeaky L f) L.u L.ℓ).Nonempty) (M₀ : ℕ)
+      (hp : dvHgt F (blockFactorLeaky L f)
+        (dvSideMin F (blockFactorLeaky L f) L.u L.ℓ hne) = (M₀ : ℕ∞)),
+      dvResPoly F H₀ hpin (blockFactorLeaky L f) L.u L.ℓ hne M₀ hp = L.r ^ m
 
 /-! ## 1. `Squarefree g₀` — the missing `BlockContext` leg, landed -/
 
@@ -240,18 +240,19 @@ theorem blockContext_g₀ : BlockContext (L₀ h2 hq) (g₀ O) :=
 /-- **`blockFactor L₀ g₀ = g₀`** — `g₀` inhabits the maximality existential (labelled,
 divides itself, and every labelled divisor of `g₀` divides `g₀` trivially), so C.35's
 uniqueness pins the choice. -/
-theorem blockFactor_g₀ : blockFactor (L₀ h2 hq) (g₀ O) = g₀ O :=
-  blockFactor_eq_of_frontier (L₀ h2 hq) (hasLabel_g₀ h2 hq) dvd_rfl (fun _ _ h' => h')
+theorem blockFactor_g₀ : blockFactorLeaky (L₀ h2 hq) (g₀ O) = g₀ O :=
+  blockFactorLeaky_eq_of_frontier (L₀ h2 hq) (hasLabel_g₀ h2 hq) dvd_rfl
+    (fun _ _ h' => h')
 
 /-- ★ **the FLOOR conjunct of C.67 is TRUE at the probe**: `mult₂ L₀ g₀ = ⌊3/2⌋ = 1`.
 The refutation below kills the EXACT-degree conjunct at the SAME instance — the D-CARRY
 fault line in one display. -/
-theorem mult₂_g₀ : mult₂ (L₀ h2 hq) (g₀ O) = 1 := by
+theorem mult₂_g₀ : mult₂Leaky (L₀ h2 hq) (g₀ O) = 1 := by
   have hkd : (L₀ h2 hq).keyDeg₂ = 2 := by
     rw [LevelDatum.keyDeg₂, e1_eq h2 hq, f1_eq h2 hq,
       show (L₀ h2 hq).ℓ = 1 from rfl,
       show (L₀ h2 hq).r = ρ h2 hq from rfl, ρ_natDegree h2 hq]
-  rw [mult₂, blockFactor_g₀ h2 hq, g₀_natDegree, hkd]
+  rw [mult₂Leaky, blockFactor_g₀ h2 hq, g₀_natDegree, hkd]
 
 /-- **the multiplicity hypothesis of C.67 HOLDS at `m = 1`**: the level residual of `g₀` is
 `ρ` itself, so `ρ¹ ∣ ρ` on the nose and `¬ ρ² ∣ ρ` by degrees. -/

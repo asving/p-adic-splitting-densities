@@ -185,13 +185,23 @@ noncomputable def FGMNCalculus.chainNorm {F : KeyFrame O π} {H₀ : ℕ} {hpin 
   Polynomial.C (π ^ (W.towerNorm i k).1) * Polynomial.X ^ (W.towerNorm i k).2.1
     * ∏ j : Fin i, (I.keyAt (j.1 + 1)) ^ ((W.towerNorm i k).2.2 j)
 
+/- [A-C.18, 2026-08-26] DEC3R's source-index print-read: at repo depth `r > 0`, the
+GENTOW normalizer below the current key is `towerNorm (r - 1)`, with the existing index-zero
+normalizer as the total depth-zero base.  `DEC3_probe.lean` computes the depth-two tooth as
+`16 * keyAt 1`, degree `2 < 4`; the old `chainNorm 2 21 = keyAt 2` fails strictly. -/
+noncomputable def FGMNCalculus.chainNormBelow {F : KeyFrame O π} {H₀ : ℕ}
+    {hpin : F.Pin H₀} {r : ℕ} {W : DeepTower.{0, uKt} F H₀ hpin r} {e' f' u' : ℕ}
+    (I : FGMNCalculus W e' f' u') (i k : ℕ) : Polynomial O :=
+  I.chainNorm (i - 1) k
+
 /-- the normalizer-RATIO `ϑ`-carrier (GC-14's ratio form; no orientation committed):
 `res(n̂(u')^t / n̂(t·u'))` read through the interface at grade `t·u'`.  (Leanspec
 `FGMNCalculus.thetaRatio`, byte-faithful.) -/
 noncomputable def FGMNCalculus.thetaRatio {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     {r : ℕ} {W : DeepTower.{0, uKt} F H₀ hpin r} {e' f' u' : ℕ}
     (I : FGMNCalculus W e' f' u') (t : ℕ) : W.fld r :=
-  I.Rgr (t * u') ((I.chainNorm r u') ^ t) * (I.Rgr (t * u') (I.chainNorm r (t * u')))⁻¹
+  I.Rgr (t * u') ((I.chainNormBelow r u') ^ t) *
+    (I.Rgr (t * u') (I.chainNormBelow r (t * u')))⁻¹
 
 /-! ## The packaging map (design §7, FACTORED at [PK-2/U15, 2026-08-25]):
 `FGMNSourceData + FGMNSourceLaws + KeyChain → FGMNCalculus`, no new axiom
@@ -310,6 +320,7 @@ section AxCheck
 
 #print axioms Uniformity.Density.Tower.FGMNCalculus
 #print axioms Uniformity.Density.Tower.FGMNCalculus.chainNorm
+#print axioms Uniformity.Density.Tower.FGMNCalculus.chainNormBelow
 #print axioms Uniformity.Density.Tower.FGMNCalculus.thetaRatio
 #print axioms Uniformity.Density.Tower.fgmnCalculusOf
 #print axioms Uniformity.Density.Tower.fgmn_model_calculus_nonempty

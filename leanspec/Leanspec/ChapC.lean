@@ -1554,17 +1554,24 @@ axiom dvDissection_unique (F : KeyFrame O π) (hπ : Irreducible π)
 [signed: A-C.1]. The general coprime-prime-power refinement is the fleet's proof content
 (B.48's route); the PUBLIC statement is the consumed block form, with uniqueness. -/
 
+-- [RE-SIGNED: A-C.20, 2026-08-26 — MHENS/HENSEL_ENGINE §7, repair R1] `HasLabel`
+-- alone is leaky on the defective stratum `D′ ∤ deg`: the certified ℤ₂ example
+-- `g = fS * (X + 1)` admits two labelled splits and refutes the old uniqueness clause.
+-- Pin every load-bearing labelled block to the classical HE7-6 degree stratum
+-- `(F.e₁ * F.f₁) ∣ natDegree`; the eight `_of_frontier` conclusions are unchanged.
 axiom exists_dv_residual_dissection {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {g : Polynomial O} (hg : g.Monic) (hpure : IsDvPure F g L.u L.ℓ)
     (hne : (dvSideSet F g L.u L.ℓ).Nonempty) {M₀ : ℕ}
     (hp : dvHgt F g (dvSideMin F g L.u L.ℓ hne) = (M₀ : ℕ∞))
     (hdvd : L.r ∣ dvResPoly F H₀ hpin g L.u L.ℓ hne M₀ hp) :
-    ∃ fS g' : Polynomial O, g = fS * g' ∧ HasLabel L fS ∧ g'.Monic ∧
+    ∃ fS g' : Polynomial O, g = fS * g' ∧
+      (HasLabel L fS ∧ (F.e₁ * F.f₁) ∣ fS.natDegree) ∧ g'.Monic ∧
       (∀ (hne' : (dvSideSet F g' L.u L.ℓ).Nonempty) (M₀' : ℕ)
         (hp' : dvHgt F g' (dvSideMin F g' L.u L.ℓ hne') = (M₀' : ℕ∞)),
         ¬ L.r ∣ dvResPoly F H₀ hpin g' L.u L.ℓ hne' M₀' hp') ∧
-      ∀ fS' g'' : Polynomial O, g = fS' * g'' → HasLabel L fS' → g''.Monic →
+      ∀ fS' g'' : Polynomial O, g = fS' * g'' →
+        (HasLabel L fS' ∧ (F.e₁ * F.f₁) ∣ fS'.natDegree) → g''.Monic →
         (∀ (hne' : (dvSideSet F g'' L.u L.ℓ).Nonempty) (M₀' : ℕ)
           (hp' : dvHgt F g'' (dvSideMin F g'' L.u L.ℓ hne') = (M₀' : ℕ∞)),
           ¬ L.r ∣ dvResPoly F H₀ hpin g'' L.u L.ℓ hne' M₀' hp') →
@@ -1582,14 +1589,16 @@ def BlockContext {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     0 < dvSideDeg F f L.u L.ℓ hne ∧
     L.r ∣ dvResPoly F H₀ hpin f L.u L.ℓ hne M₀ hp
 
-/-- `blockFactor L f` — the block `f_S`, as the MAXIMAL `(λ, r)`-labelled monic divisor of
-`f` (total: choice; junk `1` when none — C.34's uniqueness makes the maximal divisor THE
-block under `hctx`). -/
+/-- [A-C.20, 2026-08-26] `blockFactor L f` — the block `f_S`, as the MAXIMAL
+degree-pinned `(λ, r)`-labelled monic divisor of `f` (total: choice; junk `1` when none —
+C.34's amended uniqueness makes the maximal pinned divisor THE block under `hctx`). -/
 noncomputable def blockFactor {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (f : Polynomial O) : Polynomial O :=
   open Classical in
-  if h : ∃ fS : Polynomial O, HasLabel L fS ∧ fS ∣ f ∧
-      ∀ fS' : Polynomial O, HasLabel L fS' → fS' ∣ f → fS' ∣ fS
+  if h : ∃ fS : Polynomial O,
+      (HasLabel L fS ∧ (F.e₁ * F.f₁) ∣ fS.natDegree) ∧ fS ∣ f ∧
+      ∀ fS' : Polynomial O,
+        (HasLabel L fS' ∧ (F.e₁ * F.f₁) ∣ fS'.natDegree) → fS' ∣ f → fS' ∣ fS
   then h.choose else 1
 
 /-- `μ₂ = deg f_S / D″` (`EFF.HE6R1.12`). -/
@@ -2460,12 +2469,25 @@ noncomputable def FGMNCalculus.chainNorm {F : KeyFrame O π} {H₀ : ℕ} {hpin 
   Polynomial.C (π ^ (W.towerNorm i k).1) * Polynomial.X ^ (W.towerNorm i k).2.1
     * ∏ j : Fin i, (I.keyAt (j.1 + 1)) ^ ((W.towerNorm i k).2.2 j)
 
+-- [RE-SIGNED: A-C.18, 2026-08-26 — DEC3R/MU3_CAMPAIGN §4] the source's `n̂₂` at
+-- repo depth 2 is `towerNorm 1`, not `towerNorm 2`: the latter is the current key itself at
+-- the μ₃ target (`chainNorm 2 21 = keyAt 2`) and falsifies the strict B-1 degree premise.
+-- `leanfinal/scratch/DEC3_probe.lean` computes the corrected tooth
+-- `chainNormBelow 2 21 = 16 * keyAt 1`, of degree `2 < 4`.  The subtraction totalizes the
+-- otherwise unused depth-zero base as the already-defined index-zero normalizer; every signed
+-- consumer below is live at positive depth.
+noncomputable def FGMNCalculus.chainNormBelow {F : KeyFrame O π} {H₀ : ℕ}
+    {hpin : F.Pin H₀} {r : ℕ} {W : DeepTower F H₀ hpin r} {e' f' u' : ℕ}
+    (I : FGMNCalculus W e' f' u') (i k : ℕ) : Polynomial O :=
+  I.chainNorm (i - 1) k
+
 /-- the normalizer-RATIO `ϑ`-carrier (GC-14's ratio form; no orientation committed):
 `res(n̂(u')^t / n̂(t·u'))` read through the interface at grade `t·u'`. -/
 noncomputable def FGMNCalculus.thetaRatio {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     {r : ℕ} {W : DeepTower F H₀ hpin r} {e' f' u' : ℕ}
     (I : FGMNCalculus W e' f' u') (t : ℕ) : W.fld r :=
-  I.Rgr (t * u') ((I.chainNorm r u') ^ t) * (I.Rgr (t * u') (I.chainNorm r (t * u')))⁻¹
+  I.Rgr (t * u') ((I.chainNormBelow r u') ^ t) *
+    (I.Rgr (t * u') (I.chainNormBelow r (t * u')))⁻¹
 
 /-- the depth-3 recipe key (the R3-3-completed display; stub-side shared abbreviation for
 C.101/C.103). -/
@@ -2492,14 +2514,12 @@ axiom gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
                    -- unfenced general-r signing would silently assert the open law.
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
     (hfloor : e' * W.Econst r < u')
-    -- [A-C.13, 2026-08-25] the restored Cor 4.12(2) scope premise at the iterated grade:
-    -- the power-law induction multiplies by a second factor of grade `u'` at every step, so
-    -- the restored `Rgr_mul` needs `PrevGrade u'`.  Carried EXPLICITLY as supply (the
-    -- A-C.12 pattern): under the GENTOW2 consumer clearing `β̂ = e(μ₂)β` (U9 §5) every
-    -- ℕ-cleared grade lies in the preceding group, so the intended instance discharges it;
-    -- abstractly it cannot be derived from the other hypotheses (U14 §6: coprimality puts
-    -- `u'` OUTSIDE the preceding group under the full-current-group clearing).
-    (hprev : I.PrevGrade u')
+    -- [RE-SIGNED: A-C.17, 2026-08-26 — DEC3R/MU3_CAMPAIGN §3] fence the restored
+    -- Cor 4.12(2) premise to the induction range that actually consumes it.  At the honest
+    -- μ₃ target `f' = 1, u' = 21`, `PrevGrade 21` is false while the conclusion is the
+    -- cancellation-only base identity; `leanfinal/scratch/DEC3_probe.lean`
+    -- `ratio_power_one` machine-proves that literal base case without graded multiplication.
+    (hprev : 2 ≤ f' → I.PrevGrade u')
     -- [A-C.12, 2026-08-24 RE-SIGN — GSW] the source-stated B-1 normalizer supply
     -- (GENTOW2_PROOF S5.2 proof, ll.740–744: "N := n̂₂(u₃), M := n̂₂(u₃d): ladder
     -- monomials, deg < m₃, single-point N₃-polygon, exact grades κ̄ resp. β_t (B-1)"):
@@ -2508,13 +2528,13 @@ axiom gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     -- `gentow2_Bpp_resigned_provable` (Lean-core, from the A-C.11 class fields alone;
     -- [A-C.13]: certificate predates the restored premise — superseded by the landed
     -- leanfinal proof in `Uniformity/ChapC/C99r.lean`, which consumes `hprev`).
-    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm r (d * u')))
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNormBelow r (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
-      (I.chainNorm r (d * u')).natDegree < (I.keyAt r).natDegree)
-    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNorm r (d * u') ≠ 0)
+      (I.chainNormBelow r (d * u')).natDegree < (I.keyAt r).natDegree)
+    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNormBelow r (d * u') ≠ 0)
     {t : ℕ} (ht : t < f') :
-    I.Rgr ((f' - t) * u') (I.chainNorm r ((f' - t) * u')) * I.thetaRatio (f' - t)
-      = (I.Rgr u' (I.chainNorm r u')) ^ (f' - t)
+    I.Rgr ((f' - t) * u') (I.chainNormBelow r ((f' - t) * u')) * I.thetaRatio (f' - t)
+      = (I.Rgr u' (I.chainNormBelow r u')) ^ (f' - t)
 
 axiom theta_letter_valued {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
@@ -2523,10 +2543,10 @@ axiom theta_letter_valued {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {
     (hfloor : e' * W.Econst r < u')
     -- [A-C.12 RE-SIGN — GSW] the same B-1 normalizer supply as gentow2_Bpp (the first
     -- conjunct is its d = 1 cancellation; the letter clause reads the same monomials).
-    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm r (d * u')))
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNormBelow r (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
-      (I.chainNorm r (d * u')).natDegree < (I.keyAt r).natDegree)
-    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNorm r (d * u') ≠ 0) :
+      (I.chainNormBelow r (d * u')).natDegree < (I.keyAt r).natDegree)
+    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNormBelow r (d * u') ≠ 0) :
     I.thetaRatio 1 = 1 ∧
     -- [A-C.12 RE-SIGN — GSW] exponents ℤ, not ℕ: the γ-calculus produces
     -- "grade-determined INTEGERS j, k" (S5.2), negative at the LP1 pin
@@ -2549,7 +2569,7 @@ axiom gentow2_Bp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     -- divisibility, which is not FGMN's `∣_μ` (Prop 1.7(2)) — never an admissible substitute.
     (hdeg : g.natDegree < T.D₂) :
     I.Rgr β g
-      = I.Rgr β (I.chainNorm 2 β)
+      = I.Rgr β (I.chainNormBelow 2 β)
         * ρ.symm ((towerLabelEquiv T hπ) (repoRead (T.levelDatum hπ) g))
 
 axiom gentow2_Bp_unit_iff {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
@@ -2562,7 +2582,7 @@ axiom gentow2_Bp_unit_iff {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (hdeg : g.natDegree < T.D₂)
     (hne0 : repoRead (T.levelDatum hπ) g ≠ 0) :
     I.Rgr β g = ρ.symm ((towerLabelEquiv T hπ) (repoRead (T.levelDatum hπ) g))
-      ↔ I.Rgr β (I.chainNorm 2 β) = 1
+      ↔ I.Rgr β (I.chainNormBelow 2 β) = 1
 
 /-! ### NODE C.101 [theorem] — `LEMMA GENTOW2-B` (r3 RESTATED): the B-law and the
 multiplicative prescription [signed: A-C.1; `κ₃ > e₂f₂u₂` an EXPLICIT hypothesis, supplied
@@ -2590,12 +2610,12 @@ axiom gentow2_B {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     -- C.100 + the k2DigitLift read companion land):
     (hunit : ∀ t, t < f' →
       I.Rgr ((f' - t) * u') (k2DigitLift T (c t) ((f' - t) * u'))
-        = I.Rgr ((f' - t) * u') (I.chainNorm 2 ((f' - t) * u'))
+        = I.Rgr ((f' - t) * u') (I.chainNormBelow 2 ((f' - t) * u'))
           * ρ.symm ((towerLabelEquiv T hπ) (c t))) :
     I.Rres (recipe3 T e' f' u' c)
       = Polynomial.X ^ f'
         - ∑ t ∈ Finset.range f',
-            Polynomial.C (I.Rgr ((f' - t) * u') (I.chainNorm 2 ((f' - t) * u'))
+            Polynomial.C (I.Rgr ((f' - t) * u') (I.chainNormBelow 2 ((f' - t) * u'))
               * ρ.symm ((towerLabelEquiv T hπ) (c t))) * Polynomial.X ^ t
 
 /-! ### NODE C.102 [theorem] — the letter formula [signed: A-C.1; ⚠ DETERMINATION FLAGGED
@@ -3483,6 +3503,12 @@ axiom shadow_persistence {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
     [Finite (ResidueField O)] {μ₂ j : ℕ} (hj : j < μ₂) (hc : TouchCert T hπ μ₂ j)
     {g : Polynomial O}
+    -- [RE-SIGNED: A-C.19, 2026-08-26 — MBRIDGE/RB3_BRIDGE_PROOF §1] the old budget
+    -- quantifier sees only digits `j' < μ₂`, so `g = (composedKey T)^μ₂` satisfied it
+    -- vacuously while `TouchCert` forced the contradictory exact height `theta μ₂ j`.
+    -- This intended tower-locus degree fence excludes that defeat and is consumed exactly
+    -- by the finite digit reconstruction in the repaired bridge.
+    (hdeg : g.natDegree < μ₂ * T.D₂)
     (hbudget : ∀ j' a b : ℕ, j' < μ₂ → a < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
       (budgetFloor T μ₂ j' a b : ℕ∞)
         ≤ addVal O ((dev F.key (dev (composedKey T) g j') b).coeff a)) :
@@ -3774,7 +3800,7 @@ the tie OPEN; (iii) `i ≥ 3` OPEN — no axiom asserts it, the definition IS th
 def GENTOW5W {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u') : Prop :=
   ∃ w : W.fld r, w ≠ 0 ∧ ∀ t, t < f' →
-    I.Rgr ((f' - t) * u') (I.chainNorm r ((f' - t) * u')) * I.thetaRatio (f' - t)
+    I.Rgr ((f' - t) * u') (I.chainNormBelow r ((f' - t) * u')) * I.thetaRatio (f' - t)
       = w ^ (f' - t)
 
 def Wle {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
@@ -3799,11 +3825,13 @@ axiom gentow5w_two {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     -- restored Cor 4.12(2) scope premise at the iterated grade).  Provability certificate:
     -- leanfinal `Uniformity/ChapC/C107ac14.lean` `gentow5w_two` (Lean-core, via the landed
     -- C.99 twin `C99r.gentow2_Bpp` at `r = 2` + `Rgr_ne_zero` for the witness `w`).
-    (hprev : I.PrevGrade u')
-    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm 2 (d * u')))
+    -- [RE-SIGNED: A-C.17, 2026-08-26 — DEC3R/MU3_CAMPAIGN §3] the same fenced
+    -- `PrevGrade` supply as amended C.99; its `f' = 1` branch is cancellation-only.
+    (hprev : 2 ≤ f' → I.PrevGrade u')
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNormBelow 2 (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
-      (I.chainNorm 2 (d * u')).natDegree < (I.keyAt 2).natDegree)
-    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNorm 2 (d * u') ≠ 0) :
+      (I.chainNormBelow 2 (d * u')).natDegree < (I.keyAt 2).natDegree)
+    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNormBelow 2 (d * u') ≠ 0) :
     GENTOW5W W e' f' u' I
 
 axiom gentow5w_one_shape {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
@@ -3822,13 +3850,15 @@ axiom gentow5w_one_shape {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     -- `AdjoinRoot.root T.ψ₂`"), NOT bridged here.  Conditional discharge certificate:
     -- leanfinal `C107ac14.lean` `gentow5w_one_shape_of_letter_tie` (Lean-core; the letter
     -- tie carried as the explicit hypothesis `htie` — exactly the missing law).
-    (hprev : I.PrevGrade u')
-    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNorm 1 (d * u')))
+    -- [RE-SIGNED: A-C.17, 2026-08-26 — DEC3R/MU3_CAMPAIGN §3] fenced exactly as the
+    -- C.99 engine this path consumes; `DEC3_probe.ratio_power_one` certifies the base branch.
+    (hprev : 2 ≤ f' → I.PrevGrade u')
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNormBelow 1 (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
-      (I.chainNorm 1 (d * u')).natDegree < (I.keyAt 1).natDegree)
-    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNorm 1 (d * u') ≠ 0) :
+      (I.chainNormBelow 1 (d * u')).natDegree < (I.keyAt 1).natDegree)
+    (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNormBelow 1 (d * u') ≠ 0) :
     ∃ k : ℕ, ∀ t, t < f' →
-      I.Rgr ((f' - t) * u') (I.chainNorm 1 ((f' - t) * u')) * I.thetaRatio (f' - t)
+      I.Rgr ((f' - t) * u') (I.chainNormBelow 1 ((f' - t) * u')) * I.thetaRatio (f' - t)
         = (I.letterZ 1 ^ k) ^ (f' - t)
 
 /-! ### NODE C.90 [theorem] — GENTOW5-B (a): the key certificate at the three-regime scope
@@ -3876,7 +3906,7 @@ axiom gentow5_key_certificate {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H�
     (hres : (I r le_rfl).Rres Φnext
       = Polynomial.X ^ f' - ∑ t ∈ Finset.range f',
           Polynomial.C ((I r le_rfl).Rgr ((f' - t) * u')
-              ((I r le_rfl).chainNorm r ((f' - t) * u'))
+              ((I r le_rfl).chainNormBelow r ((f' - t) * u'))
             * (I r le_rfl).thetaRatio (f' - t) * c t) * Polynomial.X ^ t)
     -- [A-C.14, 2026-08-25 RE-SIGN — AC14] the omitted third admissibility conjunct — the
     -- source states its admissibility notion with the nonzero constant term explicitly

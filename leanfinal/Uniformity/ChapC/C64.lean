@@ -72,7 +72,7 @@ def BlockDegEqStatement : Prop :=
     (L : LevelDatum F H₀ hpin) (_hπ : Irreducible π)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     (f : Polynomial O) (_hctx : BlockContext L f),
-    (blockFactor L f).natDegree = L.keyDeg₂ * mult₂ L f
+    (blockFactorLeaky L f).natDegree = L.keyDeg₂ * mult₂Leaky L f
 
 /-- ★ **NODE C.64's signed `blockDeg_eq` is FALSE** — at `(s2Frame, L₀, g₀)` over `ℤ_[2]`,
 where the block context holds (C67), the block is `g₀` itself, and the conclusion demands

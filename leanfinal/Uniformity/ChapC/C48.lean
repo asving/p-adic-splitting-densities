@@ -99,8 +99,12 @@ theorem fullSide_block {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
       (dvOnSide_of_mem_dvSideSet hminmem).2
     obtain ⟨M₀, hM₀⟩ := WithTop.ne_top_iff_exists.mp hfin
     exact ⟨M₀, hM₀.symm, μ₂, hμ₂, hres hne M₀ hM₀.symm⟩
+  have hpindeg : (F.e₁ * F.f₁) ∣ f.natDegree := by
+    refine ⟨μ₂ * (T.e₂ * T.f₂), ?_⟩
+    rw [hdeg, TowerDatum.D₂]
+    ring
   have h3 : blockFactor (T.levelDatum hπ) f = f :=
-    blockFactor_eq_of_frontier (T.levelDatum hπ) hlab dvd_rfl (fun _ _ h => h)
+    blockFactor_eq_of_frontier (T.levelDatum hπ) hlab hpindeg dvd_rfl (fun _ _ h => h)
   -- (4) the multiplicity: `keyDeg₂ = D₂`, so `mult₂ = μ₂D₂/D₂ = μ₂`
   have h4 : mult₂ (T.levelDatum hπ) f = μ₂ := by
     have hkd : (T.levelDatum hπ).keyDeg₂ = T.D₂ := by

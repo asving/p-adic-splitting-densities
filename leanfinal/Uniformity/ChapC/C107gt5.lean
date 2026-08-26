@@ -202,7 +202,7 @@ file's docstring), the `i = 1` shape and `i ≥ 3` cases stay OPEN per the C.89 
 def GENTOW5W {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower.{0, uKt} F H₀ hpin r) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u') : Prop :=
   ∃ w : W.fld r, w ≠ 0 ∧ ∀ t, t < f' →
-    I.Rgr ((f' - t) * u') (I.chainNorm r ((f' - t) * u')) * I.thetaRatio (f' - t)
+    I.Rgr ((f' - t) * u') (I.chainNormBelow r ((f' - t) * u')) * I.thetaRatio (f' - t)
       = w ^ (f' - t)
 
 /-- **NODE C.89, `Wle`** — the cumulative `𝒲_{≤n}` closure of `GENTOW5W` at every rung `3 ≤ i

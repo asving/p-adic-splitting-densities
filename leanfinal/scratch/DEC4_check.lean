@@ -173,6 +173,7 @@ def ShadowPersistenceStatement : Prop :=
     (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (_hh : 1 ≤ F.h)
     [Finite (ResidueField O)] {μ₂ j : ℕ} (_hj : j < μ₂) (_hc : TouchCert T hπ μ₂ j)
     {g : Polynomial O}
+    (_hdeg : g.natDegree < μ₂ * T.D₂)
     (_hbudget : ∀ j' a b : ℕ, j' < μ₂ → a < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
       (budgetFloor T μ₂ j' a b : ℕ∞)
         ≤ IsDiscreteValuationRing.addVal O

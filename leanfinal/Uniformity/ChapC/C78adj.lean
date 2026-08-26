@@ -838,7 +838,7 @@ include h2 hq in
 `blockFactor (levelDatum) f₅ = f₅` — the Hensel cofactor of the odd root. -/
 theorem exists_monic_deg_four_divisor [IsAdicComplete (IsLocalRing.maximalIdeal O) O] :
     ∃ g : Polynomial O, g.Monic ∧
-      g ∣ blockFactor ((s2Tower h2 hq).levelDatum h2) (f₅ O) ∧ g.natDegree = 4 := by
+      g ∣ blockFactorLeaky ((s2Tower h2 hq).levelDatum h2) (f₅ O) ∧ g.natDegree = 4 := by
   obtain ⟨z, hz⟩ := exists_root_f₅ h2 hq
   have hfact : (Polynomial.X - Polynomial.C z) * ((f₅ O) /ₘ (Polynomial.X - Polynomial.C z))
       = f₅ O := Polynomial.mul_divByMonic_eq_iff_isRoot.mpr hz
@@ -866,7 +866,7 @@ docstring) and left as named open Lean work — it is NOT claimed by this theore
 include h2 hq in
 theorem partialBlockDecision_core_at_probe [IsAdicComplete (IsLocalRing.maximalIdeal O) O] :
     ∃ g : Polynomial O, g.Monic ∧
-      g ∣ blockFactor ((s2Tower h2 hq).levelDatum h2) (f₅ O) ∧
+      g ∣ blockFactorLeaky ((s2Tower h2 hq).levelDatum h2) (f₅ O) ∧
       g.natDegree = ((s2Frame h2 hq).e₁ * (s2Tower h2 hq).e₂ * 1)
         * ((s2Frame h2 hq).f₁ * (s2Tower h2 hq).f₂
             * (Polynomial.X + 1 :

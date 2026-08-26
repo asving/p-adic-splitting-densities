@@ -72,10 +72,10 @@ is part of the proof obligation (C.26's leading-read control), not a statement d
 
 ## ⚠ PARTIAL LANDING — the signed theorem is ROUTE-BLOCKED
 
-**NOT landed — `exists_dv_residual_dissection`.** Its signed statement remains in
-`leanspec/Leanspec/ChapC.lean` (byte-frozen stub axiom, untouched). It was transcribed
-byte-exact here and compiled at commits `cdf53b30`/`e93bb724` (diff-verified against the
-spec); the obstruction record is **`C34_BLOCKED_2026-08-18.md`** (this directory) with
+**NOT landed — `exists_dv_residual_dissection`.** Its A-C.20 degree-pinned signed statement
+remains an axiom in `leanspec/Leanspec/ChapC.lean`; only the conditional packaging twin is
+proved here.  The pre-A-C.20 form was compiled at commits `cdf53b30`/`e93bb724`; the
+obstruction record is **`C34_BLOCKED_2026-08-18.md`** (this directory) with
 the two frontier goals quoted verbatim: the signed route is B.48's graded-coprime lift
 AT THE `dv`-CARRIER, and (i) no dv-level Hensel engine exists at all (the C.33 record's
 obstruction 2 — B.44–B.48 are `IsKey`-fenced and `IsKey F.key` is FALSE at `F.h ≥ 1`),
@@ -93,7 +93,7 @@ theorem of the polygon and is expected true as signed.
 constant-complement law (`not_dvd_dvResPoly_of_natDegree_eq_zero`), the `R = r^m`
 single-class supply (`hasLabel_self_of_dvResPoly_eq_pow`,
 `block_pair_self_of_dvResPoly_eq_pow` — `EFF.HE6.20` item 1), and the frontier
-packaging (`exists_dv_residual_dissection_of_frontier`): the FULL signed conclusion
+packaging (`exists_dv_residual_dissection_of_frontier`, updated to A-C.20): the FULL signed conclusion
 follows from exactly the two frontier Props, so the node's remaining content is
 precisely FRONTIER 1 (hex) + FRONTIER 2 (hsep) of the record.
 
@@ -277,24 +277,29 @@ second component of the uniqueness clause is Lean-core monic cancellation, suppl
 here. So the entire remaining content of the signed statement is `hex` + `hsep`. -/
 theorem exists_dv_residual_dissection_of_frontier {F : KeyFrame O π} {H₀ hpin}
     (L : LevelDatum F H₀ hpin) {g : Polynomial O}
-    (hex : ∃ fS g' : Polynomial O, g = fS * g' ∧ HasLabel L fS ∧ g'.Monic ∧
+    (hex : ∃ fS g' : Polynomial O, g = fS * g' ∧
+      (HasLabel L fS ∧ (F.e₁ * F.f₁) ∣ fS.natDegree) ∧ g'.Monic ∧
       ∀ (hne' : (dvSideSet F g' L.u L.ℓ).Nonempty) (M₀' : ℕ)
         (hp' : dvHgt F g' (dvSideMin F g' L.u L.ℓ hne') = (M₀' : ℕ∞)),
         ¬ L.r ∣ dvResPoly F H₀ hpin g' L.u L.ℓ hne' M₀' hp')
-    (hsep : ∀ fS g' fS' g'' : Polynomial O, g = fS * g' → HasLabel L fS → g'.Monic →
+    (hsep : ∀ fS g' fS' g'' : Polynomial O, g = fS * g' →
+      (HasLabel L fS ∧ (F.e₁ * F.f₁) ∣ fS.natDegree) → g'.Monic →
       (∀ (hne' : (dvSideSet F g' L.u L.ℓ).Nonempty) (M₀' : ℕ)
         (hp' : dvHgt F g' (dvSideMin F g' L.u L.ℓ hne') = (M₀' : ℕ∞)),
         ¬ L.r ∣ dvResPoly F H₀ hpin g' L.u L.ℓ hne' M₀' hp') →
-      g = fS' * g'' → HasLabel L fS' → g''.Monic →
+      g = fS' * g'' →
+      (HasLabel L fS' ∧ (F.e₁ * F.f₁) ∣ fS'.natDegree) → g''.Monic →
       (∀ (hne' : (dvSideSet F g'' L.u L.ℓ).Nonempty) (M₀' : ℕ)
         (hp' : dvHgt F g'' (dvSideMin F g'' L.u L.ℓ hne') = (M₀' : ℕ∞)),
         ¬ L.r ∣ dvResPoly F H₀ hpin g'' L.u L.ℓ hne' M₀' hp') →
       fS' = fS) :
-    ∃ fS g' : Polynomial O, g = fS * g' ∧ HasLabel L fS ∧ g'.Monic ∧
+    ∃ fS g' : Polynomial O, g = fS * g' ∧
+      (HasLabel L fS ∧ (F.e₁ * F.f₁) ∣ fS.natDegree) ∧ g'.Monic ∧
       (∀ (hne' : (dvSideSet F g' L.u L.ℓ).Nonempty) (M₀' : ℕ)
         (hp' : dvHgt F g' (dvSideMin F g' L.u L.ℓ hne') = (M₀' : ℕ∞)),
         ¬ L.r ∣ dvResPoly F H₀ hpin g' L.u L.ℓ hne' M₀' hp') ∧
-      ∀ fS' g'' : Polynomial O, g = fS' * g'' → HasLabel L fS' → g''.Monic →
+      ∀ fS' g'' : Polynomial O, g = fS' * g'' →
+        (HasLabel L fS' ∧ (F.e₁ * F.f₁) ∣ fS'.natDegree) → g''.Monic →
         (∀ (hne' : (dvSideSet F g'' L.u L.ℓ).Nonempty) (M₀' : ℕ)
           (hp' : dvHgt F g'' (dvSideMin F g'' L.u L.ℓ hne') = (M₀' : ℕ∞)),
           ¬ L.r ∣ dvResPoly F H₀ hpin g'' L.u L.ℓ hne' M₀' hp') →
@@ -303,7 +308,7 @@ theorem exists_dv_residual_dissection_of_frontier {F : KeyFrame O π} {H₀ hpin
   refine ⟨fS, g', hprod, hlab, hmon, hcomp, ?_⟩
   intro fS' g'' hprod' hlab' hmon' hcomp'
   have heq : fS' = fS := hsep fS g' fS' g'' hprod hlab hmon hcomp hprod' hlab' hmon' hcomp'
-  exact ⟨heq, mul_left_cancel₀ hlab.1.ne_zero ((heq ▸ hprod').symm.trans hprod)⟩
+  exact ⟨heq, mul_left_cancel₀ hlab.1.1.ne_zero ((heq ▸ hprod').symm.trans hprod)⟩
 
 end Uniformity.Density.Tower
 

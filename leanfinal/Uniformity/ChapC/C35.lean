@@ -11,13 +11,13 @@ import Uniformity.ChapC.C118a
 
 **Chapter C, NODE C.35** [def] [fresh] [signed: A-C.1]
 (`blueprint/CHAP-C_tower_grammar.md` §5, ~line 2354). ENV-C2. Four signed declarations,
-transcribed BYTE-FROZEN from `leanspec/Leanspec/ChapC.lean` (the A-C.1 §5 block):
+transcribed from `leanspec/Leanspec/ChapC.lean` (the A-C.1 §5 block, amended by A-C.20):
 
 * `BlockContext L f` — the §5 standing block context: the PEEL-CONVENTION pair
   (`f.Monic`, `Squarefree f`, `¬ F.key ∣ f`) plus a genuine `(λ, r)`-side of `f`'s OWN read
   (nonempty side, positive side degree, `L.r`-divisible residual);
-* `blockFactor L f` — the block `f_S`, as the MAXIMAL `(λ, r)`-labelled monic divisor of `f`
-  (total: choice; junk `1` when none exists);
+* `blockFactor L f` — the block `f_S`, as the MAXIMAL degree-pinned `(λ, r)`-labelled
+  monic divisor of `f` (total: choice; junk `1` when none exists);
 * `mult₂ L f = (blockFactor L f).natDegree / L.keyDeg₂` — the corpus's `μ₂ = deg f_S / D″`
   (`EFF.HE6R1.12`);
 * `blockFactor_spec` — the companion: under `hctx` the block is genuine, divides `f`, has
@@ -25,7 +25,7 @@ transcribed BYTE-FROZEN from `leanspec/Leanspec/ChapC.lean` (the A-C.1 §5 block
 
 ## Landing status (honest)
 
-* the three DEFS: **LANDED**, byte-frozen.
+* the three DEFS: **LANDED**, with the A-C.20 degree-pinned selector enacted.
 * `blockFactor_spec`: **BLOCKED** — see `C35_BLOCKED_2026-08-20.md`. Its content is reduced,
   here and Lean-core, to the single frontier Prop `BlockFrontier` below, and every other
   ingredient (the level-side endpoint calculus, the `HasLabel` degree law, the D13
@@ -129,14 +129,46 @@ def BlockContext {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     0 < dvSideDeg F f L.u L.ℓ hne ∧
     L.r ∣ dvResPoly F H₀ hpin f L.u L.ℓ hne M₀ hp
 
-/-- `blockFactor L f` — the block `f_S`, as the MAXIMAL `(λ, r)`-labelled monic divisor of
-`f` (total: choice; junk `1` when none — C.34's uniqueness makes the maximal divisor THE
-block under `hctx`). -/
-noncomputable def blockFactor {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+/-- Historical pre-A-C.20 selector, retained only so the machine refutation records can name
+the leaky object they refuted.  New consumers use `blockFactor`. -/
+noncomputable def blockFactorLeaky {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (f : Polynomial O) : Polynomial O :=
   open Classical in
   if h : ∃ fS : Polynomial O, HasLabel L fS ∧ fS ∣ f ∧
       ∀ fS' : Polynomial O, HasLabel L fS' → fS' ∣ f → fS' ∣ fS
+  then h.choose else 1
+
+/-- Historical multiplicity attached to `blockFactorLeaky`; refutation records only. -/
+noncomputable def mult₂Leaky {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) : ℕ := (blockFactorLeaky L f).natDegree / L.keyDeg₂
+
+/-- Choice pin for the historical leaky selector; used only by pre-A-C.20 refutation rows. -/
+theorem blockFactorLeaky_eq_of_frontier {F : KeyFrame O π} {H₀ hpin}
+    (L : LevelDatum F H₀ hpin) {f fS : Polynomial O} (hlab : HasLabel L fS)
+    (hdvd : fS ∣ f)
+    (hmax : ∀ fS' : Polynomial O, HasLabel L fS' → fS' ∣ f → fS' ∣ fS) :
+    blockFactorLeaky L f = fS := by
+  classical
+  have h : ∃ fS : Polynomial O, HasLabel L fS ∧ fS ∣ f ∧
+      ∀ fS' : Polynomial O, HasLabel L fS' → fS' ∣ f → fS' ∣ fS :=
+    ⟨fS, hlab, hdvd, hmax⟩
+  have hbf : blockFactorLeaky L f = h.choose := by
+    rw [blockFactorLeaky]
+    exact dif_pos h
+  obtain ⟨hlab', hdvd', hmax'⟩ := h.choose_spec
+  rw [hbf]
+  exact Polynomial.eq_of_monic_of_associated hlab'.1 hlab.1
+    (associated_of_dvd_dvd (hmax _ hlab' hdvd') (hmax' _ hlab hdvd))
+
+/-- [A-C.20, 2026-08-26] `blockFactor L f` — the block `f_S`, selected among the
+degree-pinned labels `HasLabel L fS ∧ D′ ∣ deg fS`. -/
+noncomputable def blockFactor {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) : Polynomial O :=
+  open Classical in
+  if h : ∃ fS : Polynomial O,
+      (HasLabel L fS ∧ (F.e₁ * F.f₁) ∣ fS.natDegree) ∧ fS ∣ f ∧
+      ∀ fS' : Polynomial O,
+        (HasLabel L fS' ∧ (F.e₁ * F.f₁) ∣ fS'.natDegree) → fS' ∣ f → fS' ∣ fS
   then h.choose else 1
 
 /-- `μ₂ = deg f_S / D″` (`EFF.HE6R1.12`). -/
@@ -246,24 +278,30 @@ dropped).  This is C.34's existence+uniqueness at the `(λ, r)`-block, which
 def BlockFrontier {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (f : Polynomial O) : Prop :=
   ∃ fS : Polynomial O, HasLabel L fS ∧ fS ∣ f ∧ (F.e₁ * F.f₁) ∣ fS.natDegree ∧
-    ∀ fS' : Polynomial O, HasLabel L fS' → fS' ∣ f → fS' ∣ fS
+    ∀ fS' : Polynomial O,
+      (HasLabel L fS' ∧ (F.e₁ * F.f₁) ∣ fS'.natDegree) → fS' ∣ f → fS' ∣ fS
 
 /-- **The frontier witness IS `blockFactor`.**  Two maximal labelled divisors divide each
 other, and both are monic, so they are equal. -/
 theorem blockFactor_eq_of_frontier {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
-    {f fS : Polynomial O} (hlab : HasLabel L fS) (hdvd : fS ∣ f)
-    (hmax : ∀ fS' : Polynomial O, HasLabel L fS' → fS' ∣ f → fS' ∣ fS) :
+    {f fS : Polynomial O} (hlab : HasLabel L fS)
+    (hdeg : (F.e₁ * F.f₁) ∣ fS.natDegree) (hdvd : fS ∣ f)
+    (hmax : ∀ fS' : Polynomial O,
+      (HasLabel L fS' ∧ (F.e₁ * F.f₁) ∣ fS'.natDegree) → fS' ∣ f → fS' ∣ fS) :
     blockFactor L f = fS := by
   classical
-  have h : ∃ fS : Polynomial O, HasLabel L fS ∧ fS ∣ f ∧
-      ∀ fS' : Polynomial O, HasLabel L fS' → fS' ∣ f → fS' ∣ fS := ⟨fS, hlab, hdvd, hmax⟩
+  have h : ∃ fS : Polynomial O,
+      (HasLabel L fS ∧ (F.e₁ * F.f₁) ∣ fS.natDegree) ∧ fS ∣ f ∧
+      ∀ fS' : Polynomial O,
+        (HasLabel L fS' ∧ (F.e₁ * F.f₁) ∣ fS'.natDegree) → fS' ∣ f → fS' ∣ fS :=
+    ⟨fS, ⟨hlab, hdeg⟩, hdvd, hmax⟩
   have hbf : blockFactor L f = h.choose := by
     rw [blockFactor]
     exact dif_pos h
-  obtain ⟨hlab', hdvd', hmax'⟩ := h.choose_spec
+  obtain ⟨⟨hlab', hdeg'⟩, hdvd', hmax'⟩ := h.choose_spec
   rw [hbf]
   exact Polynomial.eq_of_monic_of_associated hlab'.1 hlab.1
-    (associated_of_dvd_dvd (hmax _ hlab' hdvd') (hmax' _ hlab hdvd))
+    (associated_of_dvd_dvd (hmax _ ⟨hlab', hdeg'⟩ hdvd') (hmax' _ ⟨hlab, hdeg⟩ hdvd))
 
 /-- **NODE C.35's companion, from the frontier alone (Lean-core).**  All four clauses of the
 signed `blockFactor_spec` follow from `BlockFrontier L f`; `hctx` is not even consumed by the
@@ -275,7 +313,7 @@ theorem blockFactor_spec_of_frontier {F : KeyFrame O π} {H₀ hpin} (L : LevelD
     HasLabel L (blockFactor L f) ∧ blockFactor L f ∣ f ∧
     (blockFactor L f).natDegree = L.keyDeg₂ * mult₂ L f ∧ 0 < mult₂ L f := by
   obtain ⟨fS, hlab, hdvd, hdeg, hmax⟩ := hfr
-  have hbf : blockFactor L f = fS := blockFactor_eq_of_frontier L hlab hdvd hmax
+  have hbf : blockFactor L f = fS := blockFactor_eq_of_frontier L hlab hdeg hdvd hmax
   have hdeg' : (F.e₁ * F.f₁) ∣ (blockFactor L f).natDegree := by rw [hbf]; exact hdeg
   obtain ⟨hexact, hpos⟩ :=
     hasLabel_natDegree_eq_of_dvd L hπ (g := blockFactor L f) (by rw [hbf]; exact hlab) hdeg'
@@ -288,6 +326,9 @@ end Uniformity.Density.Tower
 section AxCheck
 
 #print axioms Uniformity.Density.Tower.BlockContext
+#print axioms Uniformity.Density.Tower.blockFactorLeaky
+#print axioms Uniformity.Density.Tower.mult₂Leaky
+#print axioms Uniformity.Density.Tower.blockFactorLeaky_eq_of_frontier
 #print axioms Uniformity.Density.Tower.blockFactor
 #print axioms Uniformity.Density.Tower.mult₂
 #print axioms Uniformity.Density.Tower.dvOnSide_of_mem_dvSideSet
