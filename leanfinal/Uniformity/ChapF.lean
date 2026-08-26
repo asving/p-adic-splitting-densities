@@ -31,3 +31,4 @@ import Uniformity.ChapF.F27
 import Uniformity.ChapF.F28
 import Uniformity.ChapF.F29
 import Uniformity.ChapF.F30
+import Uniformity.ChapF.GateFields

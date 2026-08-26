@@ -41,6 +41,7 @@ import Uniformity.ChapB.B35c
 import Uniformity.ChapB.B35d
 import Uniformity.ChapB.B36
 import Uniformity.ChapB.B37
+import Uniformity.ChapB.B38
 import Uniformity.ChapB.B39a
 import Uniformity.ChapB.B39b
 import Uniformity.ChapB.B40
@@ -48,6 +49,7 @@ import Uniformity.ChapB.B41a
 import Uniformity.ChapB.B41b
 import Uniformity.ChapB.B42
 import Uniformity.ChapB.B42a
+import Uniformity.ChapB.B43
 import Uniformity.ChapB.B44
 import Uniformity.ChapB.B45
 import Uniformity.ChapB.B46
