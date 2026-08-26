@@ -69,68 +69,31 @@ bridge (OPEN-DICT-1..4, U7 §8). U9 (codex HIGH) is adjudicating U7 §9 Q1–Q7 
 the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
 `lean/notes/SEMANTIC_AUDIT_LOG.md`.
 
-## 4. The live frontier (what blocks what)
+## 4. The live frontier (what blocks what) — rewritten 2026-08-26
 
-1. **The dv-graded engine** (one proof behind C.72 shadow-floor, C.52's legs incl. leg 1 =
-   C.53's only remaining input, C.54): v1 assembled + numerically certified (floor law
-   sharp, 4143/0, `verification/dv_ledger_cert.py`) but **NEEDS-REDESIGN** (Codex review,
-   13 findings — `docs/in-progress/DV_GRADED_ENGINE_REVIEW_2026-08-23.md`). Two halves:
-   the FLOOR engine and the **EXACT half**. **v2 DELIVERED (unit E2, 2026-08-24):**
-   `DV_GRADED_ENGINE_V2_2026-08-24.md` — all 13 findings disposed (structural-recursion
-   normal form, two-index weight, full conversion chain), honest PROVED/BLUEPRINT/OPEN
-   statuses, and the exact-half adjudication = **CITE** (FGMN, J. Algebra 427 (2015):
-   published Thm 2.8 polygon additivity + Cor 4.12(3) exact normalized residual
-   multiplicativity; coexists with C.66, does not replace it). The gate-(b) cite
-   `fgmn_dv_exact_mul` is DECLARED (allowlist → 7, commit 38e0153d). **C.131′ first-wave
-   fleet RUNNING on codex (2026-08-24):** C131a (a′–c′ weight+product law), C131d (d′–e′
-   hpure bridge+x-carry; polls C131a for `WT`), C131k (k′–l′ structural normal forms),
-   C131p (p′–s′ conversion utilities), C131aa (aa′–ab′ exact-half locals) — relaunched on
-   codex after the original Fable fleet died to API 529s before writing anything.
-   **C.72 `shadow_floor` LANDED (2026-08-24, Fable unit C131w): signed statement
-   byte-identical, Lean-core, no cite** — the engine's headline. Remaining in the plan:
-   y′ (faithful band, in flight), ae′/af′ (budget↔locus closers, in flight); then the
-   C.52/C.53/C.54 consumer chain fires.
-2. **The tower-instantiation freeze** (types I.10a/I.10b, gives I.05/06/07 their domains —
-   chapter I's critical path): v1 **NEEDS-REDESIGN** (swallowing trap + arising-linkage
-   gap; findings in the doc's banner, `TOWER_INSTANTIATION_FREEZE_DRAFT_2026-08-20.md`).
-   **v2 DELIVERED (unit F2, 2026-08-24):** `TOWER_INSTANTIATION_FREEZE_V2_2026-08-24.md`
-   (D-TIF-4 carrier, non-swallowing residue design). **A-I.2 ENACTED (2026-08-24):** E.63
-   re-signed to the live range `3 ≤ i < r`; I.10b + the `deepTwist` field carry the tower
-   depth `r` and conclude at F3's `DeepTwistConjunctLive`. **The CC carrier plan is
-   EXECUTED through CC-17 (2026-08-24, 18 of 19 nodes disposed; CC-18 in flight):**
-   the S2 REPOSITORY realization is fully inhabited (`s2RepositoryRealization`,
-   C130s17.lean), and everything still missing is ONE named bundle —
-   **`S2SourceFrontier`** (the source-side MacLane model: `NodePointSource` instance,
-   `FGMNSourceData`/`FGMNSourceLaws`, OPEN-DICT-2/4 compatibilities) — with conditional
-   constructors proving the diagnosis exact: `S2SourceFrontier → ChainRealization →
-   Nonempty (FGMNCalculus (2,1,5)) → RealizedInput` (no cite, Lean-core). U12's
-   level-general audit says inhabiting it = formalizing the source MacLane valuation
-   chain. CC-18 LANDED the socket applications conditionally on the same bundle (the CC
-   plan is COMPLETE, 19/19). **U13 then machine-REFUTED the bundle AS TYPED** (char-2
-   collision at S2; `IsEmpty`, Lean-core — CC-17/18's conditionals were true-but-vacuous;
-   caught by keeping the frontier a named premise). The corrected campaign is
-   `S2_SOURCE_PLAN_2026-08-24.md`: ambient split (E valued / L residual — unit SF1 in
-   flight re-typing the bundle + a non-vacuity tooth), then the concrete
-   weighted-development construction, with FIVE named inductive cores (`value_mul`,
-   `graded_mul`, `normalized_mul`, `key_criterion`, `initial_iff_residual`) as the honest
-   remaining hard math of this path.
-3. **The five exact-degree re-signs: DONE (amendment A-C.10, 2026-08-24)** — enacted in the
-   leanspec (elaborates green) with per-stub annotations + the blueprint amendment entry;
-   the re-signed C.64 is already PROVED (`C64.lean` `blockDeg_eq_resigned`, Lean-core).
-   C.78 remains the lone unadjudicated exact-degree site (different shape).
-4. **The §10 GENTOW2 supply chain** (C.99–C.106) + C.88/C.85: the gating `FGMNCalculus`
-   field list is DELIVERED (unit U7, 2026-08-24 — `FGMNCALCULUS_FIELDLIST_2026-08-24.md`:
-   type-checked candidate class, 16-consumer matrix, citation reconciliation, explicit
-   OPEN dictionary obligations; rejects the unconditional `fgmn_calculus_exists` form).
-   NEXT (orchestrator): author the C.92 cite from it, print-read first.
-5. **C.123/C.124 gates** (q=2/q=3 executable rows): partial firing possible now —
-   **Fable test unit on C.123 in flight.** C.126 (axiom census gate) waits on C.92/C.94.
-6. **BOTH standing hard nodes DISPOSITIONED (2026-08-24):** E.57 — the partition leg
-   TYPED (`E57p.lean`, schema layer; A-E.7 ENACTED: `hpart : Nonempty (PartitionLeg I)`,
-   corrected statement PROVED as `block_split_of_partitionLeg`; remaining: the E.22/23-genre
-   instance bridge). C.78 — ADJUDICATED TRUE at the dv2 probe (`C78adj.lean`, 2⁶⁰-exact
-   certificate; 8/8 exact-degree sites dispositioned; universal proof = SUPPLY via the
-   CC-16 path or a future gate-(b) order-2 cite).
+1. **The packaging enactment (PK plan, U15's Route A)**: PK-1/2 IN FLIGHT (the carrier
+   retype removing the machine-refuted fgmn legs); then PK-3..6 (factored `fgmnCalculusOf`,
+   S2 re-wire, the leanspec I.10 socket-body re-sign, the ev/lf-free funnel). U15's scratch
+   already elaborates the first non-vacuous UNCONDITIONAL `Nonempty (FGMNCalculus
+   (s2DepthOne) 2 1 5)`. After PK: the I.10 sockets + the class discharge are non-vacuous,
+   lifting the I.10 fire-ban → the four capstone-assembly theorems
+   (`uniformity_of_capstoneHypotheses` among them) become mechanical projections.
+2. **The μ₃ campaign** (DEC3 authoring the blueprint): the corrected-parameter (2,1,21)
+   operators one level up, so the GENTOW consumer CONCLUSIONS fire at S2 depth 2.
+   U15-adjudicated as ~20-30 nodes; NP-0's parameter-free-engine discovery should make
+   most nodes reuse-with-numerals.
+3. **The dv-engine: CLOSED.** C.72 (both halves), C.52 (`towerLocus_iff_budget` byte-
+   identical), C.54(c)'s strict floor, af′/ag′ — all proved; C.53 wiring + the C123R feed
+   in flight (UFEED). E.57: CLOSED (`block_split` under its blueprint name). Chapter D's
+   gate: CLOSED (D68).
+4. **Remaining chapter-C blockers** (DEC4 planning): the C.35 `BlockFrontier` 8-row family;
+   general C.27's two mechanisms (norm↔resultant bridge + ramified level-1 exactness);
+   RB3's two gaps (Hensel refinement; the upward height bridge). Held/adjudicated: C.100
+   (OPEN-EVAL-ISO), C.102 + one_shape's htie (OPEN-LETTERS), peel_row_law (undesigned
+   PeelLeg), hprev/hcop satisfiability at μ₃ (DEC3's decision).
+5. **Chapter H's research step** H.116b4 (5 rows; DEC5 mapping it examples-first).
+6. **Maintenance queues**: the SIMP consolidation map; the review queue for the owner (RQ);
+   the roll-up wiring for the ~25 newest files (orchestrator, at the next quiet window).
 
 ## 5. Instruments and reusable assets
 
@@ -150,10 +113,14 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 
 | unit | what | status |
 |---|---|---|
-| (archive) | all 2026-08-24 waves through CC-16/A-E.7 | DONE — details in docs/LOG.md + git log; every landing orchestrator-verified |
-| (archive) | CC17/CC18/GTR/TDW/GSW+A-C.12/C106/U13/SF1 (2026-08-24 evening) | ALL DONE — see LOG; the S2-source corrected campaign (`S2_SOURCE_PLAN_2026-08-24.md`, ~48 nodes) is now the frontier's execution plan |
-| (archive) | the S2-source campaign's NV/NP/RP/KP tracks (2026-08-25, ~20 units) | **ALL FIVE INDUCTIVE CORES CLOSED** — value_mul (NV-0..6), graded_mul (RP-0..6, incl. U14's print-read + A-C.13), normalized_mul (RP-7..10), key_criterion (KP-0..4), initial_iff_residual (KP-7..9); NP track fully disposed (NP-0..8); recipe/existence landed (RP-11/12); KP-5/6 landed (Eisenstein key + the tower's composedKey proven S2KeyPoly, residual X+1); details in LOG/git |
-| FD01 | S2-plan FD-0/FD-1: assemble FGMNSourceData/Laws + OPEN-DICT-2/4 (FABLE) | RUNNING (→ C130fd0.lean) — six _fills pins banked |
+| (archive) | everything through 2026-08-26 00:30 (the S2-source campaign, the GC-13 bridge N1-N7, the af′ chain, A-C.10..16/A-E.7/A-I.2 amendments, E.57 + D-gate + C.52/C.72 closures) | ALL DONE — LOG + git log; every landing orchestrator-verified |
+| PK12 | PK-1/2: the ChainRealization retype + ripple (FABLE) | RUNNING |
+| UFEED | af′ U-FEED + the C.53 wiring (SONNET) | RUNNING |
+| DEC3 | the μ₃ campaign blueprint (FABLE) | RUNNING |
+| DEC4 | the chain-blockers plan: BlockFrontier/C.27/RB3-gaps (FABLE) | RUNNING |
+| DEC5 | H.116b4 examples-first map (FABLE) | RUNNING |
+| RQ | the consolidated owner review queue (SONNET) | RUNNING |
+| SIMP | the read-only simplification map (SONNET) | RUNNING |
 
 ## 7. Resume protocol (fresh agent)
 
