@@ -32,6 +32,20 @@ blueprint's exact diff. If any part of the diff is not fully pinned by the bluep
 enact only the pinned part and record the rest as a named OPEN row in your verdict —
 never guess a statement.
 
+AMENDMENT 3 — the shadow_persistence degree fence (ADDED 2026-08-26 ~19:50, unit MBRIDGE's
+stop-the-line finding; runs/wave-b/verdict_MBRIDGE.md §1 + docs/in-progress/
+RB3_BRIDGE_PROOF_2026-08-26.md). The signed `shadow_persistence`
+(leanspec/Leanspec/ChapC.lean:3482-3494) is REFUTABLE as signed: `g := (composedKey T)^μ₂`
+satisfies `hbudget` vacuously (all Φ₂-digits below μ₂ vanish, `addVal 0 = ⊤`) while
+`hc : TouchCert` pins the discrepancy height at exactly `θ_j`, contradicting clause 1's
+`θ_j + 1` (TouchCert certified non-vacuous at three coordinates in
+verification/rb3_bridge_cert.py, 210 PASS / 0 FAIL). Enact: insert
+`(hdeg : g.natDegree < μ₂ * T.D₂)` — automatic for the intended `g = f − Φ₂^μ₂`, mirrors
+the landed `towerLocus_iff_budget`'s own `hdeg`, and is exactly what MBRIDGE's proof
+consumes. Consumer audit: grep landed leanfinal consumers of `shadow_persistence` (RB3's
+closures elaborate in scratch/DEC4_check.lean:147-188 — re-check they still elaborate with
+the added binder).
+
 ## Protocol
 
 1. Read: MU3_CAMPAIGN_2026-08-26.md (whole), verdict_DEC3R.md,

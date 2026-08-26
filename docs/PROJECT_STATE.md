@@ -151,7 +151,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | BW1 | BLOCKERS_PLAN wave 1: norm bridge + shadow linearity corpus landing (SONNET, reassigned from codex per Asvin 2026-08-26 evening) | REASSIGNED to the codex 22:34 launcher after TWO Sonnet 529 deaths (the storm is Sonnet-tier; Fable agents surviving) |
 | HW1 | H116B4_MAP fireable rows GR-1/2 + GR-3/3b (SONNET, reassigned likewise) | REASSIGNED to the codex 22:34 launcher (529 death mid-read; both Sonnet units storm-killed) |
 | MHENS | MATH: the dv-graded one-slope Hensel engine, the C.34/C.35 root (FABLE) | RUNNING |
-| MBRIDGE | MATH: RB3's upward budget→dv2Hgt bridge, certificate-first (FABLE) | RUNNING |
+| MBRIDGE | MATH: RB3's upward budget→dv2Hgt bridge, certificate-first (FABLE) | DONE — bridge PROVED (cert 210/0, Codex-audited; RB3's "not reusable in reverse" was too pessimistic — all on landed w-abstract machinery, 5+2 nodes, 180–305 lines); STOP-THE-LINE: signed `shadow_persistence` refutable as signed (g=Φ₂^μ₂) → the `hdeg` amendment ADDED to AMND's brief as its 3rd item |
 | MSMITH | MATH: H.116b4 core I — restricted Smith identification (FABLE) | RUNNING |
 | MLIFT | MATH: H.116b4 cores II-a/II-b — one-grade lifting + pushforward induction (FABLE) | RUNNING |
 | MRAMX | MATH: completion-free ramified level-1 exactness (FABLE) | RUNNING (launched 19:24, third attempt) |
