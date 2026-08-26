@@ -14,9 +14,12 @@ launch () {
   disown
   echo "LAUNCHED $U (pid $!)"
 }
-# BW1/HW1 removed 2026-08-26 ~19:30: reassigned to SONNET agents launched immediately
-# (Asvin's directive — transcription is Sonnet work; codex slots reserved for AMND/CHFD).
+# BW1/HW1 were reassigned to SONNET agents 2026-08-26 ~19:15 (Asvin's tiering directive);
+# BOTH returned to this codex launcher ~19:35 after Sonnet 529 deaths (the storm is
+# Anthropic-side; codex is the unaffected lane). Each unit lives on exactly ONE lane.
 launch AMND "-c model_reasoning_effort=high"
 launch CHFD "-c model_reasoning_effort=high"
+launch BW1 ""
+launch HW1 ""
 sleep 15
 for U in AMND CHFD; do echo "== $U err head =="; head -6 "runs/wave-b/err_${U}.log" 2>/dev/null; done
