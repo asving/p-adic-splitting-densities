@@ -82,22 +82,36 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    nodes"), recorded amendment; then the four capstone-assembly theorems (I.15–I.18,
    `uniformity_of_capstoneHypotheses` among them — all four still UNLANDED per census)
    become mechanical projections. UNIT RSGN in flight.
-2. **The μ₃ campaign** (DEC3 authoring the blueprint): the corrected-parameter (2,1,21)
-   operators one level up, so the GENTOW consumer CONCLUSIONS fire at S2 depth 2.
-   U15-adjudicated as ~20-30 nodes; NP-0's parameter-free-engine discovery should make
-   most nodes reuse-with-numerals.
+2. **The μ₃ campaign — blueprint DELIVERED** (`docs/in-progress/MU3_CAMPAIGN_2026-08-26.md`,
+   DEC3R): 29 nodes wired to `fgmn_model_calculus_nonempty`, zero new packaging.
+   OPEN-DICT-2 DECIDED: full-current clearing `e(μᵢ)α` (FGMN Def 3.12) — so `hprev` is
+   source-faithfully impossible at u′=21. GATE before the fleet: TWO signed consumer
+   amendments (unit AMND): the `2 ≤ f'` hprev fence, and the coordinated
+   `chainNormBelow`/`thetaRatio` re-index (the source's n̂₂ = `towerNorm 1`; `chainNorm 2 21
+   = keyAt 2` falsifies the strict degree premise as signed). In-construction open:
+   OPEN-RP1-TRANSPORT (the μ₂ read realizes the ε-normalized coefficient of Defs 3.10/3.12-13).
 3. **The dv-engine: FULLY CLOSED (2026-08-26).** C.72 (both halves), C.52
    (`towerLocus_iff_budget` byte-identical), C.54(c)'s strict floor, af′/ag′, AND the
    C.53 wiring: UFEED landed `towerLocus_fibration` UNCONDITIONAL at the leanspec signed
    shape (axiom→theorem, `C131uf.lean`) plus the non-drain witness `s2Witness` disposing
    verdict_C123R's named gap. E.57: CLOSED (`block_split` under its blueprint name).
    Chapter D's gate: CLOSED (D68).
-4. **Remaining chapter-C blockers** (DEC4 planning): the C.35 `BlockFrontier` 8-row family;
-   general C.27's two mechanisms (norm↔resultant bridge + ramified level-1 exactness);
-   RB3's two gaps (Hensel refinement; the upward height bridge). Held/adjudicated: C.100
-   (OPEN-EVAL-ISO), C.102 + one_shape's htie (OPEN-LETTERS), peel_row_law (undesigned
-   PeelLeg), hprev/hcop satisfiability at μ₃ (DEC3's decision).
-5. **Chapter H's research step** H.116b4 (5 rows; DEC5 mapping it examples-first).
+4. **Remaining chapter-C blockers — plan DELIVERED** (`docs/in-progress/
+   BLOCKERS_PLAN_2026-08-26.md`, DEC4R; probes 246 lines green in `scratch/DEC4_check.lean`).
+   Ordering: (i) the probe-complete norm↔resultant bridge + shadow-linearity API —
+   FIREABLE NOW (unit BW1); (ii) RB3 examples-first certificates → RB3 closure (only
+   genuinely-new mechanism: the upward budget→dv2Hgt bridge); (iii) ramified level-1
+   exactness (priced 285–485 lines, new completion-free mechanism); (iv) the one-slope
+   dv-graded Hensel engine (the C.34/C.35 root) → `BlockFrontier` 8 rows unconditional;
+   (v) arbitrary-C C.27 last. Held fence unchanged: C.100 (OPEN-EVAL-ISO), C.102 +
+   one_shape's htie (OPEN-LETTERS), peel_row_law (undesigned PeelLeg), hprev/hcop → AMND.
+5. **Chapter H's research step H.116b4 — map DELIVERED** (`docs/in-progress/
+   H116B4_MAP_2026-08-26.md`, DEC5R; battery extended, ALL PASSED — mechanism found:
+   children = 0 or #ker(Tₙ) by an affine obstruction class; aggregate pushforward uniform
+   on support). Rows GR-1/2 (ghosts) + GR-3/3b (cofactor/Fit) FIREABLE from landed inputs
+   (unit HW1); three research cores stay BLOCKED (restricted Smith; one-grade lifting over
+   general complete DVRs; the uniform-pushforward induction). Node verdict unchanged:
+   research-open, numerically certified.
 6. **Maintenance queues**: the SIMP map is DELIVERED (`docs/in-progress/
    SIMPLIFICATION_MAP_2026-08-26.md` — two live risks flagged: C131af.lean:46-47
    dual-namespace open; the 4-way `slot_eq` collision) — enactment wave unscheduled;
@@ -123,10 +137,13 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | unit | what | status |
 |---|---|---|
 | (archive) | everything through 2026-08-26 (S2-source campaign, GC-13 bridge, af′ chain, amendments, E.57/D-gate/dv-engine closures, PK-1..7, RQ, UFEED, SIMP, EFF sweep GENTOW5+T2s5s6+W12) | ALL DONE — LOG + git log; every landing orchestrator-verified |
-| RSGN | the leanspec I.10a/b socket re-sign → capstone assembly un-gating (FABLE) | RUNNING |
-| DEC3R | the μ₃/Route-B campaign blueprint (codex HIGH; the Fable original died without artifact) | RUNNING |
-| DEC4R | the chain-blockers plan: BlockFrontier/C.27/RB3-gaps (codex HIGH; the Fable original died AFTER landing its probes — `leanfinal/scratch/DEC4_check.lean`, 181 lines, handed to the relaunch) | RUNNING |
-| DEC5R | H.116b4 examples-first map (codex HIGH; the Fable original died AFTER its battery PASSED — `runs/wave-b/h116b4_battery.py` + `out_DEC5_battery.log`, handed to the relaunch) | RUNNING |
+| RSGN | the leanspec I.10a/b socket re-sign → capstone assembly un-gating (FABLE) | RUNNING (leanspec ChapI edit + `ChapI/I10_I15_I18.lean` observed in-progress) |
+| DEC3R | μ₃/Route-B blueprint (codex HIGH) | DONE — commit b5d16d0f; gates unit AMND |
+| DEC4R | chain-blockers plan (codex HIGH) | DONE — commit 5755bc59; wave-1 = unit BW1 |
+| DEC5R | H.116b4 examples-first map (codex HIGH) | DONE — commit 93c618b8; fireable rows = unit HW1 |
+| AMND | the two DEC3R-mandated signed consumer amendments (hprev fence; chainNorm re-index) (codex HIGH) | QUEUED — codex 5h window at 96%; auto-launch at the 22:26 reset via `runs/wave-b/launch_wave_20260826.sh` |
+| BW1 | BLOCKERS_PLAN wave 1: norm bridge + shadow linearity corpus landing (codex default) | QUEUED — same launch |
+| HW1 | H116B4_MAP fireable rows GR-1/2 + GR-3/3b (codex default) | QUEUED — same launch |
 
 ## 7. Resume protocol (fresh agent)
 

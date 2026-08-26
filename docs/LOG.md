@@ -258,3 +258,26 @@ the S2-source + PK + af′ campaigns' consolidated effect). PK-7 (docs) done in 
 PROJECT_STATE §§2/4/6 rewritten; the review-queue rows were already in RQ's compilation.
 NEXT GATE (unit RSGN, Fable): the leanspec I.10a/b socket re-sign to C130s18's §4.4
 bodies → I.15–I.18 (`uniformity_of_capstoneHypotheses`) become mechanical projections.
+
+**2026-08-26 (evening) — the DEC wave lands; the next wave queued behind the codex window.**
+All three codex-HIGH relaunches returned SUPPLY within ~20 minutes, orchestrator-verified
+(both probes re-run green) and committed (b5d16d0f / 5755bc59 / 93c618b8). The load-bearing
+findings: (1) DEC3R decided OPEN-DICT-2 for FULL-CURRENT clearing `e(μᵢ)α` (FGMN Def 3.12)
+— consequence: `hprev : PrevGrade u'` is source-faithfully IMPOSSIBLE at u′=21, so the μ₃
+fleet is gated on TWO signed consumer amendments (the `2 ≤ f'` hprev fence; the coordinated
+`chainNormBelow`/`thetaRatio` re-index after finding `chainNorm 2 21 = keyAt 2` falsifies
+the signed strict degree premise — the source's n̂₂ is the landed `towerNorm 1`). 29-node
+blueprint delivered, zero new packaging. (2) DEC4R honestly DEMOTED the inherited F2-2
+probe prose (it transfers scalar principal-ideal membership, not bare norm-nonzero) and
+proved the reverse orientation; RB3's additivity gap shrank to a small API landing
+(`biRead_add`/`shadowDev_add` proved in the probe); the five remaining genuinely-new
+mechanisms are named and priced in BLOCKERS_PLAN_2026-08-26.md. (3) DEC5R found H.116b4's
+mechanism in the extended battery — children per node = 0 or #ker(Tₙ) by an AFFINE
+obstruction class, aggregate pushforward UNIFORM on support (and CELL-2 refutes the naive
+nonlinear-fibre = linear-kernel set identity, 27/81) — two rows fireable now, three research
+cores honestly BLOCKED. NEXT WAVE (AMND: the two amendments, codex HIGH; BW1: the
+probe-complete corpus landings; HW1: the two fireable H rows) is briefed and QUEUED behind
+the codex 5h window (96% at 17:55; launcher `runs/wave-b/launch_wave_20260826.sh` fires
+after the 22:26 reset). RSGN (Fable, leanspec I.10a/b re-sign) still running — its
+in-progress edits (`leanspec/Leanspec/ChapI.lean`, `leanfinal/Uniformity/ChapI/I10_I15_I18.lean`)
+observed and left untouched.
