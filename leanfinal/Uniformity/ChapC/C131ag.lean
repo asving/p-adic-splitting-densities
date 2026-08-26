@@ -6,6 +6,7 @@ Authors: Asvin G
 import Uniformity.ChapC.C52
 import Uniformity.ChapC.C131a
 import Uniformity.ChapC.C50
+import Uniformity.ChapC.C131af
 
 /-!
 # Uniformity.ChapC.C131ag — Chapter C, NODE C.131ag′ (unit U-ARITH, stage 1)
@@ -23,6 +24,18 @@ and `C131ae.budgetFloor_wtCoeff_bound` (same genre, opposite direction).
 
 Later units (U-ASSEMBLE, per the plan) EXTEND this file with `AF-6a`/`AF-6b`; this stage adds
 only `AF-5a`/`AF-5b`.
+
+## U-ASSEMBLE (stage 2)
+
+Adds `AF-6a` (`budget_of_mem_towerLocus`, ★ NODE C.131af′) and `AF-6b`
+(`towerLocus_iff_budget`, ★ NODE C.131ag′, the byte-mirror of leanspec `ChapC.lean:2030`'s
+signed `axiom towerLocus_iff_budget`). `AF-6a` chains AF-4
+(`Uniformity.Density.Tower.towerLocus_dev_strict_floor`, U-HEART's strict per-digit floor,
+landed in `C131af.lean`) through the flattening bridge
+`C131t.dv2Hgt_eq_WT_phiNF` → `C131a.WT_le_wtCoeff` → `C131k.xNF_coeff`/`xDigit_eq_dev` into
+AF-5b's ceiling wrapper. `AF-6b` assembles the iff from `AF-6a` (→) and the already-landed
+`Uniformity.Density.Tower.mem_towerLocus_of_budget` (C131ae.lean, ←). Both stages Lean-core
+plus the inherited declared cite `fgmn_dv_exact_mul` (C66b), never re-consumed independently.
 -/
 
 namespace Uniformity.Density.Tower.C131ag
@@ -93,11 +106,66 @@ theorem budgetFloor_le_addVal_of_wtCoeff {F : KeyFrame O π} {H₀ : ℕ} {hpin 
 
 end Uniformity.Density.Tower.C131ag
 
+open Polynomial IsLocalRing IsDiscreteValuationRing Uniformity.Density
+open Uniformity.Density.Leaf Uniformity.Density.Tower
+open Uniformity.Density.Tower.C131a Uniformity.Density.Tower.C131k
+open Uniformity.Density.Tower.C131t
+
+/-! ## AF-6a — locus membership implies every budget floor (U-ASSEMBLE, ★ NODE C.131af′) -/
+
+set_option linter.unusedVariables false in
+/-- **AF-6a (★ `budget_of_mem_towerLocus`, NODE C.131af′, `EFF.GENTOW1.22`).** A locus
+member `f ∈ towerLocus T μ₂` clears every budget floor: AF-4's strict per-digit floor on
+`dev Φ₂ f j`, flattened through the two-index weight (`dv2Hgt_eq_WT_phiNF`,
+`WT_le_wtCoeff`, `xNF_coeff`/`xDigit_eq_dev`) into a `wtCoeff` floor on the two-key
+development digit's own scalar coefficient, then converted to the `budgetFloor`-vs-`addVal`
+shape by AF-5b. The range hypotheses `ha`/`hb` are UNUSED — the floor holds for every
+`a b`, not just those in range — kept only to match the signed C.52 shape. -/
+theorem Uniformity.Density.Tower.budget_of_mem_towerLocus
+    {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+    {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)] {μ₂ : ℕ} (hμ₂ : 0 < μ₂)
+    {f : Polynomial O} (hf : f ∈ towerLocus T μ₂)
+    (j a b : ℕ) (hj : j < μ₂) (ha : a < F.e₁ * F.f₁) (hb : b < T.e₂ * T.f₂) :
+    (budgetFloor T μ₂ j a b : ℕ∞)
+      ≤ addVal O ((dev F.key (dev (composedKey T) f j) b).coeff a) := by
+  have hfloor : (((μ₂ - j) * T.E₂ + 1 : ℕ) : ℕ∞)
+      ≤ dv2Hgt (T.levelDatum hπ) (dev (composedKey T) f j) :=
+    towerLocus_dev_strict_floor T hπ hh hμ₂ hf hj
+  rw [dv2Hgt_eq_WT_phiNF T hπ] at hfloor
+  have hWT := WT_le_wtCoeff T (xNF F (dev (composedKey T) f j)) a b
+  rw [xNF_coeff, xDigit_eq_dev] at hWT
+  exact Uniformity.Density.Tower.C131ag.budgetFloor_le_addVal_of_wtCoeff T (hfloor.trans hWT)
+
+/-! ## AF-6b — the signed iff (U-ASSEMBLE, ★ NODE C.131ag′ / signed C.52) -/
+
+/-- **AF-6b (★ `towerLocus_iff_budget`, NODE C.131ag′, `EFF.GENTOW1.15`).** The signed iff,
+byte-mirroring leanspec `ChapC.lean:2030`'s `axiom towerLocus_iff_budget` (modulo
+`axiom → theorem` and namespace): the forward direction is AF-6a; the reverse direction is
+the already-landed `Uniformity.Density.Tower.mem_towerLocus_of_budget` (C131ae.lean). -/
+theorem Uniformity.Density.Tower.towerLocus_iff_budget
+    {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+    {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
+    (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
+    [Finite (ResidueField O)]
+    {μ₂ : ℕ} (hμ₂ : 0 < μ₂) {f : Polynomial O} (hf : f.Monic)
+    (hdeg : f.natDegree = μ₂ * T.D₂) :
+    f ∈ towerLocus T μ₂
+      ↔ ∀ j a b : ℕ, j < μ₂ → a < F.e₁ * F.f₁ → b < T.e₂ * T.f₂ →
+          (budgetFloor T μ₂ j a b : ℕ∞)
+            ≤ addVal O ((dev F.key (dev (composedKey T) f j) b).coeff a) :=
+  ⟨fun hmem j a b hj ha hb =>
+      Uniformity.Density.Tower.budget_of_mem_towerLocus T hπ hh hμ₂ hmem j a b hj ha hb,
+   fun hbud => mem_towerLocus_of_budget T hπ hh hμ₂ hf hdeg hbud⟩
+
 /-! ## Axiom footprint -/
 
 section AxCheck
 
 #print axioms Uniformity.Density.Tower.C131ag.budgetFloor_le_of_succ_le
 #print axioms Uniformity.Density.Tower.C131ag.budgetFloor_le_addVal_of_wtCoeff
+#print axioms Uniformity.Density.Tower.budget_of_mem_towerLocus
+#print axioms Uniformity.Density.Tower.towerLocus_iff_budget
 
 end AxCheck
