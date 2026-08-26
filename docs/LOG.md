@@ -281,3 +281,28 @@ the codex 5h window (96% at 17:55; launcher `runs/wave-b/launch_wave_20260826.sh
 after the 22:26 reset). RSGN (Fable, leanspec I.10a/b re-sign) still running — its
 in-progress edits (`leanspec/Leanspec/ChapI.lean`, `leanfinal/Uniformity/ChapI/I10_I15_I18.lean`)
 observed and left untouched.
+
+**2026-08-26 (night) — A-I.3 + THE CAPSTONE ASSEMBLY LANDS (unit RSGN, Fable, 52 tool
+calls).** The leanspec I.10a/I.10b socket bodies are re-signed from their freeze-era `True`
+placeholders to chapter C's enacted carriers (`C130s18.CanonicalLadderConfigData` /
+`CanonicalDeepTwistConfigData`, the PK-2/U15 split-carrier ∃-E shapes) — I.10a
+definitionally, I.10b keeping its frozen refinement shape with `Iff.rfl` gate pins; ambient
+universe PINNED to 0 (disclosed in-file: a Prop can't quantify universes and the frozen
+field sites carry no annotation; every arising instance lives at 0). Consequences
+machine-run in the §4 gate: the I-D13 `¬ CapstoneHypotheses` refutation NO LONGER
+ELABORATES (struck, text preserved); A-I.1's pre-flagged owner-gate-(a) narrowing has now
+HAPPENED (fields demanded at arising configurations only); two new S2 non-vacuity teeth.
+The non-swallowing fence re-checked at the resolution (C130s18 §5's two anti-swallow
+audits). THEN THE MILESTONE: all four capstone-assembly theorems land PROVED in
+`leanfinal/Uniformity/ChapI/I10_I15_I18.lean` — `drainage_of_capstoneHypotheses` (I.15),
+`decided_of_capstoneHypotheses` (I.16), `uniformity_of_capstoneHypotheses` (I.17),
+`totalMassOne_of_capstoneHypotheses` (I.18) — all exactly `[propext, Classical.choice,
+Quot.sound]`, orchestrator re-verified (both `lake env lean` runs exit 0 this session,
+independent of the unit's own roll-up builds). The A-I.3 review row sits at the top of the
+review queue's Tier 2. HONEST FRAME, verbatim from the amendment: `CapstoneHypotheses n`
+is now OPEN — no longer provably empty, NOT claimed inhabited (`a0`/`a1` open at n ≥ 3,
+arising-configuration supply open, `jd0`/`genhnBox2`/`w1`/I-D12 untouched). The frontier's
+top item becomes the INHABITATION campaign (field-list decomposer next). Census EOD:
+664/1237 PROVED, 487 carrier, 72 unlanded. One incident: a stale pre-PK12 `C130sg.olean`
+in the shared build tree (C130sg is in no roll-up) — rebuilt, artifact refresh only;
+noted for the roll-up wiring pass.

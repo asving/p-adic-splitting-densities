@@ -37,19 +37,23 @@ never pipe an output you need through head/tail; never trust a bare name-grep
 * **Legacy `lean/` project (untouched since 07/08):** the order-0 σ-keyed capstone
   `OM.RealInstanceV2.montes_unconditional` + wild wave 1 — machine-checked, Lean-core,
   conditional on `htameFE`/`hExhaust` as recorded there. Not this campaign's workstream.
-* **`leanfinal/` (the campaign):** census **658 / 1235 signed names PROVED**, 484 carrier,
-  79 unlanded, 6 conditional, 5 placeholder-body, 2 cite, 1 unresolved (2026-08-26, post-PK)
-  (`python3 spec/census_driver.py`); frontier
-  (`python3 spec/frontier.py` — file-existence proxy, do NOT quote as progress).
+* **`leanfinal/` (the campaign):** census **664 / 1237 signed names PROVED**, 487 carrier,
+  72 unlanded, 6 conditional, 5 placeholder-body, 2 cite, 1 unresolved (2026-08-26 EOD,
+  post-RSGN) (`python3 spec/census_driver.py`).
   Chapters: B and H required-work done; F complete; G complete; D one gate open;
   E one hard node (E.57); **C carries ~145 of the unlanded names**; I is the capstone
   conditionality chapter (placeholders + owner-era gates now unblocked by the protocol).
-* **The capstone chain (chapter I):** `CapstoneHypotheses n` (structure, landed as
-  elaboration gate) → I.15–I.18 assembly → `UniformityStatement`. Honest status: the
-  structure's `ladder`/`deepTwist` fields are guarded by the I.10a/I.10b sockets (bodies
-  `True`, owed to the tower-instantiation freeze); `jd0`/`genhnBox2` placeholders and the
-  `w1` debt are ruled open by A-I.1; five I-D12 `True` bodies (NS7Termination,
-  WindowPinningAt, GenhnHEAt, GenhnTow1At, TypeOfFaithful) await their resolution passes.
+* **The capstone chain (chapter I) — ASSEMBLY LANDED (A-I.3 + RSGN, 2026-08-26).**
+  All four assembly theorems (I.15–I.18: `drainage/decided/uniformity/totalMassOne
+  _of_capstoneHypotheses`) are PROVED Lean-core in `leanfinal/Uniformity/ChapI/
+  I10_I15_I18.lean`, with the I.10a/b sockets typed at C130s18's enacted carriers
+  (ambient universe pinned to 0, disclosed; I-D13 lifted; non-swallowing fence
+  machine-re-checked). Honest status: `CapstoneHypotheses n` is OPEN — no longer
+  provably empty, NOT claimed inhabited. The full theorem = inhabiting it:
+  `a0`/`a1` at n ≥ 3, the arising-configuration socket supply (S2 teeth landed
+  conditional on `w : S2LevelOneThreshold` + `IsAdicComplete`), the `jd0`/`genhnBox2`
+  placeholders + `w1` debt (A-I.1), and the five I-D12 `True` bodies (NS7Termination —
+  the ready-to-declare C.94 cite — WindowPinningAt, GenhnHEAt, GenhnTow1At, TypeOfFaithful).
 
 ## 3. Trusted base (cites)
 
@@ -71,17 +75,16 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 
 ## 4. The live frontier (what blocks what) — rewritten 2026-08-26
 
-1. **The capstone gate: the leanspec I.10a/I.10b socket re-sign.** PK-1..6 ENACTED
-   (2026-08-26, commits 1dc51795 + 21838f72 — the latter is C130in.lean's RealizedInput
-   retype, missed by the original add): the star `C130sg.s2_calculus_discharge : Nonempty
-   (FGMNCalculus (s2DepthOne) 2 1 5)` is UNCONDITIONAL Lean-core; both S2 socket
-   applications fire with no provably-empty premise; PK-7 (docs) done this session.
-   REMAINING: re-sign leanspec's `CanonicalLadderConfig`/`CanonicalDeepTwistConfig`
-   (I.10a/b, bodies `True`) to C130s18's enacted §4.4 exists-E `ChainRealization` bodies
-   (explicit-universe shape, `(fieldE := fE)` — per verdict_PK12.md "Notes for later
-   nodes"), recorded amendment; then the four capstone-assembly theorems (I.15–I.18,
-   `uniformity_of_capstoneHypotheses` among them — all four still UNLANDED per census)
-   become mechanical projections. UNIT RSGN in flight.
+1. **The CapstoneHypotheses INHABITATION campaign (the new top item — RSGN closed the
+   assembly gate 2026-08-26).** With I.15–I.18 landed, `UniformityStatement` reduces to
+   inhabiting `CapstoneHypotheses n`. The named debts, in likely order of attack:
+   (a) the five I-D12 `True` bodies — NS7Termination first (= the C.94 AGNPRW Thm 5.6
+   cite, redraft `NS7TerminationStatementR` machine-safe and READY TO DECLARE per §3);
+   (b) the arising-configuration socket supply beyond the landed S2 teeth (feeds from
+   the μ₃ campaign, item 2); (c) `a0`/`a1` at n ≥ 3; (d) `jd0`/`genhnBox2` + the `w1`
+   debt (A-I.1's ruling). NEXT CONCRETE STEP: a decomposer unit enumerating
+   `CapstoneHypotheses`' full field list against the landed corpus (what each field
+   needs, supplier chapter, sizing) — then fleet the suppliers.
 2. **The μ₃ campaign — blueprint DELIVERED** (`docs/in-progress/MU3_CAMPAIGN_2026-08-26.md`,
    DEC3R): 29 nodes wired to `fgmn_model_calculus_nonempty`, zero new packaging.
    OPEN-DICT-2 DECIDED: full-current clearing `e(μᵢ)α` (FGMN Def 3.12) — so `hprev` is
@@ -137,7 +140,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | unit | what | status |
 |---|---|---|
 | (archive) | everything through 2026-08-26 (S2-source campaign, GC-13 bridge, af′ chain, amendments, E.57/D-gate/dv-engine closures, PK-1..7, RQ, UFEED, SIMP, EFF sweep GENTOW5+T2s5s6+W12) | ALL DONE — LOG + git log; every landing orchestrator-verified |
-| RSGN | the leanspec I.10a/b socket re-sign → capstone assembly un-gating (FABLE) | RUNNING (leanspec ChapI edit + `ChapI/I10_I15_I18.lean` observed in-progress) |
+| RSGN | the leanspec I.10a/b socket re-sign → capstone assembly (FABLE) | DONE — A-I.3 enacted + ALL FOUR I.15–I.18 LANDED Lean-core; orchestrator re-verified both builds; committed |
 | DEC3R | μ₃/Route-B blueprint (codex HIGH) | DONE — commit b5d16d0f; gates unit AMND |
 | DEC4R | chain-blockers plan (codex HIGH) | DONE — commit 5755bc59; wave-1 = unit BW1 |
 | DEC5R | H.116b4 examples-first map (codex HIGH) | DONE — commit 93c618b8; fireable rows = unit HW1 |
