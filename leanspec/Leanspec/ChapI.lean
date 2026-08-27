@@ -79,6 +79,15 @@ exactly `w : S2LevelOneThreshold` + `IsAdicComplete`). The block is NOT thereby 
 `a0`/`a1` stay open at `n ≥ 3`, the guarded fields still demand supply at the arising
 configurations, and the `jd0`/`genhnBox2`/`w1` debts and five I-D12 placeholders are untouched.
 
+**STATE UPDATE (2026-08-27, AMENDMENT A-I.4): I.01'S SIGNED BODY IS RECONCILED WITH THE
+LANDED A-C.6 REDRAFT.** C.94 has declared the allowlisted cite
+`Uniformity.Density.Tower.agnprw_termination : NS7TerminationStatementR`, and landed I.01 has
+already consumed it through `ns7Termination_of_cite`. This amendment replaces ONLY
+`NS7Termination`'s literal `True` matrix by the byte-shaped redrafted descent assertion; the
+name, bundle quantifier, and `Prop` kind are unchanged, and every other signed declaration is
+byte-unchanged. Gate item (14) now pins the body definitionally to
+`Tower.NS7TerminationStatementR` and re-elaborates the `CapstoneHypotheses.ns7` projection.
+
 Since 2026-08-20 the definitional layer I.01–I.03/I.05–I.07/I.21 IS landed in `leanfinal`
 (`Uniformity/ChapI/I01.lean` … `I21.lean`, byte-frozen transcriptions), and A-I.3's Stage-2
 companion lands I.10a/I.10b + I.10 + I.15–I.18 there (`Uniformity/ChapI/I10_I15_I18.lean`) at
@@ -430,26 +439,36 @@ none is proved; non-vacuity is this file's elaboration check plus the `n ≤ 2` 
 /-! ### NODE I.01 [def] — `NS7(O)`, the termination hypothesis at exactly HYP.15's strength.
 Lands `Uniformity.Density.NS7Termination`. ENV-I1.
 
-⚠ **BLOCKED-UNTIL-RESOLUTION, and the published resolution route is REFUTED (defect I-D6).** The
-signed body is the literal `True` placeholder below; FROZEN are the name, the bundle quantifier
-and the `Prop` kind. The A-C.1 addendum's instruction to type it as `NS7TerminationStatement` is
-UNSAFE — that statement proves `False` (`ChapC/C94_REFUTATION.lean.txt`) and was struck at A-C.6.
-The live target is `LeanspecC.NS7TerminationStatementR`, awaiting the owner's gate-(b) signature;
-until then this field is carried, and on signature it becomes cite-conditional (visible to
-`#print axioms`, gate I.25). -/
+~~⚠ **BLOCKED-UNTIL-RESOLUTION, and the published resolution route is REFUTED (defect I-D6).**
+The signed body is the literal `True` placeholder; FROZEN are the name, the bundle quantifier
+and the `Prop` kind. The live target is `LeanspecC.NS7TerminationStatementR`, awaiting the
+owner's gate-(b) signature.~~
+
+⛔ **RESOLVED AT AMENDMENT A-I.4 (2026-08-27): the BODY is TYPED at the landed A-C.6 redraft.**
+C.94's allowlisted `agnprw_termination : Tower.NS7TerminationStatementR` is declared and
+consumed by landed I.01. The refuted A-C.1 `NS7TerminationStatement` remains untouched. ONLY
+this body's `True` matrix changes; the frozen name, bundle quantifier, and `Prop` kind are
+byte-preserved. The §4 gate pins the replacement by `Iff.rfl`. -/
 
 /-- `NS7(O)` (Display A line 1; ledger HYP.15, CARRY-as-CITE): OM descent terminates over every
 complete DVR with finite residue field. Discharged by chapter C's gate-(b) cite C.94 ([AGNPRW]
 **Thm 5.6**, published — the repo's "Thm 5.2" is the arXiv-v1 number, A-3 audit §3) once signed;
 carried as a named `Prop` until then.
 
-⚠ STUB-STAGE BODY (BLOCKED-UNTIL-RESOLUTION): the real body quantifies over chapter C's
+~~⚠ STUB-STAGE BODY (BLOCKED-UNTIL-RESOLUTION): the real body quantifies over chapter C's
 descent-history type and asserts finiteness. FROZEN HERE: the name, the bundle quantifier, the
-`Prop` kind. **Do not resolve it against `NS7TerminationStatement` (refuted) — see I-D6.** -/
+`Prop` kind.~~
+
+**[A-I.4, 2026-08-27]** The body below is definitionally the A-C.6 redraft
+`Tower.NS7TerminationStatementR` (and not the refuted `NS7TerminationStatement`). -/
 def NS7Termination : Prop :=
   ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
-    [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (IsLocalRing.ResidueField O)],
-    True
+    [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
+    [Finite (IsLocalRing.ResidueField O)] (π : O), Irreducible π →
+    ∀ f : Polynomial O, f.Monic → Squarefree f →
+    ∀ hist : ℕ → Uniformity.Density.Tower.DescentState O,
+      (∀ n, (hist n).block ∣ f) →
+      (∀ n, Uniformity.Density.Tower.DescentStepR π (hist n) (hist (n + 1))) → False
 
 /-! ### NODE I.02 [def] — `A0_n`, the decided-value law at degree `n` (HYP.25's Lean-facing
 slice). Lands `Uniformity.Density.DecidedSliceAt`. ENV-I1.
@@ -1050,11 +1069,16 @@ example : ¬ (∀ (K ι : Type) [Field K] (Rh RG : ι → K), Weld.W1Transport R
     (fun _ => (1 : ZMod 3)) (fun _ => (0 : ZMod 3))).mp (h (ZMod 3) (Fin 1) _ _)
   exact one_ne_zero ((this 0).mpr rfl)
 
--- (14) the FENCE, stated as a type: `NS7Termination`'s signed body is the placeholder, and this
--- is the ONE machine-visible fact about it. Anything stronger would be a resolution, which
--- defect I-D6 forbids until the C.94 REDRAFT (`LeanspecC.NS7TerminationStatementR`, A-C.6) is
--- signed by the owner at gate (b) — the instruction A-I.1 re-pointed in the blueprint.
-example : NS7Termination := fun _ => trivial
+-- (14) ~~the FENCE: `NS7Termination`'s signed body is the placeholder, witnessed by the old
+-- gate below.~~ ⛔ **RESOLVED BY A-I.4 (2026-08-27):** the old gate is struck with its text
+-- preserved, and the replacement pins the new body to the landed A-C.6 redraft on the nose.
+-- The second example is the explicit consumer audit: I.10's `ns7` field still projects at the
+-- re-signed type, with the field list byte-unchanged.
+--
+-- STRUCK PRE-A-I.4 GATE (no longer elaborates, which is the point):
+-- example : NS7Termination := fun _ => trivial
+example : NS7Termination ↔ Uniformity.Density.Tower.NS7TerminationStatementR := Iff.rfl
+example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n) : NS7Termination := h.ns7
 
 -- (15) **[A-I.3] anti-drift pins: the socket bodies ARE chapter C's enacted I.10a/I.10b
 -- data-carriers, DEFINITIONALLY** (`Iff.rfl` — fails the build the moment either side drifts;
