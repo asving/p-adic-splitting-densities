@@ -2482,12 +2482,23 @@ noncomputable def FGMNCalculus.chainNormBelow {F : KeyFrame O π} {H₀ : ℕ}
   I.chainNorm (i - 1) k
 
 /-- the normalizer-RATIO `ϑ`-carrier (GC-14's ratio form; no orientation committed):
-`res(n̂(u')^t / n̂(t·u'))` read through the interface at grade `t·u'`. -/
+`res(n̂(u')^t / n̂(t·u'))` read through the interface at the CLEARED grade `e'·t·u'`.
+[RE-SIGNED: A-C.21, 2026-08-27 — ANORM/verdict_MSG2] the read grades are the operands'
+honest FULL-CURRENT-cleared grades (MU3_CAMPAIGN §2's decision coordinate): the source
+grades the ladder normalizers `n̂₂(u₃)`/`n̂₂(u₃d)` at `κ̄ := u₃/e(μ₂)` resp.
+`β_t := u₃d/e(μ₂)` (GENTOW2_PROOF S5.2 ll.324–325, 711, 740–744) — Γ-valued PRE-clearing
+rationals, whose integer coordinate is `e(μ₃)·β_t = e₃·(d·u₃) = e'·(d·u')` (§2.2's identity
+`e(μᵢ)β = eᵢ·(e(μᵢ₋₁)β)`).  The pre-A-C.21 read `t·u'` took the printed index as if
+cleared and is OFF-GRADE at every honest instance (machine: `C132rp9`+`C132rp10b` —
+`chainNormBelow 2 21 = 2⁴Φ′` has μ₃ grade `42 = 2·21`; the landed depth-1 grade is
+`10 = 2·5`), making the old ratio read zero.  Leanfinal twin of the amended def:
+`FGMNCalculus.thetaRatioCleared` (`Uniformity/ChapC/C132sg3.lean`; the pre-A-C.21
+`thetaRatio` is retained there verbatim for the C132sg2 refutation record). -/
 noncomputable def FGMNCalculus.thetaRatio {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     {r : ℕ} {W : DeepTower F H₀ hpin r} {e' f' u' : ℕ}
     (I : FGMNCalculus W e' f' u') (t : ℕ) : W.fld r :=
-  I.Rgr (t * u') ((I.chainNormBelow r u') ^ t) *
-    (I.Rgr (t * u') (I.chainNormBelow r (t * u')))⁻¹
+  I.Rgr (e' * (t * u')) ((I.chainNormBelow r u') ^ t) *
+    (I.Rgr (e' * (t * u')) (I.chainNormBelow r (t * u')))⁻¹
 
 /-- the depth-3 recipe key (the R3-3-completed display; stub-side shared abbreviation for
 C.101/C.103). -/
@@ -2519,22 +2530,40 @@ axiom gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     -- μ₃ target `f' = 1, u' = 21`, `PrevGrade 21` is false while the conclusion is the
     -- cancellation-only base identity; `leanfinal/scratch/DEC3_probe.lean`
     -- `ratio_power_one` machine-proves that literal base case without graded multiplication.
-    (hprev : 2 ≤ f' → I.PrevGrade u')
+    -- [RE-SIGNED: A-C.21, 2026-08-27 — ANORM/verdict_MSG2] the fence's GRADE re-indexed
+    -- `u' ↦ e'·u'` coordinately with the B-1 family below: the power-law induction
+    -- multiplies at the normalizer's CLEARED grade `e'·u'`, and the source's own peel
+    -- step asserts exactly this preceding-group membership ("at each peel the split-off
+    -- factor's grade, κ̄ resp. 0, lies in Γ₂", GENTOW2_PROOF S5.2 l.748; Γ₂-membership
+    -- = `e₃ ∣ cleared grade` by MU3_CAMPAIGN §2.2) — TRUE at the honest grades
+    -- (`e' ∣ e'·u'`), unlike the pre-A-C.21 odd `u'` (coprime to `e'`).
+    (hprev : 2 ≤ f' → I.PrevGrade (e' * u'))
     -- [A-C.12, 2026-08-24 RE-SIGN — GSW] the source-stated B-1 normalizer supply
     -- (GENTOW2_PROOF S5.2 proof, ll.740–744: "N := n̂₂(u₃), M := n̂₂(u₃d): ladder
     -- monomials, deg < m₃, single-point N₃-polygon, exact grades κ̄ resp. β_t (B-1)"):
     -- the slot normalizer monomials sit at their exact grades, below the key degree,
-    -- and are nonzero.  Provability certificate: leanfinal/scratch/GSW_check.lean
-    -- `gentow2_Bpp_resigned_provable` (Lean-core, from the A-C.11 class fields alone;
-    -- [A-C.13]: certificate predates the restored premise — superseded by the landed
-    -- leanfinal proof in `Uniformity/ChapC/C99r.lean`, which consumes `hprev`).
-    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNormBelow r (d * u')))
+    -- and are nonzero.
+    -- [RE-SIGNED: A-C.21, 2026-08-27 — ANORM/verdict_MSG2] the exact-grade family
+    -- re-indexed `d·u' ↦ e'·(d·u')`, and the conclusion's `Rgr` read grades with it
+    -- (an off-grade `Rgr` reads zero): the source's B-1 grades are the Γ-valued
+    -- `κ̄ := u₃/e(μ₂)`, `β_t := u₃d/e(μ₂)` (S5.2 ll.324–325, 711 — PRE-clearing), whose
+    -- full-current integer coordinate (MU3_CAMPAIGN §2) is `e(μ₃)·β_t = e₃·(d·u₃)
+    -- = e'·(d·u')`.  The pre-A-C.21 numeral `d·u'` read the printed index as if cleared —
+    -- machine-REFUTED at the μ₃ instance (`C132sg2.s2Mu3_gentow5w_two_hnorm_refuted`:
+    -- `chainNormBelow 2 21 = 2⁴Φ′` has EVEN μ₃ grade `42 = 2·21`, `C132rp9` +
+    -- `C132rp10b.s2Hgt₃_corr`, while the demanded `21` is odd — the recipe-fields
+    -- printed-numeral defect genre; the depth-1 honest grade is `10 = e'·u'` vs printed
+    -- `5`).  Provability certificate chain: GSW_check → `C99r.gentow2_Bpp` (pre-A-C.21,
+    -- retained for the C132sg2 record) → the landed A-C.21 twin
+    -- `Uniformity/ChapC/C132sg3.lean` `gentow2_Bpp_cleared` (Lean-core, consumes `hprev`
+    -- at the cleared grade `e'·u'`).
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (e' * (d * u')) (I.chainNormBelow r (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
       (I.chainNormBelow r (d * u')).natDegree < (I.keyAt r).natDegree)
     (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNormBelow r (d * u') ≠ 0)
     {t : ℕ} (ht : t < f') :
-    I.Rgr ((f' - t) * u') (I.chainNormBelow r ((f' - t) * u')) * I.thetaRatio (f' - t)
-      = (I.Rgr u' (I.chainNormBelow r u')) ^ (f' - t)
+    I.Rgr (e' * ((f' - t) * u')) (I.chainNormBelow r ((f' - t) * u')) * I.thetaRatio (f' - t)
+      = (I.Rgr (e' * u') (I.chainNormBelow r u')) ^ (f' - t)
 
 axiom theta_letter_valued {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
@@ -2543,7 +2572,10 @@ axiom theta_letter_valued {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {
     (hfloor : e' * W.Econst r < u')
     -- [A-C.12 RE-SIGN — GSW] the same B-1 normalizer supply as gentow2_Bpp (the first
     -- conjunct is its d = 1 cancellation; the letter clause reads the same monomials).
-    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNormBelow r (d * u')))
+    -- [RE-SIGNED: A-C.21, 2026-08-27 — ANORM] grades cleared `d·u' ↦ e'·(d·u')`,
+    -- coordinately with gentow2_Bpp (whose hunk carries the full print-read record);
+    -- the conclusion inherits the re-index through the amended `thetaRatio` def.
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (e' * (d * u')) (I.chainNormBelow r (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
       (I.chainNormBelow r (d * u')).natDegree < (I.keyAt r).natDegree)
     (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNormBelow r (d * u') ≠ 0) :
@@ -3797,10 +3829,16 @@ axiom tower_lift {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
 form in the RATIO carrier; (i) the `i = 2` discharge from C.99; (ii) the `i = 1` SHAPE with
 the tie OPEN; (iii) `i ≥ 3` OPEN — no axiom asserts it, the definition IS the carrier] -/
 
+-- [RE-SIGNED: A-C.21, 2026-08-27 — ANORM/verdict_MSG2] the carrier's `Rgr` read grade
+-- cleared `(f'-t)·u' ↦ e'·((f'-t)·u')`, coordinately with the C.99 family (the
+-- gentow2_Bpp hunk carries the print-read record; an off-grade `Rgr` reads zero, so the
+-- pre-A-C.21 carrier is FALSE at the honest μ₃ instance — machine:
+-- `C132sg3.s2Mu3_gentow5w_old_refuted`).  Leanfinal twin: `GENTOW5WCleared`
+-- (`C132sg3.lean`; the pre-A-C.21 def is retained there for the C132sg2 record).
 def GENTOW5W {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower F H₀ hpin r) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u') : Prop :=
   ∃ w : W.fld r, w ≠ 0 ∧ ∀ t, t < f' →
-    I.Rgr ((f' - t) * u') (I.chainNormBelow r ((f' - t) * u')) * I.thetaRatio (f' - t)
+    I.Rgr (e' * ((f' - t) * u')) (I.chainNormBelow r ((f' - t) * u')) * I.thetaRatio (f' - t)
       = w ^ (f' - t)
 
 def Wle {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
@@ -3827,8 +3865,16 @@ axiom gentow5w_two {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     -- C.99 twin `C99r.gentow2_Bpp` at `r = 2` + `Rgr_ne_zero` for the witness `w`).
     -- [RE-SIGNED: A-C.17, 2026-08-26 — DEC3R/MU3_CAMPAIGN §3] the same fenced
     -- `PrevGrade` supply as amended C.99; its `f' = 1` branch is cancellation-only.
-    (hprev : 2 ≤ f' → I.PrevGrade u')
-    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNormBelow 2 (d * u')))
+    -- [RE-SIGNED: A-C.21, 2026-08-27 — ANORM/verdict_MSG2] the coordinated grade
+    -- re-index `u' ↦ e'·u'` (hprev), `d·u' ↦ e'·(d·u')` (hnorm), conclusion through the
+    -- amended `GENTOW5W`/`thetaRatio` (the gentow2_Bpp hunk carries the full print-read
+    -- record; the pre-A-C.21 hnorm was machine-refuted at the μ₃ instance,
+    -- `C132sg2.s2Mu3_gentow5w_two_hnorm_refuted`).  Leanfinal twin:
+    -- `C132sg3.gentow5w_two_cleared` (the pre-A-C.21 `C107ac14.gentow5w_two` retained
+    -- for the C132sg2 record); μ₃ instance discharge, ALL legs closed:
+    -- `C132sg3.s2Mu3_gentow5w_two` — the UNCONDITIONAL `GENTOW5W` at `(2,1,21)`.
+    (hprev : 2 ≤ f' → I.PrevGrade (e' * u'))
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (e' * (d * u')) (I.chainNormBelow 2 (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
       (I.chainNormBelow 2 (d * u')).natDegree < (I.keyAt 2).natDegree)
     (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNormBelow 2 (d * u') ≠ 0) :
@@ -3852,13 +3898,19 @@ axiom gentow5w_one_shape {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     -- tie carried as the explicit hypothesis `htie` — exactly the missing law).
     -- [RE-SIGNED: A-C.17, 2026-08-26 — DEC3R/MU3_CAMPAIGN §3] fenced exactly as the
     -- C.99 engine this path consumes; `DEC3_probe.ratio_power_one` certifies the base branch.
-    (hprev : 2 ≤ f' → I.PrevGrade u')
-    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (d * u') (I.chainNormBelow 1 (d * u')))
+    -- [RE-SIGNED: A-C.21, 2026-08-27 — ANORM/verdict_MSG2] the same coordinated grade
+    -- re-index as gentow5w_two (hprev `u' ↦ e'·u'`, hnorm `d·u' ↦ e'·(d·u')`, the
+    -- conclusion's `Rgr` read with them); at depth 1 the honest instance grade is the
+    -- landed `10 = e'·u'` vs the printed `5` (the gentow2_Bpp hunk's print-read record).
+    -- Conditional leanfinal twin: `C132sg3.gentow5w_one_shape_of_letter_tie_cleared`
+    -- (letter tie still carried — OPEN-LETTERS unchanged by this amendment).
+    (hprev : 2 ≤ f' → I.PrevGrade (e' * u'))
+    (hnorm : ∀ d, 0 < d → d ≤ f' → I.ExactGrade (e' * (d * u')) (I.chainNormBelow 1 (d * u')))
     (hnormdeg : ∀ d, 0 < d → d ≤ f' →
       (I.chainNormBelow 1 (d * u')).natDegree < (I.keyAt 1).natDegree)
     (hnormz : ∀ d, 0 < d → d ≤ f' → I.chainNormBelow 1 (d * u') ≠ 0) :
     ∃ k : ℕ, ∀ t, t < f' →
-      I.Rgr ((f' - t) * u') (I.chainNormBelow 1 ((f' - t) * u')) * I.thetaRatio (f' - t)
+      I.Rgr (e' * ((f' - t) * u')) (I.chainNormBelow 1 ((f' - t) * u')) * I.thetaRatio (f' - t)
         = (I.letterZ 1 ^ k) ^ (f' - t)
 
 /-! ### NODE C.90 [theorem] — GENTOW5-B (a): the key certificate at the three-regime scope
@@ -3903,9 +3955,13 @@ axiom gentow5_key_certificate {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H�
     (c : ℕ → (W.trunc r le_rfl).fld r)
     (hψc : ψ' = Polynomial.X ^ f'
       - ∑ t ∈ Finset.range f', Polynomial.C (c t) * Polynomial.X ^ t)
+    -- [RE-SIGNED: A-C.21, 2026-08-27 — ANORM] the display's `Rgr` read grade cleared
+    -- `(f'-t)·u' ↦ e'·((f'-t)·u')`, coordinately with the `GENTOW5W` law it is rewritten
+    -- through (the gentow2_Bpp hunk's print-read record).  Leanfinal twin:
+    -- `C132sg3.gentow5_key_certificate_cleared`.
     (hres : (I r le_rfl).Rres Φnext
       = Polynomial.X ^ f' - ∑ t ∈ Finset.range f',
-          Polynomial.C ((I r le_rfl).Rgr ((f' - t) * u')
+          Polynomial.C ((I r le_rfl).Rgr (e' * ((f' - t) * u'))
               ((I r le_rfl).chainNormBelow r ((f' - t) * u'))
             * (I r le_rfl).thetaRatio (f' - t) * c t) * Polynomial.X ^ t)
     -- [A-C.14, 2026-08-25 RE-SIGN — AC14] the omitted third admissibility conjunct — the

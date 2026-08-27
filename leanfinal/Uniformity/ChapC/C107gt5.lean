@@ -199,6 +199,13 @@ carrier (leanspec byte-faithful twin, `ChapC.lean:3764–3768`, modulo the desig
 substitution `DeepTower ↦ DeepTower.{0, uKt}`). The definition IS the carrier: no axiom asserts
 it holds at any `i`; C.99 discharges it at `i = 2` under extra supply hypotheses (§1 of this
 file's docstring), the `i = 1` shape and `i ≥ 3` cases stay OPEN per the C.89 docstring. -/
+-- [A-C.21, 2026-08-27 — ANORM/verdict_MSG2] SUPERSEDED CARRIER, RETAINED VERBATIM.
+-- The signed `GENTOW5W`/`thetaRatio` now read `Rgr` at the CLEARED grades
+-- `e'·((f'-t)·u')`; this pre-A-C.21 carrier is off-grade (reads zero) and is FALSE at
+-- the honest μ₃ instance (`C132sg3.s2Mu3_gentow5w_old_refuted`).  Kept byte-unchanged
+-- because the do-not-edit record `C132sg2.lean` states its theorems against it.  The
+-- A-C.21 twins are `GENTOW5WCleared`/`FGMNCalculus.thetaRatioCleared`/`WleCleared`
+-- (`C132sg3.lean`).
 def GENTOW5W {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower.{0, uKt} F H₀ hpin r) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u') : Prop :=
   ∃ w : W.fld r, w ≠ 0 ∧ ∀ t, t < f' →

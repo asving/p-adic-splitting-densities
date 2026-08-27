@@ -183,6 +183,14 @@ private theorem ratio_power_law {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H
 axiom.  The documented route verbatim: the `𝒲` witness at depth 2 is
 `w := Rgr u' (chainNorm 2 u')`, nonzero by `Rgr_ne_zero` at the `d = 1` supply rows, and the
 per-`t` ratio law IS the landed re-signed C.99 (`C99r.gentow2_Bpp` at `r = 2`). -/
+-- [A-C.21, 2026-08-27 — ANORM/verdict_MSG2] SUPERSEDED SIGNATURE, RETAINED VERBATIM
+-- (with `ratio_power_law` and `gentow5w_one_shape_of_letter_tie` below): the signed
+-- family now reads all grades in the CLEARED coordinate; these pre-A-C.21 twins are kept
+-- byte-unchanged because the do-not-edit refutation record `C132sg2.lean` consumes
+-- `gentow5w_two` (with the old-shape `hnorm` term) and states against the pre-A-C.21
+-- `GENTOW5W`.  A-C.21 twins: `C132sg3.gentow5w_two_cleared`,
+-- `C132sg3.gentow5w_one_shape_of_letter_tie_cleared`,
+-- `C132sg3.gentow5_key_certificate_cleared`.
 theorem gentow5w_two {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (W : DeepTower.{0, uKt} F H₀ hpin 2) (e' f' u' : ℕ) (I : FGMNCalculus W e' f' u')
     (he' : 0 < e') (hf' : 0 < f') (hcop : Nat.Coprime u' e')
@@ -236,8 +244,11 @@ theorem gentow5w_one_shape_of_letter_tie {F : KeyFrame O π} {H₀ : ℕ} {hpin 
 computation behind the source display `psi^{(w)} := w^f · psi(y/w)` read on the digit-string
 polynomial. -/
 
+-- [A-C.21, 2026-08-27 — ANORM] `private` removed from the two `wconj` helpers below
+-- (statements byte-unchanged): the A-C.21 cleared-grade C.90 twin
+-- (`C132sg3.gentow5_key_certificate_cleared`) reuses them verbatim.
 open Polynomial in
-private theorem tail_natDegree_lt {K : Type uKt} [Field K] (f' : ℕ) (hf' : 0 < f')
+theorem tail_natDegree_lt {K : Type uKt} [Field K] (f' : ℕ) (hf' : 0 < f')
     (c : ℕ → K) :
     (∑ t ∈ Finset.range f', C (c t) * X ^ t).natDegree < f' := by
   have h : (∑ t ∈ Finset.range f', C (c t) * X ^ t).natDegree ≤ f' - 1 := by
@@ -250,7 +261,7 @@ private theorem tail_natDegree_lt {K : Type uKt} [Field K] (f' : ℕ) (hf' : 0 <
   omega
 
 open Polynomial in
-private theorem wconj_X_pow_sub_sum {K : Type uKt} [Field K] (w : K) (hw : w ≠ 0)
+theorem wconj_X_pow_sub_sum {K : Type uKt} [Field K] (w : K) (hw : w ≠ 0)
     (f' : ℕ) (hf' : 0 < f') (c : ℕ → K) :
     wconj w (X ^ f' - ∑ t ∈ Finset.range f', C (c t) * X ^ t)
       = X ^ f' - ∑ t ∈ Finset.range f', C (w ^ (f' - t) * c t) * X ^ t := by

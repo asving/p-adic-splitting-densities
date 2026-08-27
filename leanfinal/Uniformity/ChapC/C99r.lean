@@ -115,6 +115,13 @@ consuming the [A-C.13] `hprev` supply at its second grade `u'` — `Rgr_ne_zero`
 supply, field cancellation) — no scope fence, no floor arithmetic, no cite is consumed by
 this algebra; `hr`, `he'`, `hcop`, `hfloor` are unused, carried only for fidelity to the signed
 scope. -/
+-- [A-C.21, 2026-08-27 — ANORM/verdict_MSG2] SUPERSEDED SIGNATURE, RETAINED VERBATIM.
+-- The signed `gentow2_Bpp` now reads all B-1/PrevGrade/conclusion grades in the CLEARED
+-- coordinate (`e'·(d·u')` etc.; the leanspec hunk carries the print-read).  This
+-- pre-A-C.21 twin is kept byte-unchanged because the do-not-edit refutation record
+-- `C132sg2.lean` elaborates against it; its `hnorm` family is machine-refuted at the
+-- honest μ₃ instance (`C132sg2.s2Mu3_gentow5w_two_hnorm_refuted`).  The A-C.21 twin is
+-- `C132sg3.gentow2_Bpp_cleared`.
 theorem gentow2_Bpp {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
     (W : DeepTower.{0, uKt} F H₀ hpin r) (e' f' u' : ℕ) [I : FGMNCalculus W e' f' u']
     (hr : r = 2)   -- ⚠ SCOPE FENCE (A-C.1 self-catch, carried unchanged by A-C.12)
