@@ -229,26 +229,26 @@ the theorem exists and must not be duplicated. Hard exporters and validity proof
 
 | ID | Kind | Action | Exact inputs (file:line) | Output |
 |---|---|---|---|---|
-| LS-T00 | REUSE | Pin exact four-way equivalence | `IFC0.lean:120-137` | `ladderField_iff_suppliers` |
-| LS-T01 | REUSE | Pin four-to-field assembly | `IFC0.lean:141-147`; `E24.lean:147-155` | `ladderField_of_suppliers` |
-| LS-T02 | NEW | Destructure guard; install domain/DVR instances | `C130s18.lean:169-175` | wrapper helper |
-| LS-H00 | REUSE | Rewrite package to `Nonempty RungInterface` | `E24.lean:130-132`; `E12.lean:130-157` | unfold only |
-| LS-H01 | NEW | Package completed HE7 certificate as `RungInterface` | `E12.lean:130-157`; hard exporter | structure literal |
-| LS-H02 | NEW | Lift completed exporter to package supplier | `IFC0.lean:74-81`; LS-T02/H01 | exact binder wrapper |
-| LS-L00 | REUSE | One `PartitionLeg` to one `BlockSuite` | `E57p.lean:188-246` | `toBlockSuite` |
-| LS-L01 | NEW | Map `Nonempty PartitionLeg` to `Nonempty BlockSuite` | `E57p.lean:188-246`; `E39.lean:110-114` | probed helper |
-| LS-L02 | NEW | Curry partition endpoint into `LB1Carrier` | `E39.lean:110-114`; LS-L01 | trigger wrapper |
-| LS-L03 | NEW | Lift carrier to `LadderLB1Supplier` | `IFC0.lean:85-92`; LS-T02/L02 | binder wrapper |
-| LS-M00 | NEW | Assemble `MidPeelEmission` from seven real fields | `E40.lean:152-164` | probed record literal |
-| LS-M01 | NEW | Curry recentered endpoint into `MP1Carrier` | `E40.lean:172-178`; LS-M00 | trigger wrapper |
-| LS-M02 | NEW | Lift carrier to `LadderMP1Supplier` | `IFC0.lean:96-103`; LS-T02/M01 | binder wrapper |
-| LS-V00 | REUSE | Rewrite `VarthetaRes` to `HVarthetaRes` | `E61.lean:145-157` | constructor/projection |
-| LS-V01 | REUSE | Close HVR from arena agreement | `D62.lean:89-95` | landed theorem |
-| LS-V02 | REUSE | Close HVR from τ-letter laws | `D62w.lean:94-103` | landed theorem |
-| LS-V03 | NEW | Wrap owner-approved sitewise endpoint | `IFC0.lean:108-115`; LS-V00 | index/binder wrapper |
-| LS-A00 | REUSE | Assemble four suppliers | `IFC0.lean:141-147` | `LadderField n` |
-| LS-A01 | NEW | Project four fields at concrete tooth | `E24.lean:147-155`; N2 guard | four bite lemmas |
-| LS-A02 | NEW | Axiom and signature anti-drift audit | `IFC0.lean:59-147`; wrappers | `#print axioms`, pins |
+| LS-T00 | REUSE | Pin exact four-way equivalence | `leanfinal/Uniformity/ChapI/IFC0.lean:120-137` | `ladderField_iff_suppliers` |
+| LS-T01 | REUSE | Pin four-to-field assembly | `leanfinal/Uniformity/ChapI/IFC0.lean:141-147`; `leanfinal/Uniformity/ChapE/E24.lean:147-155` | `ladderField_of_suppliers` |
+| LS-T02 | NEW | Destructure guard; install domain/DVR instances | `leanfinal/Uniformity/ChapC/C130s18.lean:169-175` | wrapper helper |
+| LS-H00 | REUSE | Rewrite package to `Nonempty RungInterface` | `leanfinal/Uniformity/ChapE/E24.lean:130-132`; `leanfinal/Uniformity/ChapE/E12.lean:130-157` | unfold only |
+| LS-H01 | NEW | Package completed HE7 certificate as `RungInterface` | `leanfinal/Uniformity/ChapE/E12.lean:130-157`; hard exporter | structure literal |
+| LS-H02 | NEW | Lift completed exporter to package supplier | `leanfinal/Uniformity/ChapI/IFC0.lean:74-81`; LS-T02/H01 | exact binder wrapper |
+| LS-L00 | REUSE | One `PartitionLeg` to one `BlockSuite` | `leanfinal/Uniformity/ChapE/E57p.lean:188-246` | `toBlockSuite` |
+| LS-L01 | NEW | Map `Nonempty PartitionLeg` to `Nonempty BlockSuite` | `leanfinal/Uniformity/ChapE/E57p.lean:188-246`; `leanfinal/Uniformity/ChapE/E39.lean:110-114` | probed helper |
+| LS-L02 | NEW | Curry partition endpoint into `LB1Carrier` | `leanfinal/Uniformity/ChapE/E39.lean:110-114`; LS-L01 | trigger wrapper |
+| LS-L03 | NEW | Lift carrier to `LadderLB1Supplier` | `leanfinal/Uniformity/ChapI/IFC0.lean:85-92`; LS-T02/L02 | binder wrapper |
+| LS-M00 | NEW | Assemble `MidPeelEmission` from seven real fields | `leanfinal/Uniformity/ChapE/E40.lean:152-164` | probed record literal |
+| LS-M01 | NEW | Curry recentered endpoint into `MP1Carrier` | `leanfinal/Uniformity/ChapE/E40.lean:172-178`; LS-M00 | trigger wrapper |
+| LS-M02 | NEW | Lift carrier to `LadderMP1Supplier` | `leanfinal/Uniformity/ChapI/IFC0.lean:96-103`; LS-T02/M01 | binder wrapper |
+| LS-V00 | REUSE | Rewrite `VarthetaRes` to `HVarthetaRes` | `leanfinal/Uniformity/ChapE/E61.lean:145-157` | constructor/projection |
+| LS-V01 | REUSE | Close HVR from arena agreement | `leanfinal/Uniformity/ChapD/D62.lean:89-95` | landed theorem |
+| LS-V02 | REUSE | Close HVR from τ-letter laws | `leanfinal/Uniformity/ChapD/D62w.lean:94-103` | landed theorem |
+| LS-V03 | NEW | Wrap owner-approved sitewise endpoint | `leanfinal/Uniformity/ChapI/IFC0.lean:108-115`; LS-V00 | index/binder wrapper |
+| LS-A00 | REUSE | Assemble four suppliers | `leanfinal/Uniformity/ChapI/IFC0.lean:141-147` | `LadderField n` |
+| LS-A01 | NEW | Project four fields at concrete tooth | `leanfinal/Uniformity/ChapE/E24.lean:147-155`; N2 guard | four bite lemmas |
+| LS-A02 | NEW | Axiom and signature anti-drift audit | `leanfinal/Uniformity/ChapI/IFC0.lean:59-147`; wrappers | `#print axioms`, pins |
 
 Each `NEW` row is 10–40 lines after its hard input exists. Dispatching them earlier would only
 create proposition-valued placeholders and is forbidden.
@@ -285,21 +285,21 @@ CanonicalLadderConfig C B G Kt L N v ρ q 2.
 The generic “given `RealizedInput`” theorem is not a tooth, nor is conditional degree-four S2.
 The least-duplication route reuses the S2 depth-one base:
 
-- `s2DepthOne` and its degree-two theorem (`C130fd0.lean:486-516`);
-- the unconditional depth-one FGMN calculus (`C130sg.lean:488-499`);
+- `s2DepthOne` and its degree-two theorem (`leanfinal/Uniformity/ChapC/C130fd0.lean:486-516`);
+- the unconditional depth-one FGMN calculus (`leanfinal/Uniformity/ChapC/C130sg.lean:488-499`);
 - but a degree-two occurrence, depth-one `ChainRealization`, and `RealizedInput` are new. The
-  current S2 occurrence selects stage 2 and degree 4 (`C130s17.lean:488-590`).
+  current S2 occurrence selects stage 2 and degree 4 (`leanfinal/Uniformity/ChapC/C130s17.lean:488-590`).
 
 | Tooth | 30–60 minute grain | Reuse / new |
 |---|---|---|
 | N2-0 | State `DegreeTwoLadderSocketWitness` with explicit data | NEW wrapper |
 | N2-1 | Pin concrete DVR, fields, algebra, completeness | NEW packaging; mathlib reuse |
-| N2-2 | Pin depth-one tower/key/degree/calculus | REUSE `C130fd0.lean:486-526`, `C130sg.lean:488-499` |
-| N2-3 | Degree-two input polynomial: monic/degree/block/key-free | NEW; model `C130s17.lean:532-583` |
+| N2-2 | Pin depth-one tower/key/degree/calculus | REUSE `leanfinal/Uniformity/ChapC/C130fd0.lean:486-526`, `leanfinal/Uniformity/ChapC/C130sg.lean:488-499` |
+| N2-3 | Degree-two input polynomial: monic/degree/block/key-free | NEW; model `leanfinal/Uniformity/ChapC/C130s17.lean:532-583` |
 | N2-4 | Build `ArisingCore ... 2` | NEW record assembly |
 | N2-5 | Build depth-one split-node source and `ChainRealization` | NEW substantive node |
-| N2-6 | Choose accepted point and build `RealizedInput` | NEW; model `C130s17.lean:600-629` |
-| N2-7 | Fire and publish closed guard | REUSE `C130s18.lean:238-247` |
+| N2-6 | Choose accepted point and build `RealizedInput` | NEW; model `leanfinal/Uniformity/ChapC/C130s17.lean:600-629` |
+| N2-7 | Fire and publish closed guard | REUSE `leanfinal/Uniformity/ChapC/C130s18.lean:238-247` |
 | N2-8 | Apply HE7A; exhibit nonempty side ledger | NEW conclusion-sensitive bite |
 | N2-9 | Construct genuinely firing LB1 `I` on same `(C,B)` | NEW hostile bite |
 | N2-10 | Construct nonzero `Λ` and valid MP1 `B'` trigger | NEW hostile bite |
