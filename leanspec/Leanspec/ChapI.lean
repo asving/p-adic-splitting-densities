@@ -88,6 +88,27 @@ name, bundle quantifier, and `Prop` kind are unchanged, and every other signed d
 byte-unchanged. Gate item (14) now pins the body definitionally to
 `Tower.NS7TerminationStatementR` and re-elaborates the `CapstoneHypotheses.ns7` projection.
 
+**STATE UPDATE (2026-08-27, AMENDMENT A-I.5): THE GC-13 WIRING LAW IS SIGNED (NEW NODES
+I.10c/I.10d), AND THE DT0 GentowW DEMAND IS AMENDED TO THE WIRED SITEWISE FORM.**  Per
+`docs/in-progress/GC13_WIRING_2026-08-27.md`'s `[GCW-0]` decision record (print-read
+`runs/wave-b/verdict_GCW0.md`) and the orchestrator's F2=P2 adjudication, this amendment ADDS
+two declarations and changes NO existing statement: `GC13Wiring` (I.10c — the sitewise
+read/normalizer dictionary at the abstract D.44 surface, GCW-0's record verbatim) and
+`WiredGentowDemand` (I.10d — the per-level `deepTwist`-route demand: the law AND D.44's
+`GentowW` at the same read; a STRENGTHENING of the flat per-level conclusion).  The signed
+socket `CanonicalDeepTwistConfig` and `CapstoneHypotheses`' field list are BYTE-UNCHANGED
+(the guard-extension fork was REJECTED: it would couple the law into chapter C's signed
+socket).  Basis: the wiring is a missing source-faithful LAW, not a missing proof — FGCW's
+underdetermination certificates (`IFC2.s2_hread_refuted_at_landed_exports`, the landed
+witness's own zero read refutes the identification; `IFC2.s2_gentowW_of_read_one`, ⚠ the
+D-D12-FENCED freedom half, NOT SUPPLY).  Leanfinal twins + the μ₃ consumption route:
+`Uniformity/ChapI/IFC3.lean` (byte-identical binder blocks).  The UNIVERSAL wired supplier is
+deliberately NOT signed — BLOCKED-BECAUSE: no landed per-level calculus/receiver exporter
+(the `WleCleared` truncation exporter); every site-quantified form is defective today, anchored
+on the `f' = 0` vacuity fence (see NODE I.10c's gate examples).  Parallel VAUD finding
+(`runs/wave-b/verdict_VAUD.md`): E.24's `vartheta` range needs live-index restriction bound to
+the same witness — PROPOSED, owner-gated, NOT enacted here; `IFC0.lean` untouched by both units.
+
 Since 2026-08-20 the definitional layer I.01–I.03/I.05–I.07/I.21 IS landed in `leanfinal`
 (`Uniformity/ChapI/I01.lean` … `I21.lean`, byte-frozen transcriptions), and A-I.3's Stage-2
 companion lands I.10a/I.10b + I.10 + I.15–I.18 there (`Uniformity/ChapI/I10_I15_I18.lean`) at
@@ -177,15 +198,15 @@ row, consumes C.92's withdrawn `fgmn_calculus_exists` (defect I-D11 records what
 
 | kind | count | note |
 |---|---:|---|
-| `def` of blueprint declarations (real bodies, stage-0e rule 1) | **9** | `NS7Termination` (I.01), `DecidedSliceAt` (I.02), `MenuLawAt` (I.03, RE-SIGNED at A-I.1), `WindowPinningAt` (I.05), `GenhnHEAt` (I.06), `GenhnTow1At` (I.07), `TypeOfFaithful` (I.21), **+ A-I.1's two sockets** `CanonicalLadderConfig` (I.10a), `CanonicalDeepTwistConfig` (I.10b) |
+| `def` of blueprint declarations (real bodies, stage-0e rule 1) | **9** | `NS7Termination` (I.01), `DecidedSliceAt` (I.02), `MenuLawAt` (I.03, RE-SIGNED at A-I.1), `WindowPinningAt` (I.05), `GenhnHEAt` (I.06), `GenhnTow1At` (I.07), `TypeOfFaithful` (I.21), **+ A-I.1's two sockets** `CanonicalLadderConfig` (I.10a), `CanonicalDeepTwistConfig` (I.10b) **[A-I.5, 2026-08-27: +1 — `WiredGentowDemand` (I.10d), count now 10]** |
 | `def` NAMED-AND-VOIDED (refutation record, cite-forbidden) | **1** | `MenuLawAtVoided` — I.03's pre-A-I.1 form, kept so its vacuity proof survives verbatim |
-| `structure` (real body) | **1** | `CapstoneHypotheses` (I.10) — ⚠ an ELABORATION GATE, not a signature (defects I-D7, I-D13) |
+| `structure` (real body) | **1** | `CapstoneHypotheses` (I.10) — ⚠ an ELABORATION GATE, not a signature (defects I-D7, I-D13) **[A-I.5, 2026-08-27: +1 — `GC13Wiring` (I.10c), count now 2]** |
 | `theorem` landed REAL (blueprint §11: "I.15–I.18 … land REAL, not axiom") | **4** | I.15–I.18 ⚠ ~~conditionally VACUOUS today: their hypothesis is uninhabited until the I.10a/I.10b sockets are typed (defect I-D13)~~ **[A-I.3, 2026-08-26: the sockets ARE typed and the I-D13 refutation route is closed — the hypothesis is no longer provably empty; it is OPEN (not claimed inhabited: `a0`/`a1` open at `n ≥ 3`, supply at arising configurations open)]** |
 | `axiom` stubs | **0** | chapter I signs no theorem it cannot prove at stub time; the file's ONE `axiom` is I.25's fenced, `private`, `True`-valued positive control for the AXCHK guard, consumed by nothing |
-| gate `example`s / `#check`, ALL EXECUTED | **33 `example` + 8 `#check`** [A-I.3: item (10) struck (−1), item (11) retired to its surviving direction (±0), items (15)–(17) added (+4)] | §4 gate (14 checks at A-I.1, five of them A-I.1's certifications; A-I.3 strikes (10), retires (11), adds the two `Iff.rfl` body pins (15) and the two S2 non-vacuity teeth (16)/(17)) · §6 gate (the `Iff.rfl` slice pin + the I.19 package-route `#check`s) · I.23 (the `q = 2`/`q = 3` anchors, the `e·f = 2` non-applicability proof, the two `n = 2` non-vacuity witnesses — `MenuLawAt 2` now at a REAL three-cell family) |
+| gate `example`s / `#check`, ALL EXECUTED | **33 `example` + 8 `#check`** [A-I.3: item (10) struck (−1), item (11) retired to its surviving direction (±0), items (15)–(17) added (+4)] [A-I.5: items (18)–(20) added at NODE I.10c/I.10d (+3, examples now 36)] | §4 gate (14 checks at A-I.1, five of them A-I.1's certifications; A-I.3 strikes (10), retires (11), adds the two `Iff.rfl` body pins (15) and the two S2 non-vacuity teeth (16)/(17)) · §6 gate (the `Iff.rfl` slice pin + the I.19 package-route `#check`s) · I.23 (the `q = 2`/`q = 3` anchors, the `e·f = 2` non-applicability proof, the two `n = 2` non-vacuity witnesses — `MenuLawAt 2` now at a REAL three-cell family) |
 | gate-local `private def` (not a blueprint declaration) | **1** | `a1LabelCell` — the σ-labelled `A1Cell 0` used by the re-signed `MenuLawAt 2` witness |
 | `[note]` nodes with no Lean file (blueprint §0.2) | **8** | I.04, I.11, I.12, I.13, I.14, I.19, I.20, I.22 — transcribed as docstring sections, nothing declared |
-| ENFORCED AXCHK guards (`#axiom_core`, I.24/I.25) | **70** | each one FAILS THE BUILD on a non-core footprint; two `elab` commands (`#axiom_core`, `#axiom_reg`) implement them |
+| ENFORCED AXCHK guards (`#axiom_core`, I.24/I.25) | **70** [A-I.5: +2 (`GC13Wiring`, `WiredGentowDemand`), now 72] | each one FAILS THE BUILD on a non-core footprint; two `elab` commands (`#axiom_core`, `#axiom_reg`) implement them |
 
 **14 signed blueprint declarations** (9 `def` + 1 `structure` + 4 `theorem`) — the blueprint's
 own file list (I01–I03, I05–I07, I10, I15–I18, I21, I23–I25 = 15 files; I.23–I.25 are gate files
@@ -757,6 +778,121 @@ def CanonicalDeepTwistConfig {O : Type} [CommRing O] {K : Type} [Field K]
       Uniformity.Density.Tower.C130s18.DeepTwistRealizationData.{0, uG, uKt, uL}
         (dom := dom) (dvr := dvr) C B G Kt L N v ρ q A R w r n
 
+/-! ### NODES I.10c / I.10d [structure/def] [NEW at AMENDMENT A-I.5, 2026-08-27] — THE GC-13
+WIRING LAW AND THE WIRED PER-LEVEL `deepTwist` DEMAND
+
+**[A-I.5, unit GCW1]** — the GCW-1 signing round of `docs/in-progress/GC13_WIRING_2026-08-27.md`
+(its `[GCW-0]` decision record + the orchestrator's F2=P2 adjudication; print-read
+`runs/wave-b/verdict_GCW0.md`).  Decisions enacted, all three forks:
+
+* **F1** — the law is the RELATIONAL SCALAR-READ bridge at the abstract D.44 surface: no
+  lattice-equals-polynomial equality; D.44's `(N, q, R)` binders retained (the arising-witness
+  views `C130vw.GaugeFamilyViewEq`/`ArenaFamilyViewEq` already pin them to a witness's exports);
+  grade `e' * (s * u')` = OPEN-DICT-2's full-current clearing (NOT `s * u'`); normalizer
+  `chainNormBelow r` = the decided below-current `n̂_i` (NOT the current key).
+* **F2 = P2** — a standalone `Prop` record demanded by the chapter-I suppliers at arising
+  witnesses.  The signed socket I.10b (`CanonicalDeepTwistConfig`) and I.10's field list are
+  BYTE-UNCHANGED; the guard-extension fork is REJECTED (gate-(a) statement change of the signed
+  socket + chapter-C coupling, the P1 genre P2 was adopted against).
+* **F3** — the SOURCE DEFINES the read (`EFF.T3.21`: "Define `w_i = R_{i+1,κ̄_i}(n̂_i(u_{i+1}))`";
+  `GENTOW2_PROOF_2026-08-09.md` S5.1 `u(β) := R_{3,β}(n̂₂(β̂))`, S5.2 `w := u(κ̄)`); Lean's
+  `towerRead` is a FREE node field (NP-8), so the definition is signed HERE as a law.  The P3
+  definitional route is licensed ONLY at witness-construction sites AFTER this signing (GCW-3).
+
+**The underdetermination basis (why a LAW, not a proof)** — FGCW's certificates, both landed
+Lean-core in `leanfinal/Uniformity/ChapI/IFC2.lean`: `s2_hread_refuted_at_landed_exports` (the
+landed S2 witness's OWN exported read `≡ 0` refutes the identification at every level, receiver,
+lattice point) and `s2_gentowW_of_read_one` — ⚠ the D-D12-FENCED freedom half (the equally
+admissible read `≡ 1` satisfies FULL `GentowW`): **NOT SUPPLY, never citable as teeth**; cited
+here only as the freedom half of the both-truth-values adjudication.
+
+**The amended DT0 demand (I.10d).**  The `deepTwist`-route per-level GentowW demand gains the
+wiring leg SITEWISE: at one consumed live level `j` of an arising witness, instantiate at the
+guard's own exports `(N, q j, R j, A j, w j)` and the supplied level calculus/receiver.  The
+UNIVERSAL wired supplier is deliberately NOT signed — BLOCKED-BECAUSE: the per-level
+calculus/receiver correspondence has no landed exporter (the `WleCleared` truncation exporter,
+GC13_WIRING §4 / FIELDLIST §8 — the DT0 analogue of W0's missing weld-site exporter), and every
+site-quantified form is defective today: a guard-side or `∃`-bound site collapses to the
+refutable unwired demand through an `f' = 0` junk site (gate example (19) below is the anchor);
+an `∀`-bound site is false at wrong calculi; a def-parameter site family cannot see the witness
+hidden in the guard's existential.  Leanfinal twins + the μ₃ consumption route (the `hread`
+binder of IFC1/IFC2 superseded by the law's projection; the law-forced S2 read normalization;
+the anti-cook refutation at the landed zero-read witness): `Uniformity/ChapI/IFC3.lean`,
+byte-identical binder blocks.  IFC0's flat `DeepGentowSupplier` is RETIRED AS A CAMPAIGN TARGET
+(byte-untouched there — it stays GCW-6's tension record: any depth-`≥ 4` witness with a zero
+read refutes it; stop-the-line for the deep-witness campaign). -/
+
+section GC13WiringLaw
+
+open Uniformity.Density.Gauge Uniformity.Density.Tower
+
+universe uT
+
+/-- **NODE I.10c** [A-I.5] — *GC-13's read/normalizer dictionary at one D.44 site*: the exported
+tower read at the `s`-th ladder point IS the receiver image of the FGMN normalizer read at the
+cleared full-current grade.  GCW-0's decision-record statement, signed VERBATIM.  A chapter-I
+supplier must demand an instance at each consumed live level using the arising witness's OWN
+exported `(N, q j, R j)` and the corresponding calculus/receiver (the D-D12 anti-cook guard).
+NEW STATEMENT (review row: `docs/REVIEW_QUEUE_2026-08-26.md`, A-I.5). -/
+structure GC13Wiring {G : Type*} [CommGroup G] {Kt : Type*} [Field Kt]
+    (N : NormSection G) (q : ℤ) (R : G → Kt)
+    {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+    {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    {W : DeepTower.{0, uT} F H₀ hpin r} {e' f' u' : ℕ}
+    (I : FGMNCalculus W e' f' u') (φ : W.fld r →+* Kt) : Prop where
+  read_norm : ∀ s : ℕ, 1 ≤ s → s ≤ f' →
+    R (N.n (s * q)) =
+      φ (I.Rgr (e' * (s * u')) (I.chainNormBelow r (s * u')))
+
+/-- **NODE I.10d** [A-I.5] — *the wired per-level DT0 demand*: at one D.44 site, the signed
+GC-13 law AND D.44's `[GENTOW5-W(j)]` identity `GentowW`, at the same read.  STRENGTHENS the
+flat per-level conclusion (gate example (20)); supersedes it as the campaign target.
+NEW STATEMENT (review row: `docs/REVIEW_QUEUE_2026-08-26.md`, A-I.5). -/
+def WiredGentowDemand {G : Type*} [CommGroup G] {Kt : Type*} [Field Kt]
+    {N : NormSection G} (A : GaugeArena G Kt N) (q : ℤ) (R : G → Kt) (w : Ktˣ)
+    {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+    {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    {W : DeepTower.{0, uT} F H₀ hpin r} {e' f' u' : ℕ}
+    (I : FGMNCalculus W e' f' u') (φ : W.fld r →+* Kt) : Prop :=
+  GC13Wiring N q R I φ ∧ GentowW A q R w
+
+-- (18) [A-I.5] the record's projection is BYTE-EXACTLY the `hread` shape IFC1 displayed
+-- (`IFC1.gentowWWindow_of_gentow5wCleared`'s binder) — the consumer-shape pin, generic form.
+example {G : Type*} [CommGroup G] {Kt : Type*} [Field Kt]
+    {N : NormSection G} {q : ℤ} {R : G → Kt}
+    {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+    {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    {W : DeepTower.{0, uT} F H₀ hpin r} {e' f' u' : ℕ}
+    {I : FGMNCalculus W e' f' u'} {φ : W.fld r →+* Kt}
+    (hwire : GC13Wiring N q R I φ) :
+    ∀ s, 1 ≤ s → s ≤ f' → R (N.n (s * q)) =
+      φ (I.Rgr (e' * (s * u')) (I.chainNormBelow r (s * u'))) := hwire.read_norm
+
+-- (19) [A-I.5] THE FABRICABILITY FENCE, EXECUTED: at `f' = 0` the law is VACUOUS at any read —
+-- why no landed statement may quantify the level site existentially or hypothesis-side, and
+-- why the universal wired supplier is BLOCKED on the per-level exporter.
+example {G : Type*} [CommGroup G] {Kt : Type*} [Field Kt]
+    {N : NormSection G} {q : ℤ} {R : G → Kt}
+    {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+    {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    {W : DeepTower.{0, uT} F H₀ hpin r} {e' u' : ℕ}
+    (I : FGMNCalculus W e' 0 u') (φ : W.fld r →+* Kt) :
+    GC13Wiring N q R I φ :=
+  ⟨fun _ hs1 hs0 => absurd (hs1.trans hs0) (by omega)⟩
+
+-- (20) [A-I.5] the wired demand STRENGTHENS the flat per-level conclusion (nothing weakened):
+-- both legs are projections.
+example {G : Type*} [CommGroup G] {Kt : Type*} [Field Kt]
+    {N : NormSection G} {A : GaugeArena G Kt N} {q : ℤ} {R : G → Kt} {w : Ktˣ}
+    {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+    {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀} {r : ℕ}
+    {W : DeepTower.{0, uT} F H₀ hpin r} {e' f' u' : ℕ}
+    {I : FGMNCalculus W e' f' u'} {φ : W.fld r →+* Kt}
+    (h : WiredGentowDemand A q R w I φ) :
+    GC13Wiring N q R I φ ∧ GentowW A q R w := ⟨h.1, h.2⟩
+
+end GC13WiringLaw
+
 /-! ### NODE I.10 [structure] — **THE CAPSTONE HYPOTHESIS STRUCTURE** (Display A, made formal).
 Lands `Uniformity.Density.CapstoneHypotheses`. ENV-I1.
 
@@ -841,6 +977,13 @@ structure CapstoneHypotheses (n : ℕ) : Prop where
   -- [A-I.1, defect I-D4] Display A's `∀ i ≥ 3` conjunct, BOTH halves, at E.63's packaging.
   -- [A-I.2(b), 2026-08-24] re-signed at the freeze-v2 LIVE RANGE: the conjunct is read at the
   -- arising tower depth `r` through `DeepTwistConjunctLive` (unbounded form undischargeable).
+  -- [A-I.5, 2026-08-27 — interpretive rider, no statement change.] The GC-13 wiring law
+  -- (NODE I.10c) is signed; per GCW-0 + P2 the per-level GentowW half of this field's supply
+  -- route is superseded as a campaign target by the WIRED sitewise demand (NODE I.10d) — a
+  -- STRENGTHENING at each site.  This field is BYTE-UNCHANGED; suppliers demanding its
+  -- conclusion at arising witnesses must demand `GC13Wiring` per consumed live level at the
+  -- guard's own `(N, q j, R j)` exports (GCW-6 stop-the-line: no depth-`≥ 4` witness may land
+  -- with a read violating the law — a zero-read deep witness refutes the flat supplier).
   deepTwist : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
       (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
       (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
@@ -1555,6 +1698,9 @@ names on landing — this block is the one place the whole trusted surface is gr
 #axiom_core LeanspecI.MenuLawAtVoided
 #axiom_core LeanspecI.CanonicalLadderConfig
 #axiom_core LeanspecI.CanonicalDeepTwistConfig
+-- A-I.5's two additions: the signed GC-13 wiring law and the wired per-level demand.
+#axiom_core LeanspecI.GC13Wiring
+#axiom_core LeanspecI.WiredGentowDemand
 #axiom_core LeanspecI.WindowPinningAt
 #axiom_core LeanspecI.GenhnHEAt
 #axiom_core LeanspecI.GenhnTow1At
