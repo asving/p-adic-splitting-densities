@@ -119,6 +119,7 @@ import Uniformity.ChapC.C132nv1
 import Uniformity.ChapC.C132nv2
 import Uniformity.ChapC.C132nv3
 import Uniformity.ChapC.C132nv3b
+import Uniformity.ChapC.C132nv4
 import Uniformity.ChapC.C14
 import Uniformity.ChapC.C140defs
 import Uniformity.ChapC.C141defs
