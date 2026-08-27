@@ -22,6 +22,11 @@ OM2_h116b_gauge_resultant.py and the battery runs/wave-b/h116b4_battery.py (for
 snf_valuations / sylvester_matrix / planted_basis — this file does NOT edit them).
 Prime residue fields only: these runs certify instances, they prove nothing.
 
+Extended by unit MSM2 (2026-08-27), BLOCK C: proof-oriented r=0 assignment/Hall
+checks, the exact B5 counterexample to the former Schur/V-inheritance claim,
+and exact example checks for GR-4a/b/c and GR-5.  The negative check is an
+expected, pinned refutation and does not weaken Blocks A/B.
+
 Run:  python3 verification/openmath/h116b4_smith_cert.py     (exit 0 iff all checks pass)
 """
 
@@ -129,6 +134,51 @@ def assignment_spectrum(V, N):
     return sorted(min(e, N) for e in es)
 
 
+def assignment_betas_dp(V):
+    """All subassignment optima by a row-scan DP (exact, O(m 2^m)).
+
+    Unlike assignment_spectrum this also exposes the partial sums beta_t.  It is
+    used below to sweep abstract r=0 slope configurations beyond the small
+    factorial-time battery cells.
+    """
+    m = len(V)
+    dp = [INF] * (1 << m)
+    dp[0] = 0
+    for row in range(m):
+        nxt = dp[:]                         # do not use this row
+        for mask, old in enumerate(dp):
+            if old >= INF:
+                continue
+            for col in range(m):
+                if not (mask >> col) & 1:
+                    nm = mask | (1 << col)
+                    nxt[nm] = min(nxt[nm], old + V[row][col])
+        dp = nxt
+    return [min(dp[mask] for mask in range(1 << m) if mask.bit_count() == t)
+            for t in range(m + 1)]
+
+
+def r0_tail_values(children):
+    """The uncapped C2 values for r=0, as global descending-slope tails."""
+    weights = sorted((k for (mu, k, w) in children for _ in range(mu)), reverse=True)
+    return [1 + sum(weights[i:]) for i in range(len(weights))]
+
+
+def r0_deadlines(children):
+    """(deadline,column) for the equality graph V[i,c] = 1 + slope-tail(i).
+
+    A column (p,j), with d=mu_p-j deleted copies of k_p, has equality in every
+    row i <= #{child slope slots >= k_p} - d.
+    """
+    out, col = [], 0
+    for mu, k, w in children:
+        upper = sum(mu2 for (mu2, k2, w2) in children if k2 >= k)
+        for j in range(mu):
+            out.append((upper - (mu - j), col))
+            col += 1
+    return out
+
+
 # ---------------------------------------------------------------------------------
 # shared: genre reading -> betaQ -> predicted list (cached per genre)
 # ---------------------------------------------------------------------------------
@@ -153,6 +203,197 @@ def closed_form_C2(children, r, contents, N):
         t = sum(s[k2] for k2 in slopes if k2 > k)
         out += [1 + contents[k] - k * i for i in range(t, t + s[k])]
     return sorted(min(e, N) for e in out)
+
+
+# ---------------------------------------------------------------------------------
+# BLOCK C — proof-oriented checks for the new MSM2 lemmas/counterexample.
+# ---------------------------------------------------------------------------------
+def check_r0_assignment_lemma(children, tag):
+    """Check every inequality and Hall witness used in the paper proof of GR-7b-I (r=0)."""
+    contents = {k: sum(mu2 * min(k2, k) for (mu2, k2, w2) in children)
+                for k in set(k for (mu, k, w) in children)}
+    V = build_V(children, 0, betaQ_of_genre(children, contents))
+    tails = r0_tail_values(children)       # decreasing with the row index
+    m = len(tails)
+    lower = all(V[i][c] >= tails[i] for i in range(m) for c in range(m))
+    deadlines = sorted(r0_deadlines(children), reverse=True)
+    witnesses, detail = True, ""
+    for t in range(1, m + 1):
+        rows = list(range(m - t, m))
+        chosen = sorted(deadlines[:t])     # earliest row to smallest chosen deadline
+        if any(deadline < row or V[row][col] != tails[row]
+               for row, (deadline, col) in zip(rows, chosen)):
+            witnesses = False
+            detail = f"t={t}, rows={rows}, chosen={chosen}"
+            break
+    betas = assignment_betas_dp(V)
+    wanted = [sum(sorted(tails)[:t]) for t in range(m + 1)]
+    check(f"(C-r0) row lower bound + deadline Hall witnesses [{tag}]",
+          lower and witnesses, detail)
+    check(f"(C-r0) DP assignment beta_t == suffix-tail partial sums [{tag}]",
+          betas == wanted, f"got={betas}, want={wanted}")
+    check(f"(C-r0) tail form == C2 [{tag}]",
+          sorted(tails) == closed_form_C2(children, 0, contents, INF),
+          f"tails={sorted(tails)} C2={closed_form_C2(children, 0, contents, INF)}")
+
+
+def sweep_r0_assignment_lemma():
+    """73 bounded multisets of 1--3 abstract (mu,k) types, mu=2,3 and k=1,2,3."""
+    types = [(mu, k) for mu in (2, 3) for k in (1, 2, 3)]
+    tested, bad, first = 0, 0, ""
+    for nchild in (1, 2, 3):
+        for combo in itertools.combinations_with_replacement(types, nchild):
+            children = [(mu, k, idx + 1) for idx, (mu, k) in enumerate(combo)]
+            m = sum(mu for mu, k in combo)
+            if m > 8:
+                continue
+            contents = {k: sum(mu2 * min(k2, k) for (mu2, k2, w2) in children)
+                        for k in set(k for (mu, k, w) in children)}
+            V = build_V(children, 0, betaQ_of_genre(children, contents))
+            tails = r0_tail_values(children)
+            deadlines = sorted(r0_deadlines(children), reverse=True)
+            ok = all(V[i][c] >= tails[i] for i in range(m) for c in range(m))
+            for t in range(1, m + 1):
+                rows = range(m - t, m)
+                chosen = sorted(deadlines[:t])
+                ok &= all(deadline >= row and V[row][col] == tails[row]
+                          for row, (deadline, col) in zip(rows, chosen))
+            wanted = [sum(sorted(tails)[:t]) for t in range(m + 1)]
+            ok &= assignment_betas_dp(V) == wanted
+            tested += 1
+            if not ok:
+                bad += 1
+                if not first:
+                    first = f"children={children}"
+    check("(C-r0-sweep) proof schema over all abstract slope multisets",
+          bad == 0 and tested == 73, f"{tested} configurations" if not bad else first)
+
+
+def cofactor_schur(A, q, N, child_degree, r):
+    """Clear the monic cofactor staircase, returning its child Schur block."""
+    M = q ** N
+    B = [[x % M for x in row] for row in A]
+    for j in range(r - 1, -1, -1):
+        pivot_row, pivot_col = child_degree + j, child_degree + j
+        pivot = B[pivot_row][pivot_col]
+        assert pivot == q % M                # product of the children is monic
+        for col in range(child_degree):
+            entry = B[pivot_row][col]
+            assert entry % q == 0
+            mult = entry // q
+            for row in range(pivot_row + 1):
+                B[row][col] = (B[row][col] - mult * B[row][pivot_col]) % M
+    return [row[:child_degree] for row in B[:child_degree]]
+
+
+def check_schur_counterexample():
+    """Certified B5 refutation of the original GR-7b-0 V-inheritance clause."""
+    q, N = 2, 10
+    children = [(2, 1, 1), (2, 2, 1)]
+    Q = [8, 1]
+    M = q ** N
+    Ps = [om.alpha_parent([0] * mu, k, w, q, M) for (mu, k, w) in children]
+    A = bt.sylvester_matrix(q, N, 5, children, Ps, 1, Q)
+    S = cofactor_schur(A, q, N, 4, 1)
+    contents = {1: 5, 2: 8}
+    V = build_V(children, 1, betaQ_of_genre(children, contents))
+    measured = {(i, c): bt.vq(S[i][c], q, N) for i in range(4) for c in range(4)}
+    violations = sorted((i, c, measured[i, c], V[i][c])
+                        for i in range(4) for c in range(4)
+                        if measured[i, c] < V[i][c])
+    check("(C-Schur) B5 data are admissible", admissible(Q, q, N, children))
+    check("(C-Schur) original GR-7b-0 V-inheritance is refuted (expected negative)",
+          violations == [(0, 1, 8, 9), (2, 1, 4, 5)], f"violations={violations}")
+    check("(C-Schur) refuting base still has the C2 Smith list",
+          bt.snf_valuations(A, q, N) == [1, 3, 4, 7, 9],
+          f"snf={bt.snf_valuations(A, q, N)}")
+
+
+def resultant_int(f, g):
+    """Exact integer resultant, with sign convention irrelevant to the checks."""
+    m, n = len(f) - 1, len(g) - 1
+    S = [[0] * (m + n) for _ in range(m + n)]
+    for i in range(n):
+        for j, a in enumerate(reversed(f)):
+            S[i][i + j] = a
+    for i in range(m):
+        for j, a in enumerate(reversed(g)):
+            S[n + i][i + j] = a
+    return om.int_det(S)
+
+
+def multi_sylvester_det(polys):
+    """Determinant of (delta_i) |-> sum delta_i prod_{j != i} f_j, low-degree bases."""
+    def imul(f, g):
+        out = [0] * (len(f) + len(g) - 1)
+        for i, a in enumerate(f):
+            for j, b in enumerate(g):
+                out[i + j] += a * b
+        return out
+
+    degrees = [len(f) - 1 for f in polys]
+    total = sum(degrees)
+    cols = []
+    for idx, degree in enumerate(degrees):
+        other = [1]
+        for j, f in enumerate(polys):
+            if j != idx:
+                other = imul(other, f)
+        for shift in range(degree):
+            cols.append([0] * shift + other + [0] * (total - shift - len(other)))
+    matrix = [[cols[c][i] for c in range(total)] for i in range(total)]
+    return om.int_det(matrix)
+
+
+def check_resultants_and_multisylvester():
+    """Fresh exact examples for the proved GR-4a/b/c scaling and GR-5 identity."""
+    q, big = 3, 3 ** 12
+    pairs = [((2, 1, 1), [3, 6]), ((2, 1, 2), [6, 3]),
+             ((2, 2, 1), [3, 0]), ((3, 2, 2), [3, 6, 0])]
+    factors = []
+    for (mu, k, w), b in pairs:
+        factors.append(om.alpha_parent(b, k, w, q, big))
+    pair_ok = True
+    for i, p in enumerate(pairs):
+        for j in range(i + 1, len(pairs)):
+            mu, k, w = p[0]
+            mu2, k2, w2 = pairs[j][0]
+            if k == k2 and w == w2:        # same frame is outside GR-4a
+                continue
+            pair_ok &= om.resultant_valuation(factors[i], factors[j], q, big) == \
+                mu * mu2 * min(k, k2)
+    check("(C-GR4ab) planted pair resultant valuations, same/unequal slopes", pair_ok)
+
+    q, N, M = 2, 10, 2 ** 18
+    children = [(2, 1, 1), (2, 2, 1)]
+    Q = [8, 1]
+    cofactor_ok = True
+    planted = []
+    for mu, k, w in children:
+        P = om.alpha_parent([0] * mu, k, w, q, M)
+        planted.append(P)
+        beta = min(bt.vq(Q[i], q, N) + k * i for i in range(len(Q)))
+        cofactor_ok &= om.resultant_valuation(P, Q, q, M) == mu * beta
+    check("(C-GR4c) planted/cofactor resultant valuation on B5", cofactor_ok)
+
+    families = [
+        [[1, 1], [2, -1, 1]],
+        [[1, 1], [2, -1, 1], [3, 0, 1]],
+        [[-1, 0, 1], [2, 1], [1, -2, 0, 1]],
+        planted + [Q],
+    ]
+    det_ok, details = True, []
+    for polys in families:
+        lhs = multi_sylvester_det(polys)
+        rhs = 1
+        for i in range(len(polys)):
+            for j in range(i + 1, len(polys)):
+                rhs *= resultant_int(polys[i], polys[j])
+        if abs(lhs) != abs(rhs):
+            det_ok = False
+            details.append((lhs, rhs))
+    check("(C-GR5) exact multi-Sylvester determinant == product of pairwise resultants",
+          det_ok, f"mismatches={details}")
 
 
 # ---------------------------------------------------------------------------------
@@ -294,7 +535,7 @@ def block_sampled(q, N, m, children, cof_deg, tag, nsamp=40, seed=20260826):
 
 
 def main():
-    print("H.116b4 Smith identification certificate (unit MSMITH, 2026-08-26)")
+    print("H.116b4 Smith identification certificate (MSMITH + MSM2, 2026-08-27)")
     t0 = time.time()
     print("-- BLOCK A: battery anchors, exhaustive")
     block_anchor(2, 5, 3, [(2, 1, 1)], 1, "CELL-1 q2 N5", expect=(1, 3, 4))
@@ -323,6 +564,14 @@ def main():
                   nsamp=25)
     block_sampled(3, 11, 7, [(2, 1, 1), (2, 1, 2), (2, 2, 1)], 1,
                   "B11 grand mix q3 N11", nsamp=15)
+    print("-- BLOCK C: MSM2 proof-oriented unequal-slope/resultant checks")
+    check_r0_assignment_lemma([(2, 1, 1), (2, 3, 1)], "two slopes with gap")
+    check_r0_assignment_lemma([(2, 1, 1), (2, 2, 1), (2, 3, 1)], "three slopes")
+    check_r0_assignment_lemma([(3, 1, 1), (2, 1, 2), (2, 3, 1)],
+                              "same-slope block plus higher block")
+    sweep_r0_assignment_lemma()
+    check_schur_counterexample()
+    check_resultants_and_multisylvester()
     print()
     n = len(FAILED)
     print(f"total time {time.time() - t0:.1f}s")
