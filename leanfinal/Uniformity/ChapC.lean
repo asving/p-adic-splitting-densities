@@ -140,6 +140,7 @@ import Uniformity.ChapC.C132kp4
 import Uniformity.ChapC.C132kp3
 import Uniformity.ChapC.C132kp5
 import Uniformity.ChapC.C132kp6
+import Uniformity.ChapC.C132fd0
 import Uniformity.ChapC.C132fd1
 import Uniformity.ChapC.C133mh1
 import Uniformity.ChapC.C14
