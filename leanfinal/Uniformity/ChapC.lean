@@ -125,6 +125,7 @@ import Uniformity.ChapC.C132nv6
 import Uniformity.ChapC.C132rp0
 import Uniformity.ChapC.C132rp1
 import Uniformity.ChapC.C132rp2
+import Uniformity.ChapC.C132rp3
 import Uniformity.ChapC.C132rp4
 import Uniformity.ChapC.C133mh1
 import Uniformity.ChapC.C14
