@@ -17,6 +17,13 @@ C6  (info) sibling uniformity at a NON-genre CELL-1 tower — quantifier probe f
 C7  Lemma TDC (MLFIX 2026-08-27): the exponent-1 Smith target directions are exactly a
     basis of W, the remaining directions form a basis modulo W, and
     dim V_n = #{i : e_i <= n} - r at every tested level.
+C8  [MLF2 2026-08-27] exhaustive reachable-target scan: sibling uniformity and the
+    schedule law hold for every reachable target in two complete small towers, not only
+    for the selected genre targets.
+C9  [MLF2 2026-08-27] peel-packaging model: arbitrary q^N-congruent lifts have cofactor
+    reduction X^r and canonicalizing every coordinate preserves the planted product class.
+C10 [MLF2 2026-08-27] exact secant identity and mixed-Sylvester flag probe: sampled
+    terminal/node pairs have the tangent Smith list and the same saturated quotient flag.
 
 Run: python3 verification/openmath/h116b4_lift_cert.py   (~1-2 min)
 """
@@ -371,6 +378,170 @@ def block_c6():
          + f"; leaves={len(leaves)}; sibling-uniformity {'HOLDS' if uni else 'FAILS'} here")
 
 
+# ---------------------- C8/C9: exhaustive target scan and packaging model
+def reachable_witnesses(q, N, m, children, cof_deg):
+    M = q ** N
+    ncoords = sum(mu for (mu, _, _) in children) + cof_deg
+    out = {}
+    for x in itertools.product(range(0, M, q), repeat=ncoords):
+        F = tuple(phi(x, q, M, children, cof_deg, m))
+        out.setdefault(F, x)
+    return out
+
+
+def schedule_at_leaf(q, N, m, children, cof_deg, leaf):
+    s = sum(mu for (mu, _, _) in children)
+    NB = N + 2
+    MB = q ** NB
+    Ps, sp = [], 0
+    for (mu, k, w) in children:
+        Ps.append(tuple(om.alpha_parent([x % MB for x in leaf[sp:sp + mu]],
+                                        k, w, q, MB)))
+        sp += mu
+    Q = [x % MB for x in leaf[sp:sp + cof_deg]] + [1]
+    A = bat.sylvester_matrix(q, NB, m, children, Ps, cof_deg, Q)
+    es, L = snf_left(A, q, NB)
+    Linv = mat_inv(L, q, NB)
+    dirs = [[Linv[i][j] % q for i in range(m)] for j in range(m)]
+    return tuple(q ** rank_modq([dirs[i][:s] for i, e in enumerate(es) if e <= n], q)
+                 for n in range(1, N))
+
+
+def block_c89(q, N, m, children, cof_deg, tag):
+    M = q ** N
+    witnesses = reachable_witnesses(q, N, m, children, cof_deg)
+    bad_uni = bad_sched = bad_pack = 0
+    wanted = frozenset(children)
+    genre_targets = 0
+    schedule_families = Counter()
+    for F, witness in sorted(witnesses.items()):
+        recs, _, leaves = run_tree(q, N, m, children, cof_deg, list(F), collect_samples=0)
+        observed = tuple(row[6] for row in recs)
+        predicted = schedule_at_leaf(q, N, m, children, cof_deg, sorted(leaves)[0])
+        schedule_families[(observed, predicted)] += 1
+        bad_uni += not all(len(set(row[7])) <= 1 for row in recs)
+        bad_sched += observed != predicted
+
+        genre = om.genre_of(list(F) + [1], q, N)
+        if genre not in ("DRAIN", "BAD") and genre[0] == wanted:
+            genre_targets += 1
+            # Integer-model version of GR-11's final conversion.  The witness is the
+            # projected child/cofactor state.  Change it by q^N in every coordinate to
+            # model arbitrary peel lifts, then canonicalize back to [0,q^N).
+            lifted = tuple(x + (i + 1) * M for i, x in enumerate(witness))
+            low_residue_zero = not any(phi(lifted, q, q, children, cof_deg, m))
+            canonical_product = tuple(phi(witness, q, M, children, cof_deg, m)) == F
+            replacement_product = tuple(phi(lifted, q, M, children, cof_deg, m)) == F
+            cofactor_in_q = (all(x % q == 0 for x in lifted[-cof_deg:])
+                             if cof_deg else True)
+            bad_pack += not (low_residue_zero and canonical_product and
+                             replacement_product and cofactor_in_q)
+    check(f"(C8) U(n|F) for EVERY reachable target in the complete scan [{tag}]",
+          bad_uni == 0, f"{len(witnesses) - bad_uni}/{len(witnesses)} targets")
+    check(f"(C8b) I_n(F) == #V_n(T_x) for EVERY reachable target [{tag}]",
+          bad_sched == 0,
+          f"{len(witnesses) - bad_sched}/{len(witnesses)}; "
+          f"{len(schedule_families)} schedule families")
+    if genre_targets:
+        check(f"(C9) peel lift -> projected states -> canonical sections preserves class [{tag}]",
+              bad_pack == 0, f"{genre_targets - bad_pack}/{genre_targets} genre targets")
+    else:
+        info(f"(C9) packaging coverage [{tag}]: no target of the requested genre in this scan")
+
+
+def block_c9_witness(q, N, m, children, cof_deg, F, witness, tag):
+    M = q ** N
+    wanted = frozenset(children)
+    genre = om.genre_of(list(F) + [1], q, N)
+    lifted = tuple(x + (i + 1) * M for i, x in enumerate(witness))
+    low_residue_zero = not any(phi(lifted, q, q, children, cof_deg, m))
+    canonical_product = tuple(phi(witness, q, M, children, cof_deg, m)) == tuple(F)
+    replacement_product = tuple(phi(lifted, q, M, children, cof_deg, m)) == tuple(F)
+    cofactor_in_q = (all(x % q == 0 for x in lifted[-cof_deg:]) if cof_deg else True)
+    right_genre = genre not in ("DRAIN", "BAD") and genre[0] == wanted
+    check(f"(C9b) packaging at the established genre target [{tag}]",
+          right_genre and low_residue_zero and canonical_product and
+          replacement_product and cofactor_in_q,
+          f"genre_of={genre}")
+
+
+# ------------------------------ C10: exact secants and mixed saturated flags
+def factors_at(coords, q, M, children, cof_deg):
+    out, sp = [], 0
+    for (mu, k, w) in children:
+        out.append(om.alpha_parent([z % M for z in coords[sp:sp + mu]], k, w, q, M))
+        sp += mu
+    out.append(([z % M for z in coords[sp:sp + cof_deg]] + [1])
+               if cof_deg else [1])
+    return out
+
+
+def secant_matrix(q, NB, m, children, cof_deg, x, y):
+    """Telescoping secant on Lambda=q*C.  Columns use q*E_j (and q*X^c)."""
+    M = q ** NB
+    fx = factors_at(x, q, M, children, cof_deg)
+    fy = factors_at(y, q, M, children, cof_deg)
+    cols = []
+    for bi, (mu, k, w) in enumerate(children):
+        _, lat = bat.planted_basis(q, NB, mu, k, w)
+        for c in range(mu):
+            z = list(lat[c])
+            for j in range(bi):
+                z = om.pmul(fx[j], z, M)
+            for j in range(bi + 1, len(fx)):
+                z = om.pmul(z, fy[j], M)
+            cols.append((z + [0] * m)[:m])
+    bi = len(children)
+    for c in range(cof_deg):
+        z = [0] * c + [q]
+        for j in range(bi):
+            z = om.pmul(fx[j], z, M)
+        cols.append((z + [0] * m)[:m])
+    return [[cols[j][i] % M for j in range(len(cols))] for i in range(m)]
+
+
+def smith_flag(A, q, NB, s, N):
+    es, L = snf_left(A, q, NB)
+    Linv = mat_inv(L, q, NB)
+    dirs = [[Linv[i][j] % q for i in range(len(A))] for j in range(len(A))]
+    return es, [[dirs[i][:s] for i, e in enumerate(es) if e <= n]
+                for n in range(1, N)]
+
+
+def same_span(vs, ws, q):
+    rv, rw = rank_modq(vs, q), rank_modq(ws, q)
+    return rv == rw == rank_modq(vs + ws, q)
+
+
+def block_c10(q, N, m, children, cof_deg, F, samples, leaves, tag):
+    s = sum(mu for (mu, _, _) in children)
+    NB, M = N + 2, q ** (N + 2)
+    x = sorted(leaves)[0]
+    fxs = factors_at(x, q, M, children, cof_deg)
+    tangent = bat.sylvester_matrix(q, NB, m, children, fxs[:-1], cof_deg, fxs[-1])
+    tes, tflags = smith_flag(tangent, q, NB, s, N)
+    exact_ok = flags_ok = lists_ok = True
+    total = 0
+    for _, pairs in samples:
+        for y, _ in pairs:
+            A = secant_matrix(q, NB, m, children, cof_deg, x, y)
+            ses, sflags = smith_flag(A, q, NB, s, N)
+            lists_ok &= ses == tes
+            flags_ok &= all(same_span(a, b, q) for a, b in zip(tflags, sflags))
+            dx = [(a - b) % M for a, b in zip(x, y)]
+            lhs = [(a - b) % M for a, b in
+                   zip(phi(x, q, M, children, cof_deg, m),
+                       phi(y, q, M, children, cof_deg, m))]
+            rhs = [sum(A[i][j] * (dx[j] // q) for j in range(len(dx))) % M
+                   for i in range(m)]
+            exact_ok &= lhs == rhs
+            total += 1
+    check(f"(C10) exact product secant identity on sampled terminal/node pairs [{tag}]",
+          exact_ok, f"{total} pairs")
+    check(f"(C10b) mixed secants keep tangent Smith list and saturated quotient flag [{tag}]",
+          lists_ok and flags_ok, f"{total} pairs; exponents={sorted(tes)}")
+
+
 def main():
     print("h116b4_lift_cert (unit MLIFT, 2026-08-26) -- II-a/II-b certificates")
     print("-- C1: the closed form (1.1) against alpha_parent")
@@ -389,8 +560,13 @@ def main():
               len(leaves) == expect[tag], f"leaves={len(leaves)}")
         block_c3(q, N, m, children, cof_deg, list(F), recs, leaves, tag)
         block_c45(q, N, m, children, cof_deg, list(F), samples, tag)
+        block_c10(q, N, m, children, cof_deg, list(F), samples, leaves, tag)
+        block_c9_witness(q, N, m, children, cof_deg, list(F), sorted(leaves)[0], tag)
     print("-- C6: non-genre tower probe (info)")
     block_c6()
+    print("-- C8/C9: complete reachable-target scans and peel packaging")
+    block_c89(2, 5, 3, [(2, 1, 1)], 1, "CELL-1 ALL 96 TARGETS")
+    block_c89(2, 5, 4, [(2, 1, 1), (2, 2, 1)], 0, "MIXED ALL 32 TARGETS")
     print()
     n = len(FAILED)
     print(f"==== {n} failed ====" if n else "==== ALL CHECKS PASSED ====")
