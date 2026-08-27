@@ -14,6 +14,9 @@ C4  tower affinity (5.1/5.3): omega_n across each K-fibre is omega_n(x0) - sigma
 C5  fibrewise coset sweep (5.3): each K-fibre's omega-multiset is one coset of Im(Lbar),
     uniformly covered — includes the choice-compensation.
 C6  (info) sibling uniformity at a NON-genre CELL-1 tower — quantifier probe for MLIFT-1.
+C7  Lemma TDC (MLFIX 2026-08-27): the exponent-1 Smith target directions are exactly a
+    basis of W, the remaining directions form a basis modulo W, and
+    dim V_n = #{i : e_i <= n} - r at every tested level.
 
 Run: python3 verification/openmath/h116b4_lift_cert.py   (~1-2 min)
 """
@@ -265,6 +268,25 @@ def block_c3(q, N, m, children, cof_deg, F, recs, leaves, tag):
     check(f"(C3) schedule law: observed I_n == #V_n(T_x) at every level [{tag}]",
           ok_sched, "; ".join(det) + f"; exponents(cap {NB})={sorted(es)}")
     check(f"(C3b) aggregate support == q^r * I_n at every level [{tag}]", ok_agg)
+    # C7: GRADE fixes the target directions missing from the exponent-only interface.
+    # In coefficient order, quotienting by W discards the last r coordinates, so the
+    # quotient direction of A_i is dirs[i][:s].
+    e1 = [i for i, e in enumerate(es) if e == 1]
+    e1_in_W = all(not any(x % q for x in dirs[i][:s]) for i in e1)
+    e1_basis_W = (len(e1) == cof_deg and rank_modq([dirs[i] for i in e1], q) == cof_deg)
+    complement_basis = rank_modq([dirs[i][:s] for i, e in enumerate(es) if e > 1], q) == s
+    dim_rows = []
+    dim_formula = True
+    for n in range(1, N):
+        actual = rank_modq([dirs[i][:s] for i, e in enumerate(es) if e <= n], q)
+        predicted = sum(e <= n for e in es) - cof_deg
+        dim_rows.append(f"n={n}:{actual}={predicted}")
+        dim_formula &= actual == predicted
+    check(f"(C7) TDC: e=1 directions form W and remaining directions basis mod W [{tag}]",
+          e1_in_W and e1_basis_W and complement_basis,
+          f"#e1={len(e1)}, dimW={cof_deg}, quotient-rank={s}")
+    check(f"(C7b) dim V_n == #{{e_i<=n}}-r at every level [{tag}]", dim_formula,
+          "; ".join(dim_rows))
     info(f"[{tag}] truncated exponent list at fibre base: {sorted(min(e, N) for e in es)}")
 
 
