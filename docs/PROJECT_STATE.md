@@ -141,43 +141,9 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 
 | unit | what | status |
 |---|---|---|
-| (archive) | everything through 2026-08-26 (S2-source campaign, GC-13 bridge, af′ chain, amendments, E.57/D-gate/dv-engine closures, PK-1..7, RQ, UFEED, SIMP, EFF sweep GENTOW5+T2s5s6+W12) | ALL DONE — LOG + git log; every landing orchestrator-verified |
-| RSGN | the leanspec I.10a/b socket re-sign → capstone assembly (FABLE) | DONE — A-I.3 enacted + ALL FOUR I.15–I.18 LANDED Lean-core; orchestrator re-verified both builds; committed |
-| DEC3R | μ₃/Route-B blueprint (codex HIGH) | DONE — commit b5d16d0f; gates unit AMND |
-| DEC4R | chain-blockers plan (codex HIGH) | DONE — commit 5755bc59; wave-1 = unit BW1 |
-| DEC5R | H.116b4 examples-first map (codex HIGH) | DONE — commit 93c618b8; fireable rows = unit HW1 |
-| AMND | the FOUR signed consumer amendments (codex HIGH, one silent-exit resume) | DONE — A-C.17..A-C.20 ALL LANDED (hprev fence; chainNormBelow re-index + OPEN-NORM-BASE recorded; shadow_persistence hdeg; the HasLabel degree pin, refutations kept as *Leaky); 11 consumers rippled; orchestrator-verified: ChapC roll-up + leanspec green, Lean-core |
-| CW1a+CW1b | CHFD's four capstone wrappers (SONNET) | DONE — decidedSliceAt_two/menuLawAt_two/drainageAt_two/menuLawAt_three landed Lean-core; a0/a1/a2 of CapstoneHypotheses 2 fully public; ChapI roll-up wired green |
-| MNV01 | μ₃ chain head M3-NV0+NV1 (SONNET) | DONE — C132nv0/1 landed, s2Hgt₃ Φ₂ = 21 tooth, orchestrator-verified, wired |
-| MNV2 | μ₃ M3-NV2 endpoints port (SONNET) | DONE — 26 decls, one explicit Dv2ResSurv hypothesis (shape review-flagged), wired |
-| MNV3 | μ₃ M3-NV3 survival core (SONNET) | DONE — the ≤ half via Φ₂'s graded key-polynomiality (no plain irreducibility claimed); NV2/NV3 interface gap honestly recorded |
-| MNV3b | μ₃ interface closure (SONNET) | DONE — slot-0 equality proved; the (5,2)-vs-(21,2) question resolved by MADJ |
-| MADJ | Dv2ResSurv numeral adjudication (codex HIGH) | DONE — OUTCOME A: (21,2) machine-pinned; the probe DERIVES the μ₃ product law s2Hgt₃(g·z)=s2Hgt₃ g+s2Hgt₃ z (probe orchestrator-repaired: import/open/qualifications — MADJ's exit-0 claim was false); NV4 unblocked |
-| NS7R | the NS7Termination reconciliation (codex HIGH) | DONE — A-I.4 enacted, Iff.rfl reconciliation gates pass; ns7 (1st of 3 capstone inputs) FULLY SUPPLIED |
-| VHENS | adversarial read of HENSEL_ENGINE doc (codex HIGH) | DONE — REJECT: findings 1-2 = STALENESS vs A-C.20 (the repair the doc itself triggered); later findings = candidate genuine gaps; MH fleet FENCED pending MHDISP |
-| MHDISP | disposition of VHENS (codex HIGH) | DONE — rejection SUSTAINED: M1(2) GENUINE CRITICAL (bare slotRes product FALSE, F₉-refuted; the twist-normalized M supported but unproved), findings 1-2 stale-vs-A-C.20 corrected in doc, 4-8 gaps exposed; MH fleet FENCED; repair = MHFIX |
-| VRAMX | adversarial read of RAMIFIED doc (codex HIGH) | DONE — REJECT: ℕ-subtraction truncation falsifies the extraction lemma (concrete counterexample), T1 chain stopped; T2 survives; findings 1/3 genuine gaps; repair = MRFIX. NOTE: the unit's own fresh-Claude verifier had ACCEPTed — codex decorrelation vindicated (memory recorded) |
-| MNV4 | μ₃ product law (SONNET) | DONE — s2Hgt₃_mul in production + unconditional survival package at (21,2); wired |
-| MNV5 | μ₃ AddValuation packaging (SONNET) | DONE honest partial — conditional packaging landed; the missing dv2SideSet_nonempty analogue = node MNV6 |
-| MNV6 | μ₃ unconditionality: dv2SideSet_nonempty + the genuine AddValuation (SONNET) | RUNNING |
-| MRFIX | RAMIFIED doc repair (codex HIGH) | DONE — F2 critical fixed (guard + full chain rewrite), F1 rebuilt on landed digits, I1 honestly re-graded a node; T1 PARTIAL-on-I1, T2 PROVED |
-| MI1 | the I1 identification node (SONNET) | DONE — ALL FOUR obligations PROVED IN LEAN (B59c.lean; first ChapB→ChapC import edge flagged); the ramified T1 chain's one open is machine-checked; VRAMX2 re-read queued 09:21 |
-| MHFIX | the corrected twist product law (FABLE) | DONE — the carry is the twistExp cocycle defect; τ=1 in twist form (twistRead exactly multiplicative); TW-δ Lean-proved, cert 473,961/0, TWO consecutive clean codex passes; MH.1 regraded transcription-ready |
-| MH1 | MH.1 transcription (SONNET) | DONE — C133mh1.lean (TW-δ + bridge proved, M1′ shapes landed); engine gates left: MH.8 conversions + X1 |
-| MNV6 | μ₃ unconditionality (SONNET) | DONE — dv2SideSet_nonempty GENERIC + the genuine AddValuation s2AddVal₃; NV family COMPLETE |
-| MRP0 | μ₃ grade bank (SONNET) | DONE — 14 decls, unconditional product |
-| MRP1 | μ₃ recursive coefficient, GENUINELY-NEW (FABLE, died twice at the finish, orchestrator-closed) | DONE — gate + ε-factor (PROVED S2 collapse ε≡1) + Def-3.13 coefficient with proof-independence pins + teeth; OPEN-RP1-TRANSPORT honestly split 3 ways, review-flagged |
-| V-0920 | verification wave VSMITH/VLIFT/VRAMX2 (codex HIGH) | QUEUED — one-shot at 09:21 |
-| CIFACE | the capstone interface nodes (FABLE, died on final message — orchestrator verified+committed) | DONE — L0 + DT0 PROVED-EXACT supplier decompositions (iff both directions); W0/WIN0 landed with guards BLOCKED-BECAUSE (weld-site export; GENHN-CAP-GEN reader rule) |
-| CHFD | the CapstoneHypotheses supply map (codex HIGH) | DONE — CapstoneHypotheses 2 = ns7 + ladder + deepTwist EXACTLY (a0/a1/a2 provable at n=2, probe-checked); LADDER-SUPPLY + DEEP-TWIST-SUPPLY are the decisive campaigns; NS7Termination leanspec/leanfinal DRIFT flagged (reconciliation re-sign owed) |
-| BW1 | BLOCKERS_PLAN wave 1 (codex, after two Sonnet 529 deaths) | DONE — 6 decls LANDED (B53d + C131ah), orchestrator re-verified Lean-core, roll-ups wired |
-| HW1 | H116B4_MAP fireable rows (codex) | DONE — GR-1/2 leaf identity + GR-3/3b cofactor/Fit landed Lean-core (H116b4a.lean), orchestrator-verified, wired |
-| MHENS | MATH: the dv-graded one-slope Hensel engine, the C.34/C.35 root (FABLE) | DONE — engine PROVED at math grade (mixed product law M + Newton existence with exact +1 contraction + completeness-free pigeonhole uniqueness + Gauss-descent maximality; cert 2832/0 orchestrator-re-run; 16 nodes MH.0a–16, H1/H3 re-priced 520–880/310–530); STOP-THE-LINE: HasLabel leaky on D′∤deg — signed C.34 uniqueness + C.35 clause 3 REFUTED (concrete ℤ₂ instance) → repair R1 (degree pin) ADDED to AMND as amendment 4; BONUS: once MH.3 lands, the cite fgmn_dv_exact_mul becomes a THEOREM (retirable); MH.16 (the Lean refutation record) must land before any transcription against unrepaired signatures |
-| MBRIDGE | MATH: RB3's upward budget→dv2Hgt bridge, certificate-first (FABLE) | DONE — bridge PROVED (cert 210/0, Codex-audited; RB3's "not reusable in reverse" was too pessimistic — all on landed w-abstract machinery, 5+2 nodes, 180–305 lines); STOP-THE-LINE: signed `shadow_persistence` refutable as signed (g=Φ₂^μ₂) → the `hdeg` amendment ADDED to AMND's brief as its 3rd item |
-| MSMITH | MATH: H.116b4 core I — restricted Smith identification (FABLE) | RUNNING |
-| MLIFT | MATH: H.116b4 cores II-a/II-b (FABLE) | DONE — II-a PROVED over every DVR (affine grade map in closed form, K = q^{Σμ_p}, 0/K dichotomy); II-b PARTIAL: U(n≤3) proved, TWO named OPENs (MLIFT-1 uniformity n≥4, MLIFT-2 schedule), NEW law Iₙ=#Vₙ certified (= MSMITH's interface point); global straightening REFUTED+FENCED; cert re-run ALL PASSED |
-| MRAMX | MATH: completion-free ramified level-1 exactness (FABLE) | DONE — T1/T2 PROVED at math grade (filtration/length route; the plan's matrix step superseded by the initial-forms LEMMA NC; cert 4433/4433 + predicted negative control; probe orchestrator-verified, incl. proved norm_mem_span_self); re-sized 480–780 lines over X0–X9+I1; fresh-context verifier addendum pending (agent still running); codex adversarial read queued for the NEXT codex window (not tonight's — budget) |
-| EXPO | public exposition refresh (standing obligation at major milestones) | PENDING — after the CHFD map lands |
+| (archive) | everything through 2026-08-27 ~17:30 — the capstone assembly (A-I.3/A-I.4 + I.15–I.18), the five-amendment wave, the CHFD supply map + CW wrappers + IFC0 interfaces, the five math-fleet docs THROUGH the codex verification/repair loop (final: RAMIFIED ACCEPT, HENSEL corrected-M two clean passes, SMITH ACCEPT-WITH-GAPS, LIFT ACCEPT), the ramified I1 interface PROVED in Lean (B59c), MH.1 transcribed (C133mh1), and μ₃ nodes A0/A1 + NV0–NV6 + RP0–RP10 + KP0 (20/29) | ALL DONE — LOG + git log; every landing orchestrator-verified; pushed through 2868bca3 |
+| MKP1 | μ₃ M3-KP1: divisibility ↔ normalized-residual divisibility, GENUINELY-NEW (codex HIGH) | RUNNING |
+| EXPO | public exposition refresh (standing milestone obligation) | PENDING — after the μ₃ campaign closes |
 
 ## 7. Resume protocol (fresh agent)
 

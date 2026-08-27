@@ -385,3 +385,18 @@ plateau (06:30–10:25) held up MRP6 and the 09:21 verification wave; both fired
 10:25 dip (VSMITH/VLIFT/VRAMX2 running on the fresh codex window). μ₃ stands at 15 of 29
 nodes; the engine's remaining gates are MH.8 + X1; the ramified chain awaits VRAMX2's
 re-read.
+
+**2026-08-27 (afternoon/evening) — the verification loop CLOSES GREEN + μ₃ reaches 20/29.**
+Despite an afternoon-long classifier plateau (~12:00–17:00, all Anthropic-side tools
+gated; codex unaffected), the day closed with: MSFIX/MLFIX repairing the two H.116b4 docs
+(the lift doc's displayed II-a theorem was FALSE — raw quotient one grade too large — and
+the amended theorem PROVED; Lemma TDC proved from GRADE answering the verifier's
+centerpiece; the Smith doc's universal claim honestly demoted to its 92k-instance
+certification with new named opens GR-7b-0/GR-4abc/GR-5), then the re-reads: VSMITH2
+ACCEPT-WITH-GAPS, VLIFT2 ACCEPT. With VRAMX2's ACCEPT and MHFIX's two consecutive clean
+passes, EVERY math-fleet document now stands codex-verified at its honest state. The μ₃
+campaign swept on the codex lane after Sonnet storm deaths (MRP6 lane-reassigned):
+RP6/RP7/RP8/RP9/RP10 + KP0 all landed (the RP family complete: recipe, X+1 collapse,
+degree-8 lift included), KP1 (genuinely-new) in flight. Everything pushed to GitHub per
+Asvin's request (current through 2868bca3); Asvin switched the session to accept-edits
+mode, ending the classifier-gate outages.
