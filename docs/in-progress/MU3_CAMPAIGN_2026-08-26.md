@@ -324,3 +324,59 @@ The campaign is complete only when all of the following are green:
 4. A local instance fires the amended `gentow5w_two` at `2,1,21`, using machine-checked
    `20<21`, coprimality, the fenced base branch, and the lower-normalizer supply; the consumer's
    current input/output shape is at `leanfinal/Uniformity/ChapC/C107ac14.lean:164-183`.
+
+## [MRP1 2026-08-27] — node M3-RP1 landed: the gate, the ε-factor, the recursive coefficient
+
+Landed in `leanfinal/Uniformity/ChapC/C132rp1.lean` (663 lines, sorry-free, Lean-core-only
+footprints on all 37 printed declarations; verified `lake env lean` from `leanfinal/`).
+Verdict: `runs/wave-b/verdict_MRP1.md`.
+
+**The gate.** `S2Mu3SlotOnGrade β g s := 2 • dv2Pin L Φ₂ g s + 21·s = β` — `dv2Supp`'s own
+term shape at the outer side `(21, 2)`, per §2.3's decision and the MADJ layering (outer
+`(21, 2)` explicit; the inner `(5, 2)` sealed inside `L` via `dv2Hgt`).  Normal forms:
+`s2Mu3SlotOnGrade_iff` (natural equation `2m + 21s = β`), `s2Mu3SlotOnGrade_iff_hgt₂`
+(the §2.3 display with `μ₂ = s2Hgt₂`, the LANDED table), parity `s % 2 = β % 2`
+(Def 3.12's `s₃(β) = β % 2`), the **inner exact-grade pin** `s2Mu3SlotOnGrade_inner_exact`
+(eq (10)'s second conjunct: on the gate, `A_s` has EXACT μ₂ grade `(β − 21s)/2` — so the
+inner operator is read on its FGMN-specified domain; M3-RP5's consumable), and the
+`dv2Supp ≤ β` bridge to RP-0's `S2Mu3AboveGrade` (M3-RP2's zero-above input).
+
+**The ε-derivation (print-read, formalized).**  Def 3.12 at `i = 2`, `(e₂, h₂) = (2, 5)`:
+the Bézout pair is `(ℓ₂, ℓ₂′) = (1, −2)` (`s2Mu3_bezout_level2`), and the unique grade-line
+integers in the cleared coordinate `m = e(μ₂)α` are `s₂(m) = m % 2`,
+`u₂(m) = (m − 5(m % 2))/2` (`s2Mu3_def312_level2`, omega-certified with existence tooth;
+level-3 analogue `s2Mu3_def312_level3` certifies the `β % 2 + 2t` abscissa encoding).  The
+transcribed exponent `s2Mu3EpsExp m = −2·s₂(m) − 1·u₂(m)` and the parametric factor
+`s2Mu3EpsOf z m = z ^ s2Mu3EpsExp m` display Def 3.12 verbatim.  THE COLLAPSE: `fld 2` has
+two elements (`s2Fld₂_card`), so every nonzero scalar is `1`
+(`s2Fld₂_eq_one_of_ne_zero`, public copy of the corpus private-copy pattern), hence
+`s2Mu3EpsOf z m = 1` for EVERY nonzero letter and every grade (`s2Mu3EpsOf_eq_one`), the
+Def 3.13 evaluation point `z₂` is pinned to `1` (`s2Mu3_eval_letter_pinned`), and the
+graded-vs-normalized inner reads agree after evaluation (`s2Mu3Coeff_eq_eval_normRes`, via
+C130rp8's reconstruction `R_{2,α} = y^{j₀}·R₂` — `y = 1` makes the strip invisible).  The
+one un-formalized leg is the paper's own p. 15 remark `z_i ≠ 0` for `i > 0`, consumed as
+the explicit `hz : z ≠ 0` hypothesis of the display pins.
+
+**The coefficient.**  `s2Mu3Coeff β g t` = gated
+`ε · eval 1 (s2GradedRes ((β − 21s)/2) (dev Φ₂ g s))` at abscissa `s = β % 2 + 2t` —
+Def 3.13's `ε₂(α_j)·R_{2,α_j}(a_{s_j})(z₂)` with the collapsed values; the letter-display
+pin `s2Mu3Coeff_letter_display` re-expands it to the literal published shape for every
+nonzero candidate `z₂`.  Proof-independence pins: letter display, true height, two-read
+collapse, slot completeness; zero laws at `⊤`-slots / past-degree / past-grade /
+above-grade (coefficient level — RP-2 lifts to the polynomial).  Teeth:
+`tooth_mu3Coeff_Φ₂ : s2Mu3Coeff 21 Φ₂ 0 = 1` (eq (11) at μ₃, firing through BOTH landed
+levels), non-vacuity, and the grade-20 vanish.
+
+**OPEN-RP1-TRANSPORT disposition (review queue).**  The transport claim splits; only the
+honest split is asserted (file docstring, "Faithfulness note"):
+(1) DERIVED — the μ₃-level ε-factor, the `z₂`-evaluation, and the graded/normalized
+    two-read agreement all collapse at S2, proved for every nonzero letter (above);
+(2) INHERITED, NOT RE-DERIVED — `s2GradedRes` = published `R_{2,α}` is C130rp1's standing
+    C.22/C.25 ϖ-read boundary; whether the landed μ₂ read carries the paper's level-2
+    ε₁-normalization is exactly GENTOW2-B′'s per-grade unit `u(β)` question
+    (`lean/notes/openmath/GENTOW2_PROOF_2026-08-09.md:489-523`) and REMAINS OPEN — no
+    theorem in C132rp1 asserts or consumes it;
+(3) NOT LANDED — concrete `z₂` (OPEN-LETTERS) and the `F₃ ≅ fld 2` identification
+    (OPEN-DICT-3-MU3); neither is needed, BECAUSE of (1).
+Flagged for the review queue: legs (2)/(3) are the surviving faithfulness opens of this
+node; leg (1) removes the ε-factor and evaluation point from the open set.
