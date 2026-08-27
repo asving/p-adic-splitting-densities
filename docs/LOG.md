@@ -344,3 +344,26 @@ wrappers (DecidedSliceAt 2, MenuLawAt 2, DrainageAt 2, MenuLawAt 3) in minutes, 
 — the a0/a1/a2 branch of `CapstoneHypotheses 2` is now fully public. The μ₃ fleet is
 UN-GATED (A-C.17/18); its chain head (M3-NV0/NV1) and the CIFACE interface nodes launch
 next. Still in flight: MSMITH, HW1 (codex window at 100% till 04:09).
+
+**2026-08-27 (overnight) — the μ₃ value theory COMPLETES + the adversarial loop bites.**
+The μ₃ chain ran NV0→NV6 through the storms (Sonnet units, several 529 resumes, one
+codex adjudication): the chain head (dv2Supp bank + s2Hgt₃ with the Φ₂=21 tooth), the
+endpoint/convolution port (one explicit Dv2ResSurv hypothesis), the survival core via
+Φ₂'s GRADED key-polynomiality (plain irreducibility neither claimed nor needed — and the
+no-primality version machine-refuted first), the gap-born interface node (slot-0 equality;
+the (5,2) blockage diagnosed), MADJ's adjudication (OUTCOME A: the outer pair is (21,2),
+machine-pinned — the probe DERIVED the product law; MADJ's own exit-0 claim was false,
+orchestrator repaired the probe's plumbing), the production product law s2Hgt₃_mul, the
+honest-partial AddValuation packaging, and finally MNV6: dv2SideSet_nonempty GENERIC, the
+unconditional product law, and the genuine `s2AddVal₃ : AddValuation (Polynomial O)
+(WithTop ℤ)`. The RP family opens (MRP0 launched). MEANWHILE the 04:16 codex wave: NS7R
+enacted A-I.4 (leanspec I.01 reconciled to the landed redraft; ns7 — the FIRST of
+CapstoneHypotheses 2's three substantive inputs — is FULLY SUPPLIED); and the adversarial
+reads REJECTED BOTH flagship math docs on genuine grounds: HENSEL — M1(2)'s bare slot
+product FALSE (F₉-refuted; MHDISP dispositioned all 9 findings, doc amended, MH fleet
+fenced, MHFIX chartered on the corrected twist-normalized M); RAMIFIED — the ℕ-subtraction
+extraction lemma FALSE (concrete counterexample; T1 chain stopped, T2 survives; MRFIX
+chartered on the guarded repair). The sharpest datum: MRAMX's own fresh-context CLAUDE
+verifier had ACCEPTed — codex decorrelation is now twice-confirmed and recorded as the
+acceptance gate (memory: codex-verifier-decorrelation-2026-08-27). Census: 664/1238
+PROVED, 489 carrier, 72 unlanded, 4 placeholder-body (A-I.4 retired one True body).
