@@ -134,6 +134,8 @@ import Uniformity.ChapC.C132rp8
 import Uniformity.ChapC.C132rp9
 import Uniformity.ChapC.C132rp10
 import Uniformity.ChapC.C132kp0
+import Uniformity.ChapC.C132kp1
+import Uniformity.ChapC.C132fd1
 import Uniformity.ChapC.C133mh1
 import Uniformity.ChapC.C14
 import Uniformity.ChapC.C140defs
