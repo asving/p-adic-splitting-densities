@@ -24,6 +24,9 @@ open Uniformity.Density.Tower.C130nv3
 open Uniformity.Density.Tower.C132nv0 Uniformity.Density.Tower.C132nv1
 open Uniformity.Density.Tower.C132nv6
 open Uniformity.Density.Tower.C132rp0 Uniformity.Density.Tower.C80
+open Uniformity.Density.Tower.C130rp0 Uniformity.Density.Tower.C130rp1
+open Uniformity.Density.Tower.C130rp4 Uniformity.Density.Tower.C130rp8
+open Uniformity.Density.Tower.C132rp1 Uniformity.Density.Tower.C132rp2
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [Finite (ResidueField O)] (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
@@ -193,6 +196,43 @@ theorem g8_exactGrade : S2Mu3ExactGrade h2 hq 42 (g8 h2 hq) := by
   show s2Hgt₃ h2 hq (g8 h2 hq) = ((42 : ℕ) : WithTop ℤ)
   rw [s2Hgt₃_g8 h2 hq]
   norm_num
+
+/-! ## STAGE C, part 1 — the μ₂ leaf: the graded read of the correction is `1` -/
+
+/-- the constant factor sits at exact μ₂ grade `16`. -/
+theorem exactGrade_C_two_pow :
+    S2ExactGrade h2 hq 16 (Polynomial.C ((2 : O) ^ 4)) := by
+  unfold S2ExactGrade
+  rw [show ((2 : O) ^ 4) = 2 * 2 * 2 * 2 by ring, map_mul, map_mul, map_mul,
+    s2Hgt₂_mul h2 hq, s2Hgt₂_mul h2 hq, s2Hgt₂_mul h2 hq, s2Hgt₂_C_two h2 hq]
+  norm_num
+
+/-- the μ₂ graded read of the constant is a nonzero constant. -/
+theorem gradedRes_C_two_pow_eq_C :
+    s2GradedRes h2 hq 16 (Polynomial.C ((2 : O) ^ 4))
+      = Polynomial.C ((s2GradedRes h2 hq 16 (Polynomial.C ((2 : O) ^ 4))).coeff 0) := by
+  refine (Polynomial.eq_C_of_natDegree_le_zero ?_).trans rfl
+  refine Polynomial.natDegree_le_iff_coeff_eq_zero.mpr fun m hm => ?_
+  refine s2GradedRes_coeff_eq_zero_of_natDegree_lt h2 hq _ ?_
+  rw [Polynomial.natDegree_C]
+  omega
+
+/-- the μ₂ graded read of the correction collapses to `1` (two-element field). -/
+theorem s2GradedRes_corr : s2GradedRes h2 hq 21 (corr h2 hq) = 1 := by
+  have hmul := s2GradedRes_mul_of_exact h2 hq (exactGrade_C_two_pow h2 hq)
+    (tooth_key h2 hq)
+  have h21 : (16 : ℕ) + 5 = 21 := by norm_num
+  rw [h21] at hmul
+  have hcorr : corr h2 hq
+      = Polynomial.C ((2 : O) ^ 4) * ((s2Frame h2 hq).key : Polynomial O) := corr_eq h2 hq
+  rw [hcorr, hmul, tooth_gradedRes_key h2 hq, mul_one,
+    show (16 : ℕ) % 2 * (5 % 2) = 0 from by norm_num, pow_zero, one_mul]
+  have hc0 : (s2GradedRes h2 hq 16 (Polynomial.C ((2 : O) ^ 4))).coeff 0 ≠ 0 := by
+    refine s2GradedRes_coeff_zero_ne_zero_of_exact h2 hq (exactGrade_C_two_pow h2 hq) ?_
+    rw [Polynomial.natDegree_C]
+    norm_num
+  rw [gradedRes_C_two_pow_eq_C h2 hq, s2Fld₂_eq_one_of_ne_zero h2 hq hc0]
+  rfl
 
 end Uniformity.Density.Tower.C132rp10b
 
