@@ -400,3 +400,21 @@ RP6/RP7/RP8/RP9/RP10 + KP0 all landed (the RP family complete: recipe, X+1 colla
 degree-8 lift included), KP1 (genuinely-new) in flight. Everything pushed to GitHub per
 Asvin's request (current through 2868bca3); Asvin switched the session to accept-edits
 mode, ending the classifier-gate outages.
+
+**2026-08-27 (evening) — THE μ₃ CAMPAIGN CLOSES: the unconditional depth-2 calculus.**
+36 hours after DEC3R's blueprint, all 29 planned nodes + the 3 gap-born ones (NV3b, RP10b,
+KP6b) are disposed. The finale ran through a codex-capped, Claude-storming window: the
+ORCHESTRATOR personally landed FD-0 (the conditional 13-field laws record), the SG
+conditional core, AND — solo, five committed stages — M3-RP10b: the non-recipe evaluation
+`s2Mu3NormRes g₈ = X + 1` (the calibrated route: the μ₂ leaf `s2GradedRes 21 corr = 1`,
+the eq-(11) polynomial reads, the odd×odd carry `X`, the char-2 minus kill, grade-42
+additivity), discharging `hex`. Two calibration lessons banked: the height convention
+(4-per-π/2-per-X/5-per-key) caught a wrong candidate BEFORE any Lean; RP-10's original
+`g₈ = Φ₂² − 2⁴Φ′` was right all along at the corrected grade 42 = e′·u′. Then the Fable
+lane (recovered) landed M3-KP6b — the converse via the full kp7 dictionary port with a NEW
+mechanism (the divByMonic refuter where μ₂'s multiplier trick failed on Φ₂'s dense
+coefficients) — and fired ★ `s2Mu3_calculus_nonempty : Nonempty (FGMNCalculus
+(s2DepthTwo h2 hq) 2 1 21)`: THE UNCONDITIONAL DEPTH-2 CALCULUS at the corrected triple,
+twelve footprints Lean-core, orchestrator re-verified. MSG2 (the consumer applications —
+the census-moving GENTOW landings) launched; VAUD + MHG fire at 22:07 (the RP10B/KP6B
+codex slots self-skip). deepTwist's first supplier tooth is now real.
