@@ -149,8 +149,9 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | AMND | the FOUR signed consumer amendments (codex HIGH, one silent-exit resume) | DONE — A-C.17..A-C.20 ALL LANDED (hprev fence; chainNormBelow re-index + OPEN-NORM-BASE recorded; shadow_persistence hdeg; the HasLabel degree pin, refutations kept as *Leaky); 11 consumers rippled; orchestrator-verified: ChapC roll-up + leanspec green, Lean-core |
 | CW1a+CW1b | CHFD's four capstone wrappers (SONNET) | DONE — decidedSliceAt_two/menuLawAt_two/drainageAt_two/menuLawAt_three landed Lean-core; a0/a1/a2 of CapstoneHypotheses 2 fully public; ChapI roll-up wired green |
 | MNV01 | μ₃ chain head M3-NV0+NV1 (SONNET) | DONE — C132nv0/1 landed, s2Hgt₃ Φ₂ = 21 tooth, orchestrator-verified, wired |
-| MNV2 | μ₃ M3-NV2 endpoints port (SONNET) | RUNNING (one 529 resume) |
-| MNV3 | μ₃ M3-NV3 survival core (SONNET) | RUNNING (two 529 resumes) |
+| MNV2 | μ₃ M3-NV2 endpoints port (SONNET) | DONE — 26 decls, one explicit Dv2ResSurv hypothesis (shape review-flagged), wired |
+| MNV3 | μ₃ M3-NV3 survival core (SONNET) | DONE — the ≤ half via Φ₂'s graded key-polynomiality (no plain irreducibility claimed); NV2/NV3 interface gap honestly recorded |
+| MNV3b | μ₃ interface closure: discharge Dv2ResSurv (equality + carry bound) (SONNET) | RUNNING |
 | CIFACE | the capstone interface nodes (FABLE, died on final message — orchestrator verified+committed) | DONE — L0 + DT0 PROVED-EXACT supplier decompositions (iff both directions); W0/WIN0 landed with guards BLOCKED-BECAUSE (weld-site export; GENHN-CAP-GEN reader rule) |
 | CHFD | the CapstoneHypotheses supply map (codex HIGH) | DONE — CapstoneHypotheses 2 = ns7 + ladder + deepTwist EXACTLY (a0/a1/a2 provable at n=2, probe-checked); LADDER-SUPPLY + DEEP-TWIST-SUPPLY are the decisive campaigns; NS7Termination leanspec/leanfinal DRIFT flagged (reconciliation re-sign owed) |
 | BW1 | BLOCKERS_PLAN wave 1 (codex, after two Sonnet 529 deaths) | DONE — 6 decls LANDED (B53d + C131ah), orchestrator re-verified Lean-core, roll-ups wired |
