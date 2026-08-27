@@ -60,6 +60,23 @@ matching M3-NV2's expected `hsurv` premise verbatim (degree `< 4` supplied autom
   (`S2MuMinimal`, `S2MuIrreducible`) already packaged inside `S2KeyPoly h2 hq Φ₂`.
 * No `dv2Supp`/`FGMNSourceData` assembly: this node supplies exactly the one survival fact,
   not the endpoint theorem it feeds (M3-NV2's job) nor any packaging (M3-FD0/M3-SG's).
+* **Gap against `C132nv2.Dv2ResSurv`** (M3-NV2 landed mid-flight on this node, after this
+  file's design was fixed): `Dv2ResSurv` needs an EQUALITY at slot `0`
+  (`dv2Hgt L (dev Ψ (A*B) 0) = Ha+Hb`, not merely `≤`) PLUS a separate numeric bound at
+  slot `1` (`ℓ₂•(Ha+Hb)+1 ≤ ℓ₂•dv2Hgt L (dev Ψ (A*B) 1) + u₂`). This file proves the `≤`
+  half of the slot-`0` claim only (the row's literal "preserves ... the value" reading, and
+  the exact shape of the depth-1 precedent `C130nv3.s2_stageHeight_mul_modByMonic_le`,
+  itself stated as `≤`). The `≥` half of slot `0` and ALL of slot `1` need a NUMERIC fact
+  this node's cited inputs do not supply: `Φ₂`'s own exact `dvSupp` grade (only its
+  `s2NormRes` VALUE `X + 1` is landed, `C130kp5.s2NormRes_composedKey` — no landed theorem
+  gives `dvSupp (s2Frame h2 hq) Φ₂ 5 2` as a number), and a lower bound on
+  `dv2Hgt L (dev Ψ (A·B) 1)` (`= dvSupp` of the bare quotient `(A·B) /ₘ Ψ`) in terms of
+  `Ha + Hb` — a relation the `μ₂`-primality argument used here does NOT produce (primality
+  only excludes the "tie, `r` strictly above" case; it says nothing when
+  `dvSupp (Ψ·q₀) 5 2 < dvSupp (A·B) 5 2`, which is exactly the scenario the missing half
+  needs to rule out). Full discharge of `Dv2ResSurv` is left OPEN; a subsequent node should
+  either supply that numeral (possibly needing the μ₃-level graded-residual apparatus,
+  M3-RP0 onward, which does not exist yet) or reconsider `Dv2ResSurv`'s exact shape.
 
 **Flagged for human review** (parent CLAUDE.md trust boundary — new statements):
 `s2_dvSupp_mul_modByComposedKey_le` and its `dv2Hgt` corollary.

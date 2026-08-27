@@ -57,6 +57,21 @@ No plain-polynomial `Irreducible Φ₂` (only the weaker graded `S2MuMinimal`/
 assembly — this node supplies exactly the one survival fact M3-NV2's endpoint theorem
 needs, not the endpoint theorem itself (M3-NV2's job) or any packaging (M3-FD0/M3-SG's).
 
+**Open gap found against the sibling, reported honestly rather than papered over:**
+`C132nv2.lean` (M3-NV2) landed mid-flight on this unit's run and specifies its needed
+hypothesis, `Dv2ResSurv`, more precisely than the row text alone conveys — it needs an
+EQUALITY at slot 0 (this file proves only `≤`, the row's literal "preserves the value"
+reading and the exact shape of the depth-1 precedent, also stated as `≤`) PLUS an entirely
+separate numeric bound at slot 1 (the "carry"/quotient digit) that this unit's cited
+inputs do not supply: no landed theorem gives `Φ₂`'s own `dvSupp` grade as a NUMBER (only
+its `s2NormRes` VALUE `X + 1` is landed), and the `μ₂`-primality argument used here does
+not bound the quotient digit's value in terms of `Ha + Hb` (primality excludes only the
+"tie, remainder strictly above" failure mode; it is silent when
+`dvSupp(Ψ·q₀) < dvSupp(A·B)`, exactly the case the missing half needs to rule out). This
+is recorded as an explicit open item in `C132nv3.lean`'s docstring rather than guessed at;
+`Dv2ResSurv`'s full discharge is left for a follow-up node (possibly needing the μ₃-level
+graded-residual apparatus, M3-RP0 onward, which does not exist yet).
+
 Flagged for human review (new statements): `s2_dvSupp_mul_modByComposedKey_le` and its
 `dv2Hgt` corollary — both new, machine-checked results not previously stated anywhere in
 the corpus.
