@@ -160,8 +160,14 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | MNV4 | μ₃ product law (SONNET) | DONE — s2Hgt₃_mul in production + unconditional survival package at (21,2); wired |
 | MNV5 | μ₃ AddValuation packaging (SONNET) | DONE honest partial — conditional packaging landed; the missing dv2SideSet_nonempty analogue = node MNV6 |
 | MNV6 | μ₃ unconditionality: dv2SideSet_nonempty + the genuine AddValuation (SONNET) | RUNNING |
-| MRFIX | RAMIFIED doc repair per VRAMX (codex HIGH) | RUNNING |
-| MHFIX | the corrected twist-normalized product law M (FABLE) | RUNNING |
+| MRFIX | RAMIFIED doc repair (codex HIGH) | DONE — F2 critical fixed (guard + full chain rewrite), F1 rebuilt on landed digits, I1 honestly re-graded a node; T1 PARTIAL-on-I1, T2 PROVED |
+| MI1 | the I1 identification node (SONNET) | DONE — ALL FOUR obligations PROVED IN LEAN (B59c.lean; first ChapB→ChapC import edge flagged); the ramified T1 chain's one open is machine-checked; VRAMX2 re-read queued 09:21 |
+| MHFIX | the corrected twist product law (FABLE) | DONE — the carry is the twistExp cocycle defect; τ=1 in twist form (twistRead exactly multiplicative); TW-δ Lean-proved, cert 473,961/0, TWO consecutive clean codex passes; MH.1 regraded transcription-ready |
+| MH1 | MH.1 transcription (SONNET) | DONE — C133mh1.lean (TW-δ + bridge proved, M1′ shapes landed); engine gates left: MH.8 conversions + X1 |
+| MNV6 | μ₃ unconditionality (SONNET) | DONE — dv2SideSet_nonempty GENERIC + the genuine AddValuation s2AddVal₃; NV family COMPLETE |
+| MRP0 | μ₃ grade bank (SONNET) | DONE — 14 decls, unconditional product |
+| MRP1 | μ₃ recursive coefficient, GENUINELY-NEW (FABLE, died twice at the finish, orchestrator-closed) | DONE — gate + ε-factor (PROVED S2 collapse ε≡1) + Def-3.13 coefficient with proof-independence pins + teeth; OPEN-RP1-TRANSPORT honestly split 3 ways, review-flagged |
+| V-0920 | verification wave VSMITH/VLIFT/VRAMX2 (codex HIGH) | QUEUED — one-shot at 09:21 |
 | CIFACE | the capstone interface nodes (FABLE, died on final message — orchestrator verified+committed) | DONE — L0 + DT0 PROVED-EXACT supplier decompositions (iff both directions); W0/WIN0 landed with guards BLOCKED-BECAUSE (weld-site export; GENHN-CAP-GEN reader rule) |
 | CHFD | the CapstoneHypotheses supply map (codex HIGH) | DONE — CapstoneHypotheses 2 = ns7 + ladder + deepTwist EXACTLY (a0/a1/a2 provable at n=2, probe-checked); LADDER-SUPPLY + DEEP-TWIST-SUPPLY are the decisive campaigns; NS7Termination leanspec/leanfinal DRIFT flagged (reconciliation re-sign owed) |
 | BW1 | BLOCKERS_PLAN wave 1 (codex, after two Sonnet 529 deaths) | DONE — 6 decls LANDED (B53d + C131ah), orchestrator re-verified Lean-core, roll-ups wired |
