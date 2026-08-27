@@ -151,7 +151,13 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | MNV01 | μ₃ chain head M3-NV0+NV1 (SONNET) | DONE — C132nv0/1 landed, s2Hgt₃ Φ₂ = 21 tooth, orchestrator-verified, wired |
 | MNV2 | μ₃ M3-NV2 endpoints port (SONNET) | DONE — 26 decls, one explicit Dv2ResSurv hypothesis (shape review-flagged), wired |
 | MNV3 | μ₃ M3-NV3 survival core (SONNET) | DONE — the ≤ half via Φ₂'s graded key-polynomiality (no plain irreducibility claimed); NV2/NV3 interface gap honestly recorded |
-| MNV3b | μ₃ interface closure (SONNET) | DONE — slot-0 equality PROVED; slot-1 carry bound BLOCKED at (5,2) with exact arithmetic (8 short) but CLOSES at (21,2) — the numeral adjudication MADJ queued for 04:16 (gates NV4) |
+| MNV3b | μ₃ interface closure (SONNET) | DONE — slot-0 equality proved; the (5,2)-vs-(21,2) question resolved by MADJ |
+| MADJ | Dv2ResSurv numeral adjudication (codex HIGH) | DONE — OUTCOME A: (21,2) machine-pinned; the probe DERIVES the μ₃ product law s2Hgt₃(g·z)=s2Hgt₃ g+s2Hgt₃ z (probe orchestrator-repaired: import/open/qualifications — MADJ's exit-0 claim was false); NV4 unblocked |
+| NS7R | the NS7Termination reconciliation (codex HIGH) | DONE — A-I.4 enacted, Iff.rfl reconciliation gates pass; ns7 (1st of 3 capstone inputs) FULLY SUPPLIED |
+| VHENS | adversarial read of HENSEL_ENGINE doc (codex HIGH) | DONE — REJECT: findings 1-2 = STALENESS vs A-C.20 (the repair the doc itself triggered); later findings = candidate genuine gaps; MH fleet FENCED pending MHDISP |
+| MHDISP | disposition of VHENS's findings + doc amendment (codex HIGH) | RUNNING |
+| VRAMX | adversarial read of RAMIFIED_EXACTNESS doc (codex HIGH) | RUNNING |
+| MNV4 | μ₃ product-law assembly from the MADJ probe (SONNET) | RUNNING |
 | CIFACE | the capstone interface nodes (FABLE, died on final message — orchestrator verified+committed) | DONE — L0 + DT0 PROVED-EXACT supplier decompositions (iff both directions); W0/WIN0 landed with guards BLOCKED-BECAUSE (weld-site export; GENHN-CAP-GEN reader rule) |
 | CHFD | the CapstoneHypotheses supply map (codex HIGH) | DONE — CapstoneHypotheses 2 = ns7 + ladder + deepTwist EXACTLY (a0/a1/a2 provable at n=2, probe-checked); LADDER-SUPPLY + DEEP-TWIST-SUPPLY are the decisive campaigns; NS7Termination leanspec/leanfinal DRIFT flagged (reconciliation re-sign owed) |
 | BW1 | BLOCKERS_PLAN wave 1 (codex, after two Sonnet 529 deaths) | DONE — 6 decls LANDED (B53d + C131ah), orchestrator re-verified Lean-core, roll-ups wired |
