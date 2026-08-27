@@ -1,15 +1,45 @@
 # THE DV-GRADED ONE-SLOPE HENSEL ENGINE — existence, uniqueness, maximality (MHENS, 2026-08-26)
 
-**Author: unit MHENS (Fable, math-first).  STATUS: math design + rigorous proofs at the
-stated grade — nothing signed, nothing landed.  This document is the C.34/C.35 root
-mechanism** (BLOCKED item 1 of `runs/wave-b/verdict_DEC4R.md:71-78`), planned as nodes
+**Author: unit MHENS (Fable, math-first).  [MHDISP 2026-08-27] STATUS AMENDED: design
+document with a genuine critical defect in M1(2) and load-bearing justification gaps; the
+engine is NOT proved and the MH transcription fleet is fenced.  Nothing in this document is
+signed or landed.  This document proposes the C.34/C.35 root mechanism** (BLOCKED item 1 of
+`runs/wave-b/verdict_DEC4R.md:71-78`), planned as nodes
 F1.H0–F1.H3 of `docs/in-progress/BLOCKERS_PLAN_2026-08-26.md:60-66`.
+
+## [MHDISP 2026-08-27] Dated disposition addendum
+
+This document was written **before** amendment A-C.20 landed in commit `b59e2dd5` on
+2026-08-26.  The amendment was enacted from this document's own degree-leak finding.  The
+following historical/current mapping is binding everywhere below:
+
+* the §7 degree-3 example refutes only the **pre-A-C.20 unpinned** C.34 separation shape and
+  C.35 selector; it does **not** satisfy the current degree-pinned competitor hypotheses;
+* current C.34 pins both block witnesses and every separation competitor by
+  `HasLabel L fS ∧ (F.e₁ * F.f₁) ∣ fS.natDegree`;
+* current C.35 `blockFactor` and `BlockFrontier` use that same pin.  The historical selector
+  and multiplicity are preserved explicitly as `blockFactorLeaky` and `mult₂Leaky`, and the
+  §7 refutation is a record about those names only.  The post-amendment `blockFactor_spec`
+  packaging is **not refuted**;
+* the proposed `BlockFrontier′` below is now, in substance, the landed `BlockFrontier`; it is
+  no longer a pending statement repair.
+
+The adversarial review also found a live critical defect independent of A-C.20: M1(2)'s
+bare-`slotRes` multiplication law omits the carry factor caused by the slot window.  At the
+landed `(e₁,f₁,h)=(2,2,3)` gate numerals, `a=b=X` gives bare reads `1`, `1`, and `η` at
+heights `3`, `3`, and `6`, with `η ≠ 1`; the inverse-twist normalization cancels this carry.
+The executable zero-`sorry`, zero-`axiom` mirror is
+`leanfinal/scratch/MHDISP_probe.lean`.  Thus M1 as stated is false, its proof does not prove
+Theorem M, and every MH node depending on M is **BLOCKED pending a correctly stated and
+proved generic twist-read product law**.  The numerical certificate in §10 cannot replace
+that universal proof.
 
 **Three headline verdicts, up front.**
 
-1. **The engine is designed and its mathematics is proved below** at the stated grade
-   (every step justified; the four items that are NOT fully proved are named OPEN with
-   exact statements — none is load-bearing for the eight C.35 `_of_frontier` rows).
+1. **[MHDISP 2026-08-27] The engine is designed but its mathematics is NOT proved below.**
+   M1(2) is false as stated, and OPEN-1, OPEN-3, OPEN-4, plus the limit conversion are
+   load-bearing for the engine/`blockFrontier_of_context` route (though the already-landed
+   conditional C.35 `_of_frontier` wrappers remain valid).
    The root object is NOT a rewriting system and NOT a new weight: it is the landed
    `dvSupp`/`dvResPoly` calculus upgraded from the C130nv2 support half to a **general
    mixed residual product law** (§3), from which existence is B.41's Newton pattern and
@@ -24,16 +54,15 @@ F1.H0–F1.H3 of `docs/in-progress/BLOCKERS_PLAN_2026-08-26.md:60-66`.
    mixed product law, the defect analysis) are genuinely new corpus mathematics — with
    one big exception: the LIMIT leg reuses landed monic-fenced machinery almost verbatim
    (§4.4).
-3. **⚠ NEW STATEMENT-DEFECT FINDING (owner-visible).**  The signed C.34 uniqueness
-   clause (`hsep`, `C34_BLOCKED_2026-08-18.md:69-83`) appears **REFUTABLE on the
-   defective stratum `D′ ∤ deg g`** — a tuned "far" factor with point side at abscissa 0
-   can be absorbed into the labelled block while keeping the exact `r^m` residual (the
-   C35b D13 defect, weaponized at the uniqueness clause).  Constructed instance and a
-   numeric surjectivity certificate in §7; consequences in §7.3.  The eight C.35 rows are
-   NOT affected (BlockFrontier carries the `D′ ∣ deg` rider precisely where needed).
+3. **[MHDISP 2026-08-27] HISTORICAL STATEMENT-DEFECT RECORD.**  The §7 example refutes
+   the pre-A-C.20 unpinned C.34/C.35 shapes.  A-C.20 has since pinned every load-bearing
+   label; the current signed shapes are not refuted.  C.35 retains the historical objects as
+   `blockFactorLeaky`/`mult₂Leaky` for this record.
 
-Throughout: `D′ := F.e₁ * F.f₁`, `K := F.stageField H₀ hpin` (a field —
-`Field (F.stageField …)` is landed, `leanfinal/Uniformity/ChapC/C04.lean:151`),
+Throughout: `D′ := F.e₁ * F.f₁`, `K := F.stageField H₀ hpin` ([MHDISP 2026-08-27]
+the required `Field K` is reconstructible locally from `instFieldResField`, `F.hresirr`, and
+`AdjoinRoot.instField`; C.04's `fieldStageField` is private and there is no exported global
+instance),
 `W(p) := dvSupp F p u ℓ ∈ ℕ∞` (the ℓ-cleared level weight, C.06),
 `R(p) := dvResPoly F H₀ hpin p u ℓ hne M₀ hp ∈ K[Z]` (C.25, at the `dvSideMin` pin).
 "Pure" always means `IsDvPure F p u ℓ` (C.29: abscissae `0` and `⌊deg p/D′⌋` both on the
@@ -57,7 +86,9 @@ floor `ℓ * (D′ * F.h) < u` (= `LevelDatum.hκ` up to associativity).  A resi
 |---|---|---|
 | `stageHeight` is **multiplicative**: `dv(AB) = dv(A) + dv(B)` | `C130nv2.lean:203` (`stageHeight_mul`, via `suppVal_mul_univ` at `isKey_X` — `X` IS a key, so the order-1 `IsKey` chain fires at level 1) | unfenced (any `A B`, `0 < F.h`) |
 | `W` superadditive: `W(g) + W(z) ≤ W(gz)` | `C130nv2.lean:645` (`dvSupp_add_le_dvSupp_mul`) | needs `hV : dv(key) = V`, `ℓV ≤ u` |
-| `W(gz) = W(g) + W(z)` **given endpoint survival** `hup` | `C130nv2.lean:784` (`dvSupp_mul_eq_add_of_endpoint_le`) + `dvOnSide_mul_endpoint`, `dvSideMin_mul_le` | `hup` is the ONE missing generic ingredient; §3.1 discharges it at frames |
+| `W(gz) = W(g) + W(z)` **given endpoint survival** `hup` | `C130nv2.lean:784` (`dvSupp_mul_eq_add_of_endpoint_le`) + `dvOnSide_mul_endpoint`, `dvSideMin_mul_le` | [MHDISP 2026-08-27] `hup` remains a missing generic ingredient; the original §3.1 discharge uses the false M1(2)/an unproved corrected carry law |
+| [MHDISP 2026-08-27] generic endpoint pricing **given survival** | `C130nv3.stageHeight_dev_endpoint_le_of_surv` | requires both strict `ℓ * V < u` and an explicit `hsurv`; neither weak admissibility nor the theorem itself supplies generic survival |
+| [MHDISP 2026-08-27] S2 composed-key survival bound | `C132nv3.s2_dvSupp_mul_modByComposedKey_le` | now LANDED at the S2 frame for degree `< 4`; it does **not** instantiate the arbitrary-frame MH engine and therefore does not close generic M1/MH.1 |
 | convolution pricing of every double-development slot | `C130nv2.lean:500,545` (`le_line_dev_term`, `lt_line_dev_term`) | carries included |
 | division calculus at the stage height | `C130nv2.lean:346-361` (`stageHeight_le_modByMonic`/`divByMonic`/`eq_min_mod_div`) | |
 | ultrametric sum laws + strict stability | `C131y.lean:96-105,220` (`stageHeight_add_eq_left_of_lt`, `dvHgt_add_eq_left_of_lt`, `dvHgt_add_min`); `C131ae.lean:164-183` | the perturbation atoms |
@@ -69,8 +100,9 @@ floor `ℓ * (D′ * F.h) < u` (= `LevelDatum.hκ` up to associativity).  A resi
 | `hdvd` fence, constant-complement law, single-class supply | `C34.lean:187-268` | the `R = r^m` case is DONE (`block_pair_self_of_dvResPoly_eq_pow`) |
 | graded adic limit at order 1, **Monic-fenced only** | `B40.lean:203` (`exists_graded_limit`) — NO `IsKey` | the limit pattern transfers (§4.4) |
 | generic bounded-degree adic limit | `HenselFactorization.lean:306` (`exists_adicLimit_of_degree_lt`) | filtration-agnostic |
-| stage lift with exact height + prescribed residue read | C.43/C.46/C.47 (`stageLiftO`, `composedKey_slot_height` etc.; C56a's `k2DigitLift` is the same pattern) | the initialization's supply |
+| [MHDISP 2026-08-27] stage lift with exact height + prescribed read | public `KeyFrame.natDegree_stageLiftO_lt`, `slotRes_stageLiftO`, `stageHeight_stageLiftO` in C131f; public `KeyFrame.exists_twistRead_preimage` in C.14 | the helpers at C46:217–230 and C47:401–405 cited by the original text are private; use the public promoted API.  Exact `twistRead`, not bare `slotRes`, is the initialization's required supply |
 | the C.33 dissection cites (slope factor, `D′`-divisible degree, factor equality) | `C33Cite.lean:76,85` (`exists_dvDissection`, `fgmn_dvDissection_factor_eq`) — cite axioms, allowlisted | consumed only by F1.H3 (§8) |
+| [MHDISP 2026-08-27] B.40 valuation comparison helper | `B40.lean:121`, `inf_npHgt_le_gaussVal` | private, hence not a consumable API; moreover it does not justify the original direction of the `W`→Gauss conversion.  MH.8 needs a new public bounded-window comparison with the finite `F.h * j` loss controlled |
 | exact purity closure + residual multiplicativity, **pure×pure with `D′ ∣ deg` fences** | `C66b.lean:90` (`fgmn_dv_exact_mul`) — declared cite | certifies products of existing factors; constructs nothing |
 
 ### 1.2 The two-level dictionary (why the engine is "graded")
@@ -103,8 +135,10 @@ C (maximality/placement), and the product law M they both stand on are **complet
 
 **Hypotheses.** `hπ : Irreducible π`; frame `F` with `hh : 0 < F.h`; pin `(H₀, hpin)`;
 direction `(u, ℓ)` with `hℓ : 0 < ℓ`, `hcop : Nat.Coprime u ℓ`, and admissibility
-`ℓ * (D′ * F.h) ≤ u` (the engine's consumers all have the strict floor, which implies
-this); `g z : Polynomial O` **nonzero** (no monicity, no purity, no degree fence).
+**[MHDISP 2026-08-27: corrected]** `ℓ * (D′ * F.h) < u`; `g z : Polynomial O`
+**nonzero** (no monicity, no purity, no degree fence).  The original weak `≤` statement is
+not proved by C130nv3: both `stageHeight_dev_endpoint_le_of_surv` and the strict pricing step
+used below require `<`.  All intended engine consumers already carry the strict floor.
 
 **Conclusion.**  With `hne_g, hne_z, hne_gz` the (automatic, `dvSideSet_nonempty`-style
 for nonzero inputs — for non-monic inputs nonzero-ness still gives a nonzero digit, see
@@ -124,8 +158,10 @@ for nonzero inputs — for non-monic inputs nonzero-ness still gives a nonzero d
 
 This is FGMN Thm 2.8 + Cor 4.12(3) at the corpus carrier, in full mixed generality —
 strictly MORE than the declared cite (which demands both factors pure with `D′ ∣ deg`).
-§3 proves it from the landed C130nv2 bank plus one new no-cancellation lemma.  **Proving
-M makes the cite's content a theorem** — see §9.2 for the strategic consequence.
+**[MHDISP 2026-08-27] §3 does not prove this theorem:** its proposed no-cancellation lemma
+contains the false M1(2).  A corrected generic twist-read product theorem may recover the
+target, but that theorem is presently OPEN-CRITICAL.  Only after it is proved could M make
+the cite's content a theorem; see §9.2.
 
 ### Theorem A (existence — the dv-graded one-slope Hensel lift; the F1.H1 core)
 
@@ -199,16 +235,15 @@ available (`BlockContext` carries it, `C35.lean:126`).
 ### The assembled corollaries
 
 * **FRONTIER 1** (`C34_BLOCKED` hex) on the `D′ ∣ deg g` stratum: Theorem H0 + A.
-* **FRONTIER 2** (`hsep`) on the `D′ ∣ deg g` stratum: Theorem B.  (On the defective
-  stratum `hsep` is **REFUTED** — §7, a concrete ℤ₂ instance.)
-* **The degree-pinned frontier `BlockFrontier′ L f` from `BlockContext L f`** (the
-  honest F1.H3): §8, consuming the C.33 cite pair + M + H0 + A + B + C.  The UNPINNED
-  `BlockFrontier` (`C35.lean:246-249`, whose maximality clause quantifies over unpinned
-  `HasLabel`) is **REFUTABLE from `BlockContext`** — §7 — so F1.H3 as planned is a false
-  target; the repair (pin the label in the quantifier, matching the classical
-  `D″ ∣ deg f_S` of LEMMA HE7-6, `spec/EFF-HE7.md:1653-1663`) is an owner statement-gate
-  item.  All eight `_of_frontier` rows survive unchanged as conditionals; what changes
-  is what their `hfr` can ever be discharged FROM.
+* **FRONTIER 2** (`hsep`) on the `D′ ∣ deg g` stratum: Theorem B.  [MHDISP 2026-08-27]
+  The §7 refutation applies only to the historical unpinned `hsep`; A-C.20's current `hsep`
+  competitors are pinned and are not refuted.
+* **[MHDISP 2026-08-27] Current `BlockFrontier L f` from `BlockContext L f`** (F1.H3):
+  the degree-pinned `BlockFrontier′` proposed here became the landed `BlockFrontier` in
+  A-C.20.  The §7 example targets only the historical unpinned selector now named
+  `blockFactorLeaky`; it does not refute current `BlockFrontier` or current
+  `blockFactor_spec_of_frontier`.  The proof-from-context route remains BLOCKED for the
+  independent engine gaps below.
 
 ---
 
@@ -223,10 +258,13 @@ stability lemma (M1a), and is otherwise assembly of the landed C130nv2 bank.
 `a.natDegree < D′`, `b.natDegree < D′`:
 
 1. (height form)  `F.stageHeight ((a*b) %ₘ F.key) = F.stageHeight a + F.stageHeight b`;
-2. (read form)  for the finite heights `ka, kb` pinned by `dv(a) = ka`, `dv(b) = kb`:
-   `slotRes (ka+kb) ((a*b) %ₘ F.key) = slotRes ka a * slotRes kb b` in `K`
-   (hence `twistRead` multiplies up to the explicit unit
-   `stageLetter ^ (twistExp ka + twistExp kb − twistExp (ka+kb))`).
+2. **[MHDISP 2026-08-27: WITHDRAWN — FALSE]** the original read form asserted, for the
+   finite heights `ka, kb`,
+   `slotRes (ka+kb) ((a*b) %ₘ F.key) = slotRes ka a * slotRes kb b` in `K`.
+   It omits the slot-index carry.  At `(e₁,f₁,h)=(2,2,3)`, `a=b=X`, the left side is
+   `η` and the right side is `1`.  The replacement target must include the carry explicitly,
+   or, preferably, be stated directly for `twistRead`; the gate computation shows that the
+   inverse twist cancels the carry.  No generic replacement theorem is proved here.
 
 *Proof.*  Write `ab = Q * F.key + E` with `E = (ab) %ₘ F.key`, `Q = (ab) /ₘ F.key`;
 `deg E < D′` and `deg Q < D′` (since `deg ab < 2D′ − 1`).  All level-1 objects below are
@@ -257,23 +295,18 @@ product law (`resPoly_mul_gen`, `B39a.lean:883`):
 Hence `ψ ∣ R₁(a) · R₁(b)`.  `ψ` is irreducible over the field `resField X`, so
 `ψ ∣ R₁(a)` or `ψ ∣ R₁(b)` — contradicting (b).  So `dv(E) = ka + kb` exactly.  ∎(1)
 
-(d) *Read form.*  The slot read `slotRes k (·)` is (definitionally through C.15/C.21/
-C.22) the level-1 residual read at height `k` composed with the evaluation
-`resField X[T] → K = AdjoinRoot ψ`, `T ↦ θ` (the stage letter) — i.e. reduction mod `ψ`.
-From `ab = Q·key + E` at the height `ka + kb`: either `dv(Q·key) > ka+kb` (then
-`R₁-read(E) = R₁-read(ab)` by M1a and evaluate), or the tie case `dv(Q·key) = ka+kb` —
-then `R₁-read(E) = R₁-read(ab) − R₁-read(Q·key) = R₁(a)R₁(b) − R₁(Q)·ψ·(shift-unit)`
-(additivity of `resMk` at one height, landed `resMk_add`), and the `ψ`-multiple **dies
-under the evaluation at `θ`** (`ψ(θ) = 0` — this is exactly why the stage field is
-`AdjoinRoot ψ`).  Either way
-`slotRes(ka+kb)(E) = slotRes(ka)(a) · slotRes(kb)(b)` (the `ϖ`-power bookkeeping
-`ϖ^{ka}·ϖ^{kb} = ϖ^{ka+kb}` is exact).  Faithfulness note consumed later: on
-polynomials of degree `< f₁` the reduction mod `ψ` is INJECTIVE (a K-linear iso onto a
-window), so slot reads of nonzero digits at their own heights are nonzero.  ∎(2) ∎
+(d) **[MHDISP 2026-08-27: invalid proof step.]**  Reduction modulo `ψ` does kill the
+`Q·key` residual term, but it does not identify the two **bare** `slotRes` normalizations
+without a unit.  Multiplying live slots changes `slotIdx`/`slotWindow`, producing a power of
+the stage letter.  The assertion that the `ϖ` bookkeeping is exact silently drops that
+carry.  The corrected proof obligation is a generic formula for this carry followed by a
+proof that C.22's `η^{-twistExp}` normalization cancels it.  The executable gate row in
+`scratch/MHDISP_probe.lean` proves the failure of the bare equality and cancellation in the
+`F₉` numeral model; it is not a proof of the required arbitrary-frame theorem.  ∎
 
-**Grade.**  Fully proved modulo M1a (stated exactly, order-1, routine) and the
-definitional chase in (d) (the `slotRes = evaluate ∘ R₁-read` identity is C.15/C.21/
-C.22's construction; the Lean node must walk it — bookkeeping, not mathematics).
+**[MHDISP 2026-08-27] Grade: BLOCKED-CRITICAL.**  M1(2) is false, not a bookkeeping
+omission.  M1(1) also remains unproved because its M1a stability step has not been promoted
+to a public theorem.  MH.1 must be restated and proved before any consumer can fire.
 
 ### 3.2 M clauses 1–2 (support and side additivity)
 
@@ -297,6 +330,14 @@ strictly above its side line (beyond the attaining set), hence prices strictly a
 `jmax(g)+jmax(z)` is on-side and nothing above it is.  `dvSideDeg` additivity follows
 (both endpoints add; `ℓ`-spacing by C.08's `dvSideLen_eq`).
 
+**[MHDISP 2026-08-27] Survival inventory correction.**
+`C130nv3.stageHeight_dev_endpoint_le_of_surv` requires strict `ℓ * V < u` and an explicit
+`hsurv`; it does not manufacture survival.  `C132nv3.s2_dvSupp_mul_modByComposedKey_le`
+has since landed the relevant bound only at the S2 composed-key frame (degree `< 4`).  That
+S2 theorem is useful evidence and closes its own specialized interface, but it cannot fill
+the arbitrary-`F` hypothesis of Theorem M.  Here the generic discharge still depends on a
+corrected M1 carry/twist theorem and is therefore BLOCKED.
+
 ### 3.3 M clause 3 (the residual identity)
 
 Coefficientwise at slot `t` of `R(gz)`: the digit of `gz` at abscissa
@@ -312,8 +353,9 @@ data, and the TW node (§9) computes it once; on the pure-`D′`-monic fence the
 owner-adjudicated cite (`fgmn_dv_exact_mul`) asserts the exact form, which is the
 consistency check `τ = 1` there.
 
-**Grade.**  Proved modulo the C.22-stack definitional chases (M1(d), read-vanishing) and
-the TW cocycle computation.  No open mathematics.
+**[MHDISP 2026-08-27] Grade: BLOCKED.**  This coefficientwise proof consumes the false
+M1(2), the unproved corrected carry/twist law, read-vanishing, and the TW computation.
+These are load-bearing open obligations; clause M(3) is not proved.
 
 ### 3.4 Remark — side witnesses for non-monic inputs
 
@@ -330,7 +372,11 @@ TW node).  This is what lets Theorem A take `hprod` without a unit, exactly as B
 
 ---
 
-## §4 Proof of Theorem A (existence — Newton with an explicit contraction)
+## §4 Proposed proof of Theorem A (conditional; currently BLOCKED)
+
+**[MHDISP 2026-08-27]** This construction consumes the unproved Theorem M, the corrected
+twist/carry law, read-vanishing/read-faithfulness, the lift pins, perturbation transport, and
+the MH.8 limit conversion.  The argument below is a blueprint, not a completed proof.
 
 Write `a := G.natDegree`, `b := H.natDegree`, `w₁ := u·ℓ·a`, `w₂ := u·ℓ·b`,
 `w := W(g) = w₁ + w₂` (§3.5's value law).
@@ -338,10 +384,18 @@ Write `a := G.natDegree`, `b := H.natDegree`, `w₁ := u·ℓ·a`, `w₂ := u·�
 ### 4.1 The lift (initialization)
 
 For monic `P ∈ K[Z]` of degree `d` with `P.coeff 0 ≠ 0`, the **side lift**
-`Λ(P) := F.key ^ (d·ℓ) + Σ_{t < d} stageLiftO(u·(d−t))(P.coeff t) · F.key ^ (t·ℓ)`,
-with `stageLiftO M κ` the landed digit lift with exact stage height `M` and prescribed
-slot read `κ` (C.43/C.46/C.47's pins), built THROUGH the inverse twist so its
-`twistRead` is exactly `κ` (the `k2DigitLift` trick, C56a).  Then (each a small lemma):
+**[MHDISP 2026-08-27: corrected supply]** choose `B_t := 0` when `P.coeff t = 0`, and
+otherwise construct `B_t` at height `M := u·(d−t)` so `deg B_t < D′`,
+`stageHeight B_t = M`, and `twistRead M B_t = P.coeff t`.  Define
+`Λ(P) := F.key ^ (d·ℓ) + Σ_{t < d} B_t · F.key ^ (t·ℓ)`.
+An explicit `stageLiftO` formula must feed the inverse-twisted target
+`stageLetter ^ twistExp(M) * κ`, not the bare `κ` displayed in the original formula.
+The originally cited C.46/C.47 lemmas are private; the degree/slot/height pins have since
+been publicly promoted in C131f.  Alternatively C.14 supplies the exact-`twistRead`
+existential, but that theorem requires `[Finite (ResidueField O)]`, which Theorem A does not
+currently assume; the transcription must either use the explicit C131f route or add that
+finiteness hypothesis honestly.
+Then (each still needing proof):
 `Λ(P)` is monic of degree `ℓ·d·D′`; digits at abscissae `tℓ` with heights exactly
 `u(d−t)` (⊤ where `P.coeff t = 0`); pure (left endpoint from `P.coeff 0 ≠ 0`, top from
 monicity); `W(Λ(P)) = uℓd`, `M₀ = u·d`; `R(Λ(P)) = P` exactly.
@@ -400,23 +454,27 @@ degree, so `deg eₖ < ℓ(a+b)D′`).  Update `g₁ᵏ⁺¹ := g₁ᵏ + U`, `g
 ### 4.4 The limit, and exactness (the ONLY completeness consumption)
 
 `W(g₁ᵏ⁺¹ − g₁ᵏ) = W(U_k) ≥ w₁ + k + 1 ≥ k`: Cauchy for `W` in fixed windows.  **Limit
-node (dv-twin of B.40)**: `deg (p k) < d` and `W(p(k+1) − p k) ≥ k` gives a limit `P`,
-`deg P < d`, `W(P − p k) ≥ k`.  Proof = B.40's shape verbatim with one conversion lemma
-each way: `W`-floor ⟹ `gaussVal`-floor on windows (chain: `dvHgt ≥ e₁ • gaussVal(dev)`
-— immediate from `stageHeight`'s formula — then B.40's own landed
-`inf_npHgt_le_gaussVal` at `φ = F.key`, **Monic-fenced only**, `B40.lean:121`), and
-back (`gaussVal q ≥ N ⟹ W(q) ≥ ℓ·e₁·N`, the `coeffIdeal` transport B.40 already
-performs).  The generic core `exists_adicLimit_of_degree_lt`
-(`HenselFactorization.lean:306`) is consumed as-is.  A mechanical reskin.
+node (dv-twin of B.40)**: the intended statement is that `deg (p k) < d` and
+`W(p(k+1) − p k) ≥ k` give a limit `P`, `deg P < d`, `W(P − p k) ≥ k`.
+**[MHDISP 2026-08-27: the original forward chain is invalid.]**  From
+`dvHgt ≥ e₁ • gaussVal(dev)` and a lower bound on `dvHgt`, no lower bound on `gaussVal`
+follows.  A valid forward conversion must use the bounded degree window to prove an upper
+comparison for `stageHeight` in terms of `e₁ • gaussVal` plus a controlled finite
+`F.h * j` loss, then absorb that fixed loss in the Cauchy index.  B.40's
+`inf_npHgt_le_gaussVal` is also private and cannot be called by MH.8.  The reverse
+coefficient-ideal transport may still be reusable, and the generic core
+`exists_adicLimit_of_degree_lt` (`HenselFactorization.lean:306`) is public, but the two
+required conversion lemmas are not supplied here.  MH.8 is a load-bearing OPEN node, not a
+mechanical reskin.
 
-Limits `g₁∞, g₂∞`: monic of pinned degrees (leading coefficient constant along the
+Conditionally on MH.8, limits `g₁∞, g₂∞` would be monic of pinned degrees (leading coefficient constant along the
 sequence); purity/residual transport by M4 (total perturbation has `W ≥ w₁ + 1`);
 exactness: `W(g − g₁∞g₂∞) ≥ w + k + 1` for every `k` ⟹ all coefficients in
 `⋂ₙ 𝔪ⁿ = 0` (`IsHausdorff` from `IsAdicComplete`): `g = g₁∞·g₂∞`.  Conclusions 1–5.  ∎
 
 ---
 
-## §5 Proof of Theorem B (uniqueness — Newton-free)
+## §5 Proposed proof of Theorem B (conditional on M; currently BLOCKED)
 
 Data: `g` monic pure, `D′ ∣ deg g`; `g = a·b = a'·b'` as in the statement.
 
@@ -447,7 +505,7 @@ anticipated: "uniqueness in the dv-graded filtration" enters only through M.)
 
 ---
 
-## §6 Proof of Theorem C (placement), and the defect analysis
+## §6 Proposed proof of Theorem C (conditional on M; currently BLOCKED)
 
 ### 6.1 Defect-vanishing inside a pinned-label factor
 
@@ -497,7 +555,12 @@ inside `fS'` gives `r^m = τ·R(qᵢ)·R(fS'/qᵢ)`, so `R(qᵢ) = τ'·r^{aᵢ}
 
 ---
 
-## §7 ⚠ THE DEFECTIVE-STRATUM REFUTATION (statement defect; owner-visible)
+## §7 HISTORICAL DEFECTIVE-STRATUM REFUTATION (pre-A-C.20 only)
+
+**[MHDISP 2026-08-27]** The arithmetic example below is retained as the evidence that led
+to amendment A-C.20.  It is not a counterexample to the current signed C.34/C.35 shapes:
+the degree-3 candidate fails their landed `D′ ∣ natDegree` hypothesis.  References below to
+the unpinned selector mean `blockFactorLeaky`/`mult₂Leaky` in current source.
 
 ### 7.1 The instance, fully concrete (over `O = ℤ₂`, `π = 2` — absolute, C35b-style)
 
@@ -542,25 +605,29 @@ computation at the model frame (cert re-verifies at the audited frame):
 
 ### 7.2 What it refutes
 
-1. **Signed C.34's uniqueness clause** (`hsep`, and hence the signed
-   `exists_dv_residual_dissection` conclusion): the two labelled splits
+1. **[MHDISP 2026-08-27] Historical pre-A-C.20 C.34 uniqueness clause only.**  The two
+   unpinned labelled splits
    `g = fS · q` (with `HasLabel fS`, `q` monic, `R(q)` a nonzero constant — the landed
    constant law gives the complement clause) and `g = g · 1` (with `HasLabel g` — §7.1
    — and complement `1`, again the landed constant law) have `fS ≠ g` (degrees 2 ≠ 3).
-   Every hypothesis of the signed statement holds at this instance (`hg` ✓ `hpure` ✓
-   `hne` ✓ `hp: M₀ = 3` ✓ `hdvd: r ∣ r` ✓).
-2. **`BlockFrontier` from `BlockContext`** (the planned F1.H3 target): for
+   Every hypothesis of the historical unpinned statement holds at this instance.  The
+   current signed hypothesis additionally requires `D′ ∣ g.natDegree`, which fails because
+   `2 ∤ 3`; current C.34 is therefore NOT refuted.
+2. **[MHDISP 2026-08-27] Historical unpinned frontier/selector from `BlockContext`.**  For
    `f := g = fS·q`: `BlockContext L f` HOLDS (monic ✓; squarefree — `fS` has distinct
    roots (disc ≠ 0 at the audited frame; cert-checked) and `q` is coprime to it ✓;
-   `Φ′ ∤ f` ✓; genuine side `sideDeg = 1 > 0` ✓; `r ∣ R(f)` ✓).  But `BlockFrontier L f`
-   is FALSE: its witness needs `D′ ∣ deg fS₀` and `∀`-maximality over UNPINNED
+   `Φ′ ∤ f` ✓; genuine side `sideDeg = 1 > 0` ✓; `r ∣ R(f)` ✓).  But the historical
+   frontier shape is false: its witness needs `D′ ∣ deg fS₀` and `∀`-maximality over unpinned
    `HasLabel` divisors; the labelled divisors of `f` include both `fS` (deg 2) and
    `f` itself (deg 3): a witness with `D′ ∣ deg` must be `fS` (degree reasons), and
-   maximality then demands `f ∣ fS` — false.
-3. **Signed C.35 `blockFactor_spec`** (clause 3): at this `f`, the maximal UNPINNED
+   maximality then demands `f ∣ fS` — false.  Current `BlockFrontier` pins every competitor,
+   so this argument does not apply.
+3. **[MHDISP 2026-08-27] Historical C.35 selector, now `blockFactorLeaky` and
+   `mult₂Leaky`.**  At this `f`, the maximal unpinned
    labelled divisor EXISTS and is `f` itself (both labelled divisors divide it), so
-   `blockFactor L f = f` (the landed `blockFactor_eq_of_frontier` argument shape), and
-   clause 3 reads `3 = keyDeg₂ · mult₂ = 2 · (3 / 2) = 2` — FALSE.
+   `blockFactorLeaky L f = f`, and the leaky multiplicity equation reads
+   `3 = keyDeg₂ · mult₂Leaky = 2 · (3 / 2) = 2` — false.  This does not identify current
+   `blockFactor L f` with `f` and does not refute current `blockFactor_spec` clause 3.
 
 **Normalization-robustness.**  The slot heights of `R(fS)` and `R(g)` are the SAME pair
 `(3, 0)`, and the raw slot values are the SAME pair `(θ, 1)`.  Any read normalization
@@ -576,27 +643,29 @@ with unit content and unit read works; `x + 1` is the simplest.)
   does not see far factors of degree `< D′` with trivial graded content.  The classical
   source pins the block's degree — LEMMA HE7-6: "`D″ | deg f_S`"
   (`spec/EFF-HE7.md:1653-1663`) — and the corpus surrogate dropped the pin.  C35b's D13
-  refutation (`hasLabel_natDegree_dvd_false`) was the visible tip; the new content here
-  is that the leak makes signed CONCLUSIONS false, not merely one route unprovable.
-* **Recommended repair (R1, owner statement-gate):** pin the label everywhere it is
+  refutation (`hasLabel_natDegree_dvd_false`) was the visible tip; the historical content
+  here is that the leak made the **pre-A-C.20** conclusions false.  A-C.20 removed those
+  unpinned conclusion shapes from the current signatures.
+* **[MHDISP 2026-08-27] Repair R1 is LANDED as A-C.20:** pin the label everywhere it is
   load-bearing — `HasLabel′ L fS := HasLabel L fS ∧ D′ ∣ fS.natDegree` — in C.34's
   existence/uniqueness clauses (both the `fS`-witness and the `∀ fS'` competitors) and
-  in `BlockFrontier`'s maximality quantifier.  Under R1 every §2 theorem applies and
-  the F1 chain closes (§8).  R1 matches the classical statement, and §6.1 shows the
-  pinned class is exactly the "no far junk" class.
+  in `BlockFrontier`'s maximality quantifier.  A-C.20 matches the classical statement;
+  §6.1 proposes why the pinned class is the "no far junk" class.
 * The alternative repairs (blocking far factors via `BlockContext`, or weakening the
   uniqueness conclusion to "up to far-unit factors") are both uglier and are recorded
   only for completeness.
-* The DEGREE-PINNED theorems (§2) are unconditionally fine — nothing in this section
-  touches the `D′ ∣ deg` stratum (§5's B1 seals it).
+* The degree-pinned **statements** (§2) are not refuted by this section.  Their proposed
+  proofs remain blocked by the independent M1/MH.8 gaps; “not refuted” is not “proved.”
 
 ---
 
-## §8 F1.H3 under the repair: `BlockFrontier′` from `BlockContext`
+## §8 Proposed F1.H3 after A-C.20: current `BlockFrontier` from `BlockContext`
 
-`BlockFrontier′ L f` := the C.35 `BlockFrontier` body with the maximality quantifier
-over `HasLabel′` (pinned) divisors — the witness clause already carries
-`D′ ∣ deg fS` (`C35.lean:248`).  Assembly, given `hctx : BlockContext L f`:
+**[MHDISP 2026-08-27]** A-C.20 made the proposed `BlockFrontier′` the substance of current
+`BlockFrontier`: both the witness and maximality competitors are degree-pinned.  The outline
+below is still BLOCKED because it consumes M, A, B, C, and X1; it is not a proof that current
+`BlockContext` implies current `BlockFrontier`.  Proposed assembly, given
+`hctx : BlockContext L f`:
 
 1. `hctx` gives `f` monic, squarefree, `¬ F.key ∣ f`, a genuine `(u,ℓ)`-side
    (`0 < dvSideDeg`), and `r ∣ R(f)`.
@@ -620,9 +689,9 @@ over `HasLabel′` (pinned) divisors — the witness clause already carries
    factors pure with `D′`-divisible pinned degrees.
 6. `fS ∣ G ∣ f` ✓; `D′ ∣ deg fS` ✓ (conclusion 2).  Maximality over `HasLabel′`
    competitors: Theorem C at `f = fS · g₂ · Wf` gives `fS' ∣ fS` for every pinned
-   labelled divisor `fS'` of `f`.  **`BlockFrontier′ L f` holds.**  ∎
+   labelled divisor `fS'` of `f`.  **Conditional conclusion: current `BlockFrontier L f`.**
 
-Under R1, `blockFactor` (redefined over pinned labels) recovers all four
+Under landed A-C.20, `blockFactor` (defined over pinned labels) conditionally recovers all four
 `blockFactor_spec` clauses through the landed packaging pattern
 (`blockFactor_spec_of_frontier`, whose proof shape is unchanged).
 
@@ -637,47 +706,58 @@ the trivial `fun _ _ h => h` instance, `C48.lean:105`).
 Naming: MH.* are this engine's nodes.  "Landed inputs" name exact declarations.
 Sizings are Lean source lines, same convention as the plan.
 
+**[MHDISP 2026-08-27] Node gate.**  `MH.1` is **BLOCKED-CRITICAL** because its read clause
+is false.  `MH.0b`, `MH.0c`, `MH.2`–`MH.9`, and `MH.11`–`MH.15` are **BLOCKED** by that
+critical root and/or their own load-bearing gaps (MH.8 additionally has the invalid/private
+limit conversion; MH.14 is OPEN-4).  `MH.16` is **HISTORICAL-ONLY** after A-C.20 and must
+target `blockFactorLeaky`/`mult₂Leaky`, not current signed declarations.  `MH.0a` and the
+independent algebraic `MH.10` are not logically refuted, but they do not authorize the MH
+transcription fleet to fire.
+
 | node | statement | landed inputs | sizing | plan wiring |
 |---|---|---|---|---|
 | MH.0a | `stageHeight_key`: `F.stageHeight F.key = (D′ * F.h : ℕ∞)` (from `F.hpure` at `X`) — wires `L.hκ` to C130nv2's `hV/hadm` | `stageHeight_eq_inf` (C.02), `IsPure`/`sideSet` at `X` | 30–50 | feeds every M consumer |
 | MH.0b | read-vanishing: `dv(A) > k → twistRead k A = 0`; and read-faithfulness on windows (`W ≥ c` ∧ all line-reads 0 → `W ≥ c+1`) | `resMk_eq_zero_of_lt` (B39b), C.22 stack | 50–90 | §3.3, §4.2 |
 | MH.0c | TW: `twistExp 0 = 0`, `twistRead 0 1 = 1`, the product cocycle `τ(k,k') = stageLetter^(twistExp k + twistExp k' − twistExp (k+k'))`, and its cancellation on the §3.5 fence | C.22 defs, C.46 pins, `twistRead_one_X` (C35b) as model | 60–120 | §3.3/§3.5/§4.1 |
-| MH.1 | Lemma M1 (slot product law, height+read forms) + M1a (order-1 residual stability) | `stageHeight_mul`, `stageHeight_le_modByMonic/divByMonic/eq_min_mod_div` (C130nv2), `resPoly_mul_gen` (B39a:883), `resMk_add` (B39b), `natDegree_resPoly` order-1, `F.hresirr` | 150–260, split M1a (order-1, 40–70) from M1 | **the root**; also discharges C130nv3's generic `hsurv` at all frames |
+| MH.1 | **BLOCKED-CRITICAL:** restate M1 with the slot carry or directly as a generic `twistRead` product theorem; M1a still needs promotion/proof | `stageHeight_mul`, division bank, `resPoly_mul_gen`, `resMk_add`, `F.hresirr`; C130nv3 still takes `hsurv` | re-estimate after restatement | **the root; current read statement is false** |
 | MH.2 | Theorem M clauses 1–2: unfenced `dvSupp_mul`, `dvSideMin_mul`, `dvSideMax_mul`, `dvSideDeg_mul` at frames | MH.1, `dvSupp_mul_eq_add_of_endpoint_le` + endpoint bank (C130nv2:645-810), `lt_line_dev_term`, `stageHeight_add_eq_left_of_lt` (C131y) | 120–200 | kills `C35_BLOCKED` obstr. 1's support half; NV-4 generalizes for free |
 | MH.3 | Theorem M clause 3: `dvResPoly_mul_gen` — `R(gz) = τ·R(g)·R(z)` with τ from MH.0c | MH.1–MH.2, `dev_mul_pow`/`dev_finsetSum` (B35a), MH.0b | 250–450 (the largest node; B39a's level-2 twin) | subsumes the blueprint's `dvResPoly_mul_of_pure` RE-PLAN; **makes `fgmn_dv_exact_mul` provable** (§9.2) |
 | MH.4 | §3.5 M-monic (monic residual, `M₀ = u·d`, `τ = 1` fence) | MH.0c, MH.3, `dev_top` (B13a), C.26 | 40–80 | B.41's `hcu1` twin |
-| MH.5 | the side lift `Λ` + its five clause lemmas (§4.1) | `stageLiftO` + C.46/C.47 exact-height/read pins, `sum_dev_eq`, `dev_eq_zero_of_lt` | 90–160 | F1.H1 init; shares machinery with C56a's `k2DigitLift` |
+| MH.5 | **BLOCKED:** corrected side lift `Λ` + its five clause lemmas (§4.1) | public C131f `stageLiftO` degree/slot/height pins or C.14 `exists_twistRead_preimage` (with its finiteness hypothesis), `sum_dev_eq`, `dev_eq_zero_of_lt` | re-estimate | F1.H1 init; private C.46/C.47 helpers are not inputs |
 | MH.6 | perturbation law M4 (dv `pure_add_of_lt`) | `dev_add_of_monic` (B32a), `dvHgt_add_eq_left_of_lt` (C131y:102), `twistRead_add_eq_left_of_lt` (C131ae:295), `dvHgt_add_min` (C131y:220) | 80–140 | F1.H1 invariants; ALSO the plan's F3.3 mechanism (same shape — coordinate) |
-| MH.7 | Lemma S (graded solve, §4.2) incl. the K-linear Bézout iso | MH.0b, MH.3, MH.5; `Polynomial` degree-window algebra over the field `K` (C04's instance) | 150–250 | F1.H1 core |
-| MH.8 | dv graded limit (B.40 twin) + the two conversion lemmas | `inf_npHgt_le_gaussVal` (B40:121, Monic-fenced), `exists_adicLimit_of_degree_lt` (HenselFactorization:306) | 80–130 | F1.H1 limit |
+| MH.7 | **BLOCKED:** Lemma S incl. the K-linear Bézout iso | MH.0b, MH.3, MH.5; locally reconstruct `Field K` (C.04 exports no instance) | re-estimate | F1.H1 core |
+| MH.8 | **BLOCKED-GAP:** dv graded limit + two correct bounded-window conversion lemmas | public `exists_adicLimit_of_degree_lt`; reprove/promote any needed B.40 comparison (line-121 helper is private) and control the `F.h*j` loss | re-estimate | F1.H1 limit; original logical direction invalid |
 | MH.9 | Theorem A assembled (`exists_dv_graded_factorization`, B.41-shaped conclusion incl. exact residuals) | MH.4–MH.8 | 120–200 | **F1.H1** (revised total: the plan's 140–240 was under; realistic 300–500 across MH.5–MH.9 alone) |
 | MH.10 | Theorem H0 (`dvResidualBezout`) | field `K[Z]` UFD arithmetic | 35–60 | **F1.H0** (unchanged) |
 | MH.11 | Theorem B (`dv_oneSlope_split_unique`, pinned form) | MH.2, MH.3, landed C.35 endpoint lemmas, C.26 degree law | 100–160 | **F1.H2** (mechanism CHANGED: no filtration induction; degree pigeonhole) |
 | MH.12 | §6.1 defect-vanishing + no-far-primes; Gauss descent (mathlib `IsIntegrallyClosed` search) | MH.2; mathlib | 60–110 | feeds MH.13 |
 | MH.13 | Theorem C placement | MH.2, MH.3, MH.12, `Squarefree` API | 100–170 | the maximality half of **F1.H3** |
-| MH.14 | X1 (other-slope ⟹ point side) + transport step 3 of §8 | MH.2, MH.3, C.08 spacing, `D.hbelow` | 70–120 | **F1.H3** |
-| MH.15 | §8 assembly `blockFrontier'_of_context` | C.33 cites, MH.9–MH.14 | 80–130 | **F1.H3** (target renamed: PINNED frontier; unpinned is refuted) |
-| MH.16 | the §7 refutation, machine-checked (C35b-style absolute instance) | C35b's pattern; the audited frame | 150–250 | NEW row: the statement-defect record |
+| MH.14 | **BLOCKED / OPEN-4:** X1 + transport step 3 of §8 | MH.2, MH.3, C.08 spacing, `D.hbelow` | unknown until proved | **F1.H3** |
+| MH.15 | **BLOCKED:** §8 assembly of current `BlockFrontier_of_context` | C.33 cites, MH.9–MH.14 | re-estimate | **F1.H3**; A-C.20 already supplied the pinned target signature |
+| MH.16 | **HISTORICAL-ONLY:** §7 pre-A-C.20 leak record | current targets must be `blockFactorLeaky`/`mult₂Leaky` | optional | not a refutation of current C.34/C.35 |
 
 **Revised F1 pricing** (vs `BLOCKERS_PLAN` §F1): H0 unchanged; H1 = MH.5–MH.9
 ≈ 520–880 lines (plan said 140–240 — under-priced because the mixed product law MH.1–MH.3
 was hidden inside "use `fgmn_dv_exact_mul` only to certify exact product reads", which
 is impossible: the solve and the transport need MIXED reads the cite does not cover);
 H2 = MH.11 (100–160, plan 100–180 ✓ but mechanism changed); H3 = MH.12–MH.15 (310–530,
-plan 70–120 — under-priced for the same reason) **plus the owner statement-gate (R1)**.
+plan 70–120 — under-priced for the same reason).  **[MHDISP 2026-08-27] The former owner
+statement-gate R1 is no longer part of this price because it landed as A-C.20.**
 MH.1–MH.3 (520–910 lines) are the shared root serving H1, H2, H3 at once.
 
 ### 9.1 Ordering recommendation
 
-MH.16 (the refutation — a statement-defect record must land FIRST, before anyone
-formalizes against the unrepaired signatures) → MH.0a–c, MH.1 (the root; certifiable
-numerically §10) → MH.2 → MH.10, MH.11 (cheap wins: F1.H0, F1.H2-pinned complete,
-completeness-free) → MH.3 → MH.4–MH.9 (F1.H1) → MH.12–MH.15 (F1.H3-pinned, after the
-owner rules on R1).
+**[MHDISP 2026-08-27] The fleet may not follow the original order.**  A-C.20 has already
+resolved the signature gate; MH.16 is optional historical maintenance at the `*Leaky` names.
+First redesign and prove the corrected generic carry/`twistRead` root replacing MH.1, under
+the strict floor, then prove the bounded-window limit comparisons for MH.8 and X1 for MH.14.
+Only after those gates are green should downstream MH.2–MH.9/MH.11–MH.15 be rescheduled.
+The independent algebraic MH.10 can be scoped separately but does not un-fence the fleet.
 
 ### 9.2 Strategic note: the cite becomes a theorem
 
-MH.3 + MH.2 prove strictly more than `fgmn_dv_exact_mul` asserts (mixed vs pure×pure;
+**[MHDISP 2026-08-27: conditional only.]**  If corrected MH.3 + MH.2 are proved, they would
+prove strictly more than `fgmn_dv_exact_mul` asserts (mixed vs pure×pure;
 the purity-closure clause is MH.2's endpoint additivity + the landed C.35 endpoint
 lemmas).  Once MH.3 lands, the cite can be RETIRED (axiom → theorem), shrinking the
 declared-cite allowlist by one — the axiom-policy direction this repo prizes.  Until
@@ -685,21 +765,26 @@ then the engine does NOT consume the cite anywhere load-bearing (it is used only
 consistency check for the TW normalization, §3.3), so there is no circularity in
 retiring it afterwards.
 
-### 9.3 Named OPEN items (none load-bearing for the eight rows)
+### 9.3 Named OPEN/BLOCKED items (load-bearing status corrected)
 
-* **OPEN-1 (M1a order-1 stability)** — stated §3.1(c); routine; listed open until
-  elaborated.
+* **OPEN-CRITICAL (corrected M1 read law)** — [MHDISP 2026-08-27] replace the false bare
+  `slotRes` equality by a generic carry formula or direct `twistRead` multiplicativity
+  theorem.  Load-bearing for M and every downstream engine node.
+* **OPEN-1 (M1a order-1 stability)** — stated §3.1(c); private-needs-promotion/reproof and
+  load-bearing for M1(1), not merely routine bookkeeping.
 * **OPEN-2 (defective existence)** — FRONTIER 1 on `D′ ∤ deg g`: expected true
   (classical FGMN covers all `f`); not consumed by F1 (the dissection factor is
-  `D′`-divisible).  If signed C.34 is repaired per R1, its existence clause on the
-  defective stratum should be re-examined at the same time (the witness `fS` can be
+  `D′`-divisible).  [MHDISP 2026-08-27] A-C.20 has repaired C.34; any extension of the
+  engine to the defective ambient stratum should still be re-examined (the witness `fS` can be
   pinned; the SPLIT still exists classically with the far part in the complement — the
   engine extension would need windows with a non-monic top digit).
-* **OPEN-3 (the C.22 definitional chases)** — MH.0b/0c/M1(d)'s walks through
-  `slotRes`/`twistExp`; bookkeeping with a known answer shape; each could surface a
-  fixed-unit discrepancy which the `τ`-carrying statements absorb by design.
-* **OPEN-4 (X1)** — the other-slope point-side lemma; convexity calculus, expected
-  short; stated §8 step 3.
+* **OPEN-3 (the C.22 definitional chases)** — MH.0b/0c and the corrected M1 walk through
+  `slotRes`/`twistExp`; now known to contain a nontrivial carry.  Load-bearing for M(3),
+  initialization, solve, and monic normalization.
+* **OPEN-LIMIT (MH.8)** — prove public bounded-window `W`/Gauss comparisons in the correct
+  directions; B.40's private helper cannot be consumed.  Load-bearing for Theorem A.
+* **OPEN-4 (X1)** — the other-slope point-side lemma; unproved and load-bearing for §8
+  residual transport/`BlockFrontier_of_context`.
 
 ---
 
@@ -756,9 +841,10 @@ normalization-robust in the §7.2 sense (equal slot-height patterns).
   label — no second labelled split.
 
 Honest scope: one frame (`ℤ₂`, `Φ′ = x²+2x+12`, `(u,ℓ) = (3,1)`, `K = F₄`), raw reads,
-bounded degrees/coefficients.  The certificate certifies the MECHANISMS (and would have
-falsified M, the contraction, or the refutation had they been wrong); it does not
-certify the universally quantified Lean statements.
+bounded degrees/coefficients.  **[MHDISP 2026-08-27]** The certificate is exploratory
+evidence only.  It did not exercise the nontrivial `(2,2,3)` slot carry and therefore did
+not falsify the false M1(2); it cannot certify M, the contraction proof, the historical
+refutation as a current-signature refutation, or any universally quantified Lean statement.
 
 ### 10.2 Elaboration probe (`leanfinal/scratch/MHENS_probe.lean`) — GREEN
 
@@ -771,3 +857,17 @@ definitions (the C35b `D13Statement` pattern — no assertions, zero `sorry`, ze
 vocabulary; plus one PROVED theorem `blockFrontierPinned_of_blockFrontier` (the repair
 only shrinks the maximality quantifier).  All seven footprints are exactly
 `[propext, Classical.choice, Quot.sound]`.
+
+### 10.3 [MHDISP 2026-08-27] Disposition probe and final status
+
+`lake env lean scratch/MHDISP_probe.lean` exits 0 with zero `sorry` and zero `axiom`.
+It checks the current A-C.20 pinned signatures and `*Leaky` historical names, the explicit
+`hsurv`/strict-floor shape of C130nv3, the S2-only C132nv3 survival theorem, the public C131f
+lift pins, exact inverse-twisted lift construction, local reconstruction of `Field K`, and
+the nontrivial `F₉` slot carry/cancellation row.  Printed footprints are exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+**Final document status:** genuine design progress, but **ENGINE NOT PROVED**.
+**Fleet status:** **DO NOT FIRE** MH.1–MH.9 or MH.11–MH.15 until the corrected generic
+twist-read product law, MH.8 conversion lemmas, and X1 are proved.  Current pinned C.34/C.35
+are not refuted; they remain blocked on construction/proof, not on statement consistency.
