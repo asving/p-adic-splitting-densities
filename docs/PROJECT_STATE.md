@@ -155,9 +155,13 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | MADJ | Dv2ResSurv numeral adjudication (codex HIGH) | DONE — OUTCOME A: (21,2) machine-pinned; the probe DERIVES the μ₃ product law s2Hgt₃(g·z)=s2Hgt₃ g+s2Hgt₃ z (probe orchestrator-repaired: import/open/qualifications — MADJ's exit-0 claim was false); NV4 unblocked |
 | NS7R | the NS7Termination reconciliation (codex HIGH) | DONE — A-I.4 enacted, Iff.rfl reconciliation gates pass; ns7 (1st of 3 capstone inputs) FULLY SUPPLIED |
 | VHENS | adversarial read of HENSEL_ENGINE doc (codex HIGH) | DONE — REJECT: findings 1-2 = STALENESS vs A-C.20 (the repair the doc itself triggered); later findings = candidate genuine gaps; MH fleet FENCED pending MHDISP |
-| MHDISP | disposition of VHENS's findings + doc amendment (codex HIGH) | RUNNING |
-| VRAMX | adversarial read of RAMIFIED_EXACTNESS doc (codex HIGH) | RUNNING |
-| MNV4 | μ₃ product-law assembly from the MADJ probe (SONNET) | RUNNING |
+| MHDISP | disposition of VHENS (codex HIGH) | DONE — rejection SUSTAINED: M1(2) GENUINE CRITICAL (bare slotRes product FALSE, F₉-refuted; the twist-normalized M supported but unproved), findings 1-2 stale-vs-A-C.20 corrected in doc, 4-8 gaps exposed; MH fleet FENCED; repair = MHFIX |
+| VRAMX | adversarial read of RAMIFIED doc (codex HIGH) | DONE — REJECT: ℕ-subtraction truncation falsifies the extraction lemma (concrete counterexample), T1 chain stopped; T2 survives; findings 1/3 genuine gaps; repair = MRFIX. NOTE: the unit's own fresh-Claude verifier had ACCEPTed — codex decorrelation vindicated (memory recorded) |
+| MNV4 | μ₃ product law (SONNET) | DONE — s2Hgt₃_mul in production + unconditional survival package at (21,2); wired |
+| MNV5 | μ₃ AddValuation packaging (SONNET) | DONE honest partial — conditional packaging landed; the missing dv2SideSet_nonempty analogue = node MNV6 |
+| MNV6 | μ₃ unconditionality: dv2SideSet_nonempty + the genuine AddValuation (SONNET) | RUNNING |
+| MRFIX | RAMIFIED doc repair per VRAMX (codex HIGH) | RUNNING |
+| MHFIX | the corrected twist-normalized product law M (FABLE) | RUNNING |
 | CIFACE | the capstone interface nodes (FABLE, died on final message — orchestrator verified+committed) | DONE — L0 + DT0 PROVED-EXACT supplier decompositions (iff both directions); W0/WIN0 landed with guards BLOCKED-BECAUSE (weld-site export; GENHN-CAP-GEN reader rule) |
 | CHFD | the CapstoneHypotheses supply map (codex HIGH) | DONE — CapstoneHypotheses 2 = ns7 + ladder + deepTwist EXACTLY (a0/a1/a2 provable at n=2, probe-checked); LADDER-SUPPLY + DEEP-TWIST-SUPPLY are the decisive campaigns; NS7Termination leanspec/leanfinal DRIFT flagged (reconciliation re-sign owed) |
 | BW1 | BLOCKERS_PLAN wave 1 (codex, after two Sonnet 529 deaths) | DONE — 6 decls LANDED (B53d + C131ah), orchestrator re-verified Lean-core, roll-ups wired |
