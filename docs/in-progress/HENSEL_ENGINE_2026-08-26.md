@@ -80,6 +80,31 @@ Status ledger for this amendment (honest grades, per item):
   carry law is landed (`C130rp6.s2_graded_mul_twisted`, carry twist `X^{(β%2)(β′%2)}` =
   this δ at `e₁ = 2`), which is a second, independently landed instance of the formula.
 
+## [MHG 2026-08-27] Gates MH.8 and X1 closed
+
+The two gates left open by MHDISP/MHFIX are now **PROVED**, with their corpus statements and
+proofs machine-checked in `leanfinal/scratch/MHG_probe.lean` (exit 0, zero `sorry`, zero
+declared `axiom`; every printed footprint is exactly `[propext, Classical.choice,
+Quot.sound]`).
+
+* **MH.8 PROVED.**  On the fixed window `a.natDegree < d`, put
+  `D′ := F.e₁*F.f₁`, `A := ℓ*F.e₁`, and
+  `C_d := ℓ*F.h*(D′-1) + u*(d-1)`.  The new upper comparison is
+  `W(a) ≤ ℓ•(F.e₁•gaussVal(a)) + C_d`; hence
+  `A*N + C_d ≤ W(a) ⇒ N ≤ gaussVal(a)`.  The reverse comparison is
+  `N ≤ gaussVal(a) ⇒ A*N ≤ W(a)`.  These give the full degree-bounded graded
+  limit by the subtraction-free subsequence `q(j) := p(A*j+C_d)`.  Detailed proof: §4.4.
+* **X1 PROVED.**  If `g` is `(u′,ℓ′)`-pure and `u′ℓ ≠ uℓ′`, then every
+  `(u,ℓ)`-side abscissa is the same endpoint (`0` on one ordering of the cross-products,
+  `n := deg(g)/D′` on the other), so the side is a point and `dvSideDeg = 0`.
+  Detailed proof: §8 step 3.
+
+This closes MHDISP gates 2–3 at proof/probe grade.  It does **not** land public ChapC
+declarations and does not repair the separate remaining MH.1 transcription gate.  Thus the
+full engine transcription fleet is still fenced pending both MH.1's Lean landing and public
+promotion of these probe theorems; MH.8 and X1 are no longer mathematical or elaboration
+blockers and are transcription-ready from the probe.
+
 **Three headline verdicts, up front.**
 
 1. **[MHDISP 2026-08-27] The engine is designed but its mathematics is NOT proved below.**
@@ -681,10 +706,75 @@ coefficient-ideal transport may still be reusable, and the generic core
 required conversion lemmas are not supplied here.  MH.8 is a load-bearing OPEN node, not a
 mechanical reskin.
 
+**[MHG 2026-08-27] MH.8 repair and proof (PROVED).**  Write
+`D′ := F.e₁F.f₁`, `A := ℓF.e₁`, and, for the fixed degree window
+`a.natDegree < d`,
+
+> `C_d := ℓ F.h (D′-1) + u(d-1)`.
+
+There are two comparisons, in the directions actually needed.
+
+**(MH8-U, bounded-window upper comparison).**
+
+> `W(a) ≤ ℓ•(F.e₁•gaussVal(a)) + C_d`.
+
+For an inner digit `B` with `deg B < D′`, choose a coefficient `i` attaining
+`gaussVal(B)`.  Since `i ≤ D′-1`, C.02's defining infimum gives
+
+> `stageHeight(B) ≤ F.e₁•gaussVal(B) + F.h(D′-1)`.                 `(1)`
+
+For the outer `F.key`-development `a = Σ_j B_j F.key^j`, monicity gives
+`gaussVal(F.key^j)=0`; finite-sum ultrametricity therefore gives
+`min_j gaussVal(B_j) ≤ gaussVal(a)`.  Choose an attaining `j`.  It lies in the actual
+development range, hence `j ≤ a.natDegree ≤ d-1`.  Evaluating the infimum defining
+`W(a)` at this `j`, applying (1), and using both bounds yields MH8-U.  This proves exactly
+the missing finite-loss direction; no inequality is reversed.
+
+Consequently, cancellation of the finite natural summand and the positive multiplier
+`A = ℓF.e₁` gives the forward transport
+
+> `A*N + C_d ≤ W(a)  ⇒  N ≤ gaussVal(a)`.                       `(MH8-F)`
+
+The proof treats `gaussVal(a)=⊤` separately and otherwise lifts it to a natural number,
+so no subtraction or cancellation at `⊤` is used.
+
+**(MH8-R, reverse transport).**
+
+> `N ≤ gaussVal(a)  ⇒  A*N ≤ W(a)`.                           `(MH8-R)`
+
+Indeed the premise says `π^N` divides every coefficient.  Public
+`C118a.dvSupp_min_congr`, applied to `a` and `0` through the cap `A*N`, identifies
+`min(W(a),A*N)` with `min(W(0),A*N)=A*N` (public
+`C130s6.dvSupp_zero_eq_top`), which is precisely MH8-R.  This is the promised reusable
+coefficient-ideal transport; it consumes no private B.40 helper.
+
+**Full limit.**  Suppose `deg(p_k)<d` and `k≤W(p_{k+1}-p_k)`.  Telescope first: for
+all `c`, `a≤W(p_{a+c}-p_a)`, by the public `dvSupp` ultrametric law.  Define
+
+> `q_j := p_{A*j+C_d}`.
+
+The difference `q_{j+1}-q_j` telescopes from index `A*j+C_d`, so its `W`-value is at
+least `A*j+C_d`; MH8-F gives Gauss value at least `j`.  Public
+`exists_adicLimit_of_degree_lt` supplies `P`, still of degree `<d`, with
+`j≤gaussVal(P-q_j)`.  MH8-R gives `A*j≤W(P-q_j)`, hence `j≤W(P-q_j)` because
+`A≥1`.  Finally `j≤A*j+C_d`, so telescoping also gives
+`j≤W(q_j-p_j)`; the `dvSupp` ultrametric applied to
+`P-p_j=(P-q_j)+(q_j-p_j)` yields `j≤W(P-p_j)`.  This is the intended MH.8 limit
+contract verbatim.
+
+All steps above are Lean-proved in the probe as
+`stageHeight_le_gaussVal_add_loss`, `inf_devGauss_le_gaussVal`,
+`dvSupp_le_scaled_gaussVal_add_window`, `gaussVal_of_shifted_dvSupp`,
+`reverseTransport`, and `exists_dvGradedLimit`.
+
 Conditionally on MH.8, limits `g₁∞, g₂∞` would be monic of pinned degrees (leading coefficient constant along the
 sequence); purity/residual transport by M4 (total perturbation has `W ≥ w₁ + 1`);
 exactness: `W(g − g₁∞g₂∞) ≥ w + k + 1` for every `k` ⟹ all coefficients in
 `⋂ₙ 𝔪ⁿ = 0` (`IsHausdorff` from `IsAdicComplete`): `g = g₁∞·g₂∞`.  Conclusions 1–5.  ∎
+
+**[MHG 2026-08-27]** The MH.8 condition in the preceding historical sentence is now
+discharged.  Theorem A remains conditional on its other open inputs (notably the public MH.1
+transcription and the initialization/solve/perturbation nodes); the limit leg itself is proved.
 
 ---
 
@@ -897,6 +987,35 @@ below is still BLOCKED because it consumes M, A, B, C, and X1; it is not a proof
    at every admissible direction) plus M clause 2 (side additivity over the product)
    give `sideDeg(Wf) = 0`, i.e. `R(Wf)` is a nonzero constant.  M clause 3 then gives
    `R(f) = τ·R(G)·C(unit)`, so `r ∣ R(G)` (r nonconstant irreducible vs unit scalars).
+
+   **[MHG 2026-08-27] X1 proof (PROVED).**  Set
+   `n := g.natDegree/D′` for an `(u′,ℓ′)`-pure factor `g`, and write `H_j` for the
+   finite natural height at an attaining abscissa.  Purity says that `0,n` attain at the
+   old direction, hence
+
+   > `ℓ′H₀ = ℓ′Hₙ + u′n`.                                      `(2)`
+
+   Let `j` attain at the new direction `(u,ℓ)`.  Landed
+   `le_natDegree_div_of_mem_dvSideSet` gives `0 ≤ j ≤ n`.  Since every point lies
+   above the old supporting line, while a new attaining point lies below both endpoint
+   weights at the new direction, we have
+
+   > `ℓ′H₀ ≤ ℓ′H_j+u′j`,     `ℓH_j+uj ≤ ℓH₀`,
+   >
+   > `ℓ′Hₙ+u′n ≤ ℓ′H_j+u′j`, `ℓH_j+uj ≤ ℓHₙ+un`.       `(3)`
+
+   Multiply the first pair by `ℓ,ℓ′` and cancel their common height term.  If
+   `j>0`, it forces `uℓ′ ≤ u′ℓ`.  Using (2), the second pair similarly shows
+   that if `j<n`, then `u′ℓ ≤ uℓ′`.  Therefore:
+
+   * if `u′ℓ < uℓ′`, every new-side abscissa is `j=0`;
+   * if `uℓ′ < u′ℓ`, every new-side abscissa is `j=n`.
+
+   The cross-products are unequal by hypothesis, so these cases are exhaustive.  Thus the
+   new side set is a singleton, `dvSideMax=dvSideMin`, and `dvSideDeg=0`.  The probe theorem
+   `otherSlope_pointSide` proves this directly from `IsDvPure`, `DvOnSide`, and the landed
+   digit-index cap; no unexported convex-hull theorem is assumed.  Hence every other-slope
+   factor in `Wf` is point-sided, and step 3's residual transport is no longer blocked by X1.
 4. Theorem H0 splits `R(G)`'s monic normalization (§3.5: `R(G)` is monic — `G` is pure
    with `D′ ∣ deg G`) as `r^m · s`, `m ≥ 1`, `r ∤ s`, coprime.
 5. Theorem A splits `G = fS · g₂` with `HasLabel L fS` (exact residual `r^m`), both
@@ -939,6 +1058,13 @@ math proofs complete in §3.2/§3.3).  OPEN-1 (M1a) is **RETIRED from the critic
 lemmas, MH.7, **MH.8** (conversions), MH.9, **MH.14/X1**, MH.15.  The fleet fence stays
 until MH.1 LANDS in Lean and MHDISP gates 2–3 (MH.8, X1) are cleared.
 
+**[MHG 2026-08-27] Node gate, updated.**  MHDISP gates 2–3 are now cleared:
+`MH.8` and `MH.14/X1` are **PROVED in Lean in the zero-sorry probe** and
+transcription-ready.  At proof level, MH.1 is now the only MHDISP gate still lacking a Lean
+proof; at landing level, MH.8/X1 must also be promoted from scratch to public modules before
+the full fleet fires.  Theorem A is not thereby assembled: MH.5/MH.7 and the other stated
+dependencies remain.
+
 | node | statement | landed inputs | sizing | plan wiring |
 |---|---|---|---|---|
 | MH.0a | `stageHeight_key`: `F.stageHeight F.key = (D′ * F.h : ℕ∞)` (from `F.hpure` at `X`) — wires `L.hκ` to C130nv2's `hV/hadm` | `stageHeight_eq_inf` (C.02), `IsPure`/`sideSet` at `X` | 30–50 | feeds every M consumer |
@@ -951,13 +1077,13 @@ until MH.1 LANDS in Lean and MHDISP gates 2–3 (MH.8, X1) are cleared.
 | MH.5 | **BLOCKED:** corrected side lift `Λ` + its five clause lemmas (§4.1) | public C131f `stageLiftO` degree/slot/height pins or C.14 `exists_twistRead_preimage` (with its finiteness hypothesis), `sum_dev_eq`, `dev_eq_zero_of_lt` | re-estimate | F1.H1 init; private C.46/C.47 helpers are not inputs |
 | MH.6 | perturbation law M4 (dv `pure_add_of_lt`) | `dev_add_of_monic` (B32a), `dvHgt_add_eq_left_of_lt` (C131y:102), `twistRead_add_eq_left_of_lt` (C131ae:295), `dvHgt_add_min` (C131y:220) | 80–140 | F1.H1 invariants; ALSO the plan's F3.3 mechanism (same shape — coordinate) |
 | MH.7 | **BLOCKED:** Lemma S incl. the K-linear Bézout iso | MH.0b, MH.3, MH.5; locally reconstruct `Field K` (C.04 exports no instance) | re-estimate | F1.H1 core |
-| MH.8 | **BLOCKED-GAP:** dv graded limit + two correct bounded-window conversion lemmas | public `exists_adicLimit_of_degree_lt`; reprove/promote any needed B.40 comparison (line-121 helper is private) and control the `F.h*j` loss | re-estimate | F1.H1 limit; original logical direction invalid |
+| MH.8 | **[MHG 2026-08-27] PROVED (probe):** dv graded limit + both bounded-window conversions, with explicit `C_d = ℓF.h(D′-1)+u(d-1)` | public `exists_adicLimit_of_degree_lt`, `C118a.dvSupp_min_congr`, `C130s6` ultrametric/zero laws; fresh public-proof replacement for B.40's private helper | probe complete; promote as one node | F1.H1 limit; repaired direction |
 | MH.9 | Theorem A assembled (`exists_dv_graded_factorization`, B.41-shaped conclusion incl. exact residuals) | MH.4–MH.8 | 120–200 | **F1.H1** (revised total: the plan's 140–240 was under; realistic 300–500 across MH.5–MH.9 alone) |
 | MH.10 | Theorem H0 (`dvResidualBezout`) | field `K[Z]` UFD arithmetic | 35–60 | **F1.H0** (unchanged) |
 | MH.11 | Theorem B (`dv_oneSlope_split_unique`, pinned form) | MH.2, MH.3, landed C.35 endpoint lemmas, C.26 degree law | 100–160 | **F1.H2** (mechanism CHANGED: no filtration induction; degree pigeonhole) |
 | MH.12 | §6.1 defect-vanishing + no-far-primes; Gauss descent (mathlib `IsIntegrallyClosed` search) | MH.2; mathlib | 60–110 | feeds MH.13 |
 | MH.13 | Theorem C placement | MH.2, MH.3, MH.12, `Squarefree` API | 100–170 | the maximality half of **F1.H3** |
-| MH.14 | **BLOCKED / OPEN-4:** X1 + transport step 3 of §8 | MH.2, MH.3, C.08 spacing, `D.hbelow` | unknown until proved | **F1.H3** |
+| MH.14 | **[MHG 2026-08-27] X1 PROVED (probe);** §8 transport is no longer X1-blocked but still awaits MH.2/MH.3 product/residual assembly | `otherSlope_pointSide`, MH.2, MH.3, `D.hbelow` | X1 proof complete; remaining transport reprices after MH.3 | **F1.H3** |
 | MH.15 | **BLOCKED:** §8 assembly of current `BlockFrontier_of_context` | C.33 cites, MH.9–MH.14 | re-estimate | **F1.H3**; A-C.20 already supplied the pinned target signature |
 | MH.16 | **HISTORICAL-ONLY:** §7 pre-A-C.20 leak record | current targets must be `blockFactorLeaky`/`mult₂Leaky` | optional | not a refutation of current C.34/C.35 |
 
@@ -986,6 +1112,12 @@ promoting the probe's TW-δ/bridge theorems into a ChapC module (MH.0c remainder
 and X1 remain the other two gates and can be worked in parallel — nothing in this
 amendment touches them.  MH.2/MH.3 fire after MH.1 lands.  The full fleet stays fenced
 until all three MHDISP gates are LANDED, not merely math-proved.
+
+**[MHG 2026-08-27] Updated order.**  MH.8 and X1 are now proved against the corpus API in
+the probe, so the only one of the three MHDISP fleet gates still lacking a Lean proof is
+MH.1's generic digit product transcription.  Promote the probe's MH.8/X1 declarations when
+their public home is scheduled; land MH.1 before firing the dependent MH.2/MH.3 and full
+engine fleet.
 
 ### 9.2 Strategic note: the cite becomes a theorem
 
@@ -1027,8 +1159,14 @@ retiring it afterwards.
   `twistExp 0 = 0`/`twistRead 0 1 = 1` (MH.0c remainder) and read-faithfulness on windows.
 * **OPEN-LIMIT (MH.8)** — prove public bounded-window `W`/Gauss comparisons in the correct
   directions; B.40's private helper cannot be consumed.  Load-bearing for Theorem A.
+  **[MHG 2026-08-27]: RESOLVED at proof/probe level.**  Both directions and the assembled
+  graded limit are Lean-proved with explicit fixed loss `C_d`; only promotion to a public
+  ChapC module remains.
 * **OPEN-4 (X1)** — the other-slope point-side lemma; unproved and load-bearing for §8
   residual transport/`BlockFrontier_of_context`.
+  **[MHG 2026-08-27]: RESOLVED at proof/probe level.**  `otherSlope_pointSide` proves the
+  stronger singleton-side statement directly from the two endpoint inequalities; only
+  promotion remains.
 
 ---
 
@@ -1153,3 +1291,26 @@ a 473k-check certificate**; the engine as a whole is still **NOT Lean-proved**.
 schedulable unit is the MH.1 transcription (+ MH.0c promotion).  MH.8 and X1 are
 unchanged gates.  Nothing here weakens the MHDISP record: M1(2) as originally stated
 stays FALSE and withdrawn; M1′ is its correction, not its rehabilitation.
+
+### 10.5 [MHG 2026-08-27] The remaining-gates probe — GREEN
+
+`leanfinal/scratch/MHG_probe.lean` was checked with exactly
+`lake env lean scratch/MHG_probe.lean`: **exit 0**, zero `sorry`, zero declared `axiom`.
+The probe proves, against the actual corpus definitions:
+
+* the inner stage loss and outer bounded-window upper comparison;
+* the shifted `dvSupp`→Gauss conversion and the Gauss→`dvSupp` reverse transport;
+* the fully assembled degree-bounded `exists_dvGradedLimit` theorem; and
+* X1 as `otherSlope_pointSide`, with the stronger conclusion that the other-direction
+  side set has a unique endpoint.
+
+All printed footprints are exactly `[propext, Classical.choice, Quot.sound]`; there is no
+`sorryAx`.
+
+**[MHG 2026-08-27] Gate verdict:** MH.8 **PROVED**; X1 **PROVED**.  MHDISP gates 2–3
+are green at proof/probe grade.  **Theorem A still may not be declared proved**, because
+MH.1 is not publicly transcribed/landed and the initialization/solve/perturbation assembly
+nodes remain.  **The full engine Lean fleet still may not fire** under the existing fleet
+ruling until MH.1 lands and the probe theorems are promoted publicly; however MH.8 and X1
+themselves are now safe to promote, and neither is any longer a mathematical or elaboration
+blocker.

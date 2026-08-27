@@ -5,6 +5,10 @@
 **Scope:** the four suppliers exactly equivalent to the capstone `ladder` field in
 `leanfinal/Uniformity/ChapI/IFC0.lean`; no proof of an open supplier is claimed here.
 
+**[VAUD, 2026-08-27]** The four stop-line validity audits have now run.  Their certificates
+are `leanfinal/scratch/VAUD_probe.lean`; adjudication is recorded below and in
+`runs/wave-b/verdict_VAUD.md`.
+
 ## Verdict
 
 The decomposition is exact and already machine checked:
@@ -50,6 +54,99 @@ Honest campaign sizes:
 | degree-2 non-vacuity | no landed inhabitant | **L:** roughly 600–1,200 lines, 1–2 weeks, reusing the S2 depth-one anchor but building a new occurrence/realization |
 
 These are campaign sizes, not the 30–60 minute wrapper grains listed later.
+
+### [VAUD] Stop-line adjudication
+
+| Audit | Adjudication | Machine tooth / exact consequence |
+|---|---|---|
+| LB1 inhabited socket | **NOT VALIDATED; stop remains** | `s2_degree_four_socket` supplies the landed honest antecedent and `lb1_inhabited_socket_tooth` shows that, after it, LB1 still accepts an independently quantified arbitrary `I`.  No realization-link premise is present.  No malicious `I` on the landed S2 carrier was constructed, so this is not promoted to a refutation of `LB1Carrier` at an arising pair. |
+| MP1 cite hypotheses | **CITE ROUTE REFUTED** | `mp1_inhabited_socket_forces_irreducible` derives `hirr` from only `Λ ≠ 0`, `deg Λ < D`, `B'.Φ = B.Φ-Λ`, and `B'.Φ ∣ B.F` (plus `B' : BlockData C`). The checked source record does not say this. [GN15] Thm 2.3 starts with an inductive valuation/MacLane chain, a key polynomial `φ` in a specified tangent class, and a monic `g`; its irreducible-leaf clause also needs residual multiplicity one. GMN Thm 2.11 constructs a representative/key polynomial of a type with prescribed residual data. Neither identifies an arbitrary divisibility-only `B'.Φ` with that representative. |
+| vartheta all `i ≥ 3` | **GUARD-DERIVABILITY REFUTED; OWNER AMENDMENT REQUIRED** | `gauge_view_offRange_kernel_replacement` proves that an arbitrary dependent `(v,ρ)` package and `q` may be replaced at every `¬ GaugeLive` index without changing `GaugeFamilyViewEq`; `vartheta_sitewise_negative` gives a concrete false `HVarthetaRes`; and `s2_three_not_gaugeLive` pins the first demanded S2 index `3` outside the landed depth-two range.  Thus the live-range guard cannot derive the present unbounded demand. |
+| closed degree two | **NOT CONSTRUCTIBLE FROM LANDED MATERIAL** | `s2DepthOne`, `s2DepthOneKeyChain`, and `s2AnchorCalculus` land only the tower/key/calculus anchor.  The missing first object is a `SplitNodePointSource` on `s2DepthOne`, hence a `ChainRealization`; after it one still needs an `ArisingCore … 2` occurrence and `RealizedInput`.  The only landed source/realization is stage/depth two and its input is definitionally degree `4` (`s2_degree_four_socket`, `landed_s2_degree_ne_two`). |
+
+The vartheta adjudication is deliberately about **derivability from the enacted guard**.  It
+does not claim a closed countermodel to the whole universal supplier: the repo has no closed
+degree-two socket, and the landed S2 socket retains its honest completeness/threshold context.
+It does prove that any proof whose only family information is `GaugeFamilyViewEq` cannot
+justify an off-range site.  Adding an HVR-shaped premise to the guard remains forbidden.
+
+### [VAUD] Proposed vartheta owner amendment — exact IFC0 replacement
+
+The smallest honest target keeps the first three fields and restricts the fourth to indices
+live in a realization witnessing the **same** external socket data.  The fully elaborated
+definitions and proof are in `VAUD_probe.lean` as `CanonicalLadderLiveAt`,
+`LadderSupplyLive`, `LadderVarthetaSupplierLive`, `LadderFieldLive`,
+`ladderFieldLive_iff_suppliers`, and `ladderFieldLive_of_suppliers`.
+
+The exact signature diff to `IFC0.lean` is (insert the two new declarations immediately
+before `LadderField`, then make the two shown replacements):
+
+```diff
++def CanonicalLadderLiveAt {O : Type} [CommRing O] {K : Type} [Field K]
++    (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
++    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt]
++    (L : Type uL) [Field L] [Algebra Kt L]
++    (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
++    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n i : ℕ) : Prop :=
++  ∃ (_dom : IsDomain O) (_dvr : IsDiscreteValuationRing O)
++    (E : Type) (fE : Field E) (core : Tower.ArisingCore (O := O) Kt L n)
++    (A : Tower.ChainRealization (O := O) (π := core.π) (F := core.F)
++      (H₀ := core.H₀) (hpin := core.hpin) (fieldE := fE) core.T Kt E L)
++    (X : Tower.RealizedInput core A)
++    (eK : core.T.fld core.i ≃+* K) (eG : G ≃* Tower.GaugeLattice.{uG} core.r),
++    Tower.SlotViewEq X eK C ∧
++    (∃ hC : C = X.stageCarrierTransport eK,
++      Tower.BlockViewEq X eK (hC ▸ B)) ∧
++    Tower.GaugeFamilyViewEq X (N.transport eG)
++      (fun j => (v j).comp eG.symm.toMonoidHom)
++      (fun j => (ρ j).comp (Tower.C130s18.kerComapAlong eG (v j))) q ∧
++    Tower.GaugeLive core.r i
++
++structure LadderSupplyLive {O : Type} [CommRing O] {K : Type} [Field K]
++    (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
++    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt]
++    (L : Type uL) [Field L] [Algebra Kt L]
++    (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
++    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n : ℕ) : Prop where
++  package : Ladder.HE7APackage.{0, 0, uW} C B
++  lb1 : Ladder.LB1Carrier.{0, 0, uW} C B
++  mp1 : Ladder.MP1Carrier.{0, 0, uW} C B
++  vartheta : ∀ i ≥ 3, CanonicalLadderLiveAt C B G Kt L N v ρ q n i →
++    Ladder.VarthetaRes G Kt L N v ρ q i
+
+ def LadderField (n : ℕ) : Prop :=
+   ∀ (O : Type) [CommRing O] (K : Type) [Field K]
+     (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt]
+     (L : Type uL) [Field L] [Algebra Kt L]
+     (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
+     CanonicalLadderConfig C B G Kt L N v ρ q n →
+-    Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q
++    LadderSupplyLive.{uW, uG, uKt, uL} C B G Kt L N v ρ q n
+
+ def LadderVarthetaSupplier (n : ℕ) : Prop :=
+   ∀ (O : Type) [CommRing O] (K : Type) [Field K]
+     (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt]
+     (L : Type uL) [Field L] [Algebra Kt L]
+     (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
+     CanonicalLadderConfig C B G Kt L N v ρ q n →
+-    ∀ i ≥ 3, Ladder.VarthetaRes G Kt L N v ρ q i
++    ∀ i ≥ 3, CanonicalLadderLiveAt C B G Kt L N v ρ q n i →
++      Ladder.VarthetaRes G Kt L N v ρ q i
+```
+
+There are no hidden hypotheses. With these two replacements, the body of
+`ladderField_iff_suppliers` remains the same projection/constructor proof and is machine
+checked by `ladderFieldLive_iff_suppliers`; reverse assembly is checked by
+`ladderFieldLive_of_suppliers`.
+
+This is an owner proposal, not an enacted signature change.  Since current
+`CapstoneHypotheses.ladder` returns E.24's unbounded `LadderSupply`, owner acceptance must also
+rebind that field (or move `LadderSupplyLive` into E.24).  An IFC0-only edit that pretends the
+old capstone field is definitionally unchanged would be false.
 
 ## 1. Exact demand and landed base
 
@@ -149,6 +246,13 @@ realization-linked interface by owner amendment.
 
 **Size.** Blocked. If retained and true, 700–1,500 lines, 1–3 weeks; final wrapper 30–45 min.
 
+**[VAUD] Audit result.** The landed S2 degree-four guard is a real antecedent at the stated
+threshold/completeness context, but `lb1_inhabited_socket_tooth` confirms that the next binder
+is still an arbitrary, independently supplied `I`. The guard contains no equality, transport,
+or provenance field connecting that `I` to its `RealizedInput`. Therefore LB1 has **not passed
+validity**. The abstract `C₁/B₁/I₁` counterexample still does not rebase itself onto S2, so
+VAUD records **not validated**, not a false claim at an arising pair. LS-G0 remains a stop.
+
 ### 2.3 `LadderMP1Supplier`
 
 **Demand.** For every nonzero `Λ` of degree `< C.D` and every `B' : BlockData C` with
@@ -170,6 +274,16 @@ amend the carrier; adding irreducibility to the guard would swallow the conclusi
 
 **Size.** Blocked. If true, 500–1,200 lines, 1–2 weeks including cite landing and interface
 reuse; final record/supplier assembly 45–60 min each.
+
+**[VAUD] Audit result.** The cite check fails at the exact hypotheses. The machine tooth
+`mp1_inhabited_socket_forces_irreducible` exposes that the current carrier requires `hirr`
+after only recentering/divisibility data. [GN15] Thm 2.3 requires the MacLane/key-polynomial
+and residual-multiplicity-one package; GMN Thm 2.11 constructs a representative of a type
+from prescribed residual data. Thus the proposed cite cannot fill `hirr` for the arbitrary
+current `B'`: the carrier has no premise identifying `B'.Φ` with the cited representative. Repair choices
+are to quantify only cited key-polynomial lifts, or add a non-conclusion-shaped
+minimality/key-polynomial premise to the **MP1 trigger** after owner review. It may not be
+added to `CanonicalLadderConfig`.
 
 ### 2.4 `LadderVarthetaSupplier`
 
@@ -198,6 +312,14 @@ off-range values. The latter must be a producer definition, not an added residue
 
 **Size.** Research-blocked. Negative probe 2–5 days after a concrete socket. Repaired live
 scope plausibly 300–800 lines; current unbounded form has no defensible proof estimate.
+
+**[VAUD] Audit result.** The guard-derivability question is now **REFUTED**. The probe proves
+dependent off-range replacement for the complete `(v,ρ,q)` site, not merely for `q`, and a
+separate concrete false HVR. At the landed S2 depth, `i=3` is already off range. The corrected
+owner proposal is `LadderVarthetaSupplierLive`: it adds `CanonicalLadderLiveAt … i`, which
+re-exhibits the same full realization and `GaugeLive core.r i`, as a premise to the conclusion.
+The corresponding repaired record and four-way join elaborate in the probe. This is a scope
+repair, not a vartheta proof.
 
 ## 3. Dependency DAG
 
@@ -257,9 +379,9 @@ create proposition-valued placeholders and is forbidden.
 
 | ID | Task | Status / size |
 |---|---|---|
-| LS-G0 | LB1 arbitrary-`I` negative audit at inhabited arising `(C,B)` | **NEW math/interface audit**, 2–5 days |
-| LS-G1 | MP1 arbitrary-`B'` audit against cite hypotheses | **NEW math/cite audit**, 2–5 days |
-| LS-G2 | Off-range family replacement and false-HVR tooth | **NEW construction**, 2–5 days after N2 |
+| LS-G0 | LB1 arbitrary-`I` negative audit at inhabited arising `(C,B)` | **[VAUD] PARTIAL / NOT VALIDATED:** inhabited-socket universal bite proved; hostile arising `I` still absent |
+| LS-G1 | MP1 arbitrary-`B'` audit against cite hypotheses | **[VAUD] FAILED:** cited results do not supply `hirr` at current hypotheses |
+| LS-G2 | Off-range family replacement and false-HVR tooth | **[VAUD] COMPLETE / REFUTED:** dependent replacement + false HVR; live-range owner amendment proposed |
 | LS-H10 | C exact frontier/slot/residual prerequisites | **OPEN F1/F2**, at least 1,000–2,000 lines |
 | LS-H11 | HE7 refined-key joint induction | **NEW proof/formalization**, 2–4 days after APIs |
 | LS-H12 | `RealizedInput → RungInterface`, pure/separable | **NEW math**, 250–450 lines |
@@ -289,6 +411,16 @@ The least-duplication route reuses the S2 depth-one base:
 - the unconditional depth-one FGMN calculus (`leanfinal/Uniformity/ChapC/C130sg.lean:488-499`);
 - but a degree-two occurrence, depth-one `ChainRealization`, and `RealizedInput` are new. The
   current S2 occurrence selects stage 2 and degree 4 (`leanfinal/Uniformity/ChapC/C130s17.lean:488-590`).
+
+**[VAUD] Occurrence audit.** No closed degree-two occurrence is constructible by composition
+of landed declarations. `s2DepthOne` + `s2DepthOneKeyChain` + `s2AnchorCalculus` do not form a
+`ChainRealization`: the precise first missing carrier is
+`SplitNodePointSource (s2DepthOne h2 hq) E receiver (s2DepthOneKeyChain h2 hq)` (including its
+legal point, stage tables, threshold/window and split residue reads). Without it there is no
+depth-one `ChainRealization`; without that, an `ArisingCore … 2` cannot be paired with a
+`RealizedInput` and sent through `realizedInput_ladderConfigData`. The landed
+`s2Frontier` cannot be downcast: it is a depth/stage-two source and its occurrence has
+`stageDeg = 4`, `μ = 1`, hence input degree `4` by `degree_block`.
 
 | Tooth | 30–60 minute grain | Reuse / new |
 |---|---|---|
@@ -359,3 +491,17 @@ lake env lean scratch/LDEC_probe.lean
 
 It exits 0. The named probe declarations print only
 `[propext, Classical.choice, Quot.sound]`; there is no `sorry` or new axiom declaration.
+
+**[VAUD]** `leanfinal/scratch/VAUD_probe.lean` now additionally checks the conditional landed
+S2 degree-four socket, the LB1 arbitrary-interface bite, the MP1 irreducibility projection at
+its exact trigger hypotheses, a concrete false HVR, dependent off-range `(v,ρ,q)` replacement,
+the repaired live-range supplier/field equivalence and assembly, and the landed S2 degree
+mismatch. Verification:
+
+```bash
+cd leanfinal
+lake env lean scratch/VAUD_probe.lean
+```
+
+It exits 0. The printed audited declarations use only
+`[propext, Classical.choice, Quot.sound]`.
