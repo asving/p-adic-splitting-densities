@@ -27,6 +27,8 @@ open Uniformity.Density.Tower.C132rp0 Uniformity.Density.Tower.C80
 open Uniformity.Density.Tower.C130rp0 Uniformity.Density.Tower.C130rp1
 open Uniformity.Density.Tower.C130rp4 Uniformity.Density.Tower.C130rp8
 open Uniformity.Density.Tower.C132rp1 Uniformity.Density.Tower.C132rp2
+open Uniformity.Density.Tower.C132rp3 Uniformity.Density.Tower.C132rp6
+open Uniformity.Density.Tower.C132rp8 Uniformity.Density.Tower.C130kp0
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [Finite (ResidueField O)] (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
@@ -232,6 +234,138 @@ theorem s2GradedRes_corr : s2GradedRes h2 hq 21 (corr h2 hq) = 1 := by
     rw [Polynomial.natDegree_C]
     norm_num
   rw [gradedRes_C_two_pow_eq_C h2 hq, s2Fld₂_eq_one_of_ne_zero h2 hq hc0]
+  rfl
+
+/-! ## STAGE C, part 2 — the μ₃ residual of `g₈` is `X + 1`, and the hex package -/
+
+/-- `Φ₂` sits at exact μ₃ grade `21`. -/
+theorem Φ₂_exactGrade : S2Mu3ExactGrade h2 hq 21 (s2DepthTwoKeyAt h2 hq 2 : Polynomial O) := by
+  show s2Hgt₃ h2 hq _ = _
+  rw [s2Hgt₃_Φ₂ h2 hq]
+  norm_num
+
+/-- `−corr` sits at exact μ₃ grade `42`. -/
+theorem neg_corr_exactGrade : S2Mu3ExactGrade h2 hq 42 (-(corr h2 hq)) := by
+  show s2Hgt₃ h2 hq _ = _
+  rw [s2Hgt₃_neg h2 hq, s2Hgt₃_corr h2 hq]
+  norm_num
+
+/-- the μ₃ graded residual of the carried key is `1`, polynomial form (eq (11)'s read,
+assembled from RP-1's coefficient tooth). -/
+theorem mu3GradedRes_Φ₂ :
+    s2Mu3GradedRes h2 hq 21 (s2DepthTwoKeyAt h2 hq 2 : Polynomial O) = 1 := by
+  have hmon : (s2DepthTwoKeyAt h2 hq 2 : Polynomial O).Monic := s2Φ₂_monic h2 hq
+  refine Polynomial.ext fun t => ?_
+  rw [s2Mu3GradedRes_coeff h2 hq]
+  match t with
+  | 0 => rw [tooth_mu3Coeff_Φ₂ h2 hq, Polynomial.coeff_one]; norm_num
+  | 1 =>
+    rw [Polynomial.coeff_one, if_neg (by norm_num)]
+    refine s2Mu3Coeff_eq_zero_of_dv2Pin_top h2 hq ?_
+    rw [dv2Pin, show 21 % 2 + 2 * 1 = 3 from by norm_num]
+    have hdev : dev (s2DepthTwoKeyAt h2 hq 2) (s2DepthTwoKeyAt h2 hq 2 : Polynomial O) 3
+        = 0 := by
+      refine dev_eq_zero_of_lt hmon ?_ _ 3 ?_
+      · rw [s2Φ₂_natDegree h2 hq]; norm_num
+      · rw [s2Φ₂_natDegree h2 hq]; norm_num
+    rw [hdev, dv2Hgt_eq h2 hq, dvSupp_zero_eq_top _ _ (by norm_num)]
+  | (n+2) =>
+    rw [Polynomial.coeff_one, if_neg (by omega)]
+    refine s2Mu3Coeff_eq_zero_of_natDegree_lt h2 hq ?_
+    rw [s2Φ₂_natDegree h2 hq]
+    omega
+
+/-- the μ₃ graded residual of `Φ₂²` at grade `42` is `X` (the odd×odd carry). -/
+theorem mu3GradedRes_Φ₂_sq :
+    s2Mu3GradedRes h2 hq 42 ((s2DepthTwoKeyAt h2 hq 2 : Polynomial O) ^ 2)
+      = Polynomial.X := by
+  have h := (s2Mu3_graded_mul_twisted h2 hq 21 21
+    (s2DepthTwoKeyAt h2 hq 2 : Polynomial O) (s2DepthTwoKeyAt h2 hq 2 : Polynomial O)
+    (Φ₂_exactGrade h2 hq) (Φ₂_exactGrade h2 hq)).2
+  rw [show (21 : ℕ) + 21 = 42 from by norm_num, ← pow_two] at h
+  rw [h, mu3GradedRes_Φ₂ h2 hq]
+  norm_num
+
+/-- the μ₂ pin of `−corr`'s zero digit is `21`. -/
+theorem neg_corr_pin :
+    dv2Pin ((s2Tower h2 hq).levelDatum h2) (s2DepthTwoKeyAt h2 hq 2)
+      (-(corr h2 hq)) 0 = ((21 : ℕ) : ℕ∞) := by
+  have hmon : (s2DepthTwoKeyAt h2 hq 2 : Polynomial O).Monic := s2Φ₂_monic h2 hq
+  rw [dv2Pin, dev_neg hmon, corr_dev_zero h2 hq, dv2Hgt_eq h2 hq, dvSupp_neg,
+    dvSupp_corr h2 hq]
+
+/-- the μ₃ graded residual of `−corr` at grade `42` is `1` (the correction's read
+survives with value `1`: the minus dies in the two-element field). -/
+theorem mu3GradedRes_neg_corr :
+    s2Mu3GradedRes h2 hq 42 (-(corr h2 hq)) = 1 := by
+  have hmon : (s2DepthTwoKeyAt h2 hq 2 : Polynomial O).Monic := s2Φ₂_monic h2 hq
+  refine Polynomial.ext fun t => ?_
+  rw [s2Mu3GradedRes_coeff h2 hq]
+  match t with
+  | 0 =>
+    have hgate : S2Mu3SlotOnGrade h2 hq 42 (-(corr h2 hq)) (42 % 2 + 2 * 0) := by
+      refine (s2Mu3SlotOnGrade_iff h2 hq).mpr ⟨21, ?_, by norm_num⟩
+      rw [show 42 % 2 + 2 * 0 = 0 from by norm_num]
+      exact neg_corr_pin h2 hq
+    have hpin : dv2Pin ((s2Tower h2 hq).levelDatum h2) (s2DepthTwoKeyAt h2 hq 2)
+        (-(corr h2 hq)) (42 % 2 + 2 * 0) = ((21 : ℕ) : ℕ∞) := by
+      rw [show 42 % 2 + 2 * 0 = 0 from by norm_num]
+      exact neg_corr_pin h2 hq
+    rw [s2Mu3Coeff_eq_eval h2 hq hgate hpin]
+    rw [show 42 % 2 + 2 * 0 = 0 from by norm_num, dev_neg hmon, corr_dev_zero h2 hq]
+    have hle : ((21 : ℕ) : ℕ∞) ≤ dvSupp (s2Frame h2 hq) (corr h2 hq) 5 2 := by
+      rw [dvSupp_corr h2 hq]
+    rw [s2GradedRes_neg_of_le h2 hq hle, s2GradedRes_corr h2 hq]
+    rw [Polynomial.coeff_one, if_pos rfl]
+    simp only [Polynomial.eval_neg, Polynomial.eval_one]
+    exact (s2Fld₂_eq_one_of_ne_zero h2 hq (neg_ne_zero.mpr one_ne_zero))
+  | 1 =>
+    rw [Polynomial.coeff_one, if_neg (by norm_num)]
+    refine s2Mu3Coeff_eq_zero_of_dv2Pin_top h2 hq ?_
+    rw [dv2Pin, show 42 % 2 + 2 * 1 = 2 from by norm_num, dev_neg hmon,
+      corr_dev_succ h2 hq 2 (by norm_num), neg_zero, dv2Hgt_eq h2 hq,
+      dvSupp_zero_eq_top _ _ (by norm_num)]
+  | (n+2) =>
+    rw [Polynomial.coeff_one, if_neg (by omega)]
+    refine s2Mu3Coeff_eq_zero_of_natDegree_lt h2 hq ?_
+    rw [Polynomial.natDegree_neg]
+    have hd : (corr h2 hq).natDegree < 4 := by
+      calc (corr h2 hq).natDegree
+          ≤ (Polynomial.C ((2:O)^4)).natDegree
+              + (((s2Frame h2 hq).key : Polynomial O)).natDegree := by
+            rw [corr_eq]; exact Polynomial.natDegree_mul_le
+        _ < 4 := by
+            rw [Polynomial.natDegree_C]
+            have : ((s2Frame h2 hq).key : Polynomial O).natDegree = 2 := by
+              rw [C35b.key_eq h2 hq]; exact s2Key_natDegree
+            omega
+    omega
+
+/-- ★ **the μ₃ graded residual of `g₈` at grade `42` is `X + 1`**. -/
+theorem mu3GradedRes_g8 :
+    s2Mu3GradedRes h2 hq 42 (g8 h2 hq) = Polynomial.X + 1 := by
+  have hsub : g8 h2 hq = (s2DepthTwoKeyAt h2 hq 2 : Polynomial O) ^ 2 + -(corr h2 hq) := by
+    rw [g8_eq]; ring
+  have hpow : S2Mu3ExactGrade h2 hq 42
+      ((s2DepthTwoKeyAt h2 hq 2 : Polynomial O) ^ 2) := by
+    show s2Hgt₃ h2 hq _ = _
+    rw [pow_two, s2Hgt₃_mul_all h2 hq, s2Hgt₃_Φ₂ h2 hq]
+    norm_num
+  have hg8 : S2Mu3ExactGrade h2 hq 42 (g8 h2 hq) := g8_exactGrade h2 hq
+  rw [hsub]
+  rw [s2Mu3GradedRes_add h2 hq hpow (neg_corr_exactGrade h2 hq) (by rw [← hsub]; exact hg8)]
+  rw [mu3GradedRes_Φ₂_sq h2 hq, mu3GradedRes_neg_corr h2 hq]
+
+/-- ★★ **the normalized μ₃ residual of `g₈` is `X + 1`** — the non-recipe evaluation the
+whole node exists for. -/
+theorem s2Mu3NormRes_g8 :
+    s2Mu3NormRes h2 hq (g8 h2 hq) = Polynomial.X + 1 := by
+  rw [s2Mu3NormRes_of_exact h2 hq (g8_exactGrade h2 hq), mu3GradedRes_g8 h2 hq]
+  have htr : (Polynomial.X + 1 : Polynomial ((s2DepthTwo h2 hq).fld 2)).natTrailingDegree
+      = 0 := by
+    refine Polynomial.natTrailingDegree_eq_zero.mpr (Or.inr ?_)
+    simp
+  rw [htr]
   rfl
 
 end Uniformity.Density.Tower.C132rp10b
