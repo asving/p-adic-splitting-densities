@@ -29,6 +29,8 @@ open Uniformity.Density.Tower.C130rp4 Uniformity.Density.Tower.C130rp8
 open Uniformity.Density.Tower.C132rp1 Uniformity.Density.Tower.C132rp2
 open Uniformity.Density.Tower.C132rp3 Uniformity.Density.Tower.C132rp6
 open Uniformity.Density.Tower.C132rp8 Uniformity.Density.Tower.C130kp0
+open Uniformity.Density.Tower.C132rp10 Uniformity.Density.Tower.C132fd0
+open Uniformity.Density.Tower.C132sg Uniformity.Density.Tower.C132kp0
 
 variable {O : Type} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
   [Finite (ResidueField O)] (h2 : Irreducible (2 : O)) (hq : residueCard O = 2)
@@ -368,11 +370,51 @@ theorem s2Mu3NormRes_g8 :
   rw [htr]
   rfl
 
+/-! ## The hex package — `normalized_exists` discharged -/
+
+/-- ★★★ **M3-RP10b**: the `hex` hypothesis of `C132fd0.s2SourceLawsTwo_of`, discharged —
+every admissible degree-one residual is `X + 1` (RP-10's two-element collapse), and `g₈`
+is its monic degree-8 witness. -/
+theorem s2Mu3_hex :
+    ∀ ψ : Polynomial ((s2DepthTwo h2 hq).fld 2),
+      ψ.Monic → Irreducible ψ → ψ.natDegree = 1 → ψ.coeff 0 ≠ 0 →
+        ∃ g : Polynomial O, g.Monic ∧
+          g.natDegree = 2 * 1 * (((s2DepthTwoKeyChain h2 hq).keyAt 2).natDegree) ∧
+          s2Mu3NormRes h2 hq g = ψ := by
+  intro ψ hm hirr hd hc
+  have hψ : ψ = Polynomial.X + 1 :=
+    s2Mu3_unique_admissible_linear h2 hq ψ hm hd hc
+  refine ⟨g8 h2 hq, s2Mu3_gEight_monic h2 hq, ?_, ?_⟩
+  · have hK : ((s2DepthTwoKeyChain h2 hq).keyAt 2 : Polynomial O)
+        = (s2DepthTwoKeyAt h2 hq 2 : Polynomial O) := rfl
+    rw [hK, s2Φ₂_natDegree h2 hq]
+    have h8 := s2Mu3_gEight_natDegree h2 hq
+    show (g8 h2 hq).natDegree = 2 * 1 * 4
+    rw [show (2 : ℕ) * 1 * 4 = 8 from by norm_num]
+    exact h8
+  · rw [hψ]
+    exact s2Mu3NormRes_g8 h2 hq
+
+/-- ★★★ the μ₃ depth-2 calculus, now conditional on ONLY the converse (M3-KP6b). -/
+theorem s2Mu3_calculus_nonempty_of_conv
+    (hconv : ∀ g h : Polynomial O,
+      S2Mu3KeyPoly h2 hq g → S2Mu3KeyPoly h2 hq h →
+        s2Mu3NormRes h2 hq g = s2Mu3NormRes h2 hq h → S2Mu3InitialEquiv h2 hq g h) :
+    Nonempty (FGMNCalculus (s2DepthTwo h2 hq) 2 1 21) :=
+  s2Mu3_calculus_nonempty_of h2 hq (s2Mu3_hex h2 hq) hconv
+
 end Uniformity.Density.Tower.C132rp10b
 
 section AxCheck
 
 #print axioms Uniformity.Density.Tower.C132rp10b.s2Hgt₂_corr
 #print axioms Uniformity.Density.Tower.C132rp10b.g8_dev_zero
+#print axioms Uniformity.Density.Tower.C132rp10b.s2Hgt₃_g8
+#print axioms Uniformity.Density.Tower.C132rp10b.g8_exactGrade
+#print axioms Uniformity.Density.Tower.C132rp10b.s2GradedRes_corr
+#print axioms Uniformity.Density.Tower.C132rp10b.mu3GradedRes_g8
+#print axioms Uniformity.Density.Tower.C132rp10b.s2Mu3NormRes_g8
+#print axioms Uniformity.Density.Tower.C132rp10b.s2Mu3_hex
+#print axioms Uniformity.Density.Tower.C132rp10b.s2Mu3_calculus_nonempty_of_conv
 
 end AxCheck
