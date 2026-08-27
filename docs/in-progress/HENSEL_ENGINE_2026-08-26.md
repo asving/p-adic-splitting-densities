@@ -34,12 +34,64 @@ Theorem M, and every MH node depending on M is **BLOCKED pending a correctly sta
 proved generic twist-read product law**.  The numerical certificate in §10 cannot replace
 that universal proof.
 
+## [MHFIX 2026-08-27] The corrected root: carry formula found, generic law proved (math level)
+
+The MHDISP demand ("a generic carry formula / direct `twistRead` product theorem") is
+discharged in this amendment.  The generic carry is the **twist-exponent cocycle defect**
+
+> `δ(k, k′) := twistExp(k + k′) − twistExp(k) − twistExp(k′) ∈ {0, 1}`,  with
+> `e₁ · δ(k, k′) = slotIdx(k) + slotIdx(k′) − slotIdx(k + k′)`  (the slot-index carry bit),
+
+and the corrected M1 (now **M1′**, §3.1) reads: for digits `a, b` at height floors `ka, kb`,
+
+> `slotRes (ka+kb) ((a·b) %ₘ key) = η^{δ(ka,kb)} · slotRes ka a · slotRes kb b`, equivalently
+> **`twistRead (ka+kb) ((a·b) %ₘ key) = twistRead ka a · twistRead kb b`** — the C.22
+> inverse twist trivializes the carry cocycle EXACTLY, so Theorem M clause 3 holds with
+> **`τ = 1`**.
+
+Status ledger for this amendment (honest grades, per item):
+
+* **Lean-PROVED, generic, Lean-core footprint** (`leanfinal/scratch/MHFIX_probe.lean`,
+  exit 0, zero `sorry`/`axiom`): the TW-δ cocycle law (`twistExp_add_carry`, from C.16's
+  `slotIdx_spec`/`twistExp_spec` alone) and the bridge *carry form ⟹ twist form*
+  (`twistRead_mul_of_slotRes_carry`); the corrected statement shapes all elaborate
+  (`M1TwistProductLawStatement`, `M1SlotCarryLawStatement`, `M1DigitFaithfulStatement`,
+  `MixedResidualLawTauOneStatement` + proved refinement to the ∃-τ shape); executable
+  δ = 1 AND δ = 0 carry rows at the `F₉` gate; numeral-mirror δ-grids at `(e₁,h) =
+  (2,3), (3,2), (5,3)`.
+* **MATH-PROVED (full rigorous proof, §3.1)**: M1′ in all three clauses (twist product,
+  slot carry, digit faithfulness — the last subsumes old M1(1) and RETIRES the M1a
+  dependency).  The proof runs through the associated graded ring
+  `gr_w(O[x]) ≅ k_r[Π, X̄]` of the stage filtration and a single explicit reading
+  homomorphism `ρ̃ : k_r[Π, X̄] → K` that kills the key's symbol; it consumes only landed
+  Lean facts, C.16 specs, B.29's `resPoly` convention, frame fields, and standard
+  commutative algebra (associated graded of a monomial valuation).  NOT yet transcribed:
+  MH.1 is now an OPEN transcription node with a pinned statement, no longer
+  BLOCKED-CRITICAL.
+* **NUMERICALLY CERTIFIED** (`verification/mhfix_cert.py`, run 2026-08-27: **473,961
+  checks, 0 FAILS**): the δ-law on every coprime `(e₁ ≤ 8, h ≤ 12)`, `k, k′ ≤ 60`; the
+  carry/twist/faithfulness laws at SEVEN frames (`e₁ ∈ {1,2,3,4}`, `f₁ ∈ {1,2,3}`,
+  carry live at every `e₁ > 1` frame); and the full `τ = 1` mixed residual law
+  `R(gz) = R(g)·R(z)` on 250 mixed pairs at the live-carry `(2,2,3)/F₉` frame with
+  strict floor `u/ℓ = 25/2` — the twist-nontrivial genre the 2026-08-26 certificate
+  (e₁ = 1) never exercised.
+* **Unchanged and still OPEN**: MH.8's bounded-window limit conversions, X1 (OPEN-4),
+  and the Lean transcription of M1′/M clauses 1–3.  The independent S2 shadow of the
+  carry law is landed (`C130rp6.s2_graded_mul_twisted`, carry twist `X^{(β%2)(β′%2)}` =
+  this δ at `e₁ = 2`), which is a second, independently landed instance of the formula.
+
 **Three headline verdicts, up front.**
 
 1. **[MHDISP 2026-08-27] The engine is designed but its mathematics is NOT proved below.**
    M1(2) is false as stated, and OPEN-1, OPEN-3, OPEN-4, plus the limit conversion are
    load-bearing for the engine/`blockFrontier_of_context` route (though the already-landed
    conditional C.35 `_of_frontier` wrappers remain valid).
+   **[MHFIX 2026-08-27] amendment:** the ROOT is repaired — M1 is restated with the
+   explicit stage-letter carry (M1′, §3.1) and PROVED at math level with a numeric
+   certificate and a partially-Lean-proved core (TW-δ + the carry⟹twist bridge are
+   Lean-core theorems in `MHFIX_probe.lean`); OPEN-1 (M1a) is RETIRED from the critical
+   path by the new proof mechanism.  OPEN-4 (X1) and the MH.8 conversions remain open,
+   and M1′/M's Lean transcription is the new MH.1.
    The root object is NOT a rewriting system and NOT a new weight: it is the landed
    `dvSupp`/`dvResPoly` calculus upgraded from the C130nv2 support half to a **general
    mixed residual product law** (§3), from which existence is B.41's Newton pattern and
@@ -148,13 +200,16 @@ for nonzero inputs — for non-monic inputs nonzero-ness still gives a nonzero d
 2. `dvSideMin(gz) = dvSideMin(g) + dvSideMin(z)` and
    `dvSideMax(gz) = dvSideMax(g) + dvSideMax(z)`; hence
    `dvSideDeg(gz) = dvSideDeg(g) + dvSideDeg(z)`;
-3. `R(gz) = τ · R(g) · R(z)` in `K[Z]`, where `τ ∈ K^×` is the **explicit twist
-   cocycle unit** `τ = stageLetter^(twistExp-defect at the three pins) ·
-   (slotRes composition unit)` — a unit depending only on the three height pins and the
-   frame, NOT on `g, z` beyond their pins.  Under the pin-compatible normalization at
-   which the owner adjudicated `fgmn_dv_exact_mul` (C66b's dictionary: "the twist is a
-   fixed unit rescaling per slot, under which multiplicativity is preserved slotwise"),
-   `τ = 1` on that cite's fence; the engine only ever needs `τ ∈ K^×` explicit.
+3. **[MHFIX 2026-08-27: corrected]** `R(gz) = R(g) · R(z)` in `K[Z]` — **`τ = 1`
+   identically.**  The per-slot carry is the stage-letter power
+   `η^{δ(k,k′)}`, `δ(k,k′) = twistExp(k+k′) − twistExp(k) − twistExp(k′) ∈ {0,1}` (the
+   slot-index carry bit, `e₁δ = i(k)+i(k′)−i(k+k′)`); C.25's reads are ALREADY the
+   C.22 inverse-twisted reads, and the inverse twist trivializes the carry cocycle
+   exactly (probe theorem `twistRead_mul_of_slotRes_carry`).  The original ∃-τ form is
+   the weakening by `τ := 1` (probe theorem `existsUnit_of_tauOne`); the
+   owner-adjudicated `fgmn_dv_exact_mul` dictionary ("a fixed unit rescaling per slot,
+   under which multiplicativity is preserved slotwise") is confirmed with the unit
+   pinned to `1` in this normalization.
 
 This is FGMN Thm 2.8 + Cor 4.12(3) at the corpus carrier, in full mixed generality —
 strictly MORE than the declared cite (which demands both factors pure with `D′ ∣ deg`).
@@ -162,6 +217,10 @@ strictly MORE than the declared cite (which demands both factors pure with `D′
 contains the false M1(2).  A corrected generic twist-read product theorem may recover the
 target, but that theorem is presently OPEN-CRITICAL.  Only after it is proved could M make
 the cite's content a theorem; see §9.2.
+**[MHFIX 2026-08-27]:** the corrected root M1′ is now stated and MATH-PROVED in §3.1
+(Lean transcription = the new MH.1); clauses 1–3 of M are math-proved conditional only on
+that transcription, with the assembly steps (§3.2–§3.3) running on landed C130rp2/rp4
+tools.  "Math-proved" is not "landed": no Lean consumer may cite M until MH.1–MH.3 land.
 
 ### Theorem A (existence — the dv-graded one-slope Hensel lift; the F1.H1 core)
 
@@ -308,6 +367,133 @@ proof that C.22's `η^{-twistExp}` normalization cancels it.  The executable gat
 omission.  M1(1) also remains unproved because its M1a stability step has not been promoted
 to a public theorem.  MH.1 must be restated and proved before any consumer can fire.
 
+### 3.1′ [MHFIX 2026-08-27] M1′ — the corrected slot-carry/twist-read product law (PROOF)
+
+The section above is retained as the MHDISP record.  This section replaces it as the
+engine's root.  Throughout: `k_r := resField X` (a field, `instFieldResField isKey_X`),
+`ψ := F.frameRes H₀ hpin` (monic-normalizable irreducible of degree `f₁` over `k_r`,
+`hresirr`), `K := F.stageField H₀ hpin = AdjoinRoot ψ`, `η := F.stageLetter H₀ hpin =
+AdjoinRoot.root ψ ≠ 0` (C.19), `i(k) := F.slotIdx k`, `i₀ := i(1)`, `q(k) := F.twistExp k`,
+`w := F.stageHeight` with the C.02 unfold `w(Σ aₙxⁿ) = minₙ (e₁·v(aₙ) + h·n)`
+(`stageHeight_eq_inf`; `v` = the π-adic valuation of `O`).  A **digit** is a polynomial of
+degree `< D′ = e₁f₁`.
+
+**Lemma TW-δ (the carry exponent; Lean-PROVED, `MHFIX_probe.twistExp_add_carry`).**
+For all `k, k′` there is `δ = δ(k,k′) ∈ {0,1}` with
+`q(k) + q(k′) + δ = q(k+k′)` and `i(k) + i(k′) = i(k+k′) + e₁·δ`.
+*Proof (as transcribed).*  C.16 gives `i₀·k = i(k) + e₁·q(k)` (`twistExp_spec`) at `k`,
+`k′`, `k+k′`, and `i(·) < e₁` (`slotIdx_spec`).  Adding the first two and subtracting the
+third: `i(k)+i(k′)−i(k+k′) = e₁·(q(k+k′)−q(k)−q(k′))` over ℤ; the left side lies in
+`(−e₁, 2e₁)`, so the integer `δ := q(k+k′)−q(k)−q(k′)` lies in `{0,1}`.  ∎
+
+**Lemma M1′ (the corrected root).**  `hπ : Irreducible π`; frame `F` with `0 < F.h`; pin
+`(H₀, hpin)`.  Let `a, b` be digits and `ka, kb : ℕ` height FLOORS:
+`(ka : ℕ∞) ≤ w(a)`, `(kb : ℕ∞) ≤ w(b)`.  Write `E := (a·b) %ₘ F.key`.  Then:
+
+1. **(twist product)**  `twistRead (ka+kb) E = twistRead ka a · twistRead kb b`;
+2. **(slot carry)**  `slotRes (ka+kb) E = η^{δ(ka,kb)} · slotRes ka a · slotRes kb b`;
+3. **(faithfulness/exactness)**  if moreover `w(a) = ka` and `w(b) = kb` exactly (finite),
+   then `twistRead ka a ≠ 0`, `twistRead kb b ≠ 0`, hence `twistRead (ka+kb) E ≠ 0` and
+   `w(E) = ka + kb` exactly — old M1(1), now WITHOUT the M1a stability step.
+
+No nonzero-ness, monicity, purity or side hypotheses; the zero cases hold with reads `0`
+(`slotRes_zero`/`twistRead_zero`, C130rp2).  Given TW-δ and `η ≠ 0`, (1) ⟺ (2) is a unit
+juggle (the ⟸ direction is Lean-PROVED: `MHFIX_probe.twistRead_mul_of_slotRes_carry`).
+
+*Proof.*
+
+**(Step 1: the graded model.)**  For `k ∈ ℕ` put `F_k := {P : w(P) ≥ k}` ⊇
+`F_{k+} := {P : w(P) > k}` (O-submodules of `O[x]`, by the coefficientwise ultrametric),
+and `gr := ⊕_k gr_k`, `gr_k := F_k/F_{k+}`, with multiplication induced by
+`F_k · F_{k′} ⊆ F_{k+k′}` (coefficientwise superadditivity of `e₁v + hn` under
+convolution).  Write `σ_k : F_k → gr_k` for the quotient map.  Coordinates: since
+`e₁·v(aₙ) + h·n = k` forces `n·h ≡ k (mod e₁)`, i.e. `n ≡ i(k) (mod e₁)` (C.16
+uniqueness, `hcop`), the `k_r`-linear map
+
+> `gr_k ∋ σ_k(P) ↦ Σ_n res(P_n / π^{(k−hn)/e₁}) · Π^{(k−hn)/e₁} X̄^n`,
+
+summing over `n` with `hn ≤ k`, `e₁ ∣ k−hn`, identifies `gr` with the weighted polynomial
+ring `k_r[Π, X̄]` (`Π` = the symbol of `π`, degree `e₁`; `X̄` = the symbol of `x`, degree
+`h`): it kills exactly `F_{k+}`, is onto the degree-`k` piece, and matches products of
+representatives monomial-by-monomial.  This is the standard associated graded of a
+monomial (Gauss-type) valuation over a DVR; the landed `stageHeight_mul` (C130nv2:203) is
+exactly the statement that this `gr` is a domain, and is consumed below as the Lean-side
+anchor rather than re-derived.
+
+**(Step 2: the reading homomorphism.)**  `e₁ ∣ i₀h − 1` (C.16 at `k = 1`).  Define the
+`k_r`-algebra homomorphism (into the field `K`, using that `η` is a unit; ℤ-powers)
+
+> `ρ̃ : k_r[Π, X̄] → K`,  `ρ̃(Π) := η^{−i₀}`,  `ρ̃(X̄) := η^{(1−i₀h)/e₁}`.
+
+*The exponent identity:* for a degree-`k` monomial `μ = Π^a X̄^b` (so `e₁a + hb = k`,
+`b = i(k) + e₁t`, `t ∈ ℕ` its slot), `ρ̃(μ) = η^{t − q(k)}`.  Indeed the exponent is
+`−i₀a + b(1−i₀h)/e₁ = (b − i₀(e₁a+hb))/e₁ = (b − i₀k)/e₁ = (b − i(k))/e₁ − (i₀k −
+i(k))/e₁ = t − q(k)`.  So on the degree-`k` piece, `ρ̃ = η^{−q(k)} · ρ_k` where
+`ρ_k(Σ_t c_t μ_t) := Σ_t c_t η^t` — and `ρ̃` is multiplicative ACROSS grades because it is
+a ring homomorphism; TW-δ is its shadow on exponents.
+
+**(Step 3: dictionary at digits.)**  For a digit `A` and any `k ≤ w(A)`:
+`slotRes k A = ρ_k(σ_k(A))` and `twistRead k A = ρ̃(σ_k(A))`.  *Proof:* C.21's window
+`T(k) = {t < f₁ : (i(k)+e₁t)h ≤ k}` enumerates exactly the degree-`k` lattice monomials
+with `X̄`-exponent `< D′` (for `i < e₁`: `i + e₁t < e₁f₁ ⟺ t < f₁`; `(i+e₁t)h ≤ k ⟺`
+the `Π`-exponent is `≥ 0`); `w(A) ≥ k` makes every consulted coefficient `π^m`-divisible
+(`m = (k − nh)/e₁`), so B.21's `digAt` reads the honest residue `res(A_n/π^m)` — the
+`σ_k`-coordinate — and coefficients strictly above the line read `0` on both sides.  ∎
+
+**(Step 4: faithfulness at digits.)**  If `A` is a digit with `w(A) = k` finite, then
+`twistRead k A ≠ 0`.  *Proof:* `σ_k(A) ≠ 0`, so in Step 3's sum some `c̄_t ≠ 0` with
+`t < f₁`; and `{1, η, …, η^{f₁−1}}` is a `k_r`-basis of `K = k_r[T]/(ψ)` (`deg ψ = f₁`,
+irreducible — the AdjoinRoot power basis).  So `Σ_{t<f₁} c̄_t η^t ≠ 0`, and `η^{−q(k)}` is
+a unit.  ∎  (This replaces §3.1(b)'s `ψ ∤ R₁`-argument AND the M1a route: combined with
+the landed read-vanishing `twistRead_eq_zero_of_lt` (C130rp2), a digit with `w(A) ≥ k` has
+`twistRead k A = 0 ⟺ w(A) > k`.)
+
+**(Step 5: the key's symbol dies.)**  `w(F.key) = D′h` (from `hpure` at `X` + `hmonic` +
+`hdeg`: the top coefficient gives `e₁·0 + hD′`, one-sidedness gives `≥` everywhere — MH.0a's
+content).  Its symbol is `σ_{D′h}(key) = Σ_{j=0}^{f₁} res(key_{e₁j}/π^{h(f₁−j)}) ·
+Π^{h(f₁−j)} X̄^{e₁j}` (slots `t = j`; non-attaining lattice slots contribute `0`).  By
+B.29's convention (`resPoly` coefficient `j` = the read of the abscissa-`(sideMin + e₁j)`
+coefficient at line height `H₀ − hj`; at `φ = X`: `sideMin = 0`, `H₀ = hf₁`, `dev_X` =
+the coefficient list) these residues are EXACTLY the coefficients `ψ_j` of `ψ` (top
+`ψ_{f₁} = res(1) = 1`).  Hence, `i(D′h) = 0` and
+
+> `ρ̃(σ_{D′h}(key)) = η^{−q(D′h)} · Σ_j ψ_j η^j = η^{−q(D′h)} · ψ(η) = 0`,
+
+since `η = AdjoinRoot.root ψ` (mathlib `AdjoinRoot.eval₂_root`/`aeval_root`).  ∎
+(Note: `slotRes` itself never sees the key's top slot `t = f₁ ∉ T` — the dictionary is
+digit-fenced — but `ρ̃` is defined on all of `gr`; this is precisely the leak M1(2)'s
+"reduction mod ψ" hand-wave papered over.)
+
+**(Step 6: assembly.)**  Let `k := ka + kb` and split `a·b = Q·F.key + E` (`Q := (a·b) /ₘ
+F.key`; `deg E < D′`).  The landed division calculus (C130nv2:346–361) gives `w(E) ≥
+w(ab)` and `w(Q·key) ≥ w(ab)`, and `stageHeight_mul` gives `w(ab) = w(a) + w(b) ≥ k`; so
+all three of `ab, Q·key, E ∈ F_k` and `σ_k(ab) = σ_k(Q·key) + σ_k(E)`.  Apply `ρ̃`:
+
+* `ρ̃(σ_k(ab)) = ρ̃(σ_{ka}(a)) · ρ̃(σ_{kb}(b))`.  [If `w(ab) > k`, the left side is `0`
+  and one factor on the right is `0` (as `w(a) > ka` or `w(b) > kb`, since `w(ab) =
+  w(a)+w(b)`); if `w(ab) = k`, then `w(a) = ka`, `w(b) = kb` exactly and `σ_k(ab) =
+  σ_{ka}(a)·σ_{kb}(b)` by the definition of the `gr`-product.]
+* `ρ̃(σ_k(Q·key)) = 0`.  [If `w(Q·key) > k`: symbol `0`.  Else `w(Q) = k − D′h` and
+  `σ_k(Q·key) = σ_{k−D′h}(Q) · σ_{D′h}(key)`, killed by Step 5.]
+
+So `ρ̃(σ_k(E)) = ρ̃(σ_{ka}(a)) · ρ̃(σ_{kb}(b))`; by the dictionary (Step 3 — `E, a, b` are
+digits with `w ≥` their pins) this IS clause (1).  Clause (2) follows by multiplying by
+`η^{q(k)}` and TW-δ.  Clause (3): Step 4 makes both right-hand reads nonzero, so
+`twistRead k E ≠ 0`, so `w(E) = k` by Step 4's equivalence (`w(E) ≥ k` already).  ∎
+
+**Grade: MATH-PROVED; Lean transcription OPEN (the new MH.1).**  Consumed Lean-landed:
+`stageHeight_mul`, `stageHeight_eq_inf`, the division-height bank, `slotIdx_spec`/
+`twistExp_spec` (via the PROVED TW-δ), `stageLetter_ne_zero`, `slotRes_zero`/
+`twistRead_zero`/`twistRead_eq_zero_of_lt`, frame fields (`hcop, he₁, hmonic, hdeg,
+hpure, hresirr`), B.29/B.30.  Consumed math-standard (Lean-open, the transcription's
+substance): the graded model of Steps 1–2 — whose Lean route should NOT build `gr`, but
+prove clauses (1)–(2) coefficientwise on the C.21 window exactly as the landed S2 twin
+`s2GradedRes_mul_of_exact` (C130rp1/rp4/rp6) does at `(e₁,h) = (2,1)`-shape: convolution
+split of `(a·b)`-coefficients, `digAt` product/carry bookkeeping, and the `ψ(η) = 0`
+reduction for the `Q·key` term.  The S2 landed law `s2_graded_mul_twisted` (carry
+`X^{(β%2)(β′%2)}`) and the F₉ gate rows are the `e₁ = 2` instances of (2); the cert (§10.4)
+checks it at `e₁ ∈ {1,2,3,4}`, `f₁ ∈ {1,2,3}`.
+
 ### 3.2 M clauses 1–2 (support and side additivity)
 
 The `≥` half of clause 1 is landed (`dvSupp_add_le_dvSupp_mul`).  For the `≤` half, the
@@ -338,6 +524,18 @@ S2 theorem is useful evidence and closes its own specialized interface, but it c
 the arbitrary-`F` hypothesis of Theorem M.  Here the generic discharge still depends on a
 corrected M1 carry/twist theorem and is therefore BLOCKED.
 
+**[MHFIX 2026-08-27] Survival discharged at math level.**  The generic `hsurv` supply is
+now M1′(3): the endpoint digit of `g·z` splits as `(dev g jmin_g · dev z jmin_z) %ₘ key +
+(tail priced ≥ Hg+Hz+1)` — LANDED, `dev_mul_endpoint_split` (C130rp2, strict floor) — and
+M1′(3) prices the head at EXACTLY `Hg + Hz` with a NONZERO read; the landed strict
+stability (`stageHeight_add_eq_left_of_lt`, C131y:96) then pins the digit's height, i.e.
+`hup` with equality.  Clause 1 and `dvSideMin`-additivity are therefore MATH-PROVED
+conditional only on MH.1's transcription (their remaining assembly —
+`dvSupp_mul_eq_add_of_endpoint_le`, `dvOnSide_mul_endpoint`, `dvSideMin_mul_le` — is
+landed).  `dvSideMax`-additivity is at PROOF-OUTLINE grade: the mechanism (M1′(3) at the
+`(jmax, jmax)` pair + `lt_line_dev_term`-style strict pricing above the joint maximum) is
+the same, but its endpoint-uniqueness assembly is NOT landed and belongs to node MH.2.
+
 ### 3.3 M clause 3 (the residual identity)
 
 Coefficientwise at slot `t` of `R(gz)`: the digit of `gz` at abscissa
@@ -357,6 +555,21 @@ consistency check `τ = 1` there.
 M1(2), the unproved corrected carry/twist law, read-vanishing, and the TW computation.
 These are load-bearing open obligations; clause M(3) is not proved.
 
+**[MHFIX 2026-08-27] Corrected clause-3 assembly (τ = 1), math-proved.**  Coefficient `t`
+of `R(gz)` is `twistRead (M₀(gz) − tu)` of the digit at abscissa `jmin(gz) + tℓ`.  The
+landed convolution split (`dev_mul_conv_split`, C130rp4) writes that digit as
+`Σ_{j₁+j₂ = jmin(gz)+tℓ} (dev g j₁ · dev z j₂) %ₘ key + (carry diagonal)`; the landed
+read-additivity/vanishing stack (`twistRead_add_of_le`, `twistRead_finsetSum_of_le`,
+`twistRead_eq_zero_of_lt` — C130rp2/rp4) plus the strict pricing `lt_line_dev_term`
+(strict floor) kill every carry term and every off-side pair at the read level.  For the
+surviving on-side pairs `(j₁, j₂) = (jmin(g)+t₁ℓ, jmin(z)+t₂ℓ)`, `t₁+t₂ = t`, the pin
+heights ADD — `M₀(gz) − tu = (M₀(g) − t₁u) + (M₀(z) − t₂u)` by clauses 1–2 — and M1′(1)
+turns each term into `twistRead(M₀(g)−t₁u)(dev g j₁) · twistRead(M₀(z)−t₂u)(dev z j₂)`:
+summing over `t₁ + t₂ = t` gives exactly the `t`-th coefficient of `R(g)·R(z)`.  **No τ:
+the cocycle is trivialized by C.25's inverse-twisted reads** (TW-δ + the probe's
+Lean-proved bridge).  Certified end-to-end at a live-carry frame in §10.4 (Part C).
+Grade: MATH-PROVED conditional on MH.1's transcription; the assembly inputs are landed.
+
 ### 3.4 Remark — side witnesses for non-monic inputs
 
 M is stated for nonzero (not necessarily monic) `g, z`: `dvSideSet_nonempty` (C34)
@@ -367,7 +580,8 @@ needs only `≠ 0`.  Current consumers apply it to monic inputs anyway.
 For monic pure `g` with `D′ ∣ deg g`, `deg g > 0`: `M₀ = u · dvSideDeg` (the top digit
 is `1` by `dev_top` (B13a — Monic-fenced only) with `stageHeight 1 = 0`), and `R(g)` is
 MONIC (top slot reads `twistRead 0 1 = 1`; `twistExp 0 = 0` normalization — part of the
-TW node).  This is what lets Theorem A take `hprod` without a unit, exactly as B.41's
+TW node).  [MHFIX 2026-08-27: with clause 3 now `τ = 1` outright, this corollary's role
+shrinks to the monicity/value laws; no separate `τ = 1`-on-a-fence claim remains.]  This is what lets Theorem A take `hprod` without a unit, exactly as B.41's
 `hcu1` step.
 
 ---
@@ -714,14 +928,25 @@ target `blockFactorLeaky`/`mult₂Leaky`, not current signed declarations.  `MH.
 independent algebraic `MH.10` are not logically refuted, but they do not authorize the MH
 transcription fleet to fire.
 
+**[MHFIX 2026-08-27] Node gate, updated.**  The critical root is repaired: `MH.1` is
+restated as M1′ (§3.1′), MATH-PROVED, numerically certified (§10.4), statement shapes
+elaborated, and its TW-δ core + carry⟹twist bridge are Lean-PROVED (`MHFIX_probe.lean`).
+`MH.1` is therefore **OPEN (transcription-ready)**, not BLOCKED-CRITICAL.  `MH.0c`'s
+cocycle row is **PARTIALLY LANDED** (TW-δ proved; `twistExp 0 = 0`/`twistRead 0 1 = 1`
+remain).  `MH.2`/`MH.3` are **OPEN behind MH.1 only** (their other inputs are landed;
+math proofs complete in §3.2/§3.3).  OPEN-1 (M1a) is **RETIRED from the critical path**
+(the M1′ proof does not use it).  Still genuinely OPEN with no proof here: MH.5 clause
+lemmas, MH.7, **MH.8** (conversions), MH.9, **MH.14/X1**, MH.15.  The fleet fence stays
+until MH.1 LANDS in Lean and MHDISP gates 2–3 (MH.8, X1) are cleared.
+
 | node | statement | landed inputs | sizing | plan wiring |
 |---|---|---|---|---|
 | MH.0a | `stageHeight_key`: `F.stageHeight F.key = (D′ * F.h : ℕ∞)` (from `F.hpure` at `X`) — wires `L.hκ` to C130nv2's `hV/hadm` | `stageHeight_eq_inf` (C.02), `IsPure`/`sideSet` at `X` | 30–50 | feeds every M consumer |
 | MH.0b | read-vanishing: `dv(A) > k → twistRead k A = 0`; and read-faithfulness on windows (`W ≥ c` ∧ all line-reads 0 → `W ≥ c+1`) | `resMk_eq_zero_of_lt` (B39b), C.22 stack | 50–90 | §3.3, §4.2 |
-| MH.0c | TW: `twistExp 0 = 0`, `twistRead 0 1 = 1`, the product cocycle `τ(k,k') = stageLetter^(twistExp k + twistExp k' − twistExp (k+k'))`, and its cancellation on the §3.5 fence | C.22 defs, C.46 pins, `twistRead_one_X` (C35b) as model | 60–120 | §3.3/§3.5/§4.1 |
-| MH.1 | **BLOCKED-CRITICAL:** restate M1 with the slot carry or directly as a generic `twistRead` product theorem; M1a still needs promotion/proof | `stageHeight_mul`, division bank, `resPoly_mul_gen`, `resMk_add`, `F.hresirr`; C130nv3 still takes `hsurv` | re-estimate after restatement | **the root; current read statement is false** |
+| MH.0c | TW: `twistExp 0 = 0`, `twistRead 0 1 = 1`; **[MHFIX 2026-08-27] the cocycle row is DONE**: TW-δ (`q(k)+q(k')+δ = q(k+k')`, `δ ∈ {0,1}`, `e₁δ = i(k)+i(k')−i(k+k')`) is Lean-PROVED (`MHFIX_probe.twistExp_add_carry`), and the cancellation is the Lean-PROVED bridge `twistRead_mul_of_slotRes_carry` — promotion from scratch to a ChapC module is the remaining work | C.22 defs, C.16 specs, `twistRead_one_X` (C35b) as model | 30–60 (remaining) | §3.3/§3.5/§4.1 |
+| MH.1 | **[MHFIX 2026-08-27] OPEN (transcription-ready):** M1′ = the slot-carry/twist-read product law at digits (§3.1′, three clauses; statement shapes `M1TwistProductLawStatement`/`M1SlotCarryLawStatement`/`M1DigitFaithfulStatement` elaborate) — MATH-PROVED; TW-δ + carry⟹twist bridge already Lean-PROVED in the probe | `stageHeight_mul`, `stageHeight_eq_inf`, division bank, `slotIdx_spec`/`twistExp_spec`, `slotRes_add_of_le`/`twistRead_eq_zero_of_lt` (C130rp2), `digAt` bank (B21/B25), `aeval_root`, B.29/B.30; S2 twin `s2GradedRes_mul_of_exact` as the proof pattern | 250–450 (coefficientwise, no `gr` construction) | **the repaired root** |
 | MH.2 | Theorem M clauses 1–2: unfenced `dvSupp_mul`, `dvSideMin_mul`, `dvSideMax_mul`, `dvSideDeg_mul` at frames | MH.1, `dvSupp_mul_eq_add_of_endpoint_le` + endpoint bank (C130nv2:645-810), `lt_line_dev_term`, `stageHeight_add_eq_left_of_lt` (C131y) | 120–200 | kills `C35_BLOCKED` obstr. 1's support half; NV-4 generalizes for free |
-| MH.3 | Theorem M clause 3: `dvResPoly_mul_gen` — `R(gz) = τ·R(g)·R(z)` with τ from MH.0c | MH.1–MH.2, `dev_mul_pow`/`dev_finsetSum` (B35a), MH.0b | 250–450 (the largest node; B39a's level-2 twin) | subsumes the blueprint's `dvResPoly_mul_of_pure` RE-PLAN; **makes `fgmn_dv_exact_mul` provable** (§9.2) |
+| MH.3 | Theorem M clause 3: `dvResPoly_mul_gen` — **[MHFIX 2026-08-27] `R(gz) = R(g)·R(z)`, τ = 1** (shape `MixedResidualLawTauOneStatement` elaborates; math proof §3.3; certified §10.4 Part C) | MH.1–MH.2, `dev_mul_conv_split` (C130rp4), `twistRead_add_of_le`/`twistRead_finsetSum_of_le`/`twistRead_eq_zero_of_lt`, `lt_line_dev_term`, MH.0b | 250–450 (the largest node; B39a's level-2 twin) | subsumes the blueprint's `dvResPoly_mul_of_pure` RE-PLAN; **makes `fgmn_dv_exact_mul` provable** (§9.2) |
 | MH.4 | §3.5 M-monic (monic residual, `M₀ = u·d`, `τ = 1` fence) | MH.0c, MH.3, `dev_top` (B13a), C.26 | 40–80 | B.41's `hcu1` twin |
 | MH.5 | **BLOCKED:** corrected side lift `Λ` + its five clause lemmas (§4.1) | public C131f `stageLiftO` degree/slot/height pins or C.14 `exists_twistRead_preimage` (with its finiteness hypothesis), `sum_dev_eq`, `dev_eq_zero_of_lt` | re-estimate | F1.H1 init; private C.46/C.47 helpers are not inputs |
 | MH.6 | perturbation law M4 (dv `pure_add_of_lt`) | `dev_add_of_monic` (B32a), `dvHgt_add_eq_left_of_lt` (C131y:102), `twistRead_add_eq_left_of_lt` (C131ae:295), `dvHgt_add_min` (C131y:220) | 80–140 | F1.H1 invariants; ALSO the plan's F3.3 mechanism (same shape — coordinate) |
@@ -754,6 +979,14 @@ the strict floor, then prove the bounded-window limit comparisons for MH.8 and X
 Only after those gates are green should downstream MH.2–MH.9/MH.11–MH.15 be rescheduled.
 The independent algebraic MH.10 can be scoped separately but does not un-fence the fleet.
 
+**[MHFIX 2026-08-27] Updated order.**  MHDISP gate 1 is now designed-and-math-proved:
+the immediate schedulable unit is the **MH.1 Lean transcription** (statement pinned in the
+probe; proof plan = the S2-twin coefficientwise route, §3.1′ closing note), together with
+promoting the probe's TW-δ/bridge theorems into a ChapC module (MH.0c remainder).  MH.8
+and X1 remain the other two gates and can be worked in parallel — nothing in this
+amendment touches them.  MH.2/MH.3 fire after MH.1 lands.  The full fleet stays fenced
+until all three MHDISP gates are LANDED, not merely math-proved.
+
 ### 9.2 Strategic note: the cite becomes a theorem
 
 **[MHDISP 2026-08-27: conditional only.]**  If corrected MH.3 + MH.2 are proved, they would
@@ -770,8 +1003,15 @@ retiring it afterwards.
 * **OPEN-CRITICAL (corrected M1 read law)** — [MHDISP 2026-08-27] replace the false bare
   `slotRes` equality by a generic carry formula or direct `twistRead` multiplicativity
   theorem.  Load-bearing for M and every downstream engine node.
+  **[MHFIX 2026-08-27]: RESOLVED at math level** — the carry is `η^{δ}`,
+  `δ = twistExp(k+k')−twistExp(k)−twistExp(k') ∈ {0,1}` (TW-δ, Lean-PROVED), the
+  `twistRead` form is exactly multiplicative (M1′, §3.1′, MATH-PROVED + certified);
+  what remains is the MH.1 Lean transcription.
 * **OPEN-1 (M1a order-1 stability)** — stated §3.1(c); private-needs-promotion/reproof and
   load-bearing for M1(1), not merely routine bookkeeping.
+  **[MHFIX 2026-08-27]: RETIRED from the critical path** — M1′'s proof derives old M1(1)
+  from digit faithfulness (§3.1′ Step 4/clause 3) with no stability step; M1a survives
+  only as a possibly-useful independent order-1 lemma.
 * **OPEN-2 (defective existence)** — FRONTIER 1 on `D′ ∤ deg g`: expected true
   (classical FGMN covers all `f`); not consumed by F1 (the dissection factor is
   `D′`-divisible).  [MHDISP 2026-08-27] A-C.20 has repaired C.34; any extension of the
@@ -781,6 +1021,10 @@ retiring it afterwards.
 * **OPEN-3 (the C.22 definitional chases)** — MH.0b/0c and the corrected M1 walk through
   `slotRes`/`twistExp`; now known to contain a nontrivial carry.  Load-bearing for M(3),
   initialization, solve, and monic normalization.
+  **[MHFIX 2026-08-27]: substantially discharged** — the carry is computed generically
+  (TW-δ Lean-PROVED; window/monomial dictionary written out in §3.1′ Steps 2–3); MH.0b's
+  read-vanishing is landed (`twistRead_eq_zero_of_lt`); the remaining chase items are
+  `twistExp 0 = 0`/`twistRead 0 1 = 1` (MH.0c remainder) and read-faithfulness on windows.
 * **OPEN-LIMIT (MH.8)** — prove public bounded-window `W`/Gauss comparisons in the correct
   directions; B.40's private helper cannot be consumed.  Load-bearing for Theorem A.
 * **OPEN-4 (X1)** — the other-slope point-side lemma; unproved and load-bearing for §8
@@ -871,3 +1115,41 @@ the nontrivial `F₉` slot carry/cancellation row.  Printed footprints are exact
 **Fleet status:** **DO NOT FIRE** MH.1–MH.9 or MH.11–MH.15 until the corrected generic
 twist-read product law, MH.8 conversion lemmas, and X1 are proved.  Current pinned C.34/C.35
 are not refuted; they remain blocked on construction/proof, not on statement consistency.
+
+### 10.4 [MHFIX 2026-08-27] The corrected-root certificate and probe — GREEN
+
+`verification/mhfix_cert.py` (NEW; exact ℤ arithmetic, faithful C.15/C.16/C.17/C.21/C.22/
+C.02/C.25/B.29 mirrors; run 2026-08-27): **473,961 checks, 0 FAILS.**
+
+* **Part A** — TW-δ over EVERY coprime `(e₁ ≤ 8, h ≤ 12)` and all `k, k′ ≤ 60`:
+  `q(k)+q(k′)+δ = q(k+k′)` with `δ ∈ {0,1}` and `e₁δ = i(k)+i(k′)−i(k+k′)` (468,846
+  checks).
+* **Part B** — M1′ all three clauses at SEVEN audited frames
+  `(p,e₁,f₁,h) ∈ {(3,2,2,3), (5,3,2,2), (3,2,3,5), (2,1,2,1), (7,4,1,3), (5,3,1,4),
+  (3,5,2,2)}` (each: `key` built from a random irreducible `ψ` + strictly-above noise,
+  frame audited: `w(key) = D′h` and `frameRes = ψ` per the B29 convention), 120 random
+  digit pairs each, mixed exact-height and strictly-above floors: slot-carry equality,
+  `twistRead` multiplicativity, faithfulness (nonzero reads at exact heights), and
+  `w(E) = ka+kb`.  δ = 1 fired on 29–46 pairs per `e₁ > 1` frame (carry live), and
+  identically 0 at the `e₁ = 1` frame — as TW-δ predicts.
+* **Part C** — the FULL corrected M clause 3, `R(gz) = R(g)·R(z)` with **τ = 1**, plus
+  `W`/`sideMin`/`sideMax` additivity, on 250 random mixed pairs (non-monic, far,
+  defective, multi-slope strata) at the live-carry `(3,2,2,3)` frame, direction
+  `(u,ℓ) = (25,2)` (strict floor `2·12 = 24 < 25`).  This is the twist-nontrivial genre
+  §10.1's `e₁ = 1` certificate could not see.
+
+`leanfinal/scratch/MHFIX_probe.lean` (`lake env lean` exit 0, zero `sorry`, zero
+`axiom`): the generic TW-δ theorem `twistExp_add_carry` and the carry⟹twist bridge
+`twistRead_mul_of_slotRes_carry` PROVED (footprints exactly
+`[propext, Classical.choice, Quot.sound]`); the four corrected statement shapes
+elaborate; `existsUnit_of_tauOne` proves τ = 1 refines the ∃-τ shape; executable δ = 1
+and δ = 0 carry rows at the `F₉` gate and axiom-free numeral δ-grids at
+`(e₁,h) = (2,3), (3,2), (5,3)`.
+
+**[MHFIX 2026-08-27] Final document status:** the engine's ROOT (M1′ and, conditional on
+its transcription, Theorem M) is **MATH-PROVED with a machine-checked arithmetic core and
+a 473k-check certificate**; the engine as a whole is still **NOT Lean-proved**.
+**Fleet status:** the MH transcription fleet remains fenced; the ONE immediately
+schedulable unit is the MH.1 transcription (+ MH.0c promotion).  MH.8 and X1 are
+unchanged gates.  Nothing here weakens the MHDISP record: M1(2) as originally stated
+stays FALSE and withdrawn; M1′ is its correction, not its rehabilitation.
