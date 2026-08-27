@@ -34,6 +34,7 @@ import Uniformity.ChapH.H116b2
 import Uniformity.ChapH.H116b3i
 import Uniformity.ChapH.H116b3ii
 import Uniformity.ChapH.H116b3iii
+import Uniformity.ChapH.H116b4a
 import Uniformity.ChapH.H116b3iiib
 import Uniformity.ChapH.H116bR
 import Uniformity.ChapH.H116h
