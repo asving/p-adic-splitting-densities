@@ -143,7 +143,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 |---|---|---|
 | (archive) | everything through 2026-08-27 ~17:30 — the capstone assembly (A-I.3/A-I.4 + I.15–I.18), the five-amendment wave, the CHFD supply map + CW wrappers + IFC0 interfaces, the five math-fleet docs THROUGH the codex verification/repair loop (final: RAMIFIED ACCEPT, HENSEL corrected-M two clean passes, SMITH ACCEPT-WITH-GAPS, LIFT ACCEPT), the ramified I1 interface PROVED in Lean (B59c), MH.1 transcribed (C133mh1), and μ₃ nodes A0/A1 + NV0–NV6 + RP0–RP10 + KP0 (20/29) | ALL DONE — LOG + git log; every landing orchestrator-verified; pushed through 2868bca3 |
 | (μ₃ sweep 08-27) | NV0–NV6, RP0–RP10, KP0–KP6, FD1, FD0 (conditional), SG (conditional core) — the campaign is structurally COMPLETE modulo exactly TWO math opens: M3-RP10b (non-recipe NormRes(g₈)=X+1 evaluation) + M3-KP6b (the initial↔residual converse via the μ₃ key-structure bank); RP10/KP6 landed honest BLOCKED-BECAUSE partials; FD0+SG-core assembled BY THE ORCHESTRATOR during a Claude-lane storm | DONE (conditional) — all orchestrator-verified, pushed |
-| MRP10B + MKP6B | the two μ₃ closers (sol-HIGH) | QUEUED — 22:07 launcher |
+| MRP10B | the harder μ₃ closer (normalized_exists) | DONE — BY THE ORCHESTRATOR, solo, 5 committed stages: s2Mu3NormRes g₈ = X+1 by the non-recipe route; s2Mu3_hex discharged; the calculus hangs on KP6b ALONE; the 22:07 codex slot self-skips |
+| MKP6B | the last μ₃ closer (the converse; sol-HIGH) | QUEUED — 22:07 launcher |
 | VAUD + MHG | ladder validity teeth; Hensel gates MH.8+X1 (sol-HIGH) | QUEUED — 22:07 launcher |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — after the μ₃ campaign closes |
 
