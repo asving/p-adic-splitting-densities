@@ -24,8 +24,21 @@ C9  [MLF2 2026-08-27] peel-packaging model: arbitrary q^N-congruent lifts have c
     reduction X^r and canonicalizing every coordinate preserves the planted product class.
 C10 [MLF2 2026-08-27] exact secant identity and mixed-Sylvester flag probe: sampled
     terminal/node pairs have the tangent Smith list and the same saturated quotient flag.
+C11 [FML1 2026-08-27] Lemma BP (base-point transport): omega_n on S_n(F) is the
+    translate by omega_n(x) of the digit map of Psi_x(kappa) = Phi(x) - Phi(x-kappa)
+    at ANY base x in S_n(F) -- the identity that makes MLIFT-1 target-unconditional.
+C12 [FML1 2026-08-27] global uniformity scans: U(n|F) for EVERY reachable target class
+    at EVERY level, in q=3/q=5 hunt cells (where squares are not linear, so a
+    quadratic obstruction digit would skew fibres) and q=2 cross-check cells.
+C13 [FML1 2026-08-27] MSF depth probe: V_j(D_{x,y}) vs V_j(T_x) as a function of the
+    depth n of y and the grade j; hard check in the load-bearing range j <= n.
+C14 [FML1 2026-08-27] Lemma REM (cofactor elimination): S_n(F) is in b-projection
+    bijection with the child divisibility tower {b : prod P_p(b_p) | F mod q^n}, and
+    omega_n is the remainder digit.
+C15 [FML1 2026-08-27] Lemma RES: v(Res(P_p, P_p')) = mu mu' min(k,k') exactly,
+    b-independent; plus an (info) CRT decoupling depth table.
 
-Run: python3 verification/openmath/h116b4_lift_cert.py   (~1-2 min)
+Run: python3 verification/openmath/h116b4_lift_cert.py   (~5-10 min)
 """
 
 import os
@@ -542,6 +555,226 @@ def block_c10(q, N, m, children, cof_deg, F, samples, leaves, tag):
           lists_ok and flags_ok, f"{total} pairs; exponents={sorted(tes)}")
 
 
+# ==================== FML1 (2026-08-27): C11-C15 extensions =====================
+def tree_levels(q, N, m, children, cof_deg, F):
+    """All canonical members of S_n(F), n = 1..N, as integer tuples < q^n."""
+    nc = sum(mu for (mu, k, w) in children) + cof_deg
+    zero = tuple([0] * nc)
+    first = [zero] if all(v % q == 0 for v in phi(zero, q, q, children, cof_deg, m)
+                          ) and all(f % q == 0 for f in F) else []
+    levels = {1: first}
+    for n in range(1, N):
+        Mn1 = q ** (n + 1)
+        Ftr = tuple(x % Mn1 for x in F)
+        nxt = []
+        for node in levels[n]:
+            for split in itertools.product(range(q), repeat=nc):
+                lift = tuple(node[i] + split[i] * q ** n for i in range(nc))
+                if tuple(phi(lift, q, Mn1, children, cof_deg, m)) == Ftr:
+                    nxt.append(lift)
+        levels[n + 1] = nxt
+        if not nxt:
+            break
+    return levels
+
+
+def block_c11(q, N, m, children, cof_deg, F, levels, tag):
+    """Lemma BP (base-point transport): for ANY base x in S_n(F) and every y in S_n(F),
+    with the canonical lifts,  omega_n(y) = omega_n(x) + [Psi_x(x-y)/q^n mod q] mod W,
+    where Psi_x(kappa) := Phi(x) - Phi(x - kappa) (= D_{x,x-kappa}(kappa) by SEC).
+    Checked pointwise at every level 2 <= n < N with two independent base choices."""
+    s = sum(mu for (mu, k, w) in children)
+    bad = tot = 0
+    for n in range(2, N):
+        mem = levels.get(n, [])
+        if not mem:
+            continue
+        Mn1 = q ** (n + 1)
+        for x in {mem[0], mem[-1]}:
+            wx = omega_of(x, F, q, n, m, s, children, cof_deg)
+            px = phi(x, q, Mn1, children, cof_deg, m)
+            for y in mem:
+                py = phi(y, q, Mn1, children, cof_deg, m)
+                psi = [(px[i] - py[i]) % Mn1 for i in range(m)]
+                tot += 1
+                if any(v % q ** n for v in psi):     # y in S_n forces Psi == 0 mod q^n
+                    bad += 1
+                    continue
+                dig = tuple((psi[i] // q ** n) % q for i in range(s))
+                wy = omega_of(y, F, q, n, m, s, children, cof_deg)
+                if wy != tuple((wx[i] + dig[i]) % q for i in range(s)):
+                    bad += 1
+    check(f"(C11) BP: omega_n(y) == omega_n(x) + digit_n Psi_x(x-y) mod W [{tag}]",
+          bad == 0, f"{tot - bad}/{tot} (base,y) pairs, levels 2..{N - 1}")
+
+
+def block_c12(q, N, m, children, cof_deg, tag, max_report=3):
+    """Global uniformity scan: at every level n, bucket ALL canonical level-n raw points
+    z by Phi(z) mod q^n; within each bucket the digit map z -> [digit_n Phi(z)] mod W
+    must have equal fibre sizes.  By the translation law 4.2 this is exactly U(n|F) for
+    EVERY target lift F over every reachable class -- the complete MLIFT-1 scan."""
+    s = sum(mu for (mu, k, w) in children)
+    nc = s + cof_deg
+    bad = buckets_tot = 0
+    rows, worst = [], []
+    for n in range(1, N):
+        Mn1 = q ** (n + 1)
+        buckets = {}
+        for z in itertools.product(range(0, q ** n, q), repeat=nc):
+            f = phi(z, q, Mn1, children, cof_deg, m)
+            key = tuple(x % (q ** n) for x in f)
+            dig = tuple((f[i] // q ** n) % q for i in range(s))
+            buckets.setdefault(key, Counter())[dig] += 1
+        nbad = sum(1 for h in buckets.values() if len(set(h.values())) > 1)
+        for key, h in buckets.items():
+            if len(set(h.values())) > 1 and len(worst) < max_report:
+                worst.append((n, key, sorted(Counter(h.values()).items())))
+        buckets_tot += len(buckets)
+        bad += nbad
+        rows.append(f"n={n}:{len(buckets)}cls" + (f"/{nbad}BAD" if nbad else ""))
+    check(f"(C12) U(n|F) for EVERY reachable target class at EVERY level [{tag}]",
+          bad == 0, "; ".join(rows))
+    for (n, key, sizes) in worst:
+        info(f"(C12) NON-UNIFORM witness [{tag}]: n={n} target-class={key} "
+             f"(fibre-size, count)={sizes}")
+
+
+def block_c13(q, N, m, children, cof_deg, F, levels, tag, cap=40):
+    """MSF depth probe: x = a terminal presentation; for y in S_n(F) (canonical lifts,
+    sampled), compare V_j(D_{x,y}) with V_j(T_x) at every grade j.  Hard check in the
+    load-bearing range j <= n (what the schedule at level n consumes, cf. (6.7)); the
+    beyond-depth pattern j > n is reported as discovery output."""
+    s = sum(mu for (mu, k, w) in children)
+    NB, M = N + 2, q ** (N + 2)
+    leaves = levels.get(N, [])
+    if not leaves:
+        info(f"(C13) empty terminal fibre, skipped [{tag}]")
+        return
+    x = sorted(leaves)[0]
+    fxs = factors_at(x, q, M, children, cof_deg)
+    tangent = bat.sylvester_matrix(q, NB, m, children, fxs[:-1], cof_deg, fxs[-1])
+    tes, tflags = smith_flag(tangent, q, NB, s, N)
+    bad_load = tot = 0
+    deep_fail, deep_tot, list_mismatch = Counter(), Counter(), Counter()
+    for n in range(2, N):
+        mem = levels.get(n, [])
+        step = max(1, len(mem) // cap)
+        for y in mem[::step]:
+            A = secant_matrix(q, NB, m, children, cof_deg, x, y)
+            ses, sflags = smith_flag(A, q, NB, s, N)
+            tot += 1
+            if [min(e, N) for e in ses] != [min(e, N) for e in tes]:
+                list_mismatch[n] += 1
+            for j in range(1, N):
+                okj = same_span(tflags[j - 1], sflags[j - 1], q)
+                if j <= n:
+                    bad_load += not okj
+                else:
+                    deep_tot[(n, j)] += 1
+                    deep_fail[(n, j)] += not okj
+    check(f"(C13) MSF in the load-bearing range: V_j(D_x,y)==V_j(T_x), j<=depth(y) [{tag}]",
+          bad_load == 0, f"{tot} sampled fibre points, depths 2..{N - 1}")
+    fails = {k: v for k, v in deep_fail.items() if v}
+    if fails or any(list_mismatch.values()):
+        info(f"(C13) beyond-depth V_j mismatches [{tag}]: "
+             + ("; ".join(f"n={n},j={j}:{v}/{deep_tot[(n, j)]}"
+                          for (n, j), v in sorted(fails.items())) or "none")
+             + "; truncated-Smith-list mismatches by depth: "
+             + (", ".join(f"n={n}:{v}" for n, v in sorted(list_mismatch.items())) or "none"))
+    else:
+        info(f"(C13) V_j(D)==V_j(T_x) at ALL grades j<{N} and truncated Smith lists agree,"
+             f" every sampled depth [{tag}]")
+
+
+def polydiv_rem(F, P, M):
+    """Remainder of division of F by MONIC P over Z/M (coeff lists, low to high)."""
+    R = [x % M for x in F]
+    dP = len(P) - 1
+    for i in range(len(R) - 1, dP - 1, -1):
+        c = R[i]
+        if c:
+            for j in range(dP + 1):
+                R[i - dP + j] = (R[i - dP + j] - c * P[j]) % M
+    return R[:dP]
+
+
+def block_c14(q, N, m, children, cof_deg, F, levels, tag):
+    """Lemma REM (cofactor elimination): the child-only divisibility tower
+    R_n := { b : prod_p P_p(b_p) divides F mod q^n } is in bijection with S_n(F)
+    (b-projection; the cofactor digit path is division-determined), and
+    omega_n == [(F rem prod P_p)/q^n mod q] under V ~ F_q[X]_{<s}."""
+    if cof_deg == 0:
+        info(f"(C14) r=0: REM is the identity reformulation, skipped [{tag}]")
+        return
+    s = sum(mu for (mu, k, w) in children)
+    Ffull = list(F) + [1]
+    ok_count = ok_proj = ok_omega = True
+    det = []
+    for n in range(1, N):
+        Mn1 = q ** (n + 1)
+        Rn = {}
+        for b in itertools.product(range(0, q ** n, q), repeat=s):
+            P = [1]
+            sp = 0
+            for (mu, k, w) in children:
+                P = om.pmul(P, om.alpha_parent(list(b[sp:sp + mu]), k, w, q, Mn1), Mn1)
+                sp += mu
+            rem = polydiv_rem(Ffull, P, Mn1)
+            if all(v % q ** n == 0 for v in rem):
+                Rn[b] = tuple((rem[i] // q ** n) % q for i in range(s))
+        mem = levels.get(n, [])
+        ok_count &= len(Rn) == len(mem)
+        ok_proj &= set(Rn) == {tuple(y[i] % q ** n for i in range(s)) for y in mem}
+        hist_R = Counter(Rn.values())
+        hist_S = Counter(omega_of(y, F, q, n, m, s, children, cof_deg) for y in mem)
+        ok_omega &= hist_R == hist_S
+        det.append(f"n={n}:{len(Rn)}")
+    check(f"(C14) REM: child divisibility tower == b-projection of S_n, all levels [{tag}]",
+          ok_count and ok_proj, "; ".join(det))
+    check(f"(C14b) REM: remainder digit histogram == omega_n histogram, all levels [{tag}]",
+          ok_omega)
+
+
+def block_c15(q, N, m, children, cof_deg, F, tag, nsamp=120, seed=116):
+    """Lemma RES check (exact child-child resultant valuation, b-independent) plus an
+    (info) CRT decoupling table: joint vs per-child divisibility depths."""
+    import random
+    if len(children) < 2:
+        info(f"(C15) single child: no child-child resultant [{tag}]")
+        return
+    rng = random.Random(seed)
+    NB, MB = N + 3, q ** (N + 3)
+    bad = 0
+    pairs = [(i, j) for i in range(len(children)) for j in range(i + 1, len(children))]
+    for (i, j) in pairs:
+        (mu1, k1, w1), (mu2, k2, w2) = children[i], children[j]
+        cexp = mu1 * mu2 * min(k1, k2)
+        for _ in range(nsamp):
+            b1 = [q * rng.randrange(q ** (NB - 1)) for _ in range(mu1)]
+            b2 = [q * rng.randrange(q ** (NB - 1)) for _ in range(mu2)]
+            P1 = om.alpha_parent(b1, k1, w1, q, MB)
+            P2 = om.alpha_parent(b2, k2, w2, q, MB)
+            v = om.resultant_valuation(list(P1), list(P2), q, MB)
+            bad += v != cexp
+    check(f"(C15) RES: v(Res(P_p,P_p')) == mu*mu'*min(k,k') exactly, b-independent [{tag}]",
+          bad == 0, f"{nsamp} samples x {len(pairs)} pairs")
+    # (info) decoupling depth table on the two-child box at moderate precision
+    (mu1, k1, w1), (mu2, k2, w2) = children[0], children[1]
+    t = min(N - 1, 5 if q == 2 else 3)
+    Mt = q ** t
+    Ffull = list(F) + [1]
+    table = Counter()
+    for b in itertools.product(range(0, Mt, q), repeat=mu1 + mu2):
+        P1 = om.alpha_parent(list(b[:mu1]), k1, w1, q, Mt)
+        P2 = om.alpha_parent(list(b[mu1:]), k2, w2, q, Mt)
+        r1, r2 = polydiv_rem(Ffull, P1, Mt), polydiv_rem(Ffull, P2, Mt)
+        r12 = polydiv_rem(Ffull, om.pmul(P1, P2, Mt), Mt)
+        tv = lambda rr: min((bat.vq(v, q, t) for v in rr), default=t)
+        table[(tv(r1), tv(r2), tv(r12))] += 1
+    top = ", ".join(f"{k}:{v}" for k, v in sorted(table.items())[:18])
+    info(f"(C15) depth law table (t1,t2,t_joint):count at precision {t} [{tag}]: {top}")
+
+
 def main():
     print("h116b4_lift_cert (unit MLIFT, 2026-08-26) -- II-a/II-b certificates")
     print("-- C1: the closed form (1.1) against alpha_parent")
@@ -562,11 +795,31 @@ def main():
         block_c45(q, N, m, children, cof_deg, list(F), samples, tag)
         block_c10(q, N, m, children, cof_deg, list(F), samples, leaves, tag)
         block_c9_witness(q, N, m, children, cof_deg, list(F), sorted(leaves)[0], tag)
+        levels = tree_levels(q, N, m, children, cof_deg, list(F))
+        block_c11(q, N, m, children, cof_deg, list(F), levels, tag)
+        block_c13(q, N, m, children, cof_deg, list(F), levels, tag)
+        block_c14(q, N, m, children, cof_deg, list(F), levels, tag)
+        block_c15(q, N, m, children, cof_deg, list(F), tag)
     print("-- C6: non-genre tower probe (info)")
     block_c6()
     print("-- C8/C9: complete reachable-target scans and peel packaging")
     block_c89(2, 5, 3, [(2, 1, 1)], 1, "CELL-1 ALL 96 TARGETS")
     block_c89(2, 5, 4, [(2, 1, 1), (2, 2, 1)], 0, "MIXED ALL 32 TARGETS")
+    print("-- C12 [FML1]: global uniformity scans (q=3/q=5 hunt for quadratic-digit skew;")
+    print("--            q=2 cross-checks of C8).  Every reachable class, every level.")
+    hunts = [
+        (3, 6, 3, [(2, 1, 1)], 1, "H1 q3 mu2 k1 r1 (grade-4/5 child*cofactor quadratics)"),
+        (3, 5, 4, [(2, 1, 1), (2, 1, 2)], 0, "H2 q3 = CELL-2, ALL targets"),
+        (3, 5, 4, [(3, 1, 1)], 1, "H3 q3 mu3 r1"),
+        (3, 6, 3, [(2, 2, 1)], 1, "H4 q3 k2 r1"),
+        (5, 5, 3, [(2, 1, 1)], 1, "H5 q5 mu2 k1 r1"),
+        (2, 6, 4, [(3, 1, 1)], 1, "H6 q2 mu3 r1"),
+        (3, 5, 4, [(2, 1, 1)], 2, "H7 q3 r2"),
+        (2, 5, 3, [(2, 1, 1)], 1, "X1 q2 CELL-1 cross-check of C8"),
+        (2, 5, 4, [(2, 1, 1), (2, 2, 1)], 0, "X2 q2 MIXED cross-check of C8"),
+    ]
+    for (q, N, m, children, cof_deg, tag) in hunts:
+        block_c12(q, N, m, children, cof_deg, tag)
     print()
     n = len(FAILED)
     print(f"==== {n} failed ====" if n else "==== ALL CHECKS PASSED ====")
