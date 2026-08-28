@@ -62,7 +62,14 @@ refuted tension record (`scratch/AI6_probe.lean`: `¬ LadderField 4`, Lean-core)
 ONLY the `mp1` leg replaced by the same-realization `MP1CarrierLive`): the A-I.6
 record's unrestricted `mp1` is machine-refuted at the same degree-4 S2 socket
 (`scratch/REX_probe.lean`, Lean-core, archived pre-rebind at commit 05f067b7).  The
-pin below is retargeted accordingly; everything else in this file stays byte-frozen. -/
+pin below is retargeted accordingly; everything else in this file stays byte-frozen.
+[A-I.8, 2026-08-28] Rebound AGAIN to `IFC5.LadderSupplyLive₃` (`I10RecenterDirect.lean`;
+ONLY the `mp1` leg replaced by the DIRECT-route `MP1CarrierLiveDirect` — `GNCitePayload`
+retired from the live surface: DWR's structural stop-line is an HONESTY forcing, not a
+machine refutation — no source-faithful occurrence of the GN payload shape can exist, for
+any tower; `runs/wave-c/verdict_DWR.md` + adjudication `verdict_A8D.md`, archived at
+commit 3d545e6e).  The pin below is retargeted accordingly; everything else in this file
+stays byte-frozen. -/
 
 /-- Historical unbounded tension record (pre-A-I.6 `ladder` field type; machine-refuted
 at degree 4, `scratch/AI6_probe.lean`).  A-I.6 binds the capstone to the live record. -/
@@ -75,8 +82,8 @@ def LadderField (n : ℕ) : Prop :=
     CanonicalLadderConfig C B G Kt L N v ρ q n →
     Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q
 
-/-- A-I.7 anti-drift pin (supersedes the A-I.6 pin, same shape): the signed field
-returns the A-I.7 record `LadderSupplyLive₂`. -/
+/-- A-I.8 anti-drift pin (supersedes the A-I.7 pin, same shape): the signed field
+returns the A-I.8 record `LadderSupplyLive₃`. -/
 example {n : ℕ} (h : CapstoneHypotheses.{uW, uG, uKt, uL} n) :
     ∀ (O : Type) [CommRing O] (K : Type) [Field K]
       (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
@@ -85,7 +92,7 @@ example {n : ℕ} (h : CapstoneHypotheses.{uW, uG, uKt, uL} n) :
       (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
       (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
       CanonicalLadderConfig C B G Kt L N v ρ q n →
-        IFC5.LadderSupplyLive₂.{uW, uG, uKt, uL} C B G Kt L N v ρ q n :=
+        IFC5.LadderSupplyLive₃.{uW, uG, uKt, uL} C B G Kt L N v ρ q n :=
   h.ladder
 
 /-- **L0 supplier 1 (HE7A leg)**: every arising degree-`n` ladder configuration admits a

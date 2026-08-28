@@ -45,6 +45,23 @@ there rather than machine-refuted.  Campaign ledger:
 Statement provenance: all three bodies byte-identical to `scratch/REX_probe.lean`
 (machine byte-diff at enactment: `runs/wave-c/verdict_AI7E.md`).  Zero `sorry`, zero new
 axiom; AxChk footer expects Lean core only.
+
+## [A-I.8, 2026-08-28 — unit AI8E] This file is FROZEN as the A-I.7 history (dated note)
+
+`GNCitePayload` is RETIRED from the live `RecenterStep` surface (DWR's structural
+stop-line: no source-faithful occurrence of the payload shape can exist, for any tower;
+adjudication `runs/wave-c/verdict_A8D.md` chose the DIRECT key route —
+`I10RecenterDirect.lean`).  The three declarations above stay byte-frozen: they record
+exactly what the landed S2/μ₃ bank supplies and remain valid history.  Their reading
+changes: the tangent-class certificate `s2LandedPrefix_tangentClass_impossible` blocked
+the GN payload's `tangentClass` field, which the direct `DirectKeyPayload` NO LONGER
+DEMANDS — so it is no longer a blocking row, just the record that the carried key is
+μ₃-initial-self-equivalent.  The NAMED OPEN `S2-RECENTER-EXPORT` is RE-SCOPED to the
+direct fields (ledger `docs/in-progress/LADDER_SUPPLY_2026-08-27.md`, [AI8E] entry): a
+recentered external `B'` with `source.keyPolynomial B'.Φ`, the directly proved
+`key_irreducible` law (the D4-13–15 μ₅ key-tail twins), and the peel core WITH the DWR
+anti-splicing bindings; the GN-only rows (selected slope, slope-residual, `exactLeaf`,
+residual multiplicity one) are DELETED with the payload.
 -/
 
 set_option linter.style.longLine false

@@ -711,6 +711,18 @@ retains GN-only nodes.  The adjudication record is `runs/wave-c/verdict_A8D.md`;
 statement shape compiles in `leanfinal/scratch/A8D_probe.lean`.  No landed Lean/leanspec
 statement is changed by this blueprint amendment.
 
+**[AI8E 2026-08-28] §12.3 IS ENACTED** (`runs/wave-c/verdict_AI8E.md`): the five direct
+declarations are production at `leanfinal/Uniformity/ChapI/I10RecenterDirect.lean`
+(namespace `Uniformity.Density.IFC5`; declaration bytes identical to the probe, one
+docstring word `draft`→`live`), the superseding record `IFC5.LadderSupplyLive₃` (ONLY
+`mp1` → `MP1CarrierLiveDirect`) is the capstone `ladder` field's result record in both
+twins (leanspec A-I.8 STATE UPDATE; gate item (3) retargeted), `GNCitePayload` and the
+whole A-I.7 GN surface stay byte-frozen in `I10RecenterLive.lean` as the tension record,
+and the generic MP1 compiler `mp1CarrierLiveDirect_of_steps` DISCHARGES the `mp1` leg
+outright — the spine row "A8D-S0 → generic MP1 compiler → MP1CarrierLive" is landed; the
+remaining MP1 work is exactly C4d/C5d on the D3/D4 key tails.  Pre-enactment state
+archived at commit `3d545e6e`.
+
 ### 12.1 Decision and exact consumer reduction
 
 Choose fork **(β)**: remove `GNCitePayload` from the live recenter producer and use the

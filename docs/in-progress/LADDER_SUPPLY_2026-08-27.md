@@ -1536,3 +1536,38 @@ timeout 580 ~/.elan/bin/lake env lean scratch/TAU_probe.lean
 Exit `0`, zero warnings, zero `sorry`.  Every printed declaration depends only on
 `[propext, Classical.choice, Quot.sound]`.  No landed `.lean`, leanspec file, or existing
 scratch file was edited.
+
+## [AI8E 2026-08-28] A-I.8 ENACTED — `S2-RECENTER-EXPORT` re-scoped to the DIRECT fields
+
+`GNCitePayload` is RETIRED from the live recenter surface (DWR's stop-line
+`runs/wave-c/verdict_DWR.md`: the payload shape is structurally defective — the
+GN-selected factor can never literally equal the recentered key, so NO source-faithful
+occurrence exists, for ANY tower; adjudication `runs/wave-c/verdict_A8D.md` chose the
+direct key route; enactment `runs/wave-c/verdict_AI8E.md`).  Production surface:
+`leanfinal/Uniformity/ChapI/I10RecenterDirect.lean` (`DirectKeyPayload` /
+`RecenterStepDirect` / `MP1CarrierLiveDirect` / the generic compiler
+`midPeelEmission_of_recenterStepDirect` + `mp1CarrierLiveDirect_of_steps` /
+`LadderSupplyLive₃`); the capstone `ladder` field now returns `LadderSupplyLive₃` in both
+twins.  The A-I.7 GN surface stays byte-frozen in `I10RecenterLive.lean`;
+`I10RecenterLiveS2.lean`'s three declarations stay byte-frozen with a dated re-scope note.
+
+**The `mp1` leg is DISCHARGED**: `mp1CarrierLiveDirect_of_steps` proves
+`MP1CarrierLiveDirect` outright (the direct payload + peel core compile to E.40's
+conclusion), so the record's open content is exactly `package`/`lb1`/`vartheta` — the
+supply campaign's MP1 obligation moved from "inhabit the carrier" to "produce a
+`RecenterStepDirect` occurrence" (nonvacuity, A8D's C4d/C5d).
+
+**NAMED OPEN `S2-RECENTER-EXPORT`, RE-SCOPED.**  The AI7E row list above is superseded:
+the GN-only rows (selected slope of `N⁻_{r+1}`, slope-residual interpretation, selected
+prime factor `ψ` with residual multiplicity one, `exactLeaf`) are DELETED with the
+payload, and `s2LandedPrefix_tangentClass_impossible` is no longer a blocking row
+(`DirectKeyPayload` demands no `tangentClass`).  What remains to construct at a deep
+socket, under the SAME existential witness: a recentered external `B'` with
+`source.keyPolynomial B'.Φ`; the directly proved universal `key_irreducible` law (the
+D3-16/D4-15 `IsMuKey → Irreducible` twins — never a literature axiom); and the peel core
+`MP1StepCore` WITH DWR's anti-splicing bindings (`quot.F = B'.F`, `B'.T = B.T`,
+`quot.T = B.T`, `B.F = B'.Φ * B'.F`).  SRX's degree obstruction stands unchanged: at the
+landed mass-one degree-4 S2 parent, `MP1StepCore` is empty (`hmass` forces
+`deg quot.F + D = D`), so the S2 occurrence tooth needs a parent of mass ≥ 2 — the DWC/DWR
+deep-witness tower (`docs/in-progress/DEEP_WITNESS_CAMPAIGN_2026-08-28.md` §§11–12) is the
+campaign that supplies it.

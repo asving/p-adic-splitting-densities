@@ -8,6 +8,7 @@ import Uniformity.ChapI.I06
 import Uniformity.ChapI.I07
 import Uniformity.ChapI.I10FreezeV2
 import Uniformity.ChapI.I10LadderLive
+import Uniformity.ChapI.I10RecenterDirect
 import Uniformity.ChapI.I10RecenterLive
 import Uniformity.ChapI.I10RecenterLiveS2
 import Uniformity.ChapI.IFC0

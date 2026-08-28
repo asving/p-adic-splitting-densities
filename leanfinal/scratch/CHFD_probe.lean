@@ -125,7 +125,8 @@ theorem capstoneHypotheses_two_of_core
       CanonicalLadderConfig C B G Kt L N v ρ q 2 →
       -- [A-I.6, 2026-08-28] rebound with the capstone field: the live-range record.
       -- [A-I.7, 2026-08-28] rebound again with the capstone field: the live-MP1 record.
-      Uniformity.Density.IFC5.LadderSupplyLive₂.{uW, uG, uKt, uL}
+      -- [A-I.8, 2026-08-28] rebound again with the capstone field: the direct-MP1 record.
+      Uniformity.Density.IFC5.LadderSupplyLive₃.{uW, uG, uKt, uL}
         C B G Kt L N v ρ q 2)
     (hdeep : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
       (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)

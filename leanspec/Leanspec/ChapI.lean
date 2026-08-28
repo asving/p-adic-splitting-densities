@@ -38,6 +38,7 @@ import Uniformity.ChapE.E63
 import Uniformity.ChapI.I10FreezeV2 -- [A-I.2] F3's typed freeze-v2 carriers (DeepTwistConjunctLive)
 import Uniformity.ChapI.I10LadderLive -- [A-I.6] the live-range ladder record (the `ladder` field's rebind target)
 import Uniformity.ChapI.I10RecenterLive -- [A-I.7] the recenter-step export surface + the live-MP1 record (the `ladder` field's rebind target)
+import Uniformity.ChapI.I10RecenterDirect -- [A-I.8] the DIRECT-route recenter surface + the A-I.8 record (the `ladder` field's rebind target)
 import Uniformity.ChapC
 import Uniformity.ChapC.C130sg -- [A-I.3] the SG-1 socket-application instances (the §4 gate's non-vacuity teeth)
 import Uniformity.ChapF
@@ -211,6 +212,68 @@ The S2-instance export construction is landed as far as the producer data allows
 remaining GAP rows of REX's cite mapping table are the NAMED OPEN `S2-RECENTER-EXPORT`
 (`docs/in-progress/LADDER_SUPPLY_2026-08-27.md`, [AI7E] entry).  Review:
 `docs/REVIEW_QUEUE_2026-08-26.md`, Tier 1 row A-I.7 (capstone-surface amendment).
+
+**STATE UPDATE (2026-08-28, AMENDMENT A-I.8): `GNCitePayload` IS RETIRED FROM THE LIVE
+`RecenterStep`; THE `mp1` LEG GOES CITE-FREE VIA THE DIRECT KEY ROUTE — A STATEMENT CHANGE,
+FORCED BY AN HONESTY STOP-LINE (not, this time, by a machine refutation).**  DWR
+(`runs/wave-c/verdict_DWR.md`, orchestrator re-read at enactment) proved the A-I.7 payload
+shape STRUCTURALLY DEFECTIVE: "`GNCitePayload` receives `phi := B'.Φ`.  Its `exactLeaf`
+identifies the theorem-selected `g_{λ,ψ}` with that same `phi`, while `leaf_dvd_input` and
+`RecenterStep` require `phi ∣ B.F`.  In GN's factorization, literal `phi` divisors form the
+separate key-power term.  The polynomial `phi` itself has no finite principal Newton side
+relative to its own `phi`-development, so it cannot simultaneously be a finite-slope
+selected `g_{λ,ψ}` … Consequently no source-faithful MP1 occurrence exists in this tower
+under the present payload shape" — and the defeat is payload-shape-generic ("This defeats
+every input under the current identification"), for ANY tower.  The Prop remains formally
+inhabitable by source-UNFAITHFUL instances, which is exactly why the repair is this
+amendment rather than a refutation pin.  A8D (`runs/wave-c/verdict_A8D.md`) adjudicated the
+fork: "**choose (β)**.  Retire `GNCitePayload` from the live `RecenterStep` premise and
+make the same realization export the recentered polynomial as a key for its concrete deep
+valuation, with the key-irreducibility law proved directly" — E.40's `MidPeelEmission`
+needs only `MP1StepCore` + `hirr` + `hef`; `hirr` follows from
+`Monic ∧ MuMinimal ∧ MuPrime` in `O[x]` (shape-checked `A8DProbe.irreducible_of_isMuKey`)
+plus the landed monic Gauss equivalence; the leg-by-leg generalization table has NO ROW
+BLOCKED.  The pre-enactment state is archived at commit `3d545e6e`.
+
+THE EXACT REBINDING: the `ladder` field's result record
+`Uniformity.Density.IFC5.LadderSupplyLive₂.{uW, uG, uKt, uL} C B G Kt L N v ρ q n` is
+replaced by `Uniformity.Density.IFC5.LadderSupplyLive₃.{uW, uG, uKt, uL} C B G Kt L N v ρ q n`
+(NEW `leanfinal/Uniformity/ChapI/I10RecenterDirect.lean`, namespace
+`Uniformity.Density.IFC5`, imported here and in `leanfinal`; acyclic:
+`I10_I15_I18 → I10RecenterDirect → I10RecenterLive → I10LadderLive`) — the
+`package`/`lb1`/`vartheta` fields byte-identical to A-I.7's (hence to E.24's/A-I.6's);
+ONLY the `mp1` leg is replaced by the DIRECT-route `IFC5.MP1CarrierLiveDirect`: the
+`Nonempty (MidPeelEmission B B')` conclusion is demanded only at successors `B'` exported
+by an `IFC5.RecenterStepDirect` — the SAME one-existential-witness slot/block/gauge-family
+views as A-I.7's step, the DIRECT key payload (`IFC5.DirectKeyPayload`: the same-chain
+`FGMNSourceData` record, `source.keyPolynomial B'.Φ`, and the UNIVERSAL law
+`key_irreducible : ∀ g, keyPolynomial g → Monic g → Irreducible g`, to be filled at deep
+instances by the direct `IsMuKey → Irreducible` theorems, D3-16/D4-15 — NEVER by a
+literature axiom; NO cite consumed), and the peel core CARRYING DWR's anti-splicing
+bindings (`step.quot.F = B'.F`, `B'.T = B.T`, `step.quot.T = B.T`, `B.F = B'.Φ * B'.F`).
+The five surface declarations are PROMOTED from `scratch/A8D_probe.lean` (declaration
+bytes identical, one docstring word `draft`→`live`; machine diff
+`runs/wave-c/verdict_AI8E.md`).  THE HONEST ASYMMETRY: the rebound `mp1` leg is DISCHARGED
+OUTRIGHT by the generic compiler `mp1CarrierLiveDirect_of_steps` (the direct payload plus
+the peel core already compile to E.40's conclusion), so the `ladder` field's remaining
+open content is exactly `package`/`lb1`/`vartheta`; the mathematical content moved to
+PRODUCING `RecenterStepDirect` occurrences (A8D's C4d/C5d nonvacuity teeth, resting on the
+D3/D4 key tails).  Supersession pins: `directKeyPayload_of_gnCitePayload` (payload level,
+OLD ⟹ NEW via `FGMNSourceLaws.key_irreducible`) and `ladderSupplyLive₃_of_live₂` (record
+level, OLD ⟹ NEW); NO step-level adapter exists in either direction — old→new fails on
+DWR's four bindings (strictly new producer content), new→old on the GN
+slope/residual/leaf data — recorded in `I10RecenterDirect.lean` §3.  This weakens a
+hypothesis and therefore STRENGTHENS the conditional capstone; the field list and
+I.15–I.18's statements are BYTE-UNCHANGED.  `LadderSupplyLive₂` and the whole GN export
+surface (`GNCitePayload`/`RecenterStep`/`MP1CarrierLive`) stay byte-frozen in
+`I10RecenterLive.lean` as the A-I.7 tension record; `I10RecenterLiveS2.lean`'s three
+declarations stay byte-frozen with a dated re-scope note (the tangent-class certificate is
+no longer a blocking row — `DirectKeyPayload` demands no `tangentClass`).  Gate change:
+item (3) ALONE (`hstep` becomes the DIRECT-route export `RecenterStepDirect`); items
+(2)/(4) are unchanged.  The NAMED OPEN `S2-RECENTER-EXPORT` is RE-SCOPED to the direct
+fields (`docs/in-progress/LADDER_SUPPLY_2026-08-27.md`, [AI8E] entry); the GN-only rows
+are DELETED with the payload.  Review: `docs/REVIEW_QUEUE_2026-08-26.md`, Tier 1 row
+A-I.8 (capstone-surface amendment).
 
 Since 2026-08-20 the definitional layer I.01–I.03/I.05–I.07/I.21 IS landed in `leanfinal`
 (`Uniformity/ChapI/I01.lean` … `I21.lean`, byte-frozen transcriptions), and A-I.3's Stage-2
@@ -1084,13 +1147,22 @@ structure CapstoneHypotheses (n : ℕ) : Prop where
   -- (`scratch/REX_probe.lean`, Lean-core, archived pre-rebind at commit 05f067b7;
   -- adjudication `runs/wave-c/verdict_REX.md`) — again a forced weakening of a hypothesis,
   -- hence a STRENGTHENING of the conditional capstone.
+  -- [A-I.8, 2026-08-28 — STATEMENT CHANGE (rebind)] the result record is the A-I.8 record
+  -- `IFC5.LadderSupplyLive₃` (ONLY the `mp1` leg replaced by the DIRECT-route
+  -- `MP1CarrierLiveDirect`: `GNCitePayload` is RETIRED from the live surface — DWR proved
+  -- its shape structurally defective (the GN-selected factor can never literally equal the
+  -- recentered key, so NO source-faithful occurrence exists, for ANY tower: an HONESTY
+  -- stop-line, not a machine refutation; `runs/wave-c/verdict_DWR.md`) — the direct payload
+  -- demands the recentered key's key-hood + a directly proved irreducibility law, and the
+  -- rebound `mp1` leg is DISCHARGED generically by `mp1CarrierLiveDirect_of_steps`
+  -- (adjudication `runs/wave-c/verdict_A8D.md`; archived pre-enactment at commit 3d545e6e).
   ladder : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
       (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
       (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
       [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
       (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
       CanonicalLadderConfig C B G Kt L N v ρ q n →
-      Uniformity.Density.IFC5.LadderSupplyLive₂.{uW, uG, uKt, uL}
+      Uniformity.Density.IFC5.LadderSupplyLive₃.{uW, uG, uKt, uL}
         C B G Kt L N v ρ q n
   -- [A-I.1, defect I-D4] Display A's `∀ i ≥ 3` conjunct, BOTH halves, at E.63's packaging.
   -- [A-I.2(b), 2026-08-24] re-signed at the freeze-v2 LIVE RANGE: the conjunct is read at the
@@ -1147,6 +1219,9 @@ example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
 -- [A-I.7, 2026-08-28] the consumption now additionally costs the recenter-step export
 -- `hstep` (the rebound `mp1` leg's premise) — the honest price REX established: without it
 -- the unrestricted demand is refutable at the landed degree-4 S2 socket, not merely open.
+-- [A-I.8, 2026-08-28] `hstep` is now the DIRECT-route export (`RecenterStepDirect`: the GN
+-- payload retired per DWR's stop-line, the DWR anti-splicing bindings added); the
+-- application shape is unchanged.
 example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
     (K : Type) [Field K] (C : Ladder.SlotCarrier ℤ K) (B : Ladder.BlockData C)
     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
@@ -1155,7 +1230,7 @@ example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
     (hcfg : CanonicalLadderConfig C B G Kt L N v ρ q n)
     (Λ : Polynomial ℤ) (hΛ : Λ ≠ 0) (hdeg : Λ.natDegree < C.D) (B' : Ladder.BlockData C)
     (hB' : B'.Φ = B.Φ - Λ) (hdvd : B'.Φ ∣ B.F)
-    (hstep : Uniformity.Density.IFC5.RecenterStep.{uW, uG, uKt, uL}
+    (hstep : Uniformity.Density.IFC5.RecenterStepDirect.{uW, uG, uKt, uL}
       C B B' G Kt L N v ρ q n Λ) :
     Nonempty (Ladder.MidPeelEmission.{0, 0, uW} B B') :=
   (h.ladder ℤ K C B G Kt L N v ρ q hcfg).mp1 Λ hΛ hdeg B' hB' hdvd hstep

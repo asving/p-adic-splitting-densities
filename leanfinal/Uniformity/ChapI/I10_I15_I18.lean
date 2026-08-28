@@ -12,6 +12,7 @@ import Uniformity.ChapI.I07
 import Uniformity.ChapI.I10FreezeV2
 import Uniformity.ChapI.I10LadderLive
 import Uniformity.ChapI.I10RecenterLive
+import Uniformity.ChapI.I10RecenterDirect
 import Uniformity.ChapE.E24
 import Uniformity.ChapC.C130sg
 import Uniformity.Density.Statement
@@ -29,7 +30,11 @@ conclusion is machine-refuted at degree 4, `scratch/AI6_probe.lean` archived at
 `ce301df1` — and by A-I.7, 2026-08-28 — rebound again to `IFC5.LadderSupplyLive₂`
 (`I10RecenterLive.lean`, ONLY the `mp1` leg replaced by the same-realization
 `MP1CarrierLive`); the A-I.6 record's unrestricted `mp1` is machine-refuted at degree 4,
-`scratch/REX_probe.lean` archived at `05f067b7`**).  **ENV-I1**.  Statements transcribed BYTE-FROZEN from the amended leanspec;
+`scratch/REX_probe.lean` archived at `05f067b7` — and by A-I.8, 2026-08-28 — rebound again
+to `IFC5.LadderSupplyLive₃` (`I10RecenterDirect.lean`, ONLY the `mp1` leg replaced by the
+DIRECT-route `MP1CarrierLiveDirect`; `GNCitePayload` retired from the live surface per
+DWR's structural stop-line + A8D's adjudication, `scratch/A8D_probe.lean` archived at
+`3d545e6e`**).  **ENV-I1**.  Statements transcribed BYTE-FROZEN from the amended leanspec;
 re-namespaced only (`LeanspecI` → `Uniformity.Density`, GC-6.2: chapter I gets no
 sub-namespace).  Unit RSGN (the capstone-gate unit), 2026-08-26.
 
@@ -173,13 +178,22 @@ structure CapstoneHypotheses (n : ℕ) : Prop where
   -- (`scratch/REX_probe.lean`, Lean-core, archived pre-rebind at commit 05f067b7;
   -- adjudication `runs/wave-c/verdict_REX.md`) — again a forced weakening of a hypothesis,
   -- hence a STRENGTHENING of the conditional capstone.
+  -- [A-I.8, 2026-08-28 — STATEMENT CHANGE (rebind)] the result record is the A-I.8 record
+  -- `IFC5.LadderSupplyLive₃` (ONLY the `mp1` leg replaced by the DIRECT-route
+  -- `MP1CarrierLiveDirect`: `GNCitePayload` is RETIRED from the live surface — DWR proved
+  -- its shape structurally defective (the GN-selected factor can never literally equal the
+  -- recentered key, so NO source-faithful occurrence exists, for ANY tower: an HONESTY
+  -- stop-line, not a machine refutation; `runs/wave-c/verdict_DWR.md`) — the direct payload
+  -- demands the recentered key's key-hood + a directly proved irreducibility law, and the
+  -- rebound `mp1` leg is DISCHARGED generically by `mp1CarrierLiveDirect_of_steps`
+  -- (adjudication `runs/wave-c/verdict_A8D.md`; archived pre-enactment at commit 3d545e6e).
   ladder : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
       (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
       (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
       [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
       (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
       CanonicalLadderConfig C B G Kt L N v ρ q n →
-      Uniformity.Density.IFC5.LadderSupplyLive₂.{uW, uG, uKt, uL}
+      Uniformity.Density.IFC5.LadderSupplyLive₃.{uW, uG, uKt, uL}
         C B G Kt L N v ρ q n
   -- [A-I.1, defect I-D4] Display A's `∀ i ≥ 3` conjunct, BOTH halves, at E.63's packaging.
   -- [A-I.2(b), 2026-08-24] re-signed at the freeze-v2 LIVE RANGE: the conjunct is read at the
