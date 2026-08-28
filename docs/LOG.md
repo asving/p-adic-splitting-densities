@@ -456,3 +456,16 @@ WLE anchored the exporter design (deep inhabitants open); SMGR PROVED Smith GR-7
 MSF3 REFUTED MSF at j≥3 (depth-6 secant) and replaced it with the open MSF-GENRE,
 proving GSP-n ⇒ U(n) and separated-family WASH-n. Five agents died to 529 storms
 overnight; increment-resume cycling lost nothing.
+
+## 2026-08-28 ~05:35 — the first cite falls; Theorem A math-closed
+
+H0LEG proved `fgmn_dv_exact_mul_full` — the declared cite's statement byte-identical,
+footprint exactly Lean-core (the h = 0 leg via the order-1 exact chain after the twist
+dies; NOT vacuous). The trusted base is effectively SIX cites; physical axiom removal
+waits on a textual import untangle (no logical circularity — flagged, queued). MH9M
+(codex sol-HIGH) math-proved Theorem A end to end against the exact landed statements
+(the above-line mixed read law with the η^δ carry cancelling at τ=1; Lemma S; the full
+§4.3–4.4 assembly; 3188 checks pass); MH9L (Fable) is transcribing the nine-node list —
+the engine's final unit. A-I.6 was ENACTED earlier tonight (CapstoneHypotheses.ladder
+rebound to the live-range record after AI6 machine-refuted the signed field at n = 4;
+I.15–I.18 byte-unchanged and green).
