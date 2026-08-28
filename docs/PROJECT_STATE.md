@@ -148,13 +148,15 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | MH11 | Theorem B `dv_oneSlope_split_unique` | DONE (f061b65c) — F1.H2 CLOSED unconditionally, zero carried hypotheses; ∃/∀-pin resolutions recorded |
 | MH12 | §6.1 defect-vanishing + Gauss descent | DONE (3647cc6e) — the three primitives feeding MH.13; defect-vanishing proved symmetric/stronger |
 | MH13 | Theorem C placement | DONE — theoremC_placement §2-verbatim (A-C.20 competitor shape byte-matched) + the reusable per-prime core, UNCONDITIONAL; proof strengthens §6.2 (Squarefree carried-unconsumed, statement unchanged); survived FOUR 529 deaths via increment-resume cycling |
-| MH14T | §8 BlockFrontier-from-BlockContext modulo Theorem A (transport + assembly) → C133mh14 | IN FLIGHT (Fable, ~02:35) |
-| MH5S | the §4.1 side lift Λ + clause lemmas; Lemma S stretch → C133mh5 | IN FLIGHT (Fable, ~02:35) |
-| H0LEG | the h=0 degenerate leg + the actual cite retirement pass (axiom → theorem, allowlist −1) | QUEUED — after the assembly wave |
+| MH14T | §8 BlockFrontier modulo Theorem A | DONE (3c84fdbd) — residual_transport Lean-core + blockFrontier_of_context_of_theoremA (sole extra axiom: the allowlisted dissection cite); THE ENGINE'S GAP IS THEOREM A ALONE |
+| MH5S | the §4.1 side lift + Lemma S prefix | DONE (79244661) — MH.5 CLOSED (R(Λ(P)) = P exactly, finiteness-free); MH.7 prefix proved; `LemmaSStatement` carried — the missing leg is M clause 3 ABOVE the support line (MH.9's obligation, the next engine math node) |
+| AI6E | ENACT A-I.6: rebind CapstoneHypotheses.ladder per the AI6 verdict diff (I10LadderLive.lean, IFC5 dedup, I.15–I.18 ripple, leanspec record, probe re-pin) | IN FLIGHT (Fable, ~04:15) |
+| MH9 | Theorem A assembly: the above-line mixed read law (LemmaSStatement's missing leg) + Lemma S + §4.3–4.4 iteration on M4 + MH.8 limits | QUEUED — the engine's last math node |
+| H0LEG | the h=0 degenerate leg + the cite retirement pass (axiom → theorem, allowlist −1) | QUEUED |
 | LVT | enact VAUD's vartheta owner amendment | DONE (a38c26af) — IFC5.lean supersession (six live-range decls + OLD⟹NEW pins); IFC0 byte-frozen tension record; leanspec comment record; `LadderFieldLive` is the ladder target; A-I.6 (CapstoneHypotheses.ladder rebinding) adjudication QUEUED for the codex wave |
 | MH10 | Theorem H0 `dvResidualBezout` (mathlib-only UFD arithmetic) → C133mh10 | IN FLIGHT (Sonnet) |
 | MH0A6 | MH.0a + MH.0c remainder + MH.6 (M4) | DONE (ae36c7a1) — C133mh0.lean, 7/7 Lean-core, every clause unweakened; MH.4 is the only small pre-assembly node left |
-| (03:03 codex) | sol-HIGH wave when the 5h window resets: A-I.6 adjudication (is IFC0.LadderField refutable at the landed corpus — assemble VAUD's countermodel inside the quantification — or does a GCW-style rider suffice?), MP1 route redesign, LB1 guard-link, WleCleared per-level exporter (deepTwist deep witness), Smith GR-7b-0R, MSF j≥3 | QUEUED |
+| (wave-c) | six codex sol-HIGH units 03:04–03:27 | ALL LANDED (ce301df1) — ★AI6: ¬CapstoneHypotheses 4 PROVED (probe orchestrator-re-verified) ⟹ A-I.6 REBIND FORCED, exact acyclic diff delivered; MP1R: unrestricted MP1Carrier FALSE (countermodel re-verified), blocker = the producer-side recenter export; LB1G: RESTRICT-ANYWAY + LB1CarrierLive designed; WLE: exporter designed-anchored, deep inhabitants open; SMGR: GR-7b-0R PROVED, I+/II+ partial (SMGR-I-COMB, SMGR-RSE named); MSF3: MSF j≥3 REFUTED-BY a depth-6 secant, MSF-GENRE is the open replacement, GSP-n ⇒ U(n), WASH-n for separated μ=2 families n≥5 |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly are unreported milestones |
 
 ## 7. Resume protocol (fresh agent)

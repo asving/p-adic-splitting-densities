@@ -437,3 +437,22 @@ M4 perturbation law (C133mh0.lean, every clause unweakened); MH10 landed Theorem
 IFC0 byte-frozen; A-I.6 rebinding adjudication queued to codex). ALL THREE MHDISP gates
 are now LANDED — the assembly fleet is unfenced; MH4/MH11/MH12 launched; wave-c (six
 codex sol-HIGH units) armed in tmux for the 03:04 window reset.
+
+## 2026-08-28 ~04:20 — the engine reaches Theorem-A-only; wave-c reshapes the ladder campaign
+
+Overnight assembly fleet (post-root): MH.4 (M-monic), MH.10 (H0, orchestrator-finished),
+MH.11 (Theorem B, zero carried hypotheses), MH.12 (defect-vanishing/no-far-primes/Gauss
+descent), MH.13 (Theorem C, §2-verbatim; proof strengthens §6.2 — Squarefree carried
+unconsumed), MH14T (`blockFrontier_of_context_of_theoremA`: BlockContext + Theorem A ⟹
+signed BlockFrontier; transport Lean-core; sole extra axiom the allowlisted dissection
+cite), MH5S (MH.5 CLOSED: the side lift with R(Λ(P)) = P exact, finiteness-free; MH.7
+prefix; `LemmaSStatement` carried). THE ENGINE'S ONE REMAINING MATH NODE: Theorem M
+clause 3 above the support line → Lemma S → the §4.3–4.4 iteration (= MH.9).
+Wave-c (six codex sol-HIGH, 23 min): AI6 PROVED ¬CapstoneHypotheses 4 on the landed
+corpus (the VAUD teeth assemble inside the signed quantification at the S2 exports) —
+the A-I.6 rebind is FORCED and its exact acyclic diff delivered; enactment unit AI6E
+launched. MP1R proved unrestricted MP1Carrier FALSE; LB1G adjudicated RESTRICT-ANYWAY;
+WLE anchored the exporter design (deep inhabitants open); SMGR PROVED Smith GR-7b-0R;
+MSF3 REFUTED MSF at j≥3 (depth-6 secant) and replaced it with the open MSF-GENRE,
+proving GSP-n ⇒ U(n) and separated-family WASH-n. Five agents died to 529 storms
+overnight; increment-resume cycling lost nothing.
