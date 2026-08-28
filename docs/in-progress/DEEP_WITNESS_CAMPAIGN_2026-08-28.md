@@ -703,3 +703,135 @@ A-I.8-authorized surface decision separates the GN test key from the selected em
 or replaces the GN leg by the direct key-irreducibility route.  After such a repair, the
 remaining exits are provenance binding, all five L2E acceptance tests, and G10's universal
 theorem families.  One occurrence without G10 would still not be a `LadderSupplyLive₂` result.
+
+## 12. [A8D 2026-08-28] binding A-I.8 adjudication: direct key route
+
+This section supersedes §11 wherever that section keeps the MP1 branch stopped at G9 or
+retains GN-only nodes.  The adjudication record is `runs/wave-c/verdict_A8D.md`; the exact
+statement shape compiles in `leanfinal/scratch/A8D_probe.lean`.  No landed Lean/leanspec
+statement is changed by this blueprint amendment.
+
+### 12.1 Decision and exact consumer reduction
+
+Choose fork **(β)**: remove `GNCitePayload` from the live recenter producer and use the
+direct key-irreducibility route.  E.40's conclusion needs no selected completed factor:
+
+| E.40 field group | supplier after A-I.8 |
+|---|---|
+| `quot`, `hkey`, `hpeel`, `hmass`, `hthr`, `iface` | `MP1StepCore` |
+| `hirr` | direct keyhood of `B'.Φ` → ordinary irreducibility → monic Gauss transport |
+| `hef` | `B'.hΦdeg.trans C.hef` |
+
+Route (α) would retain principal-side, completion-factor, descent, and multiplicity
+machinery whose outputs the consumer discards.  Route (β) instead consumes the deep key
+predicate and irreducibility law already required by D3-15/16 and D4-13--15.  It is not
+blocked, but it is not yet landed at absolute μ₄/μ₅.
+
+`C134p1d.isMuKey_of_isTestKey` is generic over a `KeyFrame` plus one `LevelDatum`; its
+actual terms are still `dvSupp F · L.u L.ℓ` and `dvResPoly F ... · L.u L.ℓ`.
+Consequently it does not definitionally instantiate at the recursive `g8`-development μ₄
+or `keyAt4`-development μ₅ operators.  Its architecture does generalize.  The required
+operator twins are the same deep key-tail work already present in this campaign.
+
+### 12.2 Generalization matrix
+
+| direct-key leg | one `LevelDatum` | μ₄ `(2,1,85)` | μ₅ `(1,1,171)` |
+|---|---|---|---|
+| monic/positive recipe degree | **landed**: `IsTestKey` clause 1 + `natDegree_pos_of_isTestKey` | **twin needed**: D3-14--D3-16, degree 16 | **twin needed**: D4-12/D4-14, degree 16 |
+| μ-minimality degree contradiction | **landed**: `not_residual_dvd_of_natDegree_lt` + `muMinimal_of_isTestKey`; C.26 exact degree/nonzero | **twin needed**: D3-08/12/15; the below-16 two-slot residual must be a nonzero constant/unit | **twin needed**: D4-08/09/13; a below-16 remainder has only slot 0 |
+| μ-primality head | **landed**: `residual_dvd_or_of_muDvd_mul` from Theorem M clause 3 | **twin needed**: L2E-09 → D3-12 product law | **twin needed**: D4-07/09 recursive product law |
+| residual lift | **landed**: `muDvd_of_residual_dvd`, quotient/remainder + line-read tie transfer | **twin needed, unblocked**: D3-15; use the concrete two-slot `C132kp1` pattern | **twin needed, unblocked**: D4-13; the one-slot remainder is simpler |
+| assemble keyhood | **landed**: `isMuKey_of_isTestKey` | **twin needed**: D3-15/16 | **twin needed**: D4-13/14 |
+| keyhood → `Irreducible O[x]` | generic proof shape validated in A8D probe; concrete lower twins landed in `C130fd0`/`C132kp5` | algebra-only twin in D3-16 | same twin in D4-15 |
+| Gauss to E.40 `hirr` | **landed** | **landed after key proof** | **landed after leaf key proof** |
+
+No cell is blocked.  Theorem M is frame-generic at the exact P1D interface; L2E-09 is its
+μ₄ operator twin and D4-07/09 its μ₅ recursive instance.  C.26 and the remainder
+mechanism likewise need operator-facing twins rather than new mathematics.
+
+### 12.3 A-I.8 statement draft
+
+Retire `GNCitePayload` from the live dependency surface and add:
+
+```lean
+structure DirectKeyPayload ... (A : ChainRealization ...) (phi : Polynomial O) where
+  e' f' u' : ℕ
+  source : FGMNSourceData core.T A.keys e' f' u'
+  keyPolynomial : source.keyPolynomial phi
+  key_irreducible : ∀ g, source.keyPolynomial g → g.Monic → Irreducible g
+```
+
+At every concrete supplier, `key_irreducible` must be filled by the direct deep-key proof;
+the payload deliberately omits the other twelve `FGMNSourceLaws` fields and authorizes no
+citation or axiom.  Amend the tail of
+`RecenterStep` exactly as follows:
+
+```diff
+- (∃ (kRes : Type) (_fRes : Field kRes),
+-   Nonempty (GNCitePayload (Kt := Kt) (L := L) A B.F B'.Φ kRes)) ∧
+- Nonempty (MP1StepCore B B')
++ Nonempty (DirectKeyPayload A B'.Φ)
++ ∃ step : MP1StepCore B B',
++   step.quot.F = B'.F ∧
++   B'.T = B.T ∧
++   step.quot.T = B.T ∧
++   B.F = B'.Φ * B'.F
+```
+
+Keep the same `core/A/X/eK/eG` existential owner, all slot/block/gauge views, the nonzero
+and degree conditions on `Lambda`, the recenter equality, and `B'.Φ ∣ B.F`.
+`MP1CarrierLive` changes only to consume this amended step; its quantifier prefix and
+`Nonempty (MidPeelEmission B B')` conclusion remain unchanged.  Add the direct compiler
+which projects the core, applies the payload's `key_irreducible`, applies monic Gauss, and
+fills `hef` definitionally.
+
+### 12.4 Consumer/supplier obligations
+
+| boundary | producer must supply | consumer obtains |
+|---|---|---|
+| same-realization provenance | one `core/A/X`, the three views, exact `Lambda`, successor and quotient bindings | no owner/view splicing |
+| μ₄ prerequisite | L2E, D3-12, D3-14--D3-19; direct `key_irreducible` fills D3-18 source laws | carried degree-16 `keyAt4` and honest μ₄ calculus |
+| μ₅ direct leaf | D4-09, D4-12--D4-15; direct `leaf` keyhood and irreducibility | `DirectKeyPayload A leaf` |
+| quotient gate | `quot.F=B'.F=keyAt4+1`, quotient `hkeyfree`, threshold and peel bindings | full `MP1StepCore` and E.40 items 2--4 |
+| occurrence | C4d/C5d for the exact `X`, `Lambda`, and `B'` | one nonvacuous `MidPeelEmission` |
+| universal MP1 carrier | generic direct-step compiler, validated as `mp1CarrierLiveDirect_of_steps` | `LadderSupplyLive₂.mp1` without extrapolating from one occurrence |
+| remaining full-supply fields | re-scoped G10 deep-level/vartheta exporter plus separate HE7A `package` and `lb1` | the non-MP1 fields of `LadderSupplyLive₂`; one occurrence alone remains insufficient |
+
+### 12.5 Node additions, deletions, and revised spine
+
+Delete GN-only G0, G1, G8, and G9 and all their edges.  Residual multiplicity of the
+input `F0` is no longer an MP1 gate; direct keyhood concerns `B'.Φ` itself.  Replace in
+place:
+
+| old row | binding replacement |
+|---|---|
+| G2 payload/provenance amendment | **A8D-S0** direct payload, amended recenter step, generic key→irreducible bridge, compiler, and anti-cook review |
+| G5 GN refinement admissibility | direct μ₅ refinement/operator admissibility only |
+| C4r honest GN binding | **C4d direct key binding** from D4-12--D4-17 under the same `A.keys` |
+| C5r provenance-bound recenter/MP1 | **C5d direct recenter/MP1 occurrence tooth**, retaining G7 and every DWR binding |
+
+Strengthen D3-15/16 and D4-13--15 with the exact matrix obligations above; D3-18 and
+D4-17 independently reuse the direct theorem for their full source-law records.  These are
+not new count rows because their existing descriptions already promise residual-divisibility
+equivalence, criterion, and irreducibility.  Re-scope G10 by deleting its
+`MP1EmissionPerWitnessExporter` half: the generic direct compiler supersedes it.  Retain
+G10's deep-level/vartheta universal half, G7, L2E, R8r, and the remaining full-supply fences.
+
+Under §11's counting convention the campaign changes from 83 to **79 conditional nodes**:
+four GN-only nodes are deleted; G2/G5/C4r/C5r are replaced in place.  The revised spine is
+
+```text
+L2E → D3-12 → D3-15/16 → D3-18/19
+                         ↓
+        D4-09 → D4-12 → D4-13/14/15 → D4-17
+                                             ↓
+A8D-S0 → generic MP1 compiler → MP1CarrierLive
+G7 + R8r/R9 + D4-17 ─────────────────→ C4d → C5d  (nonvacuity)
+deep-level/vartheta producers ───────────────→ G10      (other field)
+```
+
+The MP1 stop-line is no longer GN indexing.  The remaining exit is internal and exact:
+land both deep key tails without an axiom, pass G7, construct the provenance-bound direct
+step as a nonvacuity tooth, and finish the independent G10-vartheta/HE7A/LB1 obligations
+before claiming a ladder supply record.  MP1's universal implication itself is discharged
+by the generic compiler, not by extrapolation from C5d.
