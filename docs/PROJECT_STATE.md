@@ -69,13 +69,18 @@ never pipe an output you need through head/tail; never trust a bare name-grep
 
 ## 3. Trusted base (cites)
 
-Declared-and-landed allowlist (SEVEN declared, SIX effective): `exists_slope_factorization`,
-`fgmn_residual_mul`, `agnprw_termination`, `bBox1_cite`, `exists_dvDissection`,
-`fgmn_dvDissection_factor_eq`, and `fgmn_dv_exact_mul` (C66b) — the last **PROVED
-REDUNDANT 2026-08-28** (`C133h0leg.fgmn_dv_exact_mul_full`, byte-identical, Lean-core;
-retirement records in C66b + AXIOM_FAITHFULNESS; physical removal queued behind the
-textual C130nv→C131ae import untangle — no logical circularity, all engine footprints
-Lean-core).
+Declared-and-landed allowlist, SIX (2026-08-28, unit UNT — physically SIX, not just
+effectively): `exists_slope_factorization`, `fgmn_residual_mul`, `agnprw_termination`,
+`bBox1_cite`, `exists_dvDissection`, `fgmn_dvDissection_factor_eq`. `fgmn_dv_exact_mul`
+(C66b) is **PHYSICALLY RETIRED 2026-08-28**: unit H0LEG proved it redundant
+(`C133h0leg.fgmn_dv_exact_mul_full`, byte-identical, Lean-core) but the removal was
+blocked by a textual import cycle (its sole consumer, `C131ac.lean:120`, sat inside the
+theorem's own import foundation via `C130nv → C131ae → C131ac`); unit UNT untangled it
+(`C130nv`'s one used `C131ae` lemma, `suppVal_add_eq_left_of_lt`, split verbatim into a
+new `C131ac`-free file `C131ae0.lean`) and converted the `axiom` keyword to a `theorem`
+in `C66b.lean` in place, statement bytes unchanged. `#print axioms` of the theorem and
+every downstream consumer (`C131ac`'s pow chain, `C131ae`'s `mem_towerLocus_of_budget`)
+now print Lean core only. Verdict: `runs/wave-c/verdict_UNT.md`.
 Pending authoring under the new protocol (each gets a faithfulness entry +
 CITE_REVIEW_LIST row): **C.94** (AGNPRW Thm 5.6 termination — the A-C.6 redraft
 `NS7TerminationStatementR` exists, machine-safe, ready to declare), **C.92**:

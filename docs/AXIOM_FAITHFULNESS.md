@@ -480,13 +480,26 @@ extends to `dvSideSet = sideSet F.key` under the finiteness guard, the key IS an
 key there (`IsKey F.key`, from `hresirr` through `frameRes = (key mod π) ⊗ resFieldXEquiv`),
 and B39a's order-1 `resPoly_mul_gen` + side laws supply both conjuncts, the floor
 degenerating to exactly B39a's `0 < u`). The faithfulness analysis above is RETAINED as
-the statement's provenance record. **Physical removal pending:** the `axiom` declaration
-still stands and its one proof consumer (`C131ac.lean:120`, feeding the
-`composedKey_pow_mem_towerLocus` chain and its downstream footprints) lies inside the
-theorem's own import foundation (`C133mh3 → C133mh1 → C130nv3 → C130nv2 → C130nv →
-C131ae → C131ac`), so the textual re-route is an import cycle until the orchestrator
-untangles that path — flagged. Until then footprints naming the axiom are PROVED
-REDUNDANT (dischargeable once the graph permits), and the owner's secondary review of
-the dictionary is no longer load-bearing for the mathematics — the statement stands on
-Lean core; the review remains valuable only as a check that the RETIRED cite text matched
-its source. No new consumer may cite the axiom; cite `fgmn_dv_exact_mul_full`.
+the statement's provenance record.
+
+**PHYSICALLY RETIRED (2026-08-28, unit UNT).** H0LEG's blocker was a textual import
+cycle: the axiom's one proof consumer (`C131ac.lean:120`) sat inside the theorem's own
+import foundation (`C133mh3 → C133mh1 → C130nv3 → C130nv2 → C130nv → C131ae → C131ac`).
+UNT untangled it: `C130nv`'s entire use of `C131ae` was one lemma
+(`suppVal_add_eq_left_of_lt`, C.05's budget-floor case split), whose proof never touches
+`C131ac` (chapter B only, `B32a`/`B32b`). That lemma + its self-contained prerequisite
+chain (`addVal_neg`, `gaussVal_neg`, `dev_neg_of_monic`, `suppVal_neg`) was split
+VERBATIM (byte-identical, machine-diffed) into a new file, `C131ae0.lean`, same
+namespace, no `C131ac` import; `C130nv` now imports `C131ae0` instead of `C131ae`. This
+removes `C131ac`/`C66b` from every `C130nv`-descendant's transitive import closure
+(machine-checked via the import graph — `C133h0leg`'s closure no longer contains
+`C131ac` or `C66b`), so `C66b.lean` now imports `C133h0leg` and the `axiom` keyword is
+GONE: `fgmn_dv_exact_mul` is a `theorem`, statement bytes unchanged, `:=
+C133h0leg.fgmn_dv_exact_mul_full ...`. `#print axioms` of `fgmn_dv_exact_mul` and of every
+downstream consumer (`C131ac`'s `fgmn_dv_exact_pow`/`isDvPure_pow`/`dvResPoly_pow_exact`/
+`composedKey_pow_mem_towerLocus`, `C131ae`'s `mem_towerLocus_of_budget`) now print exactly
+`[propext, Classical.choice, Quot.sound]` — Lean core, footprint IMPROVED from carrying
+the axiom. The allowlist count returns to SIX. The owner's secondary review of the
+dictionary is no longer load-bearing for the mathematics — the statement stands on Lean
+core; the review remains valuable only as a check that the retired cite text matched its
+source. Full route + verification: `runs/wave-c/verdict_UNT.md`.

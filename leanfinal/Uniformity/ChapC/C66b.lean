@@ -5,6 +5,7 @@ Authors: Asvin G
 -/
 import Uniformity.ChapC.C29
 import Uniformity.ChapC.C14a
+import Uniformity.ChapC.C133h0leg
 
 /-!
 # Uniformity.ChapC.C66b — `[cite:FGMN]` gate (b): EXACT dv-purity closure and residual
@@ -70,24 +71,35 @@ propagation, C.80/C.67's re-signed floor conjuncts' eventual proofs.
 
 ## Status
 
-ONE axiom (`fgmn_dv_exact_mul`).  `#print axioms` of the companion theorem shows exactly
-this axiom + Lean core.  Census/C.126 note: the declared-cite allowlist grows to SEVEN.
+ZERO axioms.  `fgmn_dv_exact_mul` is now a THEOREM (see the `[UNT 2026-08-28]` note
+below) — its `#print axioms` footprint is exactly Lean core.  Census/C.126 note: the
+declared-cite allowlist is back to SIX.
 
-## [H0LEG 2026-08-28] RETIRED AS A THEOREM — the machine certificate exists
+## [H0LEG 2026-08-28] the machine certificate — [UNT 2026-08-28] PHYSICALLY RETIRED
 
-The axiom's statement is PROVED, byte-identically (binders and conclusion verbatim, no `h`
-hypothesis), as `Uniformity.Density.Tower.C133h0leg.fgmn_dv_exact_mul_full`
+The axiom's statement was PROVED, byte-identically (binders and conclusion verbatim, no
+`h` hypothesis), as `Uniformity.Density.Tower.C133h0leg.fgmn_dv_exact_mul_full`
 (`C133h0leg.lean`), whose AxCheck footer prints exactly
 `[propext, Classical.choice, Quot.sound]`.  Route: C133mh3's landed
 `fgmn_dv_exact_mul_thm` (Theorem M, at `0 < F.h`) glued with the degenerate leg
 `C133h0leg.fgmn_dv_exact_mul_h0` (at `F.h = 0` coprimality forces `e₁ = 1`, the twist
 dies, and C.05's degenerate dictionary collapses the dv-calculus to chapter B's order-1
-exact chain at the key — B39a/B43).  The `axiom` text below is retained TEMPORARILY: its
-one proof consumer (`C131ac.lean:120`) sits inside the theorem's own import foundation
-(`C133mh3 → C133mh1 → C130nv3 → C130nv2 → C130nv → C131ae → C131ac`), so re-routing it
-here is an import cycle until the orchestrator untangles that path.  **No NEW consumer may
-cite this axiom — cite `fgmn_dv_exact_mul_full`.**  Faithfulness record with the
-retirement entry: `docs/AXIOM_FAITHFULNESS.md` (RETIRED-AS-THEOREM, 2026-08-28).
+exact chain at the key — B39a/B43).
+
+H0LEG found the physical removal blocked by a textual import cycle: the axiom's sole
+proof consumer (`C131ac.lean:120`) sat inside the theorem's own import foundation
+(`C133mh3 → C133mh1 → C130nv3 → C130nv2 → C130nv → C131ae → C131ac`).  **UNT (2026-08-28)
+untangled it**: `C130nv`'s ENTIRE use of `C131ae` was one lemma
+(`suppVal_add_eq_left_of_lt`) whose proof never touches `C131ac` — chapter B only
+(`B32a`/`B32b`).  That lemma (+ its self-contained prerequisite chain) was split out
+VERBATIM, same namespace, into `C131ae0.lean` (no `C131ac` import), and `C130nv` now
+imports `C131ae0` instead of `C131ae`.  This removes `C131ac`/`C66b` from every
+`C130nv`-descendant's import closure (machine-checked: `C133h0leg`'s transitive imports
+no longer contain `C131ac` or `C66b`), so `C66b` can safely import `C133h0leg` and
+convert the axiom to a theorem below, in place, statement bytes unchanged.  Full route +
+verification: `runs/wave-c/verdict_UNT.md`.  Faithfulness record with the retirement
+entry: `docs/AXIOM_FAITHFULNESS.md` (RETIRED-AS-THEOREM, 2026-08-28; PHYSICALLY RETIRED,
+UNT 2026-08-28).
 -/
 
 set_option linter.style.longLine false
@@ -102,8 +114,13 @@ variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π :
 (J. Algebra 427 (2015), Thm 2.8 (principal-polygon additivity, equal-slope one-sided case)
 + Cor 4.12(3) (normalized residual multiplicativity), under the corpus↔paper dictionary in
 the module docstring).  Fences follow C.66's landed `fgmn_residual_mul`: positive coprime
-slope above the frame floor, monic full-degree factors. -/
-axiom fgmn_dv_exact_mul {F : KeyFrame O π} (hπ : Irreducible π) (H₀ : ℕ) (hpin : F.Pin H₀)
+slope above the frame floor, monic full-degree factors.
+
+**[UNT 2026-08-28] PHYSICALLY RETIRED**: was `axiom fgmn_dv_exact_mul`; now a THEOREM,
+statement bytes UNCHANGED (binders + conclusion byte-identical to the retired axiom text,
+machine-diffed), proved by `C133h0leg.fgmn_dv_exact_mul_full` (the `F.h = 0`/`0 < F.h`
+case split — see the module docstring's `[H0LEG 2026-08-28]`/`[UNT 2026-08-28]` note). -/
+theorem fgmn_dv_exact_mul {F : KeyFrame O π} (hπ : Irreducible π) (H₀ : ℕ) (hpin : F.Pin H₀)
     {g g' : Polynomial O} (hg : g.Monic) (hg' : g'.Monic)
     {u ℓ : ℕ} (hℓ : 0 < ℓ) (hcop : Nat.Coprime u ℓ)
     (hfloor : ℓ * ((F.e₁ * F.f₁) * F.h) < u)
@@ -120,11 +137,13 @@ axiom fgmn_dv_exact_mul {F : KeyFrame O π} (hπ : Irreducible π) (H₀ : ℕ) 
         (hp'' : dvHgt F (g * g') (dvSideMin F (g * g') u ℓ hne'') = (M₀'' : ℕ∞)),
         dvResPoly F H₀ hpin (g * g') u ℓ hne'' M₀'' hp''
           = dvResPoly F H₀ hpin g u ℓ hne M₀ hp
-            * dvResPoly F H₀ hpin g' u ℓ hne' M₀' hp'
+            * dvResPoly F H₀ hpin g' u ℓ hne' M₀' hp' :=
+  C133h0leg.fgmn_dv_exact_mul_full hπ H₀ hpin hg hg' hℓ hcop hfloor hdg hdg' hpos hpos' hpg hpg'
 
 end Uniformity.Density.Tower
 
-/-! ## Axiom footprint — the axiom prints itself; consumers inherit it visibly -/
+/-! ## Footprint — `[UNT 2026-08-28]` now Lean-core; retained as the retirement's own
+machine certificate (formerly "the axiom prints itself; consumers inherit it visibly") -/
 
 section AxCheck
 

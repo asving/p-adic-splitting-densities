@@ -9,6 +9,7 @@ import Uniformity.ChapC.C118a
 import Uniformity.ChapC.C118b
 import Uniformity.ChapC.C131v
 import Uniformity.ChapC.C109
+import Uniformity.ChapC.C131ae0
 import Uniformity.HenselFactorization
 
 /-!
@@ -87,77 +88,14 @@ open Uniformity.Density.Tower.C131u Uniformity.Density.Tower.C131ad
 
 variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
 
-/-! ## Part 1 — negation-invariance and the ultrametric equality-off-ties law -/
+/-! ## Part 1 — negation-invariance and the ultrametric equality-off-ties law
 
-section Ultrametric
-
-variable {φ : Polynomial O} {u ℓ : ℕ}
-
-/-- `-1` has valuation `0`, being a unit. -/
-private theorem addVal_neg_one : addVal O (-1 : O) = 0 :=
-  IsDiscreteValuationRing.addVal_eq_zero_iff.2 isUnit_one.neg
-
-/-- `addVal` does not see negation: `-1` is a unit. -/
-theorem addVal_neg (x : O) : addVal O (-x) = addVal O x := by
-  have h1 : (-x : O) = (-1 : O) * x := by ring
-  rw [h1, IsDiscreteValuationRing.addVal_mul, addVal_neg_one, zero_add]
-
-/-- `gaussVal` does not see negation: `-1` is a unit. -/
-theorem gaussVal_neg (a : Polynomial O) : gaussVal (-a) = gaussVal a := by
-  have hdeg : (-a).natDegree = a.natDegree := Polynomial.natDegree_neg a
-  simp only [gaussVal, hdeg]
-  refine Finset.inf_congr rfl fun i _ => ?_
-  rw [Polynomial.coeff_neg, addVal_neg]
-
-/-- `dev` of `0` vanishes at every abscissa. -/
-private theorem dev_zero_any (ψ : Polynomial O) : ∀ j, dev ψ (0 : Polynomial O) j = 0 := by
-  intro j
-  induction j with
-  | zero => exact Polynomial.zero_modByMonic ψ
-  | succ j ih =>
-      show dev ψ ((0 : Polynomial O) /ₘ ψ) j = 0
-      rw [Polynomial.zero_divByMonic]
-      exact ih
-
-/-- `dev` sends negation to negation. -/
-theorem dev_neg_of_monic (hφ : φ.Monic) (a : Polynomial O) (j : ℕ) :
-    dev φ (-a) j = - dev φ a j := by
-  have h := dev_add_of_monic hφ a (-a) j
-  simp only [add_neg_cancel] at h
-  rw [dev_zero_any φ j] at h
-  linear_combination -h
-
-/-- `suppVal` does not see negation. -/
-theorem suppVal_neg (hφ : φ.Monic) (a : Polynomial O) :
-    suppVal φ (-a) u ℓ = suppVal φ a u ℓ := by
-  have hdeg : (-a).natDegree = a.natDegree := Polynomial.natDegree_neg a
-  simp only [suppVal, hdeg]
-  refine Finset.inf_congr rfl fun j _ => ?_
-  congr 1
-  congr 1
-  show gaussVal (dev φ (-a) j) = gaussVal (dev φ a j)
-  rw [dev_neg_of_monic hφ, gaussVal_neg]
-
-/-- **Ultrametric equality off ties.** If `a`'s cleared support is strictly below `b`'s,
-adding `b` to `a` changes nothing. -/
-theorem suppVal_add_eq_left_of_lt (hφ : φ.Monic) (hd : 0 < φ.natDegree) (hℓ : 0 < ℓ) (u : ℕ)
-    {a b : Polynomial O} (h : suppVal φ a u ℓ < suppVal φ b u ℓ) :
-    suppVal φ (a + b) u ℓ = suppVal φ a u ℓ := by
-  have h1 : suppVal φ a u ℓ ≤ suppVal φ (a + b) u ℓ := by
-    have hmin := min_suppVal_le_suppVal_add hφ hd hℓ u a b
-    rwa [min_eq_left h.le] at hmin
-  have hnegb : suppVal φ (-b) u ℓ = suppVal φ b u ℓ := suppVal_neg hφ b
-  have heq : a + b + -b = a := by ring
-  have h2 : suppVal φ (a + b) u ℓ ≤ suppVal φ a u ℓ := by
-    by_contra hcon
-    push_neg at hcon
-    have hb' : suppVal φ a u ℓ < suppVal φ (-b) u ℓ := by rw [hnegb]; exact h
-    have hmin2 := min_suppVal_le_suppVal_add hφ hd hℓ u (a + b) (-b)
-    rw [heq] at hmin2
-    exact absurd hmin2 (not_le.mpr (lt_min hcon hb'))
-  exact le_antisymm h2 h1
-
-end Ultrametric
+**[UNT 2026-08-28]** MOVED to `C131ae0.lean` (same namespace, so every reference below is
+unaffected) to break a textual import cycle blocking the physical retirement of the
+declared cite `fgmn_dv_exact_mul` — see `C66b.lean`'s `[H0LEG 2026-08-28]` note and
+`runs/wave-c/verdict_UNT.md`. The moved decls: `addVal_neg_one`, `addVal_neg`,
+`gaussVal_neg`, `dev_zero_any`, `dev_neg_of_monic`, `suppVal_neg`,
+`suppVal_add_eq_left_of_lt` (former lines 92–160 here, byte-identical in the new file). -/
 
 /-- The stage height is an ultrametric equality off ties: adding a `B` of strictly higher
 stage height than `A` leaves `A`'s stage height unchanged. -/

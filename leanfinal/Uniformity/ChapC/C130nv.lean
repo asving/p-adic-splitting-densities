@@ -8,7 +8,7 @@ import Uniformity.ChapB.B43
 import Uniformity.ChapB.B83Kit
 import Uniformity.ChapC.C35b
 import Uniformity.ChapC.C130s6
-import Uniformity.ChapC.C131ae
+import Uniformity.ChapC.C131ae0
 
 /-!
 # Uniformity.ChapC.C130nv — S2-source plan nodes NV-0/NV-1 (the polynomial-value shell and the level-one universal product)
@@ -73,7 +73,8 @@ C.02 (`stageHeight`) · C.06 (`dvHgt`, `dvSupp`) · B39a (`suppVal_mul_gen`,
 `suppVal_eq_of_onSide`) · B39b (`sideSet_nonempty_gen`) · B43
 (`suppVal_ne_top_of_ne_zero`, `exists_sideMin_height`) · B32b (`suppVal_zero_eq_top`,
 `min_suppVal_le_suppVal_add`) · B.20 (`sideMin`, `onSide_of_mem_sideSet`) · B83Kit
-(`GateKit.isKey_X`) · C131ae (`suppVal_add_eq_left_of_lt`).
+(`GateKit.isKey_X`) · C131ae0 (`suppVal_add_eq_left_of_lt`, `[UNT 2026-08-28]` split out of
+C131ae.lean to avoid importing C131ae's own C131ac dependency — see C131ae0.lean's header).
 
 ## Status
 
