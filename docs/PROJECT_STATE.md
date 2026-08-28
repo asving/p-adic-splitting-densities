@@ -159,7 +159,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | (wave-c) | six codex sol-HIGH units 03:04–03:27 | ALL LANDED (ce301df1) — ★AI6: ¬CapstoneHypotheses 4 PROVED (probe orchestrator-re-verified) ⟹ A-I.6 REBIND FORCED, exact acyclic diff delivered; MP1R: unrestricted MP1Carrier FALSE (countermodel re-verified), blocker = the producer-side recenter export; LB1G: RESTRICT-ANYWAY + LB1CarrierLive designed; WLE: exporter designed-anchored, deep inhabitants open; SMGR: GR-7b-0R PROVED, I+/II+ partial (SMGR-I-COMB, SMGR-RSE named); MSF3: MSF j≥3 REFUTED-BY a depth-6 secant, MSF-GENRE is the open replacement, GSP-n ⇒ U(n), WASH-n for separated μ=2 families n≥5 |
 | LVS | the live vartheta supplier (math + Lean surface; r=2 vacuity check first) | IN FLIGHT (codex sol-HIGH, ~08:45) |
 | REX | the recenter-step export + MP1CarrierLive; ★ adjudicate whether MP1R's countermodel refutes the funnel (possible A-I.7) | IN FLIGHT (codex sol-HIGH, ~08:45) |
-| CFS | the C.35 BlockFrontier-family unconditionalization sweep (the engine's payoff rows) | IN FLIGHT (Fable, ~08:45) |
+| CFS | the BlockFrontier family sweep | DONE (bbad3a22) — F1.1 head blockFactor_spec + 5 reads unconditional (Lean core + the dissection cite; recorded 0 < F.h binder); F1.2–F1.8 blocked on ONE exporter |
+| CSX | the exported context-split theorem (MH14 steps 3–6 public; unblocks F1.2–F1.8) | IN FLIGHT (Sonnet, ~09:05) |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly + THE ENGINE are unreported milestones |
 
 ## 7. Resume protocol (fresh agent)
