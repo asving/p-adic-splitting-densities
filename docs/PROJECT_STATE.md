@@ -179,7 +179,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | SRX | S2 recenter export | DONE (419350a4) — NOT constructible at S2 (MP1StepCore universally empty at μ=1 ⟹ mp1-live VACUOUS there, mirroring vartheta r=2); g₈.s key math landed; GNCitePayload surface gaps named |
 | DWC | the deep witness blueprint | DONE — GO: S2 → depth 4 via g₈ (μ4 (2,1,85) + μ5 refinement (1,1,171)); 69 nodes, 10 gates, risk node C4; cert passes (orchestrator re-ran) |
 | DWV | the blueprint adversarial read | DONE (e91d3b4f) — REJECT: TWO CRITICAL errors in the leaf² mp1 input (hkeyfree self-coprimality; ord_ψ = 2 vs GN.s multiplicity-one) + 5 gaps (3 missing gates, no occurrence→universal quantifier gate, research nodes mislabeled); tower numerics independently CONFIRMED — the DWR revision gates the fleet |
-| A22E | enact A-C.22 (the engine-honest floor in signed F1.3–F1.6) per P1U.s draft | IN FLIGHT (Fable, ~11:40) |
+| A22E | enact A-C.22 | DONE (d9af7106) — four floors re-signed engine-honest, conclusions byte-unchanged; scope fence recorded (C.65/C.68/C.118 untouched with reasons); review row placed |
 | C93T | transcribe the C93Census block (GenhnTow1.s next node) → C135c93 | IN FLIGHT (Sonnet, ~11:40) |
 | DWR | REVISE the deep-witness blueprint per DWV (a multiplicity-one mp1 input; the 3 missing gates; re-grade the research nodes; the occurrence→universal gate) | QUEUED (codex sol-HIGH at the 13:34 window reset) |
 | CHA | the unattacked capstone fields | DONE (1be8359f) — ★ a1 CLOSED at every degree (menuLawAt_all, signed bytes unchanged; MENU-FAMILY retired); a0 reduced to FIVE named cubic value theorems via the landed socket; μ=3 HE slice packaged; rest re-based honestly (I.03 audit-belief refutation carried to review) |
