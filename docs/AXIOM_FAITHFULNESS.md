@@ -467,3 +467,26 @@ multiplicativity). The import carries the corpus's degree/slope fences, strictly
 the source's ∀ g,h ∈ K[x] — the safe direction. Recorded caveat: the cite is pinned to the
 PRINCIPAL polygon (the paper itself refutes the entire-polygon analogue). Owner secondary
 review: CITE_REVIEW_LIST row 2 (the dictionary + journal-numbering spot-check).
+
+**RETIRED-AS-THEOREM (2026-08-28, unit H0LEG).** The axiom's statement is proved
+byte-identically (binders and conclusion verbatim, NO `h` hypothesis) as
+`Uniformity.Density.Tower.C133h0leg.fgmn_dv_exact_mul_full`
+(`leanfinal/Uniformity/ChapC/C133h0leg.lean`), whose `#print axioms` is exactly
+`[propext, Classical.choice, Quot.sound]` — the AxCheck footer is the machine certificate.
+Proof: C133mh3's Theorem M chain (`fgmn_dv_exact_mul_thm`, the `0 < F.h` case, landed
+2026-08-27/28) glued with the new degenerate leg `fgmn_dv_exact_mul_h0` (`F.h = 0`:
+coprimality forces `e₁ = 1`, the twist dies (`twistExp ≡ 0`), C.05's degenerate dictionary
+extends to `dvSideSet = sideSet F.key` under the finiteness guard, the key IS an order-1
+key there (`IsKey F.key`, from `hresirr` through `frameRes = (key mod π) ⊗ resFieldXEquiv`),
+and B39a's order-1 `resPoly_mul_gen` + side laws supply both conjuncts, the floor
+degenerating to exactly B39a's `0 < u`). The faithfulness analysis above is RETAINED as
+the statement's provenance record. **Physical removal pending:** the `axiom` declaration
+still stands and its one proof consumer (`C131ac.lean:120`, feeding the
+`composedKey_pow_mem_towerLocus` chain and its downstream footprints) lies inside the
+theorem's own import foundation (`C133mh3 → C133mh1 → C130nv3 → C130nv2 → C130nv →
+C131ae → C131ac`), so the textual re-route is an import cycle until the orchestrator
+untangles that path — flagged. Until then footprints naming the axiom are PROVED
+REDUNDANT (dischargeable once the graph permits), and the owner's secondary review of
+the dictionary is no longer load-bearing for the mathematics — the statement stands on
+Lean core; the review remains valuable only as a check that the RETIRED cite text matched
+its source. No new consumer may cite the axiom; cite `fgmn_dv_exact_mul_full`.

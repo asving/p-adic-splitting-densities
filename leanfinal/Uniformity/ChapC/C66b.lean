@@ -72,6 +72,22 @@ propagation, C.80/C.67's re-signed floor conjuncts' eventual proofs.
 
 ONE axiom (`fgmn_dv_exact_mul`).  `#print axioms` of the companion theorem shows exactly
 this axiom + Lean core.  Census/C.126 note: the declared-cite allowlist grows to SEVEN.
+
+## [H0LEG 2026-08-28] RETIRED AS A THEOREM — the machine certificate exists
+
+The axiom's statement is PROVED, byte-identically (binders and conclusion verbatim, no `h`
+hypothesis), as `Uniformity.Density.Tower.C133h0leg.fgmn_dv_exact_mul_full`
+(`C133h0leg.lean`), whose AxCheck footer prints exactly
+`[propext, Classical.choice, Quot.sound]`.  Route: C133mh3's landed
+`fgmn_dv_exact_mul_thm` (Theorem M, at `0 < F.h`) glued with the degenerate leg
+`C133h0leg.fgmn_dv_exact_mul_h0` (at `F.h = 0` coprimality forces `e₁ = 1`, the twist
+dies, and C.05's degenerate dictionary collapses the dv-calculus to chapter B's order-1
+exact chain at the key — B39a/B43).  The `axiom` text below is retained TEMPORARILY: its
+one proof consumer (`C131ac.lean:120`) sits inside the theorem's own import foundation
+(`C133mh3 → C133mh1 → C130nv3 → C130nv2 → C130nv → C131ae → C131ac`), so re-routing it
+here is an import cycle until the orchestrator untangles that path.  **No NEW consumer may
+cite this axiom — cite `fgmn_dv_exact_mul_full`.**  Faithfulness record with the
+retirement entry: `docs/AXIOM_FAITHFULNESS.md` (RETIRED-AS-THEOREM, 2026-08-28).
 -/
 
 set_option linter.style.longLine false
