@@ -108,7 +108,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    enactment; the HE7APackage supplier stays XL-blocked;
    (b) **deepTwist** — the deep (r ≥ 4) arising-witness campaign + the WLE per-level
    exporter (design anchored; deep inhabitants open; WleCleared r=2 vacuity mapped);
-   (c) a0 GENERAL-n — ★ blueprint DELIVERED (A0_GENERAL_2026-08-28.md: PURE-ENGINE route, 16 nodes, 8-14k lines; the ONE new theorem finiteGenreCoverAt_all is the A0G-GC stop-line; cites honestly rejected for wild primes; quartic 32/32 reality check); A0G-CV LANDED (260b7074, IFCG1 — under budget via the H123a dedup); IN FLIGHT: A0G1 (Z+RP → IFCG0), A0G3 (PD → IFCG2), A0G4 (RS+FP → IFCG3); (d) `jd0`/`genhnBox2` + `w1` (A-I.1); (e) four I-D12 bodies
+   (c) a0 GENERAL-n — ★ blueprint DELIVERED (A0_GENERAL_2026-08-28.md: PURE-ENGINE route, 16 nodes, 8-14k lines; the ONE new theorem finiteGenreCoverAt_all is the A0G-GC stop-line; cites honestly rejected for wild primes; quartic 32/32 reality check); SIX of 16 nodes LANDED (Z, RP, CV, PD, RS, FP — IFCG0..3; two dedup catches corrected the blueprint's input lists; the loop bijection characteristic-free); IN FLIGHT: A0G5 (FF → IFCG4), A0G6 (NP → IFCG5, the conceptual heart feeding the GC stop-line); (d) `jd0`/`genhnBox2` + `w1` (A-I.1); (e) four I-D12 bodies
    (WindowPinningAt, GenhnHEAt, GenhnTow1At, TypeOfFaithful). The CHFD supply map
    (docs/in-progress/CAPSTONE_SUPPLY_MAP_2026-08-26.md) is the field-by-field ledger.
 2. **The Hensel engine: COMPLETE — payoff propagation is the open work.** F1.1 landed
@@ -202,8 +202,9 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | D3C | μ₄ stack D3-11..14 | DONE (c82e9cf1) — all four unconditional incl. ★ g16 = g8²−2⁸Φ₂ (monic deg 16, residual X+1, grade 170; the campaign's hardest row closed completely); T4's deferred half closes |
 | D3D | the μ₄ closer | DONE (45a452e0) — ★★ s2Mu4_calculus_nonempty UNCONDITIONAL (all 13 laws, no carried hypotheses); keyAt 4 = g16; T5's Λ pin complete; THE μ₄ STACK IS CLOSED |
 | D4A | μ₅ base D4-00..04 | DONE (c2452f01) — all five unconditional incl. ★ the survival core at (g16,171,1); PrevGrade ALL grades at e'=1 |
-| D4B | μ₅ middle D4-05..12 (coefficient → operators → the recipe → ★ the leaf) → C136e1 | IN FLIGHT (Sonnet, resumed) |
-| R12 | realization rows R1+R2 (the stage-3/4 slot tables on the landed μ₄/μ₅ values) → C136r1 | IN FLIGHT (Sonnet, ~22:45) |
+| D4B | μ₅ middle D4-05..12 | DONE — all eight rows incl. ★ the leaf + Λ's exact grade + a real key-read catch (X not 1 at e'=1) |
+| R12 | realization rows R1+R2 | DONE (51743fed) — the four-branch total tables + the level-4 slot carrier; the forced card-2 bank derived generically |
+| D4C | the μ₅ CLOSER D4-13..18 (key bank → source records → ★ s2Mu5_calculus_nonempty) → C136e2 | IN FLIGHT (Sonnet, ~23:20) |
 | EXPO | the public exposition refresh | ★ PUSHED (site aaf1ddb) — stage 13 live: draft → 28-finding audit → fix → clean skim → orchestrator spot-check; carry-over: maps.json/story.json still ignore stage 13 (graph pipeline absent) |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
