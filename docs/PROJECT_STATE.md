@@ -191,8 +191,10 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | A24E | enact A-C.24′ (the carrier insertion + the C.38/C.39 re-signs) | IN FLIGHT (Fable, ~19:00) |
 | D3AD | the depth-3 adapter | DONE (4eb8daa0) — D3-03 DISCHARGED unconditional (the cheap survival-core mirror; the engine.s root not valuation-polymorphic, gap recorded) + D3-04 (the unconditional μ₄ product law) |
 | D3B | μ₄ stack D3-05..09 | DONE — 56 decls Lean-core, all five rows green; the chain funnels through hconv |
-| L2E4 | hconv (the level-2 above-line law) → fire the coefficientwise product law → D3-10 → C136l2e4 | IN FLIGHT (codex sol-HIGH, ~18:37) |
-| EXPOAUD | the fresh-reader + honesty audit of the EXPO draft (numbered findings; ACCEPT/FIX/REJECT) | IN FLIGHT (codex sol-HIGH, ~18:37) |
+| L2E4 | hconv + D3-10 | DONE (a9a8155f) — the generic hconv REFUTED at the bare carrier (the anchor obstruction; confirms A24B's anchored route); ★ D3-10 LANDED via the cheap mirror — the D3 chain unblocked |
+| EXPOAUD | the EXPO audit | DONE — FIX-THEN-PUSH with 28 findings (incl. a false countermodel count, the Haar scope, the one-way status) |
+| EXPOFIX | fix the 28 findings in the site working tree (no push) | IN FLIGHT (Fable, ~19:10) |
+| D3C | μ₄ stack D3-11..14 (product/scalar, normalized operator, recipe grade-170, g16 existence) → C136d2 | IN FLIGHT (Sonnet, ~19:10) |
 | (EXPO) | draft in the site working tree, push after EXPOAUD + orchestrator review | HELD |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
