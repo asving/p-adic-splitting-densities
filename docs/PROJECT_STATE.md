@@ -198,7 +198,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | AI8E | ENACT A-I.8 | DONE (05a91441) — GNCitePayload retired; LadderSupplyLive₃; ★ the mp1 leg DISCHARGED BY THEOREM (mp1CarrierLiveDirect_of_steps); ladder.s open content = package/lb1/vartheta + RecenterStepDirect occurrences on the deep tower |
 | CHA | the unattacked capstone fields | DONE (1be8359f) — ★ a1 CLOSED at every degree (menuLawAt_all, signed bytes unchanged; MENU-FAMILY retired); a0 reduced to FIVE named cubic value theorems via the landed socket; μ=3 HE slice packaged; rest re-based honestly (I.03 audit-belief refutation carried to review) |
 | UNT | physical cite retirement | DONE (a163867d) — axiom → theorem in place, statement bytes unchanged; allowlist a TRUE SIX; C131ac.s whole pow chain now pure Lean-core; cycle broken by one verbatim lemma move (C131ae0.lean) |
-| EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly + THE ENGINE are unreported milestones |
+| EXPO | public exposition refresh DRAFT (site changes; orchestrator reviews + pushes) | IN FLIGHT (Fable, ~16:15) |
 
 ## 7. Resume protocol (fresh agent)
 
