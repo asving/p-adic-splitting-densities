@@ -183,7 +183,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | C93T | the C93Census manifest | DONE (97ee96c0) — 4/7 verbatim (incl. a caught stale-name trap: the bare-name match was a refuted carrier), 1/7 half, 2/7 honest blocks (one census annotation REFUTED — review finding) |
 | TSTK | carrier rows T1–T5 | DONE (fef6aa98) — the depth-4 tower datum STANDS (s2WitnessFour, pure data per Gate 10); g8.s key proof + depth-3 KeyChain; both normalizer pins; planned deferrals recorded; the rfl-timeout fleet lesson |
 | L2E0 | the engine roots | DONE — L2E-00/01/02 landed S2-free at arbitrary LevelDatum (8/8 Lean-core); wired |
-| L2E1 | L2E-03/04/05 (digit survival, slot carry/twist root, pair pricing) → C136l2e1 | IN FLIGHT (codex sol-HIGH, ~15:30) |
+| L2E1 | L2E-03/04/05 | DONE — 03+05 landed + dv2Res_mul (NO root factor); the L2E-00 twist shape a MIS-TRANSPOSITION (the normalized read.s carry cancels by construction — the τ=1 story one level up); corrected shapes → L2E2 |
+| L2E2 | corrected shapes + L2E-06/07/08 (support product, min/max incl. F13A.s reverse inequality, pin-height addition) → C136l2e2 | IN FLIGHT (codex sol-HIGH, ~16:00) |
 | G345 | gates G3+G4 (the WLE per-level retype + the shared DeepLevelExport promotion) → I10DeepExport | IN FLIGHT (Fable, ~15:40) |
 | G5F | gate G5 stop-if-false (the (1,1,171) refinement.s source-faithfulness vs the FGMN pdfs) | IN FLIGHT (codex sol-HIGH, ~15:40) |
 | D3A | μ₄ stack base D3-00/01/02 | DONE — the dv3 layer + s2Hgt₄ (tooth 85) + the endpoint bank modulo the explicit Dv3ResSurv; 52/52 Lean-core |
