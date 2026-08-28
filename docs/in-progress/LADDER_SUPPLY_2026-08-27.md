@@ -567,3 +567,349 @@ remains OWNER-GATED and would be the numbered amendment A-I.6 — NOT enacted.
   depth-one `SplitNodePointSource` on `s2DepthOne`).
 * Vartheta at the REPAIRED scope: `LadderVarthetaSupplierLive` is a typed target, not a
   proof; canonical residue descent at live indices (LS-V10) is the remaining mathematics.
+
+## [AI6 2026-08-28] A-I.6 fork adjudication — closed refutation, rebinding mandatory
+
+**Verdict: REFUTED. Recommendation: REBIND; a rider is not honest.**  The new compiling
+certificate is `leanfinal/scratch/AI6_probe.lean`; the claim ledger and exact non-enacted A-I.6
+diff are in `runs/wave-c/verdict_AI6.md`.
+
+AI6 closes the gap VAUD deliberately left open.  It constructs a concrete degree-four S2
+configuration over `O = ℤ_[2]`, with `Kt` the landed S2 terminal field,
+`L = FractionRing (Polynomial Kt)`, `G = GaugeLattice 2`, and the actual S2 carrier, block, and
+normal section (`AI6_probe.lean:27-54`).  The dependent `(v,ρ)` package and `q` are changed only
+at the off-range index `3`: `v 3` is trivial, `ρ 3` maps the first Laurent exponent to powers of
+the rational-function unit `X`, and `q 3 = 1` (`AI6_probe.lean:89-149`).
+
+The load-bearing certificates are:
+
+- **PROVED** — `firstExponent_vartheta`: at `q = 1, s = 2`, the actual S2 normal section's
+  first Laurent exponent is `-1` (`AI6_probe.lean:115-119`).
+- **PROVED** — `s2_junk_vartheta_negative`: the resulting residue `X⁻¹` is not in the image of
+  any `Kt` unit (`AI6_probe.lean:121-141`).
+- **PROVED** — `gauge_view_offRange_kernel_replacement` and `s2_bad_gauge_view`: the full
+  dependent kernel package and `q` replacement preserve `GaugeFamilyViewEq`
+  (`AI6_probe.lean:66-87`, `151-157`).
+- **PROVED** — `s2_bad_ladder_socket`: the updated data satisfy the complete
+  `CanonicalLadderConfig` antecedent (`AI6_probe.lean:159-181`).  This is the identical guard
+  antecedent of IFC0 suppliers 1–3 (`IFC0.lean:74-103`); their conclusions are not needed for a
+  record refutation.
+- **PROVED** — `s2_bad_vartheta_three`: the demanded `VarthetaRes` fails at `i = 3`
+  (`AI6_probe.lean:183-191`).
+- **PROVED** — `ladderField_four_refuted : ¬ IFC0.LadderField 4` and
+  `capstoneHypotheses_four_refuted : ¬ CapstoneHypotheses 4`
+  (`AI6_probe.lean:193-202`).
+- **PROVED** — the required command exits `0`; every footer print is exactly
+  `[propext, Classical.choice, Quot.sound]` (`AI6_probe.lean:206-216`).
+- **BLOCKED-BECAUSE, non-load-bearing** — no degree-two version was constructed because the
+  landed corpus still lacks the depth-one `SplitNodePointSource`; the closed degree-four
+  refutation already decides A-I.6.
+- **GAP, irrelevant to this refutation** — HE7A/LB1/MP1 conclusions at the chosen socket remain
+  open.  Their shared antecedent is inhabited; refuting the fourth field suffices.
+
+This changes the rider-vs-rebind merits decisively.  IFC0's current anti-drift pin says the
+signed `CapstoneHypotheses.ladder` is definitionally the refuted unbounded field
+(`IFC0.lean:57-70`), so the signed block is a fake hypothesis at `n = 4`.  Unlike A-I.5's
+interpretive routing rider (`leanspec/Leanspec/ChapI.lean:1000-1006`), no prose can repair a
+machine-proved contradiction in the field bytes.  A-I.6 must bind the field to
+`IFC5.LadderSupplyLive`; the old unbounded `IFC0.LadderField` should remain as the named tension
+record.
+
+The consumer audit is finite.  At enactment, promote `IFC5.CanonicalLadderLiveAt` and
+`IFC5.LadderSupplyLive` to an acyclic early module, replace the `ladder` result type in both
+leanspec (`Leanspec/ChapI.lean:990-996`) and landed I.10
+(`I10_I15_I18.lean:154-160`), replace IFC0's stale `h.ladder` anti-drift pin, add the liveness
+argument to leanspec gate item (4) (`Leanspec/ChapI.lean:1062-1069`), and update the sole
+structure constructor `scratch/CHFD_probe.lean:118-146`.  I.15–I.18
+(`I10_I15_I18.lean:188-221`) project only `a0`/`a2` and require no code change.  AI6 enacted
+none of those signed or landed edits.
+
+## [LB1G 2026-08-28] Guard-link adjudication: S2 is vacuous; restrict anyway
+
+**Verdict: RESTRICT-ANYWAY.** The arbitrary-interface carrier is not refuted at the only
+landed arising pair. It is instead PROVED there for a structural but vacuous reason: the S2
+exported block has mass `μ = 1`, and the full `RungInterface` arithmetic forces every legal
+interface on any mass-one block to have exactly one side and to make that side separable.
+Consequently neither half of E.39's trigger can fire. This closes the requested malicious-S2
+attempt negatively; it does not validate the universal quantifier at future arising blocks of
+mass at least two.
+
+The machine record is `leanfinal/scratch/LB1G_probe.lean` (zero `sorry`; exact verification
+command below). Load-bearing declarations:
+
+| Status | Declaration | Exact consequence |
+|---|---|---|
+| PROVED | `LB1GProbe.s2_exported_block_mu_one` (`LB1G_probe.lean:44-47`) | the landed S2 block has `μ = 1` |
+| PROVED | `LB1GProbe.rungInterface_card_eq_one_of_mu_eq_one` (`:56-71`) | every interface on a mass-one block has one side |
+| PROVED | `LB1GProbe.rungInterface_sep_of_mu_eq_one` (`:83-248`) | residual degree + forcing + exhaustion make every such side separable |
+| PROVED | `LB1GProbe.not_lb1_trigger_of_mu_eq_one` (`:251-258`) | the complete LB1 trigger is false at mass one |
+| PROVED | `LB1GProbe.s2_unrestricted_lb1_vacuous` (`:279-286`) | the unrestricted `LB1Carrier` holds at the landed S2 pair, vacuously |
+
+This also explains why the abstract malicious interface from
+`verification/om4_resign_nontriviality.lean:144-220` cannot be transported: its block has
+`μ = 2` and its interface has two positive-length sides, whereas the S2 block has `μ = 1`.
+Attempts to use the mixed-side disjunct also fail: `hresdeg` fixes total residual degree to
+one, while `hforce` and `hexhaust` leave room for exactly the unique positive residual class;
+`rungInterface_sep_of_mu_eq_one` checks both the linear and higher-factor cases, including
+zero multiplicity/zero degree loopholes.
+
+### Exact restricted statement and the missing realization link
+
+The E-layer statement that can be signed without fabricating a C exporter is the elaborated
+probe declaration (`LB1G_probe.lean:296-301`):
+
+```lean
+def LB1CarrierLive {O : Type uO} [CommRing O] {K : Type uK} [Field K]
+    (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+    (Exported : Ladder.RungInterface.{uO, uK, uW} C B → Prop) : Prop :=
+  ∀ I : Ladder.RungInterface.{uO, uK, uW} C B, Exported I →
+    (1 < I.sides.card ∨ ∃ p ∈ I.sides, ¬ I.SepSide p) →
+    Nonempty (Ladder.BlockSuite I)
+```
+
+Here `Exported I` must be instantiated by the future C-to-E relation saying that ONE
+`RealizedInput` witnessing the same external slot/block views exports `I`. Its intended
+chapter-I predicate must mirror `IFC5.CanonicalLadderLiveAt` (`IFC5.lean:105-123`): existential
+domain/DVR instances, `ArisingCore`, `ChainRealization`, `RealizedInput`, and carrier/gauge
+equivalences; `SlotViewEq` and `BlockViewEq` for the same `(C,B)`; then the missing
+`RealizedRungInterfaceExport X eK I` relation in place of `GaugeLive`. That final relation is
+not landed anywhere: the existing realization views stop at slot/block/gauge data
+(`C130s18.lean:149-175`), and LS-H12 is precisely the missing
+`RealizedInput → RungInterface` exporter. Defining `Exported := fun _ => True`, or merely
+existentially bundling an arbitrary `I`, would reproduce the defect and is forbidden.
+
+Supersession is machine-pinned: `lb1CarrierLive_of_unrestricted` (`LB1G_probe.lean:304-310`)
+proves OLD implies NEW for every export relation. The E.57 route is also pinned at exactly the
+restricted strength: `lb1CarrierLive_of_exported_partitionLegs` (`:314-322`) needs
+`PartitionLeg I` only for exported triggering interfaces and maps it through the landed
+`PartitionLeg.toBlockSuite` (`E57p.lean:188-246`).
+
+### Consumer table
+
+Repository-wide grep of `LB1Carrier` and `.lb1` gives the following complete semantic table.
+“No instantiation” means the declaration only stores, projects, or rearranges the carrier.
+
+| Consumer | Interface instantiated | Exported? | Consequence for restriction |
+|---|---|---|---|
+| `E39.lean` gate example (`:140-143`) | caller-supplied arbitrary `I` | no | test-only; add an export premise in the supersession twin |
+| `E24.lean` gate `S.lb1 I` (`:193-200`) | caller-supplied arbitrary `I` | no | the only production-file application; it is an executed type gate, not downstream mathematics |
+| `E24.LadderSupply.lb1` (`:147-155`) | no instantiation | n/a | field type must become the restricted twin in an owner-approved record twin |
+| `E44.LadderObligations` and gates (`:111-168`) | no instantiation | n/a | packaging/projection only |
+| `I10_I15_I18.CapstoneHypotheses.ladder` (`:151-160`) | no instantiation | n/a | returns E.24's record; rebinding is owner-gated |
+| `IFC0.LadderLB1Supplier` and split (`:85-92`, `:120-147`) | no instantiation | n/a | supplier/record bookkeeping only |
+| `IFC5.LadderSupplyLive` and joins (`:146-157`, `:179-234`) | no instantiation | n/a | vartheta-only supersession retained old LB1 field; needs an LB1 twin |
+| `E57p.PartitionLeg.toBlockSuite` (`:188-246`) | its input `I`, already carrying `PartitionLeg I` | not specified | mathematical funnel is parametric and works at restricted strength (probe theorem above) |
+| `E57iCert.split_blockSuite` (`E57i.lean:201-205`) | synthetic `mixIface` | no arising export | non-vacuity row for E.57 schema, not an LB1 consumer |
+| `E57iCert.hi_blockSuite` (`E57ih.lean:180-183`) | synthetic `hiIface` | no arising export | same |
+| `LDECProbe.lb1Carrier_of_partitionLegs` (`LDEC_probe.lean:59-66`) | every arbitrary `I` | no | scratch elaboration probe; restricted replacement is `LB1GProbe.lb1CarrierLive_of_exported_partitionLegs` |
+| `VAUDProbe.lb1_inhabited_socket_tooth` (`VAUD_probe.lean:70-86`) | caller-supplied arbitrary `I` | no | diagnostic tooth establishing the defect, not a proof route |
+
+Thus the proposed claim “E.24 only ever instantiates LB1 at exported interfaces” is literally
+false in the landed source: its gate instantiates an arbitrary caller-provided `I`. But no
+landed mathematical consumer relies on that strength. The actual E.57 construction is
+`PartitionLeg I → BlockSuite I` and survives verbatim when its upstream obligation is limited
+to exported `I`. The required edits are supersession/type-gate bookkeeping plus the genuinely
+missing exporter relation; there is no downstream proof loss to justify keeping the stronger
+quantifier.
+
+### Recommendation and stop state
+
+**RESTRICT-ANYWAY**, by a supersession twin after the C-to-E export relation is typed. Reasons:
+
+1. the unrestricted carrier is already false on legal abstract E data
+   (`lb1_resigned_not_trivial`), so a uniform arbitrary-interface strategy would need a new
+   arising-block theorem realizing every numerical interface, strictly stronger than HE7.96;
+2. the only landed arising pair cannot test that claim because its `μ = 1` trigger is empty;
+3. no landed mathematical consumer needs arbitrary-interface strength; and
+4. OLD implies the proposed NEW carrier and the `PartitionLeg` funnel closes at NEW strength,
+   both machine-checked.
+
+**GAP:** no `RealizedRungInterfaceExport`/C-to-E exporter relation exists, so the production
+live predicate cannot yet be instantiated honestly. **BLOCKED-BECAUSE:** rebinding E.24's
+`LadderSupply.lb1`, IFC0/IFC5, and the signed `CapstoneHypotheses.ladder` is an owner amendment,
+parallel to LVT's A-I.6 gate. LS-G0 therefore changes from “find an S2 malicious interface” to
+“type the realization-interface export relation and enact the LB1 supersession”; no proof fleet
+may target the old unrestricted supplier.
+
+Verification:
+
+```bash
+cd leanfinal
+timeout 580 ~/.elan/bin/lake env lean scratch/LB1G_probe.lean
+```
+
+Exit 0; zero `sorry`; every printed declaration has exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+## [MP1R 2026-08-28] Honest MP1 route: live step export + direct key criterion
+
+**Adjudication.** The unrestricted `Ladder.MP1Carrier` is false, not merely missing a
+citation: `scratch/MP1R_probe.lean` proves `unrestricted_mp1_false` at the legal abstract
+pair with `B.Φ = X²`, `B.F = X⁴ - 5X² + 4`, `Λ = 4`, and
+`B'.Φ = X² - 4 ∣ B.F`.  Therefore the old carrier and IFC0's
+`LadderMP1Supplier` are RETIRED AS CAMPAIGN TARGETS.  They remain byte-untouched as the
+tension record.  The honest replacement is a supersession twin whose extra premise is a
+realization-linked **recenter-step export**, never a key/irreducibility premise added to
+`CanonicalLadderConfig`.
+
+The chosen mathematical route inside the live form is **direct**: the step export must expose
+the FGMN key-polynomial predicate for the exact `B'.Φ` it produced, together with the
+items-2--4 peel data.  Then the landed key bank proves irreducibility and Gauss transports it
+to `FractionRing O`; `hef` remains `B'.hΦdeg.trans C.hef`.  This avoids pretending that either
+[GN15] Theorem 2.3 or GMN Theorem 2.11 identifies an arbitrary divisibility-only `B'.Φ`.
+
+### Exact proposed Lean statement
+
+The helper below is `MidPeelEmission` with exactly the two item-5 fields `hirr` and `hef`
+removed.  It is producer data, not the desired conclusion.
+
+```lean
+structure MP1StepCore {O : Type uO} [CommRing O] {K : Type uK} [Field K]
+    {C : Ladder.SlotCarrier O K} (B B' : Ladder.BlockData C) where
+  quot : Ladder.BlockData C
+  hkey : quot.Φ = B'.Φ
+  hpeel : B.F = B'.Φ * quot.F
+  hmass : quot.F.natDegree + C.D = B.F.natDegree
+  hthr : quot.T = B.T
+  iface : Ladder.RungInterface.{uO, uK, uW} C quot
+```
+
+`CanonicalMP1StepExport` is to be defined beside the other realization views.  Its witness
+must be the same realization exporting the external socket data; its FGMN data share that
+realization's `core.T` and `A.keys`.  In exact binder/field shape:
+
+```lean
+def CanonicalMP1StepExport
+    {O : Type} [CommRing O] {K : Type} [Field K]
+    (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt]
+    (L : Type uL) [Field L] [Algebra Kt L]
+    (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+    (n : ℕ) (Λ : Polynomial O) (B' : Ladder.BlockData C) : Prop :=
+  ∃ (_dom : IsDomain O) (_dvr : IsDiscreteValuationRing O)
+    (E : Type) (fE : Field E) (core : Tower.ArisingCore (O := O) Kt L n)
+    (A : Tower.ChainRealization (O := O) (π := core.π) (F := core.F)
+      (H₀ := core.H₀) (hpin := core.hpin) (fieldE := fE) core.T Kt E L)
+    (X : Tower.RealizedInput core A)
+    (eK : core.T.fld core.i ≃+* K) (eG : G ≃* Tower.GaugeLattice.{uG} core.r),
+    Tower.SlotViewEq X eK C ∧
+    (∃ hC : C = X.stageCarrierTransport eK,
+      Tower.BlockViewEq X eK (hC ▸ B)) ∧
+    Tower.GaugeFamilyViewEq X (N.transport eG)
+      (fun j => (v j).comp eG.symm.toMonoidHom)
+      (fun j => (ρ j).comp (Tower.C130s18.kerComapAlong eG (v j))) q ∧
+    B'.Φ = B.Φ - Λ ∧
+    ∃ (e' f' u' : ℕ)
+      (S : Tower.FGMNSourceData core.T A.keys e' f' u'),
+      Nonempty (Tower.FGMNSourceLaws core.T A.keys e' f' u' S) ∧
+      S.keyPolynomial B'.Φ ∧
+      Nonempty (MP1StepCore.{0, 0, uW} B B')
+
+def MP1CarrierLive
+    {O : Type} [CommRing O] {K : Type} [Field K]
+    (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt]
+    (L : Type uL) [Field L] [Algebra Kt L]
+    (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n : ℕ) : Prop :=
+  ∀ (Λ : Polynomial O), Λ ≠ 0 → Λ.natDegree < C.D →
+    ∀ (B' : Ladder.BlockData C),
+      B'.Φ = B.Φ - Λ → B'.Φ ∣ B.F →
+      CanonicalMP1StepExport.{uW, uG, uKt, uL}
+        C B G Kt L N v ρ q n Λ B' →
+      Nonempty (Ladder.MidPeelEmission.{0, 0, uW} B B')
+```
+
+This is a restriction only: the old carrier implies the new one by forgetting the export
+premise.  A production enactment should land the corresponding
+`LadderMP1SupplierLive`, replace only the `mp1` field in a further `LadderSupplyLive`
+supersession (preserving IFC5's already-live vartheta field), and add the old-to-new pins.
+No in-place edit of E.40, IFC0, IFC5, E.24, or the signed capstone field is authorized here.
+
+### Option 1 — citation audit and mapping
+
+The requested citations do **not** close the live form merely from the existing realization
+views.  They become applicable only after adding source-specific exporter fields, and those
+fields are not present at the funnel.
+
+| Published hypothesis/conclusion | Exact proposed Lean supplier | Result |
+|---|---|---|
+| [GN15] Thm 2.3: an inductive valuation `μ` equipped with a MacLane chain | `core.T`, `A.keys`, and the `FGMNSourceData`/`FGMNSourceLaws` package sharing them | GAP: the landed types model this data, but no theorem identifies an arbitrary package with the theorem's analytic objects at this socket |
+| [GN15] Thm 2.3: `φ ∈ KP(μ)` and `φ ≁μ φ_r` (or the published FGMN Thm 6.4 replacement: `φ` proper) | `S.keyPolynomial B'.Φ`; **no non-equivalence/properness field** | GAP: key-polynomialhood is supplied in the proposal, properness is not |
+| [GN15] Thm 2.3: monic `g ∈ O_v[x]` | `B.F.Monic`, derivable from `Ladder.BlockData.natDegree_F B`; completion/base transport is not in the socket | GAP at the analytic dictionary |
+| [GN15] Thm 2.3: a selected slope `λ` and prime residual factor `ψ` of `R(g)` | no present field; a faithful cite route would add them to the step export | GAP |
+| [GN15] irreducible-leaf clause: `ord_ψ(R_λ(g)) = 1` | no present field; divisibility `B'.Φ ∣ B.F` is not residual multiplicity one | GAP; this must be a new recenter-step premise if this cite route is chosen |
+| [GN15] factor conclusion `g_{λ,ψ}` | no equality `B'.Φ = g_{λ,ψ}` | GAP; without this identification the theorem proves irreducibility of a different polynomial |
+| [GN15] eq. (2.1): leaf `(e,f)` is the chain product | intended source for the orbit dictionary | GAP at `B'.Φ`; in Lean `MidPeelEmission.hef` is already PROVED from `B'.hΦdeg.trans C.hef`, so this cite is not needed for the current field |
+| GMN Thm 2.11: a type `t` of order `r-1` with prescribed `ψ_{r-1}` and numerical data | `core.T`, `A.keys`, `S`, plus a **missing** refined-type/residual identification | GAP |
+| GMN Thm 2.11: the polynomial is the theorem's constructed `φ_r` (Def 2.12 then calls this a representative) | no equality from the constructed representative to `B'.Φ` | GAP; merely satisfying recentering/divisibility is insufficient |
+| GMN Thm 2.11 conclusion: constructed `φ_r` is monic, irreducible, and has the stated degree/value/order | would yield `hirr` only after the missing equality and the fraction-field dictionary | GAP |
+| FGMN (J. Algebra 427 (2015)) Lemma 1.8: every `φ ∈ KP(μ)` is irreducible over the completion/fraction-field model | `S.keyPolynomial B'.Φ` | CITED-FAITHFUL once the source/field dictionary is supplied; unlike the two queued cites, this theorem targets the exact key polynomial |
+
+Numbering warning: `docs/references/s10208-024-09646-x.pdf` is Alberich-Carramiñana--Guàrdia--Nart--Poteaux--Roé--Weimann, *Polynomial Factorization Over Henselian Fields*, Found. Comput. Math. 25 (2025).  Its **Theorem 2.11 is a tangent-direction/initial-form factor theorem**, not GMN's representative-construction theorem.  The latter is the TAMS 2012 theorem labelled `phir` in `docs/references/HigherNewton.tex` (lines 1257--1283), followed by Definition 2.12.  These identically numbered results must not be conflated.
+
+**Funnel check.** `CanonicalLadderConfigData`/`LadderRealizationData` export only the parent
+`C,B` through `SlotViewEq`/`BlockViewEq` and the gauge family through
+`GaugeFamilyViewEq`.  `ChainRealization` explicitly has no FGMN fields.  The live S2 teeth
+`C130sg.s2Frontier_ladder_socket` and `IFC4.s2FrontierWired_ladder_socket` likewise export
+only the parent input block.  None exports a recentered successor `B'`, a quotient/interface,
+a refined type, `S.keyPolynomial B'.Φ`, or residual multiplicity one.  Thus E.24
+`LadderSupply → mp1` and the capstone `ladder` field cannot currently provide the new premise.
+
+### Option 2 — direct landed mechanism
+
+Once `CanonicalMP1StepExport` is available, the final proof is short.  Unpack its
+`MP1StepCore`, `S`, and `hL`; obtain
+
+```lean
+have hirrO : Irreducible B'.Φ :=
+  hL.key_irreducible B'.Φ hkeyPoly B'.hΦ
+have hirr : Irreducible (B'.Φ.map (algebraMap O (FractionRing O))) :=
+  (B'.hΦ.irreducible_iff_irreducible_map_fraction_map
+    (K := FractionRing O)).mp hirrO
+```
+
+and assemble `MidPeelEmission` from the core fields, `hirr`, and
+`B'.hΦdeg.trans C.hef`.  Exact landed anchors are
+`FGMNSourceLaws.key_irreducible`,
+`Polynomial.Monic.irreducible_iff_irreducible_map_fraction_map`, and the existing
+`LDECProbe.midPeelEmission_of_fields` assembly pattern.
+
+At the concrete S2/μ₃ model, `C132kp5.s2Mu3_key_irreducible` proves the same key-to-ordinary
+irreducibility step directly from `S2Mu3KeyPoly`, and
+`C132kp6b.s2Mu3_calculus_nonempty` supplies the completed μ₃ calculus.  This does **not**
+finish MP1 at S2: no theorem proves `S2Mu3KeyPoly h2 hq B'.Φ` for a recentered successor,
+and the socket exports no such successor.
+
+Estimated Lean size: 40--80 lines for the final live-carrier assembly; 80--180 lines for a
+generic direct minimality/primality lemma if the opaque `FGMNSourceLaws` route is avoided;
+roughly 300--800 lines for the missing realization-linked recenter-step/quotient exporter and
+its transport through the external views.  The exporter, not irreducibility, is the current
+critical path.
+
+### Option 3 — unrestricted countermodel
+
+`leanfinal/scratch/MP1R_probe.lean` constructs the countermodel and proves
+`unrestricted_mp1_false : ¬ MP1Carrier C₂ B₂`.  Verification command required by the unit:
+
+```bash
+cd leanfinal
+timeout 580 ~/.elan/bin/lake env lean scratch/MP1R_probe.lean
+```
+
+Result: exit 0, zero `sorry`; every `#print axioms` line is exactly
+`[propext, Classical.choice, Quot.sound]`.
+
+### What remains open
+
+1. Land a new producer-side `CanonicalMP1StepExport` (or an equivalent non-circular record)
+   at the actual Montes/MacLane recentering transition.
+2. At each arising site, prove that the exported exact `B'.Φ` satisfies the landed
+   `keyPolynomial` predicate and export the quotient/interface fields of `MP1StepCore`.
+3. Enact a supersession twin for the MP1 supplier and a combined live `LadderSupply` record;
+   rebinding the signed E.24/capstone `ladder` field remains owner-gated.
+4. If the literature route is retained instead of the direct key bank, add and discharge the
+   refined-type, properness, residual-multiplicity-one, and exact-factor/representative
+   identification fields.  None may be replaced by divisibility alone or placed on the global
+   ladder guard.

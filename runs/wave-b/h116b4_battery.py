@@ -39,6 +39,7 @@ import os
 import sys
 import time
 import itertools
+import random
 from collections import Counter
 from functools import lru_cache
 
@@ -49,6 +50,7 @@ sys.path.insert(0, os.path.join(REPO, "verification", "openmath"))
 import OM2_h116b_gauge_resultant as om  # certified helpers: pmul, alpha_parent, genre_of, ...
 
 FAILED = []
+INF = 10 ** 6
 
 
 def check(name, ok, detail=""):
@@ -59,6 +61,106 @@ def check(name, ok, detail=""):
 
 def info(msg):
     print("  info  " + msg)
+
+
+# ---------------------------------------------------------------------------------
+# SMGR (2026-08-28) — tropical monic division and exact cofactor remainders.
+# Envelopes are coefficientwise valuation lower bounds, in low-degree order.
+# ---------------------------------------------------------------------------------
+def env_conv(a, b):
+    out = [INF] * (len(a) + len(b) - 1)
+    for i, x in enumerate(a):
+        for j, y in enumerate(b):
+            out[i + j] = min(out[i + j], x + y)
+    return out
+
+
+def child_envelope(mu, k):
+    return [k * (mu - i) for i in range(mu + 1)]
+
+
+def cofactor_envelope(r, beta):
+    return [max([0] + [b - i * k for k, b in beta.items()]) if i < r else 0
+            for i in range(r + 1)]
+
+
+def tropical_rem_monic(dividend, divisor):
+    """Universal lower envelope for rem(H,P), with P monic.
+
+    This is literal top-down long division in the min-plus semiring.  At a step
+    of degree d, subtracting H_d X^(d-mu) P can only lower a coefficient bound
+    to min(old_bound, bound(H_d)+bound(P_i)).
+    """
+    mu = len(divisor) - 1
+    work = list(dividend)
+    for d in range(len(work) - 1, mu - 1, -1):
+        lead = work[d]
+        for i in range(mu):
+            row = d - mu + i
+            work[row] = min(work[row], lead + divisor[i])
+        work[d] = INF
+    return work[:mu]
+
+
+def remainder_envelope(children, r, beta):
+    """V^rem for pi F_p rem(E_(p,j) Q,P_p), in the X coefficient frame."""
+    qenv = cofactor_envelope(r, beta)
+    cols = []
+    for p, (mu, k, w) in enumerate(children):
+        other = [0]
+        for pp, (mu2, k2, w2) in enumerate(children):
+            if pp != p:
+                other = env_conv(other, child_envelope(mu2, k2))
+        for j in range(mu):
+            centered = [k * (j - i) for i in range(j + 1)]
+            dividend = [k * (mu - j) + x for x in env_conv(centered, qenv)]
+            rem = tropical_rem_monic(dividend, child_envelope(mu, k))
+            col = [1 + x for x in env_conv(other, rem)]
+            s = sum(mu2 for mu2, _, _ in children)
+            cols.append(col + [INF] * (s - len(col)))
+    s = sum(mu for mu, _, _ in children)
+    return [[cols[c][i] for c in range(s)] for i in range(s)]
+
+
+def raw_genre_envelope(children, r, beta):
+    """The pre-peel V from §1, included here for the SMGR I+ DP sweep."""
+    s, m = sum(mu for mu, _, _ in children), sum(mu for mu, _, _ in children) + r
+    qenv, cols = cofactor_envelope(r, beta), []
+    for p, (mu, k, w) in enumerate(children):
+        other = [0]
+        for pp, (mu2, k2, w2) in enumerate(children):
+            if pp != p:
+                other = env_conv(other, child_envelope(mu2, k2))
+        other = env_conv(other, qenv)
+        for j in range(mu):
+            centered = [k * (j - i) for i in range(j + 1)]
+            e = env_conv(centered, other)
+            cols.append([1 + k * (mu - j) + (e[i] if i < len(e) else INF)
+                         for i in range(m)])
+    allp = [0]
+    for mu, k, w in children:
+        allp = env_conv(allp, child_envelope(mu, k))
+    for j in range(r):
+        cols.append([1 + (allp[i - j] if 0 <= i - j < len(allp) else INF)
+                     for i in range(m)])
+    return [[cols[c][i] for c in range(m)] for i in range(m)]
+
+
+def assignment_betas_dp(V):
+    m, dp = len(V), [INF] * (1 << len(V))
+    dp[0] = 0
+    for row in V:
+        nxt = dp[:]
+        for mask, old in enumerate(dp):
+            if old >= INF:
+                continue
+            for c in range(m):
+                if not (mask >> c) & 1:
+                    nm = mask | (1 << c)
+                    nxt[nm] = min(nxt[nm], old + row[c])
+        dp = nxt
+    return [min(dp[mask] for mask in range(1 << m) if mask.bit_count() == t)
+            for t in range(m + 1)]
 
 
 # ---------------------------------------------------------------------------------
@@ -639,7 +741,241 @@ def block_level_ghosts(q, N, children, tag):
           "; ".join(det))
 
 
+# ---------------------------------------------------------------------------------
+# BLOCK 5 — SMGR: exact remainder Newton polygons after the cofactor peel.
+# ---------------------------------------------------------------------------------
+def smgr_admissible(Q, q, N, children):
+    return (sum(k * mu for mu, k, _ in children) + vq(Q[0], q, N) < N and
+            all((om.ord0_at(Q, q, N, k, z) or 0) < 2
+                for k in range(1, N + 1) for z in range(1, q)) and
+            all(om.ord0_at(Q, q, N, k, w) == 0 for mu, k, w in children))
+
+
+def smgr_schur(A, q, N, s, r):
+    M = q ** N
+    B = [[x % M for x in row] for row in A]
+    for j in range(r - 1, -1, -1):
+        row = col = s + j
+        assert B[row][col] == q % M
+        for c in range(s):
+            mult = B[row][c] // q
+            for i in range(row + 1):
+                B[i][c] = (B[i][c] - mult * B[i][col]) % M
+    return [row[:s] for row in B[:s]]
+
+
+def rank_mod_prime(A, q):
+    A = [[x % q for x in row] for row in A]
+    if not A:
+        return 0
+    nr, nc, rank = len(A), len(A[0]), 0
+    for c in range(nc):
+        pivot = next((i for i in range(rank, nr) if A[i][c]), None)
+        if pivot is None:
+            continue
+        A[rank], A[pivot] = A[pivot], A[rank]
+        u = pow(A[rank][c], -1, q)
+        A[rank] = [(u * x) % q for x in A[rank]]
+        for i in range(nr):
+            if i != rank and A[i][c]:
+                u = A[i][c]
+                A[i] = [(x - u * y) % q for x, y in zip(A[i], A[rank])]
+        rank += 1
+        if rank == nr:
+            break
+    return rank
+
+
+def smgr_cofactor_pool(q, N, r, children, count, seed):
+    rng, out, seen = random.Random(seed), [], set()
+    tries = 0
+    while len(out) < count and tries < 20000:
+        tries += 1
+        Q = tuple([q * rng.randrange(q ** (N - 1)) for _ in range(r)] + [1])
+        if Q not in seen and smgr_admissible(list(Q), q, N, children):
+            seen.add(Q)
+            out.append(list(Q))
+    assert len(out) == count, (q, N, r, children, len(out), tries)
+    return out
+
+
+def smgr_row_grades(children, beta):
+    s = sum(mu for mu, _, _ in children)
+    grades = [None] * s
+    offset = 0
+    for k in sorted({k for _, k, _ in children}, reverse=True):
+        size = sum(mu for mu, k2, _ in children if k2 == k)
+        D = sum(mu * min(k2, k) for mu, k2, _ in children) + beta[k]
+        for i in range(offset, offset + size):
+            grades[i] = 1 + D - k * i
+        offset += size
+    return grades
+
+
+def smgr_suffix_witness_betas(S, q, N):
+    s = len(S)
+    out = [0]
+    for t in range(1, s + 1):
+        rows = range(s - t, s)
+        best = N
+        for cols in itertools.combinations(range(s), t):
+            minor = [[S[i][c] for c in cols] for i in rows]
+            best = min(best, vq(om.int_det(minor), q, N))
+        out.append(best)
+    return out
+
+
+def smgr_abstract_sweep():
+    """Bounded DP sweep for the still-general combinatorics in I+/II+.
+
+    Child types are (mu,k) in {(2,1),(2,2),(2,3),(3,1),(3,2)}, one to three
+    types with repetition and total child degree <= 7.  Cofactor degrees are
+    1..3, total degree <= 8.  Its coefficient-valuation vectors range over
+    {1,2,3,4}^r, with the monic top valuation 0.
+    """
+    types = [(2, 1), (2, 2), (2, 3), (3, 1), (3, 2)]
+    tested = bad_raw = bad_rem = 0
+    first = ""
+    for nchild in (1, 2, 3):
+        for combo in itertools.combinations_with_replacement(types, nchild):
+            if sum(mu for mu, k in combo) > 7:
+                continue
+            children = [(mu, k, idx + 1) for idx, (mu, k) in enumerate(combo)]
+            for r in (1, 2, 3):
+                if sum(mu for mu, k in combo) + r > 8:
+                    continue
+                for vals in itertools.product(range(1, 5), repeat=r):
+                    qvals = list(vals) + [0]
+                    beta = {k: min(qvals[i] + k * i for i in range(r + 1))
+                            for k in {k for _, k, _ in children}}
+                    grades = smgr_row_grades(children, beta)
+                    full = sorted([1] * r + grades)
+                    want_raw = [sum(full[:t]) for t in range(len(full) + 1)]
+                    child = sorted(grades)
+                    want_rem = [sum(child[:t]) for t in range(len(child) + 1)]
+                    got_raw = assignment_betas_dp(raw_genre_envelope(children, r, beta))
+                    got_rem = assignment_betas_dp(remainder_envelope(children, r, beta))
+                    tested += 1
+                    if got_raw != want_raw:
+                        bad_raw += 1
+                    if got_rem != want_rem:
+                        bad_rem += 1
+                    if not first and (got_raw != want_raw or got_rem != want_rem):
+                        first = f"children={children}, r={r}, qvals={qvals}"
+    check("(SMGR-I+-sweep) raw-V DP optima equal C2 partial sums",
+          tested == 1736 and bad_raw == 0,
+          f"{tested} abstract configurations" if not bad_raw else first)
+    check("(SMGR-rem-sweep) V^rem DP optima equal child-C2 partial sums",
+          tested == 1736 and bad_rem == 0,
+          f"{tested} abstract configurations" if not bad_rem else first)
+
+
+def block_smgr_remainders():
+    """Examples-first table for GR-7b-0R/I+/II+.
+
+    Five cofactor cells are swept.  Each uses all five deterministic structured
+    planted lifts and four seeded admissible cofactors: 20 exact bases per cell,
+    100 bases total.  The checks are lower-envelope, own-slope residue rank,
+    suffix witness minors, and true Schur Smith values.
+    """
+    cells = [
+        (2, 5, [(2, 1, 1)], 1, "CELL-1"),
+        (2, 6, [(2, 1, 1)], 2, "B4"),
+        (2, 10, [(2, 1, 1), (2, 2, 1)], 1, "B5"),
+        (2, 6, [(3, 1, 1)], 1, "B7"),
+        (3, 11, [(2, 1, 1), (2, 1, 2), (2, 2, 1)], 1, "B11"),
+    ]
+    total, genres, patterns, b5_pin = 0, {}, {}, False
+    for cellno, (q, N, children, r, tag) in enumerate(cells):
+        M, s = q ** N, sum(mu for mu, _, _ in children)
+        Ncalc = (s + r) * (N + 1)  # enough to see every uncapped witness determinant
+        Mcalc = q ** Ncalc
+        lifts = []
+        for pat in ("zero", "allq", "equal", "deep", "mix"):
+            bs = []
+            for p, (mu, k, w) in enumerate(children):
+                if pat == "zero":
+                    b = [0] * mu
+                elif pat == "allq":
+                    b = [q] * mu
+                elif pat == "equal":
+                    b = [q * (j + 1) % M for j in range(mu)]
+                elif pat == "deep":
+                    b = [q ** (N - 1)] * mu
+                else:
+                    b = [q * (p + 1) * (j + 2) % M for j in range(mu)]
+                bs.append(b)
+            lifts.append(bs)
+        cofs = smgr_cofactor_pool(q, N, r, children, 4, 20260828 + cellno)
+        lower_ok = rank_ok = witness_ok = smith_ok = True
+        local_genres = set()
+        for bs in lifts:
+            Ps = [om.alpha_parent(b, k, w, q, Mcalc)
+                  for b, (mu, k, w) in zip(bs, children)]
+            for Q in cofs:
+                beta = {k: min(vq(Q[i], q, Ncalc) + k * i for i in range(r + 1))
+                        for k in {k for _, k, _ in children}}
+                D = tuple(sorted((k, sum(mu * min(k2, k) for mu, k2, _ in children)
+                                   + beta[k]) for k in beta))
+                local_genres.add(D)
+                Vrem = remainder_envelope(children, r, beta)
+                patterns[(tag, D)] = tuple(tuple(row) for row in Vrem)
+                A = sylvester_matrix(q, Ncalc, s + r, children, Ps, r, Q)
+                S = smgr_schur(A, q, Ncalc, s, r)
+                lower_ok &= all(vq(S[i][c], q, Ncalc) >= min(Ncalc, Vrem[i][c])
+                                for i in range(s) for c in range(s))
+                offset = 0
+                for k in sorted({k for _, k, _ in children}, reverse=True):
+                    block_cols = [c for c, (_, k2, _) in enumerate(
+                        [(mu, k2, w) for mu, k2, w in children for _ in range(mu)])
+                                  if k2 == k]
+                    size = len(block_cols)
+                    eps = 1 + dict(D)[k]
+                    residue = []
+                    for i in range(offset, offset + size):
+                        row = []
+                        exp = eps - k * i
+                        for c in block_cols:
+                            row.append((S[i][c] // (q ** exp)) % q
+                                       if exp >= 0 and S[i][c] % (q ** exp) == 0 else 0)
+                        residue.append(row)
+                    rank_ok &= rank_mod_prime(residue, q) == size
+                    offset += size
+                grades = smgr_row_grades(children, beta)
+                wanted = [sum(sorted(grades)[:t]) for t in range(s + 1)]
+                witness_ok &= smgr_suffix_witness_betas(S, q, Ncalc) == wanted
+                smith_ok &= snf_valuations(S, q, Ncalc) == sorted(grades)
+                if tag == "B5" and bs == lifts[0] and Q == cofs[0]:
+                    drops = sorted((i, c, Vrem[i][c]) for i in range(s)
+                                   for c in range(s) if Vrem[i][c] < INF)
+                    b5_pin = any(i == 0 and c == 1 and v <= 8 for i, c, v in drops) and \
+                             any(i == 2 and c == 1 and v <= 4 for i, c, v in drops)
+                total += 1
+        genres[tag] = local_genres
+        check(f"(SMGR-0R) tropical remainder envelope bounds every Schur entry [{tag}]",
+              lower_ok, f"20 bases, {len(local_genres)} genre(s)")
+        check(f"(SMGR-0R-NF) own-slope C2-window residue matrices have full rank [{tag}]",
+              rank_ok, f"20 bases")
+        check(f"(SMGR-II+) suffix-row witness minors attain all child partial sums [{tag}]",
+              witness_ok, f"20 bases")
+        check(f"(SMGR-SNF) Schur Smith list equals the child C2 list [{tag}]",
+              smith_ok, f"20 bases")
+        info(f"SMGR genre table [{tag}]: {sorted(local_genres)}")
+        for D in sorted(local_genres):
+            info(f"SMGR V^rem [{tag}, D={D}]: {list(patterns[tag, D])}")
+    check("(SMGR-0R-pin) V^rem reproduces both B5 forbidden raw-V drops", b5_pin)
+    info(f"SMGR sweep total: {total} exact bases in {sum(len(x) for x in genres.values())} "
+         f"cell-genre occurrences across {len(cells)} cofactor cells")
+    smgr_abstract_sweep()
+
+
 def main():
+    if "--smgr" in sys.argv[1:]:
+        print("H.116b4 battery -- SMGR remainder/normal-form block (2026-08-28)")
+        block_smgr_remainders()
+        n = len(FAILED)
+        print(f"==== {n} failed ====" if n else "==== ALL CHECKS PASSED ====")
+        return 1 if n else 0
     print("H.116b4 battery (unit DEC5, 2026-08-26) -- GR-7 / GR-9 / GR-10 / GR-4 probes")
     t00 = time.time()
 
@@ -675,6 +1011,9 @@ def main():
         tree_block(3, 5, 4, [(2, 1, 1), (2, 1, 2)], 0, r2, gt2, "CELL-2", nclasses=2)
     if r4:
         tree_block(2, 7, 4, [(2, 1, 1), (2, 2, 1)], 0, r4, gt4, "CELL-4", nclasses=2)
+
+    print("-- BLOCK 5: SMGR exact cofactor-remainder polygons and normal forms")
+    block_smgr_remainders()
 
     print()
     n = len(FAILED)
