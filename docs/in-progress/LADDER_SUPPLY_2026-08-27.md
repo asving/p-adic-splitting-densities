@@ -1285,3 +1285,254 @@ recentering equality under the SAME existential witness; and the peel core
 key cannot serve, so a genuinely NEW recentered key export is required.  Until this node
 lands, `MP1CarrierLive` is OPEN at the S2 socket (not refuted — that is the point of the
 amendment).
+
+## [SRX 2026-08-28] S2 recenter export audited: the proper key lands, but the production step is empty
+
+### Adjudication
+
+`S2-RECENTER-EXPORT` is **not constructible at the landed S2 occurrence under the current
+production type**.  This is no longer merely a list of missing producer declarations.
+`leanfinal/scratch/SRX_probe.lean` proves two independent obstructions, sorry-free:
+
+1. The proper key actually constructed by the C132 μ₃ bank is
+   `g₈ = Φ₂² - 2⁴Φ′`.  It is monic of degree `8`, has normalized μ₃ residual `X+1`, is an
+   `S2Mu3KeyPoly`, and is not μ₃-initial-equivalent to the carried `Φ₂`.  Thus the bank does
+   supply a genuine new depth-two key and its tangent class.
+2. The external live socket is degree `4`: every legal recentering has key
+   `B'.Φ = B.Φ - Λ` with `deg Λ < 4`, hence still degree `4`, while `g₈` has degree `8`.
+   Moreover the landed input has degree `4`, so `g₈ ∤ B.F`.  Therefore the proper key
+   cannot be the payload's exact leaf at this occurrence.
+3. More decisively, `RecenterStep` itself contains `Nonempty (MP1StepCore B B')`.  At the
+   landed parent `B.μ = 1`, every quotient block has degree at least `D`, but the core's
+   `hmass` requires `deg quot.F + D = deg B.F = D`.  Hence
+   `∀ B' Λ, ¬ RecenterStep C2 B2 B' ... Λ`.  The probe consequently constructs
+   `MP1CarrierLive C2 B2 ... 4` only vacuously.
+
+The prior ledger sentence saying `MP1CarrierLive` was “OPEN at the S2 socket (not
+refuted)” is therefore superseded: the proposition is **PROVED**, but solely because its
+`RecenterStep` premise is empty.  No honest S2 step inhabitant exists.
+
+### Field-by-field discharge table
+
+| `GNCitePayload` / outer field | Exact landed S2 datum | Status at the actual occurrence |
+|---|---|---|
+| `e'`, `f'`, `u'` | `(2,1,21)` in `C132fd0.s2SourceDataTwo` | **DISCHARGED** |
+| `source` | `C132fd0.s2SourceDataTwo h2 hq` on `S2DepthTwo` and `s2DepthTwoKeyChain` | **DISCHARGED** as a Lean record; GN analytic dictionary still open |
+| `sourceLaws` | `C132fd0.s2SourceLawsTwo_of` with `C132rp10b.s2Mu3_hex` and `C132kp6b.s2Mu3_hconv`; probe theorem `s2SourceLaws` | **DISCHARGED** as a Lean record; GN analytic dictionary still open |
+| `keyPolynomial` | `SRXProbe.mu3SuccessorKey_isKey` for `g₈`, using `C132kp3.s2Mu3_key_criterion`, the landed degree/residual computation, and irreducibility of `X+1` | **DISCHARGED for `g₈`; INCOMPATIBLE with the degree-4 outer `B'.Φ`** |
+| `tangentClass` | `SRXProbe.mu3SuccessorKey_tangentClass`; residuals `X+1` and `1` differ.  The carried `Φ₂` still fails by reflexivity (`s2LandedPrefix_tangentClass_impossible`) | **DISCHARGED for `g₈`; unavailable for a landed recentered leaf** |
+| `monicInput` | `C130s17.s2InputPolynomial_monic`, equivalently probe theorem `s2Input_monic` | **DISCHARGED over `Polynomial O`**; GN's `O_v[x]` base-change dictionary is open |
+| `slope`, `slope_pos` | no S2 theorem that `-slope` is a slope of `N^-_{r+1}(B.F)`; `payloadWithArbitraryPositiveSlope` machine-proves that the current carrier accepts any positive replacement | **FAITHFULNESS GAP in the statement surface** |
+| `residual` | `C132rp10b.s2Mu3NormRes_g8 = X+1` computes the normalized residual of the candidate key, not the selected slope residual `R_{r+1,λ}(B.F)` required by GN Theorem 2.3 | **GAP / wrong operator and argument for this clause** |
+| `psi_monic`, `psi_irreducible` | `ψ := X+1`; monicity is elementary and `C132rp10.s2Mu3_X_add_one_irreducible` is landed | **INTRINSIC ψ PROPERTIES DISCHARGED**, but prime-factor membership in the actual slope residual is open |
+| `residual_factorization` | one may syntactically write `X+1 = (X+1)·1`, but no field equates `residual` to `R_{r+1,λ}(B.F)` | **NOT AN HONEST DISCHARGE** |
+| `residual_multiplicity_one` | `¬(X+1) ∣ 1` follows from irreducibility, but only for the unbound synthetic residual above | **GAP at the actual slope residual** |
+| `leaf_monic` | `g₈` is monic (`C132rp10.s2Mu3_gEight_monic`) | **DISCHARGED for the candidate** |
+| `leaf_dvd_input` | probe theorem `mu3SuccessorKey_not_dvd_s2Input`: degree `8` cannot divide the nonzero degree-`4` input | **REFUTED for the genuine candidate** |
+| `exactLeaf` | can only identify `leaf` with `g₈`; there is no theorem-selected `g_{λ,ψ}` relation in the carrier, and `g₈` fails `leaf_dvd_input` | **GAP; current field is not a GN-factor identification** |
+| outer `B'.Φ = B.Φ - Λ`, `deg Λ < D` | probe theorem `mu3SuccessorKey_not_recentered`: the right side has degree `4`, while `g₈` has degree `8` | **REFUTED for the genuine candidate** |
+| outer `B'.Φ ∣ B.F` | the genuine candidate does not divide `B.F`; no alternative landed successor is exported | **REFUTED for `g₈`; otherwise GAP** |
+| `MP1StepCore` | `SRXProbe.s2_mp1StepCore_empty` for every `B'` over the exact landed carrier | **REFUTED universally at S2** |
+| same realization views | the existing `S2`/`X2` socket supplies `core/A/X/eK/eG`, slot, block, and gauge-family views | **DISCHARGED**, but cannot overcome the core contradiction |
+
+### Faithfulness check against Guàrdia–Nart, Theorem 2.3
+
+The checked primary statement is Guàrdia–Nart, *Genetics of polynomials over local fields*,
+Contemporary Mathematics 637 (2015), Theorem 2.3, author PDF p. 10.  It assumes an inductive
+valuation with a MacLane chain, `φ ∈ KP(μ)`, `φ ≁_μ φ_r`, and monic
+`g ∈ O_v[x]`; it indexes `g_{λ,ψ}` by `-λ` among the slopes of the principal Newton polygon
+and by `ψ` among the prime factors of the corresponding slope residual.  Its final clause
+uses `ord_ψ(R_{r+1,λ}(g)) = 1`.  The proof on the same page defines `g_{λ,ψ}` as the product
+of the prime factors satisfying those slope and residual conditions.
+
+The production payload matches the bare key/tangent/monicity shapes and gives a valid UFD
+encoding of multiplicity one **if** its residual is the actual slope residual.  It is not
+one-to-one with the theorem as currently signed:
+
+* `slope_pos` does not assert slope membership;
+* `residual` is not tied to `R_{r+1,λ}(g)`;
+* `psi` is consequently not tied to a prime factor of that operator;
+* `leaf_dvd_input` plus `exactLeaf` does not identify `leaf` with the theorem's selected
+  `g_{λ,ψ}`;
+* the payload is over `Polynomial O`, whereas the theorem factors in the completed ring
+  `O_v[x]`; no completion/base-change dictionary is carried.
+
+The repository-local `docs/references/` directory does not contain the GN paper: its two
+similarly named PDFs are the different Fernández–Guàrdia–Montes–Nart *Residual ideals of
+MacLane valuations*.  The clause was therefore rechecked against the primary author copy:
+`https://upcommons.upc.edu/bitstream/handle/2117/28206/GeneticsCM.pdf`.
+
+### Named opens after SRX
+
+* **`SRX-RECENTER-STEP-SPLIT`** — the production premise must not contain a peel output that
+  is impossible at mass one.  Exact current obstruction:
+  `∀ B' Λ, ¬ IFC5.RecenterStep C2 B2 B' G2 K2 L2 N2 v2 rho2 q2 4 Λ`.
+  A successor unit must either (a) split pre-cite producer data from `MP1StepCore` and give a
+  terminal-leaf branch at `B.μ = 1`, or (b) add an explicit `2 ≤ B.μ` applicability fence.
+* **`SRX-GN-SLOPE-RESIDUAL-BIND`** — add exact fields expressing
+  `-slope ∈ slopes(N^-_{r+1}(g))` and
+  `residual = R_{r+1,slope}(g)` for the payload's same `source`, `g`, and `phi`.
+* **`SRX-GN-SELECTED-LEAF-BIND`** — replace the free leaf naming by a relation stating that
+  `leaf` is the Theorem-2.3 factor `g_{slope,psi}` (or carry the theorem's defining prime-
+  factor characterization), then base-change that factor back from `O_v[x]` if required.
+* **`SRX-S2-NONTERMINAL-OCCURRENCE`** — an honest proper-key leaf route needs a realized
+  input of degree at least `8` (hence parent mass at least `2`) whose selected slope residual
+  has `X+1` with multiplicity one and whose selected factor is the exported successor.  The
+  landed `μ=1`, degree-4 acceptance input cannot supply this statement.
+
+### Probe status
+
+Required command, from `leanfinal`:
+
+```text
+timeout 580 ~/.elan/bin/lake env lean scratch/SRX_probe.lean
+```
+
+Exit `0`; zero `sorry`; all eight footer declarations report exactly
+`[propext, Classical.choice, Quot.sound]`.  No landed `.lean`, leanspec file, or existing
+scratch file was edited.
+
+## [TAU 2026-08-28] Source-faithful canonical tau export
+
+**Verdict.** The end-to-end mechanism is **PROVED**, while its two source theorems remain
+**OPEN at general depth**.  The correct route is an owner-attached companion to an explicit
+`RealizedInput`, not bare `FGMNCalculus`, not bare `ChainRealization`, and not IFC4's wired
+W-leg.  At each signed live site it carries:
+
+1. the general-depth statement that the witness's own canonical read of each tau cocycle is
+   the word in C130cr's own `wrapValue` and `letterValue`; and
+2. one minimal genuinely new dictionary, `CanonicalGeneratorDescent`, saying those exact
+   canonical generator values lie in the image of this witness's specified `Kt → L` map.
+
+The statement and proof authority is `leanfinal/scratch/TAU_probe.lean` (zero `sorry`).
+`CanonicalTauLetterSource` is at lines 102–123; its conversion to the exact mathematical
+fields of LVS's `VarthetaTauLevelExport` is
+`varthetaTauLevelExport_of_canonicalTauLetterSource` at lines 128–157.  The universal owner
+quantifiers are pinned by `CanonicalTauLiveSource` and
+`varthetaTauLiveExporter_of_canonicalTauLiveSource` at lines 159–202.  The final D62w
+consumer is `varthetaRes_of_canonicalTauLetterSource` at lines 206–221.
+
+### 1. Route decision
+
+**Route (a), bare `FGMNCalculus`, is rejected.**  Its only letter datum is
+`letterZ : ℕ → W.fld r`; its only letter law is nonvanishing
+(`C130pk.lean:110-175`).  `Rres`/`normalizedResidual` concerns polynomials and has no law
+identifying a value-zero Laurent generator with the realization's L-valued
+`canonicalRead`.  The packaging map is factored from `FGMNSourceData + FGMNSourceLaws +
+KeyChain`, independently of `ChainRealization.node` (`C130pk.lean:222-268`).  Therefore the
+same calculus survives C130s18's canonical-read twist, while the desired canonical value
+changes.  This is not merely an absent proof: it is the CC-18 non-uniformity refutation.
+
+**Route (c), `SplitNodeWired`, is rejected.**  IFC4 changes only `towerRead` to a constant-one
+Kt-valued function (`IFC4.lean:105-143`).  The signed `GC13Wiring` law controls this separate
+read only at normalizer points (`IFC3.lean:108-126`), whereas `VarthetaTauLevelExport` reads
+`canonicalResAt`, hence `canonicalRead`.  The wired update leaves the latter untouched and
+the twist audit can change it without changing `towerRead`.  Moreover IFC4's only landed
+witness has `r = 2`, so its deep range is explicitly empty (`IFC4.lean:384-398`).
+
+**Chosen route: a no-ripple companion strengthening of route (b).**  Rather than add fields
+to the landed `ChainRealization` record and force every constructor/twist/socket to change,
+the source constructor supplies `CanonicalTauLiveSource` alongside the explicit
+`core/Aℛ/X`.  Its range is exactly `3 ≤ j` and `GaugeLive core.r j`.  Thus all existing
+depth-two witnesses supply it vacuously, while a future deep arising witness must prove it at
+its own first real site `r = 4, j = 3`.  Because its right side names `Aℛ.node.wrapValue` and
+`Aℛ.node.letterValue Aℛ.normalizer`, the package cannot drift to a different calculus, node,
+read, embedding, or family view.
+
+### 2. Exact mathematics
+
+Tau kernel membership is not new source data.  `canonical_tau_mem`
+(`TAU_probe.lean:33-54`) derives it for every live level and all integer heights directly
+from `LaurentNormalizer.exact_height`, by expanding `NormSection.tau`.  Transport to an
+external socket is bookkeeping under the package's exact `GaugeFamilyViewEq`; the probe
+keeps the resulting `tau_mem` in the per-level carrier so the dependent kernel proof used by
+`ρ` is fixed once.
+
+The genuinely new per-level field is:
+
+```lean
+structure CanonicalGeneratorDescent (Aℛ) (j) (hj : GaugeLive core.r j) : Prop where
+  wrap : ∃ u : Ktˣ,
+    Aℛ.node.wrapValue hj.stageLive = unitAlgebraMap u
+  letter : ∀ a : Fin (j - 1), ∃ u : Ktˣ,
+    Aℛ.node.letterValue Aℛ.normalizer hj.stageLive a = unitAlgebraMap u
+```
+
+(`TAU_probe.lean:79-94`).  No duplicate generator or free residue map is introduced:
+C130cr already defines `wrapClass`, `letterClass`, `generatorWord`, `wrapValue`, and
+`letterValue`, and proves that the canonical read of a generator word is the product of
+those values (`C130cr.lean:223-330`).  It also proves the synchronized read formula
+`canonicalRes0_generatorWordSync` (`C130cr.lean:537-544`).  What C130cr deliberately does
+not prove is spanning: its generator section says explicitly that the triangular-basis
+bridge is open (`C130cr.lean:223-227`).
+
+Accordingly `CanonicalTauLetterSource.tau_word` is the other open theorem obligation:
+
+```lean
+∀ s, ∃ (m : ℤ) (t : Fin (j - 1) → ℤ),
+  ρ j ⟨N.tau (s * q j) (q j), tau_mem s⟩ =
+    Aℛ.node.wrapValue hj.stageLive ^ m *
+      ∏ a, Aℛ.node.letterValue Aℛ.normalizer hj.stageLive a ^ t a
+```
+
+This is not the desired embedded-value conclusion: its right side is still L-valued and can
+fail to descend unless `CanonicalGeneratorDescent` is supplied.  D62w supplies the exact
+fixed-depth model: `deep3_tau_descent` plus three generator-descent hypotheses produce
+`HVarthetaRes` (`D62w.lean:228-265`), and `deep2_tau_descent` is the two-letter analogue
+(`D62w.lean:319-360`).
+
+The general proof is the same finite-product argument.  If
+`wrapValue = map(u₀)` and `letterValue(a) = map(u(a))`, a tau word with exponents `(m,t)`
+is the image of
+
+```text
+u₀^m · ∏ a, u(a)^(t a) : Ktˣ.
+```
+
+`varthetaTauLevelExport_of_canonicalTauLetterSource` proves this in Lean using only
+`map_mul`, `map_zpow`, and `map_prod`.  It fills LVS's exact `view`, `tau_mem`, and
+`tau_value` fields.  `varthetaTauLiveExporter_of_canonicalTauLiveSource` then preserves all
+owner and live-range quantifiers literally, and D62w's `hvarthetaRes_of_tau_letters`
+finishes `VarthetaRes`.
+
+### 3. Supplier obligation and faithfulness audit
+
+| Obligation at each `3 ≤ j < core.r` | Source | Status |
+|---|---|---|
+| Tau kernel membership | Laurent normalizer exact-height law | **PROVED**, `canonical_tau_mem` |
+| Tau is a word in `wrapClass` and all `letterClass` generators | general triangular/exponent-lattice descent | **OPEN — `LVS-TAU-WORD`**; C130cr intentionally has no spanning theorem |
+| Canonical read of a generator word is the product of canonical generator values | C130cr multiplicativity | **PROVED**, `canonicalRead_generatorWord` / synchronized form |
+| Exact canonical wrap/letter values descend through the witness's `Kt → L` | new `CanonicalGeneratorDescent` supplied when the node/read is constructed | **OPEN — `LVS-CANONICAL-GENERATOR-DESCENT`** |
+| Product of descended generator values gives LVS's tau value | unit-group algebra | **PROVED** in the TAU probe |
+| Tau export gives `VarthetaRes` | D62w tau recursion | **PROVED** in the TAU probe |
+
+The new field is faithful to the FGMN source apparatus, but is not a theorem of today's
+scalar calculus interface.  The repository's print-read records that the published §3.3
+`γ_i → y_i → z_i` construction provides the letter values, while the required fraction-field
+rational functions, homogeneous initial forms, intermediate-field embeddings, and their
+identification with repository reads are exactly `OPEN-LETTERS`/`OPEN-EVAL-ISO`
+(`FGMNCALCULUS_FIELDLIST_2026-08-24.md:372-386`; the Def-3.12 exponent-lattice statement is
+recorded in `GENTOW2_ADJUDICATION_2026-08-24.md:104-108`).  Thus the mathematical source
+does provide the datum when `canonicalRead` is built from that source; the landed Lean class
+has erased the necessary evaluation/embedding dictionary.  The supplier must construct the
+canonical read and prove the dictionary at the same time.  Merely postulating descent for an
+arbitrary already-built `ChainRealization` would be false by C130s18's twist.
+
+The existing S2 frontier's `letter_compat` only identifies an FGMN letter with
+`node.ambientLetter` (`C130s17.lean:246-251`), not with
+`node.letterValue = canonicalRead(letterClass)`, so it does not fill the new field.  The
+landed μ3 calculus (`C132fd0.s2SourceDataTwo`, whose letter is constant one, and
+`C132kp6b.s2Mu3_calculus_nonempty`) likewise cannot cross this missing tie.  This causes no
+current failure because every signed deep site at `r = 2` is absent.
+
+### 4. Verification
+
+From `leanfinal/`:
+
+```text
+timeout 580 ~/.elan/bin/lake env lean scratch/TAU_probe.lean
+```
+
+Exit `0`, zero warnings, zero `sorry`.  Every printed declaration depends only on
+`[propext, Classical.choice, Quot.sound]`.  No landed `.lean`, leanspec file, or existing
+scratch file was edited.
