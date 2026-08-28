@@ -178,6 +178,7 @@ import Uniformity.ChapC.C15
 import Uniformity.ChapC.C150rb1
 import Uniformity.ChapC.C150rb2
 import Uniformity.ChapC.C150rb3
+import Uniformity.ChapC.C150rb4
 import Uniformity.ChapC.C16
 import Uniformity.ChapC.C17
 import Uniformity.ChapC.C18

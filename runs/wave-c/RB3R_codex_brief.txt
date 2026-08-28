@@ -1,0 +1,139 @@
+# Adversarial verification charge — quote and classify, fix nothing
+
+You are verifying a semantic finding about a SIGNED Lean 4 axiom in a formalization
+project. Your job: for each numbered claim below, either CONFIRM it or REFUTE it with a
+precise counter-argument. Quote the exact passage you are adjudicating. Classify any
+error you find as CRITICAL (breaks the finding) or GAP (finding survives, justification
+incomplete). Do NOT propose fixes. Also answer the final "escape hatch" question.
+
+## The definitions (verbatim from the corpus)
+
+`dev φ f j` is the j-th digit of the φ-adic expansion of f (iterated monic
+divByMonic/modByMonic: `dev φ f 0 = f %ₘ φ`, `dev φ f (j+1) = dev φ (f /ₘ φ) j`).
+It is unconditionally additive in f for monic φ (landed: `dev_add_of_monic`, `dev_sub`).
+
+```lean
+-- L.ℓ = T.e₂, L.u = T.u₂, L.r = towerLabel T (monic, natDegree = T.f₂, coeff 0 ≠ 0,
+-- irreducible over K = F.stageField H₀ hpin) when L = T.levelDatum hπ.
+-- F.key is monic with F.key.natDegree = F.e₁ * F.f₁ =: D′. T.D₂ = D′ * (T.e₂ * T.f₂).
+-- T.E₂ = T.e₂ * T.f₂ * T.u₂. TowerDatum fields: he₂ : 0 < e₂, hf₂ : 0 < f₂,
+-- hcop : Nat.Coprime u₂ e₂, hfloor : e₂ * (F.e₁ * F.f₁) * F.h < u₂.
+
+def IsTestKey (L : LevelDatum F H₀ hpin) (Ψ : Polynomial O) : Prop :=
+  Ψ.Monic ∧ Ψ.natDegree = L.keyDeg₂ ∧
+  dev F.key Ψ (L.ℓ * L.r.natDegree) = 1 ∧
+  (∀ b < L.ℓ * L.r.natDegree, ¬ L.ℓ ∣ b → dev F.key Ψ b = 0) ∧
+  (∀ t < L.r.natDegree,
+    (L.r.coeff t = 0 → dev F.key Ψ (L.ℓ * t) = 0) ∧
+    (L.r.coeff t ≠ 0 →
+      F.stageHeight (dev F.key Ψ (L.ℓ * t)) = (((L.r.natDegree - t) * L.u : ℕ) : ℕ∞) ∧
+      F.twistRead H₀ hpin ((L.r.natDegree - t) * L.u) (dev F.key Ψ (L.ℓ * t))
+        = L.r.coeff t))
+
+def towerSolve (u e k : ℕ) : ℕ :=
+  ((List.range e).find? (fun b => (b * u) % e == k % e)).getD 0
+
+-- F.slotIdx k : the unique i < e₁ with i·h ≡ k (mod e₁) (spec landed: slotIdx_spec).
+
+noncomputable def k2Coord (T) (s : AdjoinRoot (towerLabel T)) (t : ℕ) : K :=
+  (((AdjoinRoot.mk_surjective s).choose).coeff t)
+-- NOTE: the preimage is an OPAQUE Classical.choice witness, no degree bound. A repair
+-- (power-basis read) was landed 2026-08-16 then REVERTED 2026-08-17 to this byte-exact
+-- signed body; the corpus's A-C.3 audit marks this body DEFECTIVE ("k2DigitLift cannot
+-- be pinned by any consumer").
+
+noncomputable def n2Exp (T) (m : ℕ) : ℕ × ℕ × ℕ :=
+  let b := towerSolve T.u₂ T.e₂ m
+  let m' := (m - b * T.u₂) / T.e₂
+  ((m' - F.slotIdx m' * F.h) / F.e₁, F.slotIdx m', b)
+
+noncomputable def k2DigitLift (T) (s) (m : ℕ) : Polynomial O :=
+  ∑ r ∈ Finset.range F.f₁, ∑ t ∈ Finset.range T.f₂,
+    Polynomial.C
+        (resLift (F.stageCoord H₀ hpin (k2Coord T s t) r)
+          * π ^ (n2Exp T (m - (F.e₁ * T.e₂ * F.h * r + T.e₂ * T.u₂ * t))).1)
+      * Polynomial.X
+          ^ ((n2Exp T (m - (F.e₁ * T.e₂ * F.h * r + T.e₂ * T.u₂ * t))).2.1 + F.e₁ * r)
+      * F.key ^ ((n2Exp T (m - (F.e₁ * T.e₂ * F.h * r + T.e₂ * T.u₂ * t))).2.2 + T.e₂ * t)
+-- resLift : lift of a residue-field element to O, with resLift 0 = 0 and
+-- residue (resLift x) = x (so resLift x ≠ 0 when x ≠ 0). stageCoord reads the η-basis
+-- coordinates of an element of K over the residue field; all coordinates of a nonzero
+-- element are not all zero, and stageCoord of 0 is 0.
+```
+
+The SIGNED axiom (leanspec, must be proved byte-as-is):
+
+```lean
+axiom refine_invariants (T) (hπ) (hh : 1 ≤ F.h) [IsAdicComplete …] [Finite (ResidueField O)]
+    {μ₂ : ℕ} {f : Polynomial O} (hf : f ∈ towerLocus T μ₂)
+    {lam : ℕ} (hslope : T.E₂ < lam) {s : AdjoinRoot (towerLabel T)} (hs : s ≠ 0)
+    (hne : (dv2SideSet (T.levelDatum hπ) (composedKey T) f lam 1).Nonempty)
+    (hres : dv2ResPoly (T.levelDatum hπ) (composedKey T) f lam 1 hne
+      = (Polynomial.X - Polynomial.C s) ^ μ₂) :
+    (composedKey T - k2DigitLift T s lam).Monic ∧
+    (composedKey T - k2DigitLift T s lam).natDegree = T.D₂ ∧
+    IsTestKey (T.levelDatum hπ) (composedKey T - k2DigitLift T s lam)
+```
+
+`composedKey T` is a landed test key: `IsTestKey (T.levelDatum hπ) (composedKey T)` is a
+theorem (C47), and its F.key-digits are supported on the e₂-lattice {e₂·t : t ≤ f₂} with
+the slot digit at e₂·t vanishing exactly when (towerLabel T).coeff t's resLift chain
+vanishes. The hypotheses hne/hres are about the LEVEL-2 (composedKey-adic) side data of
+f; the conclusion mentions f nowhere.
+
+## The claims to verify
+
+CLAIM 1 (no truncation + constancy of the solve). For every r < f₁, t < f₂:
+Δ(r,t) := e₁e₂h·r + e₂u₂·t satisfies Δ(r,t) < E₂ < lam (using hfloor and hslope), so
+m := lam − Δ(r,t) is a genuine subtraction with m ≡ lam (mod e₂), and
+b₀ := (n2Exp T m).2.2 = towerSolve u₂ e₂ m depends only on lam mod e₂; under
+hcop (u₂ coprime to e₂), b₀ = 0 ⟺ e₂ ∣ lam, and b₀ < e₂.
+
+CLAIM 2 (digit support of the lift). Each (r,t) term of k2DigitLift T s lam is
+C(c)·X^(i+e₁r)·F.key^(b₀+e₂t) with i + e₁r < D′ (via slotIdx_spec), so the F.key-digit
+of the lift at abscissa j is: Σ_{r < f₁} C(c_{r,t})·X^(i+e₁r) if j = b₀ + e₂t for some
+t < f₂, and 0 otherwise. In particular the digit at j = b₀ + e₂t is 0 iff
+resLift(stageCoord (k2Coord T s t) r) · π^{a₀} = 0 for all r, iff k2Coord T s t = 0.
+
+CLAIM 3 (clause-4 failure at e₂ ∤ lam). If e₂ ∤ lam then b₀ ≠ 0 and each abscissa
+b₀ + e₂t (t < f₂) is < e₂f₂ and NOT divisible by e₂. dev is additive, the composed key's
+digit there is 0, so the corrected key's digit at b₀ + e₂t equals −(the lift's digit).
+IsTestKey's clause 4 then demands the lift's digit to vanish at ALL these abscissae,
+i.e. k2Coord T s t = 0 for ALL t < f₂. Nothing in the hypotheses forces this; for the
+axiom to be TRUE it would have to hold for EVERY instance, i.e. the opaque choice
+preimage of every eligible s would need all its first f₂ coefficients zero. Hence the
+axiom is not provable, and under any faithful (pinned, e.g. power-basis) reading of
+k2Coord it is false at any hypothesis-satisfiable instance with e₂ ∤ lam and s having a
+nonzero low coordinate.
+
+CLAIM 4 (clause-5-zero-branch failure at e₂ ∣ lam). If e₂ ∣ lam then b₀ = 0 and the
+lift's digits sit exactly at the slots e₂t. At a slot t with (towerLabel T).coeff t = 0,
+the composed key's digit is 0, so the corrected key's digit is −(lift digit), which is
+nonzero whenever k2Coord T s t ≠ 0. IsTestKey clause 5's zero-branch demands it be 0.
+s ≠ 0 and hres do not constrain the SUPPORT of s to lie inside the support of
+towerLabel T. Hence the same unprovability conclusion in this regime (whenever
+towerLabel T has an interior zero coefficient — legal: TowerDatum pins only coeff 0 ≠ 0,
+and the corpus's own C47 note exhibits ψ₂ = X²+1 over F₃, e₂=1... note for e₂=1 clause 4
+is vacuous and "e₂ ∣ lam" always holds, so this regime is REACHABLE).
+
+CLAIM 5 (the source does not claim the exact-zero shape). The source clause
+EFF.GENTOW1.28 claims for Φ₂⁺: "monic of degree D2; level-1 development one-sided of
+slope kappa2 with residual psi2 and side digits byte-unchanged (what's slots sit at
+weight lam > E2, strictly above the key's side); x-polygon one side …; hence the
+(i)-forcing chain reruns verbatim". This is the perturbation-stable package (one-
+sidedness = IsDvPure, residual preserved, side digits unchanged) — it does NOT assert
+that Φ₂⁺ lies in the rigid test family with EXACT-ZERO off-lattice and zero-slot digits.
+The leanspec elaboration `IsTestKey (T.levelDatum hπ) Φ₂⁺` therefore OVERCLAIMS relative
+to the source. (Adjudicate: does "keeps every T(b)' key invariant … hence the
+(i)-forcing chain reruns" license the IsTestKey transcription, given that IsTestKey is
+the corpus's HE6-1 test-family membership predicate and the (i)-forcing chain (carrier
+computation) was proved FROM IsTestKey-hood for Φ₂?)
+
+## The escape-hatch question
+
+Is there ANY reading under which the signed conclusion is provable as stated? In
+particular: (a) could hne + hres + hslope force e₂ ∣ lam (the level-2 side of an
+f ∈ towerLocus T μ₂ at denominator 1 — any parity/divisibility obstruction)? (b) could
+hres force the support of s inside the support of towerLabel T? (c) could the
+hypotheses be VACUOUS (no f satisfies them), making the axiom vacuously true — and is
+that provable? (d) any other escape you see. Answer each with a precise argument.
