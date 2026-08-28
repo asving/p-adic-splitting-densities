@@ -146,3 +146,136 @@ mislabelled as a proof supplier.
 - `cd leanfinal && lake env lean scratch/CHFD_probe.lean` exits 0.  Its six named proof
   declarations have Lean-core footprints only; the separately printed landed NS7 wrapper has
   the intended `Tower.agnprw_termination` cite dependency.
+
+---
+
+## [CHA 2026-08-28] Re-base of the unattacked fields — a0/a1, the weld debts, the I-D12 bodies
+
+Unit CHA re-read its rows against the 2026-08-28 corpus (post Hensel engine C133mh0–mh15 +
+C134*, μ₃/C132*, GCW/IFC0–IFC5, A-I.4–A-I.7, I02_I03w/I03_I04w).  Two corpus-wide negative
+facts first, so later readers need not re-derive them: (1) the C133mh*/C134* wave contains
+ZERO density-layer content — no file mentions `FactorizationType`, `genuineDensity`,
+`decidedDensity`, `CoveringMenu`, or `residueCard` (grep-verified); it cannot supply `a0`/`a1`
+at any degree.  (2) Since 2026-08-26 NOTHING landed on the weld/window/HE/Tow1/TypeOf legs:
+`ChapF/` is byte-untouched, `ValueDictSite`/`CarrySite` still occur tree-wide only in
+parameter position (no exporter), `IFC0.ArisingWeldSiteSupply` has zero consumers, no
+canonical `Arises` exists, no `StageLeaf4`, C93 is still two theorems + four examples, and
+the C130–C134 wave has no `typeOf` faithfulness content.
+
+Landings: `leanfinal/Uniformity/ChapI/IFC6.lean` (unit CHA; zero sorry, all footprints
+Lean-core; verdict `runs/wave-c/verdict_CHA.md`).
+
+### `a1` — ROW CLOSED: `MenuLawAt n` is a THEOREM at every degree
+
+`IFC6.menuLawAt_all (n) : MenuLawAt n`, Lean-core.  The 2026-08-26 row priced general `n` as
+the multi-node MENU-FAMILY campaign ("the covering-menu half + a uniform A1-family
+extraction").  Both halves were already landed, unconnected:
+
+* CN-22 (`Density/CoveringMenus.lean`, `exists_coveringMenu`) constructs its menu from `n`
+  ALONE (the clamped `Sym`-grid image); the `O`-dependence of its statement is shape, not
+  content.  `IFC6.exists_uniform_coveringMenu` re-derives it with `S` hoisted out of the
+  `∀ O` binder and filtered to exact degree `n` (membership survives the filter by
+  `typeOf_degree`).  R8 discipline kept: the menu stays existentially bound, never named.
+* The A1-family half is free at every `n`: I.03's own gate-(6) `r = 0` label cells applied
+  to `S.toList` (`IFC6.menuLawAt_of_uniformMenu`, generic in `S`).
+
+⚠ REVIEW FLAG (standing queue): I.03's audit item (3) believed the carrier "is not provable
+in general" — that belief is now REFUTED, with the signed statement byte-unchanged.  This is
+sound and disclosed-by-design: the A-I.1 carrier states menu + shape + labels ONLY (its own
+⚠ SIGNATURE NOTE), and the weight-correctness tie stays at HYP.23/32/35, untouched by this
+supply.  Consequence for the DAG: the `a1` field imposes NO residual obligation on
+`CapstoneHypotheses n` at any `n`; MENU-FAMILY is retired as a campaign.
+`menuLawAt_two`/`menuLawAt_three` remain as anchors.  The I10_I15_I18.lean:49 docstring line
+"`a0`/`a1` are open at `n ≥ 3`" is now stale on both counts (`menuLawAt_three` landed
+2026-08-26; `a1` closed at all `n` here) — comment-level state refresh owed at the next
+orchestrator pass (no statement change).
+
+### `a0` — RE-BASED: blocked on exactly ONE genre of missing theorem; reduction socket landed
+
+At `n = 3` every structural link is landed EXCEPT the values: type enumeration
+(`G53.typeOf_three_cases`), off-menu zero (`G54.genuineDensity_three_eq_zero`), drainage tie
+(`H97b.genuineDensity_three_eq_decidedDensity` — NEW since the row was written, Lean-core),
+`totalMass_three`.  The five exact cubic densities exist only as G61's honesty-ridered HM3.D
+transcription ("lower bounds, NOT the densities" — `lowers_three` is far from sharp, e.g.
+`1/q⁹` against a target of order `1/6`) and as bare `q = 2` rational literals in G77 (whose
+docstring: "THIS PROVES NOTHING ABOUT DENSITIES").  `IFC6.CubicValueLaw σ` names the
+exact-value law for one cubic type (G51 shape, at `genuineDensity`), and
+`IFC6.decidedSliceAt_three_of_values` PROVES: the five value laws ⟹ `DecidedSliceAt 3`.
+**A0-CUBIC's remainder is therefore exactly five theorems**: `CubicValueLaw c3split /
+c3linInert / c3inert / c3linRam / c3ram` — a counting campaign (sharp upper bounds = the
+decided-stratum census; the `≥` halves exist at G61).  General `n ≥ 4` unchanged: the main
+exact-count research program (no `c4*` types, no `typeOf_four_cases` exist).
+
+### `jd0` / `genhnBox2` / `w1` — UNCHANGED; the blocker re-confirmed and sharpened
+
+A-I.1's ruling stands verbatim (placeholders stay `True`; `w1` a named debt; leanspec
+`ChapI.lean:339,443-457`).  The W0 socket (`IFC0.ArisingWeldSiteSupply`, all three legs
+bound) is landed and has ZERO consumers; the only producer is its own fold half
+`of_strikes`, whose inputs are pure ChapF data.  The missing mechanism is still WELD-SITE-
+SUPPLY node 1 — the SITE EXPORTER (the weld analogue of CC-12's views): from a realized
+stage/chain object, the induced `ValueDictSite` (slot/ledger action), `CarrySite` (carry
+table at μ), and the `(Rh, RG)` residual line families, with degree/site indexing.  No
+landed declaration produces any of the three site types from chapter-C/H objects
+(grep-verified 2026-08-28: parameter positions only).  Design-review-first, multi-node;
+until it lands, no capstone-field binding is admissible (the empty-guard fabricability
+disclosure in IFC0 §3 is the standing regression).
+
+### `windowPinning` — UNCHANGED, with two row corrections
+
+The WIN0 carrier (`IFC0.WindowPinningBody`) stands; `Arises` is still a free parameter; no
+declaration constructs `StageWindowData` except FROM a full `StageInterface` (wrong
+direction).  Corrections to the 2026-08-26 row: (a) H89w's consulted-height lemmas are at
+GENERAL `e₁` (`consulted_le_cap` etc.) — the `e₁ = 2` fence belongs to H.89's per-genre read
+ledger, which H89w explicitly does not generalize; (b) the reader rule is not merely
+un-formalized — chapter H's §16 disposition item 3 is a STANDING DECISION that "the reader
+is not formalized … CAP-GEN has no node and its content sits in `StageInterface.hwin`".
+WINDOW-PINNING-RESOLUTION therefore begins with REVERSING a recorded chapter-H decision
+(owner-adjacent design act), then the reader-rule carrier (= the canonical `Arises`), then
+the pinning proof at it.  Multi-node; nothing transcribable today.
+
+### `genhnHE` — μ = 3 decision slice PACKAGED (IFC6 §2); bridge + μ ≥ 4 remain the gap
+
+New supplier corollary `IFC6.mu3_stage_sigma_decided`: every positive stage type of mass 3
+transports, at every genre, to one of the five `StageLeaf3` dictionary values (pure
+repackaging of H73w's `stageType3_complete` through `stageSigma3`; Lean-core, and
+Classical.choice-free).  The future I.06 body's μ = 3 leg is now a one-bind against this
+name.  The honest remainder, unchanged: (a) the STAGE-LEAF BRIDGE — nothing in the tree
+ties an actual degree-`n` polynomial stage to a `StageLeaf3` value (the only `StageLeaf`
+consumer is `H09w.stageIfaceF`, which produces a `StageInterface`, not a σ-decision); (b)
+the `μ ≥ 4` dictionary (HE3-BOX-6, HYP.143 — `mu4_lives_at_eight` is a degree bound, not a
+dictionary).  `GenhnHEAt` stays the signed `True` (I-D12); no amendment is draftable until
+(a) exists at least at μ = 3.
+
+### `genhnTow1` — UNCHANGED; next node named
+
+C.93 in `leanfinal` is still exactly `tower_first_live` + `tower_first_live_sharp` (+ four
+numeric examples); the census block (`C93Census`) exists only in signed
+`leanspec/Leanspec/ChapC.lean` and "lands in leanfinal only when the resolution pass runs"
+(C93.lean:28).  So the body ("the census conjunction, typed against C.93's #check-suite
+names") has nothing to bind to.  GENHN-TOW1-RESOLUTION node 1 = transcribe the leanspec
+C93Census block into leanfinal (30–60 min class, statement transcription); nodes 2+ = the
+`n ≥ 8` open family (HYP.67–71/78–80/142/143/144-BOX-2), research-open.  No amendment
+draftable.
+
+### `TypeOfFaithful` (I.21, not a field) — UNCHANGED; structural blocker re-confirmed
+
+The real body (bundle + monic `f`, `disc f ≠ 0`, `(typeOf f).data` = the maximal-order
+multiset via `ramificationIdx'`/`inertiaDeg'`) still needs the factor-field valuation-ring
+carrier (B.56's unbuilt route): at every `d ≥ 2` leaf `AdjoinRoot g` is never a DVR (OM-5
+§3.1), so the landed suppliers (`typeOf_eq_classical_of_isDiscreteValuationRing` — singleton,
+monogenic-maximal locus only; `typeOf_inert_faithful` — inert leaf) cannot reach the signed
+locus.  Zero `typeOf` content in the 2026-08-26→28 wave (C61's `tier1_typeOf` family is the
+frame/level dictionary, NOT ideal-theoretic faithfulness).  Terminal fate per I.21: a
+discharge node (needs the B.56 carrier — multi-node, research-adjacent) OR a gate-(b) cite —
+note the FGMN residual-ideals paper was just added to `docs/references/
+FGMN_residual_ideals_2015_authorpdf.pdf`, the natural cite source if the owner elects that
+route.  Audit row A-1 (human) must run before ANY consumer hypothesizes the name.
+
+### Updated minimal-path note
+
+With `a1` closed, the ELEVEN-field obligation at any `n` reduces to TEN live rows; for the
+current `n = 2` placeholder-bearing structure the minimal substantive inputs are unchanged
+(NS7 via cite + the two universal socket suppliers), and for general `n` the critical join
+loses the MENU-FAMILY leg: LADDER-SUPPLY, DEEP-TWIST-SUPPLY, A0-CUBIC (now = exactly five
+`CubicValueLaw`s at `n = 3`) + general counts, general induction/drainage,
+WELD-SITE-SUPPLY, and the window/HE/Tow1 body-resolution campaigns.
