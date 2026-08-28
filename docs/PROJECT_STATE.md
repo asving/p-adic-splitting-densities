@@ -167,3 +167,6 @@ frontier (§4) top-down. The map of the repo is in the repo CLAUDE.md; the bluep
 (byte-frozen; re-signs only via recorded amendments); landed Lean in
 `leanfinal/Uniformity/`. When a milestone lands: update §§2/4/6 here IN PLACE, append the
 dated details to `docs/LOG.md`, commit both with the work.
+| LVS | the live vartheta supplier (math + Lean surface; r=2 vacuity check first) | IN FLIGHT (codex sol-HIGH, ~08:45) |
+| REX | the recenter-step export + MP1CarrierLive; ★ adjudicate whether MP1R's countermodel refutes the funnel (possible A-I.7) | IN FLIGHT (codex sol-HIGH, ~08:45) |
+| CFS | the C.35 BlockFrontier-family unconditionalization sweep (the engine's payoff rows) | IN FLIGHT (Fable, ~08:45) |
