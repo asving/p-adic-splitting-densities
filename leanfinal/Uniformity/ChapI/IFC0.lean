@@ -52,10 +52,15 @@ The field (`I10_I15_I18.lean:154-160`) maps the arising-configuration guard to E
 four-field `LadderSupply` record.  Each supplier below carries the field's EXACT binder
 block and guard and concludes in exactly ONE record field.  None weakens the guard, none
 adds a residue-law hypothesis (the D.62 trap fence — C130s18 §5's audit applies verbatim
-because the guard context is identical). -/
+because the guard context is identical).
 
-/-- The capstone `ladder` field's exact type at degree `n` (a name for pinning; the
-`example` below fails the build if this drifts from `CapstoneHypotheses.ladder`). -/
+[A-I.6, 2026-08-28] The sentence above is the HISTORICAL record: the capstone `ladder`
+field is REBOUND to `IFC5.LadderSupplyLive` (see the replaced anti-drift pin below);
+`LadderField`, the four suppliers, and their exact split stay byte-frozen here as the
+refuted tension record (`scratch/AI6_probe.lean`: `¬ LadderField 4`, Lean-core). -/
+
+/-- Historical unbounded tension record (pre-A-I.6 `ladder` field type; machine-refuted
+at degree 4, `scratch/AI6_probe.lean`).  A-I.6 binds the capstone to the live record. -/
 def LadderField (n : ℕ) : Prop :=
   ∀ (O : Type) [CommRing O] (K : Type) [Field K]
     (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
@@ -65,9 +70,17 @@ def LadderField (n : ℕ) : Prop :=
     CanonicalLadderConfig C B G Kt L N v ρ q n →
     Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q
 
-/-- Anti-drift pin: `LadderField` IS the field's type, definitionally. -/
+/-- A-I.6 anti-drift pin: the signed field returns the promoted live record. -/
 example {n : ℕ} (h : CapstoneHypotheses.{uW, uG, uKt, uL} n) :
-    LadderField.{uW, uG, uKt, uL} n := h.ladder
+    ∀ (O : Type) [CommRing O] (K : Type) [Field K]
+      (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+      (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt]
+      (L : Type uL) [Field L] [Algebra Kt L]
+      (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+      (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
+      CanonicalLadderConfig C B G Kt L N v ρ q n →
+        IFC5.LadderSupplyLive.{uW, uG, uKt, uL} C B G Kt L N v ρ q n :=
+  h.ladder
 
 /-- **L0 supplier 1 (HE7A leg)**: every arising degree-`n` ladder configuration admits a
 rung interface (`Nonempty (RungInterface C B)`, E.12/E.24). NEW STATEMENT (review). -/

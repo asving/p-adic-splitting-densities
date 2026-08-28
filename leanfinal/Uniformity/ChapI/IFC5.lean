@@ -4,6 +4,7 @@ Released under Apache 2.0 license as described in the file LICENSE.
 Authors: Asvin G
 -/
 import Uniformity.ChapI.IFC0
+import Uniformity.ChapI.I10LadderLive
 
 /-!
 # Uniformity.ChapI.IFC5 — the VAUD live-range ladder supply: L0's vartheta owner
@@ -77,11 +78,17 @@ file's `LadderFieldLive` / `LadderVarthetaSupplierLive`.
 ## Honesty scope
 
 This file proves NO vartheta mathematics: every theorem is projection/constructor
-bookkeeping.  `CapstoneHypotheses.ladder` STILL returns E.24's unbounded `LadderSupply`;
+bookkeeping.  ~~`CapstoneHypotheses.ladder` STILL returns E.24's unbounded `LadderSupply`;
 rebinding it (or moving `LadderSupplyLive` into E.24) is a LATER RECORDED OWNER
-AMENDMENT (leanspec: would be a numbered A-I.6) — NOT made here.  LB1's arbitrary-`I`
-stop (LS-G0) and MP1's refuted cite route (LS-G1) are untouched by this file: the first
-three supplier legs are consumed as IFC0 states them, open exactly as before.
+AMENDMENT (leanspec: would be a numbered A-I.6) — NOT made here.~~  **[A-I.6, 2026-08-28:
+ENACTED — forced by the machine refutation `scratch/AI6_probe.lean`
+(`¬ IFC0.LadderField 4`, `¬ CapstoneHypotheses 4` pre-rebind, archived at commit
+ce301df1).  `CanonicalLadderLiveAt`/`LadderSupplyLive` are MOVED byte-for-byte to
+`I10LadderLive.lean` (same namespace) and the signed `ladder` field now returns
+`LadderSupplyLive`; leanspec ChapI carries the numbered amendment record.]**  LB1's
+arbitrary-`I` stop (LS-G0) and MP1's refuted cite route (LS-G1) are untouched by this
+file: the first three supplier legs are consumed as IFC0 states them, open exactly as
+before.
 -/
 
 set_option linter.style.longLine false
@@ -96,31 +103,10 @@ universe uW uG uKt uL
 
 /-! ## §1 The live-index predicate (VAUD probe byte-shape) -/
 
-/-- **The live-index predicate** (the owner-amendment carrier, `scratch/VAUD_probe.lean`
-byte-shape): the socket data `(C, B, N, v, ρ, q)` admit a realization witnessing the
-SAME external views demanded by `CanonicalLadderConfig` — slot view, block view, gauge
-family view — whose gauge range contains `i` (`GaugeLive core.r i`).  Liveness and the
-family views belong to ONE witness, so a junk witness cannot buy liveness the views do
-not see (the D-D12 anti-cook guard).  NEW STATEMENT (review). -/
-def CanonicalLadderLiveAt.{uG', uKt', uL'}
-    {O : Type} [CommRing O] {K : Type} [Field K]
-    (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
-    (G : Type uG') [CommGroup G] (Kt : Type uKt') [Field Kt]
-    (L : Type uL') [Field L] [Algebra Kt L]
-    (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
-    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n i : ℕ) : Prop :=
-  ∃ (_dom : IsDomain O) (_dvr : IsDiscreteValuationRing O)
-    (E : Type) (fE : Field E) (core : Tower.ArisingCore (O := O) Kt L n)
-    (A : Tower.ChainRealization (O := O) (π := core.π) (F := core.F)
-      (H₀ := core.H₀) (hpin := core.hpin) (fieldE := fE) core.T Kt E L)
-    (X : Tower.RealizedInput core A)
-    (eK : core.T.fld core.i ≃+* K) (eG : G ≃* Tower.GaugeLattice.{uG'} core.r),
-    Tower.SlotViewEq X eK C ∧
-    (∃ hC : C = X.stageCarrierTransport eK, Tower.BlockViewEq X eK (hC ▸ B)) ∧
-    Tower.GaugeFamilyViewEq X (N.transport eG)
-      (fun j => (v j).comp eG.symm.toMonoidHom)
-      (fun j => (ρ j).comp (Tower.C130s18.kerComapAlong eG (v j))) q ∧
-    Tower.GaugeLive core.r i
+-- [A-I.6, 2026-08-28] `CanonicalLadderLiveAt` MOVED byte-for-byte (docstring included) to
+-- `Uniformity/ChapI/I10LadderLive.lean` — the acyclic home ahead of I.10, so the signed
+-- capstone `ladder` field can return the live record.  Same namespace; every reference in
+-- this file resolves the same constant through the import above.
 
 /-! ## §2 The repaired supplier, record, and field -/
 
@@ -140,21 +126,9 @@ def LadderVarthetaSupplierLive (n : ℕ) : Prop :=
     ∀ i ≥ 3, CanonicalLadderLiveAt.{uG, uKt, uL} C B G Kt L N v ρ q n i →
       Ladder.VarthetaRes G Kt L N v ρ q i
 
-/-- The repaired result record.  Its first three fields are byte-identical to E.24's
-`LadderSupply`; ONLY the vartheta field receives the live-index premise.
-NEW STATEMENT (review). -/
-structure LadderSupplyLive {O : Type} [CommRing O] {K : Type} [Field K]
-    (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
-    (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt]
-    (L : Type uL) [Field L] [Algebra Kt L]
-    (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
-    (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ) (n : ℕ) : Prop where
-  package : Ladder.HE7APackage.{0, 0, uW} C B
-  lb1 : Ladder.LB1Carrier.{0, 0, uW} C B
-  mp1 : Ladder.MP1Carrier.{0, 0, uW} C B
-  vartheta : ∀ i ≥ 3,
-    CanonicalLadderLiveAt.{uG, uKt, uL} C B G Kt L N v ρ q n i →
-      Ladder.VarthetaRes G Kt L N v ρ q i
+-- [A-I.6, 2026-08-28] `LadderSupplyLive` MOVED byte-for-byte (docstring included) to
+-- `Uniformity/ChapI/I10LadderLive.lean`; it is now the signed capstone `ladder` field's
+-- result record (`I10_I15_I18.lean`, NODE I.10, as amended by A-I.6).
 
 /-- The repaired ladder field: `LadderField` with `LadderSupply` replaced by
 `LadderSupplyLive` — the shape VAUD's diff proposes for the capstone `ladder` field.

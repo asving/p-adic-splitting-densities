@@ -10,6 +10,7 @@ import Uniformity.ChapI.I05
 import Uniformity.ChapI.I06
 import Uniformity.ChapI.I07
 import Uniformity.ChapI.I10FreezeV2
+import Uniformity.ChapI.I10LadderLive
 import Uniformity.ChapE.E24
 import Uniformity.ChapC.C130sg
 import Uniformity.Density.Statement
@@ -21,7 +22,10 @@ projections — **STATEMENT CARRIERS + BOOKKEEPING THEOREMS**
 **Chapter I, NODES I.10a / I.10b / I.10 / I.15–I.18** (`blueprint/
 CHAP-I_capstone_conditionality.md` §4 and §6; SIGNED twin `leanspec/Leanspec/ChapI.lean`, the
 `### NODES I.10a / I.10b`, `### NODE I.10` and `## §6` blocks, **as amended by A-I.3,
-2026-08-26**).  **ENV-I1**.  Statements transcribed BYTE-FROZEN from the amended leanspec;
+2026-08-26, and A-I.6, 2026-08-28 — the `ladder` field's result record is rebound to the
+live-range `IFC5.LadderSupplyLive` (promoted to `I10LadderLive.lean`); the old unbounded
+conclusion is machine-refuted at degree 4, `scratch/AI6_probe.lean` archived at
+`ce301df1`**).  **ENV-I1**.  Statements transcribed BYTE-FROZEN from the amended leanspec;
 re-namespaced only (`LeanspecI` → `Uniformity.Density`, GC-6.2: chapter I gets no
 sub-namespace).  Unit RSGN (the capstone-gate unit), 2026-08-26.
 
@@ -151,13 +155,20 @@ all (defect I-D8).  A-I.1 RULES both open rather than typing them; A-I.3 changes
 structure CapstoneHypotheses (n : ℕ) : Prop where
   ns7 : NS7Termination
   -- [A-I.1] the repaired E.24 application, guarded by I.10a's arising-configuration socket.
+  -- [A-I.6, 2026-08-28 — STATEMENT CHANGE (rebind)] the result record is the live-range
+  -- `IFC5.LadderSupplyLive` (the vartheta leg demanded only at indices live in a realization
+  -- witnessing the SAME socket data): the old unbounded `Ladder.LadderSupply` conclusion is
+  -- machine-REFUTED at the landed degree-4 S2 occurrence (`scratch/AI6_probe.lean`, Lean-core,
+  -- archived pre-rebind at commit ce301df1; adjudication `runs/wave-c/verdict_AI6.md`) — a
+  -- forced weakening of a hypothesis, hence a STRENGTHENING of the conditional capstone.
   ladder : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
       (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
       (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
       [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
       (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
       CanonicalLadderConfig C B G Kt L N v ρ q n →
-      Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q
+      Uniformity.Density.IFC5.LadderSupplyLive.{uW, uG, uKt, uL}
+        C B G Kt L N v ρ q n
   -- [A-I.1, defect I-D4] Display A's `∀ i ≥ 3` conjunct, BOTH halves, at E.63's packaging.
   -- [A-I.2(b), 2026-08-24] re-signed at the freeze-v2 LIVE RANGE: the conjunct is read at the
   -- arising tower depth `r` through `DeepTwistConjunctLive` (unbounded form undischargeable).

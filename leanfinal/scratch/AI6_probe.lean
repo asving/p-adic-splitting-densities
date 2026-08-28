@@ -197,9 +197,45 @@ theorem ladderField_four_refuted : ¬ IFC0.LadderField.{0, 0, 0, 0} 4 := by
   have hs := h O2 K2 C2 B2 G2 K2 L2 N2 badV badRho badQ s2_bad_ladder_socket
   exact s2_bad_vartheta_three (hs.vartheta 3 le_rfl)
 
-/-- The current signed capstone block is therefore uninhabited at degree four. -/
+universe uW uG uKt uL
+
+/-- ⚠ RETIRED-RECORD (A-I.6, 2026-08-28; cite-forbidden): a local VERBATIM copy of the
+PRE-REBIND `CapstoneHypotheses` (`Uniformity/ChapI/I10_I15_I18.lean` as archived at
+commit ce301df1 — the `ladder` field still returning E.24's unbounded `LadderSupply`).
+Kept so the theorem below stays compiled against the exact refuted bytes after the
+A-I.6 rebind of the live structure. -/
+structure CapstoneHypothesesUnbounded (n : ℕ) : Prop where
+  ns7 : NS7Termination
+  ladder : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
+      (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+      (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+      [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+      (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
+      CanonicalLadderConfig C B G Kt L N v ρ q n →
+      Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q
+  deepTwist : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
+      (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+      (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+      [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+      (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+      (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ) (r : ℕ),
+      CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w r n →
+      Ladder.DeepTwistConjunctLive r v ρ q A R w
+  a0 : DecidedSliceAt n
+  a1 : MenuLawAt n
+  a2 : DrainageAt n
+  jd0 : True
+  genhnBox2 : 6 ≤ n → True
+  windowPinning : WindowPinningAt n
+  genhnHE : 6 ≤ n → GenhnHEAt n
+  genhnTow1 : 8 ≤ n → GenhnTow1At n
+
+/-- The PRE-A-I.6 signed capstone block was therefore uninhabited at degree four — the
+machine record that FORCED the A-I.6 rebind, retargeted (A-I.6 step 5) at the retired
+verbatim copy above; the pre-rebind form against the live structure is archived at
+commit ce301df1. -/
 theorem capstoneHypotheses_four_refuted :
-    ¬ CapstoneHypotheses.{0, 0, 0, 0} 4 := fun h => ladderField_four_refuted h.ladder
+    ¬ CapstoneHypothesesUnbounded.{0, 0, 0, 0} 4 := fun h => ladderField_four_refuted h.ladder
 
 end Uniformity.Density.AI6Probe
 

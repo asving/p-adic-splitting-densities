@@ -36,6 +36,7 @@ import Uniformity.ChapE
 import Uniformity.ChapE.E24
 import Uniformity.ChapE.E63
 import Uniformity.ChapI.I10FreezeV2 -- [A-I.2] F3's typed freeze-v2 carriers (DeepTwistConjunctLive)
+import Uniformity.ChapI.I10LadderLive -- [A-I.6] the live-range ladder record (the `ladder` field's rebind target)
 import Uniformity.ChapC
 import Uniformity.ChapC.C130sg -- [A-I.3] the SG-1 socket-application instances (the §4 gate's non-vacuity teeth)
 import Uniformity.ChapF
@@ -128,6 +129,39 @@ every signed declaration HERE are BYTE-UNCHANGED: the unbounded form stays as th
 is the campaign target.  Rebinding `CapstoneHypotheses.ladder` to `LadderSupplyLive` (or moving
 the live record into E.24) remains OWNER-GATED and would be a numbered amendment (A-I.6) — NOT
 enacted.
+
+**STATE UPDATE (2026-08-28, AMENDMENT A-I.6): THE `ladder` FIELD IS REBOUND TO THE LIVE-RANGE
+RECORD — A STATEMENT CHANGE, MACHINE-FORCED.**  The rider route the LVT record above held open
+is CLOSED BY REFUTATION: `leanfinal/scratch/AI6_probe.lean` (Lean-core, exit 0, orchestrator
+re-verified; adjudication `runs/wave-c/verdict_AI6.md`) proves
+
+* `AI6Probe.ladderField_four_refuted : ¬ IFC0.LadderField 4`
+* `AI6Probe.capstoneHypotheses_four_refuted : ¬ CapstoneHypotheses 4`
+
+— VAUD's teeth assemble INSIDE the field's own quantification at the landed degree-4 S2 socket
+(the off-range index `3` replaced by junk data whose ambient residue `X⁻¹` is no `K2`-unit
+image), so the signed block's bytes were machine-EMPTY at degree 4 and an interpretive rider is
+IMPOSSIBLE — the A-I.5 rider precedent requires the signed field to remain inhabitable in
+principle.  The pre-rebind refutation (stated against the then-live structure) is archived at
+commit `ce301df1`; after this amendment the probe's `capstoneHypotheses_four_refuted` is pinned
+to a local RETIRED-RECORD verbatim copy (`AI6Probe.CapstoneHypothesesUnbounded`) and
+`ladderField_four_refuted` still compiles against byte-frozen `IFC0.LadderField`.
+
+THE EXACT REBINDING: the `ladder` field's result record
+`Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q` is replaced by
+`Uniformity.Density.IFC5.LadderSupplyLive.{uW, uG, uKt, uL} C B G Kt L N v ρ q n` — the first
+three record fields (`package`/`lb1`/`mp1`) are byte-identical to E.24's; ONLY the `vartheta`
+leg gains the `CanonicalLadderLiveAt` premise (demanded only at indices live in a realization
+witnessing the SAME socket data).  To keep the import order acyclic the two live declarations
+(`CanonicalLadderLiveAt`, `LadderSupplyLive`) are MOVED byte-for-byte from
+`Uniformity/ChapI/IFC5.lean` to the new `Uniformity/ChapI/I10LadderLive.lean` (namespace
+`Uniformity.Density.IFC5` unchanged), which I.10 now imports here and in `leanfinal`.  This
+weakens a hypothesis and therefore STRENGTHENS the conditional capstone; the field list and
+I.15–I.18's statements are BYTE-UNCHANGED.  `IFC0.LadderField`/`LadderVarthetaSupplier` and
+their exact split stay byte-frozen as the refuted tension record.  Gate change: item (4) ALONE
+(the sitewise-ϑ consumption now costs the live-index certificate); items (2)/(3) are unchanged
+because the first three fields are byte-identical.  Review: `docs/REVIEW_QUEUE_2026-08-26.md`,
+Tier 1 row A-I.6 (capstone-surface amendment).
 
 Since 2026-08-20 the definitional layer I.01–I.03/I.05–I.07/I.21 IS landed in `leanfinal`
 (`Uniformity/ChapI/I01.lean` … `I21.lean`, byte-frozen transcriptions), and A-I.3's Stage-2
@@ -987,13 +1021,20 @@ would add a second contradiction to the block. -/
 structure CapstoneHypotheses (n : ℕ) : Prop where
   ns7 : NS7Termination
   -- [A-I.1] the repaired E.24 application, guarded by I.10a's arising-configuration socket.
+  -- [A-I.6, 2026-08-28 — STATEMENT CHANGE (rebind)] the result record is the live-range
+  -- `IFC5.LadderSupplyLive` (the vartheta leg demanded only at indices live in a realization
+  -- witnessing the SAME socket data): the old unbounded `Ladder.LadderSupply` conclusion is
+  -- machine-REFUTED at the landed degree-4 S2 occurrence (`scratch/AI6_probe.lean`, Lean-core,
+  -- archived pre-rebind at commit ce301df1; adjudication `runs/wave-c/verdict_AI6.md`) — a
+  -- forced weakening of a hypothesis, hence a STRENGTHENING of the conditional capstone.
   ladder : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
       (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
       (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
       [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
       (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
       CanonicalLadderConfig C B G Kt L N v ρ q n →
-      Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q
+      Uniformity.Density.IFC5.LadderSupplyLive.{uW, uG, uKt, uL}
+        C B G Kt L N v ρ q n
   -- [A-I.1, defect I-D4] Display A's `∀ i ≥ 3` conjunct, BOTH halves, at E.63's packaging.
   -- [A-I.2(b), 2026-08-24] re-signed at the freeze-v2 LIVE RANGE: the conjunct is read at the
   -- arising tower depth `r` through `DeepTwistConjunctLive` (unbounded form undischargeable).
@@ -1059,14 +1100,19 @@ example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
 
 -- (4) the A-D.2 `(H-VARTHETA-RES)_i` consumption pattern: chapter D's SITEWISE carrier at the
 -- level-`i` data. Typing this against the voided existential would fail.
+-- [A-I.6, 2026-08-28] the consumption now additionally costs the live-index certificate
+-- `hLive` (the rebound `vartheta` leg's premise) — the honest price VAUD/AI6 established:
+-- without it the unbounded demand is refutable, not merely open.
 example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
     (K : Type) [Field K] (C : Ladder.SlotCarrier ℤ K) (B : Ladder.BlockData C)
     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
     [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
-    (hcfg : CanonicalLadderConfig C B G Kt L N v ρ q n) (i : ℕ) (hi : 3 ≤ i) :
+    (hcfg : CanonicalLadderConfig C B G Kt L N v ρ q n) (i : ℕ) (hi : 3 ≤ i)
+    (hLive : Uniformity.Density.IFC5.CanonicalLadderLiveAt
+      C B G Kt L N v ρ q n i) :
     Gauge.HVarthetaRes G Kt L N (v i) (ρ i) (q i) :=
-  ((h.ladder ℤ K C B G Kt L N v ρ q hcfg).vartheta i hi).supplied
+  ((h.ladder ℤ K C B G Kt L N v ρ q hcfg).vartheta i hi hLive).supplied
 
 -- (5) **DEFECT I-D4, CURED AT A-I.1 and machine-exhibited at the new field.** Display A's
 -- `∀ i ≥ 3` conjunct has BOTH halves at the typed sockets, delivered by E.63's
