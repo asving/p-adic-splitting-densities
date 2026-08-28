@@ -418,3 +418,22 @@ coefficients) — and fired ★ `s2Mu3_calculus_nonempty : Nonempty (FGMNCalculu
 twelve footprints Lean-core, orchestrator re-verified. MSG2 (the consumer applications —
 the census-moving GENTOW landings) launched; VAUD + MHG fire at 22:07 (the RP10B/KP6B
 codex slots self-skip). deepTwist's first supplier tooth is now real.
+
+## 2026-08-28 ~01:20 — THE HENSEL ENGINE ROOT LANDS; the cite becomes a theorem (at h ≥ 1)
+
+MH3 (Fable, 180 tool calls, ~2.2h) closed its stretch goal: `m1TwistProductLaw` — the
+twist-form digit product law M1′, the engine's single remaining root — is PROVED
+unconditionally in `C133mh3.lean` (1935 lines, 22/22 footprints Lean-core). With it:
+MH.1, MH.2, MH.3 all CLOSED (dvSupp/sideMin/sideMax/sideDeg additivity; the τ=1 mixed
+residual law R(gz) = R(g)·R(z) for all nonzero g, z), and the §9.2 payoff landed:
+`fgmn_dv_exact_mul_thm` proves the declared cite's statement byte-identically modulo one
+inserted `0 < F.h` (orchestrator diffed axiom vs theorem). Honest new fence: the axiom
+quantifies over the degenerate h = 0 KeyFrame (where its floor premise is vacuous), so
+byte-identical retirement needs a small h = 0 leg through C.05's degenerate dictionary —
+queued as H0LEG. Same night: MH0A6 (Sonnet) landed MH.0a + MH.0c-remainder + all of the
+M4 perturbation law (C133mh0.lean, every clause unweakened); MH10 landed Theorem H0
+(Sonnet existence + orchestrator uniqueness after two 529 deaths; C133mh10.lean); LVT
+(Fable) enacted the VAUD vartheta amendment by supersession (IFC5.lean live-range twins;
+IFC0 byte-frozen; A-I.6 rebinding adjudication queued to codex). ALL THREE MHDISP gates
+are now LANDED — the assembly fleet is unfenced; MH4/MH11/MH12 launched; wave-c (six
+codex sol-HIGH units) armed in tmux for the 03:04 window reset.
