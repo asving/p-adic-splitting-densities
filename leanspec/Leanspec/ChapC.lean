@@ -1699,24 +1699,69 @@ noncomputable def dv2ResPoly {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H
     Polynomial.C (dv2Res L (dev Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne + t * ℓ₂)))
       * Polynomial.X ^ t
 
+/-! ### NODE C.38a′ [def, A-C.24′ helper extension] — the anchored absolute read and
+the GUARDED/ANCHORED classical level-2 residual polynomial [signed: A-C.24′].
+The bare C.38a cluster above is untouched; C.38/C.39 are re-signed over THIS carrier. -/
+
+/-- the fence-free absolute residual read at inner height `k`, based at the canonical
+anchor slot `L.shift k` (the landed `C136l2e0.dv2FullReadPoly`, transcribed). -/
+noncomputable def dv2FullReadPoly {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (k : ℕ) (P : Polynomial O) : Polynomial (F.stageField H₀ hpin) :=
+  open Classical in
+  ((Finset.range (k + 1)).filter
+      (fun t => (L.shift k + L.ℓ * t) * L.u ≤ k)).sum fun t =>
+    Polynomial.C
+        (F.twistRead H₀ hpin ((k - (L.shift k + L.ℓ * t) * L.u) / L.ℓ)
+          (dev F.key P (L.shift k + L.ℓ * t)))
+      * Polynomial.X ^ t
+
+/-- the anchored absolute coefficient read over `K₂`. -/
+noncomputable def dv2FullRead {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (k : ℕ) (P : Polynomial O) : AdjoinRoot L.r :=
+  AdjoinRoot.mk L.r (dv2FullReadPoly L k P)
+
+/-- the GUARDED/ANCHORED classical level-2 residual polynomial (C.25 one level up):
+coefficient `t` is the anchored read of the lattice digit at the side LINE height
+`M₂ − t·u₂` — off-side slots contribute `0` and the reads are reduction-stable
+(machine record: `leanfinal/Uniformity/ChapC/C136f14b.lean`, Lean-core). -/
+noncomputable def dv2ResPolyAnch {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) (M₂ : ℕ)
+    (hp₂ : dv2Pin L Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne) = (M₂ : ℕ∞)) :
+    Polynomial (AdjoinRoot L.r) :=
+  (Finset.range (dv2SideDeg L Ψ f u₂ ℓ₂ hne + 1)).sum fun t =>
+    Polynomial.C (dv2FullRead L (M₂ - t * u₂)
+        (dev Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne + t * ℓ₂)))
+      * Polynomial.X ^ t
+
 /-! ### NODE C.38 [lemma] — same degree, same radical (as same-prime-divisors)
-[signed: A-C.1] -/
+[signed: A-C.1; RE-SIGNED: A-C.22 (floor binder, record at C.37);
+RE-SIGNED: A-C.24′ over the guarded/anchored carrier] -/
 
 -- [RE-SIGNED: A-C.22, 2026-08-28 — P1U/verdict_P1U §P3] floor binder engine-honest,
--- `ℓ₂ * L.seam ↦ ℓ₂ * (L.ℓ * L.seam)`; full record at C.37 above.  Conclusion unchanged.
-axiom dv2ResPoly_radical_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+-- `ℓ₂ * L.seam ↦ ℓ₂ * (L.ℓ * L.seam)`; full record at C.37 above.
+-- [RE-SIGNED: A-C.24′, 2026-08-28 — record at C.39 below; conclusion shape unchanged,
+-- carrier repaired `dv2ResPoly ↦ dv2ResPolyAnch`, GC-1 pin binders added, `hcop` added.]
+axiom dv2ResPolyAnch_radical_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
     (hnd : ¬ Ψ ∣ blockFactor L f)
-    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * (L.ℓ * L.seam) < u₂)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hcop : Nat.Coprime u₂ ℓ₂)
+    (hseam : ℓ₂ * (L.ℓ * L.seam) < u₂)
     (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty)
-    (hne' : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty) :
-    (dv2ResPoly L Ψ f u₂ ℓ₂ hne).natDegree
-        = (dv2ResPoly L Ψ (blockFactor L f) u₂ ℓ₂ hne').natDegree ∧
+    (hne' : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty)
+    {M₂ M₂' : ℕ}
+    (hp₂ : dv2Pin L Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne) = (M₂ : ℕ∞))
+    (hp₂' : dv2Pin L Ψ (blockFactor L f)
+        (dv2SideMin L Ψ (blockFactor L f) u₂ ℓ₂ hne') = (M₂' : ℕ∞)) :
+    (dv2ResPolyAnch L Ψ f u₂ ℓ₂ hne M₂ hp₂).natDegree
+        = (dv2ResPolyAnch L Ψ (blockFactor L f) u₂ ℓ₂ hne' M₂' hp₂').natDegree ∧
     ∀ q : Polynomial (AdjoinRoot L.r), q.Monic → Irreducible q →
-      (q ∣ dv2ResPoly L Ψ f u₂ ℓ₂ hne ↔ q ∣ dv2ResPoly L Ψ (blockFactor L f) u₂ ℓ₂ hne')
+      (q ∣ dv2ResPolyAnch L Ψ f u₂ ℓ₂ hne M₂ hp₂
+        ↔ q ∣ dv2ResPolyAnch L Ψ (blockFactor L f) u₂ ℓ₂ hne' M₂' hp₂')
 
-/-! ### NODE C.39 [lemma] — the per-side scalar, pin-height TERMINAL form [signed: A-C.1] -/
+/-! ### NODE C.39 [lemma] — the per-side scalar, pin-height TERMINAL form
+[signed: A-C.1; RE-SIGNED: A-C.22 (floor binder, record at C.37);
+RE-SIGNED: A-C.24′ over the guarded/anchored carrier] -/
 
 /-- `γ_g` — the complement's own `K₂`-residue read (a `K₂^×` unit under C.36). -/
 noncomputable def γg {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
@@ -1729,19 +1774,59 @@ noncomputable def pinHeight {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H�
     (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) : ℕ :=
   (dv2Pin L Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne)).toNat
 
+/-- `γ̂_g` — the complement's ANCHORED absolute read at its own level grade
+(the pin-anchored normalization of PE3 F-1's `γ_g`; over `K₂` it is
+`root^δ · γg` by the landed on-side dictionary `C136f14b.dv2ResPolyAnch_coeff_of_onSide`
+mechanism — the bare `γg` def above is retained as the record). -/
+noncomputable def γgAnch {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (f : Polynomial O) : AdjoinRoot L.r :=
+  dv2FullRead L (complementConst L f) (f /ₘ blockFactor L f)
+
 -- [RE-SIGNED: A-C.22, 2026-08-28 — P1U/verdict_P1U §P3] floor binder engine-honest,
--- `ℓ₂ * L.seam ↦ ℓ₂ * (L.ℓ * L.seam)`; full record at C.37 above.  Conclusion unchanged.
-axiom dv2ResPoly_scalar {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+-- `ℓ₂ * L.seam ↦ ℓ₂ * (L.ℓ * L.seam)`; full record at C.37 above.
+-- [RE-SIGNED: A-C.24′, 2026-08-28 — the A24A/A24B carrier repair (runs/wave-c/
+-- verdict_A24A.md + verdict_A24B.md).  Pre-amendment text archived at commit dea24337.
+-- THE RECORD: the A-C.1 row `dv2ResPoly_scalar` (and the drafted A-C.24 `γg`-only
+-- repair) are BOTH refuted over the bare carrier by two independent machine channels:
+-- (1) the root-power channel (L2E1/L2E3): on the normalized own-height read the product
+--     law is CLEAN (`C136l2e1.dv2Res_mul`), so the signed root factor forces
+--     `root^cocycle = 1` — unsuppliable (A24A §1);
+-- (2) the off-side junk channel (A24A §2, `C136f14.dv2ResPoly_scalar_shape_digit_kill`):
+--     the bare carrier's lattice coefficients are unguarded own-height reads, so ANY
+--     constant-scalar law forces a false digit-vanishing transfer; live product
+--     instances: A24B battery Part B′ (block×block off-side slots, bare 1 vs anchored 0).
+-- The A24B battery further REALIZED §5's on-side risk: at every observed μ-value tie
+-- (120 generic + 15 in the F1.4 block-digit × complement territory — 135/135) the mod-Ψ
+-- reduction SHIFTS the digit's level-1 anchor (would-be root exponent δ = 1 in all 135,
+-- injection genre), so no per-slot normalized-γg law survives on the bare carrier; the
+-- anchored read absorbs every one of the 135 events (0 violations) — now the THEOREM
+-- `C136f14b.dv2FullRead_modByMonic` (Lean-core, unconditional).  Over the anchored
+-- carrier the SOURCE's own conclusion shape (PE3 F-1: γ_g times the `c₁` pin-height
+-- root power) is the faithful form — scalar byte-unchanged except the complement read
+-- anchored (`γg ↦ γgAnch`).
+-- Proof-target inventory (A24B §2): landed — guard, additivity, shift identity, mod-Ψ
+-- kill, reduction stability, endpoint/deg/pin addition, survival, on-side dictionary;
+-- remaining — the digit-split convolution assembly + the carry law
+-- (`C136l2e2.Dv2FullReadCarryLawStatement`, battery-certified 8128/8128 at S2;
+-- L2E4 adjudicated the bare unweighted convolution unsuppliable — the assembly must be
+-- the anchored/weighted form).]
+axiom dv2ResPolyAnch_scalar {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
     (hnd : ¬ Ψ ∣ blockFactor L f)
-    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * (L.ℓ * L.seam) < u₂)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hcop : Nat.Coprime u₂ ℓ₂)
+    (hseam : ℓ₂ * (L.ℓ * L.seam) < u₂)
     (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty)
-    (hne' : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty) :
-    dv2ResPoly L Ψ f u₂ ℓ₂ hne
-      = Polynomial.C (γg L f * (AdjoinRoot.root L.r)
-            ^ (L.cocycle (pinHeight L Ψ (blockFactor L f) u₂ ℓ₂ hne') (complementConst L f)))
-          * dv2ResPoly L Ψ (blockFactor L f) u₂ ℓ₂ hne'
+    (hne' : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty)
+    {M₂ M₂' : ℕ}
+    (hp₂ : dv2Pin L Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne) = (M₂ : ℕ∞))
+    (hp₂' : dv2Pin L Ψ (blockFactor L f)
+        (dv2SideMin L Ψ (blockFactor L f) u₂ ℓ₂ hne') = (M₂' : ℕ∞)) :
+    dv2ResPolyAnch L Ψ f u₂ ℓ₂ hne M₂ hp₂
+      = Polynomial.C (γgAnch L f * (AdjoinRoot.root L.r)
+            ^ (L.cocycle (pinHeight L Ψ (blockFactor L f) u₂ ℓ₂ hne')
+                (complementConst L f)))
+          * dv2ResPolyAnch L Ψ (blockFactor L f) u₂ ℓ₂ hne' M₂' hp₂'
 
 /-! ### NODE C.40 [theorem] — the level-2 peel [signed: A-C.1; D11 cured in-statement] -/
 
