@@ -16,6 +16,11 @@ p-adic-densities and Montes-algorithm literature — Asvin's /goal, 2026-08-24; 
 paper is never citable**). Target: all 1236 signed names disposed (proved / carrier-landed / cite),
 capstone `#print axioms` = Lean core + the declared cites, no `sorry`, no vacuity.
 
+**DIRECTIVE (Asvin, 2026-08-28): COMPLETE PROOF AT EVERY POINT.** Every degree/order/depth-indexed
+target is pursued at the UNIFORM statement; concrete degrees appear only as math-side pattern
+batteries (the examples-first discipline) or as single nonvacuity witnesses for sitewise fields.
+"Generalizes per degree" is a warning, not a plan — the uniform mechanism is designed before any fleet.
+
 **PROTOCOL (Asvin, 2026-08-24):** owner input is needed ONLY for literature-cite Lean
 transcriptions, and only as a SECONDARY (non-blocking) check — `docs/CITE_REVIEW_LIST.md`
 is his reading queue. Everything else — re-signs of refuted statements, field lists,
