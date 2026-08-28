@@ -9,6 +9,10 @@
 are `leanfinal/scratch/VAUD_probe.lean`; adjudication is recorded below and in
 `runs/wave-b/verdict_VAUD.md`.
 
+**[LVT, 2026-08-28]** The vartheta owner amendment is ENACTED as supersession twins —
+NEW `leanfinal/Uniformity/ChapI/IFC5.lean`, IFC0 byte-untouched as the tension record; see
+the dated `[LVT 2026-08-28]` section at the end of this file and `runs/wave-b/verdict_LVT.md`.
+
 ## Verdict
 
 The decomposition is exact and already machine checked:
@@ -505,3 +509,61 @@ lake env lean scratch/VAUD_probe.lean
 
 It exits 0. The printed audited declarations use only
 `[propext, Classical.choice, Quot.sound]`.
+
+## [LVT 2026-08-28] Enactment of the vartheta owner amendment
+
+**Route chosen: SUPERSESSION (new file), not the in-place IFC0 diff.**  Reasons, recorded
+also in the new file's header:
+
+1. The in-place diff cannot compile alone: IFC0's anti-drift pin
+   (`example … : LadderField n := h.ladder`) ties `LadderField` definitionally to
+   `CapstoneHypotheses.ladder`, which returns E.24's unbounded `LadderSupply`.  Applying the
+   diff forces rebinding that SIGNED capstone field (leanspec NODE I.10, re-signed at A-I.3)
+   — one of the two owner gates.  The probe's own record: "An IFC0-only edit that pretends
+   the old capstone field is definitionally unchanged would be false."
+2. House precedent (GCW-6): IFC3 retired IFC0's `DeepGentowSupplier` as a campaign target
+   with IFC0 byte-untouched as the tension record; IFC3's header and leanspec A-I.5 record
+   the coordination rule "`IFC0.lean` untouched; corrected shapes route through supersession
+   twins."
+3. Honesty invariant: the refuted-as-guard-derivable unbounded target survives as a named
+   record instead of a silent rewrite.
+4. `LadderField` has no consumers outside `IFC0.lean` (orchestrator grep, 2026-08-28), so
+   supersession costs nothing downstream.
+
+**Landed** (`leanfinal/Uniformity/ChapI/IFC5.lean`, namespace `Uniformity.Density.IFC5`;
+`lake env lean Uniformity/ChapI/IFC5.lean` exit 0, zero `sorry`, all `#print axioms`
+exactly `[propext, Classical.choice, Quot.sound]`):
+
+* the six probe declarations, byte-shape, universes matched: `CanonicalLadderLiveAt`,
+  `LadderVarthetaSupplierLive`, `LadderSupplyLive`, `LadderFieldLive`,
+  `ladderFieldLive_iff_suppliers`, `ladderFieldLive_of_suppliers`;
+* two supersession-direction pins: `ladderVarthetaSupplierLive_of_unbounded` and
+  `ladderFieldLive_of_ladderField` (old targets ⟹ new — the amendment only RESTRICTS the
+  demanded range; the converse is exactly the refuted derivability and is absent).
+
+`IFC0.LadderVarthetaSupplier` / `IFC0.LadderField` are RETIRED AS CAMPAIGN TARGETS,
+byte-frozen; `LadderFieldLive` is the campaign target.  The four-way split at the repaired
+target consumes IFC0's suppliers 1–3 UNCHANGED.
+
+**Leanspec surface:** the unbounded demand IS signed there (I.10's `ladder` field consumes
+E.24's `LadderSupply`, whose `vartheta` field is the unbounded `∀ i ≥ 3`); a comment-level
+dated LVT record was added to `leanspec/Leanspec/ChapI.lean` after the A-I.5 state-update
+block, quoting VAUD's machine certificates.  NO signed statement, declaration, gate, or
+count changed; `lake env lean Leanspec/ChapI.lean` re-run, exit 0.  Rebinding
+`CapstoneHypotheses.ladder` to `LadderSupplyLive` (or moving the live record into E.24)
+remains OWNER-GATED and would be the numbered amendment A-I.6 — NOT enacted.
+
+**Remains open after LVT** (unchanged by this unit):
+
+* LS-G0 — LB1's socket-link stop: the landed S2 socket still feeds an independently
+  quantified arbitrary `RungInterface`; owner decision (canonical vs realization-linked
+  interface) owed before any LB1 proof fleet.
+* LS-G1 — MP1's cite route REFUTED: [GN15] Thm 2.3 / GMN Thm 2.11 cannot fill `hirr` at the
+  current divisibility-only trigger; owner repair of the MP1 trigger owed (non-circular
+  key-polynomial/minimality premise, never on the global guard).
+* Package supplier (HE7A): XL, blocked on the F1/F2 frontier/exact-read prerequisites and
+  the C-to-E `RungInterface` exporter; no wrapper dispatched.
+* Degree-2 non-vacuity: still no closed degree-two occurrence (first missing object: a
+  depth-one `SplitNodePointSource` on `s2DepthOne`).
+* Vartheta at the REPAIRED scope: `LadderVarthetaSupplierLive` is a typed target, not a
+  proof; canonical residue descent at live indices (LS-V10) is the remaining mathematics.

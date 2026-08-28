@@ -109,6 +109,26 @@ on the `f' = 0` vacuity fence (see NODE I.10c's gate examples).  Parallel VAUD f
 (`runs/wave-b/verdict_VAUD.md`): E.24's `vartheta` range needs live-index restriction bound to
 the same witness — PROPOSED, owner-gated, NOT enacted here; `IFC0.lean` untouched by both units.
 
+**STATE UPDATE (2026-08-28, LVT ENACTMENT RECORD — comment-level only: NO signed statement,
+declaration, gate, or count changes):** THE VAUD LIVE-RANGE LADDER SHAPES ARE LANDED AS
+SUPERSESSION TWINS in `leanfinal` (`Uniformity/ChapI/IFC5.lean`: `CanonicalLadderLiveAt`,
+`LadderVarthetaSupplierLive`, `LadderSupplyLive`, `LadderFieldLive`,
+`ladderFieldLive_iff_suppliers`, `ladderFieldLive_of_suppliers`, plus two supersession-direction
+pins showing the old targets imply the new — the amendment only RESTRICTS the demanded range).
+Basis, machine-certified (`leanfinal/scratch/VAUD_probe.lean`, all Lean-core, exit 0):
+`gauge_view_offRange_kernel_replacement` (the I.10a socket's `GaugeFamilyViewEq` is invariant
+under arbitrary dependent `(v, ρ)` and `q` replacement at every non-`GaugeLive` index),
+`vartheta_sitewise_negative` (a concrete FALSE sitewise `HVarthetaRes`), and
+`s2_three_not_gaugeLive` (the landed depth-2 S2 socket's first demanded index `3` is already off
+range) — so E.24's unbounded `vartheta` range (`∀ i ≥ 3`), which the signed I.10 `ladder` field
+consumes through `LadderSupply`, is NOT derivable from the I.10a guard; an HVR-shaped guard
+premise stays FORBIDDEN (the D.62 trap fence).  Per the A-I.5 coordination rule, `IFC0.lean` and
+every signed declaration HERE are BYTE-UNCHANGED: the unbounded form stays as the tension record
+(the GCW-6 pattern; retired as a campaign target), and the live-restricted `IFC5.LadderFieldLive`
+is the campaign target.  Rebinding `CapstoneHypotheses.ladder` to `LadderSupplyLive` (or moving
+the live record into E.24) remains OWNER-GATED and would be a numbered amendment (A-I.6) — NOT
+enacted.
+
 Since 2026-08-20 the definitional layer I.01–I.03/I.05–I.07/I.21 IS landed in `leanfinal`
 (`Uniformity/ChapI/I01.lean` … `I21.lean`, byte-frozen transcriptions), and A-I.3's Stage-2
 companion lands I.10a/I.10b + I.10 + I.15–I.18 there (`Uniformity/ChapI/I10_I15_I18.lean`) at
