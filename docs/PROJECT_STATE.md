@@ -145,7 +145,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | MH3 FINAL | THE ENGINE ROOT PROVED (24d1051b) — `m1TwistProductLaw` unconditional; MH.1+MH.2+MH.3 CLOSED; `fgmn_dv_exact_mul_thm` = the cite's statement as a THEOREM (byte-identical modulo `0 < F.h`); retirement needs only the h=0 degenerate leg (C.05 dictionary); ALL THREE MHDISP GATES LANDED — the assembly fleet is UNFENCED | DONE |
 | MH10 | Theorem H0 `dvResidualBezout` + uniqueness | DONE (1ebedc0c) — Sonnet existence (died twice to 529s) + orchestrator uniqueness; Lean-core; wired |
 | MH4 | §3.5 M-monic corollary | DONE — C133mh4.lean (M₀ = u·sideDeg + the monic residual law, both unconditional; product-law-free per MHFIX) |
-| MH11 | Theorem B `dv_oneSlope_split_unique` (§5 pigeonhole route) → C133mh11 | IN FLIGHT (Fable) |
+| MH11 | Theorem B `dv_oneSlope_split_unique` | DONE (f061b65c) — F1.H2 CLOSED unconditionally, zero carried hypotheses; ∃/∀-pin resolutions recorded |
 | MH12 | §6.1 defect-vanishing + Gauss descent | DONE (3647cc6e) — the three primitives feeding MH.13; defect-vanishing proved symmetric/stronger |
 | MH13 | Theorem C placement (§6.2 per-prime assembly on MH12's primitives) → C133mh13 | IN FLIGHT (Fable, launched ~01:35) |
 | H0LEG | the h=0 degenerate leg + the actual cite retirement pass (axiom → theorem, allowlist −1) | QUEUED — after the assembly wave |
