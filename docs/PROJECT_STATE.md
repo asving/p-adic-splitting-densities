@@ -150,9 +150,9 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | MH13 | Theorem C placement | DONE — theoremC_placement §2-verbatim (A-C.20 competitor shape byte-matched) + the reusable per-prime core, UNCONDITIONAL; proof strengthens §6.2 (Squarefree carried-unconsumed, statement unchanged); survived FOUR 529 deaths via increment-resume cycling |
 | MH14T | §8 BlockFrontier modulo Theorem A | DONE (3c84fdbd) — residual_transport Lean-core + blockFrontier_of_context_of_theoremA (sole extra axiom: the allowlisted dissection cite); THE ENGINE'S GAP IS THEOREM A ALONE |
 | MH5S | the §4.1 side lift + Lemma S prefix | DONE (79244661) — MH.5 CLOSED (R(Λ(P)) = P exactly, finiteness-free); MH.7 prefix proved; `LemmaSStatement` carried — the missing leg is M clause 3 ABOVE the support line (MH.9's obligation, the next engine math node) |
-| AI6E | ENACT A-I.6: rebind CapstoneHypotheses.ladder per the AI6 verdict diff (I10LadderLive.lean, IFC5 dedup, I.15–I.18 ripple, leanspec record, probe re-pin) | IN FLIGHT (Fable, ~04:15) |
-| MH9 | Theorem A assembly: the above-line mixed read law (LemmaSStatement's missing leg) + Lemma S + §4.3–4.4 iteration on M4 + MH.8 limits | QUEUED — the engine's last math node |
-| H0LEG | the h=0 degenerate leg + the cite retirement pass (axiom → theorem, allowlist −1) | QUEUED |
+| AI6E | ENACT A-I.6 | DONE (367c47c7) — CapstoneHypotheses.ladder rebound to LadderSupplyLive (vartheta leg gains the live premise; all else byte-identical); I.15–I.18 BYTE-UNCHANGED and green (the machine certificate the off-range demand was never consumed); IFC0 frozen as the tension record; refuters preserved; leanspec A-I.6 record + Tier 1 review row |
+| MH9M | the above-line mixed read law → Lemma S → Theorem A (MATH; codex sol-HIGH, brief_MH9M) | IN FLIGHT (~04:45) |
+| H0LEG | the h=0 leg + the fgmn_dv_exact_mul retirement (allowlist −1) | IN FLIGHT (Fable, ~04:45) |
 | LVT | enact VAUD's vartheta owner amendment | DONE (a38c26af) — IFC5.lean supersession (six live-range decls + OLD⟹NEW pins); IFC0 byte-frozen tension record; leanspec comment record; `LadderFieldLive` is the ladder target; A-I.6 (CapstoneHypotheses.ladder rebinding) adjudication QUEUED for the codex wave |
 | MH10 | Theorem H0 `dvResidualBezout` (mathlib-only UFD arithmetic) → C133mh10 | IN FLIGHT (Sonnet) |
 | MH0A6 | MH.0a + MH.0c remainder + MH.6 (M4) | DONE (ae36c7a1) — C133mh0.lean, 7/7 Lean-core, every clause unweakened; MH.4 is the only small pre-assembly node left |
