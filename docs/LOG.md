@@ -507,3 +507,16 @@ import cycle with one verbatim lemma move) — the declared-cite allowlist is a 
 and C131ac's downstream chain improved to pure Lean-core. DWC delivered the deep-witness
 campaign blueprint (GO: S2 → depth 4 via g₈; 69 nodes, 10 gates); DWV (fresh-context
 adversarial read) gates the fleet; P1U attacks the engine family's last mechanisms.
+
+## 2026-08-28 ~13:25 — the cubic slice falls: a0 at n = 3, Lean-core, five exact densities
+
+A0C (Fable orchestrating a four-fork parallel fill) proved `DecidedSliceAt 3` on Lean
+core alone — all five HM3.D cubic density closed forms, uniform over every complete DVR
+with finite residue field, wild primes included; G61's honesty rider retired by proof.
+The mechanism: totalMass_three + the drainage tie convert five sharp lower bounds into
+equalities, each collapsing the self-similar tower to one fixed-point step realized by
+four disjoint decided families. Cert 38/38 across four decorrelated legs. Earlier today:
+P1D killed the planned GN cite outright (isMuKey_of_isTestKey proved); F13A landed the
+signed F1.3; A-C.22 enacted; C93T landed 4/7 census items catching a stale-name trap.
+The F1.4–F1.6 tail and the deep campaign share ONE root — the level-2 Theorem-M twin —
+now in DWR's charge (armed for the 13:35 codex reset).
