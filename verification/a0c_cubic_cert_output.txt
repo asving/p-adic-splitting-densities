@@ -1,0 +1,55 @@
+========================================================================
+LEG A — symbolic identities (sympy, exact rational functions)
+========================================================================
+  [PASS] A1: sum of the five closed forms = 1 
+  [PASS] A2: DBL-box conditionals sum to 1 
+  [PASS] A3: TRP-box conditionals sum to 1 
+  [PASS] A4: residue strata sum to 1 
+  [PASS] A5: recursion fixed-point identity for split 
+  [PASS] A5: recursion fixed-point identity for linInert 
+  [PASS] A5: recursion fixed-point identity for inert 
+  [PASS] A5: recursion fixed-point identity for linRam 
+  [PASS] A5: recursion fixed-point identity for ram 
+  [PASS] A6: E[#roots] = 3 R_split + R_linInert + R_linRam = q/(q+1) 
+  [PASS] A7: q=2 anchors match the blueprint tuple {'split': '4/93', 'linInert': '28/93', 'inert': '8/31', 'linRam': '22/93', 'ram': '5/31'}
+  [PASS] A7: q=3 anchors match the blueprint tuple {'split': '63/968', 'linInert': '351/968', 'inert': '36/121', 'linRam': '93/484', 'ram': '10/121'}
+  [PASS] A8: closed forms == padic_types.monic_cubic_pred at q=2..40 
+  [PASS] A9: G61's transcribed lower bounds <= targets at q=2,3 
+========================================================================
+LEG B — exact F_q residue-strata counts (brute force)
+========================================================================
+  [PASS] B: F_2 strata counts match {'3distinct': 0, 'lin_x_irrquad': 2, 'irred': 2, 'dbl': 2, 'trp': 2}
+  [PASS] B: F_3 strata counts match {'3distinct': 1, 'lin_x_irrquad': 9, 'irred': 8, 'dbl': 6, 'trp': 3}
+  [PASS] B: F_5 strata counts match {'3distinct': 10, 'lin_x_irrquad': 50, 'irred': 40, 'dbl': 20, 'trp': 5}
+  [PASS] B: F_7 strata counts match {'3distinct': 35, 'lin_x_irrquad': 147, 'irred': 112, 'dbl': 42, 'trp': 7}
+========================================================================
+LEG C — exhaustive level-N class proportions (exact recursion oracle)
+========================================================================
+  (canonical-lift proportion at level N -> R_tau as N -> infty;
+   deviation is bounded by the undecided mass ~ C q^{-N})
+  [PASS] C: p=2 N=4 max |obs - target| = 1.66e-02 <= 5.00e-01 (UND classes: 84)
+  [PASS] C: p=2 N=6 max |obs - target| = 3.29e-03 <= 1.25e-01 (UND classes: 1119)
+  [PASS] C: p=2 N=6 deviation shrank vs previous level 
+  [PASS] C: p=2 N=8 max |obs - target| = 7.41e-04 <= 3.12e-02 (UND classes: 16788)
+  [PASS] C: p=2 N=8 deviation shrank vs previous level 
+  [PASS] C: p=3 N=3 max |obs - target| = 5.69e-03 <= 4.44e-01 (UND classes: 123)
+  [PASS] C: p=3 N=4 max |obs - target| = 1.45e-03 <= 1.48e-01 (UND classes: 867)
+  [PASS] C: p=3 N=4 deviation shrank vs previous level 
+  [PASS] C: p=3 N=5 max |obs - target| = 4.39e-04 <= 4.94e-02 (UND classes: 6984)
+  [PASS] C: p=3 N=5 deviation shrank vs previous level 
+  [PASS] C: p=5 N=2 max |obs - target| = 4.38e-03 <= 8.00e-01 (UND classes: 68)
+  [PASS] C: p=5 N=3 max |obs - target| = 5.61e-04 <= 1.60e-01 (UND classes: 857)
+  [PASS] C: p=5 N=3 deviation shrank vs previous level 
+========================================================================
+LEG D — decorrelated PARI leg (gp: nfinit([f,[p]]) + idealprimedec)
+========================================================================
+  [PASS] D0: PARI calibration vs Lean-proved n=2 values, p=2 (4-sigma) split: obs 0.3277 pred 0.3333; inert: obs 0.3407 pred 0.3333; ram: obs 0.3315 pred 0.3333 | stray shapes: 0
+  [PASS] D0: PARI calibration vs Lean-proved n=2 values, p=3 (4-sigma) split: obs 0.3665 pred 0.3750; inert: obs 0.3832 pred 0.3750; ram: obs 0.2502 pred 0.2500 | stray shapes: 0
+  [PASS] D0: PARI calibration vs Lean-proved n=2 values, p=5 (4-sigma) split: obs 0.4258 pred 0.4167; inert: obs 0.4083 pred 0.4167; ram: obs 0.1660 pred 0.1667 | stray shapes: 0
+  [PASS] D1: PARI vs the five cubic targets, p=2 (4-sigma) split: obs 0.0425 pred 0.0430; linInert: obs 0.3093 pred 0.3011; inert: obs 0.2472 pred 0.2581; linRam: obs 0.2253 pred 0.2366; ram: obs 0.1757 pred 0.1613 | stray shapes: 0
+  [PASS] D1: PARI vs the five cubic targets, p=3 (4-sigma) split: obs 0.0653 pred 0.0651; linInert: obs 0.3598 pred 0.3626; inert: obs 0.2978 pred 0.2975; linRam: obs 0.1963 pred 0.1921; ram: obs 0.0810 pred 0.0826 | stray shapes: 0
+  [PASS] D1: PARI vs the five cubic targets, p=5 (4-sigma) split: obs 0.0890 pred 0.0934; linInert: obs 0.4223 pred 0.4135; inert: obs 0.3172 pred 0.3201; linRam: obs 0.1425 pred 0.1398; ram: obs 0.0290 pred 0.0333 | stray shapes: 0
+  [PASS] D1: PARI vs the five cubic targets, p=7 (4-sigma) split: obs 0.1153 pred 0.1097; linInert: obs 0.4310 pred 0.4363; inert: obs 0.3262 pred 0.3266; linRam: obs 0.1125 pred 0.1096; ram: obs 0.0150 pred 0.0179 | stray shapes: 0
+
+========================================================================
+38 checks, 0 failures
