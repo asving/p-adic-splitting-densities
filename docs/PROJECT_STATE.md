@@ -24,7 +24,7 @@ choice is right iff it leads to a completed proof. Honesty invariants unchanged:
 axioms, no `sorry`-shaped discharges, statements never weakened silently (re-signs are
 recorded amendments), faithfulness entry per cite, `sorry`-free ≠ non-vacuous.
 
-**FLEET:** Codex `codex exec -c model_reasoning_effort=high` for new math + blueprint
+**FLEET (weekly codex at 77%, 2026-08-28 — conserve: codex ONLY for the hardest math + adversarial verification; mechanical work to Fable/Sonnet):** Codex `codex exec -c model_reasoning_effort=high` for new math + blueprint
 conversion; default effort for Lean transcription; Fable subagents allowed (API permitting).
 Disciplines in force: commit-early ratchet; the ORCHESTRATOR wires roll-ups (never units);
 per-file `lake env lean` (never bare `lake build` on this NFS box; roll-up targets like
@@ -190,7 +190,9 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | A24B | the S2 anchor battery + the guarded R₂ carrier + the A-C.24′ enactment draft → C136f14b | IN FLIGHT (Fable, ~18:00) |
 | D3AD | the depth-3 adapter | DONE (4eb8daa0) — D3-03 DISCHARGED unconditional (the cheap survival-core mirror; the engine.s root not valuation-polymorphic, gap recorded) + D3-04 (the unconditional μ₄ product law) |
 | D3B | μ₄ stack D3-05..09 | DONE — 56 decls Lean-core, all five rows green; the chain funnels through hconv |
-| (EXPO) | draft READY in the site working tree, held for the codex fresh-reader audit at the 18:35 window reset, then orchestrator review + push | HELD |
+| L2E4 | hconv (the level-2 above-line law) → fire the coefficientwise product law → D3-10 → C136l2e4 | IN FLIGHT (codex sol-HIGH, ~18:37) |
+| EXPOAUD | the fresh-reader + honesty audit of the EXPO draft (numbered findings; ACCEPT/FIX/REJECT) | IN FLIGHT (codex sol-HIGH, ~18:37) |
+| (EXPO) | draft in the site working tree, push after EXPOAUD + orchestrator review | HELD |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
 | D3A | μ₄ stack base D3-00/01/02 | DONE — the dv3 layer + s2Hgt₄ (tooth 85) + the endpoint bank modulo the explicit Dv3ResSurv; 52/52 Lean-core |
