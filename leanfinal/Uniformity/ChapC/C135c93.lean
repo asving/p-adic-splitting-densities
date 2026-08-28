@@ -6,6 +6,7 @@ Authors: Asvin G
 import Uniformity.ChapC.C131ag
 import Uniformity.ChapC.C131w
 import Uniformity.ChapC.C150rb3
+import Uniformity.ChapC.C150rb5
 import Uniformity.ChapC.C132sg3
 import Uniformity.ChapC.C26
 
@@ -24,6 +25,17 @@ its writing "these names exist only in the leanspec census ... they are not decl
 `leanfinal`", making `Tow1CensusAt` untypeable. This file transcribes the census.
 
 ## Verdict: PARTIAL — 4 of 7 landed (one under a corrected name), 1 half-landed, 2 open
+
+**[A-C.23 UPDATE, 2026-08-28, unit A23E — now 5 of 7]:** item (2)'s BLOCKED row below is
+SUPERSEDED. `runs/wave-c/verdict_RB3R.md` proved (codex-confirmed 5/5) that the then-signed
+`IsTestKey` conjunct was a statement-level overclaim of the source `EFF.GENTOW1.28`
+(unprovable-and-unrefutable under the opaque `k2Coord`; false under the faithful read);
+amendment A-C.23 re-signed the conclusion to the source-faithful M4 package (leanspec
+`ChapC.lean` NODE C.56, full record there; pre-amendment text archived at commit
+`523c8a7b`), and the re-signed statement is now a LANDED THEOREM, byte-identical premises
+and conclusion: `Uniformity.Density.Tower.refine_invariants`
+(`Uniformity/ChapC/C150rb5.lean`, Lean-core footprint). The `#check` below is live. The
+original C93T row text is retained verbatim beneath as the pre-amendment record.
 
 Per name (leanspec node, leanspec `axiom` line as of this read):
 
@@ -127,10 +139,11 @@ section C93Census
 -- item (1), C.52 — LANDED (`C131ag.lean`, `Uniformity.Density.Tower`)
 #check @towerLocus_iff_budget
 
--- item (2), C.56 — BLOCKED: new one-step Hensel-refinement mathematics, ~200-900 lines
--- per `C150rb3.lean`'s own dispatch note (composedKey landed; the transport/refinement
--- step is not). No leanfinal declaration; `#check @refine_invariants` would not elaborate.
--- #check @refine_invariants
+-- item (2), C.56 — LANDED [A-C.23 UPDATE, 2026-08-28, unit A23E; supersedes the C93T
+-- BLOCKED row — see the docstring's dated update block]: the A-C.23 re-signed statement
+-- (M4-package conclusion) is the theorem `Uniformity.Density.Tower.refine_invariants`
+-- (`C150rb5.lean`, imported above), byte-identical to leanspec's re-signed NODE C.56(i).
+#check @refine_invariants
 
 -- item (3), C.72 — LANDED (`C131w.lean`, `Uniformity.Density.Tower.C131w`, opened above)
 #check @shadow_floor

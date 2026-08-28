@@ -2158,8 +2158,44 @@ noncomputable def k2DigitLift {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H�
           ^ ((n2Exp T (m - (F.e₁ * T.e₂ * F.h * r + T.e₂ * T.u₂ * t))).2.1 + F.e₁ * r)
       * F.key ^ ((n2Exp T (m - (F.e₁ * T.e₂ * F.h * r + T.e₂ * T.u₂ * t))).2.2 + T.e₂ * t)
 
-/-! ### NODE C.56 [theorem] — GENTOW-2(i)+(ii), the composed refine transfer [signed: A-C.1] -/
+/-! ### NODE C.56 [theorem] — GENTOW-2(i)+(ii), the composed refine transfer [signed: A-C.1;
+(i)'s conclusion re-signed: A-C.23] -/
 
+-- [RE-SIGNED: A-C.23, 2026-08-28 — RB3R/verdict_RB3R + A23E/verdict_A23E] the conclusion's
+-- third conjunct `IsTestKey (T.levelDatum hπ) (composedKey T - k2DigitLift T s lam)` is
+-- REPLACED by the source-faithful M4 package (top side digit `1`; `IsDvPure` at
+-- `(u₂, e₂)`; pinned side-min height `f₂·u₂` and residual `towerLabel T`, both
+-- byte-unchanged from `Φ₂`'s own reads).  Premises byte-unchanged.  Pre-amendment text
+-- archived at commit 523c8a7b.  WHY (machine, codex 5/5 CONFIRMED — runs/wave-c/
+-- verdict_RB3R.md §2, support theorems leanfinal `C150rb4.lean`): every `k2DigitLift`
+-- term sits at `F.key`-abscissa `towerSolve u₂ e₂ lam + e₂·t`, a NONZERO lattice offset
+-- exactly when `e₂ ∤ lam`, so the corrected key CARRIES the lift's own digits at the
+-- positions IsTestKey's exact-zero clause 4 forbids, and at zero-label slots clause 5a
+-- fails whenever the `s`-coordinate there is nonzero; no premise forces `e₂ ∣ lam` or a
+-- support constraint on `s` (no vacuity escape: `μ₂ = 0`, `f = 1` inhabits every premise
+-- at every `lam > E₂`, `s ≠ 0`).  Under the A-C.3 opaque `k2Coord` the signed conjunct
+-- was unprovable AND unrefutable (true only under a pathological `Classical.choice`
+-- realization); under the faithful power-basis read it is FALSE (s2Tower: `e₂ = 2`,
+-- `E₂ = 10`, `lam = 11`, `s = 1`, `μ₂ = 0`).  The source clause `EFF.GENTOW1.28` claims
+-- exactly the perturbation-stable package — "monic of degree D2; level-1 development
+-- one-sided of slope kappa2 with residual psi2 and side digits byte-unchanged (what's
+-- slots sit at weight lam > E2, strictly above the key's side)" — never exact-zero
+-- test-family membership; the overclaim entered at the blueprint's "hence IsTestKey-hood
+-- … reruns verbatim" elaboration (a sufficient vehicle read as a preserved invariant).
+-- ADJUDICATION of the repaired carrier (M4 package over `C134dv2g`'s `IsMuKey`, RB3R's
+-- two candidates): (a) the source clause IS the M4 package in dv-vocabulary; (b) the
+-- direct consumers (`refine_kills`, C.57's `refineDom`/`refineCod`/`refine_bijection`/
+-- `refine_transported_event`) read the carrier only through `dv2Pin` — monic + degree
+-- suffice, and no signed statement consumes IsTestKey- or IsMuKey-hood of `Φ₂⁺`;
+-- (c) the source's "hence"-chain reruns (GENTOW-1/GENHN-2' at `Φ₂⁺`) consume
+-- HasLabel-shaped data (C.29/C.61) = this package's shape; (d) the package is PROVED —
+-- leanfinal `Uniformity/ChapC/C150rb5.lean`, `theorem refine_invariants`, byte-identical
+-- statement, footprint Lean-core, via C133mh0's MH.6 (M4) at `x := composedKey T`,
+-- `y := −k2DigitLift T s lam` with the new grade floor `W(lift) ≥ lam` (the
+-- EFF.GENTOW1.27 `a₀ ≥ 0` audit inequality closed from `T.hfloor`) — while IsMuKey-hood
+-- of `Φ₂⁺` has no landed route (P1 transports from IsTestKey, which `Φ₂⁺` provably
+-- lacks).  The retained C150rb4 conjunct theorems + the off-lattice/zero-slot refutation
+-- record stand unchanged.  NODE C.56(ii) (`refine_kills`) and C.57 are untouched.
 axiom refine_invariants {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
     [IsAdicComplete (IsLocalRing.maximalIdeal O) O] [Finite (ResidueField O)]
@@ -2170,7 +2206,14 @@ axiom refine_invariants {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
       = (Polynomial.X - Polynomial.C s) ^ μ₂) :
     (composedKey T - k2DigitLift T s lam).Monic ∧
     (composedKey T - k2DigitLift T s lam).natDegree = T.D₂ ∧
-    IsTestKey (T.levelDatum hπ) (composedKey T - k2DigitLift T s lam)
+    dev F.key (composedKey T - k2DigitLift T s lam) (T.e₂ * T.f₂) = 1 ∧
+    IsDvPure F (composedKey T - k2DigitLift T s lam) T.u₂ T.e₂ ∧
+    ∃ hne' : (dvSideSet F (composedKey T - k2DigitLift T s lam) T.u₂ T.e₂).Nonempty,
+    ∃ hp' : dvHgt F (composedKey T - k2DigitLift T s lam)
+        (dvSideMin F (composedKey T - k2DigitLift T s lam) T.u₂ T.e₂ hne')
+        = ((T.f₂ * T.u₂ : ℕ) : ℕ∞),
+      dvResPoly F H₀ hpin (composedKey T - k2DigitLift T s lam) T.u₂ T.e₂ hne'
+        (T.f₂ * T.u₂) hp' = towerLabel T
 
 axiom refine_kills {F : KeyFrame O π} {H₀ : ℕ} {hpin : F.Pin H₀}
     (T : TowerDatum F H₀ hpin) (hπ : Irreducible π) (hh : 1 ≤ F.h)
