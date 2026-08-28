@@ -1632,11 +1632,27 @@ axiom block_complement_notdvd {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F 
 
 /-! ### NODE C.37 [theorem] — the translation identity (the GC-2 mechanism) [signed: A-C.1] -/
 
+-- [RE-SIGNED: A-C.22, 2026-08-28 — P1U/verdict_P1U §P3] the floor binder
+-- `(hseam : ℓ₂ * L.seam < u₂)` is replaced verbatim by the ENGINE-HONEST
+-- `(hseam : ℓ₂ * (L.ℓ * L.seam) < u₂)` in C.37/C.38/C.39/C.64 (this row and the
+-- three pointer records below); conclusions unchanged.  The factor is forced: the
+-- landed generic discharge (`leanfinal/Uniformity/ChapC/C134dv2g.lean`, Part 7 (P3))
+-- consumes the OUTER floor `ℓ₂ * KΨ < u₂` at the test key's own level grade
+-- `KΨ = (L.ℓ · d_r) · L.u = L.ℓ * L.seam` (`C131aa.dvSupp_testKey`), and its slot-1
+-- sharp carry bound is TIGHT (`C132nv3b`), so no rearrangement recovers the engine
+-- premise from the seam floor.  Machine margin at the one intended S2/μ₃ site
+-- (`C130np4.seam_s2Tower`: `L.seam = 5`; `C130np4.ell_mul_seam_s2Tower`:
+-- `L.ℓ * L.seam = 10` with `L.ℓ = 2`; outer pair `(u₂, ℓ₂) = (21, 2)` per
+-- `C132nv4`/`C132rp*`): the engine needs `2*(2*5) = 20 < 21`, while the pre-A-C.22
+-- floor exposed only `10 < 21`; at the same `L` with `(ℓ₂, u₂) = (2, 11)` the old
+-- premise holds (`10 < 11`) but the engine premise fails (`20 ≮ 11`) — the generic
+-- implication weak→engine is FALSE, and no landed consumer threads a strengthening
+-- inequality (repo-wide search, verdict_P1U §P3: the four names have no callers).
 axiom dv2Supp_translation {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
     (hnd : ¬ Ψ ∣ blockFactor L f)
-    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂) :
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * (L.ℓ * L.seam) < u₂) :
     dv2Supp L Ψ f u₂ ℓ₂
       = dv2Supp L Ψ (blockFactor L f) u₂ ℓ₂ + ℓ₂ • (complementConst L f : ℕ∞)
 
@@ -1686,11 +1702,13 @@ noncomputable def dv2ResPoly {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H
 /-! ### NODE C.38 [lemma] — same degree, same radical (as same-prime-divisors)
 [signed: A-C.1] -/
 
+-- [RE-SIGNED: A-C.22, 2026-08-28 — P1U/verdict_P1U §P3] floor binder engine-honest,
+-- `ℓ₂ * L.seam ↦ ℓ₂ * (L.ℓ * L.seam)`; full record at C.37 above.  Conclusion unchanged.
 axiom dv2ResPoly_radical_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
     (hnd : ¬ Ψ ∣ blockFactor L f)
-    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * (L.ℓ * L.seam) < u₂)
     (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty)
     (hne' : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty) :
     (dv2ResPoly L Ψ f u₂ ℓ₂ hne).natDegree
@@ -1711,11 +1729,13 @@ noncomputable def pinHeight {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H�
     (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) : ℕ :=
   (dv2Pin L Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne)).toNat
 
+-- [RE-SIGNED: A-C.22, 2026-08-28 — P1U/verdict_P1U §P3] floor binder engine-honest,
+-- `ℓ₂ * L.seam ↦ ℓ₂ * (L.ℓ * L.seam)`; full record at C.37 above.  Conclusion unchanged.
 axiom dv2ResPoly_scalar {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
     (hnd : ¬ Ψ ∣ blockFactor L f)
-    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * (L.ℓ * L.seam) < u₂)
     (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty)
     (hne' : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty) :
     dv2ResPoly L Ψ f u₂ ℓ₂ hne
@@ -2304,11 +2324,16 @@ axiom blockDeg_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hdvd : (F.e₁ * F.f₁) ∣ (blockFactor L f).natDegree) :
     (blockFactor L f).natDegree = L.keyDeg₂ * mult₂ L f
 
+-- [RE-SIGNED: A-C.22, 2026-08-28 — P1U/verdict_P1U §P3] floor binder engine-honest,
+-- `ℓ₂ * L.seam ↦ ℓ₂ * (L.ℓ * L.seam)`; full record at C.37.  Conclusion unchanged.
+-- (C.65's ∀-floor and C.68's binder retain the seam form: not in A-C.22's scope —
+-- no landed engine forces them yet; C.118's guarded congruence keeps its seam floor,
+-- PROVED as-is in `leanfinal/Uniformity/ChapC/C118b.lean`.)
 axiom mult₂_readable {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
     (hnd : ¬ Ψ ∣ blockFactor L f)
-    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * L.seam < u₂)
+    {u₂ ℓ₂ : ℕ} (hℓ₂ : 0 < ℓ₂) (hseam : ℓ₂ * (L.ℓ * L.seam) < u₂)
     (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty)
     (hne' : (dv2SideSet L Ψ (blockFactor L f) u₂ ℓ₂).Nonempty) :
     dv2SideMin L Ψ f u₂ ℓ₂ hne = dv2SideMin L Ψ (blockFactor L f) u₂ ℓ₂ hne' ∧

@@ -629,6 +629,10 @@ premises (re-derived, not carried over):
   bound is TIGHT (`C132nv3b`'s tightness note), so no rearrangement of THIS argument
   closes the gap; either the signed statements gain the stronger fence, or a genuinely
   finer graded-residual mechanism (the μ₃ `M3-RP0` apparatus) supersedes the bound.
+  [A-C.22 ENACTED, 2026-08-28 (unit A22E, per P1U/verdict_P1U §P3): the F1.3–F1.6
+  signed floors are now the engine-honest `ℓ₂ * (L.ℓ * L.seam) < u₂` — RE-SIGNED
+  records at C.37/C.38/C.39/C.64 in `leanspec/Leanspec/ChapC.lean`.  (P3) is no
+  longer a signed-surface gap; (P1) and (P2) remain the open premises.]
 
 Row-by-row: **F1.3** = the carrier above modulo (P1)+(P2)+(P3).  **F1.4/F1.5** need
 F1.3's translated pin plus the per-slot `dv2Res` cocycle telescope — untouched here (one
