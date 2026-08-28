@@ -181,6 +181,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | DWV | the blueprint adversarial read | DONE (e91d3b4f) — REJECT: TWO CRITICAL errors in the leaf² mp1 input (hkeyfree self-coprimality; ord_ψ = 2 vs GN.s multiplicity-one) + 5 gaps (3 missing gates, no occurrence→universal quantifier gate, research nodes mislabeled); tower numerics independently CONFIRMED — the DWR revision gates the fleet |
 | A22E | enact A-C.22 | DONE (d9af7106) — four floors re-signed engine-honest, conclusions byte-unchanged; scope fence recorded (C.65/C.68/C.118 untouched with reasons); review row placed |
 | C93T | the C93Census manifest | DONE (97ee96c0) — 4/7 verbatim (incl. a caught stale-name trap: the bare-name match was a refuted carrier), 1/7 half, 2/7 honest blocks (one census annotation REFUTED — review finding) |
+| TSTK | tower/key carrier rows T1–T5 → C136t | IN FLIGHT (Fable, ~15:00) |
+| L2E0 | the L2E engine roots (shape lock + full read + key-root law) → C136l2e0 | IN FLIGHT (codex sol-HIGH, ~15:00) |
 | A0C | A0-CUBIC | DONE (d11cb4cf) — ★★ DecidedSliceAt 3 LEAN-CORE (not even a cite): all five exact cubic densities proved uniformly over every complete DVR incl. wild primes; G61.s rider retired BY PROOF; cert 38/38; the n≥4 generalization genres named |
 | P1D | the P1 dictionary | DONE (adc165eb) — ★ P1 CLOSED OUTRIGHT, the GN cite retired UNDECLARED (isMuKey_of_isTestKey a Lean-core THEOREM; the residual-lift wall fell to C130kp1 made frame-generic); trust-boundary flags carried |
 | F13A | signed F1.3 | DONE (ba49bc4f) — dv2Supp_translation (NODE C.37) landed; F1.4–F1.6 need the LEVEL-2 Theorem-M twin (= DWC.s D3-03/D3-10 — shared root, folded into DWR) |
