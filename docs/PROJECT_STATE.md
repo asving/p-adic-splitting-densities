@@ -174,11 +174,14 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | FRT | F1.2 partial | DONE (00e397a5) — quotient bridge + clauses 1/3; clause-2 block DISSENTED by the orchestrator (the mixed law needs no purity) |
 | F12C | F1.2 + F1.7 | DONE (54025c36) — dissent confirmed; the transport Lean-core; F1.3–F1.6 reduced to two level-2 subgoals |
 | DV2G | the two gate subgoals | DONE (62fd7a95) — both frame-generic Lean-core + the byte-exact F1.3 carrier; F1.3–F1.6 hang on P1 (test-key⟹mu-key), P2 (¬MuDvd bridge), P3 (signed-floor fence gap, owner row) |
-| P1U | P1 cite-vs-prove + P2 bridge + P3 adjudication → C134p1 | IN FLIGHT (codex sol-HIGH, ~10:50) |
+| P1U | P1/P2/P3 | DONE (e91d3b4f) — P2 LANDED (C134p1, 3/3 Lean-core); P1 CITE-GRADE (GN Lemma 3.1(3)), declaration withheld pending the C.13-representative dictionary; P3 amendment FORCED (A-C.22 draft delivered) |
 | TAU | the tau export mechanism | DONE (419350a4) — CanonicalTauLiveSource companion + CanonicalGeneratorDescent dictionary; conversion to VarthetaRes proved; deep witnesses must supply the dictionary |
 | SRX | S2 recenter export | DONE (419350a4) — NOT constructible at S2 (MP1StepCore universally empty at μ=1 ⟹ mp1-live VACUOUS there, mirroring vartheta r=2); g₈.s key math landed; GNCitePayload surface gaps named |
 | DWC | the deep witness blueprint | DONE — GO: S2 → depth 4 via g₈ (μ4 (2,1,85) + μ5 refinement (1,1,171)); 69 nodes, 10 gates, risk node C4; cert passes (orchestrator re-ran) |
-| DWV | fresh-context adversarial read of the DWC blueprint (quote-and-classify; numerics recomputed independently) | IN FLIGHT (codex sol-HIGH, ~10:30) |
+| DWV | the blueprint adversarial read | DONE (e91d3b4f) — REJECT: TWO CRITICAL errors in the leaf² mp1 input (hkeyfree self-coprimality; ord_ψ = 2 vs GN.s multiplicity-one) + 5 gaps (3 missing gates, no occurrence→universal quantifier gate, research nodes mislabeled); tower numerics independently CONFIRMED — the DWR revision gates the fleet |
+| A22E | enact A-C.22 (the engine-honest floor in signed F1.3–F1.6) per P1U.s draft | IN FLIGHT (Fable, ~11:40) |
+| C93T | transcribe the C93Census block (GenhnTow1.s next node) → C135c93 | IN FLIGHT (Sonnet, ~11:40) |
+| DWR | REVISE the deep-witness blueprint per DWV (a multiplicity-one mp1 input; the 3 missing gates; re-grade the research nodes; the occurrence→universal gate) | QUEUED (codex sol-HIGH at the 13:34 window reset) |
 | CHA | the unattacked capstone fields | DONE (1be8359f) — ★ a1 CLOSED at every degree (menuLawAt_all, signed bytes unchanged; MENU-FAMILY retired); a0 reduced to FIVE named cubic value theorems via the landed socket; μ=3 HE slice packaged; rest re-based honestly (I.03 audit-belief refutation carried to review) |
 | UNT | physical cite retirement | DONE (a163867d) — axiom → theorem in place, statement bytes unchanged; allowlist a TRUE SIX; C131ac.s whole pow chain now pure Lean-core; cycle broken by one verbatim lemma move (C131ae0.lean) |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly + THE ENGINE are unreported milestones |
