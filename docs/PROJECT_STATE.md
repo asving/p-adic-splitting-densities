@@ -185,6 +185,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | P1D | the P1 dictionary | DONE (adc165eb) — ★ P1 CLOSED OUTRIGHT, the GN cite retired UNDECLARED (isMuKey_of_isTestKey a Lean-core THEOREM; the residual-lift wall fell to C130kp1 made frame-generic); trust-boundary flags carried |
 | F13A | signed F1.3 | DONE (ba49bc4f) — dv2Supp_translation (NODE C.37) landed; F1.4–F1.6 need the LEVEL-2 Theorem-M twin (= DWC.s D3-03/D3-10 — shared root, folded into DWR) |
 | DWR | REVISE the blueprint per DWV + the level-2 engine sub-blueprint (the shared root) | ARMED (tmux padic-dwr fires 13:35; codex sol-HIGH) |
+| RB3R | re-base refine_invariants against the completed engine (the pre-engine 200-900-line pricing is suspect) → C150rb4 | IN FLIGHT (Fable, ~13:30) |
 | CHA | the unattacked capstone fields | DONE (1be8359f) — ★ a1 CLOSED at every degree (menuLawAt_all, signed bytes unchanged; MENU-FAMILY retired); a0 reduced to FIVE named cubic value theorems via the landed socket; μ=3 HE slice packaged; rest re-based honestly (I.03 audit-belief refutation carried to review) |
 | UNT | physical cite retirement | DONE (a163867d) — axiom → theorem in place, statement bytes unchanged; allowlist a TRUE SIX; C131ac.s whole pow chain now pure Lean-core; cycle broken by one verbatim lemma move (C131ae0.lean) |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly + THE ENGINE are unreported milestones |
