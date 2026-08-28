@@ -482,3 +482,17 @@ one-slope Hensel engine, priced by BLOCKERS_PLAN as the C.34/C.35 root and begun
 "MHENS" on 2026-08-26, is DONE in under 48 hours wall-clock. Next: the C.35
 BlockFrontier-family unconditionalization sweep (8 rows), then the capstone supply
 campaign continues (ladder live-supply, deepTwist deep witnesses, a0/a1, I-D12 bodies).
+
+## 2026-08-28 ~09:45 — A-I.7: the second forced capstone amendment in twelve hours
+
+REX (codex sol-HIGH) machine-refuted the POST-A-I.6 CapstoneHypotheses via its mp1 leg
+(the S2 producer's own data falsify the unrestricted MP1Carrier at Λ = −1), so AI7E
+enacted A-I.7: the ladder record superseded by LadderSupplyLive₂ with mp1 →
+same-realization MP1CarrierLive (REX's three-layer export design promoted
+byte-identically; GNCitePayload is one-to-one with Guàrdia–Nart CM 637 Thm 2.3, checked
+at the primary pdf). I.15–I.18 stayed byte-unchanged through both amendments. LVS proved
+the live-vartheta r=2 vacuity + the full supplier bridge chain; ONE open lemma each now
+gates the two live legs: LVS-CANONICAL-TAU-EXPORT (vartheta) and S2-RECENTER-EXPORT
+(mp1). Meanwhile the engine's payoff propagation: CFS landed F1.1; CSX the context-split
+exporter; FRT the quotient bridge + F1.2 clauses 1/3 (its clause-2 block dissented — the
+mixed law needs no purity); F12C in flight on the transport.
