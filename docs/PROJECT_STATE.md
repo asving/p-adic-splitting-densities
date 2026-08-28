@@ -172,7 +172,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | P1U | P1 cite-vs-prove + P2 bridge + P3 adjudication → C134p1 | IN FLIGHT (codex sol-HIGH, ~10:50) |
 | TAU | the tau export mechanism | DONE (419350a4) — CanonicalTauLiveSource companion + CanonicalGeneratorDescent dictionary; conversion to VarthetaRes proved; deep witnesses must supply the dictionary |
 | SRX | S2 recenter export | DONE (419350a4) — NOT constructible at S2 (MP1StepCore universally empty at μ=1 ⟹ mp1-live VACUOUS there, mirroring vartheta r=2); g₈.s key math landed; GNCitePayload surface gaps named |
-| DWC | THE DEEP WITNESS CAMPAIGN decomposer (tower adjudication + node DAG + gates; MU3 template) | IN FLIGHT (codex sol-HIGH, ~10:20) |
+| DWC | the deep witness blueprint | DONE — GO: S2 → depth 4 via g₈ (μ4 (2,1,85) + μ5 refinement (1,1,171)); 69 nodes, 10 gates, risk node C4; cert passes (orchestrator re-ran) |
+| DWV | fresh-context adversarial read of the DWC blueprint (quote-and-classify; numerics recomputed independently) | IN FLIGHT (codex sol-HIGH, ~10:30) |
 | CHA | the unattacked capstone fields: a0/a1 n≥3, jd0/genhnBox2+w1, four I-D12 bodies (map re-base + land reachables → IFC6) | IN FLIGHT (Fable, ~10:55) |
 | UNT | the C130nv→C131ae import untangle → PHYSICAL cite retirement (allowlist truly SIX) | IN FLIGHT (Sonnet, ~10:55) |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly + THE ENGINE are unreported milestones |
