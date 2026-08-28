@@ -1262,3 +1262,26 @@ timeout 580 ~/.elan/bin/lake env lean scratch/REX_probe.lean
 Exit 0.  Zero `sorry`; all printed declarations depend exactly on
 `[propext, Classical.choice, Quot.sound]`.  No landed `.lean`, leanspec file, or existing
 scratch file was edited.
+
+## [AI7E 2026-08-28] A-I.7 ENACTED — and the campaign's next node
+
+The REX plan above is ENACTED (`runs/wave-c/verdict_AI7E.md`): the four export-surface
+declarations are production at `leanfinal/Uniformity/ChapI/I10RecenterLive.lean`
+(namespace `Uniformity.Density.IFC5`, byte-identical to the probe), the superseding
+record `IFC5.LadderSupplyLive₂` (ONLY `mp1` → `MP1CarrierLive`) is the capstone `ladder`
+field's result record in both twins, and the S2 landed prefix + the tangent-class
+impossibility are production at `I10RecenterLiveS2.lean`.  `REX_probe.lean`'s
+`capstoneHypotheses_four_refuted_via_mp1` is re-pinned to the retired verbatim copy
+`CapstoneHypothesesUnrestrictedMP1` (pre-rebind form archived at commit `05f067b7`).
+
+**NAMED OPEN `S2-RECENTER-EXPORT` (the supply campaign's next node).**  Construct, at the
+landed degree-4 S2 socket, an actual `IFC5.RecenterStep` instance — equivalently, land
+the GAP rows of REX's cite mapping table: a recentered external `B'` whose exact key is
+NOT initial-equivalent to the carried `Φ₂`; the selected slope of `N⁻_{r+1}` with its
+exact slope-residual interpretation; the selected prime factor `ψ` with residual
+multiplicity one; the exact GN leaf identification (`exactLeaf`); the same-chain
+recentering equality under the SAME existential witness; and the peel core
+(`MP1StepCore`).  `s2LandedPrefix_tangentClass_impossible` shows the currently carried
+key cannot serve, so a genuinely NEW recentered key export is required.  Until this node
+lands, `MP1CarrierLive` is OPEN at the S2 socket (not refuted — that is the point of the
+amendment).

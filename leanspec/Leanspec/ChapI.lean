@@ -37,6 +37,7 @@ import Uniformity.ChapE.E24
 import Uniformity.ChapE.E63
 import Uniformity.ChapI.I10FreezeV2 -- [A-I.2] F3's typed freeze-v2 carriers (DeepTwistConjunctLive)
 import Uniformity.ChapI.I10LadderLive -- [A-I.6] the live-range ladder record (the `ladder` field's rebind target)
+import Uniformity.ChapI.I10RecenterLive -- [A-I.7] the recenter-step export surface + the live-MP1 record (the `ladder` field's rebind target)
 import Uniformity.ChapC
 import Uniformity.ChapC.C130sg -- [A-I.3] the SG-1 socket-application instances (the §4 gate's non-vacuity teeth)
 import Uniformity.ChapF
@@ -162,6 +163,54 @@ their exact split stay byte-frozen as the refuted tension record.  Gate change: 
 (the sitewise-ϑ consumption now costs the live-index certificate); items (2)/(3) are unchanged
 because the first three fields are byte-identical.  Review: `docs/REVIEW_QUEUE_2026-08-26.md`,
 Tier 1 row A-I.6 (capstone-surface amendment).
+
+**STATE UPDATE (2026-08-28, AMENDMENT A-I.7): THE `ladder` FIELD'S `mp1` LEG IS REBOUND TO THE
+SAME-REALIZATION LIVE CARRIER — A STATEMENT CHANGE, MACHINE-FORCED.**  A-I.6's record was
+refuted through its remaining unrestricted leg: `leanfinal/scratch/REX_probe.lean` (Lean-core,
+exit 0, orchestrator re-verified pre-enactment; adjudication `runs/wave-c/verdict_REX.md`)
+proves
+
+* `REXProbe.s2_unrestricted_mp1_false : ¬ Ladder.MP1Carrier C2 B2`
+* `REXProbe.s2_ladderSupplyLive_false : ¬ IFC5.LadderSupplyLive C2 B2 … 4`
+* `REXProbe.capstoneHypotheses_four_refuted_via_mp1 : ¬ CapstoneHypotheses 4`
+
+— `IFC5.LadderSupplyLive.mp1` still demanded the UNRESTRICTED `Ladder.MP1Carrier`, and the
+landed degree-4 S2 producer's own data (`B2.μ = 1`, `B2.F = B2.Φ + 1`) admit `Λ = −1` with the
+legal successor `B2'.Φ = B2.F`, whose demanded `MidPeelEmission` quotient is degree-impossible
+at the length-one parent (`hmass` forces `deg quot.F + D = D` against `D > 0`).  So the signed
+block's bytes were machine-EMPTY at degree 4 AGAIN and an interpretive rider is IMPOSSIBLE (the
+A-I.5/A-I.6 precedent).  The pre-rebind refutation (stated against the then-live structure) is
+archived at commit `05f067b7`; after this amendment the probe's
+`capstoneHypotheses_four_refuted_via_mp1` is pinned to a local RETIRED-RECORD verbatim copy
+(`REXProbe.CapstoneHypothesesUnrestrictedMP1`) and `s2_ladderSupplyLive_false` still compiles
+against byte-frozen `IFC5.LadderSupplyLive`.
+
+THE EXACT REBINDING: the `ladder` field's result record
+`Uniformity.Density.IFC5.LadderSupplyLive.{uW, uG, uKt, uL} C B G Kt L N v ρ q n` is replaced
+by `Uniformity.Density.IFC5.LadderSupplyLive₂.{uW, uG, uKt, uL} C B G Kt L N v ρ q n`
+(NEW `leanfinal/Uniformity/ChapI/I10RecenterLive.lean`, namespace `Uniformity.Density.IFC5`,
+imported here and in `leanfinal`; acyclic: `I10_I15_I18 → I10RecenterLive → I10LadderLive`) —
+the `package`/`lb1` fields byte-identical to E.24's, the `vartheta` field byte-identical to
+A-I.6's live field; ONLY the `mp1` leg is replaced by the same-realization
+`IFC5.MP1CarrierLive`: the `Nonempty (MidPeelEmission B B')` conclusion is demanded only at
+successors `B'` exported by an `IFC5.RecenterStep` — ONE existential witness carrying the SAME
+slot/block/gauge-family views as the socket, the GN15-Thm-2.3 payload (`IFC5.GNCitePayload`, a
+STATEMENT CARRIER one-to-one with the source's exact hypothesis list, residual multiplicity
+one spelled `residual = psi * residualQuot` + `¬ psi ∣ residualQuot`; NO cite consumed) for
+the exact key `B'.Φ`, and the peel core (`IFC5.MP1StepCore` = `MidPeelEmission` items 2–4,
+neither `hirr` nor `hef`).  The four export-surface declarations are PROMOTED byte-for-byte
+from `scratch/REX_probe.lean` (machine byte-diff: `runs/wave-c/verdict_AI7E.md`); supersession
+pins `mp1CarrierLive_of_mp1` / `ladderSupplyLive₂_of_live` prove OLD ⟹ NEW (restriction only
+— the converse is exactly what REX refuted).  This weakens a hypothesis and therefore
+STRENGTHENS the conditional capstone; the field list and I.15–I.18's statements are
+BYTE-UNCHANGED.  `LadderSupplyLive` stays byte-frozen in `I10LadderLive.lean` as the refuted
+tension record; E.40's `MP1Carrier` byte-frozen likewise.  Gate change: item (3) ALONE (the
+MP1 consumption now costs the recenter-step export `hstep`); items (2)/(4) are unchanged.
+The S2-instance export construction is landed as far as the producer data allows
+(`I10RecenterLiveS2.lean`: `S2LandedPrefix` + `s2LandedPrefix_tangentClass_impossible`); the
+remaining GAP rows of REX's cite mapping table are the NAMED OPEN `S2-RECENTER-EXPORT`
+(`docs/in-progress/LADDER_SUPPLY_2026-08-27.md`, [AI7E] entry).  Review:
+`docs/REVIEW_QUEUE_2026-08-26.md`, Tier 1 row A-I.7 (capstone-surface amendment).
 
 Since 2026-08-20 the definitional layer I.01–I.03/I.05–I.07/I.21 IS landed in `leanfinal`
 (`Uniformity/ChapI/I01.lean` … `I21.lean`, byte-frozen transcriptions), and A-I.3's Stage-2
@@ -1027,13 +1076,21 @@ structure CapstoneHypotheses (n : ℕ) : Prop where
   -- machine-REFUTED at the landed degree-4 S2 occurrence (`scratch/AI6_probe.lean`, Lean-core,
   -- archived pre-rebind at commit ce301df1; adjudication `runs/wave-c/verdict_AI6.md`) — a
   -- forced weakening of a hypothesis, hence a STRENGTHENING of the conditional capstone.
+  -- [A-I.7, 2026-08-28 — STATEMENT CHANGE (rebind)] the result record is the A-I.7 record
+  -- `IFC5.LadderSupplyLive₂` (ONLY the `mp1` leg replaced by the same-realization
+  -- `MP1CarrierLive`: the MidPeelEmission conclusion is demanded only at successors exported
+  -- by a `RecenterStep` of the SAME realization witnessing the socket): the A-I.6 record's
+  -- unrestricted `mp1` is machine-REFUTED at the landed degree-4 S2 occurrence
+  -- (`scratch/REX_probe.lean`, Lean-core, archived pre-rebind at commit 05f067b7;
+  -- adjudication `runs/wave-c/verdict_REX.md`) — again a forced weakening of a hypothesis,
+  -- hence a STRENGTHENING of the conditional capstone.
   ladder : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
       (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
       (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
       [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
       (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
       CanonicalLadderConfig C B G Kt L N v ρ q n →
-      Uniformity.Density.IFC5.LadderSupplyLive.{uW, uG, uKt, uL}
+      Uniformity.Density.IFC5.LadderSupplyLive₂.{uW, uG, uKt, uL}
         C B G Kt L N v ρ q n
   -- [A-I.1, defect I-D4] Display A's `∀ i ≥ 3` conjunct, BOTH halves, at E.63's packaging.
   -- [A-I.2(b), 2026-08-24] re-signed at the freeze-v2 LIVE RANGE: the conjunct is read at the
@@ -1087,6 +1144,9 @@ example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
   (h.ladder ℤ K C B G Kt L N v ρ q hcfg).lb1 I (Or.inl hmulti)
 
 -- (3) the A-E.2 `(MP1)` consumption pattern: at a legal recentering, the FULL items-2–5 record.
+-- [A-I.7, 2026-08-28] the consumption now additionally costs the recenter-step export
+-- `hstep` (the rebound `mp1` leg's premise) — the honest price REX established: without it
+-- the unrestricted demand is refutable at the landed degree-4 S2 socket, not merely open.
 example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
     (K : Type) [Field K] (C : Ladder.SlotCarrier ℤ K) (B : Ladder.BlockData C)
     (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
@@ -1094,9 +1154,11 @@ example (n : ℕ) (h : CapstoneHypotheses.{uW, uG, uKt, uL} n)
     (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
     (hcfg : CanonicalLadderConfig C B G Kt L N v ρ q n)
     (Λ : Polynomial ℤ) (hΛ : Λ ≠ 0) (hdeg : Λ.natDegree < C.D) (B' : Ladder.BlockData C)
-    (hB' : B'.Φ = B.Φ - Λ) (hdvd : B'.Φ ∣ B.F) :
+    (hB' : B'.Φ = B.Φ - Λ) (hdvd : B'.Φ ∣ B.F)
+    (hstep : Uniformity.Density.IFC5.RecenterStep.{uW, uG, uKt, uL}
+      C B B' G Kt L N v ρ q n Λ) :
     Nonempty (Ladder.MidPeelEmission.{0, 0, uW} B B') :=
-  (h.ladder ℤ K C B G Kt L N v ρ q hcfg).mp1 Λ hΛ hdeg B' hB' hdvd
+  (h.ladder ℤ K C B G Kt L N v ρ q hcfg).mp1 Λ hΛ hdeg B' hB' hdvd hstep
 
 -- (4) the A-D.2 `(H-VARTHETA-RES)_i` consumption pattern: chapter D's SITEWISE carrier at the
 -- level-`i` data. Typing this against the voided existential would fail.

@@ -57,7 +57,12 @@ because the guard context is identical).
 [A-I.6, 2026-08-28] The sentence above is the HISTORICAL record: the capstone `ladder`
 field is REBOUND to `IFC5.LadderSupplyLive` (see the replaced anti-drift pin below);
 `LadderField`, the four suppliers, and their exact split stay byte-frozen here as the
-refuted tension record (`scratch/AI6_probe.lean`: `¬ LadderField 4`, Lean-core). -/
+refuted tension record (`scratch/AI6_probe.lean`: `¬ LadderField 4`, Lean-core).
+[A-I.7, 2026-08-28] Rebound AGAIN to `IFC5.LadderSupplyLive₂` (`I10RecenterLive.lean`;
+ONLY the `mp1` leg replaced by the same-realization `MP1CarrierLive`): the A-I.6
+record's unrestricted `mp1` is machine-refuted at the same degree-4 S2 socket
+(`scratch/REX_probe.lean`, Lean-core, archived pre-rebind at commit 05f067b7).  The
+pin below is retargeted accordingly; everything else in this file stays byte-frozen. -/
 
 /-- Historical unbounded tension record (pre-A-I.6 `ladder` field type; machine-refuted
 at degree 4, `scratch/AI6_probe.lean`).  A-I.6 binds the capstone to the live record. -/
@@ -70,7 +75,8 @@ def LadderField (n : ℕ) : Prop :=
     CanonicalLadderConfig C B G Kt L N v ρ q n →
     Ladder.LadderSupply.{0, 0, uW, uG, uKt, uL} C B G Kt L N v ρ q
 
-/-- A-I.6 anti-drift pin: the signed field returns the promoted live record. -/
+/-- A-I.7 anti-drift pin (supersedes the A-I.6 pin, same shape): the signed field
+returns the A-I.7 record `LadderSupplyLive₂`. -/
 example {n : ℕ} (h : CapstoneHypotheses.{uW, uG, uKt, uL} n) :
     ∀ (O : Type) [CommRing O] (K : Type) [Field K]
       (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
@@ -79,7 +85,7 @@ example {n : ℕ} (h : CapstoneHypotheses.{uW, uG, uKt, uL} n) :
       (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
       (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
       CanonicalLadderConfig C B G Kt L N v ρ q n →
-        IFC5.LadderSupplyLive.{uW, uG, uKt, uL} C B G Kt L N v ρ q n :=
+        IFC5.LadderSupplyLive₂.{uW, uG, uKt, uL} C B G Kt L N v ρ q n :=
   h.ladder
 
 /-- **L0 supplier 1 (HE7A leg)**: every arising degree-`n` ladder configuration admits a

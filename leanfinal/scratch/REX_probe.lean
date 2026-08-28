@@ -262,10 +262,45 @@ theorem s2_canonical_ladder_config :
     CanonicalLadderConfig C2 B2 G2 K2 L2 N2 v2 rho2 q2 4 :=
   Tower.C130sg.s2Frontier_ladder_socket h2_padic q2_padic L2 threshold0
 
-/-- ★ The current rebound capstone remains empty at degree four through its unrestricted
-`mp1` leg.  A-I.7 (`mp1` replaced by the same-realization live form) is therefore forced. -/
+/-- ⚠ RETIRED-RECORD (A-I.7, 2026-08-28; cite-forbidden): a local VERBATIM copy of the
+PRE-A-I.7 `CapstoneHypotheses` (`Uniformity/ChapI/I10_I15_I18.lean` as archived at
+commit 05f067b7 — the `ladder` field still returning A-I.6's `IFC5.LadderSupplyLive`,
+whose `mp1` is the unrestricted `Ladder.MP1Carrier`).  Kept so the theorem below stays
+compiled against the exact refuted bytes after the A-I.7 rebind of the live structure. -/
+structure CapstoneHypothesesUnrestrictedMP1 (n : ℕ) : Prop where
+  ns7 : NS7Termination
+  ladder : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
+      (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+      (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+      [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+      (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ),
+      CanonicalLadderConfig C B G Kt L N v ρ q n →
+      Uniformity.Density.IFC5.LadderSupplyLive.{uW, uG, uKt, uL}
+        C B G Kt L N v ρ q n
+  deepTwist : ∀ (O : Type) [CommRing O] (K : Type) [Field K]
+      (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
+      (G : Type uG) [CommGroup G] (Kt : Type uKt) [Field Kt] (L : Type uL) [Field L]
+      [Algebra Kt L] (N : Gauge.NormSection G) (v : ℕ → (G →* Multiplicative ℤ))
+      (ρ : ∀ j : ℕ, MonoidHom.ker (v j) →* Lˣ) (q : ℕ → ℤ)
+      (A : ℕ → Gauge.GaugeArena G Kt N) (R : ℕ → G → Kt) (w : ℕ → Ktˣ) (r : ℕ),
+      CanonicalDeepTwistConfig C B G Kt L N v ρ q A R w r n →
+      Ladder.DeepTwistConjunctLive r v ρ q A R w
+  a0 : DecidedSliceAt n
+  a1 : MenuLawAt n
+  a2 : DrainageAt n
+  jd0 : True
+  genhnBox2 : 6 ≤ n → True
+  windowPinning : WindowPinningAt n
+  genhnHE : 6 ≤ n → GenhnHEAt n
+  genhnTow1 : 8 ≤ n → GenhnTow1At n
+
+/-- ★ The PRE-A-I.7 rebound capstone block was empty at degree four through its
+unrestricted `mp1` leg — the machine record that FORCED the A-I.7 rebind
+(`I10RecenterLive.lean`), retargeted at enactment (unit AI7E, step 4) at the retired
+verbatim copy above; the pre-rebind form against the live structure is archived at
+commit 05f067b7. -/
 theorem capstoneHypotheses_four_refuted_via_mp1 :
-    ¬ CapstoneHypotheses.{0, 0, 0, 0} 4 := by
+    ¬ CapstoneHypothesesUnrestrictedMP1.{0, 0, 0, 0} 4 := by
   intro h
   apply s2_ladderSupplyLive_false
   exact h.ladder O2 K2 C2 B2 G2 K2 L2 N2 v2 rho2 q2 s2_canonical_ladder_config
