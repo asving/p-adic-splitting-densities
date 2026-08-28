@@ -187,7 +187,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | L2E2 | corrected shapes + L2E-06/07/08 | DONE (2daa5ca7) — the clean normalized law + the FULL side bank incl. F13A.s reverse inequality; the carry confined to the absolute read |
 | L2E3 | the engine closer | DONE (2ade1f6e) — ★ SIGNED F1.6 LANDS; the F1.5 adapter ready; TWO findings: F1.4.s signed scalar carries the rejected root factor (A-C.24 candidate); the D3 legs need a depth-3 datum adapter |
 | A24A | F1.4 shape repair (verify the defect, enact A-C.24, land F1.4+F1.5) → C136f14 | IN FLIGHT (Fable, ~17:25) |
-| D3AD | the depth-3 LevelDatum adapter + Dv3ResSurv discharge (+D3-04 if in reach) → C136d3ad | IN FLIGHT (Fable, ~17:25) |
+| D3AD | the depth-3 adapter | DONE (4eb8daa0) — D3-03 DISCHARGED unconditional (the cheap survival-core mirror; the engine.s root not valuation-polymorphic, gap recorded) + D3-04 (the unconditional μ₄ product law) |
+| D3B | μ₄ stack D3-05..09 (valuation/grades, gate/epsilon, coefficient, graded operator, carry) → C136d1 | IN FLIGHT (Sonnet, ~17:35) |
 | (EXPO) | draft READY in the site working tree, held for the codex fresh-reader audit at the 18:35 window reset, then orchestrator review + push | HELD |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
