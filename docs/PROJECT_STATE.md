@@ -166,7 +166,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | AI7E | ENACT A-I.7: mp1 → MP1CarrierLive (supersede record, rebind capstone ladder, records, probe re-pin) | IN FLIGHT (Fable, ~09:15) |
 | CFS | the BlockFrontier family sweep | DONE (bbad3a22) — F1.1 head blockFactor_spec + 5 reads unconditional (Lean core + the dissection cite; recorded 0 < F.h binder); F1.2–F1.8 blocked on ONE exporter |
 | CSX | the context-split exporter | DONE (5f11bd2e) — context_split re-exports f = blockFactor·g₂·Wf with the F-row clauses; Lean core + the dissection cite |
-| FRT | fill F1.2–F1.8 on context_split (+ the quotient bridge) → C134frt | IN FLIGHT (Sonnet, ~09:15) |
+| FRT | F1.2 partial | DONE (00e397a5) — quotient bridge + clauses 1/3; clause-2 block DISSENTED by the orchestrator (the mixed law needs no purity) |
+| F12C | F1.2 clause 2 + full row + F1.3–F1.7 re-attempt via dvResPoly_mul_gen + the residual_transport pattern → C134f12c | IN FLIGHT (Fable, ~09:55) |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly + THE ENGINE are unreported milestones |
 
 ## 7. Resume protocol (fresh agent)
