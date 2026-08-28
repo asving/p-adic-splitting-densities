@@ -186,7 +186,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | F13A | signed F1.3 | DONE (ba49bc4f) — dv2Supp_translation (NODE C.37) landed; F1.4–F1.6 need the LEVEL-2 Theorem-M twin (= DWC.s D3-03/D3-10 — shared root, folded into DWR) |
 | RB3R | re-base refine_invariants | DONE (523c8a7b) — the IsTestKey conjunct a statement-level OVERCLAIM (codex-confirmed); conjuncts landed; A-C.23 forced |
 | A23E | enact A-C.23 (re-sign C.56(i) to the source-faithful M4 package) + land the repaired theorem → C150rb5 | IN FLIGHT (Fable, ~14:05) |
-| DWR | (running as a RESUMED session after a silent exit + an orchestrator duplicate-launch mishap, both handled) | IN FLIGHT (codex sol-HIGH resume, ~13:56) |
+| DWR | the blueprint revision | DONE (b7c895e7) — tower survives; leaf² a rejected control; the distinct-factor F0 passes all formal controls; ★ STOP-LINE: GNCitePayload.s SHAPE structurally defective (the selected factor can never be the key) — A-I.8 fork flagged |
+| A8D | the A-I.8 adjudication: (β) replace the GN leg with the direct P1D-style key-irreducibility route vs (α) payload redesign | IN FLIGHT (codex sol-HIGH, ~14:10) |
 | CHA | the unattacked capstone fields | DONE (1be8359f) — ★ a1 CLOSED at every degree (menuLawAt_all, signed bytes unchanged; MENU-FAMILY retired); a0 reduced to FIVE named cubic value theorems via the landed socket; μ=3 HE slice packaged; rest re-based honestly (I.03 audit-belief refutation carried to review) |
 | UNT | physical cite retirement | DONE (a163867d) — axiom → theorem in place, statement bytes unchanged; allowlist a TRUE SIX; C131ac.s whole pow chain now pure Lean-core; cycle broken by one verbatim lemma move (C131ae0.lean) |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly + THE ENGINE are unreported milestones |
