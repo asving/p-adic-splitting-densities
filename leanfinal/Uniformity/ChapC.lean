@@ -174,6 +174,7 @@ import Uniformity.ChapC.C136d0
 import Uniformity.ChapC.C136l2e0
 import Uniformity.ChapC.C136l2e1
 import Uniformity.ChapC.C136l2e2
+import Uniformity.ChapC.C136l2e3
 import Uniformity.ChapC.C136r0
 import Uniformity.ChapC.C136t
 import Uniformity.ChapC.C14
