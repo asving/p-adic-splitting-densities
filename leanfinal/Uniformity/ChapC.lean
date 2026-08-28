@@ -155,10 +155,12 @@ import Uniformity.ChapC.C133mh11
 import Uniformity.ChapC.C133mh12
 import Uniformity.ChapC.C133mh13
 import Uniformity.ChapC.C133mh14
+import Uniformity.ChapC.C133mh15
 import Uniformity.ChapC.C133mh3
 import Uniformity.ChapC.C133mh4
 import Uniformity.ChapC.C133mh5
 import Uniformity.ChapC.C133mh8
+import Uniformity.ChapC.C133mh9
 import Uniformity.ChapC.C14
 import Uniformity.ChapC.C140defs
 import Uniformity.ChapC.C141defs
