@@ -194,7 +194,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | L2E4 | hconv + D3-10 | DONE (a9a8155f) — the generic hconv REFUTED at the bare carrier (the anchor obstruction; confirms A24B's anchored route); ★ D3-10 LANDED via the cheap mirror — the D3 chain unblocked |
 | EXPOAUD | the EXPO audit | DONE — FIX-THEN-PUSH with 28 findings (incl. a false countermodel count, the Haar scope, the one-way status) |
 | EXPOFIX | fix the 28 findings | DONE — all dispositions + two self-caught draft errors |
-| D3C | μ₄ stack D3-11..14 (product/scalar, normalized operator, recipe grade-170, g16 existence) → C136d2 | IN FLIGHT (Sonnet, ~19:10) |
+| D3C | μ₄ stack D3-11..14 | DONE (c82e9cf1) — all four unconditional incl. ★ g16 = g8²−2⁸Φ₂ (monic deg 16, residual X+1, grade 170; the campaign's hardest row closed completely); T4's deferred half closes |
+| D3D | the μ₄ CLOSER D3-15..19 (key predicates/criterion/carried-key → source records → ★ the μ₄ calculus + keyAt 4) → C136d3 | IN FLIGHT (Fable, ~20:10) |
 | EXPO | the public exposition refresh | ★ PUSHED (site aaf1ddb) — stage 13 live: draft → 28-finding audit → fix → clean skim → orchestrator spot-check; carry-over: maps.json/story.json still ignore stage 13 (graph pipeline absent) |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
