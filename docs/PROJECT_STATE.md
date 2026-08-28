@@ -188,7 +188,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | L2E3 | the engine closer | DONE (2ade1f6e) — ★ SIGNED F1.6 LANDS; the F1.5 adapter ready; TWO findings: F1.4.s signed scalar carries the rejected root factor (A-C.24 candidate); the D3 legs need a depth-3 datum adapter |
 | A24A | F1.4 adjudication | DONE (91c96848) — the signed root power CONFIRMED unsuppliable (the signer transposed the source.s ANCHORED-read cocycle onto the bare carrier) AND the drafted γg-alone repair ALSO refuted (the off-side junk channel; scalar-generic digit-kill landed); fork → A-C.24′ = repair the C.38a carrier (guarded/anchored R₂); one open risk → battery |
 | A24B | battery + carrier | DONE (dea24337) — the anchor risk REAL (135/135 events) and absorbed by the anchored dv2FullRead (unconditional stability theorem); the carrier landed 15/15 Lean-core; the A-C.24′ draft machine-ripple-free |
-| A24E | enact A-C.24′ (the carrier insertion + the C.38/C.39 re-signs) | IN FLIGHT (Fable, ~19:00) |
+| A24E | enact A-C.24′ | DONE — the anchored carrier signed (C.38a′ + the re-signs, source-faithful scalar); F1.4/F1.5 stay open on TWO named legs (the anchored digit-split assembly + the carry law) |
 | D3AD | the depth-3 adapter | DONE (4eb8daa0) — D3-03 DISCHARGED unconditional (the cheap survival-core mirror; the engine.s root not valuation-polymorphic, gap recorded) + D3-04 (the unconditional μ₄ product law) |
 | D3B | μ₄ stack D3-05..09 | DONE — 56 decls Lean-core, all five rows green; the chain funnels through hconv |
 | L2E4 | hconv + D3-10 | DONE (a9a8155f) — the generic hconv REFUTED at the bare carrier (the anchor obstruction; confirms A24B's anchored route); ★ D3-10 LANDED via the cheap mirror — the D3 chain unblocked |
