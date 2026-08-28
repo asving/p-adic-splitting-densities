@@ -157,7 +157,10 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | LVT | enact VAUD's vartheta owner amendment | DONE (a38c26af) — IFC5.lean supersession (six live-range decls + OLD⟹NEW pins); IFC0 byte-frozen tension record; leanspec comment record; `LadderFieldLive` is the ladder target; A-I.6 (CapstoneHypotheses.ladder rebinding) adjudication QUEUED for the codex wave |
 | MH0A6 | MH.0a + MH.0c remainder + MH.6 (M4) | DONE (ae36c7a1) — C133mh0.lean, 7/7 Lean-core, every clause unweakened; MH.4 is the only small pre-assembly node left |
 | (wave-c) | six codex sol-HIGH units 03:04–03:27 | ALL LANDED (ce301df1) — ★AI6: ¬CapstoneHypotheses 4 PROVED (probe orchestrator-re-verified) ⟹ A-I.6 REBIND FORCED, exact acyclic diff delivered; MP1R: unrestricted MP1Carrier FALSE (countermodel re-verified), blocker = the producer-side recenter export; LB1G: RESTRICT-ANYWAY + LB1CarrierLive designed; WLE: exporter designed-anchored, deep inhabitants open; SMGR: GR-7b-0R PROVED, I+/II+ partial (SMGR-I-COMB, SMGR-RSE named); MSF3: MSF j≥3 REFUTED-BY a depth-6 secant, MSF-GENRE is the open replacement, GSP-n ⇒ U(n), WASH-n for separated μ=2 families n≥5 |
-| EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly are unreported milestones |
+| LVS | the live vartheta supplier (math + Lean surface; r=2 vacuity check first) | IN FLIGHT (codex sol-HIGH, ~08:45) |
+| REX | the recenter-step export + MP1CarrierLive; ★ adjudicate whether MP1R's countermodel refutes the funnel (possible A-I.7) | IN FLIGHT (codex sol-HIGH, ~08:45) |
+| CFS | the C.35 BlockFrontier-family unconditionalization sweep (the engine's payoff rows) | IN FLIGHT (Fable, ~08:45) |
+| EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly + THE ENGINE are unreported milestones |
 
 ## 7. Resume protocol (fresh agent)
 
@@ -167,6 +170,3 @@ frontier (§4) top-down. The map of the repo is in the repo CLAUDE.md; the bluep
 (byte-frozen; re-signs only via recorded amendments); landed Lean in
 `leanfinal/Uniformity/`. When a milestone lands: update §§2/4/6 here IN PLACE, append the
 dated details to `docs/LOG.md`, commit both with the work.
-| LVS | the live vartheta supplier (math + Lean surface; r=2 vacuity check first) | IN FLIGHT (codex sol-HIGH, ~08:45) |
-| REX | the recenter-step export + MP1CarrierLive; ★ adjudicate whether MP1R's countermodel refutes the funnel (possible A-I.7) | IN FLIGHT (codex sol-HIGH, ~08:45) |
-| CFS | the C.35 BlockFrontier-family unconditionalization sweep (the engine's payoff rows) | IN FLIGHT (Fable, ~08:45) |
