@@ -496,3 +496,14 @@ gates the two live legs: LVS-CANONICAL-TAU-EXPORT (vartheta) and S2-RECENTER-EXP
 (mp1). Meanwhile the engine's payoff propagation: CFS landed F1.1; CSX the context-split
 exporter; FRT the quotient bridge + F1.2 clauses 1/3 (its clause-2 block dissented — the
 mixed law needs no purity); F12C in flight on the transport.
+
+## 2026-08-28 ~11:15 — a capstone field closes; the first cite physically retires
+
+CHA closed the a1 field at every degree (`IFC6.menuLawAt_all`, signed statement
+byte-unchanged — the priced MENU-FAMILY campaign collapsed to two landed halves nobody
+had connected) and reduced a0-cubic to exactly five named value theorems. UNT physically
+retired `fgmn_dv_exact_mul` (axiom → theorem in place after breaking H0LEG's textual
+import cycle with one verbatim lemma move) — the declared-cite allowlist is a TRUE SIX,
+and C131ac's downstream chain improved to pure Lean-core. DWC delivered the deep-witness
+campaign blueprint (GO: S2 → depth 4 via g₈; 69 nodes, 10 gates); DWV (fresh-context
+adversarial read) gates the fleet; P1U attacks the engine family's last mechanisms.
