@@ -168,7 +168,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | CSX | the context-split exporter | DONE (5f11bd2e) — context_split re-exports f = blockFactor·g₂·Wf with the F-row clauses; Lean core + the dissection cite |
 | FRT | F1.2 partial | DONE (00e397a5) — quotient bridge + clauses 1/3; clause-2 block DISSENTED by the orchestrator (the mixed law needs no purity) |
 | F12C | F1.2 + F1.7 | DONE (54025c36) — dissent confirmed; the transport Lean-core; F1.3–F1.6 reduced to two level-2 subgoals |
-| DV2G | the two level-2 subgoals (frame-generic Dv2ResSurv + dv2Pin_mul_complement) + F1.3–F1.6 re-attempt → C134dv2g | IN FLIGHT (Fable, ~10:15) |
+| DV2G | the two gate subgoals | DONE (62fd7a95) — both frame-generic Lean-core + the byte-exact F1.3 carrier; F1.3–F1.6 hang on P1 (test-key⟹mu-key), P2 (¬MuDvd bridge), P3 (signed-floor fence gap, owner row) |
+| P1U | P1 cite-vs-prove + P2 bridge + P3 adjudication → C134p1 | IN FLIGHT (codex sol-HIGH, ~10:50) |
 | TAU | the tau export mechanism | DONE (419350a4) — CanonicalTauLiveSource companion + CanonicalGeneratorDescent dictionary; conversion to VarthetaRes proved; deep witnesses must supply the dictionary |
 | SRX | S2 recenter export | DONE (419350a4) — NOT constructible at S2 (MP1StepCore universally empty at μ=1 ⟹ mp1-live VACUOUS there, mirroring vartheta r=2); g₈.s key math landed; GNCitePayload surface gaps named |
 | DWC | THE DEEP WITNESS CAMPAIGN decomposer (tower adjudication + node DAG + gates; MU3 template) | IN FLIGHT (codex sol-HIGH, ~10:20) |
