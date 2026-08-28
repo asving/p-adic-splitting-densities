@@ -141,12 +141,13 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 
 | unit | what | status |
 |---|---|---|
-| (archive) | everything through 2026-08-27 ~17:30 — the capstone assembly (A-I.3/A-I.4 + I.15–I.18), the five-amendment wave, the CHFD supply map + CW wrappers + IFC0 interfaces, the five math-fleet docs THROUGH the codex verification/repair loop (final: RAMIFIED ACCEPT, HENSEL corrected-M two clean passes, SMITH ACCEPT-WITH-GAPS, LIFT ACCEPT), the ramified I1 interface PROVED in Lean (B59c), MH.1 transcribed (C133mh1), and μ₃ nodes A0/A1 + NV0–NV6 + RP0–RP10 + KP0 (20/29) | ALL DONE — LOG + git log; every landing orchestrator-verified; pushed through 2868bca3 |
-| (μ₃ sweep 08-27) | NV0–NV6, RP0–RP10, KP0–KP6, FD1, FD0 (conditional), SG (conditional core) — the campaign is structurally COMPLETE modulo exactly TWO math opens: M3-RP10b (non-recipe NormRes(g₈)=X+1 evaluation) + M3-KP6b (the initial↔residual converse via the μ₃ key-structure bank); RP10/KP6 landed honest BLOCKED-BECAUSE partials; FD0+SG-core assembled BY THE ORCHESTRATOR during a Claude-lane storm | DONE (conditional) — all orchestrator-verified, pushed |
-| MRP10B | the harder μ₃ closer (normalized_exists) | DONE — BY THE ORCHESTRATOR, solo, 5 committed stages: s2Mu3NormRes g₈ = X+1 by the non-recipe route; s2Mu3_hex discharged; the calculus hangs on KP6b ALONE; the 22:07 codex slot self-skips |
-| MKP6B | the last μ₃ closer (the converse; sol-HIGH) | QUEUED — 22:07 launcher |
-| VAUD + MHG | ladder validity teeth; Hensel gates MH.8+X1 (sol-HIGH) | QUEUED — 22:07 launcher |
-| EXPO | public exposition refresh (standing milestone obligation) | PENDING — after the μ₃ campaign closes |
+| (archive) | everything through 2026-08-28 ~00:00 — capstone assembly (I.15–I.18), the μ₃ campaign CLOSED UNCONDITIONAL (`s2Mu3_calculus_nonempty` at (2,1,21), C132kp6b + the signed GENTOW consumer `s2Mu3_gentow5w_two`, C132sg2/sg3), VAUD's three ladder negatives + MHG's Hensel-gate proofs, the GCW chain (A-I.5: GC13Wiring + WiredGentowDemand; the wired S2 witness + first GentowWWindow at own exports, IFC1–IFC4), FML1 lift tails (U4 unconditional/target-free), Hensel promotions MH.1-core (C133mh1), MH.8+X1 (C133mh8), and MH3's CHECKPOINT: Theorem M all three clauses + the cite payoff `fgmn_dv_exact_mul_of_twistLaw`, conditional on the ONE root `M1TwistProductLawStatement`; `m1DigitFaithful` unconditional (C133mh3) | ALL DONE — LOG + git log; every landing orchestrator-verified; pushed through a55fbd43 |
+| MH3 stretch | the engine root `M1TwistProductLawStatement` itself (Fable, in flight on the same agent) | IN FLIGHT — checkpoint banked a55fbd43; verdict_MH3.md marked [TO BE UPDATED] |
+| LVT | enact VAUD's vartheta owner amendment (live-range supplier; probe decls → production; leanspec surface check) | IN FLIGHT (Fable, launched 08-28 ~00:20) |
+| MH10 | Theorem H0 `dvResidualBezout` (mathlib-only UFD arithmetic) → C133mh10 | IN FLIGHT (Sonnet) |
+| MH0A6 | MH.0a stageHeight_key + MH.0c remainder + MH.6 perturbation law M4 → C133mh0 | IN FLIGHT (Sonnet) |
+| (03:03 codex) | sol-HIGH wave when the 5h window resets: MP1 route redesign, LB1 guard-link, WleCleared per-level exporter (deepTwist deep witness), Smith GR-7b-0R, MSF j≥3 | QUEUED |
+| EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly are unreported milestones |
 
 ## 7. Resume protocol (fresh agent)
 
