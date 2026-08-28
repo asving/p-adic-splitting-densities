@@ -103,7 +103,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    enactment; the HE7APackage supplier stays XL-blocked;
    (b) **deepTwist** — the deep (r ≥ 4) arising-witness campaign + the WLE per-level
    exporter (design anchored; deep inhabitants open; WleCleared r=2 vacuity mapped);
-   (c) `a0`/`a1` at n ≥ 3; (d) `jd0`/`genhnBox2` + `w1` (A-I.1); (e) four I-D12 bodies
+   (c) a0 GENERAL-n (the uniform mechanism — unit A0G designing; n=3 landed, a1 CLOSED all n); (d) `jd0`/`genhnBox2` + `w1` (A-I.1); (e) four I-D12 bodies
    (WindowPinningAt, GenhnHEAt, GenhnTow1At, TypeOfFaithful). The CHFD supply map
    (docs/in-progress/CAPSTONE_SUPPLY_MAP_2026-08-26.md) is the field-by-field ledger.
 2. **The Hensel engine: COMPLETE — payoff propagation is the open work.** F1.1 landed
