@@ -167,6 +167,7 @@ import Uniformity.ChapC.C134dv2g
 import Uniformity.ChapC.C134f12c
 import Uniformity.ChapC.C134frt
 import Uniformity.ChapC.C134p1
+import Uniformity.ChapC.C134p1d
 import Uniformity.ChapC.C135c93
 import Uniformity.ChapC.C14
 import Uniformity.ChapC.C140defs
