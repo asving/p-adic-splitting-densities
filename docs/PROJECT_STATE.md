@@ -182,6 +182,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | A22E | enact A-C.22 | DONE (d9af7106) — four floors re-signed engine-honest, conclusions byte-unchanged; scope fence recorded (C.65/C.68/C.118 untouched with reasons); review row placed |
 | C93T | the C93Census manifest | DONE (97ee96c0) — 4/7 verbatim (incl. a caught stale-name trap: the bare-name match was a refuted carrier), 1/7 half, 2/7 honest blocks (one census annotation REFUTED — review finding) |
 | A0C | the five cubic value laws (a0.s exact remainder; examples-first + Lean) → IFC7 | IN FLIGHT (Fable, ~11:25) |
+| P1D | the C.13-representative dictionary (narrow the P1 cite or prove it outright) → C134p1d | IN FLIGHT (Fable, ~11:40) |
 | DWR | REVISE the deep-witness blueprint per DWV (a multiplicity-one mp1 input; the 3 missing gates; re-grade the research nodes; the occurrence→universal gate) | QUEUED (codex sol-HIGH at the 13:34 window reset) |
 | CHA | the unattacked capstone fields | DONE (1be8359f) — ★ a1 CLOSED at every degree (menuLawAt_all, signed bytes unchanged; MENU-FAMILY retired); a0 reduced to FIVE named cubic value theorems via the landed socket; μ=3 HE slice packaged; rest re-based honestly (I.03 audit-belief refutation carried to review) |
 | UNT | physical cite retirement | DONE (a163867d) — axiom → theorem in place, statement bytes unchanged; allowlist a TRUE SIX; C131ac.s whole pow chain now pure Lean-core; cycle broken by one verbatim lemma move (C131ae0.lean) |
