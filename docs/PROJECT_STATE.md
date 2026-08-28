@@ -143,10 +143,10 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 |---|---|---|
 | (archive) | everything through 2026-08-28 ~00:00 — capstone assembly (I.15–I.18), the μ₃ campaign CLOSED UNCONDITIONAL (`s2Mu3_calculus_nonempty` at (2,1,21), C132kp6b + the signed GENTOW consumer `s2Mu3_gentow5w_two`, C132sg2/sg3), VAUD's three ladder negatives + MHG's Hensel-gate proofs, the GCW chain (A-I.5: GC13Wiring + WiredGentowDemand; the wired S2 witness + first GentowWWindow at own exports, IFC1–IFC4), FML1 lift tails (U4 unconditional/target-free), Hensel promotions MH.1-core (C133mh1), MH.8+X1 (C133mh8), and MH3's CHECKPOINT: Theorem M all three clauses + the cite payoff `fgmn_dv_exact_mul_of_twistLaw`, conditional on the ONE root `M1TwistProductLawStatement`; `m1DigitFaithful` unconditional (C133mh3) | ALL DONE — LOG + git log; every landing orchestrator-verified; pushed through a55fbd43 |
 | MH3 stretch | the engine root `M1TwistProductLawStatement` itself (Fable, in flight on the same agent) | IN FLIGHT — checkpoint banked a55fbd43; verdict_MH3.md marked [TO BE UPDATED] |
-| LVT | enact VAUD's vartheta owner amendment (live-range supplier; probe decls → production; leanspec surface check) | IN FLIGHT (Fable, launched 08-28 ~00:20) |
+| LVT | enact VAUD's vartheta owner amendment | DONE (a38c26af) — IFC5.lean supersession (six live-range decls + OLD⟹NEW pins); IFC0 byte-frozen tension record; leanspec comment record; `LadderFieldLive` is the ladder target; A-I.6 (CapstoneHypotheses.ladder rebinding) adjudication QUEUED for the codex wave |
 | MH10 | Theorem H0 `dvResidualBezout` (mathlib-only UFD arithmetic) → C133mh10 | IN FLIGHT (Sonnet) |
 | MH0A6 | MH.0a stageHeight_key + MH.0c remainder + MH.6 perturbation law M4 → C133mh0 | IN FLIGHT (Sonnet) |
-| (03:03 codex) | sol-HIGH wave when the 5h window resets: MP1 route redesign, LB1 guard-link, WleCleared per-level exporter (deepTwist deep witness), Smith GR-7b-0R, MSF j≥3 | QUEUED |
+| (03:03 codex) | sol-HIGH wave when the 5h window resets: A-I.6 adjudication (is IFC0.LadderField refutable at the landed corpus — assemble VAUD's countermodel inside the quantification — or does a GCW-style rider suffice?), MP1 route redesign, LB1 guard-link, WleCleared per-level exporter (deepTwist deep witness), Smith GR-7b-0R, MSF j≥3 | QUEUED |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly are unreported milestones |
 
 ## 7. Resume protocol (fresh agent)
