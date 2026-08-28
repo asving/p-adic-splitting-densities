@@ -169,8 +169,9 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | FRT | F1.2 partial | DONE (00e397a5) — quotient bridge + clauses 1/3; clause-2 block DISSENTED by the orchestrator (the mixed law needs no purity) |
 | F12C | F1.2 + F1.7 | DONE (54025c36) — dissent confirmed; the transport Lean-core; F1.3–F1.6 reduced to two level-2 subgoals |
 | DV2G | the two level-2 subgoals (frame-generic Dv2ResSurv + dv2Pin_mul_complement) + F1.3–F1.6 re-attempt → C134dv2g | IN FLIGHT (Fable, ~10:15) |
-| TAU | LVS-CANONICAL-TAU-EXPORT (the vartheta live leg.s open lemma; source-faithful tower export design) | IN FLIGHT (codex sol-HIGH, ~10:15) |
-| SRX | S2-RECENTER-EXPORT (the mp1 live leg.s open node; GN payload field discharge at the S2 occurrence) | IN FLIGHT (codex sol-HIGH, ~10:15) |
+| TAU | the tau export mechanism | DONE (419350a4) — CanonicalTauLiveSource companion + CanonicalGeneratorDescent dictionary; conversion to VarthetaRes proved; deep witnesses must supply the dictionary |
+| SRX | S2 recenter export | DONE (419350a4) — NOT constructible at S2 (MP1StepCore universally empty at μ=1 ⟹ mp1-live VACUOUS there, mirroring vartheta r=2); g₈.s key math landed; GNCitePayload surface gaps named |
+| DWC | THE DEEP WITNESS CAMPAIGN decomposer (tower adjudication + node DAG + gates; MU3 template) | IN FLIGHT (codex sol-HIGH, ~10:20) |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly + THE ENGINE are unreported milestones |
 
 ## 7. Resume protocol (fresh agent)
