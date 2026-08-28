@@ -469,3 +469,16 @@ waits on a textual import untangle (no logical circularity — flagged, queued).
 the engine's final unit. A-I.6 was ENACTED earlier tonight (CapstoneHypotheses.ladder
 rebound to the live-range record after AI6 machine-refuted the signed field at n = 4;
 I.15–I.18 byte-unchanged and green).
+
+## 2026-08-28 ~08:35 — THE HENSEL ENGINE COMPLETES
+
+MH9L (Fable, surviving three more 529 deaths by increment-resume) landed all nine
+transcription nodes in C133mh9.lean: the above-line law, Lemma S (signed shape discharged
+by name), and ★ theoremA : TheoremAStatement — Theorem A UNCONDITIONAL, Lean-core, no
+cite. The orchestrator landed the MH.15 one-line composition (C133mh15.lean):
+blockFrontier_of_context : BlockContext L f → BlockFrontier L f, footprint = Lean core +
+the one allowlisted C.33 dissection cite. F1.H0–H3 are all landed — the dv-graded
+one-slope Hensel engine, priced by BLOCKERS_PLAN as the C.34/C.35 root and begun as
+"MHENS" on 2026-08-26, is DONE in under 48 hours wall-clock. Next: the C.35
+BlockFrontier-family unconditionalization sweep (8 rows), then the capstone supply
+campaign continues (ladder live-supply, deepTwist deep witnesses, a0/a1, I-D12 bodies).
