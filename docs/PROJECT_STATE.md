@@ -145,7 +145,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | MH3 stretch | the engine root `M1TwistProductLawStatement` itself (Fable, in flight on the same agent) | IN FLIGHT — checkpoint banked a55fbd43; verdict_MH3.md marked [TO BE UPDATED] |
 | LVT | enact VAUD's vartheta owner amendment | DONE (a38c26af) — IFC5.lean supersession (six live-range decls + OLD⟹NEW pins); IFC0 byte-frozen tension record; leanspec comment record; `LadderFieldLive` is the ladder target; A-I.6 (CapstoneHypotheses.ladder rebinding) adjudication QUEUED for the codex wave |
 | MH10 | Theorem H0 `dvResidualBezout` (mathlib-only UFD arithmetic) → C133mh10 | IN FLIGHT (Sonnet) |
-| MH0A6 | MH.0a stageHeight_key + MH.0c remainder + MH.6 perturbation law M4 → C133mh0 | IN FLIGHT (Sonnet) |
+| MH0A6 | MH.0a + MH.0c remainder + MH.6 (M4) | DONE (ae36c7a1) — C133mh0.lean, 7/7 Lean-core, every clause unweakened; MH.4 is the only small pre-assembly node left |
 | (03:03 codex) | sol-HIGH wave when the 5h window resets: A-I.6 adjudication (is IFC0.LadderField refutable at the landed corpus — assemble VAUD's countermodel inside the quantification — or does a GCW-style rider suffice?), MP1 route redesign, LB1 guard-link, WleCleared per-level exporter (deepTwist deep witness), Smith GR-7b-0R, MSF j≥3 | QUEUED |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly are unreported milestones |
 
