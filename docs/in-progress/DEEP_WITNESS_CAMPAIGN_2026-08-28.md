@@ -1,5 +1,11 @@
 # DWC — the depth-four arising-witness campaign blueprint
 
+> **[DWR 2026-08-28] REVISION NOTICE.** Sections 1–10 preserve the original DWC proposal
+> as an audit trail.  DWV refuted its `leaf^2` MP1 input.  The binding revision in §11
+> supersedes every conflicting input, gate, node-grade, count, risk, and exit claim below;
+> `[DWR]` rows inserted in the original node tables are deliberate visible edits, not
+> claims that the old rows remain valid.
+
 Date: 2026-08-28  
 Scope: construct one honest depth-four arising witness over the S2 frame, its depth-three
 and depth-four FGMN calculi, a mass-two realized input, and the four live consumer exports.
@@ -269,6 +275,10 @@ honest μ4 operator and exact recipe evaluation.  Packaging remains trivial at b
 | G4 shared deep-level export | 60 | Promote `DeepLevelExport X j hj`: corrected G3 calculus/wiring package + `CanonicalGeneratorDescent` + receiver/letter equality; derive WLE and TAU dictionary projections. | landed: `ChainRealization`, `RealizedInput`; scratch authority: `TAUProbe.CanonicalGeneratorDescent`; campaign: G3 | statement review |
 | G5 μ5 refinement admissibility | 60 | Prove/document that `(1,1,171)` is a source-faithful refinement calculus and GN inductive valuation, while not a fifth proper tower stage. | landed: `DeepTower.hproper`, `FGMNSourceData`, `FGMNSourceLaws`, `FGMNCalculus` | **stop if false** |
 | G6 carrier falsifiers | 45 | Compile zero-read, arbitrary-residual, bare-carrier calculus, and off-site fixed-triple non-derivability teeth. | landed: `IFC3.s2_wiring_refuted_at_landed_exports`, `C130s18.embeddedValue_not_uniform`; campaign: G2/G3/G4 | none after statements |
+| **[DWR] G7 quotient key-free gate** | research gate, 1–3 days | Before an MP1 core exists, prove `BlockData.hkeyfree` for the literal quotient polynomial against `B'.Φ`; the `leaf²` control must fail here. | campaign: revised R8r/C5r; cert | **stop if false** |
+| **[DWR] G8 residual order-one gate** | research gate, 2–5 days | Compute the actual selected slope residual and prove `ord_ψ(R_λ(F0))=1`; the `leaf²` control must report order two. | campaign: G0/G1/G9/C4r; cert is only the algebraic control | **stop if false** |
+| **[DWR] G9 GN valuation/index gate** | **STOP-LINE: RED** | Identify the valuation, chain index, recenter key, principal side, and `R_{r+1,λ}` used by GN with the exact landed operator.  The current payload forces selected factor `=φ=B'.Φ` while also requiring `φ∣g`; this is the separate `φ`-power factor, not a finite-slope `g_{λ,ψ}`. | landed payload + GN factor indexing; campaign: G0/G1/G2/G5/D4-18 | **A-I.8 review; do not enact here** |
+| **[DWR] G10 occurrence→universal gate** | theorem family, 2–4 days after producers | Prove a per-witness exporter quantified over every live level and every same-witness exported recenter step; one `j=3`/one-`Λ` occurrence is only its nonvacuity tooth. | campaign: G3/G4/C0–C5r | universal supplier boundary |
 | T0 numeric certificate | 30 | Keep `verification/dwc_tower_cert.py` green; output all table rows and counts in §3. | landed: `DeepTower.towerNorm` definition | **DONE** |
 | T1 depth-three chain alias | 45 | Define depth-three S2 occurrence from `s2Witness`; set `keyAt 3=g8`; pin degrees 2/4/8 and monicity. | landed: `s2Witness`, `C132rp10b.g8`, `C132rp10.s2Mu3_gEight_monic`, `C132rp10.s2Mu3_gEight_natDegree` | key proof next row |
 | T2 `g8` key proof and `KeyChain` | 60 | Prove `S2Mu3KeyPoly g8` from the landed criterion/residual facts; construct depth-three `KeyChain`. | landed: `C132kp3.s2Mu3_key_criterion`, `C132rp10b.s2Mu3NormRes_g8`, `C132rp10.s2Mu3_X_add_one_irreducible`; campaign: T1 | none |
@@ -294,6 +304,7 @@ exponent theorem can land immediately.  This is the only intentional two-part ro
 | D3-08 total graded operator/add | 60 | Assemble polynomial-valued graded residual; prove finite support, zero-above, and exact-grade additivity. | landed: `C132rp2.s2Mu3GradedRes`, `C132rp3.s2Mu3GradedRes_add`; campaign: D3-07 | none |
 | D3-09 carry arithmetic | 45 | Prove parity/carry and endpoint addition for `(85,2)`. | landed: `C132rp4.s2Mu3Carry_parity`, `C132rp4.s2Mu3_def312_add`; campaign: D3-06 | numeral-only |
 | D3-10 convolution | 60 | Prove μ4 coefficient convolution through μ3 residual multiplicativity. | landed: `C132rp5.s2Mu3Coeff_mul`, `C132rp8.s2Mu3NormRes_mul`; campaign: D3-03/07/09 | genuine new core |
+| **[DWR] L2E shared engine** | **research program, 8–15 working days** | **Supersedes D3-03/D3-10 as isolated transcription rows.** Build the generic level-2 Theorem-M twin once; instantiate it both at `(g8,85,2)` and for F1.4–F1.6. Exact node list and acceptance tests: §11.7. | landed: `C133mh1`, `C133mh3`, `C134dv2g`, `C132nv2`; campaign: T2/D3-02 | new multiplicative-operator root |
 | D3-11 graded product/scalar | 60 | Assemble twisted/plain product laws, `PrevGrade := 2∣β`, and coefficient-zero nonvanishing below degree 8. | landed: `C132rp6.s2Mu3_graded_mul`, `C132rp7.s2Mu3_graded_scalar_nonzero`; campaign: D3-08/10 | none |
 | D3-12 normalized operator | 60 | Strip the initial `X` power; prove universal multiplication, key reads, and nonzero constant. | landed: `C132rp8.s2Mu3NormRes`, `C132rp8.s2Mu3NormRes_mul`; campaign: D3-11 | none |
 | D3-13 recipe/B-1 | 60 | Prove corrected recipe and `chainNormBelow 3 85` exact grade `170`, degree, and nonzero supplies. | landed: `C132rp9.s2Mu3_chainNormBelow_two_twenty_one`, `C132sg3.s2Mu3_B1_exact_grade_supply_cleared`; campaign: T4/D3-12 | none |
@@ -341,6 +352,7 @@ exponent theorem can land immediately.  This is the only intentional two-part ro
 | R6 wired gauge fields | 45 | Define arena read, law-satisfying `towerRead`, and peel units at construction; prove live/junk pins. | landed: `IFC4.s2TowerReadWired`, `IFC4.s2SplitNodeWired_inherits`; campaign: R0/R5 | GCW-6 |
 | R7 split node + chain realization | 60 | Assemble `SplitNodePointSource`, then `ChainRealization`; pin every stage table and the one-field read audit. | landed: `SplitNodePointSource`, `ChainRealization`, `C130s17.S2SourceFrontier.toCarrier`; campaign: R0..R6 | none |
 | R8 mass-two `ArisingCore` | 60 | Set `F0=leaf^2`, `n=32`, `μ=2`, stage `i=r=4`; prove monic, degree block, and keyfree. | landed: `ArisingCore`, `C130s17.S2InputData.toArisingCore`; campaign: D4-12/15/R7 | coprime gate |
+| **[DWR] R8r distinct-factor formal candidate** | research construction, 2–4 days | **Supersedes R8 as the algebraic control, not as an honest GN occurrence.** Set `h=keyAt4+1`, `F0=leaf*h`, `μ=2`; prove parent/quotient key-freeness and literal development records.  G9 is RED under the current payload. | campaign: D4-09/12/14/15, G7, R7 | blocked from GN by G9 |
 | R9 `RealizedInput` + sockets | 60 | Select legal point, package `RealizedInput`, and expose ladder/deep-twist sockets at literal depth 4 without a zero-read intermediate. | landed: `RealizedInput`, `C130s17.S2SourceFrontier.realizedInput`, `IFC4.s2FrontierWired_deepTwist_socket`; campaign: R7/R8 | none |
 
 ### 6.5 Four consumer legs and final assembly (7 nodes)
@@ -354,6 +366,9 @@ exponent theorem can land immediately.  This is the only intentional two-part ro
 | C4 GN analytic binding | 60 | For `g=leaf^2`, prove actual principal slope membership, actual slope residual with `X+1` multiplicity one, and completed selected factor/base-change equality to `leaf`. | campaign: G0/G1/G2/D4-12/14/16/R8 | **HIGHEST RISK** |
 | C5 genuine recenter/MP1 | 60 | Set `Λ=chainNormBelow 4 171`, build successor block and quotient; prove `RecenterStep`, `MP1StepCore`, then `MidPeelEmission`. | landed: `IFC5.MP1StepCore`; campaign: revised G2 surface, D4-10/12/C4/R8/R9 | rung interface |
 | C6 deepTwist tooth | 60 | At the unique `DeepLive 4 3`, pair C3's `VarthetaRes` with C2's wired `GentowW`; expose the `DeepTwistConjunctLive` arising-witness theorem and the ladder record with C5's live MP1 leg. | landed: `Ladder.DeepTwistConjunctLive`, `IFC5.LadderSupplyLive₂`, `IFC0.deepTwistField_of_suppliers`; campaign: C2/C3/C5/R9 | capstone binding remains separate |
+| **[DWR] C4r honest GN binding** | **REFUTED under current payload** | Old C4 is refuted by multiplicity two.  The distinct-factor replacement clears the formal order control but cannot identify `leaf=φ` with finite-slope `g_{λ,ψ}`: the literal divisor `φ` is in the separate key-power term. | G9; current `GNCitePayload.exactLeaf`/`leaf_dvd_input` | **A-I.8-grade shape issue** |
+| **[DWR] C5r provenance-bound recenter/MP1** | **BLOCKED by C4r/G9** | Conditional post-review construction: `B'.F=keyAt4+1`, `B'.T=B.T`, `quot.F=B'.F`; prove both key-free fields before `MP1StepCore`. | revised G2, G7, R8r/R9 | no honest current payload |
+| **[DWR] C6r occurrence tooth only** | 1–3 days after consumers | **Narrows C6.** Expose the same-`X`, `j=3` deep tooth and the one recenter occurrence as nonvacuity results; do not claim `LadderSupplyLive₂` until G10's universal exporter, HE7A, and LB1 are supplied. | campaign: C2/C3/C5r/R9 | universal fields remain separate |
 
 ## 7. Dependency graph and fleet order
 
@@ -428,3 +443,263 @@ switching from `q=2` to `q=3` without that property does not solve the recenteri
 7. The exact same `X` and `j=3` inhabit C0, C2, C3, C5, and C6; no view or owner is swapped.
 8. C6 proves both halves of the unique deep tooth and records that `DeepLive 4 j` forces
    `j=3`.
+
+## 11. [DWR 2026-08-28] binding revision after DWV REJECT
+
+This section is numerically downstream of the extended
+`verification/dwc_tower_cert.py`.  It supersedes DWC §§1, 3.3–3.4, 4, 6–10 wherever they
+refer to `leaf²`, call C4 viable, omit the four new gates, price research as transcription,
+or infer a universal supply record from one occurrence.  The tower numerics remain unchanged.
+
+### 11.1 Numerical adjudication of the replacement candidate (MP1 remains stopped)
+
+`MP1StepCore.hmass` literally requires
+
+```text
+natDegree(quot.F) + C.D = natDegree(B.F).
+```
+
+Every `BlockData` has mass at least one and therefore polynomial degree at least `C.D`.
+Consequently a mass-one input of degree `D=16` is impossible: its quotient would have degree
+at least 16, while `hmass` would say `16+16=16`.  The `leaf·h` idea therefore works only when
+`h` also has degree 16 and the parent still has mass two.
+
+Use the literal second factor
+
+```text
+k := keyAt 4
+Λ := chainNormBelow 4 171
+leaf := k - Λ
+h := k + 1
+F0 := leaf * h
+B'.Φ := leaf
+B'.F := h
+quot.Φ := leaf
+quot.F := h.
+```
+
+This is a two-distinct-factor input, not a second normalized-existence key.  At the intended
+two-element terminal residue field, `FGMNSourceLaws.normalized_exists` requires a monic
+irreducible degree-one residual with nonzero constant coefficient, so its only admissible
+residual is `X+1`; it cannot manufacture a second degree-16 leaf with residual coprime to
+`X+1`.  The carried-key perturbation avoids that dead end.
+
+The proof obligations for `h` are concrete:
+
+1. `h` is monic of degree 16 by lower-term addition to monic `k`.
+2. `k` and `h=k+1` are coprime by the explicit Bézout difference `h-k=1`.
+3. `k` and `leaf` are distinct monic irreducibles of the same degree (`Λ≠0`), hence coprime
+   after fraction-field mapping.
+4. `leaf` and `h` are coprime: `leaf` is irreducible and cannot divide the same-degree monic
+   `h` unless they are equal; equality would give `Λ=-1`, impossible because `deg Λ=15`.
+5. Therefore `F0` is key-free against parent key `k`, and the quotient block `h` is key-free
+   against peeled key `leaf`.
+6. In the formal residual control, assigning the cofactor a nonzero scalar residual gives
+   `R(F0)=(X+1)c`, hence order exactly one.  This repairs DWV's multiplicity defect but does
+   not identify `leaf` with GN's finite-slope selected factor.
+
+The certificate's sparse model uses `c=1` as the residual-unit control.  It proves only the
+formal algebra; G8/G9/C4r own the analytic identification.  Its fresh output is:
+
+```text
+counts: proper_stages=4, live_deep_levels=1, full_input_mass=2,
+        input_degree=32, leaf_degree=16, cofactor_degree=16, quotient_mass=1
+accepted input: F0=leaf*(keyAt4+1), Lambda != 0, deg Lambda=15<16
+  exact_quotient=keyAt4+1, parent_keyfree=True, quotient_keyfree=True
+  hmass=16+16=32, ord_psi(residual)=1
+rejected controls: leaf^2 parent_keyfree=True but quotient_keyfree=False
+  exact_quotient=leaf, ord_psi(residual)=2
+  mass-one leaf input hmass=False
+```
+
+Thus a key-free, multiplicity-one *formal candidate* exists numerically.  It is not an honest
+GN occurrence under the current statement.  `GNCitePayload` is instantiated with
+`phi=B'.Φ`; `exactLeaf` identifies the theorem-selected factor with that same `phi`; and
+`leaf_dvd_input`/`RecenterStep` require `phi∣g`.  In GN's factor indexing a literal `phi`
+factor is the separate key-power term.  It has no finite principal side and is not one of the
+`g_{λ,ψ}` selected by a slope residual.  Replacing `leaf²` by `leaf*h` changes the power from
+two to one but does not move that copy into a finite-slope selected factor.
+
+Therefore **no source-faithful occurrence exists in this tower under the current payload
+shape** (indeed, the obstruction is shape-level, not numeric).  This is the required
+stop-the-line finding about the intended inhabitability of `MP1CarrierLive`: re-examine the
+payload's identification of the GN test key with the emitted factor, or use the already
+identified direct key-irreducibility route, only under A-I.8 authority.  This revision flags
+that question and does not enact either change.
+
+### 11.2 The three missing DWV gates and the input control gate
+
+The four `[DWR]` rows G7–G10 inserted in §6.1 are part of the DAG.  For clarity, the three
+mathematical gates DWV found missing are:
+
+| gate | exact acceptance condition | falsifier |
+|---|---|---|
+| **G7 quotient `BlockData` key-free** | Construct the literal quotient block with `quot.F=h`, `quot.Φ=leaf`, and prove its fraction-field `IsCoprime`; construct `B'` with the same `F/Φ` pair. | Replacing `h` by `leaf` must fail. |
+| **G8 residual multiplicity one** | Formal candidate target: for a genuine selected slope, prove `R_λ(F0)=ψ*c`, `c≠0`, and `¬ψ∣C c`; equivalently `ord_ψ=1`. | `leaf²` computes `ψ²` and order two.  Passing this alone does not pass G9. |
+| **G9 GN valuation/key-index alignment — RED** | The current surface requires `selected g_{λ,ψ}=leaf=φ` and `φ∣F0`.  GN indexes literal `φ` divisors in the separate key-power term, so no finite principal slope/residual can select that same factor. | The distinct-factor candidate still contains one literal `φ`; changing its cofactor cannot repair the index mismatch. |
+
+Parent input key-freeness remains an independent R8r acceptance condition.  Passing it does
+not imply G7: parent key `k` and peeled key `leaf` are different polynomials.
+
+### 11.3 Provenance-bound `RecenterStep`
+
+G2 must be re-signed only after review.  Besides SRX's slope/residual/selected-factor fields,
+the producer must bind the successor block's otherwise free data.  The minimum honest
+transition payload is:
+
+```text
+step.quot.Φ = B'.Φ
+step.quot.F = B'.F
+B'.T = B.T
+step.quot.T = B.T
+B.F = B'.Φ * B'.F
+natDegree(B'.F) + C.D = natDegree(B.F),
+```
+
+with the quotient `RungInterface` attached to this same `step.quot`.  At the chosen
+occurrence these specialize to `B'.F=keyAt4+1` and `B'.T=B.T`.  An equality merely fixing
+`B'.Φ` is insufficient.  Conversely, `B'.F=B.F` is impossible and must not be proposed:
+`B'.Φ∣B.F` would contradict `B'.hkeyfree`.  The peeled block is the quotient block.
+
+The analytic fields must remain under the same `core/A/X` owner and add all of:
+
+```text
+slope_mem_principal
+residual_eq_slopeResidual
+selectedFactor_spec
+selectedFactor_baseChange_eq
+leaf_eq_recentered_key.
+```
+
+The exact base-change relation, rather than a free equality between two `O[x]` names, is the
+provenance link to GN's completed factor.
+
+### 11.4 Occurrence is not universal supply
+
+The honest result of C0–C5r is two nonvacuity theorems for one explicit witness `X`:
+
+```text
+Nonempty (DeepLevelExport X 3 deepLive_four_three)
+∃ Λ B', RecenterStepFor X B B' Λ.
+```
+
+Neither theorem inhabits `LadderSupplyLive₂`.  Its `package` and `lb1` are separate HE7A/LB1
+campaigns; `mp1` quantifies over every legal `Λ`, `B'`, and same-realization step; `vartheta`
+quantifies over every `i≥3` at which `CanonicalLadderLiveAt` holds.
+
+G10 therefore lands a per-witness exporter, in the same quantifier discipline as WLE:
+
+```text
+DeepLevelPerWitnessExporter X :=
+  ∀ j, (hj : DeepLive core.r j) → Nonempty (DeepLevelExport X j hj)
+
+MP1EmissionPerWitnessExporter X :=
+  ∀ Λ B', RecenterStepFor X B B' Λ →
+    Nonempty (MidPeelEmission B B').
+```
+
+`RecenterStepFor X` is the owner-exposed form of the revised existential producer.  The
+generic compiler `midPeelEmission_of_recenterStepFor` may prove the second statement by
+unpacking the source-bound GN conclusion plus the provenance-bound `MP1StepCore`; that is
+still a universally quantified theorem, not evidence from one chosen `Λ`.  At `r=4`, the
+first exporter reduces to the constructed `j=3` case only after proving
+`DeepLive 4 j → j=3`.  A later supply assembly may project `mp1` and `vartheta` from these
+exporters, but only after separately supplying `package` and `lb1`.
+
+### 11.5 Honest re-grading and campaign count
+
+All untouched arithmetic and record-packaging rows retain their 30–60 minute transcription
+grade.  The following rows do not:
+
+| node/group | [DWR] honest grade | reason / exit |
+|---|---:|---|
+| G0 principal polygon/slope residual | **research, 5–15 working days** | No landed analytic principal-polygon operator or slope-membership predicate. |
+| G1 selected completed factor/descent | **research, 5–15 working days** | Completion factor carrier, prime-factor characterization, and descent dictionary are absent. |
+| G2 statement amendment/provenance | **design + review, 2–5 days after G0/G1 shapes** | Trust-boundary re-signing; must compile anti-cook falsifiers. |
+| D3-03 + D3-10 | **replaced by L2E, 8–15 working days** | They are consumers of one new generic coefficientwise multiplicative core, not local ports. |
+| C3 canonical tau/vartheta | **research, 5–12 working days** | General-depth triangular spanning remains open; one generator-word identity is insufficient. |
+| R3 valuation realization | **research, 3–8 working days** | Two new live stages and evaluation/value laws. |
+| R4 thresholds/windows | **research, 3–7 working days** | Source-backed faithfulness thresholds, not numeral selection. |
+| R5 letters/canonical dictionary | **research, 5–12 working days** | OPEN-LETTERS and same-receiver descent. |
+| C4r GN occurrence | **REFUTED / A-I.8 review** | The current payload equates the finite-slope selected factor with the literal GN test-key divisor. |
+| G10 universal exporters | **theorem family, 2–4 working days after occurrence producers** | Universal quantifiers and owner identity must be explicit. |
+
+The conditional post-A-I.8 redesign has **83 planned nodes**: the original 69-node
+accounting, with D3-03/D3-10
+replaced by the twelve-node L2E program (net `+10`) and G7–G10 added (`+4`).  R8r, C4r,
+C5r, and C6r replace their refuted/overstated predecessors and do not add to the count.
+This is an accounting device, not a promise of 83 equal-sized units.  The MP1 branch is
+currently stopped at G9; the independent tower and L2E work may proceed only if separately
+authorized and useful without claiming the blocked occurrence.
+
+### 11.6 Revised dependency spine
+
+```text
+MP1 analytic: G0 → G1 → G2 → G9 = RED ─╳→ C4r → C5r
+formal control:             R8r → G7 + G8
+shared algebra: T0 → T1 → T2 → L2E → D3 stack → D3-19 → D4
+deep consumers: G3 → G4 → G6 → C0 → {C1 → C2, C3}
+realization: R0..R7 + R8r → R9
+universal supply (post-repair only): occurrence teeth → G10
+  G10 + separately landed HE7A/LB1 → LadderSupplyLive₂
+```
+
+Fleet order changes accordingly: do not start the old D3-03/D3-10 ports independently;
+start L2E after its statement shapes are reviewed.  **Do not construct C4r/C5r under the
+current payload: G9 is already red.**  Do not advertise C6r as a ladder record before a
+future authorized repair, G10, and HE7A/LB1.
+
+### 11.7 Shared level-2 multiplicative engine (D3 + F1.4–F1.6)
+
+This is one engine rooted at `LevelDatum`, not a D3-special theorem followed by a second F1
+lift.  Its template is `C133mh1`/`C133mh3` Part 10's full-read, key-root vanishing,
+coefficientwise convolution, then Theorem M clauses 2/3.  `C134dv2g` supplies the landed
+level-2 support/no-interaction shell; it does not supply residue multiplication or the reverse
+minimizer inequality.
+
+| node | landed-vocabulary statement / exit | direct consumers |
+|---|---|---|
+| **L2E-00 shape lock** | Define reviewed `Dv2SlotCarryLawStatement` and `Dv2TwistProductLawStatement` over `L : LevelDatum`, level-2 key `Ψ`, outer `(u₂,ℓ₂)`, `IsMuKey L Ψ`, key-grade pin and outer floor.  Conclusions use `dv2Res L`, `dev Ψ`, `AdjoinRoot.root L.r`, and `L.cocycle`; no S2 numerals. | all |
+| **L2E-01 full level-2 read** | Define the full coefficient read underlying `dv2Res` before the side-window truncation; prove additivity and vanishing below the inner pin from landed `dvResPoly`/`AdjoinRoot.mk`. | root |
+| **L2E-02 level-2 key-root law** | Prove the residual symbol of `Ψ` dies at `AdjoinRoot.root L.r`, the one-level-up twin of `C133mh3.fullRead_key`; pin the exact key height used in the carry exponent. | root |
+| **L2E-03 digit survival + nonzero read** | Strengthen `Dv2ResSurv`'s height-only slots 0/1 to residue nonvanishing for reduced products of `Ψ`-digits. | D3-03, min/max |
+| **L2E-04 slot carry/twist root** | Prove `dv2Res L ((a*b)%ₘΨ)` equals the product of the two digit reads times the exact `AdjoinRoot.root L.r ^ L.cocycle ...` factor.  State all height and degree fences explicitly. | F1.4, convolution |
+| **L2E-05 pair convolution pricing** | Port `pair_line_le/lt` and endpoint uniqueness to `dv2Pin` using `C134dv2g.dvSupp_le_dev_add` and L2E-03/04. | clauses 1/2 |
+| **L2E-06 level-2 support product** | Prove generic `dv2Supp_mul` equality for nonzero factors, subsuming the conditional endpoint equality path in `C132nv2`. | D3 value product, F1 |
+| **L2E-07 level-2 min/max equality** | Prove `dv2SideMin_mul` and `dv2SideMax_mul` equalities by the C133mh3 strict no-pair contradiction route; derive `dv2SideDeg_mul`.  This includes the reverse inequality F13A identifies as missing. | F1.6, D3 side laws |
+| **L2E-08 pin-height addition** | At product side minima, prove finite `dv2Pin` heights add with the exact carry accounting needed by `dv2Res`. | residual law |
+| **L2E-09 coefficientwise residual product** | Expand `dv2ResPoly` coefficientwise, use the `dev Ψ` convolution split and L2E-04, and prove the generic level-2 product law in `Polynomial (AdjoinRoot L.r)` with its landed cocycle/scalar normalization. | F1.4, D3-10 |
+| **L2E-10 complement specialization** | Combine `C134dv2g.dv2Pin_mul_complement`, singleton side `{0}` for the complement, and L2E-07/09 to derive the exact `γg * root^cocycle` scalar translation. | F1.4/F1.6 |
+| **L2E-11 adapters + acceptance** | Instantiate at the `(g8,85,2)` D3 datum to close D3-03/D3-10, then discharge the three signed acceptance tests below without restating them. | D3, F1 |
+
+Acceptance tests are the exact signed conclusions, not nearby helper lemmas:
+
+1. **F1.4 / C.39** `dv2ResPoly_scalar`: byte-for-byte scalar identity with
+   `γg L f * root ^ L.cocycle (pinHeight ...) (complementConst ...)`.
+2. **F1.6 / C.64** `mult₂_readable`: equality of both `dv2SideMin` and `dv2SideDeg` between
+   `f` and `blockFactor L f` under the signed test-key/context/floor hypotheses.
+3. **F1.5 / C.38** `dv2ResPoly_radical_eq`: equal degree and the iff of divisibility by every
+   monic irreducible `q`, derived from F1.4's nonzero scalar plus F1.6's degree equality.
+4. **D3-03** reduced coefficient products modulo `g8` preserve the μ3 endpoint read, not
+   merely its height.
+5. **D3-10** the μ4 coefficient convolution at `(u₂,ℓ₂)=(85,2)` is an instance of L2E-09,
+   with parity/carry supplied by D3-09.
+
+No F1 row may consume a D3-special axiom, and no D3 row may clone the L2E coefficientwise
+proof.  The shared engine is complete only when all five acceptance tests elaborate.
+
+### 11.8 Revised highest risk and exit rule
+
+The single highest-risk node is now **G9, GN valuation/key-index alignment**, and it is
+already **RED**: the current payload asks a finite-slope selected factor to be the literal
+test-key divisor that GN places in the separate key-power term.  G0 remains a major absent
+analytic engine, but building it cannot repair this identification.  C4's `leaf²` form is
+refuted by order two; C4r is refuted by G9.  L2E is the largest independent algebraic
+program, but it has the landed coefficientwise C133mh3 route as a template.
+
+There is no MP1 campaign exit under the present statement.  The certificate, G7, and G8's
+formal control are useful falsifiers, not an occurrence proof.  Resume C4r/C5r only after an
+A-I.8-authorized surface decision separates the GN test key from the selected emitted factor
+or replaces the GN leg by the direct key-irreducibility route.  After such a repair, the
+remaining exits are provenance binding, all five L2E acceptance tests, and G10's universal
+theorem families.  One occurrence without G10 would still not be a `LadderSupplyLive₂` result.

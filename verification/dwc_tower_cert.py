@@ -1,12 +1,15 @@
 #!/usr/bin/env python3
-"""Arithmetic certificate for the Deep Witness Campaign candidate.
+"""Arithmetic certificate for the revised Deep Witness Campaign candidate.
 
-This checks only the integer tower bookkeeping and the formal polynomial shape of the
-planned recentering.  It does not assert existence of the future Lean operators or the
-Guàrdia--Nart slope/residual dictionary; those remain named proof nodes in the campaign.
+This checks the integer tower bookkeeping, the formal polynomial shape of the planned
+recentering, parent/quotient key-freeness in the sparse control model, and multiplicity of
+the selected residual factor.  It does not assert existence of the future Lean operators
+or the Guàrdia--Nart slope/residual dictionary; those remain named proof nodes in the
+campaign.
 """
 
 from dataclasses import dataclass
+from fractions import Fraction
 from math import gcd
 
 
@@ -59,6 +62,70 @@ def mul(left: dict[int, int], right: dict[int, int]) -> dict[int, int]:
         for j, b in right.items():
             result[i + j] = result.get(i + j, 0) + a * b
     return {exponent: coefficient for exponent, coefficient in result.items() if coefficient}
+
+
+def scale(poly: dict[int, Fraction], scalar: Fraction) -> dict[int, Fraction]:
+    return {exponent: scalar * coefficient for exponent, coefficient in poly.items()
+            if scalar * coefficient}
+
+
+def to_fraction_poly(poly: dict[int, int]) -> dict[int, Fraction]:
+    return {exponent: Fraction(coefficient) for exponent, coefficient in poly.items()
+            if coefficient}
+
+
+def divmod_poly(
+    dividend: dict[int, Fraction], divisor: dict[int, Fraction]
+) -> tuple[dict[int, Fraction], dict[int, Fraction]]:
+    """Exact Euclidean division over Q for sparse coefficient dictionaries."""
+    assert divisor
+    quotient: dict[int, Fraction] = {}
+    remainder = dict(dividend)
+    divisor_degree = degree(divisor)
+    divisor_lead = divisor[divisor_degree]
+    while remainder and degree(remainder) >= divisor_degree:
+        exponent = degree(remainder) - divisor_degree
+        coefficient = remainder[degree(remainder)] / divisor_lead
+        quotient[exponent] = quotient.get(exponent, Fraction(0)) + coefficient
+        for i, value in divisor.items():
+            target = i + exponent
+            remainder[target] = remainder.get(target, Fraction(0)) - coefficient * value
+            if remainder[target] == 0:
+                del remainder[target]
+    return quotient, remainder
+
+
+def monic_normalize(poly: dict[int, Fraction]) -> dict[int, Fraction]:
+    if not poly:
+        return {}
+    return scale(poly, Fraction(1, 1) / poly[degree(poly)])
+
+
+def gcd_poly(left: dict[int, int], right: dict[int, int]) -> dict[int, Fraction]:
+    a = to_fraction_poly(left)
+    b = to_fraction_poly(right)
+    while b:
+        _, remainder = divmod_poly(a, b)
+        a, b = b, remainder
+    return monic_normalize(a)
+
+
+def is_coprime(left: dict[int, int], right: dict[int, int]) -> bool:
+    return gcd_poly(left, right) == {0: Fraction(1)}
+
+
+def factor_order(poly: dict[int, int], factor: dict[int, int]) -> int:
+    """ord_factor(poly), for the monic sparse residual controls used below."""
+    order = 0
+    remainder = to_fraction_poly(poly)
+    divisor = to_fraction_poly(factor)
+    while remainder:
+        quotient, rem = divmod_poly(remainder, divisor)
+        if rem:
+            break
+        order += 1
+        remainder = quotient
+    return order
 
 
 # Landed S2 stages followed by the proper depth-four extension recorded by the
@@ -132,24 +199,59 @@ assert depth4_refinement.u % depth4_refinement.e == 0
 leaf_degree = depth4_refinement.e * depth4_refinement.f * dcum[4]
 assert leaf_degree == dcum[4] == 16
 
-# Formal recentering shape.  The future Lean key is not x^16; this sparse model checks
-# only the degree cancellation, nonzero Λ, exact subtraction, divisibility, and mass count.
-key_model = {16: 1}
+# Formal recentering shape.  The future Lean polynomials are not these sparse polynomials;
+# the model checks degree cancellation, nonzero Lambda, exact subtraction, divisibility,
+# mass, and the two key-freeness obligations.  The constant term on key_model makes the
+# coprimality controls non-degenerate (unlike the old x^16 placeholder).
+key_model = {16: 1, 0: 1}
 lambda_model = {15: 1}
 leaf_model = add(key_model, neg(lambda_model))
-input_model = mul(leaf_model, leaf_model)
+cofactor_model = add(key_model, {0: 1})
+input_model = mul(leaf_model, cofactor_model)
+rejected_square_input = mul(leaf_model, leaf_model)
 assert lambda_model
 assert degree(lambda_model) < dcum[4]
 assert add(key_model, neg(lambda_model)) == leaf_model
-assert mul(leaf_model, leaf_model) == input_model
+assert mul(leaf_model, cofactor_model) == input_model
 assert degree(leaf_model) == 16
+assert degree(cofactor_model) == 16
 assert degree(input_model) == 32
+accepted_quotient, accepted_remainder = divmod_poly(
+    to_fraction_poly(input_model), to_fraction_poly(leaf_model)
+)
+square_quotient, square_remainder = divmod_poly(
+    to_fraction_poly(rejected_square_input), to_fraction_poly(leaf_model)
+)
+assert not accepted_remainder
+assert accepted_quotient == to_fraction_poly(cofactor_model)
+assert not square_remainder
+assert square_quotient == to_fraction_poly(leaf_model)
+assert is_coprime(input_model, key_model)              # parent BlockData.hkeyfree
+assert is_coprime(cofactor_model, leaf_model)           # quotient BlockData.hkeyfree
+assert is_coprime(rejected_square_input, key_model)      # old parent gate passed
+assert not is_coprime(leaf_model, leaf_model)           # DWV C1 control
 
 input_mass = 2
 quotient_mass = 1
 assert degree(input_model) == input_mass * dcum[4]
-assert degree(leaf_model) + dcum[4] == degree(input_model)
+assert degree(cofactor_model) + dcum[4] == degree(input_model)  # MP1StepCore.hmass
 assert quotient_mass + 1 == input_mass
+
+# A mass-one input cannot satisfy hmass: every quotient BlockData has degree at least D,
+# while hmass would demand deg(quot.F) + D = D.
+mass_one_input_degree = dcum[4]
+minimum_quotient_degree = dcum[4]
+assert minimum_quotient_degree + dcum[4] != mass_one_input_degree
+
+# Residual-ring controls.  Assigning R(leaf)=psi=X+1 and the distinct cofactor a unit
+# residual makes the revised input have ord_psi 1.  This tests multiplicity algebra only;
+# it does not certify GN slope/key indexing.  The rejected square has order 2.
+psi_model = {1: 1, 0: 1}
+unit_residual = {0: 1}
+input_residual = mul(psi_model, unit_residual)
+rejected_square_residual = mul(psi_model, psi_model)
+assert factor_order(input_residual, psi_model) == 1
+assert factor_order(rejected_square_residual, psi_model) == 2
 
 deep_live = [j for j in range(5) if 3 <= j < 4]
 assert deep_live == [3]
@@ -169,7 +271,13 @@ print("chosen depth-4 refinement: (e',f',u')=(1,1,171), leaf degree=16")
 print("  towerNorm 3 171=(1,1,[1,1,1]), correction degree=15<16")
 print(
     "counts: proper_stages=4, live_deep_levels=1, full_input_mass=2, "
-    "input_degree=32, leaf_degree=16, quotient_mass=1"
+    "input_degree=32, leaf_degree=16, cofactor_degree=16, quotient_mass=1"
 )
-print("recenter model: Lambda != 0, deg Lambda=15<16, leaf | leaf^2, 16+16=32")
-print("PASS: S2 reaches r=4 through g8 and a degree-16 successor; the μ5 refinement is mass-two ready")
+print("accepted input: F0=leaf*(keyAt4+1), Lambda != 0, deg Lambda=15<16")
+print("  exact_quotient=keyAt4+1, parent_keyfree=True, quotient_keyfree=True")
+print("  hmass=16+16=32, ord_psi(residual)=1")
+print("rejected controls: leaf^2 parent_keyfree=True but quotient_keyfree=False")
+print("  exact_quotient=leaf, ord_psi(residual)=2")
+print("  mass-one leaf input hmass=False (minimum quotient degree 16 gives 16+16 != 16)")
+print("FORMAL PASS: the distinct-factor input clears arithmetic/key-free/multiplicity controls")
+print("  NOT CERTIFIED: GN principal-slope membership, key indexing, or selected-factor identity")
