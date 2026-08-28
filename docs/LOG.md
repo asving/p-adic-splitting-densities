@@ -520,3 +520,18 @@ P1D killed the planned GN cite outright (isMuKey_of_isTestKey proved); F13A land
 signed F1.3; A-C.22 enacted; C93T landed 4/7 census items catching a stale-name trap.
 The F1.4–F1.6 tail and the deep campaign share ONE root — the level-2 Theorem-M twin —
 now in DWR's charge (armed for the 13:35 codex reset).
+
+## 2026-08-28 ~14:50 — three amendments in one day; two more would-be cites die; mp1 becomes a theorem
+
+The compile-is-the-validator loop's biggest day: A-C.22 (the engine-honest floors),
+A-C.23 (refine_invariants' overclaim repaired to the source-faithful M4 package — then
+PROVED OUTRIGHT, Lean-core, via MH.6 + one new grade-floor lemma; the census hits 5/7),
+and A-I.8 (DWR's stop-line showed GNCitePayload structurally defective — the GN-selected
+factor can never equal the recentered key — so the payload was retired for A8D's direct
+key route: the mp1 leg is now DISCHARGED BY A THEOREM, its remaining work being
+RecenterStepDirect occurrences on the deep tower). Also: P1D killed the GN Lemma 3.1(3)
+cite outright; A0C closed the cubic slice (DecidedSliceAt 3, Lean-core, five exact
+densities); F1.3 landed; the blueprint was revised (leaf² a rejected control; the
+distinct-factor F0 passes all formal controls). The capstone ladder field's open content:
+package (XL), lb1 (advisory), vartheta (the tau export at deep witnesses). The deep
+tower fleet is next.
