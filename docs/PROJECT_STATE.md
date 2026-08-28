@@ -148,6 +148,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | MH11 | Theorem B `dv_oneSlope_split_unique` | DONE (f061b65c) — F1.H2 CLOSED unconditionally, zero carried hypotheses; ∃/∀-pin resolutions recorded |
 | MH12 | §6.1 defect-vanishing + Gauss descent | DONE (3647cc6e) — the three primitives feeding MH.13; defect-vanishing proved symmetric/stronger |
 | MH13 | Theorem C placement | DONE — theoremC_placement §2-verbatim (A-C.20 competitor shape byte-matched) + the reusable per-prime core, UNCONDITIONAL; proof strengthens §6.2 (Squarefree carried-unconsumed, statement unchanged); survived FOUR 529 deaths via increment-resume cycling |
+| MH14T | §8 BlockFrontier-from-BlockContext modulo Theorem A (transport + assembly) → C133mh14 | IN FLIGHT (Fable, ~02:35) |
+| MH5S | the §4.1 side lift Λ + clause lemmas; Lemma S stretch → C133mh5 | IN FLIGHT (Fable, ~02:35) |
 | H0LEG | the h=0 degenerate leg + the actual cite retirement pass (axiom → theorem, allowlist −1) | QUEUED — after the assembly wave |
 | LVT | enact VAUD's vartheta owner amendment | DONE (a38c26af) — IFC5.lean supersession (six live-range decls + OLD⟹NEW pins); IFC0 byte-frozen tension record; leanspec comment record; `LadderFieldLive` is the ladder target; A-I.6 (CapstoneHypotheses.ladder rebinding) adjudication QUEUED for the codex wave |
 | MH10 | Theorem H0 `dvResidualBezout` (mathlib-only UFD arithmetic) → C133mh10 | IN FLIGHT (Sonnet) |
