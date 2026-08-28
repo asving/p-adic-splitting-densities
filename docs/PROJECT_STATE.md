@@ -43,24 +43,39 @@ never pipe an output you need through head/tail; never trust a bare name-grep
   Chapters: B and H required-work done; F complete; G complete; D one gate open;
   E one hard node (E.57); **C carries ~145 of the unlanded names**; I is the capstone
   conditionality chapter (placeholders + owner-era gates now unblocked by the protocol).
-* **The capstone chain (chapter I) — ASSEMBLY LANDED (A-I.3 + RSGN, 2026-08-26).**
-  All four assembly theorems (I.15–I.18: `drainage/decided/uniformity/totalMassOne
-  _of_capstoneHypotheses`) are PROVED Lean-core in `leanfinal/Uniformity/ChapI/
-  I10_I15_I18.lean`, with the I.10a/b sockets typed at C130s18's enacted carriers
-  (ambient universe pinned to 0, disclosed; I-D13 lifted; non-swallowing fence
-  machine-re-checked). Honest status: `CapstoneHypotheses n` is OPEN — no longer
-  provably empty, NOT claimed inhabited. The full theorem = inhabiting it:
-  `a0`/`a1` at n ≥ 3, the arising-configuration socket supply (S2 teeth landed
-  conditional on `w : S2LevelOneThreshold` + `IsAdicComplete`), the `jd0`/`genhnBox2`
-  placeholders + `w1` debt (A-I.1), and the five I-D12 `True` bodies (NS7Termination —
-  the ready-to-declare C.94 cite — WindowPinningAt, GenhnHEAt, GenhnTow1At, TypeOfFaithful).
+* **The capstone chain (chapter I) — ASSEMBLY LANDED (A-I.3 + RSGN, 2026-08-26);
+  ladder field REBOUND (A-I.6, 2026-08-28).** All four assembly theorems (I.15–I.18)
+  are PROVED Lean-core in `I10_I15_I18.lean` and stayed BYTE-UNCHANGED through A-I.6
+  (the `ladder` field now demands `IFC5.LadderSupplyLive` — live-range vartheta — after
+  AI6 machine-refuted the old unbounded field at n = 4; `AI6_probe.lean`, records in
+  leanspec + REVIEW_QUEUE Tier 1). Honest status: `CapstoneHypotheses n` is OPEN — not
+  provably empty (the n = 4 refuter targets only the RETIRED shape), NOT claimed
+  inhabited. Remaining supply: the ladder live legs (LVS/REX in flight; mp1 may need
+  A-I.7 — REX adjudicating), deepTwist deep (r ≥ 4) witnesses + the WLE exporter,
+  `a0`/`a1` at n ≥ 3, `jd0`/`genhnBox2` + `w1` (A-I.1), and four I-D12 bodies
+  (WindowPinningAt, GenhnHEAt, GenhnTow1At, TypeOfFaithful; NS7Termination CLOSED via
+  A-I.4 + the declared `agnprw_termination` cite).
+* **THE HENSEL ENGINE (F1.H0–H3) — COMPLETE (2026-08-28, ~48h wall-clock).** Theorem M
+  (mixed residual law, all clauses, the root `m1TwistProductLaw` unconditional), the
+  side lift Λ (R(Λ(P)) = P exact), Lemma S, Theorem A (`C133mh9.theoremA`, Lean-core,
+  no cite), Theorems H0/B/C, and ★ `C133mh15.blockFrontier_of_context : BlockContext →
+  BlockFrontier` (Lean core + the one allowlisted dissection cite). First payoff row
+  landed (`C134cfs.blockFactor_spec` + 5 reads); F1.2–F1.8 await the CSX context-split
+  exporter (in flight). The engine files: C133mh0–mh15, C133h0leg, C134cfs.
+* **The μ₃/deepTwist S2 chain — CLOSED UNCONDITIONAL (2026-08-27/28).** The depth-2
+  calculus `s2Mu3_calculus_nonempty` at (2,1,21); the signed GENTOW consumer
+  `s2Mu3_gentow5w_two`; the GCW wired witness + the first `GentowWWindow` at own
+  exports (IFC4); A-I.5 signed (GC13Wiring + WiredGentowDemand).
 
 ## 3. Trusted base (cites)
 
-Declared-and-landed allowlist (SEVEN): `exists_slope_factorization`, `fgmn_residual_mul`,
-`agnprw_termination`, `bBox1_cite`, `exists_dvDissection`, `fgmn_dvDissection_factor_eq`,
-and NEW (2026-08-24) `fgmn_dv_exact_mul` (C66b — the engine's exact half; FGMN Thm 2.8 +
-Cor 4.12(3), print-read verbatim, dictionary on the review list).
+Declared-and-landed allowlist (SEVEN declared, SIX effective): `exists_slope_factorization`,
+`fgmn_residual_mul`, `agnprw_termination`, `bBox1_cite`, `exists_dvDissection`,
+`fgmn_dvDissection_factor_eq`, and `fgmn_dv_exact_mul` (C66b) — the last **PROVED
+REDUNDANT 2026-08-28** (`C133h0leg.fgmn_dv_exact_mul_full`, byte-identical, Lean-core;
+retirement records in C66b + AXIOM_FAITHFULNESS; physical removal queued behind the
+textual C130nv→C131ae import untangle — no logical circularity, all engine footprints
+Lean-core).
 Pending authoring under the new protocol (each gets a faithfulness entry +
 CITE_REVIEW_LIST row): **C.94** (AGNPRW Thm 5.6 termination — the A-C.6 redraft
 `NS7TerminationStatementR` exists, machine-safe, ready to declare), **C.92**:
@@ -73,41 +88,30 @@ bridge (OPEN-DICT-1..4, U7 §8). U9 (codex HIGH) is adjudicating U7 §9 Q1–Q7 
 the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
 `lean/notes/SEMANTIC_AUDIT_LOG.md`.
 
-## 4. The live frontier (what blocks what) — rewritten 2026-08-26
+## 4. The live frontier (what blocks what) — rewritten 2026-08-28 post-engine
 
-1. **The CapstoneHypotheses INHABITATION campaign (the new top item — RSGN closed the
-   assembly gate 2026-08-26).** With I.15–I.18 landed, `UniformityStatement` reduces to
-   inhabiting `CapstoneHypotheses n`. The named debts, in likely order of attack:
-   (a) the five I-D12 `True` bodies — NS7Termination first (= the C.94 AGNPRW Thm 5.6
-   cite, redraft `NS7TerminationStatementR` machine-safe and READY TO DECLARE per §3);
-   (b) the arising-configuration socket supply beyond the landed S2 teeth (feeds from
-   the μ₃ campaign, item 2); (c) `a0`/`a1` at n ≥ 3; (d) `jd0`/`genhnBox2` + the `w1`
-   debt (A-I.1's ruling). NEXT CONCRETE STEP: a decomposer unit enumerating
-   `CapstoneHypotheses`' full field list against the landed corpus (what each field
-   needs, supplier chapter, sizing) — then fleet the suppliers.
-2. **The μ₃ campaign — blueprint DELIVERED** (`docs/in-progress/MU3_CAMPAIGN_2026-08-26.md`,
-   DEC3R): 29 nodes wired to `fgmn_model_calculus_nonempty`, zero new packaging.
-   OPEN-DICT-2 DECIDED: full-current clearing `e(μᵢ)α` (FGMN Def 3.12) — so `hprev` is
-   source-faithfully impossible at u′=21. GATE before the fleet: TWO signed consumer
-   amendments (unit AMND): the `2 ≤ f'` hprev fence, and the coordinated
-   `chainNormBelow`/`thetaRatio` re-index (the source's n̂₂ = `towerNorm 1`; `chainNorm 2 21
-   = keyAt 2` falsifies the strict degree premise as signed). In-construction open:
-   OPEN-RP1-TRANSPORT (the μ₂ read realizes the ε-normalized coefficient of Defs 3.10/3.12-13).
-3. **The dv-engine: FULLY CLOSED (2026-08-26).** C.72 (both halves), C.52
-   (`towerLocus_iff_budget` byte-identical), C.54(c)'s strict floor, af′/ag′, AND the
-   C.53 wiring: UFEED landed `towerLocus_fibration` UNCONDITIONAL at the leanspec signed
-   shape (axiom→theorem, `C131uf.lean`) plus the non-drain witness `s2Witness` disposing
-   verdict_C123R's named gap. E.57: CLOSED (`block_split` under its blueprint name).
-   Chapter D's gate: CLOSED (D68).
-4. **Remaining chapter-C blockers — plan DELIVERED** (`docs/in-progress/
-   BLOCKERS_PLAN_2026-08-26.md`, DEC4R; probes 246 lines green in `scratch/DEC4_check.lean`).
-   Ordering: (i) the probe-complete norm↔resultant bridge + shadow-linearity API —
-   FIREABLE NOW (unit BW1); (ii) RB3 examples-first certificates → RB3 closure (only
-   genuinely-new mechanism: the upward budget→dv2Hgt bridge); (iii) ramified level-1
-   exactness (priced 285–485 lines, new completion-free mechanism); (iv) the one-slope
-   dv-graded Hensel engine (the C.34/C.35 root) → `BlockFrontier` 8 rows unconditional;
-   (v) arbitrary-C C.27 last. Held fence unchanged: C.100 (OPEN-EVAL-ISO), C.102 +
-   one_shape's htie (OPEN-LETTERS), peel_row_law (undesigned PeelLeg), hprev/hcop → AMND.
+1. **The CapstoneHypotheses INHABITATION campaign (top item).** `UniformityStatement`
+   reduces to inhabiting `CapstoneHypotheses n` (post-A-I.6 shape). Named debts:
+   (a) **ladder** — the live legs: LVS (live vartheta supplier; r = 2 possibly vacuous)
+   and REX (recenter export + `MP1CarrierLive`; ★ may force A-I.7 since unrestricted
+   MP1Carrier is REFUTED) — both in flight; LB1G's RESTRICT-ANYWAY design awaits
+   enactment; the HE7APackage supplier stays XL-blocked;
+   (b) **deepTwist** — the deep (r ≥ 4) arising-witness campaign + the WLE per-level
+   exporter (design anchored; deep inhabitants open; WleCleared r=2 vacuity mapped);
+   (c) `a0`/`a1` at n ≥ 3; (d) `jd0`/`genhnBox2` + `w1` (A-I.1); (e) four I-D12 bodies
+   (WindowPinningAt, GenhnHEAt, GenhnTow1At, TypeOfFaithful). The CHFD supply map
+   (docs/in-progress/CAPSTONE_SUPPLY_MAP_2026-08-26.md) is the field-by-field ledger.
+2. **The Hensel engine: COMPLETE — payoff propagation is the open work.** F1.1 landed
+   (C134cfs); F1.2–F1.8 await CSX (in flight); signed C.34 stays blocked (Theorem A's
+   `D′ ∣ deg g` entry rider absent from its premises + no `hsep` supplier — needs its
+   own adjudication). After CSX: sweep the C.34/C.35 downstream consumers.
+3. **Maintenance/held**: the C130nv→C131ae import untangle (enables physical
+   `fgmn_dv_exact_mul` removal); the SIMP map enactment wave (unscheduled); held fence
+   unchanged: C.100 (OPEN-EVAL-ISO), C.102 + one_shape's htie (OPEN-LETTERS),
+   peel_row_law, OPEN-RP1-TRANSPORT faithfulness legs, gentow2_A_supply's 4 inputs.
+4. **Chapter-H research tails** (H.116b4, not capstone-blocking): Smith SMGR-I-COMB +
+   SMGR-RSE (GR-7b-0R PROVED); lift MSF-GENRE (MSF j ≥ 3 REFUTED by a depth-6 secant),
+   SR general, the GSP-n handle (GSP-n ⇒ U(n) proved; WASH-n at separated μ=2 families).
 5. **Chapter H's research step H.116b4 — map DELIVERED** (`docs/in-progress/
    H116B4_MAP_2026-08-26.md`, DEC5R; battery extended, ALL PASSED — mechanism found:
    children = 0 or #ker(Tₙ) by an affine obstruction class; aggregate pushforward uniform
