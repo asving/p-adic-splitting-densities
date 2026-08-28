@@ -14,8 +14,9 @@ claims are twist-invariant (weights, side sets, degrees) or normalization-robust
 doc's Sec 7.2 sense (identical slot-height patterns).
 
 Sections (doc Sec 10): 1 frame audit / 2 M support+side laws / 3 M residual law (raw)
-/ 4 Newton engine end-to-end + contraction + negative controls / 5 the defective-stratum
-refutation / 6 uniqueness brute search on a D'-divisible ambient.
+/ 3b MH9M above-line mixed reads (twist-normalized, both carry branches) / 4 Newton engine
+end-to-end + contraction + negative controls / 5 the defective-stratum refutation /
+6 uniqueness brute search on a D'-divisible ambient.
 """
 
 import random, sys
@@ -325,6 +326,169 @@ for trial in range(600):
     check(Rgz == z_mul(Rg, Rz), f"raw residual multiplicativity trial {trial}")
     n_eq += 1
 print(f"   {n_eq} random pairs checked (mixed strata incl. non-monic, far, defective)")
+
+# ================================================================ Section 3b (MH9M)
+# This is a second, parameterized mirror because the historical frame above has e1=1 and
+# therefore cannot exercise the nontrivial twist carry.  The two audited frames are the
+# document's Z_2/F_4 frame (e1=1) and the live-carry Z_2/F_4 frame
+#   key=x^4+2x^2+4, (e1,f1,h)=(2,2,1), (u,l)=(5,1).
+
+def mh9_slot_idx(e1, h, k):
+    for i in range(e1):
+        if (i * h) % e1 == k % e1:
+            return i
+    raise AssertionError("non-coprime slot parameters")
+
+def mh9_twist_exp(e1, h, k):
+    return (mh9_slot_idx(e1, h, 1) * k - mh9_slot_idx(e1, h, k)) // e1
+
+def mh9_stage_height(A, e1, h):
+    if not A:
+        return INF
+    return min(e1 * v2(c) + h * i for i, c in enumerate(A) if c != 0)
+
+def mh9_slot_res(A, k, e1, f1, h):
+    i = mh9_slot_idx(e1, h, k)
+    out = F4_ZERO
+    for t in range(f1):
+        n = i + e1 * t
+        if n * h > k:
+            continue
+        m = (k - n * h) // e1
+        bit = ((A[n] if n < len(A) else 0) // (1 << m)) & 1
+        if bit:
+            out = f4_add(out, F4_ONE if t == 0 else F4_TH)
+    return out
+
+def mh9_twist_read(A, k, e1, f1, h):
+    eta_inv = f4_inv(F4_TH)
+    q = mh9_twist_exp(e1, h, k)
+    eta_inv_q = F4_ONE
+    for _ in range(q):
+        eta_inv_q = f4_mul(eta_inv_q, eta_inv)
+    return f4_mul(eta_inv_q, mh9_slot_res(A, k, e1, f1, h))
+
+def mh9_digit_lift(val, k, e1, f1, h):
+    """Inverse-twisted digit lift: twistRead(k,A)=val, in the full slot window."""
+    q = mh9_twist_exp(e1, h, k)
+    raw = val
+    for _ in range(q):
+        raw = f4_mul(raw, F4_TH)
+    A = [0] * (e1 * f1)
+    i = mh9_slot_idx(e1, h, k)
+    for t, bit in enumerate(raw):
+        n = i + e1 * t
+        if bit:
+            assert n * h <= k
+            A[n] = 1 << ((k - n * h) // e1)
+    return trim(A)
+
+def mh9_dev_digits(f, key):
+    digs, q = [], list(f)
+    while q:
+        q, r = pdivmod_monic(q, key)
+        digs.append(r)
+    return digs
+
+def mh9_W(f, key, e1, h, u):
+    if not f:
+        return INF
+    return min(mh9_stage_height(A, e1, h) + u * j
+               for j, A in enumerate(mh9_dev_digits(f, key)) if A)
+
+def mh9_line_read(f, c, key, e1, f1, h, u, jcap):
+    digs = mh9_dev_digits(f, key)
+    out = []
+    for j in range(jcap):
+        k = c - u * j
+        A = digs[j] if j < len(digs) else []
+        out.append(F4_ZERO if k < 0 else mh9_twist_read(A, k, e1, f1, h))
+    return z_trim(out)
+
+def mh9_key_powers(key, n):
+    powers = [[1]]
+    for _ in range(n):
+        powers.append(pmul(powers[-1], key))
+    return powers
+
+def mh9_side_lift(P, key, e1, f1, h, u):
+    d = len(P) - 1
+    powers = mh9_key_powers(key, d)
+    out = list(powers[d])
+    for t in range(d):
+        out = padd(out, pmul(mh9_digit_lift(P[t], u * (d - t), e1, f1, h), powers[t]))
+    return out
+
+def mh9_window_lift(P, grade, key, e1, f1, h, u):
+    powers = mh9_key_powers(key, len(P))
+    out = []
+    for j, val in enumerate(P):
+        k = grade - u * j
+        assert k >= (e1 * f1) * h
+        out = padd(out, pmul(mh9_digit_lift(val, k, e1, f1, h), powers[j]))
+    return out
+
+print("== Sec 3b [MH9M]: above-line mixed reads, twist carry delta=0/1 ==")
+mh9_checks_start = TESTS[0]
+mh9_frames = [
+    ("doc-e1=1", [12, 2, 1], 1, 2, 1, 3),
+    ("live-e1=2", [4, 0, 2, 0, 1], 2, 2, 1, 5),
+]
+mh9_grades = 0
+mh9_zero_terms = 0
+mh9_one_terms = 0
+for fname, fkey, fe1, ff1, fh, fu in mh9_frames:
+    P = [F4_TH, F4_TH1, F4_ONE]
+    Q = [F4_TH1, F4_TH]
+    pure = mh9_side_lift(P, fkey, fe1, ff1, fh, fu)
+    wpure = mh9_W(pure, fkey, fe1, fh, fu)
+    check(wpure == fu * (len(P) - 1), f"MH9M {fname}: pure support weight")
+    check(mh9_line_read(pure, wpure, fkey, fe1, ff1, fh, fu, len(P)) == P,
+          f"MH9M {fname}: support-line residual")
+    for rise in range(1, 9):
+        d = fu * (len(Q) + 1) + rise
+        Uline = mh9_window_lift(Q, d, fkey, fe1, ff1, fh, fu)
+        check(mh9_W(Uline, fkey, fe1, fh, fu) == d,
+              f"MH9M {fname}: correction grade +{rise}")
+        c = wpure + d
+        lhs = mh9_line_read(pmul(pure, Uline), c, fkey, fe1, ff1, fh, fu,
+                             len(P) + len(Q) - 1)
+        rhs = z_mul(P, Q)
+        check(lhs == rhs, f"MH9M {fname}: above-line product read +{rise}")
+        # The same requested line is zero if the correction is moved one grade higher.
+        Uhigh = mh9_window_lift(Q, d + 1, fkey, fe1, ff1, fh, fu)
+        check(mh9_W(Uhigh, fkey, fe1, fh, fu) >= d,
+              f"MH9M {fname}: strict correction floor +{rise}")
+        check(mh9_line_read(pmul(pure, Uhigh), c, fkey, fe1, ff1, fh, fu,
+                             len(P) + len(Q) - 1) == [],
+              f"MH9M {fname}: strict-above product read vanishes +{rise}")
+        # Audit TW-delta termwise on the surviving convolution, including its raw carry.
+        for t, pv in enumerate(P):
+            for j, qv in enumerate(Q):
+                if pv == F4_ZERO or qv == F4_ZERO:
+                    continue
+                kp, kq = wpure - fu * t, d - fu * j
+                delta = (mh9_twist_exp(fe1, fh, kp + kq)
+                         - mh9_twist_exp(fe1, fh, kp) - mh9_twist_exp(fe1, fh, kq))
+                check(delta in (0, 1), f"MH9M {fname}: delta bit")
+                a = mh9_digit_lift(pv, kp, fe1, ff1, fh)
+                b = mh9_digit_lift(qv, kq, fe1, ff1, fh)
+                _, rem = pdivmod_monic(pmul(a, b), fkey)
+                eta_delta = F4_ONE if delta == 0 else F4_TH
+                check(mh9_slot_res(rem, kp + kq, fe1, ff1, fh)
+                      == f4_mul(eta_delta,
+                                f4_mul(mh9_slot_res(a, kp, fe1, ff1, fh),
+                                       mh9_slot_res(b, kq, fe1, ff1, fh))),
+                      f"MH9M {fname}: raw carry branch delta={delta}")
+                check(mh9_twist_read(rem, kp + kq, fe1, ff1, fh) == f4_mul(pv, qv),
+                      f"MH9M {fname}: tau=1 after twist delta={delta}")
+                if delta == 0:
+                    mh9_zero_terms += 1
+                else:
+                    mh9_one_terms += 1
+        mh9_grades += 1
+print(f"   {TESTS[0] - mh9_checks_start} checks on {mh9_grades} above-line grades; "
+      f"term branches delta=0: {mh9_zero_terms}, delta=1: {mh9_one_terms}")
 
 # ================================================================ Section 4
 print("== Sec 4: the Newton engine end-to-end (G=r, H=s), contraction audit ==")

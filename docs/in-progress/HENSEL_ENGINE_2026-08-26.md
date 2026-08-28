@@ -1314,3 +1314,386 @@ nodes remain.  **The full engine Lean fleet still may not fire** under the exist
 ruling until MH.1 lands and the probe theorems are promoted publicly; however MH.8 and X1
 themselves are now safe to promote, and neither is any longer a mathematical or elaboration
 blocker.
+
+## [MH9M 2026-08-28] Above-support mixed reads, Lemma S, and Theorem A
+
+This addendum is a mathematics-first discharge.  It uses the declarations as they actually
+landed in `C133mh0`, `C133mh3`, `C133mh4`, `C133mh5`, `C133mh8`, and `C133mh14`; it does
+not claim that the new assembly statements below have already been transcribed into Lean.
+
+### MH9M.1 The line-read object
+
+Put `D := F.e₁ * F.f₁`.  For `j₀ M A : ℕ`, define the bounded grade-line polynomial
+
+```text
+dvLinePoly(F,H₀,hpin,u,ℓ,j₀,M,A,f)
+  := ∑ t ∈ range A,
+       C (F.twistRead H₀ hpin (M - t*u)
+            (dev F.key f (j₀ + t*ℓ))) * X^t.
+```
+
+Its represented grade is `d = ℓ*M + u*j₀`.  All uses below have `j₀ < ℓ` and
+`M ≥ u*(A-1)`, so none of the displayed subtractions truncates on an in-window index.
+This is only packaging of the vocabulary already used verbatim by
+`C133mh5.twistRead_dvWindowLift` and
+`C133mh5.le_dvSupp_succ_of_lineReads_eq_zero`; no new residue map is being postulated.
+
+### MH9M.2 Above-support mixed read law
+
+**Law AMR (Lean-ready mathematical statement).**  Assume the standing `hπ`, `hh`, pin,
+`hℓ`, `hcop`, and strict floor.  Let `p : Polynomial O` be monic, positive-degree,
+`IsDvPure F p u ℓ`, and `D ∣ p.natDegree`.  Let `hnep`, `Mp`, `hpp` pin its left height,
+and put
+
+```text
+P := dvResPoly F H₀ hpin p u ℓ hnep Mp hpp,
+b := P.natDegree.
+```
+
+Let `0 < A`, `j₀ < ℓ`, `M ≥ u*(A-1)`, and let `z : Polynomial O` satisfy
+
+```text
+z.natDegree < ℓ * (A * D),
+((ℓ*M + u*j₀ : ℕ) : ℕ∞) ≤ dvSupp F z u ℓ.
+```
+
+Then
+
+```text
+dvLinePoly F H₀ hpin u ℓ j₀ (Mp+M) (A+b) (p*z)
+  = P * dvLinePoly F H₀ hpin u ℓ j₀ M A z.                 (AMR)
+```
+
+Equivalently, for every `n < A+b`, the left coefficient is
+
+```text
+F.twistRead H₀ hpin (Mp+M-n*u)
+  (dev F.key (p*z) (j₀+n*ℓ))
+= ∑ t+s=n, P.coeff t *
+    F.twistRead H₀ hpin (M-s*u) (dev F.key z (j₀+s*ℓ)).
+```
+
+This is precisely the requested law with `w = W(p) = ℓ*Mp`,
+`d = c-w = ℓ*M+u*j₀`: `read_c(pz) = R(p) read_d(z)`.  The finite length is the one
+needed by Lemma S; outside it both sides have zero coefficients.
+
+**Proof.**  First, the landed endpoint identities give all numerical pins needed in the
+formula.  Purity gives `dvSideMin p = 0`; `C133mh4.dvHgt_dvSideMin_eq_mul_dvSideDeg_of_isDvPure`
+gives `Mp = u*dvSideDeg(p)`, and C.26's `natDegree_dvResPoly` gives
+`b = dvSideDeg(p)`.  Hence `W(p)=ℓ*Mp`, and `Mp=u*b`.  C.35's
+`natDegree_div_eq_of_isDvPure`, followed by `Nat.div_mul_cancel` using `D ∣ deg p`, gives
+`p.natDegree = ℓ*(b*D)`.
+
+If `z=0`, both sides are zero.  If `W(z)` is strictly above `d`, integer-valuedness gives
+`W(z) ≥ d+1`.  Every grade-`d` read of `z` is zero by
+`twistRead_eq_zero_of_lt`.  Also `C133mh3.dvSupp_mul` gives
+`W(pz)=W(p)+W(z) ≥ W(p)+d+1`, so every grade-`W(p)+d` read on the left is zero.  Thus
+AMR holds in this case.
+
+It remains to take `W(z)=d`.  Fix `n<A+b`, put `J=j₀+nℓ` and
+`K=Mp+M-nu`.  The inequalities `Mp=ub` and `M≥u(A-1)` imply `K≥0`.  Expand
+`dev F.key (p*z) J` with the landed `dev_mul_conv_split`.  It has the main diagonal
+
+```text
+∑_{r=0}^J (dev p r * dev z (J-r)) %ₘ F.key
+```
+
+and the usual one-key carry diagonal.  The carry diagonal prices strictly above `K`:
+the proof is exactly the strict-floor calculation used by the sideMax half of MH.3
+(`C133mh3`'s local `carry_term_floor` route), with target identity
+`ℓ*K+u*J=W(p)+d`.  Hence its `twistRead K` is zero.  Additivity at a common floor is
+`twistRead_add_of_le` plus `twistRead_finsetSum_of_le`.
+
+For a main pair `(r,J-r)`, the two support inequalities say
+
+```text
+W(p) ≤ ℓ*dvHgt(p,r)+u*r,
+d    ≤ ℓ*dvHgt(z,J-r)+u*(J-r).
+```
+
+Their sum is the target grade `ℓ*K+u*J`.  Therefore a main term can have a nonzero
+grade-`K` read only if both inequalities are equalities.  In that event `r` is on the
+side of `p`; since the side starts at zero, `dvOnSide_modEq` gives `r=tℓ`.  Subtracting
+from `J=j₀+nℓ`, coprimality gives `J-r=j₀+sℓ`, with `t+s=n`.  The degree windows force
+`t≤b` and `s<A`.  Conversely these are exactly the convolution indices.  The factor
+height floors are `kp=Mp-tu` and `kz=M-su`; their sum is `K`.
+
+Now apply the already-landed digit law `C133mh3.m1TwistProductLaw` (its public packaged
+statement is `C133mh1.M1TwistProductLawStatement`) to the two development digits.  A
+strictly-above factor read is zero; an exact pair reads as the product.  The latter assertion
+does **not** assume the carry bit is zero.  `C133mh1.twistExp_add_carry` supplies
+`δ∈{0,1}` with
+
+```text
+q(kp)+q(kz)+δ=q(K),
+slotRes_K(E)=η^δ slotRes_kp(a) slotRes_kz(b).
+```
+
+Thus
+
+```text
+twistRead_K(E)
+= η^(-q(K)) η^δ η^(q(kp)) η^(q(kz))
+    twistRead_kp(a) twistRead_kz(b)
+= twistRead_kp(a) twistRead_kz(b).
+```
+
+At `e₁=1`, `δ=0` is forced.  In a general frame it is not forced; both branches occur.
+The exponent is zero by TW-δ, which is exactly why the C.22 normalization has `τ=1`.
+Summing the surviving pairs is the coefficient convolution for `P` times the line
+polynomial of `z`.  This proves every coefficient and hence AMR. ∎
+
+**Transcription visibility note.**  `dev_mul_conv_split`, `twistRead_add_of_le`,
+`twistRead_finsetSum_of_le`, `twistRead_eq_zero_of_lt`, and the public twist law are
+available.  The convenient pricing helpers named `carry_term_floor`, `read_kill`,
+`dvResPoly_coeff_of_le`, and `dvResPoly_coeff_of_gt` in `C133mh3` are `private`; MH9 Lean
+must duplicate their short arguments or promote public equivalents.  This is a signature
+mismatch, named **OPEN-MH9-PRIVATE-PRICING**, not a mathematical gap.
+
+### MH9M.3 Lemma S
+
+We now discharge exactly `C133mh5.LemmaSStatement`; no hypothesis is strengthened.
+Write
+
+```text
+G := dvResPoly(...p₁...),  H := dvResPoly(...p₂...),
+a := G.natDegree,          b := H.natDegree,
+dU := c-w₂,                dV := c-w₁.
+```
+
+The pure endpoint calculation used above gives, for `i=1,2`,
+
+```text
+p₁.natDegree = ℓ*(a*D),  M₁=u*a,  w₁=ℓ*M₁=ℓ*u*a,
+p₂.natDegree = ℓ*(b*D),  M₂=u*b,  w₂=ℓ*M₂=ℓ*u*b.
+```
+
+In particular `a,b>0`.  (Positive degree and the exact pure degree formula exclude side
+degree zero.)  Choose the unique `j₀<ℓ` with `u*j₀ ≡ c (mod ℓ)`.  Since both `w₁` and
+`w₂` are multiples of `ℓ`, the same `j₀` represents `dU` and `dV`.  Thus there are
+`MU,MV` with
+
+```text
+dU=ℓ*MU+u*j₀,   dV=ℓ*MV+u*j₀.
+```
+
+These are genuine natural decompositions, not truncated subtraction.  For example,
+`dU≥w₁=ℓ*u*a` gives
+
+```text
+ℓ*(MU-u*(a-1)) ≥ u*(ℓ-j₀) ≥ u > ℓ*(D*h),
+```
+
+so `MU-u*(a-1)>D*h`.  Consequently, for every polynomial of degree `<a`,
+`D*h+u*degree < MU`; the identical statement holds for `(MV,b)`.  This is the exact
+fullness premise of `C133mh5.le_dvSupp_dvWindowLift` and
+`C133mh5.twistRead_dvWindowLift`.
+
+Let `Mc` be the unique natural with `c=ℓ*Mc+u*j₀`, and define the error line
+
+```text
+Ebar := dvLinePoly F H₀ hpin u ℓ j₀ Mc (a+b) e.
+```
+
+The degree hypothesis on `e`
+and the exact formulas above give `Ebar.degree < G.degree+H.degree`.  Apply the actually
+landed
+`C133mh5.exists_stageField_bezout_degree_lt F H₀ hpin hG hH hcop Ebar hE` to obtain
+
+```text
+H*Ubar + G*Vbar = Ebar,
+Ubar.degree < G.degree,  Vbar.degree < H.degree.
+```
+
+Set
+
+```text
+U := C133mh5.dvWindowLift F H₀ hpin u ℓ j₀ MU Ubar,
+V := C133mh5.dvWindowLift F H₀ hpin u ℓ j₀ MV Vbar.
+```
+
+`C133mh5.natDegree_dvWindowLift_lt'` gives `deg U<deg p₁` and `deg V<deg p₂`.
+The fullness inequality above and `C133mh5.le_dvSupp_dvWindowLift` give
+`W(U)≥c-w₂` and `W(V)≥c-w₁`.  `C133mh5.twistRead_dvWindowLift` identifies their line
+polynomials with `Ubar,Vbar` coefficientwise.  AMR, first with `(p₂,U)` and then with
+`(p₁,V)`, therefore gives the grade-`c` identities
+
+```text
+read_c(p₂U)=H*Ubar,   read_c(p₁V)=G*Vbar.
+```
+
+Every grade-`c` read of `e-(p₂U+p₁V)` is consequently zero.  Its support is at least `c`:
+this follows from the assumed floor for `e`, the two window floors, the landed
+`C133mh3.dvSupp_mul` in nonzero cases (zero cases are immediate), and the ultrametric
+sum law.  Finally
+`C133mh5.le_dvSupp_succ_of_lineReads_eq_zero` raises the floor to `c+1`.  These are
+exactly the five conjuncts in `C133mh5.LemmaSStatement`.  Hence Lemma S is
+**PROVED at mathematics level**.
+
+### MH9M.4 Theorem A: iteration and limit
+
+Here `Theorem A` means exactly `C133mh14.TheoremAStatement O`, whose conclusion is
+
+```text
+∃ g₁ g₂, g=g₁*g₂ ∧ g₁.Monic ∧ g₂.Monic ∧
+  g₁.natDegree=ℓ*D*G.natDegree ∧ g₂.natDegree=ℓ*D*H.natDegree ∧
+  IsDvPure F g₁ u ℓ ∧ IsDvPure F g₂ u ℓ ∧
+  dvHgt F g₁ 0=(u*G.natDegree : ℕ∞) ∧
+  dvHgt F g₂ 0=(u*H.natDegree : ℕ∞) ∧
+  (∀ hne₁ M₁ hp₁, dvResPoly ... g₁ ... = G) ∧
+  (∀ hne₂ M₂ hp₂, dvResPoly ... g₂ ... = H).
+```
+
+All binders before this conclusion are verbatim those at
+`C133mh14.lean:264`: `g` is monic, positive, `D∣deg g`, pure and pinned; `G,H` are monic,
+coprime, have nonzero constant coefficients, and `R(g)=G*H`.
+
+First suppose `a:=G.natDegree` and `b:=H.natDegree` are positive.  Initialize
+
+```text
+g₁⁰ := C133mh5.dvSideLift F H₀ hpin u ℓ G,
+g₂⁰ := C133mh5.dvSideLift F H₀ hpin u ℓ H.
+```
+
+The exact initialization clauses are, with their landed names:
+`dvSideLift_monic`, `natDegree_dvSideLift`, `isDvPure_dvSideLift`,
+`dvSupp_dvSideLift`, `dvHgt_dvSideLift_sideMin`, and `dvResPoly_dvSideLift`.
+They give fixed degrees `d₁=ℓ*D*a`, `d₂=ℓ*D*b`, weights
+`w₁=ℓ*u*a`, `w₂=ℓ*u*b`, and residuals `G,H`.  The same pure endpoint calculation and
+`natDegree_dvResPoly` applied to `g` show `deg g=d₁+d₂`, its pin is `u(a+b)`, and
+`W(g)=w:=w₁+w₂`.  `C133mh3.dvResPoly_mul_gen` gives
+`R(g₁⁰g₂⁰)=G*H=R(g)`.  Support-line read equality followed by
+`C133mh5.le_dvSupp_succ_of_lineReads_eq_zero` gives
+`W(g-g₁⁰g₂⁰)≥w+1`.
+
+Inductively assume `gᵢᵏ` have the fixed monicity, degree, purity, height, weight, and
+residual invariants and
+
+```text
+W(e_k) ≥ w+k+1,  e_k := g-g₁ᵏg₂ᵏ.
+```
+
+Apply the proved Lemma S at `c=w+k+1`, producing `U_k,V_k`.  Put
+`g₁ᵏ⁺¹=g₁ᵏ+U_k`, `g₂ᵏ⁺¹=g₂ᵏ+V_k`.  Since
+
+```text
+W(U_k)≥w₁+k+1,   W(V_k)≥w₂+k+1,
+deg U_k<d₁,       deg V_k<d₂,
+```
+
+`C133mh0.dv_pure_add_of_lt` preserves every factor invariant, including the exact
+residual.  Expanding the new error gives
+
+```text
+e_{k+1} = [e_k-(g₂ᵏU_k+g₁ᵏV_k)] - U_kV_k.
+```
+
+The bracket has weight at least `c+1` by Lemma S.  The product law gives
+`W(U_kV_k)≥(c-w₂)+(c-w₁)=2c-w≥c+1` (zero correctors are harmless), so the ultrametric
+law gives `W(e_{k+1})≥w+(k+1)+1`.  This closes the induction.
+
+For each factor sequence, `deg gᵢᵏ<dᵢ+1` and
+`W(gᵢᵏ⁺¹-gᵢᵏ)≥wᵢ+k+1≥k`.  Apply the exact landed signature
+`C133mh8.exists_dvGradedLimit hπ F hℓ (dᵢ+1) (fun k => gᵢᵏ)` to obtain `gᵢ∞` with
+`deg gᵢ∞≤dᵢ` and `W(gᵢ∞-gᵢᵏ)≥k` for every `k`.
+
+The public limit theorem does not itself return monicity.  It nevertheless implies it.
+For arbitrary `N`, take
+`k ≥ ℓ*F.e₁*N + ℓ*F.h*(D-1) + u*dᵢ`.  Then
+`C133mh8.gaussVal_of_shifted_dvSupp` gives
+`gaussVal(gᵢ∞-gᵢᵏ)≥N`.  Since every `gᵢᵏ` has coefficient `1` at `dᵢ`,
+`gaussVal_le_addVal_coeff` implies that
+`addVal((gᵢ∞).coeff dᵢ-1)≥N` for all `N`.  Thus that value is `⊤`, and
+`addVal_eq_top_iff` makes the coefficient difference zero.  Combined with
+`deg gᵢ∞≤dᵢ`, this proves monicity and exact degree `dᵢ`.
+
+Choose `k>wᵢ`.  The difference `y=gᵢ∞-gᵢᵏ` now has degree `<dᵢ` because both polynomials
+are monic of degree `dᵢ`, and `W(y)≥k≥wᵢ+1`.  A final application of
+`C133mh0.dv_pure_add_of_lt` transfers purity, the height pin, and the exact residual from
+`gᵢᵏ` to `gᵢ∞`.  The residual result is initially at the witness returned by M4; equality
+for every witness and finite pin follows by proof-independence of `dvSideMin`/the finite
+height and the junk-total definition of `dvResPoly`, exactly as already used by
+`C133mh5.dvResPoly_dvSideLift`.
+
+It remains to prove exact multiplication.  For any `k`, expand
+
+```text
+g₁∞g₂∞-g₁ᵏg₂ᵏ
+  = (g₁∞-g₁ᵏ)g₂∞ + g₁ᵏ(g₂∞-g₂ᵏ).
+```
+
+The factor weights are fixed, so `C133mh3.dvSupp_mul` and the ultrametric inequality make
+the right side's support tend to infinity with `k`.  The induction gives the same for
+`g-g₁ᵏg₂ᵏ`; hence `W(g-g₁∞g₂∞)` exceeds every natural bound.  Its degree is bounded.
+For arbitrary `N`, choose the support bound required by
+`C133mh8.gaussVal_of_shifted_dvSupp`; then its Gauss value is at least `N`.  Therefore it
+is `⊤`, and `gaussVal_eq_top_iff` gives `g-g₁∞g₂∞=0`.  This is the sole use of adic
+completeness (through `exists_dvGradedLimit`).
+
+If `a=0`, monicity gives `G=1`; take `g₁=1`, `g₂=g`.  If `b=0`, take `g₁=g`, `g₂=1`.
+The positive-degree formulas above show that both cannot be zero.  Direct evaluation of
+`dev F.key 1 0`, `stageHeight_one`, and `C133mh0.twistRead_one` gives purity, height zero,
+and residual `1`; the nonconstant factor's required degree, height, and residual follow
+from `R(g)=H` or `R(g)=G` and the pure endpoint formulas.  Thus the statement's constant
+factor cases are covered rather than silently excluded.
+
+This proves `C133mh14.TheoremAStatement` at mathematics level, clause by clause:
+factorization by limit exactness; monicity and the two displayed degrees by separatedness;
+purity, heights, and exact residuals by M4 stability; and the universal-pin residual form
+by witness/pin proof-independence.  Consequently the already-landed
+`C133mh14.blockFrontier_of_context_of_theoremA` can consume this theorem without any
+change to its statement.
+
+### MH9M.5 Lean transcription nodes and named opens
+
+The following are new theorem nodes, stated so that transcription is mechanical.
+
+1. `dvLinePoly` — the finite sum definition in MH9M.1.
+2. `dvLinePoly_dvWindowLift` — under `j₀<ℓ` and
+   `D*h+u*ψ.natDegree<M`, the line polynomial of
+   `dvWindowLift ... j₀ M ψ` is `ψ` in every requested finite window; this packages
+   `C133mh5.twistRead_dvWindowLift`.
+3. `dvLinePoly_mul_of_isDvPure` — AMR exactly as stated in MH9M.2.
+4. `lemmaS : C133mh5.LemmaSStatement O` — assembled exactly as in MH9M.3.
+5. `dvSupp_sub_succ_of_same_residual` — the initialization helper: same pure support
+   grade and same support-line polynomial imply the difference has support at least the
+   successor; proof by `C133mh5.le_dvSupp_succ_of_lineReads_eq_zero`.
+6. `monic_of_dvGradedLimit` — a fixed-degree monic sequence with the
+   `exists_dvGradedLimit` tail bound has a monic limit of that degree, by
+   `gaussVal_of_shifted_dvSupp` and coefficient separatedness.
+7. `eq_zero_of_forall_dvSupp` — for a bounded-degree polynomial, arbitrarily large
+   `dvSupp` floors imply zero, by `gaussVal_of_shifted_dvSupp` and
+   `gaussVal_eq_top_iff`.
+8. `isDvPure_one`, `dvHgt_one_zero`, `dvResPoly_one` — constant-factor branch helpers,
+   direct from the definitions and `C133mh0.twistRead_one`.
+9. `theoremA : C133mh14.TheoremAStatement O` — the induction and limit assembly above.
+
+Named transcription opens (none is a mathematical gap):
+
+* **OPEN-MH9-PRIVATE-PRICING:** MH.3's convenient `carry_term_floor`, `read_kill`, and
+  coefficient extraction helpers are private; duplicate or promote them.
+* **OPEN-MH9-LIMIT-MONIC:** `C133mh8.exists_dvGradedLimit` returns only the degree window
+  and tail support bound; node 6 must expose the separatedness argument.
+* **OPEN-MH9-UNIT-BRANCH:** `C133mh5.dvSideLift_*` requires positive residual degree,
+  whereas `C133mh14.TheoremAStatement` permits a constant `G` or `H`; node 8 and the two
+  explicit branches are required.
+* **OPEN-MH9-UNIVERSAL-PIN:** M4 returns one side witness/pin while Theorem A asks for all
+  witnesses/pins; package the definitional proof-independence conversion explicitly.
+
+### MH9M.6 Numeric certificate
+
+`verification/dv_hensel_cert.py` now has Part 3b.  It checks eight grades above the base
+line in each of two documented `Z₂/F₄` frames: the original `(e₁,f₁,h,u,ℓ)=(1,2,1,3,1)`
+frame and the live-carry `(2,2,1,5,1)` frame with key `x⁴+2x²+4`.  It checks the full
+twist-normalized line-polynomial identity, the strictly-above zero branch, the raw
+`η^δ` carry formula termwise, and cancellation to `τ=1`.
+
+Run on 2026-08-28:
+
+```text
+Sec 3b: 356 checks on 16 above-line grades;
+term branches δ=0: 88, δ=1: 8.
+TOTAL 3188 checks, 0 FAILS.  ALL PASS.
+```
+
+The `δ=1` count is nonzero, so this is not merely the twist-trivial `e₁=1` test.
