@@ -186,7 +186,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | L2E1 | L2E-03/04/05 | DONE — 03+05 landed + dv2Res_mul (NO root factor); the L2E-00 twist shape a MIS-TRANSPOSITION (the normalized read.s carry cancels by construction — the τ=1 story one level up); corrected shapes → L2E2 |
 | L2E2 | corrected shapes + L2E-06/07/08 (support product, min/max incl. F13A.s reverse inequality, pin-height addition) → C136l2e2 | IN FLIGHT (codex sol-HIGH, ~16:00) |
 | G345 | gates G3+G4 (the WLE per-level retype + the shared DeepLevelExport promotion) → I10DeepExport | IN FLIGHT (Fable, ~15:40) |
-| G5F | gate G5 stop-if-false (the (1,1,171) refinement.s source-faithfulness vs the FGMN pdfs) | IN FLIGHT (codex sol-HIGH, ~15:40) |
+| G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
 | D3A | μ₄ stack base D3-00/01/02 | DONE — the dv3 layer + s2Hgt₄ (tooth 85) + the endpoint bank modulo the explicit Dv3ResSurv; 52/52 Lean-core |
 | A0C | A0-CUBIC | DONE (d11cb4cf) — ★★ DecidedSliceAt 3 LEAN-CORE (not even a cite): all five exact cubic densities proved uniformly over every complete DVR incl. wild primes; G61.s rider retired BY PROOF; cert 38/38; the n≥4 generalization genres named |
 | P1D | the P1 dictionary | DONE (adc165eb) — ★ P1 CLOSED OUTRIGHT, the GN cite retired UNDECLARED (isMuKey_of_isTestKey a Lean-core THEOREM; the residual-lift wall fell to C130kp1 made frame-generic); trust-boundary flags carried |
