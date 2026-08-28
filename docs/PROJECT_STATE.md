@@ -108,7 +108,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    enactment; the HE7APackage supplier stays XL-blocked;
    (b) **deepTwist** — the deep (r ≥ 4) arising-witness campaign + the WLE per-level
    exporter (design anchored; deep inhabitants open; WleCleared r=2 vacuity mapped);
-   (c) a0 GENERAL-n — ★ blueprint DELIVERED (A0_GENERAL_2026-08-28.md: PURE-ENGINE route, 16 nodes, 8-14k lines; the ONE new theorem finiteGenreCoverAt_all is the A0G-GC stop-line; cites honestly rejected for wild primes; quartic 32/32 reality check); SIX of 16 nodes LANDED (Z, RP, CV, PD, RS, FP — IFCG0..3; two dedup catches corrected the blueprint's input lists; the loop bijection characteristic-free); IN FLIGHT: A0G5 (FF → IFCG4), A0G6 (NP → IFCG5, the conceptual heart feeding the GC stop-line); (d) `jd0`/`genhnBox2` + `w1` (A-I.1); (e) four I-D12 bodies
+   (c) a0 GENERAL-n — ★ blueprint DELIVERED (A0_GENERAL_2026-08-28.md: PURE-ENGINE route, 16 nodes, 8-14k lines; the ONE new theorem finiteGenreCoverAt_all is the A0G-GC stop-line; cites honestly rejected for wild primes; quartic 32/32 reality check); SEVEN of 16 nodes LANDED (Z, RP, CV, PD, RS, FP, NP — IFCG0..3, IFCG5; ★ NP's five GC-serving design decisions: disjointness by construction, the loop first-class, counts 1,1,5,15,56,179,629 triple-checked); IN FLIGHT: A0G5 (FF → IFCG4), A0G7 (HE+CH → IFCG6 — the GC stop-line's last prerequisites); (d) `jd0`/`genhnBox2` + `w1` (A-I.1); (e) four I-D12 bodies
    (WindowPinningAt, GenhnHEAt, GenhnTow1At, TypeOfFaithful). The CHFD supply map
    (docs/in-progress/CAPSTONE_SUPPLY_MAP_2026-08-26.md) is the field-by-field ledger.
 2. **The Hensel engine: COMPLETE — payoff propagation is the open work.** F1.1 landed
