@@ -167,7 +167,10 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | CFS | the BlockFrontier family sweep | DONE (bbad3a22) — F1.1 head blockFactor_spec + 5 reads unconditional (Lean core + the dissection cite; recorded 0 < F.h binder); F1.2–F1.8 blocked on ONE exporter |
 | CSX | the context-split exporter | DONE (5f11bd2e) — context_split re-exports f = blockFactor·g₂·Wf with the F-row clauses; Lean core + the dissection cite |
 | FRT | F1.2 partial | DONE (00e397a5) — quotient bridge + clauses 1/3; clause-2 block DISSENTED by the orchestrator (the mixed law needs no purity) |
-| F12C | F1.2 clause 2 + full row + F1.3–F1.7 re-attempt via dvResPoly_mul_gen + the residual_transport pattern → C134f12c | IN FLIGHT (Fable, ~09:55) |
+| F12C | F1.2 + F1.7 | DONE (54025c36) — dissent confirmed; the transport Lean-core; F1.3–F1.6 reduced to two level-2 subgoals |
+| DV2G | the two level-2 subgoals (frame-generic Dv2ResSurv + dv2Pin_mul_complement) + F1.3–F1.6 re-attempt → C134dv2g | IN FLIGHT (Fable, ~10:15) |
+| TAU | LVS-CANONICAL-TAU-EXPORT (the vartheta live leg.s open lemma; source-faithful tower export design) | IN FLIGHT (codex sol-HIGH, ~10:15) |
+| SRX | S2-RECENTER-EXPORT (the mp1 live leg.s open node; GN payload field discharge at the S2 occurrence) | IN FLIGHT (codex sol-HIGH, ~10:15) |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly + THE ENGINE are unreported milestones |
 
 ## 7. Resume protocol (fresh agent)
