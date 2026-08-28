@@ -913,3 +913,352 @@ Result: exit 0, zero `sorry`; every `#print axioms` line is exactly
    refined-type, properness, residual-multiplicity-one, and exact-factor/representative
    identification fields.  None may be replaced by divisibility alone or placed on the global
    ladder guard.
+
+## [LVS 2026-08-28] The live vartheta supplier: depth-two vacuity and the exact export wall
+
+**Verdict.** The depth-two arising-realization case is **PROVED, vacuously**.  The general
+live supplier is **PROVED FROM an exact witness-attached tau-residue exporter**, and the
+bridge to the signed `IFC5.LadderSupplyLive.vartheta` field is **PROVED byte-shape**.  The
+exporter itself is **OPEN-LEMMA** at genuine deep sites.  In particular, the present
+`ChainRealization`/`RealizedInput` fields do not imply it: CC-18's live canonical-read twist
+audit rules out that inference uniformly.
+
+The complete statement authority is `leanfinal/scratch/LVS_probe.lean` (zero `sorry`),
+verified from `leanfinal/` by
+
+```bash
+timeout 580 ~/.elan/bin/lake env lean scratch/LVS_probe.lean
+```
+
+Exit `0`; every footer declaration uses only `[propext, Classical.choice, Quot.sound]` or a
+subset.  The independent finite arithmetic certificate is
+`verification/lvs_live_range_spot.py`.
+
+### 1. Exact mathematics at one live index
+
+The landed arithmetic is definitional:
+
+```text
+GaugeLive r i  <->  1 <= i and i < r
+```
+
+(`Tower.gaugeLive_iff`, `C130k.lean:48-49`).  Hence the signed intersection is
+
+```text
+3 <= i and GaugeLive r i  <->  3 <= i and i < r.
+```
+
+It is empty for every `r <= 3`.  At `r = 2`, the gauge-live range is exactly `{1}`; no
+`i >= 3` is live.  The first genuine tooth is `r = 4`, `i = 3`, and at general `r >= 4`
+the demanded-live indices are exactly `{3, ..., r-1}`.  This is proved for arbitrary socket
+data by `LVSProbe.vartheta_live_r_two_vacuous` (`LVS_probe.lean:31-40`) and in the explicit
+arising-realization shape by `vartheta_live_of_realization_depth_two` (`:44-60`).  No property
+of `N`, `v`, `rho`, or `q` is used.
+
+For a live witness, `GaugeFamilyViewEq` says precisely (`C130vw.lean:214-222`):
+
+1. the transported normal section's `n` is the realization normalizer's `n`;
+2. the dependent sigma package `(v i, rho i)` transported along `eG` equals
+   `(levelHeight core.T <i,hi>, canonicalResAt X hi)`; and
+3. `q i = core.T.u (i+1)`.
+
+Thus the external site is pinned to the realization's own canonical normal section, height,
+ambient canonical read, and use height.  E.61 then asks for exactly D.62's A-D.2 carrier:
+
+```text
+forall s, exists h : N.varthetaEl (q i) s in ker (v i), exists u : Kt^x,
+  rho i <N.varthetaEl (q i) s, h> = algebraMap Kt L u
+```
+
+(`HVarthetaRes`, `D62.lean:81-85`; `VarthetaRes.supplied`, `E61.lean:145-148`).  Pinning the
+read identifies the *datum* at which this must be proved; it does not prove the embedded-unit
+claim.
+
+The sufficient non-circular datum is the tau form already consumed by the landed theorem
+`Gauge.hvarthetaRes_of_tau_letters` (`D62w.lean:94-120`): for every `s`,
+
+```text
+N.tau (s * q i) (q i) lies in ker (v i),
+and its rho i value is the image of a Kt-unit.
+```
+
+D.05's recursion then multiplies these tau values to obtain every vartheta value.  The probe
+packages exactly those two assertions, plus the same witness's exact family-view proof, as
+`VarthetaTauLevelExport` (`LVS_probe.lean:72-91`).  It deliberately contains neither
+`HVarthetaRes` nor `VarthetaRes`.  The theorem
+`varthetaRes_of_live_of_exports` (`:95-109`) is the complete proof: apply
+`hvarthetaRes_of_tau_letters`, then use E.61's one-field constructor.
+
+### 2. Why today's realization exports do not fill the package
+
+The missing claim is not hidden in `GaugeFamilyViewEq`.  `canonicalResAt` is the node's
+`canonicalRes0` transported to the synchronized kernel (`C130vw.lean:195-198`).  CC-18
+permits an arbitrary character twist of the node's canonical read while retaining a valid
+`ChainRealization` and `RealizedInput` (`twistNode`, `twistRealization`,
+`twistRealizedInput`, `C130s18.lean:407-465`).  At a gauge-live index the twist changes
+`canonicalResAt` by exactly the lifted character (`canonicalResAt_twist`, `:467-474`).
+`embeddedValue_not_uniform` (`:527-543`) then proves that an embedded-`Kt`-value assertion at
+such a canonical-read point cannot be derived uniformly from the present carrier fields.
+
+This audit applies **on the live range**, so A-I.6 fixes the former off-range defect but does
+not supply LS-V10's residue mathematics.  Adding arena/canonical agreement would also be
+wrong: `arenaAgreement_not_uniform` (`C130s18.lean:498-525`) defeats exactly that shortcut.
+
+IFC4 does not change this conclusion.  It lands the explicit S2 wired realization and its
+ladder socket (`s2FrontierWiredRealizedInput`, `IFC4.lean:176-182`;
+`s2FrontierWired_ladder_socket`, `:184-199`) and proves Gentow/W laws for the separate
+`towerReadFamily`.  Its own honesty theorem records that the `3 <= j < 2` demand is empty
+(`s2Wired_deep_demand_still_vacuous`, `:384-398`).  The unconditional depth-two mu3 calculus
+and `s2Mu3_gentow5w_two` therefore validate a local algebraic/W-window mechanism at the S2
+base; they do not assert that the ambient `canonicalResAt` sends the tau/vartheta words to
+embedded `Kt`-units.  The vartheta supplier at this witness is closed by arithmetic before
+that question is reached.
+
+There is one quantifier subtlety which must remain explicit.  The landed S2 witness has
+`core.r = 2`, so its own supplier leg is vacuous.  But `CanonicalLadderLiveAt` is an
+existential over *any* realization matching the same external socket
+(`I10LadderLive.lean:57-75`).  Merely exhibiting the landed depth-two witness does not prove
+that every other matching witness has depth two.  Consequently an external
+`LadderSupplyLive.vartheta` proof may use the local vacuity only after unpacking a witness
+whose depth is known to be two; the exact field bridge must otherwise use the general
+per-witness exporter below.  A theorem silently replacing “this witness has depth two” by
+“every witness inside `CanonicalLadderLiveAt` has depth two” would be invalid unless a new
+depth-rigidity lemma is supplied.
+
+### 3. Exact Lean surface and the WLE pattern
+
+The exact general owner predicate is the probe's `VarthetaTauLiveExporter`
+(`LVS_probe.lean:114-129`).  Its binder order follows the WLE design:
+
+```lean
+def VarthetaTauLiveExporter (n : Nat) : Prop :=
+  forall O ... Kt E L core A X G eG N v rho q,
+    GaugeFamilyViewEq X (N.transport eG)
+      (fun k => (v k).comp eG.symm.toMonoidHom)
+      (fun k => (rho k).comp (C130s18.kerComapAlong eG (v k))) q ->
+    forall j, 3 <= j -> (hj : GaugeLive core.r j) ->
+      Nonempty (VarthetaTauLevelExport X G eG N v rho q j hj)
+```
+
+As in `[WLE]`, `core`, `A`, and `X` precede the level package; the package belongs to that
+explicit witness and uses its own family view.  Unlike WLE's calculus package, no
+`(e',f',u')`, receiver, or positive-`f'` field is relevant here.  The exact range is the
+signed intersection `3 <= j` plus `GaugeLive core.r j`; demanding exports also at shallow
+indices `1` and `2` would be an unjustified strengthening.
+
+The signed bridge is fully proved:
+
+```lean
+theorem ladderSupplyLive_vartheta_of_exports {n : Nat}
+    (hExports : VarthetaTauLiveExporter n) ... :
+    forall i >= 3, IFC5.CanonicalLadderLiveAt C B G Kt L N v rho q n i ->
+      Ladder.VarthetaRes G Kt L N v rho q i
+```
+
+(`LVS_probe.lean:134-152`).  Its proof destructs the `CanonicalLadderLiveAt` existential,
+installs its domain/DVR/field witnesses as instances, applies `hExports` to the **same**
+`core/A/X/eG/hview/hgi`, and calls `varthetaRes_of_live_of_exports`.  The conclusion is
+literally `LadderSupplyLive.vartheta`'s field type (`I10LadderLive.lean:89-91`).
+`ladderSupplyLive_of_vartheta_exports` (`LVS_probe.lean:158-171`) places it in the record
+constructor with the first three fields unchanged.
+
+### 4. Named opens: the real `r >= 4` campaign
+
+The bridge and all bookkeeping are closed.  The following mathematics remains.
+
+1. **OPEN-LEMMA `LVS-CANONICAL-TAU-EXPORT`.** For every explicit arising witness `X` and
+   every `j` with `3 <= j` and `GaugeLive core.r j`, prove the two fields
+   `VarthetaTauLevelExport.tau_mem` and `.tau_value` for the socket data pinned by
+   `GaugeFamilyViewEq`.  Equivalently, prove `VarthetaTauLiveExporter n`.  The membership
+   half is expected to be exact-height/transport bookkeeping; the value half is LS-V10.
+2. **OPEN-LEMMA `LVS-TAU-WORD`.** At general live depth, factor each
+   `N.tau (s*q) q` into the synchronized wrap/letter generator word.  D62w's
+   `deep2_tau_descent`/`deep3_tau_descent` are the fixed-depth exponent patterns; no theorem
+   currently performs this for an arbitrary arising `core.T`.
+3. **OPEN-LEMMA `LVS-CANONICAL-LETTERS`.** Prove that this same witness's
+   `canonicalResAt X hj` sends every generator in that word to an embedded `Kt`-unit.
+   `C130cr` identifies canonical reads of synchronized generator words with products of
+   `wrapValue`/`letterValue`, but the general embedded-level-field dictionary is absent; this
+   is the existing `OPEN-LETTERS` wall, not a consequence of the Gentow/W read.
+4. **OPEN-LEMMA `LVS-DEPTH-RIGIDITY-S2` (optional, not needed once the general exporter
+   lands).** If one wants a theorem that the *external S2 socket's entire signed field* is
+   vacuous without invoking the general exporter, prove that every realization witnessing
+   `CanonicalLadderLiveAt` for those exact external S2 views has `core.r = 2`.  No such
+   theorem is landed.
+
+Once items 2 and 3 assemble item 1, `varthetaRes_of_live_of_exports` and
+`ladderSupplyLive_vartheta_of_exports` finish LS-V10 with no further mathematics.  The first
+non-vacuous test must be an arising witness of depth at least four and must bite at `j = 3`;
+the depth-two mu3 witness cannot serve as that test.
+
+### 5. Numeric spot-certificate
+
+`verification/lvs_live_range_spot.py` independently enumerates the demanded-live set for
+`0 <= r <= 8` and asserts
+
+```text
+r=2: []
+r=3: []
+r=4: [3]
+r=5: [3, 4]
+...
+PASS: depth 2 is empty; the first real tooth is r=4, i=3
+```
+
+It is only a finite visibility certificate; the Lean theorems above prove the depth-two
+claim for arbitrary data and arbitrary index.
+
+## [REX 2026-08-28] Producer recenter-step export and forced A-I.7
+
+### 1. Priority adjudication: the rebound funnel is refutable through `mp1`
+
+**YES.**  A-I.6 repaired only the `vartheta` quantifier.  The landed
+`IFC5.LadderSupplyLive.mp1` field is still literally the unrestricted
+`Ladder.MP1Carrier` (`I10LadderLive.lean:80-90`), and the rebound
+`CapstoneHypotheses.ladder` returns that record under `CanonicalLadderConfig`
+(`I10_I15_I18.lean:155-171`).  This is not merely a record-level concern: the unrestricted
+counterexample passes through an inhabited landed socket.
+
+The new machine proof is `scratch/REX_probe.lean:201-271` (line numbers before later edits
+may drift).  At the landed S2 occurrence,
+
+* `C2.D = 4`, `B2.μ = 1`, and `B2.F = B2.Φ + 1`; the last two facts come from the actual
+  producer (`C130s17.s2InputPolynomial` and `s2InputData`, lines 540-584), not from an
+  unrelated abstract carrier;
+* `Λ = -1` is nonzero and has degree `0 < 4`;
+* the legal block `B2' := recenteredAtInput B2 rfl` has `B2'.Φ = B2.F = B2.Φ - Λ`, hence
+  `B2'.Φ ∣ B2.F`;
+* any `MidPeelEmission B2 B2'` contains a quotient block.  Every block has
+  `deg quot.F = quot.μ * D ≥ D`, while `hmass` and `B2.μ = 1` demand
+  `deg quot.F + D = deg B2.F = D`, contradicting `D > 0`.
+
+Thus the probe proves, in increasing funnel strength,
+
+```lean
+s2_unrestricted_mp1_false : ¬ Ladder.MP1Carrier C2 B2
+s2_ladderSupplyLive_false : ¬ IFC5.LadderSupplyLive C2 B2 ... 4
+s2_canonical_ladder_config : CanonicalLadderConfig C2 B2 ... 4
+capstoneHypotheses_four_refuted_via_mp1 : ¬ CapstoneHypotheses 4
+```
+
+The last theorem applies the current `CapstoneHypotheses.ladder` to the landed
+`C130sg.s2Frontier_ladder_socket`, then projects `.mp1`.  There is no missing bridge and no
+appeal to the off-range `vartheta` construction from AI6.  The constructed `B2'` is
+deliberately **not** claimed to arise from the S2 realization: unrestricted MP1 quantifies
+over every legal block satisfying only recentering and divisibility.  Excluding precisely
+this fabricated successor is the purpose of the live repair.
+
+**Forced amendment A-I.7 (plan only; not enacted here).**  Add a superseding ladder record
+whose `package`, `lb1`, and A-I.6 live `vartheta` fields are unchanged and whose `mp1` field is
+the `MP1CarrierLive` below, parameterized by the same `(G,Kt,L,N,v,rho,q,n)` as the socket.
+Rebind `CapstoneHypotheses.ladder` to that record.  Land the conservative pin
+`old unrestricted MP1 -> MP1CarrierLive`, plus the corresponding old-supply-to-new-supply
+adapter.  Update the MP1 consumer to pass the producer's `RecenterStep`.  Do not modify E.40
+in place: it remains the machine-refuted tension record.
+
+### 2. Exact GN15 hypothesis fence
+
+The published source is Guàrdia--Nart, *Genetics of polynomials over local fields*,
+Contemporary Mathematics 637 (2015), Theorem 2.3.  Its exact hypothesis list is: `μ` is an
+“inductive valuation equipped with a MacLane chain”; `φ ∈ KP(μ)`; `φ ≁_μ φ_r`; and `g` is a
+“monic polynomial g ∈ O_v[x]”.
+
+The theorem then indexes factors `g_{lambda,psi}` by `-lambda` running through the slopes of
+`N^-_{r+1}(g)` and `psi` running through the prime factors of
+`R_{r+1,lambda}(g)`.  Its final clause is exactly: if
+`ord_psi(R_{r+1,lambda}(g)) = 1`, then `g_{lambda,psi}` is irreducible in `O_v[x]`.
+This is the complete hypothesis/index list relevant to MP1.  In particular, ordinary
+divisibility `B'.Phi ∣ B.F` is not residual multiplicity one, and the theorem says nothing
+about `B'.Phi` until it is identified with its selected `g_{lambda,psi}`.
+
+The checked primary copy is the author offprint
+`https://upcommons.upc.edu/bitstream/handle/2117/28206/GeneticsCM.pdf`.  `O_v` is the
+completed valuation ring in the paper; the current socket's `Polynomial O` still needs the
+published-to-repository completion/base-change dictionary before a literal GN application.
+
+### 3. Proposed producer structure
+
+The elaborated surface is `REX_probe.GNCitePayload` plus `REX_probe.RecenterStep`
+(`scratch/REX_probe.lean:37-123`).  It separates three layers:
+
+1. `RecenterStep` existentially owns the **same** `core/A/X/eK/eG` that supplies
+   `SlotViewEq`, `BlockViewEq`, and `GaugeFamilyViewEq` for the external socket.  Under that
+   witness it records `Lambda != 0`, the degree bound, exact recentering, and divisibility.
+2. `GNCitePayload` owns the chain/source data and every GN-specific hypothesis/index:
+   `source/sourceLaws`, `keyPolynomial`, `tangentClass`, `monicInput`, `slope`, `psi`, the
+   residual factorization with multiplicity one, and the selected `leaf`.
+   `exactLeaf : leaf = B'.Phi` is the non-negotiable conclusion-identification bridge.
+3. `MP1StepCore` owns items 2--4 of the peel emission: quotient, exact peeled key, peel and
+   mass identities, inherited threshold, and quotient interface.  It contains neither
+   `hirr` nor `hef`.
+
+The multiplicity field is represented without inventing a factor-multiplicity API:
+
+```lean
+residual_factorization : residual = psi * residualQuot
+residual_multiplicity_one : ¬ psi ∣ residualQuot
+```
+
+together with `psi_irreducible`; this is the producer-side UFD spelling of
+`ord_psi(residual) = 1`.  A production declaration should replace the probe's abstract
+residual carrier by the exact transported slope-residual operator once that analytic
+dictionary is landed.
+
+The honest carrier has the A-I.6 quantifier pattern:
+
+```lean
+def MP1CarrierLive ... : Prop :=
+  forall Lambda, Lambda != 0 -> Lambda.natDegree < C.D ->
+    forall B', B'.Phi = B.Phi - Lambda -> B'.Phi ∣ B.F ->
+      RecenterStep C B B' G Kt L N v rho q n Lambda ->
+      Nonempty (Ladder.MidPeelEmission B B')
+```
+
+All old triggers and the old conclusion remain; only a same-realization producer premise is
+added.  Hence unrestricted MP1 implies live MP1 by ignoring that premise, while the converse
+is intentionally absent.
+
+### 4. Cite mapping table and S2 producer audit
+
+| GN15 Theorem 2.3 hypothesis/index | Export field | Landed producer datum at S2/μ3 | Status |
+|---|---|---|---|
+| `μ` inductive, equipped with the length-`r` MacLane chain (1.1) | same-witness `core.T`, `A.keys`, `payload.source`, `payload.sourceLaws` | `C130s17.s2ArisingCore`; `C130s2.s2DepthTwoKeyChain`; `C132fd0.s2SourceDataTwo`; `s2SourceLawsTwo_of` fired by `C132rp10b.s2Mu3_hex` and `C132kp6b.s2Mu3_hconv` | **LEAN PREFIX PROVED**; analytic GN dictionary still GAP |
+| `φ ∈ KP(μ)` for the exact recentered polynomial | `payload.keyPolynomial` with `phi := B'.Phi` | `C132kp4.s2Mu3KeyPoly_Φ2` proves this only for the carried `Φ2 = keyAt 2` | **GAP at actual recentered `B'`** |
+| `φ` not μ-equivalent to `φ_r` | `payload.tangentClass` | none; for the only currently tied exact key `Φ2 = keyAt 2`, `s2LandedPrefix_tangentClass_impossible` proves the required negation impossible by reflexivity | **PROVED MISSING for current key** |
+| monic `g ∈ O_v[x]` | `payload.monicInput`, with `g := B.F` | `C130s17.s2InputPolynomial_monic`; generically `(B.natDegree_F).2` | monicity **PROVED**; completion/base dictionary **GAP** |
+| `-lambda` a slope of `N^-_{r+1}(g)` | `payload.slope`, `slope_pos`, and (production) its exact slope-residual dictionary | no recenter-step slope export in `ArisingCore`, `ChainRealization`, `RealizedInput`, or S2 frontier | **GAP** |
+| `psi` a prime factor of `R_{r+1,lambda}(g)` | `psi_monic`, `psi_irreducible`, `residual_factorization` | μ3 normalized/graded residual operators are landed, but no selected slope factor for this input is exported | **GAP** |
+| `ord_psi(R_{r+1,lambda}(g)) = 1` | `residual_multiplicity_one` together with the factorization | no multiplicity-one theorem/export for the recentered successor | **GAP** |
+| theorem-selected factor `g_{lambda,psi}` is the polynomial MP1 discusses | `leaf`, `leaf_monic`, `leaf_dvd_input`, `exactLeaf : leaf = B'.Phi` | none | **GAP; mandatory identification** |
+| actual same-chain recentering `B'.Phi = B.Phi - Lambda` | outer `RecenterStep` equality, under the same realization witness | C.110 proves generic constant-shift development identities, but no S2 realization transition exports an external `B'` | **GAP** |
+| MP1 peel items 2--4 | `Nonempty (MP1StepCore B B')` | no S2 successor quotient/interface exporter | **GAP** |
+
+`S2LandedPrefix` and `s2LandedPrefix` (`REX_probe.lean:127-157`) are the maximum honest
+construction from current landed data: the depth-two chain, complete μ3 source laws, exact
+carried key, its key-polynomialhood, and monicity.  The probe then machine-checks that this
+carried key cannot satisfy the tangent-class hypothesis (`s2LandedPrefix_tangentClass_impossible`).
+No `sorry` is used to cross the remaining rows.
+
+### 5. GMN Theorem 2.11 boundary
+
+GMN, *Higher Newton polygons in the computation of discriminants and prime ideal
+decomposition in number fields*, Trans. AMS 364 (2012), Theorem 2.11 is the theorem labelled
+`phir` in `docs/references/HigherNewton.tex`.  It says that, for the already fixed type `t`,
+one can construct a particular monic polynomial `phi_r` **of that type** with
+`R_{r-1}(phi_r) ~ psi_{r-1}`; that constructed polynomial is irreducible and has the stated
+degree, order, and value.  It does not make an arbitrary recentering/divisor into that
+polynomial.  A GMN route therefore needs both a refined-type/residual export and an equality
+between its constructed representative and `B'.Phi`; neither is landed.
+
+### 6. Probe status
+
+Required command:
+
+```text
+cd leanfinal
+timeout 580 ~/.elan/bin/lake env lean scratch/REX_probe.lean
+```
+
+Exit 0.  Zero `sorry`; all printed declarations depend exactly on
+`[propext, Classical.choice, Quot.sound]`.  No landed `.lean`, leanspec file, or existing
+scratch file was edited.
