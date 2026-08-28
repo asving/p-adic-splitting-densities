@@ -704,6 +704,65 @@ or replaces the GN leg by the direct key-irreducibility route.  After such a rep
 remaining exits are provenance binding, all five L2E acceptance tests, and G10's universal
 theorem families.  One occurrence without G10 would still not be a `LadderSupplyLive₂` result.
 
+### 11.9 [G5F 2026-08-28] μ5 refinement admissibility — PASS, operator only
+
+**Adjudication: PASS for G5's stated admissibility/layer question; the stop-if-false line is
+not triggered.**  The triple `(e',f',u')=(1,1,171)` is a source-faithful numerical shape for
+an equal-key-degree ordinary augmentation/refinement over the already constructed depth-four
+valuation.  It is not, and must never be encoded as, a fifth proper `DeepTower` stage.
+
+The primary-source clauses are decisive:
+
+* Fernández--Guàrdia--Montes--Nart, *Residual ideals of MacLane valuations*, author PDF
+  `docs/references/FGMN_residual_ideals_2015_authorpdf.pdf`: Definition 1.6 (PDF p. 5)
+  constructs `[μ;(φ,ν)]` from `φ ∈ KP(μ)` and `ν>0`; it imposes no key-degree-growth
+  condition.  Section 3 (PDF p. 11) says exactly: *“A valuation μ ∈ V is called inductive
+  if it is attained after a finite number of augmentation steps starting with μ₀.”*
+  Section 3.1 (PDF p. 11) distinguishes a MacLane chain from an **optimal** MacLane chain:
+  strict key-degree growth belongs to optimality, not to augmentation or inductivity.
+  Lemma 3.4 (PDF p. 12) treats two consecutive augmentations whose keys have equal degree
+  and proves that they collapse to the single augmentation
+  `[μ;(φ',ν+ν')]`.  Finally, §3.2 equation (7) (PDF p. 14) gives
+  `m_i=e_{i-1}f_{i-1}m_{i-1}`.  Thus `e'=f'=1` gives `m_new=m_old`; it is the
+  equal-degree case the source permits and compresses, not a new optimal rung.  Theorem 5.7
+  and its proof (PDF p. 23) likewise construct a key with degree `e_r (deg ψ) m_r`; with
+  `e_r=1` and linear `ψ`, this degree is `m_r`.
+* Alberich-Carramiñana--Guàrdia--Nart--Poteaux--Roé--Weimann, *Polynomial Factorization
+  Over Henselian Fields*, `docs/references/s10208-024-09646-x.pdf`: §3.1 (PDF p. 14,
+  journal p. 644) defines the ordinary augmentation `[μ;φ,γ]` under the clause
+  `μ(φ)<γ` and states `deg(ν)=deg(φ)`.  Definition 3.2 (PDF p. 15, journal p. 645)
+  requires `deg(μ_n)<deg(μ_{n+1})` for an ordinary step that is retained in an MLV chain.
+  The worked refinement discussion (PDF p. 25, journal p. 655) says that the equal-degree
+  chain is not an MLV chain, calls the non-growing case a refinement step, and replaces the
+  old type/key rather than appending a depth.  Definition 5.5 (PDF p. 35, journal p. 665)
+  states: *“A refinement step ... yields a unique new type ... with moreover
+  `deg(ϕ)=deg(φ)`.”*  Its immediately following characterization is a one-sided principal
+  Newton polygon with `e_rel(μ_λ)=1` and residual `(y-ζ)^ℓ`, `ζ≠0`; hence the new residual
+  factor is linear, so the refinement invariants have `e'=1`, `f'=deg(y-ζ)=1`.
+
+For this row, the old cleared key value is `170` and the proposed new absolute value is
+`171`, so `170<171` is precisely the positive-increment clause `μ(φ)<γ`; also
+`gcd(171,1)=1`.  The FGMN degree formula gives
+`1·1·D₄=1·1·16=16`, so the key degree does not grow.  These checks establish that the
+numeric row is admissible as the next/refined valuation's **operator parameters**.
+
+The Lean carrier boundary agrees exactly.  `C130pk.lean:110-111` indexes
+`FGMNCalculus W e' f' u'` by a pre-existing `W : DeepTower ... r`; the parameters do not
+change `r`.  Conversely, `C83.lean:148-150` requires
+`DeepTower.hproper : 2 ≤ e i * f i` at every stage `i≥2`.  A hypothetical fifth row with
+`e 5=f 5=1` would require `2≤1`, and the cumulative degree would stay `16`, violating the
+strict-growth invariant.  The machine proof is `leanfinal/scratch/G5F_probe.lean`; it proves
+the general `unit_row_not_a_proper_stage`, its stage-five specialization, and the two degree
+arithmetic teeth.  Therefore the `(1,1,171)` row **MUST remain operator-level data over the
+depth-four tower**.  Forging a stage-five `DeepTower` is impossible, not merely undesirable.
+
+Scope fence: the triple alone does **not** prove that a particular polynomial execution is
+an OM refinement step.  Definition 5.5 additionally demands the unique-new-type,
+one-sided-principal-polygon, and residual pure-power clauses.  G5 passes only the
+source-admissibility and carrier-layer questions; G0/G1/G8/G9 (or §12's superseding direct
+route) own occurrence/provenance.  Treating this G5 result as an occurrence witness would be
+the exact overclaim, but it is not part of the adjudicated claim.
+
 ## 12. [A8D 2026-08-28] binding A-I.8 adjudication: direct key route
 
 This section supersedes §11 wherever that section keeps the MP1 branch stopped at G9 or
