@@ -164,7 +164,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | LVS | the live vartheta supplier (math + Lean surface; r=2 vacuity check first) | IN FLIGHT (codex sol-HIGH, ~08:45) |
 | REX | the recenter-step export + MP1CarrierLive; ★ adjudicate whether MP1R's countermodel refutes the funnel (possible A-I.7) | IN FLIGHT (codex sol-HIGH, ~08:45) |
 | CFS | the BlockFrontier family sweep | DONE (bbad3a22) — F1.1 head blockFactor_spec + 5 reads unconditional (Lean core + the dissection cite; recorded 0 < F.h binder); F1.2–F1.8 blocked on ONE exporter |
-| CSX | the exported context-split theorem (MH14 steps 3–6 public; unblocks F1.2–F1.8) | IN FLIGHT (Sonnet, ~09:05) |
+| CSX | the context-split exporter | DONE (5f11bd2e) — context_split re-exports f = blockFactor·g₂·Wf with the F-row clauses; Lean core + the dissection cite |
+| FRT | fill F1.2–F1.8 on context_split (+ the quotient bridge) → C134frt | IN FLIGHT (Sonnet, ~09:15) |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly + THE ENGINE are unreported milestones |
 
 ## 7. Resume protocol (fresh agent)
