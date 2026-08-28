@@ -1,21 +1,17 @@
 # PROJECT STATE — state-now (rewritten 2026-08-24; keep it this way)
-
 **This file is the CURRENT STATE, not a history.** It is rewritten in place at every
 milestone and must stay short enough to re-read in full before any orchestration decision.
 Raw dated history: `docs/LOG.md` (append-only, started 2026-08-24) and
 `docs/archive/PROJECT_STATE_pre-2026-08-24_ARCHIVE.md` (the old append-log, entries through
 #112 — consult only for provenance). Resumability test applies: a fresh agent must be able
 to continue from this file + the repo alone.
-
 ## 1. Goal and standing protocol
-
 **GOAL:** prove the main theorem — the uniformity-in-`p` of splitting densities, the
 `leanfinal/` capstone `UniformityStatement` via `uniformity_of_capstoneHypotheses` —
 **COMPLETELY, modulo literature cites** (published results only, restricted to the
 p-adic-densities and Montes-algorithm literature — Asvin's /goal, 2026-08-24; **his own
 paper is never citable**). Target: all 1236 signed names disposed (proved / carrier-landed / cite),
 capstone `#print axioms` = Lean core + the declared cites, no `sorry`, no vacuity.
-
 **PROTOCOL (Asvin, 2026-08-24):** owner input is needed ONLY for literature-cite Lean
 transcriptions, and only as a SECONDARY (non-blocking) check — `docs/CITE_REVIEW_LIST.md`
 is his reading queue. Everything else — re-signs of refuted statements, field lists,
@@ -23,7 +19,6 @@ design decisions — proceeds autonomously under the **end-to-end-proof criterio
 choice is right iff it leads to a completed proof. Honesty invariants unchanged: no fake
 axioms, no `sorry`-shaped discharges, statements never weakened silently (re-signs are
 recorded amendments), faithfulness entry per cite, `sorry`-free ≠ non-vacuous.
-
 **FLEET:** Codex `codex exec -c model_reasoning_effort=high` for new math + blueprint
 conversion; default effort for Lean transcription; Fable subagents allowed (API permitting).
 Disciplines in force: commit-early ratchet; the ORCHESTRATOR wires roll-ups (never units);
@@ -31,9 +26,7 @@ per-file `lake env lean` (never bare `lake build` on this NFS box; roll-up targe
 `lake build Uniformity.ChapC` are fine); LANDED/SUPPLY/BLOCKED verdicts from every unit;
 never pipe an output you need through head/tail; never trust a bare name-grep
 (comment-strip or `#print axioms`).
-
 ## 2. What is proved (honest picture)
-
 * **Legacy `lean/` project (untouched since 07/08):** the order-0 σ-keyed capstone
   `OM.RealInstanceV2.montes_unconditional` + wild wave 1 — machine-checked, Lean-core,
   conditional on `htameFE`/`hExhaust` as recorded there. Not this campaign's workstream.
@@ -54,9 +47,7 @@ never pipe an output you need through head/tail; never trust a bare name-grep
   conditional on `w : S2LevelOneThreshold` + `IsAdicComplete`), the `jd0`/`genhnBox2`
   placeholders + `w1` debt (A-I.1), and the five I-D12 `True` bodies (NS7Termination —
   the ready-to-declare C.94 cite — WindowPinningAt, GenhnHEAt, GenhnTow1At, TypeOfFaithful).
-
 ## 3. Trusted base (cites)
-
 Declared-and-landed allowlist (SEVEN): `exists_slope_factorization`, `fgmn_residual_mul`,
 `agnprw_termination`, `bBox1_cite`, `exists_dvDissection`, `fgmn_dvDissection_factor_eq`,
 and NEW (2026-08-24) `fgmn_dv_exact_mul` (C66b — the engine's exact half; FGMN Thm 2.8 +
@@ -72,9 +63,7 @@ U7 §9 Q8, end-to-end criterion); the discharge path is a future `FGMNChainReali
 bridge (OPEN-DICT-1..4, U7 §8). U9 (codex HIGH) is adjudicating U7 §9 Q1–Q7 and drafting
 the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
 `lean/notes/SEMANTIC_AUDIT_LOG.md`.
-
 ## 4. The live frontier (what blocks what) — rewritten 2026-08-26
-
 1. **The CapstoneHypotheses INHABITATION campaign (the new top item — RSGN closed the
    assembly gate 2026-08-26).** With I.15–I.18 landed, `UniformityStatement` reduces to
    inhabiting `CapstoneHypotheses n`. The named debts, in likely order of attack:
@@ -122,9 +111,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    (2026-08-26: 57 files wired, all 8 targets + Leanspec.ChapI green; B86/G78 are
    roll-up CONSUMERS, never wire them — cycle). Wiring rule now: sorted import lists,
    append new nodes on landing.
-
 ## 5. Instruments and reusable assets
-
 * **Probe frames** (build once, refute cheaply): `(s2Frame, L₀, g₀)` over ℤ_[2]
   (C35b/C61/C67 — labelled-but-not-x-pure witness); `(linFrame, linTower)` any-DVR
   (C53c — first `TowerDatum` value; `IsTestKey` witnessed); `(s2Tower, f₅)` (C80 —
@@ -136,9 +123,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
   (C.48 — the protected exact-degree shape).
 * **Tools:** `spec/frontier.py`, `spec/census_driver.py` (+`signed_name_census.py`
   comment-stripping parser), `verification/dv_ledger_cert.py`.
-
 ## 6. In-flight ledger (update on every change)
-
 | unit | what | status |
 |---|---|---|
 | (archive) | everything through 2026-08-28 ~00:00 — capstone assembly (I.15–I.18), the μ₃ campaign CLOSED UNCONDITIONAL (`s2Mu3_calculus_nonempty` at (2,1,21), C132kp6b + the signed GENTOW consumer `s2Mu3_gentow5w_two`, C132sg2/sg3), VAUD's three ladder negatives + MHG's Hensel-gate proofs, the GCW chain (A-I.5: GC13Wiring + WiredGentowDemand; the wired S2 witness + first GentowWWindow at own exports, IFC1–IFC4), FML1 lift tails (U4 unconditional/target-free), Hensel promotions MH.1-core (C133mh1), MH.8+X1 (C133mh8), and MH3's CHECKPOINT: Theorem M all three clauses + the cite payoff `fgmn_dv_exact_mul_of_twistLaw`, conditional on the ONE root `M1TwistProductLawStatement`; `m1DigitFaithful` unconditional (C133mh3) | ALL DONE — LOG + git log; every landing orchestrator-verified; pushed through a55fbd43 |
@@ -154,13 +139,10 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | MH9M | the above-line mixed read law → Lemma S → Theorem A (MATH; codex sol-HIGH, brief_MH9M) | IN FLIGHT (~04:45) |
 | H0LEG | the h=0 leg + the fgmn_dv_exact_mul retirement (allowlist −1) | IN FLIGHT (Fable, ~04:45) |
 | LVT | enact VAUD's vartheta owner amendment | DONE (a38c26af) — IFC5.lean supersession (six live-range decls + OLD⟹NEW pins); IFC0 byte-frozen tension record; leanspec comment record; `LadderFieldLive` is the ladder target; A-I.6 (CapstoneHypotheses.ladder rebinding) adjudication QUEUED for the codex wave |
-| MH10 | Theorem H0 `dvResidualBezout` (mathlib-only UFD arithmetic) → C133mh10 | IN FLIGHT (Sonnet) |
 | MH0A6 | MH.0a + MH.0c remainder + MH.6 (M4) | DONE (ae36c7a1) — C133mh0.lean, 7/7 Lean-core, every clause unweakened; MH.4 is the only small pre-assembly node left |
 | (wave-c) | six codex sol-HIGH units 03:04–03:27 | ALL LANDED (ce301df1) — ★AI6: ¬CapstoneHypotheses 4 PROVED (probe orchestrator-re-verified) ⟹ A-I.6 REBIND FORCED, exact acyclic diff delivered; MP1R: unrestricted MP1Carrier FALSE (countermodel re-verified), blocker = the producer-side recenter export; LB1G: RESTRICT-ANYWAY + LB1CarrierLive designed; WLE: exporter designed-anchored, deep inhabitants open; SMGR: GR-7b-0R PROVED, I+/II+ partial (SMGR-I-COMB, SMGR-RSE named); MSF3: MSF j≥3 REFUTED-BY a depth-6 secant, MSF-GENRE is the open replacement, GSP-n ⇒ U(n), WASH-n for separated μ=2 families n≥5 |
 | EXPO | public exposition refresh (standing milestone obligation) | PENDING — μ₃ closure + capstone assembly are unreported milestones |
-
 ## 7. Resume protocol (fresh agent)
-
 Read this file whole → `git log --oneline -15` → the in-flight ledger (§6) → act on the
 frontier (§4) top-down. The map of the repo is in the repo CLAUDE.md; the blueprint is
 `blueprint/CHAP-*.md`; signed statements live in `leanspec/Leanspec/Chap*.lean`
