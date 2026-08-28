@@ -17,5 +17,6 @@ import Uniformity.ChapI.IFC3
 import Uniformity.ChapI.IFC4
 import Uniformity.ChapI.IFC5
 import Uniformity.ChapI.IFC6
+import Uniformity.ChapI.IFC7
 import Uniformity.ChapI.I10_I15_I18
 import Uniformity.ChapI.I21
