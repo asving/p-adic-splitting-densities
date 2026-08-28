@@ -184,7 +184,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | TSTK | carrier rows T1–T5 | DONE (fef6aa98) — the depth-4 tower datum STANDS (s2WitnessFour, pure data per Gate 10); g8.s key proof + depth-3 KeyChain; both normalizer pins; planned deferrals recorded; the rfl-timeout fleet lesson |
 | L2E0 | the engine roots | DONE — L2E-00/01/02 landed S2-free at arbitrary LevelDatum (8/8 Lean-core); wired |
 | L2E1 | L2E-03/04/05 | DONE — 03+05 landed + dv2Res_mul (NO root factor); the L2E-00 twist shape a MIS-TRANSPOSITION (the normalized read.s carry cancels by construction — the τ=1 story one level up); corrected shapes → L2E2 |
-| L2E2 | corrected shapes + L2E-06/07/08 (support product, min/max incl. F13A.s reverse inequality, pin-height addition) → C136l2e2 | IN FLIGHT (codex sol-HIGH, ~16:00) |
+| L2E2 | corrected shapes + L2E-06/07/08 | DONE (2daa5ca7) — the clean normalized law + the FULL side bank incl. F13A.s reverse inequality; the carry confined to the absolute read |
+| L2E3 | CLOSE the engine: L2E-09/10/11 + the FIVE acceptance tests (signed F1.4/F1.5/F1.6 + D3-03/D3-10) → C136l2e3 | IN FLIGHT (codex sol-HIGH, ~16:55) |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
 | D3A | μ₄ stack base D3-00/01/02 | DONE — the dv3 layer + s2Hgt₄ (tooth 85) + the endpoint bank modulo the explicit Dv3ResSurv; 52/52 Lean-core |
@@ -199,7 +200,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | CHA | the unattacked capstone fields | DONE (1be8359f) — ★ a1 CLOSED at every degree (menuLawAt_all, signed bytes unchanged; MENU-FAMILY retired); a0 reduced to FIVE named cubic value theorems via the landed socket; μ=3 HE slice packaged; rest re-based honestly (I.03 audit-belief refutation carried to review) |
 | UNT | physical cite retirement | DONE (a163867d) — axiom → theorem in place, statement bytes unchanged; allowlist a TRUE SIX; C131ac.s whole pow chain now pure Lean-core; cycle broken by one verbatim lemma move (C131ae0.lean) |
 | EXPO | public exposition refresh DRAFT | IN FLIGHT (Fable, resumed after a 529, ~16:30) |
-| R0 | realization row R0 (depth-4 TerminalReceiver/LaurentNormalizer at s2WitnessFour) → C136r0 | IN FLIGHT (Sonnet, ~16:30) |
+| R0 | realization row R0 | DONE (2daa5ca7) — the depth-4 receiver/normalizer with pins at 5/21/85/171; first-attempt, zero repairs |
 
 ## 7. Resume protocol (fresh agent)
 
