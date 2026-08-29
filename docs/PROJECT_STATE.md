@@ -216,7 +216,9 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | C0123 | the consumer legs | ★★★ DONE (ba94a4e7 area) — the export INHABITED at X/j=3; the SIGNED wired GENTOW demand at own exports; THE FIRST LIVE-INDEX VarthetaRes; conditionality exactly the keystone's |
 | C56R | the final occurrence rows: C5r (★ the first honest MidPeelEmission at the R8r input) + C6r (the deepTwist tooth, same X) → C136c5 | IN FLIGHT (Fable, ~05:55) |
 | BRIDGE | the dissection-skeleton bridge | DONE (75c79104) — exists_realizesSkeletonAt_of_dissection with ONE scoped hypothesis (hbelow1 → GC1); §§1–3 unconditional; 12/16 nodes |
-| GC | ★★ THE STOP-LINE: finiteGenreCoverAt_all (exhaustive/disjoint/decreasing/type-sound; hbelow1's discharge is the new work) → IFCG9 | IN FLIGHT (codex sol-HIGH, ~06:55; weekly 91% — this IS the designated use) |
+| GC | the stop-line's honest partial | DONE (9331f5be) — DECREASING landed; the carrier's disjointness insufficiency MACHINE-PROVED (+ the StrongRealizesFaceAt repair defined); the exhaustion kernel ISOLATED as one named statement; the cover deliberately NOT declared from the weak bank |
+| C56R | the final occurrence rows | ★★★ DONE (c1287ebe area) — the FIRST MidPeelEmission (bindings by rfl) + the deepTwist tooth at the same X; the occurrence phase COMPLETE |
+| GCF | the repair legs: the STRONG bridge + disjointness on the strong carrier (→ the cover conditional on ONLY the exhaustion kernel) → IFCG10 | IN FLIGHT (Fable, ~07:10) |
 | EXPO | the public exposition refresh | ★ PUSHED (site aaf1ddb) — stage 13 live: draft → 28-finding audit → fix → clean skim → orchestrator spot-check; carry-over: maps.json/story.json still ignore stage 13 (graph pipeline absent) |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
