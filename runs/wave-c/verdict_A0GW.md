@@ -2,9 +2,95 @@
 
 Date: 2026-08-29.  File: `leanfinal/Uniformity/ChapI/IFCG13.lean` (NEW).
 
-STATUS: SKELETON LANDED, elaborating with sorries (21 statements type-checked against the
-landed corpus on first pass; single fix pending: classical `DecidableEq` for
-`fieldPattern`'s `normalizedFactors`).
+STATUS: FINISHER PASS COMPLETE UNDER THE THREE-ROUND RULE.  Eight of fourteen original
+holes are closed; six retain `sorry` with their exact stopping subgoals recorded below.
+
+## Per-hole status
+
+* `coneSum_summable`: STOPPED after three repair rounds; `sorry` retained.  The comparison
+  reduces the target to the finite-tuple geometric family, but the successor step timed
+  out at `whnf` / `synthesize pending MVars` for `Fin.succFunEquiv`.  The exact remaining
+  third-round subgoal was:
+
+      case zero
+      x : ℝ
+      hx0 : 0 ≤ x
+      hx1 : x < 1
+      ⊢ Summable fun v => 1
+
+* `loopFactor_eq`: STOPPED after three repair rounds; `sorry` retained.  The reduction
+  through `coneSum_single` reached the intended singleton geometric series, but the
+  constrained simplifier did not eliminate its `if True` before rewriting the loop
+  exponent.  The exact remaining third-round subgoal was:
+
+      q ^ m * (q - 1) *
+          ((∑ x ∈ if True then {1} else ∅,
+              q⁻¹ ^ skeletonExp (loopSkeleton m) (fun _ => x)) /
+            (1 - q⁻¹ ^ (m * (m + 1) / 2))) =
+        (q - 1) / (q ^ bigTLoop m - 1)
+
+* `n2_gate_split`: STOPPED after three repair rounds; `sorry` retained.  The specialized
+  degree-two single-face and two-degree-one-face cone identities both compile.  After
+  substituting them and the loop law, the exact remaining third-round subgoal was:
+
+      ⊢ -1 - q * (-q + q ^ 3)⁻¹ + q ^ 2
+            + q ^ 3 * (-q + q ^ 3)⁻¹ = q ^ 2
+
+* `n3_recovery_ram`: CLOSED.  Uses the fifth component of
+  `IFC7.genuineDensity_three_exact`, unfolds `PhiR`, and applies `n3_gate_ram` at the
+  cast residue-cardinality bound `q ≥ 2`.
+* `n3_recovery_split`: CLOSED by the analogous first component and `n3_gate_split`.
+* `n2_gate_inert`: CLOSED.  The degree-two irreducible face gives
+  `x^5/(1-x^3)`; all loop and geometric denominators are proved nonzero from `q ≥ 2`,
+  and the resulting identity closes by `field_simp; ring`.
+* `n2_gate_ram`: CLOSED from the denominator-two face formula `x^3/(1-x^3)` with the
+  same explicit nonvanishing gates.
+* `n3_gate_inert`: CLOSED from the cubic-residual cone `x^9/(1-x^6)` and the mass-three
+  loop denominator; all denominators are nonzero for `q ≥ 2`.
+* `n3_gate_ram`: CLOSED from the denominator-three unit-class decomposition
+  `(x^4+x^6)/(1-x^6)`.
+* `n3_gate_linInert`: CLOSED.  Uses `n2_gate_inert`, the `(1,2)` staircase
+  `x^12/((1-x^6)(1-x^3))`, its `(2,1)` reverse `x^10/((1-x^6)(1-x))`, and explicit
+  nonvanishing gates.
+* `n3_gate_split`: CLOSED.  In addition to the preceding cone laws, this proves and uses
+  the three-face staircase `x^13/((1-x^6)(1-x^3)(1-x))`; the result is exactly the landed
+  split cubic form.
+* `coneSum_single`: STOPPED after three repair rounds.  Unit-class decomposition,
+  `h = b*t+u`, and the per-class geometric ratio were established on paper, but the
+  dependent equivalence between `ConeType [f]` and the filtered unit-class product did
+  not elaborate without a large transport proof.  Exact remaining subgoal:
+
+      coneSum x [f] =
+        (∑ u ∈ (Finset.Icc 1 f.1).filter (fun u => Nat.Coprime u f.1),
+            x ^ skeletonExp [f] (fun _ => u)) /
+          (1 - x ^ (f.1 * (faceResDeg f * (faceLen f + 1)) / 2))
+
+* `coneSum_unit_denominators`: STOPPED after three repair rounds.  The affine coefficients
+  and all specialized length-two/length-three instances used by the gates now compile,
+  but the arbitrary-length staircase equivalence remained.  Exact remaining subgoal:
+
+      coneSum x s = x ^ skeletonExp s (fun k => k.1 + 1) /
+        ∏ k : Fin s.length,
+          (1 - x ^ ((∑ j ∈ Finset.univ.filter
+            (fun j : Fin s.length => k ≤ j), expCoeffD s j) / 2))
+
+* `n3_gate_linRam`: STOPPED after three repair rounds.  The obstruction is exactly the
+  two recorded mixed-denominator cone identities, for which neither general closed-form
+  theorem above applies:
+
+      coneSum x [((1 : ℕ), rp11), ((2 : ℕ), rp11)]
+        = x^10 / ((1-x^6)*(1-x^3))
+      coneSum x [((2 : ℕ), rp11), ((1 : ℕ), rp11)]
+        = x^6 / ((1-x^6)*(1-x))
+
+  Once substituted, the gate is a routine denominator-safe rational identity.  The exact
+  theorem subgoal retained is:
+
+      n3Density 0 (clusterP2 shallow2Ram q) (clusterP3 shallow3LinRam q) q =
+        q * (q ^ 3 + q + 1) /
+          ((q + 1) * (q ^ 4 + q ^ 3 + q ^ 2 + q + 1))
+
+No other original holes remain pending.
 
 ## Design (fixed, hand-verified before any Lean)
 
@@ -25,15 +111,14 @@ densities from the weights = the landed G51 laws `q/(2(q+1)), q/(2(q+1)), 1/(q+1
 
 ## File plan / status
 
-* §1 exponent calculus (RW0 core): defs LANDED; proofs PENDING (this increment).
+* §1 exponent calculus (RW0 core): defs and proofs CLOSED, including the loop exponent pin.
 * §2 census interface (`UnitPatternCensus`/`PatternCensus` — the carried FF remainder,
   FF2 discharges): stated.
-* §3 cone sums (RW1): `coneSum` def landed; summability + general single-face closed form
-  (any `b`, unit-class decomposition `h = bt + u`) + all-`b=1` staircase closed form: stated.
-* §5 gates: n=2 (3 theorems, vs G51 forms) and n=3 (5 theorems, vs IFC7 §9 forms) SYMBOLIC
-  statements landed; by-name recovery `n3_recovery_ram`/`n3_recovery_split` against
-  `IFC7.genuineDensity_three_exact` stated.  n=3 needs two additional mixed-denominator
-  pair closed forms (to add).
+* §3 cone sums (RW1): specialized closed forms required by the closed gates are proved;
+  the three general statements retain the stops recorded above.
+* §5 gates: n=2 inert/ramified CLOSED; split stopped.  n=3 split/linear-inert/inert/ramified
+  CLOSED; linear-ramified stopped on the two mixed cone identities.  Both by-name
+  recoveries against `IFC7.genuineDensity_three_exact` are CLOSED.
 * §4 executable mirror (n=4 vs blueprint §8 table): TODO.
 * §6 RW2 package (`RatWeight`, q ≥ 2 denominator gate): structure landed, nonvanish lemma
   stated.
@@ -49,4 +134,5 @@ densities from the weights = the landed G51 laws `q/(2(q+1)), q/(2(q+1)), 1/(q+1
 ## AxCheck
 
 Target: Lean core only on §1/§3/§5/§6 (cover import is carrier binding only).
-Current: skeleton footer prints `sorryAx` (expected mid-unit).
+Current: the file compiles; declarations downstream of the six retained holes carry
+`sorryAx`.  All closed arithmetic/exponent and denominator arguments use Lean core only.

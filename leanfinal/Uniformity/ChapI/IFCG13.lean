@@ -371,6 +371,192 @@ theorem coneSum_unit_denominators {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
 
 end ConeSum
 
+private theorem cone_b1_d2 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
+    (pat : FactorizationType) (hd : pat.degree = 2)
+    (hv : ValidFace ((1 : ℕ), pat)) :
+    coneSum x [((1 : ℕ), pat)] = x ^ 5 / (1 - x ^ 3) := by
+  rw [coneSum_single hx0 hx1 hv]
+  norm_num [faceResDeg, faceLen, hd, skeletonExp_singleton, faceExp]
+
+private theorem cone_b2_d1 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
+    (pat : FactorizationType) (hd : pat.degree = 1)
+    (hv : ValidFace ((2 : ℕ), pat)) :
+    coneSum x [((2 : ℕ), pat)] = x ^ 3 / (1 - x ^ 3) := by
+  rw [coneSum_single hx0 hx1 hv]
+  have he : (Finset.Icc 1 2).filter (fun u => Nat.Coprime u 2) = {1} := by
+    native_decide
+  rw [he]
+  norm_num [faceResDeg, faceLen, hd, skeletonExp_singleton, faceExp,
+    Finset.filter_singleton, Finset.Icc, Finset.sum_range_succ]
+
+private theorem cone_b1_d3 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
+    (pat : FactorizationType) (hd : pat.degree = 3)
+    (hv : ValidFace ((1 : ℕ), pat)) :
+    coneSum x [((1 : ℕ), pat)] = x ^ 9 / (1 - x ^ 6) := by
+  rw [coneSum_single hx0 hx1 hv]
+  norm_num [faceResDeg, faceLen, hd, skeletonExp_singleton, faceExp]
+
+private theorem cone_b3_d1 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
+    (pat : FactorizationType) (hd : pat.degree = 1)
+    (hv : ValidFace ((3 : ℕ), pat)) :
+    coneSum x [((3 : ℕ), pat)] = (x ^ 4 + x ^ 6) / (1 - x ^ 6) := by
+  rw [coneSum_single hx0 hx1 hv]
+  have he : (Finset.Icc 1 3).filter (fun u => Nat.Coprime u 3) = {1, 2} := by
+    native_decide
+  rw [he]
+  norm_num [faceResDeg, faceLen, hd, skeletonExp_singleton, faceExp]
+
+private theorem cone_b1d1_pair {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
+    (p₁ p₂ : FactorizationType) (h₁ : p₁.degree = 1) (h₂ : p₂.degree = 1)
+    (hv : ∀ f ∈ [((1 : ℕ), p₁), ((1 : ℕ), p₂)], ValidFace f) :
+    coneSum x [((1 : ℕ), p₁), ((1 : ℕ), p₂)]
+      = x ^ 6 / ((1 - x ^ 3) * (1 - x)) := by
+  have he : skeletonExp [((1 : ℕ), p₁), ((1 : ℕ), p₂)] (fun k => k.1 + 1) = 6 := by
+    unfold skeletonExp
+    change (∑ i : Fin 2, faceExp
+      (baseY [((1 : ℕ), p₁), ((1 : ℕ), p₂)] (fun k => k.1 + 1) i.1)
+      ([((1 : ℕ), p₁), ((1 : ℕ), p₂)].get i) (i.1 + 1)) = 6
+    norm_num [Finset.univ_fin2, faceExp, baseY, dropAt, faceResDeg, faceLen, h₁, h₂]
+  have hd0 : expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] (0 : Fin 2) = 4 := by
+    unfold expCoeffD
+    change p₁.degree * (2 * faceLen ((1 : ℕ), p₂) + faceLen ((1 : ℕ), p₁) + 1) = 4
+    norm_num [faceLen, faceResDeg, h₁, h₂]
+  have hd1 : expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] (1 : Fin 2) = 2 := by
+    unfold expCoeffD
+    change p₂.degree * (2 * 0 + faceLen ((1 : ℕ), p₂) + 1) = 2
+    norm_num [faceLen, faceResDeg, h₂]
+  have hc0 :
+      (∑ j ∈ Finset.univ.filter (fun j : Fin 2 => (0 : Fin 2) ≤ j),
+        expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] j) / 2 = 3 := by
+    norm_num [Finset.univ_fin2, hd0, hd1]
+  have hc1 :
+      (∑ j ∈ Finset.univ.filter (fun j : Fin 2 => (1 : Fin 2) ≤ j),
+        expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] j) / 2 = 1 := by
+    have hf : Finset.univ.filter (fun j : Fin 2 => (1 : Fin 2) ≤ j) = {1} := by
+      native_decide
+    rw [hf]
+    norm_num [hd1]
+  rw [coneSum_unit_denominators hx0 hx1 hv (by simp)]
+  rw [he]
+  change x ^ 6 / (∏ k : Fin 2, (1 - x ^ ((∑ j ∈ Finset.univ.filter
+    (fun j : Fin 2 => k ≤ j), expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] j) / 2))) = _
+  rw [Fin.prod_univ_two, hc0, hc1, pow_one]
+
+private theorem cone_b1_pair_data {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
+    (p₁ p₂ : FactorizationType)
+    (hv : ∀ f ∈ [((1 : ℕ), p₁), ((1 : ℕ), p₂)], ValidFace f)
+    (E c₀ c₁ : ℕ)
+    (he : skeletonExp [((1 : ℕ), p₁), ((1 : ℕ), p₂)] (fun k => k.1 + 1) = E)
+    (h0 : expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] (0 : Fin 2) = c₀)
+    (h1 : expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] (1 : Fin 2) = c₁) :
+    coneSum x [((1 : ℕ), p₁), ((1 : ℕ), p₂)]
+      = x ^ E / ((1 - x ^ ((c₀ + c₁) / 2)) * (1 - x ^ (c₁ / 2))) := by
+  have hc0 :
+      (∑ j ∈ Finset.univ.filter (fun j : Fin 2 => (0 : Fin 2) ≤ j),
+        expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] j) / 2 = (c₀ + c₁) / 2 := by
+    norm_num [Finset.univ_fin2, h0, h1]
+  have hc1 :
+      (∑ j ∈ Finset.univ.filter (fun j : Fin 2 => (1 : Fin 2) ≤ j),
+        expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] j) / 2 = c₁ / 2 := by
+    have hf : Finset.univ.filter (fun j : Fin 2 => (1 : Fin 2) ≤ j) = {1} := by
+      native_decide
+    rw [hf]
+    simp [h1]
+  rw [coneSum_unit_denominators hx0 hx1 hv (by simp), he]
+  change x ^ E / (∏ k : Fin 2, (1 - x ^ ((∑ j ∈ Finset.univ.filter
+    (fun j : Fin 2 => k ≤ j), expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] j) / 2))) = _
+  rw [Fin.prod_univ_two, hc0, hc1]
+
+private theorem cone_b1_pair_d1_d2 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
+    (p₁ p₂ : FactorizationType) (h₁ : p₁.degree = 1) (h₂ : p₂.degree = 2)
+    (hv : ∀ f ∈ [((1 : ℕ), p₁), ((1 : ℕ), p₂)], ValidFace f) :
+    coneSum x [((1 : ℕ), p₁), ((1 : ℕ), p₂)]
+      = x ^ 12 / ((1 - x ^ 6) * (1 - x ^ 3)) := by
+  apply cone_b1_pair_data hx0 hx1 p₁ p₂ hv 12 6 6
+  · unfold skeletonExp
+    change (∑ i : Fin 2, faceExp
+      (baseY [((1 : ℕ), p₁), ((1 : ℕ), p₂)] (fun k => k.1 + 1) i.1)
+      ([((1 : ℕ), p₁), ((1 : ℕ), p₂)].get i) (i.1 + 1)) = 12
+    norm_num [Finset.univ_fin2, faceExp, baseY, dropAt, faceResDeg, faceLen, h₁, h₂]
+  · unfold expCoeffD
+    change p₁.degree * (2 * faceLen ((1 : ℕ), p₂) + faceLen ((1 : ℕ), p₁) + 1) = 6
+    norm_num [faceLen, faceResDeg, h₁, h₂]
+  · unfold expCoeffD
+    change p₂.degree * (2 * 0 + faceLen ((1 : ℕ), p₂) + 1) = 6
+    norm_num [faceLen, faceResDeg, h₂]
+
+private theorem cone_b1_pair_d2_d1 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
+    (p₁ p₂ : FactorizationType) (h₁ : p₁.degree = 2) (h₂ : p₂.degree = 1)
+    (hv : ∀ f ∈ [((1 : ℕ), p₁), ((1 : ℕ), p₂)], ValidFace f) :
+    coneSum x [((1 : ℕ), p₁), ((1 : ℕ), p₂)]
+      = x ^ 10 / ((1 - x ^ 6) * (1 - x)) := by
+  have he : skeletonExp [((1 : ℕ), p₁), ((1 : ℕ), p₂)] (fun k => k.1 + 1) = 10 := by
+    unfold skeletonExp
+    change (∑ i : Fin 2, faceExp
+      (baseY [((1 : ℕ), p₁), ((1 : ℕ), p₂)] (fun k => k.1 + 1) i.1)
+      ([((1 : ℕ), p₁), ((1 : ℕ), p₂)].get i) (i.1 + 1)) = 10
+    norm_num [Finset.univ_fin2, faceExp, baseY, dropAt, faceResDeg, faceLen, h₁, h₂]
+  have h0 : expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] (0 : Fin 2) = 10 := by
+    unfold expCoeffD
+    change p₁.degree * (2 * faceLen ((1 : ℕ), p₂) + faceLen ((1 : ℕ), p₁) + 1) = 10
+    norm_num [faceLen, faceResDeg, h₁, h₂]
+  have h1 : expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] (1 : Fin 2) = 2 := by
+    unfold expCoeffD
+    change p₂.degree * (2 * 0 + faceLen ((1 : ℕ), p₂) + 1) = 2
+    norm_num [faceLen, faceResDeg, h₂]
+  simpa using cone_b1_pair_data hx0 hx1 p₁ p₂ hv 10 10 2 he h0 h1
+
+private theorem cone_b1_triple_d1 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
+    (p₁ p₂ p₃ : FactorizationType)
+    (h₁ : p₁.degree = 1) (h₂ : p₂.degree = 1) (h₃ : p₃.degree = 1)
+    (hv : ∀ f ∈ [((1 : ℕ), p₁), ((1 : ℕ), p₂), ((1 : ℕ), p₃)], ValidFace f) :
+    coneSum x [((1 : ℕ), p₁), ((1 : ℕ), p₂), ((1 : ℕ), p₃)]
+      = x ^ 13 / ((1 - x ^ 6) * (1 - x ^ 3) * (1 - x)) := by
+  let s : List FaceShape := [((1 : ℕ), p₁), ((1 : ℕ), p₂), ((1 : ℕ), p₃)]
+  have he : skeletonExp s (fun k => k.1 + 1) = 13 := by
+    unfold skeletonExp
+    change (∑ i : Fin 3, faceExp (baseY s (fun k => k.1 + 1) i.1)
+      (s.get i) (i.1 + 1)) = 13
+    rw [Fin.sum_univ_three]
+    norm_num [s, Finset.sum_range_succ, faceExp, baseY, dropAt, faceResDeg, faceLen,
+      h₁, h₂, h₃]
+  have h0 : expCoeffD s (0 : Fin 3) = 6 := by
+    unfold expCoeffD
+    change p₁.degree *
+      (2 * (faceLen ((1 : ℕ), p₂) + faceLen ((1 : ℕ), p₃))
+        + faceLen ((1 : ℕ), p₁) + 1) = 6
+    norm_num [faceLen, faceResDeg, h₁, h₂, h₃]
+  have h1 : expCoeffD s (1 : Fin 3) = 4 := by
+    unfold expCoeffD
+    change p₂.degree * (2 * faceLen ((1 : ℕ), p₃) + faceLen ((1 : ℕ), p₂) + 1) = 4
+    norm_num [faceLen, faceResDeg, h₂, h₃]
+  have h2 : expCoeffD s (2 : Fin 3) = 2 := by
+    unfold expCoeffD
+    change p₃.degree * (2 * 0 + faceLen ((1 : ℕ), p₃) + 1) = 2
+    norm_num [faceLen, faceResDeg, h₃]
+  have hc0 :
+      (∑ j ∈ Finset.univ.filter (fun j : Fin 3 => (0 : Fin 3) ≤ j), expCoeffD s j) / 2 = 6 := by
+    have hf : Finset.univ.filter (fun j : Fin 3 => (0 : Fin 3) ≤ j) = Finset.univ := by
+      native_decide
+    rw [hf, Fin.sum_univ_three, h0, h1, h2]
+    norm_num
+  have hc1 :
+      (∑ j ∈ Finset.univ.filter (fun j : Fin 3 => (1 : Fin 3) ≤ j), expCoeffD s j) / 2 = 3 := by
+    have hf : Finset.univ.filter (fun j : Fin 3 => (1 : Fin 3) ≤ j) = {1, 2} := by native_decide
+    rw [hf]
+    rw [Finset.sum_insert (by decide), Finset.sum_singleton, h1, h2]
+    norm_num
+  have hc2 :
+      (∑ j ∈ Finset.univ.filter (fun j : Fin 3 => (2 : Fin 3) ≤ j), expCoeffD s j) / 2 = 1 := by
+    have hf : Finset.univ.filter (fun j : Fin 3 => (2 : Fin 3) ≤ j) = {2} := by native_decide
+    rw [hf]
+    norm_num [h2]
+  change coneSum x s = _
+  rw [coneSum_unit_denominators hx0 hx1 hv (by simp), he]
+  change x ^ 13 / (∏ k : Fin 3, (1 - x ^ ((∑ j ∈ Finset.univ.filter
+    (fun j : Fin 3 => k ≤ j), expCoeffD s j) / 2))) = _
+  rw [Fin.prod_univ_three, hc0, hc1, hc2, pow_one]
+
 /-! ## §5 — The value gates: n = 2 symbolic (against G51), n = 3 symbolic (against
 IFC7's `genuineDensity_three_exact`), n = 4 executable (§4 mirror vs blueprint §8) -/
 
@@ -419,12 +605,58 @@ theorem n2_gate_split {q : ℝ} (hq : 2 ≤ q) :
 /-- **n = 2 GATE, inert** = the landed `G51` law `X / (2(X+1))`. -/
 theorem n2_gate_inert {q : ℝ} (hq : 2 ≤ q) :
     n2Density ((q ^ 2 - q) / 2) (clusterP2 shallow2Inert q) q = q / (2 * (q + 1)) := by
-  sorry
+  have hq0 : 0 < q := by linarith
+  have hxi0 : 0 ≤ q⁻¹ := by positivity
+  have hxi1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
+  have hd2 : rp21.degree = 2 := by native_decide
+  have hv2 : ValidFace ((1 : ℕ), rp21) := by
+    norm_num [ValidFace, rp21, faceResDeg, FactorizationType.degree]
+  have hq3 : q ^ 3 - 1 ≠ 0 := by
+    have : 1 < q ^ 3 := one_lt_pow₀ (by linarith) (by norm_num)
+    linarith
+  have hpos : 0 < q ^ 3 - q := by
+    have hq2 : 1 < q ^ 2 := one_lt_pow₀ (by linarith) (by norm_num)
+    have hp := mul_pos hq0 (sub_pos.mpr hq2)
+    nlinarith
+  have hloop : 1 - (q - 1) / (q ^ 3 - 1) ≠ 0 := by
+    have heq : 1 - (q - 1) / (q ^ 3 - 1) = (q ^ 3 - q) / (q ^ 3 - 1) := by
+      field_simp [hq3]
+      ring
+    rw [heq]
+    exact div_ne_zero (ne_of_gt hpos) hq3
+  unfold n2Density clusterP2 shallow2Inert
+  rw [loopFactor_eq hq 2 (by norm_num), cone_b1_d2 hxi0 hxi1 rp21 hd2 hv2]
+  norm_num [bigTLoop]
+  field_simp [hq0.ne', hq3, hloop, ne_of_gt hpos]
+  ring
 
 /-- **n = 2 GATE, ramified** = the landed `G51` law `1 / (X+1)`. -/
 theorem n2_gate_ram {q : ℝ} (hq : 2 ≤ q) :
     n2Density 0 (clusterP2 shallow2Ram q) q = 1 / (q + 1) := by
-  sorry
+  have hq0 : 0 < q := by linarith
+  have hxi0 : 0 ≤ q⁻¹ := by positivity
+  have hxi1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
+  have hd1 : rp11.degree = 1 := by native_decide
+  have hv : ValidFace ((2 : ℕ), rp11) := by
+    norm_num [ValidFace, rp11, faceResDeg, FactorizationType.degree]
+  have hq3 : q ^ 3 - 1 ≠ 0 := by
+    have : 1 < q ^ 3 := one_lt_pow₀ (by linarith) (by norm_num)
+    linarith
+  have hpos : 0 < q ^ 3 - q := by
+    have hq2 : 1 < q ^ 2 := one_lt_pow₀ (by linarith) (by norm_num)
+    have hp := mul_pos hq0 (sub_pos.mpr hq2)
+    nlinarith
+  have hloop : 1 - (q - 1) / (q ^ 3 - 1) ≠ 0 := by
+    have heq : 1 - (q - 1) / (q ^ 3 - 1) = (q ^ 3 - q) / (q ^ 3 - 1) := by
+      field_simp [hq3]
+      ring
+    rw [heq]
+    exact div_ne_zero (ne_of_gt hpos) hq3
+  unfold n2Density clusterP2 shallow2Ram
+  rw [loopFactor_eq hq 2 (by norm_num), cone_b2_d1 hxi0 hxi1 rp11 hd1 hv]
+  norm_num [bigTLoop]
+  field_simp [hq0.ne', hq3, hloop, ne_of_gt hpos]
+  ring
 
 /-! ### n = 3: the fifteen-skeleton bank assembled -/
 
@@ -480,7 +712,79 @@ theorem n3_gate_split {q : ℝ} (hq : 2 ≤ q) :
         (clusterP3 shallow3Split q) q
       = q ^ 3 * (q ^ 2 - q + 1)
         / (6 * (q + 1) * (q ^ 4 + q ^ 3 + q ^ 2 + q + 1)) := by
-  sorry
+  have hq0 : 0 < q := by linarith
+  have hqp1 : q + 1 ≠ 0 := by linarith
+  have hxi0 : 0 ≤ q⁻¹ := by positivity
+  have hxi1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
+  have hP2 : clusterP2 shallow2Split q = 1 / (2 * (q + 1)) := by
+    have h := n2_gate_split hq
+    unfold n2Density at h
+    field_simp [hq0.ne', hqp1] at h ⊢
+    linarith
+  have hd1 : rp11.degree = 1 := by native_decide
+  have hd2a : rp11p11.degree = 2 := by native_decide
+  have hd2b : rp12.degree = 2 := by native_decide
+  have hd3a : rp11cube.degree = 3 := by native_decide
+  have hd3b : rp11p12.degree = 3 := by native_decide
+  have hv3a : ValidFace ((1 : ℕ), rp11cube) := by
+    norm_num [ValidFace, rp11cube, faceResDeg, FactorizationType.degree]
+  have hv3b : ValidFace ((1 : ℕ), rp11p12) := by
+    norm_num [ValidFace, rp11p12, faceResDeg, FactorizationType.degree]
+  have hv12a : ∀ f ∈ [((1 : ℕ), rp11), ((1 : ℕ), rp11p11)], ValidFace f := by
+    intro f hf
+    have hfe : f = ((1 : ℕ), rp11) ∨ f = ((1 : ℕ), rp11p11) := by simpa using hf
+    rcases hfe with rfl | rfl
+    all_goals norm_num [ValidFace, rp11, rp11p11, faceResDeg, FactorizationType.degree]
+  have hv21a : ∀ f ∈ [((1 : ℕ), rp11p11), ((1 : ℕ), rp11)], ValidFace f := by
+    intro f hf
+    have hfe : f = ((1 : ℕ), rp11p11) ∨ f = ((1 : ℕ), rp11) := by simpa using hf
+    rcases hfe with rfl | rfl
+    all_goals norm_num [ValidFace, rp11, rp11p11, faceResDeg, FactorizationType.degree]
+  have hv12b : ∀ f ∈ [((1 : ℕ), rp11), ((1 : ℕ), rp12)], ValidFace f := by
+    intro f hf
+    have hfe : f = ((1 : ℕ), rp11) ∨ f = ((1 : ℕ), rp12) := by simpa using hf
+    rcases hfe with rfl | rfl
+    all_goals norm_num [ValidFace, rp11, rp12, faceResDeg, FactorizationType.degree]
+  have hv21b : ∀ f ∈ [((1 : ℕ), rp12), ((1 : ℕ), rp11)], ValidFace f := by
+    intro f hf
+    have hfe : f = ((1 : ℕ), rp12) ∨ f = ((1 : ℕ), rp11) := by simpa using hf
+    rcases hfe with rfl | rfl
+    all_goals norm_num [ValidFace, rp11, rp12, faceResDeg, FactorizationType.degree]
+  have hv111 : ∀ f ∈ [((1 : ℕ), rp11), ((1 : ℕ), rp11), ((1 : ℕ), rp11)],
+      ValidFace f := by
+    intro f hf
+    have hfe : f = ((1 : ℕ), rp11) := by simpa using hf
+    rw [hfe]
+    norm_num [ValidFace, rp11, faceResDeg, FactorizationType.degree]
+  have hq6 : q ^ 6 - 1 ≠ 0 := by
+    have : 1 < q ^ 6 := one_lt_pow₀ (by linarith) (by norm_num)
+    linarith
+  have hqm1 : q - 1 ≠ 0 := by linarith
+  have hq3 : q ^ 3 - 1 ≠ 0 := by
+    have : 1 < q ^ 3 := one_lt_pow₀ (by linarith) (by norm_num)
+    linarith
+  have hpos : 0 < q ^ 6 - q := by
+    have hq5 : 1 < q ^ 5 := one_lt_pow₀ (by linarith) (by norm_num)
+    have hp := mul_pos hq0 (sub_pos.mpr hq5)
+    nlinarith
+  have hloop : 1 - (q - 1) / (q ^ 6 - 1) ≠ 0 := by
+    have heq : 1 - (q - 1) / (q ^ 6 - 1) = (q ^ 6 - q) / (q ^ 6 - 1) := by
+      field_simp [hq6]
+      ring
+    rw [heq]
+    exact div_ne_zero (ne_of_gt hpos) hq6
+  unfold n3Density clusterP3 shallow3Split child3
+  rw [hP2, loopFactor_eq hq 3 (by norm_num),
+    cone_b1_d3 hxi0 hxi1 rp11cube hd3a hv3a,
+    cone_b1_pair_d1_d2 hxi0 hxi1 rp11 rp11p11 hd1 hd2a hv12a,
+    cone_b1_pair_d2_d1 hxi0 hxi1 rp11p11 rp11 hd2a hd1 hv21a,
+    cone_b1_triple_d1 hxi0 hxi1 rp11 rp11 rp11 hd1 hd1 hd1 hv111,
+    cone_b1_d3 hxi0 hxi1 rp11p12 hd3b hv3b,
+    cone_b1_pair_d1_d2 hxi0 hxi1 rp11 rp12 hd1 hd2b hv12b,
+    cone_b1_pair_d2_d1 hxi0 hxi1 rp12 rp11 hd2b hd1 hv21b]
+  norm_num [bigTLoop]
+  field_simp [hq0.ne', hqp1, hqm1, hq3, hq6, hloop, ne_of_gt hpos]
+  ring
 
 /-- **n = 3 GATE, linear × inert** = IFC7 §9's exact form. -/
 theorem n3_gate_linInert {q : ℝ} (hq : 2 ≤ q) :
@@ -488,13 +792,101 @@ theorem n3_gate_linInert {q : ℝ} (hq : 2 ≤ q) :
         (clusterP3 shallow3LinInert q) q
       = q ^ 3 * (q ^ 2 + q + 1)
         / (2 * (q + 1) * (q ^ 4 + q ^ 3 + q ^ 2 + q + 1)) := by
-  sorry
+  have hq0 : 0 < q := by linarith
+  have hqp1 : q + 1 ≠ 0 := by linarith
+  have hxi0 : 0 ≤ q⁻¹ := by positivity
+  have hxi1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
+  have hP2 : clusterP2 shallow2Inert q = 1 / (2 * (q + 1)) := by
+    have h := n2_gate_inert hq
+    unfold n2Density at h
+    field_simp [hq0.ne', hqp1] at h ⊢
+    linarith
+  have hd1 : rp11.degree = 1 := by native_decide
+  have hd2a : rp21.degree = 2 := by native_decide
+  have hd2b : rp12.degree = 2 := by native_decide
+  have hd3a : rp11p21.degree = 3 := by native_decide
+  have hd3b : rp11p12.degree = 3 := by native_decide
+  have hv3a : ValidFace ((1 : ℕ), rp11p21) := by
+    norm_num [ValidFace, rp11p21, faceResDeg, FactorizationType.degree]
+  have hv3b : ValidFace ((1 : ℕ), rp11p12) := by
+    norm_num [ValidFace, rp11p12, faceResDeg, FactorizationType.degree]
+  have hv12a : ∀ f ∈ [((1 : ℕ), rp11), ((1 : ℕ), rp21)], ValidFace f := by
+    intro f hf
+    have hfe : f = ((1 : ℕ), rp11) ∨ f = ((1 : ℕ), rp21) := by simpa using hf
+    rcases hfe with rfl | rfl
+    all_goals norm_num [ValidFace, rp11, rp21, faceResDeg, FactorizationType.degree]
+  have hv21a : ∀ f ∈ [((1 : ℕ), rp21), ((1 : ℕ), rp11)], ValidFace f := by
+    intro f hf
+    have hfe : f = ((1 : ℕ), rp21) ∨ f = ((1 : ℕ), rp11) := by simpa using hf
+    rcases hfe with rfl | rfl
+    all_goals norm_num [ValidFace, rp11, rp21, faceResDeg, FactorizationType.degree]
+  have hv12b : ∀ f ∈ [((1 : ℕ), rp11), ((1 : ℕ), rp12)], ValidFace f := by
+    intro f hf
+    have hfe : f = ((1 : ℕ), rp11) ∨ f = ((1 : ℕ), rp12) := by simpa using hf
+    rcases hfe with rfl | rfl
+    all_goals norm_num [ValidFace, rp11, rp12, faceResDeg, FactorizationType.degree]
+  have hv21b : ∀ f ∈ [((1 : ℕ), rp12), ((1 : ℕ), rp11)], ValidFace f := by
+    intro f hf
+    have hfe : f = ((1 : ℕ), rp12) ∨ f = ((1 : ℕ), rp11) := by simpa using hf
+    rcases hfe with rfl | rfl
+    all_goals norm_num [ValidFace, rp11, rp12, faceResDeg, FactorizationType.degree]
+  have hq6 : q ^ 6 - 1 ≠ 0 := by
+    have : 1 < q ^ 6 := one_lt_pow₀ (by linarith) (by norm_num)
+    linarith
+  have hqm1 : q - 1 ≠ 0 := by linarith
+  have hq3 : q ^ 3 - 1 ≠ 0 := by
+    have : 1 < q ^ 3 := one_lt_pow₀ (by linarith) (by norm_num)
+    linarith
+  have hpos : 0 < q ^ 6 - q := by
+    have hq5 : 1 < q ^ 5 := one_lt_pow₀ (by linarith) (by norm_num)
+    have hp := mul_pos hq0 (sub_pos.mpr hq5)
+    nlinarith
+  have hloop : 1 - (q - 1) / (q ^ 6 - 1) ≠ 0 := by
+    have heq : 1 - (q - 1) / (q ^ 6 - 1) = (q ^ 6 - q) / (q ^ 6 - 1) := by
+      field_simp [hq6]
+      ring
+    rw [heq]
+    exact div_ne_zero (ne_of_gt hpos) hq6
+  unfold n3Density clusterP3 shallow3LinInert child3
+  rw [hP2, loopFactor_eq hq 3 (by norm_num),
+    cone_b1_d3 hxi0 hxi1 rp11p21 hd3a hv3a,
+    cone_b1_pair_d1_d2 hxi0 hxi1 rp11 rp21 hd1 hd2a hv12a,
+    cone_b1_pair_d2_d1 hxi0 hxi1 rp21 rp11 hd2a hd1 hv21a,
+    cone_b1_d3 hxi0 hxi1 rp11p12 hd3b hv3b,
+    cone_b1_pair_d1_d2 hxi0 hxi1 rp11 rp12 hd1 hd2b hv12b,
+    cone_b1_pair_d2_d1 hxi0 hxi1 rp12 rp11 hd2b hd1 hv21b]
+  norm_num [bigTLoop]
+  field_simp [hq0.ne', hqp1, hqm1, hq3, hq6, hloop, ne_of_gt hpos]
+  ring
 
 /-- **n = 3 GATE, inert** = IFC7 §9's exact form. -/
 theorem n3_gate_inert {q : ℝ} (hq : 2 ≤ q) :
     n3Density ((q ^ 3 - q) / 3) 0 (clusterP3 shallow3Inert q) q
       = q ^ 3 * (q + 1) / (3 * (q ^ 4 + q ^ 3 + q ^ 2 + q + 1)) := by
-  sorry
+  have hq0 : 0 < q := by linarith
+  have hxi0 : 0 ≤ q⁻¹ := by positivity
+  have hxi1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
+  have hd3 : rp31.degree = 3 := by native_decide
+  have hv : ValidFace ((1 : ℕ), rp31) := by
+    norm_num [ValidFace, rp31, faceResDeg, FactorizationType.degree]
+  have hq6 : q ^ 6 - 1 ≠ 0 := by
+    have : 1 < q ^ 6 := one_lt_pow₀ (by linarith) (by norm_num)
+    linarith
+  have hpos : 0 < q ^ 6 - q := by
+    have hq5 : 1 < q ^ 5 := one_lt_pow₀ (by linarith) (by norm_num)
+    have hp := mul_pos hq0 (sub_pos.mpr hq5)
+    nlinarith
+  have hloop : 1 - (q - 1) / (q ^ 6 - 1) ≠ 0 := by
+    have heq : 1 - (q - 1) / (q ^ 6 - 1) = (q ^ 6 - q) / (q ^ 6 - 1) := by
+      field_simp [hq6]
+      ring
+    rw [heq]
+    exact div_ne_zero (ne_of_gt hpos) hq6
+  unfold n3Density clusterP3 shallow3Inert
+  rw [loopFactor_eq hq 3 (by norm_num), cone_b1_d3 hxi0 hxi1 rp31 hd3 hv]
+  norm_num [bigTLoop]
+  field_simp [hq0.ne', hq6, hloop, ne_of_gt hpos]
+  ring
 
 /-- **n = 3 GATE, linear × ramified** = IFC7 §9's exact form. -/
 theorem n3_gate_linRam {q : ℝ} (hq : 2 ≤ q) :
@@ -506,7 +898,30 @@ theorem n3_gate_linRam {q : ℝ} (hq : 2 ≤ q) :
 theorem n3_gate_ram {q : ℝ} (hq : 2 ≤ q) :
     n3Density 0 0 (clusterP3 shallow3Ram q) q
       = (q ^ 2 + 1) / (q ^ 4 + q ^ 3 + q ^ 2 + q + 1) := by
-  sorry
+  have hq0 : 0 < q := by linarith
+  have hxi0 : 0 ≤ q⁻¹ := by positivity
+  have hxi1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
+  have hd1 : rp11.degree = 1 := by native_decide
+  have hv : ValidFace ((3 : ℕ), rp11) := by
+    norm_num [ValidFace, rp11, faceResDeg, FactorizationType.degree]
+  have hq6 : q ^ 6 - 1 ≠ 0 := by
+    have : 1 < q ^ 6 := one_lt_pow₀ (by linarith) (by norm_num)
+    linarith
+  have hpos : 0 < q ^ 6 - q := by
+    have hq5 : 1 < q ^ 5 := one_lt_pow₀ (by linarith) (by norm_num)
+    have hp := mul_pos hq0 (sub_pos.mpr hq5)
+    nlinarith
+  have hloop : 1 - (q - 1) / (q ^ 6 - 1) ≠ 0 := by
+    have heq : 1 - (q - 1) / (q ^ 6 - 1) = (q ^ 6 - q) / (q ^ 6 - 1) := by
+      field_simp [hq6]
+      ring
+    rw [heq]
+    exact div_ne_zero (ne_of_gt hpos) hq6
+  unfold n3Density clusterP3 shallow3Ram
+  rw [loopFactor_eq hq 3 (by norm_num), cone_b3_d1 hxi0 hxi1 rp11 hd1 hv]
+  norm_num [bigTLoop]
+  field_simp [hq0.ne', hq6, hloop, ne_of_gt hpos]
+  ring
 
 /-! ### The by-name recovery against the landed cubic capstone -/
 
@@ -524,7 +939,11 @@ theorem n3_recovery_ram (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuatio
     [Finite (ResidueField O)] [IsAdicComplete (maximalIdeal O) O] :
     genuineDensity O 3 (Uniformity.Density.c3ram)
       = n3Density 0 0 (clusterP3 shallow3Ram (residueCard O : ℝ)) (residueCard O : ℝ) := by
-  sorry
+  have hq : (2 : ℝ) ≤ (residueCard O : ℝ) := by
+    exact_mod_cast two_le_residueCard O
+  rw [(Uniformity.Density.IFC7.genuineDensity_three_exact (O := O)).2.2.2.2]
+  unfold Uniformity.Density.IFC7.PhiR
+  exact (n3_gate_ram hq).symm
 
 /-- **THE LANDED-VALUE RECOVERY (split)**: as `n3_recovery_ram`, for the split type. -/
 theorem n3_recovery_split (O : Type) [CommRing O] [IsDomain O]
@@ -535,7 +954,11 @@ theorem n3_recovery_split (O : Type) [CommRing O] [IsDomain O]
             * ((residueCard O : ℝ) - 2) / 6)
           (clusterP2 shallow2Split (residueCard O : ℝ))
           (clusterP3 shallow3Split (residueCard O : ℝ)) (residueCard O : ℝ) := by
-  sorry
+  have hq : (2 : ℝ) ≤ (residueCard O : ℝ) := by
+    exact_mod_cast two_le_residueCard O
+  rw [(Uniformity.Density.IFC7.genuineDensity_three_exact (O := O)).1]
+  unfold Uniformity.Density.IFC7.PhiR
+  exact (n3_gate_split hq).symm
 
 end Recovery
 
@@ -564,7 +987,24 @@ never vanishes at `γ ≥ 2` (each factor is `≥ 2^{aᵢ} − 1 ≥ 1`). -/
 theorem den_eval_ne_of_geom (c : ℚ) (hc : c ≠ 0) (l : List ℕ) (hl : ∀ a ∈ l, 1 ≤ a)
     (γ : ℚ) (hγ : 2 ≤ γ) :
     (Polynomial.C c * (l.map (fun a => Polynomial.X ^ a - 1)).prod).eval γ ≠ 0 := by
-  sorry
+  rw [Polynomial.eval_mul, Polynomial.eval_C]
+  apply mul_ne_zero hc
+  induction l with
+  | nil => simp
+  | cons a t ih =>
+    simp only [List.map_cons, List.prod_cons, Polynomial.eval_mul]
+    have ha1 : 1 ≤ a := hl a List.mem_cons_self
+    have iht : ∀ a ∈ t, 1 ≤ a := fun a ha => hl a (List.mem_cons_of_mem _ ha)
+    have hfac : (Polynomial.X ^ a - 1 : Polynomial ℚ).eval γ ≠ 0 := by
+      rw [Polynomial.eval_sub, Polynomial.eval_pow, Polynomial.eval_X, Polynomial.eval_one]
+      have h2a : (1 : ℚ) < 2 ^ a := by
+        have h2 : (1 : ℚ) < 2 := by norm_num
+        exact one_lt_pow₀ h2 (by omega)
+      have hγa : (2 : ℚ) ^ a ≤ γ ^ a := pow_le_pow_left₀ (by norm_num) hγ a
+      intro hzero
+      have : γ ^ a = 1 := by linarith [sub_eq_zero.mp hzero]
+      linarith
+    exact mul_ne_zero hfac (ih iht)
 
 end Package
 
