@@ -218,7 +218,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | BRIDGE | the dissection-skeleton bridge | DONE (75c79104) — exists_realizesSkeletonAt_of_dissection with ONE scoped hypothesis (hbelow1 → GC1); §§1–3 unconditional; 12/16 nodes |
 | GC | the stop-line's honest partial | DONE (9331f5be) — DECREASING landed; the carrier's disjointness insufficiency MACHINE-PROVED (+ the StrongRealizesFaceAt repair defined); the exhaustion kernel ISOLATED as one named statement; the cover deliberately NOT declared from the weak bank |
 | C56R | the final occurrence rows | ★★★ DONE (c1287ebe area) — the FIRST MidPeelEmission (bindings by rfl) + the deepTwist tooth at the same X; the occurrence phase COMPLETE |
-| GCF | the repair legs: the STRONG bridge + disjointness on the strong carrier (→ the cover conditional on ONLY the exhaustion kernel) → IFCG10 | IN FLIGHT (Fable, ~07:10) |
+| GCF | the repair legs | ★★ DONE (8fe42879) — the strong bridge + UNCONDITIONAL Lean-core disjointness (the countermodel pair discriminated); the cover = finiteGenreCoverAt_strong_of_kernel, conditional on ONE input |
+| GCK | ★★★ THE EXHAUSTION KERNEL (the cover's last input; the no-far-primes mechanism at the recentred box) → IFCG11 | IN FLIGHT (codex sol-HIGH, ~07:35) |
 | EXPO | the public exposition refresh | ★ PUSHED (site aaf1ddb) — stage 13 live: draft → 28-finding audit → fix → clean skim → orchestrator spot-check; carry-over: maps.json/story.json still ignore stage 13 (graph pipeline absent) |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
