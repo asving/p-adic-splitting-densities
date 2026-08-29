@@ -572,3 +572,14 @@ deepTwist tooth (C6r), and the universal-supplier boundary (G10 at the witness l
 HE7A/LB1 remain the ladder record's other fields). On the uniform-a0 side: 11/16 with
 the GC runway's classifier landed. Overnight tally: ~20 units, 5 orchestrator-banked
 after agent hangs, every landing pushed.
+
+## 2026-08-29 ~07:00 — the occurrence phase completes: the first MidPeelEmission and the deepTwist tooth
+
+C56R landed the deep campaign's final occurrence rows: the first honest MidPeelEmission
+(the mp1 leg's nonvacuity, every provenance binding by rfl — the construction IS the
+definition) and the same-X DeepTwistConjunctLive tooth, fences kept. With C0123's legs,
+the campaign's original demand list is fully discharged at the witness: the live
+vartheta, the wired GENTOW demand, the shared export, the per-witness exporter, and the
+recenter occurrence. Remaining: the universal ladder fields (package/lb1 + the G10
+boundary), the keystone's threshold-datum conditionality, and the capstone binding. The
+GC stop-line grinds on codex. BRIDGE landed GC0's doorstep earlier this hour.
