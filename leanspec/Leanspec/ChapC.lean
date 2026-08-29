@@ -1701,7 +1701,9 @@ noncomputable def dv2ResPoly {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H
 
 /-! ### NODE C.38a′ [def, A-C.24′ helper extension] — the anchored absolute read and
 the GUARDED/ANCHORED classical level-2 residual polynomial [signed: A-C.24′].
-The bare C.38a cluster above is untouched; C.38/C.39 are re-signed over THIS carrier. -/
+The bare C.38a cluster above is untouched.  [A-C.24″, 2026-08-29: C.38/C.39 are now
+re-signed over the TWISTED carrier `dv2ResPolyTw` (NODE C.38a″ below), which is DEFINED
+over this cluster — every declaration here is byte-unchanged and consumed.] -/
 
 /-- the fence-free absolute residual read at inner height `k`, based at the canonical
 anchor slot `L.shift k` (the landed `C136l2e0.dv2FullReadPoly`, transcribed). -/
@@ -1733,15 +1735,50 @@ noncomputable def dv2ResPolyAnch {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum
         (dev Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne + t * ℓ₂)))
       * Polynomial.X ^ t
 
+/-! ### NODE C.38a″ [def, A-C.24″ helper extension] — the twist exponents and the
+SOURCE-faithful TWISTED classical level-2 residual polynomial [signed: A-C.24″; full
+record at C.39 below].  The anchored C.38a′ cluster above is untouched; C.38/C.39 are
+re-signed over THIS carrier. -/
+
+/-- DEFINITION HE7-3's twist exponents at the generic pin (SOURCE: spec/EFF-HE7.md
+.27, verbatim closed form `c_t := (s(m₁−tu₂) + t·s(u₂) − s(m₁))/ℓ`; exact cocycle-sum
+form; machine record: leanfinal/Uniformity/ChapC/C136f14d.lean, Lean-core). -/
+def twistExp {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (u₂ M₂ t : ℕ) : ℕ :=
+  L.cocycle (M₂ - t * u₂) (t * u₂) + ∑ i ∈ Finset.range t, L.cocycle u₂ (i * u₂)
+
+/-- the SOURCE-faithful TWISTED level-2 residual polynomial — the classical object:
+EFF.HE7.08's convention ("changing the choice multiplies its coefficients by explicit
+powers of β") with EFF.HE7.30 Step 2's assembly twist carried IN the carrier.
+EFF.HE6R1.39's per-side constant scalar is a claim about THIS carrier. -/
+noncomputable def dv2ResPolyTw {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+    (Ψ f : Polynomial O) (u₂ ℓ₂ : ℕ) (hne : (dv2SideSet L Ψ f u₂ ℓ₂).Nonempty) (M₂ : ℕ)
+    (hp₂ : dv2Pin L Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne) = (M₂ : ℕ∞)) :
+    Polynomial (AdjoinRoot L.r) :=
+  (Finset.range (dv2SideDeg L Ψ f u₂ ℓ₂ hne + 1)).sum fun t =>
+    Polynomial.C (AdjoinRoot.root L.r ^ twistExp L u₂ M₂ t
+        * (dv2ResPolyAnch L Ψ f u₂ ℓ₂ hne M₂ hp₂).coeff t)
+      * Polynomial.X ^ t
+
 /-! ### NODE C.38 [lemma] — same degree, same radical (as same-prime-divisors)
 [signed: A-C.1; RE-SIGNED: A-C.22 (floor binder, record at C.37);
-RE-SIGNED: A-C.24′ over the guarded/anchored carrier] -/
+RE-SIGNED: A-C.24′ over the guarded/anchored carrier;
+RE-SIGNED: A-C.24″ over the TWISTED carrier (full record at C.39)] -/
 
 -- [RE-SIGNED: A-C.22, 2026-08-28 — P1U/verdict_P1U §P3] floor binder engine-honest,
 -- `ℓ₂ * L.seam ↦ ℓ₂ * (L.ℓ * L.seam)`; full record at C.37 above.
--- [RE-SIGNED: A-C.24′, 2026-08-28 — record at C.39 below; conclusion shape unchanged,
--- carrier repaired `dv2ResPoly ↦ dv2ResPolyAnch`, GC-1 pin binders added, `hcop` added.]
-axiom dv2ResPolyAnch_radical_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+-- [RE-SIGNED: A-C.24′, 2026-08-28 — conclusion shape unchanged, carrier repaired
+-- `dv2ResPoly ↦ dv2ResPolyAnch`, GC-1 pin binders added, `hcop` added; that row
+-- (`dv2ResPolyAnch_radical_eq`) is SUPERSEDED by A-C.24″ below and its text archived
+-- at commit 48927e49.]
+-- [RE-SIGNED: A-C.24″, 2026-08-29 — full record at C.39 below; hypothesis block
+-- byte-identical to the A-C.24′ row, conclusion shape unchanged (equal `natDegree` +
+-- same monic irreducible divisors), carrier `dv2ResPolyAnch ↦ dv2ResPolyTw`.  The
+-- DEGREE half is carrier-indifferent (`C136f14d.natDegree_dv2ResPolyTw_eq`), but the
+-- RADICAL half is NOT slot-twist invariant (battery Part D radical exhibit: the
+-- family-weighted linear residual's root differs from the block's by a β-power), so
+-- the radical row MUST live on the twisted carrier.]
+axiom dv2ResPolyTw_radical_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
     (hnd : ¬ Ψ ∣ blockFactor L f)
@@ -1753,15 +1790,16 @@ axiom dv2ResPolyAnch_radical_eq {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum 
     (hp₂ : dv2Pin L Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne) = (M₂ : ℕ∞))
     (hp₂' : dv2Pin L Ψ (blockFactor L f)
         (dv2SideMin L Ψ (blockFactor L f) u₂ ℓ₂ hne') = (M₂' : ℕ∞)) :
-    (dv2ResPolyAnch L Ψ f u₂ ℓ₂ hne M₂ hp₂).natDegree
-        = (dv2ResPolyAnch L Ψ (blockFactor L f) u₂ ℓ₂ hne' M₂' hp₂').natDegree ∧
+    (dv2ResPolyTw L Ψ f u₂ ℓ₂ hne M₂ hp₂).natDegree
+        = (dv2ResPolyTw L Ψ (blockFactor L f) u₂ ℓ₂ hne' M₂' hp₂').natDegree ∧
     ∀ q : Polynomial (AdjoinRoot L.r), q.Monic → Irreducible q →
-      (q ∣ dv2ResPolyAnch L Ψ f u₂ ℓ₂ hne M₂ hp₂
-        ↔ q ∣ dv2ResPolyAnch L Ψ (blockFactor L f) u₂ ℓ₂ hne' M₂' hp₂')
+      (q ∣ dv2ResPolyTw L Ψ f u₂ ℓ₂ hne M₂ hp₂
+        ↔ q ∣ dv2ResPolyTw L Ψ (blockFactor L f) u₂ ℓ₂ hne' M₂' hp₂')
 
 /-! ### NODE C.39 [lemma] — the per-side scalar, pin-height TERMINAL form
 [signed: A-C.1; RE-SIGNED: A-C.22 (floor binder, record at C.37);
-RE-SIGNED: A-C.24′ over the guarded/anchored carrier] -/
+RE-SIGNED: A-C.24′ over the guarded/anchored carrier;
+RE-SIGNED: A-C.24″ over the TWISTED carrier — the source display scalar byte-kept] -/
 
 /-- `γ_g` — the complement's own `K₂`-residue read (a `K₂^×` unit under C.36). -/
 noncomputable def γg {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
@@ -1784,33 +1822,42 @@ noncomputable def γgAnch {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀
 
 -- [RE-SIGNED: A-C.22, 2026-08-28 — P1U/verdict_P1U §P3] floor binder engine-honest,
 -- `ℓ₂ * L.seam ↦ ℓ₂ * (L.ℓ * L.seam)`; full record at C.37 above.
--- [RE-SIGNED: A-C.24′, 2026-08-28 — the A24A/A24B carrier repair (runs/wave-c/
--- verdict_A24A.md + verdict_A24B.md).  Pre-amendment text archived at commit dea24337.
--- THE RECORD: the A-C.1 row `dv2ResPoly_scalar` (and the drafted A-C.24 `γg`-only
--- repair) are BOTH refuted over the bare carrier by two independent machine channels:
--- (1) the root-power channel (L2E1/L2E3): on the normalized own-height read the product
---     law is CLEAN (`C136l2e1.dv2Res_mul`), so the signed root factor forces
---     `root^cocycle = 1` — unsuppliable (A24A §1);
--- (2) the off-side junk channel (A24A §2, `C136f14.dv2ResPoly_scalar_shape_digit_kill`):
---     the bare carrier's lattice coefficients are unguarded own-height reads, so ANY
---     constant-scalar law forces a false digit-vanishing transfer; live product
---     instances: A24B battery Part B′ (block×block off-side slots, bare 1 vs anchored 0).
--- The A24B battery further REALIZED §5's on-side risk: at every observed μ-value tie
--- (120 generic + 15 in the F1.4 block-digit × complement territory — 135/135) the mod-Ψ
--- reduction SHIFTS the digit's level-1 anchor (would-be root exponent δ = 1 in all 135,
--- injection genre), so no per-slot normalized-γg law survives on the bare carrier; the
--- anchored read absorbs every one of the 135 events (0 violations) — now the THEOREM
--- `C136f14b.dv2FullRead_modByMonic` (Lean-core, unconditional).  Over the anchored
--- carrier the SOURCE's own conclusion shape (PE3 F-1: γ_g times the `c₁` pin-height
--- root power) is the faithful form — scalar byte-unchanged except the complement read
--- anchored (`γg ↦ γgAnch`).
--- Proof-target inventory (A24B §2): landed — guard, additivity, shift identity, mod-Ψ
--- kill, reduction stability, endpoint/deg/pin addition, survival, on-side dictionary;
--- remaining — the digit-split convolution assembly + the carry law
--- (`C136l2e2.Dv2FullReadCarryLawStatement`, battery-certified 8128/8128 at S2;
--- L2E4 adjudicated the bare unweighted convolution unsuppliable — the assembly must be
--- the anchored/weighted form).]
-axiom dv2ResPolyAnch_scalar {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
+-- [RE-SIGNED: A-C.24″, 2026-08-29 — the A24C source-archaeology round (runs/wave-c/
+-- verdict_A24C.md; enacted by A24F).  Pre-amendment text — the A-C.24′ rows
+-- `dv2ResPolyAnch_scalar` / `dv2ResPolyAnch_radical_eq` with their full round-1/2
+-- refutation record (the root-power and off-side junk channels, the 135/135
+-- anchor-shift absorption) — archived at commit 48927e49; both rows had ZERO landed
+-- consumers (A24B pre-verified; A24E and A24F re-verified by repo-wide rg).
+-- THE RECORD: EFF.HE6R1.39's constant per-side scalar is asserted between the
+-- source's OWN residual polynomials, which CARRY DEFINITION HE7-3's per-slot twist
+-- exponents — spec/EFF-HE7.md .27, verbatim: "let c_t := (s(d₂u₂ − tu₂) + t·s(u₂) −
+-- s(d₂u₂))/ℓ be the twist exponents of §S1 at m₁ := d₂u₂"; carried in the source's
+-- own residual assembly (EFF.HE7.30 Step 2, verbatim: "τ_t with res(τ_t) = β_ξ^{c_t}
+-- the explicit twist of §S1"); pinned as the level-2 convention (EFF.HE7.08,
+-- verbatim: "every level-2 residual polynomial is defined only relative to a FIXED
+-- choice of n₂, and changing the choice multiplies its coefficients by explicit
+-- powers of β" — machine-load-bearing there: tooth HE7-T-BADTWIST, dropping the
+-- twist mispredicts σ; twisted read == PARI 480/480).  The A-C.24′ row transcribed
+-- that conclusion onto the UNTWISTED anchored carrier, over which the honest law is
+-- F14C's slot-indexed family root^{c₁(M₂′ − t·u₂, c_g)} — REFUTED as a constant law
+-- at any β ≠ 1 frame with a parity-varying slot line (battery
+-- verification/a24b_anchor_battery.py Part D, the 𝔽₄ frame: the enacted constant
+-- FAILS at exactly the 15 odd-c_z complements of 127, while the family and the
+-- source law over the TWISTED reads hold 127/127; S2's β = 1 and the source's
+-- decided ℓ = 1 branch are both degenerate for this question, which is why two
+-- battery rounds could not see it).  No stationarity hypothesis was dropped: the
+-- twist-transfer identity ID1 (`C136f14d.twistExp_cocycle_transfer`, Lean-core)
+-- converts the family into THIS row's constant law exactly — the machine bridge is
+-- `C136f14d.dv2ResPolyTw_scalar_of_anch_family`.  Hypothesis block byte-identical to
+-- the A-C.24′ row; the display scalar byte-kept from the source (PE3 F-1's
+-- γ̂_g · root^{c₁(pinHeight, c_g)}); carrier `dv2ResPolyAnch ↦ dv2ResPolyTw`.
+-- Cite-free: the SAME EFF.HE6R1.39 conclusion, now over the carrier the source
+-- itself defines (the twist prescription is DEFINITION HE7-3 + EFF.HE7.08).
+-- Remaining supplier unchanged from F14C: the digit-split convolution (§2.1).
+-- Conditional composed form LANDED (A24F): this row's exact conclusion is the
+-- Lean-core THEOREM `C136f14e.dv2ResPolyTw_scalar_of_conv_split`, carried-hypothesis
+-- pattern — the one proof-bearing open premise is F14C §2.1's supplier `hconv`.]
+axiom dv2ResPolyTw_scalar {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H₀ hpin)
     (hπ : Irreducible π) [IsAdicComplete (IsLocalRing.maximalIdeal O) O]
     {f Ψ : Polynomial O} (hΨ : IsTestKey L Ψ) (hctx : BlockContext L f)
     (hnd : ¬ Ψ ∣ blockFactor L f)
@@ -1822,11 +1869,11 @@ axiom dv2ResPolyAnch_scalar {F : KeyFrame O π} {H₀ hpin} (L : LevelDatum F H�
     (hp₂ : dv2Pin L Ψ f (dv2SideMin L Ψ f u₂ ℓ₂ hne) = (M₂ : ℕ∞))
     (hp₂' : dv2Pin L Ψ (blockFactor L f)
         (dv2SideMin L Ψ (blockFactor L f) u₂ ℓ₂ hne') = (M₂' : ℕ∞)) :
-    dv2ResPolyAnch L Ψ f u₂ ℓ₂ hne M₂ hp₂
+    dv2ResPolyTw L Ψ f u₂ ℓ₂ hne M₂ hp₂
       = Polynomial.C (γgAnch L f * (AdjoinRoot.root L.r)
             ^ (L.cocycle (pinHeight L Ψ (blockFactor L f) u₂ ℓ₂ hne')
                 (complementConst L f)))
-          * dv2ResPolyAnch L Ψ (blockFactor L f) u₂ ℓ₂ hne' M₂' hp₂'
+          * dv2ResPolyTw L Ψ (blockFactor L f) u₂ ℓ₂ hne' M₂' hp₂'
 
 /-! ### NODE C.40 [theorem] — the level-2 peel [signed: A-C.1; D11 cured in-statement] -/
 
