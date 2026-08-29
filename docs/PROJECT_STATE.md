@@ -221,7 +221,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | GCF | the repair legs | ★★ DONE (8fe42879) — the strong bridge + UNCONDITIONAL Lean-core disjointness (the countermodel pair discriminated); the cover = finiteGenreCoverAt_strong_of_kernel, conditional on ONE input |
 | GCK | the exhaustion kernel's partial | DONE (d5f31674) — the one-side sub-kernel via the predicted mechanism; the residual bridge NAMED: StrictRecentredFactorSideStatement (the multi-side factor-polygon inheritance) |
 | GCK2 | ★★★ THE GENRE COVER FALLS | DONE (3f78101d area) — the bridge PROVED ON LEAN CORE ALONE (the secant lemma = the genuinely new polygon math); the kernel + finiteGenreCoverAt_strong_all UNCONDITIONAL; 13/16 nodes; the rest is assembly |
-| A0GW | the rational weights → IFCG13 | skeleton banked (594L); TWO Claude agents hung in place; the codex finisher A0GW3 (medium) now owns the 14 holes |
+| A0G-RW | the rational weights | ★★ DONE (6f6fcc1e) — IFCG13 at PURE LEAN CORE 15/15 (a three-agent relay: two hangs → codex 8/14 → the closer 6/6 from fresh angles); the exact schema measures exist with the IFC7 recoveries |
+| A0GA | THE ASSEMBLY: CL (the strong induction) → AS → DS → ★ decidedSliceAt_all (the a0 field at EVERY degree) → IFCG14 | IN FLIGHT (Fable, ~14:15) |
 | EXPO | the public exposition refresh | ★ PUSHED (site aaf1ddb) — stage 13 live: draft → 28-finding audit → fix → clean skim → orchestrator spot-check; carry-over: maps.json/story.json still ignore stage 13 (graph pipeline absent) |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
