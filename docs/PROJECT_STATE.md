@@ -224,7 +224,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | A0G-RW | the rational weights | ★★ DONE (6f6fcc1e) — IFCG13 at PURE LEAN CORE 15/15 (a three-agent relay: two hangs → codex 8/14 → the closer 6/6 from fresh angles); the exact schema measures exist with the IFC7 recoveries |
 | A0GA | the assembly | DONE (94e0d3ae) — the honest package: decidedSliceAt_all_of_recursion (∀n, pure Lean core) + the new n=1 slice + off-menu everywhere; the prize blocked on the ONE socket |
 | FP0 | the counting socket's reduction | DONE (ee26fa4b) — the loop-cell count PROVED entirely; the socket ⟺ ONE remainder: RationalNonloopRemainderAt (the realization→cell cardinality bridge); zero new axioms |
-| FP1 | the cardinality bridge (injective by strong uniqueness + surjective by schema_split + the parameter count = the measure numerator) → fire ★★★ decidedSliceAt_all → IFCG16 | IN FLIGHT (Fable, ~15:30) |
+| FP1 | the bridge's honest form | DONE (8330c4d4) — the binary cardinality bridge COMPLETE (finite-precision Hensel uniqueness + fold bijectivity + the exact stratum product count, all Lean-core); the remainder ⟺ the per-genre census (audit iff proved); the NP-layer classifier/cell-measure gap named + localized |
+| FP2 | the multi-point genres' exact counts (in reach from the product count + the census) → isolate the single-point kernel → IFCG17 | IN FLIGHT (Fable, ~16:10) |
 | EXPO | the public exposition refresh | ★ PUSHED (site aaf1ddb) — stage 13 live: draft → 28-finding audit → fix → clean skim → orchestrator spot-check; carry-over: maps.json/story.json still ignore stage 13 (graph pipeline absent) |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
