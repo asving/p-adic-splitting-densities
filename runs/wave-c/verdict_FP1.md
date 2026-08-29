@@ -128,3 +128,12 @@ have required inventing that classifier or adding an axiom; neither was done.
 
 15/15 printed declarations: exactly `[propext, Classical.choice, Quot.sound]`.
 No new axiom; the C.33 dissection cite does not occur in this file.
+
+## AMENDMENT (2026-08-29, orchestrator, from FP2's dedup pass)
+
+FP2's corpus re-read found that H.102 ALREADY exported `card_levelZeroStratum_mul` /
+`bijOn_mulClass`-strength statements; this verdict's §7 claim "no prior product law
+exists" is WRONG (the H124c-only search was too narrow). IFCG16's §§6–7 are therefore a
+re-derivation, not a first landing — harmless duplication (both Lean-core, both green),
+but the novelty claim is retracted. Downstream units should cite H.102's originals or
+IFCG16's copies interchangeably.
