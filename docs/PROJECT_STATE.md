@@ -220,7 +220,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | C56R | the final occurrence rows | ★★★ DONE (c1287ebe area) — the FIRST MidPeelEmission (bindings by rfl) + the deepTwist tooth at the same X; the occurrence phase COMPLETE |
 | GCF | the repair legs | ★★ DONE (8fe42879) — the strong bridge + UNCONDITIONAL Lean-core disjointness (the countermodel pair discriminated); the cover = finiteGenreCoverAt_strong_of_kernel, conditional on ONE input |
 | GCK | the exhaustion kernel's partial | DONE (d5f31674) — the one-side sub-kernel via the predicted mechanism; the residual bridge NAMED: StrictRecentredFactorSideStatement (the multi-side factor-polygon inheritance) |
-| GCK2 | the factor-side bridge (sideDeg additivity + C.33-on-the-factor + the recentred divisor-stability) → fire the kernel → ★★★ THE COVER → IFCG12 | IN FLIGHT (Fable, ~08:10) |
+| GCK2 | ★★★ THE GENRE COVER FALLS | DONE (3f78101d area) — the bridge PROVED ON LEAN CORE ALONE (the secant lemma = the genuinely new polygon math); the kernel + finiteGenreCoverAt_strong_all UNCONDITIONAL; 13/16 nodes; the rest is assembly |
+| A0GW | the rational weights (each schema's exact RatFunc measure; the FF remainder carried honestly) → IFCG13 | IN FLIGHT (Fable, ~08:40) |
 | EXPO | the public exposition refresh | ★ PUSHED (site aaf1ddb) — stage 13 live: draft → 28-finding audit → fix → clean skim → orchestrator spot-check; carry-over: maps.json/story.json still ignore stage 13 (graph pipeline absent) |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
