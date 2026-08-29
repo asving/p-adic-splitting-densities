@@ -108,7 +108,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    enactment; the HE7APackage supplier stays XL-blocked;
    (b) **deepTwist** — the deep (r ≥ 4) arising-witness campaign + the WLE per-level
    exporter (design anchored; deep inhabitants open; WleCleared r=2 vacuity mapped);
-   (c) a0 GENERAL-n — ★ blueprint DELIVERED (A0_GENERAL_2026-08-28.md: PURE-ENGINE route, 16 nodes, 8-14k lines; the ONE new theorem finiteGenreCoverAt_all is the A0G-GC stop-line; cites honestly rejected for wild primes; quartic 32/32 reality check); NINE of 16 nodes LANDED (+HE with the n-ary schema split realizing sub-faces, +CH with the decrease/loop dichotomy closed — 07f7f73f); GC readiness per A0G7: NP1 → the dissection-skeleton bridge → GC0; IN FLIGHT: A0G5 (FF → IFCG4); (d) `jd0`/`genhnBox2` + `w1` (A-I.1); (e) four I-D12 bodies
+   (c) a0 GENERAL-n — ★ blueprint DELIVERED (A0_GENERAL_2026-08-28.md: PURE-ENGINE route, 16 nodes, 8-14k lines; the ONE new theorem finiteGenreCoverAt_all is the A0G-GC stop-line; cites honestly rejected for wild primes; quartic 32/32 reality check); TEN of 16 nodes landed-or-partial (FF banked as an honest partial after an agent hang — the Möbius remainder named); the GC runway RUNNING: NP1 → the dissection bridge → GC0 (unit NP1 → IFCG7 in flight); (d) `jd0`/`genhnBox2` + `w1` (A-I.1); (e) four I-D12 bodies
    (WindowPinningAt, GenhnHEAt, GenhnTow1At, TypeOfFaithful). The CHFD supply map
    (docs/in-progress/CAPSTONE_SUPPLY_MAP_2026-08-26.md) is the field-by-field ledger.
 2. **The Hensel engine: COMPLETE — payoff propagation is the open work.** F1.1 landed
@@ -235,3 +235,4 @@ frontier (§4) top-down. The map of the repo is in the repo CLAUDE.md; the bluep
 (byte-frozen; re-signs only via recorded amendments); landed Lean in
 `leanfinal/Uniformity/`. When a milestone lands: update §§2/4/6 here IN PLACE, append the
 dated details to `docs/LOG.md`, commit both with the work.
+
