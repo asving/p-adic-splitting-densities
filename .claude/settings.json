@@ -48,7 +48,23 @@
       "Bash(cd /data/users/asvin/math-and-lean/p-adic-splitting-densities/leanfinal && ~/.elan/bin/lake *)",
       "Bash(cd /data/users/asvin/math-and-lean/p-adic-splitting-densities/leanfinal && ~/.elan/bin/lake:*)",
       "Bash(cd /data/users/asvin/math-and-lean/p-adic-splitting-densities/leanspec && ~/.elan/bin/lake *)",
-      "Bash(cd /data/users/asvin/math-and-lean/p-adic-splitting-densities/leanspec && ~/.elan/bin/lake:*)"
+      "Bash(cd /data/users/asvin/math-and-lean/p-adic-splitting-densities/leanspec && ~/.elan/bin/lake:*)",
+      "Bash(*)",
+      "Bash(cd /data/users/asvin/math-and-lean/p-adic-splitting-densities/leanspec && *)",
+      "Bash(cd /data/users/asvin/math-and-lean/p-adic-splitting-densities/leanspec &&:*)",
+      "Bash(cd /data/users/asvin/math-and-lean/p-adic-splitting-densities/lean && *)",
+      "Bash(cd /data/users/asvin/math-and-lean/p-adic-splitting-densities/lean &&:*)",
+      "Bash(elan *)",
+      "Bash(elan:*)",
+      "mcp__lean-lsp__lean_goal",
+      "mcp__lean-lsp__lean_hover_info",
+      "mcp__lean-lsp__lean_local_search",
+      "mcp__lean-lsp__lean_file_outline",
+      "mcp__lean-lsp__lean_term_goal",
+      "mcp__lean-lsp__lean_multi_attempt",
+      "mcp__lean-lsp__lean_verify",
+      "mcp__lean-lsp__lean_references",
+      "mcp__lean-lsp__lean_declaration_file"
     ]
   }
 }
