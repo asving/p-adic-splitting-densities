@@ -583,3 +583,15 @@ vartheta, the wired GENTOW demand, the shared export, the per-witness exporter, 
 recenter occurrence. Remaining: the universal ladder fields (package/lb1 + the G10
 boundary), the keystone's threshold-datum conditionality, and the capstone binding. The
 GC stop-line grinds on codex. BRIDGE landed GC0's doorstep earlier this hour.
+
+## 2026-08-29 ~08:35 — THE GENRE COVER FALLS
+
+GCK2 proved the multi-side factor-polygon bridge on Lean core alone (the secant/maximal-
+drop argument — the genuinely new polygon mathematics of the uniform campaign), firing
+the exhaustion kernel and the unconditional strong finite genre cover
+(finiteGenreCoverAt_strong_all: exhaustive, disjoint, decreasing, at Lean core + the one
+dissection cite). The A0G blueprint's single highest-risk node — flagged at design,
+guarded by DWV-style honesty through three partial rounds (GC → GCF → GCK → GCK2) — is
+closed. Thirteen of sixteen campaign nodes are done; the remainder (rational weights,
+cluster induction, assembly, the slice socket, the ∀n capstone) is assembly against the
+cover. The general-degree a0 mechanism the 2026-08-28 directive demanded now exists.
