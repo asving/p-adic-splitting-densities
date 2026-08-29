@@ -2,8 +2,76 @@
 
 Date: 2026-08-29.  File: `leanfinal/Uniformity/ChapI/IFCG13.lean` (NEW).
 
-STATUS: FINISHER PASS COMPLETE UNDER THE THREE-ROUND RULE.  Eight of fourteen original
-holes are closed; six retain `sorry` with their exact stopping subgoals recorded below.
+STATUS: **NODE LANDED (A0GW4 close-out, 2026-08-29).  ALL SIX RETAINED HOLES CLOSED.
+ZERO `sorry`.  AxCheck footer prints PURE LEAN CORE `{propext, Classical.choice,
+Quot.sound}` on every printed declaration — all three general cone laws, the loop pin,
+all five n=2/n=3 gate families, AND both by-name recoveries against
+`IFC7.genuineDensity_three_exact` (no cite appears at all; on top of that, every
+`native_decide` in the file — the finisher's landed ones included — was downgraded to
+kernel-checked `decide`, so no compiler-trust axioms remain).**  All six theorem
+statements byte-unchanged; only proofs and private helpers were added.
+
+## How each hole closed (A0GW4)
+
+* `coneSum_summable`: hand-rolled `consE : ℕ × (Fin r → ℕ) ≃ (Fin (r+1) → ℕ)`
+  structure literal (avoids `Fin.succFunEquiv` whnf blowup) + `summable_piGeom`
+  induction (`Summable.mul_of_nonneg` with EXPLICIT `f`/`g` — elaborating nonneg
+  proofs against the Pi-order `0 ≤ f` implicitly is the whnf trap) + comparison
+  `x^E ≤ x^{∑num} = ∏ x^{num k}` through `Summable.subtype`.
+* `coneSum_single`: explicit `unitClassEquiv : ↑(unit classes) × ℕ ≃ ConeType [f]`
+  (`h = b·t + u`, div/mod roundtrips by omega — omega atomizes variable products) +
+  affine shift `E(bt+u) = E(u) + t·A` via `skeletonExp_affine` with the empty-filter
+  `expCoeffD [f]` computation + `Equiv.tsum_eq`/`Summable.tsum_prod'`/geometric.
+  THE RECORDED WHNF BOMB: a `_` hole in `Summable.mul_left _` — with the constant
+  explicit both `rw` and `refine …trans` work instantly.  Standing rule: NO `_` holes
+  in Summable-combinator arguments in this file.
+* `coneSum_unit_denominators`: `monoPeel : ℕ × M(r) ≃ M(r+1)` (strictly monotone
+  positive tuples, `Fin.cons` peel, all roundtrips omega) + `monoGeom` induction
+  (`∑ ∏ yₖ^{vₖ} = ∏ᵢ Pᵢ/(1−Pᵢ)`, tail products via the `Finset.prod_filter` +
+  `Fin.prod_univ_succ` + `Fin.succ_le_succ_iff` reindex) + val-preserving
+  `ConeType s ≃ M` (rfl inverses) + the halved affine law (`expCoeffD` even when
+  `b = 1`) + the `Finset.sum_comm'`/`Fin.card_Iic` exchange for the base exponent.
+* `loopFactor_eq`: `coneSum_single` at the loop face; unit Finset `{1}` by `decide`;
+  `skeletonExp_loopSkeleton` pins `E = T_m + m`; `field_simp` closes the rational
+  identity.
+* `n2_gate_split`: exactly the n2_gate_inert template + `cone_b1d1_pair` + the
+  BOTH-orderings nonvanishing facts (`0 < q³−q` AND `0 < −q+q³` — the recorded
+  field_simp stop was the missing commuted form).
+* `n3_gate_linRam`: NEW `coneSum_of_reindex` (ℕ² affine-exponent grid ⇒ double
+  geometric) + two explicit reindex equivs: `mixedEquiv12 (i,j) ↦ (i+1, 2i+3+2j)`
+  with `E = 10+6i+3j` giving `x¹⁰/((1−x⁶)(1−x³))`, and `mixedEquiv21
+  (i,j) ↦ (2i+1, i+1+j)` with `E = 6+6i+j` giving `x⁶/((1−x⁶)(1−x))` (both
+  hand-verified; the gate checked numerically at q=2: both sides 22/93 before
+  formalizing) + the linInert-template algebra (`hP2` cancellation needed
+  `linear_combination` + `mul_left_cancel₀`, not linarith).
+
+Verification: `timeout 580 ~/.elan/bin/lake env lean Uniformity/ChapI/IFCG13.lean`
+— zero errors, zero warnings, 15 `#print axioms` lines all pure Lean core.
+The campaign's remaining nodes (CL/AS/DS/ALL) are pure assembly on this file.
+
+Previous live-status record (kept for the log):
+* `coneSum_summable`: **CLOSED** (A0GW4).  Hand-rolled `consE : ℕ × (Fin r → ℕ) ≃
+  (Fin (r+1) → ℕ)` structure literal (avoids the recorded `Fin.succFunEquiv` whnf
+  blowup) + `summable_piGeom` (induction, `Summable.mul_of_nonneg` with EXPLICIT
+  `f`/`g` implicits — implicit elaboration against the Pi-order `0 ≤ f` was the whnf
+  trap) + comparison `x^E ≤ x^(∑ num) = ∏ x^(num k)` through `Summable.subtype`.
+* `coneSum_single`: IN PROGRESS on disk.  `unitClassEquiv : ↑(unit classes) × ℕ ≃
+  ConeType [f]` (h = b·t+u) COMPILES, as do the affine-law shift `hshift`
+  (E(bt+u) = E(u) + t·A via `skeletonExp_affine` + empty-filter `expCoeffD`), the
+  `Equiv.tsum_eq` reindex, `tsum_congr hpt`, and the product summability `hsum2`
+  (direct `Summable.mul_of_nonneg` on finite × geometric — do NOT transport through
+  `Equiv.summable_iff`, that path whnf-times-out).  Remaining: the
+  `rw [Summable.tsum_prod' hsum2 …]` step whnf-times-out — tail kept in a BISECT3
+  comment in the file; next angle: `Eq.trans` with an explicitly-typed slice
+  summability `have`, avoiding `rw` motive machinery and `_`-holes.
+* Remaining four holes untouched so far this pass: `coneSum_unit_denominators`,
+  `loopFactor_eq`, `n2_gate_split`, `n3_gate_linRam` (plan: monoGeom induction on
+  strictly-monotone tuples; loop/gate algebra; two mixed-denominator cone reindexes
+  (1,r)(2,r): E = 10+6i+3j and (2,r)(1,r): E = 6+6i+j — both hand-verified, and the
+  linRam gate checked numerically at q=2: both sides 22/93).
+
+Previous finisher status (kept for the record): eight of fourteen original
+holes closed; six retained `sorry` with their exact stopping subgoals recorded below.
 
 ## Per-hole status
 
@@ -134,5 +202,8 @@ densities from the weights = the landed G51 laws `q/(2(q+1)), q/(2(q+1)), 1/(q+1
 ## AxCheck
 
 Target: Lean core only on §1/§3/§5/§6 (cover import is carrier binding only).
-Current: the file compiles; declarations downstream of the six retained holes carry
-`sorryAx`.  All closed arithmetic/exponent and denominator arguments use Lean core only.
+FINAL (2026-08-29, A0GW4): **met, and stronger than target** — the footer prints
+`[propext, Classical.choice, Quot.sound]` for `skeletonExp_loopSkeleton`, all three
+cone laws, `loopFactor_eq`, all n = 2 and n = 3 gates, and both recoveries
+(`n3_recovery_ram`/`n3_recovery_split`); no cite and no `native_decide` compiler-trust
+axiom appears anywhere (all decisions kernel-`decide`d).

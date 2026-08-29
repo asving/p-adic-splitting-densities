@@ -339,11 +339,140 @@ downstream).  The face-count factors are constant on the cone and multiply outsi
 noncomputable def coneSum (x : ℝ) (s : List FaceShape) : ℝ :=
   ∑' p : ConeType s, x ^ skeletonExp s p.1
 
+/-- The head-tail splitting of finite tuples, hand-rolled as a structure literal to avoid
+the `Fin.succFunEquiv` whnf blowup (the recorded finisher stop on the summability hole). -/
+private def consE (r : ℕ) : ℕ × (Fin r → ℕ) ≃ (Fin (r + 1) → ℕ) where
+  toFun p := Fin.cons p.1 p.2
+  invFun v := (v 0, fun i => v i.succ)
+  left_inv p := by
+    obtain ⟨a, w⟩ := p
+    refine Prod.ext (by simp) ?_
+    funext i
+    simp
+  right_inv v := by
+    funext i
+    refine Fin.cases (by simp) (fun j => by simp) i
+
+/-- Geometric decay on finite tuples: `v ↦ ∏ i, y i ^ v i` is summable when every ratio
+sits in `[0, 1)` — the multi-geometric envelope of the cone sums. -/
+private theorem summable_piGeom :
+    ∀ (r : ℕ) (y : Fin r → ℝ), (∀ i, 0 ≤ y i) → (∀ i, y i < 1) →
+      Summable (fun v : Fin r → ℕ => ∏ i, y i ^ v i) := by
+  intro r
+  induction r with
+  | zero =>
+    intro y _ _
+    have h1 : (fun v : Fin 0 → ℕ => ∏ i, y i ^ v i) = fun _ => 1 := by
+      funext v
+      simp
+    rw [h1]
+    haveI : Finite (Fin 0 → ℕ) := Finite.of_subsingleton
+    exact Summable.of_finite
+  | succ n ih =>
+    intro y hy0 hy1
+    rw [← (consE n).summable_iff]
+    have h1 : ((fun v : Fin (n + 1) → ℕ => ∏ i, y i ^ v i) ∘ (consE n))
+        = fun p : ℕ × (Fin n → ℕ) =>
+            (y 0 ^ p.1) * ∏ i : Fin n, y i.succ ^ p.2 i := by
+      funext p
+      show ∏ i, y i ^ (Fin.cons p.1 p.2 : Fin (n + 1) → ℕ) i = _
+      rw [Fin.prod_univ_succ]
+      simp
+    rw [h1]
+    exact Summable.mul_of_nonneg
+      (f := fun a : ℕ => y 0 ^ a)
+      (g := fun w : Fin n → ℕ => ∏ i : Fin n, y i.succ ^ w i)
+      (summable_geometric_of_lt_one (hy0 0) (hy1 0))
+      (ih (fun i => y i.succ) (fun i => hy0 i.succ) (fun i => hy1 i.succ))
+      (fun a => pow_nonneg (hy0 0) a)
+      (fun w => Finset.prod_nonneg fun i _ => pow_nonneg (hy0 i.succ) _)
+
 /-- Summability over the cone (RW1's convergence gate), from the affine decay floor. -/
 theorem coneSum_summable {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
     {s : List FaceShape} (hs : ∀ f ∈ s, ValidFace f) :
     Summable (fun p : ConeType s => x ^ skeletonExp s p.1) := by
-  sorry
+  have hbase : Summable (fun v : Fin s.length → ℕ => ∏ i, x ^ v i) :=
+    summable_piGeom s.length (fun _ => x) (fun _ => hx0) (fun _ => hx1)
+  have hsub : Summable (fun p : ConeType s => ∏ i, x ^ p.1 i) :=
+    hbase.subtype _
+  refine Summable.of_nonneg_of_le (fun p => by positivity) (fun p => ?_) hsub
+  calc x ^ skeletonExp s p.1
+      ≤ x ^ ∑ i, p.1 i :=
+        pow_le_pow_of_le_one hx0 hx1.le (sum_num_le_skeletonExp hs p.2)
+    _ = ∏ i, x ^ p.1 i := (Finset.prod_pow_eq_pow_sum _ _ _).symm
+
+/-- Valid slope parameters on a singleton skeleton: positivity and coprimality alone
+(the slope order is vacuous). -/
+private theorem validSlopeParams_single {f : FaceShape} {h : ℕ} (h1 : 1 ≤ h)
+    (hcop : Nat.Coprime h f.1) : ValidSlopeParams [f] (fun _ => h) := by
+  constructor
+  · intro i
+    refine ⟨h1, ?_⟩
+    have hi : i = ⟨0, Nat.one_pos⟩ := Fin.ext (Nat.lt_one_iff.mp i.isLt)
+    rw [hi]
+    exact hcop
+  · intro i j hij
+    have hi : (i : ℕ) < 1 := i.isLt
+    have hj : (j : ℕ) < 1 := j.isLt
+    omega
+
+/-- The unit-class parametrization of a single-face cone: `h = b·t + u` with
+`u ∈ [1, b]` coprime to `b` and `t ≥ 0` — one geometric class per unit residue. -/
+private def unitClassEquiv (f : FaceShape) (hf : ValidFace f) :
+    {u // u ∈ (Finset.Icc 1 f.1).filter (fun v => Nat.Coprime v f.1)} × ℕ
+      ≃ ConeType [f] where
+  toFun p :=
+    ⟨fun _ => f.1 * p.2 + p.1.1, by
+      have hm := Finset.mem_filter.1 p.1.2
+      have hIcc := Finset.mem_Icc.1 hm.1
+      refine validSlopeParams_single (by omega) ?_
+      rw [Nat.add_comm]
+      exact (Nat.coprime_add_mul_left_left p.1.1 f.1 p.2).2 hm.2⟩
+  invFun p :=
+    (⟨(p.1 ⟨0, Nat.one_pos⟩ - 1) % f.1 + 1, by
+      have h1 : 1 ≤ p.1 ⟨0, Nat.one_pos⟩ := (p.2.1 ⟨0, Nat.one_pos⟩).1
+      have hcop : Nat.Coprime (p.1 ⟨0, Nat.one_pos⟩) f.1 := (p.2.1 ⟨0, Nat.one_pos⟩).2
+      have hb1 : 1 ≤ f.1 := hf.1
+      have hdm := Nat.div_add_mod (p.1 ⟨0, Nat.one_pos⟩ - 1) f.1
+      have hlt : (p.1 ⟨0, Nat.one_pos⟩ - 1) % f.1 < f.1 :=
+        Nat.mod_lt _ (by omega)
+      refine Finset.mem_filter.2 ⟨Finset.mem_Icc.2 ⟨by omega, by omega⟩, ?_⟩
+      have hrw : (p.1 ⟨0, Nat.one_pos⟩ - 1) % f.1 + 1
+          + f.1 * ((p.1 ⟨0, Nat.one_pos⟩ - 1) / f.1) = p.1 ⟨0, Nat.one_pos⟩ := by
+        omega
+      exact (Nat.coprime_add_mul_left_left _ f.1 _).1 (by rw [hrw]; exact hcop)⟩,
+     (p.1 ⟨0, Nat.one_pos⟩ - 1) / f.1)
+  left_inv p := by
+    obtain ⟨⟨u, hu⟩, t⟩ := p
+    have hm := Finset.mem_filter.1 hu
+    have hIcc := Finset.mem_Icc.1 hm.1
+    have hb1 : 1 ≤ f.1 := hf.1
+    have hval : f.1 * t + u - 1 = u - 1 + f.1 * t := by omega
+    have hdiv : (f.1 * t + u - 1) / f.1 = t := by
+      rw [hval, Nat.add_mul_div_left _ _ (show 0 < f.1 by omega),
+        Nat.div_eq_of_lt (by omega)]
+      omega
+    have hmod : (f.1 * t + u - 1) % f.1 = u - 1 := by
+      rw [hval, Nat.add_mul_mod_self_left]
+      exact Nat.mod_eq_of_lt (by omega)
+    simp only [Prod.mk.injEq, Subtype.mk.injEq]
+    exact ⟨by rw [hmod]; omega, hdiv⟩
+  right_inv p := by
+    obtain ⟨num, hnum⟩ := p
+    have h1 : 1 ≤ num ⟨0, Nat.one_pos⟩ := (hnum.1 ⟨0, Nat.one_pos⟩).1
+    have hb1 : 1 ≤ f.1 := hf.1
+    have hdm := Nat.div_add_mod (num ⟨0, Nat.one_pos⟩ - 1) f.1
+    refine Subtype.ext ?_
+    funext i
+    show f.1 * ((num ⟨0, Nat.one_pos⟩ - 1) / f.1)
+        + ((num ⟨0, Nat.one_pos⟩ - 1) % f.1 + 1) = num i
+    calc f.1 * ((num ⟨0, Nat.one_pos⟩ - 1) / f.1)
+          + ((num ⟨0, Nat.one_pos⟩ - 1) % f.1 + 1)
+        = (f.1 * ((num ⟨0, Nat.one_pos⟩ - 1) / f.1)
+            + (num ⟨0, Nat.one_pos⟩ - 1) % f.1) + 1 := by ring
+      _ = (num ⟨0, Nat.one_pos⟩ - 1) + 1 := by rw [hdm]
+      _ = num ⟨0, Nat.one_pos⟩ := by omega
+      _ = num i := (congrArg num (Fin.ext (Nat.lt_one_iff.mp i.isLt))).symm
 
 /-- **The general single-face closed form** (any denominator `b ≥ 1`): decomposing
 `h = b·t + u` over the unit classes `u ∈ [1, b]`, `gcd(u, b) = 1`, each class is one
@@ -354,7 +483,264 @@ theorem coneSum_single {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1) {f : FaceShape}
       = (∑ u ∈ (Finset.Icc 1 f.1).filter (fun u => Nat.Coprime u f.1),
           x ^ skeletonExp [f] (fun _ => u))
         / (1 - x ^ (f.1 * (faceResDeg f * (faceLen f + 1)) / 2)) := by
-  sorry
+  have hb1 : 1 ≤ f.1 := hf.1
+  have hd1 : 1 ≤ faceResDeg f := hf.2.1
+  have hl1 : 1 ≤ faceLen f := faceLen_pos hf
+  have hsingle : ∀ g ∈ [f], ValidFace g := by
+    intro g hg
+    rw [List.mem_singleton] at hg
+    rwa [hg]
+  have heven : 2 ∣ f.1 * (faceResDeg f * (faceLen f + 1)) := by
+    obtain ⟨c, hc⟩ := Nat.even_mul_succ_self (faceLen f)
+    have hrw : f.1 * (faceResDeg f * (faceLen f + 1))
+        = faceLen f * (faceLen f + 1) := by
+      rw [show faceLen f = f.1 * faceResDeg f from rfl]
+      ring
+    omega
+  set A := f.1 * (faceResDeg f * (faceLen f + 1)) / 2 with hA_def
+  have hA2 : 2 * A = f.1 * (faceResDeg f * (faceLen f + 1)) := by
+    rw [hA_def]
+    exact Nat.mul_div_cancel' heven
+  have hA1 : 1 ≤ A := by
+    have h2 : 1 * (1 * 2) ≤ f.1 * (faceResDeg f * (faceLen f + 1)) :=
+      Nat.mul_le_mul hb1 (Nat.mul_le_mul hd1 (by omega))
+    omega
+  -- the affine law on the singleton skeleton
+  have hcoeff : expCoeffD [f] ⟨0, Nat.one_pos⟩ = faceResDeg f * (faceLen f + 1) := by
+    unfold expCoeffD
+    have hfe : Finset.univ.filter
+        (fun j : Fin ([f] : List FaceShape).length =>
+          (⟨0, Nat.one_pos⟩ : Fin ([f] : List FaceShape).length) < j) = ∅ := by
+      refine Finset.filter_eq_empty_iff.2 ?_
+      intro j _
+      have hj : (j : ℕ) < 1 := j.isLt
+      rw [Fin.lt_def]
+      omega
+    rw [hfe]
+    simp
+  have haff : ∀ h : ℕ, 1 ≤ h → Nat.Coprime h f.1 →
+      2 * skeletonExp [f] (fun _ => h)
+        = expConstD [f] + h * (faceResDeg f * (faceLen f + 1)) := by
+    intro h h1 hcop
+    rw [skeletonExp_affine hsingle (validSlopeParams_single h1 hcop)]
+    congr 1
+    rw [show (∑ k : Fin ([f] : List FaceShape).length,
+        (fun _ : Fin ([f] : List FaceShape).length => h) k * expCoeffD [f] k)
+        = h * expCoeffD [f] ⟨0, Nat.one_pos⟩ from Fin.sum_univ_one _, hcoeff]
+  -- the geometric shift: E(b·t + u) = E(u) + t·A
+  have hshift : ∀ u t : ℕ, 1 ≤ u → Nat.Coprime u f.1 →
+      skeletonExp [f] (fun _ => f.1 * t + u)
+        = skeletonExp [f] (fun _ => u) + t * A := by
+    intro u t hu1 hcop
+    have hcop' : Nat.Coprime (f.1 * t + u) f.1 := by
+      rw [Nat.add_comm]
+      exact (Nat.coprime_add_mul_left_left u f.1 t).2 hcop
+    have h1 := haff (f.1 * t + u) (by omega) hcop'
+    have h2 := haff u hu1 hcop
+    have hkey : 2 * (skeletonExp [f] (fun _ => u) + t * A)
+        = 2 * skeletonExp [f] (fun _ => f.1 * t + u) := by
+      calc 2 * (skeletonExp [f] (fun _ => u) + t * A)
+          = 2 * skeletonExp [f] (fun _ => u) + t * (2 * A) := by ring
+        _ = (expConstD [f] + u * (faceResDeg f * (faceLen f + 1)))
+            + t * (f.1 * (faceResDeg f * (faceLen f + 1))) := by rw [h2, hA2]
+        _ = expConstD [f] + (f.1 * t + u) * (faceResDeg f * (faceLen f + 1)) := by
+            ring
+        _ = 2 * skeletonExp [f] (fun _ => f.1 * t + u) := h1.symm
+    omega
+  -- geometric data
+  have hxA : x ^ A < 1 := pow_lt_one₀ hx0 hx1 (by omega)
+  have hxA0 : (0 : ℝ) ≤ x ^ A := pow_nonneg hx0 _
+  -- reindex through the unit-class equivalence and sum the geometric classes
+  unfold coneSum
+  rw [← Equiv.tsum_eq (unitClassEquiv f hf)
+    (fun p : ConeType [f] => x ^ skeletonExp [f] p.1)]
+  have hpt : ∀ a : {u // u ∈ (Finset.Icc 1 f.1).filter (fun v => Nat.Coprime v f.1)} × ℕ,
+      x ^ skeletonExp [f] ((unitClassEquiv f hf a).1)
+        = x ^ skeletonExp [f] (fun _ => a.1.1) * (x ^ A) ^ a.2 := by
+    intro a
+    obtain ⟨⟨u, hu⟩, t⟩ := a
+    have hm := Finset.mem_filter.1 hu
+    have hIcc := Finset.mem_Icc.1 hm.1
+    show x ^ skeletonExp [f] (fun _ => f.1 * t + u) = _
+    rw [hshift u t (by omega) hm.2, pow_add, mul_comm t A, pow_mul]
+  rw [tsum_congr hpt]
+  have hsum2 : Summable
+      (fun a : {u // u ∈ (Finset.Icc 1 f.1).filter (fun v => Nat.Coprime v f.1)} × ℕ =>
+        x ^ skeletonExp [f] (fun _ => a.1.1) * (x ^ A) ^ a.2) :=
+    Summable.mul_of_nonneg
+      (f := fun u : {u // u ∈ (Finset.Icc 1 f.1).filter (fun v => Nat.Coprime v f.1)} =>
+        x ^ skeletonExp [f] (fun _ => u.1))
+      (g := fun t : ℕ => (x ^ A) ^ t)
+      Summable.of_finite (summable_geometric_of_lt_one hxA0 hxA)
+      (fun u => pow_nonneg hx0 _) (fun t => pow_nonneg hxA0 _)
+  rw [Summable.tsum_prod' hsum2
+    (fun u => Summable.mul_left (x ^ skeletonExp [f] (fun _ => u.1))
+      (summable_geometric_of_lt_one hxA0 hxA))]
+  simp only [tsum_mul_left, tsum_geometric_of_lt_one hxA0 hxA]
+  rw [Finset.tsum_subtype ((Finset.Icc 1 f.1).filter (fun v => Nat.Coprime v f.1))
+      (fun v => x ^ skeletonExp [f] (fun _ => v) * (1 - x ^ A)⁻¹),
+    ← Finset.sum_mul, div_eq_mul_inv]
+
+/-- The staircase peeling: a strictly monotone positive `(r+1)`-tuple is its base offset
+`v 0 − 1` together with the shifted strictly monotone positive tail `k ↦ v k.succ − v 0`. -/
+private def monoPeel (r : ℕ) :
+    ℕ × {v : Fin r → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v}
+      ≃ {v : Fin (r + 1) → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v} where
+  toFun p :=
+    ⟨Fin.cons (p.1 + 1) (fun k => p.2.1 k + (p.1 + 1)), by
+      constructor
+      · intro k
+        refine Fin.cases ?_ (fun j => ?_) k
+        · rw [Fin.cons_zero]
+          omega
+        · rw [Fin.cons_succ]
+          have := p.2.2.1 j
+          omega
+      · intro a b hab
+        rcases Fin.eq_zero_or_eq_succ b with hb | ⟨j, rfl⟩
+        · subst hb
+          exact absurd hab (Fin.not_lt_zero a)
+        · rcases Fin.eq_zero_or_eq_succ a with ha | ⟨i, rfl⟩
+          · subst ha
+            rw [Fin.cons_zero, Fin.cons_succ]
+            have := p.2.2.1 j
+            omega
+          · rw [Fin.cons_succ, Fin.cons_succ]
+            have := p.2.2.2 (Fin.succ_lt_succ_iff.1 hab)
+            omega⟩
+  invFun v :=
+    (v.1 0 - 1,
+     ⟨fun k => v.1 k.succ - v.1 0, by
+      constructor
+      · intro k
+        have h0 : v.1 0 < v.1 k.succ := v.2.2 (Fin.succ_pos k)
+        show 1 ≤ v.1 k.succ - v.1 0
+        omega
+      · intro a b hab
+        have h1 : v.1 a.succ < v.1 b.succ := v.2.2 (Fin.succ_lt_succ_iff.2 hab)
+        have h2 : v.1 0 < v.1 a.succ := v.2.2 (Fin.succ_pos a)
+        show v.1 a.succ - v.1 0 < v.1 b.succ - v.1 0
+        omega⟩)
+  left_inv p := by
+    obtain ⟨a, ⟨w, hw⟩⟩ := p
+    simp only [Prod.mk.injEq, Subtype.mk.injEq, Fin.cons_zero, Fin.cons_succ]
+    refine ⟨by omega, ?_⟩
+    funext k
+    show w k + (a + 1) - (a + 1) = w k
+    omega
+  right_inv v := by
+    obtain ⟨u, hu⟩ := v
+    have h1 : 1 ≤ u 0 := hu.1 0
+    refine Subtype.ext ?_
+    funext k
+    refine Fin.cases ?_ (fun j => ?_) k
+    · simp only [Fin.cons_zero]
+      omega
+    · simp only [Fin.cons_succ]
+      have h2 : u 0 < u j.succ := hu.2 (Fin.succ_pos j)
+      omega
+
+/-- **The strictly-monotone multi-geometric law**: over positive strictly increasing
+tuples, `∑ ∏ yₖ^{vₖ}` is summable and factors into one geometric series per tail
+product `Pᵢ = ∏_{k ≥ i} yₖ`, with value `∏ᵢ Pᵢ/(1 − Pᵢ)`. -/
+private theorem monoGeom :
+    ∀ (r : ℕ) (y : Fin r → ℝ), (∀ i, 0 ≤ y i) → (∀ i, y i < 1) →
+      Summable (fun v : {v : Fin r → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v} =>
+        ∏ k, y k ^ v.1 k)
+      ∧ ∑' v : {v : Fin r → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v}, ∏ k, y k ^ v.1 k
+        = ∏ i, ((∏ k ∈ Finset.univ.filter (fun k => i ≤ k), y k)
+            / (1 - ∏ k ∈ Finset.univ.filter (fun k => i ≤ k), y k)) := by
+  intro r
+  induction r with
+  | zero =>
+    intro y _ _
+    haveI hfin0 : Finite (Fin 0 → ℕ) := Finite.of_subsingleton
+    constructor
+    · exact Summable.of_finite
+    · rw [tsum_eq_single
+        (⟨fun k => k.elim0, fun k => k.elim0, fun a => a.elim0⟩ :
+          {v : Fin 0 → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v})
+        (fun b hb => absurd (Subtype.ext (Subsingleton.elim b.1 _)) hb)]
+      simp
+  | succ n ih =>
+    intro y hy0 hy1
+    have ihS : Summable (fun v : {v : Fin n → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v} =>
+        ∏ k, y k.succ ^ v.1 k) :=
+      (ih (fun i => y i.succ) (fun i => hy0 i.succ) (fun i => hy1 i.succ)).1
+    have ihT : (∑' v : {v : Fin n → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v},
+          ∏ k, y k.succ ^ v.1 k)
+        = ∏ i, ((∏ k ∈ Finset.univ.filter (fun k : Fin n => i ≤ k), y k.succ)
+            / (1 - ∏ k ∈ Finset.univ.filter (fun k : Fin n => i ≤ k), y k.succ)) :=
+      (ih (fun i => y i.succ) (fun i => hy0 i.succ) (fun i => hy1 i.succ)).2
+    set Q := ∏ k : Fin (n + 1), y k with hQ_def
+    have hQsplit : Q = y 0 * ∏ k : Fin n, y k.succ := by
+      rw [hQ_def, Fin.prod_univ_succ]
+    have hQ0 : 0 ≤ Q := Finset.prod_nonneg fun k _ => hy0 k
+    have hQ1 : Q < 1 := by
+      rw [hQsplit]
+      calc y 0 * ∏ k : Fin n, y k.succ ≤ y 0 * 1 := by
+            refine mul_le_mul_of_nonneg_left ?_ (hy0 0)
+            exact Finset.prod_le_one (fun k _ => hy0 k.succ) (fun k _ => (hy1 k.succ).le)
+        _ < 1 := by
+            rw [mul_one]
+            exact hy1 0
+    -- pointwise value through the peel
+    have hpt : ∀ p : ℕ × {v : Fin n → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v},
+        (∏ k, y k ^ ((monoPeel n p).1 k))
+          = Q ^ (p.1 + 1) * ∏ k : Fin n, y k.succ ^ p.2.1 k := by
+      intro p
+      show (∏ k, y k ^ (Fin.cons (p.1 + 1)
+          (fun k => p.2.1 k + (p.1 + 1)) : Fin (n + 1) → ℕ) k) = _
+      generalize p.1 + 1 = c
+      rw [Fin.prod_univ_succ]
+      simp only [Fin.cons_zero, Fin.cons_succ]
+      rw [hQsplit, mul_pow]
+      simp_rw [pow_add]
+      rw [Finset.prod_mul_distrib, Finset.prod_pow]
+      ring
+    have hQgeom : Summable (fun a : ℕ => Q ^ (a + 1)) := by
+      refine ((summable_geometric_of_lt_one hQ0 hQ1).mul_left Q).congr ?_
+      intro a
+      exact (pow_succ' Q a).symm
+    have hS' : Summable (fun p : ℕ × {v : Fin n → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v} =>
+        Q ^ (p.1 + 1) * ∏ k : Fin n, y k.succ ^ p.2.1 k) :=
+      Summable.mul_of_nonneg
+        (f := fun a : ℕ => Q ^ (a + 1))
+        (g := fun w : {v : Fin n → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v} =>
+          ∏ k : Fin n, y k.succ ^ w.1 k)
+        hQgeom ihS (fun a => pow_nonneg hQ0 _)
+        (fun w => Finset.prod_nonneg fun k _ => pow_nonneg (hy0 k.succ) _)
+    have hSfull : Summable
+        (fun v : {v : Fin (n + 1) → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v} =>
+          ∏ k, y k ^ v.1 k) := by
+      rw [← (monoPeel n).summable_iff]
+      exact (summable_congr hpt).2 hS'
+    refine ⟨hSfull, ?_⟩
+    rw [← Equiv.tsum_eq (monoPeel n)
+        (fun v : {v : Fin (n + 1) → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v} =>
+          ∏ k, y k ^ v.1 k),
+      tsum_congr hpt,
+      Summable.tsum_prod' hS'
+        (fun a => Summable.mul_left (Q ^ (a + 1)) ihS)]
+    simp only [tsum_mul_left]
+    rw [ihT, tsum_mul_right]
+    have hgeo : ∑' a : ℕ, Q ^ (a + 1) = Q * (1 - Q)⁻¹ := by
+      have h1 : ∀ a : ℕ, Q ^ (a + 1) = Q * Q ^ a := fun a => pow_succ' Q a
+      rw [tsum_congr h1, tsum_mul_left, tsum_geometric_of_lt_one hQ0 hQ1]
+    rw [hgeo]
+    -- reassemble the (n+1)-fold tail-product form
+    have hPsucc : ∀ i : Fin n,
+        (∏ k ∈ Finset.univ.filter (fun k : Fin (n + 1) => i.succ ≤ k), y k)
+          = ∏ k ∈ Finset.univ.filter (fun k : Fin n => i ≤ k), y k.succ := by
+      intro i
+      rw [Finset.prod_filter, Finset.prod_filter, Fin.prod_univ_succ]
+      have h0 : ¬ ((i.succ : Fin (n + 1)) ≤ 0) := not_le.mpr (Fin.succ_pos i)
+      rw [if_neg h0, one_mul]
+      simp only [Fin.succ_le_succ_iff]
+    rw [Fin.prod_univ_succ,
+      Finset.filter_true_of_mem (fun k _ => Fin.zero_le k), ← hQ_def]
+    simp only [hPsucc]
+    rw [div_eq_mul_inv]
 
 /-- **The all-`b = 1` staircase closed form**: when every face is unit-denominator the
 cone is the staircase `num k = k + 1 + ∑_{i ≤ k} tᵢ` over `t ∈ ℕ^r`, and the sum
@@ -367,7 +753,145 @@ theorem coneSum_unit_denominators {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
         / ∏ k : Fin s.length,
             (1 - x ^ ((∑ j ∈ Finset.univ.filter (fun j : Fin s.length => k ≤ j),
               expCoeffD s j) / 2)) := by
-  sorry
+  -- the cone is exactly the strictly monotone positive tuples
+  let eM : ConeType s ≃ {v : Fin s.length → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v} :=
+    { toFun := fun p => ⟨p.1, fun k => (p.2.1 k).1, by
+        intro a b hab
+        have h := p.2.2 a b (Fin.lt_def.mp hab)
+        rw [hb (s.get a) (List.get_mem s a), hb (s.get b) (List.get_mem s b)] at h
+        simpa using h⟩
+      invFun := fun v => ⟨v.1, ⟨fun k => ⟨v.2.1 k, by
+          rw [hb (s.get k) (List.get_mem s k)]
+          exact Nat.coprime_one_right _⟩,
+        fun i j hij => by
+          rw [hb (s.get i) (List.get_mem s i), hb (s.get j) (List.get_mem s j),
+            Nat.mul_one, Nat.mul_one]
+          exact v.2.2 (Fin.lt_def.mpr hij)⟩⟩
+      left_inv := fun p => rfl
+      right_inv := fun v => rfl }
+  -- halved coefficients and constant
+  have hceven : ∀ k : Fin s.length, 2 ∣ expCoeffD s k := by
+    intro k
+    have hlen : faceLen (s.get k) = faceResDeg (s.get k) := by
+      rw [show faceLen (s.get k) = (s.get k).1 * faceResDeg (s.get k) from rfl,
+        hb (s.get k) (List.get_mem s k), Nat.one_mul]
+    unfold expCoeffD
+    rw [hlen]
+    rcases Nat.mod_two_eq_zero_or_one (faceResDeg (s.get k)) with he | ho
+    · exact Dvd.dvd.mul_right (by omega) _
+    · exact Dvd.dvd.mul_left (by omega) _
+  have hgamma : ∀ k : Fin s.length, 2 * (expCoeffD s k / 2) = expCoeffD s k :=
+    fun k => Nat.mul_div_cancel' (hceven k)
+  have hCeven : 2 ∣ expConstD s := by
+    rw [expConstD_eq]
+    refine Finset.dvd_sum ?_
+    intro k _
+    have hlen : faceLen (s.get k) = faceResDeg (s.get k) := by
+      rw [show faceLen (s.get k) = (s.get k).1 * faceResDeg (s.get k) from rfl,
+        hb (s.get k) (List.get_mem s k), Nat.one_mul]
+    rw [hlen]
+    omega
+  -- the halved affine law
+  have hE : ∀ num : Fin s.length → ℕ, ValidSlopeParams s num →
+      skeletonExp s num = expConstD s / 2 + ∑ k, num k * (expCoeffD s k / 2) := by
+    intro num hnum
+    have h2 := skeletonExp_affine hs hnum
+    have hsum : ∑ k, num k * expCoeffD s k
+        = 2 * ∑ k, num k * (expCoeffD s k / 2) := by
+      rw [Finset.mul_sum]
+      refine Finset.sum_congr rfl ?_
+      intro k _
+      calc num k * expCoeffD s k
+          = num k * (2 * (expCoeffD s k / 2)) := by rw [hgamma k]
+        _ = 2 * (num k * (expCoeffD s k / 2)) := by ring
+    omega
+  -- the base staircase is a valid parameter system
+  have hbase : ValidSlopeParams s (fun k => k.1 + 1) := by
+    refine ⟨fun i => ⟨Nat.le_add_left 1 i.1, ?_⟩, ?_⟩
+    · rw [hb (s.get i) (List.get_mem s i)]
+      exact Nat.coprime_one_right _
+    · intro i j hij
+      rw [hb (s.get i) (List.get_mem s i), hb (s.get j) (List.get_mem s j)]
+      show (i.1 + 1) * 1 < (j.1 + 1) * 1
+      omega
+  -- the geometric data
+  have hy0' : ∀ k : Fin s.length, (0 : ℝ) ≤ x ^ (expCoeffD s k / 2) :=
+    fun k => pow_nonneg hx0 _
+  have hy1' : ∀ k : Fin s.length, x ^ (expCoeffD s k / 2) < 1 := by
+    intro k
+    have h2 := two_le_expCoeffD hs k
+    exact pow_lt_one₀ hx0 hx1 (by omega)
+  have hMval : (∑' v : {v : Fin s.length → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v},
+        ∏ k, (x ^ (expCoeffD s k / 2)) ^ v.1 k)
+      = ∏ i, ((∏ k ∈ Finset.univ.filter (fun k => i ≤ k), x ^ (expCoeffD s k / 2))
+          / (1 - ∏ k ∈ Finset.univ.filter (fun k => i ≤ k), x ^ (expCoeffD s k / 2))) :=
+    (monoGeom s.length (fun k => x ^ (expCoeffD s k / 2)) hy0' hy1').2
+  -- pointwise: the exponent decomposes into constant + per-variable geometric factors
+  have hptc : ∀ p : ConeType s,
+      x ^ skeletonExp s p.1
+        = x ^ (expConstD s / 2) * ∏ k, (x ^ (expCoeffD s k / 2)) ^ p.1 k := by
+    intro p
+    rw [hE p.1 p.2, pow_add]
+    congr 1
+    rw [← Finset.prod_pow_eq_pow_sum]
+    refine Finset.prod_congr rfl ?_
+    intro k _
+    rw [Nat.mul_comm (p.1 k) (expCoeffD s k / 2), pow_mul]
+  -- the transported sum
+  have hchain : (∑' p : ConeType s, ∏ k, (x ^ (expCoeffD s k / 2)) ^ p.1 k)
+      = ∑' v : {v : Fin s.length → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v},
+          ∏ k, (x ^ (expCoeffD s k / 2)) ^ v.1 k :=
+    Equiv.tsum_eq eM
+      (fun v : {v : Fin s.length → ℕ // (∀ k, 1 ≤ v k) ∧ StrictMono v} =>
+        ∏ k, (x ^ (expCoeffD s k / 2)) ^ v.1 k)
+  unfold coneSum
+  rw [tsum_congr hptc, tsum_mul_left, hchain, hMval]
+  -- convert the tail products into the statement's halved-sum exponents
+  have hP : ∀ i : Fin s.length,
+      (∏ k ∈ Finset.univ.filter (fun k => i ≤ k), x ^ (expCoeffD s k / 2))
+        = x ^ ((∑ j ∈ Finset.univ.filter (fun j : Fin s.length => i ≤ j),
+            expCoeffD s j) / 2) := by
+    intro i
+    rw [Finset.prod_pow_eq_pow_sum]
+    congr 1
+    have h2 : ∑ j ∈ Finset.univ.filter (fun j : Fin s.length => i ≤ j), expCoeffD s j
+        = 2 * ∑ j ∈ Finset.univ.filter (fun j : Fin s.length => i ≤ j),
+            (expCoeffD s j / 2) := by
+      rw [Finset.mul_sum]
+      exact Finset.sum_congr rfl fun j _ => (hgamma j).symm
+    omega
+  simp only [hP]
+  rw [Finset.prod_div_distrib, ← mul_div_assoc, Finset.prod_pow_eq_pow_sum, ← pow_add]
+  -- the base exponent identity
+  have hA_half : ∀ i : Fin s.length,
+      (∑ j ∈ Finset.univ.filter (fun j : Fin s.length => i ≤ j), expCoeffD s j) / 2
+        = ∑ j ∈ Finset.univ.filter (fun j : Fin s.length => i ≤ j),
+            (expCoeffD s j / 2) := by
+    intro i
+    have h2 : ∑ j ∈ Finset.univ.filter (fun j : Fin s.length => i ≤ j), expCoeffD s j
+        = 2 * ∑ j ∈ Finset.univ.filter (fun j : Fin s.length => i ≤ j),
+            (expCoeffD s j / 2) := by
+      rw [Finset.mul_sum]
+      exact Finset.sum_congr rfl fun j _ => (hgamma j).symm
+    omega
+  have hEbase : expConstD s / 2
+      + (∑ i : Fin s.length,
+          (∑ j ∈ Finset.univ.filter (fun j : Fin s.length => i ≤ j), expCoeffD s j) / 2)
+      = skeletonExp s (fun k => k.1 + 1) := by
+    rw [hE _ hbase]
+    congr 1
+    simp only [hA_half]
+    rw [Finset.sum_comm' (t' := Finset.univ)
+      (s' := fun j => Finset.univ.filter (fun i : Fin s.length => i ≤ j))
+      (by intro a c; simp)]
+    refine Finset.sum_congr rfl ?_
+    intro j _
+    rw [Finset.sum_const]
+    have hIic : Finset.univ.filter (fun i : Fin s.length => i ≤ j) = Finset.Iic j := by
+      ext i
+      simp
+    rw [hIic, Fin.card_Iic, smul_eq_mul]
+  rw [hEbase]
 
 end ConeSum
 
@@ -384,7 +908,7 @@ private theorem cone_b2_d1 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
     coneSum x [((2 : ℕ), pat)] = x ^ 3 / (1 - x ^ 3) := by
   rw [coneSum_single hx0 hx1 hv]
   have he : (Finset.Icc 1 2).filter (fun u => Nat.Coprime u 2) = {1} := by
-    native_decide
+    decide
   rw [he]
   norm_num [faceResDeg, faceLen, hd, skeletonExp_singleton, faceExp,
     Finset.filter_singleton, Finset.Icc, Finset.sum_range_succ]
@@ -402,7 +926,7 @@ private theorem cone_b3_d1 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
     coneSum x [((3 : ℕ), pat)] = (x ^ 4 + x ^ 6) / (1 - x ^ 6) := by
   rw [coneSum_single hx0 hx1 hv]
   have he : (Finset.Icc 1 3).filter (fun u => Nat.Coprime u 3) = {1, 2} := by
-    native_decide
+    decide
   rw [he]
   norm_num [faceResDeg, faceLen, hd, skeletonExp_singleton, faceExp]
 
@@ -433,7 +957,7 @@ private theorem cone_b1d1_pair {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
       (∑ j ∈ Finset.univ.filter (fun j : Fin 2 => (1 : Fin 2) ≤ j),
         expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] j) / 2 = 1 := by
     have hf : Finset.univ.filter (fun j : Fin 2 => (1 : Fin 2) ≤ j) = {1} := by
-      native_decide
+      decide
     rw [hf]
     norm_num [hd1]
   rw [coneSum_unit_denominators hx0 hx1 hv (by simp)]
@@ -459,7 +983,7 @@ private theorem cone_b1_pair_data {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
       (∑ j ∈ Finset.univ.filter (fun j : Fin 2 => (1 : Fin 2) ≤ j),
         expCoeffD [((1 : ℕ), p₁), ((1 : ℕ), p₂)] j) / 2 = c₁ / 2 := by
     have hf : Finset.univ.filter (fun j : Fin 2 => (1 : Fin 2) ≤ j) = {1} := by
-      native_decide
+      decide
     rw [hf]
     simp [h1]
   rw [coneSum_unit_denominators hx0 hx1 hv (by simp), he]
@@ -537,18 +1061,18 @@ private theorem cone_b1_triple_d1 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
   have hc0 :
       (∑ j ∈ Finset.univ.filter (fun j : Fin 3 => (0 : Fin 3) ≤ j), expCoeffD s j) / 2 = 6 := by
     have hf : Finset.univ.filter (fun j : Fin 3 => (0 : Fin 3) ≤ j) = Finset.univ := by
-      native_decide
+      decide
     rw [hf, Fin.sum_univ_three, h0, h1, h2]
     norm_num
   have hc1 :
       (∑ j ∈ Finset.univ.filter (fun j : Fin 3 => (1 : Fin 3) ≤ j), expCoeffD s j) / 2 = 3 := by
-    have hf : Finset.univ.filter (fun j : Fin 3 => (1 : Fin 3) ≤ j) = {1, 2} := by native_decide
+    have hf : Finset.univ.filter (fun j : Fin 3 => (1 : Fin 3) ≤ j) = {1, 2} := by decide
     rw [hf]
     rw [Finset.sum_insert (by decide), Finset.sum_singleton, h1, h2]
     norm_num
   have hc2 :
       (∑ j ∈ Finset.univ.filter (fun j : Fin 3 => (2 : Fin 3) ≤ j), expCoeffD s j) / 2 = 1 := by
-    have hf : Finset.univ.filter (fun j : Fin 3 => (2 : Fin 3) ≤ j) = {2} := by native_decide
+    have hf : Finset.univ.filter (fun j : Fin 3 => (2 : Fin 3) ≤ j) = {2} := by decide
     rw [hf]
     norm_num [h2]
   change coneSum x s = _
@@ -556,6 +1080,206 @@ private theorem cone_b1_triple_d1 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
   change x ^ 13 / (∏ k : Fin 3, (1 - x ^ ((∑ j ∈ Finset.univ.filter
     (fun j : Fin 3 => k ≤ j), expCoeffD s j) / 2))) = _
   rw [Fin.prod_univ_three, hc0, hc1, hc2, pow_one]
+
+/-- **Two-variable affine reindex**: when the cone is an `ℕ²` grid with exponent affine
+in the grid coordinates, the sum is a double geometric series. -/
+private theorem coneSum_of_reindex {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
+    {s : List FaceShape} (c a b : ℕ) (ha : 1 ≤ a) (hb : 1 ≤ b)
+    (e : ℕ × ℕ ≃ ConeType s)
+    (hE : ∀ p : ℕ × ℕ, skeletonExp s (e p).1 = c + a * p.1 + b * p.2) :
+    coneSum x s = x ^ c / ((1 - x ^ a) * (1 - x ^ b)) := by
+  have hxa : x ^ a < 1 := pow_lt_one₀ hx0 hx1 (by omega)
+  have hxb : x ^ b < 1 := pow_lt_one₀ hx0 hx1 (by omega)
+  have hxa0 : (0 : ℝ) ≤ x ^ a := pow_nonneg hx0 _
+  have hxb0 : (0 : ℝ) ≤ x ^ b := pow_nonneg hx0 _
+  unfold coneSum
+  rw [← Equiv.tsum_eq e (fun p : ConeType s => x ^ skeletonExp s p.1)]
+  have hpt : ∀ p : ℕ × ℕ,
+      x ^ skeletonExp s ((e p).1) = (x ^ c * (x ^ a) ^ p.1) * (x ^ b) ^ p.2 := by
+    intro p
+    rw [hE p, pow_add, pow_add, pow_mul, pow_mul]
+  rw [tsum_congr hpt]
+  have hsum2 : Summable (fun p : ℕ × ℕ => (x ^ c * (x ^ a) ^ p.1) * (x ^ b) ^ p.2) :=
+    Summable.mul_of_nonneg
+      (f := fun i : ℕ => x ^ c * (x ^ a) ^ i)
+      (g := fun j : ℕ => (x ^ b) ^ j)
+      (Summable.mul_left (x ^ c) (summable_geometric_of_lt_one hxa0 hxa))
+      (summable_geometric_of_lt_one hxb0 hxb)
+      (fun i => mul_nonneg (pow_nonneg hx0 c) (pow_nonneg hxa0 i))
+      (fun j => pow_nonneg hxb0 j)
+  rw [Summable.tsum_prod' hsum2
+    (fun i => Summable.mul_left (x ^ c * (x ^ a) ^ i)
+      (summable_geometric_of_lt_one hxb0 hxb))]
+  simp only [tsum_mul_left, tsum_geometric_of_lt_one hxb0 hxb]
+  rw [tsum_mul_right, tsum_mul_left, tsum_geometric_of_lt_one hxa0 hxa,
+    div_eq_mul_inv, mul_inv]
+  ring
+
+/-- The reindexing of the `(1,·),(2,·)` mixed cone: `(i, j) ↦ (i + 1, 2i + 3 + 2j)`
+(the odd numerators above twice the first slope). -/
+private def mixedEquiv12 (p₁ p₂ : FactorizationType) :
+    ℕ × ℕ ≃ ConeType [((1 : ℕ), p₁), ((2 : ℕ), p₂)] where
+  toFun q :=
+    ⟨fun k => if k.1 = 0 then q.1 + 1 else 2 * q.1 + 3 + 2 * q.2, by
+      constructor
+      · intro k
+        fin_cases k
+        · exact ⟨Nat.le_add_left 1 q.1, Nat.coprime_one_right _⟩
+        · refine ⟨by show 1 ≤ 2 * q.1 + 3 + 2 * q.2; omega, ?_⟩
+          show Nat.Coprime (2 * q.1 + 3 + 2 * q.2) 2
+          have hodd : 2 * q.1 + 3 + 2 * q.2 = 1 + 2 * (q.1 + 1 + q.2) := by ring
+          rw [hodd]
+          exact (Nat.coprime_add_mul_left_left 1 2 (q.1 + 1 + q.2)).2
+            (Nat.coprime_one_left 2)
+      · intro k l hkl
+        fin_cases k <;> fin_cases l
+        · exact absurd hkl (by norm_num)
+        · show (q.1 + 1) * 2 < (2 * q.1 + 3 + 2 * q.2) * 1
+          omega
+        · exact absurd hkl (by norm_num)
+        · exact absurd hkl (by norm_num)⟩
+  invFun p :=
+    (p.1 ⟨0, Nat.zero_lt_two⟩ - 1,
+     (p.1 ⟨1, Nat.one_lt_two⟩ - 2 * p.1 ⟨0, Nat.zero_lt_two⟩ - 1) / 2)
+  left_inv q := by
+    obtain ⟨i, j⟩ := q
+    simp only [Prod.mk.injEq]
+    constructor
+    · show i + 1 - 1 = i
+      omega
+    · show (2 * i + 3 + 2 * j - 2 * (i + 1) - 1) / 2 = j
+      omega
+  right_inv p := by
+    obtain ⟨num, hnum⟩ := p
+    have h1 : 1 ≤ num ⟨0, Nat.zero_lt_two⟩ := (hnum.1 ⟨0, Nat.zero_lt_two⟩).1
+    have hcop : Nat.Coprime (num ⟨1, Nat.one_lt_two⟩) 2 :=
+      (hnum.1 ⟨1, Nat.one_lt_two⟩).2
+    have hodd : num ⟨1, Nat.one_lt_two⟩ % 2 = 1 := by
+      rcases Nat.mod_two_eq_zero_or_one (num ⟨1, Nat.one_lt_two⟩) with h0 | h1'
+      · exfalso
+        have hdvd : (2 : ℕ) ∣ Nat.gcd (num ⟨1, Nat.one_lt_two⟩) 2 :=
+          Nat.dvd_gcd (by omega) (by omega)
+        rw [hcop] at hdvd
+        omega
+      · exact h1'
+    have hslope : num ⟨0, Nat.zero_lt_two⟩ * 2 < num ⟨1, Nat.one_lt_two⟩ * 1 :=
+      hnum.2 ⟨0, Nat.zero_lt_two⟩ ⟨1, Nat.one_lt_two⟩ (by norm_num)
+    refine Subtype.ext ?_
+    funext k
+    fin_cases k
+    · show num ⟨0, Nat.zero_lt_two⟩ - 1 + 1 = num ⟨0, Nat.zero_lt_two⟩
+      omega
+    · show 2 * (num ⟨0, Nat.zero_lt_two⟩ - 1) + 3
+          + 2 * ((num ⟨1, Nat.one_lt_two⟩ - 2 * num ⟨0, Nat.zero_lt_two⟩ - 1) / 2)
+        = num ⟨1, Nat.one_lt_two⟩
+      omega
+
+/-- The reindexing of the `(2,·),(1,·)` mixed cone: `(i, j) ↦ (2i + 1, i + 1 + j)`
+(odd first numerator, second slope above half of it). -/
+private def mixedEquiv21 (p₁ p₂ : FactorizationType) :
+    ℕ × ℕ ≃ ConeType [((2 : ℕ), p₁), ((1 : ℕ), p₂)] where
+  toFun q :=
+    ⟨fun k => if k.1 = 0 then 2 * q.1 + 1 else q.1 + 1 + q.2, by
+      constructor
+      · intro k
+        fin_cases k
+        · refine ⟨by show 1 ≤ 2 * q.1 + 1; omega, ?_⟩
+          show Nat.Coprime (2 * q.1 + 1) 2
+          have hodd : 2 * q.1 + 1 = 1 + 2 * q.1 := by ring
+          rw [hodd]
+          exact (Nat.coprime_add_mul_left_left 1 2 q.1).2 (Nat.coprime_one_left 2)
+        · exact ⟨by show 1 ≤ q.1 + 1 + q.2; omega, Nat.coprime_one_right _⟩
+      · intro k l hkl
+        fin_cases k <;> fin_cases l
+        · exact absurd hkl (by norm_num)
+        · show (2 * q.1 + 1) * 1 < (q.1 + 1 + q.2) * 2
+          omega
+        · exact absurd hkl (by norm_num)
+        · exact absurd hkl (by norm_num)⟩
+  invFun p :=
+    ((p.1 ⟨0, Nat.zero_lt_two⟩ - 1) / 2,
+     p.1 ⟨1, Nat.one_lt_two⟩ - (p.1 ⟨0, Nat.zero_lt_two⟩ - 1) / 2 - 1)
+  left_inv q := by
+    obtain ⟨i, j⟩ := q
+    simp only [Prod.mk.injEq]
+    constructor
+    · show (2 * i + 1 - 1) / 2 = i
+      omega
+    · show i + 1 + j - (2 * i + 1 - 1) / 2 - 1 = j
+      omega
+  right_inv p := by
+    obtain ⟨num, hnum⟩ := p
+    have h1 : 1 ≤ num ⟨1, Nat.one_lt_two⟩ := (hnum.1 ⟨1, Nat.one_lt_two⟩).1
+    have hcop : Nat.Coprime (num ⟨0, Nat.zero_lt_two⟩) 2 :=
+      (hnum.1 ⟨0, Nat.zero_lt_two⟩).2
+    have hodd : num ⟨0, Nat.zero_lt_two⟩ % 2 = 1 := by
+      rcases Nat.mod_two_eq_zero_or_one (num ⟨0, Nat.zero_lt_two⟩) with h0 | h1'
+      · exfalso
+        have hdvd : (2 : ℕ) ∣ Nat.gcd (num ⟨0, Nat.zero_lt_two⟩) 2 :=
+          Nat.dvd_gcd (by omega) (by omega)
+        rw [hcop] at hdvd
+        omega
+      · exact h1'
+    have hslope : num ⟨0, Nat.zero_lt_two⟩ * 1 < num ⟨1, Nat.one_lt_two⟩ * 2 :=
+      hnum.2 ⟨0, Nat.zero_lt_two⟩ ⟨1, Nat.one_lt_two⟩ (by norm_num)
+    refine Subtype.ext ?_
+    funext k
+    fin_cases k
+    · show 2 * ((num ⟨0, Nat.zero_lt_two⟩ - 1) / 2) + 1 = num ⟨0, Nat.zero_lt_two⟩
+      omega
+    · show (num ⟨0, Nat.zero_lt_two⟩ - 1) / 2 + 1
+          + (num ⟨1, Nat.one_lt_two⟩ - (num ⟨0, Nat.zero_lt_two⟩ - 1) / 2 - 1)
+        = num ⟨1, Nat.one_lt_two⟩
+      omega
+
+/-- The `(1,·),(2,·)` mixed-denominator cone: `E(i+1, 2i+3+2j) = 10 + 6i + 3j`, hence
+the recorded closed form `x¹⁰/((1−x⁶)(1−x³))`. -/
+private theorem cone_mixed_b1_b2 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
+    (p₁ p₂ : FactorizationType) (h₁ : p₁.degree = 1) (h₂ : p₂.degree = 1) :
+    coneSum x [((1 : ℕ), p₁), ((2 : ℕ), p₂)]
+      = x ^ 10 / ((1 - x ^ 6) * (1 - x ^ 3)) := by
+  refine coneSum_of_reindex hx0 hx1 10 6 3 (by norm_num) (by norm_num)
+    (mixedEquiv12 p₁ p₂) ?_
+  intro p
+  show skeletonExp [((1 : ℕ), p₁), ((2 : ℕ), p₂)]
+      (fun k => if k.1 = 0 then p.1 + 1 else 2 * p.1 + 3 + 2 * p.2)
+    = 10 + 6 * p.1 + 3 * p.2
+  unfold skeletonExp
+  change (∑ i : Fin 2, faceExp
+      (baseY [((1 : ℕ), p₁), ((2 : ℕ), p₂)]
+        (fun k => if k.1 = 0 then p.1 + 1 else 2 * p.1 + 3 + 2 * p.2) i.1)
+      ([((1 : ℕ), p₁), ((2 : ℕ), p₂)].get i)
+      (if (i : Fin 2).1 = 0 then p.1 + 1 else 2 * p.1 + 3 + 2 * p.2))
+    = 10 + 6 * p.1 + 3 * p.2
+  norm_num [Finset.univ_fin2, faceExp, baseY, dropAt, faceResDeg, faceLen, h₁, h₂,
+    Finset.sum_range_succ, Finset.sum_range_zero]
+  omega
+
+/-- The `(2,·),(1,·)` mixed-denominator cone: `E(2i+1, i+1+j) = 6 + 6i + j`, hence
+the recorded closed form `x⁶/((1−x⁶)(1−x))`. -/
+private theorem cone_mixed_b2_b1 {x : ℝ} (hx0 : 0 ≤ x) (hx1 : x < 1)
+    (p₁ p₂ : FactorizationType) (h₁ : p₁.degree = 1) (h₂ : p₂.degree = 1) :
+    coneSum x [((2 : ℕ), p₁), ((1 : ℕ), p₂)]
+      = x ^ 6 / ((1 - x ^ 6) * (1 - x)) := by
+  have hmain : coneSum x [((2 : ℕ), p₁), ((1 : ℕ), p₂)]
+      = x ^ 6 / ((1 - x ^ 6) * (1 - x ^ 1)) := by
+    refine coneSum_of_reindex hx0 hx1 6 6 1 (by norm_num) (by norm_num)
+      (mixedEquiv21 p₁ p₂) ?_
+    intro p
+    show skeletonExp [((2 : ℕ), p₁), ((1 : ℕ), p₂)]
+        (fun k => if k.1 = 0 then 2 * p.1 + 1 else p.1 + 1 + p.2)
+      = 6 + 6 * p.1 + 1 * p.2
+    unfold skeletonExp
+    change (∑ i : Fin 2, faceExp
+        (baseY [((2 : ℕ), p₁), ((1 : ℕ), p₂)]
+          (fun k => if k.1 = 0 then 2 * p.1 + 1 else p.1 + 1 + p.2) i.1)
+        ([((2 : ℕ), p₁), ((1 : ℕ), p₂)].get i)
+        (if (i : Fin 2).1 = 0 then 2 * p.1 + 1 else p.1 + 1 + p.2))
+      = 6 + 6 * p.1 + 1 * p.2
+    norm_num [Finset.univ_fin2, faceExp, baseY, dropAt, faceResDeg, faceLen, h₁, h₂,
+      Finset.sum_range_succ, Finset.sum_range_zero]
+    omega
+  rw [hmain, pow_one]
 
 /-! ## §5 — The value gates: n = 2 symbolic (against G51), n = 3 symbolic (against
 IFC7's `genuineDensity_three_exact`), n = 4 executable (§4 mirror vs blueprint §8) -/
@@ -570,7 +1294,46 @@ noncomputable def loopFactor (m : ℕ) (q : ℝ) : ℝ :=
 /-- Loop factor closed form (the A0G-RS full-weight pin, all masses). -/
 theorem loopFactor_eq {q : ℝ} (hq : 2 ≤ q) (m : ℕ) (hm : 1 ≤ m) :
     loopFactor m q = (q - 1) / (q ^ bigTLoop m - 1) := by
-  sorry
+  have hq0 : 0 < q := by linarith
+  have hx0 : 0 ≤ q⁻¹ := by positivity
+  have hx1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
+  have hv : ValidFace (loopFace m) := by
+    refine ⟨le_refl 1, ?_, ?_⟩
+    · rw [faceResDeg_loopFace]
+      exact hm
+    · intro p hp
+      have hp1 : p = (1, m) := by simpa [loopFace] using hp
+      rw [hp1]
+      exact ⟨le_refl 1, hm⟩
+  have hU : (Finset.Icc 1 (loopFace m).1).filter
+      (fun u => Nat.Coprime u (loopFace m).1) = {1} := by
+    show (Finset.Icc 1 1).filter (fun u => Nat.Coprime u 1) = {1}
+    decide
+  have hE : skeletonExp [loopFace m] (fun _ => 1) = bigTLoop m + m := by
+    have h := skeletonExp_loopSkeleton m (fun _ => 1)
+    rw [one_mul] at h
+    exact h
+  have hden : (loopFace m).1 * (faceResDeg (loopFace m) * (faceLen (loopFace m) + 1)) / 2
+      = bigTLoop m := by
+    rw [faceResDeg_loopFace, faceLen_loopFace]
+    show 1 * (m * (m + 1)) / 2 = bigTLoop m
+    rw [one_mul]
+    rfl
+  have hT1 : 1 ≤ bigTLoop m := by
+    have h2 : 1 * 2 ≤ m * (m + 1) := Nat.mul_le_mul hm (by omega)
+    unfold bigTLoop
+    omega
+  unfold loopFactor
+  rw [show loopSkeleton m = [loopFace m] from rfl, coneSum_single hx0 hx1 hv, hU,
+    Finset.sum_singleton, hE, hden]
+  have hqT : (1 : ℝ) < q ^ bigTLoop m := one_lt_pow₀ (by linarith) (by omega)
+  have hqTne : q ^ bigTLoop m - 1 ≠ 0 := by linarith
+  have hxT : (q⁻¹) ^ bigTLoop m < 1 := pow_lt_one₀ hx0 hx1 (by omega)
+  have hxTne : 1 - (q⁻¹) ^ bigTLoop m ≠ 0 := by linarith
+  have hqm : q ^ m ≠ 0 := by positivity
+  have hqT0 : q ^ bigTLoop m ≠ 0 := by positivity
+  rw [pow_add, inv_pow, inv_pow]
+  field_simp
 
 /-! ### n = 2: the five-skeleton bank assembled -/
 
@@ -600,7 +1363,40 @@ noncomputable def n2Density (level1 : ℝ) (P : ℝ) (q : ℝ) : ℝ :=
 /-- **n = 2 GATE, split** = the landed `G51` law `X / (2(X+1))`. -/
 theorem n2_gate_split {q : ℝ} (hq : 2 ≤ q) :
     n2Density (q * (q - 1) / 2) (clusterP2 shallow2Split q) q = q / (2 * (q + 1)) := by
-  sorry
+  have hq0 : 0 < q := by linarith
+  have hqp1 : q + 1 ≠ 0 := by linarith
+  have hqm1 : q - 1 ≠ 0 := by linarith
+  have hxi0 : 0 ≤ q⁻¹ := by positivity
+  have hxi1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
+  have hd1 : rp11.degree = 1 := by decide
+  have hd2 : rp11p11.degree = 2 := by decide
+  have hv2 : ValidFace ((1 : ℕ), rp11p11) := by
+    norm_num [ValidFace, rp11p11, faceResDeg, FactorizationType.degree]
+  have hv11 : ∀ f ∈ [((1 : ℕ), rp11), ((1 : ℕ), rp11)], ValidFace f := by
+    intro f hf
+    have hfe : f = ((1 : ℕ), rp11) := by simpa using hf
+    rw [hfe]
+    norm_num [ValidFace, rp11, faceResDeg, FactorizationType.degree]
+  have hq3 : q ^ 3 - 1 ≠ 0 := by
+    have : 1 < q ^ 3 := one_lt_pow₀ (by linarith) (by norm_num)
+    linarith
+  have hpos : 0 < q ^ 3 - q := by
+    have hq2 : 1 < q ^ 2 := one_lt_pow₀ (by linarith) (by norm_num)
+    have hp := mul_pos hq0 (sub_pos.mpr hq2)
+    nlinarith
+  have hpos' : (0 : ℝ) < -q + q ^ 3 := by linarith
+  have hloop : 1 - (q - 1) / (q ^ 3 - 1) ≠ 0 := by
+    have heq : 1 - (q - 1) / (q ^ 3 - 1) = (q ^ 3 - q) / (q ^ 3 - 1) := by
+      field_simp [hq3]
+      ring
+    rw [heq]
+    exact div_ne_zero (ne_of_gt hpos) hq3
+  unfold n2Density clusterP2 shallow2Split
+  rw [loopFactor_eq hq 2 (by norm_num), cone_b1_d2 hxi0 hxi1 rp11p11 hd2 hv2,
+    cone_b1d1_pair hxi0 hxi1 rp11 rp11 hd1 hd1 hv11]
+  norm_num [bigTLoop]
+  field_simp [hq0.ne', hqp1, hqm1, hq3, hloop, ne_of_gt hpos, ne_of_gt hpos']
+  ring
 
 /-- **n = 2 GATE, inert** = the landed `G51` law `X / (2(X+1))`. -/
 theorem n2_gate_inert {q : ℝ} (hq : 2 ≤ q) :
@@ -608,7 +1404,7 @@ theorem n2_gate_inert {q : ℝ} (hq : 2 ≤ q) :
   have hq0 : 0 < q := by linarith
   have hxi0 : 0 ≤ q⁻¹ := by positivity
   have hxi1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
-  have hd2 : rp21.degree = 2 := by native_decide
+  have hd2 : rp21.degree = 2 := by decide
   have hv2 : ValidFace ((1 : ℕ), rp21) := by
     norm_num [ValidFace, rp21, faceResDeg, FactorizationType.degree]
   have hq3 : q ^ 3 - 1 ≠ 0 := by
@@ -636,7 +1432,7 @@ theorem n2_gate_ram {q : ℝ} (hq : 2 ≤ q) :
   have hq0 : 0 < q := by linarith
   have hxi0 : 0 ≤ q⁻¹ := by positivity
   have hxi1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
-  have hd1 : rp11.degree = 1 := by native_decide
+  have hd1 : rp11.degree = 1 := by decide
   have hv : ValidFace ((2 : ℕ), rp11) := by
     norm_num [ValidFace, rp11, faceResDeg, FactorizationType.degree]
   have hq3 : q ^ 3 - 1 ≠ 0 := by
@@ -721,11 +1517,11 @@ theorem n3_gate_split {q : ℝ} (hq : 2 ≤ q) :
     unfold n2Density at h
     field_simp [hq0.ne', hqp1] at h ⊢
     linarith
-  have hd1 : rp11.degree = 1 := by native_decide
-  have hd2a : rp11p11.degree = 2 := by native_decide
-  have hd2b : rp12.degree = 2 := by native_decide
-  have hd3a : rp11cube.degree = 3 := by native_decide
-  have hd3b : rp11p12.degree = 3 := by native_decide
+  have hd1 : rp11.degree = 1 := by decide
+  have hd2a : rp11p11.degree = 2 := by decide
+  have hd2b : rp12.degree = 2 := by decide
+  have hd3a : rp11cube.degree = 3 := by decide
+  have hd3b : rp11p12.degree = 3 := by decide
   have hv3a : ValidFace ((1 : ℕ), rp11cube) := by
     norm_num [ValidFace, rp11cube, faceResDeg, FactorizationType.degree]
   have hv3b : ValidFace ((1 : ℕ), rp11p12) := by
@@ -801,11 +1597,11 @@ theorem n3_gate_linInert {q : ℝ} (hq : 2 ≤ q) :
     unfold n2Density at h
     field_simp [hq0.ne', hqp1] at h ⊢
     linarith
-  have hd1 : rp11.degree = 1 := by native_decide
-  have hd2a : rp21.degree = 2 := by native_decide
-  have hd2b : rp12.degree = 2 := by native_decide
-  have hd3a : rp11p21.degree = 3 := by native_decide
-  have hd3b : rp11p12.degree = 3 := by native_decide
+  have hd1 : rp11.degree = 1 := by decide
+  have hd2a : rp21.degree = 2 := by decide
+  have hd2b : rp12.degree = 2 := by decide
+  have hd3a : rp11p21.degree = 3 := by decide
+  have hd3b : rp11p12.degree = 3 := by decide
   have hv3a : ValidFace ((1 : ℕ), rp11p21) := by
     norm_num [ValidFace, rp11p21, faceResDeg, FactorizationType.degree]
   have hv3b : ValidFace ((1 : ℕ), rp11p12) := by
@@ -866,7 +1662,7 @@ theorem n3_gate_inert {q : ℝ} (hq : 2 ≤ q) :
   have hq0 : 0 < q := by linarith
   have hxi0 : 0 ≤ q⁻¹ := by positivity
   have hxi1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
-  have hd3 : rp31.degree = 3 := by native_decide
+  have hd3 : rp31.degree = 3 := by decide
   have hv : ValidFace ((1 : ℕ), rp31) := by
     norm_num [ValidFace, rp31, faceResDeg, FactorizationType.degree]
   have hq6 : q ^ 6 - 1 ≠ 0 := by
@@ -892,7 +1688,59 @@ theorem n3_gate_inert {q : ℝ} (hq : 2 ≤ q) :
 theorem n3_gate_linRam {q : ℝ} (hq : 2 ≤ q) :
     n3Density 0 (clusterP2 shallow2Ram q) (clusterP3 shallow3LinRam q) q
       = q * (q ^ 3 + q + 1) / ((q + 1) * (q ^ 4 + q ^ 3 + q ^ 2 + q + 1)) := by
-  sorry
+  have hq0 : 0 < q := by linarith
+  have hqp1 : q + 1 ≠ 0 := by linarith
+  have hqm1 : q - 1 ≠ 0 := by linarith
+  have hxi0 : 0 ≤ q⁻¹ := by positivity
+  have hxi1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
+  have hP2 : clusterP2 shallow2Ram q = q / (q + 1) := by
+    have h := n2_gate_ram hq
+    unfold n2Density at h
+    field_simp [hq0.ne', hqp1] at h ⊢
+    have hcancel : q * (clusterP2 shallow2Ram q * (q + 1)) = q * q := by
+      linear_combination h
+    exact mul_left_cancel₀ hq0.ne' hcancel
+  have hd1 : rp11.degree = 1 := by decide
+  have hd2b : rp12.degree = 2 := by decide
+  have hd3b : rp11p12.degree = 3 := by decide
+  have hv3b : ValidFace ((1 : ℕ), rp11p12) := by
+    norm_num [ValidFace, rp11p12, faceResDeg, FactorizationType.degree]
+  have hv12b : ∀ f ∈ [((1 : ℕ), rp11), ((1 : ℕ), rp12)], ValidFace f := by
+    intro f hf
+    have hfe : f = ((1 : ℕ), rp11) ∨ f = ((1 : ℕ), rp12) := by simpa using hf
+    rcases hfe with rfl | rfl
+    all_goals norm_num [ValidFace, rp11, rp12, faceResDeg, FactorizationType.degree]
+  have hv21b : ∀ f ∈ [((1 : ℕ), rp12), ((1 : ℕ), rp11)], ValidFace f := by
+    intro f hf
+    have hfe : f = ((1 : ℕ), rp12) ∨ f = ((1 : ℕ), rp11) := by simpa using hf
+    rcases hfe with rfl | rfl
+    all_goals norm_num [ValidFace, rp11, rp12, faceResDeg, FactorizationType.degree]
+  have hq6 : q ^ 6 - 1 ≠ 0 := by
+    have : 1 < q ^ 6 := one_lt_pow₀ (by linarith) (by norm_num)
+    linarith
+  have hq3 : q ^ 3 - 1 ≠ 0 := by
+    have : 1 < q ^ 3 := one_lt_pow₀ (by linarith) (by norm_num)
+    linarith
+  have hpos : 0 < q ^ 6 - q := by
+    have hq5 : 1 < q ^ 5 := one_lt_pow₀ (by linarith) (by norm_num)
+    have hp := mul_pos hq0 (sub_pos.mpr hq5)
+    nlinarith
+  have hloop : 1 - (q - 1) / (q ^ 6 - 1) ≠ 0 := by
+    have heq : 1 - (q - 1) / (q ^ 6 - 1) = (q ^ 6 - q) / (q ^ 6 - 1) := by
+      field_simp [hq6]
+      ring
+    rw [heq]
+    exact div_ne_zero (ne_of_gt hpos) hq6
+  unfold n3Density clusterP3 shallow3LinRam child3
+  rw [hP2, loopFactor_eq hq 3 (by norm_num),
+    cone_mixed_b1_b2 hxi0 hxi1 rp11 rp11 hd1 hd1,
+    cone_mixed_b2_b1 hxi0 hxi1 rp11 rp11 hd1 hd1,
+    cone_b1_d3 hxi0 hxi1 rp11p12 hd3b hv3b,
+    cone_b1_pair_d1_d2 hxi0 hxi1 rp11 rp12 hd1 hd2b hv12b,
+    cone_b1_pair_d2_d1 hxi0 hxi1 rp12 rp11 hd2b hd1 hv21b]
+  norm_num [bigTLoop]
+  field_simp [hq0.ne', hqp1, hqm1, hq3, hq6, hloop, ne_of_gt hpos]
+  ring
 
 /-- **n = 3 GATE, totally ramified** = IFC7 §9's exact form. -/
 theorem n3_gate_ram {q : ℝ} (hq : 2 ≤ q) :
@@ -901,7 +1749,7 @@ theorem n3_gate_ram {q : ℝ} (hq : 2 ≤ q) :
   have hq0 : 0 < q := by linarith
   have hxi0 : 0 ≤ q⁻¹ := by positivity
   have hxi1 : q⁻¹ < 1 := (inv_lt_one₀ hq0).2 (by linarith)
-  have hd1 : rp11.degree = 1 := by native_decide
+  have hd1 : rp11.degree = 1 := by decide
   have hv : ValidFace ((3 : ℕ), rp11) := by
     norm_num [ValidFace, rp11, faceResDeg, FactorizationType.degree]
   have hq6 : q ^ 6 - 1 ≠ 0 := by
@@ -1012,6 +1860,21 @@ end Uniformity.Density.IFCG13
 
 /-! ## AXCHECK FOOTER — expect Lean core `{propext, Classical.choice, Quot.sound}` on the
 §1/§3/§5/§6 calculus (nothing here consumes the dissection cite; the cover import is the
-carrier binding only) -/
+carrier binding only; the two by-name recoveries inherit exactly the landed
+`IFC7.genuineDensity_three_exact` footprint) -/
 
 #print axioms Uniformity.Density.IFCG13.skeletonExp_loopSkeleton
+#print axioms Uniformity.Density.IFCG13.coneSum_summable
+#print axioms Uniformity.Density.IFCG13.coneSum_single
+#print axioms Uniformity.Density.IFCG13.coneSum_unit_denominators
+#print axioms Uniformity.Density.IFCG13.loopFactor_eq
+#print axioms Uniformity.Density.IFCG13.n2_gate_split
+#print axioms Uniformity.Density.IFCG13.n2_gate_inert
+#print axioms Uniformity.Density.IFCG13.n2_gate_ram
+#print axioms Uniformity.Density.IFCG13.n3_gate_split
+#print axioms Uniformity.Density.IFCG13.n3_gate_linInert
+#print axioms Uniformity.Density.IFCG13.n3_gate_inert
+#print axioms Uniformity.Density.IFCG13.n3_gate_linRam
+#print axioms Uniformity.Density.IFCG13.n3_gate_ram
+#print axioms Uniformity.Density.IFCG13.n3_recovery_ram
+#print axioms Uniformity.Density.IFCG13.n3_recovery_split
