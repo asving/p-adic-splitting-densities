@@ -207,7 +207,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | D4C | the μ₅ closer | DONE — ★★ s2Mu5_calculus_nonempty UNCONDITIONAL (all 13 laws non-vacuous); s2_g16_irreducible NEW; the [DWR] g16+1 Bézout legs; BOTH refinement calculi stand — the DWC operator phase is DONE |
 | R34 | realization rows R3+R4 | DONE (7049244d) — the valuation-extension combinator + the four-branch point dictionary + the level-2/3/4 thresholds with threaded strict bounds; two opens deferred to R7 |
 | F14C | the F1.4/F1.5 legs | DONE (af0ad200) — ★ the CARRY LAW landed frame-generically + the weighted assembler; C.39's re-sign exposes a THIRD defect (slot-varying weights vs the pinned constant — stationarity unsupplied) |
-| A24C | round-3 source archaeology on C.39 (EFF.HE6R1 chain: constant scalar vs weighted family; the dropped stationarity hypothesis?) + the A-C.24″ draft | IN FLIGHT (Fable, ~23:55) |
+| A24C | round-3 archaeology | DONE (48927e49) — ★ THE SOURCE VINDICATED: the constant scalar is honest over its own TWIST-CARRYING carrier (HE7-3's closed-form exponents; the transcription dropped the twist); dv2ResPolyTw + the family→constant transfer LANDED; the 𝔽₄ battery discriminates 15/127 vs 127/127 |
+| A24F | enact A-C.24″ (re-sign over the twisted carrier; retire the A-C.24′ rows; attempt the F1.4/F1.5 close) | IN FLIGHT (Fable, ~01:40) |
 | EXPO | the public exposition refresh | ★ PUSHED (site aaf1ddb) — stage 13 live: draft → 28-finding audit → fix → clean skim → orchestrator spot-check; carry-over: maps.json/story.json still ignore stage 13 (graph pipeline absent) |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
