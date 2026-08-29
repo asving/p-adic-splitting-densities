@@ -12,6 +12,7 @@ import Uniformity.ChapI.I10LadderLive
 import Uniformity.ChapI.I10RecenterDirect
 import Uniformity.ChapI.I10RecenterLive
 import Uniformity.ChapI.I10RecenterLiveS2
+import Uniformity.ChapI.I10Suppliers
 import Uniformity.ChapI.I10Universal
 import Uniformity.ChapI.IFC0
 import Uniformity.ChapI.IFC1
@@ -39,5 +40,6 @@ import Uniformity.ChapI.IFCG14
 import Uniformity.ChapI.IFCG15
 import Uniformity.ChapI.IFCG16
 import Uniformity.ChapI.IFCG17
+import Uniformity.ChapI.IFCG18
 import Uniformity.ChapI.I10_I15_I18
 import Uniformity.ChapI.I21
