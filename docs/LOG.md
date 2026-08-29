@@ -559,3 +559,16 @@ shifts, the dropped twist — each caught by machine, the source vindicated in t
 stands as the compile-is-the-validator loop's deepest run. Same night: the μ₅ stack
 closed (both refinement calculi unconditional), A0G at 10/16 with the GC runway mapped,
 A0G5 banked as an honest partial after an agent hang.
+
+## 2026-08-29 ~05:45 — the witness speaks: the first live vartheta
+
+The consumer legs landed in one unit: the G3 site + G4 DeepLevelExport inhabited at the
+depth-four witness, the (2,1,85) cleared law at the truncated tower, the SIGNED wired
+GENTOW demand at the witness's own exports, and the project's first live-index
+VarthetaRes — the datum three capstone amendments (A-I.6/7/8) were enacted to make
+honestly demandable. The realization ladder R0–R7 and consumer legs C0–C3 are complete;
+what remains of the deep campaign: the R8r input + recenter occurrence (C5r), the
+deepTwist tooth (C6r), and the universal-supplier boundary (G10 at the witness landed;
+HE7A/LB1 remain the ladder record's other fields). On the uniform-a0 side: 11/16 with
+the GC runway's classifier landed. Overnight tally: ~20 units, 5 orchestrator-banked
+after agent hangs, every landing pushed.
