@@ -630,6 +630,363 @@ def part_C(fam):
     return stats
 
 
+# ================================================================ PART D (UNIT A24C)
+# The NON-COLLAPSING synthetic frame: same inner tower (Phi' = X^2-2, u=5, l=2 — so
+# shift/cocycle are unchanged), datum residual r := Z^2+Z+1 over K1 = F_2, so
+# K2 = F_4 and root beta satisfies beta^2 = beta+1, beta^3 = 1, beta != 1: root-power
+# VALUES are visible here (S2's K2 = F_2 collapse is lifted).
+#
+# HONEST SCOPE (recorded, per the A24C charge): this frame is SYNTHETIC.  The outer key
+# Psi = Phi2 is the composed key of the d_r = 1 datum (r = X-1), not of the F4 datum
+# (whose composed key would have degree D'' = D'*l*d_r = 8 and would need a fresh oracle
+# set).  What Part D discriminates are therefore the CARRIER-LEVEL laws — exactly where
+# the constant-vs-family question lives: dv2Res/dv2FullRead/dv2ResPolyAnch and their
+# product/carry/scalar laws are stated for ANY LevelDatum and are Psi-generic (the carry
+# law dv2FullRead_mul_of_eq and dv2Res_mul are Psi-FREE), so the landed frame-generic
+# THEOREMS serve as this frame's oracles: if the model reproduces them, the model is a
+# faithful instance of the Lean reads at this datum.
+#
+# Twist exponents (SOURCE: spec/EFF-HE7.md DEFINITION HE7-3, verbatim closed form
+# "c_t := (s(d2u2 - tu2) + t*s(u2) - s(d2u2))/l"; implemented as the cocycle sum
+# eps(M,t) = c1(M-t*u2, t*u2) + sum_{i<t} c1(u2, i*u2), the Lean-native form):
+# the TWISTED carrier tw_t = beta^eps(M2,t) * anch_t is the source's own residual
+# polynomial shape (HE7 SS1 CONVENTION / HE7-7' "twist carried through the residual
+# assembly"); the source's C.39/.39 constant-scalar display is a claim about THIS
+# carrier.
+
+BETA = 2  # F4 element beta; encoding: int 0..3, bit0 = 1-part, bit1 = beta-part
+
+
+def f4_mul(x, y):
+    a0, a1 = x & 1, (x >> 1) & 1
+    b0, b1 = y & 1, (y >> 1) & 1
+    return ((a0 & b0) ^ (a1 & b1)) | ((((a0 & b1) ^ (a1 & b0)) ^ (a1 & b1)) << 1)
+
+
+def f4_pow(x, n):
+    out = 1
+    for _ in range(n % 3 if x in (2, 3) else n):  # beta, beta+1 have order 3
+        out = f4_mul(out, x)
+    return out if x != 0 or n == 0 else 0
+
+
+def f4_eval_beta(p):
+    """mk r for r = Z^2+Z+1: reduce an F_2[Z] coefficient list mod r = Horner at beta."""
+    acc = 0
+    for c in reversed(p):
+        acc = f4_mul(acc, BETA) ^ (c & 1)
+    return acc
+
+
+def dv2_res4(A):
+    """dv2Res at the F4 datum: mk_(Z^2+Z+1) of A's own-side level-1 residual."""
+    if not A:
+        return 0
+    return f4_eval_beta(dv_res_poly(A))
+
+
+def dv2_full_read4(k, P):
+    """dv2FullRead at the F4 datum: positional coefficient list of dv2FullReadPoly
+    (coeff t = twistRead((k - j*u)/l, dev_j) when j = shift k + l*t prices <= k, else 0),
+    then mk r = Horner at beta."""
+    if k < 0:
+        JUNK["natsub"] += 1
+        k = 0
+    devs = dev(PHI1, P) if P else []
+    coeffs = []
+    for t in range(k + 1):
+        j = shift(k) + L1 * t
+        if j * U1 <= k:
+            h = (k - j * U1) // L1
+            coeffs.append(twist_read(h, devs[j] if j < len(devs) else []))
+        else:
+            coeffs.append(0)
+    return f4_eval_beta(coeffs)
+
+
+def dv2_res_poly_anch4(f):
+    """The guarded/anchored carrier at the F4 datum (F4-element coefficient list)."""
+    if not f:
+        return None
+    devs2 = dev(PSI, f)
+    _, jmin, _, sdeg, M2 = dv2_side(f)
+    out = []
+    for t in range(sdeg + 1):
+        k = M2 - t * U2
+        if k < 0:
+            JUNK["natsub"] += 1
+            k = 0
+        d = devs2[jmin + t * L2] if jmin + t * L2 < len(devs2) else []
+        out.append(dv2_full_read4(k, d))
+    return out
+
+
+def eps(M, t):
+    """DEFINITION HE7-3's twist exponent at pin M, slot t (cocycle-sum form)."""
+    assert t * U2 <= M
+    return cocycle(M - t * U2, t * U2) + sum(cocycle(U2, i * U2) for i in range(t))
+
+
+def tw_poly(f):
+    """The SOURCE-faithful twisted carrier: tw_t = beta^eps(M2,t) * anch_t."""
+    a = dv2_res_poly_anch4(f)
+    if a is None:
+        return None
+    M2 = dv2_side(f)[4]
+    return [f4_mul(f4_pow(BETA, eps(M2, t)), c) for t, c in enumerate(a)]
+
+
+def f4_conv(p, q):
+    out = [0] * (len(p) + len(q) - 1) if p and q else []
+    for i, a in enumerate(p):
+        for j, b in enumerate(q):
+            out[i + j] ^= f4_mul(a, b)
+    return out
+
+
+def part_D_oracles():
+    print("== PART D ORACLES (the F4 frame vs the landed frame-generic THEOREMS) ==")
+    fails = []
+
+    def chk(name, got, want):
+        ok = got == want
+        if not ok:
+            fails.append((name, got, want))
+        print(f"  [{'ok' if ok else 'FAIL'}] {name}: got {got}, want {want}")
+
+    chk("beta^2 = beta+1, beta^3 = 1, beta != 1",
+        (f4_mul(BETA, BETA), f4_pow(BETA, 3), BETA == 1), (3, 1, False))
+    # eps closed form == DEFINITION HE7-3's display (the identity C136f14d proves)
+    bad = [(M, t) for M in range(64) for t in range(3) if t * U2 <= M
+           and L1 * eps(M, t) != t * shift(U2) + shift(M - t * U2) - shift(M)]
+    chk("eps cocycle-sum == HE7-3 closed form (M<64, t<=2)", bad, [])
+    # ID1: the scalar-transfer identity (C136f14d.twistExp_cocycle_transfer)
+    bad = [(M, c, t) for M in range(50) for c in range(25) for t in range(3)
+           if t * U2 <= M and cocycle(M, c) + eps(M, t)
+           != cocycle(M - t * U2, c) + eps(M + c, t)]
+    chk("ID1 c1(M,c)+eps(M,t) == c1(M-tu2,c)+eps(M+c,t)", bad, [])
+    # ID2: the product identity (C136f14d.twistExp_cocycle_mul)
+    bad = [(Mg, Mz, t1, t2) for Mg in range(0, 50, 3) for Mz in range(0, 50, 3)
+           for t1 in range(3) for t2 in range(3)
+           if t1 * U2 <= Mg and t2 * U2 <= Mz
+           and cocycle(Mg, Mz) + eps(Mg, t1) + eps(Mz, t2)
+           != cocycle(Mg - t1 * U2, Mz - t2 * U2) + eps(Mg + Mz, t1 + t2)]
+    chk("ID2 c1(Mg,Mz)+eps(Mg,t1)+eps(Mz,t2) == c1(...)+eps(Mg+Mz,t1+t2)", bad, [])
+    # the landed carry law (C136f14c.dv2FullRead_mul_of_eq) AT the F4 frame
+    rng = random.Random(1441)
+    badc, badm, n = 0, 0, 0
+    for _ in range(600):
+        a = norm([rng.choice([-4, -2, -1, 0, 1, 2, 3, 4, 8]) for _ in range(rng.randint(1, 4))])
+        b = norm([rng.choice([-4, -2, -1, 0, 1, 2, 3, 4, 8]) for _ in range(rng.randint(1, 4))])
+        if not a or not b:
+            continue
+        n += 1
+        ka, kb = dv_supp(a), dv_supp(b)
+        ab = pmul(a, b)
+        delta = cocycle(ka, kb)
+        lhs = dv2_full_read4(ka + kb, ab)
+        rhs = f4_mul(f4_pow(BETA, delta), f4_mul(dv2_full_read4(ka, a), dv2_full_read4(kb, b)))
+        if lhs != rhs:
+            badc += 1
+        if dv2_res4(ab) != f4_mul(dv2_res4(a), dv2_res4(b)):
+            badm += 1
+    chk(f"carry law dv2FullRead_mul_of_eq at F4 ({n} random pairs)", badc, 0)
+    chk(f"dv2Res_mul at F4 ({n} random pairs)", badm, 0)
+    print()
+    return fails
+
+
+def part_D(fam, G8):
+    """The constant-vs-family discriminator.  TWO LEVELS, honestly separated:
+
+    (I) UNREDUCED slot products (pure carry-law territory, Psi-free): the slot-t
+        object digit_t(g8)*z read at its exact height (Mg - t*u2) + c_z.  At a GENUINE
+        C.39 frame the landed theorem dv2FullRead_modByMonic (IsTestKey premise) makes
+        the anch coefficient of f = g8*z EQUAL this read; here the reads themselves are
+        computed kill-free, so level (I) is faithful at THIS frame too.
+    (II) the anch/tw carriers of f = g8*z themselves: these pass through mod-Psi digit
+        reduction, and at THIS synthetic frame Psi = Phi2 is NOT the F4 datum's test
+        key (dvResPoly(Phi2) = 1+Z, mk_{Z^2+Z+1} image = beta^2 != 0), so the kill —
+        and hence dv2FullRead_modByMonic — does NOT apply where a reduction TIE fires.
+        Level (II) is therefore scoped to the kill-clean subset, with the contaminated
+        products counted, leak-ACCOUNTED (additivity oracle), and reported."""
+    print("== PART D: constant-vs-family DISCRIMINATOR at the F4 frame (beta != 1) ==")
+    side_g, jmin_g, _, sdeg_g, Mg = dv2_side(G8)
+    devs2_g = dev(PSI, G8)
+    anch_g = dv2_res_poly_anch4(G8)
+    tw_g = tw_poly(G8)
+    stats = dict(z=0, skipped_side=0, odd_cz=0,
+                 unred_fam_ok=0, unred_fam_fail=0,
+                 unred_const_ok=0, unred_const_fail=0,
+                 unred_tw_ok=0, unred_tw_fail=0,
+                 contaminated=0, leak_acct_fail=0,
+                 clean_fam_ok=0, clean_fam_fail=0,
+                 clean_enacted_ok=0, clean_enacted_fail=0,
+                 clean_tw_ok=0, clean_tw_fail=0,
+                 contam_eq_oddcz=0)
+    ex_unred, ex_radical = None, None
+    for z in fam:
+        if not z or natdeg(z) >= 4:
+            continue
+        f = pmul(G8, z)
+        s = dv2_side(f)
+        if s is None:
+            continue
+        _, jmin_f, _, sdeg_f, Mf = s
+        cz = dv_supp(z)
+        if not (jmin_f == jmin_g and sdeg_f == sdeg_g and Mf == Mg + cz):
+            stats["skipped_side"] += 1
+            continue
+        stats["z"] += 1
+        odd = (shift(cz) != 0)
+        if odd:
+            stats["odd_cz"] += 1
+        gA = dv2_full_read4(cz, z)      # gamma-hat (the anchored complement read)
+        # ---------- level (I): unreduced slot products ----------
+        u_fam, u_const = True, True
+        u_tw = True
+        slot_reads = []
+        for t in range(sdeg_g + 1):
+            dg = devs2_g[jmin_g + t * L2] if jmin_g + t * L2 < len(devs2_g) else []
+            prod = pmul(dg, z)
+            kt = (Mg - t * U2) + cz
+            rt = dv2_full_read4(kt, prod)
+            slot_reads.append(rt)
+            want_fam = f4_mul(f4_pow(BETA, cocycle(Mg - t * U2, cz)),
+                              f4_mul(gA, anch_g[t]))
+            want_const = f4_mul(f4_pow(BETA, cocycle(Mg, cz)),
+                                f4_mul(gA, anch_g[t]))
+            if rt != want_fam:
+                u_fam = False
+            if rt != want_const:
+                u_const = False
+            # twisted level (I): beta^eps(Mf,t)*r_t vs the .39 constant * beta^eps(Mg,t)*anch_g[t]
+            lhs_tw = f4_mul(f4_pow(BETA, eps(Mf, t)), rt)
+            rhs_tw = f4_mul(f4_mul(f4_pow(BETA, cocycle(Mg, cz)), gA),
+                            f4_mul(f4_pow(BETA, eps(Mg, t)), anch_g[t]))
+            if lhs_tw != rhs_tw:
+                u_tw = False
+        stats["unred_fam_ok" if u_fam else "unred_fam_fail"] += 1
+        stats["unred_const_ok" if u_const else "unred_const_fail"] += 1
+        stats["unred_tw_ok" if u_tw else "unred_tw_fail"] += 1
+        if odd and u_fam and not u_const and ex_unred is None:
+            ex_unred = (z, cz, gA, slot_reads,
+                        [cocycle(Mg - t * U2, cz) for t in range(sdeg_g + 1)],
+                        cocycle(Mg, cz))
+            if sdeg_g == 1 and all(r != 0 for r in slot_reads):
+                root_f = next(x for x in range(4)
+                              if f4_mul(slot_reads[1], x) == slot_reads[0])
+                root_g = next(x for x in range(4)
+                              if f4_mul(anch_g[1], x) == anch_g[0])
+                ex_radical = (z, root_f, root_g)
+        # ---------- level (II): the carriers of f, kill-contamination accounting ----------
+        devs2_f = dev(PSI, f)
+        contam = False
+        for t in range(sdeg_g + 1):
+            dg = devs2_g[jmin_g + t * L2] if jmin_g + t * L2 < len(devs2_g) else []
+            prod = pmul(dg, z)
+            if natdeg(prod) < 4 or not prod:
+                continue
+            q, D = pdivmod_monic(prod, PSI)
+            kt = (Mg - t * U2) + cz
+            leak = dv2_full_read4(kt, pmul(PSI, q))
+            if leak != 0:
+                contam = True
+                # leak accounting (F4 additivity): read(D) + read(Psi q) == read(prod)
+                if dv2_full_read4(kt, D) ^ leak != dv2_full_read4(kt, prod):
+                    stats["leak_acct_fail"] += 1
+        if contam:
+            stats["contaminated"] += 1
+            if odd:
+                stats["contam_eq_oddcz"] += 1
+            continue
+        anch_f = dv2_res_poly_anch4(f)
+        tw_f = tw_poly(f)
+        fam_ok = all(anch_f[t] == f4_mul(f4_pow(BETA, cocycle(Mg - t * U2, cz)),
+                                         f4_mul(gA, anch_g[t]))
+                     for t in range(sdeg_g + 1))
+        stats["clean_fam_ok" if fam_ok else "clean_fam_fail"] += 1
+        en_ok = all(anch_f[t] == f4_mul(f4_pow(BETA, cocycle(Mg, cz)),
+                                        f4_mul(gA, anch_g[t]))
+                    for t in range(sdeg_g + 1))
+        stats["clean_enacted_ok" if en_ok else "clean_enacted_fail"] += 1
+        pred = f4_mul(f4_pow(BETA, cocycle(Mg, cz)), gA)  # the .39 display's scalar
+        twc_ok = all(f4_mul(pred, tw_g[t]) == tw_f[t] for t in range(sdeg_g + 1))
+        stats["clean_tw_ok" if twc_ok else "clean_tw_fail"] += 1
+    for k, v in stats.items():
+        print(f"  {k:18s} = {v}")
+    if ex_unred:
+        z, cz, gA, reads, exps, base = ex_unred
+        print(f"    UNREDUCED-level exhibit: z={z} (c_z={cz}, gamma-hat={gA}):")
+        print(f"      slot reads {reads} = beta^{exps} * gamma-hat * anch(g8) — the FAMILY;")
+        print(f"      the enacted constant pins exponent {base} at every slot: FALSE at the"
+              f" slot(s) with exponent != {base}")
+    if ex_radical:
+        z, rf, rg = ex_radical
+        print(f"    RADICAL exhibit at z={z}: family-weighted residual root={rf} vs"
+              f" anch(g8) root={rg} (differ by a beta-power) — same-radical FAILS over the"
+              f" untwisted carrier; the twisted carriers' constant law restores it")
+    print()
+    return stats
+
+
+def part_D_product(G8):
+    print("== PART D': the classical product law over the TWISTED carrier (block x block) ==")
+    blocks = [G8, pmul(PSI, PSI), psub(pmul(PSI, PSI), pmul([4], PHI1)),
+              psub(pmul(PSI, PSI), pmul([64], PHI1)),
+              padd(pmul(PSI, PSI), pmul([16], PHI1)),
+              psub(pmul(PSI, PSI), [0, 32]), psub(pmul(PSI, PSI), [64])]
+    stats = dict(pairs=0, additive=0, tw_mul_ok=0, tw_mul_fail=0,
+                 tw_mul_fail_uncontaminated=0, anch_mul_plain_fail=0)
+    for i, g in enumerate(blocks):
+        for z in blocks[i:]:
+            stats["pairs"] += 1
+            f = pmul(g, z)
+            sg, sz, sf = dv2_side(g), dv2_side(z), dv2_side(f)
+            if None in (sg, sz, sf):
+                continue
+            _, jg, _, dg, Mgg = sg
+            _, jz, _, dz, Mzz = sz
+            _, jf, _, df, Mff = sf
+            if not (jf == jg + jz and df == dg + dz and Mff == Mgg + Mzz):
+                continue
+            stats["additive"] += 1
+            tw_f, tw_g, tw_z = tw_poly(f), tw_poly(g), tw_poly(z)
+            want = [f4_mul(f4_pow(BETA, cocycle(Mgg, Mzz)), c) for c in f4_conv(tw_g, tw_z)]
+            want += [0] * (len(tw_f) - len(want))
+            ok = tw_f == want[:len(tw_f)] and all(c == 0 for c in want[len(tw_f):])
+            stats["tw_mul_ok" if ok else "tw_mul_fail"] += 1
+            if not ok:
+                # honesty check: is the failure kill-contaminated? (some antidiagonal
+                # digit product overflows mod Psi with a NONZERO leak at its line grade
+                # — the missing test-key kill of this synthetic frame)
+                devs2_g, devs2_z = dev(PSI, g), dev(PSI, z)
+                contam = False
+                for t1 in range(dg + 1):
+                    for t2 in range(dz + 1):
+                        d1 = devs2_g[jg + t1 * L2] if jg + t1 * L2 < len(devs2_g) else []
+                        d2 = devs2_z[jz + t2 * L2] if jz + t2 * L2 < len(devs2_z) else []
+                        prod = pmul(d1, d2)
+                        if not prod or natdeg(prod) < 4:
+                            continue
+                        q, _D = pdivmod_monic(prod, PSI)
+                        kt = (Mgg - t1 * U2) + (Mzz - t2 * U2)
+                        if q and dv2_full_read4(kt, pmul(PSI, q)) != 0:
+                            contam = True
+                if not contam:
+                    stats["tw_mul_fail_uncontaminated"] += 1
+            # contrast: the PLAIN (unweighted, untwisted) product over anch
+            af, ag, az = dv2_res_poly_anch4(f), dv2_res_poly_anch4(g), dv2_res_poly_anch4(z)
+            wp = f4_conv(ag, az)
+            wp += [0] * (len(af) - len(wp))
+            if af != wp[:len(af)]:
+                stats["anch_mul_plain_fail"] += 1
+    for k, v in stats.items():
+        print(f"  {k:26s} = {v}")
+    print()
+    return stats
+
+
 # ---------------------------------------------------------------- main
 def main():
     random.seed(24)
@@ -668,6 +1025,43 @@ def main():
           f"{c_stats['pairs']} pairs ({c_stats['carry_fail_short']} among short pairs); "
           f"slot-0 anchored law fails = {c_stats['slot0_anch_fail']}, "
           f"slot-0 bare law fails = {c_stats['slot0_bare_fail']}")
+    # -------- PART D (UNIT A24C): the F4 non-collapsing discriminator --------
+    print()
+    d_fails = part_D_oracles()
+    if d_fails:
+        print("!! PART D ORACLE FAILURES — the F4 model is NOT faithful; Part D void !!")
+        for name, got, want in d_fails:
+            print(f"   {name}: got {got}, want {want}")
+        sys.exit(1)
+    d_stats = part_D(fam, G8)
+    dp_stats = part_D_product(G8)
+    print("== PART D VERDICT LINES (UNIT A24C) ==")
+    nz = d_stats["z"]
+    print(f"  D0 UNREDUCED slot level (carry-law territory, kill-free; the level the landed"
+          f" modByMonic theorem equates to the anch coefficients at GENUINE frames):")
+    print(f"     FAMILY (slot-indexed exponents c1(Mg-t*u2,c_z)): "
+          f"{d_stats['unred_fam_ok']}/{nz} hold ({d_stats['unred_fam_fail']} fail)")
+    print(f"     ENACTED constant (base-pin exponent at every slot): "
+          f"{d_stats['unred_const_fail']} FAILURES / {d_stats['unred_const_ok']} hold "
+          f"— fails exactly at odd c_z ({d_stats['odd_cz']} of {nz}); S2 could not see"
+          f" this (beta = 1 there)")
+    print(f"     SOURCE law over the TWISTED reads (HE7-3 exponents, .39's display"
+          f" scalar): {d_stats['unred_tw_ok']}/{nz} hold ({d_stats['unred_tw_fail']} fail)")
+    print(f"  D1 carrier level, kill-clean subset ({nz - d_stats['contaminated']} of {nz};"
+          f" {d_stats['contaminated']} contaminated by the synthetic frame's missing"
+          f" test-key kill, all leak-accounted: {d_stats['leak_acct_fail']} accounting"
+          f" failures; contaminated == odd-c_z set: {d_stats['contam_eq_oddcz']}"
+          f" == {d_stats['contaminated']}):")
+    print(f"     family {d_stats['clean_fam_ok']}/{nz - d_stats['contaminated']},"
+          f" enacted {d_stats['clean_enacted_ok']}/{nz - d_stats['contaminated']},"
+          f" twisted-.39 {d_stats['clean_tw_ok']}/{nz - d_stats['contaminated']}"
+          f" (on this subset all three coincide: the exponents are constant at even c_z)")
+    print(f"  D5 twisted product law tw(gz) = beta^c1(Mg,Mz) tw(g)tw(z) on additive block"
+          f" pairs: {dp_stats['tw_mul_ok']}/{dp_stats['additive']}"
+          f" ({dp_stats['tw_mul_fail']} failures, of which UNcontaminated ="
+          f" {dp_stats['tw_mul_fail_uncontaminated']} — every failure must be"
+          f" kill-contaminated for the law to stand; plain unweighted anch product"
+          f" fails on {dp_stats['anch_mul_plain_fail']})")
 
 
 if __name__ == "__main__":
