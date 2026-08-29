@@ -213,7 +213,9 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | R5 | the OPEN-LETTERS core | ★★ DONE (ad7809ea) — the canonical reads (triangular inversion) + the G4 equalities at every live level + the R7 node-conditional handoffs; htie NARROWS to one μ-bank claim |
 | R67 | the KEYSTONE | ★★ DONE (d06f4545) — s2SplitNodeFour + the chain realization + the realized input; the G4 descent record INHABITED; the export modulo the site package; R34's opens closed (incl. the honest key_value refuter + fix) |
 | NP1 | the GC runway's classifier | DONE (9db945ba, orchestrator-banked post-hang) — the read-off well-definedness (GC2's ingredient); 11/16 A0G nodes |
-| C0123 | the consumer legs C0–C3 (the site package → the export inhabitant → GENTOW5W at j=3 → the dictionaries → ★ THE FIRST LIVE VARTHETA) → C136c0 | IN FLIGHT (Fable, ~05:10) |
+| C0123 | the consumer legs | ★★★ DONE (ba94a4e7 area) — the export INHABITED at X/j=3; the SIGNED wired GENTOW demand at own exports; THE FIRST LIVE-INDEX VarthetaRes; conditionality exactly the keystone's |
+| C56R | the final occurrence rows: C5r (★ the first honest MidPeelEmission at the R8r input) + C6r (the deepTwist tooth, same X) → C136c5 | IN FLIGHT (Fable, ~05:55) |
+| BRIDGE | the dissection-skeleton bridge (GC0's doorstep) → IFCG8 | IN FLIGHT (Sonnet, ~05:55) |
 | EXPO | the public exposition refresh | ★ PUSHED (site aaf1ddb) — stage 13 live: draft → 28-finding audit → fix → clean skim → orchestrator spot-check; carry-over: maps.json/story.json still ignore stage 13 (graph pipeline absent) |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
