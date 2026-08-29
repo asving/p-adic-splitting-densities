@@ -210,6 +210,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | A24C | round-3 archaeology | DONE (48927e49) — ★ THE SOURCE VINDICATED: the constant scalar is honest over its own TWIST-CARRYING carrier (HE7-3's closed-form exponents; the transcription dropped the twist); dv2ResPolyTw + the family→constant transfer LANDED; the 𝔽₄ battery discriminates 15/127 vs 127/127 |
 | A24F | enact A-C.24″ | DONE (63561bbd) — the round-4 close: C.38/C.39 re-signed over dv2ResPolyTw; the conditional C.39 LANDED (5/5 Lean-core); ONE open supplier |
 | HCONV | the F1 family's last leg | ★★★ DONE — the convolution supplier Lean-core; C.39 + C.38 fired byte-as-is; THE F1 FAMILY (F1.1–F1.7) COMPLETE at the source-faithful signed statements |
+| R5 | the OPEN-LETTERS core | ★★ DONE (ad7809ea) — the canonical reads (triangular inversion) + the G4 equalities at every live level + the R7 node-conditional handoffs; htie NARROWS to one μ-bank claim |
+| R67 | the KEYSTONE: wired fields + the depth-four SplitNodePointSource/ChainRealization/RealizedInput (R5's handoff discharge; R34's two opens) → C136r4 | IN FLIGHT (Fable, ~03:35) |
 | EXPO | the public exposition refresh | ★ PUSHED (site aaf1ddb) — stage 13 live: draft → 28-finding audit → fix → clean skim → orchestrator spot-check; carry-over: maps.json/story.json still ignore stage 13 (graph pipeline absent) |
 | G345 | gates G3+G4 | DONE — the shared DeepLevelExport stands (29/29 Lean-core; the letter equality FORCES the descent clause); no leanspec change; pre-fleet gates ALL clear |
 | G5F | gate G5 | PASS — the refinement source-faithful + operator-level (primary cites); the D4 stack cleared |
