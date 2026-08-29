@@ -548,3 +548,14 @@ the unconditional child decrease — leaving FF in flight and the A0G-GC stop-li
 runway (NP1 → the dissection bridge → GC0) mapped. The C.39 saga is in round 3 (the
 carry law proved; the source archaeology running). Owner away; permissions maximally
 permissive per instruction (flagged for review).
+
+## 2026-08-29 ~02:55 — THE BLOCKFRONTIER PAYOFF FAMILY COMPLETES
+
+HCONV proved the digit-split convolution frame-generically (Lean-core; the carry diagonal
+killed in one stroke) and fired the signed C.39 + C.38 byte-as-is over the twisted
+carrier — the F1 family F1.1–F1.7 is CLOSED at source-faithful statements. The C.39 saga
+(four amendment rounds: the root-power transposition, the off-side channel, the anchor
+shifts, the dropped twist — each caught by machine, the source vindicated in the end)
+stands as the compile-is-the-validator loop's deepest run. Same night: the μ₅ stack
+closed (both refinement calculi unconditional), A0G at 10/16 with the GC runway mapped,
+A0G5 banked as an honest partial after an agent hang.
