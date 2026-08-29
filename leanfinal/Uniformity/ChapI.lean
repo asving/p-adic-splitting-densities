@@ -12,6 +12,7 @@ import Uniformity.ChapI.I10LadderLive
 import Uniformity.ChapI.I10RecenterDirect
 import Uniformity.ChapI.I10RecenterLive
 import Uniformity.ChapI.I10RecenterLiveS2
+import Uniformity.ChapI.I10Universal
 import Uniformity.ChapI.IFC0
 import Uniformity.ChapI.IFC1
 import Uniformity.ChapI.IFC2
