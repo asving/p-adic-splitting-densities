@@ -535,3 +535,16 @@ densities); F1.3 landed; the blueprint was revised (leaf² a rejected control; t
 distinct-factor F0 passes all formal controls). The capstone ladder field's open content:
 package (XL), lb1 (advisory), vartheta (the tau export at deep witnesses). The deep
 tower fleet is next.
+
+## 2026-08-29 ~00:45 — the deep tower's operator phase completes; the a0 campaign at 9/16
+
+Both refinement calculi now stand unconditionally: `s2Mu4_calculus_nonempty` at depth 3
+(all thirteen laws, no carried hypotheses) and `s2Mu5_calculus_nonempty` at depth 4 (the
+e′=1 refinement; the recipe genuinely non-vacuous; the new arithmetic fact
+`s2_g16_irreducible`; the DWR distinct-factor Bézout legs). The realization ladder runs
+R0–R4. On the uniform-a0 side: nine of sixteen nodes landed in one evening — the face
+schemas with GC-serving design, the n-ary Hensel schema split realizing its sub-faces,
+the unconditional child decrease — leaving FF in flight and the A0G-GC stop-line's
+runway (NP1 → the dissection bridge → GC0) mapped. The C.39 saga is in round 3 (the
+carry law proved; the source archaeology running). Owner away; permissions maximally
+permissive per instruction (flagged for review).
