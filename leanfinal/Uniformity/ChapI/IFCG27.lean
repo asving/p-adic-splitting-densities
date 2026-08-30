@@ -470,7 +470,64 @@ theorem unramifiedBlockBridge_of_blockCount {δ e : ℕ} (hδ : 1 ≤ δ)
 monomial census (`q^{δ(N−1)}` at the inert label, `0` elsewhere), and
 `fScale δ {(1,1)} = {(1,δ)}` matches the labels exactly. -/
 theorem unramifiedBlockCount_one {δ : ℕ} (hδ : 1 ≤ δ) : UnramifiedBlockCount δ 1 := by
-  sorry
+  intro O _ _ _ _ _ φ hφ hdeg s' N hN
+  letI i1 : IsDomain (AdjoinRoot φ) := keyIsDomain hφ
+  letI i2 : IsDiscreteValuationRing (AdjoinRoot φ) := adjoinRoot_isDVR hφ
+  letI i3 : IsAdicComplete (maximalIdeal (AdjoinRoot φ)) (AdjoinRoot φ) :=
+    adjoinRoot_isAdicComplete hφ
+  letI i4 : Finite (ResidueField (AdjoinRoot φ)) := adjoinRoot_finite_residueField hφ
+  have hpm : (φ.map (residue O)).Monic := hφ.monic.map _
+  have hpd : (φ.map (residue O)).natDegree = δ := by rw [hφ.monic.natDegree_map, hdeg]
+  have hpi : Irreducible (φ.map (residue O)) := hφ.irred
+  have hp'm : (X - Polynomial.C (residue (AdjoinRoot φ) (AdjoinRoot.root φ))).Monic :=
+    monic_X_sub_C _
+  have hp'd : (X - Polynomial.C (residue (AdjoinRoot φ) (AdjoinRoot.root φ))).natDegree = 1 :=
+    natDegree_X_sub_C _
+  have hp'i : Irreducible (X - Polynomial.C (residue (AdjoinRoot φ) (AdjoinRoot.root φ))) :=
+    irreducible_X_sub_C _
+  rw [pow_one, pow_one, show δ * 1 = δ from Nat.mul_one δ]
+  by_cases hs' : s' = {(1, 1)}
+  · subst hs'
+    have hfs : fScale δ ({((1 : ℕ), (1 : ℕ))} : Multiset (ℕ × ℕ)) = {(1, δ)} := by
+      simp [Uniformity.Density.IFCG25.fScale]
+    rw [hfs, IFCG19.stratDecCount_irreducible_inert (by omega : 0 < δ) hN hpm hpd hpi,
+      IFCG19.stratDecCount_irreducible_inert (by omega : 0 < 1) hN hp'm hp'd hp'i,
+      residueCard_adjoinRoot hφ, hdeg, one_mul, ← pow_mul]
+  · have hne1 : (⟨fScale δ s'⟩ : FactorizationType) ≠ ⟨{(1, δ)}⟩ := by
+      intro hEq
+      apply hs'
+      have hdata : fScale δ s' = {(1, δ)} := congrArg FactorizationType.data hEq
+      obtain ⟨x, hxs, hxe⟩ := Multiset.map_eq_singleton.mp hdata
+      have hx1 : x.1 = 1 := congrArg Prod.fst hxe
+      have hx2 : δ * x.2 = δ := congrArg Prod.snd hxe
+      have hδpos : 0 < δ := by omega
+      have hx2' : x.2 = 1 := Nat.eq_of_mul_eq_mul_left hδpos (by rw [hx2, mul_one])
+      rw [hxs]
+      rw [show x = (1, 1) from Prod.ext hx1 hx2']
+    have hne2 : (⟨s'⟩ : FactorizationType) ≠ ⟨{(1, 1)}⟩ := by
+      intro hEq
+      exact hs' (congrArg FactorizationType.data hEq)
+    rw [IFCG19.stratDecCount_irreducible_ne (by omega : 0 < δ) hpi hne1,
+      IFCG19.stratDecCount_irreducible_ne (by omega : 0 < 1) hp'i hne2]
+
+/-! ## §8 — ★★★ the census front, re-based once more -/
+
+/-- ★★★ **THE ALL-DEGREE DECIDED SLICE from remainder laws + count laws**: composing
+IFCG25's capstone with this file's bridge reduction, the whole fractional-slope census
+front now rests on exactly `ConeRemainderLaw e σ` (every `e ≥ 2`; `e = 2` closed) and
+`UnramifiedBlockCount δ e` (every `δ, e ≥ 2`; the `e = 1` members closed here) — the
+existential bridge telescope is GONE from the open surface. -/
+theorem decidedSliceAt_all_of_remainder_blockCount
+    (hR : ∀ e : ℕ, 2 ≤ e →
+      (∀ k, k < e → ∀ σ' : FactorizationType, σ'.degree = k →
+        Uniformity.Density.IFCG14.DecidedValueLaw k σ') →
+      ∀ σ : FactorizationType, σ.degree = e → Uniformity.Density.IFCG14.Witnessed e σ →
+        Uniformity.Density.IFCG24.ConeRemainderLaw e σ)
+    (hBC : ∀ δ e : ℕ, 2 ≤ δ → 2 ≤ e → UnramifiedBlockCount δ e) :
+    ∀ n : ℕ, Uniformity.Density.DecidedSliceAt n :=
+  Uniformity.Density.IFCG25.decidedSliceAt_all_of_remainder_bridge hR
+    (fun δ e h2δ h2e =>
+      unramifiedBlockBridge_of_blockCount (by omega) (hBC δ e h2δ h2e))
 
 end Uniformity.Density.IFCG27
 
@@ -495,3 +552,4 @@ everywhere; the C.33 cite must NOT occur. -/
 #print axioms Uniformity.Density.IFCG27.stratDecCount_pow_eq_zero_of_not_fScale
 #print axioms Uniformity.Density.IFCG27.unramifiedBlockBridge_of_blockCount
 #print axioms Uniformity.Density.IFCG27.unramifiedBlockCount_one
+#print axioms Uniformity.Density.IFCG27.decidedSliceAt_all_of_remainder_blockCount
