@@ -113,8 +113,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    {power: four named legs on PSL2's landed Eisenstein cascade — unit PSL3 IN FLIGHT} +
    {mass-4 dd/E2 recursion terms (ER4/DBL: all depth-0 limits closed)}. Unramified σ:
    ZERO at every mass (UZL). Bridges: GONE (INS2's InertiaScaling, Lean-core).
-   (a2 = `DrainageAt n`) — **⚠ COVERAGE GAP: only `drainageAt_two` exists; NO general-n
-   discharger, NO unit assigned.** The next census-adjacent lane belongs here.
+   (a2 = `DrainageAt n`) — closed n ≤ 3 (DRN); remainder = `UndecidedDrainAt` at n ≥ 4
+   (the H.124 rate frontier; RIS's B-BOX-1 may feed its gates).
    (ladder) — mp1 DISCHARGED generically (A-I.8); remaining: the vartheta live leg +
    the package/lb1 universal fields (the I10 supplier chain feeds these; TWD killed
    row C3 at canonical normalizers).
@@ -242,6 +242,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | FP0 | the counting socket's reduction | DONE (ee26fa4b) — the loop-cell count PROVED entirely; the socket ⟺ ONE remainder: RationalNonloopRemainderAt (the realization→cell cardinality bridge); zero new axioms |
 | FP1 | the bridge's honest form | DONE (8330c4d4) — the binary cardinality bridge COMPLETE (finite-precision Hensel uniqueness + fold bijectivity + the exact stratum product count, all Lean-core); the remainder ⟺ the per-genre census (audit iff proved); the NP-layer classifier/cell-measure gap named + localized |
 | FP3 | census assembly + the single-point kernel | DONE (4878fd3c) — IFCG18.lean: the labelled/unlabelled exchange, the URLim calculus, the pattern-cell partition, and ★★ `decidedSliceAt_all_of_singlePoint` — the ALL-DEGREE decided-slice theorem rests on exactly TWO named kernels: `SinglePointAggregateLaw` + `DeepLinearClusterLaw`. Next sub-units: (a) the (δ ≤ 3, e = 1) restricted kernel from IFCG4+H124b; (b) the uniform Gauss irreducible count δ ≥ 2 (needs unramified base change); (c) the fractional-slope OM-cone census e ≥ 2 |
+| DRN | DrainageAt general n | DONE — IFCG45.lean: a2 CLOSED at n ≤ 3 (n=3 was already landed — the §4 flag was stale); ★ the lossless σ-free reduction `drainageAt_iff_undecidedDrain` + the packing majorant; the exact remainder: ∀n a2 ⟺ `UndecidedDrainAt` at n ≥ 4 = the H.124 FullClusterRateBound frontier (B-BOX-1 gates — RIS's x-frame proof may now feed it) |
 | CSL | the q-power fiber law | DONE — IFCG42.lean (13/13 PURE core): ★★ #fiber = q^v EXACTLY both directions (Sylvester-kernel bijection; the NEW reusable index-determinant engine `natCard_quotient_range_smith`); LiftsFactor DISCHARGED (the depth-v Newton engine); the transfer criterion FIRES; CollisionLaw/StrayLaw = depth-stratum root counts (N-free digit boxes) + the drainage tiling premise |
 | PSL3 | the four power legs | DONE — IFCG43.lean (15/15 PURE core): compositum stack; cellTransport (boxes, fScale = e' exact); the ∀-DVR instantiation + one-pair ZcURLim value; ★★ THE HEART both directions (eis_transfer_digits_iff — lattice digits ⟺ deep recentred box; the binomial digit-vanishing). PowerSectorLaw = 3 remainder items: assembly bookkeeping, general-(h,d) lattices (verbatim replay expected), induction wiring |
 | PSL2 | the power sector cascade | DONE — IFCG39.lean (22/22 PURE Lean core): the strict mass drop; ★ the ramified Eisenstein complete-DVR cascade (C27x's hole CLOSED at h=1) + coordinate lattice; the dev-transform bijection + two-way level exactness (fScale = e'); the dd (2,2) stack fired; PowerSectorLaw = four named legs (residual-box transfer, cell correspondence, ZcURLim at O', the d ≥ 2 compositum) |
