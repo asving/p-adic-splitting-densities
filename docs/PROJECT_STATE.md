@@ -113,8 +113,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    {power: four named legs on PSL2's landed Eisenstein cascade — unit PSL3 IN FLIGHT} +
    {mass-4 dd/E2 recursion terms (ER4/DBL: all depth-0 limits closed)}. Unramified σ:
    ZERO at every mass (UZL). Bridges: GONE (INS2's InertiaScaling, Lean-core).
-   (a2 = `DrainageAt n`) — closed n ≤ 3 (DRN); remainder = `UndecidedDrainAt` at n ≥ 4
-   (the H.124 rate frontier; RIS's B-BOX-1 may feed its gates).
+   (a2 = `DrainageAt n`) — closed n ≤ 3 (DRN); UDR's master inequality reduces the rest to
+   `DeepTailDrainAt n` (the primary ψ^k single-cluster tail; strictly easier than H.124).
    (ladder) — mp1 DISCHARGED generically (A-I.8); remaining: the vartheta live leg +
    the package/lb1 universal fields (the I10 supplier chain feeds these; TWD killed
    row C3 at canonical normalizers).
@@ -242,6 +242,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | FP0 | the counting socket's reduction | DONE (ee26fa4b) — the loop-cell count PROVED entirely; the socket ⟺ ONE remainder: RationalNonloopRemainderAt (the realization→cell cardinality bridge); zero new axioms |
 | FP1 | the bridge's honest form | DONE (8330c4d4) — the binary cardinality bridge COMPLETE (finite-precision Hensel uniqueness + fold bijectivity + the exact stratum product count, all Lean-core); the remainder ⟺ the per-genre census (audit iff proved); the NP-layer classifier/cell-measure gap named + localized |
 | FP3 | census assembly + the single-point kernel | DONE (4878fd3c) — IFCG18.lean: the labelled/unlabelled exchange, the URLim calculus, the pattern-cell partition, and ★★ `decidedSliceAt_all_of_singlePoint` — the ALL-DEGREE decided-slice theorem rests on exactly TWO named kernels: `SinglePointAggregateLaw` + `DeepLinearClusterLaw`. Next sub-units: (a) the (δ ≤ 3, e = 1) restricted kernel from IFCG4+H124b; (b) the uniform Gauss irreducible count δ ≥ 2 (needs unramified base change); (c) the fractional-slope OM-cone census e ≥ 2 |
+| UDR | the undecided drain rate | DONE — IFCG46.lean (Lean-core): ★★★ the a2 field = ONE family `DeepTailDrainAt n` (n ≥ 4) — the master inequality (depth buckets + q^v packing + the transfer) closes everything but the PRIMARY (ψ^k, k ≥ 2) deep-collision tail = the single-cluster locus; H.124 revival rejected on evidence |
 | DTR | the OM-step decision transport | DONE — IFCG47.lean (PURE core, cite-free): ★★★ `transport_decidedAt_iff` both directions on ONE named pointwise Prop `CellTypeScalingAt D` (D=1 PROVED; D ≥ 2 = the deep-wild tower, FGMN cite the honest fallback); devT non-multiplicativity hand-checked (the charge's pull-back mechanism corrected); ★★ `powerFullSpanLaw_of_prime` — UNCONDITIONAL at every prime mass; ER4's dd terms = CellTypeScalingAt 2 + conversions |
 | PSL4 | firing the power law | DONE — IFCG44.lean: ★★ `powerSectorLaw_of_rebase` (Lean-core) — the sector partitions EXACTLY into proper (descends through the convolution table) ⊔ full-span (the class IS pure; cite-free); PowerSectorLaw = `PowerConvolutionDefectLaw` + `PowerFullSpanLaw`; the one missing full-span leg = DECISION TRANSPORT ACROSS THE RECENTRING (the OM tower step, C136 territory) |
 | DRN | DrainageAt general n | DONE — IFCG45.lean: a2 CLOSED at n ≤ 3 (n=3 was already landed — the §4 flag was stale); ★ the lossless σ-free reduction `drainageAt_iff_undecidedDrain` + the packing majorant; the exact remainder: ∀n a2 ⟺ `UndecidedDrainAt` at n ≥ 4 = the H.124 FullClusterRateBound frontier (B-BOX-1 gates — RIS's x-frame proof may now feed it) |
