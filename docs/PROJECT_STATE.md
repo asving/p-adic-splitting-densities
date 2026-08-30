@@ -98,19 +98,35 @@ bridge (OPEN-DICT-1..4, U7 §8). U9 (codex HIGH) is adjudicating U7 §9 Q1–Q7 
 the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; standing log:
 `lean/notes/SEMANTIC_AUDIT_LOG.md`.
 
-## 4. The live frontier (what blocks what) — rewritten 2026-08-28 post-engine
+## 4. The live frontier (what blocks what) — rewritten 2026-08-30 post-census-blitz
 
 1. **The CapstoneHypotheses INHABITATION campaign (top item).** `UniformityStatement`
-   reduces to inhabiting `CapstoneHypotheses n` (post-A-I.6 shape). Named debts:
-   (a) **ladder** — the live legs: LVS (live vartheta supplier; r = 2 possibly vacuous)
-   and REX (recenter export + `MP1CarrierLive`; ★ may force A-I.7 since unrestricted
-   MP1Carrier is REFUTED) — both in flight; LB1G's RESTRICT-ANYWAY design awaits
-   enactment; the HE7APackage supplier stays XL-blocked;
-   (b) **deepTwist** — the deep (r ≥ 4) arising-witness campaign + the WLE per-level
-   exporter (design anchored; deep inhabitants open; WleCleared r=2 vacuity mapped);
-   (c) a0 GENERAL-n — ★ blueprint DELIVERED (A0_GENERAL_2026-08-28.md: PURE-ENGINE route, 16 nodes, 8-14k lines; the ONE new theorem finiteGenreCoverAt_all is the A0G-GC stop-line; cites honestly rejected for wild primes; quartic 32/32 reality check); TEN of 16 nodes landed-or-partial (FF banked as an honest partial after an agent hang — the Möbius remainder named); the GC runway RUNNING: NP1 → the dissection bridge → GC0 (unit NP1 → IFCG7 in flight); (d) `jd0`/`genhnBox2` + `w1` (A-I.1); (e) four I-D12 bodies
-   (WindowPinningAt, GenhnHEAt, GenhnTow1At, TypeOfFaithful). The CHFD supply map
-   (docs/in-progress/CAPSTONE_SUPPLY_MAP_2026-08-26.md) is the field-by-field ledger.
+   reduces to inhabiting `CapstoneHypotheses n` (post-A-I.8 shape). Field-by-field TRUTH
+   (2026-08-30, after the ~30-unit census/deepTwist blitz — §6 has the unit rows):
+   (ns7) **CLOSED** (`ns7Termination_of_cite`). (a1) **CLOSED for all n**
+   (`IFC6.menuLawAt_all`). (jd0/genhnBox2) `True` placeholders — trivially inhabited;
+   the I-D7/I-D8 honesty defects are leanspec matters, not proof blockers.
+   (a0 = `DecidedSliceAt n`) — THE CENSUS FRONT, now machine-reduced through the
+   IFCG14→41 chain to: {`LeafSectorLaw`'s cell count (the decision half CLOSED by RIS —
+   B-BOX-1 PROVED Lean-core, the proposed cite killed)} + {split: `CollisionLaw`/`StrayLaw`
+   (the q-power fiber law) + the `LiftsFactor` Hensel leg — unit CSL IN FLIGHT} +
+   {power: four named legs on PSL2's landed Eisenstein cascade — unit PSL3 IN FLIGHT} +
+   {mass-4 dd/E2 recursion terms (ER4/DBL: all depth-0 limits closed)}. Unramified σ:
+   ZERO at every mass (UZL). Bridges: GONE (INS2's InertiaScaling, Lean-core).
+   (a2 = `DrainageAt n`) — **⚠ COVERAGE GAP: only `drainageAt_two` exists; NO general-n
+   discharger, NO unit assigned.** The next census-adjacent lane belongs here.
+   (ladder) — mp1 DISCHARGED generically (A-I.8); remaining: the vartheta live leg +
+   the package/lb1 universal fields (the I10 supplier chain feeds these; TWD killed
+   row C3 at canonical normalizers).
+   (deepTwist) — the exact boundary (G10U's iff → USUP/WSS/SCS/LRS reductions): the
+   carrier program's remaining packs {`RungLift` per rung ≥ 3, `PrevGrade` f' ≥ 2,
+   `BankWiringSupply`, the `CarrierReadLaw` tie} + the tau side {`UniversalKernelSpan`
+   (pointwise-rfl at canonical normalizers), `UniversalGeneratorDescent` = `WrapDescentAt`
+   (OPEN-LETTERS, research)}. Rung-2 packs land at EVERY arising truncation (D3AD-spine).
+   (windowPinning/genhnHE/genhnTow1) — **⚠ COVERAGE GAP: the three I-D12 bodies
+   (+ TypeOfFaithful) have NO active lane.**
+   The CHFD supply map (docs/in-progress/CAPSTONE_SUPPLY_MAP_2026-08-26.md) predates the
+   blitz; THIS section supersedes it field-by-field.
 2. **The Hensel engine: COMPLETE — payoff propagation is the open work.** F1.1 landed
    (C134cfs); F1.2–F1.8 await CSX (in flight); signed C.34 stays blocked (Theorem A's
    `D′ ∣ deg g` entry rider absent from its premises + no `hsep` supplier — needs its
