@@ -62,4 +62,5 @@ import Uniformity.ChapI.IFCG28
 import Uniformity.ChapI.IFCG29
 import Uniformity.ChapI.IFCG30
 import Uniformity.ChapI.IFCG31
+import Uniformity.ChapI.IFCG32
 import Uniformity.ChapI.IFCG33
