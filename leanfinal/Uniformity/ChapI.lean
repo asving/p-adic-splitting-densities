@@ -15,6 +15,7 @@ import Uniformity.ChapI.I10RecenterLiveS2
 import Uniformity.ChapI.I10RungPacks
 import Uniformity.ChapI.I10SiteCalc
 import Uniformity.ChapI.I10SiteSupply
+import Uniformity.ChapI.I10SpineAdapter
 import Uniformity.ChapI.I10Suppliers
 import Uniformity.ChapI.I10TauSupply
 import Uniformity.ChapI.I10WeightedCarrier
