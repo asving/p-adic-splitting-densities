@@ -595,3 +595,13 @@ guarded by DWV-style honesty through three partial rounds (GC → GCF → GCK �
 closed. Thirteen of sixteen campaign nodes are done; the remainder (rational weights,
 cluster induction, assembly, the slice socket, the ∀n capstone) is assembly against the
 cover. The general-degree a0 mechanism the 2026-08-28 directive demanded now exists.
+
+## 2026-08-30 (overnight): the double-reduction night — both fronts to named kernels, then first blood on both
+
+Fifteen units banked in one storm-riddled overnight run (FP2, FP3, GAUSS2, DLC, ECONE, CN01, CN2, CN4 on the census front; G10U, USUP, WSS, TWD, SCS, WCC, RUNG on the deepTwist front), every one Lean-core, sorry-free, roll-up green, committed+pushed individually.
+
+**Census front (the all-degree decided-slice theorem).** The chain closed stage by stage: the multi-point machinery (stratPoly ring law, FP2) → the campaign reduction to two kernels (FP3) → the uniform Möbius/necklace irreducible census, all δ, with the e=1 single-point clause closed unconditionally (GAUSS2) → the deep-linear kernel's lossless iff onto the fractional cell (DLC) → the cone reduction `decidedSliceAt_all_of_cones` (ECONE) → translation symmetry + the class NP with its sharp floor (CN01) → ★★ the at-floor decidedness criterion PROVED, the blueprint's designated hardest object (CN2) → the m=2 zero-cone counted EXACTLY, the pure-face monomial bank at every mass, ECONE's 1/(q²+q+1) recovered as a machine regression (CN4). Open content now: `PointConeLaw` (CN5 in flight — base change to the unramified extension) + per-(m≥4,σ) `ConeRemainderLaw` (empty at m=2).
+
+**deepTwist front (the capstone field).** G10U pinned the exact boundary (an IFF onto two universal suppliers); USUP/TWD dissolved the vartheta half down to `UniversalKernelSpan` + wrap descent, with the triangular-basis bridge (freeze v2's OPEN) proved uniformly in q — row C3 eliminated at every canonical-normalizer realization; WSS/SCS/WCC/RUNG dissolved the site half: the calculus coupling was card-2 convenience (WSS), the fault line an exact iff onto tower-side banks (SCS), the general weighted convolution law with the S2 pin re-derived byte-identically (WCC), and the rung-2 pack at a general tower via the coboundary normalization of the C28 cocycle (RUNG). Bank remainder: D3-03 spine adapter (D3AD in flight), RungLift per rung ≥ 3, PrevGrade f' ≥ 2, one slope inequality.
+
+Fleet notes: ~25 agent deaths to 529/server storms, zero work lost (increments-to-disk + resume-from-transcript); one hang killed and relaunched fresh (GAUSS → GAUSS2, which then landed every proof first-try); codex 7-day window at 100% until Thu — the entire night ran on Fable agents.
