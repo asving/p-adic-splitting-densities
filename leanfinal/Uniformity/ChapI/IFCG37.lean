@@ -952,6 +952,199 @@ theorem residualLeafLaw_all {e' d : ℕ} (he' : 0 < e') (hd : 0 < d) :
 
 end Supply
 
+/-! ## §8 — the ER4 wiring: `E1IrrLeafDecision` (the `(2,2)` instance) and the rows -/
+
+section ER4
+
+open Uniformity.Density.Induction
+open Uniformity.Density.IFCG22 (classCoeffVal npHeight classNPSupport NPAttains
+  NPVisibleAt classNPSupport_le_apply le_classNPSupport)
+open Uniformity.Density.IFCG23 (npHgt_monicPoly_eq)
+open Uniformity.Density.IFCG24 (mem_stratum_X_pow_iff coneRemainderCount)
+open Uniformity.Density.IFCG26 (onSide_monicPoly_of_npAttains)
+open Uniformity.Density.IFCG34
+open Uniformity.Density.IFCG35 (classResidualPoly classResidualPoly_eq
+  decidedAt_of_spanning_leaf)
+
+variable {O : Type*} [CommRing O] [IsDomain O] [IsDiscreteValuationRing O] {π : O}
+variable [IsAdicComplete (maximalIdeal O) O] [Finite (ResidueField O)]
+
+/-- The E1 class-polygon package (private copy of IFCG34's bank). -/
+private theorem e1_class_bank' {K : ℕ} (hK : 3 ≤ K) {c : Coeff O 4 K}
+    (hc : c ∈ e1Box O K) :
+    classNPSupport c 1 2 = 4 ∧ NPAttains c 1 2 0 ∧ NPAttains c 1 2 4
+      ∧ NPVisibleAt c 1 2 ∧ c ∈ levelZeroStratum O 4 K (X ^ 4) := by
+  obtain ⟨h0, h1, h2, h3⟩ := (mem_e1Box_iff c).1 hc
+  have hnp0 : npHeight c 0 = 2 := by
+    unfold npHeight
+    rw [dif_pos (by norm_num : (0 : ℕ) < 4)]
+    exact h0
+  have hnp1 : 2 ≤ npHeight c 1 := by
+    unfold npHeight
+    rw [dif_pos (by norm_num : (1 : ℕ) < 4)]
+    exact h1
+  have hnp2 : 1 ≤ npHeight c 2 := by
+    unfold npHeight
+    rw [dif_pos (by norm_num : (2 : ℕ) < 4)]
+    exact h2
+  have hnp3 : 1 ≤ npHeight c 3 := by
+    unfold npHeight
+    rw [dif_pos (by norm_num : (3 : ℕ) < 4)]
+    exact h3
+  have hnp4 : npHeight c 4 = 0 := by
+    unfold npHeight
+    rw [dif_neg (by norm_num : ¬ (4 : ℕ) < 4)]
+  have hsup : classNPSupport c 1 2 = 4 := by
+    refine le_antisymm ?_ (le_classNPSupport ?_)
+    · have h5 := classNPSupport_le_apply c 1 2 (show (0 : ℕ) ≤ 4 by norm_num)
+      rw [hnp0] at h5
+      omega
+    · intro i hi
+      interval_cases i
+      · omega
+      · omega
+      · omega
+      · omega
+      · omega
+  have hAt0 : NPAttains c 1 2 0 := ⟨by omega, by rw [hnp0, hsup]⟩
+  have hAt4 : NPAttains c 1 2 4 := ⟨le_refl 4, by rw [hnp4, hsup]⟩
+  have hvis : NPVisibleAt c 1 2 := by
+    show classNPSupport c 1 2 < 2 * K
+    rw [hsup]
+    omega
+  have hstr : c ∈ levelZeroStratum O 4 K (X ^ 4) := by
+    refine (mem_stratum_X_pow_iff (by omega) c).2 ?_
+    intro i
+    fin_cases i
+    · exact le_of_le_of_eq (by norm_num) h0.symm
+    · exact le_trans (by norm_num) h1
+    · exact h2
+    · exact h3
+  exact ⟨hsup, hAt0, hAt4, hvis, hstr⟩
+
+/-- The lift-side data of a spanning face (private copy of IFCG35's bank). -/
+private theorem spanning_side_data' {π : O} (hπ : Irreducible π) {m K h e' : ℕ}
+    (hm0 : 0 < m) (he' : 0 < e')
+    {c : Coeff O m K} (h0 : NPAttains c h e' 0) (hmm : NPAttains c h e' m)
+    (hvis : NPVisibleAt c h e') {a : Fin m → O} (ha : proj O m K a = c) :
+    ∃ hne : (sideSet X (monicPoly a) h e').Nonempty,
+      sideMin X (monicPoly a) h e' hne = 0 ∧ sideMax X (monicPoly a) h e' hne = m
+        ∧ suppVal X (monicPoly a) h e' ≠ ⊤ := by
+  obtain ⟨hOn0, hsupp⟩ := onSide_monicPoly_of_npAttains hπ he' hvis h0 ha
+  obtain ⟨hOnm, -⟩ := onSide_monicPoly_of_npAttains hπ he' hvis hmm ha
+  have htop : suppVal X (monicPoly a) h e' ≠ ⊤ := by
+    rw [hsupp]
+    exact ENat.coe_ne_top _
+  have hdegm : (monicPoly a).natDegree = m := monicPoly_natDegree a
+  have h0mem : (0 : ℕ) ∈ sideSet X (monicPoly a) h e' :=
+    mem_sideSet_iff'.mpr ⟨by omega, hOn0⟩
+  have hmmem : m ∈ sideSet X (monicPoly a) h e' :=
+    mem_sideSet_iff'.mpr ⟨by omega, hOnm⟩
+  refine ⟨⟨0, h0mem⟩, ?_, ?_, htop⟩
+  · unfold sideMin
+    exact Nat.le_zero.mp (Finset.min'_le _ 0 h0mem)
+  · unfold sideMax
+    refine le_antisymm ?_ (Finset.le_max' _ m hmmem)
+    have h2 := Finset.max'_mem (sideSet X (monicPoly a) h e') ⟨0, h0mem⟩
+    obtain ⟨h3, -⟩ := mem_sideSet_iff'.mp h2
+    omega
+
+end ER4
+
+section ER4Fire
+
+open Uniformity.Density.Induction
+open Uniformity.Density.IFCG22 (classCoeffVal NPAttains NPVisibleAt)
+open Uniformity.Density.IFCG23 (npHgt_monicPoly_eq)
+open Uniformity.Density.IFCG24 (coneRemainderCount)
+open Uniformity.Density.IFCG34
+open Uniformity.Density.IFCG35 (classResidualPoly classResidualPoly_eq
+  decidedAt_of_spanning_leaf)
+
+/-- ★★★ **The spanning leaf decision, UNCONDITIONAL** — IFCG35's
+`decidedAt_of_spanning_leaf` with its leaf premise discharged by the supply: a stratum
+class whose face `h/e'` spans `[0, m]` (`m = e'·d`, coprime, visible) with IRREDUCIBLE
+class residual is decided `⟨{(e', d)}⟩`, for EVERY `(e', d)`. -/
+theorem decidedAt_of_spanning_irr {O : Type} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O]
+    [Finite (ResidueField O)] {e' d : ℕ} (hd0 : 0 < d)
+    {π : O} (hπ : Irreducible π) {m K h : ℕ} (hm0 : 0 < m) (hh : 0 < h)
+    (he' : 0 < e') (hcop : Nat.Coprime h e') (hd : m = e' * d)
+    {c : Coeff O m K} (hstr : c ∈ levelZeroStratum O m K (X ^ m))
+    (h0 : NPAttains c h e' 0) (hmm : NPAttains c h e' m) (hvis : NPVisibleAt c h e')
+    (hirr : Irreducible (classResidualPoly π c h e')) :
+    DecidedAt O m ⟨{(e', d)}⟩ K c :=
+  decidedAt_of_spanning_leaf (residualLeafLaw_all he' hd0) hπ hm0 hh he' hcop hd hstr
+    h0 hmm hvis hirr
+
+/-- ★★★ **`E1IrrLeafDecision` HOLDS** — ER4's named open leaf (the `ℓ = 2, deg ψ = 2`
+instance of B-BOX-1) is the `(2,2)` instance of the leaf law, now unconditional: every
+irreducible-residual E1 class is decided `{(2,2)}`. -/
+theorem e1IrrLeafDecision : Uniformity.Density.IFCG34.E1IrrLeafDecision := by
+  intro O _ _ _ _ _ K hK π hπ c hc
+  obtain ⟨hcE1, a₀, ha₀, hirr₀⟩ := hc
+  obtain ⟨hsup, hAt0, hAt4, hvis, hstr⟩ := e1_class_bank' hK hcE1
+  -- the class residual is irreducible: read it off the box's witness lift
+  have hirrC : Irreducible (classResidualPoly π c 1 2) := by
+    obtain ⟨hne₀, hmin₀, hmax₀, htop₀⟩ :=
+      spanning_side_data' hπ (by norm_num) (by norm_num) hAt0 hAt4 hvis ha₀
+    have hntop : npHgt X (monicPoly a₀) (sideMin X (monicPoly a₀) 1 2 hne₀) ≠ ⊤ :=
+      npHgt_ne_top_of_onSide (by norm_num) htop₀
+        (onSide_of_mem_sideSet (Finset.min'_mem _ hne₀))
+    obtain ⟨w, hw⟩ := WithTop.ne_top_iff_exists.mp hntop
+    have hw' : ((w : ℕ) : ℕ∞) = npHgt X (monicPoly a₀) (sideMin X (monicPoly a₀) 1 2 hne₀) :=
+      hw
+    have hcrp := classResidualPoly_eq hπ (by norm_num) hvis ha₀ hne₀ hw'.symm
+    rw [hcrp]
+    -- the left height is 2 (the box pins `v₀ = 2` exactly, below the window)
+    have h0v : resOrd (c 0) = 2 := ((mem_e1Box_iff c).1 hcE1).1
+    have hcv : classCoeffVal c ⟨0, by norm_num⟩ = 2 := h0v
+    have hvis0 : classCoeffVal c ⟨0, by norm_num⟩ < K := by omega
+    have hnp := npHgt_monicPoly_eq hπ ha₀ (by norm_num : (0 : ℕ) < 4) hvis0
+    rw [hmin₀, hnp, hcv] at hw'
+    have hw2 : w = 2 := by exact_mod_cast hw'
+    rw [hw2]
+    exact hirr₀
+  exact decidedAt_of_spanning_leaf (residualLeafLaw_all (by norm_num) (by norm_num)) hπ
+    (by norm_num) (by norm_num) (by norm_num) (by norm_num) (by norm_num) hstr
+    hAt0 hAt4 hvis hirrC
+
+/-- ★ The irreducible sector is FULLY `{(2,2)}`-decided — unconditional. -/
+theorem decided_inter_e1Irr {O : Type} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O]
+    [Finite (ResidueField O)] {K : ℕ} (hK : 3 ≤ K) {π : O} (hπ : Irreducible π) :
+    decidedSet O 4 type22 K ∩ e1IrrBox π K = e1IrrBox π K :=
+  Uniformity.Density.IFCG34.decided_inter_e1Irr_of_leaf e1IrrLeafDecision hK hπ
+
+/-- ★ The `{(4,1)}` alternative is EMPTY on the irreducible sector — unconditional. -/
+theorem decided41_inter_e1Irr {O : Type} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O]
+    [Finite (ResidueField O)] {K : ℕ} (hK : 3 ≤ K) {π : O} (hπ : Irreducible π) :
+    decidedSet O 4 type41 K ∩ e1IrrBox π K = (∅ : Set (Coeff O 4 K)) :=
+  Uniformity.Density.IFCG34.decided41_inter_e1Irr_of_leaf e1IrrLeafDecision hK hπ
+
+/-- ★★ ER4's type22 census row, its leaf premise DISCHARGED. -/
+theorem coneRemainderCount_four_type22 {O : Type} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O]
+    [Finite (ResidueField O)] {π : O} (hπ : Irreducible π) (M : ℕ) :
+    coneRemainderCount O 4 type22 M
+      = Nat.card (e1IrrBox (O := O) π (M + 4) : Set (Coeff O 4 (M + 4)))
+        + Nat.card ((decidedSet O 4 type22 (M + 4) ∩ e1DdBox π (M + 4))
+            : Set (Coeff O 4 (M + 4))) :=
+  Uniformity.Density.IFCG34.coneRemainderCount_four_type22_of_leaf e1IrrLeafDecision hπ M
+
+/-- ★★ ER4's type41 census row, its leaf premise DISCHARGED: the `{(4,1)}` count is
+PURELY the double-root recursion term. -/
+theorem coneRemainderCount_four_type41 {O : Type} [CommRing O] [IsDomain O]
+    [IsDiscreteValuationRing O] [IsAdicComplete (maximalIdeal O) O]
+    [Finite (ResidueField O)] {π : O} (hπ : Irreducible π) (M : ℕ) :
+    coneRemainderCount O 4 type41 M
+      = Nat.card ((decidedSet O 4 type41 (M + 4) ∩ e1DdBox π (M + 4))
+          : Set (Coeff O 4 (M + 4))) :=
+  Uniformity.Density.IFCG34.coneRemainderCount_four_type41_of_leaf e1IrrLeafDecision hπ M
+
+end ER4Fire
+
 end Uniformity.Density.IFCG37
 
 end
@@ -961,7 +1154,15 @@ Quot.sound}`; the leaf-law wiring may additionally inherit ONLY the owner-signed
 cite through IFCG35's spanning machinery. -/
 
 section AxCheck
+#print axioms Uniformity.Density.IFCG37.exists_tauProd_factorization
 #print axioms Uniformity.Density.IFCG37.sideDeg_dvd_inertiaDegOf
 #print axioms Uniformity.Density.IFCG37.residualInertiaSupply
 #print axioms Uniformity.Density.IFCG37.residualLeafLaw_all
+#print axioms Uniformity.Density.IFCG37.irreducible_of_pure_of_resPoly_irreducible
+#print axioms Uniformity.Density.IFCG37.decidedAt_of_spanning_irr
+#print axioms Uniformity.Density.IFCG37.e1IrrLeafDecision
+#print axioms Uniformity.Density.IFCG37.decided_inter_e1Irr
+#print axioms Uniformity.Density.IFCG37.decided41_inter_e1Irr
+#print axioms Uniformity.Density.IFCG37.coneRemainderCount_four_type22
+#print axioms Uniformity.Density.IFCG37.coneRemainderCount_four_type41
 end AxCheck
