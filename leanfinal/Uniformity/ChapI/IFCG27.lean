@@ -210,7 +210,94 @@ Positivity of the necklace count: in IFCG19's Möbius identity
 bounded by the geometric sum `q^δ − 1`. -/
 theorem exists_monic_irreducible_natDegree (K : Type*) [Field K] [Finite K] {δ : ℕ}
     (hδ : 1 ≤ δ) : ∃ p : Polynomial K, p.Monic ∧ p.natDegree = δ ∧ Irreducible p := by
-  sorry
+  haveI : Fintype K := Fintype.ofFinite K
+  by_contra hcon
+  push Not at hcon
+  haveI hempty : IsEmpty (IFCG4.IrredOfDeg K δ) :=
+    ⟨fun f => hcon f.1 f.2.1 f.2.2.1 f.2.2.2⟩
+  have hzero : Nat.card (IFCG4.IrredOfDeg K δ) = 0 := Nat.card_of_isEmpty
+  have hmob := IFCG19.mul_natCard_irred_eq_moebius_sum (K := K) δ hδ
+  rw [hzero] at hmob
+  simp only [Nat.cast_zero, mul_zero] at hmob
+  set q : ℤ := (Fintype.card K : ℤ) with hq
+  have hq2 : (2 : ℤ) ≤ q := by
+    have : 1 < Fintype.card K := Fintype.one_lt_card
+    omega
+  have hmem : ((1, δ) : ℕ × ℕ) ∈ δ.divisorsAntidiagonal := by
+    rw [Nat.mem_divisorsAntidiagonal]
+    exact ⟨one_mul δ, by omega⟩
+  rw [← Finset.add_sum_erase _ _ hmem] at hmob
+  simp only [ArithmeticFunction.moebius_apply_one, one_mul] at hmob
+  set E := (δ.divisorsAntidiagonal).erase (1, δ) with hE
+  -- the second coordinates of `E` inject into `range δ`
+  have hinj : ∀ x ∈ E, ∀ y ∈ E, x.2 = y.2 → x = y := by
+    intro x hx y hy hxy
+    have hxprod := (Nat.mem_divisorsAntidiagonal.mp (Finset.mem_of_mem_erase hx)).1
+    have hyprod := (Nat.mem_divisorsAntidiagonal.mp (Finset.mem_of_mem_erase hy)).1
+    have hx2 : x.2 ≠ 0 := by
+      intro h0
+      rw [h0, mul_zero] at hxprod
+      omega
+    refine Prod.ext ?_ hxy
+    have hmm : x.1 * x.2 = y.1 * x.2 := by
+      rw [hxprod, hxy]
+      exact hyprod.symm
+    exact Nat.eq_of_mul_eq_mul_right (by omega) hmm
+  have hsub : E.image (fun x : ℕ × ℕ => x.2) ⊆ Finset.range δ := by
+    intro j hj
+    obtain ⟨x, hx, hxj⟩ := Finset.mem_image.mp hj
+    obtain ⟨hxne, hxs⟩ := Finset.mem_erase.mp hx
+    rw [Finset.mem_range, ← hxj]
+    have hxprod := (Nat.mem_divisorsAntidiagonal.mp hxs).1
+    have hx2δ : x.2 ≠ δ := by
+      intro h2
+      apply hxne
+      have hx1 : x.1 = 1 := by
+        rw [h2] at hxprod
+        have hone : x.1 * δ = 1 * δ := by rw [one_mul]; exact hxprod
+        exact Nat.eq_of_mul_eq_mul_right (by omega) hone
+      exact Prod.ext hx1 h2
+    have hle : x.2 ≤ δ := Nat.le_of_dvd (by omega) (Dvd.intro_left x.1 hxprod)
+    omega
+  -- the tail is bounded below by −(the full geometric sum below δ)
+  have h3 : (∑ x ∈ E, q ^ x.2) ≤ ∑ j ∈ Finset.range δ, q ^ j := by
+    rw [show (∑ x ∈ E, q ^ x.2)
+        = ∑ j ∈ E.image (fun x : ℕ × ℕ => x.2), q ^ j from (Finset.sum_image hinj).symm]
+    exact Finset.sum_le_sum_of_subset_of_nonneg hsub
+      fun j _ _ => pow_nonneg (by omega) _
+  have hterm : ∀ x ∈ E, -(q ^ x.2) ≤ (ArithmeticFunction.moebius x.1 : ℤ) * q ^ x.2 := by
+    intro x _
+    have hqpow : (0 : ℤ) ≤ q ^ x.2 := pow_nonneg (by omega) _
+    have hmu3 : (ArithmeticFunction.moebius x.1 : ℤ) = 0
+        ∨ (ArithmeticFunction.moebius x.1 : ℤ) = 1
+        ∨ (ArithmeticFunction.moebius x.1 : ℤ) = -1 := by
+      by_cases hsf : Squarefree x.1
+      · rw [ArithmeticFunction.moebius_apply_of_squarefree hsf]
+        rcases Nat.even_or_odd (ArithmeticFunction.cardFactors x.1) with hev | hod
+        · right; left; exact hev.neg_one_pow
+        · right; right; exact hod.neg_one_pow
+      · left
+        rw [ArithmeticFunction.moebius_eq_zero_of_not_squarefree hsf]
+    rcases hmu3 with h0 | h1 | hm1
+    · rw [h0, zero_mul]; omega
+    · rw [h1, one_mul]; omega
+    · rw [hm1, neg_one_mul]
+  have htail : -(∑ j ∈ Finset.range δ, q ^ j)
+      ≤ ∑ x ∈ E, (ArithmeticFunction.moebius x.1 : ℤ) * q ^ x.2 :=
+    calc -(∑ j ∈ Finset.range δ, q ^ j)
+        ≤ -(∑ x ∈ E, q ^ x.2) := neg_le_neg h3
+      _ = ∑ x ∈ E, -(q ^ x.2) := by rw [← Finset.sum_neg_distrib]
+      _ ≤ ∑ x ∈ E, (ArithmeticFunction.moebius x.1 : ℤ) * q ^ x.2 :=
+          Finset.sum_le_sum hterm
+  -- the geometric sum is at most `q^δ − 1`
+  have hgeom : (∑ j ∈ Finset.range δ, q ^ j) ≤ q ^ δ - 1 := by
+    have hmul := geom_sum_mul q δ
+    have hnonneg : (0 : ℤ) ≤ ∑ j ∈ Finset.range δ, q ^ j :=
+      Finset.sum_nonneg fun j _ => pow_nonneg (by omega) _
+    nlinarith
+  -- assemble: 0 = q^δ + tail ≥ q^δ − (q^δ − 1) = 1
+  have hqδ : (1 : ℤ) ≤ q ^ δ := one_le_pow₀ (by omega)
+  omega
 
 /-- **The bridge's scalar-extension clause, proved**: for every complete DVR `O` with
 finite residue field and every `δ ≥ 1`, SOME complete DVR with finite residue field of
@@ -247,7 +334,29 @@ theorem factor_residual_pow {φ : Polynomial O} (hφ : IsKey φ) {e : ℕ}
     (hres : F.map (residue O) = (φ.map (residue O)) ^ e)
     (hg : g ∈ monicFactors F) :
     ∃ k, 0 < k ∧ g.map (residue O) = (φ.map (residue O)) ^ k := by
-  sorry
+  obtain ⟨hfac, hprod⟩ := monicFactors_spec hF
+  obtain ⟨hgm, hgi⟩ := hfac g hg
+  have hdvd : g ∣ F := by
+    rw [← hprod]
+    exact Multiset.dvd_prod hg
+  have hdvdmap : g.map (residue O) ∣ (φ.map (residue O)) ^ e := by
+    rw [← hres]
+    exact Polynomial.map_dvd _ hdvd
+  have hp_prime : Prime (φ.map (residue O)) :=
+    UniqueFactorizationMonoid.irreducible_iff_prime.mp hφ.irred
+  obtain ⟨k, hk_le, hassoc⟩ := (dvd_prime_pow hp_prime e).mp hdvdmap
+  have heq : g.map (residue O) = (φ.map (residue O)) ^ k :=
+    Polynomial.eq_of_monic_of_associated (hgm.map _) ((hφ.monic.map _).pow _) hassoc
+  refine ⟨k, ?_, heq⟩
+  rcases Nat.eq_zero_or_pos k with hk | hk
+  · exfalso
+    rw [hk, pow_zero] at heq
+    have hdeg0 : g.natDegree = 0 := by
+      have hcast := congrArg natDegree heq
+      rwa [hgm.natDegree_map, natDegree_one] at hcast
+    have hg1 : g = 1 := hgm.natDegree_eq_zero.mp hdeg0
+    exact hgi.not_isUnit (hg1 ▸ isUnit_one)
+  · exact hk
 
 /-- **The achieved labels on the `p^e` stratum descend**: `typeOf F` lies in
 `fScale (deg φ)`'s range — B.52 forces `deg φ ∣ f` on every irreducible factor. -/
@@ -255,14 +364,51 @@ theorem typeOf_mem_fScale_range {φ : Polynomial O} (hφ : IsKey φ) {e : ℕ}
     {F : Polynomial O} (hF : F.Monic)
     (hres : F.map (residue O) = (φ.map (residue O)) ^ e) :
     ∃ s' : Multiset (ℕ × ℕ), (typeOf F).data = fScale φ.natDegree s' := by
-  sorry
+  obtain ⟨π, hπ⟩ := IsDiscreteValuationRing.exists_irreducible O
+  refine ⟨(typeOf F).data.map (fun x => (x.1, x.2 / φ.natDegree)), ?_⟩
+  simp only [Uniformity.Density.IFCG25.fScale, Multiset.map_map]
+  symm
+  conv_rhs => rw [← Multiset.map_id ((typeOf F).data)]
+  refine Multiset.map_congr rfl ?_
+  intro x hx
+  rw [typeOf_data] at hx
+  obtain ⟨g, hgmem, hgx⟩ := Multiset.mem_map.mp hx
+  obtain ⟨hgm, hgi⟩ := (monicFactors_spec hF).1 g hgmem
+  obtain ⟨k, hk, hgres⟩ := factor_residual_pow hφ hF hres hgmem
+  have hgdeg : g.natDegree = k * φ.natDegree := by
+    have hcast := congrArg natDegree hgres
+    rwa [hgm.natDegree_map, natDegree_pow, hφ.monic.natDegree_map] at hcast
+  have hdpos : 0 < g.natDegree := by
+    rw [hgdeg]
+    exact Nat.mul_pos hk hφ.pos
+  have hdvd : φ.natDegree ∣ inertiaDegOf g :=
+    key_natDegree_dvd_inertiaDegOf hπ hφ hgm hdpos hk hgres
+  subst hgx
+  show ((efPair g).1, φ.natDegree * ((efPair g).2 / φ.natDegree)) = id (efPair g)
+  have h2 : (efPair g).2 = inertiaDegOf g := rfl
+  rw [id_eq]
+  exact Prod.ext rfl (by rw [h2]; exact Nat.mul_div_cancel' hdvd)
 
 /-- ★ **The bridge's vanishing clause is a theorem**: off `fScale`'s range the
 stratum-refined decided count of `p^e` vanishes at every level. -/
 theorem stratDecCount_pow_eq_zero_of_not_fScale {φ : Polynomial O} (hφ : IsKey φ)
     {e : ℕ} {s : Multiset (ℕ × ℕ)} (hs : ∀ s', s ≠ fScale φ.natDegree s') (N : ℕ) :
     stratDecCount O (φ.natDegree * e) ⟨s⟩ N ((φ.map (residue O)) ^ e) = 0 := by
-  sorry
+  by_contra hcon
+  have hne : (decidedSet O (φ.natDegree * e) ⟨s⟩ N
+      ∩ levelZeroStratum O (φ.natDegree * e) N ((φ.map (residue O)) ^ e)
+      : Set (Coeff O (φ.natDegree * e) N)).Nonempty := by
+    by_contra hemp
+    rw [Set.not_nonempty_iff_eq_empty] at hemp
+    rw [stratDecCount, hemp] at hcon
+    simp at hcon
+  obtain ⟨c, hcdec, hcstr⟩ := hne
+  obtain ⟨a, ha⟩ := proj_surjective' O (φ.natDegree * e) N c
+  have hty : typeOf (monicPoly a) = ⟨s⟩ := hcdec a ha
+  have hstr : (monicPoly a).map (residue O) = (φ.map (residue O)) ^ e := hcstr a ha
+  obtain ⟨s', hs'⟩ := typeOf_mem_fScale_range hφ (monicPoly_monic a) hstr
+  rw [hty] at hs'
+  exact hs s' hs'
 
 end Vanish
 
