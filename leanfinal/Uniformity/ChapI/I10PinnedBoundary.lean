@@ -108,6 +108,17 @@ at general witnesses, inhabited at the wired keystone genre.  The conclusion sid
 every signed statement is untouched — the amendment restricts what the capstone DEMANDS,
 never what it CONCLUDES.
 
+[R5P, 2026-08-31 (`I10WrapPinned.lean`, `runs/wave-c/verdict_R5P.md`): row R5 is now
+SETTLED NEGATIVE — ★★ `s2Four_not_universalPinnedGeneratorDescent₀` refutes
+`UniversalPinnedGeneratorDescent n` at every keystone-hosting degree (the χ-twist
+preserves the normalizer pin; a Bézout wrap character supplies the unembedded value TAU's
+`wrapDescentAt_not_uniform` was parametric in).  This file's ★★ chain theorems
+(`deepTwistField_of_pinned_descent_site`, `ladderVarthetaSupplierLive_of_pinned_descent`,
+`ladderFieldLive₃_of_pinned_boundary`) remain valid implications but are provably
+UNDISCHARGEABLE through their `UniversalPinnedGeneratorDescent` premise; the honest
+replacement boundary is R5P's `DescentPinned` guard (O-R5P, flagged NOT enacted), under
+which the tau supply is the unconditional ★★ `universalDoublyPinnedTauSupply`.]
+
 Cite ledger: **empty** — Lean core over the landed corpus; `#print axioms` footer is the
 audit.  Verdict: `runs/wave-c/verdict_OTAU.md`.
 -/
