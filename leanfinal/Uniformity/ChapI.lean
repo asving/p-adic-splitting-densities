@@ -91,3 +91,4 @@ import Uniformity.ChapI.IFCG52
 import Uniformity.ChapI.IFCG53
 import Uniformity.ChapI.IFCG54
 import Uniformity.ChapI.ID12
+import Uniformity.ChapI.IFCG55
