@@ -151,3 +151,14 @@ collapsed to `UniversalPinnedGeneratorDescent` = row R5
 socket-fires-at-twist theorem removed as false-by-design.  Pre-amendment state archived
 at commit `2b834da9`.  Full record: `runs/wave-c/verdict_OTAU.md`; leanspec ChapI carries
 the A-I.9 STATE UPDATE block.
+
+
+## ROW 9: SIGNED (owner, 2026-08-31)
+
+Owner authorization (Asvin, 2026-08-31, mid-session message, verbatim): "Okay with the
+CUR landing, I think the FGMN cite is fine to go." The signed surface is
+`FGMNCitePackageF` (I10CitePkgF.lean — the source-currency form: FGMN Thm 6.2 + Thm 6.4
++ Cor 6.6 as the authors wrote them, with CUR's machine-checked currency bridge and the
+Serre realization riding inside per the enactment plan). Caveats B/C/D/E were carried in
+the signing surface's docstring and are covered by this signature. Enactment unit: SIGN
+(declares the axiom, enacts the faithfulness entry, fires the consumers).
