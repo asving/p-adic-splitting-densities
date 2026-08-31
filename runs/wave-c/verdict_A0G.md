@@ -71,7 +71,7 @@ faithfulness.  A cite or axiom asserting rational density directly is not faithf
 
 ## Blueprint and critical path
 
-The full blueprint is `docs/in-progress/A0_GENERAL_2026-08-28.md`.  It contains 16 nodes,
+The full blueprint is `docs/in-progress/A0_GENERAL_2026-08-28.md`.  It contains 31 nodes,
 estimated at 8,000–14,000 lines:
 
 ```text
@@ -87,9 +87,9 @@ generic coefficient boxes → NP schemas → Hensel binding → child decrease
                   DecidedSliceAt n → ∀ n, DecidedSliceAt n
 ```
 
-**Single highest-risk node:** `A0G-GC`.  Work downstream of that node may be prototyped, but it
-must not be presented as a proof of the general theorem until the classifier is exhaustive and
-disjoint in arbitrary degree.
+**Single highest-risk node:** `A0G-GC1` (exhaustion in arbitrary degree and residue
+characteristic).  Work downstream of the GC0–GC4 block may be prototyped, but it must not be
+presented as a proof of the general theorem until the classifier is exhaustive and disjoint.
 
 ## Quartic reality check
 
