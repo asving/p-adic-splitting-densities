@@ -110,6 +110,7 @@ import Uniformity.ChapI.IFCG69
 import Uniformity.ChapI.IFCG70
 import Uniformity.ChapI.IFCG71
 import Uniformity.ChapI.IFCG73
+import Uniformity.ChapI.IFCG74
 import Uniformity.ChapI.IFCG72
 import Uniformity.ChapI.I10CitePkg
 import Uniformity.ChapI.I10RungLift3W
