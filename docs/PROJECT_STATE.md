@@ -74,8 +74,10 @@ never pipe an output you need through head/tail; never trust a bare name-grep
 
 ## 3. Trusted base (cites)
 
-Declared-and-landed allowlist, SIX (2026-08-28, unit UNT — physically SIX, not just
-effectively): `exists_slope_factorization`, `fgmn_residual_mul`, `agnprw_termination`,
+Declared-and-landed allowlist, SEVEN (row 9 SIGNED 2026-08-31 — the seventh:
+`fgmn_cite_packageF : FGMNCitePackageF`, I10FgmnCite.lean — FGMN 2015 Thm 6.2/6.4/Cor 6.6
+in the AUTHORS' OWN currency, CUR's bridge translating; faithfulness entry #7; owner
+quote verbatim in the declaration docstring. The prior SIX (2026-08-28, unit UNT): `exists_slope_factorization`, `fgmn_residual_mul`, `agnprw_termination`,
 `bBox1_cite`, `exists_dvDissection`, `fgmn_dvDissection_factor_eq`. `fgmn_dv_exact_mul`
 (C66b) is **PHYSICALLY RETIRED 2026-08-28**: unit H0LEG proved it redundant
 (`C133h0leg.fgmn_dv_exact_mul_full`, byte-identical, Lean-core) but the removal was
@@ -242,7 +244,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | FP0 | the counting socket's reduction | DONE (ee26fa4b) — the loop-cell count PROVED entirely; the socket ⟺ ONE remainder: RationalNonloopRemainderAt (the realization→cell cardinality bridge); zero new axioms |
 | FP1 | the bridge's honest form | DONE (8330c4d4) — the binary cardinality bridge COMPLETE (finite-precision Hensel uniqueness + fold bijectivity + the exact stratum product count, all Lean-core); the remainder ⟺ the per-genre census (audit iff proved); the NP-layer classifier/cell-measure gap named + localized |
 | FP3 | census assembly + the single-point kernel | DONE (4878fd3c) — IFCG18.lean: the labelled/unlabelled exchange, the URLim calculus, the pattern-cell partition, and ★★ `decidedSliceAt_all_of_singlePoint` — the ALL-DEGREE decided-slice theorem rests on exactly TWO named kernels: `SinglePointAggregateLaw` + `DeepLinearClusterLaw`. Next sub-units: (a) the (δ ≤ 3, e = 1) restricted kernel from IFCG4+H124b; (b) the uniform Gauss irreducible count δ ≥ 2 (needs unramified base change); (c) the fractional-slope OM-cone census e ≥ 2 |
-| ROW-9 | ★★★ THE FGMN CITE SIGNED (owner, 2026-08-31: "Okay with the CUR landing, I think the FGMN cite is fine to go") | ENACTING (unit SIGN): axiom fgmn_cite_packageF : FGMNCitePackageF + the faithfulness entry + the consumer fires (mass 4 outright; the FC_D family; the deep-wild transports) |
+| SIGN | ★★★ THE FGMN CITE ENACTED (the 7th cite; owner-signed) | DONE — I10FgmnCite.lean (the axiom + 12 unconditional cite forms) + I10FgmnFired.lean: ★★★ MASS 4 CLOSED UNCONDITIONALLY (all 11 types); hFC GONE from BOTH master lineages (`*_MASTER_SIGNED` + `*_clusterGeom_signed`); the h≥2 SlopeBezout carrier honestly NOT fired (strictly stronger; separately signable); footprints exactly as predicted |
 | CPF | the source-currency cite | DONE — I10CitePkgF.lean (32/32 PURE core): the legs AS THE AUTHORS WROTE THEM (HasClassicalType via closure realizations; the Serre existence rides inside); the gcd package a Lean-core corollary; `FGMNCitePackageF` = THE row-9 signing surface; CAVEAT A ELIMINATED |
 | R5P | the pinned wrap descent | DONE (0218d4d8) — row R5 REFUTED at pinned realizations (the Bézout wrap character); the repair O-R5P staged (under both guards the tau supply is UNCONDITIONAL); ⚠ the field-level flag under adjudication (OR5P) |
 | CUR | the currency lemma | DONE — IFCG76.lean (PURE core, no completeness): ★★★ the gcd read = the classical residue degree through any DVR-closure realization (the adjugate-conductor mechanism); the charged attained-gcd form REFUTED (X²−π³); caveat A = one textbook fact (Serre CL II §2 Prop 3), riding inside the restated legs; the HasResidueDegree bridge staged |

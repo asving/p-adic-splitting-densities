@@ -503,3 +503,53 @@ the axiom. The allowlist count returns to SIX. The owner's secondary review of t
 dictionary is no longer load-bearing for the mathematics — the statement stands on Lean
 core; the review remains valuable only as a check that the retired cite text matched its
 source. Full route + verification: `runs/wave-c/verdict_UNT.md`.
+
+## `fgmn_cite_packageF` (I10FgmnCite, declared 2026-08-31)
+
+**Declared:** `leanfinal/Uniformity/ChapI/I10FgmnCite.lean`, unit SIGN, on the owner's
+sign-off (Asvin, 2026-08-31, verbatim): "Okay with the CUR landing, I think the FGMN cite
+is fine to go." Signed surface: `FGMNCitePackageF` (I10CitePkgF.lean §1, statement bytes
+untouched at declaration). Review record: `docs/REVIEW_QUEUE_2026-08-26.md` row 9
+(rewritten 2026-08-31 by unit CPF; signed 2026-08-31).
+
+**Ports:** FGMN, *Residual ideals of MacLane valuations*, J. Algebra 427 (2015)
+30–75, DOI 10.1016/j.jalgebra.2014.12.022 — Theorem 6.2 (theorem of the polygon,
+factor level) + Theorem 6.4 (the generalized-Hensel dissection: block factorization,
+degree formula, ord-1 irreducibility clause) + Corollary 6.6 (`e(φ) ∣ e(F)`;
+residue-field embedding `F_φ ↪ F_F`), print-read VERBATIM 2026-08-31 against the
+author-posted PDF (repo copy); quotes in the I10CitePkgF.lean module docstring.
+Companion: AGNPRW FoCM 2024 Thm 2.11 + Thm 4.17 (repo PDF; same source as the signed
+row-1 `agnprw_termination`).  Standing background fact carried INSIDE the statement:
+Serre, *Corps Locaux*, ch. II §2 Prop. 3 (the integral closure of a complete DVR in a
+finite extension is a DVR, finite free of full rank — no separability), entering as
+the existence of the `DVRClosure` realization each conclusion asserts.
+
+**Faithfulness surface:** three legs, one conjunction (`FGMNCitePackageF`); hypothesis
+vectors identical to the CP2 staging (see I10CitePkg.lean's per-leg dictionary, inherited
+wholesale); conclusions are the authors' own per-factor invariants:
+`HasClassicalType h e f` = some closure realization of `O[x]/(h)` has classical
+`(ramificationIdx', inertiaDeg') = (e, f)` — the formal proxy for "`e(F), f(F)` in
+`L = K_v(θ)`" (any realization IS `O_L`; `hasClassicalType_unique` makes the reads
+invariant).  The corpus's gcd currency is DERIVED, never assumed
+(`fgmn_package_of_packageF`, Lean-core, via IFCG76's currency lemma).
+
+**Caveats adjudicated at signing (recorded, carried in the I10CitePkgF docstring):**
+(B) legs E/U quantify over inseparable/repeated-factor `g` while the classical
+statements assume separable `g` — the cells' fringe reading rides in the cite; (C) the
+corpus conclusions are in `devT` transform currency while Thm 6.4 is indexed by residual
+maximal ideals — the identification is the trusted dictionary (C66b genre; AGNPRW
+Thm 4.17); (D) leg R consumes only normalization-robust residual reads; (E) sufficiency
+only.  Caveat A of the CP2 draft is RESOLVED (machine-checked bridge
+`IFCG76.inertiaDegOf_eq_inertiaDeg'_of_closure`; no per-equality currency reading
+remains).
+
+**Non-vacuity / consistency teeth (Lean-core, landed before the signature):**
+`unramifiedLegSourceAt_zero` (leg U `k = 0` proved outright); `hasClassicalType_eisKey`
+(leg E's key reads `(e', 1)`); `hasClassicalType_of_irreducible_map` (leg U's key reads
+`(1, deg)`); `hasClassicalType_unique`; IFCG76 §2/§5 anchors (`efPair_eisKey`,
+`inertiaDegOf_of_irreducible_map`, `hasResidueDegree_of_isDVR`).
+
+**Footprint discipline:** the axiom appears in exactly the consumers firing through
+`fgmn_package_of_packageF`/the `*_cite` forms (H-14 inheritance pattern); the staging
+files (I10CitePkg, I10CitePkgF, IFCG76) remain Lean-core.  Declared allowlist count:
+SEVEN.  Enactment + consumer-firing record: `runs/wave-c/verdict_SIGN.md`.

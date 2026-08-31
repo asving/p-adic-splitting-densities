@@ -25,6 +25,7 @@ import Uniformity.ChapI.I10Suppliers
 import Uniformity.ChapI.I10TauRows
 import Uniformity.ChapI.I10PinnedBoundary
 import Uniformity.ChapI.I10WrapPinned
+import Uniformity.ChapI.I10DoublyPinned
 import Uniformity.ChapI.I10TauSupply
 import Uniformity.ChapI.I10WeightedCarrier
 import Uniformity.ChapI.I10Universal
@@ -115,9 +116,12 @@ import Uniformity.ChapI.IFCG73
 import Uniformity.ChapI.IFCG74
 import Uniformity.ChapI.IFCG75
 import Uniformity.ChapI.IFCG76
+import Uniformity.ChapI.IFCG77
 import Uniformity.ChapI.IFCG72
 import Uniformity.ChapI.I10CitePkg
 import Uniformity.ChapI.I10CitePkgF
+import Uniformity.ChapI.I10FgmnCite
+import Uniformity.ChapI.I10FgmnFired
 import Uniformity.ChapI.I10RungLift3W
 import Uniformity.ChapI.I10RungLift4
 import Uniformity.ChapI.I10SpineBridge
