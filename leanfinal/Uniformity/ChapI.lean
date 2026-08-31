@@ -98,3 +98,4 @@ import Uniformity.ChapI.IFCG57
 import Uniformity.ChapI.IFCG58
 import Uniformity.ChapI.IFCG59
 import Uniformity.ChapI.IFCG60
+import Uniformity.ChapI.I10RungLift3W
