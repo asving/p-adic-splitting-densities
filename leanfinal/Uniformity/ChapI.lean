@@ -9,6 +9,7 @@ import Uniformity.ChapI.I07
 import Uniformity.ChapI.I10CExport
 import Uniformity.ChapI.I10DeepExport
 import Uniformity.ChapI.I10FreezeV2
+import Uniformity.ChapI.I10IfaceCore
 import Uniformity.ChapI.I10LadderLegs
 import Uniformity.ChapI.I10LadderLive
 import Uniformity.ChapI.I10LadderRead
@@ -88,4 +89,5 @@ import Uniformity.ChapI.IFCG50
 import Uniformity.ChapI.IFCG51
 import Uniformity.ChapI.IFCG52
 import Uniformity.ChapI.IFCG53
+import Uniformity.ChapI.IFCG54
 import Uniformity.ChapI.ID12
