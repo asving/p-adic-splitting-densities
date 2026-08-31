@@ -34,7 +34,16 @@ conclusion is machine-refuted at degree 4, `scratch/AI6_probe.lean` archived at
 to `IFC5.LadderSupplyLive₃` (`I10RecenterDirect.lean`, ONLY the `mp1` leg replaced by the
 DIRECT-route `MP1CarrierLiveDirect`; `GNCitePayload` retired from the live surface per
 DWR's structural stop-line + A8D's adjudication, `scratch/A8D_probe.lean` archived at
-`3d545e6e`**).  **ENV-I1**.  Statements transcribed BYTE-FROZEN from the amended leanspec;
+`3d545e6e` — and by A-I.9 (O-TAU-2), 2026-08-31 — the I.10b socket BODY's joint witness is
+pinned to the canonical Laurent normalizer: `C130s18.DeepTwistRealizationData` (and the
+ladder `vartheta` leg's live guard `IFC5.CanonicalLadderLiveAt`) gain the conjunct
+`Aℛ.normalizer = core.T.laurentNormalizer` (TAU's `NormalizerPinned`, definitionally),
+forced by TAU's index-2 refutation `s2Four_not_universalKernelSpan` (`I10TauRows.lean`);
+owner-authorized, enactment record + verbatim authorization
+`runs/wave-c/verdict_OTAU.md`; pre-amendment state archived at commit `2b834da9`; THIS
+FILE's declarations are BYTE-UNCHANGED (the socket defs reference the amended carriers by
+name; the `Iff.rfl` gate pins below re-fire against them)**).  **ENV-I1**.  Statements
+transcribed BYTE-FROZEN from the amended leanspec;
 re-namespaced only (`LeanspecI` → `Uniformity.Density`, GC-6.2: chapter I gets no
 sub-namespace).  Unit RSGN (the capstone-gate unit), 2026-08-26.
 
@@ -141,6 +150,12 @@ def CanonicalDeepTwistConfig {O : Type} [CommRing O] {K : Type} [Field K]
   -- must pin it to the same joint arising witness the arena export uses (never a free numeral).
   -- [A-I.3, 2026-08-26] the pin is now REAL: the joint witness carries `core.r = r` inside
   -- `DeepTwistRealizationData` (A-I.2(b)'s "never a free numeral" rule, discharged).
+  -- [A-I.9 (O-TAU-2), 2026-08-31] the joint witness is now NORMALIZER-PINNED:
+  -- `DeepTwistRealizationData` additionally carries `Aℛ.normalizer = core.T.laurentNormalizer`
+  -- (a premise-position conjunct = a WEAKER `deepTwist` field = a STRONGER conditional
+  -- capstone).  Forced by TAU's `s2Four_not_universalKernelSpan`; owner-authorized;
+  -- record `runs/wave-c/verdict_OTAU.md`; boundary `I10PinnedBoundary.lean`.  This def's
+  -- bytes are unchanged — the body references the amended carrier by name.
   CanonicalLadderConfig C B G Kt L N v ρ q n ∧
     ∃ (dom : IsDomain O) (dvr : IsDiscreteValuationRing O),
       Uniformity.Density.Tower.C130s18.DeepTwistRealizationData.{0, uG, uKt, uL}

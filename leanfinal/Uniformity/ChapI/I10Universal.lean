@@ -46,6 +46,14 @@ boundary:
   `deepTwistField_iff_universalPerWitness :
      IFC0.DeepTwistField n ↔ UniversalVarthetaSupplier n ∧ UniversalGentowSupplier n`
 
+  **[A-I.9 (O-TAU-2), 2026-08-31]: the iff above is SUPERSEDED** — the socket now pins the
+  received witness's normalizer (C130s18), so the exact boundary is the PINNED pair:
+  `deepTwistField_iff_universalPinnedPerWitness : IFC0.DeepTwistField n ↔
+  UniversalPinnedVarthetaSupplier n ∧ UniversalPinnedGentowSupplier n`.  The unpinned
+  suppliers and their assembly direction survive (strictly stronger inputs); the unpinned
+  CONVERSES are retired (provably undischargeable post-amendment — TAU's twist).
+  Archived pre-amendment at commit `2b834da9`; record `runs/wave-c/verdict_OTAU.md`.
+
   (the iff at the ARISING universe profile `uKt = 0` — the signed socket's `K` binder is
   `Type`, A-I.3's "0 is the universe of every arising instance" disclosure; the assembly
   direction `deepTwistField_of_universalPerWitness` is fully polymorphic).
@@ -430,7 +438,7 @@ theorem deepVarthetaSupplier_of_universal {n : ℕ}
     (h : UniversalVarthetaSupplier.{uG, uKt, uL} n) :
     IFC0.DeepVarthetaSupplier.{uG, uKt, uL} n := by
   intro O _ K _ C B G _ Kt _ L _ _ N v ρ q A R w r hcfg i hi
-  obtain ⟨-, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrr, -, -, hgauge, harena⟩ := hcfg
+  obtain ⟨-, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrr, -, -, -, hgauge, harena⟩ := hcfg
   letI := dom
   letI := dvr
   letI := fE
@@ -443,7 +451,7 @@ theorem deepGentowSupplier_of_universal {n : ℕ}
     (h : UniversalGentowSupplier.{uG, uKt, uL} n) :
     IFC0.DeepGentowSupplier.{uG, uKt, uL} n := by
   intro O _ K _ C B G _ Kt _ L _ _ N v ρ q A R w r hcfg j h3 hjr
-  obtain ⟨-, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrr, -, -, hgauge, harena⟩ := hcfg
+  obtain ⟨-, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrr, -, -, -, hgauge, harena⟩ := hcfg
   letI := dom
   letI := dvr
   letI := fE
@@ -453,18 +461,107 @@ theorem deepGentowSupplier_of_universal {n : ℕ}
   exact gentowW_of_perWitness_view X eG hgauge harena hjd.gaugeLive hr
     (h O Kt E L core Aℛ X j hjd)
 
-/-- Converse: the capstone `deepTwist` field yields the universal vartheta supplier —
-every witness exports its own configuration (CC-18's literal socket application), and the
-field's conjunct projects to the exporter at every deep-live level.
+/-! ### [A-I.9 (O-TAU-2), 2026-08-31] The PINNED supplier boundary
+
+The socket body (`C130s18.DeepTwistRealizationData`) now pins the received witness's
+normalizer to the canonical Laurent solve, so the field's exact per-witness demand ranges
+over PINNED witnesses only.  The two pinned supplier `Prop`s below are the recomputed
+boundary; the unpinned §5 forms above remain valid as the (strictly stronger) assembly
+inputs and as the tension record of the pre-amendment boundary.  The pre-amendment
+converses (`universalVartheta_of_deepTwistField` / `universalGentow_of_deepTwistField`,
+concluding the UNPINNED suppliers) are RETIRED — provably undischargeable post-amendment,
+since the socket can no longer be fired at an unpinned witness (TAU's twist is a legal
+unpinned witness refuting `KernelSpanAt`); archived at commit `2b834da9`.  Record:
+`runs/wave-c/verdict_OTAU.md`. -/
+
+/-- **[A-I.9] The pinned universal vartheta supplier**: the per-witness sitewise-ϑ exporter
+at every CANONICALLY-NORMALIZED arising realization of degree `n` — exactly the vartheta
+half the amended socket demands.  The pin hypothesis is TAU's `NormalizerPinned`,
+definitionally.  NEW STATEMENT (review). -/
+def UniversalPinnedVarthetaSupplier (n : ℕ) : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (Kt : Type uKt) [Field Kt] (E : Type) [Field E]
+    (L : Type uL) [Field L] [Algebra Kt L]
+    (core : ArisingCore (O := O) Kt L n)
+    (Aℛ : ChainRealization (O := O) (π := core.π) (F := core.F) (H₀ := core.H₀)
+      (hpin := core.hpin) core.T Kt E L)
+    (X : RealizedInput core Aℛ),
+    Aℛ.normalizer = core.T.laurentNormalizer →
+    VarthetaPerWitnessExporter.{uG, uKt, uL} X
+
+/-- **[A-I.9] The pinned universal `GentowW` supplier**: the per-witness `𝒲`-frame
+exporter at every canonically-normalized arising realization of degree `n`.
+NEW STATEMENT (review). -/
+def UniversalPinnedGentowSupplier (n : ℕ) : Prop :=
+  ∀ (O : Type) [CommRing O] [IsDomain O] [IsDiscreteValuationRing O]
+    (Kt : Type uKt) [Field Kt] (E : Type) [Field E]
+    (L : Type uL) [Field L] [Algebra Kt L]
+    (core : ArisingCore (O := O) Kt L n)
+    (Aℛ : ChainRealization (O := O) (π := core.π) (F := core.F) (H₀ := core.H₀)
+      (hpin := core.hpin) core.T Kt E L)
+    (X : RealizedInput core Aℛ),
+    Aℛ.normalizer = core.T.laurentNormalizer →
+    GentowPerWitnessExporter.{uG, uKt, uL} X
+
+/-- Supersession-direction pin: the unpinned supplier implies the pinned one — the
+amendment only RESTRICTS the demanded witness range; nothing is strengthened. -/
+theorem universalPinnedVartheta_of_universal {n : ℕ}
+    (h : UniversalVarthetaSupplier.{uG, uKt, uL} n) :
+    UniversalPinnedVarthetaSupplier.{uG, uKt, uL} n :=
+  fun O _ _ _ Kt _ E _ L _ _ core Aℛ X _ => h O Kt E L core Aℛ X
+
+/-- Supersession-direction pin, `GentowW` half. -/
+theorem universalPinnedGentow_of_universal {n : ℕ}
+    (h : UniversalGentowSupplier.{uG, uKt, uL} n) :
+    UniversalPinnedGentowSupplier.{uG, uKt, uL} n :=
+  fun O _ _ _ Kt _ E _ L _ _ core Aℛ X _ => h O Kt E L core Aℛ X
+
+/-- [A-I.9] The PINNED universal vartheta supplier discharges IFC0's DT0 sitewise-ϑ leg:
+the amended socket hands the joint witness WITH its normalizer pin, which is exactly what
+the pinned supplier consumes. -/
+theorem deepVarthetaSupplier_of_pinnedUniversal {n : ℕ}
+    (h : UniversalPinnedVarthetaSupplier.{uG, uKt, uL} n) :
+    IFC0.DeepVarthetaSupplier.{uG, uKt, uL} n := by
+  intro O _ K _ C B G _ Kt _ L _ _ N v ρ q A R w r hcfg i hi
+  obtain ⟨-, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrr, hN, -, -, hgauge, harena⟩ := hcfg
+  letI := dom
+  letI := dvr
+  letI := fE
+  subst hrr
+  exact varthetaRes_of_perWitness_view X eG hgauge hi.gaugeLive
+    (h O Kt E L core Aℛ X hN i hi)
+
+/-- [A-I.9] The PINNED universal `GentowW` supplier discharges IFC0's DT0
+per-level-`GentowW` leg. -/
+theorem deepGentowSupplier_of_pinnedUniversal {n : ℕ}
+    (h : UniversalPinnedGentowSupplier.{uG, uKt, uL} n) :
+    IFC0.DeepGentowSupplier.{uG, uKt, uL} n := by
+  intro O _ K _ C B G _ Kt _ L _ _ N v ρ q A R w r hcfg j h3 hjr
+  obtain ⟨-, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrr, hN, -, -, hgauge, harena⟩ := hcfg
+  letI := dom
+  letI := dvr
+  letI := fE
+  subst hrr
+  have hjd : DeepLive core.r j := ⟨h3, hjr⟩
+  have hr : 1 < core.r := by omega
+  exact gentowW_of_perWitness_view X eG hgauge harena hjd.gaugeLive hr
+    (h O Kt E L core Aℛ X hN j hjd)
+
+/-- [A-I.9] Converse: the capstone `deepTwist` field yields the PINNED universal vartheta
+supplier — every pinned witness exports its own configuration (CC-18's literal socket
+application, whose `hN` argument is the pin), and the field's conjunct projects to the
+exporter at every deep-live level.  (The pre-amendment UNPINNED conclusion is provably
+out of reach: TAU's twisted witness is legal and unpinned, and its exporter would force
+`KernelSpanAt` there — refuted.)
 
 UNIVERSE NOTE: stated at the ARISING profile `uKt = 0` — the signed socket's `K` binder is
 `Type` (A-I.3's disclosure: "`0` is the universe of every arising instance"), so the
 witness's own stage carrier `core.T.fld core.i` can be the socket's `K` exactly when the
 terminal-field universe is `0`.  The assembly direction below is fully polymorphic. -/
-theorem universalVartheta_of_deepTwistField {n : ℕ}
+theorem universalPinnedVartheta_of_deepTwistField {n : ℕ}
     (h : IFC0.DeepTwistField.{uG, 0, uL} n) :
-    UniversalVarthetaSupplier.{uG, 0, uL} n := by
-  intro O _ _ _ Kt _ E _ L _ _ core Aℛ X j hj
+    UniversalPinnedVarthetaSupplier.{uG, 0, uL} n := by
+  intro O _ _ _ Kt _ E _ L _ _ core Aℛ X hN j hj
   have hr : 1 < core.r := by rcases hj with ⟨hj3, hjr⟩; omega
   have hconj := h O (core.T.fld core.i)
     (X.stageCarrierTransport (RingEquiv.refl (core.T.fld core.i)))
@@ -473,15 +570,16 @@ theorem universalVartheta_of_deepTwistField {n : ℕ}
     (Aℛ.normalizer.arenaNormSection0.transport (gaugeLatticeEquiv core.r).symm)
     (gaugeHeightFamily X) (canonicalResFamily X) (useHeightFamily X)
     (arenaFamily X hr) (towerReadFamily X) Aℛ.node.peelUnitFamily core.r
-    (C130s18.realizedInput_deepTwistConfigData X (RingEquiv.refl _) hr)
+    (C130s18.realizedInput_deepTwistConfigData X (RingEquiv.refl _) hr hN)
   exact IFC0.deepTwistConjunctLive_vartheta_at hconj hj
 
-/-- Converse: the capstone `deepTwist` field yields the universal `GentowW` supplier
-(same arising-profile universe note as `universalVartheta_of_deepTwistField`). -/
-theorem universalGentow_of_deepTwistField {n : ℕ}
+/-- [A-I.9] Converse: the capstone `deepTwist` field yields the PINNED universal `GentowW`
+supplier (same arising-profile universe note as
+`universalPinnedVartheta_of_deepTwistField`). -/
+theorem universalPinnedGentow_of_deepTwistField {n : ℕ}
     (h : IFC0.DeepTwistField.{uG, 0, uL} n) :
-    UniversalGentowSupplier.{uG, 0, uL} n := by
-  intro O _ _ _ Kt _ E _ L _ _ core Aℛ X j hj
+    UniversalPinnedGentowSupplier.{uG, 0, uL} n := by
+  intro O _ _ _ Kt _ E _ L _ _ core Aℛ X hN j hj
   have hr : 1 < core.r := by rcases hj with ⟨hj3, hjr⟩; omega
   have hconj := h O (core.T.fld core.i)
     (X.stageCarrierTransport (RingEquiv.refl (core.T.fld core.i)))
@@ -490,32 +588,44 @@ theorem universalGentow_of_deepTwistField {n : ℕ}
     (Aℛ.normalizer.arenaNormSection0.transport (gaugeLatticeEquiv core.r).symm)
     (gaugeHeightFamily X) (canonicalResFamily X) (useHeightFamily X)
     (arenaFamily X hr) (towerReadFamily X) Aℛ.node.peelUnitFamily core.r
-    (C130s18.realizedInput_deepTwistConfigData X (RingEquiv.refl _) hr)
+    (C130s18.realizedInput_deepTwistConfigData X (RingEquiv.refl _) hr hN)
   exact IFC0.deepTwistConjunctLive_gentowW_at hconj hj.1 hj.2
 
-/-- The assembly direction, in consumable form and FULLY POLYMORPHIC: the two universal
-suppliers give the capstone `deepTwist` field, at every universe profile. -/
+/-- The assembly direction from the PINNED pair, in consumable form and FULLY POLYMORPHIC:
+the two pinned universal suppliers give the capstone `deepTwist` field, at every universe
+profile. -/
+theorem deepTwistField_of_pinnedPerWitness {n : ℕ}
+    (hv : UniversalPinnedVarthetaSupplier.{uG, uKt, uL} n)
+    (hw : UniversalPinnedGentowSupplier.{uG, uKt, uL} n) :
+    IFC0.DeepTwistField.{uG, uKt, uL} n :=
+  IFC0.deepTwistField_of_suppliers
+    (deepVarthetaSupplier_of_pinnedUniversal hv) (deepGentowSupplier_of_pinnedUniversal hw)
+
+/-- The assembly direction from the UNPINNED pair (the pre-amendment consumable form,
+still valid: unpinned ⟹ pinned ⟹ field). -/
 theorem deepTwistField_of_universalPerWitness {n : ℕ}
     (hv : UniversalVarthetaSupplier.{uG, uKt, uL} n)
     (hw : UniversalGentowSupplier.{uG, uKt, uL} n) :
     IFC0.DeepTwistField.{uG, uKt, uL} n :=
-  IFC0.deepTwistField_of_suppliers
-    (deepVarthetaSupplier_of_universal hv) (deepGentowSupplier_of_universal hw)
+  deepTwistField_of_pinnedPerWitness
+    (universalPinnedVartheta_of_universal hv) (universalPinnedGentow_of_universal hw)
 
-/-- ★ **THE G10 EXIT GATE — the supplier boundary is EXACT**: the capstone `deepTwist`
-field at degree `n` is EQUIVALENT to the pair of universal per-witness suppliers, at the
-arising universe profile (`uKt = 0`; see `universalVartheta_of_deepTwistField`'s note —
-the assembly direction holds at every profile).  Nothing is discharged: the field's open
-content is repartitioned, machine-exactly, into the two named universal suppliers — the
-site-package quantification over every arising realization.  The wired-genre instances
-(§7) inhabit the per-witness cores at the depth-4 keystone genre; the general suppliers
-remain the campaign's open boundary. -/
-theorem deepTwistField_iff_universalPerWitness {n : ℕ} :
+/-- ★ **[A-I.9] THE G10 EXIT GATE, RECOMPUTED — the PINNED supplier boundary is EXACT**:
+the capstone `deepTwist` field at degree `n` is EQUIVALENT to the pair of PINNED universal
+per-witness suppliers, at the arising universe profile (`uKt = 0`; the assembly direction
+holds at every profile).  Supersedes the pre-amendment
+`deepTwistField_iff_universalPerWitness` (RETIRED with the amendment: its unpinned
+converse died with the abstract-normalizer socket; archived at commit `2b834da9`).
+Nothing is discharged: the field's open content is repartitioned, machine-exactly, into
+the two pinned universal suppliers.  The wired-genre instances (§7) inhabit the
+per-witness cores at the depth-4 keystone genre — all of them pinned by `rfl`. -/
+theorem deepTwistField_iff_universalPinnedPerWitness {n : ℕ} :
     IFC0.DeepTwistField.{uG, 0, uL} n ↔
-      UniversalVarthetaSupplier.{uG, 0, uL} n ∧
-        UniversalGentowSupplier.{uG, 0, uL} n :=
-  ⟨fun h => ⟨universalVartheta_of_deepTwistField h, universalGentow_of_deepTwistField h⟩,
-   fun h => deepTwistField_of_universalPerWitness h.1 h.2⟩
+      UniversalPinnedVarthetaSupplier.{uG, 0, uL} n ∧
+        UniversalPinnedGentowSupplier.{uG, 0, uL} n :=
+  ⟨fun h => ⟨universalPinnedVartheta_of_deepTwistField h,
+     universalPinnedGentow_of_deepTwistField h⟩,
+   fun h => deepTwistField_of_pinnedPerWitness h.1 h.2⟩
 
 /-! ## §6 The superseded MP1 half, recorded (no new statement shape) -/
 
@@ -656,9 +766,16 @@ section AxCheck
 #print axioms Uniformity.Density.DeepExport.UniversalGentowSupplier
 #print axioms Uniformity.Density.DeepExport.deepVarthetaSupplier_of_universal
 #print axioms Uniformity.Density.DeepExport.deepGentowSupplier_of_universal
-#print axioms Uniformity.Density.DeepExport.universalVartheta_of_deepTwistField
-#print axioms Uniformity.Density.DeepExport.universalGentow_of_deepTwistField
-#print axioms Uniformity.Density.DeepExport.deepTwistField_iff_universalPerWitness
+#print axioms Uniformity.Density.DeepExport.UniversalPinnedVarthetaSupplier
+#print axioms Uniformity.Density.DeepExport.UniversalPinnedGentowSupplier
+#print axioms Uniformity.Density.DeepExport.universalPinnedVartheta_of_universal
+#print axioms Uniformity.Density.DeepExport.universalPinnedGentow_of_universal
+#print axioms Uniformity.Density.DeepExport.deepVarthetaSupplier_of_pinnedUniversal
+#print axioms Uniformity.Density.DeepExport.deepGentowSupplier_of_pinnedUniversal
+#print axioms Uniformity.Density.DeepExport.universalPinnedVartheta_of_deepTwistField
+#print axioms Uniformity.Density.DeepExport.universalPinnedGentow_of_deepTwistField
+#print axioms Uniformity.Density.DeepExport.deepTwistField_iff_universalPinnedPerWitness
+#print axioms Uniformity.Density.DeepExport.deepTwistField_of_pinnedPerWitness
 #print axioms Uniformity.Density.DeepExport.deepTwistField_of_universalPerWitness
 #print axioms Uniformity.Density.DeepExport.mp1PerWitnessEmission
 #print axioms Uniformity.Density.DeepExport.s2Four_varthetaPerWitnessExporter

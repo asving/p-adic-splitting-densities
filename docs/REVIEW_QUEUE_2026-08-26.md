@@ -136,3 +136,18 @@ options, both owner gate-(a) events:
   hypothesis = strengthens the conditional capstone, same genre as A-I.6/7/8).
 Under either, `universalPinnedTauSupply_of_descent` collapses the tau boundary to row R5
 (wrap descent) only. Until signed, the vartheta halves are conditional on the amendment.
+
+**⛔ ROW 10: ENACTED (owner-authorized 2026-08-31, unit OTAU) — O-TAU-2, as AMENDMENT
+A-I.9.**  Owner (verbatim, mid-session 2026-08-31): "for row 10, if I understand right, I
+dont think that is gated on me. If this ammendment closes the proof, then it must have
+been right after all since this is all internal stuff" — compile-is-the-validator applied
+to internal socket structure.  Enacted: the `NormalizerPinned` conjunct in
+`C130s18.DeepTwistRealizationData` (+ `hN` on `realizedInput_deepTwistConfigData`) and in
+`IFC5.CanonicalLadderLiveAt`; G10U exit gate recomputed
+(`deepTwistField_iff_universalPinnedPerWitness`); BOTH vartheta halves' tau boundary
+collapsed to `UniversalPinnedGeneratorDescent` = row R5
+(`I10PinnedBoundary.deepTwistField_of_pinned_descent_site`,
+`ladderVarthetaSupplierLive_of_pinned_descent`); keystone re-fire teeth landed; TAU's
+socket-fires-at-twist theorem removed as false-by-design.  Pre-amendment state archived
+at commit `2b834da9`.  Full record: `runs/wave-c/verdict_OTAU.md`; leanspec ChapI carries
+the A-I.9 STATE UPDATE block.

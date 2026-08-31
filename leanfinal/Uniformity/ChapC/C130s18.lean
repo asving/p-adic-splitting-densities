@@ -89,6 +89,18 @@ at the SG-0 instance, on `w : S2LevelOneThreshold` alone.  The non-swallowing au
 re-runs at the split node (`twistNode` retyped; the χ-freedom argument is unchanged).
 Prose above this note describing `ev`/`lf`-conditionality is the pre-ripple record.
 
+## [A-I.9 (O-TAU-2), 2026-08-31] — the normalizer-pinning socket conjunct ENACTED
+
+`DeepTwistRealizationData` gains the conjunct `Aℛ.normalizer = core.T.laurentNormalizer`
+(TAU's `NormalizerPinned`, definitionally) right after the `core.r = r` pin, and
+`realizedInput_deepTwistConfigData` gains the matching `hN` hypothesis (`rfl` at every
+landed witness).  Forced by TAU's index-2 refutation (`I10TauRows.lean`:
+`s2Four_not_universalKernelSpan`); enactment record + owner authorization:
+`runs/wave-c/verdict_OTAU.md`; boundary consequences: `Uniformity/ChapI/I10PinnedBoundary.lean`.
+The LADDER body (`LadderRealizationData`) is deliberately NOT amended — the ladder
+vartheta chain's receive point is `IFC5.CanonicalLadderLiveAt` (amended in
+`I10LadderLive.lean`), and no other ladder-side leg consumes the normalizer.
+
 ## Cite ledger
 
 CITES CONSUMED BY THIS FILE: **none**.  No owner hypothesis, no `sorry`, no new axiom, no
@@ -176,7 +188,21 @@ def CanonicalLadderConfigData.{uE', uG', uKt', uL'} {O : Type} [CommRing O] {K :
 
 /-- The instance-full I.10b joint-witness clause: ONE realized input exports BOTH the ladder
 data and the separate arena data, and the socket's tower depth `r` is pinned to that same
-witness (`core.r = r`) — A-I.2(b)'s "never a free numeral" rule. -/
+witness (`core.r = r`) — A-I.2(b)'s "never a free numeral" rule.
+
+**[A-I.9 (O-TAU-2), 2026-08-31 — STATEMENT CHANGE (socket-body conjunct)]** the existential
+additionally pins the received witness's normalizer to the CC-4 canonical Laurent solve:
+`Aℛ.normalizer = core.T.laurentNormalizer` (= TAU's `NormalizerPinned Aℛ`, definitionally —
+`Iff.rfl` pin in `I10PinnedBoundary.lean`).  FORCED by TAU's machine refutation
+(`I10TauRows.lean`, 2026-08-31): the socket previously RECEIVED the normalizer abstractly,
+the index-2 twist (`s2FourTwistedRealization`) satisfied every view conjunct yet refuted
+`KernelSpanAt` (★★ `s2Four_not_universalKernelSpan`), so TWD's universal lattice row was
+provably undischargeable through the received witnesses.  Every LANDED witness is pinned
+by `rfl` (TWD `s2Four_normalizer_eq_laurent`; C130s17 `s2RepositoryRealization_normalizer`);
+the twist now fails the socket, as designed.  A conjunct added to a premise-position socket
+WEAKENS the capstone `deepTwist` field, hence STRENGTHENS the conditional capstone;
+`UniformityStatement` and I.15–I.18 are byte-unchanged.  Pre-amendment state archived at
+commit `2b834da9`; owner authorization + record: `runs/wave-c/verdict_OTAU.md`. -/
 def DeepTwistRealizationData.{uE', uG', uKt', uL'} {O : Type} [CommRing O] [dom : IsDomain O]
     [dvr : IsDiscreteValuationRing O] {K : Type} [Field K]
     (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
@@ -191,6 +217,7 @@ def DeepTwistRealizationData.{uE', uG', uKt', uL'} {O : Type} [CommRing O] [dom 
     (X : RealizedInput core Aℛ)
     (eK : core.T.fld core.i ≃+* K) (eG : G ≃* GaugeLattice.{uG'} core.r),
     core.r = r ∧
+    Aℛ.normalizer = core.T.laurentNormalizer ∧
     SlotViewEq X eK C ∧
     (∃ hC : C = X.stageCarrierTransport eK, BlockViewEq X eK (hC ▸ B)) ∧
     GaugeFamilyViewEq X (N.transport eG)
@@ -248,9 +275,14 @@ theorem realizedInput_ladderConfigData (X : RealizedInput core Aℛ)
 
 /-- ★ **CC-18, literal socket application (I.10b shape, with the A-I.2 `r` binder)**: the
 same realized input additionally exports the separate arena family, and the socket depth is
-the witness's own `core.r` — pinned, not a numeral. -/
+the witness's own `core.r` — pinned, not a numeral.
+
+[A-I.9 (O-TAU-2), 2026-08-31] the application now additionally requires the witness to be
+canonically normalized (`hN`) — `rfl` at every landed witness; NOT suppliable at TAU's
+index-2 twisted witness, by design (`I10TauRows.s2FourTwisted_not_pinned`). -/
 theorem realizedInput_deepTwistConfigData (X : RealizedInput core Aℛ)
-    {K : Type} [Field K] (eK : core.T.fld core.i ≃+* K) (hr : 1 < core.r) :
+    {K : Type} [Field K] (eK : core.T.fld core.i ≃+* K) (hr : 1 < core.r)
+    (hN : Aℛ.normalizer = core.T.laurentNormalizer) :
     CanonicalDeepTwistConfigData.{uE, uG, uKt, uL} (X.stageCarrierTransport eK) (X.inputBlockTransport eK)
       (GaugeLattice.{uG} core.r) Kt L
       (Aℛ.normalizer.arenaNormSection0.transport (gaugeLatticeEquiv core.r).symm)
@@ -258,7 +290,7 @@ theorem realizedInput_deepTwistConfigData (X : RealizedInput core Aℛ)
       (arenaFamily X hr) (towerReadFamily X) Aℛ.node.peelUnitFamily core.r n :=
   ⟨realizedInput_ladderConfigData X eK,
     inferInstance, inferInstance, E, inferInstance, core, Aℛ, X, eK, MulEquiv.refl _,
-    rfl, X.slotViewEq eK, ⟨rfl, X.blockViewEq eK⟩, X.gaugeFamilyViewEq,
+    rfl, hN, X.slotViewEq eK, ⟨rfl, X.blockViewEq eK⟩, X.gaugeFamilyViewEq,
     X.arenaFamilyViewEq hr⟩
 
 end Applications
@@ -353,7 +385,7 @@ theorem s2_deepTwist_socket_application [IsAdicComplete (IsLocalRing.maximalIdea
       (towerReadFamily S.s2RealizedInput)
       S.toCarrier.node.peelUnitFamily 2 4 :=
   realizedInput_deepTwistConfigData S.s2RealizedInput (RingEquiv.refl _)
-    Nat.one_lt_two
+    Nat.one_lt_two rfl
 
 /-- The S2 refinement fires end-to-end (gate item (5a) at the S2 instance, `ev`/`lf`-free
 [PK-2/U15]). -/
@@ -661,19 +693,19 @@ theorem canonicalDeepTwistConfigData_update_offRange {j : ℕ} (hj : ¬ GaugeLiv
       CanonicalDeepTwistConfigData.{uE, uG, uKt, uL} C B G Kt L N v ρ q
         (Function.update A j Aj) (Function.update R j Rj) (Function.update w j wj) r n := by
   constructor
-  · rintro ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hslot, hblock, hgauge,
+  · rintro ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hNpin, hslot, hblock, hgauge,
       harena⟩
     subst hrpin
-    refine ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, rfl, hslot, hblock, hgauge, ?_⟩
+    refine ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, rfl, hNpin, hslot, hblock, hgauge, ?_⟩
     intro k hk
     have hkj : k ≠ j := fun e => hj (e ▸ hk)
     beta_reduce
     rw [Function.update_of_ne hkj, Function.update_of_ne hkj, Function.update_of_ne hkj]
     exact harena k hk
-  · rintro ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hslot, hblock, hgauge,
+  · rintro ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hNpin, hslot, hblock, hgauge,
       harena⟩
     subst hrpin
-    refine ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, rfl, hslot, hblock, hgauge, ?_⟩
+    refine ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, rfl, hNpin, hslot, hblock, hgauge, ?_⟩
     intro k hk
     have hkj : k ≠ j := fun e => hj (e ▸ hk)
     have h := harena k hk
@@ -687,16 +719,16 @@ theorem canonicalDeepTwistConfigData_update_q_zero (q₀ : ℤ) :
     CanonicalDeepTwistConfigData.{uE, uG, uKt, uL} C B G Kt L N v ρ q A R w r n ↔
       CanonicalDeepTwistConfigData.{uE, uG, uKt, uL} C B G Kt L N v ρ (Function.update q 0 q₀) A R w r n := by
   constructor
-  · rintro ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hslot, hblock, hgauge,
+  · rintro ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hNpin, hslot, hblock, hgauge,
       harena⟩
     exact ⟨(canonicalLadderConfigData_update_q_zero q₀).mp hl,
-      dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hslot, hblock,
+      dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hNpin, hslot, hblock,
       (gaugeFamilyViewEq_offRange_unconstrained X _ _ _ _
         (fun h => Nat.not_succ_le_zero 0 h.1) q₀).mp hgauge, harena⟩
-  · rintro ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hslot, hblock, hgauge,
+  · rintro ⟨hl, dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hNpin, hslot, hblock, hgauge,
       harena⟩
     exact ⟨(canonicalLadderConfigData_update_q_zero q₀).mpr hl,
-      dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hslot, hblock,
+      dom, dvr, E, fE, core, Aℛ, X, eK, eG, hrpin, hNpin, hslot, hblock,
       (gaugeFamilyViewEq_offRange_unconstrained X _ _ _ _
         (fun h => Nat.not_succ_le_zero 0 h.1) q₀).mpr hgauge, harena⟩
 

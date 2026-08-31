@@ -64,6 +64,15 @@ exactly as TWD graded it).
 `UniversalPinnedTauWordDescentSupply` (supplier-side interface `Prop`s below the signed
 surface; no leanspec name touched).  Owner items are FLAGGED, not enacted.
 
+**[A-I.9, 2026-08-31]: O-TAU-2 IS NOW ENACTED** (owner-authorized; record + verbatim
+authorization in `runs/wave-c/verdict_OTAU.md`): the deepTwist socket body
+(`C130s18.DeepTwistRealizationData`) and the ladder live guard
+(`IFC5.CanonicalLadderLiveAt`) carry the `NormalizerPinned` conjunct; the §4 theorem
+`s2FourTwisted_canonicalDeepTwistConfig` ("the socket fires at the twisted witness") is
+thereby FALSE BY DESIGN and removed (archived at commit `2b834da9`; dated archive note at
+its former site); everything else in this file stands.  The collapsed boundary lands in
+`Uniformity/ChapI/I10PinnedBoundary.lean`.
+
 Cite ledger: **empty** — Lean core over the landed corpus; `#print axioms` footer is the
 audit.  Verdict: `runs/wave-c/verdict_TAU2.md`.
 -/
@@ -537,40 +546,22 @@ theorem s2FourTwisted_not_kernelSpanAt (hj : GaugeLive 4 3) :
   not_kernelSpanAt_of_topTwisted _ hj (s2Four_letterInput3_top_ne_zero h2 hq)
     (s2Four_letterInput3_sep h2 hq) rfl
 
-/-- ★★ **[TAU §4] THE SOCKET FIRES AT THE TWISTED WITNESS** — the LITERAL capstone I.10b
-socket body `CanonicalDeepTwistConfig` (leanspec-typed, `uE = 0` profile) holds at the
-twisted witness's own exports, through the landed general application
-`realizedInput_deepTwistConfigData`.  The falsifying twist satisfies ALL the config's
-laws: together with `s2FourTwisted_not_kernelSpanAt`, charge (b) is SETTLED — the view
-equations do NOT constrain the received normalizer, and no proof of kernel-span from the
-config laws can exist. -/
-theorem s2FourTwisted_canonicalDeepTwistConfig :
-    CanonicalDeepTwistConfig.{uG, 0, uL}
-      ((s2FourTwistedInput h2 hq L w₁ w₂ w₃ w₄
-          F₀ hF₀ μ hμ hdeg hblock hcop).stageCarrierTransport
-        (RingEquiv.refl ((s2DepthFour h2 hq).fld 4)))
-      ((s2FourTwistedInput h2 hq L w₁ w₂ w₃ w₄
-          F₀ hF₀ μ hμ hdeg hblock hcop).inputBlockTransport
-        (RingEquiv.refl ((s2DepthFour h2 hq).fld 4)))
-      (GaugeLattice.{uG} 4) ((s2DepthFour h2 hq).fld 4) L
-      ((s2FourTwistedRealization h2 hq L w₁ w₂ w₃ w₄).normalizer.arenaNormSection0.transport
-        (gaugeLatticeEquiv 4).symm)
-      (gaugeHeightFamily (s2FourTwistedInput h2 hq L w₁ w₂ w₃ w₄
-        F₀ hF₀ μ hμ hdeg hblock hcop))
-      (canonicalResFamily (s2FourTwistedInput h2 hq L w₁ w₂ w₃ w₄
-        F₀ hF₀ μ hμ hdeg hblock hcop))
-      (useHeightFamily (s2FourTwistedInput h2 hq L w₁ w₂ w₃ w₄
-        F₀ hF₀ μ hμ hdeg hblock hcop))
-      (arenaFamily (s2FourTwistedInput h2 hq L w₁ w₂ w₃ w₄
-        F₀ hF₀ μ hμ hdeg hblock hcop)
-        (s2FourCore_one_lt_r h2 hq L F₀ hF₀ μ hμ hdeg hblock hcop))
-      (towerReadFamily (s2FourTwistedInput h2 hq L w₁ w₂ w₃ w₄
-        F₀ hF₀ μ hμ hdeg hblock hcop))
-      ((s2FourTwistedRealization h2 hq L w₁ w₂ w₃ w₄).node.peelUnitFamily) 4 n :=
-  realizedInput_deepTwistConfigData
-    (s2FourTwistedInput h2 hq L w₁ w₂ w₃ w₄ F₀ hF₀ μ hμ hdeg hblock hcop)
-    (RingEquiv.refl ((s2DepthFour h2 hq).fld 4))
-    (s2FourCore_one_lt_r h2 hq L F₀ hF₀ μ hμ hdeg hblock hcop)
+/-! ★★ **[TAU §4 → A-I.9 ARCHIVE, 2026-08-31] THE SOCKET FIRED AT THE TWISTED WITNESS
+(pre-amendment record)** — the theorem `s2FourTwisted_canonicalDeepTwistConfig` proved
+that the PRE-A-I.9 capstone I.10b socket body (`CanonicalDeepTwistConfig`, whose joint
+witness then carried NO normalizer pin) held at the twisted witness's own exports through
+the landed general application `realizedInput_deepTwistConfigData` — the falsifying twist
+satisfied ALL the then-config's laws, which together with `s2FourTwisted_not_kernelSpanAt`
+settled charge (b): the view equations do NOT constrain the received normalizer, and no
+proof of kernel-span from the view laws can exist.
+
+**That theorem is now FALSE BY DESIGN and is REMOVED**: A-I.9 (O-TAU-2, enacted
+2026-08-31 per `runs/wave-c/verdict_OTAU.md`) conjoins the normalizer pin into
+`C130s18.DeepTwistRealizationData`, and the twisted witness fails exactly that conjunct
+(`s2FourTwisted_not_pinned` above — the ONLY conjunct it fails; the four view equalities
+still hold at it, being producing equalities of `s2FourTwistedInput`).  The full
+pre-amendment theorem is archived verbatim at commit `2b834da9`.  The stop-line it forced
+(`s2Four_not_universalKernelSpan` below) is socket-independent and STANDS. -/
 
 include h2 hq L w₁ w₂ w₃ w₄ F₀ hF₀ μ hμ hdeg hblock hcop in
 /-- ★★ **[TAU §4] STOP-LINE: `UniversalKernelSpan` is REFUTED** given any instance of the
@@ -705,7 +696,12 @@ Under either amendment the guarded forms below become the operative universal su
 the kernel-span leg is FREE under the guard (`kernelSpanAt_of_laurent`), so the
 capstone's vartheta half reduces to `UniversalPinnedGeneratorDescent` — row R5 only
 (wrap = §5's per-realization supply + the letter receiver equalities).  NEITHER amendment
-is enacted here; no leanspec name is touched. -/
+is enacted here; no leanspec name is touched.
+
+[A-I.9, 2026-08-31: **O-TAU-2 ENACTED** in C130s18/I10LadderLive (owner-authorized,
+`runs/wave-c/verdict_OTAU.md`); the reduction promised above is machine-real in
+`I10PinnedBoundary.lean` — both vartheta halves now rest on
+`UniversalPinnedGeneratorDescent` (+ the pinned gentow/site half) alone.] -/
 
 section Boundary
 
@@ -850,7 +846,6 @@ section AxCheck
 #print axioms Uniformity.Density.DeepExport.s2FourTwistedInput
 #print axioms Uniformity.Density.DeepExport.s2FourTwisted_not_pinned
 #print axioms Uniformity.Density.DeepExport.s2FourTwisted_not_kernelSpanAt
-#print axioms Uniformity.Density.DeepExport.s2FourTwisted_canonicalDeepTwistConfig
 #print axioms Uniformity.Density.DeepExport.s2Four_not_universalKernelSpan
 #print axioms Uniformity.Density.DeepExport.s2FourTwisted_canonicalTauWordAt
 #print axioms Uniformity.Density.DeepExport.twistRealization_wrapValue

@@ -275,6 +275,57 @@ fields (`docs/in-progress/LADDER_SUPPLY_2026-08-27.md`, [AI8E] entry); the GN-on
 are DELETED with the payload.  Review: `docs/REVIEW_QUEUE_2026-08-26.md`, Tier 1 row
 A-I.8 (capstone-surface amendment).
 
+**STATE UPDATE (2026-08-31, AMENDMENT A-I.9 = O-TAU-2): THE I.10b SOCKET BODY'S JOINT
+WITNESS (AND THE LADDER `vartheta` LEG'S LIVE GUARD) ARE NORMALIZER-PINNED — A STATEMENT
+CHANGE (socket-body conjunct), FORCED BY A MACHINE REFUTATION.**  TAU
+(`leanfinal/Uniformity/ChapI/I10TauRows.lean`, `runs/wave-c/verdict_TAU2.md`) proved that
+the sockets RECEIVED the realization's normalizer abstractly (`LaurentNormalizer` carries
+no coherence law in the height; `RealizedInput`'s five fields and the four CC-12 view
+equalities never mention the normalizer), and machine-checked the consequence: the
+index-2 twist (`DeepTower.topTwistedNormalizer` — the canonical normalizer twisted at the
+single top-letter height by `Λ_top⁻¹`) is a legal received witness satisfying EVERY
+pre-amendment socket conjunct yet refuting `KernelSpanAt` at the deep-live level, whence
+★★ `s2Four_not_universalKernelSpan`: TWD's universal lattice row was FALSE as stated and
+the landed general-depth route to both capstone vartheta halves (span + descent) was
+provably closed.  The pinning cannot be a free supply (`s2Four_not_universalPinning`), so
+the honest repair is structural — TAU's O-TAU-2, the A-I.6/7/8 socket-rebind genre.
+
+THE EXACT REBINDING: `Uniformity.Density.Tower.C130s18.DeepTwistRealizationData` gains
+the conjunct `Aℛ.normalizer = core.T.laurentNormalizer` (= TAU's `NormalizerPinned`,
+definitionally — `Iff.rfl` pin in `I10PinnedBoundary.lean`) directly after the
+`core.r = r` depth pin, and its general application `realizedInput_deepTwistConfigData`
+gains the matching `hN` hypothesis (`rfl` at every landed witness — TWD's
+`s2Four_normalizer_eq_laurent`, C130s17's `s2RepositoryRealization_normalizer`);
+`Uniformity.Density.IFC5.CanonicalLadderLiveAt` (the `ladder` field's `vartheta`-leg
+guard, A-I.6) gains the same conjunct as its first view conjunct.  The LADDER socket body
+(`LadderRealizationData`) is NOT amended (the ladder vartheta chain receives through the
+live guard, and no other ladder leg consumes the normalizer).  Both amended `Prop`s sit
+in PREMISE position of the signed fields, and each amended body implies its pre-amendment
+body verbatim (`deepTwistRealizationData_forget`/`canonicalLadderLiveAt_forget`) — this
+weakens the hypothesis block and therefore STRENGTHENS the conditional capstone; the
+I.10a/I.10b names, argument blocks, the `CapstoneHypotheses` field list, and I.15–I.18
+are BYTE-UNCHANGED (this file's socket defs reference the amended carriers by name).
+CONSEQUENCE (the fired chain, `leanfinal/Uniformity/ChapI/I10PinnedBoundary.lean`): the
+kernel-span row is FREE under the pin, so BOTH capstone vartheta halves collapse onto ONE
+tau remainder — `UniversalPinnedGeneratorDescent` (row R5 at pinned witnesses):
+★★ `deepTwistField_of_pinned_descent_site` and
+★★ `ladderVarthetaSupplierLive_of_pinned_descent` /
+`ladderFieldLive₃_of_pinned_boundary`; the recomputed G10U exit gate is
+`deepTwistField_iff_universalPinnedPerWitness` (the unpinned converses and the old iff
+are RETIRED — provably undischargeable post-amendment).  The keystone instances re-fire
+(`s2Four_canonicalDeepTwistConfig`, `s2Four_canonicalLadderLiveAt`, and the depth-2 S2
+gates byte-unchanged modulo the one `rfl` pin argument); the twist now fails the socket
+at exactly the pin (`s2FourTwisted_not_pinned`), and TAU's pre-amendment theorem
+`s2FourTwisted_canonicalDeepTwistConfig` is REMOVED as false-by-design.  Pre-enactment
+state archived at commit `2b834da9`.
+
+OWNER AUTHORIZATION (Asvin, 2026-08-31, mid-session, verbatim): "for row 10, if I
+understand right, I dont think that is gated on me. If this ammendment closes the proof,
+then it must have been right after all since this is all internal stuff" — the
+compile-is-the-validator doctrine applied to internal socket structure.  Review:
+`docs/REVIEW_QUEUE_2026-08-26.md` row 10, ENACTED (owner-authorized 2026-08-31); full
+record `runs/wave-c/verdict_OTAU.md`.
+
 Since 2026-08-20 the definitional layer I.01–I.03/I.05–I.07/I.21 IS landed in `leanfinal`
 (`Uniformity/ChapI/I01.lean` … `I21.lean`, byte-frozen transcriptions), and A-I.3's Stage-2
 companion lands I.10a/I.10b + I.10 + I.15–I.18 there (`Uniformity/ChapI/I10_I15_I18.lean`) at
@@ -939,6 +990,10 @@ def CanonicalDeepTwistConfig {O : Type} [CommRing O] {K : Type} [Field K]
   -- must pin it to the same joint arising witness the arena export uses (never a free numeral).
   -- [A-I.3, 2026-08-26] the pin is now REAL: the joint witness carries `core.r = r` inside
   -- `DeepTwistRealizationData` (A-I.2(b)'s "never a free numeral" rule, discharged).
+  -- [A-I.9 (O-TAU-2), 2026-08-31] the joint witness is NORMALIZER-PINNED:
+  -- `DeepTwistRealizationData` additionally carries `Aℛ.normalizer = core.T.laurentNormalizer`
+  -- (see this file's A-I.9 STATE UPDATE block; record `runs/wave-c/verdict_OTAU.md`).
+  -- This def's bytes are unchanged — the body references the amended carrier by name.
   CanonicalLadderConfig C B G Kt L N v ρ q n ∧
     ∃ (dom : IsDomain O) (dvr : IsDiscreteValuationRing O),
       Uniformity.Density.Tower.C130s18.DeepTwistRealizationData.{0, uG, uKt, uL}

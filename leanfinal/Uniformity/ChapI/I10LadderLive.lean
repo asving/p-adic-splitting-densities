@@ -53,7 +53,19 @@ byte-shape): the socket data `(C, B, N, v, ρ, q)` admit a realization witnessin
 SAME external views demanded by `CanonicalLadderConfig` — slot view, block view, gauge
 family view — whose gauge range contains `i` (`GaugeLive core.r i`).  Liveness and the
 family views belong to ONE witness, so a junk witness cannot buy liveness the views do
-not see (the D-D12 anti-cook guard).  NEW STATEMENT (review). -/
+not see (the D-D12 anti-cook guard).  NEW STATEMENT (review).
+
+**[A-I.9 (O-TAU-2), 2026-08-31 — STATEMENT CHANGE (guard-body conjunct)]** the witness is
+additionally pinned to the canonical Laurent normalizer
+(`A.normalizer = core.T.laurentNormalizer`, first conjunct) — the exact counterpart of the
+deepTwist socket conjunct (`C130s18.DeepTwistRealizationData`), forced by the SAME TAU
+refutation: the ladder `vartheta` leg's only tau route ran through `UniversalKernelSpan`
+at THIS guard's received witness (`I10LadderLegs.ladderVarthetaSupplierLive_of_span_descent`),
+and TAU proved that Prop false (`s2Four_not_universalKernelSpan`).  Strengthening the
+premise of the signed record's `vartheta` leg WEAKENS `LadderSupplyLive`/`₂`/`₃` and the
+capstone `ladder` field, hence STRENGTHENS the conditional capstone.  Pre-amendment state
+archived at commit `2b834da9`; record: `runs/wave-c/verdict_OTAU.md`; consequences:
+`Uniformity/ChapI/I10PinnedBoundary.lean`. -/
 def CanonicalLadderLiveAt.{uG', uKt', uL'}
     {O : Type} [CommRing O] {K : Type} [Field K]
     (C : Ladder.SlotCarrier O K) (B : Ladder.BlockData C)
@@ -67,6 +79,7 @@ def CanonicalLadderLiveAt.{uG', uKt', uL'}
       (H₀ := core.H₀) (hpin := core.hpin) (fieldE := fE) core.T Kt E L)
     (X : Tower.RealizedInput core A)
     (eK : core.T.fld core.i ≃+* K) (eG : G ≃* Tower.GaugeLattice.{uG'} core.r),
+    A.normalizer = core.T.laurentNormalizer ∧
     Tower.SlotViewEq X eK C ∧
     (∃ hC : C = X.stageCarrierTransport eK, Tower.BlockViewEq X eK (hC ▸ B)) ∧
     Tower.GaugeFamilyViewEq X (N.transport eG)

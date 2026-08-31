@@ -64,6 +64,14 @@ advances the vartheta leg to the deep-witness campaign's own boundary.
 open content after this unit is {package supplier, lb1 supplier, C3-at-abstract-
 normalizers + R5} — the vartheta leg is no longer an independent ladder-side item.
 
+**[A-I.9 (O-TAU-2), 2026-08-31]: the span leg of the boundary above is RETIRED** — TAU
+refuted `UniversalKernelSpan` (`s2Four_not_universalKernelSpan`), the guard
+`CanonicalLadderLiveAt` now pins the received witness's normalizer (I10LadderLive), and
+the collapsed route is `I10PinnedBoundary.ladderVarthetaSupplierLive_of_pinned_descent`:
+the ladder vartheta leg rests on `UniversalPinnedGeneratorDescent` (row R5 at pinned
+witnesses) ALONE.  This unit's chain below stays valid (the unpinned suppliers imply the
+pinned ones); record `runs/wave-c/verdict_OTAU.md`.
+
 ## Trust boundary
 
 `LadderFieldLive₃` and `LB1CarrierLive` are NEW statements (standing review);
@@ -163,7 +171,11 @@ theorem ladderVarthetaSupplierLive_of_universal {n : ℕ}
     (h : DeepExport.UniversalVarthetaSupplier.{uG, uKt, uL} n) :
     LadderVarthetaSupplierLive.{uG, uKt, uL} n := by
   intro O _ K _ C B G _ Kt _ L _ _ N v ρ q _hcfg i hi hlive
-  obtain ⟨dom, dvr, E, fE, core, Aℛ, X, eK, eG, _hslot, _hblock, hgauge, hilive⟩ := hlive
+  -- [A-I.9, 2026-08-31] the guard now also hands the normalizer pin (unused here: this
+  -- theorem consumes the UNPINNED universal supplier; the pinned route is
+  -- `I10PinnedBoundary.ladderVarthetaSupplierLive_of_pinnedUniversal`).
+  obtain ⟨dom, dvr, E, fE, core, Aℛ, X, eK, eG, _hN, _hslot, _hblock, hgauge, hilive⟩ :=
+    hlive
   letI := dom
   letI := dvr
   letI := fE
