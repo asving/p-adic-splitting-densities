@@ -6,6 +6,7 @@ import Uniformity.ChapI.I03_I04w
 import Uniformity.ChapI.I05
 import Uniformity.ChapI.I06
 import Uniformity.ChapI.I07
+import Uniformity.ChapI.I10CExport
 import Uniformity.ChapI.I10DeepExport
 import Uniformity.ChapI.I10FreezeV2
 import Uniformity.ChapI.I10LadderLegs
