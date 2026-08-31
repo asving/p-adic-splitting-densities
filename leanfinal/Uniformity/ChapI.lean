@@ -16,6 +16,7 @@ import Uniformity.ChapI.I10LadderRead
 import Uniformity.ChapI.I10RecenterDirect
 import Uniformity.ChapI.I10RecenterLive
 import Uniformity.ChapI.I10RecenterLiveS2
+import Uniformity.ChapI.I10RungLift3
 import Uniformity.ChapI.I10RungPacks
 import Uniformity.ChapI.I10SiteCalc
 import Uniformity.ChapI.I10SiteSupply
@@ -96,3 +97,4 @@ import Uniformity.ChapI.IFCG56
 import Uniformity.ChapI.IFCG57
 import Uniformity.ChapI.IFCG58
 import Uniformity.ChapI.IFCG59
+import Uniformity.ChapI.IFCG60
