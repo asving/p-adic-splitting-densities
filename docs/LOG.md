@@ -617,3 +617,12 @@ the unit-determinant algebra iso — no IsKrasner, no normed fields). `drainageA
 byte-identical to the capstone's a2 consumer shape; footprint pure Lean core; codex referee:
 "the core iso route is mathematically sound … no critical error." The a2 field joins ns7 and
 a1 as fully closed capstone fields.
+
+## 2026-08-31 (~04:15): THE MASTER — the whole remaining proof surface is one Lean statement
+
+`capstoneHypotheses_of_MASTER` (IFCG55): `CapstoneHypotheses n` — hence `UniformityStatement`
+via the landed I.15–I.18 assembly — from (ladder: hpart + SteepBlock + owner re-signs + the
+O-TAU amendment) + (deepTwist: the O-TAU amendment + wrap descent R5 + the carrier packs) +
+(census: FIVE premises — the staged FGMN cite ∀D, EisFullSpan m ≥ 6, the two defect laws
+e ≥ 5, LeafSectorLaw e ≥ 5). Mass 4 closed on the staged cite alone. Two owner gates stand
+(REVIEW_QUEUE rows 9 + 10); everything else is Lean-side work with named mechanisms.
