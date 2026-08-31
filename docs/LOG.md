@@ -605,3 +605,15 @@ Fifteen units banked in one storm-riddled overnight run (FP2, FP3, GAUSS2, DLC, 
 **deepTwist front (the capstone field).** G10U pinned the exact boundary (an IFF onto two universal suppliers); USUP/TWD dissolved the vartheta half down to `UniversalKernelSpan` + wrap descent, with the triangular-basis bridge (freeze v2's OPEN) proved uniformly in q — row C3 eliminated at every canonical-normalizer realization; WSS/SCS/WCC/RUNG dissolved the site half: the calculus coupling was card-2 convenience (WSS), the fault line an exact iff onto tower-side banks (SCS), the general weighted convolution law with the S2 pin re-derived byte-identically (WCC), and the rung-2 pack at a general tower via the coboundary normalization of the C28 cocycle (RUNG). Bank remainder: D3-03 spine adapter (D3AD in flight), RungLift per rung ≥ 3, PrevGrade f' ≥ 2, one slope inequality.
 
 Fleet notes: ~25 agent deaths to 529/server storms, zero work lost (increments-to-disk + resume-from-transcript); one hang killed and relaunched fresh (GAUSS → GAUSS2, which then landed every proof first-try); codex 7-day window at 100% until Thu — the entire night ran on Fable agents.
+
+## 2026-08-31 (~00:30): THE a2 FIELD CLOSES — ∀ n, DrainageAt n, unconditional, Lean-core
+
+The five-unit chain DRN → UDR → DTD → KDN → KDW (all within ~30 hours) closed the capstone's
+drainage field entirely: DRN's σ-free reduction, UDR's master inequality (depth buckets +
+q^v packing + the decidedness transfer), DTD's König compactness engine (the route inversion:
+per-O compactness replaces uniform rates), KDN's unconditional discriminant-null count (the
+König engine twice) + the Krasner reduction, and KDW's iso route (Newton in AdjoinRoot g +
+the unit-determinant algebra iso — no IsKrasner, no normed fields). `drainageAt_all` is
+byte-identical to the capstone's a2 consumer shape; footprint pure Lean core; codex referee:
+"the core iso route is mathematically sound … no critical error." The a2 field joins ns7 and
+a1 as fully closed capstone fields.

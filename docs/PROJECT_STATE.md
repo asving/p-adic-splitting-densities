@@ -113,8 +113,8 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
    {power: four named legs on PSL2's landed Eisenstein cascade — unit PSL3 IN FLIGHT} +
    {mass-4 dd/E2 recursion terms (ER4/DBL: all depth-0 limits closed)}. Unramified σ:
    ZERO at every mass (UZL). Bridges: GONE (INS2's InertiaScaling, Lean-core).
-   (a2 = `DrainageAt n`) — closed n ≤ 3 (DRN); UDR's master inequality reduces the rest to
-   `DeepTailDrainAt n` (the primary ψ^k single-cluster tail; strictly easier than H.124).
+   (a2) **CLOSED UNCONDITIONALLY for all n** (KDW's `drainageAt_all`, IFCG52 — the
+   DRN→UDR→DTD→KDN→KDW chain, all Lean-core, codex-refereed).
    (ladder) — mp1 DISCHARGED generically (A-I.8); remaining: the vartheta live leg +
    the package/lb1 universal fields (the I10 supplier chain feeds these; TWD killed
    row C3 at canonical normalizers).
@@ -242,6 +242,7 @@ the A-C.11 class-correction diff. Audit file: `docs/AXIOM_FAITHFULNESS.md`; stan
 | FP0 | the counting socket's reduction | DONE (ee26fa4b) — the loop-cell count PROVED entirely; the socket ⟺ ONE remainder: RationalNonloopRemainderAt (the realization→cell cardinality bridge); zero new axioms |
 | FP1 | the bridge's honest form | DONE (8330c4d4) — the binary cardinality bridge COMPLETE (finite-precision Hensel uniqueness + fold bijectivity + the exact stratum product count, all Lean-core); the remainder ⟺ the per-genre census (audit iff proved); the NP-layer classifier/cell-measure gap named + localized |
 | FP3 | census assembly + the single-point kernel | DONE (4878fd3c) — IFCG18.lean: the labelled/unlabelled exchange, the URLim calculus, the pattern-cell partition, and ★★ `decidedSliceAt_all_of_singlePoint` — the ALL-DEGREE decided-slice theorem rests on exactly TWO named kernels: `SinglePointAggregateLaw` + `DeepLinearClusterLaw`. Next sub-units: (a) the (δ ≤ 3, e = 1) restricted kernel from IFCG4+H124b; (b) the uniform Gauss irreducible count δ ≥ 2 (needs unramified base change); (c) the fractional-slope OM-cone census e ≥ 2 |
+| KDW | the deep Krasner kernel | DONE — IFCG52.lean (PURE core, codex-refereed): ★★★ `drainageAt_all : ∀ n, DrainageAt n` — THE CAPSTONE'S a2 FIELD CLOSED UNCONDITIONALLY (the iso route: Bezout at root g + Newton in AdjoinRoot g + the unit-determinant algebra iso transporting typeOf; krasnerIrredAt at every degree, stronger than charged) |
 | ASM | the full-span + dd assembly | DONE — IFCG51.lean (2353 lines): ★★ composite PowerFullSpanLaw on the FC_D family (+ the new EisFullSpanRemainderLaw at m ≥ 6; EMPTY at m=4 — `powerFullSpanLaw_four` on ONE premise); the dd rows on FC 2 alone (type41 = 2 premises); THE ENDGAME SCOREBOARD in verdict_ASM.md — FC_D (staged cite; D=2 unlocks all m=4) + EisFullSpanRemainder + 2 defect laws + LeafSectorLaw + E1IrrLeaf + depth-0 limits |
 | KDN | Krasner + disc null | DONE — IFCG50.lean (Lean-core): ★★★ `DiscNullAt` PROVED unconditionally at EVERY n (the König engine twice — exact-root peeling + heavy-fiber specialization; no rates, no splitting fields); KrasnerAt reduced to the single kernel `KrasnerDeepAt m` (irreducible separable, non-irreducible residue ⟹ eventually decided); ★★★ the a2 field = `KrasnerDeepAt` alone (or UDR's DeepTailDrain lane) |
 | CTS2 | the cell type scaling | DONE — IFCG48.lean (PURE core, no axiom): M3 the tower master identity (mathlib norm_norm, corpus-first); `CellTypeScalingAt` D ≥ 2 reduced to the bare `FactorCorrespondenceAt` (gcd-currency OM matching); consumers wired at every depth; THE FGMN CITE STAGED two-surface + faithfulness draft + REVIEW_QUEUE Tier-1 row 9 (owner gate — caveat 2 the load-bearing read) |
