@@ -626,3 +626,20 @@ O-TAU amendment) + (deepTwist: the O-TAU amendment + wrap descent R5 + the carri
 (census: FIVE premises — the staged FGMN cite ∀D, EisFullSpan m ≥ 6, the two defect laws
 e ≥ 5, LeafSectorLaw e ≥ 5). Mass 4 closed on the staged cite alone. Two owner gates stand
 (REVIEW_QUEUE rows 9 + 10); everything else is Lean-side work with named mechanisms.
+
+## 2026-08-31 (evening): ROW 9 SIGNED + the amendment pair — the owner's session
+
+Asvin returned and ruled on both owner gates in one sitting: (1) row 10 ("internal
+stuff, not gated on me") → A-I.9 ENACTED (the normalizer pin; both vartheta halves
+collapsed to row R5), then R5P machine-refuted row R5 itself and A-I.10 (the descent
+guard, same genre) is ENACTING — under both guards the tau supply is an unconditional
+theorem; (2) row 9: after CUR proved the currency lemma (the gcd read = the classical
+residue degree through any closure realization — the adjugate-conductor mechanism) and
+CPF restated the three FGMN legs in the authors' own invariants with the machine-checked
+translation, Asvin signed: "Okay with the CUR landing, I think the FGMN cite is fine to
+go" — unit SIGN is declaring `fgmn_cite_packageF : FGMNCitePackageF` (the SEVENTH
+trusted cite) and firing the consumers (mass 4 closes outright; the FC_D family; the
+deep-wild transports at every depth). Codex contributed the h≥2 Bézout-normalization
+design (H2L transcribed it, 35/35 pure core) and the full spine audit (every internal
+link PASS). Standing owner directives added: complete ∀-degree proof always; low-tier
+codex for transcription during Claude API errors.
