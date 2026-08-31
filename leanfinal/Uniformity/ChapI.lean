@@ -20,6 +20,7 @@ import Uniformity.ChapI.I10SiteCalc
 import Uniformity.ChapI.I10SiteSupply
 import Uniformity.ChapI.I10SpineAdapter
 import Uniformity.ChapI.I10Suppliers
+import Uniformity.ChapI.I10TauRows
 import Uniformity.ChapI.I10TauSupply
 import Uniformity.ChapI.I10WeightedCarrier
 import Uniformity.ChapI.I10Universal

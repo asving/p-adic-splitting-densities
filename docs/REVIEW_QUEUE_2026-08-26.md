@@ -120,3 +120,19 @@ Lean verifies the proof, not that the statement says what the unit thinks it say
 
 *Compiled 2026-08-26 by unit RQ. Read-only sweep — no files other than this one and
 `runs/wave-b/verdict_RQ.md` were written; nothing was committed.*
+
+
+## ADDED 2026-08-31 (orchestrator, from unit TAU): Tier 1 row 10 — THE O-TAU AMENDMENT (decision required)
+
+Unit TAU (I10TauRows.lean, verdict runs/wave-c/verdict_TAU2.md) MACHINE-REFUTED the
+universal kernel-span route: TWD's index-2 normalizer twist satisfies EVERY law of the
+signed deepTwist socket (it fires the literal leanspec socket at the keystone) yet
+falsifies KernelSpanAt — so `UniversalKernelSpan n` is FALSE and the capstone's two
+vartheta halves (deepTwist + ladder) CANNOT close without a structural change. The two
+options, both owner gate-(a) events:
+- **O-TAU-1** (TWD's recommendation): pin `ChainRealization.normalizer := laurentNormalizer`
+  (erases row C3 entirely; the twist becomes unconstructible).
+- **O-TAU-2**: conjoin `NormalizerPinned` into the socket existential (weakens the
+  hypothesis = strengthens the conditional capstone, same genre as A-I.6/7/8).
+Under either, `universalPinnedTauSupply_of_descent` collapses the tau boundary to row R5
+(wrap descent) only. Until signed, the vartheta halves are conditional on the amendment.
